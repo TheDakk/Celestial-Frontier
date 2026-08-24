@@ -92,6 +92,15 @@ remain in force.
    does not waive any human criterion. Arc 5.5 remains the separate combat-model HUMAN gate before
    Arc 6.
 
+**F3 batch 1 (local, 2026-08-24):** `@cf/persistence` now has the first reusable exact-once
+primitive: one checked transaction compares the observed save revision and an optional immutable
+SessionRNG receipt ordinal, then commits split-store DTO writes, the receipt, and next revision
+together. Two same-parent writers yield one commit plus an explicit stale/duplicate outcome; neither
+retries or partially lands a losing mutation. The canonical store list now includes `receipts`, and
+the IndexedDB schema target is v2 so `onupgradeneeded` can create it for existing v1 databases.
+Focused memory outcomes and all three TypeScript configurations pass. This is substrate only: no live
+v4 blob migration, writer, or F3 completion claim yet.
+
 ### SSH and branch discipline
 
 - Use only the matching app/OS/root/branch row in `PARALLEL_GIT_PROTOCOL.md`;

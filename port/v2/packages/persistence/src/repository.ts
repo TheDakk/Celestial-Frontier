@@ -14,14 +14,34 @@ export const STORES = [
   'inventory',     /* inventory/equipment/materials */
   'settings',      /* settings/accessibility/audio */
   'journal',       /* migration journal + recovery snapshots */
+  'receipts',      /* immutable exact-once mutation witnesses */
   'assetcache',    /* OPTIONAL, explicitly disposable */
 ] as const;
 export type StoreName = typeof STORES[number];
 
+/** An exact raw-value precondition for one atomic storage transaction. */
+export interface StorageCheck {
+  readonly store: StoreName;
+  readonly key: string;
+  /** `undefined` means the key must be absent. */
+  readonly value: string | undefined;
+}
+
+export interface StorageOperation {
+  readonly store: StoreName;
+  readonly key: string;
+  /** `undefined` deletes the key. */
+  readonly value?: string;
+}
+
 export interface StorageBackend {
   get(store: StoreName, key: string): Promise<string | undefined>;
   /** Atomically apply every write/delete or none — the transaction contract. */
-  apply(ops: Array<{ store: StoreName; key: string; value?: string }>): Promise<void>;
+  apply(ops: readonly StorageOperation[]): Promise<void>;
+  /** Atomically check exact raw values then apply every operation. `false`
+      means a competing writer changed one checked key; it is not an I/O
+      failure and callers must surface a stale/duplicate outcome. */
+  compareAndApply(checks: readonly StorageCheck[], ops: readonly StorageOperation[]): Promise<boolean>;
   keys(store: StoreName): Promise<string[]>;
   clear(stores: readonly StoreName[]): Promise<void>;
 }
@@ -123,13 +143,30 @@ export function createMemoryBackend(): StorageBackend {
       }
       for (const [s, t] of touched) data.set(s, t);
     },
+    async compareAndApply(checks, ops) {
+      for (const check of checks) {
+        if (table(check.store).get(check.key) !== check.value) return false;
+      }
+      /* Keep the check and write in this same synchronous turn. The memory
+         backend deliberately models one serializable transaction, so tests
+         can reproduce two-tab stale writers instead of hiding them behind
+         last-writer-wins awaits. */
+      const touched = new Map<StoreName, Map<string, string>>();
+      for (const op of ops) {
+        let t = touched.get(op.store);
+        if (!t) { t = new Map(table(op.store)); touched.set(op.store, t); }
+        if (op.value === undefined) t.delete(op.key); else t.set(op.key, op.value);
+      }
+      for (const [s, t] of touched) data.set(s, t);
+      return true;
+    },
     async keys(store) { return [...table(store).keys()]; },
     async clear(stores) { for (const s of stores) data.delete(s); },
   };
 }
 
 /* ---------- IndexedDB backend (browser; proven end-to-end in Phase 3) ---------- */
-export function createIndexedDBBackend(dbName = 'cf-v2', version = 1): StorageBackend {
+export function createIndexedDBBackend(dbName = 'cf-v2', version = 2): StorageBackend {
   let dbp: Promise<IDBDatabase> | null = null;
   const open = (): Promise<IDBDatabase> => {
     if (!dbp) {
@@ -182,6 +219,50 @@ export function createIndexedDBBackend(dbName = 'cf-v2', version = 1): StorageBa
         if (op.value === undefined) os.delete(op.key); else os.put(op.value, op.key);
       }
       await done(tx);
+    },
+    async compareAndApply(checks, ops) {
+      if (!checks.length) { await this.apply(ops); return true; }
+      const db = await open();
+      const stores = [...new Set([...checks, ...ops].map((entry) => entry.store))];
+      return new Promise<boolean>((resolve, reject) => {
+        const tx = db.transaction(stores, 'readwrite');
+        let remaining = checks.length;
+        let stale = false;
+        let completed = false;
+        const finish = (value: boolean): void => {
+          if (completed) return;
+          completed = true;
+          resolve(value);
+        };
+        const rejectFailure = (): void => {
+          if (completed) return;
+          completed = true;
+          reject(tx.error ?? new Error('transaction aborted'));
+        };
+        tx.oncomplete = () => finish(!stale);
+        tx.onerror = () => stale ? finish(false) : rejectFailure();
+        tx.onabort = () => stale ? finish(false) : rejectFailure();
+        const write = (): void => {
+          for (const op of ops) {
+            const os = tx.objectStore(op.store);
+            if (op.value === undefined) os.delete(op.key); else os.put(op.value, op.key);
+          }
+        };
+        for (const check of checks) {
+          const req = tx.objectStore(check.store).get(check.key);
+          req.onerror = () => { try { tx.abort(); } catch { /* tx will report the request failure */ } };
+          req.onsuccess = () => {
+            const actual = req.result === undefined ? undefined : String(req.result);
+            if (actual !== check.value) {
+              stale = true;
+              try { tx.abort(); } catch { finish(false); }
+              return;
+            }
+            remaining--;
+            if (remaining === 0) write();
+          };
+        }
+      });
     },
     async keys(store) {
       const db = await open();

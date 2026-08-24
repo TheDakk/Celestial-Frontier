@@ -127,8 +127,8 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
     expect(await be.keys('player')).toEqual(['a', 'b']);
     expect(await be.get('settings', 'vol')).toBe('0.8');
   });
-  it('the §19.3 store set is complete, incl. the disposable asset cache', () => {
-    expect([...STORES]).toEqual(['meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'assetcache']);
+  it('the F3 store set is complete, including immutable receipts and the disposable asset cache', () => {
+    expect([...STORES]).toEqual(['meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'receipts', 'assetcache']);
   });
   it('reset clears every current store so split data cannot resurrect later', async () => {
     const backend = createMemoryBackend();
