@@ -24,6 +24,8 @@
    ~18291, ~14243). The time source remains injected so the domain stays
    clock-free and winding the device clock grants nothing by construction. */
 
+export * from './readiness.js';
+
 /** Injected elapsed seconds per epoch — v1.7 balance: 240→1200 ("slow evolution, not
     a 4-min farm"). ⚠ SHARED knob: drives biosphere recovery AND harvest
     income — retune with both in view (ECONOMY_LOOT_CRAFTING.md). */
