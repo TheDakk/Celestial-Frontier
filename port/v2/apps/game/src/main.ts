@@ -54,7 +54,6 @@ import {
 } from './training-restore.js';
 import {
   displayedPlanetTextureDemandPx,
-  planetTextureTierForDemandPx,
   type SurfacePlanetTextureIdentity,
 } from './planet-texture-demand.js';
 import {
@@ -113,7 +112,7 @@ import { battleStats, STAT_NAMES, STAT_HUES } from '@cf/domain-combatcore';
 import {
   STORES, createSaveRepository, createIndexedDBBackend,
   createRevisionedRepository, initializeFreshV5, migrateStoredV4ToV5,
-  prepareV5Replacement, readF4Authority, readSaveV5, readRevisionedSaveV5WithRecovery,
+  prepareV5Replacement, readF4Authority, readRevisionedSaveV5WithRecovery,
   arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
   prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror, readArc2Loot,
   importSaveV2, exportSaveV2,
@@ -1271,8 +1270,6 @@ function fillSettings(): void {
    the 56-release archive remain synchronized to v1.8.9; current capability
    copy replaces any legacy promise whose mechanic is not yet live in v2. ---- */
 const GUIDE_CATALOGUE = getGuideCatalogue();
-let guideCategory: GuideCategoryId | null = null;
-let guideTopic: GuideTopicId | null = null;
 function guideBodyEl(): HTMLElement | null {
   return document.querySelector('#guidepanel [data-sel="guide-body"]');
 }
@@ -1305,7 +1302,6 @@ function focusGuide(selector: string): void {
   guideBodyEl()?.querySelector<HTMLElement>(selector)?.focus();
 }
 function renderGuideMenu(focusResult = false): void {
-  guideCategory = null; guideTopic = null;
   const body = guideBodyEl(); if (!body) return;
   body.innerHTML = GUIDE_CATALOGUE.map((category) =>
     `<button class="guide-item guide-category" data-guide-category="${category.id}"><span class="guide-icon">${category.icon}</span>` +
@@ -1316,7 +1312,6 @@ function renderGuideMenu(focusResult = false): void {
 function renderGuideCategory(id: GuideCategoryId, focusResult = false): void {
   const category = GUIDE_CATALOGUE.find((candidate) => candidate.id === id);
   const body = guideBodyEl(); if (!category || !body) return;
-  guideCategory = id; guideTopic = null;
   body.innerHTML = `<button class="guide-back" data-guide-home>‹ All topics</button>` +
     category.topics.map((topic) => guideTopicRow(topic, category.icon)).join('');
   body.scrollTop = 0;
@@ -1326,7 +1321,6 @@ function renderGuideTopic(id: GuideTopicId, focusResult = false): void {
   const topic = getGuideTopic(id);
   const category = guideCategoryOf(id);
   const body = guideBodyEl(); if (!topic || !category || !body) return;
-  guideCategory = category.id; guideTopic = id;
   const status = topic.availability === 'unavailable' ? 'Not yet available in v2'
     : topic.availability === 'partial' ? 'Partly available in this development build'
       : 'Available in this development build';
