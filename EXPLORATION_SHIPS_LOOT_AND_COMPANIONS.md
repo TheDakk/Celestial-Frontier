@@ -1,14 +1,40 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-23**.
+**STATUS:** approved product direction and implementation contract as of **2026-08-24**.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the
-read-only Arc 1C Shipyard foundation described immediately below. Inventory, Cargo writers,
-item-instance loot, capture/acquisition, companion-expedition, breeding, live combat,
+read-only Arc 1C Shipyard and bounded Arc 2 exact-instance Inventory foundations described below.
+Cargo-source/Fabricator writers, new item-instance loot sources, capture/acquisition,
+companion-expedition, breeding, live combat,
 Guardians, Fabrication, Research and ship-upgrade actions remain **not implemented** unless a
 row below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
 
-> **2026-08-22 Arc 1C ship/scene overlay — current implementation:** clean product/ruler
+> **2026-08-24 Arc 2 ownership/economy overlay — current local implementation:** the canonical
+> loot package contains all 62 legacy definitions (20 stackables, 42 slotted across nine slots),
+> all six legacy affixes, fixed recipes, deterministic salvage, and pure evidence for both legacy
+> earned-imbue paths. Exact gear copies now have stable source-action + receipt-local identity,
+> bounded construction, provenance, exact equipped/protected/pending state and strict codecs.
+> Capacity/extension-byte overflow remains complete `legacy-protected` inspection evidence; no
+> migration truncates or partially consumes the legacy hold.
+>
+> `inventory/arc2.loot` v1 is the authority and the legacy-v4 item/equipment fields are its mirror.
+> The real Inventory opens from the desktop rail or exact 260px 5×2 ten-control phone dock, with
+> bounded pages/filters, focus-owned exact inspect/conditional compare, confirmed Salvage, Equip,
+> Unequip and pending-claim. Each action publishes only after one lease-fenced F3/F4 CAS commits
+> product + mirror + next authority + immutable receipt + revision. Deterministic choices advance
+> only the receipt ordinal, never a SessionRNG domain counter. A genuine legacy Training checkpoint
+> that owns gear replaces the carrier in that same authority boundary; other checkpoint forms
+> preserve or protect it.
+>
+> The economy ledger is intentionally source-neutral. It proves fixed sinks and replays externally
+> authorized receipts but reports its production source model `arc3-deferred`; it supplies no mining
+> rate, ETA, drop occurrence, Fabricator or Research action. Authored natural-affix compatibility,
+> crafted modifiers/drawbacks, upgrades, sockets, vendor/bulk policy, pacing/recovery and HUMAN
+> item/compare/art review remain open. Focused tests and one no-retry Slice Smoke plus one
+> 12-viewport Glass Matrix are locally green on Edge `151.0.4129.101`, but no exact-head/hosted,
+> integration, preview, Gate, release, version or deployment authority follows.
+
+> **2026-08-22 Arc 1C ship/scene overlay — historical pre-Arc-2 implementation:** clean product/ruler
 > `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds one recursively frozen, pure
 > `ShipVisualState` projection from normalized `items`, `ascCh`, and injected livery seed
 > `0x5111`. `ascStageOf` remains the sole chassis/reach-stage authority. The only permanent
@@ -43,7 +69,7 @@ does not silently promote planned behavior into the in-game Guide.
 > `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
 > `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
 > is unchanged. This documentation descendant is not the exact certified head. Hosted
-> terminal-green integration, release/deploy, Cargo/Inventory/Forge writers,
+> terminal-green integration, release/deploy, Cargo/Forge writers,
 > Fabrication/Research/upgrades, richer inventory, and HUMAN four-silhouette judgment remain open.
 
 > **2026-08-16 D-TRAIN-1 ownership overlay (current source; local browser
@@ -165,9 +191,9 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 | Charters / reach language | One current stage-aware landfall projection; imported drive/chapter facts still gate reach; no other v2 Charter writer or reward | Port complete outcome writers and only then expose their goals, transitions and rewards |
 | Compendium | Read-only virtualized 1,500-row list, bounded asynchronous thumbnails and selected static detail | HUMAN Arc 1 art review, then any separately bounded living selected preview |
 | Capture / specimen acquisition | No live v2 Tame, Scavenge, Sample or Biosphere Yield action | Port finite capture writers before owned companions or collection progression |
-| Inventory / character portrait | Imported legacy bytes preserved; no live surface | Instance-backed inventory, paper doll and item inspection |
+| Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
 | Shipyard / ship upgrades | Read-only Shipyard inspection with pure normalized capability/visual state, four static SVG silhouettes, truthful systems/hardpoints, and one disposable DOM/SVG preview | HUMAN silhouette judgment, then real Research/Fabrication/upgrade writers and build outcomes |
-| Materials / crafting / loot | Legacy v1.8.9 is mature; v2 preserves data only | Port economy, then migrate slotted gear to real item instances |
+| Materials / crafting / loot | All 47 material/62 item/six-affix facts, fixed recipe/salvage graphs and source-neutral ledger are executable; no production source or craft writer is exposed | Arc 3 finite sources and real Research/Fabrication settlement, then later reward-source tables |
 | Breeding / care | Domain genetics exists; no live v2 action | Nonlethal breeding with bounded parent Recovery, lineage, care and bond outcomes |
 | Combat / conquest / Guardians | Deterministic domain duel exists; no live v2 action | Outcome-driven combat UI, rewards, injury and Guardian encounters |
 | Companion expeditions | No committed runtime exists | Active-play missions with sealed exact-once receipts |
@@ -332,6 +358,14 @@ the same source-action contract. Legacy migration derives its source action from
 import/migration receipt. Migration
 creates instances for gear copies and attaches a valid legacy slot affix only to the instance
 equipped in that slot.
+
+**Current implementation boundary (2026-08-24):** the schema, stable identity/provenance, complete
+legacy migration, strict Inventory codec and exact action transitions above are implemented. The
+current generated constructor accepts only checked externally supplied plans; fixed crafts derive
+all available axes from the canonical base. It rejects crafted modifier/drawback, upgrades and
+sockets until named authored tables exist. The six legacy affixes intentionally retain the legacy
+any-slot compatibility rule for real saves; the richer natural-affix pool/role/compatibility policy
+below remains open rather than being reverse-invented.
 
 ### 6.1 Roll grammar
 
@@ -573,8 +607,9 @@ changes must change it.
 - Roll outcome receipts from a stored save-lifetime RNG domain/ordinal; never fresh page-session
   entropy and never at reveal/claim time.
 - Use optimistic save `revision` compare-and-swap or one authoritative serialized coordinator
-  plus a cross-tab lease before every reward-bearing or destructive mutation. Current
-  last-writer-wins blob persistence is insufficient for exact-once ownership or loot.
+  plus a cross-tab lease before every reward-bearing or destructive mutation. The current v5
+  revision/lease/receipt boundary satisfies this prerequisite and Arc 2 uses it; later product
+  writers must join the same owner rather than restoring last-writer-wins behavior.
 - Keep ecology `COSMIC_EPOCH` semantics separate from the uncapped dedicated active-play
   millisecond clock used by missions/recovery. The legacy Auto-Extractor's wall-clock accrual is a
   known clock-wind exploit and must migrate to that active-play authority before it returns.
@@ -583,7 +618,8 @@ changes must change it.
   dropping old keys can otherwise re-arm supposedly one-time XP after reload.
 - Version new mission, item-instance, bond and audio-profile records; unknown future schemas
   remain protected, not silently coerced.
-- Import/migration is fixed-point tested and cannot partially consume a legacy inventory.
+- Import/migration is fixed-point tested and cannot partially consume a legacy inventory. Arc 2's
+  capacity/extension overflow stays `legacy-protected`; it is not a smaller accepted inventory.
 
 Required adversarial outcomes include reload-reroll, duplicate claim, two-tab stale revision,
 wrong companion unlock, breed-while-away, delete-while-away, wall-clock wind, inventory-full
@@ -653,7 +689,7 @@ batch. Planned systems live here and in their system docs, not in player-visible
 |---|---|---|
 | 0 — repair/current truth | Actionable Charter projection/copy; canonical CF1 galaxy → star → planet identity proof; deterministic world-opportunity and first-journey contracts; source/doc table corrections | fresh save can never receive an impossible live goal; every surfaced opportunity maps to a real action; no world-bound ownership receipt/writer exists before the canonical identity seam is proven; Guide remains honest |
 | 1 — portrait/ship foundation | virtualized thumbnails, character portrait service, pure `ShipVisualState`, static Shipyard proof | Automated foundation and 42/42 memory route are complete; phone/desktop HUMAN portrait and four-silhouette judgment remain open |
-| 2 — item instances and readable economy | schema/migration, inventory, equip/salvage/inspect, deterministic tables, build tags/comparison and source/sink/pacing ledger | fixed-point migration, exact-instance mutation, no duplicate/reroll/overflow loss; sources, ranges and targeted-crafting/salvage paths are inspectable |
+| 2 — item instances and readable economy **[PARTIAL locally green]** | Schema/migration, strict carrier, Inventory, equip/unequip/salvage/pending-claim, canonical fixed tables and exact inspect/conditional compare are implemented; production source/craft policy is not | Current fixed-point/exact-instance/browser outcomes are green; authored source/range/targeted-craft/pacing policy and HUMAN phone/desktop review remain before program closure |
 | 3 — engineering loop | mining/skimming/research/fabrication and visible build outcomes | real-action rewards, finite veins, active-play extraction, reach/visual/Guide agreement |
 | 4 — capture/ownership | finite Tame/Scavenge/Sample acquisition, catalogue/owned-instance split and Biosphere Yield | real-action page/specimen creation, attempt spend/recovery, no duplicate/reroll/two-tab grant |
 | 4.5 — first complete journey | Fresh-start Survey → opportunity → Gather → Build → Tame → ship upgrade → farther reach → meaningful Return | first-time 30–60-minute human path proves comprehension, agency and satisfying pacing without idle waits or a scripted fake reward |
@@ -693,11 +729,12 @@ cannot understand, enjoy or comfortably use it.
 
 ### Product systems still open in v2
 
-- full Inventory/Cargo, explorer paper doll and equipment actions;
-- Shipyard Research/Fabrication/upgrade writers, mining, skimming, salvage and richer visual vessel progression beyond the read-only static foundation;
-- true item-instance loot, deeper affix pools, reward receipts and Guardian drops;
-- a truthful world-opportunity map, readable loot comparison/filter/salvage paths and an
-  executable economy source/sink/pacing model;
+- Cargo-material sources, explorer paper doll/bespoke item art, saved advanced filters and broader
+  Inventory policy beyond the live exact gear actions;
+- Shipyard Research/Fabrication/upgrade writers, mining, skimming and richer visual vessel progression beyond the read-only static foundation;
+- production item-instance loot sources, authored natural-affix compatibility/deeper pools,
+  crafted modifier/drawback, upgrades/sockets and Guardian drops;
+- a truthful world-opportunity map and executable economy source/rate/recovery/pacing model;
 - Tame/Scavenge/Sample acquisition, finite Biosphere Yield and catalogue/specimen ownership;
 - feeding, injury care, breeding, lineage actions, creature XP/classes and Companion bond;
 - friendly duels, conquest, Apex Guardians, settlement rewards and Binder/Paragons;
@@ -718,7 +755,8 @@ cannot understand, enjoy or comfortably use it.
 - physical-device long-session memory/heat judgment beyond the automated Pixi/Canvas ownership plateau;
 - broader HD planet art beyond the named transactional surface attachment, living organism rigs and biome/ecology scenes;
 - epoch invalidation and hidden-tab/reduced-motion policy;
-- split-store/CAS or serialized cross-tab persistence;
+- clean exact-head/browser schema-upgrade and representative later-writer two-tab evidence for the
+  implemented v5 split-store/CAS/lease/receipt authority;
 - real veteran-save Gate C, human listening Gate G, physical mobile Gate I and sustained heat QA;
 - remaining Gate-B domain/economy parity, the ≤1-second answerability target, whole-app
   accessibility, PWA/offline/rollback work, and formal 1,250-row/all-bloodline visual certification.

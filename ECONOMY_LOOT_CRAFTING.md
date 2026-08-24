@@ -1,6 +1,39 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** The playable v2
+> **2026-08-24 Arc 2 v2 overlay — CURRENT versus OPEN:** the port now has executable authority
+> for the mature table facts: all 47 material ids; all 62 item definitions (20 stackables and 42
+> slotted gear/relics across 9 slots); all 6 legacy affixes; fixed recipe, prerequisite and Signature
+> graphs; legacy salvage output; and both earned legacy imbue paths as non-mutating evidence.
+> `GearInstance` gives every slotted copy a stable source-action/receipt-local identity, provenance,
+> exact base effects, inherited legacy affix and bounded construction axes. The strict versioned
+> Inventory codec owns equipped/protected/pending exact instances without collapsing duplicate bases.
+>
+> The v5 `inventory/arc2.loot` carrier migrates legacy gear all-or-nothing. If the truthful expansion
+> cannot fit capacity or extension-byte bounds, it retains the complete source as inspection-only
+> `legacy-protected`; it never truncates to a writable prefix. Future/corrupt/unknown carriers remain
+> protected. Legacy `items` / `equip` / `equipAff` are its compatibility mirror, and genuine legacy
+> Field Training restore now moves that mirror and carrier together under the same checked authority.
+>
+> The real Inventory provides bounded pages, exact inspect/filter/conditional compare, pending claim,
+> and durable Equip, Unequip and confirmed Salvage actions. Each action commits its product state,
+> compatibility projection, F4 authority, immutable receipt and F3 revision exactly once under the
+> current lease. These deterministic choices reserve the next save-lifetime receipt ordinal without
+> advancing a per-domain SessionRNG counter; stale/duplicate/storage failures never publish an
+> optimistic result or reroll.
+>
+> **Still open, and deliberately not fabricated:** the economy trace is source-neutral and reports
+> `sourceModelStatus: arc3-deferred`; no current v2 world source, rate/ETA, mining, Fabricator,
+> Research, ship-system build or new loot occurrence writer exists. Authored natural-affix pools and
+> compatibility, crafted modifiers/drawbacks, upgrades, sockets, targeting/vendor policy, complete
+> source-to-upgrade recovery/pacing, and HUMAN phone/desktop item comparison remain later criteria.
+> Fixed recipe and sink truth is executable development authority, not a claim that players can craft.
+>
+> Focused tests, one no-retry real Slice Smoke and one 12-viewport Glass Matrix are locally green on
+> Edge `151.0.4129.101`. The full suite's only current red is the intentionally stale Compendium
+> measurement digest after the dependency graph changed; it will be recalibrated once at the final
+> multi-Arc head. No hosted, integration, preview, release, version or deployment authority follows.
+
+> **2026-08-13 v2 next-arc overlay — historical pre-Arc-2 boundary:** The playable v2
 > slice currently preserves and displays imported economy state; it does **not**
 > yet run mining, fabrication, equipment changes, conquest loot, Guardian loot or
 > companion expeditions. The mature v1.8.9 table review is 47 materials and 62
@@ -56,11 +89,13 @@ families/tiers, world-cosmic veins (`cosmicVeinFor`), stellar extraction (`skimS
 the 7 cosmic gear pieces (`cg-*`), and the salvage system — is specified in
 `MATERIALS_AND_GEAR.md`. This doc no longer describes the complete engineer track.
 
-## 0. v2 loot usability, pacing and construction contract (approved, not implemented)
+## 0. v2 loot usability, pacing and construction contract (approved; Arc 2 subset implemented)
 
-The planned item-instance economy must feel like an understandable ARPG chase, not
-a spreadsheet of concealed rolls. This section is a future acceptance contract; none
-of its surfaces exist in the current v2 slice.
+The item-instance economy must feel like an understandable ARPG chase, not a spreadsheet of
+concealed rolls. Arc 2 now implements the stable instance, Inventory action, inspect/compare,
+legacy fixed-recipe/salvage and persistence foundations described in the current overlay. The
+remaining source, crafting, richer construction, pacing and human criteria in this section stay
+an acceptance contract rather than current capability.
 
 ### 0.1 Transparent, useful loot
 

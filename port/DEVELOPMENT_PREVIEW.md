@@ -1,7 +1,15 @@
 # Development Preview — Separate-Origin Human Playtesting
 
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
-as of 2026-08-22. This is not a release record.
+as of 2026-08-24. This is not a release record.
+
+**Current campaign boundary (2026-08-24):** the local Arc 2 Inventory/F3/F4 work has passing
+dirty-input Slice Smoke and 12-viewport Glass Matrix evidence, but it has not been packaged,
+published, pushed, hosted-tested, merged, versioned or released. The dependency graph also changes
+the sealed Compendium measurement input; that authority will be recalibrated once only after the
+final multi-Arc source set freezes. Until a clean exact final head passes the complete local battery
+and receives separate exact-SHA publication authority, no Arc 2 development-preview candidate
+exists. `--allow-dirty` remains local diagnosis only and can never become a promotion artifact.
 
 ## Separate-origin requirement; approved branch site
 

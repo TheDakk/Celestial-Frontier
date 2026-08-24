@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-23.
+> 2026-08-24.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -73,6 +73,34 @@
 > A new hosted attempt still requires explicit changed-head authorization.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
+>
+> **2026-08-24 local campaign boundary — Arc 2 implementation slice is locally green; program
+> Arc remains `[PARTIAL]`:** F3/F4 now supply the app's v5 revision/lease, protected active-play +
+> SessionRNG carrier, immutable receipts, and one checked product transaction. Random plans retain
+> their draw across a failed write; Equip, Unequip, Salvage and pending-claim reserve only the global
+> receipt ordinal and do not advance a domain counter. `inventory/arc2.loot` v1 is the strict
+> all-or-nothing exact-instance carrier, with a lossless `legacy-protected` alternative when truthful
+> expansion exceeds capacity or extension bytes. Its v4 `items` / `equip` / `equipAff` projection is
+> compatibility only, including coherent legacy-Training replacement.
+>
+> The implemented loot foundation covers all 62 legacy definitions (20 stackable, 42 slotted across
+> nine slots), all six legacy affixes, exact fixed recipes/salvage/legacy-imbue evidence, stable
+> `GearInstance` identity and provenance, exact-instance inventory transitions, inspect/compare/
+> filter models, and a source-neutral economy trace. The real Inventory is available from desktop
+> rail and the 260px 5×2 ten-control phone dock with bounded pages, focus-owned detail, conditional
+> comparison, salvage confirmation, pending claims, and durable action publication.
+>
+> Focused code evidence is 16 files /149 tests plus all TypeScript programs and the Vite build.
+> One local no-retry Slice Smoke is terminal PASS on Edge `151.0.4129.101` (239,546 ms, zero
+> findings), and one local full-certifying Glass Matrix is terminal PASS (61,039 ms, 12/12
+> viewports, 78/78 controls, none blocked/omitted, zero findings/instrument failures). Both bind
+> dirty working-tree inputs. The full suite remains deliberately red only because the dependency
+> graph changed the sealed Compendium measurement digest (`6a961df8…` → `e6e6bbc…`); that ruler is
+> recalibrated once after the final multi-Arc dependency set freezes, never weakened per Arc.
+> Authored new-loot occurrence/rates and affix compatibility, crafted modifier/drawback, upgrades,
+> sockets, production Fabricator/Research writers, pacing/source recovery, and HUMAN item/compare
+> readability remain open. No hosted run, PR/integration, preview/publication, release, version bump,
+> deployment, or whole-Gate authority follows. Arc 3 is now the active local campaign item.
 
 ## 1. Purpose, authority, and status
 
@@ -114,10 +142,12 @@ When sources disagree, resolve the conflict in this order and record the discrep
 | **[EXEC-TODO]** | An executable criterion is required but absent or insufficient. |
 | **[HUMAN]** | Human review is required; no automated metric can replace it. |
 
-The current v2 application is a playable exploration/survey Phase-4 slice. It is not a finished
-v2 product: Inventory, Shipyard build actions, item instances, creature ownership, missions,
-combat, Guardians, living previews, and full audio remain planned until their real actions,
-persistence/reload, reachability, negative controls, and required human evidence land.
+The current v2 application is a playable exploration/survey Phase-4 slice with read-only Shipyard
+inspection and the bounded Arc 2 exact-instance Inventory actions described above. It is not a
+finished v2 product: Shipyard build actions, material sources/Fabricator/Research, new loot-source
+policy, creature ownership, missions, combat, Guardians, living previews, and full audio remain
+planned until their real actions, persistence/reload, reachability, negative controls, and required
+human evidence land.
 
 ## 2. Product promise and non-negotiable program laws
 
@@ -987,6 +1017,16 @@ rows, and double action. F3 is the first point at which persistence may be calle
 **Hard no-go:** no item/creature instance mutation, capture spend, craft/salvage, companion dispatch,
 Guardian settlement, or receipt-backed reward before F3.
 
+**Current local implementation (2026-08-24):** v4 remains the supported compatibility codec while
+v5 partitions it into owner-named rows, preserves the exact pre-migration snapshot/journal, and
+brackets complete reads/writes with a revision. The lease-fenced mutation owner atomically commits
+product rows, immutable receipt, and next revision, returning explicit stale, duplicate, lost-lease,
+and storage outcomes without automatic retry. Portable v5 replacement carries extension namespaces
+without flattening them into v4. This authority is now exercised by Arc 2 Inventory and Training
+carrier replacement. The wider F3 program exit still awaits clean exact-head/browser IndexedDB
+upgrade and representative two-tab coverage for later capture/mission/combat writers; real-save
+Gate C remains open.
+
 ### 4.9 F4 — active-play clock and SessionRNG
 
 **Goal:** separate ecology epoch, active-play readiness, and replayable player outcomes without a
@@ -1007,6 +1047,15 @@ wall-clock exploit or a change to universe determinism.
 
 **Hard no-go:** new extraction, missions, readiness, capture/reward, or anti-reroll loops do not
 use `Date.now()` or bare `Math.random()`. Reduced Motion never slows progress.
+
+**Current local implementation (2026-08-24):** `player/f4.authority` v1 persists the injected
+visible/answerable/lease-owned active-play total and SessionRNG seed, isolated domain counters, and
+one save-lifetime ordinal. One shared writer assembles product extensions first, rejects any attempt
+to shadow the protected F4 namespace, then commits state + product + next F4 authority + receipt in
+one F3 CAS. Random plans replay the same value after a failed write. Arc 2's deterministic actions
+use the sibling no-RNG path: they advance only the receipt ordinal. This proves the authority seam;
+Auto-Extractor source settlement and the remaining legacy outcome call sites still belong to their
+own Arcs and cannot be claimed migrated by Inventory.
 
 ### 4.10 Approved 2026-08-24 campaign sequencing
 
@@ -1059,6 +1108,23 @@ portrait/Shipyard foundations.
 **Exit evidence:** fixed-point migration; exact-instance mutation; no duplicate/reroll/overflow loss;
 stale-tab/double-click controls; readable source/range/targeted-craft paths; mobile/desktop comparison
 review; current Guide/Training truth.
+
+**2026-08-24 implementation status — `[PARTIAL]`, active batch locally gated:** all 62 canonical
+definitions, fixed recipe graph and sink coverage; stable exact `GearInstance` identity/provenance;
+strict inventory/carrier codecs; all-or-nothing legacy migration; overflow protection; deterministic
+salvage; pending claim; exact inspect/filter/conditional compare; and the four durable Inventory
+actions are implemented. Legacy earned-affix routes are preserved as pure evidence and are not
+misrepresented as authored natural prefix/suffix policy. Training replacement keeps the carrier and
+legacy projection coherent under the same checked transaction. Slice Smoke and 12-viewport Glass
+exercise the real opener, exact carrier/raw/runtime/DOM parity, real action publication, reload,
+modal/focus/Close, conditional wording, controls, and fail-safe mutations.
+
+Arc 2 is not marked program-complete: the source-neutral economy ledger deliberately reports
+`arc3-deferred` instead of inventing world faucets or ETAs; the app exposes no Fabricator/Research
+spend; and authored new-loot tables/rates, natural-affix compatibility, crafted modifier/drawback,
+upgrade/socket policy, source-to-upgrade recovery/pacing, and HUMAN phone/desktop item/compare review
+remain open. Final clean exact-head/full-battery evidence waits for the one end-of-campaign
+Compendium measurement recalibration described in the status overlay.
 
 ### 5.2 Arc 3 — engineering loop
 

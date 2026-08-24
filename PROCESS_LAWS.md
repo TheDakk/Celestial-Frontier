@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-23. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-24. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -10,6 +10,21 @@ shipped, or with a check that went green while the thing it guarded was broken. 
 roughly by how often they have bitten.
 
 ---
+
+⚠⚠ **A COMPATIBILITY MIRROR MUST MOVE IN THE SAME TRANSACTION AS ITS NEW AUTHORITY**
+(2026-08-24). Arc 2 made `inventory/arc2.loot` the exact-instance authority while the legacy-v4
+`items` / `equip` / `equipAff` fields remained a projection for unported readers. Field Training's
+genuine legacy checkpoint owns those three old fields. Restoring only that mirror would leave the
+new carrier stale, allowing a later boot or Inventory publication to project the pre-Training gear
+back over the restored checkpoint.
+
+When a replacement path owns compatibility fields that mirror a versioned carrier, decide ownership
+before writing: derive the complete carrier from the exact restored fields when the checkpoint owns
+them; preserve the carrier when it does not; and refuse corrupt, future, source-deferred, or partial
+evidence rather than guessing. Commit state, carrier, protected authority and revision under the
+same fence/CAS boundary. After durability, publication verifies the committed carrier or reloads;
+it never performs a second write. Grep every restore/import/reset writer whenever a compatibility
+projection gains a new authority—ordinary action tests alone cannot expose a replacement-only split.
 
 ⚠⚠ **NATIVE POINTER EVIDENCE MUST SURVIVE THE DEFERRED RENDER, PROVE A STABLE HIT OWNER, AND OWN
 THE IMMEDIATE ACTION RECEIPT** (2026-08-23). PR #34 run `32665404776` positioned a virtual

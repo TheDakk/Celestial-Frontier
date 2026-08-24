@@ -1,3 +1,31 @@
+## ARCHIVED 2026-08-24 — early F3/F4 campaign checkpoints
+
+> Moved byte-verbatim from ROADMAP.md after the live Arc 2 boundary superseded these preliminary
+> substrate-only descriptions.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: EARLY F3/F4 CHECKPOINTS -->
+**Early F3 checkpoint (historical within this campaign, 2026-08-24):** `@cf/persistence` gained the first reusable exact-once
+primitive: one checked transaction compares the observed save revision and an optional immutable
+SessionRNG receipt ordinal, then commits split-store DTO writes, the receipt, and next revision
+together. Two same-parent writers yield one commit plus an explicit stale/duplicate outcome; neither
+retries or partially lands a losing mutation. The canonical store list now includes `receipts`, and
+the IndexedDB schema target is v2 so `onupgradeneeded` can create it for existing v1 databases.
+Focused memory outcomes and all three TypeScript configurations passed. At that checkpoint this was
+substrate only; the current live authority boundary is summarized above.
+
+**Early F4 clock checkpoint (historical within this campaign, 2026-08-24):** the pure progression package gained a persisted
+`activePlayMs` clock driven only by injected monotonic time. It accrues only while the document is
+visible, the app is answerable, and the F3 tab lease is owned; hidden, frozen, and losing-tab time
+all remain zero. Reload, wall-clock wind, invalid/backward source, and cap controls passed. Its later
+app/save wiring is included in the current live authority boundary above.
+
+**Early F4 RNG checkpoint (historical within this campaign, 2026-08-24):** `SessionRNGState` gained one global
+save-lifetime ordinal in addition to isolated per-domain counters. `planSessionRNGDraw` returns the
+same value/ordinal on a failed-write retry and advances only its detached `nextState`; Arc writers
+must commit that state with an F3 receipt and the product mutation. Exhausted/malformed ordinals fail
+closed. The current Arc 2 actions now consume the deterministic no-RNG form of this transaction seam.
+<!-- END VERBATIM ROADMAP BLOCK: EARLY F3/F4 CHECKPOINTS -->
+
 ## ARCHIVED 2026-08-23 — PR #33 pre-merge handoff
 
 > Moved byte-verbatim from ROADMAP.md after terminal-green run `32646110946` merged PR #33 as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`.

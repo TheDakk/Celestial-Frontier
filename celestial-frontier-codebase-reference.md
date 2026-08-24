@@ -4,8 +4,53 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches code as of 2026-08-23.**
-> **2026-08-22 Arc 1C ship/surface implementation and SceneMemory v2 overlay (current source):**
+> **Current port/v2 source overlay matches code as of 2026-08-24.**
+> **2026-08-24 F3/F4 + Arc 2 implementation overlay — current local source:**
+> `packages/domain/loot` now owns the recursively frozen 62-definition catalogue (20 stackable,
+> 42 slotted across nine slots), ten-tier vocabulary, six literal legacy affixes, strict
+> `GearInstance`/`GearInventory` codecs and transitions, fixed recipe/graph/salvage audits, pure
+> legacy-imbue evidence, inspect/filter/conditional-compare projections, and a source-neutral
+> economy trace. Stable instance identity is source-action + receipt-local ordinal. Generated plans
+> accept only bounded authored axes; crafted modifiers/drawbacks, upgrades and sockets reject until
+> their named tables exist. The economy trace accepts only version-matched external source receipts
+> and reports `arc3-deferred` rather than inventing a production faucet, rate or ETA.
+>
+> `packages/persistence/src/arc2-loot.ts` owns `inventory/arc2.loot` v1. A supported carrier is
+> complete `GearInventory` plus stackable counts or lossless `legacy-protected` source facts when
+> exact expansion exceeds capacity/extension-byte authority. It never publishes a prefix;
+> corrupt/future/unknown/over-bounds evidence remains protected. The carrier is authoritative and
+> `projectArc2LootLegacyMirror()` derives the compatibility-v4 `items` / `equip` / `equipAff` view.
+> V5 continues to split the canonical v4 envelope into owner rows with exact source snapshot/journal,
+> revision and bounded extension namespaces.
+>
+> `outcome-transaction.ts` is the shared F3/F4 product assembly owner. It detaches state/extensions,
+> rejects product writes to protected `player/f4.authority`, applies product namespaces, prepares the
+> next active-play/SessionRNG authority, serializes one complete save and submits product + immutable
+> receipt + next revision under the lease fence. Random plans retain their draw after failure.
+> Equip/Unequip/Salvage/pending-claim use its no-RNG sibling, advancing only the global ordinal and
+> preserving seed/domain counters byte-for-byte.
+>
+> `apps/game/src/inventory-panel.ts` owns the 48-row bounded panel/detail/modal projection;
+> `inventory-actions.ts` owns only the exact legacy compatibility edits implied by a successful
+> domain action. `main.ts` registers Inventory in the desktop rail and exact 260px 5×2 ten-control
+> phone dock, supplies one durable action adapter, and publishes no optimistic state. The detail
+> sheet owns inert background, bidirectional focus wrap/return, exact conditional comparison,
+> salvage confirmation, pending action and convergence diagnostics. Genuine legacy Training gear
+> replacement derives the Arc 2 carrier inside the same checked state/extension/F4 transaction;
+> current-view/source-deferred restore preserves it, corrupt/future refuses, and post-durable
+> publication failure reloads without a second write.
+>
+> Focused Arc 2/F3/F4 evidence is 16 files /149 tests; all TypeScript programs and Vite build pass.
+> One no-retry local Slice Smoke passed on Edge `151.0.4129.101` in 239,546 ms with zero findings;
+> one full Glass Matrix passed in 61,039 ms at 12/12 viewports and 78/78 controls, with none blocked/
+> omitted and zero findings/instrument failures/retries. Both bind dirty working-tree inputs. The full
+> suite remains deliberately red only because the dependency graph moved sealed Compendium
+> measurement input `6a961df8…` to `e6e6bbc…`; reseal once at the final multi-Arc head. Authored
+> sources/rates/affix compatibility/richer construction, Fabricator/Research, pacing and HUMAN
+> item/compare art remain open. No hosted/integration, preview, Gate, version, release or deployment
+> authority follows.
+>
+> **2026-08-22 Arc 1C ship/surface implementation and SceneMemory v2 overlay (historical pre-Arc-2 source):**
 > clean product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds
 > `packages/scene/src/ship-visual-state.ts`. Its pure `shipVisualStateOf()` accepts only normalized
 > `items`, `ascCh`, and an injected livery seed, delegates chassis selection to `ascStageOf`, and
@@ -21,7 +66,7 @@
 > the implementation creates no Pixi application, second renderer, `RenderTexture`, filter,
 > particle or asynchronous preview job. `apps/game/src/main.ts` exposes the state at
 > `state().shipVisual`, the owner census at `api.shipyardDiagnostics()`, and a read-only registered
-> Shipyard panel from the desktop right rail and phone's exact 260px 5×2 nine-control dock. The
+> Shipyard panel from the desktop right rail and Arc-1C-era exact 260px 5×2 nine-control dock. The
 > panel lists chassis/provenance, exact installed systems and fitted/open hardpoints, then states
 > that Fabrication, Research and ship upgrades are unavailable. Close disposes the preview.
 >
@@ -52,7 +97,7 @@
 > Hosted run `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. The
 > repair changes only measurement and fail-fast workflow order; product behavior is unchanged.
 > This documentation descendant does not retroactively make its HEAD the certified source. Hosted
-> terminal-green integration, HUMAN silhouette judgment, Cargo/Inventory/Forge,
+> terminal-green integration, HUMAN silhouette judgment, Cargo/Forge,
 > Fabrication/Research/upgrades, richer preview/art work, release and deployment remain open.
 >
 > **2026-08-21 Arc 1B scene-resource ownership and memory overlay (historical foundation; current where Arc 1C does not supersede it):**
@@ -650,7 +695,7 @@
 > adding content scale; Arc 1A now implements and measures that bounded DOM/Canvas path.
 > Arc 1B later implemented and measured Pixi/canvas scene ownership for the existing travel surfaces;
 > Arc 1C then added only the static Shipyard inspection and named HD attachment described above.
-> The present one-blob, last-writer-wins repository is
+> The then-present one-blob, last-writer-wins repository was
 > insufficient for two-tab exact-once claims and must gain compare-and-swap or one
 > authoritative serialized coordinator.
 >
@@ -662,7 +707,7 @@
 > invokes recovery. The direct exporter contract proves all supported fixture families
 > satisfy the boot envelope, while repository reset clears the canonical complete
 > `STORES` list so future stores cannot escape a wipe. This implements the bounded F1a
-> pre-classification overwrite/reset-coverage repairs only. The current one-blob store,
+> pre-classification overwrite/reset-coverage repairs only. The then-current one-blob store,
 > cross-tab last-writer-wins behavior, split schema, CAS, receipt journal and migration
 > authority remain F3 work; Gate C still requires real veteran/device evidence.
 >
@@ -2102,6 +2147,14 @@ presentation, the determinism ban covers domain modules only.
 ---
 
 ## 10. Save format (`localStorage['cfcc_save_v2']`)
+
+**Current v2 topology (2026-08-24):** v4 remains the imported/exported compatibility codec, while
+repository schema v5 stores owner-partitioned rows, pre-migration source snapshot/journal, revision,
+receipts and independently versioned extension namespaces. The two current product authorities are
+`player/f4.authority` v1 (active-play + SessionRNG) and `inventory/arc2.loot` v1 (exact gear +
+stackables or protected legacy facts). Every complete v5 write/replacement must carry both explicitly;
+round-tripping only the v4 envelope would erase authority. This schema number is independent of the
+development display identity and production `GAME_VERSION`.
 
 **Current v2 Training compatibility fields (2026-08-16):** the outer envelope
 remains `v:4`. While Training is incomplete, optional `tsnap` carries either the
