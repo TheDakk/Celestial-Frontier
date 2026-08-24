@@ -40,6 +40,7 @@ import { hashInt, mulberry32 } from '@cf/domain-rand';
 import {
   canonicalCF1StarAddressFromNav,
   canonicalCF1WorldAddressFromNav,
+  getProvenStarKey,
   type SurfaceNav,
   type SystemNav,
 } from '@cf/scene';
@@ -75,9 +76,9 @@ export interface EngineeringResearchDefinition {
   readonly materialCost: Readonly<Record<string, number>>;
   readonly stardustCost: number;
   readonly prerequisiteId: ResearchId | null;
-  /** No v2 consumer may be claimed until that exact behavior is ported and
-      tested. The catalogue remains inspectable while purchase fails closed. */
-  readonly consumerStatus: 'unavailable';
+  /** Availability means this exact behavior has a deterministic consumer.
+      Other catalogue rows remain inspectable while purchase fails closed. */
+  readonly consumerStatus: 'available' | 'unavailable';
 }
 
 const RESEARCH_PRESENTATION: Readonly<Record<ResearchId, Readonly<{
@@ -331,7 +332,7 @@ const ENGINEERING_PLANS = new WeakSet<object>();
 export interface EngineeringActionPlan<TResult> {
   readonly schema: typeof ENGINEERING_OPERATION_SCHEMA;
   readonly status: 'planned';
-  readonly operation: 'mine-world' | 'skim-star' | 'fabricate-fixed';
+  readonly operation: 'mine-world' | 'skim-star' | 'purchase-research' | 'fabricate-fixed';
   readonly receiptOrdinal: number;
   readonly previousRevision: number;
   readonly nextRevision: number;
@@ -767,7 +768,7 @@ export const ENGINEERING_RESEARCH_CATALOGUE: readonly EngineeringResearchDefinit
       ...RESEARCH_PRESENTATION[id],
       materialCost: sink.materialCost,
       stardustCost: sink.stardustCost,
-      consumerStatus: 'unavailable' as const,
+      consumerStatus: id === 'scan1' ? 'available' as const : 'unavailable' as const,
     };
   }),
 );
@@ -789,7 +790,7 @@ export interface EngineeringResearchQuote {
     missing: number;
   }>[];
   readonly missingStardust: number;
-  readonly consumerStatus: 'unavailable';
+  readonly consumerStatus: 'available' | 'unavailable';
 }
 
 export type ResearchRefusalReason =
@@ -800,6 +801,59 @@ export type ResearchRefusalReason =
 
 export interface ResearchRefusal extends EngineeringRefusal<ResearchRefusalReason> {
   readonly quote: EngineeringResearchQuote;
+}
+
+export interface ResearchPurchaseConsumption {
+  readonly materials: readonly EngineeringQuantity[];
+  readonly stardust: number;
+}
+
+export interface ResearchPurchaseResult {
+  readonly researchId: 'scan1';
+  readonly quote: EngineeringResearchQuote;
+  /** The outer Arc 2 inventory transaction must consume this exact bill in
+      the same CAS that publishes `nextState`. */
+  readonly consume: ResearchPurchaseConsumption;
+}
+
+export interface ResearchPurchaseInput {
+  readonly state: EngineeringStateV2;
+  readonly researchId: ResearchId;
+  readonly assets: EngineeringResearchAssets;
+  readonly receiptOrdinal: number;
+}
+
+function ownEnumerableDataEntries(
+  value: unknown,
+  label: string,
+): readonly (readonly [string, unknown])[] {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)
+    || Object.getPrototypeOf(value) !== Object.prototype) {
+    throw new TypeError(`${label} must be an exact plain data object`);
+  }
+  const result: Array<readonly [string, unknown]> = [];
+  for (const key of Reflect.ownKeys(value)) {
+    if (typeof key !== 'string') throw new TypeError(`${label} has a symbol key`);
+    const descriptor = Object.getOwnPropertyDescriptor(value, key);
+    if (!descriptor || !Object.hasOwn(descriptor, 'value') || descriptor.enumerable !== true) {
+      throw new TypeError(`${label}.${key} must be an enumerable data property`);
+    }
+    result.push([key, descriptor.value] as const);
+  }
+  return result;
+}
+
+function exactPlainDataValues(
+  value: unknown,
+  expectedKeys: readonly string[],
+  label: string,
+): Readonly<Record<string, unknown>> {
+  const entries = ownEnumerableDataEntries(value, label);
+  if (entries.length !== expectedKeys.length
+    || entries.some(([key]) => !expectedKeys.includes(key))) {
+    throw new TypeError(`${label} has unknown or missing fields`);
+  }
+  return Object.freeze(Object.fromEntries(entries));
 }
 
 function checkedQuantityMap(
@@ -831,23 +885,59 @@ const MATERIAL_IDS = new Set<string>(LEGACY_MATERIAL_IDS_V1);
 const ITEM_IDS = new Set<string>(LOOT_CATALOGUE_V1.map(({ id }) => id));
 const SIGNATURE_IDS = new Set<string>(LEGACY_SIGNATURE_IDS_V1);
 
-export function planResearchPurchase(
-  stateValue: EngineeringStateV2,
-  researchId: ResearchId,
-  assetsValue: EngineeringResearchAssets,
-): ResearchRefusal {
-  const state = checkedState(stateValue);
-  if (typeof researchId !== 'string' || !RESEARCH_IDS.includes(researchId)) {
-    throw new RangeError('engineering research id is not recognized');
+function checkedResearchQuantityMap(value: unknown): Readonly<Record<string, number>> {
+  const result: Record<string, number> = {};
+  const entries = [...ownEnumerableDataEntries(value, 'research materials')]
+    .sort(([left], [right]) => codeUnitCompare(left, right));
+  for (const [id, quantity] of entries) {
+    if (!MATERIAL_IDS.has(id)) throw new RangeError(`research materials contains unknown id ${id}`);
+    if (!Number.isSafeInteger(quantity)
+      || (quantity as number) < 0 || (quantity as number) > MAX_MATERIAL_COUNT) {
+      throw new RangeError(`research materials ${id} must be a bounded non-negative integer`);
+    }
+    result[id] = quantity as number;
   }
-  const definition = ENGINEERING_RESEARCH_CATALOGUE.find(({ id }) => id === researchId)!;
-  const materials = checkedQuantityMap(assetsValue?.materials, MATERIAL_IDS, 'research materials');
-  if (!Number.isSafeInteger(assetsValue?.stardust)
-    || assetsValue.stardust < 0 || assetsValue.stardust > MAX_ASSET_COUNT) {
+  return Object.freeze(result);
+}
+
+function canonicalResearchAssets(value: unknown): EngineeringResearchAssets {
+  const source = exactPlainDataValues(value, ['materials', 'stardust'], 'research assets');
+  const materials = checkedResearchQuantityMap(source.materials);
+  const stardust = source.stardust;
+  if (!Number.isSafeInteger(stardust)
+    || (stardust as number) < 0 || (stardust as number) > MAX_ASSET_COUNT) {
     throw new RangeError('research stardust must be a bounded non-negative integer');
   }
+  return deepFreeze({ materials, stardust: stardust as number });
+}
+
+function researchSuccessor(state: EngineeringStateV2, researchId: 'scan1'): EngineeringStateV2 {
+  return successorState(state, (draft) => {
+    draft.research.push(researchId);
+    draft.research.sort((left, right) => RESEARCH_IDS.indexOf(left) - RESEARCH_IDS.indexOf(right));
+  });
+}
+
+export function planResearchPurchase(
+  input: ResearchPurchaseInput,
+): EngineeringActionPlan<ResearchPurchaseResult> | ResearchRefusal {
+  const source = exactPlainDataValues(
+    input,
+    ['state', 'researchId', 'assets', 'receiptOrdinal'],
+    'research purchase input',
+  );
+  const state = checkedState(source.state as EngineeringStateV2);
+  const researchIdValue = source.researchId;
+  if (typeof researchIdValue !== 'string'
+    || !RESEARCH_IDS.includes(researchIdValue as ResearchId)) {
+    throw new RangeError('engineering research id is not recognized');
+  }
+  const researchId = researchIdValue as ResearchId;
+  const receiptOrdinal = checkedReceiptOrdinal(source.receiptOrdinal);
+  const definition = ENGINEERING_RESEARCH_CATALOGUE.find(({ id }) => id === researchId)!;
+  const assets = canonicalResearchAssets(source.assets);
   const missingMaterials = Object.entries(definition.materialCost).flatMap(([id, required]) => {
-    const available = materials[id] ?? 0;
+    const available = assets.materials[id] ?? 0;
     return available < required ? [{ id, required, available, missing: required - available }] : [];
   });
   const owned = state.research.includes(researchId);
@@ -855,7 +945,7 @@ export function planResearchPurchase(
     && !state.research.includes(definition.prerequisiteId)
     ? definition.prerequisiteId
     : null;
-  const missingStardust = Math.max(0, definition.stardustCost - assetsValue.stardust);
+  const missingStardust = Math.max(0, definition.stardustCost - assets.stardust);
   const quote: EngineeringResearchQuote = deepFreeze({
     id: researchId,
     owned,
@@ -863,16 +953,226 @@ export function planResearchPurchase(
     missingPrerequisiteId,
     missingMaterials,
     missingStardust,
-    consumerStatus: 'unavailable',
+    consumerStatus: definition.consumerStatus,
   });
-  const reason: ResearchRefusalReason = owned
-    ? 'already-owned'
-    : missingPrerequisiteId !== null
-      ? 'prerequisite-missing'
-      : missingMaterials.length > 0 || missingStardust > 0
-        ? 'insufficient-assets'
-        : 'consumer-unavailable';
-  return deepFreeze({ status: 'refused', reason, quote });
+  if (owned) return deepFreeze({ status: 'refused', reason: 'already-owned', quote });
+  if (missingPrerequisiteId !== null) {
+    return deepFreeze({ status: 'refused', reason: 'prerequisite-missing', quote });
+  }
+  if (missingMaterials.length > 0 || missingStardust > 0) {
+    return deepFreeze({ status: 'refused', reason: 'insufficient-assets', quote });
+  }
+  if (definition.consumerStatus === 'unavailable' || researchId !== 'scan1') {
+    return deepFreeze({ status: 'refused', reason: 'consumer-unavailable', quote });
+  }
+
+  const nextState = researchSuccessor(state, researchId);
+  const consume: ResearchPurchaseConsumption = deepFreeze({
+    materials: quantities(mapFromRecord(definition.materialCost)),
+    stardust: definition.stardustCost,
+  });
+  const result: ResearchPurchaseResult = deepFreeze({ researchId, quote, consume });
+  return planned('purchase-research', receiptOrdinal, state, nextState, result, {
+    sourceKey: `research:${researchId}`,
+    assets: fingerprint('research-assets-v1', JSON.stringify(assets)),
+    definition: fingerprint('research-definition-v1', JSON.stringify(definition)),
+    result,
+  });
+}
+
+export const WORLD_MINERAL_REVEAL_SCHEMA = 'cf-v2-world-mineral-reveal/v1' as const;
+
+export type WorldMineralRevealLevel = 'withheld' | 'orbit' | 'grounded';
+export type WorldMineralGradeKind = 'ordinary' | 'biome' | 'cosmic' | 'exceptional';
+
+export interface WorldMineralResolvedGrade {
+  readonly kind: WorldMineralGradeKind;
+  readonly materialId: string;
+  readonly tier: number;
+}
+
+/** Read model only. This projection is deliberately not accepted by the
+ * mining planner; a registered SurfaceNav plus the registered opportunity
+ * remain the action authority. */
+export interface WorldMineralRevealProjection {
+  readonly schema: typeof WORLD_MINERAL_REVEAL_SCHEMA;
+  readonly status: 'projected';
+  readonly sourceKey: string;
+  readonly revealLevel: WorldMineralRevealLevel;
+  readonly deepScannersOwned: boolean;
+  readonly authorizesMining: false;
+  readonly ordinaryDeposits: readonly string[] | null;
+  readonly biomeVein: string | null;
+  readonly cosmicVein: string | null;
+  readonly exceptionalVein: string | null;
+  readonly resolvedGrades: readonly WorldMineralResolvedGrade[] | null;
+  readonly reservePulls: number | null;
+  readonly extractionsTaken: number | null;
+  readonly pullsRemaining: number | null;
+}
+
+export type WorldMineralRevealRefusalReason =
+  | 'current-location-unproven'
+  | 'current-system-mismatch'
+  | 'current-world-mismatch'
+  | 'earth-protected'
+  | 'biosphere-present';
+
+export interface WorldMineralRevealInput {
+  readonly state: EngineeringStateV2;
+  readonly opportunity: WorldOpportunitySnapshot;
+  readonly currentNav: SystemNav | SurfaceNav;
+}
+
+const WORLD_MINERAL_REVEALS = new WeakSet<object>();
+const MATERIAL_TIER_1 = new Set(['Ti', 'Cr', 'W', 'CH4', 'NH3', 'He3']);
+const MATERIAL_TIER_2 = new Set(['Ag', 'Au', 'Pt', 'Li', 'Co', 'Nd']);
+const MATERIAL_TIER_3 = new Set(['Ir', 'U', 'Th']);
+const MATERIAL_TIER_5 = new Set(['Pm', 'Vg', 'Pz']);
+const MATERIAL_TIER_7 = new Set(['Pls', 'Crn']);
+const MATERIAL_TIER_8 = new Set(['Pro', 'Pri']);
+const MATERIAL_TIER_9 = new Set(['Voe', 'Chr', 'Dkm']);
+
+function materialBaseTier(materialId: string): number {
+  if (MATERIAL_TIER_1.has(materialId)) return 1;
+  if (MATERIAL_TIER_2.has(materialId)) return 2;
+  if (MATERIAL_TIER_3.has(materialId)) return 3;
+  if (MATERIAL_TIER_5.has(materialId)) return 5;
+  if (MATERIAL_TIER_7.has(materialId)) return 7;
+  if (MATERIAL_TIER_8.has(materialId)) return 8;
+  if (MATERIAL_TIER_9.has(materialId)) return 9;
+  return 0;
+}
+
+function groundedResolvedGrades(
+  opportunity: WorldOpportunitySnapshot,
+): readonly WorldMineralResolvedGrade[] {
+  const worldBoost = opportunity.rawTier >= 8 ? 1 : 0;
+  const result: WorldMineralResolvedGrade[] = opportunity.deposits.map((materialId) => ({
+    kind: 'ordinary',
+    materialId,
+    tier: Math.min(6, materialBaseTier(materialId) + worldBoost),
+  }));
+  if (opportunity.biomeVein !== null) {
+    result.push({
+      kind: 'biome',
+      materialId: opportunity.biomeVein,
+      tier: Math.min(6, materialBaseTier(opportunity.biomeVein) + worldBoost),
+    });
+  }
+  if (opportunity.cosmicVein !== null) {
+    result.push({
+      kind: 'cosmic',
+      materialId: opportunity.cosmicVein,
+      tier: materialBaseTier(opportunity.cosmicVein),
+    });
+  }
+  if (opportunity.exceptionalVein !== null) {
+    result.push({
+      kind: 'exceptional',
+      materialId: opportunity.exceptionalVein,
+      tier: Math.min(6, materialBaseTier(opportunity.exceptionalVein) + 1),
+    });
+  }
+  return deepFreeze(result);
+}
+
+function registeredMineralReveal(
+  value: Omit<WorldMineralRevealProjection, 'schema' | 'status' | 'authorizesMining'>,
+): WorldMineralRevealProjection {
+  const projection: WorldMineralRevealProjection = deepFreeze({
+    schema: WORLD_MINERAL_REVEAL_SCHEMA,
+    status: 'projected',
+    authorizesMining: false,
+    ...value,
+  });
+  WORLD_MINERAL_REVEALS.add(projection);
+  return projection;
+}
+
+export function isWorldMineralRevealProjection(
+  value: unknown,
+): value is WorldMineralRevealProjection {
+  return typeof value === 'object'
+    && value !== null
+    && WORLD_MINERAL_REVEALS.has(value)
+    && (value as WorldMineralRevealProjection).schema === WORLD_MINERAL_REVEAL_SCHEMA;
+}
+
+/** Reveal exactly what the current location permits. Orbit requires owned
+ * Deep Scanners and still withholds grades, special veins, reserves, and
+ * extraction progress. Ground truth is inspectable only on that exact world.
+ * Neither result is mining authority. */
+export function projectWorldMineralReveal(
+  input: WorldMineralRevealInput,
+): WorldMineralRevealProjection | EngineeringRefusal<WorldMineralRevealRefusalReason> {
+  if (!isEngineeringState(input.state)) {
+    throw new TypeError('world mineral reveal requires registered EngineeringState authority');
+  }
+  if (!isWorldOpportunitySnapshot(input.opportunity)) {
+    throw new TypeError('world mineral reveal requires a registered world opportunity snapshot');
+  }
+
+  const currentWorld = canonicalCF1WorldAddressFromNav(input.currentNav);
+  if (currentWorld.ok) {
+    if (currentWorld.address.key !== input.opportunity.key) {
+      return deepFreeze({ status: 'refused', reason: 'current-world-mismatch' });
+    }
+    if (input.opportunity.source.planetSeed === 133) {
+      return deepFreeze({ status: 'refused', reason: 'earth-protected' });
+    }
+    if (input.opportunity.source.biosphereKey !== 'none') {
+      return deepFreeze({ status: 'refused', reason: 'biosphere-present' });
+    }
+    const deepScannersOwned = input.state.research.includes('scan1');
+    const prior = input.state.worlds.find(({ key }) => key === input.opportunity.key);
+    const extractionsTaken = Math.min(
+      prior?.extractionsTaken ?? 0,
+      input.opportunity.reservePulls,
+    );
+    return registeredMineralReveal({
+      sourceKey: input.opportunity.key,
+      revealLevel: 'grounded',
+      deepScannersOwned,
+      ordinaryDeposits: input.opportunity.deposits,
+      biomeVein: input.opportunity.biomeVein,
+      cosmicVein: input.opportunity.cosmicVein,
+      exceptionalVein: input.opportunity.exceptionalVein,
+      resolvedGrades: groundedResolvedGrades(input.opportunity),
+      reservePulls: input.opportunity.reservePulls,
+      extractionsTaken,
+      pullsRemaining: input.opportunity.reservePulls - extractionsTaken,
+    });
+  }
+
+  const currentSystem = canonicalCF1StarAddressFromNav(input.currentNav);
+  if (currentSystem.ok) {
+    if (getProvenStarKey(input.opportunity.address.star) !== currentSystem.address.key) {
+      return deepFreeze({ status: 'refused', reason: 'current-system-mismatch' });
+    }
+    if (input.opportunity.source.planetSeed === 133) {
+      return deepFreeze({ status: 'refused', reason: 'earth-protected' });
+    }
+    if (input.opportunity.source.biosphereKey !== 'none') {
+      return deepFreeze({ status: 'refused', reason: 'biosphere-present' });
+    }
+    const deepScannersOwned = input.state.research.includes('scan1');
+    return registeredMineralReveal({
+      sourceKey: input.opportunity.key,
+      revealLevel: deepScannersOwned ? 'orbit' : 'withheld',
+      deepScannersOwned,
+      ordinaryDeposits: deepScannersOwned ? input.opportunity.deposits : null,
+      biomeVein: deepScannersOwned ? input.opportunity.biomeVein : null,
+      cosmicVein: null,
+      exceptionalVein: null,
+      resolvedGrades: null,
+      reservePulls: null,
+      extractionsTaken: null,
+      pullsRemaining: null,
+    });
+  }
+
+  return deepFreeze({ status: 'refused', reason: 'current-location-unproven' });
 }
 
 export interface FixedFabricationAssets extends FixedRecipeInventory {
