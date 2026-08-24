@@ -42,6 +42,7 @@ import {
   validCompendiumBrowserAuthority,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
+  CandidateObservationError,
   evaluateCandidateExpression, evaluateProfile, installBrokenBaselineThumbObserver,
   installBrokenBaselineInitialListArm,
   sealBrokenBaselineInitialListObservation,
@@ -915,14 +916,61 @@ export function candidateRowPointExpression(logicalId) {
     const left=Math.max(r.left,sr.left,0)+inset,right=Math.min(r.right,sr.right,innerWidth)-inset;
     const top=Math.max(sr.top,0),bottom=Math.min(sr.bottom,innerHeight);
     if(right<=left||r.top<top-0.5||r.bottom>bottom+0.5)return null;
-    const x=(left+right)/2,y=(r.top+r.bottom)/2;
-    const hit=document.elementFromPoint(x,y)?.closest?.('[data-cid]');
-    return hit===e?{x,y}:null})()`;
+    const xs=[(left+right)/2,left+(right-left)/4,right-(right-left)/4];
+    const ys=[(r.top+r.bottom)/2,r.top+(r.height/4),r.bottom-(r.height/4)];
+    for(const y of ys)for(const x of xs){
+      const hit=document.elementFromPoint(x,y)?.closest?.('[data-cid]');
+      if(hit===e)return {x,y};
+    }
+    return null})()`;
 }
 
 export function validCandidateRowPointExpression(source, logicalId) {
   return typeof source === 'string' && typeof logicalId === 'string' && logicalId.length > 0
     && source === candidateRowPointExpression(logicalId);
+}
+
+/* Virtual rows can pass a geometry check and then move when ResizeObserver's
+   deferred render applies newly measured offsets. A click receipt cannot repair
+   a press that landed after that move. Reposition through the ordinary native
+   scroll path, consume the deferred render boundary, re-prove thumbnail
+   settlement, and accept only the same owned point on both sides of that
+   boundary. The bounded repeat is positioning work, never a retried click. */
+export async function settleCandidateRowActivationPoint({
+  sessionId, logicalId, scrollToIndex, waitReady, evaluate, maxAttempts = 4,
+}) {
+  assert(typeof sessionId === 'string' && sessionId
+    && typeof logicalId === 'string' && logicalId
+    && typeof scrollToIndex === 'function' && typeof waitReady === 'function'
+    && typeof evaluate === 'function'
+    && Number.isSafeInteger(maxAttempts) && maxAttempts >= 1 && maxAttempts <= 8,
+  'candidate row settlement dependencies are invalid');
+  const expression = candidateRowPointExpression(logicalId);
+  let last = null;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    await scrollToIndex(sessionId);
+    const before = await evaluate(
+      sessionId, expression, `row ${logicalId} pre-render point ${attempt}`,
+    );
+    await evaluate(sessionId,
+      'new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))',
+      `row ${logicalId} deferred-layout settlement ${attempt}`);
+    await waitReady(sessionId);
+    const after = await evaluate(
+      sessionId, expression, `row ${logicalId} post-render point ${attempt}`,
+    );
+    last = { attempt, before, after };
+    if (before && after && Number.isFinite(before.x) && Number.isFinite(before.y)
+      && Number.isFinite(after.x) && Number.isFinite(after.y)
+      && Math.abs(before.x - after.x) <= 0.5
+      && Math.abs(before.y - after.y) <= 0.5) {
+      return Object.freeze({ x: after.x, y: after.y });
+    }
+  }
+  throw new CandidateObservationError(
+    'product-unanswerable',
+    `row ${logicalId}: exact row never owned a render-stable activation point (${JSON.stringify(last)})`,
+  );
 }
 
 /* Native search replacement is evidence, not setup convenience. The hidden
@@ -1291,14 +1339,20 @@ async function collectProfile({
       type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
   };
-  const rowPoint = async (sessionId, logicalId) => {
+  const clickRow = async (sessionId, logicalId) => {
     const expression = candidateRowPointExpression(logicalId);
     assert(validCandidateRowPointExpression(expression, logicalId),
       `${profile}: row activation expression was invalid`);
-    return await waitValue(sessionId, `row ${logicalId}`, expression);
-  };
-  const clickRow = async (sessionId, logicalId) => {
-    const point = await rowPoint(sessionId, logicalId);
+    const point = await settleCandidateRowActivationPoint({
+      sessionId, logicalId,
+      scrollToIndex: async (ownedSessionId) => {
+        const wanted = fixture.rows.findIndex(([candidateId]) => candidateId === logicalId);
+        assert(wanted >= 0, `${profile}: row activation identity is absent from the fixture`);
+        await scrollToIndex(ownedSessionId, wanted);
+      },
+      waitReady: (ownedSessionId) => waitListReady(ownedSessionId, 1500),
+      evaluate,
+    });
     await sendStage(`row ${logicalId} mouse press`, 'Input.dispatchMouseEvent', {
       type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
