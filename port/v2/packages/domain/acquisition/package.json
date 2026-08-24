@@ -1,0 +1,9 @@
+{
+  "name": "@cf/domain-acquisition",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Arc 4 truthful catalogue, creature, specimen, discovery, and canonical biosphere ownership state.",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@cf/scene": "*" }
+}
