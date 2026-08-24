@@ -5,7 +5,10 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
   LEGACY_ENGINEERING_SEED_MIRROR_SCHEMA,
+  SCENE_ENGINEERING_ADDRESS_RESOLVER,
   createLegacyEngineeringSeedResolver,
+  decodeEngineeringState,
+  encodeEngineeringState,
   migrateLegacyEngineeringState,
   type EngineeringStateV2,
 } from '@cf/domain-opportunity';
@@ -98,7 +101,10 @@ function loadout(items: readonly (readonly [string, number])[] = []) {
   return read.loadout;
 }
 
-function exhaustedLoadout(items: readonly (readonly [string, number])[] = []) {
+function loadoutAtRevision(
+  revision: number,
+  items: readonly (readonly [string, number])[] = [],
+) {
   const prepared = prepareArc2LootLegacyMigration({
     extensions: {},
     legacy: { items: items.map(([id, count]) => [id, count]), equip: {}, equipAff: {} },
@@ -108,7 +114,7 @@ function exhaustedLoadout(items: readonly (readonly [string, number])[] = []) {
   const carrier = prepared.extensions.inventory?.['arc2.loot'];
   if (!carrier) throw new Error('loot carrier fixture was absent');
   const value = JSON.parse(carrier.json) as { inventory: { revision: number } };
-  value.inventory.revision = 0xffff_ffff;
+  value.inventory.revision = revision;
   const read = readArc2EngineeringLoadout({
     ...prepared.extensions,
     inventory: {
@@ -118,6 +124,22 @@ function exhaustedLoadout(items: readonly (readonly [string, number])[] = []) {
   });
   if (read.kind !== 'loaded') throw new Error(`exhausted loadout fixture was ${read.kind}`);
   return read.loadout;
+}
+
+function stateWithAutoExtractorCursor(
+  address: CanonicalCF1WorldAddress,
+  collectedThroughActivePlayMs: number,
+): EngineeringStateV2 {
+  const value = JSON.parse(encodeEngineeringState(state({
+    worlds: [{ address, count: 2 }],
+  }))) as {
+    worlds: Array<{ autoExtractorCursor: unknown }>;
+  };
+  value.worlds[0]!.autoExtractorCursor = {
+    schema: 'cf-v2-recurring-accrual-cursor/v1',
+    collectedThroughActivePlayMs,
+  };
+  return decodeEngineeringState(JSON.stringify(value), SCENE_ENGINEERING_ADDRESS_RESOLVER);
 }
 
 const economy = Object.freeze({
@@ -163,6 +185,28 @@ describe('Engineering panel production read model', () => {
     expect(Object.isFrozen(model.fabricationGroups[0]?.recipes)).toBe(true);
   });
 
+  it('projects positive Auto-Extractor work only from the persisted active-play cursor', () => {
+    const mars = world(MARS);
+    const model = projectEngineeringPanelReadModel({
+      ship: ship([['autoext', 1]]),
+      nav: surface(mars),
+      engineering: stateWithAutoExtractorCursor(mars, 0),
+      loadout: loadout([['autoext', 1]]),
+      economy,
+      activePlayMs: 1_800_000,
+    });
+    expect(model.mining).toMatchObject({ status: 'ready', autoExtractorDue: 3 });
+    const noElapsed = projectEngineeringPanelReadModel({
+      ship: ship([['autoext', 1]]),
+      nav: surface(mars),
+      engineering: stateWithAutoExtractorCursor(mars, 1_800_000),
+      loadout: loadout([['autoext', 1]]),
+      economy,
+      activePlayMs: 1_800_000,
+    });
+    expect(noElapsed.mining.autoExtractorDue).toBe(0);
+  });
+
   it('prioritizes unavailable research consumers while exposing exact owned costs', () => {
     const mars = world(MARS);
     const model = projectEngineeringPanelReadModel({
@@ -180,6 +224,8 @@ describe('Engineering panel production read model', () => {
         { id: 'Fe', label: 'Iron', required: 6, owned: 0 },
         { id: 'Si', label: 'Silicon', required: 4, owned: 0 },
       ]);
+    expect(model.research.find(({ id }) => id === 'drive3')?.costs.prerequisite)
+      .toMatchObject({ id: 'drive2', label: 'Antimatter Drive', owned: true });
   });
 
   it('separates protected Earth from a ready registered remnant corona with exact HP risk', () => {
@@ -233,12 +279,23 @@ describe('Engineering panel production read model', () => {
 
     const inventoryExhausted = projectEngineeringPanelReadModel({
       ship: ship([]), nav: surface(mars), engineering: state(),
-      loadout: exhaustedLoadout(), economy, activePlayMs: 0,
+      loadout: loadoutAtRevision(0xffff_ffff), economy, activePlayMs: 0,
     });
     expect(inventoryExhausted.mining.status).toBe('ready');
     expect(inventoryExhausted.research.find(({ id }) => id === 'scan1')?.status).toBe('available');
     expect(inventoryExhausted.fabricationGroups.flatMap(({ recipes }) => recipes)
       .find(({ baseId }) => baseId === 'plate')).toMatchObject({
+      status: 'unavailable', reason: 'Inventory record revision is exhausted.',
+    });
+
+    const oneRevisionLeft = projectEngineeringPanelReadModel({
+      ship: ship([]), nav: surface(mars), engineering: state(),
+      loadout: loadoutAtRevision(0xffff_fffe), economy, activePlayMs: 0,
+    });
+    expect(oneRevisionLeft.fabricationGroups.flatMap(({ recipes }) => recipes)
+      .find(({ baseId }) => baseId === 'plate')?.status).toBe('available');
+    expect(oneRevisionLeft.fabricationGroups.flatMap(({ recipes }) => recipes)
+      .find(({ baseId }) => baseId === 'rig1')).toMatchObject({
       status: 'unavailable', reason: 'Inventory record revision is exhausted.',
     });
   });
