@@ -40,28 +40,28 @@ const latestHostedFailureEvidence = Object.freeze({
 });
 const currentEvidence = [
   {
-    runId: '20260823-pr34-row-activation-candidate4',
-    file: 'PR34_COMPENDIUM_ROW_ACTIVATION_CANDIDATE4_20260823.json.gz',
-    rawSha256: '16b1a4ce399c85270768ed9fb72aba810551816f2c4e79293f4ac48772e6005e',
-    gzipSha256: '54a56a09710f92cec811a26a8c0ba4493c8d80a6dc8ceebde775097fe6ba36a9',
+    runId: '20260823-pr34-render-stable-row-candidate1',
+    file: 'PR34_COMPENDIUM_RENDER_STABLE_CANDIDATE1_20260823.json.gz',
+    rawSha256: '2a87db5c6d67b78a1d8613060e93e8e46e53a38a495cd62af703f64fd13cb0b3',
+    gzipSha256: '3bf1ef33584d4fa77f51b332c6355d0a55a94b672f52c1c5373de90eada7382e',
   },
   {
-    runId: '20260823-pr34-row-activation-candidate5b',
-    file: 'PR34_COMPENDIUM_ROW_ACTIVATION_CANDIDATE5B_20260823.json.gz',
-    rawSha256: 'f07bb4452317f9ba7b4a5eb5fc1fa19f79d93de595dfa38f36ae4790d8fdba5a',
-    gzipSha256: '39857545f3ba9a9c7068b6cf2ee49987b10e8e1f38c8ac7c37a1dcf11a7ed725',
+    runId: '20260823-pr34-render-stable-row-candidate2',
+    file: 'PR34_COMPENDIUM_RENDER_STABLE_CANDIDATE2_20260823.json.gz',
+    rawSha256: '4f23b2db0f8ba7120275ac050151ca4e596fb6d55e39f30bf3689823c6d7e7fa',
+    gzipSha256: 'dc7cec2db4830ab5028c5b791ccabb72871162db233b45958c2648e378eec051',
   },
   {
-    runId: '20260823-pr34-row-activation-candidate6',
-    file: 'PR34_COMPENDIUM_ROW_ACTIVATION_CANDIDATE6_20260823.json.gz',
-    rawSha256: 'da4429ca04d72c63806d4dee92423bb06ce234c9cf43c1b5a6a02d328f6827b4',
-    gzipSha256: '2e86982c5a75a5fa68af19eada2254c4dee923affbd5736cb4b5577e24cccc6b',
+    runId: '20260823-pr34-render-stable-row-candidate3',
+    file: 'PR34_COMPENDIUM_RENDER_STABLE_CANDIDATE3_20260823.json.gz',
+    rawSha256: 'd2fcddff69bb777d652434398b6f67d3f02b8f211b62b2f39ba917bdd79a27d8',
+    gzipSha256: '00023b0e9891b193d2f339d11e48e1fe3df0eac79da845088d153caa13dda010',
   },
 ] as const;
 const currentBaselineEvidence = Object.freeze({
-  file: 'PR34_COMPENDIUM_ROW_ACTIVATION_BASELINE1_SAMPLE_20260823.json.gz',
-  rawSha256: '621755c66c819955d20619f8205f2d6fa2116423c40405d6e3cdc77ac201544e',
-  gzipSha256: '43d528e059b6fa31d5f7ff2d4ea0ee1916be106f18c8a51b6ebb80c304475534',
+  file: 'PR34_COMPENDIUM_RENDER_STABLE_BASELINE1_SAMPLE_20260823.json.gz',
+  rawSha256: '3577838d266429cca76ab9c45edfc1f3eaea86c4e7a44c4b685e11271fec37a1',
+  gzipSha256: 'cde48fda0f1053b857f79d6818063bf48310019f701052ca1715cf83c87c16dc',
 });
 const historicalCertificationEvidence = Object.freeze({
   file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_CERTIFICATION_20260823.json.gz',
@@ -71,7 +71,7 @@ const historicalCertificationEvidence = Object.freeze({
   rawSha256: 'd1ea225b913c28a2b9110538d064e3df6609582dc94c875f62a622998ac55071',
   gzipSha256: '8e09255b616f9539a8dee5e180df00c8f03d211f3da7eac82529397a6f3b1966',
 });
-const currentCertificationEvidence = Object.freeze({
+const supersededRowActivationCertificationEvidence = Object.freeze({
   file: 'PR34_COMPENDIUM_ROW_ACTIVATION_CERTIFICATION_20260823.json.gz',
   runId: '20260823-pr34-row-activation-certification',
   sourceCommit: '7de42c6bb02f4c7af26053fa7a4cf45f5fbdc777',
@@ -190,19 +190,19 @@ const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
 }> = {
   phone: {
     candidate: [
-      '5b84eef5ff686168ca85f2ba3d3eab9fa3e6476dd64879658446487751e366cd',
-      '783ae168e1f49b300f8c0c704b1fe35dca2e9f54a3c8c811cc4af77c3886c5d5',
-      '94318e9901bef551e221d766b4b89713588183f36407bed7d4da35caaa6622d6',
+      '0f0366ec259ee7471fd6618490109ec0b6ffbd2ad93fce082040bcd113bfed11',
+      '9f520f7e57b48acd64a18d2bda161a65139c9dd5ec6986fb68ee091d6c21dcfd',
+      '7e5a2d7f05df7d937e9bf7d1793a534ec57929098f241d936608042e0358e88f',
     ],
-    baseline: 'be05017489c7c53cf287628d38dec6ecae76f2592319478f3b701ec2adcb0e53',
+    baseline: 'fa2c8514a3ddf430ce41b420e32554e4714a2db5452cd79b7d133347812a00e9',
   },
   desktop: {
     candidate: [
-      'c0f35e9c8da1e735f7c80eab7fd96d611d6bc4d624558eba19083c82bf739a35',
-      '323c5db34730af1beb4c5244cc0348f47e794c973fc662354b667cd0c1e34800',
-      'bc3fccad989d67e6908a016f5a539e5b7a469c586d48a33c76937c92b2d7721f',
+      'd3f85fe5b28be446eb684d14403a7348487914b2b3ca588676f92de82dc10401',
+      '44ef3454ab88d9797b33c8f5a24260760693d766d71e5306bbaf7ff4afb3fc0e',
+      '9f66eaa639b72cad056db3cbbe48f8e5fc50f7ab9f0a38f57d03fbd284e8d111',
     ],
-    baseline: '5a88514fb66d9b6ae1476834d08f5b63973c2e71908097590887669a6c0a1a5a',
+    baseline: 'bc85f581159363007e487e18ac6b73cb3817a021af207f96725af5b171fe9408',
   },
 };
 
@@ -764,22 +764,22 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(replay.every((outcome) => outcome.status === 'pass')).toBe(true);
   });
 
-  it('retains and replays the current independent exact-budget certificate', () => {
+  it('retains the superseded row-activation certificate without rebinding it', () => {
     if (activeBudget.status === 'calibration-required') return;
     const compressed = fs.readFileSync(path.join(
-      v2Root, '..', '..', 'audits', currentCertificationEvidence.file,
+      v2Root, '..', '..', 'audits', supersededRowActivationCertificationEvidence.file,
     ));
     expect(createHash('sha256').update(compressed).digest('hex'))
-      .toBe(currentCertificationEvidence.gzipSha256);
+      .toBe(supersededRowActivationCertificationEvidence.gzipSha256);
     const raw = gunzipSync(compressed);
     expect(createHash('sha256').update(raw).digest('hex'))
-      .toBe(currentCertificationEvidence.rawSha256);
+      .toBe(supersededRowActivationCertificationEvidence.rawSha256);
     const report = JSON.parse(raw.toString('utf8')) as RetainedLinuxReport & {
       expectedOutcomes: string[];
     };
     expect(report).toMatchObject({
       schema: 'cf-v2-compendium-memory-report/v1',
-      runId: currentCertificationEvidence.runId,
+      runId: supersededRowActivationCertificationEvidence.runId,
       status: 'pass',
       lifecycle: { schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete' },
       findings: [],
@@ -788,15 +788,17 @@ describe('Arc 1A Compendium budget authority', () => {
     });
     expect(report.source.begin).toEqual(report.source.end);
     expect(report.source.begin).toMatchObject({
-      commit: currentCertificationEvidence.sourceCommit,
+      commit: supersededRowActivationCertificationEvidence.sourceCommit,
       state: 'committed',
       statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
     });
-    expect(report.inputs.budget).toBe(currentCertificationEvidence.budgetSha256);
-    expect(fileSha256(budgetPath)).toBe(currentCertificationEvidence.budgetSha256);
+    expect(report.inputs.budget).toBe(supersededRowActivationCertificationEvidence.budgetSha256);
+    expect(fileSha256(budgetPath)).not.toBe(
+      supersededRowActivationCertificationEvidence.budgetSha256,
+    );
     expect(report.budget).toMatchObject({
       status: 'active',
-      sha256: currentCertificationEvidence.budgetSha256,
+      sha256: supersededRowActivationCertificationEvidence.budgetSha256,
       browserAuthority: EXPECTED_BROWSER_AUTHORITY,
       browserAuthorityMatch: true,
       producerAuthorityMatch: true,
