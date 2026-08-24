@@ -1,6 +1,29 @@
 # Celestial Frontier — Determinism Discipline
 
-> **2026-08-15 F2 canonical-ingress overlay (current code):** Deterministic
+> **2026-08-24 F4 + Arc 2 outcome-determinism overlay — current local implementation:**
+> `SessionRNGState` now persists one uint32 seed, isolated semantic-domain counters and one global
+> save-lifetime receipt ordinal inside protected `player/f4.authority` v1. `planSessionRNGDraw()` is
+> detached: only the product transaction can commit its next state, so a failed/stale write exposes
+> neither a new result nor a reload reroll. That transaction writes product state/extensions, next
+> F4 authority, immutable receipt and next F3 revision under one lease fence. Product namespaces
+> cannot shadow the F4 carrier.
+>
+> Deterministic Arc 2 choices—Equip, Unequip, Salvage and pending-claim—use the sibling no-RNG
+> transaction. They reserve the next global receipt ordinal but copy the seed and every domain
+> counter exactly, proving that inspection/action order does not move later outcome streams. Every
+> `GearInstance` generation function receives a checked plan/seed and stable source-action + local
+> ordinal; catalogue, migration, recipe, salvage, inspect and economy replay contain no hidden
+> entropy or wall clock. Legacy earned-affix occurrence is reproduced only as pure evidence; the
+> port does not invent a new drop gate or claim-time roll.
+>
+> The audited 24 legacy `Math.random()` physical sites remain classified as 14 outcome and 10
+> presentation calls. This inventory plus the live authority seam does **not** mean every legacy
+> gameplay call site has migrated: Arc 3+ writers still own their semantic settlement, and audio/FX
+> presentation never share an outcome counter. Current focused tests and real local Inventory browser
+> paths are green; end-of-campaign exact-head/hosted evidence and all later outcome writers remain open.
+
+> **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the F4 overlay
+> does not supersede it):** Deterministic
 > coordinates are not self-authenticating. Every public or persisted galaxy,
 > star and planet candidate admitted to navigation is regenerated from the
 > production WorldGen source, with each child beneath its already proven parent.
@@ -23,7 +46,7 @@
 > does not wire SessionRNG, outcome receipts, ownership ledgers or a persisted
 > action ordinal. It also does not establish browser/CI or human Gate completion.
 
-> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** The hardened
+> **2026-08-13 v2 next-arc overlay — historical pre-F4 plan:** The hardened
 > `@cf/domain-sessionrng` service is currently a tested primitive only; no live v2
 > combat, loot, breeding or expedition action consumes/persists it. A browser
 > session seed that changes on reload is not sufficient reward authority because
@@ -68,7 +91,7 @@
 > Static generation remains independent of browser timing.
 
 **STATUS:** legacy sections match `main.js` + `tools/` as of 2026-08-12; the
-dated v2 overlays match `port/v2` as of 2026-08-15. The 2026-07-30 pass added §6's
+current dated v2 overlay matches `port/v2` as of 2026-08-24. The 2026-07-30 pass added §6's
 "WHEN art is drawn is not fingerprint input", corrected the layout gate to 10
 viewports, and registered `bootperf.js` + `simrun dom` in the battery.
 **Purpose:** the single law that governs the whole game — every world, genome, descriptor, portrait, duel and share code is a pure function of seeds, so the same address regenerates byte-for-byte on every device, forever, with no server.

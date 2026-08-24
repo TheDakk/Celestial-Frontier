@@ -12,12 +12,46 @@ now owns the separate four-stage static inspection foundation described below. *
 `resolvedDepositTier`, grounded cards grade each vein for that world; the §24 power-curve pass ran — archetype
 band restored via the balance sim, two dead relics retuned as sidegrades, sim joined the deploy gate.)*
 **Build phase:** the legacy Forge economy and additive ship image are bundled in v1.8.9;
-the current v2 read-only ship presentation is recorded below. V2 Cargo/Inventory/Forge writers,
-Research, Fabrication and upgrade actions remain open.
-**Current v2 overlay matches code as of:** 2026-08-23.
+the current v2 read-only ship presentation and bounded exact-instance Inventory are recorded below.
+V2 Cargo-material writers, Forge/Research/Fabrication, new loot sources and upgrade actions remain open.
+**Current v2 overlay matches code as of:** 2026-08-24.
 **Related:** `RARITY_UNIVERSAL.md`, `FORGE_AND_DISCOVERY.md`, `ECONOMY_LOOT_CRAFTING.md`.
 
-> **2026-08-22 Arc 1C v2 materials/gear boundary — current implementation:** clean
+> **2026-08-24 Arc 2 v2 materials/gear boundary — current local implementation:**
+> `@cf/domain-loot` now owns the exact v1.8.9 62-definition catalogue: 9 parts, 6 components,
+> 5 permanent ship systems, and 42 slotted gear/relic bases across 9 slots, including the 9
+> Signature Relics. It also owns all 47 material ids, all 6 literal legacy affix definitions and
+> magnitude math, exact fixed recipes/prerequisites/Signatures, graph/cycle/salvage audits, and the
+> two legacy earned-imbue paths as pure compatibility evidence. A legacy role-less worn affix is
+> never relabelled as an authored prefix or suffix.
+>
+> Each migrated slotted copy becomes one bounded, versioned `GearInstance` with stable
+> `instanceId`, construction, exact base/slot/effects, inherited legacy affix, source-action
+> provenance, generation seed/ordinal, protection state and equipped binding. The strict
+> `inventory/arc2.loot` v1 carrier holds `GearInventory` plus stackable counts. Migration is
+> all-or-nothing: capacity or extension-byte overflow produces a lossless `legacy-protected`
+> inspection carrier; corrupt, future, unknown, partial, or over-bounds evidence cannot become a
+> writable prefix. The v4 `items` / `equip` / `equipAff` values are now a compatibility mirror of
+> this carrier, including legacy Field Training replacement.
+>
+> The real v2 Inventory presents bounded 48-row pages, slot/rarity/status/text filters, one
+> focus-owned exact-item detail, conditional effect wording, provenance, and candidate-versus-
+> equipped deltas without a synthetic power score. Equip, Unequip, Salvage and pending-claim settle
+> through one F3/F4 revision/lease/receipt transaction; these deterministic actions reserve the
+> global receipt ordinal without consuming a SessionRNG domain draw. Salvage preserves the direct-
+> material legacy rule and explicit equipped/locked/favorite safeguards. The UI publishes only
+> after durability and reload-converges without a second write after a post-commit publication fault.
+>
+> This is **not** the complete Forge or finished loot policy. Fixed recipes are inspectable authority,
+> but no v2 Fabricator/Research/Cargo-material spend is exposed. The source-neutral economy ledger
+> reports sources/rates as `arc3-deferred`; new loot occurrence/table policy, authored natural-affix
+> compatibility, crafted modifiers/drawbacks, upgrades, sockets, vendor/bulk actions, pacing/recovery,
+> and bespoke v2 Inventory portraits remain open. Local focused tests, one no-retry real Slice Smoke,
+> and one 12-viewport Glass Matrix are green on Edge `151.0.4129.101`; HUMAN item/compare/art review,
+> the end-of-campaign Compendium measurement reseal, hosted/integration evidence, release and
+> deployment remain open.
+
+> **2026-08-22 Arc 1C v2 materials/gear boundary — historical pre-Arc-2 implementation:** clean
 > product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds only the read-only ship
 > inspection projection. Pure, recursively frozen `ShipVisualState` consumes normalized `items`,
 > `ascCh`, and livery seed `0x5111`; `ascStageOf` remains the one capability-stage authority.
@@ -47,7 +81,7 @@ Research, Fabrication and upgrade actions remain open.
 > `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
 > `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
 > is unchanged. This documentation descendant is not the exact certified head. Hosted
-> terminal-green integration, HUMAN silhouette judgment, Cargo/Inventory/Forge,
+> terminal-green integration, HUMAN silhouette judgment, Cargo/Forge,
 > Research/Fabrication/upgrades, release and deployment remain open.
 
 > **2026-08-13 v2 next-arc overlay — historical pre-Arc-1C boundary:** V2
@@ -415,6 +449,11 @@ Rules:
 > `_ITEM_KIND`), matching the Materials layout. The Gear tab keeps its Equipment header + Salvage All. All fp-safe
 > (presentation only). Guarded by smoke §21 sentinels.
 
+> **Current v2 distinction (2026-08-24):** the Arc 2 Inventory implements only exact slotted-gear
+> ownership and actions. It does not pretend that the legacy three-tab Cargo/Fabricator surface has
+> ported. Stackable catalogue outputs remain versioned counts inside the Arc 2 carrier; world
+> materials and production crafting stay with the later engineering writer.
+
 ## 22. Art direction — FULL BESPOKE (Nick, 2026-07-23, LOCKED)
 
 Every material, every gear piece, and every ship tier is **hand-drawn painterly art at the same HD bar as
@@ -515,6 +554,12 @@ remembered-fold preference per group-type across worlds, creatures, and items. E
 6. **Sockets / links / upgrade** rows — kept **OPEN**. (Only the affix list folds; nothing else does.)
 7. **Requirements** (station tier, tech) if any.
 8. italic **flavor text** at the bottom.
+
+> **Current v2 distinction (2026-08-24):** the exact-item detail/compare sheet now implements the
+> truthful subset it can source—base, level, quality, rarity, exact base/legacy effects, conditional
+> context, provenance, equipped binding, and action controls. Crafted-modifier/drawback, upgrades,
+> sockets, authored roll ranges and bespoke ornamental frames remain unavailable until their named
+> policy/art owners land; the sheet does not fabricate empty rows as capability.
 
 **Frame:** a per-tier ornamental **frame around the whole window** (the ladder's normal/magic/rare/unique-
 equivalent borders, `[[rarity_universal]]` §3.11), readable without color (a11y).

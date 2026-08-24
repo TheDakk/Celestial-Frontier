@@ -1,6 +1,44 @@
 # Celestial Frontier — Save System
 
-> **2026-08-16 D-TRAIN-1 source-truth overlay (current source; local browser
+> **2026-08-24 F3/F4 + Arc 2 persistence overlay — current local implementation:** v4 remains the
+> supported compatibility codec, while v5 partitions its canonical fields into owner-named
+> `player`, `creatures`, `catalog`, `inventory`, and `settings` rows. Migration checks the exact v4
+> primary and absent v5 marker, then commits split rows, the exact pre-migration bytes, journal,
+> schema marker and first revision together; it never deletes or overwrites the source v4 primary.
+> Complete reads are bracketed by the revision. Portable v5 export/replacement carries validated,
+> bounded extension namespaces without flattening them into or losing them through the v4 codec.
+>
+> The revisioned repository owns one lease-fenced mutation: expected revision, optional immutable
+> receipt ordinal, product row writes, receipt and next revision commit together. Stale writer,
+> duplicate receipt, lost lease and storage failure are explicit terminal outcomes; no caller
+> retries a losing mutation. `player/f4.authority` v1 contains the visible/answerable/lease-owned
+> `activePlayMs` total and SessionRNG seed, isolated domain counters, and one global save-lifetime
+> ordinal. A random product plan writes its next RNG state only with its outcome. Deterministic Arc 2
+> Equip/Unequip/Salvage/pending-claim increments only the receipt ordinal, not a domain counter.
+> Product extension writes cannot overwrite the protected F4 namespace.
+>
+> `inventory/arc2.loot` v1 is the exact-instance authority. Its current form is either complete
+> `GearInventory` plus stackable counts or a lossless `legacy-protected` source when truthful
+> migration exceeds capacity/extension-byte bounds. No partial expansion becomes writable;
+> malformed, future, unknown and over-bounds carriers remain protected. The legacy-v4
+> `items` / `equip` / `equipAff` fields are a compatibility mirror derived from the carrier.
+>
+> Field Training now respects that dual representation. A genuine legacy checkpoint that actually
+> restores gear derives/replaces the Arc 2 carrier inside the same checked state/extension/F4
+> transaction. Current `{view}` or source-deferred restore preserves the carrier; corrupt/future
+> evidence refuses. After durability the app verifies/publishes the committed Inventory controller,
+> or reloads without a second write if publication cannot converge. This extends—not broadens—the
+> checkpoint's established eleven-field ownership.
+>
+> Focused Arc 2/F3/F4 tests and the TypeScript/build gates are green. Local one-attempt Slice Smoke
+> and full-certifying 12-viewport Glass Matrix are terminal PASS on Edge `151.0.4129.101`, with
+> exact raw/runtime/DOM carrier, action, stale/storage, modal/focus and Training-replacement controls.
+> They bind dirty working-tree inputs and grant no exact-head/hosted/integration/real-save Gate C,
+> preview, HUMAN, release or deployment authority. Broader real-browser schema-upgrade/two-tab
+> evidence for later product writers and Nick's real veteran save remain open.
+
+> **2026-08-16 D-TRAIN-1 source-truth overlay (historical foundation; current where the
+> 2026-08-24 carrier overlay does not supersede it; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
 > human authority remain open):** v1.8.9 Field Training wrote an exact eleven-field checkpoint,
 > `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}`. It was not a whole save.
@@ -151,7 +189,7 @@
 > migration or revisions/CAS, creates no ownership or reward receipt, migrates
 > no local ownership/progression ledger, and bumps no schema/version/release.
 
-> **2026-08-13 v2 next-arc overlay — PLANNED, not current code:** The current
+> **2026-08-13 v2 next-arc overlay — historical pre-F3/F4 plan:** The then-current
 > v2 repository still persists one exported save blob and has no revision/CAS
 > authority; multiple tabs are last-writer-wins. `@cf/domain-sessionrng` exists as
 > a hardened primitive but gameplay does not yet persist a save-lifetime action
@@ -616,8 +654,8 @@
 > deployment/version authority follows.
 > No save-format or version change is involved.
 
-**STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlays
-match `port/v2` as of 2026-08-15. ⚠ Read the v1.8.7 section (a reverted
+**STATUS:** legacy sections match `main.js` as of 2026-07-31; the current v2 overlay
+matches `port/v2` as of 2026-08-24. ⚠ Read the v1.8.7 section (a reverted
 `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`,
 harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
@@ -747,6 +785,15 @@ reasoning has to be revisited.
 > release — not by better hardening, but by making `t` stop mattering.
 
 ## 1. Overview
+
+**Current v2 persistence topology (2026-08-24):** the imported/exported legacy product envelope
+remains canonical v4 compatibility data, while the live repository schema is v5 with split owner rows,
+revision, migration snapshot/journal and independently versioned extension carriers. The protected
+`player/f4.authority` and `inventory/arc2.loot` namespaces are not v4 fields and therefore must pass
+through every v5 read/write/replacement explicitly. Arc 2 is authoritative once present; its projected
+`items` / `equip` / `equipAff` values keep unported v4 readers coherent. This persistence-schema version
+is not `GAME_VERSION`, a production release, or permission to discard the v4 migration codec.
+
 Module `SaveSystem [app]` (main.js 10000–10359) owns a debounced write, a hardened
 load, and the reset/wipe paths. The save is **local only** — there is no server and
 the universe needs no saving. Since the v1.5 fresh start the key is **`cfcc_save_v2`**;

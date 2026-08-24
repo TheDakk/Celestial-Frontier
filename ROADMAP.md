@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-24 · FULL LOCAL CAMPAIGN · F3/F4 + ARC 2–5 + AUDIO ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-24 · FULL LOCAL CAMPAIGN · ARC 3 ACTIVE ◀◀◀
 
 ### Current integration state
 
@@ -92,26 +92,53 @@ remain in force.
    does not waive any human criterion. Arc 5.5 remains the separate combat-model HUMAN gate before
    Arc 6.
 
-**F3 batch 1 (local, 2026-08-24):** `@cf/persistence` now has the first reusable exact-once
-primitive: one checked transaction compares the observed save revision and an optional immutable
-SessionRNG receipt ordinal, then commits split-store DTO writes, the receipt, and next revision
-together. Two same-parent writers yield one commit plus an explicit stale/duplicate outcome; neither
-retries or partially lands a losing mutation. The canonical store list now includes `receipts`, and
-the IndexedDB schema target is v2 so `onupgradeneeded` can create it for existing v1 databases.
-Focused memory outcomes and all three TypeScript configurations pass. This is substrate only: no live
-v4 blob migration, writer, or F3 completion claim yet.
+### Local campaign state — Arc 2 implementation boundary
 
-**F4 clock kernel (local, 2026-08-24):** the pure progression package now owns a persisted
-`activePlayMs` clock driven only by injected monotonic time. It accrues only while the document is
-visible, the app is answerable, and the F3 tab lease is owned; hidden, frozen, and losing-tab time
-all remain zero. Reload, wall-clock wind, invalid/backward source, and cap controls pass. App/save
-wiring still waits on the completed F3 lease and v5 migration.
+- F3/F4 now provide the live v5 split-store/revision/lease authority used by the app: the protected
+  `player/f4.authority` carrier persists the visible/answerable active-play clock and SessionRNG,
+  and product writers commit state, extension rows, next authority, one immutable receipt, and the
+  next revision in one fenced CAS. Random outcomes retain the same plan after a failed write.
+  Deterministic Inventory operations reserve only the global receipt ordinal; they do not consume
+  or perturb any per-domain RNG counter.
+- Arc 2's canonical loot foundation contains all 62 v1.8.9 definitions—20 stackables and 42 slotted
+  bases across nine slots—plus the exact six legacy affixes, fixed recipes, salvage rules, legacy
+  imbue evidence, inspect/compare/filter projections, and a source-neutral economy trace. It never
+  invents a source rate: production opportunity/faucet ownership remains explicitly `arc3-deferred`.
+- `inventory/arc2.loot` v1 is the strict exact-instance authority. A bounded legacy hold migrates
+  all-or-nothing to `GearInventory` plus stackable counts; capacity/extension-byte overflow remains
+  a lossless `legacy-protected` inspection carrier. Corrupt/future/partial carriers fail closed.
+  The legacy-v4 `items` / `equip` / `equipAff` fields are now only its compatibility mirror.
+- The real Inventory panel is registered in the desktop rail and exact 260px 5×2 ten-control phone
+  dock. It has bounded 48-row pages, filters, exact-item detail/comparison with conditional wording,
+  pending rewards, focus-owned modal behavior, salvage confirmation, and durable Equip, Unequip,
+  Salvage, and pending-claim actions. State publishes only after the one receipt-bearing transaction
+  commits; stale, duplicate, protected, storage-failed, and post-durable convergence paths do not
+  optimistically mutate the UI or reroll.
+- Training replacement is coherent with the new authority. A genuine legacy checkpoint that owns
+  gear derives and replaces the Arc 2 carrier in the same checked state/extension/F4 transaction;
+  current-view or source-deferred restoration preserves it, and corrupt/future evidence refuses.
+  Post-durable publication verifies the committed carrier or reloads without a second write.
+- Focused Arc 2/F3/F4 tests are green (16 files / 149 tests), all root/app/worker TypeScript programs
+  and the Vite build are green. One real `smoke:ci` run is terminal PASS on Edge
+  `151.0.4129.101` (`20260824102021537-86225-972f651deaa3`, 239,546 ms, zero findings/retries),
+  and one full-certifying Glass Matrix is terminal PASS on the same browser (61,039 ms, 12/12
+  viewports, 78/78 planned/executed controls, none blocked/omitted, zero findings/instrument
+  failures/retries). Both bind their recorded dirty working-tree inputs; neither is exact-head,
+  hosted, HUMAN, integration, preview, release, or deployment authority.
+- Arc 2 remains **[PARTIAL]** at the program level. Authored natural-affix compatibility/pools,
+  crafted modifier/drawback, upgrade/socket, production loot-source and Fabricator/Research policy;
+  source/rate and recovery pacing; and phone/desktop HUMAN item/compare readability remain open.
+  Those facts are refused or reported unavailable rather than fabricated.
+- The full local `npm test` currently has one deliberate authority red: changing the v2 dependency
+  graph moved the Compendium measurement-input digest from sealed `6a961df8…` to `e6e6bbc…`.
+  Its product/ruler ceilings were not weakened. Recalibrate and reseal Compendium once, after the
+  final multi-Arc dependency set is frozen, then run the complete final local battery.
 
-**F4 RNG transaction kernel (local, 2026-08-24):** `SessionRNGState` now carries one global
-save-lifetime ordinal in addition to isolated per-domain counters. `planSessionRNGDraw` returns the
-same value/ordinal on a failed-write retry and advances only its detached `nextState`; Arc writers
-must commit that state with an F3 receipt and the product mutation. Exhausted/malformed ordinals fail
-closed. No live outcome has been migrated until the v5 app transaction boundary consumes this seam.
+**Active work:** Arc 3 engineering/opportunity authority is now in progress. Its first boundary must
+use canonical F2 provenance, tiers 0–14, finite lifeless-world opportunities, F4 active-play
+settlement computed from the prior cursor (never caller-forged), and one F3/F4 receipt/CAS. It must
+preserve valid sparse veteran technologies without granting missing prerequisites, and migrate any
+legacy seed-only cursor only through an explicit collision-refusing canonical resolver.
 
 **Arc 0 `D-CFB-1` kernel (local, 2026-08-24):** legacy `CFB-` remains the exact v1
 challenger/exhibit contract; a versioned `CFB2-` owned-creature codec now round-trips one bounded,
@@ -154,23 +181,22 @@ capture/audio targeting must consume the full side, never infer authority from t
 - One authorization remains intentionally explicit: a new hosted attempt for a new
   head. It controls Actions spend; it is not a second merge approval.
 
-### Fresh-session start
+### In-session continuation / fresh-session recovery
 
-1. Verify the exact app/OS/root/branch row and clean worktree; then
-   `git fetch origin`.
+1. Continue only in the Codex macOS root on `openai/mac`. The local campaign worktree is intentionally
+   dirty while Arc 3 is active; do not fetch/merge, switch branches, push, or run GitHub workflows over it.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
-   `GITHUB_ACTIONS_BUDGET.md`; inspect the F3 scope in
-   `port/V2_PROGRAM_ROADMAP.md` before proposing or editing F3 work.
-3. Start the approved campaign with a bounded F3 persistence batch. Preserve the Arc 1 proof
-   boundaries, current HUMAN evidence list, and all F3/F4 no-go rules; commit locally after each
-   complete owned batch and do not push until the campaign review head is ready.
+   `GITHUB_ACTIONS_BUDGET.md`; use `port/V2_PROGRAM_ROADMAP.md` §5.2 for the Arc 3 contract.
+3. Resume the bounded Arc 3 opportunity/engineering owner described above. Preserve the Arc 2
+   carrier and F3/F4 transaction boundaries; commit locally after the owned batch, then continue
+   through Arcs 4–5 and 7/8 without an intermediate push or hosted battery.
 4. Claude/Anthropic should receive merged work only by fetching `origin` and
    merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
    manual file copying. Nick does not need to open Claude now.
 
-**Current side:** Codex macOS is on `openai/mac`, locally fast-forwarded to merged `develop`
-`7a9f4c1…`; `origin/openai/mac` remains the contained PR #34 head until a later authorized final
-push. PR #34's render-stable repair passed hosted run `32681394532` and merged normally.
+**Current side:** Codex macOS is on `openai/mac`, based on merged `develop` `7a9f4c1…`, with the
+commit-preserving local campaign ahead and Arc 3 work in progress. `origin/openai/mac` remains the
+contained PR #34 head until a later exact final-head authorization.
 **GitHub step:** none.
 **Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
 **Actions budget:** `UNFROZEN`; PR #34 runs `32665404776` and `32677088518` remain consumed

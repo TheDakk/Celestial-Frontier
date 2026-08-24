@@ -1,6 +1,30 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-22 Arc 1C progression overlay — current implementation:** clean
+> **2026-08-24 F3/F4 + Arc 2 progression overlay — current local implementation:** the v5 app now
+> persists one protected F4 authority containing visible/answerable/lease-owned `activePlayMs` and
+> SessionRNG's seed, isolated domain counters, and global receipt ordinal. Hidden, frozen,
+> unanswered, lease-lost, backward and wall-clock-only intervals add zero. A product outcome and its
+> next authority/receipt/revision commit together; a failed write preserves the same planned roll.
+> Arc 2's deterministic Equip, Unequip, Salvage and pending-claim actions consume no domain roll and
+> reserve only the next receipt identity, so UI order cannot perturb later random outcomes.
+>
+> The exact-instance Inventory is live from the desktop rail and the phone's exact 260px 5×2
+> ten-control dock. It can inspect and conditionally compare migrated gear, then durably equip,
+> unequip, salvage or claim a pending item. It does not grant materials, research, reach, crafting,
+> random loot or a ship upgrade. Oversized legacy holds remain complete inspection-only evidence
+> rather than being truncated into false progression. Fixed recipe and economy-sink graphs are
+> inspectable development truth; their source model reports `arc3-deferred` and exposes no player
+> progression action.
+>
+> Genuine legacy Training completion also keeps the Arc 2 carrier aligned with its owned
+> `items` / `equip` / `equipAff` checkpoint fields under one checked transaction. Current-view and
+> source-deferred recovery preserve the carrier; corrupt/future evidence cannot mint gear. Local
+> focused tests plus one no-retry Slice Smoke and one 12-viewport Glass Matrix are terminal green on
+> Edge `151.0.4129.101`, but bind dirty working-tree inputs. Auto-Extractor source settlement,
+> remaining outcome-call-site migration, authored loot/craft progression and HUMAN comparison/pacing
+> remain open; no hosted, integration, Gate, release, version or deployment authority follows.
+
+> **2026-08-22 Arc 1C progression overlay — historical pre-Arc-2 implementation:** clean
 > product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds a read-only Shipyard
 > projection without adding a progression writer. `ShipVisualState` is recursively frozen and
 > derives only from normalized `items`, `ascCh`, and injected livery seed `0x5111`;
@@ -11,7 +35,7 @@
 > an owned named system.
 >
 > The Shipyard exposes four static SVG silhouettes and truthful chassis, provenance, installed
-> systems, and open/fitted hardpoints from the desktop right rail and phone 5×2 nine-control dock.
+> systems, and open/fitted hardpoints from the desktop right rail and then-nine-control 5×2 phone dock.
 > One DOM/SVG preview owner disposes on replace/close. It deliberately offers no Fabrication,
 > Research, upgrade, Cargo, reward, reach, or save mutation and creates no Pixi renderer or
 > `RenderTexture`. The Guide describes this capability as partial inspection only.
@@ -31,7 +55,7 @@
 > `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
 > `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
 > is unchanged. This docs descendant is not the exact certified head. Hosted terminal-green
-> integration, HUMAN silhouette judgment, Cargo/Inventory/Forge writers,
+> integration, HUMAN silhouette judgment, Cargo/Forge writers,
 > Fabrication/Research/upgrades, release and deployment remain open.
 
 > **2026-08-16 D-TRAIN-1 progression overlay (current source; local browser
@@ -168,7 +192,7 @@
 > replay may still receive its lesson event without receiving progression credit.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlay
-matches `port/v2` as of 2026-08-22, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
+matches `port/v2` as of 2026-08-24, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy

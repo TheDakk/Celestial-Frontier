@@ -1,12 +1,20 @@
 # Acceptance rubrics — what "done" means, per gate
 
-**Current implementation evidence refreshed:** 2026-08-22.
+**Current implementation evidence refreshed:** 2026-08-24.
 
 **Port Phase 0 / Gate A deliverable:** *"elevate `ART_DIRECTION.md`, `AUDIO.md`,
 `PROCESS_LAWS.md` and the system docs into acceptance rubrics."*
 
 A **description** says how the system works. A **rubric** says how you know the port got it
 right. This file converts the former into the latter, gate by gate.
+
+**Arc 2 evidence boundary (2026-08-24):** focused domain/persistence/app tests, all TypeScript
+programs, Vite, one real no-retry Slice Smoke and one full 12-viewport Glass Matrix are locally
+green for the exact-instance Inventory slice. The reports bind dirty working-tree inputs. The full
+suite intentionally remains red at the Compendium measurement-authority digest after the dependency
+graph changed; it is resealed once at the final multi-Arc head. Therefore the executable rows below
+name implemented criteria, not clean exact-head, hosted, integration, whole-Arc, whole-Gate, HUMAN,
+preview or release authority.
 
 ---
 
@@ -50,9 +58,11 @@ ever substitute for a person, and it is deliberately expensive.
 | `[EXEC-TODO]` | No uncontrolled clock or randomness in every port domain package | Root `validate.js` proves the legacy build; the complete recursive port equivalent and its injected violation control remain required |
 | `[EXEC]` | Multi-generation genome parity | `goldenseeds` covers `crossGenome` at 10,000 seeds |
 | `[EXEC]` | Combat-stat parity | `goldenseeds` covers `battleStats` |
-| `[EXEC-TODO]` | Economy table/formula/faucet parity | The 47-material/62-item/9-slot/6-affix source facts are documented, but complete executable manifests, golden affix vectors and real-action faucet outcomes are not covered |
+| `[EXEC]` | Legacy economy manifest/fixed-conversion facts are executable | `@cf/domain-loot` validates all 47 material ids, 62 definitions (20 stackable /42 slotted), 9 slots, 6 literal affixes and magnitude vectors, fixed recipe/prerequisite/Signature graph, recursive bills and salvage-cycle bounds. Focused Arc 2 tests are green. This is conversion/sink truth, not faucet or pacing truth |
+| `[EXEC-TODO]` | Economy source/formula/faucet parity | The source-neutral ledger deliberately reports `arc3-deferred`; real mining/skimming/capture/combat/mission faucets, rates, recovery and production settlement remain absent |
 | `[EXEC-TODO]` | **Raw/display rarity separation is an explicit conversion** | ⚠ ROADMAP 9g: the collapse currently lives in `GRADE_TIERS` **data**, with no test. Restoring the old names to rows 10–14 silently reverts every creature surface while `displayRarity` keeps clamping correctly and its tests keep passing. **The port must make this a function and test it.** |
-| `[EXEC-TODO]` | Outcome rolls draw from a seeded `SessionRNG` | The reviewer's §2.1 addition. 11 outcome rolls use bare `Math.random()`, so no capture can be pinned in a fixture and no bug report can be replayed |
+| `[EXEC]` | SessionRNG plans and exact-once product authority are persisted atomically | `player/f4.authority` carries the save-lifetime seed, isolated domain counters and global ordinal; the F3/F4 transaction commits product + next authority + receipt + revision or leaves the same plan replayable. Arc 2 no-RNG actions prove domain counters remain byte-equal while the ordinal advances |
+| `[EXEC-TODO]` | Every legacy outcome roll uses that authority through its real action | The exact 24-site audit classifies 14 outcome and 10 presentation calls. Arc 2's deterministic actions exercise the seam; later capture/care/combat/training outcome writers still require real-action migration and counter-perturbation controls |
 
 ## Gate C — save safety
 
@@ -63,7 +73,9 @@ ever substitute for a person, and it is deliberately expensive.
 | `[EXEC-TODO]` | `conq[].e` migration correct (absent ⇒ ready, clamped to `[0, EPOCH_BASE]`) | Not covered — `buildSave`/`loadSave` are app-layer and unreachable from the probe realm |
 | `[EXEC]` | Corrupt primary restores from valid backup without promoting bad bytes | `@cf/persistence` repository/import tests plus the live v2 smoke recovery path and destructive reset controls |
 | `[EXEC-TODO]` | Map-shaped progress/award records reject arrays and preserve durable one-time authority | Inject array-shaped `ascProg`/`chProg`/`prime`; exceed the old 4,000-key `xpFirsts` serialization window, reload, and prove no award re-arms |
-| `[EXEC-TODO]` | Every reward-bearing/destructive mutation is revision-checked and stale-tab safe | Same-parent breed, same-world settlement, capture spend, exact-instance salvage and mission claim controls must reject the stale second writer |
+| `[EXEC]` | Arc 2 exact-instance destructive/actions are revision-checked and stale-safe | Equip, Unequip, Salvage and pending-claim use one lease-fenced F3/F4 receipt/CAS; focused tests plus real Slice/Glass controls cover stale/duplicate/storage/protection/publication/reload convergence without retry |
+| `[EXEC]` | Arc 2 carrier migration/replacement is all-or-nothing and mirror-coherent | `inventory/arc2.loot` admits complete Inventory + stackables or lossless `legacy-protected`; corrupt/future/partial input refuses. Legacy Training gear restore replaces carrier + v4 mirror together; source-deferred/current-view preserve it |
+| `[EXEC-TODO]` | Every later reward-bearing/destructive mutation is revision-checked and stale-tab safe | Same-parent breed, same-world settlement, capture spend, craft, mission claim and combat settlement controls must reject the stale second writer; Arc 2 does not certify absent products |
 | **`[HUMAN]`** | **A REAL veteran save imports with creatures, worlds, stats, inventory, progression, audio settings and lineages preserved** | ⛔ **BLOCKED — no fixture exists.** A synthetic save is generated by the same code that reads it and proves close to nothing. Needs an export of Nick's iPhone save. **Gate C cannot close without it.** |
 
 ## Gate D — engine proof
@@ -128,9 +140,9 @@ ever substitute for a person, and it is deliberately expensive.
 | `[EXEC]` | Maximum-size Compendium mounts/paints only a bounded visible window and plateaus after warmup | Product virtualization, art ownership, focus/filter/detail/Close outcomes, and the owner→worker→painter graph are implemented. Exact run `32462323775` passed the complete changed-head battery and PR #32 merged at `d4ab7e6…`. PR #34 runs `32665404776` and `32677088518` later exposed native virtual-row ruler defects, not leaks. The second proves the first activation/receipt repair worked, then a Close/reopen point moved across the deferred render boundary and 112 passive observations could not reposition it. Collector `6d681d19…` now requires native-scroll repositioning and the same exact owned point before/after double-render plus thumbnail settlement before its one click. Measurement `6a961df8…`, activation `d21ba26…`, and active budget `faa160b3…` retain three 78/78 candidates, the paired 14-phone/13-desktop broken baseline, and unchanged numeric ceilings. Exact-budget run `20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification (raw/gzip `42753d5e…` / `a2ff5b00…`). Six-image HUMAN judgment remains separate, Arc-local Edge 151 does not repin Gate A, and no new hosted attempt is authorized. |
 | `[HUMAN]` | The maximum Compendium's 132px list art, 440px detail art, hierarchy and focus treatment read correctly on phone and desktop | **OUTSTANDING — not run.** Review six fresh run-bound list/detail/focus-pinned images. Automated geometry, reachability and resource evidence cannot certify visual quality or focus feel |
 | `[EXEC]` | Ship art, installed-system captions and travel reach derive from one normalized state | Product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` makes travel, captions, four SVG chassis, exact `array`/`autoext`/`cscoop` hardpoints and diagnostics consume one unsaved projection. Unit/integration/browser controls cover 64 normalized cases, all eight hardpoint permutations, reload-shaped reconstruction, imported-veteran fallback, friendly-alias rejection, deliberately mismatched selectors, one-preview ownership and real opener/Close state parity. Active repair source `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` passed the current scene-memory-v2 42/42 certification and named verifier under budget `5c8a6e75…`; `59530da…` / `3b71d14c…` remains historical. Terminal-green run `32646110946` then merged this evidence in PR #33. |
-| `[HUMAN]` | Inventory portrait and every ship stage read clearly at phone row, inspector and native scales | **OUTSTANDING.** The read-only Shipyard's four stages are now reviewable on phone/desktop, but automation cannot judge appeal or silhouette strength; the Inventory portrait remains future work. |
-| `[EXEC-TODO]` | Gear instances migrate, equip, salvage and persist by exact instance identity | legacy fixtures, fixed-point migration, duplicate-base distinct rolls, corrupt/future rows, inventory-full behavior |
-| `[EXEC-TODO]` | Loot is deterministic, compatible, bounded and impossible to reload-reroll or double-claim | golden table vectors + dispatch/Guardian receipts; injected claim-time roll, duplicate apply and incompatible affix controls |
+| `[HUMAN]` | Inventory item treatment and every ship stage read clearly at phone row, inspector and native scales | **OUTSTANDING.** Exact Inventory rows/detail/comparison and all four Shipyard stages are now reviewable, but automation cannot judge item-art hierarchy, conditional-copy comprehension, appeal or silhouette strength; the bespoke paper-doll/item-art layer remains open. |
+| `[EXEC]` | Gear instances migrate, equip, unequip, salvage, pending-claim and persist by exact identity | Strict codecs/fixed-point tests cover duplicate-base identity, equipped legacy affix ownership, corrupt/future rows, full-inventory pending state and lossless capacity/byte protection. Local real Smoke/Glass drive action publication, raw/runtime/DOM parity and reload; the evidence is dirty-input/local, not hosted or Gate closure |
+| `[EXEC-TODO]` | New loot is source-deterministic, authored-compatible and impossible to reload-reroll or double-claim | Stable instance/receipt construction and legacy vectors exist, but production occurrence pools/rates, natural-affix compatibility, crafted modifier/drawback, upgrade/socket tables and dispatch/Guardian receipts remain open. Injected claim-time roll, duplicate apply and incompatible-affix controls belong with those writers |
 | `[EXEC-TODO]` | Catalogue species and owned creatures are separate; every mutation targets a stable creature ID | duplicate-species companions, migration, breed/feed/combat/delete/assignment outcome tests |
 | `[EXEC-TODO]` | Tame/Scavenge/Sample are the finite acquisition writers for catalogue pages, specimens and owned fauna | real-action success/miss, Biosphere spend/recovery, genuinely-new reward, reload-reroll, duplicate creature and stale-tab controls |
 | `[EXEC-TODO]` | Companion missions use active play and exact-once transactional receipts | clock-wind, reload, double-click, write failure, inventory-full, wrong assignment and stale-tab/CAS controls |

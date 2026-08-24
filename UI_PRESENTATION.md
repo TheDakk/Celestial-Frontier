@@ -1,6 +1,33 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-22 v2 Arc 1C Shipyard/surface overlay — current source:** clean
+> **2026-08-24 v2 Arc 2 Inventory overlay — current local source:** **Inventory** is a registered
+> ordinary panel in the desktop rail and the phone dock. Adding it makes the exact compact contract
+> 260px, 5 columns × 2 rows, **ten controls**. The panel projects only the strict Arc 2 carrier and
+> pages at 48 rows; pending items stay pinned ahead of filtered held gear so a filter cannot hide an
+> unsettled reward. Query, slot, rarity and equipped/protected status are bounded read filters.
+> Duplicate base items retain distinct `instanceId` rows. A `legacy-protected` hold is readable but
+> has no destructive or equip action.
+>
+> Selecting an exact item opens one focus-owned detail sheet with base/construction axes, provenance,
+> equipped state, exact candidate-versus-equipped effect deltas and explicit conditional wording.
+> Its modal owner makes the background inert/`aria-hidden`, wraps Tab in both directions, restores
+> focus on Close, and cannot duplicate or retain a stale selected instance. Equip, Unequip, pending
+> claim and confirmed Salvage are explicit buttons. The sheet remains pending while one durable
+> F3/F4 action runs; it publishes only the committed carrier, reports stale/refused/storage outcomes
+> in its live region, and reload-converges after a post-durable publication fault without clicking or
+> writing again.
+>
+> The 2026-08-24 no-retry Slice Smoke is terminal PASS on Edge `151.0.4129.101` in 239,546 ms with
+> zero findings/retries. Full-certifying Glass is separately terminal PASS in 61,039 ms across 12/12
+> viewports, with 78/78 planned/executed negative controls, none blocked/omitted, and zero findings,
+> instrument failures or retries. The rulers independently mutate/remove carrier, raw authority,
+> runtime, DOM equipped state, duplicate/missing rows, focus/modal, conditional copy, protection,
+> action publication and convergence so equal wrong representations cannot agree green. Both bind
+> dirty working-tree inputs; they are not exact-head, hosted, HUMAN, integration, preview, release or
+> deployment evidence. Item-art/compare readability still needs HUMAN phone/desktop review, and no
+> Cargo/Fabricator/Research/vendor/bulk surface is implied.
+
+> **2026-08-22 v2 Arc 1C Shipyard/surface overlay — historical pre-Arc-2 source:** clean
 > product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds one real, read-only
 > **Shipyard — Inspection** panel to the established one-panel system. It opens from the desktop
 > right rail and the phone dock, whose exact compact contract is now 260px, 5 columns × 2 rows,
@@ -40,7 +67,7 @@
 > `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
 > `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
 > is unchanged. This documentation descendant is not the exact certified head. Hosted
-> terminal-green integration, release/deploy, Cargo/Inventory/Forge UI,
+> terminal-green integration, release/deploy, Cargo/Forge UI,
 > Fabrication/Research/upgrades, richer living previews, and HUMAN silhouette judgment remain open.
 
 > **2026-08-21 v2 Arc 1B scene-resource overlay (historical foundation; current where Arc 1C does not supersede it):** Arc 1B is
@@ -953,7 +980,7 @@
 > merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
-v2 overlay matches `port/v2` as of 2026-08-17. The addenda at the end preserve
+v2 overlay matches `port/v2` as of 2026-08-24. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson
