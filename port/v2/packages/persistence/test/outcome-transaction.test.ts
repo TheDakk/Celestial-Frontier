@@ -8,6 +8,7 @@ import {
   F4_AUTHORITY_NAMESPACE,
   V4_PRIMARY_KEY,
   createActivePlayPersistenceOwner,
+  createF4DeterministicProductTransactionOwner,
   F4_NO_RNG_PRODUCT_OPERATIONS,
   createF4OutcomeTransactionOwner,
   createF4NoRngProductTransactionOwner,
@@ -15,11 +16,13 @@ import {
   createRevisionedRepository,
   createTabLeaseClient,
   migrateStoredV4ToV5,
+  planF4DeterministicProductReceipt,
   planF4OutcomeDraw,
   readF4Authority,
   readSaveV5,
   type ContentRegistry,
   type F4OutcomeTransactionInput,
+  type F4DeterministicProductTransactionInput,
   type F4NoRngProductTransactionInput,
   type StorageBackend,
   type StorageCheck,
@@ -645,6 +648,170 @@ describe('@cf/persistence — F4 exact-outcome transaction owner', () => {
       expect(readF4Authority(loaded.extensions)).toEqual({
         kind: 'loaded',
         authority: { activePlayMs: 100, sessionRng: { seed: 0xC0FFEE, ordinal: 0, draws: {} } },
+      });
+    }
+  });
+});
+
+describe('@cf/persistence — deterministic product transaction owner', () => {
+  const engineeringCarrier = (owned: readonly string[]) => ({
+    version: 1,
+    json: JSON.stringify({ owned }),
+  });
+
+  it('atomically commits an arc-neutral action and advances only the global receipt ordinal', async () => {
+    const harness = await seededHarness(
+      createMemoryBackend(),
+      createSessionRNG(0xA3C3, { 'capture.success': 4, 'loot.rarity': 2 }, 9).state(),
+      250,
+      {
+        player: {
+          'arc3.engineering': engineeringCarrier(['drive1']),
+          'other.player': { version: 3, json: '{"keep":true}' },
+        },
+      },
+    );
+    const beforeEssence = harness.writable.state.essence;
+    const owner = createF4DeterministicProductTransactionOwner(
+      createRevisionedRepository(harness.backend),
+      REGISTRY,
+    );
+    const result = await owner.commit({
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 275 },
+      operation: 'research:drive2',
+      receiptKind: 'arc3-research',
+      now: NOW,
+      derive: ({ operation, receiptOrdinal, draft, extensions }) => {
+        expect(operation).toBe('research:drive2');
+        expect(receiptOrdinal).toBe(9);
+        expect(extensions).not.toBe(harness.writable.extensions);
+        draft.essence -= 25;
+        return {
+          state: draft,
+          witness: 'research:drive2:cost=25',
+          extensionWrites: [{
+            segment: 'player',
+            namespace: 'arc3.engineering',
+            carrier: engineeringCarrier(['drive1', 'drive2']),
+          }],
+        };
+      },
+    });
+
+    expect(result.kind).toBe('committed');
+    if (result.kind !== 'committed') return;
+    expect(result.revision).toBe(2);
+    expect(result.plan).toMatchObject({ operation: 'research:drive2', receiptOrdinal: 9 });
+    expect(result.receipt).toEqual({
+      ordinal: 9,
+      kind: 'arc3-research',
+      witness: 'research:drive2:cost=25',
+    });
+    expect(result.authority).toEqual({
+      activePlayMs: 275,
+      sessionRng: {
+        seed: 0xA3C3,
+        ordinal: 10,
+        draws: { 'capture.success': 4, 'loot.rarity': 2 },
+      },
+    });
+    expect(result.plan.currentAuthority.sessionRng.draws)
+      .toEqual(result.plan.nextSessionRng.draws);
+    expect(harness.writable.state.essence).toBe(beforeEssence);
+
+    const loaded = await readSaveV5(harness.backend, REGISTRY, NOW);
+    expect(loaded.kind).toBe('loaded');
+    if (loaded.kind !== 'loaded') return;
+    expect(loaded.state.essence).toBe(beforeEssence - 25);
+    expect(loaded.extensions.player?.['arc3.engineering'])
+      .toEqual(engineeringCarrier(['drive1', 'drive2']));
+    expect(loaded.extensions.player?.['other.player']).toEqual({
+      version: 3, json: '{"keep":true}',
+    });
+    expect(readF4Authority(loaded.extensions)).toEqual({
+      kind: 'loaded', authority: result.authority,
+    });
+    expect(await createRevisionedRepository(harness.backend).readReceipt(9))
+      .toEqual(result.receipt);
+  });
+
+  it('protects authority, bounds identity, and replays the same ordinal after storage failure', async () => {
+    const planned = planF4DeterministicProductReceipt(
+      authorityExtensions(77, { existing: 8 }, 12),
+      'fabricate:thermal',
+    );
+    expect(planned.kind).toBe('planned');
+    if (planned.kind !== 'planned') return;
+    expect(planned.plan.nextSessionRng).toEqual({
+      seed: 77, ordinal: 13, draws: { existing: 8 },
+    });
+    expect(planF4DeterministicProductReceipt(
+      authorityExtensions(77, {}, 0xFFFF_FFFF),
+      'fabricate:thermal',
+    )).toEqual({ kind: 'protected', reason: 'receipt-ordinal-exhausted' });
+    expect(planF4DeterministicProductReceipt({}, 'fabricate:thermal'))
+      .toEqual({ kind: 'protected', reason: 'authority-absent' });
+    expect(() => planF4DeterministicProductReceipt(
+      authorityExtensions(77, {}, 0),
+      'bad\noperation',
+    )).toThrow('deterministic product operation must be 1–96 printable characters');
+
+    const base = createMemoryBackend();
+    let failNext = false;
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        if (failNext && operations.some((operation) => operation.store === 'receipts')) {
+          failNext = false;
+          throw new Error('injected deterministic action failure');
+        }
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const harness = await seededHarness(
+      backend,
+      createSessionRNG(77, { existing: 8 }, 12).state(),
+      400,
+    );
+    const owner = createF4DeterministicProductTransactionOwner(
+      createRevisionedRepository(backend),
+      REGISTRY,
+    );
+    const input: F4DeterministicProductTransactionInput = {
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 425 },
+      operation: 'fabricate:thermal',
+      receiptKind: 'arc3-fabricate',
+      now: NOW,
+      derive: ({ draft }) => ({ state: draft, witness: 'fabricate:thermal:1' }),
+    };
+    failNext = true;
+    const failed = await owner.commit(input);
+    expect(failed).toMatchObject({
+      kind: 'storage-error',
+      message: 'injected deterministic action failure',
+      plan: { receiptOrdinal: 12 },
+    });
+    expect(await createRevisionedRepository(backend).revision()).toBe(1);
+    expect(await createRevisionedRepository(backend).readReceipt(12)).toBeUndefined();
+
+    const afterFailure = await readSaveV5(backend, REGISTRY, NOW);
+    expect(afterFailure.kind).toBe('loaded');
+    if (afterFailure.kind !== 'loaded') return;
+    const retry = await owner.commit({
+      ...input,
+      writable: { state: afterFailure.state, extensions: afterFailure.extensions },
+    });
+    expect(retry.kind).toBe('committed');
+    if (retry.kind === 'committed') {
+      expect(retry.plan.receiptOrdinal).toBe(12);
+      expect(retry.authority.sessionRng).toEqual({
+        seed: 77, ordinal: 13, draws: { existing: 8 },
       });
     }
   });

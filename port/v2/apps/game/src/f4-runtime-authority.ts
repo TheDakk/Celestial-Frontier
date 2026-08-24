@@ -11,12 +11,15 @@ import { createActivePlayClock, type ActivePlayClock } from '@cf/domain-progress
 import { createSessionRNG, type SessionRNGState } from '@cf/domain-sessionrng';
 import {
   createActivePlayPersistenceOwner,
+  createF4DeterministicProductTransactionOwner,
   createF4NoRngProductTransactionOwner,
   createF4OutcomeTransactionOwner,
   createTabLeaseClient,
   type ActivePlayCommitOutcome,
   type ContentRegistry,
   type F4AuthorityV1,
+  type F4DeterministicProductDeriveInput,
+  type F4DeterministicProductTransactionOutcome,
   type F4OutcomeDeriveInput,
   type F4OutcomeDerivation,
   type F4OutcomeTransactionOutcome,
@@ -98,6 +101,23 @@ export type F4RuntimeOutcomeCommitOutcome =
   })
   | { readonly kind: 'lease-unavailable' };
 
+export interface F4RuntimeActionInput {
+  readonly state: SaveStateV2;
+  readonly operation: string;
+  readonly receiptKind: string;
+  readonly codecNow: number;
+  readonly derive: (input: F4DeterministicProductDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4RuntimeActionCommitOutcome =
+  | Exclude<F4DeterministicProductTransactionOutcome, { readonly kind: 'committed' }>
+  | (Extract<F4DeterministicProductTransactionOutcome, { readonly kind: 'committed' }> & {
+    /** Canonical detached state that the caller may publish only after the
+        transaction reports committed. */
+    readonly state: SaveStateV2;
+  })
+  | { readonly kind: 'lease-unavailable' };
+
 export interface F4RuntimeProductInput {
   readonly state: SaveStateV2;
   readonly operation: F4NoRngProductOperation;
@@ -134,6 +154,10 @@ export interface F4RuntimeAuthority {
   /** Plan and commit one receipt-bearing product outcome under this
       controller's private revision, lease, active-play and RNG authority. */
   commitOutcome(input: F4RuntimeOutcomeInput): Promise<F4RuntimeOutcomeCommitOutcome>;
+  /** Commit an arc-neutral deterministic product action. It consumes one
+      exact-once receipt ordinal but never evaluates or advances a random
+      domain; the caller owns the semantic operation and receipt vocabulary. */
+  commitAction(input: F4RuntimeActionInput): Promise<F4RuntimeActionCommitOutcome>;
   /** Commit one exact-instance product action that consumes a receipt ordinal
       but no random draw. */
   commitProduct(input: F4RuntimeProductInput): Promise<F4RuntimeProductCommitOutcome>;
@@ -212,6 +236,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
   });
   const owner = createActivePlayPersistenceOwner(input.repository, input.registry);
   const outcomeOwner = createF4OutcomeTransactionOwner(input.repository, input.registry);
+  const actionOwner = createF4DeterministicProductTransactionOwner(input.repository, input.registry);
   const productOwner = createF4NoRngProductTransactionOwner(input.repository, input.registry);
 
   const enqueue = <T>(work: () => Promise<T>): Promise<T> => {
@@ -365,6 +390,37 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           receiptKind: outcomeInput.receiptKind,
           now: outcomeInput.codecNow,
           derive: outcomeInput.derive,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          extensions = outcome.saved.extensions;
+          sessionRng = copySessionRng(outcome.authority.sessionRng);
+          commits++;
+          return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    commitAction(actionInput: F4RuntimeActionInput): Promise<F4RuntimeActionCommitOutcome> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await actionOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state: actionInput.state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          operation: actionInput.operation,
+          receiptKind: actionInput.receiptKind,
+          now: actionInput.codecNow,
+          derive: actionInput.derive,
         });
         if (outcome.kind === 'committed') {
           revision = outcome.revision;
