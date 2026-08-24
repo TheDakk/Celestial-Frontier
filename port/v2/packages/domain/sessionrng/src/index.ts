@@ -2,8 +2,7 @@
    NEW code, deliberately not a lift).
 
    THE PROBLEM IT SOLVES: §16.2 makes the UNIVERSE reproducible; nothing makes
-   a PLAYER OUTCOME reproducible. Eleven outcome rolls in v1.8.9 (tryCapture,
-   openPicker, _descRoll, attemptContact, hazardFlavor, _tutGrant, _tutDuel, …)
+   a PLAYER OUTCOME reproducible. Fourteen outcome rolls in v1.8.9
    draw from bare Math.random(), so no test can pin a capture and no bug
    report can be replayed. Two named domains result:
      WorldRNG   — the existing @cf/domain-rand: seeded, pure, universe-shaping.
@@ -128,15 +127,64 @@ export function planSessionRNGDraw(state: SessionRNGState, domain: string): Plan
   });
 }
 
-/** The eleven v1.8.9 Math.random() call sites, as named domains — the Phase 2+
-    wiring replaces each bare call with sessionRng.roll(DOMAINS.x). Named here
-    so the wiring and the tests share one vocabulary. */
+/** One semantic counter per legacy gameplay/outcome roll. Presentation-only
+ * noise is deliberately excluded: reordering particles or audio must not move
+ * a player outcome. */
 export const DOMAINS = Object.freeze({
-  tryCapture: 'tryCapture',
-  openPicker: 'openPicker',
-  descRoll: '_descRoll',
-  attemptContact: 'attemptContact',
-  hazardFlavor: 'hazardFlavor',
-  tutGrant: '_tutGrant',
-  tutDuel: '_tutDuel',
+  contactSuccess: 'contact.success',
+  descentSuccess: 'descent.success',
+  descentDamage: 'descent.damage',
+  surveyHazard: 'survey.hazard',
+  captureCandidate: 'capture.candidate',
+  captureSuccess: 'capture.success',
+  bulkFeedOutcome: 'care.bulk-feed',
+  healOutcome: 'care.heal',
+  breedOutcome: 'care.breed',
+  feedOutcome: 'care.feed',
+  hazardFlavor: 'hazard.flavor',
+  trainingSpecimenSeed: 'training.specimen-seed',
+  trainingSpecimenVariation: 'training.specimen-variation',
+  trainingDuelSeed: 'training.duel-seed',
 });
+
+export interface LegacyOutcomeRngSite {
+  readonly id: string;
+  readonly domain: (typeof DOMAINS)[keyof typeof DOMAINS];
+  readonly legacyLine: number;
+  readonly occurrenceOnLine: number;
+  readonly owner: string;
+  readonly purpose: string;
+}
+
+/** Exact executable gameplay/outcome inventory in the frozen v1.8.9 source.
+ * `occurrenceOnLine` is one-based and distinguishes the two Training draws on
+ * line 23306. It is evidence for migration, not a license to retain bare RNG. */
+export const LEGACY_OUTCOME_RNG_SITES: readonly LegacyOutcomeRngSite[] = Object.freeze([
+  { id: 'contact-success', domain: DOMAINS.contactSuccess, legacyLine: 10720, occurrenceOnLine: 1, owner: 'contact', purpose: 'contact attempt succeeds' },
+  { id: 'descent-success', domain: DOMAINS.descentSuccess, legacyLine: 10982, occurrenceOnLine: 1, owner: 'descent', purpose: 'descent succeeds' },
+  { id: 'descent-damage', domain: DOMAINS.descentDamage, legacyLine: 10992, occurrenceOnLine: 1, owner: 'descent', purpose: 'descent damage amount' },
+  { id: 'survey-hazard', domain: DOMAINS.surveyHazard, legacyLine: 11837, occurrenceOnLine: 1, owner: 'survey', purpose: 'survey hazard occurs' },
+  { id: 'capture-candidate', domain: DOMAINS.captureCandidate, legacyLine: 12415, occurrenceOnLine: 1, owner: 'capture', purpose: 'capture candidate selection' },
+  { id: 'capture-success', domain: DOMAINS.captureSuccess, legacyLine: 12420, occurrenceOnLine: 1, owner: 'capture', purpose: 'capture succeeds' },
+  { id: 'bulk-feed-outcome', domain: DOMAINS.bulkFeedOutcome, legacyLine: 16592, occurrenceOnLine: 1, owner: 'care', purpose: 'bulk feed outcome' },
+  { id: 'heal-outcome', domain: DOMAINS.healOutcome, legacyLine: 16688, occurrenceOnLine: 1, owner: 'care', purpose: 'heal outcome' },
+  { id: 'breed-outcome', domain: DOMAINS.breedOutcome, legacyLine: 16704, occurrenceOnLine: 1, owner: 'care', purpose: 'breed outcome' },
+  { id: 'feed-outcome', domain: DOMAINS.feedOutcome, legacyLine: 16725, occurrenceOnLine: 1, owner: 'care', purpose: 'feed outcome' },
+  { id: 'hazard-flavor', domain: DOMAINS.hazardFlavor, legacyLine: 16800, occurrenceOnLine: 1, owner: 'hazard', purpose: 'hazard flavor selection' },
+  { id: 'training-specimen-seed', domain: DOMAINS.trainingSpecimenSeed, legacyLine: 23306, occurrenceOnLine: 1, owner: 'training', purpose: 'training specimen seed' },
+  { id: 'training-specimen-variation', domain: DOMAINS.trainingSpecimenVariation, legacyLine: 23306, occurrenceOnLine: 2, owner: 'training', purpose: 'training specimen variation' },
+  { id: 'training-duel-seed', domain: DOMAINS.trainingDuelSeed, legacyLine: 23321, occurrenceOnLine: 1, owner: 'training', purpose: 'training duel seed' },
+]);
+
+/** Exact presentation-only Math.random inventory in v1.8.9. The repeated line
+ * numbers intentionally preserve multiple executable calls on one line. */
+export const LEGACY_PRESENTATION_RNG_LINES: readonly number[] = Object.freeze([
+  13690,
+  13783,
+  16098, 16098, 16098,
+  16102,
+  16105,
+  16106,
+  16153,
+  16219,
+]);
