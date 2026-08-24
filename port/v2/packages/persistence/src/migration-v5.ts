@@ -33,6 +33,15 @@ export const V4_PRIMARY_KEY = 'save';
 export const V5_SCHEMA_KEY = 'v5:schema';
 export const V5_SNAPSHOT_KEY = 'v5:pre-migration-v4';
 export const V5_JOURNAL_KEY = 'v5:migration';
+export const PORTABLE_V5_FORMAT = 'celestial-frontier-portable-v5';
+export const PORTABLE_V5_VERSION = 1;
+export const PORTABLE_V5_MAX_BYTES = 2_097_152;
+export const PORTABLE_V5_MAX_LEGACY_BYTES = 1_048_576;
+export const PORTABLE_V5_MAX_CLOCK_MS = 4_000_000_000_000;
+export const V5_MAX_EXTENSION_JSON_BYTES = 262_144;
+export const V5_MAX_EXTENSION_TOTAL_BYTES = 1_048_576;
+export const V5_MAX_EXTENSION_NAMESPACES_PER_SEGMENT = 64;
+export const V5_MAX_EXTENSION_NAMESPACES = 128;
 
 export const V5_SEGMENTS = ['player', 'creatures', 'catalog', 'inventory', 'settings'] as const;
 export type V5Segment = typeof V5_SEGMENTS[number];
@@ -109,10 +118,23 @@ interface V5SegmentRow {
   readonly extensions?: Readonly<Record<string, V5ExtensionCarrier>>;
 }
 
-interface V5SnapshotRow {
+interface V5SnapshotRowV4 {
   readonly schema: 5;
   readonly sourceSchema: 4;
   readonly raw: string;
+}
+interface V5SnapshotRowPortable {
+  readonly schema: 5;
+  readonly sourceSchema: 5;
+  readonly raw: string;
+}
+type V5SnapshotRow = V5SnapshotRowV4 | V5SnapshotRowPortable;
+
+interface PortableV5EnvelopeV1 {
+  readonly format: typeof PORTABLE_V5_FORMAT;
+  readonly version: typeof PORTABLE_V5_VERSION;
+  readonly legacyV4: string;
+  readonly extensions: V5Extensions;
 }
 
 export type V4SaveClassification =
@@ -142,6 +164,18 @@ export interface PreparedV5SaveWrite {
   readonly operations: readonly StorageOperation[];
 }
 
+export type PortableV5SaveClassification =
+  | {
+    readonly kind: 'supported';
+    readonly state: SaveStateV2;
+    readonly ingress: ImportRouteIngressV2;
+    readonly legacyV4Raw: string;
+    readonly extensions: V5Extensions;
+    readonly canonicalRaw: string;
+  }
+  | { readonly kind: 'future-version' }
+  | { readonly kind: 'corrupt' };
+
 export type V5ReplacementPreparation =
   | {
     readonly kind: 'prepared';
@@ -150,6 +184,7 @@ export type V5ReplacementPreparation =
     readonly exactRaw: string;
     readonly legacyV4Raw: string;
     readonly extensions: V5Extensions;
+    readonly source: 'legacy-v4' | 'portable-v5';
     readonly operations: readonly StorageOperation[];
   }
   | { readonly kind: 'future-version' }
@@ -163,6 +198,9 @@ export type FreshV5BootstrapOutcome =
 export type V5ReadOutcome =
   | { readonly kind: 'not-migrated' }
   | { readonly kind: 'loaded'; readonly state: SaveStateV2; readonly ingress: ImportRouteIngressV2; readonly extensions: V5Extensions; readonly legacyV4Raw: string }
+  /* Historical outcome name retained for app compatibility. A trusted
+     portable-v5 replacement snapshot also uses this read-only recovery shape
+     and carries its validated extensions instead of dropping them. */
   | { readonly kind: 'recovered-v4'; readonly state: SaveStateV2; readonly ingress: ImportRouteIngressV2; readonly extensions: V5Extensions; readonly raw: string; readonly normalizedV4Raw: string }
   | { readonly kind: 'future-version'; readonly scope: 'schema' | V5Segment | 'snapshot' | 'envelope' }
   | { readonly kind: 'corrupt'; readonly scope: 'schema' | V5Segment | 'snapshot' | 'envelope' }
@@ -212,16 +250,40 @@ function classifyVersion(value: unknown): 'current' | 'future' | 'corrupt' {
 
 const EMPTY_EXTENSIONS: V5Extensions = Object.freeze({});
 
-function checkedExtensions(value: unknown): V5Extensions {
+function utf8ByteLength(value: string): number {
+  return new TextEncoder().encode(value).byteLength;
+}
+
+/** Validate, detach, freeze, and deterministically order every opaque
+ * extension carrier. This is the one persistence-level validator used by
+ * split rows, portable backups, and product transactions. Namespace owners
+ * remain responsible for interpreting their JSON payloads. */
+export function canonicalizeV5Extensions(value: unknown): V5Extensions {
   if (!isRecord(value)) throw new Error('v5 extensions must be an object');
   const result: Partial<Record<V5Segment, Readonly<Record<string, V5ExtensionCarrier>>>> = {};
-  for (const [segmentName, rawNamespaceMap] of Object.entries(value)) {
-    if (!(V5_SEGMENTS as readonly string[]).includes(segmentName)) {
-      throw new Error(`unknown v5 extension segment ${JSON.stringify(segmentName)}`);
-    }
+  const unknownSegment = Object.keys(value).find(
+    (segmentName) => !(V5_SEGMENTS as readonly string[]).includes(segmentName),
+  );
+  if (unknownSegment !== undefined) {
+    throw new Error(`unknown v5 extension segment ${JSON.stringify(unknownSegment)}`);
+  }
+  let totalNamespaces = 0;
+  let totalJsonBytes = 0;
+  for (const segmentName of V5_SEGMENTS) {
+    const rawNamespaceMap = value[segmentName];
+    if (rawNamespaceMap === undefined) continue;
     if (!isRecord(rawNamespaceMap)) throw new Error(`v5 ${segmentName} extensions must be an object`);
+    const namespaceNames = Object.keys(rawNamespaceMap).sort();
+    if (namespaceNames.length > V5_MAX_EXTENSION_NAMESPACES_PER_SEGMENT) {
+      throw new Error(`v5 ${segmentName} extension namespace count exceeds ${V5_MAX_EXTENSION_NAMESPACES_PER_SEGMENT}`);
+    }
+    totalNamespaces += namespaceNames.length;
+    if (totalNamespaces > V5_MAX_EXTENSION_NAMESPACES) {
+      throw new Error(`v5 extension namespace count exceeds ${V5_MAX_EXTENSION_NAMESPACES}`);
+    }
     const namespaces: Record<string, V5ExtensionCarrier> = {};
-    for (const [namespace, rawCarrier] of Object.entries(rawNamespaceMap)) {
+    for (const namespace of namespaceNames) {
+      const rawCarrier = rawNamespaceMap[namespace];
       if (!/^[a-z][a-z0-9.-]{0,63}$/.test(namespace)) throw new Error(`invalid v5 extension namespace ${JSON.stringify(namespace)}`);
       if (!isRecord(rawCarrier) || !exactKeys(rawCarrier, ['version', 'json'])) {
         throw new Error(`invalid v5 extension carrier ${JSON.stringify(namespace)}`);
@@ -229,8 +291,17 @@ function checkedExtensions(value: unknown): V5Extensions {
       if (!Number.isSafeInteger(rawCarrier.version) || (rawCarrier.version as number) < 1) {
         throw new Error(`invalid v5 extension version ${JSON.stringify(namespace)}`);
       }
-      if (typeof rawCarrier.json !== 'string' || rawCarrier.json.length > 262_144 || parseRecord(rawCarrier.json) === null) {
+      if (typeof rawCarrier.json !== 'string'
+        || rawCarrier.json.length > V5_MAX_EXTENSION_JSON_BYTES) {
         throw new Error(`invalid v5 extension JSON ${JSON.stringify(namespace)}`);
+      }
+      const jsonBytes = utf8ByteLength(rawCarrier.json);
+      if (jsonBytes > V5_MAX_EXTENSION_JSON_BYTES || parseRecord(rawCarrier.json) === null) {
+        throw new Error(`invalid v5 extension JSON ${JSON.stringify(namespace)}`);
+      }
+      totalJsonBytes += jsonBytes;
+      if (totalJsonBytes > V5_MAX_EXTENSION_TOTAL_BYTES) {
+        throw new Error(`v5 extension JSON total exceeds ${V5_MAX_EXTENSION_TOTAL_BYTES} bytes`);
       }
       namespaces[namespace] = Object.freeze({ version: rawCarrier.version as number, json: rawCarrier.json });
     }
@@ -339,7 +410,7 @@ export function prepareV5SaveWrite(
   registry: ContentRegistry,
   now: number,
 ): PreparedV5SaveWrite {
-  const extensions = checkedExtensions(writable.extensions);
+  const extensions = canonicalizeV5Extensions(writable.extensions);
   const canonical = canonicalV4FromState(writable.state, registry, now);
   const operations = segmentOperations(canonical.raw, extensions);
   operations.push({ store: 'meta', key: V4_PRIMARY_KEY, value: canonical.raw });
@@ -351,34 +422,158 @@ export function prepareV5SaveWrite(
   });
 }
 
+function withinUtf8Bound(value: string, maxBytes: number): boolean {
+  return value.length <= maxBytes && utf8ByteLength(value) <= maxBytes;
+}
+
+function encodePortableEnvelope(
+  legacyV4: string,
+  extensions: V5Extensions,
+): string {
+  const envelope: PortableV5EnvelopeV1 = {
+    format: PORTABLE_V5_FORMAT,
+    version: PORTABLE_V5_VERSION,
+    legacyV4,
+    extensions,
+  };
+  const raw = JSON.stringify(envelope);
+  if (!withinUtf8Bound(raw, PORTABLE_V5_MAX_BYTES)) {
+    throw new RangeError(`portable v5 save exceeds ${PORTABLE_V5_MAX_BYTES} bytes`);
+  }
+  return raw;
+}
+
+/** Encode one transportable save that retains both the canonical legacy-v4
+ * projection and every validated v5-only namespace. The exact bytes are a
+ * fixed point: importing and exporting the result again produces the same
+ * string. This is the only API through which a portable carrier may claim
+ * v5 extension authority. */
+export function exportPortableV5Save(
+  writable: V5WritableState,
+  registry: ContentRegistry,
+  now: number,
+): string {
+  if (!Number.isSafeInteger(now) || now < 0 || now > PORTABLE_V5_MAX_CLOCK_MS) {
+    throw new RangeError(`portable v5 clock must be an integer from 0 to ${PORTABLE_V5_MAX_CLOCK_MS}`);
+  }
+  const extensions = canonicalizeV5Extensions(writable.extensions);
+  const canonical = canonicalV4FromState(writable.state, registry, now);
+  if (!withinUtf8Bound(canonical.raw, PORTABLE_V5_MAX_LEGACY_BYTES)) {
+    throw new RangeError(`portable v5 legacy projection exceeds ${PORTABLE_V5_MAX_LEGACY_BYTES} bytes`);
+  }
+  return encodePortableEnvelope(canonical.raw, extensions);
+}
+
+/** Strict portable classifier. Current envelopes accept no aliases, unknown
+ * fields, whitespace variants, reordered fields, non-fixed legacy bytes, or
+ * unchecked extension carriers. A future envelope version remains protected
+ * rather than being interpreted as legacy v4. */
+export function classifyPortableV5Save(
+  exactRaw: string,
+  registry: ContentRegistry,
+  now: number,
+): PortableV5SaveClassification {
+  if (!withinUtf8Bound(exactRaw, PORTABLE_V5_MAX_BYTES)) return { kind: 'corrupt' };
+  const envelope = parseRecord(exactRaw);
+  if (envelope === null || envelope.format !== PORTABLE_V5_FORMAT) return { kind: 'corrupt' };
+  if (!Number.isSafeInteger(envelope.version) || (envelope.version as number) < 1) {
+    return { kind: 'corrupt' };
+  }
+  if ((envelope.version as number) > PORTABLE_V5_VERSION) return { kind: 'future-version' };
+  if (!exactKeys(envelope, ['format', 'version', 'legacyV4', 'extensions'])
+    || envelope.version !== PORTABLE_V5_VERSION
+    || typeof envelope.legacyV4 !== 'string'
+    || !withinUtf8Bound(envelope.legacyV4, PORTABLE_V5_MAX_LEGACY_BYTES)) {
+    return { kind: 'corrupt' };
+  }
+
+  const legacyEnvelope = parseRecord(envelope.legacyV4);
+  const exportedAt = legacyEnvelope?.at;
+  if (typeof exportedAt !== 'number'
+    || !Number.isSafeInteger(exportedAt)
+    || exportedAt < 0
+    || exportedAt > PORTABLE_V5_MAX_CLOCK_MS) {
+    return { kind: 'corrupt' };
+  }
+  /* `at` is part of the legacy-v4 writer's canonical bytes. Validate the
+     fixed point against that embedded export clock, never the importer's
+     later wall clock; otherwise an authentic backup expires immediately.
+     Runtime state still imports against the caller's current clock so the
+     legacy anti-edit clamps retain their ordinary behavior. */
+  const fixedPoint = classifyV4Save(envelope.legacyV4, registry, exportedAt);
+  if (fixedPoint.kind !== 'supported') return fixedPoint;
+  if (fixedPoint.normalizedRaw !== envelope.legacyV4) return { kind: 'corrupt' };
+  const imported = importSaveV2(envelope.legacyV4, registry, now);
+  if (!imported.ok) {
+    return { kind: imported.reason === 'future-version' ? 'future-version' : 'corrupt' };
+  }
+  try {
+    const extensions = canonicalizeV5Extensions(envelope.extensions);
+    const canonicalRaw = encodePortableEnvelope(fixedPoint.normalizedRaw, extensions);
+    if (canonicalRaw !== exactRaw) return { kind: 'corrupt' };
+    return Object.freeze({
+      kind: 'supported',
+      state: imported.state,
+      ingress: imported.ingress,
+      legacyV4Raw: fixedPoint.normalizedRaw,
+      extensions,
+      canonicalRaw,
+    });
+  } catch {
+    return { kind: 'corrupt' };
+  }
+}
+
 /** Prepare one trusted complete-save replacement for RevisionedRepository.
- * The imported expedition starts with no v5-only extensions, and its exact
- * validated bytes replace the compatibility mirror and recovery snapshot,
- * while the old compatibility backup is deleted in the same CAS as the
- * normalized split rows. A later recovery therefore cannot resurrect the
- * expedition that existed before import. */
+ * Authentic v4 starts with no v5-only extensions. A strict portable-v5
+ * envelope retains its validated extension namespaces. In either case the
+ * old compatibility backup is deleted in the same CAS as split rows and the
+ * replacement snapshot, so no prior expedition can resurrect. */
 export function prepareV5Replacement(
   exactRaw: string,
   registry: ContentRegistry,
   now: number,
 ): V5ReplacementPreparation {
-  const classified = classifyV4Save(exactRaw, registry, now);
-  if (classified.kind !== 'supported') return classified;
-  const operations = segmentOperations(classified.normalizedRaw, EMPTY_EXTENSIONS);
+  if (!withinUtf8Bound(exactRaw, PORTABLE_V5_MAX_BYTES)) return { kind: 'corrupt' };
+  const parsed = parseRecord(exactRaw);
+  const portable = parsed?.format === PORTABLE_V5_FORMAT;
+  let state: SaveStateV2;
+  let ingress: ImportRouteIngressV2;
+  let legacyV4Raw: string;
+  let extensions: V5Extensions;
+  let source: 'legacy-v4' | 'portable-v5';
+  if (portable) {
+    const classified = classifyPortableV5Save(exactRaw, registry, now);
+    if (classified.kind !== 'supported') return classified;
+    ({ state, ingress, legacyV4Raw, extensions } = classified);
+    source = 'portable-v5';
+  } else {
+    const classified = classifyV4Save(exactRaw, registry, now);
+    if (classified.kind !== 'supported') return classified;
+    state = classified.state;
+    ingress = classified.ingress;
+    legacyV4Raw = classified.normalizedRaw;
+    extensions = EMPTY_EXTENSIONS;
+    source = 'legacy-v4';
+  }
+  const snapshot: V5SnapshotRow = portable
+    ? { schema: V5_SCHEMA_VERSION, sourceSchema: 5, raw: exactRaw }
+    : { schema: V5_SCHEMA_VERSION, sourceSchema: 4, raw: exactRaw };
+  const operations = segmentOperations(legacyV4Raw, extensions);
   operations.push(
-    { store: 'meta', key: V4_PRIMARY_KEY, value: exactRaw },
+    { store: 'meta', key: V4_PRIMARY_KEY, value: portable ? legacyV4Raw : exactRaw },
     { store: 'meta', key: V4_BACKUP_KEY },
     {
       store: 'journal',
       key: V5_SNAPSHOT_KEY,
-      value: JSON.stringify({ schema: V5_SCHEMA_VERSION, sourceSchema: 4, raw: exactRaw } satisfies V5SnapshotRow),
+      value: JSON.stringify(snapshot),
     },
     {
       store: 'journal',
       key: V5_JOURNAL_KEY,
       value: JSON.stringify({
         schema: V5_SCHEMA_VERSION,
-        kind: 'trusted-v4-replacement',
+        kind: portable ? 'trusted-portable-v5-replacement' : 'trusted-v4-replacement',
         phase: 'complete',
         snapshotKey: V5_SNAPSHOT_KEY,
         codec: V5_CODEC,
@@ -387,11 +582,12 @@ export function prepareV5Replacement(
   );
   return Object.freeze({
     kind: 'prepared',
-    state: classified.state,
-    ingress: classified.ingress,
+    state,
+    ingress,
     exactRaw,
-    legacyV4Raw: classified.normalizedRaw,
-    extensions: EMPTY_EXTENSIONS,
+    legacyV4Raw,
+    extensions,
+    source,
     operations: Object.freeze(operations),
   });
 }
@@ -523,7 +719,7 @@ function decodeSegment(raw: string, expected: V5Segment):
   }
   if (!hasExtensions) return { kind: 'current', data: row.data };
   try {
-    const checked = checkedExtensions({ [expected]: row.extensions });
+    const checked = canonicalizeV5Extensions({ [expected]: row.extensions });
     return { kind: 'current', data: row.data, ...(checked[expected] === undefined ? {} : { extensions: checked[expected] }) };
   } catch {
     return { kind: 'corrupt' };
@@ -604,11 +800,17 @@ export async function readSaveV5(
     if (canonicalV4FromState(mirror.state, registry, now).raw !== canonical.raw) {
       return { kind: 'corrupt', scope: 'envelope' };
     }
+    let checkedExtensions: V5Extensions;
+    try {
+      checkedExtensions = canonicalizeV5Extensions(extensions);
+    } catch {
+      return { kind: 'corrupt', scope: 'envelope' };
+    }
     return {
       kind: 'loaded',
       state: canonical.state,
       ingress: rebaseIngress(mirror.state, mirror.ingress, canonical.state),
-      extensions: Object.keys(extensions).length === 0 ? EMPTY_EXTENSIONS : Object.freeze(extensions),
+      extensions: checkedExtensions,
       legacyV4Raw: canonical.raw,
     };
   } catch (error) {
@@ -617,17 +819,19 @@ export async function readSaveV5(
 }
 
 function decodeSnapshot(raw: string):
-  | { kind: 'current'; raw: string }
+  | { kind: 'current'; sourceSchema: 4 | 5; raw: string }
   | { kind: 'future' }
   | { kind: 'corrupt' } {
   const row = parseRecord(raw);
   if (row === null) return { kind: 'corrupt' };
   const version = classifyVersion(row.schema);
   if (version !== 'current') return { kind: version };
-  if (!exactKeys(row, ['schema', 'sourceSchema', 'raw']) || row.sourceSchema !== 4 || typeof row.raw !== 'string') {
+  if (!exactKeys(row, ['schema', 'sourceSchema', 'raw'])
+    || (row.sourceSchema !== 4 && row.sourceSchema !== 5)
+    || typeof row.raw !== 'string') {
     return { kind: 'corrupt' };
   }
-  return { kind: 'current', raw: row.raw };
+  return { kind: 'current', sourceSchema: row.sourceSchema, raw: row.raw };
 }
 
 /** Recovery is read-only. Only a corrupt current v5 topology may consult the
@@ -645,6 +849,19 @@ export async function readSaveV5WithRecovery(
     const snapshot = decodeSnapshot(snapshotRaw);
     if (snapshot.kind === 'future') return { kind: 'future-version', scope: 'snapshot' };
     if (snapshot.kind === 'corrupt') return { kind: 'corrupt', scope: 'snapshot' };
+    if (snapshot.sourceSchema === 5) {
+      const classified = classifyPortableV5Save(snapshot.raw, registry, now);
+      if (classified.kind === 'future-version') return { kind: 'future-version', scope: 'snapshot' };
+      if (classified.kind === 'corrupt') return { kind: 'corrupt', scope: 'snapshot' };
+      return {
+        kind: 'recovered-v4',
+        state: classified.state,
+        ingress: classified.ingress,
+        extensions: classified.extensions,
+        raw: snapshot.raw,
+        normalizedV4Raw: classified.legacyV4Raw,
+      };
+    }
     const classified = classifyStoredV4Source(snapshot.raw, registry, now);
     if (classified.kind === 'future-version') return { kind: 'future-version', scope: 'snapshot' };
     if (classified.kind === 'corrupt') return { kind: 'corrupt', scope: 'snapshot' };
