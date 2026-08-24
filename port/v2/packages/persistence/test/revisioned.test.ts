@@ -81,6 +81,52 @@ describe('@cf/persistence — F3 revision/CAS and immutable receipts', () => {
     await expect(fresh.mutate({ expectedRevision: 0, writes: [{ store: 'meta', key: 'f3:revision', value: '99' }] }))
       .rejects.toThrow('reserve meta revision and receipts stores');
   });
+
+  it('commits caller authority fences in the same checked transaction and reports their loss', async () => {
+    const backend = createMemoryBackend();
+    const repository = createRevisionedRepository(backend);
+    const authority = Object.freeze({ store: 'meta' as const, key: 'authority', value: 'owned' });
+    await backend.apply([{ store: 'meta', key: 'authority', value: 'owned' }]);
+
+    await expect(repository.mutate({
+      expectedRevision: 0,
+      fences: [authority],
+      writes: [{ store: 'player', key: 'first', value: 'landed' }],
+    })).resolves.toEqual({ kind: 'committed', revision: 1, receiptKey: null });
+
+    await backend.apply([{ store: 'meta', key: 'authority', value: 'successor' }]);
+    await expect(repository.mutate({
+      expectedRevision: 1,
+      fences: [authority],
+      writes: [{ store: 'player', key: 'second', value: 'must-not-land' }],
+    })).resolves.toEqual({
+      kind: 'fence-lost',
+      fence: authority,
+      actual: 'successor',
+    });
+    expect(await backend.get('player', 'second')).toBeUndefined();
+    expect(await repository.revision()).toBe(1);
+  });
+
+  it('does not let caller fences bypass or duplicate repository-owned checks', async () => {
+    const repository = createRevisionedRepository(createMemoryBackend());
+    const mutation = { expectedRevision: 0, writes: [] } as const;
+    await expect(repository.mutate({
+      ...mutation,
+      fences: [{ store: 'meta', key: 'f3:revision', value: undefined }],
+    })).rejects.toThrow('reserve revision and receipt checks');
+    await expect(repository.mutate({
+      ...mutation,
+      fences: [{ store: 'receipts', key: 'receipt:9', value: undefined }],
+    })).rejects.toThrow('reserve revision and receipt checks');
+    await expect(repository.mutate({
+      ...mutation,
+      fences: [
+        { store: 'meta', key: 'authority', value: 'a' },
+        { store: 'meta', key: 'authority', value: 'b' },
+      ],
+    })).rejects.toThrow('duplicate mutation fence for meta/authority');
+  });
 });
 
 async function repositoryValue(

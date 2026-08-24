@@ -15,7 +15,7 @@
    A lost race returns an explicit result. It never retries or changes the
    caller's expected parent, because that would turn one player action into a
    different action. */
-import type { StorageBackend, StorageOperation } from './repository.js';
+import { STORES, type StorageBackend, type StorageCheck, type StorageOperation } from './repository.js';
 
 export const F3_REVISION_KEY = 'f3:revision';
 const RECEIPT_PREFIX = 'receipt:';
@@ -34,12 +34,17 @@ export interface RevisionedMutation {
   readonly expectedRevision: number;
   readonly writes: readonly StorageOperation[];
   readonly receipt?: MutationReceipt;
+  /** Additional exact authority checks (for example a minted tab-lease
+      fence). Revision and receipt ownership remain repository-reserved. */
+  readonly fences?: readonly StorageCheck[];
 }
 
 export type RevisionedMutationOutcome =
   | { readonly kind: 'committed'; readonly revision: number; readonly receiptKey: string | null }
   | { readonly kind: 'stale'; readonly expectedRevision: number; readonly actualRevision: number }
-  | { readonly kind: 'duplicate-receipt'; readonly receiptKey: string; readonly existing: MutationReceipt };
+  | { readonly kind: 'duplicate-receipt'; readonly receiptKey: string; readonly existing: MutationReceipt }
+  | { readonly kind: 'fence-lost'; readonly fence: StorageCheck; readonly actual: string | undefined }
+  | { readonly kind: 'conflict'; readonly expectedRevision: number };
 
 function checkedRevision(value: unknown, label: string): number {
   if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) >= Number.MAX_SAFE_INTEGER) {
@@ -95,6 +100,43 @@ function validateWrites(writes: readonly StorageOperation[]): readonly StorageOp
   });
 }
 
+const STORE_NAMES = new Set<string>(STORES);
+
+function validateFences(fences: readonly StorageCheck[] | undefined): readonly StorageCheck[] {
+  if (fences === undefined) return [];
+  if (!Array.isArray(fences)) throw new TypeError('mutation fences must be an array');
+  const seen = new Set<string>();
+  return fences.map((fence) => {
+    if (!fence || typeof fence !== 'object') throw new TypeError('mutation fence must be an object');
+    const store = fence.store;
+    const key = fence.key;
+    const value = fence.value;
+    if (!STORE_NAMES.has(store)) throw new RangeError('mutation fence store is unknown');
+    if (typeof key !== 'string' || key.length === 0) throw new RangeError('mutation fence key must be nonempty');
+    if (value !== undefined && typeof value !== 'string') {
+      throw new TypeError('mutation fence values must be strings or undefined');
+    }
+    if (store === 'receipts' || (store === 'meta' && key === F3_REVISION_KEY)) {
+      throw new Error('revisioned mutations reserve revision and receipt checks');
+    }
+    const identity = `${store}\u0000${key}`;
+    if (seen.has(identity)) throw new Error(`duplicate mutation fence for ${store}/${key}`);
+    seen.add(identity);
+    return Object.freeze({ store, key, value });
+  });
+}
+
+async function firstLostFence(
+  backend: StorageBackend,
+  fences: readonly StorageCheck[],
+): Promise<{ readonly kind: 'fence-lost'; readonly fence: StorageCheck; readonly actual: string | undefined } | null> {
+  for (const fence of fences) {
+    const actual = await backend.get(fence.store, fence.key);
+    if (actual !== fence.value) return { kind: 'fence-lost', fence, actual };
+  }
+  return null;
+}
+
 /** A thin, policy-free CAS repository. One instance may safely be used by
  * several app subsystems and several tabs that point at the same backend. */
 export interface RevisionedRepository {
@@ -123,6 +165,7 @@ export function createRevisionedRepository(backend: StorageBackend): RevisionedR
     async mutate(mutation: RevisionedMutation): Promise<RevisionedMutationOutcome> {
       const expectedRevision = checkedRevision(mutation.expectedRevision, 'expected revision');
       const writes = validateWrites(mutation.writes);
+      const fences = validateFences(mutation.fences);
       const receipt = mutation.receipt === undefined ? undefined : checkedReceipt(mutation.receipt);
       const receiptKeyValue = receipt === undefined ? null : receiptKey(receipt.ordinal);
       const before = await readRevision();
@@ -133,10 +176,13 @@ export function createRevisionedRepository(backend: StorageBackend): RevisionedR
         const existing = await backend.get('receipts', receiptKeyValue);
         if (existing !== undefined) return { kind: 'duplicate-receipt', receiptKey: receiptKeyValue, existing: decodeReceipt(existing, receiptKeyValue) };
       }
+      const lostBeforeCommit = await firstLostFence(backend, fences);
+      if (lostBeforeCommit !== null) return lostBeforeCommit;
       const revision = expectedRevision + 1;
       const committed = await backend.compareAndApply([
         { store: 'meta', key: F3_REVISION_KEY, value: before.raw },
         ...(receiptKeyValue === null ? [] : [{ store: 'receipts' as const, key: receiptKeyValue, value: undefined }]),
+        ...fences,
       ], [
         ...writes,
         ...(receipt === undefined ? [] : [{ store: 'receipts' as const, key: receiptKeyValue!, value: JSON.stringify(receipt) }]),
@@ -150,7 +196,16 @@ export function createRevisionedRepository(backend: StorageBackend): RevisionedR
         const existing = await backend.get('receipts', receiptKeyValue);
         if (existing !== undefined) return { kind: 'duplicate-receipt', receiptKey: receiptKeyValue, existing: decodeReceipt(existing, receiptKeyValue) };
       }
-      return { kind: 'stale', expectedRevision, actualRevision: (await readRevision()).revision };
+      const after = await readRevision();
+      if (after.revision !== expectedRevision) {
+        return { kind: 'stale', expectedRevision, actualRevision: after.revision };
+      }
+      const lostAfterCommit = await firstLostFence(backend, fences);
+      if (lostAfterCommit !== null) return lostAfterCommit;
+      /* A hostile backend or an ABA outside the repository can make all
+         values look equal again after compareAndApply reported failure. Never
+         retry or mislabel that unknown race as committed. */
+      return { kind: 'conflict', expectedRevision };
     },
   };
 }
