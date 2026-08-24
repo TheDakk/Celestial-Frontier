@@ -457,36 +457,35 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(chapterGoalsDone(0, { 'c1-land': 2, 'c1-mine': 8, 'c1-part': 4, 'c1-comp': 2, 'c1-jump': 1 })).toBe(true);
     expect(chapterGoalsDone(0, { 'c1-land': 2 })).toBe(false);
 
-    /* The player-facing projection is a different contract: only outcomes
-       v2 can write are allowed through. This is the fresh-save state. */
+    /* The player-facing projection admits only actions with exact v2 outcome
+       writers. This is the fresh-save state. */
     const fresh: Record<string, number> = {};
     const first = projectV2Charter(0, fresh, ascStageOf([], 0))!;
-    const visibleCopy = (view: typeof first): string =>
-      [view.name, view.intro, view.note, ...view.goals.map((goal) => goal.t)].join(' ');
     const honestProjection = (view: typeof first): boolean =>
-      view.goals.every((goal) => goal.ev === 'landfall')
-        && !/mine|fabricat|shipyard|build the/i.test(visibleCopy(view));
+      view.goals.every((goal) => ['landfall', 'mined', 'crafted'].includes(goal.ev));
     expect(first.state).toBe('actionable');
-    expect(first.goals.map((goal) => goal.id)).toEqual(['c1-land']);
+    expect(first.goals.map((goal) => goal.id)).toEqual([
+      'c1-land', 'c1-mine', 'c1-part', 'c1-comp', 'c1-jump',
+    ]);
     expect(currentV2Objective(0, fresh, ascStageOf([], 0))).toMatchObject({
       text: 'Make planetfall on 2 worlds of Sol', have: 0, need: 2,
     });
     expect(honestProjection(first)).toBe(true);
-    /* Negative control: the same outcome check must reject a legacy mining
-       goal if one is accidentally appended to the view. */
-    const legacyMine = ASC_CHAPTERS_DATA[0]!.goals.find((goal) => goal.id === 'c1-mine')!;
-    expect(honestProjection({ ...first, goals: [...first.goals, legacyMine] })).toBe(false);
+    /* Negative control: an unavailable bioscan goal cannot enter the view. */
+    const legacyScan = ASC_CHAPTERS_DATA[1]!.goals.find((goal) => goal.id === 'c2-scan')!;
+    expect(honestProjection({ ...first, goals: [...first.goals, legacyScan] })).toBe(false);
 
-    /* Two real Sol landfalls complete the only fresh-save visible milestone.
-       They must stop at the boundary rather than forging a mining/fabrication
-       completion, a Shipyard instruction, or an unearned reach stage. */
+    /* Two real Sol landfalls reveal the next exact action without forging
+       canonical chapter completion or an unearned reach stage. */
     expect(bankLandfall(0, fresh, 133)).toBe(true);
     expect(bankLandfall(0, fresh, 134)).toBe(true);
     const boundary = projectV2Charter(0, fresh, ascStageOf([], 0))!;
-    expect(boundary.state).toBe('boundary');
-    expect(boundary.goals.map((goal) => goal.id)).toEqual(['c1-land']);
+    expect(boundary.state).toBe('actionable');
+    expect(boundary.goals.map((goal) => goal.id)).toEqual([
+      'c1-land', 'c1-mine', 'c1-part', 'c1-comp', 'c1-jump',
+    ]);
     expect(honestProjection(boundary)).toBe(true);
-    expect(currentV2Objective(0, fresh, ascStageOf([], 0))).toBeNull();
+    expect(currentV2Objective(0, fresh, ascStageOf([], 0))?.text).toMatch(/Mine Sol/);
     expect(chapterGoalsDone(0, fresh)).toBe(false);
     expect(canAdvanceV2Chapter(0, fresh, ascStageOf([], 0))).toBe(false);
     /* Positive control: a genuinely complete imported canonical chapter can
@@ -515,8 +514,53 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(projectV2Charter(1, {}, malformedChapterTwoStage)!.goals).toEqual([]);
     expect(currentV2Objective(1, {}, malformedChapterTwoStage)).toBeNull();
     expect(projectV2Charter(1, {})!.goals).toEqual([]);
-    expect(projectV2Charter(1, {}, poweredCompleteStage)!.goals.map((goal) => goal.id)).toEqual(['c2-land']);
-    expect(projectV2Charter(2, {}, ascStageOf([['igdrive', 1]], 2))!.goals).toEqual([]);
+    expect(projectV2Charter(1, {}, poweredCompleteStage)!.goals.map((goal) => goal.id)).toEqual([
+      'c2-land', 'c2-array',
+    ]);
+    expect(projectV2Charter(2, {}, ascStageOf([['igdrive', 1]], 2))!.goals.map((goal) => goal.id)).toEqual([
+      'c3-gear', 'c3-mine', 'c3-ig',
+    ]);
+  });
+  it('banks exact mined-action and fixed-fabrication filters into later chapters with caps', async () => {
+    const { bankFixedFabrication, bankMinedAction } = await import('@cf/scene');
+    const marsResult = resolveCF1WorldAddress({
+      galaxy: { seed: 999, x: 90, y: -60 },
+      star: { seed: 424242, x: 560, y: 170 },
+      planet: { seed: 134 },
+    });
+    const foreignResult = resolveCF1WorldAddress({
+      galaxy: { seed: 2168115821, x: -1104.3939002789557, y: -1400.6738864816725 },
+      star: { seed: 2404948836, x: 79.28673347271979, y: 172.30901278089732 },
+      planet: { seed: 2525295284 },
+    });
+    if (!marsResult.ok || !foreignResult.ok) throw new Error('Charter address fixture failed');
+    const prog: Record<string, number> = {};
+    expect(bankMinedAction(0, prog, marsResult.address)).toBe(true);
+    expect(prog).toMatchObject({ 'c1-mine': 1, 'c3-mine': 1 });
+    /* Earth and a foreign same-leaf-capable address cannot satisfy the
+       Chapter 1 dead-world scope, but every successful mine banks Chapter 3. */
+    expect(bankMinedAction(0, prog, homeWorldAddress())).toBe(true);
+    expect(bankMinedAction(0, prog, foreignResult.address)).toBe(true);
+    expect(prog).toMatchObject({ 'c1-mine': 1, 'c3-mine': 3 });
+    prog['c1-mine'] = 8; prog['c3-mine'] = 20;
+    expect(bankMinedAction(0, prog, marsResult.address)).toBe(false);
+
+    expect(bankFixedFabrication(0, prog, { id: 'plate', category: 'part' })).toBe(true);
+    expect(bankFixedFabrication(0, prog, { id: 'coil', category: 'comp' })).toBe(true);
+    expect(bankFixedFabrication(0, prog, { id: 'jumpdrive', category: 'sys' })).toBe(true);
+    expect(bankFixedFabrication(0, prog, { id: 'array', category: 'sys' })).toBe(true);
+    expect(bankFixedFabrication(0, prog, { id: 'igdrive', category: 'sys' })).toBe(true);
+    expect(bankFixedFabrication(0, prog, { id: 'fieldsuit', category: 'gear' })).toBe(true);
+    expect(prog).toMatchObject({
+      'c1-part': 1, 'c1-comp': 1, 'c1-jump': 1,
+      'c2-array': 1, 'c3-ig': 1, 'c3-gear': 1,
+    });
+    expect(bankFixedFabrication(0, prog, { id: 'rl-stone', category: 'relic' })).toBe(false);
+    expect(bankFixedFabrication(0, prog, { id: 'not-array', category: 'sys' })).toBe(false);
+    expect(bankFixedFabrication(0, prog, { id: 'not-jump', category: 'sys' })).toBe(false);
+    expect(bankFixedFabrication(0, prog, { id: 'fieldsuit', category: 'gear' })).toBe(true);
+    expect(prog['c3-gear']).toBe(2);
+    expect(bankFixedFabrication(0, prog, { id: 'fieldsuit', category: 'gear' })).toBe(false);
   });
   it('Charter data is deeply immutable and malformed chapter indexes fail closed', async () => {
     const { ASC_CHAPTERS_DATA, ASC_CHAPTER_COUNT, bankLandfall, projectV2Charter } =
