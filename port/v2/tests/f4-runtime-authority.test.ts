@@ -343,10 +343,11 @@ describe('F4 runtime authority join', () => {
 
     const beforeEssence = loaded.state.essence;
     const derive: F4RuntimeActionInput['derive'] = ({
-      operation, receiptOrdinal, draft, extensions,
+      operation, receiptOrdinal, activePlayMs, draft, extensions,
     }) => {
       expect(operation).toBe('research:drive2');
       expect(receiptOrdinal).toBe(1);
+      expect(activePlayMs).toBe(80);
       expect(extensions.player?.['test.arc3-engineering']).toBeUndefined();
       draft.essence -= 25;
       return {
