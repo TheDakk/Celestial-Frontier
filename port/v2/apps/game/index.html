@@ -333,6 +333,54 @@
       #shipyardpanel [data-cf-shipyard-preview="v1"],
       #shipyardpanel [data-cf-shipyard-preview="v1"] * { animation: none !important; transition: none !important; }
     }
+    /* Arc 3 Engineering remains one bounded DOM projection around the real
+       Shipyard SVG owner. Native details provide equivalent pointer/keyboard
+       disclosure; every authored action retains a 44px touch floor. */
+    #shipyardpanel { overflow-x: hidden; overflow-y: auto; }
+    .engineering-panel-body, .engineering-ship-overview, .engineering-section,
+    .engineering-row-list, .engineering-fabrication-groups, .engineering-fabrication-group,
+    .engineering-row { min-width: 0; max-width: 100%; box-sizing: border-box; }
+    .engineering-panel-body { display: grid; gap: 10px; overflow-wrap: anywhere; }
+    .engineering-ship-overview, .engineering-section { border: 1px solid rgba(64,84,119,.56);
+      border-radius: 11px; background: rgba(6,12,24,.42); }
+    .engineering-ship-overview { padding: 10px; }
+    .engineering-ship-overview h4, .engineering-fabrication-group h4,
+    .engineering-row :is(h4,h5) { margin: 0 0 6px; color: #eaf2ff; }
+    .engineering-ship-role, .engineering-ship-provenance, .engineering-row-description,
+    .engineering-status, .engineering-fact, .engineering-recipe-output,
+    .engineering-effect-support, .engineering-pending-status { margin: 5px 0; }
+    .engineering-ship-provenance, .engineering-row-description, .engineering-fact,
+    .engineering-recipe-output, .engineering-effect-support { color: var(--dim); font-size: 12px; }
+    #shipyardpanel details.engineering-section > summary { display: flex; align-items: center;
+      min-height: 44px; box-sizing: border-box; padding: 7px 10px; cursor: pointer;
+      color: #e8c87a; font: 700 12px var(--ui); letter-spacing: .08em; text-transform: uppercase; }
+    #shipyardpanel details.engineering-section[open] > summary { border-bottom: 1px solid rgba(64,84,119,.42); }
+    #shipyardpanel details.engineering-section > :not(summary) { margin-left: 10px; margin-right: 10px; }
+    .engineering-fact-list, .engineering-cost-list { min-width: 0; margin: 6px 0 10px;
+      padding-left: 20px; overflow-wrap: anywhere; }
+    .engineering-fact-list li, .engineering-cost-list li { min-width: 0; margin: 4px 0; }
+    .engineering-grade { display: block; color: var(--dim); font-size: 11px; }
+    .engineering-row-list, .engineering-fabrication-groups { display: grid; gap: 8px; margin-bottom: 10px; }
+    .engineering-fabrication-group { display: grid; gap: 6px; }
+    .engineering-row { padding: 9px; border: 1px solid rgba(64,84,119,.48);
+      border-radius: 9px; background: rgba(8,14,27,.42); }
+    #shipyardpanel button.engineering-action { display: inline-flex; align-items: center;
+      justify-content: center; max-width: 100%; min-width: 44px; min-height: 44px;
+      box-sizing: border-box; margin: 5px 0 9px; padding: 7px 12px;
+      border: 1px solid #405477; border-radius: 10px; background: rgba(22,34,57,.9);
+      color: #dcecff; cursor: pointer; font: 700 12px var(--ui); white-space: normal; }
+    #shipyardpanel button.engineering-action:disabled { opacity: .58; cursor: default; }
+    .engineering-pending-status { padding: 9px; border: 1px solid #a87939;
+      border-radius: 9px; color: #ffe0a0; background: rgba(90,55,22,.28); }
+    .engineering-pending-status[hidden] { display: none !important; }
+    @media (max-width: 360px) {
+      #shipyardpanel, .engineering-panel-body, .engineering-ship-overview, .engineering-section,
+      .engineering-row-list, .engineering-fabrication-groups, .engineering-fabrication-group,
+      .engineering-row { min-width: 0; max-width: 100%; }
+      .engineering-panel-body { gap: 8px; }
+      .engineering-ship-overview, .engineering-row { padding: 8px; }
+      #shipyardpanel details.engineering-section > :not(summary) { margin-left: 8px; margin-right: 8px; }
+    }
     /* Inventory stays a bounded DOM list. The exact-instance detail is one
        separately owned true dialog; no row creates a renderer or canvas. */
     #inventorypanel { overflow: auto; }
@@ -594,7 +642,9 @@
   <aside id="recpanel" class="glass panel" aria-label="Records"></aside>
   <aside id="atlaspanel" class="glass panel" aria-label="Star Atlas"></aside>
   <aside id="chpanel" class="glass panel" aria-label="Charters"></aside>
-  <aside id="shipyardpanel" class="glass panel" aria-label="Shipyard"></aside>
+  <aside id="shipyardpanel" class="glass panel" aria-label="Shipyard">
+    <div class="engineering-panel-body" data-engineering-panel-body></div>
+  </aside>
   <aside id="inventorypanel" class="glass panel" aria-label="Inventory" aria-hidden="true" style="display:none">
     <div class="inventory-panel-body" data-inventory-panel-body></div>
   </aside>
