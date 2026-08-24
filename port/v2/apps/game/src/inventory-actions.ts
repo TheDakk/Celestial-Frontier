@@ -15,6 +15,7 @@ import {
 } from '@cf/domain-loot';
 
 export type Arc2InventoryOperation = 'equip' | 'unequip' | 'salvage' | 'pending-claim';
+export const ARC2_LEGACY_CARGO_MAX = 1_000_000;
 
 export interface Arc2LegacyInventoryProjection {
   items: Array<[string, number]>;
@@ -29,6 +30,11 @@ export type PlannedArc2InventoryAction = Readonly<{
   instance: GearInstance;
   salvageYield: SalvageYield | null;
 }> | Readonly<{ kind: 'unchanged' | 'refused'; detail: string }>;
+
+export type Arc2LegacyActionProjectionOutcome = Readonly<
+  { kind: 'projected' }
+  | { kind: 'refused'; detail: 'cargo-invalid' | 'cargo-capacity' }
+>;
 
 export function planArc2InventoryAction(
   inventory: GearInventory,
@@ -59,13 +65,15 @@ export function planArc2InventoryAction(
 }
 
 /** Apply only the exact compatibility fields implied by the successful
- * instance action. Cargo retains the legacy 1e6 cap. Pending claims need no
- * compatibility edit because ownership was recorded when the reward landed. */
+ * instance action. Cargo is preflighted against the legacy 1e6 bound; a
+ * salvage that would exceed it refuses without spending the instance or
+ * publishing a partial projection. Pending claims need no compatibility edit
+ * because ownership was recorded when the reward landed. */
 export function projectArc2LegacyAction(
   draft: Arc2LegacyInventoryProjection,
   operation: Arc2InventoryOperation,
   plan: Extract<PlannedArc2InventoryAction, { kind: 'ready' }>,
-): void {
+): Arc2LegacyActionProjectionOutcome {
   const { instance } = plan;
   if (operation === 'equip') {
     draft.equip[instance.slot] = instance.baseId;
@@ -76,25 +84,37 @@ export function projectArc2LegacyAction(
         forId: instance.legacyAffix.forBaseId,
       };
     } else delete draft.equipAff[instance.slot];
-    return;
+    return Object.freeze({ kind: 'projected' });
   }
   if (operation === 'unequip') {
     delete draft.equip[instance.slot];
     delete draft.equipAff[instance.slot];
-    return;
+    return Object.freeze({ kind: 'projected' });
   }
-  if (operation !== 'salvage' || !plan.salvageYield) return;
+  if (operation !== 'salvage' || !plan.salvageYield) {
+    return Object.freeze({ kind: 'projected' });
+  }
+  const cargo = new Map<string, number>();
+  for (const [materialId, quantity] of draft.cargo) {
+    if (typeof materialId !== 'string' || materialId.length === 0
+      || !Number.isSafeInteger(quantity) || quantity < 0 || quantity > ARC2_LEGACY_CARGO_MAX
+      || cargo.has(materialId)) {
+      return Object.freeze({ kind: 'refused', detail: 'cargo-invalid' });
+    }
+    cargo.set(materialId, quantity);
+  }
+  for (const material of plan.salvageYield.materials) {
+    const quantity = (cargo.get(material.materialId) ?? 0) + material.quantity;
+    if (!Number.isSafeInteger(quantity) || quantity > ARC2_LEGACY_CARGO_MAX) {
+      return Object.freeze({ kind: 'refused', detail: 'cargo-capacity' });
+    }
+    cargo.set(material.materialId, quantity);
+  }
   const items = new Map(draft.items);
   const remaining = (items.get(instance.baseId) ?? 0) - 1;
   if (remaining > 0) items.set(instance.baseId, remaining);
   else items.delete(instance.baseId);
   draft.items = [...items.entries()];
-  const cargo = new Map(draft.cargo);
-  for (const material of plan.salvageYield.materials) {
-    cargo.set(material.materialId, Math.min(
-      1_000_000,
-      (cargo.get(material.materialId) ?? 0) + material.quantity,
-    ));
-  }
   draft.cargo = [...cargo.entries()];
+  return Object.freeze({ kind: 'projected' });
 }

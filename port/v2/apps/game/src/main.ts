@@ -4514,7 +4514,10 @@ async function commitArc2InventoryAction(
         }
         const planned = planArc2InventoryAction(current.state.inventory, operation, instanceId);
         if (planned.kind !== 'ready') throw new Error(`Arc 2 ${operation} became ${planned.detail}`);
-        projectArc2LegacyAction(draft, operation, planned);
+        const legacyProjection = projectArc2LegacyAction(draft, operation, planned);
+        if (legacyProjection.kind !== 'projected') {
+          throw new Error(`Arc 2 ${operation} legacy projection refused: ${legacyProjection.detail}`);
+        }
         const prepared = prepareArc2LootInventoryWrite({
           extensions,
           inventory: planned.state,

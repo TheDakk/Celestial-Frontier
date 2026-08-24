@@ -76,7 +76,7 @@ describe('Arc 2 Inventory app projection', () => {
     expect(draft.equipAff).toEqual({});
   });
 
-  it('projects exact legacy salvage counts and material caps without touching another item', () => {
+  it('projects exact legacy salvage counts at the material cap without touching another item', () => {
     const item = generated(1, 'rl-star');
     const inventory = committed(grantGear(createGearInventory(4), 0, item));
     const plan = planArc2InventoryAction(inventory, 'salvage', item.instanceId);
@@ -88,9 +88,32 @@ describe('Arc 2 Inventory app projection', () => {
       materials: [{ materialId: 'Au', quantity: 2 }, { materialId: 'Pt', quantity: 1 }],
     });
     const draft = projection();
-    projectArc2LegacyAction(draft, 'salvage', plan);
+    draft.cargo[0]![1] = 999_998;
+    expect(projectArc2LegacyAction(draft, 'salvage', plan)).toEqual({ kind: 'projected' });
     expect(draft.items).toEqual([['rl-star', 1], ['rig1', 1]]);
     expect(draft.cargo).toEqual([['Au', 1_000_000], ['Pt', 3]]);
+  });
+
+  it('refuses salvage atomically instead of saturating and discarding over-cap material', () => {
+    const item = generated(5, 'rl-star');
+    const inventory = committed(grantGear(createGearInventory(4), 0, item));
+    const plan = planArc2InventoryAction(inventory, 'salvage', item.instanceId);
+    expect(plan.kind).toBe('ready');
+    if (plan.kind !== 'ready') return;
+    const draft = projection();
+    const before = structuredClone(draft);
+    expect(projectArc2LegacyAction(draft, 'salvage', plan)).toEqual({
+      kind: 'refused', detail: 'cargo-capacity',
+    });
+    expect(draft).toEqual(before);
+
+    const invalid = projection();
+    invalid.cargo.push(['Au', 1]);
+    const invalidBefore = structuredClone(invalid);
+    expect(projectArc2LegacyAction(invalid, 'salvage', plan)).toEqual({
+      kind: 'refused', detail: 'cargo-invalid',
+    });
+    expect(invalid).toEqual(invalidBefore);
   });
 
   it('claims one exact pending reward without inventing a legacy compatibility edit', () => {
