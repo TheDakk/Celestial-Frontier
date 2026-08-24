@@ -1,3 +1,6 @@
 { "name": "@cf/audio", "private": true, "version": "0.0.0", "type": "module",
-  "description": "Shipped navigation/survey stings plus a separate injected Web Audio runtime foundation. Runtime budgets cover only submitted voice graphs; sting migration, decoded-byte budgets, authored content, and listening proof remain open.",
-  "exports": { ".": "./src/index.ts" } }
+  "description": "Shipped navigation/survey stings plus resolver-v1 creature-audio identity, route, and sound-output data contracts. Owned-creature projection, authored playback/content, and listening proof remain open.",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "@cf/domain-descriptors": "*"
+  } }

@@ -163,12 +163,6 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
-function hasExactKeys(value: Record<string, unknown>, expected: readonly string[]): boolean {
-  const actual = Object.keys(value).sort();
-  const wanted = [...expected].sort();
-  return actual.length === wanted.length && actual.every((key, index) => key === wanted[index]);
-}
-
 /** Validate and detach extension authority without invoking the complete save
  * writer. The complete writer is deliberately reserved for the one final
  * state assembled after product policy and F4 authority have both landed. */

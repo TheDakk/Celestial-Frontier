@@ -5,6 +5,7 @@
 import {
   isCanonicalCF1Address,
   getProvenPlanetKey,
+  getProvenStarKey,
   isProvenGalaxy,
   isProvenPlanet,
   isProvenPlanetFor,
@@ -14,6 +15,7 @@ import {
   resolveCF1StarAddress,
   resolveCF1WorldAddress,
   type CF1AddressFailure,
+  type CanonicalCF1StarAddress,
   type CanonicalCF1WorldAddress,
   type ProvenGalaxy,
   type ProvenPlanet,
@@ -88,6 +90,15 @@ export type ResolveSurfaceNavAddressFailure =
 export type ResolveSurfaceNavAddressResult =
   | Readonly<{ ok: true; address: CanonicalCF1WorldAddress }>
   | Readonly<{ ok: false; reason: ResolveSurfaceNavAddressFailure }>;
+
+export type ResolveSystemNavAddressFailure =
+  | CF1AddressFailure
+  | NavTransitionFailure
+  | 'system-nav-required'
+  | 'star-address-mismatch';
+export type ResolveSystemNavAddressResult =
+  | Readonly<{ ok: true; address: CanonicalCF1StarAddress }>
+  | Readonly<{ ok: false; reason: ResolveSystemNavAddressFailure }>;
 
 const PROVEN_NAV_STATES = new WeakSet<object>();
 
@@ -208,6 +219,34 @@ export function canonicalCF1WorldAddressFromNav(
     || resolved.address.planet.seed !== state.planet.seed
     || resolved.address.planet.ordinal !== state.planet.ordinal) {
     return reject('world-address-mismatch');
+  }
+  return Object.freeze({ ok: true, address: resolved.address });
+}
+
+/** Recover the complete canonical star ownership address from the live
+    system view. A registered address by itself is not evidence that the
+    player is currently at that star: the exact SystemNav, its parent link,
+    and a fresh source re-resolution must all agree. */
+export function canonicalCF1StarAddressFromNav(
+  state: unknown,
+): ResolveSystemNavAddressResult {
+  const reject = (reason: ResolveSystemNavAddressFailure): ResolveSystemNavAddressResult =>
+    Object.freeze({ ok: false, reason });
+  if (!isProvenNavState(state)) return reject('unproven-nav-state');
+  if (state.mode !== 'system') return reject('system-nav-required');
+  if (!isProvenGalaxy(state.gal)) return reject('unproven-galaxy');
+  if (!isProvenStar(state.star)) return reject('unproven-star');
+  if (!isProvenStarFor(state.star, state.gal)) return reject('star-parent-mismatch');
+  const expectedKey = getProvenStarKey(state.star);
+  if (!expectedKey) return reject('star-address-mismatch');
+
+  const resolved = resolveCF1StarAddress({ galaxy: state.gal, star: state.star });
+  if (!resolved.ok) return reject(resolved.reason);
+  if (resolved.address.key !== expectedKey
+    || resolved.address.star.seed !== state.star.seed
+    || resolved.address.star.x !== state.star.x
+    || resolved.address.star.y !== state.star.y) {
+    return reject('star-address-mismatch');
   }
   return Object.freeze({ ok: true, address: resolved.address });
 }

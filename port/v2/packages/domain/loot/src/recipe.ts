@@ -143,7 +143,11 @@ const CATALOGUE_IDS = new Set<string>(LOOT_CATALOGUE_V1.map(({ id }) => id));
 
 function sortedQuantities(value: Readonly<Record<string, number>>, label: string): CatalogueQuantityMap {
   assertPlainRecord(value, label);
-  const entries = Object.entries(value).sort(([left], [right]) => left.localeCompare(right));
+  /* Locale collation is ambient host state and cannot own a receipt or
+     persistence order. Catalogue ids are canonicalized by code units. */
+  const entries = Object.entries(value).sort(([left], [right]) => (
+    left < right ? -1 : left > right ? 1 : 0
+  ));
   const result: Record<string, number> = {};
   for (const [id, quantity] of entries) {
     if (!id) throw new RangeError(`${label} contains an empty asset id`);

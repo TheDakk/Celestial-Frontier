@@ -7,6 +7,7 @@
   "exports": { ".": "./src/index.ts" },
   "dependencies": {
     "@cf/domain-ecology": "*",
+    "@cf/domain-loot": "*",
     "@cf/domain-progression": "*",
     "@cf/domain-rand": "*",
     "@cf/domain-speciestraits": "*",
