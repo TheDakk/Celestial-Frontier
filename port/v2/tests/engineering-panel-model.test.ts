@@ -66,12 +66,13 @@ function state(options: Readonly<{
   worlds?: readonly Readonly<{ address: CanonicalCF1WorldAddress; count: number }>[];
   stars?: readonly Readonly<{ address: CanonicalCF1StarAddress; count: number }>[];
   research?: readonly string[];
+  revision?: number;
 }> = {}): EngineeringStateV2 {
   const worlds = options.worlds ?? [];
   const stars = options.stars ?? [];
   return migrateLegacyEngineeringState({
     schema: LEGACY_ENGINEERING_SEED_MIRROR_SCHEMA,
-    revision: 4,
+    revision: options.revision ?? 4,
     worlds: worlds.map(({ address, count }) => ({ seed: address.planet.seed, extractionsTaken: count })),
     stars: stars.map(({ address, count }) => ({ seed: address.star.seed, extractionsTaken: count })),
     research: [...(options.research ?? [])],
@@ -94,6 +95,28 @@ function loadout(items: readonly (readonly [string, number])[] = []) {
   if (prepared.kind !== 'prepared') throw new Error(`loot fixture was ${prepared.kind}`);
   const read = readArc2EngineeringLoadout(prepared.extensions);
   if (read.kind !== 'loaded') throw new Error(`loadout fixture was ${read.kind}`);
+  return read.loadout;
+}
+
+function exhaustedLoadout(items: readonly (readonly [string, number])[] = []) {
+  const prepared = prepareArc2LootLegacyMigration({
+    extensions: {},
+    legacy: { items: items.map(([id, count]) => [id, count]), equip: {}, equipAff: {} },
+    capacity: 24,
+  });
+  if (prepared.kind !== 'prepared') throw new Error(`loot fixture was ${prepared.kind}`);
+  const carrier = prepared.extensions.inventory?.['arc2.loot'];
+  if (!carrier) throw new Error('loot carrier fixture was absent');
+  const value = JSON.parse(carrier.json) as { inventory: { revision: number } };
+  value.inventory.revision = 0xffff_ffff;
+  const read = readArc2EngineeringLoadout({
+    ...prepared.extensions,
+    inventory: {
+      ...prepared.extensions.inventory,
+      'arc2.loot': Object.freeze({ version: carrier.version, json: JSON.stringify(value) }),
+    },
+  });
+  if (read.kind !== 'loaded') throw new Error(`exhausted loadout fixture was ${read.kind}`);
   return read.loadout;
 }
 
@@ -188,5 +211,35 @@ describe('Engineering panel production read model', () => {
     const here = path.dirname(fileURLToPath(import.meta.url));
     const text = fs.readFileSync(path.join(here, '../apps/game/src/engineering-panel-model.ts'), 'utf8');
     expect(text).not.toMatch(/Math\.random|Date\.now|performance\.|localeCompare|\bdocument\b|\bwindow\b|globalThis/);
+  });
+
+  it('fails every writable row closed at the exact Arc 3 and Arc 2 revision ceilings', () => {
+    const mars = world(MARS);
+    const engineeringExhausted = projectEngineeringPanelReadModel({
+      ship: ship([]), nav: surface(mars),
+      engineering: state({ revision: Number.MAX_SAFE_INTEGER }),
+      loadout: loadout(), economy, activePlayMs: 0,
+    });
+    expect(engineeringExhausted.mining).toMatchObject({
+      status: 'unavailable', detail: 'Engineering record revision is exhausted.',
+    });
+    expect(engineeringExhausted.research.find(({ id }) => id === 'scan1')).toMatchObject({
+      status: 'unavailable', reason: 'Engineering record revision is exhausted.',
+    });
+    expect(engineeringExhausted.fabricationGroups.flatMap(({ recipes }) => recipes)
+      .find(({ baseId }) => baseId === 'plate')).toMatchObject({
+      status: 'unavailable', reason: 'Engineering record revision is exhausted.',
+    });
+
+    const inventoryExhausted = projectEngineeringPanelReadModel({
+      ship: ship([]), nav: surface(mars), engineering: state(),
+      loadout: exhaustedLoadout(), economy, activePlayMs: 0,
+    });
+    expect(inventoryExhausted.mining.status).toBe('ready');
+    expect(inventoryExhausted.research.find(({ id }) => id === 'scan1')?.status).toBe('available');
+    expect(inventoryExhausted.fabricationGroups.flatMap(({ recipes }) => recipes)
+      .find(({ baseId }) => baseId === 'plate')).toMatchObject({
+      status: 'unavailable', reason: 'Inventory record revision is exhausted.',
+    });
   });
 });

@@ -5,6 +5,7 @@
    re-derived from freshly read carriers inside F4. */
 import {
   ENGINEERING_RESEARCH_CATALOGUE,
+  isEngineeringRevisionExhausted,
   projectStarOpportunity,
   projectWorldMineralReveal,
   projectWorldOpportunity,
@@ -80,6 +81,7 @@ const SIGNATURE_NAMES: Readonly<Record<string, string>> = Object.freeze({
   mind: 'Mind', star: 'Star', void: 'Void', prism: 'Prism',
 });
 const LIVE_GEAR_EFFECTS = new Set(['yield', 'strike', 'skim', 'skimguard']);
+const MAX_GEAR_INVENTORY_REVISION = 0xffff_ffff;
 const EFFECT_NAMES: Readonly<Record<string, string>> = Object.freeze({
   yield: 'mining yield', strike: 'rich-strike chance', skim: 'stellar skim yield',
   skimguard: 'remnant-star shielding', auto: 'Auto-Extractor accrual', contact: 'first contact',
@@ -202,6 +204,7 @@ function recipeEffect(definition: LootCatalogueDefinition): Readonly<{
 function productionFabricationGroups(
   loadout: Arc2EngineeringLoadout,
   economy: EngineeringPanelEconomySnapshot,
+  engineeringRevisionExhausted: boolean,
 ): readonly EngineeringFabricationGroupReadModel[] {
   const materials = quantityMap(economy.cargo, 'engineering cargo');
   const exceptional = quantityMap(economy.exceptionalCargo, 'engineering exceptional cargo');
@@ -238,6 +241,10 @@ function productionFabricationGroups(
           status = 'owned'; reason = 'Permanent system already built.';
         } else if (effect.support === 'unavailable') {
           status = 'unavailable'; reason = 'Gameplay effect is not connected.';
+        } else if (engineeringRevisionExhausted) {
+          status = 'unavailable'; reason = 'Engineering record revision is exhausted.';
+        } else if (loadout.inventory.revision === MAX_GEAR_INVENTORY_REVISION) {
+          status = 'unavailable'; reason = 'Inventory record revision is exhausted.';
         } else if (capacityRemaining < 1) {
           status = 'unavailable'; reason = 'Output capacity is full.';
         } else if (fullyExceptional) {
@@ -274,6 +281,7 @@ function productionResearchRows(
 ): readonly EngineeringResearchRowReadModel[] {
   const materials = quantityMap(economy.cargo, 'engineering cargo');
   const researchOwned = new Map(state.research.map((id) => [id, 1]));
+  const revisionExhausted = isEngineeringRevisionExhausted(state);
   const definitions = new Map(ENGINEERING_RESEARCH_CATALOGUE.map((definition) => [definition.id, definition]));
   return Object.freeze(ENGINEERING_RESEARCH_ORDER.map((id) => {
     const definition = definitions.get(id)!;
@@ -289,6 +297,8 @@ function productionResearchRows(
       status = 'owned'; reason = 'Already researched.';
     } else if (definition.consumerStatus === 'unavailable') {
       status = 'unavailable'; reason = 'Gameplay effect is not connected.';
+    } else if (revisionExhausted) {
+      status = 'unavailable'; reason = 'Engineering record revision is exhausted.';
     } else if (!prerequisiteOwned) {
       status = 'unavailable'; reason = `Requires ${definitions.get(definition.prerequisiteId!)?.name ?? definition.prerequisiteId}.`;
     } else if (!assetsReady) {
@@ -362,10 +372,17 @@ function miningModel(input: EngineeringPanelProjectionInput): EngineeringPanelRe
     const deposits = [...new Set(ids)].map((id) => deepFreeze({
       id, label: labelFor(id), grade: gradeByMaterial.has(id) ? `Tier ${gradeByMaterial.get(id)}` : null,
     }));
+    const revisionExhausted = isEngineeringRevisionExhausted(input.engineering);
     return deepFreeze({
       locationLabel: `World ${current.address.planet.seed}`,
-      status: pullsRemaining > 0 ? 'ready' : 'worked-out',
-      detail: pullsRemaining > 0 ? 'A finite extraction action is ready.' : 'This world is worked out.',
+      status: pullsRemaining > 0
+        ? revisionExhausted ? 'unavailable' : 'ready'
+        : 'worked-out',
+      detail: pullsRemaining > 0
+        ? revisionExhausted
+          ? 'Engineering record revision is exhausted.'
+          : 'A finite extraction action is ready.'
+        : 'This world is worked out.',
       deposits,
       pullsRemaining,
       autoExtractorDue: capabilities.autoExtractor ? due : null,
@@ -405,6 +422,8 @@ function skimmingModel(input: EngineeringPanelProjectionInput): EngineeringPanel
       status = 'worked-out'; detail = 'This corona is worked out.';
     } else if (damage > 0 && input.economy.hp <= 4) {
       status = 'unavailable'; detail = 'Hull integrity is too low for this remnant star.';
+    } else if (isEngineeringRevisionExhausted(input.engineering)) {
+      status = 'unavailable'; detail = 'Engineering record revision is exhausted.';
     }
     return deepFreeze({
       starLabel: `Star ${current.address.star.seed}`,
@@ -431,13 +450,18 @@ export function projectEngineeringPanelReadModel(
   }
   /* The capability projector is also the private loadout-brand check. */
   projectEngineeringCapabilities(input.loadout);
+  const engineeringRevisionExhausted = isEngineeringRevisionExhausted(input.engineering);
   const model: EngineeringPanelReadModelV1 = {
     schema: ENGINEERING_PANEL_READ_MODEL_SCHEMA,
     ship: input.ship,
     mining: miningModel(input),
     skimming: skimmingModel(input),
     research: productionResearchRows(input.engineering, input.economy),
-    fabricationGroups: productionFabricationGroups(input.loadout, input.economy),
+    fabricationGroups: productionFabricationGroups(
+      input.loadout,
+      input.economy,
+      engineeringRevisionExhausted,
+    ),
   };
   return deepFreeze(model);
 }
