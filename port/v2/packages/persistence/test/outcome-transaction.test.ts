@@ -684,9 +684,10 @@ describe('@cf/persistence — deterministic product transaction owner', () => {
       operation: 'research:drive2',
       receiptKind: 'arc3-research',
       now: NOW,
-      derive: ({ operation, receiptOrdinal, draft, extensions }) => {
+      derive: ({ operation, receiptOrdinal, activePlayMs, draft, extensions }) => {
         expect(operation).toBe('research:drive2');
         expect(receiptOrdinal).toBe(9);
+        expect(activePlayMs).toBe(275);
         expect(extensions).not.toBe(harness.writable.extensions);
         draft.essence -= 25;
         return {

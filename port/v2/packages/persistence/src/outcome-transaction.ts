@@ -415,6 +415,8 @@ export type F4DeterministicProductPlanOutcome =
 export interface F4DeterministicProductDeriveInput {
   readonly operation: string;
   readonly receiptOrdinal: number;
+  /** Exact leased active-play snapshot committed by this same transaction. */
+  readonly activePlayMs: number;
   readonly draft: SaveStateV2;
   readonly extensions: V5Extensions;
 }
@@ -507,6 +509,7 @@ export function createF4DeterministicProductTransactionOwner(
         derive: (draft, extensions) => input.derive(Object.freeze({
           operation,
           receiptOrdinal: plan.receiptOrdinal,
+          activePlayMs: input.snapshot.activePlayMs,
           draft,
           extensions,
         })),
