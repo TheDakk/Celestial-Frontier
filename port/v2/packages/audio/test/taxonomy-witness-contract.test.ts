@@ -286,11 +286,11 @@ describe('Arc 7 sound-output witness', () => {
   it('passes the reusable static purity audit and fails every forbidden term one at a time', () => {
     const sources: AudioStaticSource[] = [
       '../src/taxonomy.ts', '../src/identity.ts', '../src/sound-witness.ts',
-      '../src/ecology.ts', '../src/events.ts',
+      '../src/ecology.ts', '../src/events.ts', '../src/lab.ts', '../src/rights.ts',
     ].map((path) => ({ sourceId: path, sourceText: readFileSync(new URL(path, import.meta.url), 'utf8') }));
     expect(inspectAudioStaticPurity(sources)).toEqual([]);
     expect(auditAudioStaticPurity(sources)).toEqual({
-      sourceCount: 5,
+      sourceCount: 7,
       ruleCount: AUDIO_STATIC_PURITY_RULES.length,
       violationCount: 0,
     });
@@ -355,7 +355,9 @@ describe('Arc 7 sound-output witness', () => {
       { sourceId: templateExpression.sourceId, rule: 'global-this' },
     ]);
 
-    for (const sourceId of ['../src/ecology.ts', '../src/events.ts']) {
+    for (const sourceId of [
+      '../src/ecology.ts', '../src/events.ts', '../src/lab.ts', '../src/rights.ts',
+    ]) {
       const mutated = sources.map((source) => source.sourceId === sourceId
         ? { ...source, sourceText: `${source.sourceText}\nvoid globalThis;` }
         : source);
