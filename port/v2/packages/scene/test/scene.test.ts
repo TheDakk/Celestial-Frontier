@@ -398,27 +398,42 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(ascAllowsStar(2, 999, far)).toBe(true);
     expect(ascAllowsStar(2, 1000, sol)).toBe(false);   /* foreign galaxy */
     expect(ascAllowsStar(3, 1000, sol)).toBe(true);
-    /* A star/drive gate and an imported galaxy-radius gate are distinct
-       facts. Both name the current-slice boundary without directing a fresh
-       player to absent mining/fabrication/Shipyard systems, but the radius
-       copy must not pretend the player can collect or write Signatures. */
-    const safeCharterCopy = (hint: string): boolean =>
-      /Charter system/i.test(hint)
-        && !/prime signature radius|shipyard|\bbuild\b|mine|fabricat/i.test(hint);
-    const safeCharterHint = (stage: number): boolean => safeCharterCopy(ascHintFor(stage));
+    /* A star/system gate now points to the exact live fixed-Fabricator path,
+       while the still-unavailable Prime-radius path remains distinct. */
+    const liveCharterHint = (stage: number, hint: string): boolean => {
+      const stageCopy = stage <= 0
+        ? /Sol is your current reach[\s\S]{0,160}fabricate the Jump Drive/i.test(hint)
+        : stage === 1
+          ? /owned Jump Drive covers the Neighborhood[\s\S]{0,160}fabricate the Long-Range Array/i.test(hint)
+          : stage === 2
+            ? /owned Long-Range Array covers the home galaxy[\s\S]{0,160}fabricate the Intergalactic Drive/i.test(hint)
+            : /Intergalactic star reach is already preserved[\s\S]{0,160}blocked by a different boundary/i.test(hint);
+      return stageCopy
+        && !/next Charter system is not available|Prime Signature radius|chapter progress[^.!?]{0,64}(?:grants|creates|mints)/i.test(hint);
+    };
     const safePrimeRadiusHint = (hint: string): boolean =>
       /Your saved Prime Signature radius ends here/i.test(hint)
         && /Prime Signature radius expansion is not available in this development slice/i.test(hint)
-        && !/collect|earn|award|write|next Charter system|shipyard|\bbuild\b|mine|fabricat/i.test(hint);
-    expect(safeCharterHint(0)).toBe(true);
-    expect(safeCharterHint(1)).toBe(true);
-    expect(safeCharterHint(2)).toBe(true);
-    expect(safeCharterHint(3)).toBe(true);
+        && !/collect|earn|award|write|next Charter system|Engineering|\bbuild\b|mine|fabricat/i.test(hint);
+    expect(liveCharterHint(0, ascHintFor(0))).toBe(true);
+    expect(liveCharterHint(1, ascHintFor(1))).toBe(true);
+    expect(liveCharterHint(2, ascHintFor(2))).toBe(true);
+    expect(liveCharterHint(3, ascHintFor(3))).toBe(true);
     expect(safePrimeRadiusHint(primeReachHint())).toBe(true);
-    /* Negative control: the legacy exhortation must fail the same outcome
-       check, proving the check is about the player-visible words. */
-    const legacyHint = 'Sol is your charter for now — build the ⚡ Jump Drive at the 🛠 Shipyard.';
-    expect(safeCharterCopy(legacyHint)).toBe(false);
+    /* Bidirectional controls: the former no-system message, a wrong system,
+       and a chapter-authority overclaim all fail the same outcome check. */
+    expect(liveCharterHint(
+      0,
+      'Sol is your charter for now. This development slice preserves reach but does not award the next Charter system.',
+    )).toBe(false);
+    expect(liveCharterHint(
+      1,
+      'Your owned Jump Drive covers the Neighborhood. Engineering can fabricate the Intergalactic Drive.',
+    )).toBe(false);
+    expect(liveCharterHint(
+      0,
+      ascHintFor(0) + ' Chapter progress grants the missing drive.',
+    )).toBe(false);
     expect(safePrimeRadiusHint(
       'Your saved Prime Signature radius ends here. Collect Prime Signatures to expand it.',
     )).toBe(false);

@@ -1,9 +1,9 @@
 /* training.ts — FIELD TRAINING, the framework + the first arc (main.js
    TUT_STEPS, texts VERBATIM). The slice runs the six lessons its systems
    support today — welcome · find-earth · survey-tour · atlas-add ·
-   atlas-open · land — then graduates with an honest note; the cache/feed/
-   breed/duel/heal arc resumes when the Compendium's live systems arrive
-   (Phase 5). Carried laws: the lesson card publishes --tut-bot (CF1805-01:
+   atlas-open · land — then graduates with an honest handoff to the live
+   Engineering board. Capture and the cache/feed/breed/duel/heal arc remain
+   outside this deliberately minimal navigation drill. Carried laws: the lesson card publishes --tut-bot (CF1805-01:
    any surface that can rise above the card must clear it) and NEVER covers
    the dock (CF1806-02's family); a `spot` gets the spotlight ring; `allow`
    locks the chrome down to the lesson's own affordances (the canvas stays
@@ -67,7 +67,7 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
     },
     {
       id: 'grad', btn: 'Finish for now',
-      text: () => 'Well flown, Pathfinder. The next lessons — the training cache, feeding, breeding, your first duel, the scratch and the heal — arrive with the living Compendium (they train the systems, so they wait for the systems). Everything you just learned is the real game: chart, travel, land. The infinite is open.',
+      text: () => 'Well flown, Pathfinder. This short drill stays focused on real navigation: chart, travel, and land. Next, open <b>Engineering &amp; Shipyard</b> from the 🛠 control. A grounded lifeless world can expose <b>Mine</b>; a proven star with the right drive can expose <b>Skim</b>; Research and fixed Fabricator rows enable only actions whose effects are connected. Surveying or landing a living world still does not discover or capture its life — those lessons wait for their real writers.',
     },
   ];
 }

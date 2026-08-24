@@ -45,15 +45,20 @@ export function withinReachOf(primeCount: number, x: number, y: number): boolean
 }
 
 /**
- * Player-visible reach block for the current v2 slice. Saved drive/chapter
- * state still enforces the canonical ladder, but this build cannot award or
- * fabricate those systems. Never tell a fresh explorer to use the absent
- * Shipyard, mine, or build their way through a gate.
+ * Player-visible reach block for the current v2 slice. Owned permanent
+ * systems still enforce the canonical ladder, and Arc 3's fixed Fabricator
+ * can now create each next system when its exact requirements are met.
+ * Incomplete chapter progress alone never grants the missing capability; a
+ * completed imported veteran Charter preserves stage 3 as a generic refit.
  */
 export function ascHintFor(stage: number): string {
-  return stage === 0 ? 'Sol is your charter for now. This development slice preserves reach but does not award the next Charter system.'
-    : stage === 1 ? 'Your saved reach covers the Neighborhood. The next Charter system is not available in this development slice.'
-      : 'Your saved reach is preserved. The next Charter system is not available in this development slice.';
+  return stage <= 0
+    ? 'Sol is your current reach. Engineering can fabricate the Jump Drive when its exact recipe requirements are met.'
+    : stage === 1
+      ? 'Your owned Jump Drive covers the Neighborhood. Engineering can fabricate the Long-Range Array when its exact recipe requirements are met.'
+      : stage === 2
+        ? 'Your owned Long-Range Array covers the home galaxy. Engineering can fabricate the Intergalactic Drive when its exact recipe requirements are met.'
+        : 'Intergalactic star reach is already preserved; this destination is blocked by a different boundary.';
 }
 
 /** A galaxy can also be blocked by the imported Prime Signature radius. That
