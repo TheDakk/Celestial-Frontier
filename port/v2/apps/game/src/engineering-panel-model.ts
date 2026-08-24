@@ -131,6 +131,7 @@ function costs(
   signatureId: string | null,
   signatureIds: ReadonlySet<string>,
   prerequisiteId: string | null,
+  prerequisiteLabel: string | null = null,
 ): EngineeringPanelCosts {
   return deepFreeze({
     materials: costRows(materialCost, materialOwned),
@@ -140,7 +141,9 @@ function costs(
       id: signatureId, label: `${SIGNATURE_NAMES[signatureId] ?? signatureId} Signature`, owned: signatureIds.has(signatureId),
     },
     prerequisite: prerequisiteId === null ? null : {
-      id: prerequisiteId, label: labelFor(prerequisiteId), owned: (itemOwned.get(prerequisiteId) ?? 0) > 0,
+      id: prerequisiteId,
+      label: prerequisiteLabel ?? labelFor(prerequisiteId),
+      owned: (itemOwned.get(prerequisiteId) ?? 0) > 0,
     },
   });
 }
@@ -232,6 +235,13 @@ function productionFabricationGroups(
           : plan.outputKind === 'permanent-system'
             ? current > 0 ? 0 : 1
             : gearCapacityRemaining;
+        const autoEquips = plan.outputKind === 'gear-instance'
+          && loadout.inventory.entries.length < loadout.inventory.capacity
+          && definition.slot !== null
+          && !loadout.inventory.equipped.some(({ slot }) => slot === definition.slot);
+        const requiredInventoryRevisions = autoEquips ? 2 : 1;
+        const inventoryRevisionExhausted = loadout.inventory.revision
+          > MAX_GEAR_INVENTORY_REVISION - requiredInventoryRevisions;
         const fullyExceptional = plan.outputKind === 'gear-instance'
           && Object.keys(plan.materialCost).length > 0
           && Object.entries(plan.materialCost).every(([id, required]) => (exceptional.get(id) ?? 0) >= required);
@@ -243,7 +253,7 @@ function productionFabricationGroups(
           status = 'unavailable'; reason = 'Gameplay effect is not connected.';
         } else if (engineeringRevisionExhausted) {
           status = 'unavailable'; reason = 'Engineering record revision is exhausted.';
-        } else if (loadout.inventory.revision === MAX_GEAR_INVENTORY_REVISION) {
+        } else if (inventoryRevisionExhausted) {
           status = 'unavailable'; reason = 'Inventory record revision is exhausted.';
         } else if (capacityRemaining < 1) {
           status = 'unavailable'; reason = 'Output capacity is full.';
@@ -321,6 +331,9 @@ function productionResearchRows(
         definition.materialCost, {}, definition.stardustCost,
         materials, researchOwned, economy.stardust,
         null, new Set(), definition.prerequisiteId,
+        definition.prerequisiteId === null
+          ? null
+          : definitions.get(definition.prerequisiteId)?.name ?? definition.prerequisiteId,
       ),
     });
   }));
