@@ -179,7 +179,12 @@ describe('@cf/audio — bounded sting facade', () => {
 
     const api = await import('../src/index.js');
     expect(Object.keys(api).sort()).toEqual([
-      'applySfxGain', 'initAudio', 'playRaritySting', 'playSurveyPing', 'playWhoosh',
+      'AUDIO_PALETTE_POLICY', 'AUDIO_RESOLVER_VERSION', 'applySfxGain',
+      'createAudioIdentityProfile', 'createAudioSignature', 'createCreatureCallPlan',
+      'createCreatureExpressionCue', 'createDistantEcologyHintPlan',
+      'creatureExpressionAudioEvent', 'deserializeAudioSignature',
+      'distantEcologyAudioEvent', 'initAudio', 'playRaritySting', 'playSurveyPing',
+      'playWhoosh', 'serializeAudioSignature',
     ]);
     const before = {
       oscillators: log.oscillatorStarts,

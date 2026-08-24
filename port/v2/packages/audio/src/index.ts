@@ -6,15 +6,60 @@
    WebKit fallback), resume-on-suspended, and live getters for the two
    save-backed settings. The public facade stays inert until that seam exists.
 
-   ⚠ SCOPE: navigation/survey stings ONLY. The §15 audio plan (533-voice
-   creature synthesis, ambience, the capped mixer — D-AUDIO-CAP) is gated
-   behind the human listening test and deliberately absent here. */
+   ⚠ RUNTIME SCOPE: playback remains navigation/survey stings only. Arc 7's
+   pure identity/profile/cue contracts are exported below, but creature
+   synthesis, ambience, mixer, lifecycle, and listening proof remain absent. */
 import {
   playRaritySting as playRarityStingRaw,
   playSurveyPing as playSurveyPingRaw,
   playWhoosh as playWhooshRaw,
   applySfxGain as applySfxGainRaw,
 } from './stings.verbatim.js';
+
+export {
+  AUDIO_PALETTE_POLICY,
+  AUDIO_RESOLVER_VERSION,
+  createAudioIdentityProfile,
+  createAudioSignature,
+  createCreatureCallPlan,
+  deserializeAudioSignature,
+  serializeAudioSignature,
+} from './identity.js';
+export type {
+  AudioIdentityInput,
+  AudioIdentityProfile,
+  AudioKingdom,
+  AudioOwnerRoute,
+  AudioPalettePolicy,
+  AudioSignature,
+  AudioSignatureDecodeResult,
+  CanonicalAudioOwner,
+  CreatureCallPlan,
+  CreaturePhrasePlan,
+  CreaturePhrasePurpose,
+  ImmutableAudioPhenotype,
+  OrderedParentSeeds,
+  SerializedAudioSignature,
+  SurvivingAudioLineage,
+} from './identity.js';
+export { createDistantEcologyHintPlan } from './ecology.js';
+export type {
+  DistantEcologyHintInput,
+  DistantEcologyHintPlan,
+  EcologyHintGranularity,
+  SurfacedEcologyProjection,
+  SurfacedEcologySource,
+} from './ecology.js';
+export {
+  createCreatureExpressionCue,
+  creatureExpressionAudioEvent,
+  distantEcologyAudioEvent,
+} from './events.js';
+export type {
+  AudioEvent,
+  CreatureExpressionCue,
+  SettledCreatureAudioEvent,
+} from './events.js';
 
 let AC: AudioContext | null = null;
 let getSndOn: () => boolean = () => true;
