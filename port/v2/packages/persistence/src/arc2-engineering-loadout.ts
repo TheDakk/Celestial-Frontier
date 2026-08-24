@@ -6,7 +6,9 @@
    Older protected migrations and every absent/future/corrupt carrier remain
    explicit fail-closed outcomes. */
 import {
+  projectAcquisitionCapabilities,
   projectEngineeringCapabilities,
+  type AcquisitionCapabilitySnapshot,
   type Arc2EngineeringLoadout,
   type EngineeringCapabilitySnapshot,
 } from '@cf/domain-loot';
@@ -24,6 +26,13 @@ export type Arc2EngineeringLoadoutReadOutcome =
   | Readonly<{ kind: 'future-version'; version: number }>
   | Readonly<{ kind: 'corrupt' }>
   | Readonly<{ kind: 'legacy-protected'; reason: 'capacity' | 'extension-bytes' }>;
+
+export type Arc2AcquisitionCapabilitiesReadOutcome =
+  | Readonly<{
+    kind: 'loaded';
+    capabilities: AcquisitionCapabilitySnapshot;
+  }>
+  | Exclude<Arc2EngineeringLoadoutReadOutcome, { readonly kind: 'loaded' }>;
 
 /** Freshly decode one V5Extensions snapshot and issue the only registered
  * loadout/capability pair suitable for Arc 3 planning. */
@@ -43,5 +52,19 @@ export function readArc2EngineeringLoadout(
     kind: 'loaded',
     loadout,
     capabilities: projectEngineeringCapabilities(loadout),
+  });
+}
+
+/** Arc 4 boundary: issue contact/capture authority only from a fresh read of
+ * the same registered Arc 2 loadout. The private mint remains persistence-
+ * owned, and callers never supply a contact number. */
+export function readArc2AcquisitionCapabilities(
+  extensions: V5Extensions,
+): Arc2AcquisitionCapabilitiesReadOutcome {
+  const read = readArc2EngineeringLoadout(extensions);
+  if (read.kind !== 'loaded') return read;
+  return Object.freeze({
+    kind: 'loaded',
+    capabilities: projectAcquisitionCapabilities(read.loadout),
   });
 }

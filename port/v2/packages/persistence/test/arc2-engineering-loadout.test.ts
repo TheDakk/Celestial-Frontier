@@ -5,6 +5,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import * as lootRoot from '@cf/domain-loot';
 import {
+  isAcquisitionCapabilitySnapshot,
   isArc2EngineeringLoadout,
   isEngineeringCapabilitySnapshot,
   projectEngineeringCapabilities,
@@ -19,6 +20,7 @@ import {
   ARC2_LOOT_NAMESPACE,
   canonicalizeV5Extensions,
   prepareArc2LootLegacyMigration,
+  readArc2AcquisitionCapabilities,
   readArc2EngineeringLoadout,
 } from '@cf/persistence';
 
@@ -232,16 +234,50 @@ describe('@cf/persistence — fresh Arc 2 engineering loadout bridge', () => {
     expect(readArc2EngineeringLoadout(forged)).toEqual({ kind: 'corrupt' });
   });
 
+  it('issues capture contact authority only through a fresh carrier-backed loadout', () => {
+    const prepared = prepareArc2LootLegacyMigration({
+      extensions: {},
+      legacy: {
+        items: [['earpiece', 1], ['diplobeacon', 1], ['prismpendant', 1]],
+        equip: { ears: 'earpiece', necklace: 'diplobeacon' },
+        equipAff: { ears: { k: 'contact', v: 7, forId: 'earpiece' } },
+      },
+      capacity: 6,
+    });
+    expect(prepared.kind).toBe('prepared');
+    if (prepared.kind !== 'prepared') return;
+
+    const read = readArc2AcquisitionCapabilities(prepared.extensions);
+    expect(read.kind).toBe('loaded');
+    if (read.kind !== 'loaded') return;
+    expect(isAcquisitionCapabilitySnapshot(read.capabilities)).toBe(true);
+    expect(read.capabilities).toMatchObject({
+      inventoryRevision: 0,
+      contactCaptureBonus: 37,
+    });
+    expect(isAcquisitionCapabilitySnapshot({ ...read.capabilities })).toBe(false);
+
+    const reread = readArc2AcquisitionCapabilities(prepared.extensions);
+    expect(reread.kind).toBe('loaded');
+    if (reread.kind === 'loaded') {
+      expect(reread.capabilities).not.toBe(read.capabilities);
+      expect(reread.capabilities.fingerprint).toBe(read.capabilities.fingerprint);
+    }
+  });
+
   it('preserves absent, future, corrupt, and legacy-protected outcomes', () => {
     expect(readArc2EngineeringLoadout({})).toEqual({ kind: 'absent' });
+    expect(readArc2AcquisitionCapabilities({})).toEqual({ kind: 'absent' });
     const future = canonicalizeV5Extensions({
       inventory: { [ARC2_LOOT_NAMESPACE]: { version: 77, json: '{"future":true}' } },
     });
     expect(readArc2EngineeringLoadout(future)).toEqual({ kind: 'future-version', version: 77 });
+    expect(readArc2AcquisitionCapabilities(future)).toEqual({ kind: 'future-version', version: 77 });
     const corrupt = canonicalizeV5Extensions({
       inventory: { [ARC2_LOOT_NAMESPACE]: { version: 1, json: '{"kind":"inventory"}' } },
     });
     expect(readArc2EngineeringLoadout(corrupt)).toEqual({ kind: 'corrupt' });
+    expect(readArc2AcquisitionCapabilities(corrupt)).toEqual({ kind: 'corrupt' });
 
     const protectedWrite = prepareArc2LootLegacyMigration({
       extensions: {},
@@ -251,6 +287,8 @@ describe('@cf/persistence — fresh Arc 2 engineering loadout bridge', () => {
     expect(protectedWrite.kind).toBe('prepared');
     if (protectedWrite.kind === 'prepared') {
       expect(readArc2EngineeringLoadout(protectedWrite.extensions))
+        .toEqual({ kind: 'legacy-protected', reason: 'capacity' });
+      expect(readArc2AcquisitionCapabilities(protectedWrite.extensions))
         .toEqual({ kind: 'legacy-protected', reason: 'capacity' });
     }
   });

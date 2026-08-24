@@ -16,6 +16,7 @@ import { inspectGear } from './presentation.js';
 import { deepFreeze, fnv1a32 } from './internal.js';
 
 export const ENGINEERING_CAPABILITY_SCHEMA = 'cf-v2-engineering-capabilities/v1' as const;
+export const ACQUISITION_CAPABILITY_SCHEMA = 'cf-v2-acquisition-capabilities/v1' as const;
 
 export interface EngineeringCapabilitySnapshot {
   readonly schema: typeof ENGINEERING_CAPABILITY_SCHEMA;
@@ -34,7 +35,19 @@ export interface EngineeringCapabilitySnapshot {
   readonly stellarSkimGuard: boolean;
 }
 
+/** Capture/contact authority derived from the same persistence-issued Arc 2
+ * loadout as engineering. Contact is stored as whole legacy points: the
+ * acquisition planner owns the later `points * .015` probability rule. */
+export interface AcquisitionCapabilitySnapshot {
+  readonly schema: typeof ACQUISITION_CAPABILITY_SCHEMA;
+  readonly fingerprint: string;
+  readonly inventoryRevision: number;
+  readonly equippedInstanceIds: readonly string[];
+  readonly contactCaptureBonus: number;
+}
+
 const CAPABILITIES = new WeakSet<object>();
+const ACQUISITION_CAPABILITIES = new WeakSet<object>();
 
 function finiteEffect(value: number, label: string): number {
   if (!Number.isFinite(value) || value < 0) {
@@ -48,14 +61,17 @@ function fingerprint(parts: readonly string[]): string {
   return `ec1:${canonical.length}:${fnv1a32(canonical).toString(16).padStart(8, '0')}`;
 }
 
-/** Derive exactly the engineering capabilities that the legacy runtime reads
- * from worn gear and built systems. Counts above one never multiply a system:
- * legacy `_equipBonus` added a built system once when itemCount(id) was > 0. */
-export function projectEngineeringCapabilities(
-  loadout: Arc2EngineeringLoadout,
-): EngineeringCapabilitySnapshot {
+interface FoldedLoadoutEffects {
+  readonly inventoryRevision: number;
+  readonly equippedInstanceIds: readonly string[];
+  readonly systemIds: readonly string[];
+  readonly totals: ReadonlyMap<string, number>;
+  readonly sourceParts: readonly string[];
+}
+
+function foldLoadoutEffects(loadout: Arc2EngineeringLoadout): FoldedLoadoutEffects {
   if (!isArc2EngineeringLoadout(loadout)) {
-    throw new TypeError('engineering capability projection requires a registered Arc 2 loadout');
+    throw new TypeError('capability projection requires a registered Arc 2 loadout');
   }
   const { inventory, stackableCounts } = loadout;
   const entryById = new Map(inventory.entries.map(({ instance }) => [instance.instanceId, instance]));
@@ -68,7 +84,7 @@ export function projectEngineeringCapabilities(
 
   for (const binding of inventory.equipped) {
     const instance = entryById.get(binding.instanceId);
-    if (!instance) throw new Error(`equipped engineering instance ${binding.instanceId} is absent`);
+    if (!instance) throw new Error(`equipped capability instance ${binding.instanceId} is absent`);
     sourceParts.push(`equipped:${binding.slot}:${binding.instanceId}:${fnv1a32(encodeGearInstance(instance))}`);
     for (const effect of inspectGear(instance).effects) {
       add(effect.key, effect.value, `equipped ${binding.instanceId} ${effect.key}`);
@@ -86,12 +102,28 @@ export function projectEngineeringCapabilities(
     }
   }
 
-  const equippedInstanceIds = inventory.equipped.map(({ instanceId }) => instanceId);
+  return Object.freeze({
+    inventoryRevision: inventory.revision,
+    equippedInstanceIds: Object.freeze(inventory.equipped.map(({ instanceId }) => instanceId)),
+    systemIds: Object.freeze(systemIds),
+    totals,
+    sourceParts: Object.freeze(sourceParts),
+  });
+}
+
+/** Derive exactly the engineering capabilities that the legacy runtime reads
+ * from worn gear and built systems. Counts above one never multiply a system:
+ * legacy `_equipBonus` added a built system once when itemCount(id) was > 0. */
+export function projectEngineeringCapabilities(
+  loadout: Arc2EngineeringLoadout,
+): EngineeringCapabilitySnapshot {
+  const folded = foldLoadoutEffects(loadout);
+  const { totals, systemIds, sourceParts, equippedInstanceIds, inventoryRevision } = folded;
   const hasSystem = (id: string): boolean => systemIds.includes(id);
   const capability: EngineeringCapabilitySnapshot = deepFreeze({
     schema: ENGINEERING_CAPABILITY_SCHEMA,
     fingerprint: fingerprint(sourceParts),
-    inventoryRevision: inventory.revision,
+    inventoryRevision,
     equippedInstanceIds,
     systemIds,
     miningYieldBonus: finiteEffect(totals.get('yield') ?? 0, 'mining yield bonus'),
@@ -106,9 +138,41 @@ export function projectEngineeringCapabilities(
   return capability;
 }
 
+/** Derive capture contact points from exact equipped instances. Unworn gear,
+ * caller-authored numbers and structural loadout clones are never authority. */
+export function projectAcquisitionCapabilities(
+  loadout: Arc2EngineeringLoadout,
+): AcquisitionCapabilitySnapshot {
+  const folded = foldLoadoutEffects(loadout);
+  const capability: AcquisitionCapabilitySnapshot = deepFreeze({
+    schema: ACQUISITION_CAPABILITY_SCHEMA,
+    fingerprint: fingerprint([
+      ...folded.sourceParts,
+      `contact:${finiteEffect(folded.totals.get('contact') ?? 0, 'contact capture bonus')}`,
+    ]).replace(/^ec1:/u, 'ac1:'),
+    inventoryRevision: folded.inventoryRevision,
+    equippedInstanceIds: folded.equippedInstanceIds,
+    contactCaptureBonus: finiteEffect(
+      folded.totals.get('contact') ?? 0,
+      'contact capture bonus',
+    ),
+  });
+  ACQUISITION_CAPABILITIES.add(capability);
+  return capability;
+}
+
 export function isEngineeringCapabilitySnapshot(value: unknown): value is EngineeringCapabilitySnapshot {
   return typeof value === 'object'
     && value !== null
     && CAPABILITIES.has(value)
     && (value as EngineeringCapabilitySnapshot).schema === ENGINEERING_CAPABILITY_SCHEMA;
+}
+
+export function isAcquisitionCapabilitySnapshot(
+  value: unknown,
+): value is AcquisitionCapabilitySnapshot {
+  return typeof value === 'object'
+    && value !== null
+    && ACQUISITION_CAPABILITIES.has(value)
+    && (value as AcquisitionCapabilitySnapshot).schema === ACQUISITION_CAPABILITY_SCHEMA;
 }

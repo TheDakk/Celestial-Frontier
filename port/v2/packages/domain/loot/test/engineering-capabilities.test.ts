@@ -3,9 +3,11 @@ import * as lootRoot from '@cf/domain-loot';
 import {
   GEAR_INVENTORY_SCHEMA,
   decodeGearInventory,
+  isAcquisitionCapabilitySnapshot,
   isEngineeringCapabilitySnapshot,
   makeGearSourceActionId,
   migrateLegacyGear,
+  projectAcquisitionCapabilities,
   projectEngineeringCapabilities,
 } from '@cf/domain-loot';
 import { registerArc2EngineeringLoadout } from '@cf/domain-loot/engineering-internal';
@@ -28,6 +30,23 @@ function equippedInventory() {
     schema: GEAR_INVENTORY_SCHEMA,
     revision: 7,
     capacity: 8,
+    entries: migrated.instances.map((instance) => ({ instance, favorite: false, locked: false })),
+    equipped: migrated.equipped,
+    pendingRewards: [],
+  }));
+}
+
+function contactInventory() {
+  const migrated = migrateLegacyGear({
+    sourceActionId,
+    itemCounts: [['earpiece', 1], ['diplobeacon', 1], ['prismpendant', 1]],
+    equipped: { ears: 'earpiece', necklace: 'diplobeacon' },
+    equippedAffixes: { ears: { k: 'contact', v: 7, forId: 'earpiece' } },
+  });
+  return decodeGearInventory(JSON.stringify({
+    schema: GEAR_INVENTORY_SCHEMA,
+    revision: 11,
+    capacity: 6,
     entries: migrated.instances.map((instance) => ({ instance, favorite: false, locked: false })),
     equipped: migrated.equipped,
     pendingRewards: [],
@@ -96,6 +115,50 @@ describe('@cf/domain-loot — registered engineering capabilities', () => {
     expect(() => looseProjector(inventory, []))
       .toThrow(/registered Arc 2 loadout/);
     expect(() => projectEngineeringCapabilities({ ...registered }))
+      .toThrow(/registered Arc 2 loadout/);
+  });
+
+  it('derives registered capture contact points only from exact equipped instances', () => {
+    const inventory = contactInventory();
+    const loadout = registerArc2EngineeringLoadout(inventory, [
+      { baseId: 'jumpdrive', count: 1 },
+    ]);
+    const capability = projectAcquisitionCapabilities(loadout);
+
+    expect(capability).toEqual({
+      schema: 'cf-v2-acquisition-capabilities/v1',
+      fingerprint: expect.stringMatching(/^ac1:/),
+      inventoryRevision: 11,
+      equippedInstanceIds: inventory.equipped.map(({ instanceId }) => instanceId),
+      contactCaptureBonus: 37,
+    });
+    expect(Object.isFrozen(capability)).toBe(true);
+    expect(Object.isFrozen(capability.equippedInstanceIds)).toBe(true);
+    expect(isAcquisitionCapabilitySnapshot(capability)).toBe(true);
+    expect(isAcquisitionCapabilitySnapshot({ ...capability })).toBe(false);
+
+    const unequippedPendant = inventory.entries.find(({ instance }) =>
+      instance.baseId === 'prismpendant')!.instance.instanceId;
+    expect(capability.equippedInstanceIds).not.toContain(unequippedPendant);
+  });
+
+  it('binds capture capability to the registered loadout and rejects loose authority', () => {
+    const inventory = contactInventory();
+    const loadout = registerArc2EngineeringLoadout(inventory, []);
+    const capability = projectAcquisitionCapabilities(loadout);
+    const raw = JSON.parse(JSON.stringify(inventory)) as {
+      equipped: Array<{ slot: string; instanceId: string }>;
+    };
+    raw.equipped = raw.equipped.filter(({ slot }) => slot !== 'necklace');
+    const withoutNecklace = projectAcquisitionCapabilities(registerArc2EngineeringLoadout(
+      decodeGearInventory(JSON.stringify(raw)),
+      [],
+    ));
+    expect(withoutNecklace.contactCaptureBonus).toBe(17);
+    expect(withoutNecklace.fingerprint).not.toBe(capability.fingerprint);
+    expect(() => projectAcquisitionCapabilities({ ...loadout }))
+      .toThrow(/registered Arc 2 loadout/);
+    expect(() => (projectAcquisitionCapabilities as (...args: unknown[]) => unknown)(inventory))
       .toThrow(/registered Arc 2 loadout/);
   });
 });
