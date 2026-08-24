@@ -96,6 +96,7 @@ import {
   type CanonicalCF1Address, type ProvenGalaxy, type ProvenStar, type ProvenPlanet,
   type ShipVisualState,
 } from '@cf/scene';
+import type { EngineeringStateV2 } from '@cf/domain-opportunity';
 import { galaxyProfile, galaxyHaze, systemFor, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
 import { SYS_R, UCELL, OBS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED, SOL_POS } from '@cf/domain-worldconfig';
 import { galaxyName, starName, properName } from '@cf/domain-naming';
@@ -130,6 +131,19 @@ import {
   type Arc2InventoryOperation,
 } from './inventory-actions.js';
 import { InventoryPanelController } from './inventory-panel.js';
+import {
+  deriveArc3MineAction,
+  deriveArc3SkimAction,
+  prepareArc3AppBootstrap,
+  publishArc3LegacyCompatibilityFields,
+  publishArc3MiningFields,
+  publishArc3SkimFields,
+  stageArc3BootstrapLegacyProjection,
+  verifyArc3CommittedAction,
+  type Arc3AddressInventoryDiagnostics,
+  type Arc3AppDerivation,
+  type Arc3AppDerivationOutcome,
+} from './arc3-engineering-actions.js';
 import {
   createF4RuntimeAuthority,
   type F4RuntimeAuthority,
@@ -194,6 +208,15 @@ let arc2LootState: Arc2LootStateV1 | null = null;
 let arc2LootBootstrapPending = false;
 let arc2LootProtection: string | null = null;
 let lastArc2LootOutcome: string | null = null;
+let arc3EngineeringState: EngineeringStateV2 | null = null;
+let arc3EngineeringBootstrapPending = false;
+let arc3EngineeringBootstrapCandidate: SaveStateV2 | null = null;
+let arc3EngineeringProtection: string | null = null;
+let arc3AddressDiagnostics: Arc3AddressInventoryDiagnostics | null = null;
+let arc3LegacyDiagnostics: unknown = null;
+let lastArc3BootstrapOutcome: string | null = null;
+let lastArc3EngineeringOutcome: string | null = null;
+let lastArc3ProjectionDiagnostics: unknown = null;
 let f4AuthorityReloadScheduled = false;
 let smokeRejectNextF4HideCheckpoint = false;
 let lastF4HideWitness: Readonly<{
@@ -229,12 +252,18 @@ async function ensureF4RevisionCurrent(runtime: F4RuntimeAuthority): Promise<boo
   }
 }
 async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boolean> {
-  if (!f4SeedBootstrapPending && !arc2LootBootstrapPending) return true;
+  if (!f4SeedBootstrapPending && !arc2LootBootstrapPending && !arc3EngineeringBootstrapPending) return true;
   if (runtime !== f4Runtime || !runtime.diagnostics().leaseOwned) return false;
   if (f4SeedBootstrapInFlight) return f4SeedBootstrapInFlight;
   const productBootstrapWasPending = arc2LootBootstrapPending;
+  const engineeringBootstrapWasPending = arc3EngineeringBootstrapPending;
+  const engineeringCandidate = arc3EngineeringBootstrapCandidate;
   const run = (async (): Promise<boolean> => {
+    let durable = false;
     try {
+      if (engineeringBootstrapWasPending && engineeringCandidate === null) {
+        throw new Error('Arc 3 bootstrap candidate is missing');
+      }
       if (productBootstrapWasPending) {
         const rejector = (window as unknown as Record<string, unknown>).__cfRejectArc2ProductBootstrap;
         if (typeof rejector === 'function' && (rejector as (payload: string) => unknown)(JSON.stringify({
@@ -245,7 +274,23 @@ async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boole
           throw new Error('slice-smoke injected Arc 2 product bootstrap rejection');
         }
       }
-      const seeded = await runtime.commit(save, Date.now());
+      if (engineeringBootstrapWasPending) {
+        const rejector = (window as unknown as Record<string, unknown>).__cfRejectArc3EngineeringBootstrap;
+        const payload = JSON.stringify({
+          schema: 'cf-v2-arc3-bootstrap-control/v1',
+          documentToken: DOCUMENT_TOKEN,
+          stateRevision: arc3EngineeringState?.revision ?? null,
+          candidateReady: engineeringCandidate !== null,
+          projectionDiagnostics: Array.isArray(lastArc3ProjectionDiagnostics)
+            ? lastArc3ProjectionDiagnostics.length : null,
+        });
+        if (typeof rejector === 'function'
+          && (rejector as (payload: string) => unknown)(payload) === true) {
+          throw new Error('slice-smoke injected Arc 3 engineering bootstrap rejection');
+        }
+      }
+      if (engineeringBootstrapWasPending) lastArc3BootstrapOutcome = 'commit-attempted';
+      const seeded = await runtime.commit(engineeringCandidate ?? save, Date.now());
       lastPersistenceOutcome = seeded.kind === 'committed'
         ? `seed-committed:${seeded.revision}` : `seed-${seeded.kind}`;
       if (seeded.kind !== 'committed') {
@@ -254,30 +299,60 @@ async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boole
             runtime,
             `seed bootstrap observed newer revision ${seeded.actualRevision}; reloading stable authority`,
           );
-          return false;
         }
         throw new Error(`F4 authority bootstrap refused: ${seeded.kind}`);
       }
+      durable = true;
+      if (engineeringBootstrapWasPending) {
+        publishArc3LegacyCompatibilityFields(save, seeded.saved.canonicalState);
+        arc3EngineeringBootstrapCandidate = null;
+        lastArc3BootstrapOutcome = 'committed-published';
+      }
       f4SeedBootstrapPending = false;
       arc2LootBootstrapPending = false;
+      arc3EngineeringBootstrapPending = false;
       if (productBootstrapWasPending) {
         arc2LootProtection = null;
         inventoryPanelController.setState(arc2LootState);
       }
+      if (engineeringBootstrapWasPending) arc3EngineeringProtection = null;
       f4LastCheckpointAt = performance.now();
       return true;
     } catch (error) {
+      /* Any pre-durable bootstrap refusal is terminal for this runtime. Clear
+         every staged bootstrap bit before releasing its lease so a later
+         visibility edge cannot retry F4 alone with product extensions that
+         never crossed their compatibility-state boundary. */
+      f4SeedBootstrapPending = false;
+      arc2LootBootstrapPending = false;
+      arc3EngineeringBootstrapPending = false;
+      arc3EngineeringBootstrapCandidate = null;
       if (productBootstrapWasPending) {
         arc2LootState = null;
-        arc2LootBootstrapPending = false;
         arc2LootProtection = 'bootstrap-failed';
         inventoryPanelController.setState(null);
+      }
+      if (engineeringBootstrapWasPending) {
+        arc3EngineeringState = null;
+        arc3EngineeringProtection = durable
+          ? 'committed-publication-reload' : 'bootstrap-failed';
+        lastArc3BootstrapOutcome = durable
+          ? 'committed-publication-reload' : 'rejected';
       }
       persistHold = 'protected-payload';
       persistenceBootKind = 'transient-protected';
       persistenceProtectedDetail = error instanceof Error ? error.message : String(error);
       runtime.setAnswerable(false);
       stopF4Heartbeat();
+      if (durable) {
+        scheduleF4AuthorityConvergenceReload(
+          runtime,
+          `Arc 3 bootstrap committed; publication ${persistenceProtectedDetail}`,
+        );
+      } else {
+        await runtime.release().catch(() => undefined);
+        if (f4Runtime === runtime) f4Runtime = null;
+      }
       return false;
     }
   })();
@@ -286,7 +361,8 @@ async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boole
   finally { if (f4SeedBootstrapInFlight === run) f4SeedBootstrapInFlight = null; }
 }
 function f4RuntimeMayMutate(runtime: F4RuntimeAuthority | null = f4Runtime): runtime is F4RuntimeAuthority {
-  if (!runtime || persistHold || f4SeedBootstrapPending || arc2LootBootstrapPending) return false;
+  if (!runtime || persistHold || f4SeedBootstrapPending
+    || arc2LootBootstrapPending || arc3EngineeringBootstrapPending) return false;
   const diagnostics = runtime.diagnostics();
   return diagnostics.leaseOwned && !diagnostics.staleBlocked;
 }
@@ -314,7 +390,7 @@ const heartbeatF4 = async (): Promise<void> => {
   finally { if (f4HeartbeatInFlight === run) f4HeartbeatInFlight = null; }
   if (heartbeatOwned) {
     if (!await ensureF4RevisionCurrent(runtime)) return;
-    if ((f4SeedBootstrapPending || arc2LootBootstrapPending)
+    if ((f4SeedBootstrapPending || arc2LootBootstrapPending || arc3EngineeringBootstrapPending)
       && !await ensureF4SeedBootstrap(runtime)) return;
     if (f4RuntimeMayAnswer(runtime)) runtime.setAnswerable(app.ticker?.started === true);
   }
@@ -324,7 +400,7 @@ const settleF4Heartbeat = async (): Promise<void> => {
   if (f4HeartbeatInFlight) await f4HeartbeatInFlight;
 };
 const startF4Heartbeat = (): void => {
-  if (!f4Runtime || !f4PageVisible() || f4HeartbeatTimer !== 0) return;
+  if (!f4Runtime || persistHold || !f4PageVisible() || f4HeartbeatTimer !== 0) return;
   f4HeartbeatTimer = window.setInterval(() => { void heartbeatF4(); }, F4_HEARTBEAT_MS);
 };
 let persistedPagehideCount = 0;
@@ -382,9 +458,10 @@ const showF4 = async (): Promise<void> => {
   const outcome = await runtime.setVisible(true);
   if (outcome.kind === 'owned') {
     if (!await ensureF4RevisionCurrent(runtime)) return;
-    if ((f4SeedBootstrapPending || arc2LootBootstrapPending)
+    if ((f4SeedBootstrapPending || arc2LootBootstrapPending || arc3EngineeringBootstrapPending)
       && !await ensureF4SeedBootstrap(runtime)) return;
-    runtime.setAnswerable(app.ticker?.started === true);
+    if (persistHold || runtime !== f4Runtime) return;
+    runtime.setAnswerable(f4RuntimeMayAnswer(runtime) && app.ticker?.started === true);
   } else runtime.setAnswerable(false);
   startF4Heartbeat();
 };
@@ -4425,7 +4502,7 @@ async function persistView(replacementOwner: ReplacementTransaction | null = nul
 let _persistT = 0;
 let importWriteInFlight = false;
 let activePersist: Promise<boolean> | null = null;
-let arc2ActionInFlight = false;
+let productActionInFlight = false;
 let smokeRejectNextPersist = false;
 let smokeImportRaceRelease: (() => void) | null = null;
 
@@ -4493,7 +4570,7 @@ async function commitArc2InventoryAction(
   const actionNow = Date.now();
   let settleActionBarrier: (committed: boolean) => void = () => undefined;
   const actionBarrier = new Promise<boolean>((resolve) => { settleActionBarrier = resolve; });
-  arc2ActionInFlight = true;
+  productActionInFlight = true;
   activePersist = actionBarrier;
   let durable = false;
   try {
@@ -4577,10 +4654,195 @@ async function commitArc2InventoryAction(
       state: null,
     });
   } finally {
-    arc2ActionInFlight = false;
+    productActionInFlight = false;
     settleActionBarrier(durable);
     if (activePersist === actionBarrier) activePersist = null;
   }
+}
+
+type Arc3AppActionOperation = 'mine-world' | 'skim-star';
+type Arc3AppActionOutcome = Readonly<{
+  kind: 'committed' | 'unavailable' | 'refused';
+  operation: Arc3AppActionOperation;
+  detail: string;
+  result: unknown;
+}>;
+type Arc3DeriveContext = Readonly<{
+  draft: SaveStateV2;
+  extensions: V5Extensions;
+  activePlayMs: number;
+  receiptOrdinal: number;
+  codecNow: number;
+}>;
+let smokeRejectNextArc3Publication = false;
+
+async function commitArc3EngineeringAction(spec: Readonly<{
+  operation: Arc3AppActionOperation;
+  receiptKind: string;
+  derive: (context: Arc3DeriveContext) => Arc3AppDerivationOutcome;
+  publish: (target: SaveStateV2, committed: SaveStateV2) => void;
+}>): Promise<Arc3AppActionOutcome> {
+  const unavailable = (detail: string): Arc3AppActionOutcome => Object.freeze({
+    kind: 'unavailable', operation: spec.operation, detail, result: null,
+  });
+  const runtime = f4Runtime;
+  if (arc3EngineeringState === null || arc3EngineeringProtection !== null) {
+    return unavailable(arc3EngineeringProtection ?? 'engineering-unavailable');
+  }
+  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    return unavailable('write-authority-unavailable');
+  }
+  await settleF4Heartbeat();
+  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    return unavailable('write-authority-changed');
+  }
+
+  const codecNow = Date.now();
+  const priorSessionRng = runtime.sessionRng;
+  const plannedHolder: { value: Arc3AppDerivation | null } = { value: null };
+  let settleActionBarrier: (committed: boolean) => void = () => undefined;
+  const actionBarrier = new Promise<boolean>((resolve) => { settleActionBarrier = resolve; });
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  let durable = false;
+  try {
+    const outcome = await runtime.commitAction({
+      state: save,
+      operation: `arc3.${spec.operation}`,
+      receiptKind: spec.receiptKind,
+      codecNow,
+      derive: ({ draft, extensions, activePlayMs, receiptOrdinal }) => {
+        const derived = spec.derive({
+          draft, extensions, activePlayMs, receiptOrdinal, codecNow,
+        });
+        if (derived.kind !== 'ready') throw new Error(derived.detail);
+        plannedHolder.value = derived.derivation;
+        return {
+          state: derived.derivation.state,
+          extensionWrites: derived.derivation.extensionWrites,
+          witness: derived.derivation.witness,
+        };
+      },
+    });
+    lastArc3EngineeringOutcome = `${spec.operation}-${outcome.kind}`;
+    if (outcome.kind !== 'committed') {
+      if (outcome.kind === 'stale' || outcome.kind === 'duplicate-receipt'
+        || outcome.kind === 'lost' || outcome.kind === 'lease-unavailable'
+        || outcome.kind === 'protected') {
+        scheduleF4AuthorityConvergenceReload(
+          runtime,
+          `Arc 3 ${spec.operation} authority ${outcome.kind}`,
+        );
+      }
+      const detail = outcome.kind === 'rejected' ? outcome.message : outcome.kind;
+      return Object.freeze({
+        kind: 'refused', operation: spec.operation, detail, result: null,
+      });
+    }
+
+    /* Durability is terminal. Any verification/publication failure converges
+       from the committed carrier and never turns into a second action. */
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = `arc3-${spec.operation}-committed:${outcome.revision}`;
+    try {
+      const committedPlan = plannedHolder.value;
+      if (committedPlan === null) throw new Error('derivation-missing-after-commit');
+      if (smokeRejectNextArc3Publication) {
+        smokeRejectNextArc3Publication = false;
+        throw new Error('slice-smoke injected Arc 3 publication rejection');
+      }
+      if (outcome.plan.receiptOrdinal !== committedPlan.receiptOrdinal
+        || outcome.receipt.ordinal !== committedPlan.receiptOrdinal
+        || outcome.receipt.witness !== committedPlan.witness) {
+        throw new Error('receipt-plan-mismatch');
+      }
+      if (outcome.authority.sessionRng.seed !== priorSessionRng.seed
+        || JSON.stringify(outcome.authority.sessionRng.draws) !== JSON.stringify(priorSessionRng.draws)
+        || outcome.authority.sessionRng.ordinal !== priorSessionRng.ordinal + 1) {
+        throw new Error('deterministic-action-rng-mismatch');
+      }
+      const verified = verifyArc3CommittedAction({
+        extensions: runtime.extensions,
+        committed: outcome.state,
+        expectedState: committedPlan.nextEngineeringState,
+        codecNow,
+        minedTimestampIntent: committedPlan.minedTimestampIntent,
+      });
+      if (verified.kind !== 'verified') throw new Error(verified.detail);
+      spec.publish(save, outcome.state);
+      arc3EngineeringState = verified.state;
+      lastArc3ProjectionDiagnostics = verified.projection.diagnostics;
+      return Object.freeze({
+        kind: 'committed', operation: spec.operation,
+        detail: `revision:${outcome.revision}`,
+        result: committedPlan.result,
+      });
+    } catch (error) {
+      arc3EngineeringState = null;
+      const detail = error instanceof Error ? error.message : String(error);
+      arc3EngineeringProtection = 'committed-publication-reload';
+      lastArc3EngineeringOutcome = `${spec.operation}-committed-publication-reload`;
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        `Arc 3 ${spec.operation} committed at revision ${outcome.revision}; publication ${detail}`,
+      );
+      return Object.freeze({
+        kind: 'committed', operation: spec.operation,
+        detail: `revision:${outcome.revision};publication-reload`, result: null,
+      });
+    }
+  } catch (error) {
+    lastArc3EngineeringOutcome = `${spec.operation}-rejected`;
+    return Object.freeze({
+      kind: 'refused', operation: spec.operation,
+      detail: error instanceof Error ? error.message : String(error), result: null,
+    });
+  } finally {
+    productActionInFlight = false;
+    settleActionBarrier(durable);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
+
+async function mineCurrentSurface(): Promise<Arc3AppActionOutcome> {
+  const currentSurface = nav;
+  if (currentSurface.mode !== 'surface') {
+    return Object.freeze({
+      kind: 'unavailable', operation: 'mine-world',
+      detail: 'current-surface-required', result: null,
+    });
+  }
+  return commitArc3EngineeringAction({
+    operation: 'mine-world',
+    receiptKind: 'arc3-mine-world',
+    derive: ({ draft, extensions, activePlayMs, receiptOrdinal, codecNow }) =>
+      deriveArc3MineAction({
+        draft, extensions, currentSurface, activePlayMs, receiptOrdinal, codecNow,
+      }),
+    publish: publishArc3MiningFields,
+  });
+}
+
+async function skimCurrentSystem(): Promise<Arc3AppActionOutcome> {
+  const currentSystem = nav;
+  if (currentSystem.mode !== 'system') {
+    return Object.freeze({
+      kind: 'unavailable', operation: 'skim-star',
+      detail: 'current-system-required', result: null,
+    });
+  }
+  return commitArc3EngineeringAction({
+    operation: 'skim-star',
+    receiptKind: 'arc3-skim-star',
+    derive: ({ draft, extensions, activePlayMs, receiptOrdinal, codecNow }) =>
+      deriveArc3SkimAction({
+        draft, extensions, currentSystem, activePlayMs, receiptOrdinal, codecNow,
+      }),
+    publish: publishArc3SkimFields,
+  });
 }
 
 async function smokeCommitF4Outcome(): Promise<unknown> {
@@ -4722,7 +4984,7 @@ const READ_ONLY_MUTATION_SELECTOR = [
   '[data-sel="tutbtn"]', '[data-sel="tutskip"]',
 ].join(',');
 function playerMutationsBlocked(): boolean {
-  return smokeForceReadOnly || arc2ActionInFlight || !f4RuntimeMayMutate();
+  return smokeForceReadOnly || productActionInFlight || !f4RuntimeMayMutate();
 }
 function blockPlayerMutation(action: string): boolean {
   if (!playerMutationsBlocked()) return false;
@@ -5106,6 +5368,15 @@ async function loadSave(): Promise<void> {
   arc2LootBootstrapPending = false;
   arc2LootProtection = null;
   lastArc2LootOutcome = null;
+  arc3EngineeringState = null;
+  arc3EngineeringBootstrapPending = false;
+  arc3EngineeringBootstrapCandidate = null;
+  arc3EngineeringProtection = null;
+  arc3AddressDiagnostics = null;
+  arc3LegacyDiagnostics = null;
+  lastArc3BootstrapOutcome = null;
+  lastArc3EngineeringOutcome = null;
+  lastArc3ProjectionDiagnostics = null;
 
   const useProtectedFresh = (
     kind: Exclude<PersistenceBootKind, 'fresh-v5' | 'migrated-v4' | 'current-v5'>,
@@ -5254,8 +5525,10 @@ async function loadSave(): Promise<void> {
   const savedRoute = resolveViewToNav(
     bootIngress.savedView === undefined ? null : bootIngress.savedView,
   );
+  let savedEngineeringRoute: NavState | null = null;
   if (savedRoute.ok && navigationAuthorityFailure(savedRoute.state) === null) {
     nav = savedRoute.state;
+    savedEngineeringRoute = savedRoute.state;
     save.savedView = navToView(nav);
     savedRouteWriteHeld = false;
   } else {
@@ -5266,6 +5539,7 @@ async function loadSave(): Promise<void> {
   /* Atlas rows remain historical records even when a route cannot be proven.
      Only a non-home proven target becomes actionable; source-derived fields
      replace tolerant display aliases without changing ids or local ledgers. */
+  const provenAtlasEngineeringRoutes: NavState[] = [];
   for (const [, entry] of save.logMap) {
     const rawWhere = bootIngress.atlasWhere.get(entry);
     if (rawWhere === null || rawWhere === undefined) {
@@ -5275,6 +5549,7 @@ async function loadSave(): Promise<void> {
     const route = resolveViewToNav(rawWhere);
     if (route.ok && route.state.mode !== 'universe') {
       atlasRouteStates.set(entry, route.state);
+      provenAtlasEngineeringRoutes.push(route.state);
       entry.where = navToView(route.state);
     } else if (route.ok || route.reason !== 'source-error') {
       entry.where = null;
@@ -5351,6 +5626,56 @@ async function loadSave(): Promise<void> {
       arc2LootProtection = `${loot.reason}${loot.version === undefined ? '' : `:${loot.version}`}`;
     }
   }
+  /* Arc 3 owns full-address engineering progress. An absent carrier may use
+     only the finite source-proven routes already assembled above: the live
+     route, the independently successful saved route, and Atlas sidecars.
+     Bare-seed collisions/misses protect Arc 3 alone. A prepared carrier (or
+     a current carrier's repaired v4 mirror) joins the same first F4/Arc 2
+     lease-fenced commit instead of creating a second bootstrap write. */
+  if (!persistHold) {
+    const prepared = prepareArc3AppBootstrap({
+      extensions: initialExtensions,
+      save,
+      sources: {
+        current: nav,
+        saved: savedEngineeringRoute,
+        atlas: provenAtlasEngineeringRoutes,
+      },
+    });
+    arc3AddressDiagnostics = prepared.addressDiagnostics;
+    arc3LegacyDiagnostics = prepared.legacyDiagnostics;
+    if (prepared.kind === 'prepared' || prepared.kind === 'already-loaded') {
+      try {
+        const staged = stageArc3BootstrapLegacyProjection({
+          source: save,
+          state: prepared.state,
+          codecNow: now,
+          intent: prepared.kind === 'prepared'
+            ? 'legacy-bootstrap' : 'loaded-reconciliation',
+        });
+        lastArc3ProjectionDiagnostics = staged.projection.diagnostics;
+        arc3EngineeringState = prepared.state;
+        if (prepared.kind === 'prepared') {
+          initialExtensions = prepared.extensions;
+          arc3EngineeringBootstrapCandidate = staged.candidate;
+          arc3EngineeringBootstrapPending = true;
+          lastArc3BootstrapOutcome = 'prepared';
+        } else if (staged.changed) {
+          arc3EngineeringBootstrapCandidate = staged.candidate;
+          arc3EngineeringBootstrapPending = true;
+          lastArc3BootstrapOutcome = 'reconciliation-prepared';
+        } else lastArc3BootstrapOutcome = 'already-aligned';
+      } catch (error) {
+        arc3EngineeringState = null;
+        arc3EngineeringBootstrapCandidate = null;
+        arc3EngineeringProtection = `legacy-projection:${error instanceof Error ? error.message : String(error)}`;
+        lastArc3BootstrapOutcome = 'projection-rejected';
+      }
+    } else {
+      arc3EngineeringProtection = `${prepared.reason}:${prepared.detail}`;
+      lastArc3BootstrapOutcome = 'protected';
+    }
+  }
   /* A newly prepared or reconciled carrier is not player-visible authority
      until its product bootstrap transaction commits. Persisted aligned
      carriers remain safely inspectable even if F4 later enters read-only. */
@@ -5384,7 +5709,7 @@ async function loadSave(): Promise<void> {
       if (leaseOutcome.kind === 'owned' && !await ensureF4RevisionCurrent(runtime)) {
         throw new Error(persistenceProtectedDetail || 'F4 revision verification failed');
       }
-      if ((f4SeedBootstrapPending || arc2LootBootstrapPending)
+      if ((f4SeedBootstrapPending || arc2LootBootstrapPending || arc3EngineeringBootstrapPending)
         && leaseOutcome.kind === 'owned') {
         if (!await ensureF4SeedBootstrap(runtime)) {
           throw new Error(persistenceProtectedDetail || 'F4/product authority bootstrap failed');
@@ -5402,6 +5727,10 @@ async function loadSave(): Promise<void> {
       }
       arc2LootBootstrapPending = false;
       arc2LootProtection ||= 'bootstrap-failed';
+      if (arc3EngineeringBootstrapPending) arc3EngineeringState = null;
+      arc3EngineeringBootstrapPending = false;
+      arc3EngineeringBootstrapCandidate = null;
+      arc3EngineeringProtection ||= 'bootstrap-failed';
       stopF4Heartbeat();
       persistHold = 'protected-payload';
       persistenceBootKind = 'transient-protected';
@@ -5686,6 +6015,7 @@ async function loadSave(): Promise<void> {
           authorityBootKind: f4AuthorityBootKind,
           seedBootstrapPending: f4SeedBootstrapPending,
           productBootstrapPending: arc2LootBootstrapPending,
+          engineeringBootstrapPending: arc3EngineeringBootstrapPending,
           visibilityOverrideHidden: f4VisibilityOverrideHidden,
           lastOutcome: lastPersistenceOutcome,
           hideWitness: lastF4HideWitness,
@@ -5711,6 +6041,22 @@ async function loadSave(): Promise<void> {
             ? arc2LootState.inventory.equipped.map((binding) => ({ ...binding })) : [],
           pendingIds: arc2LootState?.kind === 'inventory'
             ? arc2LootState.inventory.pendingRewards.map(({ instance }) => instance.instanceId) : [],
+        },
+        engineering: {
+          schema: 'cf-v2-arc3-app-state/v1',
+          stateKind: arc3EngineeringState === null ? 'unavailable' : 'loaded',
+          protection: arc3EngineeringProtection,
+          bootstrapPending: arc3EngineeringBootstrapPending,
+          bootstrapCandidateReady: arc3EngineeringBootstrapCandidate !== null,
+          bootstrapOutcome: lastArc3BootstrapOutcome,
+          revision: arc3EngineeringState?.revision ?? null,
+          worlds: arc3EngineeringState?.worlds.length ?? 0,
+          stars: arc3EngineeringState?.stars.length ?? 0,
+          research: arc3EngineeringState?.research.slice() ?? [],
+          lastOutcome: lastArc3EngineeringOutcome,
+          addressDiagnostics: arc3AddressDiagnostics,
+          legacyDiagnostics: arc3LegacyDiagnostics,
+          projectionDiagnostics: lastArc3ProjectionDiagnostics,
         },
         cardOpen: card.style.display !== 'none',
         cardTitle: card.querySelector('[data-sel=title]')?.textContent ?? null,
@@ -5758,6 +6104,9 @@ async function loadSave(): Promise<void> {
           items: save.items.map(([id, count]) => [id, count]),
           cargo: save.cargo.map(([id, count]) => [id, count]),
           cgx: save.cgx.map(([id, count]) => [id, count]),
+          mineX: save.mineX.map(([seed, count]) => [seed, count]),
+          mined: save.mined.map(([seed, timestamp]) => [seed, timestamp]),
+          skimX: save.skimX.map(([seed, count]) => [seed, count]),
           stats: { ...save.stats }, journal: save.journal.map((entry) => ({ ...entry })),
           claimedSets: save.claimedSets.slice(), techOwned: save.techOwned.slice(),
           unlocked: save.unlocked.slice(),
@@ -5799,6 +6148,13 @@ async function loadSave(): Promise<void> {
       __smokePersistAfterDebounce: () => { persistSoon(); return true; },
       __smokePersistNow: persistView,
       __smokeCommitF4Outcome: smokeCommitF4Outcome,
+      __smokeMineCurrentSurface: mineCurrentSurface,
+      __smokeSkimCurrentSystem: skimCurrentSystem,
+      __smokeRejectNextArc3Publication: () => {
+        if (smokeRejectNextArc3Publication) return false;
+        smokeRejectNextArc3Publication = true;
+        return true;
+      },
       __smokeShowF4: async () => {
         f4VisibilityOverrideHidden = false;
         await showF4();
