@@ -179,12 +179,22 @@ describe('@cf/audio — bounded sting facade', () => {
 
     const api = await import('../src/index.js');
     expect(Object.keys(api).sort()).toEqual([
-      'AUDIO_CATEGORIES', 'AUDIO_PALETTE_POLICY', 'AUDIO_RESOLVER_VERSION', 'applySfxGain',
-      'createAudioIdentityProfile', 'createAudioRuntime', 'createAudioSignature', 'createCreatureCallPlan',
+      'AUDIO_CATEGORIES', 'AUDIO_KINGDOM_ORDER', 'AUDIO_LEGACY_FALLBACK',
+      'AUDIO_PALETTE_POLICY', 'AUDIO_RESOLVER_VERSION', 'AUDIO_ROUTE_INVENTORY_DIGEST',
+      'AUDIO_ROUTE_INVENTORY_RESOLVER_VERSION', 'AUDIO_ROUTE_MANIFEST',
+      'AUDIO_ROUTE_MANIFEST_AUDIT', 'AUDIO_STATIC_PURITY_RULES', 'AUDIO_TAXONOMY',
+      'applySfxGain',
+      'assertPinnedAudioRouteInventory', 'audioCatalogueRouteKey',
+      'audioRouteInventoryDigest', 'audioRouteManifestRow',
+      'auditAudioRouteManifest', 'auditAudioRouteSoundOutputs', 'auditAudioStaticPurity',
+      'createAudioIdentityProfile', 'createAudioRuntime', 'createAudioSignature',
+      'createAudioSoundOutputWitness', 'createCreatureCallPlan',
       'createCreatureExpressionCue', 'createDistantEcologyHintPlan',
       'creatureExpressionAudioEvent', 'deserializeAudioSignature',
-      'distantEcologyAudioEvent', 'initAudio', 'playRaritySting', 'playSurveyPing',
-      'playWhoosh', 'serializeAudioSignature',
+      'distantEcologyAudioEvent', 'initAudio', 'inspectAudioStaticPurity',
+      'isAudioKingdom', 'playRaritySting',
+      'playSurveyPing', 'playWhoosh', 'serializeAudioSignature',
+      'serializeAudioSoundOutputWitness',
     ]);
     const before = {
       oscillators: log.oscillatorStarts,

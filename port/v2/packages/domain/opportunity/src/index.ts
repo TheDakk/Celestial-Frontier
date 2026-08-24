@@ -2,6 +2,7 @@
 
    Address-derived snapshots live in snapshot.ts. Engineering state, its
    strict codec, and the deliberately explicit seed-only migration mirror live
-   in state.ts. Planners are intentionally outside this first Arc 3 slice. */
+   in state.ts. Pure operation planners bind their outcomes in planner.ts. */
+export * from './planner.js';
 export * from './snapshot.js';
 export * from './state.js';

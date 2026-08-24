@@ -20,7 +20,6 @@ import {
 } from './stings.verbatim.js';
 
 export {
-  AUDIO_PALETTE_POLICY,
   AUDIO_RESOLVER_VERSION,
   createAudioIdentityProfile,
   createAudioSignature,
@@ -31,9 +30,7 @@ export {
 export type {
   AudioIdentityInput,
   AudioIdentityProfile,
-  AudioKingdom,
   AudioOwnerRoute,
-  AudioPalettePolicy,
   AudioSignature,
   AudioSignatureDecodeResult,
   CanonicalAudioOwner,
@@ -45,6 +42,54 @@ export type {
   SerializedAudioSignature,
   SurvivingAudioLineage,
 } from './identity.js';
+export {
+  AUDIO_KINGDOM_ORDER,
+  AUDIO_LEGACY_FALLBACK,
+  AUDIO_PALETTE_POLICY,
+  AUDIO_ROUTE_INVENTORY_DIGEST,
+  AUDIO_ROUTE_INVENTORY_RESOLVER_VERSION,
+  AUDIO_ROUTE_MANIFEST,
+  AUDIO_ROUTE_MANIFEST_AUDIT,
+  AUDIO_TAXONOMY,
+  assertPinnedAudioRouteInventory,
+  audioCatalogueRouteKey,
+  audioRouteInventoryDigest,
+  audioRouteManifestRow,
+  auditAudioRouteManifest,
+  isAudioKingdom,
+} from './taxonomy.js';
+export type {
+  AudioCanonicalIdentityKey,
+  AudioCatalogueRouteKey,
+  AudioKingdom,
+  AudioPalettePolicy,
+  AudioRouteManifestAudit,
+  AudioRouteManifestRow,
+  AudioRouteStatus,
+  AudioTaxonomyId,
+} from './taxonomy.js';
+export {
+  auditAudioRouteSoundOutputs,
+  createAudioSoundOutputWitness,
+  serializeAudioSoundOutputWitness,
+} from './sound-witness.js';
+export type {
+  AudioRouteSoundOutputAudit,
+  AudioRouteSoundOutputRow,
+  AudioSoundOutputWitness,
+  SerializedAudioSoundOutputWitness,
+} from './sound-witness.js';
+export {
+  AUDIO_STATIC_PURITY_RULES,
+  auditAudioStaticPurity,
+  inspectAudioStaticPurity,
+} from './purity.js';
+export type {
+  AudioStaticPurityAudit,
+  AudioStaticPurityRule,
+  AudioStaticPurityViolation,
+  AudioStaticSource,
+} from './purity.js';
 export { createDistantEcologyHintPlan } from './ecology.js';
 export type {
   DistantEcologyHintInput,

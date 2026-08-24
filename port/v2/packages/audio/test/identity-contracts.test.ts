@@ -1,8 +1,9 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {
   AUDIO_PALETTE_POLICY,
   createAudioIdentityProfile,
   createAudioSignature,
+  createAudioSoundOutputWitness,
   createCreatureCallPlan,
   createCreatureExpressionCue,
   createDistantEcologyHintPlan,
@@ -10,8 +11,8 @@ import {
   deserializeAudioSignature,
   distantEcologyAudioEvent,
   serializeAudioSignature,
+  serializeAudioSoundOutputWitness,
   type AudioIdentityInput,
-  type AudioKingdom,
   type CanonicalAudioOwner,
   type SettledCreatureAudioEvent,
 } from '../src/index.js';
@@ -53,18 +54,19 @@ function pipeline(input: AudioIdentityInput) {
   const signature = createAudioSignature(input);
   const profile = createAudioIdentityProfile(signature);
   const plan = createCreatureCallPlan(profile);
-  return { signature, profile, plan, key: serializeAudioSignature(signature) };
+  const witness = createAudioSoundOutputWitness(signature);
+  return {
+    signature,
+    profile,
+    plan,
+    witness,
+    key: serializeAudioSignature(signature),
+    soundKey: serializeAudioSoundOutputWitness(witness),
+  };
 }
 
 describe('Arc 7 pure audible identity', () => {
-  it('is deterministic, deeply immutable, canonical on decode, and consumes no ambient RNG or clock', () => {
-    const random = vi.spyOn(Math, 'random').mockImplementation(() => {
-      throw new Error('audio identity consumed ambient RNG');
-    });
-    const now = vi.spyOn(Date, 'now').mockImplementation(() => {
-      throw new Error('audio identity read wall clock');
-    });
-
+  it('is deterministic, deeply immutable, and canonical on decode', () => {
     const first = pipeline(identity());
     const second = pipeline(structuredClone(identity()));
     expect(second).toEqual(first);
@@ -108,60 +110,82 @@ describe('Arc 7 pure audible identity', () => {
     const decoded = deserializeAudioSignature(first.key);
     expect(decoded.kind).toBe('ok');
     if (decoded.kind === 'ok') expect(serializeAudioSignature(decoded.signature)).toBe(first.key);
-    expect(random).not.toHaveBeenCalled();
-    expect(now).not.toHaveBeenCalled();
-    random.mockRestore();
-    now.mockRestore();
   });
 
-  it('projects away XP, injury, feeding, assignment, bond, and brood state byte-for-byte', () => {
-    const mutableA = {
-      ...identity(),
-      phenotype: { ...PHENOTYPE, xp: 0, hurt: 0, fed: 0, assignment: null, bond: 0, brood: [] },
-      xp: 0,
-      hurt: 0,
-      fed: 0,
-      assignment: null,
-      bond: 0,
-      brood: [],
-    } as AudioIdentityInput & Record<string, unknown>;
-    const mutableB = {
-      ...identity(),
-      phenotype: {
-        ...PHENOTYPE,
-        xp: 999_999,
-        hurt: 8,
-        fed: 4,
-        assignment: 'mission-44',
-        bond: 100,
-        brood: ['a', 'b'],
-      },
-      xp: 999_999,
-      hurt: 8,
-      fed: 4,
-      assignment: 'mission-44',
-      bond: 100,
-      brood: ['a', 'b'],
-    } as AudioIdentityInput & Record<string, unknown>;
-
-    expect(pipeline(mutableB)).toEqual(pipeline(mutableA));
+  it('projects away each mutable field one at a time through the sound witness', () => {
+    const expected = pipeline(identity());
+    const mutations: ReadonlyArray<readonly [string, unknown]> = [
+      ['xp', 999_999],
+      ['hurt', 8],
+      ['fed', 4],
+      ['assignment', 'mission-44'],
+      ['bond', 100],
+      ['brood', ['a', 'b']],
+    ];
+    for (const [field, value] of mutations) {
+      const rootMutation = { ...identity(), [field]: value } as AudioIdentityInput;
+      const phenotypeMutation = identity({
+        phenotype: { ...PHENOTYPE, [field]: value },
+      });
+      expect(pipeline(rootMutation), `root ${field}`).toEqual(expected);
+      expect(pipeline(phenotypeMutation), `phenotype ${field}`).toEqual(expected);
+    }
   });
 
-  it('keeps exact set-qualified owners and delimiter-like names collision-free', () => {
+  it('changes the sound witness for each selected immutable field one at a time', () => {
+    const base = identity({
+      owner: { route: 'lineage', kingdom: 'fauna', name: 'Wolf' },
+      lineage: { parentSeeds: [11, 22], anchorBasisPoints: 7_300 },
+    });
+    const expected = pipeline(base).soundKey;
+    const numericFields = [
+      'seed', 'color', 'accent', 'form', 'body', 'loco', 'trait', 'size', 'diet',
+      'head', 'limbs', 'skin', 'tail', 'pattern', 'behavior', 'habitat', 'temper',
+      'sense', 'metab',
+    ] as const;
+    const variants: Array<readonly [string, AudioIdentityInput]> = numericFields.map((field) => [
+      field,
+      identity({ ...base, phenotype: { ...base.phenotype, [field]: base.phenotype[field] + 1 } }),
+    ] as const);
+    variants.push(['kingdom', identity({
+      ...base, phenotype: { ...base.phenotype, kingdom: 'flora' },
+    })]);
+    variants.push(['lumin', identity({
+      ...base, phenotype: { ...base.phenotype, lumin: !base.phenotype.lumin },
+    })]);
+    variants.push(['heatBand', identity({
+      ...base, phenotype: { ...base.phenotype, heatBand: 2 },
+    })]);
+    variants.push(['owner', identity({
+      ...base, owner: { ...base.owner, name: 'Tiger' },
+    })]);
+    variants.push(['anchor', identity({
+      ...base, lineage: { ...base.lineage, anchorBasisPoints: 7_301 },
+    })]);
+    variants.push(['parent order', identity({
+      ...base, lineage: { ...base.lineage, parentSeeds: [22, 11] },
+    })]);
+    for (const [field, variant] of variants) {
+      expect(pipeline(variant).soundKey, field).not.toBe(expected);
+    }
+  });
+
+  it('keeps exact approved set-qualified owners distinct in signatures and sound output', () => {
     const fauna = pipeline(identity());
     const microbe = pipeline(identity({
       owner: { route: 'catalogue', kingdom: 'microbe', name: 'Tardigrade' },
       phenotype: { ...PHENOTYPE, kingdom: 'microbe' },
     }));
-    const delimited = pipeline(identity({
-      owner: { route: 'catalogue', kingdom: 'fauna', name: 'Tardigrade|microbe' },
+    const lineage = pipeline(identity({
+      owner: { route: 'lineage', kingdom: 'fauna', name: 'Tardigrade' },
+      lineage: { parentSeeds: null, anchorBasisPoints: 8_500 },
     }));
 
-    expect(new Set([fauna.key, microbe.key, delimited.key]).size).toBe(3);
-    expect(new Set([fauna.profile.identityKey, microbe.profile.identityKey, delimited.profile.identityKey]).size)
-      .toBe(3);
-    expect(new Set([fauna.profile.identityId, microbe.profile.identityId, delimited.profile.identityId]).size)
-      .toBe(3);
+    expect(new Set([fauna.key, microbe.key, lineage.key]).size).toBe(3);
+    expect(new Set([fauna.soundKey, microbe.soundKey, lineage.soundKey]).size).toBe(3);
+    expect(() => pipeline(identity({
+      owner: { route: 'catalogue', kingdom: 'fauna', name: 'Tardigrade|microbe' },
+    }))).toThrow('approved set-qualified');
   });
 
   it('preserves ordered lineage and separates reversed parents through the complete pipeline', () => {
@@ -178,7 +202,7 @@ describe('Arc 7 pure audible identity', () => {
     expect(forward.signature.lineage.parentSeeds).toEqual([11, 22]);
     expect(reverse.signature.lineage.parentSeeds).toEqual([22, 11]);
     expect(reverse.key).not.toBe(forward.key);
-    expect(reverse.profile.identityId).not.toBe(forward.profile.identityId);
+    expect(reverse.soundKey).not.toBe(forward.soundKey);
     expect(reverse.plan).not.toEqual(forward.plan);
 
     const legacyLineage = pipeline(identity({
@@ -225,10 +249,14 @@ describe('Arc 7 pure audible identity', () => {
   });
 
   it('routes every non-fauna phenotype to its explicit environmental policy, including mixed lineage', () => {
-    const nonFauna = ['flora', 'fungi', 'microbe'] as const;
-    for (const kingdom of nonFauna) {
+    const nonFauna = [
+      ['flora', 'Apple'],
+      ['fungi', 'Oyster Mushroom'],
+      ['microbe', 'Amoeba'],
+    ] as const;
+    for (const [kingdom, name] of nonFauna) {
       const result = pipeline(identity({
-        owner: { route: 'catalogue', kingdom, name: `Exact ${kingdom}` },
+        owner: { route: 'catalogue', kingdom, name },
         phenotype: { ...PHENOTYPE, kingdom },
       }));
       expect(result.profile.palettePolicy).toBe(AUDIO_PALETTE_POLICY[kingdom]);

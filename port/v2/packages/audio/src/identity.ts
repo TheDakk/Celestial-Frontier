@@ -2,14 +2,20 @@
    AudioContext, app state, saves, or gameplay RNG. The caller projects a
    creature into the bounded immutable fields below; everything else is
    ignored by construction. */
+import {
+  AUDIO_PALETTE_POLICY,
+  AUDIO_ROUTE_INVENTORY_RESOLVER_VERSION,
+  audioRouteManifestRow,
+  type AudioKingdom,
+  type AudioPalettePolicy,
+} from './taxonomy.js';
 
-export const AUDIO_RESOLVER_VERSION = 1 as const;
+export const AUDIO_RESOLVER_VERSION = AUDIO_ROUTE_INVENTORY_RESOLVER_VERSION;
 const AUDIO_SIGNATURE_SCHEMA = 'cf.audio.signature' as const;
 const MAX_OWNER_NAME = 128;
 const MAX_SERIALIZED_SIGNATURE = 4_096;
 const MAX_GENE = 0xFFFF;
 
-export type AudioKingdom = 'fauna' | 'flora' | 'fungi' | 'microbe';
 export type AudioOwnerRoute = 'catalogue' | 'lineage' | 'procedural';
 
 export interface CanonicalAudioOwner {
@@ -78,15 +84,6 @@ export type AudioSignatureDecodeResult =
   | { readonly kind: 'ok'; readonly signature: AudioSignature }
   | { readonly kind: 'unsupported-version'; readonly version: number }
   | { readonly kind: 'malformed' };
-
-export const AUDIO_PALETTE_POLICY = Object.freeze({
-  fauna: 'fauna-vocal-foley',
-  flora: 'flora-environmental-sonification',
-  fungi: 'fungi-environmental-sonification',
-  microbe: 'microbe-environmental-sonification',
-} as const);
-
-export type AudioPalettePolicy = typeof AUDIO_PALETTE_POLICY[AudioKingdom];
 
 export interface AudioIdentityProfile {
   readonly version: typeof AUDIO_RESOLVER_VERSION;
@@ -195,6 +192,9 @@ function canonicalOwner(value: unknown): CanonicalAudioOwner {
   const name = route === 'procedural'
     ? (value.name === null ? null : (() => { throw new TypeError('procedural owner name must be null'); })())
     : boundedAudioKey(value.name, 'audio owner name', MAX_OWNER_NAME);
+  if (name !== null && !audioRouteManifestRow(kingdom, name)) {
+    throw new RangeError('audio owner is not an approved set-qualified catalogue route');
+  }
   return Object.freeze({ route, kingdom, name });
 }
 

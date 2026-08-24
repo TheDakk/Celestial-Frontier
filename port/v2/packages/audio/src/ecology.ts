@@ -2,18 +2,20 @@
    roster generation, discovery, rewards, and save mutation remain outside the
    audio package. */
 import {
-  AUDIO_PALETTE_POLICY,
   AUDIO_RESOLVER_VERSION,
   audioHash32,
   boundedAudioKey,
   deserializeAudioSignature,
   serializeAudioSignature,
-  type AudioKingdom,
-  type AudioPalettePolicy,
   type AudioSignature,
   type CanonicalAudioOwner,
   type SerializedAudioSignature,
 } from './identity.js';
+import {
+  AUDIO_PALETTE_POLICY,
+  type AudioKingdom,
+  type AudioPalettePolicy,
+} from './taxonomy.js';
 
 export type SurfacedEcologySource = 'approach-lead' | 'survey-roster';
 export type EcologyHintGranularity = 'biosphere' | 'kingdom' | 'family' | 'species';
