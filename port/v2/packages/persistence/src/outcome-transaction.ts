@@ -394,6 +394,127 @@ export function createF4OutcomeTransactionOwner(
   });
 }
 
+const UINT32_MAX = 0xFFFF_FFFF;
+
+/** Generic deterministic product action. It reserves one exact-once receipt
+ * ordinal but leaves the seed and every per-domain random draw counter
+ * byte-identical. Arc-specific wrappers may narrow `operation` and select a
+ * fixed receipt kind without teaching the F4 owner their product vocabulary. */
+export interface F4DeterministicProductPlan {
+  readonly operation: string;
+  readonly receiptOrdinal: number;
+  readonly currentAuthority: F4AuthorityV1;
+  readonly nextSessionRng: F4AuthorityV1['sessionRng'];
+}
+
+export type F4DeterministicProductPlanOutcome =
+  | F4OutcomeAuthorityProtection
+  | { readonly kind: 'protected'; readonly reason: 'receipt-ordinal-exhausted' }
+  | { readonly kind: 'planned'; readonly plan: F4DeterministicProductPlan };
+
+export interface F4DeterministicProductDeriveInput {
+  readonly operation: string;
+  readonly receiptOrdinal: number;
+  readonly draft: SaveStateV2;
+  readonly extensions: V5Extensions;
+}
+
+export interface F4DeterministicProductTransactionInput {
+  readonly expectedRevision: number;
+  readonly grant: TabLeaseGrant;
+  readonly writable: V5WritableState;
+  readonly snapshot: Pick<ActivePlaySnapshot, 'activePlayMs'>;
+  readonly operation: string;
+  readonly receiptKind: string;
+  readonly now: number;
+  readonly derive: (input: F4DeterministicProductDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4DeterministicProductTransactionOutcome =
+  | Exclude<F4DeterministicProductPlanOutcome, { readonly kind: 'planned' }>
+  | PlannedProductTransactionOutcome<F4DeterministicProductPlan>;
+
+export interface F4DeterministicProductTransactionOwner {
+  commit(input: F4DeterministicProductTransactionInput): Promise<F4DeterministicProductTransactionOutcome>;
+}
+
+function checkedDeterministicOperation(value: unknown): string {
+  if (typeof value !== 'string' || value.length < 1 || value.length > 96
+    || /[\u0000-\u001f\u007f]/.test(value)) {
+    throw new RangeError('deterministic product operation must be 1–96 printable characters');
+  }
+  return value;
+}
+
+/** Plan a deterministic product receipt from persisted F4 authority. This is
+ * intentionally separate from `planF4OutcomeDraw`: no random domain is
+ * evaluated and only the save-lifetime ordinal advances. */
+export function planF4DeterministicProductReceipt(
+  extensions: V5Extensions,
+  operation: string,
+): F4DeterministicProductPlanOutcome {
+  const checkedOperation = checkedDeterministicOperation(operation);
+  const current = readF4Authority(extensions);
+  if (current.kind === 'absent') return { kind: 'protected', reason: 'authority-absent' };
+  if (current.kind === 'corrupt') return { kind: 'protected', reason: 'authority-corrupt' };
+  if (current.kind === 'future-version') {
+    return { kind: 'protected', reason: 'authority-future', version: current.version };
+  }
+  const receiptOrdinal = current.authority.sessionRng.ordinal;
+  if (receiptOrdinal >= UINT32_MAX) {
+    return { kind: 'protected', reason: 'receipt-ordinal-exhausted' };
+  }
+  return Object.freeze({
+    kind: 'planned',
+    plan: Object.freeze({
+      operation: checkedOperation,
+      receiptOrdinal,
+      currentAuthority: current.authority,
+      nextSessionRng: frozenSessionRng({
+        seed: current.authority.sessionRng.seed,
+        draws: { ...current.authority.sessionRng.draws },
+        ordinal: receiptOrdinal + 1,
+      }),
+    }),
+  });
+}
+
+/** Create the arc-neutral deterministic action owner. Product state,
+ * namespaced extensions, active-play authority, receipt, lease fence and next
+ * revision still share the same single repository CAS as random outcomes. */
+export function createF4DeterministicProductTransactionOwner(
+  repository: Pick<RevisionedRepository, 'mutate'>,
+  registry: ContentRegistry,
+): F4DeterministicProductTransactionOwner {
+  return Object.freeze({
+    async commit(
+      input: F4DeterministicProductTransactionInput,
+    ): Promise<F4DeterministicProductTransactionOutcome> {
+      const operation = checkedDeterministicOperation(input.operation);
+      const receiptKind = checkedReceiptKind(input.receiptKind);
+      const fence = tabLeaseFence(input.grant);
+      const planned = planF4DeterministicProductReceipt(input.writable.extensions, operation);
+      if (planned.kind !== 'planned') return planned;
+      const { plan } = planned;
+      return commitPlannedProduct(repository, registry, {
+        expectedRevision: input.expectedRevision,
+        fence,
+        writable: input.writable,
+        snapshot: input.snapshot,
+        now: input.now,
+        receiptKind,
+        plan,
+        derive: (draft, extensions) => input.derive(Object.freeze({
+          operation,
+          receiptOrdinal: plan.receiptOrdinal,
+          draft,
+          extensions,
+        })),
+      });
+    },
+  });
+}
+
 /** Arc 2 operations whose result is fully determined by the observed product
  * state. They still need an immutable exact-once receipt, but must not draw a
  * random value or advance any per-domain SessionRNG counter. */
@@ -408,7 +529,6 @@ const NO_RNG_RECEIPT_KIND: Readonly<Record<F4NoRngProductOperation, string>> = O
   salvage: 'arc2-salvage',
   'pending-claim': 'arc2-pending-claim',
 });
-const UINT32_MAX = 0xFFFF_FFFF;
 
 export interface F4NoRngProductPlan {
   readonly operation: F4NoRngProductOperation;

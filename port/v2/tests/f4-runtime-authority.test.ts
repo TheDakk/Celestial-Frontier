@@ -22,6 +22,7 @@ import {
 } from '@cf/persistence';
 import {
   createF4RuntimeAuthority,
+  type F4RuntimeActionInput,
   type F4RuntimeOutcomeInput,
   type F4RuntimeProductInput,
 } from '../apps/game/src/f4-runtime-authority.js';
@@ -316,6 +317,84 @@ describe('F4 runtime authority join', () => {
         },
       },
     });
+  });
+
+  it('publishes an arc-neutral deterministic action without consuming a random-domain draw', async () => {
+    const { backend, loaded } = await migrated();
+    const repository = createRevisionedRepository(backend);
+    const time = controlledClock();
+    const runtime = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 0xA3C30001, ownerId: 'tab-a', token: 'document-a', leaseTtlMs: 100,
+      now: time.now, visible: true, answerable: true,
+    });
+    await runtime.heartbeat();
+    expect((await runtime.commit(loaded.state, NOW)).kind).toBe('committed');
+    const prior = await runtime.commitOutcome({
+      state: loaded.state,
+      domain: 'preexisting.random-domain',
+      receiptKind: 'preexisting-random-outcome',
+      codecNow: NOW,
+      derive: ({ draft }) => ({ state: draft, witness: 'prior-random:0' }),
+    });
+    expect(prior.kind).toBe('committed');
+    time.advance(80);
+
+    const beforeEssence = loaded.state.essence;
+    const derive: F4RuntimeActionInput['derive'] = ({
+      operation, receiptOrdinal, draft, extensions,
+    }) => {
+      expect(operation).toBe('research:drive2');
+      expect(receiptOrdinal).toBe(1);
+      expect(extensions.player?.['test.arc3-engineering']).toBeUndefined();
+      draft.essence -= 25;
+      return {
+        state: draft,
+        witness: 'research:drive2:cost=25',
+        extensionWrites: [{
+          segment: 'player',
+          namespace: 'test.arc3-engineering',
+          carrier: { version: 1, json: '{"owned":["drive2"]}' },
+        }],
+      };
+    };
+    const action = await runtime.commitAction({
+      state: loaded.state,
+      operation: 'research:drive2',
+      receiptKind: 'arc3-research',
+      codecNow: NOW,
+      derive,
+    });
+    expect(action.kind).toBe('committed');
+    if (action.kind !== 'committed') return;
+    expect(action.state.essence).toBe(beforeEssence - 25);
+    expect(loaded.state.essence).toBe(beforeEssence);
+    expect(action.receipt).toEqual({
+      ordinal: 1,
+      kind: 'arc3-research',
+      witness: 'research:drive2:cost=25',
+    });
+    expect(runtime.revision).toBe(3);
+    expect(runtime.sessionRng).toEqual({
+      seed: 0xA3C30001,
+      ordinal: 2,
+      draws: { 'preexisting.random-domain': 1 },
+    });
+    expect(runtime.extensions.player?.['test.arc3-engineering']).toEqual({
+      version: 1, json: '{"owned":["drive2"]}',
+    });
+    expect(readF4Authority(runtime.extensions)).toMatchObject({
+      kind: 'loaded', authority: {
+        activePlayMs: 80,
+        sessionRng: {
+          seed: 0xA3C30001,
+          ordinal: 2,
+          draws: { 'preexisting.random-domain': 1 },
+        },
+      },
+    });
+    expect(await repository.readReceipt(1)).toEqual(action.receipt);
   });
 
   it('publishes sequential no-RNG extension writes while preserving prior draws and active-play authority', async () => {
