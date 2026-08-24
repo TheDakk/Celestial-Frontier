@@ -8,10 +8,15 @@
    product policy is injected as one pure detached derivation; the controller
    owns no DOM, wall clock, entropy source, retry, or product rules. */
 import { createActivePlayClock, type ActivePlayClock } from '@cf/domain-progression';
-import { createSessionRNG, type SessionRNGState } from '@cf/domain-sessionrng';
+import {
+  MAX_SESSION_RNG_DRAWS_PER_PLAN,
+  createSessionRNG,
+  type SessionRNGState,
+} from '@cf/domain-sessionrng';
 import {
   createActivePlayPersistenceOwner,
   createF4DeterministicProductTransactionOwner,
+  createF4MultiOutcomeTransactionOwner,
   createF4NoRngProductTransactionOwner,
   createF4OutcomeTransactionOwner,
   createTabLeaseClient,
@@ -20,6 +25,8 @@ import {
   type F4AuthorityV1,
   type F4DeterministicProductDeriveInput,
   type F4DeterministicProductTransactionOutcome,
+  type F4MultiOutcomeDeriveInput,
+  type F4MultiOutcomeTransactionOutcome,
   type F4OutcomeDeriveInput,
   type F4OutcomeDerivation,
   type F4OutcomeTransactionOutcome,
@@ -101,6 +108,21 @@ export type F4RuntimeOutcomeCommitOutcome =
   })
   | { readonly kind: 'lease-unavailable' };
 
+export interface F4RuntimeMultiOutcomeInput {
+  readonly state: SaveStateV2;
+  readonly domains: readonly string[];
+  readonly receiptKind: string;
+  readonly codecNow: number;
+  readonly derive: (input: F4MultiOutcomeDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4RuntimeMultiOutcomeCommitOutcome =
+  | Exclude<F4MultiOutcomeTransactionOutcome, { readonly kind: 'committed' }>
+  | (Extract<F4MultiOutcomeTransactionOutcome, { readonly kind: 'committed' }> & {
+    readonly state: SaveStateV2;
+  })
+  | { readonly kind: 'lease-unavailable' };
+
 export interface F4RuntimeActionInput {
   readonly state: SaveStateV2;
   readonly operation: string;
@@ -154,6 +176,9 @@ export interface F4RuntimeAuthority {
   /** Plan and commit one receipt-bearing product outcome under this
       controller's private revision, lease, active-play and RNG authority. */
   commitOutcome(input: F4RuntimeOutcomeInput): Promise<F4RuntimeOutcomeCommitOutcome>;
+  /** Plan an ordered group of semantic draws and commit the whole product with
+      one receipt, one active-play snapshot, and one revision CAS. */
+  commitOutcomes(input: F4RuntimeMultiOutcomeInput): Promise<F4RuntimeMultiOutcomeCommitOutcome>;
   /** Commit an arc-neutral deterministic product action. It consumes one
       exact-once receipt ordinal but never evaluates or advances a random
       domain; the caller owns the semantic operation and receipt vocabulary. */
@@ -236,6 +261,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
   });
   const owner = createActivePlayPersistenceOwner(input.repository, input.registry);
   const outcomeOwner = createF4OutcomeTransactionOwner(input.repository, input.registry);
+  const multiOutcomeOwner = createF4MultiOutcomeTransactionOwner(input.repository, input.registry);
   const actionOwner = createF4DeterministicProductTransactionOwner(input.repository, input.registry);
   const productOwner = createF4NoRngProductTransactionOwner(input.repository, input.registry);
 
@@ -390,6 +416,56 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           receiptKind: outcomeInput.receiptKind,
           now: outcomeInput.codecNow,
           derive: outcomeInput.derive,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          extensions = outcome.saved.extensions;
+          sessionRng = copySessionRng(outcome.authority.sessionRng);
+          commits++;
+          return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    commitOutcomes(
+      outcomeInput: F4RuntimeMultiOutcomeInput,
+    ): Promise<F4RuntimeMultiOutcomeCommitOutcome> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      /* Bind order and multiplicity at submission, before an earlier queued
+         lifecycle/storage operation can yield back to a mutable caller. */
+      const domainInput = outcomeInput.domains;
+      const domainCount = Array.isArray(domainInput) ? domainInput.length : -1;
+      if (!Number.isSafeInteger(domainCount) || domainCount < 0
+        || domainCount > MAX_SESSION_RNG_DRAWS_PER_PLAN) {
+        throw new RangeError(
+          `SessionRNG draw plan must contain 1–${MAX_SESSION_RNG_DRAWS_PER_PLAN} domains`,
+        );
+      }
+      const domainSnapshot: string[] = [];
+      for (let index = 0; index < domainCount; index++) domainSnapshot.push(domainInput[index]!);
+      const domains = Object.freeze(domainSnapshot);
+      const receiptKind = outcomeInput.receiptKind;
+      const codecNow = outcomeInput.codecNow;
+      const derive = outcomeInput.derive;
+      const state = outcomeInput.state;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await multiOutcomeOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          domains,
+          receiptKind,
+          now: codecNow,
+          derive,
         });
         if (outcome.kind === 'committed') {
           revision = outcome.revision;
