@@ -325,6 +325,214 @@ describe('Arc 7 injected audio runtime', () => {
     expect(runtime.playVoice(request(new FakeSource('muted')))).toEqual({ kind: 'rejected', reason: 'muted' });
   });
 
+  it('preserves exact master and category gains before activation, through mute, and across context recovery', async () => {
+    const first = new FakeContext();
+    const second = new FakeContext();
+    const factory = contextFactory([first, second]);
+    const runtime = createAudioRuntime({
+      createContext: factory.create,
+      nowMs: () => 0,
+      initialMuted: true,
+      initialMasterGain: 0.37,
+      categoryGains: { music: 0.41 },
+    });
+
+    expect(runtime.diagnostics().gains).toEqual({
+      master: 0.37,
+      effectiveMaster: 0,
+      categories: {
+        music: 0.41,
+        ambience: 1,
+        creature: 1,
+        'combat-gameplay': 1,
+        ui: 1,
+      },
+    });
+    runtime.setMasterGain(0.29);
+    runtime.setCategoryGain('ui', 0.17);
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'blocked', reason: 'muted' });
+    expect(factory.created()).toBe(0);
+    expect(runtime.diagnostics().gains).toMatchObject({ master: 0.29, effectiveMaster: 0 });
+
+    runtime.setMuted(false);
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(first.gains[0]!.gain.value).toBe(0.29);
+    expect(first.gains[5]!.gain.value).toBe(0.17);
+    expect(runtime.diagnostics().gains).toMatchObject({ master: 0.29, effectiveMaster: 0.29 });
+
+    runtime.setMasterGain(0.23);
+    expect(first.gains[0]!.gain.value).toBe(0.23);
+    runtime.setMuted(true);
+    expect(first.gains[0]!.gain.value).toBe(0);
+    runtime.setMasterGain(0.19);
+    expect(first.gains[0]!.gain.value).toBe(0);
+    expect(runtime.diagnostics().gains).toMatchObject({ master: 0.19, effectiveMaster: 0 });
+    runtime.setMuted(false);
+    expect(first.gains[0]!.gain.value).toBe(0.19);
+
+    first.forceState('closed');
+    expect(runtime.diagnostics()).toMatchObject({ contextState: null, nodes: { active: 0 } });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(second.gains[0]!.gain.value).toBe(0.19);
+    expect(second.gains[1]!.gain.value).toBe(0.41);
+    expect(second.gains[5]!.gain.value).toBe(0.17);
+    expect(runtime.diagnostics().gains).toEqual({
+      master: 0.19,
+      effectiveMaster: 0.19,
+      categories: {
+        music: 0.41,
+        ambience: 1,
+        creature: 1,
+        'combat-gameplay': 1,
+        ui: 0.17,
+      },
+    });
+
+    await runtime.dispose();
+    expect(runtime.diagnostics().gains).toMatchObject({ master: 0.19, effectiveMaster: 0.19 });
+  });
+
+  it('snapshots hostile option, request, meaning, and graph fields exactly once', async () => {
+    const context = new FakeContext();
+    const optionReads = new Map<PropertyKey, number>();
+    const options = new Proxy({
+      createContext: () => context,
+      nowMs: () => 0,
+      initialMuted: false,
+      initialMasterGain: 0.5,
+      categoryGains: { creature: 0.25 },
+      budgets: { maxCreatureEmitters: 8 },
+      verifyCounterpart: (_receipt: AudioCounterpartReceipt) => true,
+    }, {
+      get(target, key, receiver) {
+        optionReads.set(key, (optionReads.get(key) ?? 0) + 1);
+        return Reflect.get(target, key, receiver);
+      },
+    });
+    const runtime = createAudioRuntime(options);
+    expect([...optionReads.entries()]).toEqual([
+      ['createContext', 1], ['nowMs', 1], ['verifyCounterpart', 1], ['budgets', 1],
+      ['initialMuted', 1], ['initialMasterGain', 1], ['categoryGains', 1],
+    ]);
+    await runtime.activate();
+
+    const source = new FakeSource('read-once-source');
+    const meaningReads = new Map<PropertyKey, number>();
+    const meaning = new Proxy({
+      kind: 'meaningful' as const,
+      counterpart: counterpart('caption:read-once', 'event:read-once'),
+    }, {
+      get(target, key, receiver) {
+        meaningReads.set(key, (meaningReads.get(key) ?? 0) + 1);
+        return Reflect.get(target, key, receiver);
+      },
+    });
+    const requestReads = new Map<PropertyKey, number>();
+    const graphReads = new Map<PropertyKey, number>();
+    const requestTarget: AudioVoiceRequest = {
+      ...request(source, { meaning }),
+      create: (_context, reservation) => new Proxy({
+        source,
+        sources: [source],
+        output: source,
+        nodes: [source],
+        reservation,
+      }, {
+        get(target, key, receiver) {
+          graphReads.set(key, (graphReads.get(key) ?? 0) + 1);
+          return Reflect.get(target, key, receiver);
+        },
+      }),
+    };
+    const requestValue = new Proxy(requestTarget, {
+      get(target, key, receiver) {
+        requestReads.set(key, (requestReads.get(key) ?? 0) + 1);
+        return Reflect.get(target, key, receiver);
+      },
+    });
+
+    expect(runtime.playVoice(requestValue)).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+    expect([...requestReads.entries()]).toEqual([
+      ['key', 1], ['category', 1], ['priority', 1], ['cooldownGroup', 1],
+      ['cooldownMs', 1], ['concurrencyGroup', 1], ['maxConcurrent', 1],
+      ['nodeCount', 1], ['meaning', 1], ['create', 1],
+    ]);
+    expect([...meaningReads.entries()]).toEqual([['kind', 1], ['counterpart', 1]]);
+    expect([...graphReads.entries()]).toEqual([
+      ['source', 1], ['sources', 1], ['output', 1], ['nodes', 1], ['reservation', 1],
+    ]);
+    source.finish();
+    expect(runtime.diagnostics().voices).toMatchObject({ active: 0, completed: 1 });
+
+    let requestFactoryCalls = 0;
+    const throwingRequest = new Proxy(request(new FakeSource('throwing-request'), {
+      create: () => { requestFactoryCalls++; },
+    }), {
+      get(target, key, receiver) {
+        if (key === 'meaning') throw new Error('hostile request getter');
+        return Reflect.get(target, key, receiver);
+      },
+    });
+    expect(runtime.playVoice(throwingRequest)).toEqual({ kind: 'rejected', reason: 'invalid-request' });
+    expect(requestFactoryCalls).toBe(0);
+
+    const throwingGraphSource = new FakeSource('throwing-graph');
+    expect(runtime.playVoice({
+      ...request(throwingGraphSource),
+      create: (_context, reservation) => new Proxy({
+        source: throwingGraphSource,
+        sources: [throwingGraphSource],
+        output: throwingGraphSource,
+        nodes: [throwingGraphSource],
+        reservation,
+      }, {
+        get(target, key, receiver) {
+          if (key === 'nodes') throw new Error('hostile graph getter');
+          return Reflect.get(target, key, receiver);
+        },
+      }),
+    })).toEqual({ kind: 'fault', reason: 'voice-create' });
+    expect(throwingGraphSource.startCalls).toBe(0);
+    expect(throwingGraphSource.disconnectCalls).toBe(0);
+
+    const incumbent = new FakeSource('protected-incumbent');
+    expect(runtime.playVoice(request(incumbent, {
+      concurrencyGroup: 'protected-incumbent',
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000002' });
+    const disposable = new FakeSource('disposable-invalid-node');
+    expect(runtime.playVoice(request(disposable, {
+      concurrencyGroup: 'protected-invalid',
+      nodes: [incumbent, disposable],
+      sources: [incumbent, disposable],
+      nodeCount: 2,
+    }))).toEqual({ kind: 'fault', reason: 'voice-create' });
+    expect(incumbent.stopCalls).toBe(0);
+    expect(incumbent.disconnectCalls).toBe(0);
+    expect(disposable.disconnectCalls).toBe(1);
+    expect(runtime.diagnostics().voices.ids).toEqual(['voice-000002']);
+
+    const handlerRefusal = new FakeSource('handler-refusal');
+    let handler: (() => void) | null = null;
+    Object.defineProperty(handlerRefusal, 'onended', {
+      configurable: true,
+      enumerable: true,
+      get: () => handler,
+      set: (value: (() => void) | null) => {
+        if (value !== null) throw new Error('hostile onended setter');
+        handler = value;
+      },
+    });
+    expect(runtime.playVoice(request(handlerRefusal, {
+      concurrencyGroup: 'handler-refusal',
+    }))).toEqual({ kind: 'fault', reason: 'voice-start' });
+    expect(handlerRefusal.startCalls).toBe(0);
+    expect(handlerRefusal.stopCalls).toBe(0);
+    expect(handlerRefusal.disconnectCalls).toBe(1);
+    expect(runtime.diagnostics().reservations).toMatchObject({
+      voices: { active: 0 }, nodes: { active: 0 },
+    });
+  });
+
   it('reports blocked/suspended/running explicitly and retries a failed resume on the same context', async () => {
     const context = new FakeContext('suspended', ['reject', 'running', 'running']);
     const factory = contextFactory([context]);
@@ -634,6 +842,91 @@ describe('Arc 7 injected audio runtime', () => {
     expect(runtime.diagnostics().voices).toMatchObject({
       active: 1, started: 1, stopped: 0, stolen: 0, ids: ['voice-000001'],
     });
+    expect(context.gains[7]!.gain.value).toBe(0);
+    expect(runtime.diagnostics().reservations).toMatchObject({
+      voices: { active: 0 }, nodes: { active: 0 },
+    });
+  });
+
+  it('starts a creature replacement at zero gain, steals, then makes it audible without a ninth emitter', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: () => context,
+      nowMs: () => 0,
+      budgets: { maxVoices: 2, maxCreatureEmitters: 1 },
+    });
+    await runtime.activate();
+    const incumbent = new FakeSource('ordered-incumbent');
+    expect(runtime.playVoice(request(incumbent, {
+      category: 'creature', priority: 1, concurrencyGroup: 'incumbent', maxConcurrent: 2,
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+
+    const replacement = new FakeSource('ordered-replacement');
+    const originalReplacementStart = replacement.start.bind(replacement);
+    replacement.start = () => {
+      expect(context.gains[7]!.gain.value).toBe(0);
+      expect(incumbent.stopCalls).toBe(0);
+      originalReplacementStart();
+    };
+    const originalIncumbentStop = incumbent.stop.bind(incumbent);
+    incumbent.stop = () => {
+      expect(replacement.startCalls).toBe(1);
+      expect(context.gains[7]!.gain.value).toBe(0);
+      originalIncumbentStop();
+    };
+    expect(runtime.playVoice(request(replacement, {
+      category: 'creature', priority: 2, concurrencyGroup: 'replacement', maxConcurrent: 2,
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000002' });
+    expect(context.gains[7]!.gain.values).toEqual([0, 1]);
+    expect(runtime.diagnostics()).toMatchObject({
+      voices: { active: 1, peak: 1, stolen: 1 },
+      creatureEmitters: { active: 1, peak: 1, budget: 1 },
+      reservations: { voices: { active: 0 }, nodes: { active: 0 } },
+    });
+  });
+
+  it('cleans a zero-gain replacement when mute, hide, context loss, or dispose wins during start', async () => {
+    const transitions = ['mute', 'hide', 'context-loss', 'dispose'] as const;
+    for (const transition of transitions) {
+      const context = new FakeContext();
+      const runtime = createAudioRuntime({
+        createContext: () => context,
+        nowMs: () => 0,
+        budgets: { maxCreatureEmitters: 1 },
+      });
+      await runtime.activate();
+      const incumbent = new FakeSource(`${transition}-incumbent`);
+      expect(runtime.playVoice(request(incumbent, {
+        category: 'creature', priority: 1, concurrencyGroup: 'incumbent', maxConcurrent: 24,
+      })).kind).toBe('started');
+
+      const replacement = new FakeSource(`${transition}-replacement`);
+      const originalStart = replacement.start.bind(replacement);
+      let transitionDone: Promise<void> | null = null;
+      replacement.start = () => {
+        originalStart();
+        if (transition === 'mute') runtime.setMuted(true);
+        else if (transition === 'hide') transitionDone = runtime.setHidden(true);
+        else if (transition === 'context-loss') context.forceState('closed');
+        else transitionDone = runtime.dispose();
+      };
+      expect(runtime.playVoice(request(replacement, {
+        category: 'creature', priority: 2, concurrencyGroup: 'replacement', maxConcurrent: 24,
+      }))).toEqual({
+        kind: 'rejected',
+        reason: transition === 'mute' ? 'muted'
+          : transition === 'dispose' ? 'disposed' : 'not-running',
+      });
+      if (transitionDone) await transitionDone;
+      expect(incumbent.stopCalls, transition).toBe(1);
+      expect(replacement.startCalls, transition).toBe(1);
+      expect(replacement.stopCalls, transition).toBe(1);
+      expect(replacement.disconnectCalls, transition).toBe(1);
+      expect(runtime.diagnostics(), transition).toMatchObject({
+        voices: { active: 0 }, creatureEmitters: { active: 0 },
+        reservations: { voices: { active: 0 }, nodes: { active: 0 } },
+      });
+    }
   });
 
   it('enforces cooldown before construction and never advances it on rejected attempts', async () => {
@@ -704,6 +997,163 @@ describe('Arc 7 injected audio runtime', () => {
     expect(runtime.diagnostics().voices).toMatchObject({
       active: 2, peak: 2, budget: 2, stolen: 1,
       ids: ['voice-000002', 'voice-000003'],
+    });
+  });
+
+  it('caps creature emitters at eight without consuming the remaining full-mix capacity', async () => {
+    const first = new FakeContext();
+    const second = new FakeContext();
+    const third = new FakeContext();
+    const factory = contextFactory([first, second, third]);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    await runtime.activate();
+
+    const creatures = Array.from({ length: 8 }, (_, index) => new FakeSource(`creature-${index}`));
+    for (const [index, source] of creatures.entries()) {
+      expect(runtime.playVoice(request(source, {
+        category: 'creature',
+        priority: 1,
+        concurrencyGroup: `creature-family-${index}`,
+        maxConcurrent: 24,
+      }))).toEqual({
+        kind: 'started', voiceId: `voice-${(index + 1).toString(36).padStart(6, '0')}`,
+      });
+    }
+    expect(runtime.diagnostics()).toMatchObject({
+      nodes: { active: 29, budget: 96 },
+      voices: { active: 8, budget: 24 },
+      creatureEmitters: { active: 8, peak: 8, budget: 8 },
+    });
+
+    let equalPriorityFactoryCalls = 0;
+    expect(runtime.playVoice(request(new FakeSource('creature-equal-priority'), {
+      category: 'creature',
+      priority: 1,
+      concurrencyGroup: 'creature-family-equal',
+      maxConcurrent: 24,
+      create: () => { equalPriorityFactoryCalls++; },
+    }))).toEqual({ kind: 'rejected', reason: 'creature-budget' });
+    expect(equalPriorityFactoryCalls).toBe(0);
+
+    const ui = new FakeSource('ui-still-has-capacity');
+    expect(runtime.playVoice(request(ui, {
+      category: 'ui', concurrencyGroup: 'ui', maxConcurrent: 24,
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000009' });
+    expect(runtime.diagnostics()).toMatchObject({
+      nodes: { active: 31 },
+      voices: { active: 9 },
+      creatureEmitters: { active: 8, peak: 8, budget: 8 },
+    });
+
+    const higherPriority = new FakeSource('creature-higher-priority');
+    expect(runtime.playVoice(request(higherPriority, {
+      category: 'creature',
+      priority: 2,
+      concurrencyGroup: 'creature-family-winner',
+      maxConcurrent: 24,
+    }))).toEqual({ kind: 'started', voiceId: 'voice-00000a' });
+    expect(creatures[0]!.stopCalls).toBe(1);
+    expect(creatures[0]!.disconnectCalls).toBe(1);
+    expect(creatures.slice(1).every((source) => source.stopCalls === 0)).toBe(true);
+    expect(ui.stopCalls).toBe(0);
+    expect(runtime.diagnostics()).toMatchObject({
+      nodes: { active: 31 },
+      voices: { active: 9, stolen: 1 },
+      creatureEmitters: { active: 8, peak: 8, budget: 8 },
+      reservations: { voices: { active: 0 }, nodes: { active: 0 } },
+    });
+
+    await runtime.setHidden(true);
+    expect(runtime.diagnostics()).toMatchObject({
+      nodes: { active: 0 }, voices: { active: 0 }, creatureEmitters: { active: 0 },
+      reservations: { voices: { active: 0 }, nodes: { active: 0 } },
+    });
+    await runtime.setHidden(false);
+    await runtime.activate();
+    expect(runtime.playVoice(request(new FakeSource('creature-before-loss'), {
+      category: 'creature', concurrencyGroup: 'creature-before-loss', maxConcurrent: 24,
+    })).kind).toBe('started');
+    second.forceState('closed');
+    expect(runtime.diagnostics()).toMatchObject({
+      nodes: { active: 0 }, voices: { active: 0 }, creatureEmitters: { active: 0 },
+      reservations: { voices: { active: 0 }, nodes: { active: 0 } },
+    });
+    await runtime.activate();
+    expect(runtime.playVoice(request(new FakeSource('creature-before-dispose'), {
+      category: 'creature', concurrencyGroup: 'creature-before-dispose', maxConcurrent: 24,
+    })).kind).toBe('started');
+    await runtime.dispose();
+    expect(runtime.diagnostics()).toMatchObject({
+      nodes: { active: 0 }, voices: { active: 0 }, creatureEmitters: { active: 0 },
+      reservations: { voices: { active: 0 }, nodes: { active: 0 } },
+    });
+  });
+
+  it('keeps the node budget independent from creature-emitter headroom', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: () => context,
+      nowMs: () => 0,
+      budgets: { maxNodes: 15 },
+    });
+    await runtime.activate();
+    expect(runtime.playVoice(request(new FakeSource('one-creature'), {
+      category: 'creature', concurrencyGroup: 'creature-one', maxConcurrent: 24,
+    })).kind).toBe('started');
+
+    let factoryCalls = 0;
+    expect(runtime.playVoice(request(new FakeSource('node-limited-creature'), {
+      category: 'creature',
+      concurrencyGroup: 'creature-two',
+      maxConcurrent: 24,
+      create: () => { factoryCalls++; },
+    }))).toEqual({ kind: 'rejected', reason: 'node-budget' });
+    expect(factoryCalls).toBe(0);
+    expect(runtime.diagnostics()).toMatchObject({
+      nodes: { active: 15, peak: 15, budget: 15 },
+      voices: { active: 1, budget: 24 },
+      creatureEmitters: { active: 1, peak: 1, budget: 8 },
+      reservations: { voices: { active: 0 }, nodes: { active: 0 } },
+    });
+  });
+
+  it('resolves simultaneous creature and global pressure without stealing the wrong category', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: () => context,
+      nowMs: () => 0,
+      budgets: { maxVoices: 3, maxCreatureEmitters: 2 },
+    });
+    await runtime.activate();
+    const creatureHigh = new FakeSource('creature-high');
+    const creatureLow = new FakeSource('creature-low');
+    const uiLowest = new FakeSource('ui-lowest');
+    expect(runtime.playVoice(request(creatureHigh, {
+      category: 'creature', priority: 4, concurrencyGroup: 'creature-high', maxConcurrent: 3,
+    })).kind).toBe('started');
+    expect(runtime.playVoice(request(creatureLow, {
+      category: 'creature', priority: 1, concurrencyGroup: 'creature-low', maxConcurrent: 3,
+    })).kind).toBe('started');
+    expect(runtime.playVoice(request(uiLowest, {
+      category: 'ui', priority: -5, concurrencyGroup: 'ui-lowest', maxConcurrent: 3,
+    })).kind).toBe('started');
+
+    const creatureReplacement = new FakeSource('creature-replacement');
+    expect(runtime.playVoice(request(creatureReplacement, {
+      category: 'creature', priority: 2, concurrencyGroup: 'creature-replacement', maxConcurrent: 3,
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000004' });
+    expect(creatureLow.stopCalls).toBe(1);
+    expect(creatureHigh.stopCalls).toBe(0);
+    expect(uiLowest.stopCalls).toBe(0);
+
+    const uiReplacement = new FakeSource('ui-replacement');
+    expect(runtime.playVoice(request(uiReplacement, {
+      category: 'ui', priority: 0, concurrencyGroup: 'ui-replacement', maxConcurrent: 3,
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000005' });
+    expect(uiLowest.stopCalls).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({
+      voices: { active: 3, peak: 3, stolen: 2 },
+      creatureEmitters: { active: 2, peak: 2, budget: 2 },
     });
   });
 

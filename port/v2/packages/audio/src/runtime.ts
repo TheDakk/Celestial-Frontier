@@ -122,7 +122,7 @@ export type AudioVoiceStartResult =
     kind: 'rejected';
     reason: 'disposed' | 'muted' | 'not-running' | 'invalid-request'
       | 'missing-counterpart' | 'cooldown' | 'concurrency'
-      | 'voice-budget' | 'node-budget' | 'reentrant';
+      | 'creature-budget' | 'voice-budget' | 'node-budget' | 'reentrant';
   }>
   | Readonly<{
     kind: 'fault';
@@ -137,6 +137,7 @@ export type AudioActivationResult =
 
 export interface AudioRuntimeBudgets {
   readonly maxVoices: number;
+  readonly maxCreatureEmitters: number;
   readonly maxNodes: number;
   readonly maxCacheEntries: number;
   readonly maxCooldownGroups: number;
@@ -155,6 +156,13 @@ export interface AudioRuntimeDiagnostics {
   readonly contextGeneration: number;
   readonly muted: boolean;
   readonly hidden: boolean;
+  readonly gains: Readonly<{
+    /** Saved master policy; mute is represented separately and never overwrites it. */
+    master: number;
+    /** Mute-adjusted master policy, reported even before a context is created. */
+    effectiveMaster: number;
+    categories: Readonly<Record<AudioCategory, number>>;
+  }>;
   readonly nodes: Readonly<{ active: number; peak: number; budget: number }>;
   readonly cache: Readonly<{ active: number; peak: number; budget: number; evictions: number }>;
   readonly voices: Readonly<{
@@ -169,6 +177,7 @@ export interface AudioRuntimeDiagnostics {
     cooldownRejects: number;
     concurrencyRejects: number;
   }>;
+  readonly creatureEmitters: Readonly<{ active: number; peak: number; budget: number }>;
   readonly cooldowns: Readonly<{ active: number; budget: number }>;
   readonly reservations: Readonly<{
     voices: Readonly<{ active: number; peak: number; activePlusReservedPeak: number }>;
@@ -187,6 +196,7 @@ export interface AudioRuntimeOptions {
   readonly createContext: () => AudioContextLike;
   readonly nowMs: () => number;
   readonly initialMuted?: boolean;
+  readonly initialMasterGain?: number;
   readonly categoryGains?: Readonly<Partial<Record<AudioCategory, number>>>;
   readonly budgets?: Readonly<Partial<AudioRuntimeBudgets>>;
   /** Pure lookup against the current visual/text owner registry. */
@@ -196,6 +206,7 @@ export interface AudioRuntimeOptions {
 export interface AudioRuntime {
   activate(): Promise<AudioActivationResult>;
   setMuted(muted: boolean): void;
+  setMasterGain(gain: number): void;
   setCategoryGain(category: AudioCategory, gain: number): void;
   setHidden(hidden: boolean): Promise<void>;
   playVoice(request: AudioVoiceRequest): AudioVoiceStartResult;
@@ -214,6 +225,7 @@ const MAX_VOICE_GRAPH_NODES = 32;
 const METERS = Object.freeze(['master', ...AUDIO_CATEGORIES] as const);
 const DEFAULT_BUDGETS: AudioRuntimeBudgets = Object.freeze({
   maxVoices: 24,
+  maxCreatureEmitters: 8,
   maxNodes: 96,
   maxCacheEntries: 32,
   maxCooldownGroups: 128,
@@ -238,6 +250,7 @@ interface ActiveVoice {
   readonly key: string;
   readonly ordinal: number;
   readonly priority: number;
+  readonly category: AudioCategory;
   readonly concurrencyGroup: string;
   readonly source: AudioScheduledSourceLike;
   readonly sources: readonly AudioScheduledSourceLike[];
@@ -258,12 +271,22 @@ interface CooldownEntry {
 
 type VoiceAdmission = Readonly<{
   victim: ActiveVoice | null;
-  reason: 'concurrency' | 'voice-budget' | null;
+  reason: 'concurrency' | 'creature-budget' | 'voice-budget' | null;
 }>;
 
 type VoiceGraphValidation = Readonly<{
+  source: AudioScheduledSourceLike;
+  output: AudioNodeLike;
   nodes: readonly AudioNodeLike[];
   sources: readonly AudioScheduledSourceLike[];
+}>;
+
+type VoiceGraphSnapshot = Readonly<{
+  source: unknown;
+  sources: unknown;
+  output: unknown;
+  nodes: unknown;
+  reservation: unknown;
 }>;
 
 function boundedInteger(
@@ -338,7 +361,11 @@ function disconnectQuietly(nodes: readonly AudioNodeLike[]): void {
   }
 }
 
-function createGraph(context: AudioContextLike, gains: Readonly<Record<AudioCategory, number>>): RuntimeGraph {
+function createGraph(
+  context: AudioContextLike,
+  masterGain: number,
+  gains: Readonly<Record<AudioCategory, number>>,
+): RuntimeGraph {
   const nodes: AudioNodeLike[] = [];
   const own = <T extends AudioNodeLike>(node: T): T => {
     nodes.push(node);
@@ -351,7 +378,7 @@ function createGraph(context: AudioContextLike, gains: Readonly<Record<AudioCate
     const categories = {} as Record<AudioCategory, AudioGainNodeLike>;
     const meters = {} as Record<AudioMeter, MeterNode>;
 
-    setParam(master.gain, 1, context.currentTime);
+    setParam(master.gain, masterGain, context.currentTime);
     setParam(limiter.threshold, -1, context.currentTime);
     setParam(limiter.knee, 0, context.currentTime);
     setParam(limiter.ratio, 20, context.currentTime);
@@ -398,6 +425,12 @@ function createGraph(context: AudioContextLike, gains: Readonly<Record<AudioCate
 function resolvedBudgets(input: AudioRuntimeOptions['budgets']): AudioRuntimeBudgets {
   return Object.freeze({
     maxVoices: boundedInteger(input?.maxVoices ?? DEFAULT_BUDGETS.maxVoices, 'audio voice budget', 1, 64),
+    maxCreatureEmitters: boundedInteger(
+      input?.maxCreatureEmitters ?? DEFAULT_BUDGETS.maxCreatureEmitters,
+      'audio creature-emitter budget',
+      1,
+      64,
+    ),
     maxNodes: boundedInteger(input?.maxNodes ?? DEFAULT_BUDGETS.maxNodes, 'audio node budget', GRAPH_NODES + 2, 512),
     maxCacheEntries: boundedInteger(input?.maxCacheEntries ?? DEFAULT_BUDGETS.maxCacheEntries, 'audio cache budget', 0, 256),
     maxCooldownGroups: boundedInteger(input?.maxCooldownGroups ?? DEFAULT_BUDGETS.maxCooldownGroups, 'audio cooldown budget', 1, 512),
@@ -420,6 +453,7 @@ class InjectedAudioRuntime implements AudioRuntime {
   private graph: RuntimeGraph | null = null;
   private state: AudioActivationState = 'blocked';
   private muted: boolean;
+  private masterGain: number;
   private hidden = false;
   private disposedTerminal = false;
   private resumeBlocked = false;
@@ -433,6 +467,7 @@ class InjectedAudioRuntime implements AudioRuntime {
   private totalFaults = 0;
   private peakNodes = 0;
   private peakVoices = 0;
+  private peakCreatureEmitters = 0;
   private peakCache = 0;
   private cacheEvictions = 0;
   private voicesStarted = 0;
@@ -454,21 +489,47 @@ class InjectedAudioRuntime implements AudioRuntime {
   private lastNowMs: number | null = null;
 
   constructor(options: AudioRuntimeOptions) {
-    if (options === null || typeof options !== 'object'
-      || typeof options.createContext !== 'function' || typeof options.nowMs !== 'function') {
+    if (options === null || typeof options !== 'object') {
       throw new TypeError('audio runtime requires injected context and clock factories');
     }
-    this.createContext = options.createContext;
-    this.nowMs = options.nowMs;
-    if (options.verifyCounterpart !== undefined && typeof options.verifyCounterpart !== 'function') {
+    let createContext: unknown;
+    let nowMs: unknown;
+    let verifyCounterpart: unknown;
+    let budgets: AudioRuntimeOptions['budgets'];
+    let initialMuted: unknown;
+    let initialMasterGain: unknown;
+    let categoryGains: AudioRuntimeOptions['categoryGains'];
+    try {
+      /* Runtime options may cross an app/plugin boundary. Snapshot every
+         structured field once so accessors cannot pass validation and then
+         substitute a different factory or policy value. */
+      createContext = options.createContext;
+      nowMs = options.nowMs;
+      verifyCounterpart = options.verifyCounterpart;
+      budgets = options.budgets;
+      initialMuted = options.initialMuted;
+      initialMasterGain = options.initialMasterGain;
+      categoryGains = options.categoryGains;
+    } catch {
+      throw new TypeError('audio runtime options could not be read');
+    }
+    if (typeof createContext !== 'function' || typeof nowMs !== 'function') {
+      throw new TypeError('audio runtime requires injected context and clock factories');
+    }
+    this.createContext = createContext as () => AudioContextLike;
+    this.nowMs = nowMs as () => number;
+    if (verifyCounterpart !== undefined && typeof verifyCounterpart !== 'function') {
       throw new TypeError('audio counterpart verifier must be a function');
     }
-    this.verifyCounterpart = options.verifyCounterpart ?? null;
-    this.budgets = resolvedBudgets(options.budgets);
-    this.muted = options.initialMuted === true;
+    this.verifyCounterpart = (verifyCounterpart as (
+      ((receipt: AudioCounterpartReceipt) => boolean) | undefined
+    )) ?? null;
+    this.budgets = resolvedBudgets(budgets);
+    this.muted = initialMuted === true;
+    this.masterGain = boundedGain(initialMasterGain ?? 1, 'master gain');
     this.gains = Object.fromEntries(AUDIO_CATEGORIES.map((name) => [
       name,
-      boundedGain(options.categoryGains?.[name] ?? 1, `${name} category gain`),
+      boundedGain(categoryGains?.[name] ?? 1, `${name} category gain`),
     ])) as Record<AudioCategory, number>;
     this.peakLevels = Object.fromEntries(METERS.map((name) => [name, 0])) as Record<AudioMeter, number>;
   }
@@ -498,7 +559,7 @@ class InjectedAudioRuntime implements AudioRuntime {
       try {
         context = this.createContext();
         this.contextGeneration++;
-        const graph = createGraph(context, this.gains);
+        const graph = createGraph(context, this.masterGain, this.gains);
         this.context = context;
         this.graph = graph;
         this.attachStateListener(context);
@@ -572,6 +633,12 @@ class InjectedAudioRuntime implements AudioRuntime {
     this.syncContextState();
   }
 
+  setMasterGain(gain: number): void {
+    if (this.isDisposed()) return;
+    this.masterGain = boundedGain(gain, 'master gain');
+    this.applyMasterMute();
+  }
+
   setCategoryGain(categoryValue: AudioCategory, gain: number): void {
     if (this.isDisposed()) return;
     const name = category(categoryValue);
@@ -624,26 +691,43 @@ class InjectedAudioRuntime implements AudioRuntime {
     let counterpart: AudioCounterpartReceipt | null = null;
     let create: AudioVoiceRequest['create'];
     try {
-      key = boundedAudioKey(request?.key, 'audio voice key', 192);
-      categoryName = category(request?.category);
-      priority = boundedInteger(request?.priority, 'audio voice priority', -1_000, 1_000);
-      cooldownGroup = boundedAudioKey(request?.cooldownGroup, 'audio cooldown group', 128);
-      cooldownMs = boundedInteger(request?.cooldownMs, 'audio cooldown', 0, 600_000);
-      concurrencyGroup = boundedAudioKey(request?.concurrencyGroup, 'audio concurrency group', 128);
+      if (request === null || typeof request !== 'object') {
+        throw new TypeError('audio voice request is incomplete');
+      }
+      /* Snapshot each request/meaning field exactly once. Besides making the
+         validation decision stable, this prevents a Proxy or accessor from
+         swapping the factory after it has passed the function check. */
+      const keyValue = request.key;
+      const categoryValue = request.category;
+      const priorityValue = request.priority;
+      const cooldownGroupValue = request.cooldownGroup;
+      const cooldownMsValue = request.cooldownMs;
+      const concurrencyGroupValue = request.concurrencyGroup;
+      const maxConcurrentValue = request.maxConcurrent;
+      const nodeCountValue = request.nodeCount;
+      const meaningValue = request.meaning;
+      const createValue = request.create;
+      key = boundedAudioKey(keyValue, 'audio voice key', 192);
+      categoryName = category(categoryValue);
+      priority = boundedInteger(priorityValue, 'audio voice priority', -1_000, 1_000);
+      cooldownGroup = boundedAudioKey(cooldownGroupValue, 'audio cooldown group', 128);
+      cooldownMs = boundedInteger(cooldownMsValue, 'audio cooldown', 0, 600_000);
+      concurrencyGroup = boundedAudioKey(concurrencyGroupValue, 'audio concurrency group', 128);
       maxConcurrent = boundedInteger(
-        request?.maxConcurrent,
+        maxConcurrentValue,
         'audio group concurrency',
         1,
         this.budgets.maxVoices,
       );
-      nodeCount = boundedInteger(request?.nodeCount, 'audio graph node reservation', 1, MAX_VOICE_GRAPH_NODES);
-      if (typeof request?.create !== 'function' || request.meaning === null || typeof request.meaning !== 'object') {
+      nodeCount = boundedInteger(nodeCountValue, 'audio graph node reservation', 1, MAX_VOICE_GRAPH_NODES);
+      if (typeof createValue !== 'function' || meaningValue === null || typeof meaningValue !== 'object') {
         throw new TypeError('audio voice request is incomplete');
       }
-      create = request.create;
-      if (request.meaning.kind === 'meaningful') {
-        counterpart = counterpartReceipt(request.meaning.counterpart);
-      } else if (request.meaning.kind !== 'decorative') {
+      create = createValue;
+      const meaningKind = meaningValue.kind;
+      if (meaningKind === 'meaningful') {
+        counterpart = counterpartReceipt(meaningValue.counterpart);
+      } else if (meaningKind !== 'decorative') {
         throw new TypeError('audio voice meaning is invalid');
       }
     } catch {
@@ -670,7 +754,12 @@ class InjectedAudioRuntime implements AudioRuntime {
       return Object.freeze({ kind: 'rejected', reason: 'cooldown' });
     }
 
-    const initialAdmission = this.voiceAdmission(priority, concurrencyGroup, maxConcurrent);
+    const initialAdmission = this.voiceAdmission(
+      priority,
+      categoryName,
+      concurrencyGroup,
+      maxConcurrent,
+    );
     if (initialAdmission.reason) return this.admissionRejection(initialAdmission.reason);
     const reservationNodes = nodeCount + 1;
     if (this.currentNodeCount() + this.reservedNodes + reservationNodes > this.budgets.maxNodes) {
@@ -697,9 +786,10 @@ class InjectedAudioRuntime implements AudioRuntime {
         this.recordFault('voice-create', error);
         return Object.freeze({ kind: 'fault', reason: 'voice-create' });
       }
-      const validated = this.validateVoiceGraph(voiceGraph, reservation);
+      const snapshot = this.snapshotVoiceGraph(voiceGraph);
+      const validated = snapshot ? this.validateVoiceGraph(snapshot, reservation) : null;
       if (!validated) {
-        this.discardVoiceGraph(voiceGraph);
+        if (snapshot) this.discardVoiceGraph(snapshot);
         this.recordFault('voice-create', new TypeError('voice graph ownership/reservation is invalid'));
         return Object.freeze({ kind: 'fault', reason: 'voice-create' });
       }
@@ -709,7 +799,7 @@ class InjectedAudioRuntime implements AudioRuntime {
       try {
         voiceGain = context.createGain();
         setParam(voiceGain.gain, 0, context.currentTime);
-        voiceGraph.output.connect(voiceGain);
+        validated.output.connect(voiceGain);
         voiceGain.connect(runtimeGraph.categories[categoryName]);
       } catch (error) {
         this.disconnectOwned(voiceGain ? [voiceGain, ...nodes] : nodes, 'voice-connect');
@@ -728,7 +818,12 @@ class InjectedAudioRuntime implements AudioRuntime {
         this.disconnectOwned([voiceGain, ...nodes], 'voice-discard');
         return postCreateCounterpart;
       }
-      const finalAdmission = this.voiceAdmission(priority, concurrencyGroup, maxConcurrent);
+      const finalAdmission = this.voiceAdmission(
+        priority,
+        categoryName,
+        concurrencyGroup,
+        maxConcurrent,
+      );
       if (finalAdmission.reason) {
         this.disconnectOwned([voiceGain, ...nodes], 'voice-discard');
         return this.admissionRejection(finalAdmission.reason);
@@ -742,24 +837,42 @@ class InjectedAudioRuntime implements AudioRuntime {
       const id = `voice-${ordinal.toString(36).padStart(6, '0')}`;
       let installed = false;
       let endedDuringStart = false;
-      voiceGraph.source.onended = () => {
-        if (installed) this.finishVoice(id, 'natural');
-        else endedDuringStart = true;
-      };
       const startedSources: AudioScheduledSourceLike[] = [];
       try {
+        validated.source.onended = () => {
+          if (installed) this.finishVoice(id, 'natural');
+          else endedDuringStart = true;
+        };
         for (const source of sources) {
           source.start();
           startedSources.push(source);
         }
         if (endedDuringStart) throw new Error('audio completion source ended during start');
-        setParam(voiceGain.gain, 1, context.currentTime);
       } catch (error) {
-        for (const source of sources) source.onended = null;
+        this.clearSourceEndedHandlers(sources, 'voice-handler-clear');
         this.stopSources(startedSources, 'voice-stop');
         this.disconnectOwned([voiceGain, ...nodes], 'voice-disconnect');
         this.recordFault('voice-start', error);
         return Object.freeze({ kind: 'fault', reason: 'voice-start' });
+      }
+
+      /* A hostile adapter can synchronously change lifecycle or counterpart
+         ownership from start(). The voice is still behind zero gain here, so
+         recheck before stealing an incumbent or making the voice audible. */
+      this.syncContextState();
+      const postStartUnavailable = this.voiceUnavailableResult(context, runtimeGraph);
+      if (postStartUnavailable) {
+        this.clearSourceEndedHandlers(sources, 'voice-handler-clear');
+        this.stopSources(sources, 'voice-stop');
+        this.disconnectOwned([voiceGain, ...nodes], 'voice-discard');
+        return postStartUnavailable;
+      }
+      const postStartCounterpart = this.counterpartResult(counterpart);
+      if (postStartCounterpart) {
+        this.clearSourceEndedHandlers(sources, 'voice-handler-clear');
+        this.stopSources(sources, 'voice-stop');
+        this.disconnectOwned([voiceGain, ...nodes], 'voice-discard');
+        return postStartCounterpart;
       }
 
       const active: ActiveVoice = {
@@ -767,15 +880,29 @@ class InjectedAudioRuntime implements AudioRuntime {
         key,
         ordinal,
         priority,
+        category: categoryName,
         concurrencyGroup,
-        source: voiceGraph.source,
+        source: validated.source,
         sources,
         nodes,
         voiceGain,
         nodeCount: reservationNodes,
         cleaned: false,
       };
+      /* A replacement may be constructed and started behind its zero gain so
+         start failure keeps the incumbent. The incumbent is stopped before the
+         replacement becomes audible, so the admitted emitter count never has
+         a ninth audible creature at the eight-emitter boundary. */
       if (finalAdmission.victim) this.finishVoice(finalAdmission.victim.id, 'stolen');
+      try {
+        setParam(voiceGain.gain, 1, context.currentTime);
+      } catch (error) {
+        this.clearSourceEndedHandlers(sources, 'voice-handler-clear');
+        this.stopSources(sources, 'voice-stop');
+        this.disconnectOwned([voiceGain, ...nodes], 'voice-disconnect');
+        this.recordFault('voice-start', error);
+        return Object.freeze({ kind: 'fault', reason: 'voice-start' });
+      }
       this.endReservation(reservationNodes);
       reservationActive = false;
       this.active.set(id, active);
@@ -855,6 +982,11 @@ class InjectedAudioRuntime implements AudioRuntime {
       contextGeneration: this.contextGeneration,
       muted: this.muted,
       hidden: this.hidden,
+      gains: Object.freeze({
+        master: this.masterGain,
+        effectiveMaster: this.muted ? 0 : this.masterGain,
+        categories: Object.freeze({ ...this.gains }),
+      }),
       nodes: Object.freeze({ active: this.currentNodeCount(), peak: this.peakNodes, budget: this.budgets.maxNodes }),
       cache: Object.freeze({
         active: this.cache.size,
@@ -873,6 +1005,11 @@ class InjectedAudioRuntime implements AudioRuntime {
         stolen: this.voicesStolen,
         cooldownRejects: this.cooldownRejects,
         concurrencyRejects: this.concurrencyRejects,
+      }),
+      creatureEmitters: Object.freeze({
+        active: this.currentCreatureEmitterCount(),
+        peak: this.peakCreatureEmitters,
+        budget: this.budgets.maxCreatureEmitters,
       }),
       cooldowns: Object.freeze({ active: this.cooldowns.size, budget: this.budgets.maxCooldownGroups }),
       reservations: Object.freeze({
@@ -955,30 +1092,35 @@ class InjectedAudioRuntime implements AudioRuntime {
 
   private voiceAdmission(
     priority: number,
+    categoryName: AudioCategory,
     concurrencyGroup: string,
     maxConcurrent: number,
   ): VoiceAdmission {
-    let victim: ActiveVoice | null = null;
-    const groupVoices = [...this.active.values()]
-      .filter((voice) => voice.concurrencyGroup === concurrencyGroup)
-      .sort((left, right) => left.priority - right.priority || left.ordinal - right.ordinal);
-    if (groupVoices.length >= maxConcurrent) {
-      const candidate = groupVoices[0]!;
-      if (priority <= candidate.priority) {
-        return Object.freeze({ victim: null, reason: 'concurrency' });
-      }
-      victim = candidate;
+    const active = [...this.active.values()];
+    const groupFull = active.filter(
+      (voice) => voice.concurrencyGroup === concurrencyGroup,
+    ).length >= maxConcurrent;
+    const creatureFull = categoryName === 'creature'
+      && this.currentCreatureEmitterCount() >= this.budgets.maxCreatureEmitters;
+    const voiceFull = active.length >= this.budgets.maxVoices;
+    if (!groupFull && !creatureFull && !voiceFull) {
+      return Object.freeze({ victim: null, reason: null });
     }
-    if (this.active.size - (victim ? 1 : 0) >= this.budgets.maxVoices) {
-      const candidate = [...this.active.values()]
-        .filter((voice) => voice !== victim)
-        .sort((left, right) => left.priority - right.priority || left.ordinal - right.ordinal)[0];
-      if (!candidate || priority <= candidate.priority) {
-        return Object.freeze({ victim: null, reason: 'voice-budget' });
-      }
-      victim = candidate;
+
+    /* One replacement may evict exactly one incumbent. The candidate therefore
+       has to release every saturated scope at once. Rejection diagnosis follows
+       narrowest-to-broadest policy: request group, creature category, full mix. */
+    const rejectionReason: Exclude<VoiceAdmission['reason'], null> = groupFull
+      ? 'concurrency'
+      : creatureFull ? 'creature-budget' : 'voice-budget';
+    const candidate = active
+      .filter((voice) => (!groupFull || voice.concurrencyGroup === concurrencyGroup)
+        && (!creatureFull || voice.category === 'creature'))
+      .sort((left, right) => left.priority - right.priority || left.ordinal - right.ordinal)[0];
+    if (!candidate || priority <= candidate.priority) {
+      return Object.freeze({ victim: null, reason: rejectionReason });
     }
-    return Object.freeze({ victim, reason: null });
+    return Object.freeze({ victim: candidate, reason: null });
   }
 
   private admissionRejection(
@@ -1016,7 +1158,7 @@ class InjectedAudioRuntime implements AudioRuntime {
   private applyMasterMute(): void {
     if (!this.graph || !this.context) return;
     try {
-      setParam(this.graph.master.gain, this.muted ? 0 : 1, this.context.currentTime);
+      setParam(this.graph.master.gain, this.muted ? 0 : this.masterGain, this.context.currentTime);
     } catch (error) {
       this.recordFault('master-gain', error);
     }
@@ -1097,8 +1239,29 @@ class InjectedAudioRuntime implements AudioRuntime {
     if (graph) this.disconnectOwned(graph.nodes, 'graph-disconnect');
   }
 
+  private snapshotVoiceGraph(graph: unknown): VoiceGraphSnapshot | null {
+    if (graph === null || typeof graph !== 'object') return null;
+    try {
+      const value = graph as AudioVoiceGraph;
+      const source = value.source;
+      const sources = value.sources;
+      const output = value.output;
+      const nodes = value.nodes;
+      const graphReservation = value.reservation;
+      return Object.freeze({
+        source,
+        sources: Array.isArray(sources) ? Object.freeze([...sources]) : sources,
+        output,
+        nodes: Array.isArray(nodes) ? Object.freeze([...nodes]) : nodes,
+        reservation: graphReservation,
+      });
+    } catch {
+      return null;
+    }
+  }
+
   private validateVoiceGraph(
-    graph: AudioVoiceGraph,
+    graph: VoiceGraphSnapshot,
     reservation: AudioVoiceReservation,
   ): VoiceGraphValidation | null {
     try {
@@ -1108,13 +1271,16 @@ class InjectedAudioRuntime implements AudioRuntime {
         || !Array.isArray(graph.sources) || graph.sources.length < 1) return null;
       const nodes = [...graph.nodes];
       const sources = [...graph.sources];
-      if (nodes.some((node) => !isNode(node)) || new Set(nodes).size !== nodes.length
+      if (nodes.some((node) => this.isProtectedRuntimeNode(node) || !isNode(node))
+        || new Set(nodes).size !== nodes.length
         || sources.some((source) => !isScheduledSource(source) || source.onended !== null)
         || new Set(sources).size !== sources.length
         || !sources.includes(graph.source) || !nodes.includes(graph.source)
         || !nodes.includes(graph.output) || sources.some((source) => !nodes.includes(source))
         || nodes.some((node) => isScheduledSource(node) && !sources.includes(node))) return null;
       return Object.freeze({
+        source: graph.source,
+        output: graph.output,
         nodes: Object.freeze(nodes),
         sources: Object.freeze(sources),
       });
@@ -1123,14 +1289,18 @@ class InjectedAudioRuntime implements AudioRuntime {
     }
   }
 
-  private discardVoiceGraph(graph: AudioVoiceGraph): void {
-    if (!graph || typeof graph !== 'object') return;
+  private discardVoiceGraph(graph: VoiceGraphSnapshot): void {
     const candidates: unknown[] = [];
-    try { if (Array.isArray(graph.nodes)) candidates.push(...graph.nodes); } catch { /* invalid graph */ }
-    try { if (Array.isArray(graph.sources)) candidates.push(...graph.sources); } catch { /* invalid graph */ }
-    try { candidates.push(graph.source); } catch { /* invalid graph */ }
-    try { candidates.push(graph.output); } catch { /* invalid graph */ }
-    this.disconnectOwned([...new Set(candidates.filter(isNode))], 'voice-discard');
+    try { if (Array.isArray(graph.nodes)) candidates.push(...graph.nodes); } catch { /* hostile array */ }
+    try { if (Array.isArray(graph.sources)) candidates.push(...graph.sources); } catch { /* hostile array */ }
+    candidates.push(graph.source, graph.output);
+    const disposable: AudioNodeLike[] = [];
+    for (const candidate of candidates) {
+      try {
+        if (!this.isProtectedRuntimeNode(candidate) && isNode(candidate)) disposable.push(candidate);
+      } catch { /* hostile node */ }
+    }
+    this.disconnectOwned([...new Set(disposable)], 'voice-discard');
   }
 
   private finishVoice(
@@ -1141,7 +1311,7 @@ class InjectedAudioRuntime implements AudioRuntime {
     if (!voice || voice.cleaned) return;
     voice.cleaned = true;
     this.active.delete(id);
-    for (const source of voice.sources) source.onended = null;
+    this.clearSourceEndedHandlers(voice.sources, 'voice-handler-clear');
     this.stopSources(voice.sources, 'voice-stop');
     this.disconnectOwned([voice.voiceGain, ...voice.nodes], 'voice-disconnect');
     if (reason === 'natural') this.voicesCompleted++;
@@ -1153,6 +1323,24 @@ class InjectedAudioRuntime implements AudioRuntime {
 
   private stopAllVoices(reason: 'mute' | 'hidden' | 'dispose' | 'context-loss'): void {
     for (const id of [...this.active.keys()]) this.finishVoice(id, reason);
+  }
+
+  private clearSourceEndedHandlers(
+    sources: readonly AudioScheduledSourceLike[],
+    faultKind: string,
+  ): void {
+    for (const source of [...new Set(sources)]) {
+      try { source.onended = null; } catch (error) { this.recordFault(faultKind, error); }
+    }
+  }
+
+  private isProtectedRuntimeNode(node: unknown): boolean {
+    if (this.context?.destination === node
+      || this.graph?.nodes.some((candidate) => candidate === node)) return true;
+    for (const voice of this.active.values()) {
+      if (voice.voiceGain === node || voice.nodes.some((candidate) => candidate === node)) return true;
+    }
+    return false;
   }
 
   private stopSources(sources: readonly AudioScheduledSourceLike[], faultKind: string): void {
@@ -1223,9 +1411,21 @@ class InjectedAudioRuntime implements AudioRuntime {
     return count;
   }
 
+  private currentCreatureEmitterCount(): number {
+    let count = 0;
+    for (const voice of this.active.values()) {
+      if (voice.category === 'creature') count++;
+    }
+    return count;
+  }
+
   private observeBudgets(): void {
     this.peakNodes = Math.max(this.peakNodes, this.currentNodeCount());
     this.peakVoices = Math.max(this.peakVoices, this.active.size);
+    this.peakCreatureEmitters = Math.max(
+      this.peakCreatureEmitters,
+      this.currentCreatureEmitterCount(),
+    );
     this.peakCache = Math.max(this.peakCache, this.cache.size);
     this.peakVoicesWithReservations = Math.max(
       this.peakVoicesWithReservations,

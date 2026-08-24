@@ -286,10 +286,11 @@ describe('Arc 7 sound-output witness', () => {
   it('passes the reusable static purity audit and fails every forbidden term one at a time', () => {
     const sources: AudioStaticSource[] = [
       '../src/taxonomy.ts', '../src/identity.ts', '../src/sound-witness.ts',
+      '../src/ecology.ts', '../src/events.ts',
     ].map((path) => ({ sourceId: path, sourceText: readFileSync(new URL(path, import.meta.url), 'utf8') }));
     expect(inspectAudioStaticPurity(sources)).toEqual([]);
     expect(auditAudioStaticPurity(sources)).toEqual({
-      sourceCount: 3,
+      sourceCount: 5,
       ruleCount: AUDIO_STATIC_PURITY_RULES.length,
       violationCount: 0,
     });
@@ -310,12 +311,56 @@ describe('Arc 7 sound-output witness', () => {
       ['rng-import', "import {\n  mulberry32,\n} from '@cf/domain-rand';"],
       ['dom-import', "const module = await import('jsdom');"],
       ['rng-import', "const module = await import('@cf/domain-sessionrng');"],
+      ['dom-import', "const module = await import(\n  'jsdom'\n);"],
+      ['rng-import', "const module = await import(\n  '@cf/domain-sessionrng'\n);"],
+      ['dom-import', "const module = await import(/* control */ 'jsdom');"],
+      ['rng-import', "const module = await import /* control */ ('@cf/domain-sessionrng');"],
+      ['dom-import', 'const module = await import(`jsdom`);'],
+      ['rng-import', 'const module = await import(`@cf/domain-sessionrng`);'],
+      ['dom-import', "const module = await import('js\\u0064om');"],
+      ['rng-import', "const module = await import('@cf/domain-sessionr\\u006eg');"],
+      ['dom-import', "export {\n  browserOwner,\n} from '@cf/browser-runtime';"],
+      ['global-this', 'const root =\n  globalThis;'],
+      ['math-random', 'const value = M\\u0061th.r\\u0061ndom();'],
+      ['date-now', 'const value = D\\u0061te.n\\u006fw();'],
+      ['performance-now', 'const value = perform\\u0061nce.n\\u006fw();'],
+      ['new-date', 'const value = new D\\u0061te();'],
+      ['crypto', 'const value = cr\\u0079pto.getRandomValues(bytes);'],
+      ['window', 'const value = w\\u0069ndow.location;'],
+      ['document', 'const value = doc\\u0075ment.body;'],
+      ['global-this', 'const root = global\\u0054his;'],
     ];
     for (const [rule, sourceText] of controls) {
       const control = { sourceId: `negative-${rule}`, sourceText };
       const violations = inspectAudioStaticPurity([...sources, control]);
       expect(violations.map((violation) => violation.rule), sourceText).toEqual([rule]);
       expect(() => auditAudioStaticPurity([...sources, control]), sourceText).toThrow(rule);
+    }
+
+    const decoys = [
+      'const text = "Math.random Date.now globalThis import(\'jsdom\')";',
+      "const other = 'crypto window document @cf/domain-sessionrng';",
+      '// performance.now(); import(`jsdom`);',
+      '/* new Date(); global\\u0054his; import(\'@cf/domain-sessionrng\'); */',
+      'const template = `globalThis Math.random import(\'jsdom\')`;',
+      'const expressionText = `value:${"globalThis import(\\\'jsdom\\\')"}`;',
+    ].join('\n');
+    expect(inspectAudioStaticPurity([...sources, { sourceId: 'lexical-decoys', sourceText: decoys }]))
+      .toEqual([]);
+    const templateExpression = {
+      sourceId: 'template-expression-control',
+      sourceText: 'const value = `visible:${global\\u0054his}`;',
+    };
+    expect(inspectAudioStaticPurity([...sources, templateExpression])).toMatchObject([
+      { sourceId: templateExpression.sourceId, rule: 'global-this' },
+    ]);
+
+    for (const sourceId of ['../src/ecology.ts', '../src/events.ts']) {
+      const mutated = sources.map((source) => source.sourceId === sourceId
+        ? { ...source, sourceText: `${source.sourceText}\nvoid globalThis;` }
+        : source);
+      expect(inspectAudioStaticPurity(mutated)).toMatchObject([{ sourceId, rule: 'global-this' }]);
+      expect(() => auditAudioStaticPurity(mutated)).toThrow(`global-this in ${sourceId}`);
     }
   });
 });
