@@ -437,6 +437,33 @@ const dispatchKeyPress = async (session, key, code = key, modifiers = 0) => {
 };
 
 const fails = [];
+const F3_PERSISTENCE_BROWSER_STAGES = Object.freeze([
+  Object.freeze({
+    stage: 'legacy-v1-created', databaseVersionOne: true,
+    receiptsStoreAbsent: true, legacySaveExact: true,
+  }),
+  Object.freeze({
+    stage: 'repository-v2-upgrade', databaseVersionTwo: true,
+    receiptsStorePresent: true, legacySaveExact: true,
+  }),
+  Object.freeze({
+    stage: 'v4-to-v5-migration', migrated: true,
+    splitSaveReadable: true, legacySaveExact: true,
+  }),
+  Object.freeze({
+    stage: 'two-backend-cas', contendersTwo: true, committedExactlyOne: true,
+    revisionAdvancedOnce: true, losingWritesAbsent: true,
+  }),
+  Object.freeze({
+    stage: 'checked-transaction-rollback', rejected: true,
+    authoritativeValueUnchanged: true, speculativeWritesAbsent: true,
+  }),
+  Object.freeze({
+    stage: 'external-v3-versionchange', blockedEventObserved: false,
+    upgradedFromVersionTwo: true, upgradedToVersionThree: true,
+  }),
+  Object.freeze({ stage: 'cleanup-delete', blockedEventObserved: false, deleted: true }),
+]);
 const DTRAIN_NATIVE_WRITE_BINDING = '__cfDtrainNativeWriteWitness';
 const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
 const bindingPayloadsSince = (sessionId, mark, name) => events.slice(mark)
@@ -814,6 +841,112 @@ try {
     if (renderedSceneMatchesNav(systemWorldKey)) {
       fails.push('RENDERED-SCENE KEY-INVENTORY CONTROL FAILED — system accepted an agreeing non-null world key');
     }
+  }
+
+  /* F3 persistence evidence must execute the production browser backend; a
+     frozen object with the expected labels is not evidence. First replace
+     native IDBFactory.open with one bounded throwing seam and require the
+     diagnostics API to propagate that exact failure. Then observe the real
+     open/upgrade/delete calls around one positive run and independently
+     confirm that its disposable database no longer exists. */
+  const f3NativeFailureControl = await evalIn(`(async()=>{
+    const api=window.__CF_SLICE__?.api?.__f3PersistenceBrowserProbe;
+    const proto=globalThis.IDBFactory?.prototype;
+    const descriptor=proto&&Object.getOwnPropertyDescriptor(proto,'open');
+    const sentinel='f3-smoke-native-open-control';
+    if(typeof api!=='function'||!descriptor||typeof descriptor.value!=='function'||!descriptor.writable){
+      return {armed:false,rejected:false,sentinelObserved:false,restored:false};
+    }
+    const original=descriptor.value;
+    Object.defineProperty(proto,'open',{...descriptor,value:function(){throw new Error(sentinel)}});
+    let rejected=false,error='';
+    try{await api()}catch(cause){rejected=true;error=String(cause?.message||cause)}
+    finally{Object.defineProperty(proto,'open',descriptor)}
+    return {armed:true,rejected,sentinelObserved:error.includes(sentinel),
+      restored:Object.getOwnPropertyDescriptor(proto,'open')?.value===original,
+      nativeFactory:indexedDB instanceof IDBFactory&&Object.getPrototypeOf(indexedDB)===proto};
+  })()`, { timeoutMs: 10000 });
+  if (!f3NativeFailureControl.armed || !f3NativeFailureControl.rejected
+    || !f3NativeFailureControl.sentinelObserved || !f3NativeFailureControl.restored
+    || !f3NativeFailureControl.nativeFactory) {
+    fails.push('F3 PERSISTENCE NATIVE CONTROL FAILED — a fabricated result or non-browser backend could stay green: '
+      + JSON.stringify(f3NativeFailureControl));
+  }
+
+  const f3BrowserEvidence = await evalIn(`(async()=>{
+    const api=window.__CF_SLICE__?.api?.__f3PersistenceBrowserProbe;
+    const proto=globalThis.IDBFactory?.prototype;
+    const openDescriptor=proto&&Object.getOwnPropertyDescriptor(proto,'open');
+    const deleteDescriptor=proto&&Object.getOwnPropertyDescriptor(proto,'deleteDatabase');
+    if(typeof api!=='function'||!openDescriptor||typeof openDescriptor.value!=='function'
+      ||!deleteDescriptor||typeof deleteDescriptor.value!=='function'
+      ||!openDescriptor.writable||!deleteDescriptor.writable){return {instrumented:false}}
+    const originalOpen=openDescriptor.value,originalDelete=deleteDescriptor.value,trace=[];
+    Object.defineProperty(proto,'open',{...openDescriptor,value:function(name,version){
+      const request=Reflect.apply(originalOpen,this,arguments);
+      trace.push({method:'open',name:String(name),version:arguments.length>=2?Number(version):null,
+        args:arguments.length,factoryThis:this===indexedDB,nativeRequest:request instanceof IDBOpenDBRequest,
+        requestTag:Object.prototype.toString.call(request)});
+      return request;
+    }});
+    Object.defineProperty(proto,'deleteDatabase',{...deleteDescriptor,value:function(name){
+      const request=Reflect.apply(originalDelete,this,arguments);
+      trace.push({method:'delete',name:String(name),version:null,args:arguments.length,
+        factoryThis:this===indexedDB,nativeRequest:request instanceof IDBOpenDBRequest,
+        requestTag:Object.prototype.toString.call(request)});
+      return request;
+    }});
+    let outcome,frozen;
+    try{
+      outcome=await api();
+      frozen={outcome:Object.isFrozen(outcome),stages:Object.isFrozen(outcome.stages),
+        rows:Array.isArray(outcome.stages)?outcome.stages.map(Object.isFrozen):[]};
+    }finally{
+      Object.defineProperty(proto,'open',openDescriptor);
+      Object.defineProperty(proto,'deleteDatabase',deleteDescriptor);
+    }
+    const databasesSupported=typeof indexedDB.databases==='function';
+    const remainingNames=databasesSupported
+      ?(await indexedDB.databases()).map((entry)=>entry.name??null):null;
+    return {instrumented:true,outcome,frozen,trace,databasesSupported,remainingNames,
+      nativeFactory:indexedDB instanceof IDBFactory&&Object.getPrototypeOf(indexedDB)===proto,
+      nativeOpen:/\\[native code\\]/.test(Function.prototype.toString.call(originalOpen)),
+      nativeDelete:/\\[native code\\]/.test(Function.prototype.toString.call(originalDelete)),
+      restored:Object.getOwnPropertyDescriptor(proto,'open')?.value===originalOpen
+        &&Object.getOwnPropertyDescriptor(proto,'deleteDatabase')?.value===originalDelete};
+  })()`, { timeoutMs: 30000 });
+  const f3DatabaseName = f3BrowserEvidence.outcome?.databaseName;
+  const expectedF3Outcome = {
+    kind: 'f3-persistence-browser-probe', ok: true,
+    databaseName: f3DatabaseName, stages: F3_PERSISTENCE_BROWSER_STAGES,
+  };
+  if (!f3BrowserEvidence.instrumented || !f3BrowserEvidence.nativeFactory
+    || !f3BrowserEvidence.nativeOpen || !f3BrowserEvidence.nativeDelete
+    || !f3BrowserEvidence.restored
+    || !/^cf-f3-probe-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}-persistence$/.test(f3DatabaseName || '')
+    || JSON.stringify(f3BrowserEvidence.outcome) !== JSON.stringify(expectedF3Outcome)
+    || !f3BrowserEvidence.frozen?.outcome || !f3BrowserEvidence.frozen?.stages
+    || JSON.stringify(f3BrowserEvidence.frozen?.rows) !== JSON.stringify(Array(7).fill(true))) {
+    fails.push('F3 PERSISTENCE OUTCOME: browser probe did not return the exact immutable seven-stage contract: '
+      + JSON.stringify(f3BrowserEvidence));
+  }
+  const f3DatabaseTrace = Array.isArray(f3BrowserEvidence.trace)
+    ? f3BrowserEvidence.trace.filter((entry) => entry.name === f3DatabaseName) : [];
+  const f3TraceShape = f3DatabaseTrace.map((entry) => [entry.method, entry.version, entry.args]);
+  const expectedF3TraceShape = [
+    ['open', 1, 2], ['open', 2, 2], ['open', null, 1],
+    ['open', 2, 2], ['open', 3, 2], ['delete', null, 1],
+  ];
+  if (JSON.stringify(f3TraceShape) !== JSON.stringify(expectedF3TraceShape)
+    || f3DatabaseTrace.some((entry) => !entry.factoryThis || !entry.nativeRequest
+      || entry.requestTag !== '[object IDBOpenDBRequest]')) {
+    fails.push('F3 PERSISTENCE NATIVE TRACE: production IndexedDB upgrade/CAS/delete calls drifted: '
+      + JSON.stringify(f3DatabaseTrace));
+  }
+  if (!f3BrowserEvidence.databasesSupported || !Array.isArray(f3BrowserEvidence.remainingNames)
+    || f3BrowserEvidence.remainingNames.includes(f3DatabaseName)) {
+    fails.push('F3 PERSISTENCE CLEANUP: the disposable browser database still exists after terminal success: '
+      + JSON.stringify({ f3DatabaseName, remainingNames: f3BrowserEvidence.remainingNames }));
   }
   const chromeA11yCheck = `(()=>{ const survey=document.getElementById('docksurvey'),card=document.getElementById('survey'),charts=document.getElementById('dockcharts');
     return {surveyControls:survey?.getAttribute('aria-controls')||null,surveyExpanded:survey?.getAttribute('aria-expanded')||null,
@@ -7331,6 +7464,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · READ-ONLY SHIPYARD (real right-rail open/Close, exact chassis/hardpoints/systems, one owned preview, zero retained work) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · READ-ONLY SHIPYARD (real right-rail open/Close, exact chassis/hardpoints/systems, one owned preview, zero retained work) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);
