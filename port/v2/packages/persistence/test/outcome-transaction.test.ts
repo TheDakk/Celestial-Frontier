@@ -8,7 +8,9 @@ import {
   F4_AUTHORITY_NAMESPACE,
   V4_PRIMARY_KEY,
   createActivePlayPersistenceOwner,
+  F4_NO_RNG_PRODUCT_OPERATIONS,
   createF4OutcomeTransactionOwner,
+  createF4NoRngProductTransactionOwner,
   createMemoryBackend,
   createRevisionedRepository,
   createTabLeaseClient,
@@ -18,6 +20,7 @@ import {
   readSaveV5,
   type ContentRegistry,
   type F4OutcomeTransactionInput,
+  type F4NoRngProductTransactionInput,
   type StorageBackend,
   type StorageCheck,
   type StorageOperation,
@@ -67,6 +70,7 @@ async function seededHarness(
   backend: StorageBackend = createMemoryBackend(),
   sessionRng = createSessionRNG(0xC0FFEE).state(),
   activePlayMs = 100,
+  extensions: V5Extensions = {},
 ): Promise<SeededHarness> {
   await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
   expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
@@ -80,7 +84,14 @@ async function seededHarness(
   ).commit({
     expectedRevision: 0,
     grant,
-    writable: { state: initial.state, extensions: initial.extensions },
+    writable: { state: initial.state, extensions: {
+      ...initial.extensions,
+      ...extensions,
+      player: {
+        ...(initial.extensions.player ?? {}),
+        ...(extensions.player ?? {}),
+      },
+    } },
     snapshot: { activePlayMs },
     sessionRng,
     now: NOW,
@@ -437,6 +448,8 @@ describe('@cf/persistence — F4 exact-outcome transaction owner', () => {
   it('keeps derivation failures detached and preserves the immutable receipt witness on collision', async () => {
     const harness = await seededHarness();
     const beforeEssence = harness.writable.state.essence;
+    const firstStat = Object.keys(harness.writable.state.stats)[0];
+    const beforeFirstStat = firstStat === undefined ? undefined : harness.writable.state.stats[firstStat];
     const owner = createF4OutcomeTransactionOwner(createRevisionedRepository(harness.backend), REGISTRY);
     const rejected = await owner.commit({
       expectedRevision: 1,
@@ -448,12 +461,15 @@ describe('@cf/persistence — F4 exact-outcome transaction owner', () => {
       now: NOW,
       derive: ({ draft }) => {
         expect(draft).not.toBe(harness.writable.state);
+        expect(draft.stats).not.toBe(harness.writable.state.stats);
         draft.essence += 999;
+        if (firstStat !== undefined) draft.stats[firstStat] = 999_999;
         throw new Error('product policy refused');
       },
     });
     expect(rejected).toMatchObject({ kind: 'rejected', stage: 'derive', message: 'product policy refused' });
     expect(harness.writable.state.essence).toBe(beforeEssence);
+    if (firstStat !== undefined) expect(harness.writable.state.stats[firstStat]).toBe(beforeFirstStat);
     expect(await createRevisionedRepository(harness.backend).revision()).toBe(1);
     expect(await createRevisionedRepository(harness.backend).readReceipt(0)).toBeUndefined();
 
@@ -494,5 +510,371 @@ describe('@cf/persistence — F4 exact-outcome transaction owner', () => {
     });
     expect(emptyWitness).toMatchObject({ kind: 'rejected', stage: 'derive' });
     expect(await createRevisionedRepository(harness.backend).revision()).toBe(1);
+  });
+
+  it('applies checked product extension writes before protected F4 authority and preserves unrelated namespaces', async () => {
+    const harness = await seededHarness(
+      createMemoryBackend(),
+      createSessionRNG(0xC0FFEE, { existing: 3 }, 7).state(),
+      100,
+      {
+        inventory: {
+          'arc2.inventory': { version: 1, json: '{"entries":["old"]}' },
+          'other.inventory': { version: 4, json: '{"keep":true}' },
+        },
+        settings: { 'arc7.audio': { version: 1, json: '{"muted":false}' } },
+      },
+    );
+    const originalExtensions = harness.writable.extensions;
+    const originalInventoryCarrier = originalExtensions.inventory?.['arc2.inventory'];
+    let observedExtensions: V5Extensions | null = null;
+    const owner = createF4OutcomeTransactionOwner(createRevisionedRepository(harness.backend), REGISTRY);
+    const result = await owner.commit({
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 175 },
+      domain: 'loot.rarity',
+      receiptKind: 'loot-settlement',
+      now: NOW,
+      derive: ({ draft, extensions }) => {
+        observedExtensions = extensions;
+        expect(extensions).not.toBe(originalExtensions);
+        expect(extensions.inventory?.['arc2.inventory']).not.toBe(originalInventoryCarrier);
+        expect(Object.isFrozen(extensions)).toBe(true);
+        expect(Object.isFrozen(extensions.inventory)).toBe(true);
+        expect(() => {
+          (extensions.inventory as Record<string, { version: number; json: string }>)[
+            'arc2.inventory'
+          ] = { version: 99, json: '{"mutated":true}' };
+        }).toThrow();
+        return {
+          state: draft,
+          witness: 'loot:item-7',
+          extensionWrites: [
+            {
+              segment: 'inventory',
+              namespace: 'arc2.inventory',
+              carrier: { version: 2, json: '{"entries":["new"]}' },
+            },
+            {
+              segment: 'catalog',
+              namespace: 'arc2.discovery',
+              carrier: { version: 1, json: '{"ids":["item-7"]}' },
+            },
+          ],
+        };
+      },
+    });
+    expect(result.kind).toBe('committed');
+    expect(observedExtensions).not.toBeNull();
+    expect(originalExtensions.inventory?.['arc2.inventory']).toEqual({
+      version: 1, json: '{"entries":["old"]}',
+    });
+    const loaded = await readSaveV5(harness.backend, REGISTRY, NOW);
+    expect(loaded.kind).toBe('loaded');
+    if (loaded.kind !== 'loaded' || result.kind !== 'committed') return;
+    expect(loaded.extensions.inventory?.['arc2.inventory']).toEqual({
+      version: 2, json: '{"entries":["new"]}',
+    });
+    expect(loaded.extensions.inventory?.['other.inventory']).toEqual({
+      version: 4, json: '{"keep":true}',
+    });
+    expect(loaded.extensions.settings?.['arc7.audio']).toEqual({
+      version: 1, json: '{"muted":false}',
+    });
+    expect(loaded.extensions.catalog?.['arc2.discovery']).toEqual({
+      version: 1, json: '{"ids":["item-7"]}',
+    });
+    expect(readF4Authority(loaded.extensions)).toEqual({ kind: 'loaded', authority: result.authority });
+    expect(result.authority.sessionRng.draws).toEqual({ existing: 3, 'loot.rarity': 1 });
+  });
+
+  it('rejects duplicate extension targets and any direct player/f4.authority product write', async () => {
+    const harness = await seededHarness();
+    const owner = createF4OutcomeTransactionOwner(createRevisionedRepository(harness.backend), REGISTRY);
+    const base = {
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 150 },
+      domain: 'loot.rarity',
+      receiptKind: 'loot-settlement',
+      now: NOW,
+    } as const;
+    const carrier = { version: 1, json: '{"ok":true}' } as const;
+    const duplicate = await owner.commit({
+      ...base,
+      derive: ({ draft }) => ({
+        state: draft,
+        witness: 'duplicate-control',
+        extensionWrites: [
+          { segment: 'inventory', namespace: 'arc2.inventory', carrier },
+          { segment: 'inventory', namespace: 'arc2.inventory', carrier },
+        ],
+      }),
+    });
+    expect(duplicate).toMatchObject({
+      kind: 'rejected',
+      stage: 'extension-writes',
+      message: 'duplicate product extension write for inventory/arc2.inventory',
+    });
+
+    const forbidden = await owner.commit({
+      ...base,
+      derive: ({ draft }) => ({
+        state: draft,
+        witness: 'authority-control',
+        extensionWrites: [{
+          segment: 'player',
+          namespace: F4_AUTHORITY_NAMESPACE,
+          carrier: { version: 1, json: '{"activePlayMs":999,"sessionRng":{}}' },
+        }],
+      }),
+    });
+    expect(forbidden).toMatchObject({
+      kind: 'rejected',
+      stage: 'extension-writes',
+      message: 'product extension writes cannot overwrite player/f4.authority',
+    });
+    expect(await createRevisionedRepository(harness.backend).revision()).toBe(1);
+    expect(await createRevisionedRepository(harness.backend).readReceipt(0)).toBeUndefined();
+    const loaded = await readSaveV5(harness.backend, REGISTRY, NOW);
+    expect(loaded.kind).toBe('loaded');
+    if (loaded.kind === 'loaded') {
+      expect(readF4Authority(loaded.extensions)).toEqual({
+        kind: 'loaded',
+        authority: { activePlayMs: 100, sessionRng: { seed: 0xC0FFEE, ordinal: 0, draws: {} } },
+      });
+    }
+  });
+});
+
+describe('@cf/persistence — no-RNG Arc 2 product transaction owner', () => {
+  const inventoryCarrier = (entries: readonly string[], claimed: readonly string[] = []) => ({
+    version: 1,
+    json: JSON.stringify({ entries, claimed }),
+  });
+
+  const equipDerivation = (
+    nextEntries: readonly string[],
+    witness = 'equip:gear-1',
+  ): F4NoRngProductTransactionInput['derive'] => ({ draft, extensions, operation }) => {
+    expect(operation).toBe('equip');
+    expect(extensions.inventory?.['arc2.inventory']).toBeDefined();
+    return {
+      state: draft,
+      witness,
+      extensionWrites: [{
+        segment: 'inventory',
+        namespace: 'arc2.inventory',
+        carrier: inventoryCarrier(nextEntries),
+      }],
+    };
+  };
+
+  it('supports exactly equip, unequip, salvage, and pending claim', () => {
+    expect(F4_NO_RNG_PRODUCT_OPERATIONS).toEqual([
+      'equip', 'unequip', 'salvage', 'pending-claim',
+    ]);
+  });
+
+  it('atomically commits one deterministic operation with revision, lease, receipt, and final F4 authority', async () => {
+    const base = createMemoryBackend();
+    let captured: { checks: readonly StorageCheck[]; operations: readonly StorageOperation[] } | null = null;
+    let armed = false;
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        if (armed && operations.some((operation) => operation.store === 'receipts')) {
+          captured = { checks: [...checks], operations: [...operations] };
+        }
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const harness = await seededHarness(
+      backend,
+      createSessionRNG(5150, { 'capture.success': 4, 'loot.rarity': 2 }, 9).state(),
+      250,
+      {
+        inventory: {
+          'arc2.inventory': inventoryCarrier(['gear-1']),
+          'other.inventory': { version: 2, json: '{"keep":"exact"}' },
+        },
+        settings: { 'arc7.audio': { version: 1, json: '{"volume":0.5}' } },
+      },
+    );
+    armed = true;
+    const owner = createF4NoRngProductTransactionOwner(
+      createRevisionedRepository(backend),
+      REGISTRY,
+    );
+    const result = await owner.commit({
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 275 },
+      operation: 'equip',
+      now: NOW,
+      derive: equipDerivation(['gear-1', 'equipped:gear-1']),
+    });
+
+    expect(result.kind).toBe('committed');
+    if (result.kind !== 'committed') return;
+    expect(result.plan).toMatchObject({ operation: 'equip', receiptOrdinal: 9 });
+    expect(result.receipt).toEqual({ ordinal: 9, kind: 'arc2-equip', witness: 'equip:gear-1' });
+    expect(result.authority).toEqual({
+      activePlayMs: 275,
+      sessionRng: {
+        seed: 5150,
+        ordinal: 10,
+        draws: { 'capture.success': 4, 'loot.rarity': 2 },
+      },
+    });
+    expect(result.plan.nextSessionRng.draws).toEqual(result.plan.currentAuthority.sessionRng.draws);
+    expect(captured).not.toBeNull();
+    expect(captured!.checks).toEqual([
+      { store: 'meta', key: F3_REVISION_KEY, value: '1' },
+      { store: 'receipts', key: 'receipt:9', value: undefined },
+      harness.grant.check,
+    ]);
+    expect(captured!.operations).toEqual([
+      ...result.saved.operations,
+      { store: 'receipts', key: 'receipt:9', value: JSON.stringify(result.receipt) },
+      { store: 'meta', key: F3_REVISION_KEY, value: '2' },
+    ]);
+    expect(new Set(result.saved.operations.map(({ store, key }) => `${store}/${key}`)).size)
+      .toBe(result.saved.operations.length);
+
+    const loaded = await readSaveV5(backend, REGISTRY, NOW);
+    expect(loaded.kind).toBe('loaded');
+    if (loaded.kind !== 'loaded') return;
+    expect(loaded.extensions.inventory?.['arc2.inventory']).toEqual(
+      inventoryCarrier(['gear-1', 'equipped:gear-1']),
+    );
+    expect(loaded.extensions.inventory?.['other.inventory']).toEqual({
+      version: 2, json: '{"keep":"exact"}',
+    });
+    expect(loaded.extensions.settings?.['arc7.audio']).toEqual({
+      version: 1, json: '{"volume":0.5}',
+    });
+    expect(await createRevisionedRepository(backend).readReceipt(9)).toEqual(result.receipt);
+  });
+
+  it('turns a same-parent double operation into one commit and one duplicate receipt, then rejects a stale parent', async () => {
+    const harness = await seededHarness(
+      createMemoryBackend(),
+      createSessionRNG(44, { existing: 8 }, 3).state(),
+      100,
+      { inventory: { 'arc2.inventory': inventoryCarrier(['gear-1']) } },
+    );
+    const owner = createF4NoRngProductTransactionOwner(
+      createRevisionedRepository(harness.backend),
+      REGISTRY,
+    );
+    const input: F4NoRngProductTransactionInput = {
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 125 },
+      operation: 'equip',
+      now: NOW,
+      derive: equipDerivation(['gear-1', 'equipped:gear-1']),
+    };
+    const [left, right] = await Promise.all([owner.commit(input), owner.commit(input)]);
+    expect([left.kind, right.kind].sort()).toEqual(['committed', 'duplicate-receipt']);
+    expect(await createRevisionedRepository(harness.backend).revision()).toBe(2);
+    expect(await harness.backend.keys('receipts')).toEqual(['receipt:3']);
+
+    const stale = await owner.commit(input);
+    expect(stale).toMatchObject({ kind: 'stale', expectedRevision: 1, actualRevision: 2 });
+    const loaded = await readSaveV5(harness.backend, REGISTRY, NOW);
+    expect(loaded.kind).toBe('loaded');
+    if (loaded.kind !== 'loaded') return;
+    expect(loaded.extensions.inventory?.['arc2.inventory']).toEqual(
+      inventoryCarrier(['gear-1', 'equipped:gear-1']),
+    );
+    expect(readF4Authority(loaded.extensions)).toEqual({
+      kind: 'loaded',
+      authority: {
+        activePlayMs: 125,
+        sessionRng: { seed: 44, ordinal: 4, draws: { existing: 8 } },
+      },
+    });
+  });
+
+  it('leaves every product, receipt, revision, and RNG counter untouched on atomic failure', async () => {
+    const base = createMemoryBackend();
+    let failNext = false;
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        if (failNext && operations.some((operation) => operation.store === 'receipts')) {
+          failNext = false;
+          throw new Error('injected no-RNG atomic failure');
+        }
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const harness = await seededHarness(
+      backend,
+      createSessionRNG(88, { 'capture.success': 6 }, 12).state(),
+      400,
+      { inventory: { 'arc2.inventory': inventoryCarrier(['pending:gear-2']) } },
+    );
+    const owner = createF4NoRngProductTransactionOwner(createRevisionedRepository(backend), REGISTRY);
+    const input: F4NoRngProductTransactionInput = {
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 425 },
+      operation: 'pending-claim',
+      now: NOW,
+      derive: ({ draft, extensions, operation }) => {
+        expect(operation).toBe('pending-claim');
+        expect(extensions).not.toBe(harness.writable.extensions);
+        return {
+          state: draft,
+          witness: 'pending-claim:gear-2',
+          extensionWrites: [{
+            segment: 'inventory',
+            namespace: 'arc2.inventory',
+            carrier: inventoryCarrier(['gear-2'], ['gear-2']),
+          }],
+        };
+      },
+    };
+    failNext = true;
+    const failed = await owner.commit(input);
+    expect(failed).toMatchObject({
+      kind: 'storage-error',
+      message: 'injected no-RNG atomic failure',
+    });
+    expect(await createRevisionedRepository(backend).revision()).toBe(1);
+    expect(await createRevisionedRepository(backend).readReceipt(12)).toBeUndefined();
+    const afterFailure = await readSaveV5(backend, REGISTRY, NOW);
+    expect(afterFailure.kind).toBe('loaded');
+    if (afterFailure.kind !== 'loaded' || failed.kind !== 'storage-error') return;
+    expect(afterFailure.extensions.inventory?.['arc2.inventory']).toEqual(
+      inventoryCarrier(['pending:gear-2']),
+    );
+    expect(readF4Authority(afterFailure.extensions)).toEqual({
+      kind: 'loaded',
+      authority: {
+        activePlayMs: 400,
+        sessionRng: { seed: 88, ordinal: 12, draws: { 'capture.success': 6 } },
+      },
+    });
+
+    const retry = await owner.commit({
+      ...input,
+      writable: { state: afterFailure.state, extensions: afterFailure.extensions },
+    });
+    expect(retry.kind).toBe('committed');
+    if (retry.kind === 'committed') {
+      expect(retry.plan.receiptOrdinal).toBe(failed.plan.receiptOrdinal);
+      expect(retry.authority.sessionRng.draws).toEqual({ 'capture.success': 6 });
+      expect(retry.authority.sessionRng.ordinal).toBe(13);
+    }
   });
 });

@@ -10,6 +10,7 @@
 import type { ActivePlaySnapshot } from '@cf/domain-progression';
 import { planSessionRNGDraw, type SessionRNGState } from '@cf/domain-sessionrng';
 import {
+  F4_AUTHORITY_NAMESPACE,
   prepareF4AuthorityUpdate,
   readF4Authority,
   type F4AuthorityV1,
@@ -17,8 +18,11 @@ import {
 import type { ContentRegistry, SaveStateV2 } from './import-v2.js';
 import {
   prepareV5SaveWrite,
+  V5_SEGMENTS,
   type PreparedV5SaveWrite,
+  type V5ExtensionCarrier,
   type V5Extensions,
+  type V5Segment,
   type V5WritableState,
 } from './migration-v5.js';
 import type { MutationReceipt, RevisionedRepository } from './revisioned.js';
@@ -47,10 +51,23 @@ export interface F4OutcomeDeriveInput {
   /** A fresh canonical state owned by this attempt. Mutating and returning
    * this draft cannot alter the caller's currently-rendered/save state. */
   readonly draft: SaveStateV2;
+  /** A detached, validated snapshot of every current v5 extension. Product
+   * policy may inspect it, but changes are accepted only through the checked
+   * `extensionWrites` returned by the derivation. */
+  readonly extensions: V5Extensions;
+}
+
+export interface V5ExtensionWrite {
+  readonly segment: V5Segment;
+  readonly namespace: string;
+  readonly carrier: V5ExtensionCarrier;
 }
 
 export interface F4OutcomeDerivation {
   readonly state: SaveStateV2;
+  /** Namespaced product replacements. Omission means no product extension
+   * change. Each segment/namespace pair may occur at most once. */
+  readonly extensionWrites?: readonly V5ExtensionWrite[];
   /** Stable product identity/fingerprint written verbatim into the receipt. */
   readonly witness: string;
 }
@@ -70,44 +87,59 @@ export interface F4OutcomeTransactionInput {
   readonly derive: (input: F4OutcomeDeriveInput) => F4OutcomeDerivation;
 }
 
-export type F4OutcomeTransactionOutcome =
-  | F4OutcomeAuthorityProtection
+type ProductTransactionRejectionStage =
+  | 'draft'
+  | 'derive'
+  | 'extension-writes'
+  | 'authority-update'
+  | 'product-prepare';
+
+interface ReceiptAuthorityPlan {
+  readonly receiptOrdinal: number;
+  readonly nextSessionRng: F4AuthorityV1['sessionRng'];
+}
+
+type PlannedProductTransactionOutcome<Plan extends ReceiptAuthorityPlan> =
   | {
     readonly kind: 'committed';
     readonly revision: number;
-    readonly plan: F4OutcomeDrawPlan;
+    readonly plan: Plan;
     readonly receipt: MutationReceipt;
     readonly authority: F4AuthorityV1;
     readonly saved: PreparedV5SaveWrite;
   }
   | {
     readonly kind: 'rejected';
-    readonly stage: 'draft' | 'derive' | 'authority-update' | 'product-prepare';
+    readonly stage: ProductTransactionRejectionStage;
     readonly message: string;
-    readonly plan: F4OutcomeDrawPlan;
+    readonly plan: Plan;
   }
   | {
     readonly kind: 'stale';
     readonly expectedRevision: number;
     readonly actualRevision: number;
-    readonly plan: F4OutcomeDrawPlan;
+    readonly plan: Plan;
   }
   | {
     readonly kind: 'duplicate-receipt';
     readonly receiptKey: string;
     readonly existing: MutationReceipt;
-    readonly plan: F4OutcomeDrawPlan;
+    readonly plan: Plan;
   }
   | {
     readonly kind: 'lost';
     readonly reason: 'lease-lost' | 'conflict';
-    readonly plan: F4OutcomeDrawPlan;
+    readonly plan: Plan;
   }
   | {
     readonly kind: 'storage-error';
     readonly message: string;
-    readonly plan: F4OutcomeDrawPlan;
+    readonly plan: Plan;
   };
+
+export type F4OutcomeTransactionOutcome =
+  | F4OutcomeAuthorityProtection
+  | PlannedProductTransactionOutcome<F4OutcomeDrawPlan>;
 
 export interface F4OutcomeTransactionOwner {
   commit(input: F4OutcomeTransactionInput): Promise<F4OutcomeTransactionOutcome>;
@@ -131,6 +163,121 @@ function checkedWitness(value: unknown): string {
     throw new RangeError('outcome witness must be 1–4096 printable characters');
   }
   return value;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function hasExactKeys(value: Record<string, unknown>, expected: readonly string[]): boolean {
+  const actual = Object.keys(value).sort();
+  const wanted = [...expected].sort();
+  return actual.length === wanted.length && actual.every((key, index) => key === wanted[index]);
+}
+
+function checkedExtensionCarrier(value: unknown, namespace: string): V5ExtensionCarrier {
+  if (!isRecord(value) || !hasExactKeys(value, ['version', 'json'])) {
+    throw new TypeError(`invalid v5 extension carrier ${JSON.stringify(namespace)}`);
+  }
+  if (!Number.isSafeInteger(value.version) || (value.version as number) < 1) {
+    throw new RangeError(`invalid v5 extension version ${JSON.stringify(namespace)}`);
+  }
+  if (typeof value.json !== 'string' || value.json.length > 262_144) {
+    throw new RangeError(`invalid v5 extension JSON ${JSON.stringify(namespace)}`);
+  }
+  try {
+    if (!isRecord(JSON.parse(value.json) as unknown)) throw new Error('JSON must encode an object');
+  } catch {
+    throw new TypeError(`invalid v5 extension JSON ${JSON.stringify(namespace)}`);
+  }
+  return Object.freeze({ version: value.version as number, json: value.json });
+}
+
+function checkedNamespace(value: unknown): string {
+  if (typeof value !== 'string' || !/^[a-z][a-z0-9.-]{0,63}$/.test(value)) {
+    throw new RangeError(`invalid v5 extension namespace ${JSON.stringify(value)}`);
+  }
+  return value;
+}
+
+/** Validate and detach extension authority without invoking the complete save
+ * writer. The complete writer is deliberately reserved for the one final
+ * state assembled after product policy and F4 authority have both landed. */
+function detachedCanonicalExtensions(value: unknown): V5Extensions {
+  if (!isRecord(value)) throw new TypeError('v5 extensions must be an object');
+  const unknownSegments = Object.keys(value).filter(
+    (segment) => !(V5_SEGMENTS as readonly string[]).includes(segment),
+  );
+  if (unknownSegments.length > 0) {
+    throw new RangeError(`unknown v5 extension segment ${JSON.stringify(unknownSegments[0])}`);
+  }
+  const result: Partial<Record<V5Segment, Readonly<Record<string, V5ExtensionCarrier>>>> = {};
+  for (const segment of V5_SEGMENTS) {
+    const rawNamespaces = value[segment];
+    if (rawNamespaces === undefined) continue;
+    if (!isRecord(rawNamespaces)) throw new TypeError(`v5 ${segment} extensions must be an object`);
+    const namespaces: Record<string, V5ExtensionCarrier> = {};
+    for (const namespace of Object.keys(rawNamespaces).sort()) {
+      const checked = checkedNamespace(namespace);
+      namespaces[checked] = checkedExtensionCarrier(rawNamespaces[namespace], checked);
+    }
+    if (Object.keys(namespaces).length > 0) result[segment] = Object.freeze(namespaces);
+  }
+  return Object.freeze(result);
+}
+
+function detachedState(value: unknown): SaveStateV2 {
+  if (!isRecord(value)) throw new TypeError('outcome state must be an object');
+  const detached = structuredClone(value) as unknown;
+  if (!isRecord(detached)) throw new TypeError('outcome state clone must be an object');
+  return detached as unknown as SaveStateV2;
+}
+
+function checkedExtensionWrites(value: unknown): readonly V5ExtensionWrite[] {
+  if (!Array.isArray(value)) throw new TypeError('extensionWrites must be an array');
+  const seen = new Set<string>();
+  return Object.freeze(value.map((rawWrite) => {
+    if (!isRecord(rawWrite) || !hasExactKeys(rawWrite, ['segment', 'namespace', 'carrier'])) {
+      throw new TypeError('each extension write must contain exactly segment, namespace, and carrier');
+    }
+    if (typeof rawWrite.segment !== 'string'
+      || !(V5_SEGMENTS as readonly string[]).includes(rawWrite.segment)) {
+      throw new RangeError(`unknown v5 extension segment ${JSON.stringify(rawWrite.segment)}`);
+    }
+    const segment = rawWrite.segment as V5Segment;
+    const namespace = checkedNamespace(rawWrite.namespace);
+    if (segment === 'player' && namespace === F4_AUTHORITY_NAMESPACE) {
+      throw new Error('product extension writes cannot overwrite player/f4.authority');
+    }
+    const identity = `${segment}\u0000${namespace}`;
+    if (seen.has(identity)) {
+      throw new Error(`duplicate product extension write for ${segment}/${namespace}`);
+    }
+    seen.add(identity);
+    return Object.freeze({
+      segment,
+      namespace,
+      carrier: checkedExtensionCarrier(rawWrite.carrier, namespace),
+    });
+  }));
+}
+
+/** Apply complete namespace replacements to a detached validated base.
+ * Unmentioned namespaces survive exactly. F4 authority is not writable here;
+ * its owner runs after this product layer and therefore remains final. */
+function applyExtensionWrites(
+  base: V5Extensions,
+  writes: readonly V5ExtensionWrite[],
+): V5Extensions {
+  if (writes.length === 0) return base;
+  const result: Partial<Record<V5Segment, Readonly<Record<string, V5ExtensionCarrier>>>> = { ...base };
+  for (const write of writes) {
+    result[write.segment] = Object.freeze({
+      ...(result[write.segment] ?? {}),
+      [write.namespace]: write.carrier,
+    });
+  }
+  return Object.freeze(result);
 }
 
 function frozenSessionRng(state: SessionRNGState): F4AuthorityV1['sessionRng'] {
@@ -165,19 +312,146 @@ export function planF4OutcomeDraw(
   });
 }
 
-function checkedDerivation(value: unknown): F4OutcomeDerivation {
+interface CheckedDerivationEnvelope {
+  readonly state: SaveStateV2;
+  readonly extensionWrites?: unknown;
+  readonly witness: string;
+}
+
+function checkedDerivation(value: unknown): CheckedDerivationEnvelope {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
     throw new TypeError('outcome derivation must return an object');
   }
   const record = value as Record<string, unknown>;
   const keys = Object.keys(record).sort();
-  if (keys.length !== 2 || keys[0] !== 'state' || keys[1] !== 'witness') {
-    throw new TypeError('outcome derivation must contain exactly state and witness');
+  const withoutWrites = keys.length === 2 && keys[0] === 'state' && keys[1] === 'witness';
+  const withWrites = keys.length === 3
+    && keys[0] === 'extensionWrites' && keys[1] === 'state' && keys[2] === 'witness';
+  if (!withoutWrites && !withWrites) {
+    throw new TypeError('outcome derivation must contain state, witness, and optional extensionWrites');
   }
   if (!record.state || typeof record.state !== 'object' || Array.isArray(record.state)) {
     throw new TypeError('outcome derivation state must be an object');
   }
-  return { state: record.state as SaveStateV2, witness: checkedWitness(record.witness) };
+  return Object.freeze({
+    state: record.state as SaveStateV2,
+    ...(withWrites ? { extensionWrites: record.extensionWrites } : {}),
+    witness: checkedWitness(record.witness),
+  });
+}
+
+interface PlannedProductCommitInput<Plan extends ReceiptAuthorityPlan> {
+  readonly expectedRevision: number;
+  readonly fence: ReturnType<typeof tabLeaseFence>;
+  readonly writable: V5WritableState;
+  readonly snapshot: Pick<ActivePlaySnapshot, 'activePlayMs'>;
+  readonly now: number;
+  readonly receiptKind: string;
+  readonly plan: Plan;
+  readonly derive: (draft: SaveStateV2, extensions: V5Extensions) => unknown;
+}
+
+/** One shared assembly path for random and deterministic products. Keeping
+ * the persistence choreography here prevents the two owners from drifting:
+ * detached input, checked product namespaces, final protected F4 authority,
+ * one complete save preparation, then one receipt-bearing repository CAS. */
+async function commitPlannedProduct<Plan extends ReceiptAuthorityPlan>(
+  repository: Pick<RevisionedRepository, 'mutate'>,
+  registry: ContentRegistry,
+  input: PlannedProductCommitInput<Plan>,
+): Promise<PlannedProductTransactionOutcome<Plan>> {
+  let draft: SaveStateV2;
+  let extensions: V5Extensions;
+  try {
+    draft = detachedState(input.writable.state);
+    extensions = detachedCanonicalExtensions(input.writable.extensions);
+  } catch (error) {
+    return { kind: 'rejected', stage: 'draft', message: messageOf(error), plan: input.plan };
+  }
+
+  let derivation: CheckedDerivationEnvelope;
+  try {
+    derivation = checkedDerivation(input.derive(draft, extensions));
+  } catch (error) {
+    return { kind: 'rejected', stage: 'derive', message: messageOf(error), plan: input.plan };
+  }
+
+  let productExtensions: V5Extensions;
+  try {
+    const writes = derivation.extensionWrites === undefined
+      ? Object.freeze([]) as readonly V5ExtensionWrite[]
+      : checkedExtensionWrites(derivation.extensionWrites);
+    productExtensions = applyExtensionWrites(extensions, writes);
+  } catch (error) {
+    return {
+      kind: 'rejected', stage: 'extension-writes', message: messageOf(error), plan: input.plan,
+    };
+  }
+
+  let update: ReturnType<typeof prepareF4AuthorityUpdate>;
+  try {
+    /* Product namespaces land first. The sole F4 owner replaces its protected
+       namespace last, so product policy cannot shadow it. */
+    update = prepareF4AuthorityUpdate(
+      productExtensions,
+      input.snapshot,
+      input.plan.nextSessionRng,
+    );
+  } catch (error) {
+    return {
+      kind: 'rejected', stage: 'authority-update', message: messageOf(error), plan: input.plan,
+    };
+  }
+
+  let saved: PreparedV5SaveWrite;
+  try {
+    /* The only complete save preparation in this transaction, after both
+       product and F4 authority are final. */
+    saved = prepareV5SaveWrite(
+      { state: derivation.state, extensions: update.extensions },
+      registry,
+      input.now,
+    );
+  } catch (error) {
+    return {
+      kind: 'rejected', stage: 'product-prepare', message: messageOf(error), plan: input.plan,
+    };
+  }
+
+  const receipt: MutationReceipt = Object.freeze({
+    ordinal: input.plan.receiptOrdinal,
+    kind: checkedReceiptKind(input.receiptKind),
+    witness: derivation.witness,
+  });
+  try {
+    const outcome = await repository.mutate({
+      expectedRevision: input.expectedRevision,
+      fences: [input.fence],
+      writes: saved.operations,
+      receipt,
+    });
+    switch (outcome.kind) {
+      case 'committed':
+        return {
+          kind: 'committed',
+          revision: outcome.revision,
+          plan: input.plan,
+          receipt,
+          authority: update.authority,
+          saved,
+        };
+      case 'stale':
+        return { ...outcome, plan: input.plan };
+      case 'duplicate-receipt':
+        return { ...outcome, plan: input.plan };
+      case 'fence-lost':
+        return { kind: 'lost', reason: 'lease-lost', plan: input.plan };
+      case 'conflict':
+        return { kind: 'lost', reason: 'conflict', plan: input.plan };
+    }
+  } catch (error) {
+    return { kind: 'storage-error', message: messageOf(error), plan: input.plan };
+  }
 }
 
 /** Create the sole F4 outcome writer. The callback is never invoked until the
@@ -194,82 +468,153 @@ export function createF4OutcomeTransactionOwner(
       const planned = planF4OutcomeDraw(input.writable.extensions, input.domain);
       if (planned.kind !== 'planned') return planned;
       const { plan } = planned;
-
-      let update: ReturnType<typeof prepareF4AuthorityUpdate>;
-      try {
-        update = prepareF4AuthorityUpdate(
-          input.writable.extensions,
-          input.snapshot,
-          plan.nextSessionRng,
-        );
-      } catch (error) {
-        return { kind: 'rejected', stage: 'authority-update', message: messageOf(error), plan };
-      }
-
-      let draft: SaveStateV2;
-      try {
-        draft = prepareV5SaveWrite(input.writable, registry, input.now).canonicalState;
-      } catch (error) {
-        return { kind: 'rejected', stage: 'draft', message: messageOf(error), plan };
-      }
-
-      let derivation: F4OutcomeDerivation;
-      try {
-        derivation = checkedDerivation(input.derive(Object.freeze({
+      return commitPlannedProduct(repository, registry, {
+        expectedRevision: input.expectedRevision,
+        fence,
+        writable: input.writable,
+        snapshot: input.snapshot,
+        now: input.now,
+        receiptKind,
+        plan,
+        derive: (draft, extensions) => input.derive(Object.freeze({
           domain: plan.domain,
           value: plan.value,
           receiptOrdinal: plan.receiptOrdinal,
           draft,
-        })));
-      } catch (error) {
-        return { kind: 'rejected', stage: 'derive', message: messageOf(error), plan };
-      }
-
-      let saved: PreparedV5SaveWrite;
-      try {
-        saved = prepareV5SaveWrite(
-          { state: derivation.state, extensions: update.extensions },
-          registry,
-          input.now,
-        );
-      } catch (error) {
-        return { kind: 'rejected', stage: 'product-prepare', message: messageOf(error), plan };
-      }
-
-      const receipt: MutationReceipt = Object.freeze({
-        ordinal: plan.receiptOrdinal,
-        kind: receiptKind,
-        witness: derivation.witness,
+          extensions,
+        })),
       });
-      try {
-        const outcome = await repository.mutate({
-          expectedRevision: input.expectedRevision,
-          fences: [fence],
-          writes: saved.operations,
-          receipt,
-        });
-        switch (outcome.kind) {
-          case 'committed':
-            return {
-              kind: 'committed',
-              revision: outcome.revision,
-              plan,
-              receipt,
-              authority: update.authority,
-              saved,
-            };
-          case 'stale':
-            return { ...outcome, plan };
-          case 'duplicate-receipt':
-            return { ...outcome, plan };
-          case 'fence-lost':
-            return { kind: 'lost', reason: 'lease-lost', plan };
-          case 'conflict':
-            return { kind: 'lost', reason: 'conflict', plan };
-        }
-      } catch (error) {
-        return { kind: 'storage-error', message: messageOf(error), plan };
-      }
+    },
+  });
+}
+
+/** Arc 2 operations whose result is fully determined by the observed product
+ * state. They still need an immutable exact-once receipt, but must not draw a
+ * random value or advance any per-domain SessionRNG counter. */
+export const F4_NO_RNG_PRODUCT_OPERATIONS = Object.freeze([
+  'equip', 'unequip', 'salvage', 'pending-claim',
+] as const);
+export type F4NoRngProductOperation = typeof F4_NO_RNG_PRODUCT_OPERATIONS[number];
+
+const NO_RNG_RECEIPT_KIND: Readonly<Record<F4NoRngProductOperation, string>> = Object.freeze({
+  equip: 'arc2-equip',
+  unequip: 'arc2-unequip',
+  salvage: 'arc2-salvage',
+  'pending-claim': 'arc2-pending-claim',
+});
+const UINT32_MAX = 0xFFFF_FFFF;
+
+export interface F4NoRngProductPlan {
+  readonly operation: F4NoRngProductOperation;
+  readonly receiptOrdinal: number;
+  readonly currentAuthority: F4AuthorityV1;
+  /** Same seed and per-domain counters; only the shared exact-once receipt
+   * ordinal advances. No SessionRNG value is generated. */
+  readonly nextSessionRng: F4AuthorityV1['sessionRng'];
+}
+
+export type F4NoRngProductPlanOutcome =
+  | F4OutcomeAuthorityProtection
+  | { readonly kind: 'protected'; readonly reason: 'receipt-ordinal-exhausted' }
+  | { readonly kind: 'planned'; readonly plan: F4NoRngProductPlan };
+
+export interface F4NoRngProductDeriveInput {
+  readonly operation: F4NoRngProductOperation;
+  readonly receiptOrdinal: number;
+  readonly draft: SaveStateV2;
+  readonly extensions: V5Extensions;
+}
+
+export interface F4NoRngProductTransactionInput {
+  readonly expectedRevision: number;
+  readonly grant: TabLeaseGrant;
+  readonly writable: V5WritableState;
+  readonly snapshot: Pick<ActivePlaySnapshot, 'activePlayMs'>;
+  readonly operation: F4NoRngProductOperation;
+  readonly now: number;
+  readonly derive: (input: F4NoRngProductDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4NoRngProductTransactionOutcome =
+  | Exclude<F4NoRngProductPlanOutcome, { readonly kind: 'planned' }>
+  | PlannedProductTransactionOutcome<F4NoRngProductPlan>;
+
+export interface F4NoRngProductTransactionOwner {
+  commit(input: F4NoRngProductTransactionInput): Promise<F4NoRngProductTransactionOutcome>;
+}
+
+function checkedNoRngOperation(value: unknown): F4NoRngProductOperation {
+  if (typeof value !== 'string'
+    || !(F4_NO_RNG_PRODUCT_OPERATIONS as readonly string[]).includes(value)) {
+    throw new RangeError(`unknown no-RNG product operation ${JSON.stringify(value)}`);
+  }
+  return value as F4NoRngProductOperation;
+}
+
+/** Reserve the next globally unique receipt identity without evaluating a
+ * random domain. Receipt uniqueness and random-draw consumption are separate:
+ * this increments only the save-lifetime ordinal and leaves every draw
+ * counter untouched. */
+export function planF4NoRngProductReceipt(
+  extensions: V5Extensions,
+  operation: F4NoRngProductOperation,
+): F4NoRngProductPlanOutcome {
+  const checkedOperation = checkedNoRngOperation(operation);
+  const current = readF4Authority(extensions);
+  if (current.kind === 'absent') return { kind: 'protected', reason: 'authority-absent' };
+  if (current.kind === 'corrupt') return { kind: 'protected', reason: 'authority-corrupt' };
+  if (current.kind === 'future-version') {
+    return { kind: 'protected', reason: 'authority-future', version: current.version };
+  }
+  const receiptOrdinal = current.authority.sessionRng.ordinal;
+  if (receiptOrdinal >= UINT32_MAX) {
+    return { kind: 'protected', reason: 'receipt-ordinal-exhausted' };
+  }
+  return Object.freeze({
+    kind: 'planned',
+    plan: Object.freeze({
+      operation: checkedOperation,
+      receiptOrdinal,
+      currentAuthority: current.authority,
+      nextSessionRng: frozenSessionRng({
+        seed: current.authority.sessionRng.seed,
+        draws: { ...current.authority.sessionRng.draws },
+        ordinal: receiptOrdinal + 1,
+      }),
+    }),
+  });
+}
+
+/** Create the deterministic Arc 2 action owner. Equip, unequip, salvage and
+ * pending-claim use the same revision/lease/receipt atomic boundary as random
+ * outcomes, but reserve only a receipt ordinal and never ask SessionRNG for a
+ * value. The repository is attempted once and never internally retried. */
+export function createF4NoRngProductTransactionOwner(
+  repository: Pick<RevisionedRepository, 'mutate'>,
+  registry: ContentRegistry,
+): F4NoRngProductTransactionOwner {
+  return Object.freeze({
+    async commit(input: F4NoRngProductTransactionInput): Promise<F4NoRngProductTransactionOutcome> {
+      const operation = checkedNoRngOperation(input.operation);
+      const fence = tabLeaseFence(input.grant);
+      const planned = planF4NoRngProductReceipt(input.writable.extensions, operation);
+      if (planned.kind !== 'planned') return planned;
+      const { plan } = planned;
+      return commitPlannedProduct(repository, registry, {
+        expectedRevision: input.expectedRevision,
+        fence,
+        writable: input.writable,
+        snapshot: input.snapshot,
+        now: input.now,
+        receiptKind: NO_RNG_RECEIPT_KIND[operation],
+        plan,
+        derive: (draft, extensions) => input.derive(Object.freeze({
+          operation,
+          receiptOrdinal: plan.receiptOrdinal,
+          draft,
+          extensions,
+        })),
+      });
     },
   });
 }
