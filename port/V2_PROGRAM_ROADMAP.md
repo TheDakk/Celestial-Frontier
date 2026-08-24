@@ -62,9 +62,13 @@
 > heartbeat. Exact report raw/gzip hashes are `544015e9…` / `cc5ed778…`. Collector `6d681d19…`
 > now repositions only through native scroll and requires the same exact owned point before and
 > after a double-render plus thumbnail-settlement boundary before its one click. Measurement is
-> `6a961df8…`; former budget `208af955…`, samples, baseline and certificate are historical. The
-> tracked budget is fail-closed at `calibration-required`; fresh local evidence is required before
-> any new explicitly authorized hosted attempt.
+> `6a961df8…`; former budget `208af955…`, samples, baseline and certificate are historical. Clean
+> repair `a95889d…` produced three 78/78 candidates and the paired legacy baseline; activation
+> `d21ba26…` selects active budget `faa160b3…` without numeric-ceiling widening and retains the
+> 14-phone/13-desktop breach inventory. Exact-budget run
+> `20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
+> `d21ba26…` (raw/gzip `42753d5e…` / `a2ff5b00…`). A new hosted attempt still requires explicit
+> changed-head authorization.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 

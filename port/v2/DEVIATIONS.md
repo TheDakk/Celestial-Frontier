@@ -11,7 +11,7 @@ as any change that touches an entry.
 
 ## Current-state instrument correction — PR #34 Compendium native row activation (2026-08-23)
 
-**Status: ★ second bounded correction implemented; fresh calibration required.** Runs
+**Status: ★ second bounded correction locally certified; hosted proof remains open.** Runs
 `32665404776` and `32677088518` exposed two consecutive green-too-early row-activation boundaries.
 The second report proves the first activation and receipt passed, but after Close/reopen the row's
 one-shot owned point moved across a deferred ResizeObserver/render turn. A passive wait then issued
@@ -23,9 +23,12 @@ exact owned inset point before and after a double-render plus thumbnail-settleme
 sends one press/release and checks the immediate exact-detail receipt. Its controls reproduce a
 pre-render-green/post-render-null row and reject perpetual movement. This changes measurement
 authority to `6a961df8…`; former budget `208af955…`, samples, paired baseline and certificate are
-historical. The tracked budget is fail-closed at `calibration-required` with no ceilings pending
-three fresh candidates, one paired baseline, and one exact-budget certificate. This remains a ruler
-correction, not a gameplay deviation, timeout increase, click retry, or memory-budget widening.
+historical. Clean repair `a95889d…` produced three 78/78 candidates and the paired legacy baseline;
+activation `d21ba26…` selects active budget `faa160b3…` without widening numeric ceilings and retains
+the 14-phone/13-desktop breach inventory. Exact-budget run
+`20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
+`d21ba26…` (raw/gzip `42753d5e…` / `a2ff5b00…`). This remains a ruler correction, not a gameplay
+deviation, timeout increase, click retry, or memory-budget widening.
 
 ## Current-state decision — Arc 1C ship visual and real-Shipyard resource extension (2026-08-23)
 

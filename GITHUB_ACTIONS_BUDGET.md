@@ -245,9 +245,13 @@ The label was removed; PR #34 stayed Draft and unmerged; the attempt is consumed
 The retained raw/gzip report hashes are `544015e9…` / `cc5ed778…`. Collector `6d681d19…` now
 requires native-scroll positioning and the same exact owned point before and after a double-render
 settlement before sending its one press/release. This changes measurement authority to `6a961df8…`,
-so budget `208af955…`, its samples, baseline, and prior certificate are historical. The tracked
-budget is `calibration-required` with no ceilings. Fresh local calibration, paired baseline, and
-exact-budget certification are required before Nick may authorize a new changed-head hosted attempt.
+so budget `208af955…`, its samples, baseline, and prior certificate are historical. Clean repair
+source `a95889d…` produced three independent 78/78 candidates and a paired legacy baseline; activation
+commit `d21ba26…` selects active budget `faa160b3…` without widening numeric ceilings, while retaining
+the 14-phone/13-desktop broken-baseline breaches. Exact-budget run
+`20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
+`d21ba26…`; raw/gzip hashes are `42753d5e…` / `a2ff5b00…`. This is local authority only and does not
+authorize a new changed-head hosted attempt.
 
 ## Safe rollout of this guard
 

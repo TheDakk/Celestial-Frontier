@@ -56,7 +56,13 @@ that keeps moving. No timeout, automatic retry, product resource ceiling, or gam
 Collector SHA-256 is `6d681d19ab8c9a6ec77de04db9cbacc2ab49fb9f65044b421635ba9fed09487b`;
 measurement authority is `6a961df806e460d6ed02600f5366485d09d0878efa0129960b683cc4037173c7`.
 The prior candidates, paired baseline, active budget, and local 78/78 certificate are historical
-only under their old collector. The tracked budget is therefore `calibration-required`, with no
-ceilings and no selected samples, until three fresh clean candidate runs plus one paired legacy
-baseline are retained from one committed repair source. A fresh exact-budget certificate is also
-required before another changed-head hosted attempt can be requested.
+only under their old collector. Clean repair source `a95889da3c2efc84cf6e144f6bc3263be4537a46`
+produced three independent complete 78/78 candidates and one paired legacy baseline. Activation
+commit `d21ba26a7efe8a887cbc0887ac132e19787f4abb` selects budget SHA-256
+`faa160b39accde00c34edb3005c938bd8bb4fb68a328bbd0a8c7f628c0a98d3d` without changing numeric
+ceilings; the paired baseline still breaches 14 phone and 13 desktop fields. Exact-budget run
+`20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on that clean
+commit. Its raw/gzip report SHA-256 are
+`42753d5ef5df69d7d30db37ae80ee77ab498567e06e868c2967e01cc33d352c9` /
+`a2ff5b009a187fabdbc71143dac1b33c4f5f609fbb3c3d81c750fb5857593be1`.
+This local evidence does not authorize another changed-head hosted attempt.

@@ -47,10 +47,13 @@ the archive verbatim and refresh this handoff in place.
   settlement, and requires the same exact owned point before and after that boundary. It then sends
   one press/release and checks the immediate detail receipt; no click retry or timeout widening exists.
 - Collector `6d681d19…` changes measurement authority to `6a961df8…`. The former active budget
-  `208af955…`, its samples, baseline and local certificate are historical only. The tracked budget
-  is `calibration-required`, with empty samples and no ceilings, until three fresh clean candidates,
-  one paired legacy baseline and one independent exact-budget certificate are retained from the
-  committed repair source. PR #34 remains Draft and unmerged; no new hosted attempt is authorized.
+  `208af955…`, its samples, baseline and local certificate are historical only. Clean repair source
+  `a95889d…` produced three independent 78/78 Edge `.101` candidates and the paired legacy baseline
+  retained by activation commit `d21ba26…`; no numeric memory ceiling was widened and the baseline
+  still breaches 14 phone / 13 desktop fields. Active budget SHA-256 is `faa160b3…`. Exact-budget
+  run `20260823-pr34-render-stable-row-certification` then passed 78/78 plus named verification on
+  clean `d21ba26…`; raw/gzip report hashes are `42753d5e…` / `a2ff5b00…`. PR #34 remains Draft and
+  unmerged; this local proof does not authorize another hosted attempt.
 
 ### Remaining Arc 1 evidence
 
@@ -110,8 +113,9 @@ the archive verbatim and refresh this handoff in place.
    merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
    manual file copying. Nick does not need to open Claude now.
 
-**Current side:** Codex macOS is on `openai/mac`; PR #34's render-stable row repair and failed-run
-evidence are local, uncommitted, and not yet calibrated.
+**Current side:** Codex macOS is on `openai/mac`; PR #34's render-stable repair is committed at
+`a95889d…`, active calibration authority is `d21ba26…` / budget `faa160b3…`, and its clean local
+certificate is 78/78 with named verification. Evidence/documentation changes are descendants only.
 **GitHub step:** none.
 **Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
 **Actions budget:** `UNFROZEN`; PR #34 runs `32665404776` and `32677088518` are consumed
