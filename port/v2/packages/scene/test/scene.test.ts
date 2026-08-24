@@ -9,6 +9,8 @@ import {
   homeUniverse,
   universeGalaxies,
   land,
+  canonicalCF1WorldAddressFromNav,
+  isCanonicalCF1Address,
   navFromCanonicalCF1Address,
   navToView,
   provenGalaxyCell,
@@ -170,6 +172,36 @@ describe('@cf/scene — zoom-mode state machine (Gate D navigation core)', () =>
     expect(navFromCanonicalCF1Address({ ...world.address })).toEqual({
       ok: false, reason: 'unproven-address',
     });
+  });
+
+  it('recovers a source-reproved world address only from the registered exact surface NavState', () => {
+    const world = homeWorldAddress();
+    const resolvedNav = stateOf(navFromCanonicalCF1Address(world));
+    expect(resolvedNav.mode).toBe('surface');
+    if (resolvedNav.mode !== 'surface') throw new Error('world address did not produce a surface');
+    const surface = resolvedNav;
+    const recovered = canonicalCF1WorldAddressFromNav(surface);
+    expect(recovered.ok).toBe(true);
+    if (!recovered.ok) throw new Error(recovered.reason);
+    expect(recovered.address.key).toBe(world.key);
+    expect(recovered.address.planet).toEqual({ seed: 133, ordinal: 2 });
+    expect(isCanonicalCF1Address(recovered.address)).toBe(true);
+    expect(Object.isFrozen(recovered.address)).toBe(true);
+
+    expect(canonicalCF1WorldAddressFromNav(NAV_HOME)).toEqual({
+      ok: false, reason: 'surface-nav-required',
+    });
+    expect(canonicalCF1WorldAddressFromNav({ ...surface })).toEqual({
+      ok: false, reason: 'unproven-nav-state',
+    });
+    expect(canonicalCF1WorldAddressFromNav({
+      ...surface,
+      star: { ...surface.star, seed: surface.star.seed + 1 },
+    })).toEqual({ ok: false, reason: 'unproven-nav-state' });
+    expect(canonicalCF1WorldAddressFromNav({
+      ...surface,
+      planet: { ...surface.planet, ordinal: surface.planet.ordinal + 1 },
+    })).toEqual({ ok: false, reason: 'unproven-nav-state' });
   });
 
   it('emits only the exact legacy slim keys and source-reproves every round-trip tier', () => {

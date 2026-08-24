@@ -4,6 +4,7 @@
    frozen, and registered in this module's private provenance set. */
 import {
   isCanonicalCF1Address,
+  getProvenPlanetKey,
   isProvenGalaxy,
   isProvenPlanet,
   isProvenPlanetFor,
@@ -13,6 +14,7 @@ import {
   resolveCF1StarAddress,
   resolveCF1WorldAddress,
   type CF1AddressFailure,
+  type CanonicalCF1WorldAddress,
   type ProvenGalaxy,
   type ProvenPlanet,
   type ProvenStar,
@@ -77,6 +79,15 @@ export type ResolveViewToNavFailure = CF1AddressFailure | NavTransitionFailure |
 export type ResolveViewToNavResult =
   | Readonly<{ ok: true; state: NavState }>
   | Readonly<{ ok: false; reason: ResolveViewToNavFailure }>;
+
+export type ResolveSurfaceNavAddressFailure =
+  | CF1AddressFailure
+  | NavTransitionFailure
+  | 'surface-nav-required'
+  | 'world-address-mismatch';
+export type ResolveSurfaceNavAddressResult =
+  | Readonly<{ ok: true; address: CanonicalCF1WorldAddress }>
+  | Readonly<{ ok: false; reason: ResolveSurfaceNavAddressFailure }>;
 
 const PROVEN_NAV_STATES = new WeakSet<object>();
 
@@ -165,6 +176,40 @@ export function navFromCanonicalCF1Address(
   const system = enterSystem(galaxy.state, address.star);
   if (!system.ok || !('planet' in address)) return system;
   return land(system.state, address.planet);
+}
+
+/** Recover the complete canonical ownership address from a live surface.
+    A NavState lookalike is not authority: the state itself, every hierarchy
+    node, both parent links, and the planet's source ordinal must still prove.
+    Re-resolution also catches generator/source drift before an ownership
+    caller can persist or act on the world. */
+export function canonicalCF1WorldAddressFromNav(
+  state: unknown,
+): ResolveSurfaceNavAddressResult {
+  const reject = (reason: ResolveSurfaceNavAddressFailure): ResolveSurfaceNavAddressResult =>
+    Object.freeze({ ok: false, reason });
+  if (!isProvenNavState(state)) return reject('unproven-nav-state');
+  if (state.mode !== 'surface') return reject('surface-nav-required');
+  if (!isProvenGalaxy(state.gal)) return reject('unproven-galaxy');
+  if (!isProvenStar(state.star)) return reject('unproven-star');
+  if (!isProvenStarFor(state.star, state.gal)) return reject('star-parent-mismatch');
+  if (!isProvenPlanet(state.planet)) return reject('unproven-planet');
+  if (!isProvenPlanetFor(state.planet, state.star)) return reject('planet-parent-mismatch');
+  const expectedKey = getProvenPlanetKey(state.planet);
+  if (!expectedKey) return reject('world-address-mismatch');
+
+  const resolved = resolveCF1WorldAddress({
+    galaxy: state.gal,
+    star: state.star,
+    planet: { seed: state.planet.seed },
+  });
+  if (!resolved.ok) return reject(resolved.reason);
+  if (resolved.address.key !== expectedKey
+    || resolved.address.planet.seed !== state.planet.seed
+    || resolved.address.planet.ordinal !== state.planet.ordinal) {
+    return reject('world-address-mismatch');
+  }
+  return Object.freeze({ ok: true, address: resolved.address });
 }
 
 function slimGalaxy(gal: ProvenGalaxy): Record<string, unknown> {
