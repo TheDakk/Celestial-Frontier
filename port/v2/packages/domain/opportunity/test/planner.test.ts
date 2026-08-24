@@ -20,12 +20,14 @@ import {
   createLegacyEngineeringSeedResolver,
   encodeEngineeringState,
   isEngineeringActionPlan,
+  isWorldMineralRevealProjection,
   migrateLegacyEngineeringState,
   planFixedFabrication,
   planResearchPurchase,
   planStellarSkim,
   planWorldMining,
   projectStarOpportunity,
+  projectWorldMineralReveal,
   projectWorldOpportunity,
   type EngineeringStateV2,
 } from '../src/index.js';
@@ -599,8 +601,214 @@ describe('@cf/domain-opportunity — canonical stellar skimming planner', () => 
   });
 });
 
+describe('@cf/domain-opportunity — Deep Scanners reveal without mining authority', () => {
+  it('withholds orbit minerals without scan1 and reveals only ordinary plus biome veins with it', () => {
+    const address = world(BIOME_VEIN_WORLD);
+    const opportunity = projectWorldOpportunity(address);
+    const orbit = system(star({
+      galaxy: BIOME_VEIN_WORLD.galaxy,
+      star: BIOME_VEIN_WORLD.star,
+    }));
+    const random = vi.spyOn(Math, 'random');
+    const now = vi.spyOn(Date, 'now');
+
+    const hidden = projectWorldMineralReveal({
+      state: createEngineeringState(), opportunity, currentNav: orbit,
+    });
+    expect(hidden).toMatchObject({
+      status: 'projected',
+      sourceKey: address.key,
+      revealLevel: 'withheld',
+      deepScannersOwned: false,
+      authorizesMining: false,
+      ordinaryDeposits: null,
+      biomeVein: null,
+      cosmicVein: null,
+      exceptionalVein: null,
+      resolvedGrades: null,
+      reservePulls: null,
+      extractionsTaken: null,
+      pullsRemaining: null,
+    });
+
+    const scanned = projectWorldMineralReveal({
+      state: legacySparseState(['scan1']), opportunity, currentNav: orbit,
+    });
+    expect(scanned).toMatchObject({
+      status: 'projected',
+      revealLevel: 'orbit',
+      deepScannersOwned: true,
+      authorizesMining: false,
+      ordinaryDeposits: opportunity.deposits,
+      biomeVein: opportunity.biomeVein,
+      cosmicVein: null,
+      exceptionalVein: null,
+      resolvedGrades: null,
+      reservePulls: null,
+      extractionsTaken: null,
+      pullsRemaining: null,
+    });
+    expect(opportunity.biomeVein).not.toBeNull();
+    expect(isWorldMineralRevealProjection(scanned)).toBe(true);
+    expect(isWorldMineralRevealProjection({ ...scanned })).toBe(false);
+    expect(() => planWorldMining({
+      state: legacySparseState(['scan1']),
+      opportunity: scanned as unknown as ReturnType<typeof projectWorldOpportunity>,
+      currentSurface: surface(address),
+      capabilities: emptyCapabilities(),
+      activePlay: { activePlayMs: 0 },
+      receiptOrdinal: 89,
+    })).toThrow(/registered world opportunity snapshot/);
+    expect(random).not.toHaveBeenCalled();
+    expect(now).not.toHaveBeenCalled();
+    random.mockRestore();
+    now.mockRestore();
+  });
+
+  it('reveals full grounded opportunity, grades, and finite progress without becoming action authority', () => {
+    const address = world(TIER_10_COSMIC_EXCEPTIONAL_WORLD);
+    const opportunity = projectWorldOpportunity(address);
+    const state = stateAfterWorldExtractions(address, 9);
+    const revealed = projectWorldMineralReveal({
+      state,
+      opportunity,
+      currentNav: surface(address),
+    });
+    expect(revealed.status).toBe('projected');
+    if (revealed.status !== 'projected') return;
+    expect(revealed).toMatchObject({
+      sourceKey: address.key,
+      revealLevel: 'grounded',
+      deepScannersOwned: false,
+      authorizesMining: false,
+      ordinaryDeposits: opportunity.deposits,
+      biomeVein: opportunity.biomeVein,
+      cosmicVein: opportunity.cosmicVein,
+      exceptionalVein: opportunity.exceptionalVein,
+      reservePulls: opportunity.reservePulls,
+      extractionsTaken: 9,
+      pullsRemaining: opportunity.reservePulls - 9,
+    });
+    expect(revealed.cosmicVein).not.toBeNull();
+    expect(revealed.exceptionalVein).not.toBeNull();
+    expect(revealed.resolvedGrades).toEqual(expect.arrayContaining([
+      { kind: 'ordinary', materialId: 'P', tier: 1 },
+      { kind: 'cosmic', materialId: 'Voe', tier: 9 },
+      { kind: 'exceptional', materialId: 'P', tier: 1 },
+    ]));
+    expect(Object.isFrozen(revealed.resolvedGrades)).toBe(true);
+
+    expect(() => planWorldMining({
+      state,
+      opportunity: revealed as unknown as ReturnType<typeof projectWorldOpportunity>,
+      currentSurface: surface(address),
+      capabilities: emptyCapabilities(),
+      activePlay: { activePlayMs: 0 },
+      receiptOrdinal: 90,
+    })).toThrow(/registered world opportunity snapshot/);
+  });
+
+  it('rejects cloned authorities and mismatched orbit or ground locations', () => {
+    const address = world(BIOME_VEIN_WORLD);
+    const opportunity = projectWorldOpportunity(address);
+    const orbit = system(star({
+      galaxy: BIOME_VEIN_WORLD.galaxy,
+      star: BIOME_VEIN_WORLD.star,
+    }));
+    const state = legacySparseState(['scan1']);
+    expect(() => projectWorldMineralReveal({
+      state: JSON.parse(encodeEngineeringState(state)) as EngineeringStateV2,
+      opportunity,
+      currentNav: orbit,
+    })).toThrow(/registered EngineeringState authority/);
+    expect(() => projectWorldMineralReveal({
+      state,
+      opportunity: { ...opportunity },
+      currentNav: orbit,
+    })).toThrow(/registered world opportunity snapshot/);
+    expect(projectWorldMineralReveal({
+      state,
+      opportunity,
+      currentNav: { ...orbit },
+    })).toEqual({ status: 'refused', reason: 'current-location-unproven' });
+
+    const solOrbit = system(star(SOL));
+    expect(projectWorldMineralReveal({ state, opportunity, currentNav: solOrbit }))
+      .toEqual({ status: 'refused', reason: 'current-system-mismatch' });
+    const earth = world({ ...SOL, planet: { seed: 133 } });
+    expect(projectWorldMineralReveal({ state, opportunity, currentNav: surface(earth) }))
+      .toEqual({ status: 'refused', reason: 'current-world-mismatch' });
+
+    let modeReads = 0;
+    const hostileNav = {};
+    Object.defineProperty(hostileNav, 'mode', {
+      enumerable: true,
+      get() {
+        modeReads += 1;
+        return 'system';
+      },
+    });
+    expect(projectWorldMineralReveal({
+      state,
+      opportunity,
+      currentNav: hostileNav as unknown as SystemNav,
+    })).toEqual({ status: 'refused', reason: 'current-location-unproven' });
+    expect(modeReads).toBe(0);
+  });
+
+  it('keeps the legacy mineral read model exclusive to proven lifeless non-Earth worlds', () => {
+    const lifeless = world(BIOME_VEIN_WORLD);
+    const lifelessOpportunity = projectWorldOpportunity(lifeless);
+    const scannedState = legacySparseState(['scan1']);
+    expect(lifelessOpportunity.source.biosphereKey).toBe('none');
+    expect(projectWorldMineralReveal({
+      state: scannedState,
+      opportunity: lifelessOpportunity,
+      currentNav: surface(lifeless),
+    })).toMatchObject({ status: 'projected', revealLevel: 'grounded' });
+    expect(projectWorldMineralReveal({
+      state: scannedState,
+      opportunity: lifelessOpportunity,
+      currentNav: system(star({
+        galaxy: BIOME_VEIN_WORLD.galaxy,
+        star: BIOME_VEIN_WORLD.star,
+      })),
+    })).toMatchObject({ status: 'projected', revealLevel: 'orbit' });
+
+    const living = world(TIER_14_LIVING_WORLD);
+    const livingOpportunity = projectWorldOpportunity(living);
+    expect(livingOpportunity.source.biosphereKey).not.toBe('none');
+    expect(projectWorldMineralReveal({
+      state: scannedState,
+      opportunity: livingOpportunity,
+      currentNav: surface(living),
+    })).toEqual({ status: 'refused', reason: 'biosphere-present' });
+    expect(projectWorldMineralReveal({
+      state: scannedState,
+      opportunity: livingOpportunity,
+      currentNav: system(star({
+        galaxy: TIER_14_LIVING_WORLD.galaxy,
+        star: TIER_14_LIVING_WORLD.star,
+      })),
+    })).toEqual({ status: 'refused', reason: 'biosphere-present' });
+
+    const earth = world({ ...SOL, planet: { seed: 133 } });
+    const earthOpportunity = projectWorldOpportunity(earth);
+    expect(projectWorldMineralReveal({
+      state: scannedState,
+      opportunity: earthOpportunity,
+      currentNav: surface(earth),
+    })).toEqual({ status: 'refused', reason: 'earth-protected' });
+    expect(projectWorldMineralReveal({
+      state: scannedState,
+      opportunity: earthOpportunity,
+      currentNav: system(star(SOL)),
+    })).toEqual({ status: 'refused', reason: 'earth-protected' });
+  });
+});
+
 describe('@cf/domain-opportunity — exact research and fixed fabrication plans', () => {
-  it('keeps the exact research catalogue inspectable while every unported consumer fails closed', () => {
+  it('makes only the exact Deep Scanners consumer available in the inspectable catalogue', () => {
     expect(ENGINEERING_RESEARCH_CATALOGUE.map((entry) => ({
       id: entry.id,
       materialCost: entry.materialCost,
@@ -608,27 +816,238 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
       prerequisiteId: entry.prerequisiteId,
       consumerStatus: entry.consumerStatus,
     }))).toEqual([
-      { id: 'scan1', materialCost: { Fe: 6, Si: 4 }, stardustCost: 20, prerequisiteId: null, consumerStatus: 'unavailable' },
+      { id: 'scan1', materialCost: { Fe: 6, Si: 4 }, stardustCost: 20, prerequisiteId: null, consumerStatus: 'available' },
       { id: 'hull1', materialCost: { Ti: 5, Fe: 8 }, stardustCost: 40, prerequisiteId: null, consumerStatus: 'unavailable' },
       { id: 'lab1', materialCost: { C: 6, P: 3, H2O: 4 }, stardustCost: 60, prerequisiteId: null, consumerStatus: 'unavailable' },
       { id: 'drive1', materialCost: { H: 8, He3: 2, Fe: 4 }, stardustCost: 40, prerequisiteId: null, consumerStatus: 'unavailable' },
       { id: 'drive2', materialCost: { He3: 6, Pt: 2, U: 2 }, stardustCost: 120, prerequisiteId: 'drive1', consumerStatus: 'unavailable' },
       { id: 'drive3', materialCost: { Pz: 1, Ir: 3, U: 4 }, stardustCost: 300, prerequisiteId: 'drive2', consumerStatus: 'unavailable' },
     ]);
+  });
+
+  it('plans exact receipt-bound Deep Scanners consumption and preserves a sparse veteran subset', () => {
     const sparse = legacySparseState(['drive2']);
-    const quote = planResearchPurchase(sparse, 'drive3', {
-      materials: { Pz: 1, Ir: 3, U: 4 }, stardust: 300,
+    const input = {
+      state: sparse,
+      researchId: 'scan1' as const,
+      assets: { materials: { Fe: 6, Si: 4 }, stardust: 20 },
+      receiptOrdinal: 31,
+    };
+    const beforeState = encodeEngineeringState(sparse);
+    const beforeAssets = JSON.stringify(input.assets);
+    const plan = planResearchPurchase(input);
+    expect(plan.status).toBe('planned');
+    if (plan.status !== 'planned') return;
+    expect(plan).toMatchObject({
+      operation: 'purchase-research',
+      receiptOrdinal: 31,
+      previousRevision: 4,
+      nextRevision: 5,
+      result: {
+        researchId: 'scan1',
+        quote: {
+          id: 'scan1',
+          owned: false,
+          prerequisiteId: null,
+          missingPrerequisiteId: null,
+          missingMaterials: [],
+          missingStardust: 0,
+          consumerStatus: 'available',
+        },
+        consume: {
+          materials: [{ id: 'Fe', quantity: 6 }, { id: 'Si', quantity: 4 }],
+          stardust: 20,
+        },
+      },
     });
-    expect(quote).toMatchObject({
+    expect(plan.nextState.research).toEqual(['scan1', 'drive2']);
+    expect(encodeEngineeringState(plan.nextState)).toContain('"revision":5');
+    expect(isEngineeringActionPlan(plan)).toBe(true);
+    expect(plan.witness).toContain('research:scan1');
+    expect(plan.witness.length).toBeLessThanOrEqual(4_096);
+    expect(encodeEngineeringState(sparse)).toBe(beforeState);
+    expect(JSON.stringify(input.assets)).toBe(beforeAssets);
+
+    const same = planResearchPurchase(input);
+    expect(same).toEqual(plan);
+    const replay = planResearchPurchase({ ...input, state: plan.nextState, receiptOrdinal: 32 });
+    expect(replay).toMatchObject({
+      status: 'refused',
+      reason: 'already-owned',
+      quote: { owned: true, consumerStatus: 'available' },
+    });
+    expect(encodeEngineeringState(plan.nextState)).toContain('"research":["scan1","drive2"]');
+  });
+
+  it('keeps owned, prerequisite, asset, and unavailable-consumer refusals exact', () => {
+    expect(() => planResearchPurchase({
+      state: JSON.parse(encodeEngineeringState(createEngineeringState())) as EngineeringStateV2,
+      researchId: 'scan1',
+      assets: { materials: { Fe: 6, Si: 4 }, stardust: 20 },
+      receiptOrdinal: 0,
+    })).toThrow(/registered EngineeringState authority/);
+
+    const owned = planResearchPurchase({
+      state: legacySparseState(['scan1']),
+      researchId: 'scan1',
+      assets: { materials: { Fe: 6, Si: 4 }, stardust: 20 },
+      receiptOrdinal: 1,
+    });
+    expect(owned).toMatchObject({
+      status: 'refused', reason: 'already-owned', quote: { owned: true },
+    });
+
+    const prerequisite = planResearchPurchase({
+      state: createEngineeringState(),
+      researchId: 'drive2',
+      assets: { materials: { He3: 6, Pt: 2, U: 2 }, stardust: 120 },
+      receiptOrdinal: 2,
+    });
+    expect(prerequisite).toMatchObject({
+      status: 'refused',
+      reason: 'prerequisite-missing',
+      quote: { missingPrerequisiteId: 'drive1', consumerStatus: 'unavailable' },
+    });
+
+    const insufficient = planResearchPurchase({
+      state: createEngineeringState(),
+      researchId: 'scan1',
+      assets: { materials: { Fe: 2 }, stardust: 7 },
+      receiptOrdinal: 3,
+    });
+    expect(insufficient).toMatchObject({
+      status: 'refused',
+      reason: 'insufficient-assets',
+      quote: {
+        missingMaterials: [
+          { id: 'Fe', required: 6, available: 2, missing: 4 },
+          { id: 'Si', required: 4, available: 0, missing: 4 },
+        ],
+        missingStardust: 13,
+        consumerStatus: 'available',
+      },
+    });
+
+    const sparse = legacySparseState(['drive2']);
+    const unavailable = planResearchPurchase({
+      state: sparse,
+      researchId: 'drive3',
+      assets: { materials: { Pz: 1, Ir: 3, U: 4 }, stardust: 300 },
+      receiptOrdinal: 4,
+    });
+    expect(unavailable).toMatchObject({
       status: 'refused',
       reason: 'consumer-unavailable',
       quote: { missingPrerequisiteId: null, missingMaterials: [], missingStardust: 0 },
     });
-    expect(sparse.research).toEqual(['drive2']);
     expect(encodeEngineeringState(sparse)).toContain('"research":["drive2"]');
-    expect(planResearchPurchase(sparse, 'drive2', {
-      materials: { He3: 6, Pt: 2, U: 2 }, stardust: 120,
-    }).reason).toBe('already-owned');
+  });
+
+  it('rejects hostile research authority without invoking accessors or toJSON', () => {
+    const state = createEngineeringState();
+    const materials = { Fe: 6, Si: 4 };
+    const assets = { materials, stardust: 20 };
+    const input = {
+      state,
+      researchId: 'scan1' as const,
+      assets,
+      receiptOrdinal: 5,
+    };
+    const reject = (value: unknown, diagnosis: RegExp) => expect(() => planResearchPurchase(
+      value as Parameters<typeof planResearchPurchase>[0],
+    )).toThrow(diagnosis);
+
+    let inputGetterReads = 0;
+    const accessorInput: Record<string, unknown> = {
+      researchId: 'scan1', assets, receiptOrdinal: 5,
+    };
+    Object.defineProperty(accessorInput, 'state', {
+      enumerable: true,
+      get() {
+        inputGetterReads += 1;
+        return state;
+      },
+    });
+    reject(accessorInput, /state must be an enumerable data property/);
+    expect(inputGetterReads).toBe(0);
+
+    let assetGetterReads = 0;
+    const accessorAssets: Record<string, unknown> = { materials };
+    Object.defineProperty(accessorAssets, 'stardust', {
+      enumerable: true,
+      get() {
+        assetGetterReads += 1;
+        return 20;
+      },
+    });
+    reject({ ...input, assets: accessorAssets }, /stardust must be an enumerable data property/);
+    expect(assetGetterReads).toBe(0);
+
+    let materialGetterReads = 0;
+    const accessorMaterials: Record<string, unknown> = { Si: 4 };
+    Object.defineProperty(accessorMaterials, 'Fe', {
+      enumerable: true,
+      get() {
+        materialGetterReads += 1;
+        return 6;
+      },
+    });
+    reject(
+      { ...input, assets: { materials: accessorMaterials, stardust: 20 } },
+      /Fe must be an enumerable data property/,
+    );
+    expect(materialGetterReads).toBe(0);
+
+    const toJSON = vi.fn(() => ({ materials, stardust: 20 }));
+    reject({ ...input, assets: { materials, stardust: 20, toJSON } }, /unknown or missing fields/);
+    expect(toJSON).not.toHaveBeenCalled();
+
+    const nonEnumerableAssets: Record<string, unknown> = { materials };
+    Object.defineProperty(nonEnumerableAssets, 'stardust', {
+      enumerable: false,
+      value: 20,
+    });
+    reject({ ...input, assets: nonEnumerableAssets }, /stardust must be an enumerable data property/);
+
+    reject({
+      ...input,
+      assets: { materials: { ...materials, [Symbol('forged')]: 1 }, stardust: 20 },
+    }, /symbol key/);
+    reject({
+      ...input,
+      assets: Object.assign(Object.create({ forged: true }), { materials, stardust: 20 }),
+    }, /exact plain data object/);
+  });
+
+  it('binds each research receipt factor without ambient RNG or clock reads', () => {
+    const random = vi.spyOn(Math, 'random');
+    const now = vi.spyOn(Date, 'now');
+    const base = {
+      state: createEngineeringState(),
+      researchId: 'scan1' as const,
+      assets: { materials: { Fe: 6, Si: 4 }, stardust: 20 },
+      receiptOrdinal: 11,
+    };
+    const planned = planResearchPurchase(base);
+    const receiptChanged = planResearchPurchase({ ...base, receiptOrdinal: 12 });
+    const assetsChanged = planResearchPurchase({
+      ...base,
+      assets: { materials: { Fe: 7, Si: 4 }, stardust: 20 },
+    });
+    expect(planned.status).toBe('planned');
+    expect(receiptChanged.status).toBe('planned');
+    expect(assetsChanged.status).toBe('planned');
+    if (planned.status !== 'planned'
+      || receiptChanged.status !== 'planned'
+      || assetsChanged.status !== 'planned') return;
+    expect(receiptChanged.witness).not.toBe(planned.witness);
+    expect(assetsChanged.witness).not.toBe(planned.witness);
+    expect(receiptChanged.result).toEqual(planned.result);
+    expect(assetsChanged.result).toEqual(planned.result);
+    expect(random).not.toHaveBeenCalled();
+    expect(now).not.toHaveBeenCalled();
+    random.mockRestore();
+    now.mockRestore();
   });
 
   it('returns an Arc2 mutation directive, re-anchors Auto-Extractor with zero retroactive loads, and consumes no RNG input', () => {
