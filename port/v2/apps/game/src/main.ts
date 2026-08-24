@@ -70,6 +70,7 @@ import {
   ShipyardPreviewOwner,
   shipVisualStateKey,
 } from './shipyard-preview.js';
+import { worldRosterView } from './world-roster.js';
 import {
   getGuideCatalogue, getGuideTopic, searchGuide,
   type GuideCategoryId, type GuideTopicId, type GuideTopicView,
@@ -3236,7 +3237,7 @@ function biosphereReplica(P: Record<string, unknown>, sys: Record<string, unknow
   else level = 'none';
   return { key: level };
 }
-function worldRoster(p: PlanetNode, starSeed: number): Array<Record<string, unknown>> {
+function fullWorldRoster(p: PlanetNode, starSeed: number): readonly Record<string, unknown>[] {
   try {
     const sys = systemFor(starSeed) as Record<string, unknown>;
     const P = p.P;
@@ -3250,7 +3251,7 @@ function worldRoster(p: PlanetNode, starSeed: number): Array<Record<string, unkn
     } else if (bio.key !== 'none') {
       species = planetSpecies(P as never, sys as never, band, bio.key) as never;
     }
-    return species.slice(0, 8);
+    return worldRosterView(species).all;
   } catch { return []; }
 }
 
@@ -3502,7 +3503,7 @@ function fillPlanetside(p: PlanetNode, starSeed: number): void {
   /* THE LIVING PLANETSIDE: the world's REAL roster (planetSpecies through
      the biosphere replica), each wearing its hdart portrait — the strip is
      Phase 4 chrome; the full walkable vista is Phase 6's. */
-  const roster = worldRoster(p, starSeed).slice(0, 8);
+  const roster = worldRosterView(fullWorldRoster(p, starSeed)).preview;
   if (!roster.length) {
     clearPlanetside();
     syncPlanetsideLayout();
