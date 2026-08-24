@@ -21,6 +21,7 @@ export * from './tab-lease.js';
 export * from './active-play.js';
 export * from './outcome-transaction.js';
 export * from './arc2-loot.js';
+export * from './arc2-fixed-fabrication.js';
 export * from './arc2-engineering-loadout.js';
 export * from './arc3-engineering.js';
 export * from './arc3-legacy-projection.js';

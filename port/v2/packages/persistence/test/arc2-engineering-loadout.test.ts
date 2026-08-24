@@ -26,9 +26,22 @@ beforeAll(() => installCaptureHooks());
 
 const V2_ROOT = fileURLToPath(new URL('../../../', import.meta.url));
 const INTERNAL_ENGINEERING_IMPORT = '@cf/domain-loot/engineering-internal';
-const ALLOWED_INTERNAL_IMPORTERS = Object.freeze([
+const INTERNAL_ENGINEERING_RELATIVE_BASENAME = 'engineering-loadout-internal';
+const ENGINEERING_MINT_IDENTIFIER = 'registerArc2EngineeringLoadout';
+const ALLOWED_INTERNAL_MODULE_REFERENCES = Object.freeze([
+  'packages/domain/loot/src/engineering-capabilities.ts',
+  'packages/domain/loot/src/index.ts',
   'packages/domain/loot/test/engineering-capabilities.test.ts',
   'packages/persistence/src/arc2-engineering-loadout.ts',
+  'packages/persistence/test/arc2-fixed-fabrication.test.ts',
+  'packages/persistence/test/arc2-engineering-loadout.test.ts',
+]);
+const ALLOWED_MINT_REFERENCES = Object.freeze([
+  'packages/domain/loot/src/engineering-loadout-internal.ts',
+  'packages/domain/loot/test/engineering-capabilities.test.ts',
+  'packages/persistence/src/arc2-engineering-loadout.ts',
+  'packages/persistence/test/arc2-fixed-fabrication.test.ts',
+  'packages/persistence/test/arc2-engineering-loadout.test.ts',
 ]);
 
 function TypeScriptFilesUnder(directory: string): readonly string[] {
@@ -46,14 +59,20 @@ function relativeV2Path(absolute: string): string {
   return path.relative(V2_ROOT, absolute).split(path.sep).join('/');
 }
 
-function importsInternalEngineeringMint(source: string): boolean {
-  const importStatements = source.match(/^\s*import\b[\s\S]*?;\s*$/gm) ?? [];
-  return importStatements.some((statement) => statement.includes(INTERNAL_ENGINEERING_IMPORT));
+function referencesInternalEngineeringModule(source: string): boolean {
+  return source.includes(INTERNAL_ENGINEERING_IMPORT)
+    || source.includes(INTERNAL_ENGINEERING_RELATIVE_BASENAME);
 }
 
-function forbiddenInternalMintImport(relativePath: string, source: string): boolean {
-  return importsInternalEngineeringMint(source)
-    && !ALLOWED_INTERNAL_IMPORTERS.includes(relativePath);
+function referencesEngineeringMint(source: string): boolean {
+  return source.includes(ENGINEERING_MINT_IDENTIFIER);
+}
+
+function forbiddenInternalAuthorityReference(relativePath: string, source: string): boolean {
+  return (referencesInternalEngineeringModule(source)
+      && !ALLOWED_INTERNAL_MODULE_REFERENCES.includes(relativePath))
+    || (referencesEngineeringMint(source)
+      && !ALLOWED_MINT_REFERENCES.includes(relativePath));
 }
 
 function preparedInventory(items: readonly (readonly [string, number])[]) {
@@ -78,17 +97,31 @@ describe('@cf/persistence — fresh Arc 2 engineering loadout bridge', () => {
       ...TypeScriptFilesUnder(path.join(V2_ROOT, 'apps')),
       ...TypeScriptFilesUnder(path.join(V2_ROOT, 'tests')),
     ];
-    const importers = sourceFiles
-      .filter((absolute) => importsInternalEngineeringMint(fs.readFileSync(absolute, 'utf8')))
+    const moduleReferences = sourceFiles
+      .filter((absolute) => referencesInternalEngineeringModule(fs.readFileSync(absolute, 'utf8')))
       .map(relativeV2Path)
       .sort();
-    expect(importers).toEqual([...ALLOWED_INTERNAL_IMPORTERS].sort());
-    expect(importers.filter((relative) => relative.includes('/src/')))
-      .toEqual(['packages/persistence/src/arc2-engineering-loadout.ts']);
+    expect(moduleReferences).toEqual([...ALLOWED_INTERNAL_MODULE_REFERENCES].sort());
 
-    const syntheticAppImport =
-      "import { registerArc2EngineeringLoadout } from '@cf/domain-loot/engineering-internal';";
-    expect(forbiddenInternalMintImport('apps/game/src/forbidden.ts', syntheticAppImport)).toBe(true);
+    const mintReferences = sourceFiles
+      .filter((absolute) => referencesEngineeringMint(fs.readFileSync(absolute, 'utf8')))
+      .map(relativeV2Path)
+      .sort();
+    expect(mintReferences).toEqual([...ALLOWED_MINT_REFERENCES].sort());
+    expect(mintReferences.filter((relative) => relative.includes('/src/'))).toEqual([
+      'packages/domain/loot/src/engineering-loadout-internal.ts',
+      'packages/persistence/src/arc2-engineering-loadout.ts',
+    ]);
+
+    for (const syntheticAppImport of [
+      "import { registerArc2EngineeringLoadout } from '@cf/domain-loot/engineering-internal'",
+      "const authority = await import('@cf/domain-loot/engineering-internal')",
+      "export * from '@cf/domain-loot/engineering-internal'",
+      "import * as authority from '../../../packages/domain/loot/src/engineering-loadout-internal.js'",
+    ]) {
+      expect(forbiddenInternalAuthorityReference('apps/game/src/forbidden.ts', syntheticAppImport))
+        .toBe(true);
+    }
 
     const bridgeSource = fs.readFileSync(
       path.join(V2_ROOT, 'packages/persistence/src/arc2-engineering-loadout.ts'),
@@ -98,11 +131,11 @@ describe('@cf/persistence — fresh Arc 2 engineering loadout bridge', () => {
       /import\s*\{\s*registerArc2EngineeringLoadout\s*\}\s*from\s*['"]@cf\/domain-loot\/engineering-internal['"];?/,
     )?.[0];
     expect(realMintImport).toBeTruthy();
-    expect(forbiddenInternalMintImport(
+    expect(forbiddenInternalAuthorityReference(
       'packages/domain/opportunity/src/forbidden-copy.ts',
       realMintImport ?? '',
     )).toBe(true);
-    expect(forbiddenInternalMintImport(
+    expect(forbiddenInternalAuthorityReference(
       'packages/persistence/src/arc2-engineering-loadout.ts',
       realMintImport ?? '',
     )).toBe(false);
