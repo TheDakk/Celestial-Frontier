@@ -6,4 +6,4 @@ export { installCaptureHooks, CAPTURE_THUMB } from './apphooks.js';
 /* ⚠ D-CAT-1: the DEDUPED roster, not the verbatim one. Re-exporting the
    verbatim list here would have left the audit and the compendium reading a
    different catalogue from the one the name pass hands out. */
-export { _EARTH_NAMES } from './apphooks.js';
+export { _EARTH_NAMES, _earthNamePass } from './apphooks.js';
