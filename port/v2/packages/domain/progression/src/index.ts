@@ -90,3 +90,78 @@ export function clampHarvestEpoch(e: unknown, epochBase: number): number {
 export function markHarvested(c: ConquestRow, cosmicEpoch: number): ConquestRow {
   return { ...c, e: cosmicEpoch };
 }
+
+/* ---------- F4 visible/answerable active-play clock ---------- */
+
+/** This is deliberately much larger than any practical expedition while
+ * remaining exactly representable. It is an integrity cap, not game pacing. */
+export const MAX_ACTIVE_PLAY_MS = 10_000_000_000_000;
+
+export interface ActivePlayEligibility {
+  readonly visible: boolean;
+  readonly answerable: boolean;
+  readonly leaseOwned: boolean;
+}
+
+export interface ActivePlaySnapshot {
+  readonly activePlayMs: number;
+  readonly eligible: boolean;
+}
+
+export interface ActivePlayClock {
+  /** Accrue through `nowMs`, then change the eligibility of later time. */
+  setEligibility(eligibility: ActivePlayEligibility, nowMs: number): ActivePlaySnapshot;
+  /** Read an advancing snapshot without rebasing the clock. */
+  current(nowMs: number): ActivePlaySnapshot;
+}
+
+function checkedMonotonicMs(value: number, prior: number): number {
+  if (!Number.isFinite(value) || value < 0) throw new RangeError('active-play monotonic time must be finite and non-negative');
+  if (value < prior) throw new RangeError('active-play monotonic time moved backwards');
+  return value;
+}
+
+export function sanitizeActivePlayMs(value: unknown): number {
+  const candidate = Number(value);
+  return Number.isSafeInteger(candidate) && candidate >= 0
+    ? Math.min(candidate, MAX_ACTIVE_PLAY_MS)
+    : 0;
+}
+
+function isEligible(value: ActivePlayEligibility): boolean {
+  return value.visible === true && value.answerable === true && value.leaseOwned === true;
+}
+
+/**
+ * Create the F4 readiness clock from one persisted snapshot and an injected
+ * monotonic segment. Device wall time is intentionally absent. Eligibility
+ * requires all three authorities at once: visible document, answerable app,
+ * and the F3 tab lease. A hidden, frozen, or losing tab accrues zero.
+ */
+export function createActivePlayClock(
+  persistedActivePlayMs: unknown,
+  initialEligibility: ActivePlayEligibility,
+  initialNowMs = 0,
+): ActivePlayClock {
+  let accumulated = sanitizeActivePlayMs(persistedActivePlayMs);
+  let eligible = isEligible(initialEligibility);
+  let anchor = checkedMonotonicMs(initialNowMs, 0);
+
+  const accrue = (nowMs: number): ActivePlaySnapshot => {
+    const now = checkedMonotonicMs(nowMs, anchor);
+    if (eligible && now > anchor) {
+      accumulated = Math.min(MAX_ACTIVE_PLAY_MS, accumulated + (now - anchor));
+    }
+    anchor = now;
+    return Object.freeze({ activePlayMs: Math.trunc(accumulated), eligible });
+  };
+
+  return {
+    setEligibility(next, nowMs) {
+      accrue(nowMs);
+      eligible = isEligible(next);
+      return Object.freeze({ activePlayMs: Math.trunc(accumulated), eligible });
+    },
+    current(nowMs) { return accrue(nowMs); },
+  };
+}

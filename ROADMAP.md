@@ -101,6 +101,18 @@ the IndexedDB schema target is v2 so `onupgradeneeded` can create it for existin
 Focused memory outcomes and all three TypeScript configurations pass. This is substrate only: no live
 v4 blob migration, writer, or F3 completion claim yet.
 
+**F4 clock kernel (local, 2026-08-24):** the pure progression package now owns a persisted
+`activePlayMs` clock driven only by injected monotonic time. It accrues only while the document is
+visible, the app is answerable, and the F3 tab lease is owned; hidden, frozen, and losing-tab time
+all remain zero. Reload, wall-clock wind, invalid/backward source, and cap controls pass. App/save
+wiring still waits on the completed F3 lease and v5 migration.
+
+**Arc 0 `D-CFB-1` kernel (local, 2026-08-24):** legacy `CFB-` remains the exact v1
+challenger/exhibit contract; a versioned `CFB2-` owned-creature codec now round-trips one bounded,
+ordered uint32 parent tuple while stripping XP, feeding, brood, injury, and other mutable state.
+Forward/reverse parents remain distinct, malformed/future/mismatched carriers fail closed, and pure
+creatures carry explicit no-lineage state. No companion/share UI is enabled yet.
+
 ### SSH and branch discipline
 
 - Use only the matching app/OS/root/branch row in `PARALLEL_GIT_PROTOCOL.md`;
