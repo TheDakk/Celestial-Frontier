@@ -102,6 +102,12 @@ const approvedExpected = (fixture: typeof FIXTURE_NAMES[number], field: string, 
     }
     return canon(value);
   }
+  /* D-IMPORT: keyed progression carriers are records. v1's `typeof` gate
+     accidentally treated array indices as user-owned keys; v2 contains the
+     malformed field instead of manufacturing numeric-looking progress. */
+  if (fixture === 'hostile_arrays_as_objects' && (field === 'ascProg' || field === 'chProg')) {
+    return canon({});
+  }
   if (fixture !== 'hostile_markup_caps' || (field !== 'stats' && field !== 'codex')) return encoded;
   const value = JSON.parse(encoded) as Record<string, unknown> | Array<[string, { g: Record<string, unknown> }]>;
   if (field === 'stats') (value as Record<string, unknown>).maxGen = 2;
@@ -323,6 +329,38 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
     expect(s.eventKeysSeen).toEqual(['e1', 'e2']); expect(s.evAnnounced).toEqual(['a1', 'a2']);
     expect(s.unlocked).toEqual(['u1', 'u2']); expect(s.landed).toEqual([7, 8]);
     expect(s.contacted).toEqual([9, 10]);
+  });
+  it('rejects array indices as progression/signature keys while retaining real record keys', () => {
+    const numericSignatureRegistry: ContentRegistry = {
+      ...REGISTRY,
+      sigIds: [...REGISTRY.sigIds, '0'],
+    };
+    const primeRow = {
+      title: 'Numeric signature', sub: 'record only', tier: 7, hex: '#abc', where: null,
+    };
+    const fromArrays = importSaveV2(JSON.stringify({
+      epoch: 0, codex: [], land: [], ascp: [3, 9], chp: [7], prime: [primeRow],
+    }), numericSignatureRegistry, NOW);
+    expect(fromArrays.ok).toBe(true);
+    if (!fromArrays.ok) return;
+    expect(fromArrays.state.ascProg).toEqual({});
+    expect(fromArrays.state.chProg).toEqual({});
+    expect(fromArrays.state.primeFill).toEqual({});
+
+    /* Hostile control: "0" is deliberately a valid injected signature id,
+       so this only stays empty above when the array carrier itself is
+       rejected. The same numeric-looking keys remain valid on real records. */
+    const fromRecords = importSaveV2(JSON.stringify({
+      epoch: 0, codex: [], land: [],
+      ascp: { 0: 3, 1: 9 }, chp: { 0: 7 }, prime: { 0: primeRow },
+    }), numericSignatureRegistry, NOW);
+    expect(fromRecords.ok).toBe(true);
+    if (!fromRecords.ok) return;
+    expect(fromRecords.state.ascProg).toEqual({ 0: 3, 1: 9 });
+    expect(fromRecords.state.chProg).toEqual({ 0: 7 });
+    expect(fromRecords.state.primeFill).toEqual({
+      0: { title: 'Numeric signature', sub: 'record only', tier: 7, hex: '#abc', where: null },
+    });
   });
   it('valid unwrapped size is an import/export fixed point across honest and large values', () => {
     const template = structuredClone(
