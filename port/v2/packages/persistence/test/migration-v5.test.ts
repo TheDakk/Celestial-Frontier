@@ -209,6 +209,86 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     expect(await dump(backend)).toEqual(before);
   });
 
+  it('carries corrected genome, Map, Set, and record semantics through migration and the v5 read fixed point', async () => {
+    const numericSignatureRegistry: ContentRegistry = {
+      ...REGISTRY,
+      sigIds: [...REGISTRY.sigIds, '0'],
+    };
+    const source = structuredClone(FIXTURES.inputs.veteran_rich) as Record<string, unknown>;
+    const baseGenome = structuredClone(
+      ((source.codex as Array<{ g: Record<string, unknown> }>)[0]!.g),
+    );
+    const [materialA, materialB] = numericSignatureRegistry.materials;
+    const [techA, techB] = numericSignatureRegistry.techs;
+    expect([materialA, materialB, techA, techB].every(Boolean)).toBe(true);
+    source.codex = [{
+      g: {
+        ...baseGenome,
+        seed: 8_675_310,
+        color: -2.9,
+        body: '3',
+        diet: 'not-a-number',
+        metab: -1,
+        size: 11,
+        limbs: 'legacy-limbs',
+      },
+      f: 'migration repair',
+    }];
+    source.cargo = [[materialA, 1], [materialB, 2], [materialA, 3]];
+    source.tech = [techA, techB, techA];
+    source.ascp = [3, 9];
+    source.chp = [7];
+    source.prime = [{
+      title: 'Forged numeric signature', sub: 'array index', tier: 7, hex: '#abc', where: null,
+    }];
+    const exactRaw = JSON.stringify(source);
+
+    const backend = createMemoryBackend();
+    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: exactRaw }]);
+    const migrated = await migrateStoredV4ToV5(backend, numericSignatureRegistry, NOW);
+    expect(migrated.kind).toBe('migrated');
+    if (migrated.kind !== 'migrated') return;
+
+    const loaded = await readSaveV5(backend, numericSignatureRegistry, NOW);
+    expect(loaded.kind).toBe('loaded');
+    if (loaded.kind !== 'loaded') return;
+    const repaired = new Map(loaded.state.codex).get('s8675310')!;
+    expect(repaired.g).toMatchObject({
+      color: 2, body: 3, diet: 0, metab: 1, size: 11, limbs: 'legacy-limbs',
+    });
+    /* Map reconstruction keeps the first insertion slot and last value;
+       Set reconstruction keeps first accepted order and removes duplicates. */
+    expect(loaded.state.cargo).toEqual([[materialA!, 3], [materialB!, 2]]);
+    expect(loaded.state.techOwned).toEqual([techA, techB]);
+    expect(loaded.state.ascProg).toEqual({});
+    expect(loaded.state.chProg).toEqual({});
+    expect(loaded.state.primeFill).toEqual({});
+
+    const prepared = prepareV5SaveWrite({
+      state: loaded.state,
+      extensions: loaded.extensions,
+    }, numericSignatureRegistry, NOW);
+    expect(prepared.canonicalState).toEqual(loaded.state);
+    expect(prepared.legacyV4Raw).toBe(loaded.legacyV4Raw);
+    const repository = createRevisionedRepository(backend);
+    expect(await repository.mutate({ expectedRevision: 0, writes: prepared.operations })).toEqual({
+      kind: 'committed', revision: 1, receiptKey: null,
+    });
+
+    const loadedAgain = await readSaveV5(backend, numericSignatureRegistry, NOW);
+    expect(loadedAgain.kind).toBe('loaded');
+    if (loadedAgain.kind !== 'loaded') return;
+    expect(loadedAgain.state).toEqual(loaded.state);
+    expect(loadedAgain.legacyV4Raw).toBe(loaded.legacyV4Raw);
+    expect(prepareV5SaveWrite({
+      state: loadedAgain.state,
+      extensions: loadedAgain.extensions,
+    }, numericSignatureRegistry, NOW).operations).toEqual(prepared.operations);
+    expect(await migrateStoredV4ToV5(backend, numericSignatureRegistry, NOW)).toEqual({
+      kind: 'already-current', legacyV4Raw: loaded.legacyV4Raw,
+    });
+  });
+
   it('classifies future and coherent-looking truncations before the total v4 loader can authorize them', async () => {
     expect(classifyV4Save('{"v":9,"epoch":1}', REGISTRY, NOW)).toEqual({ kind: 'future-version' });
     expect(classifyV4Save('{"v":4,"epoch":1,"codex":[],"land":[]}', REGISTRY, NOW)).toEqual({ kind: 'corrupt' });
