@@ -45,7 +45,8 @@
 > `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
 > verdict-contract bytes are unchanged. The guarded battery now installs exact Edge `.101` with
 > same-package `--reinstall`, runs SceneMemory before Compendium, and permits no retry. This local
-> repair has no hosted-green authority and no hosted attempt is currently authorized.
+> repair first gained hosted integration in terminal-green PR #33 run `32646110946`; later PR #34
+> run `32681394532` also passed the same SceneMemory chain. No new hosted attempt is authorized.
 >
 > The v2 gate drives Universe, Galaxy, Galaxy fine, Sol, Earth Surface, the deterministic 1,500-row
 > Compendium, and the real Shipyard on phone and desktop before settling back at Universe. PR #33
@@ -67,8 +68,9 @@
 > `d21ba26…` selects active budget `faa160b3…` without numeric-ceiling widening and retains the
 > 14-phone/13-desktop breach inventory. Exact-budget run
 > `20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
-> `d21ba26…` (raw/gzip `42753d5e…` / `a2ff5b00…`). A new hosted attempt still requires explicit
-> changed-head authorization.
+> `d21ba26…` (raw/gzip `42753d5e…` / `a2ff5b00…`). The repaired exact head then passed
+> terminal-green no-retry run `32681394532` and merged normally in PR #34 as `7a9f4c1…`.
+> A new hosted attempt still requires explicit changed-head authorization.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 
@@ -184,15 +186,17 @@ flowchart TD
   A1C --> F3["F3 CAS, split stores, receipts"]
   F3 --> F4["F4 Active-play clock + SessionRNG"]
   F4 --> A2["Arc 2 Items + readable economy"]
+  F4 --> A7["Arc 7 Audio foundation"]
   A2 --> A3["Arc 3 Engineering"]
   A3 --> A4["Arc 4 Capture + ownership"]
-  A4 --> A45["Arc 4.5 First complete journey [HUMAN]"]
-  A45 --> A5["Arc 5 Companions"]
-  A5 --> A55["Arc 5.5 Combat decision model [HUMAN]"]
+  A4 --> A5["Arc 5 Companions"]
+  A5 --> A45["Arc 4.5 + Arc 5 combined review [HUMAN]"]
+  A7 --> A8Core["Arc 8 current-system audio/content"]
+  A45 --> A55["Arc 5.5 Combat decision model [HUMAN]"]
   A55 --> A6["Arc 6 Combat + Guardians"]
-  A6 --> A7["Arc 7 Audio foundation"]
-  A7 --> A8["Arc 8 HD audio/content"]
-  A8 --> A9["Arc 9 Legacy + projects"]
+  A6 --> A8Combat["Arc 8 combat/Guardian audio closure"]
+  A8Core --> A8Combat
+  A8Combat --> A9["Arc 9 Legacy + projects"]
   A9 --> A10["Arc 10 Integration beta"]
 ```
 
@@ -1004,6 +1008,26 @@ wall-clock exploit or a change to universe determinism.
 **Hard no-go:** new extraction, missions, readiness, capture/reward, or anti-reroll loops do not
 use `Date.now()` or bare `Math.random()`. Reduced Motion never slows progress.
 
+### 4.10 Approved 2026-08-24 campaign sequencing
+
+Nick authorizes one local, commit-preserving campaign through F3, F4, the remaining Arc 0 dependency
+closures, Arcs 2–5, and Arc 7 plus Arc 8's current-system audio/content work. It uses no intermediate
+push or hosted battery; one complete reviewed head is the next integration milestone.
+
+Arc 4.5's HUMAN review moves from the Arc 4→5 handoff to a combined post-Arc-5 review. This does not
+waive the first-journey criterion, the Arc 5 attachment criterion, or any related accessibility and
+comfort evidence; it merely lets the player review encounter the whole ownership-and-companion loop.
+Arc 5.5 remains a separate HUMAN combat-model gate before Arc 6.
+
+Arc 7 may begin after F4 because deterministic identity, lifecycle, audio-state persistence, and
+outcome boundaries require the same authority foundation. Arc 8 may deliver profiles, rights-bound
+assets, Compendium audition, current-world ambience/music, and non-combat expression for implemented
+systems during this campaign. Its combat, Guardian, conquest, and post-combat layers remain unfulfilled
+Arc 6 integrations and cannot be marked complete or used to claim Arc 8's full exit before Arc 6 exists.
+
+All existing F3/F4 no-go rules, per-Arc Charter co-delivery, outcome tests, resource budgets, migration
+evidence, HUMAN evidence, and production/release boundaries remain unchanged.
+
 ## 5. Product Arc delivery plan
 
 **Charter co-delivery law:** when an Arc makes a system such as mining, fabrication, bioscan,
@@ -1113,7 +1137,9 @@ a disposable loot roll or unattended-income machine.
 - Add bounded selected living previews only after Arc 1 resource contracts and creature identity are
   stable.
 
-**Dependencies:** Arc 4 ownership split, F3/F4, CFB/import continuity work, and Arc 4.5 proof.
+**Dependencies:** Arc 4 ownership split, F3/F4, CFB/import continuity work, and Arc 4.5's implemented
+journey criteria. Under the approved 2026-08-24 campaign sequencing, its HUMAN proof occurs immediately
+after Arc 5 as the combined ownership-and-companion review; that timing change does not waive the proof.
 
 **Exit evidence:** fed inheritance; recovery/away locks; return exactly once; save failure/reload/
 two-tab controls; no silent bonded-creature loss; honest Guide/Training; human attachment review.
@@ -1150,6 +1176,9 @@ Guardian encounters are memorable and strategically legible.
 
 ### 5.8 Arc 7 — audio foundation
 
+**Campaign placement:** after F4 and alongside Arcs 2–5 under §4.10; it is no longer deferred behind
+unimplemented combat. Combat/Guardian event integration remains a later Arc 6 obligation.
+
 **Goal:** build the platform that can deliver premium, distinctive audio safely before broad sound
 content is added.
 
@@ -1185,6 +1214,11 @@ standard, and 56–72 desktop high. Gate G begins with at most eight creature em
 nodes; these counts are distinct scopes, not interchangeable limits.
 
 ### 5.9 Arc 8 — HD audio and content
+
+**Campaign placement:** current-system audio/content may proceed after Arc 7 under §4.10. The listed
+combat, Guardian, conquest, and post-combat layers stay explicit future Arc 6 integration work; their
+absence must remain visible in manifests and player copy rather than being represented by fabricated
+coverage.
 
 **Goal:** turn the proven audio platform into a full local, distinctive, legally safe soundscape.
 

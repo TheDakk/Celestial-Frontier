@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-23 · ARC 1 MERGED · F3 NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-24 · FULL LOCAL CAMPAIGN · F3/F4 + ARC 2–5 + AUDIO ◀◀◀
 
 ### Current integration state
 
@@ -32,6 +32,10 @@ the archive verbatim and refresh this handoff in place.
   heat/battery evidence.
 - `main`, the production site, and the parked development-preview publisher are
   unchanged. No release, deployment, version bump, publication, or save-schema change occurred.
+- PR #34 merged normally as `7a9f4c1370dd84292388d718c38ff34214f6203b` after exact-head,
+  one-attempt terminal-green battery run `32681394532` (50m10s). The repair's Compendium 78/78
+  certificate/verifier, SceneMemory certificate/verifier, Slice Smoke, Glass Matrix, preview package,
+  artifacts, and cleanup all passed; the approval label was removed. This is integration evidence only.
 
 ### PR #34 Compendium ruler repair
 
@@ -52,8 +56,9 @@ the archive verbatim and refresh this handoff in place.
   retained by activation commit `d21ba26…`; no numeric memory ceiling was widened and the baseline
   still breaches 14 phone / 13 desktop fields. Active budget SHA-256 is `faa160b3…`. Exact-budget
   run `20260823-pr34-render-stable-row-certification` then passed 78/78 plus named verification on
-  clean `d21ba26…`; raw/gzip report hashes are `42753d5e…` / `a2ff5b00…`. PR #34 remains Draft and
-  unmerged; this local proof does not authorize another hosted attempt.
+  clean `d21ba26…`; raw/gzip report hashes are `42753d5e…` / `a2ff5b00…`. The exact changed head
+  then passed terminal-green hosted run `32681394532` and merged in PR #34. No new hosted attempt is
+  authorized.
 
 ### Remaining Arc 1 evidence
 
@@ -62,14 +67,30 @@ the archive verbatim and refresh this handoff in place.
 - Real-device iOS/iPadOS/Android/desktop accessibility, heat, and battery evidence
   remain open. Arc 1 does not close Gates C, D, I, or any release gate.
 
-### Next implementation spine
+### Approved full-session campaign
 
-1. **F3 — persistence authority, split stores, and receipts:** revision/CAS-safe
-   mutations, immutable receipts, v4→v5 migration/recovery, and the tab lease.
-2. **F4 — active-play clock and SessionRNG:** replayable outcome authority and
-   migration away from wall-clock accrual.
-3. **Arc 2 — item instances and readable economy:** only after F3/F4 establish
-   safe mutation, time, and outcome authority.
+Nick directs one local, commit-preserving campaign with no intermediate push or hosted battery.
+The final reviewed head—not each batch—will be the next GitHub milestone. The dependency/no-go laws
+remain in force.
+
+1. **Session charter and current-doc repair:** record PR #34's terminal merge and make complete,
+   current PR descriptions a protocol requirement.
+2. **F3 — persistence authority:** revision/CAS semantics, split stores, immutable receipts, v4→v5
+   migration/recovery, and the tab lease.
+3. **F4 — active-play clock and SessionRNG:** active-play time, ecology edge, Auto-Extractor
+   migration, replayable outcome counters, and a complete audited call-site inventory.
+4. **Arc 0 dependency closures:** finish each named truth/import/continuity seam at the point it
+   blocks later work—especially `MAIN-3` before Arc 4 and `D-CFB-1` before Arc 5.
+5. **Arcs 2 → 5:** item instances/readable economy, engineering opportunities, capture/ownership,
+   then companions. Each writer lands only after F3/F4 authority and its own real outcome proof.
+6. **Arc 7 and Arc 8 core audio:** begin after F4, build deterministic audio identity, mixer,
+   lifecycle, accessibility, rights tooling, and current-system soundscape alongside the ownership
+   loop. Combat/Guardian audio remains an explicit Arc 6 integration dependency; it cannot be
+   certified before those systems exist.
+7. **Combined HUMAN review after Arc 5:** run Arc 4.5's first-journey review, Arc 5 attachment
+   review, and applicable Arc 7/8 listening/comfort review together. This moves review timing; it
+   does not waive any human criterion. Arc 5.5 remains the separate combat-model HUMAN gate before
+   Arc 6.
 
 ### SSH and branch discipline
 
@@ -107,16 +128,18 @@ the archive verbatim and refresh this handoff in place.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
    `GITHUB_ACTIONS_BUDGET.md`; inspect the F3 scope in
    `port/V2_PROGRAM_ROADMAP.md` before proposing or editing F3 work.
-3. Create no new product scope before F3 is decomposed into a bounded owned batch.
-   Preserve the Arc 1 proof boundaries and current HUMAN evidence list.
+3. Start the approved campaign with a bounded F3 persistence batch. Preserve the Arc 1 proof
+   boundaries, current HUMAN evidence list, and all F3/F4 no-go rules; commit locally after each
+   complete owned batch and do not push until the campaign review head is ready.
 4. Claude/Anthropic should receive merged work only by fetching `origin` and
    merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
    manual file copying. Nick does not need to open Claude now.
 
-**Current side:** Codex macOS is on `openai/mac`; PR #34's render-stable repair is committed at
-`a95889d…`, active calibration authority is `d21ba26…` / budget `faa160b3…`, and its clean local
-certificate is 78/78 with named verification. Evidence/documentation changes are descendants only.
+**Current side:** Codex macOS is on `openai/mac`, locally fast-forwarded to merged `develop`
+`7a9f4c1…`; `origin/openai/mac` remains the contained PR #34 head until a later authorized final
+push. PR #34's render-stable repair passed hosted run `32681394532` and merged normally.
 **GitHub step:** none.
 **Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
-**Actions budget:** `UNFROZEN`; PR #34 runs `32665404776` and `32677088518` are consumed
-terminal-red and their labels were removed; no new hosted attempt is authorized by this handoff.
+**Actions budget:** `UNFROZEN`; PR #34 runs `32665404776` and `32677088518` remain consumed
+terminal-red, and run `32681394532` is consumed terminal-green. All labels are removed; no new
+hosted attempt is authorized by this handoff.

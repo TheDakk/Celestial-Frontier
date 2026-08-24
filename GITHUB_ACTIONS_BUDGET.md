@@ -4,7 +4,9 @@
 
 **Hosted attempt state: none authorized.** PR #34 runs `32665404776` and `32677088518` are
 consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
-labels were removed. No retry or replacement attempt is authorized. PR #33's fifth and
+labels were removed. Its repaired third authorized changed-head attempt, run `32681394532`, passed
+terminal-green in one attempt/no retry (50m10s), had its label removed, and merged normally as
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. No replacement attempt is authorized. PR #33's fifth and
 final authorized changed-head attempt,
 run `32646110946`, passed terminal-green (one attempt, no retry; battery 50m29s), its label was
 removed, and it merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`.
@@ -240,7 +242,9 @@ every earlier gate and reached the second desktop row activation. Its exact repo
 activation and immediate receipt succeeded; after Close/reopen, a one-shot pre-render row point
 became invalid across the deferred ResizeObserver/render turn. The passive point wait issued 112
 observations and ended on a final clipped 51 ms command while the root heartbeat remained timely.
-The label was removed; PR #34 stayed Draft and unmerged; the attempt is consumed.
+The label was removed; this red attempt remains consumed. The repaired changed head subsequently
+passed one authorized no-retry terminal-green battery, run `32681394532`, and PR #34 merged normally
+as `7a9f4c1370dd84292388d718c38ff34214f6203b`.
 
 The retained raw/gzip report hashes are `544015e9…` / `cc5ed778…`. Collector `6d681d19…` now
 requires native-scroll positioning and the same exact owned point before and after a double-render
@@ -250,8 +254,9 @@ source `a95889d…` produced three independent 78/78 candidates and a paired leg
 commit `d21ba26…` selects active budget `faa160b3…` without widening numeric ceilings, while retaining
 the 14-phone/13-desktop broken-baseline breaches. Exact-budget run
 `20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
-`d21ba26…`; raw/gzip hashes are `42753d5e…` / `a2ff5b00…`. This is local authority only and does not
-authorize a new changed-head hosted attempt.
+`d21ba26…`; raw/gzip hashes are `42753d5e…` / `a2ff5b00…`. The repaired exact head then passed
+hosted run `32681394532` and merged normally. That consumed run is integration evidence only and
+does not authorize a new changed-head hosted attempt.
 
 ## Safe rollout of this guard
 

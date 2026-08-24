@@ -251,6 +251,14 @@ The reminder must apply these rules:
    change, list verification performed, state the cross-agent synchronization
    effect, and state that no release or deployment is included. Do not imply
    that saving, committing, or pushing merged it.
+   Before a PR receives its one-run label or is marked Ready, its title and
+   description must be refreshed to cover the accumulated exact head: player or
+   technical purpose, root cause when repairing a defect, bounded scope,
+   completed and pending verification, retained evidence/authority where
+   relevant, base/head, cross-agent synchronization, and release boundary.
+   After terminal merge, update that same description with the exact run result
+   and merge commit. A stale description from an earlier partial batch is not a
+   complete PR description.
 4. Only after the pull request is merged may the other agent bring in the
    change. At its next coding batch, that agent must fetch and merge the latest
    `origin/develop` into its own clean agent branch under the startup procedure.

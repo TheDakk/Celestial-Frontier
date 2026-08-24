@@ -219,7 +219,9 @@ budget `208af955…` and its evidence are historical. Clean repair `a95889d…` 
 candidates and the paired legacy baseline; activation `d21ba26…` selects active budget `faa160b3…`
 with unchanged numeric ceilings and the retained 14-phone/13-desktop breach inventory. Exact-budget
 run `20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
-`d21ba26…` (raw/gzip `42753d5e…` / `a2ff5b00…`). This is local evidence, not a new hosted green.
+`d21ba26…` (raw/gzip `42753d5e…` / `a2ff5b00…`). The repaired exact head then passed hosted
+no-retry run `32681394532` and merged normally in PR #34 as `7a9f4c1…`. This remains integration
+evidence only, not release authority.
 Executable path and user agent remain recorded provenance, not cross-host match fields.
 
 Ubuntu provisions `/usr/bin/microsoft-edge-stable` only for the ordinary Compendium job and
