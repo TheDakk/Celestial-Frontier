@@ -59,6 +59,14 @@ export interface ActivePlayPersistenceOwner {
   commit(input: ActivePlayCommit): Promise<ActivePlayCommitOutcome>;
 }
 
+/** One validated replacement for the namespaced F4 authority. Arc outcome
+ * writers use the same constructor as the active-play-only checkpoint path,
+ * so clock and RNG state cannot acquire two subtly different codecs. */
+export interface PreparedF4AuthorityUpdate {
+  readonly authority: F4AuthorityV1;
+  readonly extensions: V5Extensions;
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
@@ -128,27 +136,47 @@ export function readF4Authority(extensions: V5Extensions): F4AuthorityReadOutcom
   }
 }
 
+/** Replace only the F4 namespace while preserving every unrelated v5
+ * extension. Future/corrupt authority is refusal-only and active play never
+ * moves backwards. The returned authority and extension carrier are detached
+ * from the caller's SessionRNG state. */
+export function prepareF4AuthorityUpdate(
+  extensions: V5Extensions,
+  snapshot: Pick<ActivePlaySnapshot, 'activePlayMs'>,
+  sessionRng: SessionRNGState,
+): PreparedF4AuthorityUpdate {
+  const authority = checkedAuthority(snapshot.activePlayMs, sessionRng);
+  const existing = readF4Authority(extensions);
+  if (existing.kind === 'future-version') throw new Error('cannot overwrite future F4 authority');
+  if (existing.kind === 'corrupt') throw new Error('cannot overwrite corrupt F4 authority');
+  if (existing.kind === 'loaded' && authority.activePlayMs < existing.authority.activePlayMs) {
+    throw new RangeError('activePlayMs cannot move backwards');
+  }
+  return Object.freeze({
+    authority,
+    extensions: Object.freeze({
+      ...extensions,
+      player: Object.freeze({
+        ...(extensions.player ?? {}),
+        [F4_AUTHORITY_NAMESPACE]: carrierFor(authority),
+      }),
+    }),
+  });
+}
+
 export function createActivePlayPersistenceOwner(
   repository: Pick<RevisionedRepository, 'mutate'>,
   registry: ContentRegistry,
 ): ActivePlayPersistenceOwner {
   return Object.freeze({
     async commit(input: ActivePlayCommit): Promise<ActivePlayCommitOutcome> {
-      const authority = checkedAuthority(input.snapshot.activePlayMs, input.sessionRng);
-      const existing = readF4Authority(input.writable.extensions);
-      if (existing.kind === 'future-version') throw new Error('cannot overwrite future F4 authority');
-      if (existing.kind === 'corrupt') throw new Error('cannot overwrite corrupt F4 authority');
-      if (existing.kind === 'loaded' && authority.activePlayMs < existing.authority.activePlayMs) {
-        throw new RangeError('activePlayMs cannot move backwards');
-      }
+      const update = prepareF4AuthorityUpdate(
+        input.writable.extensions,
+        input.snapshot,
+        input.sessionRng,
+      );
+      const { authority, extensions } = update;
       const fence = tabLeaseFence(input.grant);
-      const extensions: V5Extensions = Object.freeze({
-        ...input.writable.extensions,
-        player: Object.freeze({
-          ...(input.writable.extensions.player ?? {}),
-          [F4_AUTHORITY_NAMESPACE]: carrierFor(authority),
-        }),
-      });
       const saved = prepareV5SaveWrite({ state: input.writable.state, extensions }, registry, input.now);
       const outcome = await repository.mutate({
         expectedRevision: input.expectedRevision,

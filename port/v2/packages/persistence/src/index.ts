@@ -19,5 +19,6 @@ export * from './revisioned.js';
 export * from './migration-v5.js';
 export * from './tab-lease.js';
 export * from './active-play.js';
+export * from './outcome-transaction.js';
 export * from './import-v2.js';
 export * from './export-v2.js';
