@@ -1,5 +1,5 @@
 { "name": "@cf/audio", "private": true, "version": "0.0.0", "type": "module",
-  "description": "Shipped navigation/survey stings plus resolver-v1 creature-audio identity, route, and sound-output data contracts. Owned-creature projection, authored playback/content, and listening proof remain open.",
+  "description": "Shipped navigation/survey stings plus injected Arc 7 identity, taxonomy, event, mixer/lifecycle/lab, and empty-rights foundations. App migration, authored playback/content, and listening proof remain open.",
   "exports": { ".": "./src/index.ts" },
   "dependencies": {
     "@cf/domain-descriptors": "*"
