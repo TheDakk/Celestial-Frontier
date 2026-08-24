@@ -110,6 +110,7 @@ import {
   type SaveStateV2, type ContentRegistry, type StoredPayloadStatus,
   type ImportRouteIngressV2, type ImportTrainingSnapshotIngressV2,
 } from '@cf/persistence';
+import { runF3PersistenceBrowserProbe } from './f3-persistence-browser-probe.js';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
 installBatchTextureArrayUidCompaction(BatchTextureArray);
@@ -466,6 +467,24 @@ const repo = createSaveRepository(createIndexedDBBackend('cf-v2-slice'));
    held only {nav,view} JSON migrates for free: importSaveV2 reads its `view`
    and defaults everything else. */
 let save: SaveStateV2;
+let f3PersistenceBrowserProbeInFlight = false;
+async function runF3PersistenceBrowserEvidence() {
+  if (f3PersistenceBrowserProbeInFlight) {
+    throw new Error('F3 persistence browser probe is already running');
+  }
+  f3PersistenceBrowserProbeInFlight = true;
+  try {
+    const now = Date.now();
+    return await runF3PersistenceBrowserProbe({
+      dbPrefix: `cf-f3-probe-${crypto.randomUUID()}`,
+      legacyV4Raw: exportSaveV2(save, now),
+      registry: REGISTRY,
+      now,
+    });
+  } finally {
+    f3PersistenceBrowserProbeInFlight = false;
+  }
+}
 /* Import keeps raw route evidence outside the v4 save. Proven navigation is
    likewise runtime-only: exporter spreads no brands, keys, ordinals, or
    source cells into player bytes. */
@@ -4902,6 +4921,7 @@ async function loadSave(): Promise<void> {
       },
       __smokePersistAfterDebounce: () => { persistSoon(); return true; },
       __smokePersistNow: persistView,
+      __f3PersistenceBrowserProbe: runF3PersistenceBrowserEvidence,
       __smokeAbortNextRenderBeforeReceipt: () => {
         if (smokeAbortNextRenderBeforeReceipt) return false;
         smokeAbortNextRenderBeforeReceipt = true;
