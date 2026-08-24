@@ -7,7 +7,7 @@ import { battleStats } from '@cf/domain-combatcore';
 import { describeSpecies } from '@cf/domain-genome';
 import {
   exportSaveV2, importSaveV2, isLegacySliceEnvelope, isPlausibleSaveEnvelope,
-  sanitizeImportedGenomeV2,
+  isKnownFrontierEndingId, sanitizeImportedGenomeV2,
   type ContentRegistry, type SaveStateV2,
 } from '@cf/persistence';
 
@@ -361,6 +361,43 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
     expect(fromRecords.state.primeFill).toEqual({
       0: { title: 'Numeric signature', sub: 'record only', tier: 7, hex: '#abc', where: null },
     });
+  });
+  it('bounds opaque legacy anomaly/ending tokens and requires a separate known-ending resolver', () => {
+    for (const [input, expected] of [
+      [0, 0], [5_555_555, 5_555_555], ['42', '42'], ['k1', 'k1'],
+      ['', null], [-1, null], [1.5, null], [Number.MAX_VALUE, null], ['bad key', null],
+      [true, null], [{ value: 42 }, null],
+    ] as const) {
+      const imported = importSaveV2(JSON.stringify({
+        epoch: 0, codex: [], land: [], anomKey: input,
+      }), REGISTRY, NOW);
+      expect(imported.ok, `anomaly ${JSON.stringify(input)}`).toBe(true);
+      if (!imported.ok) continue;
+      expect(imported.state.lastAnomKey).toBe(expected);
+      const reloaded = importSaveV2(exportSaveV2(imported.state, NOW), REGISTRY, NOW);
+      expect(reloaded.ok).toBe(true);
+      if (reloaded.ok) expect(reloaded.state.lastAnomKey).toBe(expected);
+    }
+
+    for (const ending of ['conquer', 'protect', 'terraform', 'preserve', 'balance', 'dawn'] as const) {
+      const imported = importSaveV2(JSON.stringify({
+        epoch: 0, codex: [], land: [], frontier: 1, ending,
+      }), REGISTRY, NOW);
+      expect(imported.ok).toBe(true);
+      if (!imported.ok) continue;
+      expect(imported.state.frontierEnding).toBe(ending);
+      expect(isKnownFrontierEndingId(imported.state.frontierEnding)).toBe(ending !== 'dawn');
+      const reloaded = importSaveV2(exportSaveV2(imported.state, NOW), REGISTRY, NOW);
+      expect(reloaded.ok).toBe(true);
+      if (reloaded.ok) expect(reloaded.state.frontierEnding).toBe(ending);
+    }
+    for (const ending of ['', 'UPPER', 'bad ending', 'x'.repeat(33), 1, true, { id: 'balance' }]) {
+      const imported = importSaveV2(JSON.stringify({
+        epoch: 0, codex: [], land: [], frontier: 1, ending,
+      }), REGISTRY, NOW);
+      expect(imported.ok).toBe(true);
+      if (imported.ok) expect(imported.state.frontierEnding).toBeNull();
+    }
   });
   it('valid unwrapped size is an import/export fixed point across honest and large values', () => {
     const template = structuredClone(
