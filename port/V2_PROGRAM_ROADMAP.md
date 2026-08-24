@@ -49,11 +49,26 @@
 >
 > The v2 gate drives Universe, Galaxy, Galaxy fine, Sol, Earth Surface, the deterministic 1,500-row
 > Compendium, and the real Shipyard on phone and desktop before settling back at Universe. PR #33
-> remains draft; hosted terminal-green evidence, review acceptance, integration, the Arc 1A six-image HUMAN review,
-> Arc 1C phone/desktop ship-readability judgment, whole-Gate closure, release, and publication remain
-> open.
+> passed terminal-green battery run `32646110946` and merged as
+> `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`. The Arc 1A six-image HUMAN review, Arc 1C
+> phone/desktop ship-readability judgment, whole-Gate closure, release, and publication remain open.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
+>
+> PR #34 runs `32665404776` and `32677088518` subsequently exposed two Compendium native-input
+> ruler boundaries. The second proves the first activation/receipt repair worked, but after
+> Close/reopen a one-shot owned row point moved across a deferred ResizeObserver/render turn. A
+> passive wait issued 112 observations and ended on a clipped 51 ms command with a timely root
+> heartbeat. Exact report raw/gzip hashes are `544015e9…` / `cc5ed778…`. Collector `6d681d19…`
+> now repositions only through native scroll and requires the same exact owned point before and
+> after a double-render plus thumbnail-settlement boundary before its one click. Measurement is
+> `6a961df8…`; former budget `208af955…`, samples, baseline and certificate are historical. Clean
+> repair `a95889d…` produced three 78/78 candidates and the paired legacy baseline; activation
+> `d21ba26…` selects active budget `faa160b3…` without numeric-ceiling widening and retains the
+> 14-phone/13-desktop breach inventory. Exact-budget run
+> `20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
+> `d21ba26…` (raw/gzip `42753d5e…` / `a2ff5b00…`). A new hosted attempt still requires explicit
+> changed-head authorization.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 
@@ -899,8 +914,9 @@ not complete audio lifecycle. Arc 7 owns that work.
 
 **Goal:** make capability visually legible without allowing art to become a second gameplay owner.
 
-**Current state (2026-08-23): automated implementation locally complete; HUMAN readability,
-review, hosted terminal-green evidence, and integration remain open.** Product/ruler source
+**Current state (2026-08-23): automated implementation and hosted integration complete; HUMAN
+readability remains open.** PR #33 merged as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after
+terminal-green battery run `32646110946`. Product/ruler source
 `a4de5007ffc9131b8bc952a0a4cb469d9139039e` owns the product and its negative-controlled browser
 route. Source `59530da3bf40965adf9c54f169b310e11ccdd0f8`, budget SHA-256
 `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`, and local run

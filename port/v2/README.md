@@ -2,8 +2,9 @@
 
 ## Current port status — 2026-08-23
 
-> **Arc 1 automated implementation is locally complete; review, hosted CI, integration, and HUMAN
-> judgment remain open.** Arc 1A's maximum Compendium is integrated in `develop` through PR #32,
+> **Arc 1 automated implementation and hosted integration are complete; HUMAN judgment remains
+> open.** PR #33 merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`
+> after terminal-green battery run `32646110946`. Arc 1A's maximum Compendium is integrated,
 > while its six phone/desktop review images still require HUMAN judgment. Arc 1B's exact
 > `79c605f…` product/ruler and `e244c9e…` scene-memory-v1 activation/certificate remain the
 > historical 40/40 pre-Shipyard authority.
@@ -39,9 +40,25 @@
 > exact Edge `.101` with same-package `--reinstall`, runs the browser-free controls, performs one
 > no-retry certification, always verifies its named terminal report, and retains
 > `v2-scene-memory-evidence`. Only then may the separately sealed exact-`.101` Compendium chain run;
-> Chrome gates remain later. The serial battery starts only from one owner-label authorization. At
-> this handoff Arc 1 has **zero new authorized hosted attempts**; local green does not authorize an
-> approval label, hosted run, Ready transition, merge, preview publication, release, or deployment.
+> Chrome gates remain later. The serial battery starts only from one owner-label authorization. The
+> terminal-green PR #33 run is consumed and merged; no subsequent hosted attempt is authorized by
+> this handoff. Local evidence still does not authorize a release, preview publication, or deployment.
+>
+> **PR #34 Compendium interaction-ruler repair (2026-08-23; locally certified):** runs
+> `32665404776` and `32677088518` did not expose a memory leak. The second run proves the first
+> full-containment/hit-owner repair activated detail once, but after Close/reopen its one-shot row
+> point became invalid across a deferred ResizeObserver/render turn. The passive wait issued 112
+> observations and ended on a clipped 51 ms command with a timely root heartbeat. Exact report
+> raw/gzip SHA-256 are `544015e9…` / `cc5ed778…`. Collector `6d681d19…` now repositions only through
+> the native-scroll path, consumes a double-render boundary, re-proves thumbnail settlement, and
+> requires the same owned inset point before and after it. It then sends one press/release and checks
+> the immediate detail receipt; there is no click retry or timeout widening. Measurement authority
+> is now `6a961df8…`; former budget `208af955…`, samples, baseline and certificate are historical.
+> Clean repair `a95889d…` produced three 78/78 candidates and a paired legacy baseline; activation
+> commit `d21ba26…` selects active budget `faa160b3…` with unchanged numeric ceilings and the same
+> 14-phone/13-desktop baseline discrimination. Exact-budget run
+> `20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
+> `d21ba26…`; raw/gzip hashes are `42753d5e…` / `a2ff5b00…`. No new hosted attempt is authorized.
 >
 > PR #33 attempt 4, run `32618995487`, tested the exact authorized head/base once and is terminal-red,
 > consumed, and not retried. Its complete SceneMemory report passed 40/42: all memory, ownership,
@@ -58,8 +75,8 @@
 > render/GC/snapshot sequence. Clean collector `14626a7…` then completed three one-shot candidates
 > plus one paired legacy baseline; active budget SHA-256 `28b95867…` preserves the strict product
 > ceilings, and independent source `e8898bf…` passed 78/78 plus named verification. Evidence-bound
-> descendant `d359d8c…` passed the complete local battery. The consumed hosted run was not retried,
-> its label is absent, and PR #33 remains Draft and unmerged.
+> descendant `d359d8c…` passed the complete local battery. The consumed hosted run was not retried;
+> its label is absent. That historical pre-merge attempt does not alter the later terminal-green merge.
 >
 > **Arc 1A Compendium resource implementation (2026-08-21; product and serviced-turn
 > scheduler repair present; exact-9d local battery green; hosted run `32441023665`
