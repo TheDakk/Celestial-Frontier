@@ -12,11 +12,13 @@ import {
   type StellarSkimResult,
 } from '@cf/domain-opportunity';
 import {
+  applyV5ExtensionWrites,
   createMemoryBackend,
   createRevisionedRepository,
   importSaveV2,
   initializeFreshV5,
   prepareArc2LootLegacyMigration,
+  readArc2Loot,
   readF4Authority,
   readArc2EngineeringLoadout,
   readArc3Engineering,
@@ -38,13 +40,19 @@ import {
 } from '@cf/scene';
 import {
   buildArc3EngineeringAddressInventory,
+  deriveArc3FixedFabricationAction,
   deriveArc3MineAction,
+  deriveArc3ResearchAction,
   deriveArc3SkimAction,
   prepareArc3AppBootstrap,
+  publishArc3FixedFabricationFields,
   publishArc3LegacyCompatibilityFields,
   publishArc3MiningFields,
+  publishArc3ResearchFields,
   stageArc3BootstrapLegacyProjection,
   verifyArc3CommittedAction,
+  verifyArc3CommittedFixedFabricationAction,
+  verifyArc3CommittedResearchAction,
   type Arc3AppDerivation,
   type Arc3EngineeringAddressSources,
 } from '../apps/game/src/arc3-engineering-actions.js';
@@ -149,6 +157,7 @@ function productExtensions(input: Readonly<{
   save: SaveStateV2;
   sources: Arc3EngineeringAddressSources;
   items?: readonly (readonly [string, number])[];
+  capacity?: number;
 }>): V5Extensions {
   const loot = prepareArc2LootLegacyMigration({
     extensions: {},
@@ -157,7 +166,7 @@ function productExtensions(input: Readonly<{
       equip: {},
       equipAff: {},
     },
-    capacity: 32,
+    capacity: input.capacity ?? 32,
   });
   if (loot.kind !== 'prepared') throw new Error(`Arc 2 fixture was ${loot.kind}`);
   const engineering = prepareArc3AppBootstrap({
@@ -169,6 +178,21 @@ function productExtensions(input: Readonly<{
     throw new Error(`Arc 3 fixture was ${engineering.kind}:${engineering.kind === 'protected' ? engineering.detail : ''}`);
   }
   return engineering.extensions;
+}
+
+function withEngineeringState(
+  extensions: V5Extensions,
+  state: ReturnType<typeof engineeringStateForWorlds>,
+): V5Extensions {
+  const candidate = structuredClone(extensions) as unknown as
+    Record<string, Record<string, { version: number; json: string }>>;
+  const carrier = candidate.player?.['arc3.engineering'];
+  if (carrier === undefined) throw new Error('Arc 3 fixture carrier was absent');
+  candidate.player!['arc3.engineering'] = {
+    ...carrier,
+    json: encodeEngineeringState(state),
+  };
+  return candidate as V5Extensions;
 }
 
 function controlledClock(start = 0) {
@@ -233,6 +257,58 @@ function runtimeMine(
     derive: ({ draft, extensions, activePlayMs, receiptOrdinal }) => {
       const outcome = deriveArc3MineAction({
         draft, extensions, currentSurface, activePlayMs, receiptOrdinal, codecNow,
+      });
+      if (outcome.kind !== 'ready') throw new Error(outcome.detail);
+      onPlan(outcome.derivation);
+      return {
+        state: outcome.derivation.state,
+        extensionWrites: outcome.derivation.extensionWrites,
+        witness: outcome.derivation.witness,
+      };
+    },
+  });
+}
+
+function runtimeResearch(
+  runtime: ReturnType<typeof createF4RuntimeAuthority>,
+  save: SaveStateV2,
+  researchId: string,
+  onPlan: (plan: Arc3AppDerivation) => void = () => undefined,
+) {
+  return runtime.commitAction({
+    state: save,
+    operation: 'arc3.purchase-research',
+    receiptKind: 'arc3-purchase-research',
+    codecNow: NOW,
+    derive: ({ draft, extensions, receiptOrdinal }) => {
+      const outcome = deriveArc3ResearchAction({
+        draft, extensions, researchId, receiptOrdinal, codecNow: NOW,
+      });
+      if (outcome.kind !== 'ready') throw new Error(outcome.detail);
+      onPlan(outcome.derivation);
+      return {
+        state: outcome.derivation.state,
+        extensionWrites: outcome.derivation.extensionWrites,
+        witness: outcome.derivation.witness,
+      };
+    },
+  });
+}
+
+function runtimeFixedFabrication(
+  runtime: ReturnType<typeof createF4RuntimeAuthority>,
+  save: SaveStateV2,
+  baseId: string,
+  onPlan: (plan: Arc3AppDerivation) => void = () => undefined,
+) {
+  return runtime.commitAction({
+    state: save,
+    operation: 'arc3.fabricate-fixed',
+    receiptKind: 'arc3-fabricate-fixed',
+    codecNow: NOW,
+    derive: ({ draft, extensions, activePlayMs, receiptOrdinal }) => {
+      const outcome = deriveArc3FixedFabricationAction({
+        draft, extensions, baseId, activePlayMs, receiptOrdinal, codecNow: NOW,
       });
       if (outcome.kind !== 'ready') throw new Error(outcome.detail);
       onPlan(outcome.derivation);
@@ -430,6 +506,7 @@ describe('Arc 3 app bootstrap boundary', () => {
     const firstSave = freshSave();
     firstSave.mineX = [[134, 1]];
     firstSave.mined = [[134, 1]];
+    firstSave.items = [['autoext', 1]];
     const secondSave = structuredClone(firstSave);
     secondSave.mined = [[134, 4_102_444_800_000]];
     const firstExtensions = productExtensions({
@@ -470,6 +547,456 @@ describe('Arc 3 app bootstrap boundary', () => {
 });
 
 describe('Arc 3 app action transaction seam', () => {
+  it('banks one mined action tick in the same candidate even when Auto-Extractor grants many loads', () => {
+    const save = freshSave();
+    save.items = [['autoext', 1]];
+    const mars = surface(world(MARS));
+    const extensions = productExtensions({ save, sources: sources(mars), items: save.items });
+    const first = deriveArc3MineAction({
+      draft: structuredClone(save), extensions, currentSurface: mars,
+      activePlayMs: 100, receiptOrdinal: 0, codecNow: NOW,
+    });
+    expect(first.kind).toBe('ready');
+    if (first.kind !== 'ready') return;
+    expect(first.derivation.state.ascProg).toMatchObject({ 'c1-mine': 1, 'c3-mine': 1 });
+    const applied = applyV5ExtensionWrites(extensions, first.derivation.extensionWrites);
+    const second = deriveArc3MineAction({
+      draft: structuredClone(first.derivation.state), extensions: applied.extensions,
+      currentSurface: mars, activePlayMs: 1_800_100, receiptOrdinal: 1, codecNow: NOW + 1,
+    });
+    expect(second.kind).toBe('ready');
+    if (second.kind !== 'ready') return;
+    expect((second.derivation.result as MiningResult).loads).toBeGreaterThan(1);
+    expect(second.derivation.state.ascProg).toMatchObject({ 'c1-mine': 2, 'c3-mine': 2 });
+  });
+
+  it('commits research once with exact exceptional-first economy, no Charter credit, and refusal byte stability', async () => {
+    const save = freshSave();
+    save.cargo = [['Fe', 8], ['Si', 5]];
+    save.cgx = [['Fe', 2], ['Si', 1]];
+    save.essence = 20;
+    save.ascProg = { 'c1-part': 3 };
+    const mars = surface(world(MARS));
+    const extensions = productExtensions({ save, sources: sources(mars) });
+    const { backend, runtime } = await seededRuntime({ save, extensions, seed: 0xA3C3A11 });
+    const beforeRng = runtime.sessionRng;
+    const holder: { value: Arc3AppDerivation | null } = { value: null };
+    const committed = await runtimeResearch(runtime, save, 'scan1', (plan) => { holder.value = plan; });
+    expect(committed.kind).toBe('committed');
+    const plan = holder.value;
+    if (committed.kind !== 'committed' || plan === null) return;
+    expect(plan.state).toMatchObject({
+      cargo: [['Fe', 2], ['Si', 1]], cgx: [['Fe', 0], ['Si', 0]], essence: 0,
+      techOwned: ['scan1'], ascProg: { 'c1-part': 3 },
+    });
+    expect(runtime.sessionRng).toEqual({
+      seed: beforeRng.seed, ordinal: 1, draws: beforeRng.draws,
+    });
+    expect(await backend.keys('receipts')).toEqual(['receipt:0']);
+    const reloaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (reloaded.kind !== 'loaded') throw new Error(`reload was ${reloaded.kind}`);
+    expect(verifyArc3CommittedResearchAction({
+      extensions: reloaded.extensions,
+      committed: reloaded.state,
+      expectedOwnedState: plan.state,
+      expectedState: plan.nextEngineeringState,
+      codecNow: NOW,
+      minedTimestampIntent: plan.minedTimestampIntent,
+    }).kind).toBe('verified');
+    const ownedMismatch = structuredClone(reloaded.state);
+    ownedMismatch.cargo = [['Fe', 3], ['Si', 1]];
+    expect(verifyArc3CommittedResearchAction({
+      extensions: reloaded.extensions,
+      committed: ownedMismatch,
+      expectedOwnedState: plan.state,
+      expectedState: plan.nextEngineeringState,
+      codecNow: NOW,
+      minedTimestampIntent: plan.minedTimestampIntent,
+    })).toMatchObject({ kind: 'mismatch', detail: 'research-owned-cargo-mismatch' });
+
+    const live = freshSave();
+    const liveIdentity = live;
+    const atlasIdentity = live.logMap;
+    publishArc3ResearchFields(live, reloaded.state);
+    expect(live).toBe(liveIdentity);
+    expect(live.logMap).toBe(atlasIdentity);
+    expect(live).toMatchObject({
+      cargo: [['Fe', 2], ['Si', 1]], cgx: [['Fe', 0], ['Si', 0]],
+      essence: 0, techOwned: ['scan1'],
+    });
+    const beforeRefusal = JSON.stringify(reloaded);
+    const replay = await runtimeResearch(runtime, committed.state, 'scan1');
+    expect(replay).toMatchObject({ kind: 'rejected', stage: 'derive' });
+    expect(await backend.keys('receipts')).toEqual(['receipt:0']);
+    const afterRefusal = await readSaveV5(backend, REGISTRY, NOW);
+    expect(JSON.stringify(afterRefusal)).toBe(beforeRefusal);
+    expect(plan.state.ascProg).toEqual({ 'c1-part': 3 });
+  });
+
+  it('lands one dual-carrier fixed craft under one CAS/receipt and verifies every owned projection', async () => {
+    const save = freshSave();
+    save.cargo = [['Fe', 10]];
+    save.cgx = [['Fe', 2]];
+    const mars = surface(world(MARS));
+    const extensions = productExtensions({ save, sources: sources(mars) });
+    const relabelControl = deriveArc3FixedFabricationAction({
+      draft: structuredClone(save), extensions, baseId: 'plate',
+      /* Hostile presentation metadata is deliberately outside the authority
+         type and ignored; the canonical catalogue still owns `part`. */
+      category: 'gear',
+      activePlayMs: 0, receiptOrdinal: 0, codecNow: NOW,
+    } as Parameters<typeof deriveArc3FixedFabricationAction>[0] & { category: 'gear' });
+    expect(relabelControl.kind).toBe('ready');
+    if (relabelControl.kind === 'ready') {
+      expect(relabelControl.derivation.state.ascProg).toMatchObject({ 'c1-part': 1 });
+      expect(relabelControl.derivation.state.ascProg['c3-gear']).toBeUndefined();
+    }
+    const { backend, runtime } = await seededRuntime({ save, extensions, seed: 0xA3C3FAB });
+    const beforeRng = runtime.sessionRng;
+    const holder: { value: Arc3AppDerivation | null } = { value: null };
+    const parentRevision = runtime.revision;
+    const [winner, stale] = await Promise.all([
+      runtimeFixedFabrication(runtime, save, 'plate', (plan) => { holder.value = plan; }),
+      runtimeFixedFabrication(runtime, save, 'plate'),
+    ]);
+    expect(winner.kind).toBe('committed');
+    expect(stale).toMatchObject({ kind: 'stale', expectedRevision: parentRevision });
+    const plan = holder.value;
+    if (winner.kind !== 'committed' || plan === null || plan.nextArc2State === null) return;
+    expect(plan.extensionWrites).toHaveLength(2);
+    expect(plan.state).toMatchObject({
+      cargo: [['Fe', 6]], cgx: [['Fe', 0]], items: [['plate', 1]],
+      ascProg: { 'c1-part': 1 },
+    });
+    expect(plan.state.stats.crafts).toBe(1);
+    expect(runtime.sessionRng).toEqual({
+      seed: beforeRng.seed, ordinal: 1, draws: beforeRng.draws,
+    });
+    expect(await backend.keys('receipts')).toEqual(['receipt:0']);
+    const reloaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (reloaded.kind !== 'loaded') throw new Error(`reload was ${reloaded.kind}`);
+    expect(readArc2Loot(reloaded.extensions)).toMatchObject({
+      kind: 'loaded', state: { kind: 'inventory', stackableCounts: [{ baseId: 'plate', count: 1 }] },
+    });
+    const verified = verifyArc3CommittedFixedFabricationAction({
+      extensions: reloaded.extensions,
+      committed: reloaded.state,
+      expectedOwnedState: plan.state,
+      expectedEngineeringState: plan.nextEngineeringState,
+      expectedArc2State: plan.nextArc2State,
+      codecNow: NOW,
+      minedTimestampIntent: plan.minedTimestampIntent,
+    });
+    expect(verified.kind).toBe('verified');
+    const cargoMismatch = structuredClone(reloaded.state);
+    cargoMismatch.cargo = [['Fe', 7]];
+    expect(verifyArc3CommittedFixedFabricationAction({
+      extensions: reloaded.extensions, committed: cargoMismatch,
+      expectedOwnedState: plan.state, expectedEngineeringState: plan.nextEngineeringState,
+      expectedArc2State: plan.nextArc2State, codecNow: NOW,
+      minedTimestampIntent: plan.minedTimestampIntent,
+    })).toMatchObject({ kind: 'mismatch', detail: 'fixed-owned-cargo-mismatch' });
+    const mirrorMismatch = structuredClone(reloaded.state);
+    mirrorMismatch.items = [];
+    expect(verifyArc3CommittedFixedFabricationAction({
+      extensions: reloaded.extensions, committed: mirrorMismatch,
+      expectedOwnedState: plan.state, expectedEngineeringState: plan.nextEngineeringState,
+      expectedArc2State: plan.nextArc2State, codecNow: NOW,
+      minedTimestampIntent: plan.minedTimestampIntent,
+    })).toMatchObject({ kind: 'mismatch', detail: 'arc2-carrier-legacy-projection-mismatch' });
+
+    const live = freshSave();
+    const liveIdentity = live;
+    const atlasIdentity = live.logMap;
+    publishArc3FixedFabricationFields(live, reloaded.state);
+    expect(live).toBe(liveIdentity);
+    expect(live.logMap).toBe(atlasIdentity);
+    expect(live).toMatchObject({ items: [['plate', 1]], ascProg: { 'c1-part': 1 } });
+  });
+
+  it('anchors a newly fabricated Auto-Extractor to active play and refreshes its v4 timestamps', async () => {
+    const save = freshSave();
+    save.mineX = [[134, 1]];
+    save.mined = [[134, 444]];
+    save.items = [['cell', 1], ['navcore', 1], ['servo', 2]];
+    save.essence = 40;
+    const mars = surface(world(MARS));
+    const extensions = productExtensions({ save, sources: sources(mars), items: save.items });
+    const { backend, runtime, time } = await seededRuntime({ save, extensions, seed: 0xA3C3A070 });
+    time.advance(12_345);
+    const holder: { value: Arc3AppDerivation | null } = { value: null };
+    const committed = await runtimeFixedFabrication(
+      runtime,
+      save,
+      'autoext',
+      (plan) => { holder.value = plan; },
+    );
+    expect(committed.kind).toBe('committed');
+    const plan = holder.value;
+    if (committed.kind !== 'committed' || plan === null || plan.nextArc2State === null) return;
+    expect(plan.minedTimestampIntent).toEqual({ kind: 'refresh-all' });
+    expect(plan.result).toMatchObject({
+      baseId: 'autoext', arc2: { autoExtractorReanchoredWorlds: 1 },
+    });
+    expect(plan.arc2Settlement).toMatchObject({ outputLocation: 'system' });
+    expect(plan.nextEngineeringState.worlds[0]!.autoExtractorCursor).toEqual({
+      schema: 'cf-v2-recurring-accrual-cursor/v1', collectedThroughActivePlayMs: 12_345,
+    });
+    expect(plan.state).toMatchObject({
+      mineX: [[134, 1]], mined: [[134, NOW]], items: [['autoext', 1]], essence: 0,
+    });
+    expect(plan.state.stats.crafts).toBe(1);
+    expect(await backend.keys('receipts')).toEqual(['receipt:0']);
+
+    const reloaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (reloaded.kind !== 'loaded') throw new Error(`reload was ${reloaded.kind}`);
+    const engineering = readArc3Engineering(reloaded.extensions, SCENE_ENGINEERING_ADDRESS_RESOLVER);
+    if (engineering.kind !== 'loaded') throw new Error(`carrier was ${engineering.kind}`);
+    expect(engineering.state.worlds[0]!.autoExtractorCursor).toEqual({
+      schema: 'cf-v2-recurring-accrual-cursor/v1', collectedThroughActivePlayMs: 12_345,
+    });
+    expect(reloaded.state.mined).toEqual([[134, NOW]]);
+    expect(verifyArc3CommittedFixedFabricationAction({
+      extensions: reloaded.extensions,
+      committed: reloaded.state,
+      expectedOwnedState: plan.state,
+      expectedEngineeringState: plan.nextEngineeringState,
+      expectedArc2State: plan.nextArc2State,
+      codecNow: NOW,
+      minedTimestampIntent: plan.minedTimestampIntent,
+    }).kind).toBe('verified');
+  });
+
+  it('refresh-all Auto-Extractor fabrication preserves ambiguous v4 collision rows', () => {
+    const first = world(COLLISION_WORLD_A);
+    const second = world(COLLISION_WORLD_B);
+    const save = freshSave();
+    save.mineX = [[2525295284, 41]];
+    save.mined = [[2525295284, 444]];
+    save.items = [['cell', 1], ['navcore', 1], ['servo', 2]];
+    save.essence = 40;
+    const carrierSeed = structuredClone(save);
+    carrierSeed.mineX = [];
+    carrierSeed.mined = [];
+    const baseExtensions = productExtensions({
+      save: carrierSeed, sources: sources(surface(world(MARS))), items: carrierSeed.items,
+    });
+    const extensions = withEngineeringState(baseExtensions, engineeringStateForWorlds([
+      { address: first, count: 3 },
+      { address: second, count: 88 },
+    ]));
+    const outcome = deriveArc3FixedFabricationAction({
+      draft: save, extensions, baseId: 'autoext',
+      activePlayMs: 91_337, receiptOrdinal: 4, codecNow: NOW,
+    });
+    expect(outcome.kind).toBe('ready');
+    if (outcome.kind !== 'ready') return;
+    expect(outcome.derivation.minedTimestampIntent).toEqual({ kind: 'refresh-all' });
+    expect(outcome.derivation.result).toMatchObject({
+      baseId: 'autoext', arc2: { autoExtractorReanchoredWorlds: 2 },
+    });
+    expect(outcome.derivation.nextEngineeringState.worlds).toMatchObject([
+      { autoExtractorCursor: {
+        schema: 'cf-v2-recurring-accrual-cursor/v1', collectedThroughActivePlayMs: 91_337,
+      } },
+      { autoExtractorCursor: {
+        schema: 'cf-v2-recurring-accrual-cursor/v1', collectedThroughActivePlayMs: 91_337,
+      } },
+    ]);
+    expect(outcome.derivation.state.mineX).toEqual([[2525295284, 41]]);
+    expect(outcome.derivation.state.mined).toEqual([[2525295284, 444]]);
+    expect(outcome.derivation.projection.diagnostics).toMatchObject([{
+      disposition: 'collision-held', carriers: { mineX: 'held', mined: 'held' },
+    }]);
+  });
+
+  it('mirrors pending gear, banks it as non-relic gear, and fails closed on Signature/protected carriers', () => {
+    const mars = surface(world(MARS));
+    const pendingSave = freshSave();
+    pendingSave.cargo = [['Ni', 2], ['C', 1]];
+    pendingSave.items = [['fieldsuit', 1]];
+    const pendingExtensions = productExtensions({
+      save: pendingSave, sources: sources(mars), items: pendingSave.items, capacity: 1,
+    });
+    const pendingDraft = structuredClone(pendingSave);
+    const pending = deriveArc3FixedFabricationAction({
+      draft: pendingDraft, extensions: pendingExtensions, baseId: 'meteor',
+      activePlayMs: 0, receiptOrdinal: 4, codecNow: NOW,
+    });
+    expect(pending.kind).toBe('ready');
+    if (pending.kind === 'ready') {
+      expect(pending.derivation.arc2Settlement).toMatchObject({ outputLocation: 'pending' });
+      expect(pending.derivation.state.items).toEqual([['fieldsuit', 1], ['meteor', 1]]);
+      expect(pending.derivation.state.equip).toEqual({});
+      expect(pending.derivation.state.ascProg).toMatchObject({ 'c3-gear': 1 });
+    }
+
+    const relicSave = freshSave();
+    relicSave.cargo = [['Fe', 8], ['W', 4], ['Nd', 1]];
+    relicSave.items = [['hullseg', 1]];
+    const relicExtensions = productExtensions({
+      save: relicSave, sources: sources(mars), items: relicSave.items,
+    });
+    const relicDraft = structuredClone(relicSave);
+    const relicBefore = JSON.stringify(relicDraft);
+    expect(deriveArc3FixedFabricationAction({
+      draft: relicDraft, extensions: relicExtensions, baseId: 'rl-stone',
+      activePlayMs: 0, receiptOrdinal: 0, codecNow: NOW,
+    })).toMatchObject({ kind: 'refused', detail: 'fabrication-signature-missing' });
+    expect(JSON.stringify(relicDraft)).toBe(relicBefore);
+
+    const signedRelicDraft = structuredClone(relicSave);
+    signedRelicDraft.primeFill.stone = {
+      title: 'Stone Signature', sub: 'verified fixture', tier: 0,
+      hex: '#c9a878', where: null,
+    };
+    const signedRelic = deriveArc3FixedFabricationAction({
+      draft: signedRelicDraft, extensions: relicExtensions, baseId: 'rl-stone',
+      activePlayMs: 0, receiptOrdinal: 0, codecNow: NOW,
+    });
+    expect(signedRelic.kind).toBe('ready');
+    if (signedRelic.kind === 'ready') {
+      expect(signedRelic.derivation.arc2Settlement).toMatchObject({
+        baseId: 'rl-stone', outputLocation: 'equipped',
+        preservedGates: { prerequisiteId: null, signatureId: 'stone' },
+      });
+      expect(signedRelic.derivation.state.items).toEqual([['rl-stone', 1]]);
+      expect(signedRelic.derivation.state.equip).toMatchObject({ suit: 'rl-stone' });
+      expect(signedRelic.derivation.state.primeFill.stone).toEqual(
+        signedRelicDraft.primeFill.stone,
+      );
+      expect(signedRelic.derivation.state.ascProg['c3-gear']).toBeUndefined();
+    }
+
+    const protectedCarriers = [
+      { segment: 'player', namespace: 'arc3.engineering', carrier: { version: 99, json: '{}' } },
+      { segment: 'player', namespace: 'arc3.engineering', carrier: { version: 1, json: '{}' } },
+      { segment: 'inventory', namespace: 'arc2.loot', carrier: { version: 99, json: '{}' } },
+      { segment: 'inventory', namespace: 'arc2.loot', carrier: { version: 1, json: '{}' } },
+    ] as const;
+    for (const fixture of protectedCarriers) {
+      const protectedExtensions = structuredClone(relicExtensions) as unknown as
+        Record<string, Record<string, { version: number; json: string }>>;
+      protectedExtensions[fixture.segment]![fixture.namespace] = fixture.carrier;
+      const draft = structuredClone(relicSave);
+      const before = JSON.stringify(draft);
+      expect(deriveArc3ResearchAction({
+        draft, extensions: protectedExtensions as V5Extensions,
+        researchId: 'scan1', receiptOrdinal: 0, codecNow: NOW,
+      })).toMatchObject({ kind: 'refused' });
+      expect(JSON.stringify(draft)).toBe(before);
+    }
+  });
+
+  it('refuses divergent Arc 2 legacy mirrors before skim, research, or fixed planning writes', () => {
+    const remnant = system(star(REMNANT_STAR));
+    const skimSave = freshSave();
+    skimSave.items = [['jumpdrive', 1]];
+    const skimExtensions = productExtensions({
+      save: skimSave, sources: sources(remnant), items: skimSave.items,
+    });
+    const skimDraft = structuredClone(skimSave);
+    skimDraft.items = [];
+    const skimDraftBefore = JSON.stringify(skimDraft);
+    const skimExtensionsBefore = JSON.stringify(skimExtensions);
+    expect(deriveArc3SkimAction({
+      draft: skimDraft, extensions: skimExtensions, currentSystem: remnant,
+      activePlayMs: 0, receiptOrdinal: 0, codecNow: NOW,
+    })).toEqual({ kind: 'refused', detail: 'arc2-loadout-legacy-mirror-mismatch' });
+    expect(JSON.stringify(skimDraft)).toBe(skimDraftBefore);
+    expect(JSON.stringify(skimExtensions)).toBe(skimExtensionsBefore);
+
+    const authoritySave = freshSave();
+    authoritySave.cargo = [['Fe', 8], ['Si', 5]];
+    authoritySave.cgx = [['Fe', 2], ['Si', 1]];
+    authoritySave.essence = 20;
+    const mars = surface(world(MARS));
+    const authorityExtensions = productExtensions({ save: authoritySave, sources: sources(mars) });
+    const researchDraft = structuredClone(authoritySave);
+    researchDraft.items = [['plate', 1]];
+    const researchDraftBefore = JSON.stringify(researchDraft);
+    const researchExtensionsBefore = JSON.stringify(authorityExtensions);
+    expect(deriveArc3ResearchAction({
+      draft: researchDraft, extensions: authorityExtensions,
+      researchId: 'scan1', receiptOrdinal: 0, codecNow: NOW,
+    })).toEqual({ kind: 'refused', detail: 'arc2-loadout-legacy-mirror-mismatch' });
+    expect(JSON.stringify(researchDraft)).toBe(researchDraftBefore);
+    expect(JSON.stringify(authorityExtensions)).toBe(researchExtensionsBefore);
+
+    const fixedDraft = structuredClone(authoritySave);
+    fixedDraft.items = [['plate', 1]];
+    const fixedDraftBefore = JSON.stringify(fixedDraft);
+    expect(deriveArc3FixedFabricationAction({
+      draft: fixedDraft, extensions: authorityExtensions, baseId: 'plate',
+      activePlayMs: 0, receiptOrdinal: 0, codecNow: NOW,
+    })).toEqual({ kind: 'refused', detail: 'arc2-loadout-legacy-mirror-mismatch' });
+    expect(JSON.stringify(fixedDraft)).toBe(fixedDraftBefore);
+    expect(JSON.stringify(authorityExtensions)).toBe(researchExtensionsBefore);
+  });
+
+  it('refuses divergent Arc 3 legacy mirrors before every action plan and preserves all bytes', () => {
+    const mars = surface(world(MARS));
+    const remnant = system(star(REMNANT_STAR));
+
+    const mineSave = freshSave();
+    const mineExtensions = productExtensions({ save: mineSave, sources: sources(mars) });
+    const mineDraft = structuredClone(mineSave);
+    mineDraft.mineX = [[134, 1]];
+    const mineBefore = JSON.stringify(mineDraft);
+    const mineExtensionsBefore = JSON.stringify(mineExtensions);
+    expect(deriveArc3MineAction({
+      draft: mineDraft, extensions: mineExtensions, currentSurface: mars,
+      activePlayMs: 0, receiptOrdinal: 0, codecNow: NOW,
+    })).toEqual({ kind: 'refused', detail: 'arc3-carrier-legacy-projection-mismatch' });
+    expect(JSON.stringify(mineDraft)).toBe(mineBefore);
+    expect(JSON.stringify(mineExtensions)).toBe(mineExtensionsBefore);
+
+    const skimSave = freshSave();
+    skimSave.items = [['jumpdrive', 1]];
+    const skimExtensions = productExtensions({
+      save: skimSave, sources: sources(remnant), items: skimSave.items,
+    });
+    const skimDraft = structuredClone(skimSave);
+    skimDraft.skimX = [[REMNANT_STAR.star.seed, 1]];
+    const skimBefore = JSON.stringify(skimDraft);
+    const skimExtensionsBefore = JSON.stringify(skimExtensions);
+    expect(deriveArc3SkimAction({
+      draft: skimDraft, extensions: skimExtensions, currentSystem: remnant,
+      activePlayMs: 0, receiptOrdinal: 0, codecNow: NOW,
+    })).toEqual({ kind: 'refused', detail: 'arc3-carrier-legacy-projection-mismatch' });
+    expect(JSON.stringify(skimDraft)).toBe(skimBefore);
+    expect(JSON.stringify(skimExtensions)).toBe(skimExtensionsBefore);
+
+    const researchSave = freshSave();
+    researchSave.cargo = [['Fe', 6], ['Si', 4]];
+    researchSave.essence = 20;
+    const researchExtensions = productExtensions({ save: researchSave, sources: sources(mars) });
+    const researchDraft = structuredClone(researchSave);
+    researchDraft.techOwned = ['scan1'];
+    const researchBefore = JSON.stringify(researchDraft);
+    const researchExtensionsBefore = JSON.stringify(researchExtensions);
+    expect(deriveArc3ResearchAction({
+      draft: researchDraft, extensions: researchExtensions,
+      researchId: 'scan1', receiptOrdinal: 0, codecNow: NOW,
+    })).toEqual({ kind: 'refused', detail: 'arc3-carrier-legacy-projection-mismatch' });
+    expect(JSON.stringify(researchDraft)).toBe(researchBefore);
+    expect(JSON.stringify(researchExtensions)).toBe(researchExtensionsBefore);
+
+    const fixedSave = freshSave();
+    fixedSave.cargo = [['Fe', 4]];
+    const fixedExtensions = productExtensions({ save: fixedSave, sources: sources(mars) });
+    const fixedDraft = structuredClone(fixedSave);
+    fixedDraft.mined = [[134, NOW - 1]];
+    const fixedBefore = JSON.stringify(fixedDraft);
+    const fixedExtensionsBefore = JSON.stringify(fixedExtensions);
+    expect(deriveArc3FixedFabricationAction({
+      draft: fixedDraft, extensions: fixedExtensions, baseId: 'plate',
+      activePlayMs: 0, receiptOrdinal: 0, codecNow: NOW,
+    })).toEqual({ kind: 'refused', detail: 'arc3-carrier-legacy-projection-mismatch' });
+    expect(JSON.stringify(fixedDraft)).toBe(fixedBefore);
+    expect(JSON.stringify(fixedExtensions)).toBe(fixedExtensionsBefore);
+  });
+
   it('commits one exact mine, reloads carrier/v4 parity, and preserves seed/draws with the exact receipt ordinal', async () => {
     const save = freshSave();
     const mars = surface(world(MARS));
@@ -541,6 +1068,7 @@ describe('Arc 3 app action transaction seam', () => {
     const save = freshSave();
     save.mineX = [[134, 1]];
     save.mined = [[134, 4_102_444_800_000]];
+    save.items = [['autoext', 1]];
     const mars = surface(world(MARS));
     const extensions = productExtensions({
       save, sources: sources(mars), items: [['autoext', 1]],
@@ -613,6 +1141,7 @@ describe('Arc 3 app action transaction seam', () => {
     const save = freshSave();
     save.hp = 5;
     save.cargo = [['Crn', 1_000_000]];
+    save.items = [['jumpdrive', 1]];
     const remnant = system(star(REMNANT_STAR));
     const extensions = productExtensions({
       save, sources: sources(remnant), items: [['jumpdrive', 1]],

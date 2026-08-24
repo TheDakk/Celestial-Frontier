@@ -1,0 +1,375 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { describe, expect, it, vi } from 'vitest';
+import {
+  createProductActionCoordinator,
+  createProductActionDiagnosticHold,
+} from '../apps/game/src/product-action-coordinator.js';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const mainSource = fs.readFileSync(path.join(here, '../apps/game/src/main.ts'), 'utf8');
+
+function sourceSection(source: string, startText: string, endText: string): string {
+  const start = source.indexOf(startText);
+  const end = source.indexOf(endText, start);
+  return start >= 0 && end > start ? source.slice(start, end) : '';
+}
+
+function actionOrderErrors(body: string, arc: 'Arc 2' | 'Arc 3'): string[] {
+  const errors: string[] = [];
+  const claim = body.indexOf('const actionClaim = productActionCoordinator.tryClaim(');
+  const barrier = body.indexOf('activePersist = actionBarrier;');
+  const hold = body.indexOf('await smokeProductActionHold.holdIfArmed(actionClaim.operation);');
+  const heartbeat = body.indexOf('await settleF4Heartbeat();');
+  const commit = body.indexOf(arc === 'Arc 2'
+    ? 'await runtime.commitProduct({'
+    : 'await runtime.commitAction({');
+  const settle = body.indexOf('actionClaim.settle(durable);');
+  if (!(claim >= 0 && barrier > claim && hold > barrier && heartbeat > hold
+    && commit > heartbeat && settle > commit)) {
+    errors.push(`${arc} must claim/fence/hold synchronously before heartbeat and commit`);
+  }
+  const secondGuardStart = body.indexOf('if (!f4RuntimeMayMutate(runtime)', heartbeat);
+  const secondGuardEnd = body.indexOf("return unavailable('write-authority-changed');", secondGuardStart);
+  const secondGuard = secondGuardStart >= 0 && secondGuardEnd > secondGuardStart
+    ? body.slice(secondGuardStart, secondGuardEnd)
+    : '';
+  if (secondGuard.includes('activePersist')) {
+    errors.push(`${arc} post-heartbeat guard rejects persistence queued behind its own barrier`);
+  }
+  return errors;
+}
+
+function coordinatorContractErrors(source: string): string[] {
+  const errors: string[] = [];
+  const arc2 = sourceSection(
+    source,
+    'async function commitArc2InventoryAction(',
+    '\ntype Arc3AppActionOperation =',
+  );
+  const arc3 = sourceSection(
+    source,
+    'async function commitArc3EngineeringAction(',
+    '\nasync function mineCurrentSurface()',
+  );
+  errors.push(...actionOrderErrors(arc2, 'Arc 2'), ...actionOrderErrors(arc3, 'Arc 3'));
+  if (!source.includes('if (checkpointDue && !productActionInFlight) await persistView();')) {
+    errors.push('Heartbeat checkpoint can wait on the product action that is waiting on that heartbeat');
+  }
+  if (!source.includes('const productActionCoordinator = createProductActionCoordinator();')) {
+    errors.push('Arc 2 and Arc 3 do not share one main-owned product coordinator');
+  }
+  return errors;
+}
+
+function readModelRefreshContractErrors(source: string): string[] {
+  const errors: string[] = [];
+  const refresh = sourceSection(
+    source,
+    'function refreshEngineeringPanelState(): void {',
+    '\nfunction updateChips(): void {',
+  );
+  for (const [needle, label] of [
+    ['!f4RuntimeMayMutate(runtime)', 'mutable current F4 authority'],
+    ['readArc3Engineering(', 'fresh Arc 3 carrier'],
+    ['readArc2Loot(runtime.extensions)', 'fresh Arc 2 carrier'],
+    ['arc2LootLegacyMirrorMatches(arc2.state, save)', 'Arc 2 legacy mirror proof'],
+    ['verifyArc3CommittedAction({', 'Arc 3 carrier/legacy proof'],
+    ['engineering: verified.state', 'verified Arc 3 state publication'],
+  ] as const) {
+    if (!refresh.includes(needle)) errors.push(`Engineering refresh omits ${label}`);
+  }
+  const settlement = sourceSection(
+    source,
+    'async function runEngineeringPanelAction(',
+    '\nasync function smokeCommitF4Outcome()',
+  );
+  const refreshAt = settlement.indexOf('refreshEngineeringPanelState();');
+  const common = settlement.indexOf('if (!converging) {', refreshAt);
+  const unlock = settlement.indexOf('engineeringPanelController.setPending(null);', common);
+  const outcomeBranch = settlement.indexOf("if (outcome.kind === 'committed'", common);
+  if (!(refreshAt >= 0 && common > refreshAt && unlock > common && outcomeBranch > unlock)) {
+    errors.push('Every Engineering settlement must refresh, then only ordinary outcomes may unlock');
+  }
+  return errors;
+}
+
+function diagnosticFaultContractErrors(source: string): string[] {
+  const errors: string[] = [];
+  const arc3 = sourceSection(
+    source,
+    'async function commitArc3EngineeringAction(',
+    '\nasync function mineCurrentSurface()',
+  );
+  const storageArm = arc3.indexOf('smokeRejectArc3StorageBoundary = true;');
+  const commit = arc3.indexOf('await runtime.commitAction({');
+  const storageClear = arc3.indexOf('smokeRejectArc3StorageBoundary = false;', commit);
+  if (!(storageArm >= 0 && commit > storageArm && storageClear > commit)) {
+    errors.push('Arc 3 storage fault does not wrap the real commitAction boundary once');
+  }
+  const staleBump = arc3.indexOf('const injected = await revisionRepo.mutate({');
+  if (!(staleBump >= 0 && staleBump < commit && arc3.includes('writes: [],', staleBump))) {
+    errors.push('Arc 3 stale fault does not advance only revision before the real commitAction');
+  }
+  const backendFault = sourceSection(
+    source,
+    'const persistenceBackend: StorageBackend = {',
+    '\nconst repo = createSaveRepository(persistenceBackend);',
+  );
+  if (!backendFault.includes('if (smokeRejectArc3StorageBoundary)')
+    || !backendFault.includes("Promise.reject(new Error('slice-smoke injected Arc 3 action storage failure'))")) {
+    errors.push('Arc 3 storage fault bypasses the production backend compare-and-apply');
+  }
+  for (const hook of [
+    '__smokeArmArc3ActionHold',
+    '__smokeReleaseArc3ActionHold',
+    '__smokeRejectNextArc3ActionStorage',
+    '__smokeStaleNextArc3ActionAuthority',
+  ]) {
+    if (!source.includes(hook)) errors.push(`Missing browser diagnostic hook ${hook}`);
+  }
+  if (!source.includes('owner: productActionCoordinator.diagnostics()')
+    || !source.includes('hold: smokeProductActionHold.diagnostics()')
+    || !source.includes('lastFault: lastSmokeArc3ActionFaultWitness')) {
+    errors.push('Product action diagnostics omit bounded owner/hold/fault witnesses');
+  }
+  return errors;
+}
+
+function arc3ActionBindingErrors(source: string): string[] {
+  const errors: string[] = [];
+  const generic = sourceSection(
+    source,
+    'async function commitArc3EngineeringAction(',
+    '\nasync function mineCurrentSurface()',
+  );
+  const commit = generic.indexOf('await runtime.commitAction({');
+  const durable = generic.indexOf('durable = true;', commit);
+  const verify = generic.indexOf('const verified = spec.verify({', durable);
+  const publish = generic.indexOf('spec.publish(save, outcome.state, verified);', verify);
+  if (!(commit >= 0 && durable > commit && verify > durable && publish > verify)) {
+    errors.push('Arc 3 may publish only after one commitAction is durable and independently verified');
+  }
+  if ((source.match(/await runtime\.commitAction\(\{/g) ?? []).length !== 1) {
+    errors.push('All four Arc 3 operations must share the sole commitAction call');
+  }
+  if (generic.includes('save = outcome.state') || generic.includes('save = committed')) {
+    errors.push('Arc 3 publication must preserve the live SaveState/Atlas object identity');
+  }
+  for (const needle of [
+    'outcome.plan.receiptOrdinal !== committedPlan.receiptOrdinal',
+    'outcome.receipt.ordinal !== committedPlan.receiptOrdinal',
+    'outcome.receipt.witness !== committedPlan.witness',
+    'outcome.authority.sessionRng.seed !== priorSessionRng.seed',
+    'outcome.authority.sessionRng.ordinal !== priorSessionRng.ordinal + 1',
+  ]) {
+    if (!generic.includes(needle)) errors.push('Arc 3 commit lacks one-receipt/no-domain-RNG verification');
+  }
+
+  const bindings = [
+    {
+      name: 'mine', start: 'async function mineCurrentSurface()', end: '\nasync function skimCurrentSystem()',
+      needles: ['return commitArc3EngineeringAction({', "operation: 'mine-world'", 'deriveArc3MineAction({',
+        'verifyArc3CommittedAction({', 'expectedState: planned.nextEngineeringState', 'publishArc3MiningFields(target, committed)'],
+    },
+    {
+      name: 'skim', start: 'async function skimCurrentSystem()', end: '\nasync function purchaseEngineeringResearch(',
+      needles: ['return commitArc3EngineeringAction({', "operation: 'skim-star'", 'deriveArc3SkimAction({',
+        'verifyArc3CommittedAction({', 'expectedState: planned.nextEngineeringState', 'publishArc3SkimFields(target, committed)'],
+    },
+    {
+      name: 'research', start: 'async function purchaseEngineeringResearch(', end: '\nasync function fabricateFixedEngineeringRecipe(',
+      needles: ['return commitArc3EngineeringAction({', "operation: 'purchase-research'", 'deriveArc3ResearchAction({',
+        'verifyArc3CommittedResearchAction({', 'expectedOwnedState: planned.state',
+        'expectedState: planned.nextEngineeringState', 'publishArc3ResearchFields(target, committed)'],
+    },
+    {
+      name: 'fabrication', start: 'async function fabricateFixedEngineeringRecipe(', end: '\nfunction engineeringOutcomeConverges(',
+      needles: ['return commitArc3EngineeringAction({', "operation: 'fabricate-fixed'", 'deriveArc3FixedFabricationAction({',
+        'verifyArc3CommittedFixedFabricationAction({', 'expectedOwnedState: planned.state',
+        'expectedEngineeringState: planned.nextEngineeringState', 'expectedArc2State: planned.nextArc2State',
+        'inventoryPanelController.setState(verified.arc2State);',
+        'publishArc3FixedFabricationFields(target, committed);', 'arc2LootState = verified.arc2State;'],
+    },
+  ] as const;
+  for (const binding of bindings) {
+    const body = sourceSection(source, binding.start, binding.end);
+    if (binding.needles.some((needle) => !body.includes(needle))) {
+      errors.push(`Arc 3 ${binding.name} binding omits its exact derive/verify/publish contract`);
+    }
+  }
+  return [...new Set(errors)];
+}
+
+describe('shared Arc 2/Arc 3 product-action coordinator', () => {
+  it('claims synchronously, rejects a competing Arc, and keeps persistence behind the exact barrier', async () => {
+    const coordinator = createProductActionCoordinator();
+    const claim = coordinator.tryClaim('arc3.mine-world');
+    expect(claim).not.toBeNull();
+    if (claim === null) return;
+    expect(coordinator.diagnostics()).toMatchObject({
+      busy: true,
+      operation: 'arc3.mine-world',
+    });
+    expect(coordinator.tryClaim('arc2.equip')).toBeNull();
+
+    const queuedPersist = vi.fn((durable: boolean) => `persist-after:${durable}`);
+    const queued = claim.barrier.then(queuedPersist);
+    await Promise.resolve();
+    expect(queuedPersist).not.toHaveBeenCalled();
+
+    claim.settle(true);
+    await expect(queued).resolves.toBe('persist-after:true');
+    expect(queuedPersist).toHaveBeenCalledOnce();
+    expect(coordinator.diagnostics()).toMatchObject({ busy: false, operation: null });
+    expect(coordinator.tryClaim('arc2.equip')).not.toBeNull();
+  });
+
+  it('settles a pre-durable refusal as false and refuses invalid or double settlement', async () => {
+    const coordinator = createProductActionCoordinator();
+    expect(() => coordinator.tryClaim('')).toThrow(/1 through 128/);
+    const claim = coordinator.tryClaim('arc3.purchase-research');
+    expect(claim).not.toBeNull();
+    if (claim === null) return;
+    claim.settle(false);
+    await expect(claim.barrier).resolves.toBe(false);
+    expect(() => claim.settle(false)).toThrow(/no longer active/);
+  });
+
+  it('holds the claimed operation without product input and releases exactly once', async () => {
+    const coordinator = createProductActionCoordinator();
+    const hold = createProductActionDiagnosticHold();
+    expect(hold.arm()).toBe(true);
+    expect(hold.diagnostics()).toMatchObject({ phase: 'armed', operation: null, sequence: 1 });
+    const claim = coordinator.tryClaim('arc2.salvage');
+    expect(claim).not.toBeNull();
+    if (claim === null) return;
+    const waiting = hold.holdIfArmed(claim.operation);
+    expect(hold.diagnostics()).toMatchObject({ phase: 'holding', operation: 'arc2.salvage' });
+    expect(coordinator.tryClaim('arc3.mine-world')).toBeNull();
+    expect(hold.release()).toBe(true);
+    expect(hold.release()).toBe(false);
+    expect(hold.diagnostics().phase).toBe('release-requested');
+    await waiting;
+    expect(hold.diagnostics()).toMatchObject({ phase: 'released', operation: 'arc2.salvage' });
+    claim.settle(false);
+  });
+
+  it('binds both production paths, heartbeat deadlock protection, refresh, and diagnostic faults', () => {
+    expect(coordinatorContractErrors(mainSource)).toEqual([]);
+    expect(readModelRefreshContractErrors(mainSource)).toEqual([]);
+    expect(diagnosticFaultContractErrors(mainSource)).toEqual([]);
+    expect(arc3ActionBindingErrors(mainSource)).toEqual([]);
+  });
+
+  it('negative-controls Arc 2 and Arc 3 late claims independently', () => {
+    const arc2Start = mainSource.indexOf('async function commitArc2InventoryAction(');
+    const arc3Start = mainSource.indexOf('async function commitArc3EngineeringAction(');
+    const lateArc2 = mainSource.slice(0, arc2Start)
+      + mainSource.slice(arc2Start, arc3Start)
+        .replace('  const actionClaim = productActionCoordinator.tryClaim(`arc2.${operation}`);', '  /* Arc 2 claim moved */')
+        .replace('    await settleF4Heartbeat();', '    await settleF4Heartbeat();\n    const actionClaim = productActionCoordinator.tryClaim(`arc2.${operation}`);')
+      + mainSource.slice(arc3Start);
+    expect(lateArc2).not.toBe(mainSource);
+    expect(coordinatorContractErrors(lateArc2)).toContain(
+      'Arc 2 must claim/fence/hold synchronously before heartbeat and commit',
+    );
+
+    const lateArc3 = mainSource.slice(0, arc3Start)
+      + mainSource.slice(arc3Start)
+        .replace('  const actionClaim = productActionCoordinator.tryClaim(`arc3.${spec.operation}`);', '  /* Arc 3 claim moved */')
+        .replace('    await settleF4Heartbeat();', '    await settleF4Heartbeat();\n    const actionClaim = productActionCoordinator.tryClaim(`arc3.${spec.operation}`);');
+    expect(lateArc3).not.toBe(mainSource);
+    expect(coordinatorContractErrors(lateArc3)).toContain(
+      'Arc 3 must claim/fence/hold synchronously before heartbeat and commit',
+    );
+  });
+
+  it('negative-controls heartbeat, queued-persist guard, fresh carrier, and refusal refresh independently', () => {
+    const deadlocking = mainSource.replace(
+      'if (checkpointDue && !productActionInFlight) await persistView();',
+      'if (checkpointDue) await persistView();',
+    );
+    expect(deadlocking).not.toBe(mainSource);
+    expect(coordinatorContractErrors(deadlocking)).toContain(
+      'Heartbeat checkpoint can wait on the product action that is waiting on that heartbeat',
+    );
+
+    const mistakenOwner = mainSource.replace(
+      'if (!f4RuntimeMayMutate(runtime) || importWriteInFlight',
+      'if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight',
+    );
+    expect(mistakenOwner).not.toBe(mainSource);
+    expect(coordinatorContractErrors(mistakenOwner)).toContain(
+      'Arc 2 post-heartbeat guard rejects persistence queued behind its own barrier',
+    );
+
+    const cachedCarrier = mainSource.replace(
+      '    const engineering = readArc3Engineering(',
+      '    const engineering = /* cached-only */ ({ kind: \'loaded\', state: arc3EngineeringState } as const); void (',
+    );
+    expect(cachedCarrier).not.toBe(mainSource);
+    expect(readModelRefreshContractErrors(cachedCarrier)).toContain(
+      'Engineering refresh omits fresh Arc 3 carrier',
+    );
+
+    const committedOnlyRefresh = mainSource.replace(
+      '  if (!converging) {',
+      "  if (outcome.kind === 'committed' && !converging) {",
+    );
+    expect(committedOnlyRefresh).not.toBe(mainSource);
+    expect(readModelRefreshContractErrors(committedOnlyRefresh)).toContain(
+      'Every Engineering settlement must refresh, then only ordinary outcomes may unlock',
+    );
+  });
+
+  it('negative-controls storage and stale injection boundaries independently', () => {
+    const bypassedStorage = mainSource.replace(
+      '    if (smokeRejectArc3StorageBoundary) {',
+      '    if (false) {',
+    );
+    expect(bypassedStorage).not.toBe(mainSource);
+    expect(diagnosticFaultContractErrors(bypassedStorage)).toContain(
+      'Arc 3 storage fault bypasses the production backend compare-and-apply',
+    );
+
+    const noStaleBump = mainSource.replace(
+      '      const injected = await revisionRepo.mutate({',
+      '      const injected = await Promise.resolve({ kind: \'committed\', revision: faultBeforeRevision }); void ({',
+    );
+    expect(noStaleBump).not.toBe(mainSource);
+    expect(diagnosticFaultContractErrors(noStaleBump)).toContain(
+      'Arc 3 stale fault does not advance only revision before the real commitAction',
+    );
+  });
+
+  it('negative-controls action-specific verifier selection and post-durable publication', () => {
+    const wrongResearchVerifier = mainSource.replace(
+      'verifyArc3CommittedResearchAction({',
+      'verifyArc3CommittedAction({',
+    );
+    expect(wrongResearchVerifier).not.toBe(mainSource);
+    expect(arc3ActionBindingErrors(wrongResearchVerifier)).toContain(
+      'Arc 3 research binding omits its exact derive/verify/publish contract',
+    );
+
+    const missingDualPublication = mainSource.replace(
+      '      arc2LootState = verified.arc2State;',
+      '      /* Arc 2 live carrier publication omitted */',
+    );
+    expect(missingDualPublication).not.toBe(mainSource);
+    expect(arc3ActionBindingErrors(missingDualPublication)).toContain(
+      'Arc 3 fabrication binding omits its exact derive/verify/publish contract',
+    );
+
+    const optimistic = mainSource
+      .replace('      spec.publish(save, outcome.state, verified);', '      /* publication moved */')
+      .replace('    const outcome = await runtime.commitAction({',
+        '    spec.publish(save, save, {} as never);\n    const outcome = await runtime.commitAction({');
+    expect(optimistic).not.toBe(mainSource);
+    expect(arc3ActionBindingErrors(optimistic)).toContain(
+      'Arc 3 may publish only after one commitAction is durable and independently verified',
+    );
+  });
+});

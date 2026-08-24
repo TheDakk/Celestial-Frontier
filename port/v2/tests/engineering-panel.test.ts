@@ -582,6 +582,48 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     expect(view.document.activeElement).toBe(view.opener);
   });
 
+  it('defers a still-available pending action focus but leaves a newly unavailable action on its row', () => {
+    const view = shell();
+    controller = new EngineeringPanelController({
+      panel: view.panel,
+      body: view.body,
+      openers: [view.opener],
+      onAction: vi.fn(),
+    });
+    controller.setState(readModel());
+    open(view);
+    view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!.open = true;
+    const firstPlate = view.body.querySelector<HTMLButtonElement>(
+      '[data-recipe-id="plate"] [data-engineering-action="fabricate"]',
+    )!;
+    firstPlate.focus();
+    controller.setPending({ operation: 'fabricate', id: 'plate' });
+    controller.setState(readModel({ miningDue: 3 }));
+    const plateRow = view.body.querySelector<HTMLElement>('[data-semantic-key="recipe:plate"]')!;
+    const secondPlate = plateRow.querySelector<HTMLButtonElement>('[data-engineering-action="fabricate"]')!;
+    expect(secondPlate).not.toBe(firstPlate);
+    expect(secondPlate.disabled).toBe(true);
+    expect(view.document.activeElement).toBe(plateRow);
+    controller.setPending(null);
+    expect(secondPlate.disabled).toBe(false);
+    expect(view.document.activeElement).toBe(secondPlate);
+
+    view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="research"]')!.open = true;
+    const firstScan = view.body.querySelector<HTMLButtonElement>(
+      '[data-research-id="scan1"] [data-engineering-action="research"]',
+    )!;
+    firstScan.focus();
+    controller.setPending({ operation: 'research', id: 'scan1' });
+    controller.setState(readModel({ scanStatus: 'owned', scanReason: 'Already researched.' }));
+    const scanRow = view.body.querySelector<HTMLElement>('[data-semantic-key="research:scan1"]')!;
+    const secondScan = scanRow.querySelector<HTMLButtonElement>('[data-engineering-action="research"]')!;
+    expect(secondScan.disabled).toBe(true);
+    expect(view.document.activeElement).toBe(scanRow);
+    controller.setPending(null);
+    expect(secondScan.disabled).toBe(true);
+    expect(view.document.activeElement).toBe(scanRow);
+  });
+
   it('retains all four chassis through the real preview owner and reaches zero ownership on close/dispose', () => {
     const view = shell();
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction: vi.fn() });

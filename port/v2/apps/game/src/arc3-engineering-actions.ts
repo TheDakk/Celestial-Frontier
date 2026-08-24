@@ -12,30 +12,54 @@ import {
   SCENE_ENGINEERING_ADDRESS_RESOLVER,
   createLegacyEngineeringSeedResolver,
   encodeEngineeringState,
+  planFixedFabrication,
+  planResearchPurchase,
   planStellarSkim,
   planWorldMining,
   projectStarOpportunity,
   projectWorldOpportunity,
   type EngineeringStateV2,
+  type FixedFabricationResult,
   type MiningResult,
+  type ResearchId,
+  type ResearchPurchaseResult,
   type StellarSkimResult,
 } from '@cf/domain-opportunity';
 import {
+  LEGACY_SIGNATURE_IDS_V1,
+  getLootCatalogueDefinition,
+  type Arc2EngineeringLoadout,
+} from '@cf/domain-loot';
+import {
+  applyV5ExtensionWrites,
+  arc2LootLegacyMirrorMatches,
+  encodeArc2LootCarrier,
+  prepareArc2FixedFabrication,
+  prepareArc2LootInventoryWrite,
   prepareArc3EngineeringLegacyBootstrap,
   prepareArc3EngineeringWrite,
   projectArc3EngineeringLegacyCompatibility,
+  projectArc2LootLegacyMirror,
   readArc2EngineeringLoadout,
+  readArc2Loot,
   readArc3Engineering,
+  type Arc2FixedFabricationReady,
+  type Arc2LootInventoryV1,
   type Arc3EngineeringExtensionWrite,
   type Arc3LegacyEngineeringProjection,
   type Arc3LegacyMinedTimestampIntent,
   type SaveStateV2,
+  type V5ExtensionWrite,
   type V5Extensions,
 } from '@cf/persistence';
 import {
+  ascStageOf,
   ascend,
+  bankFixedFabrication,
+  bankMinedAction,
   canonicalCF1StarAddressFromNav,
   canonicalCF1WorldAddressFromNav,
+  reconcileV2Chapters,
   type CanonicalCF1StarAddress,
   type CanonicalCF1WorldAddress,
   type NavState,
@@ -48,6 +72,9 @@ export const ARC3_APP_DERIVATION_SCHEMA = 'cf-v2-arc3-app-derivation/v1' as cons
 export const ARC3_LEGACY_CARGO_MAX = 1_000_000;
 const UINT32_MAX = 0xffff_ffff;
 const LEGACY_STAT_MAX = 1_000_000_000;
+const LEGACY_ESSENCE_MAX = 1_000_000_000;
+const LEGACY_ASC_PROGRESS_MAX = 999;
+const SIGNATURE_IDS = new Set<string>(LEGACY_SIGNATURE_IDS_V1);
 
 export interface Arc3EngineeringAddressSources {
   readonly current: NavState;
@@ -440,6 +467,189 @@ function stagedCargo(
   return Object.freeze({ cargo: [...cargo], cgx: [...cgx] });
 }
 
+function arc2InventoryState(loadout: Arc2EngineeringLoadout): Arc2LootInventoryV1 {
+  return Object.freeze({
+    kind: 'inventory',
+    inventory: loadout.inventory,
+    stackableCounts: loadout.stackableCounts,
+  });
+}
+
+function requireArc2LegacyParity(loadout: Arc2EngineeringLoadout, save: SaveStateV2): Arc2LootInventoryV1 {
+  const state = arc2InventoryState(loadout);
+  if (!arc2LootLegacyMirrorMatches(state, save)) {
+    throw new Error('arc2-loadout-legacy-mirror-mismatch');
+  }
+  return state;
+}
+
+/** Refuse a product action when the freshly decoded Arc 3 carrier and its
+ * current v4 compatibility mirror no longer describe the same expedition.
+ * Action planning may advance this projection, but it must never become an
+ * implicit repair path for unrelated or stale live bytes. Collision-held
+ * leaf rows remain valid because the canonical projector preserves them. */
+function requireArc3LegacyParity(
+  state: EngineeringStateV2,
+  save: SaveStateV2,
+  codecNow: number,
+): void {
+  const projection = projectArc3EngineeringLegacyCompatibility({
+    state,
+    prior: legacyPrior(save),
+    codecNow,
+    minedTimestampIntent: { kind: 'preserve' },
+  });
+  if (!sameRows(projection.legacy.mineX, save.mineX)
+    || !sameRows(projection.legacy.mined, save.mined)
+    || !sameRows(projection.legacy.skimX, save.skimX)
+    || !sameRows(projection.legacy.techOwned, save.techOwned)) {
+    throw new Error('arc3-carrier-legacy-projection-mismatch');
+  }
+}
+
+function quantityRecord(
+  rows: readonly (readonly [string, number])[],
+  label: string,
+): Readonly<Record<string, number>> {
+  const entries = [...quantityMap(rows, label)].sort(([left], [right]) => codeUnitCompare(left, right));
+  return Object.freeze(Object.fromEntries(entries));
+}
+
+function checkedEssence(value: unknown): number {
+  if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) > LEGACY_ESSENCE_MAX) {
+    throw new RangeError(`legacy Stardust must be an integer from 0 through ${LEGACY_ESSENCE_MAX}`);
+  }
+  return value as number;
+}
+
+function signatureIds(save: SaveStateV2): readonly string[] {
+  const source = save.primeFill;
+  if (!source || typeof source !== 'object' || Array.isArray(source)
+    || Object.getPrototypeOf(source) !== Object.prototype) {
+    throw new TypeError('legacy Signature authority must be an exact plain object');
+  }
+  const result: string[] = [];
+  for (const key of Reflect.ownKeys(source)) {
+    if (typeof key !== 'string') throw new TypeError('legacy Signature authority has a symbol key');
+    const descriptor = Object.getOwnPropertyDescriptor(source, key);
+    if (!descriptor || !Object.hasOwn(descriptor, 'value') || descriptor.enumerable !== true) {
+      throw new TypeError(`legacy Signature ${key} must be an enumerable data property`);
+    }
+    if (!SIGNATURE_IDS.has(key)) throw new RangeError(`legacy Signature ${key} is not recognized`);
+    if (!descriptor.value || typeof descriptor.value !== 'object' || Array.isArray(descriptor.value)) {
+      throw new TypeError(`legacy Signature ${key} has malformed proof`);
+    }
+    result.push(key);
+  }
+  result.sort(codeUnitCompare);
+  return Object.freeze(result);
+}
+
+interface LegacyAssetDelta {
+  readonly id: string;
+  readonly delta: number;
+}
+
+function applyAssetDeltas(
+  target: Map<string, number>,
+  deltas: readonly LegacyAssetDelta[],
+  label: string,
+): void {
+  const seen = new Set<string>();
+  for (let index = 0; index < deltas.length; index++) {
+    const { id, delta } = deltas[index]!;
+    if (typeof id !== 'string' || id.length < 1 || id.length > 64 || seen.has(id)) {
+      throw new RangeError(`${label} delta ${index} has an invalid or duplicate id`);
+    }
+    if (!Number.isSafeInteger(delta) || delta > 0 || delta < -ARC3_LEGACY_CARGO_MAX) {
+      throw new RangeError(`${label} delta ${id} is not a bounded consumption`);
+    }
+    seen.add(id);
+    const next = (target.get(id) ?? 0) + delta;
+    target.set(id, checkedQuantity(next, `${label} balance ${id}`));
+  }
+}
+
+function stagedEconomyDeltas(
+  save: SaveStateV2,
+  cargoDeltas: readonly LegacyAssetDelta[],
+  exceptionalDeltas: readonly LegacyAssetDelta[],
+  essenceDelta: number,
+): Readonly<{ cargo: Array<[string, number]>; cgx: Array<[string, number]>; essence: number }> {
+  const cargo = quantityMap(save.cargo, 'cargo');
+  const cgx = quantityMap(save.cgx, 'exceptional cargo');
+  for (const [id, count] of cgx) {
+    if (count > (cargo.get(id) ?? 0)) throw new RangeError(`exceptional cargo ${id} exceeds held cargo`);
+  }
+  applyAssetDeltas(cargo, cargoDeltas, 'cargo');
+  applyAssetDeltas(cgx, exceptionalDeltas, 'exceptional cargo');
+  for (const [id, count] of cgx) {
+    if (count > (cargo.get(id) ?? 0)) throw new RangeError(`exceptional cargo ${id} exceeds held cargo`);
+  }
+  if (!Number.isSafeInteger(essenceDelta) || essenceDelta > 0 || essenceDelta < -LEGACY_ESSENCE_MAX) {
+    throw new RangeError('legacy Stardust delta is not a bounded consumption');
+  }
+  const essence = checkedEssence(checkedEssence(save.essence) + essenceDelta);
+  return Object.freeze({ cargo: [...cargo], cgx: [...cgx], essence });
+}
+
+function researchEconomy(
+  save: SaveStateV2,
+  result: ResearchPurchaseResult,
+): Readonly<{ cargo: Array<[string, number]>; cgx: Array<[string, number]>; essence: number }> {
+  const exceptional = quantityMap(save.cgx, 'exceptional cargo');
+  const cargoDeltas = result.consume.materials.map(({ id, quantity }) => ({ id, delta: -quantity }));
+  const exceptionalDeltas = result.consume.materials.flatMap(({ id, quantity }) => {
+    const spend = Math.min(exceptional.get(id) ?? 0, quantity);
+    return spend > 0 ? [{ id, delta: -spend }] : [];
+  });
+  return stagedEconomyDeltas(save, cargoDeltas, exceptionalDeltas, -result.consume.stardust);
+}
+
+function checkedCharterProgress(save: SaveStateV2): Record<string, number> {
+  if (!Number.isInteger(save.ascCh) || save.ascCh < 0 || save.ascCh > 3) {
+    throw new RangeError('legacy Charter chapter is out of range');
+  }
+  const source = save.ascProg;
+  if (!source || typeof source !== 'object' || Array.isArray(source)
+    || Object.getPrototypeOf(source) !== Object.prototype) {
+    throw new TypeError('legacy Charter progress must be an exact plain object');
+  }
+  const result: Record<string, number> = {};
+  for (const key of Reflect.ownKeys(source)) {
+    if (typeof key !== 'string' || key.length < 1 || key.length >= 24) {
+      throw new RangeError('legacy Charter progress has an invalid goal id');
+    }
+    const descriptor = Object.getOwnPropertyDescriptor(source, key);
+    if (!descriptor || !Object.hasOwn(descriptor, 'value') || descriptor.enumerable !== true
+      || !Number.isSafeInteger(descriptor.value) || descriptor.value < 0
+      || descriptor.value > LEGACY_ASC_PROGRESS_MAX) {
+      throw new RangeError(`legacy Charter progress ${key} is malformed`);
+    }
+    result[key] = descriptor.value as number;
+  }
+  return result;
+}
+
+function reconciledCharter(
+  save: SaveStateV2,
+  progress: Record<string, number>,
+  actualItems: readonly (readonly [string, number])[],
+): Readonly<{ ascCh: number; ascProg: Record<string, number> }> {
+  const stage = ascStageOf(actualItems.map(([id, count]) => [id, count]), save.ascCh);
+  const reconciliation = reconcileV2Chapters(save.ascCh, progress, stage);
+  if (reconciliation === null) throw new Error('legacy Charter reconciliation refused');
+  return Object.freeze({ ascCh: reconciliation.nextChapter, ascProg: progress });
+}
+
+function copyArc2LegacyMirror(target: SaveStateV2, mirror: Arc2FixedFabricationReady['mirror']): void {
+  target.items = mirror.items.map(([id, count]) => [id, count]);
+  target.equip = { ...mirror.equip };
+  target.equipAff = Object.fromEntries(Object.entries(mirror.equipAff).map(([slot, affix]) => [
+    slot, { ...affix },
+  ]));
+}
+
 function stagedStats(
   save: SaveStateV2,
   increments: Readonly<Record<string, number>>,
@@ -459,15 +669,17 @@ function stagedStats(
 
 export type Arc3AppDerivation = Readonly<{
   schema: typeof ARC3_APP_DERIVATION_SCHEMA;
-  operation: 'mine-world' | 'skim-star';
+  operation: 'mine-world' | 'skim-star' | 'purchase-research' | 'fabricate-fixed';
   receiptOrdinal: number;
   state: SaveStateV2;
-  extensionWrites: readonly [Arc3EngineeringExtensionWrite];
+  extensionWrites: readonly V5ExtensionWrite[];
   witness: string;
   nextEngineeringState: EngineeringStateV2;
+  nextArc2State: Arc2LootInventoryV1 | null;
+  arc2Settlement: Arc2FixedFabricationReady | null;
   projection: Arc3LegacyEngineeringProjection;
   minedTimestampIntent: Arc3LegacyMinedTimestampIntent;
-  result: MiningResult | StellarSkimResult;
+  result: MiningResult | StellarSkimResult | ResearchPurchaseResult | FixedFabricationResult;
 }>;
 
 export type Arc3AppDerivationOutcome =
@@ -503,8 +715,11 @@ export function deriveArc3MineAction(input: Readonly<{
   try {
     const loadout = readArc2EngineeringLoadout(input.extensions);
     if (loadout.kind !== 'loaded') return refused(`arc2-loadout-${loadout.kind}`);
+    const arc2State = requireArc2LegacyParity(loadout.loadout, input.draft);
+    const arc2Mirror = projectArc2LootLegacyMirror(arc2State);
     const engineering = readArc3Engineering(input.extensions, SCENE_ENGINEERING_ADDRESS_RESOLVER);
     if (engineering.kind !== 'loaded') return refused(`arc3-carrier-${engineering.kind}`);
+    requireArc3LegacyParity(engineering.state, input.draft, input.codecNow);
     const current = canonicalCF1WorldAddressFromNav(input.currentSurface);
     if (!current.ok) return refused(`mine-address-${current.reason}`);
     const plan = planWorldMining({
@@ -523,6 +738,9 @@ export function deriveArc3MineAction(input: Readonly<{
       cosmics: plan.result.cosmicFinds,
       minedout: plan.result.minedOut ? 1 : 0,
     });
+    const ascProg = checkedCharterProgress(input.draft);
+    bankMinedAction(input.draft.ascCh, ascProg, current.address);
+    const charter = reconciledCharter(input.draft, ascProg, arc2Mirror.items);
     const intent: Arc3LegacyMinedTimestampIntent = {
       kind: 'touched-world', worldKey: plan.result.sourceKey,
     };
@@ -538,6 +756,8 @@ export function deriveArc3MineAction(input: Readonly<{
     input.draft.cargo = cargo.cargo;
     input.draft.cgx = cargo.cgx;
     input.draft.stats = stats;
+    input.draft.ascCh = charter.ascCh;
+    input.draft.ascProg = charter.ascProg;
     copyArc3LegacyProjection(input.draft, projection);
     return Object.freeze({
       kind: 'ready',
@@ -549,6 +769,8 @@ export function deriveArc3MineAction(input: Readonly<{
         extensionWrites: Object.freeze([write]) as readonly [Arc3EngineeringExtensionWrite],
         witness: plan.witness,
         nextEngineeringState: plan.nextState,
+        nextArc2State: null,
+        arc2Settlement: null,
         projection,
         minedTimestampIntent: intent,
         result: plan.result,
@@ -572,8 +794,10 @@ export function deriveArc3SkimAction(input: Readonly<{
   try {
     const loadout = readArc2EngineeringLoadout(input.extensions);
     if (loadout.kind !== 'loaded') return refused(`arc2-loadout-${loadout.kind}`);
+    requireArc2LegacyParity(loadout.loadout, input.draft);
     const engineering = readArc3Engineering(input.extensions, SCENE_ENGINEERING_ADDRESS_RESOLVER);
     if (engineering.kind !== 'loaded') return refused(`arc3-carrier-${engineering.kind}`);
+    requireArc3LegacyParity(engineering.state, input.draft, input.codecNow);
     const current = canonicalCF1StarAddressFromNav(input.currentSystem);
     if (!current.ok) return refused(`skim-address-${current.reason}`);
     const plan = planStellarSkim({
@@ -615,8 +839,199 @@ export function deriveArc3SkimAction(input: Readonly<{
         extensionWrites: Object.freeze([write]) as readonly [Arc3EngineeringExtensionWrite],
         witness: plan.witness,
         nextEngineeringState: plan.nextState,
+        nextArc2State: null,
+        arc2Settlement: null,
         projection,
         minedTimestampIntent: Object.freeze({ kind: 'preserve' }),
+        result: plan.result,
+      }),
+    });
+  } catch (error) {
+    return refused(error instanceof Error ? error.message : String(error));
+  }
+}
+
+/** Purchase one currently consumable research node. Arc 2 is freshly decoded
+ * to keep the product join fail-closed, while material/Stardust authority and
+ * the Arc 3 research revision are re-read from this exact detached candidate.
+ * Research deliberately emits no Charter fabrication event. */
+export function deriveArc3ResearchAction(input: Readonly<{
+  draft: SaveStateV2;
+  extensions: V5Extensions;
+  researchId: string;
+  receiptOrdinal: number;
+  codecNow: number;
+}>): Arc3AppDerivationOutcome {
+  try {
+    const loadout = readArc2EngineeringLoadout(input.extensions);
+    if (loadout.kind !== 'loaded') return refused(`arc2-loadout-${loadout.kind}`);
+    requireArc2LegacyParity(loadout.loadout, input.draft);
+    const engineering = readArc3Engineering(input.extensions, SCENE_ENGINEERING_ADDRESS_RESOLVER);
+    if (engineering.kind !== 'loaded') return refused(`arc3-carrier-${engineering.kind}`);
+    requireArc3LegacyParity(engineering.state, input.draft, input.codecNow);
+    const plan = planResearchPurchase({
+      state: engineering.state,
+      /* The planner performs the runtime catalogue check; this cast only
+         bridges the app's untrusted string request into that checked seam. */
+      researchId: input.researchId as ResearchId,
+      assets: {
+        materials: quantityRecord(input.draft.cargo, 'cargo'),
+        stardust: checkedEssence(input.draft.essence),
+      },
+      receiptOrdinal: input.receiptOrdinal,
+    });
+    if (plan.status !== 'planned') return refused(`research-${plan.reason}`);
+
+    const economy = researchEconomy(input.draft, plan.result);
+    const intent: Arc3LegacyMinedTimestampIntent = Object.freeze({ kind: 'preserve' });
+    const projection = projectArc3EngineeringLegacyCompatibility({
+      state: plan.nextState,
+      prior: legacyPrior(input.draft),
+      codecNow: input.codecNow,
+      minedTimestampIntent: intent,
+    });
+    const write = prepareEngineeringWrite(input.extensions, plan.nextState);
+    if (write === null) return refused('research-carrier-write-protected');
+    applyV5ExtensionWrites(input.extensions, [write]);
+
+    input.draft.cargo = economy.cargo;
+    input.draft.cgx = economy.cgx;
+    input.draft.essence = economy.essence;
+    copyArc3LegacyProjection(input.draft, projection);
+    return Object.freeze({
+      kind: 'ready',
+      derivation: Object.freeze({
+        schema: ARC3_APP_DERIVATION_SCHEMA,
+        operation: 'purchase-research',
+        receiptOrdinal: input.receiptOrdinal,
+        state: input.draft,
+        extensionWrites: Object.freeze([write]),
+        witness: plan.witness,
+        nextEngineeringState: plan.nextState,
+        nextArc2State: null,
+        arc2Settlement: null,
+        projection,
+        minedTimestampIntent: intent,
+        result: plan.result,
+      }),
+    });
+  } catch (error) {
+    return refused(error instanceof Error ? error.message : String(error));
+  }
+}
+
+/** Derive one fixed Fabricator transaction. The Arc 3 plan is passed directly
+ * to Arc 2 settlement without cloning or structural reconstitution, then both
+ * namespace replacements and every compatibility field are preflighted before
+ * the detached draft is touched. */
+export function deriveArc3FixedFabricationAction(input: Readonly<{
+  draft: SaveStateV2;
+  extensions: V5Extensions;
+  baseId: string;
+  activePlayMs: number;
+  receiptOrdinal: number;
+  codecNow: number;
+}>): Arc3AppDerivationOutcome {
+  try {
+    const loadout = readArc2EngineeringLoadout(input.extensions);
+    if (loadout.kind !== 'loaded') return refused(`arc2-loadout-${loadout.kind}`);
+    const currentArc2 = requireArc2LegacyParity(loadout.loadout, input.draft);
+    const currentMirror = projectArc2LootLegacyMirror(currentArc2);
+    const engineering = readArc3Engineering(input.extensions, SCENE_ENGINEERING_ADDRESS_RESOLVER);
+    if (engineering.kind !== 'loaded') return refused(`arc3-carrier-${engineering.kind}`);
+    requireArc3LegacyParity(engineering.state, input.draft, input.codecNow);
+    const liveSignatures = signatureIds(input.draft);
+    const itemCounts = quantityRecord(currentMirror.items, 'Arc 2 item mirror');
+    const plan = planFixedFabrication({
+      state: engineering.state,
+      baseId: input.baseId,
+      assets: {
+        materials: quantityRecord(input.draft.cargo, 'cargo'),
+        exceptionalMaterials: quantityRecord(input.draft.cgx, 'exceptional cargo'),
+        itemCounts,
+        stardust: checkedEssence(input.draft.essence),
+        signatureIds: liveSignatures,
+      },
+      activePlay: { activePlayMs: input.activePlayMs },
+      receiptOrdinal: input.receiptOrdinal,
+    });
+    if (plan.status !== 'planned') return refused(`fabrication-${plan.reason}`);
+    const settlement = prepareArc2FixedFabrication(loadout.loadout, plan);
+    if (settlement.status !== 'ready') return refused(`fabrication-arc2-${settlement.reason}`);
+    if (settlement.preservedGates.prerequisiteId !== null
+      && (itemCounts[settlement.preservedGates.prerequisiteId] ?? 0) < 1) {
+      return refused('fabrication-prerequisite-recheck-failed');
+    }
+    if (settlement.preservedGates.signatureId !== null
+      && !liveSignatures.includes(settlement.preservedGates.signatureId)) {
+      return refused('fabrication-signature-recheck-failed');
+    }
+
+    const economy = stagedEconomyDeltas(
+      input.draft,
+      settlement.compatibilityDelta.cargo,
+      settlement.compatibilityDelta.cgx,
+      settlement.compatibilityDelta.essence,
+    );
+    const stats = stagedStats(input.draft, { crafts: 1 });
+    const definition = getLootCatalogueDefinition(settlement.baseId);
+    if (definition === undefined) return refused('fabrication-result-unknown');
+    const ascProg = checkedCharterProgress(input.draft);
+    bankFixedFabrication(input.draft.ascCh, ascProg, {
+      id: definition.id,
+      category: definition.category,
+    });
+    const charter = reconciledCharter(input.draft, ascProg, settlement.mirror.items);
+
+    const intent: Arc3LegacyMinedTimestampIntent = plan.result.baseId === 'autoext'
+      ? Object.freeze({ kind: 'refresh-all' })
+      : Object.freeze({ kind: 'preserve' });
+    const projection = projectArc3EngineeringLegacyCompatibility({
+      state: plan.nextState,
+      prior: legacyPrior(input.draft),
+      codecNow: input.codecNow,
+      minedTimestampIntent: intent,
+    });
+    const engineeringWrite = prepareEngineeringWrite(input.extensions, plan.nextState);
+    if (engineeringWrite === null) return refused('fabrication-arc3-write-protected');
+    const arc2Write = prepareArc2LootInventoryWrite({
+      extensions: input.extensions,
+      inventory: settlement.state.inventory,
+      stackableCounts: settlement.state.stackableCounts,
+    });
+    if (arc2Write.kind !== 'prepared') return refused(`fabrication-arc2-write-${arc2Write.reason}`);
+    if (arc2Write.state.kind !== 'inventory'
+      || encodeArc2LootCarrier(arc2Write.state).json !== encodeArc2LootCarrier(settlement.state).json) {
+      return refused('fabrication-arc2-write-state-mismatch');
+    }
+    const extensionWrites: readonly V5ExtensionWrite[] = Object.freeze([
+      engineeringWrite,
+      arc2Write.write,
+    ]);
+    applyV5ExtensionWrites(input.extensions, extensionWrites);
+
+    input.draft.cargo = economy.cargo;
+    input.draft.cgx = economy.cgx;
+    input.draft.essence = economy.essence;
+    copyArc2LegacyMirror(input.draft, settlement.mirror);
+    input.draft.stats = stats;
+    input.draft.ascCh = charter.ascCh;
+    input.draft.ascProg = charter.ascProg;
+    copyArc3LegacyProjection(input.draft, projection);
+    return Object.freeze({
+      kind: 'ready',
+      derivation: Object.freeze({
+        schema: ARC3_APP_DERIVATION_SCHEMA,
+        operation: 'fabricate-fixed',
+        receiptOrdinal: input.receiptOrdinal,
+        state: input.draft,
+        extensionWrites,
+        witness: plan.witness,
+        nextEngineeringState: plan.nextState,
+        nextArc2State: settlement.state,
+        arc2Settlement: settlement,
+        projection,
+        minedTimestampIntent: intent,
         result: plan.result,
       }),
     });
@@ -672,12 +1087,121 @@ export function verifyArc3CommittedAction(input: Readonly<{
   }
 }
 
+type OwnedField = keyof SaveStateV2;
+
+function verifyOwnedFields(
+  committed: SaveStateV2,
+  expected: SaveStateV2,
+  fields: readonly OwnedField[],
+  label: string,
+): string | null {
+  for (const field of fields) {
+    if (!sameRows(committed[field], expected[field])) return `${label}-${String(field)}-mismatch`;
+  }
+  return null;
+}
+
+const RESEARCH_OWNED_FIELDS = Object.freeze([
+  'cargo', 'cgx', 'essence', 'mineX', 'mined', 'skimX', 'techOwned',
+] as const satisfies readonly OwnedField[]);
+const FIXED_FABRICATION_OWNED_FIELDS = Object.freeze([
+  'cargo', 'cgx', 'essence', 'items', 'equip', 'equipAff', 'stats', 'ascCh', 'ascProg',
+  'mineX', 'mined', 'skimX', 'techOwned',
+] as const satisfies readonly OwnedField[]);
+
+/** Post-durable research verification is deliberately independent of the
+ * derivation path: re-decode Arc 3, rebuild its compatibility projection, and
+ * compare each research-owned field with the pre-CAS expected candidate. */
+export function verifyArc3CommittedResearchAction(input: Readonly<{
+  extensions: V5Extensions;
+  committed: SaveStateV2;
+  expectedOwnedState: SaveStateV2;
+  expectedState: EngineeringStateV2;
+  codecNow: number;
+  minedTimestampIntent: Arc3LegacyMinedTimestampIntent;
+}>): Arc3CommittedVerification {
+  const carrier = verifyArc3CommittedAction(input);
+  if (carrier.kind !== 'verified') return carrier;
+  const mismatch = verifyOwnedFields(
+    input.committed,
+    input.expectedOwnedState,
+    RESEARCH_OWNED_FIELDS,
+    'research-owned',
+  );
+  return mismatch === null ? carrier : Object.freeze({ kind: 'mismatch', detail: mismatch });
+}
+
+export type Arc3FixedCommittedVerification =
+  | Readonly<{
+    kind: 'verified';
+    state: EngineeringStateV2;
+    arc2State: Arc2LootInventoryV1;
+    projection: Arc3LegacyEngineeringProjection;
+  }>
+  | Readonly<{ kind: 'mismatch'; detail: string }>;
+
+/** Re-read and prove both committed carriers and both legacy projections.
+ * Any mismatch is terminal for this action: the coordinator reloads durable
+ * truth and must never retry the already-receipted craft. */
+export function verifyArc3CommittedFixedFabricationAction(input: Readonly<{
+  extensions: V5Extensions;
+  committed: SaveStateV2;
+  expectedOwnedState: SaveStateV2;
+  expectedEngineeringState: EngineeringStateV2;
+  expectedArc2State: Arc2LootInventoryV1;
+  codecNow: number;
+  minedTimestampIntent: Arc3LegacyMinedTimestampIntent;
+}>): Arc3FixedCommittedVerification {
+  const engineering = verifyArc3CommittedAction({
+    extensions: input.extensions,
+    committed: input.committed,
+    expectedState: input.expectedEngineeringState,
+    codecNow: input.codecNow,
+    minedTimestampIntent: input.minedTimestampIntent,
+  });
+  if (engineering.kind !== 'verified') return engineering;
+  try {
+    const arc2 = readArc2Loot(input.extensions);
+    if (arc2.kind !== 'loaded') {
+      return Object.freeze({ kind: 'mismatch', detail: `arc2-carrier-${arc2.kind}` });
+    }
+    if (arc2.state.kind !== 'inventory') {
+      return Object.freeze({ kind: 'mismatch', detail: 'arc2-carrier-legacy-protected' });
+    }
+    if (!sameRows(encodeArc2LootCarrier(arc2.state), encodeArc2LootCarrier(input.expectedArc2State))) {
+      return Object.freeze({ kind: 'mismatch', detail: 'arc2-carrier-state-mismatch' });
+    }
+    if (!arc2LootLegacyMirrorMatches(arc2.state, input.committed)) {
+      return Object.freeze({ kind: 'mismatch', detail: 'arc2-carrier-legacy-projection-mismatch' });
+    }
+    const mismatch = verifyOwnedFields(
+      input.committed,
+      input.expectedOwnedState,
+      FIXED_FABRICATION_OWNED_FIELDS,
+      'fixed-owned',
+    );
+    if (mismatch !== null) return Object.freeze({ kind: 'mismatch', detail: mismatch });
+    return Object.freeze({
+      kind: 'verified',
+      state: engineering.state,
+      arc2State: arc2.state,
+      projection: engineering.projection,
+    });
+  } catch (error) {
+    return Object.freeze({
+      kind: 'mismatch', detail: error instanceof Error ? error.message : String(error),
+    });
+  }
+}
+
 /** Publish only mining-owned legacy compatibility fields. The outer SaveState
  * object and its Atlas/log identities remain intact. */
 export function publishArc3MiningFields(target: SaveStateV2, committed: SaveStateV2): void {
   target.cargo = committed.cargo.map(([id, count]) => [id, count]);
   target.cgx = committed.cgx.map(([id, count]) => [id, count]);
   target.stats = { ...committed.stats };
+  target.ascCh = committed.ascCh;
+  target.ascProg = { ...committed.ascProg };
   publishArc3LegacyCompatibilityFields(target, committed);
 }
 
@@ -687,5 +1211,30 @@ export function publishArc3SkimFields(target: SaveStateV2, committed: SaveStateV
   target.cgx = committed.cgx.map(([id, count]) => [id, count]);
   target.stats = { ...committed.stats };
   target.hp = committed.hp;
+  publishArc3LegacyCompatibilityFields(target, committed);
+}
+
+/** Publish only the research-owned economy and Arc 3 compatibility fields. */
+export function publishArc3ResearchFields(target: SaveStateV2, committed: SaveStateV2): void {
+  target.cargo = committed.cargo.map(([id, count]) => [id, count]);
+  target.cgx = committed.cgx.map(([id, count]) => [id, count]);
+  target.essence = committed.essence;
+  publishArc3LegacyCompatibilityFields(target, committed);
+}
+
+/** Publish only fixed-fabrication-owned fields. The outer SaveState and every
+ * unrelated Atlas/log collection retain their live identities. */
+export function publishArc3FixedFabricationFields(target: SaveStateV2, committed: SaveStateV2): void {
+  target.cargo = committed.cargo.map(([id, count]) => [id, count]);
+  target.cgx = committed.cgx.map(([id, count]) => [id, count]);
+  target.essence = committed.essence;
+  target.items = committed.items.map(([id, count]) => [id, count]);
+  target.equip = { ...committed.equip };
+  target.equipAff = Object.fromEntries(Object.entries(committed.equipAff).map(([slot, affix]) => [
+    slot, { ...affix },
+  ]));
+  target.stats = { ...committed.stats };
+  target.ascCh = committed.ascCh;
+  target.ascProg = { ...committed.ascProg };
   publishArc3LegacyCompatibilityFields(target, committed);
 }
