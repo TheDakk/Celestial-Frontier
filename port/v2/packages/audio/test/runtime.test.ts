@@ -1,10 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import {
   AUDIO_CATEGORIES,
+  AUDIO_RESOURCE_MEASUREMENT_DIAGNOSTICS,
+  AUDIO_SETTING_ACCESSIBILITY_DIAGNOSTICS,
+  auditAudioLabLifecycleTrace,
+  captureAudioLabSample,
   createAudioRuntime,
   type AudioCounterpartReceipt,
   type AudioAnalyserNodeLike,
   type AudioContextLike,
+  type AudioLabSample,
   type AudioGainNodeLike,
   type AudioLimiterNodeLike,
   type AudioNodeLike,
@@ -252,6 +257,37 @@ function request(source: FakeSource, options: RequestOptions = {}): AudioVoiceRe
       return { source, sources, output, nodes, reservation };
     },
   };
+}
+
+async function createAudioLabTrace(): Promise<AudioLabSample[]> {
+  const first = new FakeContext();
+  const second = new FakeContext();
+  const factory = contextFactory([first, second]);
+  const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+  const samples: AudioLabSample[] = [captureAudioLabSample('pre-activation', runtime)];
+
+  await runtime.activate();
+  expect(runtime.playVoice(request(new FakeSource('lab-creature-1'), {
+    category: 'creature',
+    concurrencyGroup: 'lab-creature',
+  })).kind).toBe('started');
+  expect(runtime.putCached('lab-cache-1', 'first')).toBe(true);
+  samples.push(captureAudioLabSample('running-loaded', runtime));
+
+  await runtime.setHidden(true);
+  samples.push(captureAudioLabSample('hidden-clean', runtime));
+  await runtime.setHidden(false);
+  await runtime.activate();
+  expect(runtime.playVoice(request(new FakeSource('lab-creature-2'), {
+    category: 'creature',
+    concurrencyGroup: 'lab-creature',
+  })).kind).toBe('started');
+  expect(runtime.putCached('lab-cache-2', 'second')).toBe(true);
+  samples.push(captureAudioLabSample('restart-loaded', runtime));
+
+  await runtime.dispose();
+  samples.push(captureAudioLabSample('disposed-clean', runtime));
+  return samples;
 }
 
 function counterpart(
@@ -1292,5 +1328,200 @@ describe('Arc 7 injected audio runtime', () => {
       },
       faults: { total: 3 },
     });
+  });
+
+  it('certifies a two-cycle pure lab plateau while keeping browser bytes and accessibility gaps open', async () => {
+    const samples = await createAudioLabTrace();
+    const audit = auditAudioLabLifecycleTrace(samples);
+    expect(audit).toEqual({
+      sampleCount: 5,
+      loadedCycles: 2,
+      contextGenerations: 2,
+      pureWarmPlateau: { nodes: 15, voices: 1, creatureEmitters: 1, cacheEntries: 1 },
+      settingsAccessibility: AUDIO_SETTING_ACCESSIBILITY_DIAGNOSTICS,
+      resourceMeasurement: AUDIO_RESOURCE_MEASUREMENT_DIAGNOSTICS,
+    });
+    expect(audit.settingsAccessibility).toMatchObject({
+      meaningfulCounterpart: 'runtime-verifier-required',
+      captions: 'app-integration-required',
+      mono: 'not-implemented',
+      dynamicRange: 'not-implemented',
+      reducedIntensity: 'not-implemented',
+    });
+    expect(audit.resourceMeasurement).toEqual({
+      encodedBytes: 'measurement-required',
+      decodedBytes: 'measurement-required',
+      browserWarmPlateau: 'measurement-required',
+      deviceHeatBattery: 'physical-device-required',
+    });
+
+    const missingHidden = samples.filter((sample) => sample.phase !== 'hidden-clean');
+    expect(() => auditAudioLabLifecycleTrace(missingHidden)).toThrow(/exactly 5 samples/);
+    const falsePlateau = samples.map((sample, index) => index === 3 || index === 4
+      ? {
+        ...sample,
+        diagnostics: {
+          ...sample.diagnostics,
+          nodes: { ...sample.diagnostics.nodes, peak: sample.diagnostics.nodes.peak + 1 },
+          reservations: {
+            ...sample.diagnostics.reservations,
+            nodes: {
+              ...sample.diagnostics.reservations.nodes,
+              activePlusReservedPeak:
+                sample.diagnostics.reservations.nodes.activePlusReservedPeak + 1,
+            },
+          },
+        },
+      }
+      : sample);
+    expect(() => auditAudioLabLifecycleTrace(falsePlateau)).toThrow(/did not plateau/);
+    const leakedHidden = samples.map((sample, index) => index === 2
+      ? {
+        ...sample,
+        diagnostics: {
+          ...sample.diagnostics,
+          cache: { ...sample.diagnostics.cache, active: 1 },
+        },
+      }
+      : sample);
+    expect(() => auditAudioLabLifecycleTrace(leakedHidden)).toThrow(/retained an audio owner/);
+    const hiddenCleanupFault = samples.map((sample, index) => index === 2
+      ? {
+        ...sample,
+        diagnostics: {
+          ...sample.diagnostics,
+          cleanup: { ...sample.diagnostics.cleanup, nodeDisconnectFailures: 1 },
+          faults: { ...sample.diagnostics.faults, total: 1 },
+        },
+      }
+      : sample);
+    expect(() => auditAudioLabLifecycleTrace(hiddenCleanupFault)).toThrow(/not a clean/);
+  });
+
+  it('rejects accessor diagnostics without invoking them and snapshots portable proxies by descriptor', async () => {
+    const samples = await createAudioLabTrace();
+    let accessorReads = 0;
+    const accessorDiagnostics = { ...samples[1]!.diagnostics };
+    Object.defineProperty(accessorDiagnostics, 'nodes', {
+      enumerable: true,
+      get: () => {
+        accessorReads++;
+        return samples[1]!.diagnostics.nodes;
+      },
+    });
+    const accessorTrace = samples.map((sample, index) => index === 1
+      ? { ...sample, diagnostics: accessorDiagnostics }
+      : sample) as AudioLabSample[];
+    expect(() => auditAudioLabLifecycleTrace(accessorTrace)).toThrow(/data property/);
+    expect(accessorReads).toBe(0);
+
+    let proxyReads = 0;
+    const proxyDiagnostics = new Proxy(samples[0]!.diagnostics, {
+      get: () => {
+        proxyReads++;
+        throw new Error('diagnostic getter must not run');
+      },
+    });
+    const proxyTrace = samples.map((sample, index) => index === 0
+      ? { ...sample, diagnostics: proxyDiagnostics }
+      : sample);
+    expect(auditAudioLabLifecycleTrace(proxyTrace).sampleCount).toBe(5);
+    expect(proxyReads).toBe(0);
+
+    let runtimeGetterReads = 0;
+    const hostileRuntime = {} as Pick<ReturnType<typeof createAudioRuntime>, 'diagnostics'>;
+    Object.defineProperty(hostileRuntime, 'diagnostics', {
+      get: () => {
+        runtimeGetterReads++;
+        return () => samples[0]!.diagnostics;
+      },
+    });
+    expect(() => captureAudioLabSample('pre-activation', hostileRuntime)).toThrow(/data method/);
+    expect(runtimeGetterReads).toBe(0);
+  });
+
+  it('rejects a configured-budget change independently of bounded sample values', async () => {
+    const samples = await createAudioLabTrace();
+    const changedBudget = samples.map((sample, index) => index === 3
+      ? {
+        ...sample,
+        diagnostics: {
+          ...sample.diagnostics,
+          nodes: { ...sample.diagnostics.nodes, budget: sample.diagnostics.nodes.budget + 1 },
+        },
+      }
+      : sample);
+    expect(() => auditAudioLabLifecycleTrace(changedBudget)).toThrow(/configured budgets changed/);
+  });
+
+  it('rejects a different loaded-cycle active workload even when cumulative peaks match', async () => {
+    const samples = await createAudioLabTrace();
+    const changedWorkload = samples.map((sample, index) => index === 3
+      ? {
+        ...sample,
+        diagnostics: {
+          ...sample.diagnostics,
+          nodes: { ...sample.diagnostics.nodes, active: sample.diagnostics.nodes.active - 1 },
+        },
+      }
+      : sample);
+    expect(() => auditAudioLabLifecycleTrace(changedWorkload)).toThrow(/loaded workload changed/);
+  });
+
+  it('rejects incoherent voice, reservation, and integer fault accounting independently', async () => {
+    const samples = await createAudioLabTrace();
+    const brokenVoices = samples.map((sample, index) => index === 3
+      ? {
+        ...sample,
+        diagnostics: {
+          ...sample.diagnostics,
+          voices: { ...sample.diagnostics.voices, stopped: 999 },
+        },
+      }
+      : sample);
+    expect(() => auditAudioLabLifecycleTrace(brokenVoices)).toThrow(/accounting is incoherent/);
+
+    const brokenReservation = samples.map((sample, index) => index === 1
+      ? {
+        ...sample,
+        diagnostics: {
+          ...sample.diagnostics,
+          reservations: {
+            ...sample.diagnostics.reservations,
+            nodes: {
+              ...sample.diagnostics.reservations.nodes,
+              activePlusReservedPeak: 0,
+            },
+          },
+        },
+      }
+      : sample);
+    expect(() => auditAudioLabLifecycleTrace(brokenReservation)).toThrow(/reservation diagnostics/);
+
+    const fractionalFaultBudget = samples.map((sample, index) => index === 2
+      ? {
+        ...sample,
+        diagnostics: {
+          ...sample.diagnostics,
+          faults: { ...sample.diagnostics.faults, budget: 0.5 },
+        },
+      }
+      : sample);
+    expect(() => auditAudioLabLifecycleTrace(fractionalFaultBudget)).toThrow(/fault budget/);
+  });
+
+  it('rejects regressing cumulative diagnostics independently of final plateau equality', async () => {
+    const samples = await createAudioLabTrace();
+    const regressing = samples.map((sample, index) => {
+      const cooldownRejects = index === 1 || index === 2 ? 1 : 0;
+      return {
+        ...sample,
+        diagnostics: {
+          ...sample.diagnostics,
+          voices: { ...sample.diagnostics.voices, cooldownRejects },
+        },
+      };
+    });
+    expect(() => auditAudioLabLifecycleTrace(regressing)).toThrow(/cumulative diagnostics regressed/);
   });
 });

@@ -133,6 +133,36 @@ export type {
   AudioVoiceReservation,
   AudioVoiceStartResult,
 } from './runtime.js';
+export {
+  AUDIO_RESOURCE_MEASUREMENT_DIAGNOSTICS,
+  AUDIO_SETTING_ACCESSIBILITY_DIAGNOSTICS,
+  auditAudioLabLifecycleTrace,
+  captureAudioLabSample,
+} from './lab.js';
+export type {
+  AudioLabLifecycleAudit,
+  AudioLabPhase,
+  AudioLabSample,
+} from './lab.js';
+export {
+  AUDIO_ASSET_RIGHTS_MANIFEST,
+  AUDIO_ASSET_RIGHTS_MANIFEST_AUDIT,
+  AUDIO_ASSET_RIGHTS_MANIFEST_DIGEST,
+  AUDIO_ASSET_RIGHTS_MANIFEST_VERSION,
+  AUDIO_ASSET_ROLES,
+  audioAssetRightsManifestDigest,
+  auditAudioAssetRightsManifest,
+} from './rights.js';
+export type {
+  AudioAssetObservation,
+  AudioAssetRightsAudit,
+  AudioAssetRightsAuditInput,
+  AudioAssetRightsBundle,
+  AudioAssetRightsRow,
+  AudioAssetRole,
+  AudioAssetTechnicalPolicy,
+  AudioRightsEvidenceObservation,
+} from './rights.js';
 
 let AC: AudioContext | null = null;
 let getSndOn: () => boolean = () => true;
