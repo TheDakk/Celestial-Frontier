@@ -4,6 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "description": "Arc 4 truthful catalogue, creature, specimen, discovery, and canonical biosphere ownership state.",
-  "exports": { ".": "./src/index.ts" },
-  "dependencies": { "@cf/scene": "*" }
+  "exports": {
+    ".": "./src/index.ts",
+    "./snapshot-internal": "./src/snapshot-internal.ts"
+  },
+  "dependencies": {
+    "@cf/domain-genome": "*",
+    "@cf/domain-loot": "*",
+    "@cf/domain-progression": "*",
+    "@cf/domain-rand": "*",
+    "@cf/domain-sessionrng": "*",
+    "@cf/domain-strays": "*",
+    "@cf/domain-worldconfig": "*",
+    "@cf/scene": "*"
+  }
 }
