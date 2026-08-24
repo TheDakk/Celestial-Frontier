@@ -13,7 +13,8 @@
    Transform, and ONLY this transform:
      1. locate `const <Name>=(()=>{` … its `return Object.freeze({A,B,…});`
      2. body between them, VERBATIM
-     3. exports = the freeze list
+     3. exports = the freeze list, plus any narrowly declared owned-adapter
+        helpers whose existing bodies must be reused without duplication
      4. imports auto-detected against the registry of already-ported packages
    The result is committed, not gitignored — the port's source of record. A
    header records the exact main.js line range and a sha256 of the lifted body
@@ -45,6 +46,14 @@ if (iRet < 0 || iRet < i0) { console.error('freeze return not found'); process.e
 const body = main.slice(i0 + open.length, iRet);
 const retLine = main.slice(iRet, main.indexOf('});', iRet));   /* '});' — a bare ');' matches one char early and leaks a '}' into the last export name */
 const exportsList = retLine.replace('return Object.freeze({', '').split(',').map((s) => s.trim()).filter(Boolean);
+/* D-ST: the owned pure card router needs the existing private composers. Keep
+   their bodies verbatim and expose only their names from generated output;
+   descriptors.verbatim.js remains generated rather than hand-edited. */
+const adapterExports = name === 'Descriptors'
+  ? ['quasarDescriptor', 'cometDescriptor', 'decoDescriptor', 'dwarfDescriptor',
+    'radioDescriptor', 'supernovaDescriptor', 'protostarDescriptor']
+  : [];
+const moduleExports = [...new Set([...exportsList, ...adapterExports])];
 
 /* auto-detect imports: registry identifiers used in the body but not defined in it.
    ⚠ Detection scans a COMMENT-STRIPPED copy — a prose mention like "inherits a
@@ -70,9 +79,9 @@ const header = `/* AUTO-LIFTED VERBATIM from main.js @module ${name} [domain]
    determinism contract — parity fixtures depend on them byte-for-byte. */
 `;
 
-const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '') + body + '\nexport { ' + exportsList.join(', ') + ' };\n';
+const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '') + body + '\nexport { ' + moduleExports.join(', ') + ' };\n';
 fs.mkdirSync(outDir, { recursive: true });
 const outFile = path.join(outDir, name.toLowerCase() + '.verbatim.js');
 fs.writeFileSync(outFile, out);
-console.log('lifted ' + name + ': lines ' + lineOf(i0) + '-' + lineOf(iRet) + ', ' + (body.length / 1024).toFixed(0) + ' KB, exports [' + exportsList.join(', ') + '], imports from ' + (importLines.length || 'nothing'));
+console.log('lifted ' + name + ': lines ' + lineOf(i0) + '-' + lineOf(iRet) + ', ' + (body.length / 1024).toFixed(0) + ' KB, exports [' + moduleExports.join(', ') + '], imports from ' + (importLines.length || 'nothing'));
 console.log('  -> ' + outFile);
