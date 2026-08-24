@@ -82,19 +82,46 @@ const COMPENDIUM_COPY_CONTRADICTIONS = Object.freeze([
   /(?:capture|feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i,
 ]);
 
-const SHIPYARD_COPY_CONTRADICTIONS = Object.freeze([
-  /(?:current|read-only) Shipyard[^.!?]{0,80}\bcan\b[^.!?]{0,40}(?:build|buy|research|upgrade|equip|salvage|reward|change)/i,
-  /(?:Fabricator|Research Bench|ship upgrades?)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|playable|available)/i,
+const DORMANT_CRAFTING_COPY_CONTRADICTIONS = Object.freeze([
+  /fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:live|playable|available)\b/i,
+  /authored affixes?(?:\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:live|playable|available)\b/i,
+  /\b(?:item )?upgrades?\b[^.!?]{0,80}(?:is|are) (?:now )?(?:live|playable|available)\b/i,
+  /\bsockets?\b[^.!?]{0,80}(?:is|are) (?:now )?(?:live|playable|available)\b/i,
+  /\bvendors?\b[^.!?]{0,80}(?:is|are) (?:now )?(?:live|playable|available)\b/i,
+]);
+
+const UNAVAILABLE_V2_FEATURE_OVERCLAIMS = Object.freeze([
+  /all six Research rows[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\s+(?:bought|purchased|playable|available|live)/i,
+  /all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\s+(?:actionable|playable|available|live)/i,
+  /(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i,
+  ...DORMANT_CRAFTING_COPY_CONTRADICTIONS,
+  /(?:Capture|biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i,
+]);
+
+const ENGINEERING_COPY_CONTRADICTIONS = Object.freeze([
+  /all six research rows[^.!?]{0,80}(?:can be|are) (?:bought|purchased|available)/i,
+  /current Survey card (?:now )?(?:renders|shows|paints)[^.!?]{0,80}(?:orbit|mineral)/i,
+  /(?:Research|Skim)[^.!?]{0,80}banks?[^.!?]{0,48}Charter/i,
+  /(?:Rewards?|Costs?|HP changes?|Charter ticks?) publish(?:es)? before[^.!?]{0,48}commit/i,
+  /(?:Capture|biosphere discovery)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|playable|available)/i,
   /legacy charter refit[^.!?]{0,96}(?:names|draws|includes) (?:(?:an?|the) )?(?:unowned |missing )?Intergalactic Drive/i,
   /hardpoints?[^.!?]{0,80}(?:inferred|assumed|granted) from (?:the )?(?:chassis|stage|reach)/i,
   /(?:chassis|visual state)[^.!?]{0,80}(?:saved separately|separate saved state|writes? to the save)/i,
+  ...DORMANT_CRAFTING_COPY_CONTRADICTIONS,
 ]);
 
 const INVENTORY_COPY_CONTRADICTIONS = Object.freeze([
-  /(?:new loot sources?|drop rates?|Fabricator|Research Bench|item upgrades?|sockets?|vendors?|targeted crafting)[^.!?]{0,96}(?:is|are) (?:now )?(?:live|playable|available)/i,
+  /(?:unsupported effects?|random authored drops?|targeting tags?|item upgrades?|sockets?|vendors?)[^.!?]{0,96}(?:is|are) (?:now )?(?:live|playable|available)/i,
   /salvage[^.!?]{0,80}(?:scrap|Stardust)/i,
   /oversized legacy hold[^.!?]{0,80}(?:is|may be|will be) (?:truncat|discard|drop)/i,
   /(?:reload|double press|stale tab)[^.!?]{0,80}(?:can|may|will) (?:reroll|duplicate)/i,
+  ...DORMANT_CRAFTING_COPY_CONTRADICTIONS,
+]);
+
+const RECORDS_VISIBLE_ARC3_CONTRADICTIONS = Object.freeze([
+  /(?:Records board|visible Records rows?)[^.!?]{0,96}(?:shows?|lists?|displays?|includes?)[^.!?]{0,96}(?:Mine|mined|mining)[^.!?]{0,64}(?:counter|total|record|row)s?/i,
+  /(?:Records board|visible Records rows?)[^.!?]{0,96}(?:shows?|lists?|displays?|includes?)[^.!?]{0,96}(?:Skim|skimmed|skimming)[^.!?]{0,64}(?:counter|total|record|row)s?/i,
+  /(?:Records board|visible Records rows?)[^.!?]{0,96}(?:shows?|lists?|displays?|includes?)[^.!?]{0,96}Fabricator[^.!?]{0,64}(?:counter|total|record|row)s?/i,
 ]);
 
 const HD_ATTACHMENT_COPY_CONTRADICTIONS = Object.freeze([
@@ -107,21 +134,27 @@ function plainCopy(body: string): string {
   return body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
-function shipyardGuideCopyIsTruthful(body: string): boolean {
+function engineeringGuideCopyIsTruthful(body: string): boolean {
   const copy = plainCopy(body);
-  return /Shipyard[^.!?]{0,48}read-only inspection/i.test(copy)
-    && /canonical saved reach and actual owned systems/i.test(copy)
-    && /same derived capability state as travel/i.test(copy)
+  return /Engineering &(?:amp;)? Shipyard[^.!?]{0,96}capability-derived ship preview/i.test(copy)
+    && /same owned permanent systems and reach state as travel/i.test(copy)
     && /no separate visual state is saved/i.test(copy)
-    && /Scout\/Chemical[^.!?]{0,48}Jump\/Interstellar[^.!?]{0,48}Survey Cruiser[^.!?]{0,48}Frontier\/IG/i.test(copy)
-    && /Only systems and hardpoints actually present in the saved inventory are named and drawn/i.test(copy)
-    && /completed Charter proves frontier reach while no Intergalactic Drive is owned/i.test(copy)
-    && /honest legacy charter refit[^.!?]{0,80}generic long-range chassis/i.test(copy)
-    && /never names or draws the unowned drive or any unowned hardpoint/i.test(copy)
-    && /Fabricator, Research Bench purchases and prerequisites, ship upgrades[^.!?]{0,160}ship-system writers remain unavailable/i.test(copy)
-    && /current Shipyard cannot build, buy, research, reward, or change the expedition/i.test(copy)
-    && /explorer-gear inspection, equipping, unequipping, and salvage live[^.!?]{0,64}Inventory/i.test(copy)
-    && SHIPYARD_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
+    && /Only actually owned systems and fitted hardpoints are named and drawn/i.test(copy)
+    && /completed veteran Charter without its Intergalactic Drive[^.!?]{0,96}legacy charter refit/i.test(copy)
+    && /never names or draws the missing drive/i.test(copy)
+    && /Research Bench lists exactly six canonical rows/i.test(copy)
+    && /Deep Scanners is the only current purchase/i.test(copy)
+    && /consumes 6 Iron, 4 Silicon, and 20 Stardust/i.test(copy)
+    && /current Survey card does not yet render those orbital rows/i.test(copy)
+    && /other five[^.!?]{0,96}visible but disabled/i.test(copy)
+    && /Fabricator groups all 62 fixed recipes/i.test(copy)
+    && /exposes an action only when its output has a connected gameplay effect/i.test(copy)
+    && /exact materials, parts, Stardust, Signature, prerequisite, revision, and capacity checks pass/i.test(copy)
+    && /built drive or Array changes the actual ship and reach/i.test(copy)
+    && /Outputs with dormant effects, fully exceptional slotted crafting, authored affixes\/drawbacks, item upgrades, sockets, and vendors remain unavailable/i.test(copy)
+    && /Only one Engineering action can be pending/i.test(copy)
+    && /no reward, HP change, Charter tick, ownership change, or cost is published before the receipt-bearing transaction commits/i.test(copy)
+    && ENGINEERING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
 function inventoryGuideCopyIsTruthful(body: string): boolean {
@@ -136,21 +169,90 @@ function inventoryGuideCopyIsTruthful(body: string): boolean {
     && /one-unit non-gated fallback/i.test(copy)
     && /oversized legacy hold[^.!?]{0,80}inspection only/i.test(copy)
     && /never truncated/i.test(copy)
-    && /New loot sources and drop rates[^.!?]{0,180}remain unavailable/i.test(copy)
-    && /no recipe is exposed as a player action until Arc 3/i.test(copy)
+    && /Fabricator[^.!?]{0,96}lists all 62 fixed recipes/i.test(copy)
+    && /settle only rows whose output has a connected effect/i.test(copy)
+    && /same Arc 2 inventory authority and legacy mirror in one transaction/i.test(copy)
+    && /Outputs with dormant effects[^.!?]{0,240}fully exceptional slotted crafting[^.!?]{0,240}authored affixes\/drawbacks[^.!?]{0,240}item upgrades, sockets, and vendors remain unavailable/i.test(copy)
     && INVENTORY_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
-function shipyardReleaseCopyIsTruthful(body: string): boolean {
-  return /SHIPYARD READS CAPABILITY, NOT WISHES/i.test(body)
-    && /read-only Shipyard derives its Scout\/Chemical, Jump\/Interstellar, Survey Cruiser, or Frontier\/IG chassis/i.test(body)
-    && /same canonical saved reach used by travel/i.test(body)
-    && /shows only actually owned systems and hardpoints/i.test(body)
-    && /completed veteran Charter without an owned Intergalactic Drive/i.test(body)
-    && /honest generic legacy charter refit/i.test(body)
-    && /never names or draws the missing drive/i.test(body)
-    && /fabrication, Research Bench purchases, and upgrades remain unavailable/i.test(body)
-    && SHIPYARD_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+function recordsGuideCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /Records board preserves and displays imported exploration totals, Stardust earned, and Journal entries/i.test(copy)
+    && /First landfalls visibly update the worlds-landed total/i.test(copy)
+    && /Mine, Skim, and fixed Fabricator settlements also preserve their compatible expedition counters/i.test(copy)
+    && /those Arc 3 counters are not yet listed on the Records board/i.test(copy)
+    && /live Journal writing is not connected/i.test(copy)
+    && RECORDS_VISIBLE_ARC3_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
+}
+
+function miningGuideCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /lifeless, non-Earth world/i.test(copy)
+    && /grounded Engineering reveals[^.!?]{0,120}exact pulls remaining/i.test(copy)
+    && /reveal is inspection only/i.test(copy)
+    && /Mine this world[^.!?]{0,64}separate durable action/i.test(copy)
+    && /ordinary, rich-strike, cosmic, and exceptional results into Cargo/i.test(copy)
+    && /eventually leaves the world Worked out/i.test(copy)
+    && /Auto-Extractor[^.!?]{0,96}active play/i.test(copy)
+    && /wall clock creates no income/i.test(copy)
+    && /Capacity, revision, stale-tab, protected-save, and failed-write checks refuse before publication/i.test(copy)
+    && /pending action disables every Engineering action until it settles/i.test(copy)
+    && !/(?:Earth|living worlds?)[^.!?]{0,80}(?:can|may) be mined/i.test(copy)
+    && !/(?:offline income is earned|wall clock accrues new loads)/i.test(copy);
+}
+
+function skimmingGuideCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /fitted Jump Drive is required/i.test(copy)
+    && /exact material, finite passes remaining, and next HP damage/i.test(copy)
+    && /successful skim deposits one deterministic material haul and spends one corona pass/i.test(copy)
+    && /unguarded remnant costs exactly 3 HP/i.test(copy)
+    && /HP of 4 or lower blocks the unsafe attempt/i.test(copy)
+    && /spent corona remains Worked out/i.test(copy)
+    && /does not bank a mining Charter goal/i.test(copy)
+    && /no wall-clock recharge/i.test(copy)
+    && !/(?:unlimited|infinite) (?:passes|skims|corona)/i.test(copy)
+    && !/remnant skim[^.!?]{0,80}(?:cannot|never) (?:harm|cost|spend) HP/i.test(copy);
+}
+
+function stardustGuideCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /preserves its imported\/current Stardust/i.test(copy)
+    && /Deep Scanners purchase or eligible fixed Fabricator recipe spends its stated Stardust/i.test(copy)
+    && /same durable transaction as the result/i.test(copy)
+    && /No current v2 action earns Stardust/i.test(copy)
+    && /Rare-life discovery rewards[^.!?]{0,160}remain unavailable/i.test(copy)
+    && !/(?:Mine|Skim|Survey|Capture)[^.!?]{0,80}earns? Stardust/i.test(copy);
+}
+
+function surveyBoundaryCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /selection is navigation and inspection/i.test(copy)
+    && /does not spend a resource, discover life, capture a species, or authorize extraction/i.test(copy)
+    && /separate grounded mineral reveal and its finite Mine action/i.test(copy)
+    && /reveal describes the current opportunity but is not itself a mining receipt/i.test(copy)
+    && /current Survey card does not yet paint those orbital mineral rows/i.test(copy)
+    && !/Survey[^.!?]{0,80}(?:discovers life|captures a species|authorizes mining)/i.test(copy)
+    && !/current Survey card (?:now )?(?:renders|shows|paints)[^.!?]{0,80}(?:orbit|mineral)/i.test(copy);
+}
+
+function engineeringReleaseCopyIsTruthful(body: string): boolean {
+  return /ENGINEERING TURNS OPPORTUNITY INTO REACH/i.test(body)
+    && /finite grounded Mine and Jump-gated Skim actions/i.test(body)
+    && /exactly six Research rows/i.test(body)
+    && /all 62 fixed Fabricator recipes/i.test(body)
+    && /Only Deep Scanners can currently be purchased/i.test(body)
+    && /current Survey card does not yet render those mineral rows/i.test(body)
+    && /enables only outputs with connected effects/i.test(body)
+    && /Fully exceptional slotted crafting, authored affixes\/drawbacks, item upgrades, sockets, and vendors remain unavailable/i.test(body)
+    && /Built permanent systems change the real ship and star reach/i.test(body)
+    && /legacy charter refit still never names or draws a missing drive/i.test(body)
+    && /Remnant skim damage is previewed before it can spend HP/i.test(body)
+    && /may spend preserved Stardust but cannot earn it/i.test(body)
+    && /no reward, cost, Charter tick, or optimistic panel change publishes before the one receipt-bearing transaction commits/i.test(body)
+    && /Capture and biosphere discovery remain unavailable/i.test(body)
+    && ENGINEERING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
 
 function hdAttachmentReleaseCopyIsTruthful(body: string): boolean {
@@ -279,8 +381,8 @@ describe('v2 Guide capability filter', () => {
     expect(categories).toHaveLength(9);
     expect(topics).toHaveLength(41);
     expect(topics.filter((topic) => topic.availability === 'available')).toHaveLength(0);
-    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(20);
-    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(21);
+    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(23);
+    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(18);
     expect(topics.filter((topic) => topic.availability === 'partial')
       .every((topic) => topic.body !== topic.legacyBody)).toBe(true);
     expect(topics.some((topic) => topic.id === 'beacon' || topic.id === 'events')).toBe(false);
@@ -325,64 +427,87 @@ describe('v2 Guide capability filter', () => {
     expect(getGuideTopic('saving')?.body).toContain('returns safely to <b>Cosmos</b>');
     expect(getGuideTopic('saving')?.body).toContain('without losing the rest of your expedition progress');
     expect(getGuideTopic('ascent')?.availability).toBe('partial');
-    expect(getGuideTopic('ascent')?.body).toContain('first landing is the only new Charter goal progress');
-    expect(getGuideTopic('ascent')?.body).toContain('Any successful Land action');
-    expect(getGuideTopic('ascent')?.body).toContain('every consecutive imported chapter');
-    expect(getGuideTopic('ascent')?.body).toContain('invents no missing goal, drive, reward, or reach tier');
-    expect(getGuideTopic('ascent')?.body).toContain('saved reach stage');
+    expect(getGuideTopic('ascent')?.body).toContain('first landfalls, successful Mine actions, and successful fixed Fabricator outputs');
+    expect(getGuideTopic('ascent')?.body).toContain('Research and Skim bank neither');
+    expect(getGuideTopic('ascent')?.body).toContain('Chapter 1 is now completable through real play');
+    expect(getGuideTopic('ascent')?.body).toContain('owned system that backs the next reach stage');
+    expect(getGuideTopic('ascent')?.body).toContain('without invented goals, rewards, systems, or reach');
     expect(getGuideTopic('ascent')?.body).toContain('Saved Prime Signatures');
-    expect(getGuideTopic('charters')?.body).toContain('first landfall is the only new Charter goal progress');
-    expect(getGuideTopic('charters')?.body).toContain('After any successful Land action');
-    expect(getGuideTopic('charters')?.body).toContain('every consecutive imported chapter');
-    expect(getGuideTopic('charters')?.body).toContain('saved reach stage');
-    expect(getGuideTopic('charters')?.body).not.toMatch(/mine|fabricat|shipyard/i);
-    expect(getGuideTopic('regions')?.body).toContain('saved reach stage');
-    expect(getGuideTopic('regions')?.body).toContain('saved Prime Signature count');
+    expect(getGuideTopic('charters')?.body).toContain('first landfalls, successful <b>Mine</b> actions, and successful fixed <b>Fabricator</b> outputs');
+    expect(getGuideTopic('charters')?.body).toContain('Each Mine press banks one mining-goal tick');
+    expect(getGuideTopic('charters')?.body).toContain('Research and Skim do not counterfeit');
+    expect(getGuideTopic('charters')?.body).toContain('newly built Jump Drive, Long-Range Array, or Intergalactic Drive');
+    expect(getGuideTopic('charters')?.body).toContain('canonical progress and owned reach');
+    expect(getGuideTopic('regions')?.body).toContain('permanent ship systems');
+    expect(getGuideTopic('regions')?.body).toContain('eligible fixed Fabricator recipes');
+    expect(getGuideTopic('regions')?.body).toContain('In-progress chapter state never invents a permanent system');
+    expect(getGuideTopic('regions')?.body).toContain('fully completed imported veteran Charter preserves intergalactic reach');
+    expect(getGuideTopic('regions')?.body).toContain('saved Prime Signatures');
     expect(getGuideTopic('achievements')?.availability).toBe('partial');
-    expect(getGuideTopic('achievements')?.body).toContain('imported exploration counters');
-    expect(getGuideTopic('achievements')?.body).toContain('First landfalls update');
+    expect(getGuideTopic('achievements')?.body).toContain('imported exploration totals');
+    expect(getGuideTopic('achievements')?.body).toContain('First landfalls visibly update');
+    expect(getGuideTopic('achievements')?.body).toContain('Arc 3 counters are not yet listed');
+    expect(recordsGuideCopyIsTruthful(getGuideTopic('achievements')!.body)).toBe(true);
+    for (const visibleClaim of [
+      'The Records board now displays the mining counter.',
+      'The Records board now lists the skimming total.',
+      'The visible Records rows now include the Fabricator counter.',
+    ]) {
+      expect(recordsGuideCopyIsTruthful(
+        getGuideTopic('achievements')!.body + visibleClaim,
+      ), visibleClaim).toBe(false);
+    }
     expect(getGuideTopic('hp')?.availability).toBe('partial');
-    expect(getGuideTopic('hp')?.body).toContain('read-only expedition fact');
-    expect(getGuideTopic('hp')?.body).toContain('round-trippable');
+    expect(getGuideTopic('hp')?.body).toContain('costs exactly <b>3 HP</b>');
+    expect(getGuideTopic('hp')?.body).toContain('HP is 4 or lower');
+    expect(getGuideTopic('hp')?.body).toContain('only current HP writer');
+    expect(getGuideTopic('discover')?.availability).toBe('unavailable');
+    expect(getGuideTopic('discover')?.body).toContain('Survey selection and Engineering mineral reveal do not catalogue life');
   });
 
-  it('keeps Shipyard read-only while exposing only the exact Inventory actions that exist', () => {
+  it('describes the exact live Engineering and Inventory actions without promoting dormant rows', () => {
     const research = getGuideTopic('research');
     const crafting = getGuideTopic('crafting');
-    const shipyardBullet = V2_DRAFT_RELEASE.sections
+    const engineeringBullet = V2_DRAFT_RELEASE.sections
       .flatMap((section) => section.bullets)
-      .find((bullet) => bullet.includes('SHIPYARD READS CAPABILITY, NOT WISHES'));
+      .find((bullet) => bullet.includes('ENGINEERING TURNS OPPORTUNITY INTO REACH'));
     const attachmentBullet = V2_DRAFT_RELEASE.sections
       .flatMap((section) => section.bullets)
       .find((bullet) => bullet.includes('HD SURFACES HAVE ONE NAMED OWNER'));
 
     expect(research?.availability).toBe('partial');
-    expect(shipyardGuideCopyIsTruthful(research!.body)).toBe(true);
+    expect(engineeringGuideCopyIsTruthful(research!.body)).toBe(true);
     expect(crafting?.availability).toBe('partial');
     expect(inventoryGuideCopyIsTruthful(crafting!.body)).toBe(true);
-    for (const id of ['stardust', 'harvest', 'mining', 'skimming'] as const) {
-      expect(getGuideTopic(id)?.availability, `${id} writer/faucet became available`)
-        .toBe('unavailable');
+    for (const id of ['stardust', 'mining', 'skimming'] as const) {
+      expect(getGuideTopic(id)?.availability, `${id} live Arc 3 boundary is hidden`).toBe('partial');
     }
-    expect(shipyardBullet).toBeDefined();
-    expect(shipyardReleaseCopyIsTruthful(shipyardBullet!)).toBe(true);
+    expect(getGuideTopic('harvest')?.availability).toBe('unavailable');
+    expect(engineeringBullet).toBeDefined();
+    expect(engineeringReleaseCopyIsTruthful(engineeringBullet!)).toBe(true);
     expect(attachmentBullet).toBeDefined();
     expect(hdAttachmentReleaseCopyIsTruthful(attachmentBullet!)).toBe(true);
 
-    expect(shipyardGuideCopyIsTruthful(
-      research!.body + ' The current Shipyard can build and upgrade the ship.',
+    expect(engineeringGuideCopyIsTruthful(
+      research!.body + ' All six research rows can be purchased now.',
     )).toBe(false);
-    expect(shipyardGuideCopyIsTruthful(
+    expect(engineeringGuideCopyIsTruthful(
+      research!.body + ' The current Survey card now renders the orbital mineral reveal.',
+    )).toBe(false);
+    expect(engineeringGuideCopyIsTruthful(
+      research!.body + ' Research banks one Charter fabrication goal.',
+    )).toBe(false);
+    expect(engineeringGuideCopyIsTruthful(
       research!.body + ' The legacy charter refit names an unowned Intergalactic Drive.',
     )).toBe(false);
-    expect(shipyardGuideCopyIsTruthful(
+    expect(engineeringGuideCopyIsTruthful(
       research!.body.replace(
-        'Only systems and hardpoints actually present in the saved inventory are named and drawn',
+        'Only actually owned systems and fitted hardpoints are named and drawn',
         'Hardpoints are inferred from the chassis stage',
       ),
     )).toBe(false);
     expect(inventoryGuideCopyIsTruthful(
-      crafting!.body + ' New loot sources and drop rates are now available.',
+      crafting!.body + ' Unsupported effects are now available.',
     )).toBe(false);
     expect(inventoryGuideCopyIsTruthful(
       crafting!.body.replace('never truncated', 'truncated to fit'),
@@ -390,11 +515,34 @@ describe('v2 Guide capability filter', () => {
     expect(inventoryGuideCopyIsTruthful(
       crafting!.body.replace('half of each direct material cost, rounded down', 'invented scrap and Stardust'),
     )).toBe(false);
-    expect(shipyardReleaseCopyIsTruthful(
-      shipyardBullet! + ' The Research Bench is now available.',
+    const dormantCraftingClaims = [
+      'Fully exceptional slotted crafting is now available.',
+      'Fully-exceptional slotted craft is now available.',
+      'Authored affixes/drawbacks are now available.',
+      'Upgrades are now available.',
+      'Item upgrades are now available.',
+      'Sockets are now available.',
+      'Vendors are now available.',
+    ];
+    for (const claim of dormantCraftingClaims) {
+      expect(engineeringGuideCopyIsTruthful(research!.body + claim), claim).toBe(false);
+      expect(inventoryGuideCopyIsTruthful(crafting!.body + claim), claim).toBe(false);
+      expect(engineeringReleaseCopyIsTruthful(engineeringBullet! + claim), claim).toBe(false);
+    }
+    expect(engineeringReleaseCopyIsTruthful(
+      engineeringBullet! + ' All six research rows can be purchased.',
     )).toBe(false);
-    expect(shipyardReleaseCopyIsTruthful(
-      shipyardBullet! + ' The legacy charter refit draws the missing Intergalactic Drive.',
+    expect(engineeringReleaseCopyIsTruthful(
+      engineeringBullet! + ' Capture is now available.',
+    )).toBe(false);
+    expect(engineeringReleaseCopyIsTruthful(
+      engineeringBullet!.replace(
+        'Only Deep Scanners can currently be purchased',
+        'Research purchase boundary omitted',
+      ),
+    )).toBe(false);
+    expect(engineeringReleaseCopyIsTruthful(
+      engineeringBullet! + ' The legacy charter refit draws the missing Intergalactic Drive.',
     )).toBe(false);
     expect(hdAttachmentReleaseCopyIsTruthful(
       attachmentBullet!.replace(
@@ -407,37 +555,80 @@ describe('v2 Guide capability filter', () => {
     )).toBe(false);
   });
 
+  it('separates Survey reveal, finite extraction, HP risk, and Stardust spending from unavailable capture', () => {
+    const survey = getGuideTopic('survey')!.body;
+    const mining = getGuideTopic('mining')!.body;
+    const skimming = getGuideTopic('skimming')!.body;
+    const stardust = getGuideTopic('stardust')!.body;
+    expect(surveyBoundaryCopyIsTruthful(survey)).toBe(true);
+    expect(miningGuideCopyIsTruthful(mining)).toBe(true);
+    expect(skimmingGuideCopyIsTruthful(skimming)).toBe(true);
+    expect(stardustGuideCopyIsTruthful(stardust)).toBe(true);
+    expect(getGuideTopic('discover')?.availability).toBe('unavailable');
+
+    /* Missing-anchor and contradictory controls are independent: each must
+       turn the same semantic predicate red for the intended reason. */
+    expect(surveyBoundaryCopyIsTruthful(
+      survey.replace('selection is navigation and inspection', 'selection boundary omitted'),
+    )).toBe(false);
+    expect(surveyBoundaryCopyIsTruthful(
+      survey + ' Survey authorizes mining and captures a species.',
+    )).toBe(false);
+    expect(surveyBoundaryCopyIsTruthful(
+      survey + ' The current Survey card now renders every orbital mineral.',
+    )).toBe(false);
+    expect(miningGuideCopyIsTruthful(
+      mining.replace('exact pulls remaining', 'pull count omitted'),
+    )).toBe(false);
+    expect(miningGuideCopyIsTruthful(
+      mining + ' Living worlds can be mined, and the wall clock accrues new loads offline.',
+    )).toBe(false);
+    expect(skimmingGuideCopyIsTruthful(
+      skimming.replace('finite passes remaining', 'pass count omitted'),
+    )).toBe(false);
+    expect(skimmingGuideCopyIsTruthful(
+      skimming + ' A remnant skim can never harm HP, and corona passes are unlimited.',
+    )).toBe(false);
+    expect(stardustGuideCopyIsTruthful(
+      stardust.replace('No current v2 action earns Stardust', 'earning boundary omitted'),
+    )).toBe(false);
+    expect(stardustGuideCopyIsTruthful(
+      stardust + ' Survey earns Stardust on every world.',
+    )).toBe(false);
+  });
+
   it('keeps star/drive and saved Prime-radius route boundaries truthful and distinct', () => {
     const reachableRouteTopics = ['landing', 'search', 'codes', 'charters', 'atlas', 'regions'] as const;
     const hasHonestRouteBoundaries = (body: string): boolean => {
-      const charterSentence = body.match(/[^.!?]*next Charter system is not available in this development slice[^.!?]*/i)?.[0] || '';
-      const primeRadiusSentence = body.match(/[^.!?]*Prime Signature radius expansion is not available in this development slice[^.!?]*/i)?.[0] || '';
-      const engineeringOrMilestone = /mine|fabricat|shipyard|\bbuild\b|\bmilestone\b|\bneeded\b|\brequired\b/i;
-      return charterSentence.length > 0 && primeRadiusSentence.length > 0
-        && !engineeringOrMilestone.test(charterSentence)
-        && !/Prime Signature radius|collect|earn|award|write/i.test(charterSentence)
-        && !engineeringOrMilestone.test(primeRadiusSentence)
-        && !/collect|earn|award|write|next Charter system/i.test(primeRadiusSentence);
+      const copy = plainCopy(body);
+      const starBoundary = /(?:(?:star beyond owned ship reach|blocked star)[^.!?]{0,160}(?:owned|required)[^.!?]{0,80}permanent system|system beyond the expedition’s owned reach[\s\S]{0,240}permanent ship systems)/i.test(copy);
+      const engineeringPath = /Engineering|fixed Fabricator|newly built Jump Drive/i.test(copy);
+      const primeBoundary = /(?:galaxy beyond|Galaxy-distance radius|Saved Prime Signatures)[^.!?]{0,200}Prime Signature/i.test(copy)
+        && /Prime Signature (?:earning|radius expansion)[^.!?]{0,96}not available in this development slice/i.test(copy);
+      const stale = /next Charter system is not available in this development slice/i.test(copy);
+      const conflated = /(?:chapter progress|chapter number)[^.!?]{0,80}(?:grants|mints|creates)[^.!?]{0,48}(?:drive|system|reach)/i.test(copy)
+        || /collect Prime Signatures to (?:extend|expand)[^.!?]{0,48}(?:star|ship) reach/i.test(copy);
+      return starBoundary && engineeringPath && primeBoundary && !stale && !conflated;
     };
     for (const id of reachableRouteTopics) {
       const topic = getGuideTopic(id);
       expect(topic, `${id} current Guide topic missing`).toBeDefined();
-      expect(topic!.body, `${id} includes unavailable engineering directions anywhere in its current support copy`)
-        .not.toMatch(/mine|fabricat|shipyard|\bbuild\b/i);
       expect(hasHonestRouteBoundaries(topic!.body), `${id} conflates Charter and saved Prime-radius boundaries`)
         .toBe(true);
     }
-    /* Negative controls: an old engineering instruction, a generic boundary,
-       and a false Signature-collection promise must fail this same player
-       visible-copy predicate. */
+    /* Negative controls: the old no-system message, a generic build hint,
+       and conflated chapter/Signature authority must fail the same predicate. */
     expect(hasHonestRouteBoundaries(
-      'This route needs a build at the Shipyard before you can continue.',
+      'A blocked star says the next Charter system is not available in this development slice. A galaxy beyond the saved Prime Signature radius says Prime Signature radius expansion is not available in this development slice.',
     )).toBe(false);
     expect(hasHonestRouteBoundaries(
-      'This route says its next reach action is unavailable in this development slice until the required milestone is complete.',
+      'Build something at Engineering before you continue.',
     )).toBe(false);
     expect(hasHonestRouteBoundaries(
-      'A blocked star says the next Charter system is not available in this development slice. A galaxy beyond the saved Prime Signature radius says collect Prime Signatures to expand it.',
+      getGuideTopic('regions')!.body + ' Collect Prime Signatures to extend star reach.',
+    )).toBe(false);
+    expect(hasHonestRouteBoundaries(
+      getGuideTopic('charters')!.body + ' Chapter progress alone grants the missing drive.',
     )).toBe(false);
     const worldCodeBullet = V2_DRAFT_RELEASE.sections
       .flatMap((section) => section.bullets)
@@ -765,7 +956,7 @@ describe('legacy and v2 release channels', () => {
       /reload after updating, or import a trusted complete expedition/,
       /Only a world’s first landing banks the live landfall objective/,
       /no longer show a player-facing Spectral class row/,
-      /primary chip and Charter board show only real landfall objectives/,
+      /primary chip and Charter board show only landfall, mining, and fixed-fabrication goals with real outcome writers/,
       /Saturated veteran Charter records no longer wedge/,
       /All 56 v1 releases and 398 legacy bullets/,
       /successful develop push battery/,
@@ -779,18 +970,24 @@ describe('legacy and v2 release channels', () => {
       /Loading and painting the first specimen thumbnails now happens away from the renderer thread/,
       /A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn/,
       /terminates an idle or replaced producer without a synchronous renderer fallback/,
-      /SHIPYARD READS CAPABILITY, NOT WISHES/,
-      /same canonical saved reach used by travel/,
-      /shows only actually owned systems and hardpoints/,
-      /honest generic legacy charter refit/,
-      /fabrication, Research Bench purchases, and upgrades remain unavailable/,
+      /ENGINEERING TURNS OPPORTUNITY INTO REACH/,
+      /finite grounded Mine and Jump-gated Skim actions/,
+      /exactly six Research rows/,
+      /all 62 fixed Fabricator recipes/,
+      /Only Deep Scanners can currently be purchased/,
+      /current Survey card does not yet render those mineral rows/,
+      /Fully exceptional slotted crafting, authored affixes\/drawbacks, item upgrades, sockets, and vendors remain unavailable/,
+      /Built permanent systems change the real ship and star reach/,
+      /may spend preserved Stardust but cannot earn it/,
+      /Capture and biosphere discovery remain unavailable/,
+      /Finish for now that points to the live Engineering & Shipyard/,
       /named HD surface-planet texture attachment/,
       /retains the displayed predecessor until an acquired successor publishes/,
       /Automated lenses still do not replace human play/,
       /production remains the v1\.8\.9 main-branch site/,
     ];
     const forbiddenOverclaims = [
-      /\b(?:mining|crafting|combat|capture|breeding)\b[^.!?]{0,80}\b(?:is|are)\s+(?:now\s+)?(?:playable|available|live)\b/i,
+      ...UNAVAILABLE_V2_FEATURE_OVERCLAIMS,
       /\bv2(?:\.0)?\s+(?:port|game|build)\s+(?:is\s+)?(?:complete|finished|production[- ]ready|fully ported)\b/i,
       /\b(?:all|every)\s+legacy\s+(?:system|mechanic|feature)s?\b[^.!?]{0,80}\b(?:ported|playable|available|live)\b/i,
       /(?:stale|forged) code[^.!?]{0,80}(?:lands? immediately|automatically lands?|replaces? the current view|clears? the (?:exact )?query)/i,
@@ -800,7 +997,7 @@ describe('legacy and v2 release channels', () => {
       ...TRAINING_RESTORE_CONTRADICTIONS,
       ...TRAINING_LEGACY_RECOVERY_CONTRADICTIONS,
       ...COMPENDIUM_COPY_CONTRADICTIONS,
-      ...SHIPYARD_COPY_CONTRADICTIONS,
+      ...ENGINEERING_COPY_CONTRADICTIONS,
       ...HD_ATTACHMENT_COPY_CONTRADICTIONS,
     ];
     const bulletinOutcome = (sections: readonly {
@@ -938,16 +1135,42 @@ describe('legacy and v2 release channels', () => {
         : bullet),
     }));
     expect(bulletinOutcome(contradictoryAtlas)).toMatchObject({ required: true, honest: false });
-    const injectedOverclaim = V2_DRAFT_RELEASE.sections.map((section, sectionIndex) => ({
-      category: section.category,
-      bullets: section.bullets.map((bullet, bulletIndex) => (
-        sectionIndex === 0 && bulletIndex === 1 ? 'Mining is now playable.' : bullet
-      )),
-    }));
-    const overclaimOutcome = bulletinOutcome(injectedOverclaim);
-    expect(overclaimOutcome).toMatchObject({
-      categories: true, canonical: true, inventory: true, populated: true, required: true, honest: false,
-    });
+    const withInjectedFeatureClaim = (claim: string) => V2_DRAFT_RELEASE.sections
+      .map((section, sectionIndex) => ({
+        category: section.category,
+        bullets: section.bullets.map((bullet, bulletIndex) => (
+          sectionIndex === 0 && bulletIndex === 1 ? `${bullet} ${claim}` : bullet
+        )),
+      }));
+    for (const truthfulClaim of [
+      'Mining is now playable.',
+      'Eligible fixed Fabricator crafting is now playable.',
+      'Exploration audio is now live.',
+    ]) {
+      expect(bulletinOutcome(withInjectedFeatureClaim(truthfulClaim)), truthfulClaim).toEqual({
+        categories: true, canonical: true, inventory: true, populated: true, required: true, honest: true,
+      });
+    }
+    for (const unavailableClaim of [
+      'All six Research rows can now be purchased.',
+      'All 62 fixed Fabricator recipes are now actionable.',
+      'Disconnected Fabricator outputs are now playable.',
+      'Fully-exceptional slotted craft is now playable.',
+      'Authored affixes/drawbacks are now available.',
+      'Upgrades are now playable.',
+      'Item upgrades are now live.',
+      'Sockets are now available.',
+      'Vendors are now live.',
+      'Capture is now playable.',
+      'Discover Life is now playable.',
+      'Breeding is now playable.',
+      'Creature combat is now playable.',
+    ]) {
+      expect(bulletinOutcome(withInjectedFeatureClaim(unavailableClaim)), unavailableClaim)
+        .toMatchObject({
+          categories: true, canonical: true, inventory: true, populated: true, required: true, honest: false,
+        });
+    }
   });
 
   it('positive control: an injected shipped bulletin obeys the one-time decision without authorizing a version', () => {

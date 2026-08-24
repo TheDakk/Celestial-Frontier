@@ -102,6 +102,18 @@ function driveToGraduation(training: typeof import('../apps/game/src/training.js
   expect(training.trainingStepId()).toBe('grad');
 }
 
+function graduationCopyIsTruthful(html: string): boolean {
+  const copy = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return /short drill stays focused on real navigation/i.test(copy)
+    && /open Engineering &amp; Shipyard from the 🛠 control/i.test(copy)
+    && /grounded lifeless world can expose Mine/i.test(copy)
+    && /proven star with the right drive can expose Skim/i.test(copy)
+    && /Research and fixed Fabricator rows enable only actions whose effects are connected/i.test(copy)
+    && /does not discover or capture its life/i.test(copy)
+    && !/(?:Surveying|landing)[^.!?]{0,80}(?:discovers|captures) (?:its )?life/i.test(copy)
+    && !/(?:all|every) Research[^.!?]{0,80}(?:available|purchasable)/i.test(copy);
+}
+
 beforeEach(() => {
   vi.resetModules();
   installDom();
@@ -120,9 +132,24 @@ describe('Field Training completion transaction UI', () => {
       complete: async () => ({ kind: 'completed' }),
       closePanels: () => {},
     };
-    expect(training.buildSteps(deps).map((step) => step.id)).toEqual([
+    const steps = training.buildSteps(deps);
+    expect(steps.map((step) => step.id)).toEqual([
       'welcome', 'find-earth', 'survey-tour', 'atlas-add', 'atlas-open', 'land', 'grad',
     ]);
+    const graduation = steps.find((step) => step.id === 'grad')!.text();
+    expect(graduationCopyIsTruthful(graduation)).toBe(true);
+    expect(graduationCopyIsTruthful(
+      graduation.replace(
+        'open <b>Engineering &amp; Shipyard</b> from the 🛠 control',
+        'continue exploring after this drill',
+      ),
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation + ' Surveying a living world captures its life.',
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation + ' Every Research row is now purchasable.',
+    )).toBe(false);
   });
 
   it('latches a mixed Finish/Skip activation to one Finish transaction and outcome', async () => {
