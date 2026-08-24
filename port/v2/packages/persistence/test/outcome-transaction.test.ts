@@ -9,6 +9,7 @@ import {
   V4_PRIMARY_KEY,
   createActivePlayPersistenceOwner,
   createF4DeterministicProductTransactionOwner,
+  createF4MultiOutcomePreDrawTransactionOwner,
   createF4MultiOutcomeTransactionOwner,
   F4_NO_RNG_PRODUCT_OPERATIONS,
   createF4OutcomeTransactionOwner,
@@ -17,8 +18,11 @@ import {
   createRevisionedRepository,
   createTabLeaseClient,
   migrateStoredV4ToV5,
+  isF4MultiOutcomePreDrawSettlementAuthorizerForCodec,
   planF4DeterministicProductReceipt,
   planF4MultiOutcomeDraws,
+  prepareF4AuthorityUpdate,
+  projectF4MultiOutcomeDrawAdvance,
   planF4OutcomeDraw,
   readF4Authority,
   readSaveV5,
@@ -26,6 +30,7 @@ import {
   type F4OutcomeTransactionInput,
   type F4DeterministicProductTransactionInput,
   type F4MultiOutcomeTransactionInput,
+  type F4MultiOutcomePreDrawTransactionInput,
   type F4NoRngProductTransactionInput,
   type StorageBackend,
   type StorageCheck,
@@ -44,6 +49,34 @@ const fixtures = JSON.parse(fs.readFileSync(path.join(baseline, 'save-fixtures.j
 const REGISTRY = JSON.parse(fs.readFileSync(path.join(baseline, 'content-registry.json'), 'utf8')) as ContentRegistry;
 const NOW = 1_753_900_060_000;
 const VETERAN_RAW = JSON.stringify(fixtures.inputs.veteran_rich);
+const OUTCOME_TRANSACTION_SOURCE = fs.readFileSync(
+  path.join(here, '..', 'src', 'outcome-transaction.ts'),
+  'utf8',
+);
+
+function preDrawOrderingIssues(source: string): readonly string[] {
+  const start = source.indexOf('export function createF4MultiOutcomePreDrawTransactionOwner(');
+  const end = source.indexOf('\nconst UINT32_MAX', start);
+  if (start < 0 || end < 0) return ['pre-draw owner boundary missing'];
+  const body = source.slice(start, end);
+  const callback = body.indexOf('decision = preDraw(');
+  const brandedReady = body.indexOf('decision !== mintedReady');
+  const materialize = body.indexOf('const plan = materializeF4MultiOutcomeDrawPlan(');
+  const issues: string[] = [];
+  if (callback < 0) issues.push('pre-draw callback missing');
+  if (brandedReady < 0) issues.push('local ready check missing');
+  if (materialize < 0) issues.push('value materialization missing');
+  if (materialize >= 0 && callback >= 0 && materialize < callback) {
+    issues.push('values materialized before pre-draw callback');
+  }
+  if (materialize >= 0 && brandedReady >= 0 && materialize < brandedReady) {
+    issues.push('values materialized before branded ready check');
+  }
+  if ((body.match(/materializeF4MultiOutcomeDrawPlan\s*\(/gu) ?? []).length !== 1) {
+    issues.push('value materialization count changed');
+  }
+  return issues;
+}
 
 function controlledClock(start = 0): { now: () => number; advance: (ms: number) => void } {
   let value = start;
@@ -77,8 +110,9 @@ async function seededHarness(
   sessionRng = createSessionRNG(0xC0FFEE).state(),
   activePlayMs = 100,
   extensions: V5Extensions = {},
+  legacyRaw = VETERAN_RAW,
 ): Promise<SeededHarness> {
-  await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
+  await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: legacyRaw }]);
   expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
   const initial = await readSaveV5(backend, REGISTRY, NOW);
   if (initial.kind !== 'loaded') throw new Error(`expected loaded v5, received ${initial.kind}`);
@@ -1026,6 +1060,547 @@ describe('@cf/persistence — ordered multi-outcome transaction owner', () => {
     });
     expect(lost).toMatchObject({ kind: 'lost', reason: 'lease-lost' });
     expect(await lostHarness.backend.keys('receipts')).toEqual([]);
+  });
+});
+
+describe('@cf/persistence — no-value pre-draw multi-outcome owner', () => {
+  const captureDomains = ['capture.candidate', 'capture.success'] as const;
+
+  it('projects current/next F4 authority without values and exactly matches the real plan', () => {
+    const extensions = authorityExtensions(0xC0FFEE, {
+      'capture.candidate': 3,
+      unrelated: 7,
+    }, 12, 444);
+    const projected = projectF4MultiOutcomeDrawAdvance(extensions, captureDomains);
+    const planned = planF4MultiOutcomeDraws(extensions, captureDomains);
+    expect(projected.kind).toBe('projected');
+    expect(planned.kind).toBe('planned');
+    if (projected.kind !== 'projected' || planned.kind !== 'planned') return;
+    expect(projected.plan).toMatchObject({
+      domains: captureDomains,
+      counters: [
+        { domain: 'capture.candidate', counter: 3 },
+        { domain: 'capture.success', counter: 0 },
+      ],
+      receiptOrdinal: 12,
+      currentAuthority: {
+        activePlayMs: 444,
+        sessionRng: {
+          seed: 0xC0FFEE,
+          ordinal: 12,
+          draws: { 'capture.candidate': 3, unrelated: 7 },
+        },
+      },
+      nextSessionRng: {
+        seed: 0xC0FFEE,
+        ordinal: 13,
+        draws: { 'capture.candidate': 4, 'capture.success': 1, unrelated: 7 },
+      },
+    });
+    expect('draws' in projected.plan).toBe(false);
+    expect(projected.plan.counters.every((row) => !('value' in row))).toBe(true);
+    expect(planned.plan.receiptOrdinal).toBe(projected.plan.receiptOrdinal);
+    expect(planned.plan.nextSessionRng).toEqual(projected.plan.nextSessionRng);
+    expect(planned.plan.draws.map(({ domain }) => domain)).toEqual(projected.plan.domains);
+  });
+
+  it('certifies detached no-value data first, then evaluates and commits the pair once', async () => {
+    const harness = await seededHarness(
+      createMemoryBackend(),
+      createSessionRNG(0xC0FFEE, { unrelated: 4 }, 9).state(),
+      100,
+    );
+    const baseEssence = harness.writable.state.essence;
+    const callerWritable: V5WritableState = {
+      state: harness.writable.state,
+      extensions: structuredClone(harness.writable.extensions) as V5Extensions,
+    };
+    let mutateCalls = 0;
+    const repository = createRevisionedRepository(harness.backend);
+    const owner = createF4MultiOutcomePreDrawTransactionOwner({
+      async mutate(input) {
+        mutateCalls++;
+        return repository.mutate(input);
+      },
+    }, REGISTRY);
+    const trace: string[] = [];
+    const outcome = await owner.commit({
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: callerWritable,
+      snapshot: { activePlayMs: 456 },
+      domains: captureDomains,
+      receiptKind: 'capture-attempt',
+      now: NOW,
+      preDraw: (input, authorizer) => {
+        trace.push('pre-draw');
+        expect(Object.keys(input).sort()).toEqual([
+          'activePlayMs', 'codec', 'counters', 'currentAuthority', 'domains', 'draft',
+          'extensions', 'nextSessionRng', 'receiptOrdinal',
+        ]);
+        expect(JSON.stringify(input)).not.toContain('"value"');
+        expect(input.domains).toEqual(captureDomains);
+        expect(input.counters).toEqual([
+          { domain: 'capture.candidate', counter: 0 },
+          { domain: 'capture.success', counter: 0 },
+        ]);
+        expect(input.receiptOrdinal).toBe(9);
+        expect(input.activePlayMs).toBe(456);
+        expect(input.currentAuthority.activePlayMs).toBe(100);
+        expect(input.nextSessionRng).toMatchObject({
+          ordinal: 10,
+          draws: { 'capture.candidate': 1, 'capture.success': 1, unrelated: 4 },
+        });
+        expect(input.draft).not.toBe(callerWritable.state);
+        expect(Object.isFrozen(input.draft)).toBe(true);
+        expect(() => { input.draft.essence += 99; }).toThrow();
+        /* Mutating the original after certification cannot alter the later
+           derivation draft; the owner reuses its captured plain snapshot. */
+        callerWritable.state.essence += 1_000;
+        (callerWritable.extensions as unknown as Record<string, unknown>).player = {};
+        const expectedState = { ...input.draft, essence: input.draft.essence + 1 };
+        const expectedF4 = prepareF4AuthorityUpdate(
+          input.extensions,
+          { activePlayMs: input.activePlayMs },
+          input.nextSessionRng,
+        );
+        const expectedPrepared = input.codec.prepare({
+          state: expectedState,
+          extensions: expectedF4.extensions,
+        });
+        return authorizer.ready(
+          Object.freeze({ fingerprint: 'capacity-ok' }),
+          ({ plan, proof, draws, draft, extensions, currentAuthority, nextSessionRng },
+            settlementAuthorizer) => {
+            trace.push('derive');
+            expect(isF4MultiOutcomePreDrawSettlementAuthorizerForCodec(
+              settlementAuthorizer,
+              input.codec,
+            )).toBe(true);
+            expect(isF4MultiOutcomePreDrawSettlementAuthorizerForCodec(
+              Object.freeze({ authorize: settlementAuthorizer.authorize }),
+              input.codec,
+            )).toBe(false);
+            expect(proof).toEqual({ fingerprint: 'capacity-ok' });
+            expect(plan.draws).toBe(draws);
+            expect(plan.currentAuthority).toBe(currentAuthority);
+            expect(plan.nextSessionRng).toBe(nextSessionRng);
+            expect(plan.sessionPlan.draws).toBe(draws);
+            expect(readF4Authority(extensions).kind).toBe('loaded');
+            expect(draws).toEqual([
+              { domain: 'capture.candidate', value: 0.022386470576748252 },
+              { domain: 'capture.success', value: 0.7921125674620271 },
+            ]);
+            expect(draft.essence).toBe(baseEssence);
+            draft.essence += 1;
+            return settlementAuthorizer.authorize(
+              { state: draft, witness: 'certified-capture' },
+              expectedPrepared,
+            );
+          },
+        );
+      },
+    });
+    expect(outcome.kind).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    expect(trace).toEqual(['pre-draw', 'derive']);
+    expect(mutateCalls).toBe(1);
+    expect(outcome.saved.canonicalState.essence).toBe(baseEssence + 1);
+    expect(outcome.authority).toMatchObject({
+      activePlayMs: 456,
+      sessionRng: {
+        ordinal: 10,
+        draws: { 'capture.candidate': 1, 'capture.success': 1, unrelated: 4 },
+      },
+    });
+  });
+
+  it('preserves supported own __proto__ genome data without changing object prototypes', async () => {
+    for (const protoValue of [null, { marker: 7 }] as const) {
+      const importedFixture = structuredClone(fixtures.inputs.veteran_rich) as {
+        codex?: Array<{ g?: Record<string, unknown> }>;
+      };
+      const importedGenome = importedFixture.codex?.[0]?.g;
+      if (importedGenome === undefined) throw new Error('veteran import fixture has no genome');
+      Object.defineProperty(importedGenome, '__proto__', {
+        value: protoValue,
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
+      const harness = await seededHarness(
+        createMemoryBackend(),
+        createSessionRNG(0xC0FFEE).state(),
+        100,
+        {},
+        JSON.stringify(importedFixture),
+      );
+      const codexRow = harness.writable.state.codex[0];
+      if (codexRow === undefined) throw new Error('veteran fixture has no Compendium genome');
+      const [codexId, entry] = codexRow;
+      expect(Object.prototype.hasOwnProperty.call(entry.g, '__proto__')).toBe(true);
+      expect(Object.getOwnPropertyDescriptor(entry.g, '__proto__')?.value).toEqual(protoValue);
+      expect(Object.getPrototypeOf(entry.g)).toBe(Object.prototype);
+      const owner = createF4MultiOutcomePreDrawTransactionOwner(
+        createRevisionedRepository(harness.backend),
+        REGISTRY,
+      );
+      const outcome = await owner.commit({
+        expectedRevision: 1,
+        grant: harness.grant,
+        writable: harness.writable,
+        snapshot: { activePlayMs: 222 },
+        domains: captureDomains,
+        receiptKind: 'capture-attempt',
+        now: NOW,
+        preDraw: (input, authorizer) => {
+          const f4 = prepareF4AuthorityUpdate(
+            input.extensions,
+            { activePlayMs: input.activePlayMs },
+            input.nextSessionRng,
+          );
+          const expectedPrepared = input.codec.prepare({
+            state: input.draft,
+            extensions: f4.extensions,
+          });
+          return authorizer.ready(
+            Object.freeze({ protoValue }),
+            ({ draft }, settlementAuthorizer) => settlementAuthorizer.authorize(
+              { state: draft, witness: `proto:${String(protoValue)}` },
+              expectedPrepared,
+            ),
+          );
+        },
+      });
+      expect(outcome.kind).toBe('committed');
+      const reloaded = await readSaveV5(harness.backend, REGISTRY, NOW);
+      if (reloaded.kind !== 'loaded') throw new Error(`proto reload was ${reloaded.kind}`);
+      const reloadedGenome = reloaded.state.codex.find(([id]) => id === codexId)?.[1].g;
+      if (reloadedGenome === undefined) throw new Error('proto Compendium row disappeared');
+      expect(Object.prototype.hasOwnProperty.call(reloadedGenome, '__proto__')).toBe(true);
+      expect(Object.getOwnPropertyDescriptor(reloadedGenome, '__proto__')?.value)
+        .toEqual(protoValue);
+      expect(Object.getPrototypeOf(reloadedGenome)).toBe(Object.prototype);
+    }
+  });
+
+  it('rejects huge sparse arrays and out-of-range array keys before callback, draw, or CAS', async () => {
+    const harness = await seededHarness();
+    const repository = createRevisionedRepository(harness.backend);
+    let mutateCalls = 0;
+    const owner = createF4MultiOutcomePreDrawTransactionOwner({
+      async mutate(input) {
+        mutateCalls++;
+        return repository.mutate(input);
+      },
+    }, REGISTRY);
+    const hugeSparse = new Array<unknown>(0xFFFF_FFFF);
+    const outOfRange = [] as unknown[];
+    Object.defineProperty(outOfRange, '4294967295', {
+      value: 'not-an-array-index', enumerable: true, configurable: true, writable: true,
+    });
+    for (const [array, message] of [
+      [hugeSparse, /detachment bound/u],
+      [outOfRange, /out-of-range indices/u],
+    ] as const) {
+      const state = { ...harness.writable.state, customNames: array } as unknown as
+        V5WritableState['state'];
+      let preDrawCalls = 0;
+      const outcome = await owner.commit({
+        expectedRevision: 1,
+        grant: harness.grant,
+        writable: { state, extensions: harness.writable.extensions },
+        snapshot: { activePlayMs: 222 },
+        domains: captureDomains,
+        receiptKind: 'capture-attempt',
+        now: NOW,
+        preDraw: () => {
+          preDrawCalls++;
+          return { kind: 'refused', reason: 'must-not-run' };
+        },
+      });
+      expect(outcome).toMatchObject({
+        kind: 'rejected', stage: 'pre-draw', message: expect.stringMatching(message),
+      });
+      expect(preDrawCalls).toBe(0);
+    }
+    expect(mutateCalls).toBe(0);
+    expect(await repository.readReceipt(0)).toBeUndefined();
+    expect(readF4Authority(harness.writable.extensions)).toMatchObject({
+      kind: 'loaded', authority: { sessionRng: { ordinal: 0, draws: {} } },
+    });
+  });
+
+  it('rejects settlement clones, foreign/late prepared objects, and final prepared-save drift before CAS', async () => {
+    const harness = await seededHarness();
+    const repository = createRevisionedRepository(harness.backend);
+    let mutateCalls = 0;
+    const owner = createF4MultiOutcomePreDrawTransactionOwner({
+      async mutate(input) {
+        mutateCalls++;
+        return repository.mutate(input);
+      },
+    }, REGISTRY);
+    const base = {
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 222 },
+      domains: captureDomains,
+      receiptKind: 'capture-attempt',
+      now: NOW,
+    } as const;
+
+    const clonedAuthorization = await owner.commit({
+      ...base,
+      preDraw: (input, authorizer) => {
+        const f4 = prepareF4AuthorityUpdate(
+          input.extensions, { activePlayMs: input.activePlayMs }, input.nextSessionRng,
+        );
+        const expectedPrepared = input.codec.prepare({
+          state: input.draft, extensions: f4.extensions,
+        });
+        return authorizer.ready(
+          Object.freeze({ attack: 'clone-authorization' }),
+          ({ draft }, settlementAuthorizer) => {
+            const authorized = settlementAuthorizer.authorize(
+              { state: draft, witness: 'clone-authorization' },
+              expectedPrepared,
+            );
+            return { ...authorized };
+          },
+        );
+      },
+    });
+    expect(clonedAuthorization).toMatchObject({ kind: 'rejected', stage: 'derive' });
+
+    const foreignPrepared = await owner.commit({
+      ...base,
+      preDraw: (input, authorizer) => {
+        const f4 = prepareF4AuthorityUpdate(
+          input.extensions, { activePlayMs: input.activePlayMs }, input.nextSessionRng,
+        );
+        const prepared = input.codec.prepare({ state: input.draft, extensions: f4.extensions });
+        return authorizer.ready(
+          Object.freeze({ attack: 'foreign-prepared' }),
+          ({ draft }, settlementAuthorizer) => settlementAuthorizer.authorize(
+            { state: draft, witness: 'foreign-prepared' },
+            { ...prepared },
+          ),
+        );
+      },
+    });
+    expect(foreignPrepared).toMatchObject({ kind: 'rejected', stage: 'derive' });
+
+    const latePrepared = await owner.commit({
+      ...base,
+      preDraw: (_input, authorizer) => authorizer.ready(
+        Object.freeze({ attack: 'late-prepared' }),
+        ({ draft, extensions, nextSessionRng, activePlayMs, codec }, settlementAuthorizer) => {
+          const f4 = prepareF4AuthorityUpdate(extensions, { activePlayMs }, nextSessionRng);
+          return settlementAuthorizer.authorize(
+            { state: draft, witness: 'late-prepared' },
+            codec.prepare({ state: draft, extensions: f4.extensions }),
+          );
+        },
+      ),
+    });
+    expect(latePrepared).toMatchObject({
+      kind: 'rejected', stage: 'derive',
+      message: expect.stringMatching(/not prepared before values/u),
+    });
+
+    const mismatchedPrepared = await owner.commit({
+      ...base,
+      preDraw: (input, authorizer) => {
+        const mismatchedState = { ...input.draft, essence: input.draft.essence + 1 };
+        const f4 = prepareF4AuthorityUpdate(
+          input.extensions, { activePlayMs: input.activePlayMs }, input.nextSessionRng,
+        );
+        const prepared = input.codec.prepare({ state: mismatchedState, extensions: f4.extensions });
+        return authorizer.ready(
+          Object.freeze({ attack: 'prepared-drift' }),
+          ({ draft }, settlementAuthorizer) => settlementAuthorizer.authorize(
+            { state: draft, witness: 'prepared-drift' },
+            prepared,
+          ),
+        );
+      },
+    });
+    expect(mismatchedPrepared).toMatchObject({
+      kind: 'rejected', stage: 'product-prepare',
+      message: expect.stringMatching(/exact prepared save/u),
+    });
+    expect(mutateCalls).toBe(0);
+    expect(await repository.readReceipt(0)).toBeUndefined();
+  });
+
+  it('refuses capacity, forgeries, old ready tokens, accessors, proxies, and zero domains with zero derive/CAS', async () => {
+    const harness = await seededHarness();
+    let deriveCalls = 0;
+    let mutateCalls = 0;
+    const owner = createF4MultiOutcomePreDrawTransactionOwner({
+      async mutate() {
+        mutateCalls++;
+        throw new Error('pre-draw refusal must not mutate');
+      },
+    }, REGISTRY);
+    const base: F4MultiOutcomePreDrawTransactionInput<unknown, string> = {
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 222 },
+      domains: captureDomains,
+      receiptKind: 'capture-attempt',
+      now: NOW,
+      preDraw: () => ({ kind: 'refused', reason: 'capacity' }),
+    };
+    await expect(owner.commit(base)).resolves.toEqual({
+      kind: 'pre-draw-refused', reason: 'capacity',
+    });
+    await expect(owner.commit({
+      ...base,
+      preDraw: () => ({ kind: 'ready', proof: Object.freeze({}) }),
+    })).resolves.toMatchObject({ kind: 'rejected', stage: 'pre-draw' });
+
+    let oldReady: unknown;
+    await expect(owner.commit({
+      ...base,
+      preDraw: (_input, authorizer) => {
+        oldReady = authorizer.ready(Object.freeze({ old: true }), () => {
+          deriveCalls++;
+          throw new Error('old settlement must not run');
+        });
+        return { kind: 'refused', reason: 'hold-token' };
+      },
+    })).resolves.toEqual({ kind: 'pre-draw-refused', reason: 'hold-token' });
+    await expect(owner.commit({
+      ...base,
+      preDraw: () => oldReady as never,
+    })).resolves.toMatchObject({ kind: 'rejected', stage: 'pre-draw' });
+    await expect(owner.commit({
+      ...base,
+      preDraw: (_input, authorizer) => {
+        authorizer.ready(Object.freeze({ first: true }), () => {
+          throw new Error('first settlement must not run');
+        });
+        return authorizer.ready(Object.freeze({ second: true }), () => {
+          throw new Error('second settlement must not run');
+        });
+      },
+    })).resolves.toMatchObject({
+      kind: 'rejected', stage: 'pre-draw', message: expect.stringMatching(/only once/),
+    });
+    await expect(owner.commit({
+      ...base,
+      preDraw: () => new Proxy({ kind: 'refused', reason: 'trap' } as const, {
+        ownKeys() { throw new Error('refusal proxy trap'); },
+      }),
+    })).resolves.toMatchObject({
+      kind: 'rejected', stage: 'pre-draw', message: 'refusal proxy trap',
+    });
+
+    let inputAccessorReads = 0;
+    const accessorInput = { ...base } as Record<string, unknown>;
+    Object.defineProperty(accessorInput, 'preDraw', {
+      enumerable: true,
+      get() {
+        inputAccessorReads++;
+        return base.preDraw;
+      },
+    });
+    await expect(owner.commit(
+      accessorInput as unknown as F4MultiOutcomePreDrawTransactionInput<unknown, string>,
+    )).resolves.toMatchObject({ kind: 'rejected', stage: 'pre-draw' });
+    expect(inputAccessorReads).toBe(0);
+
+    let domainAccessorReads = 0;
+    const accessorDomains = [...captureDomains];
+    Object.defineProperty(accessorDomains, '0', {
+      enumerable: true,
+      configurable: true,
+      get() {
+        domainAccessorReads++;
+        return captureDomains[0]!;
+      },
+    });
+    await expect(owner.commit({
+      ...base,
+      domains: accessorDomains,
+    })).resolves.toMatchObject({ kind: 'rejected', stage: 'pre-draw' });
+    expect(domainAccessorReads).toBe(0);
+    await expect(owner.commit({
+      ...base,
+      domains: new Proxy([...captureDomains], {
+        ownKeys() { throw new Error('domain proxy trap'); },
+      }),
+    })).resolves.toMatchObject({
+      kind: 'rejected', stage: 'pre-draw', message: 'domain proxy trap',
+    });
+
+    let stateAccessorReads = 0;
+    const accessorWritable = { extensions: harness.writable.extensions } as Record<string, unknown>;
+    Object.defineProperty(accessorWritable, 'state', {
+      enumerable: true,
+      get() {
+        stateAccessorReads++;
+        return harness.writable.state;
+      },
+    });
+    await expect(owner.commit({
+      ...base,
+      writable: accessorWritable as unknown as V5WritableState,
+    })).resolves.toMatchObject({ kind: 'rejected', stage: 'pre-draw' });
+    expect(stateAccessorReads).toBe(0);
+
+    let nestedStateAccessorReads = 0;
+    const nestedAccessorState = { ...harness.writable.state } as Record<string, unknown>;
+    Object.defineProperty(nestedAccessorState, 'essence', {
+      enumerable: true,
+      configurable: true,
+      get() {
+        nestedStateAccessorReads++;
+        return harness.writable.state.essence;
+      },
+    });
+    await expect(owner.commit({
+      ...base,
+      writable: {
+        state: nestedAccessorState as unknown as V5WritableState['state'],
+        extensions: harness.writable.extensions,
+      },
+    })).resolves.toMatchObject({ kind: 'rejected', stage: 'pre-draw' });
+    expect(nestedStateAccessorReads).toBe(0);
+
+    let zeroCallbacks = 0;
+    await expect(owner.commit({
+      ...base,
+      domains: [],
+      preDraw: () => {
+        zeroCallbacks++;
+        return { kind: 'refused', reason: 'must-not-run' };
+      },
+    })).resolves.toMatchObject({ kind: 'rejected', stage: 'pre-draw' });
+    expect(zeroCallbacks).toBe(0);
+    expect(deriveCalls).toBe(0);
+    expect(mutateCalls).toBe(0);
+    expect(readF4Authority(harness.writable.extensions)).toMatchObject({
+      kind: 'loaded', authority: { sessionRng: { ordinal: 0, draws: {} } },
+    });
+  });
+
+  it('pins value materialization after the local ready proof with a moving-draw red control', () => {
+    expect(preDrawOrderingIssues(OUTCOME_TRANSACTION_SOURCE)).toEqual([]);
+    const moved = OUTCOME_TRANSACTION_SOURCE.replace(
+      'const projection = projected.plan;',
+      'const projection = projected.plan;\n      const plan = materializeF4MultiOutcomeDrawPlan(projection);',
+    );
+    expect(moved).not.toBe(OUTCOME_TRANSACTION_SOURCE);
+    expect(preDrawOrderingIssues(moved)).toEqual([
+      'values materialized before pre-draw callback',
+      'values materialized before branded ready check',
+      'value materialization count changed',
+    ]);
   });
 });
 

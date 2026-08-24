@@ -1,10 +1,9 @@
-/* Pure v1.8.9 Tame / Scavenge / Sample continuity planner.
+/* Pure Tame / Scavenge / Sample planner.
 
-   This closes deterministic selection, finite-yield spend, probability, and
-   truthful OwnershipSuccessorV1 construction. It intentionally does not
-   expose a writer: seed-only legacy catalogue eligibility is temporary exact
-   continuity, while repeat/reacquisition policy and encoded extension-byte
-   capacity still require an explicit Arc 4 decision and transaction join. */
+   This closes deterministic selection, finite-yield spend, repeat ownership,
+   and truthful OwnershipSuccessorV1 construction. It intentionally does not
+   expose an app writer: the registered all-scenario projection below is the
+   no-value capacity prerequisite for that later transaction join. */
 import { describeSpecies, type Genome } from '@cf/domain-genome';
 import { clamp } from '@cf/domain-rand';
 import { ringGrade } from '@cf/domain-strays';
@@ -46,12 +45,12 @@ export const TAME_ODDS_V1 = Object.freeze([
   0.015, 0.010, 0.006, 0.004, 0.0025,
 ] as const);
 
-/** Machine-readable stop sign for the later transaction integration. The
- * pure v1 planner does not silently decide any of these policies. */
+/** Machine-readable transaction policy. The app writer remains unavailable
+ * until it presents a complete registered all-scenario capacity proof. */
 export const CAPTURE_PLANNER_POLICY_BLOCKERS_V1 = Object.freeze({
-  legacyEligibility: 'temporary-v1.8.9-not-catalogued-by-seed',
-  reacquisition: 'unresolved',
-  encodedExtensionByteCapacity: 'unresolved',
+  legacyEligibility: 'same-full-world-current-cycle-successful-species-and-verb-only',
+  reacquisition: 'new-individual-or-lot-with-first-only-catalogue',
+  encodedExtensionByteCapacity: 'registered-all-scenario-certificate-required-before-draw',
   breedingProvenance: 'unsupported-by-ownership-v1',
   guardianProvenance: 'unsupported-by-ownership-v1',
   writerExposed: false,
@@ -126,6 +125,7 @@ export type CapturePreflightOutcomeV1 = CapturePreflightRefusalV1 | CapturePrefl
 
 const PREFLIGHTS = new WeakSet<object>();
 const CAPTURE_PLANS = new WeakSet<object>();
+const CAPACITY_SCENARIO_SETS = new WeakSet<object>();
 
 function refusal(reason: CapturePreflightRefusalReasonV1): CapturePreflightRefusalV1 {
   return Object.freeze({ kind: 'refused', reason });
@@ -207,19 +207,30 @@ export function preflightCaptureV1(
   if (priorProgress !== null && priorProgress.cycle > snapshot.cycle) {
     return refusal('future-cycle-progress');
   }
-  /* Temporary v1.8.9 continuity: eligibility is the old `s${seed}`
-     Compendium key, not an invented reacquisition rule. */
-  const cataloguedLegacyIds = new Set(state.catalogSpecies.map((row) => `s${row.genome.seed}`));
+  const sameCycle = priorProgress !== null && priorProgress.cycle === snapshot.cycle;
+  /* A successful species/verb pair is spent only on this exact full world in
+     this active-play cycle. Misses never enter `successful`; a later cycle or
+     another full-world key can therefore acquire a new individual/lot. */
+  const successfulKeys = new Set((sameCycle ? priorProgress.successful : []).map((row) => (
+    `${row.speciesId}\u0000${row.source}`
+  )));
   const pool = Object.freeze(snapshot.candidates.filter((candidate) => (
-    matchingKingdom(candidate, verb) && !cataloguedLegacyIds.has(candidate.legacyCatalogueId)
+    matchingKingdom(candidate, verb)
+      && !successfulKeys.has(`${candidate.identity.speciesId}\u0000${verb}`)
   )));
   if (pool.length === 0) return refusal('empty');
-  const sameCycle = priorProgress !== null && priorProgress.cycle === snapshot.cycle;
   const used = sameCycle ? priorProgress.used : 0;
   const successful = Object.freeze(sameCycle ? [...priorProgress.successful] : []);
   const remainingBefore = Math.max(0, snapshot.biosphereYield - used);
   if (remainingBefore === 0) return refusal('depleted');
-  const requiredHitHeadroom = priorProgress === null ? 5 : 4;
+  const cataloguedSpecies = new Set(state.catalogSpecies.map((row) => row.speciesId));
+  const anyFirstForSpecies = pool.some((candidate) => (
+    !cataloguedSpecies.has(candidate.identity.speciesId)
+  ));
+  /* One discovery + one owned row + one nested success, plus a progress row
+     only for a new world and a catalogue row only for a first species. */
+  const requiredHitHeadroom = 3 + (priorProgress === null ? 1 : 0)
+    + (anyFirstForSpecies ? 1 : 0);
   if (globalOwnershipRows(state) > MAX_OWNERSHIP_ROWS - requiredHitHeadroom) {
     return refusal('model-row-capacity');
   }
@@ -253,6 +264,7 @@ export interface CaptureAttemptPlanV1 {
   readonly candidateDraw: number;
   readonly successDraw: number;
   readonly hit: boolean;
+  readonly firstForSpecies: boolean;
   readonly spent: 1;
   readonly remainingAfter: number;
   readonly receiptOrdinal: number;
@@ -260,6 +272,32 @@ export interface CaptureAttemptPlanV1 {
   readonly ownedRowId: string | null;
   readonly successor: OwnershipStateV1;
   readonly witness: string;
+}
+
+export interface CaptureCapacityScenarioV1 {
+  readonly kind: 'miss' | 'hit';
+  /** Null only for the one candidate-independent miss successor. */
+  readonly candidate: AcquisitionCandidateV1 | null;
+  readonly tier: CaptureTierV1 | null;
+  readonly firstForSpecies: boolean;
+  readonly discoveryRecordId: DiscoveryRecordId | null;
+  readonly ownedRowId: string | null;
+  readonly successor: OwnershipStateV1;
+  readonly successorDigest: string;
+}
+
+/** Registered, value-free enumeration consumed by the Arc 4 capacity owner.
+ * Candidate order is copied exactly from the registered preflight. */
+export interface CaptureCapacityScenariosV1 {
+  readonly schema: 'cf-v2-capture-capacity-scenarios/v1';
+  readonly snapshotFingerprint: string;
+  readonly ownershipDigest: string;
+  readonly f4AuthorityFingerprint: string;
+  readonly verb: AcquisitionVerbV1;
+  readonly receiptOrdinal: number;
+  readonly candidateOrder: readonly string[];
+  /** Exactly one miss followed by one hit for every eligible candidate. */
+  readonly scenarios: readonly CaptureCapacityScenarioV1[];
 }
 
 export type CapturePlanRefusalReasonV1 =
@@ -316,6 +354,205 @@ function successorContents(
   };
 }
 
+interface BuiltCaptureSuccessorV1 {
+  readonly firstForSpecies: boolean;
+  readonly discoveryRecordId: DiscoveryRecordId | null;
+  readonly ownedRowId: string | null;
+  readonly successor: OwnershipStateV1;
+}
+
+function checkedReceiptOrdinal(value: unknown): number {
+  if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) >= 0xFFFF_FFFF) {
+    throw new RangeError('capture receipt ordinal must be an unexhausted uint32');
+  }
+  return value as number;
+}
+
+function captureEventWitnessV1(
+  preflight: CapturePreflightReadyV1,
+  candidate: AcquisitionCandidateV1,
+  receiptOrdinal: number,
+): string {
+  const snapshot = preflight.snapshot;
+  return canonicalJson({
+    schema: 'cf-v2-capture-event/v1',
+    parentDigest: snapshot.ownershipDigest,
+    snapshotFingerprint: snapshot.fingerprint,
+    f4AuthorityFingerprint: snapshot.f4AuthorityFingerprint,
+    receiptOrdinal,
+    worldKey: snapshot.worldKey,
+    ecologyEpoch: snapshot.ecologyEpoch,
+    fullRosterFingerprint: snapshot.fullRosterFingerprint,
+    cycle: snapshot.cycle,
+    verb: preflight.verb,
+    sourceOrdinal: candidate.sourceOrdinal,
+    speciesId: candidate.identity.speciesId,
+  });
+}
+
+/** The one successor constructor used by both the no-value enumeration and
+ * the selected value-bearing plan. Keeping it shared makes scenario drift a
+ * construction error rather than a convention checked only in tests. */
+function buildCaptureSuccessorV1(
+  preflight: CapturePreflightReadyV1,
+  candidate: AcquisitionCandidateV1 | null,
+  hit: boolean,
+  receiptOrdinal: number,
+): BuiltCaptureSuccessorV1 {
+  if (hit !== (candidate !== null)) {
+    throw new TypeError('capture successor hit requires exactly one candidate');
+  }
+  const snapshot = preflight.snapshot;
+  const state = snapshot.ownership;
+  let firstForSpecies = false;
+  let discoveryRecordId: DiscoveryRecordId | null = null;
+  let ownedRowId: string | null = null;
+  let additions: Parameters<typeof successorContents>[3] = Object.freeze({});
+  const successful: BiosphereSuccessV1[] = [...preflight.successful];
+  if (candidate !== null) {
+    const eventWitness = captureEventWitnessV1(preflight, candidate, receiptOrdinal);
+    discoveryRecordId = ownershipContentId('discovery', eventWitness) as DiscoveryRecordId;
+    firstForSpecies = !state.catalogSpecies.some((row) => (
+      row.speciesId === candidate.identity.speciesId
+    ));
+    const discovery = createWorldDiscoveryRecordV1({
+      recordId: discoveryRecordId,
+      speciesId: candidate.identity.speciesId,
+      verb: preflight.verb,
+      worldAddress: snapshot.address,
+      cycle: snapshot.cycle,
+      sourceOrdinal: candidate.sourceOrdinal,
+      firstForSpecies,
+    });
+    const catalogue = firstForSpecies ? createCatalogSpeciesV1({
+      identity: candidate.identity,
+      alias: null,
+      firstObservationId: discoveryRecordId,
+    }) : undefined;
+    successful.push(Object.freeze({
+      speciesId: candidate.identity.speciesId,
+      source: preflight.verb,
+    }));
+    if (candidate.identity.kingdom === 'fauna') {
+      const creatureId = ownershipContentId(
+        'creature',
+        `${eventWitness}:creature`,
+      ) as CreatureInstanceId;
+      ownedRowId = creatureId;
+      const creature = createCreatureInstanceV1({
+        creatureId,
+        speciesId: candidate.identity.speciesId,
+        genomeIdentity: candidate.identity.genomeIdentity,
+        genome: candidate.identity.genome,
+        nickname: null,
+        origin: 'wild',
+        acquisitionRecordId: discoveryRecordId,
+        lineage: Object.freeze({ kind: 'none', generation: generationOf(candidate) }),
+        xp: null,
+        hurt: null,
+        fed: null,
+        brood: null,
+        assignment: null,
+        bond: null,
+      });
+      additions = Object.freeze({
+        ...(catalogue === undefined ? {} : { catalogue }),
+        discovery,
+        creature,
+      });
+    } else {
+      const lotId = ownershipContentId(
+        'specimen',
+        `${eventWitness}:specimen`,
+      ) as SpecimenLotId;
+      ownedRowId = lotId;
+      const specimen = createSpecimenLotV1({
+        lotId,
+        speciesId: candidate.identity.speciesId,
+        kind: candidate.identity.kingdom,
+        quantity: 1,
+        origin: 'wild',
+        acquisitionRecordId: discoveryRecordId,
+      });
+      additions = Object.freeze({
+        ...(catalogue === undefined ? {} : { catalogue }),
+        discovery,
+        specimen,
+      });
+    }
+  }
+  const progress = createBiosphereProgressV1({
+    worldAddress: snapshot.address,
+    cycle: snapshot.cycle,
+    used: preflight.used + 1,
+    successful,
+  });
+  const successor = createOwnershipSuccessorV1(
+    state,
+    successorContents(state, progress, preflight.priorProgress, additions),
+  );
+  if (!isOwnershipSuccessorV1(successor, state)) {
+    throw new Error('capture planner failed to register an exact ownership successor');
+  }
+  return Object.freeze({ firstForSpecies, discoveryRecordId, ownedRowId, successor });
+}
+
+export function projectCaptureCapacityScenariosV1(
+  preflightValue: unknown,
+  receiptOrdinalValue: unknown,
+): CaptureCapacityScenariosV1 {
+  if (!isCapturePreflightReadyV1(preflightValue)) {
+    throw new TypeError('capture capacity projection requires the exact registered preflight');
+  }
+  const preflight = preflightValue;
+  const receiptOrdinal = checkedReceiptOrdinal(receiptOrdinalValue);
+  const miss = buildCaptureSuccessorV1(preflight, null, false, receiptOrdinal);
+  const scenarios: CaptureCapacityScenarioV1[] = [Object.freeze({
+    kind: 'miss',
+    candidate: null,
+    tier: null,
+    firstForSpecies: false,
+    discoveryRecordId: null,
+    ownedRowId: null,
+    successor: miss.successor,
+    successorDigest: ownershipStateDigestV1(miss.successor),
+  })];
+  for (const candidate of preflight.pool) {
+    const built = buildCaptureSuccessorV1(preflight, candidate, true, receiptOrdinal);
+    scenarios.push(Object.freeze({
+      kind: 'hit',
+      candidate,
+      tier: captureTierFromSnapshotCandidateV1(candidate, preflight.snapshot),
+      firstForSpecies: built.firstForSpecies,
+      discoveryRecordId: built.discoveryRecordId,
+      ownedRowId: built.ownedRowId,
+      successor: built.successor,
+      successorDigest: ownershipStateDigestV1(built.successor),
+    }));
+  }
+  const projected: CaptureCapacityScenariosV1 = Object.freeze({
+    schema: 'cf-v2-capture-capacity-scenarios/v1',
+    snapshotFingerprint: preflight.snapshot.fingerprint,
+    ownershipDigest: preflight.snapshot.ownershipDigest,
+    f4AuthorityFingerprint: preflight.snapshot.f4AuthorityFingerprint,
+    verb: preflight.verb,
+    receiptOrdinal,
+    candidateOrder: Object.freeze(preflight.pool.map((row) => row.identity.speciesId)),
+    scenarios: Object.freeze(scenarios),
+  });
+  CAPACITY_SCENARIO_SETS.add(projected);
+  return projected;
+}
+
+export function isCaptureCapacityScenariosV1(
+  value: unknown,
+): value is CaptureCapacityScenariosV1 {
+  return typeof value === 'object'
+    && value !== null
+    && CAPACITY_SCENARIO_SETS.has(value)
+    && (value as CaptureCapacityScenariosV1).schema === 'cf-v2-capture-capacity-scenarios/v1';
+}
+
 export function planCaptureV1(
   preflightValue: unknown,
   drawsValue: unknown,
@@ -349,99 +586,14 @@ export function planCaptureV1(
     contactCapturePoints: snapshot.contactCapturePoints,
   });
   const hit = captureHitV1(successDraw, chance);
-  const state = snapshot.ownership;
-  const parentDigest = ownershipStateDigestV1(state);
-  const eventWitness = canonicalJson({
-    schema: 'cf-v2-capture-event/v1',
-    parentDigest,
-    snapshotFingerprint: snapshot.fingerprint,
-    f4AuthorityFingerprint: draws.f4AuthorityFingerprint,
-    receiptOrdinal: draws.receiptOrdinal,
-    worldKey: snapshot.worldKey,
-    ecologyEpoch: snapshot.ecologyEpoch,
-    fullRosterFingerprint: snapshot.fullRosterFingerprint,
-    cycle: snapshot.cycle,
-    verb: preflight.verb,
-    sourceOrdinal: candidate.sourceOrdinal,
-    speciesId: candidate.identity.speciesId,
-  });
-  let discoveryRecordId: DiscoveryRecordId | null = null;
-  let ownedRowId: string | null = null;
-  let additions: Parameters<typeof successorContents>[3] = Object.freeze({});
-  const successful: BiosphereSuccessV1[] = [...preflight.successful];
-  if (hit) {
-    discoveryRecordId = ownershipContentId('discovery', eventWitness) as DiscoveryRecordId;
-    const discovery = createWorldDiscoveryRecordV1({
-      recordId: discoveryRecordId,
-      speciesId: candidate.identity.speciesId,
-      verb: preflight.verb,
-      worldAddress: snapshot.address,
-      cycle: snapshot.cycle,
-      sourceOrdinal: candidate.sourceOrdinal,
-      firstForSpecies: true,
-    });
-    const catalogue = createCatalogSpeciesV1({
-      identity: candidate.identity,
-      alias: null,
-      firstObservationId: discoveryRecordId,
-    });
-    successful.push(Object.freeze({
-      speciesId: candidate.identity.speciesId,
-      source: preflight.verb,
-    }));
-    if (candidate.identity.kingdom === 'fauna') {
-      const creatureId = ownershipContentId(
-        'creature',
-        `${eventWitness}:creature`,
-      ) as CreatureInstanceId;
-      ownedRowId = creatureId;
-      const creature = createCreatureInstanceV1({
-        creatureId,
-        speciesId: candidate.identity.speciesId,
-        genomeIdentity: candidate.identity.genomeIdentity,
-        genome: candidate.identity.genome,
-        nickname: null,
-        origin: 'wild',
-        acquisitionRecordId: discoveryRecordId,
-        lineage: Object.freeze({ kind: 'none', generation: generationOf(candidate) }),
-        xp: null,
-        hurt: null,
-        fed: null,
-        brood: null,
-        assignment: null,
-        bond: null,
-      });
-      additions = Object.freeze({ catalogue, discovery, creature });
-    } else {
-      const lotId = ownershipContentId(
-        'specimen',
-        `${eventWitness}:specimen`,
-      ) as SpecimenLotId;
-      ownedRowId = lotId;
-      const specimen = createSpecimenLotV1({
-        lotId,
-        speciesId: candidate.identity.speciesId,
-        kind: candidate.identity.kingdom,
-        quantity: 1,
-        origin: 'wild',
-        acquisitionRecordId: discoveryRecordId,
-      });
-      additions = Object.freeze({ catalogue, discovery, specimen });
-    }
-  }
-  const progress = createBiosphereProgressV1({
-    worldAddress: snapshot.address,
-    cycle: snapshot.cycle,
-    used: preflight.used + 1,
-    successful,
-  });
-  const successor = createOwnershipSuccessorV1(
-    state,
-    successorContents(state, progress, preflight.priorProgress, additions),
+  const built = buildCaptureSuccessorV1(
+    preflight,
+    hit ? candidate : null,
+    hit,
+    draws.receiptOrdinal,
   );
-  if (!isOwnershipSuccessorV1(successor, state)) {
-    throw new Error('capture planner failed to register an exact ownership successor');
-  }
+  const eventWitness = captureEventWitnessV1(preflight, candidate, draws.receiptOrdinal);
+  const successor = built.successor;
   const witness = canonicalJson({
     schema: 'cf-v2-capture-plan-witness/v1',
     event: sha256Hex(eventWitness),
@@ -463,11 +615,12 @@ export function planCaptureV1(
     candidateDraw,
     successDraw,
     hit,
+    firstForSpecies: built.firstForSpecies,
     spent: 1,
     remainingAfter: preflight.remainingBefore - 1,
     receiptOrdinal: draws.receiptOrdinal,
-    discoveryRecordId,
-    ownedRowId,
+    discoveryRecordId: built.discoveryRecordId,
+    ownedRowId: built.ownedRowId,
     successor,
     witness,
   });
