@@ -7,8 +7,13 @@
    revision share one atomic transaction. There is deliberately no retry:
    after stale storage, lease loss, or I/O failure, a reload sees the old RNG
    authority and therefore replans the same value instead of rerolling. */
-import type { ActivePlaySnapshot } from '@cf/domain-progression';
-import { planSessionRNGDraw, type SessionRNGState } from '@cf/domain-sessionrng';
+import { MAX_ACTIVE_PLAY_MS, type ActivePlaySnapshot } from '@cf/domain-progression';
+import {
+  SessionRNGPlanningExhaustion,
+  planSessionRNGDraw,
+  planSessionRNGDraws,
+  type SessionRNGState,
+} from '@cf/domain-sessionrng';
 import {
   F4_AUTHORITY_NAMESPACE,
   prepareF4AuthorityUpdate,
@@ -139,6 +144,60 @@ export interface F4OutcomeTransactionOwner {
   commit(input: F4OutcomeTransactionInput): Promise<F4OutcomeTransactionOutcome>;
 }
 
+export interface F4MultiOutcomeDraw {
+  readonly domain: string;
+  readonly value: number;
+}
+
+export interface F4MultiOutcomeDrawPlan {
+  readonly draws: readonly F4MultiOutcomeDraw[];
+  readonly receiptOrdinal: number;
+  readonly currentAuthority: F4AuthorityV1;
+  readonly nextSessionRng: F4AuthorityV1['sessionRng'];
+}
+
+export type F4MultiOutcomePlanProtection =
+  | F4OutcomeAuthorityProtection
+  | { readonly kind: 'protected'; readonly reason: 'receipt-ordinal-exhausted' }
+  | {
+    readonly kind: 'protected';
+    readonly reason: 'draw-counter-exhausted';
+    readonly domain: string;
+  };
+
+export type F4MultiOutcomeDrawPlanOutcome =
+  | F4MultiOutcomePlanProtection
+  | { readonly kind: 'planned'; readonly plan: F4MultiOutcomeDrawPlan };
+
+export interface F4MultiOutcomeDeriveInput {
+  /** Immutable, ordered rows. Duplicate domains remain distinct occurrences. */
+  readonly draws: readonly F4MultiOutcomeDraw[];
+  readonly receiptOrdinal: number;
+  /** Exact leased active-play snapshot committed by this same transaction. */
+  readonly activePlayMs: number;
+  readonly draft: SaveStateV2;
+  readonly extensions: V5Extensions;
+}
+
+export interface F4MultiOutcomeTransactionInput {
+  readonly expectedRevision: number;
+  readonly grant: TabLeaseGrant;
+  readonly writable: V5WritableState;
+  readonly snapshot: Pick<ActivePlaySnapshot, 'activePlayMs'>;
+  readonly domains: readonly string[];
+  readonly receiptKind: string;
+  readonly now: number;
+  readonly derive: (input: F4MultiOutcomeDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4MultiOutcomeTransactionOutcome =
+  | F4MultiOutcomePlanProtection
+  | PlannedProductTransactionOutcome<F4MultiOutcomeDrawPlan>;
+
+export interface F4MultiOutcomeTransactionOwner {
+  commit(input: F4MultiOutcomeTransactionInput): Promise<F4MultiOutcomeTransactionOutcome>;
+}
+
 function messageOf(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
@@ -157,6 +216,16 @@ function checkedWitness(value: unknown): string {
     throw new RangeError('outcome witness must be 1–4096 printable characters');
   }
   return value;
+}
+
+function capturedActivePlaySnapshot(
+  snapshot: Pick<ActivePlaySnapshot, 'activePlayMs'>,
+): Readonly<Pick<ActivePlaySnapshot, 'activePlayMs'>> {
+  const activePlayMs = snapshot.activePlayMs;
+  if (!Number.isSafeInteger(activePlayMs) || activePlayMs < 0 || activePlayMs > MAX_ACTIVE_PLAY_MS) {
+    throw new RangeError(`activePlayMs must be a safe integer from 0 through ${MAX_ACTIVE_PLAY_MS}`);
+  }
+  return Object.freeze({ activePlayMs });
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -207,6 +276,40 @@ export function planF4OutcomeDraw(
       nextSessionRng: frozenSessionRng(planned.nextState),
     }),
   });
+}
+
+/** Plan one ordered multi-domain outcome against persisted F4 authority. The
+ * ordered counter advances share one receipt identity and never mutate the
+ * loaded carrier. Exhaustion is an explicit protection outcome. */
+export function planF4MultiOutcomeDraws(
+  extensions: V5Extensions,
+  domains: readonly string[],
+): F4MultiOutcomeDrawPlanOutcome {
+  const current = readF4Authority(extensions);
+  if (current.kind === 'absent') return { kind: 'protected', reason: 'authority-absent' };
+  if (current.kind === 'corrupt') return { kind: 'protected', reason: 'authority-corrupt' };
+  if (current.kind === 'future-version') {
+    return { kind: 'protected', reason: 'authority-future', version: current.version };
+  }
+  try {
+    const planned = planSessionRNGDraws(current.authority.sessionRng, domains);
+    return Object.freeze({
+      kind: 'planned',
+      plan: Object.freeze({
+        draws: planned.draws,
+        receiptOrdinal: planned.receiptOrdinal,
+        currentAuthority: current.authority,
+        nextSessionRng: frozenSessionRng(planned.nextState),
+      }),
+    });
+  } catch (error) {
+    if (!(error instanceof SessionRNGPlanningExhaustion)) throw error;
+    if (error.reason === 'receipt-ordinal-exhausted') {
+      return Object.freeze({ kind: 'protected', reason: error.reason });
+    }
+    if (error.domain === null) throw error;
+    return Object.freeze({ kind: 'protected', reason: error.reason, domain: error.domain });
+  }
 }
 
 interface CheckedDerivationEnvelope {
@@ -380,6 +483,44 @@ export function createF4OutcomeTransactionOwner(
           domain: plan.domain,
           value: plan.value,
           receiptOrdinal: plan.receiptOrdinal,
+          draft,
+          extensions,
+        })),
+      });
+    },
+  });
+}
+
+/** One receipt-bearing F3/F4 owner for a bounded ordered group of SessionRNG
+ * domains. Product state, all counters, active play and the receipt cross one
+ * CAS or remain wholly unpublished. */
+export function createF4MultiOutcomeTransactionOwner(
+  repository: Pick<RevisionedRepository, 'mutate'>,
+  registry: ContentRegistry,
+): F4MultiOutcomeTransactionOwner {
+  return Object.freeze({
+    async commit(input: F4MultiOutcomeTransactionInput): Promise<F4MultiOutcomeTransactionOutcome> {
+      const callerWritable = input.writable;
+      const state = callerWritable.state;
+      const extensions = callerWritable.extensions;
+      const planned = planF4MultiOutcomeDraws(extensions, input.domains);
+      if (planned.kind !== 'planned') return planned;
+      const receiptKind = checkedReceiptKind(input.receiptKind);
+      const fence = tabLeaseFence(input.grant);
+      const snapshot = capturedActivePlaySnapshot(input.snapshot);
+      const { plan } = planned;
+      return commitPlannedProduct(repository, registry, {
+        expectedRevision: input.expectedRevision,
+        fence,
+        writable: { state, extensions },
+        snapshot,
+        now: input.now,
+        receiptKind,
+        plan,
+        derive: (draft, extensions) => input.derive(Object.freeze({
+          draws: plan.draws,
+          receiptOrdinal: plan.receiptOrdinal,
+          activePlayMs: snapshot.activePlayMs,
           draft,
           extensions,
         })),

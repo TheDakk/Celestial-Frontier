@@ -4,6 +4,9 @@ import { describe, it, expect } from 'vitest';
 import {
   createSessionRNG,
   planSessionRNGDraw,
+  planSessionRNGDraws,
+  MAX_SESSION_RNG_DRAWS_PER_PLAN,
+  SessionRNGPlanningExhaustion,
   DOMAINS,
   LEGACY_RNG_SITES,
   LEGACY_OUTCOME_RNG_SITES,
@@ -347,5 +350,168 @@ describe('@cf/domain-sessionrng — the reviewer §2.1 contract, as tests', () =
     const committedNext = planSessionRNGDraw(first.nextState, 'tryCapture');
     expect(committedNext.receiptOrdinal).toBe(20);
     expect(committedNext.value).not.toBe(first.value);
+  });
+  it('plans the ordered capture pair under one receipt with pinned fixed points', () => {
+    const source = { seed: 0xC0FFEE, draws: {}, ordinal: 7 };
+    const planned = planSessionRNGDraws(source, [DOMAINS.captureCandidate, DOMAINS.captureSuccess]);
+    expect(planned).toEqual({
+      draws: [
+        { domain: 'capture.candidate', value: 0.022386470576748252 },
+        { domain: 'capture.success', value: 0.7921125674620271 },
+      ],
+      receiptOrdinal: 7,
+      nextState: {
+        seed: 0xC0FFEE,
+        draws: { 'capture.candidate': 1, 'capture.success': 1 },
+        ordinal: 8,
+      },
+    });
+    expect(source).toEqual({ seed: 0xC0FFEE, draws: {}, ordinal: 7 });
+    expect(Object.isFrozen(planned)).toBe(true);
+    expect(Object.isFrozen(planned.draws)).toBe(true);
+    expect(planned.draws.every(Object.isFrozen)).toBe(true);
+    expect(Object.isFrozen(planned.nextState)).toBe(true);
+    expect(Object.isFrozen(planned.nextState.draws)).toBe(true);
+  });
+  it('preserves order, isolates distinct domains, and advances duplicate domains per occurrence', () => {
+    const source = {
+      seed: 0xC0FFEE,
+      draws: { 'capture.candidate': 0, 'capture.success': 0, unrelated: 91 },
+      ordinal: 12,
+    };
+    const forward = planSessionRNGDraws(source, [
+      DOMAINS.captureCandidate,
+      DOMAINS.captureCandidate,
+      DOMAINS.captureSuccess,
+    ]);
+    expect(forward.draws).toEqual([
+      { domain: 'capture.candidate', value: 0.022386470576748252 },
+      { domain: 'capture.candidate', value: 0.6318913458380848 },
+      { domain: 'capture.success', value: 0.7921125674620271 },
+    ]);
+    expect(forward.nextState).toEqual({
+      seed: 0xC0FFEE,
+      draws: { 'capture.candidate': 2, 'capture.success': 1, unrelated: 91 },
+      ordinal: 13,
+    });
+    const reverse = planSessionRNGDraws(source, [DOMAINS.captureSuccess, DOMAINS.captureCandidate]);
+    expect(reverse.draws).toEqual([
+      { domain: 'capture.success', value: 0.7921125674620271 },
+      { domain: 'capture.candidate', value: 0.022386470576748252 },
+    ]);
+    expect(reverse.nextState.draws).toEqual({
+      'capture.candidate': 1, 'capture.success': 1, unrelated: 91,
+    });
+    expect(reverse.receiptOrdinal).toBe(12);
+  });
+  it('detaches caller inputs and fails bounds/exhaustion before returning a partial plan', () => {
+    const domains = [DOMAINS.captureCandidate, DOMAINS.captureSuccess];
+    const planned = planSessionRNGDraws({ seed: 12345, draws: {}, ordinal: 2 }, domains);
+    domains.reverse();
+    expect(planned.draws.map(({ domain }) => domain)).toEqual([
+      DOMAINS.captureCandidate, DOMAINS.captureSuccess,
+    ]);
+    expect(() => {
+      (planned.draws as Array<{ domain: string; value: number }>)[0] = { domain: 'forged', value: 1 };
+    }).toThrow();
+    expect(() => {
+      (planned.draws[0] as { domain: string }).domain = 'forged';
+    }).toThrow();
+    expect(() => {
+      planned.nextState.draws[DOMAINS.captureCandidate] = 999;
+    }).toThrow();
+    expect(() => planSessionRNGDraws({ seed: 1, draws: {}, ordinal: 0 }, []))
+      .toThrow(/must contain 1/);
+    expect(() => planSessionRNGDraws(
+      { seed: 1, draws: {}, ordinal: 0 },
+      Array.from({ length: MAX_SESSION_RNG_DRAWS_PER_PLAN + 1 }, () => 'x'),
+    )).toThrow(/must contain/);
+    const sparseDomains = Array<string>(1);
+    expect(() => planSessionRNGDraws(
+      { seed: 1, draws: {}, ordinal: 0 },
+      sparseDomains,
+    )).toThrow(/domain must be/);
+    const forgedIteratorDomains = [DOMAINS.captureCandidate, DOMAINS.captureSuccess];
+    Object.defineProperty(forgedIteratorDomains, Symbol.iterator, {
+      value: function* () { yield 'caller.iterator-forgery'; },
+    });
+    expect(planSessionRNGDraws(
+      { seed: 0xC0FFEE, draws: {}, ordinal: 0 },
+      forgedIteratorDomains,
+    ).draws).toEqual([
+      { domain: 'capture.candidate', value: 0.022386470576748252 },
+      { domain: 'capture.success', value: 0.7921125674620271 },
+    ]);
+    const forgedBound = Array.from(
+      { length: MAX_SESSION_RNG_DRAWS_PER_PLAN + 1 },
+      () => DOMAINS.captureCandidate,
+    );
+    Object.defineProperty(forgedBound, Symbol.iterator, {
+      value: function* () { yield DOMAINS.captureCandidate; },
+    });
+    expect(() => planSessionRNGDraws(
+      { seed: 1, draws: {}, ordinal: 0 },
+      forgedBound,
+    )).toThrow(/must contain/);
+
+    const counterSource = {
+      seed: 1,
+      draws: { [DOMAINS.captureCandidate]: 0xFFFF_FFFE },
+      ordinal: 4,
+    };
+    try {
+      planSessionRNGDraws(counterSource, [DOMAINS.captureCandidate, DOMAINS.captureCandidate]);
+      throw new Error('expected counter exhaustion');
+    } catch (error) {
+      expect(error).toBeInstanceOf(SessionRNGPlanningExhaustion);
+      expect(error).toMatchObject({
+        reason: 'draw-counter-exhausted', domain: DOMAINS.captureCandidate,
+      });
+    }
+    expect(counterSource.draws[DOMAINS.captureCandidate]).toBe(0xFFFF_FFFE);
+    try {
+      planSessionRNGDraws({ seed: 1, draws: {}, ordinal: 0xFFFF_FFFF }, ['x']);
+      throw new Error('expected ordinal exhaustion');
+    } catch (error) {
+      expect(error).toBeInstanceOf(SessionRNGPlanningExhaustion);
+      expect(error).toMatchObject({ reason: 'receipt-ordinal-exhausted', domain: null });
+    }
+  });
+  it('captures the source ordinal once even when a caller supplies a forged getter', () => {
+    let ordinalReads = 0;
+    const source = {
+      seed: 0xC0FFEE,
+      draws: {},
+      get ordinal() {
+        ordinalReads++;
+        return ordinalReads === 1 ? 7 : 99;
+      },
+    };
+    const planned = planSessionRNGDraws(source, [DOMAINS.captureCandidate]);
+    expect(ordinalReads).toBe(1);
+    expect(planned.receiptOrdinal).toBe(7);
+    expect(planned.nextState.ordinal).toBe(8);
+  });
+  it('keeps the one-draw compatibility API on its exact fixed point and state transition', () => {
+    const planned = planSessionRNGDraw(
+      { seed: 12345, draws: { 'capture.success': 0 }, ordinal: 8 },
+      DOMAINS.captureSuccess,
+    );
+    expect(planned).toEqual({
+      domain: 'capture.success',
+      value: 0.7080088830552995,
+      receiptOrdinal: 8,
+      nextState: { seed: 12345, draws: { 'capture.success': 1 }, ordinal: 9 },
+    });
+    expect(Object.isFrozen(planned)).toBe(true);
+    expect(Object.isFrozen(planned.nextState)).toBe(true);
+    expect(Object.isFrozen(planned.nextState.draws)).toBe(false);
+    try {
+      planSessionRNGDraw({ seed: 1, draws: {}, ordinal: 0xFFFF_FFFF }, 'x');
+      throw new Error('expected legacy one-draw exhaustion');
+    } catch (error) {
+      expect(error).toBeInstanceOf(RangeError);
+      expect((error as Error).name).toBe('RangeError');
+    }
   });
 });

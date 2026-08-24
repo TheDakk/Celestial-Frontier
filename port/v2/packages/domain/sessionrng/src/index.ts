@@ -41,6 +41,38 @@ export interface PlannedSessionRNGDraw {
   readonly nextState: SessionRNGState;
 }
 
+export const MAX_SESSION_RNG_DRAWS_PER_PLAN = 32;
+
+export interface PlannedSessionRNGValue {
+  readonly domain: string;
+  readonly value: number;
+}
+
+export interface PlannedSessionRNGDraws {
+  /** Ordered exactly as the caller's domains, including repeated domains. */
+  readonly draws: readonly PlannedSessionRNGValue[];
+  /** One receipt identity for the complete ordered group. */
+  readonly receiptOrdinal: number;
+  readonly nextState: SessionRNGState;
+}
+
+export class SessionRNGPlanningExhaustion extends RangeError {
+  readonly reason: 'receipt-ordinal-exhausted' | 'draw-counter-exhausted';
+  readonly domain: string | null;
+
+  constructor(
+    reason: 'receipt-ordinal-exhausted' | 'draw-counter-exhausted',
+    domain: string | null = null,
+  ) {
+    super(reason === 'receipt-ordinal-exhausted'
+      ? 'SessionRNG save-lifetime ordinal is exhausted'
+      : `SessionRNG draw counter for ${JSON.stringify(domain)} is exhausted`);
+    this.name = 'SessionRNGPlanningExhaustion';
+    this.reason = reason;
+    this.domain = domain;
+  }
+}
+
 export interface SessionRNG {
   /** Uniform [0,1) roll in a named domain; advances only that domain. */
   roll(domain: string): number;
@@ -58,12 +90,12 @@ function domainHash(domain: string): number {
 }
 
 const UINT32_MAX = 0xFFFF_FFFF;
-function checkedDomain(domain: string): string {
+function checkedDomain(domain: unknown): string {
   if (typeof domain !== 'string' || domain.length === 0 || domain.length > 64
     || /[\u0000-\u001f\u007f]/.test(domain)) {
     throw new RangeError('SessionRNG domain must be 1–64 printable characters');
   }
-  return domain;
+  return domain as string;
 }
 function checkedCounter(value: unknown, domain: string): number {
   if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) > UINT32_MAX) {
@@ -111,20 +143,91 @@ export function createSessionRNG(seed: number, draws?: Record<string, number>, o
   };
 }
 
-/** Plan one outcome without mutating the supplied persisted state. The app
- * writes `nextState` and a receipt keyed by `receiptOrdinal` in the same F3
- * transaction as the product mutation; on write failure it discards the plan
- * and the exact roll remains available. */
-export function planSessionRNGDraw(state: SessionRNGState, domain: string): PlannedSessionRNGDraw {
+/** Plan one ordered group of outcome values without mutating its persisted
+ * source. Every occurrence advances its named counter once, including repeated
+ * domains, while the whole group reserves exactly one global receipt ordinal. */
+export function planSessionRNGDraws(
+  state: SessionRNGState,
+  domains: readonly string[],
+): PlannedSessionRNGDraws {
   if (!state || typeof state !== 'object') throw new TypeError('SessionRNG state is required');
+  const domainCount = Array.isArray(domains) ? domains.length : -1;
+  if (!Number.isSafeInteger(domainCount) || domainCount < 1
+    || domainCount > MAX_SESSION_RNG_DRAWS_PER_PLAN) {
+    throw new RangeError(
+      `SessionRNG draw plan must contain 1–${MAX_SESSION_RNG_DRAWS_PER_PLAN} domains`,
+    );
+  }
   const rng = createSessionRNG(state.seed, state.draws, state.ordinal);
-  const receiptOrdinal = checkedCounter(state.ordinal, 'ordinal');
-  const value = rng.roll(domain);
+  const source = rng.state();
+  const receiptOrdinal = source.ordinal;
+  /* Copy by bounded numeric index. Array iteration is user-overridable, and a
+     forged iterator could otherwise yield fewer rows (or an unbounded number)
+     than the validated native Array length. Numeric access also turns sparse
+     holes into rejected undefined domains. */
+  const orderedDomains: string[] = [];
+  for (let index = 0; index < domainCount; index++) {
+    orderedDomains.push(checkedDomain(domains[index]));
+  }
+  const counters = new Map(Object.entries(source.draws));
+  const occurrences = new Map<string, number>();
+  for (const domain of orderedDomains) {
+    occurrences.set(domain, (occurrences.get(domain) ?? 0) + 1);
+  }
+  for (const [domain, count] of occurrences) {
+    const prior = counters.get(domain) ?? 0;
+    if (prior > UINT32_MAX - count) {
+      throw new SessionRNGPlanningExhaustion('draw-counter-exhausted', domain);
+    }
+  }
+  if (receiptOrdinal === UINT32_MAX) {
+    throw new SessionRNGPlanningExhaustion('receipt-ordinal-exhausted');
+  }
+  const draws = orderedDomains.map((domain): PlannedSessionRNGValue => {
+    const counter = counters.get(domain) ?? 0;
+    const planned = Object.freeze({ domain, value: rng.at(domain, counter) });
+    counters.set(domain, counter + 1);
+    return planned;
+  });
+  const nextDraws: Record<string, number> = Object.fromEntries(counters);
+  Object.freeze(nextDraws);
+  const nextState: SessionRNGState = {
+    seed: source.seed,
+    draws: nextDraws,
+    ordinal: receiptOrdinal + 1,
+  };
+  Object.freeze(nextState);
   return Object.freeze({
-    domain: checkedDomain(domain),
-    value,
+    draws: Object.freeze(draws),
     receiptOrdinal,
-    nextState: Object.freeze(rng.state()),
+    nextState,
+  });
+}
+
+/** Compatibility surface for one outcome. Its value, counter, ordinal and
+ * failure behavior are the one-row specialization of the ordered planner. */
+export function planSessionRNGDraw(state: SessionRNGState, domain: string): PlannedSessionRNGDraw {
+  let planned: PlannedSessionRNGDraws;
+  try {
+    planned = planSessionRNGDraws(state, [domain]);
+  } catch (error) {
+    /* Preserve the original one-draw API's plain RangeError surface while the
+       multi planner exposes typed exhaustion for persistence protection. */
+    if (error instanceof SessionRNGPlanningExhaustion) throw new RangeError(error.message);
+    throw error;
+  }
+  const draw = planned.draws[0]!;
+  return Object.freeze({
+    domain: draw.domain,
+    value: draw.value,
+    receiptOrdinal: planned.receiptOrdinal,
+    /* The legacy result froze the state envelope but returned the RNG's plain
+       detached counter object. Keep that observable contract exact. */
+    nextState: Object.freeze({
+      seed: planned.nextState.seed,
+      draws: { ...planned.nextState.draws },
+      ordinal: planned.nextState.ordinal,
+    }),
   });
 }
 

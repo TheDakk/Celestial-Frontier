@@ -9,6 +9,7 @@ import {
   V4_PRIMARY_KEY,
   createActivePlayPersistenceOwner,
   createF4DeterministicProductTransactionOwner,
+  createF4MultiOutcomeTransactionOwner,
   F4_NO_RNG_PRODUCT_OPERATIONS,
   createF4OutcomeTransactionOwner,
   createF4NoRngProductTransactionOwner,
@@ -17,12 +18,14 @@ import {
   createTabLeaseClient,
   migrateStoredV4ToV5,
   planF4DeterministicProductReceipt,
+  planF4MultiOutcomeDraws,
   planF4OutcomeDraw,
   readF4Authority,
   readSaveV5,
   type ContentRegistry,
   type F4OutcomeTransactionInput,
   type F4DeterministicProductTransactionInput,
+  type F4MultiOutcomeTransactionInput,
   type F4NoRngProductTransactionInput,
   type StorageBackend,
   type StorageCheck,
@@ -650,6 +653,379 @@ describe('@cf/persistence — F4 exact-outcome transaction owner', () => {
         authority: { activePlayMs: 100, sessionRng: { seed: 0xC0FFEE, ordinal: 0, draws: {} } },
       });
     }
+  });
+});
+
+describe('@cf/persistence — ordered multi-outcome transaction owner', () => {
+  const captureDomains = ['capture.candidate', 'capture.success'] as const;
+
+  it('plans ordered, reversed, and duplicate domains under one isolated receipt', () => {
+    const extensions = authorityExtensions(0xC0FFEE, { unrelated: 6 }, 17, 40);
+    const forward = planF4MultiOutcomeDraws(extensions, captureDomains);
+    const reverse = planF4MultiOutcomeDraws(extensions, [...captureDomains].reverse());
+    const duplicate = planF4MultiOutcomeDraws(extensions, [
+      'capture.candidate', 'capture.candidate', 'capture.success',
+    ]);
+    expect(forward.kind).toBe('planned');
+    expect(reverse.kind).toBe('planned');
+    expect(duplicate.kind).toBe('planned');
+    if (forward.kind !== 'planned' || reverse.kind !== 'planned' || duplicate.kind !== 'planned') return;
+    expect(forward.plan.draws).toEqual([
+      { domain: 'capture.candidate', value: 0.022386470576748252 },
+      { domain: 'capture.success', value: 0.7921125674620271 },
+    ]);
+    expect(reverse.plan.draws).toEqual([...forward.plan.draws].reverse());
+    expect(duplicate.plan.draws).toEqual([
+      { domain: 'capture.candidate', value: 0.022386470576748252 },
+      { domain: 'capture.candidate', value: 0.6318913458380848 },
+      { domain: 'capture.success', value: 0.7921125674620271 },
+    ]);
+    expect(forward.plan.receiptOrdinal).toBe(17);
+    expect(forward.plan.nextSessionRng).toEqual({
+      seed: 0xC0FFEE,
+      ordinal: 18,
+      draws: { 'capture.candidate': 1, 'capture.success': 1, unrelated: 6 },
+    });
+    expect(duplicate.plan.nextSessionRng).toEqual({
+      seed: 0xC0FFEE,
+      ordinal: 18,
+      draws: { 'capture.candidate': 2, 'capture.success': 1, unrelated: 6 },
+    });
+    expect(Object.isFrozen(forward.plan.draws)).toBe(true);
+    expect(forward.plan.draws.every(Object.isFrozen)).toBe(true);
+  });
+
+  it('commits two capture values, active play, product, authority, and one receipt in one CAS', async () => {
+    const base = createMemoryBackend();
+    let mutationCalls = 0;
+    const capture: {
+      mutation: { checks: readonly StorageCheck[]; operations: readonly StorageOperation[] } | null;
+    } = { mutation: null };
+    let armed = false;
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        if (armed && operations.some(({ store }) => store === 'receipts')) {
+          mutationCalls++;
+          capture.mutation = { checks: [...checks], operations: [...operations] };
+        }
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const harness = await seededHarness(
+      backend,
+      createSessionRNG(0xC0FFEE, { unrelated: 4 }, 9).state(),
+      100,
+    );
+    armed = true;
+    const beforeEssence = harness.writable.state.essence;
+    const domains = [...captureDomains];
+    let observedActivePlay = -1;
+    let observedExtensions: V5Extensions | null = null;
+    let snapshotReads = 0;
+    const snapshot = {} as { activePlayMs: number };
+    Object.defineProperty(snapshot, 'activePlayMs', {
+      enumerable: true,
+      get() {
+        snapshotReads++;
+        return snapshotReads === 1 ? 456 : 999;
+      },
+    });
+    let extensionReads = 0;
+    const writable = {
+      state: harness.writable.state,
+      get extensions(): V5Extensions {
+        extensionReads++;
+        return extensionReads === 1 ? harness.writable.extensions : {};
+      },
+    };
+    const owner = createF4MultiOutcomeTransactionOwner(createRevisionedRepository(backend), REGISTRY);
+    const pending = owner.commit({
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable,
+      snapshot,
+      domains,
+      receiptKind: 'capture-attempt',
+      now: NOW,
+      derive: ({ draws, receiptOrdinal, activePlayMs, draft, extensions }) => {
+        observedActivePlay = activePlayMs;
+        observedExtensions = extensions;
+        expect(draft).not.toBe(harness.writable.state);
+        expect(extensions).not.toBe(harness.writable.extensions);
+        expect(Object.isFrozen(draws)).toBe(true);
+        expect(draws.every(Object.isFrozen)).toBe(true);
+        expect(() => {
+          (draws[0] as { value: number }).value = 1;
+        }).toThrow();
+        draft.essence += draws[1]!.value < 0.8 ? 2 : 1;
+        return {
+          state: draft,
+          witness: `capture:${receiptOrdinal}:${draws.map(({ domain, value }) => `${domain}:${value}`).join('|')}`,
+        };
+      },
+    });
+    domains.reverse();
+    const result = await pending;
+    expect(result.kind).toBe('committed');
+    if (result.kind !== 'committed') return;
+    expect(result.plan.draws.map(({ domain }) => domain)).toEqual(captureDomains);
+    expect(result.plan.receiptOrdinal).toBe(9);
+    expect(result.authority).toEqual({
+      activePlayMs: 456,
+      sessionRng: {
+        seed: 0xC0FFEE,
+        ordinal: 10,
+        draws: { 'capture.candidate': 1, 'capture.success': 1, unrelated: 4 },
+      },
+    });
+    expect(result.receipt).toMatchObject({ ordinal: 9, kind: 'capture-attempt' });
+    expect(observedActivePlay).toBe(456);
+    expect(snapshotReads).toBe(1);
+    expect(extensionReads).toBe(1);
+    expect(observedExtensions).not.toBeNull();
+    expect(harness.writable.state.essence).toBe(beforeEssence);
+    expect(mutationCalls).toBe(1);
+    expect(capture.mutation?.checks).toEqual([
+      { store: 'meta', key: F3_REVISION_KEY, value: '1' },
+      { store: 'receipts', key: 'receipt:9', value: undefined },
+      harness.grant.check,
+    ]);
+    expect(capture.mutation?.operations).toEqual([
+      ...result.saved.operations,
+      { store: 'receipts', key: 'receipt:9', value: JSON.stringify(result.receipt) },
+      { store: 'meta', key: F3_REVISION_KEY, value: '2' },
+    ]);
+    expect(await backend.keys('receipts')).toEqual(['receipt:9']);
+    const reloaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (reloaded.kind !== 'loaded') throw new Error(`multi-outcome reload was ${reloaded.kind}`);
+    expect(reloaded.state.essence).toBe(beforeEssence + 2);
+    expect(readF4Authority(reloaded.extensions)).toEqual({ kind: 'loaded', authority: result.authority });
+  });
+
+  it('protects missing/future/corrupt/exhausted authority before derive or write', async () => {
+    const harness = await seededHarness();
+    let derivationCalls = 0;
+    let mutationCalls = 0;
+    const owner = createF4MultiOutcomeTransactionOwner({
+      async mutate() {
+        mutationCalls++;
+        throw new Error('must not mutate');
+      },
+    }, REGISTRY);
+    const cases: readonly Readonly<{
+      extensions: V5Extensions;
+      domains: readonly string[];
+      expected: object;
+    }>[] = [
+      { extensions: {}, domains: [], expected: { kind: 'protected', reason: 'authority-absent' } },
+      {
+        extensions: { player: {
+          [F4_AUTHORITY_NAMESPACE]: { version: 1, json: '{"activePlayMs":-1,"sessionRng":{}}' },
+        } },
+        domains: [],
+        expected: { kind: 'protected', reason: 'authority-corrupt' },
+      },
+      {
+        extensions: { player: {
+          [F4_AUTHORITY_NAMESPACE]: { version: 8, json: '{"future":true}' },
+        } },
+        domains: [],
+        expected: { kind: 'protected', reason: 'authority-future', version: 8 },
+      },
+      {
+        extensions: authorityExtensions(5, {}, 0xFFFF_FFFF),
+        domains: captureDomains,
+        expected: { kind: 'protected', reason: 'receipt-ordinal-exhausted' },
+      },
+      {
+        extensions: authorityExtensions(5, { 'capture.candidate': 0xFFFF_FFFE }, 2),
+        domains: ['capture.candidate', 'capture.candidate'],
+        expected: {
+          kind: 'protected', reason: 'draw-counter-exhausted', domain: 'capture.candidate',
+        },
+      },
+    ];
+    for (const control of cases) {
+      await expect(owner.commit({
+        expectedRevision: 1,
+        grant: harness.grant,
+        writable: { state: harness.writable.state, extensions: control.extensions },
+        snapshot: { activePlayMs: 500 },
+        domains: control.domains,
+        receiptKind: 'capture-attempt',
+        now: NOW,
+        derive: ({ draft }) => {
+          derivationCalls++;
+          return { state: draft, witness: 'must-not-run' };
+        },
+      })).resolves.toEqual(control.expected);
+    }
+    await expect(owner.commit({
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 500 },
+      domains: [],
+      receiptKind: 'capture-attempt',
+      now: NOW,
+      derive: ({ draft }) => {
+        derivationCalls++;
+        return { state: draft, witness: 'must-not-run' };
+      },
+    })).rejects.toThrow(/must contain 1/);
+    expect(derivationCalls).toBe(0);
+    expect(mutationCalls).toBe(0);
+  });
+
+  it('replays the same ordered plan after storage failure and commits a same-parent pair once', async () => {
+    const base = createMemoryBackend();
+    let failNext = false;
+    let attempts = 0;
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        if (operations.some(({ store }) => store === 'receipts')) {
+          attempts++;
+          if (failNext) {
+            failNext = false;
+            throw new Error('injected multi-outcome abort');
+          }
+        }
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const harness = await seededHarness(backend);
+    const owner = createF4MultiOutcomeTransactionOwner(createRevisionedRepository(backend), REGISTRY);
+    const observed: string[] = [];
+    const derive: F4MultiOutcomeTransactionInput['derive'] = ({ draws, draft }) => {
+      observed.push(JSON.stringify(draws));
+      draft.essence += 1;
+      return { state: draft, witness: `capture:${observed.at(-1)}` };
+    };
+    const input: F4MultiOutcomeTransactionInput = {
+      expectedRevision: 1,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 222 },
+      domains: captureDomains,
+      receiptKind: 'capture-attempt',
+      now: NOW,
+      derive,
+    };
+    failNext = true;
+    const failed = await owner.commit(input);
+    expect(failed).toMatchObject({ kind: 'storage-error', message: 'injected multi-outcome abort' });
+    expect(attempts).toBe(1);
+    expect(await createRevisionedRepository(backend).revision()).toBe(1);
+    expect(await backend.keys('receipts')).toEqual([]);
+    const afterFailure = await readSaveV5(backend, REGISTRY, NOW);
+    if (afterFailure.kind !== 'loaded' || failed.kind !== 'storage-error') return;
+    expect(readF4Authority(afterFailure.extensions)).toMatchObject({
+      kind: 'loaded', authority: { activePlayMs: 100, sessionRng: { ordinal: 0, draws: {} } },
+    });
+    const retry = await owner.commit({
+      ...input,
+      writable: { state: afterFailure.state, extensions: afterFailure.extensions },
+    });
+    expect(retry.kind).toBe('committed');
+    if (retry.kind !== 'committed') return;
+    expect(retry.plan.draws).toEqual(failed.plan.draws);
+    expect(observed).toEqual([JSON.stringify(failed.plan.draws), JSON.stringify(failed.plan.draws)]);
+    expect(attempts).toBe(2);
+
+    const doubleHarness = await seededHarness();
+    const doubleOwner = createF4MultiOutcomeTransactionOwner(
+      createRevisionedRepository(doubleHarness.backend),
+      REGISTRY,
+    );
+    const doubleInput: F4MultiOutcomeTransactionInput = {
+      expectedRevision: 1,
+      grant: doubleHarness.grant,
+      writable: doubleHarness.writable,
+      snapshot: { activePlayMs: 333 },
+      domains: captureDomains,
+      receiptKind: 'capture-attempt',
+      now: NOW,
+      derive: ({ draft }) => {
+        draft.essence += 1;
+        return { state: draft, witness: 'same-parent-capture' };
+      },
+    };
+    const pair = await Promise.all([doubleOwner.commit(doubleInput), doubleOwner.commit(doubleInput)]);
+    expect(pair.map(({ kind }) => kind).sort()).toEqual(['committed', 'duplicate-receipt']);
+    expect(await doubleHarness.backend.keys('receipts')).toEqual(['receipt:0']);
+    const doubleReload = await readSaveV5(doubleHarness.backend, REGISTRY, NOW);
+    if (doubleReload.kind !== 'loaded') throw new Error(`double reload was ${doubleReload.kind}`);
+    expect(readF4Authority(doubleReload.extensions)).toMatchObject({
+      kind: 'loaded',
+      authority: {
+        activePlayMs: 333,
+        sessionRng: {
+          ordinal: 1,
+          draws: { 'capture.candidate': 1, 'capture.success': 1 },
+        },
+      },
+    });
+  });
+
+  it('keeps stale and lost multi-outcome plans wholly unpublished', async () => {
+    const staleHarness = await seededHarness();
+    const staleRepository = createRevisionedRepository(staleHarness.backend);
+    await staleRepository.mutate({
+      expectedRevision: 1,
+      writes: [{ store: 'player', key: 'unrelated', value: 'new-parent' }],
+    });
+    const staleOwner = createF4MultiOutcomeTransactionOwner(staleRepository, REGISTRY);
+    const stale = await staleOwner.commit({
+      expectedRevision: 1,
+      grant: staleHarness.grant,
+      writable: staleHarness.writable,
+      snapshot: { activePlayMs: 700 },
+      domains: captureDomains,
+      receiptKind: 'capture-attempt',
+      now: NOW,
+      derive: ({ draft }) => {
+        draft.essence += 1;
+        return { state: draft, witness: 'stale-capture' };
+      },
+    });
+    expect(stale).toMatchObject({ kind: 'stale', expectedRevision: 1, actualRevision: 2 });
+    expect(await staleRepository.readReceipt(0)).toBeUndefined();
+    const staleReload = await readSaveV5(staleHarness.backend, REGISTRY, NOW);
+    if (staleReload.kind !== 'loaded') throw new Error(`stale reload was ${staleReload.kind}`);
+    expect(readF4Authority(staleReload.extensions)).toMatchObject({
+      kind: 'loaded', authority: { sessionRng: { ordinal: 0, draws: {} } },
+    });
+
+    const lostHarness = await seededHarness();
+    const takeoverClock = controlledClock(50_000);
+    const successor = createTabLeaseClient(lostHarness.backend, {
+      ownerId: 'tab-b', token: 'session-b', ttlMs: 10, now: takeoverClock.now,
+    });
+    await successor.acquire();
+    takeoverClock.advance(10);
+    const takeover = await successor.acquire();
+    if (takeover.kind !== 'acquired') throw new Error(`takeover was ${takeover.kind}`);
+    const lostOwner = createF4MultiOutcomeTransactionOwner(
+      createRevisionedRepository(lostHarness.backend),
+      REGISTRY,
+    );
+    const lost = await lostOwner.commit({
+      expectedRevision: 1,
+      grant: lostHarness.grant,
+      writable: lostHarness.writable,
+      snapshot: { activePlayMs: 800 },
+      domains: captureDomains,
+      receiptKind: 'capture-attempt',
+      now: NOW,
+      derive: ({ draft }) => {
+        draft.essence += 1;
+        return { state: draft, witness: 'lost-capture' };
+      },
+    });
+    expect(lost).toMatchObject({ kind: 'lost', reason: 'lease-lost' });
+    expect(await lostHarness.backend.keys('receipts')).toEqual([]);
   });
 });
 

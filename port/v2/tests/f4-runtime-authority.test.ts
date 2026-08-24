@@ -9,6 +9,7 @@ import {
   createMemoryBackend,
   createRevisionedRepository,
   createTabLeaseClient,
+  F4_AUTHORITY_NAMESPACE,
   migrateStoredV4ToV5,
   prepareArc2LootLegacyMigration,
   prepareArc2LootLegacyRestore,
@@ -23,6 +24,7 @@ import {
 import {
   createF4RuntimeAuthority,
   type F4RuntimeActionInput,
+  type F4RuntimeMultiOutcomeInput,
   type F4RuntimeOutcomeInput,
   type F4RuntimeProductInput,
 } from '../apps/game/src/f4-runtime-authority.js';
@@ -316,6 +318,401 @@ describe('F4 runtime authority join', () => {
           draws: { 'concurrent.first': 1 },
         },
       },
+    });
+  });
+
+  it('publishes one ordered capture transaction from an immutable submission snapshot', async () => {
+    const migratedCase = await migrated();
+    const base = migratedCase.backend;
+    let receiptMutations = 0;
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        if (operations.some(({ store }) => store === 'receipts')) receiptMutations++;
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const repository = createRevisionedRepository(backend);
+    const time = controlledClock();
+    const runtime = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: migratedCase.loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 0xC0FFEE, ownerId: 'tab-a', token: 'capture-document', leaseTtlMs: 1_000,
+      now: time.now, visible: true, answerable: true,
+    });
+    await runtime.heartbeat();
+
+    let protectedDerivations = 0;
+    await expect(runtime.commitOutcomes({
+      state: migratedCase.loaded.state,
+      domains: ['capture.candidate', 'capture.success'],
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      derive: ({ draft }) => {
+        protectedDerivations++;
+        return { state: draft, witness: 'must-not-run' };
+      },
+    })).resolves.toEqual({ kind: 'protected', reason: 'authority-absent' });
+    expect(protectedDerivations).toBe(0);
+    expect(receiptMutations).toBe(0);
+
+    expect((await runtime.commit(migratedCase.loaded.state, NOW)).kind).toBe('committed');
+    time.advance(345);
+    const liveExtensions = runtime.extensions;
+    const domains = ['capture.candidate', 'capture.success'];
+    Object.defineProperty(domains, Symbol.iterator, {
+      value: function* () { yield 'caller.iterator-forgery'; },
+    });
+    const beforeEssence = migratedCase.loaded.state.essence;
+    let observedDerivations = 0;
+    const pending = runtime.commitOutcomes({
+      state: migratedCase.loaded.state,
+      domains,
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      derive: ({ draws, receiptOrdinal, activePlayMs, draft, extensions }) => {
+        observedDerivations++;
+        expect(draws).toEqual([
+          { domain: 'capture.candidate', value: 0.022386470576748252 },
+          { domain: 'capture.success', value: 0.7921125674620271 },
+        ]);
+        expect(Object.isFrozen(draws)).toBe(true);
+        expect(draws.every(Object.isFrozen)).toBe(true);
+        expect(() => {
+          (draws[0] as { domain: string }).domain = 'caller.forgery';
+        }).toThrow();
+        expect(receiptOrdinal).toBe(0);
+        expect(activePlayMs).toBe(345);
+        expect(draft).not.toBe(migratedCase.loaded.state);
+        expect(extensions).not.toBe(liveExtensions);
+        draft.essence += 2;
+        return {
+          state: draft,
+          witness: 'capture:0:candidate=0.022386470576748252:success=0.7921125674620271',
+          extensionWrites: [{
+            segment: 'inventory',
+            namespace: 'test.arc4-capture',
+            carrier: { version: 1, json: '{"captured":true}' },
+          }],
+        };
+      },
+    });
+    domains.reverse();
+    domains[0] = 'caller.replacement';
+    const outcome = await pending;
+
+    expect(outcome.kind).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    expect(observedDerivations).toBe(1);
+    expect(outcome.plan.draws.map(({ domain }) => domain)).toEqual([
+      'capture.candidate', 'capture.success',
+    ]);
+    expect(outcome.state).toBe(outcome.saved.canonicalState);
+    expect(outcome.state.essence).toBe(beforeEssence + 2);
+    expect(migratedCase.loaded.state.essence).toBe(beforeEssence);
+    expect(receiptMutations).toBe(1);
+    expect(runtime.revision).toBe(2);
+    expect(runtime.sessionRng).toEqual({
+      seed: 0xC0FFEE,
+      ordinal: 1,
+      draws: { 'capture.candidate': 1, 'capture.success': 1 },
+    });
+    expect(runtime.extensions.inventory?.['test.arc4-capture']).toEqual({
+      version: 1, json: '{"captured":true}',
+    });
+    expect(await repository.readReceipt(0)).toEqual(outcome.receipt);
+    expect(outcome.receipt).toMatchObject({ ordinal: 0, kind: 'capture-attempt' });
+
+    const reloaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (reloaded.kind !== 'loaded') throw new Error(`capture reload was ${reloaded.kind}`);
+    expect(reloaded.state.essence).toBe(beforeEssence + 2);
+    expect(readF4Authority(reloaded.extensions)).toEqual({
+      kind: 'loaded',
+      authority: {
+        activePlayMs: 345,
+        sessionRng: {
+          seed: 0xC0FFEE,
+          ordinal: 1,
+          draws: { 'capture.candidate': 1, 'capture.success': 1 },
+        },
+      },
+    });
+  });
+
+  it('keeps rejected and storage-aborted capture plans private, then reloads and retries identically', async () => {
+    const migratedCase = await migrated();
+    const base = migratedCase.backend;
+    let failNextCapture = false;
+    let receiptMutations = 0;
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        if (operations.some(({ store }) => store === 'receipts')) {
+          receiptMutations++;
+          if (failNextCapture) {
+            failNextCapture = false;
+            throw new Error('injected capture transaction abort');
+          }
+        }
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const repository = createRevisionedRepository(backend);
+    const first = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: migratedCase.loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 0xC0FFEE, ownerId: 'tab', token: 'capture-one', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await first.heartbeat();
+    expect((await first.commit(migratedCase.loaded.state, NOW)).kind).toBe('committed');
+    const baselineExtensions = first.extensions;
+    const baselineRng = first.sessionRng;
+    const rejected = await first.commitOutcomes({
+      state: migratedCase.loaded.state,
+      domains: ['capture.candidate', 'capture.success'],
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      derive: ({ draft }) => ({ state: draft, witness: '' }),
+    });
+    expect(rejected).toMatchObject({ kind: 'rejected', stage: 'derive' });
+    expect(receiptMutations).toBe(0);
+    expect(first.revision).toBe(1);
+    expect(first.extensions).toBe(baselineExtensions);
+    expect(first.sessionRng).toEqual(baselineRng);
+
+    const forged = await first.commitOutcomes({
+      state: migratedCase.loaded.state,
+      domains: ['capture.candidate', 'capture.success'],
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      derive: ({ draft }) => ({
+        state: draft,
+        witness: 'forged-authority',
+        extensionWrites: [{
+          segment: 'player', namespace: F4_AUTHORITY_NAMESPACE,
+          carrier: { version: 1, json: '{"forged":true}' },
+        }],
+      }),
+    });
+    expect(forged).toMatchObject({ kind: 'rejected', stage: 'extension-writes' });
+    expect(receiptMutations).toBe(0);
+    expect(first.extensions).toBe(baselineExtensions);
+    expect(first.sessionRng).toEqual(baselineRng);
+
+    const observedPlans: string[] = [];
+    const derive: F4RuntimeMultiOutcomeInput['derive'] = ({ draws, draft, receiptOrdinal }) => {
+      observedPlans.push(JSON.stringify(draws));
+      draft.essence += 3;
+      return { state: draft, witness: `capture-retry:${receiptOrdinal}` };
+    };
+    failNextCapture = true;
+    const failed = await first.commitOutcomes({
+      state: migratedCase.loaded.state,
+      domains: ['capture.candidate', 'capture.success'],
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      derive,
+    });
+    expect(failed).toMatchObject({
+      kind: 'storage-error',
+      message: 'injected capture transaction abort',
+      plan: { receiptOrdinal: 0 },
+    });
+    expect(receiptMutations).toBe(1);
+    expect(first.revision).toBe(1);
+    expect(first.extensions).toBe(baselineExtensions);
+    expect(first.sessionRng).toEqual(baselineRng);
+    expect(await repository.readReceipt(0)).toBeUndefined();
+    await first.release();
+
+    const reloaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (reloaded.kind !== 'loaded') throw new Error(`failed capture reload was ${reloaded.kind}`);
+    const restored = readF4Authority(reloaded.extensions);
+    if (restored.kind !== 'loaded') throw new Error(`failed capture authority was ${restored.kind}`);
+    expect(restored.authority.sessionRng).toEqual(baselineRng);
+    const second = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: 1, initialExtensions: reloaded.extensions, restoredAuthority: restored.authority,
+      freshSessionSeed: 7, ownerId: 'tab', token: 'capture-two', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await second.heartbeat();
+    const retry = await second.commitOutcomes({
+      state: reloaded.state,
+      domains: ['capture.candidate', 'capture.success'],
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      derive,
+    });
+    expect(retry.kind).toBe('committed');
+    if (failed.kind !== 'storage-error' || retry.kind !== 'committed') return;
+    expect(retry.plan.draws).toEqual(failed.plan.draws);
+    expect(observedPlans).toEqual([JSON.stringify(failed.plan.draws), JSON.stringify(failed.plan.draws)]);
+    expect(receiptMutations).toBe(2);
+    expect(second.revision).toBe(2);
+    expect(second.sessionRng).toEqual({
+      seed: 0xC0FFEE,
+      ordinal: 1,
+      draws: { 'capture.candidate': 1, 'capture.success': 1 },
+    });
+  });
+
+  it('binds concurrent same-parent capture plans and publishes only the winner counters', async () => {
+    const { backend, loaded } = await migrated();
+    const repository = createRevisionedRepository(backend);
+    const runtime = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 0xC0FFEE, ownerId: 'tab-a', token: 'capture-document', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await runtime.heartbeat();
+    expect((await runtime.commit(loaded.state, NOW)).kind).toBe('committed');
+    const beforeEssence = loaded.state.essence;
+    const winnerPending = runtime.commitOutcomes({
+      state: loaded.state,
+      domains: ['capture.candidate', 'capture.success'],
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      derive: ({ draft }) => {
+        draft.essence += 4;
+        return { state: draft, witness: 'capture-winner' };
+      },
+    });
+    const loserPending = runtime.commitOutcomes({
+      state: loaded.state,
+      domains: ['capture.success', 'capture.success'],
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      derive: ({ draft }) => {
+        draft.essence += 40;
+        return { state: draft, witness: 'capture-loser' };
+      },
+    });
+    const [winner, loser] = await Promise.all([winnerPending, loserPending]);
+    expect(winner.kind).toBe('committed');
+    expect(loser).toMatchObject({
+      kind: 'stale', expectedRevision: 1, actualRevision: 2,
+      plan: { receiptOrdinal: 0 },
+    });
+    expect(runtime.diagnostics()).toMatchObject({
+      revision: 2,
+      commits: 2,
+      staleWrites: 1,
+      staleBlocked: true,
+      leaseOwned: false,
+      sessionOrdinal: 1,
+      sessionDraws: { 'capture.candidate': 1, 'capture.success': 1 },
+    });
+    expect(await backend.keys('receipts')).toEqual(['receipt:0']);
+    const stored = await readSaveV5(backend, REGISTRY, NOW);
+    if (stored.kind !== 'loaded') throw new Error(`concurrent capture reload was ${stored.kind}`);
+    expect(stored.state.essence).toBe(beforeEssence + 4);
+    expect(readF4Authority(stored.extensions)).toMatchObject({
+      kind: 'loaded',
+      authority: {
+        sessionRng: {
+          seed: 0xC0FFEE,
+          ordinal: 1,
+          draws: { 'capture.candidate': 1, 'capture.success': 1 },
+        },
+      },
+    });
+  });
+
+  it('fails closed without publishing capture state or RNG on duplicate receipts and lost leases', async () => {
+    const duplicateCase = await migrated();
+    const duplicateRepository = createRevisionedRepository(duplicateCase.backend);
+    const duplicateRuntime = createF4RuntimeAuthority({
+      backend: duplicateCase.backend, repository: duplicateRepository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: duplicateCase.loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 0xC0FFEE, ownerId: 'tab', token: 'duplicate-capture', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await duplicateRuntime.heartbeat();
+    expect((await duplicateRuntime.commit(duplicateCase.loaded.state, NOW)).kind).toBe('committed');
+    const duplicateExtensions = duplicateRuntime.extensions;
+    const duplicateRng = duplicateRuntime.sessionRng;
+    const duplicateEssence = duplicateCase.loaded.state.essence;
+    const existingReceipt = { ordinal: 0, kind: 'preexisting', witness: 'already-committed' };
+    await duplicateCase.backend.apply([{
+      store: 'receipts', key: 'receipt:0', value: JSON.stringify(existingReceipt),
+    }]);
+    let duplicateDerivations = 0;
+    await expect(duplicateRuntime.commitOutcomes({
+      state: duplicateCase.loaded.state,
+      domains: ['capture.candidate', 'capture.success'],
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      derive: ({ draft }) => {
+        duplicateDerivations++;
+        draft.essence += 5;
+        return { state: draft, witness: 'must-not-land' };
+      },
+    })).resolves.toMatchObject({ kind: 'duplicate-receipt', existing: existingReceipt });
+    expect(duplicateDerivations).toBe(1);
+    expect(duplicateRuntime.revision).toBe(1);
+    expect(duplicateRuntime.extensions).toBe(duplicateExtensions);
+    expect(duplicateRuntime.sessionRng).toEqual(duplicateRng);
+    expect(duplicateRuntime.diagnostics()).toMatchObject({
+      staleBlocked: true, leaseOwned: false, sessionOrdinal: 0, sessionDraws: {},
+    });
+    const duplicateReload = await readSaveV5(duplicateCase.backend, REGISTRY, NOW);
+    if (duplicateReload.kind !== 'loaded') throw new Error(`duplicate capture reload was ${duplicateReload.kind}`);
+    expect(duplicateReload.state.essence).toBe(duplicateEssence);
+    expect(readF4Authority(duplicateReload.extensions)).toMatchObject({
+      kind: 'loaded', authority: { sessionRng: duplicateRng },
+    });
+
+    const lostCase = await migrated();
+    const time = controlledClock();
+    const lostRepository = createRevisionedRepository(lostCase.backend);
+    const lostRuntime = createF4RuntimeAuthority({
+      backend: lostCase.backend, repository: lostRepository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: lostCase.loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 0xC0FFEE, ownerId: 'tab', token: 'old-capture', leaseTtlMs: 100,
+      now: time.now, visible: true, answerable: true,
+    });
+    await lostRuntime.heartbeat();
+    expect((await lostRuntime.commit(lostCase.loaded.state, NOW)).kind).toBe('committed');
+    const lostExtensions = lostRuntime.extensions;
+    const lostRng = lostRuntime.sessionRng;
+    const lostEssence = lostCase.loaded.state.essence;
+    time.advance(101);
+    const successor = createTabLeaseClient(lostCase.backend, {
+      ownerId: 'tab', token: 'successor-capture', ttlMs: 100, now: time.now,
+    });
+    await expect(successor.acquire()).resolves.toMatchObject({
+      kind: 'held-by-other', holder: { token: 'old-capture' }, remainingMs: 100,
+    });
+    time.advance(101);
+    await expect(successor.acquire()).resolves.toMatchObject({ kind: 'acquired' });
+    let lostDerivations = 0;
+    await expect(lostRuntime.commitOutcomes({
+      state: lostCase.loaded.state,
+      domains: ['capture.candidate', 'capture.success'],
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      derive: ({ draft }) => {
+        lostDerivations++;
+        draft.essence += 6;
+        return { state: draft, witness: 'lost-capture' };
+      },
+    })).resolves.toMatchObject({ kind: 'lost', reason: 'lease-lost' });
+    expect(lostDerivations).toBe(1);
+    expect(lostRuntime.revision).toBe(1);
+    expect(lostRuntime.extensions).toBe(lostExtensions);
+    expect(lostRuntime.sessionRng).toEqual(lostRng);
+    expect(lostRuntime.diagnostics()).toMatchObject({
+      leaseOwned: false, leaseLosses: 1, sessionOrdinal: 0, sessionDraws: {},
+    });
+    expect(await lostRepository.readReceipt(0)).toBeUndefined();
+    const lostReload = await readSaveV5(lostCase.backend, REGISTRY, NOW);
+    if (lostReload.kind !== 'loaded') throw new Error(`lost capture reload was ${lostReload.kind}`);
+    expect(lostReload.state.essence).toBe(lostEssence);
+    expect(readF4Authority(lostReload.extensions)).toMatchObject({
+      kind: 'loaded', authority: { sessionRng: lostRng },
     });
   });
 
