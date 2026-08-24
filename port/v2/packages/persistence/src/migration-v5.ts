@@ -13,6 +13,7 @@
 import { exportSaveV2 } from './export-v2.js';
 import {
   importSaveV2,
+  isLegacySliceEnvelope,
   isPlausibleSaveEnvelope,
   type ContentRegistry,
   type ImportRouteIngressV2,
@@ -245,18 +246,40 @@ function canonicalV4FromState(
   return { state: third.state, raw: normalizedRaw };
 }
 
-/** Authentic v4 classification, stricter than the deliberately total loader. */
-export function classifyV4Save(raw: string, registry: ContentRegistry, now: number): V4SaveClassification {
+function classifyV4Source(
+  raw: string,
+  registry: ContentRegistry,
+  now: number,
+  allowLegacySlice: boolean,
+): V4SaveClassification {
   const imported = importSaveV2(raw, registry, now);
   if (!imported.ok) return { kind: imported.reason === 'future-version' ? 'future-version' : 'corrupt' };
   const parsed = parseRecord(raw);
-  if (parsed === null || !isPlausibleSaveEnvelope(parsed)) return { kind: 'corrupt' };
+  if (parsed === null
+    || !(isPlausibleSaveEnvelope(parsed) || (allowLegacySlice && isLegacySliceEnvelope(parsed)))) {
+    return { kind: 'corrupt' };
+  }
   try {
     const canonical = canonicalV4FromState(imported.state, registry, now);
     return { kind: 'supported', state: imported.state, ingress: imported.ingress, normalizedRaw: canonical.raw };
   } catch {
     return { kind: 'corrupt' };
   }
+}
+
+/** Authentic complete-v4 classification, stricter than the deliberately
+ * total loader. Deliberately excludes the historical development-slice
+ * bridge: trusted replacement/import callers must still prove a whole save. */
+export function classifyV4Save(raw: string, registry: ContentRegistry, now: number): V4SaveClassification {
+  return classifyV4Source(raw, registry, now, false);
+}
+
+/** Stored-source compatibility boundary. In addition to a complete mature
+ * v4 envelope it accepts only the exact two-field `cf-v2-slice` shape written
+ * by the historical app. The original bytes remain the migration snapshot;
+ * all durable v5 rows are produced through the ordinary bounded v4 codec. */
+function classifyStoredV4Source(raw: string, registry: ContentRegistry, now: number): V4SaveClassification {
+  return classifyV4Source(raw, registry, now, true);
 }
 
 function splitV4Envelope(raw: string): Readonly<Record<V5Segment, Readonly<Record<string, unknown>>>> {
@@ -417,7 +440,7 @@ export function prepareV4ToV5Migration(
   registry: ContentRegistry,
   now: number,
 ): PreparedV5Migration | Exclude<V4SaveClassification, { kind: 'supported' }> {
-  const classified = classifyV4Save(raw, registry, now);
+  const classified = classifyStoredV4Source(raw, registry, now);
   if (classified.kind !== 'supported') return classified;
   const schema: V5SchemaRow = {
     schema: V5_SCHEMA_VERSION,
@@ -602,7 +625,7 @@ export async function readSaveV5WithRecovery(
     const snapshot = decodeSnapshot(snapshotRaw);
     if (snapshot.kind === 'future') return { kind: 'future-version', scope: 'snapshot' };
     if (snapshot.kind === 'corrupt') return { kind: 'corrupt', scope: 'snapshot' };
-    const classified = classifyV4Save(snapshot.raw, registry, now);
+    const classified = classifyStoredV4Source(snapshot.raw, registry, now);
     if (classified.kind === 'future-version') return { kind: 'future-version', scope: 'snapshot' };
     if (classified.kind === 'corrupt') return { kind: 'corrupt', scope: 'snapshot' };
     return {
