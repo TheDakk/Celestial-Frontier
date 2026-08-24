@@ -129,11 +129,11 @@ describe('@cf/persistence — F4 exact-outcome transaction owner', () => {
     let armed = false;
     const backend: StorageBackend = {
       ...base,
-      async compareAndApply(checks, operations) {
+      async compareAndApply(checks, operations, clearStores) {
         if (armed && operations.some((operation) => operation.store === 'receipts')) {
           captured = { checks: [...checks], operations: [...operations] };
         }
-        return base.compareAndApply(checks, operations);
+        return base.compareAndApply(checks, operations, clearStores);
       },
     };
     const harness = await seededHarness(backend);
@@ -307,12 +307,12 @@ describe('@cf/persistence — F4 exact-outcome transaction owner', () => {
     let failNextOutcome = false;
     const backend: StorageBackend = {
       ...base,
-      async compareAndApply(checks, operations) {
+      async compareAndApply(checks, operations, clearStores) {
         if (failNextOutcome && operations.some((operation) => operation.store === 'receipts')) {
           failNextOutcome = false;
           throw new Error('injected atomic write failure');
         }
-        return base.compareAndApply(checks, operations);
+        return base.compareAndApply(checks, operations, clearStores);
       },
     };
     const harness = await seededHarness(backend);

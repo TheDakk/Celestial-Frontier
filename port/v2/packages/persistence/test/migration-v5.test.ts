@@ -3,7 +3,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  F3_REVISION_KEY,
   STORES,
+  V4_BACKUP_KEY,
   V4_PRIMARY_KEY,
   V5_JOURNAL_KEY,
   V5_SCHEMA_KEY,
@@ -17,6 +19,7 @@ import {
   prepareV5SaveWrite,
   readSaveV5,
   readSaveV5WithRecovery,
+  readRevisionedSaveV5WithRecovery,
   type ContentRegistry,
   type StorageBackend,
 } from '@cf/persistence';
@@ -84,6 +87,7 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     if (migrated.kind !== 'migrated') return;
 
     expect(await backend.get('meta', V4_PRIMARY_KEY)).toBe(LEGACY_SLICE_RAW);
+    expect(await backend.get('meta', F3_REVISION_KEY)).toBe('0');
     const snapshot = JSON.parse((await backend.get('journal', V5_SNAPSHOT_KEY))!) as { raw: string };
     expect(snapshot.raw).toBe(LEGACY_SLICE_RAW);
 
@@ -336,9 +340,9 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     expect(changed).not.toBe(VETERAN_RAW);
     const racing: StorageBackend = {
       ...memory,
-      async compareAndApply(checks, operations) {
+      async compareAndApply(checks, operations, clearStores) {
         await memory.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: changed }]);
-        return memory.compareAndApply(checks, operations);
+        return memory.compareAndApply(checks, operations, clearStores);
       },
     };
 
@@ -346,6 +350,65 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     expect(await memory.get('meta', V4_PRIMARY_KEY)).toBe(changed);
     expect(await memory.get('meta', V5_SCHEMA_KEY)).toBeUndefined();
     expect(await memory.get('journal', V5_SNAPSHOT_KEY)).toBeUndefined();
+  });
+
+  it('accepts v5 state and F3 revision only from one stable bracketed snapshot', async () => {
+    const base = createMemoryBackend();
+    await base.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
+    expect((await migrateStoredV4ToV5(base, REGISTRY, NOW)).kind).toBe('migrated');
+    const initial = await readSaveV5(base, REGISTRY, NOW);
+    if (initial.kind !== 'loaded') throw new Error(`expected loaded v5, received ${initial.kind}`);
+    const nextState = { ...initial.state, explorerName: 'Concurrent Winner' };
+    const next = prepareV5SaveWrite({ state: nextState, extensions: initial.extensions }, REGISTRY, NOW);
+    const repository = createRevisionedRepository(base);
+    let raced = false;
+    const racing: StorageBackend = {
+      ...base,
+      async get(store, key) {
+        const old = await base.get(store, key);
+        if (!raced && store === 'meta' && key === V4_PRIMARY_KEY) {
+          raced = true;
+          const committed = await repository.mutate({ expectedRevision: 0, writes: next.operations });
+          expect(committed).toMatchObject({ kind: 'committed', revision: 1 });
+        }
+        return old;
+      },
+    };
+
+    /* The old mirror can still complete its read, but it can never be paired
+       with the winner's newer revision as a writable boot parent. */
+    await expect(readRevisionedSaveV5WithRecovery(racing, REGISTRY, NOW))
+      .resolves.toEqual({ kind: 'changed' });
+    expect(await repository.revision()).toBe(1);
+    const winner = await readRevisionedSaveV5WithRecovery(base, REGISTRY, NOW);
+    expect(winner.kind).toBe('loaded');
+    if (winner.kind === 'loaded') {
+      expect(winner.revision).toBe(1);
+      expect(winner.state.explorerName).toBe('Concurrent Winner');
+    }
+  });
+
+  it('refuses a schema-less source with a once-used revision instead of recreating revision-zero ABA', async () => {
+    const backend = createMemoryBackend();
+    await backend.apply([
+      { store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW },
+      { store: 'meta', key: F3_REVISION_KEY, value: '7' },
+    ]);
+    await expect(migrateStoredV4ToV5(backend, REGISTRY, NOW))
+      .resolves.toEqual({ kind: 'protected', reason: 'corrupt' });
+    expect(await backend.get('meta', V5_SCHEMA_KEY)).toBeUndefined();
+    expect(await backend.get('meta', F3_REVISION_KEY)).toBe('7');
+  });
+
+  it('protects a current v5 topology whose explicit revision was deleted', async () => {
+    const backend = createMemoryBackend();
+    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: VETERAN_RAW }]);
+    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    await backend.apply([{ store: 'meta', key: F3_REVISION_KEY }]);
+    await expect(readRevisionedSaveV5WithRecovery(backend, REGISTRY, NOW)).resolves.toEqual({
+      kind: 'storage-error', message: 'current v5 revision authority is absent',
+    });
+    expect(await backend.get('meta', F3_REVISION_KEY)).toBeUndefined();
   });
 
   it('recovers a corrupt current row only from the validated exact snapshot, without modifying storage', async () => {
@@ -551,10 +614,10 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     expect(replacement.kind).toBe('prepared');
     if (replacement.kind !== 'prepared') return;
     expect(replacement.extensions).toEqual({});
-    expect(replacement.operations.some((operation) => operation.store === 'receipts'
-      || (operation.store === 'meta' && operation.key !== V4_PRIMARY_KEY))).toBe(false);
+    expect(replacement.operations.some((operation) => operation.store === 'receipts')).toBe(false);
+    expect(replacement.operations).toContainEqual({ store: 'meta', key: V4_BACKUP_KEY });
 
-    expect(await createRevisionedRepository(backend).mutate({
+    expect(await createRevisionedRepository(backend).replace({
       expectedRevision: 0,
       writes: replacement.operations,
     })).toEqual({ kind: 'committed', revision: 1, receiptKey: null });

@@ -4,18 +4,26 @@
    transaction live in their owning packages. This controller only keeps the
    four pieces on one app lifecycle: a page may accrue while visible,
    answerable, and holding its exact lease; a save commits the clock and RNG
-   under that same lease and the caller-observed revision. It owns no DOM,
-   wall clock, entropy source, retry, or product mutation. */
+   under that same lease and the caller-observed revision. Receipt-bearing
+   product policy is injected as one pure detached derivation; the controller
+   owns no DOM, wall clock, entropy source, retry, or product rules. */
 import { createActivePlayClock, type ActivePlayClock } from '@cf/domain-progression';
 import { createSessionRNG, type SessionRNGState } from '@cf/domain-sessionrng';
 import {
   createActivePlayPersistenceOwner,
+  createF4OutcomeTransactionOwner,
   createTabLeaseClient,
   type ActivePlayCommitOutcome,
   type ContentRegistry,
   type F4AuthorityV1,
+  type F4OutcomeDeriveInput,
+  type F4OutcomeDerivation,
+  type F4OutcomeTransactionOutcome,
+  type RevisionedReplacementOutcome,
   type RevisionedRepository,
+  type SaveStateV2,
   type StorageBackend,
+  type StorageOperation,
   type TabLeaseClient,
   type TabLeaseGrant,
   type V5Extensions,
@@ -68,6 +76,27 @@ export type F4RuntimeCommitOutcome =
   | Extract<ActivePlayCommitOutcome, { readonly kind: 'lost' }>
   | { readonly kind: 'lease-unavailable' };
 
+export interface F4RuntimeOutcomeInput {
+  readonly state: SaveStateV2;
+  readonly domain: string;
+  readonly receiptKind: string;
+  readonly codecNow: number;
+  readonly derive: (input: F4OutcomeDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4RuntimeOutcomeCommitOutcome =
+  | Exclude<F4OutcomeTransactionOutcome, { readonly kind: 'committed' }>
+  | (Extract<F4OutcomeTransactionOutcome, { readonly kind: 'committed' }> & {
+    /** Canonical detached state that the caller may publish only after the
+        transaction reports committed. */
+    readonly state: SaveStateV2;
+  })
+  | { readonly kind: 'lease-unavailable' };
+
+export type F4RuntimeReplacementOutcome =
+  | RevisionedReplacementOutcome
+  | { readonly kind: 'lease-unavailable' };
+
 export interface F4RuntimeAuthority {
   /** Acquire or renew this page's lease once. Never retries internally. */
   heartbeat(): Promise<F4RuntimeHeartbeatOutcome>;
@@ -75,6 +104,12 @@ export interface F4RuntimeAuthority {
   setVisible(visible: boolean): Promise<F4RuntimeHeartbeatOutcome>;
   setAnswerable(answerable: boolean): void;
   commit(state: V5WritableState['state'], codecNow: number): Promise<F4RuntimeCommitOutcome>;
+  /** Plan and commit one receipt-bearing product outcome under this
+      controller's private revision, lease, active-play and RNG authority. */
+  commitOutcome(input: F4RuntimeOutcomeInput): Promise<F4RuntimeOutcomeCommitOutcome>;
+  /** Whole-expedition replacement under this runtime's private lease/revision.
+      The repository atomically resets the old receipt namespace. */
+  replace(writes: readonly StorageOperation[]): Promise<F4RuntimeReplacementOutcome>;
   release(): Promise<void>;
   diagnostics(): F4RuntimeDiagnostics;
   readonly revision: number;
@@ -121,12 +156,17 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
   let sessionRng = copySessionRng(input.restoredAuthority?.sessionRng
     ?? createSessionRNG(checkedSeed(input.freshSessionSeed)).state());
   let visible = input.visible === true;
+  let requestedVisible = visible;
+  let visibilityGeneration = 0;
   let answerable = input.answerable === true;
   let grant: TabLeaseGrant | null = null;
+  let releasePending = false;
   let commits = 0;
   let staleWrites = 0;
   let leaseLosses = 0;
   let staleBlocked = false;
+  let released = false;
+  let serialized: Promise<void> = Promise.resolve();
 
   const initialNow = input.now();
   const clock: ActivePlayClock = createActivePlayClock(
@@ -141,98 +181,206 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
     now: input.now,
   });
   const owner = createActivePlayPersistenceOwner(input.repository, input.registry);
+  const outcomeOwner = createF4OutcomeTransactionOwner(input.repository, input.registry);
+
+  const enqueue = <T>(work: () => Promise<T>): Promise<T> => {
+    const run = serialized.then(work, work);
+    serialized = run.then(() => undefined, () => undefined);
+    return run;
+  };
 
   const setClockEligibility = (): void => {
-    clock.setEligibility({ visible, answerable, leaseOwned: grant !== null }, input.now());
+    clock.setEligibility({ visible, answerable, leaseOwned: grant !== null && !released }, input.now());
   };
-  const clearGrant = (): void => {
-    if (grant !== null) leaseLosses++;
+  const clearGrant = (lost: boolean): void => {
+    if (lost && grant !== null) leaseLosses++;
     grant = null;
     setClockEligibility();
   };
+  const releaseGrant = async (): Promise<void> => {
+    if (!releasePending) {
+      if (grant === null) return;
+      /* Revoke local authority before the asynchronous storage write, but keep
+         a retry bit until that exact token is durably released. A rejected
+         pagehide release can then be retried by the caller's final fallback
+         without ever resuming accrual or retaining a usable grant. */
+      releasePending = true;
+      clearGrant(false);
+    }
+    const outcome = await lease.release();
+    releasePending = false;
+    if (outcome.kind !== 'released') leaseLosses++;
+  };
+  const blockAndRelease = async (stale: boolean): Promise<void> => {
+    if (stale) staleWrites++;
+    staleBlocked = true;
+    await releaseGrant();
+  };
 
-  const heartbeat = async (): Promise<F4RuntimeHeartbeatOutcome> => {
-    if (staleBlocked) return { kind: 'lost' };
+  const heartbeatUnsafe = async (): Promise<F4RuntimeHeartbeatOutcome> => {
+    if (staleBlocked || released || releasePending) return { kind: 'lost' };
     if (!visible) {
-      if (grant !== null) clearGrant();
       return { kind: 'lost' };
     }
     const outcome = grant === null ? await lease.acquire() : await lease.renew();
     if (outcome.kind === 'acquired' || outcome.kind === 'renewed') {
+      /* A hide/release call can synchronously revoke eligibility while the
+         storage request is pending. Do not publish that late grant; release
+         it before the queued successor transition runs. */
+      if (!visible || staleBlocked || released) {
+        grant = outcome.grant;
+        await releaseGrant();
+        return { kind: 'lost' };
+      }
       grant = outcome.grant;
       setClockEligibility();
       return { kind: 'owned', heartbeat: grant.heartbeat };
     }
     if (outcome.kind === 'held-by-other') {
-      if (grant !== null) clearGrant();
+      if (grant !== null) clearGrant(true);
       return { kind: 'held-by-other', remainingMs: outcome.remainingMs };
     }
-    clearGrant();
+    clearGrant(true);
     return { kind: 'lost' };
   };
 
+  const commitUnsafe = async (
+    state: V5WritableState['state'],
+    codecNow: number,
+    expectedRevision: number,
+    expectedExtensions: V5Extensions,
+    expectedSessionRng: SessionRNGState,
+  ): Promise<F4RuntimeCommitOutcome> => {
+    if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+    const outcome = await owner.commit({
+      expectedRevision,
+      grant,
+      writable: { state, extensions: expectedExtensions },
+      snapshot: clock.current(input.now()),
+      sessionRng: expectedSessionRng,
+      now: codecNow,
+    });
+    if (outcome.kind === 'committed') {
+      revision = outcome.revision;
+      extensions = outcome.saved.extensions;
+      sessionRng = copySessionRng(outcome.authority.sessionRng);
+      commits++;
+    } else if (outcome.kind === 'stale') {
+      await blockAndRelease(true);
+    } else {
+      clearGrant(true);
+    }
+    return outcome;
+  };
+
   return Object.freeze({
-    heartbeat,
-    async setVisible(nextVisible: boolean): Promise<F4RuntimeHeartbeatOutcome> {
-      visible = nextVisible === true;
+    heartbeat(): Promise<F4RuntimeHeartbeatOutcome> {
+      return enqueue(heartbeatUnsafe);
+    },
+    setVisible(nextVisible: boolean): Promise<F4RuntimeHeartbeatOutcome> {
+      const next = nextVisible === true;
+      requestedVisible = next;
+      const generation = ++visibilityGeneration;
+      /* Hiding revokes accrual synchronously, before any asynchronous lease
+         release. Showing becomes effective only after earlier transitions. */
+      if (!next) visible = false;
       setClockEligibility();
-      if (visible) return heartbeat();
-      const prior = grant;
-      grant = null;
-      setClockEligibility();
-      if (prior !== null) {
-        const outcome = await lease.release();
-        if (outcome.kind !== 'released') leaseLosses++;
-      }
-      return { kind: 'lost' };
+      return enqueue(async () => {
+        if (!next) {
+          visible = false;
+          await releaseGrant();
+          return { kind: 'lost' };
+        }
+        if (generation !== visibilityGeneration || !requestedVisible || staleBlocked || released) {
+          return { kind: 'lost' };
+        }
+        visible = true;
+        setClockEligibility();
+        return heartbeatUnsafe();
+      });
     },
     setAnswerable(nextAnswerable: boolean): void {
       answerable = nextAnswerable === true;
       setClockEligibility();
     },
-    async commit(
+    commit(
       state: V5WritableState['state'],
       codecNow: number,
     ): Promise<F4RuntimeCommitOutcome> {
-      if (grant === null) return { kind: 'lease-unavailable' };
-      const outcome = await owner.commit({
-        expectedRevision: revision,
-        grant,
-        writable: { state, extensions },
-        snapshot: clock.current(input.now()),
-        sessionRng,
-        now: codecNow,
-      });
-      if (outcome.kind === 'committed') {
-        revision = outcome.revision;
-        extensions = outcome.saved.extensions;
-        sessionRng = copySessionRng(outcome.authority.sessionRng);
-        commits++;
-      } else if (outcome.kind === 'stale') {
-        staleWrites++;
-        staleBlocked = true;
-        clock.setEligibility({ visible, answerable, leaseOwned: false }, input.now());
-        const prior = grant;
-        grant = null;
-        if (prior !== null) {
-          const release = await lease.release();
-          if (release.kind !== 'released') leaseLosses++;
-        }
-      } else {
-        clearGrant();
-      }
-      return outcome;
+      /* Bind a write to the exact parent visible when its caller submitted it.
+         The queue orders I/O and lifecycle transitions; it must never turn a
+         second same-parent action into a child of an earlier queued commit. */
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      const expectedSessionRng = sessionRng;
+      return enqueue(() => commitUnsafe(
+        state, codecNow, expectedRevision, expectedExtensions, expectedSessionRng,
+      ));
     },
-    async release(): Promise<void> {
+    commitOutcome(outcomeInput: F4RuntimeOutcomeInput): Promise<F4RuntimeOutcomeCommitOutcome> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await outcomeOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state: outcomeInput.state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          domain: outcomeInput.domain,
+          receiptKind: outcomeInput.receiptKind,
+          now: outcomeInput.codecNow,
+          derive: outcomeInput.derive,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          extensions = outcome.saved.extensions;
+          sessionRng = copySessionRng(outcome.authority.sessionRng);
+          commits++;
+          return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    replace(writes: readonly StorageOperation[]): Promise<F4RuntimeReplacementOutcome> {
+      const expectedRevision = revision;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await input.repository.replace({
+          expectedRevision,
+          fences: [grant.check],
+          writes,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          commits++;
+        } else if (outcome.kind === 'stale') {
+          await blockAndRelease(true);
+        } else if (outcome.kind === 'conflict') {
+          /* Revision and lease still matched after the ambiguous CAS refusal.
+             Block this runtime and release that exact lease; clear-only would
+             leave an invisible owner until TTL. */
+          await blockAndRelease(false);
+        } else {
+          clearGrant(true);
+        }
+        return outcome;
+      });
+    },
+    release(): Promise<void> {
+      released = true;
       clock.setEligibility({ visible: false, answerable: false, leaseOwned: false }, input.now());
       visible = false;
+      requestedVisible = false;
+      visibilityGeneration++;
       answerable = false;
-      const prior = grant;
-      grant = null;
-      if (prior !== null) {
-        const outcome = await lease.release();
-        if (outcome.kind !== 'released') leaseLosses++;
-      }
+      return enqueue(releaseGrant);
     },
     diagnostics(): F4RuntimeDiagnostics {
       const snapshot = clock.current(input.now());

@@ -216,7 +216,7 @@ describe('@cf/persistence — F3 active-play tab lease', () => {
     let injectRace = false;
     const backend: StorageBackend = {
       ...base,
-      async compareAndApply(checks, operations) {
+      async compareAndApply(checks, operations, clearStores) {
         if (injectRace) {
           injectRace = false;
           await base.apply([{
@@ -224,7 +224,7 @@ describe('@cf/persistence — F3 active-play tab lease', () => {
             value: '{"schema":1,"held":true,"ownerId":"tab-b","token":"session-b","heartbeat":1}',
           }]);
         }
-        return base.compareAndApply(checks, operations);
+        return base.compareAndApply(checks, operations, clearStores);
       },
     };
     const owner = client(backend, 'tab-a', 'session-a', clock);
