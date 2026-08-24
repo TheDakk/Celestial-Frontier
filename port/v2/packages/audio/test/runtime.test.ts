@@ -1,0 +1,846 @@
+import { describe, expect, it } from 'vitest';
+import {
+  AUDIO_CATEGORIES,
+  createAudioRuntime,
+  type AudioCounterpartReceipt,
+  type AudioAnalyserNodeLike,
+  type AudioContextLike,
+  type AudioGainNodeLike,
+  type AudioLimiterNodeLike,
+  type AudioNodeLike,
+  type AudioParamLike,
+  type AudioScheduledSourceLike,
+  type AudioVoiceRequest,
+  type AudioVoiceReservation,
+} from '../src/index.js';
+
+class FakeParam implements AudioParamLike {
+  value = 0;
+  readonly values: number[] = [];
+
+  setValueAtTime(value: number): void {
+    this.value = value;
+    this.values.push(value);
+  }
+}
+
+class FakeNode implements AudioNodeLike {
+  readonly connections: AudioNodeLike[] = [];
+  disconnectCalls = 0;
+  throwConnect = false;
+  throwDisconnect = false;
+
+  constructor(readonly label: string) {}
+
+  connect(destination: AudioNodeLike): AudioNodeLike {
+    if (this.throwConnect) throw new Error(`${this.label} connect refusal`);
+    this.connections.push(destination);
+    return destination;
+  }
+
+  disconnect(): void {
+    this.disconnectCalls++;
+    if (this.throwDisconnect) throw new Error(`${this.label} disconnect refusal`);
+    this.connections.length = 0;
+  }
+}
+
+class FakeGain extends FakeNode implements AudioGainNodeLike {
+  readonly gain = new FakeParam();
+}
+
+class FakeAnalyser extends FakeNode implements AudioAnalyserNodeLike {
+  fftSize = 0;
+  smoothingTimeConstant = 0;
+  readonly frequencyBinCount = 16;
+  samples: readonly number[] = [];
+
+  getFloatTimeDomainData(target: Float32Array): void {
+    target.fill(0);
+    for (let index = 0; index < Math.min(target.length, this.samples.length); index++) {
+      target[index] = this.samples[index]!;
+    }
+  }
+}
+
+class FakeLimiter extends FakeNode implements AudioLimiterNodeLike {
+  readonly threshold = new FakeParam();
+  readonly knee = new FakeParam();
+  readonly ratio = new FakeParam();
+  readonly attack = new FakeParam();
+  readonly release = new FakeParam();
+}
+
+class FakeSource extends FakeNode implements AudioScheduledSourceLike {
+  onended: (() => void) | null = null;
+  startCalls = 0;
+  stopCalls = 0;
+  throwStart = false;
+  throwStop = false;
+
+  start(): void {
+    this.startCalls++;
+    if (this.throwStart) throw new Error(`${this.label} start refusal`);
+  }
+
+  stop(): void {
+    this.stopCalls++;
+    if (this.throwStop) throw new Error(`${this.label} stop refusal`);
+  }
+
+  finish(): void {
+    this.onended?.();
+  }
+}
+
+type ResumeOutcome = 'running' | 'reject' | 'stay-suspended';
+
+class FakeContext implements AudioContextLike {
+  readonly currentTime = 12;
+  readonly destination = new FakeNode('destination');
+  readonly gains: FakeGain[] = [];
+  readonly analysers: FakeAnalyser[] = [];
+  readonly limiters: FakeLimiter[] = [];
+  readonly listeners = new Set<() => void>();
+  readonly resumeOutcomes: ResumeOutcome[];
+  state: string;
+  resumeCalls = 0;
+  closeCalls = 0;
+
+  constructor(state = 'running', resumeOutcomes: ResumeOutcome[] = []) {
+    this.state = state;
+    this.resumeOutcomes = [...resumeOutcomes];
+  }
+
+  createGain(): FakeGain {
+    const gain = new FakeGain(`gain-${this.gains.length}`);
+    this.gains.push(gain);
+    return gain;
+  }
+
+  createAnalyser(): FakeAnalyser {
+    const analyser = new FakeAnalyser(`analyser-${this.analysers.length}`);
+    this.analysers.push(analyser);
+    return analyser;
+  }
+
+  createDynamicsCompressor(): FakeLimiter {
+    const limiter = new FakeLimiter(`limiter-${this.limiters.length}`);
+    this.limiters.push(limiter);
+    return limiter;
+  }
+
+  async resume(): Promise<void> {
+    this.resumeCalls++;
+    const outcome = this.resumeOutcomes.shift() ?? 'running';
+    if (outcome === 'reject') throw new Error('injected resume refusal');
+    if (outcome === 'running') this.state = 'running';
+    this.emit();
+  }
+
+  async close(): Promise<void> {
+    this.closeCalls++;
+    this.state = 'closed';
+    this.emit();
+  }
+
+  addEventListener(_type: 'statechange', listener: () => void): void {
+    this.listeners.add(listener);
+  }
+
+  removeEventListener(_type: 'statechange', listener: () => void): void {
+    this.listeners.delete(listener);
+  }
+
+  forceState(state: string): void {
+    this.state = state;
+    this.emit();
+  }
+
+  private emit(): void {
+    for (const listener of [...this.listeners]) listener();
+  }
+}
+
+class DeferredContext extends FakeContext {
+  private resumeGate: Promise<void> | null = null;
+  private releaseResumeGate: (() => void) | null = null;
+  private closeGate: Promise<void> | null = null;
+  private releaseCloseGate: (() => void) | null = null;
+
+  deferResume(): void {
+    this.resumeGate = new Promise((resolve) => { this.releaseResumeGate = () => { resolve(); }; });
+  }
+
+  releaseResume(): void {
+    this.releaseResumeGate?.();
+    this.releaseResumeGate = null;
+  }
+
+  deferClose(): void {
+    this.closeGate = new Promise((resolve) => { this.releaseCloseGate = () => { resolve(); }; });
+  }
+
+  releaseClose(): void {
+    this.releaseCloseGate?.();
+    this.releaseCloseGate = null;
+  }
+
+  override async resume(): Promise<void> {
+    this.resumeCalls++;
+    if (this.resumeGate) await this.resumeGate;
+    this.resumeGate = null;
+    this.forceState('running');
+  }
+
+  override async close(): Promise<void> {
+    this.closeCalls++;
+    if (this.closeGate) await this.closeGate;
+    this.closeGate = null;
+    this.forceState('closed');
+  }
+}
+
+function contextFactory(contexts: readonly FakeContext[]): {
+  readonly create: () => AudioContextLike;
+  readonly created: () => number;
+} {
+  let count = 0;
+  return {
+    create: () => {
+      const context = contexts[count];
+      if (!context) throw new Error('unexpected context creation');
+      count++;
+      return context;
+    },
+    created: () => count,
+  };
+}
+
+interface RequestOptions {
+  key?: string;
+  category?: AudioVoiceRequest['category'];
+  priority?: number;
+  cooldownGroup?: string;
+  cooldownMs?: number;
+  concurrencyGroup?: string;
+  maxConcurrent?: number;
+  meaning?: AudioVoiceRequest['meaning'];
+  output?: FakeNode;
+  nodes?: readonly FakeNode[];
+  sources?: readonly FakeSource[];
+  nodeCount?: number;
+  create?: (reservation: AudioVoiceReservation) => void;
+}
+
+function request(source: FakeSource, options: RequestOptions = {}): AudioVoiceRequest {
+  const output = options.output ?? source;
+  const nodes = options.nodes ?? [source];
+  const sources = options.sources ?? [source];
+  return {
+    key: options.key ?? source.label,
+    category: options.category ?? 'ui',
+    priority: options.priority ?? 1,
+    cooldownGroup: options.cooldownGroup ?? `cooldown:${source.label}`,
+    cooldownMs: options.cooldownMs ?? 0,
+    concurrencyGroup: options.concurrencyGroup ?? 'default',
+    maxConcurrent: options.maxConcurrent ?? 4,
+    nodeCount: options.nodeCount ?? nodes.length,
+    meaning: options.meaning ?? { kind: 'decorative' },
+    create: (_context, reservation) => {
+      options.create?.(reservation);
+      return { source, sources, output, nodes, reservation };
+    },
+  };
+}
+
+function counterpart(
+  counterpartKey: string,
+  eventKey = 'event:creature:selected',
+  generation = 1,
+): AudioCounterpartReceipt {
+  return Object.freeze({ counterpartKey, eventKey, generation });
+}
+
+describe('Arc 7 injected audio runtime', () => {
+  it('mutes before creation, builds the complete limited mixer, routes real categories, and meters peaks', async () => {
+    const context = new FakeContext();
+    const factory = contextFactory([context]);
+    const runtime = createAudioRuntime({
+      createContext: factory.create,
+      nowMs: () => 100,
+      initialMuted: true,
+      categoryGains: { music: 0.4 },
+    });
+
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'blocked', contextState: null, nodes: { active: 0 }, muted: true,
+    });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'blocked', reason: 'muted' });
+    expect(factory.created()).toBe(0);
+
+    runtime.setMuted(false);
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(factory.created()).toBe(1);
+    expect(context.gains).toHaveLength(6); // master + five category buses
+    expect(context.analysers).toHaveLength(6); // master + five category meters
+    expect(context.limiters).toHaveLength(1);
+    expect(context.gains[0]!.connections).toEqual([context.analysers[0]]);
+    expect(context.analysers[0]!.connections).toEqual([context.limiters[0]]);
+    expect(context.limiters[0]!.connections).toEqual([context.destination]);
+    expect(context.limiters[0]!.threshold.value).toBe(-1);
+    expect(context.limiters[0]!.ratio.value).toBe(20);
+    for (let index = 0; index < AUDIO_CATEGORIES.length; index++) {
+      const bus = context.gains[index + 1]!;
+      const meter = context.analysers[index + 1]!;
+      expect(bus.connections, AUDIO_CATEGORIES[index]).toEqual([meter]);
+      expect(meter.connections, AUDIO_CATEGORIES[index]).toEqual([context.gains[0]]);
+    }
+    expect(context.gains[1]!.gain.value).toBe(0.4);
+
+    runtime.setCategoryGain('ui', 0.25);
+    expect(context.gains[5]!.gain.value).toBe(0.25);
+    const source = new FakeSource('ui-confirm');
+    expect(runtime.playVoice(request(source, { category: 'ui' }))).toEqual({
+      kind: 'started', voiceId: 'voice-000001',
+    });
+    const perVoiceGain = context.gains[6]!;
+    expect(source.connections).toEqual([perVoiceGain]);
+    expect(perVoiceGain.connections).toEqual([context.gains[5]]);
+    expect(source.startCalls).toBe(1);
+
+    context.analysers[0]!.samples = [0, -0.6, 0.2];
+    context.analysers[5]!.samples = [0.8, -0.1];
+    const diagnostics = runtime.diagnostics();
+    expect(diagnostics.nodes).toEqual({ active: 15, peak: 15, budget: 96 });
+    expect(diagnostics.voices).toMatchObject({ active: 1, peak: 1, started: 1 });
+    expect(diagnostics.peaks.master).toBeCloseTo(0.6);
+    expect(diagnostics.peaks.ui).toBeCloseTo(0.8);
+
+    runtime.setMuted(true);
+    expect(source.stopCalls).toBe(1);
+    expect(source.disconnectCalls).toBe(1);
+    expect(perVoiceGain.disconnectCalls).toBe(1);
+    expect(context.gains[0]!.gain.value).toBe(0);
+    expect(runtime.playVoice(request(new FakeSource('muted')))).toEqual({ kind: 'rejected', reason: 'muted' });
+  });
+
+  it('reports blocked/suspended/running explicitly and retries a failed resume on the same context', async () => {
+    const context = new FakeContext('suspended', ['reject', 'running', 'running']);
+    const factory = contextFactory([context]);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'blocked', reason: 'resume-failed' });
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'blocked', contextState: 'suspended', nodes: { active: 13 },
+      faults: { total: 1 },
+    });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(factory.created()).toBe(1);
+    expect(context.resumeCalls).toBe(2);
+
+    context.forceState('suspended');
+    expect(runtime.diagnostics().state).toBe('suspended');
+    expect(runtime.playVoice(request(new FakeSource('suspended')))).toEqual({
+      kind: 'rejected', reason: 'not-running',
+    });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(context.resumeCalls).toBe(3);
+  });
+
+  it('does not report running when mute wins a deferred activation race', async () => {
+    const context = new DeferredContext('suspended');
+    context.deferResume();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    const activation = runtime.activate();
+    runtime.setMuted(true);
+    context.releaseResume();
+    await expect(activation).resolves.toEqual({ kind: 'blocked', reason: 'muted' });
+    expect(runtime.diagnostics()).toMatchObject({ state: 'blocked', muted: true, contextState: 'running' });
+  });
+
+  it('shuts down while hidden, requires an explicit restart, and recreates after context loss', async () => {
+    const first = new FakeContext();
+    const second = new FakeContext();
+    const third = new FakeContext();
+    const factory = contextFactory([first, second, third]);
+    const released: string[] = [];
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 10 });
+    await runtime.activate();
+
+    const hiddenVoice = new FakeSource('hidden-voice');
+    const hiddenStart = runtime.playVoice(request(hiddenVoice));
+    expect(hiddenStart.kind).toBe('started');
+    runtime.putCached('buffer:hidden', 'hidden', (value) => { released.push(value); });
+    await runtime.setHidden(true);
+    expect(first.closeCalls).toBe(1);
+    expect(hiddenVoice.stopCalls).toBe(1);
+    expect(hiddenVoice.disconnectCalls).toBe(1);
+    expect([...first.gains, ...first.analysers, ...first.limiters]
+      .every((node) => node.disconnectCalls === 1)).toBe(true);
+    expect(released).toEqual(['hidden']);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'suspended', contextState: null, nodes: { active: 0 }, cache: { active: 0 },
+    });
+
+    await runtime.setHidden(false);
+    expect(factory.created()).toBe(1);
+    expect(runtime.playVoice(request(new FakeSource('before-restart')))).toEqual({
+      kind: 'rejected', reason: 'not-running',
+    });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(factory.created()).toBe(2);
+
+    const lostVoice = new FakeSource('lost-voice');
+    expect(runtime.playVoice(request(lostVoice)).kind).toBe('started');
+    runtime.putCached('buffer:lost', 'lost', (value) => { released.push(value); });
+    second.forceState('closed');
+    expect(lostVoice.stopCalls).toBe(1);
+    expect(lostVoice.disconnectCalls).toBe(1);
+    expect(released).toEqual(['hidden', 'lost']);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'suspended', contextState: null, contextGeneration: 2,
+      nodes: { active: 0 }, faults: { total: 1 },
+    });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(factory.created()).toBe(3);
+    expect(runtime.diagnostics().contextGeneration).toBe(3);
+  });
+
+  it('cancels a stale hide when visibility returns during a deferred activation', async () => {
+    const context = new DeferredContext('suspended');
+    context.deferResume();
+    const factory = contextFactory([context]);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+
+    const activation = runtime.activate();
+    const hiding = runtime.setHidden(true);
+    await runtime.setHidden(false);
+    context.releaseResume();
+
+    await expect(activation).resolves.toEqual({ kind: 'running' });
+    await hiding;
+    expect(context.closeCalls).toBe(0);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'running', hidden: false, contextState: 'running', contextGeneration: 1,
+    });
+  });
+
+  it('never lets a deferred stale hide clobber a replacement context or resurrect disposal', async () => {
+    const first = new DeferredContext();
+    const second = new FakeContext();
+    const factory = contextFactory([first, second]);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    await runtime.activate();
+    first.deferClose();
+
+    const hiding = runtime.setHidden(true);
+    expect(first.closeCalls).toBe(1);
+    await runtime.setHidden(false);
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(runtime.diagnostics()).toMatchObject({ state: 'running', contextGeneration: 2 });
+
+    await runtime.dispose();
+    first.releaseClose();
+    await hiding;
+    expect(second.closeCalls).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'disposed', hidden: false, contextState: null, nodes: { active: 0 },
+    });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'disposed' });
+  });
+
+  it('disposes idempotently with exact voice, cache, graph, and context ownership', async () => {
+    const context = new FakeContext();
+    const factory = contextFactory([context]);
+    const released: string[] = [];
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    await runtime.activate();
+    const source = new FakeSource('dispose-voice');
+    const started = runtime.playVoice(request(source));
+    expect(started.kind).toBe('started');
+    runtime.putCached('buffer:dispose', 'owned', (value) => { released.push(value); });
+
+    await runtime.dispose();
+    await runtime.dispose();
+    expect(source.stopCalls).toBe(1);
+    expect(source.disconnectCalls).toBe(1);
+    expect(context.gains[6]!.disconnectCalls).toBe(1);
+    expect(context.gains.slice(0, 6).every((node) => node.disconnectCalls === 1)).toBe(true);
+    expect(context.closeCalls).toBe(1);
+    expect(released).toEqual(['owned']);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'disposed', contextState: null, nodes: { active: 0 }, voices: { active: 0 },
+    });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'disposed' });
+    expect(runtime.playVoice(request(new FakeSource('after-dispose')))).toEqual({
+      kind: 'rejected', reason: 'disposed',
+    });
+    expect(runtime.putCached('buffer:after-dispose', 'caller-owned')).toBe(false);
+  });
+
+  it('applies deterministic concurrency priority, stealing, natural completion, and exact disconnects', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 100 });
+    await runtime.activate();
+    const first = new FakeSource('first');
+    const firstFilter = new FakeNode('first-filter');
+    first.connect(firstFilter);
+    const second = new FakeSource('second');
+    const firstResult = runtime.playVoice(request(first, {
+      priority: 1, concurrencyGroup: 'creatures', maxConcurrent: 2,
+      output: firstFilter, nodes: [first, firstFilter],
+    }));
+    const secondResult = runtime.playVoice(request(second, {
+      priority: 2, concurrencyGroup: 'creatures', maxConcurrent: 2,
+    }));
+    expect(firstResult.kind).toBe('started');
+    expect(secondResult.kind).toBe('started');
+
+    let rejectedFactoryCalls = 0;
+    const rejected = new FakeSource('rejected-equal-priority');
+    expect(runtime.playVoice(request(rejected, {
+      priority: 1, concurrencyGroup: 'creatures', maxConcurrent: 2,
+      create: () => { rejectedFactoryCalls++; },
+    }))).toEqual({ kind: 'rejected', reason: 'concurrency' });
+    expect(rejectedFactoryCalls).toBe(0);
+
+    const winner = new FakeSource('winner');
+    const winnerResult = runtime.playVoice(request(winner, {
+      priority: 3, concurrencyGroup: 'creatures', maxConcurrent: 2,
+    }));
+    expect(winnerResult).toEqual({ kind: 'started', voiceId: 'voice-000003' });
+    expect(first.stopCalls).toBe(1);
+    expect(first.disconnectCalls).toBe(1);
+    expect(firstFilter.disconnectCalls).toBe(1);
+    expect(context.gains[6]!.disconnectCalls).toBe(1);
+    expect(second.stopCalls).toBe(0);
+    expect(runtime.diagnostics().voices).toMatchObject({
+      active: 2, started: 3, stolen: 1, concurrencyRejects: 1,
+      ids: ['voice-000002', 'voice-000003'],
+    });
+
+    second.finish();
+    expect(second.stopCalls).toBe(1);
+    expect(second.disconnectCalls).toBe(1);
+    expect(context.gains[7]!.disconnectCalls).toBe(1);
+    expect(runtime.stopVoice('voice-000003')).toBe(true);
+    expect(runtime.stopVoice('voice-000003')).toBe(false);
+    expect(winner.stopCalls).toBe(1);
+    expect(winner.disconnectCalls).toBe(1);
+    expect(context.gains[8]!.disconnectCalls).toBe(1);
+    expect(runtime.diagnostics().voices).toMatchObject({ active: 0, completed: 1, stopped: 2 });
+  });
+
+  it('reserves before construction, rejects reentrant admission, and reports transition peaks', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    let nestedResult: ReturnType<typeof runtime.playVoice> | null = null;
+    let duringReservation: ReturnType<typeof runtime.diagnostics> | null = null;
+    const outer = new FakeSource('reservation-outer');
+    const result = runtime.playVoice(request(outer, {
+      create: () => {
+        duringReservation = runtime.diagnostics();
+        nestedResult = runtime.playVoice(request(new FakeSource('reservation-nested')));
+      },
+    }));
+
+    expect(result).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+    expect(nestedResult).toEqual({ kind: 'rejected', reason: 'reentrant' });
+    expect(duringReservation).toMatchObject({
+      nodes: { active: 13 },
+      voices: { active: 0 },
+      reservations: {
+        voices: { active: 1, peak: 1, activePlusReservedPeak: 1 },
+        nodes: { active: 2, peak: 2, activePlusReservedPeak: 15 },
+      },
+    });
+    expect(runtime.diagnostics().reservations).toEqual({
+      voices: { active: 0, peak: 1, activePlusReservedPeak: 1 },
+      nodes: { active: 0, peak: 2, activePlusReservedPeak: 15 },
+    });
+  });
+
+  it('owns every declared scheduled source and rejects an undeclared lifetime owner', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const completion = new FakeSource('layered-completion');
+    const lfo = new FakeSource('layered-lfo');
+    const started = runtime.playVoice(request(completion, {
+      nodes: [completion, lfo], sources: [lfo, completion], nodeCount: 2,
+    }));
+    expect(started).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+    expect(lfo.startCalls).toBe(1);
+    expect(completion.startCalls).toBe(1);
+    expect(runtime.stopVoice('voice-000001')).toBe(true);
+    expect(lfo.stopCalls).toBe(1);
+    expect(completion.stopCalls).toBe(1);
+    expect(lfo.disconnectCalls).toBe(1);
+    expect(completion.disconnectCalls).toBe(1);
+
+    const declared = new FakeSource('declared-source');
+    const undeclared = new FakeSource('undeclared-lfo');
+    expect(runtime.playVoice(request(declared, {
+      nodes: [declared, undeclared], sources: [declared], nodeCount: 2,
+    }))).toEqual({ kind: 'fault', reason: 'voice-create' });
+    expect(declared.startCalls).toBe(0);
+    expect(undeclared.startCalls).toBe(0);
+    expect(declared.disconnectCalls).toBe(1);
+    expect(undeclared.disconnectCalls).toBe(1);
+
+    const mismatchedReservation = new FakeSource('mismatched-reservation');
+    const base = request(mismatchedReservation);
+    expect(runtime.playVoice({
+      ...base,
+      create: (_context, reservation) => ({
+        source: mismatchedReservation,
+        sources: [mismatchedReservation],
+        output: mismatchedReservation,
+        nodes: [mismatchedReservation],
+        reservation: Object.freeze({ ...reservation }),
+      }),
+    })).toEqual({ kind: 'fault', reason: 'voice-create' });
+    expect(mismatchedReservation.startCalls).toBe(0);
+    expect(mismatchedReservation.disconnectCalls).toBe(1);
+  });
+
+  it('keeps the incumbent when any replacement source fails to start', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const incumbent = new FakeSource('incumbent');
+    expect(runtime.playVoice(request(incumbent, {
+      priority: 1, concurrencyGroup: 'single', maxConcurrent: 1,
+    })).kind).toBe('started');
+
+    const replacement = new FakeSource('replacement');
+    const failingLayer = new FakeSource('replacement-failing-layer');
+    failingLayer.throwStart = true;
+    expect(runtime.playVoice(request(replacement, {
+      priority: 2,
+      concurrencyGroup: 'single',
+      maxConcurrent: 1,
+      nodes: [replacement, failingLayer],
+      sources: [replacement, failingLayer],
+      nodeCount: 2,
+    }))).toEqual({ kind: 'fault', reason: 'voice-start' });
+    expect(incumbent.stopCalls).toBe(0);
+    expect(replacement.startCalls).toBe(1);
+    expect(replacement.stopCalls).toBe(1);
+    expect(failingLayer.startCalls).toBe(1);
+    expect(failingLayer.stopCalls).toBe(0);
+    expect(runtime.diagnostics().voices).toMatchObject({
+      active: 1, started: 1, stopped: 0, stolen: 0, ids: ['voice-000001'],
+    });
+  });
+
+  it('enforces cooldown before construction and never advances it on rejected attempts', async () => {
+    const context = new FakeContext();
+    let now = 1_000;
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => now });
+    await runtime.activate();
+    const first = new FakeSource('cooldown-first');
+    const settings = {
+      cooldownGroup: 'creature:identity-1', cooldownMs: 500,
+      concurrencyGroup: 'creature:identity-1', maxConcurrent: 1,
+    } as const;
+    expect(runtime.playVoice(request(first, settings)).kind).toBe('started');
+    first.finish();
+
+    now = 1_499;
+    let rejectedFactoryCalls = 0;
+    expect(runtime.playVoice(request(new FakeSource('cooldown-rejected'), {
+      ...settings, create: () => { rejectedFactoryCalls++; },
+    }))).toEqual({ kind: 'rejected', reason: 'cooldown' });
+    expect(rejectedFactoryCalls).toBe(0);
+    now = 1_500;
+    const afterExpiry = new FakeSource('cooldown-expired');
+    expect(runtime.playVoice(request(afterExpiry, settings))).toEqual({
+      kind: 'started', voiceId: 'voice-000002',
+    });
+    expect(runtime.diagnostics().voices.cooldownRejects).toBe(1);
+
+    now = 1_200;
+    let backwardFactoryCalls = 0;
+    expect(runtime.playVoice(request(new FakeSource('backward-clock'), {
+      ...settings, create: () => { backwardFactoryCalls++; },
+    }))).toEqual({ kind: 'fault', reason: 'clock' });
+    expect(backwardFactoryCalls).toBe(0);
+    expect(runtime.diagnostics().faults.retained.at(-1)).toMatchObject({ kind: 'clock' });
+  });
+
+  it('enforces the global active-voice budget with the same deterministic priority policy', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: () => context,
+      nowMs: () => 0,
+      budgets: { maxVoices: 2 },
+    });
+    await runtime.activate();
+    const low = new FakeSource('global-low');
+    const high = new FakeSource('global-high');
+    expect(runtime.playVoice(request(low, {
+      priority: 1, concurrencyGroup: 'music', maxConcurrent: 2,
+    })).kind).toBe('started');
+    expect(runtime.playVoice(request(high, {
+      priority: 4, concurrencyGroup: 'ambience', maxConcurrent: 2,
+    })).kind).toBe('started');
+
+    let rejectedFactoryCalls = 0;
+    expect(runtime.playVoice(request(new FakeSource('global-rejected'), {
+      priority: 1, concurrencyGroup: 'ui', maxConcurrent: 2,
+      create: () => { rejectedFactoryCalls++; },
+    }))).toEqual({ kind: 'rejected', reason: 'voice-budget' });
+    expect(rejectedFactoryCalls).toBe(0);
+
+    const replacement = new FakeSource('global-replacement');
+    expect(runtime.playVoice(request(replacement, {
+      priority: 2, concurrencyGroup: 'combat', maxConcurrent: 2,
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000003' });
+    expect(low.stopCalls).toBe(1);
+    expect(high.stopCalls).toBe(0);
+    expect(runtime.diagnostics().voices).toMatchObject({
+      active: 2, peak: 2, budget: 2, stolen: 1,
+      ids: ['voice-000002', 'voice-000003'],
+    });
+  });
+
+  it('bounds cache/nodes/fault retention and rejects meaningful audio without a counterpart', async () => {
+    const context = new FakeContext();
+    const released: string[] = [];
+    const counterpartGenerations = new Map<string, number>();
+    const runtime = createAudioRuntime({
+      createContext: () => context,
+      nowMs: () => 0,
+      budgets: { maxCacheEntries: 2, maxNodes: 15, maxFaults: 2 },
+      verifyCounterpart: (receipt) => counterpartGenerations.get(
+        `${receipt.counterpartKey}|${receipt.eventKey}`,
+      ) === receipt.generation,
+    });
+    await runtime.activate();
+    const release = (value: string): void => { released.push(value); };
+    runtime.putCached('buffer:a', 'a', release);
+    runtime.putCached('buffer:b', 'b', release);
+    expect(runtime.getCached('buffer:a')).toBe('a'); // a is now newest
+    runtime.putCached('buffer:c', 'c', release);
+    expect(released).toEqual(['b']);
+    expect(runtime.getCached('buffer:b')).toBeUndefined();
+
+    let audioOnlyFactoryCalls = 0;
+    expect(runtime.playVoice(request(new FakeSource('audio-only'), {
+      meaning: { kind: 'meaningful', counterpart: counterpart('caption:creature:selected') },
+      create: () => { audioOnlyFactoryCalls++; },
+    }))).toEqual({ kind: 'rejected', reason: 'missing-counterpart' });
+    expect(audioOnlyFactoryCalls).toBe(0);
+
+    counterpartGenerations.set('caption:creature:selected|event:creature:selected', 2);
+    expect(runtime.playVoice(request(new FakeSource('stale-counterpart'), {
+      meaning: { kind: 'meaningful', counterpart: counterpart('caption:creature:selected') },
+      create: () => { audioOnlyFactoryCalls++; },
+    }))).toEqual({ kind: 'rejected', reason: 'missing-counterpart' });
+    expect(audioOnlyFactoryCalls).toBe(0);
+
+    const meaningful = new FakeSource('meaningful-with-visual');
+    expect(runtime.playVoice(request(meaningful, {
+      meaning: {
+        kind: 'meaningful',
+        counterpart: counterpart('caption:creature:selected', 'event:creature:selected', 2),
+      },
+    })).kind).toBe('started');
+    const overBudget = new FakeSource('over-node-budget');
+    let overBudgetFactoryCalls = 0;
+    expect(runtime.playVoice(request(overBudget, {
+      concurrencyGroup: 'other', maxConcurrent: 1,
+      create: () => { overBudgetFactoryCalls++; },
+    }))).toEqual({ kind: 'rejected', reason: 'node-budget' });
+    expect(overBudgetFactoryCalls).toBe(0);
+    expect(overBudget.startCalls).toBe(0);
+    expect(overBudget.stopCalls).toBe(0);
+    expect(overBudget.disconnectCalls).toBe(0);
+    meaningful.finish();
+
+    for (let index = 0; index < 3; index++) {
+      expect(runtime.playVoice({
+        ...request(new FakeSource(`fault-${index}`)),
+        create: () => { throw new Error(`factory fault ${index}`); },
+      })).toEqual({ kind: 'fault', reason: 'voice-create' });
+    }
+    const diagnostics = runtime.diagnostics();
+    expect(diagnostics.nodes).toEqual({ active: 13, peak: 15, budget: 15 });
+    expect(diagnostics.cache).toEqual({ active: 2, peak: 2, budget: 2, evictions: 1 });
+    expect(diagnostics.faults.total).toBe(3);
+    expect(diagnostics.faults.retained.map((fault) => fault.message)).toEqual([
+      'factory fault 1', 'factory fault 2',
+    ]);
+    expect(diagnostics.faults.retained).toHaveLength(diagnostics.faults.budget);
+  });
+
+  it('re-verifies the exact counterpart before start and diagnoses verifier failure', async () => {
+    const context = new FakeContext();
+    let currentGeneration = 3;
+    let verifierThrows = false;
+    const runtime = createAudioRuntime({
+      createContext: () => context,
+      nowMs: () => 0,
+      verifyCounterpart: (receipt) => {
+        if (verifierThrows) throw new Error('counterpart registry unavailable');
+        return receipt.counterpartKey === 'caption:event'
+          && receipt.eventKey === 'event:exact'
+          && receipt.generation === currentGeneration;
+      },
+    });
+    await runtime.activate();
+    const staleDuringCreate = new FakeSource('stale-during-create');
+    let constructed = 0;
+    expect(runtime.playVoice(request(staleDuringCreate, {
+      meaning: {
+        kind: 'meaningful', counterpart: counterpart('caption:event', 'event:exact', 3),
+      },
+      create: () => { constructed++; currentGeneration = 4; },
+    }))).toEqual({ kind: 'rejected', reason: 'missing-counterpart' });
+    expect(constructed).toBe(1);
+    expect(staleDuringCreate.startCalls).toBe(0);
+    expect(staleDuringCreate.disconnectCalls).toBe(1);
+
+    verifierThrows = true;
+    let throwingFactoryCalls = 0;
+    expect(runtime.playVoice(request(new FakeSource('verifier-fault'), {
+      meaning: {
+        kind: 'meaningful', counterpart: counterpart('caption:event', 'event:exact', 4),
+      },
+      create: () => { throwingFactoryCalls++; },
+    }))).toEqual({ kind: 'fault', reason: 'counterpart-verify' });
+    expect(throwingFactoryCalls).toBe(0);
+    expect(runtime.diagnostics().faults.retained.at(-1)).toMatchObject({
+      kind: 'counterpart-verify', message: 'counterpart registry unavailable',
+    });
+  });
+
+  it('surfaces stop, disconnect, and cache-release cleanup failures without retaining logical owners', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const source = new FakeSource('cleanup-fault-source');
+    source.throwStop = true;
+    source.throwDisconnect = true;
+    const started = runtime.playVoice(request(source));
+    expect(started).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+    runtime.putCached('cache:fault', 'owned', () => { throw new Error('release refusal'); });
+
+    expect(runtime.stopVoice('voice-000001')).toBe(true);
+    runtime.clearCache();
+    expect(runtime.diagnostics()).toMatchObject({
+      nodes: { active: 13 },
+      voices: { active: 0 },
+      cache: { active: 0 },
+      cleanup: {
+        sourceStopFailures: 1,
+        nodeDisconnectFailures: 1,
+        cacheReleaseFailures: 1,
+      },
+      faults: { total: 3 },
+    });
+  });
+});

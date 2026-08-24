@@ -1,4 +1,4 @@
-/* @cf/audio — the game's shipped UI stings over a typed seam.
+/* @cf/audio — shipped UI stings plus the injected Arc 7 runtime foundation.
 
    The verbatim bodies read `ac` and `sfxVol` as app globals (exactly as they
    do in main.js, where the audio section owns the Sound/Volume flags). initAudio
@@ -6,9 +6,12 @@
    WebKit fallback), resume-on-suspended, and live getters for the two
    save-backed settings. The public facade stays inert until that seam exists.
 
-   ⚠ RUNTIME SCOPE: playback remains navigation/survey stings only. Arc 7's
-   pure identity/profile/cue contracts are exported below, but creature
-   synthesis, ambience, mixer, lifecycle, and listening proof remain absent. */
+   The new runtime owns typed mixer buses, lifecycle, bounded voice policy,
+   and diagnostics only for voice graphs submitted to that runtime. The
+   verbatim sting facade below deliberately remains a separate compatibility
+   seam and is not counted or lifecycle-controlled by the new runtime yet.
+   Sting migration, decoded-byte budgets, authored creature/ambience playback,
+   and human listening proof remain open. */
 import {
   playRaritySting as playRarityStingRaw,
   playSurveyPing as playSurveyPingRaw,
@@ -60,6 +63,31 @@ export type {
   CreatureExpressionCue,
   SettledCreatureAudioEvent,
 } from './events.js';
+export { AUDIO_CATEGORIES, createAudioRuntime } from './runtime.js';
+export type {
+  AudioActivationResult,
+  AudioActivationState,
+  AudioAnalyserNodeLike,
+  AudioCategory,
+  AudioContextLike,
+  AudioCounterpartReceipt,
+  AudioGainNodeLike,
+  AudioLimiterNodeLike,
+  AudioMeter,
+  AudioNodeLike,
+  AudioParamLike,
+  AudioRuntime,
+  AudioRuntimeBudgets,
+  AudioRuntimeDiagnostics,
+  AudioRuntimeFault,
+  AudioRuntimeOptions,
+  AudioScheduledSourceLike,
+  AudioVoiceGraph,
+  AudioVoiceMeaning,
+  AudioVoiceRequest,
+  AudioVoiceReservation,
+  AudioVoiceStartResult,
+} from './runtime.js';
 
 let AC: AudioContext | null = null;
 let getSndOn: () => boolean = () => true;
