@@ -107,6 +107,12 @@ visible, the app is answerable, and the F3 tab lease is owned; hidden, frozen, a
 all remain zero. Reload, wall-clock wind, invalid/backward source, and cap controls pass. App/save
 wiring still waits on the completed F3 lease and v5 migration.
 
+**F4 RNG transaction kernel (local, 2026-08-24):** `SessionRNGState` now carries one global
+save-lifetime ordinal in addition to isolated per-domain counters. `planSessionRNGDraw` returns the
+same value/ordinal on a failed-write retry and advances only its detached `nextState`; Arc writers
+must commit that state with an F3 receipt and the product mutation. Exhausted/malformed ordinals fail
+closed. No live outcome has been migrated until the v5 app transaction boundary consumes this seam.
+
 **Arc 0 `D-CFB-1` kernel (local, 2026-08-24):** legacy `CFB-` remains the exact v1
 challenger/exhibit contract; a versioned `CFB2-` owned-creature codec now round-trips one bounded,
 ordered uint32 parent tuple while stripping XP, feeding, brood, injury, and other mutable state.
