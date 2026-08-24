@@ -3,10 +3,14 @@
    but that fixtures pin or domain modules call. Same philosophy as lift.mjs.
 
    The roster (Gate B stray sweep, closed 2026-07-31):
-   - cleanName             (~13274) code-fixtures pins it; decodeCreature calls it
+   - cleanName             (~13274) code-fixtures pins it; decodeCreature calls it.
+     It is generated into @cf/domain-naming because both CombatCore and this
+     lift consume it; Strays keeps a compatibility re-export without owning it.
    - _r2 + encodeWhere/decodeWhere (~14592) whereCodec probe + code-fixtures whereCodes
    - winEstimate           (~18459) fingerprint probe
-   - STAT_KEYS + floraStat (~16772) fingerprint probe
+   - STAT_KEYS + floraStat (~16772) fingerprint probe. STAT_KEYS is generated
+     into @cf/domain-speciestraits as the shared ordered stat schema; both
+     CombatCore and floraStat consume it.
    - BIOME_SETS + biomeFor (~10763) golden x1,000
    - hdGenesFor            (~5605)  golden x1,000 + speciesPortrait probe
    - _sanitizeSavedGenome  (~14153) code-fixtures sanitizeSavedGenome bucket —
@@ -23,13 +27,13 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..', '..');
 const lines = fs.readFileSync(path.join(root, 'main.js'), 'utf8').split('\n');
 
+const CLEAN_NAME = ['cleanName', 'function cleanName(s,n){'];
+const SHARED_STAT_KEYS = ['STAT_KEYS', "const STAT_KEYS=["];
 const STRAYS = [
-  ['cleanName', 'function cleanName(s,n){'],
   ['_r2', 'function _r2(n){'],
   ['encodeWhere', 'function encodeWhere(w, name){'],
   ['decodeWhere', 'function decodeWhere(code){'],
   ['winEstimate', 'function winEstimate(champ, native){'],
-  ['STAT_KEYS', "const STAT_KEYS=["],
   ['floraStat', 'function floraStat(g){'],
   ['BIOME_SETS', 'const BIOME_SETS={'],
   ['biomeFor', 'function biomeFor(P, band){'],
@@ -68,6 +72,8 @@ function extract(anchor) {
 
 const parts = STRAYS.map(([name, anchor]) => ({ name, ...extract(anchor) }));
 const bodyOut = parts.map((p) => p.text).join('\n');
+const cleanNamePart = { name: CLEAN_NAME[0], ...extract(CLEAN_NAME[1]) };
+const statKeysPart = { name: SHARED_STAT_KEYS[0], ...extract(SHARED_STAT_KEYS[1]) };
 
 /* auto-imports, comment-stripped scan (same rules as lift.mjs) */
 const codeOnly = bodyOut.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/(^|[^:])\/\/.*$/gm, '$1');
@@ -91,4 +97,25 @@ const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '')
 const outFile = path.join(here, '..', 'packages', 'domain', 'strays', 'src', 'strays.verbatim.js');
 fs.mkdirSync(path.dirname(outFile), { recursive: true });
 fs.writeFileSync(outFile, out);
+
+const cleanNameSha = crypto.createHash('sha256').update(cleanNamePart.text).digest('hex').slice(0, 16);
+const cleanNameHeader = `/* AUTO-LIFTED VERBATIM shared name normalizer from main.js (v1.8.9) —
+   cleanName (${cleanNamePart.from}-${cleanNamePart.to}); body sha256/16 ${cleanNameSha}.
+   ⚠ DO NOT EDIT. Regenerate: node tools/lift-strays.mjs */
+`;
+const cleanNameOut = cleanNameHeader + cleanNamePart.text + '\nexport { cleanName };\n';
+const cleanNameOutFile = path.join(here, '..', 'packages', 'domain', 'naming', 'src', 'cleanname.verbatim.js');
+fs.writeFileSync(cleanNameOutFile, cleanNameOut);
+
+const statKeysSha = crypto.createHash('sha256').update(statKeysPart.text).digest('hex').slice(0, 16);
+const statKeysHeader = `/* AUTO-LIFTED VERBATIM shared ordered stat schema from main.js (v1.8.9) —
+   STAT_KEYS (${statKeysPart.from}-${statKeysPart.to}); body sha256/16 ${statKeysSha}.
+   ⚠ DO NOT EDIT. Regenerate: node tools/lift-strays.mjs */
+`;
+const statKeysOut = statKeysHeader + statKeysPart.text + '\nexport { STAT_KEYS };\n';
+const statKeysOutFile = path.join(here, '..', 'packages', 'domain', 'speciestraits', 'src', 'statkeys.verbatim.js');
+fs.writeFileSync(statKeysOutFile, statKeysOut);
+
+console.log('lifted shared cleanName -> @cf/domain-naming sha ' + cleanNameSha);
+console.log('lifted shared STAT_KEYS -> @cf/domain-speciestraits sha ' + statKeysSha);
 console.log('lifted strays [' + parts.map((p) => p.name).join(', ') + '] -> sha ' + sha + ', ' + (bodyOut.length / 1024).toFixed(1) + ' KB, imports from ' + (importLines.length || 'nothing'));

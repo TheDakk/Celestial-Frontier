@@ -7,7 +7,7 @@
    behavior, then restores only one ordered pair of uint32 parent seeds. No
    mutable XP, feeding, injury, bond, assignment, or brood state travels. */
 import { b64decUtf8, b64encUtf8 } from '@cf/domain-encutil';
-import { cleanName } from '@cf/domain-strays';
+import { cleanName } from '@cf/domain-naming';
 import { normGenome } from './combatcore.verbatim.js';
 import type { Genome } from '@cf/domain-genome';
 

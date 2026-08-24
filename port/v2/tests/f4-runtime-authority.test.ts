@@ -6,6 +6,7 @@ import {
   V4_PRIMARY_KEY,
   createMemoryBackend,
   createRevisionedRepository,
+  createTabLeaseClient,
   migrateStoredV4ToV5,
   prepareV5Replacement,
   readF4Authority,
@@ -16,6 +17,7 @@ import {
 import {
   createF4RuntimeAuthority,
   type F4RuntimeOutcomeInput,
+  type F4RuntimeProductInput,
 } from '../apps/game/src/f4-runtime-authority.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -264,6 +266,288 @@ describe('F4 runtime authority join', () => {
         },
       },
     });
+  });
+
+  it('publishes sequential no-RNG extension writes while preserving prior draws and active-play authority', async () => {
+    const { backend, loaded } = await migrated();
+    const repository = createRevisionedRepository(backend);
+    const time = controlledClock();
+    const runtime = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 0x2468ACE0, ownerId: 'tab-a', token: 'document-a', leaseTtlMs: 100,
+      now: time.now, visible: true, answerable: true,
+    });
+    await runtime.heartbeat();
+    let protectedDerivations = 0;
+    await expect(runtime.commitProduct({
+      state: loaded.state, operation: 'equip', codecNow: NOW,
+      derive: ({ draft }) => {
+        protectedDerivations++;
+        return { state: draft, witness: 'must-not-run' };
+      },
+    })).resolves.toEqual({ kind: 'protected', reason: 'authority-absent' });
+    expect(protectedDerivations).toBe(0);
+    expect((await runtime.commit(loaded.state, NOW)).kind).toBe('committed');
+
+    const priorDraw = await runtime.commitOutcome({
+      state: loaded.state,
+      domain: 'preexisting.random-domain',
+      receiptKind: 'preexisting-random-outcome',
+      codecNow: NOW,
+      derive: ({ draft }) => ({ state: draft, witness: 'prior-draw:0' }),
+    });
+    expect(priorDraw.kind).toBe('committed');
+    time.advance(250);
+
+    const originalEssence = loaded.state.essence;
+    const derive: F4RuntimeProductInput['derive'] = ({ operation, receiptOrdinal, draft, extensions }) => {
+      expect(operation).toBe('equip');
+      expect(receiptOrdinal).toBe(1);
+      expect(extensions.inventory?.['test.arc2-runtime']).toBeUndefined();
+      draft.essence += 7;
+      return {
+        state: draft,
+        witness: `equip:${receiptOrdinal}:${draft.essence}`,
+        extensionWrites: [{
+          segment: 'inventory', namespace: 'test.arc2-runtime',
+          carrier: { version: 1, json: '{"step":1}' },
+        }],
+      };
+    };
+    const outcome = await runtime.commitProduct({
+      state: loaded.state, operation: 'equip', codecNow: NOW, derive,
+    });
+    expect(outcome.kind).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.state.essence).toBe(originalEssence + 7);
+    expect(loaded.state.essence).toBe(originalEssence);
+    expect(outcome.receipt).toMatchObject({ ordinal: 1, kind: 'arc2-equip' });
+    expect(runtime.sessionRng).toEqual({
+      seed: 0x2468ACE0, ordinal: 2, draws: { 'preexisting.random-domain': 1 },
+    });
+    expect(runtime.extensions).toBe(outcome.saved.extensions);
+    expect(runtime.extensions.inventory?.['test.arc2-runtime']).toEqual({
+      version: 1, json: '{"step":1}',
+    });
+    expect(readF4Authority(runtime.extensions)).toMatchObject({
+      kind: 'loaded', authority: { activePlayMs: 250 },
+    });
+    expect(runtime.revision).toBe(3);
+    expect(await repository.readReceipt(1)).toEqual(outcome.receipt);
+
+    time.advance(50);
+    const second = await runtime.commitProduct({
+      state: outcome.state, operation: 'unequip', codecNow: NOW,
+      derive: ({ receiptOrdinal, draft, extensions }) => {
+        expect(receiptOrdinal).toBe(2);
+        expect(extensions.inventory?.['test.arc2-runtime']).toEqual({
+          version: 1, json: '{"step":1}',
+        });
+        return {
+          state: draft,
+          witness: `unequip:${receiptOrdinal}`,
+          extensionWrites: [{
+            segment: 'inventory', namespace: 'test.arc2-runtime',
+            carrier: { version: 1, json: '{"step":2}' },
+          }],
+        };
+      },
+    });
+    expect(second.kind).toBe('committed');
+    if (second.kind !== 'committed') return;
+    expect(runtime.revision).toBe(4);
+    expect(runtime.sessionRng).toEqual({
+      seed: 0x2468ACE0, ordinal: 3, draws: { 'preexisting.random-domain': 1 },
+    });
+    expect(runtime.extensions).toBe(second.saved.extensions);
+    expect(runtime.extensions.inventory?.['test.arc2-runtime']).toEqual({
+      version: 1, json: '{"step":2}',
+    });
+    expect(readF4Authority(runtime.extensions)).toMatchObject({
+      kind: 'loaded', authority: {
+        activePlayMs: 300,
+        sessionRng: {
+          seed: 0x2468ACE0, ordinal: 3, draws: { 'preexisting.random-domain': 1 },
+        },
+      },
+    });
+  });
+
+  it('binds concurrent no-RNG product actions to one parent so a double action cannot silently rebase', async () => {
+    const { backend, loaded } = await migrated();
+    const repository = createRevisionedRepository(backend);
+    const runtime = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 0x10203040, ownerId: 'tab-a', token: 'document-a', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await runtime.heartbeat();
+    expect((await runtime.commit(loaded.state, NOW)).kind).toBe('committed');
+
+    const first = runtime.commitProduct({
+      state: loaded.state, operation: 'equip', codecNow: NOW,
+      derive: ({ draft }) => {
+        draft.essence += 11;
+        return { state: draft, witness: `equip:${draft.essence}` };
+      },
+    });
+    const second = runtime.commitProduct({
+      state: loaded.state, operation: 'unequip', codecNow: NOW,
+      derive: ({ draft }) => {
+        draft.essence += 101;
+        return { state: draft, witness: `unequip:${draft.essence}` };
+      },
+    });
+    const [winner, loser] = await Promise.all([first, second]);
+    expect(winner.kind).toBe('committed');
+    expect(loser).toMatchObject({
+      kind: 'stale', expectedRevision: 1, actualRevision: 2,
+      plan: { operation: 'unequip', receiptOrdinal: 0 },
+    });
+    expect(runtime.diagnostics()).toMatchObject({
+      revision: 2, staleBlocked: true, leaseOwned: false,
+      sessionOrdinal: 1, sessionDraws: {},
+    });
+    const stored = await readSaveV5(backend, REGISTRY, NOW);
+    expect(stored.kind).toBe('loaded');
+    if (stored.kind !== 'loaded') return;
+    expect(stored.state.essence).toBe(loaded.state.essence + 11);
+    expect(await backend.keys('receipts')).toEqual(['receipt:0']);
+    expect((await repository.readReceipt(0))?.kind).toBe('arc2-equip');
+  });
+
+  it('does not publish or retry rejected and storage-aborted no-RNG product actions', async () => {
+    const base = createMemoryBackend();
+    let failNextProduct = false;
+    let productAttempts = 0;
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        if (operations.some((operation) => operation.store === 'receipts')) {
+          productAttempts++;
+          if (failNextProduct) {
+            failNextProduct = false;
+            throw new Error('injected product transaction abort');
+          }
+        }
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    await backend.apply([{
+      store: 'meta', key: V4_PRIMARY_KEY, value: JSON.stringify(fixtures.inputs.veteran_rich),
+    }]);
+    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    const loaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (loaded.kind !== 'loaded') throw new Error('expected loaded state');
+    const repository = createRevisionedRepository(backend);
+    const runtime = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 0x55667788, ownerId: 'tab-a', token: 'document-a', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await runtime.heartbeat();
+    expect((await runtime.commit(loaded.state, NOW)).kind).toBe('committed');
+    const baselineExtensions = runtime.extensions;
+    const baselineRng = runtime.sessionRng;
+
+    const rejected = await runtime.commitProduct({
+      state: loaded.state, operation: 'salvage', codecNow: NOW,
+      derive: ({ draft }) => ({ state: draft, witness: '' }),
+    });
+    expect(rejected).toMatchObject({ kind: 'rejected', stage: 'derive' });
+    expect(productAttempts).toBe(0);
+    expect(runtime.revision).toBe(1);
+    expect(runtime.extensions).toBe(baselineExtensions);
+    expect(runtime.sessionRng).toEqual(baselineRng);
+    expect(runtime.diagnostics()).toMatchObject({ commits: 1, leaseOwned: true, staleBlocked: false });
+
+    failNextProduct = true;
+    const derive: F4RuntimeProductInput['derive'] = ({ draft, receiptOrdinal }) => ({
+      state: draft,
+      witness: `claim:${receiptOrdinal}`,
+      extensionWrites: [{
+        segment: 'inventory', namespace: 'test.arc2-runtime',
+        carrier: { version: 1, json: '{"claim":true}' },
+      }],
+    });
+    const failed = await runtime.commitProduct({
+      state: loaded.state, operation: 'pending-claim', codecNow: NOW, derive,
+    });
+    expect(failed).toMatchObject({
+      kind: 'storage-error', message: 'injected product transaction abort',
+      plan: { receiptOrdinal: 0 },
+    });
+    expect(productAttempts).toBe(1);
+    expect(runtime.revision).toBe(1);
+    expect(runtime.extensions).toBe(baselineExtensions);
+    expect(runtime.sessionRng).toEqual(baselineRng);
+    expect(await repository.readReceipt(0)).toBeUndefined();
+
+    const retry = await runtime.commitProduct({
+      state: loaded.state, operation: 'pending-claim', codecNow: NOW, derive,
+    });
+    expect(retry).toMatchObject({ kind: 'committed', plan: { receiptOrdinal: 0 } });
+    expect(productAttempts).toBe(2);
+    expect(runtime.revision).toBe(2);
+    expect(runtime.sessionRng).toEqual({ seed: 0x55667788, ordinal: 1, draws: {} });
+  });
+
+  it('fails closed and releases authority on duplicate or lost no-RNG receipts', async () => {
+    const duplicateCase = await migrated();
+    const duplicateRepository = createRevisionedRepository(duplicateCase.backend);
+    const duplicateRuntime = createF4RuntimeAuthority({
+      backend: duplicateCase.backend, repository: duplicateRepository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: duplicateCase.loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 91, ownerId: 'tab', token: 'duplicate-document', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await duplicateRuntime.heartbeat();
+    expect((await duplicateRuntime.commit(duplicateCase.loaded.state, NOW)).kind).toBe('committed');
+    const existingReceipt = { ordinal: 0, kind: 'preexisting', witness: 'already-committed' };
+    await duplicateCase.backend.apply([{
+      store: 'receipts', key: 'receipt:0', value: JSON.stringify(existingReceipt),
+    }]);
+    await expect(duplicateRuntime.commitProduct({
+      state: duplicateCase.loaded.state, operation: 'equip', codecNow: NOW,
+      derive: ({ draft }) => ({ state: draft, witness: 'must-not-land' }),
+    })).resolves.toMatchObject({ kind: 'duplicate-receipt', existing: existingReceipt });
+    expect(duplicateRuntime.diagnostics()).toMatchObject({
+      revision: 1, commits: 1, staleBlocked: true, leaseOwned: false,
+      sessionOrdinal: 0, sessionDraws: {},
+    });
+    expect(await duplicateRepository.readReceipt(0)).toEqual(existingReceipt);
+
+    const lostCase = await migrated();
+    const time = controlledClock();
+    const lostRepository = createRevisionedRepository(lostCase.backend);
+    const lostRuntime = createF4RuntimeAuthority({
+      backend: lostCase.backend, repository: lostRepository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: lostCase.loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 92, ownerId: 'tab', token: 'old-document', leaseTtlMs: 100,
+      now: time.now, visible: true, answerable: true,
+    });
+    await lostRuntime.heartbeat();
+    expect((await lostRuntime.commit(lostCase.loaded.state, NOW)).kind).toBe('committed');
+    time.advance(101);
+    const successor = createTabLeaseClient(lostCase.backend, {
+      ownerId: 'tab', token: 'successor-document', ttlMs: 100, now: time.now,
+    });
+    await expect(successor.acquire()).resolves.toMatchObject({
+      kind: 'held-by-other', holder: { token: 'old-document' }, remainingMs: 100,
+    });
+    time.advance(101);
+    await expect(successor.acquire()).resolves.toMatchObject({ kind: 'acquired' });
+    await expect(lostRuntime.commitProduct({
+      state: lostCase.loaded.state, operation: 'equip', codecNow: NOW,
+      derive: ({ draft }) => ({ state: draft, witness: 'lost-fence' }),
+    })).resolves.toMatchObject({ kind: 'lost', reason: 'lease-lost' });
+    expect(lostRuntime.diagnostics()).toMatchObject({
+      revision: 1, commits: 1, leaseOwned: false, sessionOrdinal: 0, leaseLosses: 1,
+    });
+    expect(await lostRepository.readReceipt(0)).toBeUndefined();
   });
 
   it('persists a minted seed before a failed outcome so reload replays the identical value', async () => {

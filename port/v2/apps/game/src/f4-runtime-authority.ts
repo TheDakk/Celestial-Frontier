@@ -11,6 +11,7 @@ import { createActivePlayClock, type ActivePlayClock } from '@cf/domain-progress
 import { createSessionRNG, type SessionRNGState } from '@cf/domain-sessionrng';
 import {
   createActivePlayPersistenceOwner,
+  createF4NoRngProductTransactionOwner,
   createF4OutcomeTransactionOwner,
   createTabLeaseClient,
   type ActivePlayCommitOutcome,
@@ -19,6 +20,9 @@ import {
   type F4OutcomeDeriveInput,
   type F4OutcomeDerivation,
   type F4OutcomeTransactionOutcome,
+  type F4NoRngProductDeriveInput,
+  type F4NoRngProductOperation,
+  type F4NoRngProductTransactionOutcome,
   type RevisionedReplacementOutcome,
   type RevisionedRepository,
   type SaveStateV2,
@@ -93,6 +97,22 @@ export type F4RuntimeOutcomeCommitOutcome =
   })
   | { readonly kind: 'lease-unavailable' };
 
+export interface F4RuntimeProductInput {
+  readonly state: SaveStateV2;
+  readonly operation: F4NoRngProductOperation;
+  readonly codecNow: number;
+  readonly derive: (input: F4NoRngProductDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4RuntimeProductCommitOutcome =
+  | Exclude<F4NoRngProductTransactionOutcome, { readonly kind: 'committed' }>
+  | (Extract<F4NoRngProductTransactionOutcome, { readonly kind: 'committed' }> & {
+    /** Canonical detached state that the caller may publish only after the
+        transaction reports committed. */
+    readonly state: SaveStateV2;
+  })
+  | { readonly kind: 'lease-unavailable' };
+
 export type F4RuntimeReplacementOutcome =
   | RevisionedReplacementOutcome
   | { readonly kind: 'lease-unavailable' };
@@ -107,6 +127,9 @@ export interface F4RuntimeAuthority {
   /** Plan and commit one receipt-bearing product outcome under this
       controller's private revision, lease, active-play and RNG authority. */
   commitOutcome(input: F4RuntimeOutcomeInput): Promise<F4RuntimeOutcomeCommitOutcome>;
+  /** Commit one exact-instance product action that consumes a receipt ordinal
+      but no random draw. */
+  commitProduct(input: F4RuntimeProductInput): Promise<F4RuntimeProductCommitOutcome>;
   /** Whole-expedition replacement under this runtime's private lease/revision.
       The repository atomically resets the old receipt namespace. */
   replace(writes: readonly StorageOperation[]): Promise<F4RuntimeReplacementOutcome>;
@@ -182,6 +205,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
   });
   const owner = createActivePlayPersistenceOwner(input.repository, input.registry);
   const outcomeOwner = createF4OutcomeTransactionOwner(input.repository, input.registry);
+  const productOwner = createF4NoRngProductTransactionOwner(input.repository, input.registry);
 
   const enqueue = <T>(work: () => Promise<T>): Promise<T> => {
     const run = serialized.then(work, work);
@@ -331,6 +355,36 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           receiptKind: outcomeInput.receiptKind,
           now: outcomeInput.codecNow,
           derive: outcomeInput.derive,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          extensions = outcome.saved.extensions;
+          sessionRng = copySessionRng(outcome.authority.sessionRng);
+          commits++;
+          return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    commitProduct(productInput: F4RuntimeProductInput): Promise<F4RuntimeProductCommitOutcome> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await productOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state: productInput.state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          operation: productInput.operation,
+          now: productInput.codecNow,
+          derive: productInput.derive,
         });
         if (outcome.kind === 'committed') {
           revision = outcome.revision;

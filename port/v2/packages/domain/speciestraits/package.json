@@ -1,4 +1,4 @@
 { "name": "@cf/domain-speciestraits", "private": true, "version": "0.0.0", "type": "module",
-  "description": "Module 8/14: trait tables, rarity grades & spectral anomalies. AUTO-LIFTED from main.js @module SpeciesTraits (v1.8.9).",
+  "description": "Module 8/14: trait tables, shared ordered stat schema, rarity grades & spectral anomalies. AUTO-LIFTED from main.js v1.8.9.",
   "exports": { ".": "./src/index.ts" },
   "dependencies": { "@cf/domain-rand": "*" } }
