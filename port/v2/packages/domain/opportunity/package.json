@@ -1,0 +1,19 @@
+{
+  "name": "@cf/domain-opportunity",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Arc 3 canonical world/star opportunity snapshots and strict engineering persistence.",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "@cf/domain-ecology": "*",
+    "@cf/domain-progression": "*",
+    "@cf/domain-rand": "*",
+    "@cf/domain-speciestraits": "*",
+    "@cf/domain-starcatalog": "*",
+    "@cf/domain-strays": "*",
+    "@cf/domain-surveyphrases": "*",
+    "@cf/domain-worldgen": "*",
+    "@cf/scene": "*"
+  }
+}
