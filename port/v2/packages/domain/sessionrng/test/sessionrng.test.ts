@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createSessionRNG, DOMAINS } from '@cf/domain-sessionrng';
+import { createSessionRNG, planSessionRNGDraw, DOMAINS } from '@cf/domain-sessionrng';
 
 describe('@cf/domain-sessionrng — the reviewer §2.1 contract, as tests', () => {
   it('REPLAYABLE: same seed → identical sequences per domain', () => {
@@ -23,7 +23,7 @@ describe('@cf/domain-sessionrng — the reviewer §2.1 contract, as tests', () =
     for (let i = 0; i < 7; i++) a.roll('attemptContact');
     a.roll('tryCapture');
     const st = JSON.parse(JSON.stringify(a.state())) as ReturnType<typeof a.state>;
-    const b = createSessionRNG(st.seed, st.draws);
+    const b = createSessionRNG(st.seed, st.draws, st.ordinal);
     for (let i = 0; i < 10; i++) expect(b.roll('attemptContact')).toBe(a.roll('attemptContact'));
   });
   it('ADDRESSABLE: at(domain, n) reproduces the nth roll without advancing', () => {
@@ -67,5 +67,19 @@ describe('@cf/domain-sessionrng — the reviewer §2.1 contract, as tests', () =
     const exhausted = createSessionRNG(1, { tryCapture: 0xFFFF_FFFF });
     expect(() => exhausted.roll('tryCapture')).toThrow(/exhausted/);
     expect(() => exhausted.at('tryCapture', -1)).toThrow(/draw counter/);
+    expect(() => createSessionRNG(1, {}, -1)).toThrow(/draw counter/);
+    expect(() => createSessionRNG(1, {}, 0xFFFF_FFFF).roll('tryCapture')).toThrow(/ordinal is exhausted/);
+  });
+  it('plans one receipt-addressed draw without consuming the persisted source state', () => {
+    const source = { seed: 123, draws: { tryCapture: 4 }, ordinal: 19 };
+    const first = planSessionRNGDraw(source, 'tryCapture');
+    const retry = planSessionRNGDraw(source, 'tryCapture');
+    expect(first).toEqual(retry);
+    expect(first.receiptOrdinal).toBe(19);
+    expect(first.nextState).toEqual({ seed: 123, draws: { tryCapture: 5 }, ordinal: 20 });
+    expect(source).toEqual({ seed: 123, draws: { tryCapture: 4 }, ordinal: 19 });
+    const committedNext = planSessionRNGDraw(first.nextState, 'tryCapture');
+    expect(committedNext.receiptOrdinal).toBe(20);
+    expect(committedNext.value).not.toBe(first.value);
   });
 });

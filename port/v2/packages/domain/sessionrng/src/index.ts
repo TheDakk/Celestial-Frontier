@@ -30,6 +30,15 @@ import { mulberry32, hashInt } from '@cf/domain-rand';
 export interface SessionRNGState {
   seed: number;                      /* the session seed, set once */
   draws: Record<string, number>;     /* per-domain draw counters */
+  ordinal: number;                   /* save-lifetime exact-once receipt key */
+}
+
+export interface PlannedSessionRNGDraw {
+  readonly domain: string;
+  readonly value: number;
+  /** Receipt ordinal consumed only if `nextState` commits with the outcome. */
+  readonly receiptOrdinal: number;
+  readonly nextState: SessionRNGState;
 }
 
 export interface SessionRNG {
@@ -64,11 +73,12 @@ function checkedCounter(value: unknown, domain: string): number {
 }
 
 /** Create (or RESUME, by passing a stored state's draws) a session stream. */
-export function createSessionRNG(seed: number, draws?: Record<string, number>): SessionRNG {
+export function createSessionRNG(seed: number, draws?: Record<string, number>, ordinal = 0): SessionRNG {
   if (!Number.isSafeInteger(seed) || seed < 0 || seed > UINT32_MAX) {
     throw new RangeError('SessionRNG seed must be a uint32');
   }
   const s = seed >>> 0;
+  let nextOrdinal = checkedCounter(ordinal, 'ordinal');
   /* A Map is intentional. A plain object makes valid-looking domains such as
      `toString` and `__proto__` read inherited values instead of counter zero,
      and a hostile persisted state can therefore poison or freeze a stream. */
@@ -88,15 +98,34 @@ export function createSessionRNG(seed: number, draws?: Record<string, number>): 
       const key = checkedDomain(domain);
       const n = counters.get(key) ?? 0;
       if (n === UINT32_MAX) throw new RangeError(`SessionRNG draw counter for ${JSON.stringify(key)} is exhausted`);
+      if (nextOrdinal === UINT32_MAX) throw new RangeError('SessionRNG save-lifetime ordinal is exhausted');
       counters.set(key, n + 1);
+      nextOrdinal++;
       return value(key, n);
     },
     at(domain: string, n: number): number {
       const key = checkedDomain(domain);
       return value(key, checkedCounter(n, key));
     },
-    state(): SessionRNGState { return { seed: s, draws: Object.fromEntries(counters) }; },
+    state(): SessionRNGState { return { seed: s, draws: Object.fromEntries(counters), ordinal: nextOrdinal }; },
   };
+}
+
+/** Plan one outcome without mutating the supplied persisted state. The app
+ * writes `nextState` and a receipt keyed by `receiptOrdinal` in the same F3
+ * transaction as the product mutation; on write failure it discards the plan
+ * and the exact roll remains available. */
+export function planSessionRNGDraw(state: SessionRNGState, domain: string): PlannedSessionRNGDraw {
+  if (!state || typeof state !== 'object') throw new TypeError('SessionRNG state is required');
+  const rng = createSessionRNG(state.seed, state.draws, state.ordinal);
+  const receiptOrdinal = checkedCounter(state.ordinal, 'ordinal');
+  const value = rng.roll(domain);
+  return Object.freeze({
+    domain: checkedDomain(domain),
+    value,
+    receiptOrdinal,
+    nextState: Object.freeze(rng.state()),
+  });
 }
 
 /** The eleven v1.8.9 Math.random() call sites, as named domains — the Phase 2+
