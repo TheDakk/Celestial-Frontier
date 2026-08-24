@@ -48,12 +48,23 @@ export interface CodexEntry {
      carried so export→import round-trips; parity projection excludes it */
   where: Record<string, unknown> | null;
 }
+export const FRONTIER_ENDING_IDS = Object.freeze([
+  'conquer', 'protect', 'terraform', 'preserve', 'balance',
+] as const);
+export type FrontierEndingId = (typeof FRONTIER_ENDING_IDS)[number];
+export function isKnownFrontierEndingId(value: unknown): value is FrontierEndingId {
+  return typeof value === 'string'
+    && (FRONTIER_ENDING_IDS as readonly string[]).includes(value);
+}
+
 export interface SaveStateV2 {
   /** Compatibility-named carrier for the advancing epoch snapshot. On boot
    * it becomes a new EpochClock construction origin; ordinary app saves must
    * refresh it from EpochClock.current() immediately before export. An
    * in-memory assignment alone does not prove the repository write committed. */
-  EPOCH_BASE: number; essence: number; explorerName: string; lastAnomKey: string | null;
+  /** Opaque bounded v4 compatibility token. Never use it as current event
+   * authority without a version-specific resolver. */
+  EPOCH_BASE: number; essence: number; explorerName: string; lastAnomKey: number | string | null;
   stats: Record<string, number>;
   pstats: Record<string, number>; hp: number; HP_MAX: number;
   customNames: Array<[string, string]>;
@@ -78,6 +89,8 @@ export interface SaveStateV2 {
   landed: number[]; contacted: number[];
   waveOffs: Array<[number, number]>;
   primeFill: Record<string, { title: string; sub: string; tier: number; hex: string; where: unknown }>;
+  /** Opaque bounded v4 compatibility token. Call isKnownFrontierEndingId
+   * before any future UI or progression trusts it. */
   frontierUnlocked: boolean; frontierEnding: string | null; seenGuide: boolean;
   tutDone: boolean; rnSeen: string; tutSnapPending: unknown; scoutId: string | null;
   chWeek: number; chProg: Record<string, number>; chacc: string[]; chDone: string[];
@@ -579,7 +592,16 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       landings: num(data.landings), charters: num(data.charters),
       surveys: 0, bestRank: clamp(num(data.br), 0, registry.rankHuesLen - 1),
     };
-    const lastAnomKey = (data.anomKey as string) || null;
+    /* Generated saves use a non-negative five-minute bucket number, while
+       captured legacy fixtures also carry short opaque string tokens. Keep
+       those bytes as inert compatibility data, but reject objects, controls,
+       unbounded strings, fractional/negative numbers, and non-finite values. */
+    const lastAnomKey = typeof data.anomKey === 'number'
+      && Number.isSafeInteger(data.anomKey) && data.anomKey >= 0
+      ? data.anomKey
+      : typeof data.anomKey === 'string'
+        && /^[A-Za-z0-9._:-]{1,64}$/.test(data.anomKey)
+        ? data.anomKey : null;
     const explorerName = cleanName((data.me as string) || '');
     const essence = clamp(num(data.essence), 0, 1e9);
 
@@ -917,7 +939,11 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       if (idx > (stats.bestRank || 0)) stats.bestRank = idx;
     }
     const frontierUnlocked = !!data.frontier;
-    const frontierEnding = (data.ending as string) || null;
+    /* Unknown legacy/future-within-v4 ids remain round-trippable evidence,
+       not authority: consumers must call isKnownFrontierEndingId first. */
+    const frontierEnding = typeof data.ending === 'string'
+      && /^[a-z][a-z0-9-]{0,31}$/.test(data.ending)
+      ? data.ending : null;
     const seenGuide = !!data.guide;
     /* The shipped legacy restart bug could persist `tut:1` beside its exact
        pre-Training checkpoint. Normalize that proven pair back to pending so
