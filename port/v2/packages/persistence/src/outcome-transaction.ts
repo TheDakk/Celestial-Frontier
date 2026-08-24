@@ -9,9 +9,14 @@
    authority and therefore replans the same value instead of rerolling. */
 import { MAX_ACTIVE_PLAY_MS, type ActivePlaySnapshot } from '@cf/domain-progression';
 import {
+  MAX_SESSION_RNG_DRAWS_PER_PLAN,
   SessionRNGPlanningExhaustion,
+  isPlannedSessionRNGDraws,
   planSessionRNGDraw,
   planSessionRNGDraws,
+  projectSessionRNGDrawAdvance,
+  type PlannedSessionRNGDraws,
+  type ProjectedSessionRNGDrawAdvance,
   type SessionRNGState,
 } from '@cf/domain-sessionrng';
 import {
@@ -20,7 +25,13 @@ import {
   readF4Authority,
   type F4AuthorityV1,
 } from './active-play.js';
-import type { ContentRegistry, SaveStateV2 } from './import-v2.js';
+import {
+  importSaveV2,
+  type ContentRegistry,
+  type ImportSaveResult,
+  type SaveStateV2,
+} from './import-v2.js';
+import { exportSaveV2 } from './export-v2.js';
 import {
   applyV5ExtensionWrites,
   canonicalizeV5Extensions,
@@ -154,6 +165,18 @@ export interface F4MultiOutcomeDrawPlan {
   readonly receiptOrdinal: number;
   readonly currentAuthority: F4AuthorityV1;
   readonly nextSessionRng: F4AuthorityV1['sessionRng'];
+  /** Branded SessionRNG result retained non-enumerably so downstream
+   * authority mints can verify the one evaluation without repeating it. */
+  readonly sessionPlan: PlannedSessionRNGDraws;
+}
+
+export interface F4MultiOutcomeDrawAdvancePlan {
+  readonly domains: readonly string[];
+  readonly counters: readonly Readonly<{ readonly domain: string; readonly counter: number }>[];
+  readonly receiptOrdinal: number;
+  readonly currentAuthority: F4AuthorityV1;
+  readonly nextSessionRng: F4AuthorityV1['sessionRng'];
+  readonly sessionProjection: ProjectedSessionRNGDrawAdvance;
 }
 
 export type F4MultiOutcomePlanProtection =
@@ -168,6 +191,10 @@ export type F4MultiOutcomePlanProtection =
 export type F4MultiOutcomeDrawPlanOutcome =
   | F4MultiOutcomePlanProtection
   | { readonly kind: 'planned'; readonly plan: F4MultiOutcomeDrawPlan };
+
+export type F4MultiOutcomeDrawAdvancePlanOutcome =
+  | F4MultiOutcomePlanProtection
+  | { readonly kind: 'projected'; readonly plan: F4MultiOutcomeDrawAdvancePlan };
 
 export interface F4MultiOutcomeDeriveInput {
   /** Immutable, ordered rows. Duplicate domains remain distinct occurrences. */
@@ -196,6 +223,119 @@ export type F4MultiOutcomeTransactionOutcome =
 
 export interface F4MultiOutcomeTransactionOwner {
   commit(input: F4MultiOutcomeTransactionInput): Promise<F4MultiOutcomeTransactionOutcome>;
+}
+
+export interface F4MultiOutcomePreDrawInput {
+  readonly domains: readonly string[];
+  readonly counters: readonly Readonly<{ readonly domain: string; readonly counter: number }>[];
+  readonly receiptOrdinal: number;
+  readonly activePlayMs: number;
+  readonly currentAuthority: F4AuthorityV1;
+  readonly nextSessionRng: F4AuthorityV1['sessionRng'];
+  /** Per-commit compatibility codec minted by this transaction owner. Its
+   * registry snapshot, save clock, and receipt kind are the exact context
+   * used again for the final write. */
+  readonly codec: F4MultiOutcomePreDrawSaveCodec;
+  /** Detached snapshots. Product policy cannot mutate the caller's live save. */
+  readonly draft: SaveStateV2;
+  readonly extensions: V5Extensions;
+}
+
+export interface F4MultiOutcomePreDrawReady<Proof> {
+  readonly kind: 'ready';
+  readonly proof: Proof;
+}
+
+export interface F4MultiOutcomePreDrawRefusal<Reason extends string> {
+  readonly kind: 'refused';
+  readonly reason: Reason;
+}
+
+export interface F4MultiOutcomePreDrawSaveCodec {
+  readonly now: number;
+  readonly receiptKind: string;
+  prepare(writable: V5WritableState): PreparedV5SaveWrite;
+  importLegacy(raw: string): ImportSaveResult;
+  exportLegacy(state: SaveStateV2): string;
+}
+
+export interface F4MultiOutcomePreDrawDeriveInput<Proof> extends F4MultiOutcomeDeriveInput {
+  /** Exact value-bearing plan materialized once after ready authorization. */
+  readonly plan: F4MultiOutcomeDrawPlan;
+  readonly currentAuthority: F4AuthorityV1;
+  readonly nextSessionRng: F4AuthorityV1['sessionRng'];
+  readonly codec: F4MultiOutcomePreDrawSaveCodec;
+  readonly proof: Proof;
+}
+
+export interface F4MultiOutcomePreDrawAuthorizedSettlement {
+  readonly kind: 'authorized-settlement';
+  readonly derivation: F4OutcomeDerivation;
+  readonly prepared: PreparedV5SaveWrite;
+}
+
+export interface F4MultiOutcomePreDrawSettlementAuthorizer {
+  /** Mint exactly once. `prepared` must be an output of this commit's codec. */
+  authorize(
+    derivation: F4OutcomeDerivation,
+    prepared: PreparedV5SaveWrite,
+  ): F4MultiOutcomePreDrawAuthorizedSettlement;
+}
+
+const PRE_DRAW_SETTLEMENT_AUTHORIZER_CODECS = new WeakMap<
+  object,
+  F4MultiOutcomePreDrawSaveCodec
+>();
+
+/** Recognize only the exact settlement capability minted for one commit's
+ * exact save codec. Structural lookalikes and capabilities from another
+ * commit cannot receive that commit's privately prepared product rows. */
+export function isF4MultiOutcomePreDrawSettlementAuthorizerForCodec(
+  authorizer: unknown,
+  codec: unknown,
+): authorizer is F4MultiOutcomePreDrawSettlementAuthorizer {
+  return typeof authorizer === 'object' && authorizer !== null
+    && PRE_DRAW_SETTLEMENT_AUTHORIZER_CODECS.get(authorizer) === codec;
+}
+
+export type F4MultiOutcomePreDrawSettlement<Proof> = (
+  input: F4MultiOutcomePreDrawDeriveInput<Proof>,
+  authorizer: F4MultiOutcomePreDrawSettlementAuthorizer,
+) => F4MultiOutcomePreDrawAuthorizedSettlement;
+
+export interface F4MultiOutcomePreDrawAuthorizer<Proof> {
+  /** The owner brands this exact object and captures the sole settlement
+   * callback before any value-bearing SessionRNG plan is materialized. */
+  ready(
+    proof: Proof,
+    settle: F4MultiOutcomePreDrawSettlement<Proof>,
+  ): F4MultiOutcomePreDrawReady<Proof>;
+}
+
+export interface F4MultiOutcomePreDrawTransactionInput<Proof, Reason extends string> {
+  readonly expectedRevision: number;
+  readonly grant: TabLeaseGrant;
+  readonly writable: V5WritableState;
+  readonly snapshot: Pick<ActivePlaySnapshot, 'activePlayMs'>;
+  readonly domains: readonly string[];
+  readonly receiptKind: string;
+  readonly now: number;
+  readonly preDraw: (
+    input: F4MultiOutcomePreDrawInput,
+    authorizer: F4MultiOutcomePreDrawAuthorizer<Proof>,
+  ) => F4MultiOutcomePreDrawReady<Proof> | F4MultiOutcomePreDrawRefusal<Reason>;
+}
+
+export type F4MultiOutcomePreDrawTransactionOutcome<Reason extends string> =
+  | F4MultiOutcomePlanProtection
+  | { readonly kind: 'pre-draw-refused'; readonly reason: Reason }
+  | { readonly kind: 'rejected'; readonly stage: 'pre-draw'; readonly message: string }
+  | PlannedProductTransactionOutcome<F4MultiOutcomeDrawPlan>;
+
+export interface F4MultiOutcomePreDrawTransactionOwner {
+  commit<Proof, Reason extends string>(
+    input: F4MultiOutcomePreDrawTransactionInput<Proof, Reason>,
+  ): Promise<F4MultiOutcomePreDrawTransactionOutcome<Reason>>;
 }
 
 function messageOf(error: unknown): string {
@@ -236,14 +376,150 @@ function isRecord(value: unknown): value is Record<string, unknown> {
  * writer. The complete writer is deliberately reserved for the one final
  * state assembled after product policy and F4 authority have both landed. */
 function detachedCanonicalExtensions(value: unknown): V5Extensions {
-  return canonicalizeV5Extensions(value);
+  return canonicalizeV5Extensions(clonePlainData(value, new Set<object>(), { nodes: 0 }, 0));
+}
+
+const MAX_PLAIN_CLONE_WORK = 1_500_000;
+
+interface PlainCloneBudget { nodes: number; }
+
+function consumePlainCloneWork(budget: PlainCloneBudget, amount: number): void {
+  if (!Number.isSafeInteger(amount) || amount < 0
+    || budget.nodes > MAX_PLAIN_CLONE_WORK - amount) {
+    throw new RangeError('outcome state exceeds the detachment bound');
+  }
+  budget.nodes += amount;
+}
+
+function definePlainDataProperty(target: object, key: PropertyKey, value: unknown): void {
+  Object.defineProperty(target, key, {
+    value,
+    enumerable: true,
+    configurable: true,
+    writable: true,
+  });
+}
+
+function clonePlainData(
+  value: unknown,
+  ancestors: Set<object>,
+  budget: PlainCloneBudget,
+  depth: number,
+): unknown {
+  if (value === null || value === undefined
+    || typeof value === 'string' || typeof value === 'boolean' || typeof value === 'number') {
+    return value;
+  }
+  if (typeof value !== 'object') throw new TypeError('outcome state must contain only plain data');
+  if (depth > 256) throw new RangeError('outcome state exceeds the detachment bound');
+  consumePlainCloneWork(budget, 1);
+  if (ancestors.has(value)) throw new TypeError('outcome state cannot contain cycles');
+  ancestors.add(value);
+  try {
+    const prototype = Object.getPrototypeOf(value);
+    if (Array.isArray(value)) {
+      if (prototype !== Array.prototype) throw new TypeError('outcome arrays must use the native prototype');
+      const keys = Reflect.ownKeys(value);
+      if (keys.some((key) => typeof key !== 'string'
+        || (key !== 'length' && !/^(?:0|[1-9][0-9]*)$/u.test(key)))) {
+        throw new TypeError('outcome arrays cannot carry extra properties');
+      }
+      const lengthDescriptor = Object.getOwnPropertyDescriptor(value, 'length');
+      if (!lengthDescriptor || !('value' in lengthDescriptor)
+        || !Number.isSafeInteger(lengthDescriptor.value) || lengthDescriptor.value < 0) {
+        throw new TypeError('outcome array length is invalid');
+      }
+      const arrayLength = lengthDescriptor.value as number;
+      if (keys.some((key) => {
+        if (key === 'length' || typeof key !== 'string') return false;
+        const index = Number(key);
+        return !Number.isSafeInteger(index) || index < 0 || index >= arrayLength
+          || String(index) !== key;
+      })) {
+        throw new TypeError('outcome arrays cannot carry out-of-range indices');
+      }
+      /* Charge every slot, including holes, before allocation or iteration.
+         Sparse native arrays therefore cannot evade the detachment bound. */
+      consumePlainCloneWork(budget, arrayLength);
+      const result = new Array<unknown>(arrayLength);
+      for (let index = 0; index < result.length; index++) {
+        const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+        if (descriptor === undefined) continue;
+        if (!('value' in descriptor) || descriptor.enumerable !== true) {
+          throw new TypeError('outcome arrays cannot contain accessors');
+        }
+        definePlainDataProperty(
+          result,
+          String(index),
+          clonePlainData(descriptor.value, ancestors, budget, depth + 1),
+        );
+      }
+      return result;
+    }
+    if (prototype !== Object.prototype && prototype !== null) {
+      throw new TypeError('outcome state objects must use a plain prototype');
+    }
+    const objectKeys = Reflect.ownKeys(value);
+    consumePlainCloneWork(budget, objectKeys.length);
+    const result: Record<string, unknown> = prototype === null ? Object.create(null) : {};
+    for (const key of objectKeys) {
+      if (typeof key !== 'string') throw new TypeError('outcome state cannot contain symbols');
+      const descriptor = Object.getOwnPropertyDescriptor(value, key);
+      if (!descriptor || !('value' in descriptor) || descriptor.enumerable !== true) {
+        throw new TypeError('outcome state cannot contain accessors or hidden fields');
+      }
+      definePlainDataProperty(
+        result,
+        key,
+        clonePlainData(descriptor.value, ancestors, budget, depth + 1),
+      );
+    }
+    return result;
+  } finally {
+    ancestors.delete(value);
+  }
+}
+
+function deepFreezePlain(value: unknown, seen = new Set<object>()): void {
+  if (value === null || typeof value !== 'object' || seen.has(value)) return;
+  seen.add(value);
+  for (const key of Reflect.ownKeys(value)) {
+    const descriptor = Object.getOwnPropertyDescriptor(value, key);
+    if (descriptor && 'value' in descriptor) deepFreezePlain(descriptor.value, seen);
+  }
+  Object.freeze(value);
 }
 
 function detachedState(value: unknown): SaveStateV2 {
   if (!isRecord(value)) throw new TypeError('outcome state must be an object');
-  const detached = structuredClone(value) as unknown;
+  const detached = clonePlainData(value, new Set<object>(), { nodes: 0 }, 0);
   if (!isRecord(detached)) throw new TypeError('outcome state clone must be an object');
   return detached as unknown as SaveStateV2;
+}
+
+function detachedContentRegistry(value: ContentRegistry): ContentRegistry {
+  const detached = clonePlainData(value, new Set<object>(), { nodes: 0 }, 0);
+  if (!isRecord(detached)) throw new TypeError('content registry must be a plain data object');
+  deepFreezePlain(detached);
+  return detached as unknown as ContentRegistry;
+}
+
+function checkedCodecNow(value: unknown): number {
+  if (!Number.isSafeInteger(value) || (value as number) < 0) {
+    throw new RangeError('outcome codec clock must be a non-negative safe integer');
+  }
+  return value as number;
+}
+
+function preparedSaveFingerprint(value: PreparedV5SaveWrite): string {
+  const raw = JSON.stringify({
+    canonicalState: value.canonicalState,
+    extensions: value.extensions,
+    legacyV4Raw: value.legacyV4Raw,
+    operations: value.operations,
+  });
+  if (raw === undefined) throw new TypeError('prepared save must be JSON data');
+  return raw;
 }
 
 function frozenSessionRng(state: SessionRNGState): F4AuthorityV1['sessionRng'] {
@@ -278,13 +554,21 @@ export function planF4OutcomeDraw(
   });
 }
 
-/** Plan one ordered multi-domain outcome against persisted F4 authority. The
- * ordered counter advances share one receipt identity and never mutate the
- * loaded carrier. Exhaustion is an explicit protection outcome. */
-export function planF4MultiOutcomeDraws(
+function protectedProjectionError(error: unknown): F4MultiOutcomePlanProtection {
+  if (!(error instanceof SessionRNGPlanningExhaustion)) throw error;
+  if (error.reason === 'receipt-ordinal-exhausted') {
+    return Object.freeze({ kind: 'protected', reason: error.reason });
+  }
+  if (error.domain === null) throw error;
+  return Object.freeze({ kind: 'protected', reason: error.reason, domain: error.domain });
+}
+
+/** Project one ordered multi-domain F4 transition without evaluating any
+ * values. Capacity policy consumes this exact seam before random selection. */
+export function projectF4MultiOutcomeDrawAdvance(
   extensions: V5Extensions,
   domains: readonly string[],
-): F4MultiOutcomeDrawPlanOutcome {
+): F4MultiOutcomeDrawAdvancePlanOutcome {
   const current = readF4Authority(extensions);
   if (current.kind === 'absent') return { kind: 'protected', reason: 'authority-absent' };
   if (current.kind === 'corrupt') return { kind: 'protected', reason: 'authority-corrupt' };
@@ -292,24 +576,75 @@ export function planF4MultiOutcomeDraws(
     return { kind: 'protected', reason: 'authority-future', version: current.version };
   }
   try {
-    const planned = planSessionRNGDraws(current.authority.sessionRng, domains);
+    const projected = projectSessionRNGDrawAdvance(current.authority.sessionRng, domains);
+    const checkedDomains = Object.freeze(projected.advances.map(({ domain }) => domain));
     return Object.freeze({
-      kind: 'planned',
+      kind: 'projected',
       plan: Object.freeze({
-        draws: planned.draws,
-        receiptOrdinal: planned.receiptOrdinal,
+        domains: checkedDomains,
+        counters: projected.advances,
+        receiptOrdinal: projected.receiptOrdinal,
         currentAuthority: current.authority,
-        nextSessionRng: frozenSessionRng(planned.nextState),
+        nextSessionRng: frozenSessionRng(projected.nextState),
+        sessionProjection: projected,
       }),
     });
   } catch (error) {
-    if (!(error instanceof SessionRNGPlanningExhaustion)) throw error;
-    if (error.reason === 'receipt-ordinal-exhausted') {
-      return Object.freeze({ kind: 'protected', reason: error.reason });
-    }
-    if (error.domain === null) throw error;
-    return Object.freeze({ kind: 'protected', reason: error.reason, domain: error.domain });
+    return protectedProjectionError(error);
   }
+}
+
+function sameSessionRng(
+  left: F4AuthorityV1['sessionRng'],
+  right: SessionRNGState,
+): boolean {
+  return left.seed === right.seed
+    && left.ordinal === right.ordinal
+    && JSON.stringify(left.draws) === JSON.stringify(frozenSessionRng(right).draws);
+}
+
+function materializeF4MultiOutcomeDrawPlan(
+  projection: F4MultiOutcomeDrawAdvancePlan,
+): F4MultiOutcomeDrawPlan {
+  const sessionPlan = planSessionRNGDraws(
+    projection.currentAuthority.sessionRng,
+    projection.domains,
+  );
+  if (!isPlannedSessionRNGDraws(sessionPlan)
+    || sessionPlan.receiptOrdinal !== projection.receiptOrdinal
+    || !sameSessionRng(projection.nextSessionRng, sessionPlan.nextState)
+    || sessionPlan.draws.length !== projection.domains.length
+    || sessionPlan.draws.some(({ domain }, index) => domain !== projection.domains[index])) {
+    throw new Error('F4 value plan diverged from its pre-draw counter projection');
+  }
+  const plan = {
+    draws: sessionPlan.draws,
+    receiptOrdinal: sessionPlan.receiptOrdinal,
+    currentAuthority: projection.currentAuthority,
+    nextSessionRng: projection.nextSessionRng,
+  } as F4MultiOutcomeDrawPlan;
+  Object.defineProperty(plan, 'sessionPlan', {
+    value: sessionPlan,
+    enumerable: false,
+    configurable: false,
+    writable: false,
+  });
+  return Object.freeze(plan);
+}
+
+/** Plan one ordered multi-domain outcome against persisted F4 authority. The
+ * value-bearing plan is the exact materialization of the public no-value
+ * projection; it never mutates the loaded carrier. */
+export function planF4MultiOutcomeDraws(
+  extensions: V5Extensions,
+  domains: readonly string[],
+): F4MultiOutcomeDrawPlanOutcome {
+  const projected = projectF4MultiOutcomeDrawAdvance(extensions, domains);
+  if (projected.kind !== 'projected') return projected;
+  return Object.freeze({
+    kind: 'planned',
+    plan: materializeF4MultiOutcomeDrawPlan(projected.plan),
+  });
 }
 
 interface CheckedDerivationEnvelope {
@@ -349,6 +684,8 @@ interface PlannedProductCommitInput<Plan extends ReceiptAuthorityPlan> {
   readonly receiptKind: string;
   readonly plan: Plan;
   readonly derive: (draft: SaveStateV2, extensions: V5Extensions) => unknown;
+  readonly prepareSave?: (writable: V5WritableState) => PreparedV5SaveWrite;
+  readonly verifyPrepared?: (saved: PreparedV5SaveWrite) => void;
 }
 
 /** One shared assembly path for random and deterministic products. Keeping
@@ -410,11 +747,11 @@ async function commitPlannedProduct<Plan extends ReceiptAuthorityPlan>(
   try {
     /* The only complete save preparation in this transaction, after both
        product and F4 authority are final. */
-    saved = prepareV5SaveWrite(
-      { state: derivation.state, extensions: update.extensions },
-      registry,
-      input.now,
-    );
+    const writable = { state: derivation.state, extensions: update.extensions };
+    saved = input.prepareSave === undefined
+      ? prepareV5SaveWrite(writable, registry, input.now)
+      : input.prepareSave(writable);
+    input.verifyPrepared?.(saved);
   } catch (error) {
     return {
       kind: 'rejected', stage: 'product-prepare', message: messageOf(error), plan: input.plan,
@@ -524,6 +861,309 @@ export function createF4MultiOutcomeTransactionOwner(
           draft,
           extensions,
         })),
+      });
+    },
+  });
+}
+
+function capturedPreDrawRefusal<Reason extends string>(
+  value: unknown,
+): F4MultiOutcomePreDrawRefusal<Reason> | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  const prototype = Object.getPrototypeOf(value);
+  if (prototype !== Object.prototype && prototype !== null) return null;
+  const keys = Reflect.ownKeys(value);
+  if (keys.length !== 2 || !keys.includes('kind') || !keys.includes('reason')) return null;
+  const kind = Object.getOwnPropertyDescriptor(value, 'kind');
+  const reason = Object.getOwnPropertyDescriptor(value, 'reason');
+  if (!kind || !reason || !('value' in kind) || !('value' in reason)
+    || kind.value !== 'refused' || typeof reason.value !== 'string'
+    || reason.value.length < 1 || reason.value.length > 160
+    || /[\u0000-\u001f\u007f]/u.test(reason.value)) return null;
+  return Object.freeze({ kind: 'refused', reason: reason.value as Reason });
+}
+
+const PRE_DRAW_TRANSACTION_FIELDS = Object.freeze([
+  'expectedRevision', 'grant', 'writable', 'snapshot', 'domains',
+  'receiptKind', 'now', 'preDraw',
+] as const);
+
+function capturedOwnDataField(value: object, key: string, label: string): unknown {
+  const descriptor = Object.getOwnPropertyDescriptor(value, key);
+  if (!descriptor || !('value' in descriptor) || descriptor.enumerable !== true) {
+    throw new TypeError(`${label} must contain enumerable own data fields`);
+  }
+  return descriptor.value;
+}
+
+function capturedPreDrawTransactionInput<Proof, Reason extends string>(
+  value: F4MultiOutcomePreDrawTransactionInput<Proof, Reason>,
+): F4MultiOutcomePreDrawTransactionInput<Proof, Reason> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('pre-draw transaction input must be an object');
+  }
+  const prototype = Object.getPrototypeOf(value);
+  if (prototype !== Object.prototype && prototype !== null) {
+    throw new TypeError('pre-draw transaction input must use a plain prototype');
+  }
+  const keys = Reflect.ownKeys(value);
+  const names = keys.filter((key): key is string => typeof key === 'string').sort();
+  const expected = [...PRE_DRAW_TRANSACTION_FIELDS].sort();
+  if (names.length !== keys.length || names.length !== expected.length
+    || names.some((key, index) => key !== expected[index])) {
+    throw new TypeError('pre-draw transaction input has unknown or missing fields');
+  }
+  const captured = Object.fromEntries(PRE_DRAW_TRANSACTION_FIELDS.map((key) => [
+    key,
+    capturedOwnDataField(value, key, 'pre-draw transaction input'),
+  ])) as unknown as F4MultiOutcomePreDrawTransactionInput<Proof, Reason>;
+  const writable = captured.writable;
+  if (!writable || typeof writable !== 'object' || Array.isArray(writable)) {
+    throw new TypeError('pre-draw writable must be an object');
+  }
+  const writablePrototype = Object.getPrototypeOf(writable);
+  if (writablePrototype !== Object.prototype && writablePrototype !== null
+    || Reflect.ownKeys(writable).length !== 2) {
+    throw new TypeError('pre-draw writable must contain only state and extensions');
+  }
+  const state = capturedOwnDataField(writable, 'state', 'pre-draw writable') as SaveStateV2;
+  const extensions = capturedOwnDataField(writable, 'extensions', 'pre-draw writable') as V5Extensions;
+  return Object.freeze({ ...captured, writable: Object.freeze({ state, extensions }) });
+}
+
+function capturedPreDrawDomains(value: unknown): readonly string[] {
+  if (!Array.isArray(value) || Object.getPrototypeOf(value) !== Array.prototype) {
+    throw new TypeError('pre-draw domains must be a native array');
+  }
+  const keys = Reflect.ownKeys(value);
+  const length = Object.getOwnPropertyDescriptor(value, 'length');
+  if (!length || !('value' in length) || !Number.isSafeInteger(length.value)
+    || length.value < 1 || length.value > MAX_SESSION_RNG_DRAWS_PER_PLAN
+    || keys.length !== length.value + 1) {
+    throw new RangeError(
+      `SessionRNG draw plan must contain 1–${MAX_SESSION_RNG_DRAWS_PER_PLAN} domains`,
+    );
+  }
+  const domains: string[] = [];
+  for (let index = 0; index < length.value; index++) {
+    const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+    if (!descriptor || !('value' in descriptor) || descriptor.enumerable !== true) {
+      throw new TypeError('pre-draw domains must be a dense own-data array');
+    }
+    domains.push(descriptor.value as string);
+  }
+  return Object.freeze(domains);
+}
+
+/** Create the callback-ordered multi-outcome owner. It detaches and projects
+ * current authority first, lets product policy certify every possible result
+ * without values, and materializes SessionRNG only after the callback returns
+ * the exact ready object minted by its one-call authorizer. */
+export function createF4MultiOutcomePreDrawTransactionOwner(
+  repository: Pick<RevisionedRepository, 'mutate'>,
+  registry: ContentRegistry,
+): F4MultiOutcomePreDrawTransactionOwner {
+  /* This owner never observes later registry mutation. Every capacity pass
+     and its final write share this one detached compatibility-codec input. */
+  const codecRegistry = detachedContentRegistry(registry);
+  return Object.freeze({
+    async commit<Proof, Reason extends string>(
+      input: F4MultiOutcomePreDrawTransactionInput<Proof, Reason>,
+    ): Promise<F4MultiOutcomePreDrawTransactionOutcome<Reason>> {
+      let captured: F4MultiOutcomePreDrawTransactionInput<Proof, Reason>;
+      try { captured = capturedPreDrawTransactionInput(input); } catch (error) {
+        return { kind: 'rejected', stage: 'pre-draw', message: messageOf(error) };
+      }
+      const callerWritable = captured.writable;
+      const callerState = callerWritable.state;
+      const callerExtensions = callerWritable.extensions;
+      const expectedRevision = captured.expectedRevision;
+      let receiptKind: string;
+      let fence: ReturnType<typeof tabLeaseFence>;
+      let snapshot: Readonly<Pick<ActivePlaySnapshot, 'activePlayMs'>>;
+      try {
+        receiptKind = checkedReceiptKind(captured.receiptKind);
+        fence = tabLeaseFence(captured.grant);
+        snapshot = capturedActivePlaySnapshot(captured.snapshot);
+      } catch (error) {
+        return { kind: 'rejected', stage: 'pre-draw', message: messageOf(error) };
+      }
+      let now: number;
+      try { now = checkedCodecNow(captured.now); } catch (error) {
+        return { kind: 'rejected', stage: 'pre-draw', message: messageOf(error) };
+      }
+      const preDraw = captured.preDraw;
+      let domains: readonly string[];
+      try { domains = capturedPreDrawDomains(captured.domains); } catch (error) {
+        return { kind: 'rejected', stage: 'pre-draw', message: messageOf(error) };
+      }
+
+      let detachedDraft: SaveStateV2;
+      let detachedExtensions: V5Extensions;
+      try {
+        detachedDraft = detachedState(callerState);
+        deepFreezePlain(detachedDraft);
+        detachedExtensions = detachedCanonicalExtensions(callerExtensions);
+      } catch (error) {
+        return { kind: 'rejected', stage: 'pre-draw', message: messageOf(error) };
+      }
+      let projected: F4MultiOutcomeDrawAdvancePlanOutcome;
+      try { projected = projectF4MultiOutcomeDrawAdvance(detachedExtensions, domains); } catch (error) {
+        return { kind: 'rejected', stage: 'pre-draw', message: messageOf(error) };
+      }
+      if (projected.kind !== 'projected') return projected;
+      const projection = projected.plan;
+
+      const preDrawPreparedByCodec = new WeakSet<object>();
+      let preDrawPreparationOpen = true;
+      const codec: F4MultiOutcomePreDrawSaveCodec = Object.freeze({
+        now,
+        receiptKind,
+        prepare(writable: V5WritableState): PreparedV5SaveWrite {
+          const prepared = prepareV5SaveWrite(writable, codecRegistry, now);
+          if (preDrawPreparationOpen) preDrawPreparedByCodec.add(prepared);
+          return prepared;
+        },
+        importLegacy(raw: string): ImportSaveResult {
+          return importSaveV2(raw, codecRegistry, now);
+        },
+        exportLegacy(state: SaveStateV2): string {
+          return exportSaveV2(state, now);
+        },
+      });
+
+      let mintedReady: F4MultiOutcomePreDrawReady<Proof> | null = null;
+      let capturedSettlement: F4MultiOutcomePreDrawSettlement<Proof> | null = null;
+      const authorizer: F4MultiOutcomePreDrawAuthorizer<Proof> = Object.freeze({
+        ready(
+          proof: Proof,
+          settle: F4MultiOutcomePreDrawSettlement<Proof>,
+        ): F4MultiOutcomePreDrawReady<Proof> {
+          if (mintedReady !== null) throw new TypeError('pre-draw ready proof may be minted only once');
+          if (typeof settle !== 'function') {
+            throw new TypeError('pre-draw ready proof requires one settlement callback');
+          }
+          const row = Object.freeze({ kind: 'ready' as const, proof });
+          capturedSettlement = settle;
+          mintedReady = row;
+          return row;
+        },
+      });
+      let decision: F4MultiOutcomePreDrawReady<Proof> | F4MultiOutcomePreDrawRefusal<Reason>;
+      try {
+        decision = preDraw(Object.freeze({
+          domains: projection.domains,
+          counters: projection.counters,
+          receiptOrdinal: projection.receiptOrdinal,
+          activePlayMs: snapshot.activePlayMs,
+          currentAuthority: projection.currentAuthority,
+          nextSessionRng: projection.nextSessionRng,
+          codec,
+          draft: detachedDraft,
+          extensions: detachedExtensions,
+        }), authorizer);
+      } catch (error) {
+        preDrawPreparationOpen = false;
+        return { kind: 'rejected', stage: 'pre-draw', message: messageOf(error) };
+      }
+      preDrawPreparationOpen = false;
+      if (!decision || typeof decision !== 'object' || decision !== mintedReady) {
+        let refused: F4MultiOutcomePreDrawRefusal<Reason> | null;
+        try {
+          refused = capturedPreDrawRefusal<Reason>(decision);
+        } catch (error) {
+          return { kind: 'rejected', stage: 'pre-draw', message: messageOf(error) };
+        }
+        if (refused !== null) {
+          return Object.freeze({ kind: 'pre-draw-refused', reason: refused.reason });
+        }
+        return {
+          kind: 'rejected', stage: 'pre-draw',
+          message: 'pre-draw callback must return its branded ready proof or an exact refusal',
+        };
+      }
+      const ready = decision as F4MultiOutcomePreDrawReady<Proof>;
+      const settle = capturedSettlement as unknown as F4MultiOutcomePreDrawSettlement<Proof> | null;
+      if (settle === null) {
+        return {
+          kind: 'rejected', stage: 'pre-draw',
+          message: 'pre-draw ready proof did not bind a settlement callback',
+        };
+      }
+      const plan = materializeF4MultiOutcomeDrawPlan(projection);
+      let expectedPreparedFingerprint: string | null = null;
+      return commitPlannedProduct(repository, codecRegistry, {
+        expectedRevision,
+        fence,
+        /* Reuse the exact detached pre-draw snapshots. A mutable caller cannot
+           swap data after certification but before value materialization. */
+        writable: { state: detachedDraft, extensions: detachedExtensions },
+        snapshot,
+        now,
+        receiptKind,
+        plan,
+        prepareSave: codec.prepare,
+        verifyPrepared(saved): void {
+          if (expectedPreparedFingerprint === null
+            || preparedSaveFingerprint(saved) !== expectedPreparedFingerprint) {
+            throw new Error('pre-draw settlement does not authorize the exact prepared save');
+          }
+        },
+        derive: (draft, extensions) => {
+          let mintedSettlement: F4MultiOutcomePreDrawAuthorizedSettlement | null = null;
+          const settlementAuthorizer: F4MultiOutcomePreDrawSettlementAuthorizer = Object.freeze({
+            authorize(
+              derivation: F4OutcomeDerivation,
+              prepared: PreparedV5SaveWrite,
+            ): F4MultiOutcomePreDrawAuthorizedSettlement {
+              if (mintedSettlement !== null) {
+                throw new TypeError('pre-draw settlement may be authorized only once');
+              }
+              if (!prepared || typeof prepared !== 'object'
+                || !preDrawPreparedByCodec.has(prepared)) {
+                throw new TypeError(
+                  'pre-draw settlement save was not prepared before values by this commit codec',
+                );
+              }
+              const detachedDerivation = clonePlainData(
+                derivation,
+                new Set<object>(),
+                { nodes: 0 },
+                0,
+              );
+              const checked = checkedDerivation(detachedDerivation);
+              deepFreezePlain(checked.state);
+              if (checked.extensionWrites !== undefined) deepFreezePlain(checked.extensionWrites);
+              expectedPreparedFingerprint = preparedSaveFingerprint(prepared);
+              const row = Object.freeze({
+                kind: 'authorized-settlement' as const,
+                derivation: checked as F4OutcomeDerivation,
+                prepared,
+              });
+              mintedSettlement = row;
+              return row;
+            },
+          });
+          PRE_DRAW_SETTLEMENT_AUTHORIZER_CODECS.set(settlementAuthorizer, codec);
+          const settled = settle(Object.freeze({
+            draws: plan.draws,
+            receiptOrdinal: plan.receiptOrdinal,
+            activePlayMs: snapshot.activePlayMs,
+            currentAuthority: plan.currentAuthority,
+            nextSessionRng: plan.nextSessionRng,
+            codec,
+            plan,
+            proof: ready.proof,
+            draft,
+            extensions,
+          }), settlementAuthorizer);
+          const authorized = mintedSettlement as unknown as
+            F4MultiOutcomePreDrawAuthorizedSettlement | null;
+          if (settled !== authorized || authorized === null) {
+            throw new TypeError('pre-draw settlement must return its per-commit authorization');
+          }
+          return authorized.derivation;
+        },
       });
     },
   });

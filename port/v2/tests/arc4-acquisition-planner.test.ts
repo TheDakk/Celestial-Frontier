@@ -6,6 +6,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import * as acquisitionRoot from '@cf/domain-acquisition';
 import {
   MAX_OWNERSHIP_REVISION,
+  ACTIVE_PLAY_CAPTURE_CYCLE_MS,
   CAPTURE_PLANNER_POLICY_BLOCKERS_V1,
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   TAME_ODDS_V1,
@@ -22,12 +23,14 @@ import {
   isAcquisitionSnapshotV1,
   isCaptureAttemptPlanV1,
   isCaptureDrawBundleV1,
+  isCaptureCapacityScenariosV1,
   isOwnershipSuccessorV1,
   migrateLegacyOwnershipStateV1,
   ownershipStateDigestV1,
   ownershipContentId,
   planCaptureV1,
   preflightCaptureV1,
+  projectCaptureCapacityScenariosV1,
   sha256Hex,
   type AcquisitionCandidateV1,
   type CanonicalJson,
@@ -48,12 +51,28 @@ import {
 } from '@cf/domain-sessionrng';
 import {
   ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
+  V5_MAX_EXTENSION_JSON_BYTES,
+  V5_MAX_EXTENSION_TOTAL_BYTES,
   applyV5ExtensionWrites,
   canonicalizeV5Extensions,
+  createF4MultiOutcomePreDrawTransactionOwner,
+  createMemoryBackend,
+  createRevisionedRepository,
+  createTabLeaseClient,
   encodeArc4Ownership,
+  exportSaveV2,
+  importSaveV2,
   prepareArc2LootLegacyMigration,
   prepareF4AuthorityUpdate,
+  prepareV5SaveWrite,
+  projectF4MultiOutcomeDrawAdvance,
+  projectLegacyOwnershipMirror,
+  readArc2AcquisitionCapabilities,
   readF4Authority,
+  type ContentRegistry,
+  type F4MultiOutcomePreDrawInput,
+  type F4MultiOutcomePreDrawSaveCodec,
+  type SaveStateV2,
   type V5Extensions,
 } from '@cf/persistence';
 import {
@@ -67,16 +86,39 @@ import {
   composeAcquisitionSnapshotV1,
   composeCaptureDrawBundleV1,
 } from '../apps/game/src/acquisition-snapshot.js';
+import { registerAcquisitionSnapshotV1 } from '@cf/domain-acquisition/snapshot-internal';
 import {
   canonicalWorldRoster,
   canonicalWorldRosterForDiagnostics,
   type CanonicalWorldRoster,
   type WorldRosterSources,
 } from '../apps/game/src/world-roster.js';
+import {
+  ARC4_CAPTURE_DOMAINS,
+  certifyArc4CaptureCapacityV1,
+  settleCertifiedArc4CaptureV1,
+  type Arc4CaptureCapacityCertificateV1,
+} from '../apps/game/src/arc4-capture-capacity.js';
 
 beforeAll(() => installCaptureHooks());
 
 const V2_ROOT = fileURLToPath(new URL('../', import.meta.url));
+const CAPACITY_REGISTRY = JSON.parse(fs.readFileSync(path.join(
+  V2_ROOT,
+  '..',
+  'baseline-v1.8.9',
+  'content-registry.json',
+), 'utf8')) as ContentRegistry;
+const CAPACITY_NOW = 1_753_900_060_000;
+const CAPACITY_CODEC: F4MultiOutcomePreDrawSaveCodec = Object.freeze({
+  now: CAPACITY_NOW,
+  receiptKind: 'capture-attempt',
+  prepare: (writable: Parameters<F4MultiOutcomePreDrawSaveCodec['prepare']>[0]) => (
+    prepareV5SaveWrite(writable, CAPACITY_REGISTRY, CAPACITY_NOW)
+  ),
+  importLegacy: (raw: string) => importSaveV2(raw, CAPACITY_REGISTRY, CAPACITY_NOW),
+  exportLegacy: (state: SaveStateV2) => exportSaveV2(state, CAPACITY_NOW),
+});
 const INTERNAL_SNAPSHOT_IMPORT = '@cf/domain-acquisition/snapshot-internal';
 const INTERNAL_SNAPSHOT_BASENAME = 'snapshot-internal';
 const SNAPSHOT_REGISTRY_BASENAME = '_snapshot-registry';
@@ -90,6 +132,7 @@ const INTERNAL_DEFINITION = 'packages/domain/acquisition/src/snapshot-internal.t
 const REGISTRY_DEFINITION = 'packages/domain/acquisition/src/_snapshot-registry.ts';
 const SNAPSHOT_DEFINITION = 'packages/domain/acquisition/src/snapshot.ts';
 const CAPTURE_PLANNER_DEFINITION = 'packages/domain/acquisition/src/capture-planner.ts';
+const CAPTURE_TRANSACTION_OWNER = 'apps/game/src/arc4-capture-capacity.ts';
 const THIS_TEST = 'tests/arc4-acquisition-planner.test.ts';
 
 const MODULE_SOURCE_EXTENSIONS = Object.freeze([
@@ -257,6 +300,53 @@ function authorityExtensions(
   );
 }
 
+function extensionJsonBytes(extensions: V5Extensions): number {
+  const encoder = new TextEncoder();
+  return Object.values(extensions).reduce((total, segment) => (
+    total + Object.values(segment ?? {}).reduce((segmentTotal, carrier) => (
+      segmentTotal + encoder.encode(carrier.json).byteLength
+    ), 0)
+  ), 0);
+}
+
+function jsonObjectOfExactBytes(bytes: number): string {
+  const shellBytes = JSON.stringify({ p: '' }).length;
+  if (bytes < shellBytes || bytes > V5_MAX_EXTENSION_JSON_BYTES) {
+    throw new RangeError('capacity padding carrier length is invalid');
+  }
+  const raw = JSON.stringify({ p: 'x'.repeat(bytes - shellBytes) });
+  if (new TextEncoder().encode(raw).byteLength !== bytes) {
+    throw new Error('capacity padding carrier changed byte length');
+  }
+  return raw;
+}
+
+function padExtensionsToGlobalByteLimit(extensions: V5Extensions): V5Extensions {
+  const padded = structuredClone(extensions) as Record<
+    string,
+    Record<string, { version: number; json: string }>
+  >;
+  const settings = (padded.settings ??= {});
+  let remaining = V5_MAX_EXTENSION_TOTAL_BYTES - extensionJsonBytes(extensions);
+  let index = 0;
+  while (remaining > 0) {
+    const bytes = Math.min(remaining, V5_MAX_EXTENSION_JSON_BYTES);
+    if (bytes < JSON.stringify({ p: '' }).length) {
+      throw new Error('capacity padding left an unrepresentable tail');
+    }
+    settings[`test.arc4-capacity-pad-${index++}`] = {
+      version: 99,
+      json: jsonObjectOfExactBytes(bytes),
+    };
+    remaining -= bytes;
+  }
+  const canonical = canonicalizeV5Extensions(padded);
+  if (extensionJsonBytes(canonical) !== V5_MAX_EXTENSION_TOTAL_BYTES) {
+    throw new Error('capacity padding did not reach the exact global byte limit');
+  }
+  return canonical;
+}
+
 function navOf(address: CanonicalCF1WorldAddress) {
   const result = navFromCanonicalCF1Address(address);
   if (!result.ok || result.state.mode !== 'surface') {
@@ -280,6 +370,117 @@ function readySnapshot(
   });
   if (result.kind !== 'ready') throw new Error(`snapshot fixture was ${result.reason}`);
   return result.snapshot;
+}
+
+function registeredSnapshotFromRows(
+  address: CanonicalCF1WorldAddress,
+  rosterRows: readonly Readonly<Record<string, unknown>>[],
+  extensions: V5Extensions,
+  ownership: OwnershipStateV1,
+  ecologyEpoch = 0,
+) {
+  const capabilities = readArc2AcquisitionCapabilities(extensions);
+  const f4 = readF4Authority(extensions);
+  if (capabilities.kind !== 'loaded' || f4.kind !== 'loaded') {
+    throw new Error('direct snapshot fixture lacks Arc 2/F4 authority');
+  }
+  return registerAcquisitionSnapshotV1({
+    address,
+    worldKey: address.key,
+    ecologyEpoch,
+    fullRosterFingerprint: `test-roster:${address.key}:${ecologyEpoch}:${rosterRows.length}`,
+    biosphereKey: `test-${address.planet.seed}`,
+    rosterRows,
+    capabilities: capabilities.capabilities,
+    ownership,
+    f4Authority: f4.authority,
+  });
+}
+
+function compatibilityStateForOwnership(ownership: OwnershipStateV1): SaveStateV2 {
+  const base = importSaveV2('{}', CAPACITY_REGISTRY, CAPACITY_NOW);
+  if (!base.ok) throw new Error(`capacity v4 base was ${base.reason}`);
+  const mirror = projectLegacyOwnershipMirror(ownership);
+  if (mirror.kind !== 'projected') throw new Error(`capacity mirror was ${mirror.kind}`);
+  const envelope = JSON.parse(exportSaveV2(base.state, CAPACITY_NOW)) as Record<string, unknown>;
+  envelope.codex = mirror.codex.map((row) => ({ g: row.g, f: row.f, w: row.w }));
+  envelope.names = mirror.customNames.map(([key, value]) => [key, value]);
+  envelope.bx = mirror.bioX.map(([seed, progress]) => [seed, [...progress]]);
+  envelope.scout = mirror.scoutId;
+  const imported = importSaveV2(JSON.stringify(envelope), CAPACITY_REGISTRY, CAPACITY_NOW);
+  if (!imported.ok) throw new Error(`capacity v4 mirror import was ${imported.reason}`);
+  return imported.state;
+}
+
+function capacityPreDrawInput(
+  state: SaveStateV2,
+  extensions: V5Extensions,
+  activePlayMs: number,
+): F4MultiOutcomePreDrawInput {
+  const projected = projectF4MultiOutcomeDrawAdvance(extensions, ARC4_CAPTURE_DOMAINS);
+  if (projected.kind !== 'projected') throw new Error(`capacity projection was ${projected.reason}`);
+  return Object.freeze({
+    domains: projected.plan.domains,
+    counters: projected.plan.counters,
+    receiptOrdinal: projected.plan.receiptOrdinal,
+    activePlayMs,
+    currentAuthority: projected.plan.currentAuthority,
+    nextSessionRng: projected.plan.nextSessionRng,
+    codec: CAPACITY_CODEC,
+    draft: state,
+    extensions,
+  });
+}
+
+async function settleCapacityThroughGenuineOwner(
+  preflight: Extract<ReturnType<typeof preflightCaptureV1>, { kind: 'ready' }>,
+  state: SaveStateV2,
+  extensions: V5Extensions,
+  activePlayMs: number,
+): Promise<Extract<ReturnType<typeof settleCertifiedArc4CaptureV1>, { kind: 'derived' }>> {
+  const backend = createMemoryBackend();
+  const lease = createTabLeaseClient(backend, {
+    ownerId: 'arc4-planner-genuine-settlement',
+    token: 'arc4-planner-genuine-settlement-session',
+    ttlMs: 1_000,
+    now: () => 0,
+  });
+  const acquired = await lease.acquire();
+  if (acquired.kind !== 'acquired') throw new Error(`planner settlement lease was ${acquired.kind}`);
+  const owner = createF4MultiOutcomePreDrawTransactionOwner(
+    createRevisionedRepository(backend),
+    CAPACITY_REGISTRY,
+  );
+  const settlements: ReturnType<typeof settleCertifiedArc4CaptureV1>[] = [];
+  const outcome = await owner.commit<Arc4CaptureCapacityCertificateV1, string>({
+    expectedRevision: 0,
+    grant: acquired.grant,
+    writable: { state, extensions },
+    snapshot: { activePlayMs },
+    domains: ARC4_CAPTURE_DOMAINS,
+    receiptKind: 'capture-attempt',
+    now: CAPACITY_NOW,
+    preDraw: (input, authorizer) => {
+      const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw: input });
+      if (certified.kind !== 'certified') {
+        return { kind: 'refused' as const, reason: certified.reason };
+      }
+      return authorizer.ready(certified.certificate, (draw, settlementAuthorizer) => {
+        const settled = settleCertifiedArc4CaptureV1({
+          preflight,
+          draw,
+          authorizer: settlementAuthorizer,
+        });
+        settlements.push(settled);
+        if (settled.kind !== 'derived') throw new Error(`planner settlement was ${settled.reason}`);
+        return settled.authorization;
+      });
+    },
+  });
+  if (outcome.kind !== 'committed') throw new Error(`planner settlement commit was ${outcome.kind}`);
+  const settled = settlements[0];
+  if (settled?.kind !== 'derived') throw new Error('planner settlement result disappeared');
+  return settled;
 }
 
 function firstBarrenSolWorld(): CanonicalCF1WorldAddress {
@@ -446,6 +647,7 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
       .map(relativeV2Path)
       .sort();
     expect(capturePlanConsumers).toEqual([
+      CAPTURE_TRANSACTION_OWNER,
       CAPTURE_PLANNER_DEFINITION,
       THIS_TEST,
     ].sort());
@@ -513,6 +715,21 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
     expect(preflightCaptureV1({ ...snapshot }, 'tame')).toEqual({
       kind: 'refused', reason: 'snapshot-unregistered',
     });
+  });
+
+  it('rejects duplicate full-species identities while registering the bounded roster', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const roster = rosterOf(earth);
+    const ownership = createEmptyOwnershipStateV1();
+    const extensions = authorityExtensions(0, HIT_SEED, {}, 0, true, ownership);
+    const duplicate = roster.view.all[0];
+    if (duplicate === undefined) throw new Error('Earth duplicate-roster fixture is empty');
+    expect(() => registeredSnapshotFromRows(
+      earth,
+      Object.freeze([duplicate, duplicate]),
+      extensions,
+      ownership,
+    )).toThrow(/repeats a species identity/);
   });
 
   it('binds a real foreign living world and derives its legacy ring and yield internally', () => {
@@ -756,9 +973,9 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
 describe('Arc 4 exact capture formula and truthful successor', () => {
   it('pins the complete tier/verb/ring/contact formula matrix independently', () => {
     expect(CAPTURE_PLANNER_POLICY_BLOCKERS_V1).toEqual({
-      legacyEligibility: 'temporary-v1.8.9-not-catalogued-by-seed',
-      reacquisition: 'unresolved',
-      encodedExtensionByteCapacity: 'unresolved',
+      legacyEligibility: 'same-full-world-current-cycle-successful-species-and-verb-only',
+      reacquisition: 'new-individual-or-lot-with-first-only-catalogue',
+      encodedExtensionByteCapacity: 'registered-all-scenario-certificate-required-before-draw',
       breedingProvenance: 'unsupported-by-ownership-v1',
       guardianProvenance: 'unsupported-by-ownership-v1',
       writerExposed: false,
@@ -817,7 +1034,7 @@ describe('Arc 4 exact capture formula and truthful successor', () => {
     expect(() => captureHitV1(0, 1.01)).toThrow(/chance/);
   });
 
-  it('derives each verb pool from the full roster and temporary exact seed catalogue eligibility', () => {
+  it('derives each verb pool and excludes only same-world/current-cycle successful pairs', () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
     const roster = rosterOf(earth);
     const extensions = authorityExtensions(0, HIT_SEED);
@@ -856,6 +1073,173 @@ describe('Arc 4 exact capture formula and truthful successor', () => {
       row.legacyCatalogueId === planned.plan.candidate.legacyCatalogueId
     ))).toBe(false);
     expect(next.pool).toHaveLength(preflight.pool.length - 1);
+  });
+
+  it('keeps misses eligible and creates repeat ownership only on another world or later cycle', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const roster = rosterOf(earth);
+
+    const missOwnership = createEmptyOwnershipStateV1();
+    const missExtensions = authorityExtensions(0, MISS_SEED, {}, 0, true, missOwnership);
+    const missSnapshot = readySnapshot(earth, roster, missExtensions);
+    const missPreflight = preflightCaptureV1(missSnapshot, 'tame');
+    if (missPreflight.kind !== 'ready') throw new Error(`miss repeat preflight was ${missPreflight.reason}`);
+    const missDraws = composeCaptureDrawBundleV1(missPreflight, missExtensions);
+    if (missDraws.kind !== 'planned') throw new Error(`miss repeat draws were ${missDraws.reason}`);
+    const missed = planCaptureV1(missPreflight, missDraws.bundle);
+    if (missed.kind !== 'planned' || missed.plan.hit) throw new Error('miss repeat fixture did not miss');
+    const afterMissExtensions = authorityExtensions(
+      0,
+      MISS_SEED,
+      missDraws.bundle.nextSessionRng.draws,
+      missDraws.bundle.nextSessionRng.ordinal,
+      true,
+      missed.plan.successor,
+    );
+    const afterMiss = preflightCaptureV1(
+      readySnapshot(earth, roster, afterMissExtensions),
+      'tame',
+    );
+    if (afterMiss.kind !== 'ready') throw new Error(`post-miss preflight was ${afterMiss.reason}`);
+    expect(afterMiss.pool.map((row) => row.identity.speciesId))
+      .toEqual(missPreflight.pool.map((row) => row.identity.speciesId));
+    expect(afterMiss.used).toBe(1);
+    expect(afterMiss.successful).toEqual([]);
+
+    const firstOwnership = createEmptyOwnershipStateV1();
+    const firstExtensions = authorityExtensions(0, HIT_SEED, {}, 0, true, firstOwnership);
+    const firstSnapshot = readySnapshot(earth, roster, firstExtensions);
+    const firstPreflight = preflightCaptureV1(firstSnapshot, 'tame');
+    if (firstPreflight.kind !== 'ready') throw new Error(`first repeat preflight was ${firstPreflight.reason}`);
+    const firstDraws = composeCaptureDrawBundleV1(firstPreflight, firstExtensions);
+    if (firstDraws.kind !== 'planned') throw new Error(`first repeat draws were ${firstDraws.reason}`);
+    const first = planCaptureV1(firstPreflight, firstDraws.bundle);
+    if (first.kind !== 'planned' || !first.plan.hit) throw new Error('first repeat fixture did not hit');
+    const originalRosterRow = roster.view.all[first.plan.candidate.sourceOrdinal];
+    if (originalRosterRow === undefined) throw new Error('selected repeat roster row is absent');
+    const firstObservationId = first.plan.successor.catalogSpecies[0]?.firstObservationId;
+
+    const laterExtensions = authorityExtensions(
+      ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+      HIT_SEED,
+      {},
+      1,
+      true,
+      first.plan.successor,
+    );
+    const laterSnapshot = registeredSnapshotFromRows(
+      earth,
+      Object.freeze([originalRosterRow]),
+      laterExtensions,
+      first.plan.successor,
+      1,
+    );
+    const laterPreflight = preflightCaptureV1(laterSnapshot, 'tame');
+    if (laterPreflight.kind !== 'ready') throw new Error(`later-cycle repeat was ${laterPreflight.reason}`);
+    expect(laterPreflight.pool).toHaveLength(1);
+    expect(laterPreflight.requiredHitHeadroom).toBe(3);
+    const laterDraws = composeCaptureDrawBundleV1(laterPreflight, laterExtensions);
+    if (laterDraws.kind !== 'planned') throw new Error(`later-cycle draws were ${laterDraws.reason}`);
+    const later = planCaptureV1(laterPreflight, laterDraws.bundle);
+    if (later.kind !== 'planned' || !later.plan.hit) throw new Error('later-cycle repeat did not hit');
+    expect(later.plan.firstForSpecies).toBe(false);
+    expect(later.plan.successor.catalogSpecies).toEqual(first.plan.successor.catalogSpecies);
+    expect(later.plan.successor.discoveries).toHaveLength(2);
+    expect(later.plan.successor.creatures).toHaveLength(2);
+    expect(later.plan.successor.discoveries.find(
+      (row) => row.recordId === later.plan.discoveryRecordId,
+    )).toMatchObject({
+      firstForSpecies: false,
+      provenance: { kind: 'world', worldKey: earth.key, cycle: 1, verb: 'tame' },
+    });
+    expect(later.plan.successor.catalogSpecies[0]?.firstObservationId)
+      .toBe(firstObservationId);
+
+    const foreign = firstLivingForeignWorld().address;
+    const otherExtensions = authorityExtensions(
+      0,
+      HIT_SEED,
+      {},
+      1,
+      true,
+      first.plan.successor,
+    );
+    const otherSnapshot = registeredSnapshotFromRows(
+      foreign,
+      Object.freeze([originalRosterRow]),
+      otherExtensions,
+      first.plan.successor,
+    );
+    const otherPreflight = preflightCaptureV1(otherSnapshot, 'tame');
+    if (otherPreflight.kind !== 'ready') throw new Error(`other-world repeat was ${otherPreflight.reason}`);
+    const otherDraws = composeCaptureDrawBundleV1(otherPreflight, otherExtensions);
+    if (otherDraws.kind !== 'planned') throw new Error(`other-world draws were ${otherDraws.reason}`);
+    const other = planCaptureV1(otherPreflight, otherDraws.bundle);
+    if (other.kind !== 'planned' || !other.plan.hit) throw new Error('other-world repeat did not hit');
+    expect(other.plan.firstForSpecies).toBe(false);
+    expect(other.plan.successor.catalogSpecies).toEqual(first.plan.successor.catalogSpecies);
+    expect(other.plan.successor.discoveries).toHaveLength(2);
+    expect(other.plan.successor.creatures).toHaveLength(2);
+    expect(other.plan.successor.discoveries.find(
+      (row) => row.recordId === other.plan.discoveryRecordId,
+    )).toMatchObject({
+      firstForSpecies: false,
+      provenance: { kind: 'world', worldKey: foreign.key, cycle: 0, verb: 'tame' },
+    });
+    expect(other.plan.successor.biosphereProgress.map((row) => row.worldKey).sort())
+      .toEqual([earth.key, foreign.key].sort());
+  });
+
+  it('registers one miss plus every ordered hit and the selected plan matches its scenario', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const roster = rosterOf(earth);
+    const ownership = createEmptyOwnershipStateV1();
+    const extensions = authorityExtensions(0, HIT_SEED, {}, 0, true, ownership);
+    const snapshot = readySnapshot(earth, roster, extensions);
+    const preflight = preflightCaptureV1(snapshot, 'tame');
+    if (preflight.kind !== 'ready') throw new Error(`scenario preflight was ${preflight.reason}`);
+    const projected = projectCaptureCapacityScenariosV1(preflight, 0);
+    expect(isCaptureCapacityScenariosV1(projected)).toBe(true);
+    expect(isCaptureCapacityScenariosV1({ ...projected })).toBe(false);
+    expect(projected.candidateOrder).toEqual(
+      preflight.pool.map((row) => row.identity.speciesId),
+    );
+    expect(projected.scenarios).toHaveLength(preflight.pool.length + 1);
+    expect(projected.scenarios[0]).toMatchObject({
+      kind: 'miss', candidate: null, tier: null, firstForSpecies: false,
+      discoveryRecordId: null, ownedRowId: null,
+    });
+    expect(projected.scenarios.slice(1).map((scenario) => scenario.candidate))
+      .toEqual(preflight.pool);
+    expect(projected.scenarios.every((scenario) => !('candidateDraw' in scenario)
+      && !('successDraw' in scenario))).toBe(true);
+
+    const draws = composeCaptureDrawBundleV1(preflight, extensions);
+    if (draws.kind !== 'planned') throw new Error(`scenario draws were ${draws.reason}`);
+    const planned = planCaptureV1(preflight, draws.bundle);
+    if (planned.kind !== 'planned' || !planned.plan.hit) throw new Error('scenario fixture did not hit');
+    const scenario = projected.scenarios.find((row) => (
+      row.kind === 'hit' && row.candidate === planned.plan.candidate
+    ));
+    expect(scenario).toMatchObject({
+      kind: 'hit',
+      tier: planned.plan.tier,
+      firstForSpecies: planned.plan.firstForSpecies,
+      discoveryRecordId: planned.plan.discoveryRecordId,
+      ownedRowId: planned.plan.ownedRowId,
+      successorDigest: ownershipStateDigestV1(planned.plan.successor),
+    });
+    const missExtensions = authorityExtensions(0, MISS_SEED, {}, 0, true, ownership);
+    const missSnapshot = readySnapshot(earth, roster, missExtensions);
+    const missPreflight = preflightCaptureV1(missSnapshot, 'tame');
+    if (missPreflight.kind !== 'ready') throw new Error(`scenario miss preflight was ${missPreflight.reason}`);
+    const missProjection = projectCaptureCapacityScenariosV1(missPreflight, 0);
+    const missDraws = composeCaptureDrawBundleV1(missPreflight, missExtensions);
+    if (missDraws.kind !== 'planned') throw new Error(`scenario miss draws were ${missDraws.reason}`);
+    const missed = planCaptureV1(missPreflight, missDraws.bundle);
+    if (missed.kind !== 'planned' || missed.plan.hit) throw new Error('scenario miss did not miss');
+    expect(missProjection.scenarios[0]?.successorDigest)
+      .toBe(ownershipStateDigestV1(missed.plan.successor));
   });
 
   it.each([
@@ -1146,6 +1530,363 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
       readySnapshot(earth, roster, oneRowTooManyExtensions),
       'tame',
     )).toEqual({ kind: 'refused', reason: 'model-row-capacity' });
+  }, 20_000);
+
+  it('refuses all 64 candidates when the last possible hit alone cannot mirror to v4', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const collidingSeed = 909_090;
+    const existingGenome = makeGenome(collidingSeed, 'fauna', 0.35);
+    const ownership = migrateLegacyOwnershipStateV1({
+      legacyEpoch: 0,
+      codexRows: [{
+        legacyCodexId: `s${collidingSeed}`,
+        genome: existingGenome as unknown as CanonicalJson,
+        from: 'capacity collision control',
+        legacyLocation: null,
+        catalogAlias: 'Capacity Known',
+        faunaNickname: null,
+      }],
+      bioXRows: [],
+      scoutCodexId: null,
+    }).state;
+    const extensions = authorityExtensions(0, HIT_SEED, {}, 0, true, ownership);
+    const unsafeBase = makeGenome(collidingSeed, 'fauna', 0.35) as Genome & { color: number };
+    const unsafe = Object.freeze({
+      ...unsafeBase,
+      color: unsafeBase.color + 1,
+    });
+    const rows = Object.freeze([
+      ...Array.from({ length: 63 }, (_, index) => (
+        makeGenome(1_100_000 + index, 'fauna', 0.5)
+      )),
+      unsafe,
+    ]);
+    const snapshot = registeredSnapshotFromRows(earth, rows, extensions, ownership);
+    const preflight = preflightCaptureV1(snapshot, 'tame');
+    if (preflight.kind !== 'ready') throw new Error(`64-candidate preflight was ${preflight.reason}`);
+    expect(preflight.pool).toHaveLength(64);
+    expect(preflight.pool[63]?.identity.genome.seed).toBe(collidingSeed);
+    expect(preflight.pool[63]?.identity.speciesId)
+      .not.toBe(ownership.catalogSpecies[0]?.speciesId);
+    const state = compatibilityStateForOwnership(ownership);
+    expect(state.customNames).toContainEqual([`cs${collidingSeed}`, 'Capacity Known']);
+    const preDraw = capacityPreDrawInput(state, extensions, 0);
+    const beforeF4 = readF4Authority(extensions);
+    const certified = certifyArc4CaptureCapacityV1({
+      preflight,
+      preDraw,
+    });
+    expect(certified).toEqual({
+      kind: 'refused',
+      reason: 'legacy-mirror-unrepresentable',
+      scenario: {
+        kind: 'hit',
+        candidateSpeciesId: preflight.pool[63]?.identity.speciesId,
+        sourceOrdinal: 63,
+      },
+    });
+    expect(readF4Authority(extensions)).toEqual(beforeF4);
+    expect(ownership.revision).toBe(0);
+  }, 20_000);
+
+  it('fails closed before draws when a new world would collide in legacy bioX by leaf seed', () => {
+    const firstWorld = addressOf(
+      RING3_WORLD.galaxy,
+      RING3_WORLD.star,
+      RING3_WORLD.planetSeed,
+    );
+    const collidingWorld = addressOf(
+      RING4_WORLD.galaxy,
+      RING4_WORLD.star,
+      RING4_WORLD.planetSeed,
+    );
+    expect(firstWorld.key).not.toBe(collidingWorld.key);
+    expect(firstWorld.planet.seed).toBe(collidingWorld.planet.seed);
+    const priorProgress = createBiosphereProgressV1({
+      worldAddress: firstWorld,
+      cycle: 0,
+      used: 1,
+      successful: [],
+    });
+    const ownership = createInitialOwnershipStateV1({
+      catalogSpecies: [], discoveries: [], creatures: [], specimenLots: [],
+      biosphereProgress: [priorProgress], legacyBioX: [], scoutCreatureId: null,
+    });
+    expect(projectLegacyOwnershipMirror(ownership)).toMatchObject({ kind: 'projected' });
+    const extensions = authorityExtensions(0, HIT_SEED, {}, 0, true, ownership);
+    const snapshot = registeredSnapshotFromRows(
+      collidingWorld,
+      Object.freeze([makeGenome(7_070_707, 'flora', 0.5)]),
+      extensions,
+      ownership,
+    );
+    const preflight = preflightCaptureV1(snapshot, 'scavenge');
+    if (preflight.kind !== 'ready') throw new Error(`bioX collision preflight was ${preflight.reason}`);
+    const state = compatibilityStateForOwnership(ownership);
+    const beforeF4 = readF4Authority(extensions);
+    expect(certifyArc4CaptureCapacityV1({
+      preflight,
+      preDraw: capacityPreDrawInput(state, extensions, 0),
+    })).toEqual({
+      kind: 'refused',
+      reason: 'legacy-mirror-unrepresentable',
+      scenario: { kind: 'miss', candidateSpeciesId: null, sourceOrdinal: null },
+    });
+    expect(readF4Authority(extensions)).toEqual(beforeF4);
+    expect(ownership.revision).toBe(0);
+  }, 20_000);
+
+  it('certifies the global extension byte ceiling against the miss before draws', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const ownership = createEmptyOwnershipStateV1();
+    const extensions = padExtensionsToGlobalByteLimit(
+      authorityExtensions(0, HIT_SEED, {}, 0, true, ownership),
+    );
+    const snapshot = registeredSnapshotFromRows(
+      earth,
+      Object.freeze([makeGenome(8_080_808, 'flora', 0.5)]),
+      extensions,
+      ownership,
+    );
+    const preflight = preflightCaptureV1(snapshot, 'scavenge');
+    if (preflight.kind !== 'ready') throw new Error(`extension capacity preflight was ${preflight.reason}`);
+    const state = compatibilityStateForOwnership(ownership);
+    const beforeF4 = readF4Authority(extensions);
+    expect(certifyArc4CaptureCapacityV1({
+      preflight,
+      preDraw: capacityPreDrawInput(state, extensions, 0),
+    })).toEqual({
+      kind: 'refused',
+      reason: 'extension-capacity-exceeded',
+      scenario: { kind: 'miss', candidateSpeciesId: null, sourceOrdinal: null },
+    });
+    expect(readF4Authority(extensions)).toEqual(beforeF4);
+    expect(ownership.revision).toBe(0);
+  }, 20_000);
+
+  it('awards exact rare-find Stardust once, then later-cycle repeat ownership earns none', async () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const empty = createEmptyOwnershipStateV1();
+    const probeExtensions = authorityExtensions(0, HIT_SEED, {}, 0, true, empty);
+    let rows: readonly Genome[] | null = null;
+    let rareIndex = -1;
+    let rareTier = -1;
+    for (let batch = 0; batch < 16 && rows === null; batch++) {
+      const candidates = Object.freeze(Array.from({ length: 64 }, (_, index) => (
+        makeGenome(2_000_000 + batch * 64 + index, 'fauna', 0.5)
+      )));
+      const snapshot = registeredSnapshotFromRows(earth, candidates, probeExtensions, empty, batch);
+      const preflight = preflightCaptureV1(snapshot, 'tame');
+      if (preflight.kind !== 'ready') throw new Error(`rare probe preflight was ${preflight.reason}`);
+      const scenarios = projectCaptureCapacityScenariosV1(preflight, 0);
+      const index = scenarios.scenarios.findIndex((scenario) => (
+        scenario.kind === 'hit' && scenario.tier !== null && scenario.tier >= 5
+      ));
+      if (index > 0) {
+        rows = candidates;
+        rareIndex = index - 1;
+        rareTier = scenarios.scenarios[index]!.tier!;
+      }
+    }
+    if (rows === null || rareIndex < 0 || rareTier < 5) {
+      throw new Error('bounded rare candidate search found no tier >= 5');
+    }
+    const chance = captureChanceV1({
+      verb: 'tame',
+      tier: rareTier as Parameters<typeof captureChanceV1>[0]['tier'],
+      ring: 0,
+      contactCapturePoints: 37,
+    });
+    let selectedSeed = -1;
+    for (let seed = 0; seed < 1_000_000; seed++) {
+      const rng = createSessionRNG(seed);
+      const candidateIndex = Math.floor(rng.at(DOMAINS.captureCandidate, 0) * rows.length);
+      if (candidateIndex === rareIndex
+        && rng.at(DOMAINS.captureSuccess, 0) < chance
+        && rng.at(DOMAINS.captureSuccess, 1) < chance) {
+        selectedSeed = seed;
+        break;
+      }
+    }
+    if (selectedSeed < 0) throw new Error('bounded rare selection seed search failed');
+    const extensions = authorityExtensions(0, selectedSeed, {}, 0, true, empty);
+    const snapshot = registeredSnapshotFromRows(earth, rows, extensions, empty);
+    const preflight = preflightCaptureV1(snapshot, 'tame');
+    if (preflight.kind !== 'ready') throw new Error(`rare preflight was ${preflight.reason}`);
+    const state = compatibilityStateForOwnership(empty);
+    const preDraw = capacityPreDrawInput(state, extensions, 0);
+    const cappedState = structuredClone(state);
+    cappedState.essence = 1_000_000_000;
+    cappedState.stats.essenceEarned = 1_000_000_000;
+    expect(certifyArc4CaptureCapacityV1({
+      preflight,
+      preDraw: capacityPreDrawInput(cappedState, extensions, 0),
+    })).toEqual({
+      kind: 'refused',
+      reason: 'stardust-overflow',
+      scenario: {
+        kind: 'hit',
+        candidateSpeciesId: preflight.pool[rareIndex]?.identity.speciesId,
+        sourceOrdinal: rareIndex,
+      },
+    });
+    const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw });
+    if (certified.kind !== 'certified') throw new Error(`rare certificate was ${certified.reason}`);
+    const settled = await settleCapacityThroughGenuineOwner(
+      preflight,
+      state,
+      extensions,
+      0,
+    );
+    expect(settled.plan.hit).toBe(true);
+    expect(settled.plan.candidate).toBe(preflight.pool[rareIndex]);
+    expect(settled.plan.tier).toBe(rareTier);
+    expect(settled.plan.firstForSpecies).toBe(true);
+    expect(settled.stardustReward).toBe(rareTier - 3);
+    expect(settled.derivation.state.essence).toBe(state.essence + rareTier - 3);
+    expect(settled.derivation.state.stats.essenceEarned).toBe(
+      (state.stats.essenceEarned ?? 0) + rareTier - 3,
+    );
+
+    const product = applyV5ExtensionWrites(
+      extensions,
+      settled.derivation.extensionWrites ?? [],
+    );
+    const afterFirst = prepareF4AuthorityUpdate(
+      product.extensions,
+      { activePlayMs: 0 },
+      preDraw.nextSessionRng,
+    );
+    const laterExtensions = prepareF4AuthorityUpdate(
+      afterFirst.extensions,
+      { activePlayMs: ACTIVE_PLAY_CAPTURE_CYCLE_MS },
+      afterFirst.authority.sessionRng,
+    ).extensions;
+    const rareRow = rows[rareIndex];
+    if (rareRow === undefined) throw new Error('rare roster row disappeared');
+    const laterSnapshot = registeredSnapshotFromRows(
+      earth,
+      Object.freeze([rareRow]),
+      laterExtensions,
+      settled.plan.successor,
+    );
+    const laterPreflight = preflightCaptureV1(laterSnapshot, 'tame');
+    if (laterPreflight.kind !== 'ready') throw new Error(`rare repeat preflight was ${laterPreflight.reason}`);
+    expect(laterPreflight.requiredHitHeadroom).toBe(3);
+    const laterPreDraw = capacityPreDrawInput(
+      settled.derivation.state,
+      laterExtensions,
+      ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+    );
+    const laterCertified = certifyArc4CaptureCapacityV1({
+      preflight: laterPreflight,
+      preDraw: laterPreDraw,
+    });
+    if (laterCertified.kind !== 'certified') {
+      throw new Error(`rare repeat certificate was ${laterCertified.reason}`);
+    }
+    const repeated = await settleCapacityThroughGenuineOwner(
+      laterPreflight,
+      settled.derivation.state,
+      laterExtensions,
+      ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+    );
+    expect(repeated.plan.hit).toBe(true);
+    expect(repeated.plan.firstForSpecies).toBe(false);
+    expect(repeated.stardustReward).toBe(0);
+    expect(repeated.derivation.state.essence).toBe(settled.derivation.state.essence);
+    expect(repeated.derivation.state.stats.essenceEarned)
+      .toBe(settled.derivation.state.stats.essenceEarned);
+    expect(repeated.plan.successor.catalogSpecies).toEqual(settled.plan.successor.catalogSpecies);
+    expect(repeated.plan.successor.discoveries).toHaveLength(2);
+    expect(repeated.plan.successor.creatures).toHaveLength(2);
+    expect(repeated.plan.successor.discoveries.find(
+      (row) => row.recordId === repeated.plan.discoveryRecordId,
+    )?.firstForSpecies).toBe(false);
+  }, 30_000);
+
+  it('materializes first-species hybrid/best/generation stats and pins their red controls', async () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const ownership = createEmptyOwnershipStateV1();
+    const hybridSeed = 9_191_919;
+    const hybrid = Object.freeze({
+      ...makeGenome(hybridSeed, 'fauna', 0.5),
+      gen: 7,
+      parents: Object.freeze(['s-parent-a', 's-parent-b']),
+    }) as Genome;
+    const extensions = authorityExtensions(0, HIT_SEED, {}, 0, true, ownership);
+    const snapshot = registeredSnapshotFromRows(
+      earth,
+      Object.freeze([hybrid]),
+      extensions,
+      ownership,
+    );
+    const preflight = preflightCaptureV1(snapshot, 'tame');
+    if (preflight.kind !== 'ready') throw new Error(`hybrid preflight was ${preflight.reason}`);
+    const state = compatibilityStateForOwnership(ownership);
+    const preDraw = capacityPreDrawInput(state, extensions, 0);
+    const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw });
+    if (certified.kind !== 'certified') throw new Error(`hybrid certificate was ${certified.reason}`);
+    const settled = await settleCapacityThroughGenuineOwner(
+      preflight,
+      state,
+      extensions,
+      0,
+    );
+    expect(settled.plan).toMatchObject({ hit: true, firstForSpecies: true });
+    const capturedEntry = settled.derivation.state.codex.find(([id]) => id === `s${hybridSeed}`)?.[1];
+    if (capturedEntry === undefined || capturedEntry.tier === null) {
+      throw new Error('hybrid Compendium entry was not materialized with a tier');
+    }
+    const expectedBest = Math.max(state.stats.best ?? 0, capturedEntry.tier);
+    const rankScore = (state.stats.surveys ?? 0) * 4
+      + settled.derivation.state.codex.length * 2
+      + expectedBest * 12
+      + state.unlocked.length * 6
+      + 1
+      + state.galSeen.length * 3;
+    const rankFloors = [0, 30, 90, 220, 460, 900, 1700, 3000, 5200, 8200];
+    const expectedBestRank = rankFloors.reduce(
+      (rank, floor, index) => rankScore >= floor ? index : rank,
+      0,
+    );
+    const reflectsLegacySpeciesEffects = (candidate: SaveStateV2): boolean => {
+      const entry = candidate.codex.find(([id]) => id === `s${hybridSeed}`)?.[1];
+      return entry?.hybrid === true
+        && JSON.stringify(entry.g.parents) === JSON.stringify(['s-parent-a', 's-parent-b'])
+        && candidate.stats.hybrids === 1
+        && candidate.stats.maxGen === 7
+        && candidate.stats.best === expectedBest
+        && candidate.stats.bestRank === expectedBestRank
+        && JSON.stringify(candidate.unlocked) === JSON.stringify(state.unlocked);
+    };
+    expect(reflectsLegacySpeciesEffects(settled.derivation.state)).toBe(true);
+    expect(capturedEntry.g.gen).toBe(7);
+    expect(capturedEntry.g.parents).toEqual(['s-parent-a', 's-parent-b']);
+    expect(settled.derivation.state.unlocked).toEqual(state.unlocked);
+
+    const missingParents = structuredClone(settled.derivation.state);
+    const missingParentsEntry = missingParents.codex.find(([id]) => id === `s${hybridSeed}`)?.[1];
+    if (missingParentsEntry === undefined) throw new Error('hybrid red-control row disappeared');
+    delete missingParentsEntry.g.parents;
+    expect(reflectsLegacySpeciesEffects(missingParents)).toBe(false);
+    const wrongParents = structuredClone(settled.derivation.state);
+    const wrongParentsEntry = wrongParents.codex.find(([id]) => id === `s${hybridSeed}`)?.[1];
+    if (wrongParentsEntry === undefined) throw new Error('hybrid lineage red-control row disappeared');
+    wrongParentsEntry.g.parents = ['s-parent-b', 's-parent-a'];
+    expect(reflectsLegacySpeciesEffects(wrongParents)).toBe(false);
+    for (const field of ['hybrids', 'maxGen', 'best'] as const) {
+      const regressed = structuredClone(settled.derivation.state);
+      regressed.stats[field] = 0;
+      expect(reflectsLegacySpeciesEffects(regressed)).toBe(false);
+    }
+    const wrongRank = structuredClone(settled.derivation.state);
+    wrongRank.stats.bestRank = expectedBestRank === rankFloors.length - 1
+      ? expectedBestRank - 1 : expectedBestRank + 1;
+    expect(reflectsLegacySpeciesEffects(wrongRank)).toBe(false);
+    const changedAchievements = structuredClone(settled.derivation.state);
+    changedAchievements.unlocked.push('arc4-unexpected-achievement');
+    expect(reflectsLegacySpeciesEffects(changedAchievements)).toBe(false);
   }, 20_000);
 
   it('replays byte-identically, binds successor to its exact parent, and never mutates/rerolls authority', () => {

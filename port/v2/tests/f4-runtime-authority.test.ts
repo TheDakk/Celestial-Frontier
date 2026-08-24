@@ -13,6 +13,7 @@ import {
   migrateStoredV4ToV5,
   prepareArc2LootLegacyMigration,
   prepareArc2LootLegacyRestore,
+  prepareF4AuthorityUpdate,
   prepareV5Replacement,
   readArc2Loot,
   readF4Authority,
@@ -24,7 +25,7 @@ import {
 import {
   createF4RuntimeAuthority,
   type F4RuntimeActionInput,
-  type F4RuntimeMultiOutcomeInput,
+  type F4RuntimePreDrawMultiOutcomeInput,
   type F4RuntimeOutcomeInput,
   type F4RuntimeProductInput,
 } from '../apps/game/src/f4-runtime-authority.js';
@@ -51,6 +52,36 @@ async function migrated() {
   const loaded = await readSaveV5(backend, REGISTRY, NOW);
   if (loaded.kind !== 'loaded') throw new Error(`expected loaded v5; got ${loaded.kind}`);
   return { backend, loaded };
+}
+
+function capturePreDrawPolicy(
+  witness: string,
+  essenceDelta: number,
+  observeDraws?: (serialized: string) => void,
+): F4RuntimePreDrawMultiOutcomeInput<Readonly<{ witness: string }>, string>['preDraw'] {
+  return (input, authorizer) => {
+    const expectedState = { ...input.draft, essence: input.draft.essence + essenceDelta };
+    const expectedF4 = prepareF4AuthorityUpdate(
+      input.extensions,
+      { activePlayMs: input.activePlayMs },
+      input.nextSessionRng,
+    );
+    const expectedPrepared = input.codec.prepare({
+      state: expectedState,
+      extensions: expectedF4.extensions,
+    });
+    return authorizer.ready(
+      Object.freeze({ witness }),
+      ({ draws, draft }, settlementAuthorizer) => {
+        observeDraws?.(JSON.stringify(draws));
+        draft.essence += essenceDelta;
+        return settlementAuthorizer.authorize(
+          { state: draft, witness },
+          expectedPrepared,
+        );
+      },
+    );
+  };
 }
 
 interface ReceiptEvidence {
@@ -439,6 +470,98 @@ describe('F4 runtime authority join', () => {
     });
   });
 
+  it('owns the pre-draw capacity callback lifecycle without changing commitOutcomes', async () => {
+    const migratedCase = await migrated();
+    const repository = createRevisionedRepository(migratedCase.backend);
+    const runtime = createF4RuntimeAuthority({
+      backend: migratedCase.backend,
+      repository,
+      registry: REGISTRY,
+      initialRevision: 0,
+      initialExtensions: migratedCase.loaded.extensions,
+      restoredAuthority: null,
+      freshSessionSeed: 0xC0FFEE,
+      ownerId: 'tab-a', token: 'pre-draw-document', leaseTtlMs: 1_000,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await runtime.heartbeat();
+    expect((await runtime.commit(migratedCase.loaded.state, NOW)).kind).toBe('committed');
+    const beforeRevision = runtime.revision;
+    const beforeRng = runtime.sessionRng;
+    let refusedSettlement = 0;
+    const refused = await runtime.commitOutcomesPreDraw({
+      state: migratedCase.loaded.state,
+      domains: ['capture.candidate', 'capture.success'],
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      preDraw: (input) => {
+        expect(JSON.stringify(input)).not.toContain('"value"');
+        return { kind: 'refused', reason: 'capacity' };
+      },
+    });
+    expect(refused).toEqual({ kind: 'pre-draw-refused', reason: 'capacity' });
+    expect(refusedSettlement).toBe(0);
+    expect(runtime.revision).toBe(beforeRevision);
+    expect(runtime.sessionRng).toEqual(beforeRng);
+    expect(await repository.readReceipt(0)).toBeUndefined();
+
+    const domains = ['capture.candidate', 'capture.success'];
+    const trace: string[] = [];
+    const pending = runtime.commitOutcomesPreDraw({
+      state: migratedCase.loaded.state,
+      domains,
+      receiptKind: 'capture-attempt',
+      codecNow: NOW,
+      preDraw: (input, authorizer) => {
+        trace.push('pre-draw');
+        expect(input.domains).toEqual(['capture.candidate', 'capture.success']);
+        expect(input.counters).toEqual([
+          { domain: 'capture.candidate', counter: 0 },
+          { domain: 'capture.success', counter: 0 },
+        ]);
+        const expectedState = { ...input.draft, essence: input.draft.essence + 1 };
+        const expectedF4 = prepareF4AuthorityUpdate(
+          input.extensions,
+          { activePlayMs: input.activePlayMs },
+          input.nextSessionRng,
+        );
+        const expectedPrepared = input.codec.prepare({
+          state: expectedState,
+          extensions: expectedF4.extensions,
+        });
+        return authorizer.ready(
+          Object.freeze({ ok: true as const }),
+          ({ plan, proof, draws, draft },
+            settlementAuthorizer) => {
+            trace.push('derive');
+            expect(proof).toEqual({ ok: true });
+            expect(plan.draws).toBe(draws);
+            draft.essence += 1;
+            return settlementAuthorizer.authorize(
+              { state: draft, witness: 'runtime-pre-draw' },
+              expectedPrepared,
+            );
+          },
+        );
+      },
+    });
+    domains.reverse();
+    const committed = await pending;
+    expect(committed.kind).toBe('committed');
+    if (committed.kind !== 'committed') return;
+    expect(trace).toEqual(['pre-draw', 'derive']);
+    expect(committed.plan.draws.map(({ domain }) => domain)).toEqual([
+      'capture.candidate', 'capture.success',
+    ]);
+    expect(runtime.revision).toBe(beforeRevision + 1);
+    expect(runtime.sessionRng).toEqual({
+      seed: 0xC0FFEE,
+      ordinal: 1,
+      draws: { 'capture.candidate': 1, 'capture.success': 1 },
+    });
+    expect(await repository.readReceipt(0)).toEqual(committed.receipt);
+  });
+
   it('keeps rejected and storage-aborted capture plans private, then reloads and retries identically', async () => {
     const migratedCase = await migrated();
     const base = migratedCase.backend;
@@ -501,18 +624,17 @@ describe('F4 runtime authority join', () => {
     expect(first.sessionRng).toEqual(baselineRng);
 
     const observedPlans: string[] = [];
-    const derive: F4RuntimeMultiOutcomeInput['derive'] = ({ draws, draft, receiptOrdinal }) => {
-      observedPlans.push(JSON.stringify(draws));
-      draft.essence += 3;
-      return { state: draft, witness: `capture-retry:${receiptOrdinal}` };
-    };
     failNextCapture = true;
-    const failed = await first.commitOutcomes({
+    const failed = await first.commitOutcomesPreDraw({
       state: migratedCase.loaded.state,
       domains: ['capture.candidate', 'capture.success'],
       receiptKind: 'capture-attempt',
       codecNow: NOW,
-      derive,
+      preDraw: capturePreDrawPolicy(
+        'capture-retry:0',
+        3,
+        (serialized) => observedPlans.push(serialized),
+      ),
     });
     expect(failed).toMatchObject({
       kind: 'storage-error',
@@ -538,12 +660,16 @@ describe('F4 runtime authority join', () => {
       now: () => 0, visible: true, answerable: true,
     });
     await second.heartbeat();
-    const retry = await second.commitOutcomes({
+    const retry = await second.commitOutcomesPreDraw({
       state: reloaded.state,
       domains: ['capture.candidate', 'capture.success'],
       receiptKind: 'capture-attempt',
       codecNow: NOW,
-      derive,
+      preDraw: capturePreDrawPolicy(
+        'capture-retry:0',
+        3,
+        (serialized) => observedPlans.push(serialized),
+      ),
     });
     expect(retry.kind).toBe('committed');
     if (failed.kind !== 'storage-error' || retry.kind !== 'committed') return;
@@ -570,25 +696,19 @@ describe('F4 runtime authority join', () => {
     await runtime.heartbeat();
     expect((await runtime.commit(loaded.state, NOW)).kind).toBe('committed');
     const beforeEssence = loaded.state.essence;
-    const winnerPending = runtime.commitOutcomes({
+    const winnerPending = runtime.commitOutcomesPreDraw({
       state: loaded.state,
       domains: ['capture.candidate', 'capture.success'],
       receiptKind: 'capture-attempt',
       codecNow: NOW,
-      derive: ({ draft }) => {
-        draft.essence += 4;
-        return { state: draft, witness: 'capture-winner' };
-      },
+      preDraw: capturePreDrawPolicy('capture-winner', 4),
     });
-    const loserPending = runtime.commitOutcomes({
+    const loserPending = runtime.commitOutcomesPreDraw({
       state: loaded.state,
       domains: ['capture.success', 'capture.success'],
       receiptKind: 'capture-attempt',
       codecNow: NOW,
-      derive: ({ draft }) => {
-        draft.essence += 40;
-        return { state: draft, witness: 'capture-loser' };
-      },
+      preDraw: capturePreDrawPolicy('capture-loser', 40),
     });
     const [winner, loser] = await Promise.all([winnerPending, loserPending]);
     expect(winner.kind).toBe('committed');
@@ -639,19 +759,15 @@ describe('F4 runtime authority join', () => {
     await duplicateCase.backend.apply([{
       store: 'receipts', key: 'receipt:0', value: JSON.stringify(existingReceipt),
     }]);
-    let duplicateDerivations = 0;
-    await expect(duplicateRuntime.commitOutcomes({
+    let duplicateSettlements = 0;
+    await expect(duplicateRuntime.commitOutcomesPreDraw({
       state: duplicateCase.loaded.state,
       domains: ['capture.candidate', 'capture.success'],
       receiptKind: 'capture-attempt',
       codecNow: NOW,
-      derive: ({ draft }) => {
-        duplicateDerivations++;
-        draft.essence += 5;
-        return { state: draft, witness: 'must-not-land' };
-      },
+      preDraw: capturePreDrawPolicy('must-not-land', 5, () => { duplicateSettlements++; }),
     })).resolves.toMatchObject({ kind: 'duplicate-receipt', existing: existingReceipt });
-    expect(duplicateDerivations).toBe(1);
+    expect(duplicateSettlements).toBe(1);
     expect(duplicateRuntime.revision).toBe(1);
     expect(duplicateRuntime.extensions).toBe(duplicateExtensions);
     expect(duplicateRuntime.sessionRng).toEqual(duplicateRng);
@@ -688,19 +804,15 @@ describe('F4 runtime authority join', () => {
     });
     time.advance(101);
     await expect(successor.acquire()).resolves.toMatchObject({ kind: 'acquired' });
-    let lostDerivations = 0;
-    await expect(lostRuntime.commitOutcomes({
+    let lostSettlements = 0;
+    await expect(lostRuntime.commitOutcomesPreDraw({
       state: lostCase.loaded.state,
       domains: ['capture.candidate', 'capture.success'],
       receiptKind: 'capture-attempt',
       codecNow: NOW,
-      derive: ({ draft }) => {
-        lostDerivations++;
-        draft.essence += 6;
-        return { state: draft, witness: 'lost-capture' };
-      },
+      preDraw: capturePreDrawPolicy('lost-capture', 6, () => { lostSettlements++; }),
     })).resolves.toMatchObject({ kind: 'lost', reason: 'lease-lost' });
-    expect(lostDerivations).toBe(1);
+    expect(lostSettlements).toBe(1);
     expect(lostRuntime.revision).toBe(1);
     expect(lostRuntime.extensions).toBe(lostExtensions);
     expect(lostRuntime.sessionRng).toEqual(lostRng);

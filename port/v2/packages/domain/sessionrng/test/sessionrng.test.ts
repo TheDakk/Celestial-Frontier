@@ -3,8 +3,10 @@ import { fileURLToPath } from 'node:url';
 import { describe, it, expect } from 'vitest';
 import {
   createSessionRNG,
+  isPlannedSessionRNGDraws,
   planSessionRNGDraw,
   planSessionRNGDraws,
+  projectSessionRNGDrawAdvance,
   MAX_SESSION_RNG_DRAWS_PER_PLAN,
   SessionRNGPlanningExhaustion,
   DOMAINS,
@@ -169,6 +171,19 @@ function auditLegacyInventory(source: string, sites: readonly LegacyRngSite[]): 
 
 const rootMain = fileURLToPath(new URL('../../../../../../main.js', import.meta.url));
 const legacySource = readFileSync(rootMain, 'utf8');
+const sessionRngSource = readFileSync(fileURLToPath(new URL('../src/index.ts', import.meta.url)), 'utf8');
+
+function projectionValueEvaluationIssues(source: string): readonly string[] {
+  const start = source.indexOf('export function projectSessionRNGDrawAdvance(');
+  const end = source.indexOf('\n/** Plan one ordered group', start);
+  if (start < 0 || end < 0) return ['projection boundary missing'];
+  const body = source.slice(start, end);
+  const issues: string[] = [];
+  if (/\.at\s*\(/u.test(body)) issues.push('projection evaluates rng.at');
+  if (/\.roll\s*\(/u.test(body)) issues.push('projection evaluates rng.roll');
+  if (/\bmulberry32\s*\(/u.test(body)) issues.push('projection evaluates RNG primitive');
+  return issues;
+}
 
 describe('@cf/domain-sessionrng — the reviewer §2.1 contract, as tests', () => {
   it('REPLAYABLE: same seed → identical sequences per domain', () => {
@@ -372,6 +387,106 @@ describe('@cf/domain-sessionrng — the reviewer §2.1 contract, as tests', () =
     expect(planned.draws.every(Object.isFrozen)).toBe(true);
     expect(Object.isFrozen(planned.nextState)).toBe(true);
     expect(Object.isFrozen(planned.nextState.draws)).toBe(true);
+  });
+  it('projects the exact ordered advance without values and materializes that projection once', () => {
+    const source = {
+      seed: 0xC0FFEE,
+      draws: { [DOMAINS.captureCandidate]: 3, unrelated: 9 },
+      ordinal: 21,
+    };
+    const domains = [
+      DOMAINS.captureCandidate,
+      DOMAINS.captureCandidate,
+      DOMAINS.captureSuccess,
+    ];
+    const projected = projectSessionRNGDrawAdvance(source, domains);
+    expect(projected).toEqual({
+      sourceState: {
+        seed: 0xC0FFEE,
+        draws: { [DOMAINS.captureCandidate]: 3, unrelated: 9 },
+        ordinal: 21,
+      },
+      advances: [
+        { domain: DOMAINS.captureCandidate, counter: 3 },
+        { domain: DOMAINS.captureCandidate, counter: 4 },
+        { domain: DOMAINS.captureSuccess, counter: 0 },
+      ],
+      receiptOrdinal: 21,
+      nextState: {
+        seed: 0xC0FFEE,
+        draws: { [DOMAINS.captureCandidate]: 5, unrelated: 9, [DOMAINS.captureSuccess]: 1 },
+        ordinal: 22,
+      },
+    });
+    expect('draws' in projected).toBe(false);
+    expect(projected.advances.every((row) => !('value' in row))).toBe(true);
+    expect(Object.isFrozen(projected)).toBe(true);
+    expect(Object.isFrozen(projected.sourceState)).toBe(true);
+    expect(Object.isFrozen(projected.sourceState.draws)).toBe(true);
+    expect(Object.isFrozen(projected.advances)).toBe(true);
+    expect(projected.advances.every(Object.isFrozen)).toBe(true);
+    expect(Object.isFrozen(projected.nextState)).toBe(true);
+    expect(Object.isFrozen(projected.nextState.draws)).toBe(true);
+    const planned = planSessionRNGDraws(source, domains);
+    expect(planned.receiptOrdinal).toBe(projected.receiptOrdinal);
+    expect(planned.nextState).toEqual(projected.nextState);
+    expect(planned.draws.map(({ domain }) => domain))
+      .toEqual(projected.advances.map(({ domain }) => domain));
+    expect(isPlannedSessionRNGDraws(planned)).toBe(true);
+    expect(isPlannedSessionRNGDraws({ ...planned })).toBe(false);
+    expect(source).toEqual({
+      seed: 0xC0FFEE,
+      draws: { [DOMAINS.captureCandidate]: 3, unrelated: 9 },
+      ordinal: 21,
+    });
+  });
+  it('pins the no-value projection boundary with a coherent red control', () => {
+    expect(projectionValueEvaluationIssues(sessionRngSource)).toEqual([]);
+    const mutated = sessionRngSource.replace(
+      'const rng = createSessionRNG(state.seed, state.draws, state.ordinal);',
+      'const rng = createSessionRNG(state.seed, state.draws, state.ordinal);\n  void rng.at("red.control", 0);',
+    );
+    expect(mutated).not.toBe(sessionRngSource);
+    expect(projectionValueEvaluationIssues(mutated)).toEqual(['projection evaluates rng.at']);
+  });
+  it('accepts exactly 32 ordered rows and refuses 33, exhaustion, and sparse inputs atomically', () => {
+    const thirtyTwo = Array.from(
+      { length: MAX_SESSION_RNG_DRAWS_PER_PLAN },
+      (_, index) => index % 2 === 0 ? DOMAINS.captureCandidate : DOMAINS.captureSuccess,
+    );
+    const projected = projectSessionRNGDrawAdvance(
+      { seed: 7, draws: {}, ordinal: 41 },
+      thirtyTwo,
+    );
+    expect(projected.advances).toHaveLength(32);
+    expect(projected.nextState).toEqual({
+      seed: 7,
+      draws: { [DOMAINS.captureCandidate]: 16, [DOMAINS.captureSuccess]: 16 },
+      ordinal: 42,
+    });
+    expect(() => projectSessionRNGDrawAdvance(
+      { seed: 7, draws: {}, ordinal: 41 },
+      [...thirtyTwo, DOMAINS.captureCandidate],
+    )).toThrow(/must contain 1/);
+    const sparse = Array<string>(1);
+    expect(() => projectSessionRNGDrawAdvance(
+      { seed: 7, draws: {}, ordinal: 41 },
+      sparse,
+    )).toThrow(/domain must be/);
+    try {
+      projectSessionRNGDrawAdvance(
+        { seed: 7, draws: { x: 0xFFFF_FFFE }, ordinal: 41 },
+        ['x', 'x'],
+      );
+      throw new Error('expected projected counter exhaustion');
+    } catch (error) {
+      expect(error).toBeInstanceOf(SessionRNGPlanningExhaustion);
+      expect(error).toMatchObject({ reason: 'draw-counter-exhausted', domain: 'x' });
+    }
+    expect(() => projectSessionRNGDrawAdvance(
+      { seed: 7, draws: {}, ordinal: 0xFFFF_FFFF },
+      ['x'],
+    )).toThrow(SessionRNGPlanningExhaustion);
   });
   it('preserves order, isolates distinct domains, and advances duplicate domains per occurrence', () => {
     const source = {

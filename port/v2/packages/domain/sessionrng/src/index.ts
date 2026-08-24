@@ -56,6 +56,32 @@ export interface PlannedSessionRNGDraws {
   readonly nextState: SessionRNGState;
 }
 
+export interface ProjectedSessionRNGDrawAdvanceRow {
+  readonly domain: string;
+  /** Exact counter that the later value evaluation must address. */
+  readonly counter: number;
+}
+
+/** A value-free projection of one bounded ordered outcome group. This is the
+ * capacity/preflight seam: callers can prove every possible product result
+ * fits before any outcome value is evaluated. */
+export interface ProjectedSessionRNGDrawAdvance {
+  /** Detached canonical source captured exactly once from caller input. */
+  readonly sourceState: SessionRNGState;
+  /** Ordered exactly as the caller's domains, including repeated domains. */
+  readonly advances: readonly ProjectedSessionRNGDrawAdvanceRow[];
+  /** One receipt identity for the whole ordered group. */
+  readonly receiptOrdinal: number;
+  readonly nextState: SessionRNGState;
+}
+
+const PLANNED_SESSION_RNG_DRAWS = new WeakSet<object>();
+
+/** Public structure alone is not proof that values came from SessionRNG. */
+export function isPlannedSessionRNGDraws(value: unknown): value is PlannedSessionRNGDraws {
+  return typeof value === 'object' && value !== null && PLANNED_SESSION_RNG_DRAWS.has(value);
+}
+
 export class SessionRNGPlanningExhaustion extends RangeError {
   readonly reason: 'receipt-ordinal-exhausted' | 'draw-counter-exhausted';
   readonly domain: string | null;
@@ -143,13 +169,12 @@ export function createSessionRNG(seed: number, draws?: Record<string, number>, o
   };
 }
 
-/** Plan one ordered group of outcome values without mutating its persisted
- * source. Every occurrence advances its named counter once, including repeated
- * domains, while the whole group reserves exactly one global receipt ordinal. */
-export function planSessionRNGDraws(
+/** Project the exact ordered counter/receipt transition without asking the
+ * RNG for a value. Every failure happens before a partial projection escapes. */
+export function projectSessionRNGDrawAdvance(
   state: SessionRNGState,
   domains: readonly string[],
-): PlannedSessionRNGDraws {
+): ProjectedSessionRNGDrawAdvance {
   if (!state || typeof state !== 'object') throw new TypeError('SessionRNG state is required');
   const domainCount = Array.isArray(domains) ? domains.length : -1;
   if (!Number.isSafeInteger(domainCount) || domainCount < 1
@@ -183,11 +208,16 @@ export function planSessionRNGDraws(
   if (receiptOrdinal === UINT32_MAX) {
     throw new SessionRNGPlanningExhaustion('receipt-ordinal-exhausted');
   }
-  const draws = orderedDomains.map((domain): PlannedSessionRNGValue => {
+  const advances = orderedDomains.map((domain): ProjectedSessionRNGDrawAdvanceRow => {
     const counter = counters.get(domain) ?? 0;
-    const planned = Object.freeze({ domain, value: rng.at(domain, counter) });
     counters.set(domain, counter + 1);
-    return planned;
+    return Object.freeze({ domain, counter });
+  });
+  const sourceDraws = Object.freeze({ ...source.draws });
+  const sourceState: SessionRNGState = Object.freeze({
+    seed: source.seed,
+    draws: sourceDraws,
+    ordinal: receiptOrdinal,
   });
   const nextDraws: Record<string, number> = Object.fromEntries(counters);
   Object.freeze(nextDraws);
@@ -198,10 +228,36 @@ export function planSessionRNGDraws(
   };
   Object.freeze(nextState);
   return Object.freeze({
-    draws: Object.freeze(draws),
+    sourceState,
+    advances: Object.freeze(advances),
     receiptOrdinal,
     nextState,
   });
+}
+
+/** Plan one ordered group of outcome values without mutating its persisted
+ * source. Value evaluation is deliberately downstream of the complete
+ * value-free projection used by product capacity policy. */
+export function planSessionRNGDraws(
+  state: SessionRNGState,
+  domains: readonly string[],
+): PlannedSessionRNGDraws {
+  const projection = projectSessionRNGDrawAdvance(state, domains);
+  const rng = createSessionRNG(
+    projection.sourceState.seed,
+    projection.sourceState.draws,
+    projection.sourceState.ordinal,
+  );
+  const draws = projection.advances.map(({ domain, counter }): PlannedSessionRNGValue => (
+    Object.freeze({ domain, value: rng.at(domain, counter) })
+  ));
+  const planned: PlannedSessionRNGDraws = Object.freeze({
+    draws: Object.freeze(draws),
+    receiptOrdinal: projection.receiptOrdinal,
+    nextState: projection.nextState,
+  });
+  PLANNED_SESSION_RNG_DRAWS.add(planned);
+  return planned;
 }
 
 /** Compatibility surface for one outcome. Its value, counter, ordinal and

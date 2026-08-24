@@ -14,7 +14,9 @@ import { hashInt, mulberry32 } from '@cf/domain-rand';
 import {
   createSessionRNG,
   DOMAINS,
-  planSessionRNGDraws,
+  isPlannedSessionRNGDraws,
+  projectSessionRNGDrawAdvance,
+  type PlannedSessionRNGDraws,
 } from '@cf/domain-sessionrng';
 import { ASC_RING_R, regionAt } from '@cf/domain-strays';
 import { HOME_GAL_SEED, SOL_POS } from '@cf/domain-worldconfig';
@@ -71,6 +73,7 @@ interface CaptureF4DrawPlanInput {
   readonly receiptOrdinal: number;
   readonly currentAuthority: F4AuthorityInput;
   readonly nextSessionRng: SessionRngInput;
+  readonly sessionPlan: PlannedSessionRNGDraws;
 }
 
 export interface CaptureDrawBundleMintInput {
@@ -147,8 +150,13 @@ function checkedRosterRows(
     throw new RangeError('acquisition snapshot requires the bounded full canonical roster');
   }
   const candidates: AcquisitionCandidateV1[] = [];
+  const speciesIds = new Set<string>();
   for (let sourceOrdinal = 0; sourceOrdinal < value.length; sourceOrdinal++) {
     const identity = canonicalGenomeIdentityV1(value[sourceOrdinal]);
+    if (speciesIds.has(identity.speciesId)) {
+      throw new TypeError('canonical acquisition roster repeats a species identity');
+    }
+    speciesIds.add(identity.speciesId);
     const seed = identity.genome.seed;
     if (!Number.isSafeInteger(seed) || (seed as number) < 0 || (seed as number) > 0xFFFF_FFFF) {
       throw new TypeError('canonical roster genome seed is invalid');
@@ -256,9 +264,9 @@ export function registerAcquisitionSnapshotV1(
 }
 
 /** Bind only the exact canonical result of F4's ordered multi-outcome owner.
- * The sole production caller obtains `plan` directly from
- * `planF4MultiOutcomeDraws`; this mint independently re-derives every value,
- * counter, and the one shared receipt ordinal before branding it. */
+ * The sole production caller passes the branded SessionRNG plan retained by
+ * F4. This mint re-projects counters and receipt without evaluating either
+ * value a second time. */
 export function registerCaptureDrawBundleV1(
   input: CaptureDrawBundleMintInput,
 ): CaptureDrawBundleV1 {
@@ -268,17 +276,24 @@ export function registerCaptureDrawBundleV1(
   }
   const plan = input.plan;
   const currentSessionRng = checkedSessionRng(plan.currentAuthority.sessionRng);
-  const expected = planSessionRNGDraws(currentSessionRng, CAPTURE_DOMAINS);
-  if (!Array.isArray(plan.draws) || plan.draws.length !== 2
+  const expected = projectSessionRNGDrawAdvance(currentSessionRng, CAPTURE_DOMAINS);
+  const sessionPlan = plan.sessionPlan;
+  if (!isPlannedSessionRNGDraws(sessionPlan)
+    || !Array.isArray(plan.draws) || plan.draws.length !== 2
+    || sessionPlan.draws.length !== 2
     || plan.receiptOrdinal !== expected.receiptOrdinal
+    || sessionPlan.receiptOrdinal !== expected.receiptOrdinal
     || plan.draws[0]?.domain !== CAPTURE_DOMAINS[0]
     || plan.draws[1]?.domain !== CAPTURE_DOMAINS[1]
-    || plan.draws[0]?.value !== expected.draws[0]?.value
-    || plan.draws[1]?.value !== expected.draws[1]?.value) {
+    || sessionPlan.draws[0]?.domain !== CAPTURE_DOMAINS[0]
+    || sessionPlan.draws[1]?.domain !== CAPTURE_DOMAINS[1]
+    || plan.draws[0]?.value !== sessionPlan.draws[0]?.value
+    || plan.draws[1]?.value !== sessionPlan.draws[1]?.value) {
     throw new TypeError('capture draws do not match the canonical ordered F4 plan');
   }
   const nextSessionRng = checkedSessionRng(plan.nextSessionRng);
-  if (!sameSessionRng(nextSessionRng, expected.nextState)) {
+  if (!sameSessionRng(nextSessionRng, expected.nextState)
+    || !sameSessionRng(nextSessionRng, sessionPlan.nextState)) {
     throw new TypeError('capture draw next authority does not match the canonical F4 transition');
   }
   const activePlayMs = checkedActivePlayMs(plan.currentAuthority.activePlayMs);
@@ -287,8 +302,8 @@ export function registerCaptureDrawBundleV1(
     sessionRng: currentSessionRng,
   });
   const draws: CaptureDrawBundleV1['draws'] = Object.freeze([
-    Object.freeze({ domain: CAPTURE_DOMAINS[0], value: expected.draws[0]!.value }),
-    Object.freeze({ domain: CAPTURE_DOMAINS[1], value: expected.draws[1]!.value }),
+    Object.freeze({ domain: CAPTURE_DOMAINS[0], value: sessionPlan.draws[0]!.value }),
+    Object.freeze({ domain: CAPTURE_DOMAINS[1], value: sessionPlan.draws[1]!.value }),
   ]);
   const bundle: CaptureDrawBundleV1 = Object.freeze({
     schema: CAPTURE_DRAW_BUNDLE_SCHEMA,

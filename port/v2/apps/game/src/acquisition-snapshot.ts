@@ -33,9 +33,11 @@ import {
   canonicalizeV5Extensions,
   V5_MAX_EXTENSION_JSON_BYTES,
   planF4MultiOutcomeDraws,
+  projectF4MultiOutcomeDrawAdvance,
   readArc4Ownership,
   readArc2AcquisitionCapabilities,
   readF4Authority,
+  type F4MultiOutcomeDrawPlan,
   type F4MultiOutcomePlanProtection,
   type V5Extensions,
 } from '@cf/persistence';
@@ -216,12 +218,18 @@ export type CaptureDrawCompositionOutcome =
   }>
   | Readonly<{ kind: 'planned'; bundle: CaptureDrawBundleV1 }>;
 
-/** The ready preflight is mandatory: empty/depleted/protected/capacity
- * outcomes cannot even request the two F4 values through this app surface. */
-export function composeCaptureDrawBundleV1(
+type CaptureDrawContextOutcome =
+  | Readonly<{
+    kind: 'checked';
+    preflight: CapturePreflightReadyV1;
+    extensions: V5Extensions;
+  }>
+  | Exclude<CaptureDrawCompositionOutcome, Readonly<{ kind: 'planned'; bundle: CaptureDrawBundleV1 }>>;
+
+function checkedCaptureDrawContext(
   preflightValue: unknown,
   extensionsValue: unknown,
-): CaptureDrawCompositionOutcome {
+): CaptureDrawContextOutcome {
   if (!isCapturePreflightReadyV1(preflightValue)) {
     return Object.freeze({ kind: 'protected', reason: 'preflight-unregistered' });
   }
@@ -246,19 +254,70 @@ export function composeCaptureDrawBundleV1(
     || capabilities.capabilities.contactCaptureBonus !== preflight.snapshot.contactCapturePoints) {
     return Object.freeze({ kind: 'protected', reason: 'snapshot-capability-mismatch' });
   }
-  const planned = planF4MultiOutcomeDraws(extensions, Object.freeze([
-    DOMAINS.captureCandidate,
-    DOMAINS.captureSuccess,
-  ]));
-  if (planned.kind !== 'planned') return planned;
-  const bundle = registerCaptureDrawBundleV1({
-    snapshot: preflight.snapshot,
-    plan: planned.plan,
-  });
+  return Object.freeze({ kind: 'checked', preflight, extensions });
+}
+
+const CAPTURE_DOMAINS = Object.freeze([
+  DOMAINS.captureCandidate,
+  DOMAINS.captureSuccess,
+] as const);
+
+function sameAuthorityPlan(
+  left: F4MultiOutcomeDrawPlan,
+  right: Extract<ReturnType<typeof projectF4MultiOutcomeDrawAdvance>, { kind: 'projected' }>['plan'],
+): boolean {
+  return left.receiptOrdinal === right.receiptOrdinal
+    && left.currentAuthority.activePlayMs === right.currentAuthority.activePlayMs
+    && JSON.stringify(left.currentAuthority.sessionRng) === JSON.stringify(right.currentAuthority.sessionRng)
+    && JSON.stringify(left.nextSessionRng) === JSON.stringify(right.nextSessionRng);
+}
+
+function registerCheckedCaptureDrawPlan(
+  preflight: CapturePreflightReadyV1,
+  extensions: V5Extensions,
+  plan: F4MultiOutcomeDrawPlan,
+): CaptureDrawCompositionOutcome {
+  const projected = projectF4MultiOutcomeDrawAdvance(extensions, CAPTURE_DOMAINS);
+  if (projected.kind !== 'projected') return projected;
+  if (!sameAuthorityPlan(plan, projected.plan)) {
+    return Object.freeze({ kind: 'protected', reason: 'snapshot-authority-mismatch' });
+  }
+  let bundle: CaptureDrawBundleV1;
+  try {
+    bundle = registerCaptureDrawBundleV1({ snapshot: preflight.snapshot, plan });
+  } catch {
+    return Object.freeze({ kind: 'protected', reason: 'snapshot-authority-mismatch' });
+  }
   if (bundle.snapshotFingerprint !== preflight.snapshot.fingerprint
     || bundle.f4AuthorityFingerprint !== preflight.snapshot.f4AuthorityFingerprint
     || bundle.activePlayMs !== preflight.snapshot.activePlayMs) {
     return Object.freeze({ kind: 'protected', reason: 'snapshot-authority-mismatch' });
   }
   return Object.freeze({ kind: 'planned', bundle });
+}
+
+/** The ready preflight is mandatory: empty/depleted/protected/capacity
+ * outcomes cannot even request the two F4 values through this app surface. */
+export function composeCaptureDrawBundleV1(
+  preflightValue: unknown,
+  extensionsValue: unknown,
+): CaptureDrawCompositionOutcome {
+  const context = checkedCaptureDrawContext(preflightValue, extensionsValue);
+  if (context.kind !== 'checked') return context;
+  const planned = planF4MultiOutcomeDraws(context.extensions, CAPTURE_DOMAINS);
+  if (planned.kind !== 'planned') return planned;
+  return registerCheckedCaptureDrawPlan(context.preflight, context.extensions, planned.plan);
+}
+
+/** Register an already-evaluated F4 plan without asking SessionRNG for either
+ * value again. The pre-draw transaction owner uses this only after capacity
+ * policy has returned its branded ready proof. */
+export function composeCaptureDrawBundleFromPlanV1(
+  preflightValue: unknown,
+  extensionsValue: unknown,
+  plan: F4MultiOutcomeDrawPlan,
+): CaptureDrawCompositionOutcome {
+  const context = checkedCaptureDrawContext(preflightValue, extensionsValue);
+  if (context.kind !== 'checked') return context;
+  return registerCheckedCaptureDrawPlan(context.preflight, context.extensions, plan);
 }
