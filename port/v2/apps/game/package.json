@@ -18,6 +18,7 @@
     "@cf/art": "*",
     "@cf/audio": "*",
     "@cf/domain-progression": "*",
+    "@cf/domain-sessionrng": "*",
     "@cf/domain-worldgen": "*",
     "@cf/domain-rand": "*",
     "@cf/domain-naming": "*",
