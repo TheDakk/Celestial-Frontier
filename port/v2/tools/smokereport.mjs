@@ -147,7 +147,12 @@ function screenshots(runId, directory = outputRoot) {
 
 function runSelftest() {
   const injected = [
-    'SLICE SMOKE: FAIL',
+    'SLICE SMOKE: FAIL — 3 findings',
+    'SLICE SMOKE: FAILURE TITLES',
+    '  1. PHONE',
+    '  2. PHONE',
+    '  3. harness',
+    'SLICE SMOKE: FAILURE DETAILS',
     '  - PHONE: primary rendered outcome',
     '  - PHONE: related rendered outcome',
     '  - harness: injected browser timeout',

@@ -176,13 +176,15 @@ const DTRAIN_NO_SNAPSHOT_RAW = (() => {
   save.me = 'DTRAIN No Snapshot';
   save.tut = 0;
   delete save.tsnap;
-  /* Keep the outer Earth surface in exact primary bytes. Runnable unfinished
-     Training must nevertheless seat the live lesson at freshly proven Sol. */
+  /* Keep the outer Earth surface in the staged source. Runnable unfinished
+     Training must nevertheless seat the live lesson at freshly proven Sol;
+     F4 bootstrap may then refresh the canonical compatibility mirror. */
   return JSON.stringify(save);
 })();
 const DTRAIN_OLD_SYNTHETIC_RAW = dtrainRaw({ snapshot: OLD_SYNTHETIC_TRAINING_CHECKPOINT });
-/* The over-limit string forces evidence retention to the exact primary only;
-   the app must quarantine it without observing or reserializing it. */
+/* The over-limit string forces runtime quarantine. Migration must retain its
+   exact source in the immutable v5 snapshot even though the canonical mirror
+   cannot carry the rejected checkpoint shape. */
 const DTRAIN_HOSTILE_RAW = dtrainRaw({ snapshot: {
   ...structuredClone(GENUINE_TRAINING_CHECKPOINT), hostile: 'X'.repeat(5000),
 } });
@@ -237,6 +239,7 @@ const CURRENT_TRAINING_RESTORE_RAW = (() => {
 const SAVED_AUTH_EXPLORER_NAME = 'Saved Reach Authorization Repair';
 const TRAINING_AUTH_EXPLORER_NAME = 'Training Reach Authorization Repair';
 const importedExplorerName = (name) => String(name).replace(/[<>&"']/g, '').trim().slice(0, 24);
+const CANONICAL_VETERAN_LANDED = Object.freeze([133, 134, 101, 102, 103, 201]);
 const OUTER_AUTH_SAVED_ROUTE_RAW = (() => {
   const save = JSON.parse(VETERAN_ATLAS_RAW);
   save.me = SAVED_AUTH_EXPLORER_NAME;
@@ -332,6 +335,46 @@ const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save �
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
     g.onsuccess=()=>{db.close();resolve(String(g.result||''))}; g.onerror=()=>reject(g.error); }; })`;
+const READ_V5_MIGRATION_EVIDENCE_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
+  const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
+  try{const tx=db.transaction('journal','readonly'),done=new Promise((resolve,reject)=>{
+    tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('migration evidence read aborted'))});
+    const get=(key)=>new Promise((resolve,reject)=>{const q=tx.objectStore('journal').get(key);
+      q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
+    const [snapshotRaw,journalRaw]=await Promise.all([get('v5:pre-migration-v4'),get('v5:migration')]);await done;
+    const parse=(raw)=>{try{return JSON.parse(String(raw))}catch{return null}};
+    return {snapshot:parse(snapshotRaw),journal:parse(journalRaw)};
+  }finally{db.close()}})()`;
+const READ_F4_AUTHORITY_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
+  const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
+  try{const tx=db.transaction(['meta','player','receipts'],'readonly'),done=new Promise((resolve,reject)=>{
+    tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('F4 read aborted'))});
+    const get=(store,key)=>new Promise((resolve,reject)=>{const q=tx.objectStore(store).get(key);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
+    const getAll=(method)=>new Promise((resolve,reject)=>{const q=tx.objectStore('receipts')[method]();q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
+    const [revisionRaw,playerRaw,receiptKeys,receiptRows]=await Promise.all([
+      get('meta','f3:revision'),get('player','v5:player'),getAll('getAllKeys'),getAll('getAll')]);await done;
+    let row=null,carrier=null,authority=null;try{row=JSON.parse(String(playerRaw));carrier=row?.extensions?.['f4.authority']??null;
+      authority=carrier?JSON.parse(carrier.json):null}catch{}
+    return {revisionRaw:revisionRaw===undefined?null:String(revisionRaw),revision:Number(revisionRaw),
+      playerSchema:row?.schema??null,carrierVersion:carrier?.version??null,
+      activePlayMs:authority?.activePlayMs??null,seed:authority?.sessionRng?.seed??null,
+      ordinal:authority?.sessionRng?.ordinal??null,draws:authority?.sessionRng?.draws??null,
+      receiptKeys:receiptKeys.map(String),receiptRows:receiptRows.map((raw)=>{try{return JSON.parse(String(raw))}catch{return null}})};
+  }finally{db.close()}})()`;
+const STAGE_OLD_F4_RECEIPT_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
+  const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
+  try{const tx=db.transaction('receipts','readwrite'),done=new Promise((resolve,reject)=>{tx.oncomplete=()=>resolve();
+    tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('receipt stage aborted'))});
+    tx.objectStore('receipts').put(JSON.stringify({ordinal:0,kind:'slice-smoke-old-expedition',witness:'old-expedition:0'}),'receipt:0');
+    await done;return true}finally{db.close()}})()`;
+const ARM_F4_REPLACEMENT_TRACE_EXPRESSION = `(()=>{const key='cf_slice_f4_replacement_trace',proto=IDBObjectStore.prototype;
+  localStorage.removeItem(key);if(window.__cfF4ClearPatch)return false;const descriptor=Object.getOwnPropertyDescriptor(proto,'clear');
+  if(!descriptor||typeof descriptor.value!=='function'||!descriptor.writable)return false;const original=descriptor.value;
+  Object.defineProperty(proto,'clear',{...descriptor,value:function(){const request=Reflect.apply(original,this,arguments);
+    if(this?.name==='receipts'){const prior=JSON.parse(localStorage.getItem(key)||'null'),tx=this.transaction;
+      localStorage.setItem(key,JSON.stringify({schema:'cf-v2-f4-replacement-native/v1',clearCalls:(prior?.clearCalls||0)+1,
+        store:this.name,mode:tx?.mode||null,stores:tx?[...tx.objectStoreNames]:[],nativeRequest:request instanceof IDBRequest}));}
+    return request;}});window.__cfF4ClearPatch=true;return true})()`;
 
 /* A smoke that reads a stale build can pass for source that no longer
    exists—the species-audit failure class. Build unconditionally, then drive
@@ -384,6 +427,12 @@ const releaseSlowSpecies = () => {
   slowSpeciesOpen = true;
   for (const request of slowSpeciesRequests.splice(0)) serveDist(request.req, request.res);
 };
+const server6 = http.createServer(serveDist);
+await new Promise((r) => server6.listen(0, '127.0.0.1', r));
+const URL6 = 'http://127.0.0.1:' + server6.address().port + '/';   /* isolated two-document fresh-init race */
+const server7 = http.createServer(serveDist);
+await new Promise((r) => server7.listen(0, '127.0.0.1', r));
+const URL7 = 'http://127.0.0.1:' + server7.address().port + '/';   /* isolated hidden-first F4 bootstrap */
 
 const events = [];
 let browser;
@@ -395,7 +444,7 @@ try {
     onEvent: (event) => events.push(event),
   });
 } catch (error) {
-  server.close(); server2.close(); server3.close(); server4.close(); server5.close();
+  server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server6.close(); server7.close();
   throw error;
 }
 const send = browser.send;
@@ -437,6 +486,249 @@ const dispatchKeyPress = async (session, key, code = key, modifiers = 0) => {
 };
 
 const fails = [];
+const canonicalJson = (value) => {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+  if (value && typeof value === 'object') {
+    return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(',')}}`;
+  }
+  return JSON.stringify(value);
+};
+const canonicalDiffPaths = (before, after, path = '', paths = [], limit = 16) => {
+  if (canonicalJson(before) === canonicalJson(after) || paths.length >= limit) return paths;
+  if (Array.isArray(before) && Array.isArray(after)) {
+    if (before.length !== after.length) paths.push(`${path}.length`);
+    for (let index = 0; index < Math.min(before.length, after.length) && paths.length < limit; index++) {
+      canonicalDiffPaths(before[index], after[index], `${path}[${index}]`, paths, limit);
+    }
+    return paths;
+  }
+  if (before && after && typeof before === 'object' && typeof after === 'object') {
+    const keys = [...new Set([...Object.keys(before), ...Object.keys(after)])].sort();
+    for (const key of keys) {
+      if (paths.length >= limit) break;
+      if (!Object.prototype.hasOwnProperty.call(before, key)
+        || !Object.prototype.hasOwnProperty.call(after, key)) paths.push(path ? `${path}.${key}` : key);
+      else canonicalDiffPaths(before[key], after[key], path ? `${path}.${key}` : key, paths, limit);
+    }
+    return paths;
+  }
+  paths.push(path || '$');
+  return paths;
+};
+const assessStampedCanonicalRewrite = (beforeRaw, afterRaw) => {
+  const reasons = [];
+  let before;
+  let after;
+  try {
+    before = JSON.parse(beforeRaw);
+    after = JSON.parse(afterRaw);
+  } catch {
+    return { ok: false, reasons: ['JSON envelope'], beforeStamp: null, afterStamp: null,
+      fieldDiffs: ['$'], allowedWriteFields: [], unexpectedFields: ['$'] };
+  }
+  const fieldDiffs = canonicalDiffPaths(before, after);
+  const beforeStamp = before.at;
+  const afterStamp = after.at;
+  if (typeof beforeStamp !== 'number' || !Number.isFinite(beforeStamp)
+    || typeof afterStamp !== 'number' || !Number.isFinite(afterStamp)
+    || afterStamp < beforeStamp) reasons.push('write stamp');
+
+  /* The v4 compatibility reader owns one other wall-time normalization:
+     conquest `t` is display-only and is clamped to the save stamp's trailing
+     one-hour window. Rewriting an already canonical row at a later `at`
+     therefore advances only a row pinned to that lower floor. Admit exactly
+     that formula while keeping identity, tier, epoch and every product field
+     byte-semantically equivalent. */
+  const beforeComparable = structuredClone(before);
+  const afterComparable = structuredClone(after);
+  const beforeConquered = beforeComparable.conq;
+  const afterConquered = afterComparable.conq;
+  if (Array.isArray(beforeConquered) && Array.isArray(afterConquered)
+    && beforeConquered.length === afterConquered.length
+    && typeof afterStamp === 'number' && Number.isFinite(afterStamp)) {
+    for (let index = 0; index < beforeConquered.length; index++) {
+      const beforeEntry = beforeConquered[index], afterEntry = afterConquered[index];
+      const beforeRow = Array.isArray(beforeEntry) ? beforeEntry[1] : null;
+      const afterRow = Array.isArray(afterEntry) ? afterEntry[1] : null;
+      const beforeTime = beforeRow?.t, afterTime = afterRow?.t;
+      const expectedTime = typeof beforeTime === 'number' && Number.isFinite(beforeTime)
+        ? Math.min(Math.max(beforeTime, afterStamp - 3_600_000), afterStamp) : null;
+      if (!Array.isArray(beforeEntry) || !Array.isArray(afterEntry)
+        || canonicalJson(beforeEntry[0]) !== canonicalJson(afterEntry[0])
+        || !beforeRow || !afterRow || typeof beforeRow !== 'object' || typeof afterRow !== 'object'
+        || expectedTime === null || afterTime !== expectedTime) reasons.push(`conquest write stamp ${index}`);
+      if (beforeRow && afterRow && typeof beforeRow === 'object' && typeof afterRow === 'object') {
+        afterRow.t = beforeRow.t;
+      }
+    }
+  }
+  /* The compatibility reader also protects legacy Auto-Extractor anchors.
+     On each write it clamps every retained mined-world timestamp to the
+     trailing 30-cadence window anchored by the newly exported save stamp.
+     That same `at` is the upper bound. Admit exactly that normalization—same
+     ordered keys, same row count, and no unrelated product drift. */
+  const beforeMined = beforeComparable.minedw;
+  const afterMined = afterComparable.minedw;
+  if (Array.isArray(beforeMined) || Array.isArray(afterMined)) {
+    if (!Array.isArray(beforeMined) || !Array.isArray(afterMined)
+      || beforeMined.length !== afterMined.length
+      || typeof beforeStamp !== 'number' || !Number.isFinite(beforeStamp)
+      || typeof afterStamp !== 'number' || !Number.isFinite(afterStamp)) {
+      reasons.push('mined-world write stamp inventory');
+    } else {
+      const floor = Math.max(0, afterStamp - 30 * 600_000);
+      for (let index = 0; index < beforeMined.length; index++) {
+        const beforeEntry = beforeMined[index], afterEntry = afterMined[index];
+        const beforeTime = Array.isArray(beforeEntry) ? beforeEntry[1] : null;
+        const afterTime = Array.isArray(afterEntry) ? afterEntry[1] : null;
+        const expectedTime = typeof beforeTime === 'number' && Number.isFinite(beforeTime)
+          ? Math.min(Math.max(beforeTime, floor), afterStamp) : null;
+        if (!Array.isArray(beforeEntry) || beforeEntry.length !== 2
+          || !Array.isArray(afterEntry) || afterEntry.length !== 2
+          || canonicalJson(beforeEntry[0]) !== canonicalJson(afterEntry[0])
+          || expectedTime === null || afterTime !== expectedTime) {
+          reasons.push(`mined-world write stamp ${index}`);
+        }
+        if (Array.isArray(beforeEntry) && Array.isArray(afterEntry)) {
+          afterEntry[1] = beforeEntry[1];
+        }
+      }
+    }
+  }
+  delete beforeComparable.at;
+  delete afterComparable.at;
+  if (canonicalJson(afterComparable) !== canonicalJson(beforeComparable)) reasons.push('canonical product fields');
+  const allowedWriteFields = fieldDiffs.filter((path) => path === 'at'
+    || /^conq\[\d+\]\[1\]\.t$/.test(path)
+    || /^minedw\[\d+\]\[1\]$/.test(path));
+  const unexpectedFields = fieldDiffs.filter((path) => !allowedWriteFields.includes(path));
+  return { ok: reasons.length === 0, reasons: [...new Set(reasons)], beforeStamp, afterStamp,
+    fieldDiffs, allowedWriteFields, unexpectedFields };
+};
+const assessF4ReadyAuthority = ({ state, raw, token, previousToken = null }) => {
+  const reasons = [];
+  const persistence = state?.persistence;
+  const runtime = persistence?.runtime;
+  if (persistence?.schema !== 'cf-v2-app-persistence/v1' || persistence?.ready !== true
+    || persistence?.bootKind !== 'current-v5' || persistence?.hold !== null
+    || persistence?.seedBootstrapPending !== false
+    || persistence?.mutationBlocked !== false) reasons.push('boot readiness');
+  if (typeof token !== 'string' || token.length < 16 || persistence?.documentToken !== token
+    || (previousToken !== null && token === previousToken)) reasons.push('document identity');
+  if (runtime?.schema !== 'cf-v2-f4-runtime/v1' || runtime?.visible !== true
+    || runtime?.answerable !== true || runtime?.leaseOwned !== true || runtime?.accruing !== true
+    || runtime?.staleBlocked !== false) reasons.push('live authority');
+  if (!Number.isSafeInteger(runtime?.revision) || runtime.revision < 1
+    || raw?.revisionRaw !== String(runtime?.revision) || raw?.revision !== runtime?.revision) reasons.push('revision parity');
+  if (raw?.playerSchema !== 5 || raw?.carrierVersion !== 1
+    || !Number.isSafeInteger(runtime?.sessionSeed) || runtime.sessionSeed < 0 || runtime.sessionSeed > 0xFFFF_FFFF
+    || raw?.seed !== runtime?.sessionSeed || raw?.ordinal !== runtime?.sessionOrdinal
+    || JSON.stringify(raw?.draws) !== JSON.stringify(runtime?.sessionDraws)) reasons.push('durable RNG parity');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessF4PersistReload = ({ before, persisted, reloaded }) => {
+  const reasons = [];
+  const b = before.state.persistence.runtime, p = persisted.state.persistence.runtime;
+  const r = reloaded.state.persistence.runtime;
+  if (persisted.result !== true || p.revision !== b.revision + 1
+    || persisted.raw.revision !== before.raw.revision + 1 || persisted.raw.revision !== p.revision) reasons.push('exact revision advance');
+  if (p.sessionSeed !== b.sessionSeed || r.sessionSeed !== b.sessionSeed
+    || persisted.raw.seed !== before.raw.seed || reloaded.raw.seed !== before.raw.seed) reasons.push('seed stability');
+  if (p.sessionOrdinal !== b.sessionOrdinal || r.sessionOrdinal !== b.sessionOrdinal
+    || persisted.raw.ordinal !== before.raw.ordinal || reloaded.raw.ordinal !== before.raw.ordinal) reasons.push('ordinal stability');
+  if (persisted.raw.activePlayMs < before.raw.activePlayMs
+    || reloaded.raw.activePlayMs < persisted.raw.activePlayMs
+    || p.activePlayMs < persisted.raw.activePlayMs || r.activePlayMs < reloaded.raw.activePlayMs) reasons.push('active-play monotonicity');
+  if (reloaded.raw.revision < persisted.raw.revision || r.revision !== reloaded.raw.revision
+    || reloaded.state.persistence.bootKind !== 'current-v5'
+    || reloaded.token === persisted.token) reasons.push('reload adoption');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessF4ReplacementOutcome = ({ staged, reset, outcome, after, productStable }) => {
+  const reasons = [];
+  if (JSON.stringify(staged.receiptKeys) !== JSON.stringify(['receipt:0'])
+    || staged.receiptRows?.[0]?.kind !== 'slice-smoke-old-expedition') reasons.push('old receipt fixture');
+  if (reset.raw.ordinal !== 0 || reset.state.persistence.runtime.sessionOrdinal !== 0
+    || reset.raw.receiptKeys.length !== 0) reasons.push('atomic replacement reset');
+  if (reset.trace?.schema !== 'cf-v2-f4-replacement-native/v1' || reset.trace?.clearCalls !== 1
+    || reset.trace?.store !== 'receipts' || reset.trace?.mode !== 'readwrite'
+    || reset.trace?.nativeRequest !== true
+    || !['meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'receipts']
+      .every((store) => reset.trace?.stores?.includes(store))) reasons.push('native atomic clear');
+  if (outcome.kind !== 'committed' || outcome.beforeOrdinal !== 0 || outcome.afterOrdinal !== 1
+    || outcome.plan?.receiptOrdinal !== 0 || outcome.receipt?.ordinal !== 0
+    || outcome.receipt?.kind !== 'slice-smoke-f4-outcome'
+    || outcome.receipt?.witness !== `slice-smoke-f4:0:${outcome.plan?.value}`) reasons.push('real outcome receipt');
+  if (outcome.afterRevision !== outcome.beforeRevision + 1 || outcome.revision !== outcome.afterRevision
+    || after.raw.revision !== reset.raw.revision + 1 || after.raw.revision !== outcome.revision) reasons.push('outcome revision');
+  if (after.raw.ordinal !== 1 || after.state.persistence.runtime.sessionOrdinal !== 1
+    || JSON.stringify(after.raw.receiptKeys) !== JSON.stringify(['receipt:0'])
+    || after.raw.receiptRows?.[0]?.witness !== outcome.receipt?.witness) reasons.push('durable outcome parity');
+  if (!productStable) reasons.push('product changed');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessF4HideFailureRelease = ({ armed, hidden, shown }) => {
+  const reasons = [];
+  const witness = hidden?.persistence?.hideWitness;
+  if (armed !== true || witness?.schema !== 'cf-v2-f4-hide/v1'
+    || witness?.checkpoint !== 'rejected'
+    || !/injected F4 hide checkpoint rejection/.test(witness?.checkpointError || '')
+    || witness?.visibilityAttempted !== true || witness?.visibilityError !== null) reasons.push('failure diagnosis');
+  if (hidden?.persistence?.runtime?.leaseOwned !== false
+    || hidden?.persistence?.runtime?.answerable !== false
+    || hidden?.persistence?.runtime?.accruing !== false) reasons.push('release despite checkpoint failure');
+  if (shown?.persistence?.runtime?.leaseOwned !== true
+    || shown?.persistence?.runtime?.answerable !== true
+    || shown?.persistence?.runtime?.accruing !== true) reasons.push('reacquisition');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessReadOnlyBoundary = ({ forced, before, after, rawPreserved }) => {
+  const reasons = [];
+  if (forced !== true || before.persistence.mutationBlocked !== true
+    || after.persistence.mutationBlocked !== true) reasons.push('read-only state');
+  if (after.save.sndOn !== before.save.sndOn || rawPreserved !== true) reasons.push('mutation blocked');
+  if (after.persistence.mutationBlockCount !== before.persistence.mutationBlockCount + 1
+    || after.persistence.mutationBlockWitness?.schema !== 'cf-v2-read-only-boundary/v1'
+    || !/^click:setsnd$/.test(after.persistence.mutationBlockWitness?.action || '')) reasons.push('boundary witness');
+  if (after.panelOpen !== 'codex' || after.codexCount !== before.codexCount) reasons.push('inspection availability');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessFreshInitializationRace = (states, loserAfter, loserRawAfter) => {
+  const reasons = [];
+  const kinds = states.map((state) => state?.persistence?.bootKind).sort();
+  if (JSON.stringify(kinds) !== JSON.stringify(['current-v5', 'fresh-v5'])) reasons.push('winner/loser boot kinds');
+  if (states.some((state) => state?.persistence?.hold !== null
+    || state?.persistence?.protectedDetail !== null
+    || state?.persistence?.bootKind === 'corrupt-protected')) reasons.push('loser protection');
+  const products = states.map((state) => JSON.stringify(state?.save));
+  if (!products[0] || products[0] !== products[1]) reasons.push('winner product convergence');
+  if (states.some((state) => typeof state?.persistence?.documentToken !== 'string')
+    || states[0]?.persistence?.documentToken === states[1]?.persistence?.documentToken) reasons.push('document identity');
+  if (loserAfter?.persistence?.bootKind !== 'current-v5' || loserAfter?.persistence?.hold !== null
+    || loserAfter?.persistence?.mutationBlocked !== false
+    || loserAfter?.persistence?.runtime?.leaseOwned !== true
+    || loserAfter?.persistence?.runtime?.revision !== loserRawAfter?.revision) reasons.push('loser writable convergence');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessHiddenFirstBootstrap = ({ before, after, rawBefore, rawAfter }) => {
+  const reasons = [];
+  if (before?.persistence?.ready !== true || before?.persistence?.bootKind !== 'fresh-v5'
+    || before?.persistence?.seedBootstrapPending !== true
+    || before?.persistence?.visibilityOverrideHidden !== true
+    || before?.persistence?.runtime?.leaseOwned !== false
+    || before?.persistence?.runtime?.answerable !== false
+    || before?.persistence?.runtime?.accruing !== false
+    || rawBefore?.seed !== null || rawBefore?.ordinal !== null) reasons.push('hidden initial state');
+  if (after?.persistence?.seedBootstrapPending !== false
+    || after?.persistence?.visibilityOverrideHidden !== false
+    || after?.persistence?.runtime?.leaseOwned !== true
+    || after?.persistence?.runtime?.answerable !== true
+    || after?.persistence?.runtime?.accruing !== true) reasons.push('shown authority');
+  if (rawAfter?.revision !== rawBefore?.revision + 1
+    || rawAfter?.seed !== after?.persistence?.runtime?.sessionSeed
+    || rawAfter?.ordinal !== 0 || after?.persistence?.runtime?.sessionOrdinal !== 0) reasons.push('durable bootstrap parity');
+  return { ok: reasons.length === 0, reasons };
+};
 const F3_PERSISTENCE_BROWSER_STAGES = Object.freeze([
   Object.freeze({
     stage: 'legacy-v1-created', databaseVersionOne: true,
@@ -490,6 +782,7 @@ const dtrainNativeWriteArmExpression = (label) => `(()=>{
       let parsed=null;try{parsed=typeof value==='string'?JSON.parse(value):null}catch{}
       const row={schema:'cf-v2-idb-primary-put/v1',label,documentToken,sequence:++sequence,
         store:this.name,key:String(key),length:typeof value==='string'?value.length:null,
+        v:parsed?.v??null,me:parsed?.me??null,
         tut:parsed?.tut??null,hasSnapshot:!!parsed&&Object.prototype.hasOwnProperty.call(parsed,'tsnap'),
         rn:parsed?.rn??null,viewType:parsed?.view?.type??null};
       try{binding(JSON.stringify(row))}catch{}
@@ -757,6 +1050,29 @@ try {
       await sleep(50);
     }
     throw new Error(`${label} did not reach its browser outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  /* One abandoned pagehide release may retain its fenced lease until the
+     10-second TTL; allow that expiry plus one intentional convergence boot. */
+  const waitForF4Writable = async (label, { previousToken = null, timeoutMs = 15_000 } = {}) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      try {
+        const snapshot = await evalIn(`(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
+          const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
+            state:state?{persistence:state.persistence}:null,raw,
+            token:typeof S?.documentToken==='string'?S.documentToken:null};})()`, { timeoutMs: 2_000 });
+        const assessment = assessF4ReadyAuthority({ ...snapshot, previousToken });
+        if (assessment.ok) return snapshot;
+        last = { assessment, persistence: snapshot.state?.persistence, raw: snapshot.raw };
+      } catch (error) {
+        /* A stale-revision successor intentionally releases and reloads once.
+           Its destroyed execution context is a transition, never readiness. */
+        last = { context: String(error?.message || error) };
+      }
+      await sleep(200);
+    }
+    throw new Error(`${label} did not acquire coupled writable F4 authority within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
   let transitionWaitControlRejected = false;
   try { await waitDesktopValue('transition waiter negative control', 'false', 150); }
@@ -2328,7 +2644,9 @@ try {
     q.onerror=()=>resolve(null); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
       g.onsuccess=()=>{ let guide=0; try{guide=JSON.parse(String(g.result||''))?.guide||0}catch{} db.close(); resolve(guide===1?guide:null); };
       g.onerror=()=>{db.close();resolve(null)}; }; })`);
+  const guidePreviousToken = await sliceToken(sess);
   await navigateToSlice(sess, URL0, 'Guide seen-state reload');
+  await waitForF4Writable('Guide seen-state reload F4 authority', { previousToken: guidePreviousToken });
   const guideReload = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (!guideReload.seenGuide) fails.push('GUIDE seen-state did not survive its isolated storage/reload outcome');
   if (guideReload.releasePending !== releaseBaseline.releasePending || guideReload.rnSeen !== releaseBaseline.rnSeen) {
@@ -2646,7 +2964,11 @@ try {
     fails.push('STALE CARD IDENTITY: real Earth card did not recover after rejected forged context: ' + JSON.stringify(restoredEarthCard));
   }
   const exactOrdinalLand = await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`);
-  if (!exactOrdinalLand) fails.push('PLANET ORDINAL ACCEPTANCE: exact Earth {seed,ordinal} did not survey and Land');
+  if (!exactOrdinalLand) {
+    const landAuthority = await evalIn(`window.__CF_SLICE__.api.state().persistence`);
+    fails.push('PLANET ORDINAL ACCEPTANCE: exact Earth {seed,ordinal} did not survey and Land: '
+      + JSON.stringify(landAuthority));
+  }
   const landedSurvey = await evalIn(`(()=>{ const S=window.__CF_SLICE__,card=document.getElementById('survey'),
     rarity=[...card.querySelectorAll('[data-row="Rarity"]')],spectral=card.querySelectorAll('[data-row="Spectral class"]');
     return {mode:S.api.state().mode,landed:S.api.state().save.landed.includes(133),rarityCount:rarity.length,
@@ -2738,11 +3060,19 @@ try {
   await sleep(900);
   const shot4 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('earth'), Buffer.from(shot4.data, 'base64'));
+  const surfacePersisted = await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  if (surfacePersisted !== true) {
+    const persistence = await evalIn(`window.__CF_SLICE__.api.state().persistence`);
+    fails.push('REAL SAVE surface snapshot did not settle through the revisioned authority: '
+      + JSON.stringify(persistence));
+  }
 
   /* 4. reload: the REAL SAVE survives (importSaveV2 ⇄ exportSaveV2 through
      IndexedDB — not a side JSON). The view must come back AND the landing
      must be in the save's `land` set. */
+  const surfacePreviousToken = await sliceToken(sess);
   await navigateToSlice(sess, URL0, 'desktop persistence reload');
+  await waitForF4Writable('desktop persistence reload F4 authority', { previousToken: surfacePreviousToken });
   await sleep(2500);
   const st3 = await evalIn(`window.__CF_SLICE__.api.state()`);
   /* we landed on Earth before reloading — the SURFACE view must come back */
@@ -2755,51 +3085,26 @@ try {
     if (!Array.isArray(saved.landed) || !saved.landed.includes(133)) fails.push('Earth (133) not in the save’s landed set after reload: ' + JSON.stringify(saved.landed));
     if (typeof saved.essence !== 'number') fails.push('save.essence is not a number — importSaveV2 did not run');
   }
-  /* Negative control for a syntactically-valid truncated primary. The
-     importer can harden `{}` into defaults for a fresh in-memory state, but
-     boot must classify it as corrupt stored evidence and recover the proven
-     backup instead of promoting/writing the truncation over both copies. */
+  /* v5 is authoritative over its v4 compatibility mirror. Corrupt only that
+     mirror and require a protected, write-held boot which leaves the exact
+     hostile bytes untouched; accepting the total v4 loader's `{}` defaults
+     would erase the split expedition. */
   await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
     q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite');
       tx.objectStore('meta').put('{}','save'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
-  await navigateToSlice(sess, URL0, 'desktop sparse-primary recovery');
+  await navigateToSlice(sess, URL0, 'desktop corrupt-v5-mirror protection');
   await sleep(2500);
-  const recoveredSparse = await evalIn(`window.__CF_SLICE__.api.state()`);
-  if (recoveredSparse.mode !== 'surface' || !recoveredSparse.save.landed.includes(133)) {
-    fails.push('sparse JSON primary was promoted instead of recovering the proven backup: ' + JSON.stringify(recoveredSparse));
+  const corruptV5 = await evalIn(`(async()=>{const S=window.__CF_SLICE__,state=S.api.state(),before=await (${READ_PRIMARY_EXPRESSION});
+    const persisted=await S.api.__smokePersistNow();const after=await (${READ_PRIMARY_EXPRESSION});
+    return {state,before,after,persisted};})()`);
+  if (corruptV5.state.persistence?.bootKind !== 'corrupt-protected'
+    || corruptV5.state.persistence?.hold !== 'protected-payload'
+    || corruptV5.persisted !== false || corruptV5.before !== '{}' || corruptV5.after !== '{}') {
+    fails.push('V5 CORRUPT MIRROR: current split rows were accepted/re-written instead of protected: '
+      + JSON.stringify(corruptV5));
   }
-  const restoredPrimary = await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
-    q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
-      g.onsuccess=()=>{db.close();resolve(String(g.result||''))}; g.onerror=()=>reject(g.error); }; })`);
-  if (restoredPrimary === '{}') fails.push('sparse JSON primary remained authoritative after recovery');
-  /* The version marker does not make a truncated lookalike complete. This
-     exact shape was once blessed by a unit fixture despite no real exporter
-     ever writing it; boot must recover the same proven veteran backup. */
-  await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
-    q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite');
-      tx.objectStore('meta').put(${JSON.stringify(SPARSE_V4_RAW)},'save'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
-  await navigateToSlice(sess, URL0, 'desktop sparse-v4 primary recovery');
-  await sleep(2500);
-  const recoveredSparseV4 = await evalIn(`window.__CF_SLICE__.api.state()`);
-  if (recoveredSparseV4.mode !== 'surface' || !recoveredSparseV4.save.landed.includes(133)) {
-    fails.push('sparse v4 lookalike was promoted instead of recovering the proven backup: ' + JSON.stringify(recoveredSparseV4));
-  }
-  const restoredSparseV4Primary = await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
-    q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
-      g.onsuccess=()=>{db.close();resolve(String(g.result||''))}; g.onerror=()=>reject(g.error); }; })`);
-  if (restoredSparseV4Primary === SPARSE_V4_RAW) fails.push('sparse v4 lookalike remained authoritative after recovery');
-  await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
-    q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite');
-      tx.objectStore('meta').put(${JSON.stringify(PARTIAL_V4_RAW)},'save'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
-  await navigateToSlice(sess, URL0, 'desktop plausible-partial-v4 recovery');
-  await sleep(2500);
-  const recoveredPartialV4 = await evalIn(`window.__CF_SLICE__.api.state()`);
-  if (recoveredPartialV4.mode !== 'surface' || !recoveredPartialV4.save.landed.includes(133)) {
-    fails.push('plausible partial v4 was promoted instead of recovering the proven backup: ' + JSON.stringify(recoveredPartialV4));
-  }
-  await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
-    q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite');
-      tx.objectStore('meta').put(${JSON.stringify(ONE_BAD_FIELD_V4_RAW)},'save'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
+  const stagedOneBad = await evalIn(`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(ONE_BAD_FIELD_V4_RAW)})`);
+  if (!stagedOneBad) fails.push('ONE BAD FIELD: pre-migration v4 fixture could not be staged from a quiescent protected page');
   await navigateToSlice(sess, URL0, 'desktop complete-v4 one-bad-field boot');
   await sleep(2500);
   const oneBadFieldBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -3189,10 +3494,7 @@ try {
      to Cosmos; its identity/progress/history remain the same. The same raw
      outer route in Atlas stays proven/enabled, yet its real pointer action
      must run the common authorization boundary without closing or moving. */
-  await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
-    q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('meta','readwrite');
-      tx.objectStore('meta').put(${JSON.stringify(OUTER_AUTH_SAVED_ROUTE_RAW)},'save');
-      tx.oncomplete=()=>{db.close();resolve(true)};tx.onerror=()=>reject(tx.error);};})`);
+  await evalIn(`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(OUTER_AUTH_SAVED_ROUTE_RAW)})`);
   await navigateToSlice(sess, URL0, 'source-valid saved route beyond saved reach');
   await sleep(2200);
   const outerAuthBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -3200,7 +3502,7 @@ try {
     && state.gal === null && state.star === null && state.planet === null
     && state.save.savedView === null && state.save.viewType === null
     && state.save.name === importedExplorerName(SAVED_AUTH_EXPLORER_NAME) && state.save.essence === 4321
-    && JSON.stringify(state.save.landed) === JSON.stringify([133, 134])
+    && JSON.stringify(state.save.landed) === JSON.stringify(CANONICAL_VETERAN_LANDED)
     && state.save.customNames.some(([key, name]) => key === 'p133' && name === 'Homeworld')
     && state.save.ascCh === 2 && Object.keys(state.save.primeFill).length === 0
     && state.codexCount === 3 && state.atlasCount === 4 && state.atlasTravelable === 2;
@@ -3223,7 +3525,7 @@ try {
     || Object.keys(outerAuthRepairedRaw.prime || {}).length !== 0
     || !Array.isArray(outerAuthRepairedRaw.log)
     || !outerAuthRepairedRaw.log.some((row) => row?.id === 'outer-galaxy')
-    || ![133, 134].every((seed) => outerAuthRepairedRaw.land?.includes(seed))) {
+    || JSON.stringify(outerAuthRepairedRaw.land) !== JSON.stringify(CANONICAL_VETERAN_LANDED)) {
     fails.push('SAVED ROUTE AUTHORIZATION: persisted repair changed more than the view/normal export projection: '
       + JSON.stringify(outerAuthRepairedRaw));
   }
@@ -3275,17 +3577,15 @@ try {
      `view`, and preserve identity, progress, Atlas history, Charter, rewards,
      and names. This drives the raw IndexedDB ingress rather than an in-memory
      resolver probe. */
-  await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
-    q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('meta','readwrite');
-      tx.objectStore('meta').put(${JSON.stringify(STALE_SAVED_ROUTE_RAW)},'save');
-      tx.oncomplete=()=>{db.close();resolve(true)};tx.onerror=()=>reject(tx.error);};})`);
+  await evalIn(`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(STALE_SAVED_ROUTE_RAW)})`);
   await navigateToSlice(sess, URL0, 'stale saved-route field-local fallback');
   await sleep(2200);
   const staleSavedBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
   const staleSavedBootOutcome = (state) => state.mode === 'universe'
     && state.gal === null && state.star === null && state.planet === null
     && state.save.savedView === null && state.save.name === 'Field-local Route Repair'
-    && state.save.essence === 4321 && JSON.stringify(state.save.landed) === JSON.stringify([133, 134])
+    && state.save.essence === 4321
+    && JSON.stringify(state.save.landed) === JSON.stringify(CANONICAL_VETERAN_LANDED)
     && state.save.customNames.some(([key, name]) => key === 'p133' && name === 'Homeworld')
     && state.save.ascCh === 2 && state.codexCount === 3 && state.atlasCount === 3;
   if (!staleSavedBootOutcome(staleSavedBoot)) {
@@ -3305,7 +3605,7 @@ try {
   try { repairedSaved = JSON.parse(repairedSavedRaw); } catch { /* finding below includes the raw failure */ }
   if (!repairedSaved || repairedSaved.view !== null || repairedSaved.me !== 'Field-local Route Repair'
     || repairedSaved.essence !== 4321 || !Array.isArray(repairedSaved.land)
-    || ![133, 134].every((seed) => repairedSaved.land.includes(seed))
+    || JSON.stringify(repairedSaved.land) !== JSON.stringify(CANONICAL_VETERAN_LANDED)
     || !Array.isArray(repairedSaved.names)
     || !repairedSaved.names.some(([key, name]) => key === 'p133' && name === 'Homeworld')) {
     fails.push('SAVED ROUTE FIELD REPAIR: exact stored replacement did not isolate repair to `view`: '
@@ -3380,6 +3680,188 @@ try {
       + JSON.stringify(whitespaceKeepsakeControl));
   }
 
+  /* F4 native evidence joins the published runtime diagnostics to the raw
+     split player row, revision and immutable receipt store. This runs after
+     the real import above so `current-v5` (not an in-memory fresh default) is
+     the accepted boot. Pure predicate controls each falsify one required
+     authority fact without mutating the live expedition. */
+  const f4CurrentAuthority = await waitForF4Writable('F4 current authority', {
+    previousToken: whitespaceImportToken,
+  });
+  const f4CurrentToken = f4CurrentAuthority.token;
+  const f4ReadyState = f4CurrentAuthority.state;
+  const f4ReadyRaw = f4CurrentAuthority.raw;
+  const f4ReadyInput = {
+    state: f4ReadyState, raw: f4ReadyRaw, token: f4CurrentToken, previousToken: whitespaceImportToken,
+  };
+  const f4ReadyAssessment = assessF4ReadyAuthority(f4ReadyInput);
+  if (!f4ReadyAssessment.ok) {
+    fails.push('F4 CURRENT AUTHORITY: ready diagnostics did not match durable raw IndexedDB authority: '
+      + JSON.stringify({ assessment: f4ReadyAssessment, state: f4ReadyState.persistence, raw: f4ReadyRaw }));
+  }
+  const runtimeVariant = (fields) => ({
+    ...f4ReadyState,
+    persistence: {
+      ...f4ReadyState.persistence,
+      runtime: { ...f4ReadyState.persistence.runtime, ...fields },
+    },
+  });
+  const persistenceVariant = (fields) => ({
+    ...f4ReadyState,
+    persistence: { ...f4ReadyState.persistence, ...fields },
+  });
+  const f4ReadyControls = [
+    assessF4ReadyAuthority({ ...f4ReadyInput, state: { ...f4ReadyState, persistence: { ...f4ReadyState.persistence, bootKind: 'fresh-v5' } } }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, token: whitespaceImportToken }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, state: persistenceVariant({ seedBootstrapPending: true }) }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, state: persistenceVariant({ mutationBlocked: true }) }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, state: runtimeVariant({ leaseOwned: false }) }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, state: runtimeVariant({ answerable: false }) }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, state: runtimeVariant({ accruing: false }) }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, raw: { ...f4ReadyRaw, seed: (f4ReadyRaw.seed + 1) >>> 0 } }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, raw: { ...f4ReadyRaw, ordinal: f4ReadyRaw.ordinal + 1 } }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, raw: { ...f4ReadyRaw, revision: f4ReadyRaw.revision + 1 } }),
+  ];
+  if (f4ReadyControls.some((control) => control.ok)) {
+    fails.push('F4 CURRENT AUTHORITY CONTROL FAILED — a false boot/token/seed/write/lease/readiness/accrual/raw parity predicate stayed green: '
+      + JSON.stringify(f4ReadyControls));
+  }
+
+  const f4PersistBefore = { state: f4ReadyState, raw: f4ReadyRaw };
+  const f4PersistResult = await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  const f4Persisted = {
+    result: f4PersistResult,
+    state: await evalIn(`window.__CF_SLICE__.api.state()`),
+    raw: await evalIn(READ_F4_AUTHORITY_EXPRESSION),
+    token: f4CurrentToken,
+  };
+  await navigateToSlice(sess, URL0, 'F4 persistence reload');
+  await assertBootTickerRunning('F4 persistence reload');
+  const f4ReloadAuthority = await waitForF4Writable('F4 reloaded authority', {
+    previousToken: f4CurrentToken,
+  });
+  const f4ReloadToken = f4ReloadAuthority.token;
+  const f4Reloaded = {
+    state: f4ReloadAuthority.state,
+    raw: f4ReloadAuthority.raw,
+    token: f4ReloadToken,
+  };
+  const f4PersistBundle = { before: f4PersistBefore, persisted: f4Persisted, reloaded: f4Reloaded };
+  const f4PersistAssessment = assessF4PersistReload(f4PersistBundle);
+  if (!f4PersistAssessment.ok) {
+    fails.push('F4 PERSIST/RELOAD: seed, clock or exact explicit-persist revision evidence failed: '
+      + JSON.stringify({ assessment: f4PersistAssessment, bundle: f4PersistBundle }));
+  }
+  const f4PersistControls = [
+    assessF4PersistReload({ ...f4PersistBundle, persisted: { ...f4Persisted, raw: { ...f4Persisted.raw, revision: f4PersistBefore.raw.revision } } }),
+    assessF4PersistReload({ ...f4PersistBundle, reloaded: { ...f4Reloaded, raw: { ...f4Reloaded.raw, seed: (f4PersistBefore.raw.seed + 1) >>> 0 } } }),
+    assessF4PersistReload({ ...f4PersistBundle, persisted: { ...f4Persisted, raw: { ...f4Persisted.raw, activePlayMs: f4PersistBefore.raw.activePlayMs - 1 } } }),
+  ];
+  if (f4PersistControls.some((control) => control.ok)) {
+    fails.push('F4 PERSIST/RELOAD CONTROL FAILED — bad revision/seed/active-play evidence stayed green: '
+      + JSON.stringify(f4PersistControls));
+  }
+
+  /* Seed a genuine old ordinal-zero receipt, arm a native clear witness, and
+     invoke the real validated import replacement. The next document must see
+     an empty raw receipt store and freshly durable ordinal zero before its
+     diagnostics-only no-product derivation commits one real F4 outcome. */
+  const f4StageStarted = await evalIn(STAGE_OLD_F4_RECEIPT_EXPRESSION);
+  const f4StagedRaw = await evalIn(READ_F4_AUTHORITY_EXPRESSION);
+  const f4TraceArmed = await evalIn(ARM_F4_REPLACEMENT_TRACE_EXPRESSION);
+  const f4ReplacementToken = await sliceToken(sess);
+  try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(vrRaw)})`); }
+  catch { /* successful replacement destroys this execution context */ }
+  await waitForSlice(sess, 'F4 receipt-reset import replacement', { previousToken: f4ReplacementToken });
+  await assertBootTickerRunning('F4 receipt-reset replacement');
+  await waitForF4Writable('F4 replacement authority', { previousToken: f4ReplacementToken });
+  const f4Reset = {
+    state: await evalIn(`window.__CF_SLICE__.api.state()`),
+    raw: await evalIn(READ_F4_AUTHORITY_EXPRESSION),
+    trace: await evalIn(`JSON.parse(localStorage.getItem('cf_slice_f4_replacement_trace')||'null')`),
+  };
+  const f4ProductBeforeOutcome = JSON.stringify(f4Reset.state.save);
+  const f4Outcome = await evalIn(`window.__CF_SLICE__.api.__smokeCommitF4Outcome()`);
+  const f4AfterOutcome = {
+    state: await evalIn(`window.__CF_SLICE__.api.state()`),
+    raw: await evalIn(READ_F4_AUTHORITY_EXPRESSION),
+  };
+  const f4ReplacementBundle = {
+    staged: f4StagedRaw,
+    reset: f4Reset,
+    outcome: f4Outcome,
+    after: f4AfterOutcome,
+    productStable: JSON.stringify(f4AfterOutcome.state.save) === f4ProductBeforeOutcome,
+  };
+  const f4ReplacementAssessment = assessF4ReplacementOutcome(f4ReplacementBundle);
+  if (!f4StageStarted || !f4TraceArmed || !f4ReplacementAssessment.ok) {
+    fails.push('F4 REPLACEMENT/OUTCOME: old receipt was not atomically reset before one real ordinal-zero outcome: '
+      + JSON.stringify({ f4StageStarted, f4TraceArmed, assessment: f4ReplacementAssessment, bundle: f4ReplacementBundle }));
+  }
+  const f4ReplacementControls = [
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, reset: { ...f4Reset, raw: { ...f4Reset.raw, receiptKeys: ['receipt:0'] } } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, reset: { ...f4Reset, trace: { ...f4Reset.trace, stores: ['receipts'] } } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, outcome: { ...f4Outcome, kind: 'duplicate-receipt' } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, after: { ...f4AfterOutcome, raw: { ...f4AfterOutcome.raw, ordinal: 0 } } }),
+  ];
+  if (f4ReplacementControls.some((control) => control.ok)) {
+    fails.push('F4 REPLACEMENT/OUTCOME CONTROL FAILED — uncleared/non-atomic/duplicate/non-advanced evidence stayed green: '
+      + JSON.stringify(f4ReplacementControls));
+  }
+
+  const f4HideArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextF4HideCheckpoint()`);
+  await evalIn(`window.__CF_SLICE__.api.__smokeCheckpointAndHideF4()`);
+  const f4HiddenAfterFailure = await evalIn(`window.__CF_SLICE__.api.state()`);
+  await evalIn(`window.__CF_SLICE__.api.__smokeShowF4()`);
+  const f4ShownAfterFailure = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const f4HideBundle = { armed: f4HideArmed, hidden: f4HiddenAfterFailure, shown: f4ShownAfterFailure };
+  const f4HideAssessment = assessF4HideFailureRelease(f4HideBundle);
+  if (!f4HideAssessment.ok) {
+    fails.push('F4 HIDE FAILURE: rejected checkpoint masked release or prevented reacquisition: '
+      + JSON.stringify({ assessment: f4HideAssessment, bundle: f4HideBundle }));
+  }
+  const f4HideControls = [
+    assessF4HideFailureRelease({ ...f4HideBundle, hidden: { ...f4HiddenAfterFailure, persistence: {
+      ...f4HiddenAfterFailure.persistence, hideWitness: { ...f4HiddenAfterFailure.persistence.hideWitness, visibilityAttempted: false },
+    } } }),
+    assessF4HideFailureRelease({ ...f4HideBundle, hidden: { ...f4HiddenAfterFailure, persistence: {
+      ...f4HiddenAfterFailure.persistence, runtime: { ...f4HiddenAfterFailure.persistence.runtime, leaseOwned: true },
+    } } }),
+  ];
+  if (f4HideControls.some((control) => control.ok)) {
+    fails.push('F4 HIDE FAILURE CONTROL FAILED — missing release evidence stayed green: ' + JSON.stringify(f4HideControls));
+  }
+
+  await evalIn(`document.getElementById('docksets').click()`);
+  const readOnlyForced = await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(true)`);
+  const readOnlyBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const readOnlyRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
+  await evalIn(`document.getElementById('setsnd').click()`);
+  await evalIn(`document.getElementById('dockcodex').click()`);
+  const readOnlyAfter = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const readOnlyRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
+  await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(false)`);
+  const readOnlyBundle = {
+    forced: readOnlyForced,
+    before: readOnlyBefore,
+    after: readOnlyAfter,
+    rawPreserved: readOnlyRawAfter === readOnlyRawBefore,
+  };
+  const readOnlyAssessment = assessReadOnlyBoundary(readOnlyBundle);
+  if (!readOnlyAssessment.ok) {
+    fails.push('F4 READ-ONLY BOUNDARY: a real settings mutation was not blocked or Compendium inspection was unavailable: '
+      + JSON.stringify({ assessment: readOnlyAssessment, bundle: readOnlyBundle }));
+  }
+  const readOnlyControls = [
+    assessReadOnlyBoundary({ ...readOnlyBundle, after: { ...readOnlyAfter, save: { ...readOnlyAfter.save, sndOn: !readOnlyBefore.save.sndOn } } }),
+    assessReadOnlyBoundary({ ...readOnlyBundle, rawPreserved: false }),
+    assessReadOnlyBoundary({ ...readOnlyBundle, after: { ...readOnlyAfter, panelOpen: null } }),
+  ];
+  if (readOnlyControls.some((control) => control.ok)) {
+    fails.push('F4 READ-ONLY BOUNDARY CONTROL FAILED — changed save/raw or unavailable inspection stayed green: '
+      + JSON.stringify(readOnlyControls));
+  }
+
   /* Real same-tab ordering outcome. The diagnostic arm installs one stale
      autosave as activePersist but gates its repository write. In ONE browser
      turn, start valid import then release stale. Correct code awaits stale
@@ -3390,7 +3872,7 @@ try {
   const importRace = await evalIn(`(async()=>{ const api=window.__CF_SLICE__.api;
     const armed=api.__smokeArmImportRace(${JSON.stringify(STALE_AUTOSAVE_RAW)});
     if(!armed)return {armed,released:false,duplicate:null};
-    void api.importBlob(${JSON.stringify(vrRaw)});
+    void api.importBlob(${JSON.stringify(vrRaw)},'desktop-import-race');
     const duplicate=await api.importBlob(${JSON.stringify(STALE_AUTOSAVE_RAW)});
     return {armed,duplicate,released:api.__smokeReleaseImportRace()}; })()`)
     .catch(() => ({ armed: false, released: false, duplicate: null }));
@@ -3400,7 +3882,12 @@ try {
     try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(vrRaw)})`); }
     catch { /* fallback only keeps later smoke diagnostics reachable */ }
   }
-  await waitForSlice(sess, 'desktop veteran import after stale autosave race', { previousToken: desktopImportToken });
+  try {
+    await waitForSlice(sess, 'desktop veteran import after stale autosave race', { previousToken: desktopImportToken });
+  } catch (error) {
+    const diagnostic = await evalIn(`window.__CF_SLICE__?.api?.state?.().persistence`).catch(() => null);
+    throw new Error(`${error instanceof Error ? error.message : error}; persistence ${JSON.stringify(diagnostic)}`);
+  }
   await sleep(2800);
   const vet = await evalIn(`window.__CF_SLICE__.api.state()`);
   const postRacePrimaryRaw = await evalIn(READ_PRIMARY_EXPRESSION);
@@ -3456,7 +3943,6 @@ try {
     viewType: null,
     savedView: null,
   });
-  const authTrainingNormalizedLand = [133, 134, 101, 102, 103, 201];
   const authTrainingSkip = await evalIn(`(()=>{ const button=document.querySelector('[data-sel="tutskip"]');
     button?.click();return {pressed:!!button};})()`);
   const authTrainingRestored = await waitDesktopValue('unauthorized Training restore home fallback', `(()=>{ const s=window.__CF_SLICE__.api.state();
@@ -3464,8 +3950,8 @@ try {
   const authTrainingOutcome = (state) => state.mode === 'universe'
     && state.gal === null && state.star === null && state.planet === null
     && state.tutSnapshotPending === null && state.save.savedView === null
-    && JSON.stringify(authTrainingBoot.save.landed) === JSON.stringify([133, 134])
-    && JSON.stringify(state.save.landed) === JSON.stringify(authTrainingNormalizedLand)
+    && JSON.stringify(authTrainingBoot.save.landed) === JSON.stringify(CANONICAL_VETERAN_LANDED)
+    && JSON.stringify(state.save.landed) === JSON.stringify(CANONICAL_VETERAN_LANDED)
     && authTrainingLedger(state) === authTrainingLedger(authTrainingBoot)
     && renderedSceneAdvanced(authTrainingBoot, state);
   if (!authTrainingSkip.pressed || !authTrainingOutcome(authTrainingRestored)) {
@@ -3486,7 +3972,7 @@ try {
   if (Object.prototype.hasOwnProperty.call(authTrainingRaw, 'tsnap') || authTrainingRaw.view !== null
     || authTrainingRaw.me !== importedExplorerName(TRAINING_AUTH_EXPLORER_NAME)
     || authTrainingRaw.essence !== 3456
-    || JSON.stringify(authTrainingRaw.land) !== JSON.stringify(authTrainingNormalizedLand)
+    || JSON.stringify(authTrainingRaw.land) !== JSON.stringify(CANONICAL_VETERAN_LANDED)
     || Object.keys(authTrainingRaw.prime || {}).length !== 0) {
     fails.push('TRAINING AUTHORIZATION: home fallback/snapshot clear did not persist without ledger drift: '
       + JSON.stringify(authTrainingRaw));
@@ -3638,15 +4124,25 @@ try {
     fails.push('TRAINING SOURCE ERROR: reload did not retain raw incomplete/snapshot/Sol evidence: '
       + JSON.stringify({ tut: trainingRetryRaw.tut, tsnap: trainingRetryRaw.tsnap, view: trainingRetryRaw.view }));
   }
-  /* exportSaveV2's honest first pass unions conquered/mined census into
-     `land`: this fixture is 2 in memory before its first write and 6 after
-     the source-error persist/reload. Compare the retry against that current
-     normalized baseline, not the earlier pre-export veteran snapshot. */
-  if (trainingRestoreBoot.save.landed.length !== 2 || trainingRetryBoot.save.landed.length !== 6
-    || JSON.stringify(trainingRetryBoot.save.landed) !== JSON.stringify(trainingRetryRaw.land)) {
-    fails.push('TRAINING FIRST-PASS LAND NORMALIZATION: expected 2 imported → 6 persisted/reloaded worlds: '
+  /* v5 migration/import owns the canonical compatibility boundary before
+     app state is published. The imported, split-row reload, and v4 mirror
+     must therefore agree on the exact six-world census immediately. */
+  const canonicalTrainingLand = (value) =>
+    JSON.stringify(value) === JSON.stringify(CANONICAL_VETERAN_LANDED);
+  if (!canonicalTrainingLand(trainingRestoreBoot.save.landed)
+    || !canonicalTrainingLand(trainingRetryBoot.save.landed)
+    || !canonicalTrainingLand(trainingRetryRaw.land)) {
+    fails.push('TRAINING V5 LAND CANONICALIZATION: imported/split/mirror world census drifted: '
       + JSON.stringify({ imported: trainingRestoreBoot.save.landed,
         raw: trainingRetryRaw.land, reloaded: trainingRetryBoot.save.landed }));
+  }
+  const landSurfaceControls = [
+    CANONICAL_VETERAN_LANDED.slice(1),
+    [...CANONICAL_VETERAN_LANDED, 999],
+    [CANONICAL_VETERAN_LANDED[1], CANONICAL_VETERAN_LANDED[0], ...CANONICAL_VETERAN_LANDED.slice(2)],
+  ];
+  if (landSurfaceControls.some(canonicalTrainingLand)) {
+    fails.push('TRAINING V5 LAND CONTROL FAILED — dropped, appended, or reordered census stayed green');
   }
   const trainingLedgerExpected = trainingRouteNeutralLedger(trainingRetryBoot);
   const currentRetryNativeLabel = 'current-view-source-retry';
@@ -3821,7 +4317,7 @@ try {
   /* Training Restart is transactional UI too. Inject one deterministic
      persist rejection, press the REAL Settings button, and require exact
      tutorial/navigation rollback, no reload, an enabled retry button, the
-     visible refusal, and unchanged primary bytes. */
+     visible refusal, and only the compatibility writer's canonical stamps. */
   const restartBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
   const restartBeforeToken = await sliceToken(sess);
   const restartBeforeRaw = await evalIn(READ_PRIMARY_EXPRESSION);
@@ -3847,13 +4343,62 @@ try {
   const restartOutcome = await evalIn(restartOutcomeCheck);
   const restartAfterToken = await sliceToken(sess);
   const restartAfterRaw = await evalIn(READ_PRIMARY_EXPRESSION);
+  const assessRestartCommit = (beforeState, afterState, beforeRaw, afterRaw) => {
+    const reasons = [];
+    const mirror = assessStampedCanonicalRewrite(beforeRaw, afterRaw);
+    if (!mirror.ok) reasons.push(...mirror.reasons);
+    const beforeRevision = beforeState?.persistence?.runtime?.revision;
+    const witness = afterState?.persistence?.importRace;
+    if (!Number.isInteger(beforeRevision) || witness?.outcome !== 'committed'
+      || witness?.beforeRevision !== beforeRevision
+      || witness?.afterRevision !== beforeRevision + 1
+      || afterState?.persistence?.runtime?.revision !== witness?.afterRevision) {
+      reasons.push('exact revision advance');
+    }
+    return { ok: reasons.length === 0, reasons, mirror };
+  };
+  const restartCommitAssessment = assessRestartCommit(
+    restartBefore, restartOutcome.state, restartBeforeRaw, restartAfterRaw,
+  );
   if (!restartClick.armed || !restartClick.held || !restartClick.released || !restartClick.button
     || !/another expedition replacement is finishing/i.test(restartClick.interlock || '') || !restartOutcome.ok
-    || restartAfterToken !== restartBeforeToken || restartAfterRaw !== restartBeforeRaw) {
-    fails.push('TRAINING RESTART/IMPORT INTERLOCK: arbitration, rollback, refusal, or byte outcome drifted: ' + JSON.stringify({
+    || restartAfterToken !== restartBeforeToken || !restartCommitAssessment.ok) {
+    fails.push('TRAINING RESTART/IMPORT INTERLOCK: arbitration, rollback, refusal, or canonical commit outcome drifted: ' + JSON.stringify({
       click: restartClick, outcome: restartOutcome, noReload: restartAfterToken === restartBeforeToken,
-      primaryPreserved: restartAfterRaw === restartBeforeRaw,
+      commit: restartCommitAssessment,
     }));
+  }
+  const restartNonStampMutation = JSON.parse(restartAfterRaw);
+  restartNonStampMutation.tut = restartNonStampMutation.tut === 0 ? 1 : 0;
+  const restartStampRegression = JSON.parse(restartAfterRaw);
+  restartStampRegression.at = JSON.parse(restartBeforeRaw).at - 1;
+  const restartConquestStampDrift = JSON.parse(restartAfterRaw);
+  if (restartConquestStampDrift.conq?.[0]?.[1]) restartConquestStampDrift.conq[0][1].t += 1;
+  const restartMinedStampDrift = JSON.parse(restartAfterRaw);
+  if (restartMinedStampDrift.minedw?.[0]) restartMinedStampDrift.minedw[0][1] += 1;
+  const restartRevisionControl = {
+    ...restartOutcome.state,
+    persistence: {
+      ...restartOutcome.state.persistence,
+      importRace: { ...restartOutcome.state.persistence.importRace, afterRevision:
+        restartOutcome.state.persistence.importRace?.beforeRevision },
+    },
+  };
+  const restartCommitControls = [
+    assessRestartCommit(restartBefore, restartOutcome.state,
+      restartBeforeRaw, JSON.stringify(restartNonStampMutation)),
+    assessRestartCommit(restartBefore, restartOutcome.state,
+      restartBeforeRaw, JSON.stringify(restartStampRegression)),
+    assessRestartCommit(restartBefore, restartOutcome.state,
+      restartBeforeRaw, JSON.stringify(restartConquestStampDrift)),
+    assessRestartCommit(restartBefore, restartOutcome.state,
+      restartBeforeRaw, JSON.stringify(restartMinedStampDrift)),
+    assessRestartCommit(restartBefore, restartRevisionControl,
+      restartBeforeRaw, restartAfterRaw),
+  ];
+  if (restartCommitControls.some((control) => control.ok)) {
+    fails.push('TRAINING RESTART F4 COMMIT CONTROL FAILED — product drift, regressed/forged write stamp, or non-advancing revision stayed green: '
+      + JSON.stringify(restartCommitControls));
   }
   const restartOutcomeCtl = await evalIn(`(()=>{ const button=document.getElementById('setrestart'),toast=document.getElementById('toast');
     const api=window.__CF_SLICE__.api,priorState=api.state,priorDisabled=button?.disabled,priorVisibility=toast?.style.visibility;
@@ -3872,9 +4417,10 @@ try {
   await evalIn(`(()=>{ document.querySelector('#setpanel [data-pnx]')?.click(); return true; })()`);
 
   /* 4c-dtrain. Genuine v1.8.9 Field Training checkpoints are an eleven-field
-     transaction, not the old synthetic whole-save guess. Seed exact primary
-     bytes, drive the real lesson action, and consume the operation-local phase
-     binding so visible success cannot hide a second write or wrong ordering. */
+     transaction, not the old synthetic whole-save guess. Stage exact source
+     bytes, prove their retained migration snapshot plus canonical live mirror,
+     drive the real lesson action, and consume the operation-local phase binding
+     so visible success cannot hide a second write or wrong ordering. */
   const DTRAIN_LEGACY_KEYS = ['st', 'ps', 'ac', 'es', 'c', 'ca', 'cx', 'it', 'eq', 'ea', 'e'];
   const DTRAIN_DIRECT_STATS = [
     'shares', 'jumps', 'anomalies', 'events', 'duels', 'duelwins',
@@ -3893,19 +4439,97 @@ try {
   ];
   const dtrainSeedPrimary = async (raw, label) => {
     const beforeToken = await sliceToken(sess);
-    await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
-      q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('meta','readwrite');
-        tx.objectStore('meta').put(${JSON.stringify(raw)},'save');tx.oncomplete=()=>{db.close();resolve(true)};
-        tx.onerror=()=>reject(tx.error);};})`);
+    await evalIn(`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(raw)})`);
     await navigateToSlice(sess, URL0, label);
     await sleep(900);
     const token = await sliceToken(sess);
     const state = await evalIn(`window.__CF_SLICE__.api.state()`);
-    const stored = await evalIn(READ_PRIMARY_EXPRESSION);
+    const [stored, authority, migration] = await Promise.all([
+      evalIn(READ_PRIMARY_EXPRESSION),
+      evalIn(READ_F4_AUTHORITY_EXPRESSION),
+      evalIn(READ_V5_MIGRATION_EVIDENCE_EXPRESSION),
+    ]);
     if (!beforeToken || !token || token === beforeToken) {
       fails.push(`${label.toUpperCase()}: direct fixture boot reused the prior document token`);
     }
-    return { token, state, stored };
+    return { token, state, stored, authority, migration };
+  };
+  const assessDtrainMigratedBoot = (booted, sourceRaw) => {
+    const reasons = [];
+    const require = (condition, reason) => { if (!condition) reasons.push(reason); };
+    let source = null;
+    let mirror = null;
+    let retained = null;
+    try { source = JSON.parse(sourceRaw); } catch { /* fixture control below */ }
+    try { mirror = JSON.parse(booted?.stored); } catch { /* mirror control below */ }
+    try { retained = JSON.parse(booted?.migration?.snapshot?.raw); } catch { /* snapshot control below */ }
+    const persistence = booted?.state?.persistence;
+    const runtime = persistence?.runtime;
+    const authority = booted?.authority;
+    const sourceHasCheckpoint = !!source
+      && Object.prototype.hasOwnProperty.call(source, 'tsnap');
+    const retainedHasCheckpoint = !!retained
+      && Object.prototype.hasOwnProperty.call(retained, 'tsnap');
+    const mirrorHasCheckpoint = !!mirror
+      && Object.prototype.hasOwnProperty.call(mirror, 'tsnap');
+    const stateHasCheckpoint = booted?.state?.tutSnapshotPending !== null;
+
+    require(!!source && !!mirror && !!retained, 'JSON evidence');
+    require(persistence?.ready === true && persistence?.bootKind === 'migrated-v4'
+      && persistence?.hold === null && persistence?.seedBootstrapPending === false
+      && persistence?.mutationBlocked === false, 'migrated writable boot');
+    require(runtime?.revision === 1 && runtime?.leaseOwned === true
+      && runtime?.answerable === true && runtime?.accruing === true
+      && runtime?.sessionOrdinal === 0 && runtime?.commits === 1
+      && persistence?.lastOutcome === 'seed-committed:1', 'durable bootstrap runtime');
+    require(authority?.revisionRaw === '1' && authority?.revision === 1
+      && authority?.playerSchema === 5 && authority?.carrierVersion === 1
+      && authority?.seed === runtime?.sessionSeed && authority?.ordinal === 0
+      && canonicalJson(authority?.draws) === canonicalJson(runtime?.sessionDraws),
+    'raw v5 authority parity');
+    require(booted?.migration?.snapshot?.schema === 5
+      && booted?.migration?.snapshot?.sourceSchema === 4
+      && booted?.migration?.snapshot?.raw === sourceRaw, 'exact retained migration snapshot');
+    require(sourceHasCheckpoint === retainedHasCheckpoint
+      && (!sourceHasCheckpoint || canonicalJson(retained?.tsnap) === canonicalJson(source?.tsnap)),
+    'retained checkpoint evidence');
+    require(booted?.migration?.journal?.schema === 5
+      && booted?.migration?.journal?.kind === 'v4-to-v5'
+      && booted?.migration?.journal?.phase === 'complete'
+      && booted?.migration?.journal?.snapshotKey === 'v5:pre-migration-v4'
+      && booted?.migration?.journal?.codec === 'legacy-v4-split-v1', 'migration journal');
+    require(mirror?.v === 4 && typeof mirror?.at === 'number' && Number.isFinite(mirror.at)
+      && mirror?.me === booted?.state?.save?.name
+      && mirror?.essence === booted?.state?.save?.essence
+      && canonicalJson(mirror?.land) === canonicalJson(booted?.state?.save?.landed)
+      && canonicalJson(mirror?.view) === canonicalJson(booted?.state?.save?.savedView)
+      && mirror?.tut === (booted?.state?.tutDone ? 1 : 0)
+      && mirrorHasCheckpoint === stateHasCheckpoint
+      && (!stateHasCheckpoint
+        || canonicalJson(mirror?.tsnap) === canonicalJson(booted?.state?.tutSnapshotPending)),
+    'canonical mirror/state parity');
+    return { ok: reasons.length === 0, reasons, evidence: {
+      snapshotExact: booted?.migration?.snapshot?.raw === sourceRaw,
+      checkpointExact: sourceHasCheckpoint === retainedHasCheckpoint
+        && (!sourceHasCheckpoint || canonicalJson(retained?.tsnap) === canonicalJson(source?.tsnap)),
+      journalComplete: booted?.migration?.journal?.phase === 'complete',
+      mirrorCheckpoint: mirrorHasCheckpoint, stateCheckpoint: stateHasCheckpoint,
+    } };
+  };
+  const dtrainMigratedBootControls = (booted, sourceRaw) => {
+    const foreignMirror = JSON.parse(booted.stored);
+    foreignMirror.me = 'foreign expedition';
+    const alteredSource = JSON.parse(sourceRaw);
+    alteredSource.me = `${alteredSource.me || ''}!`;
+    return [
+      assessDtrainMigratedBoot({ ...booted, stored: JSON.stringify(foreignMirror) }, sourceRaw),
+      assessDtrainMigratedBoot({ ...booted, migration: { ...booted.migration,
+        snapshot: { ...booted.migration.snapshot, raw: JSON.stringify(alteredSource) } } }, sourceRaw),
+      assessDtrainMigratedBoot({ ...booted, migration: { ...booted.migration,
+        journal: { ...booted.migration.journal, phase: 'started' } } }, sourceRaw),
+      assessDtrainMigratedBoot({ ...booted, authority: { ...booted.authority,
+        revision: booted.authority.revision + 1 } }, sourceRaw),
+    ];
   };
   const dtrainRefusalState = (state) => JSON.stringify({
     mode: state.mode, gal: state.gal, star: state.star, planet: state.planet,
@@ -3931,13 +4555,6 @@ try {
       }
     }
     return true;
-  };
-  const canonicalJson = (value) => {
-    if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
-    if (value && typeof value === 'object') {
-      return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(',')}}`;
-    }
-    return JSON.stringify(value);
   };
   const DTRAIN_CANONICAL_GALAXY_VIEW = Object.freeze({
     x: HOME_GALAXY.x, y: HOME_GALAXY.y, size: 78, sp: 0, tilt: 0.62, rot: 0.5,
@@ -4041,15 +4658,14 @@ try {
     expectOuterAtlas = true,
     route = 'sol',
     expectedRn,
-    atlasFalseDefaults = true,
+    atlasFalseDefaults = false,
   } = {}) => {
     const reasons = [];
     const require = (condition, reason) => { if (!condition) reasons.push(reason); };
     const earthRows = Array.isArray(raw?.log) ? raw.log.filter((entry) => entry?.id === 'p133') : [];
     const earth = earthRows[0] || null;
-    /* The atomic restore candidate initially carries the source view's false
-       q/d defaults; a later ordinary import/export omits those false
-       Atlas-only fields. Pin the exact sampled write boundary either way.
+    /* Every revisioned write traverses the canonical compatibility codec, so
+       false q/d Atlas defaults are omitted at the first durable boundary too.
        Atlas history is display data; its actionable route is re-proven. */
     const expectedEarth = {
       id: 'p133', title: GENUINE_TRAINING_CHECKPOINT.e.title,
@@ -4103,6 +4719,66 @@ try {
     return { ok: reasons.length === 0, reasons, outer };
   };
   const dtrainRestoredRawOutcome = (raw, options) => dtrainRestoredRawAssessment(raw, options).ok;
+  const assessNoSnapshotCanonicalBoot = (state, raw, authority) => {
+    const reasons = [];
+    const require = (condition, reason) => { if (!condition) reasons.push(reason); };
+    const source = JSON.parse(DTRAIN_NO_SNAPSHOT_RAW);
+    const route = dtrainStateRouteAssessment(state, 'sol', 'earth');
+    if (!route.ok) reasons.push(...route.reasons);
+    const persistence = state?.persistence;
+    const runtime = persistence?.runtime;
+    require(persistence?.ready === true && persistence?.bootKind === 'migrated-v4' && persistence?.hold === null
+      && persistence?.authorityBootKind === 'absent'
+      && persistence?.seedBootstrapPending === false && persistence?.mutationBlocked === false,
+    'migrated writable boot');
+    require(runtime?.revision === 1 && runtime?.leaseOwned === true
+      && runtime?.answerable === true && runtime?.accruing === true
+      && runtime?.sessionOrdinal === 0 && runtime?.commits === 1
+      && persistence?.lastOutcome === 'seed-committed:1', 'durable bootstrap runtime');
+    require(authority?.revisionRaw === '1' && authority?.revision === 1
+      && authority?.playerSchema === 5 && authority?.carrierVersion === 1
+      && authority?.seed === runtime?.sessionSeed && authority?.ordinal === runtime?.sessionOrdinal
+      && canonicalJson(authority?.draws) === canonicalJson(runtime?.sessionDraws),
+    'raw v5 authority parity');
+
+    require(raw?.v === 4 && typeof raw?.at === 'number' && Number.isFinite(raw.at)
+      && raw.at >= source.at && raw?.tut === 0
+      && !Object.prototype.hasOwnProperty.call(raw || {}, 'tsnap'), 'canonical v4 envelope');
+    require(raw?.me === 'DTRAIN No Snapshot' && state?.save?.name === raw.me,
+      'explorer identity');
+    require(canonicalJson(raw?.land) === canonicalJson(CANONICAL_VETERAN_LANDED)
+      && canonicalJson(state?.save?.landed) === canonicalJson(raw?.land), 'canonical six-world census');
+    require(canonicalJson(raw?.view) === canonicalJson(dtrainExpectedRoute('earth'))
+      && canonicalJson(state?.save?.savedView) === canonicalJson(raw?.view), 'canonical saved Earth route');
+
+    const sourceEarth = source.log?.find((entry) => entry?.id === 'p133');
+    const atlasRoute = structuredClone(dtrainExpectedRoute('earth'));
+    delete atlasRoute.gal.quasar;
+    delete atlasRoute.gal.dwarf;
+    const expectedEarth = sourceEarth ? {
+      id: sourceEarth.id, title: sourceEarth.title, sub: sourceEarth.sub,
+      thumb: null, sq: false, badge: sourceEarth.badge, where: atlasRoute,
+      fav: sourceEarth.fav, t: sourceEarth.t,
+      ...(Object.prototype.hasOwnProperty.call(sourceEarth, 'star') ? { star: sourceEarth.star } : {}),
+    } : null;
+    const earthRows = Array.isArray(raw?.log) ? raw.log.filter((entry) => entry?.id === 'p133') : [];
+    require(earthRows.length === 1 && raw.log.length === 1
+      && canonicalJson(earthRows[0]) === canonicalJson(expectedEarth)
+      && state?.atlasCount === 1, 'canonical Earth Atlas row');
+
+    const mirrorStatePairs = [
+      [raw?.essence, state?.save?.essence], [raw?.names, state?.save?.customNames],
+      [raw?.items, state?.save?.items], [raw?.cargo, state?.save?.cargo],
+      [raw?.cgx, state?.save?.cgx], [raw?.jrn, state?.save?.journal],
+      [raw?.tech, state?.save?.techOwned], [raw?.setsc, state?.save?.claimedSets],
+      [raw?.ach, state?.save?.unlocked],
+    ];
+    require(mirrorStatePairs.every(([mirror, current]) => canonicalJson(mirror) === canonicalJson(current))
+      && Array.isArray(raw?.codex) && raw.codex.length === state?.codexCount
+      && DTRAIN_DIRECT_STATS.every((key) => raw?.[key] === state?.save?.stats?.[key])
+      && raw?.br === state?.save?.stats?.bestRank, 'canonical mirror/state field parity');
+    return { ok: reasons.length === 0, reasons };
+  };
   const dtrainAssertWitness = (label, mark, spec) => {
     const entries = trainingWitnessesSince(sess, mark);
     const result = assessTrainingWitnesses(entries, spec);
@@ -4116,15 +4792,21 @@ try {
   const dtrainUnknownRefusal = async (raw, label, expectSnapshot) => {
     const booted = await dtrainSeedPrimary(raw, `${label} boot`);
     const boot = booted.state;
+    const bootAssessment = assessDtrainMigratedBoot(booted, raw);
     if (boot.mode !== 'system' || boot.gal !== 999 || boot.star !== 424242
       || boot.tutActive || boot.tutStep !== null || boot.tutDone
       || boot.trainingCheckpointKind !== 'legacy-or-unknown' || !boot.trainingCheckpointWriteHeld
       || boot.trainingRecoveryMode !== 'unknown-checkpoint'
       || (expectSnapshot && boot.tutSnapshotPending === null)
       || (!expectSnapshot && boot.tutSnapshotPending !== null)
-      || booted.stored !== raw || !renderedSceneMatchesNav(boot)) {
-      fails.push(`${label}: unknown checkpoint did not boot quarantined, held, and byte-exact: `
-        + JSON.stringify({ state: boot, byteExact: booted.stored === raw }));
+      || !bootAssessment.ok || !renderedSceneMatchesNav(boot)) {
+      fails.push(`${label}: unknown checkpoint did not boot quarantined with canonical mirror and retained source evidence: `
+        + JSON.stringify({ state: boot, assessment: bootAssessment }));
+    }
+    const bootControls = dtrainMigratedBootControls(booted, raw);
+    if (bootControls.some((control) => control.ok)) {
+      fails.push(`${label} BOOT CONTROL FAILED — foreign mirror, altered retained checkpoint, incomplete journal, or revision drift stayed green: `
+        + JSON.stringify(bootControls));
     }
     const beforeState = dtrainRefusalState(boot);
     const beforeRaw = booted.stored;
@@ -4177,6 +4859,14 @@ try {
     }
   };
   const noSnapshotBooted = await dtrainSeedPrimary(DTRAIN_NO_SNAPSHOT_RAW, 'D-TRAIN no-snapshot unfinished boot');
+  const noSnapshotRaw = JSON.parse(noSnapshotBooted.stored);
+  const noSnapshotAuthority = noSnapshotBooted.authority;
+  const noSnapshotMigrationAssessment = assessDtrainMigratedBoot(
+    noSnapshotBooted, DTRAIN_NO_SNAPSHOT_RAW,
+  );
+  const noSnapshotAssessment = assessNoSnapshotCanonicalBoot(
+    noSnapshotBooted.state, noSnapshotRaw, noSnapshotAuthority,
+  );
   const noSnapshotBootOutcome = (state) => state.tutActive && !state.tutDone
     && state.tutStep === 'welcome' && state.trainingCheckpointKind === 'none'
     && state.trainingCheckpointWriteHeld && state.trainingRecoveryMode === null && state.mode === 'system'
@@ -4184,13 +4874,12 @@ try {
     && state.save.viewType === 'planet' && state.save.savedView?.pseed === 133
     && state.navGalaxyKey !== null && state.navStarKey !== null && state.navWorldKey === null
     && renderedSceneMatchesNav(state);
-  if (!noSnapshotBootOutcome(noSnapshotBooted.state)
-    || noSnapshotBooted.stored !== DTRAIN_NO_SNAPSHOT_RAW
-    || JSON.parse(noSnapshotBooted.stored).view?.type !== 'planet') {
-    fails.push('D-TRAIN NO-SNAPSHOT BOOT: unfinished outer-Earth expedition did not open Welcome at proven Sol without rewriting raw bytes: '
-      + JSON.stringify({ state: noSnapshotBooted.state,
-        byteExact: noSnapshotBooted.stored === DTRAIN_NO_SNAPSHOT_RAW,
-        rawView: JSON.parse(noSnapshotBooted.stored).view }));
+  if (!noSnapshotBootOutcome(noSnapshotBooted.state) || !noSnapshotAssessment.ok
+    || !noSnapshotMigrationAssessment.ok) {
+    fails.push('D-TRAIN NO-SNAPSHOT BOOT: unfinished outer-Earth expedition did not reach the canonical v5/mirror fixed point at proven Sol: '
+      + JSON.stringify({ state: noSnapshotBooted.state, raw: noSnapshotRaw,
+        authority: noSnapshotAuthority, assessment: noSnapshotAssessment,
+        migration: noSnapshotMigrationAssessment }));
   }
   const noSnapshotBootControl = {
     ...noSnapshotBooted.state,
@@ -4204,6 +4893,21 @@ try {
   if (noSnapshotBootOutcome(noSnapshotBootControl)) {
     fails.push('D-TRAIN NO-SNAPSHOT BOOT CONTROL FAILED — injected outer Earth stayed green as proven Sol');
   }
+  const noSnapshotMirrorControl = structuredClone(noSnapshotRaw);
+  noSnapshotMirrorControl.me = 'foreign expedition';
+  const noSnapshotAuthorityControl = {
+    ...noSnapshotAuthority,
+    revision: noSnapshotAuthority.revision + 1,
+  };
+  const noSnapshotCanonicalControls = [
+    assessNoSnapshotCanonicalBoot(noSnapshotBooted.state, noSnapshotMirrorControl, noSnapshotAuthority),
+    assessNoSnapshotCanonicalBoot(noSnapshotBooted.state, noSnapshotRaw, noSnapshotAuthorityControl),
+    ...dtrainMigratedBootControls(noSnapshotBooted, DTRAIN_NO_SNAPSHOT_RAW),
+  ];
+  if (noSnapshotCanonicalControls.some((control) => control.ok)) {
+    fails.push('D-TRAIN NO-SNAPSHOT CANONICAL CONTROL FAILED — mirror, snapshot, journal, or raw revision drift stayed green: '
+      + JSON.stringify(noSnapshotCanonicalControls));
+  }
   await dtrainUnknownRefusal(DTRAIN_OLD_SYNTHETIC_RAW, 'D-TRAIN OLD SYNTHETIC REFUSAL', true);
   await dtrainUnknownRefusal(DTRAIN_HOSTILE_RAW, 'D-TRAIN HOSTILE-SHAPE REFUSAL', false);
 
@@ -4213,16 +4917,17 @@ try {
      exactly once last, and only the Training result may become live. */
   const rescueBooted = await dtrainSeedPrimary(DTRAIN_RESCUE_RAW, 'D-TRAIN tut=1 rescue');
   const rescueBoot = rescueBooted.state;
+  const rescueBootAssessment = assessDtrainMigratedBoot(rescueBooted, DTRAIN_RESCUE_RAW);
   if (!rescueBoot.tutActive || rescueBoot.tutDone || rescueBoot.tutStep !== 'welcome'
     || rescueBoot.mode !== 'system' || rescueBoot.gal !== 999 || rescueBoot.star !== 424242
     || rescueBoot.navGalaxyKey === null || rescueBoot.navStarKey === null || rescueBoot.navWorldKey !== null
     || !renderedSceneMatchesNav(rescueBoot)
     || rescueBoot.trainingCheckpointKind !== 'legacy-v1'
     || !rescueBoot.trainingCheckpointWriteHeld
-    || rescueBooted.stored !== DTRAIN_RESCUE_RAW
+    || !rescueBootAssessment.ok
     || JSON.stringify(Object.keys(rescueBoot.tutSnapshotPending || {})) !== JSON.stringify(DTRAIN_LEGACY_KEYS)) {
-    fails.push('D-TRAIN TUT=1 RESCUE: completed+checkpoint pair did not normalize to genuine pending Training: '
-      + JSON.stringify({ state: rescueBoot, byteExact: rescueBooted.stored === DTRAIN_RESCUE_RAW }));
+    fails.push('D-TRAIN TUT=1 RESCUE: completed+checkpoint pair did not normalize to genuine pending Training with retained source evidence: '
+      + JSON.stringify({ state: rescueBoot, assessment: rescueBootAssessment }));
   }
   const rescueNativeLabel = 'legacy-rescue-active-persist';
   const rescueNativeArmed = await evalIn(dtrainNativeWriteArmExpression(rescueNativeLabel));
@@ -4518,6 +5223,9 @@ try {
     ...JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION)),
     me: 'D-TRAIN unjoined fixture control must win late',
   });
+  const importOwnerUnsafeExpectedName = importedExplorerName(
+    JSON.parse(importOwnerUnsafeSeedRaw).me,
+  );
   if (importOwnerUnsafeSeedRaw === DTRAIN_LEGACY_RAW) {
     throw new Error('D-TRAIN import-owner setup control did not create distinct delayed bytes');
   }
@@ -4546,20 +5254,27 @@ try {
     importOwnerUnsafeAfter = await evalIn(READ_PRIMARY_EXPRESSION, { timeoutMs: remainingMs });
     const receivedAtMs = performance.now();
     if (receivedAtMs >= importOwnerUnsafeDeadline) break;
-    if (importOwnerUnsafeAfter === importOwnerUnsafeSeedRaw) {
+    let observedName = null;
+    try { observedName = JSON.parse(importOwnerUnsafeAfter).me ?? null; } catch { /* keep polling */ }
+    if (observedName === importOwnerUnsafeExpectedName) {
       importOwnerUnsafeObservedBeforeDeadline = true;
       break;
     }
     await sleep(Math.min(20, Math.max(0, importOwnerUnsafeDeadline - performance.now())));
   }
   if (!importOwnerUnsafeObservedBeforeDeadline) {
-    throw new Error('D-TRAIN import-owner setup control did not observe its exact armed late write: '
-      + JSON.stringify({ expectedLength: importOwnerUnsafeSeedRaw.length,
-        actualLength: importOwnerUnsafeAfter.length,
-        expectedName: JSON.parse(importOwnerUnsafeSeedRaw).me,
+    throw new Error('D-TRAIN import-owner setup control did not observe its canonical armed late write: '
+      + JSON.stringify({ actualLength: importOwnerUnsafeAfter.length,
+        expectedName: importOwnerUnsafeExpectedName,
         actualName: (() => { try { return JSON.parse(importOwnerUnsafeAfter).me ?? null; } catch { return null; } })() }));
   }
   const importOwnerBooted = await dtrainSeedPrimary(DTRAIN_LEGACY_RAW, 'D-TRAIN import-owner race');
+  const importOwnerBootAssessment = assessDtrainMigratedBoot(importOwnerBooted, DTRAIN_LEGACY_RAW);
+  const importOwnerBootControls = dtrainMigratedBootControls(importOwnerBooted, DTRAIN_LEGACY_RAW);
+  if (!importOwnerBootAssessment.ok || importOwnerBootControls.some((control) => control.ok)) {
+    throw new Error('D-TRAIN import-owner setup did not retain exact source/migration evidence or canonical live authority: '
+      + JSON.stringify({ assessment: importOwnerBootAssessment, controls: importOwnerBootControls }));
+  }
   const importOwnerPrecondition = await evalIn(`(async()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
     card=document.getElementById('tutcard'),button=card?.querySelector('[data-sel="tutskip"]'),
     status=card?.querySelector('[data-sel="tutstatus"]');
@@ -4572,7 +5287,7 @@ try {
       tickerStarted:S?.app?.ticker?.started===true};})()`);
   const importOwnerPreconditionAssessment = assessTrainingBusyRefusalPrecondition(
     importOwnerPrecondition,
-    { documentToken: importOwnerBooted.token, primaryRaw: DTRAIN_LEGACY_RAW },
+    { documentToken: importOwnerBooted.token, primaryRaw: importOwnerBooted.stored },
   );
   if (!importOwnerPreconditionAssessment.ok) {
     throw new Error('D-TRAIN import-owner setup was not an exact runnable Training document: '
@@ -4678,30 +5393,48 @@ try {
   const importOwnerNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, importOwnerMark), {
     label: importOwnerNativeLabel, documentToken: importOwnerBooted.token, count: 2,
   });
+  const veteranRawEnvelope = JSON.parse(VETERAN_RAW);
+  const importOwnerWriteSemantics = (entries) => entries.length === 2
+    && entries[0]?.v === 4
+    && entries[0]?.me === importedExplorerName(DTRAIN_OUTER_NAME)
+    && entries[0]?.tut === 0
+    && entries[0]?.hasSnapshot === true
+    && entries[0]?.viewType === JSON.parse(DTRAIN_LEGACY_RAW).view?.type
+    && entries[1]?.v === (veteranRawEnvelope.v ?? null)
+    && entries[1]?.me === veteranRawEnvelope.me
+    && entries[1]?.tut === veteranRawEnvelope.tut
+    && entries[1]?.hasSnapshot === false
+    && entries[1]?.viewType === veteranRawEnvelope.view?.type;
   if (!importOwnerReleased || importOwnerDone.save.name !== 'Dakk'
     || importOwnerDone.tutActive || !importOwnerNativeWitness.ok
-    || importOwnerNativeWitness.entries[0]?.length !== DTRAIN_LEGACY_RAW.length
-    || importOwnerNativeWitness.entries[0]?.tut !== 0
-    || importOwnerNativeWitness.entries[0]?.hasSnapshot !== true
+    || !importOwnerWriteSemantics(importOwnerNativeWitness.entries)
     || importOwnerNativeWitness.entries[1]?.length !== VETERAN_RAW.length
-    || importOwnerNativeWitness.entries[1]?.hasSnapshot !== false) {
+  ) {
     fails.push('D-TRAIN IMPORT-OWNER RACE: owner did not finish its exact replacement after release: '
       + JSON.stringify({ importOwnerNativeArmed, importOwnerReleased, importOwnerDone,
         native: importOwnerNativeWitness }));
+  }
+  const importOwnerSwapControl = structuredClone(importOwnerNativeWitness.entries).reverse();
+  const importOwnerMeaningControl = structuredClone(importOwnerNativeWitness.entries);
+  if (importOwnerMeaningControl[0]) importOwnerMeaningControl[0].me = 'foreign';
+  if (importOwnerWriteSemantics(importOwnerSwapControl)
+    || importOwnerWriteSemantics(importOwnerMeaningControl)) {
+    fails.push('D-TRAIN IMPORT-OWNER WRITE CONTROL FAILED — swapped or foreign primary semantics stayed green');
   }
 
   /* A transient Earth proof error must write one durable incomplete candidate,
      reload at canonical Sol with the exact genuine checkpoint, and permit a
      later real Skip to restore normally. */
   const sourceBooted = await dtrainSeedPrimary(DTRAIN_LEGACY_RAW, 'D-TRAIN source-error');
+  const sourceBootAssessment = assessDtrainMigratedBoot(sourceBooted, DTRAIN_LEGACY_RAW);
   if (!sourceBooted.state.tutActive || sourceBooted.state.tutDone
     || sourceBooted.state.mode !== 'system' || sourceBooted.state.gal !== 999
     || sourceBooted.state.star !== 424242 || !renderedSceneMatchesNav(sourceBooted.state)
     || sourceBooted.state.trainingCheckpointKind !== 'legacy-v1'
     || !sourceBooted.state.trainingCheckpointWriteHeld
-    || sourceBooted.stored !== DTRAIN_LEGACY_RAW) {
-    fails.push('D-TRAIN SOURCE-ERROR SETUP: pending checkpoint was not active, held, and byte-exact before completion: '
-      + JSON.stringify({ state: sourceBooted.state, byteExact: sourceBooted.stored === DTRAIN_LEGACY_RAW }));
+    || !sourceBootAssessment.ok) {
+    fails.push('D-TRAIN SOURCE-ERROR SETUP: pending checkpoint was not active and held over a canonical migrated baseline before completion: '
+      + JSON.stringify({ state: sourceBooted.state, assessment: sourceBootAssessment }));
   }
   const sourceNativeLabel = 'legacy-source-deferred';
   const sourceNativeArmed = await evalIn(dtrainNativeWriteArmExpression(sourceNativeLabel));
@@ -5134,7 +5867,11 @@ try {
       g.onsuccess=()=>{ let rn=null; try{rn=JSON.parse(String(g.result||''))?.rn||null}catch{} db.close();
         resolve(rn===${JSON.stringify(RELEASE_FIXTURE_VERSION)}?rn:null); };
       g.onerror=()=>{db.close();resolve(null)}; }; })`);
+  const releasePreviousToken = await sliceToken(sess);
   await navigateToSlice(sess, URL0, 'veteran release seen-state reload');
+  await waitForF4Writable('veteran release seen-state reload F4 authority', {
+    previousToken: releasePreviousToken,
+  });
   const releaseReload = await waitDesktopValue('veteran release reload state', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return s.rnSeen===${JSON.stringify(RELEASE_FIXTURE_VERSION)}?s:null; })()`);
   if (releaseReload.panelOpen !== null || releaseReload.tutActive) {
@@ -5934,6 +6671,44 @@ try {
     }
     throw new Error(`${label} did not reach its phone outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
+  let navF4WritableControlsRun = false;
+  const waitNavPhF4Writable = async (
+    label, { previousToken = null, timeoutMs = 15_000 } = {},
+  ) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      try {
+        const snapshot = await evalNavPh(`(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
+          const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
+            state:state?{persistence:state.persistence}:null,raw,
+            token:typeof S?.documentToken==='string'?S.documentToken:null};})()`);
+        const assessment = assessF4ReadyAuthority({ ...snapshot, previousToken });
+        if (assessment.ok) {
+          if (!navF4WritableControlsRun) {
+            const leaseControl = structuredClone(snapshot);
+            leaseControl.state.persistence.runtime.leaseOwned = false;
+            const revisionControl = structuredClone(snapshot);
+            revisionControl.raw.revision += 1;
+            revisionControl.raw.revisionRaw = String(revisionControl.raw.revision);
+            if (assessF4ReadyAuthority({ ...leaseControl, previousToken: null }).ok
+              || assessF4ReadyAuthority({ ...revisionControl, previousToken: null }).ok) {
+              fails.push('PHONE F4 WRITABILITY CONTROL FAILED — a missing lease or mismatched raw revision stayed green');
+            }
+            navF4WritableControlsRun = true;
+          }
+          return snapshot;
+        }
+        last = { assessment, persistence: snapshot.state?.persistence, raw: snapshot.raw };
+      } catch (error) {
+        /* A stale-revision successor may deliberately reload once while it
+           converges. Its destroyed context is a transition, never readiness. */
+        last = { context: String(error?.message || error) };
+      }
+      await sleep(200);
+    }
+    throw new Error(`${label} did not acquire coupled writable F4 authority within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
   const pinchOutNavMode = async () => {
     /* One bounded pinch-in reaches the current mode's clamped zoom-out
        floor. End the gesture before starting the next so the same pointer
@@ -6355,10 +7130,12 @@ try {
   const reachBackedCharterReland = async (
     raw, expectedProgress, expectedChapter, expectedStage, label,
   ) => {
+    await waitNavPhF4Writable(`${label} predecessor F4 authority`);
     const importToken = await sliceToken(navPh);
     try { await evalNavPh(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(raw)})`); }
     catch { /* successful import replaces the document */ }
     await waitForSlice(navPh, `${label} import`, { previousToken: importToken });
+    await waitNavPhF4Writable(`${label} replacement F4 authority`, { previousToken: importToken });
     await waitNavPhValue(`${label} system restore`, `(()=>{ const s=window.__CF_SLICE__.api.state();
       return s.mode==='system'&&s.star===424242?s:null; })()`);
     /* Let the replacement document settle; the powered leg deliberately fires
@@ -6471,7 +7248,9 @@ try {
       fails.push(`${label}: persisted recovery changed landfall/progress bytes: `
         + JSON.stringify({ baseline, persisted }));
     }
+    const beforeReloadToken = await sliceToken(navPh);
     await navigateToSlice(navPh, URL3, `${label} reload`);
+    await waitNavPhF4Writable(`${label} reloaded F4 authority`, { previousToken: beforeReloadToken });
     const reloaded = await waitNavPhValue(`${label} reloaded surface`, `(()=>{ const s=window.__CF_SLICE__.api.state();
       return s.mode==='surface'&&s.planet===131?s:null; })()`);
     if (!charterRelandOutcome(reloaded, baseline, expectedChapter, expectedStage)) {
@@ -6524,10 +7303,35 @@ try {
     }
     throw new Error(`${label} did not reach its desktop-panel outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
+  const waitPanelF4Writable = async (
+    label, { previousToken = null, timeoutMs = 15_000 } = {},
+  ) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      try {
+        const snapshot = await evalPanel(`(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
+          const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
+            state:state?{persistence:state.persistence}:null,raw,
+            token:typeof S?.documentToken==='string'?S.documentToken:null};})()`);
+        const assessment = assessF4ReadyAuthority({ ...snapshot, previousToken });
+        if (assessment.ok) return snapshot;
+        last = { assessment, persistence: snapshot.state?.persistence, raw: snapshot.raw };
+      } catch (error) {
+        last = { context: String(error?.message || error) };
+      }
+      await sleep(200);
+    }
+    throw new Error(`${label} did not acquire coupled writable F4 authority within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  await waitPanelF4Writable('CHARTER PANEL REFRESH predecessor F4 authority');
   const panelImportToken = await sliceToken(panelSession);
   try { await evalPanel(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(SATURATED_CHARTER_RAW)})`); }
   catch { /* successful import replaces the document */ }
   await waitForSlice(panelSession, 'CHARTER PANEL REFRESH import', { previousToken: panelImportToken });
+  await waitPanelF4Writable('CHARTER PANEL REFRESH replacement F4 authority', {
+    previousToken: panelImportToken,
+  });
   await waitPanelValue('CHARTER PANEL REFRESH system + rail restore', `(()=>{ const s=window.__CF_SLICE__.api.state(),
     rail=document.getElementById('railcharters'),r=rail?.getBoundingClientRect(),
     x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null;
@@ -6604,6 +7408,10 @@ try {
      ordinary 1.8s toast de-bounce. Exercise them before that window closes,
      and prove neither future nor corrupt bytes are rewritten. */
   const setProtectedPrimary = async (raw, backup) => {
+    const staged = await evalPh(`(async()=>{const stage=window.__CF_SLICE__?.api?.__smokeStageStoredV4;
+      return typeof stage==='function'?stage(${JSON.stringify(raw)},${JSON.stringify(backup)}):false;})()`)
+      .catch(() => false);
+    if (staged) return true;
     const backupWrite = backup === undefined
       ? "os.delete('save_bak');"
       : `os.put(${JSON.stringify(backup)},'save_bak');`;
@@ -6784,41 +7592,74 @@ try {
       + JSON.stringify(legacyUpgrade));
   }
 
+  /* The transient-read probe owns the database in isolation. Older live
+     targets can otherwise adopt its deliberately staged v4 source and make
+     the retry page's write count describe a different document. Everything
+     below runs in fresh, short-lived targets. */
+  await Promise.all([
+    send('Target.closeTarget', { targetId: t.targetId }),
+    send('Target.closeTarget', { targetId: t2.targetId }),
+  ]);
+
   /* A transient first read is UNKNOWN—not permission to recover a stale
      backup or overwrite a primary that appears on retry. Inject the failure
      at the real IDB request boundary, then press the real canvas: existing
      bytes must cause a reload through the full loader with zero first-page
      primary writes; only a proven-empty retry may authorize the first save. */
+  const transientPreClickOutcome = (value, seedRaw) => value?.writes === 0
+    && Array.isArray(value?.writeTrace) && value.writeTrace.length === 0
+    && value?.raw === (seedRaw === undefined ? '' : seedRaw)
+    && value?.authority?.revisionRaw === null && value?.authority?.playerSchema === null
+    && value?.authority?.carrierVersion === null
+    && Array.isArray(value?.authority?.receiptKeys) && value.authority.receiptKeys.length === 0
+    && value?.persistence?.bootKind === 'transient-protected'
+    && value?.persistence?.hold === 'transient-read'
+    && value?.persistence?.runtime === null;
   const transientRetryProbe = async (seedRaw) => {
-    if (seedRaw === undefined) {
-      await evalPh(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice'); q.onerror=()=>reject(q.error);
-        q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite'),os=tx.objectStore('meta');
-          os.delete('save'); os.delete('save_bak'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
-    } else await setProtectedPrimary(seedRaw);
     const target = await send('Target.createTarget', { url: 'about:blank' });
     const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
     const retrySession = attached.sessionId;
     await send('Runtime.enable', {}, retrySession);
     await send('Page.enable', {}, retrySession);
+    await navigateToSlice(retrySession, URL0, 'transient-read fixture staging boot');
+    const staged = await send('Runtime.evaluate', {
+      expression: `(async()=>{const stage=window.__CF_SLICE__?.api?.__smokeStageStoredV4;
+        if(typeof stage!=='function')return false;const deadline=performance.now()+6000;
+        do{if(await stage(${seedRaw === undefined ? 'null' : JSON.stringify(seedRaw)}))return true;
+          await new Promise((resolve)=>setTimeout(resolve,50));}while(performance.now()<deadline);return false;})()`,
+      returnByValue: true, awaitPromise: true,
+    }, retrySession);
+    if (staged.exceptionDetails || staged.result.value !== true) {
+      await send('Target.closeTarget', { targetId: target.targetId });
+      throw new Error('transient-read fixture staging did not quiesce and clear the isolated database');
+    }
     await send('Page.addScriptToEvaluateOnNewDocument', { source: `(() => {
       const first = sessionStorage.getItem('__cf_transient_injected') !== '1';
-      sessionStorage.setItem('__cf_transient_active', first ? '1' : '0');
-      if (!first) return;
-      sessionStorage.setItem('__cf_transient_injected', '1');
-      sessionStorage.setItem('__cf_transient_primary_writes', '0');
-      const get0 = IDBObjectStore.prototype.get;
-      IDBObjectStore.prototype.get = function(key) {
-        if (this.name === 'meta' && key === 'save' && sessionStorage.getItem('__cf_transient_failed') !== '1') {
-          sessionStorage.setItem('__cf_transient_failed', '1');
-          throw new DOMException('injected first primary read failure', 'UnknownError');
-        }
-        return get0.apply(this, arguments);
-      };
+      if (first) {
+        sessionStorage.setItem('__cf_transient_injected', '1');
+        sessionStorage.setItem('__cf_transient_primary_writes', '0');
+        sessionStorage.setItem('__cf_transient_primary_trace', '[]');
+        const get0 = IDBObjectStore.prototype.get;
+        IDBObjectStore.prototype.get = function(key) {
+          if (this.name === 'meta' && key === 'save' && sessionStorage.getItem('__cf_transient_failed') !== '1') {
+            sessionStorage.setItem('__cf_transient_failed', '1');
+            throw new DOMException('injected first primary read failure', 'UnknownError');
+          }
+          return get0.apply(this, arguments);
+        };
+      }
       const put0 = IDBObjectStore.prototype.put;
       IDBObjectStore.prototype.put = function(value, key) {
-        if (this.name === 'meta' && key === 'save' && sessionStorage.getItem('__cf_transient_active') === '1') {
+        if (this.name === 'meta' && key === 'save') {
           const n = Number(sessionStorage.getItem('__cf_transient_primary_writes') || '0');
           sessionStorage.setItem('__cf_transient_primary_writes', String(n + 1));
+          let parsed=null;try{parsed=JSON.parse(String(value))}catch{}
+          const trace=JSON.parse(sessionStorage.getItem('__cf_transient_primary_trace')||'[]');
+          trace.push({length:String(value).length,v:parsed?.v??null,me:parsed?.me??null,
+            tut:parsed?.tut??null,epoch:parsed?.epoch??null,viewType:parsed?.view?.type??null,
+            codexCount:Array.isArray(parsed?.codex)?parsed.codex.length:null,
+            landCount:Array.isArray(parsed?.land)?parsed.land.length:null,at:parsed?.at??null});
+          sessionStorage.setItem('__cf_transient_primary_trace',JSON.stringify(trace));
         }
         return put0.apply(this, arguments);
       };
@@ -6826,33 +7667,118 @@ try {
     await navigateToSlice(retrySession, URL0, 'transient-read retry boot');
     await sleep(900);
     const retryBootToken = await sliceToken(retrySession);
+    const preClickResult = await send('Runtime.evaluate', { expression: `(async()=>{
+      const state=window.__CF_SLICE__.api.state(),raw=await (${READ_PRIMARY_EXPRESSION}),
+        authority=await (${READ_F4_AUTHORITY_EXPRESSION});return {
+          writes:Number(sessionStorage.getItem('__cf_transient_primary_writes')||'0'),
+          writeTrace:JSON.parse(sessionStorage.getItem('__cf_transient_primary_trace')||'[]'),
+          persistence:state.persistence,raw,authority};})()`,
+      returnByValue: true, awaitPromise: true }, retrySession);
+    if (preClickResult.exceptionDetails
+      || !transientPreClickOutcome(preClickResult.result.value, seedRaw)) {
+      await send('Target.closeTarget', { targetId: target.targetId });
+      throw new Error('transient-read protected document mutated before retry: '
+        + JSON.stringify(preClickResult.exceptionDetails || preClickResult.result.value));
+    }
+    const preClick = preClickResult.result.value;
     await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
-    if (seedRaw !== undefined) {
-      await waitForSlice(retrySession, 'transient-read existing-primary reload', { previousToken: retryBootToken });
-    }
-    await sleep(seedRaw === undefined ? 900 : 1700);
+    await waitForSlice(retrySession, 'transient-read authoritative reload', { previousToken: retryBootToken });
+    const expectedWrites = seedRaw === undefined ? 3 : 2;
+    await send('Runtime.evaluate', { expression: `(async()=>{const deadline=performance.now()+6000;
+      while(performance.now()<deadline){const writes=Number(sessionStorage.getItem('__cf_transient_primary_writes')||'0'),
+        authority=await (${READ_F4_AUTHORITY_EXPRESSION});if(writes>=${expectedWrites}
+          &&authority.revision>=${expectedWrites})return true;
+        await new Promise((resolve)=>setTimeout(resolve,50));}return false;})()`,
+      returnByValue: true, awaitPromise: true }, retrySession);
     const result = await send('Runtime.evaluate', { expression: `new Promise((resolve,reject)=>{ const state=window.__CF_SLICE__.api.state();
-      const q=indexedDB.open('cf-v2-slice'); q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result;
-        const tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save'); g.onsuccess=()=>{
-          const raw=g.result===undefined?null:String(g.result); db.close(); resolve({name:state.save.name,
-            writes:Number(sessionStorage.getItem('__cf_transient_primary_writes')||'0'), raw}); }; g.onerror=()=>reject(g.error); }; })`,
+      const failure=(stage,error)=>new Error(stage+': '+String(error?.name||error?.message||error||'unknown IndexedDB failure'));
+      const q=indexedDB.open('cf-v2-slice'); q.onerror=()=>reject(failure('open',q.error)); q.onsuccess=()=>{ const db=q.result;
+      const read=()=>new Promise((ok,bad)=>{const tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
+          g.onsuccess=()=>ok(g.result===undefined?null:String(g.result));g.onerror=()=>bad(failure('read',g.error))});
+        void (async()=>{const raw=await read(),writes=Number(sessionStorage.getItem('__cf_transient_primary_writes')||'0'),
+          writeTrace=JSON.parse(sessionStorage.getItem('__cf_transient_primary_trace')||'[]'),
+          authority=await (${READ_F4_AUTHORITY_EXPRESSION});
+          const control=db.transaction('meta','readwrite');
+          const aborted=new Promise((ok,bad)=>{control.onabort=()=>control.error===null
+            ?ok(true):bad(failure('abort-control',control.error));
+            control.oncomplete=()=>bad(failure('abort-control','transaction committed'))});
+          control.objectStore('meta').put(raw,'save');control.abort();await aborted;
+          const afterControlRaw=await read(),writesAfterControl=Number(sessionStorage.getItem('__cf_transient_primary_writes')||'0');
+          db.close();resolve({name:state.save.name,writes,writesAfterControl,
+            controlRawStable:afterControlRaw===raw,raw,writeTrace,authority});
+        })().catch(reject); }; })`,
       returnByValue: true, awaitPromise: true }, retrySession);
     await send('Target.closeTarget', { targetId: target.targetId });
     if (result.exceptionDetails) throw new Error('transient retry probe threw: ' + JSON.stringify(result.exceptionDetails));
-    return result.result.value;
+    return { ...result.result.value, preClick };
   };
   const existingRetry = await transientRetryProbe(vrRaw);
-  if (existingRetry.name !== 'Dakk' || existingRetry.writes !== 0) {
+  const transientWriteSequence = (value, expected) => Array.isArray(value.writeTrace)
+    && value.writeTrace.length === expected.count
+    && value.writeTrace.every((entry, index) => entry.v === 4 && entry.me === expected.me
+      && entry.tut === expected.tut && entry.epoch === expected.epoch
+      && entry.viewType === expected.viewType && entry.codexCount === expected.codexCount
+      && entry.landCount === expected.landCount && Number.isFinite(entry.at)
+      && entry.length > 0 && (index === 0 || entry.at >= value.writeTrace[index - 1].at))
+    && value.writes === expected.count && value.writesAfterControl === expected.count + 1
+    && value.authority?.revisionRaw === String(expected.count)
+    && value.authority?.revision === expected.count && value.authority?.playerSchema === 5
+    && value.authority?.carrierVersion === 1
+    && Number.isSafeInteger(value.authority?.seed) && value.authority.seed >= 0
+    && value.authority.seed <= 0xFFFF_FFFF && value.authority?.ordinal === 0
+    && JSON.stringify(value.authority?.draws) === '{}';
+  const existingRetryOutcome = (value) => {
+    let payload = null;
+    try { payload = JSON.parse(value.raw); } catch { return false; }
+    return value.name === 'Dakk' && value.controlRawStable === true
+      && transientPreClickOutcome(value.preClick, vrRaw)
+      && transientWriteSequence(value, {
+        count: 2, me: 'Dakk', tut: 1, epoch: 12, viewType: 'planet', codexCount: 3, landCount: 6,
+      })
+      && payload?.v === 4 && payload?.me === 'Dakk' && payload?.essence === 5000
+      && payload?.epoch === 12 && payload?.view?.type === 'planet' && payload?.view?.pseed === 133
+      && Array.isArray(payload?.codex) && payload.codex.length === 3
+      && Array.isArray(payload?.log) && payload.log.length === 3
+      && JSON.stringify(payload?.land) === JSON.stringify([133, 134, 101, 102, 103, 201]);
+  };
+  if (!existingRetryOutcome(existingRetry)) {
     fails.push('TRANSIENT READ retry overwrote/ignored an existing primary instead of reloading it: ' + JSON.stringify(existingRetry));
   }
   const freshRetry = await transientRetryProbe(undefined);
-  let freshPayload = null;
-  try { freshPayload = JSON.parse(freshRetry.raw); } catch { /* diagnostic below */ }
-  if (freshRetry.writes !== 1 || !freshPayload || freshPayload.v !== 4
-    || !Array.isArray(freshPayload.codex) || !Array.isArray(freshPayload.land)) {
-    fails.push('TRANSIENT READ retry did not authorize exactly one first write after proving the store empty: '
+  const freshRetryOutcome = (value) => {
+    let payload = null;
+    try { payload = JSON.parse(value.raw); } catch { return false; }
+    return value.controlRawStable === true
+      && transientPreClickOutcome(value.preClick, undefined)
+      && transientWriteSequence(value, {
+        count: 3, me: '', tut: 0, epoch: 0, viewType: 'star', codexCount: 0, landCount: 0,
+      })
+      && payload?.v === 4 && payload?.me === '' && payload?.essence === 0 && payload?.epoch === 0
+      && payload?.view?.type === 'star' && payload?.view?.star?.seed === 424242
+      && Array.isArray(payload.codex) && payload.codex.length === 0
+      && Array.isArray(payload.land) && payload.land.length === 0;
+  };
+  if (!freshRetryOutcome(freshRetry)) {
+    fails.push('TRANSIENT READ retry did not perform the exact three-write fresh F4 bootstrap after proving the store empty: '
       + JSON.stringify(freshRetry));
+  }
+  const existingTraceControl = structuredClone(existingRetry);
+  if (existingTraceControl.writeTrace?.[0]) existingTraceControl.writeTrace[0].me = '';
+  const freshPreClickControl = structuredClone(freshRetry);
+  if (freshPreClickControl.preClick) {
+    freshPreClickControl.preClick.writes = 1;
+    freshPreClickControl.preClick.writeTrace = [structuredClone(freshRetry.writeTrace[0])];
+  }
+  const freshRevisionControl = structuredClone(freshRetry);
+  if (freshRevisionControl.authority) freshRevisionControl.authority.revision += 1;
+  if (existingRetryOutcome({ ...existingRetry, writes: 3, writesAfterControl: 4 })
+    || existingRetryOutcome(existingTraceControl)
+    || freshRetryOutcome({ ...freshRetry, writes: 2, writesAfterControl: 3 })
+    || freshRetryOutcome({ ...freshRetry, writes: 4, writesAfterControl: 5 })
+    || freshRetryOutcome(freshPreClickControl)
+    || freshRetryOutcome(freshRevisionControl)) {
+    fails.push('TRANSIENT READ WRITE-SEQUENCE CONTROL FAILED — count, semantic trace, or revision drift stayed green');
   }
 
   /* 4e-phone. A FRESH PHONE starts with training active. Prove its card
@@ -6914,10 +7840,9 @@ try {
      staging page for the full D-TRAIN Finish journey below. Closing it after
      transaction completion prevents its live lesson/autosave from racing the
      next document. */
-  const dtrainFullFixtureSeeded = await evalTp(`new Promise((resolve,reject)=>{const q=indexedDB.open('cf-v2-slice');
-    q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('meta','readwrite');
-      tx.objectStore('meta').put(${JSON.stringify(DTRAIN_FULL_FINISH_RAW)},'save');
-      tx.oncomplete=()=>{db.close();resolve(true)};tx.onerror=()=>reject(tx.error);};})`);
+  const dtrainFullFixtureSeeded = await evalTp(
+    `window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(DTRAIN_FULL_FINISH_RAW)})`,
+  );
   if (!dtrainFullFixtureSeeded) fails.push('D-TRAIN FULL FINISH: genuine fixture was not staged on the phone origin');
   await send('Target.closeTarget', { targetId: t3p.targetId });
 
@@ -6967,6 +7892,15 @@ try {
   if (await step() !== 'welcome') fails.push('DRILL: no welcome on the genuine-checkpoint origin: ' + await step());
   const dtrainFullBoot = await evalT(`window.__CF_SLICE__.api.state()`);
   const dtrainFullBootRaw = await evalT(READ_PRIMARY_EXPRESSION);
+  const dtrainFullBootEvidence = {
+    state: dtrainFullBoot,
+    stored: dtrainFullBootRaw,
+    authority: await evalT(READ_F4_AUTHORITY_EXPRESSION),
+    migration: await evalT(READ_V5_MIGRATION_EVIDENCE_EXPRESSION),
+  };
+  const dtrainFullBootAssessment = assessDtrainMigratedBoot(
+    dtrainFullBootEvidence, DTRAIN_FULL_FINISH_RAW,
+  );
   const dtrainFullBootRoute = dtrainStateRouteAssessment(dtrainFullBoot, 'sol');
   if (dtrainFullBoot.trainingCheckpointKind !== 'legacy-v1'
     || dtrainFullBoot.mode !== 'system' || dtrainFullBoot.gal !== 999 || dtrainFullBoot.star !== 424242
@@ -6974,11 +7908,11 @@ try {
     || dtrainFullBoot.navWorldKey !== null || !dtrainFullBootRoute.ok
     || !dtrainFullBoot.trainingCheckpointWriteHeld || dtrainFullBoot.tutDone
     || JSON.stringify(Object.keys(dtrainFullBoot.tutSnapshotPending || {})) !== JSON.stringify(DTRAIN_LEGACY_KEYS)
-    || dtrainFullBootRaw !== DTRAIN_FULL_FINISH_RAW
+    || !dtrainFullBootAssessment.ok
     || JSON.stringify(dtrainFullBoot.save.landed) !== JSON.stringify([901])) {
-    fails.push('D-TRAIN FULL FINISH: genuine eleven-key checkpoint did not boot byte-exact before the real drill: '
+    fails.push('D-TRAIN FULL FINISH: genuine eleven-key checkpoint did not boot from retained source into a canonical migrated baseline: '
       + JSON.stringify({ state: dtrainFullBoot, routeAssessment: dtrainFullBootRoute,
-        byteExact: dtrainFullBootRaw === DTRAIN_FULL_FINISH_RAW }));
+        assessment: dtrainFullBootAssessment }));
   }
   const queuedRelease = await evalT(`(()=>{ const S=window.__CF_SLICE__,opened=S.api.showReleaseFixture(${JSON.stringify(RELEASE_FIXTURE_VERSION)}),s=S.api.state();
     return {opened,training:s.tutActive,step:s.tutStep,panel:s.panelOpen,pending:s.releasePending,rnSeen:s.rnSeen}; })()`);
@@ -7294,9 +8228,9 @@ try {
   const dtrainFinishNativeArmed = await evalT(dtrainNativeWriteArmExpression(dtrainFinishNativeLabel));
   const dtrainFinishMark = events.length;
   const dtrainGradRaw = await evalT(READ_PRIMARY_EXPRESSION);
-  if (dtrainGradRaw !== DTRAIN_FULL_FINISH_RAW) {
+  if (dtrainGradRaw !== dtrainFullBootRaw) {
     fails.push('D-TRAIN FULL FINISH HOLD: lesson practice rewrote primary storage before the completion transaction: '
-      + JSON.stringify({ rawStable: false }));
+      + JSON.stringify({ canonicalBaselineStable: false }));
   }
   const dtrainFinishArmed = await evalT(`window.__CF_SLICE__.api.__smokeArmImportRace(${JSON.stringify(dtrainGradRaw)})`);
   await dispatchKeyPress(tr, 'Enter', 'Enter');
@@ -7446,6 +8380,129 @@ try {
     fails.push('DRILL/RELEASE QUEUE: the seen fixture repeated after completion reload: ' + JSON.stringify(done4Repeat));
   }
 
+  /* Two native documents cross the production fresh initializer together.
+     Exactly one remains the fresh winner; the not-fresh loser must adopt the
+     stable current-v5 winner, then become writable after the winner closes. */
+  const attachF4ControlTarget = async (url, bindings) => {
+    const target = await send('Target.createTarget', { url: 'about:blank' });
+    const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+    const session = attached.sessionId;
+    await send('Runtime.enable', {}, session);
+    await send('Page.enable', {}, session);
+    for (const name of bindings) await send('Runtime.addBinding', { name }, session);
+    await send('Emulation.setDeviceMetricsOverride', { width: 800, height: 600, deviceScaleFactor: 1, mobile: false }, session);
+    await send('Page.navigate', { url }, session);
+    return { targetId: target.targetId, session };
+  };
+  const evalF4Control = async (session, expression) => {
+    const result = await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }, session);
+    if (result.exceptionDetails) throw new Error('F4 control eval threw: ' + JSON.stringify(result.exceptionDetails));
+    return result.result.value;
+  };
+  const raceMark = events.length;
+  const [freshRaceA, freshRaceB] = await Promise.all([
+    attachF4ControlTarget(URL6, ['__cfF4FreshInitRaceGate']),
+    attachF4ControlTarget(URL6, ['__cfF4FreshInitRaceGate']),
+  ]);
+  const raceGateDeadline = Date.now() + 10000;
+  let raceGateEntries = [];
+  while (Date.now() < raceGateDeadline) {
+    raceGateEntries = [freshRaceA, freshRaceB].flatMap(({ session }) =>
+      bindingPayloadsSince(session, raceMark, '__cfF4FreshInitRaceGate'));
+    if (raceGateEntries.length === 2) break;
+    await sleep(25);
+  }
+  if (raceGateEntries.length !== 2
+    || new Set(raceGateEntries.map((entry) => entry.documentToken)).size !== 2
+    || raceGateEntries.some((entry) => entry.schema !== 'cf-v2-f4-fresh-race/v1'
+      || entry.stage !== 'initializer-ready')) {
+    fails.push('F4 FRESH INIT RACE: both native documents did not reach the exact pre-initializer gate: '
+      + JSON.stringify(raceGateEntries));
+  }
+  await evalF4Control(freshRaceA.session,
+    `localStorage.setItem('cf_slice_f4_fresh_race_release','release')`);
+  await Promise.all([
+    waitForSlice(freshRaceA.session, 'F4 fresh race A'),
+    waitForSlice(freshRaceB.session, 'F4 fresh race B'),
+  ]);
+  const freshRacePairs = await Promise.all([freshRaceA, freshRaceB].map(async (entry) => ({
+    ...entry,
+    state: await evalF4Control(entry.session, `window.__CF_SLICE__.api.state()`),
+  })));
+  const freshWinner = freshRacePairs.find((entry) => entry.state.persistence.bootKind === 'fresh-v5');
+  const freshLoser = freshRacePairs.find((entry) => entry.state.persistence.bootKind === 'current-v5');
+  let freshLoserAfter = null;
+  let freshLoserRawAfter = null;
+  if (freshWinner && freshLoser) {
+    await send('Target.closeTarget', { targetId: freshWinner.targetId });
+    const writableDeadline = Date.now() + 13000;
+    while (Date.now() < writableDeadline) {
+      try {
+        freshLoserAfter = await evalF4Control(freshLoser.session, `window.__CF_SLICE__.api.state()`);
+        freshLoserRawAfter = await evalF4Control(freshLoser.session, READ_F4_AUTHORITY_EXPRESSION);
+        if (freshLoserAfter?.persistence?.runtime?.leaseOwned === true
+          && freshLoserAfter?.persistence?.mutationBlocked === false
+          && freshLoserAfter?.persistence?.runtime?.revision === freshLoserRawAfter?.revision) break;
+      } catch { /* a convergence reload may replace the execution context */ }
+      await sleep(100);
+    }
+    await send('Target.closeTarget', { targetId: freshLoser.targetId });
+  } else {
+    await Promise.all(freshRacePairs.map((entry) => send('Target.closeTarget', { targetId: entry.targetId })));
+  }
+  const freshRaceStates = freshRacePairs.map((entry) => entry.state);
+  const freshRaceAssessment = assessFreshInitializationRace(freshRaceStates, freshLoserAfter, freshLoserRawAfter);
+  if (!freshRaceAssessment.ok) {
+    fails.push('F4 FRESH INIT RACE: not-fresh loser did not adopt and become writable on the stable winner: '
+      + JSON.stringify({ assessment: freshRaceAssessment, states: freshRaceStates,
+        loserAfter: freshLoserAfter, loserRawAfter: freshLoserRawAfter }));
+  }
+  const freshRaceControls = [
+    assessFreshInitializationRace(freshRaceStates.map((state, index) => index === 0
+      ? { ...state, persistence: { ...state.persistence, bootKind: 'corrupt-protected' } } : state), freshLoserAfter, freshLoserRawAfter),
+    assessFreshInitializationRace(freshRaceStates, freshLoserAfter
+      ? { ...freshLoserAfter, persistence: { ...freshLoserAfter.persistence, mutationBlocked: true } } : null, freshLoserRawAfter),
+  ];
+  if (freshRaceControls.some((control) => control.ok)) {
+    fails.push('F4 FRESH INIT RACE CONTROL FAILED — corrupt/read-only loser evidence stayed green: '
+      + JSON.stringify(freshRaceControls));
+  }
+
+  /* Runtime binding holds this one fresh document logically hidden during
+     boot. Its raw player row must have no ephemeral authority; the explicit
+     show seam then acquires and commits seed+ordinal before answerability. */
+  const hiddenTarget = await attachF4ControlTarget(URL7, ['__cfF4StartHidden']);
+  await waitForSlice(hiddenTarget.session, 'F4 hidden-first boot');
+  const hiddenReadyDeadline = Date.now() + 6000;
+  while (Date.now() < hiddenReadyDeadline) {
+    const ready = await evalF4Control(hiddenTarget.session,
+      `window.__CF_SLICE__.api.state().persistence.ready`);
+    if (ready === true) break;
+    await sleep(25);
+  }
+  const hiddenBefore = await evalF4Control(hiddenTarget.session, `window.__CF_SLICE__.api.state()`);
+  const hiddenRawBefore = await evalF4Control(hiddenTarget.session, READ_F4_AUTHORITY_EXPRESSION);
+  await evalF4Control(hiddenTarget.session, `window.__CF_SLICE__.api.__smokeShowF4()`);
+  const hiddenAfter = await evalF4Control(hiddenTarget.session, `window.__CF_SLICE__.api.state()`);
+  const hiddenRawAfter = await evalF4Control(hiddenTarget.session, READ_F4_AUTHORITY_EXPRESSION);
+  await send('Target.closeTarget', { targetId: hiddenTarget.targetId });
+  const hiddenBootstrapBundle = { before: hiddenBefore, after: hiddenAfter, rawBefore: hiddenRawBefore, rawAfter: hiddenRawAfter };
+  const hiddenBootstrapAssessment = assessHiddenFirstBootstrap(hiddenBootstrapBundle);
+  if (!hiddenBootstrapAssessment.ok) {
+    fails.push('F4 HIDDEN-FIRST BOOT: seed was not durable before answerability/accrual after acquisition: '
+      + JSON.stringify({ assessment: hiddenBootstrapAssessment, bundle: hiddenBootstrapBundle }));
+  }
+  const hiddenBootstrapControls = [
+    assessHiddenFirstBootstrap({ ...hiddenBootstrapBundle, before: { ...hiddenBefore, persistence: {
+      ...hiddenBefore.persistence, runtime: { ...hiddenBefore.persistence.runtime, answerable: true },
+    } } }),
+    assessHiddenFirstBootstrap({ ...hiddenBootstrapBundle, rawAfter: { ...hiddenRawAfter, seed: (hiddenRawAfter.seed + 1) >>> 0 } }),
+  ];
+  if (hiddenBootstrapControls.some((control) => control.ok)) {
+    fails.push('F4 HIDDEN-FIRST CONTROL FAILED — premature answerability or ephemeral seed evidence stayed green: '
+      + JSON.stringify(hiddenBootstrapControls));
+  }
+
   /* 5. zero console errors / exceptions across the whole run */
   const errs = events.filter((e) =>
     (e.method === 'Runtime.exceptionThrown') ||
@@ -7460,10 +8517,21 @@ try {
 } finally {
   releaseSlowSpecies();
   try { await browser.close(); } catch (e) { fails.push('browser close: ' + e.message); }
-  server.close(); server2.close(); server3.close(); server4.close(); server5.close();
+  server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server6.close(); server7.close();
 }
 
-if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
+if (fails.length) {
+  const failureTitle = (message) => {
+    const compact = String(message).replace(/\s+/g, ' ').trim();
+    const boundary = compact.search(/(?:: | — )/);
+    return (boundary > 0 ? compact.slice(0, boundary) : compact).slice(0, 120);
+  };
+  console.error(`SLICE SMOKE: FAIL — ${fails.length} finding${fails.length === 1 ? '' : 's'}`);
+  console.error('SLICE SMOKE: FAILURE TITLES\n'
+    + fails.map((message, index) => `  ${index + 1}. ${failureTitle(message)}`).join('\n'));
+  console.error('SLICE SMOKE: FAILURE DETAILS\n  - ' + fails.join('\n  - '));
+  process.exit(1);
+}
 console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · READ-ONLY SHIPYARD (real right-rail open/Close, exact chassis/hardpoints/systems, one owned preview, zero retained work) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);
