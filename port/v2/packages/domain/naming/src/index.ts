@@ -5,6 +5,8 @@
 import { mulberry32, hashInt } from '@cf/domain-rand';
 import { HOME_GAL_SEED, SOL_SEED } from '@cf/domain-worldconfig';
 
+export * from './cleanname.verbatim.js';
+
 const SYL = ['an', 'dro', 'vel', 'tar', 'ka', 'ri', 'os', 'um', 'ze', 'phy', 'lon', 'ae', 'cy', 'gn', 'ur', 'sa', 'or', 'ion', 'per', 'sei'];
 
 export function properName(seed: number, parts: number): string {
