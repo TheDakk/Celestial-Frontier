@@ -337,6 +337,7 @@ export class EngineeringPanelController {
   #disposed = false;
   #listenerInstalled = false;
   #focusReturn: HTMLElement | null = null;
+  #deferredFocusKey: string | null = null;
   #previewOwner: ShipyardPreviewOwner | null = null;
 
   constructor(options: EngineeringPanelControllerOptions) {
@@ -374,6 +375,13 @@ export class EngineeringPanelController {
       this.#pending = null;
       this.#emissionLocked = false;
       this.#applyActionAvailability();
+      const deferred = this.#deferredFocusKey;
+      this.#deferredFocusKey = null;
+      if (this.#active && deferred !== null) {
+        const target = [...this.#body.querySelectorAll<HTMLElement>('[data-focus-key]')]
+          .find((element) => element.dataset.focusKey === deferred && !this.#disabled(element)) ?? null;
+        this.#restoreElement(target);
+      }
       return;
     }
     const copy = copyRequest(request);
@@ -434,6 +442,7 @@ export class EngineeringPanelController {
     this.#lastRequest = null;
     this.#emissionLocked = false;
     this.#focusReturn = null;
+    this.#deferredFocusKey = null;
     this.#disposed = true;
     this.#restoreElement(restore);
   }
@@ -456,6 +465,7 @@ export class EngineeringPanelController {
     const restore = this.#focusReturn;
     this.#active = false;
     this.#focusReturn = null;
+    this.#deferredFocusKey = null;
     this.#disposeView();
     this.#restoreElement(restore);
   };
@@ -866,6 +876,7 @@ export class EngineeringPanelController {
   }
 
   #restoreView(receipt: ViewReceipt | null): void {
+    this.#deferredFocusKey = null;
     if (receipt === null) return;
     const openSectionIds = new Set(receipt.openSectionIds);
     for (const section of this.#body.querySelectorAll<HTMLDetailsElement>(
@@ -873,10 +884,20 @@ export class EngineeringPanelController {
     )) {
       section.open = openSectionIds.has(section.dataset.engineeringSection!);
     }
-    const focusTarget = receipt.focusKey === null ? null
+    const keyedTarget = receipt.focusKey === null ? null
       : [...this.#body.querySelectorAll<HTMLElement>('[data-focus-key]')]
-        .find((element) => element.dataset.focusKey === receipt.focusKey && !this.#disabled(element)) ?? null;
-    if (this.#restoreElement(focusTarget)) return;
+        .find((element) => element.dataset.focusKey === receipt.focusKey) ?? null;
+    if (keyedTarget !== null && !this.#disabled(keyedTarget)
+      && this.#restoreElement(keyedTarget)) return;
+    /* A still-available action is disabled only by the pending latch while
+       Main publishes the settled read model. Retain that semantic target and
+       restore it after setPending(null) unlocks the exact replacement. An
+       action whose new model is owned/unavailable deliberately falls through
+       to its row instead. */
+    if (keyedTarget !== null && this.#disabled(keyedTarget) && this.#isBusy()
+      && keyedTarget.dataset.modelEnabled === 'true') {
+      this.#deferredFocusKey = receipt.focusKey;
+    }
     const semanticTarget = receipt.semanticKey === null ? null
       : [...this.#body.querySelectorAll<HTMLElement>('[data-semantic-key]')]
         .find((element) => element.dataset.semanticKey === receipt.semanticKey) ?? null;

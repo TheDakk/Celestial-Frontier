@@ -70,7 +70,6 @@ import { PixiManagedResourceOwner } from './pixi-managed-resource-owner.js';
 import { installBatchTextureArrayUidCompaction } from './pixi-batch-texture-array.js';
 import { createSceneText } from './scene-text.js';
 import {
-  ShipyardPreviewOwner,
   shipVisualStateKey,
 } from './shipyard-preview.js';
 import { canonicalWorldRoster } from './world-roster.js';
@@ -96,7 +95,10 @@ import {
   type CanonicalCF1Address, type ProvenGalaxy, type ProvenStar, type ProvenPlanet,
   type ShipVisualState,
 } from '@cf/scene';
-import type { EngineeringStateV2 } from '@cf/domain-opportunity';
+import {
+  SCENE_ENGINEERING_ADDRESS_RESOLVER,
+  type EngineeringStateV2,
+} from '@cf/domain-opportunity';
 import { galaxyProfile, galaxyHaze, systemFor, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
 import { SYS_R, UCELL, OBS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED, SOL_POS } from '@cf/domain-worldconfig';
 import { galaxyName, starName, properName } from '@cf/domain-naming';
@@ -115,11 +117,12 @@ import {
   createRevisionedRepository, initializeFreshV5, migrateStoredV4ToV5,
   prepareV5Replacement, readF4Authority, readRevisionedSaveV5WithRecovery,
   arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
-  prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror, readArc2Loot,
+  prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror,
+  readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
   importSaveV2, exportSaveV2,
   type SaveStateV2, type ContentRegistry, type Arc2LootStateV1,
   type ImportRouteIngressV2, type ImportTrainingSnapshotIngressV2,
-  type V5Extensions,
+  type StorageBackend, type V5Extensions,
 } from '@cf/persistence';
 import {
   MAX_GEAR_CAPACITY,
@@ -132,14 +135,29 @@ import {
 } from './inventory-actions.js';
 import { InventoryPanelController } from './inventory-panel.js';
 import {
+  EngineeringPanelController,
+  type EngineeringPanelActionRequest,
+} from './engineering-panel.js';
+import {
+  createProductActionCoordinator,
+  createProductActionDiagnosticHold,
+} from './product-action-coordinator.js';
+import { projectEngineeringPanelReadModel } from './engineering-panel-model.js';
+import {
+  deriveArc3FixedFabricationAction,
   deriveArc3MineAction,
+  deriveArc3ResearchAction,
   deriveArc3SkimAction,
   prepareArc3AppBootstrap,
   publishArc3LegacyCompatibilityFields,
+  publishArc3FixedFabricationFields,
   publishArc3MiningFields,
+  publishArc3ResearchFields,
   publishArc3SkimFields,
   stageArc3BootstrapLegacyProjection,
   verifyArc3CommittedAction,
+  verifyArc3CommittedFixedFabricationAction,
+  verifyArc3CommittedResearchAction,
   type Arc3AddressInventoryDiagnostics,
   type Arc3AppDerivation,
   type Arc3AppDerivationOutcome,
@@ -394,7 +412,14 @@ const heartbeatF4 = async (): Promise<void> => {
       && !await ensureF4SeedBootstrap(runtime)) return;
     if (f4RuntimeMayAnswer(runtime)) runtime.setAnswerable(app.ticker?.started === true);
   }
-  if (checkpointDue) await persistView();
+  /* A receipt-bearing product action may already own activePersist while awaiting this
+     heartbeat. Queuing this heartbeat's checkpoint behind that same barrier
+     would make the action await the heartbeat while the heartbeat awaits the
+     action. A later ordinary checkpoint remains free to queue after settle. */
+  if (checkpointDue && !productActionInFlight) await persistView();
+  if (heartbeatOwned && openPanelId() === 'shipyard' && !productActionInFlight) {
+    refreshEngineeringPanelState();
+  }
 };
 const settleF4Heartbeat = async (): Promise<void> => {
   if (f4HeartbeatInFlight) await f4HeartbeatInFlight;
@@ -801,7 +826,24 @@ function setTrail(segs: string[]): void {
   trailEl.innerHTML = segs.map((s, i) =>
     `<span class="seg${i === segs.length - 1 ? ' cur' : ''}">${esc(s)}</span>`).join('<span class="sep">›</span>');
 }
-const persistenceBackend = createIndexedDBBackend('cf-v2-slice');
+const indexedDBPersistenceBackend = createIndexedDBBackend('cf-v2-slice');
+let smokeRejectArc3StorageBoundary = false;
+/* The browser gate's one-shot storage fault still crosses the production
+   revision repository and commitAction owner. Only that action-scoped
+   compare-and-apply is rejected; ordinary play delegates byte-for-byte. */
+const persistenceBackend: StorageBackend = {
+  get: (store, key) => indexedDBPersistenceBackend.get(store, key),
+  apply: (operations) => indexedDBPersistenceBackend.apply(operations),
+  compareAndApply: (checks, operations, clearStores) => {
+    if (smokeRejectArc3StorageBoundary) {
+      smokeRejectArc3StorageBoundary = false;
+      return Promise.reject(new Error('slice-smoke injected Arc 3 action storage failure'));
+    }
+    return indexedDBPersistenceBackend.compareAndApply(checks, operations, clearStores);
+  },
+  keys: (store) => indexedDBPersistenceBackend.keys(store),
+  clear: (stores) => indexedDBPersistenceBackend.clear(stores),
+};
 const repo = createSaveRepository(persistenceBackend);
 const revisionRepo = createRevisionedRepository(persistenceBackend);
 const EMPTY_V5_EXTENSIONS: V5Extensions = Object.freeze({});
@@ -1826,79 +1868,6 @@ function fillCharters(): void {
     })();
   fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter);
 }
-const SHIP_CHASSIS_PRESENTATION = Object.freeze([
-  Object.freeze({ name: 'Scout', role: 'Chemical-system reach' }),
-  Object.freeze({ name: 'Jump', role: 'Interstellar reach' }),
-  Object.freeze({ name: 'Survey Cruiser', role: 'Survey-array reach' }),
-  Object.freeze({ name: 'Frontier', role: 'Intergalactic reach' }),
-] as const);
-const SHIP_SYSTEM_NAMES = Object.freeze({
-  jumpdrive: 'Jump Drive',
-  array: 'Long-Range Array',
-  igdrive: 'Intergalactic Drive',
-  autoext: 'Auto-Extractor',
-  cscoop: 'Corona Scoop',
-} as const);
-let shipyardPreviewOwner: ShipyardPreviewOwner | null = null;
-
-function closeShipyardSurface(): void {
-  shipyardPreviewOwner?.dispose();
-  shipyardPreviewOwner = null;
-}
-
-function fillShipyard(): void {
-  closeShipyardSurface();
-  const visual = currentShipVisualState();
-  const chassis = SHIP_CHASSIS_PRESENTATION[visual.chassisStage];
-  const installedRows = visual.installedSystemIds.length === 0
-    ? '<div class="empty" data-sel="shipyard-systems-empty">No permanent ship systems installed.</div>'
-    : visual.installedSystemIds.map((id) =>
-      `<div class="row" data-shipyard-system="${id}"><label>${esc(SHIP_SYSTEM_NAMES[id])}</label><span style="color:#8ce6b1">installed</span></div>`
-    ).join('');
-  const hardpointRows = ([
-    ['array', 'Long-Range Array mount', visual.hardpoints.array],
-    ['autoext', 'Auto-Extractor mount', visual.hardpoints.autoext],
-    ['cscoop', 'Corona Scoop mount', visual.hardpoints.cscoop],
-  ] as const).map(([id, label, installed]) =>
-    `<div class="row" data-shipyard-hardpoint="${id}" data-installed="${installed}"><label>${label}</label><span>${installed ? 'fitted' : 'open'}</span></div>`
-  ).join('');
-  const provenance = visual.provenance === 'legacy-charter-refit'
-    ? 'Legacy expedition reach is shown as a generic charter refit. No missing drive is claimed.'
-    : 'Chassis and fittings reflect this save’s owned permanent systems.';
-
-  fillPanel('shipyard',
-    '<h3>Shipyard — Inspection</h3>' +
-    `<section data-sel="shipyard-summary" data-shipyard-chassis-stage="${visual.chassisStage}" data-state-key="${esc(visual.stateKey)}">` +
-      `<b>${esc(chassis.name)}</b><div class="sub">${esc(chassis.role)}</div>` +
-      `<div class="sub" data-sel="shipyard-provenance">${esc(provenance)}</div>` +
-    '</section>' +
-    '<div id="shipyardpreviewmount" data-sel="shipyard-preview"></div>' +
-    '<h3>Installed systems</h3>' + installedRows +
-    '<h3>Hardpoints</h3>' + hardpointRows +
-    '<div class="centry" data-sel="shipyard-boundary"><b>Inspection only</b>' +
-      '<div class="sub">Fabrication, research, and ship upgrades are not available in this development slice.</div></div>');
-  const mount = document.getElementById('shipyardpreviewmount');
-  if (!mount) throw new Error('Shipyard preview mount is unavailable');
-  shipyardPreviewOwner = new ShipyardPreviewOwner(mount);
-  shipyardPreviewOwner.open(visual);
-}
-
-function shipyardDiagnostics(): unknown {
-  const panelOpen = openPanelId() === 'shipyard';
-  const owned = shipyardPreviewOwner?.diagnostics() ?? null;
-  const unownedPreviewCount = owned === null
-    ? document.querySelectorAll('#shipyardpanel [data-cf-shipyard-preview="v1"]').length
-    : 0;
-  return Object.freeze({
-    schema: 'cf-v2-shipyard-diagnostics/v1',
-    status: panelOpen ? 'open' : 'closed',
-    stateKey: panelOpen ? owned?.stateKey ?? null : null,
-    activePreviewCount: owned?.activePreviewCount ?? 0,
-    retainedPreviewCount: (owned?.retainedPreviewCount ?? 0) + unownedPreviewCount,
-    pendingPreviewWork: 0,
-  });
-}
-
 registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
 document.getElementById('dockcharters')!.addEventListener('click', () => togglePanel('ch'));
 document.getElementById('railcharters')!.addEventListener('click', () => togglePanel('ch'));
@@ -1928,13 +1897,36 @@ const inventoryPanelController = new InventoryPanelController({
   requiresSalvageConfirmation: () => save.salvageConfirm,
 });
 registerPanel(inventoryPanelController.registration());
-registerPanel({
-  id: 'shipyard',
-  el: document.getElementById('shipyardpanel')!,
-  btns: [document.getElementById('dockshipyard'), document.getElementById('railshipyard')],
-  onOpen: fillShipyard,
-  onClose: closeShipyardSurface,
+const engineeringPanelController = new EngineeringPanelController({
+  panel: document.getElementById('shipyardpanel')!,
+  openers: [document.getElementById('dockshipyard'), document.getElementById('railshipyard')],
+  onAction: (request) => {
+    engineeringPanelController.setPending(request);
+    void runEngineeringPanelAction(request);
+  },
 });
+let engineeringPanelReleased = false;
+const engineeringPanelRegistration = engineeringPanelController.registration();
+registerPanel({
+  ...engineeringPanelRegistration,
+  onOpen: () => {
+    refreshEngineeringPanelState();
+    engineeringPanelRegistration.onOpen();
+  },
+});
+function shipyardDiagnostics(): unknown {
+  const diagnostics = engineeringPanelController.diagnostics();
+  const panelOpen = openPanelId() === 'shipyard';
+  return Object.freeze({
+    schema: 'cf-v2-shipyard-diagnostics/v1',
+    status: panelOpen ? 'open' : 'closed',
+    stateKey: panelOpen ? currentShipVisualState().stateKey : null,
+    activePreviewCount: diagnostics.activePreviewCount,
+    retainedPreviewCount: diagnostics.retainedPreviewCount,
+    pendingPreviewWork: diagnostics.pendingWork,
+    engineering: diagnostics,
+  });
+}
 document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
 document.getElementById('dockguide')!.addEventListener('click', () => togglePanel('guide'));
 document.getElementById('dockcodex')!.addEventListener('click', () => togglePanel('codex'));
@@ -2321,6 +2313,70 @@ function currentShipVisualState(): ShipVisualViewState {
   return Object.freeze({ ...visual, stateKey: shipVisualStateKey(visual) });
 }
 const ascStage = (): 0 | 1 | 2 | 3 => currentShipVisualState().chassisStage;
+
+function refreshEngineeringPanelState(): void {
+  if (engineeringPanelReleased) return;
+  const runtime = f4Runtime;
+  if (arc3EngineeringProtection !== null || !f4RuntimeMayMutate(runtime)) {
+    engineeringPanelController.setState(null);
+    return;
+  }
+  try {
+    /* Presentation is rebuilt from this exact authority snapshot every time
+       the panel opens or an action settles. Cached app publication is never
+       enough to paint a control after a hostile/stale carrier transition. */
+    const engineering = readArc3Engineering(
+      runtime.extensions,
+      SCENE_ENGINEERING_ADDRESS_RESOLVER,
+    );
+    const arc2 = readArc2Loot(runtime.extensions);
+    const loadout = readArc2EngineeringLoadout(runtime.extensions);
+    if (engineering.kind !== 'loaded'
+      || arc2.kind !== 'loaded'
+      || arc2.state.kind !== 'inventory'
+      || loadout.kind !== 'loaded'
+      || !arc2LootLegacyMirrorMatches(arc2.state, save)) {
+      engineeringPanelController.setState(null);
+      return;
+    }
+    const verified = verifyArc3CommittedAction({
+      extensions: runtime.extensions,
+      committed: save,
+      expectedState: engineering.state,
+      codecNow: Date.now(),
+      minedTimestampIntent: { kind: 'preserve' },
+    });
+    if (verified.kind !== 'verified') {
+      engineeringPanelController.setState(null);
+      return;
+    }
+    const ship = shipVisualStateOf({
+      items: save.items,
+      ascCh: save.ascCh,
+      liverySeed: SHIP_LIVERY_SEED,
+    });
+    arc3EngineeringState = verified.state;
+    lastArc3ProjectionDiagnostics = verified.projection.diagnostics;
+    engineeringPanelController.setState(projectEngineeringPanelReadModel({
+      ship,
+      nav,
+      engineering: verified.state,
+      loadout: loadout.loadout,
+      economy: {
+        cargo: save.cargo,
+        exceptionalCargo: save.cgx,
+        stardust: save.essence,
+        signatureIds: Object.freeze(Object.keys(save.primeFill).sort()),
+        hp: save.hp,
+      },
+      activePlayMs: runtime.diagnostics().activePlayMs,
+    }));
+  } catch {
+    /* A presentation projection never repairs or launders authority. The
+       durable action seam will independently report the exact refusal. */
+    engineeringPanelController.setState(null);
+  }
+}
 
 function updateChips(): void {
   playerChipEl.innerHTML = `⚙ ${esc(save.explorerName || 'Explorer')} <span class="dim">— ✦ ${save.essence}<span class="player-worlds"> · ${save.landed.length} worlds</span></span>`;
@@ -4503,6 +4559,19 @@ let _persistT = 0;
 let importWriteInFlight = false;
 let activePersist: Promise<boolean> | null = null;
 let productActionInFlight = false;
+const productActionCoordinator = createProductActionCoordinator();
+const smokeProductActionHold = createProductActionDiagnosticHold();
+let smokeRejectNextArc3ActionStorage = false;
+let smokeStaleNextArc3ActionAuthority = false;
+let lastSmokeArc3ActionFaultWitness: Readonly<{
+  schema: 'cf-v2-arc3-action-fault-witness/v1';
+  operation: string;
+  injection: 'storage-failure' | 'stale-authority';
+  phase: 'injecting' | 'settled' | 'injection-failed';
+  beforeRevision: number;
+  injectedRevision: number | null;
+  outcome: string | null;
+}> | null = null;
 let smokeRejectNextPersist = false;
 let smokeImportRaceRelease: (() => void) | null = null;
 
@@ -4562,18 +4631,20 @@ async function commitArc2InventoryAction(
     lastArc2LootOutcome = `${operation}-${preflight.detail}`;
     return Object.freeze({ kind, operation, instanceId, detail: preflight.detail, state: null });
   }
-  await settleF4Heartbeat();
-  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
-    || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
-    return unavailable('write-authority-changed');
-  }
-  const actionNow = Date.now();
-  let settleActionBarrier: (committed: boolean) => void = () => undefined;
-  const actionBarrier = new Promise<boolean>((resolve) => { settleActionBarrier = resolve; });
+  const actionClaim = productActionCoordinator.tryClaim(`arc2.${operation}`);
+  if (actionClaim === null) return unavailable('product-action-pending');
+  const actionBarrier = actionClaim.barrier;
   productActionInFlight = true;
   activePersist = actionBarrier;
   let durable = false;
   try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (!f4RuntimeMayMutate(runtime) || importWriteInFlight
+      || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+      return unavailable('write-authority-changed');
+    }
+    const actionNow = Date.now();
     const outcome = await runtime.commitProduct({
       state: save,
       operation,
@@ -4655,12 +4726,16 @@ async function commitArc2InventoryAction(
     });
   } finally {
     productActionInFlight = false;
-    settleActionBarrier(durable);
+    actionClaim.settle(durable);
     if (activePersist === actionBarrier) activePersist = null;
   }
 }
 
-type Arc3AppActionOperation = 'mine-world' | 'skim-star';
+type Arc3AppActionOperation =
+  | 'mine-world'
+  | 'skim-star'
+  | 'purchase-research'
+  | 'fabricate-fixed';
 type Arc3AppActionOutcome = Readonly<{
   kind: 'committed' | 'unavailable' | 'refused';
   operation: Arc3AppActionOperation;
@@ -4674,13 +4749,27 @@ type Arc3DeriveContext = Readonly<{
   receiptOrdinal: number;
   codecNow: number;
 }>;
+type Arc3CommittedVerification =
+  | ReturnType<typeof verifyArc3CommittedAction>
+  | ReturnType<typeof verifyArc3CommittedResearchAction>
+  | ReturnType<typeof verifyArc3CommittedFixedFabricationAction>;
 let smokeRejectNextArc3Publication = false;
 
 async function commitArc3EngineeringAction(spec: Readonly<{
   operation: Arc3AppActionOperation;
   receiptKind: string;
   derive: (context: Arc3DeriveContext) => Arc3AppDerivationOutcome;
-  publish: (target: SaveStateV2, committed: SaveStateV2) => void;
+  verify: (context: Readonly<{
+    extensions: V5Extensions;
+    committed: SaveStateV2;
+    planned: Arc3AppDerivation;
+    codecNow: number;
+  }>) => Arc3CommittedVerification;
+  publish: (
+    target: SaveStateV2,
+    committed: SaveStateV2,
+    verified: Exclude<Arc3CommittedVerification, { kind: 'mismatch' }>,
+  ) => void;
 }>): Promise<Arc3AppActionOutcome> {
   const unavailable = (detail: string): Arc3AppActionOutcome => Object.freeze({
     kind: 'unavailable', operation: spec.operation, detail, result: null,
@@ -4693,39 +4782,103 @@ async function commitArc3EngineeringAction(spec: Readonly<{
     || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
     return unavailable('write-authority-unavailable');
   }
-  await settleF4Heartbeat();
-  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
-    || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
-    return unavailable('write-authority-changed');
-  }
-
-  const codecNow = Date.now();
-  const priorSessionRng = runtime.sessionRng;
-  const plannedHolder: { value: Arc3AppDerivation | null } = { value: null };
-  let settleActionBarrier: (committed: boolean) => void = () => undefined;
-  const actionBarrier = new Promise<boolean>((resolve) => { settleActionBarrier = resolve; });
+  /* Claim before the first await. The controller's pending latch protects its
+     own buttons; this main-owned owner also fences every persistence/product
+     path while an already-running heartbeat settles. */
+  const actionClaim = productActionCoordinator.tryClaim(`arc3.${spec.operation}`);
+  if (actionClaim === null) return unavailable('product-action-pending');
+  const actionBarrier = actionClaim.barrier;
   productActionInFlight = true;
   activePersist = actionBarrier;
   let durable = false;
   try {
-    const outcome = await runtime.commitAction({
-      state: save,
-      operation: `arc3.${spec.operation}`,
-      receiptKind: spec.receiptKind,
-      codecNow,
-      derive: ({ draft, extensions, activePlayMs, receiptOrdinal }) => {
-        const derived = spec.derive({
-          draft, extensions, activePlayMs, receiptOrdinal, codecNow,
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    /* activePersist may now be a legitimate save queued behind our barrier,
+       so ownership is represented by actionClaim/productActionInFlight—not
+       by requiring activePersist to retain the barrier identity. */
+    if (!f4RuntimeMayMutate(runtime) || importWriteInFlight
+      || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+      return unavailable('write-authority-changed');
+    }
+
+    const codecNow = Date.now();
+    const priorSessionRng = runtime.sessionRng;
+    const plannedHolder: { value: Arc3AppDerivation | null } = { value: null };
+    const faultInjection = smokeRejectNextArc3ActionStorage
+      ? 'storage-failure'
+      : smokeStaleNextArc3ActionAuthority
+        ? 'stale-authority'
+        : null;
+    if (faultInjection === 'storage-failure') smokeRejectNextArc3ActionStorage = false;
+    else if (faultInjection === 'stale-authority') smokeStaleNextArc3ActionAuthority = false;
+    const faultBeforeRevision = runtime.revision;
+    let injectedRevision: number | null = null;
+    if (faultInjection !== null) {
+      lastSmokeArc3ActionFaultWitness = Object.freeze({
+        schema: 'cf-v2-arc3-action-fault-witness/v1',
+        operation: actionClaim.operation,
+        injection: faultInjection,
+        phase: 'injecting',
+        beforeRevision: faultBeforeRevision,
+        injectedRevision,
+        outcome: null,
+      });
+    }
+    if (faultInjection === 'stale-authority') {
+      const injected = await revisionRepo.mutate({
+        expectedRevision: faultBeforeRevision,
+        writes: [],
+      });
+      if (injected.kind !== 'committed') {
+        lastSmokeArc3ActionFaultWitness = Object.freeze({
+          schema: 'cf-v2-arc3-action-fault-witness/v1',
+          operation: actionClaim.operation,
+          injection: faultInjection,
+          phase: 'injection-failed',
+          beforeRevision: faultBeforeRevision,
+          injectedRevision: null,
+          outcome: injected.kind,
         });
-        if (derived.kind !== 'ready') throw new Error(derived.detail);
-        plannedHolder.value = derived.derivation;
-        return {
-          state: derived.derivation.state,
-          extensionWrites: derived.derivation.extensionWrites,
-          witness: derived.derivation.witness,
-        };
-      },
-    });
+        throw new Error(`slice-smoke Arc 3 stale injection became ${injected.kind}`);
+      }
+      injectedRevision = injected.revision;
+    }
+    let outcome: Awaited<ReturnType<F4RuntimeAuthority['commitAction']>>;
+    if (faultInjection === 'storage-failure') smokeRejectArc3StorageBoundary = true;
+    try {
+      outcome = await runtime.commitAction({
+        state: save,
+        operation: actionClaim.operation,
+        receiptKind: spec.receiptKind,
+        codecNow,
+        derive: ({ draft, extensions, activePlayMs, receiptOrdinal }) => {
+          const derived = spec.derive({
+            draft, extensions, activePlayMs, receiptOrdinal, codecNow,
+          });
+          if (derived.kind !== 'ready') throw new Error(derived.detail);
+          plannedHolder.value = derived.derivation;
+          return {
+            state: derived.derivation.state,
+            extensionWrites: derived.derivation.extensionWrites,
+            witness: derived.derivation.witness,
+          };
+        },
+      });
+    } finally {
+      if (faultInjection === 'storage-failure') smokeRejectArc3StorageBoundary = false;
+    }
+    if (faultInjection !== null) {
+      lastSmokeArc3ActionFaultWitness = Object.freeze({
+        schema: 'cf-v2-arc3-action-fault-witness/v1',
+        operation: actionClaim.operation,
+        injection: faultInjection,
+        phase: 'settled',
+        beforeRevision: faultBeforeRevision,
+        injectedRevision,
+        outcome: outcome.kind,
+      });
+    }
     lastArc3EngineeringOutcome = `${spec.operation}-${outcome.kind}`;
     if (outcome.kind !== 'committed') {
       if (outcome.kind === 'stale' || outcome.kind === 'duplicate-receipt'
@@ -4764,15 +4917,14 @@ async function commitArc3EngineeringAction(spec: Readonly<{
         || outcome.authority.sessionRng.ordinal !== priorSessionRng.ordinal + 1) {
         throw new Error('deterministic-action-rng-mismatch');
       }
-      const verified = verifyArc3CommittedAction({
+      const verified = spec.verify({
         extensions: runtime.extensions,
         committed: outcome.state,
-        expectedState: committedPlan.nextEngineeringState,
+        planned: committedPlan,
         codecNow,
-        minedTimestampIntent: committedPlan.minedTimestampIntent,
       });
       if (verified.kind !== 'verified') throw new Error(verified.detail);
-      spec.publish(save, outcome.state);
+      spec.publish(save, outcome.state, verified);
       arc3EngineeringState = verified.state;
       lastArc3ProjectionDiagnostics = verified.projection.diagnostics;
       return Object.freeze({
@@ -4802,7 +4954,7 @@ async function commitArc3EngineeringAction(spec: Readonly<{
     });
   } finally {
     productActionInFlight = false;
-    settleActionBarrier(durable);
+    actionClaim.settle(durable);
     if (activePersist === actionBarrier) activePersist = null;
   }
 }
@@ -4822,7 +4974,14 @@ async function mineCurrentSurface(): Promise<Arc3AppActionOutcome> {
       deriveArc3MineAction({
         draft, extensions, currentSurface, activePlayMs, receiptOrdinal, codecNow,
       }),
-    publish: publishArc3MiningFields,
+    verify: ({ extensions, committed, planned, codecNow }) => verifyArc3CommittedAction({
+      extensions,
+      committed,
+      expectedState: planned.nextEngineeringState,
+      codecNow,
+      minedTimestampIntent: planned.minedTimestampIntent,
+    }),
+    publish: (target, committed) => publishArc3MiningFields(target, committed),
   });
 }
 
@@ -4841,8 +5000,132 @@ async function skimCurrentSystem(): Promise<Arc3AppActionOutcome> {
       deriveArc3SkimAction({
         draft, extensions, currentSystem, activePlayMs, receiptOrdinal, codecNow,
       }),
-    publish: publishArc3SkimFields,
+    verify: ({ extensions, committed, planned, codecNow }) => verifyArc3CommittedAction({
+      extensions,
+      committed,
+      expectedState: planned.nextEngineeringState,
+      codecNow,
+      minedTimestampIntent: planned.minedTimestampIntent,
+    }),
+    publish: (target, committed) => publishArc3SkimFields(target, committed),
   });
+}
+
+async function purchaseEngineeringResearch(researchId: string): Promise<Arc3AppActionOutcome> {
+  return commitArc3EngineeringAction({
+    operation: 'purchase-research',
+    receiptKind: 'arc3-purchase-research',
+    derive: ({ draft, extensions, receiptOrdinal, codecNow }) =>
+      deriveArc3ResearchAction({
+        draft, extensions, researchId, receiptOrdinal, codecNow,
+      }),
+    verify: ({ extensions, committed, planned, codecNow }) =>
+      verifyArc3CommittedResearchAction({
+        extensions,
+        committed,
+        expectedOwnedState: planned.state,
+        expectedState: planned.nextEngineeringState,
+        codecNow,
+        minedTimestampIntent: planned.minedTimestampIntent,
+      }),
+    publish: (target, committed) => publishArc3ResearchFields(target, committed),
+  });
+}
+
+async function fabricateFixedEngineeringRecipe(baseId: string): Promise<Arc3AppActionOutcome> {
+  return commitArc3EngineeringAction({
+    operation: 'fabricate-fixed',
+    receiptKind: 'arc3-fabricate-fixed',
+    derive: ({ draft, extensions, activePlayMs, receiptOrdinal, codecNow }) =>
+      deriveArc3FixedFabricationAction({
+        draft, extensions, baseId, activePlayMs, receiptOrdinal, codecNow,
+      }),
+    verify: ({ extensions, committed, planned, codecNow }) => {
+      if (planned.nextArc2State === null) {
+        return Object.freeze({ kind: 'mismatch', detail: 'fixed-fabrication-arc2-plan-missing' });
+      }
+      return verifyArc3CommittedFixedFabricationAction({
+        extensions,
+        committed,
+        expectedOwnedState: planned.state,
+        expectedEngineeringState: planned.nextEngineeringState,
+        expectedArc2State: planned.nextArc2State,
+        codecNow,
+        minedTimestampIntent: planned.minedTimestampIntent,
+      });
+    },
+    publish: (target, committed, verified) => {
+      if (!('arc2State' in verified)) throw new Error('fixed-fabrication-verification-kind-mismatch');
+      /* Validate/render the exact carrier before publishing any live save or
+         global carrier field. The controller is closed by the one-panel law,
+         so this cannot expose an optimistic cross-panel state. */
+      inventoryPanelController.setState(verified.arc2State);
+      publishArc3FixedFabricationFields(target, committed);
+      arc2LootState = verified.arc2State;
+    },
+  });
+}
+
+function engineeringOutcomeConverges(outcome: Arc3AppActionOutcome): boolean {
+  return outcome.detail.includes('publication-reload')
+    || outcome.detail === 'stale'
+    || outcome.detail === 'duplicate-receipt'
+    || outcome.detail === 'lost'
+    || outcome.detail === 'lease-unavailable'
+    || outcome.detail === 'protected';
+}
+
+/** One main-owned single-flight coordinator serves every Engineering control.
+ * The controller emits synchronously and retains no promise or durable fact;
+ * this owner clears its latch only after a terminal non-converging outcome. */
+async function runEngineeringPanelAction(request: EngineeringPanelActionRequest): Promise<void> {
+  let outcome: Arc3AppActionOutcome;
+  try {
+    outcome = request.operation === 'mine'
+      ? await mineCurrentSurface()
+      : request.operation === 'skim'
+        ? await skimCurrentSystem()
+        : request.operation === 'research' && request.id !== undefined
+          ? await purchaseEngineeringResearch(request.id)
+          : request.operation === 'fabricate' && request.id !== undefined
+            ? await fabricateFixedEngineeringRecipe(request.id)
+            : Object.freeze({
+              kind: 'unavailable',
+              operation: request.operation === 'research' ? 'purchase-research' : 'fabricate-fixed',
+              detail: 'engineering-action-id-missing',
+              result: null,
+            });
+  } catch (error) {
+    outcome = Object.freeze({
+      kind: 'refused',
+      operation: request.operation === 'mine' ? 'mine-world'
+        : request.operation === 'skim' ? 'skim-star'
+          : request.operation === 'research' ? 'purchase-research'
+            : 'fabricate-fixed',
+      detail: error instanceof Error ? error.message : String(error),
+      result: null,
+    });
+  }
+
+  if (engineeringPanelReleased) return;
+  const converging = engineeringOutcomeConverges(outcome);
+  /* Every settlement replaces the carrier/read-model snapshot. A converging
+     authority outcome paints unavailable truth but intentionally retains the
+     pending latch until the committed/stale document reloads. */
+  refreshEngineeringPanelState();
+  if (!converging) {
+    /* A refusal may follow a fresh carrier preflight that invalidated the
+       model painted before the press. Rebuild before unlocking for every
+       ordinary settlement, not only after a successful commit. */
+    engineeringPanelController.setPending(null);
+  }
+  if (outcome.kind === 'committed' && !converging) {
+    updateChips();
+    if (openPanelId() === 'ch') fillCharters();
+    toast('Engineering committed', 'The durable expedition record now reflects this action.', true);
+  } else if (outcome.kind !== 'committed' && !converging) {
+    toast('Engineering unavailable', outcome.detail, true);
+  }
 }
 
 async function smokeCommitF4Outcome(): Promise<unknown> {
@@ -5930,7 +6213,8 @@ async function loadSave(): Promise<void> {
     removeEventListener('resize', syncRendererDensity);
     visualViewport?.removeEventListener('resize', syncRendererDensity);
     closeCodexSurface();
-    closeShipyardSurface();
+    engineeringPanelReleased = true;
+    engineeringPanelController.dispose();
     clearPlanetside();
     speciesArtLoader.dispose(`intentional replacement: ${reason}`);
     try { clearWorld(false); }
@@ -6057,6 +6341,16 @@ async function loadSave(): Promise<void> {
           addressDiagnostics: arc3AddressDiagnostics,
           legacyDiagnostics: arc3LegacyDiagnostics,
           projectionDiagnostics: lastArc3ProjectionDiagnostics,
+          actionCoordinator: {
+            inFlight: productActionInFlight,
+            owner: productActionCoordinator.diagnostics(),
+            hold: smokeProductActionHold.diagnostics(),
+            faultArmed: {
+              storageFailure: smokeRejectNextArc3ActionStorage,
+              staleAuthority: smokeStaleNextArc3ActionAuthority,
+            },
+            lastFault: lastSmokeArc3ActionFaultWitness,
+          },
         },
         cardOpen: card.style.display !== 'none',
         cardTitle: card.querySelector('[data-sel=title]')?.textContent ?? null,
@@ -6150,6 +6444,23 @@ async function loadSave(): Promise<void> {
       __smokeCommitF4Outcome: smokeCommitF4Outcome,
       __smokeMineCurrentSurface: mineCurrentSurface,
       __smokeSkimCurrentSystem: skimCurrentSystem,
+      __smokePurchaseEngineeringResearch: purchaseEngineeringResearch,
+      __smokeFabricateFixedEngineeringRecipe: fabricateFixedEngineeringRecipe,
+      __smokeArmArc3ActionHold: () => {
+        if (productActionCoordinator.busy) return false;
+        return smokeProductActionHold.arm();
+      },
+      __smokeReleaseArc3ActionHold: () => smokeProductActionHold.release(),
+      __smokeRejectNextArc3ActionStorage: () => {
+        if (productActionCoordinator.busy || smokeRejectNextArc3ActionStorage) return false;
+        smokeRejectNextArc3ActionStorage = true;
+        return true;
+      },
+      __smokeStaleNextArc3ActionAuthority: () => {
+        if (productActionCoordinator.busy || smokeStaleNextArc3ActionAuthority) return false;
+        smokeStaleNextArc3ActionAuthority = true;
+        return true;
+      },
       __smokeRejectNextArc3Publication: () => {
         if (smokeRejectNextArc3Publication) return false;
         smokeRejectNextArc3Publication = true;
