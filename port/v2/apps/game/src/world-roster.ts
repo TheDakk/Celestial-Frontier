@@ -3,9 +3,15 @@
    The eight-row Planetside strip is a UI budget, never a data authority.
    Capture, biosphere yield, distant ecology, and future ownership actions must
    target `all`; only the current thumbnail strip consumes `preview`. */
-import { biosphere, planetSpecies } from '@cf/domain-ecology';
+import {
+  biosphere,
+  checkedEcologyEpoch,
+  planetSpeciesAtEcologyEpoch,
+} from '@cf/domain-ecology';
 import { _earthNamePass } from '@cf/domain-descriptors';
-import { mulberry32 } from '@cf/domain-rand';
+import { makeGenome } from '@cf/domain-genome';
+import { evolveGenome } from '@cf/domain-genetics';
+import { hashInt, mulberry32 } from '@cf/domain-rand';
 import { climateBand } from '@cf/domain-surveyphrases';
 import { systemFor } from '@cf/domain-worldgen';
 import {
@@ -40,21 +46,61 @@ export interface WorldRosterView<T> {
   readonly hiddenFromPreview: number;
 }
 
-export interface CanonicalWorldRoster {
+interface WorldRosterSnapshot {
   readonly address: CanonicalCF1WorldAddress;
   readonly worldKey: CF1WorldKey;
   readonly starSeed: number;
   readonly planetSeed: number;
   readonly planetOrdinal: number;
   readonly biosphereKey: CanonicalBiosphereKey;
+  readonly ecologyEpoch: number;
+  /** Binds world, epoch, order, and every detached full-row field. */
+  readonly fullRosterFingerprint: string;
   readonly view: WorldRosterView<Readonly<Record<string, unknown>>>;
 }
+
+declare const CANONICAL_WORLD_ROSTER_BRAND: unique symbol;
+
+/** Production-only authority. Runtime provenance is private WeakSet
+ * membership; the type-only brand prevents a diagnostic snapshot from being
+ * passed to a future acquisition planner by structural accident. */
+export interface CanonicalWorldRoster extends WorldRosterSnapshot {
+  readonly [CANONICAL_WORLD_ROSTER_BRAND]: true;
+}
+
+/** Source-injection evidence only. It deliberately is not acquisition
+ * authority and can never satisfy `isCanonicalWorldRoster`. */
+export interface DiagnosticWorldRoster extends WorldRosterSnapshot {
+  readonly authority: 'diagnostic';
+}
+
+export type CanonicalWorldRosterFailureReason =
+  | 'unproven-address'
+  | 'address-mismatch'
+  | 'invalid-epoch'
+  | 'source-error';
 
 export type CanonicalWorldRosterResult =
   | { readonly ok: true; readonly roster: CanonicalWorldRoster }
   | {
       readonly ok: false;
-      readonly reason: 'unproven-address' | 'address-mismatch' | 'source-error';
+      readonly reason: CanonicalWorldRosterFailureReason;
+      readonly message: string;
+    };
+
+export type DiagnosticWorldRosterResult =
+  | { readonly ok: true; readonly roster: DiagnosticWorldRoster }
+  | {
+      readonly ok: false;
+      readonly reason: CanonicalWorldRosterFailureReason;
+      readonly message: string;
+    };
+
+type WorldRosterBuildResult =
+  | { readonly ok: true; readonly roster: WorldRosterSnapshot }
+  | {
+      readonly ok: false;
+      readonly reason: CanonicalWorldRosterFailureReason;
       readonly message: string;
     };
 
@@ -76,6 +122,7 @@ export interface WorldRosterSources {
     system: unknown,
     band: string,
     level: string | number,
+    ecologyEpoch: number,
   ) => Array<Record<string, unknown>>;
   readonly nameEarth: (rows: Array<Record<string, unknown>>) => void;
 }
@@ -84,18 +131,204 @@ const SOURCES: WorldRosterSources = Object.freeze({
   systemFor: systemFor as unknown as WorldRosterSources['systemFor'],
   climateBand: climateBand as unknown as WorldRosterSources['climateBand'],
   biosphere: biosphere as unknown as WorldRosterSources['biosphere'],
-  planetSpecies: planetSpecies as unknown as WorldRosterSources['planetSpecies'],
+  planetSpecies: planetSpeciesAtEcologyEpoch as unknown as WorldRosterSources['planetSpecies'],
   nameEarth: _earthNamePass,
 });
+
+const CANONICAL_WORLD_ROSTERS = new WeakSet<object>();
+const MAX_WORLD_ROSTER_ROWS = 64;
+const MAX_WORLD_ROSTER_OBJECT_KEYS = 64;
+const MAX_WORLD_ROSTER_ARRAY_LENGTH = 64;
+const MAX_WORLD_ROSTER_DATA_DEPTH = 8;
+const MAX_WORLD_ROSTER_DATA_ENTRIES = 4_096;
+const MAX_WORLD_ROSTER_DATA_CODE_UNITS = 262_144;
+
+interface RosterCloneBudget {
+  entries: number;
+  codeUnits: number;
+}
+
+function spendRosterBudget(
+  budget: RosterCloneBudget,
+  entries: number,
+  codeUnits: number,
+): void {
+  budget.entries += entries;
+  budget.codeUnits += codeUnits;
+  if (budget.entries > MAX_WORLD_ROSTER_DATA_ENTRIES
+    || budget.codeUnits > MAX_WORLD_ROSTER_DATA_CODE_UNITS) {
+    throw new RangeError('world roster data exceeds its canonical size budget');
+  }
+}
+
+function exactArrayDataValues(
+  value: unknown,
+  label: string,
+  maximumLength: number,
+): readonly unknown[] {
+  if (!Array.isArray(value) || Object.getPrototypeOf(value) !== Array.prototype) {
+    throw new TypeError(`${label} must be an exact plain data array`);
+  }
+  const keys = Reflect.ownKeys(value);
+  if (keys.some((key) => typeof key !== 'string')) {
+    throw new TypeError(`${label} has a symbol key`);
+  }
+  const stringKeys = keys as string[];
+  const lengthDescriptor = Object.getOwnPropertyDescriptor(value, 'length');
+  if (!lengthDescriptor || !Object.hasOwn(lengthDescriptor, 'value')
+    || !Number.isSafeInteger(lengthDescriptor.value)
+    || lengthDescriptor.value < 0 || lengthDescriptor.value > maximumLength) {
+    throw new RangeError(`${label} exceeds its canonical length budget`);
+  }
+  const length = lengthDescriptor.value as number;
+  if (stringKeys.length !== length + 1
+    || stringKeys.some((key) => key !== 'length'
+      && (!/^(?:0|[1-9]\d*)$/u.test(key) || Number(key) >= length))) {
+    throw new TypeError(`${label} must be dense and contain no extra properties`);
+  }
+  const values: unknown[] = [];
+  for (let index = 0; index < length; index++) {
+    const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+    if (!descriptor || !Object.hasOwn(descriptor, 'value') || descriptor.enumerable !== true) {
+      throw new TypeError(`${label}[${index}] must be an enumerable data property`);
+    }
+    values.push(descriptor.value);
+  }
+  return values;
+}
+
+function cloneCanonicalRosterData(
+  value: unknown,
+  label: string,
+  depth: number,
+  ancestors: Set<object>,
+  budget: RosterCloneBudget,
+): unknown {
+  if (depth > MAX_WORLD_ROSTER_DATA_DEPTH) {
+    throw new RangeError('world roster data exceeds its canonical depth budget');
+  }
+  if (value === null || typeof value === 'boolean') {
+    spendRosterBudget(budget, 1, 0);
+    return value;
+  }
+  if (typeof value === 'number') {
+    if (!Number.isFinite(value)) throw new TypeError('world roster contains a non-finite number');
+    spendRosterBudget(budget, 1, 0);
+    return value;
+  }
+  if (typeof value === 'string') {
+    spendRosterBudget(budget, 1, value.length);
+    return value;
+  }
+  if (typeof value !== 'object') {
+    throw new TypeError(`world roster contains unsupported ${typeof value} data`);
+  }
+  if (ancestors.has(value)) throw new TypeError('world roster contains a cyclic row');
+  ancestors.add(value);
+  try {
+    if (Array.isArray(value)) {
+      const values = exactArrayDataValues(value, label, MAX_WORLD_ROSTER_ARRAY_LENGTH);
+      spendRosterBudget(budget, 1, 0);
+      return values.map((entry, index) => cloneCanonicalRosterData(
+        entry,
+        `${label}[${index}]`,
+        depth + 1,
+        ancestors,
+        budget,
+      ));
+    }
+    if (Object.getPrototypeOf(value) !== Object.prototype) {
+      throw new TypeError(`${label} must be an exact plain data object`);
+    }
+    const keys = Reflect.ownKeys(value);
+    if (keys.length > MAX_WORLD_ROSTER_OBJECT_KEYS) {
+      throw new RangeError(`${label} exceeds its canonical key budget`);
+    }
+    if (keys.some((key) => typeof key !== 'string')) {
+      throw new TypeError(`${label} has a symbol key`);
+    }
+    spendRosterBudget(
+      budget,
+      1,
+      (keys as string[]).reduce((total, key) => total + key.length, 0),
+    );
+    const clone: Record<string, unknown> = {};
+    for (const key of keys as string[]) {
+      const descriptor = Object.getOwnPropertyDescriptor(value, key);
+      if (!descriptor || !Object.hasOwn(descriptor, 'value') || descriptor.enumerable !== true) {
+        throw new TypeError(`${label}.${key} must be an enumerable data property`);
+      }
+      Object.defineProperty(clone, key, {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: cloneCanonicalRosterData(
+          descriptor.value,
+          `${label}.${key}`,
+          depth + 1,
+          ancestors,
+          budget,
+        ),
+      });
+    }
+    return clone;
+  } finally {
+    ancestors.delete(value);
+  }
+}
+
+function detachedRosterRows(value: unknown, label: string): Array<Record<string, unknown>> {
+  const sourceRows = exactArrayDataValues(value, label, MAX_WORLD_ROSTER_ROWS);
+  const budget: RosterCloneBudget = { entries: 0, codeUnits: 0 };
+  return sourceRows.map((sourceRow, index) => {
+    if (sourceRow === null || typeof sourceRow !== 'object' || Array.isArray(sourceRow)
+      || Object.getPrototypeOf(sourceRow) !== Object.prototype) {
+      throw new TypeError(`${label}[${index}] must be an exact plain data object`);
+    }
+    const clone = cloneCanonicalRosterData(
+      sourceRow,
+      `${label}[${index}]`,
+      0,
+      new Set<object>(),
+      budget,
+    ) as Record<string, unknown>;
+    if (!Number.isInteger(clone.seed as number) || (clone.seed as number) < 0
+      || (clone.seed as number) > 0xffff_ffff) {
+      throw new TypeError(`${label}[${index}].seed must be an exact uint32`);
+    }
+    if (typeof clone.kingdom !== 'string'
+      || !['fauna', 'flora', 'fungi', 'microbe'].includes(clone.kingdom)) {
+      throw new TypeError(`${label}[${index}].kingdom is not canonical`);
+    }
+    return clone;
+  });
+}
+
+function freezeCanonicalRosterData(value: unknown): void {
+  if (!value || typeof value !== 'object') return;
+  for (const key of Reflect.ownKeys(value)) {
+    const descriptor = Object.getOwnPropertyDescriptor(value, key);
+    if (descriptor && Object.hasOwn(descriptor, 'value')) freezeCanonicalRosterData(descriptor.value);
+  }
+  Object.freeze(value);
+}
+
+export function isCanonicalWorldRoster(value: unknown): value is CanonicalWorldRoster {
+  return value !== null && typeof value === 'object' && CANONICAL_WORLD_ROSTERS.has(value);
+}
 
 function messageOf(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
 function rosterFailure(
-  reason: 'unproven-address' | 'address-mismatch' | 'source-error',
+  reason: CanonicalWorldRosterFailureReason,
   message: string,
-): CanonicalWorldRosterResult {
+): Readonly<{
+  ok: false;
+  reason: CanonicalWorldRosterFailureReason;
+  message: string;
+}> {
   return Object.freeze({ ok: false, reason, message });
 }
 
@@ -113,24 +346,88 @@ function canonicalBiosphereKey(key: string, planetSeed: number): CanonicalBiosph
 }
 
 function freezeDetachedRow(row: Record<string, unknown>): Readonly<Record<string, unknown>> {
-  const freeze = (value: unknown): void => {
-    if (!value || typeof value !== 'object' || Object.isFrozen(value)) return;
-    for (const child of Object.values(value as Record<string, unknown>)) freeze(child);
-    Object.freeze(value);
-  };
-  freeze(row);
+  freezeCanonicalRosterData(row);
   return row;
+}
+
+function canonicalFingerprintValue(value: unknown, ancestors = new Set<object>()): string {
+  if (value === null) return 'null';
+  if (typeof value === 'string' || typeof value === 'boolean') return JSON.stringify(value);
+  if (typeof value === 'number') {
+    if (!Number.isFinite(value)) throw new TypeError('world roster contains a non-finite number');
+    return Object.is(value, -0) ? '-0' : String(value);
+  }
+  if (typeof value !== 'object') {
+    throw new TypeError(`world roster contains unsupported ${typeof value} data`);
+  }
+  if (ancestors.has(value)) throw new TypeError('world roster contains a cyclic row');
+  ancestors.add(value);
+  try {
+    if (Array.isArray(value)) {
+      return `[${value.map((entry) => canonicalFingerprintValue(entry, ancestors)).join(',')}]`;
+    }
+    const prototype = Object.getPrototypeOf(value);
+    if (prototype !== Object.prototype && prototype !== null) {
+      throw new TypeError('world roster contains a non-canonical object');
+    }
+    const record = value as Record<string, unknown>;
+    return `{${Object.keys(record).sort().map((key) =>
+      `${JSON.stringify(key)}:${canonicalFingerprintValue(record[key], ancestors)}`).join(',')}}`;
+  } finally {
+    ancestors.delete(value);
+  }
+}
+
+function fnv1a32(value: string): number {
+  let hash = 0x811c9dc5;
+  for (let index = 0; index < value.length; index++) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return hash >>> 0;
+}
+
+function fullRosterFingerprint(
+  worldKey: CF1WorldKey,
+  ecologyEpoch: number,
+  rows: readonly Readonly<Record<string, unknown>>[],
+): string {
+  const canonical = canonicalFingerprintValue([worldKey, ecologyEpoch, rows]);
+  return `cwr1:${rows.length}:${canonical.length}:${fnv1a32(canonical).toString(16).padStart(8, '0')}`;
+}
+
+function earthVagrants(ecologyEpoch: number): Array<Record<string, unknown>> {
+  if (ecologyEpoch === 0) return [];
+  const random = mulberry32(hashInt(133, ecologyEpoch, 0x7A9E) >>> 0);
+  const count = 1 + (random() < 0.5 ? 1 : 0);
+  const rows: Array<Record<string, unknown>> = [];
+  for (let index = 0; index < count; index++) {
+    const kingdom = random() < 0.7 ? 'fauna' : 'flora';
+    const seed = hashInt(133, ecologyEpoch * 163 + index + 1, 0xEA271) >>> 0;
+    const genome = evolveGenome(makeGenome(seed, kingdom, 1), 0);
+    genome._cradle = 1;
+    genome._rare = 1;
+    rows.push(genome);
+  }
+  return rows;
 }
 
 function buildRoster(
   candidate: unknown,
+  ecologyEpochValue: unknown,
   sources: WorldRosterSources,
-): CanonicalWorldRosterResult {
+): WorldRosterBuildResult {
   if (!isCanonicalCF1Address(candidate) || !('planet' in candidate)
     || candidate.key !== getProvenPlanetKey(candidate.planet)) {
     return rosterFailure('unproven-address', 'world roster requires a proven canonical CF1 world address');
   }
   const address: CanonicalCF1WorldAddress = candidate;
+  let ecologyEpoch: number;
+  try {
+    ecologyEpoch = checkedEcologyEpoch(ecologyEpochValue);
+  } catch (error) {
+    return rosterFailure('invalid-epoch', messageOf(error));
+  }
   try {
     const system = sources.systemFor(address.star.seed);
     if (!system || typeof system !== 'object' || Array.isArray(system)
@@ -160,15 +457,29 @@ function buildRoster(
     let rows: Array<Record<string, unknown>> = [];
     if (biosphereKey !== 'none') {
       const speciesLevel = biosphereKey === 'earth' ? 'complex' : biosphereKey;
-      const produced = sources.planetSpecies(planet.P as { seed: number }, system, band, speciesLevel);
-      if (!Array.isArray(produced)) {
-        throw new TypeError(`species source returned a malformed roster for biosphere key "${biosphereKey}"`);
-      }
-      if (produced.length === 0) {
+      const produced = sources.planetSpecies(
+        planet.P as { seed: number },
+        system,
+        band,
+        speciesLevel,
+        ecologyEpoch,
+      );
+      rows = detachedRosterRows(produced, `species source roster for biosphere key "${biosphereKey}"`);
+      if (rows.length === 0) {
         throw new TypeError(`biosphere key "${biosphereKey}" returned an empty inhabited roster`);
       }
-      rows = produced.map((row) => structuredClone(row));
-      if (biosphereKey === 'earth') sources.nameEarth(rows);
+      if (biosphereKey === 'earth') {
+        sources.nameEarth(rows);
+        rows = detachedRosterRows(rows, 'named Earth starter roster');
+        let vagrants = earthVagrants(ecologyEpoch);
+        sources.nameEarth(vagrants);
+        vagrants = detachedRosterRows(vagrants, 'named Earth vagrant roster');
+        rows.push(...vagrants);
+        if (rows.length > MAX_WORLD_ROSTER_ROWS) {
+          throw new RangeError('Earth roster exceeds its canonical row budget');
+        }
+        for (const row of rows) row._cradle = 1;
+      }
     }
     const frozenRows = rows.map(freezeDetachedRow);
     return Object.freeze({
@@ -180,6 +491,8 @@ function buildRoster(
         planetSeed: planet.seed,
         planetOrdinal: planet.ordinal,
         biosphereKey,
+        ecologyEpoch,
+        fullRosterFingerprint: fullRosterFingerprint(address.key, ecologyEpoch, frozenRows),
         view: worldRosterView(frozenRows),
       }),
     });
@@ -190,16 +503,28 @@ function buildRoster(
 
 export function canonicalWorldRoster(
   address: CanonicalCF1WorldAddress,
+  ecologyEpoch: number,
 ): CanonicalWorldRosterResult {
-  return buildRoster(address, SOURCES);
+  const built = buildRoster(address, ecologyEpoch, SOURCES);
+  if (!built.ok) return built;
+  const roster = built.roster as CanonicalWorldRoster;
+  CANONICAL_WORLD_ROSTERS.add(roster);
+  return Object.freeze({ ok: true, roster });
 }
 
 /** Diagnostic seam used only to prove source failure and roster ownership. */
 export function canonicalWorldRosterForDiagnostics(
   address: unknown,
+  ecologyEpoch: unknown,
   sources: WorldRosterSources,
-): CanonicalWorldRosterResult {
-  return buildRoster(address, sources);
+): DiagnosticWorldRosterResult {
+  const built = buildRoster(address, ecologyEpoch, sources);
+  if (!built.ok) return built;
+  const roster: DiagnosticWorldRoster = Object.freeze({
+    ...built.roster,
+    authority: 'diagnostic',
+  });
+  return Object.freeze({ ok: true, roster });
 }
 
 export function worldRosterView<T>(rows: readonly T[]): WorldRosterView<T> {

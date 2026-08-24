@@ -3888,7 +3888,7 @@ function fillPlanetside(state: Extract<NavState, { mode: 'surface' }>): void {
     showPlanetsideRosterFailure(`address:${addressResult.reason}`);
     return;
   }
-  const rosterResult = canonicalWorldRoster(addressResult.address);
+  const rosterResult = canonicalWorldRoster(addressResult.address, epochClock.current());
   if (!rosterResult.ok) {
     showPlanetsideRosterFailure(`${rosterResult.reason}:${rosterResult.message}`);
     return;
