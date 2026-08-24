@@ -311,9 +311,46 @@ function browserFocusEligible(element: HTMLElement): boolean {
   if (!element.isConnected) return false;
   if (element instanceof element.ownerDocument.defaultView!.HTMLButtonElement && element.disabled) return false;
   for (let ancestor = element.parentElement; ancestor; ancestor = ancestor.parentElement) {
-    if (ancestor instanceof element.ownerDocument.defaultView!.HTMLDetailsElement && !ancestor.open) return false;
+    if (ancestor instanceof element.ownerDocument.defaultView!.HTMLDetailsElement && !ancestor.open) {
+      const summary = ancestor.querySelector<HTMLElement>(':scope > summary');
+      if (summary !== element && !summary?.contains(element)) return false;
+    }
   }
   return true;
+}
+
+function emulateBrowserFocusLossWhenDisabled(document: Document): void {
+  const view = document.defaultView!;
+  const prototype = view.HTMLButtonElement.prototype;
+  const descriptor = Object.getOwnPropertyDescriptor(prototype, 'disabled');
+  if (!descriptor?.get || !descriptor.set || descriptor.configurable !== true) {
+    throw new Error('button disabled accessor is unavailable');
+  }
+  Object.defineProperty(prototype, 'disabled', {
+    configurable: true,
+    enumerable: descriptor.enumerable ?? false,
+    get: descriptor.get,
+    set(this: HTMLButtonElement, value: boolean): void {
+      /* Real browsers move focus to BODY as soon as a focused native button
+         becomes disabled. jsdom retains the impossible disabled focus unless
+         this lifecycle boundary is modeled explicitly. */
+      if (value && document.activeElement === this) this.blur();
+      descriptor.set!.call(this, value);
+    },
+  });
+}
+
+function ownsExactSettlementFocus(
+  document: Document,
+  semanticKey: string,
+  focusKey: string | null,
+): boolean {
+  const view = document.defaultView;
+  const active = document.activeElement;
+  if (!view || !(active instanceof view.HTMLElement) || !browserFocusEligible(active)) return false;
+  const semantic = active.closest<HTMLElement>('[data-semantic-key]')?.dataset.semanticKey ?? null;
+  return semantic === semanticKey
+    && (focusKey === null ? active.dataset.semanticKey === semanticKey : active.dataset.focusKey === focusKey);
 }
 
 afterEach(() => {
@@ -489,9 +526,73 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     expect(Object.isFrozen(model)).toBe(true);
   });
 
-  it('closes during pending without cancel or duplicate, releases DOM/preview, and reopens busy until cleared', () => {
+  it.each([
+    ['pointer click', 1],
+    ['Enter-native click', 0],
+  ] as const)('restores an exact action from its proven %s disable-to-BODY transition without a busy render', (
+    _activation,
+    detail,
+  ) => {
+    const view = shell();
+    emulateBrowserFocusLossWhenDisabled(view.document);
+    const onAction = vi.fn((request: EngineeringPanelActionRequest) => controller!.setPending(request));
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction });
+    controller.setState(readModel());
+    open(view);
+    view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!.open = true;
+    const plate = view.body.querySelector<HTMLButtonElement>(
+      '[data-recipe-id="plate"] [data-engineering-action="fabricate"]',
+    )!;
+    plate.focus();
+    plate.dispatchEvent(new dom!.window.MouseEvent('click', { bubbles: true, detail }));
+    expect(plate.disabled).toBe(true);
+    expect(view.document.activeElement === view.document.body).toBe(true);
+
+    controller.setPending(null);
+    expect(plate.disabled).toBe(false);
+    expect(ownsExactSettlementFocus(
+      view.document,
+      'recipe:plate',
+      'action:fabricate:plate',
+    )).toBe(true);
+    expect(onAction).toHaveBeenCalledOnce();
+  });
+
+  it('rejects unrelated BODY focus when no disable transition proved its ownership', () => {
+    const view = shell();
+    const onAction = vi.fn((request: EngineeringPanelActionRequest) => controller!.setPending(request));
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction });
+    controller.setState(readModel());
+    open(view);
+    view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!.open = true;
+    const plate = view.body.querySelector<HTMLButtonElement>(
+      '[data-recipe-id="plate"] [data-engineering-action="fabricate"]',
+    )!;
+    plate.focus();
+    plate.click();
+    /* jsdom deliberately retains disabled focus here, so the controller has
+       the same settlement receipt but no disable-to-BODY proof. */
+    expect(plate.disabled).toBe(true);
+    expect(view.document.activeElement === plate).toBe(true);
+    view.document.body.tabIndex = -1;
+    view.document.body.focus();
+    expect(view.document.activeElement === view.document.body).toBe(true);
+
+    controller.setPending(null);
+    expect(plate.disabled).toBe(false);
+    expect(view.document.activeElement === view.document.body).toBe(true);
+    expect(ownsExactSettlementFocus(
+      view.document,
+      'recipe:plate',
+      'action:fabricate:plate',
+    )).toBe(false);
+    expect(onAction).toHaveBeenCalledOnce();
+  });
+
+  it('clears pending focus ownership on close and dispose while the exact opener wins', () => {
     const onAction = vi.fn();
     const view = shell();
+    emulateBrowserFocusLossWhenDisabled(view.document);
     controller = new EngineeringPanelController({
       panel: view.panel,
       body: view.body,
@@ -500,7 +601,10 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     });
     controller.setState(readModel());
     open(view);
-    view.body.querySelector<HTMLButtonElement>('[data-engineering-action="mine"]')!.click();
+    const firstMine = view.body.querySelector<HTMLButtonElement>('[data-engineering-action="mine"]')!;
+    firstMine.focus();
+    firstMine.click();
+    expect(view.document.activeElement === view.document.body).toBe(true);
     controller.setPending({ operation: 'mine' });
     expect(view.body.querySelectorAll('button[data-engineering-action]:not(:disabled)')).toHaveLength(0);
     expect(view.close.disabled).toBe(false);
@@ -532,6 +636,26 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     controller.setPending(null);
     expect(view.body.getAttribute('aria-busy')).toBe('false');
     expect(view.body.querySelector<HTMLButtonElement>('[data-engineering-action="mine"]')?.disabled).toBe(false);
+    expect(view.document.activeElement === view.opener).toBe(true);
+
+    view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!.open = true;
+    const pendingPlate = view.body.querySelector<HTMLButtonElement>(
+      '[data-recipe-id="plate"] [data-engineering-action="fabricate"]',
+    )!;
+    pendingPlate.focus();
+    pendingPlate.click();
+    expect(view.document.activeElement === view.document.body).toBe(true);
+    controller.setPending({ operation: 'fabricate', id: 'plate' });
+    controller.dispose();
+    expect(view.document.activeElement === view.opener).toBe(true);
+    expect(view.body.childElementCount).toBe(0);
+    expect(controller.diagnostics()).toMatchObject({
+      activeCount: 0,
+      pendingWork: 0,
+      actionControlCount: 0,
+      delegatedListenerCount: 0,
+      lastRequest: null,
+    });
   });
 
   it('reopens native disclosure owners before focus restoration and restores the opener on close', () => {
@@ -582,13 +706,15 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     expect(view.document.activeElement).toBe(view.opener);
   });
 
-  it('defers a still-available pending action focus but leaves a newly unavailable action on its row', () => {
+  it('retains one pre-disable action identity through repeated busy settlement renders', () => {
     const view = shell();
+    emulateBrowserFocusLossWhenDisabled(view.document);
+    const onAction = vi.fn((request: EngineeringPanelActionRequest) => controller!.setPending(request));
     controller = new EngineeringPanelController({
       panel: view.panel,
       body: view.body,
       openers: [view.opener],
-      onAction: vi.fn(),
+      onAction,
     });
     controller.setState(readModel());
     open(view);
@@ -597,31 +723,163 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
       '[data-recipe-id="plate"] [data-engineering-action="fabricate"]',
     )!;
     firstPlate.focus();
-    controller.setPending({ operation: 'fabricate', id: 'plate' });
-    controller.setState(readModel({ miningDue: 3 }));
-    const plateRow = view.body.querySelector<HTMLElement>('[data-semantic-key="recipe:plate"]')!;
-    const secondPlate = plateRow.querySelector<HTMLButtonElement>('[data-engineering-action="fabricate"]')!;
-    expect(secondPlate).not.toBe(firstPlate);
-    expect(secondPlate.disabled).toBe(true);
-    expect(view.document.activeElement).toBe(plateRow);
+    firstPlate.click();
+    expect(onAction).toHaveBeenLastCalledWith({ operation: 'fabricate', id: 'plate' });
+    expect(view.document.activeElement === view.document.body).toBe(true);
+    let priorPlate = firstPlate;
+    let settledPlate: HTMLButtonElement | null = null;
+    for (const miningDue of [3, 4, 5]) {
+      controller.setState(readModel({ miningDue }));
+      const plateRow = view.body.querySelector<HTMLElement>('[data-semantic-key="recipe:plate"]')!;
+      settledPlate = plateRow.querySelector<HTMLButtonElement>('[data-engineering-action="fabricate"]')!;
+      expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')?.open).toBe(true);
+      expect(settledPlate !== priorPlate).toBe(true);
+      expect(settledPlate.disabled).toBe(true);
+      expect(view.document.activeElement === plateRow).toBe(true);
+      priorPlate = settledPlate;
+    }
+    const finalPlate = settledPlate!;
+    const wrongSemanticOwner = view.body.querySelector<HTMLElement>('[data-semantic-key="research:hull1"]')!;
+    const duplicateKeyWrongRow = finalPlate.cloneNode(true) as HTMLButtonElement;
+    wrongSemanticOwner.prepend(duplicateKeyWrongRow);
     controller.setPending(null);
-    expect(secondPlate.disabled).toBe(false);
-    expect(view.document.activeElement).toBe(secondPlate);
+    expect(finalPlate.disabled).toBe(false);
+    expect(duplicateKeyWrongRow.disabled).toBe(false);
+    expect(ownsExactSettlementFocus(
+      view.document,
+      'recipe:plate',
+      'action:fabricate:plate',
+    )).toBe(true);
+    expect(view.document.activeElement === duplicateKeyWrongRow).toBe(false);
+    duplicateKeyWrongRow.remove();
 
     view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="research"]')!.open = true;
     const firstScan = view.body.querySelector<HTMLButtonElement>(
       '[data-research-id="scan1"] [data-engineering-action="research"]',
     )!;
     firstScan.focus();
-    controller.setPending({ operation: 'research', id: 'scan1' });
-    controller.setState(readModel({ scanStatus: 'owned', scanReason: 'Already researched.' }));
-    const scanRow = view.body.querySelector<HTMLElement>('[data-semantic-key="research:scan1"]')!;
-    const secondScan = scanRow.querySelector<HTMLButtonElement>('[data-engineering-action="research"]')!;
-    expect(secondScan.disabled).toBe(true);
-    expect(view.document.activeElement).toBe(scanRow);
+    firstScan.click();
+    expect(onAction).toHaveBeenLastCalledWith({ operation: 'research', id: 'scan1' });
+    expect(view.document.activeElement === view.document.body).toBe(true);
+    let settledScan: HTMLButtonElement | null = null;
+    for (const miningDue of [6, 7, 8]) {
+      controller.setState(readModel({
+        miningDue,
+        scanStatus: 'owned',
+        scanReason: 'Already researched.',
+      }));
+      const scanRow = view.body.querySelector<HTMLElement>('[data-semantic-key="research:scan1"]')!;
+      settledScan = scanRow.querySelector<HTMLButtonElement>('[data-engineering-action="research"]')!;
+      expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="research"]')?.open).toBe(true);
+      expect(settledScan.disabled).toBe(true);
+      expect(ownsExactSettlementFocus(view.document, 'research:scan1', null)).toBe(true);
+    }
     controller.setPending(null);
-    expect(secondScan.disabled).toBe(true);
-    expect(view.document.activeElement).toBe(scanRow);
+    expect(settledScan!.disabled).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'research:scan1', null)).toBe(true);
+    expect(onAction).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not steal settlement focus after the player moves to a sibling, summary, or outside control', () => {
+    const view = shell();
+    emulateBrowserFocusLossWhenDisabled(view.document);
+    const onAction = vi.fn((request: EngineeringPanelActionRequest) => controller!.setPending(request));
+    controller = new EngineeringPanelController({
+      panel: view.panel,
+      body: view.body,
+      openers: [view.opener],
+      onAction,
+    });
+    controller.setState(readModel());
+    open(view);
+    view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!.open = true;
+
+    const startPlate = (miningDue: number): void => {
+      const action = view.body.querySelector<HTMLButtonElement>(
+        '[data-recipe-id="plate"] [data-engineering-action="fabricate"]',
+      )!;
+      action.focus();
+      action.click();
+      expect(view.document.activeElement === view.document.body).toBe(true);
+      controller!.setState(readModel({ miningDue }));
+      expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
+    };
+
+    startPlate(10);
+    view.body.querySelector<HTMLElement>('[data-semantic-key="recipe:wire"]')!.focus();
+    controller.setState(readModel({ miningDue: 11 }));
+    const replacementWire = view.body.querySelector<HTMLElement>('[data-semantic-key="recipe:wire"]')!;
+    expect(view.document.activeElement === replacementWire).toBe(true);
+    controller.setPending(null);
+    expect(view.document.activeElement === replacementWire).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'recipe:plate', 'action:fabricate:plate')).toBe(false);
+
+    const preRenderPlate = view.body.querySelector<HTMLButtonElement>(
+      '[data-recipe-id="plate"] [data-engineering-action="fabricate"]',
+    )!;
+    preRenderPlate.focus();
+    preRenderPlate.click();
+    expect(view.document.activeElement === view.document.body).toBe(true);
+    view.body.querySelector<HTMLElement>('[data-engineering-section="fabricator"] > summary')!.focus();
+    controller.setState(readModel({ miningDue: 13 }));
+    const replacementSummary = view.body.querySelector<HTMLElement>(
+      '[data-engineering-section="fabricator"] > summary',
+    )!;
+    expect(view.document.activeElement === replacementSummary).toBe(true);
+    controller.setPending(null);
+    expect(view.document.activeElement === replacementSummary).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'recipe:plate', 'action:fabricate:plate')).toBe(false);
+
+    startPlate(14);
+    view.opener.focus();
+    controller.setState(readModel({ miningDue: 15 }));
+    expect(view.document.activeElement === view.opener).toBe(true);
+    controller.setPending(null);
+    expect(view.document.activeElement === view.opener).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'recipe:plate', 'action:fabricate:plate')).toBe(false);
+    expect(onAction).toHaveBeenCalledTimes(3);
+  });
+
+  it('keeps a player-closed pending disclosure closed without hidden focus restoration', () => {
+    const view = shell();
+    emulateBrowserFocusLossWhenDisabled(view.document);
+    const onAction = vi.fn((request: EngineeringPanelActionRequest) => controller!.setPending(request));
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction });
+    controller.setState(readModel());
+    open(view);
+    const fabricator = view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!;
+    fabricator.open = true;
+    const plate = fabricator.querySelector<HTMLButtonElement>(
+      '[data-recipe-id="plate"] [data-engineering-action="fabricate"]',
+    )!;
+    plate.focus();
+    plate.click();
+    expect(view.document.activeElement === view.document.body).toBe(true);
+    fabricator.open = false;
+
+    controller.setState(readModel({ miningDue: 20 }));
+    expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')?.open).toBe(false);
+    expect(view.document.activeElement === view.document.body).toBe(true);
+    const closedSummary = view.body.querySelector<HTMLElement>(
+      '[data-engineering-section="fabricator"] > summary',
+    )!;
+    expect(browserFocusEligible(closedSummary)).toBe(true);
+    closedSummary.focus();
+    controller.setState(readModel({ miningDue: 21 }));
+    expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')?.open).toBe(false);
+    const replacementSummary = view.body.querySelector<HTMLElement>(
+      '[data-engineering-section="fabricator"] > summary',
+    )!;
+    expect(browserFocusEligible(replacementSummary)).toBe(true);
+    expect(view.document.activeElement === replacementSummary).toBe(true);
+    controller.setPending(null);
+    const hiddenReplacement = view.body.querySelector<HTMLButtonElement>(
+      '[data-recipe-id="plate"] [data-engineering-action="fabricate"]',
+    )!;
+    expect(hiddenReplacement.disabled).toBe(false);
+    expect(browserFocusEligible(hiddenReplacement)).toBe(false);
+    expect(view.document.activeElement === replacementSummary).toBe(true);
+    expect(onAction).toHaveBeenCalledOnce();
   });
 
   it('retains all four chassis through the real preview owner and reaches zero ownership on close/dispose', () => {

@@ -181,6 +181,11 @@ interface ViewReceipt {
   readonly openSectionIds: readonly string[];
 }
 
+interface SettlementFocusReceipt {
+  readonly focusKey: string;
+  readonly semanticKey: string | null;
+}
+
 function assertCounter(value: number | null, label: string): void {
   if (value !== null && (!Number.isSafeInteger(value) || value < 0)) {
     throw new RangeError(`${label} must be a non-negative safe integer or null`);
@@ -337,7 +342,8 @@ export class EngineeringPanelController {
   #disposed = false;
   #listenerInstalled = false;
   #focusReturn: HTMLElement | null = null;
-  #deferredFocusKey: string | null = null;
+  #settlementFocus: SettlementFocusReceipt | null = null;
+  #pendingDisabledBodyFocus = false;
   #previewOwner: ShipyardPreviewOwner | null = null;
 
   constructor(options: EngineeringPanelControllerOptions) {
@@ -372,15 +378,16 @@ export class EngineeringPanelController {
   setPending(request: EngineeringPanelActionRequest | null): void {
     this.#assertLive();
     if (request === null) {
+      const settlement = this.#settlementFocus;
+      const restoreAction = settlement !== null
+        && (this.#focusBelongsToSettlement(settlement) || this.#ownsPendingDisabledBodyFocus());
       this.#pending = null;
       this.#emissionLocked = false;
+      this.#settlementFocus = null;
+      this.#pendingDisabledBodyFocus = false;
       this.#applyActionAvailability();
-      const deferred = this.#deferredFocusKey;
-      this.#deferredFocusKey = null;
-      if (this.#active && deferred !== null) {
-        const target = [...this.#body.querySelectorAll<HTMLElement>('[data-focus-key]')]
-          .find((element) => element.dataset.focusKey === deferred && !this.#disabled(element)) ?? null;
-        this.#restoreElement(target);
+      if (this.#active && restoreAction && settlement !== null) {
+        this.#restoreFocusKey(settlement.focusKey, settlement.semanticKey);
       }
       return;
     }
@@ -389,10 +396,11 @@ export class EngineeringPanelController {
     if (current !== null && !sameRequest(current, copy)) {
       throw new Error('Engineering panel cannot replace a pending action');
     }
+    if (this.#settlementFocus === null) this.#retainSettlementFocus(copy);
     this.#pending = copy;
     this.#emissionLocked = true;
     this.#lastRequest = copy;
-    this.#applyActionAvailability();
+    this.#applyActionAvailabilityWithFocusProof();
   }
 
   registration(): EngineeringPanelRegistration {
@@ -442,7 +450,8 @@ export class EngineeringPanelController {
     this.#lastRequest = null;
     this.#emissionLocked = false;
     this.#focusReturn = null;
-    this.#deferredFocusKey = null;
+    this.#settlementFocus = null;
+    this.#pendingDisabledBodyFocus = false;
     this.#disposed = true;
     this.#restoreElement(restore);
   }
@@ -465,7 +474,8 @@ export class EngineeringPanelController {
     const restore = this.#focusReturn;
     this.#active = false;
     this.#focusReturn = null;
-    this.#deferredFocusKey = null;
+    this.#settlementFocus = null;
+    this.#pendingDisabledBodyFocus = false;
     this.#disposeView();
     this.#restoreElement(restore);
   };
@@ -481,23 +491,32 @@ export class EngineeringPanelController {
     if (!operation) return;
     const id = button.dataset.actionId;
     const request = copyRequest(id === undefined ? { operation } : { operation, id });
+    this.#retainSettlementFocus(request);
     this.#emissionLocked = true;
     this.#lastRequest = request;
-    this.#applyActionAvailability();
+    this.#applyActionAvailabilityWithFocusProof();
     try {
       this.#onAction?.(request);
     } catch (error) {
       if (this.#pending === null) {
+        const settlement = this.#settlementFocus;
+        const restoreAction = settlement !== null
+          && (this.#focusBelongsToSettlement(settlement) || this.#ownsPendingDisabledBodyFocus());
         this.#emissionLocked = false;
         this.#lastRequest = null;
+        this.#settlementFocus = null;
+        this.#pendingDisabledBodyFocus = false;
         this.#applyActionAvailability();
+        if (restoreAction && settlement !== null) {
+          this.#restoreFocusKey(settlement.focusKey, settlement.semanticKey);
+        }
       }
       throw error;
     }
   };
 
   #render(): void {
-    const view = this.#captureView();
+    const view = this.#viewForRender(this.#captureView());
     this.#disposePreview();
     const fragment = this.#document.createDocumentFragment();
     fragment.append(this.#node('h3', 'engineering-panel-title', 'Engineering & Shipyard'));
@@ -508,6 +527,7 @@ export class EngineeringPanelController {
       this.#body.replaceChildren(fragment);
       this.#applyActionAvailability();
       this.#restoreView(view);
+      this.#pendingDisabledBodyFocus = false;
       return;
     }
 
@@ -525,6 +545,7 @@ export class EngineeringPanelController {
     this.#previewOwner.open(this.#state.ship);
     this.#applyActionAvailability();
     this.#restoreView(view);
+    this.#pendingDisabledBodyFocus = false;
   }
 
   #shipOverview(ship: ShipVisualState): Readonly<{ section: HTMLElement; mount: HTMLElement }> {
@@ -856,6 +877,17 @@ export class EngineeringPanelController {
     if (pendingStatus) pendingStatus.hidden = !busy;
   }
 
+  #applyActionAvailabilityWithFocusProof(): void {
+    const settlement = this.#settlementFocus;
+    const activeBefore = this.#document.activeElement;
+    const ownedBefore = settlement !== null && this.#focusBelongsToSettlement(settlement);
+    this.#applyActionAvailability();
+    if (ownedBefore && activeBefore !== this.#document.body
+      && this.#document.activeElement === this.#document.body) {
+      this.#pendingDisabledBodyFocus = true;
+    }
+  }
+
   #captureView(): ViewReceipt | null {
     const sections = [...this.#body.querySelectorAll<HTMLDetailsElement>(
       'details[data-engineering-section]',
@@ -875,8 +907,39 @@ export class EngineeringPanelController {
     });
   }
 
+  #retainSettlementFocus(request: EngineeringPanelActionRequest): void {
+    const receipt = this.#captureView();
+    const focusKey = request.id === undefined
+      ? `action:${request.operation}`
+      : `action:${request.operation}:${request.id}`;
+    const semanticKey = request.operation === 'research'
+      ? `research:${request.id}`
+      : request.operation === 'fabricate'
+        ? `recipe:${request.id}`
+        : null;
+    if (receipt?.focusKey !== focusKey || receipt.semanticKey !== semanticKey) return;
+    this.#settlementFocus = Object.freeze({ focusKey, semanticKey });
+  }
+
+  #viewForRender(receipt: ViewReceipt | null): ViewReceipt | null {
+    const settlement = this.#settlementFocus;
+    if (!this.#isBusy() || settlement === null || receipt === null) return receipt;
+    const ownsFocus = this.#focusBelongsToSettlement(settlement)
+      || this.#ownsPendingDisabledBodyFocus();
+    if (!ownsFocus) return receipt;
+    /* A native browser moves focus to BODY when the pressed action is
+       disabled by the pending latch. A first busy render may then move focus
+       to the replacement semantic row. Both remain the original action's
+       lineage across arbitrarily many busy renders; disclosure state still
+       comes from the latest live view. */
+    return Object.freeze({
+      focusKey: settlement.focusKey,
+      semanticKey: settlement.semanticKey,
+      openSectionIds: receipt.openSectionIds,
+    });
+  }
+
   #restoreView(receipt: ViewReceipt | null): void {
-    this.#deferredFocusKey = null;
     if (receipt === null) return;
     const openSectionIds = new Set(receipt.openSectionIds);
     for (const section of this.#body.querySelectorAll<HTMLDetailsElement>(
@@ -884,20 +947,13 @@ export class EngineeringPanelController {
     )) {
       section.open = openSectionIds.has(section.dataset.engineeringSection!);
     }
-    const keyedTarget = receipt.focusKey === null ? null
-      : [...this.#body.querySelectorAll<HTMLElement>('[data-focus-key]')]
-        .find((element) => element.dataset.focusKey === receipt.focusKey) ?? null;
+    const keyedTarget = this.#focusKeyTarget(receipt.focusKey, receipt.semanticKey);
     if (keyedTarget !== null && !this.#disabled(keyedTarget)
       && this.#restoreElement(keyedTarget)) return;
-    /* A still-available action is disabled only by the pending latch while
-       Main publishes the settled read model. Retain that semantic target and
-       restore it after setPending(null) unlocks the exact replacement. An
-       action whose new model is owned/unavailable deliberately falls through
-       to its row instead. */
-    if (keyedTarget !== null && this.#disabled(keyedTarget) && this.#isBusy()
-      && keyedTarget.dataset.modelEnabled === 'true') {
-      this.#deferredFocusKey = receipt.focusKey;
-    }
+    /* Pending and permanently unavailable actions both fall through to their
+       semantic row. The original action identity remains in settlementFocus;
+       unlock decides from the final model and current focus lineage whether
+       the exact replacement action may receive focus. */
     const semanticTarget = receipt.semanticKey === null ? null
       : [...this.#body.querySelectorAll<HTMLElement>('[data-semantic-key]')]
         .find((element) => element.dataset.semanticKey === receipt.semanticKey) ?? null;
@@ -909,8 +965,43 @@ export class EngineeringPanelController {
     return !!view && element instanceof view.HTMLButtonElement && element.disabled;
   }
 
+  #focusBelongsToSettlement(settlement: SettlementFocusReceipt): boolean {
+    const view = this.#document.defaultView;
+    const active = this.#document.activeElement;
+    if (!view || !(active instanceof view.HTMLElement) || !this.#body.contains(active)) return false;
+    const semanticKey = active.closest<HTMLElement>('[data-semantic-key]')?.dataset.semanticKey ?? null;
+    if (settlement.semanticKey !== null) return semanticKey === settlement.semanticKey;
+    return semanticKey === null
+      && active.closest<HTMLElement>('[data-focus-key]')?.dataset.focusKey === settlement.focusKey;
+  }
+
+  #ownsPendingDisabledBodyFocus(): boolean {
+    return this.#pendingDisabledBodyFocus && this.#document.activeElement === this.#document.body;
+  }
+
+  #focusKeyTarget(focusKey: string | null, semanticKey: string | null): HTMLElement | null {
+    if (focusKey === null) return null;
+    return [...this.#body.querySelectorAll<HTMLElement>('[data-focus-key]')]
+      .find((element) => element.dataset.focusKey === focusKey
+        && (element.closest<HTMLElement>('[data-semantic-key]')?.dataset.semanticKey ?? null) === semanticKey) ?? null;
+  }
+
+  #restoreFocusKey(focusKey: string | null, semanticKey: string | null): boolean {
+    const target = this.#focusKeyTarget(focusKey, semanticKey);
+    return this.#restoreElement(target);
+  }
+
   #restoreElement(element: HTMLElement | null): boolean {
     if (!element?.isConnected || this.#disabled(element)) return false;
+    const view = this.#document.defaultView;
+    if (view) {
+      for (let ancestor = element.parentElement; ancestor; ancestor = ancestor.parentElement) {
+        if (ancestor instanceof view.HTMLDetailsElement && !ancestor.open) {
+          const summary = ancestor.querySelector<HTMLElement>(':scope > summary');
+          if (summary !== element && !summary?.contains(element)) return false;
+        }
+      }
+    }
     try {
       element.focus();
     } catch {
