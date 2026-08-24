@@ -42,6 +42,7 @@ import {
   validCompendiumBrowserAuthority,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
+  CandidateObservationError,
   evaluateCandidateExpression, evaluateProfile, installBrokenBaselineThumbObserver,
   installBrokenBaselineInitialListArm,
   sealBrokenBaselineInitialListObservation,
@@ -901,6 +902,77 @@ export function validCandidateFilterTelemetryExpression(source) {
   return true;
 }
 
+/* A native press/release pair is meaningful only while the exact virtual row
+   is fully inside the scroll viewport and owns the hit-test point. A merely
+   intersecting row can move when focus/measurement settles between the two
+   CDP commands, turning a healthy product into a 30-second false wait. */
+export function candidateRowPointExpression(logicalId) {
+  assert(typeof logicalId === 'string' && logicalId,
+    'candidate row activation identity is invalid');
+  return `(()=>{
+    const e=[...document.querySelectorAll('#codexpanel [data-cid]')].find(x=>x.dataset.cid===${JSON.stringify(logicalId)});
+    const s=document.querySelector('[data-sel="codex-scroll"]');if(!e||!s)return null;
+    const r=e.getBoundingClientRect(),sr=s.getBoundingClientRect(),inset=8;
+    const left=Math.max(r.left,sr.left,0)+inset,right=Math.min(r.right,sr.right,innerWidth)-inset;
+    const top=Math.max(sr.top,0),bottom=Math.min(sr.bottom,innerHeight);
+    if(right<=left||r.top<top-0.5||r.bottom>bottom+0.5)return null;
+    const xs=[(left+right)/2,left+(right-left)/4,right-(right-left)/4];
+    const ys=[(r.top+r.bottom)/2,r.top+(r.height/4),r.bottom-(r.height/4)];
+    for(const y of ys)for(const x of xs){
+      const hit=document.elementFromPoint(x,y)?.closest?.('[data-cid]');
+      if(hit===e)return {x,y};
+    }
+    return null})()`;
+}
+
+export function validCandidateRowPointExpression(source, logicalId) {
+  return typeof source === 'string' && typeof logicalId === 'string' && logicalId.length > 0
+    && source === candidateRowPointExpression(logicalId);
+}
+
+/* Virtual rows can pass a geometry check and then move when ResizeObserver's
+   deferred render applies newly measured offsets. A click receipt cannot repair
+   a press that landed after that move. Reposition through the ordinary native
+   scroll path, consume the deferred render boundary, re-prove thumbnail
+   settlement, and accept only the same owned point on both sides of that
+   boundary. The bounded repeat is positioning work, never a retried click. */
+export async function settleCandidateRowActivationPoint({
+  sessionId, logicalId, scrollToIndex, waitReady, evaluate, maxAttempts = 4,
+}) {
+  assert(typeof sessionId === 'string' && sessionId
+    && typeof logicalId === 'string' && logicalId
+    && typeof scrollToIndex === 'function' && typeof waitReady === 'function'
+    && typeof evaluate === 'function'
+    && Number.isSafeInteger(maxAttempts) && maxAttempts >= 1 && maxAttempts <= 8,
+  'candidate row settlement dependencies are invalid');
+  const expression = candidateRowPointExpression(logicalId);
+  let last = null;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    await scrollToIndex(sessionId);
+    const before = await evaluate(
+      sessionId, expression, `row ${logicalId} pre-render point ${attempt}`,
+    );
+    await evaluate(sessionId,
+      'new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))',
+      `row ${logicalId} deferred-layout settlement ${attempt}`);
+    await waitReady(sessionId);
+    const after = await evaluate(
+      sessionId, expression, `row ${logicalId} post-render point ${attempt}`,
+    );
+    last = { attempt, before, after };
+    if (before && after && Number.isFinite(before.x) && Number.isFinite(before.y)
+      && Number.isFinite(after.x) && Number.isFinite(after.y)
+      && Math.abs(before.x - after.x) <= 0.5
+      && Math.abs(before.y - after.y) <= 0.5) {
+      return Object.freeze({ x: after.x, y: after.y });
+    }
+  }
+  throw new CandidateObservationError(
+    'product-unanswerable',
+    `row ${logicalId}: exact row never owned a render-stable activation point (${JSON.stringify(last)})`,
+  );
+}
+
 /* Native search replacement is evidence, not setup convenience. The hidden
    branch uses Search's real outside-boundary pointer close; the visible branch
    uses a bounded focus-only setup followed by native keys; empty clear uses
@@ -1267,21 +1339,31 @@ async function collectProfile({
       type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
   };
-  const rowPoint = async (sessionId, logicalId) => await waitValue(sessionId, `row ${logicalId}`, `(()=>{
-    const e=[...document.querySelectorAll('#codexpanel [data-cid]')].find(x=>x.dataset.cid===${JSON.stringify(logicalId)});
-    const s=document.querySelector('[data-sel="codex-scroll"]');if(!e||!s)return null;
-    const r=e.getBoundingClientRect(),sr=s.getBoundingClientRect();
-    const left=Math.max(r.left,sr.left,0),right=Math.min(r.right,sr.right,innerWidth);
-    const top=Math.max(r.top,sr.top,0),bottom=Math.min(r.bottom,sr.bottom,innerHeight);
-    return right>left&&bottom>top?{x:(left+right)/2,y:(top+bottom)/2}:null})()`);
   const clickRow = async (sessionId, logicalId) => {
-    const point = await rowPoint(sessionId, logicalId);
+    const expression = candidateRowPointExpression(logicalId);
+    assert(validCandidateRowPointExpression(expression, logicalId),
+      `${profile}: row activation expression was invalid`);
+    const point = await settleCandidateRowActivationPoint({
+      sessionId, logicalId,
+      scrollToIndex: async (ownedSessionId) => {
+        const wanted = fixture.rows.findIndex(([candidateId]) => candidateId === logicalId);
+        assert(wanted >= 0, `${profile}: row activation identity is absent from the fixture`);
+        await scrollToIndex(ownedSessionId, wanted);
+      },
+      waitReady: (ownedSessionId) => waitListReady(ownedSessionId, 1500),
+      evaluate,
+    });
     await sendStage(`row ${logicalId} mouse press`, 'Input.dispatchMouseEvent', {
       type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
     await sendStage(`row ${logicalId} mouse release`, 'Input.dispatchMouseEvent', {
       type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
+    const receipt = await evaluate(sessionId, `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
+      return {mode:d.panel.mode,logicalId:d.surfaces.detail.logicalId}})()`,
+    `row ${logicalId} activation receipt`);
+    assert(receipt?.mode === 'detail' && receipt.logicalId === logicalId,
+      `${profile}: native row activation did not open exact detail ${logicalId}`);
   };
   const key = async (
     sessionId, keyName, code, modifiers = 0, labelPrefix = '', commands = [],
@@ -1306,18 +1388,24 @@ async function collectProfile({
       const logicalId = fixture.rows[wanted]?.[0];
       const visibility = await evaluate(sessionId, `(()=>{const row=[...document.querySelectorAll('#codexpanel [data-cid]')]
         .find(x=>x.dataset.cid===${JSON.stringify(logicalId)});const s=document.querySelector('[data-sel="codex-scroll"]');
-        if(!row||!s)return {intersects:false,direction:null};const r=row.getBoundingClientRect(),sr=s.getBoundingClientRect();
+        if(!row||!s)return {intersects:false,fullyContained:false,direction:null};const r=row.getBoundingClientRect(),sr=s.getBoundingClientRect();
         const top=Math.max(sr.top,0),bottom=Math.min(sr.bottom,innerHeight);
-        return {intersects:r.bottom>top+0.5&&r.top<bottom-0.5,
-          direction:r.top>=bottom-0.5?1:r.bottom<=top+0.5?-1:0}})()`,
+        const intersects=r.bottom>top&&r.top<bottom;
+        return {intersects,fullyContained:intersects&&r.top>=top-0.5&&r.bottom<=bottom+0.5,
+          direction:r.top<top-0.5?-1:r.bottom>bottom+0.5?1:0}})()`,
       `scroll visibility ${wanted}`);
-      if (wanted >= windowState.start && wanted < windowState.end && visibility.intersects) {
+      if (wanted >= windowState.start && wanted < windowState.end
+        && visibility.fullyContained) {
         if (settle) {
           await waitListReady(sessionId);
           const settled = await evaluate(sessionId, `(()=>{const row=[...document.querySelectorAll('#codexpanel [data-cid]')]
             .find(x=>x.dataset.cid===${JSON.stringify(logicalId)});const s=document.querySelector('[data-sel="codex-scroll"]');
-            if(!row||!s)return false;const r=row.getBoundingClientRect(),sr=s.getBoundingClientRect();
-            return r.bottom>Math.max(sr.top,0)+0.5&&r.top<Math.min(sr.bottom,innerHeight)-0.5})()`,
+            if(!row||!s)return false;const r=row.getBoundingClientRect(),sr=s.getBoundingClientRect(),inset=8;
+            const left=Math.max(r.left,sr.left,0)+inset,right=Math.min(r.right,sr.right,innerWidth)-inset;
+            const top=Math.max(sr.top,0),bottom=Math.min(sr.bottom,innerHeight);
+            const x=(left+right)/2,y=(r.top+r.bottom)/2;
+            return right>left&&r.top>=top-0.5&&r.bottom<=bottom+0.5
+              &&document.elementFromPoint(x,y)?.closest?.('[data-cid]')===row})()`,
           `settled scroll visibility ${wanted}`);
           if (!settled) continue;
         }

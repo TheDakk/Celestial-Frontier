@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-22. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-23. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -10,6 +10,28 @@ shipped, or with a check that went green while the thing it guarded was broken. 
 roughly by how often they have bitten.
 
 ---
+
+⚠⚠ **NATIVE POINTER EVIDENCE MUST SURVIVE THE DEFERRED RENDER, PROVE A STABLE HIT OWNER, AND OWN
+THE IMMEDIATE ACTION RECEIPT** (2026-08-23). PR #34 run `32665404776` positioned a virtual
+Compendium row while it was only partially intersecting the scroller, then sent native press and
+release as separate hosted CDP commands. No detail opened, but the instrument skipped the receipt
+and spent 30 seconds waiting for impossible detail art; its last clipped poll had only 46 ms left.
+The first repair added full containment, exact hit ownership and an immediate receipt. Run
+`32677088518` proved that was still one render turn too early: the first activation passed, but
+after Close/reopen the second row passed its one-shot check and then moved when deferred
+ResizeObserver measurements updated the virtual offsets. A passive wait observed no owned point
+112 times and misleadingly ended on a clipped 51 ms command with a timely root heartbeat.
+
+Before native pointer input on a moving or virtualized surface, position through the ordinary
+native-scroll path, require full containment, choose an inset point, and independently prove
+`elementFromPoint(...).closest(...)` owns that exact logical identity. Consume the deferred render
+boundary, re-prove resource settlement, and require the same owned point afterward; only then send
+one press/release. Immediately after release, assert the exact semantic receipt before any resource
+or art wait. Negative-control missing ownership, partial containment, pre-render-green/post-render-red
+geometry, perpetual movement, and a press/release that does not activate. Bounded repositioning is
+not a click retry. A final clipped command remainder is not the phase's SLA and must never replace
+the earliest failed outcome. Do not repair this class with another passive wait, a timeout increase,
+an automatic click retry, or a weakened resource ceiling.
 
 ⚠⚠ **AN ARC IS NOT DONE UNTIL ITS CURRENT DOCS AND HANDOFF AGREE** (2026-08-20).
 Every Arc update refreshes all affected current Markdown/reference docs in the same batch and ends

@@ -2,11 +2,14 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** PR #32's three post-freeze closure attempts are consumed;
-the final changed-head attempt passed, its label was removed, and the PR merged. PR #33 runs
-`32609389977`, `32611053651`, `32614177932`, and `32618995487` are also consumed and terminal-red;
-their labels were removed.
-Details are below.
+**Hosted attempt state: none authorized.** PR #34 runs `32665404776` and `32677088518` are
+consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
+labels were removed. No retry or replacement attempt is authorized. PR #33's fifth and
+final authorized changed-head attempt,
+run `32646110946`, passed terminal-green (one attempt, no retry; battery 50m29s), its label was
+removed, and it merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`.
+Runs `32609389977`, `32611053651`, `32614177932`, and `32618995487` remain consumed terminal-red
+historical evidence; their labels were removed. Details are below.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
@@ -68,6 +71,10 @@ merges, and successful batteries now start **zero hosted runners by default**:
 - `branch-flow-guard.yml`, `sync-agent-branches.yml`, and `dev-preview-package.yml` are manual-only
   and default to `DO_NOT_RUN`. Their runner-owning authorization also requires the repository owner;
   preview uses the same tiny authorize→sealed-owner dependency as the main battery.
+- The active `develop` ruleset requires only the terminal-green `battery` context, normal merge
+  commits, resolved threads, and an up-to-date head. It has no required review count, no extra
+  unattributed-change approval, and no required `Approved branch flow` context. The latter remains
+  an optional manual diagnostic and must not be dispatched merely to unblock a green PR.
 - `publish-branch-sites.yml` is manual-only and additionally hard parked. Neither production nor
   development publication can run until a later reviewed exact-SHA promotion contract removes its
   explicit false guard.
@@ -131,8 +138,8 @@ rarity sanity, dead-code scan, and v2 install passed. All 571 v2 tests and all t
 inside the failing step, but `artaudit` then emitted D-ART-36 against `tools/scenemem.mjs`: its static
 ruler recognized only the legacy `execSync('npx vite build')` spelling and missed SceneMemory's real,
 unconditional `execFileSync(npm, ['run', 'build'])`. Later Edge/Chrome/browser gates were correctly
-skipped. The approval label was removed immediately; the run is consumed, PR #33 remains draft and
-unmerged, and no retry or future hosted attempt is authorized.
+skipped. The approval label was removed immediately; the run is consumed. At that point PR #33 was
+still draft and unmerged; no retry was authorized.
 
 Nick then authorized the push of changed head
 `27b965870c8e831d8b42a0346cf86c112998c15e` and one new attempt against the same base, label,
@@ -144,7 +151,8 @@ Arc-1 index/owner built producer
 `5a316197d9aca27967f4e930f43089d2bbe2b9e4a66a40c207ea59c809405d94`. Worker and painter bytes
 were unchanged; the owner/index change is still producer authority and cannot reuse or rebind old
 ceilings. Later browser gates were skipped. The label was removed immediately; this attempt is
-consumed, PR #33 remains draft and unmerged, and no future hosted attempt is authorized.
+consumed. At that point PR #33 remained draft and unmerged, and no future hosted attempt was
+authorized.
 
 The local repair batch reopened and freshly calibrated Compendium under the current Arc-1 producer
 and exact Edge `.101`, then updated both guarded hosted workflows and the fail-closed preflight from
@@ -160,8 +168,8 @@ The phone focus-pinned point sampled `cmem-0740` and `cmem-0743` as 0×0 placeho
 live subscribers: the collector had proved the prior window ready, then its own mandatory renderer
 turn remounted a fresh normal window before snapshot. Every other byte/pixel/cache/queue/lease/
 portrait ceiling passed; the one paint error was the gate's intentional, recovered negative-control
-job. The run is terminal-red and consumed, its label was removed immediately, PR #33 remains Draft
-and unmerged, and no retry or future hosted attempt is authorized. The local bounded repair consumes
+job. The run is terminal-red and consumed, and its label was removed immediately. At that point PR
+#33 remained Draft and unmerged; no retry was authorized. The local bounded repair consumes
 the deferred virtual-window render turn and re-proves decoded thumbnail settlement before the
 unchanged GC/snapshot sequence. Clean collector source `14626a7…` was recalibrated in exactly three
 current-product candidates plus one paired legacy baseline, each one attempt with zero retries. The
@@ -177,8 +185,8 @@ rule. Run `32618995487`, attempt 1, completed Compendium 78/78 and then terminal
 40/42; only `phone/answerability` and `desktop/answerability` failed. All twelve targets retained the
 same document, advanced the Pixi ticker, and completed below the unchanged 2,000 ms transport
 deadline, while Linux rendered turns took 493–647 ms against the Mac-selected 250 ms ceiling. The
-label was removed; the run is consumed, PR #33 remains Draft/unmerged, and no retry or future hosted
-attempt is authorized.
+label was removed; the run is consumed. At that point PR #33 remained Draft/unmerged, and no retry
+or future hosted attempt was authorized.
 
 Local repair commit `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` preserves collector and contract
 bytes, activates budget SHA-256
@@ -207,6 +215,43 @@ could start seven runners with 175 combined
 configured job-minutes on every PR update, then repeat on `develop` and fan out into sync/publication.
 That automatic fanout is retired. Parallel wall-clock speed is not worth multiplying finite hosted
 minutes or letting unrelated jobs continue after the first deterministic red.
+
+## Consumed PR #34 attempts
+
+PR #34 tested documentation-sync head `4909069ba6f1e2d5dee62286d29b0bc8201186ee` against base
+`8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` once in run `32665404776`, under the normal
+`actions-budget-approved` label, 92-runner-minute ceiling, and no-retry rule. All earlier gates and
+the phone Compendium profile passed. The desktop second 440-detail native click did not activate its
+virtual row; the gate then waited for detail art that could not exist and ended on a final clipped
+46 ms CDP command. The exact retained report shows healthy transport and no product memory verdict
+for that incomplete desktop profile. The label was removed and the attempt is consumed.
+
+The first local repair `bf0ece6…` required full row containment, independent exact hit ownership,
+and an immediate exact-detail receipt before any art wait. Three retained candidates plus one paired
+legacy baseline preserved all numeric ceilings and four sealed baseline faults under measurement
+authority `cfc40f89…`; its now-historical budget SHA-256 was `208af955…`. Clean committed source
+`7de42c6…` passed local exact-budget run `20260823-pr34-row-activation-certification` 78/78 with complete
+lifecycle and named verification; raw/gzip report SHA-256 are `ea31612f…` / `1c6c12fa…`. This
+local work does not authorize a push, label, hosted attempt, Ready transition, or merge.
+
+Nick then authorized head `3dc213cc87c1995a58525fa6b310f79bbfc99fef` against the same base
+once, under the same label, 92-runner-minute ceiling, and no-retry rule. Run `32677088518` passed
+every earlier gate and reached the second desktop row activation. Its exact report proves the first
+activation and immediate receipt succeeded; after Close/reopen, a one-shot pre-render row point
+became invalid across the deferred ResizeObserver/render turn. The passive point wait issued 112
+observations and ended on a final clipped 51 ms command while the root heartbeat remained timely.
+The label was removed; PR #34 stayed Draft and unmerged; the attempt is consumed.
+
+The retained raw/gzip report hashes are `544015e9…` / `cc5ed778…`. Collector `6d681d19…` now
+requires native-scroll positioning and the same exact owned point before and after a double-render
+settlement before sending its one press/release. This changes measurement authority to `6a961df8…`,
+so budget `208af955…`, its samples, baseline, and prior certificate are historical. Clean repair
+source `a95889d…` produced three independent 78/78 candidates and a paired legacy baseline; activation
+commit `d21ba26…` selects active budget `faa160b3…` without widening numeric ceilings, while retaining
+the 14-phone/13-desktop broken-baseline breaches. Exact-budget run
+`20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
+`d21ba26…`; raw/gzip hashes are `42753d5e…` / `a2ff5b00…`. This is local authority only and does not
+authorize a new changed-head hosted attempt.
 
 ## Safe rollout of this guard
 

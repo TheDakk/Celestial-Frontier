@@ -208,9 +208,19 @@ owned 440px image, and Planetside uses the same lease path. Its standalone `comp
 retains the Arc-local four-field browser authority
 `arc1a-compendium-memory-only`: product `Edg/151.0.4129.101`, revision
 `@cc1d9f4080fd9140611a9600b8d1615db310105d`, JavaScript version `15.1.23.9`, and CDP protocol
-version `1.3`; active budget SHA-256 is
-`28b958678fa2e95bb7b906cb10bd1a422dfe0b52867400e8722fbf6befddb15d`. Executable path and user
-agent remain recorded provenance, not cross-host match fields.
+version `1.3`. PR #34 runs `32665404776` and `32677088518` are retained terminal-red interaction
+evidence, not memory verdicts. The second run proves the first activation succeeded, then a
+Close/reopen row point moved across the deferred ResizeObserver/render boundary; its passive wait
+ended after 112 observations on a clipped 51 ms command with a timely heartbeat. Exact report
+raw/gzip hashes are `544015e9…` / `cc5ed778…`. Collector `6d681d19…` now uses native-scroll
+repositioning and requires the same owned point before/after a double-render plus thumbnail-settle
+boundary before its one press/release and immediate receipt. Measurement is `6a961df8…`; former
+budget `208af955…` and its evidence are historical. Clean repair `a95889d…` produced three 78/78
+candidates and the paired legacy baseline; activation `d21ba26…` selects active budget `faa160b3…`
+with unchanged numeric ceilings and the retained 14-phone/13-desktop breach inventory. Exact-budget
+run `20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
+`d21ba26…` (raw/gzip `42753d5e…` / `a2ff5b00…`). This is local evidence, not a new hosted green.
+Executable path and user agent remain recorded provenance, not cross-host match fields.
 
 Ubuntu provisions `/usr/bin/microsoft-edge-stable` only for the ordinary Compendium job and
 the manual Compendium selftest/run/verify steps. The package is the exact Microsoft
@@ -312,9 +322,9 @@ steps. It runs the browser-free instrument and calibration controls, performs on
 active-budget certification, always verifies the named terminal report, and uploads whatever that
 attempt produced as `v2-scene-memory-evidence`. This is part of the single fail-fast
 owner-label-authorized battery, not a new parallel job or automatic retry. Hosted attempt 4 is
-consumed and terminal-red; **zero new Arc 1C hosted attempts are authorized**. Local 42/42 evidence
-does not authorize adding the label, dispatching either workflow, publishing, marking a PR Ready,
-merging, releasing, or deploying.
+consumed and terminal-red. A later authorized PR #33 battery, `32646110946`, passed terminal-green
+and merged `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`; its label was removed. No new hosted attempt
+is authorized. Local 42/42 evidence still does not authorize publication, release, or deployment.
 
 The separate manual `development-preview-package` workflow still owns preview packaging and its
 current exact `.101` Compendium/Chrome sequence; it does not run or certify the Arc 1

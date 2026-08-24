@@ -9,10 +9,32 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
+## Current-state instrument correction — PR #34 Compendium native row activation (2026-08-23)
+
+**Status: ★ second bounded correction locally certified; hosted proof remains open.** Runs
+`32665404776` and `32677088518` exposed two consecutive green-too-early row-activation boundaries.
+The second report proves the first activation and receipt passed, but after Close/reopen the row's
+one-shot owned point moved across a deferred ResizeObserver/render turn. A passive wait then issued
+112 observations and ended on a clipped 51 ms command with a timely root heartbeat. The exact
+report is retained at raw/gzip `544015e9…` / `cc5ed778…`.
+
+Collector `6d681d19…` now positions only through the ordinary native-scroll path, requires the same
+exact owned inset point before and after a double-render plus thumbnail-settlement boundary, then
+sends one press/release and checks the immediate exact-detail receipt. Its controls reproduce a
+pre-render-green/post-render-null row and reject perpetual movement. This changes measurement
+authority to `6a961df8…`; former budget `208af955…`, samples, paired baseline and certificate are
+historical. Clean repair `a95889d…` produced three 78/78 candidates and the paired legacy baseline;
+activation `d21ba26…` selects active budget `faa160b3…` without widening numeric ceilings and retains
+the 14-phone/13-desktop breach inventory. Exact-budget run
+`20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
+`d21ba26…` (raw/gzip `42753d5e…` / `a2ff5b00…`). This remains a ruler correction, not a gameplay
+deviation, timeout increase, click retry, or memory-budget widening.
+
 ## Current-state decision — Arc 1C ship visual and real-Shipyard resource extension (2026-08-23)
 
-**Status: ★ automated implementation locally complete; HUMAN readability, review, hosted terminal-green evidence,
-and integration remain open.** Product/ruler source
+**Status: ★ automated implementation and hosted integration complete; HUMAN readability remains
+open.** PR #33 merged as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after terminal-green battery
+run `32646110946`. Product/ruler source
 `a4de5007ffc9131b8bc952a0a4cb469d9139039e` projects one unsaved normalized `ShipVisualState` from
 the same canonical saved reach used by travel. Scout/Chemical, Jump/Interstellar, Survey Cruiser and
 Frontier/IG chassis; exact `array`, `autoext` and `cscoop` hardpoints; installed-system captions; and
@@ -46,8 +68,8 @@ Universe on phone and desktop.
 The previous plan allowed at most one Pixi preview; choosing one code-native SVG/DOM owner and zero
 second renderer is within that bound, not a new gameplay deviation. Fabrication, the Research Bench,
 Cargo/material spending, build/research/upgrade writers and a living animated preview remain future.
-PR #33 remains draft; hosted terminal-green CI, integration, Arc 1A's six-image HUMAN review, Arc 1C phone/desktop
-silhouette judgment, whole-Gate closure, release and deployment are not claimed.
+Arc 1A's six-image HUMAN review, Arc 1C phone/desktop silhouette judgment, whole-Gate closure,
+release and deployment remain unclaimed.
 
 ## Historical exact decision — Arc 1B scene resource ownership (2026-08-21)
 
@@ -253,7 +275,8 @@ current disposition of historical `D-COMPENDIUM-MEM` without rewriting that date
 - This is an automated implementation/integration decision, not human art approval or Gate/release
   closure. Fresh phone/desktop list/detail/focus-pinned images still require human review. Arc 1B's
   historical scene/Pixi certificate and Arc 1C's locally certified real-Shipyard extension are
-  recorded in the two blocks above; PR #33 review, hosted terminal-green evidence and integration remain open.
+  recorded in the two blocks above. Later terminal-green run `32646110946` merged PR #33; HUMAN
+  review and Gate/release closure remain open.
 - PR #32's layout deviations remain bounded. In portrait, shared bottom-anchor math preserves the
   44px Survey / 8px gap / 72px scrollable Planetside stack. In short landscape, Compendium uses the left
   safe-height workspace and recomputes its scroller from the safe viewport, while Search, dock, and
@@ -1955,8 +1978,8 @@ duplicates).
   recorded in the current-state blocks above. Arc 1A later passed exact changed-head hosted evidence
   and merged in PR #32. Arc 1B's broader pre-Shipyard scene-memory proof remains preserved in its
   2026-08-21 historical block; Arc 1C's 2026-08-23 current block now owns the locally certified real
-  Shipyard extension. PR #33 review, hosted terminal-green evidence and integration remain open, and the Arc 1A
-  HUMAN review remains separate.
+  Shipyard extension. Later terminal-green run `32646110946` merged PR #33; the Arc 1A HUMAN review
+  remains separate.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds
