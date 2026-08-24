@@ -119,6 +119,12 @@ ordered uint32 parent tuple while stripping XP, feeding, brood, injury, and othe
 Forward/reverse parents remain distinct, malformed/future/mismatched carriers fail closed, and pure
 creatures carry explicit no-lineage state. No companion/share UI is enabled yet.
 
+**Arc 0 `MAIN-3` closure (local, 2026-08-24):** canonical ecology output is no longer truncated
+inside its roster owner. `fullWorldRoster` retains every deterministic row; the isolated
+`worldRosterView` applies the eight-row cap only to the existing Planetside thumbnail strip and
+reports the hidden count. Thirteen-row, short, empty, snapshot, and mutation controls pass. Future
+capture/audio targeting must consume the full side, never infer authority from the preview.
+
 ### SSH and branch discipline
 
 - Use only the matching app/OS/root/branch row in `PARALLEL_GIT_PROTOCOL.md`;
