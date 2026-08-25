@@ -29,6 +29,29 @@ import {
   trainingBindingReceiptBeforeDeadline,
 } from './slicesmoke-contract.mjs';
 import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
+import {
+  ENGINEERING_ACTION_CONTROL_COUNT,
+  ENGINEERING_RECIPE_GROUPS,
+  ENGINEERING_RECIPE_IDS,
+  ENGINEERING_REMNANT_ROUTE_LEGACY_TARGET,
+  ENGINEERING_REMNANT_ROUTE_TARGET,
+  ENGINEERING_RESEARCH_IDS,
+  assessArc3RemnantRejectedSearchControl,
+  assessArc3RemnantSkimRoutePrecondition,
+  assessArc3StorageRefusal,
+  assessEngineeringNoOptimismUi as assessArc3NoOptimismUi,
+  arc3ActionUnrelatedEvidencePreserved,
+  arc3DurableEvidenceComplete,
+  arc3MineBrowserOutcomePasses,
+  arc3TrainingDurableEvidenceComplete,
+  arc3TrainingEvidenceMode,
+  hasUnnegatedSentenceClaim,
+  withEngineeringUiActionModel,
+  withEngineeringUiInventoryController,
+  withEngineeringUiInventoryRevision,
+  withEngineeringUiOpportunityStatus,
+  withEngineeringUiRecipeOwned,
+} from './engineering-browser-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 /* Direct runs own the checkout lock. The structured-report wrapper owns one
@@ -76,6 +99,16 @@ const withCodeStarPosition = (code, x, y) => {
   payload.s[1] = y;
   return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
 };
+const withCodeStarIdentity = (code, { seed, x, y }) => {
+  const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
+  payload.t = 's';
+  payload.s[0] = x;
+  payload.s[1] = y;
+  payload.s[2] = seed;
+  delete payload.p;
+  delete payload.n;
+  return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
+};
 const withCodePlanetSeed = (code, seed) => {
   const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
   payload.p = seed;
@@ -115,6 +148,12 @@ const outerReachGalaxyView = () => ({
 });
 const codeName = (code) => JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8')).n || null;
 const codeGalaxySize = (code) => JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8')).g?.[2] ?? null;
+const stageZeroCharterHintIsTruthful = (text) => /Sol is your current reach/i.test(text || '')
+  && /Engineering can fabricate the Jump Drive/i.test(text || '')
+  && /exact recipe requirements are met/i.test(text || '')
+  && !/next Charter system is not available|does not award the next Charter system/i.test(text || '')
+  && !/fabricate (?:the )?(?:Long-Range Array|Intergalactic Drive)/i.test(text || '');
+const hasUnavailableCharterDirective = (text) => /Discover life on 2 alien worlds|Conquer a world|Breed a hybrid bloodline|Accept to begin|three charters a week/i.test(text || '');
 /* Legacy decodeWhere repairs these fractional identity bytes into Earth.
    Planet Search must reject them before its tolerant decode/sanitizer. */
 const COERCED_EARTH_PLANET_CODE = 'CF1-eyJ0IjoicCIsImciOls5MCwtNjAsNzgsMCwwLjYyLDAuNSw5OTkuOSwxXSwicyI6WzU2MCwxNzAsNDI0MjQyLjldLCJwIjoxMzMuOX0';
@@ -220,6 +259,73 @@ const INVENTORY_VETERAN_RAW = (() => {
   save.eq = { ...save.eq, suit: 'hazmat' };
   return JSON.stringify(save);
 })();
+const ENGINEERING_VETERAN_RAW = (() => {
+  const save = JSON.parse(VETERAN_ATLAS_RAW);
+  save.me = 'Arc 3 Engineering Gate';
+  save.view = { ...save.view, gal: { ...save.view.gal }, star: { ...save.view.star }, pseed: 134 };
+  save.cargo = [['Fe', 100], ['Si', 100]];
+  save.cgx = [];
+  save.items = [...save.items.filter(([id]) => !['jumpdrive', 'array', 'igdrive'].includes(id)), ['jumpdrive', 1]];
+  save.tech = [];
+  save.mx = [];
+  save.minedw = [];
+  save.skx = [];
+  save.asc = 0;
+  save.ascp = {};
+  return JSON.stringify(save);
+})();
+/* Exact source addresses are owned by this gate, not inferred from the
+   carrier row being judged. The remnant candidate is a source-proven coarse
+   star inside the fixture's Stage-1 Jump reach. */
+const ARC3_MARS_WORLD_ADDRESS = Object.freeze({
+  format: 'CF1',
+  galaxy: Object.freeze({
+    seed: 999, x: 90, y: -60, size: 78, sp: 0, tilt: 0.62, rot: 0.5,
+    home: true, quasar: false, dwarf: false, parentCell: Object.freeze({ x: 0, y: -1 }),
+  }),
+  star: Object.freeze({
+    seed: 424242, x: 560, y: 170, layer: 'coarse', parentCell: Object.freeze({ x: 13, y: 4 }),
+  }),
+  planet: Object.freeze({ seed: 134, ordinal: 3 }),
+  key: 'CF1|g:999@90,-60|s:424242@560,170|p:134#3',
+});
+const ARC3_OTHER_WORLD_CONTROL_ADDRESS = Object.freeze({
+  format: 'CF1', galaxy: ARC3_MARS_WORLD_ADDRESS.galaxy,
+  star: ARC3_MARS_WORLD_ADDRESS.star,
+  planet: Object.freeze({ seed: 133, ordinal: 2 }),
+  key: 'CF1|g:999@90,-60|s:424242@560,170|p:133#2',
+});
+const ARC3_REMNANT_STAR_ADDRESS = Object.freeze({
+  format: 'CF1',
+  galaxy: ARC3_MARS_WORLD_ADDRESS.galaxy,
+  star: Object.freeze({
+    seed: 449521432, x: 734.58, y: -10.77, layer: 'coarse', parentCell: Object.freeze({ x: 17, y: -1 }),
+  }),
+  key: 'CF1|g:999@90,-60|s:449521432@734.58,-10.77',
+});
+const arc3RemnantRouteProjection = (state) => ({
+  mode: state?.mode ?? null,
+  gal: state?.gal ?? null,
+  galX: state?.galX ?? null,
+  galY: state?.galY ?? null,
+  galSize: state?.galSize ?? null,
+  star: state?.star ?? null,
+  starX: state?.starX ?? null,
+  starY: state?.starY ?? null,
+  planet: state?.planet ?? null,
+  planetOrdinal: state?.planetOrdinal ?? null,
+  navGalaxyKey: state?.navGalaxyKey ?? null,
+  navStarKey: state?.navStarKey ?? null,
+  navWorldKey: state?.navWorldKey ?? null,
+  renderedScene: state?.renderedScene ?? null,
+  stage: state?.stage ?? null,
+  reach: state?.reach ?? null,
+  shipVisual: state?.shipVisual ?? null,
+  panelOpen: state?.panelOpen ?? null,
+  cardOpen: state?.cardOpen ?? null,
+  cardTitle: state?.cardTitle ?? null,
+  save: state?.save ?? null,
+});
 const STALE_SAVED_ROUTE_RAW = (() => {
   const save = JSON.parse(VETERAN_ATLAS_RAW);
   save.me = 'Field-local Route Repair';
@@ -280,9 +386,10 @@ const VETERAN_STAGE3_RAW = (() => {
   save.prime = {};
   return JSON.stringify(save);
 })();
-/* Malformed chapter position is not a drive entitlement. This fixture has
-   Chapter 2 selected but no saved system that can reach a non-Sol world. */
-const MALFORMED_C2_REACH_RAW = (() => {
+/* Human-facing Chapter 2 is the zero-based legacy `asc` / current `ascCh`
+   value 1. That selected position is not a drive entitlement: this fixture
+   deliberately owns no system that can reach a non-Sol world. */
+const MALFORMED_HUMAN_CHAPTER_2_ASC_CH_1_REACH_RAW = (() => {
   const save = JSON.parse(VETERAN_RAW);
   save.asc = 1;
   save.items = [];
@@ -371,6 +478,8 @@ const READ_F4_AUTHORITY_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v
       ordinal:authority?.sessionRng?.ordinal??null,draws:authority?.sessionRng?.draws??null,
       receiptKeys:receiptKeys.map(String),receiptRows:receiptRows.map((raw)=>{try{return JSON.parse(String(raw))}catch{return null}})};
   }finally{db.close()}})()`;
+const F4_READY_STATE_PROJECTION_EXPRESSION = `((state)=>state?{
+  persistence:state.persistence,sceneResources:state.sceneResources}:null)`;
 const READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
   const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
   try{const tx=db.transaction(['meta','player','inventory','receipts'],'readonly'),done=new Promise((resolve,reject)=>{
@@ -395,6 +504,76 @@ const READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION = `(async()=>{const open=indexedDB
       receiptKeys:receiptKeys.map(String),receiptRawRows:receiptRawRows.map(String),
       receiptRows:receiptRawRows.map((raw)=>parse(raw))};
   }finally{db.close()}})()`;
+const READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
+  const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
+  try{const tx=db.transaction(['meta','player','creatures','catalog','inventory','settings','receipts'],'readonly'),done=new Promise((resolve,reject)=>{
+    tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('Arc 3 Engineering read aborted'))});
+    const get=(store,key)=>new Promise((resolve,reject)=>{const q=tx.objectStore(store).get(key);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
+    const all=(method)=>new Promise((resolve,reject)=>{const q=tx.objectStore('receipts')[method]();q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
+    const [revisionRaw,legacyRaw,playerRaw,creaturesRaw,catalogRaw,inventoryRaw,settingsRaw,receiptKeys,receiptRawRows]=await Promise.all([
+      get('meta','f3:revision'),get('meta','save'),get('player','v5:player'),get('creatures','v5:creatures'),
+      get('catalog','v5:catalog'),get('inventory','v5:inventory'),get('settings','v5:settings'),
+      all('getAllKeys'),all('getAll')]);await done;
+    const parse=(raw)=>{try{return JSON.parse(String(raw))}catch{return null}};
+    const legacy=parse(legacyRaw),playerRow=parse(playerRaw),creaturesRow=parse(creaturesRaw),
+      catalogRow=parse(catalogRaw),inventoryRow=parse(inventoryRaw),settingsRow=parse(settingsRaw),
+      authorityCarrier=playerRow?.extensions?.['f4.authority']??null,
+      engineeringCarrier=playerRow?.extensions?.['arc3.engineering']??null,
+      lootCarrier=inventoryRow?.extensions?.['arc2.loot']??null,
+      authority=authorityCarrier?parse(authorityCarrier.json):null,
+      arc3=engineeringCarrier?parse(engineeringCarrier.json):null,
+      arc2=lootCarrier?parse(lootCarrier.json):null;
+    return {revisionRaw:revisionRaw===undefined?null:String(revisionRaw),revision:Number(revisionRaw),
+      legacyRaw:legacyRaw===undefined?null:String(legacyRaw),legacy,
+      playerRaw:playerRaw===undefined?null:String(playerRaw),playerRow,
+      creaturesRaw:creaturesRaw===undefined?null:String(creaturesRaw),creaturesRow,
+      catalogRaw:catalogRaw===undefined?null:String(catalogRaw),catalogRow,
+      inventoryRaw:inventoryRaw===undefined?null:String(inventoryRaw),inventoryRow,
+      settingsRaw:settingsRaw===undefined?null:String(settingsRaw),settingsRow,
+      authorityVersion:authorityCarrier?.version??null,authorityJson:authorityCarrier?.json??null,authority,
+      engineeringVersion:engineeringCarrier?.version??null,engineeringJson:engineeringCarrier?.json??null,arc3,
+      arc2Version:lootCarrier?.version??null,arc2Json:lootCarrier?.json??null,arc2,
+      receiptKeys:receiptKeys.map(String),receiptRawRows:receiptRawRows.map(String),
+      receiptRows:receiptRawRows.map((raw)=>parse(raw))};
+  }finally{db.close()}})()`;
+/* A durable snapshot alone cannot catch optimistic painting. Join every
+   no-optimism window to the actual Engineering row facts and the live Arc 2
+   inventory/controller projection. Actual `disabled` is kept separately:
+   it must latch while pending without rewriting any model-owned fact. */
+const READ_ARC3_ENGINEERING_UI_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+  panel=document.getElementById('shipyardpanel'),body=panel?.querySelector('[data-engineering-panel-body]'),
+  text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),
+  actionModel=(row)=>{const button=row?.querySelector('button[data-engineering-action]');return {
+    operation:button?.getAttribute('data-engineering-action')??null,id:button?.getAttribute('data-action-id')??null,
+    modelEnabled:button?.getAttribute('data-model-enabled')??null,disabledReason:button?.getAttribute('data-disabled-reason')??null}},
+  costs=(row)=>[...row.querySelectorAll('[data-engineering-costs] > li')].map((line)=>({
+    kind:line.getAttribute('data-cost-kind'),sufficient:line.getAttribute('data-sufficient'),text:text(line),
+    values:[...line.querySelectorAll('[data-cost-id]')].map((value)=>({id:value.getAttribute('data-cost-id'),
+      required:value.getAttribute('data-required'),owned:value.getAttribute('data-owned'),
+      sufficient:value.getAttribute('data-sufficient'),text:text(value)}))})),
+  opportunity=(id)=>{const section=panel?.querySelector('details[data-engineering-section="'+id+'"]');return {
+    id,status:section?.getAttribute('data-status')??null,statusText:text(section?.querySelector('[data-engineering-status]')),
+    facts:[...section?.querySelectorAll('[data-engineering-fact]')??[]].map((row)=>({id:row.getAttribute('data-engineering-fact'),text:text(row)})),
+    action:actionModel(section)}},
+  research=[...panel?.querySelectorAll('[data-research-id]')??[]].map((row)=>({
+    id:row.getAttribute('data-research-id'),order:row.getAttribute('data-row-order'),status:row.getAttribute('data-status'),
+    statusText:text(row.querySelector('[data-row-status]')),costs:costs(row),action:actionModel(row)})),
+  recipes=[...panel?.querySelectorAll('[data-recipe-id]')??[]].map((row)=>{const output=row.querySelector('[data-output-kind]'),
+    effect=row.querySelector('.engineering-effect-support');return {id:row.getAttribute('data-recipe-id'),
+      category:row.getAttribute('data-recipe-category'),order:row.getAttribute('data-row-order'),
+      status:row.getAttribute('data-status'),effectSupport:row.getAttribute('data-effect-support'),
+      statusText:text(row.querySelector('[data-row-status]')),effectText:text(effect),
+      output:{kind:output?.getAttribute('data-output-kind')??null,owned:output?.getAttribute('data-owned')??null,
+        quantity:output?.getAttribute('data-output-quantity')??null,capacity:output?.getAttribute('data-capacity-remaining')??null,
+        text:text(output)},costs:costs(row),action:actionModel(row)}}),
+  actions=[...panel?.querySelectorAll('button[data-engineering-action]')??[]].map((button)=>({
+    operation:button.getAttribute('data-engineering-action'),id:button.getAttribute('data-action-id'),
+    modelEnabled:button.getAttribute('data-model-enabled'),disabled:button.disabled,
+    ariaDisabled:button.getAttribute('aria-disabled')})),pending=panel?.querySelector('[data-engineering-pending]');
+  return {schema:'cf-v2-slice-engineering-ui-evidence/v1',panelOpen:state?.panelOpen??null,
+    renderedFacts:{opportunities:[opportunity('mining'),opportunity('skimming')],research,recipes},
+    actionAvailability:actions,pendingVisible:!!pending&&!pending.hidden,ariaBusy:body?.getAttribute('aria-busy')??null,
+    inventoryState:state?.inventory??null,inventoryController:S?.api?.inventoryDiagnostics?.()??null}})()`;
 const STAGE_OLD_F4_RECEIPT_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
   const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
   try{const tx=db.transaction('receipts','readwrite'),done=new Promise((resolve,reject)=>{tx.oncomplete=()=>resolve();
@@ -530,6 +709,19 @@ const canonicalJson = (value) => {
   }
   return JSON.stringify(value);
 };
+const shareCharterSnapshot = (state) => ({
+  objective: state?.objective ?? null,
+  stage: state?.stage ?? null,
+  reach: state?.reach ?? null,
+  ascCh: state?.save?.ascCh ?? null,
+  ascProg: state?.save?.ascProg ?? null,
+  landed: state?.save?.landed ?? null,
+  items: state?.save?.items ?? null,
+  shipVisual: state?.shipVisual ?? null,
+});
+const sameShareCharterSnapshot = (before, after) => (
+  canonicalJson(before) === canonicalJson(after)
+);
 const exactCountRecord = (pairs) => {
   if (!Array.isArray(pairs)) return null;
   const counts = {};
@@ -948,6 +1140,797 @@ const assessArc2BootstrapRefusal = ({ failed, failedRaw, hook, succeeded, succee
     || succeededRaw?.revision !== failedRaw?.revision + 1) reasons.push('clean reload prepared and committed coupled authorities once');
   return { ok: reasons.length === 0, reasons };
 };
+const engineeringRowCount = (rows, id) => Array.isArray(rows)
+  ? Number(rows.find((row) => Array.isArray(row) && row[0] === id)?.[1] ?? 0) : Number.NaN;
+const withEngineeringRowCount = (rows, id, count) => {
+  if (!Array.isArray(rows)) return rows;
+  let replaced = false;
+  const next = rows.map((row) => {
+    if (!Array.isArray(row) || row[0] !== id) return row;
+    replaced = true;
+    return [id, count];
+  });
+  if (!replaced) next.push([id, count]);
+  return next;
+};
+const exactObjectKeys = (value, expected) => value !== null && typeof value === 'object' && !Array.isArray(value)
+  && canonicalJson(Object.keys(value).sort()) === canonicalJson([...expected].sort());
+const exactUint32 = (value) => Number.isSafeInteger(value) && value >= 0 && value <= 0xffff_ffff;
+const exactFinite = (value) => typeof value === 'number' && Number.isFinite(value);
+const exactCanonicalCell = (value) => exactObjectKeys(value, ['x', 'y'])
+  && Number.isSafeInteger(value.x) && Number.isSafeInteger(value.y);
+const exactCanonicalGalaxy = (value) => exactObjectKeys(value, [
+  'seed', 'x', 'y', 'size', 'sp', 'tilt', 'rot', 'home', 'quasar', 'dwarf', 'parentCell',
+]) && exactUint32(value.seed) && exactFinite(value.x) && exactFinite(value.y)
+  && exactFinite(value.size) && exactFinite(value.sp) && exactFinite(value.tilt) && exactFinite(value.rot)
+  && typeof value.home === 'boolean' && typeof value.quasar === 'boolean' && typeof value.dwarf === 'boolean'
+  && exactCanonicalCell(value.parentCell);
+const exactCanonicalStar = (value) => exactObjectKeys(value, ['seed', 'x', 'y', 'layer', 'parentCell'])
+  && exactUint32(value.seed) && exactFinite(value.x) && exactFinite(value.y)
+  && ['coarse', 'fine'].includes(value.layer) && exactCanonicalCell(value.parentCell);
+const canonicalAddressKey = (address, kind) => {
+  if (!exactCanonicalGalaxy(address?.galaxy) || !exactCanonicalStar(address?.star)) return null;
+  const starKey = `CF1|g:${address.galaxy.seed}@${address.galaxy.x},${address.galaxy.y}`
+    + `|s:${address.star.seed}@${address.star.x},${address.star.y}`;
+  if (kind === 'star') return starKey;
+  if (!exactObjectKeys(address?.planet, ['seed', 'ordinal']) || !exactUint32(address.planet.seed)
+    || !Number.isSafeInteger(address.planet.ordinal) || address.planet.ordinal < 0) return null;
+  return `${starKey}|p:${address.planet.seed}#${address.planet.ordinal}`;
+};
+const exactCanonicalAddress = (address, kind) => exactObjectKeys(
+  address, kind === 'world' ? ['format', 'key', 'galaxy', 'star', 'planet'] : ['format', 'key', 'galaxy', 'star'],
+) && address.format === 'CF1' && typeof address.key === 'string'
+  && address.key === canonicalAddressKey(address, kind);
+const exactEngineeringSourceRows = (rows, kind) => {
+  if (!Array.isArray(rows)) return null;
+  const bySeed = new Map(), byKey = new Map();
+  let priorKey = null;
+  for (const row of rows) {
+    const expectedKeys = kind === 'world'
+      ? ['key', 'address', 'extractionsTaken', 'autoExtractorCursor']
+      : ['key', 'address', 'extractionsTaken'];
+    if (!exactObjectKeys(row, expectedKeys) || !exactCanonicalAddress(row.address, kind)
+      || row.key !== row.address.key || typeof row.key !== 'string'
+      || (priorKey !== null && priorKey >= row.key) || byKey.has(row.key)
+      || !Number.isSafeInteger(row.extractionsTaken) || row.extractionsTaken < 0) return null;
+    if (kind === 'world' && row.autoExtractorCursor !== null
+      && (!exactObjectKeys(row.autoExtractorCursor, ['schema', 'collectedThroughActivePlayMs'])
+        || row.autoExtractorCursor.schema !== 'cf-v2-recurring-accrual-cursor/v1'
+        || !Number.isSafeInteger(row.autoExtractorCursor.collectedThroughActivePlayMs)
+        || row.autoExtractorCursor.collectedThroughActivePlayMs < 0)) return null;
+    const seed = kind === 'world' ? row.address.planet.seed : row.address.star.seed;
+    /* The exact Slice fixture is deliberately collision-free so both legacy
+       directions are representable. A duplicate leaf cannot be silently
+       selected, summed, or reordered by this gate. */
+    if (bySeed.has(seed)) return null;
+    bySeed.set(seed, row); byKey.set(row.key, row); priorKey = row.key;
+  }
+  return { bySeed, byKey };
+};
+const exactLegacyEngineeringRows = (rows, kind) => {
+  if (!Array.isArray(rows)) return null;
+  const result = new Map();
+  let priorSeed = -1;
+  for (const row of rows) {
+    if (!Array.isArray(row) || row.length !== 2 || !exactUint32(row[0])
+      || row[0] <= priorSeed || result.has(row[0]) || !Number.isSafeInteger(row[1]) || row[1] < 0
+      || (kind === 'timestamp' && row[1] > Number.MAX_SAFE_INTEGER)) return null;
+    result.set(row[0], row[1]); priorSeed = row[0];
+  }
+  return result;
+};
+const arc3LegacyMirrorParity = (evidence) => {
+  const state = evidence?.arc3;
+  if (state?.schema !== 'cf-v2-engineering-state/v2' || !Array.isArray(state.worlds)
+    || !Array.isArray(state.stars) || !Array.isArray(state.research)) return false;
+  const worlds = exactEngineeringSourceRows(state.worlds, 'world');
+  const stars = exactEngineeringSourceRows(state.stars, 'star');
+  const mineX = exactLegacyEngineeringRows(evidence?.legacy?.mx, 'count');
+  const skimX = exactLegacyEngineeringRows(evidence?.legacy?.skx, 'count');
+  const mined = exactLegacyEngineeringRows(evidence?.legacy?.minedw, 'timestamp');
+  const researchExpected = ENGINEERING_RESEARCH_IDS.filter((id) => state.research.includes(id));
+  return evidence.engineeringVersion === 1
+    && evidence.engineeringJson === JSON.stringify(state)
+    && evidence.legacyRaw === JSON.stringify(evidence.legacy)
+    && worlds !== null && stars !== null && mineX !== null && skimX !== null && mined !== null
+    && worlds.bySeed.size === mineX.size && worlds.bySeed.size === mined.size
+    && stars.bySeed.size === skimX.size
+    && [...worlds.bySeed].every(([seed, row]) => mineX.get(seed) === row.extractionsTaken && mined.has(seed))
+    && [...mineX].every(([seed, count]) => worlds.bySeed.get(seed)?.extractionsTaken === count)
+    && [...mined.keys()].every((seed) => worlds.bySeed.has(seed))
+    && [...stars.bySeed].every(([seed, row]) => skimX.get(seed) === row.extractionsTaken)
+    && [...skimX].every(([seed, count]) => stars.bySeed.get(seed)?.extractionsTaken === count)
+    && new Set(state.research).size === state.research.length
+    && canonicalJson(state.research) === canonicalJson(researchExpected)
+    && canonicalJson(evidence?.legacy?.tech ?? []) === canonicalJson(state.research);
+};
+const assessArc3ExactSourceTransition = ({ beforeState, afterState, expectedAddress, kind }) => {
+  const beforeRows = exactEngineeringSourceRows(
+    kind === 'world' ? beforeState?.worlds : beforeState?.stars, kind,
+  );
+  const afterRows = exactEngineeringSourceRows(
+    kind === 'world' ? afterState?.worlds : afterState?.stars, kind,
+  );
+  const beforeRow = beforeRows?.byKey.get(expectedAddress.key) ?? null;
+  const afterRow = afterRows?.byKey.get(expectedAddress.key) ?? null;
+  const checks = Object.freeze({
+    beforeRowsCanonical: beforeRows !== null,
+    afterRowsCanonical: afterRows !== null,
+    beforeExpectedAbsent: beforeRows !== null && beforeRow === null,
+    afterExpectedPresent: afterRow !== null,
+    afterKeyCoherent: afterRow !== null && afterRow.key === expectedAddress.key
+      && exactCanonicalAddress(afterRow.address, kind),
+    afterAddressExact: afterRow !== null
+      && canonicalJson(afterRow.address) === canonicalJson(expectedAddress),
+    oneExtraction: afterRow?.extractionsTaken === 1,
+    autoExtractorCursor: kind !== 'world' || afterRow?.autoExtractorCursor === null,
+    otherRowsPreserved: beforeRows !== null && afterRows !== null
+      ? canonicalJson(kind === 'world' ? beforeState.worlds : beforeState.stars)
+        === canonicalJson((kind === 'world' ? afterState.worlds : afterState.stars)
+          .filter((row) => row.key !== expectedAddress.key))
+      : true,
+  });
+  return { ok: Object.values(checks).every((value) => value === true), checks, afterRow };
+};
+const withArc3CarrierState = (evidence, state) => {
+  const copy = structuredClone(evidence);
+  copy.arc3 = structuredClone(state);
+  copy.engineeringJson = JSON.stringify(copy.arc3);
+  copy.playerRow.extensions['arc3.engineering'].json = copy.engineeringJson;
+  copy.playerRaw = JSON.stringify(copy.playerRow);
+  return copy;
+};
+const withArc2CarrierState = (evidence, state) => {
+  const copy = structuredClone(evidence);
+  copy.arc2 = structuredClone(state);
+  copy.arc2Json = JSON.stringify(copy.arc2);
+  copy.inventoryRow.extensions['arc2.loot'].json = copy.arc2Json;
+  copy.inventoryRaw = JSON.stringify(copy.inventoryRow);
+  return copy;
+};
+const withF4AuthorityState = (evidence, authority) => {
+  const copy = structuredClone(evidence);
+  copy.authority = structuredClone(authority);
+  copy.authorityJson = JSON.stringify(copy.authority);
+  copy.playerRow.extensions['f4.authority'].json = copy.authorityJson;
+  copy.playerRaw = JSON.stringify(copy.playerRow);
+  return copy;
+};
+const withArc3LegacyState = (evidence, legacy) => {
+  const copy = structuredClone(evidence);
+  copy.legacy = structuredClone(legacy);
+  copy.legacyRaw = JSON.stringify(copy.legacy);
+  const synchronize = (row, keys) => {
+    for (const key of keys) {
+      if (Object.prototype.hasOwnProperty.call(copy.legacy, key)) {
+        row.data[key] = structuredClone(copy.legacy[key]);
+      } else delete row.data[key];
+    }
+  };
+  synchronize(copy.playerRow, [
+    'view', 'hp', 'pstats', 'essence', 'conq', 'at', 'mines', 'crafts', 'skims',
+    'cosmics', 'tut', 'tsnap',
+  ]);
+  synchronize(copy.catalogRow, ['land']);
+  synchronize(copy.inventoryRow, [
+    'cargo', 'cgx', 'minedw', 'mx', 'skx', 'tech', 'items', 'eq', 'ea',
+  ]);
+  copy.playerRaw = JSON.stringify(copy.playerRow);
+  copy.catalogRaw = JSON.stringify(copy.catalogRow);
+  copy.inventoryRaw = JSON.stringify(copy.inventoryRow);
+  return copy;
+};
+const withArc3UnrelatedExtension = (evidence, segment) => {
+  const descriptors = {
+    player: ['playerRow', 'playerRaw'], creatures: ['creaturesRow', 'creaturesRaw'],
+    catalog: ['catalogRow', 'catalogRaw'], inventory: ['inventoryRow', 'inventoryRaw'],
+    settings: ['settingsRow', 'settingsRaw'],
+  };
+  const [rowName, rawName] = descriptors[segment];
+  const copy = structuredClone(evidence);
+  copy[rowName].extensions = { ...(copy[rowName].extensions ?? {}),
+    'audit.drift': { version: 1, json: '{"schema":"audit-drift/v1"}' } };
+  copy[rawName] = JSON.stringify(copy[rowName]);
+  return copy;
+};
+const withArc3SynchronizedPlayerDrift = (evidence) => {
+  const copy = structuredClone(evidence);
+  const changed = `${String(copy.legacy.me ?? '')}-audit-drift`;
+  copy.legacy.me = changed;
+  copy.playerRow.data.me = changed;
+  copy.legacyRaw = JSON.stringify(copy.legacy);
+  copy.playerRaw = JSON.stringify(copy.playerRow);
+  return copy;
+};
+const withArc3SplitOnlyAtDrift = (evidence) => {
+  const copy = structuredClone(evidence);
+  copy.playerRow.data.at = Number(copy.playerRow.data.at) + 1;
+  copy.playerRaw = JSON.stringify(copy.playerRow);
+  return copy;
+};
+const withArc3LegacyOnlyAtDrift = (evidence) => {
+  const copy = structuredClone(evidence);
+  copy.legacy.at = Number(copy.legacy.at) + 1;
+  copy.legacyRaw = JSON.stringify(copy.legacy);
+  return copy;
+};
+const finalizeArc3CarrierAndLegacyEvidence = (copy) => {
+  copy.engineeringJson = JSON.stringify(copy.arc3);
+  copy.playerRow.extensions['arc3.engineering'].json = copy.engineeringJson;
+  copy.legacyRaw = JSON.stringify(copy.legacy);
+  copy.playerRaw = JSON.stringify(copy.playerRow);
+  copy.inventoryRaw = JSON.stringify(copy.inventoryRow);
+  return copy;
+};
+const withArc3CoherentResearchDrift = (evidence) => {
+  const copy = structuredClone(evidence);
+  const owned = new Set(copy.arc3.research);
+  if (owned.has('scan1')) owned.delete('scan1'); else owned.add('scan1');
+  copy.arc3.research = ENGINEERING_RESEARCH_IDS.filter((id) => owned.has(id));
+  copy.legacy.tech = structuredClone(copy.arc3.research);
+  copy.inventoryRow.data.tech = structuredClone(copy.legacy.tech);
+  return finalizeArc3CarrierAndLegacyEvidence(copy);
+};
+const withArc3CoherentExtraResearchDrift = (evidence) => {
+  const copy = structuredClone(evidence);
+  const owned = new Set(copy.arc3.research);
+  owned.add('hull1');
+  copy.arc3.research = ENGINEERING_RESEARCH_IDS.filter((id) => owned.has(id));
+  copy.legacy.tech = structuredClone(copy.arc3.research);
+  copy.inventoryRow.data.tech = structuredClone(copy.legacy.tech);
+  return finalizeArc3CarrierAndLegacyEvidence(copy);
+};
+const withArc3CoherentSkimDrift = (evidence) => {
+  const copy = structuredClone(evidence);
+  const seed = ARC3_REMNANT_STAR_ADDRESS.star.seed;
+  const existing = copy.arc3.stars.find((row) => row.key === ARC3_REMNANT_STAR_ADDRESS.key);
+  if (existing) existing.extractionsTaken += 1;
+  else copy.arc3.stars.push({
+    key: ARC3_REMNANT_STAR_ADDRESS.key,
+    address: structuredClone(ARC3_REMNANT_STAR_ADDRESS),
+    extractionsTaken: 1,
+  });
+  copy.arc3.stars.sort((left, right) => left.key < right.key ? -1 : left.key > right.key ? 1 : 0);
+  const count = copy.arc3.stars.find((row) => row.key === ARC3_REMNANT_STAR_ADDRESS.key)
+    .extractionsTaken;
+  copy.legacy.skx = withEngineeringRowCount(copy.legacy.skx, seed, count)
+    .sort((left, right) => left[0] - right[0]);
+  copy.inventoryRow.data.skx = structuredClone(copy.legacy.skx);
+  return finalizeArc3CarrierAndLegacyEvidence(copy);
+};
+const withArc3CoherentMineDrift = (evidence) => {
+  const copy = structuredClone(evidence);
+  const row = copy.arc3.worlds.find((candidate) => candidate.key === ARC3_MARS_WORLD_ADDRESS.key);
+  if (row) row.extractionsTaken += 1;
+  const count = row?.extractionsTaken ?? 1;
+  copy.legacy.mx = withEngineeringRowCount(copy.legacy.mx, 134, count)
+    .sort((left, right) => left[0] - right[0]);
+  copy.inventoryRow.data.mx = structuredClone(copy.legacy.mx);
+  return finalizeArc3CarrierAndLegacyEvidence(copy);
+};
+const withArc3CoherentOtherWorldDrift = (evidence) => {
+  const copy = structuredClone(evidence);
+  copy.arc3.worlds.push({
+    key: ARC3_OTHER_WORLD_CONTROL_ADDRESS.key,
+    address: structuredClone(ARC3_OTHER_WORLD_CONTROL_ADDRESS),
+    extractionsTaken: 1,
+    autoExtractorCursor: null,
+  });
+  copy.arc3.worlds.sort((left, right) => left.key < right.key ? -1 : left.key > right.key ? 1 : 0);
+  copy.legacy.mx = withEngineeringRowCount(copy.legacy.mx, 133, 1)
+    .sort((left, right) => left[0] - right[0]);
+  copy.legacy.minedw = withEngineeringRowCount(copy.legacy.minedw, 133, copy.legacy.at)
+    .sort((left, right) => left[0] - right[0]);
+  copy.inventoryRow.data.mx = structuredClone(copy.legacy.mx);
+  copy.inventoryRow.data.minedw = structuredClone(copy.legacy.minedw);
+  return finalizeArc3CarrierAndLegacyEvidence(copy);
+};
+const withArc3CoherentEquipDrift = (evidence) => {
+  const copy = structuredClone(evidence);
+  const inventory = copy.arc2.inventory;
+  if (inventory.equipped.length > 0) inventory.equipped = [];
+  else {
+    const instance = inventory.entries[0]?.instance;
+    if (instance?.slot) inventory.equipped = [{ slot: instance.slot, instanceId: instance.instanceId }];
+  }
+  const mirror = arc2LegacyMirror(copy.arc2);
+  copy.legacy.eq = structuredClone(mirror.equip);
+  copy.legacy.ea = structuredClone(mirror.equipAff);
+  copy.inventoryRow.data.eq = structuredClone(copy.legacy.eq);
+  copy.inventoryRow.data.ea = structuredClone(copy.legacy.ea);
+  copy.arc2Json = JSON.stringify(copy.arc2);
+  copy.inventoryRow.extensions['arc2.loot'].json = copy.arc2Json;
+  copy.legacyRaw = JSON.stringify(copy.legacy);
+  copy.inventoryRaw = JSON.stringify(copy.inventoryRow);
+  return copy;
+};
+const withArc3CoherentOtherItemDrift = (evidence) => {
+  const copy = structuredClone(evidence);
+  const count = engineeringRowCount(copy.legacy.items, 'wire') + 1;
+  copy.legacy.items = withEngineeringRowCount(copy.legacy.items, 'wire', count);
+  copy.inventoryRow.data.items = structuredClone(copy.legacy.items);
+  const row = copy.arc2.stackableCounts.find((entry) => entry.baseId === 'wire');
+  if (row) row.count = count;
+  else copy.arc2.stackableCounts.push({ baseId: 'wire', count });
+  copy.arc2Json = JSON.stringify(copy.arc2);
+  copy.inventoryRow.extensions['arc2.loot'].json = copy.arc2Json;
+  copy.legacyRaw = JSON.stringify(copy.legacy);
+  copy.inventoryRaw = JSON.stringify(copy.inventoryRow);
+  return copy;
+};
+const assessArc3HeldNativeSuppression = ({ beforeRaw, afterRaw, attempt }) => {
+  const reasons = [];
+  const pointer = attempt?.interaction?.pointer, clicks = attempt?.interaction?.clicks,
+    keys = attempt?.interaction?.keys, coordinator = attempt?.state?.engineering?.actionCoordinator;
+  if (canonicalJson(afterRaw) !== canonicalJson(beforeRaw)
+    || attempt?.point?.ok !== true || attempt?.point?.disabled !== true || attempt?.point?.model !== 'true'
+    || attempt?.point?.operation !== 'mine' || attempt?.point?.id !== null || attempt?.point?.height < 44
+    || attempt?.interaction?.modality !== 'pointer' || attempt?.interaction?.uiOperation !== 'mine'
+    || pointer?.length !== 1 || pointer[0]?.trusted !== true || pointer[0]?.pointerType !== 'mouse'
+    || pointer[0]?.operation !== 'mine' || pointer[0]?.id !== null || keys?.length !== 0 || clicks?.length !== 0
+    || coordinator?.inFlight !== true || coordinator?.owner?.schema !== 'cf-v2-product-action-coordinator-diagnostics/v1'
+    || coordinator?.owner?.busy !== true || coordinator?.owner?.operation !== 'arc3.mine-world'
+    || coordinator?.hold?.phase !== 'holding' || coordinator?.hold?.operation !== 'arc3.mine-world') {
+    reasons.push('second native held action was click-suppressed under the original owner');
+  }
+  return { ok: reasons.length === 0, reasons };
+};
+const exactReceiptMap = (evidence) => {
+  if (!Array.isArray(evidence?.receiptKeys) || !Array.isArray(evidence?.receiptRawRows)
+    || !Array.isArray(evidence?.receiptRows)
+    || evidence.receiptKeys.length !== evidence.receiptRawRows.length
+    || evidence.receiptKeys.length !== evidence.receiptRows.length
+    || new Set(evidence.receiptKeys).size !== evidence.receiptKeys.length) return null;
+  return new Map(evidence.receiptKeys.map((key, index) => [key, {
+    raw: evidence.receiptRawRows[index], row: evidence.receiptRows[index],
+  }]));
+};
+const assessArc3EngineeringAction = ({
+  before, after, beforeState, afterState, interaction, operation, id = null,
+  publicationReload = false, heldAttempt = null,
+}) => {
+  const reasons = [];
+  const checks = {};
+  const beforeAuthority = before?.authority?.sessionRng, afterAuthority = after?.authority?.sessionRng;
+  const beforeReceipts = exactReceiptMap(before), afterReceipts = exactReceiptMap(after);
+  const oldReceiptsStable = beforeReceipts !== null && afterReceipts !== null
+    && beforeReceipts.size > 0
+    && [...beforeReceipts].every(([key, value]) => {
+      const next = afterReceipts.get(key);
+      return next?.raw === value.raw && canonicalJson(next?.row) === canonicalJson(value.row);
+    });
+  const newKeys = beforeReceipts && afterReceipts
+    ? [...afterReceipts.keys()].filter((key) => !beforeReceipts.has(key)) : [];
+  const newReceipt = newKeys.length === 1 ? afterReceipts.get(newKeys[0]) : null;
+  const receiptKinds = {
+    'mine-world': 'arc3-mine-world',
+    'skim-star': 'arc3-skim-star',
+    'purchase-research': 'arc3-purchase-research',
+    'fabricate-fixed': 'arc3-fabricate-fixed',
+  };
+  const runtimeBefore = beforeState?.persistence?.runtime, runtimeAfter = afterState?.persistence?.runtime;
+  const durableEvidenceComplete = arc3DurableEvidenceComplete(before)
+    && arc3DurableEvidenceComplete(after);
+  checks.durableEvidenceComplete = durableEvidenceComplete;
+  if (!durableEvidenceComplete) reasons.push('complete durable Engineering evidence');
+  checks.f4ActionAuthority = !durableEvidenceComplete || (
+    after?.authority?.activePlayMs >= before?.authority?.activePlayMs
+    && beforeAuthority?.seed === afterAuthority?.seed
+    && canonicalJson(beforeAuthority?.draws) === canonicalJson(afterAuthority?.draws)
+    && afterAuthority?.ordinal === beforeAuthority?.ordinal + 1
+  );
+  checks.f4RuntimeAuthority = !durableEvidenceComplete || (
+    Number.isSafeInteger(runtimeBefore?.activePlayMs)
+    && Number.isSafeInteger(runtimeAfter?.activePlayMs)
+    && runtimeBefore.activePlayMs >= before.authority.activePlayMs
+    && runtimeAfter.activePlayMs >= after.authority.activePlayMs
+  );
+  checks.unrelatedDurablePreserved = !durableEvidenceComplete
+    || arc3ActionUnrelatedEvidencePreserved(before, after, operation);
+  if (!checks.unrelatedDurablePreserved) {
+    reasons.push('unrelated durable Engineering rows/extensions preserved');
+  }
+  if (durableEvidenceComplete && (before?.revisionRaw !== String(before?.revision)
+    || after?.revisionRaw !== String(after?.revision)
+    || before?.authorityVersion !== 1 || after?.authorityVersion !== 1
+    || before?.authorityJson !== JSON.stringify(before?.authority)
+    || after?.authorityJson !== JSON.stringify(after?.authority)
+    || before?.engineeringVersion !== 1 || after?.engineeringVersion !== 1
+    || before?.engineeringJson !== JSON.stringify(before?.arc3)
+    || after?.engineeringJson !== JSON.stringify(after?.arc3)
+    || !arc3LegacyMirrorParity(before) || !arc3LegacyMirrorParity(after)
+    || after?.revision !== before?.revision + 1 || after?.arc3?.revision !== before?.arc3?.revision + 1
+    || before?.revision !== runtimeBefore?.revision || after?.revision !== runtimeAfter?.revision
+    || !checks.f4ActionAuthority || !checks.f4RuntimeAuthority
+    || beforeAuthority?.seed !== runtimeBefore?.sessionSeed || afterAuthority?.seed !== runtimeAfter?.sessionSeed
+    || canonicalJson(beforeAuthority?.draws) !== canonicalJson(runtimeBefore?.sessionDraws)
+    || canonicalJson(afterAuthority?.draws) !== canonicalJson(runtimeAfter?.sessionDraws)
+    || beforeAuthority?.ordinal !== runtimeBefore?.sessionOrdinal
+    || afterAuthority?.ordinal !== runtimeAfter?.sessionOrdinal
+    || !oldReceiptsStable || afterReceipts?.size !== beforeReceipts?.size + 1
+    || newKeys[0] !== `receipt:${beforeAuthority?.ordinal}`
+    || newReceipt?.row?.ordinal !== beforeAuthority?.ordinal
+    || newReceipt?.row?.kind !== receiptKinds[operation]
+    || typeof newReceipt?.row?.witness !== 'string' || newReceipt.row.witness.length < 16
+    || newReceipt.row.witness.length > 4_096 || newReceipt.raw !== JSON.stringify(newReceipt.row))) {
+    reasons.push('one atomic F4 revision/RNG/receipt/Arc 3 carrier outcome');
+  }
+  const expectedArc2Advance = operation === 'fabricate-fixed' ? 1 : 0;
+  checks.arc2CarrierOutcome = !durableEvidenceComplete || (arc2MirrorParity(after)
+    && after?.arc2Version === 1 && after?.arc2Json === JSON.stringify(after?.arc2)
+    && after?.arc2?.inventory?.revision === before?.arc2?.inventory?.revision + expectedArc2Advance
+    && (expectedArc2Advance !== 0 || after?.arc2Json === before?.arc2Json));
+  if (!checks.arc2CarrierOutcome) {
+    reasons.push('Arc 2 coupled/preserved carrier mirror');
+  }
+  const clicks = Array.isArray(interaction?.clicks) ? interaction.clicks : [];
+  const pointer = Array.isArray(interaction?.pointer) ? interaction.pointer : [];
+  const keys = Array.isArray(interaction?.keys) ? interaction.keys : [];
+  if (clicks.length !== 1 || clicks[0]?.trusted !== true || clicks[0]?.operation !== interaction?.uiOperation
+    || (id === null ? clicks[0]?.id !== null : clicks[0]?.id !== id)
+    || !['pointer', 'keyboard'].includes(interaction?.modality)
+    || (interaction.modality === 'pointer'
+      ? pointer.length !== 1 || pointer[0]?.trusted !== true || pointer[0]?.pointerType !== 'mouse' || keys.length !== 0
+      : keys.length !== 1 || keys[0]?.trusted !== true || keys[0]?.key !== 'Enter'
+        || keys[0]?.code !== 'Enter' || pointer.length !== 0)) reasons.push('one trusted native visible action');
+  if (durableEvidenceComplete && (afterState?.engineering?.stateKind !== 'loaded'
+    || afterState?.engineering?.protection !== null
+    || afterState?.engineering?.revision !== after?.arc3?.revision
+    || canonicalJson(afterState?.engineering?.research) !== canonicalJson(after?.arc3?.research)
+    || (!publicationReload && afterState?.engineering?.lastOutcome !== `${operation}-committed`)
+    || canonicalJson(afterState?.save?.cargo) !== canonicalJson(after?.legacy?.cargo)
+    || canonicalJson(afterState?.save?.cgx) !== canonicalJson(after?.legacy?.cgx)
+    || canonicalJson(afterState?.save?.items) !== canonicalJson(after?.legacy?.items)
+    || canonicalJson(afterState?.save?.mineX) !== canonicalJson(after?.legacy?.mx)
+    || canonicalJson(afterState?.save?.mined) !== canonicalJson(after?.legacy?.minedw)
+    || canonicalJson(afterState?.save?.skimX) !== canonicalJson(after?.legacy?.skx)
+    || canonicalJson(afterState?.save?.techOwned) !== canonicalJson(after?.legacy?.tech))) {
+    reasons.push('post-durable live publication parity');
+  }
+  checks.replacementReadOnly = !publicationReload || (
+    runtimeAfter?.commits === 0 && afterState?.persistence?.lastOutcome === null
+    && afterState?.persistence?.bootRouteRepairPending === false
+    && afterState?.sceneResources?.pendingPersistenceWrites === 0
+    && afterState?.engineering?.lastOutcome === null
+  );
+  if (!checks.replacementReadOnly) reasons.push('replacement publication read-only convergence');
+  if (durableEvidenceComplete && operation === 'mine-world') {
+    const source = assessArc3ExactSourceTransition({
+      beforeState: before?.arc3, afterState: after?.arc3,
+      expectedAddress: ARC3_MARS_WORLD_ADDRESS, kind: 'world',
+    });
+    const cooldown = exactLegacyEngineeringRows(after?.legacy?.minedw, 'timestamp')?.get(134);
+    const second = assessArc3HeldNativeSuppression({
+      beforeRaw: before, afterRaw: heldAttempt?.raw, attempt: heldAttempt,
+    });
+    checks.source = source.checks;
+    checks.heldSuppression = second.ok;
+    checks.mineCooldown = Number.isSafeInteger(cooldown) && cooldown >= 0
+      && engineeringRowCount(before?.legacy?.mx, 134) === 0
+      && engineeringRowCount(after?.legacy?.mx, 134) === 1;
+    if (!source.ok) reasons.push('Mine exact full-address source hierarchy');
+    if (!second.ok) reasons.push('Mine second-native suppression');
+    if (!checks.mineCooldown
+      || engineeringRowCount(before?.legacy?.mx, 134) !== 0
+      || engineeringRowCount(after?.legacy?.mx, 134) !== 1
+      || afterState?.save?.stats?.mines !== (beforeState?.save?.stats?.mines ?? 0) + 1
+      || afterState?.save?.ascProg?.['c1-mine'] !== (beforeState?.save?.ascProg?.['c1-mine'] ?? 0) + 1
+      || afterState?.save?.ascProg?.['c3-mine'] !== (beforeState?.save?.ascProg?.['c3-mine'] ?? 0) + 1) {
+      reasons.push('Mine cooldown/Charter action ticks');
+    }
+  } else if (durableEvidenceComplete && operation === 'purchase-research') {
+    if (id !== 'scan1' || before?.arc3?.research?.includes('scan1') || !after?.arc3?.research?.includes('scan1')
+      || engineeringRowCount(after?.legacy?.cargo, 'Fe') !== engineeringRowCount(before?.legacy?.cargo, 'Fe') - 6
+      || engineeringRowCount(after?.legacy?.cargo, 'Si') !== engineeringRowCount(before?.legacy?.cargo, 'Si') - 4
+      || after?.legacy?.essence !== before?.legacy?.essence - 20) reasons.push('Deep Scanners exact economy outcome');
+  } else if (durableEvidenceComplete && operation === 'fabricate-fixed') {
+    if (id !== 'plate' || engineeringRowCount(after?.legacy?.items, 'plate') !== engineeringRowCount(before?.legacy?.items, 'plate') + 1
+      || engineeringRowCount(after?.legacy?.cargo, 'Fe') !== engineeringRowCount(before?.legacy?.cargo, 'Fe') - 4
+      || afterState?.save?.stats?.crafts !== beforeState?.save?.stats?.crafts + 1
+      || afterState?.save?.ascProg?.['c1-part'] !== (beforeState?.save?.ascProg?.['c1-part'] ?? 0) + 1) {
+      reasons.push('fixed Plate outcome/Arc 2 mirror/Charter tick');
+    }
+  } else if (durableEvidenceComplete && operation === 'skim-star') {
+    const source = assessArc3ExactSourceTransition({
+      beforeState: before?.arc3, afterState: after?.arc3,
+      expectedAddress: ARC3_REMNANT_STAR_ADDRESS, kind: 'star',
+    });
+    checks.source = source.checks;
+    if (!source.ok) reasons.push('Skim exact full-address source hierarchy');
+    if (engineeringRowCount(before?.legacy?.skx, ARC3_REMNANT_STAR_ADDRESS.star.seed) !== 0
+      || engineeringRowCount(after?.legacy?.skx, ARC3_REMNANT_STAR_ADDRESS.star.seed) !== 1
+      || engineeringRowCount(after?.legacy?.cargo, 'Crn') !== engineeringRowCount(before?.legacy?.cargo, 'Crn')
+        + ENGINEERING_REMNANT_ROUTE_TARGET.sourceWitness.expectedFirstQuantity
+      || after?.legacy?.hp !== before?.legacy?.hp - 3
+      || afterState?.save?.stats?.skims !== beforeState?.save?.stats?.skims + 1
+      || afterState?.save?.stats?.cosmics !== beforeState?.save?.stats?.cosmics + 1) {
+      reasons.push('remnant Skim cargo/HP/stat outcome');
+    }
+  }
+  return { ok: reasons.length === 0, reasons, checks };
+};
+const ARC3_ACTION_DURABLE_DELETION_PATHS = Object.freeze({
+  revisionRaw: ['revisionRaw'], revision: ['revision'],
+  legacyRaw: ['legacyRaw'], legacyRow: ['legacy'],
+  playerRaw: ['playerRaw'], playerRow: ['playerRow'], playerSchema: ['playerRow', 'schema'],
+  playerData: ['playerRow', 'data'], playerExtensions: ['playerRow', 'extensions'],
+  creaturesRaw: ['creaturesRaw'], creaturesRow: ['creaturesRow'],
+  creaturesSchema: ['creaturesRow', 'schema'], creaturesData: ['creaturesRow', 'data'],
+  catalogRaw: ['catalogRaw'], catalogRow: ['catalogRow'], catalogSchema: ['catalogRow', 'schema'],
+  catalogData: ['catalogRow', 'data'],
+  inventoryRaw: ['inventoryRaw'], inventoryRow: ['inventoryRow'],
+  inventorySchema: ['inventoryRow', 'schema'], inventoryData: ['inventoryRow', 'data'],
+  inventoryExtensions: ['inventoryRow', 'extensions'],
+  settingsRaw: ['settingsRaw'], settingsRow: ['settingsRow'],
+  settingsSchema: ['settingsRow', 'schema'], settingsData: ['settingsRow', 'data'],
+  f4Version: ['authorityVersion'], f4Json: ['authorityJson'], f4Parsed: ['authority'],
+  f4Carrier: ['playerRow', 'extensions', 'f4.authority'],
+  arc3Version: ['engineeringVersion'], arc3Json: ['engineeringJson'], arc3Parsed: ['arc3'],
+  arc3Carrier: ['playerRow', 'extensions', 'arc3.engineering'],
+  arc2Version: ['arc2Version'], arc2Json: ['arc2Json'], arc2Parsed: ['arc2'],
+  arc2Carrier: ['inventoryRow', 'extensions', 'arc2.loot'],
+  receiptKeys: ['receiptKeys'], receiptRawRows: ['receiptRawRows'], receiptRows: ['receiptRows'],
+});
+const deleteArc3EvidencePath = (value, path) => {
+  const copy = structuredClone(value);
+  let owner = copy;
+  for (const key of path.slice(0, -1)) owner = owner?.[key];
+  if (owner && typeof owner === 'object') delete owner[path.at(-1)];
+  return copy;
+};
+const arc3ActionDurableDeletionControls = (bundle) => Object.fromEntries(
+  Object.entries(ARC3_ACTION_DURABLE_DELETION_PATHS).flatMap(([name, path]) => [
+    [`before-${name}`, assessArc3EngineeringAction({
+      ...bundle, before: deleteArc3EvidencePath(bundle.before, path),
+    })],
+    [`after-${name}`, assessArc3EngineeringAction({
+      ...bundle, after: deleteArc3EvidencePath(bundle.after, path),
+    })],
+  ]),
+);
+const arc3ActionDurableDeletionControlsAreIsolated = (controls) => Object.values(controls)
+  .every((assessment) => assessment?.ok === false
+    && canonicalJson(assessment.reasons) === canonicalJson(['complete durable Engineering evidence'])
+    && assessment.checks?.durableEvidenceComplete === false
+    && Object.entries(assessment.checks).every(([name, value]) => (
+      name === 'durableEvidenceComplete' ? value === false : value === true
+    )));
+const assessArc3EngineeringReload = ({ committed, reloaded, committedState, reloadedState, priorToken, token }) => {
+  const reasons = [];
+  const receiptBytes = (evidence) => canonicalJson([...exactReceiptMap(evidence)?.entries() ?? []]);
+  const runtime = reloadedState?.persistence?.runtime, authority = reloaded?.authority?.sessionRng;
+  if (typeof token !== 'string' || token === priorToken || reloadedState?.persistence?.bootKind !== 'current-v5'
+    || reloaded?.revision !== committed?.revision || reloaded?.revisionRaw !== String(reloaded?.revision)
+    || reloaded?.playerRaw !== committed?.playerRaw
+    || reloaded?.creaturesRaw !== committed?.creaturesRaw
+    || reloaded?.catalogRaw !== committed?.catalogRaw
+    || reloaded?.inventoryRaw !== committed?.inventoryRaw
+    || reloaded?.settingsRaw !== committed?.settingsRaw
+    || reloaded?.authorityVersion !== 1 || reloaded?.engineeringVersion !== 1 || reloaded?.arc2Version !== 1
+    || reloaded?.engineeringJson !== committed?.engineeringJson
+    || reloaded?.arc2Json !== committed?.arc2Json || reloaded?.authorityJson !== committed?.authorityJson
+    || receiptBytes(reloaded) !== receiptBytes(committed) || reloaded?.legacyRaw !== committed?.legacyRaw
+    || !arc3LegacyMirrorParity(reloaded) || !arc2MirrorParity(reloaded)
+    || runtime?.revision !== reloaded?.revision || runtime?.sessionSeed !== authority?.seed
+    || runtime?.sessionOrdinal !== authority?.ordinal
+    || canonicalJson(runtime?.sessionDraws) !== canonicalJson(authority?.draws)
+    || runtime?.commits !== 0 || reloadedState?.persistence?.lastOutcome !== null
+    || reloadedState?.persistence?.bootRouteRepairPending !== false
+    || reloadedState?.sceneResources?.pendingPersistenceWrites !== 0
+    || reloadedState?.engineering?.revision !== committed?.arc3?.revision
+    || reloadedState?.engineering?.lastOutcome !== null
+    || canonicalJson(reloadedState?.engineering?.research) !== canonicalJson(committedState?.engineering?.research)
+    || canonicalJson(reloadedState?.save) !== canonicalJson(committedState?.save)) reasons.push('exact carrier/legacy/receipt/live reload parity');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessArc3PendingLifecycle = ({
+  beforeRaw, pendingRaw, beforeState, pendingState, beforeUi, pendingUi,
+  competitor, secondActivation, closed, reopened,
+}) => {
+  const reasons = [];
+  const coordinator = pendingState?.engineering?.actionCoordinator;
+  const ui = assessArc3NoOptimismUi({ before: beforeUi, during: pendingUi, pending: true });
+  const second = assessArc3HeldNativeSuppression({
+    beforeRaw, afterRaw: secondActivation?.raw, attempt: secondActivation,
+  });
+  if (canonicalJson(pendingRaw) !== canonicalJson(beforeRaw)
+    || canonicalJson(pendingState?.save) !== canonicalJson(beforeState?.save)
+    || pendingState?.engineering?.revision !== beforeState?.engineering?.revision
+    || coordinator?.inFlight !== true
+    || coordinator?.owner?.schema !== 'cf-v2-product-action-coordinator-diagnostics/v1'
+    || coordinator?.owner?.busy !== true || coordinator?.owner?.operation !== 'arc3.mine-world'
+    || coordinator?.hold?.schema !== 'cf-v2-product-action-hold-diagnostics/v1'
+    || coordinator?.hold?.phase !== 'holding' || coordinator?.hold?.operation !== 'arc3.mine-world'
+    || competitor?.kind !== 'unavailable' || competitor?.operation !== 'purchase-research'
+    || competitor?.detail !== 'write-authority-unavailable' || !ui.ok || !second.ok) {
+    reasons.push('held rendered/durable no-optimism and native main single-flight');
+  }
+  const closedEng = closed?.diagnostics?.engineering;
+  if (closed?.panelOpen !== null || closed?.focusId !== 'railshipyard'
+    || closed?.expanded !== 'false' || closed?.bodyChildren !== 0
+    || closed?.diagnostics?.schema !== 'cf-v2-shipyard-diagnostics/v1'
+    || closed?.diagnostics?.status !== 'closed' || closed?.diagnostics?.stateKey !== null
+    || closed?.diagnostics?.activePreviewCount !== 0 || closed?.diagnostics?.retainedPreviewCount !== 0
+    || closed?.diagnostics?.pendingPreviewWork !== 1
+    || closedEng?.activeCount !== 0 || closedEng?.retainedDomCount !== 0
+    || closedEng?.pendingWork !== 1 || closedEng?.actionControlCount !== 0
+    || closedEng?.activePreviewCount !== 0 || closedEng?.retainedPreviewCount !== 0) {
+    reasons.push('Close during pending release/focus');
+  }
+  const reopenedEng = reopened?.diagnostics?.engineering;
+  if (reopened?.panelOpen !== 'shipyard' || reopened?.focus !== 'close'
+    || reopened?.pendingVisible !== true || reopened?.ariaBusy !== 'true'
+    || reopened?.actionCount !== ENGINEERING_ACTION_CONTROL_COUNT
+    || reopened?.disabledCount !== ENGINEERING_ACTION_CONTROL_COUNT
+    || reopened?.diagnostics?.schema !== 'cf-v2-shipyard-diagnostics/v1'
+    || reopened?.diagnostics?.status !== 'open' || reopened?.diagnostics?.activePreviewCount !== 1
+    || reopened?.diagnostics?.retainedPreviewCount !== 0 || reopened?.diagnostics?.pendingPreviewWork !== 1
+    || reopenedEng?.activeCount !== 1 || reopenedEng?.retainedDomCount <= ENGINEERING_ACTION_CONTROL_COUNT
+    || reopenedEng?.pendingWork !== 1 || reopenedEng?.actionControlCount !== ENGINEERING_ACTION_CONTROL_COUNT
+    || reopenedEng?.activePreviewCount !== 1 || reopenedEng?.retainedPreviewCount !== 0
+    || reopenedEng?.lastRequest?.operation !== 'mine') reasons.push('reopen remains pending without retained ownership');
+  return { ok: reasons.length === 0, reasons, ui, second };
+};
+const assessArc3PublicationHold = ({
+  beforeRaw, heldRaw, beforeState, holdingState, beforeUi, heldUi,
+}) => {
+  const reasons = [];
+  const coordinator = holdingState?.engineering?.actionCoordinator;
+  const ui = assessArc3NoOptimismUi({ before: beforeUi, during: heldUi, pending: true });
+  if (canonicalJson(heldRaw) !== canonicalJson(beforeRaw)
+    || canonicalJson(holdingState?.save) !== canonicalJson(beforeState?.save)
+    || holdingState?.engineering?.revision !== beforeState?.engineering?.revision
+    || coordinator?.inFlight !== true || coordinator?.owner?.busy !== true
+    || coordinator?.owner?.operation !== 'arc3.fabricate-fixed'
+    || coordinator?.hold?.phase !== 'holding' || coordinator?.hold?.operation !== 'arc3.fabricate-fixed'
+    || !ui.ok) reasons.push('publication hold retained rendered/durable Arc 2/Arc 3 truth');
+  return { ok: reasons.length === 0, reasons, ui };
+};
+const isolatesEngineeringUiCheck = (assessment, expectedRedCheck) => {
+  const checks = assessment?.ui?.checks;
+  return assessment?.ok === false && checks?.[expectedRedCheck] === false
+    && Object.entries(checks ?? {}).every(([name, value]) => (
+      name === expectedRedCheck ? value === false : value === true
+    ));
+};
+const namedCheckLeaves = (value, prefix = '') => {
+  if (typeof value === 'boolean') return [[prefix, value]];
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) return [[prefix, value]];
+  return Object.entries(value).flatMap(([name, child]) => (
+    namedCheckLeaves(child, prefix ? `${prefix}.${name}` : name)
+  ));
+};
+const isolatesNamedChecks = (assessment, expectedRedChecks) => {
+  const expected = new Set(expectedRedChecks);
+  const leaves = namedCheckLeaves(assessment?.checks);
+  return assessment?.ok === false && expected.size === expectedRedChecks.length
+    && leaves.length > 0 && [...expected].every((name) => (
+      leaves.some(([path, value]) => path === name && value === false)
+    )) && leaves.every(([path, value]) => expected.has(path) ? value === false : value === true);
+};
+const isolatesNamedCheck = (assessment, expectedRedCheck) => isolatesNamedChecks(
+  assessment, [expectedRedCheck],
+);
+const ARC3_STALE_FAULT_CAPTURE_KEY = 'cf_slice_arc3_stale_fault_capture_v1';
+const ARC3_STALE_FAULT_CAPTURE_SCHEMA = 'cf-v2-slice-arc3-stale-fault-capture/v1';
+const ARC3_PUBLICATION_FAULT_CAPTURE_KEY = 'cf_slice_arc3_publication_fault_capture_v1';
+const ARC3_PUBLICATION_FAULT_CAPTURE_SCHEMA = 'cf-v2-slice-arc3-publication-fault-capture/v1';
+const assessArc3StaleConvergence = ({
+  before, after, beforeState, afterState, armed, captureArmed, faultCapture,
+  interaction, priorToken, token,
+}) => {
+  const beforeAuthority = before?.authority?.sessionRng, afterAuthority = after?.authority?.sessionRng;
+  const runtime = afterState?.persistence?.runtime;
+  const coordinator = afterState?.engineering?.actionCoordinator;
+  const click = interaction?.clicks?.[0], key = interaction?.keys?.[0];
+  const capture = faultCapture?.parsed;
+  const fault = capture?.fault;
+  const checks = Object.freeze({
+    actionArmed: armed === true,
+    captureArmed: captureArmed === true,
+    captureEnvelope: typeof faultCapture?.raw === 'string'
+      && faultCapture.raw === JSON.stringify(capture) && faultCapture?.cleared === true
+      && capture?.schema === ARC3_STALE_FAULT_CAPTURE_SCHEMA
+      && Object.keys(capture ?? {}).sort().join(',') === 'documentToken,fault,schema'
+      && capture?.documentToken === priorToken,
+    documentIdentity: typeof token === 'string' && token !== priorToken,
+    alignedBoot: afterState?.persistence?.bootKind === 'current-v5'
+      && afterState?.persistence?.bootRouteRepairPending === false,
+    quiescentReadOnlyBoot: afterState?.sceneResources?.pendingPersistenceWrites === 0
+      && runtime?.commits === 0 && afterState?.persistence?.lastOutcome === null,
+    durableEvidenceComplete: arc3DurableEvidenceComplete(before)
+      && arc3DurableEvidenceComplete(after),
+    revisionTopology: after?.revision === before?.revision + 1
+      && after?.revisionRaw === String(after?.revision) && runtime?.revision === after?.revision,
+    exactDurableBytes: after?.playerRaw === before?.playerRaw
+      && after?.creaturesRaw === before?.creaturesRaw
+      && after?.catalogRaw === before?.catalogRaw && after?.inventoryRaw === before?.inventoryRaw
+      && after?.settingsRaw === before?.settingsRaw
+      && after?.legacyRaw === before?.legacyRaw
+      && after?.authorityJson === before?.authorityJson
+      && after?.engineeringJson === before?.engineeringJson && after?.arc2Json === before?.arc2Json,
+    carrierShapes: before?.legacyRaw === JSON.stringify(before?.legacy)
+      && after?.legacyRaw === JSON.stringify(after?.legacy)
+      && before?.playerRaw === JSON.stringify(before?.playerRow)
+      && after?.playerRaw === JSON.stringify(after?.playerRow)
+      && before?.creaturesRaw === JSON.stringify(before?.creaturesRow)
+      && after?.creaturesRaw === JSON.stringify(after?.creaturesRow)
+      && before?.catalogRaw === JSON.stringify(before?.catalogRow)
+      && after?.catalogRaw === JSON.stringify(after?.catalogRow)
+      && before?.inventoryRaw === JSON.stringify(before?.inventoryRow)
+      && after?.inventoryRaw === JSON.stringify(after?.inventoryRow)
+      && before?.settingsRaw === JSON.stringify(before?.settingsRow)
+      && after?.settingsRaw === JSON.stringify(after?.settingsRow)
+      && before?.authorityVersion === 1 && after?.authorityVersion === 1
+      && before?.engineeringVersion === 1 && after?.engineeringVersion === 1
+      && before?.arc2Version === 1 && after?.arc2Version === 1
+      && arc3LegacyMirrorParity(before) && arc3LegacyMirrorParity(after)
+      && arc2MirrorParity(before) && arc2MirrorParity(after),
+    rngStable: runtime?.sessionSeed === afterAuthority?.seed
+      && runtime?.sessionOrdinal === afterAuthority?.ordinal
+      && canonicalJson(runtime?.sessionDraws) === canonicalJson(afterAuthority?.draws)
+      && afterAuthority?.seed === beforeAuthority?.seed
+      && afterAuthority?.ordinal === beforeAuthority?.ordinal
+      && canonicalJson(afterAuthority?.draws) === canonicalJson(beforeAuthority?.draws),
+    receiptsStable: canonicalJson([...exactReceiptMap(after)?.entries() ?? []])
+      === canonicalJson([...exactReceiptMap(before)?.entries() ?? []]),
+    liveProductStable: canonicalJson(afterState?.save) === canonicalJson(beforeState?.save)
+      && afterState?.engineering?.revision === beforeState?.engineering?.revision,
+    engineeringOutcomeClear: afterState?.engineering?.lastOutcome === null,
+    coordinatorReleased: coordinator?.inFlight === false && coordinator?.owner?.busy === false
+      && coordinator?.owner?.operation === null,
+    faultSchema: fault?.schema === 'cf-v2-arc3-action-fault-witness/v1'
+      && Object.keys(fault ?? {}).sort().join(',')
+        === 'beforeRevision,injectedRevision,injection,operation,outcome,phase,schema',
+    faultOperation: fault?.operation === 'arc3.fabricate-fixed',
+    faultInjection: fault?.injection === 'stale-authority',
+    faultPhase: fault?.phase === 'settled',
+    faultRevision: fault?.beforeRevision === before?.revision
+      && fault?.injectedRevision === before?.revision + 1,
+    faultOutcome: fault?.outcome === 'stale',
+    nativeInteraction: interaction?.modality === 'keyboard'
+      && interaction?.uiOperation === 'fabricate' && interaction?.clicks?.length === 1
+      && click?.trusted === true && click?.operation === 'fabricate' && click?.id === 'plate'
+      && interaction?.keys?.length === 1 && key?.trusted === true
+      && key?.operation === 'fabricate' && key?.id === 'plate'
+      && key?.key === 'Enter' && key?.code === 'Enter' && interaction?.pointer?.length === 0,
+  });
+  const reasons = Object.entries(checks).filter(([, value]) => value !== true)
+    .map(([name]) => `stale convergence ${name}`);
+  return { ok: reasons.length === 0, reasons, checks };
+};
+const assessArc3PublicationFaultCapture = ({
+  armed, captureArmed, faultCapture, priorToken, beforeRevision, afterRevision,
+}) => {
+  const capture = faultCapture?.parsed;
+  const fault = capture?.fault;
+  const envelope = typeof faultCapture?.raw === 'string'
+    && faultCapture.raw === JSON.stringify(capture) && faultCapture?.cleared === true
+    && capture?.schema === ARC3_PUBLICATION_FAULT_CAPTURE_SCHEMA
+    && Object.keys(capture ?? {}).sort().join(',') === 'documentToken,fault,schema'
+    && capture?.documentToken === priorToken;
+  const faultShape = !envelope || (fault !== null && typeof fault === 'object'
+    && !Array.isArray(fault)
+    && Object.keys(fault).sort().join(',')
+      === 'beforeRevision,injectedRevision,injection,operation,outcome,phase,schema');
+  const skipFaultFields = !envelope || !faultShape;
+  const checks = Object.freeze({
+    armed: armed === true,
+    captureArmed: captureArmed === true,
+    captureEnvelope: envelope,
+    faultShape,
+    faultSchema: skipFaultFields || fault.schema === 'cf-v2-arc3-action-fault-witness/v1',
+    faultOperation: skipFaultFields || fault.operation === 'arc3.fabricate-fixed',
+    faultInjection: skipFaultFields || fault.injection === 'publication-failure',
+    faultPhase: skipFaultFields || fault.phase === 'settled',
+    faultRevisions: skipFaultFields || (fault.beforeRevision === beforeRevision
+      && fault.injectedRevision === afterRevision && afterRevision === beforeRevision + 1),
+    faultOutcome: skipFaultFields || fault.outcome === 'committed-publication-reload',
+  });
+  const reasons = Object.entries(checks).filter(([, value]) => value !== true)
+    .map(([name]) => `publication convergence ${name}`);
+  return { ok: reasons.length === 0, reasons, checks };
+};
 const canonicalDiffPaths = (before, after, path = '', paths = [], limit = 16) => {
   if (canonicalJson(before) === canonicalJson(after) || paths.length >= limit) return paths;
   if (Array.isArray(before) && Array.isArray(after)) {
@@ -1060,6 +2043,733 @@ const assessStampedCanonicalRewrite = (beforeRaw, afterRaw) => {
   return { ok: reasons.length === 0, reasons: [...new Set(reasons)], beforeStamp, afterStamp,
     fieldDiffs, allowedWriteFields, unexpectedFields };
 };
+const trainingStampProjectionRaw = (value) => JSON.stringify({
+  at: value?.at,
+  conq: value?.conq,
+  minedw: value?.minedw,
+});
+const trainingSplitProjection = (evidence) => ({
+  at: evidence?.playerRow?.data?.at,
+  conq: evidence?.playerRow?.data?.conq,
+  minedw: evidence?.inventoryRow?.data?.minedw,
+});
+const trainingRawProductProjection = (value) => {
+  const copy = structuredClone(value ?? null);
+  if (!copy || typeof copy !== 'object') return null;
+  delete copy.at;
+  delete copy.tut;
+  delete copy.tsnap;
+  delete copy.view;
+  if (Array.isArray(copy.conq)) copy.conq = copy.conq.map((entry, index) => {
+    const row = structuredClone(entry?.[1] ?? null);
+    if (row && typeof row === 'object') delete row.t;
+    return [`conquest:${index}`, row];
+  });
+  if (Array.isArray(copy.minedw)) copy.minedw = copy.minedw.map((entry, index) => (
+    [`mined:${index}`, null]
+  ));
+  return copy;
+};
+const TRAINING_AUTH_INVALID_ATLAS_WHERE = Object.freeze(Object.fromEntries(
+  ['legacy-star', 'forged-earth'].map((id) => {
+    const row = JSON.parse(VETERAN_ATLAS_RAW).log.find((entry) => entry?.id === id);
+    return [id, structuredClone(row?.where ?? null)];
+  }),
+));
+const TRAINING_AUTH_P133_SOURCE_WHERE = Object.freeze(structuredClone(
+  JSON.parse(VETERAN_ATLAS_RAW).log.find((entry) => entry?.id === 'p133')?.where ?? null,
+));
+const TRAINING_AUTH_P133_CANONICAL_WHERE = Object.freeze({
+  type: 'planet',
+  gal: Object.freeze({
+    x: HOME_GALAXY.x, y: HOME_GALAXY.y, size: 78, sp: 0, tilt: 0.62, rot: 0.5,
+    seed: HOME_GALAXY.seed, home: true,
+  }),
+  star: Object.freeze({ x: SOL_STAR.x, y: SOL_STAR.y, seed: SOL_STAR.seed }),
+  pseed: EARTH.seed,
+});
+const trainingAuthorizationProductProjection = (value, phase) => {
+  const projection = trainingRawProductProjection(value);
+  if (!projection || typeof projection !== 'object') return { ok: false, value: projection };
+  if (!Array.isArray(projection.log)) return { ok: false, value: projection };
+  let ok = true;
+  const counts = new Map();
+  projection.log = projection.log.map((entry) => {
+    const copy = structuredClone(entry);
+    counts.set(copy?.id, (counts.get(copy?.id) ?? 0) + 1);
+    if (copy?.id === 'p133') {
+      const source = canonicalJson(copy.where) === canonicalJson(TRAINING_AUTH_P133_SOURCE_WHERE);
+      const canonical = canonicalJson(copy.where) === canonicalJson(TRAINING_AUTH_P133_CANONICAL_WHERE);
+      if ((phase === 'before' && (source || canonical)) || (phase === 'after' && canonical)) {
+        copy.where = structuredClone(TRAINING_AUTH_P133_CANONICAL_WHERE);
+      } else ok = false;
+      return copy;
+    }
+    const expectedWhere = TRAINING_AUTH_INVALID_ATLAS_WHERE[copy?.id];
+    if (expectedWhere === undefined) return copy;
+    const allowed = copy.where === null
+      || (phase === 'before' && canonicalJson(copy.where) === canonicalJson(expectedWhere));
+    if (!allowed) {
+      ok = false;
+      return copy;
+    }
+    copy.where = null;
+    return copy;
+  });
+  if (!['before', 'after'].includes(phase)
+    || ['p133', 'legacy-star', 'forged-earth'].some((id) => counts.get(id) !== 1)) ok = false;
+  return { ok, value: projection };
+};
+const trainingRawProductStable = (before, after, allowInvalidAtlasCleanup) => {
+  const beforeProjection = allowInvalidAtlasCleanup
+    ? trainingAuthorizationProductProjection(before, 'before')
+    : { ok: true, value: trainingRawProductProjection(before) };
+  const afterProjection = allowInvalidAtlasCleanup
+    ? trainingAuthorizationProductProjection(after, 'after')
+    : { ok: true, value: trainingRawProductProjection(after) };
+  return beforeProjection.ok && afterProjection.ok
+    && canonicalJson(beforeProjection.value) === canonicalJson(afterProjection.value);
+};
+const trainingSaveLedger = (state, ownedSaveKeys) => {
+  const save = structuredClone(state?.save ?? null);
+  if (!save || typeof save !== 'object') return null;
+  for (const key of ownedSaveKeys) delete save[key];
+  return canonicalJson(save);
+};
+const trainingOrderedRowIdentity = (before, after) => {
+  const conqBefore = before?.conq, conqAfter = after?.conq;
+  const minedBefore = before?.minedw, minedAfter = after?.minedw;
+  return Array.isArray(conqBefore) && Array.isArray(conqAfter)
+    && Array.isArray(minedBefore) && Array.isArray(minedAfter)
+    && canonicalJson(conqBefore.map((row) => row?.[0]))
+      === canonicalJson(conqAfter.map((row) => row?.[0]))
+    && canonicalJson(minedBefore.map((row) => row?.[0]))
+      === canonicalJson(minedAfter.map((row) => row?.[0]));
+};
+const trainingExactStampClamp = (before, after) => {
+  const beforeStamp = before?.at, afterStamp = after?.at;
+  if (!Number.isFinite(beforeStamp) || !Number.isFinite(afterStamp)) return false;
+  /* Equal-stamp structural validity is owned independently by the fixed-point
+     predicate below. This branch lets that control fail in isolation. */
+  if (beforeStamp === afterStamp) return true;
+  const beforeConq = before?.conq, afterConq = after?.conq;
+  const beforeMined = before?.minedw, afterMined = after?.minedw;
+  if (!Array.isArray(beforeConq) || !Array.isArray(afterConq)
+    || beforeConq.length !== afterConq.length
+    || !Array.isArray(beforeMined) || !Array.isArray(afterMined)
+    || beforeMined.length !== afterMined.length) return false;
+  const conq = beforeConq.every((entry, index) => {
+    const beforeTime = entry?.[1]?.t, afterTime = afterConq[index]?.[1]?.t;
+    return Number.isFinite(beforeTime) && Number.isFinite(afterTime)
+      && afterTime === Math.min(Math.max(beforeTime, afterStamp - 3_600_000), afterStamp);
+  });
+  const floor = Math.max(0, afterStamp - 30 * 600_000);
+  const mined = beforeMined.every((entry, index) => {
+    const beforeTime = entry?.[1], afterTime = afterMined[index]?.[1];
+    return Number.isFinite(beforeTime) && Number.isFinite(afterTime)
+      && afterTime === Math.min(Math.max(beforeTime, floor), afterStamp);
+  });
+  return conq && mined;
+};
+const trainingRawLiveCommonParity = (evidence, state) => {
+  const legacy = evidence?.legacy, player = evidence?.playerRow?.data;
+  const inventory = evidence?.inventoryRow?.data, catalog = evidence?.catalogRow?.data;
+  const hasLegacySnapshot = Object.prototype.hasOwnProperty.call(legacy ?? {}, 'tsnap');
+  const hasPlayerSnapshot = Object.prototype.hasOwnProperty.call(player ?? {}, 'tsnap');
+  return legacy?.at === player?.at
+    && canonicalJson(legacy?.conq) === canonicalJson(player?.conq)
+    && canonicalJson(legacy?.minedw) === canonicalJson(inventory?.minedw)
+    && canonicalJson(legacy?.land) === canonicalJson(catalog?.land)
+    && canonicalJson(legacy?.view) === canonicalJson(player?.view)
+    && legacy?.tut === player?.tut && hasLegacySnapshot === hasPlayerSnapshot
+    && (!hasLegacySnapshot || canonicalJson(legacy.tsnap) === canonicalJson(player.tsnap))
+    && canonicalJson(state?.save?.landed) === canonicalJson(legacy?.land)
+    && canonicalJson(state?.save?.savedView) === canonicalJson(legacy?.view)
+    && state?.tutDone === (legacy?.tut === 1)
+    && (state?.tutSnapshotPending !== null) === hasLegacySnapshot
+    && (!hasLegacySnapshot
+      || canonicalJson(state?.tutSnapshotPending) === canonicalJson(legacy.tsnap));
+};
+const TRAINING_MINED_WINDOW_MS = 30 * 600_000;
+const TRAINING_PRE_CODEC_CLOCK_SKEW_MS = 10_000;
+const trainingPreMinedCodecProjection = (evidence, state, source) => {
+  const legacy = evidence?.legacy;
+  const rawRows = legacy?.minedw;
+  const splitRows = evidence?.inventoryRow?.data?.minedw;
+  const liveRows = state?.save?.mined;
+  const sourceRows = source?.minedw;
+  if (!Number.isFinite(source?.at) || !Number.isFinite(legacy?.at)
+    || !Array.isArray(sourceRows)
+    || !Array.isArray(rawRows) || !Array.isArray(splitRows) || !Array.isArray(liveRows)
+    || canonicalJson(rawRows) !== canonicalJson(splitRows)
+    || sourceRows.length !== rawRows.length || rawRows.length !== liveRows.length) return false;
+  const rawRewrite = assessStampedCanonicalRewrite(
+    JSON.stringify({ at: source.at, conq: [], minedw: sourceRows }),
+    JSON.stringify({ at: legacy.at, conq: [], minedw: rawRows }),
+  );
+  if (!rawRewrite.ok) return false;
+  let anchorLow = legacy.at - TRAINING_PRE_CODEC_CLOCK_SKEW_MS;
+  let anchorHigh = legacy.at + TRAINING_PRE_CODEC_CLOCK_SKEW_MS;
+  const rowsValid = rawRows.every((rawRow, index) => {
+    const sourceRow = sourceRows[index];
+    const liveRow = liveRows[index];
+    const sourceTime = sourceRow?.[1];
+    const liveTime = liveRow?.[1];
+    if (!(Array.isArray(sourceRow) && sourceRow.length === 2
+      && Array.isArray(rawRow) && rawRow.length === 2
+      && Array.isArray(liveRow) && liveRow.length === 2
+      && canonicalJson(sourceRow[0]) === canonicalJson(rawRow[0])
+      && canonicalJson(rawRow[0]) === canonicalJson(liveRow[0])
+      && Number.isFinite(sourceTime) && Number.isFinite(rawRow[1]) && Number.isFinite(liveTime))) {
+      return false;
+    }
+    if (liveTime > sourceTime) {
+      anchorLow = Math.max(anchorLow, liveTime + TRAINING_MINED_WINDOW_MS);
+      anchorHigh = Math.min(anchorHigh, liveTime + TRAINING_MINED_WINDOW_MS);
+    } else if (liveTime < sourceTime) {
+      anchorLow = Math.max(anchorLow, liveTime);
+      anchorHigh = Math.min(anchorHigh, liveTime);
+    } else {
+      anchorLow = Math.max(anchorLow, liveTime);
+      anchorHigh = Math.min(anchorHigh, liveTime + TRAINING_MINED_WINDOW_MS);
+    }
+    return anchorLow <= anchorHigh;
+  });
+  if (!rowsValid || anchorLow > anchorHigh) return false;
+  return sourceRows.every((sourceRow, index) => liveRows[index][1]
+    === Math.min(Math.max(sourceRow[1], Math.max(0, anchorLow - TRAINING_MINED_WINDOW_MS)), anchorLow));
+};
+const trainingPreRawLiveParity = (evidence, state, source) => (
+  trainingRawLiveCommonParity(evidence, state)
+  && trainingPreMinedCodecProjection(evidence, state, source)
+);
+const trainingPostRawLiveParity = (evidence, state) => (
+  trainingRawLiveCommonParity(evidence, state)
+  && canonicalJson(state?.save?.mined) === canonicalJson(evidence?.legacy?.minedw)
+);
+const trainingRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
+const trainingDurableEvidenceComplete = arc3TrainingDurableEvidenceComplete;
+const assessTrainingCanonicalTransaction = ({
+  before, after, beforeState, afterState, ownedSaveKeys,
+  allowInvalidAtlasCleanup = false, preCodecSource,
+}) => {
+  const beforeLegacy = before?.legacy, afterLegacy = after?.legacy;
+  const beforePlayer = before?.playerRow?.data, afterPlayer = after?.playerRow?.data;
+  const beforeCreatures = before?.creaturesRow?.data, afterCreatures = after?.creaturesRow?.data;
+  const beforeInventory = before?.inventoryRow?.data, afterInventory = after?.inventoryRow?.data;
+  const beforeCatalog = before?.catalogRow?.data, afterCatalog = after?.catalogRow?.data;
+  const beforeSettings = before?.settingsRow?.data, afterSettings = after?.settingsRow?.data;
+  const beforeSplit = trainingSplitProjection(before), afterSplit = trainingSplitProjection(after);
+  const legacyRewrite = assessStampedCanonicalRewrite(
+    trainingStampProjectionRaw(beforeLegacy), trainingStampProjectionRaw(afterLegacy),
+  );
+  const splitRewrite = assessStampedCanonicalRewrite(
+    trainingStampProjectionRaw(beforeSplit), trainingStampProjectionRaw(afterSplit),
+  );
+  const legacyBeforeFixed = assessStampedCanonicalRewrite(
+    trainingStampProjectionRaw(beforeLegacy), trainingStampProjectionRaw(beforeLegacy),
+  );
+  const legacyAfterFixed = assessStampedCanonicalRewrite(
+    trainingStampProjectionRaw(afterLegacy), trainingStampProjectionRaw(afterLegacy),
+  );
+  const splitBeforeFixed = assessStampedCanonicalRewrite(
+    trainingStampProjectionRaw(beforeSplit), trainingStampProjectionRaw(beforeSplit),
+  );
+  const splitAfterFixed = assessStampedCanonicalRewrite(
+    trainingStampProjectionRaw(afterSplit), trainingStampProjectionRaw(afterSplit),
+  );
+  const completeRawEvidence = trainingDurableEvidenceComplete(before)
+    && trainingDurableEvidenceComplete(after)
+    && Array.isArray(ownedSaveKeys) && ownedSaveKeys.includes('mined');
+  const beforeRuntime = beforeState?.persistence?.runtime;
+  const afterRuntime = afterState?.persistence?.runtime;
+  const beforeRng = before?.authority?.sessionRng;
+  const afterRng = after?.authority?.sessionRng;
+  const extensionProjection = (row, omitted = []) => {
+    const extensions = structuredClone(row?.extensions ?? {});
+    for (const namespace of omitted) delete extensions[namespace];
+    return extensions;
+  };
+  const checks = Object.freeze({
+    completeRawEvidence,
+    revisionTopology: !completeRawEvidence || (
+      before?.revisionRaw === String(before?.revision)
+      && after?.revisionRaw === String(after?.revision)
+      && after?.revision === before?.revision + 1
+      && beforeRuntime?.revision === before?.revision
+      && afterRuntime?.revision === after?.revision
+      && typeof beforeState?.persistence?.documentToken === 'string'
+      && afterState?.persistence?.documentToken === beforeState.persistence.documentToken
+    ),
+    oneSameDocumentCommit: !completeRawEvidence || (
+      Number.isSafeInteger(beforeRuntime?.commits)
+      && afterRuntime?.commits === beforeRuntime.commits + 1
+      && afterState?.persistence?.lastOutcome === `training-committed:${after?.revision}`
+      && afterState?.persistence?.bootRouteRepairPending === false
+      && afterState?.sceneResources?.pendingPersistenceWrites === 0
+    ),
+    f4AuthorityPreserved: !completeRawEvidence || (
+      canonicalJson(afterRng) === canonicalJson(beforeRng)
+      && beforeRuntime?.sessionSeed === beforeRng?.seed
+      && afterRuntime?.sessionSeed === afterRng?.seed
+      && beforeRuntime?.sessionOrdinal === beforeRng?.ordinal
+      && afterRuntime?.sessionOrdinal === afterRng?.ordinal
+      && canonicalJson(beforeRuntime?.sessionDraws) === canonicalJson(beforeRng?.draws)
+      && canonicalJson(afterRuntime?.sessionDraws) === canonicalJson(afterRng?.draws)
+      && Number.isSafeInteger(before?.authority?.activePlayMs)
+      && Number.isSafeInteger(after?.authority?.activePlayMs)
+      && after.authority.activePlayMs >= before.authority.activePlayMs
+      && beforeRuntime?.activePlayMs >= before.authority.activePlayMs
+      && afterRuntime?.activePlayMs >= after.authority.activePlayMs
+    ),
+    receiptsStable: !completeRawEvidence || (
+      canonicalJson({ keys: after?.receiptKeys, raw: after?.receiptRawRows, rows: after?.receiptRows })
+        === canonicalJson({ keys: before?.receiptKeys, raw: before?.receiptRawRows, rows: before?.receiptRows })
+    ),
+    productCarriersStable: !completeRawEvidence || (
+      before?.engineeringJson === after?.engineeringJson
+      && before?.arc2Json === after?.arc2Json
+      && canonicalJson(extensionProjection(before?.playerRow, ['f4.authority']))
+        === canonicalJson(extensionProjection(after?.playerRow, ['f4.authority']))
+      && canonicalJson(extensionProjection(before?.creaturesRow))
+        === canonicalJson(extensionProjection(after?.creaturesRow))
+      && canonicalJson(extensionProjection(before?.catalogRow))
+        === canonicalJson(extensionProjection(after?.catalogRow))
+      && canonicalJson(extensionProjection(before?.inventoryRow))
+        === canonicalJson(extensionProjection(after?.inventoryRow))
+      && canonicalJson(extensionProjection(before?.settingsRow))
+        === canonicalJson(extensionProjection(after?.settingsRow))
+    ),
+    unrelatedLedgerStable: trainingSaveLedger(beforeState, ownedSaveKeys)
+      === trainingSaveLedger(afterState, ownedSaveKeys),
+    rawProductStable: !completeRawEvidence || (
+      trainingRawProductStable(beforeLegacy, afterLegacy, allowInvalidAtlasCleanup)
+      && trainingRawProductStable(beforePlayer, afterPlayer, false)
+      && trainingRawProductStable(beforeCreatures, afterCreatures, false)
+      && trainingRawProductStable(beforeInventory, afterInventory, false)
+      && trainingRawProductStable(beforeCatalog, afterCatalog, allowInvalidAtlasCleanup)
+      && trainingRawProductStable(beforeSettings, afterSettings, false)
+    ),
+    stampMonotonic: !completeRawEvidence || (Number.isFinite(beforeLegacy?.at)
+      && Number.isFinite(afterLegacy?.at)
+      && afterLegacy.at >= beforeLegacy.at && beforeSplit.at === beforeLegacy.at
+      && afterSplit.at === afterLegacy.at),
+    orderedRowIdentity: !completeRawEvidence || (trainingOrderedRowIdentity(beforeLegacy, afterLegacy)
+      && trainingOrderedRowIdentity(beforeSplit, afterSplit)),
+    exactStampClamp: !completeRawEvidence || (trainingExactStampClamp(beforeLegacy, afterLegacy)
+      && trainingExactStampClamp(beforeSplit, afterSplit)),
+    canonicalFixedPoint: !completeRawEvidence || (legacyBeforeFixed.ok && legacyAfterFixed.ok
+      && splitBeforeFixed.ok && splitAfterFixed.ok),
+    preMinedCodecProjection: !completeRawEvidence
+      || trainingPreRawLiveParity(before, beforeState, preCodecSource),
+    postRawLiveParity: !completeRawEvidence || trainingPostRawLiveParity(after, afterState),
+  });
+  const reasons = Object.entries(checks).filter(([, value]) => value !== true)
+    .map(([name]) => `Training canonical transaction ${name}`);
+  return { ok: reasons.length === 0, reasons, checks, legacyRewrite, splitRewrite,
+    fixedPoint: { legacyBeforeFixed, legacyAfterFixed, splitBeforeFixed, splitAfterFixed } };
+};
+const TRAINING_CARRIER_PRESENT_BASELINE = Object.freeze({
+  schema: 'cf-v2-engineering-state/v2', revision: 0,
+  worlds: Object.freeze([]), stars: Object.freeze([]), research: Object.freeze([]),
+});
+const withTrainingArc3EvidenceMode = (evidence, mode, state = TRAINING_CARRIER_PRESENT_BASELINE) => {
+  const copy = structuredClone(evidence);
+  if (mode === 'carrier-present') {
+    copy.arc3 = structuredClone(state);
+    copy.engineeringVersion = 1;
+    copy.engineeringJson = JSON.stringify(copy.arc3);
+    copy.playerRow.extensions['arc3.engineering'] = {
+      version: 1, json: copy.engineeringJson,
+    };
+  } else {
+    delete copy.playerRow.extensions['arc3.engineering'];
+    copy.engineeringVersion = null;
+    copy.engineeringJson = null;
+    copy.arc3 = null;
+  }
+  copy.playerRaw = JSON.stringify(copy.playerRow);
+  return copy;
+};
+const assessTrainingCarrierModeBaselines = (bundle) => {
+  const sourceState = [bundle.before, bundle.after]
+    .find((evidence) => arc3TrainingEvidenceMode(evidence) === 'carrier-present')?.arc3
+    ?? TRAINING_CARRIER_PRESENT_BASELINE;
+  const presentBefore = withTrainingArc3EvidenceMode(bundle.before, 'carrier-present', sourceState);
+  const presentAfter = withTrainingArc3EvidenceMode(bundle.after, 'carrier-present', sourceState);
+  const absentBefore = withTrainingArc3EvidenceMode(bundle.before, 'protected-absent');
+  const absentAfter = withTrainingArc3EvidenceMode(bundle.after, 'protected-absent');
+  const assess = (before, after) => assessTrainingCanonicalTransaction({ ...bundle, before, after });
+  const present = assess(presentBefore, presentAfter);
+  const absent = assess(absentBefore, absentAfter);
+  const presentControl = assess(presentBefore, absentAfter);
+  const absentControl = assess(absentBefore, presentAfter);
+  const controlsIsolated = [presentControl, absentControl]
+    .every((assessment) => isolatesNamedCheck(assessment, 'productCarriersStable'));
+  return {
+    ok: present.ok && absent.ok
+      && arc3TrainingEvidenceMode(presentBefore) === 'carrier-present'
+      && arc3TrainingEvidenceMode(presentAfter) === 'carrier-present'
+      && arc3TrainingEvidenceMode(absentBefore) === 'protected-absent'
+      && arc3TrainingEvidenceMode(absentAfter) === 'protected-absent'
+      && controlsIsolated,
+    modes: {
+      presentBefore: arc3TrainingEvidenceMode(presentBefore),
+      presentAfter: arc3TrainingEvidenceMode(presentAfter),
+      absentBefore: arc3TrainingEvidenceMode(absentBefore),
+      absentAfter: arc3TrainingEvidenceMode(absentAfter),
+    },
+    present, absent, presentControl, absentControl, controlsIsolated,
+  };
+};
+const withTrainingEvidenceMutation = (evidence, mutate) => {
+  const copy = structuredClone(evidence);
+  mutate(copy.legacy);
+  for (const key of ['at', 'conq', 'tut', 'tsnap', 'view', 'essence']) {
+    if (Object.prototype.hasOwnProperty.call(copy.legacy, key)) {
+      copy.playerRow.data[key] = structuredClone(copy.legacy[key]);
+    } else delete copy.playerRow.data[key];
+  }
+  if (Object.prototype.hasOwnProperty.call(copy.legacy, 'minedw')) {
+    copy.inventoryRow.data.minedw = structuredClone(copy.legacy.minedw);
+  } else delete copy.inventoryRow.data.minedw;
+  if (Object.prototype.hasOwnProperty.call(copy.legacy, 'land')) {
+    copy.catalogRow.data.land = structuredClone(copy.legacy.land);
+  } else delete copy.catalogRow.data.land;
+  copy.legacyRaw = JSON.stringify(copy.legacy);
+  copy.playerRaw = JSON.stringify(copy.playerRow);
+  copy.inventoryRaw = JSON.stringify(copy.inventoryRow);
+  copy.catalogRaw = JSON.stringify(copy.catalogRow);
+  return copy;
+};
+const withTrainingLiveMined = (state, mined) => ({
+  ...state, save: { ...state.save, mined: structuredClone(mined) },
+});
+const withTrainingRowMutation = (evidence, rowName, rawName, mutate) => {
+  const copy = structuredClone(evidence);
+  mutate(copy[rowName]);
+  copy[rawName] = JSON.stringify(copy[rowName]);
+  return copy;
+};
+const withTrainingAtlasMutation = (evidence, mutate) => {
+  const copy = structuredClone(evidence);
+  mutate(copy.legacy.log);
+  copy.catalogRow.data.log = structuredClone(copy.legacy.log);
+  copy.legacyRaw = JSON.stringify(copy.legacy);
+  copy.catalogRaw = JSON.stringify(copy.catalogRow);
+  return copy;
+};
+const withTrainingCodexMutation = (evidence, mutate) => {
+  const copy = structuredClone(evidence);
+  mutate(copy.legacy.codex);
+  copy.catalogRow.data.codex = structuredClone(copy.legacy.codex);
+  copy.legacyRaw = JSON.stringify(copy.legacy);
+  copy.catalogRaw = JSON.stringify(copy.catalogRow);
+  return copy;
+};
+const TRAINING_DURABLE_DELETION_PATHS = Object.freeze({
+  revisionRaw: ['revisionRaw'], revision: ['revision'],
+  legacyRaw: ['legacyRaw'], legacyRow: ['legacy'],
+  playerRaw: ['playerRaw'], playerRow: ['playerRow'], playerSchema: ['playerRow', 'schema'],
+  playerData: ['playerRow', 'data'], playerExtensions: ['playerRow', 'extensions'],
+  creaturesRaw: ['creaturesRaw'], creaturesRow: ['creaturesRow'],
+  creaturesSchema: ['creaturesRow', 'schema'], creaturesData: ['creaturesRow', 'data'],
+  catalogRaw: ['catalogRaw'], catalogRow: ['catalogRow'], catalogSchema: ['catalogRow', 'schema'],
+  catalogData: ['catalogRow', 'data'],
+  inventoryRaw: ['inventoryRaw'], inventoryRow: ['inventoryRow'],
+  inventorySchema: ['inventoryRow', 'schema'], inventoryData: ['inventoryRow', 'data'],
+  inventoryExtensions: ['inventoryRow', 'extensions'],
+  settingsRaw: ['settingsRaw'], settingsRow: ['settingsRow'],
+  settingsSchema: ['settingsRow', 'schema'], settingsData: ['settingsRow', 'data'],
+  f4Version: ['authorityVersion'], f4Json: ['authorityJson'], f4Parsed: ['authority'],
+  f4Carrier: ['playerRow', 'extensions', 'f4.authority'],
+  arc3Version: ['engineeringVersion'], arc3Json: ['engineeringJson'], arc3Parsed: ['arc3'],
+  arc3Carrier: ['playerRow', 'extensions', 'arc3.engineering'],
+  arc2Version: ['arc2Version'], arc2Json: ['arc2Json'], arc2Parsed: ['arc2'],
+  arc2Carrier: ['inventoryRow', 'extensions', 'arc2.loot'],
+  receiptKeys: ['receiptKeys'], receiptRawRows: ['receiptRawRows'], receiptRows: ['receiptRows'],
+});
+const trainingEvidenceOwnsPath = (value, path) => {
+  let owner = value;
+  for (const key of path.slice(0, -1)) owner = owner?.[key];
+  return owner !== null && typeof owner === 'object'
+    && Object.prototype.hasOwnProperty.call(owner, path.at(-1));
+};
+const trainingCanonicalControlAssessments = (bundle) => {
+  const timestampAfter = withTrainingEvidenceMutation(bundle.after, (value) => {
+    if (value?.minedw?.[0]) value.minedw[0][1] += 1;
+  });
+  const seedAfter = withTrainingEvidenceMutation(bundle.after, (value) => {
+    if (value?.conq?.[0]) value.conq[0][0] = (value.conq[0][0] + 1) >>> 0;
+  });
+  const backwardStamp = Number(bundle.before?.legacy?.at) - 1;
+  const backwardAt = withTrainingEvidenceMutation(bundle.after, (value) => {
+    value.at = backwardStamp;
+    if (Array.isArray(value?.conq)) value.conq.forEach((entry, index) => {
+      const beforeTime = bundle.before?.legacy?.conq?.[index]?.[1]?.t;
+      if (entry?.[1] && Number.isFinite(beforeTime)) {
+        entry[1].t = Math.min(Math.max(beforeTime, backwardStamp - 3_600_000), backwardStamp);
+      }
+    });
+    if (Array.isArray(value?.minedw)) value.minedw.forEach((entry, index) => {
+      const beforeTime = bundle.before?.legacy?.minedw?.[index]?.[1];
+      if (entry && Number.isFinite(beforeTime)) {
+        entry[1] = Math.min(Math.max(beforeTime, Math.max(0, backwardStamp - 30 * 600_000)), backwardStamp);
+      }
+    });
+  });
+  const orderedBefore = withTrainingEvidenceMutation(bundle.before, (value) => {
+    const extraSeed = 0xFFFF_FFFE;
+    const prior = Number(value?.at);
+    const first = structuredClone(value?.conq?.[0]?.[1] ?? { tier: 1 });
+    first.t = prior;
+    value.conq = [...(Array.isArray(value?.conq) ? value.conq : []), [extraSeed, first]];
+  });
+  const orderedAfter = withTrainingEvidenceMutation(bundle.after, (value) => {
+    const extraSeed = 0xFFFF_FFFE;
+    const beforeStamp = Number(bundle.before?.legacy?.at);
+    const afterStamp = Number(value?.at);
+    const rows = Array.isArray(value?.conq) ? value.conq : [];
+    const first = structuredClone(rows[0]?.[1] ?? { tier: 1 });
+    first.t = Math.min(Math.max(beforeStamp, afterStamp - 3_600_000), afterStamp);
+    value.conq = [...rows, [extraSeed, first]];
+    if (value.conq.length >= 2) {
+      const priorFirstSeed = value.conq[0][0];
+      value.conq[0][0] = extraSeed;
+      value.conq[value.conq.length - 1][0] = priorFirstSeed;
+    }
+  });
+  const control = (before, after, beforeState, afterState, overrides = {}) => assessTrainingCanonicalTransaction({
+    ...bundle, ...overrides, before, after, beforeState, afterState,
+  });
+  const invalidFixedBefore = withTrainingEvidenceMutation(bundle.before, (value) => {
+    if (value?.conq?.[0]?.[1]) value.conq[0][1].t = value.at - 3_600_001;
+  });
+  const invalidFixedAfter = withTrainingEvidenceMutation(bundle.after, (value) => {
+    value.at = invalidFixedBefore.legacy.at;
+    value.conq = structuredClone(invalidFixedBefore.legacy.conq);
+    value.minedw = structuredClone(invalidFixedBefore.legacy.minedw);
+  });
+  const rawEnvelopeAfter = { ...bundle.after, playerRaw: `${bundle.after.playerRaw}\n` };
+  const splitOnlyAtAfter = withTrainingRowMutation(
+    bundle.after, 'playerRow', 'playerRaw', (row) => {
+      row.data.at = Number(row.data.at) + 1;
+    },
+  );
+  const legacyOnlyAtAfter = structuredClone(bundle.after);
+  legacyOnlyAtAfter.legacy.at = Number(legacyOnlyAtAfter.legacy.at) + 1;
+  legacyOnlyAtAfter.legacyRaw = JSON.stringify(legacyOnlyAtAfter.legacy);
+  const rowTopLevelAfter = withTrainingRowMutation(
+    bundle.after, 'playerRow', 'playerRaw', (row) => { row.auditTopLevel = true; },
+  );
+  const rowFieldOwnerAfter = withTrainingRowMutation(
+    bundle.after, 'catalogRow', 'catalogRaw', (row) => { row.data.essence = 1; },
+  );
+  const invalidExtensionAfter = withTrainingRowMutation(
+    bundle.after, 'inventoryRow', 'inventoryRaw', (row) => {
+      row.extensions['audit.drift'] = { version: 0, json: 'not-json' };
+    },
+  );
+  const unrelatedExtensionAfter = withTrainingRowMutation(
+    bundle.after, 'creaturesRow', 'creaturesRaw', (row) => {
+      row.extensions = { ...(row.extensions ?? {}),
+        'audit.drift': { version: 1, json: '{"schema":"audit-drift/v1"}' } };
+    },
+  );
+  const rawProductAfter = withTrainingEvidenceMutation(bundle.after, (value) => {
+    value.essence = Number(value?.essence ?? 0) + 1;
+  });
+  const revisionAfter = structuredClone(bundle.after);
+  revisionAfter.revision += 1;
+  revisionAfter.revisionRaw = String(revisionAfter.revision);
+  const revisionAfterState = structuredClone(bundle.afterState);
+  revisionAfterState.persistence.runtime.revision = revisionAfter.revision;
+  revisionAfterState.persistence.lastOutcome = `training-committed:${revisionAfter.revision}`;
+  const receiptAfter = structuredClone(bundle.after);
+  const receiptControlRow = {
+    ordinal: 0xFFFF_FFFE, kind: 'training-control', witness: 'training-extra-receipt-control',
+  };
+  receiptAfter.receiptKeys.push('receipt:training-control');
+  receiptAfter.receiptRawRows.push(JSON.stringify(receiptControlRow));
+  receiptAfter.receiptRows.push(receiptControlRow);
+  const carrierAfter = structuredClone(bundle.after);
+  if (carrierAfter.engineeringVersion === 1 && trainingRecord(carrierAfter.arc3)) {
+    carrierAfter.arc3.revision = Number(carrierAfter.arc3.revision ?? 0) + 1;
+    carrierAfter.engineeringJson = JSON.stringify(carrierAfter.arc3);
+    carrierAfter.playerRow.extensions['arc3.engineering'].json = carrierAfter.engineeringJson;
+  } else {
+    carrierAfter.arc3 = { schema: 'training-control-engineering/v1', revision: 1 };
+    carrierAfter.engineeringVersion = 1;
+    carrierAfter.engineeringJson = JSON.stringify(carrierAfter.arc3);
+    carrierAfter.playerRow.extensions['arc3.engineering'] = {
+      version: 1, json: carrierAfter.engineeringJson,
+    };
+  }
+  carrierAfter.playerRaw = JSON.stringify(carrierAfter.playerRow);
+  const authorityAfter = structuredClone(bundle.after);
+  authorityAfter.authority.sessionRng.seed = (authorityAfter.authority.sessionRng.seed ^ 1) >>> 0;
+  authorityAfter.authorityJson = JSON.stringify(authorityAfter.authority);
+  authorityAfter.playerRow.extensions['f4.authority'].json = authorityAfter.authorityJson;
+  authorityAfter.playerRaw = JSON.stringify(authorityAfter.playerRow);
+  const authorityAfterState = structuredClone(bundle.afterState);
+  authorityAfterState.persistence.runtime.sessionSeed = authorityAfter.authority.sessionRng.seed;
+  const extraCommitState = structuredClone(bundle.afterState);
+  extraCommitState.persistence.runtime.commits += 1;
+  const wrongOutcomeState = structuredClone(bundle.afterState);
+  wrongOutcomeState.persistence.lastOutcome = `committed:${bundle.after.revision}`;
+  const preMinedKeyState = structuredClone(bundle.beforeState);
+  if (preMinedKeyState?.save?.mined?.[0]) {
+    preMinedKeyState.save.mined[0][0] = (Number(preMinedKeyState.save.mined[0][0]) + 1) >>> 0;
+  }
+  const preOrderSeed = 0xFFFF_FFFD;
+  const preMinedOrderBefore = withTrainingEvidenceMutation(bundle.before, (value) => {
+    value.minedw = [...(Array.isArray(value.minedw) ? value.minedw : []), [
+      preOrderSeed, Math.max(0, value.at - TRAINING_MINED_WINDOW_MS),
+    ]];
+  });
+  const preMinedOrderAfter = withTrainingEvidenceMutation(bundle.after, (value) => {
+    value.minedw = [...(Array.isArray(value.minedw) ? value.minedw : []), [
+      preOrderSeed, Math.max(0, Number(value.at) - TRAINING_MINED_WINDOW_MS),
+    ]];
+  });
+  const preMinedOrderSource = structuredClone(bundle.preCodecSource);
+  preMinedOrderSource.minedw = [
+    ...(Array.isArray(preMinedOrderSource.minedw) ? preMinedOrderSource.minedw : []),
+    [preOrderSeed, 0],
+  ];
+  const preMinedOrderState = withTrainingLiveMined(
+    bundle.beforeState, [...preMinedOrderBefore.legacy.minedw].reverse(),
+  );
+  const postMinedOrderState = withTrainingLiveMined(
+    bundle.afterState, preMinedOrderAfter.legacy.minedw,
+  );
+  const validRouteLossAfter = withTrainingAtlasMutation(bundle.after, (rows) => {
+    const row = rows?.find((entry) => entry?.id === 'p133');
+    if (row) row.where = null;
+  });
+  const atlasWrongTargetScalarAfter = withTrainingAtlasMutation(bundle.after, (rows) => {
+    const row = rows?.find((entry) => entry?.id === 'p133');
+    if (row?.where?.gal) row.where.gal.rot = Number(row.where.gal.rot) + 0.01;
+  });
+  const atlasUnexpectedSourceScalarBefore = withTrainingAtlasMutation(bundle.before, (rows) => {
+    const row = rows?.find((entry) => entry?.id === 'p133');
+    if (row?.where?.gal) row.where.gal.size = Number(row.where.gal.size) + 0.01;
+  });
+  const atlasMetadataAfter = withTrainingAtlasMutation(bundle.after, (rows) => {
+    const row = rows?.find((entry) => entry?.id === 'forged-earth') ?? rows?.[0];
+    if (row) row.title = `${String(row.title ?? '')} drift`;
+  });
+  const atlasOrderAfter = withTrainingAtlasMutation(bundle.after, (rows) => {
+    if (Array.isArray(rows)) rows.reverse();
+  });
+  const unexpectedInvalidAtlasAfter = withTrainingAtlasMutation(bundle.after, (rows) => {
+    const row = rows?.find((entry) => entry?.id === 'legacy-star');
+    if (row) row.where = {
+      ...structuredClone(TRAINING_AUTH_INVALID_ATLAS_WHERE['legacy-star']),
+      star: { seed: 778 },
+    };
+  });
+  const codexWorldDriftAfter = withTrainingCodexMutation(bundle.after, (rows) => {
+    const row = Array.isArray(rows) ? rows.find((entry) => entry?.w?.pseed === EARTH.seed) : null;
+    if (row?.w) row.w.pseed = EARTH.seed + 1;
+  });
+  const absentEvidenceControls = Object.fromEntries(
+    Object.entries(TRAINING_DURABLE_DELETION_PATHS).flatMap(([name, path]) => [
+      ...(trainingEvidenceOwnsPath(bundle.before, path) ? [[`absent-before-${name}`, control(
+        deleteArc3EvidencePath(bundle.before, path), bundle.after,
+        bundle.beforeState, bundle.afterState,
+      )]] : []),
+      ...(trainingEvidenceOwnsPath(bundle.after, path) ? [[`absent-after-${name}`, control(
+        bundle.before, deleteArc3EvidencePath(bundle.after, path),
+        bundle.beforeState, bundle.afterState,
+      )]] : []),
+    ]),
+  );
+  return {
+    rawEnvelope: control(bundle.before, rawEnvelopeAfter, bundle.beforeState, bundle.afterState),
+    splitOnlyAt: control(bundle.before, splitOnlyAtAfter, bundle.beforeState, bundle.afterState),
+    legacyOnlyAt: control(bundle.before, legacyOnlyAtAfter, bundle.beforeState, bundle.afterState),
+    rowTopLevel: control(bundle.before, rowTopLevelAfter, bundle.beforeState, bundle.afterState),
+    rowFieldOwner: control(bundle.before, rowFieldOwnerAfter, bundle.beforeState, bundle.afterState),
+    invalidExtension: control(bundle.before, invalidExtensionAfter, bundle.beforeState, bundle.afterState),
+    unrelatedExtension: control(
+      bundle.before, unrelatedExtensionAfter, bundle.beforeState, bundle.afterState,
+    ),
+    rawProduct: control(bundle.before, rawProductAfter, bundle.beforeState, bundle.afterState),
+    timestamp: control(bundle.before, timestampAfter, bundle.beforeState,
+      withTrainingLiveMined(bundle.afterState, timestampAfter.legacy.minedw)),
+    seed: control(bundle.before, seedAfter, bundle.beforeState,
+      withTrainingLiveMined(bundle.afterState, seedAfter.legacy.minedw)),
+    order: control(orderedBefore, orderedAfter,
+      withTrainingLiveMined(bundle.beforeState, orderedBefore.legacy.minedw),
+      withTrainingLiveMined(bundle.afterState, orderedAfter.legacy.minedw)),
+    backwardAt: control(bundle.before, backwardAt, bundle.beforeState,
+      withTrainingLiveMined(bundle.afterState, backwardAt.legacy.minedw)),
+    fixedPoint: control(invalidFixedBefore, invalidFixedAfter,
+      withTrainingLiveMined(bundle.beforeState, invalidFixedBefore.legacy.minedw),
+      withTrainingLiveMined(bundle.afterState, invalidFixedAfter.legacy.minedw)),
+    unrelatedProduct: control(bundle.before, bundle.after, bundle.beforeState, {
+      ...bundle.afterState, save: { ...bundle.afterState.save,
+        essence: Number(bundle.afterState?.save?.essence ?? 0) + 1 },
+    }),
+    postMinedTimestamp: control(bundle.before, bundle.after, bundle.beforeState,
+      withTrainingLiveMined(bundle.afterState, timestampAfter.legacy.minedw)),
+    preMinedKey: control(bundle.before, bundle.after, preMinedKeyState, bundle.afterState),
+    preMinedOrder: control(preMinedOrderBefore, preMinedOrderAfter,
+      preMinedOrderState, postMinedOrderState, { preCodecSource: preMinedOrderSource }),
+    atlasValidRouteLoss: control(
+      bundle.before, validRouteLossAfter, bundle.beforeState, bundle.afterState,
+    ),
+    atlasWrongTargetScalar: control(
+      bundle.before, atlasWrongTargetScalarAfter, bundle.beforeState, bundle.afterState,
+    ),
+    atlasUnexpectedSourceScalar: control(
+      atlasUnexpectedSourceScalarBefore, bundle.after, bundle.beforeState, bundle.afterState,
+    ),
+    atlasMetadataDrift: control(
+      bundle.before, atlasMetadataAfter, bundle.beforeState, bundle.afterState,
+    ),
+    atlasOrderDrift: control(
+      bundle.before, atlasOrderAfter, bundle.beforeState, bundle.afterState,
+    ),
+    atlasUnexpectedInvalidMutation: control(
+      bundle.before, unexpectedInvalidAtlasAfter, bundle.beforeState, bundle.afterState,
+    ),
+    codexWorldDrift: control(
+      bundle.before, codexWorldDriftAfter, bundle.beforeState, bundle.afterState,
+    ),
+    revisionPlusTwo: control(bundle.before, revisionAfter, bundle.beforeState, revisionAfterState),
+    receipt: control(bundle.before, receiptAfter, bundle.beforeState, bundle.afterState),
+    carrierDrift: control(bundle.before, carrierAfter, bundle.beforeState, bundle.afterState),
+    authorityDrift: control(bundle.before, authorityAfter, bundle.beforeState, authorityAfterState),
+    extraCommit: control(bundle.before, bundle.after, bundle.beforeState, extraCommitState),
+    wrongOutcome: control(bundle.before, bundle.after, bundle.beforeState, wrongOutcomeState),
+    ...absentEvidenceControls,
+  };
+};
+const trainingCanonicalControlsAreIsolated = (controls) => {
+  const expected = {
+    rawEnvelope: 'completeRawEvidence', rawProduct: 'rawProductStable',
+    splitOnlyAt: 'completeRawEvidence', legacyOnlyAt: 'completeRawEvidence',
+    rowTopLevel: 'completeRawEvidence', rowFieldOwner: 'completeRawEvidence',
+    invalidExtension: 'completeRawEvidence', unrelatedExtension: 'productCarriersStable',
+    timestamp: 'exactStampClamp', seed: 'orderedRowIdentity', order: 'orderedRowIdentity',
+    backwardAt: 'stampMonotonic', fixedPoint: 'canonicalFixedPoint',
+    unrelatedProduct: 'unrelatedLedgerStable', postMinedTimestamp: 'postRawLiveParity',
+    preMinedKey: 'preMinedCodecProjection', preMinedOrder: 'preMinedCodecProjection',
+    atlasValidRouteLoss: 'rawProductStable', atlasMetadataDrift: 'rawProductStable',
+    atlasOrderDrift: 'rawProductStable', atlasUnexpectedInvalidMutation: 'rawProductStable',
+    atlasWrongTargetScalar: 'rawProductStable', atlasUnexpectedSourceScalar: 'rawProductStable',
+    codexWorldDrift: 'rawProductStable',
+    revisionPlusTwo: 'revisionTopology', receipt: 'receiptsStable',
+    carrierDrift: 'productCarriersStable', authorityDrift: 'f4AuthorityPreserved',
+    extraCommit: 'oneSameDocumentCommit', wrongOutcome: 'oneSameDocumentCommit',
+  };
+  return Object.entries(controls).every(([name, assessment]) => (
+    isolatesNamedCheck(assessment,
+      name.startsWith('absent-') ? 'completeRawEvidence' : expected[name])
+  ));
+};
 const assessF4ReadyAuthority = ({ state, raw, token, previousToken = null }) => {
   const reasons = [];
   const persistence = state?.persistence;
@@ -1067,7 +2777,9 @@ const assessF4ReadyAuthority = ({ state, raw, token, previousToken = null }) => 
   if (persistence?.schema !== 'cf-v2-app-persistence/v1' || persistence?.ready !== true
     || persistence?.bootKind !== 'current-v5' || persistence?.hold !== null
     || persistence?.seedBootstrapPending !== false
-    || persistence?.mutationBlocked !== false) reasons.push('boot readiness');
+    || persistence?.bootRouteRepairPending !== false
+    || persistence?.mutationBlocked !== false
+    || state?.sceneResources?.pendingPersistenceWrites !== 0) reasons.push('boot readiness');
   if (typeof token !== 'string' || token.length < 16 || persistence?.documentToken !== token
     || (previousToken !== null && token === previousToken)) reasons.push('document identity');
   if (runtime?.schema !== 'cf-v2-f4-runtime/v1' || runtime?.visible !== true
@@ -1081,21 +2793,38 @@ const assessF4ReadyAuthority = ({ state, raw, token, previousToken = null }) => 
     || JSON.stringify(raw?.draws) !== JSON.stringify(runtime?.sessionDraws)) reasons.push('durable RNG parity');
   return { ok: reasons.length === 0, reasons };
 };
+const f4BootReadinessNegativeControls = (snapshot, previousToken = null) => {
+  const missingSceneResources = structuredClone(snapshot);
+  delete missingSceneResources.state.sceneResources;
+  const pendingPersistenceWrite = structuredClone(snapshot);
+  pendingPersistenceWrite.state.sceneResources.pendingPersistenceWrites = 1;
+  const assess = (control) => assessF4ReadyAuthority({ ...control, previousToken });
+  const missing = assess(missingSceneResources);
+  const pending = assess(pendingPersistenceWrite);
+  const isolated = [missing, pending].every((assessment) => assessment.ok === false
+    && canonicalJson(assessment.reasons) === canonicalJson(['boot readiness']));
+  return { missingSceneResources: missing, pendingPersistenceWrite: pending, isolated };
+};
 const assessF4PersistReload = ({ before, persisted, reloaded }) => {
   const reasons = [];
   const b = before.state.persistence.runtime, p = persisted.state.persistence.runtime;
   const r = reloaded.state.persistence.runtime;
   if (persisted.result !== true || p.revision !== b.revision + 1
+    || p.commits !== b.commits + 1
+    || persisted.state.persistence.lastOutcome !== `committed:${p.revision}`
     || persisted.raw.revision !== before.raw.revision + 1 || persisted.raw.revision !== p.revision) reasons.push('exact revision advance');
   if (p.sessionSeed !== b.sessionSeed || r.sessionSeed !== b.sessionSeed
     || persisted.raw.seed !== before.raw.seed || reloaded.raw.seed !== before.raw.seed) reasons.push('seed stability');
   if (p.sessionOrdinal !== b.sessionOrdinal || r.sessionOrdinal !== b.sessionOrdinal
     || persisted.raw.ordinal !== before.raw.ordinal || reloaded.raw.ordinal !== before.raw.ordinal) reasons.push('ordinal stability');
   if (persisted.raw.activePlayMs < before.raw.activePlayMs
-    || reloaded.raw.activePlayMs < persisted.raw.activePlayMs
     || p.activePlayMs < persisted.raw.activePlayMs || r.activePlayMs < reloaded.raw.activePlayMs) reasons.push('active-play monotonicity');
-  if (reloaded.raw.revision < persisted.raw.revision || r.revision !== reloaded.raw.revision
+  if (canonicalJson(reloaded.raw) !== canonicalJson(persisted.raw)
+    || r.revision !== persisted.raw.revision || r.commits !== 0
     || reloaded.state.persistence.bootKind !== 'current-v5'
+    || reloaded.state.persistence.bootRouteRepairPending !== false
+    || reloaded.state.persistence.lastOutcome !== null
+    || reloaded.state.sceneResources?.pendingPersistenceWrites !== 0
     || reloaded.token === persisted.token) reasons.push('reload adoption');
   return { ok: reasons.length === 0, reasons };
 };
@@ -1508,6 +3237,7 @@ try {
   };
   /* One abandoned pagehide release may retain its fenced lease until the
      10-second TTL; allow that expiry plus one intentional convergence boot. */
+  let desktopF4BootReadinessControlsRun = false;
   const waitForF4Writable = async (label, { previousToken = null, timeoutMs = 15_000 } = {}) => {
     const deadline = Date.now() + timeoutMs;
     let last = null;
@@ -1515,10 +3245,20 @@ try {
       try {
         const snapshot = await evalIn(`(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
           const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
-            state:state?{persistence:state.persistence}:null,raw,
+            state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
             token:typeof S?.documentToken==='string'?S.documentToken:null};})()`, { timeoutMs: 2_000 });
         const assessment = assessF4ReadyAuthority({ ...snapshot, previousToken });
-        if (assessment.ok) return snapshot;
+        if (assessment.ok) {
+          if (!desktopF4BootReadinessControlsRun) {
+            const controls = f4BootReadinessNegativeControls(snapshot, previousToken);
+            if (!controls.isolated) {
+              fails.push('DESKTOP F4 BOOT READINESS CONTROLS FAILED — missing scene resources or one pending persistence write stayed green/non-isolated: '
+                + JSON.stringify(controls));
+            }
+            desktopF4BootReadinessControlsRun = true;
+          }
+          return snapshot;
+        }
         last = { assessment, persistence: snapshot.state?.persistence, raw: snapshot.raw };
       } catch (error) {
         /* A stale-revision successor intentionally releases and reloads once.
@@ -2089,15 +3829,17 @@ try {
   if (preservedBlockedNav({ ...gated, mode: 'system', star: 31337 })) {
     fails.push('CHARTER GATE NAVIGATION CONTROL FAILED — a synthetic teleport stayed green');
   }
-  if (!gated.toastOn || !/development slice/i.test(gated.toastText)
-    || /shipyard|\bbuild\b|mine|fabricat/i.test(gated.toastText)) {
-    fails.push('charter block did not expose an honest current-slice reach boundary: ' + JSON.stringify(gated.toastText));
+  if (!gated.toastOn || !stageZeroCharterHintIsTruthful(gated.toastText)) {
+    fails.push('charter block did not expose the live stage-0 Engineering/Jump Drive path: ' + JSON.stringify(gated.toastText));
   }
-  const gateToastCtl = await evalIn(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML;
-    toast.textContent='Build the Jump Drive at the Shipyard'; const text=toast.textContent||'';
-    const ok=/development slice/i.test(text)&&!/shipyard|\\bbuild\\b|mine|fabricat/i.test(text);
-    toast.innerHTML=prior; return {ok,text}; })()`);
-  if (gateToastCtl.ok) fails.push('CHARTER GATE COPY CONTROL FAILED — injected Shipyard direction stayed green: ' + JSON.stringify(gateToastCtl));
+  const gateToastCtl = await evalIn(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML,current=toast.textContent||'';
+    toast.textContent='Sol is your charter for now. This development slice preserves reach but does not award the next Charter system.';
+    const stale=toast.textContent||'';toast.textContent='Sol is your current reach. Engineering can fabricate the Intergalactic Drive when its exact recipe requirements are met.';
+    const wrongDrive=toast.textContent||'';toast.innerHTML=prior;return {stale,wrongDrive,restored:(toast.textContent||'')===current}; })()`);
+  if (stageZeroCharterHintIsTruthful(gateToastCtl.stale) || stageZeroCharterHintIsTruthful(gateToastCtl.wrongDrive)
+    || !gateToastCtl.restored) {
+    fails.push('CHARTER GATE COPY CONTROL FAILED — stale/wrong-drive copy stayed truthful or failed to restore: ' + JSON.stringify(gateToastCtl));
+  }
   if (gatedState.cardOpen) await keyIn('Escape', 'Escape');
   const perf = await evalIn(`window.__CF_SLICE__.api.state().galaxyBuildMs`);
   console.log('  (galaxy rebuild: ' + (typeof perf === 'number' ? perf.toFixed(0) : '?') + 'ms)');
@@ -2280,14 +4022,15 @@ try {
   const rightGap = railGapProbe('railrgt', 'railatlas', 'railshipyard');
   const leftGap = railGapProbe('raillft', 'railcharters', 'railcodex');
 
-  /* ARC 1C SHIPYARD: exercise the real desktop right-rail route before the
-     generic gap probes. This is a read-only product leg, not an API panel
-     helper: browser mouse opens the visible rail control, the DOM is matched
-     to one canonical ShipVisualState, and browser mouse closes the 44px
-     action with zero preview ownership left behind. */
+  /* ARC 3 ENGINEERING: exercise the real desktop right-rail route before the
+     generic gap probes. Browser pointer opens the registered panel, native
+     keyboard opens every disclosure, and the independent exact catalogue
+     inventory—not the DOM's own count—judges the six research rows, five
+     groups, 62 recipes and 70 authored actions. */
   const shipyardOpenCheck = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),ship=state?.shipVisual,
     panel=document.getElementById('shipyardpanel'),opener=document.getElementById('railshipyard'),
-    close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),diag=S?.api?.shipyardDiagnostics?.(),
+    body=panel?.querySelector('[data-engineering-panel-body]'),close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),
+    diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,
     previews=panel?[...panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')]:[],preview=previews[0]||null,
     canonicalSystemIds=['jumpdrive','array','igdrive','autoext','cscoop'],canonicalHardpointIds=['array','autoext','cscoop'],
     expectedSystems=Array.isArray(ship?.installedSystemIds)?[...ship.installedSystemIds]:[],
@@ -2295,9 +4038,21 @@ try {
     hardpointKeys=ship?.hardpoints?Object.keys(ship.hardpoints):[],
     expectedHardpoints=ship?.hardpoints?canonicalHardpointIds.filter((id)=>ship.hardpoints[id]===true):[],
     domHardpoints=preview?[...preview.querySelectorAll('[data-hardpoint]')].map(node=>node.getAttribute('data-hardpoint')):[],
-    ps=panel?getComputedStyle(panel):null,os=opener?getComputedStyle(opener):null,pr=panel?.getBoundingClientRect(),
+    expectedResearch=${JSON.stringify(ENGINEERING_RESEARCH_IDS)},
+    research=[...panel.querySelectorAll('[data-research-id]')].map((row)=>({id:row.getAttribute('data-research-id'),order:Number(row.getAttribute('data-row-order'))})),
+    expectedGroups=${JSON.stringify(ENGINEERING_RECIPE_GROUPS)},
+    groups=[...panel.querySelectorAll('[data-fabrication-group]')].map((group)=>({id:group.getAttribute('data-fabrication-group'),
+      order:Number(group.getAttribute('data-group-order')),recipes:[...group.querySelectorAll(':scope > .engineering-row-list > [data-recipe-id]')]
+        .map((row)=>({id:row.getAttribute('data-recipe-id'),category:row.getAttribute('data-recipe-category'),order:Number(row.getAttribute('data-row-order'))}))})),
+    recipeIds=groups.flatMap((group)=>group.recipes.map((row)=>row.id)),expectedRecipeIds=${JSON.stringify(ENGINEERING_RECIPE_IDS)},
+    sections=[...panel.querySelectorAll('details[data-engineering-section]')],summaries=sections.map((row)=>row.querySelector(':scope > summary')).filter(Boolean),
+    actions=[...panel.querySelectorAll('button[data-engineering-action]')],
+    actionKeys=actions.map((button)=>button.getAttribute('data-engineering-action')+':'+(button.getAttribute('data-action-id')||'')),
+    expectedActionKeys=['mine:','skim:',...expectedResearch.map((id)=>'research:'+id),...expectedRecipeIds.map((id)=>'fabricate:'+id)],
+    ps=panel?getComputedStyle(panel):null,os=opener?getComputedStyle(opener):null,pr=panel?.getBoundingClientRect(),br=body?.getBoundingClientRect(),
     cr=close?.getBoundingClientRect(),hit=cr?document.elementFromPoint((cr.left+cr.right)/2,(cr.top+cr.bottom)/2):null,
-    diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+    diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+    engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','retainedDomCount','retainedPreviewCount','schema'].sort(),
     stateKey=typeof ship?.stateKey==='string'&&ship.stateKey?ship.stateKey:null,
     canonicalIds=JSON.stringify(hardpointKeys)===JSON.stringify(canonicalHardpointIds)
       &&JSON.stringify(expectedSystems)===JSON.stringify(canonicalSystemIds.filter((id)=>expectedSystems.includes(id)))
@@ -2307,23 +4062,42 @@ try {
       &&preview.getAttribute('data-provenance')===ship?.provenance
       &&JSON.stringify(domHardpoints)===JSON.stringify(expectedHardpoints)
       &&JSON.stringify(domSystems)===JSON.stringify(expectedSystems),
+    researchMatch=research.length===6&&JSON.stringify(research.map((row)=>row.id))===JSON.stringify(expectedResearch)
+      &&research.every((row,index)=>row.order===index),
+    groupsMatch=groups.length===5&&groups.every((group,index)=>group.id===expectedGroups[index]?.id&&group.order===index
+      &&JSON.stringify(group.recipes.map((row)=>row.id))===JSON.stringify(expectedGroups[index]?.recipes)
+      &&group.recipes.every((row,rowIndex)=>row.category===group.id&&row.order===rowIndex)),
+    recipeMatch=recipeIds.length===62&&new Set(recipeIds).size===62&&JSON.stringify(recipeIds)===JSON.stringify(expectedRecipeIds),
+    actionInventory=actions.length===${ENGINEERING_ACTION_CONTROL_COUNT}&&eng?.actionControlCount===${ENGINEERING_ACTION_CONTROL_COUNT}
+      &&JSON.stringify(actionKeys)===JSON.stringify(expectedActionKeys)&&actions.every((button)=>button.tagName==='BUTTON'
+        &&button.getAttribute('aria-disabled')===String(button.disabled)
+        &&button.disabled===(button.getAttribute('data-model-enabled')!=='true')),
     diagnostics=diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='open'
       &&diag?.activePreviewCount===1&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
-      &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys),
-    geometry=!!panel&&ps?.display!=='none'&&ps?.visibility!=='hidden'&&!!pr
+      &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys)
+      &&eng?.schema==='cf-v2-engineering-panel-diagnostics/v1'&&eng?.activeCount===1&&eng?.pendingWork===0
+      &&eng?.activePreviewCount===1&&eng?.retainedPreviewCount===0&&eng?.delegatedListenerCount===1
+      &&eng?.faultCount===0&&eng?.lastRequest===null&&eng?.retainedDomCount>${ENGINEERING_ACTION_CONTROL_COUNT}
+      &&JSON.stringify(engKeys)===JSON.stringify(expectedEngKeys),
+    geometry=!!panel&&ps?.display!=='none'&&ps?.visibility!=='hidden'&&!!pr&&!!br
       &&pr.left>=-1&&pr.top>=-1&&pr.right<=innerWidth+1&&pr.bottom<=innerHeight+1
-      &&!!close&&cr.width>=44&&cr.height>=44&&!!hit&&(hit===close||close.contains(hit)),
+      &&body.scrollWidth<=panel.clientWidth+1&&!!close&&cr.width>=44&&cr.height>=44&&!!hit&&(hit===close||close.contains(hit))
+      &&sections.map((row)=>row.getAttribute('data-engineering-section')).join('|')==='mining|skimming|research|fabricator'
+      &&sections.every((row)=>row.open)&&summaries.length===4
+      &&summaries.every((row)=>{const rect=row.getBoundingClientRect();return rect.width>0&&rect.height>=44&&rect.left>=br.left-1&&rect.right<=br.right+1})
+      &&actions.every((row)=>{const rect=row.getBoundingClientRect();return rect.width>0&&rect.height>=44&&rect.left>=br.left-1&&rect.right<=br.right+1}),
     openerReady=!!opener&&os?.display!=='none'&&os?.visibility!=='hidden'&&opener.getClientRects().length===1
       &&opener.getAttribute('aria-controls')==='shipyardpanel'&&opener.getAttribute('aria-expanded')==='true',
     previewA11y=previews.length===1&&preview?.getAttribute('role')==='img'
-      &&(preview?.getAttribute('aria-label')||'').trim().length>=30&&panel?.querySelectorAll('[role="img"]').length===1,
-    writerCount=panel?.querySelectorAll('button:not([data-pnx]),input,select,textarea,[contenteditable="true"]').length??-1;
-    return {ok:state?.panelOpen==='shipyard'&&truth&&diagnostics&&geometry&&openerReady&&previewA11y
-      &&writerCount===0&&document.activeElement===close,panelOpen:state?.panelOpen??null,truth,diagnostics,geometry,
-      openerReady,previewA11y,writerCount,focus:document.activeElement?.getAttribute?.('data-pnx')||document.activeElement?.id||null,
+      &&(preview?.getAttribute('aria-label')||'').trim().length>=30&&panel?.querySelectorAll('[role="img"]').length===1;
+    return {ok:state?.panelOpen==='shipyard'&&truth&&researchMatch&&groupsMatch&&recipeMatch&&actionInventory
+      &&diagnostics&&geometry&&openerReady&&previewA11y&&document.activeElement===close,
+      panelOpen:state?.panelOpen??null,truth,researchMatch,groupsMatch,recipeMatch,actionInventory,diagnostics,geometry,
+      openerReady,previewA11y,focus:document.activeElement?.getAttribute?.('data-pnx')||document.activeElement?.id||null,
       stateKey,stage:ship?.chassisStage??null,provenance:ship?.provenance??null,canonicalIds,hardpointKeys,expectedHardpoints,domHardpoints,
-      expectedSystems,domSystems,previewCount:previews.length,diag,diagKeys,expectedDiagKeys,
-      panelRect:pr?[pr.left,pr.top,pr.right,pr.bottom]:null,closeRect:cr?[cr.left,cr.top,cr.right,cr.bottom]:null};})()`;
+      expectedSystems,domSystems,previewCount:previews.length,research,groups,recipeCount:recipeIds.length,actionCount:actions.length,
+      diag,diagKeys,expectedDiagKeys,engKeys,expectedEngKeys,panelRect:pr?[pr.left,pr.top,pr.right,pr.bottom]:null,
+      bodyWidth:br?.width??null,bodyScrollWidth:body?.scrollWidth??null,closeRect:cr?[cr.left,cr.top,cr.right,cr.bottom]:null};})()`;
   await armDesktopPointerReceipt();
   const shipyardOpened = await openDesktopRailPanel('railshipyard', 'shipyard', 'SHIPYARD');
   const shipyardOpenReceipt = await takeDesktopPointerReceipt();
@@ -2333,9 +4107,38 @@ try {
       + JSON.stringify({ shipyardOpened, shipyardOpenReceipt }));
   }
   if (shipyardOpened) {
+    const toggleEngineeringDisclosure = async (id) => {
+      const before = await evalIn(`(()=>{const summary=document.querySelector('#shipyardpanel details[data-engineering-section=${JSON.stringify(id)}] > summary'),
+        details=summary?.parentElement,rect=summary?.getBoundingClientRect();window.__cfEngineeringDisclosureKeys=[];
+        window.__cfEngineeringDisclosureAbort?.abort();const controller=new AbortController();window.__cfEngineeringDisclosureAbort=controller;
+        summary?.addEventListener('keydown',(event)=>window.__cfEngineeringDisclosureKeys.push({key:event.key,code:event.code,
+          trusted:event.isTrusted===true,focusKey:summary.getAttribute('data-focus-key')}),{capture:true,signal:controller.signal});
+        summary?.focus();return {present:!!summary,open:details?.open??null,focused:document.activeElement===summary,
+          height:rect?.height||0,focusKey:summary?.getAttribute('data-focus-key')||null};})()`);
+      const key = { key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 };
+      await send('Input.dispatchKeyEvent', { type: 'keyDown', ...key, text: '\r', unmodifiedText: '\r' }, sess);
+      await send('Input.dispatchKeyEvent', { type: 'keyUp', ...key }, sess);
+      await sleep(40);
+      const after = await evalIn(`(()=>{const summary=document.querySelector('#shipyardpanel details[data-engineering-section=${JSON.stringify(id)}] > summary'),
+        details=summary?.parentElement,keys=window.__cfEngineeringDisclosureKeys||[];window.__cfEngineeringDisclosureAbort?.abort();
+        delete window.__cfEngineeringDisclosureAbort;delete window.__cfEngineeringDisclosureKeys;
+        return {open:details?.open??null,focused:document.activeElement===summary,keys};})()`);
+      return { ok: before.present && before.focused && before.height >= 44 && after.focused
+        && after.open === !before.open && after.keys.length === 1 && after.keys[0]?.trusted === true
+        && after.keys[0]?.key === 'Enter' && after.keys[0]?.code === 'Enter'
+        && after.keys[0]?.focusKey === before.focusKey, before, after };
+    };
+    const shipyardDisclosureReceipts = [];
+    for (const id of ['mining', 'mining', 'skimming', 'research', 'fabricator']) {
+      shipyardDisclosureReceipts.push({ id, ...await toggleEngineeringDisclosure(id) });
+    }
+    await evalIn(`document.querySelector('#shipyardpanel > [data-pnx="shipyard"]')?.focus()`);
     const shipyardOpen = await evalIn(shipyardOpenCheck);
+    shipyardOpen.keyboardDisclosures = shipyardDisclosureReceipts;
+    shipyardOpen.ok = shipyardOpen.ok && shipyardDisclosureReceipts.length === 5
+      && shipyardDisclosureReceipts.every((receipt) => receipt.ok);
     if (!shipyardOpen.ok) {
-      fails.push('SHIPYARD: open read-only chassis/hardpoint/system state or diagnostics disagreed: '
+      fails.push('ENGINEERING: native disclosures, exact research/recipe/action inventory, ShipVisual state, geometry, or diagnostics disagreed: '
         + JSON.stringify(shipyardOpen));
     }
     const duplicateShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
@@ -2348,14 +4151,28 @@ try {
     }
     const parityShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
       preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),priorKey=preview?.getAttribute('data-state-key'),
-      fakeHardpoint=document.createElementNS('http://www.w3.org/2000/svg','g'),fakeSystem=document.createElement('div');
+      fakeHardpoint=document.createElementNS('http://www.w3.org/2000/svg','g'),fakeSystem=document.createElement('div'),
+      research=panel?.querySelector('[data-engineering-research-rows]'),first=research?.firstElementChild,second=first?.nextElementSibling,
+      recipe=panel?.querySelector('[data-recipe-id]'),duplicateRecipe=recipe?.cloneNode(true),
+      action=panel?.querySelector('button[data-engineering-action]'),priorDisabled=action?.disabled??null,
+      priorAriaDisabled=action?.getAttribute('aria-disabled')??null;
       preview?.setAttribute('data-state-key','ship-v1:tampered');const key=${shipyardOpenCheck};
       if(priorKey===null)preview?.removeAttribute('data-state-key');else preview?.setAttribute('data-state-key',priorKey);
       fakeHardpoint.setAttribute('data-hardpoint','autoext');preview?.appendChild(fakeHardpoint);const hardpoint=${shipyardOpenCheck};fakeHardpoint.remove();
       fakeSystem.setAttribute('data-shipyard-system','cscoop');panel?.appendChild(fakeSystem);const system=${shipyardOpenCheck};fakeSystem.remove();
-      return {ok:key.ok===false&&hardpoint.ok===false&&system.ok===false&&${shipyardOpenCheck}.ok,key,hardpoint,system};})()`);
+      if(first&&second)research.insertBefore(second,first);const researchOrder=${shipyardOpenCheck};
+      if(first&&second)research.insertBefore(first,second);recipe?.parentNode?.appendChild(duplicateRecipe);
+      const recipeDuplication=${shipyardOpenCheck};duplicateRecipe?.remove();if(action){action.disabled=!action.disabled;
+        action.setAttribute('aria-disabled',String(action.disabled));}const actionParity=${shipyardOpenCheck};
+      if(action&&priorDisabled!==null){action.disabled=priorDisabled;if(priorAriaDisabled===null)action.removeAttribute('aria-disabled');
+        else action.setAttribute('aria-disabled',priorAriaDisabled);}
+      return {ok:key.ok===false&&hardpoint.ok===false&&system.ok===false
+        &&researchOrder.ok===false&&researchOrder.researchMatch===false
+        &&recipeDuplication.ok===false&&recipeDuplication.recipeMatch===false
+        &&actionParity.ok===false&&actionParity.actionInventory===false&&${shipyardOpenCheck}.ok,
+        key,hardpoint,system,researchOrder,recipeDuplication,actionParity};})()`);
     if (!parityShipyardCtl.ok) {
-      fails.push('SHIPYARD STATE CONTROL FAILED — state-key/hardpoint/system mismatch stayed green or failed to restore: '
+      fails.push('ENGINEERING STATE CONTROL FAILED — state/research/recipe mismatch stayed green or failed to restore: '
         + JSON.stringify(parityShipyardCtl));
     }
     const openerShipyardCtl = await evalIn(`(()=>{const opener=document.getElementById('railshipyard'),
@@ -2370,15 +4187,23 @@ try {
     }
     const geometryShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
       close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),opener=document.getElementById('railshipyard'),
-      priorStyle=close?.getAttribute('style')??null;close?.style.setProperty('min-width','0','important');
+      summary=panel?.querySelector('details[data-engineering-section] > summary'),action=panel?.querySelector('button[data-engineering-action]'),
+      priorStyle=close?.getAttribute('style')??null,priorSummary=summary?.getAttribute('style')??null,
+      priorAction=action?.getAttribute('style')??null;close?.style.setProperty('min-width','0','important');
       close?.style.setProperty('min-height','0','important');close?.style.setProperty('width','20px','important');
       close?.style.setProperty('height','20px','important');opener?.focus();const broken=${shipyardOpenCheck};
       if(priorStyle===null)close?.removeAttribute('style');else close?.setAttribute('style',priorStyle);close?.focus();
+      summary?.style.setProperty('min-height','0','important');summary?.style.setProperty('height','20px','important');
+      const summaryFloor=${shipyardOpenCheck};if(priorSummary===null)summary?.removeAttribute('style');else summary?.setAttribute('style',priorSummary);
+      action?.style.setProperty('min-height','0','important');action?.style.setProperty('height','20px','important');
+      const actionFloor=${shipyardOpenCheck};if(priorAction===null)action?.removeAttribute('style');else action?.setAttribute('style',priorAction);close?.focus();
       window.__cfShipyardSmokeClosedControl=panel?.querySelector('[data-cf-shipyard-preview="v1"]')?.cloneNode(true)||null;
-      return {ok:broken.ok===false&&broken.geometry===false&&${shipyardOpenCheck}.ok,broken,
-        retainedReady:!!window.__cfShipyardSmokeClosedControl};})()`);
+      window.__cfEngineeringSmokeClosedControl=panel?.querySelector('[data-engineering-panel-body]')?.firstElementChild?.cloneNode(true)||null;
+      return {ok:broken.ok===false&&broken.geometry===false&&summaryFloor.ok===false&&summaryFloor.geometry===false
+          &&actionFloor.ok===false&&actionFloor.geometry===false&&${shipyardOpenCheck}.ok,broken,summaryFloor,actionFloor,
+        retainedReady:!!window.__cfShipyardSmokeClosedControl&&!!window.__cfEngineeringSmokeClosedControl};})()`);
     if (!geometryShipyardCtl.ok || !geometryShipyardCtl.retainedReady) {
-      fails.push('SHIPYARD GEOMETRY/FOCUS CONTROL FAILED — undersized Close/wrong focus stayed green or control clone was absent: '
+      fails.push('ENGINEERING GEOMETRY/FOCUS CONTROL FAILED — undersized Close/summary/action or wrong focus stayed green: '
         + JSON.stringify(geometryShipyardCtl));
     }
 
@@ -2390,15 +4215,20 @@ try {
     if (shipyardClosePoint.ok) await clickDesktopPoint(shipyardClosePoint);
     const shipyardCloseReceipt = await takeDesktopPointerReceipt();
     const shipyardClosedCheck = `(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
-      opener=document.getElementById('railshipyard'),diag=S?.api?.shipyardDiagnostics?.(),style=panel?getComputedStyle(panel):null,
+      opener=document.getElementById('railshipyard'),diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,
+      body=panel?.querySelector('[data-engineering-panel-body]'),style=panel?getComputedStyle(panel):null,
       previews=panel?.querySelectorAll('[data-cf-shipyard-preview="v1"]').length??-1,
-      keys=diag?Object.keys(diag).sort():[],expected=['activePreviewCount','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort();
+      keys=diag?Object.keys(diag).sort():[],expected=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort();
       return {ok:S?.api?.state?.().panelOpen===null&&style?.display==='none'&&previews===0
         &&diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='closed'&&diag?.stateKey===null
         &&diag?.activePreviewCount===0&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
+        &&eng?.schema==='cf-v2-engineering-panel-diagnostics/v1'&&eng?.activeCount===0&&eng?.retainedDomCount===0
+        &&eng?.pendingWork===0&&eng?.actionControlCount===0&&eng?.activePreviewCount===0&&eng?.retainedPreviewCount===0
+        &&eng?.delegatedListenerCount===1&&eng?.faultCount===0&&body?.childElementCount===0
         &&JSON.stringify(keys)===JSON.stringify(expected)&&opener?.getAttribute('aria-expanded')==='false'
         &&document.activeElement===opener,panelOpen:S?.api?.state?.().panelOpen??null,panelDisplay:style?.display||null,
-        previews,diag,keys,expected,expanded:opener?.getAttribute('aria-expanded')||null,focus:document.activeElement?.id||null};})()`;
+        previews,diag,keys,expected,bodyChildren:body?.childElementCount??-1,
+        expanded:opener?.getAttribute('aria-expanded')||null,focus:document.activeElement?.id||null};})()`;
     const shipyardClosed = await evalIn(shipyardClosedCheck);
     if (!shipyardClosePoint.ok || shipyardCloseReceipt?.tag !== 'BUTTON'
       || shipyardCloseReceipt?.pointerType !== 'mouse' || !shipyardClosed.ok) {
@@ -2406,11 +4236,15 @@ try {
         + JSON.stringify({ shipyardClosePoint, shipyardCloseReceipt, shipyardClosed }));
     }
     const retainedShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
-      retained=window.__cfShipyardSmokeClosedControl||null;if(retained)panel?.appendChild(retained);
-      const broken=${shipyardClosedCheck};retained?.remove();delete window.__cfShipyardSmokeClosedControl;
-      return {ok:broken.ok===false&&broken.previews===1&&${shipyardClosedCheck}.ok,broken};})()`);
+      body=panel?.querySelector('[data-engineering-panel-body]'),retained=window.__cfShipyardSmokeClosedControl||null,
+      retainedDom=window.__cfEngineeringSmokeClosedControl||null;if(retained)panel?.appendChild(retained);
+      const previewBroken=${shipyardClosedCheck};retained?.remove();if(retainedDom)body?.appendChild(retainedDom);
+      const domBroken=${shipyardClosedCheck};retainedDom?.remove();delete window.__cfShipyardSmokeClosedControl;
+      delete window.__cfEngineeringSmokeClosedControl;
+      return {ok:previewBroken.ok===false&&previewBroken.previews===1&&domBroken.ok===false
+        &&domBroken.bodyChildren===1&&${shipyardClosedCheck}.ok,previewBroken,domBroken};})()`);
     if (!retainedShipyardCtl.ok) {
-      fails.push('SHIPYARD CLOSE CONTROL FAILED — retained preview stayed green or failed to restore: '
+      fails.push('ENGINEERING CLOSE CONTROL FAILED — retained preview/DOM stayed green or failed to restore: '
         + JSON.stringify(retainedShipyardCtl));
     }
   }
@@ -2604,9 +4438,89 @@ try {
   const hpGuide = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='HP';
     input.dispatchEvent(new Event('input',{bubbles:true})); document.querySelector('[data-guide-topic="hp"]')?.click();
     const p=document.getElementById('guidepanel');return {status:p?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status'),text:p?.textContent||''};})()`);
-  if (hpGuide.status !== 'partial' || !/read-only expedition fact/i.test(hpGuide.text)
-    || !/imported\/current HP/i.test(hpGuide.text) || /Not yet available in v2/.test(hpGuide.text)) {
-    fails.push('GUIDE HP boundary did not render the live read-only meter honestly: ' + JSON.stringify(hpGuide));
+  if (hpGuide.status !== 'partial' || !/costs exactly 3 HP/i.test(hpGuide.text)
+    || !/HP is 4 or lower/i.test(hpGuide.text) || !/only current HP writer/i.test(hpGuide.text)
+    || /read-only expedition fact|Not yet available in v2/.test(hpGuide.text)) {
+    fails.push('GUIDE HP boundary did not render the live remnant-skim writer honestly: ' + JSON.stringify(hpGuide));
+  }
+  const arc3GuideSpecs = [
+    { id: 'survey', title: 'Survey cards', missingAnchor: 'selection is navigation and inspection', required: [
+      'selection is navigation and inspection', 'does not spend a resource, discover life, capture a species, or authorize extraction',
+      'separate grounded mineral reveal and its finite Mine action', 'not itself a mining receipt',
+      'current Survey card does not yet paint those orbital mineral rows',
+    ], contradictions: ['Survey authorizes mining and captures a species.'] },
+    { id: 'mining', title: 'Mining & the Cargo hold', missingAnchor: 'exact pulls remaining', required: [
+      'lifeless, non-Earth world', 'exact pulls remaining', 'reveal is inspection only', 'separate durable action',
+      'ordinary, rich-strike, cosmic, and exceptional results into Cargo', 'Worked out',
+      'active play', 'wall clock creates no income',
+    ], contradictions: ['Living worlds can be mined, and the wall clock accrues new loads offline.'] },
+    { id: 'skimming', title: 'Stellar skimming', missingAnchor: 'finite passes remaining', required: [
+      'fitted Jump Drive is required', 'finite passes remaining', 'next HP damage',
+      'unguarded remnant costs exactly 3 HP', 'HP of 4 or lower blocks the unsafe attempt',
+      'does not bank a mining Charter goal', 'no wall-clock recharge',
+    ], contradictions: ['A remnant skim can never harm HP, and corona passes are unlimited.'] },
+    { id: 'stardust', title: 'Stardust', missingAnchor: 'No current v2 action earns Stardust', required: [
+      'preserves its imported/current Stardust', 'Deep Scanners purchase or eligible fixed Fabricator recipe spends its stated Stardust',
+      'same durable transaction as the result', 'No current v2 action earns Stardust',
+    ], contradictions: ['Survey earns Stardust on every world.'] },
+    { id: 'research', title: 'Research & ships', missingAnchor: 'Research Bench lists exactly six canonical rows', required: [
+      'Engineering & Shipyard', 'Research Bench lists exactly six canonical rows', 'Deep Scanners is the only current purchase',
+      'current Survey card does not yet render those orbital rows', 'other five', 'visible but disabled',
+      'Fabricator groups all 62 fixed recipes', 'built drive or Array changes the actual ship and reach',
+      'Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
+      'Only one Engineering action can be pending', 'receipt-bearing transaction commits',
+    ], contradictions: [
+      'All six research rows can be purchased, and Research banks Charter fabrication credit.',
+      'Fully exceptional slotted crafting is now available.', 'Fully-exceptional slotted craft is now available.',
+      'Authored affixes/drawbacks are now available.',
+      'Upgrades are now available.', 'Item upgrades are now available.', 'Sockets are now available.', 'Vendors are now available.',
+    ] },
+    { id: 'crafting', title: 'The Fabricator & gear', missingAnchor: 'Engineering & Shipyard → Fabricator', required: [
+      'Inventory is a separate board', 'stable item instance', 'Equip, Unequip, Salvage, and pending-reward claim',
+      'Engineering & Shipyard → Fabricator', 'lists all 62 fixed recipes', 'settle only rows whose output has a connected effect',
+      'Outputs with dormant effects', 'fully exceptional slotted crafting', 'authored affixes/drawbacks',
+      'item upgrades, sockets, and vendors remain unavailable',
+    ], contradictions: [
+      'Fully exceptional slotted crafting is now available.', 'Fully-exceptional slotted craft is now available.',
+      'Authored affixes/drawbacks are now available.',
+      'Upgrades are now available.', 'Item upgrades are now available.', 'Sockets are now available.', 'Vendors are now available.',
+    ] },
+    { id: 'achievements', title: 'Achievements', missingAnchor: 'Arc 3 counters are not yet listed on the Records board', required: [
+      'Records board preserves and displays imported exploration totals, Stardust earned, and Journal entries',
+      'First landfalls visibly update the worlds-landed total',
+      'Mine, Skim, and fixed Fabricator settlements also preserve their compatible expedition counters',
+      'Arc 3 counters are not yet listed on the Records board', 'live Journal writing is not connected',
+    ], contradictions: [
+      'The Records board now displays the mining counter.', 'The Records board now lists the skimming total.',
+      'The visible Records rows now include the Fabricator counter.',
+    ] },
+  ];
+  const renderedArc3GuideCheck = (spec) => `(()=>{const article=document.querySelector('#guidepanel .guide-topic'),
+    text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
+    status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
+    required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),
+    contradictory=/Survey authorizes mining|captures a species|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|Survey earns Stardust|All six research rows can be purchased|Research banks Charter fabrication credit|fully[- ]?exceptional slotted craft(?:ing)? is now available|authored affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
+    return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
+      title,status,missing,contradictory,text};})()`;
+  for (const spec of arc3GuideSpecs) {
+    const rendered = await evalIn(`(()=>{const input=document.getElementById('guidesearch');input.value=${JSON.stringify(spec.id)};
+      input.dispatchEvent(new Event('input',{bubbles:true}));document.querySelector('[data-guide-topic=${JSON.stringify(spec.id)}]')?.click();
+      return ${renderedArc3GuideCheck(spec)};})()`);
+    const control = await evalIn(`(()=>{const article=document.querySelector('#guidepanel .guide-topic'),marker=document.createElement('p'),
+      walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,anchor=${JSON.stringify(spec.missingAnchor)};
+      let textNode=null,node=null;while(walker&&(node=walker.nextNode())){if((node.nodeValue||'').includes(anchor)){textNode=node;break;}}
+      const prior=textNode?.nodeValue||'';if(textNode)textNode.nodeValue=prior.replace(anchor,'required Arc 3 outcome removed');
+      const missing=${renderedArc3GuideCheck(spec)};if(textNode)textNode.nodeValue=prior;
+      const contradictions=[];for(const copy of ${JSON.stringify(spec.contradictions)}){marker.textContent=copy;article?.appendChild(marker);
+        const result=${renderedArc3GuideCheck(spec)};marker.remove();contradictions.push({copy,result});}
+      const restored=${renderedArc3GuideCheck(spec)};return {textNodeFound:!!textNode,missing,contradictions,restored};})()`);
+    if (!rendered.ok) fails.push(`GUIDE Arc 3 ${spec.id} truth did not render: ` + JSON.stringify(rendered));
+    if (!control.textNodeFound || control.missing?.ok || !control.missing?.missing?.includes(spec.missingAnchor)
+      || control.contradictions?.length !== spec.contradictions.length
+      || control.contradictions.some((row) => row.result?.ok || !row.result?.contradictory) || !control.restored?.ok) {
+      fails.push(`GUIDE ARC 3 ${spec.id.toUpperCase()} CONTROL FAILED — missing/contradictory player copy stayed current or failed to restore: `
+        + JSON.stringify(control));
+    }
   }
   const compendiumGuideSpecs = [
     { id: 'kingdoms', title: 'The four kingdoms', required: [
@@ -2670,16 +4584,25 @@ try {
     fails.push('GUIDE COMPENDIUM COPY CONTROL FAILED — pre-Arc-1A or contradictory art ownership stayed current: '
       + JSON.stringify({ kingdomsGuideCtl, specimenGuideCtl }));
   }
-  /* Charter recovery changes player-facing Guide truth, so prove both affected
-     topics render the action contract. Pure content lookup cannot establish
-     that fillGuide actually placed the revised body in the live panel. */
+  /* Arc 3 changes player-facing Charter truth, so prove both affected topics
+     render the live writers and owned-reach boundary. Pure content lookup
+     cannot establish that fillGuide actually placed the revised body. */
   const renderedCharterGuideCheck = (expectedTitle) => `(()=>{ const panel=document.getElementById('guidepanel'),article=panel?.querySelector('.guide-topic'),
     text=article?.textContent||'',title=article?.querySelector('h4')?.textContent?.trim()||'',
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null;
-    const stale=/only Charter outcome this slice writes|requires (?:a )?(?:real )?(?:newly )?banked landfall|only after a newly changed/i.test(text);
-    return {ok:title.includes(${JSON.stringify(expectedTitle)})&&status==='partial'&&/only new Charter goal progress/i.test(text)&&/successful Land action/i.test(text)
-      &&/every consecutive imported chapter/i.test(text)&&/saved reach stage/i.test(text)&&/invents no/i.test(text)&&!stale,
-      title,status,stale,text};})()`;
+    const unnegated=${hasUnnegatedSentenceClaim};
+    const required=[/first landfalls/i,/successful Mine actions/i,/successful fixed Fabricator outputs/i,
+      /(?:Each|One) Mine press banks one mining-goal tick/i,/Research and Skim (?:do not counterfeit mining or fabrication credit|bank neither)/i,
+      /(?:Fabrication banks only the exact matching|recipes bank only their matching fabrication goals)/i,
+      /Chapter 1 (?:can now be completed|is now completable)/i,/Jump Drive/i,/Long-Range Array/i,/Intergalactic Drive/i,
+      /canonical progress and owned reach/i,/(?:invents? no|without invented) goals?/i,
+      /bioscan[^.]*conquest[^.]*breeding[^.]*unavailable/i,/Saved Prime Signatures separately/i],
+      missing=required.map((pattern)=>pattern.source).filter((_,index)=>!required[index].test(text)),
+      stale=/only Charter outcome this slice writes|only new Charter goal progress|requires (?:a )?(?:real )?(?:newly )?banked landfall|only after a newly changed/i.test(text),
+      contradictory=unnegated(text,/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i)
+        ||unnegated(text,/chapter (?:numbers?|progress)[^.!?]{0,64}(?:alone )?(?:grants?|creates?|mints?)[^.!?]{0,48}(?:drive|system|reach)/i);
+    return {ok:title.includes(${JSON.stringify(expectedTitle)})&&status==='partial'&&missing.length===0&&!stale&&!contradictory,
+      title,status,missing,stale,contradictory,text};})()`;
   const renderCharterGuideTopic = async (topic, query, expectedTitle) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
     input.value=${JSON.stringify(query)};input.dispatchEvent(new Event('input',{bubbles:true}));
     document.querySelector('[data-guide-topic=${JSON.stringify(topic)}]')?.click();return ${renderedCharterGuideCheck(expectedTitle)};})()`);
@@ -2694,12 +4617,59 @@ try {
     fails.push('GUIDE Charter/Ascent recovery contract did not render in both live topics: '
       + JSON.stringify({ chartersGuide, ascentGuide }));
   }
-  const charterGuideStaleCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
-    marker=document.createElement('p');marker.textContent='First landfall banks live; it is the only Charter outcome this slice writes.';
-    article?.appendChild(marker);const result=${renderedCharterGuideCheck('Chapters')};marker.remove();return result;})()`);
-  if (charterGuideStaleCtl.ok || !charterGuideStaleCtl.stale) {
-    fails.push('GUIDE CHARTER COPY CONTROL FAILED — injected pre-recovery wording stayed current: '
-      + JSON.stringify(charterGuideStaleCtl));
+  const charterGuideCopyCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    staleMarker=document.createElement('p'),contradictionMarker=document.createElement('p');
+    staleMarker.textContent='First landfall banks live; it is the only Charter outcome this slice writes.';
+    article?.appendChild(staleMarker);const stale=${renderedCharterGuideCheck('Chapters')};staleMarker.remove();
+    contradictionMarker.textContent='Research banks a fabrication Charter goal, and chapter progress alone grants the next drive.';
+    article?.appendChild(contradictionMarker);const contradiction=${renderedCharterGuideCheck('Chapters')};contradictionMarker.remove();
+    const restored=${renderedCharterGuideCheck('Chapters')};return {stale,contradiction,restored};})()`);
+  if (charterGuideCopyCtl.stale?.ok || !charterGuideCopyCtl.stale?.stale
+    || charterGuideCopyCtl.contradiction?.ok || !charterGuideCopyCtl.contradiction?.contradictory
+    || !charterGuideCopyCtl.restored?.ok) {
+    fails.push('GUIDE CHARTER COPY CONTROL FAILED — stale/contradictory Arc 3 wording stayed current or failed to restore: '
+      + JSON.stringify(charterGuideCopyCtl));
+  }
+  /* Historical-sequence control: Ascent is still active here and deliberately
+     has no `never mint` text. A mutation that forgets to render Charters must
+     remain visibly red instead of becoming a vacuous polarity pass. */
+  const charterGuidePolaritySequenceCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null;let node=null;
+    while(walker&&(node=walker.nextNode())&&!node.nodeValue.includes('never mint')){}
+    return {targetFound:!!node,wrongTopic:${renderedCharterGuideCheck('Expedition Charters')}};})()`);
+  const charterGuidePolarityTarget = await renderCharterGuideTopic(
+    'charters', 'charters', 'Expedition Charters',
+  );
+  const charterGuidePolarityCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null;let node=null;
+    while(walker&&(node=walker.nextNode())&&!node.nodeValue.includes('never mint')){}
+    if(!node)return {changed:false,exactRestore:false,result:null,clause:null,restored:null};const prior=node.nodeValue,
+      beforeHtml=article.innerHTML,matches=prior.match(/never mint/g)||[];node.nodeValue=prior.replace('never mint','mint');
+    const changed=matches.length===1&&node.nodeValue!==prior,result=${renderedCharterGuideCheck('Expedition Charters')};
+    node.nodeValue=prior;const marker=document.createElement('p');
+    marker.textContent='Chapter progress does not merely record milestones; it grants system reach.';article.appendChild(marker);
+    const clause=${renderedCharterGuideCheck('Expedition Charters')};marker.remove();
+    const restored=${renderedCharterGuideCheck('Expedition Charters')};
+    return {changed,exactRestore:node.nodeValue===prior&&article.innerHTML===beforeHtml,result,clause,restored};})()`);
+  const chartersGuideAfterPolarity = await renderCharterGuideTopic('charters', 'charters', 'Expedition Charters');
+  const ascentGuideAfterPolarity = await renderCharterGuideTopic('ascent', 'ascent', 'Chapters');
+  if (charterGuidePolaritySequenceCtl.targetFound
+    || charterGuidePolaritySequenceCtl.wrongTopic?.ok !== false
+    || !/Chapters/.test(charterGuidePolaritySequenceCtl.wrongTopic?.title ?? '')
+    || !charterGuidePolarityTarget.ok
+    || !charterGuidePolarityCtl.changed || !charterGuidePolarityCtl.exactRestore
+    || charterGuidePolarityCtl.result?.ok !== false
+    || !Array.isArray(charterGuidePolarityCtl.result?.missing)
+    || charterGuidePolarityCtl.result.missing.length !== 0
+    || charterGuidePolarityCtl.result?.stale !== false
+    || charterGuidePolarityCtl.result?.contradictory !== true
+    || charterGuidePolarityCtl.clause?.ok !== false
+    || charterGuidePolarityCtl.clause?.contradictory !== true
+    || charterGuidePolarityCtl.restored?.ok !== true
+    || !chartersGuideAfterPolarity.ok || !ascentGuideAfterPolarity.ok) {
+    fails.push('GUIDE CHARTER POLARITY CONTROL FAILED — never-mint/semicolon-claim polarity or exact two-topic restore was not independently enforced: '
+      + JSON.stringify({ charterGuidePolaritySequenceCtl, charterGuidePolarityTarget,
+        charterGuidePolarityCtl, chartersGuideAfterPolarity, ascentGuideAfterPolarity }));
   }
   const renderedTrainingRestoreGuideCheck = (expectedTitle) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
     text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
@@ -2779,6 +4749,7 @@ try {
     const headings=article?[...article.querySelectorAll('h5')].map((row)=>row.textContent?.trim()||''):[];
     const bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((row)=>row.textContent?.trim()||'');
     const text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),title=article?.querySelector('[data-guide-heading]')?.textContent||'';
+    const unnegated=${hasUnnegatedSentenceClaim};
     const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
       recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
       training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
@@ -2786,7 +4757,7 @@ try {
       workspace=bulletNodes.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
       coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
       worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
-      shipyard=bulletNodes.find((item)=>/THE SHIPYARD READS CAPABILITY, NOT WISHES/.test(item.textContent||'')),
+      shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
       hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
       headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
       firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),artHeading=headingFor(art),
@@ -2836,18 +4807,44 @@ try {
       workerContract=headingFor(worker)==='Under the Hood'
         &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
         &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback'),
+      shipyardContradiction=/all six Research rows can (?:currently )?be purchased/i.test(shipyardText)
+        ||/current Survey card (?:now )?(?:renders?|paints?|shows?)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
+        ||/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i.test(shipyardText)
+        ||/(?:Capture|biosphere discovery)[^.!?]{0,48}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+        ||unnegated(shipyardText,/(?:reward|cost|Charter tick|optimistic panel change)[^.!?]{0,80}publishes? before[^.!?]{0,48}(?:transaction )?commit/i)
+        ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+        ||/authored affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+        ||/(?:item )?upgrades?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+        ||/sockets?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+        ||/vendors?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText),
       shipyardContract=shipyardHeading==='New Features & Systems'
-        &&shipyardText.includes('same canonical saved reach used by travel')
-        &&shipyardText.includes('shows only actually owned systems and hardpoints')
-        &&shipyardText.includes('legacy charter refit that never names or draws the missing drive')
-        &&shipyardText.includes('fabrication, Research Bench purchases, and upgrades remain unavailable'),
+        &&shipyardText.includes('finite grounded Mine and Jump-gated Skim actions')
+        &&shipyardText.includes('exactly six Research rows')&&shipyardText.includes('all 62 fixed Fabricator recipes')
+        &&shipyardText.includes('Only Deep Scanners can currently be purchased')
+        &&shipyardText.includes('current Survey card does not yet render those mineral rows')
+        &&shipyardText.includes('Fabrication enables only outputs with connected effects')
+        &&shipyardText.includes('exact cost, prerequisite, revision, and capacity headroom')
+        &&shipyardText.includes('Fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
+        &&shipyardText.includes('Built permanent systems change the real ship and star reach')
+        &&shipyardText.includes('Remnant skim damage is previewed before it can spend HP')
+        &&shipyardText.includes('Engineering may spend preserved Stardust but cannot earn it')
+        &&shipyardText.includes('no reward, cost, Charter tick, or optimistic panel change publishes before the one receipt-bearing transaction commits')
+        &&shipyardText.includes('Capture and biosphere discovery remain unavailable')&&!shipyardContradiction,
       hdSurfaceContract=hdSurfaceHeading==='Under the Hood'
         &&hdSurfaceText.includes('named HD surface-planet texture attachment')
         &&hdSurfaceText.includes('exact surface generation and planet identity')
         &&hdSurfaceText.includes('retains the displayed predecessor until an acquired successor publishes')
         &&hdSurfaceText.includes('rejects stale work')&&hdSurfaceText.includes('suppresses same-texture swaps')
         &&hdSurfaceText.includes('cancels and releases its timer and leases at the owning scene boundary');
-    const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
+    const overclaim=/all six Research rows[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:bought|purchased|playable|available|live)/i.test(text)
+      ||/all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:actionable|playable|available|live)/i.test(text)
+      ||/(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
+      ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
+      ||/authored affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/(?:Capture|biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
     return {title,identity:title.includes('v2.0 · A New Foundation'),
@@ -2864,8 +4861,8 @@ try {
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
       charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
-      workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,hdSurfaceHeading,hdSurfaceContract,
-      honest:!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
+      workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,hdSurfaceHeading,hdSurfaceContract,overclaim,
+      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
   const releaseDraft = await evalIn(releaseDraftCheck);
@@ -2890,12 +4887,30 @@ try {
       + JSON.stringify(releaseInventoryCtl));
   }
   const releaseShipyardCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
-    .find((item)=>/THE SHIPYARD READS CAPABILITY, NOT WISHES/.test(item.textContent||''));
-    if(!row)return {complete:true,shipyardContract:true,error:'missing Shipyard release row'};const prior=row.textContent;
-    row.textContent=prior.replace('same canonical saved reach used by travel','Shipyard state authority removed');
-    const result=${releaseDraftCheck};row.textContent=prior;return {...result,restored:${releaseDraftCheck}.shipyardContract===true}; })()`);
-  if (releaseShipyardCopyCtl.complete || releaseShipyardCopyCtl.shipyardContract || !releaseShipyardCopyCtl.restored) {
-    fails.push('GUIDE RELEASE SHIPYARD CONTROL FAILED — removing canonical state authority stayed complete or failed to restore: '
+    .find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||''));
+    if(!row)return {missing:{complete:true,shipyardContract:true},contradictions:[],restored:false,error:'missing Engineering release row'};
+    const prior=row.textContent;
+    row.textContent=prior.replace('Only Deep Scanners can currently be purchased','Research purchase boundary removed');
+    const missing=${releaseDraftCheck};
+    row.textContent=prior.replace('and no reward, cost, Charter tick, or optimistic panel change publishes before',
+      'and reward, cost, Charter tick, or optimistic panel change publishes before');
+    const publicationChanged=row.textContent!==prior,publicationPolarity=${releaseDraftCheck};
+    const claims=['All six Research rows can currently be purchased.','Fully exceptional slotted crafting is now available.',
+      'Fully-exceptional slotted craft is now available.',
+      'Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.',
+      'Sockets are now available.','Vendors are now available.'],contradictions=[];
+    for(const copy of claims){row.textContent=prior+' '+copy;const result=${releaseDraftCheck};contradictions.push({copy,result});}
+    row.textContent=prior;const restored=${releaseDraftCheck};return {missing,publicationChanged,publicationPolarity,contradictions,
+      restored:restored.shipyardContract===true&&restored.honest===true}; })()`);
+  if (releaseShipyardCopyCtl.missing?.complete || releaseShipyardCopyCtl.missing?.shipyardContract
+    || !releaseShipyardCopyCtl.publicationChanged || releaseShipyardCopyCtl.publicationPolarity?.complete !== false
+    || releaseShipyardCopyCtl.publicationPolarity?.shipyardContract !== false
+    || releaseShipyardCopyCtl.publicationPolarity?.honest !== false
+    || releaseShipyardCopyCtl.publicationPolarity?.shipyardContradiction !== true
+    || releaseShipyardCopyCtl.contradictions?.length !== 8
+    || releaseShipyardCopyCtl.contradictions.some((row) => row.result?.complete || row.result?.honest
+      || !row.result?.shipyardContradiction) || !releaseShipyardCopyCtl.restored) {
+    fails.push('GUIDE RELEASE ENGINEERING CONTROL FAILED — missing/contradictory Arc 3 truth stayed complete or failed to restore: '
       + JSON.stringify(releaseShipyardCopyCtl));
   }
   const releaseHdSurfaceCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
@@ -3049,10 +5064,23 @@ try {
     fails.push('GUIDE RELEASE CONTROL FAILED — mutating the v2.0 punctuation preserved exact identity: ' + JSON.stringify(releaseVersionCtl));
   }
   const releaseOverclaimCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][1];
-    if(!row)return {honest:true,error:'missing overclaim control row'};const prior=row.textContent;row.textContent='Mining is now playable.';
-    const result=${releaseDraftCheck};row.textContent=prior;return result; })()`);
-  if (releaseOverclaimCtl.honest) {
-    fails.push('GUIDE RELEASE CONTROL FAILED — an injected unported-feature claim stayed honest: ' + JSON.stringify(releaseOverclaimCtl));
+    if(!row)return {truthful:[],unavailable:[],restored:false,error:'missing overclaim control row'};const prior=row.textContent,
+      truthfulClaims=['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Exploration audio is now live.'],
+      unavailableClaims=['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
+        'Disconnected Fabricator outputs are now playable.','Fully-exceptional slotted craft is now playable.',
+        'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Item upgrades are now live.',
+        'Sockets are now available.','Vendors are now live.','Capture is now playable.','Discover Life is now playable.',
+        'Breeding is now playable.','Creature combat is now playable.'],truthful=[],unavailable=[];
+    for(const copy of truthfulClaims){row.textContent=prior+' '+copy;truthful.push({copy,result:${releaseDraftCheck}});}
+    for(const copy of unavailableClaims){row.textContent=prior+' '+copy;unavailable.push({copy,result:${releaseDraftCheck}});}
+    row.textContent=prior;const restored=${releaseDraftCheck};return {truthful,unavailable,restored}; })()`);
+  if (releaseOverclaimCtl.truthful?.length !== 3
+    || releaseOverclaimCtl.truthful.some((row) => !row.result?.complete || !row.result?.honest || row.result?.overclaim)
+    || releaseOverclaimCtl.unavailable?.length !== 13
+    || releaseOverclaimCtl.unavailable.some((row) => !row.result?.complete || row.result?.honest || !row.result?.overclaim)
+    || !releaseOverclaimCtl.restored?.complete || !releaseOverclaimCtl.restored?.honest) {
+    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — live Mining/fixed crafting went red, an unavailable claim stayed green, or copy failed to restore: '
+      + JSON.stringify(releaseOverclaimCtl));
   }
   const releaseAuthorityCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,prior=S.api.state;let result;
     try{S.api.state=()=>({...prior(),rnSeen:'2.0'});result=${releaseDraftCheck};}finally{S.api.state=prior;}return result;})()`);
@@ -3540,6 +5568,29 @@ try {
     if (!Array.isArray(saved.landed) || !saved.landed.includes(133)) fails.push('Earth (133) not in the save’s landed set after reload: ' + JSON.stringify(saved.landed));
     if (typeof saved.essence !== 'number') fails.push('save.essence is not a number — importSaveV2 did not run');
   }
+  /* Complete the fresh Chapter-1 landfall goal with a second genuine Sol
+     world. The next visible writer is Mine—not the former generic slice
+     refusal—and its negative controls exercise this exact rendered chip. */
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
+  await sleep(350);
+  await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(MERCURY)})`);
+  await sleep(450);
+  const liveGoalBoundaryCheck = `(()=>{ const s=window.__CF_SLICE__.api.state();return {ok:s.mode==='surface'
+    &&/Mine Sol’s dead worlds 8 times/i.test(s.objective)&&/0\\s*\\/\\s*8/.test(s.objective)
+    &&!/next Charter action is not available in this development slice/i.test(s.objective),
+    mode:s.mode,objective:s.objective,landed:s.save.landed};})()`;
+  const liveGoalBoundary = await evalIn(liveGoalBoundaryCheck);
+  if (!liveGoalBoundary.ok || liveGoalBoundary.landed.length < 2) {
+    fails.push('OBJECTIVE LIVE WRITER: two real Sol landfalls did not expose the current Mine Sol objective: ' + JSON.stringify(liveGoalBoundary));
+  }
+  const liveGoalCtl = await evalIn(`(()=>{ const chip=document.getElementById('objchip'),prior=chip.innerHTML;
+    chip.textContent='Chapter 1 is recorded — the next Charter action is not available in this development slice';const stale=${liveGoalBoundaryCheck};
+    chip.textContent='Fabricate 4 basic parts · 0 / 4';const wrongGoal=${liveGoalBoundaryCheck};chip.innerHTML=prior;
+    const restored=${liveGoalBoundaryCheck};return {stale,wrongGoal,restored};})()`);
+  if (liveGoalCtl.stale?.ok || liveGoalCtl.wrongGoal?.ok || !liveGoalCtl.restored?.ok) {
+    fails.push('OBJECTIVE LIVE WRITER CONTROL FAILED — stale/wrong next goal stayed current or failed to restore: ' + JSON.stringify(liveGoalCtl));
+  }
   /* v5 is authoritative over its v4 compatibility mirror. Corrupt only that
      mirror and require a protected, write-held boot which leaves the exact
      hostile bytes untouched; accepting the total v4 loader's `{}` defaults
@@ -3593,9 +5644,8 @@ try {
   const forgedPlanetShareCode = shareCode
     ? withCodeName(withCodeGalaxyPosition(shareCode, 90.01, -60), 'Forged Sol Earth') : shareCode;
   /* Repeat planetfall must be navigable without paying chapter progression
-     twice. This rich fixture already completed the live landfall boundary,
-     so compare the exact objective before/after instead of assuming the
-     fresh-save chapter-1 "1 / 2" string. */
+     twice. This rich compatibility fixture has different imported Charter
+     state, so compare its exact objective before/after. */
   const repeatObjectiveBefore = await evalIn(`window.__CF_SLICE__.api.state().objective`);
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await sleep(500);
@@ -3609,16 +5659,6 @@ try {
   await sleep(350);
   await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(MERCURY)})`);
   await sleep(450);
-  const liveGoalBoundaryCheck = `(()=>{ const s=window.__CF_SLICE__.api.state();return {ok:s.mode==='surface'
-    &&/next Charter action is not available in this development slice/i.test(s.objective)&&!/mine|fabricat|shipyard|\\bbuild\\b/i.test(s.objective),
-    mode:s.mode,objective:s.objective,landed:s.save.landed};})()`;
-  const liveGoalBoundary = await evalIn(liveGoalBoundaryCheck);
-  if (!liveGoalBoundary.ok || liveGoalBoundary.landed.length < 2) {
-    fails.push('OBJECTIVE LIVE BOUNDARY: two real Sol landfalls exposed an unported actionable goal: ' + JSON.stringify(liveGoalBoundary));
-  }
-  const liveGoalCtl = await evalIn(`(()=>{ const chip=document.getElementById('objchip'),prior=chip.innerHTML;chip.textContent='Mine Sol’s dead worlds 8 times · 0 / 8';
-    const result=${liveGoalBoundaryCheck};chip.innerHTML=prior;return result;})()`);
-  if (liveGoalCtl.ok) fails.push('OBJECTIVE LIVE BOUNDARY CONTROL FAILED — injected mining directive stayed green: ' + JSON.stringify(liveGoalCtl));
   /* Escape consumes any open surface card while lifting in the same action;
      from outer modes it closes a card before the next press climbs. Drive the
      actual focus law to its outcome rather than assuming card state away. */
@@ -3842,6 +5882,8 @@ try {
      ends on the newly rendered, connected Land button—never a stale input,
      canvas, or implicit planetfall—and clears the consumed CF1 query. */
   const validPlanetBefore = validStarSearch;
+  const shareCharterBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const shareCharterBefore = shareCharterSnapshot(shareCharterBeforeState);
   await evalIn(`(()=>{ const s=document.getElementById('searchbox'); s.value=${JSON.stringify(String(namedShareCode))}; s.focus(); return true; })()`);
   await keyIn('Enter', 'Enter');
   const validPlanetSearchCheck = `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
@@ -3869,8 +5911,24 @@ try {
   if (back.mode !== 'system' || back.star !== 424242 || back.cardTitle !== 'Blue Earth') {
     fails.push('planet Share did not focus Earth in Sol without bypassing Land: ' + JSON.stringify([back.mode, back.star, back.cardTitle]));
   }
-  if (back.objective !== liveGoalBoundary.objective) fails.push('planet Share changed landfall progression without Land: '
-    + JSON.stringify({ before: liveGoalBoundary.objective, after: back.objective }));
+  const shareCharterAfter = shareCharterSnapshot(back);
+  if (!sameShareCharterSnapshot(shareCharterBefore, shareCharterAfter)) {
+    fails.push('planet Share changed its fixture-local Charter objective/state without Land: '
+      + JSON.stringify({ before: shareCharterBefore, after: shareCharterAfter }));
+  }
+  const shareCharterControls = {
+    objective: sameShareCharterSnapshot(shareCharterBefore, {
+      ...shareCharterBefore, objective: `${shareCharterBefore.objective ?? ''} [control]`,
+    }),
+    state: sameShareCharterSnapshot(shareCharterBefore, {
+      ...shareCharterBefore,
+      ascCh: Number.isSafeInteger(shareCharterBefore.ascCh) ? shareCharterBefore.ascCh + 1 : 'control-ascCh',
+    }),
+  };
+  if (shareCharterControls.objective || shareCharterControls.state) {
+    fails.push('PLANET SHARE CHARTER CONTROL FAILED — objective/state mutation stayed equal: '
+      + JSON.stringify({ shareCharterBefore, shareCharterAfter, shareCharterControls }));
+  }
   const resharedNamedCode = await evalIn(`window.__CF_SLICE__.api.cardShareCode()`);
   if (!resharedNamedCode || codeName(resharedNamedCode) !== 'Blue Earth' || codeGalaxySize(resharedNamedCode) !== 78) {
     fails.push('named CF1 route did not preserve source display metadata through v2 re-share: ' + JSON.stringify(resharedNamedCode));
@@ -4169,7 +6227,10 @@ try {
     assessF4ReadyAuthority({ ...f4ReadyInput, state: { ...f4ReadyState, persistence: { ...f4ReadyState.persistence, bootKind: 'fresh-v5' } } }),
     assessF4ReadyAuthority({ ...f4ReadyInput, token: whitespaceImportToken }),
     assessF4ReadyAuthority({ ...f4ReadyInput, state: persistenceVariant({ seedBootstrapPending: true }) }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, state: persistenceVariant({ bootRouteRepairPending: true }) }),
     assessF4ReadyAuthority({ ...f4ReadyInput, state: persistenceVariant({ mutationBlocked: true }) }),
+    assessF4ReadyAuthority({ ...f4ReadyInput, state: { ...f4ReadyState,
+      sceneResources: { ...f4ReadyState.sceneResources, pendingPersistenceWrites: 1 } } }),
     assessF4ReadyAuthority({ ...f4ReadyInput, state: runtimeVariant({ leaseOwned: false }) }),
     assessF4ReadyAuthority({ ...f4ReadyInput, state: runtimeVariant({ answerable: false }) }),
     assessF4ReadyAuthority({ ...f4ReadyInput, state: runtimeVariant({ accruing: false }) }),
@@ -4211,6 +6272,12 @@ try {
     assessF4PersistReload({ ...f4PersistBundle, persisted: { ...f4Persisted, raw: { ...f4Persisted.raw, revision: f4PersistBefore.raw.revision } } }),
     assessF4PersistReload({ ...f4PersistBundle, reloaded: { ...f4Reloaded, raw: { ...f4Reloaded.raw, seed: (f4PersistBefore.raw.seed + 1) >>> 0 } } }),
     assessF4PersistReload({ ...f4PersistBundle, persisted: { ...f4Persisted, raw: { ...f4Persisted.raw, activePlayMs: f4PersistBefore.raw.activePlayMs - 1 } } }),
+    assessF4PersistReload({ ...f4PersistBundle, reloaded: { ...f4Reloaded,
+      state: { ...f4Reloaded.state, persistence: { ...f4Reloaded.state.persistence,
+        runtime: { ...f4Reloaded.state.persistence.runtime, commits: 1 },
+        lastOutcome: `committed:${f4Reloaded.raw.revision}` } } } }),
+    assessF4PersistReload({ ...f4PersistBundle, reloaded: { ...f4Reloaded,
+      raw: { ...f4Reloaded.raw, activePlayMs: f4Reloaded.raw.activePlayMs + 1 } } }),
   ];
   if (f4PersistControls.some((control) => control.ok)) {
     fails.push('F4 PERSIST/RELOAD CONTROL FAILED — bad revision/seed/active-play evidence stayed green: '
@@ -4808,6 +6875,1563 @@ try {
     }
   }
 
+  /* ARC 3 ENGINEERING ACTIONS. Replace the inventory fixture with one exact
+     Mars expedition that has enough ordinary material for Deep Scanners and
+     repeated Plates, owns only the Jump Drive, and starts with empty Arc 3
+     extraction/research mirrors. Every action below begins at a visible real
+     control; hooks only hold or fault the production coordinator around that
+     player-owned activation. */
+  const engineeringImportToken = await sliceToken(sess);
+  try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(ENGINEERING_VETERAN_RAW)})`); }
+  catch { /* successful replacement reloads */ }
+  await waitForSlice(sess, 'Arc 3 Engineering fixture replacement', { previousToken: engineeringImportToken });
+  await assertBootTickerRunning('Arc 3 Engineering fixture replacement');
+  await waitForF4Writable('Arc 3 Engineering fixture authority', { previousToken: engineeringImportToken });
+  const engineeringBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (engineeringBoot.mode !== 'surface' || engineeringBoot.gal !== 999 || engineeringBoot.star !== 424242
+    || engineeringBoot.planet !== 134 || engineeringBoot.engineering?.stateKind !== 'loaded'
+    || engineeringBoot.engineering?.revision !== 0 || engineeringBoot.engineering?.research?.length !== 0
+    || engineeringRowCount(engineeringBoot.save?.cargo, 'Fe') !== 100
+    || engineeringRowCount(engineeringBoot.save?.cargo, 'Si') !== 100
+    || engineeringRowCount(engineeringBoot.save?.items, 'jumpdrive') !== 1) {
+    fails.push('ARC 3 ENGINEERING FIXTURE: exact Mars/material/Jump Drive authority did not boot: '
+      + JSON.stringify(engineeringBoot));
+  }
+  const engineeringReceiptPrefix = await evalIn(`window.__CF_SLICE__.api.__smokeCommitF4Outcome()`);
+  if (engineeringReceiptPrefix?.kind !== 'committed'
+    || engineeringReceiptPrefix?.receipt?.ordinal !== engineeringReceiptPrefix?.beforeOrdinal) {
+    fails.push('ARC 3 ENGINEERING RECEIPT PREFIX: real immutable predecessor did not commit: '
+      + JSON.stringify(engineeringReceiptPrefix));
+  }
+
+  const engineeringInteractionKey = 'cf_slice_arc3_action_interaction';
+  const armEngineeringInteraction = async () => evalIn(`(()=>{const storageKey=${JSON.stringify(engineeringInteractionKey)};
+    localStorage.removeItem(storageKey);window.__cfArc3InteractionAbort?.abort();const controller=new AbortController();
+    window.__cfArc3InteractionAbort=controller;const trace={pointer:[],keys:[],clicks:[]},save=()=>localStorage.setItem(storageKey,JSON.stringify(trace)),
+    row=(event)=>{const target=event.target instanceof Element?event.target.closest('button[data-engineering-action]'):null;
+      return target?{operation:target.getAttribute('data-engineering-action'),id:target.getAttribute('data-action-id'),
+        trusted:event.isTrusted===true}:null};
+    document.addEventListener('pointerdown',(event)=>{const value=row(event);if(!value)return;
+      trace.pointer.push({...value,pointerType:event.pointerType||null,x:event.clientX,y:event.clientY});save()},
+      {capture:true,signal:controller.signal});
+    document.addEventListener('keydown',(event)=>{const value=row(event);if(!value)return;
+      trace.keys.push({...value,key:event.key,code:event.code});save()},{capture:true,signal:controller.signal});
+    document.addEventListener('click',(event)=>{const value=row(event);if(!value)return;
+      trace.clicks.push(value);save()},{capture:true,signal:controller.signal});save();return true})()`);
+  const takeEngineeringInteraction = async (modality, uiOperation) => {
+    const trace = await evalIn(`(()=>{window.__cfArc3InteractionAbort?.abort();delete window.__cfArc3InteractionAbort;
+      const key=${JSON.stringify(engineeringInteractionKey)},value=JSON.parse(localStorage.getItem(key)||'null');
+      localStorage.removeItem(key);return value})()`);
+    return { ...trace, modality, uiOperation };
+  };
+  const engineeringActionPoint = (operation, id = null) => `(()=>{const selector='button[data-engineering-action="'+${JSON.stringify(operation)}+'"]'
+      +(${JSON.stringify(id)}===null?'':'[data-action-id="'+${JSON.stringify(id)}+'"]'),button=document.querySelector('#shipyardpanel '+selector);
+    button?.scrollIntoView({block:'center',inline:'nearest'});const rect=button?.getBoundingClientRect(),
+    x=rect?(rect.left+rect.right)/2:NaN,y=rect?(rect.top+rect.bottom)/2:NaN,hit=rect?document.elementFromPoint(x,y):null;
+    return {ok:!!button&&!button.disabled&&button.getAttribute('data-model-enabled')==='true'&&!!rect&&rect.width>0&&rect.height>=44
+      &&!!hit&&(hit===button||button.contains(hit)),x,y,operation:button?.getAttribute('data-engineering-action')||null,
+      id:button?.getAttribute('data-action-id'),height:rect?.height||0,focusKey:button?.getAttribute('data-focus-key')||null}})()`;
+  const pressEngineeringPointer = async (operation, id = null) => {
+    await armEngineeringInteraction();
+    const point = await evalIn(engineeringActionPoint(operation, id));
+    if (point.ok) await clickDesktopPoint(point);
+    return point;
+  };
+  const pressHeldEngineeringPointer = async (operation, id = null) => {
+    await armEngineeringInteraction();
+    const point = await evalIn(`(()=>{const button=[...document.querySelectorAll('#shipyardpanel button[data-engineering-action]')]
+      .find((row)=>row.getAttribute('data-engineering-action')===${JSON.stringify(operation)}
+        &&row.getAttribute('data-action-id')===${JSON.stringify(id)});button?.scrollIntoView({block:'center',inline:'nearest'});
+      const rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:NaN,y=rect?(rect.top+rect.bottom)/2:NaN,
+        hit=rect?document.elementFromPoint(x,y):null;return {ok:!!button&&!!rect&&rect.width>0&&rect.height>=44
+          &&!!hit&&(hit===button||button.contains(hit)),x,y,disabled:button?.disabled??null,
+          model:button?.getAttribute('data-model-enabled')??null,operation:button?.getAttribute('data-engineering-action')??null,
+          id:button?.getAttribute('data-action-id')??null,height:rect?.height??0}})()`);
+    if (point.ok) await clickDesktopPoint(point);
+    const interaction = await takeEngineeringInteraction('pointer', operation);
+    const state = await evalIn(`window.__CF_SLICE__.api.state()`);
+    const raw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+    return { point, interaction, state, raw };
+  };
+  const pressEngineeringKeyboard = async (operation, id = null) => {
+    await armEngineeringInteraction();
+    const target = await evalIn(`(()=>{const point=${engineeringActionPoint(operation, id)},
+      button=[...document.querySelectorAll('#shipyardpanel button[data-engineering-action]')]
+        .find((row)=>row.getAttribute('data-engineering-action')===${JSON.stringify(operation)}
+          &&row.getAttribute('data-action-id')===${JSON.stringify(id)});button?.focus();
+      return {...point,focused:document.activeElement===button,tag:button?.tagName||null}})()`);
+    if (target.ok && target.focused) await keyIn('Enter', 'Enter');
+    return target;
+  };
+  const openEngineeringPanel = async (label) => {
+    await armDesktopPointerReceipt();
+    const opened = await openDesktopRailPanel('railshipyard', 'shipyard', label);
+    const pointer = await takeDesktopPointerReceipt();
+    return { opened, pointer };
+  };
+  const closeEngineeringPanel = async (label) => {
+    const point = await evalIn(`(()=>{const button=document.querySelector('#shipyardpanel > [data-pnx="shipyard"]'),
+      rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:NaN,y=rect?(rect.top+rect.bottom)/2:NaN,
+      hit=rect?document.elementFromPoint(x,y):null;return {ok:!!button&&!!rect&&rect.width>=44&&rect.height>=44
+        &&!!hit&&(hit===button||button.contains(hit)),x,y}})()`);
+    await armDesktopPointerReceipt();
+    if (point.ok) await clickDesktopPoint(point);
+    const pointer = await takeDesktopPointerReceipt();
+    const settled = await waitDesktopValue(`${label} close`, `window.__CF_SLICE__.api.state().panelOpen===null`).catch(() => false);
+    return { point, pointer, settled };
+  };
+
+  const engineeringOpen = await openEngineeringPanel('ARC 3 ENGINEERING');
+  const engineeringSurface = await evalIn(`(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
+    diag=S.api.shipyardDiagnostics(),research=[...panel.querySelectorAll('[data-research-id]')].map((row)=>row.getAttribute('data-research-id')),
+    groups=[...panel.querySelectorAll('[data-fabrication-group]')].map((group)=>({id:group.getAttribute('data-fabrication-group'),
+      recipes:[...group.querySelectorAll('[data-recipe-id]')].map((row)=>row.getAttribute('data-recipe-id'))})),
+    button=(operation,id=null)=>[...panel.querySelectorAll('button[data-engineering-action]')]
+      .find((row)=>row.getAttribute('data-engineering-action')===operation&&row.getAttribute('data-action-id')===id),
+    close=panel.querySelector(':scope > [data-pnx="shipyard"]');return {panelOpen:S.api.state().panelOpen,
+      research,groups,actionCount:panel.querySelectorAll('button[data-engineering-action]').length,
+      mine:{enabled:!button('mine')?.disabled,model:button('mine')?.getAttribute('data-model-enabled')},
+      skim:{enabled:!button('skim')?.disabled,model:button('skim')?.getAttribute('data-model-enabled')},
+      scan:{enabled:!button('research','scan1')?.disabled,model:button('research','scan1')?.getAttribute('data-model-enabled')},
+      plate:{enabled:!button('fabricate','plate')?.disabled,model:button('fabricate','plate')?.getAttribute('data-model-enabled')},
+      focus:document.activeElement===close?'close':document.activeElement?.getAttribute?.('data-focus-key')||null,diag}})()`);
+  const engineeringSurfacePasses = (opening, surface) => opening?.opened === true
+    && opening?.pointer?.targetId === 'railshipyard' && opening?.pointer?.trusted === true
+    && opening?.pointer?.pointerType === 'mouse' && surface?.panelOpen === 'shipyard'
+    && canonicalJson(surface?.research) === canonicalJson(ENGINEERING_RESEARCH_IDS)
+    && canonicalJson(surface?.groups) === canonicalJson(ENGINEERING_RECIPE_GROUPS)
+    && surface?.actionCount === ENGINEERING_ACTION_CONTROL_COUNT
+    && surface?.mine?.enabled === true && surface?.mine?.model === 'true'
+    && surface?.skim?.enabled === false && surface?.skim?.model === 'false'
+    && surface?.scan?.enabled === true && surface?.scan?.model === 'true'
+    && surface?.plate?.enabled === true && surface?.plate?.model === 'true'
+    && surface?.focus === 'close'
+    && surface?.diag?.engineering?.actionControlCount === ENGINEERING_ACTION_CONTROL_COUNT;
+  const engineeringSurfaceOk = engineeringSurfacePasses(engineeringOpen, engineeringSurface);
+  if (!engineeringSurfaceOk) {
+    fails.push('ARC 3 ENGINEERING SURFACE: exact real panel/action availability disagreed: '
+      + JSON.stringify({ engineeringOpen, engineeringSurface }));
+  }
+  const engineeringSurfaceControl = engineeringSurfacePasses(engineeringOpen, {
+    ...engineeringSurface, actionCount: ENGINEERING_ACTION_CONTROL_COUNT - 1,
+  });
+  if (engineeringSurfaceControl) {
+    fails.push('ARC 3 ENGINEERING SURFACE CONTROL FAILED — missing action stayed green');
+  }
+
+  const mineBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const mineBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const mineBeforeUi = await evalIn(READ_ARC3_ENGINEERING_UI_EXPRESSION);
+  const mineHoldArmed = await evalIn(`window.__CF_SLICE__.api.__smokeArmArc3ActionHold()`);
+  const minePoint = await pressEngineeringPointer('mine');
+  await waitDesktopValue('Arc 3 held Mine pending', `(()=>{const s=window.__CF_SLICE__.api.state(),c=s.engineering?.actionCoordinator,
+    d=window.__CF_SLICE__.api.shipyardDiagnostics();return c?.hold?.phase==='holding'&&c?.owner?.busy===true
+      &&c.owner.operation==='arc3.mine-world'&&d?.engineering?.pendingWork===1?s:null})()`);
+  const mineInteraction = await takeEngineeringInteraction('pointer', 'mine');
+  const mineSecondActivation = await pressHeldEngineeringPointer('mine');
+  const mineCompetitor = await evalIn(`window.__CF_SLICE__.api.__smokePurchaseEngineeringResearch('scan1')`);
+  const mineCompetitorState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const minePendingRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const minePendingUi = await evalIn(READ_ARC3_ENGINEERING_UI_EXPRESSION);
+  const pendingClose = await closeEngineeringPanel('Arc 3 held Mine');
+  const mineClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
+    opener=document.getElementById('railshipyard'),diag=S.api.shipyardDiagnostics();return {panelOpen:S.api.state().panelOpen,
+      focusId:document.activeElement?.id||null,expanded:opener?.getAttribute('aria-expanded')||null,
+      bodyChildren:panel?.querySelector('[data-engineering-panel-body]')?.childElementCount??-1,diagnostics:diag}})()`);
+  const pendingReopen = await openEngineeringPanel('ARC 3 HELD MINE REOPEN');
+  const mineReopened = await evalIn(`(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
+    actions=[...panel.querySelectorAll('button[data-engineering-action]')],pending=panel.querySelector('[data-engineering-pending]'),
+    close=panel.querySelector(':scope > [data-pnx="shipyard"]');return {panelOpen:S.api.state().panelOpen,
+      focus:document.activeElement===close?'close':null,pendingVisible:!!pending&&!pending.hidden,
+      ariaBusy:panel.querySelector('[data-engineering-panel-body]')?.getAttribute('aria-busy'),actionCount:actions.length,
+      disabledCount:actions.filter((button)=>button.disabled).length,diagnostics:S.api.shipyardDiagnostics()}})()`);
+  const minePendingBundle = {
+    beforeRaw: mineBeforeRaw, pendingRaw: minePendingRaw,
+    beforeState: mineBeforeState, pendingState: mineCompetitorState,
+    beforeUi: mineBeforeUi, pendingUi: minePendingUi,
+    competitor: mineCompetitor, secondActivation: mineSecondActivation,
+    closed: mineClosed, reopened: mineReopened,
+  };
+  const minePendingAssessment = assessArc3PendingLifecycle(minePendingBundle);
+  if (!mineHoldArmed || !minePoint.ok || !pendingClose.point.ok || pendingClose.pointer?.trusted !== true
+    || !pendingClose.settled || !pendingReopen.opened || pendingReopen.pointer?.trusted !== true
+    || !minePendingAssessment.ok) {
+    fails.push('ARC 3 MINE HOLD/LIFECYCLE: no-optimism, single-flight, Close, or reopen-pending outcome failed: '
+      + JSON.stringify({ mineHoldArmed, minePoint, pendingClose, pendingReopen,
+        assessment: minePendingAssessment, bundle: minePendingBundle }));
+  }
+  const minePendingUiControls = {
+    renderedFacts: assessArc3PendingLifecycle({ ...minePendingBundle,
+      pendingUi: withEngineeringUiOpportunityStatus(minePendingUi, 'mining', 'worked-out') }),
+    inventoryState: assessArc3PendingLifecycle({ ...minePendingBundle,
+      pendingUi: withEngineeringUiInventoryRevision(minePendingUi) }),
+    renderedActionModels: assessArc3PendingLifecycle({ ...minePendingBundle,
+      pendingUi: withEngineeringUiActionModel(minePendingUi) }),
+    inventoryController: assessArc3PendingLifecycle({ ...minePendingBundle,
+      pendingUi: withEngineeringUiInventoryController(minePendingUi) }),
+  };
+  const minePendingControls = [
+    assessArc3PendingLifecycle({ ...minePendingBundle, pendingRaw: { ...minePendingRaw,
+      revision: Number.isSafeInteger(minePendingRaw?.revision) ? minePendingRaw.revision + 1 : 'control-revision' } }),
+    assessArc3PendingLifecycle({ ...minePendingBundle, pendingState: { ...minePendingBundle.pendingState,
+      save: { ...minePendingBundle.pendingState?.save,
+        essence: Number.isFinite(minePendingBundle.pendingState?.save?.essence)
+          ? minePendingBundle.pendingState.save.essence + 1 : 'control-essence' } } }),
+    ...Object.values(minePendingUiControls),
+    assessArc3PendingLifecycle({ ...minePendingBundle, competitor: { ...mineCompetitor, kind: 'committed' } }),
+    assessArc3PendingLifecycle({ ...minePendingBundle, competitor: {
+      ...mineCompetitor, detail: 'product-action-pending',
+    } }),
+    assessArc3PendingLifecycle({ ...minePendingBundle, pendingState: { ...minePendingBundle.pendingState,
+      engineering: { ...minePendingBundle.pendingState.engineering, actionCoordinator: {
+        ...minePendingBundle.pendingState.engineering.actionCoordinator,
+        owner: { ...minePendingBundle.pendingState.engineering.actionCoordinator.owner, operation: 'arc2.equip' },
+      } },
+    } }),
+    assessArc3PendingLifecycle({ ...minePendingBundle, secondActivation: { ...mineSecondActivation,
+      interaction: { ...mineSecondActivation?.interaction,
+        clicks: [{ operation: 'mine', id: null, trusted: true }] } } }),
+    assessArc3PendingLifecycle({ ...minePendingBundle, secondActivation: { ...mineSecondActivation,
+      interaction: { ...mineSecondActivation?.interaction,
+        pointer: (Array.isArray(mineSecondActivation?.interaction?.pointer)
+          ? mineSecondActivation.interaction.pointer : []).map((row) => ({ ...row, trusted: false })) } } }),
+    assessArc3PendingLifecycle({ ...minePendingBundle, secondActivation: { ...mineSecondActivation,
+      state: { ...mineSecondActivation?.state, engineering: { ...mineSecondActivation?.state?.engineering,
+        actionCoordinator: { ...mineSecondActivation?.state?.engineering?.actionCoordinator,
+          owner: { ...mineSecondActivation?.state?.engineering?.actionCoordinator?.owner,
+            operation: 'arc2.equip' } } } } } }),
+    assessArc3PendingLifecycle({ ...minePendingBundle, closed: { ...mineClosed,
+      diagnostics: { ...mineClosed?.diagnostics,
+        engineering: { ...mineClosed?.diagnostics?.engineering, pendingWork: 0 } } } }),
+    assessArc3PendingLifecycle({ ...minePendingBundle, closed: { ...mineClosed,
+      diagnostics: { ...mineClosed?.diagnostics, status: 'open' } } }),
+    assessArc3PendingLifecycle({ ...minePendingBundle, reopened: { ...mineReopened, disabledCount: ENGINEERING_ACTION_CONTROL_COUNT - 1 } }),
+    assessArc3PendingLifecycle({ ...minePendingBundle, reopened: { ...mineReopened,
+      diagnostics: { ...mineReopened?.diagnostics, status: 'closed' } } }),
+  ];
+  const minePendingUiControlsIsolated = Object.entries(minePendingUiControls)
+    .every(([check, assessment]) => isolatesEngineeringUiCheck(assessment, check));
+  if (minePendingControls.some((control) => control.ok) || !minePendingUiControlsIsolated) {
+    fails.push('ARC 3 MINE HOLD CONTROLS FAILED — optimistic/simultaneous/retained/unlatched mutation stayed green: '
+      + JSON.stringify({ minePendingControls, minePendingUiControlsIsolated }));
+  }
+  const mineReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseArc3ActionHold()`);
+  await waitDesktopValue('Arc 3 Mine commit', `(()=>{const s=window.__CF_SLICE__.api.state(),d=window.__CF_SLICE__.api.shipyardDiagnostics();
+    return s.engineering?.revision===${mineBeforeRaw.arc3.revision + 1}&&s.engineering?.lastOutcome==='mine-world-committed'
+      &&s.engineering?.actionCoordinator?.owner?.busy===false&&d?.engineering?.pendingWork===0?s:null})()`);
+  const mineAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const mineAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const mineBundle = { before: mineBeforeRaw, after: mineAfterRaw, beforeState: mineBeforeState,
+    afterState: mineAfterState, interaction: mineInteraction, operation: 'mine-world',
+    heldAttempt: mineSecondActivation };
+  const mineAssessment = assessArc3EngineeringAction(mineBundle);
+  if (!arc3MineBrowserOutcomePasses({
+    released: mineReleased, assessment: mineAssessment, panelOpen: mineAfterState.panelOpen,
+  })) {
+    fails.push('ARC 3 MINE ACTION: one trusted visible Mine did not commit carrier/legacy/receipt/Charter truth: '
+      + JSON.stringify({ mineReleased, assessment: mineAssessment, bundle: mineBundle }));
+  }
+  const mineDurableDeletionControls = mineAssessment.ok
+    ? arc3ActionDurableDeletionControls(mineBundle) : null;
+  const mineDurableDeletionControlsIsolated = mineDurableDeletionControls === null
+    ? null : arc3ActionDurableDeletionControlsAreIsolated(mineDurableDeletionControls);
+  const mineSplitMirrorControls = mineAssessment.ok ? {
+    splitOnlyAt: assessArc3EngineeringAction({ ...mineBundle,
+      after: withArc3SplitOnlyAtDrift(mineAfterRaw) }),
+    legacyOnlyAt: assessArc3EngineeringAction({ ...mineBundle,
+      after: withArc3LegacyOnlyAtDrift(mineAfterRaw) }),
+  } : null;
+  const mineSplitMirrorControlsIsolated = mineSplitMirrorControls === null
+    ? null : arc3ActionDurableDeletionControlsAreIsolated(mineSplitMirrorControls);
+  if (mineAssessment.ok && (!mineDurableDeletionControlsIsolated
+    || !mineSplitMirrorControlsIsolated)) {
+    fails.push('ARC 3 ACTION DURABLE-EVIDENCE CONTROLS FAILED — a missing raw/row/schema/carrier/receipt or split-only/legacy-only action-owned `at` mismatch was not isolated red: '
+      + JSON.stringify({ mineDurableDeletionControls, mineDurableDeletionControlsIsolated,
+        mineSplitMirrorControls, mineSplitMirrorControlsIsolated }));
+  }
+  const mineReceiptKey = `receipt:${mineBeforeRaw.authority.sessionRng.ordinal}`;
+  const withoutMineReceipt = (rows) => (Array.isArray(rows) ? rows : [])
+    .filter((_, index) => mineAfterRaw?.receiptKeys?.[index] !== mineReceiptKey);
+  const mineKeyMismatchState = structuredClone(mineAfterRaw.arc3);
+  const mineKeyMismatchRow = mineKeyMismatchState.worlds.find(({ key }) => key === ARC3_MARS_WORLD_ADDRESS.key);
+  if (mineKeyMismatchRow) mineKeyMismatchRow.address.planet.ordinal = 2;
+  const mineHierarchyAddressState = structuredClone(mineAfterRaw.arc3);
+  const mineHierarchyAddressRow = mineHierarchyAddressState.worlds
+    .find(({ key }) => key === ARC3_MARS_WORLD_ADDRESS.key);
+  if (mineHierarchyAddressRow) mineHierarchyAddressRow.address.star.parentCell.x = 14;
+  const mineDuplicateState = structuredClone(mineAfterRaw.arc3);
+  const mineDuplicateRow = mineDuplicateState.worlds.find(({ key }) => key === ARC3_MARS_WORLD_ADDRESS.key);
+  if (mineDuplicateRow) mineDuplicateState.worlds.push(structuredClone(mineDuplicateRow));
+  const mineMissingCooldownLegacy = structuredClone(mineAfterRaw.legacy);
+  mineMissingCooldownLegacy.minedw = mineMissingCooldownLegacy.minedw.filter(([seed]) => seed !== 134);
+  const mineArc2DriftAfter = structuredClone(mineAfterRaw);
+  const mineArc2PlateCount = engineeringRowCount(mineArc2DriftAfter.legacy.items, 'plate') + 1;
+  mineArc2DriftAfter.arc2.stackableCounts = mineArc2DriftAfter.arc2.stackableCounts.map((row) => (
+    row.baseId === 'plate' ? { ...row, count: mineArc2PlateCount } : row
+  ));
+  mineArc2DriftAfter.arc2Json = JSON.stringify(mineArc2DriftAfter.arc2);
+  mineArc2DriftAfter.legacy.items = withEngineeringRowCount(
+    mineArc2DriftAfter.legacy.items, 'plate', mineArc2PlateCount,
+  );
+  mineArc2DriftAfter.legacyRaw = JSON.stringify(mineArc2DriftAfter.legacy);
+  mineArc2DriftAfter.inventoryRow.data.items = withEngineeringRowCount(
+    mineArc2DriftAfter.inventoryRow.data.items, 'plate', mineArc2PlateCount,
+  );
+  mineArc2DriftAfter.inventoryRow.extensions['arc2.loot'].json = mineArc2DriftAfter.arc2Json;
+  mineArc2DriftAfter.inventoryRaw = JSON.stringify(mineArc2DriftAfter.inventoryRow);
+  const mineArc2DriftAfterState = structuredClone(mineAfterState);
+  mineArc2DriftAfterState.save.items = withEngineeringRowCount(
+    mineArc2DriftAfterState.save.items, 'plate', mineArc2PlateCount,
+  );
+  const mineHierarchyAddressControl = assessArc3EngineeringAction({ ...mineBundle,
+    after: withArc3CarrierState(mineAfterRaw, mineHierarchyAddressState) });
+  const mineDuplicateControl = assessArc3EngineeringAction({ ...mineBundle,
+    after: withArc3CarrierState(mineAfterRaw, mineDuplicateState) });
+  const mineMissingCooldownControl = assessArc3EngineeringAction({ ...mineBundle,
+    after: withArc3LegacyState(mineAfterRaw, mineMissingCooldownLegacy) });
+  const mineArc2PreservationControl = assessArc3EngineeringAction({ ...mineBundle,
+    after: mineArc2DriftAfter, afterState: mineArc2DriftAfterState });
+  const mineUnrelatedPreservationControls = {
+    playerExtension: assessArc3EngineeringAction({ ...mineBundle,
+      after: withArc3UnrelatedExtension(mineAfterRaw, 'player') }),
+    catalogExtension: assessArc3EngineeringAction({ ...mineBundle,
+      after: withArc3UnrelatedExtension(mineAfterRaw, 'catalog') }),
+    inventoryExtension: assessArc3EngineeringAction({ ...mineBundle,
+      after: withArc3UnrelatedExtension(mineAfterRaw, 'inventory') }),
+    synchronizedPlayerData: assessArc3EngineeringAction({ ...mineBundle,
+      after: withArc3SynchronizedPlayerDrift(mineAfterRaw) }),
+  };
+  const mineUnrelatedPreservationControlsIsolated = Object.values(
+    mineUnrelatedPreservationControls,
+  ).every((assessment) => isolatesNamedCheck(assessment, 'unrelatedDurablePreserved'));
+  const mineTechDriftAfter = withArc3CoherentResearchDrift(mineAfterRaw);
+  const mineSkimDriftAfter = withArc3CoherentSkimDrift(mineAfterRaw);
+  const mineNarrowOwnershipControls = {
+    mineTech: assessArc3EngineeringAction({ ...mineBundle, after: mineTechDriftAfter,
+      afterState: { ...mineAfterState,
+        engineering: { ...mineAfterState.engineering,
+          research: structuredClone(mineTechDriftAfter.arc3.research) },
+        save: { ...mineAfterState.save,
+          techOwned: structuredClone(mineTechDriftAfter.legacy.tech) } } }),
+    mineSkim: assessArc3EngineeringAction({ ...mineBundle, after: mineSkimDriftAfter,
+      afterState: { ...mineAfterState, save: { ...mineAfterState.save,
+        skimX: structuredClone(mineSkimDriftAfter.legacy.skx) } } }),
+  };
+  const mineNarrowOwnershipControlsIsolated = Object.values(mineNarrowOwnershipControls)
+    .every((assessment) => isolatesNamedCheck(assessment, 'unrelatedDurablePreserved'));
+  const mineOtherWorldDriftAfter = withArc3CoherentOtherWorldDrift(mineAfterRaw);
+  const mineOtherWorldControl = assessArc3EngineeringAction({
+    ...mineBundle,
+    after: mineOtherWorldDriftAfter,
+    afterState: { ...mineAfterState,
+      engineering: { ...mineAfterState.engineering,
+        worlds: mineOtherWorldDriftAfter.arc3.worlds.length },
+      save: { ...mineAfterState.save,
+        mineX: structuredClone(mineOtherWorldDriftAfter.legacy.mx),
+        mined: structuredClone(mineOtherWorldDriftAfter.legacy.minedw) } },
+  });
+  const mineOtherWorldControlIsolated = isolatesNamedChecks(mineOtherWorldControl, [
+    'unrelatedDurablePreserved', 'source.otherRowsPreserved',
+  ]);
+  const mineOwnerShapeControls = {
+    arc3TopLevel: assessArc3EngineeringAction({ ...mineBundle,
+      after: withArc3CarrierState(mineAfterRaw, {
+        ...mineAfterRaw.arc3, auditDrift: true,
+      }) }),
+    arc2TopLevel: assessArc3EngineeringAction({ ...mineBundle,
+      after: withArc2CarrierState(mineAfterRaw, {
+        ...mineAfterRaw.arc2, auditDrift: true,
+      }) }),
+  };
+  const mineOwnerShapeControlsIsolated = isolatesNamedCheck(
+    mineOwnerShapeControls.arc3TopLevel, 'unrelatedDurablePreserved',
+  ) && isolatesNamedChecks(mineOwnerShapeControls.arc2TopLevel, [
+    'unrelatedDurablePreserved', 'arc2CarrierOutcome',
+  ]);
+  const mineF4AuthorityVariant = (mutate) => {
+    const authority = structuredClone(mineAfterRaw.authority);
+    mutate(authority);
+    return assessArc3EngineeringAction({ ...mineBundle,
+      after: withF4AuthorityState(mineAfterRaw, authority) });
+  };
+  const mineF4MalformedControls = {
+    topLevel: mineF4AuthorityVariant((authority) => { authority.auditDrift = true; }),
+    nested: mineF4AuthorityVariant((authority) => { authority.sessionRng.auditDrift = true; }),
+    drawDomain: mineF4AuthorityVariant((authority) => {
+      authority.sessionRng.draws['bad\u0001domain'] = 1;
+    }),
+    activePlayBound: mineF4AuthorityVariant((authority) => {
+      authority.activePlayMs = 10_000_000_000_001;
+    }),
+    seedBound: mineF4AuthorityVariant((authority) => {
+      authority.sessionRng.seed = 0x1_0000_0000;
+    }),
+    ordinalBound: mineF4AuthorityVariant((authority) => {
+      authority.sessionRng.ordinal = 0x1_0000_0000;
+    }),
+    drawBound: mineF4AuthorityVariant((authority) => {
+      authority.sessionRng.draws['diagnostics.slice-smoke.f4'] = 0x1_0000_0000;
+    }),
+  };
+  const mineF4MalformedControlsIsolated = arc3ActionDurableDeletionControlsAreIsolated(
+    mineF4MalformedControls,
+  );
+  const mineF4BackwardControl = mineF4AuthorityVariant((authority) => {
+    authority.activePlayMs = Math.max(0, mineBeforeRaw.authority.activePlayMs - 1);
+  });
+  const mineF4BackwardControlIsolated = isolatesNamedCheck(
+    mineF4BackwardControl, 'f4ActionAuthority',
+  );
+  const mineF4RuntimeLagControl = mineF4AuthorityVariant((authority) => {
+    authority.activePlayMs = 10_000_000_000_000;
+  });
+  const mineF4RuntimeLagControlIsolated = isolatesNamedCheck(
+    mineF4RuntimeLagControl, 'f4RuntimeAuthority',
+  );
+  const mineActionControls = {
+    double: assessArc3EngineeringAction({ ...mineBundle, interaction: { ...mineInteraction,
+      clicks: [...(Array.isArray(mineInteraction?.clicks) ? mineInteraction.clicks : []),
+        mineInteraction?.clicks?.[0]] } }),
+    revision: assessArc3EngineeringAction({ ...mineBundle, after: { ...mineAfterRaw,
+      revision: mineBeforeRaw.revision, revisionRaw: String(mineBeforeRaw.revision) } }),
+    receipt: assessArc3EngineeringAction({ ...mineBundle, after: { ...mineAfterRaw,
+      receiptKeys: mineAfterRaw.receiptKeys.filter((key) => key !== mineReceiptKey),
+      receiptRows: withoutMineReceipt(mineAfterRaw.receiptRows),
+      receiptRawRows: withoutMineReceipt(mineAfterRaw.receiptRawRows) } }),
+    carrier: assessArc3EngineeringAction({ ...mineBundle,
+      after: withArc3CarrierState(mineAfterRaw,
+        { ...mineAfterRaw.arc3, revision: mineBeforeRaw.arc3.revision }) }),
+    keyMismatch: assessArc3EngineeringAction({ ...mineBundle,
+      after: withArc3CarrierState(mineAfterRaw, mineKeyMismatchState) }),
+    hierarchyAddress: mineHierarchyAddressControl,
+    duplicate: mineDuplicateControl,
+    missingCooldown: mineMissingCooldownControl,
+    arc2Preservation: mineArc2PreservationControl,
+    charter: assessArc3EngineeringAction({ ...mineBundle, afterState: { ...mineAfterState,
+      save: { ...mineAfterState.save, ascProg: { ...mineAfterState.save.ascProg,
+        'c1-mine': mineBeforeState.save.ascProg['c1-mine'] ?? 0 } } } }),
+  };
+  const mineHierarchyAddressRejectedSpecifically = mineHierarchyAddressControl.ok === false
+    && mineHierarchyAddressControl.reasons.includes('Mine exact full-address source hierarchy')
+    && mineHierarchyAddressControl.checks?.source?.afterRowsCanonical === true
+    && mineHierarchyAddressControl.checks?.source?.afterExpectedPresent === true
+    && mineHierarchyAddressControl.checks?.source?.afterKeyCoherent === true
+    && mineHierarchyAddressControl.checks?.source?.afterAddressExact === false;
+  const mineDuplicateRejectedSpecifically = mineDuplicateControl.ok === false
+    && mineDuplicateControl.reasons.includes('Mine exact full-address source hierarchy')
+    && mineDuplicateControl.checks?.source?.afterRowsCanonical === false;
+  const mineMissingCooldownRejectedSpecifically = mineMissingCooldownControl.ok === false
+    && mineMissingCooldownControl.reasons.includes('Mine cooldown/Charter action ticks')
+    && mineMissingCooldownControl.checks?.mineCooldown === false;
+  const mineArc2PreservationRejectedSpecifically = mineArc2PreservationControl.ok === false
+    && canonicalJson(mineArc2PreservationControl.reasons) === canonicalJson([
+      'unrelated durable Engineering rows/extensions preserved',
+      'Arc 2 coupled/preserved carrier mirror',
+    ])
+    && arc2MirrorParity(mineArc2DriftAfter);
+  if (Object.values(mineActionControls).some((control) => control.ok)
+    || !mineHierarchyAddressRejectedSpecifically || !mineDuplicateRejectedSpecifically
+    || !mineMissingCooldownRejectedSpecifically || !mineArc2PreservationRejectedSpecifically
+    || !mineUnrelatedPreservationControlsIsolated || !mineNarrowOwnershipControlsIsolated
+    || !mineOtherWorldControlIsolated || !mineOwnerShapeControlsIsolated
+    || !mineF4MalformedControlsIsolated || !mineF4BackwardControlIsolated
+    || !mineF4RuntimeLagControlIsolated) {
+    fails.push('ARC 3 MINE ACTION CONTROLS FAILED — double/revision/receipt/full-address/duplicate/cooldown/Arc2/Charter loss stayed green: '
+      + JSON.stringify({ mineActionControls, mineHierarchyAddressRejectedSpecifically,
+        mineDuplicateRejectedSpecifically, mineMissingCooldownRejectedSpecifically,
+        mineArc2PreservationRejectedSpecifically, mineUnrelatedPreservationControls,
+        mineUnrelatedPreservationControlsIsolated, mineNarrowOwnershipControls,
+        mineNarrowOwnershipControlsIsolated, mineOtherWorldControl,
+        mineOtherWorldControlIsolated, mineOwnerShapeControls, mineOwnerShapeControlsIsolated,
+        mineF4MalformedControls, mineF4MalformedControlsIsolated,
+        mineF4BackwardControl, mineF4BackwardControlIsolated,
+        mineF4RuntimeLagControl, mineF4RuntimeLagControlIsolated }));
+  }
+
+  await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="research"]')?.setAttribute('open','')`);
+  const researchBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const researchBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const researchTarget = await pressEngineeringKeyboard('research', 'scan1');
+  await waitDesktopValue('Arc 3 Deep Scanners commit', `(()=>{const s=window.__CF_SLICE__.api.state(),d=window.__CF_SLICE__.api.shipyardDiagnostics();
+    return s.engineering?.revision===${researchBeforeRaw.arc3.revision + 1}&&s.engineering?.research?.includes('scan1')
+      &&d?.engineering?.pendingWork===0?s:null})()`);
+  const researchAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const researchAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const researchInteraction = await takeEngineeringInteraction('keyboard', 'research');
+  const researchFocus = await evalIn(`(()=>{const row=document.querySelector('#shipyardpanel [data-research-id="scan1"]');
+    return {row:document.activeElement===row,tag:document.activeElement?.tagName||null,
+      semantic:document.activeElement?.getAttribute?.('data-semantic-key')||null}})()`);
+  const researchFocusPasses = (focus) => focus?.row === true && focus?.tag === 'ARTICLE'
+    && focus?.semantic === 'research:scan1';
+  const researchBundle = { before: researchBeforeRaw, after: researchAfterRaw,
+    beforeState: researchBeforeState, afterState: researchAfterState, interaction: researchInteraction,
+    operation: 'purchase-research', id: 'scan1' };
+  const researchAssessment = assessArc3EngineeringAction(researchBundle);
+  if (!researchTarget.ok || !researchTarget.focused || !researchAssessment.ok
+    || !researchFocusPasses(researchFocus)) {
+    fails.push('ARC 3 RESEARCH ACTION: native Enter did not commit Deep Scanners and restore semantic row focus: '
+      + JSON.stringify({ researchTarget, researchFocus, assessment: researchAssessment, bundle: researchBundle }));
+  }
+  const researchControls = [
+    assessArc3EngineeringAction({ ...researchBundle, before: withArc3LegacyState(
+      researchBeforeRaw, { ...researchBeforeRaw.legacy, cargo: withEngineeringRowCount(
+        researchBeforeRaw.legacy.cargo, 'Fe', engineeringRowCount(researchBeforeRaw.legacy.cargo, 'Fe') + 1,
+      ) }) }),
+    assessArc3EngineeringAction({ ...researchBundle, before: withArc3LegacyState(
+      researchBeforeRaw,
+      { ...researchBeforeRaw.legacy, essence: researchBeforeRaw.legacy.essence + 1 }) }),
+  ];
+  const researchMineDriftAfter = withArc3CoherentMineDrift(researchAfterRaw);
+  const researchMineOwnershipControl = assessArc3EngineeringAction({
+    ...researchBundle, after: researchMineDriftAfter,
+    afterState: { ...researchAfterState, save: { ...researchAfterState.save,
+      mineX: structuredClone(researchMineDriftAfter.legacy.mx) } },
+  });
+  const researchMineOwnershipControlIsolated = isolatesNamedCheck(
+    researchMineOwnershipControl, 'unrelatedDurablePreserved',
+  );
+  const researchExtraTechAfter = withArc3CoherentExtraResearchDrift(researchAfterRaw);
+  const researchExtraTechControl = assessArc3EngineeringAction({
+    ...researchBundle, after: researchExtraTechAfter,
+    afterState: { ...researchAfterState,
+      engineering: { ...researchAfterState.engineering,
+        research: structuredClone(researchExtraTechAfter.arc3.research) },
+      save: { ...researchAfterState.save,
+        techOwned: structuredClone(researchExtraTechAfter.legacy.tech) } },
+  });
+  const researchExtraTechControlIsolated = isolatesNamedCheck(
+    researchExtraTechControl, 'unrelatedDurablePreserved',
+  );
+  if (researchControls.some((control) => control.ok)
+    || !researchMineOwnershipControlIsolated
+    || !researchExtraTechControlIsolated
+    || researchFocusPasses({ ...researchFocus, semantic: 'recipe:scan1' })) {
+    fails.push('ARC 3 RESEARCH CONTROLS FAILED — cost or semantic-focus drift stayed green: '
+      + JSON.stringify({ researchControls, researchMineOwnershipControl,
+        researchMineOwnershipControlIsolated, researchExtraTechControl,
+        researchExtraTechControlIsolated }));
+  }
+
+  await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="fabricator"]')?.setAttribute('open','')`);
+  const fixedBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const fixedBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const fixedTarget = await pressEngineeringKeyboard('fabricate', 'plate');
+  await waitDesktopValue('Arc 3 fixed Plate commit', `(()=>{const s=window.__CF_SLICE__.api.state(),d=window.__CF_SLICE__.api.shipyardDiagnostics();
+    return s.engineering?.revision===${fixedBeforeRaw.arc3.revision + 1}&&d?.engineering?.pendingWork===0?s:null})()`);
+  const fixedAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const fixedAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const fixedInteraction = await takeEngineeringInteraction('keyboard', 'fabricate');
+  const fixedFocus = await evalIn(`(()=>{const button=document.querySelector('#shipyardpanel button[data-engineering-action="fabricate"][data-action-id="plate"]');
+    return {button:document.activeElement===button,disabled:button?.disabled??null,focusKey:button?.getAttribute('data-focus-key')||null}})()`);
+  const fixedFocusPasses = (focus) => focus?.button === true && focus?.disabled === false
+    && focus?.focusKey === 'action:fabricate:plate';
+  const fixedBundle = { before: fixedBeforeRaw, after: fixedAfterRaw, beforeState: fixedBeforeState,
+    afterState: fixedAfterState, interaction: fixedInteraction, operation: 'fabricate-fixed', id: 'plate' };
+  const fixedAssessment = assessArc3EngineeringAction(fixedBundle);
+  if (!fixedTarget.ok || !fixedTarget.focused || !fixedAssessment.ok || !fixedFocusPasses(fixedFocus)) {
+    fails.push('ARC 3 FIXED FABRICATION: native Enter did not couple Plate into Arc2/Arc3/legacy/Charter or restore action focus: '
+      + JSON.stringify({ fixedTarget, fixedFocus, assessment: fixedAssessment, bundle: fixedBundle }));
+  }
+  const fixedControls = [
+    assessArc3EngineeringAction({ ...fixedBundle, before: withArc3LegacyState(
+      fixedBeforeRaw, { ...fixedBeforeRaw.legacy, cargo: withEngineeringRowCount(
+        fixedBeforeRaw.legacy.cargo, 'Fe', engineeringRowCount(fixedBeforeRaw.legacy.cargo, 'Fe') + 1,
+      ) }) }),
+    assessArc3EngineeringAction({ ...fixedBundle, after: withArc2CarrierState(
+      fixedAfterRaw, { ...fixedAfterRaw.arc2, inventory: { ...fixedAfterRaw.arc2.inventory,
+        revision: fixedBeforeRaw.arc2.inventory.revision } }) }),
+    assessArc3EngineeringAction({ ...fixedBundle, afterState: { ...fixedAfterState,
+      save: { ...fixedAfterState.save, ascProg: { ...fixedAfterState.save.ascProg,
+        'c1-part': fixedBeforeState.save.ascProg['c1-part'] ?? 0 } } } }),
+  ];
+  const fixedEquipDriftAfter = withArc3CoherentEquipDrift(fixedAfterRaw);
+  const fixedEquipOwnershipControl = assessArc3EngineeringAction({
+    ...fixedBundle, after: fixedEquipDriftAfter,
+  });
+  const fixedEquipOwnershipControlIsolated = isolatesNamedCheck(
+    fixedEquipOwnershipControl, 'unrelatedDurablePreserved',
+  );
+  const fixedOtherItemAfter = withArc3CoherentOtherItemDrift(fixedAfterRaw);
+  const fixedOtherItemControl = assessArc3EngineeringAction({
+    ...fixedBundle, after: fixedOtherItemAfter,
+    afterState: { ...fixedAfterState, save: { ...fixedAfterState.save,
+      items: structuredClone(fixedOtherItemAfter.legacy.items) } },
+  });
+  const fixedOtherItemControlIsolated = isolatesNamedCheck(
+    fixedOtherItemControl, 'unrelatedDurablePreserved',
+  );
+  const fixedEssenceDriftLegacy = {
+    ...structuredClone(fixedAfterRaw.legacy), essence: fixedAfterRaw.legacy.essence + 1,
+  };
+  const fixedEssenceControl = assessArc3EngineeringAction({
+    ...fixedBundle,
+    after: withArc3LegacyState(fixedAfterRaw, fixedEssenceDriftLegacy),
+    afterState: { ...fixedAfterState, save: {
+      ...fixedAfterState.save, essence: fixedEssenceDriftLegacy.essence,
+    } },
+  });
+  const fixedEssenceControlIsolated = isolatesNamedCheck(
+    fixedEssenceControl, 'unrelatedDurablePreserved',
+  );
+  if (fixedControls.some((control) => control.ok)
+    || !fixedEquipOwnershipControlIsolated
+    || !fixedOtherItemControlIsolated || !fixedEssenceControlIsolated
+    || fixedFocusPasses({ ...fixedFocus, focusKey: 'action:fabricate:wire' })) {
+    fails.push('ARC 3 FIXED CONTROLS FAILED — cost/Arc2/Charter/focus drift stayed green: '
+      + JSON.stringify({ fixedControls, fixedEquipOwnershipControl,
+        fixedEquipOwnershipControlIsolated, fixedOtherItemControl,
+        fixedOtherItemControlIsolated, fixedEssenceControl,
+        fixedEssenceControlIsolated }));
+  }
+
+  const engineeringRouteClose = await closeEngineeringPanel('Arc 3 route to remnant');
+  const marsCode = await evalIn(`window.__CF_SLICE__.api.encodeHere()`);
+  const runLegacyRemnantSearchControl = async (kind, target) => {
+    const code = typeof marsCode === 'string' ? withCodeStarIdentity(marsCode, target) : null;
+    const beforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+    const beforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+    if (code) {
+      await evalIn(`(()=>{const input=document.getElementById('searchbox');input.value=${JSON.stringify(code)};input.focus();return true})()`);
+      await keyIn('Enter', 'Enter');
+    }
+    const afterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+    const afterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+    const search = await evalIn(`(()=>{const input=document.getElementById('searchbox');return {
+      query:input?.value??null,focused:document.activeElement===input};})()`);
+    const evidence = {
+      kind, target, code,
+      before: {
+        route: arc3RemnantRouteProjection(beforeState), raw: beforeRaw,
+        toastSerial: beforeState?.toastSerial ?? null,
+      },
+      after: {
+        route: arc3RemnantRouteProjection(afterState), raw: afterRaw,
+        toastSerial: afterState?.toastSerial ?? null,
+        toastText: afterState?.toastText ?? '',
+        query: search?.query ?? null,
+        focused: search?.focused === true,
+      },
+    };
+    const assessment = assessArc3RemnantRejectedSearchControl(evidence);
+    const routeDrift = assessArc3RemnantRejectedSearchControl({
+      ...evidence,
+      after: { ...evidence.after, route: { ...evidence.after.route, planet: null } },
+    });
+    const classificationDrift = assessArc3RemnantRejectedSearchControl({
+      ...evidence,
+      after: { ...evidence.after,
+        toastSerial: kind === 'full-precision-invalid'
+          ? evidence.before.toastSerial + 1 : evidence.before.toastSerial,
+        toastText: '' },
+    });
+    const markedControlCode = `control ${code ?? ''}`;
+    const markedCodeDrift = assessArc3RemnantRejectedSearchControl({
+      ...evidence, code: markedControlCode,
+      after: { ...evidence.after, query: markedControlCode },
+    });
+    const decodedControlCode = typeof code === 'string'
+      ? withCodeStarIdentity(code, { ...target, seed: target.seed + 1 }) : null;
+    const decodedTargetDrift = assessArc3RemnantRejectedSearchControl({
+      ...evidence, code: decodedControlCode,
+      after: { ...evidence.after, query: decodedControlCode },
+    });
+    const beforeSourceDrift = structuredClone(evidence.before);
+    const afterSourceDrift = structuredClone(evidence.after);
+    beforeSourceDrift.route.planet = 133;
+    afterSourceDrift.route.planet = 133;
+    const sourceDrift = assessArc3RemnantRejectedSearchControl({
+      ...evidence, before: beforeSourceDrift, after: afterSourceDrift,
+    });
+    const deleteRawEvidence = (key) => {
+      const before = structuredClone(evidence.before), after = structuredClone(evidence.after);
+      delete before.raw[key]; delete after.raw[key];
+      return assessArc3RemnantRejectedSearchControl({ ...evidence, before, after });
+    };
+    const rawDeletionDrifts = {
+      legacyRaw: deleteRawEvidence('legacyRaw'),
+      playerRaw: deleteRawEvidence('playerRaw'),
+      inventoryRaw: deleteRawEvidence('inventoryRaw'),
+    };
+    const isolated = (control, expected) => control.ok === false
+      && control.checks?.[expected] === false
+      && Object.entries(control.checks ?? {}).every(([name, value]) => (
+        name === expected ? value === false : value === true
+      ));
+    return {
+      evidence, assessment,
+      controls: { routeDrift, classificationDrift, markedCodeDrift, decodedTargetDrift,
+        sourceDrift, ...rawDeletionDrifts },
+      controlsIsolated: isolated(routeDrift, 'exactRoute')
+        && isolated(classificationDrift, 'classification')
+        && isolated(markedCodeDrift, 'markedCode')
+        && isolated(decodedTargetDrift, 'decodedTarget')
+        && isolated(sourceDrift, 'source')
+        && Object.values(rawDeletionDrifts).every((control) => isolated(control, 'durableEvidence')),
+    };
+  };
+  const legacyRemnantFullPrecision = await runLegacyRemnantSearchControl(
+    'full-precision-invalid', ENGINEERING_REMNANT_ROUTE_LEGACY_TARGET.rawStar,
+  );
+  const legacyRemnantRoundedBlocked = await runLegacyRemnantSearchControl(
+    'rounded-charter-blocked', ENGINEERING_REMNANT_ROUTE_LEGACY_TARGET.canonicalStar,
+  );
+  if (!legacyRemnantFullPrecision.assessment.ok || !legacyRemnantFullPrecision.controlsIsolated
+    || !legacyRemnantRoundedBlocked.assessment.ok || !legacyRemnantRoundedBlocked.controlsIsolated) {
+    fails.push('ARC 3 REMNANT SEARCH CONTROLS FAILED — the old noncanonical code or rounded out-of-reach route did not remain exact correction outcomes: '
+      + JSON.stringify({ legacyRemnantFullPrecision, legacyRemnantRoundedBlocked }));
+  }
+  const remnantPreRouteState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const remnantPreRoute = arc3RemnantRouteProjection(remnantPreRouteState);
+  const remnantPreRouteSerial = Number.isInteger(remnantPreRoute?.renderedScene?.serial)
+    ? remnantPreRoute.renderedScene.serial : -1;
+  const remnantCode = typeof marsCode === 'string' ? withCodeStarIdentity(marsCode, {
+    ...ENGINEERING_REMNANT_ROUTE_TARGET.requestedStar,
+  }) : null;
+  const remnantRouteTarget = {
+    ...ENGINEERING_REMNANT_ROUTE_TARGET,
+    galaxy: { ...ENGINEERING_REMNANT_ROUTE_TARGET.galaxy },
+    requestedStar: { ...ENGINEERING_REMNANT_ROUTE_TARGET.requestedStar },
+    canonicalStar: {
+      ...ENGINEERING_REMNANT_ROUTE_TARGET.canonicalStar,
+      parentCell: { ...ENGINEERING_REMNANT_ROUTE_TARGET.canonicalStar.parentCell },
+    },
+    code: remnantCode,
+  };
+  let remnantRouteError = remnantCode ? null : 'remnant CF1 target was unavailable';
+  if (remnantCode) {
+    await evalIn(`(()=>{const input=document.getElementById('searchbox');input.value=${JSON.stringify(remnantCode)};input.focus();return true})()`);
+    await keyIn('Enter', 'Enter');
+  }
+  try {
+    await waitDesktopValue('Arc 3 remnant route', `(()=>{const s=window.__CF_SLICE__.api.state();
+      return s.mode==='system'&&s.gal===${ENGINEERING_REMNANT_ROUTE_TARGET.galaxy.seed}
+        &&s.galX===${ENGINEERING_REMNANT_ROUTE_TARGET.galaxy.x}&&s.galY===${ENGINEERING_REMNANT_ROUTE_TARGET.galaxy.y}
+        &&s.star===${ENGINEERING_REMNANT_ROUTE_TARGET.canonicalStar.seed}
+        &&s.starX===${ENGINEERING_REMNANT_ROUTE_TARGET.canonicalStar.x}
+        &&s.starY===${ENGINEERING_REMNANT_ROUTE_TARGET.canonicalStar.y}
+        &&s.planet===null&&s.navStarKey===${JSON.stringify(ENGINEERING_REMNANT_ROUTE_TARGET.navStarKey)}
+        &&s.stage===1&&s.shipVisual?.chassisStage===1
+        &&JSON.stringify(s.shipVisual?.installedSystemIds)===${JSON.stringify(JSON.stringify(['jumpdrive']))}
+        &&s.renderedScene?.serial>${remnantPreRouteSerial}&&s.renderedScene?.mode==='system'
+        &&s.renderedScene?.galaxyKey==='CF1|g:999@90,-60'
+        &&s.renderedScene?.starKey===${JSON.stringify(ENGINEERING_REMNANT_ROUTE_TARGET.navStarKey)}
+        &&s.renderedScene?.worldKey===null?s:null})()`);
+  } catch (cause) {
+    const message = String(cause?.message || cause);
+    remnantRouteError = remnantRouteError ? `${remnantRouteError}; ${message}` : message;
+  }
+  let remnantState;
+  try { remnantState = await evalIn(`window.__CF_SLICE__.api.state()`); }
+  catch (cause) { remnantState = { diagnosticError: String(cause?.message || cause) }; }
+  let remnantAuthorityReady = false, remnantAuthorityError = null;
+  try {
+    await waitForF4Writable('Arc 3 remnant action authority');
+    remnantAuthorityReady = true;
+  } catch (cause) {
+    remnantAuthorityError = String(cause?.message || cause);
+  }
+  let skimOpen = { opened: false, pointer: null }, remnantOpenError = null;
+  try { skimOpen = await openEngineeringPanel('ARC 3 REMNANT SKIM'); }
+  catch (cause) { remnantOpenError = String(cause?.message || cause); }
+  try {
+    await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="skimming"]')?.setAttribute('open','')`);
+  } catch (cause) {
+    remnantOpenError = remnantOpenError || String(cause?.message || cause);
+  }
+  const remnantRouteSurface = await evalIn(`(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+    panel=document.getElementById('shipyardpanel'),section=panel?.querySelector('details[data-engineering-section="skimming"]'),
+    button=section?.querySelector('button[data-engineering-action="skim"]'),diagnostics=S?.api?.shipyardDiagnostics?.();
+    return {panelOpen:state?.panelOpen??null,button:{exists:!!button,connected:button?.isConnected===true,
+      tag:button?.tagName??null,operation:button?.getAttribute('data-engineering-action')??null,
+      id:button?.getAttribute('data-action-id')??null},model:{status:section?.getAttribute('data-status')??null,
+      modelEnabled:button?.getAttribute('data-model-enabled')??null,disabled:button?.disabled??null,
+      ariaDisabled:button?.getAttribute('aria-disabled')??null,disabledReason:button?.getAttribute('data-disabled-reason')??null},
+      diagnostics:diagnostics??null};})()`).catch((cause) => ({
+    panelOpen: null, button: null, model: null, diagnostics: null,
+    diagnosticError: String(cause?.message || cause),
+  }));
+  const remnantRouteEvidence = {
+    target: remnantRouteTarget,
+    sourceWitness: remnantRouteTarget.sourceWitness,
+    neighborhoodRadius: remnantRouteTarget.neighborhoodRadius,
+    preRoute: remnantPreRoute,
+    current: remnantState,
+    surface: remnantRouteSurface,
+    routeError: remnantRouteError,
+    authorityReady: remnantAuthorityReady,
+    authorityError: remnantAuthorityError,
+    openError: remnantOpenError,
+    opening: skimOpen,
+  };
+  const remnantRouteAssessment = assessArc3RemnantSkimRoutePrecondition(remnantRouteEvidence);
+  const remnantRouteDiagnosticControls = {
+    empty: assessArc3RemnantSkimRoutePrecondition(),
+    failure: assessArc3RemnantSkimRoutePrecondition({
+      ...remnantRouteEvidence,
+      current: null,
+      surface: { panelOpen: null, button: null, model: null, diagnostics: null },
+      routeError: 'control route failure',
+      authorityReady: false,
+      openError: 'control panel failure',
+    }),
+    seedDrift: assessArc3RemnantSkimRoutePrecondition({
+      ...remnantRouteEvidence,
+      target: { ...remnantRouteTarget,
+        requestedStar: { ...remnantRouteTarget.requestedStar, seed: 449521433 } },
+    }),
+    coordinateDrift: assessArc3RemnantSkimRoutePrecondition({
+      ...remnantRouteEvidence,
+      target: { ...remnantRouteTarget,
+        canonicalStar: { ...remnantRouteTarget.canonicalStar, x: 734.59 } },
+    }),
+    parentDrift: assessArc3RemnantSkimRoutePrecondition({
+      ...remnantRouteEvidence,
+      target: { ...remnantRouteTarget,
+        canonicalStar: { ...remnantRouteTarget.canonicalStar,
+          parentCell: { ...remnantRouteTarget.canonicalStar.parentCell, x: 18 } } },
+    }),
+    layerDrift: assessArc3RemnantSkimRoutePrecondition({
+      ...remnantRouteEvidence,
+      target: { ...remnantRouteTarget,
+        canonicalStar: { ...remnantRouteTarget.canonicalStar, layer: 'fine' } },
+    }),
+    kindDrift: assessArc3RemnantSkimRoutePrecondition({
+      ...remnantRouteEvidence,
+      sourceWitness: { ...remnantRouteEvidence.sourceWitness, kind: 'STAR' },
+    }),
+    reachDrift: assessArc3RemnantSkimRoutePrecondition({
+      ...remnantRouteEvidence, neighborhoodRadius: 250,
+    }),
+    receiptDrift: assessArc3RemnantSkimRoutePrecondition({
+      ...remnantRouteEvidence,
+      current: { ...remnantState, renderedScene: { ...remnantState?.renderedScene,
+        serial: remnantPreRouteSerial } },
+    }),
+    ownershipDrift: assessArc3RemnantSkimRoutePrecondition({
+      ...remnantRouteEvidence,
+      current: { ...remnantState, stage: 2,
+        shipVisual: { ...remnantState?.shipVisual, chassisStage: 2,
+          installedSystemIds: ['jumpdrive', 'array'],
+          hardpoints: { ...remnantState?.shipVisual?.hardpoints, array: true } } },
+    }),
+  };
+  const remnantRouteTargetControlsIsolated = ['seedDrift', 'coordinateDrift', 'parentDrift', 'layerDrift']
+    .every((name) => {
+      const control = remnantRouteDiagnosticControls[name];
+      return control.ok === false && control.checks?.target === false
+        && Object.entries(control.checks ?? {}).every(([check, value]) => (
+          check === 'target' ? value === false : value === true
+        ));
+    });
+  const remnantRouteClauseControl = {
+    kindDrift: 'sourceOracle', reachDrift: 'reachable', receiptDrift: 'renderedReceipt',
+    ownershipDrift: 'charterOwnership',
+  };
+  const remnantRouteClauseControlsIsolated = Object.entries(remnantRouteClauseControl)
+    .every(([name, expected]) => {
+      const control = remnantRouteDiagnosticControls[name];
+      return control.ok === false && control.checks?.[expected] === false
+        && Object.entries(control.checks ?? {}).every(([check, value]) => (
+          check === expected ? value === false : value === true
+        ));
+    });
+  if (remnantRouteDiagnosticControls.empty.ok || remnantRouteDiagnosticControls.failure.ok
+    || remnantRouteDiagnosticControls.empty.checks?.complete !== false
+    || remnantRouteDiagnosticControls.failure.checks?.routeSettled !== false
+    || remnantRouteDiagnosticControls.failure.checks?.button !== false
+    || !remnantRouteTargetControlsIsolated || !remnantRouteClauseControlsIsolated) {
+    fails.push('ARC 3 REMNANT ROUTE DIAGNOSTIC CONTROL FAILED — empty/failed or exact address/BH-kind/Neighborhood/receipt drift evidence threw or stayed green: '
+      + JSON.stringify({ remnantRouteDiagnosticControls, remnantRouteTargetControlsIsolated,
+        remnantRouteClauseControlsIsolated }));
+  }
+  let skimBeforeState = remnantState && typeof remnantState === 'object'
+    ? remnantState : fixedAfterState;
+  let skimBeforeRaw = fixedAfterRaw, skimReadError = null;
+  try { skimBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`); }
+  catch (cause) { skimReadError = `state: ${String(cause?.message || cause)}`; }
+  try { skimBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION); }
+  catch (cause) {
+    const message = `authority: ${String(cause?.message || cause)}`;
+    skimReadError = skimReadError ? `${skimReadError}; ${message}` : message;
+  }
+  const skimCommitPrecondition = remnantRouteAssessment.ok && skimReadError === null
+    && Number.isSafeInteger(skimBeforeRaw?.arc3?.revision);
+  let skimTarget = { ok: false, focused: false, skipped: 'remnant-route-precondition' };
+  let skimAfterState = skimBeforeState, skimAfterRaw = skimBeforeRaw, skimInteraction = null;
+  let skimBundle = { before: skimBeforeRaw, after: skimAfterRaw, beforeState: skimBeforeState,
+    afterState: skimAfterState, interaction: skimInteraction, operation: 'skim-star' };
+  let skimAssessment = {
+    ok: false,
+    reasons: ['remnant Skim route precondition'],
+    precondition: remnantRouteAssessment,
+  };
+  if (skimCommitPrecondition) {
+    skimTarget = await pressEngineeringKeyboard('skim');
+    await waitDesktopValue('Arc 3 remnant Skim commit', `(()=>{const s=window.__CF_SLICE__.api.state(),d=window.__CF_SLICE__.api.shipyardDiagnostics();
+      return s.engineering?.revision===${skimBeforeRaw.arc3.revision + 1}&&d?.engineering?.pendingWork===0?s:null})()`);
+    skimAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+    skimAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+    skimInteraction = await takeEngineeringInteraction('keyboard', 'skim');
+    skimBundle = { before: skimBeforeRaw, after: skimAfterRaw, beforeState: skimBeforeState,
+      afterState: skimAfterState, interaction: skimInteraction, operation: 'skim-star' };
+    skimAssessment = assessArc3EngineeringAction(skimBundle);
+  }
+  if (!engineeringRouteClose.point.ok || engineeringRouteClose.pointer?.trusted !== true
+    || engineeringRouteClose.pointer?.pointerType !== 'mouse' || !engineeringRouteClose.settled
+    || !remnantRouteAssessment.ok || !skimCommitPrecondition
+    || !skimOpen.opened || skimOpen.pointer?.trusted !== true || !skimTarget.ok || !skimTarget.focused
+    || !skimAssessment.ok) {
+    fails.push('ARC 3 STELLAR SKIM: real remnant route/native Enter did not commit exact Coronium/HP/carrier truth: '
+      + JSON.stringify({ engineeringRouteClose, remnantRouteEvidence, remnantRouteAssessment,
+        skimCommitPrecondition, skimReadError, skimOpen, skimTarget,
+        assessment: skimAssessment, bundle: skimBundle }));
+  }
+  if (remnantRouteAssessment.ok && skimAssessment.ok) {
+    const skimKeyMismatchState = structuredClone(skimAfterRaw.arc3);
+    const skimKeyMismatchRow = skimKeyMismatchState.stars.find(({ key }) => key === ARC3_REMNANT_STAR_ADDRESS.key);
+    if (skimKeyMismatchRow) skimKeyMismatchRow.address.star.x = 734.59;
+    const skimHierarchyAddressState = structuredClone(skimAfterRaw.arc3);
+    const skimHierarchyAddressRow = skimHierarchyAddressState.stars
+      .find(({ key }) => key === ARC3_REMNANT_STAR_ADDRESS.key);
+    if (skimHierarchyAddressRow) skimHierarchyAddressRow.address.star.parentCell.x = 18;
+    const skimDuplicateState = structuredClone(skimAfterRaw.arc3);
+    const skimDuplicateRow = skimDuplicateState.stars.find(({ key }) => key === ARC3_REMNANT_STAR_ADDRESS.key);
+    if (skimDuplicateRow) skimDuplicateState.stars.push(structuredClone(skimDuplicateRow));
+    const skimHierarchyAddressControl = assessArc3EngineeringAction({ ...skimBundle,
+      after: withArc3CarrierState(skimAfterRaw, skimHierarchyAddressState) });
+    const skimDuplicateControl = assessArc3EngineeringAction({ ...skimBundle,
+      after: withArc3CarrierState(skimAfterRaw, skimDuplicateState) });
+    const skimCargoDriftLegacy = structuredClone(skimAfterRaw.legacy);
+    skimCargoDriftLegacy.cargo = withEngineeringRowCount(
+      skimCargoDriftLegacy.cargo, 'Crn',
+      engineeringRowCount(skimCargoDriftLegacy.cargo, 'Crn') + 1,
+    );
+    const skimCargoDriftAfter = withArc3LegacyState(skimAfterRaw, skimCargoDriftLegacy);
+    const skimCargoControl = assessArc3EngineeringAction({
+      ...skimBundle,
+      after: skimCargoDriftAfter,
+      afterState: { ...skimAfterState,
+        save: { ...skimAfterState.save, cargo: structuredClone(skimCargoDriftLegacy.cargo) } },
+    });
+    const skimControls = [
+      assessArc3EngineeringAction({ ...skimBundle, before: withArc3LegacyState(
+        skimBeforeRaw, { ...skimBeforeRaw.legacy, hp: skimBeforeRaw.legacy.hp - 1 }) }),
+      skimCargoControl,
+      assessArc3EngineeringAction({ ...skimBundle, afterState: { ...skimAfterState,
+        save: { ...skimAfterState.save, stats: { ...skimAfterState.save.stats,
+          skims: skimBeforeState.save.stats.skims } } } }),
+      assessArc3EngineeringAction({ ...skimBundle,
+        after: withArc3CarrierState(skimAfterRaw, skimKeyMismatchState) }),
+      skimHierarchyAddressControl,
+      skimDuplicateControl,
+    ];
+    const skimHierarchyAddressRejectedSpecifically = skimHierarchyAddressControl.ok === false
+      && skimHierarchyAddressControl.reasons.includes('Skim exact full-address source hierarchy')
+      && skimHierarchyAddressControl.checks?.source?.afterRowsCanonical === true
+      && skimHierarchyAddressControl.checks?.source?.afterExpectedPresent === true
+      && skimHierarchyAddressControl.checks?.source?.afterKeyCoherent === true
+      && skimHierarchyAddressControl.checks?.source?.afterAddressExact === false;
+    const skimDuplicateRejectedSpecifically = skimDuplicateControl.ok === false
+      && skimDuplicateControl.reasons.includes('Skim exact full-address source hierarchy')
+      && skimDuplicateControl.checks?.source?.afterRowsCanonical === false;
+    const skimCargoRejectedSpecifically = skimCargoControl.ok === false
+      && canonicalJson(skimCargoControl.reasons)
+        === canonicalJson([
+          'unrelated durable Engineering rows/extensions preserved',
+          'remnant Skim cargo/HP/stat outcome',
+        ])
+      && skimCargoControl.checks?.unrelatedDurablePreserved === false
+      && namedCheckLeaves(skimCargoControl.checks).every(([path, value]) => (
+        path === 'unrelatedDurablePreserved' ? value === false : value === true
+      ));
+    if (skimControls.some((control) => control.ok)
+      || !skimHierarchyAddressRejectedSpecifically || !skimDuplicateRejectedSpecifically
+      || !skimCargoRejectedSpecifically) {
+      fails.push('ARC 3 SKIM CONTROLS FAILED — HP/coherent Coronium/stat/full-address/duplicate drift stayed green or non-isolated: '
+        + JSON.stringify({ skimControls, skimHierarchyAddressRejectedSpecifically,
+          skimDuplicateRejectedSpecifically, skimCargoRejectedSpecifically,
+          skimCargoDriftAfter }));
+    }
+  }
+
+  const engineeringReloadPrecondition = skimCommitPrecondition && skimAssessment.ok;
+  const engineeringReloadLabel = engineeringReloadPrecondition
+    ? 'Arc 3 four-action reload parity' : 'Arc 3 post-Skim-failure isolation reload';
+  const engineeringCommittedToken = await sliceToken(sess);
+  const engineeringReloadToken = await navigateToSlice(sess, URL0, engineeringReloadLabel);
+  await assertBootTickerRunning(engineeringReloadLabel);
+  await waitForF4Writable('Arc 3 four-action reloaded authority', { previousToken: engineeringCommittedToken });
+  const engineeringReloadState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const engineeringReloadRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const engineeringReloadBundle = { committed: skimAfterRaw, reloaded: engineeringReloadRaw,
+    committedState: skimAfterState, reloadedState: engineeringReloadState,
+    priorToken: engineeringCommittedToken, token: engineeringReloadToken };
+  let engineeringReloadAssessment = {
+    ok: false, blocked: true, reasons: ['successful remnant Skim precondition'],
+  };
+  let engineeringReloadControls = null;
+  if (engineeringReloadPrecondition) {
+    engineeringReloadAssessment = assessArc3EngineeringReload(engineeringReloadBundle);
+    if (!engineeringReloadAssessment.ok) {
+      fails.push('ARC 3 ENGINEERING RELOAD: four durable actions lost carrier/legacy/receipt/live parity: '
+        + JSON.stringify({ assessment: engineeringReloadAssessment, bundle: engineeringReloadBundle }));
+    }
+    const staleArc3 = structuredClone(engineeringReloadRaw.arc3);
+    staleArc3.revision = staleArc3.revision > 0 ? staleArc3.revision - 1 : staleArc3.revision + 1;
+    const staleEngineeringJson = JSON.stringify(staleArc3);
+    const stalePlayerRow = structuredClone(engineeringReloadRaw.playerRow);
+    const staleCarrier = stalePlayerRow?.extensions?.['arc3.engineering'];
+    if (staleCarrier && typeof staleCarrier === 'object') staleCarrier.json = staleEngineeringJson;
+    const staleEngineeringReloadRaw = {
+      ...engineeringReloadRaw,
+      arc3: staleArc3,
+      engineeringJson: staleEngineeringJson,
+      playerRow: stalePlayerRow,
+      playerRaw: JSON.stringify(stalePlayerRow),
+    };
+    const staleCarrierChanged = staleEngineeringReloadRaw.engineeringJson
+      !== engineeringReloadRaw.engineeringJson
+      && staleEngineeringReloadRaw.playerRaw !== engineeringReloadRaw.playerRaw;
+    const staleCarrierValid = arc3LegacyMirrorParity(staleEngineeringReloadRaw)
+      && stalePlayerRow?.extensions?.['arc3.engineering']?.json === staleEngineeringJson;
+    engineeringReloadControls = {
+      oldToken: assessArc3EngineeringReload({
+        ...engineeringReloadBundle, token: engineeringCommittedToken,
+      }),
+      staleCarrier: assessArc3EngineeringReload({
+        ...engineeringReloadBundle, reloaded: staleEngineeringReloadRaw,
+      }),
+      liveDrift: assessArc3EngineeringReload({
+        ...engineeringReloadBundle, reloadedState: { ...engineeringReloadState,
+          save: { ...engineeringReloadState.save, essence: engineeringReloadState.save.essence + 1 } },
+      }),
+    };
+    if (!staleCarrierChanged || !staleCarrierValid
+      || Object.values(engineeringReloadControls).some((control) => control.ok)) {
+      fails.push('ARC 3 ENGINEERING RELOAD CONTROLS FAILED — old token, asserted-distinct valid stale carrier, or live drift stayed green: '
+        + JSON.stringify({ engineeringReloadControls, staleCarrierChanged, staleCarrierValid,
+          currentEngineeringJson: engineeringReloadRaw.engineeringJson,
+          staleEngineeringJson }));
+    }
+  }
+
+  const storageOpen = await openEngineeringPanel('ARC 3 STORAGE CONTROL');
+  await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="fabricator"]')?.setAttribute('open','')`);
+  const storageBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const storageBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const storageBeforeUi = await evalIn(READ_ARC3_ENGINEERING_UI_EXPRESSION);
+  const storageArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextArc3ActionStorage()`);
+  const storageTarget = await pressEngineeringKeyboard('fabricate', 'plate');
+  let storageWaitError = null;
+  try {
+    await waitDesktopValue('Arc 3 storage refusal release', `(()=>{const s=window.__CF_SLICE__.api.state(),c=s.engineering?.actionCoordinator,
+      d=window.__CF_SLICE__.api.shipyardDiagnostics();return s.engineering?.lastOutcome==='fabricate-fixed-storage-error'
+        &&c?.inFlight===false&&c?.owner?.busy===false&&c?.owner?.operation===null
+        &&c?.faultArmed?.storageFailure===false&&c?.lastFault?.phase==='settled'
+        &&c?.lastFault?.outcome==='storage-error'&&d?.engineering?.pendingWork===0?s:null})()`);
+  } catch (cause) {
+    storageWaitError = String(cause?.message || cause);
+  }
+  const storageCaptureErrors = [];
+  const captureStorageTerminal = async (label, expression) => {
+    try { return await evalIn(expression); }
+    catch (cause) {
+      storageCaptureErrors.push(`${label}: ${String(cause?.message || cause)}`);
+      return null;
+    }
+  };
+  /* Always retain terminal product/raw/UI/interaction evidence—even when the
+     settlement predicate times out—so a red run diagnoses the final owner,
+     hook and fault state instead of escaping through the harness catch. */
+  const storageAfterState = await captureStorageTerminal(
+    'state', `window.__CF_SLICE__.api.state()`,
+  );
+  const storageAfterRaw = await captureStorageTerminal(
+    'raw', READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION,
+  );
+  const storageAfterUi = await captureStorageTerminal(
+    'ui', READ_ARC3_ENGINEERING_UI_EXPRESSION,
+  );
+  const storageAfterDiagnostics = await captureStorageTerminal(
+    'diagnostics', `window.__CF_SLICE__.api.shipyardDiagnostics()`,
+  );
+  let storageInteraction = null;
+  try { storageInteraction = await takeEngineeringInteraction('keyboard', 'fabricate'); }
+  catch (cause) {
+    storageCaptureErrors.push(`interaction: ${String(cause?.message || cause)}`);
+  }
+  const storageBundle = { before: storageBeforeRaw, after: storageAfterRaw,
+    beforeState: storageBeforeState, afterState: storageAfterState,
+    beforeUi: storageBeforeUi, afterUi: storageAfterUi, armed: storageArmed,
+    afterDiagnostics: storageAfterDiagnostics, interaction: storageInteraction,
+    waitError: storageWaitError, captureErrors: storageCaptureErrors };
+  const storageAssessment = assessArc3StorageRefusal(storageBundle);
+  if (storageWaitError !== null) {
+    fails.push('ARC 3 STORAGE SETTLEMENT TIMEOUT — retained terminal state/raw/UI/interaction/fault/owner evidence: '
+      + JSON.stringify({ storageOpen, storageTarget, assessment: storageAssessment, bundle: storageBundle }));
+  } else if (storageCaptureErrors.length > 0) {
+    fails.push('ARC 3 STORAGE TERMINAL CAPTURE FAILED — settlement completed but final evidence was incomplete: '
+      + JSON.stringify({ storageOpen, storageTarget, assessment: storageAssessment, bundle: storageBundle }));
+  } else if (!storageOpen.opened || storageOpen.pointer?.trusted !== true
+    || storageOpen.pointer?.pointerType !== 'mouse' || !storageTarget.ok || !storageAssessment.ok) {
+    fails.push('ARC 3 STORAGE CONVERGENCE: injected backend rejection mutated truth or retained the coordinator: '
+      + JSON.stringify({ storageOpen, storageTarget, assessment: storageAssessment, bundle: storageBundle }));
+  }
+  let storageControls = null;
+  if (storageAssessment.ok) {
+    const storageCoordinatorState = (coordinator) => ({
+      ...storageAfterState,
+      engineering: { ...storageAfterState.engineering, actionCoordinator: coordinator },
+    });
+    const storageCoordinator = storageAfterState.engineering.actionCoordinator;
+    const storageFaultState = (fault) => storageCoordinatorState({
+      ...storageCoordinator, lastFault: fault,
+    });
+    const storageFault = storageCoordinator.lastFault;
+    const controlReceipt = Object.freeze({
+      ordinal: 999999, kind: 'storage-control', witness: 'storage-control-receipt-must-stay-red',
+    });
+    const storageUiControls = {
+      renderedFacts: assessArc3StorageRefusal({ ...storageBundle,
+        afterUi: withEngineeringUiRecipeOwned(storageAfterUi, 'plate') }),
+      inventoryState: assessArc3StorageRefusal({ ...storageBundle,
+        afterUi: withEngineeringUiInventoryRevision(storageAfterUi) }),
+      renderedActionModels: assessArc3StorageRefusal({ ...storageBundle,
+        afterUi: withEngineeringUiActionModel(storageAfterUi) }),
+      inventoryController: assessArc3StorageRefusal({ ...storageBundle,
+        afterUi: withEngineeringUiInventoryController(storageAfterUi) }),
+    };
+    const storageDurableDeletionPaths = {
+      durableRevisionRaw: ['revisionRaw'],
+      durableLegacyRaw: ['legacyRaw'], durableLegacyRow: ['legacy'],
+      durablePlayerRaw: ['playerRaw'], durablePlayerRow: ['playerRow'],
+      durablePlayerSchema: ['playerRow', 'schema'], durablePlayerData: ['playerRow', 'data'],
+      durablePlayerExtensions: ['playerRow', 'extensions'],
+      durableCreaturesRaw: ['creaturesRaw'], durableCreaturesRow: ['creaturesRow'],
+      durableCreaturesSchema: ['creaturesRow', 'schema'],
+      durableCreaturesData: ['creaturesRow', 'data'],
+      durableCatalogRaw: ['catalogRaw'], durableCatalogRow: ['catalogRow'],
+      durableCatalogSchema: ['catalogRow', 'schema'], durableCatalogData: ['catalogRow', 'data'],
+      durableInventoryRaw: ['inventoryRaw'], durableInventoryRow: ['inventoryRow'],
+      durableInventorySchema: ['inventoryRow', 'schema'],
+      durableInventoryData: ['inventoryRow', 'data'],
+      durableInventoryExtensions: ['inventoryRow', 'extensions'],
+      durableSettingsRaw: ['settingsRaw'], durableSettingsRow: ['settingsRow'],
+      durableSettingsSchema: ['settingsRow', 'schema'], durableSettingsData: ['settingsRow', 'data'],
+      durableF4Version: ['authorityVersion'], durableF4Json: ['authorityJson'],
+      durableF4Parsed: ['authority'], durableArc3Version: ['engineeringVersion'],
+      durableArc3Json: ['engineeringJson'], durableArc3Parsed: ['arc3'],
+      durableArc2Version: ['arc2Version'], durableArc2Json: ['arc2Json'],
+      durableArc2Parsed: ['arc2'], durableReceiptKeys: ['receiptKeys'],
+      durableReceiptRawRows: ['receiptRawRows'], durableReceiptRows: ['receiptRows'],
+      durableF4Carrier: ['playerRow', 'extensions', 'f4.authority'],
+      durableArc3Carrier: ['playerRow', 'extensions', 'arc3.engineering'],
+      durableArc2Carrier: ['inventoryRow', 'extensions', 'arc2.loot'],
+    };
+    const deleteStorageEvidencePath = (value, path) => {
+      const copy = structuredClone(value);
+      let owner = copy;
+      for (const key of path.slice(0, -1)) owner = owner?.[key];
+      if (owner && typeof owner === 'object') delete owner[path.at(-1)];
+      return copy;
+    };
+    const storageDurableDeletionControls = Object.fromEntries(
+      Object.entries(storageDurableDeletionPaths).map(([name, path]) => [name,
+        assessArc3StorageRefusal({ ...storageBundle,
+          before: deleteStorageEvidencePath(storageBeforeRaw, path),
+          after: deleteStorageEvidencePath(storageAfterRaw, path) })]),
+    );
+    const storageSplitMirrorControls = {
+      durableSplitOnlyAt: assessArc3StorageRefusal({ ...storageBundle,
+        before: withArc3SplitOnlyAtDrift(storageBeforeRaw),
+        after: withArc3SplitOnlyAtDrift(storageAfterRaw) }),
+      durableLegacyOnlyAt: assessArc3StorageRefusal({ ...storageBundle,
+        before: withArc3LegacyOnlyAtDrift(storageBeforeRaw),
+        after: withArc3LegacyOnlyAtDrift(storageAfterRaw) }),
+    };
+    storageControls = {
+      timeout: assessArc3StorageRefusal({ ...storageBundle, waitError: 'control timeout' }),
+      lastOutcome: assessArc3StorageRefusal({ ...storageBundle,
+        afterState: { ...storageAfterState, engineering: {
+          ...storageAfterState.engineering, lastOutcome: 'fabricate-fixed-rejected' } } }),
+      faultOutcome: assessArc3StorageRefusal({ ...storageBundle,
+        afterState: storageFaultState({ ...storageFault, outcome: 'rejected' }) }),
+      faultPhase: assessArc3StorageRefusal({ ...storageBundle,
+        afterState: storageFaultState({ ...storageFault, phase: 'injecting' }) }),
+      faultInjection: assessArc3StorageRefusal({ ...storageBundle,
+        afterState: storageFaultState({ ...storageFault, injection: 'stale-authority' }) }),
+      revision: assessArc3StorageRefusal({ ...storageBundle, after: { ...storageAfterRaw,
+        revision: storageAfterRaw.revision + 1,
+        revisionRaw: String(storageAfterRaw.revision + 1) } }),
+      receipt: assessArc3StorageRefusal({ ...storageBundle, after: { ...storageAfterRaw,
+        receiptKeys: [...storageAfterRaw.receiptKeys, 'receipt:storage-control'],
+        receiptRawRows: [...storageAfterRaw.receiptRawRows, JSON.stringify(controlReceipt)],
+        receiptRows: [...storageAfterRaw.receiptRows, controlReceipt] } }),
+      retainedOwner: assessArc3StorageRefusal({ ...storageBundle,
+        afterState: storageCoordinatorState({ ...storageCoordinator,
+          owner: { ...storageCoordinator.owner, busy: true, operation: 'arc3.fabricate-fixed' } }) }),
+      retainedInFlight: assessArc3StorageRefusal({ ...storageBundle,
+        afterState: storageCoordinatorState({ ...storageCoordinator, inFlight: true }) }),
+      hookNotCleared: assessArc3StorageRefusal({ ...storageBundle,
+        afterState: storageCoordinatorState({ ...storageCoordinator,
+          faultArmed: { ...storageCoordinator.faultArmed, storageFailure: true } }) }),
+      holdDrift: assessArc3StorageRefusal({ ...storageBundle,
+        afterState: storageCoordinatorState({ ...storageCoordinator,
+          hold: { ...storageCoordinator.hold, phase: 'armed' } }) }),
+      pendingWork: assessArc3StorageRefusal({ ...storageBundle,
+        afterDiagnostics: { ...storageAfterDiagnostics, engineering: {
+          ...storageAfterDiagnostics.engineering, pendingWork: 1 } } }),
+      trustedKey: assessArc3StorageRefusal({ ...storageBundle, interaction: { ...storageInteraction,
+        keys: storageInteraction.keys.map((row) => ({ ...row, id: 'wire' })) } }),
+      ...storageUiControls,
+      ...storageDurableDeletionControls,
+      ...storageSplitMirrorControls,
+    };
+    const expectedStorageCheck = {
+      timeout: 'waitSettled', lastOutcome: 'outcome', faultOutcome: 'faultOutcome', faultPhase: 'faultSettlement',
+      faultInjection: 'faultInjection', revision: 'revisionStable', receipt: 'receiptsStable',
+      retainedOwner: 'ownerReleased', retainedInFlight: 'ownerReleased',
+      hookNotCleared: 'armedCleared', holdDrift: 'holdStable',
+      pendingWork: 'diagnosticsSettled', trustedKey: 'trustedKey',
+      renderedFacts: 'ui', inventoryState: 'ui', renderedActionModels: 'ui', inventoryController: 'ui',
+      ...Object.fromEntries(Object.keys(storageDurableDeletionControls)
+        .map((name) => [name, 'durableEvidenceComplete'])),
+      ...Object.fromEntries(Object.keys(storageSplitMirrorControls)
+        .map((name) => [name, 'durableEvidenceComplete'])),
+    };
+    const storageControlsIsolated = Object.entries(storageControls).every(([name, assessment]) => {
+      const expected = expectedStorageCheck[name];
+      return assessment.ok === false && assessment.checks?.[expected] === false
+        && Object.entries(assessment.checks ?? {}).every(([check, value]) => (
+          check === expected ? value === false : value === true
+        ));
+    });
+    const storageUiControlsIsolated = Object.entries(storageUiControls)
+      .every(([check, assessment]) => isolatesEngineeringUiCheck(assessment, check));
+    if (!storageControlsIsolated || !storageUiControlsIsolated) {
+      fails.push('ARC 3 STORAGE CONTROLS FAILED — named outcome/fault/revision/receipt/durable-carrier/owner/UI/native-input drift was not isolated red: '
+        + JSON.stringify({ storageControls, storageControlsIsolated, storageUiControlsIsolated }));
+    }
+  }
+
+  const staleBeforeToken = await sliceToken(sess);
+  const staleBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const staleBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const staleFaultCaptureArmed = await evalIn(`(()=>{const key=${JSON.stringify(ARC3_STALE_FAULT_CAPTURE_KEY)},
+    schema=${JSON.stringify(ARC3_STALE_FAULT_CAPTURE_SCHEMA)},S=window.__CF_SLICE__;
+    sessionStorage.removeItem(key);const handler=()=>{const state=S?.api?.state?.();
+      const fault=state?.engineering?.actionCoordinator?.lastFault??null;
+      sessionStorage.setItem(key,JSON.stringify({schema,documentToken:S?.documentToken??null,
+        fault:fault===null?null:JSON.parse(JSON.stringify(fault))}));};
+    addEventListener('pagehide',handler,{capture:true,once:true});return true;})()`);
+  const staleArmed = await evalIn(`window.__CF_SLICE__.api.__smokeStaleNextArc3ActionAuthority()`);
+  const staleTarget = await pressEngineeringKeyboard('fabricate', 'plate');
+  await waitForSlice(sess, 'Arc 3 stale-authority convergence', { previousToken: staleBeforeToken });
+  await assertBootTickerRunning('Arc 3 stale-authority convergence');
+  const staleReady = await waitForF4Writable('Arc 3 stale-authority replacement', { previousToken: staleBeforeToken });
+  const staleAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const staleAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const staleFaultCapture = await evalIn(`(()=>{const key=${JSON.stringify(ARC3_STALE_FAULT_CAPTURE_KEY)},
+    raw=sessionStorage.getItem(key);let parsed=null;try{parsed=raw===null?null:JSON.parse(raw)}catch{}
+    sessionStorage.removeItem(key);return {raw,parsed,cleared:sessionStorage.getItem(key)===null};})()`);
+  const staleInteraction = await takeEngineeringInteraction('keyboard', 'fabricate');
+  const staleBundle = { before: staleBeforeRaw, after: staleAfterRaw, beforeState: staleBeforeState,
+    afterState: staleAfterState, armed: staleArmed, captureArmed: staleFaultCaptureArmed,
+    faultCapture: staleFaultCapture, interaction: staleInteraction,
+    priorToken: staleBeforeToken, token: staleReady.token };
+  const staleAssessment = assessArc3StaleConvergence(staleBundle);
+  if (!staleTarget.ok || !staleAssessment.ok) {
+    fails.push('ARC 3 STALE CONVERGENCE: visible stale action did not reload receipt-free durable truth: '
+      + JSON.stringify({ staleTarget, assessment: staleAssessment, bundle: staleBundle }));
+  }
+  if (staleAssessment.ok) {
+    const faultCaptureVariant = (fields) => {
+      const parsed = structuredClone(staleFaultCapture.parsed);
+      parsed.fault = { ...parsed.fault, ...fields };
+      return { raw: JSON.stringify(parsed), parsed, cleared: true };
+    };
+    const withoutStaleEvidence = (value, paths) => paths.reduce(
+      (current, path) => deleteArc3EvidencePath(current, path), value,
+    );
+    const staleWithoutCatalogBefore = withoutStaleEvidence(staleBeforeRaw, [
+      ['catalogRaw'], ['catalogRow'],
+    ]);
+    const staleWithoutCatalogAfter = withoutStaleEvidence(staleAfterRaw, [
+      ['catalogRaw'], ['catalogRow'],
+    ]);
+    const staleWithoutReceiptsBefore = withoutStaleEvidence(staleBeforeRaw, [
+      ['receiptKeys'], ['receiptRawRows'], ['receiptRows'],
+    ]);
+    const staleWithoutReceiptsAfter = withoutStaleEvidence(staleAfterRaw, [
+      ['receiptKeys'], ['receiptRawRows'], ['receiptRows'],
+    ]);
+    const withStaleInvalidArc3Shape = (value) => {
+      const copy = structuredClone(value);
+      copy.arc3.schema = 'engineering-state-control-invalid';
+      copy.engineeringJson = JSON.stringify(copy.arc3);
+      copy.playerRow.extensions['arc3.engineering'].json = copy.engineeringJson;
+      copy.playerRaw = JSON.stringify(copy.playerRow);
+      return copy;
+    };
+    const byteDriftAfter = structuredClone(staleAfterRaw);
+    byteDriftAfter.playerRow.extensions['stale.control'] = { version: 1, json: '{}' };
+    byteDriftAfter.playerRaw = JSON.stringify(byteDriftAfter.playerRow);
+    const receiptControl = { ordinal: 999, kind: 'stale-control', witness: 'stale-control-valid-receipt' };
+    const revisionAfter = { ...staleAfterRaw, revision: staleAfterRaw.revision + 1,
+      revisionRaw: String(staleAfterRaw.revision + 1) };
+    const revisionState = structuredClone(staleAfterState);
+    revisionState.persistence.runtime.revision = revisionAfter.revision;
+    const staleControls = {
+      actionArmed: assessArc3StaleConvergence({ ...staleBundle, armed: false }),
+      captureArmed: assessArc3StaleConvergence({ ...staleBundle, captureArmed: false }),
+      documentIdentity: assessArc3StaleConvergence({ ...staleBundle, token: staleBeforeToken }),
+      captureEnvelope: assessArc3StaleConvergence({ ...staleBundle,
+        faultCapture: { ...staleFaultCapture, raw: `${staleFaultCapture.raw}\n` } }),
+      alignedBoot: assessArc3StaleConvergence({ ...staleBundle, afterState: {
+        ...staleAfterState, persistence: { ...staleAfterState.persistence, bootRouteRepairPending: true },
+      } }),
+      quiescentReadOnlyBoot: assessArc3StaleConvergence({ ...staleBundle, afterState: {
+        ...staleAfterState, sceneResources: { ...staleAfterState.sceneResources, pendingPersistenceWrites: 1 },
+      } }),
+      absentCatalog: assessArc3StaleConvergence({ ...staleBundle,
+        before: staleWithoutCatalogBefore, after: staleWithoutCatalogAfter }),
+      absentReceipts: assessArc3StaleConvergence({ ...staleBundle,
+        before: staleWithoutReceiptsBefore, after: staleWithoutReceiptsAfter }),
+      revisionTopology: assessArc3StaleConvergence({ ...staleBundle,
+        after: revisionAfter, afterState: revisionState }),
+      exactDurableBytes: assessArc3StaleConvergence({ ...staleBundle, after: byteDriftAfter }),
+      carrierShapes: assessArc3StaleConvergence({ ...staleBundle,
+        before: withStaleInvalidArc3Shape(staleBeforeRaw),
+        after: withStaleInvalidArc3Shape(staleAfterRaw) }),
+      rngStable: assessArc3StaleConvergence({ ...staleBundle, afterState: {
+        ...staleAfterState, persistence: { ...staleAfterState.persistence,
+          runtime: { ...staleAfterState.persistence.runtime,
+            sessionSeed: (staleAfterState.persistence.runtime.sessionSeed + 1) >>> 0 } },
+      } }),
+      receiptsStable: assessArc3StaleConvergence({ ...staleBundle, after: { ...staleAfterRaw,
+        receiptKeys: [...staleAfterRaw.receiptKeys, 'receipt:999'],
+        receiptRows: [...staleAfterRaw.receiptRows, receiptControl],
+        receiptRawRows: [...staleAfterRaw.receiptRawRows, JSON.stringify(receiptControl)] } }),
+      liveProductStable: assessArc3StaleConvergence({ ...staleBundle, afterState: {
+        ...staleAfterState, save: { ...staleAfterState.save, essence: staleAfterState.save.essence + 1 },
+      } }),
+      engineeringOutcomeClear: assessArc3StaleConvergence({ ...staleBundle, afterState: {
+        ...staleAfterState, engineering: { ...staleAfterState.engineering,
+          lastOutcome: 'fabricate-fixed-stale' },
+      } }),
+      coordinatorReleased: assessArc3StaleConvergence({ ...staleBundle, afterState: {
+        ...staleAfterState, engineering: { ...staleAfterState.engineering,
+          actionCoordinator: { ...staleAfterState.engineering.actionCoordinator, inFlight: true } },
+      } }),
+      faultSchema: assessArc3StaleConvergence({ ...staleBundle,
+        faultCapture: faultCaptureVariant({ schema: 'cf-v2-arc3-action-fault-witness/v2' }) }),
+      faultOperation: assessArc3StaleConvergence({ ...staleBundle,
+        faultCapture: faultCaptureVariant({ operation: 'arc3.mine-world' }) }),
+      faultInjection: assessArc3StaleConvergence({ ...staleBundle,
+        faultCapture: faultCaptureVariant({ injection: 'storage-failure' }) }),
+      faultPhase: assessArc3StaleConvergence({ ...staleBundle,
+        faultCapture: faultCaptureVariant({ phase: 'injecting' }) }),
+      faultRevision: assessArc3StaleConvergence({ ...staleBundle,
+        faultCapture: faultCaptureVariant({ injectedRevision: staleBeforeRaw.revision + 2 }) }),
+      faultOutcome: assessArc3StaleConvergence({ ...staleBundle,
+        faultCapture: faultCaptureVariant({ outcome: 'committed' }) }),
+      nativeInteraction: assessArc3StaleConvergence({ ...staleBundle,
+        interaction: { ...staleInteraction,
+          clicks: staleInteraction.clicks.map((row) => ({ ...row, operation: 'research' })) } }),
+    };
+    const staleControlCheck = {
+      absentCatalog: 'durableEvidenceComplete', absentReceipts: 'durableEvidenceComplete',
+    };
+    const staleControlsIsolated = Object.entries(staleControls)
+      .every(([check, assessment]) => isolatesNamedCheck(
+        assessment, staleControlCheck[check] ?? check,
+      ));
+    if (!staleControlsIsolated) {
+      fails.push('ARC 3 STALE CONTROLS FAILED — named document/quiescence/revision/byte/carrier/RNG/receipt/live/fault/native drift was not isolated red: '
+        + JSON.stringify({ staleControls, staleControlsIsolated }));
+    }
+  }
+
+  const publicationOpen = await openEngineeringPanel('ARC 3 PUBLICATION CONTROL');
+  await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="fabricator"]')?.setAttribute('open','')`);
+  const publicationBeforeToken = await sliceToken(sess);
+  const publicationBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const publicationBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const publicationBeforeUi = await evalIn(READ_ARC3_ENGINEERING_UI_EXPRESSION);
+  const publicationFaultCaptureArmed = await evalIn(`(()=>{const key=${JSON.stringify(ARC3_PUBLICATION_FAULT_CAPTURE_KEY)},
+    schema=${JSON.stringify(ARC3_PUBLICATION_FAULT_CAPTURE_SCHEMA)},S=window.__CF_SLICE__;
+    sessionStorage.removeItem(key);const handler=()=>{const state=S?.api?.state?.();
+      const fault=state?.engineering?.actionCoordinator?.lastFault??null;
+      sessionStorage.setItem(key,JSON.stringify({schema,documentToken:S?.documentToken??null,
+        fault:fault===null?null:JSON.parse(JSON.stringify(fault))}));};
+    addEventListener('pagehide',handler,{capture:true,once:true});return true;})()`);
+  const publicationArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextArc3Publication()`);
+  const publicationHoldArmed = await evalIn(`window.__CF_SLICE__.api.__smokeArmArc3ActionHold()`);
+  const publicationTarget = await pressEngineeringPointer('fabricate', 'plate');
+  const publicationHolding = await waitDesktopValue('Arc 3 publication held before commit', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.engineering?.actionCoordinator?.hold?.phase==='holding'
+      &&s.engineering.actionCoordinator.owner.operation==='arc3.fabricate-fixed'?s:null})()`);
+  const publicationHeldRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const publicationHeldUi = await evalIn(READ_ARC3_ENGINEERING_UI_EXPRESSION);
+  const publicationHoldBundle = { beforeRaw: publicationBeforeRaw, heldRaw: publicationHeldRaw,
+    beforeState: publicationBeforeState, holdingState: publicationHolding,
+    beforeUi: publicationBeforeUi, heldUi: publicationHeldUi };
+  const publicationHoldAssessment = assessArc3PublicationHold(publicationHoldBundle);
+  const publicationNoOptimism = publicationHoldAssessment.ok;
+  const publicationReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseArc3ActionHold()`);
+  await waitForSlice(sess, 'Arc 3 publication convergence', { previousToken: publicationBeforeToken });
+  await assertBootTickerRunning('Arc 3 publication convergence');
+  const publicationReady = await waitForF4Writable('Arc 3 publication replacement', { previousToken: publicationBeforeToken });
+  const publicationAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const publicationAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const publicationFaultCapture = await evalIn(`(()=>{const key=${JSON.stringify(ARC3_PUBLICATION_FAULT_CAPTURE_KEY)},
+    raw=sessionStorage.getItem(key);let parsed=null;try{parsed=raw===null?null:JSON.parse(raw)}catch{}
+    sessionStorage.removeItem(key);return {raw,parsed,cleared:sessionStorage.getItem(key)===null};})()`);
+  const publicationInteraction = await takeEngineeringInteraction('pointer', 'fabricate');
+  const publicationActionBundle = { before: publicationBeforeRaw, after: publicationAfterRaw,
+    beforeState: publicationBeforeState, afterState: publicationAfterState, interaction: publicationInteraction,
+    operation: 'fabricate-fixed', id: 'plate', publicationReload: true };
+  const publicationAssessment = assessArc3EngineeringAction(publicationActionBundle);
+  const publicationFaultAssessment = assessArc3PublicationFaultCapture({
+    armed: publicationArmed, captureArmed: publicationFaultCaptureArmed,
+    faultCapture: publicationFaultCapture, priorToken: publicationBeforeToken,
+    beforeRevision: publicationBeforeRaw.revision, afterRevision: publicationAfterRaw.revision,
+  });
+  const publicationCoordinator = publicationAfterState.engineering?.actionCoordinator;
+  const publicationConverged = publicationArmed && publicationFaultCaptureArmed
+    && publicationHoldArmed && publicationReleased
+    && publicationNoOptimism && publicationReady.token !== publicationBeforeToken && publicationAssessment.ok
+    && publicationFaultAssessment.ok
+    && publicationCoordinator?.inFlight === false && publicationCoordinator?.owner?.busy === false
+    && publicationCoordinator?.owner?.operation === null;
+  if (!publicationOpen.opened || publicationOpen.pointer?.trusted !== true
+    || publicationOpen.pointer?.pointerType !== 'mouse' || !publicationTarget.ok || !publicationConverged) {
+    fails.push('ARC 3 PUBLICATION CONVERGENCE: post-durable publication fault did not reload exactly one receipted Plate: '
+      + JSON.stringify({ publicationOpen, publicationTarget, publicationArmed, publicationHoldArmed,
+        publicationReleased, publicationNoOptimism, holdAssessment: publicationHoldAssessment,
+        faultCapture: publicationFaultCapture, faultAssessment: publicationFaultAssessment,
+        holdBundle: publicationHoldBundle, assessment: publicationAssessment,
+        bundle: publicationActionBundle }));
+  }
+  const publicationHoldUiControls = {
+    renderedFacts: assessArc3PublicationHold({ ...publicationHoldBundle,
+      heldUi: withEngineeringUiRecipeOwned(publicationHeldUi, 'plate') }),
+    inventoryState: assessArc3PublicationHold({ ...publicationHoldBundle,
+      heldUi: withEngineeringUiInventoryRevision(publicationHeldUi) }),
+    renderedActionModels: assessArc3PublicationHold({ ...publicationHoldBundle,
+      heldUi: withEngineeringUiActionModel(publicationHeldUi) }),
+    inventoryController: assessArc3PublicationHold({ ...publicationHoldBundle,
+      heldUi: withEngineeringUiInventoryController(publicationHeldUi) }),
+  };
+  const publicationHoldControls = [
+    ...Object.values(publicationHoldUiControls),
+    assessArc3PublicationHold({ ...publicationHoldBundle, holdingState: { ...publicationHolding,
+      save: { ...publicationHolding?.save,
+        essence: Number.isFinite(publicationHolding?.save?.essence)
+          ? publicationHolding.save.essence + 1 : 'control-essence' } } }),
+  ];
+  const publicationHoldUiControlsIsolated = Object.entries(publicationHoldUiControls)
+    .every(([check, assessment]) => isolatesEngineeringUiCheck(assessment, check));
+  const publicationBootWriteState = structuredClone(publicationAfterState);
+  publicationBootWriteState.persistence.runtime.commits = 1;
+  publicationBootWriteState.persistence.lastOutcome = `committed:${publicationAfterRaw.revision}`;
+  const publicationBootWriteControl = assessArc3EngineeringAction({
+    ...publicationActionBundle, afterState: publicationBootWriteState,
+  });
+  const publicationCarriedOutcomeState = structuredClone(publicationAfterState);
+  publicationCarriedOutcomeState.engineering.lastOutcome = 'fabricate-fixed-committed';
+  const publicationCarriedOutcomeControl = assessArc3EngineeringAction({
+    ...publicationActionBundle, afterState: publicationCarriedOutcomeState,
+  });
+  const publicationReadOnlyControlsRejectedSpecifically = [
+    publicationBootWriteControl, publicationCarriedOutcomeControl,
+  ].every((control) => control.ok === false
+    && canonicalJson(control.reasons)
+      === canonicalJson(['replacement publication read-only convergence'])
+    && control.checks?.replacementReadOnly === false);
+  const publicationRevisionAfter = { ...publicationAfterRaw,
+    revision: publicationAfterRaw.revision + 1,
+    revisionRaw: String(publicationAfterRaw.revision + 1) };
+  const publicationRevisionState = structuredClone(publicationAfterState);
+  publicationRevisionState.persistence.runtime.revision = publicationRevisionAfter.revision;
+  const publicationRevisionControl = assessArc3EngineeringAction({
+    ...publicationActionBundle, after: publicationRevisionAfter, afterState: publicationRevisionState,
+  });
+  const publicationExtraReceipt = {
+    ordinal: 999, kind: 'publication-control', witness: 'publication-control-extra-valid-receipt',
+  };
+  const publicationReceiptControl = assessArc3EngineeringAction({
+    ...publicationActionBundle, after: { ...publicationAfterRaw,
+      receiptKeys: [...publicationAfterRaw.receiptKeys, 'receipt:999'],
+      receiptRawRows: [...publicationAfterRaw.receiptRawRows, JSON.stringify(publicationExtraReceipt)],
+      receiptRows: [...publicationAfterRaw.receiptRows, publicationExtraReceipt] },
+  });
+  const publicationAtomicControlsRejectedSpecifically = [
+    publicationRevisionControl, publicationReceiptControl,
+  ].every((control) => control.ok === false
+    && canonicalJson(control.reasons)
+      === canonicalJson(['one atomic F4 revision/RNG/receipt/Arc 3 carrier outcome']));
+  const publicationFaultVariant = (fields) => {
+    const parsed = structuredClone(publicationFaultCapture.parsed);
+    if (!parsed || typeof parsed !== 'object') return { raw: null, parsed: null, cleared: true };
+    parsed.fault = { ...parsed.fault, ...fields };
+    return { raw: JSON.stringify(parsed), parsed, cleared: true };
+  };
+  const publicationFaultAbsent = structuredClone(publicationFaultCapture.parsed) ?? {
+    schema: ARC3_PUBLICATION_FAULT_CAPTURE_SCHEMA,
+    documentToken: publicationBeforeToken,
+    fault: null,
+  };
+  publicationFaultAbsent.fault = null;
+  const publicationFaultBundle = {
+    armed: publicationArmed, captureArmed: publicationFaultCaptureArmed,
+    faultCapture: publicationFaultCapture, priorToken: publicationBeforeToken,
+    beforeRevision: publicationBeforeRaw.revision, afterRevision: publicationAfterRaw.revision,
+  };
+  const publicationFaultControls = {
+    armed: assessArc3PublicationFaultCapture({ ...publicationFaultBundle, armed: false }),
+    captureArmed: assessArc3PublicationFaultCapture({ ...publicationFaultBundle, captureArmed: false }),
+    captureEnvelope: assessArc3PublicationFaultCapture({ ...publicationFaultBundle,
+      faultCapture: { ...publicationFaultCapture, raw: null, parsed: null } }),
+    faultShape: assessArc3PublicationFaultCapture({ ...publicationFaultBundle,
+      faultCapture: { raw: JSON.stringify(publicationFaultAbsent),
+        parsed: publicationFaultAbsent, cleared: true } }),
+    faultSchema: assessArc3PublicationFaultCapture({ ...publicationFaultBundle,
+      faultCapture: publicationFaultVariant({ schema: 'cf-v2-arc3-action-fault-witness/v2' }) }),
+    faultOperation: assessArc3PublicationFaultCapture({ ...publicationFaultBundle,
+      faultCapture: publicationFaultVariant({ operation: 'arc3.mine-world' }) }),
+    faultInjection: assessArc3PublicationFaultCapture({ ...publicationFaultBundle,
+      faultCapture: publicationFaultVariant({ injection: 'stale-authority' }) }),
+    faultPhase: assessArc3PublicationFaultCapture({ ...publicationFaultBundle,
+      faultCapture: publicationFaultVariant({ phase: 'injecting' }) }),
+    faultRevisions: assessArc3PublicationFaultCapture({ ...publicationFaultBundle,
+      faultCapture: publicationFaultVariant({
+        injectedRevision: publicationAfterRaw.revision + 1,
+      }) }),
+    faultOutcome: assessArc3PublicationFaultCapture({ ...publicationFaultBundle,
+      faultCapture: publicationFaultVariant({ outcome: 'committed' }) }),
+  };
+  const publicationFaultControlsIsolated = Object.entries(publicationFaultControls)
+    .every(([check, assessment]) => isolatesNamedCheck(assessment, check));
+  if ((publicationConverged && (publicationReady.token === publicationBeforeToken
+    || assessArc3EngineeringAction({ ...publicationActionBundle, interaction: {
+      ...publicationInteraction,
+      clicks: [...(Array.isArray(publicationInteraction?.clicks) ? publicationInteraction.clicks : []),
+        publicationInteraction?.clicks?.[0]],
+    } }).ok)) || publicationHoldControls.some((control) => control.ok)
+    || !publicationReadOnlyControlsRejectedSpecifically
+    || !publicationAtomicControlsRejectedSpecifically
+    || !publicationFaultControlsIsolated
+    || !publicationHoldUiControlsIsolated) {
+    fails.push('ARC 3 PUBLICATION CONTROLS FAILED — same document, duplicate activation, replacement boot write, or premature rendered/inventory mutation stayed green: '
+      + JSON.stringify({ publicationHoldControls, publicationBootWriteControl,
+        publicationCarriedOutcomeControl, publicationReadOnlyControlsRejectedSpecifically,
+        publicationRevisionControl,
+        publicationReceiptControl, publicationAtomicControlsRejectedSpecifically,
+        publicationFaultControls, publicationFaultControlsIsolated,
+        publicationHoldUiControlsIsolated }));
+  }
+
   /* A current one-key Training snapshot can be perfectly source-proven and
      still unauthorized by the saved expedition. Real Skip must apply the
      same Prime/Charter seam as Search/Atlas: home fallback, snapshot clear,
@@ -4831,49 +8455,64 @@ try {
       + JSON.stringify(authTrainingBoot));
   }
   requireRenderedSceneMatch('TRAINING AUTHORIZATION BOOT', authTrainingBoot);
-  const authTrainingLedger = (state) => JSON.stringify({
-    ...state.save,
-    /* One canonical export unions retained landed identity with conquered
-       and mined worlds. That 2 → 6 normalization is expected save hygiene,
-       not Training ledger loss. Assert it separately and compare everything
-       else byte-for-byte at this diagnostic surface. */
-    landed: null,
-    viewType: null,
-    savedView: null,
-  });
+  const authTrainingBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
   const authTrainingSkip = await evalIn(`(()=>{ const button=document.querySelector('[data-sel="tutskip"]');
     button?.click();return {pressed:!!button};})()`);
   const authTrainingRestored = await waitDesktopValue('unauthorized Training restore home fallback', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return !s.tutActive&&s.tutDone&&s.mode==='universe'&&s.tutSnapshotPending===null?s:null;})()`);
-  const authTrainingOutcome = (state) => state.mode === 'universe'
+  const authTrainingAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const authTrainingTransactionBundle = {
+    before: authTrainingBeforeRaw, after: authTrainingAfterRaw,
+    beforeState: authTrainingBoot, afterState: authTrainingRestored,
+    ownedSaveKeys: ['viewType', 'savedView', 'mined'],
+    allowInvalidAtlasCleanup: true,
+    preCodecSource: authTrainingSource,
+  };
+  const authTrainingTransaction = assessTrainingCanonicalTransaction(authTrainingTransactionBundle);
+  const authTrainingCarrierModes = assessTrainingCarrierModeBaselines(authTrainingTransactionBundle);
+  const authTrainingHomeRoute = (state) => state.mode === 'universe'
     && state.gal === null && state.star === null && state.planet === null
-    && state.tutSnapshotPending === null && state.save.savedView === null
+    && state.save.savedView === null;
+  const authTrainingSnapshotClear = (state) => state.tutSnapshotPending === null;
+  const authTrainingOutcome = (state) => authTrainingHomeRoute(state)
+    && authTrainingSnapshotClear(state)
     && JSON.stringify(authTrainingBoot.save.landed) === JSON.stringify(CANONICAL_VETERAN_LANDED)
     && JSON.stringify(state.save.landed) === JSON.stringify(CANONICAL_VETERAN_LANDED)
-    && authTrainingLedger(state) === authTrainingLedger(authTrainingBoot)
+    && authTrainingTransaction.ok
+    && authTrainingCarrierModes.ok
     && renderedSceneAdvanced(authTrainingBoot, state);
   if (!authTrainingSkip.pressed || !authTrainingOutcome(authTrainingRestored)) {
     fails.push('TRAINING AUTHORIZATION: real Skip did not home-fallback/clear while preserving unrelated ledger: '
-      + JSON.stringify({ pressed: authTrainingSkip.pressed, before: authTrainingBoot, after: authTrainingRestored }));
+      + JSON.stringify({ pressed: authTrainingSkip.pressed, before: authTrainingBoot, after: authTrainingRestored,
+        transaction: authTrainingTransaction, carrierModes: authTrainingCarrierModes }));
   }
   requireRenderedSceneAdvance('TRAINING AUTHORIZATION FALLBACK', authTrainingBoot, authTrainingRestored);
-  const authTrainingCtl = {
-    ...authTrainingRestored,
-    mode: 'galaxy', gal: OUTER_REACH_GALAXY.seed,
-    tutSnapshotPending: { view: outerReachGalaxyView() },
+  const authHomeRouteControl = {
+    ...authTrainingRestored, mode: 'galaxy', gal: OUTER_REACH_GALAXY.seed,
   };
-  if (authTrainingOutcome(authTrainingCtl)) {
-    fails.push('TRAINING AUTHORIZATION CONTROL FAILED — injected outer restore/uncleared snapshot stayed green');
+  const authSnapshotControl = {
+    ...authTrainingRestored, tutSnapshotPending: { view: outerReachGalaxyView() },
+  };
+  const authTrainingControls = authTrainingTransaction.ok
+    ? trainingCanonicalControlAssessments(authTrainingTransactionBundle) : null;
+  const authTrainingControlsIsolated = authTrainingControls === null
+    ? null : trainingCanonicalControlsAreIsolated(authTrainingControls);
+  if (authTrainingHomeRoute(authHomeRouteControl)
+    || authTrainingSnapshotClear(authSnapshotControl)
+    || !authTrainingCarrierModes.ok
+    || (authTrainingTransaction.ok && !authTrainingControlsIsolated)) {
+    fails.push('TRAINING AUTHORIZATION CONTROLS FAILED — named home-route/snapshot/ledger/seed/order/clamp/fixed-point/raw-live control stayed green or non-isolated: '
+      + JSON.stringify({ authTrainingControls, authTrainingControlsIsolated,
+        authTrainingCarrierModes }));
   }
-  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
-  const authTrainingRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const authTrainingRaw = authTrainingAfterRaw.legacy;
   if (Object.prototype.hasOwnProperty.call(authTrainingRaw, 'tsnap') || authTrainingRaw.view !== null
     || authTrainingRaw.me !== importedExplorerName(TRAINING_AUTH_EXPLORER_NAME)
     || authTrainingRaw.essence !== 3456
     || JSON.stringify(authTrainingRaw.land) !== JSON.stringify(CANONICAL_VETERAN_LANDED)
     || Object.keys(authTrainingRaw.prime || {}).length !== 0) {
     fails.push('TRAINING AUTHORIZATION: home fallback/snapshot clear did not persist without ledger drift: '
-      + JSON.stringify(authTrainingRaw));
+      + JSON.stringify({ raw: authTrainingRaw, transaction: authTrainingTransaction }));
   }
 
   /* Current Field Training snapshots have exactly one own key, `view`. Drive
@@ -4913,11 +8552,9 @@ try {
      may close, but the run stays incomplete, its exact one-key snapshot
      survives, and the app returns to proven Sol before persistence. Reload
      must reopen Welcome in that same safe system for a normal retry. */
-  const trainingRouteNeutralLedger = (state) => JSON.stringify({
-    ...state.save,
-    viewType: null,
-    savedView: null,
-  });
+  const trainingRouteNeutralLedger = (state) => trainingSaveLedger(
+    state, ['viewType', 'savedView', 'mined'],
+  );
   const trainingSurfaceLandAccepted = await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`);
   await sleep(180);
   const trainingSourceErrorSurface = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -5042,15 +8679,24 @@ try {
   if (landSurfaceControls.some(canonicalTrainingLand)) {
     fails.push('TRAINING V5 LAND CONTROL FAILED — dropped, appended, or reordered census stayed green');
   }
-  const trainingLedgerExpected = trainingRouteNeutralLedger(trainingRetryBoot);
   const currentRetryNativeLabel = 'current-view-source-retry';
   const currentRetryNativeArmed = await evalIn(dtrainNativeWriteArmExpression(currentRetryNativeLabel));
   const currentRetryMark = events.length;
   const currentRetryToken = await sliceToken(sess);
+  const trainingRetryBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
   const trainingSkip = await evalIn(`(()=>{ const button=document.querySelector('[data-sel="tutskip"]');
     button?.click();return {pressed:!!button};})()`);
   const trainingRestored = await waitDesktopValue('current one-key Training route restore', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return !s.tutActive&&s.tutDone&&s.mode==='surface'&&s.planet===133?s:null;})()`);
+  const trainingRetryAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const trainingRetryTransactionBundle = {
+    before: trainingRetryBeforeRaw, after: trainingRetryAfterRaw,
+    beforeState: trainingRetryBoot, afterState: trainingRestored,
+    ownedSaveKeys: ['viewType', 'savedView', 'mined'],
+    preCodecSource: trainingRestoreSource,
+  };
+  const trainingRetryTransaction = assessTrainingCanonicalTransaction(trainingRetryTransactionBundle);
+  const trainingRetryCarrierModes = assessTrainingCarrierModeBaselines(trainingRetryTransactionBundle);
   const currentRetryWitness = assessTrainingWitnesses(trainingWitnessesSince(sess, currentRetryMark), {
     intent: 'skip', checkpointKind: 'current-view',
     stages: ['invoked', 'claimed', 'no-active-persist', 'candidate-started',
@@ -5071,30 +8717,44 @@ try {
     || trainingRestored.tutSnapshotPending !== null
     || trainingRestored.trainingCheckpointKind !== 'none'
     || trainingRestored.trainingCheckpointWriteHeld
-    || trainingRouteNeutralLedger(trainingRestored) !== trainingLedgerExpected
+    || !trainingRetryTransaction.ok
+    || !trainingRetryCarrierModes.ok
     || trainingRestored.atlasCount !== vet.atlasCount) {
     fails.push('TRAINING ONE-KEY RESTORE: one real Skip did not restore the exact source-proven route/ledger: '
       + JSON.stringify({ pressed: trainingSkip.pressed, before: trainingRetryBoot, after: trainingRestored,
         witness: currentRetryWitness, native: currentRetryNativeWitness,
-        transactionWrites: currentRetryTransactionWrites }));
+        transactionWrites: currentRetryTransactionWrites,
+        transaction: trainingRetryTransaction, carrierModes: trainingRetryCarrierModes }));
   }
   requireRenderedSceneAdvance('TRAINING ONE-KEY RESTORE', trainingRetryBoot, trainingRestored);
-  const currentTrainingRestoreOutcome = (state) => state.mode === 'surface'
-    && state.planet === 133 && state.planetOrdinal === 2 && state.tutSnapshotPending === null
-    && renderedSceneMatchesNav(state);
-  const trainingRestoreCtl = {
+  const currentTrainingEarthRoute = (state) => state.mode === 'surface'
+    && state.planet === 133 && state.planetOrdinal === 2 && renderedSceneMatchesNav(state);
+  const currentTrainingSnapshotClear = (state) => state.tutSnapshotPending === null;
+  const trainingRouteControl = {
+    ...trainingRestored, mode: 'system', planet: null, planetOrdinal: null,
+  };
+  const trainingSnapshotControl = {
     ...trainingRestored,
     tutSnapshotPending: { view: trainingRestored.save.savedView },
   };
-  if (currentTrainingRestoreOutcome(trainingRestoreCtl)) {
-    fails.push('TRAINING ONE-KEY RESTORE CONTROL FAILED — injected uncleared snapshot stayed green');
+  const trainingRestoreCanonicalControls = trainingRetryTransaction.ok
+    ? trainingCanonicalControlAssessments(trainingRetryTransactionBundle) : null;
+  const trainingRestoreCanonicalControlsIsolated = trainingRestoreCanonicalControls === null
+    ? null : trainingCanonicalControlsAreIsolated(trainingRestoreCanonicalControls);
+  if (currentTrainingEarthRoute(trainingRouteControl)
+    || currentTrainingSnapshotClear(trainingSnapshotControl)
+    || !trainingRetryCarrierModes.ok
+    || (trainingRetryTransaction.ok && !trainingRestoreCanonicalControlsIsolated)) {
+    fails.push('TRAINING ONE-KEY RESTORE CONTROLS FAILED — named Earth-route/snapshot/ledger/seed/order/clamp/fixed-point/raw-live control stayed green or non-isolated: '
+      + JSON.stringify({ trainingRestoreCanonicalControls,
+        trainingRestoreCanonicalControlsIsolated, trainingRetryCarrierModes }));
   }
-  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
-  const trainingRestoredRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const trainingRestoredRaw = trainingRetryAfterRaw.legacy;
   if (Object.prototype.hasOwnProperty.call(trainingRestoredRaw, 'tsnap')
     || trainingRestoredRaw.view?.type !== 'planet' || trainingRestoredRaw.view?.pseed !== 133) {
     fails.push('TRAINING ONE-KEY RESTORE: cleared snapshot/exact restored route did not reach raw IndexedDB: '
-      + JSON.stringify({ tsnap: trainingRestoredRaw.tsnap, view: trainingRestoredRaw.view }));
+      + JSON.stringify({ tsnap: trainingRestoredRaw.tsnap, view: trainingRestoredRaw.view,
+        transaction: trainingRetryTransaction }));
   }
   const normalizedRecordsLandedCount = trainingRestored.save.landed.length;
 
@@ -5465,8 +9125,24 @@ try {
   const dtrainExpectedRoute = (kind) => kind === 'earth'
     ? { type: 'planet', gal: { ...DTRAIN_CANONICAL_GALAXY_VIEW }, star: { ...DTRAIN_CANONICAL_STAR_VIEW }, pseed: EARTH.seed }
     : { type: 'star', gal: { ...DTRAIN_CANONICAL_GALAXY_VIEW }, star: { ...DTRAIN_CANONICAL_STAR_VIEW } };
-  const dtrainStateRouteAssessment = (state, runtimeKind, savedKind = runtimeKind) => {
-    const expectedView = dtrainExpectedRoute(savedKind);
+  const dtrainImporterNormalizedHeldView = (sourceView) => {
+    const view = structuredClone(sourceView ?? null);
+    if (!view || typeof view !== 'object' || !view.gal || typeof view.gal !== 'object') return null;
+    view.gal.quasar = view.gal.quasar === true;
+    view.gal.dwarf = view.gal.dwarf === true;
+    return view;
+  };
+  const dtrainImporterNormalizedHeldAtlasRow = (sourceRow) => sourceRow ? {
+    id: sourceRow.id, title: sourceRow.title, sub: sourceRow.sub,
+    thumb: null, sq: false, badge: sourceRow.badge,
+    where: structuredClone(sourceRow.where ?? null),
+    fav: sourceRow.fav === true, t: sourceRow.t,
+    ...(Object.prototype.hasOwnProperty.call(sourceRow, 'star') ? { star: sourceRow.star } : {}),
+  } : null;
+  const dtrainStateRouteAssessment = (
+    state, runtimeKind, savedKind = runtimeKind, expectedSavedView = dtrainExpectedRoute(savedKind),
+  ) => {
+    const expectedView = expectedSavedView;
     const reasons = [];
     const expectedMode = runtimeKind === 'earth' ? 'surface' : 'system';
     if (state?.mode !== expectedMode || state?.gal !== HOME_GALAXY.seed
@@ -5716,23 +9392,32 @@ try {
     'deferred receipt preservation');
     return { ok: reasons.length === 0, reasons };
   };
-  const assessNoSnapshotCanonicalBoot = (state, raw, authority) => {
+  const assessNoSnapshotCanonicalBoot = (state, raw, authority, { replacement = false } = {}) => {
     const reasons = [];
     const require = (condition, reason) => { if (!condition) reasons.push(reason); };
     const source = JSON.parse(DTRAIN_NO_SNAPSHOT_RAW);
-    const route = dtrainStateRouteAssessment(state, 'sol', 'earth');
+    const expectedSavedView = dtrainImporterNormalizedHeldView(source.view);
+    const route = dtrainStateRouteAssessment(state, 'sol', 'earth', expectedSavedView);
     if (!route.ok) reasons.push(...route.reasons);
     const persistence = state?.persistence;
     const runtime = persistence?.runtime;
-    require(persistence?.ready === true && persistence?.bootKind === 'migrated-v4' && persistence?.hold === null
-      && persistence?.authorityBootKind === 'absent'
-      && persistence?.seedBootstrapPending === false && persistence?.mutationBlocked === false,
-    'migrated writable boot');
-    require(runtime?.revision === 1 && runtime?.leaseOwned === true
+    require(persistence?.ready === true
+      && persistence?.bootKind === (replacement ? 'current-v5' : 'migrated-v4')
+      && persistence?.hold === null && persistence?.seedBootstrapPending === false
+      && persistence?.bootRouteRepairPending === false && persistence?.mutationBlocked === false
+      && state?.sceneResources?.pendingPersistenceWrites === 0
+      && (replacement || persistence?.authorityBootKind === 'absent'),
+    replacement ? 'replacement writable boot' : 'migrated writable boot');
+    require(runtime?.leaseOwned === true
       && runtime?.answerable === true && runtime?.accruing === true
-      && runtime?.sessionOrdinal === 0 && runtime?.commits === 1
-      && persistence?.lastOutcome === 'seed-committed:1', 'durable bootstrap runtime');
-    require(authority?.revisionRaw === '1' && authority?.revision === 1
+      && runtime?.sessionOrdinal === 0
+      && (replacement
+        ? runtime?.commits === 0 && persistence?.lastOutcome === null
+        : runtime?.revision === 1 && runtime?.commits === 1
+          && persistence?.lastOutcome === 'seed-committed:1'),
+    replacement ? 'read-only replacement runtime' : 'durable bootstrap runtime');
+    require(authority?.revisionRaw === String(authority?.revision)
+      && authority?.revision === runtime?.revision
       && authority?.playerSchema === 5 && authority?.carrierVersion === 1
       && authority?.seed === runtime?.sessionSeed && authority?.ordinal === runtime?.sessionOrdinal
       && canonicalJson(authority?.draws) === canonicalJson(runtime?.sessionDraws),
@@ -5741,27 +9426,24 @@ try {
     require(raw?.v === 4 && typeof raw?.at === 'number' && Number.isFinite(raw.at)
       && raw.at >= source.at && raw?.tut === 0
       && !Object.prototype.hasOwnProperty.call(raw || {}, 'tsnap'), 'canonical v4 envelope');
+    require(state?.tutActive === true && state?.tutDone === false && state?.tutStep === 'welcome'
+      && state?.tutSnapshotPending === null && state?.trainingCheckpointKind === 'none'
+      && state?.trainingCheckpointWriteHeld === true && state?.trainingRecoveryMode === null,
+    'unfinished no-snapshot Training state');
     require(raw?.me === 'DTRAIN No Snapshot' && state?.save?.name === raw.me,
       'explorer identity');
     require(canonicalJson(raw?.land) === canonicalJson(CANONICAL_VETERAN_LANDED)
       && canonicalJson(state?.save?.landed) === canonicalJson(raw?.land), 'canonical six-world census');
-    require(canonicalJson(raw?.view) === canonicalJson(dtrainExpectedRoute('earth'))
-      && canonicalJson(state?.save?.savedView) === canonicalJson(raw?.view), 'canonical saved Earth route');
+    require(canonicalJson(raw?.view) === canonicalJson(expectedSavedView)
+      && state?.save?.viewType === 'planet', 'canonical held-source savedView mirror');
 
     const sourceEarth = source.log?.find((entry) => entry?.id === 'p133');
-    const atlasRoute = structuredClone(dtrainExpectedRoute('earth'));
-    delete atlasRoute.gal.quasar;
-    delete atlasRoute.gal.dwarf;
-    const expectedEarth = sourceEarth ? {
-      id: sourceEarth.id, title: sourceEarth.title, sub: sourceEarth.sub,
-      thumb: null, sq: false, badge: sourceEarth.badge, where: atlasRoute,
-      fav: sourceEarth.fav, t: sourceEarth.t,
-      ...(Object.prototype.hasOwnProperty.call(sourceEarth, 'star') ? { star: sourceEarth.star } : {}),
-    } : null;
+    const expectedEarth = dtrainImporterNormalizedHeldAtlasRow(sourceEarth);
     const earthRows = Array.isArray(raw?.log) ? raw.log.filter((entry) => entry?.id === 'p133') : [];
     require(earthRows.length === 1 && raw.log.length === 1
       && canonicalJson(earthRows[0]) === canonicalJson(expectedEarth)
-      && state?.atlasCount === 1, 'canonical Earth Atlas row');
+      && state?.atlasCount === 1 && state?.atlasTravelable === 1,
+    'canonical held-source Earth Atlas row');
 
     const mirrorStatePairs = [
       [raw?.essence, state?.save?.essence], [raw?.names, state?.save?.customNames],
@@ -5774,7 +9456,61 @@ try {
       && Array.isArray(raw?.codex) && raw.codex.length === state?.codexCount
       && DTRAIN_DIRECT_STATS.every((key) => raw?.[key] === state?.save?.stats?.[key])
       && raw?.br === state?.save?.stats?.bestRank, 'canonical mirror/state field parity');
-    return { ok: reasons.length === 0, reasons };
+    return { ok: reasons.length === 0, reasons, route, expectedSavedView, expectedEarth };
+  };
+  const assessNoSnapshotReloadReadOnly = ({
+    beforeRawText, afterRawText, beforeAuthority, afterAuthority,
+    priorToken, token, state,
+  }) => {
+    let raw = null;
+    try { raw = JSON.parse(afterRawText); } catch { /* exact byte check below fails closed */ }
+    const canonicalBoot = assessNoSnapshotCanonicalBoot(
+      state, raw, afterAuthority, { replacement: true },
+    );
+    const reasons = [...canonicalBoot.reasons];
+    if (typeof priorToken !== 'string' || typeof token !== 'string' || token === priorToken) {
+      reasons.push('replacement document identity');
+    }
+    if (afterRawText !== beforeRawText
+      || canonicalJson(afterAuthority) !== canonicalJson(beforeAuthority)) {
+      reasons.push('exact durable reload bytes');
+    }
+    return { ok: reasons.length === 0, reasons, canonicalBoot };
+  };
+  const assessDtrainFullFinishBoot = (booted) => {
+    let raw = null;
+    try { raw = JSON.parse(booted?.stored); } catch { /* checks fail closed */ }
+    const state = booted?.state;
+    const source = JSON.parse(DTRAIN_FULL_FINISH_RAW);
+    const expectedHeldView = dtrainImporterNormalizedHeldView(source.view);
+    const runtimeOnlyState = structuredClone(state ?? null);
+    if (runtimeOnlyState?.save) {
+      runtimeOnlyState.save.savedView = dtrainExpectedRoute('sol');
+      runtimeOnlyState.save.viewType = 'star';
+    }
+    const runtimeRoute = dtrainStateRouteAssessment(runtimeOnlyState, 'sol');
+    const migration = assessDtrainMigratedBoot(booted, DTRAIN_FULL_FINISH_RAW);
+    const checks = Object.freeze({
+      migrationEvidence: migration.ok,
+      runtimeCanonicalSol: runtimeRoute.ok,
+      durableHeldSource: canonicalJson(raw?.view) === canonicalJson(expectedHeldView)
+        && canonicalJson(state?.save?.savedView) === canonicalJson(expectedHeldView)
+        && state?.save?.viewType === 'star',
+      bootRepairIdle: state?.persistence?.bootRouteRepairPending === false
+        && state?.sceneResources?.pendingPersistenceWrites === 0,
+      heldTrainingBaseline: state?.trainingCheckpointKind === 'legacy-v1'
+        && state?.trainingCheckpointWriteHeld === true && state?.tutActive === true
+        && state?.tutDone === false
+        && canonicalJson(Object.keys(state?.tutSnapshotPending ?? {}))
+          === canonicalJson(DTRAIN_LEGACY_KEYS)
+        && raw?.tut === 0
+        && canonicalJson(raw?.tsnap) === canonicalJson(state?.tutSnapshotPending)
+        && canonicalJson(raw?.land) === canonicalJson([901])
+        && canonicalJson(state?.save?.landed) === canonicalJson([901]),
+    });
+    const reasons = Object.entries(checks).filter(([, value]) => value !== true)
+      .map(([name]) => `D-TRAIN full-finish boot ${name}`);
+    return { ok: reasons.length === 0, reasons, checks, runtimeRoute, migration, expectedHeldView };
   };
   const dtrainAssertWitness = (label, mark, spec) => {
     const entries = trainingWitnessesSince(sess, mark);
@@ -5864,11 +9600,14 @@ try {
   const noSnapshotAssessment = assessNoSnapshotCanonicalBoot(
     noSnapshotBooted.state, noSnapshotRaw, noSnapshotAuthority,
   );
+  const noSnapshotSource = JSON.parse(DTRAIN_NO_SNAPSHOT_RAW);
+  const noSnapshotExpectedSavedView = dtrainImporterNormalizedHeldView(noSnapshotSource.view);
   const noSnapshotBootOutcome = (state) => state.tutActive && !state.tutDone
     && state.tutStep === 'welcome' && state.trainingCheckpointKind === 'none'
     && state.trainingCheckpointWriteHeld && state.trainingRecoveryMode === null && state.mode === 'system'
     && state.gal === 999 && state.star === 424242 && state.planet === null
-    && state.save.viewType === 'planet' && state.save.savedView?.pseed === 133
+    && state.save.viewType === 'planet'
+    && canonicalJson(state.save.savedView) === canonicalJson(noSnapshotExpectedSavedView)
     && state.navGalaxyKey !== null && state.navStarKey !== null && state.navWorldKey === null
     && renderedSceneMatchesNav(state);
   if (!noSnapshotBootOutcome(noSnapshotBooted.state) || !noSnapshotAssessment.ok
@@ -5896,14 +9635,85 @@ try {
     ...noSnapshotAuthority,
     revision: noSnapshotAuthority.revision + 1,
   };
+  const noSnapshotSavedViewControl = structuredClone(noSnapshotBooted.state);
+  noSnapshotSavedViewControl.save.savedView.gal.size += 1;
+  const noSnapshotSavedViewAssessment = assessNoSnapshotCanonicalBoot(
+    noSnapshotSavedViewControl, noSnapshotRaw, noSnapshotAuthority,
+  );
+  const noSnapshotAtlasControl = structuredClone(noSnapshotRaw);
+  const noSnapshotAtlasEarth = noSnapshotAtlasControl.log?.find((entry) => entry?.id === 'p133');
+  if (noSnapshotAtlasEarth) noSnapshotAtlasEarth.title = 'Canonicalization control';
+  const noSnapshotAtlasAssessment = assessNoSnapshotCanonicalBoot(
+    noSnapshotBooted.state, noSnapshotAtlasControl, noSnapshotAuthority,
+  );
   const noSnapshotCanonicalControls = [
     assessNoSnapshotCanonicalBoot(noSnapshotBooted.state, noSnapshotMirrorControl, noSnapshotAuthority),
     assessNoSnapshotCanonicalBoot(noSnapshotBooted.state, noSnapshotRaw, noSnapshotAuthorityControl),
     ...dtrainMigratedBootControls(noSnapshotBooted, DTRAIN_NO_SNAPSHOT_RAW),
   ];
-  if (noSnapshotCanonicalControls.some((control) => control.ok)) {
-    fails.push('D-TRAIN NO-SNAPSHOT CANONICAL CONTROL FAILED — mirror, snapshot, journal, or raw revision drift stayed green: '
-      + JSON.stringify(noSnapshotCanonicalControls));
+  const noSnapshotRouteControlsIsolated = noSnapshotSavedViewAssessment.ok === false
+    && canonicalJson(noSnapshotSavedViewAssessment.reasons) === canonicalJson(['saved earth route'])
+    && noSnapshotAtlasAssessment.ok === false
+    && canonicalJson(noSnapshotAtlasAssessment.reasons)
+      === canonicalJson(['canonical held-source Earth Atlas row']);
+  if (noSnapshotCanonicalControls.some((control) => control.ok)
+    || !noSnapshotRouteControlsIsolated) {
+    fails.push('D-TRAIN NO-SNAPSHOT CANONICAL CONTROL FAILED — savedView-only, Atlas-only, mirror, snapshot, journal, or raw revision drift stayed green/non-isolated: '
+      + JSON.stringify({ noSnapshotCanonicalControls, noSnapshotSavedViewAssessment,
+        noSnapshotAtlasAssessment, noSnapshotRouteControlsIsolated }));
+  }
+
+  /* Settle the old document's lifecycle boundary first, then prove the
+     aligned current-v5 replacement itself is byte-for-byte read-only. */
+  const noSnapshotHideDispatched = await evalIn(`(()=>{dispatchEvent(new PageTransitionEvent('pagehide',{
+    persisted:false}));return true})()`);
+  const noSnapshotHidden = await waitDesktopValue('D-TRAIN no-snapshot lifecycle settlement', `(()=>{
+    const s=window.__CF_SLICE__.api.state();return s.persistence?.hideWitness
+      &&s.persistence?.runtime?.leaseOwned===false?s:null})()`, 15_000);
+  const noSnapshotReloadBeforeRawText = await evalIn(READ_PRIMARY_EXPRESSION);
+  const noSnapshotReloadBeforeAuthority = await evalIn(READ_F4_AUTHORITY_EXPRESSION);
+  const noSnapshotPriorToken = noSnapshotBooted.token;
+  const noSnapshotReloadToken = await navigateToSlice(
+    sess, URL0, 'D-TRAIN no-snapshot read-only replacement',
+  );
+  await assertBootTickerRunning('D-TRAIN no-snapshot read-only replacement');
+  await waitForF4Writable('D-TRAIN no-snapshot replacement F4 authority', {
+    previousToken: noSnapshotPriorToken,
+  });
+  const noSnapshotReloadState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const noSnapshotReloadAfterRawText = await evalIn(READ_PRIMARY_EXPRESSION);
+  const noSnapshotReloadAfterAuthority = await evalIn(READ_F4_AUTHORITY_EXPRESSION);
+  const noSnapshotReloadBundle = {
+    beforeRawText: noSnapshotReloadBeforeRawText,
+    afterRawText: noSnapshotReloadAfterRawText,
+    beforeAuthority: noSnapshotReloadBeforeAuthority,
+    afterAuthority: noSnapshotReloadAfterAuthority,
+    priorToken: noSnapshotPriorToken,
+    token: noSnapshotReloadToken,
+    state: noSnapshotReloadState,
+  };
+  const noSnapshotReloadAssessment = assessNoSnapshotReloadReadOnly(noSnapshotReloadBundle);
+  const noSnapshotReloadByteControl = assessNoSnapshotReloadReadOnly({
+    ...noSnapshotReloadBundle,
+    afterRawText: `${noSnapshotReloadBundle.afterRawText}\n`,
+  });
+  const noSnapshotReloadWriteState = structuredClone(noSnapshotReloadState);
+  noSnapshotReloadWriteState.persistence.runtime.commits = 1;
+  const noSnapshotReloadWriteControl = assessNoSnapshotReloadReadOnly({
+    ...noSnapshotReloadBundle, state: noSnapshotReloadWriteState,
+  });
+  const noSnapshotReloadControlsIsolated = noSnapshotReloadByteControl.ok === false
+    && canonicalJson(noSnapshotReloadByteControl.reasons)
+      === canonicalJson(['exact durable reload bytes'])
+    && noSnapshotReloadWriteControl.ok === false
+    && canonicalJson(noSnapshotReloadWriteControl.reasons)
+      === canonicalJson(['read-only replacement runtime']);
+  if (!noSnapshotHideDispatched || !noSnapshotHidden || !noSnapshotReloadAssessment.ok
+    || !noSnapshotReloadControlsIsolated) {
+    fails.push('D-TRAIN NO-SNAPSHOT RELOAD: aligned replacement rewrote durable truth, lost held-source route/Atlas, or failed read-only controls: '
+      + JSON.stringify({ hideDispatched: noSnapshotHideDispatched, hidden: noSnapshotHidden,
+        assessment: noSnapshotReloadAssessment, byteControl: noSnapshotReloadByteControl,
+        writeControl: noSnapshotReloadWriteControl, controlsIsolated: noSnapshotReloadControlsIsolated }));
   }
   await dtrainUnknownRefusal(DTRAIN_OLD_SYNTHETIC_RAW, 'D-TRAIN OLD SYNTHETIC REFUSAL', true);
   await dtrainUnknownRefusal(DTRAIN_HOSTILE_RAW, 'D-TRAIN HOSTILE-SHAPE REFUSAL', false);
@@ -6190,7 +10000,7 @@ try {
   const publishRouteAssessment = dtrainStateRouteAssessment(publishDone, 'sol');
   const publishArc2Assessment = assessDtrainArc2Restore({
     before: publishBooted.loot, after: publishLootEvidence, state: publishDone,
-    expectedRevision: 3, expectedCommits: 1, expectedLastOutcome: 'committed:3',
+    expectedRevision: 2, expectedCommits: 0, expectedLastOutcome: null,
   });
   if (!publishNativeArmed || !publishArmed.button || !publishArmed.armed
     || !publishWitness.ok || publishWitness.entries.some((entry) => entry.stage === 'live-swap-complete')
@@ -6223,13 +10033,13 @@ try {
     const stalePublishState = structuredClone(publishDone);
     stalePublishState.inventory = structuredClone(publishBooted.state.inventory);
     const extraBootstrapEvidence = structuredClone(publishLootEvidence);
-    extraBootstrapEvidence.revision = 4;
-    extraBootstrapEvidence.revisionRaw = '4';
+    extraBootstrapEvidence.revision = 3;
+    extraBootstrapEvidence.revisionRaw = '3';
     const extraBootstrapState = structuredClone(publishDone);
-    extraBootstrapState.persistence.runtime.revision = 4;
-    extraBootstrapState.persistence.runtime.commits = 2;
+    extraBootstrapState.persistence.runtime.revision = 3;
+    extraBootstrapState.persistence.runtime.commits = 1;
     const hiddenBootstrapOutcomeState = structuredClone(publishDone);
-    hiddenBootstrapOutcomeState.persistence.lastOutcome = 'seed-committed:3';
+    hiddenBootstrapOutcomeState.persistence.lastOutcome = 'seed-committed:2';
     const rngDriftEvidence = structuredClone(publishLootEvidence);
     rngDriftEvidence.authority.sessionRng.seed = (rngDriftEvidence.authority.sessionRng.seed ^ 1) >>> 0;
     rngDriftEvidence.authorityJson = JSON.stringify(rngDriftEvidence.authority);
@@ -6247,7 +10057,7 @@ try {
     stackableDriftEvidence.inventoryRaw = JSON.stringify(stackableDriftEvidence.inventoryRow);
     const assessPublishControl = (after, state = publishDone) => assessDtrainArc2Restore({
       before: publishBooted.loot, after, state,
-      expectedRevision: 3, expectedCommits: 1, expectedLastOutcome: 'committed:3',
+      expectedRevision: 2, expectedCommits: 0, expectedLastOutcome: null,
     });
     const stackableDriftAssessment = assessPublishControl(stackableDriftEvidence);
     const publishArc2Controls = {
@@ -6903,30 +10713,50 @@ try {
     fails.push('ATLAS KEYBOARD: Enter did not travel to the live Earth survey and return canvas focus: ' + JSON.stringify(atlasEnter));
   }
   requireRenderedSceneAdvance('ATLAS PROVEN ENTER ROUTE', atlasSpace, atlasEnter);
-  /* 4c-records. Records over the real save: counts + the journal empty state */
-  const rec = await evalIn(`(()=>{ document.getElementById('dockrecords').click();
-    const landed=[...document.querySelectorAll('#recpanel .row')].map(r=>r.textContent).find(t=>/worlds landed/.test(t))||'';
-    const jempty=!!document.querySelector('#recpanel [data-sel=journal-empty]');
-    const jn=document.querySelectorAll('#recpanel [data-sel=journal-entry]').length;
-    document.querySelector('#recpanel [data-pnx]').click();
-    return { landed, jempty, jn }; })()`);
+  /* 4c-records. Records over the real save: ordinary imported exploration
+     rows remain, worlds-landed is the only visible Arc 3 writer, and Journal
+     remains the only live subsection. Persisted Mine/Skim/Fabricator stats
+     must not acquire an unimplemented visible row. */
+  const renderedRecordsCheck = `(()=>{ const panel=document.getElementById('recpanel'),rows=panel?[...panel.querySelectorAll('.row')]:[],
+    labels=rows.map((row)=>(row.querySelector('label')?.textContent||'').trim()),
+    landed=rows.find((row)=>/worlds landed/i.test(row.querySelector('label')?.textContent||''))?.textContent||'',
+    arc3Rows=labels.filter((label)=>/(?:mine|mined|mining|skim|fabricat)/i.test(label)),
+    journal=!![...(panel?.querySelectorAll('h3')||[])].find((heading)=>(heading.textContent||'').trim()==='Journal'),
+    jempty=!!panel?.querySelector('[data-sel=journal-empty]'),jn=panel?.querySelectorAll('[data-sel=journal-entry]').length||0;
+    return {ok:!!panel&&labels.includes('worlds landed')&&arc3Rows.length===0&&journal&&(jempty||jn>0),labels,landed,arc3Rows,journal,jempty,jn};})()`;
+  const rec = await evalIn(`(()=>{ document.getElementById('dockrecords').click();const result=${renderedRecordsCheck};
+    document.querySelector('#recpanel [data-pnx]').click();return result;})()`);
   const recordsLandedPattern = new RegExp('worlds landed\\s*' + normalizedRecordsLandedCount + '$');
-  if (!recordsLandedPattern.test(rec.landed.trim())) {
+  if (!rec.ok || !recordsLandedPattern.test(rec.landed.trim())) {
     fails.push('Records did not count the stage-normalized ' + normalizedRecordsLandedCount
-      + ' landed worlds after first-pass export/reload: ' + JSON.stringify(rec.landed));
+      + ' landed worlds or exposed a persisted Arc 3 counter after first-pass export/reload: ' + JSON.stringify(rec));
   }
-  if (!rec.jempty && rec.jn === 0) fails.push('Records journal rendered nothing at all');
-  /* CHARTERS: the current-slice projection keeps one live landfall row and
-     never renders a legacy mining/fabrication/Shipyard directive. */
+  const recordsVisibleArc3Ctl = await evalIn(`(()=>{ document.getElementById('dockrecords').click();const panel=document.getElementById('recpanel'),
+    claims=['mining actions','stellar skims','Fabricator outputs'],results=[];
+    for(const claim of claims){const row=document.createElement('div');row.className='row';row.innerHTML='<label>'+claim+'</label><span>1</span>';
+      panel?.appendChild(row);const result=${renderedRecordsCheck};row.remove();results.push({claim,result});}
+    const restored=${renderedRecordsCheck};document.querySelector('#recpanel [data-pnx]').click();return {results,restored};})()`);
+  if (recordsVisibleArc3Ctl.results?.length !== 3
+    || recordsVisibleArc3Ctl.results.some((row) => row.result?.ok || !row.result?.arc3Rows?.includes(row.claim))
+    || !recordsVisibleArc3Ctl.restored?.ok) {
+    fails.push('RECORDS VISIBLE ARC 3 CONTROL FAILED — appended Mine/Skim/Fabricator rows stayed current or failed to restore: '
+      + JSON.stringify(recordsVisibleArc3Ctl));
+  }
+  /* CHARTERS: every rendered goal has a live Land/Mine/fixed-Fabricator
+     writer. Reject only genuinely unavailable bioscan/conquest/breeding or
+     mature accepted/weekly directives; Engineering copy is current truth. */
   const chp = await evalIn(`(()=>{ document.getElementById('dockcharters').click();
     const chs=[...document.querySelectorAll('#chpanel [data-sel=charter-ch]')];
     const cur=chs.find(c=>c.dataset.chstate==='actionable'||c.dataset.chstate==='boundary'||c.dataset.chstate==='complete');
     const goals=document.querySelectorAll('#chpanel [data-sel=charter-goal]').length;
-    const text=document.getElementById('chpanel')?.textContent||'';
+    const panel=document.getElementById('chpanel'),text=panel?.textContent||'',marker=document.createElement('div');
+    marker.textContent='Discover life on 2 alien worlds';panel?.appendChild(marker);const injected=panel?.textContent||'';marker.remove();
+    const restored=(panel?.textContent||'')===text;
     document.querySelector('#chpanel [data-pnx]').click();
-    return { n:chs.length, cur:!!cur, goals,text }; })()`);
-  if (chp.n !== 1 || !chp.cur || chp.goals > 1 || /mine|fabricat|shipyard|\bbuild\b/i.test(chp.text)) {
-    fails.push('Charters panel exposed an unavailable objective or lost its projected record: ' + JSON.stringify(chp));
+    return { n:chs.length, cur:!!cur, goals,text,injected,restored }; })()`);
+  if (chp.n !== 1 || !chp.cur || chp.goals > 5 || hasUnavailableCharterDirective(chp.text)
+    || !hasUnavailableCharterDirective(chp.injected) || !chp.restored) {
+    fails.push('Charters panel exposed an unavailable directive, lost live writer copy, or failed its control: ' + JSON.stringify(chp));
   }
 
   /* 4c-release. Exercise the dormant shipped-bulletin path with an explicit
@@ -7788,7 +11618,7 @@ try {
       try {
         const snapshot = await evalNavPh(`(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
           const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
-            state:state?{persistence:state.persistence}:null,raw,
+            state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
             token:typeof S?.documentToken==='string'?S.documentToken:null};})()`);
         const assessment = assessF4ReadyAuthority({ ...snapshot, previousToken });
         if (assessment.ok) {
@@ -7798,9 +11628,12 @@ try {
             const revisionControl = structuredClone(snapshot);
             revisionControl.raw.revision += 1;
             revisionControl.raw.revisionRaw = String(revisionControl.raw.revision);
+            const bootControls = f4BootReadinessNegativeControls(snapshot, previousToken);
             if (assessF4ReadyAuthority({ ...leaseControl, previousToken: null }).ok
-              || assessF4ReadyAuthority({ ...revisionControl, previousToken: null }).ok) {
-              fails.push('PHONE F4 WRITABILITY CONTROL FAILED — a missing lease or mismatched raw revision stayed green');
+              || assessF4ReadyAuthority({ ...revisionControl, previousToken: null }).ok
+              || !bootControls.isolated) {
+              fails.push('PHONE F4 WRITABILITY CONTROL FAILED — a missing lease, mismatched raw revision, missing scene resources, or pending persistence write stayed green/non-isolated: '
+                + JSON.stringify(bootControls));
             }
             navF4WritableControlsRun = true;
           }
@@ -8006,9 +11839,8 @@ try {
 
   /* 4d0-charter. Drive a REAL non-Sol fine-star body and card action while
      this phone origin is still stage 0. The action must flow through the
-     Charter gate, remain in the galaxy, and name the honest unavailable
-     boundary. This catches a handler that teleports directly around
-     descendSystem(). */
+     Charter gate, remain in the galaxy, and name the live Jump Drive recipe
+     path. This catches a handler that teleports around descendSystem(). */
   await evalNavPh(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=0; S.camT.y=0; S.camT.z=2;
     S.cam.x=0; S.cam.y=0; S.cam.z=2; return true; })()`);
   await sleep(1600);
@@ -8031,10 +11863,18 @@ try {
   await sleep(350);
   const blockedFineDive = await evalNavPh(`window.__CF_SLICE__.api.state()`);
   if (blockedFineDive.mode !== 'galaxy' || blockedFineDive.gal !== 999 || blockedFineDive.star !== null || blockedFineDive.stage !== 0
-    || !blockedFineDive.toastOn || !/development slice/i.test(blockedFineDive.toastText)
-    || /shipyard|\bbuild\b|mine|fabricat/i.test(blockedFineDive.toastText)) {
+    || !blockedFineDive.toastOn || !stageZeroCharterHintIsTruthful(blockedFineDive.toastText)) {
     fails.push('CHARTER ACTION BYPASS — a real stage-0 fine-star card action was not blocked: '
       + JSON.stringify(blockedFineDive));
+  }
+  const blockedFineToastCtl = await evalNavPh(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML,current=toast.textContent||'';
+    toast.textContent='Your saved reach covers Sol. The next Charter system is not available in this development slice.';const stale=toast.textContent||'';
+    toast.textContent='Sol is your current reach. Engineering can fabricate the Long-Range Array when its exact recipe requirements are met.';const wrongDrive=toast.textContent||'';
+    toast.innerHTML=prior;return {stale,wrongDrive,restored:(toast.textContent||'')===current};})()`);
+  if (stageZeroCharterHintIsTruthful(blockedFineToastCtl.stale) || stageZeroCharterHintIsTruthful(blockedFineToastCtl.wrongDrive)
+    || !blockedFineToastCtl.restored) {
+    fails.push('PHONE CHARTER COPY CONTROL FAILED — stale/wrong-drive copy stayed truthful or failed to restore: '
+      + JSON.stringify(blockedFineToastCtl));
   }
 
   /* 4d1-fine. Import the stage-2 veteran on this isolated origin, rise back
@@ -8179,19 +12019,20 @@ try {
     fails.push('PRIME RADIUS BOUNDARY DEBOUNCE CONTROL FAILED — synthetic re-announcement stayed green');
   }
 
-  /* A malformed ascCh cannot stand in for a saved Jump Drive. Import through
-     the real front door, open the real Charter board, and prove no non-Sol
-     landfall goal reaches the player at stage 0. */
+  /* Human-facing Chapter 2 is exactly zero-based ascCh 1. That malformed
+     selected position cannot stand in for a saved Jump Drive. Import through
+     the real front door, bind the observation to ascCh 1, and prove no
+     non-Sol landfall goal reaches the player at stage 0. */
   const malformedChapterToken = await sliceToken(navPh);
-  try { await evalNavPh(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(MALFORMED_C2_REACH_RAW)})`); }
+  try { await evalNavPh(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(MALFORMED_HUMAN_CHAPTER_2_ASC_CH_1_REACH_RAW)})`); }
   catch { /* successful replacement reloads */ }
   await waitForSlice(navPh, 'malformed Chapter-2 without reach fixture', { previousToken: malformedChapterToken });
   await sleep(2400);
   const malformedProjectionCheck = `(()=>{ const S=window.__CF_SLICE__;
     const s=S.api.state(),panel=document.getElementById('chpanel'),text=panel?.textContent||'',goals=panel?.querySelectorAll('[data-sel=charter-goal]').length||0;
-    return {ok:s.stage===0&&goals===0&&!/Land on 3 worlds beyond Sol/i.test(text)
+    return {ok:s.save.ascCh===1&&s.stage===0&&goals===0&&!/Land on 3 worlds beyond Sol/i.test(text)
       &&/development slice/i.test(text)&&/next Charter action is not available in this development slice/i.test(s.objective),
-      stage:s.stage,goals,text,objective:s.objective};})()`;
+      ascCh:s.save.ascCh,stage:s.stage,goals,text,objective:s.objective};})()`;
   const malformedProjection = await evalNavPh(`(()=>{ document.getElementById('dockcharters')?.click();return ${malformedProjectionCheck};})()`);
   if (!malformedProjection.ok) {
     fails.push('MALFORMED CHAPTER REACH: ascCh without a saved drive exposed impossible Chapter-2 work: '
@@ -8202,6 +12043,14 @@ try {
   if (malformedProjectionCtl.ok) {
     fails.push('MALFORMED CHAPTER REACH CONTROL FAILED — injected non-Sol goal stayed green: '
       + JSON.stringify(malformedProjectionCtl));
+  }
+  const malformedProjectionIndexCtl = await evalNavPh(`(()=>{ const S=window.__CF_SLICE__,prior=S.api.state,current=prior();let result;
+    try{S.api.state=()=>({...current,save:{...current.save,ascCh:2}});result=${malformedProjectionCheck};}
+    finally{S.api.state=prior;}return {result,restored:S.api.state===prior};})()`);
+  if (malformedProjectionIndexCtl.result?.ok || malformedProjectionIndexCtl.result?.ascCh !== 2
+    || !malformedProjectionIndexCtl.restored) {
+    fails.push('MALFORMED HUMAN CHAPTER-2 INDEX CONTROL FAILED — zero-based ascCh 2 stayed green or state authority failed to restore: '
+      + JSON.stringify(malformedProjectionIndexCtl));
   }
 
   /* A reach-backed imported chapter can already be canonically complete while
@@ -8410,6 +12259,7 @@ try {
     }
     throw new Error(`${label} did not reach its desktop-panel outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
+  let panelF4BootReadinessControlsRun = false;
   const waitPanelF4Writable = async (
     label, { previousToken = null, timeoutMs = 15_000 } = {},
   ) => {
@@ -8419,10 +12269,20 @@ try {
       try {
         const snapshot = await evalPanel(`(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
           const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
-            state:state?{persistence:state.persistence}:null,raw,
+            state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
             token:typeof S?.documentToken==='string'?S.documentToken:null};})()`);
         const assessment = assessF4ReadyAuthority({ ...snapshot, previousToken });
-        if (assessment.ok) return snapshot;
+        if (assessment.ok) {
+          if (!panelF4BootReadinessControlsRun) {
+            const controls = f4BootReadinessNegativeControls(snapshot, previousToken);
+            if (!controls.isolated) {
+              fails.push('DESKTOP-PANEL F4 BOOT READINESS CONTROLS FAILED — missing scene resources or one pending persistence write stayed green/non-isolated: '
+                + JSON.stringify(controls));
+            }
+            panelF4BootReadinessControlsRun = true;
+          }
+          return snapshot;
+        }
         last = { assessment, persistence: snapshot.state?.persistence, raw: snapshot.raw };
       } catch (error) {
         last = { context: String(error?.message || error) };
@@ -8791,7 +12651,7 @@ try {
     await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
     await waitForSlice(retrySession, 'transient-read authoritative reload', { previousToken: retryBootToken });
-    const expectedWrites = seedRaw === undefined ? 3 : 2;
+    const expectedWrites = seedRaw === undefined ? 2 : 1;
     await send('Runtime.evaluate', { expression: `(async()=>{const deadline=performance.now()+6000;
       while(performance.now()<deadline){const writes=Number(sessionStorage.getItem('__cf_transient_primary_writes')||'0'),
         authority=await (${READ_F4_AUTHORITY_EXPRESSION});if(writes>=${expectedWrites}
@@ -8841,7 +12701,7 @@ try {
     return value.name === 'Dakk' && value.controlRawStable === true
       && transientPreClickOutcome(value.preClick, vrRaw)
       && transientWriteSequence(value, {
-        count: 2, me: 'Dakk', tut: 1, epoch: 12, viewType: 'planet', codexCount: 3, landCount: 6,
+        count: 1, me: 'Dakk', tut: 1, epoch: 12, viewType: 'planet', codexCount: 3, landCount: 6,
       })
       && payload?.v === 4 && payload?.me === 'Dakk' && payload?.essence === 5000
       && payload?.epoch === 12 && payload?.view?.type === 'planet' && payload?.view?.pseed === 133
@@ -8859,7 +12719,7 @@ try {
     return value.controlRawStable === true
       && transientPreClickOutcome(value.preClick, undefined)
       && transientWriteSequence(value, {
-        count: 3, me: '', tut: 0, epoch: 0, viewType: 'star', codexCount: 0, landCount: 0,
+        count: 2, me: '', tut: 0, epoch: 0, viewType: 'star', codexCount: 0, landCount: 0,
       })
       && payload?.v === 4 && payload?.me === '' && payload?.essence === 0 && payload?.epoch === 0
       && payload?.view?.type === 'star' && payload?.view?.star?.seed === 424242
@@ -8867,11 +12727,33 @@ try {
       && Array.isArray(payload.land) && payload.land.length === 0;
   };
   if (!freshRetryOutcome(freshRetry)) {
-    fails.push('TRANSIENT READ retry did not perform the exact three-write fresh F4 bootstrap after proving the store empty: '
+    fails.push('TRANSIENT READ retry did not perform the exact two-write fresh F4 bootstrap after proving the store empty: '
       + JSON.stringify(freshRetry));
   }
   const existingTraceControl = structuredClone(existingRetry);
   if (existingTraceControl.writeTrace?.[0]) existingTraceControl.writeTrace[0].me = '';
+  const existingZeroWriteControl = structuredClone(existingRetry);
+  existingZeroWriteControl.writes = 0;
+  existingZeroWriteControl.writesAfterControl = 1;
+  existingZeroWriteControl.writeTrace = [];
+  existingZeroWriteControl.raw = existingZeroWriteControl.preClick.raw;
+  existingZeroWriteControl.authority = structuredClone(existingZeroWriteControl.preClick.authority);
+  const existingDuplicateWriteControl = structuredClone(existingRetry);
+  existingDuplicateWriteControl.writes = 2;
+  existingDuplicateWriteControl.writesAfterControl = 3;
+  existingDuplicateWriteControl.writeTrace = [
+    ...existingDuplicateWriteControl.writeTrace,
+    { ...structuredClone(existingDuplicateWriteControl.writeTrace[0]),
+      at: Number(existingDuplicateWriteControl.writeTrace[0]?.at) + 1 },
+  ];
+  const existingDuplicatePayload = JSON.parse(existingDuplicateWriteControl.raw);
+  existingDuplicatePayload.at = existingDuplicateWriteControl.writeTrace[1].at;
+  existingDuplicateWriteControl.raw = JSON.stringify(existingDuplicatePayload);
+  existingDuplicateWriteControl.authority = {
+    ...existingDuplicateWriteControl.authority, revisionRaw: '2', revision: 2,
+  };
+  const existingRevisionControl = structuredClone(existingRetry);
+  if (existingRevisionControl.authority) existingRevisionControl.authority.revision += 1;
   const freshPreClickControl = structuredClone(freshRetry);
   if (freshPreClickControl.preClick) {
     freshPreClickControl.preClick.writes = 1;
@@ -8879,10 +12761,12 @@ try {
   }
   const freshRevisionControl = structuredClone(freshRetry);
   if (freshRevisionControl.authority) freshRevisionControl.authority.revision += 1;
-  if (existingRetryOutcome({ ...existingRetry, writes: 3, writesAfterControl: 4 })
+  if (existingRetryOutcome(existingZeroWriteControl)
+    || existingRetryOutcome(existingDuplicateWriteControl)
     || existingRetryOutcome(existingTraceControl)
-    || freshRetryOutcome({ ...freshRetry, writes: 2, writesAfterControl: 3 })
-    || freshRetryOutcome({ ...freshRetry, writes: 4, writesAfterControl: 5 })
+    || existingRetryOutcome(existingRevisionControl)
+    || freshRetryOutcome({ ...freshRetry, writes: 1, writesAfterControl: 2 })
+    || freshRetryOutcome({ ...freshRetry, writes: 3, writesAfterControl: 4 })
     || freshRetryOutcome(freshPreClickControl)
     || freshRetryOutcome(freshRevisionControl)) {
     fails.push('TRANSIENT READ WRITE-SEQUENCE CONTROL FAILED — count, semantic trace, or revision drift stayed green');
@@ -9018,21 +12902,35 @@ try {
     authority: await evalT(READ_F4_AUTHORITY_EXPRESSION),
     migration: await evalT(READ_V5_MIGRATION_EVIDENCE_EXPRESSION),
   };
-  const dtrainFullBootAssessment = assessDtrainMigratedBoot(
-    dtrainFullBootEvidence, DTRAIN_FULL_FINISH_RAW,
+  const dtrainFullBootAssessment = assessDtrainFullFinishBoot(dtrainFullBootEvidence);
+  const dtrainFullCanonicalDurableControl = structuredClone(dtrainFullBootEvidence);
+  const dtrainFullCanonicalDurableRaw = JSON.parse(dtrainFullCanonicalDurableControl.stored);
+  dtrainFullCanonicalDurableRaw.view = dtrainExpectedRoute('sol');
+  dtrainFullCanonicalDurableControl.stored = JSON.stringify(dtrainFullCanonicalDurableRaw);
+  dtrainFullCanonicalDurableControl.state.save.savedView = dtrainExpectedRoute('sol');
+  dtrainFullCanonicalDurableControl.state.save.viewType = 'star';
+  const dtrainFullHeldGeometryControl = structuredClone(dtrainFullBootEvidence);
+  dtrainFullHeldGeometryControl.state.galSize = Number(
+    dtrainFullBootAssessment.expectedHeldView?.gal?.size,
   );
-  const dtrainFullBootRoute = dtrainStateRouteAssessment(dtrainFullBoot, 'sol');
-  if (dtrainFullBoot.trainingCheckpointKind !== 'legacy-v1'
-    || dtrainFullBoot.mode !== 'system' || dtrainFullBoot.gal !== 999 || dtrainFullBoot.star !== 424242
-    || dtrainFullBoot.navGalaxyKey === null || dtrainFullBoot.navStarKey === null
-    || dtrainFullBoot.navWorldKey !== null || !dtrainFullBootRoute.ok
-    || !dtrainFullBoot.trainingCheckpointWriteHeld || dtrainFullBoot.tutDone
-    || JSON.stringify(Object.keys(dtrainFullBoot.tutSnapshotPending || {})) !== JSON.stringify(DTRAIN_LEGACY_KEYS)
-    || !dtrainFullBootAssessment.ok
-    || JSON.stringify(dtrainFullBoot.save.landed) !== JSON.stringify([901])) {
+  const dtrainFullRepairIntentControl = structuredClone(dtrainFullBootEvidence);
+  dtrainFullRepairIntentControl.state.persistence.bootRouteRepairPending = true;
+  const dtrainFullBootControls = {
+    canonicalDurableReplacement: assessDtrainFullFinishBoot(dtrainFullCanonicalDurableControl),
+    heldGeometryRuntime: assessDtrainFullFinishBoot(dtrainFullHeldGeometryControl),
+    armedRepairIntent: assessDtrainFullFinishBoot(dtrainFullRepairIntentControl),
+  };
+  const dtrainFullBootControlsIsolated = isolatesNamedCheck(
+    dtrainFullBootControls.canonicalDurableReplacement, 'durableHeldSource',
+  ) && isolatesNamedCheck(
+    dtrainFullBootControls.heldGeometryRuntime, 'runtimeCanonicalSol',
+  ) && isolatesNamedCheck(
+    dtrainFullBootControls.armedRepairIntent, 'bootRepairIdle',
+  );
+  if (!dtrainFullBootAssessment.ok || !dtrainFullBootControlsIsolated) {
     fails.push('D-TRAIN FULL FINISH: genuine eleven-key checkpoint did not boot from retained source into a canonical migrated baseline: '
-      + JSON.stringify({ state: dtrainFullBoot, routeAssessment: dtrainFullBootRoute,
-        assessment: dtrainFullBootAssessment }));
+      + JSON.stringify({ state: dtrainFullBoot, assessment: dtrainFullBootAssessment,
+        controls: dtrainFullBootControls, controlsIsolated: dtrainFullBootControlsIsolated }));
   }
   const queuedRelease = await evalT(`(()=>{ const S=window.__CF_SLICE__,opened=S.api.showReleaseFixture(${JSON.stringify(RELEASE_FIXTURE_VERSION)}),s=S.api.state();
     return {opened,training:s.tutActive,step:s.tutStep,panel:s.panelOpen,pending:s.releasePending,rnSeen:s.rnSeen}; })()`);
@@ -9815,6 +13713,6 @@ if (fails.length) {
   console.error('SLICE SMOKE: FAILURE DETAILS\n  - ' + fails.join('\n  - '));
   process.exit(1);
 }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · READ-ONLY SHIPYARD (real right-rail open/Close, exact chassis/hardpoints/systems, one owned preview, zero retained work) · ARC 2 INVENTORY (real rail/row/detail/Equip, exact carrier↔legacy↔DOM parity, conditional comparison, one receipt, reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail/Equip, exact carrier↔legacy↔DOM parity, conditional comparison, one receipt, reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);

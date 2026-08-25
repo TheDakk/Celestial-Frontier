@@ -53,6 +53,10 @@ import {
   prepareTrainingArc2Restore,
 } from './training-restore.js';
 import {
+  classifyBootRouteRepair,
+  type BootRouteProjection,
+} from './boot-route-repair.js';
+import {
   displayedPlanetTextureDemandPx,
   type SurfacePlanetTextureIdentity,
 } from './planet-texture-demand.js';
@@ -221,7 +225,8 @@ let f4HeartbeatTimer = 0;
 let f4HeartbeatInFlight: Promise<void> | null = null;
 let f4LastCheckpointAt = performance.now();
 let f4SeedBootstrapPending = false;
-let f4SeedBootstrapInFlight: Promise<boolean> | null = null;
+let bootAuthorityCommitInFlight: Promise<boolean> | null = null;
+let bootRouteRepairPending = false;
 let arc2LootState: Arc2LootStateV1 | null = null;
 let arc2LootBootstrapPending = false;
 let arc2LootProtection: string | null = null;
@@ -269,10 +274,11 @@ async function ensureF4RevisionCurrent(runtime: F4RuntimeAuthority): Promise<boo
     return false;
   }
 }
-async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boolean> {
-  if (!f4SeedBootstrapPending && !arc2LootBootstrapPending && !arc3EngineeringBootstrapPending) return true;
+async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<boolean> {
+  if (!f4SeedBootstrapPending && !bootRouteRepairPending
+    && !arc2LootBootstrapPending && !arc3EngineeringBootstrapPending) return true;
   if (runtime !== f4Runtime || !runtime.diagnostics().leaseOwned) return false;
-  if (f4SeedBootstrapInFlight) return f4SeedBootstrapInFlight;
+  if (bootAuthorityCommitInFlight) return bootAuthorityCommitInFlight;
   const productBootstrapWasPending = arc2LootBootstrapPending;
   const engineeringBootstrapWasPending = arc3EngineeringBootstrapPending;
   const engineeringCandidate = arc3EngineeringBootstrapCandidate;
@@ -315,10 +321,10 @@ async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boole
         if (seeded.kind === 'stale') {
           scheduleF4AuthorityConvergenceReload(
             runtime,
-            `seed bootstrap observed newer revision ${seeded.actualRevision}; reloading stable authority`,
+            `boot authority commit observed newer revision ${seeded.actualRevision}; reloading stable authority`,
           );
         }
-        throw new Error(`F4 authority bootstrap refused: ${seeded.kind}`);
+        throw new Error(`boot authority commit refused: ${seeded.kind}`);
       }
       durable = true;
       if (engineeringBootstrapWasPending) {
@@ -327,6 +333,7 @@ async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boole
         lastArc3BootstrapOutcome = 'committed-published';
       }
       f4SeedBootstrapPending = false;
+      bootRouteRepairPending = false;
       arc2LootBootstrapPending = false;
       arc3EngineeringBootstrapPending = false;
       if (productBootstrapWasPending) {
@@ -342,6 +349,7 @@ async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boole
          visibility edge cannot retry F4 alone with product extensions that
          never crossed their compatibility-state boundary. */
       f4SeedBootstrapPending = false;
+      bootRouteRepairPending = false;
       arc2LootBootstrapPending = false;
       arc3EngineeringBootstrapPending = false;
       arc3EngineeringBootstrapCandidate = null;
@@ -374,12 +382,12 @@ async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boole
       return false;
     }
   })();
-  f4SeedBootstrapInFlight = run;
+  bootAuthorityCommitInFlight = run;
   try { return await run; }
-  finally { if (f4SeedBootstrapInFlight === run) f4SeedBootstrapInFlight = null; }
+  finally { if (bootAuthorityCommitInFlight === run) bootAuthorityCommitInFlight = null; }
 }
 function f4RuntimeMayMutate(runtime: F4RuntimeAuthority | null = f4Runtime): runtime is F4RuntimeAuthority {
-  if (!runtime || persistHold || f4SeedBootstrapPending
+  if (!runtime || persistHold || f4SeedBootstrapPending || bootRouteRepairPending
     || arc2LootBootstrapPending || arc3EngineeringBootstrapPending) return false;
   const diagnostics = runtime.diagnostics();
   return diagnostics.leaseOwned && !diagnostics.staleBlocked;
@@ -408,8 +416,9 @@ const heartbeatF4 = async (): Promise<void> => {
   finally { if (f4HeartbeatInFlight === run) f4HeartbeatInFlight = null; }
   if (heartbeatOwned) {
     if (!await ensureF4RevisionCurrent(runtime)) return;
-    if ((f4SeedBootstrapPending || arc2LootBootstrapPending || arc3EngineeringBootstrapPending)
-      && !await ensureF4SeedBootstrap(runtime)) return;
+    if ((f4SeedBootstrapPending || bootRouteRepairPending
+      || arc2LootBootstrapPending || arc3EngineeringBootstrapPending)
+      && !await ensureBootAuthorityCommit(runtime)) return;
     if (f4RuntimeMayAnswer(runtime)) runtime.setAnswerable(app.ticker?.started === true);
   }
   /* A receipt-bearing product action may already own activePersist while awaiting this
@@ -483,8 +492,9 @@ const showF4 = async (): Promise<void> => {
   const outcome = await runtime.setVisible(true);
   if (outcome.kind === 'owned') {
     if (!await ensureF4RevisionCurrent(runtime)) return;
-    if ((f4SeedBootstrapPending || arc2LootBootstrapPending || arc3EngineeringBootstrapPending)
-      && !await ensureF4SeedBootstrap(runtime)) return;
+    if ((f4SeedBootstrapPending || bootRouteRepairPending
+      || arc2LootBootstrapPending || arc3EngineeringBootstrapPending)
+      && !await ensureBootAuthorityCommit(runtime)) return;
     if (persistHold || runtime !== f4Runtime) return;
     runtime.setAnswerable(f4RuntimeMayAnswer(runtime) && app.ticker?.started === true);
   } else runtime.setAnswerable(false);
@@ -4566,7 +4576,7 @@ let smokeStaleNextArc3ActionAuthority = false;
 let lastSmokeArc3ActionFaultWitness: Readonly<{
   schema: 'cf-v2-arc3-action-fault-witness/v1';
   operation: string;
-  injection: 'storage-failure' | 'stale-authority';
+  injection: 'storage-failure' | 'stale-authority' | 'publication-failure';
   phase: 'injecting' | 'settled' | 'injection-failed';
   beforeRevision: number;
   injectedRevision: number | null;
@@ -4905,6 +4915,15 @@ async function commitArc3EngineeringAction(spec: Readonly<{
       if (committedPlan === null) throw new Error('derivation-missing-after-commit');
       if (smokeRejectNextArc3Publication) {
         smokeRejectNextArc3Publication = false;
+        lastSmokeArc3ActionFaultWitness = Object.freeze({
+          schema: 'cf-v2-arc3-action-fault-witness/v1',
+          operation: actionClaim.operation,
+          injection: 'publication-failure',
+          phase: 'settled',
+          beforeRevision: faultBeforeRevision,
+          injectedRevision: outcome.revision,
+          outcome: 'committed-publication-reload',
+        });
         throw new Error('slice-smoke injected Arc 3 publication rejection');
       }
       if (outcome.plan.receiptOrdinal !== committedPlan.receiptOrdinal
@@ -5258,7 +5277,7 @@ let mutationBlockCount = 0;
 let lastMutationBlockWitness: Readonly<{
   schema: 'cf-v2-read-only-boundary/v1'; action: string; count: number;
   hold: false | 'transient-read' | 'protected-payload'; leaseOwned: boolean;
-  staleBlocked: boolean; seedBootstrapPending: boolean;
+  staleBlocked: boolean; seedBootstrapPending: boolean; bootRouteRepairPending: boolean;
 }> | null = null;
 const READ_ONLY_MUTATION_SELECTOR = [
   '#dockcharts', '#setsnd', '#setvol', '[data-pref]', '[data-motion]',
@@ -5277,6 +5296,7 @@ function blockPlayerMutation(action: string): boolean {
     hold: persistHold, leaseOwned: runtime?.leaseOwned === true,
     staleBlocked: runtime?.staleBlocked === true,
     seedBootstrapPending: f4SeedBootstrapPending,
+    bootRouteRepairPending,
   });
   toast('Read-only expedition', 'Inspection remains available, but this action cannot change the expedition until save authority is restored.', true);
   return true;
@@ -5631,6 +5651,14 @@ async function awaitSmokeFreshInitializationRaceGate(): Promise<void> {
   }
 }
 
+function bootRouteProjection(state: SaveStateV2): BootRouteProjection {
+  return Object.freeze({
+    savedView: state.savedView,
+    atlas: Object.freeze(state.logMap.map(([id, entry]) =>
+      Object.freeze([id, entry.where] as const))),
+  });
+}
+
 async function loadSave(): Promise<void> {
   /* v5 is authoritative before any app state exists. A missing schema gets
      exactly one stored-v4 migration attempt; only a genuinely empty source
@@ -5647,6 +5675,7 @@ async function loadSave(): Promise<void> {
   let initialExtensions: V5Extensions = EMPTY_V5_EXTENSIONS;
   let restoredAuthority: Parameters<typeof createF4RuntimeAuthority>[0]['restoredAuthority'] = null;
   let protectedReason: 'future-version' | 'invalid' | null = null;
+  bootRouteRepairPending = false;
   arc2LootState = null;
   arc2LootBootstrapPending = false;
   arc2LootProtection = null;
@@ -5799,6 +5828,9 @@ async function loadSave(): Promise<void> {
     }
   }
   const bootIngress = importedRouteIngress;
+  const durableBootSavedView = save.savedView;
+  const durableBootAtlasRoutes = save.logMap.map(([, entry]) => ({ entry, where: entry.where }));
+  const durableBootRouteProjection = bootRouteProjection(save);
 
   customNames.clear();
   for (const [key, name] of save.customNames) customNames.set(key, name);
@@ -5878,6 +5910,31 @@ async function loadSave(): Promise<void> {
       trainingBootRouteBlocked = true;
       if (trainingSnapshotIngress.kind !== 'none') trainingCheckpointWriteHeld = true;
     }
+  }
+  /* A deterministic source check may canonicalize the durable saved route or
+     Atlas projections. That repair is an explicit boot transaction intent,
+     never a side effect of first render. It joins the already-owned F4/Arc 2/
+     Arc 3 bootstrap CAS below, while source-error, protected, and Training's
+     runtime-only seat retain their exact stored route bytes. */
+  const bootRouteRepair = classifyBootRouteRepair({
+    before: durableBootRouteProjection,
+    after: bootRouteProjection(save),
+    guards: {
+      persistenceHeld: persistHold !== false,
+      savedRouteWriteHeld,
+      trainingCheckpointWriteHeld,
+      trainingBootRouteBlocked,
+      trainingBootRuntimeOnlySeat,
+    },
+  });
+  bootRouteRepairPending = bootRouteRepair.pending;
+  if (bootRouteRepair.changed && !bootRouteRepair.pending) {
+    /* Other F4/product bootstrap work may still need its one owned CAS. Keep
+       a held route repair out of that detached candidate as well as out of
+       the render path; otherwise a false pending flag could hide a real
+       Training/source-error/protected route write inside another bootstrap. */
+    save.savedView = durableBootSavedView;
+    for (const { entry, where } of durableBootAtlasRoutes) entry.where = where;
   }
   /* Arc 2 owns an independently versioned Inventory carrier. Seed it from
      the already-sanitized legacy item facts without truncating oversized
@@ -5992,9 +6049,10 @@ async function loadSave(): Promise<void> {
       if (leaseOutcome.kind === 'owned' && !await ensureF4RevisionCurrent(runtime)) {
         throw new Error(persistenceProtectedDetail || 'F4 revision verification failed');
       }
-      if ((f4SeedBootstrapPending || arc2LootBootstrapPending || arc3EngineeringBootstrapPending)
+      if ((f4SeedBootstrapPending || bootRouteRepairPending
+        || arc2LootBootstrapPending || arc3EngineeringBootstrapPending)
         && leaseOutcome.kind === 'owned') {
-        if (!await ensureF4SeedBootstrap(runtime)) {
+        if (!await ensureBootAuthorityCommit(runtime)) {
           throw new Error(persistenceProtectedDetail || 'F4/product authority bootstrap failed');
         }
       }
@@ -6004,6 +6062,7 @@ async function loadSave(): Promise<void> {
       await runtime.release().catch(() => undefined);
       f4Runtime = null;
       f4SeedBootstrapPending = false;
+      bootRouteRepairPending = false;
       if (arc2LootBootstrapPending) {
         arc2LootState = null;
         inventoryPanelController.setState(null);
@@ -6265,7 +6324,7 @@ async function loadSave(): Promise<void> {
   emitBootPhase('save-load-start');
   await loadSave();
   emitBootPhase('save-load-complete');
-  rerender({ skipPersist: trainingBootRuntimeOnlySeat });
+  rerender({ skipPersist: true });
   trainingBootRuntimeOnlySeat = false;
   emitBootPhase('scene-rendered');
   if (!trainingRecoveryLock) showUnseenV2Release();
@@ -6298,6 +6357,7 @@ async function loadSave(): Promise<void> {
           protectedDetail: persistenceProtectedDetail,
           authorityBootKind: f4AuthorityBootKind,
           seedBootstrapPending: f4SeedBootstrapPending,
+          bootRouteRepairPending,
           productBootstrapPending: arc2LootBootstrapPending,
           engineeringBootstrapPending: arc3EngineeringBootstrapPending,
           visibilityOverrideHidden: f4VisibilityOverrideHidden,
@@ -6348,6 +6408,7 @@ async function loadSave(): Promise<void> {
             faultArmed: {
               storageFailure: smokeRejectNextArc3ActionStorage,
               staleAuthority: smokeStaleNextArc3ActionAuthority,
+              publicationFailure: smokeRejectNextArc3Publication,
             },
             lastFault: lastSmokeArc3ActionFaultWitness,
           },
@@ -6462,7 +6523,7 @@ async function loadSave(): Promise<void> {
         return true;
       },
       __smokeRejectNextArc3Publication: () => {
-        if (smokeRejectNextArc3Publication) return false;
+        if (productActionCoordinator.busy || smokeRejectNextArc3Publication) return false;
         smokeRejectNextArc3Publication = true;
         return true;
       },
