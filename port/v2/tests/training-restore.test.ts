@@ -3,11 +3,16 @@ import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
 import {
   ARC2_LOOT_NAMESPACE,
+  ARC4_OWNERSHIP_EXTENSION_TARGETS,
+  ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
+  arc4OwnershipLegacyMirrorMatches,
   arc2LootLegacyMirrorMatches,
   canonicalizeV5Extensions,
   classifyLegacyTrainingCheckpointV1,
   exportSaveV2,
   importSaveV2,
+  migrateLegacyOwnership,
+  prepareArc4OwnershipLegacyMigration,
   prepareArc2LootLegacyMigration,
   projectArc2LootLegacyMirror,
   type ContentRegistry,
@@ -17,9 +22,16 @@ import {
 import { navToView, resolveViewToNav } from '@cf/scene';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
+  SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  ownershipStateDigestV1,
+} from '@cf/domain-acquisition';
+import {
   buildLegacyTrainingRestoreCandidate,
+  committedTrainingArc4State,
   committedTrainingArc2State,
+  prepareTrainingArc4Restore,
   prepareTrainingArc2Restore,
+  type PreparedTrainingArc4Restore,
 } from '../apps/game/src/training-restore.js';
 
 interface TrainingFixture {
@@ -588,4 +600,276 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
       kind: 'protected', reason: 'target-corrupt',
     });
   });
+
+  it('bootstraps restored legacy ownership once and verifies all 18 durable carriers plus its mirror', () => {
+    const checkpoint = checkpointFrom();
+    const current = trainingCurrent(checkpoint).current;
+    const restoredState = restore(current, checkpoint).state;
+    const baseExtensions = canonicalizeV5Extensions({
+      player: {
+        'f4.authority': {
+          version: 1,
+          json: '{"activePlayMs":77,"sessionRng":{"seed":5,"ordinal":3,"draws":{"prior":2}}}',
+        },
+      },
+      inventory: { 'arc2.keep': { version: 1, json: '{"exact":"inventory"}' } },
+      settings: { 'arc7.audio': { version: 2, json: '{"gain":0.4}' } },
+    });
+
+    expect(prepareTrainingArc4Restore('none', false, restoredState, baseExtensions)).toBeNull();
+    expect(prepareTrainingArc4Restore('current-view', false, restoredState, baseExtensions)).toBeNull();
+    expect(prepareTrainingArc4Restore('source-deferred', false, restoredState, baseExtensions)).toBeNull();
+    expect(prepareTrainingArc4Restore('legacy-or-unknown', false, restoredState, baseExtensions)).toBeNull();
+    expect(prepareTrainingArc4Restore('legacy-v1', false, restoredState, baseExtensions)).toBeNull();
+
+    const prepared = prepareTrainingArc4Restore(
+      'legacy-v1', true, restoredState, baseExtensions,
+    );
+    expect(prepared?.kind).toBe('prepared');
+    if (prepared?.kind !== 'prepared') return;
+    expect(prepared.migration).toBe('migrated');
+    const migrated = migrateLegacyOwnership(restoredState);
+    expect(migrated.kind).toBe('migrated');
+    if (migrated.kind !== 'migrated') return;
+    expect(prepared.migrationSourceEvidence).toEqual(migrated.sourceEvidence);
+    expect(prepared.writes).toHaveLength(ARC4_OWNERSHIP_EXTENSION_TARGETS.length);
+    expect(prepared.writes).toHaveLength(18);
+    expect(prepared.extensions.settings).toEqual(baseExtensions.settings);
+    expect(prepared.extensions.inventory?.['arc2.keep']).toEqual(
+      baseExtensions.inventory?.['arc2.keep'],
+    );
+    expect(arc4OwnershipLegacyMirrorMatches(prepared.state, restoredState)).toBe(true);
+    expect(committedTrainingArc4State(restoredState, prepared, prepared.extensions)).toEqual(
+      prepared.state,
+    );
+    const changedEpoch = { ...restoredState, EPOCH_BASE: restoredState.EPOCH_BASE + 1 };
+    expect(arc4OwnershipLegacyMirrorMatches(prepared.state, changedEpoch)).toBe(true);
+    const changedEpochMigration = migrateLegacyOwnership(changedEpoch);
+    expect(changedEpochMigration.kind).toBe('migrated');
+    if (changedEpochMigration.kind !== 'migrated') return;
+    expect(ownershipStateDigestV1(changedEpochMigration.state))
+      .toBe(ownershipStateDigestV1(prepared.state));
+    expect(changedEpochMigration.sourceEvidence.digest)
+      .not.toBe(prepared.migrationSourceEvidence?.digest);
+    expect(committedTrainingArc4State(
+      changedEpoch,
+      prepared,
+      prepared.extensions,
+    )).toBeNull();
+    expect(committedTrainingArc4State(current, prepared, prepared.extensions)).toBeNull();
+    expect(committedTrainingArc4State(restoredState, prepared, baseExtensions)).toBeNull();
+    expect(committedTrainingArc4State(restoredState, {
+      ...prepared,
+      migration: 'legacy-protected',
+    }, prepared.extensions)).toBeNull();
+    const currentMissingMigration = { ...prepared } as Record<string, unknown>;
+    delete currentMissingMigration.migration;
+    expect(committedTrainingArc4State(
+      restoredState,
+      currentMissingMigration as unknown as PreparedTrainingArc4Restore,
+      prepared.extensions,
+    )).toBeNull();
+    const currentMissingEvidence = { ...prepared } as Record<string, unknown>;
+    delete currentMissingEvidence.migrationSourceEvidence;
+    expect(committedTrainingArc4State(
+      restoredState,
+      currentMissingEvidence as unknown as PreparedTrainingArc4Restore,
+      prepared.extensions,
+    )).toBeNull();
+    expect(committedTrainingArc4State(restoredState, {
+      ...prepared,
+      migrationSourceEvidence: {
+        ...prepared.migrationSourceEvidence!,
+        digest: '0'.repeat(64),
+      },
+    }, prepared.extensions)).toBeNull();
+    let evidenceGetterReads = 0;
+    const hostileEvidence = { ...prepared } as Record<string, unknown>;
+    Object.defineProperty(hostileEvidence, 'migrationSourceEvidence', {
+      enumerable: true,
+      get() {
+        evidenceGetterReads++;
+        return prepared.migrationSourceEvidence;
+      },
+    });
+    expect(committedTrainingArc4State(
+      restoredState,
+      hostileEvidence as unknown as PreparedTrainingArc4Restore,
+      prepared.extensions,
+    )).toBeNull();
+    expect(evidenceGetterReads).toBe(0);
+    expect(committedTrainingArc4State(restoredState, {
+      ...prepared,
+      writes: prepared.writes.slice(0, -1),
+    } as PreparedTrainingArc4Restore, prepared.extensions)).toBeNull();
+    expect(committedTrainingArc4State(restoredState, {
+      ...prepared,
+      writes: [prepared.writes[1]!, prepared.writes[0]!, ...prepared.writes.slice(2)],
+    } as PreparedTrainingArc4Restore, prepared.extensions)).toBeNull();
+    expect(committedTrainingArc4State(restoredState, {
+      ...prepared,
+      writes: [...prepared.writes, prepared.writes[0]!],
+    } as PreparedTrainingArc4Restore, prepared.extensions)).toBeNull();
+
+    const corruptCommitted = canonicalizeV5Extensions({
+      ...prepared.extensions,
+      player: {
+        ...prepared.extensions.player,
+        [ARC4_OWNERSHIP_MANIFEST_NAMESPACE]: { version: 1, json: '{}' },
+      },
+    });
+    expect(committedTrainingArc4State(restoredState, prepared, corruptCommitted)).toBeNull();
+
+    const existing = prepareArc4OwnershipLegacyMigration({
+      extensions: baseExtensions,
+      legacy: current,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    if (existing.kind !== 'prepared') throw new Error(`existing ownership was ${existing.kind}`);
+    const existingBytes = JSON.stringify(existing.extensions);
+    expect(prepareTrainingArc4Restore(
+      'legacy-v1', true, restoredState, existing.extensions,
+    )).toEqual({
+      kind: 'protected', reason: 'target-loaded', mode: existing.state.mode,
+      actualRevision: existing.state.revision,
+    });
+    expect(JSON.stringify(existing.extensions)).toBe(existingBytes);
+
+    const existingManifest = existing.extensions.player![ARC4_OWNERSHIP_MANIFEST_NAMESPACE]!;
+    const future = canonicalizeV5Extensions({
+      ...existing.extensions,
+      player: {
+        ...existing.extensions.player,
+        [ARC4_OWNERSHIP_MANIFEST_NAMESPACE]: { ...existingManifest, version: 2 },
+      },
+    });
+    expect(prepareTrainingArc4Restore('legacy-v1', true, restoredState, future)).toEqual({
+      kind: 'protected', reason: 'target-future', version: 2,
+    });
+    const corrupt = canonicalizeV5Extensions({
+      ...existing.extensions,
+      player: {
+        ...existing.extensions.player,
+        [ARC4_OWNERSHIP_MANIFEST_NAMESPACE]: { version: 1, json: '{}' },
+      },
+    });
+    expect(prepareTrainingArc4Restore('legacy-v1', true, restoredState, corrupt)).toEqual({
+      kind: 'protected', reason: 'target-corrupt',
+    });
+  });
+
+  it('accepts an exact lossless Training protection carrier without inventing a mirror', () => {
+    const checkpoint = checkpointFrom();
+    const restoredState = restore(trainingCurrent(checkpoint).current, checkpoint).state;
+    const template = restoredState.codex[0]![1];
+    const padding = 'x'.repeat(1_800);
+    const oversizedCodex: SaveStateV2['codex'] = Array.from({ length: 700 }, (_, index) => {
+      const id = `s${index + 20_000}`;
+      return [id, {
+        ...template,
+        id,
+        name: id,
+        g: {
+          seed: index + 20_000,
+          kingdom: index === 0 ? 'fauna' : 'flora',
+          form: index,
+          note: padding,
+        },
+      }];
+    });
+    const oversizedState: SaveStateV2 = {
+      ...restoredState,
+      codex: oversizedCodex,
+      customNames: [],
+      bioX: [],
+      scoutId: null,
+    };
+    const prepared = prepareTrainingArc4Restore('legacy-v1', true, oversizedState, {});
+    expect(prepared).toMatchObject({
+      kind: 'prepared', migration: 'legacy-protected',
+      state: { mode: 'legacy-protected' },
+    });
+    if (prepared?.kind !== 'prepared') return;
+    expect(prepared.writes).toHaveLength(18);
+    expect(prepared.migrationSourceEvidence).toEqual(prepared.state.legacyProtection);
+    expect(arc4OwnershipLegacyMirrorMatches(prepared.state, oversizedState)).toBe(false);
+    expect(committedTrainingArc4State(oversizedState, prepared, prepared.extensions)).toEqual(
+      prepared.state,
+    );
+    expect(committedTrainingArc4State(oversizedState, {
+      ...prepared,
+      migration: 'migrated',
+    }, prepared.extensions)).toBeNull();
+    const protectedMissingMigration = { ...prepared } as Record<string, unknown>;
+    delete protectedMissingMigration.migration;
+    expect(committedTrainingArc4State(
+      oversizedState,
+      protectedMissingMigration as unknown as PreparedTrainingArc4Restore,
+      prepared.extensions,
+    )).toBeNull();
+
+    const sourceMutations: readonly Readonly<{
+      label: string;
+      mutate(state: SaveStateV2): void;
+    }>[] = [
+      {
+        label: 'genome',
+        mutate(state) { state.codex[0]![1].g.note = `${String(state.codex[0]![1].g.note)}!`; },
+      },
+      {
+        label: 'from',
+        mutate(state) { state.codex[0]![1].from = 'Changed source'; },
+      },
+      {
+        label: 'where',
+        mutate(state) { state.codex[0]![1].where = { type: 'audit', marker: 1 }; },
+      },
+      {
+        label: 'alias',
+        mutate(state) { state.customNames = [['cs20000', 'Changed Alias']]; },
+      },
+      {
+        label: 'bioX',
+        mutate(state) { state.bioX = [[133, [1, 0]]]; },
+      },
+      {
+        label: 'scout',
+        mutate(state) { state.scoutId = 's20000'; },
+      },
+      {
+        label: 'epoch',
+        mutate(state) { state.EPOCH_BASE += 1; },
+      },
+    ];
+    for (const { label, mutate } of sourceMutations) {
+      const changed = structuredClone(oversizedState);
+      mutate(changed);
+      const remigrated = migrateLegacyOwnership(changed);
+      expect(remigrated.kind, label).toBe('legacy-protected');
+      if (remigrated.kind === 'legacy-protected') {
+        expect(remigrated.sourceEvidence.digest, label)
+          .not.toBe(prepared.state.legacyProtection?.digest);
+      }
+      expect(
+        committedTrainingArc4State(changed, prepared, prepared.extensions),
+        label,
+      ).toBeNull();
+    }
+
+    let codexGetterReads = 0;
+    const hostile = { ...oversizedState } as Record<string, unknown>;
+    Object.defineProperty(hostile, 'codex', {
+      enumerable: true,
+      get() {
+        codexGetterReads++;
+        return oversizedState.codex;
+      },
+    });
+    expect(committedTrainingArc4State(
+      hostile as unknown as SaveStateV2,
+      prepared,
+      prepared.extensions,
+    )).toBeNull();
+    expect(codexGetterReads).toBe(0);
+  }, 20_000);
 });

@@ -72,6 +72,7 @@ export type Arc4CaptureCapacityRefusalReason =
   | 'snapshot-ownership-mismatch'
   | 'snapshot-capability-mismatch'
   | 'snapshot-authority-mismatch'
+  | 'draft-ecology-epoch-mismatch'
   | 'extensions-corrupt'
   | 'scenario-projection-failed'
   | 'ownership-write-unrepresentable'
@@ -174,6 +175,7 @@ interface CertificatePayloadV1 {
 }
 
 const CERTIFICATES = new WeakMap<object, CertificatePayloadV1>();
+const DERIVED_SETTLEMENTS = new WeakSet<object>();
 
 const CERTIFICATION_FIELDS = Object.freeze(['preflight', 'preDraw'] as const);
 const PRE_DRAW_FIELDS = Object.freeze([
@@ -385,6 +387,12 @@ function assertExactF4Projection(
       !== preflight.snapshot.f4AuthorityFingerprint) {
     throw new CapacityRefusal('snapshot-authority-mismatch', 'capture snapshot F4 authority changed');
   }
+  if (preDraw.draft.EPOCH_BASE !== preflight.snapshot.ecologyEpoch) {
+    throw new CapacityRefusal(
+      'draft-ecology-epoch-mismatch',
+      'capture draft does not persist the roster ecology epoch',
+    );
+  }
   const read = readF4Authority(extensions);
   if (read.kind !== 'loaded' || !sameJson(read.authority, preDraw.currentAuthority)) {
     throw new CapacityRefusal('snapshot-authority-mismatch', 'capture extension F4 authority changed');
@@ -452,12 +460,20 @@ function ownedCustomNameKeys(mirror: ProjectedLegacyOwnershipMirrorV1): Readonly
   return new Set(mirror.codex.map((row) => `c${row.legacyCodexId}`));
 }
 
-function stagedV4Mirror(
-  baseRaw: string,
-  mirror: ProjectedLegacyOwnershipMirrorV1,
-  stardustReward: number,
-  codec: F4MultiOutcomePreDrawSaveCodec,
+export interface Arc4LegacyMirrorFixedPointInputV1 {
+  readonly baseRaw: string;
+  readonly mirror: ProjectedLegacyOwnershipMirrorV1;
+  readonly stardustReward: number;
+  readonly codec: Pick<F4MultiOutcomePreDrawSaveCodec, 'importLegacy' | 'exportLegacy'>;
+}
+
+/** Apply the Arc 4-owned v4 mirror, then pass it through the ordinary v4
+ * import/export fixed point. Capture capacity and boot reconciliation share
+ * this one implementation so Codex-derived cumulative stats cannot drift. */
+export function stageArc4LegacyMirrorFixedPointV1(
+  input: Arc4LegacyMirrorFixedPointInputV1,
 ): Readonly<{ state: SaveStateV2; raw: string }> {
+  const { baseRaw, mirror, stardustReward, codec } = input;
   let envelope: Record<string, unknown>;
   try {
     const parsed = JSON.parse(baseRaw) as unknown;
@@ -623,7 +639,12 @@ function prepareScenario(
     );
   }
   const stardustReward = stardustRewardForScenario(scenario);
-  const staged = stagedV4Mirror(sourceLegacyV4Raw, mirror, stardustReward, codec);
+  const staged = stageArc4LegacyMirrorFixedPointV1({
+    baseRaw: sourceLegacyV4Raw,
+    mirror,
+    stardustReward,
+    codec,
+  });
   let f4: ReturnType<typeof prepareF4AuthorityUpdate>;
   try {
     f4 = prepareF4AuthorityUpdate(
@@ -902,7 +923,7 @@ export function settleCertifiedArc4CaptureV1(
   } catch {
     return Object.freeze({ kind: 'refused', reason: 'settlement-authorization-failed' });
   }
-  return Object.freeze({
+  const derived = Object.freeze({
     kind: 'derived',
     plan: planned.plan,
     stardustReward: selected.publicRow.stardustReward,
@@ -910,6 +931,19 @@ export function settleCertifiedArc4CaptureV1(
     prepared: authorization.prepared,
     authorization,
   });
+  DERIVED_SETTLEMENTS.add(derived);
+  return derived;
+}
+
+/** Recognize only the exact settlement minted after a registered capacity
+ * certificate selected one owner-authorized prepared scenario. */
+export function isArc4CaptureDerivedSettlementV1(
+  value: unknown,
+): value is Extract<Arc4CaptureSettlementOutcome, { readonly kind: 'derived' }> {
+  return typeof value === 'object'
+    && value !== null
+    && DERIVED_SETTLEMENTS.has(value)
+    && (value as { readonly kind?: unknown }).kind === 'derived';
 }
 
 export function isArc4CaptureCapacityCertificateV1(

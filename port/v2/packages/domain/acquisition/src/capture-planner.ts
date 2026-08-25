@@ -1,9 +1,8 @@
 /* Pure Tame / Scavenge / Sample planner.
 
    This closes deterministic selection, finite-yield spend, repeat ownership,
-   and truthful OwnershipSuccessorV1 construction. It intentionally does not
-   expose an app writer: the registered all-scenario projection below is the
-   no-value capacity prerequisite for that later transaction join. */
+   and truthful OwnershipSuccessorV1 construction. The app writer is exposed
+   only through the registered all-scenario, no-value capacity transaction. */
 import { describeSpecies, type Genome } from '@cf/domain-genome';
 import { clamp } from '@cf/domain-rand';
 import { ringGrade } from '@cf/domain-strays';
@@ -45,15 +44,16 @@ export const TAME_ODDS_V1 = Object.freeze([
   0.015, 0.010, 0.006, 0.004, 0.0025,
 ] as const);
 
-/** Machine-readable transaction policy. The app writer remains unavailable
- * until it presents a complete registered all-scenario capacity proof. */
+/** Machine-readable transaction policy. The app writer must present a
+ * complete registered all-scenario capacity proof before either draw. */
 export const CAPTURE_PLANNER_POLICY_BLOCKERS_V1 = Object.freeze({
   legacyEligibility: 'same-full-world-current-cycle-successful-species-and-verb-only',
   reacquisition: 'new-individual-or-lot-with-first-only-catalogue',
   encodedExtensionByteCapacity: 'registered-all-scenario-certificate-required-before-draw',
   breedingProvenance: 'unsupported-by-ownership-v1',
   guardianProvenance: 'unsupported-by-ownership-v1',
-  writerExposed: false,
+  writerExposed: true,
+  playerControlExposed: false,
 } as const);
 
 export interface CaptureChanceInputV1 {
