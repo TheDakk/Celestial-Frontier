@@ -17,16 +17,21 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-25 · ARC 4 HEADLESS DURABLE WRITER COMPLETE · UI NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-25 · ARC 4 PLAYER-FACING CAPTURE BROWSER-GREEN · PARTIAL PENDING RECOVERY/HUMAN ◀◀◀
 
 ### Current integration state
 
-- **Committed local product snapshot for this handoff:**
-  `fd72c06486dfa9a9157fe9472cbb9020f61ec6dc` on `openai/mac`, ahead of its upstream by 62
-  commits before this reference/handoff commit. Arc 3 recovery and its bounded browser evidence
-  remain committed at `c4a02be`; Arc 4's strict ownership bootstrap and diagnostics-only durable
-  capture writer are committed at `fd72c06`. The Compendium measurement reseal remains deferred
-  until the final multi-Arc dependency graph freezes.
+- **Committed local product/reference snapshot for this handoff:**
+  `0d56106bcecf5603f8cfa5fd54da0a36bfd85a27` on `openai/mac`, ahead of its upstream by 64
+  commits before this ROADMAP-only handoff commit. Arc 3 recovery remains committed at `c4a02be`;
+  Arc 4's strict ownership bootstrap and diagnostics-only durable foundation remain committed at
+  `fd72c06`. The player-facing Arc 4 UI, copy, browser contracts and synchronized references are
+  committed locally at `0d56106`. The final browser reports predate the docs-only refresh and bind
+  status `61fc362e…` plus dirty tree
+  `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`; independent audits prove
+  the executable, test and tool bytes are exactly those committed at `0d56106`. This is not a
+  remote, hosted, integration or release milestone. The Compendium measurement reseal remains
+  deferred until the final multi-Arc dependency graph freezes.
 - PR #33 merged normally into `develop` as
   `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after terminal-green
   `test-battery` run `32646110946` (one attempt, no retry; battery 50m29s).
@@ -37,7 +42,8 @@ the archive verbatim and refresh this handoff in place.
   production release, whole-Gate closure, true-GPU-byte measurement, or physical-device
   heat/battery evidence.
 - `main`, the production site, and the parked development-preview publisher are
-  unchanged. No release, deployment, version bump, publication, or save-schema change occurred.
+  unchanged. No release, deployment, production version bump, `rnSeen` mutation, preview package,
+  publication, or production save-key change occurred.
 - PR #34 merged normally as `7a9f4c1370dd84292388d718c38ff34214f6203b` after exact-head,
   one-attempt terminal-green battery run `32681394532` (50m10s). The repair's Compendium 78/78
   certificate/verifier, SceneMemory certificate/verifier, Slice Smoke, Glass Matrix, preview package,
@@ -98,7 +104,7 @@ remain in force.
    does not waive any human criterion. Arc 5.5 remains the separate combat-model HUMAN gate before
    Arc 6.
 
-### Local campaign state — committed through Arc 3 foundations, with Arc 4/5 seams
+### Local campaign state — player-facing through Arc 4, with Arc 5 still model/certificate only
 
 - F3/F4 now provide the live v5 split-store/revision/lease authority used by the app: the protected
   `player/f4.authority` carrier persists the visible/answerable active-play clock and SessionRNG,
@@ -187,15 +193,16 @@ creatures carry explicit no-lineage state. No companion/share UI is enabled yet.
 inside its roster owner. `fullWorldRoster` retains every deterministic row; the isolated
 `worldRosterView` applies the eight-row cap only to the existing Planetside thumbnail strip and
 reports the hidden count. Thirteen-row, short, empty, snapshot, and mutation controls pass. Future
-capture/audio targeting must consume the full side, never infer authority from the preview.
+capture/audio targeting must consume the full side, never infer authority from the preview. Arc 4
+capture now does so; the rule remains open for audio and later selectors.
 
-**Arc 4 headless durable writer (committed local `fd72c06`, 2026-08-25):** absent ownership-v1
+**Arc 4 durable foundation (committed local `fd72c06`, 2026-08-25):** absent ownership-v1
 carriers now bootstrap into the shared receipt-free F4/Arc 2/Arc 3 boot CAS without granting a
 Compendium page, discovery, creature, specimen or reward. Current projectable mirrors reconcile in
 that same owned commit; future, corrupt, unrepresentable and legacy-protected states remain exact
 and fail closed. Legacy Training composes its one Arc 2 replacement with all 18 Arc 4 namespaces,
 and postcommit verification binds the exact source evidence before publishing compatibility fields.
-The diagnostics-only writer captures the real current surface, canonical address, current ecology
+At that committed boundary, the diagnostics-only writer captured the real current surface, canonical address, current ecology
 epoch and full roster, certifies a miss plus every eligible hit before either F4 draw, and settles
 one finite attempt, ownership successor, legacy projection, receipt, next authority and revision in
 one lease-fenced CAS. Misses spend an attempt; first observations alone add catalogue/reward state;
@@ -204,21 +211,42 @@ only a private pending payload binding the registered plan/settlement identities
 fingerprint; the committed path alone creates and registers the opaque evidence token against the
 exact transaction, kind and revision. Stale/storage/protected paths publish nothing, while
 post-durable verification faults clear live authority and perform one read-only convergence reload
-without a second write or reroll.
+without a second write or reroll. This paragraph preserves the committed headless foundation; the
+newer local product boundary follows.
 
-Arc 4 is still **not player-live**. There are no Tame/Scavenge/Sample controls, odds/targeting
-presentation, toast/reward animation, Guide enablement, or Arc 4 browser/HUMAN proof. Capture and
-Discover Life remain truthfully unavailable in player copy. The next batch must decide random-pool
-versus targeted presentation, then co-deliver accessible UI/copy and real native outcome/reload/
-storage/stale browser evidence before claiming the capability or letting Arc 5 depend on it.
+**Arc 4 player-facing current local candidate (2026-08-25):** Survey now exposes native
+Tame/Scavenge/Sample controls over the exact production writer. The presentation-semantics fence
+owns a source-bound uniform random eligible pool—not targeted species selection—and reports the
+preview/full-roster counts, aggregate and individual odds, one shared hit-or-miss Biosphere Yield
+budget and active-play recovery countdown. A press remains pending and non-optimistic until the one
+transaction commits. Hit and miss each spend exactly one attempt; storage refusal, stale authority
+and post-durable publication faults converge without a reroll, optimistic grant or second write.
+First observations alone add the durable Compendium fact and any eligible first-only Stardust reward; repeats add
+only another stable fauna individual or specimen lot. Native Close/reopen, focus and reload use the
+same product state. The Guide remains 41 player topics—24 partial and 17 unavailable—with live,
+honest Capture/Discover copy. **A New Foundation** has 54 draft bullets. Training remains six
+lessons plus graduation with no Capture lesson. There is no Charter bioscan or targeted preview.
 
-**Arc 4 local verification:** eight focused files pass 101/101 tests. The explicit non-Compendium
-suite passes 98 files / 1,142 tests with one intentional skip; root/app/worker typechecks,
-`artunused`, and the 872-module game production build pass. The full suite records 1,160 passes,
-one skip and one expected red only at the deferred Compendium measurement-authority digest
-(`6a961d…` sealed versus `2ab188…` live). Strong no-unused runs report only the same 12 untouched
-art-override parameters and zero Arc 4 findings. No Arc 4 browser, hosted, HUMAN, release or
-deployment evidence was produced in this batch.
+**Arc 4 final local evidence:** no-retry Slice Smoke run
+`20260825143239498-59502-655815e34a3e` passed on Edge `151.0.4129.101` in 336,913 ms with zero
+findings/failure scopes, zero retries, no source change and exactly one nine-stage ledger/PASS:
+precondition, pending-no-optimism, hit, storage-refusal, stale-convergence, miss, burn-down,
+disabled-suppression and publication-convergence. It records 14 burn steps and
+`recoveryClaimed:false`; report/log SHA-256 are
+`4cc6fe02fb6965e4b67baef1d6b90d0a5ac64dff836cdc6416f49d5ad5bbbdde` /
+`15683111584df5f1fead034b0b28f0e1a9b9ec96c2eb5cc3978b78c5ca1436b2`.
+Full-certifying Glass Matrix passed on the same Edge in 71,713 ms across 12 viewports and 36 Arc 4
+outcomes, executing every planned control with none blocked or omitted and zero findings,
+instrument failures or retries; report SHA-256 is
+`03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`. Both reports bind base
+`8633bb48fc89c7ae658fa9ed4a7f47b683be102d`, status
+`61fc362edebc5f747143131de7cf4a27a7228a3734f6becb49b2089ca6381cac` and the same dirty tree
+`b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. Full Vitest records
+1,186 passes, one skip and the one known deferred Compendium seal failure; excluding that file,
+99 files /1,168 tests pass with one skip. Final source audits are clear. Arc 4 remains
+**[PARTIAL]** because the real uninterrupted 20-minute next-cycle recovery observation and combined
+HUMAN first-journey/ownership review remain open. None of this is clean exact-head, hosted,
+integration, HUMAN, preview/publication, release, version or deployment authority.
 
 **Arc 5 ownership seam (committed local, 2026-08-24; model/certificate only):** ownership-v2 defines
 receipt-bound capture, deterministic fauna-only bred-child successors with ordered parent evidence,
@@ -275,36 +303,38 @@ current-source local browser proof is recorded above; audio browser/listening ev
 
 ### In-session continuation / fresh-session recovery
 
-1. Continue only in the Codex macOS root on `openai/mac`. Product is committed through
-   `fd72c06486dfa9a9157fe9472cbb9020f61ec6dc`; Arc 3 browser instruments/evidence remain at
-   `c4a02be`. Do not fetch/merge, switch branches, push, or run GitHub workflows without a new exact
-   authorization.
+1. Continue only in the Codex macOS root on `openai/mac`. The committed Arc 4 product/reference
+   snapshot is `0d56106bcecf5603f8cfa5fd54da0a36bfd85a27`; this ROADMAP-only follow-up is the current local
+   handoff head. The browser evidence binds the same executable/test/tool bytes through recorded
+   dirty tree `b83ccef5…`, not a clean exact-head run. Do not fetch/merge, switch branches, push, or
+   run GitHub workflows without a new exact authorization.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
    `GITHUB_ACTIONS_BUDGET.md`; use `port/V2_PROGRAM_ROADMAP.md` §5.3 for the Arc 4 contract.
-3. Arc 4's headless writer is locally terminal-green. Next decide whether presentation exposes a
-   random eligible encounter pool or an explicitly targeted species; the current planner is random
-   pool authority, so UI must not imply targeting without a separate policy decision. Then add
-   accessible Tame/Scavenge/Sample controls and truthful odds/yield/recovery copy through the exact
-   main writer—never an injected snapshot, preview roster, direct planner roll or optimistic grant.
-4. Run native browser outcome proof for hit, miss, no-optimism, full-roster selection beyond the
-   eight-row preview, reload, injected storage refusal, stale authority, finite recovery and focus.
-   Co-deliver Guide/release copy only when those player controls land; until then Capture/Discover
-   Life stay unavailable. Only after player-live ownership evidence may Arc 5 consume it for
-   breeding/companions. Keep audio package-only until canonical app adapters, content,
+3. Arc 4's native controls, random-pool presentation, current Guide/release copy and automated
+   browser outcomes are locally terminal-green. Before calling the Arc complete, run the real
+   uninterrupted 20-minute next-cycle recovery observation; do not substitute the 14-step burn-down
+   (`recoveryClaimed:false`) for it. Keep the combined HUMAN first-journey/ownership review queued
+   after Arc 5 as the approved campaign specifies.
+4. The independent source/docs audits and normal local product commit are complete. Arc 5 may now
+   activate its authority against player-live Arc 4 ownership before exposing breeding/companions.
+   Preserve source-bound random-pool
+   semantics, exact stable ownership IDs and committed-only outcomes; do not invent a Charter
+   bioscan or targeted preview. Keep audio package-only until canonical app adapters, content,
    accessibility and browser/device/HUMAN evidence exist. Recalibrate/reseal Compendium only after
    the final multi-Arc dependency graph freezes.
 5. Claude/Anthropic should receive merged work only by fetching `origin` and
    merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
    manual file copying. Nick does not need to open Claude now.
 
-**Current side:** Codex macOS is on `openai/mac`, based on merged `develop` `7a9f4c1…`, with the
-commit-preserving local campaign committed through Arc 4's headless durable writer at `fd72c06`;
-Arc 4 player UI/browser proof remains the next bounded batch.
+**Current side:** Codex macOS is on `openai/mac`, based on merged `develop` `7a9f4c1…`. Arc 4's
+durable foundation is committed at `fd72c06`; its audited player UI/copy/tools/references are
+committed locally at `0d56106`, followed only by this ROADMAP handoff. Arc 4 remains `[PARTIAL]`
+for recovery/HUMAN only; Arc 5 authority activation is the next implementation batch.
 `origin/openai/mac` remains the contained PR #34 head until a later exact final-head authorization.
 **GitHub step:** none.
 **PR details:** not needed; the local campaign is still batching and no push/hosted attempt is
 authorized.
-**Other side:** Anthropic/Claude Code does not have this local Arc 4 commit. Nick does not need to
+**Other side:** Anthropic/Claude Code does not have this local Arc 4 player-facing batch. Nick does not need to
 open Claude now; after a future reviewed merge into `develop`, Claude should fetch `origin` and
 merge `origin/develop` into a clean `anthropic/mac`, never copy files manually.
 **Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
