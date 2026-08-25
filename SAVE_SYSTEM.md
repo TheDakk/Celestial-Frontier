@@ -1,6 +1,6 @@
 # Celestial Frontier — Save System
 
-> **2026-08-24 Arc 3–5 persistence overlay — current committed boundary:** Arc 3 adds the strict
+> **2026-08-25 Arc 3–5 persistence overlay — current committed boundary:** Arc 3 adds the strict
 > `engineering/arc3.state` carrier and a bounded legacy seed-only migration that resolves every
 > source through exact canonical CF1 evidence or protects the source instead of guessing. The panel
 > displays six research rows but only Deep Scanners is purchasable; its pure orbital-reveal policy
@@ -9,8 +9,20 @@
 > actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
 > Mine, Skim, the eligible Deep-Scanner purchase and eligible fixed Fabrication update the engineering
 > carrier, Arc 2 inventory carrier, v4 compatibility fields, F4 authority, immutable receipt and next revision in one fenced CAS.
-> Charter mining/fabrication progress is derived into that same durable candidate. A publication
-> failure after durability reloads; it never performs a second write.
+> Charter mining/fabrication progress is derived into that same durable candidate. A stale action
+> refuses before durability and publishes no carrier or receipt. Once the transaction
+> reports committed, durability is terminal: a verification/publication failure makes the old live
+> projection unavailable and performs one convergence reload without re-deriving, retrying, issuing
+> a second receipt or writing again.
+>
+> Initial scene publication is always `rerender({skipPersist:true})`; a render is not save intent.
+> `classifyBootRouteRepair()` compares the durable saved view and ordered Atlas routes with their
+> source-proven projection and ignores semantically omitted false flags. It arms only an actual
+> unheld delta. Source-error, protected, Training-checkpoint, blocked-route and runtime-only
+> Training-seat paths restore the held durable route before any unrelated bootstrap candidate is
+> prepared. `ensureBootAuthorityCommit()` coalesces explicit route repair with F4 seed and Arc 2/3
+> bootstrap in one lease-fenced commit. An aligned current-v5 replacement performs zero runtime
+> commits, leaves `lastOutcome:null`, and has zero pending persistence writes.
 >
 > Arc 4 now has strict ownership-v1 codecs over catalogue species, discovery records, stable fauna
 > instances, specimen lots, biosphere progress and bounded legacy evidence. This is package
@@ -57,6 +69,16 @@
 > and grant no exact-head/hosted/integration/real-save Gate C,
 > preview, HUMAN, release or deployment authority. Broader real-browser schema-upgrade/two-tab
 > evidence for later product writers and Nick's real veteran save remain open.
+
+> **2026-08-25 Arc 3 recovery evidence:** local commit `c4a02be` contains the boot/recovery owner and
+> browser instruments. No-retry Slice Smoke run `20260825013823076-822-b99fea33b17b` passed on Edge
+> `151.0.4129.101` in 253,181 ms with zero findings/failure scopes and zero retries; the following
+> full Glass Matrix passed in 64,222 ms across 12/12 viewports and reload rows with 78/78 controls,
+> none blocked/omitted, and zero findings/instrument failures/retries. The reports retain two
+> successive precommit dirty-source digests: Glass reconstructs `c4a02be`; Slice predates only the
+> final Glass fixture/contract/tool additions, with no app-product change between them. They prove
+> bounded current-source local stale/storage/publication/reload outcomes, not a same-snapshot clean
+> exact-head, hosted, integration, real-save Gate C, HUMAN, release or deployment boundary.
 
 > **2026-08-16 D-TRAIN-1 source-truth overlay (historical foundation; current where the
 > 2026-08-24 carrier overlay does not supersede it; local browser

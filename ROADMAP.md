@@ -17,15 +17,16 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-24 · FULL LOCAL CAMPAIGN · CLEAN BROWSER PROOF NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-25 · FULL LOCAL CAMPAIGN · ARC 4 DURABLE WRITER NEXT ◀◀◀
 
 ### Current integration state
 
-- **Observed committed local snapshot for this handoff:** `HEAD`
-  `4e0a976fce5c9380ae9b619762690f66cf2560d4`, branch ahead of its upstream by 57 commits.
+- **Committed product/browser snapshot for this handoff:**
+  `c4a02be2f7fb3cecda3e38dd631545da2b87b7b2`, observed on `openai/mac` with a clean worktree
+  and the branch ahead of its upstream by 60 commits before this docs-only refresh.
   Arc 4 pre-draw/capacity certification is committed at `af12659`, the absolute audio caps are
   committed at `3fd9e81`, and truthful Arc 3 Guide/release/Training guidance is committed at
-  `4e0a976`. Only this documentation batch and the browser-tool batch are dirty; the Compendium
+  `4e0a976`. Arc 3 recovery and its browser instruments are committed at `c4a02be`; the Compendium
   measurement reseal remains deferred until the final multi-Arc dependency graph freezes.
 - PR #33 merged normally into `develop` as
   `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after terminal-green
@@ -151,6 +152,32 @@ remain in force.
   fabrication progress banks only from committed outcomes. Authored variable crafting, new random
   loot sources, upgrades/sockets and pacing remain open.
 
+**Arc 3 boot/recovery closure (committed local `c4a02be`, 2026-08-25):** the initial scene render is
+always `skipPersist`; rendering alone never authorizes a save. `classifyBootRouteRepair()` compares
+the durable saved view and ordered Atlas routes with their source-proven projection, normalizes
+semantically omitted false flags, and arms only a real unheld repair. Source-error, protected,
+Training-checkpoint, blocked-route and runtime-only Training-seat paths restore the held durable
+route before any other bootstrap candidate can carry it. `ensureBootAuthorityCommit()` coalesces an
+explicit route repair with F4 seed and Arc 2/3 bootstrap in one lease-fenced commit; an aligned
+current-v5 replacement performs zero boot commits and has no pending persistence work. A stale Arc 3
+outcome is pre-durable and publishes nothing. Once `commitAction()` reports committed, durability is
+terminal: a verification/publication failure makes the old projection unavailable and performs one
+read-only convergence reload, never a second derivation, receipt or write.
+
+**Arc 3 recovery/browser evidence (bounded local proof for `c4a02be`, 2026-08-25):** no-retry Slice
+Smoke run `20260825013823076-822-b99fea33b17b` passed on Edge `151.0.4129.101` in 253,181 ms with
+zero findings/failure scopes, zero retries and ten run-bound screenshots (report SHA-256
+`389bc3a857d1da3dc05dd0b20d046e1ec9d73fef9d0dae8220686b87387e76f0`). The following
+full-certifying Glass Matrix passed on the same Edge in 64,222 ms across 12/12 viewports and reload
+rows, with 78/78 planned controls executed, none blocked/omitted, and zero findings, instrument
+failures or retries (report SHA-256
+`a3a67426828efb82962a73fdeb2d99c410a575488e8a416c17f75338e296aa57`). Both reports honestly
+retain precommit `dirty-diagnostic` provenance against parent `768fb32`: Glass's source digest
+reconstructs `c4a02be`, while Slice predates only the final Glass fixture/contract/tool additions;
+no app product file changed between them. This is current-source local outcome evidence, not a
+same-snapshot clean exact-head, hosted, HUMAN, integration, whole-Gate, release or deployment
+certificate.
+
 **Arc 0 `D-CFB-1` kernel (local, 2026-08-24):** legacy `CFB-` remains the exact v1
 challenger/exhibit contract; a versioned `CFB2-` owned-creature codec now round-trips one bounded,
 ordered uint32 parent tuple while stripping XP, feeding, brood, injury, and other mutable state.
@@ -193,8 +220,8 @@ Canonical creature/event adapters, authored synthesis or licensed content, app/b
 captions/mono/dynamic-range/reduced-intensity controls, byte and device plateaus, combat/Guardian
 integration, and every HUMAN listening/comfort judgment remain open. Gate G and Arc 7/8 are not
 closed; no recorded audio asset exists. Commit `4e0a976` aligns Guide/release/Training with the
-eligible Arc 3 Engineering actions while keeping package-only audio unavailable. Clean current-
-source Smoke/Glass browser certification remains pending.
+eligible Arc 3 Engineering actions while keeping package-only audio unavailable. Arc 3's bounded
+current-source local browser proof is recorded above; audio browser/listening evidence remains open.
 
 ### SSH and branch discipline
 
@@ -227,16 +254,17 @@ source Smoke/Glass browser certification remains pending.
 
 ### In-session continuation / fresh-session recovery
 
-1. Continue only in the Codex macOS root on `openai/mac`. The local campaign worktree is intentionally
-   dirty only for the browser instruments and current-doc batch; do not fetch/merge, switch branches,
-   push, or run GitHub workflows over it.
+1. Continue only in the Codex macOS root on `openai/mac`. Product and browser instruments are
+   committed through `c4a02be`; do not fetch/merge, switch branches, push, or run GitHub workflows
+   without a new exact authorization.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
    `GITHUB_ACTIONS_BUDGET.md`; use `port/V2_PROGRAM_ROADMAP.md` §5.3 for the Arc 4 contract.
-3. Freeze the browser tools/docs inputs, then run one clean no-retry Slice Smoke followed by one
-   clean Glass Matrix. Review those reports and commit the browser tools plus this docs batch.
-4. Only after that browser/docs commit, continue Arc 4 in dependency order: bootstrap the ownership
-   carrier, land one durable capture
-   writer with exact failed-attempt and post-commit outcomes, then expose truthful UI and browser
+3. Continue Arc 4 in dependency order: bootstrap the strict ownership-v1 carrier without granting
+   ownership or a free Compendium page, then land one durable Tame/Scavenge/Sample capture writer
+   through the shared product coordinator and F3/F4 lease-fenced transaction. Preserve certified
+   pre-draw state across failure; atomically settle finite attempt, ownership/projection, receipt and
+   revision; prove stale, duplicate, storage-failure, protected, reload and post-durable convergence.
+4. Only after that writer is terminal-green, expose truthful UI and browser
    proof. Only after that may Arc 5 consume receipt-bound ownership for breeding/companions. Keep
    audio package-only until canonical app adapters, a runtime owner, content, accessibility and
    browser/device/HUMAN evidence exist. Recalibrate/reseal the Compendium measurement authority only
@@ -246,7 +274,8 @@ source Smoke/Glass browser certification remains pending.
    manual file copying. Nick does not need to open Claude now.
 
 **Current side:** Codex macOS is on `openai/mac`, based on merged `develop` `7a9f4c1…`, with the
-commit-preserving local campaign ahead and the Arc 4 prerequisite/current-truth batches in progress.
+commit-preserving local campaign committed through Arc 3 recovery/browser evidence at `c4a02be` and
+the Arc 4 prerequisite foundations in place.
 `origin/openai/mac` remains the contained PR #34 head until a later exact final-head authorization.
 **GitHub step:** none.
 **Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.

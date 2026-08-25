@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-24. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-25. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -10,6 +10,38 @@ shipped, or with a check that went green while the thing it guarded was broken. 
 roughly by how often they have bitten.
 
 ---
+
+⚠⚠ **A FIRST RENDER IS NOT PERSISTENCE INTENT** (2026-08-25). Arc 3 recovery exposed a generic
+boot `rerender()` that fire-and-forgot a receipt-free save after an otherwise complete action
+reload. A correct one-revision action therefore appeared as two revisions depending on whether the
+instrument sampled before or after that unowned boot write. Worse, treating every normalized route
+as save intent could let a source-error, protected or Training runtime-only route repair hitchhike
+inside an unrelated bootstrap CAS.
+
+Publish the initial scene with persistence explicitly skipped. Classify a boot write from detached,
+source-proven durable inputs before building any candidate; semantic defaults such as omitted versus
+false flags must fixed-point. Give every allowed repair a named intent and coalesce it with other
+authorized bootstrap work under one lease-fenced commit. Held repairs must restore their original
+durable bytes before another owner can construct a candidate. An aligned current replacement must
+prove zero boot commits, null outcome and zero pending persistence work. Negative-control saved-view-
+only and Atlas-only deltas, constant/partial fingerprints, and every protected/source-error/Training
+hold. A render, visibility change or convenient normalization is never itself authority to write.
+
+⚠⚠ **DURABILITY CLASSIFIES ACTION SUCCESS BEFORE PUBLICATION** (2026-08-25). An Arc 3 stale
+authority outcome occurs before the transaction commits: it owns no new carrier, receipt or product
+state and may converge by reloading the newer authority. A verification or publication failure after
+`commitAction()` returns committed is the opposite: the action is already durable. Calling both
+paths “failed” invites a rerun, duplicate receipt or second write.
+
+Model the boundary explicitly. Pre-durable stale, duplicate, lease, protected and storage outcomes
+publish nothing. Post-durable verification/publication faults suppress the old live projection,
+retain the exact diagnostic witness and committed receipt evidence, and perform one read-only
+convergence reload. The
+replacement document must prove a changed loader token, exact committed carrier/mirror/receipt
+bytes, zero boot commits, no carried action outcome and no pending persistence. Never re-derive,
+retry, click again or write again after durability. Negative-control the witness fields, old/new
+document boundary, complete raw evidence and exact unrelated-field preservation; a green UI alone
+cannot classify which side of durability an outcome occupied.
 
 ⚠⚠ **A COMPATIBILITY MIRROR MUST MOVE IN THE SAME TRANSACTION AS ITS NEW AUTHORITY**
 (2026-08-24). Arc 2 made `inventory/arc2.loot` the exact-instance authority while the legacy-v4

@@ -9,7 +9,7 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — Arc 3 Engineering and Arc 4/5 ownership foundations (2026-08-24)
+## Current-state boundary — Arc 3 Engineering and Arc 4/5 ownership foundations (2026-08-25)
 
 - ★ **D-ARC3-ENGINEERING — fixed Engineering is player-live locally.** Registered full-CF1
   world/star opportunity snapshots preserve raw tiers 0–14, finite reserves and active-play cursors.
@@ -20,7 +20,12 @@ as any change that touches an entry.
   costs/preconditions and capacity/revision headroom are actionable; fully exceptional slotted
   outputs and disconnected-effect rows remain unavailable. Charter mining/fabrication banking
   derives only from committed outcomes. This intentionally does not invent variable crafting,
-  natural-affix policy, upgrades or random loot.
+  natural-affix policy, upgrades or random loot. Local commit `c4a02be` records the product/browser-
+  tool repair batch after one no-retry Slice pass (253,181 ms, 0 findings, 10 screenshots) and one
+  full Glass pass (64,222 ms, 12/12 viewports, 78/78 controls, none blocked/omitted, 0 findings,
+  instrument failures, or retries). Both reports name base `768fb32` but bind different dirty
+  snapshots—Slice `29d54731…`, Glass `d9b51284…`—so this is bounded local exact-input proof, not
+  exact-head/full-battery, hosted, integration, HUMAN, preview, release, or deployment authority.
 - ◐ **D-ARC4-OWNERSHIP — identity/planning exists before mutation.** The full epoch-bound roster,
   contact capability, 18 owner namespaces, ownership-v1/import codecs, acquisition snapshot and
   pure capture planner are committed. No bootstrap, attempt-spend writer, Compendium/ownership
@@ -30,9 +35,14 @@ as any change that touches an entry.
   receipts, deterministic fauna-only children, ordered parents, dispositions and tombstones. Its
   migration carrier stores only V1/V2 digests derived from a fresh import. It is not duplicate
   ownership state, an app migration, breeding/care UI or companion system.
-- ★ **D-F3F4-CURRENT — superseding persistence/time overlay (2026-08-24).** V5 now partitions
+- ★ **D-F3F4-CURRENT — superseding persistence/time overlay (2026-08-25).** V5 now partitions
   canonical owner rows, protects F4 authority, and commits product state, next active-play/
   SessionRNG authority, one immutable receipt and the next revision through one lease-fenced CAS.
+  Initial scene render is read-only; a pure before/after route classifier may arm an explicit durable
+  repair only when source/protection/Training guards allow it. That repair coalesces with F4/Arc 2/
+  Arc 3 bootstrap in the single boot-authority CAS, while an aligned current-v5 boot performs zero
+  commits. Pre-durable stale authority reloads without publishing an action; a post-durable Arc 3
+  publication fault remains committed and reload-converges without a second action, receipt, or write.
   Arc 3 settles Auto-Extractor loads from the prior active-play cursor, caps them by finite
   reserves, ignores legacy wall timestamps and reanchors a newly fabricated extractor. Arc 2 owns
   exact gear instances; Arc 4/5 own catalogue/specimen/fauna models and migration evidence, but no

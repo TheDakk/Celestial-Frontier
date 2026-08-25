@@ -74,7 +74,7 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-24 local campaign boundary — committed product work now includes Arc 3; Arc 4 is the
+> **2026-08-25 local campaign boundary — committed product work now includes Arc 3; Arc 4 is the
 > active prerequisite and every program Arc remains bounded by its open evidence:** canonical
 > full-CF1 resource/star opportunities, finite active-play Mine/Skim, the Engineering panel, shared
 > product-action coordination and committed-only Charter mining/fabrication banking are live locally.
@@ -89,9 +89,14 @@
 > model and digest-only migration certificate, not
 > an app migration or companion action. Arc 7 has package-only identity/runtime/lab/rights
 > foundations, including the committed absolute eight-emitter/120-node configuration caps. Arc 3
-> Guide/release/Training guidance is committed. Only the browser instruments and current-doc batch
-> remain working-tree work; clean current-source Smoke then Glass and the final measurement reseal
-> remain pending.
+> Guide/release/Training guidance and the product/browser-tool repair batch are committed locally
+> through `c4a02be`. One no-retry Slice run passed in 253,181 ms with 0 findings/10 screenshots; the
+> following full Glass Matrix passed in 64,222 ms with 12/12 viewports, 78/78 controls, none blocked
+> or omitted, and no findings, instrument failures, or retries. Both reports name base `768fb32` but
+> bind distinct dirty snapshots—Slice `29d54731…`, Glass `d9b51284…`—so each is bounded local
+> exact-input evidence, not exact-head `c4a02be`, hosted, integration, full-battery, HUMAN, preview,
+> release, or deployment authority. The final Compendium measurement reseal remains deferred until
+> the multi-Arc dependency graph freezes.
 >
 > **Arc 2 implementation slice — historical foundation, still current where not superseded:**
 > F3/F4 supply the app's v5 revision/lease, protected active-play +
@@ -1150,14 +1155,16 @@ Compendium measurement recalibration described in the status overlay.
 
 ### 5.2 Arc 3 — engineering loop
 
-**Implementation status (2026-08-24): `[PARTIAL]`, product actions committed locally.** The
+**Implementation status (2026-08-25): `[PARTIAL]`, product actions and bounded browser proof committed locally.** The
 canonical opportunity projections, finite active-play Mine/Skim, Engineering panel, shared action
 coordinator and committed-only Charter banking are implemented. Six research rows are displayed,
 but only Deep Scanners is purchasable; its pure orbital-reveal policy exists while current Survey
 renders no orbital mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs
 with exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional
-slotted outputs and disconnected-effect rows remain unavailable. Clean current-source Slice/Glass,
-exact-head/full-battery evidence, economy
+slotted outputs and disconnected-effect rows remain unavailable. Local commit `c4a02be` records the
+product/browser-tool batch after the no-retry Slice and Glass passes described in the current-state
+overlay; their distinct dirty-snapshot provenance keeps them bounded rather than exact-head evidence.
+Exact-head/full-battery evidence, economy
 simulation, HUMAN comprehension, authored variable construction/new loot and later progression
 depth remain open; therefore the Arc and its exit evidence are not declared complete.
 

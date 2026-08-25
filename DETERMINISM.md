@@ -1,6 +1,6 @@
 # Celestial Frontier — Determinism Discipline
 
-> **2026-08-24 Arc 3–5 current deterministic boundary:** Arc 3 world/star opportunities are pure
+> **2026-08-25 Arc 3–5 current deterministic boundary:** Arc 3 world/star opportunities are pure
 > projections of registered full-CF1 addresses. Mine/Skim outcomes and fixed craft identities use
 > canonical source facts and explicit ordered plans; active-play cursor settlement is computed from
 > the prior carrier, never a caller timestamp. Six research rows are displayed, but only Deep
@@ -37,8 +37,12 @@
 > The audited 24 legacy `Math.random()` physical sites remain classified as 14 outcome and 10
 > presentation calls. This inventory plus the live authority seam does **not** mean every legacy
 > gameplay call site has migrated: Arc 4+ writers still own their semantic settlement, and audio/FX
-> presentation never share an outcome counter. Current focused tests and real local Inventory browser
-> paths are green; end-of-campaign exact-head/hosted evidence and all later outcome writers remain open.
+> presentation never share an outcome counter. Current focused tests and real local Inventory plus
+> Arc 3 Engineering browser paths are green. Commit `c4a02be` records the product/browser-tool batch,
+> but the no-retry Slice and Glass reports bind different dirty snapshots on base `768fb32`—Slice
+> `29d54731…`, Glass `d9b51284…`—so they remain bounded local exact-input evidence rather than
+> exact-head/full-battery, hosted, integration, HUMAN, preview, release, or deployment authority.
+> All later outcome writers remain open.
 
 > **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the F4 overlay
 > does not supersede it):** Deterministic

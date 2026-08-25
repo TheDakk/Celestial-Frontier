@@ -4,9 +4,9 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches code as of 2026-08-24.**
+> **Current port/v2 source overlay matches code as of 2026-08-25.**
 >
-> **2026-08-24 Arc 3–5 + Arc 7 current local overlay:** `@cf/domain-opportunity`,
+> **2026-08-25 Arc 3–5 + Arc 7 current local overlay:** `@cf/domain-opportunity`,
 > `arc3-engineering-actions.ts`, `engineering-panel-model.ts`, `engineering-panel.ts`, and
 > `product-action-coordinator.ts` now own full-CF1 finite world/star opportunities and the live
 > Mine/Skim and eligible fixed-Engineering path. The panel displays six research rows but only Deep
@@ -16,6 +16,16 @@
 > outputs and disconnected-effect rows remain unavailable. One transaction commits Cargo/items/technology, Arc 2/3
 > carriers, compatibility mirrors, Charter mine/fabrication progress, F4 authority, receipt and
 > revision; publication follows durability.
+>
+> `boot-route-repair.ts` owns the pure route-persistence classifier. Initial scene publication uses
+> `rerender({skipPersist:true})`; rendering cannot mint write intent. A source-proven semantic delta
+> in durable saved view or ordered Atlas routes may arm one explicit route repair, coalesced with F4
+> seed and Arc 2/3 bootstrap by `ensureBootAuthorityCommit()`. Protected, source-error, blocked-route,
+> Training-checkpoint and runtime-only Training-seat paths restore held durable route bytes before an
+> unrelated bootstrap candidate exists. An aligned current-v5 replacement performs no boot commit.
+> Arc 3 stale outcomes refuse before durability; after `commitAction()` reports committed, any
+> verification/publication failure is a committed action that suppresses the stale live projection
+> and converges through one read-only reload—never a second derivation, receipt or write.
 >
 > Arc 4's committed package boundary is `fullWorldRoster` plus explicit epoch ownership,
 > capture-contact capability, acquisition snapshot/planner, ownership-v1 and its persistence codec
@@ -71,6 +81,19 @@
 > current moving working tree. Authored random-loot sources/rates/affix compatibility/richer construction, pacing and HUMAN
 > item/compare art remain open. No hosted/integration, preview, Gate, version, release or deployment
 > authority follows.
+>
+> **2026-08-25 Arc 3 current-source local evidence:** commit `c4a02be` contains the boot/recovery
+> product and instruments. No-retry Slice Smoke run `20260825013823076-822-b99fea33b17b` passed on
+> Edge `151.0.4129.101` in 253,181 ms with zero findings/failure scopes, zero retries and ten
+> run-bound screenshots; its report SHA-256 is
+> `389bc3a857d1da3dc05dd0b20d046e1ec9d73fef9d0dae8220686b87387e76f0`. Full-certifying Glass
+> Matrix passed on the same Edge in 64,222 ms across 12/12 viewports and reload rows, with 78/78
+> controls executed, none blocked/omitted, and zero findings, instrument failures or retries; report
+> SHA-256 is `a3a67426828efb82962a73fdeb2d99c410a575488e8a416c17f75338e296aa57`. Both reports are
+> precommit dirty diagnostics against `768fb32`; Glass reconstructs `c4a02be`, while Slice predates
+> only final Glass-only fixture/contract/tool additions and no intervening app-product change. This
+> is bounded current-source local evidence, not a same-snapshot clean exact-head, hosted, HUMAN,
+> integration, whole-Gate, release or deployment certificate.
 >
 > **2026-08-22 Arc 1C ship/surface implementation and SceneMemory v2 overlay (historical pre-Arc-2 source):**
 > clean product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds

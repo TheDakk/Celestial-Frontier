@@ -1,6 +1,6 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-24 Arc 3 Engineering UI overlay — current local source:** the former read-only
+> **2026-08-25 Arc 3 Engineering UI overlay — current local source:** the former read-only
 > Shipyard panel now renders **Engineering & Shipyard** from one detached authority projection. It
 > retains the four code-native SVG chassis and exact installed-system/hardpoint facts, then adds
 > foldable Mine, Skim, Research and Fabricator sections. The model contains exact opportunity
@@ -16,8 +16,14 @@
 > a second action is refused while one settlement owns publication. The panel reprojects only after
 > durability and exposes waiting/worked-out/unavailable states without inventing capability. The
 > existing Arc 1C paragraphs below are retained as historical pre-Engineering evidence. Updated
-> player guidance is committed; clean current-source no-retry Slice Smoke followed by Glass remains
-> pending while the browser tools and docs are the only dirty batches.
+> player guidance and the product/browser-tool repair batch are committed locally through `c4a02be`.
+> Retained no-retry Slice run `20260825013823076-822-b99fea33b17b` passed in 253,181 ms with
+> 0 findings and 10 screenshots; the full Glass Matrix separately passed in 64,222 ms across 12/12
+> viewports and 78/78 controls with none blocked/omitted and no findings, instrument failures, or
+> retries. Both report base `768fb32`, but they bind different honest dirty snapshots—Slice
+> `29d54731…`, Glass `d9b51284…`. They are bounded local exact-input evidence for the batch later
+> committed at `c4a02be`, not an exact-head, full-battery, hosted, integration, HUMAN, preview,
+> release, or deployment certification.
 
 > **2026-08-24 v2 Arc 2 Inventory overlay — current local source:** **Inventory** is a registered
 > ordinary panel in the desktop rail and the phone dock. Adding it makes the exact compact contract

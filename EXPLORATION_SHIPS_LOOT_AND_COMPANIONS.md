@@ -1,6 +1,6 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-24**.
+**STATUS:** approved product direction and implementation contract as of **2026-08-25**.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
 exact-instance Inventory and Arc 3 Engineering actions described below. Arc 4 has committed
 roster/ownership/snapshot/planner packages but no durable capture writer or UI; Arc 5 has only its
@@ -11,7 +11,7 @@ expeditions, breeding, live combat and Guardians remain
 **not implemented** unless a row below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
 
-> **2026-08-24 Arc 3–5 current boundary:** the **Engineering & Shipyard** panel now owns truthful
+> **2026-08-25 Arc 3–5 current boundary:** the **Engineering & Shipyard** panel now owns truthful
 > Mine and Skim actions around the existing static ship projection. It displays six research rows,
 > but only Deep Scanners is purchasable. The pure orbital-reveal policy exists, while current Survey
 > does not render orbital mineral rows. It lists all 62 fixed recipes, but only connected-effect
@@ -26,6 +26,13 @@ does not silently promote planned behavior into the in-game Guide.
 > migration certificate. Neither has a product writer, UI/reload/browser outcome, live breed/care/
 > assignment or companion expedition. Arc 4's pre-draw/capacity all-scenario certification and
 > settlement prerequisite is committed; it is not a durable capture writer or product publication.
+>
+> Local commit `c4a02be` records the Arc 3 product/browser-tool repair batch. One no-retry Slice run
+> passed in 253,181 ms with 0 findings/10 screenshots; full Glass separately passed in 64,222 ms with
+> 12/12 viewports, 78/78 controls, none blocked/omitted, and no findings, instrument failures, or
+> retries. The reports share base `768fb32` but bind different dirty snapshots—Slice `29d54731…`,
+> Glass `d9b51284…`—so they are bounded local exact-input proof, not exact-head/full-battery, hosted,
+> integration, HUMAN, preview, release, or deployment authority.
 
 > **2026-08-24 Arc 2 ownership/economy overlay — current local implementation:** the canonical
 > loot package contains all 62 legacy definitions (20 stackables, 42 slotted across nine slots),
@@ -711,7 +718,7 @@ batch. Planned systems live here and in their system docs, not in player-visible
 | 0 — repair/current truth | Actionable Charter projection/copy; canonical CF1 galaxy → star → planet identity proof; deterministic world-opportunity and first-journey contracts; source/doc table corrections | fresh save can never receive an impossible live goal; every surfaced opportunity maps to a real action; no world-bound ownership receipt/writer exists before the canonical identity seam is proven; Guide remains honest |
 | 1 — portrait/ship foundation | virtualized thumbnails, character portrait service, pure `ShipVisualState`, static Shipyard proof | Automated foundation and 42/42 memory route are complete; phone/desktop HUMAN portrait and four-silhouette judgment remain open |
 | 2 — item instances and readable economy **[PARTIAL; recorded local candidate green]** | Schema/migration, strict carrier, Inventory, equip/unequip/salvage/pending-claim, canonical fixed tables and exact inspect/conditional compare are implemented; production source/craft policy is not | The recorded pre-current-WIP Arc 2 candidate's fixed-point/exact-instance/browser outcomes were green; this does not certify the current moving tree. Authored source/range/targeted-craft/pacing policy and HUMAN phone/desktop review remain before program closure |
-| 3 — engineering loop **[PARTIAL locally implemented]** | Mine/Skim, sole purchasable Deep-Scanner row, six-row Research presentation, all-62 fixed-recipe listing, eligible connected-effect/exact-cost/headroom fabrication actions, and truthful Guide/release/Training guidance are implemented; Survey orbital mineral rows, the other five research purchases, fully exceptional slotted/disconnected outputs and wider engineering depth remain open | real-action rewards, finite veins, active-play extraction, clean current-source browser proof, reach/visual/Guide agreement and HUMAN comprehension |
+| 3 — engineering loop **[PARTIAL locally implemented; bounded browser pair green]** | Mine/Skim, sole purchasable Deep-Scanner row, six-row Research presentation, all-62 fixed-recipe listing, eligible connected-effect/exact-cost/headroom fabrication actions, and truthful Guide/release/Training guidance are implemented; Survey orbital mineral rows, the other five research purchases, fully exceptional slotted/disconnected outputs and wider engineering depth remain open | Local Slice/Glass exact-input proof covers real actions, finite active-play sources, durable receipt/reload parity, and storage/stale/publication convergence. Exact-head/full-battery evidence, economy simulation, reach/visual/Guide agreement, and HUMAN comprehension remain open |
 | 4 — capture/ownership **[PARTIAL package/prerequisite]** | Catalogue/owned-instance models, canonical snapshot/planner and pre-draw/capacity all-scenario certification/settlement prerequisite are committed; no durable Tame/Scavenge/Sample writer or UI exists | real-action page/specimen creation, attempt spend/recovery, no duplicate/reroll/two-tab grant |
 | 4.5 — first complete journey | Fresh-start Survey → opportunity → Gather → Build → Tame → ship upgrade → farther reach → meaningful Return | first-time 30–60-minute human path proves comprehension, agency and satisfying pacing without idle waits or a scripted fake reward |
 | 5 — companions | nonlethal breeding/recovery, care/bond/Chronicle and active-play missions | fed inheritance, recovery/away locks, exact-once return, save-failure/two-tab controls |

@@ -1,6 +1,6 @@
 # Acceptance rubrics — what "done" means, per gate
 
-**Current implementation evidence refreshed:** 2026-08-24.
+**Current implementation evidence refreshed:** 2026-08-25.
 
 **Port Phase 0 / Gate A deliverable:** *"elevate `ART_DIRECTION.md`, `AUDIO.md`,
 `PROCESS_LAWS.md` and the system docs into acceptance rubrics."*
@@ -15,6 +15,13 @@ candidate's dirty inputs. Its full suite's sole deliberate red was the Compendiu
 authority mismatch scheduled for one final multi-Arc reseal. This is not a final claim about the
 current moving working tree. Therefore the executable rows below name implemented criteria, not
 clean exact-head, hosted, integration, whole-Arc, whole-Gate, HUMAN, preview or release authority.
+
+**Current Arc 3 local evidence boundary:** commit `c4a02be` records the product/browser-tool repair
+batch after one no-retry Slice pass (253,181 ms, 0 findings, 10 screenshots) and one full Glass pass
+(64,222 ms, 12/12 viewports, 78/78 controls, none blocked/omitted, 0 findings/instrument failures/
+retries). Both reports name base `768fb32` but bind different dirty snapshots—Slice `29d54731…`,
+Glass `d9b51284…`. Each is bounded local exact-input evidence, not exact-head `c4a02be`, hosted,
+integration, full-battery, HUMAN, preview, release, or deployment authority.
 
 Arc 3's canonical finite Mine/Skim actions, Engineering panel/coordinator and committed-only Charter
 banking are implemented locally. The panel displays six research rows but only Deep Scanners is
@@ -156,7 +163,7 @@ ever substitute for a person, and it is deliberately expensive.
 | `[EXEC-TODO]` | Catalogue species and owned creatures are separate; every mutation targets a stable creature ID | Ownership-v1/v2 codecs and successors now model stable catalogue/specimen/fauna identities, receipt provenance, ordered lineage and tombstones. No product mutation path exists; duplicate-species migration plus breed/feed/combat/delete/assignment outcome tests remain required |
 | `[EXEC-TODO]` | Tame/Scavenge/Sample are the finite acquisition writers for catalogue pages, specimens and owned fauna | Canonical snapshot/odds/preflight/planner foundations exist, but no real writer/UI does. Real-action success/miss, Biosphere spend/recovery, genuinely-new reward, reload-reroll, duplicate creature and stale-tab controls remain required |
 | `[EXEC-TODO]` | Companion missions use active play and exact-once transactional receipts | clock-wind, reload, double-click, write failure, inventory-full, wrong assignment and stale-tab/CAS controls |
-| `[EXEC]` | Auto-Extractor cannot accrue from wall-clock wind or repeat its bounded batch after reload | Arc 3 computes capped matured loads from the prior F4 active-play cursor inside the plan, preserves remainders, discards loads beyond finite reserves, ignores legacy wall timestamps, and reanchors newly fabricated extractors. Planner/app tests cover forged time, reload-shaped migration and cursor publication; clean current-source browser evidence remains part of the wider Arc 3 gate |
+| `[EXEC]` | Auto-Extractor cannot accrue from wall-clock wind or repeat its bounded batch after reload | Arc 3 computes capped matured loads from the prior F4 active-play cursor inside the plan, preserves remainders, discards loads beyond finite reserves, ignores legacy wall timestamps, and reanchors newly fabricated extractors. Planner/app tests cover forged time, reload-shaped migration and cursor publication; the bounded local Arc 3 Slice/Glass pair is green, while exact-head/full-battery and HUMAN evidence remain separate |
 | `[EXEC-TODO]` | Conquest loss pays the advertised +3 base and at most +2 near-brink delta in either encounter order | both non-brink→brink and brink→non-brink real-action sequences; repeated settlement and stale-tab controls |
 | `[EXEC-TODO]` | A mission never silently loses a bonded companion or expires a ready reward | transition-table tests plus real UI reachability and explicit irreversible-mode confirmation if one exists |
 | `[HUMAN]` | Progression creates mastery, readable choice and attachment without pressure mechanics | multi-session play review; no streak/FOMO/paid-random/expiry/energy/notification-pressure design |
