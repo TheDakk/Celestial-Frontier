@@ -5,6 +5,7 @@ import {
   ARC2_LOOT_NAMESPACE,
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
   ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
+  ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
   arc4OwnershipLegacyMirrorMatches,
   arc2LootLegacyMirrorMatches,
   canonicalizeV5Extensions,
@@ -13,6 +14,7 @@ import {
   importSaveV2,
   migrateLegacyOwnership,
   prepareArc4OwnershipLegacyMigration,
+  prepareArc5OwnershipMigration,
   prepareArc2LootLegacyMigration,
   projectArc2LootLegacyMirror,
   type ContentRegistry,
@@ -23,15 +25,20 @@ import { navToView, resolveViewToNav } from '@cf/scene';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  ownershipSourceStateV1,
   ownershipStateDigestV1,
+  ownershipStateDigestV2,
 } from '@cf/domain-acquisition';
 import {
   buildLegacyTrainingRestoreCandidate,
   committedTrainingArc4State,
+  committedTrainingArc5State,
   committedTrainingArc2State,
   prepareTrainingArc4Restore,
+  prepareTrainingArc5Restore,
   prepareTrainingArc2Restore,
   type PreparedTrainingArc4Restore,
+  type PreparedTrainingArc5Restore,
 } from '../apps/game/src/training-restore.js';
 
 interface TrainingFixture {
@@ -756,6 +763,190 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     expect(prepareTrainingArc4Restore('legacy-v1', true, restoredState, corrupt)).toEqual({
       kind: 'protected', reason: 'target-corrupt',
     });
+  });
+
+  it('couples one fresh Arc 5 certificate to Training legacy replacement and verifies durable Arc 4 + Arc 5', () => {
+    const checkpoint = checkpointFrom();
+    const restoredState = restore(trainingCurrent(checkpoint).current, checkpoint).state;
+    const baseExtensions = canonicalizeV5Extensions({
+      player: {
+        'f4.authority': {
+          version: 1,
+          json: '{"activePlayMs":77,"sessionRng":{"seed":5,"ordinal":3,"draws":{"prior":2}}}',
+        },
+      },
+      inventory: { 'arc2.keep': { version: 1, json: '{"exact":"inventory"}' } },
+      settings: { 'arc7.audio': { version: 2, json: '{"gain":0.4}' } },
+    });
+    const arc4 = prepareTrainingArc4Restore(
+      'legacy-v1', true, restoredState, baseExtensions,
+    );
+    expect(arc4?.kind).toBe('prepared');
+    if (arc4?.kind !== 'prepared') return;
+    const arc5 = prepareTrainingArc5Restore({
+      checkpointKind: 'legacy-v1',
+      legacyFieldsRestored: true,
+      baseExtensions,
+      arc4Preparation: arc4,
+    });
+    expect(arc5.kind).toBe('prepared');
+    if (arc5.kind !== 'prepared') return;
+    expect(arc5.writes).toHaveLength(1);
+    expect(arc5.writes[0]).toMatchObject({
+      segment: 'player', namespace: ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
+    });
+    expect(arc5.extensions.player?.[ARC5_OWNERSHIP_MIGRATION_NAMESPACE])
+      .toEqual(arc5.writes[0]!.carrier);
+    expect(arc5.extensions.settings).toEqual(baseExtensions.settings);
+    expect(arc5.extensions.inventory?.['arc2.keep'])
+      .toEqual(baseExtensions.inventory?.['arc2.keep']);
+    const committedArc4 = committedTrainingArc4State(restoredState, arc4, arc5.extensions);
+    const committedArc5 = committedTrainingArc5State(arc5, arc5.extensions);
+    expect(committedArc4).toEqual(arc4.state);
+    expect(committedArc5).not.toBeNull();
+    if (committedArc4 && committedArc5) {
+      expect(ownershipStateDigestV1(ownershipSourceStateV1(committedArc5)))
+        .toBe(ownershipStateDigestV1(committedArc4));
+      expect(ownershipStateDigestV2(committedArc5)).toBe(ownershipStateDigestV2(arc5.state));
+    }
+    expect(committedTrainingArc5State(arc5, arc4.extensions)).toBeNull();
+    expect(committedTrainingArc5State({
+      ...arc5,
+      writes: [],
+    } as unknown as PreparedTrainingArc5Restore, arc5.extensions)).toBeNull();
+    const corruptCommitted = canonicalizeV5Extensions({
+      ...arc5.extensions,
+      player: {
+        ...arc5.extensions.player,
+        [ARC5_OWNERSHIP_MIGRATION_NAMESPACE]: { version: 1, json: '{}' },
+      },
+    });
+    expect(committedTrainingArc5State(arc5, corruptCommitted)).toBeNull();
+  });
+
+  it('preserves aligned Arc 5, defers source-held absence, and refuses every ambiguous Training carrier', () => {
+    const checkpoint = checkpointFrom();
+    const current = trainingCurrent(checkpoint).current;
+    const restoredState = restore(current, checkpoint).state;
+    const arc4 = prepareArc4OwnershipLegacyMigration({
+      extensions: {},
+      legacy: current,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    if (arc4.kind !== 'prepared') throw new Error(`Arc 4 fixture failed: ${arc4.kind}`);
+    const arc5 = prepareArc5OwnershipMigration({
+      extensions: arc4.extensions,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    if (arc5.kind !== 'prepared') throw new Error(`Arc 5 fixture failed: ${arc5.kind}`);
+
+    const preserved = prepareTrainingArc5Restore({
+      checkpointKind: 'current-view',
+      legacyFieldsRestored: false,
+      baseExtensions: arc5.extensions,
+      arc4Preparation: null,
+    });
+    expect(preserved.kind).toBe('preserved');
+    if (preserved.kind === 'preserved') {
+      expect(preserved.writes).toEqual([]);
+      expect(preserved.extensions).toEqual(arc5.extensions);
+      expect(ownershipStateDigestV2(preserved.state)).toBe(ownershipStateDigestV2(arc5.state));
+    }
+    expect(prepareTrainingArc5Restore({
+      checkpointKind: 'current-view',
+      legacyFieldsRestored: false,
+      baseExtensions: arc4.extensions,
+      arc4Preparation: null,
+    })).toEqual({ kind: 'protected', reason: 'target-absent' });
+
+    const deferredAbsent = prepareTrainingArc5Restore({
+      checkpointKind: 'source-deferred',
+      legacyFieldsRestored: false,
+      baseExtensions: {},
+      arc4Preparation: null,
+    });
+    expect(deferredAbsent).toEqual({
+      kind: 'deferred', reason: 'source-deferred', state: null,
+      writes: [], extensions: {},
+    });
+    const deferredAligned = prepareTrainingArc5Restore({
+      checkpointKind: 'source-deferred',
+      legacyFieldsRestored: false,
+      baseExtensions: arc5.extensions,
+      arc4Preparation: null,
+    });
+    expect(deferredAligned.kind).toBe('deferred');
+    if (deferredAligned.kind === 'deferred') {
+      expect(deferredAligned.state).not.toBeNull();
+      expect(deferredAligned.writes).toEqual([]);
+      expect(deferredAligned.extensions).toEqual(arc5.extensions);
+    }
+
+    const carrier = arc5.extensions.player![ARC5_OWNERSHIP_MIGRATION_NAMESPACE]!;
+    const future = canonicalizeV5Extensions({
+      ...arc5.extensions,
+      player: {
+        ...arc5.extensions.player,
+        [ARC5_OWNERSHIP_MIGRATION_NAMESPACE]: { ...carrier, version: 2 },
+      },
+    });
+    const corrupt = canonicalizeV5Extensions({
+      ...arc5.extensions,
+      player: {
+        ...arc5.extensions.player,
+        [ARC5_OWNERSHIP_MIGRATION_NAMESPACE]: { version: 1, json: '{}' },
+      },
+    });
+    const misplaced = canonicalizeV5Extensions({
+      ...arc4.extensions,
+      catalog: {
+        ...arc4.extensions.catalog,
+        [ARC5_OWNERSHIP_MIGRATION_NAMESPACE]: carrier,
+      },
+    });
+    for (const [label, extensions, expected] of [
+      ['future', future, { kind: 'protected', reason: 'target-future', version: 2 }],
+      ['corrupt', corrupt, { kind: 'protected', reason: 'target-corrupt' }],
+      ['misplaced', misplaced, { kind: 'protected', reason: 'target-corrupt' }],
+    ] as const) {
+      expect(prepareTrainingArc5Restore({
+        checkpointKind: 'source-deferred',
+        legacyFieldsRestored: false,
+        baseExtensions: extensions,
+        arc4Preparation: null,
+      }), label).toEqual(expected);
+    }
+
+    const restoredArc4 = prepareTrainingArc4Restore(
+      'legacy-v1', true, restoredState, {},
+    );
+    if (restoredArc4?.kind !== 'prepared') throw new Error('restored Arc 4 fixture failed');
+    expect(prepareTrainingArc5Restore({
+      checkpointKind: 'legacy-v1',
+      legacyFieldsRestored: true,
+      baseExtensions: {},
+      arc4Preparation: null,
+    })).toEqual({ kind: 'protected', reason: 'arc4-preparation-missing' });
+    expect(prepareTrainingArc5Restore({
+      checkpointKind: 'legacy-v1',
+      legacyFieldsRestored: true,
+      baseExtensions: canonicalizeV5Extensions({
+        settings: { 'unexpected.keep': { version: 1, json: '{"keep":true}' } },
+      }),
+      arc4Preparation: restoredArc4,
+    })).toEqual({ kind: 'protected', reason: 'arc4-preparation-unexpected' });
+    expect(prepareTrainingArc5Restore({
+      checkpointKind: 'current-view',
+      legacyFieldsRestored: false,
+      baseExtensions: arc5.extensions,
+      arc4Preparation: restoredArc4,
+    })).toEqual({ kind: 'protected', reason: 'arc4-preparation-unexpected' });
+    expect(prepareTrainingArc5Restore({
+      checkpointKind: 'legacy-v1',
+      legacyFieldsRestored: true,
+      baseExtensions: arc5.extensions,
+      arc4Preparation: restoredArc4,
+    })).toEqual({ kind: 'protected', reason: 'target-loaded' });
   });
 
   it('accepts an exact lossless Training protection carrier without inventing a mirror', () => {

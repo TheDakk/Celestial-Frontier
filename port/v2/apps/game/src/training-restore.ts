@@ -9,15 +9,20 @@
  */
 import {
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
   arc4OwnershipLegacyMirrorMatches,
   arc2LootLegacyMirrorMatches,
+  applyV5ExtensionWrites,
   importSaveV2,
   migrateLegacyOwnership,
   prepareArc4OwnershipLegacyMigration,
+  prepareArc5OwnershipMigration,
   prepareArc2LootLegacyRestore,
   readArc4Ownership,
+  readArc5OwnershipMigration,
   readArc2Loot,
   type Arc4OwnershipLegacyMigrationPreparation,
+  type Arc5OwnershipMigrationPreparation,
   type Arc2LootStateV1,
   type Arc2LootWritePreparation,
   type ContentRegistry,
@@ -30,8 +35,11 @@ import { MAX_GEAR_CAPACITY } from '@cf/domain-loot';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   canonicalJson,
+  ownershipSourceStateV1,
   ownershipStateDigestV1,
+  ownershipStateDigestV2,
   type OwnershipStateV1,
+  type OwnershipStateV2,
 } from '@cf/domain-acquisition';
 
 const DIRECT_STAT_KEYS = [
@@ -40,6 +48,7 @@ const DIRECT_STAT_KEYS = [
   'essenceEarned', 'guardians', 'paragons', 'mines', 'crafts',
   'minedout', 'skims', 'cosmics', 'landings', 'charters',
 ] as const;
+const EMPTY_ARC5_WRITES = Object.freeze([]) as readonly [];
 
 export interface LegacyTrainingRestoreInput {
   /** A detached, already-sanitized copy of the current surrounding save. */
@@ -80,6 +89,33 @@ export type TrainingArc4RestorePreparation =
       readonly reason: 'target-loaded';
       readonly mode: OwnershipStateV1['mode'];
       readonly actualRevision: number;
+    };
+
+export type PreparedTrainingArc5Restore = Extract<
+  Arc5OwnershipMigrationPreparation,
+  { readonly kind: 'prepared' }
+>;
+
+export type TrainingArc5RestorePreparation =
+  | PreparedTrainingArc5Restore
+  | Extract<Arc5OwnershipMigrationPreparation, { readonly kind: 'protected' }>
+  | {
+      readonly kind: 'preserved';
+      readonly state: OwnershipStateV2;
+      readonly writes: readonly [];
+      readonly extensions: V5Extensions;
+    }
+  | {
+      readonly kind: 'deferred';
+      readonly reason: 'source-deferred';
+      readonly state: OwnershipStateV2 | null;
+      readonly writes: readonly [];
+      readonly extensions: V5Extensions;
+    }
+  | {
+      readonly kind: 'protected';
+      readonly reason: 'arc4-preparation-missing' | 'arc4-preparation-unexpected'
+        | 'target-absent' | 'target-loaded';
     };
 
 /** Derive Training's coupled Arc 2 namespace from the candidate's restored
@@ -147,6 +183,99 @@ export function prepareTrainingArc4Restore(
   });
 }
 
+/** Keep Arc 5 coherent with Training's exact replacement boundary. A genuine
+ * legacy restore derives a fresh certificate only after Arc 4's 18 writes are
+ * prepared. Current aligned authority is preserved, while a source-deferred
+ * completion may validate but never bootstrap or repair Arc 5. Any corrupt,
+ * future, misplaced, or drifted certificate refuses the replacement. */
+export function prepareTrainingArc5Restore(input: Readonly<{
+  checkpointKind: ImportTrainingSnapshotIngressV2['kind'] | 'source-deferred';
+  legacyFieldsRestored: boolean;
+  baseExtensions: V5Extensions;
+  arc4Preparation: PreparedTrainingArc4Restore | null;
+}>): TrainingArc5RestorePreparation {
+  const legacyReplacement = input.checkpointKind === 'legacy-v1'
+    && input.legacyFieldsRestored === true;
+  if (legacyReplacement) {
+    if (input.arc4Preparation === null) {
+      return Object.freeze({ kind: 'protected', reason: 'arc4-preparation-missing' });
+    }
+    const before = readArc5OwnershipMigration(
+      input.baseExtensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    if (before.kind === 'loaded') {
+      return Object.freeze({ kind: 'protected', reason: 'target-loaded' });
+    }
+    if (before.kind === 'future-version') {
+      return Object.freeze({
+        kind: 'protected', reason: 'target-future', version: before.version,
+      });
+    }
+    if (before.kind === 'corrupt') {
+      return Object.freeze({ kind: 'protected', reason: 'target-corrupt' });
+    }
+    try {
+      const reapplied = applyV5ExtensionWrites(
+        input.baseExtensions,
+        input.arc4Preparation.writes,
+      );
+      if (JSON.stringify(reapplied.extensions)
+        !== JSON.stringify(input.arc4Preparation.extensions)) {
+        return Object.freeze({ kind: 'protected', reason: 'arc4-preparation-unexpected' });
+      }
+    } catch {
+      return Object.freeze({ kind: 'protected', reason: 'arc4-preparation-unexpected' });
+    }
+    const prepared = prepareArc5OwnershipMigration({
+      extensions: input.arc4Preparation.extensions,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    if (prepared.kind === 'already-loaded') {
+      return Object.freeze({ kind: 'protected', reason: 'target-loaded' });
+    }
+    return prepared;
+  }
+  if (input.arc4Preparation !== null) {
+    return Object.freeze({ kind: 'protected', reason: 'arc4-preparation-unexpected' });
+  }
+  if (input.checkpointKind === 'source-deferred') {
+    const current = readArc5OwnershipMigration(
+      input.baseExtensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    if (current.kind === 'future-version') {
+      return Object.freeze({
+        kind: 'protected', reason: 'target-future', version: current.version,
+      });
+    }
+    if (current.kind === 'corrupt') {
+      return Object.freeze({ kind: 'protected', reason: 'target-corrupt' });
+    }
+    return Object.freeze({
+      kind: 'deferred',
+      reason: 'source-deferred',
+      state: current.kind === 'loaded' ? current.state : null,
+      writes: EMPTY_ARC5_WRITES,
+      extensions: input.baseExtensions,
+    });
+  }
+  const prepared = prepareArc5OwnershipMigration({
+    extensions: input.baseExtensions,
+    resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  });
+  if (prepared.kind === 'protected') return prepared;
+  if (prepared.kind === 'prepared') {
+    return Object.freeze({ kind: 'protected', reason: 'target-absent' });
+  }
+  return Object.freeze({
+    kind: 'preserved',
+    state: prepared.state,
+    writes: EMPTY_ARC5_WRITES,
+    extensions: input.baseExtensions,
+  });
+}
+
 /** Verify only after Training's single replacement transaction is durable.
  * All 18 prepared carrier bytes and the registered state digest must agree.
  * Current state also requires its complete v4 mirror; lossless legacy-
@@ -195,6 +324,36 @@ export function committedTrainingArc4State(
         || JSON.stringify(migrated.sourceEvidence)
           !== JSON.stringify(loaded.state.legacyProtection)) return null;
     }
+    return loaded.state;
+  } catch {
+    return null;
+  }
+}
+
+/** Bind Training's one newly written certificate to its exact durable bytes
+ * and the freshly committed Arc 4 source. Null is read-only convergence by
+ * reload; it never authorizes a second Training write. */
+export function committedTrainingArc5State(
+  prepared: PreparedTrainingArc5Restore,
+  extensions: V5Extensions,
+): OwnershipStateV2 | null {
+  try {
+    if (prepared.writes.length !== 1) return null;
+    const write = prepared.writes[0]!;
+    if (write.segment !== ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.segment
+      || write.namespace !== ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace) return null;
+    const carrier = extensions[write.segment]?.[write.namespace];
+    if (carrier === undefined
+      || carrier.version !== write.carrier.version
+      || carrier.json !== write.carrier.json) return null;
+    const loaded = readArc5OwnershipMigration(
+      extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    if (loaded.kind !== 'loaded'
+      || ownershipStateDigestV2(loaded.state) !== ownershipStateDigestV2(prepared.state)
+      || ownershipStateDigestV1(ownershipSourceStateV1(loaded.state))
+        !== ownershipStateDigestV1(ownershipSourceStateV1(prepared.state))) return null;
     return loaded.state;
   } catch {
     return null;

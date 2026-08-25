@@ -1322,8 +1322,10 @@ describe('Arc 3 app bootstrap wiring contract', () => {
       },
       {
         expected: 'pending-entry',
-        mutant: source.replace('if (!f4SeedBootstrapPending && !bootRouteRepairPending\n',
-          'if (!f4SeedBootstrapPending\n'),
+        mutant: source.replace(
+          'if (!arc5OwnershipBootstrapPending\n    && !f4SeedBootstrapPending && !bootRouteRepairPending\n',
+          'if (!arc5OwnershipBootstrapPending\n    && !f4SeedBootstrapPending\n',
+        ),
       },
       {
         expected: 'durability-order',

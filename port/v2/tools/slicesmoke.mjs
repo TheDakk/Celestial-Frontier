@@ -59,14 +59,17 @@ import {
   ARC4_PERTAR_FIXTURE,
   ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA,
   ARC4_STALE_FAULT_CAPTURE_SCHEMA,
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
   arc4BrowserOutcomePasses,
   arc4CaptureUiSnapshotComplete,
   arc4DurableEvidenceComplete,
+  arc5OwnershipV2RuntimeExact,
   assessArc4BurnStep,
   assessArc4CapturePendingNoOptimism,
   assessArc4CapturePrecondition,
   assessArc4CommittedHit,
   assessArc4CommittedMiss,
+  assessArc4DurableEvidence,
   assessArc4Exhaustion,
   assessArc4PublicationConvergence,
   assessArc4StaleConvergence,
@@ -8853,6 +8856,10 @@ try {
   const arc4PertarSurfaceObservationExact = ({ state, ui } = {}) => (
     arc4PertarSurfaceRouteExact(state)
     && arc4CaptureUiSnapshotComplete(ui)
+    && state?.ownershipV2?.bootstrapOutcome === 'committed-published'
+    && state?.ownershipV2?.bootstrapPending === false
+    && state?.ownershipV2?.stateKind === 'loaded'
+    && canonicalJson(state?.ownershipV2) === canonicalJson(ui?.ownershipV2)
     && ui?.cardOpen === true && ui?.cardTitle === 'Pertar'
     && ui?.planetsideHeading === 'PLANETSIDE — Biosphere'
     && ui?.contextKey === `${ARC4_PERTAR_FIXTURE.worldKey}|epoch:${ARC4_PERTAR_FIXTURE.ecologyEpoch}|${ARC4_PERTAR_FIXTURE.fullRosterFingerprint}`
@@ -8911,6 +8918,16 @@ try {
       sourceToken: typeof sourceReady?.token === 'string' && sourceReady.token.length >= 16
         && sourceState?.persistence?.documentToken === sourceReady.token
         && sourceReady.token !== priorToken,
+      bootArc5FixedPoint: arc4DurableEvidenceComplete(wrongOrdinal?.rawBefore)
+        && sourceState?.persistence?.runtime?.commits === 1
+        && wrongOrdinal?.stateBefore?.persistence?.runtime?.commits === 1
+        && arc5OwnershipV2RuntimeExact(wrongOrdinal?.rawBefore, sourceState, {
+          bootstrapOutcome: 'committed-published',
+        })
+        && arc5OwnershipV2RuntimeExact(
+          wrongOrdinal?.rawBefore, wrongOrdinal?.stateBefore,
+          { bootstrapOutcome: 'committed-published' },
+        ),
       wrongOrdinalRejected: wrongOrdinal?.accepted === false,
       wrongOrdinalStateStable: canonicalJson(arc4PertarStableStateProjection(
         wrongOrdinal?.stateAfter,
@@ -9054,6 +9071,42 @@ try {
     next.playerRaw = JSON.stringify(next.playerRow);
     return next;
   };
+  const arc4MutateArc5Certificate = (evidence, mutate) => {
+    const next = structuredClone(evidence);
+    const namespace = ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace;
+    const carrier = next?.playerRow?.extensions?.[namespace];
+    let certificate = null;
+    try { certificate = JSON.parse(carrier?.json ?? 'null'); } catch {}
+    if (!carrier || certificate === null || typeof certificate !== 'object'
+      || Array.isArray(certificate)) return null;
+    mutate(certificate);
+    carrier.json = canonicalJson(certificate);
+    next.playerRaw = JSON.stringify(next.playerRow);
+    return next;
+  };
+  const arc4NoncanonicalArc5Certificate = (evidence) => {
+    const next = structuredClone(evidence);
+    const namespace = ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace;
+    const carrier = next?.playerRow?.extensions?.[namespace];
+    let certificate = null;
+    try { certificate = JSON.parse(carrier?.json ?? 'null'); } catch {}
+    if (!carrier || certificate === null || typeof certificate !== 'object'
+      || Array.isArray(certificate)) return null;
+    carrier.json = JSON.stringify(
+      Object.fromEntries(Object.entries(certificate).reverse()),
+    );
+    next.playerRaw = JSON.stringify(next.playerRow);
+    return next;
+  };
+  const arc4ReplaceArc5Certificate = (evidence, source) => {
+    const next = structuredClone(evidence);
+    const namespace = ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace;
+    const carrier = source?.playerRow?.extensions?.[namespace];
+    if (!carrier) return null;
+    next.playerRow.extensions[namespace] = structuredClone(carrier);
+    next.playerRaw = JSON.stringify(next.playerRow);
+    return next;
+  };
   const arc4InteractionKey = 'cf_slice_arc4_capture_interaction_v1';
   const armArc4Interaction = async () => evalIn(`(()=>{const key=${JSON.stringify(arc4InteractionKey)};
     localStorage.removeItem(key);window.__cfArc4InteractionAbort?.abort();const controller=new AbortController();
@@ -9140,6 +9193,10 @@ try {
   const arc4ReloadedSurfaceObservationExact = ({ state, ui } = {}, expectedUsed) => (
     arc4PertarSurfaceRouteExact(state)
     && arc4CaptureUiSnapshotComplete(ui)
+    && state?.ownershipV2?.bootstrapOutcome === 'already-aligned'
+    && state?.ownershipV2?.bootstrapPending === false
+    && state?.ownershipV2?.stateKind === 'loaded'
+    && canonicalJson(state?.ownershipV2) === canonicalJson(ui?.ownershipV2)
     && state?.cardOpen === true && state?.cardTitle === 'Pertar'
     && ui?.cardOpen === true && ui?.cardTitle === 'Pertar'
     && ui?.planetsideHeading === 'PLANETSIDE — Biosphere'
@@ -9226,6 +9283,9 @@ try {
     sourceToken: arc4FixtureSetupVariant((next) => {
       next.sourceState.persistence.documentToken += ':wrong';
     }),
+    bootArc5FixedPoint: arc4FixtureSetupVariant((next) => {
+      next.sourceState.ownershipV2.targetDigest = 'f'.repeat(64);
+    }),
     wrongOrdinalRejected: arc4FixtureSetupVariant((next) => {
       next.wrongOrdinal.accepted = true;
     }),
@@ -9258,12 +9318,38 @@ try {
   const arc4FixtureIncompleteSurfaceControl = arc4FixtureSetupVariant((next) => {
     next.surface.ui.rows[0].odds = null;
   });
+  const arc4FixtureCoordinatedStarRouteControl = arc4FixtureSetupVariant((next) => {
+    for (const raw of [next.wrongOrdinal.rawBefore, next.wrongOrdinal.rawAfter]) {
+      raw.legacy.view.pseed = ARC4_PERTAR_FIXTURE.planet.seed;
+      raw.playerRow.data.view.pseed = ARC4_PERTAR_FIXTURE.planet.seed;
+      raw.legacyRaw = JSON.stringify(raw.legacy);
+      raw.playerRaw = JSON.stringify(raw.playerRow);
+    }
+  });
   const arc4FixtureWrongOrdinalClockControl = arc4FixtureSetupVariant((next) => {
     next.wrongOrdinal.stateAfter.persistence.runtime.activePlayMs
       = next.wrongOrdinal.stateBefore.persistence.runtime.activePlayMs + 123_456;
   });
+  /* A one-sided durable route mutation necessarily breaks the registered v4
+     envelope, so bootArc5FixedPoint's full-durability prerequisite must fail
+     with that route clause. The coordinated raw-consistent control proves the
+     two route checks remain mutation-sensitive while boot Arc 5 stays green;
+     the direct bootArc5FixedPoint mutant above proves that gate independently. */
+  const arc4FixtureSetupExpectedFailures = Object.freeze({
+    durableStarLegacyRoute: Object.freeze([
+      'durableStarLegacyRoute', 'bootArc5FixedPoint',
+    ]),
+    durableStarSplitRoute: Object.freeze([
+      'durableStarSplitRoute', 'bootArc5FixedPoint',
+    ]),
+  });
   const arc4FixtureSetupControlsIsolated = Object.entries(arc4FixtureSetupControls)
-    .every(([check, assessment]) => arc4IsolatedCheck(assessment, check))
+    .every(([check, assessment]) => arc4ExactFailureSet(
+      assessment, arc4FixtureSetupExpectedFailures[check] ?? [check],
+    ))
+    && arc4ExactFailureSet(arc4FixtureCoordinatedStarRouteControl, [
+      'durableStarLegacyRoute', 'durableStarSplitRoute',
+    ])
     && arc4IsolatedCheck(arc4FixtureIncompleteSurfaceControl, 'exactSurface')
     && arc4IsolatedCheck(
       arc4FixtureWrongOrdinalClockControl, 'wrongOrdinalStateStable',
@@ -9276,6 +9362,9 @@ try {
     routeError: null, authorityReady: true,
   };
   const arc4Precondition = assessArc4CapturePrecondition(arc4PreconditionBundle);
+  const arc4PreNoncanonicalArc5Control = assessArc4DurableEvidence(
+    arc4NoncanonicalArc5Certificate(arc4PreRaw),
+  );
   const arc4PreWrongHeading = structuredClone(arc4PreUi);
   arc4PreWrongHeading.planetsideHeading = 'PLANETSIDE — Wrong';
   const arc4PreMissingHeading = structuredClone(arc4PreUi);
@@ -9285,6 +9374,8 @@ try {
   const arc4PreOrderingBase = arc4PreRaw.authority.activePlayMs + 9_000;
   const arc4PreOrderingState = structuredClone(arc4PreState);
   arc4PreOrderingState.persistence.runtime.activePlayMs = arc4PreOrderingBase;
+  const arc4PreArc5State = structuredClone(arc4PreState);
+  arc4PreArc5State.ownershipV2.targetDigest = 'f'.repeat(64);
   const arc4PreconditionControls = {
     route: assessArc4CapturePrecondition({ ...arc4PreconditionBundle,
       routeError: 'negative route settlement' }),
@@ -9303,6 +9394,9 @@ try {
       state: arc4PreOrderingState,
       ui: arc4MutateUiActivePlay(arc4PreUi, arc4PreOrderingBase + 1),
     }),
+    ownershipV2Ready: assessArc4CapturePrecondition({
+      ...arc4PreconditionBundle, state: arc4PreArc5State,
+    }),
   };
   if (!arc4Precondition.ok
     || !arc4FirstFixture.setupAssessment?.ok
@@ -9319,13 +9413,22 @@ try {
       'runtimeCaptureOrder')
     || !arc4IsolatedCheck(arc4PreconditionControls.nonzeroOrdering,
       'runtimeCaptureOrder')
+    || !arc4IsolatedCheck(arc4PreconditionControls.ownershipV2Ready,
+      'ownershipV2Ready')
+    || !arc4ExactFailureSet(arc4PreNoncanonicalArc5Control, [
+      'arc5CertificateShape', 'arc5SourceFixedPoint', 'arc5TargetFixedPoint',
+    ])
     || arc4CaptureUiSnapshotComplete(arc4PreMissingHeading)) {
-    fails.push('ARC 4 PRECONDITION: Pertar route, seed-68 F4 authority, exact v5/18-carrier mirror, or card identity failed: '
+    fails.push('ARC 4 PRECONDITION: Pertar route, seed-68 F4 authority, exact v5/18 Arc 4 carriers + Arc 5 certificate, or card identity failed: '
       + JSON.stringify({ fixture: arc4FirstFixture, assessment: arc4Precondition,
         setupControls: arc4FixtureSetupControls,
+        setupControlExpectedFailures: arc4FixtureSetupExpectedFailures,
+        coordinatedStarRouteControl: arc4FixtureCoordinatedStarRouteControl,
         incompleteSurfaceControl: arc4FixtureIncompleteSurfaceControl,
         wrongOrdinalClockControl: arc4FixtureWrongOrdinalClockControl,
-        controls: arc4PreconditionControls, uiMissingHeadingAccepted:
+        controls: arc4PreconditionControls,
+        noncanonicalArc5Control: arc4PreNoncanonicalArc5Control,
+        uiMissingHeadingAccepted:
           arc4CaptureUiSnapshotComplete(arc4PreMissingHeading) }));
   }
 
@@ -9354,6 +9457,11 @@ try {
   const arc4HitPendingRuntimeControl = assessArc4CapturePendingNoOptimism({
     ...arc4HitPendingBundle,
     duringState: arc4MutateStateActivePlay(arc4HitHolding.state),
+  });
+  const arc4HitPendingArc5State = structuredClone(arc4HitHolding.state);
+  arc4HitPendingArc5State.ownershipV2.targetDigest = 'f'.repeat(64);
+  const arc4HitPendingArc5Control = assessArc4CapturePendingNoOptimism({
+    ...arc4HitPendingBundle, duringState: arc4HitPendingArc5State,
   });
   const arc4HitReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseProductActionHold()`);
   const arc4HitState = await waitDesktopValue('Arc 4 deterministic Sample hit', `(()=>{const state=window.__CF_SLICE__.api.state(),
@@ -9403,9 +9511,20 @@ try {
     before: arc4MutateV4Ever(arc4PreRaw, (ever) => { ever.maxGen += 1; }),
     after: arc4MutateV4Ever(arc4HitRaw, (ever) => { ever.maxGen += 1; }),
   });
+  const arc4HitRetainedArc5Control = assessArc4CommittedHit({
+    ...arc4HitBundle,
+    after: arc4ReplaceArc5Certificate(arc4HitRaw, arc4PreRaw),
+  });
+  const arc4HitTargetDigestControl = assessArc4CommittedHit({
+    ...arc4HitBundle,
+    after: arc4MutateArc5Certificate(
+      arc4HitRaw, (certificate) => { certificate.targetDigest = 'f'.repeat(64); },
+    ),
+  });
   if (!arc4HitHoldArmed || !arc4HitPress.armed || !arc4HitPress.target.ok
     || !arc4HitPending.ok || !arc4IsolatedCheck(arc4HitPendingControl, 'oneTrustedAction')
     || !arc4IsolatedCheck(arc4HitPendingRuntimeControl, 'runtimeCaptureOrder')
+    || !arc4IsolatedCheck(arc4HitPendingArc5Control, 'ownershipV2Stable')
     || !arc4Hit.ok || !arc4IsolatedCheck(arc4HitControl, 'interaction')
     || !arc4IsolatedCheck(arc4HitRuntimeControl, 'runtimeCaptureOrder')
     || !arc4IsolatedCheck(arc4HitDownwardRuntimeControl, 'runtimeCaptureOrder')
@@ -9416,6 +9535,12 @@ try {
     || !arc4IsolatedCheck(arc4HitOuterRevisionControl, 'appResult')
     || !arc4ExactFailureSet(arc4HitV4MaxGenControl,
       ['v4OwnedCompatibility', 'v4OwnedCounters'])
+    || !arc4ExactFailureSet(arc4HitRetainedArc5Control,
+      ['durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+        'ownershipV2Live'])
+    || !arc4ExactFailureSet(arc4HitTargetDigestControl,
+      ['durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+        'ownershipV2Live'])
     || !arc4BrowserOutcomePasses({ released: arc4HitReleased,
       assessment: arc4Hit, surface: 'survey' })) {
     fails.push('ARC 4 SAMPLE HIT: one held native action did not remain non-optimistic then commit hidden ordinal-13 first-page/+2 truth: '
@@ -9423,6 +9548,7 @@ try {
         released: arc4HitReleased, pending: arc4HitPending,
         pendingControl: arc4HitPendingControl,
         pendingRuntimeControl: arc4HitPendingRuntimeControl,
+        pendingArc5Control: arc4HitPendingArc5Control,
         hit: arc4Hit, hitControl: arc4HitControl,
         hitRuntimeControl: arc4HitRuntimeControl,
         hitDownwardRuntimeControl: arc4HitDownwardRuntimeControl,
@@ -9430,6 +9556,8 @@ try {
         hitV4ArrivalsControl: arc4HitV4ArrivalsControl,
         hitOuterRevisionControl: arc4HitOuterRevisionControl,
         hitV4MaxGenControl: arc4HitV4MaxGenControl,
+        hitRetainedArc5Control: arc4HitRetainedArc5Control,
+        hitTargetDigestControl: arc4HitTargetDigestControl,
         interaction: arc4HitInteraction }));
   }
 
@@ -9470,6 +9598,11 @@ try {
     ...arc4StorageBundle,
     afterState: arc4MutateStateActivePlay(arc4StorageState),
   });
+  const arc4StorageArc5State = structuredClone(arc4StorageState);
+  arc4StorageArc5State.ownershipV2.targetDigest = 'f'.repeat(64);
+  const arc4StorageArc5Control = assessArc4StorageRefusal({
+    ...arc4StorageBundle, afterState: arc4StorageArc5State,
+  });
   const arc4StorageDriftUi = arc4MutateUiActivePlay(
     arc4StorageUi,
     arc4StorageState.persistence.runtime.activePlayMs + 1_000,
@@ -9503,6 +9636,7 @@ try {
     || !arc4IsolatedCheck(arc4StorageFaultControl, 'faultOutcome')
     || !arc4IsolatedCheck(arc4StorageResultControl, 'liveProjectionStable')
     || !arc4IsolatedCheck(arc4StorageRuntimeControl, 'runtimeCaptureOrder')
+    || !arc4IsolatedCheck(arc4StorageArc5Control, 'ownershipV2Stable')
     || !arc4StorageClockDriftControl.ok
     || !arc4IsolatedCheck(arc4StorageSemanticUiControl, 'uiFactsStable')
     || !arc4IsolatedCheck(arc4StorageBudgetSemanticUiControl, 'uiFactsStable')
@@ -9513,6 +9647,7 @@ try {
         assessment: arc4Storage, faultControl: arc4StorageFaultControl,
         resultControl: arc4StorageResultControl,
         runtimeControl: arc4StorageRuntimeControl,
+        arc5Control: arc4StorageArc5Control,
         clockDriftControl: arc4StorageClockDriftControl,
         semanticUiControl: arc4StorageSemanticUiControl,
         budgetSemanticUiControl: arc4StorageBudgetSemanticUiControl,
@@ -9584,6 +9719,11 @@ try {
   const arc4StaleReloadUiControl = assessArc4StaleConvergence({
     ...arc4StaleBundle, reloadedUi: arc4StaleReloadUiControlValue,
   });
+  const arc4StaleReloadArc5State = structuredClone(arc4StaleReloadedState);
+  arc4StaleReloadArc5State.ownershipV2.targetDigest = 'f'.repeat(64);
+  const arc4StaleReloadArc5Control = assessArc4StaleConvergence({
+    ...arc4StaleBundle, reloadedState: arc4StaleReloadArc5State,
+  });
   const arc4StaleReloadActivationValue = structuredClone(
     arc4StaleReloadActivation,
   );
@@ -9625,6 +9765,24 @@ try {
       parsed: arc4StaleResultControlParsed, cleared: true,
     },
   });
+  const arc4StalePreservationParsed = structuredClone(
+    arc4StaleCaptured.fault?.parsed,
+  );
+  if (arc4StalePreservationParsed?.state?.ownershipV2) {
+    arc4StalePreservationParsed.state.ownershipV2.targetDigest = 'f'.repeat(64);
+    arc4StalePreservationParsed.ui.ownershipV2 = structuredClone(
+      arc4StalePreservationParsed.state.ownershipV2,
+    );
+  }
+  const arc4StaleArc5PreservationControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle,
+    oldState: arc4StalePreservationParsed?.state,
+    oldUi: arc4StalePreservationParsed?.ui,
+    faultCapture: {
+      raw: JSON.stringify(arc4StalePreservationParsed),
+      parsed: arc4StalePreservationParsed, cleared: true,
+    },
+  });
   const arc4StaleTupleStateParsed = structuredClone(arc4StaleCaptured.fault?.parsed);
   if (arc4StaleTupleStateParsed?.state?.capture) {
     arc4StaleTupleStateParsed.state.capture.revision += 1;
@@ -9656,33 +9814,51 @@ try {
       parsed: arc4StaleTupleUiParsed, cleared: true,
     },
   });
+  const arc4StaleTupleArc5Parsed = structuredClone(arc4StaleCaptured.fault?.parsed);
+  if (arc4StaleTupleArc5Parsed?.ui?.ownershipV2) {
+    arc4StaleTupleArc5Parsed.ui.ownershipV2.targetDigest = 'f'.repeat(64);
+  }
+  const arc4StaleTupleArc5Control = assessArc4StaleConvergence({
+    ...arc4StaleBundle,
+    faultCapture: {
+      raw: JSON.stringify(arc4StaleTupleArc5Parsed),
+      parsed: arc4StaleTupleArc5Parsed, cleared: true,
+    },
+  });
   if (!arc4StalePress.armed || !arc4StalePress.target.ok
     || !arc4StaleCaptured.fault?.cleared || !arc4Stale.ok
     || !arc4PertarSurfaceRouteExact(arc4StaleReloadedStateBeforeDock)
     || !arc4IsolatedCheck(arc4StaleTokenControl, 'readOnlyReload')
     || !arc4IsolatedCheck(arc4StaleReloadUiControl, 'readOnlyReload')
+    || !arc4IsolatedCheck(arc4StaleReloadArc5Control, 'readOnlyReload')
     || !arc4IsolatedCheck(arc4StaleReloadActivationControl, 'reloadActivation')
     || !arc4IsolatedCheck(arc4StaleReloadStartsOpenControl,
       'reloadStartsClosed')
     || !arc4IsolatedCheck(arc4StaleReloadRawControl, 'readOnlyReload')
     || !arc4IsolatedCheck(arc4StaleResultControl, 'oldOutcome')
+    || !arc4IsolatedCheck(arc4StaleArc5PreservationControl,
+      'ownershipV2Preserved')
     || !arc4IsolatedCheck(arc4StaleTupleStateControl, 'pagehideTuple')
     || !arc4IsolatedCheck(arc4StaleTupleFaultControl, 'pagehideTuple')
-    || !arc4IsolatedCheck(arc4StaleTupleUiControl, 'pagehideTuple')) {
+    || !arc4IsolatedCheck(arc4StaleTupleUiControl, 'pagehideTuple')
+    || !arc4IsolatedCheck(arc4StaleTupleArc5Control, 'pagehideTuple')) {
     fails.push('ARC 4 STALE CONVERGENCE: one native Tame did not empty-CAS then reload exact hit authority without a roll/retry: '
       + JSON.stringify({ armed: arc4StaleArmed, captureArmed: arc4StaleCaptureArmed,
         press: arc4StalePress, captured: arc4StaleCaptured,
         assessment: arc4Stale, tokenControl: arc4StaleTokenControl,
         reloadUiControl: arc4StaleReloadUiControl,
+        reloadArc5Control: arc4StaleReloadArc5Control,
         reloadActivation: arc4StaleReloadActivation,
         reloadActivationControl: arc4StaleReloadActivationControl,
         reloadStartsOpenControl: arc4StaleReloadStartsOpenControl,
         reloadRawControl: arc4StaleReloadRawControl,
         reloadedStateBeforeDock: arc4StaleReloadedStateBeforeDock,
         resultControl: arc4StaleResultControl,
+        arc5PreservationControl: arc4StaleArc5PreservationControl,
         tupleStateControl: arc4StaleTupleStateControl,
         tupleFaultControl: arc4StaleTupleFaultControl,
         tupleUiControl: arc4StaleTupleUiControl,
+        tupleArc5Control: arc4StaleTupleArc5Control,
         interaction: arc4StaleInteraction }));
   }
 
@@ -9716,17 +9892,25 @@ try {
     before: arc4MutateV4Ever(arc4MissBeforeRaw, (ever) => { ever.scanhits += 1; }),
     after: arc4MutateV4Ever(arc4MissRaw, (ever) => { ever.scanhits += 1; }),
   });
+  const arc4MissRetainedArc5Control = assessArc4CommittedMiss({
+    ...arc4MissBundle,
+    after: arc4ReplaceArc5Certificate(arc4MissRaw, arc4MissBeforeRaw),
+  });
   if (!arc4MissPress.armed || !arc4MissPress.target.ok || !arc4Miss.ok
     || !arc4IsolatedCheck(arc4MissControl, 'interaction')
     || !arc4IsolatedCheck(arc4MissRuntimeControl, 'runtimeCaptureOrder')
     || !arc4ExactFailureSet(arc4MissV4ScanhitsControl,
       ['v4OwnedCompatibility', 'v4OwnedCounters'])
+    || !arc4ExactFailureSet(arc4MissRetainedArc5Control,
+      ['durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+        'ownershipV2Live'])
     || !arc4BrowserOutcomePasses({ released: true,
       assessment: arc4Miss, surface: 'survey' })) {
     fails.push('ARC 4 TAME MISS: counter-1 native Tame did not spend exactly one with no ownership/reward grant: '
       + JSON.stringify({ press: arc4MissPress, assessment: arc4Miss,
         control: arc4MissControl, runtimeControl: arc4MissRuntimeControl,
         v4ScanhitsControl: arc4MissV4ScanhitsControl,
+        retainedArc5Control: arc4MissRetainedArc5Control,
         interaction: arc4MissInteraction }));
   }
 
@@ -9861,6 +10045,16 @@ try {
       v4MaxGenCompatibility: {
         expected: 'v4OwnedCompatibility', result: assessArc4BurnStep({
           before: v4MaxGenBefore, after: v4MaxGenAfter,
+          beforeUi, outcome, verb: readyRow.verb, expectedUsed, afterState,
+        }),
+      },
+      arc5CertificateSuccessor: {
+        expected: [
+          'durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+          'ownershipV2Live',
+        ],
+        result: assessArc4BurnStep({
+          before, after: arc4ReplaceArc5Certificate(after, before),
           beforeUi, outcome, verb: readyRow.verb, expectedUsed, afterState,
         }),
       },
@@ -10000,6 +10194,15 @@ try {
     ...arc4PublicationPendingBundle,
     interaction: { ...arc4PublicationPendingInteraction, pressCount: 2 },
   });
+  const arc4PublicationPendingArc5State = structuredClone(
+    arc4PublicationHolding.state,
+  );
+  arc4PublicationPendingArc5State.ownershipV2.targetDigest = 'f'.repeat(64);
+  const arc4PublicationPendingArc5Control
+    = assessArc4CapturePendingNoOptimism({
+      ...arc4PublicationPendingBundle,
+      duringState: arc4PublicationPendingArc5State,
+    });
   const arc4PublicationReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseProductActionHold()`);
   await waitForSlice(sess, 'Arc 4 publication convergence', {
     previousToken: arc4PublicationBeforeToken,
@@ -10056,6 +10259,7 @@ try {
     if (bundle.oldState && bundle.oldUi) {
       mutate(bundle.oldState, bundle.oldUi);
       bundle.oldUi.captureState = structuredClone(bundle.oldState.capture);
+      bundle.oldUi.ownershipV2 = structuredClone(bundle.oldState.ownershipV2);
       bundle.oldUi.persistence = structuredClone(bundle.oldState.persistence);
     }
     const parsed = structuredClone(bundle.faultCapture?.parsed);
@@ -10080,6 +10284,21 @@ try {
   const arc4PublicationReloadUiControl = assessArc4PublicationConvergence({
     ...arc4PublicationBundle, reloadedUi: arc4PublicationReloadUiControlValue,
   });
+  const arc4PublicationReloadArc5State = structuredClone(
+    arc4PublicationReloadedState,
+  );
+  arc4PublicationReloadArc5State.ownershipV2.targetDigest = 'f'.repeat(64);
+  const arc4PublicationReloadArc5Control
+    = assessArc4PublicationConvergence({
+      ...arc4PublicationBundle,
+      reloadedState: arc4PublicationReloadArc5State,
+    });
+  const arc4PublicationOldArc5OptimismControl
+    = assessArc4PublicationOldSurfaceControl((oldState) => {
+      oldState.ownershipV2 = structuredClone(
+        arc4PublicationBeforeState.ownershipV2,
+      );
+    });
   const arc4PublicationReloadActivationValue = structuredClone(
     arc4PublicationReloadActivation,
   );
@@ -10168,6 +10387,20 @@ try {
       parsed: arc4PublicationTupleUiParsed, cleared: true,
     },
   });
+  const arc4PublicationTupleArc5Parsed = structuredClone(
+    arc4PublicationCaptured.fault?.parsed,
+  );
+  if (arc4PublicationTupleArc5Parsed?.ui?.ownershipV2) {
+    arc4PublicationTupleArc5Parsed.ui.ownershipV2.bootstrapOutcome
+      = 'false-tuple';
+  }
+  const arc4PublicationTupleArc5Control = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle,
+    faultCapture: {
+      raw: JSON.stringify(arc4PublicationTupleArc5Parsed),
+      parsed: arc4PublicationTupleArc5Parsed, cleared: true,
+    },
+  });
   const arc4PublicationV4ScanhitsControl = assessArc4PublicationConvergence({
     ...arc4PublicationBundle,
     before: arc4MutateV4Ever(
@@ -10249,10 +10482,19 @@ try {
     && arc4PublicationPendingBaselineChecks.every((value) => value === true);
   const arc4PublicationPendingControlIsolated
     = arc4PublicationPendingBaselineGreen
-      && arc4IsolatedCheck(arc4PublicationPendingControl, 'oneTrustedAction');
+      && arc4IsolatedCheck(arc4PublicationPendingControl, 'oneTrustedAction')
+      && arc4IsolatedCheck(
+        arc4PublicationPendingArc5Control, 'ownershipV2Stable',
+      );
   const arc4PublicationControlBundles = {
     wait: { expected: 'waitSettled', result: arc4PublicationWaitControl },
     reloadUi: { expected: 'readOnlyReload', result: arc4PublicationReloadUiControl },
+    reloadArc5: {
+      expected: 'readOnlyReload', result: arc4PublicationReloadArc5Control,
+    },
+    oldArc5Optimism: {
+      expected: 'noOldOptimism', result: arc4PublicationOldArc5OptimismControl,
+    },
     reloadActivation: {
       expected: 'reloadActivation', result: arc4PublicationReloadActivationControl,
     },
@@ -10269,6 +10511,9 @@ try {
     tupleState: { expected: 'pagehideTuple', result: arc4PublicationTupleStateControl },
     tupleFault: { expected: 'pagehideTuple', result: arc4PublicationTupleFaultControl },
     tupleUi: { expected: 'pagehideTuple', result: arc4PublicationTupleUiControl },
+    tupleArc5: {
+      expected: 'pagehideTuple', result: arc4PublicationTupleArc5Control,
+    },
     v4Scanhits: {
       expected: ['committedOutcome', 'v4OwnedCounters'],
       result: arc4PublicationV4ScanhitsControl,
@@ -10328,6 +10573,7 @@ try {
         holdArmed: arc4PublicationHoldArmed, released: arc4PublicationReleased,
         press: arc4PublicationPress, pending: arc4PublicationPending,
         pendingControl: arc4PublicationPendingControl,
+        pendingArc5Control: arc4PublicationPendingArc5Control,
         pendingBaselineGreen: arc4PublicationPendingBaselineGreen,
         pendingControlIsolated: arc4PublicationPendingControlIsolated,
         captured: arc4PublicationCaptured, assessment: arc4Publication,
@@ -10336,6 +10582,8 @@ try {
         controlIsolated: arc4PublicationControlIsolated,
         waitControl: arc4PublicationWaitControl,
         reloadUiControl: arc4PublicationReloadUiControl,
+        reloadArc5Control: arc4PublicationReloadArc5Control,
+        oldArc5OptimismControl: arc4PublicationOldArc5OptimismControl,
         reloadActivation: arc4PublicationReloadActivation,
         reloadActivationControl: arc4PublicationReloadActivationControl,
         reloadStartsOpenControl: arc4PublicationReloadStartsOpenControl,
@@ -10346,6 +10594,7 @@ try {
         tupleStateControl: arc4PublicationTupleStateControl,
         tupleFaultControl: arc4PublicationTupleFaultControl,
         tupleUiControl: arc4PublicationTupleUiControl,
+        tupleArc5Control: arc4PublicationTupleArc5Control,
         v4ScanhitsControl: arc4PublicationV4ScanhitsControl,
         reloadDownwardRuntimeControl: arc4PublicationReloadDownwardRuntimeControl,
         reloadUpwardRuntimeControl: arc4PublicationReloadUpwardRuntimeControl,
@@ -15666,6 +15915,6 @@ if (fails.length) {
 }
 console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail/Equip, exact carrier↔legacy↔DOM parity, conditional comparison, one receipt, reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
-console.log('SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18-namespace/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.');
+console.log('SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces/aligned source-bound Arc 5 V1→V2 certificate/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);

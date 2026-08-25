@@ -57,6 +57,15 @@ export const ARC4_OWNERSHIP_EXTENSION_TARGETS = Object.freeze([
 ].sort((left, right) => ARC4_SEGMENT_ORDER[left.segment] - ARC4_SEGMENT_ORDER[right.segment]
   || (left.namespace < right.namespace ? -1 : left.namespace > right.namespace ? 1 : 0)));
 
+export const ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET = Object.freeze({
+  segment: 'player', namespace: 'arc5.ownership.migration',
+});
+
+const ARC5_OWNERSHIP_MIGRATION_PREFIX = 'arc5.ownership.';
+const ARC5_OWNERSHIP_MIGRATION_SCHEMA = 'cf-v2-ownership-v1-to-v2/v1';
+const ARC5_OWNERSHIP_SOURCE_SCHEMA = 'cf-v2-ownership-state/v1';
+const ARC5_OWNERSHIP_TARGET_SCHEMA = 'cf-v2-ownership-state/v2';
+
 const ARC4_PERTAR_WORLD_ADDRESS = Object.freeze({
   format: 'CF1',
   key: 'CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3',
@@ -585,6 +594,94 @@ const inspectArc4Ownership = (rows) => {
   }
 };
 
+/* Arc 5A persists no second ownership mirror. Its one digest-only carrier is
+   useful browser evidence only when this tool independently reconstructs the
+   exact registered V1 source and the exact ordered V2 migration mirror. */
+const arc5OwnershipTargetMirrorForDigest = (source) => {
+  const registeredSource = registeredMirrorForDigest(source);
+  if (registeredSource === null
+    || registeredSource.schema !== ARC5_OWNERSHIP_SOURCE_SCHEMA
+    || registeredSource.version !== 1) return null;
+  return Object.freeze({
+    schema: ARC5_OWNERSHIP_TARGET_SCHEMA,
+    version: 2,
+    revision: registeredSource.revision,
+    source: registeredSource,
+    bredAcquisitions: Object.freeze([]),
+    creatures: registeredSource.creatures,
+    creatureTombstones: Object.freeze([]),
+    specimenLots: registeredSource.specimenLots,
+    specimenTombstones: Object.freeze([]),
+    scoutCreatureId: registeredSource.scoutCreatureId,
+  });
+};
+
+const inspectArc5OwnershipMigration = (rows, ownership) => {
+  const found = [];
+  for (const [segment, row] of Object.entries(rows ?? {})) {
+    for (const namespace of Object.keys(row?.extensions ?? {})) {
+      if (namespace.startsWith(ARC5_OWNERSHIP_MIGRATION_PREFIX)) {
+        found.push({ segment, namespace });
+      }
+    }
+  }
+  found.sort((left, right) => ARC4_SEGMENT_ORDER[left.segment] - ARC4_SEGMENT_ORDER[right.segment]
+    || (left.namespace < right.namespace ? -1 : left.namespace > right.namespace ? 1 : 0));
+  const namespaceInventoryMatches = same(
+    found, [ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET],
+  );
+  const selected = carrierAt(
+    rows,
+    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.segment,
+    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace,
+  ) ?? (found.length === 1
+    ? carrierAt(rows, found[0].segment, found[0].namespace) : null);
+  const certificate = exactCanonicalCarrier(selected);
+  const certificateShapeMatches = exactKeys(certificate, [
+    'schema', 'version', 'sourceSchema', 'sourceVersion', 'sourceRevision',
+    'sourceMode', 'sourceDigest', 'targetSchema', 'targetVersion',
+    'targetRevision', 'targetMode', 'targetDigest',
+  ])
+    && certificate.schema === ARC5_OWNERSHIP_MIGRATION_SCHEMA
+    && certificate.version === 1
+    && certificate.sourceSchema === ARC5_OWNERSHIP_SOURCE_SCHEMA
+    && certificate.sourceVersion === 1
+    && counter(certificate.sourceRevision)
+    && ['current', 'legacy-protected'].includes(certificate.sourceMode)
+    && hexDigest(certificate.sourceDigest)
+    && certificate.targetSchema === ARC5_OWNERSHIP_TARGET_SCHEMA
+    && certificate.targetVersion === 2
+    && counter(certificate.targetRevision)
+    && ['current', 'legacy-protected'].includes(certificate.targetMode)
+    && hexDigest(certificate.targetDigest);
+  const source = ownership?.mirror ?? null;
+  const target = source === null ? null : arc5OwnershipTargetMirrorForDigest(source);
+  const sourceDigest = source === null ? null : sha256(JSON.stringify(source));
+  const targetDigest = target === null ? null : sha256(JSON.stringify(target));
+  const sourceFixedPointMatches = certificateShapeMatches
+    && ownership?.stateDigestMatches === true
+    && certificate.sourceRevision === source?.revision
+    && certificate.sourceMode === source?.mode
+    && certificate.sourceDigest === sourceDigest
+    && certificate.sourceDigest === ownership?.manifest?.stateDigest;
+  const targetFixedPointMatches = certificateShapeMatches && target !== null
+    && certificate.targetRevision === target.revision
+    && certificate.targetRevision === certificate.sourceRevision
+    && certificate.targetMode === target.source.mode
+    && certificate.targetMode === certificate.sourceMode
+    && certificate.targetDigest === targetDigest;
+  return Object.freeze({
+    found: Object.freeze(found),
+    carrier: selected ?? null,
+    certificate: certificateShapeMatches ? certificate : null,
+    source, target, sourceDigest, targetDigest,
+    namespaceInventoryMatches,
+    certificateShapeMatches,
+    sourceFixedPointMatches,
+    targetFixedPointMatches,
+  });
+};
+
 const exactF4Authority = (rows, evidence) => {
   const carrier = carrierAt(rows, 'player', 'f4.authority');
   const authority = exactKeys(carrier, ['version', 'json'])
@@ -800,6 +897,8 @@ export const assessArc4DurableEvidence = (evidence = {}) => {
   )) && v5.checks.extensionAggregate === true
     && v5.checks.uniqueEnvelopeFields === true;
   const inspectedOwnership = v5RowsComplete ? inspectArc4Ownership(v5.rows) : null;
+  const inspectedArc5 = v5RowsComplete
+    ? inspectArc5OwnershipMigration(v5.rows, inspectedOwnership) : null;
   const v4OwnedCompatibility = v5RowsComplete
     ? inspectArc4V4OwnedCompatibility(evidence, v5) : null;
   const v4OwnedCounters = counterProjection(v4OwnedCompatibility);
@@ -823,6 +922,10 @@ export const assessArc4DurableEvidence = (evidence = {}) => {
       && inspectedOwnership.manifest.revision === evidence?.captureRevision,
     ownershipProjection: inspectedOwnership !== null
       && same(inspectedOwnership.mirror, evidence?.captureState),
+    arc5NamespaceInventory: inspectedArc5?.namespaceInventoryMatches === true,
+    arc5CertificateShape: inspectedArc5?.certificateShapeMatches === true,
+    arc5SourceFixedPoint: inspectedArc5?.sourceFixedPointMatches === true,
+    arc5TargetFixedPoint: inspectedArc5?.targetFixedPointMatches === true,
     f4Authority: v5RowsComplete && exactF4Authority(v5.rows, evidence),
     receiptRows: exactReceiptRows(evidence),
     v4Mirror: inspectedOwnership !== null
@@ -831,6 +934,8 @@ export const assessArc4DurableEvidence = (evidence = {}) => {
   };
   return assessment('Arc 4 durable evidence', checks, {
     ownership: inspectedOwnership,
+    ownershipV2: inspectedArc5?.target ?? null,
+    arc5Migration: inspectedArc5,
     v4OwnedCounters,
     v4OwnedCompatibility,
   });
@@ -843,6 +948,20 @@ export const arc4DurableEvidenceComplete = (evidence) => (
 export const projectArc4OwnershipEvidence = (evidence) => {
   const result = assessArc4DurableEvidence(evidence);
   return result.ok ? result.ownership?.mirror ?? null : null;
+};
+
+export const projectArc5OwnershipMigrationEvidence = (evidence) => {
+  const result = assessArc4DurableEvidence(evidence);
+  if (!result.ok || result.arc5Migration?.certificate === null) return null;
+  return Object.freeze({
+    target: ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
+    carrier: result.arc5Migration.carrier,
+    certificate: result.arc5Migration.certificate,
+    source: result.arc5Migration.source,
+    targetMirror: result.arc5Migration.target,
+    sourceDigest: result.arc5Migration.sourceDigest,
+    targetDigest: result.arc5Migration.targetDigest,
+  });
 };
 
 export const projectArc4V4OwnedCounters = (evidence) => {
@@ -885,12 +1004,104 @@ export const ARC4_DURABLE_READ_EXPRESSION = `(async()=>{const open=indexedDB.ope
 
 export const buildArc4DurableReadExpression = () => ARC4_DURABLE_READ_EXPRESSION;
 
-export const ARC4_CAPTURE_UI_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),card=document.getElementById('survey'),mount=card?.querySelector('[data-capture-card-body]'),text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),rect=(node)=>{const r=node?.getBoundingClientRect?.();return r?{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}:null},point=(node)=>{const r=node?.getBoundingClientRect?.();if(!r)return null;const x=(r.left+r.right)/2,y=(r.top+r.bottom)/2,hit=document.elementFromPoint(x,y);return {x,y,tag:hit?.tagName??null,verb:hit?.closest?.('[data-capture-action]')?.getAttribute('data-capture-action')??null,close:hit?.closest?.('[data-survey-close]')!==null}},rows=[...mount?.querySelectorAll?.('[data-capture-row]')??[]].map((row)=>{const verb=row.getAttribute('data-capture-row'),button=row.querySelector('button[data-capture-action]'),odds=row.querySelector('[data-capture-odds]');return {verb,status:row.getAttribute('data-status'),semanticKey:row.getAttribute('data-semantic-key'),title:text(row.querySelector('.capture-card-row-title')),detail:text(row.querySelector('[data-capture-detail]')),odds:odds?{text:text(odds),eligibleCount:Number(odds.getAttribute('data-eligible-count')),overallChance:Number(odds.getAttribute('data-overall-chance')),chanceMin:Number(odds.getAttribute('data-chance-min')),chanceMax:Number(odds.getAttribute('data-chance-max'))}:null,button:{exists:!!button,connected:button?.isConnected===true,tag:button?.tagName??null,label:text(button),verb:button?.getAttribute('data-capture-action')??null,focusKey:button?.getAttribute('data-focus-key')??null,modelEnabled:button?.getAttribute('data-model-enabled')??null,disabled:button?.disabled??null,ariaDisabled:button?.getAttribute('aria-disabled')??null,rect:rect(button),point:point(button)}}}),budget=mount?.querySelector('[data-capture-budget]'),status=mount?.querySelector('[data-capture-status]'),close=card?.querySelector('[data-survey-close]');return {schema:'cf-v2-slice-arc4-capture-ui-evidence/v1',cardOpen:card?.style.display!=='none'&&card?.getAttribute('aria-hidden')!=='true',cardTitle:text(card?.querySelector('[data-sel=title]')),planetsideHeading:text(document.querySelector('#planetside .planetside-heading')),cardRect:rect(card),mountCount:card?.querySelectorAll('[data-capture-card-body]').length??0,directCloseCount:card?.querySelectorAll(':scope > .survey-head [data-survey-close]').length??0,close:{exists:!!close,tag:close?.tagName??null,label:close?.getAttribute('aria-label')??null,rect:rect(close),point:point(close)},controller:mount?.getAttribute('data-capture-card-controller')??null,contextKey:mount?.getAttribute('data-capture-context-key')??null,ariaBusy:mount?.getAttribute('aria-busy')??null,summary:text(mount?.querySelector('.capture-card-summary')),budget:budget?{text:text(budget),yield:Number(budget.getAttribute('data-yield')),used:Number(budget.getAttribute('data-used')),remaining:Number(budget.getAttribute('data-remaining')),cycle:Number(budget.getAttribute('data-cycle')),recoveryRemainingActivePlayMs:Number(budget.getAttribute('data-recovery-remaining-active-play-ms'))}:null,rows,status:{hidden:status?.hidden??null,kind:status?.getAttribute('data-kind')??null,convergence:status?.getAttribute('data-convergence')??null,text:text(status)},diagnostics:state?.capture?.card??null,captureState:state?.capture??null,persistence:state?.persistence??null,activeElement:{verb:document.activeElement?.getAttribute?.('data-capture-action')??null,semanticKey:document.activeElement?.closest?.('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,status:document.activeElement?.matches?.('[data-capture-status]')===true,close:document.activeElement?.matches?.('[data-survey-close]')===true,focusVisible:document.activeElement?.matches?.(':focus-visible')===true}}})()`;
+export const ARC4_CAPTURE_UI_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),card=document.getElementById('survey'),mount=card?.querySelector('[data-capture-card-body]'),text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),rect=(node)=>{const r=node?.getBoundingClientRect?.();return r?{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}:null},point=(node)=>{const r=node?.getBoundingClientRect?.();if(!r)return null;const x=(r.left+r.right)/2,y=(r.top+r.bottom)/2,hit=document.elementFromPoint(x,y);return {x,y,tag:hit?.tagName??null,verb:hit?.closest?.('[data-capture-action]')?.getAttribute('data-capture-action')??null,close:hit?.closest?.('[data-survey-close]')!==null}},rows=[...mount?.querySelectorAll?.('[data-capture-row]')??[]].map((row)=>{const verb=row.getAttribute('data-capture-row'),button=row.querySelector('button[data-capture-action]'),odds=row.querySelector('[data-capture-odds]');return {verb,status:row.getAttribute('data-status'),semanticKey:row.getAttribute('data-semantic-key'),title:text(row.querySelector('.capture-card-row-title')),detail:text(row.querySelector('[data-capture-detail]')),odds:odds?{text:text(odds),eligibleCount:Number(odds.getAttribute('data-eligible-count')),overallChance:Number(odds.getAttribute('data-overall-chance')),chanceMin:Number(odds.getAttribute('data-chance-min')),chanceMax:Number(odds.getAttribute('data-chance-max'))}:null,button:{exists:!!button,connected:button?.isConnected===true,tag:button?.tagName??null,label:text(button),verb:button?.getAttribute('data-capture-action')??null,focusKey:button?.getAttribute('data-focus-key')??null,modelEnabled:button?.getAttribute('data-model-enabled')??null,disabled:button?.disabled??null,ariaDisabled:button?.getAttribute('aria-disabled')??null,rect:rect(button),point:point(button)}}}),budget=mount?.querySelector('[data-capture-budget]'),status=mount?.querySelector('[data-capture-status]'),close=card?.querySelector('[data-survey-close]');return {schema:'cf-v2-slice-arc4-capture-ui-evidence/v1',cardOpen:card?.style.display!=='none'&&card?.getAttribute('aria-hidden')!=='true',cardTitle:text(card?.querySelector('[data-sel=title]')),planetsideHeading:text(document.querySelector('#planetside .planetside-heading')),cardRect:rect(card),mountCount:card?.querySelectorAll('[data-capture-card-body]').length??0,directCloseCount:card?.querySelectorAll(':scope > .survey-head [data-survey-close]').length??0,close:{exists:!!close,tag:close?.tagName??null,label:close?.getAttribute('aria-label')??null,rect:rect(close),point:point(close)},controller:mount?.getAttribute('data-capture-card-controller')??null,contextKey:mount?.getAttribute('data-capture-context-key')??null,ariaBusy:mount?.getAttribute('aria-busy')??null,summary:text(mount?.querySelector('.capture-card-summary')),budget:budget?{text:text(budget),yield:Number(budget.getAttribute('data-yield')),used:Number(budget.getAttribute('data-used')),remaining:Number(budget.getAttribute('data-remaining')),cycle:Number(budget.getAttribute('data-cycle')),recoveryRemainingActivePlayMs:Number(budget.getAttribute('data-recovery-remaining-active-play-ms'))}:null,rows,status:{hidden:status?.hidden??null,kind:status?.getAttribute('data-kind')??null,convergence:status?.getAttribute('data-convergence')??null,text:text(status)},diagnostics:state?.capture?.card??null,captureState:state?.capture??null,ownershipV2:state?.ownershipV2??null,persistence:state?.persistence??null,activeElement:{verb:document.activeElement?.getAttribute?.('data-capture-action')??null,semanticKey:document.activeElement?.closest?.('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,status:document.activeElement?.matches?.('[data-capture-status]')===true,close:document.activeElement?.matches?.('[data-survey-close]')===true,focusVisible:document.activeElement?.matches?.(':focus-visible')===true}}})()`;
 
 export const buildArc4CaptureUiExpression = () => ARC4_CAPTURE_UI_EXPRESSION;
 
 const captureStateOf = (value) => value?.capture ?? value;
 const persistenceStateOf = (value) => value?.persistence ?? null;
+const ownershipV2StateOf = (value) => value?.ownershipV2 ?? null;
+
+const arc5AppDiagnosticsShape = (value) => exactKeys(value, [
+  'schema', 'stateKind', 'mode', 'protection', 'bootstrapPending',
+  'bootstrapOutcome', 'revision', 'sourceRevision', 'sourceDigest',
+  'targetDigest', 'acquisitions', 'bredAcquisitions', 'creatures',
+  'creatureTombstones', 'specimenLots', 'specimenTombstones', 'biospheres',
+])
+  && value.schema === 'cf-v2-arc5-app-state/v1'
+  && ['loaded', 'unavailable'].includes(value.stateKind)
+  && typeof value.bootstrapPending === 'boolean'
+  && (value.bootstrapOutcome === null || boundedText(value.bootstrapOutcome, 128))
+  && (value.protection === null || boundedText(value.protection, 256))
+  && [
+    value.acquisitions, value.bredAcquisitions, value.creatures,
+    value.creatureTombstones, value.specimenLots, value.specimenTombstones,
+    value.biospheres,
+  ].every(counter)
+  && (value.stateKind === 'loaded'
+    ? ['current', 'legacy-protected'].includes(value.mode)
+      && counter(value.revision) && counter(value.sourceRevision)
+      && hexDigest(value.sourceDigest) && hexDigest(value.targetDigest)
+    : value.mode === null && value.revision === null && value.sourceRevision === null
+      && value.sourceDigest === null && value.targetDigest === null);
+
+const expectedArc5Outcome = (actual, expected) => expected === undefined
+  ? boundedText(actual, 128)
+  : Array.isArray(expected) ? expected.includes(actual) : actual === expected;
+
+export const arc5OwnershipV2RuntimeExact = (
+  raw, value, { bootstrapOutcome = undefined } = {},
+) => {
+  const durable = assessArc4DurableEvidence(raw);
+  const diagnostic = ownershipV2StateOf(value);
+  const migration = durable.arc5Migration;
+  const source = migration?.source;
+  const target = migration?.target;
+  if (!durable.ok || !arc5AppDiagnosticsShape(diagnostic)
+    || diagnostic.stateKind !== 'loaded' || target === null) return false;
+  return diagnostic.mode === source.mode
+    && diagnostic.protection === (source.mode === 'current' ? null : 'legacy-protected')
+    && diagnostic.bootstrapPending === false
+    && expectedArc5Outcome(diagnostic.bootstrapOutcome, bootstrapOutcome)
+    && diagnostic.revision === target.revision
+    && diagnostic.sourceRevision === source.revision
+    && diagnostic.sourceDigest === migration.sourceDigest
+    && diagnostic.targetDigest === migration.targetDigest
+    && diagnostic.acquisitions === source.discoveries.length
+    && diagnostic.bredAcquisitions === 0
+    && diagnostic.creatures === target.creatures.length
+    && diagnostic.creatureTombstones === 0
+    && diagnostic.specimenLots === target.specimenLots.length
+    && diagnostic.specimenTombstones === 0
+    && diagnostic.biospheres === source.biosphereProgress.length;
+};
+
+const arc5OwnershipV2UnavailableExact = (
+  value, { protection = 'committed-publication-reload', bootstrapOutcome } = {},
+) => {
+  const diagnostic = ownershipV2StateOf(value);
+  return arc5AppDiagnosticsShape(diagnostic)
+    && diagnostic.stateKind === 'unavailable'
+    && diagnostic.protection === protection
+    && diagnostic.bootstrapPending === false
+    && expectedArc5Outcome(diagnostic.bootstrapOutcome, bootstrapOutcome)
+    && diagnostic.acquisitions === 0 && diagnostic.bredAcquisitions === 0
+    && diagnostic.creatures === 0 && diagnostic.creatureTombstones === 0
+    && diagnostic.specimenLots === 0 && diagnostic.specimenTombstones === 0
+    && diagnostic.biospheres === 0;
+};
+
+const stableOwnershipV2Projection = (value) => {
+  const diagnostic = ownershipV2StateOf(value);
+  return diagnostic === null ? null : {
+    stateKind: diagnostic.stateKind,
+    mode: diagnostic.mode,
+    protection: diagnostic.protection,
+    bootstrapPending: diagnostic.bootstrapPending,
+    bootstrapOutcome: diagnostic.bootstrapOutcome,
+    revision: diagnostic.revision,
+    sourceRevision: diagnostic.sourceRevision,
+    sourceDigest: diagnostic.sourceDigest,
+    targetDigest: diagnostic.targetDigest,
+    acquisitions: diagnostic.acquisitions,
+    bredAcquisitions: diagnostic.bredAcquisitions,
+    creatures: diagnostic.creatures,
+    creatureTombstones: diagnostic.creatureTombstones,
+    specimenLots: diagnostic.specimenLots,
+    specimenTombstones: diagnostic.specimenTombstones,
+    biospheres: diagnostic.biospheres,
+  };
+};
 
 const exactUiRows = (value) => Array.isArray(value?.rows)
   && value.rows.length === ARC4_CAPTURE_VERBS.length
@@ -904,6 +1115,7 @@ export const arc4CaptureUiSnapshotComplete = (value) => {
     || !boundedText(value.cardTitle, 256) || !boundedText(value.planetsideHeading, 256)
     || !boundedText(value.summary, 2_048) || !exactUiRows(value)
     || !record(value.status) || !record(value.diagnostics)
+    || !arc5AppDiagnosticsShape(value.ownershipV2)
     || value.diagnostics.schema !== 'cf-v2-capture-card-diagnostics/v1'
     || value.diagnostics.attachedMountCount !== 1
     || value.diagnostics.actionControlCount !== 3
@@ -1449,6 +1661,11 @@ export const assessArc4CapturePrecondition = ({
       && capture?.protection === null && capture?.bootstrapPending === false
       && capture?.revision === raw?.captureRevision
       && capture?.actionCoordinator?.inFlight === false,
+    ownershipV2Ready: arc5OwnershipV2RuntimeExact(raw, state, {
+      bootstrapOutcome: 'committed-published',
+    }) && arc5OwnershipV2RuntimeExact(raw, ui, {
+      bootstrapOutcome: 'committed-published',
+    }),
     uiComplete: arc4CaptureUiSnapshotComplete(ui),
     surfaceCopy: ui?.cardTitle === 'Pertar'
       && ui?.planetsideHeading === 'PLANETSIDE — Biosphere'
@@ -1504,6 +1721,21 @@ export const assessArc4CapturePendingNoOptimism = ({
       && beforeCapture?.specimenLots === duringCapture?.specimenLots
       && beforeCapture?.biospheres === duringCapture?.biospheres
       && duringCapture?.lastResult === null,
+    ownershipV2Stable: arc5OwnershipV2RuntimeExact(beforeRaw, beforeState, {
+      bootstrapOutcome: 'committed-published',
+    }) && arc5OwnershipV2RuntimeExact(beforeRaw, beforeUi, {
+      bootstrapOutcome: 'committed-published',
+    }) && arc5OwnershipV2RuntimeExact(duringRaw, duringState, {
+      bootstrapOutcome: 'committed-published',
+    }) && arc5OwnershipV2RuntimeExact(duringRaw, duringUi, {
+      bootstrapOutcome: 'committed-published',
+    }) && same(
+      stableOwnershipV2Projection(beforeState),
+      stableOwnershipV2Projection(duringState),
+    ) && same(
+      stableOwnershipV2Projection(beforeUi),
+      stableOwnershipV2Projection(duringUi),
+    ),
     singleFlight: coordinator?.inFlight === true
       && coordinator?.owner?.schema === 'cf-v2-product-action-coordinator-diagnostics/v1'
       && coordinator?.owner?.busy === true
@@ -1588,29 +1820,69 @@ const omitted = (value, fields) => Object.fromEntries(
   Object.entries(value ?? {}).filter(([field]) => !fields.includes(field)),
 );
 
-const unrelatedDurableProjection = (evidence, { omitCompatibility = false } = {}) => ({
-  rows: Object.fromEntries(V5_SEGMENTS.map(({ segment, row }) => {
-    const source = evidence?.[row];
-    const ownedData = segment === 'player'
-      ? ['essence', 'essenceEarned', 'names', 'at', 'conq',
-        ...(omitCompatibility ? ['ever', 'br'] : [])]
-      : segment === 'catalog' ? ['codex', 'scout']
-        : segment === 'inventory' ? ['bx', 'minedw'] : [];
-    const extensions = Object.fromEntries(Object.entries(source?.extensions ?? {})
-      .filter(([namespace]) => namespace !== 'f4.authority'
-        && !namespace.startsWith('arc4.ownership.')));
-    return [segment, {
-      schema: source?.schema,
-      segment: source?.segment,
-      data: omitted(source?.data, ownedData),
-      extensions,
-    }];
-  })),
-  legacy: omitted(evidence?.legacy, [
-    'codex', 'names', 'bx', 'scout', 'essence', 'essenceEarned', 'at', 'conq', 'minedw',
-    ...(omitCompatibility ? ['ever', 'br'] : []),
-  ]),
-});
+const arc5PlayerCarrierValidatedBy = (evidence, durableAssessment) => {
+  const carrier = evidence?.playerRow?.extensions?.[
+    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+  ];
+  const migration = durableAssessment?.arc5Migration;
+  return durableAssessment?.ok === true
+    && durableAssessment?.checks?.arc5NamespaceInventory === true
+    && durableAssessment?.checks?.arc5CertificateShape === true
+    && durableAssessment?.checks?.arc5SourceFixedPoint === true
+    && durableAssessment?.checks?.arc5TargetFixedPoint === true
+    && migration?.namespaceInventoryMatches === true
+    && migration?.certificateShapeMatches === true
+    && migration?.sourceFixedPointMatches === true
+    && migration?.targetFixedPointMatches === true
+    && migration?.carrier === carrier;
+};
+
+const unrelatedDurableProjection = (
+  evidence, durableAssessment, { omitCompatibility = false } = {},
+) => {
+  const excludeArc5Carrier = arc5PlayerCarrierValidatedBy(evidence, durableAssessment);
+  return {
+    rows: Object.fromEntries(V5_SEGMENTS.map(({ segment, row }) => {
+      const source = evidence?.[row];
+      const ownedData = segment === 'player'
+        ? ['essence', 'essenceEarned', 'names', 'at', 'conq',
+          ...(omitCompatibility ? ['ever', 'br'] : [])]
+        : segment === 'catalog' ? ['codex', 'scout']
+          : segment === 'inventory' ? ['bx', 'minedw'] : [];
+      const extensions = Object.fromEntries(Object.entries(source?.extensions ?? {})
+        .filter(([namespace]) => namespace !== 'f4.authority'
+          && !namespace.startsWith('arc4.ownership.')
+          && !(excludeArc5Carrier
+            && segment === ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.segment
+            && namespace === ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace)));
+      return [segment, {
+        schema: source?.schema,
+        segment: source?.segment,
+        data: omitted(source?.data, ownedData),
+        extensions,
+      }];
+    })),
+    legacy: omitted(evidence?.legacy, [
+      'codex', 'names', 'bx', 'scout', 'essence', 'essenceEarned', 'at', 'conq', 'minedw',
+      ...(omitCompatibility ? ['ever', 'br'] : []),
+    ]),
+  };
+};
+
+const exactArc5CertificateSuccessor = (beforeAssessment, afterAssessment) => {
+  const before = beforeAssessment?.arc5Migration;
+  const after = afterAssessment?.arc5Migration;
+  return beforeAssessment?.ok === true && afterAssessment?.ok === true
+    && before?.certificate !== null && after?.certificate !== null
+    && before.carrier?.json !== after.carrier?.json
+    && after.certificate.sourceRevision === before.certificate.sourceRevision + 1
+    && after.certificate.targetRevision === before.certificate.targetRevision + 1
+    && after.certificate.sourceRevision === after.source?.revision
+    && after.certificate.targetRevision === after.target?.revision
+    && after.certificate.sourceDigest === after.sourceDigest
+    && after.certificate.sourceDigest === afterAssessment.ownership?.manifest?.stateDigest
+    && after.certificate.targetDigest === after.targetDigest;
+};
 
 const exactArc4V4FixtureCompatibility = (assessment) => {
   const compatibility = assessment?.v4OwnedCompatibility?.legacy;
@@ -1778,20 +2050,28 @@ const captureCore = ({ before, after, beforeState, afterState, afterUi, interact
       captured: !!before && !!after && !!beforeState && !!afterState && !!afterUi
         && !!interaction && !!expected,
       durableEvidence: beforeAssessment.ok && afterAssessment.ok,
+      arc5CertificateSuccessor: exactArc5CertificateSuccessor(
+        beforeAssessment, afterAssessment,
+      ),
       oneRevision: after?.revision === before?.revision + 1
         && after?.captureRevision === before?.captureRevision + 1,
       f4Transition: exactF4CaptureTransition(before, after),
       receipt: receipt?.ok === true,
       v4OwnedCompatibility,
       unrelatedDurable: same(
-        unrelatedDurableProjection(before, { omitCompatibility: true }),
-        unrelatedDurableProjection(after, { omitCompatibility: true }),
+        unrelatedDurableProjection(before, beforeAssessment, { omitCompatibility: true }),
+        unrelatedDurableProjection(after, afterAssessment, { omitCompatibility: true }),
       ),
       interaction: actionInteraction(interaction, expected),
       appResult: exactAppCaptureResult(afterState, expected, after?.revision),
       activePlayProjection: exactActivePlayProjection(after, afterUi),
       runtimeCaptureOrder: exactRuntimeAtOrAfterRaw(before, beforeState)
         && exactRuntimeCaptureOrder(after, afterState, afterUi, 'state-ui'),
+      ownershipV2Before: arc5OwnershipV2RuntimeExact(before, beforeState, {
+        bootstrapOutcome: [
+          'committed-published', 'capture-committed-published', 'already-aligned',
+        ],
+      }),
       runtimeParity: persistenceStateOf(afterState)?.runtime?.revision === after?.revision
         && persistenceStateOf(afterState)?.runtime?.sessionSeed
           === after?.authority?.sessionRng?.seed
@@ -1799,6 +2079,11 @@ const captureCore = ({ before, after, beforeState, afterState, afterUi, interact
           === after?.authority?.sessionRng?.ordinal
         && same(persistenceStateOf(afterState)?.runtime?.sessionDraws,
           after?.authority?.sessionRng?.draws),
+      ownershipV2Live: arc5OwnershipV2RuntimeExact(after, afterState, {
+        bootstrapOutcome: 'capture-committed-published',
+      }) && arc5OwnershipV2RuntimeExact(after, afterUi, {
+        bootstrapOutcome: 'capture-committed-published',
+      }),
       progress: expectedProgressTransition(
         beforeMirror, afterMirror, expected, expected?.hit === true,
       ),
@@ -2013,9 +2298,15 @@ export const assessArc4BurnStep = ({
     captured: !!before && !!after && !!beforeUi && !!outcome && !!afterState
       && ARC4_CAPTURE_VERBS.includes(verb) && counter(expectedUsed),
     durableEvidence: beforeAssessment.ok && afterAssessment.ok,
+    arc5CertificateSuccessor: exactArc5CertificateSuccessor(
+      beforeAssessment, afterAssessment,
+    ),
     readyVerb: arc4CaptureUiSnapshotComplete(beforeUi)
       && beforeUi?.rows?.some((row) => row?.verb === verb
         && row?.status === 'ready' && row?.button?.modelEnabled === 'true'),
+    ownershipV2Before: arc5OwnershipV2RuntimeExact(before, beforeUi, {
+      bootstrapOutcome: ['committed-published', 'capture-committed-published'],
+    }),
     activePlayProjection: exactActivePlayProjection(before, beforeUi),
     outcome: expected !== null
       && outcome?.kind === 'committed' && outcome?.durability === 'committed'
@@ -2032,12 +2323,15 @@ export const assessArc4BurnStep = ({
     ),
     v4OwnedCompatibility,
     unrelatedDurable: same(
-      unrelatedDurableProjection(before, { omitCompatibility: true }),
-      unrelatedDurableProjection(after, { omitCompatibility: true }),
+      unrelatedDurableProjection(before, beforeAssessment, { omitCompatibility: true }),
+      unrelatedDurableProjection(after, afterAssessment, { omitCompatibility: true }),
     ),
     used: (beforeProgress?.used ?? 0) === expectedUsed - 1
       && afterProgress?.used === expectedUsed,
     liveAuthority: exactRuntimeAtOrAfterRaw(after, afterState),
+    ownershipV2Live: arc5OwnershipV2RuntimeExact(after, afterState, {
+      bootstrapOutcome: 'capture-committed-published',
+    }),
   };
   return assessment('Arc 4 burn step', checks, { expected, oracle, receipt });
 };
@@ -2093,6 +2387,15 @@ export const assessArc4StorageRefusal = ({
       omitted(stableCaptureProjection(beforeState), ['lastResult']),
       omitted(stableCaptureProjection(afterState), ['lastResult']),
     ) && capture?.lastResult === null,
+    ownershipV2Stable: arc5OwnershipV2RuntimeExact(before, beforeState, {
+      bootstrapOutcome: 'capture-committed-published',
+    }) && arc5OwnershipV2RuntimeExact(before, beforeUi, {
+      bootstrapOutcome: 'capture-committed-published',
+    }) && arc5OwnershipV2RuntimeExact(after, afterState, {
+      bootstrapOutcome: 'capture-committed-published',
+    }) && arc5OwnershipV2RuntimeExact(after, afterUi, {
+      bootstrapOutcome: 'capture-committed-published',
+    }),
     uiFactsStable: arc4CaptureUiSnapshotComplete(beforeUi)
       && arc4CaptureUiSnapshotComplete(afterUi)
       && same(uiFacts(beforeUi), uiFacts(afterUi)),
@@ -2148,6 +2451,7 @@ const exactPagehideTuple = (capture, oldState, oldUi) => {
   return capture !== null
     && same(capture.state, oldState) && same(capture.ui, oldUi)
     && same(tupleCapture, tupleUiCapture)
+    && same(ownershipV2StateOf(capture.state), ownershipV2StateOf(capture.ui))
     && same(persistenceStateOf(capture.state), persistenceStateOf(capture.ui))
     && same(capture.fault, tupleCapture?.actionCoordinator?.lastFault)
     && same(capture.fault, tupleUiCapture?.actionCoordinator?.lastFault);
@@ -2251,6 +2555,12 @@ const alignedReload = ({
     && capture?.card?.pendingWork === 0
     && capture?.card?.convergenceLatched === false
     && capture?.card?.lastRequest === null && capture?.card?.lastOutcome === null
+    && arc5OwnershipV2RuntimeExact(reloaded, reloadedState, {
+      bootstrapOutcome: 'already-aligned',
+    })
+    && arc5OwnershipV2RuntimeExact(reloaded, reloadedUi, {
+      bootstrapOutcome: 'already-aligned',
+    })
     && alignedReloadPresentation(reloaded, reloadedState, reloadedUi);
 };
 
@@ -2289,6 +2599,16 @@ export const assessArc4StaleConvergence = ({
       && exactRowsAndAuthorityBytes(before, committed),
     noCaptureMutation: committed?.captureRevision === before?.captureRevision
       && same(committed?.captureState, before?.captureState),
+    ownershipV2Preserved: arc5OwnershipV2RuntimeExact(before, beforeState, {
+      bootstrapOutcome: 'capture-committed-published',
+    }) && arc5OwnershipV2RuntimeExact(before, oldState, {
+      bootstrapOutcome: 'capture-committed-published',
+    }) && arc5OwnershipV2RuntimeExact(before, oldUi, {
+      bootstrapOutcome: 'capture-committed-published',
+    }) && same(
+      stableOwnershipV2Projection(beforeState),
+      stableOwnershipV2Projection(oldState),
+    ),
     oldOutcome: typeof oldCapture?.lastOutcome === 'string'
       && oldCapture.lastOutcome === `${interaction?.verb}-refused:stale`
       && oldCapture?.lastResult === null
@@ -2356,14 +2676,15 @@ const exactRawCaptureOutcome = (before, after, expected) => {
       && same(beforeMirror?.creatures, afterMirror?.creatures)
       && same(beforeMirror?.specimenLots, afterMirror?.specimenLots);
   return beforeAssessment.ok && afterAssessment.ok
+    && exactArc5CertificateSuccessor(beforeAssessment, afterAssessment)
     && after?.revision === before?.revision + 1
     && after?.captureRevision === before?.captureRevision + 1
     && exactF4CaptureTransition(before, after)
     && receipt?.ok === true
     && v4OwnedCompatibility
     && same(
-      unrelatedDurableProjection(before, { omitCompatibility: true }),
-      unrelatedDurableProjection(after, { omitCompatibility: true }),
+      unrelatedDurableProjection(before, beforeAssessment, { omitCompatibility: true }),
+      unrelatedDurableProjection(after, afterAssessment, { omitCompatibility: true }),
     )
     && expectedProgressTransition(beforeMirror, afterMirror, expected, expected?.hit === true)
     && hitRows;
@@ -2402,6 +2723,13 @@ export const assessArc4PublicationConvergence = ({
       && exactRuntimeCaptureOrder(committed, oldState, oldUi, 'state-ui'),
     fixtureOutcome: same(expected, ARC4_PERTAR_FIXTURE.actions.firstHit),
     committedOutcome: exactRawCaptureOutcome(before, committed, expected),
+    ownershipV2Held: arc5OwnershipV2RuntimeExact(before, beforeState, {
+      bootstrapOutcome: 'committed-published',
+    }) && arc5OwnershipV2RuntimeExact(before, beforeUi, {
+      bootstrapOutcome: 'committed-published',
+    }) && arc5OwnershipV2RuntimeExact(before, pendingUi, {
+      bootstrapOutcome: 'committed-published',
+    }),
     v4OwnedCounters: same(
       projectArc4V4OwnedCompatibility(before)?.legacy,
       ARC4_PERTAR_FIXTURE.v4OwnedCompatibility.before,
@@ -2412,7 +2740,15 @@ export const assessArc4PublicationConvergence = ({
     noOldOptimism: oldCapture?.stateKind === 'unavailable'
       && oldCapture?.protection === 'committed-publication-reload'
       && oldCapture?.lastResult === null
-      && oldCapture?.lastOutcome === `${expected.verb}-committed-publication-reload`,
+      && oldCapture?.lastOutcome === `${expected.verb}-committed-publication-reload`
+      && arc5OwnershipV2UnavailableExact(oldState, {
+        protection: 'committed-publication-reload',
+        bootstrapOutcome: 'committed-publication-reload',
+      })
+      && arc5OwnershipV2UnavailableExact(oldUi, {
+        protection: 'committed-publication-reload',
+        bootstrapOutcome: 'committed-publication-reload',
+      }),
     preservedUiFacts: arc4CaptureUiSnapshotComplete(beforeUi)
       && arc4CaptureUiSnapshotComplete(pendingUi)
       && arc4CaptureUiSnapshotComplete(oldUi)
@@ -2471,6 +2807,10 @@ const receiptBytes = (evidence) => ({
 
 const sameCaptureAuthority = (left, right) => left?.captureRevision === right?.captureRevision
   && same(left?.captureState, right?.captureState)
+  && same(
+    left?.playerRow?.extensions?.[ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace],
+    right?.playerRow?.extensions?.[ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace],
+  )
   && left?.legacy?.codex !== undefined
   && same(left?.legacy?.codex, right?.legacy?.codex)
   && same(left?.legacy?.names, right?.legacy?.names)
@@ -2487,6 +2827,9 @@ const exhaustedLiveParity = (exhaustedRaw, exhaustedState) => {
   const runtime = persistenceStateOf(exhaustedState)?.runtime;
   return mirror !== null && capture?.schema === 'cf-v2-arc4-app-state/v1'
     && exactRuntimeAtOrAfterRaw(exhaustedRaw, exhaustedState)
+    && arc5OwnershipV2RuntimeExact(exhaustedRaw, exhaustedState, {
+      bootstrapOutcome: 'capture-committed-published',
+    })
     && capture?.stateKind === 'loaded' && capture?.mode === 'current'
     && capture?.protection === null && capture?.revision === exhaustedRaw?.captureRevision
     && capture?.catalogueSpecies === mirror.catalogSpecies.length
@@ -2531,6 +2874,14 @@ const exhaustedPresentationChecks = ({
         stableCaptureProjection(suppressed?.beforeState),
         stableCaptureProjection(suppressed?.afterState),
       )
+      && same(
+        stableOwnershipV2Projection(suppressed?.beforeState),
+        stableOwnershipV2Projection(exhaustedState),
+      )
+      && same(
+        stableOwnershipV2Projection(suppressed?.beforeState),
+        stableOwnershipV2Projection(suppressed?.afterState),
+      )
       && exactRuntimeAtOrAfterRaw(suppressed?.beforeRaw, suppressed?.beforeState)
       && exactRuntimeAtOrAfterRaw(suppressed?.afterRaw, suppressed?.afterState),
   };
@@ -2546,6 +2897,9 @@ export const assessArc4Exhaustion = ({
     captured: !!exhaustedRaw && !!exhaustedState && !!exhaustedUi && !!suppressed,
     durableEvidence: arc4DurableEvidenceComplete(exhaustedRaw),
     exhaustedLive: exhaustedLiveParity(exhaustedRaw, exhaustedState),
+    ownershipV2Ui: arc5OwnershipV2RuntimeExact(exhaustedRaw, exhaustedUi, {
+      bootstrapOutcome: 'capture-committed-published',
+    }),
     uiComplete: arc4CaptureUiSnapshotComplete(exhaustedUi),
     activePlayProjection: exactActivePlayProjection(exhaustedRaw, exhaustedUi),
     runtimeCaptureOrder: exactRuntimeCaptureOrder(
@@ -2579,6 +2933,17 @@ export const assessArc4ExhaustionRecovery = ({
       && arc4DurableEvidenceComplete(offlineRaw)
       && arc4DurableEvidenceComplete(recoveredRaw),
     exhaustedLive: exhaustedLiveParity(exhaustedRaw, exhaustedState),
+    ownershipV2Live: arc5OwnershipV2RuntimeExact(exhaustedRaw, exhaustedUi, {
+      bootstrapOutcome: 'capture-committed-published',
+    }) && arc5OwnershipV2RuntimeExact(offlineRaw, offlineState, {
+      bootstrapOutcome: 'capture-committed-published',
+    }) && arc5OwnershipV2RuntimeExact(offlineRaw, offlineUi, {
+      bootstrapOutcome: 'capture-committed-published',
+    }) && arc5OwnershipV2RuntimeExact(recoveredRaw, recoveredState, {
+      bootstrapOutcome: 'capture-committed-published',
+    }) && arc5OwnershipV2RuntimeExact(recoveredRaw, recoveredUi, {
+      bootstrapOutcome: 'capture-committed-published',
+    }),
     uiComplete: arc4CaptureUiSnapshotComplete(exhaustedUi)
       && arc4CaptureUiSnapshotComplete(offlineUi)
       && arc4CaptureUiSnapshotComplete(recoveredUi),
@@ -2834,6 +3199,29 @@ const carrier = (value) => Object.freeze({
   version: 1, json: canonicalToolJson(value),
 });
 
+const arc5MigrationCertificate = (source) => {
+  const registeredSource = registeredMirrorForDigest(source);
+  const target = registeredSource === null
+    ? null : arc5OwnershipTargetMirrorForDigest(registeredSource);
+  if (registeredSource === null || target === null) {
+    throw new Error('Arc 5 selftest source could not be registered for migration');
+  }
+  return {
+    schema: ARC5_OWNERSHIP_MIGRATION_SCHEMA,
+    version: 1,
+    sourceSchema: ARC5_OWNERSHIP_SOURCE_SCHEMA,
+    sourceVersion: 1,
+    sourceRevision: registeredSource.revision,
+    sourceMode: registeredSource.mode,
+    sourceDigest: sha256(JSON.stringify(registeredSource)),
+    targetSchema: ARC5_OWNERSHIP_TARGET_SCHEMA,
+    targetVersion: 2,
+    targetRevision: target.revision,
+    targetMode: target.source.mode,
+    targetDigest: sha256(JSON.stringify(target)),
+  };
+};
+
 const ownershipExtensions = (mirror) => {
   const groupRows = {
     catalogSpecies: mirror.catalogSpecies,
@@ -2897,6 +3285,9 @@ const ownershipExtensions = (mirror) => {
     player: {
       'arc4.ownership.manifest': carrier(manifest),
       'arc4.ownership.progress': carrier(progress),
+      [ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace]: carrier(
+        arc5MigrationCertificate(reconstructedMirror),
+      ),
     },
     creatures: {}, catalog: {}, inventory: {}, settings: {},
   };
@@ -3205,6 +3596,41 @@ const appCaptureState = (raw, {
   actionCoordinator: coordinator,
 });
 
+const appOwnershipV2State = (raw, {
+  unavailable = false, boot = false, bootstrapOutcome = undefined,
+} = {}) => {
+  const migration = projectArc5OwnershipMigrationEvidence(raw);
+  if (migration === null) {
+    throw new Error('Arc 5 selftest durable migration evidence is invalid');
+  }
+  const outcome = bootstrapOutcome ?? (unavailable
+    ? 'committed-publication-reload'
+    : boot ? 'already-aligned'
+      : raw.captureRevision === 0
+        ? 'committed-published' : 'capture-committed-published');
+  const source = migration.source;
+  const target = migration.targetMirror;
+  return {
+    schema: 'cf-v2-arc5-app-state/v1',
+    stateKind: unavailable ? 'unavailable' : 'loaded',
+    mode: unavailable ? null : source.mode,
+    protection: unavailable ? 'committed-publication-reload' : null,
+    bootstrapPending: false,
+    bootstrapOutcome: outcome,
+    revision: unavailable ? null : target.revision,
+    sourceRevision: unavailable ? null : source.revision,
+    sourceDigest: unavailable ? null : migration.sourceDigest,
+    targetDigest: unavailable ? null : migration.targetDigest,
+    acquisitions: unavailable ? 0 : source.discoveries.length,
+    bredAcquisitions: 0,
+    creatures: unavailable ? 0 : target.creatures.length,
+    creatureTombstones: 0,
+    specimenLots: unavailable ? 0 : target.specimenLots.length,
+    specimenTombstones: 0,
+    biospheres: unavailable ? 0 : source.biosphereProgress.length,
+  };
+};
+
 const runtimeFor = (raw, commits = 0) => ({
   revision: raw.revision,
   sessionSeed: raw.authority.sessionRng.seed,
@@ -3242,6 +3668,9 @@ const appState = (raw, capture, {
   },
   sceneResources: { pendingPersistenceWrites: 0 },
   capture,
+  ownershipV2: appOwnershipV2State(raw, {
+    unavailable: capture?.stateKind === 'unavailable', boot,
+  }),
 });
 
 const uiRow = (verb, {
@@ -3278,7 +3707,7 @@ const uiRow = (verb, {
 
 const uiSnapshot = (capture, {
   used = 0, cycle = 0, statuses = {}, pendingVerb = null,
-  outcome = null, convergence = false, raw = null,
+  outcome = null, convergence = false, raw = null, boot = false,
 } = {}) => {
   const pending = pendingVerb !== null || convergence;
   const rows = ARC4_CAPTURE_VERBS.map((verb) => uiRow(verb, {
@@ -3326,6 +3755,9 @@ const uiSnapshot = (capture, {
     } : { hidden: true, kind: null, convergence: null, text: '' },
     diagnostics,
     captureState: capture,
+    ownershipV2: appOwnershipV2State(raw, {
+      unavailable: capture?.stateKind === 'unavailable', boot,
+    }),
     persistence: raw === null ? null : {
       bootKind: 'current-v5', lastOutcome: null, bootRouteRepairPending: false,
       runtime: runtimeFor(raw, 0),
@@ -3399,6 +3831,47 @@ const withManifestStateDigest = (evidence, stateDigest) => {
   const manifest = parseJson(carrierValue.json);
   manifest.stateDigest = stateDigest;
   carrierValue.json = canonicalToolJson(manifest);
+  next.playerRaw = JSON.stringify(next.playerRow);
+  return next;
+};
+
+const withArc5CertificateMutation = (evidence, mutate) => {
+  const next = structuredClone(evidence);
+  const carrierValue = next.playerRow.extensions[
+    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+  ];
+  const certificate = parseJson(carrierValue?.json);
+  if (!record(certificate)) {
+    throw new Error('Arc 5 selftest certificate mutation target is absent');
+  }
+  mutate(certificate, carrierValue);
+  carrierValue.json = canonicalToolJson(certificate);
+  next.playerRaw = JSON.stringify(next.playerRow);
+  return next;
+};
+
+const withNoncanonicalArc5Certificate = (evidence) => {
+  const next = structuredClone(evidence);
+  const carrierValue = next.playerRow.extensions[
+    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+  ];
+  const certificate = parseJson(carrierValue?.json);
+  if (!record(certificate)) {
+    throw new Error('Arc 5 selftest noncanonical certificate target is absent');
+  }
+  carrierValue.json = JSON.stringify(
+    Object.fromEntries(Object.entries(certificate).reverse()),
+  );
+  next.playerRaw = JSON.stringify(next.playerRow);
+  return next;
+};
+
+const withArc5CarrierReplacement = (evidence, source) => {
+  const next = structuredClone(evidence);
+  next.playerRow.extensions[ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace]
+    = structuredClone(source?.playerRow?.extensions?.[
+      ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+    ]);
   next.playerRaw = JSON.stringify(next.playerRow);
   return next;
 };
@@ -3599,7 +4072,7 @@ const staleFaultEnvelopeSelftest = {
 };
 const staleReloadCaptureDraftSelftest = appCaptureState(staleCommittedSelftest);
 const staleReloadUiDraftSelftest = uiSnapshot(staleReloadCaptureDraftSelftest, {
-  used: 1, raw: staleCommittedSelftest,
+  used: 1, raw: staleCommittedSelftest, boot: true,
 });
 const staleReloadCaptureSelftest = appCaptureState(staleCommittedSelftest, {
   card: staleReloadUiDraftSelftest.diagnostics,
@@ -3611,7 +4084,7 @@ const staleReloadBeforeActivationStateSelftest = {
   ...structuredClone(staleReloadStateSelftest), cardOpen: false, cardTitle: null,
 };
 const staleReloadUiSelftest = uiSnapshot(staleReloadCaptureSelftest, {
-  used: 1, raw: staleCommittedSelftest,
+  used: 1, raw: staleCommittedSelftest, boot: true,
 });
 
 const publicationFaultSelftest = {
@@ -3655,7 +4128,7 @@ const publicationFaultEnvelopeSelftest = {
 };
 const publicationReloadCaptureDraftSelftest = appCaptureState(hitRawSelftest);
 const publicationReloadUiDraftSelftest = uiSnapshot(
-  publicationReloadCaptureDraftSelftest, { used: 1, raw: hitRawSelftest },
+  publicationReloadCaptureDraftSelftest, { used: 1, raw: hitRawSelftest, boot: true },
 );
 const publicationReloadCaptureSelftest = appCaptureState(hitRawSelftest, {
   card: publicationReloadUiDraftSelftest.diagnostics,
@@ -3668,7 +4141,7 @@ const publicationReloadBeforeActivationStateSelftest = {
   cardOpen: false, cardTitle: null,
 };
 const publicationReloadUiSelftest = uiSnapshot(
-  publicationReloadCaptureSelftest, { used: 1, raw: hitRawSelftest },
+  publicationReloadCaptureSelftest, { used: 1, raw: hitRawSelftest, boot: true },
 );
 
 const exhaustedRawSelftest = makeDurable(exhaustedMirror(), {
@@ -3964,6 +4437,52 @@ for (const [name, result] of Object.entries(positiveSelftestAssessments)) {
 
 const negativeDurableSelftest = structuredClone(beforeRawSelftest);
 negativeDurableSelftest.revisionRaw = '00';
+const negativeArc5MissingSelftest = structuredClone(beforeRawSelftest);
+delete negativeArc5MissingSelftest.playerRow.extensions[
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+];
+negativeArc5MissingSelftest.playerRaw = JSON.stringify(
+  negativeArc5MissingSelftest.playerRow,
+);
+const negativeArc5MisplacedSelftest = structuredClone(beforeRawSelftest);
+negativeArc5MisplacedSelftest.settingsRow.extensions[
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+] = negativeArc5MisplacedSelftest.playerRow.extensions[
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+];
+delete negativeArc5MisplacedSelftest.playerRow.extensions[
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+];
+negativeArc5MisplacedSelftest.playerRaw = JSON.stringify(
+  negativeArc5MisplacedSelftest.playerRow,
+);
+negativeArc5MisplacedSelftest.settingsRaw = JSON.stringify(
+  negativeArc5MisplacedSelftest.settingsRow,
+);
+const negativeArc5DuplicateSelftest = structuredClone(beforeRawSelftest);
+negativeArc5DuplicateSelftest.settingsRow.extensions[
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+] = structuredClone(negativeArc5DuplicateSelftest.playerRow.extensions[
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+]);
+negativeArc5DuplicateSelftest.settingsRaw = JSON.stringify(
+  negativeArc5DuplicateSelftest.settingsRow,
+);
+const negativeArc5ShapeSelftest = withArc5CertificateMutation(
+  beforeRawSelftest, (certificate) => { certificate.extra = true; },
+);
+const negativeArc5NoncanonicalSelftest = withNoncanonicalArc5Certificate(
+  beforeRawSelftest,
+);
+const negativeArc5SourceDigestSelftest = withArc5CertificateMutation(
+  beforeRawSelftest, (certificate) => { certificate.sourceDigest = 'f'.repeat(64); },
+);
+const negativeArc5TargetDigestSelftest = withArc5CertificateMutation(
+  beforeRawSelftest, (certificate) => { certificate.targetDigest = 'e'.repeat(64); },
+);
+const negativeArc5RetainedOldCertificateSelftest = withArc5CarrierReplacement(
+  hitRawSelftest, beforeRawSelftest,
+);
 const negativeF4SerializerOrderSelftest = structuredClone(beforeRawSelftest);
 negativeF4SerializerOrderSelftest.authorityJson = canonicalToolJson(
   negativeF4SerializerOrderSelftest.authority,
@@ -4021,12 +4540,16 @@ const negativePreconditionHeadingSelftest = structuredClone(preconditionBundleSe
 negativePreconditionHeadingSelftest.ui.planetsideHeading = 'PLANETSIDE — Wrong';
 const negativePreconditionCardSelftest = structuredClone(preconditionBundleSelftest);
 negativePreconditionCardSelftest.ui.cardTitle = 'Not Pertar';
+const negativePreconditionArc5Selftest = structuredClone(preconditionBundleSelftest);
+negativePreconditionArc5Selftest.state.ownershipV2.targetDigest = 'f'.repeat(64);
 const negativePendingSelftest = structuredClone(pendingBundleSelftest);
 negativePendingSelftest.interaction.pressCount = 2;
 const negativePendingRetainedResultSelftest = structuredClone(pendingBundleSelftest);
 negativePendingRetainedResultSelftest.duringState.capture.lastResult = hitResultSelftest;
 const negativePendingStateRuntimeSelftest = structuredClone(pendingBundleSelftest);
 negativePendingStateRuntimeSelftest.duringState.persistence.runtime.activePlayMs += 123_456;
+const negativePendingArc5Selftest = structuredClone(pendingBundleSelftest);
+negativePendingArc5Selftest.duringState.ownershipV2.targetDigest = 'f'.repeat(64);
 const negativeHitSelftest = structuredClone(hitBundleSelftest);
 negativeHitSelftest.interaction.pressCount = 2;
 const negativeHitStateRuntimeSelftest = structuredClone(hitBundleSelftest);
@@ -4138,6 +4661,8 @@ const negativeStorageRetainedResultSelftest = structuredClone(storageBundleSelft
 negativeStorageRetainedResultSelftest.afterState.capture.lastResult = hitResultSelftest;
 const negativeStorageStateRuntimeSelftest = structuredClone(storageBundleSelftest);
 negativeStorageStateRuntimeSelftest.afterState.persistence.runtime.activePlayMs += 123_456;
+const negativeStorageArc5Selftest = structuredClone(storageBundleSelftest);
+negativeStorageArc5Selftest.afterState.ownershipV2.targetDigest = 'f'.repeat(64);
 const negativeStorageSemanticUiSelftest = structuredClone(
   storageClockDriftBundleSelftest,
 );
@@ -4168,6 +4693,7 @@ const withCoordinatedPagehideOldSurface = (bundle, mutate) => {
   };
   mutate(next.oldState, next.oldUi);
   next.oldUi.captureState = structuredClone(captureStateOf(next.oldState));
+  next.oldUi.ownershipV2 = structuredClone(ownershipV2StateOf(next.oldState));
   next.oldUi.persistence = structuredClone(persistenceStateOf(next.oldState));
   const parsed = structuredClone(bundle.faultCapture.parsed);
   parsed.state = structuredClone(next.oldState);
@@ -4189,6 +4715,13 @@ const negativeStaleRetainedResultSelftest = withCoordinatedPagehideOldSurface(
 );
 const negativeStaleReloadUiSelftest = structuredClone(staleBundleSelftest);
 negativeStaleReloadUiSelftest.reloadedUi.cardTitle = 'Not Pertar';
+const negativeStaleArc5PreservationSelftest = withCoordinatedPagehideOldSurface(
+  staleBundleSelftest,
+  (oldState) => { oldState.ownershipV2.targetDigest = 'f'.repeat(64); },
+);
+const negativeStaleReloadArc5Selftest = structuredClone(staleBundleSelftest);
+negativeStaleReloadArc5Selftest.reloadedState.ownershipV2.targetDigest
+  = 'f'.repeat(64);
 const negativeStaleReloadActivationSelftest = structuredClone(staleBundleSelftest);
 negativeStaleReloadActivationSelftest.reloadActivation.interaction.trace.clicks[0].trusted
   = false;
@@ -4213,6 +4746,10 @@ const negativeStaleTupleUiSelftest = withPagehideEnvelopeMutation(
   staleBundleSelftest,
   (parsed) => { parsed.ui.cardTitle = 'Not tuple Pertar'; },
 );
+const negativeStaleTupleArc5Selftest = withPagehideEnvelopeMutation(
+  staleBundleSelftest,
+  (parsed) => { parsed.ui.ownershipV2.targetDigest = 'f'.repeat(64); },
+);
 const negativeStaleReleasedHoldSelftest = withCoordinatedPagehideOldSurface(
   staleBundleSelftest,
   (oldState) => {
@@ -4225,6 +4762,20 @@ const negativePublicationSelftest = {
 };
 const negativePublicationReloadUiSelftest = structuredClone(publicationBundleSelftest);
 negativePublicationReloadUiSelftest.reloadedUi.planetsideHeading = 'PLANETSIDE — Wrong';
+const negativePublicationOldArc5OptimismSelftest
+  = withCoordinatedPagehideOldSurface(
+    publicationBundleSelftest,
+    (oldState) => {
+      oldState.ownershipV2 = structuredClone(
+        publicationBundleSelftest.beforeState.ownershipV2,
+      );
+    },
+  );
+const negativePublicationReloadArc5Selftest = structuredClone(
+  publicationBundleSelftest,
+);
+negativePublicationReloadArc5Selftest.reloadedState.ownershipV2.targetDigest
+  = 'f'.repeat(64);
 const negativePublicationReloadActivationSelftest = structuredClone(
   publicationBundleSelftest,
 );
@@ -4254,6 +4805,10 @@ const negativePublicationTupleFaultSelftest = withPagehideEnvelopeMutation(
 const negativePublicationTupleUiSelftest = withPagehideEnvelopeMutation(
   publicationBundleSelftest,
   (parsed) => { parsed.ui.planetsideHeading = 'PLANETSIDE — Tuple Wrong'; },
+);
+const negativePublicationTupleArc5Selftest = withPagehideEnvelopeMutation(
+  publicationBundleSelftest,
+  (parsed) => { parsed.ui.ownershipV2.bootstrapOutcome = 'false-tuple'; },
 );
 const negativePublicationReleasedHoldSelftest = withCoordinatedPagehideOldSurface(
   publicationBundleSelftest,
@@ -4337,12 +4892,56 @@ const isolatedNegativeSelftests = Object.freeze({
   durable: Object.freeze({
     expected: 'revision', result: assessArc4DurableEvidence(negativeDurableSelftest),
   }),
+  arc5Missing: Object.freeze({
+    expected: Object.freeze([
+      'arc5NamespaceInventory', 'arc5CertificateShape',
+      'arc5SourceFixedPoint', 'arc5TargetFixedPoint',
+    ]),
+    result: assessArc4DurableEvidence(negativeArc5MissingSelftest),
+  }),
+  arc5Misplaced: Object.freeze({
+    expected: 'arc5NamespaceInventory',
+    result: assessArc4DurableEvidence(negativeArc5MisplacedSelftest),
+  }),
+  arc5Duplicate: Object.freeze({
+    expected: 'arc5NamespaceInventory',
+    result: assessArc4DurableEvidence(negativeArc5DuplicateSelftest),
+  }),
+  arc5Shape: Object.freeze({
+    expected: Object.freeze([
+      'arc5CertificateShape', 'arc5SourceFixedPoint', 'arc5TargetFixedPoint',
+    ]),
+    result: assessArc4DurableEvidence(negativeArc5ShapeSelftest),
+  }),
+  arc5Noncanonical: Object.freeze({
+    expected: Object.freeze([
+      'arc5CertificateShape', 'arc5SourceFixedPoint', 'arc5TargetFixedPoint',
+    ]),
+    result: assessArc4DurableEvidence(negativeArc5NoncanonicalSelftest),
+  }),
+  arc5SourceDigest: Object.freeze({
+    expected: 'arc5SourceFixedPoint',
+    result: assessArc4DurableEvidence(negativeArc5SourceDigestSelftest),
+  }),
+  arc5TargetDigest: Object.freeze({
+    expected: 'arc5TargetFixedPoint',
+    result: assessArc4DurableEvidence(negativeArc5TargetDigestSelftest),
+  }),
+  arc5RetainedOldCertificate: Object.freeze({
+    expected: Object.freeze([
+      'durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+      'ownershipV2Live',
+    ]),
+    result: assessArc4CommittedHit({
+      ...hitBundleSelftest, after: negativeArc5RetainedOldCertificateSelftest,
+    }),
+  }),
   f4SerializerOrder: Object.freeze({
     expected: 'f4Authority',
     result: assessArc4DurableEvidence(negativeF4SerializerOrderSelftest),
   }),
   manifestStateDigest: Object.freeze({
-    expected: 'ownershipStateDigest',
+    expected: Object.freeze(['ownershipStateDigest', 'arc5SourceFixedPoint']),
     result: assessArc4DurableEvidence(negativeManifestDigestSelftest),
   }),
   receiptSuccessorDigest: Object.freeze({
@@ -4352,13 +4951,16 @@ const isolatedNegativeSelftests = Object.freeze({
     }),
   }),
   coordinatedManifestReceiptDigest: Object.freeze({
-    expected: 'durableEvidence',
+    expected: Object.freeze([
+      'durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+      'ownershipV2Live',
+    ]),
     result: assessArc4CommittedHit({
       ...hitBundleSelftest, after: negativeCoordinatedDigestSelftest,
     }),
   }),
   receiptEventDiscoveryIdentity: Object.freeze({
-    expected: 'receipt',
+    expected: Object.freeze(['receipt', 'ownershipV2Live']),
     result: assessArc4CommittedHit({
       ...hitBundleSelftest, after: negativeReceiptEventSelftest,
     }),
@@ -4401,6 +5003,10 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'surfaceCopy',
     result: assessArc4CapturePrecondition(negativePreconditionCardSelftest),
   }),
+  preconditionArc5: Object.freeze({
+    expected: 'ownershipV2Ready',
+    result: assessArc4CapturePrecondition(negativePreconditionArc5Selftest),
+  }),
   pending: Object.freeze({
     expected: 'oneTrustedAction',
     result: assessArc4CapturePendingNoOptimism(negativePendingSelftest),
@@ -4412,6 +5018,10 @@ const isolatedNegativeSelftests = Object.freeze({
   pendingStateRuntime: Object.freeze({
     expected: 'runtimeCaptureOrder',
     result: assessArc4CapturePendingNoOptimism(negativePendingStateRuntimeSelftest),
+  }),
+  pendingArc5: Object.freeze({
+    expected: 'ownershipV2Stable',
+    result: assessArc4CapturePendingNoOptimism(negativePendingArc5Selftest),
   }),
   hit: Object.freeze({
     expected: 'interaction', result: assessArc4CommittedHit(negativeHitSelftest),
@@ -4429,23 +5039,23 @@ const isolatedNegativeSelftests = Object.freeze({
     result: assessArc4CommittedHit(negativeHitOwnershipRevisionResultSelftest),
   }),
   progressCoordinate: Object.freeze({
-    expected: 'progress',
+    expected: Object.freeze(['ownershipV2Live', 'progress']),
     result: assessArc4CommittedHit(negativeProgressCoordinateSelftest),
   }),
   progressHierarchy: Object.freeze({
-    expected: 'progress',
+    expected: Object.freeze(['ownershipV2Live', 'progress']),
     result: assessArc4CommittedHit(negativeProgressHierarchySelftest),
   }),
   progressOrdinal: Object.freeze({
-    expected: 'progress',
+    expected: Object.freeze(['ownershipV2Live', 'progress']),
     result: assessArc4CommittedHit(negativeProgressOrdinalSelftest),
   }),
   progressParentCell: Object.freeze({
-    expected: 'progress',
+    expected: Object.freeze(['ownershipV2Live', 'progress']),
     result: assessArc4CommittedHit(negativeProgressParentCellSelftest),
   }),
   discoveryAddress: Object.freeze({
-    expected: 'exactDiscovery',
+    expected: Object.freeze(['ownershipV2Live', 'exactDiscovery']),
     result: assessArc4CommittedHit(negativeDiscoveryAddressSelftest),
   }),
   miss: Object.freeze({
@@ -4504,6 +5114,10 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'runtimeCaptureOrder',
     result: assessArc4StorageRefusal(negativeStorageStateRuntimeSelftest),
   }),
+  storageArc5: Object.freeze({
+    expected: 'ownershipV2Stable',
+    result: assessArc4StorageRefusal(negativeStorageArc5Selftest),
+  }),
   storageSemanticUi: Object.freeze({
     expected: 'uiFactsStable',
     result: assessArc4StorageRefusal(negativeStorageSemanticUiSelftest),
@@ -4526,6 +5140,14 @@ const isolatedNegativeSelftests = Object.freeze({
   staleReloadUi: Object.freeze({
     expected: 'readOnlyReload',
     result: assessArc4StaleConvergence(negativeStaleReloadUiSelftest),
+  }),
+  staleArc5Preservation: Object.freeze({
+    expected: 'ownershipV2Preserved',
+    result: assessArc4StaleConvergence(negativeStaleArc5PreservationSelftest),
+  }),
+  staleReloadArc5: Object.freeze({
+    expected: 'readOnlyReload',
+    result: assessArc4StaleConvergence(negativeStaleReloadArc5Selftest),
   }),
   staleReloadActivation: Object.freeze({
     expected: 'reloadActivation',
@@ -4553,6 +5175,10 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'pagehideTuple',
     result: assessArc4StaleConvergence(negativeStaleTupleUiSelftest),
   }),
+  staleTupleArc5: Object.freeze({
+    expected: 'pagehideTuple',
+    result: assessArc4StaleConvergence(negativeStaleTupleArc5Selftest),
+  }),
   staleReleasedHold: Object.freeze({
     expected: 'oldOwnerReleased',
     result: assessArc4StaleConvergence(negativeStaleReleasedHoldSelftest),
@@ -4564,6 +5190,16 @@ const isolatedNegativeSelftests = Object.freeze({
   publicationReloadUi: Object.freeze({
     expected: 'readOnlyReload',
     result: assessArc4PublicationConvergence(negativePublicationReloadUiSelftest),
+  }),
+  publicationOldArc5Optimism: Object.freeze({
+    expected: 'noOldOptimism',
+    result: assessArc4PublicationConvergence(
+      negativePublicationOldArc5OptimismSelftest,
+    ),
+  }),
+  publicationReloadArc5: Object.freeze({
+    expected: 'readOnlyReload',
+    result: assessArc4PublicationConvergence(negativePublicationReloadArc5Selftest),
   }),
   publicationReloadActivation: Object.freeze({
     expected: 'reloadActivation',
@@ -4594,6 +5230,10 @@ const isolatedNegativeSelftests = Object.freeze({
   publicationTupleUi: Object.freeze({
     expected: 'pagehideTuple',
     result: assessArc4PublicationConvergence(negativePublicationTupleUiSelftest),
+  }),
+  publicationTupleArc5: Object.freeze({
+    expected: 'pagehideTuple',
+    result: assessArc4PublicationConvergence(negativePublicationTupleArc5Selftest),
   }),
   publicationReleasedHold: Object.freeze({
     expected: 'oldOwnerReleased',
@@ -4661,7 +5301,9 @@ for (const [name, control] of Object.entries(isolatedNegativeSelftests)) {
   const failed = Object.entries(control.result.checks)
     .filter(([, value]) => value !== true)
     .map(([check]) => check);
-  if (control.result.ok !== false || !same(failed, [control.expected])) {
+  const expected = Array.isArray(control.expected)
+    ? control.expected : [control.expected];
+  if (control.result.ok !== false || !same(failed, expected)) {
     throw new Error(`Arc 4 browser contract negative selftest was not isolated (${name}): ${failed.join(', ')}`);
   }
 }
@@ -4823,12 +5465,15 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
     !== 'cb4bf8df5f5eaca8f57b842a2187c5c5791516dc7d4e389d58f9ab729b15b026'
   || sha256(canonicalToolJson(ARC4_PERTAR_FIXTURE))
     !== '801230daf3f7e627d23a80d5f6e9e711a94be465619068886faee28fc45df021'
+  || sha256(canonicalToolJson(ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET))
+    !== 'e548f628e5859335b608a12632e66d4220432ab188a76af460fbc5261eefded4'
   || hitNaiveCarrierDigest === hitManifestDigest
   || buildArc4DurableReadExpression() !== ARC4_DURABLE_READ_EXPRESSION
   || buildArc4CaptureUiExpression() !== ARC4_CAPTURE_UI_EXPRESSION
   || !ARC4_DURABLE_READ_EXPRESSION.includes("db.transaction(['meta','player','creatures','catalog','inventory','settings','receipts'],'readonly')")
   || !ARC4_CAPTURE_UI_EXPRESSION.includes("document.getElementById('survey')")
   || !ARC4_CAPTURE_UI_EXPRESSION.includes("#planetside .planetside-heading")
+  || !ARC4_CAPTURE_UI_EXPRESSION.includes('ownershipV2:state?.ownershipV2??null')
   || assessArc4CaptureCardGeometryFocus({
     ...geometryBundleSelftest, settlement: undefined,
   }).ok !== true
@@ -4843,12 +5488,17 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
   })()) !== false
   || arc4DurableEvidenceComplete({}) !== false
   || projectArc4OwnershipEvidence({}) !== null
+  || projectArc5OwnershipMigrationEvidence({}) !== null
   || projectArc4V4OwnedCounters({}) !== null
   || projectArc4V4OwnedCompatibility({}) !== null
   || !same(projectArc4V4OwnedCounters(beforeRawSelftest), {
     legacy: ARC4_PERTAR_FIXTURE.v4OwnedCounters.before,
     split: ARC4_PERTAR_FIXTURE.v4OwnedCounters.before,
   })
+  || projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.certificate?.sourceDigest
+    !== projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.sourceDigest
+  || projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.certificate?.targetDigest
+    !== projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.targetDigest
   || !same(projectArc4V4OwnedCompatibility(beforeRawSelftest), {
     legacy: ARC4_PERTAR_FIXTURE.v4OwnedCompatibility.before,
     split: ARC4_PERTAR_FIXTURE.v4OwnedCompatibility.before,

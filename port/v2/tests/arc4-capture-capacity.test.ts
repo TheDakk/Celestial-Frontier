@@ -6,7 +6,9 @@ import {
   ACTIVE_PLAY_CAPTURE_CYCLE_MS,
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   createEmptyOwnershipStateV1,
+  migrateOwnershipStateV1ToV2,
   ownershipStateDigestV1,
+  ownershipStateDigestV2,
   preflightCaptureV1,
   sha256Hex,
 } from '@cf/domain-acquisition';
@@ -17,6 +19,7 @@ import {
 } from '@cf/domain-sessionrng';
 import {
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
   applyV5ExtensionWrites,
   createF4MultiOutcomePreDrawTransactionOwner,
   createMemoryBackend,
@@ -27,10 +30,12 @@ import {
   importSaveV2,
   planF4MultiOutcomeDraws,
   prepareArc2LootLegacyMigration,
+  prepareArc5OwnershipMigration,
   prepareF4AuthorityUpdate,
   prepareV5SaveWrite,
   projectF4MultiOutcomeDrawAdvance,
   readArc4Ownership,
+  readArc5OwnershipMigration,
   readF4Authority,
   type ContentRegistry,
   type F4MultiOutcomePreDrawDeriveInput,
@@ -133,10 +138,16 @@ function authorityExtensions(seed: number): V5Extensions {
     { activePlayMs: 0 },
     createSessionRNG(seed).state(),
   );
-  return applyV5ExtensionWrites(
+  const arc4 = applyV5ExtensionWrites(
     f4.extensions,
     encodeArc4Ownership(createEmptyOwnershipStateV1()).writes,
   ).extensions;
+  const arc5 = prepareArc5OwnershipMigration({
+    extensions: arc4,
+    resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  });
+  if (arc5.kind !== 'prepared') throw new Error(`Arc 5 fixture was ${arc5.kind}`);
+  return arc5.extensions;
 }
 
 function seedForSuccessDraw(predicate: (value: number) => boolean): number {
@@ -290,7 +301,9 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
       .toEqual(certificate.candidateOrder);
     expect(certificate.scenarios.every((row) => (
       /^[0-9a-f]{64}$/u.test(row.successorDigest)
+        && /^[0-9a-f]{64}$/u.test(row.ownershipV2Digest)
         && /^[0-9a-f]{64}$/u.test(row.ownershipWritesDigest)
+        && /^[0-9a-f]{64}$/u.test(row.arc5MigrationWritesDigest)
         && /^[0-9a-f]{64}$/u.test(row.legacyV4Digest)
         && /^[0-9a-f]{64}$/u.test(row.completeSaveDigest)
     ))).toBe(true);
@@ -301,10 +314,13 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     expect(isArc4CaptureDerivedSettlementV1({ ...settled })).toBe(false);
     expect(settled.plan.hit).toBe(true);
     expect(settled.derivation.extensionWrites).toHaveLength(
-      ARC4_OWNERSHIP_EXTENSION_TARGETS.length,
+      ARC4_OWNERSHIP_EXTENSION_TARGETS.length + 1,
     );
     expect(settled.derivation.extensionWrites?.map(({ segment, namespace }) => ({ segment, namespace })))
-      .toEqual(ARC4_OWNERSHIP_EXTENSION_TARGETS);
+      .toEqual([
+        ...ARC4_OWNERSHIP_EXTENSION_TARGETS,
+        ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
+      ]);
     expect(settled.stardustReward).toBe(
       settled.plan.firstForSpecies && settled.plan.tier >= 5 ? settled.plan.tier - 3 : 0,
     );
@@ -339,6 +355,22 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     if (ownership.kind === 'loaded') {
       expect(ownershipStateDigestV1(ownership.state))
         .toBe(ownershipStateDigestV1(settled.plan.successor));
+    }
+    const arc5 = readArc5OwnershipMigration(
+      prepared.extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    expect(arc5.kind).toBe('loaded');
+    expect(prepared.extensions.player?.[
+      ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+    ]).not.toEqual(extensions.player?.[
+      ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+    ]);
+    if (arc5.kind === 'loaded') {
+      expect(ownershipStateDigestV2(arc5.state)).toBe(settled.ownershipV2Digest);
+      expect(ownershipStateDigestV2(arc5.state)).toBe(
+        ownershipStateDigestV2(migrateOwnershipStateV1ToV2(settled.plan.successor)),
+      );
     }
     expect(readF4Authority(prepared.extensions)).toEqual({
       kind: 'loaded',
@@ -442,6 +474,16 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     expect(reloaded.kind).toBe('loaded');
     if (reloaded.kind === 'loaded') {
       expect(ownershipStateDigestV1(reloaded.state)).toBe(selectedDigest);
+    }
+    const reloadedArc5 = readArc5OwnershipMigration(
+      outcome.saved.extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    expect(reloadedArc5.kind).toBe('loaded');
+    if (reloadedArc5.kind === 'loaded') {
+      expect(outcome.saved.extensions.player?.[
+        ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+      ]).toBeDefined();
     }
     expect(await createRevisionedRepository(backend).readReceipt(0)).toEqual(outcome.receipt);
   }, 20_000);
@@ -791,8 +833,12 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     expect(settled.derivation.state.codex).toEqual(state.codex);
     expect(settled.derivation.state.essence).toBe(state.essence);
     expect(settled.derivation.state.stats.essenceEarned).toBe(state.stats.essenceEarned);
+    const productExtensions = applyV5ExtensionWrites(
+      extensions,
+      settled.derivation.extensionWrites ?? [],
+    ).extensions;
     const ownership = readArc4Ownership(
-      applyV5ExtensionWrites(extensions, settled.derivation.extensionWrites ?? []).extensions,
+      productExtensions,
       SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     );
     expect(ownership.kind).toBe('loaded');
@@ -801,6 +847,74 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
         catalogSpecies: [], discoveries: [], creatures: [], specimenLots: [],
         biosphereProgress: [{ used: 1, successful: [] }],
       });
+    }
+    const arc5 = readArc5OwnershipMigration(
+      productExtensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    expect(arc5.kind).toBe('loaded');
+    expect(productExtensions.player?.[
+      ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+    ]).not.toEqual(extensions.player?.[
+      ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+    ]);
+    if (arc5.kind === 'loaded') {
+      expect(ownershipStateDigestV2(arc5.state)).toBe(settled.ownershipV2Digest);
+    }
+  }, 20_000);
+
+  it('refuses absent, corrupt, future, and source-drifted Arc 5 authority before draws', () => {
+    const state = baseState();
+    const aligned = authorityExtensions(HIT_SEED);
+    const preflight = readyPreflight(aligned);
+    const namespace = ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace;
+    const carrier = aligned.player?.[namespace];
+    if (carrier === undefined) throw new Error('Arc 5 fixture certificate disappeared');
+
+    const absent = structuredClone(aligned) as Record<string, Record<string, unknown>>;
+    delete absent.player?.[namespace];
+
+    const corrupt = structuredClone(aligned) as Record<
+      string,
+      Record<string, { version: number; json: string }>
+    >;
+    corrupt.player![namespace] = { version: carrier.version, json: '{}' };
+
+    const future = structuredClone(aligned) as Record<
+      string,
+      Record<string, { version: number; json: string }>
+    >;
+    future.player![namespace] = { version: carrier.version + 1, json: carrier.json };
+
+    const drift = structuredClone(aligned) as Record<
+      string,
+      Record<string, { version: number; json: string }>
+    >;
+    const driftedCertificate = JSON.parse(carrier.json) as Record<string, unknown>;
+    driftedCertificate.sourceDigest = `${driftedCertificate.sourceDigest}` === '0'.repeat(64)
+      ? 'f'.repeat(64) : '0'.repeat(64);
+    drift.player![namespace] = {
+      version: carrier.version,
+      json: JSON.stringify(driftedCertificate),
+    };
+
+    const controls = Object.freeze([
+      ['base-absent', absent],
+      ['base-corrupt', corrupt],
+      ['base-future', future],
+      ['base-source-drift', drift],
+    ] as const);
+    for (const [reason, extensions] of controls) {
+      const before = structuredClone(extensions);
+      expect(certifyArc4CaptureCapacityV1({
+        preflight,
+        preDraw: valueFreeInput(state, extensions as unknown as V5Extensions),
+      }), reason).toEqual({
+        kind: 'refused',
+        reason: `arc5-migration:${reason}`,
+        scenario: { kind: 'miss', candidateSpeciesId: null, sourceOrdinal: null },
+      });
+      expect(extensions, reason).toEqual(before);
     }
   }, 20_000);
 
