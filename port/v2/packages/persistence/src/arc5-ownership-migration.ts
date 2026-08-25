@@ -2,8 +2,10 @@
 
    Arc 4 remains the persisted ownership authority. This owner adds one
    digest-only certificate proving the exact deterministic V1 -> V2 lift; it
-   does not persist a second ownership mirror and exposes no V2 mutation path.
-   Every target state is derived from a freshly decoded Arc 4 fixed point. */
+   does not persist a second ownership mirror or expose a public/Arc5-only
+   mutation writer. Its sole internal successor bridge advances the V2
+   projection only beside an already-authorized Arc 4 source successor. Every
+   target state is derived from a freshly decoded Arc 4 fixed point. */
 import {
   MAX_OWNERSHIP_REVISION,
   OWNERSHIP_DATA_BUDGET,
@@ -14,6 +16,7 @@ import {
   canonicalJson,
   canonicalizeData,
   migrateOwnershipStateV1ToV2,
+  ownershipSourceStateV1,
   ownershipStateDigestV1,
   ownershipStateDigestV2,
   type CanonicalJson,
@@ -21,7 +24,13 @@ import {
   type OwnershipStateV1,
   type OwnershipStateV2,
 } from '@cf/domain-acquisition';
-import { readArc4Ownership } from './arc4-ownership.js';
+import {
+  createOwnershipSourceProjectionSuccessorV2,
+} from '@cf/domain-acquisition/ownership-v2-internal';
+import {
+  prepareArc4OwnershipWrite,
+  readArc4Ownership,
+} from './arc4-ownership.js';
 import {
   V5_MAX_EXTENSION_JSON_BYTES,
   V5_SEGMENTS,
@@ -79,6 +88,37 @@ export interface PreparedArc5OwnershipMigrationV1 {
   readonly extensions: V5Extensions;
 }
 
+export type Arc5OwnershipMigrationSuccessorProtectionReason =
+  | 'base-absent'
+  | 'base-corrupt'
+  | 'base-future'
+  | 'base-source-drift'
+  | 'successor-absent'
+  | 'successor-corrupt'
+  | 'successor-future'
+  | 'successor-conflict'
+  | 'target-corrupt'
+  | 'extension-bounds';
+
+export interface PreparedArc5OwnershipMigrationSuccessorV1 {
+  readonly kind: 'prepared';
+  readonly previousState: OwnershipStateV2;
+  readonly state: OwnershipStateV2;
+  readonly write: V5ExtensionWrite;
+  readonly writes: readonly [V5ExtensionWrite];
+  readonly extensions: V5Extensions;
+}
+
+export type Arc5OwnershipMigrationSuccessorPreparation =
+  | PreparedArc5OwnershipMigrationSuccessorV1
+  | {
+      readonly kind: 'protected';
+      readonly reason: Arc5OwnershipMigrationSuccessorProtectionReason;
+      readonly version?: number;
+      readonly expectedRevision?: number;
+      readonly actualRevision?: number;
+    };
+
 export type Arc5OwnershipMigrationPreparation =
   | PreparedArc5OwnershipMigrationV1
   | {
@@ -130,6 +170,13 @@ interface CapturedPreparationInput {
   readonly resolver: OwnershipAddressResolver;
 }
 
+interface CapturedSuccessorPreparationInput {
+  readonly baseExtensions: unknown;
+  readonly successorExtensions: unknown;
+  readonly successor: OwnershipStateV1;
+  readonly resolver: OwnershipAddressResolver;
+}
+
 function capturePreparationInput(value: unknown): CapturedPreparationInput | null {
   try {
     if (value === null || typeof value !== 'object' || Array.isArray(value)) return null;
@@ -148,6 +195,36 @@ function capturePreparationInput(value: unknown): CapturedPreparationInput | nul
     return Object.freeze({
       extensions: extensions.value,
       resolver: resolver.value as OwnershipAddressResolver,
+    });
+  } catch {
+    return null;
+  }
+}
+
+function captureSuccessorPreparationInput(value: unknown): CapturedSuccessorPreparationInput | null {
+  try {
+    if (value === null || typeof value !== 'object' || Array.isArray(value)) return null;
+    const prototype = Object.getPrototypeOf(value);
+    if (prototype !== Object.prototype && prototype !== null) return null;
+    const keys = Reflect.ownKeys(value);
+    if (keys.length !== 4 || keys.some((key) => typeof key === 'symbol')) return null;
+    const names = (keys as string[]).sort();
+    if (names[0] !== 'baseExtensions' || names[1] !== 'resolver'
+      || names[2] !== 'successor' || names[3] !== 'successorExtensions') return null;
+    const baseExtensions = Reflect.getOwnPropertyDescriptor(value, 'baseExtensions');
+    const successorExtensions = Reflect.getOwnPropertyDescriptor(value, 'successorExtensions');
+    const successor = Reflect.getOwnPropertyDescriptor(value, 'successor');
+    const resolver = Reflect.getOwnPropertyDescriptor(value, 'resolver');
+    const descriptors = [baseExtensions, successorExtensions, successor, resolver];
+    if (descriptors.some((descriptor) => !descriptor || !('value' in descriptor)
+      || descriptor.enumerable !== true)) return null;
+    if (successor!.value === null || typeof successor!.value !== 'object'
+      || resolver!.value === null || typeof resolver!.value !== 'object') return null;
+    return Object.freeze({
+      baseExtensions: baseExtensions!.value,
+      successorExtensions: successorExtensions!.value,
+      successor: successor!.value as OwnershipStateV1,
+      resolver: resolver!.value as OwnershipAddressResolver,
     });
   } catch {
     return null;
@@ -362,6 +439,156 @@ function protectedOutcome(
     kind: 'protected',
     reason,
     ...(version === undefined ? {} : { version }),
+  });
+}
+
+function successorProtected(
+  reason: Arc5OwnershipMigrationSuccessorProtectionReason,
+  details: Readonly<{
+    version?: number;
+    expectedRevision?: number;
+    actualRevision?: number;
+  }> = {},
+): Arc5OwnershipMigrationSuccessorPreparation {
+  return Object.freeze({
+    kind: 'protected',
+    reason,
+    ...(details.version === undefined ? {} : { version: details.version }),
+    ...(details.expectedRevision === undefined
+      ? {} : { expectedRevision: details.expectedRevision }),
+    ...(details.actualRevision === undefined
+      ? {} : { actualRevision: details.actualRevision }),
+  });
+}
+
+/** Replace one aligned Arc 5 certificate alongside an already-staged exact
+ * Arc 4 +1. The base certificate must still match its base source; the staged
+ * extensions must be byte-for-byte the result of applying only that registered
+ * Arc 4 successor. The internal V2 bridge then proves the paired direct source
+ * transition before this helper replaces exactly one certificate. */
+export function prepareArc5OwnershipMigrationSuccessor(input: Readonly<{
+  baseExtensions: unknown;
+  successorExtensions: unknown;
+  successor: OwnershipStateV1;
+  resolver: OwnershipAddressResolver;
+}>): Arc5OwnershipMigrationSuccessorPreparation {
+  const captured = captureSuccessorPreparationInput(input);
+  if (captured === null) return successorProtected('base-corrupt');
+  const base = strictExtensions(captured.baseExtensions);
+  if (base === null) return successorProtected('base-corrupt');
+  const baseTarget = locateTarget(base);
+  if (baseTarget.kind === 'absent') return successorProtected('base-absent');
+  if (baseTarget.kind === 'corrupt') return successorProtected('base-corrupt');
+  const baseInspection = inspectPresent(base, baseTarget.carrier, captured.resolver);
+  if (baseInspection.kind === 'target-future' || baseInspection.kind === 'source-future') {
+    return successorProtected('base-future', { version: baseInspection.version });
+  }
+  if (baseInspection.kind === 'source-drift') return successorProtected('base-source-drift');
+  if (baseInspection.kind !== 'loaded') return successorProtected('base-corrupt');
+
+  const staged = strictExtensions(captured.successorExtensions);
+  if (staged === null) return successorProtected('successor-corrupt');
+  const stagedSource = readArc4Ownership(staged, captured.resolver);
+  if (stagedSource.kind === 'absent') return successorProtected('successor-absent');
+  if (stagedSource.kind === 'future-version') {
+    return successorProtected('successor-future', { version: stagedSource.version });
+  }
+  if (stagedSource.kind === 'corrupt') return successorProtected('successor-corrupt');
+  let stagedDigest: string;
+  let suppliedDigest: string;
+  try {
+    stagedDigest = ownershipStateDigestV1(stagedSource.state);
+    suppliedDigest = ownershipStateDigestV1(captured.successor);
+  } catch {
+    return successorProtected('successor-conflict');
+  }
+  if (stagedDigest !== suppliedDigest) {
+    return successorProtected('successor-conflict', {
+      expectedRevision: stagedSource.state.revision,
+      actualRevision: captured.successor.revision,
+    });
+  }
+  const arc4 = prepareArc4OwnershipWrite({
+    extensions: base,
+    state: captured.successor,
+    resolver: captured.resolver,
+  });
+  if (arc4.kind !== 'prepared') {
+    if (arc4.reason === 'target-absent') return successorProtected('successor-absent');
+    if (arc4.reason === 'target-future') {
+      return successorProtected('successor-future', arc4.version === undefined
+        ? {} : { version: arc4.version });
+    }
+    if (arc4.reason === 'target-corrupt' || arc4.reason === 'extensions-corrupt') {
+      return successorProtected('successor-corrupt');
+    }
+    if (arc4.reason === 'extension-bounds') return successorProtected('extension-bounds');
+    return successorProtected('successor-conflict', {
+      ...(arc4.expectedRevision === undefined
+        ? {} : { expectedRevision: arc4.expectedRevision }),
+      ...(arc4.actualRevision === undefined
+        ? {} : { actualRevision: arc4.actualRevision }),
+    });
+  }
+  if (JSON.stringify(staged) !== JSON.stringify(arc4.extensions)) {
+    return successorProtected('successor-conflict', {
+      expectedRevision: baseInspection.state.revision + 1,
+      actualRevision: captured.successor.revision,
+    });
+  }
+
+  const derived = deriveTarget(captured.successor);
+  if (derived === null) return successorProtected('target-corrupt');
+  let directState: OwnershipStateV2;
+  try {
+    directState = createOwnershipSourceProjectionSuccessorV2(
+      baseInspection.state,
+      captured.successor,
+    );
+    if (ownershipSourceStateV1(directState) === captured.successor
+      || ownershipStateDigestV1(ownershipSourceStateV1(directState))
+        !== derived.certificate.sourceDigest
+      || ownershipStateDigestV2(directState) !== derived.certificate.targetDigest) {
+      return successorProtected('target-corrupt');
+    }
+  } catch {
+    return successorProtected('successor-conflict', {
+      expectedRevision: baseInspection.state.revision + 1,
+      actualRevision: captured.successor.revision,
+    });
+  }
+
+  const write: V5ExtensionWrite = Object.freeze({
+    ...ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
+    carrier: Object.freeze({
+      version: ARC5_OWNERSHIP_MIGRATION_VERSION,
+      json: canonicalJson(derived.certificate),
+    }),
+  });
+  let applied: ReturnType<typeof applyV5ExtensionWrites>;
+  try { applied = applyV5ExtensionWrites(staged, [write]); }
+  catch { return successorProtected('extension-bounds'); }
+  if (applied.writes.length !== 1
+    || applied.writes[0]?.segment !== write.segment
+    || applied.writes[0]?.namespace !== write.namespace
+    || applied.writes[0]?.carrier.version !== write.carrier.version
+    || applied.writes[0]?.carrier.json !== write.carrier.json) {
+    return successorProtected('target-corrupt');
+  }
+  const verifiedTarget = locateTarget(applied.extensions);
+  if (verifiedTarget.kind !== 'present') return successorProtected('target-corrupt');
+  const verified = inspectPresent(applied.extensions, verifiedTarget.carrier, captured.resolver);
+  if (verified.kind !== 'loaded'
+    || ownershipStateDigestV2(verified.state) !== ownershipStateDigestV2(directState)) {
+    return successorProtected('target-corrupt');
+  }
+  return Object.freeze({
+    kind: 'prepared',
+    previousState: baseInspection.state,
+    state: directState,
+    write,
+    writes: Object.freeze([write]) as readonly [V5ExtensionWrite],
+    extensions: applied.extensions,
   });
 }
 

@@ -74,8 +74,8 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-25 local campaign boundary — product work now includes Arc 3 and player-facing
-> Arc 4 capture; every program Arc remains bounded by its open evidence:** canonical
+> **2026-08-25 local campaign boundary — product work now includes Arc 3, player-facing
+> Arc 4 capture and infrastructure-only Arc 5A authority; every program Arc remains bounded by its open evidence:** canonical
 > full-CF1 resource/star opportunities, finite active-play Mine/Skim, the Engineering panel, shared
 > product-action coordination and committed-only Charter mining/fabrication banking are live locally.
 > Six research rows are displayed but only Deep Scanners is purchasable; its pure orbital-reveal
@@ -83,12 +83,16 @@
 > listed, but only connected-effect outputs with exact costs/preconditions and capacity/revision
 > headroom are actionable; fully exceptional slotted outputs and disconnected-effect rows remain
 > unavailable. Arc 4 now bootstraps its strict 18-namespace ownership authority in the shared
-> receipt-free boot CAS, and genuine legacy Training joins one Arc 2 row with all 18 Arc 4 rows under
-> exact source evidence. Its native Survey-card Tame/Scavenge/Sample action binds the full production
+> receipt-free boot CAS. Arc 5A then derives or loads its exact-source digest projection certificate
+> in that same commit; protected evidence cancels staged work and restores the durable saved view,
+> Atlas routes and Arc 2 `items` / `equip` / `equipAff` mirror. Genuine legacy Training joins one
+> Arc 2 row, all 18 Arc 4 rows and one Arc 5 certificate under exact source/target evidence. Its native
+> Survey-card Tame/Scavenge/Sample action binds the full production
 > roster and current epoch, certifies every miss/hit capacity scenario before two persisted F4
-> draws, spends on hit or miss, and settles ownership, compatibility projection, one receipt and the
-> next revision in one CAS. Pre-CAS retains only a private pending payload of registered plan/
-> settlement identities and prepared fingerprint. The committed path alone mints the evidence token
+> draws, spends on hit or miss, and settles ownership, compatibility projection, the one Arc 5
+> certificate replacement, one receipt and the next revision in one CAS. Pre-CAS retains only a
+> private pending payload of registered plan/settlement identities and prepared fingerprint. The
+> committed path alone mints the evidence token
 > and performs its sole WeakMap registration, binding that payload to the exact transaction/kind/
 > revision; the verifier then requires the full prepared save before targeted publication. The
 > presentation is a source-bound uniform random eligible pool—not targeted species selection—and
@@ -99,9 +103,10 @@
 > capture ledger (336,913 ms, report `4cc6fe02…`, 14 burn steps, `recoveryClaimed:false`); Glass
 > passes 12 viewports/36 Arc 4 outcomes with all planned controls and no omissions (71,713 ms,
 > report `03a14ce5…`). Both bind exact-input dirty tree `b83ccef5…`. The uninterrupted real
-> 20-minute recovery observation and HUMAN review remain open. Arc 5 has a receipt-bound V2
-> model and digest-only migration certificate, not
-> an app migration or companion action. Arc 7 has package-only identity/runtime/lab/rights
+> 20-minute recovery observation and HUMAN review remain open. Arc 5A has an app-active,
+> receipt-bound V2 projection and digest-only migration certificate across boot, Training and every
+> Arc 4 hit/miss, but no public or V2-only mutation writer or companion action. Its compact delta
+> carrier remains design-only in `../SAVE_SYSTEM.md`. Arc 7 has package-only identity/runtime/lab/rights
 > foundations, including the committed absolute eight-emitter/120-node configuration caps. Arc 3
 > Guide/release/Training guidance and the product/browser-tool repair batch are committed locally
 > through `c4a02be`. One no-retry Slice run passed in 253,181 ms with 0 findings/10 screenshots; the
@@ -112,6 +117,23 @@
 > release, or deployment authority. No Charter bioscan or targeted preview is claimed. The final
 > Compendium measurement reseal remains deferred until
 > the multi-Arc dependency graph freezes.
+> Retained Arc 4 browser reports predate Arc 5A. Final current-input evidence is terminal green:
+> non-Compendium Vitest passed `101 files / 1,187 passed / 1 skipped`; full Vitest recorded
+> `102 files / 1,205 passed / 1 failed / 1 skipped`, solely the deferred Compendium measurement seal
+> (`6a961df8…` expected, `2ab18865…` live). Root/app/worker/noUnused TypeScript, the 875-module Vite
+> build and `artunused` passed; syntax, contract/Glass/reporter selftests, imports and diff checks were
+> clean. Slice `20260825171148040-77701-fb5c63191544` passed on Edge `151.0.4129.101` in 336,570 ms
+> with zero findings/retries/source change, one exact nine-stage/14-burn/`recoveryClaimed:false`/`ok`
+> ledger plus PASS and 10 hashed PNGs (report/log SHA-256
+> `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
+> `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`). Glass passed on the same
+> Edge in 70,432 ms with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and
+> zero blocked/omitted/findings/instrument failures/retries; Arc 5 `targetDigest` corruption and its
+> durable projection were non-vacuous (report SHA-256
+> `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`). Both bind base
+> `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
+> `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
+> `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; audits are CLEAR.
 >
 > **Arc 2 implementation slice — historical foundation, still current where not superseded:**
 > F3/F4 supply the app's v5 revision/lease, protected active-play +
@@ -1063,7 +1085,9 @@ brackets complete reads/writes with a revision. The lease-fenced mutation owner 
 product rows, immutable receipt, and next revision, returning explicit stale, duplicate, lost-lease,
 and storage outcomes without automatic retry. Portable v5 replacement carries extension namespaces
 without flattening them into v4. This authority is exercised by Arc 2 Inventory/Training, Arc 3
-Engineering and the player-live Arc 4 capture writer. Arc 4 has focused plus native-browser
+Engineering, the player-live Arc 4 capture writer and Arc 5A's source-bound projection certificate.
+Arc 5A joins boot and genuine legacy Training without a second CAS, and every Arc 4 successor
+advances its one certificate in the same receipt transaction. Arc 4 has focused plus native-browser
 stale/storage/publication/reload controls, but
 the wider F3 program exit still awaits clean exact-head/browser IndexedDB upgrade and representative
 two-tab coverage for mission/combat and other later writers; real-save Gate C remains open.
@@ -1207,24 +1231,27 @@ acquisition snapshots and the pure capture planner are committed. The app bootst
 ownership carrier—or reconciles a projectable compatibility mirror—in the shared receipt-free boot
 CAS while protecting future, corrupt, unrepresentable and Training-deferred evidence. Genuine
 legacy Training couples one Arc 2 write with all 18 Arc 4 writes and exact migrated source evidence
-in its single replacement transaction.
+in its single replacement transaction. Arc 5A now derives or loads its exact-source projection in
+the same boot CAS; the genuine legacy path adds its one certificate write to make 20 product writes.
 
 The native Survey-card Tame/Scavenge/Sample front door captures the exact current surface, canonical
 address, production full roster and current epoch; pre-certifies the miss and every eligible hit
 against complete-save capacity before reading `captureCandidate` and `captureSuccess`; and settles
-attempt spend, first-only catalogue/reward facts, repeat fauna individuals or specimen lots, F4,
-one receipt and one revision in a single fenced CAS. Before durability it retains only the private
+attempt spend, first-only catalogue/reward facts, repeat fauna individuals or specimen lots, all 18
+Arc 4 replacements, the one Arc 5 projection-certificate replacement, F4, one receipt and one
+revision in a single fenced CAS. Before durability it retains only the private
 pending registered plan/settlement identities and prepared fingerprint. The committed path alone
 mints the evidence token and performs the sole WeakMap registration, binding that payload to the
 exact transaction/kind/revision. The verifier then requires the full prepared save before targeted
-publication or read-only reload convergence. Its source-bound uniform random eligible pool exposes
+publication of V1/V2 together or read-only reload convergence. Its source-bound uniform random eligible pool exposes
 preview/full counts, aggregate and individual odds, one shared hit-or-miss Biosphere Yield and the
 active-play recovery countdown without implying targeted selection. Pending, storage, stale and
 publication outcomes remain non-optimistic and converge without reroll or second write; native
 Close/reopen, focus and reload are browser-proved. Guide Capture/Discover copy is live/partial within
 the 24-partial/17-unavailable inventory; Training remains six lessons plus graduation with no
 Capture lesson. The uninterrupted 20-minute recovery observation and HUMAN review remain open, so
-the Arc remains `[PARTIAL]`.
+the Arc remains `[PARTIAL]`. The terminal-green Arc 5A Slice/Glass pair and its exact hashes,
+provenance and CLEAR audits are recorded in the current campaign boundary above.
 
 **Player promise:** discovery becomes meaningful ownership through finite, legible actions—not by
 opening a page or replaying a roll.
@@ -1274,17 +1301,31 @@ retention metric, or technically green demo.
 
 ### 5.5 Arc 5 — companions
 
-**Implementation status (2026-08-24): `[PARTIAL]`, model/certificate only.** Ownership-v2 defines
-receipt-bound acquisition, deterministic fauna-only child successors, ordered parent evidence,
-dispositions and tombstones. A digest-only migration certificate binds a freshly imported V1 source
-to its V2 target without storing duplicate bytes. No product migration, breed/care/Recovery writer,
-companion UI, assignment, Chronicle or mission exists.
+**Implementation status (2026-08-25): `[PARTIAL]`, authority activation / infrastructure-only.**
+Ownership-v2 defines receipt-bound acquisition, deterministic fauna-only child successors, ordered
+parent evidence, dispositions and tombstones. The app now activates the digest-only
+`player/arc5.ownership.migration` projection certificate: boot derives it from the exact final Arc 4
+source in the sole receipt-free CAS; genuine legacy Training composes one Arc 2, 18 Arc 4 and one
+Arc 5 write; and every Arc 4 hit or miss advances the exact-parent V1 source and V2 projection in one
+receipt transaction. An aligned boot is write-free. Protected boot rolls all staged route, Atlas and
+Arc 2 compatibility projections back to durable input. Postcommit verification publishes V1/V2
+together or performs one read-only convergence reload. The certificate stores only exact modes,
+revisions and digests, never duplicate V2 state. The internal source-successor bridge is not exported
+from the public package root. No breed/care/Recovery writer, companion UI, assignment, Chronicle or
+mission exists. Current-input Arc 5A browser evidence is terminal green with the exact Slice/Glass
+identifiers and CLEAR audits recorded in the campaign boundary above.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.
 
 **Build scope:**
 
+- **[DESIGN — NOT YET IMPLEMENTED]** Implement the compact delta carrier specified in
+  `../SAVE_SYSTEM.md` before any V2-only writer: reuse the migration namespace as the version-2
+  manifest, add four generic fixed shards while keeping namespace count O(1), bind exact Arc 4
+  source/V2 target/canonical delta digests,
+  and reconstruct rather than persist a second full ownership mirror. This is engineering design,
+  not a Nick decision in `DECISIONS.md`.
 - Nonlethal breeding, feeding, injury/care, bond, recovery, and Chronicle presentation.
 - Apply the approved lower-parent 50% `fed` inheritance rule and preserve chosen lineage semantics
   across save/share/CFB.

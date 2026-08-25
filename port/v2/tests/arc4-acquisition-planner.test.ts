@@ -68,6 +68,7 @@ import {
   exportSaveV2,
   importSaveV2,
   prepareArc2LootLegacyMigration,
+  prepareArc5OwnershipMigration,
   prepareF4AuthorityUpdate,
   prepareV5SaveWrite,
   projectF4MultiOutcomeDrawAdvance,
@@ -299,10 +300,16 @@ function authorityExtensions(
   withContact = true,
   ownership: OwnershipStateV1 = createEmptyOwnershipStateV1(),
 ): V5Extensions {
-  return withOwnership(
+  const arc4 = withOwnership(
     arc2F4Extensions(activePlayMs, seed, draws, ordinal, withContact),
     ownership,
   );
+  const arc5 = prepareArc5OwnershipMigration({
+    extensions: arc4,
+    resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  });
+  if (arc5.kind !== 'prepared') throw new Error(`Arc 5 fixture was ${arc5.kind}`);
+  return arc5.extensions;
 }
 
 function extensionJsonBytes(extensions: V5Extensions): number {
@@ -693,6 +700,7 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
     expect(manifest.exports).toEqual({
       '.': './src/index.ts',
       './snapshot-internal': './src/snapshot-internal.ts',
+      './ownership-v2-internal': './src/ownership-v2-internal.ts',
     });
   });
 

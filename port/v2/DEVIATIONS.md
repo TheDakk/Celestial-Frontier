@@ -9,7 +9,7 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — Arc 3 Engineering, player-facing Arc 4 capture and Arc 5 foundation (2026-08-25)
+## Current-state boundary — Arc 3 Engineering, player-facing Arc 4 capture and Arc 5A authority infrastructure (2026-08-25)
 
 - ★ **D-ARC3-ENGINEERING — fixed Engineering is player-live locally.** Registered full-CF1
   world/star opportunity snapshots preserve raw tiers 0–14, finite reserves and active-play cursors.
@@ -48,22 +48,35 @@ as any change that touches an entry.
   remains six lessons plus graduation with no Capture lesson. The uninterrupted 20-minute recovery
   observation and HUMAN review remain open; no Charter bioscan, targeted preview, hosted or release
   authority is implied.
-- ◐ **D-ARC5-OWNERSHIP-V2 — successor model and migration certificate only.** V2 binds capture
+- ◐ **D-ARC5-OWNERSHIP-V2 — activated projection authority; infrastructure-only.** V2 binds capture
   receipts, deterministic fauna-only children, ordered parents, dispositions and tombstones. Its
-  migration carrier stores only V1/V2 digests derived from a fresh import. It is not duplicate
-  ownership state, an app migration, breeding/care UI or companion system.
+  app-owned migration carrier stores only exact V1/V2 modes, revisions and digests and reconstructs
+  from the current Arc 4 source, never duplicate ownership state. Boot creates or loads it after Arc 4
+  in the shared receipt-free CAS; genuine legacy Training composes one Arc 2, 18 Arc 4 and one Arc 5
+  write; every hit/miss advances and postcommit-publishes V1/V2 together. Protection rolls staged
+  route/Atlas/Arc 2 mirrors back to durable input. This is not a public or V2-only mutation writer,
+  breeding/care UI or companion system. The compact V2 delta carrier is design-only in
+  `../../SAVE_SYSTEM.md` and keeps its future namespace count O(1). Final current-input Slice
+  `20260825171148040-77701-fb5c63191544` passed on Edge `151.0.4129.101` in 336,570 ms (report/log
+  SHA-256 `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
+  `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`); Glass passed in 70,432 ms
+  with 12/12 viewport plus reload rows, 95/95 controls and non-vacuous Arc 5 corruption/projection
+  controls (report SHA-256 `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`).
+  Both bind base `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
+  `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
+  `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; audits are CLEAR.
 - ★ **D-F3F4-CURRENT — superseding persistence/time overlay (2026-08-25).** V5 now partitions
   canonical owner rows, protects F4 authority, and commits product state, next active-play/
   SessionRNG authority, one immutable receipt and the next revision through one lease-fenced CAS.
   Initial scene render is read-only; a pure before/after route classifier may arm an explicit durable
   repair only when source/protection/Training guards allow it. That repair coalesces with F4/Arc 2/
-  Arc 3 and Arc 4 bootstrap in the single boot-authority CAS, while an aligned current-v5 boot
+  Arc 3, Arc 4 and Arc 5A bootstrap in the single boot-authority CAS, while an aligned current-v5 boot
   performs zero commits. Pre-durable stale authority reloads without publishing an action; a post-durable Arc 3
   publication fault remains committed and reload-converges without a second action, receipt, or write.
   Arc 3 settles Auto-Extractor loads from the prior active-play cursor, caps them by finite
   reserves, ignores legacy wall timestamps and reanchors a newly fabricated extractor. Arc 2 owns
-  exact gear instances; Arc 4 owns the player-live exact-once capture writer above, while Arc 5 owns
-  only the successor catalogue/specimen/fauna model and migration evidence. Unmigrated combat,
+  exact gear instances; Arc 4 owns the player-live exact-once capture writer above, while Arc 5A owns
+  the activated source-projection certificate and successor catalogue/specimen/fauna model. Unmigrated combat,
   breeding, care, assignment and later random writers remain open. This overlay supersedes current-
   state implications in the dated `D-EPOCH-1`, `D-STORE`, `D-IDENTITY-LOOT`,
   `D-AUTOEXTRACT-CLOCK` and `D-RNG` entries below

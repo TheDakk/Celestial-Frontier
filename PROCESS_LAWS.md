@@ -21,10 +21,12 @@ inside an unrelated bootstrap CAS.
 Publish the initial scene with persistence explicitly skipped. Classify a boot write from detached,
 source-proven durable inputs before building any candidate; semantic defaults such as omitted versus
 false flags must fixed-point. Give every allowed repair a named intent and coalesce it with F4,
-route, Arc 2, Arc 3 and Arc 4's strict 18-namespace ownership bootstrap under one receipt-free,
-lease-fenced commit. Training-deferred or protected Arc 4 evidence must not hitchhike. Held repairs
-must restore their original durable bytes before another owner can construct a candidate. An aligned
-current replacement must
+route, Arc 2, Arc 3, Arc 4's strict 18-namespace ownership bootstrap and Arc 5's source-bound
+projection certificate under one receipt-free, lease-fenced commit. Training-deferred or protected
+Arc 4/5 evidence must not hitchhike. Held repairs must restore their original durable bytes before
+another owner can construct a candidate. If a later authority protects after earlier staging, clearing
+pending flags is insufficient: restore every live saved-view, Atlas and compatibility-mirror field
+from the captured durable input before runtime creation. An aligned current replacement must
 prove zero boot commits, null outcome and zero pending persistence work. Negative-control saved-view-
 only and Atlas-only deltas, constant/partial fingerprints, and every protected/source-error/Training
 hold. A render, visibility change or convenient normalization is never itself authority to write.
@@ -40,17 +42,16 @@ publish nothing. Before CAS, Arc 4 may retain only a private pending payload of 
 settlement identities and prepared fingerprint. It mints no evidence token and registers no WeakMap
 entry until the transaction commits; that sole postcommit registration binds the payload to the exact
 committed transaction/kind/revision. The verifier must then bind that evidence, complete prepared
-save, ownership carrier/mirror, F4 draws and receipt before targeted publication. Post-durable
-verification/publication faults suppress the old live projection,
+save, Arc 4 ownership carrier/mirror, aligned Arc 5 certificate/reconstructed V2, F4 draws and receipt
+before targeted publication. Post-durable verification/publication faults suppress the old live projection,
 retain the exact diagnostic witness and committed receipt evidence, and perform one read-only
-convergence reload. The
-replacement document must prove a changed loader token, exact committed carrier/mirror/receipt
-bytes, zero boot commits, no carried action outcome and no pending persistence. Never re-derive,
+convergence reload. The replacement document must prove a changed loader token, exact committed
+carrier/mirror/receipt bytes, zero boot commits, no carried action outcome and no pending persistence. Never re-derive,
 retry, click again or write again after durability. Negative-control the witness fields, old/new
 document boundary, complete raw evidence and exact unrelated-field preservation; a green UI alone
 cannot classify which side of durability an outcome occupied.
 
-⚠⚠ **A COMPATIBILITY MIRROR MUST MOVE IN THE SAME TRANSACTION AS ITS NEW AUTHORITY**
+⚠⚠ **A COMPATIBILITY MIRROR OR SUCCESSOR CERTIFICATE MUST MOVE IN THE SAME TRANSACTION AS ITS AUTHORITY**
 (2026-08-24). Arc 2 made `inventory/arc2.loot` the exact-instance authority while the legacy-v4
 `items` / `equip` / `equipAff` fields remained a projection for unported readers. Field Training's
 genuine legacy checkpoint owns those three old fields. Restoring only that mirror would leave the
@@ -63,12 +64,16 @@ them; preserve the carrier when it does not; and refuse corrupt, future, source-
 evidence rather than guessing. Arc 4 applies the same law to ownership-v1 and the v4 `codex`, owned
 `c*` names, `bioX` and `scout` compatibility fields. A genuine legacy Training restore therefore
 commits exactly 18 Arc 4 namespace writes, plus its one Arc 2 write when applicable, from the exact
-restored source and verifies the committed canonical state/source evidence; a lossless
-`legacy-protected` carrier is preserved without inventing a mirror. Commit state, carrier, protected
-authority and revision under the same fence/CAS boundary. After durability, publication verifies
+restored source. Arc 5A extends the law one layer farther: its digest certificate is valid only for
+one exact Arc 4 source. Training adds the one Arc 5 write to the same replacement, and every capture
+hit or miss must pre-certify and commit all 18 exact Arc 4 successor replacements plus its one Arc 5
+certificate replacement together or refuse before RNG, receipt or CAS. It verifies the committed
+canonical state/source/target evidence; a lossless `legacy-protected` carrier is preserved without
+inventing a mirror. Commit state, carrier, protected authority and revision under the same fence/CAS
+boundary. After durability, publication verifies
 the committed carrier or reloads; it never performs a second write. Grep every restore/import/reset
-writer whenever a compatibility projection gains a new authority—ordinary action tests alone
-cannot expose a replacement-only split.
+writer whenever a compatibility projection or successor certificate gains a new authority—ordinary
+action tests alone cannot expose a replacement-only split.
 
 ⚠⚠ **A MUTATION CONTROL MUST OWN ONE NONEMPTY TARGET INSIDE THE SECTION IT CLAIMS TO TEST**
 (2026-08-25). Arc 4's integration audit found that a source-slicing control can stay green while

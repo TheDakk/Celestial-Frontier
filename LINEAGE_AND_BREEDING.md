@@ -1,14 +1,15 @@
 # Earth Lineage, Breeding & Replayability
 
-> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** Current lineage
-> code owns deterministic ancestry, Earth-scaffold inheritance and portrait
-> continuity; it does not yet provide v2 living-creature instances, expeditions,
-> bond or a Chronicle. The next arc must preserve the central player-respect law
-> below by separating `CatalogSpecies` discovery from stable `CreatureInstance`
-> ownership before any companion can leave the roster.
+> **2026-08-25 v2 Arc 5A overlay — CURRENT versus PLANNED:** Current lineage code owns
+> deterministic ancestry, Earth-scaffold inheritance and portrait continuity. Ownership-v1/v2 now
+> separates `CatalogSpecies` discovery from stable `CreatureInstance` ownership, and Arc 5A
+> reconstructs the digest-certified V2 projection in app boot, genuine legacy Training and every
+> Arc 4 capture successor. That is infrastructure only: no V2-only mutation, expedition, Recovery,
+> bond/Chronicle action or companion presentation is live.
 >
-> **PLANNED, not implemented:** each creature instance carries a stable nickname,
-> lineage, assignment, bounded bond state and an append-only/bounded Chronicle of
+> **MODEL SHAPE EXISTS; PRODUCT BEHAVIOR PLANNED, not implemented:** the creature schema has stable
+> nickname, lineage, assignment and nullable bounded bond fields, but no player writer populates or
+> changes the later companion state. The intended Chronicle records
 > meaningful memories such as first landing, first safe return, a notable battle,
 > discovery or offspring. Bond never decays, has no daily streak or expiring task,
 > and repeated low-effort actions cannot grind it indefinitely. Its mechanical
@@ -22,8 +23,10 @@
 > parent consumption remains historical parity only. Any future irreversible
 > **Fusion** is separately named, optional, informed-confirmed and never required
 > for progression. The Chronicle must reference stable creature/world/mission ids
-> and remain valid across rename, reload and catalogue deduplication. These are
-> design contracts only and remain unavailable in the v2 Guide until implemented
+> and remain valid across rename, reload and catalogue deduplication. The fixed-four-shard compact V2
+> delta carrier required to persist those V2-exclusive mutations keeps namespace count O(1) and
+> remains explicitly design-only in
+> `SAVE_SYSTEM.md`. These are design contracts only and remain unavailable in the v2 Guide until implemented
 > and outcome-tested.
 >
 > A later **Expedition Museum** is a player-curated, read-only projection over those
@@ -33,7 +36,7 @@
 > story after a rename, a migration or catalogue deduplication; the Museum may reference the
 > stable IDs but never becomes the identity authority.
 
-_Design north star + build status. Matches code as of 2026-08-11 (Platinum repair reviewed).
+_Design north star + build status. Matches the current local code boundary as of 2026-08-25.
 Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
 
 > **2026-08-11 Platinum correction:** the hash-bound current-generation review of clean

@@ -1,11 +1,12 @@
 /* Arc 4 capture capacity transaction preparation.
 
    This app-owned helper joins the registered acquisition snapshot, current
-   Arc 2/F4/ownership extensions, the complete v4 compatibility mirror, and
-   the bounded v5 writer without exposing a mutation. It enumerates the miss
-   plus every eligible hit before SessionRNG values exist. The settlement
-   callback bound by that certificate must mint exactly one selected scenario
-   authorization byte-for-byte. */
+   Arc 2/F4/Arc 4 ownership, its aligned Arc 5 migration certificate, the
+   complete v4 compatibility mirror, and the bounded v5 writer without
+   exposing a mutation. It enumerates the miss plus every eligible hit before
+   SessionRNG values exist. Every scenario advances Arc 4 and Arc 5 together;
+   the settlement callback bound by that certificate must mint exactly one
+   selected scenario authorization byte-for-byte. */
 import {
   ACTIVE_PLAY_CAPTURE_CYCLE_MS,
   OWNERSHIP_DATA_BUDGET,
@@ -15,6 +16,7 @@ import {
   isCaptureCapacityScenariosV1,
   isCapturePreflightReadyV1,
   ownershipStateDigestV1,
+  ownershipStateDigestV2,
   planCaptureV1,
   projectCaptureCapacityScenariosV1,
   sha256Hex,
@@ -29,6 +31,7 @@ import {
 } from '@cf/domain-sessionrng';
 import {
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
   V5_MAX_EXTENSION_NAMESPACES,
   V5_MAX_EXTENSION_NAMESPACES_PER_SEGMENT,
   V5_MAX_EXTENSION_JSON_BYTES,
@@ -37,11 +40,13 @@ import {
   canonicalizeV5Extensions,
   isF4MultiOutcomePreDrawSettlementAuthorizerForCodec,
   prepareArc4OwnershipWrite,
+  prepareArc5OwnershipMigrationSuccessor,
   prepareF4AuthorityUpdate,
   projectF4MultiOutcomeDrawAdvance,
   projectLegacyOwnershipMirror,
   readArc2AcquisitionCapabilities,
   readArc4Ownership,
+  readArc5OwnershipMigration,
   readF4Authority,
   type F4MultiOutcomePreDrawDeriveInput,
   type F4MultiOutcomePreDrawInput,
@@ -50,6 +55,7 @@ import {
   type F4MultiOutcomePreDrawSettlementAuthorizer,
   type F4OutcomeDerivation,
   type PreparedV5SaveWrite,
+  type Arc5OwnershipMigrationSuccessorProtectionReason,
   type ProjectedLegacyOwnershipMirrorV1,
   type SaveStateV2,
   type V5ExtensionWrite,
@@ -76,6 +82,7 @@ export type Arc4CaptureCapacityRefusalReason =
   | 'extensions-corrupt'
   | 'scenario-projection-failed'
   | 'ownership-write-unrepresentable'
+  | `arc5-migration:${Arc5OwnershipMigrationSuccessorProtectionReason}`
   | 'legacy-mirror-unrepresentable'
   | 'stardust-overflow'
   | 'v4-round-trip-failed'
@@ -90,7 +97,9 @@ export interface Arc4CaptureCertifiedScenarioV1 {
   readonly tier: number | null;
   readonly stardustReward: number;
   readonly successorDigest: string;
+  readonly ownershipV2Digest: string;
   readonly ownershipWritesDigest: string;
+  readonly arc5MigrationWritesDigest: string;
   readonly legacyV4Digest: string;
   readonly completeSaveDigest: string;
 }
@@ -146,6 +155,7 @@ export type Arc4CaptureSettlementOutcome =
   | Readonly<{
     kind: 'derived';
     plan: CaptureAttemptPlanV1;
+    ownershipV2Digest: string;
     stardustReward: number;
     derivation: F4OutcomeDerivation;
     prepared: PreparedV5SaveWrite;
@@ -156,7 +166,7 @@ export type Arc4CaptureSettlementOutcome =
 interface PreparedScenarioV1 {
   readonly publicRow: Arc4CaptureCertifiedScenarioV1;
   readonly state: SaveStateV2;
-  readonly ownershipWrites: readonly V5ExtensionWrite[];
+  readonly extensionWrites: readonly V5ExtensionWrite[];
   readonly prepared: PreparedV5SaveWrite;
 }
 
@@ -572,6 +582,69 @@ function assertExactOwnershipWrites(
   return Object.freeze({ writes: prepared.writes, extensions: prepared.extensions });
 }
 
+function assertExactArc5MigrationSuccessor(
+  base: V5Extensions,
+  ownership: Readonly<{ writes: readonly V5ExtensionWrite[]; extensions: V5Extensions }>,
+  scenario: CaptureCapacityScenarioV1,
+): Readonly<{
+  stateDigest: string;
+  writes: readonly V5ExtensionWrite[];
+  combinedWrites: readonly V5ExtensionWrite[];
+  extensions: V5Extensions;
+}> {
+  const prepared = prepareArc5OwnershipMigrationSuccessor({
+    baseExtensions: base,
+    successorExtensions: ownership.extensions,
+    successor: scenario.successor,
+    resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  });
+  if (prepared.kind !== 'prepared') {
+    throw new CapacityRefusal(
+      `arc5-migration:${prepared.reason}`,
+      `capture Arc 5 migration successor is protected: ${prepared.reason}`,
+    );
+  }
+  if (prepared.writes.length !== 1
+    || prepared.write !== prepared.writes[0]
+    || prepared.write.segment !== ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.segment
+    || prepared.write.namespace !== ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace) {
+    throw new CapacityRefusal(
+      'arc5-migration:target-corrupt',
+      'capture Arc 5 migration successor write is not exact',
+    );
+  }
+  const combinedWrites = Object.freeze([
+    ...ownership.writes,
+    ...prepared.writes,
+  ]);
+  let reapplied: ReturnType<typeof applyV5ExtensionWrites>;
+  try { reapplied = applyV5ExtensionWrites(base, combinedWrites); } catch {
+    throw new CapacityRefusal(
+      'arc5-migration:extension-bounds',
+      'capture Arc 4 and Arc 5 successor writes exceed v5 bounds',
+    );
+  }
+  const readBack = readArc5OwnershipMigration(
+    prepared.extensions,
+    SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  );
+  const stateDigest = ownershipStateDigestV2(prepared.state);
+  if (!sameJson(reapplied.extensions, prepared.extensions)
+    || readBack.kind !== 'loaded'
+    || ownershipStateDigestV2(readBack.state) !== stateDigest) {
+    throw new CapacityRefusal(
+      'arc5-migration:target-corrupt',
+      'capture Arc 5 migration successor did not round-trip',
+    );
+  }
+  return Object.freeze({
+    stateDigest,
+    writes: prepared.writes,
+    combinedWrites,
+    extensions: prepared.extensions,
+  });
+}
+
 function assertExtensionBounds(extensions: V5Extensions): void {
   let global = 0;
   for (const segment of V5_SEGMENTS) {
@@ -630,6 +703,7 @@ function prepareScenario(
   codec: F4MultiOutcomePreDrawSaveCodec,
 ): PreparedScenarioV1 {
   const ownership = assertExactOwnershipWrites(sourceExtensions, scenario);
+  const arc5 = assertExactArc5MigrationSuccessor(sourceExtensions, ownership, scenario);
   const mirror = projectLegacyOwnershipMirror(scenario.successor);
   if (mirror.kind !== 'projected') {
     throw new CapacityRefusal(
@@ -648,7 +722,7 @@ function prepareScenario(
   let f4: ReturnType<typeof prepareF4AuthorityUpdate>;
   try {
     f4 = prepareF4AuthorityUpdate(
-      ownership.extensions,
+      arc5.extensions,
       Object.freeze({ activePlayMs: preDraw.activePlayMs }),
       preDraw.nextSessionRng,
     );
@@ -667,9 +741,15 @@ function prepareScenario(
     throw new CapacityRefusal('complete-save-unrepresentable', 'capture complete save changed extensions');
   }
   const ownershipRead = readArc4Ownership(prepared.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+  const arc5Read = readArc5OwnershipMigration(
+    prepared.extensions,
+    SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  );
   const f4Read = readF4Authority(prepared.extensions);
   if (ownershipRead.kind !== 'loaded'
     || ownershipStateDigestV1(ownershipRead.state) !== scenario.successorDigest
+    || arc5Read.kind !== 'loaded'
+    || ownershipStateDigestV2(arc5Read.state) !== arc5.stateDigest
     || f4Read.kind !== 'loaded'
     || f4Read.authority.activePlayMs !== preDraw.activePlayMs
     || !sameJson(f4Read.authority.sessionRng, preDraw.nextSessionRng)) {
@@ -681,7 +761,9 @@ function prepareScenario(
     tier: scenario.tier,
     stardustReward,
     successorDigest: scenario.successorDigest,
+    ownershipV2Digest: arc5.stateDigest,
     ownershipWritesDigest: jsonDigest(ownership.writes),
+    arc5MigrationWritesDigest: jsonDigest(arc5.writes),
     legacyV4Digest: sha256Hex(staged.raw),
     completeSaveDigest: jsonDigest({
       extensions: prepared.extensions,
@@ -691,7 +773,7 @@ function prepareScenario(
   return Object.freeze({
     publicRow,
     state: staged.state,
-    ownershipWrites: ownership.writes,
+    extensionWrites: arc5.combinedWrites,
     prepared,
   });
 }
@@ -914,7 +996,7 @@ export function settleCertifiedArc4CaptureV1(
   }
   const derivation: F4OutcomeDerivation = Object.freeze({
     state: selected.state,
-    extensionWrites: selected.ownershipWrites,
+    extensionWrites: selected.extensionWrites,
     witness: planned.plan.witness,
   });
   let authorization: F4MultiOutcomePreDrawAuthorizedSettlement;
@@ -926,6 +1008,7 @@ export function settleCertifiedArc4CaptureV1(
   const derived = Object.freeze({
     kind: 'derived',
     plan: planned.plan,
+    ownershipV2Digest: selected.publicRow.ownershipV2Digest,
     stardustReward: selected.publicRow.stardustReward,
     derivation: authorization.derivation,
     prepared: authorization.prepared,

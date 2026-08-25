@@ -17,21 +17,21 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-25 · ARC 4 PLAYER-FACING CAPTURE BROWSER-GREEN · PARTIAL PENDING RECOVERY/HUMAN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-25 · ARC 5A OWNERSHIP AUTHORITY TERMINAL-GREEN LOCALLY · INFRASTRUCTURE-ONLY · LOCAL COMMIT PENDING ◀◀◀
 
 ### Current integration state
 
-- **Committed local product/reference snapshot for this handoff:**
-  `0d56106bcecf5603f8cfa5fd54da0a36bfd85a27` on `openai/mac`, ahead of its upstream by 64
-  commits before this ROADMAP-only handoff commit. Arc 3 recovery remains committed at `c4a02be`;
-  Arc 4's strict ownership bootstrap and diagnostics-only durable foundation remain committed at
-  `fd72c06`. The player-facing Arc 4 UI, copy, browser contracts and synchronized references are
-  committed locally at `0d56106`. The final browser reports predate the docs-only refresh and bind
-  status `61fc362e…` plus dirty tree
-  `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`; independent audits prove
-  the executable, test and tool bytes are exactly those committed at `0d56106`. This is not a
-  remote, hosted, integration or release milestone. The Compendium measurement reseal remains
-  deferred until the final multi-Arc dependency graph freezes.
+- **Last committed local handoff base before the active Arc 5A batch:**
+  `9d91810738337813cb6db6ef81c9f6f229c3d269` on `openai/mac`; its player-facing Arc 4
+  product/reference snapshot is `0d56106bcecf5603f8cfa5fd54da0a36bfd85a27`. Arc 3 recovery
+  remains committed at `c4a02be`, and Arc 4's strict ownership bootstrap/durable foundation remains
+  committed at `fd72c06`. The active Arc 5A product/test/tool candidate is terminal-green on the
+  exact current-input evidence recorded below. This documentation-only synchronization changes no
+  executable, test, tool or report byte. The **exact local Arc 5A commit remains PENDING until the
+  parent commits this reviewed batch**. This is not a remote, hosted, integration or release
+  milestone. The sole full-Vitest failure remains the known deferred Compendium measurement-authority
+  seal (`6a961df8…` expected, `2ab18865…` live), scheduled only after the final multi-Arc dependency
+  graph freezes.
 - PR #33 merged normally into `develop` as
   `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after terminal-green
   `test-battery` run `32646110946` (one attempt, no retry; battery 50m29s).
@@ -104,7 +104,7 @@ remain in force.
    does not waive any human criterion. Arc 5.5 remains the separate combat-model HUMAN gate before
    Arc 6.
 
-### Local campaign state — player-facing through Arc 4, with Arc 5 still model/certificate only
+### Local campaign state — player-facing through Arc 4, with Arc 5A authority infrastructure active
 
 - F3/F4 now provide the live v5 split-store/revision/lease authority used by the app: the protected
   `player/f4.authority` carrier persists the visible/answerable active-play clock and SessionRNG,
@@ -227,33 +227,63 @@ same product state. The Guide remains 41 player topics—24 partial and 17 unava
 honest Capture/Discover copy. **A New Foundation** has 54 draft bullets. Training remains six
 lessons plus graduation with no Capture lesson. There is no Charter bioscan or targeted preview.
 
-**Arc 4 final local evidence:** no-retry Slice Smoke run
-`20260825143239498-59502-655815e34a3e` passed on Edge `151.0.4129.101` in 336,913 ms with zero
-findings/failure scopes, zero retries, no source change and exactly one nine-stage ledger/PASS:
-precondition, pending-no-optimism, hit, storage-refusal, stale-convergence, miss, burn-down,
-disabled-suppression and publication-convergence. It records 14 burn steps and
-`recoveryClaimed:false`; report/log SHA-256 are
-`4cc6fe02fb6965e4b67baef1d6b90d0a5ac64dff836cdc6416f49d5ad5bbbdde` /
-`15683111584df5f1fead034b0b28f0e1a9b9ec96c2eb5cc3978b78c5ca1436b2`.
-Full-certifying Glass Matrix passed on the same Edge in 71,713 ms across 12 viewports and 36 Arc 4
-outcomes, executing every planned control with none blocked or omitted and zero findings,
-instrument failures or retries; report SHA-256 is
-`03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`. Both reports bind base
-`8633bb48fc89c7ae658fa9ed4a7f47b683be102d`, status
-`61fc362edebc5f747143131de7cf4a27a7228a3734f6becb49b2089ca6381cac` and the same dirty tree
-`b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. Full Vitest records
-1,186 passes, one skip and the one known deferred Compendium seal failure; excluding that file,
-99 files /1,168 tests pass with one skip. Final source audits are clear. Arc 4 remains
-**[PARTIAL]** because the real uninterrupted 20-minute next-cycle recovery observation and combined
-HUMAN first-journey/ownership review remain open. None of this is clean exact-head, hosted,
-integration, HUMAN, preview/publication, release, version or deployment authority.
+The active Arc 5A candidate does not change that presentation. Every Arc 4 hit and miss now requires
+an aligned current Arc 5 projection certificate before either draw, prepares the exact 18 Arc 4
+replacement writes plus one Arc 5 certificate replacement for every capacity scenario, and publishes
+the verified V1 and reconstructed V2 states together only after the one receipt-bearing CAS commits.
 
-**Arc 5 ownership seam (committed local, 2026-08-24; model/certificate only):** ownership-v2 defines
-receipt-bound capture, deterministic fauna-only bred-child successors with ordered parent evidence,
-and tombstone/disposition consistency. The additive `player/arc5.ownership.migration` certificate
-binds a digest of a freshly imported Arc 4 carrier; it deliberately stores no duplicate ownership
-bytes. There is no v2 ownership writer, product migration, breed/companion UI, assignment, care,
-mission or dispatch capability yet.
+**Arc 5A final current-input local evidence — terminal green:** non-Compendium Vitest passed
+`101 files / 1,187 passed / 1 skipped`. Full Vitest recorded
+`102 files / 1,205 passed / 1 failed / 1 skipped`; its sole failure is the known deferred
+`tests/compendium-budget.test.ts` measurement-authority seal (`6a961df8…` expected,
+`2ab18865…` live), still scheduled only after the final multi-Arc dependency graph freezes. Root,
+app, worker and noUnused TypeScript passed; the Vite production build passed with 875 modules;
+`artunused` passed; and node syntax, contract/Glass/reporter selftests, imports and scoped diff checks
+were clean.
+
+No-retry Slice Smoke run `20260825171148040-77701-fb5c63191544` passed on Edge
+`151.0.4129.101` in 336,570 ms with zero findings, retries or source change. It produced exactly one
+ordered nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS and 10 hashed PNGs; its
+executable Arc 5 fixed-point, successor, fault and reload controls were confirmed. Report/log
+SHA-256 are `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
+`03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`.
+Full-certifying Glass then passed on the same Edge in 70,432 ms with all 12/12 viewport plus reload
+rows, 95/95 controls and 36/36 Arc 4 outcomes; none were blocked or omitted, and findings,
+instrument failures and retries were zero. Its Arc 5 `targetDigest`-corruption and durable-projection
+controls were non-vacuous. Glass report SHA-256 is
+`7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`.
+
+Both browser reports bind base `9d91810738337813cb6db6ef81c9f6f229c3d269`, status SHA-256
+`42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree SHA-256
+`e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`. Current tool
+SHA-256 prefixes are contract `b1328688…`, Slice `b30a93d1…`, Glass `692e90a2…` and reporter
+`1a94925f…`. Independent runtime, browser-contract and docs audits are **CLEAR**. Arc 4 remains
+**[PARTIAL]** for the real uninterrupted 20-minute next-cycle recovery observation and combined
+HUMAN first-journey/ownership review; Arc 5 remains **[PARTIAL]** and infrastructure-only. None of
+this is hosted, integration, HUMAN, preview/publication, release, version or deployment authority.
+
+**Arc 5A ownership authority activation (active local candidate, 2026-08-25; infrastructure-only):**
+ownership-v2 still defines receipt-bound capture, deterministic fauna-only bred-child successors with
+ordered parent evidence, and tombstone/disposition consistency. The app now owns the additive,
+digest-only `player/arc5.ownership.migration` projection certificate. Ordinary boot derives it only
+after the exact Arc 4 fixed point and joins its one write to the sole receipt-free route/F4/Arc 2/3/4
+CAS; an aligned certificate is a zero-write fixed point. Future, corrupt, misplaced or source-drifted
+evidence cancels every staged boot intent and restores the durable saved view, Atlas routes and Arc 2
+`items` / `equip` / `equipAff` compatibility fields before runtime creation. Genuine legacy Training
+composes one Arc 2 write, all 18 Arc 4 writes and the one Arc 5 certificate in its single replacement
+transaction, while current authority is preserved and source-deferred absence remains absent and
+write-free. Every Arc 4 hit or miss advances
+the Arc 4 source and Arc 5 certificate together; postcommit verification publishes both or performs
+one read-only convergence reload. The certificate stores only source/target modes, revisions and
+digests; V2 is reconstructed from the exact current Arc 4 source, never duplicate V2 bytes.
+
+This is not a public or Arc 5-only product writer. Breed, feed/care, Recovery, assignment, Chronicle,
+mission/dispatch, companion UI, Guide capability, Training lesson and release copy remain absent.
+Before any V2-only mutation lands, the design-only fixed-four-shard delta carrier recorded in
+`SAVE_SYSTEM.md` must preserve O(1) namespace count, be implemented and be outcome-tested; that
+engineering representation is not a Nick product decision.
+The verification/evidence identifiers above are final. The exact local Arc 5A commit alone remains
+**PENDING until the parent commits this reviewed batch**.
 
 **Arc 7/8 audio package foundation (local, 2026-08-24; package-only partial):** `@cf/audio` now
 owns pure resolver-v1 signature/profile/call-plan data over already-normalized inputs, a pinned
@@ -303,38 +333,43 @@ current-source local browser proof is recorded above; audio browser/listening ev
 
 ### In-session continuation / fresh-session recovery
 
-1. Continue only in the Codex macOS root on `openai/mac`. The committed Arc 4 product/reference
-   snapshot is `0d56106bcecf5603f8cfa5fd54da0a36bfd85a27`; this ROADMAP-only follow-up is the current local
-   handoff head. The browser evidence binds the same executable/test/tool bytes through recorded
-   dirty tree `b83ccef5…`, not a clean exact-head run. Do not fetch/merge, switch branches, push, or
-   run GitHub workflows without a new exact authorization.
+1. Continue only in the Codex macOS root on `openai/mac`. The last committed Arc 4 product/reference
+   snapshot is `0d56106bcecf5603f8cfa5fd54da0a36bfd85a27`, followed by ROADMAP handoff `9d918107…`.
+   Arc 5A is a terminal-green active uncommitted candidate; its exact test/browser/audit identifiers
+   are final above, and only its local commit hash remains to be filled after the parent commits.
+   Do not fetch/merge, switch branches, push, or run
+   GitHub workflows without a new exact authorization.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
-   `GITHUB_ACTIONS_BUDGET.md`; use `port/V2_PROGRAM_ROADMAP.md` §5.3 for the Arc 4 contract.
+   `GITHUB_ACTIONS_BUDGET.md`; use `port/V2_PROGRAM_ROADMAP.md` §§5.3/5.5 for the Arc 4/5 boundary.
 3. Arc 4's native controls, random-pool presentation, current Guide/release copy and automated
    browser outcomes are locally terminal-green. Before calling the Arc complete, run the real
    uninterrupted 20-minute next-cycle recovery observation; do not substitute the 14-step burn-down
    (`recoveryClaimed:false`) for it. Keep the combined HUMAN first-journey/ownership review queued
    after Arc 5 as the approved campaign specifies.
-4. The independent source/docs audits and normal local product commit are complete. Arc 5 may now
-   activate its authority against player-live Arc 4 ownership before exposing breeding/companions.
-   Preserve source-bound random-pool
-   semantics, exact stable ownership IDs and committed-only outcomes; do not invent a Charter
-   bioscan or targeted preview. Keep audio package-only until canonical app adapters, content,
-   accessibility and browser/device/HUMAN evidence exist. Recalibrate/reseal Compendium only after
-   the final multi-Arc dependency graph freezes.
+4. Arc 5A authority activation is implemented, terminal-green locally and independently audited
+   clear. Preserve source-bound random-pool semantics, exact stable ownership IDs,
+   same-CAS Arc 4/V2 projection coherence and committed-only outcomes. Before exposing breeding,
+   care or missions, implement the explicitly design-only compact V2 delta carrier in
+   `SAVE_SYSTEM.md` and resolve the still-open product parameters; do not store a second full
+   ownership mirror or edit `port/DECISIONS.md` as though Nick chose the engineering format. Keep
+   Guide/release/Training lesson capability unchanged, do not invent a Charter bioscan or targeted
+   preview, and keep audio package-only until its app/content/accessibility/evidence work exists.
+   Recalibrate/reseal Compendium only after the final multi-Arc dependency graph freezes.
 5. Claude/Anthropic should receive merged work only by fetching `origin` and
    merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
    manual file copying. Nick does not need to open Claude now.
 
 **Current side:** Codex macOS is on `openai/mac`, based on merged `develop` `7a9f4c1…`. Arc 4's
 durable foundation is committed at `fd72c06`; its audited player UI/copy/tools/references are
-committed locally at `0d56106`, followed only by this ROADMAP handoff. Arc 4 remains `[PARTIAL]`
-for recovery/HUMAN only; Arc 5 authority activation is the next implementation batch.
+committed locally at `0d56106`, followed by ROADMAP handoff `9d918107…`. Arc 5A authority activation
+is implemented and terminal-green in the current uncommitted candidate; only its parent-created local
+commit remains pending. Arc 4 remains `[PARTIAL]` for recovery/HUMAN only; Arc 5 remains `[PARTIAL]` and
+infrastructure-only.
 `origin/openai/mac` remains the contained PR #34 head until a later exact final-head authorization.
 **GitHub step:** none.
 **PR details:** not needed; the local campaign is still batching and no push/hosted attempt is
 authorized.
-**Other side:** Anthropic/Claude Code does not have this local Arc 4 player-facing batch. Nick does not need to
+**Other side:** Anthropic/Claude Code does not have this local Arc 4 player-facing or Arc 5A batch. Nick does not need to
 open Claude now; after a future reviewed merge into `develop`, Claude should fetch `origin` and
 merge `origin/develop` into a clean `anthropic/mac`, never copy files manually.
 **Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.

@@ -6,7 +6,8 @@
   "description": "Arc 4 truthful catalogue, creature, specimen, discovery, and canonical biosphere ownership state.",
   "exports": {
     ".": "./src/index.ts",
-    "./snapshot-internal": "./src/snapshot-internal.ts"
+    "./snapshot-internal": "./src/snapshot-internal.ts",
+    "./ownership-v2-internal": "./src/ownership-v2-internal.ts"
   },
   "dependencies": {
     "@cf/domain-genome": "*",

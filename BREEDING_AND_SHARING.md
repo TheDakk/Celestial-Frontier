@@ -1,16 +1,22 @@
 # Celestial Frontier — Breeding & Sharing
 
-> **2026-08-24 Arc 0/5 current package boundary:** legacy `CFB-` remains the exact v1
+> **2026-08-25 Arc 0/5A current local boundary:** legacy `CFB-` remains the exact v1
 > challenger/exhibit contract. Versioned `CFB2-` round-trips one bounded ordered uint32 parent
 > tuple for an owned-creature identity while excluding XP, feeding, brood, injury, bond and
 > assignment; forward/reverse parents remain distinct and malformed/future/mismatched payloads fail
 > closed. Ownership-v2 separately defines receipt-bound deterministic fauna-only child successors,
 > local child ids, ordered genome parent evidence, dispositions and tombstones. The additive Arc 5
-> migration certificate binds only fresh V1/V2 digests and stores no duplicate state.
+> projection certificate binds exact fresh V1/V2 modes, revisions and digests and stores no duplicate
+> state. Arc 5A activates that certificate in app boot, genuine legacy Training and every Arc 4
+> capture successor. The internal bridge can advance only the exact registered Arc 4-source
+> projection; it is absent from the public package root and cannot mint an Arc 5-only product change.
 >
 > No breeding, feeding, care, Recovery, assignment, companion or share UI writer is live in v2.
 > The non-consuming parent/Recovery design below therefore remains the product contract, not a
-> shipped action; the new model cannot mutate a save or grant a child by itself.
+> shipped action; the activated projection cannot grant a child or persist V2-exclusive state.
+> The fixed-four-shard compact delta carrier required for that later authority keeps namespace count
+> O(1) and is explicitly design-only in
+> `SAVE_SYSTEM.md`. Guide, release and Training lesson capability remain unchanged.
 
 > **2026-08-15 F2 sharing overlay (historical foundation; current where not superseded above;
 > supersedes the open CF1
@@ -75,7 +81,7 @@
 > deviation and new compatibility tests.
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the dated v2
-overlays match the committed `port/v2` boundary as of 2026-08-24. Carries v1.8.6
+overlays match the current local `port/v2` boundary as of 2026-08-25. Carries v1.8.6
 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette

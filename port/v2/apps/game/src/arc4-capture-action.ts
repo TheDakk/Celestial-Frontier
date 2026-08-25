@@ -3,9 +3,10 @@
    The writer composes the live acquisition snapshot from the pre-draw
    owner's exact detached extensions, certifies every possible outcome before
    SessionRNG values exist, and returns the one certified authorization to the
-   owner verbatim. It publishes nothing. Postcommit verification is a separate
-   read of durable/runtime authority and any mismatch requires read-only
-   convergence, never another capture attempt. */
+   owner verbatim. It publishes nothing. Postcommit verification separately
+   proves the aligned Arc 4 + Arc 5 ownership result from durable/runtime
+   authority; any mismatch requires read-only convergence, never another
+   capture attempt. */
 import {
   ACTIVE_PLAY_CAPTURE_CYCLE_MS,
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -14,6 +15,7 @@ import {
   isCaptureAttemptPlanV1,
   isCapturePreflightReadyV1,
   ownershipStateDigestV1,
+  ownershipStateDigestV2,
   preflightCaptureV1,
   sha256Hex,
   type AcquisitionVerbV1,
@@ -21,6 +23,7 @@ import {
   type CapturePreflightReadyV1,
   type CapturePreflightRefusalReasonV1,
   type OwnershipStateV1,
+  type OwnershipStateV2,
 } from '@cf/domain-acquisition';
 import { MAX_ACTIVE_PLAY_MS } from '@cf/domain-progression';
 import {
@@ -30,6 +33,7 @@ import {
   prepareArc4OwnershipLegacyMigration,
   projectLegacyOwnershipMirror,
   readArc4Ownership,
+  readArc5OwnershipMigration,
   readF4Authority,
   type ContentRegistry,
   type ProjectedLegacyOwnershipMirrorV1,
@@ -482,6 +486,8 @@ export type Arc4CaptureCommittedMismatchDetailV1 =
   | 'runtime-extensions-mismatch'
   | 'ownership-carrier-not-current'
   | 'ownership-successor-mismatch'
+  | 'arc5-migration-not-current'
+  | 'arc5-migration-successor-mismatch'
   | 'ownership-legacy-mirror-mismatch'
   | 'f4-authority-mismatch'
   | 'stardust-reward-mismatch'
@@ -495,6 +501,7 @@ export type Arc4CaptureCommittedVerificationV1 =
     durability: 'committed';
     convergence: 'none';
     ownership: OwnershipStateV1;
+    ownershipV2: OwnershipStateV2;
     plan: Arc4CaptureDerivedSettlementV1['plan'];
     stardustReward: number;
   }>
@@ -595,6 +602,11 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
     !== ownershipStateDigestV1(settlement.plan.successor)) {
     return mismatch('ownership-successor-mismatch');
   }
+  const arc5 = readArc5OwnershipMigration(
+    input.runtimeExtensions,
+    SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  );
+  if (arc5.kind !== 'loaded') return mismatch('arc5-migration-not-current');
   if (!arc4OwnershipLegacyMirrorMatches(ownership.state, transaction.state)) {
     return mismatch('ownership-legacy-mirror-mismatch');
   }
@@ -661,11 +673,15 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
       !== evidencePayload.sourceDraftFingerprint) {
     return mismatch('capture-settlement-authority-mismatch');
   }
+  if (ownershipStateDigestV2(arc5.state) !== settlement.ownershipV2Digest) {
+    return mismatch('arc5-migration-successor-mismatch');
+  }
   return Object.freeze({
     kind: 'verified',
     durability: 'committed',
     convergence: 'none',
     ownership: ownership.state,
+    ownershipV2: arc5.state,
     plan: settlement.plan,
     stardustReward: expectedReward,
   });

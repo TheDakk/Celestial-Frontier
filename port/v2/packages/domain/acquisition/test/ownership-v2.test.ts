@@ -9,6 +9,7 @@ import {
   createOwnershipSuccessorV1,
   createSpecimenLotV1,
   ownershipContentId,
+  ownershipStateDigestV1,
   type CreatureInstanceId,
   type DiscoveryRecordId,
   type OwnershipStateV1,
@@ -42,6 +43,9 @@ import {
   type OwnershipStateContentsV2,
   type OwnershipStateV2,
 } from '../src/model-v2.js';
+import {
+  createOwnershipSourceProjectionSuccessorV2,
+} from '../src/ownership-v2-internal.js';
 
 interface Fixture {
   readonly source: OwnershipStateV1;
@@ -701,6 +705,34 @@ describe('@cf/domain-acquisition — Arc 5 ownership V2 foundation', () => {
     expect(() => createOwnershipSuccessorV2(loaded, contents(loaded, {
       source: rebased,
     }))).toThrow(/exact minted direct successor/u);
+  });
+
+  it('remints one externally prepared direct Arc 4 successor through the internal source-projection seam', () => {
+    const source = fixture().source;
+    const parent = migrateOwnershipStateV1ToV2(source);
+    const successor = createOwnershipSuccessorV1(source, {
+      catalogSpecies: source.catalogSpecies,
+      discoveries: source.discoveries,
+      creatures: source.creatures,
+      specimenLots: source.specimenLots,
+      biosphereProgress: source.biosphereProgress,
+      legacyBioX: source.legacyBioX,
+      scoutCreatureId: source.scoutCreatureId,
+    });
+    const projected = createOwnershipSourceProjectionSuccessorV2(parent, successor);
+    expect(isOwnershipSuccessorV2(projected, parent)).toBe(true);
+    expect(ownershipSourceStateV1(projected)).not.toBe(successor);
+    expect(ownershipStateDigestV1(ownershipSourceStateV1(projected)))
+      .toBe(ownershipStateDigestV1(successor));
+    expect(projected.revision).toBe(parent.revision + 1);
+    expect(ownershipStateDigestV2(projected))
+      .toBe(ownershipStateDigestV2(migrateOwnershipStateV1ToV2(successor)));
+    expect(() => createOwnershipSuccessorV2(parent, contents(parent, { source: successor })))
+      .toThrow(/exact minted direct successor/u);
+    expect(() => createOwnershipSourceProjectionSuccessorV2(parent, { ...successor }))
+      .toThrow(/exact registered Arc 4 successor/u);
+    expect(() => createOwnershipSourceProjectionSuccessorV2({ ...parent }, successor))
+      .toThrow(/parent must be registered/u);
   });
 
   it('fails hostile structures, forged registration, malformed witnesses, and drifted identities closed', () => {

@@ -15,6 +15,7 @@ import {
   isOwnershipStateV1,
   isOwnershipSuccessorV1,
   ownershipContentId,
+  ownershipStateDigestV1,
   ownershipStateMirrorV1,
   registerOwnershipStateMirrorV1,
   type BiosphereProgressV1,
@@ -912,6 +913,61 @@ export function createOwnershipSourceSuccessorV2(
   const successor = createOwnershipSuccessorV1(registered.source, contents);
   SOURCE_SUCCESSORS.set(successor, Object.freeze({ parent, source: registered.source }));
   return successor;
+}
+
+/** Internal persistence bridge for an Arc 4-only product action. The caller
+ * supplies the exact registered direct V1 successor that will be persisted;
+ * this bridge remints the same contents through the exact V2 parent without
+ * granting authority to the caller's object, carries the existing V2
+ * projection, and registers only genuinely new Arc 4 creature/specimen rows.
+ * The digest-only certificate owner still refuses any V2-only delta that it
+ * cannot represent. This bridge is exported solely through the package's
+ * `ownership-v2-internal` subpath, never from the public root. */
+export function createOwnershipSourceProjectionSuccessorV2(
+  parent: OwnershipStateV2,
+  sourceSuccessor: OwnershipStateV1,
+): OwnershipStateV2 {
+  const registered = STATES.get(parent);
+  if (!registered) throw new TypeError('ownership V2 source parent must be registered');
+  if (parent.mode !== 'current') {
+    throw new TypeError('protected ownership V2 has no source-projection successor');
+  }
+  if (!isOwnershipSuccessorV1(sourceSuccessor, registered.source)) {
+    throw new TypeError('ownership V2 source projection requires the exact registered Arc 4 successor');
+  }
+  const pairedSource = createOwnershipSourceSuccessorV2(parent, {
+    catalogSpecies: sourceSuccessor.catalogSpecies,
+    discoveries: sourceSuccessor.discoveries,
+    creatures: sourceSuccessor.creatures,
+    specimenLots: sourceSuccessor.specimenLots,
+    biosphereProgress: sourceSuccessor.biosphereProgress,
+    legacyBioX: sourceSuccessor.legacyBioX,
+    scoutCreatureId: sourceSuccessor.scoutCreatureId,
+  });
+  if (ownershipStateDigestV1(pairedSource) !== ownershipStateDigestV1(sourceSuccessor)) {
+    throw new TypeError('paired ownership V2 source does not match the persisted Arc 4 successor');
+  }
+
+  const priorCreatureIds = new Set(registered.source.creatures.map((row) => row.creatureId));
+  const creatures = [...parent.creatures];
+  for (const row of pairedSource.creatures) {
+    if (!priorCreatureIds.has(row.creatureId)) creatures.push(createCreatureInstanceV2(row));
+  }
+  const priorSpecimenIds = new Set(registered.source.specimenLots.map((row) => row.lotId));
+  const specimenLots = [...parent.specimenLots];
+  for (const row of pairedSource.specimenLots) {
+    if (!priorSpecimenIds.has(row.lotId)) specimenLots.push(createSpecimenLotV2(row));
+  }
+
+  return createOwnershipSuccessorV2(parent, {
+    source: pairedSource,
+    bredAcquisitions: parent.bredAcquisitions,
+    creatures,
+    creatureTombstones: parent.creatureTombstones,
+    specimenLots,
+    specimenTombstones: parent.specimenTombstones,
+    scoutCreatureId: parent.scoutCreatureId,
+  });
 }
 
 export function isOwnershipStateV2(value: unknown): value is OwnershipStateV2 {

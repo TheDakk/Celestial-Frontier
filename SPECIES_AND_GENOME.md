@@ -1,7 +1,7 @@
 # Celestial Frontier — Species & Genome System
 
-**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 reset and Arc 4
-ownership overlays match `port/v2` as of 2026-08-25, and the partially implemented package-only
+**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 reset and Arc 4/5A
+ownership overlays match the current local `port/v2` candidate as of 2026-08-25, and the partially implemented package-only
 audio-identity overlay matches `@cf/audio` as of 2026-08-24. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
@@ -9,20 +9,36 @@ in §2.4.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
 
-> **2026-08-25 Arc 4/5 ownership overlay — Arc 4 player-live locally; Arc 5 model-only:** the port has a strict
+> **2026-08-25 Arc 4/5A ownership overlay — Arc 4 player-live; Arc 5A infrastructure-only:** the port has a strict
 > identity split between immutable catalogue/discovery facts, stable owned fauna instances and
 > nonliving specimen lots. Ownership-v1 binds canonical genome identity, exact CF1 provenance,
 > biosphere progress and bounded legacy evidence. Ownership-v2 adds receipt-bound acquisitions,
 > deterministic fauna-only bred-child successors, ordered parent/lineage evidence and tombstones;
-> its migration certificate records only source/target digests, never duplicate ownership bytes.
+> its active migration certificate records only exact source/target modes, revisions and digests,
+> never duplicate ownership bytes. The app reconstructs V2 from the exact current Arc 4 source.
 > Arc 4's native Survey Tame/Scavenge/Sample controls now consume the canonical full roster through
 > the durable writer. A first successful verb creates the one catalogue/discovery fact; Tame may
 > add a stable-ID living fauna instance, while Scavenge/Sample add nonliving specimen lots. Eligible
 > repeats can add another individual/lot without duplicating the first-only page or Stardust grant.
 > Hit/miss, reload, storage refusal, stale convergence, publication convergence and 12-viewport
-> presentation/geometry are locally browser-proven. Arc 5 remains model/certificate only: no
-> breed/care/companion writer, V1→V2 app migration, assignment or mission UI exists. The real
+> presentation/geometry are locally browser-proven. Arc 5A boot now creates or loads that projection
+> certificate in the shared receipt-free CAS; genuine legacy Training couples one Arc 2, 18 Arc 4
+> and one Arc 5 write; and every capture hit or miss advances and postcommit-publishes Arc 4/V2
+> together. No public or Arc 5-only breed/care/companion writer, Recovery, assignment, Chronicle or
+> mission UI exists. A fixed-four-shard, O(1)-namespace compact V2-only delta carrier remains
+> design-only in `SAVE_SYSTEM.md`. The real
 > 20-minute Arc 4 recovery edge and HUMAN ownership/first-journey review remain open.
+> Retained Arc 4 browser evidence predates Arc 5A. Final current-input evidence is Slice run
+> `20260825171148040-77701-fb5c63191544` on Edge `151.0.4129.101` (336,570 ms, zero
+> findings/retries/source change; report/log SHA-256
+> `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
+> `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`) and Glass on the same Edge
+> (70,432 ms, 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes, zero
+> blocked/omitted/findings/instrument failures/retries; report SHA-256
+> `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`). Both bind base
+> `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
+> `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
+> `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; audits are CLEAR.
 
 > **2026-08-11 v2 executable-contract correction:** No genome, descriptor or
 > portrait output changed. The SpeciesTraits declaration now matches its tables:

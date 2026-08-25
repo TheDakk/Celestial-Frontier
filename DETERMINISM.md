@@ -14,14 +14,20 @@
 > Arc 4's epoch-bound full roster, registered acquisition snapshot and pure planner separate target
 > selection/success draws from mutation. The ownership-v1 package and Arc 5 ownership-v2 model bind
 > canonical genome/owner/receipt evidence, deterministic fauna-only child ids, ordered parents and
-> tombstones. The Arc 5 migration artifact is digest-only. Arc 4 now exposes its real writer through
-> native Survey Tame/Scavenge/Sample controls. The presentation model and action bind the same
+> tombstones. Arc 5A activates the digest-only migration artifact as an exact Arc 4-source projection:
+> boot derives it after the Arc 4 fixed point, and a capture hit or miss can advance it only from the
+> registered exact-parent V1 successor. This projection consumes no RNG. Arc 4 now exposes its real
+> writer through native Survey Tame/Scavenge/Sample controls. The presentation model and action bind the same
 > canonical world, current epoch, full-roster fingerprint, eligible random pool, odds and Biosphere
 > budget; the eight-row preview never becomes selection authority. `captureCandidate` and
-> `captureSuccess` advance only inside the one durable transaction. A failed/stale/storage path
+> `captureSuccess` advance only inside the one durable transaction. Every pre-draw scenario binds the
+> 18 Arc 4 replacement writes, one Arc 5 certificate replacement and reconstructed V2 digest before
+> either value exists. A failed/stale/storage path
 > publishes no result and preserves the plan; post-durable convergence reads committed bytes without
-> a second draw or write. Reopen/reload and UI order do not reroll or retarget the action. Arc 5
-> breeding/care/companion writers remain absent.
+> a second draw or write. Postcommit publication verifies and exposes Arc 4 and V2 together.
+> Reopen/reload and UI order do not reroll or retarget the action. Arc 5 breeding/care/companion
+> writers remain absent; the fixed-four-shard, O(1)-namespace V2-only delta representation is
+> design-only.
 
 > **2026-08-24 F4 + Arc 2 outcome-determinism overlay — current local implementation:**
 > `SessionRNGState` now persists one uint32 seed, isolated semantic-domain counters and one global
@@ -52,6 +58,18 @@
 > odds, storage/stale/publication convergence, reload and responsive control outcomes on one dirty
 > executable snapshot; it explicitly does not claim the real 20-minute recovery edge. All later
 > outcome writers remain open.
+> That retained pair predates Arc 5A activation. Final current-input evidence is Slice run
+> `20260825171148040-77701-fb5c63191544` on Edge `151.0.4129.101` (336,570 ms, one exact
+> nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS, zero findings/retries/source
+> change; report/log SHA-256 `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
+> `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`) plus Glass on the same
+> Edge (70,432 ms, 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes, zero
+> blocked/omitted/findings/instrument failures/retries; report SHA-256
+> `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`). The executable Arc 5
+> fixed-point/successor/fault/reload controls and Glass `targetDigest`-corruption/durable-projection
+> controls were non-vacuous. Both bind base `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
+> `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
+> `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; audits are CLEAR.
 
 > **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the F4 overlay
 > does not supersede it):** Deterministic

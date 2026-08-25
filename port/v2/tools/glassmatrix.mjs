@@ -45,12 +45,14 @@ import {
   ARC4_CAPTURE_UI_EXPRESSION,
   ARC4_CAPTURE_VERBS,
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
   arc4DurableEvidenceComplete,
   arc4CaptureUiSnapshotComplete,
   assessArc4DurableEvidence,
   assessArc4CaptureCardGeometryFocus,
   buildArc4DurableReadExpression,
   projectArc4V4OwnedCounters,
+  projectArc5OwnershipMigrationEvidence,
 } from './arc4-browser-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -705,13 +707,15 @@ function arc4OwnedAliasRows(codex, names) {
    activePlayMs while Glass is measuring twelve layouts. The v4 `epoch` stays
    bound: a different ecology epoch would select a different authoritative
    roster and must not be normalized as checkpoint noise. Everything Arc 4
-   can own or spend remains exact: all eighteen canonical ownership carrier
-   byte strings, both copies of its v4 mirrors/rewards/counters, SessionRNG,
-   and every receipt key/raw row. */
+   can own or spend remains exact: all eighteen canonical Arc 4 ownership
+   carrier byte strings, the one aligned source-bound Arc 5 certificate,
+   both copies of the v4 mirrors/rewards/counters, SessionRNG, and every
+   receipt key/raw row. */
 function arc4DurableNoMutationProjection(value) {
   if (!arc4DurableEvidenceComplete(value)) return null;
   const v4OwnedCounters = projectArc4V4OwnedCounters(value);
-  if (v4OwnedCounters === null) return null;
+  const arc5Migration = projectArc5OwnershipMigrationEvidence(value);
+  if (v4OwnedCounters === null || arc5Migration === null) return null;
   const ownershipCarriers = [];
   for (const { segment, namespace } of ARC4_OWNERSHIP_EXTENSION_TARGETS) {
     const carrier = value?.[ARC4_DURABLE_SEGMENT_ROWS[segment]]?.extensions?.[namespace];
@@ -724,6 +728,10 @@ function arc4DurableNoMutationProjection(value) {
     });
   }
   if (ownershipCarriers.length !== 18) return null;
+  const arc5Carrier = arc5Migration.carrier;
+  if (!arc5Carrier || arc5Migration.target.segment !== 'player'
+    || arc5Migration.target.namespace
+      !== ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace) return null;
   const legacy = value.legacy;
   const split = {
     codex: value.catalogRow?.data?.codex,
@@ -744,6 +752,17 @@ function arc4DurableNoMutationProjection(value) {
   return {
     schema: 'cf-v2-glass-arc4-no-mutation-projection/v1',
     ownershipCarriers,
+    arc5Migration: {
+      target: { ...arc5Migration.target },
+      carrier: {
+        version: arc5Carrier.version,
+        json: arc5Carrier.json,
+        byteLength: Buffer.byteLength(arc5Carrier.json, 'utf8'),
+        jsonSha256: sha256(arc5Carrier.json),
+      },
+      sourceDigest: arc5Migration.sourceDigest,
+      targetDigest: arc5Migration.targetDigest,
+    },
     v4Mirror: {
       legacy: {
         epoch: legacy.epoch,
@@ -777,6 +796,63 @@ function arc4CanonicalJson(value) {
     )).join(',')}}`;
   }
   return JSON.stringify(value);
+}
+
+function arc5TargetMirrorFromArc4Mirror(source) {
+  return {
+    schema: 'cf-v2-ownership-state/v2',
+    version: 2,
+    revision: source.revision,
+    source,
+    bredAcquisitions: [],
+    creatures: source.creatures,
+    creatureTombstones: [],
+    specimenLots: source.specimenLots,
+    specimenTombstones: [],
+    scoutCreatureId: source.scoutCreatureId,
+  };
+}
+
+function arc5CertificateFromArc4Mirror(source) {
+  const target = arc5TargetMirrorFromArc4Mirror(source);
+  return {
+    schema: 'cf-v2-ownership-v1-to-v2/v1',
+    version: 1,
+    sourceSchema: source.schema,
+    sourceVersion: source.version,
+    sourceRevision: source.revision,
+    sourceMode: source.mode,
+    sourceDigest: sha256(JSON.stringify(source)),
+    targetSchema: target.schema,
+    targetVersion: target.version,
+    targetRevision: target.revision,
+    targetMode: target.source.mode,
+    targetDigest: sha256(JSON.stringify(target)),
+  };
+}
+
+function arc5OwnershipV2SelftestState(evidence) {
+  const migration = projectArc5OwnershipMigrationEvidence(evidence);
+  if (migration === null) return null;
+  return {
+    schema: 'cf-v2-arc5-app-state/v1',
+    stateKind: 'loaded',
+    mode: migration.source.mode,
+    protection: migration.source.mode === 'current' ? null : 'legacy-protected',
+    bootstrapPending: false,
+    bootstrapOutcome: 'aligned',
+    revision: migration.targetMirror.revision,
+    sourceRevision: migration.source.revision,
+    sourceDigest: migration.sourceDigest,
+    targetDigest: migration.targetDigest,
+    acquisitions: migration.source.discoveries.length,
+    bredAcquisitions: migration.targetMirror.bredAcquisitions.length,
+    creatures: migration.targetMirror.creatures.length,
+    creatureTombstones: migration.targetMirror.creatureTombstones.length,
+    specimenLots: migration.targetMirror.specimenLots.length,
+    specimenTombstones: migration.targetMirror.specimenTombstones.length,
+    biospheres: migration.source.biosphereProgress.length,
+  };
 }
 
 function arc4DurableProjectionSelftestFixture({
@@ -884,6 +960,12 @@ function arc4DurableProjectionSelftestFixture({
   };
   extensionRows.player['arc4.ownership.progress'] = {
     version: 1, json: arc4CanonicalJson(progress),
+  };
+  extensionRows[ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.segment][
+    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+  ] = {
+    version: 1,
+    json: arc4CanonicalJson(arc5CertificateFromArc4Mirror(mirror)),
   };
   const sessionRng = {
     seed: sessionSeed, ordinal: sessionOrdinal,
@@ -2909,6 +2991,8 @@ function arc4GlassSelftest() {
   const wrongFixtureRawAssessment = arc4VeteranCaptureFixturePreflight(
     `${VETERAN_PREF_RAW} `, oracle,
   );
+  const durableBefore = arc4DurableProjectionSelftestFixture();
+  const selftestOwnershipV2 = arc5OwnershipV2SelftestState(durableBefore);
   const row = (verb, index) => {
     const copy = ARC4_CAPTURE_LABELS[verb];
     const odds = {
@@ -2954,7 +3038,10 @@ function arc4GlassSelftest() {
       actionControlCount: 3, delegatedListenerCount: 1, contextKey,
       lastRequest: null, lastOutcome: null,
     },
-    captureState: { schema: 'cf-v2-arc4-app-state/v1', revision: 0 },
+    captureState: {
+      schema: 'cf-v2-arc4-app-state/v1', revision: durableBefore.captureRevision,
+    },
+    ownershipV2: selftestOwnershipV2,
     persistence: null,
     activeElement: {
       verb: null, semanticKey: null, status: false, close: false, focusVisible: false,
@@ -3046,7 +3133,6 @@ function arc4GlassSelftest() {
   Object.assign(stretchedButton.controls[2].layoutRect, { bottom: 730, height: 400 });
   const stretchedButtonAssessment = assessArc4CaptureCardGeometryFocus(stretchedButton);
   const stretchedButtonClauses = arc4GeometryClauseProjection(stretchedButton);
-  const durableBefore = arc4DurableProjectionSelftestFixture();
   const durableCheckpoint = arc4DurableProjectionSelftestFixture({
     outerRevision: 10, activePlayMs: 5_000, checkpointAt: 2_000,
   });
@@ -3074,6 +3160,8 @@ function arc4GlassSelftest() {
     rng: durableRng, receipt: durableReceipt, epoch: durableEpoch, counter: durableCounter,
   }).map(([name, evidence]) => [name, assessArc4DurableEvidence(evidence)]));
   const durableProjection = arc4DurableNoMutationProjection(durableBefore);
+  const durableCheckpointProjection = arc4DurableNoMutationProjection(durableCheckpoint);
+  const durableOwnershipProjection = arc4DurableNoMutationProjection(durableOwnership);
   const durableCounterProjection = arc4DurableNoMutationProjection(durableCounter);
   const durableBeforeFingerprint = arc4DurableFingerprint(durableBefore);
   const durableCheckpointFingerprint = arc4DurableFingerprint(durableCheckpoint);
@@ -3082,8 +3170,24 @@ function arc4GlassSelftest() {
   const durableReceiptFingerprint = arc4DurableFingerprint(durableReceipt);
   const durableEpochFingerprint = arc4DurableFingerprint(durableEpoch);
   const durableCounterFingerprint = arc4DurableFingerprint(durableCounter);
+  const durableArc5Mutation = structuredClone(durableBefore);
+  const mutatedArc5Carrier = durableArc5Mutation.playerRow.extensions[
+    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+  ];
+  const mutatedArc5Certificate = JSON.parse(mutatedArc5Carrier.json);
+  mutatedArc5Certificate.targetDigest = (
+    mutatedArc5Certificate.targetDigest[0] === '0' ? '1' : '0'
+  ) + mutatedArc5Certificate.targetDigest.slice(1);
+  mutatedArc5Carrier.json = arc4CanonicalJson(mutatedArc5Certificate);
+  durableArc5Mutation.playerRaw = JSON.stringify(durableArc5Mutation.playerRow);
+  const durableArc5MutationAssessment = assessArc4DurableEvidence(durableArc5Mutation);
+  const durableArc5MutationFingerprint = arc4DurableFingerprint(durableArc5Mutation);
   const canonicalAuthorityAssessment = assessArc4DurableEvidence(durableCanonicalAuthority);
-  const capture = { schema: 'cf-v2-arc4-app-state/v1', revision: 0, lastOutcome: null };
+  const capture = {
+    schema: 'cf-v2-arc4-app-state/v1',
+    revision: durableBefore.captureRevision,
+    lastOutcome: null,
+  };
   const surface = {
     mode: 'surface', galaxySeed: 999, starSeed: 424242, planetSeed: 133,
     planetOrdinal: 2, worldKey, cardOpen: true, expanded: 'true', cardTitle: oracle.title,
@@ -3194,6 +3298,18 @@ function arc4GlassSelftest() {
       durableEpoch, durableCounter]
       .every(arc4DurableEvidenceComplete)
     && durableProjection?.ownershipCarriers?.length === 18
+    && exactJson(durableProjection?.arc5Migration?.target,
+      ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET)
+    && durableProjection?.arc5Migration?.carrier?.version === 1
+    && typeof durableProjection?.arc5Migration?.carrier?.json === 'string'
+    && durableProjection.arc5Migration.carrier.byteLength
+      === Buffer.byteLength(durableProjection.arc5Migration.carrier.json, 'utf8')
+    && durableProjection.arc5Migration.carrier.jsonSha256
+      === sha256(durableProjection.arc5Migration.carrier.json)
+    && durableProjection.arc5Migration.sourceDigest
+      === selftestOwnershipV2?.sourceDigest
+    && durableProjection.arc5Migration.targetDigest
+      === selftestOwnershipV2?.targetDigest
     && exactJson(durableProjection?.v4Mirror?.legacy?.ownedAliases,
       [['cs111', 'Wayfinder']])
     && durableProjection?.v4Mirror?.legacy?.essence === 7
@@ -3204,17 +3320,29 @@ function arc4GlassSelftest() {
     })
     && durableBeforeFingerprint === durableCheckpointFingerprint
     && typeof durableBeforeFingerprint === 'string'
+    && exactJson(durableCheckpointProjection?.arc5Migration,
+      durableProjection?.arc5Migration)
     && durableOwnershipFingerprint !== durableBeforeFingerprint
+    && durableOwnershipProjection?.arc5Migration?.carrier?.json
+      !== durableProjection?.arc5Migration?.carrier?.json
+    && durableOwnershipProjection?.arc5Migration?.sourceDigest
+      !== durableProjection?.arc5Migration?.sourceDigest
+    && durableOwnershipProjection?.arc5Migration?.targetDigest
+      !== durableProjection?.arc5Migration?.targetDigest
     && durableRngFingerprint !== durableBeforeFingerprint
     && durableReceiptFingerprint !== durableBeforeFingerprint
     && durableEpochFingerprint !== durableBeforeFingerprint
     && durableCounterFingerprint !== durableBeforeFingerprint
     && exactJson(durableCounterProjection?.ownershipCarriers,
       durableProjection?.ownershipCarriers)
+    && exactJson(durableCounterProjection?.arc5Migration,
+      durableProjection?.arc5Migration)
     && exactJson(durableCounterProjection?.v4Mirror, durableProjection?.v4Mirror)
     && exactJson(durableCounterProjection?.sessionRng, durableProjection?.sessionRng)
     && exactJson(durableCounterProjection?.receipts, durableProjection?.receipts)
     && arc4DurableFingerprint({}) === null
+    && durableArc5MutationFingerprint === null
+    && arc4IsolatedFailure(durableArc5MutationAssessment, 'arc5TargetFixedPoint')
     && arc4IsolatedFailure(canonicalAuthorityAssessment, 'f4Authority')
     && arc4IsolatedFailure(wrongTitleAssessment, 'homeworldTitle')
     && arc4IsolatedFailure(wrongCountsAssessment, 'rosterCounts')
@@ -3273,8 +3401,10 @@ function arc4GlassSelftest() {
     wrongPlanetside: wrongPlanetsideAssessment, wrongCapture: wrongCaptureAssessment,
     dependentBaseline, wrongDependentBaseline, wrongPlanetsideOwnershipBaseline,
     wrongPresentationBaseline, wrongGeometryBaseline,
-    durableProjection, durableBeforeFingerprint, durableCheckpointFingerprint,
-    durableAssessments, canonicalAuthorityAssessment,
+    durableProjection, durableCheckpointProjection, durableOwnershipProjection,
+    durableBeforeFingerprint, durableCheckpointFingerprint,
+    durableAssessments, durableArc5MutationAssessment,
+    durableArc5MutationFingerprint, canonicalAuthorityAssessment,
     wrongOwnership: wrongOwnershipAssessment, wrongRng: wrongRngAssessment,
     wrongReceipt: wrongReceiptAssessment, wrongEpoch: wrongEpochAssessment,
     wrongCounter: wrongCounterAssessment,
