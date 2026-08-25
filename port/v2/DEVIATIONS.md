@@ -9,7 +9,7 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — Arc 3 Engineering and Arc 4/5 ownership foundations (2026-08-25)
+## Current-state boundary — Arc 3 Engineering, headless Arc 4 writer and Arc 5 foundation (2026-08-25)
 
 - ★ **D-ARC3-ENGINEERING — fixed Engineering is player-live locally.** Registered full-CF1
   world/star opportunity snapshots preserve raw tiers 0–14, finite reserves and active-play cursors.
@@ -26,11 +26,20 @@ as any change that touches an entry.
   instrument failures, or retries). Both reports name base `768fb32` but bind different dirty
   snapshots—Slice `29d54731…`, Glass `d9b51284…`—so this is bounded local exact-input proof, not
   exact-head/full-battery, hosted, integration, HUMAN, preview, release, or deployment authority.
-- ◐ **D-ARC4-OWNERSHIP — identity/planning exists before mutation.** The full epoch-bound roster,
-  contact capability, 18 owner namespaces, ownership-v1/import codecs, acquisition snapshot and
-  pure capture planner are committed. No bootstrap, attempt-spend writer, Compendium/ownership
-  publication or UI exists. Commit `af12659` adds the pre-draw/capacity all-scenario certification
-  and settlement prerequisite; it is not a durable capture writer, product publication or UI.
+- ◐ **D-ARC4-OWNERSHIP — headless durable authority; player presentation remains open.** The full
+  epoch-bound roster, contact capability, 18 owner namespaces, ownership-v1/import codecs,
+  acquisition snapshot and pure capture planner now feed an app-wired writer. Boot prepares absent
+  ownership or reconciles a projectable mirror in the shared receipt-free CAS and protects future,
+  corrupt, unrepresentable or Training-deferred evidence. Genuine legacy Training joins one Arc 2
+  write with all 18 Arc 4 writes under exact migrated source evidence. The diagnostics-only action
+  binds exact surface/address, production full roster/current epoch and every capacity scenario
+  before two persisted F4 draws; one fenced receipt/CAS spends on hit or miss and settles first-only
+  catalogue/reward facts or repeat fauna/specimen ownership. Pre-CAS retains only the private pending
+  registered plan/settlement identities and prepared fingerprint. The committed path alone mints
+  the evidence token and performs the sole WeakMap registration, binding that payload to the exact
+  transaction/kind/revision. The verifier then requires the full prepared save before targeted
+  publication or read-only reload convergence. No player control, copy/toast, Guide capability,
+  browser outcome or HUMAN proof exists; random-pool versus targeted presentation remains open.
 - ◐ **D-ARC5-OWNERSHIP-V2 — successor model and migration certificate only.** V2 binds capture
   receipts, deterministic fauna-only children, ordered parents, dispositions and tombstones. Its
   migration carrier stores only V1/V2 digests derived from a fresh import. It is not duplicate
@@ -40,15 +49,16 @@ as any change that touches an entry.
   SessionRNG authority, one immutable receipt and the next revision through one lease-fenced CAS.
   Initial scene render is read-only; a pure before/after route classifier may arm an explicit durable
   repair only when source/protection/Training guards allow it. That repair coalesces with F4/Arc 2/
-  Arc 3 bootstrap in the single boot-authority CAS, while an aligned current-v5 boot performs zero
-  commits. Pre-durable stale authority reloads without publishing an action; a post-durable Arc 3
+  Arc 3 and Arc 4 bootstrap in the single boot-authority CAS, while an aligned current-v5 boot
+  performs zero commits. Pre-durable stale authority reloads without publishing an action; a post-durable Arc 3
   publication fault remains committed and reload-converges without a second action, receipt, or write.
   Arc 3 settles Auto-Extractor loads from the prior active-play cursor, caps them by finite
   reserves, ignores legacy wall timestamps and reanchors a newly fabricated extractor. Arc 2 owns
-  exact gear instances; Arc 4/5 own catalogue/specimen/fauna models and migration evidence, but no
-  capture, breeding, care or assignment writer exists. Unmigrated combat, breeding, capture and
-  later random writers remain open. This overlay supersedes current-state implications in the
-  dated `D-EPOCH-1`, `D-STORE`, `D-IDENTITY-LOOT`, `D-AUTOEXTRACT-CLOCK` and `D-RNG` entries below
+  exact gear instances; Arc 4 owns the headless exact-once capture writer above, while Arc 5 owns
+  only the successor catalogue/specimen/fauna model and migration evidence. Unmigrated combat,
+  breeding, care, assignment and later random writers remain open. This overlay supersedes current-
+  state implications in the dated `D-EPOCH-1`, `D-STORE`, `D-IDENTITY-LOOT`,
+  `D-AUTOEXTRACT-CLOCK` and `D-RNG` entries below
   without rewriting their historical boundaries.
 
 ## Current-state instrument correction — PR #34 Compendium native row activation (2026-08-23)

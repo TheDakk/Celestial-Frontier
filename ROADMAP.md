@@ -17,17 +17,16 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-25 · FULL LOCAL CAMPAIGN · ARC 4 DURABLE WRITER NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-25 · ARC 4 HEADLESS DURABLE WRITER COMPLETE · UI NEXT ◀◀◀
 
 ### Current integration state
 
-- **Committed product/browser snapshot for this handoff:**
-  `c4a02be2f7fb3cecda3e38dd631545da2b87b7b2`, observed on `openai/mac` with a clean worktree
-  and the branch ahead of its upstream by 60 commits before this docs-only refresh.
-  Arc 4 pre-draw/capacity certification is committed at `af12659`, the absolute audio caps are
-  committed at `3fd9e81`, and truthful Arc 3 Guide/release/Training guidance is committed at
-  `4e0a976`. Arc 3 recovery and its browser instruments are committed at `c4a02be`; the Compendium
-  measurement reseal remains deferred until the final multi-Arc dependency graph freezes.
+- **Committed local product snapshot for this handoff:**
+  `fd72c06486dfa9a9157fe9472cbb9020f61ec6dc` on `openai/mac`, ahead of its upstream by 62
+  commits before this reference/handoff commit. Arc 3 recovery and its bounded browser evidence
+  remain committed at `c4a02be`; Arc 4's strict ownership bootstrap and diagnostics-only durable
+  capture writer are committed at `fd72c06`. The Compendium measurement reseal remains deferred
+  until the final multi-Arc dependency graph freezes.
 - PR #33 merged normally into `develop` as
   `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after terminal-green
   `test-battery` run `32646110946` (one attempt, no retry; battery 50m29s).
@@ -190,14 +189,36 @@ inside its roster owner. `fullWorldRoster` retains every deterministic row; the 
 reports the hidden count. Thirteen-row, short, empty, snapshot, and mutation controls pass. Future
 capture/audio targeting must consume the full side, never infer authority from the preview.
 
-**Arc 4 capture foundation (committed local, 2026-08-24; no product writer yet):** the canonical
-full roster, exact epoch ownership, capture-contact capability, 18 owner namespaces, strict
-ownership-v1 codecs, a source-proven acquisition snapshot, and a pure capture planner now exist.
-They do not bootstrap a save carrier, spend a biosphere attempt, mutate ownership or Compendium,
-write a capture receipt, expose a capture button, or prove reload/UI/browser outcomes. Commit
-`af12659` adds the pre-draw/capacity all-scenario certification and settlement prerequisite. That
-prerequisite is committed; it is not a durable capture writer, save bootstrap, product UI or
-browser certification.
+**Arc 4 headless durable writer (committed local `fd72c06`, 2026-08-25):** absent ownership-v1
+carriers now bootstrap into the shared receipt-free F4/Arc 2/Arc 3 boot CAS without granting a
+Compendium page, discovery, creature, specimen or reward. Current projectable mirrors reconcile in
+that same owned commit; future, corrupt, unrepresentable and legacy-protected states remain exact
+and fail closed. Legacy Training composes its one Arc 2 replacement with all 18 Arc 4 namespaces,
+and postcommit verification binds the exact source evidence before publishing compatibility fields.
+The diagnostics-only writer captures the real current surface, canonical address, current ecology
+epoch and full roster, certifies a miss plus every eligible hit before either F4 draw, and settles
+one finite attempt, ownership successor, legacy projection, receipt, next authority and revision in
+one lease-fenced CAS. Misses spend an attempt; first observations alone add catalogue/reward state;
+later cycles/worlds may add a new individual or lot without a second page or reward. Pre-CAS retains
+only a private pending payload binding the registered plan/settlement identities and full prepared
+fingerprint; the committed path alone creates and registers the opaque evidence token against the
+exact transaction, kind and revision. Stale/storage/protected paths publish nothing, while
+post-durable verification faults clear live authority and perform one read-only convergence reload
+without a second write or reroll.
+
+Arc 4 is still **not player-live**. There are no Tame/Scavenge/Sample controls, odds/targeting
+presentation, toast/reward animation, Guide enablement, or Arc 4 browser/HUMAN proof. Capture and
+Discover Life remain truthfully unavailable in player copy. The next batch must decide random-pool
+versus targeted presentation, then co-deliver accessible UI/copy and real native outcome/reload/
+storage/stale browser evidence before claiming the capability or letting Arc 5 depend on it.
+
+**Arc 4 local verification:** eight focused files pass 101/101 tests. The explicit non-Compendium
+suite passes 98 files / 1,142 tests with one intentional skip; root/app/worker typechecks,
+`artunused`, and the 872-module game production build pass. The full suite records 1,160 passes,
+one skip and one expected red only at the deferred Compendium measurement-authority digest
+(`6a961d…` sealed versus `2ab188…` live). Strong no-unused runs report only the same 12 untouched
+art-override parameters and zero Arc 4 findings. No Arc 4 browser, hosted, HUMAN, release or
+deployment evidence was produced in this batch.
 
 **Arc 5 ownership seam (committed local, 2026-08-24; model/certificate only):** ownership-v2 defines
 receipt-bound capture, deterministic fauna-only bred-child successors with ordered parent evidence,
@@ -244,41 +265,50 @@ current-source local browser proof is recorded above; audio browser/listening ev
   review count nor the former extra approval for unattributed changes.
 - `branch-flow-guard` remains a manual diagnostic workflow, but is not a required
   merge context. Do not dispatch it to unblock a green PR.
-- While `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, Nick authorizes one exact
-  changed-head `test-battery` attempt. After that exact battery is green, the
-  agent removes the label, marks a draft Ready if necessary, and merges normally
-  without asking Nick for a second review/guard/merge approval. A red or incomplete
+- `UNFROZEN` does not itself authorize a hosted attempt. Only after Nick explicitly authorizes one
+  exact head/base `test-battery` attempt may the agent apply its approval label. If that exact
+  battery is green, the agent removes the label, marks a draft Ready if necessary, and merges
+  normally without asking Nick for a second review/guard/merge approval. A red or incomplete
   battery remains a hard stop.
 - One authorization remains intentionally explicit: a new hosted attempt for a new
   head. It controls Actions spend; it is not a second merge approval.
 
 ### In-session continuation / fresh-session recovery
 
-1. Continue only in the Codex macOS root on `openai/mac`. Product and browser instruments are
-   committed through `c4a02be`; do not fetch/merge, switch branches, push, or run GitHub workflows
-   without a new exact authorization.
+1. Continue only in the Codex macOS root on `openai/mac`. Product is committed through
+   `fd72c06486dfa9a9157fe9472cbb9020f61ec6dc`; Arc 3 browser instruments/evidence remain at
+   `c4a02be`. Do not fetch/merge, switch branches, push, or run GitHub workflows without a new exact
+   authorization.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
    `GITHUB_ACTIONS_BUDGET.md`; use `port/V2_PROGRAM_ROADMAP.md` §5.3 for the Arc 4 contract.
-3. Continue Arc 4 in dependency order: bootstrap the strict ownership-v1 carrier without granting
-   ownership or a free Compendium page, then land one durable Tame/Scavenge/Sample capture writer
-   through the shared product coordinator and F3/F4 lease-fenced transaction. Preserve certified
-   pre-draw state across failure; atomically settle finite attempt, ownership/projection, receipt and
-   revision; prove stale, duplicate, storage-failure, protected, reload and post-durable convergence.
-4. Only after that writer is terminal-green, expose truthful UI and browser
-   proof. Only after that may Arc 5 consume receipt-bound ownership for breeding/companions. Keep
-   audio package-only until canonical app adapters, a runtime owner, content, accessibility and
-   browser/device/HUMAN evidence exist. Recalibrate/reseal the Compendium measurement authority only
-   once the final multi-Arc dependency graph is frozen.
+3. Arc 4's headless writer is locally terminal-green. Next decide whether presentation exposes a
+   random eligible encounter pool or an explicitly targeted species; the current planner is random
+   pool authority, so UI must not imply targeting without a separate policy decision. Then add
+   accessible Tame/Scavenge/Sample controls and truthful odds/yield/recovery copy through the exact
+   main writer—never an injected snapshot, preview roster, direct planner roll or optimistic grant.
+4. Run native browser outcome proof for hit, miss, no-optimism, full-roster selection beyond the
+   eight-row preview, reload, injected storage refusal, stale authority, finite recovery and focus.
+   Co-deliver Guide/release copy only when those player controls land; until then Capture/Discover
+   Life stay unavailable. Only after player-live ownership evidence may Arc 5 consume it for
+   breeding/companions. Keep audio package-only until canonical app adapters, content,
+   accessibility and browser/device/HUMAN evidence exist. Recalibrate/reseal Compendium only after
+   the final multi-Arc dependency graph freezes.
 5. Claude/Anthropic should receive merged work only by fetching `origin` and
    merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
    manual file copying. Nick does not need to open Claude now.
 
 **Current side:** Codex macOS is on `openai/mac`, based on merged `develop` `7a9f4c1…`, with the
-commit-preserving local campaign committed through Arc 3 recovery/browser evidence at `c4a02be` and
-the Arc 4 prerequisite foundations in place.
+commit-preserving local campaign committed through Arc 4's headless durable writer at `fd72c06`;
+Arc 4 player UI/browser proof remains the next bounded batch.
 `origin/openai/mac` remains the contained PR #34 head until a later exact final-head authorization.
 **GitHub step:** none.
+**PR details:** not needed; the local campaign is still batching and no push/hosted attempt is
+authorized.
+**Other side:** Anthropic/Claude Code does not have this local Arc 4 commit. Nick does not need to
+open Claude now; after a future reviewed merge into `develop`, Claude should fetch `origin` and
+merge `origin/develop` into a clean `anthropic/mac`, never copy files manually.
 **Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
-**Actions budget:** `UNFROZEN`; PR #34 runs `32665404776` and `32677088518` remain consumed
-terminal-red, and run `32681394532` is consumed terminal-green. All labels are removed; no new
-hosted attempt is authorized by this handoff.
+**Actions budget:** `UNFROZEN`; the repository is public as observed 2026-08-20, while 3,000 remains
+the fail-closed cap if it becomes private or billing is ambiguous. PR #34 runs `32665404776` and
+`32677088518` remain consumed terminal-red, and run `32681394532` is consumed terminal-green. All
+labels are removed; zero new hosted attempts and no push are authorized by this handoff.

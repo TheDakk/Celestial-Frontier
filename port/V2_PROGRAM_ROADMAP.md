@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-24.
+> 2026-08-25.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -74,18 +74,25 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-25 local campaign boundary — committed product work now includes Arc 3; Arc 4 is the
-> active prerequisite and every program Arc remains bounded by its open evidence:** canonical
+> **2026-08-25 local campaign boundary — product work now includes Arc 3 and a diagnostics-only
+> headless Arc 4 durable writer; every program Arc remains bounded by its open evidence:** canonical
 > full-CF1 resource/star opportunities, finite active-play Mine/Skim, the Engineering panel, shared
 > product-action coordination and committed-only Charter mining/fabrication banking are live locally.
 > Six research rows are displayed but only Deep Scanners is purchasable; its pure orbital-reveal
 > policy exists while current Survey renders no orbital mineral rows. All 62 fixed recipes are
 > listed, but only connected-effect outputs with exact costs/preconditions and capacity/revision
 > headroom are actionable; fully exceptional slotted outputs and disconnected-effect rows remain
-> unavailable. Arc 4 has committed full
-> roster/epoch/contact, ownership-v1, acquisition snapshot and pure planner foundations, but no
-> durable writer/UI. Its pre-draw/capacity all-scenario certification and settlement prerequisite
-> is also committed; it does not settle capture or publish ownership. Arc 5 has a receipt-bound V2
+> unavailable. Arc 4 now bootstraps its strict 18-namespace ownership authority in the shared
+> receipt-free boot CAS, and genuine legacy Training joins one Arc 2 row with all 18 Arc 4 rows under
+> exact source evidence. Its diagnostics-only Tame/Scavenge/Sample action binds the full production
+> roster and current epoch, certifies every miss/hit capacity scenario before two persisted F4
+> draws, spends on hit or miss, and settles ownership, compatibility projection, one receipt and the
+> next revision in one CAS. Pre-CAS retains only a private pending payload of registered plan/
+> settlement identities and prepared fingerprint. The committed path alone mints the evidence token
+> and performs its sole WeakMap registration, binding that payload to the exact transaction/kind/
+> revision; the verifier then requires the full prepared save before targeted publication. There is
+> still no player control, copy/toast, Guide capability, real-browser/reload outcome or HUMAN proof, and the
+> random-pool-versus-targeted presentation policy remains open. Arc 5 has a receipt-bound V2
 > model and digest-only migration certificate, not
 > an app migration or companion action. Arc 7 has package-only identity/runtime/lab/rights
 > foundations, including the committed absolute eight-emitter/120-node configuration caps. Arc 3
@@ -1042,15 +1049,15 @@ rows, and double action. F3 is the first point at which persistence may be calle
 **Hard no-go:** no item/creature instance mutation, capture spend, craft/salvage, companion dispatch,
 Guardian settlement, or receipt-backed reward before F3.
 
-**Current local implementation (2026-08-24):** v4 remains the supported compatibility codec while
+**Current local implementation (2026-08-25):** v4 remains the supported compatibility codec while
 v5 partitions it into owner-named rows, preserves the exact pre-migration snapshot/journal, and
 brackets complete reads/writes with a revision. The lease-fenced mutation owner atomically commits
 product rows, immutable receipt, and next revision, returning explicit stale, duplicate, lost-lease,
 and storage outcomes without automatic retry. Portable v5 replacement carries extension namespaces
-without flattening them into v4. This authority is now exercised by Arc 2 Inventory and Training
-carrier replacement. The wider F3 program exit still awaits clean exact-head/browser IndexedDB
-upgrade and representative two-tab coverage for later capture/mission/combat writers; real-save
-Gate C remains open.
+without flattening them into v4. This authority is exercised by Arc 2 Inventory/Training, Arc 3
+Engineering and the headless Arc 4 capture writer. Arc 4 has focused stale/coordinator controls, but
+the wider F3 program exit still awaits clean exact-head/browser IndexedDB upgrade and representative
+two-tab coverage for mission/combat and other later writers; real-save Gate C remains open.
 
 ### 4.9 F4 — active-play clock and SessionRNG
 
@@ -1185,12 +1192,24 @@ protection; reach/visual/Guide agreement; economy simulation; phone/desktop huma
 
 ### 5.3 Arc 4 — capture and ownership
 
-**Implementation status (2026-08-24): `[PARTIAL]`, package foundation only.** Full epoch-bound
+**Implementation status (2026-08-25): `[PARTIAL]`, headless durable writer.** Full epoch-bound
 rosters, contact capability, 18 ownership namespaces, strict ownership-v1/import codecs, canonical
-acquisition snapshots and the pure capture planner are committed. No save bootstrap, capture
-writer, Compendium/ownership publication, product control, reload outcome or browser evidence
-exists. Commit `af12659` adds the pre-draw/capacity all-scenario certification and settlement
-prerequisite. It is committed prerequisite authority, not a durable capture settlement writer or UI.
+acquisition snapshots and the pure capture planner are committed. The app bootstraps an absent
+ownership carrier—or reconciles a projectable compatibility mirror—in the shared receipt-free boot
+CAS while protecting future, corrupt, unrepresentable and Training-deferred evidence. Genuine
+legacy Training couples one Arc 2 write with all 18 Arc 4 writes and exact migrated source evidence
+in its single replacement transaction.
+
+The diagnostics-only Tame/Scavenge/Sample front door captures the exact current surface, canonical
+address, production full roster and current epoch; pre-certifies the miss and every eligible hit
+against complete-save capacity before reading `captureCandidate` and `captureSuccess`; and settles
+attempt spend, first-only catalogue/reward facts, repeat fauna individuals or specimen lots, F4,
+one receipt and one revision in a single fenced CAS. Before durability it retains only the private
+pending registered plan/settlement identities and prepared fingerprint. The committed path alone
+mints the evidence token and performs the sole WeakMap registration, binding that payload to the
+exact transaction/kind/revision. The verifier then requires the full prepared save before targeted
+publication or read-only reload convergence. No visible control, player copy/toast, Guide capability,
+real-browser/reload outcome or HUMAN evidence exists, so the Arc remains `[PARTIAL]`.
 
 **Player promise:** discovery becomes meaningful ownership through finite, legible actions—not by
 opening a page or replaying a roll.
@@ -1198,19 +1217,21 @@ opening a page or replaying a roll.
 **Build scope:**
 
 - Separate `CatalogSpecies`, `CreatureInstance`, specimens/resources, and discovered records.
-- Implement finite Tame, Scavenge, and Sample actions plus Biosphere Yield. Fauna Tame may create a
-  living creature; Scavenge/Sample never silently create companions.
-- Model attempt spend, success/failure, recovery, depleted/worked-out state, provenance, and
-  receipt-backed settlement.
-- Give survey/discovery/capture outcomes clear visual and caption paths without claiming rewards
-  before the transaction succeeds.
+- Keep the implemented finite headless Tame, Scavenge and Sample settlement authoritative: fauna
+  Tame may create a living creature; Scavenge/Sample create specimen lots, never companions.
+- Preserve attempt spend on hit or miss, recovery/depletion, provenance, first-only discovery reward
+  and receipt-backed exact-once settlement through player presentation work.
+- Add visible product controls and give survey/discovery/capture outcomes clear visual, caption and
+  focus paths without claiming rewards before the transaction succeeds.
 
 **Dependencies:** Arc 2 item/storage model, Arc 3 world opportunity/reach, F2 canonical identity,
 F3 transactions, and F4 time/RNG.
 
-**Exit evidence:** a real action creates the correct catalogue page/specimen/creature; no free page,
-reroll, double spend, duplicate creature, or stale-tab grant; reload/write-failure controls; Guide
-remains unavailable until those outcomes exist.
+**Exit evidence:** focused browser-free controls now prove the headless writer's hit/miss, spend,
+first-only/repeat, capacity, stale/CAS, receipt, committed-state and publication boundaries. Exit
+still requires a player-reachable action that creates the correct catalogue page/specimen/creature;
+real reload/write-failure and browser controls; and proof of no free page, reroll, double spend,
+duplicate creature or stale-tab grant. Guide remains unavailable until those outcomes exist.
 
 ### 5.4 Arc 4.5 — first complete journey [HUMAN]
 

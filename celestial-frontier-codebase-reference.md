@@ -20,18 +20,35 @@
 > `boot-route-repair.ts` owns the pure route-persistence classifier. Initial scene publication uses
 > `rerender({skipPersist:true})`; rendering cannot mint write intent. A source-proven semantic delta
 > in durable saved view or ordered Atlas routes may arm one explicit route repair, coalesced with F4
-> seed and Arc 2/3 bootstrap by `ensureBootAuthorityCommit()`. Protected, source-error, blocked-route,
+> seed and Arc 2/3/4 bootstrap by `ensureBootAuthorityCommit()`. Protected, source-error, blocked-route,
 > Training-checkpoint and runtime-only Training-seat paths restore held durable route bytes before an
 > unrelated bootstrap candidate exists. An aligned current-v5 replacement performs no boot commit.
 > Arc 3 stale outcomes refuse before durability; after `commitAction()` reports committed, any
 > verification/publication failure is a committed action that suppresses the stale live projection
 > and converges through one read-only reload—never a second derivation, receipt or write.
 >
-> Arc 4's committed package boundary is `fullWorldRoster` plus explicit epoch ownership,
-> capture-contact capability, acquisition snapshot/planner, ownership-v1 and its persistence codec
-> across 18 namespaces. There is no ownership bootstrap, capture CAS, product button or browser
-> outcome yet; the committed pre-draw/capacity all-scenario certification and settlement prerequisite
-> does not settle capture or publish ownership. Arc 5 adds the
+> Arc 4's current local boundary adds `arc4-capture-capacity.ts`, `arc4-capture-action.ts`, and the
+> `main.ts` adapter to `fullWorldRoster`, explicit epoch ownership, capture-contact capability,
+> acquisition snapshot/planner and the 18-namespace ownership-v1 codec. Boot migrates an absent
+> carrier or reconciles a projectable current mirror inside the shared receipt-free CAS; protected,
+> future, corrupt or unrepresentable evidence never rewinds. A genuine legacy Training completion
+> derives one Arc 2 plus all 18 Arc 4 writes from the final candidate and postcommit-remigrates the
+> committed canonical state to bind exact source evidence.
+>
+> The diagnostics-only Tame/Scavenge/Sample adapter captures exact current nav/address, the
+> production full roster and current epoch. Its registered all-scenario certificate prepares the
+> miss and every eligible hit as a complete save before either capture-domain draw. The selected
+> hit or miss spends one Biosphere attempt and commits ownership, compatibility fields, next F4
+> authority, one immutable receipt and revision in one CAS. The compatibility projection includes
+> exact full `codex`, owned `c*` custom-name fields, `bioX` and `scout`. First-species catalogue/reward facts are
+> one-time; an eligible repeat may create another stable fauna instance or specimen lot. Independent
+> verification sees only a private pending payload of registered plan/settlement identities and
+> prepared fingerprint before durability. The committed path mints the evidence token and performs
+> the sole WeakMap registration, binding that payload to the exact transaction/kind/revision. The
+> verifier then requires the full prepared save before targeted publication; failures converge by
+> reload without reroll or second write. There is still no Capture button, player copy/toast,
+> browser/HUMAN outcome or Guide
+> capability, and random-pool versus targeted presentation remains undecided. Arc 5 adds the
 > receipt-bound ownership-v2 model and a digest-only V1→V2 migration certificate—not duplicated V2
 > state, a writer, breed action or companion UI. Arc 7 has pure identity/taxonomy/ecology/expression,
 > an injected runtime, lab and empty-rights validator; it is not app-owned playback. Its absolute
@@ -69,9 +86,11 @@
 > phone dock, supplies one durable action adapter, and publishes no optimistic state. The detail
 > sheet owns inert background, bidirectional focus wrap/return, exact conditional comparison,
 > salvage confirmation, pending action and convergence diagnostics. Genuine legacy Training gear
-> replacement derives the Arc 2 carrier inside the same checked state/extension/F4 transaction;
-> current-view/source-deferred restore preserves it, corrupt/future refuses, and post-durable
-> publication failure reloads without a second write.
+> replacement derives the Arc 2 carrier and, for an absent Arc 4 target, all 18 ownership writes
+> inside the same checked state/extension/F4 transaction. Current-view/source-deferred restore
+> preserves them; existing/future/corrupt ownership authority refuses rewind. Post-durable Arc 4
+> verification binds the committed canonical state's exact migrated source evidence as well as the
+> carrier/mirror; publication failure reloads without a second write.
 >
 > For the recorded pre-current-WIP Arc 2 candidate, focused Arc 2/F3/F4 checks plus all TypeScript
 > programs and the Vite build passed. Its no-retry local Slice Smoke and full Glass Matrix reports
@@ -1910,7 +1929,9 @@ The current v2 read-only Compendium projects as many as 1,500 deterministic spec
 `CompendiumVirtualList`, mounting only its measured window, bounded overscan, and any
 focus-pinned row. Rows acquire 132px art leases; detail alone retains a 440px portrait. Logical
 anchor-plus-offset, selected-row focus, and exact release/recovery ownership survive filter,
-detail/Back, resize, and close.
+detail/Back, resize, and close. "Read-only" describes the player-visible surface: the diagnostics-
+only Arc 4 action can durably add first-only catalogue compatibility data after its exact committed
+transaction verifies, but no visible Tame/Scavenge/Sample control exposes that writer yet.
 
 ### Star Atlas (bookmarks)
 The `logMap` Map. `addToLog`, `renderLog`. Every survey card (galaxy/star/planet/moon/etc.)
@@ -2204,13 +2225,16 @@ presentation, the determinism ban covers domain modules only.
 
 ## 10. Save format (`localStorage['cfcc_save_v2']`)
 
-**Current v2 topology (2026-08-24):** v4 remains the imported/exported compatibility codec, while
+**Current v2 topology (2026-08-25):** v4 remains the imported/exported compatibility codec, while
 repository schema v5 stores owner-partitioned rows, pre-migration source snapshot/journal, revision,
-receipts and independently versioned extension namespaces. The two current product authorities are
-`player/f4.authority` v1 (active-play + SessionRNG) and `inventory/arc2.loot` v1 (exact gear +
-stackables or protected legacy facts). Every complete v5 write/replacement must carry both explicitly;
-round-tripping only the v4 envelope would erase authority. This schema number is independent of the
-development display identity and production `GAME_VERSION`.
+receipts and independently versioned extension namespaces. Current product authorities include
+`player/f4.authority` v1 (active-play + SessionRNG), `inventory/arc2.loot` v1 (exact gear +
+stackables or protected legacy facts), `engineering/arc3.state`, and Arc 4's 18 fixed ownership
+namespaces. Every complete v5 write/replacement must carry them explicitly; round-tripping only the
+v4 envelope would erase authority. Receipt-free boot migration/reconciliation shares one
+lease-fenced CAS, while product actions join their carrier/compatibility/F4 changes with one receipt
+and next revision. This schema number is independent of the development display identity and
+production `GAME_VERSION`.
 
 **Current v2 Training compatibility fields (2026-08-16):** the outer envelope
 remains `v:4`. While Training is incomplete, optional `tsnap` carries either the
@@ -2225,6 +2249,14 @@ Absence retains historical derivation, malformed v1 members are contained,
 floor fields only raise derived facts, and `sysSeen` remains arrival-count
 authority. Neither field is a v5 migration, whole-save checkpoint, reward
 receipt, game-version bump, or production release.
+
+**Current v2 Training ownership coherence (2026-08-25):** a genuine legacy checkpoint that owns
+restored Compendium/creature/biosphere/scout compatibility fields prepares Arc 4 only when the 18
+ownership namespaces are absent. Its single replacement transaction then carries exactly one Arc 2
+write plus all 18 Arc 4 writes and verifies the carrier, compatibility mirror and exact migrated
+source evidence from `committed.saved.canonicalState` after durability. Current-view and source-
+deferred checkpoints preserve current authority; existing, future, corrupt or unrepresentable Arc 4
+evidence is protected/refused and never rewound.
 
 **Current v2 epoch carrier (2026-08-15):** the IndexedDB slice still exports one
 v4 JSON blob whose `epoch` field comes from `SaveStateV2.EPOCH_BASE`. That name is

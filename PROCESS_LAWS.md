@@ -20,9 +20,11 @@ inside an unrelated bootstrap CAS.
 
 Publish the initial scene with persistence explicitly skipped. Classify a boot write from detached,
 source-proven durable inputs before building any candidate; semantic defaults such as omitted versus
-false flags must fixed-point. Give every allowed repair a named intent and coalesce it with other
-authorized bootstrap work under one lease-fenced commit. Held repairs must restore their original
-durable bytes before another owner can construct a candidate. An aligned current replacement must
+false flags must fixed-point. Give every allowed repair a named intent and coalesce it with F4,
+route, Arc 2, Arc 3 and Arc 4's strict 18-namespace ownership bootstrap under one receipt-free,
+lease-fenced commit. Training-deferred or protected Arc 4 evidence must not hitchhike. Held repairs
+must restore their original durable bytes before another owner can construct a candidate. An aligned
+current replacement must
 prove zero boot commits, null outcome and zero pending persistence work. Negative-control saved-view-
 only and Atlas-only deltas, constant/partial fingerprints, and every protected/source-error/Training
 hold. A render, visibility change or convenient normalization is never itself authority to write.
@@ -34,7 +36,12 @@ state and may converge by reloading the newer authority. A verification or publi
 paths “failed” invites a rerun, duplicate receipt or second write.
 
 Model the boundary explicitly. Pre-durable stale, duplicate, lease, protected and storage outcomes
-publish nothing. Post-durable verification/publication faults suppress the old live projection,
+publish nothing. Before CAS, Arc 4 may retain only a private pending payload of registered plan/
+settlement identities and prepared fingerprint. It mints no evidence token and registers no WeakMap
+entry until the transaction commits; that sole postcommit registration binds the payload to the exact
+committed transaction/kind/revision. The verifier must then bind that evidence, complete prepared
+save, ownership carrier/mirror, F4 draws and receipt before targeted publication. Post-durable
+verification/publication faults suppress the old live projection,
 retain the exact diagnostic witness and committed receipt evidence, and perform one read-only
 convergence reload. The
 replacement document must prove a changed loader token, exact committed carrier/mirror/receipt
@@ -53,10 +60,37 @@ back over the restored checkpoint.
 When a replacement path owns compatibility fields that mirror a versioned carrier, decide ownership
 before writing: derive the complete carrier from the exact restored fields when the checkpoint owns
 them; preserve the carrier when it does not; and refuse corrupt, future, source-deferred, or partial
-evidence rather than guessing. Commit state, carrier, protected authority and revision under the
-same fence/CAS boundary. After durability, publication verifies the committed carrier or reloads;
-it never performs a second write. Grep every restore/import/reset writer whenever a compatibility
-projection gains a new authority—ordinary action tests alone cannot expose a replacement-only split.
+evidence rather than guessing. Arc 4 applies the same law to ownership-v1 and the v4 `codex`, owned
+`c*` names, `bioX` and `scout` compatibility fields. A genuine legacy Training restore therefore
+commits exactly 18 Arc 4 namespace writes, plus its one Arc 2 write when applicable, from the exact
+restored source and verifies the committed canonical state/source evidence; a lossless
+`legacy-protected` carrier is preserved without inventing a mirror. Commit state, carrier, protected
+authority and revision under the same fence/CAS boundary. After durability, publication verifies
+the committed carrier or reloads; it never performs a second write. Grep every restore/import/reset
+writer whenever a compatibility projection gains a new authority—ordinary action tests alone
+cannot expose a replacement-only split.
+
+⚠⚠ **A MUTATION CONTROL MUST OWN ONE NONEMPTY TARGET INSIDE THE SECTION IT CLAIMS TO TEST**
+(2026-08-25). Arc 4's integration audit found that a source-slicing control can stay green while
+testing nothing: an empty slice accepts every replacement, and an out-of-section replacement changes
+bytes the guard never reads. The named control then appears adversarial without exercising its owner.
+
+Before accepting a source-mutant test, prove the extracted owner section and its guard are nonempty,
+prove the target occurs exactly once inside that section, mutate that in-section occurrence, and
+prove the resulting source differs in the intended field. Keep a positive unmutated control beside
+it. A whole-file match or a passing downstream test cannot repair a vacuous section-local mutant.
+
+⚠⚠ **SINGLE-FLIGHT OWNERSHIP MUST BE CLAIMED SYNCHRONOUSLY AND HELD ACROSS ITS WHOLE BARRIER**
+(2026-08-25). Arc 4 joined queued persistence, Training replacement and product actions under one
+coordinator. A claim made after the first await leaves a double-entry window; a hold that ignores
+queued work admits overlap; and a post-heartbeat guard that treats its own `activePersist` as foreign
+work rejects the action that correctly owns the barrier.
+
+Claim synchronously before the first await. Put queued persistence behind the exact coordinator
+barrier, retain the claim through heartbeat/revalidation, transaction verification and publication,
+and distinguish the claimant's own active persistence from competing work. Static call-order checks
+are insufficient: dynamically overlap the participating actions and persistence path, prove one
+owner proceeds, and prove every refused contender creates no draw, receipt, CAS or live publication.
 
 ⚠⚠ **NATIVE POINTER EVIDENCE MUST SURVIVE THE DEFERRED RENDER, PROVE A STABLE HIT OWNER, AND OWN
 THE IMMEDIATE ACTION RECEIPT** (2026-08-23). PR #34 run `32665404776` positioned a virtual

@@ -20,13 +20,27 @@
 > source-proven projection and ignores semantically omitted false flags. It arms only an actual
 > unheld delta. Source-error, protected, Training-checkpoint, blocked-route and runtime-only
 > Training-seat paths restore the held durable route before any unrelated bootstrap candidate is
-> prepared. `ensureBootAuthorityCommit()` coalesces explicit route repair with F4 seed and Arc 2/3
+> prepared. `ensureBootAuthorityCommit()` coalesces explicit route repair with F4 seed and Arc 2/3/4
 > bootstrap in one lease-fenced commit. An aligned current-v5 replacement performs zero runtime
 > commits, leaves `lastOutcome:null`, and has zero pending persistence writes.
 >
-> Arc 4 now has strict ownership-v1 codecs over catalogue species, discovery records, stable fauna
-> instances, specimen lots, biosphere progress and bounded legacy evidence. This is package
-> authority only: no app bootstrap, durable capture writer or save replacement path writes it yet.
+> Arc 4 now bootstraps its strict 18-namespace ownership-v1 carrier in that same receipt-free boot
+> CAS. Absent legacy authority is migrated whole; a current carrier's projectable stale v4 mirror is
+> reconciled through the shared detached candidate; future, corrupt, unrepresentable and lossless
+> `legacy-protected` evidence stays protected. Its diagnostics-only capture action snapshots the
+> exact current surface/full roster/current epoch, certifies miss plus every eligible hit against
+> complete-save capacity before two F4 draws, then commits one attempt spend, ownership, v4 mirror,
+> F4 authority, immutable receipt and revision in one CAS. That mirror is the exact full `codex`,
+> owned `c*` custom-name fields, `bioX` and `scout` projection. Independent postcommit verification binds
+> an evidence token that does not exist before durability: pre-CAS retains only the private pending
+> plan/settlement identities and prepared fingerprint. The committed path alone performs the sole
+> WeakMap registration and binds that payload to the exact transaction/kind/revision. Verification
+> then requires the complete prepared save and committed transaction before targeted publication;
+> a mismatch reload-converges and never rerolls or writes again.
+>
+> This persistence owner does not make Capture player-live. There is no Capture control, copy,
+> toast, browser/HUMAN proof or Guide capability, and the random-pool-versus-targeted UI policy is
+> still undecided.
 > Arc 5 adds only a digest certificate in `player/arc5.ownership.migration`, derived from a fresh
 > Arc 4 import and binding source/target modes, revisions and digests. It stores no duplicate
 > ownership-v2 bytes and is not a product migration or ownership writer.
@@ -54,12 +68,14 @@
 > malformed, future, unknown and over-bounds carriers remain protected. The legacy-v4
 > `items` / `equip` / `equipAff` fields are a compatibility mirror derived from the carrier.
 >
-> Field Training now respects that dual representation. A genuine legacy checkpoint that actually
-> restores gear derives/replaces the Arc 2 carrier inside the same checked state/extension/F4
-> transaction. Current `{view}` or source-deferred restore preserves the carrier; corrupt/future
-> evidence refuses. After durability the app verifies/publishes the committed Inventory controller,
-> or reloads without a second write if publication cannot converge. This extends—not broadens—the
-> checkpoint's established eleven-field ownership.
+> Field Training now respects both product representations. A genuine legacy checkpoint that
+> actually restores gear and ownership-bearing Compendium fields derives one Arc 2 write plus all
+> 18 Arc 4 writes from the final detached candidate inside the same checked state/extension/F4
+> transaction. Arc 4 preparation requires an absent target; current/future/corrupt carriers protect
+> against rewind. Current `{view}` and source-deferred restore preserve both carriers. After
+> durability, Arc 4 remigrates the committed canonical state and binds its exact source evidence in
+> addition to the full carrier/mirror before publication; any mismatch reloads without a second
+> write. This extends—not broadens—the checkpoint's established eleven-field ownership.
 >
 > For the recorded pre-current-WIP Arc 2 candidate, focused Arc 2/F3/F4 tests, TypeScript/build,
 > one-attempt Slice Smoke and full-certifying Glass Matrix were terminal PASS on Edge
@@ -698,7 +714,7 @@
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the current v2 overlay
-matches `port/v2` as of 2026-08-24. ⚠ Read the v1.8.7 section (a reverted
+matches `port/v2` as of 2026-08-25. ⚠ Read the v1.8.7 section (a reverted
 `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`,
 harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
@@ -829,13 +845,15 @@ reasoning has to be revisited.
 
 ## 1. Overview
 
-**Current v2 persistence topology (2026-08-24):** the imported/exported legacy product envelope
+**Current v2 persistence topology (2026-08-25):** the imported/exported legacy product envelope
 remains canonical v4 compatibility data, while the live repository schema is v5 with split owner rows,
 revision, migration snapshot/journal and independently versioned extension carriers. The protected
-`player/f4.authority` and `inventory/arc2.loot` namespaces are not v4 fields and therefore must pass
-through every v5 read/write/replacement explicitly. Arc 2 is authoritative once present; its projected
-`items` / `equip` / `equipAff` values keep unported v4 readers coherent. This persistence-schema version
-is not `GAME_VERSION`, a production release, or permission to discard the v4 migration codec.
+`player/f4.authority`, `inventory/arc2.loot`, `engineering/arc3.state`, and 18 fixed Arc 4 ownership
+namespaces are not v4 fields and therefore must pass through every v5 read/write/replacement
+explicitly. Product carriers are authoritative once present; their narrowly projected v4 fields keep
+unported readers coherent. Boot migrations/reconciliations share one receipt-free lease-fenced CAS;
+receipt-bearing actions use the shared F3/F4 transaction. This persistence-schema version is not
+`GAME_VERSION`, a production release, or permission to discard the v4 migration codec.
 
 Module `SaveSystem [app]` (main.js 10000–10359) owns a debounced write, a hardened
 load, and the reset/wipe paths. The save is **local only** — there is no server and

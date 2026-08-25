@@ -2,8 +2,8 @@
 
 **STATUS:** approved product direction and implementation contract as of **2026-08-25**.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
-exact-instance Inventory and Arc 3 Engineering actions described below. Arc 4 has committed
-roster/ownership/snapshot/planner packages but no durable capture writer or UI; Arc 5 has only its
+exact-instance Inventory and Arc 3 Engineering actions described below. Arc 4 has a headless durable
+ownership bootstrap and diagnostics-only capture writer but no player capture UI; Arc 5 has only its
 ownership-v2 model and digest migration certificate. Five non-Deep-Scanner research purchases,
 Survey orbital-mineral-row rendering, disconnected-effect and fully exceptional slotted fixed-
 recipe actions, new random loot sources, upgrades/sockets, capture/acquisition UI, companion
@@ -21,11 +21,20 @@ does not silently promote planned behavior into the in-game Guide.
 > applicable, F4 authority, one receipt and revision together. Finite source cursors advance from
 > prior active-play state. Variable crafting/new loot occurrence/upgrades remain open.
 >
-> Arc 4 owns the full epoch-bound roster, canonical acquisition snapshot, pure capture plan and
-> ownership-v1 model across 18 namespaces. Arc 5 owns a receipt-bound V2 model plus digest-only
-> migration certificate. Neither has a product writer, UI/reload/browser outcome, live breed/care/
-> assignment or companion expedition. Arc 4's pre-draw/capacity all-scenario certification and
-> settlement prerequisite is committed; it is not a durable capture writer or product publication.
+> Arc 4 owns the full epoch-bound roster, canonical acquisition snapshot, capture plan and
+> ownership-v1 model across 18 namespaces. Boot migration/reconciliation shares the one receipt-free
+> product CAS, and genuine legacy Training couples its Arc 2 write with all 18 Arc 4 writes plus exact
+> source-evidence verification. A diagnostics-only Tame/Scavenge/Sample path certifies miss and every
+> eligible hit against complete-save capacity before two F4 draws, then commits hit-or-miss spend,
+> ownership/mirror, one receipt and revision together. First-species catalogue/reward facts are
+> one-time; repeats may create another fauna individual or specimen lot. Postcommit publication
+> requires the evidence token minted only after commit: its sole WeakMap registration binds the
+> private pending plan/settlement identities and prepared fingerprint to the exact committed
+> transaction/kind/revision; the verifier then requires the full prepared save and committed-
+> transaction proof.
+> Arc 5 owns a receipt-bound V2 model plus digest-only migration certificate. Arc 4 still has no
+> player control/copy/toast, browser/HUMAN outcome or Guide capability; Arc 5 has no live breed/care/
+> assignment or companion expedition. Random-pool versus targeted Capture presentation is open.
 >
 > Local commit `c4a02be` records the Arc 3 product/browser-tool repair batch. One no-retry Slice run
 > passed in 253,181 ms with 0 findings/10 screenshots; full Glass separately passed in 64,222 ms with
@@ -218,7 +227,7 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
 | Charters / reach language | Stage-aware landfall projection plus committed-only Arc 3 mining/fixed-fabrication goal banking; imported drive/chapter facts still gate reach | Port remaining outcome writers and expose goals/transitions/rewards only with them |
 | Compendium | Read-only virtualized 1,500-row list, bounded asynchronous thumbnails and selected static detail | HUMAN Arc 1 art review, then any separately bounded living selected preview |
-| Capture / specimen acquisition | Canonical full-roster snapshot, pure planner and ownership-v1 package exist; no live Tame, Scavenge, Sample or Biosphere writer/UI | Bootstrap then port one finite receipt-backed capture writer before companions |
+| Capture / specimen acquisition | Strict ownership bootstrap and a diagnostics-only receipt-backed Tame/Scavenge/Sample writer consume the canonical full roster/current epoch and settle finite hit-or-miss spend; no player control/copy/toast or browser/HUMAN proof exists | Decide random-pool versus targeted presentation, build accessible UI/copy, retain Guide-unavailable truth until real reachability/browser outcome proof |
 | Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
 | Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, the sole purchasable Deep-Scanner row, and eligible fixed-Fabrication actions; the pure orbital-reveal policy exists but Survey renders no orbital mineral rows; connected exact system outputs can update reach | Other five research purchases, Survey orbital mineral rows, fully exceptional slotted/disconnected recipe outputs, HUMAN silhouette and Engineering comprehension, and later authored upgrades/variable construction |
 | Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six displayed Research rows and all 62 listed fixed recipes are present; only Deep Scanners and connected-effect recipes with exact costs/preconditions and capacity/revision headroom are actionable and receipt-backed | Fully exceptional slotted/disconnected outputs, authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing |
@@ -497,12 +506,14 @@ bypassed by hiding a confirmation button.
 ### 7.1 Acquisition contract
 
 Survey reveals a roster; it does not silently create a catalogue page or owned companion. The
-future Tame, Scavenge and Sample outcomes in `CAPTURE_AND_BIOSPHERE.md` are the acquisition writers:
-a successful action creates or updates `CatalogSpecies`; successful fauna Tame may also create a
-stable `CreatureInstance`, while Scavenge/Sample create bounded specimens/resources rather than
-counterfeit living companions. Attempt cost, odds, finite Biosphere Yield, active-play recovery and
-genuinely-new discovery rewards settle in one receipt. Miss/reload/two-tab controls must prove no
-free page, duplicate creature, reroll or double-spend.
+headless Tame, Scavenge and Sample outcomes in `CAPTURE_AND_BIOSPHERE.md` are the acquisition
+writers: a genuinely first successful action creates the `CatalogSpecies`/reward facts; successful
+fauna Tame creates a stable `CreatureInstance`, while Scavenge/Sample create bounded specimen lots
+rather than counterfeit living companions. Eligible repeats create another individual/lot without
+duplicating the first catalogue/reward grant. Attempt cost, odds, finite Biosphere Yield and the F4
+draw/receipt settle together; hit and miss each spend one. Package/app controls cover refusal,
+failure, replay, stale and exact committed verification, but player reachability, browser outcome,
+recovery presentation and HUMAN comprehension remain open.
 
 Normal v2 companion breeding is nonlethal: both parent instances remain owned but enter a bounded
 active-play **Recovery** assignment that blocks breeding, dispatch and combat until complete. The
@@ -636,8 +647,9 @@ changes must change it.
   entropy and never at reveal/claim time.
 - Use optimistic save `revision` compare-and-swap or one authoritative serialized coordinator
   plus a cross-tab lease before every reward-bearing or destructive mutation. The current v5
-  revision/lease/receipt boundary satisfies this prerequisite and Arc 2 uses it; later product
-  writers must join the same owner rather than restoring last-writer-wins behavior.
+  revision/lease/receipt boundary satisfies this prerequisite; Arc 2, Arc 3 and the headless Arc 4
+  capture writer use it. Later product writers must join the same owner rather than restoring
+  last-writer-wins behavior.
 - Keep ecology `COSMIC_EPOCH` semantics separate from the uncapped dedicated active-play
   millisecond clock used by missions/recovery. The legacy Auto-Extractor's wall-clock accrual is a
   known clock-wind exploit and must migrate to that active-play authority before it returns.
@@ -719,7 +731,7 @@ batch. Planned systems live here and in their system docs, not in player-visible
 | 1 — portrait/ship foundation | virtualized thumbnails, character portrait service, pure `ShipVisualState`, static Shipyard proof | Automated foundation and 42/42 memory route are complete; phone/desktop HUMAN portrait and four-silhouette judgment remain open |
 | 2 — item instances and readable economy **[PARTIAL; recorded local candidate green]** | Schema/migration, strict carrier, Inventory, equip/unequip/salvage/pending-claim, canonical fixed tables and exact inspect/conditional compare are implemented; production source/craft policy is not | The recorded pre-current-WIP Arc 2 candidate's fixed-point/exact-instance/browser outcomes were green; this does not certify the current moving tree. Authored source/range/targeted-craft/pacing policy and HUMAN phone/desktop review remain before program closure |
 | 3 — engineering loop **[PARTIAL locally implemented; bounded browser pair green]** | Mine/Skim, sole purchasable Deep-Scanner row, six-row Research presentation, all-62 fixed-recipe listing, eligible connected-effect/exact-cost/headroom fabrication actions, and truthful Guide/release/Training guidance are implemented; Survey orbital mineral rows, the other five research purchases, fully exceptional slotted/disconnected outputs and wider engineering depth remain open | Local Slice/Glass exact-input proof covers real actions, finite active-play sources, durable receipt/reload parity, and storage/stale/publication convergence. Exact-head/full-battery evidence, economy simulation, reach/visual/Guide agreement, and HUMAN comprehension remain open |
-| 4 — capture/ownership **[PARTIAL package/prerequisite]** | Catalogue/owned-instance models, canonical snapshot/planner and pre-draw/capacity all-scenario certification/settlement prerequisite are committed; no durable Tame/Scavenge/Sample writer or UI exists | real-action page/specimen creation, attempt spend/recovery, no duplicate/reroll/two-tab grant |
+| 4 — capture/ownership **[PARTIAL headless durable writer]** | Strict 18-namespace bootstrap, Training coupling and diagnostics-only Tame/Scavenge/Sample settlement now provide full-roster/current-epoch, all-scenario-before-draw, one-receipt/CAS ownership outcomes; no player UI/copy/browser/HUMAN proof exists | choose targeted versus random-pool UX, add accessible player reachability and result copy, then prove browser/reload/two-tab outcomes without changing the certified writer |
 | 4.5 — first complete journey | Fresh-start Survey → opportunity → Gather → Build → Tame → ship upgrade → farther reach → meaningful Return | first-time 30–60-minute human path proves comprehension, agency and satisfying pacing without idle waits or a scripted fake reward |
 | 5 — companions | nonlethal breeding/recovery, care/bond/Chronicle and active-play missions | fed inheritance, recovery/away locks, exact-once return, save-failure/two-tab controls |
 | 5.5 — combat decision model | role, preparation, telegraphing, counterplay, retreat and settlement rules are specified and scenario-proven before battle UI expands | humans can choose and explain a viable response; no opaque hard-counter or stat-only outcome passes as strategy |
@@ -767,7 +779,8 @@ cannot understand, enjoy or comfortably use it.
   crafted modifier/drawback, upgrades/sockets and Guardian drops;
 - broader world-opportunity presentation and economy source/rate/recovery/pacing coverage beyond
   the canonical finite Arc 3 opportunities and their currently executable source subset;
-- Tame/Scavenge/Sample acquisition, finite Biosphere Yield and catalogue/specimen ownership;
+- player-facing Tame/Scavenge/Sample controls/copy and finite Biosphere presentation over the
+  existing headless durable catalogue/specimen/fauna writer;
 - feeding, injury care, breeding, lineage actions, creature XP/classes and Companion bond;
 - friendly duels, conquest, Apex Guardians, settlement rewards and Binder/Paragons;
 - Companion missions/return loot;
@@ -780,8 +793,8 @@ cannot understand, enjoy or comfortably use it.
 ### Foundation and quality work still open
 
 - canonical CF1 source proof is live for runtime galaxy/star/planet navigation,
-  including saved views and Atlas; persisted ownership-receipt ingress and local
-  ledger migration remain open;
+  including saved views and Atlas; Arc 4 capture now binds the current surface to canonical address,
+  full roster and current epoch, while later companion/combat ownership ingress remains open;
 - D-TRAIN-1 exact-head/integration plus real-save Gate-C evidence, and CFB parent identity;
 - Compendium and Shipyard HUMAN art judgment, plus bounded living-preview/audio work;
 - physical-device long-session memory/heat judgment beyond the automated Pixi/Canvas ownership plateau;
