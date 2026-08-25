@@ -21,7 +21,21 @@ import { execFileSync, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { buildCompendiumFixture } from './compendiummem-fixture.mjs';
+import {
+  GLASS_VETERAN_PREF_RAW as VETERAN_PREF_RAW,
+  glassEngineeringFixtureOutcome,
+  glassVeteranPreferenceRaw,
+} from './glass-engineering-fixture-contract.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import {
+  ENGINEERING_ACTION_CONTROL_COUNT,
+  ENGINEERING_GLASS_RECIPE_ORACLE,
+  ENGINEERING_GLASS_RESEARCH_ORACLE,
+  ENGINEERING_RECIPE_GROUPS,
+  ENGINEERING_RECIPE_IDS,
+  ENGINEERING_RESEARCH_IDS,
+  hasUnnegatedSentenceClaim,
+} from './engineering-browser-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
@@ -104,29 +118,6 @@ class ProductAnswerabilityFinding extends Error {
     this.finding = finding;
   }
 }
-const VETERAN_PREF_RAW = (() => {
-  const fixture = JSON.parse(fs.readFileSync(
-    path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8',
-  )).inputs.veteran_rich;
-  fixture.fs = 'fs-xl';
-  fixture.tone = 'tone-max';
-  fixture.font = 'font-mono';
-  fixture.tut = 0;
-  /* The ordinary rich save owns one helmet but no same-slot comparison.
-     Add one equipped suit and one conditional same-slot candidate so the
-     Inventory matrix proves landing-family wording instead of passing on an
-     unconditional self-comparison. These are fixture bytes only. */
-  fixture.items = [...fixture.items, ['hazmat', 1], ['thermal', 1]];
-  fixture.eq = { ...fixture.eq, suit: 'hazmat' };
-  /* This fixture supplies populated panels and display preferences, not a
-     navigation starting point. veteran_rich is saved on Earth's surface;
-     clearing that route lets unfinished Training source-seat Sol. The matrix
-     uses the real post-Skip focus release and ascent below before universe
-     geometry begins. */
-  fixture.view = null;
-  return JSON.stringify(fixture);
-})();
-
 /* Read the durable Arc 2 carrier rather than trusting Main's diagnostics as
    its own oracle. The Inventory outcome joins these exact bytes to the DOM;
    a stale UI and a stale diagnostic cannot agree their way to green. */
@@ -1907,6 +1898,130 @@ function viewportTimingsOutcome(timings, { certifying, status }) {
   return { ok: true, why: null };
 }
 
+const GLASS_SHIPYARD_SETTLEMENT_SCHEMA = 'cf-v2-glass-shipyard-panel-settlement/v1';
+function shipyardPanelSettlementOutcome(value, expectedCardOpen) {
+  const engineering = value?.engineering;
+  const persistence = value?.persistence;
+  const runtime = persistence?.runtime;
+  const resources = value?.sceneResources;
+  const diagnostics = value?.diagnostics;
+  const panelDiagnostics = diagnostics?.engineering;
+  const checks = Object.freeze({
+    complete: value?.schema === GLASS_SHIPYARD_SETTLEMENT_SCHEMA
+      && typeof expectedCardOpen === 'boolean'
+      && Number.isSafeInteger(value?.previewCount) && value.previewCount >= 0,
+    panelOpen: value?.panelOpen === 'shipyard',
+    previewReady: value?.previewCount === 1,
+    surveyComposition: value?.cardOpen === expectedCardOpen,
+    engineeringAuthority: engineering?.schema === 'cf-v2-arc3-app-state/v1'
+      && engineering?.stateKind === 'loaded' && engineering?.protection === null
+      && engineering?.bootstrapPending === false
+      && engineering?.bootstrapCandidateReady === false,
+    persistenceAuthority: persistence?.schema === 'cf-v2-app-persistence/v1'
+      && persistence?.hold === null && persistence?.mutationBlocked === false
+      && persistence?.seedBootstrapPending === false
+      && persistence?.bootRouteRepairPending === false
+      && persistence?.productBootstrapPending === false
+      && persistence?.engineeringBootstrapPending === false
+      && runtime?.leaseOwned === true && runtime?.staleBlocked === false,
+    persistenceQuiescent: resources?.schema === 'cf-v2-scene-resources/v2'
+      && resources?.pendingPersistenceWrites === 0,
+    panelDiagnostics: diagnostics?.schema === 'cf-v2-shipyard-diagnostics/v1'
+      && diagnostics?.status === 'open' && diagnostics?.activePreviewCount === 1
+      && diagnostics?.retainedPreviewCount === 0 && diagnostics?.pendingPreviewWork === 0
+      && panelDiagnostics?.schema === 'cf-v2-engineering-panel-diagnostics/v1'
+      && panelDiagnostics?.activeCount === 1 && panelDiagnostics?.pendingWork === 0
+      && panelDiagnostics?.activePreviewCount === 1,
+  });
+  const reasons = Object.entries(checks).filter(([, ok]) => !ok).map(([name]) => name);
+  return Object.freeze({ ok: reasons.length === 0, checks, reasons: Object.freeze(reasons) });
+}
+
+function glassShipyardSettlementSelftest() {
+  const fixture = JSON.parse(VETERAN_PREF_RAW);
+  const fixtureBaseline = glassEngineeringFixtureOutcome(fixture);
+  const originalOrphan = JSON.parse(glassVeteranPreferenceRaw('original-orphan'));
+  const orphanMine = JSON.parse(glassVeteranPreferenceRaw('mx-only'));
+  const orphanMined = JSON.parse(glassVeteranPreferenceRaw('minedw-only'));
+  const wrongSkim = structuredClone(fixture);
+  wrongSkim.skx = [[424243, 2]];
+  const missingEarth = structuredClone(fixture);
+  missingEarth.log = missingEarth.log.filter((entry) => entry?.id !== 'p133');
+  const fixtureControls = Object.freeze({
+    originalOrphan: glassEngineeringFixtureOutcome(originalOrphan),
+    orphanMine: glassEngineeringFixtureOutcome(orphanMine),
+    orphanMined: glassEngineeringFixtureOutcome(orphanMined),
+    wrongSkim: glassEngineeringFixtureOutcome(wrongSkim),
+    missingEarth: glassEngineeringFixtureOutcome(missingEarth),
+  });
+  const baseline = {
+    schema: GLASS_SHIPYARD_SETTLEMENT_SCHEMA,
+    panelOpen: 'shipyard', cardOpen: true, previewCount: 1,
+    engineering: {
+      schema: 'cf-v2-arc3-app-state/v1', stateKind: 'loaded', protection: null,
+      bootstrapPending: false, bootstrapCandidateReady: false,
+    },
+    persistence: {
+      schema: 'cf-v2-app-persistence/v1', hold: null, mutationBlocked: false,
+      seedBootstrapPending: false, bootRouteRepairPending: false,
+      productBootstrapPending: false, engineeringBootstrapPending: false,
+      runtime: { leaseOwned: true, staleBlocked: false },
+    },
+    sceneResources: { schema: 'cf-v2-scene-resources/v2', pendingPersistenceWrites: 0 },
+    diagnostics: {
+      schema: 'cf-v2-shipyard-diagnostics/v1', status: 'open', activePreviewCount: 1,
+      retainedPreviewCount: 0, pendingPreviewWork: 0,
+      engineering: {
+        schema: 'cf-v2-engineering-panel-diagnostics/v1', activeCount: 1,
+        pendingWork: 0, activePreviewCount: 1,
+      },
+    },
+  };
+  const settlementBaseline = shipyardPanelSettlementOutcome(baseline, true);
+  const protectedUnavailable = structuredClone(baseline);
+  protectedUnavailable.previewCount = 0;
+  protectedUnavailable.engineering.stateKind = 'unavailable';
+  protectedUnavailable.engineering.protection = 'legacy-refused:legacy-seed-missing';
+  protectedUnavailable.diagnostics.activePreviewCount = 0;
+  protectedUnavailable.diagnostics.engineering.activePreviewCount = 0;
+  const controls = Object.freeze({
+    protectedUnavailable: shipyardPanelSettlementOutcome(protectedUnavailable, true),
+    missingPreview: shipyardPanelSettlementOutcome({ ...baseline, previewCount: 0 }, true),
+    protectedEngineering: shipyardPanelSettlementOutcome({
+      ...baseline,
+      engineering: { ...baseline.engineering, stateKind: 'unavailable', protection: 'legacy-refused:legacy-seed-missing' },
+    }, true),
+    panelClosed: shipyardPanelSettlementOutcome({ ...baseline, panelOpen: null }, true),
+    surveyMismatch: shipyardPanelSettlementOutcome({ ...baseline, cardOpen: false }, true),
+    pendingPersistence: shipyardPanelSettlementOutcome({
+      ...baseline,
+      sceneResources: { ...baseline.sceneResources, pendingPersistenceWrites: 1 },
+    }, true),
+  });
+  const isolated = (outcome, reason) => outcome.ok === false
+    && JSON.stringify(outcome.reasons) === JSON.stringify([reason]);
+  return Object.freeze({
+    ok: fixtureBaseline.ok
+      && fixtureControls.originalOrphan.ok === false
+      && JSON.stringify(fixtureControls.originalOrphan.reasons)
+        === JSON.stringify(['miningCursorCleared', 'miningClockCleared'])
+      && isolated(fixtureControls.orphanMine, 'miningCursorCleared')
+      && isolated(fixtureControls.orphanMined, 'miningClockCleared')
+      && isolated(fixtureControls.wrongSkim, 'solSkimRetained')
+      && isolated(fixtureControls.missingEarth, 'earthSourceRetained')
+      && settlementBaseline.ok
+      && controls.protectedUnavailable.ok === false
+      && JSON.stringify(controls.protectedUnavailable.reasons)
+        === JSON.stringify(['previewReady', 'engineeringAuthority', 'panelDiagnostics'])
+      && isolated(controls.missingPreview, 'previewReady')
+      && isolated(controls.protectedEngineering, 'engineeringAuthority')
+      && isolated(controls.panelClosed, 'panelOpen')
+      && isolated(controls.surveyMismatch, 'surveyComposition')
+      && isolated(controls.pendingPersistence, 'persistenceQuiescent'),
+    fixtureBaseline, fixtureControls, settlementBaseline, controls,
+  });
+}
+
 /* A rendered Guide negative control may remove a short needle from a longer
    required sentence. The checker reports that enclosing sentence as missing,
    not the needle. Accept the control only when the mutation is real, exactly
@@ -1925,6 +2040,56 @@ function guideRequiredControlRejected({ before, after, needle, required, result 
     && !result.text.includes(needle)
     && result.missing.length === 1
     && result.missing[0] === carriers[0];
+}
+
+/* Reconstruct the exact generated Shipyard predicate from this source for a
+   browser-free missing-owner control. A selector added to that predicate
+   cannot silently reintroduce `null.querySelectorAll(...)`: selftest executes
+   the same expression with no #shipyardpanel and requires structured red. */
+function missingShipyardPanelExpressionOutcome() {
+  try {
+    const source = fs.readFileSync(fileURLToPath(import.meta.url), 'utf8');
+    const startMarker = 'const shipyardOpenCheck' + ' = item.shipyard ? `';
+    const endMarker = '` : null;';
+    const start = source.indexOf(startMarker);
+    const duplicate = source.indexOf(startMarker, start + startMarker.length);
+    const end = source.indexOf(endMarker, start + startMarker.length);
+    if (start < 0 || duplicate >= 0 || end < 0) {
+      return { ok: null, threw: true, error: 'exact Shipyard expression source markers were not unique' };
+    }
+    let expression = source.slice(start + startMarker.length, end);
+    const substitutions = [
+      ['${JSON.stringify(opener)}', JSON.stringify('#missing-shipyard-opener')],
+      ['${JSON.stringify(ENGINEERING_RESEARCH_IDS)}', JSON.stringify(ENGINEERING_RESEARCH_IDS)],
+      ['${JSON.stringify(ENGINEERING_GLASS_RESEARCH_ORACLE)}', JSON.stringify(ENGINEERING_GLASS_RESEARCH_ORACLE)],
+      ['${JSON.stringify(ENGINEERING_RECIPE_GROUPS)}', JSON.stringify(ENGINEERING_RECIPE_GROUPS)],
+      ['${JSON.stringify(ENGINEERING_RECIPE_IDS)}', JSON.stringify(ENGINEERING_RECIPE_IDS)],
+      ['${JSON.stringify(ENGINEERING_GLASS_RECIPE_ORACLE)}', JSON.stringify(ENGINEERING_GLASS_RECIPE_ORACLE)],
+      ['${ENGINEERING_ACTION_CONTROL_COUNT}', String(ENGINEERING_ACTION_CONTROL_COUNT)],
+    ];
+    for (const [needle, replacement] of substitutions) expression = expression.replaceAll(needle, replacement);
+    if (expression.includes('${')) {
+      return { ok: null, threw: true, error: 'unresolved Shipyard expression interpolation' };
+    }
+    const document = Object.freeze({
+      getElementById: () => null,
+      querySelector: () => null,
+      elementFromPoint: () => null,
+      activeElement: null,
+    });
+    const window = Object.freeze({
+      __CF_SLICE__: Object.freeze({
+        api: Object.freeze({ state: () => Object.freeze({ shipVisual: null }), shipyardDiagnostics: () => null }),
+      }),
+    });
+    const outcome = Function(
+      'window', 'document', 'getComputedStyle', 'innerWidth',
+      `'use strict';return (${expression});`,
+    )(window, document, () => null, 320);
+    return { ...outcome, threw: false };
+  } catch (error) {
+    return { ok: null, threw: true, error: String(error?.message || error) };
+  }
 }
 
 function writeReport({ status, exitCode, browser, findings, instrumentFailures, controlsRun,
@@ -1983,6 +2148,16 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
 }
 
 async function reportSelftest() {
+  const shipyardSettlement = glassShipyardSettlementSelftest();
+  if (!shipyardSettlement.ok) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: Shipyard fixture/settlement controls failed (${JSON.stringify(shipyardSettlement)})`);
+  }
+  const missingShipyardPanel = missingShipyardPanelExpressionOutcome();
+  if (missingShipyardPanel.ok !== false || missingShipyardPanel.threw !== false
+    || missingShipyardPanel.research?.length !== 0 || missingShipyardPanel.groups?.length !== 0
+    || missingShipyardPanel.sectionIds?.length !== 0 || missingShipyardPanel.actionCount !== 0) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: missing Shipyard panel did not return structured red (${JSON.stringify(missingShipyardPanel)})`);
+  }
   const reloadFailures = await reloadPhaseSelftest();
   if (reloadFailures.length) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: replacement-document controls failed (${reloadFailures.join('; ')})`);
@@ -2005,6 +2180,28 @@ async function reportSelftest() {
     || inlineStyleRestoration.leakedFromEmpty || inlineStyleRestoration.changedNonempty
     || inlineStyleRestoration.malformedBefore || inlineStyleRestoration.malformedAfter) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: inline-style restoration controls failed (${JSON.stringify(inlineStyleRestoration)})`);
+  }
+  const toastAnchorRestoration = {
+    positive: toastAnchorControlOutcome({
+      priorStyle: 'right: 24px; bottom: 40px;', restoredStyle: 'right: 24px; bottom: 40px;',
+      before: { ok: true }, mutated: { ok: false, rect: [12, 40, 160, 48] }, restored: { ok: true },
+    }),
+    absentToEmpty: toastAnchorControlOutcome({
+      priorStyle: null, restoredStyle: '', before: { ok: true },
+      mutated: { ok: false, rect: [12, 40, 160, 48] }, restored: { ok: true },
+    }),
+    mutationStayedGreen: toastAnchorControlOutcome({
+      priorStyle: '', restoredStyle: '', before: { ok: true },
+      mutated: { ok: true, rect: [12, 40, 160, 48] }, restored: { ok: true },
+    }),
+    restoredAnchorRed: toastAnchorControlOutcome({
+      priorStyle: '', restoredStyle: '', before: { ok: true },
+      mutated: { ok: false, rect: [12, 40, 160, 48] }, restored: { ok: false },
+    }),
+  };
+  if (!toastAnchorRestoration.positive.ok || toastAnchorRestoration.absentToEmpty.ok
+    || toastAnchorRestoration.mutationStayedGreen.ok || toastAnchorRestoration.restoredAnchorRed.ok) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: toast anchor exact-byte restore controls failed (${JSON.stringify(toastAnchorRestoration)})`);
   }
   const guideNeedle = 'up to 1,500 logical entries';
   const guideCarrier = `read-only Compendium presents ${guideNeedle}`;
@@ -2251,7 +2448,7 @@ async function reportSelftest() {
   }
   console.log('GLASS MATRIX REPORT SELFTEST: PASS');
   console.log('  injected finding retained; 12 viewport definitions retained; retry policy remains zero');
-  console.log('  import, release, exact boot subphases, twin-canvas budgets, navigation, and boot-ready deadlines fail closed');
+  console.log('  missing Shipyard generated expression returns {ok:false} without throw; import, release, exact boot subphases, twin-canvas budgets, navigation, and boot-ready deadlines fail closed');
 }
 
 const MIME = Object.freeze({
@@ -3507,6 +3704,19 @@ function sameInlineStyleAttribute(before, after) {
   return before === after || (before === null && after === '') || (before === '' && after === null);
 }
 
+function toastAnchorControlOutcome(control) {
+  const prior = control?.priorStyle, restored = control?.restoredStyle;
+  const exactStyleBytes = (prior === null || typeof prior === 'string') && restored === prior;
+  const rect = control?.mutated?.rect;
+  const leftMutationLanded = Array.isArray(rect) && Number.isFinite(rect[0])
+    && Math.abs(rect[0] - 12) <= 2;
+  return {
+    ok: control?.before?.ok === true && control?.mutated?.ok === false
+      && leftMutationLanded && exactStyleBytes && control?.restored?.ok === true,
+    exactStyleBytes, leftMutationLanded,
+  };
+}
+
 async function main() {
   if (selftestOnly) {
     await reportSelftest();
@@ -3746,12 +3956,12 @@ async function main() {
         }
         await evalIn(`(${installAuditHarness.toString()})()`);
         const audit = (options) => evalIn(`window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(options)})`);
-        const waitFor = async (label, expression, timeoutMs = 5000) => {
+        const waitFor = async (label, expression, timeoutMs = 5000, accept = (value) => !!value) => {
           const until = Date.now() + timeoutMs;
           let last = null;
           while (Date.now() < until) {
             last = await evalIn(expression);
-            if (last) return last;
+            if (accept(last)) return last;
             await sleep(50);
           }
           throw new Error(`${vp.label}/${label}: outcome did not arrive within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
@@ -3767,8 +3977,35 @@ async function main() {
           await send('Input.dispatchKeyEvent', { type: 'rawKeyDown', ...key }, session);
           await send('Input.dispatchKeyEvent', { type: 'keyUp', ...key }, session);
         };
-        /* Shipyard is a real route in Arc 1C. Preserve an input receipt for
-           its opener and Close rather than using the panel helper's
+        const activateRealKeyboardControl = async (selector, label) => {
+          const target = await evalIn(`(()=>{const target=document.querySelector(${JSON.stringify(selector)}),
+            rect=target?.getBoundingClientRect(),style=target?getComputedStyle(target):null;
+            window.__cfGlassEngineeringKeyReceipt=null;window.__cfGlassEngineeringKeyAbort?.abort();
+            const controller=new AbortController();window.__cfGlassEngineeringKeyAbort=controller;
+            document.addEventListener('keydown',(event)=>{if(event.target!==target)return;
+              window.__cfGlassEngineeringKeyReceipt={key:event.key,code:event.code,trusted:event.isTrusted===true,
+                tag:target?.tagName||null,focusKey:target?.getAttribute?.('data-focus-key')||null};},
+              {capture:true,once:true,signal:controller.signal});target?.focus();return {
+                ok:!!target&&style?.display!=='none'&&style?.visibility!=='hidden'&&!!rect
+                  &&rect.width>0&&rect.height>=44&&document.activeElement===target,
+                tag:target?.tagName||null,focusKey:target?.getAttribute?.('data-focus-key')||null,
+                rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null};})()`);
+          if (!target.ok) return { ok: false, why: `${label} is not one focused visible 44px control`, target, receipt: null };
+          const key = { key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 };
+          await send('Input.dispatchKeyEvent', {
+            type: 'keyDown', ...key, text: '\r', unmodifiedText: '\r',
+          }, session);
+          await send('Input.dispatchKeyEvent', { type: 'keyUp', ...key }, session);
+          await sleep(40);
+          const receipt = await evalIn(`(()=>{const value=window.__cfGlassEngineeringKeyReceipt||null;
+            window.__cfGlassEngineeringKeyAbort?.abort();delete window.__cfGlassEngineeringKeyAbort;
+            delete window.__cfGlassEngineeringKeyReceipt;return value;})()`);
+          return { ok: receipt?.trusted === true && receipt?.key === 'Enter'
+            && receipt?.code === 'Enter' && receipt?.tag === target.tag
+            && receipt?.focusKey === target.focusKey, target, receipt };
+        };
+        /* Engineering/Shipyard is a real Arc 3 route. Preserve an input
+           receipt for its opener and Close rather than using the panel helper's
            programmatic click: visible DOM plus a direct API toggle can agree
            while the player-facing button is covered or unwired. */
         const activateRealControl = async (selector, label) => {
@@ -3780,7 +4017,7 @@ async function main() {
             const controller=new AbortController();window.__cfGlassShipyardReceiptAbort=controller;
             document.addEventListener('pointerdown',(event)=>{const node=event.target instanceof Element?event.target:null;
               window.__cfGlassShipyardReceipt={buttonId:node?.closest('button')?.id||null,
-                pointerType:event.pointerType||null,x:event.clientX,y:event.clientY};
+                pointerType:event.pointerType||null,trusted:event.isTrusted===true,x:event.clientX,y:event.clientY};
               window.__cfGlassShipyardReceiptAbort=null;},{capture:true,once:true,signal:controller.signal});
             return {ok:!!button&&style?.display!=='none'&&style?.visibility!=='hidden'
               &&rect.width>=44&&rect.height>=44&&!!hit&&(hit===button||button.contains(hit)),
@@ -3807,7 +4044,7 @@ async function main() {
             window.__cfGlassShipyardReceiptAbort?.abort();delete window.__cfGlassShipyardReceiptAbort;
             delete window.__cfGlassShipyardReceipt;return value;})()`);
           return {
-            ok: receipt?.buttonId === target.id
+            ok: receipt?.buttonId === target.id && receipt?.trusted === true
               && receipt.pointerType === (vp.mobile ? 'touch' : 'mouse'),
             target, receipt,
           };
@@ -4711,23 +4948,47 @@ async function main() {
         /* toast() intentionally ignores the first 1.8 seconds of a document;
            wait past that product rule instead of calling a helper directly. */
         await sleep(1900);
-        const blocked = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state(),r=before.renderedScene;
+        const homeDescent = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state(),r=before.renderedScene;
           /* The 8K same-backing resize can cross the universe auto-dive
              threshold while it proves live renderer answerability. Accept
              that setup only when it already reached the exact, provenance-
              keyed home galaxy with an agreeing draw-tail receipt. */
           const alreadyHome=before.mode==='galaxy'&&before.gal===999&&before.galX===90&&before.galY===-60
             &&before.galSize===78&&before.star===null&&before.planet===null
-            &&typeof before.navGalaxyKey==='string'&&before.navGalaxyKey.length>0
+            &&before.navGalaxyKey==='CF1|g:999@90,-60'
             &&before.navStarKey===null&&before.navWorldKey===null&&r?.serial>0&&r.mode==='galaxy'
             &&r.galaxyKey===before.navGalaxyKey&&r.starKey===null&&r.worldKey===null;
-          const reachedHome=alreadyHome||S.api.descendGalaxy({seed:999,x:90,y:-60});
-          const accepted=reachedHome&&S.api.descendSystem({seed:1664319693,x:-164.45360307302326,y:-117.94395204260945});
-          return {alreadyHome,reachedHome,accepted,beforeSerial:before.toastSerial,state:S.api.state()}; })()`);
-        if (!blocked.reachedHome || blocked.accepted || blocked.state.mode !== 'galaxy' || blocked.state.gal !== 999
+          const accepted=alreadyHome||S.api.descendGalaxy({seed:999,x:90,y:-60});
+          return {alreadyHome,accepted,beforeReceipt:r??null,state:S.api.state()}; })()`);
+        let homeRouteWaitError = null;
+        try {
+          await waitFor('home galaxy Charter source receipt', `(()=>{const s=window.__CF_SLICE__.api.state(),r=s.renderedScene;
+            return s.mode==='galaxy'&&s.gal===999&&s.galX===90&&s.galY===-60&&s.galSize===78
+              &&s.star===null&&s.planet===null&&s.navGalaxyKey==='CF1|g:999@90,-60'
+              &&s.navStarKey===null&&s.navWorldKey===null&&r?.serial>0&&r.mode==='galaxy'
+              &&r.galaxyKey===s.navGalaxyKey&&r.starKey===null&&r.worldKey===null?s:null})()`);
+        } catch (error) {
+          homeRouteWaitError = error.message;
+          instrumentFailures.push(error.message);
+        }
+        const homeRoute = await evalIn('window.__CF_SLICE__.api.state()');
+        const blocked = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state(),receipt=before.renderedScene,
+          accepted=S.api.descendSystem({seed:1664319693,x:-164.45360307302326,y:-117.94395204260945});
+          return {accepted,beforeSerial:before.toastSerial,receipt,state:S.api.state()}; })()`);
+        const receiptBound = blocked.receipt?.serial > 0
+          && blocked.receipt.serial === homeRoute.renderedScene?.serial
+          && blocked.receipt.mode === 'galaxy' && blocked.receipt.galaxyKey === 'CF1|g:999@90,-60'
+          && blocked.receipt.starKey === null && blocked.receipt.worldKey === null
+          && blocked.state.renderedScene?.serial === blocked.receipt.serial
+          && blocked.state.renderedScene?.mode === blocked.receipt.mode
+          && blocked.state.renderedScene?.galaxyKey === blocked.receipt.galaxyKey
+          && blocked.state.renderedScene?.starKey === blocked.receipt.starKey
+          && blocked.state.renderedScene?.worldKey === blocked.receipt.worldKey;
+        if (!homeDescent.accepted || homeRouteWaitError !== null || blocked.accepted
+          || blocked.state.mode !== 'galaxy' || blocked.state.gal !== 999 || !receiptBound
           || blocked.state.stage >= 2 || blocked.state.toastSerial <= blocked.beforeSerial
           || !blocked.state.toastText.includes('Beyond Your Charter')) {
-          instrumentFailures.push(`${vp.label}: could not enter the home galaxy to populate the toast (${JSON.stringify(blocked)})`);
+          instrumentFailures.push(`${vp.label}: exact home-galaxy receipt did not bind the blocked Charter attempt (${JSON.stringify({ homeDescent, homeRouteWaitError, homeRoute, blocked, receiptBound })})`);
         }
         try { await waitFor('charter toast', `window.__CF_SLICE__.api.state().toastOn && window.__CF_SLICE__.api.state().toastText.includes('Beyond Your Charter') && Number(getComputedStyle(document.getElementById('toast')).opacity)>0.1 && document.getElementById('toast')?.textContent?.trim().length>20`); }
         catch (error) { instrumentFailures.push(error.message); }
@@ -4741,13 +5002,16 @@ async function main() {
             'desktop notifications share the measured bottom-right utility edge above the dock');
           if (!toastAnchorControlRun) {
             toastAnchorControlRun = true;
-            const leftToastControl = await evalIn(`(()=>{ const toast=document.getElementById('toast'),prior=toast.getAttribute('style');
+            const leftToastControl = await evalIn(`(()=>{ const toast=document.getElementById('toast'),prior=toast.getAttribute('style'),
+              before=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
               toast.style.setProperty('left','12px','important');toast.style.setProperty('right','auto','important');
-              const result=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
-              if(prior===null)toast.removeAttribute('style');else toast.setAttribute('style',prior);return result;})()`);
-            if (leftToastControl.ok || !Array.isArray(leftToastControl.rect)
-              || Math.abs(leftToastControl.rect[0] - 12) > 2) {
-              instrumentFailures.push(`${vp.label}: injected left-anchored toast stayed on the bottom-right utility edge (${JSON.stringify(leftToastControl)})`);
+              const mutated=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
+              if(prior===null)toast.removeAttribute('style');else toast.setAttribute('style',prior);
+              const restoredStyle=toast.getAttribute('style'),restored=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
+              return {priorStyle:prior,before,mutated,restoredStyle,restored};})()`);
+            const toastControlAssessment = toastAnchorControlOutcome(leftToastControl);
+            if (!toastControlAssessment.ok) {
+              instrumentFailures.push(`${vp.label}: injected left-anchored toast did not fail and restore exact style/positive anchor bytes (${JSON.stringify({ leftToastControl, toastControlAssessment })})`);
             }
             /* The standing viewport-fit control now also owns the reported
                side-anchor regression; keep the existing control inventory. */
@@ -4904,14 +5168,32 @@ async function main() {
           if (!item.shipyard && !item.inventory) {
             await evalIn(`(()=>{ const b=document.querySelector(${JSON.stringify(opener)}); b?.focus(); b?.click(); })()`);
           }
-          await waitFor(`${item.name} panel`, `window.__CF_SLICE__.api.state().panelOpen===${JSON.stringify(item.id)} && document.querySelectorAll(${JSON.stringify(item.required)}).length>=${item.min} && window.__CF_SLICE__.api.state().cardOpen===${JSON.stringify(overSurvey)}`);
+          if (item.shipyard) {
+            const shipyardSettlementExpression = `(()=>{const S=window.__CF_SLICE__,s=S?.api?.state?.(),p=s?.persistence||null,
+              r=p?.runtime||null,e=s?.engineering||null,x=s?.sceneResources||null,d=S?.api?.shipyardDiagnostics?.()||null;
+              return {schema:${JSON.stringify(GLASS_SHIPYARD_SETTLEMENT_SCHEMA)},panelOpen:s?.panelOpen??null,
+                cardOpen:s?.cardOpen??null,previewCount:document.querySelectorAll('[data-cf-shipyard-preview="v1"]').length,
+                engineering:e?{schema:e.schema??null,stateKind:e.stateKind??null,protection:e.protection??null,
+                  bootstrapPending:e.bootstrapPending??null,bootstrapCandidateReady:e.bootstrapCandidateReady??null}:null,
+                persistence:p?{schema:p.schema??null,hold:p.hold??null,mutationBlocked:p.mutationBlocked??null,
+                  seedBootstrapPending:p.seedBootstrapPending??null,bootRouteRepairPending:p.bootRouteRepairPending??null,
+                  productBootstrapPending:p.productBootstrapPending??null,engineeringBootstrapPending:p.engineeringBootstrapPending??null,
+                  runtime:r?{leaseOwned:r.leaseOwned??null,staleBlocked:r.staleBlocked??null}:null}:null,
+                sceneResources:x?{schema:x.schema??null,pendingPersistenceWrites:x.pendingPersistenceWrites??null}:null,
+                diagnostics:d};})()`;
+            await waitFor(`${item.name} panel`, shipyardSettlementExpression, 5000,
+              (value) => shipyardPanelSettlementOutcome(value, overSurvey).ok);
+          } else {
+            await waitFor(`${item.name} panel`, `window.__CF_SLICE__.api.state().panelOpen===${JSON.stringify(item.id)} && document.querySelectorAll(${JSON.stringify(item.required)}).length>=${item.min} && window.__CF_SLICE__.api.state().cardOpen===${JSON.stringify(overSurvey)}`);
+          }
           const composition = `${item.name}-${overSurvey ? 'over' : 'instead-of'}-survey`;
           const inventoryCarrier = item.inventory ? await evalIn(READ_ARC2_GLASS_CARRIER_EXPRESSION) : null;
           const inventoryRowsCheck = item.inventory
             ? `window.__CF_GLASS_AUDIT__.inventoryRowsOutcome(${JSON.stringify(inventoryCarrier)},${JSON.stringify(opener)})`
             : null;
           const shipyardOpenCheck = item.shipyard ? `(()=>{ const S=window.__CF_SLICE__,state=S?.api?.state?.(),
-            ship=state?.shipVisual,diag=S?.api?.shipyardDiagnostics?.(),panel=document.getElementById('shipyardpanel'),
+            ship=state?.shipVisual,diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,
+            panel=document.getElementById('shipyardpanel'),body=panel?.querySelector('[data-engineering-panel-body]'),
             opener=document.querySelector(${JSON.stringify(opener)}),close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),
             previews=panel?[...panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')]:[],preview=previews[0]||null,
             canonicalSystemIds=['jumpdrive','array','igdrive','autoext','cscoop'],canonicalHardpointIds=['array','autoext','cscoop'],
@@ -4920,9 +5202,35 @@ async function main() {
             hardpointKeys=ship?.hardpoints?Object.keys(ship.hardpoints):[],
             expectedHardpoints=ship?.hardpoints?canonicalHardpointIds.filter((id)=>ship.hardpoints[id]===true):[],
             domHardpoints=preview?[...preview.querySelectorAll('[data-hardpoint]')].map(node=>node.getAttribute('data-hardpoint')):[],
+            expectedResearch=${JSON.stringify(ENGINEERING_RESEARCH_IDS)},
+            expectedResearchOracle=${JSON.stringify(ENGINEERING_GLASS_RESEARCH_ORACLE)},
+            research=panel?[...panel.querySelectorAll('[data-research-id]')].map((row)=>{const button=row.querySelector('button[data-engineering-action="research"]');
+              return {id:row.getAttribute('data-research-id'),order:Number(row.getAttribute('data-row-order')),
+                status:row.getAttribute('data-status'),modelEnabled:button?.getAttribute('data-model-enabled')??null,
+                disabled:button?.disabled??null,ariaDisabled:button?.getAttribute('aria-disabled')??null}}):[],
+            expectedGroups=${JSON.stringify(ENGINEERING_RECIPE_GROUPS)},
+            groups=panel?[...panel.querySelectorAll('[data-fabrication-group]')].map((group)=>({id:group.getAttribute('data-fabrication-group'),
+              order:Number(group.getAttribute('data-group-order')),recipes:[...group.querySelectorAll(':scope > .engineering-row-list > [data-recipe-id]')]
+                .map((row)=>{const button=row.querySelector('button[data-engineering-action="fabricate"]');return {
+                  id:row.getAttribute('data-recipe-id'),category:row.getAttribute('data-recipe-category'),
+                  order:Number(row.getAttribute('data-row-order')),status:row.getAttribute('data-status'),
+                  effectSupport:row.getAttribute('data-effect-support'),modelEnabled:button?.getAttribute('data-model-enabled')??null,
+                  disabled:button?.disabled??null,ariaDisabled:button?.getAttribute('aria-disabled')??null}})})):[],
+            recipeIds=groups.flatMap((group)=>group.recipes.map((row)=>row.id)),
+            expectedRecipeIds=${JSON.stringify(ENGINEERING_RECIPE_IDS)},
+            expectedRecipeOracle=${JSON.stringify(ENGINEERING_GLASS_RECIPE_ORACLE)},
+            sections=panel?[...panel.querySelectorAll('details[data-engineering-section]')]:[],
+            sectionIds=sections.map((node)=>node.getAttribute('data-engineering-section')),
+            summaries=sections.map((node)=>node.querySelector(':scope > summary')).filter(Boolean),
+            actions=panel?[...panel.querySelectorAll('button[data-engineering-action]')]:[],
+            actionKeys=actions.map((button)=>button.getAttribute('data-engineering-action')+':'+(button.getAttribute('data-action-id')||'')),
+            expectedActionKeys=['mine:','skim:',...expectedResearch.map((id)=>'research:'+id),...expectedRecipeIds.map((id)=>'fabricate:'+id)],
+            actionRects=actions.map((button)=>button.getBoundingClientRect()),summaryRects=summaries.map((summary)=>summary.getBoundingClientRect()),
             panelStyle=panel?getComputedStyle(panel):null,openerStyle=opener?getComputedStyle(opener):null,
-            cr=close?.getBoundingClientRect(),hit=cr?document.elementFromPoint((cr.left+cr.right)/2,(cr.top+cr.bottom)/2):null,
-            diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+            pr=panel?.getBoundingClientRect(),br=body?.getBoundingClientRect(),cr=close?.getBoundingClientRect(),
+            hit=cr?document.elementFromPoint((cr.left+cr.right)/2,(cr.top+cr.bottom)/2):null,
+            diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+            engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','retainedDomCount','retainedPreviewCount','schema'].sort(),
             stateKey=typeof ship?.stateKey==='string'&&ship.stateKey?ship.stateKey:null,
             canonicalIds=JSON.stringify(hardpointKeys)===JSON.stringify(canonicalHardpointIds)
               &&JSON.stringify(expectedSystems)===JSON.stringify(canonicalSystemIds.filter((id)=>expectedSystems.includes(id)))
@@ -4932,28 +5240,83 @@ async function main() {
               &&preview.getAttribute('data-provenance')===ship?.provenance
               &&JSON.stringify(domHardpoints)===JSON.stringify(expectedHardpoints)
               &&JSON.stringify(domSystems)===JSON.stringify(expectedSystems),
+            researchTruth=JSON.stringify(research.map(({id,status,modelEnabled,disabled})=>({id,status,modelEnabled,disabled})))
+              ===JSON.stringify(expectedResearchOracle)&&research.every((row)=>row.ariaDisabled===String(row.disabled)),
+            researchMatch=research.length===6&&JSON.stringify(research.map((row)=>row.id))===JSON.stringify(expectedResearch)
+              &&research.every((row,index)=>row.order===index)&&researchTruth,
+            groupsMatch=groups.length===5&&groups.every((group,index)=>group.id===expectedGroups[index]?.id&&group.order===index
+              &&JSON.stringify(group.recipes.map((row)=>row.id))===JSON.stringify(expectedGroups[index]?.recipes)
+              &&group.recipes.every((row,rowIndex)=>row.order===rowIndex&&row.category===group.id)),
+            recipeTruth=JSON.stringify(groups.flatMap((group)=>group.recipes)
+              .map(({id,status,effectSupport,modelEnabled,disabled})=>({id,status,effectSupport,modelEnabled,disabled})))
+              ===JSON.stringify(expectedRecipeOracle)
+              &&groups.every((group)=>group.recipes.every((row)=>row.ariaDisabled===String(row.disabled))),
+            recipeMatch=recipeIds.length===62&&new Set(recipeIds).size===62&&JSON.stringify(recipeIds)===JSON.stringify(expectedRecipeIds)
+              &&recipeTruth,
+            actionInventory=actions.length===${ENGINEERING_ACTION_CONTROL_COUNT}&&eng?.actionControlCount===${ENGINEERING_ACTION_CONTROL_COUNT}
+              &&JSON.stringify(actionKeys)===JSON.stringify(expectedActionKeys)&&actions.every((button)=>button.tagName==='BUTTON'
+                &&button.getAttribute('aria-disabled')===String(button.disabled)
+                &&button.disabled===(button.getAttribute('data-model-enabled')!=='true')),
             diagnostics=diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='open'
               &&diag?.activePreviewCount===1&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
-              &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys),
-            geometry=!!panel&&panelStyle?.display!=='none'&&panelStyle?.visibility!=='hidden'
-              &&!!close&&cr.width>=44&&cr.height>=44&&!!hit&&(hit===close||close.contains(hit)),
+              &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys)
+              &&eng?.schema==='cf-v2-engineering-panel-diagnostics/v1'&&eng?.activeCount===1
+              &&eng?.pendingWork===0&&eng?.activePreviewCount===1&&eng?.retainedPreviewCount===0
+              &&eng?.delegatedListenerCount===1&&eng?.faultCount===0&&eng?.lastRequest===null
+              &&eng?.retainedDomCount>${ENGINEERING_ACTION_CONTROL_COUNT}
+              &&JSON.stringify(engKeys)===JSON.stringify(expectedEngKeys),
+            geometry=!!panel&&panelStyle?.display!=='none'&&panelStyle?.visibility!=='hidden'&&!!pr&&!!br
+              &&pr.left>=-1&&pr.right<=innerWidth+1&&pr.width<=innerWidth+1&&body.scrollWidth<=panel.clientWidth+1
+              &&!!close&&cr.width>=44&&cr.height>=44&&!!hit&&(hit===close||close.contains(hit))
+              &&sectionIds.join('|')==='mining|skimming|research|fabricator'&&sections.every((section)=>section.open)
+              &&summaries.length===4&&summaryRects.every((rect)=>rect.width>0&&rect.height>=44&&rect.left>=br.left-1&&rect.right<=br.right+1)
+              &&actionRects.length===${ENGINEERING_ACTION_CONTROL_COUNT}&&actionRects.every((rect)=>rect.width>0&&rect.height>=44&&rect.left>=br.left-1&&rect.right<=br.right+1),
             openerReady=!!opener&&openerStyle?.display!=='none'&&openerStyle?.visibility!=='hidden'
               &&opener.getClientRects().length===1&&opener.getAttribute('aria-controls')==='shipyardpanel'
               &&opener.getAttribute('aria-expanded')==='true',
             previewA11y=previews.length===1&&preview?.getAttribute('role')==='img'
               &&(preview?.getAttribute('aria-label')||'').trim().length>=30
               &&panel?.querySelectorAll('[role="img"]').length===1;
-            return {ok:stateMatch&&diagnostics&&geometry&&openerReady&&previewA11y&&document.activeElement===close,
-              stateMatch,diagnostics,geometry,openerReady,previewA11y,focus:document.activeElement?.id||null,
+            return {ok:stateMatch&&researchMatch&&groupsMatch&&recipeMatch&&actionInventory&&diagnostics&&geometry
+                &&openerReady&&previewA11y&&document.activeElement===close,
+              stateMatch,researchMatch,researchTruth,groupsMatch,recipeMatch,recipeTruth,actionInventory,diagnostics,geometry,openerReady,previewA11y,
+              focus:document.activeElement?.id||document.activeElement?.getAttribute?.('data-focus-key')||null,
               stateKey,stage:ship?.chassisStage??null,provenance:ship?.provenance??null,canonicalIds,hardpointKeys,
               expectedHardpoints,domHardpoints,expectedSystems,domSystems,previewCount:previews.length,
-              diag,diagKeys,expectedDiagKeys,closeRect:cr?[cr.left,cr.top,cr.right,cr.bottom]:null};})()` : null;
+              research,groups,recipeCount:recipeIds.length,actionCount:actions.length,sectionIds,
+              diag,diagKeys,expectedDiagKeys,engKeys,expectedEngKeys,panelRect:pr?[pr.left,pr.top,pr.right,pr.bottom]:null,
+              bodyWidth:br?.width??null,bodyScrollWidth:body?.scrollWidth??null,
+              closeRect:cr?[cr.left,cr.top,cr.right,cr.bottom]:null};})()` : null;
           if (item.shipyard) {
+            const engineeringDisclosureReceipts = [];
+            for (const id of ['mining', 'mining', 'skimming', 'research', 'fabricator']) {
+              const beforeOpen = await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="${id}"]')?.open??null`);
+              const receipt = await activateRealKeyboardControl(
+                `#shipyardpanel details[data-engineering-section="${id}"] > summary`,
+                `${vp.label} Engineering ${id} disclosure`,
+              );
+              const afterOpen = await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="${id}"]')?.open??null`);
+              engineeringDisclosureReceipts.push({ id, beforeOpen, afterOpen,
+                ...receipt, ok: receipt.ok && typeof beforeOpen === 'boolean' && afterOpen === !beforeOpen });
+            }
+            const disclosuresSettled = await waitFor(`${item.name} Engineering disclosures`,
+              `(()=>{const rows=[...document.querySelectorAll('#shipyardpanel details[data-engineering-section]')];
+                return rows.length===4&&rows.every((row)=>row.open)?true:null})()`);
+            await evalIn(`document.querySelector('#shipyardpanel > [data-pnx="shipyard"]')?.focus()`);
             addOutcome(vp.label, composition, 'SHIPYARD_REAL_OPENER', opener, realShipyardOpen,
               'the one visible Shipyard opener receives real browser pointer input');
-            const shipyardOpen = await evalIn(shipyardOpenCheck);
+            const shipyardOpenState = await evalIn(shipyardOpenCheck);
+            const keyboardDisclosures = disclosuresSettled === true
+              && engineeringDisclosureReceipts.length === 5
+              && engineeringDisclosureReceipts.every((receipt) => receipt.ok);
+            const shipyardOpen = {
+              ...shipyardOpenState,
+              ok: shipyardOpenState.ok && keyboardDisclosures,
+              keyboardDisclosures,
+              engineeringDisclosureReceipts,
+            };
             addOutcome(vp.label, composition, 'SHIPYARD_STATE_TRUTH', item.panel, shipyardOpen,
-              'one accessible preview, exact chassis/hardpoints/owned systems, and open diagnostics match the canonical ShipVisualState');
+              'native keyboard disclosures expose exactly six research rows and 62 grouped fixed recipes; one preview, 70 honest 44px actions, diagnostics, and canonical ShipVisualState all agree');
             if (!shipyardControlRun) {
               const duplicateControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
                 preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),duplicate=preview?.cloneNode(true);
@@ -4966,14 +5329,98 @@ async function main() {
 
               const parityControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
                 preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),priorKey=preview?.getAttribute('data-state-key'),
-                fakeHardpoint=document.createElementNS('http://www.w3.org/2000/svg','g'),fakeSystem=document.createElement('div');
+                fakeHardpoint=document.createElementNS('http://www.w3.org/2000/svg','g'),fakeSystem=document.createElement('div'),
+                researchList=panel?.querySelector('[data-engineering-research-rows]'),firstResearch=researchList?.firstElementChild,
+                secondResearch=firstResearch?.nextElementSibling,recipe=panel?.querySelector('[data-recipe-id]'),duplicateRecipe=recipe?.cloneNode(true),
+                firstGroup=panel?.querySelector('[data-fabrication-group]'),priorGroup=firstGroup?.getAttribute('data-fabrication-group'),
+                researchAction=firstResearch?.querySelector('button[data-engineering-action="research"]'),
+                researchStatusNode=firstResearch?.querySelector('[data-row-status]'),
+                priorResearchStatus=firstResearch?.getAttribute('data-status')??null,
+                priorResearchModel=researchAction?.getAttribute('data-model-enabled')??null,
+                priorResearchDisabled=researchAction?.disabled??null,
+                priorResearchAria=researchAction?.getAttribute('aria-disabled')??null,
+                priorResearchReason=researchAction?.getAttribute('data-disabled-reason')??null,
+                priorResearchStatusRow=researchStatusNode?{text:researchStatusNode.textContent,row:researchStatusNode.getAttribute('data-row-status'),
+                  unavailable:researchStatusNode.getAttribute('data-engineering-unavailable'),kind:researchStatusNode.getAttribute('data-unavailable-kind')}:null,
+                coherentAction=recipe?.querySelector('button[data-engineering-action="fabricate"]'),
+                coherentStatusNode=recipe?.querySelector('[data-row-status]'),
+                priorCoherentStatus=recipe?.getAttribute('data-status')??null,
+                priorCoherentModel=coherentAction?.getAttribute('data-model-enabled')??null,
+                priorCoherentDisabled=coherentAction?.disabled??null,
+                priorCoherentAria=coherentAction?.getAttribute('aria-disabled')??null,
+                priorCoherentReason=coherentAction?.getAttribute('data-disabled-reason')??null,
+                priorStatusRow=coherentStatusNode?{text:coherentStatusNode.textContent,row:coherentStatusNode.getAttribute('data-row-status'),
+                  unavailable:coherentStatusNode.getAttribute('data-engineering-unavailable'),kind:coherentStatusNode.getAttribute('data-unavailable-kind')}:null,
+                action=panel?.querySelector('button[data-engineering-action]'),priorDisabled=action?.disabled??null,
+                priorAriaDisabled=action?.getAttribute('aria-disabled')??null;
                 preview?.setAttribute('data-state-key','ship-v1:tampered');const key=${shipyardOpenCheck};
                 if(priorKey===null)preview?.removeAttribute('data-state-key');else preview?.setAttribute('data-state-key',priorKey);
                 fakeHardpoint.setAttribute('data-hardpoint','autoext');preview?.appendChild(fakeHardpoint);const hardpoint=${shipyardOpenCheck};fakeHardpoint.remove();
                 fakeSystem.setAttribute('data-shipyard-system','cscoop');panel?.appendChild(fakeSystem);const system=${shipyardOpenCheck};fakeSystem.remove();
-                return {ok:key.ok===false&&hardpoint.ok===false&&system.ok===false&&${shipyardOpenCheck}.ok,key,hardpoint,system};})()`);
+                if(firstResearch&&secondResearch)researchList.insertBefore(secondResearch,firstResearch);const researchOrder=${shipyardOpenCheck};
+                if(firstResearch&&secondResearch)researchList.insertBefore(firstResearch,secondResearch);
+                firstResearch?.setAttribute('data-status','available');if(researchStatusNode){researchStatusNode.textContent='Available';
+                  researchStatusNode.setAttribute('data-row-status','available');researchStatusNode.removeAttribute('data-engineering-unavailable');
+                  researchStatusNode.removeAttribute('data-unavailable-kind');}if(researchAction){researchAction.setAttribute('data-model-enabled','true');
+                  researchAction.setAttribute('data-disabled-reason','Research is available.');researchAction.disabled=false;
+                  researchAction.setAttribute('aria-disabled','false');}const coherentResearchApplied=!!firstResearch&&!!researchStatusNode&&!!researchAction
+                  &&firstResearch.getAttribute('data-status')==='available'&&researchStatusNode.textContent==='Available'
+                  &&researchStatusNode.getAttribute('data-row-status')==='available'&&!researchStatusNode.hasAttribute('data-engineering-unavailable')
+                  &&!researchStatusNode.hasAttribute('data-unavailable-kind')&&researchAction.getAttribute('data-model-enabled')==='true'
+                  &&researchAction.getAttribute('data-disabled-reason')==='Research is available.'&&researchAction.disabled===false
+                  &&researchAction.getAttribute('aria-disabled')==='false',coherentResearchStatus=${shipyardOpenCheck};
+                if(priorResearchStatus===null)firstResearch?.removeAttribute('data-status');else firstResearch?.setAttribute('data-status',priorResearchStatus);
+                if(researchAction&&priorResearchDisabled!==null){if(priorResearchModel===null)researchAction.removeAttribute('data-model-enabled');
+                  else researchAction.setAttribute('data-model-enabled',priorResearchModel);researchAction.disabled=priorResearchDisabled;
+                  if(priorResearchAria===null)researchAction.removeAttribute('aria-disabled');else researchAction.setAttribute('aria-disabled',priorResearchAria);
+                  if(priorResearchReason===null)researchAction.removeAttribute('data-disabled-reason');else researchAction.setAttribute('data-disabled-reason',priorResearchReason);}
+                if(researchStatusNode&&priorResearchStatusRow){researchStatusNode.textContent=priorResearchStatusRow.text;
+                  if(priorResearchStatusRow.row===null)researchStatusNode.removeAttribute('data-row-status');else researchStatusNode.setAttribute('data-row-status',priorResearchStatusRow.row);
+                  if(priorResearchStatusRow.unavailable===null)researchStatusNode.removeAttribute('data-engineering-unavailable');else researchStatusNode.setAttribute('data-engineering-unavailable',priorResearchStatusRow.unavailable);
+                  if(priorResearchStatusRow.kind===null)researchStatusNode.removeAttribute('data-unavailable-kind');else researchStatusNode.setAttribute('data-unavailable-kind',priorResearchStatusRow.kind);}
+                const coherentResearchRestored=!!firstResearch&&!!researchStatusNode&&!!researchAction
+                  &&(firstResearch.getAttribute('data-status')??null)===priorResearchStatus
+                  &&(researchAction.getAttribute('data-model-enabled')??null)===priorResearchModel
+                  &&researchAction.disabled===priorResearchDisabled&&(researchAction.getAttribute('aria-disabled')??null)===priorResearchAria
+                  &&(researchAction.getAttribute('data-disabled-reason')??null)===priorResearchReason
+                  &&researchStatusNode.textContent===priorResearchStatusRow?.text
+                  &&(researchStatusNode.getAttribute('data-row-status')??null)===priorResearchStatusRow?.row
+                  &&(researchStatusNode.getAttribute('data-engineering-unavailable')??null)===priorResearchStatusRow?.unavailable
+                  &&(researchStatusNode.getAttribute('data-unavailable-kind')??null)===priorResearchStatusRow?.kind;
+                recipe?.parentNode?.appendChild(duplicateRecipe);const recipeDuplication=${shipyardOpenCheck};duplicateRecipe?.remove();
+                firstGroup?.setAttribute('data-fabrication-group','tampered-group');const groupIdentity=${shipyardOpenCheck};
+                if(priorGroup===null)firstGroup?.removeAttribute('data-fabrication-group');else firstGroup?.setAttribute('data-fabrication-group',priorGroup);
+                recipe?.setAttribute('data-status','unavailable');if(coherentStatusNode){coherentStatusNode.textContent='Unavailable · Fixture-coherent wrong status.';
+                  coherentStatusNode.setAttribute('data-row-status','unavailable');coherentStatusNode.setAttribute('data-engineering-unavailable','Fixture-coherent wrong status.');
+                  coherentStatusNode.setAttribute('data-unavailable-kind','fabrication');}if(coherentAction){coherentAction.setAttribute('data-model-enabled','false');
+                  coherentAction.setAttribute('data-disabled-reason','Fixture-coherent wrong status.');coherentAction.disabled=true;coherentAction.setAttribute('aria-disabled','true');}
+                const coherentStatus=${shipyardOpenCheck};
+                if(priorCoherentStatus===null)recipe?.removeAttribute('data-status');else recipe?.setAttribute('data-status',priorCoherentStatus);
+                if(coherentAction&&priorCoherentDisabled!==null){if(priorCoherentModel===null)coherentAction.removeAttribute('data-model-enabled');
+                  else coherentAction.setAttribute('data-model-enabled',priorCoherentModel);coherentAction.disabled=priorCoherentDisabled;
+                  if(priorCoherentAria===null)coherentAction.removeAttribute('aria-disabled');else coherentAction.setAttribute('aria-disabled',priorCoherentAria);
+                  if(priorCoherentReason===null)coherentAction.removeAttribute('data-disabled-reason');else coherentAction.setAttribute('data-disabled-reason',priorCoherentReason);}
+                if(coherentStatusNode&&priorStatusRow){coherentStatusNode.textContent=priorStatusRow.text;
+                  if(priorStatusRow.row===null)coherentStatusNode.removeAttribute('data-row-status');else coherentStatusNode.setAttribute('data-row-status',priorStatusRow.row);
+                  if(priorStatusRow.unavailable===null)coherentStatusNode.removeAttribute('data-engineering-unavailable');else coherentStatusNode.setAttribute('data-engineering-unavailable',priorStatusRow.unavailable);
+                  if(priorStatusRow.kind===null)coherentStatusNode.removeAttribute('data-unavailable-kind');else coherentStatusNode.setAttribute('data-unavailable-kind',priorStatusRow.kind);}
+                if(action){action.disabled=!action.disabled;action.setAttribute('aria-disabled',String(action.disabled));}
+                const actionParity=${shipyardOpenCheck};if(action&&priorDisabled!==null){action.disabled=priorDisabled;
+                  if(priorAriaDisabled===null)action.removeAttribute('aria-disabled');else action.setAttribute('aria-disabled',priorAriaDisabled);}
+                return {ok:key.ok===false&&hardpoint.ok===false&&system.ok===false
+                    &&researchOrder.ok===false&&researchOrder.researchMatch===false
+                    &&coherentResearchApplied&&coherentResearchRestored
+                    &&coherentResearchStatus.ok===false&&coherentResearchStatus.researchMatch===false
+                    &&coherentResearchStatus.researchTruth===false&&coherentResearchStatus.actionInventory===true
+                    &&recipeDuplication.ok===false&&recipeDuplication.recipeMatch===false
+                    &&groupIdentity.ok===false&&groupIdentity.groupsMatch===false
+                    &&coherentStatus.ok===false&&coherentStatus.recipeMatch===false
+                    &&coherentStatus.recipeTruth===false&&coherentStatus.actionInventory===true
+                    &&actionParity.ok===false&&actionParity.actionInventory===false&&${shipyardOpenCheck}.ok,
+                  key,hardpoint,system,researchOrder,coherentResearchApplied,coherentResearchStatus,coherentResearchRestored,
+                  recipeDuplication,groupIdentity,coherentStatus,actionParity};})()`);
               if (!parityControl.ok) {
-                instrumentFailures.push(`${vp.label}: Shipyard state-key/hardpoint/system parity controls stayed green or failed to restore (${JSON.stringify(parityControl)})`);
+                instrumentFailures.push(`${vp.label}: Engineering state/research/group/recipe parity controls stayed green or failed to restore (${JSON.stringify(parityControl)})`);
               }
               recordControls('shipyard-dom-state-parity');
 
@@ -4990,17 +5437,32 @@ async function main() {
 
               const geometryFocusControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
                 close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),opener=document.querySelector(${JSON.stringify(opener)}),
-                priorStyle=close?.getAttribute('style')??null;close?.style.setProperty('min-width','0','important');
+                summary=panel?.querySelector('details[data-engineering-section] > summary'),
+                action=panel?.querySelector('button[data-engineering-action]'),
+                priorStyle=close?.getAttribute('style')??null,priorSummary=summary?.getAttribute('style')??null,
+                priorAction=action?.getAttribute('style')??null,priorPanel=panel?.getAttribute('style')??null;
+                close?.style.setProperty('min-width','0','important');
                 close?.style.setProperty('min-height','0','important');close?.style.setProperty('width','20px','important');
                 close?.style.setProperty('height','20px','important');opener?.focus();const broken=${shipyardOpenCheck};
                 if(priorStyle===null)close?.removeAttribute('style');else close?.setAttribute('style',priorStyle);close?.focus();
-                return {ok:broken.ok===false&&broken.geometry===false&&${shipyardOpenCheck}.ok,broken};})()`);
+                summary?.style.setProperty('min-height','0','important');summary?.style.setProperty('height','20px','important');
+                const summaryFloor=${shipyardOpenCheck};if(priorSummary===null)summary?.removeAttribute('style');else summary?.setAttribute('style',priorSummary);
+                action?.style.setProperty('min-height','0','important');action?.style.setProperty('height','20px','important');
+                const actionFloor=${shipyardOpenCheck};if(priorAction===null)action?.removeAttribute('style');else action?.setAttribute('style',priorAction);
+                panel?.style.setProperty('left','0','important');panel?.style.setProperty('right','auto','important');
+                panel?.style.setProperty('min-width','calc(100vw + 80px)','important');panel?.style.setProperty('max-width','none','important');
+                const overflow=${shipyardOpenCheck};if(priorPanel===null)panel?.removeAttribute('style');else panel?.setAttribute('style',priorPanel);close?.focus();
+                return {ok:broken.ok===false&&broken.geometry===false&&summaryFloor.ok===false&&summaryFloor.geometry===false
+                    &&actionFloor.ok===false&&actionFloor.geometry===false&&overflow.ok===false&&overflow.geometry===false
+                    &&${shipyardOpenCheck}.ok,broken,summaryFloor,actionFloor,overflow};})()`);
               if (!geometryFocusControl.ok) {
-                instrumentFailures.push(`${vp.label}: Shipyard close geometry/focus control stayed green or failed to restore (${JSON.stringify(geometryFocusControl)})`);
+                instrumentFailures.push(`${vp.label}: Engineering Close/summary/action/320px geometry-focus controls stayed green or failed to restore (${JSON.stringify(geometryFocusControl)})`);
               }
               recordControls('shipyard-geometry-focus');
-              await evalIn(`(()=>{const preview=document.querySelector('#shipyardpanel [data-cf-shipyard-preview="v1"]');
-                window.__cfShipyardClosedControl=preview?.cloneNode(true)||null;return !!window.__cfShipyardClosedControl;})()`);
+              await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),
+                body=panel?.querySelector('[data-engineering-panel-body]');window.__cfShipyardClosedControl=preview?.cloneNode(true)||null;
+                window.__cfEngineeringClosedControl=body?.firstElementChild?.cloneNode(true)||null;
+                return !!window.__cfShipyardClosedControl&&!!window.__cfEngineeringClosedControl;})()`);
             }
           }
           if (item.inventory) {
@@ -5759,18 +6221,26 @@ async function main() {
           const preservedSurface = overSurvey ? '#survey' : '#planetside';
           const shipyardClosedCheck = item.shipyard ? `(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
             opener=document.querySelector(${JSON.stringify(opener)}),preserved=document.querySelector(${JSON.stringify(preservedSurface)}),
-            diag=S?.api?.shipyardDiagnostics?.(),panelStyle=panel?getComputedStyle(panel):null,
+            diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,body=panel?.querySelector('[data-engineering-panel-body]'),
+            panelStyle=panel?getComputedStyle(panel):null,
             preservedStyle=preserved?getComputedStyle(preserved):null,diagKeys=diag?Object.keys(diag).sort():[],
-            expectedDiagKeys=['activePreviewCount','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+            expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+            engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','retainedDomCount','retainedPreviewCount','schema'].sort(),
             previews=panel?.querySelectorAll('[data-cf-shipyard-preview="v1"]').length??-1;
             return {ok:S?.api?.state?.().panelOpen===null&&panelStyle?.display==='none'&&previews===0
               &&diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='closed'&&diag?.stateKey===null
               &&diag?.activePreviewCount===0&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
               &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys)
+              &&eng?.schema==='cf-v2-engineering-panel-diagnostics/v1'&&eng?.activeCount===0
+              &&eng?.retainedDomCount===0&&eng?.pendingWork===0&&eng?.actionControlCount===0
+              &&eng?.activePreviewCount===0&&eng?.retainedPreviewCount===0&&eng?.delegatedListenerCount===1
+              &&eng?.faultCount===0&&JSON.stringify(engKeys)===JSON.stringify(expectedEngKeys)
+              &&body?.childElementCount===0
               &&opener?.getAttribute('aria-expanded')==='false'&&document.activeElement===opener
               &&preservedStyle?.display!=='none'&&preservedStyle?.visibility!=='hidden',
               panelOpen:S?.api?.state?.().panelOpen??null,panelDisplay:panelStyle?.display||null,previews,
-              diag,diagKeys,expectedDiagKeys,expanded:opener?.getAttribute('aria-expanded')||null,
+              diag,diagKeys,expectedDiagKeys,engKeys,expectedEngKeys,bodyChildren:body?.childElementCount??-1,
+              expanded:opener?.getAttribute('aria-expanded')||null,
               focus:document.activeElement?.id||null,preservedDisplay:preservedStyle?.display||null};})()` : null;
           let realShipyardClose = null;
           let closed;
@@ -5784,11 +6254,15 @@ async function main() {
               'real Close removes the only preview, publishes exact closed diagnostics, preserves the underlying surface, and restores opener focus');
             if (!shipyardControlRun) {
               const retainedControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
-                retained=window.__cfShipyardClosedControl||null;if(retained)panel?.appendChild(retained);
-                const broken=${shipyardClosedCheck};retained?.remove();delete window.__cfShipyardClosedControl;
-                return {ok:broken.ok===false&&broken.previews===1&&${shipyardClosedCheck}.ok,broken};})()`);
+                body=panel?.querySelector('[data-engineering-panel-body]'),retained=window.__cfShipyardClosedControl||null,
+                retainedDom=window.__cfEngineeringClosedControl||null;if(retained)panel?.appendChild(retained);
+                const previewBroken=${shipyardClosedCheck};retained?.remove();if(retainedDom)body?.appendChild(retainedDom);
+                const domBroken=${shipyardClosedCheck};retainedDom?.remove();delete window.__cfShipyardClosedControl;
+                delete window.__cfEngineeringClosedControl;
+                return {ok:previewBroken.ok===false&&previewBroken.previews===1&&domBroken.ok===false
+                    &&domBroken.bodyChildren===1&&${shipyardClosedCheck}.ok,previewBroken,domBroken};})()`);
               if (!retainedControl.ok) {
-                instrumentFailures.push(`${vp.label}: retained Shipyard preview after Close control stayed green or failed to restore (${JSON.stringify(retainedControl)})`);
+                instrumentFailures.push(`${vp.label}: retained Engineering preview/DOM after Close controls stayed green or failed to restore (${JSON.stringify(retainedControl)})`);
               }
               recordControls('shipyard-close-release');
               shipyardControlRun = true;
@@ -6124,6 +6598,8 @@ async function main() {
               {id:'determinism',required:['A CF1 address is a pointer into that shared math, not authority of its own','accepts only a source-verified match','a stale or forged address cannot replace the current view'],forbidden:['which is why deterministic CF1 addresses work without an account or game server'],stale:'The same supported coordinates resolve to the same galaxy, star, world, and current-slice survey, which is why deterministic CF1 addresses work without an account or game server.'},
               {id:'kingdoms',required:['read-only Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Discovery, capture, husbandry, renaming, and other collection-writing actions remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Capture is now live'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Capture is now live.']},
               {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','profile remains read-only','Capture, feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry or collection-writing outcomes are deliberately absent'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Capture is now live'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Capture is now live.']},
+              {id:'research',paragraph:2,required:['Engineering & Shipyard combines the capability-derived ship preview','Research Bench lists exactly six canonical rows','Deep Scanners is the only current purchase','current Survey card does not yet render those orbital rows','other five','visible but disabled','Fabricator groups all 62 fixed recipes','exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable','Only one Engineering action can be pending','receipt-bearing transaction commits'],requiredControls:['exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable'],forbidden:['All six research rows can be purchased','Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'The Shipyard is read-only in this development slice, and fabrication, Research Bench purchases, and upgrades remain unavailable.',contradictions:['All six research rows can be purchased.','Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
+              {id:'crafting',paragraph:2,required:['Inventory is a separate board','stable item instance','Equip, Unequip, Salvage, and pending-reward claim','Engineering & Shipyard → Fabricator','lists all 62 fixed recipes','can settle only rows whose output has a connected effect','Outputs with dormant effects','fully exceptional slotted crafting','authored affixes/drawbacks','item upgrades, sockets, and vendors remain unavailable'],requiredControls:['can settle only rows whose output has a connected effect','item upgrades, sockets, and vendors remain unavailable'],forbidden:['Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'Inventory exposes only the imported Equip, Unequip, Salvage, and reward-claim actions; Fabricator recipes are not available in this slice.',contradictions:['Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
               {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
               {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
             ];
@@ -6202,6 +6678,7 @@ async function main() {
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
           const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'];
+          const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
             worldCode=bulletNodes.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
@@ -6211,7 +6688,7 @@ async function main() {
             workspace=bulletNodes.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
             coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
             worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
-            shipyard=bulletNodes.find((item)=>/THE SHIPYARD READS CAPABILITY, NOT WISHES/.test(item.textContent||'')),
+            shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
             hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
             headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
             firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),trainingHeading=headingFor(training),artHeading=headingFor(art),
@@ -6272,21 +6749,47 @@ async function main() {
             workerContract=headingFor(worker)==='Under the Hood'
               &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
               &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback'),
+            shipyardContradiction=/all six Research rows can (?:currently )?be purchased/i.test(shipyardText)
+              ||/current Survey card (?:now )?(?:renders?|paints?|shows?)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
+              ||/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i.test(shipyardText)
+              ||/(?:Capture|biosphere discovery)[^.!?]{0,48}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+              ||unnegated(shipyardText,/(?:reward|cost|Charter tick|optimistic panel change)[^.!?]{0,80}publishes? before[^.!?]{0,48}(?:transaction )?commit/i)
+              ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+              ||/authored affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+              ||/(?:item )?upgrades?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+              ||/sockets?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+              ||/vendors?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText),
             shipyardContract=shipyardHeading==='New Features & Systems'
-              &&shipyardText.includes('same canonical saved reach used by travel')
-              &&shipyardText.includes('shows only actually owned systems and hardpoints')
-              &&shipyardText.includes('legacy charter refit that never names or draws the missing drive')
-              &&shipyardText.includes('fabrication, Research Bench purchases, and upgrades remain unavailable'),
+              &&shipyardText.includes('finite grounded Mine and Jump-gated Skim actions')
+              &&shipyardText.includes('exactly six Research rows')&&shipyardText.includes('all 62 fixed Fabricator recipes')
+              &&shipyardText.includes('Only Deep Scanners can currently be purchased')
+              &&shipyardText.includes('current Survey card does not yet render those mineral rows')
+              &&shipyardText.includes('Fabrication enables only outputs with connected effects')
+              &&shipyardText.includes('exact cost, prerequisite, revision, and capacity headroom')
+              &&shipyardText.includes('Fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
+              &&shipyardText.includes('Built permanent systems change the real ship and star reach')
+              &&shipyardText.includes('Remnant skim damage is previewed before it can spend HP')
+              &&shipyardText.includes('Engineering may spend preserved Stardust but cannot earn it')
+              &&shipyardText.includes('no reward, cost, Charter tick, or optimistic panel change publishes before the one receipt-bearing transaction commits')
+              &&shipyardText.includes('Capture and biosphere discovery remain unavailable')&&!shipyardContradiction,
             hdSurfaceContract=hdSurfaceHeading==='Under the Hood'
               &&hdSurfaceText.includes('named HD surface-planet texture attachment')
               &&hdSurfaceText.includes('exact surface generation and planet identity')
               &&hdSurfaceText.includes('retains the displayed predecessor until an acquired successor publishes')
               &&hdSurfaceText.includes('rejects stale work')&&hdSurfaceText.includes('suppresses same-texture swaps')
               &&hdSurfaceText.includes('cancels and releases its timer and leases at the owning scene boundary');
-          const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
+          const overclaim=/all six Research rows[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:bought|purchased|playable|available|live)/i.test(text)
+            ||/all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:actionable|playable|available|live)/i.test(text)
+            ||/(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
+            ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
+            ||/authored affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/(?:Capture|biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
-          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
+          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
             &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===53&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
@@ -6301,14 +6804,14 @@ async function main() {
             &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)
             &&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text)&&state.rnSeen===${JSON.stringify(guideReleaseBaseline.rnSeen)}
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
-            identity,honest,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
+            identity,honest,overclaim,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
             charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
             worldCodeContract,atlasRouteContract,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
-            workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,hdSurfaceHeading,hdSurfaceContract,rnSeen:state.rnSeen,
+            workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,hdSurfaceHeading,hdSurfaceContract,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 53-outcome development inventory, including truthful Arc 2 authority, Shipyard, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 53-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -6325,21 +6828,30 @@ async function main() {
               workspace=items.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
               coldArt=items.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
               worker=items.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
-              shipyard=items.find((item)=>/THE SHIPYARD READS CAPABILITY, NOT WISHES/.test(item.textContent||'')),
+              shipyard=items.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
               hdSurface=items.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
               firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
               shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
               artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
               coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
-            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,hdSurfaceStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,hdSurfaceChanged=false;
+            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,hdSurfaceChanged=false;
             try {
               if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
               title.textContent=titleText.replace('v2.0','v2x0');identity=${developmentDetailCheck};title.textContent=titleText;
-              claim.textContent='Mining is now playable.';overclaim=${developmentDetailCheck};claim.textContent=claimText;
+              for(const copy of ['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Exploration audio is now live.']){
+                claim.textContent=claimText+' '+copy;truthfulFeatureClaims.push({copy,result:${developmentDetailCheck}});
+              }
+              for(const copy of ['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
+                'Disconnected Fabricator outputs are now playable.','Fully-exceptional slotted craft is now playable.',
+                'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Item upgrades are now live.',
+                'Sockets are now available.','Vendors are now live.','Capture is now playable.','Discover Life is now playable.',
+                'Breeding is now playable.','Creature combat is now playable.']){
+                claim.textContent=claimText+' '+copy;unavailableFeatureClaims.push({copy,result:${developmentDetailCheck}});
+              }claim.textContent=claimText;
               panelBoundary.textContent=panelBoundaryText.replace('exactly one 44-pixel top-right Close action','Close-action outcome removed');
               closeContract=${developmentDetailCheck};panelBoundary.textContent=panelBoundaryText;
               panelBoundary.textContent=panelBoundaryText.replace('leaves the active panel open','rail preservation outcome removed');
@@ -6384,8 +6896,18 @@ async function main() {
               worker.textContent=workerText.replace('terminates an idle or replaced producer without a synchronous renderer fallback','worker release/fallback outcome removed');
               workerReleaseChanged=worker.textContent!==workerText;workerReleaseStale=${developmentDetailCheck};worker.textContent=workerText;
               coldArtParent.appendChild(worker);workerPlacementMoved=worker.parentNode===coldArtParent;workerPlacementStale=${developmentDetailCheck};workerParent.insertBefore(worker,workerNext);
-              shipyard.textContent=shipyardText.replace('same canonical saved reach used by travel','Shipyard state authority removed');
+              shipyard.textContent=shipyardText.replace('Only Deep Scanners can currently be purchased','Research purchase boundary removed');
               shipyardChanged=shipyard.textContent!==shipyardText;shipyardStale=${developmentDetailCheck};shipyard.textContent=shipyardText;
+              shipyard.textContent=shipyardText.replace('and no reward, cost, Charter tick, or optimistic panel change publishes before',
+                'and reward, cost, Charter tick, or optimistic panel change publishes before');
+              shipyardPublicationChanged=shipyard.textContent!==shipyardText;shipyardPublicationContradiction=${developmentDetailCheck};shipyard.textContent=shipyardText;
+              for(const copy of ['All six Research rows can currently be purchased.','Fully exceptional slotted crafting is now available.',
+                'Fully-exceptional slotted craft is now available.',
+                'Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.',
+                'Sockets are now available.','Vendors are now available.']){
+                shipyard.textContent=shipyardText+' '+copy;shipyardContradictionsChanged=shipyardContradictionsChanged&&shipyard.textContent!==shipyardText;
+                shipyardContradictions.push({copy,result:${developmentDetailCheck}});
+              }shipyard.textContent=shipyardText;
               hdSurface.textContent=hdSurfaceText.replace('binds each completion to the exact surface generation and planet identity','HD texture identity ownership removed');
               hdSurfaceChanged=hdSurface.textContent!==hdSurfaceText;hdSurfaceStale=${developmentDetailCheck};hdSurface.textContent=hdSurfaceText;
               art.textContent=artText+' Thumbnail leases remain pinned after Close, and Planetside renders a 440px portrait for every row.';
@@ -6414,7 +6936,11 @@ async function main() {
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&S.api.state===priorState;
             return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===52
-              &&identity?.ok===false&&identity?.identity===false&&overclaim?.ok===false&&overclaim?.honest===false
+              &&identity?.ok===false&&identity?.identity===false
+              &&truthfulFeatureClaims.length===3
+              &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)
+              &&unavailableFeatureClaims.length===13
+              &&unavailableFeatureClaims.every((row)=>row.result?.ok===false&&row.result?.honest===false&&row.result?.overclaim===true)
               &&closeContract?.ok===false&&panelBoundaryContract?.ok===false&&emptySkyContract?.ok===false
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
               &&worldCodeStale?.ok===false&&worldCodeStale?.worldCodeContract===false
@@ -6437,14 +6963,21 @@ async function main() {
               &&workerReleaseChanged&&workerReleaseStale?.ok===false&&workerReleaseStale?.workerContract===false
               &&workerPlacementMoved&&workerPlacementStale?.ok===false&&workerPlacementStale?.workerContract===false
               &&shipyardChanged&&shipyardStale?.ok===false&&shipyardStale?.shipyardContract===false
+              &&shipyardPublicationChanged&&shipyardPublicationContradiction?.ok===false
+              &&shipyardPublicationContradiction?.shipyardContract===false
+              &&shipyardPublicationContradiction?.honest===false
+              &&shipyardPublicationContradiction?.shipyardContradiction===true
+              &&shipyardContradictionsChanged&&shipyardContradictions.length===8
+              &&shipyardContradictions.every((row)=>row.result?.ok===false&&row.result?.shipyardContract===false
+                &&row.result?.honest===false&&row.result?.shipyardContradiction===true)
               &&hdSurfaceChanged&&hdSurfaceStale?.ok===false&&hdSurfaceStale?.hdSurfaceContract===false
               &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
+              order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
               artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
               workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
               workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,
-              shipyardChanged,shipyardStale,hdSurfaceChanged,hdSurfaceStale,artContradictory,authority,restored,error};})()`);
+              shipyardChanged,shipyardStale,shipyardPublicationChanged,shipyardPublicationContradiction,shipyardContradictionsChanged,shipyardContradictions,hdSurfaceChanged,hdSurfaceStale,artContradictory,authority,restored,error};})()`);
           if (!detailControls.ok) {
             instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }
@@ -6863,7 +7396,7 @@ async function main() {
     instrumentFailures.push('development release hidden-overflow tail control never ran');
   }
   if (!shipyardControlRun && !targetedProductBlocked) {
-    instrumentFailures.push('Shipyard opener/state/preview/geometry/close controls never ran');
+    instrumentFailures.push('Engineering/Shipyard opener/state/catalogue/geometry/close controls never ran');
   }
   if (!inventoryControlRun && !targetedProductBlocked) {
     instrumentFailures.push('Inventory carrier/row/modal/focus/action/release controls never ran');

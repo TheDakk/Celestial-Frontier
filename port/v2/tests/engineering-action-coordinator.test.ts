@@ -126,13 +126,22 @@ function diagnosticFaultContractErrors(source: string): string[] {
     '__smokeReleaseArc3ActionHold',
     '__smokeRejectNextArc3ActionStorage',
     '__smokeStaleNextArc3ActionAuthority',
+    '__smokeRejectNextArc3Publication',
   ]) {
     if (!source.includes(hook)) errors.push(`Missing browser diagnostic hook ${hook}`);
   }
   if (!source.includes('owner: productActionCoordinator.diagnostics()')
     || !source.includes('hold: smokeProductActionHold.diagnostics()')
+    || !source.includes('publicationFailure: smokeRejectNextArc3Publication')
     || !source.includes('lastFault: lastSmokeArc3ActionFaultWitness')) {
     errors.push('Product action diagnostics omit bounded owner/hold/fault witnesses');
+  }
+  const publicationFault = arc3.indexOf("injection: 'publication-failure'");
+  const publicationThrow = arc3.indexOf("throw new Error('slice-smoke injected Arc 3 publication rejection');");
+  if (!(publicationFault > commit && publicationThrow > publicationFault)
+    || !arc3.slice(publicationFault, publicationThrow).includes('injectedRevision: outcome.revision')
+    || !arc3.slice(publicationFault, publicationThrow).includes("outcome: 'committed-publication-reload'")) {
+    errors.push('Arc 3 publication fault lacks an exact post-durable revision witness');
   }
   return errors;
 }

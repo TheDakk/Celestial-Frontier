@@ -1233,9 +1233,118 @@ describe('Arc 3 app action transaction seam', () => {
 });
 
 describe('Arc 3 app bootstrap wiring contract', () => {
+  it('keeps first render read-only and couples only an explicit durable route repair', () => {
+    const source = fs.readFileSync(path.join(here, '..', 'apps', 'game', 'src', 'main.ts'), 'utf8');
+    const assess = (candidate: string): string[] => {
+      const errors: string[] = [];
+      const ensureStart = candidate.indexOf('async function ensureBootAuthorityCommit(');
+      const ensureEnd = candidate.indexOf('\nfunction f4RuntimeMayMutate(', ensureStart);
+      if (ensureStart < 0 || ensureEnd <= ensureStart) return ['boot-helper'];
+      const ensure = candidate.slice(ensureStart, ensureEnd);
+      if ((ensure.match(/runtime\.commit\(/g) ?? []).length !== 1) errors.push('single-commit');
+      if (!ensure.slice(0, ensure.indexOf('const seeded = await runtime.commit(')).includes(
+        '!f4SeedBootstrapPending && !bootRouteRepairPending',
+      )) errors.push('pending-entry');
+      const durable = ensure.indexOf('durable = true;');
+      const successfulRouteClear = ensure.indexOf('bootRouteRepairPending = false;');
+      if (durable < 0 || successfulRouteClear <= durable) errors.push('durability-order');
+      const refusal = ensure.slice(ensure.indexOf('/* Any pre-durable bootstrap refusal'));
+      if (!refusal.includes('bootRouteRepairPending = false;')) errors.push('terminal-cleanup');
+
+      const mayMutate = candidate.slice(
+        candidate.indexOf('function f4RuntimeMayMutate('),
+        candidate.indexOf('\nfunction f4RuntimeMayAnswer(', candidate.indexOf('function f4RuntimeMayMutate(')),
+      );
+      if (!mayMutate.includes('f4SeedBootstrapPending || bootRouteRepairPending')) {
+        errors.push('mutation-hold');
+      }
+      if ((candidate.match(/ensureBootAuthorityCommit\(runtime\)/g) ?? []).length !== 3) {
+        errors.push('lifecycle-entrypoints');
+      }
+
+      const loadStart = candidate.indexOf('async function loadSave(');
+      const loadEnd = candidate.indexOf('\n/* ---- boot ---- */', loadStart);
+      const load = candidate.slice(loadStart, loadEnd);
+      const durableProjection = load.indexOf(
+        'const durableBootRouteProjection = bootRouteProjection(save);',
+      );
+      const savedRouteResolution = load.indexOf('const savedRoute = resolveViewToNav(');
+      const routeClassifier = load.indexOf('const bootRouteRepair = classifyBootRouteRepair({');
+      const routeIntent = load.indexOf('bootRouteRepairPending = bootRouteRepair.pending;');
+      const arc2Bootstrap = load.indexOf('/* Arc 2 owns an independently versioned Inventory carrier.');
+      if (!(durableProjection >= 0 && savedRouteResolution > durableProjection
+        && routeClassifier > savedRouteResolution && routeIntent > routeClassifier && arc2Bootstrap > routeIntent)) {
+        errors.push('route-intent-order');
+      }
+      const routeClassifierSource = load.slice(routeClassifier, routeIntent);
+      for (const guard of [
+        'persistenceHeld: persistHold !== false', 'savedRouteWriteHeld',
+        'trainingCheckpointWriteHeld', 'trainingBootRouteBlocked',
+        'trainingBootRuntimeOnlySeat',
+      ]) {
+        if (!routeClassifierSource.includes(guard)) errors.push('route-intent-guards');
+      }
+      const heldRestore = load.slice(routeIntent, arc2Bootstrap);
+      if (!heldRestore.includes('if (bootRouteRepair.changed && !bootRouteRepair.pending)')
+        || !heldRestore.includes('save.savedView = durableBootSavedView;')
+        || !heldRestore.includes('for (const { entry, where } of durableBootAtlasRoutes) entry.where = where;')) {
+        errors.push('held-route-restore');
+      }
+
+      const bootRenderStart = candidate.indexOf("emitBootPhase('save-load-start');");
+      const bootRenderEnd = candidate.indexOf("emitBootPhase('scene-rendered');", bootRenderStart);
+      const bootRender = candidate.slice(bootRenderStart, bootRenderEnd);
+      if (!bootRender.includes('await loadSave();')
+        || !bootRender.includes('rerender({ skipPersist: true });')
+        || bootRender.includes('skipPersist: trainingBootRuntimeOnlySeat')) {
+        errors.push('initial-render-write');
+      }
+      if (!candidate.includes('seedBootstrapPending: f4SeedBootstrapPending,\n          bootRouteRepairPending,')) {
+        errors.push('diagnostics');
+      }
+      return [...new Set(errors)];
+    };
+
+    expect(assess(source)).toEqual([]);
+    const controls = [
+      {
+        expected: 'initial-render-write',
+        mutant: source.replace('rerender({ skipPersist: true });\n  trainingBootRuntimeOnlySeat = false;',
+          'rerender({ skipPersist: trainingBootRuntimeOnlySeat });\n  trainingBootRuntimeOnlySeat = false;'),
+      },
+      {
+        expected: 'route-intent-guards',
+        mutant: source.replace('      savedRouteWriteHeld,\n', ''),
+      },
+      {
+        expected: 'held-route-restore',
+        mutant: source.replace('    save.savedView = durableBootSavedView;\n', ''),
+      },
+      {
+        expected: 'pending-entry',
+        mutant: source.replace('if (!f4SeedBootstrapPending && !bootRouteRepairPending\n',
+          'if (!f4SeedBootstrapPending\n'),
+      },
+      {
+        expected: 'durability-order',
+        mutant: source.replace('      durable = true;\n      if (engineeringBootstrapWasPending)',
+          '      bootRouteRepairPending = false;\n      durable = true;\n      if (engineeringBootstrapWasPending)'),
+      },
+      {
+        expected: 'diagnostics',
+        mutant: source.replace('          bootRouteRepairPending,\n          productBootstrapPending:',
+          '          productBootstrapPending:'),
+      },
+    ];
+    for (const control of controls) {
+      expect(control.mutant, control.expected).not.toBe(source);
+      expect(assess(control.mutant), control.expected).toContain(control.expected);
+    }
+  });
+
   it('terminally quiesces a hidden-first bootstrap refusal with only one write site', () => {
     const source = fs.readFileSync(path.join(here, '..', 'apps', 'game', 'src', 'main.ts'), 'utf8');
-    const ensureStart = source.indexOf('async function ensureF4SeedBootstrap(');
+    const ensureStart = source.indexOf('async function ensureBootAuthorityCommit(');
     const ensureEnd = source.indexOf('\nfunction f4RuntimeMayMutate(', ensureStart);
     expect(ensureStart).toBeGreaterThanOrEqual(0);
     expect(ensureEnd).toBeGreaterThan(ensureStart);
@@ -1251,6 +1360,7 @@ describe('Arc 3 app bootstrap wiring contract', () => {
     expect(publication).toBeGreaterThan(durableEdge);
     const refusal = ensure.slice(ensure.indexOf('/* Any pre-durable bootstrap refusal'));
     expect(refusal).toContain('f4SeedBootstrapPending = false;');
+    expect(refusal).toContain('bootRouteRepairPending = false;');
     expect(refusal).toContain('arc2LootBootstrapPending = false;');
     expect(refusal).toContain('arc3EngineeringBootstrapPending = false;');
     expect(refusal).toContain('arc3EngineeringBootstrapCandidate = null;');
@@ -1270,7 +1380,7 @@ describe('Arc 3 app bootstrap wiring contract', () => {
       source.indexOf('const showF4 ='),
       source.indexOf("\naddEventListener('pagehide'", source.indexOf('const showF4 =')),
     );
-    const failedBootstrapReturn = show.indexOf('&& !await ensureF4SeedBootstrap(runtime)) return;');
+    const failedBootstrapReturn = show.indexOf('&& !await ensureBootAuthorityCommit(runtime)) return;');
     const answerability = show.indexOf('runtime.setAnswerable(f4RuntimeMayAnswer(runtime)');
     const heartbeatRestart = show.indexOf('startF4Heartbeat();');
     expect(failedBootstrapReturn).toBeGreaterThanOrEqual(0);
