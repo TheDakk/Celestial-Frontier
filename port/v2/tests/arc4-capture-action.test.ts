@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+  capturePresentationFenceV1,
   createEmptyOwnershipStateV1,
   createLegacyProtectedOwnershipStateV1,
   type AcquisitionVerbV1,
@@ -42,6 +44,7 @@ import {
   type Arc4CaptureAttemptInputV1,
   type Arc4CaptureAttemptOutcomeV1,
 } from '../apps/game/src/arc4-capture-action.js';
+import { composeAcquisitionSnapshotV1 } from '../apps/game/src/acquisition-snapshot.js';
 import { createF4RuntimeAuthority } from '../apps/game/src/f4-runtime-authority.js';
 import { canonicalWorldRoster, type CanonicalWorldRoster } from '../apps/game/src/world-roster.js';
 
@@ -83,6 +86,25 @@ function captureContext(): Readonly<{
   return Object.freeze({ address, nav: nav.state, roster: roster.roster });
 }
 
+function presentationFence(
+  context: ReturnType<typeof captureContext>,
+  extensions: V5Extensions,
+  observedActivePlayMs = 0,
+): string {
+  const composed = composeAcquisitionSnapshotV1({
+    nav: context.nav,
+    address: context.address,
+    roster: context.roster,
+    ecologyEpoch: context.roster.ecologyEpoch,
+    fullRosterFingerprint: context.roster.fullRosterFingerprint,
+    extensions,
+  });
+  if (composed.kind !== 'ready') throw new Error(`capture fence was ${composed.reason}`);
+  const fence = capturePresentationFenceV1(composed.snapshot, { observedActivePlayMs });
+  if (fence === null) throw new Error('capture fence could not be projected');
+  return fence;
+}
+
 function seedForSuccessDraw(predicate: (value: number) => boolean): number {
   for (let seed = 0; seed < 100_000; seed++) {
     if (predicate(createSessionRNG(seed).at(DOMAINS.captureSuccess, 0))) return seed;
@@ -93,16 +115,17 @@ function seedForSuccessDraw(predicate: (value: number) => boolean): number {
 const HIT_SEED = seedForSuccessDraw((value) => value < 0.001);
 const MISS_SEED = seedForSuccessDraw((value) => value > 0.99);
 
-function authorityExtensions(seed: number): Readonly<{
+function authorityExtensions(seed: number, withContact = true): Readonly<{
   extensions: V5Extensions;
   authority: ReturnType<typeof prepareF4AuthorityUpdate>['authority'];
 }> {
   const arc2 = prepareArc2LootLegacyMigration({
     extensions: {},
     legacy: {
-      items: [['earpiece', 1], ['diplobeacon', 1], ['prismpendant', 1]],
-      equip: { ears: 'earpiece', necklace: 'diplobeacon' },
-      equipAff: { ears: { k: 'contact', v: 7, forId: 'earpiece' } },
+      items: withContact
+        ? [['earpiece', 1], ['diplobeacon', 1], ['prismpendant', 1]] : [],
+      equip: withContact ? { ears: 'earpiece', necklace: 'diplobeacon' } : {},
+      equipAff: withContact ? { ears: { k: 'contact', v: 7, forId: 'earpiece' } } : {},
     },
     capacity: 6,
   });
@@ -125,8 +148,9 @@ async function runtimeFixture(
   seed: number,
   state = baseState(),
   failReceiptCommit = false,
+  withContact = true,
 ) {
-  const initial = authorityExtensions(seed);
+  const initial = authorityExtensions(seed, withContact);
   const base = createMemoryBackend();
   let receiptCas = 0;
   const backend: StorageBackend = {
@@ -192,6 +216,7 @@ describe('Arc 4 headless durable capture action', () => {
         runtime: fixture.runtime,
         state: fixture.state,
         ...context,
+        presentationFence: presentationFence(context, fixture.runtime.extensions),
         verb: row.verb,
         codecNow: NOW,
       }));
@@ -236,6 +261,7 @@ describe('Arc 4 headless durable capture action', () => {
       runtime: fixture.runtime,
       state: fixture.state,
       ...context,
+      presentationFence: presentationFence(context, fixture.runtime.extensions),
       verb: 'tame',
       codecNow: NOW,
     };
@@ -243,7 +269,9 @@ describe('Arc 4 headless durable capture action', () => {
     fixture.state.essence += 777;
     fixture.state.stats.essenceEarned = 777;
     Object.assign(input as unknown as Record<string, unknown>, {
-      nav: null, address: null, verb: 'sample', codecNow: -1,
+      nav: null, address: null,
+      presentationFence: `cpf1:${'0'.repeat(64)}`,
+      verb: 'sample', codecNow: -1,
     });
     const outcome = committed(await pending);
     expect(outcome.preflight.verb).toBe('tame');
@@ -278,6 +306,7 @@ describe('Arc 4 headless durable capture action', () => {
       nav: null,
       address: context.address,
       roster: context.roster,
+      presentationFence: presentationFence(context, fixture.runtime.extensions),
       verb: 'tame',
       codecNow: NOW,
     });
@@ -291,6 +320,61 @@ describe('Arc 4 headless durable capture action', () => {
     expect(await fixture.repository.readReceipt(0)).toBeUndefined();
   });
 
+  it('refuses stale gear, ecology, and cycle presentation semantics before values or CAS', async () => {
+    const context = captureContext();
+    const noContactFixture = await runtimeFixture(HIT_SEED, baseState(), false, false);
+    const noContactFence = presentationFence(context, noContactFixture.runtime.extensions);
+    await noContactFixture.runtime.release();
+
+    const nextRosterResult = canonicalWorldRoster(context.address, 1);
+    if (!nextRosterResult.ok) throw new Error(`next-epoch roster was ${nextRosterResult.reason}`);
+    const nextContext = Object.freeze({
+      address: context.address,
+      nav: context.nav,
+      roster: nextRosterResult.roster,
+    });
+
+    const probes: readonly Readonly<{
+      label: string;
+      fence: (extensions: V5Extensions) => string;
+    }>[] = [
+      { label: 'gear', fence: () => noContactFence },
+      {
+        label: 'ecology',
+        fence: (extensions) => presentationFence(nextContext, extensions),
+      },
+      {
+        label: 'cycle',
+        fence: (extensions) => presentationFence(
+          context,
+          extensions,
+          ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+        ),
+      },
+    ];
+    for (const probe of probes) {
+      const fixture = await runtimeFixture(HIT_SEED);
+      const beforeRng = fixture.runtime.sessionRng;
+      const outcome = await commitArc4CaptureAttemptV1({
+        runtime: fixture.runtime,
+        state: fixture.state,
+        ...context,
+        presentationFence: probe.fence(fixture.runtime.extensions),
+        verb: 'tame',
+        codecNow: NOW,
+      });
+      expect(outcome, probe.label).toMatchObject({
+        kind: 'refused', durability: 'none', convergence: 'none',
+        detail: 'presentation:changed',
+        transaction: { kind: 'pre-draw-refused', reason: 'presentation:changed' },
+      });
+      expect(fixture.runtime.sessionRng, probe.label).toEqual(beforeRng);
+      expect(fixture.receiptCas(), probe.label).toBe(0);
+      expect(await fixture.repository.readReceipt(0), probe.label).toBeUndefined();
+      await fixture.runtime.release();
+    }
+  }, 20_000);
+
   it('does not expose or register evidence when storage fails after settlement', async () => {
     const context = captureContext();
     const fixture = await runtimeFixture(HIT_SEED, baseState(), true);
@@ -298,6 +382,7 @@ describe('Arc 4 headless durable capture action', () => {
       runtime: fixture.runtime,
       state: fixture.state,
       ...context,
+      presentationFence: presentationFence(context, fixture.runtime.extensions),
       verb: 'tame',
       codecNow: NOW,
     });
@@ -322,6 +407,7 @@ describe('Arc 4 headless durable capture action', () => {
       runtime: fixture.runtime,
       state: fixture.state,
       ...context,
+      presentationFence: presentationFence(context, fixture.runtime.extensions),
       verb: 'tame',
       codecNow: NOW,
     }));
@@ -573,6 +659,7 @@ describe('Arc 4 headless durable capture action', () => {
       runtime: otherFixture.runtime,
       state: otherFixture.state,
       ...context,
+      presentationFence: presentationFence(context, otherFixture.runtime.extensions),
       verb: 'tame',
       codecNow: NOW,
     }));

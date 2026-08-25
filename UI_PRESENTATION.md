@@ -1,5 +1,40 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-25 Arc 4 capture UI overlay — current local source:** the native Survey card now
+> renders one source-bound capture surface with exactly three player actions: **Tame**, **Scavenge**
+> and **Sample**. Its model binds the exact canonical world, ecology epoch and full-roster
+> fingerprint. It states the eight-row preview/full-roster counts, makes the random eligible-pool
+> policy explicit, and shows each verb's eligible count, aggregate chance and individual-odds range.
+> The controls do not imply targeted species selection. The same model owns enabled state,
+> Biosphere Yield, hit-or-miss attempt spending and the active-play next-cycle countdown.
+>
+> One delegated controller and one direct 44px top-right Close owner survive refill/reload without
+> duplication. Native Close hides only the Survey card and returns focus; reopening reconstructs the
+> exact source projection. Pending action state keeps Close reachable, disables competing actions,
+> owns focus, and publishes no optimistic catalogue, creature, specimen, Stardust or budget change.
+> Storage/stale paths remain visibly refused or reload-converged; committed publication faults use
+> one read-only convergence reload. Short phone landscape vertically centers action controls within
+> their cards while retaining 44px floors, containment, owned hit points and keyboard-visible focus.
+>
+> Player copy now has 41 Guide topics classified **24 partial / 17 unavailable** and a 54-bullet
+> cumulative v2.0 development draft. Field Training remains exactly six lessons plus graduation;
+> it has no Capture lesson. The diagnostics expose `playerControlExposed:true`, but no Charter
+> bioscan, targeted-preview, shipped version, update popup or `rnSeen` mutation was added.
+>
+> One no-retry Slice pass on Edge `151.0.4129.101` took 336,913 ms, reported zero findings/scopes,
+> and completed all nine ordered Arc 4 stages plus a 14-attempt burn-down while explicitly retaining
+> `recoveryClaimed:false` (report/log SHA-256
+> `4cc6fe02fb6965e4b67baef1d6b90d0a5ac64dff836cdc6416f49d5ad5bbbdde` /
+> `15683111584df5f1fead034b0b28f0e1a9b9ec96c2eb5cc3978b78c5ca1436b2`). Full-certifying Glass
+> then passed in 71,713 ms across all 12 viewports with 36/36 Arc 4 outcomes, every planned control,
+> none blocked/omitted, and zero findings/instrument failures/retries (report SHA-256
+> `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Both bind base
+> `8633bb48fc89c7ae658fa9ed4a7f47b683be102d` and dirty executable snapshot
+> `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`; this docs descendant does
+> not turn them into exact-head, hosted, integration, preview/publication or HUMAN evidence. Arc 4
+> remains **[PARTIAL]** for a real 20-minute next-cycle recovery observation and combined HUMAN
+> first-journey review.
+
 > **2026-08-25 Arc 3 Engineering UI overlay — current local source:** the former read-only
 > Shipyard panel now renders **Engineering & Shipyard** from one detached authority projection. It
 > retains the four code-native SVG chassis and exact installed-system/hardpoint facts, then adds
@@ -163,8 +198,9 @@
 > and fail-closed recovery. It also distinguishes route behavior: only a
 > current-v2 `{view}` checkpoint returns to the pre-Training view; a legacy
 > checkpoint has no `view`, so Skip from Welcome stays in Sol and full
-> completion after Land stays at Earth. Topic/capability inventory is unchanged, the draft
-> remains five categories /44 bullets, `V2_CURRENT_RELEASE_VERSION` remains
+> completion after Land stays at Earth. At that historical D-TRAIN-1 boundary,
+> topic/capability inventory was unchanged and the draft remained five categories /44 bullets;
+> `V2_CURRENT_RELEASE_VERSION` remains
 > null, and no version/release is authorized. The remaining fifteen legacy
 > lessons stay D-TRAIN-2 work.
 >
@@ -469,14 +505,15 @@
 > The eighth phone-dock slot now opens the canonical **Guide to the Universe**
 > rather than the old import shortcut or a second seven-topic manual. V2 carries
 > the mature inventory—9 categories /43 authored stable topic ids /41
-> legacy-live topics—plus category drill-down, title/keyword/body search and
+> legacy-live topics, currently 24 partial and 17 unavailable—plus category drill-down,
+> title/keyword/body search and
 > `data-gt` cross-links. A capability layer substitutes current-slice copy for
 > partially ported systems and a visible **Not yet in v2** explanation for
 > unported systems; dormant `beacon` / `events` remain retained in the source
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
-> Foundation**, the cumulative categorized v2.0 development bulletin. It summarizes
+> Foundation**, the cumulative categorized 54-bullet v2.0 development bulletin. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
 > promises. The long draft is browser-checked for canonical section order and a
 > reachable final bullet; opening and reloading it cannot change `rnSeen` or create

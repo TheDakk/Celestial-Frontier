@@ -127,13 +127,23 @@ function independentFullRosterFingerprint(
 
 function mainWorldRosterAuthorityErrors(source: string): string[] {
   const errors: string[] = [];
-  if (!source.includes("import { canonicalWorldRoster } from './world-roster.js';")) {
+  if (!source.includes(
+    "import { canonicalWorldRoster, type CanonicalWorldRoster } from './world-roster.js';",
+  )) {
     errors.push('canonical roster import missing');
   }
   if (!source.includes('canonicalCF1WorldAddressFromNav(state)')) {
     errors.push('surface NavState is not converted to a canonical CF1 address');
   }
-  if (!source.includes('const roster = rosterResult.roster.view.preview;')) {
+  const planetsideStart = source.indexOf('function fillPlanetside(');
+  const planetsideEnd = source.indexOf('\nfunction normalizeCompendiumFixture(', planetsideStart);
+  const planetside = planetsideStart >= 0 && planetsideEnd > planetsideStart
+    ? source.slice(planetsideStart, planetsideEnd)
+    : '';
+  if (!planetside.includes('preparedRoster: CanonicalWorldRoster | null = null,')
+    || !planetside.includes('let fullRoster = preparedRoster;')
+    || !planetside.includes('fullRoster = rosterResult.roster;')
+    || !planetside.includes('const roster = fullRoster.view.preview;')) {
     errors.push('Planetside does not consume the canonical preview');
   }
   if (!source.includes('showPlanetsideRosterFailure(`${rosterResult.reason}:${rosterResult.message}`)')) {
@@ -697,13 +707,22 @@ describe('MAIN-3 — full world roster vs Planetside preview', () => {
   it('statically keeps main on MAIN-3 and rejects a direct duplicate ecology constructor', () => {
     expect(mainWorldRosterAuthorityErrors(mainSource)).toEqual([]);
 
+    const missingImport = mainSource.replace(
+      "import { canonicalWorldRoster, type CanonicalWorldRoster } from './world-roster.js';",
+      "import { type CanonicalWorldRoster } from './world-roster.js';",
+    );
+    expect(missingImport).not.toBe(mainSource);
+    expect(mainWorldRosterAuthorityErrors(missingImport)).toContain(
+      'canonical roster import missing',
+    );
+
     const duplicate = `${mainSource}\nfunction fullWorldRoster() { return planetSpecies(); }`;
     expect(mainWorldRosterAuthorityErrors(duplicate)).toContain(
       'main reconstructs ecology outside the canonical roster owner',
     );
 
     const bypass = mainSource.replace(
-      'const roster = rosterResult.roster.view.preview;',
+      'const roster = fullRoster.view.preview;',
       'const roster = [] as readonly Record<string, unknown>[];',
     );
     expect(bypass).not.toBe(mainSource);

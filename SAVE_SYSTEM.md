@@ -27,7 +27,7 @@
 > Arc 4 now bootstraps its strict 18-namespace ownership-v1 carrier in that same receipt-free boot
 > CAS. Absent legacy authority is migrated whole; a current carrier's projectable stale v4 mirror is
 > reconciled through the shared detached candidate; future, corrupt, unrepresentable and lossless
-> `legacy-protected` evidence stays protected. Its diagnostics-only capture action snapshots the
+> `legacy-protected` evidence stays protected. Its player-facing Survey capture action snapshots the
 > exact current surface/full roster/current epoch, certifies miss plus every eligible hit against
 > complete-save capacity before two F4 draws, then commits one attempt spend, ownership, v4 mirror,
 > F4 authority, immutable receipt and revision in one CAS. That mirror is the exact full `codex`,
@@ -38,9 +38,15 @@
 > then requires the complete prepared save and committed transaction before targeted publication;
 > a mismatch reload-converges and never rerolls or writes again.
 >
-> This persistence owner does not make Capture player-live. There is no Capture control, copy,
-> toast, browser/HUMAN proof or Guide capability, and the random-pool-versus-targeted UI policy is
-> still undecided.
+> The native Tame/Scavenge/Sample controls now expose that owner without adding a second writer.
+> Presentation and settlement share the exact canonical world/epoch/full-roster fingerprint,
+> eligible random-pool policy, odds and Biosphere budget. Pending state is non-optimistic. Storage
+> refusal and pre-durable stale authority publish nothing; post-durable verification/publication
+> faults converge through one read-only reload. The reloaded native Survey surface reconstructs the
+> committed authority and never retries the action. Local Slice evidence covers hit, miss,
+> burn-down, storage, stale and publication outcomes; Glass covers native Close/reopen plus all 12
+> responsive rows. The real 20-minute next-cycle recovery observation and HUMAN review remain open.
+> No Charter bioscan, targeted preview, shipped release/version or `rnSeen` mutation was added.
 > Arc 5 adds only a digest certificate in `player/arc5.ownership.migration`, derived from a fresh
 > Arc 4 import and binding source/target modes, revisions and digests. It stores no duplicate
 > ownership-v2 bytes and is not a product migration or ownership writer.
@@ -95,6 +101,24 @@
 > final Glass fixture/contract/tool additions, with no app-product change between them. They prove
 > bounded current-source local stale/storage/publication/reload outcomes, not a same-snapshot clean
 > exact-head, hosted, integration, real-save Gate C, HUMAN, release or deployment boundary.
+
+> **2026-08-25 Arc 4 player-path persistence evidence:** Slice run
+> `20260825143239498-59502-655815e34a3e` passed once on Edge `151.0.4129.101` in 336,913 ms with
+> zero findings/scopes/retries. Its one exact Arc 4 ledger contains the ordered stages
+> precondition → pending/no optimism → hit → storage refusal → stale convergence → miss → 14-step
+> burn-down → disabled suppression → publication convergence, and records
+> `recoveryClaimed:false`. Report/log SHA-256 are
+> `4cc6fe02fb6965e4b67baef1d6b90d0a5ac64dff836cdc6416f49d5ad5bbbdde` /
+> `15683111584df5f1fead034b0b28f0e1a9b9ec96c2eb5cc3978b78c5ca1436b2`.
+> Full-certifying Glass then passed in 71,713 ms with all 12 viewport/reload rows, 36/36 Arc 4
+> outcomes, all planned controls, none blocked/omitted, and zero findings/instrument failures/
+> retries; report SHA-256 is
+> `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`.
+> Both bind base `8633bb48fc89c7ae658fa9ed4a7f47b683be102d`, status SHA-256
+> `61fc362edebc5f747143131de7cf4a27a7228a3734f6becb49b2089ca6381cac`, and dirty executable
+> snapshot `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. They are exact-input
+> local proof, not exact-head, hosted, integration, real-save Gate C, HUMAN, release, preview or
+> deployment authority.
 
 > **2026-08-16 D-TRAIN-1 source-truth overlay (historical foundation; current where the
 > 2026-08-24 carrier overlay does not supersede it; local browser
@@ -305,7 +329,8 @@
 > fixed-point round-trip every supported shape. Nothing in this planned overlay
 > changes the current save envelope, Guide, release marker or import behavior.
 
-> **2026-08-15 v2 epoch-snapshot overlay (current code):** The compatibility-
+> **2026-08-15 v2 epoch-snapshot overlay (historical foundation; current only where the 2026-08-25
+> F3/F4 overlay above does not supersede it):** The compatibility-
 > named `SaveStateV2.EPOCH_BASE` field carries the advancing snapshot written as
 > `epoch`; it is not synonymous with `EpochClock.base()`. On boot, the app creates
 > one clock from imported `EPOCH_BASE` and a fresh zero-origin monotonic elapsed
@@ -315,8 +340,11 @@
 > elapsed segment. The exporter remains clock-agnostic and cannot repair a caller
 > that supplied `base()`. A real-browser control now advances one epoch, persists
 > through the actual IndexedDB repository, reads the raw primary and reloads the
-> exact value; this does not claim automatic edge persistence, foreground-only
-> accrual, cross-tab safety, or the future `activePlayMs` lease.
+> exact value. At that historical boundary this did not claim automatic edge persistence,
+> foreground-only accrual, cross-tab safety, or an `activePlayMs` lease. The 2026-08-25 F3/F4
+> overlay above now owns visible/answerable foreground-only active-play accrual, revision/CAS,
+> cross-tab lease exclusion and persisted `activePlayMs`; the epoch-snapshot mechanics in this
+> paragraph remain their historical foundation.
 
 > **2026-08-14 v2 port overlay (historical pre-D-TRAIN-1 boundary):** The browser slice then
 > distinguishes a fresh store, a supported coherent save, an unsupported future
@@ -343,12 +371,13 @@
 > The player-facing import door now lives at **Settings → Bring expedition**;
 > moving it out of the eighth dock slot did not create a second loader or weaken
 > any byte-protection rule. That dock slot now opens the canonical v2 Guide
-> catalogue (9 categories /43 authored ids /41 legacy-live topics); first open
+> catalogue (9 categories /43 authored ids /41 legacy-live topics, currently 24 partial /17
+> unavailable); first open
 > updates the existing `guide`/`seenGuide` save field through the ordinary
 > protected persistence path. Guide content itself is source-addressed code, not
 > duplicated into the save. The complete 56-entry v1 release archive is likewise
 > immutable content; `rn`/`rnSeen` remains only a seen-version marker. The
-> separate **A New Foundation** bulletin is an unshipped v2.0 development draft:
+> separate **A New Foundation** bulletin is an unshipped 54-bullet v2.0 development draft:
 > opening the cumulative notes cannot mark them seen, create `releasePending`,
 > or fire an update surface. No production version was authorized or bumped.
 > The import door is a top-layer `aria-modal` dialog: Tab stays inside its live

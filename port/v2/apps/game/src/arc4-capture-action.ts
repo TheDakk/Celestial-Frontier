@@ -10,6 +10,7 @@ import {
   ACTIVE_PLAY_CAPTURE_CYCLE_MS,
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   canonicalJson,
+  capturePresentationFenceV1,
   isCaptureAttemptPlanV1,
   isCapturePreflightReadyV1,
   ownershipStateDigestV1,
@@ -62,6 +63,7 @@ import {
 
 export type Arc4CapturePreDrawRefusalReasonV1 =
   | `snapshot:${AcquisitionSnapshotProtectionReason}`
+  | 'presentation:changed'
   | `preflight:${CapturePreflightRefusalReasonV1}`
   | `capacity:${Arc4CaptureCapacityRefusalReason}`;
 
@@ -126,6 +128,7 @@ export interface Arc4CaptureAttemptInputV1 {
   readonly nav: unknown;
   readonly address: unknown;
   readonly roster: CanonicalWorldRoster;
+  readonly presentationFence: string;
   readonly verb: AcquisitionVerbV1;
   readonly codecNow: number;
 }
@@ -136,12 +139,13 @@ interface CapturedArc4CaptureAttemptInputV1 {
   readonly nav: unknown;
   readonly address: unknown;
   readonly roster: CanonicalWorldRoster;
+  readonly presentationFence: string;
   readonly verb: AcquisitionVerbV1;
   readonly codecNow: number;
 }
 
 const CAPTURE_ATTEMPT_INPUT_FIELDS = Object.freeze([
-  'runtime', 'state', 'nav', 'address', 'roster', 'verb', 'codecNow',
+  'runtime', 'state', 'nav', 'address', 'roster', 'presentationFence', 'verb', 'codecNow',
 ] as const);
 const CAPTURE_STATE_CLONE_LIMIT = 1_500_000;
 
@@ -229,6 +233,8 @@ function captureAttemptInput(
     if (!commitDescriptor || !('value' in commitDescriptor)
       || typeof commitDescriptor.value !== 'function') return null;
     if (!isCanonicalWorldRoster(fields.roster)) return null;
+    if (typeof fields.presentationFence !== 'string'
+      || !/^cpf1:[0-9a-f]{64}$/u.test(fields.presentationFence)) return null;
     return Object.freeze({
       commit: commitDescriptor.value.bind(runtime) as F4RuntimeAuthority['commitOutcomesPreDraw'],
       state: cloneCapturePlainData(
@@ -240,6 +246,7 @@ function captureAttemptInput(
       nav: fields.nav,
       address: fields.address,
       roster: fields.roster,
+      presentationFence: fields.presentationFence,
       verb: fields.verb as AcquisitionVerbV1,
       codecNow: fields.codecNow as number,
     });
@@ -351,6 +358,14 @@ export async function commitArc4CaptureAttemptV1(
         return Object.freeze({
           kind: 'refused' as const,
           reason: `snapshot:${composed.reason}` as const,
+        });
+      }
+      if (capturePresentationFenceV1(composed.snapshot, {
+        observedActivePlayMs: preDraw.activePlayMs,
+      }) !== captured.presentationFence) {
+        return Object.freeze({
+          kind: 'refused' as const,
+          reason: 'presentation:changed' as const,
         });
       }
       const preflight = preflightCaptureV1(composed.snapshot, captured.verb);

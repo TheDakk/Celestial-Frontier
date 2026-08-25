@@ -2,8 +2,9 @@
    TUT_STEPS, texts VERBATIM). The slice runs the six lessons its systems
    support today — welcome · find-earth · survey-tour · atlas-add ·
    atlas-open · land — then graduates with an honest handoff to the live
-   Engineering board. Capture and the cache/feed/breed/duel/heal arc remain
-   outside this deliberately minimal navigation drill. Carried laws: the lesson card publishes --tut-bot (CF1805-01:
+   Engineering board and Planetside capture. Capture remains outside this
+   deliberately minimal navigation drill; cache/feed/breed/duel/heal remain
+   outside the current player boundary. Carried laws: the lesson card publishes --tut-bot (CF1805-01:
    any surface that can rise above the card must clear it) and NEVER covers
    the dock (CF1806-02's family); a `spot` gets the spotlight ring; `allow`
    locks the chrome down to the lesson's own affordances (the canvas stays
@@ -67,7 +68,7 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
     },
     {
       id: 'grad', btn: 'Finish for now',
-      text: () => 'Well flown, Pathfinder. This short drill stays focused on real navigation: chart, travel, and land. Next, open <b>Engineering &amp; Shipyard</b> from the 🛠 control. A grounded lifeless world can expose <b>Mine</b>; a proven star with the right drive can expose <b>Skim</b>; Research and fixed Fabricator rows enable only actions whose effects are connected. Surveying or landing a living world still does not discover or capture its life — those lessons wait for their real writers.',
+      text: () => 'Well flown, Pathfinder. This short drill stays focused on real navigation: chart, travel, and land. Next, open <b>Engineering &amp; Shipyard</b> from the 🛠 control. A grounded lifeless world can expose <b>Mine</b>; a proven star with the right drive can expose <b>Skim</b>; Research and fixed Fabricator rows enable only actions whose effects are connected. On a living world, Planetside offers <b>Tame</b>, <b>Scavenge</b>, and <b>Sample</b>: each chooses uniformly from its eligible species across the full biosphere, not only the at-most-eight-row preview. All three share finite <b>Biosphere Yield</b>; a hit or miss spends 1 attempt, and the pool fully recovers at the next 20-minute active-play cycle, never while the game is closed. This navigation drill makes no capture attempt, so use those actions after Finish. Capture does not bank the Charter’s separate bioscan milestone; that writer remains unavailable.',
     },
   ];
 }

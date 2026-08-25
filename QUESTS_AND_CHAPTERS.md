@@ -1,5 +1,18 @@
 # Celestial Frontier — Quests & Chapters
 
+> **2026-08-25 Arc 4 current-capability overlay:** finite Tame/Scavenge/Sample is now a native
+> Survey-card action over the production full roster and current epoch. It presents a source-bound
+> uniform random eligible pool, truthful preview/full counts and odds, one shared hit-or-miss
+> Biosphere Yield, active-play recovery and committed-only ownership/reward outcomes. It can create
+> the first durable Compendium fact, fauna individual or specimen lot, but it does not add a Charter
+> bioscan goal or a targeted species preview. The Guide remains 41 topics—24 partial/17
+> unavailable—and **A New Foundation** has 54 draft bullets. Field Training deliberately remains
+> six lessons plus graduation with no Capture lesson. Current-source Slice/Glass prove the native
+> hit/miss, refusal, stale/publication, Close/reopen and reload paths, but record
+> `recoveryClaimed:false`; the uninterrupted real 20-minute next-cycle recovery observation and
+> combined HUMAN first-journey/ownership review remain open. No hosted, release/version, `rnSeen` or
+> preview/publication authority follows.
+
 > **2026-08-24 Arc 3 Charter/current-capability overlay:** mining and eligible fixed Fabrication are
 > real receipt-backed Engineering actions. The panel displays six research rows but only Deep
 > Scanners is purchasable; its pure orbital-reveal policy exists while current Survey renders no
@@ -98,7 +111,7 @@
 > verified outcomes.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the newest v2 overlay
-above matches the committed `port/v2` boundary as of 2026-08-24. Carries v1.8.6 and v1.8.7
+above matches the current local `port/v2` boundary as of 2026-08-25. Carries v1.8.6 and v1.8.7
 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and Field Training. The **21-step** curriculum described below is the legacy game; the current v2 boundary is explicit here.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy

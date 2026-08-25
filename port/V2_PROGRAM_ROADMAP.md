@@ -74,8 +74,8 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-25 local campaign boundary — product work now includes Arc 3 and a diagnostics-only
-> headless Arc 4 durable writer; every program Arc remains bounded by its open evidence:** canonical
+> **2026-08-25 local campaign boundary — product work now includes Arc 3 and player-facing
+> Arc 4 capture; every program Arc remains bounded by its open evidence:** canonical
 > full-CF1 resource/star opportunities, finite active-play Mine/Skim, the Engineering panel, shared
 > product-action coordination and committed-only Charter mining/fabrication banking are live locally.
 > Six research rows are displayed but only Deep Scanners is purchasable; its pure orbital-reveal
@@ -84,15 +84,22 @@
 > headroom are actionable; fully exceptional slotted outputs and disconnected-effect rows remain
 > unavailable. Arc 4 now bootstraps its strict 18-namespace ownership authority in the shared
 > receipt-free boot CAS, and genuine legacy Training joins one Arc 2 row with all 18 Arc 4 rows under
-> exact source evidence. Its diagnostics-only Tame/Scavenge/Sample action binds the full production
+> exact source evidence. Its native Survey-card Tame/Scavenge/Sample action binds the full production
 > roster and current epoch, certifies every miss/hit capacity scenario before two persisted F4
 > draws, spends on hit or miss, and settles ownership, compatibility projection, one receipt and the
 > next revision in one CAS. Pre-CAS retains only a private pending payload of registered plan/
 > settlement identities and prepared fingerprint. The committed path alone mints the evidence token
 > and performs its sole WeakMap registration, binding that payload to the exact transaction/kind/
-> revision; the verifier then requires the full prepared save before targeted publication. There is
-> still no player control, copy/toast, Guide capability, real-browser/reload outcome or HUMAN proof, and the
-> random-pool-versus-targeted presentation policy remains open. Arc 5 has a receipt-bound V2
+> revision; the verifier then requires the full prepared save before targeted publication. The
+> presentation is a source-bound uniform random eligible pool—not targeted species selection—and
+> exposes preview/full counts, aggregate and individual odds, shared hit-or-miss Biosphere Yield,
+> active-play recovery, pending non-optimism, native Close/reopen and reload convergence. Guide is
+> 24 partial/17 unavailable, **A New Foundation** has 54 draft bullets, and Training remains six
+> lessons plus graduation with no Capture lesson. Current-source Slice passes the exact nine-stage
+> capture ledger (336,913 ms, report `4cc6fe02…`, 14 burn steps, `recoveryClaimed:false`); Glass
+> passes 12 viewports/36 Arc 4 outcomes with all planned controls and no omissions (71,713 ms,
+> report `03a14ce5…`). Both bind exact-input dirty tree `b83ccef5…`. The uninterrupted real
+> 20-minute recovery observation and HUMAN review remain open. Arc 5 has a receipt-bound V2
 > model and digest-only migration certificate, not
 > an app migration or companion action. Arc 7 has package-only identity/runtime/lab/rights
 > foundations, including the committed absolute eight-emitter/120-node configuration caps. Arc 3
@@ -102,7 +109,8 @@
 > or omitted, and no findings, instrument failures, or retries. Both reports name base `768fb32` but
 > bind distinct dirty snapshots—Slice `29d54731…`, Glass `d9b51284…`—so each is bounded local
 > exact-input evidence, not exact-head `c4a02be`, hosted, integration, full-battery, HUMAN, preview,
-> release, or deployment authority. The final Compendium measurement reseal remains deferred until
+> release, or deployment authority. No Charter bioscan or targeted preview is claimed. The final
+> Compendium measurement reseal remains deferred until
 > the multi-Arc dependency graph freezes.
 >
 > **Arc 2 implementation slice — historical foundation, still current where not superseded:**
@@ -172,8 +180,8 @@ When sources disagree, resolve the conflict in this order and record the discrep
 | **[HUMAN]** | Human review is required; no automated metric can replace it. |
 
 The current v2 application is a playable exploration/survey Phase-4 slice with bounded Arc 2
-exact-instance Inventory and Arc 3 Engineering actions. It is not a finished v2 product: authored
-variable construction/new loot policy, upgrades/sockets, capture and companion writers, missions,
+exact-instance Inventory, Arc 3 Engineering actions and Arc 4 finite acquisition writers. It is not
+a finished v2 product: authored variable construction/new loot policy, upgrades/sockets, companion writers, missions,
 combat, Guardians, living previews, and full app-owned audio remain planned until their real
 actions, persistence/reload, reachability, negative controls, and required human evidence land.
 
@@ -1055,7 +1063,8 @@ brackets complete reads/writes with a revision. The lease-fenced mutation owner 
 product rows, immutable receipt, and next revision, returning explicit stale, duplicate, lost-lease,
 and storage outcomes without automatic retry. Portable v5 replacement carries extension namespaces
 without flattening them into v4. This authority is exercised by Arc 2 Inventory/Training, Arc 3
-Engineering and the headless Arc 4 capture writer. Arc 4 has focused stale/coordinator controls, but
+Engineering and the player-live Arc 4 capture writer. Arc 4 has focused plus native-browser
+stale/storage/publication/reload controls, but
 the wider F3 program exit still awaits clean exact-head/browser IndexedDB upgrade and representative
 two-tab coverage for mission/combat and other later writers; real-save Gate C remains open.
 
@@ -1192,7 +1201,7 @@ protection; reach/visual/Guide agreement; economy simulation; phone/desktop huma
 
 ### 5.3 Arc 4 — capture and ownership
 
-**Implementation status (2026-08-25): `[PARTIAL]`, headless durable writer.** Full epoch-bound
+**Implementation status (2026-08-25): `[PARTIAL]`, player-facing durable writer.** Full epoch-bound
 rosters, contact capability, 18 ownership namespaces, strict ownership-v1/import codecs, canonical
 acquisition snapshots and the pure capture planner are committed. The app bootstraps an absent
 ownership carrier—or reconciles a projectable compatibility mirror—in the shared receipt-free boot
@@ -1200,7 +1209,7 @@ CAS while protecting future, corrupt, unrepresentable and Training-deferred evid
 legacy Training couples one Arc 2 write with all 18 Arc 4 writes and exact migrated source evidence
 in its single replacement transaction.
 
-The diagnostics-only Tame/Scavenge/Sample front door captures the exact current surface, canonical
+The native Survey-card Tame/Scavenge/Sample front door captures the exact current surface, canonical
 address, production full roster and current epoch; pre-certifies the miss and every eligible hit
 against complete-save capacity before reading `captureCandidate` and `captureSuccess`; and settles
 attempt spend, first-only catalogue/reward facts, repeat fauna individuals or specimen lots, F4,
@@ -1208,8 +1217,14 @@ one receipt and one revision in a single fenced CAS. Before durability it retain
 pending registered plan/settlement identities and prepared fingerprint. The committed path alone
 mints the evidence token and performs the sole WeakMap registration, binding that payload to the
 exact transaction/kind/revision. The verifier then requires the full prepared save before targeted
-publication or read-only reload convergence. No visible control, player copy/toast, Guide capability,
-real-browser/reload outcome or HUMAN evidence exists, so the Arc remains `[PARTIAL]`.
+publication or read-only reload convergence. Its source-bound uniform random eligible pool exposes
+preview/full counts, aggregate and individual odds, one shared hit-or-miss Biosphere Yield and the
+active-play recovery countdown without implying targeted selection. Pending, storage, stale and
+publication outcomes remain non-optimistic and converge without reroll or second write; native
+Close/reopen, focus and reload are browser-proved. Guide Capture/Discover copy is live/partial within
+the 24-partial/17-unavailable inventory; Training remains six lessons plus graduation with no
+Capture lesson. The uninterrupted 20-minute recovery observation and HUMAN review remain open, so
+the Arc remains `[PARTIAL]`.
 
 **Player promise:** discovery becomes meaningful ownership through finite, legible actions—not by
 opening a page or replaying a roll.
@@ -1217,21 +1232,23 @@ opening a page or replaying a roll.
 **Build scope:**
 
 - Separate `CatalogSpecies`, `CreatureInstance`, specimens/resources, and discovered records.
-- Keep the implemented finite headless Tame, Scavenge and Sample settlement authoritative: fauna
+- Keep the implemented finite Tame, Scavenge and Sample settlement authoritative: fauna
   Tame may create a living creature; Scavenge/Sample create specimen lots, never companions.
 - Preserve attempt spend on hit or miss, recovery/depletion, provenance, first-only discovery reward
-  and receipt-backed exact-once settlement through player presentation work.
-- Add visible product controls and give survey/discovery/capture outcomes clear visual, caption and
-  focus paths without claiming rewards before the transaction succeeds.
+  and receipt-backed exact-once settlement through all later presentation work.
+- Preserve the implemented presentation-semantics fence, accessible controls, pending copy, native
+  Close/reopen/focus paths and committed-only outcome publication.
 
 **Dependencies:** Arc 2 item/storage model, Arc 3 world opportunity/reach, F2 canonical identity,
 F3 transactions, and F4 time/RNG.
 
-**Exit evidence:** focused browser-free controls now prove the headless writer's hit/miss, spend,
-first-only/repeat, capacity, stale/CAS, receipt, committed-state and publication boundaries. Exit
-still requires a player-reachable action that creates the correct catalogue page/specimen/creature;
-real reload/write-failure and browser controls; and proof of no free page, reroll, double spend,
-duplicate creature or stale-tab grant. Guide remains unavailable until those outcomes exist.
+**Exit evidence:** focused controls prove hit/miss, spend, first-only/repeat, capacity, stale/CAS,
+receipt, committed-state and publication boundaries. Current-source Slice adds the exact nine-stage
+native-action ledger through refusal, stale and reload convergence; Glass executes 36 Arc 4 outcomes
+across 12 viewports with every planned control. No free page, reroll, double spend, duplicate
+creature or stale-tab grant was observed. The real uninterrupted 20-minute next-cycle recovery
+observation and combined HUMAN first-journey/ownership review remain required. This does not claim a
+Charter bioscan, targeted preview, hosted run, production release or whole-Gate closure.
 
 ### 5.4 Arc 4.5 — first complete journey [HUMAN]
 

@@ -1,14 +1,14 @@
 # Celestial Frontier — World & Universe Generation
 
 **STATUS:** legacy mechanics match `main.js` as of 2026-07-23; the dated v2 overlays
-match the committed `port/v2` boundary as of 2026-08-24.
+match the current local `port/v2` boundary as of 2026-08-25.
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime, `port/v2/packages/domain/{planetgen,worldgen,surveyphrases}` own the
 generated content contracts, and `port/v2/packages/scene/{address,cf1-code,system,universe,zoommode}`
 own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION.md. The biome CONTENT catalog is `BIOME_ATLAS.md` at the repo root (audited and promoted there from `tools/` on 2026-07-31; it had existed since 2026-07-21, and an earlier same-day note in these docs wrongly declared it missing — see ART_DIRECTION §6.1).
 
-> **2026-08-24 Arc 3/4 current-world overlay:** `@cf/domain-opportunity` now projects exact
+> **2026-08-25 Arc 3/4 current-world overlay:** `@cf/domain-opportunity` now projects exact
 > source-proven CF1 world and star opportunities, preserves raw tiers 0–14 separately from the
 > display rarity ladder, and exposes finite world deposits, stellar skim material/hazard and
 > worked-out/active-play cursor facts. The player can Mine and Skim; the Engineering panel displays
@@ -21,10 +21,15 @@ own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION
 >
 > Arc 4 separately consumes the full epoch-bound canonical roster—never the eight-row Planetside
 > preview—to build a source-proven acquisition snapshot and pure capture plan. Ownership-v1 codecs,
-> 18 namespaces and canonical owner identities exist, but no capture writer, save bootstrap or UI
-> action exists yet. The broader anomaly/blueprint/lore/Guardian/project manifest remains planned.
+> 18 namespaces, boot/replacement coherence and canonical owner identities feed the native Survey
+> Tame/Scavenge/Sample actions. Presentation and settlement bind the same CF1 address, planet
+> ordinal, epoch and full-roster fingerprint; the player sees preview/full counts and an explicit
+> uniform eligible-pool policy rather than a targeted species promise. Hit/miss spending and
+> storage/stale/publication/reload convergence are locally browser-proven. This does not change any
+> world-generation value or make the broader anomaly/blueprint/lore/Guardian/project manifest live;
+> real 20-minute recovery and HUMAN capture review remain open.
 
-> **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the 2026-08-24
+> **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the 2026-08-25
 > overlay does not supersede it):** Public and
 > persisted galaxy/star/planet coordinates are candidates, not generated-world
 > identity. The scene resolver searches the production galaxy cells, then both
@@ -77,7 +82,7 @@ own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION
 > deterministic cosmic-time key—not a requested site count—and exposes the
 > exact remnant and protostar-birth result used by the app. TypeScript still
 > accepts any `number`; at that boundary nominal epoch ownership remained future F4 work. The
-> current app now supplies the explicit epoch owner recorded in the 2026-08-24 overlay.
+> current app now supplies the explicit epoch owner recorded in the 2026-08-25 Arc 3/4 overlay.
 >
 > Importing `@cf/domain-worldgen` is safe, but its transitional lifted seam is
 > not standalone for a first uncached branch that generates an ordinary galaxy,

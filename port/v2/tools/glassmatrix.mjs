@@ -22,7 +22,9 @@ import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { buildCompendiumFixture } from './compendiummem-fixture.mjs';
 import {
+  GLASS_VETERAN_CAPTURE_ORACLE,
   GLASS_VETERAN_PREF_RAW as VETERAN_PREF_RAW,
+  GLASS_VETERAN_PREF_RAW_SHA256,
   glassEngineeringFixtureOutcome,
   glassVeteranPreferenceRaw,
 } from './glass-engineering-fixture-contract.mjs';
@@ -36,6 +38,20 @@ import {
   ENGINEERING_RESEARCH_IDS,
   hasUnnegatedSentenceClaim,
 } from './engineering-browser-contract.mjs';
+import {
+  ARC4_CAPTURE_GEOMETRY_EVIDENCE_SCHEMA,
+  ARC4_CAPTURE_LAYOUT_COORDINATE_SPACE,
+  ARC4_CAPTURE_UI_EVIDENCE_SCHEMA,
+  ARC4_CAPTURE_UI_EXPRESSION,
+  ARC4_CAPTURE_VERBS,
+  ARC4_OWNERSHIP_EXTENSION_TARGETS,
+  arc4DurableEvidenceComplete,
+  arc4CaptureUiSnapshotComplete,
+  assessArc4DurableEvidence,
+  assessArc4CaptureCardGeometryFocus,
+  buildArc4DurableReadExpression,
+  projectArc4V4OwnedCounters,
+} from './arc4-browser-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
@@ -110,6 +126,7 @@ const startedAt = Date.now();
 let runSource = null;
 let runReloadEvidence = [];
 let runViewportTimings = [];
+let runArc4CaptureOutcomes = [];
 class ProductAnswerabilityFinding extends Error {
   constructor(message, evidence, finding = null) {
     super(message);
@@ -261,9 +278,717 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'shipyard-close-release',
   'shipyard-opener-path',
   'shipyard-geometry-focus',
+  'arc4-capture-full-pool-copy',
+  'arc4-capture-model-disabled-parity',
+  'arc4-capture-earth-title',
+  'arc4-capture-roster-counts',
+  'arc4-capture-roster-fingerprint',
+  'arc4-capture-yield',
+  'arc4-capture-tame-odds',
+  'arc4-capture-scavenge-odds',
+  'arc4-capture-sample-odds',
+  'arc4-capture-native-survey-return',
+  'arc4-capture-ownership-mutation',
+  'arc4-capture-session-rng-mutation',
+  'arc4-capture-receipt-mutation',
+  'arc4-capture-epoch-mutation',
+  'arc4-capture-v4-counter-mutation',
+  'arc4-capture-native-activation',
+  'arc4-capture-control-overlap',
   'ultra-viewport-render-budget',
   'ultra-same-backing-resize',
 ]);
+
+const ARC4_CAPTURE_OUTCOME_CODES = Object.freeze([
+  'ARC4_CAPTURE_NATIVE_SURVEY_RETURN',
+  'ARC4_CAPTURE_PRESENTATION_TRUTH',
+  'ARC4_CAPTURE_GEOMETRY_FOCUS',
+]);
+const ARC4_CAPTURE_LABELS = Object.freeze({
+  tame: Object.freeze({ label: 'Tame', pool: 'fauna', reward: 'one owned creature' }),
+  scavenge: Object.freeze({ label: 'Scavenge', pool: 'flora or fungi', reward: 'one specimen lot' }),
+  sample: Object.freeze({ label: 'Sample', pool: 'microbes', reward: 'one specimen lot' }),
+});
+const ARC4_EARTH_GLASS_ORACLE = GLASS_VETERAN_CAPTURE_ORACLE;
+const ARC4_DURABLE_READ_EXPRESSION = buildArc4DurableReadExpression();
+const ARC4_PLANETSIDE_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),side=document.getElementById('planetside');return {
+  mode:state?.mode??null,galaxySeed:state?.gal??null,starSeed:state?.star??null,
+  planetSeed:state?.planet??null,planetOrdinal:state?.planetOrdinal??null,
+  rosterState:side?.getAttribute('data-roster-state')??null,
+  previewCount:Number(side?.getAttribute('data-preview-count')),
+  fullRosterCount:Number(side?.getAttribute('data-full-roster-count')),
+  fullRosterFingerprint:side?.getAttribute('data-full-roster-fingerprint')??null,
+  ecologyEpoch:Number(side?.getAttribute('data-ecology-epoch')),
+  previewRowCount:side?.querySelectorAll('[data-sel="planetside-sp"]').length??0,
+  worldKey:state?.navWorldKey??null};})()`;
+const ARC4_SURFACE_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+  button=document.getElementById('docksurvey');return {
+  mode:state?.mode??null,galaxySeed:state?.gal??null,starSeed:state?.star??null,
+  planetSeed:state?.planet??null,planetOrdinal:state?.planetOrdinal??null,
+  worldKey:state?.navWorldKey??null,cardOpen:state?.cardOpen===true,
+  expanded:button?.getAttribute('aria-expanded')??null,
+  cardTitle:state?.cardTitle??null};})()`;
+const ARC4_LAYOUT_EXPRESSION = `(()=>{const rect=(node)=>{const r=node?.getBoundingClientRect?.();return r?{
+  left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}:null};return {
+  planetsideRect:rect(document.getElementById('planetside')),
+  scrollWidth:document.documentElement.scrollWidth,
+  clientWidth:document.documentElement.clientWidth};})()`;
+
+const exactJson = (left, right) => JSON.stringify(left) === JSON.stringify(right);
+const arc4Percent = (value) => `${String(Math.round(value * 10_000_000) / 100_000)}%`;
+const arc4Assessment = (name, checks) => {
+  const reasons = Object.entries(checks).filter(([, value]) => value !== true)
+    .map(([check]) => check);
+  return { name, ok: reasons.length === 0, checks, reasons };
+};
+const arc4FailedChecks = (result) => Object.entries(result?.checks || {})
+  .filter(([, value]) => value !== true).map(([check]) => check);
+const arc4IsolatedFailure = (result, expected) => result?.ok === false
+  && exactJson(arc4FailedChecks(result), [expected]);
+
+function assessArc4VeteranCaptureFixtureSource(fixture, oracle) {
+  const names = Array.isArray(fixture?.names)
+    ? fixture.names.filter((row) => Array.isArray(row) && row[0] === 'p133') : [];
+  return arc4Assessment('Arc 4 veteran capture fixture source', {
+    oracleIdentity: oracle?.schema === 'cf-v2-glass-veteran-capture-oracle/v1'
+      && oracle?.preferenceRawSha256 === GLASS_VETERAN_PREF_RAW_SHA256
+      && oracle?.worldKey === 'CF1|g:999@90,-60|s:424242@560,170|p:133#2'
+      && oracle?.contextKey
+        === `${oracle.worldKey}|epoch:${oracle.ecologyEpoch}|${oracle.fullRosterFingerprint}`,
+    titleSource: names.length === 1 && exactJson(names[0], ['p133', oracle?.title]),
+    epochSource: fixture?.epoch === oracle?.ecologyEpoch,
+    contactSource: exactJson(fixture?.cont, [55]) && oracle?.contactCapturePoints === 0,
+    loadoutSource: exactJson(fixture?.eq, { helmet: 'headlamp', suit: 'hazmat' })
+      && exactJson(fixture?.ea, {
+        helmet: { k: 'strike', v: 0.05, forId: 'headlamp' },
+      })
+      && exactJson(fixture?.items, [
+        ['plate', 3], ['lens', 1], ['cell', 2], ['headlamp', 1],
+        ['hazmat', 1], ['thermal', 1],
+      ]),
+  });
+}
+
+function arc4VeteranCaptureFixturePreflight(
+  raw = VETERAN_PREF_RAW,
+  oracle = ARC4_EARTH_GLASS_ORACLE,
+) {
+  let fixture = null;
+  try { fixture = JSON.parse(raw); } catch { /* structured red below */ }
+  const source = assessArc4VeteranCaptureFixtureSource(fixture, oracle);
+  return arc4Assessment('Arc 4 veteran capture fixture preflight', {
+    rawBound: typeof raw === 'string'
+      && sha256(raw) === GLASS_VETERAN_PREF_RAW_SHA256
+      && sha256(raw) === oracle?.preferenceRawSha256,
+    parsed: !!fixture && typeof fixture === 'object' && !Array.isArray(fixture),
+    ...source.checks,
+  });
+}
+
+function arc4ExpectedOdds(row) {
+  const copy = ARC4_CAPTURE_LABELS[row?.verb];
+  const odds = row?.odds;
+  if (!copy || !odds) return null;
+  return `One of ${odds.eligibleCount} eligible ${copy.pool} is selected at random. Overall success chance ${arc4Percent(odds.overallChance)}${odds.chanceMin === odds.chanceMax
+    ? '.' : `; individual odds range ${arc4Percent(odds.chanceMin)}–${arc4Percent(odds.chanceMax)}.`}`;
+}
+
+function arc4ExpectedDetail(row) {
+  const copy = ARC4_CAPTURE_LABELS[row?.verb];
+  return copy && row?.odds
+    ? `Randomly attempts one of ${row.odds.eligibleCount} eligible ${copy.pool} from the full biosphere. Success adds ${copy.reward}.`
+    : null;
+}
+
+function arc4VeteranPresentationExpectation(oracle = ARC4_EARTH_GLASS_ORACLE) {
+  const odds = (verb) => {
+    const row = oracle.odds[verb];
+    return `${row.eligibleCount}/${row.overallChance}/${row.chanceMin}/${row.chanceMax}`;
+  };
+  const yieldState = oracle.biosphereYield;
+  return `fresh ${oracle.title} (Earth seed 133) epoch ${oracle.ecologyEpoch} renders ${oracle.previewCount} of ${oracle.fullRosterCount} (\`${oracle.fullRosterFingerprint}\`), Yield ${yieldState.yield}/${yieldState.used}/${yieldState.remaining}/cycle ${yieldState.cycle}, and exact Tame ${odds('tame')}, Scavenge ${odds('scavenge')}, Sample ${odds('sample')} with full-pool copy and model/disabled parity`;
+}
+
+function arc4VeteranOddsExact(rows, verb) {
+  const row = rows.find((candidate) => candidate?.verb === verb);
+  const expected = ARC4_EARTH_GLASS_ORACLE.odds[verb];
+  const odds = row?.odds;
+  return !!expected && odds?.eligibleCount === expected.eligibleCount
+    && odds.overallChance === expected.overallChance
+    && odds.chanceMin === expected.chanceMin
+    && odds.chanceMax === expected.chanceMax
+    && odds.text === arc4ExpectedOdds({ verb, odds: expected })
+    && !/(?:^|\D)0(?:\.0+)?%/u.test(odds.text);
+}
+
+function assessArc4GlassPresentation({ ui, planetside } = {}) {
+  const oracle = ARC4_EARTH_GLASS_ORACLE;
+  const rows = Array.isArray(ui?.rows) ? ui.rows : [];
+  const verbsExact = exactJson(rows.map((row) => row?.verb), ARC4_CAPTURE_VERBS)
+    && rows.every((row) => {
+      const copy = ARC4_CAPTURE_LABELS[row?.verb];
+      const odds = oracle.odds[row?.verb];
+      return !!copy && row?.status === 'ready'
+        && row?.semanticKey === `capture:${row.verb}`
+        && row?.title === `${copy.label} · ${copy.pool}`
+        && row?.detail === arc4ExpectedDetail({ verb: row.verb, odds })
+        && row?.button?.label === copy.label
+        && row?.button?.verb === row.verb
+        && row?.button?.focusKey === `capture:${row.verb}`;
+    });
+  const budget = ui?.budget;
+  const recoverySeconds = Number.isInteger(budget?.recoveryRemainingActivePlayMs)
+    ? Math.max(0, Math.ceil(budget.recoveryRemainingActivePlayMs / 1_000)) : null;
+  const recovery = recoverySeconds === null ? null
+    : `${Math.floor(recoverySeconds / 60)}:${String(recoverySeconds % 60).padStart(2, '0')}`;
+  const exactBudgetText = budget && recovery !== null
+    ? `${oracle.biosphereYield.remaining} of ${oracle.biosphereYield.yield} capture attempts remain; ${oracle.biosphereYield.used} spent this active-play cycle. Tame, Scavenge, and Sample share Biosphere Yield. Every attempt spends 1, hit or miss. Full recovery at the next 20-minute active-play cycle — ${recovery} of active play remaining. Closing the game does not advance recovery.`
+    : null;
+  const yieldExact = !!budget
+    && budget.yield === oracle.biosphereYield.yield
+    && budget.used === oracle.biosphereYield.used
+    && budget.remaining === oracle.biosphereYield.remaining
+    && budget.cycle === oracle.biosphereYield.cycle
+    && Number.isInteger(budget.recoveryRemainingActivePlayMs)
+    && budget.recoveryRemainingActivePlayMs >= 0
+    && budget.recoveryRemainingActivePlayMs <= 1_200_000
+    && budget.text === exactBudgetText;
+  const surfaceRoute = planetside?.rosterState === 'ready'
+    && planetside.mode === 'surface' && planetside.galaxySeed === 999
+    && planetside.starSeed === 424242 && planetside.planetSeed === 133
+    && planetside.planetOrdinal === 2
+    && planetside.worldKey === oracle.worldKey
+    && ui?.planetsideHeading === 'PLANETSIDE — Biosphere';
+  const homeworldTitle = ui?.cardTitle === oracle.title;
+  const epochExact = planetside?.ecologyEpoch === oracle.ecologyEpoch;
+  const rosterCounts = planetside?.previewCount === oracle.previewCount
+    && planetside?.fullRosterCount === oracle.fullRosterCount
+    && planetside?.previewRowCount === oracle.previewCount;
+  const rosterFingerprint = planetside?.fullRosterFingerprint === oracle.fullRosterFingerprint;
+  const contextIdentity = ui?.contextKey
+    === `${oracle.worldKey}|epoch:${oracle.ecologyEpoch}|${oracle.fullRosterFingerprint}`;
+  const fullPoolCopy = ui?.summary
+    === `Showing ${oracle.previewCount} of ${oracle.fullRosterCount} life forms. Capture draws from all ${oracle.fullRosterCount}, not only this preview. Each action chooses uniformly from every eligible species for that action in the full biosphere.`;
+  const modelDisabledParity = ui?.ariaBusy === 'false'
+    && ui?.diagnostics?.pendingWork === 0
+    && ui?.diagnostics?.convergenceLatched === false
+    && rows.every((row) => row?.button?.modelEnabled === 'true'
+      && row.button.disabled === false && row.button.ariaDisabled === 'false');
+  return arc4Assessment('Arc 4 veteran Homeworld capture presentation', {
+    captured: ui?.schema === ARC4_CAPTURE_UI_EVIDENCE_SCHEMA && !!planetside,
+    uiComplete: arc4CaptureUiSnapshotComplete(ui),
+    surfaceRoute,
+    homeworldTitle,
+    epochExact,
+    rosterCounts,
+    rosterFingerprint,
+    contextIdentity,
+    verbsExact,
+    tameOdds: arc4VeteranOddsExact(rows, 'tame'),
+    scavengeOdds: arc4VeteranOddsExact(rows, 'scavenge'),
+    sampleOdds: arc4VeteranOddsExact(rows, 'sample'),
+    yieldExact,
+    fullPoolCopy,
+    modelDisabledParity,
+  });
+}
+
+function arc4KeyboardFocusProof(value, { verb = null, close = false } = {}) {
+  return value?.modality === 'keyboard' && value?.focused === true
+    && value?.focusVisible === true && value?.styleChanged === true
+    && value?.decorationPainted === true
+    && (close ? value?.close === true : value?.verb === verb
+      && value?.semanticKey === `capture:${verb}`);
+}
+
+function arc4GeometryClauseProjection({ viewport, controls } = {}) {
+  const rect = (value) => !!value && typeof value === 'object'
+    && [value.left, value.top, value.right, value.bottom, value.width, value.height]
+      .every((entry) => typeof entry === 'number' && Number.isFinite(entry))
+    && value.width >= 0 && value.height >= 0
+    && Math.abs(value.right - value.left - value.width) <= 0.75
+    && Math.abs(value.bottom - value.top - value.height) <= 0.75;
+  const contained = (inner, outer) => rect(inner) && rect(outer)
+    && inner.left >= outer.left - 0.75 && inner.right <= outer.right + 0.75
+    && inner.top >= outer.top - 0.75 && inner.bottom <= outer.bottom + 0.75;
+  const sameRect = (left, right) => rect(left) && rect(right)
+    && ['left', 'top', 'right', 'bottom', 'width', 'height']
+      .every((key) => Math.abs(left[key] - right[key]) <= 0.75);
+  const ownedPoint = (point, verb) => !!point && typeof point === 'object'
+    && Number.isFinite(point.x) && Number.isFinite(point.y)
+    && point.tag === 'BUTTON' && point.close === false && point.verb === verb;
+  const viewportRect = {
+    left: 0, top: 0, right: viewport?.width, bottom: viewport?.height,
+    width: viewport?.width, height: viewport?.height,
+  };
+  return (Array.isArray(controls) ? controls : []).map((control) => {
+    const offset = control?.scrollOffset;
+    const translated = rect(control?.buttonRect)
+      && Number.isFinite(offset?.left) && Number.isFinite(offset?.top) ? {
+        left: control.buttonRect.left + offset.left,
+        top: control.buttonRect.top + offset.top,
+        right: control.buttonRect.right + offset.left,
+        bottom: control.buttonRect.bottom + offset.top,
+        width: control.buttonRect.width,
+        height: control.buttonRect.height,
+      } : null;
+    const clauses = {
+      scrollSettled: control?.scrollSettled === true,
+      target44: rect(control?.buttonRect)
+        && control.buttonRect.width >= 44 && control.buttonRect.height >= 44,
+      cardContained: contained(control?.buttonRect, control?.cardRect),
+      viewportContained: contained(control?.buttonRect, viewportRect),
+      layoutTranslation: sameRect(control?.layoutRect, translated),
+      ownedPoint: ownedPoint(control?.beforePoint, control?.verb)
+        && ownedPoint(control?.afterRenderPoint, control?.verb)
+        && Math.abs(control.beforePoint.x - control.afterRenderPoint.x) <= 0.75
+        && Math.abs(control.beforePoint.y - control.afterRenderPoint.y) <= 0.75,
+      name: control?.accessibleName === ({
+        tame: 'Tame', scavenge: 'Scavenge', sample: 'Sample',
+      })[control?.verb],
+      focus: control?.focus?.modality === 'keyboard'
+        && control.focus.focusVisible === true
+        && control.focus.decorationPainted === true
+        && control.focus.styleChanged === true
+        && control.focus.verb === control?.verb
+        && control.focus.semanticKey === `capture:${control?.verb}`,
+    };
+    return {
+      verb: control?.verb ?? null,
+      ok: Object.values(clauses).every((value) => value === true),
+      clauses,
+    };
+  });
+}
+
+function assessArc4NativeSurveyCloseReturn(evidence = {}) {
+  return arc4Assessment('Arc 4 native Survey Close return', {
+    captured: !!evidence.beforeSurface && !!evidence.afterSurface
+      && !!evidence.beforePlanetside && !!evidence.afterPlanetside
+      && !!evidence.beforeCapture && !!evidence.afterCapture
+      && typeof evidence.beforeDurableFingerprint === 'string'
+      && typeof evidence.afterDurableFingerprint === 'string',
+    setupCloseTrusted: evidence.setupClose?.ok === true && evidence.setupClosed?.cardOpen === false,
+    openerTrusted: evidence.open?.ok === true && evidence.opened?.cardOpen === true
+      && evidence.opened?.expanded === 'true',
+    idleKeyboardFocus: evidence.sampleScrollSettled === true
+      && evidence.sampleFocus?.nativeTabTrusted === true
+      && arc4KeyboardFocusProof(evidence.sampleFocus, { verb: 'sample' }),
+    closeTrusted: evidence.close?.ok === true
+      && evidence.close?.target?.surveyClose === true
+      && evidence.close?.target?.accessibleName === 'Close Survey card'
+      && evidence.close?.receipt?.trusted === true
+      && evidence.close?.receipt?.key === 'Enter'
+      && evidence.close?.receipt?.code === 'Enter'
+      && evidence.close?.receipt?.surveyClose === true,
+    openerReturn: evidence.returned?.cardOpen === false
+      && evidence.returned?.expanded === 'false'
+      && evidence.returned?.focusId === 'docksurvey',
+    reopenTrusted: evidence.reopen?.ok === true && evidence.reopened?.cardOpen === true
+      && evidence.reopened?.expanded === 'true',
+    noCaptureActivation: Array.isArray(evidence.captureActivationTrace)
+      && evidence.captureActivationTrace.length === 0,
+    surfaceUnchanged: exactJson(evidence.beforeSurface, evidence.afterSurface),
+    planetsideUnchanged: exactJson(evidence.beforePlanetside, evidence.afterPlanetside),
+    captureUnchanged: exactJson(evidence.beforeCapture, evidence.afterCapture),
+    persistenceUnchanged: evidence.beforeDurableSettled === true
+      && evidence.afterDurableSettled === true
+      && evidence.beforeDurableFingerprint === evidence.afterDurableFingerprint,
+  });
+}
+
+function assessArc4DependentBaseline({ planetsideOwnership, nativeReturn, presentation, geometry } = {}) {
+  return arc4Assessment('Arc 4 dependent Glass baseline', {
+    planetsideOwnership: planetsideOwnership?.ok === true,
+    nativeCloseReturn: nativeReturn?.ok === true,
+    planetsidePresentation: presentation?.ok === true,
+    captureGeometry: geometry?.ok === true,
+  });
+}
+
+function arc4FocusEvidenceExpression({ verb = null, close = false } = {}) {
+  if (!close && !ARC4_CAPTURE_VERBS.includes(verb)) {
+    throw new TypeError(`unknown Arc 4 focus verb ${JSON.stringify(verb)}`);
+  }
+  const selector = close ? '#survey [data-survey-close]'
+    : `#survey button[data-capture-action=${JSON.stringify(verb)}]`;
+  return `(()=>{const el=document.querySelector(${JSON.stringify(selector)});if(!(el instanceof HTMLElement))return {
+    modality:'keyboard',focused:false,focusVisible:false,styleChanged:false,decorationPainted:false,
+    verb:${JSON.stringify(verb)},semanticKey:null,close:${JSON.stringify(close)},accessibleName:null};
+    el.blur();const beforeStyle=getComputedStyle(el),before={outline:beforeStyle.outline,shadow:beforeStyle.boxShadow,
+      border:beforeStyle.borderColor,background:beforeStyle.backgroundColor};
+    try{el.focus({preventScroll:true,focusVisible:true})}catch{el.focus({preventScroll:true})}
+    const afterStyle=getComputedStyle(el),after={outline:afterStyle.outline,shadow:afterStyle.boxShadow,
+      border:afterStyle.borderColor,background:afterStyle.backgroundColor},
+      styleChanged=before.outline!==after.outline||before.shadow!==after.shadow
+        ||before.border!==after.border||before.background!==after.background,
+      outlinePainted=afterStyle.outlineStyle!=='none'&&(parseFloat(afterStyle.outlineWidth)||0)>=1,
+      decorationPainted=outlinePainted||(after.shadow!=='none'&&before.shadow!==after.shadow)
+        ||before.border!==after.border||before.background!==after.background;
+    return {modality:'keyboard',focused:document.activeElement===el,focusVisible:el.matches(':focus-visible'),
+      styleChanged,decorationPainted,verb:${JSON.stringify(verb)},
+      semanticKey:el.closest('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,
+      close:${JSON.stringify(close)},accessibleName:(el.getAttribute('aria-label')||el.textContent||'').trim(),before,after};})()`;
+}
+
+function arc4NativeTabFocusSetupExpression(verb, priorVerb) {
+  if (!ARC4_CAPTURE_VERBS.includes(verb) || !ARC4_CAPTURE_VERBS.includes(priorVerb)) {
+    throw new TypeError('Arc 4 native Tab focus requires two capture verbs');
+  }
+  return `(()=>{window.__cfGlassArc4TabFocusAbort?.abort();const target=document.querySelector(
+    '#survey button[data-capture-action=${verb}]'),prior=document.querySelector(
+    '#survey button[data-capture-action=${priorVerb}]'),style=target?getComputedStyle(target):null,
+    before=style?{outline:style.outline,shadow:style.boxShadow,border:style.borderColor,
+      background:style.backgroundColor}:null,controller=new AbortController(),state={target,prior,before,receipt:null,controller};
+    window.__cfGlassArc4TabFocus=state;window.__cfGlassArc4TabFocusAbort=controller;
+    document.addEventListener('keydown',(event)=>{if(event.target===prior&&event.key==='Tab')state.receipt={
+      key:event.key,code:event.code,trusted:event.isTrusted===true};},{capture:true,once:true,signal:controller.signal});
+    try{prior?.focus({preventScroll:true})}catch{prior?.focus()}return {ok:target instanceof HTMLElement
+      &&prior instanceof HTMLElement&&document.activeElement===prior,targetVerb:target?.getAttribute('data-capture-action')??null,
+      priorVerb:prior?.getAttribute('data-capture-action')??null};})()`;
+}
+
+function arc4NativeTabFocusEvidenceExpression(verb) {
+  if (!ARC4_CAPTURE_VERBS.includes(verb)) throw new TypeError('unknown Arc 4 native Tab focus verb');
+  return `(()=>{const state=window.__cfGlassArc4TabFocus,target=state?.target,
+    afterStyle=target?getComputedStyle(target):null,after=afterStyle?{outline:afterStyle.outline,
+      shadow:afterStyle.boxShadow,border:afterStyle.borderColor,background:afterStyle.backgroundColor}:null,
+    before=state?.before,styleChanged=!!before&&!!after&&(before.outline!==after.outline
+      ||before.shadow!==after.shadow||before.border!==after.border||before.background!==after.background),
+    outlinePainted=!!afterStyle&&afterStyle.outlineStyle!=='none'&&(parseFloat(afterStyle.outlineWidth)||0)>=1,
+    decorationPainted=outlinePainted||!!before&&!!after&&((after.shadow!=='none'&&before.shadow!==after.shadow)
+      ||before.border!==after.border||before.background!==after.background),receipt=state?.receipt??null,
+    result={modality:'keyboard',nativeTabTrusted:receipt?.trusted===true&&receipt?.key==='Tab'&&receipt?.code==='Tab',
+      focused:document.activeElement===target,focusVisible:target?.matches?.(':focus-visible')===true,
+      styleChanged,decorationPainted,verb:${JSON.stringify(verb)},
+      semanticKey:target?.closest?.('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,
+      close:false,before,after,receipt};state?.controller?.abort();delete window.__cfGlassArc4TabFocus;
+    delete window.__cfGlassArc4TabFocusAbort;return result;})()`;
+}
+
+function arc4ScrollSettleExpression(selector) {
+  return `(async()=>{const el=document.querySelector(${JSON.stringify(selector)});if(!(el instanceof HTMLElement))return {ok:false,why:'missing'};
+    const wait=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0))),box=(node)=>{const r=node?.getBoundingClientRect?.();return r?{
+      left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}:null},snapshot=()=>{const buttonRect=box(el),cardRect=box(document.getElementById('survey')),
+      scroll=[],scrollOffset={left:0,top:0};for(let node=el.parentElement;node;node=node.parentElement){scroll.push([node.scrollLeft,node.scrollTop]);
+        scrollOffset.left+=node.scrollLeft;scrollOffset.top+=node.scrollTop;}
+      const layoutRect=buttonRect?{left:buttonRect.left+scrollOffset.left,top:buttonRect.top+scrollOffset.top,
+        right:buttonRect.right+scrollOffset.left,bottom:buttonRect.bottom+scrollOffset.top,width:buttonRect.width,height:buttonRect.height}:null;
+      return {buttonRect,cardRect,scrollOffset,layoutRect,scroll};},stable=(left,right)=>['left','top','right','bottom','width','height']
+        .every(key=>Math.abs(left.buttonRect[key]-right.buttonRect[key])<=.25)
+        &&Math.abs(left.scrollOffset.left-right.scrollOffset.left)<=.25&&Math.abs(left.scrollOffset.top-right.scrollOffset.top)<=.25
+        &&left.scroll.length===right.scroll.length&&left.scroll.every((row,index)=>row.every((value,axis)=>Math.abs(value-right.scroll[index][axis])<=.25));
+    el.scrollIntoView({block:'nearest',inline:'nearest'});await wait();await wait();const first=snapshot();await wait();const second=snapshot();
+    return {ok:stable(first,second),first,second};})()`;
+}
+
+const ARC4_DURABLE_SEGMENT_ROWS = Object.freeze({
+  player: 'playerRow', creatures: 'creaturesRow', catalog: 'catalogRow',
+  inventory: 'inventoryRow', settings: 'settingsRow',
+});
+
+function arc4OwnedAliasRows(codex, names) {
+  if (!Array.isArray(codex) || !Array.isArray(names)) return null;
+  const keys = new Set();
+  for (const entry of codex) {
+    const seed = entry?.g?.seed;
+    if (!Number.isSafeInteger(seed) || seed < 0 || seed > 0xffff_ffff) return null;
+    keys.add(`cs${seed}`);
+  }
+  if (names.some((row) => !Array.isArray(row) || row.length !== 2
+    || typeof row[0] !== 'string' || typeof row[1] !== 'string')) return null;
+  return names.filter(([key]) => keys.has(key));
+}
+
+/* This is intentionally narrower than a raw-database fingerprint. Active-play
+   checkpoints may advance only the outer revision, v4 `at`, and F4
+   activePlayMs while Glass is measuring twelve layouts. The v4 `epoch` stays
+   bound: a different ecology epoch would select a different authoritative
+   roster and must not be normalized as checkpoint noise. Everything Arc 4
+   can own or spend remains exact: all eighteen canonical ownership carrier
+   byte strings, both copies of its v4 mirrors/rewards/counters, SessionRNG,
+   and every receipt key/raw row. */
+function arc4DurableNoMutationProjection(value) {
+  if (!arc4DurableEvidenceComplete(value)) return null;
+  const v4OwnedCounters = projectArc4V4OwnedCounters(value);
+  if (v4OwnedCounters === null) return null;
+  const ownershipCarriers = [];
+  for (const { segment, namespace } of ARC4_OWNERSHIP_EXTENSION_TARGETS) {
+    const carrier = value?.[ARC4_DURABLE_SEGMENT_ROWS[segment]]?.extensions?.[namespace];
+    if (!carrier || Object.keys(carrier).sort().join('\0') !== 'json\0version'
+      || carrier.version !== 1 || typeof carrier.json !== 'string') return null;
+    ownershipCarriers.push({
+      segment, namespace, version: carrier.version, json: carrier.json,
+      byteLength: Buffer.byteLength(carrier.json, 'utf8'),
+      jsonSha256: sha256(carrier.json),
+    });
+  }
+  if (ownershipCarriers.length !== 18) return null;
+  const legacy = value.legacy;
+  const split = {
+    codex: value.catalogRow?.data?.codex,
+    names: value.playerRow?.data?.names,
+    bx: value.inventoryRow?.data?.bx,
+    scout: value.catalogRow?.data?.scout,
+    epoch: value.playerRow?.data?.epoch,
+    essence: value.playerRow?.data?.essence,
+    essenceEarned: value.playerRow?.data?.essenceEarned,
+  };
+  const legacyOwnedAliases = arc4OwnedAliasRows(legacy?.codex, legacy?.names);
+  const splitOwnedAliases = arc4OwnedAliasRows(split.codex, split.names);
+  const rng = value.authority?.sessionRng;
+  if (legacyOwnedAliases === null || splitOwnedAliases === null
+    || !rng || !Number.isSafeInteger(rng.seed) || !Number.isSafeInteger(rng.ordinal)
+    || !rng.draws || typeof rng.draws !== 'object' || Array.isArray(rng.draws)
+    || !Array.isArray(value.receiptKeys) || !Array.isArray(value.receiptRawRows)) return null;
+  return {
+    schema: 'cf-v2-glass-arc4-no-mutation-projection/v1',
+    ownershipCarriers,
+    v4Mirror: {
+      legacy: {
+        epoch: legacy.epoch,
+        codex: legacy.codex, ownedAliases: legacyOwnedAliases,
+        bioX: legacy.bx, scoutId: legacy.scout,
+        essence: legacy.essence, essenceEarned: legacy.essenceEarned,
+      },
+      split: {
+        epoch: split.epoch,
+        codex: split.codex, ownedAliases: splitOwnedAliases,
+        bioX: split.bx, scoutId: split.scout,
+        essence: split.essence, essenceEarned: split.essenceEarned,
+      },
+    },
+    v4OwnedCounters,
+    sessionRng: { seed: rng.seed, ordinal: rng.ordinal, draws: rng.draws },
+    receipts: { keys: value.receiptKeys, rawRows: value.receiptRawRows },
+  };
+}
+
+function arc4DurableFingerprint(value) {
+  const projection = arc4DurableNoMutationProjection(value);
+  return projection === null ? null : sha256(JSON.stringify(projection));
+}
+
+function arc4CanonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(arc4CanonicalJson).join(',')}]`;
+  if (value !== null && typeof value === 'object') {
+    return `{${Object.keys(value).sort().map((key) => (
+      `${JSON.stringify(key)}:${arc4CanonicalJson(value[key])}`
+    )).join(',')}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function arc4DurableProjectionSelftestFixture({
+  ownershipRevision = 4, outerRevision = 9, activePlayMs = 4_000,
+  checkpointAt = 1_000, ecologyEpoch = 0, sessionSeed = 68, sessionOrdinal = 3,
+  sessionDraws = { existing: 3 },
+  receipts = [{ ordinal: 2, kind: 'capture-attempt', witness: 'prior' }],
+  speciesAlias = 'Wayfinder',
+  canonicalAuthority = false,
+  ownedCounters = { hybrids: 2, best: 5, maxGen: 1, bestRank: 3 },
+} = {}) {
+  const worldKey = 'CF1|g:999@90,-60|s:424242@560,170|p:133#2';
+  const worldAddress = {
+    format: 'CF1', key: worldKey,
+    galaxy: {
+      seed: 999, x: 90, y: -60, size: 78, sp: 0, tilt: 0.62, rot: 0.5,
+      home: true, quasar: false, dwarf: false,
+      parentCell: { x: 0, y: -1 },
+    },
+    star: {
+      seed: 424242, x: 560, y: 170, layer: 'coarse', parentCell: { x: 12, y: 4 },
+    },
+    planet: { seed: 133, ordinal: 2 },
+  };
+  const species = {
+    speciesId: 'species-v1:selftest', genomeIdentity: 'genome-v1:selftest',
+    kingdom: 'fauna', genome: { gen: 0, seed: 111 },
+    alias: speciesAlias, firstObservationId: 'discovery-v1:selftest',
+  };
+  const discovery = {
+    recordId: 'discovery-v1:selftest', speciesId: species.speciesId,
+    acquisition: 'tame',
+    provenance: {
+      kind: 'world', verb: 'tame', worldKey, worldAddress, cycle: 0,
+      sourceOrdinal: 0,
+    },
+    firstForSpecies: true,
+  };
+  const creature = {
+    creatureId: 'creature-v1:selftest', speciesId: species.speciesId,
+    genomeIdentity: species.genomeIdentity, genome: species.genome,
+    nickname: null, origin: 'wild', acquisitionRecordId: discovery.recordId,
+    lineage: { kind: 'none', generation: 0 },
+    xp: null, hurt: null, fed: null, brood: null, assignment: null, bond: null,
+  };
+  const progressRow = {
+    worldKey, worldAddress, cycle: 0, used: 0, successful: [],
+  };
+  const mirror = {
+    schema: 'cf-v2-ownership-state/v1', version: 1, revision: ownershipRevision,
+    mode: 'current', catalogSpecies: [species], discoveries: [discovery],
+    creatures: [creature], specimenLots: [], biosphereProgress: [progressRow],
+    legacyBioX: [], scoutCreatureId: creature.creatureId, legacyProtection: null,
+  };
+  const groupSpecs = [
+    ['catalogSpecies', 'catalog', 'arc4.ownership.catalog'],
+    ['discoveries', 'catalog', 'arc4.ownership.discoveries'],
+    ['creatures', 'creatures', 'arc4.ownership.creatures'],
+    ['specimenLots', 'inventory', 'arc4.ownership.specimens'],
+  ];
+  const extensionRows = {
+    player: {}, creatures: {}, catalog: {}, inventory: {}, settings: {},
+  };
+  const shardDigests = {};
+  for (const [kind, segment, prefix] of groupSpecs) {
+    const values = mirror[kind];
+    shardDigests[kind] = [];
+    for (let index = 0; index < 4; index++) {
+      const shardRows = index === 0 ? values : [];
+      const start = index === 0 ? 0 : values.length;
+      const digest = sha256(arc4CanonicalJson(shardRows));
+      const shard = {
+        schema: 'cf-v2-ownership-shard/v1', version: 1, kind,
+        revision: ownershipRevision, index, count: 4, start,
+        end: values.length, total: values.length, digest, rows: shardRows,
+      };
+      extensionRows[segment][`${prefix}.${index}`] = {
+        version: 1, json: arc4CanonicalJson(shard),
+      };
+      shardDigests[kind].push(digest);
+    }
+  }
+  const progressPayload = {
+    biosphereProgress: mirror.biosphereProgress,
+    legacyBioX: mirror.legacyBioX,
+    scoutCreatureId: mirror.scoutCreatureId,
+  };
+  const progressDigest = sha256(arc4CanonicalJson(progressPayload));
+  const progress = {
+    schema: 'cf-v2-ownership-progress/v1', version: 1,
+    revision: ownershipRevision, digest: progressDigest, payload: progressPayload,
+  };
+  const manifest = {
+    schema: 'cf-v2-ownership-manifest/v1', version: 1,
+    revision: ownershipRevision, mode: 'current', fixedShardCount: 4,
+    rowCounts: {
+      catalogSpecies: 1, discoveries: 1, creatures: 1, specimenLots: 0,
+      biosphereProgress: 1, legacyBioX: 0,
+    },
+    shardDigests, progressDigest, stateDigest: sha256(JSON.stringify(mirror)),
+    legacyProtection: null,
+  };
+  extensionRows.player['arc4.ownership.manifest'] = {
+    version: 1, json: arc4CanonicalJson(manifest),
+  };
+  extensionRows.player['arc4.ownership.progress'] = {
+    version: 1, json: arc4CanonicalJson(progress),
+  };
+  const sessionRng = {
+    seed: sessionSeed, ordinal: sessionOrdinal,
+    draws: Object.fromEntries(Object.entries(sessionDraws).sort(([left], [right]) => (
+      left < right ? -1 : left > right ? 1 : 0
+    ))),
+  };
+  const authority = { activePlayMs, sessionRng };
+  /* F4 owns this exact constructor order. Canonical sorting is correct for
+     ownership shards, but would manufacture a byte string the product never
+     writes and make every durable projection fail closed. */
+  const authorityCarrier = {
+    version: 1,
+    json: canonicalAuthority ? arc4CanonicalJson(authority) : JSON.stringify(authority),
+  };
+  extensionRows.player['f4.authority'] = authorityCarrier;
+  const where = {
+    type: 'planet',
+    gal: {
+      x: 90, y: -60, size: 78, sp: 0, tilt: 0.62, rot: 0.5, seed: 999,
+      home: true, quasar: false, dwarf: false,
+    },
+    star: { x: 560, y: 170, seed: 424242 }, pseed: 133,
+  };
+  const codex = [{ g: { gen: 0, seed: 111 }, f: 'Canonical world 133', w: where }];
+  const names = [['cs111', speciesAlias], ['ship', 'Unrelated vessel alias']];
+  const bx = [[133, [0, 0]]];
+  const ever = {
+    v: 1, hybrids: ownedCounters.hybrids, best: ownedCounters.best,
+    maxGen: ownedCounters.maxGen, scanhits: 0,
+  };
+  const legacy = {
+    v: 4, epoch: ecologyEpoch, at: checkpointAt, essence: 7, essenceEarned: 7,
+    ever, br: ownedCounters.bestRank, names, codex, scout: 's111', bx,
+  };
+  const rows = {
+    player: {
+      schema: 5, segment: 'player',
+      data: {
+        v: 4, epoch: ecologyEpoch, at: checkpointAt, essence: 7, essenceEarned: 7, names,
+        ever, br: ownedCounters.bestRank,
+      },
+      extensions: extensionRows.player,
+    },
+    creatures: {
+      schema: 5, segment: 'creatures', data: {}, extensions: extensionRows.creatures,
+    },
+    catalog: {
+      schema: 5, segment: 'catalog', data: { codex, scout: 's111' },
+      extensions: extensionRows.catalog,
+    },
+    inventory: {
+      schema: 5, segment: 'inventory', data: { bx }, extensions: extensionRows.inventory,
+    },
+    settings: {
+      schema: 5, segment: 'settings', data: {}, extensions: extensionRows.settings,
+    },
+  };
+  const receiptRows = structuredClone(receipts);
+  return {
+    revisionRaw: String(outerRevision), revision: outerRevision,
+    legacyRaw: JSON.stringify(legacy), legacy,
+    playerRaw: JSON.stringify(rows.player), playerRow: rows.player,
+    creaturesRaw: JSON.stringify(rows.creatures), creaturesRow: rows.creatures,
+    catalogRaw: JSON.stringify(rows.catalog), catalogRow: rows.catalog,
+    inventoryRaw: JSON.stringify(rows.inventory), inventoryRow: rows.inventory,
+    settingsRaw: JSON.stringify(rows.settings), settingsRow: rows.settings,
+    authorityVersion: 1, authorityJson: authorityCarrier.json, authority,
+    captureRevision: ownershipRevision, captureState: mirror,
+    receiptKeys: receiptRows.map(({ ordinal }) => `receipt:${ordinal}`),
+    receiptRawRows: receiptRows.map((row) => JSON.stringify(row)), receiptRows,
+  };
+}
+
+function arc4CaptureOutcomeInventoryOutcome(rows = [], viewports = MATRIX_VIEWPORTS) {
+  const expected = viewports.flatMap((viewport) => ARC4_CAPTURE_OUTCOME_CODES
+    .map((code) => `${viewport.label}\0${code}`));
+  const actual = rows.map((row) => `${row?.viewport}\0${row?.code}`);
+  const invalid = rows.filter((row) => !viewports.some(({ label }) => label === row?.viewport)
+    || !ARC4_CAPTURE_OUTCOME_CODES.includes(row?.code)
+    || typeof row?.surface !== 'string' || row.surface.length === 0
+    || typeof row?.ok !== 'boolean' || !row?.checks || typeof row.checks !== 'object');
+  const duplicates = actual.filter((id, index) => actual.indexOf(id) !== index);
+  const complete = exactJson(actual, expected);
+  return {
+    ok: invalid.length === 0 && duplicates.length === 0,
+    complete,
+    expectedCount: expected.length,
+    observedCount: actual.length,
+    omitted: expected.filter((id) => !actual.includes(id)),
+    invalid: invalid.map((row) => ({ viewport: row?.viewport ?? null, code: row?.code ?? null })),
+    duplicates: [...new Set(duplicates)],
+  };
+}
+
+function arc4CaptureOutcomeReportRow({ viewport, surface, code, outcome } = {}) {
+  if (!ARC4_CAPTURE_OUTCOME_CODES.includes(code)) {
+    throw new Error(`unknown Arc 4 capture outcome ${JSON.stringify(code)}`);
+  }
+  return {
+    viewport, surface, code, ok: outcome?.ok === true,
+    checks: { ...(outcome?.checks || {}) }, reasons: [...(outcome?.reasons || [])],
+    diagnostics: outcome?.diagnostics ? structuredClone(outcome.diagnostics) : null,
+  };
+}
 
 function compactReloadEvent(event, requestUrls, at) {
   const method = typeof event?.method === 'string' ? event.method : '';
@@ -2103,6 +2828,10 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
     certifying: !viewportLabel, status,
   });
   if (!timingOutcome.ok) throw new Error(`invalid viewport timing evidence: ${timingOutcome.why}`);
+  const arc4OutcomeInventory = arc4CaptureOutcomeInventoryOutcome(runArc4CaptureOutcomes);
+  if (!arc4OutcomeInventory.ok || (status === 'pass' && !arc4OutcomeInventory.complete)) {
+    throw new Error(`invalid Arc 4 capture outcome inventory: ${JSON.stringify(arc4OutcomeInventory)}`);
+  }
   const report = {
     schema: 'cf-v2-glassmatrix/v1',
     status,
@@ -2113,6 +2842,14 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
     browser: browser || null,
     viewportInventory: viewportInventory(),
     viewportTimings: [...runViewportTimings],
+    arc4CaptureOutcomeInventory: {
+      plannedOutcomeCodes: [...ARC4_CAPTURE_OUTCOME_CODES],
+      complete: arc4OutcomeInventory.complete,
+      expectedCount: arc4OutcomeInventory.expectedCount,
+      observedCount: arc4OutcomeInventory.observedCount,
+      omitted: arc4OutcomeInventory.omitted,
+      outcomes: runArc4CaptureOutcomes.map((row) => ({ ...row, checks: { ...row.checks } })),
+    },
     controlSummary: {
       selftestRan: controlsRun,
       /* This is an execution ledger, not a planned-coverage claim. A
@@ -2147,7 +2884,411 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
   return report;
 }
 
+function arc4GlassSelftest() {
+  const oracle = ARC4_EARTH_GLASS_ORACLE;
+  const worldKey = oracle.worldKey;
+  const fingerprint = oracle.fullRosterFingerprint;
+  const contextKey = oracle.contextKey;
+  const fixturePreflight = arc4VeteranCaptureFixturePreflight();
+  const fixtureSource = JSON.parse(VETERAN_PREF_RAW);
+  const wrongFixtureEpoch = structuredClone(fixtureSource);
+  wrongFixtureEpoch.epoch += 1;
+  const wrongFixtureEpochAssessment = assessArc4VeteranCaptureFixtureSource(
+    wrongFixtureEpoch, oracle,
+  );
+  const wrongFixtureContact = structuredClone(fixtureSource);
+  wrongFixtureContact.cont.push(133);
+  const wrongFixtureContactAssessment = assessArc4VeteranCaptureFixtureSource(
+    wrongFixtureContact, oracle,
+  );
+  const wrongFixtureLoadout = structuredClone(fixtureSource);
+  wrongFixtureLoadout.eq.suit = 'thermal';
+  const wrongFixtureLoadoutAssessment = assessArc4VeteranCaptureFixtureSource(
+    wrongFixtureLoadout, oracle,
+  );
+  const wrongFixtureRawAssessment = arc4VeteranCaptureFixturePreflight(
+    `${VETERAN_PREF_RAW} `, oracle,
+  );
+  const row = (verb, index) => {
+    const copy = ARC4_CAPTURE_LABELS[verb];
+    const odds = {
+      text: '', ...ARC4_EARTH_GLASS_ORACLE.odds[verb],
+    };
+    const value = {
+      verb, status: 'ready', semanticKey: `capture:${verb}`,
+      title: `${copy.label} · ${copy.pool}`, detail: '', odds,
+      button: {
+        exists: true, connected: true, tag: 'BUTTON', label: copy.label,
+        verb, focusKey: `capture:${verb}`, modelEnabled: 'true', disabled: false,
+        ariaDisabled: 'false',
+        rect: { left: 40, top: 170 + index * 80, right: 140, bottom: 214 + index * 80, width: 100, height: 44 },
+        point: { x: 90, y: 192 + index * 80, tag: 'BUTTON', verb, close: false },
+      },
+    };
+    odds.text = arc4ExpectedOdds(value);
+    value.detail = arc4ExpectedDetail(value);
+    return value;
+  };
+  const rows = ARC4_CAPTURE_VERBS.map(row);
+  const ui = {
+    schema: ARC4_CAPTURE_UI_EVIDENCE_SCHEMA,
+    cardOpen: true, cardTitle: oracle.title, planetsideHeading: 'PLANETSIDE — Biosphere',
+    cardRect: { left: 10, top: 10, right: 410, bottom: 510, width: 400, height: 500 },
+    mountCount: 1, directCloseCount: 1,
+    close: {
+      exists: true, tag: 'BUTTON', label: 'Close Survey card',
+      rect: { left: 350, top: 20, right: 394, bottom: 64, width: 44, height: 44 },
+      point: { x: 372, y: 42, tag: 'BUTTON', verb: null, close: true },
+    },
+    controller: 'v1', contextKey, ariaBusy: 'false',
+    summary: `Showing ${oracle.previewCount} of ${oracle.fullRosterCount} life forms. Capture draws from all ${oracle.fullRosterCount}, not only this preview. Each action chooses uniformly from every eligible species for that action in the full biosphere.`,
+    budget: {
+      text: `${oracle.biosphereYield.remaining} of ${oracle.biosphereYield.yield} capture attempts remain; ${oracle.biosphereYield.used} spent this active-play cycle. Tame, Scavenge, and Sample share Biosphere Yield. Every attempt spends 1, hit or miss. Full recovery at the next 20-minute active-play cycle — 20:00 of active play remaining. Closing the game does not advance recovery.`,
+      ...oracle.biosphereYield, recoveryRemainingActivePlayMs: 1_200_000,
+    },
+    rows,
+    status: { hidden: true, kind: null, convergence: null, text: '' },
+    diagnostics: {
+      schema: 'cf-v2-capture-card-diagnostics/v1', attachedMountCount: 1,
+      retainedDomCount: 30, pendingWork: 0, convergenceLatched: false,
+      actionControlCount: 3, delegatedListenerCount: 1, contextKey,
+      lastRequest: null, lastOutcome: null,
+    },
+    captureState: { schema: 'cf-v2-arc4-app-state/v1', revision: 0 },
+    persistence: null,
+    activeElement: {
+      verb: null, semanticKey: null, status: false, close: false, focusVisible: false,
+    },
+  };
+  const planetside = {
+    mode: 'surface', galaxySeed: 999, starSeed: 424242, planetSeed: 133, planetOrdinal: 2,
+    rosterState: 'ready', previewCount: oracle.previewCount,
+    fullRosterCount: oracle.fullRosterCount,
+    fullRosterFingerprint: fingerprint, ecologyEpoch: oracle.ecologyEpoch,
+    previewRowCount: oracle.previewCount, worldKey,
+  };
+  const presentation = assessArc4GlassPresentation({ ui, planetside });
+  const wrongTitle = structuredClone(ui);
+  wrongTitle.cardTitle = 'Not Homeworld';
+  const wrongTitleAssessment = assessArc4GlassPresentation({ ui: wrongTitle, planetside });
+  const wrongCounts = structuredClone(planetside);
+  wrongCounts.fullRosterCount = oracle.fullRosterCount - 1;
+  const wrongCountsAssessment = assessArc4GlassPresentation({ ui, planetside: wrongCounts });
+  const wrongFingerprint = structuredClone(planetside);
+  wrongFingerprint.fullRosterFingerprint = `${fingerprint}-mutated`;
+  const wrongFingerprintAssessment = assessArc4GlassPresentation({ ui, planetside: wrongFingerprint });
+  const wrongYield = structuredClone(ui);
+  wrongYield.budget.yield = 15;
+  wrongYield.budget.remaining = 15;
+  wrongYield.budget.text = wrongYield.budget.text.replace('16 of 16', '15 of 15');
+  const wrongYieldAssessment = assessArc4GlassPresentation({ ui: wrongYield, planetside });
+  const wrongOddsAssessments = Object.fromEntries(ARC4_CAPTURE_VERBS.map((verb) => {
+    const mutated = structuredClone(ui);
+    const mutatedRow = mutated.rows.find((candidate) => candidate.verb === verb);
+    const odds = mutatedRow.odds;
+    odds.overallChance -= 0.001;
+    odds.text = arc4ExpectedOdds(mutatedRow);
+    return [verb, assessArc4GlassPresentation({ ui: mutated, planetside })];
+  }));
+  const wrongCopy = structuredClone(ui);
+  wrongCopy.summary = 'Showing only the preview.';
+  const wrongCopyAssessment = assessArc4GlassPresentation({ ui: wrongCopy, planetside });
+  const wrongDisabled = structuredClone(ui);
+  wrongDisabled.rows[0].button.disabled = true;
+  wrongDisabled.rows[0].button.ariaDisabled = 'true';
+  const wrongDisabledAssessment = assessArc4GlassPresentation({ ui: wrongDisabled, planetside });
+  const controls = rows.map((item, index) => {
+    const buttonRect = { left: 40, top: 170, right: 140, bottom: 214, width: 100, height: 44 };
+    const scrollOffset = { left: 0, top: index * 80 };
+    return {
+      verb: item.verb, scrollSettled: true, buttonRect,
+      cardRect: { left: 10, top: 10, right: 410, bottom: 510, width: 400, height: 500 },
+      scrollOffset,
+      layoutRect: {
+        left: buttonRect.left + scrollOffset.left, top: buttonRect.top + scrollOffset.top,
+        right: buttonRect.right + scrollOffset.left, bottom: buttonRect.bottom + scrollOffset.top,
+        width: buttonRect.width, height: buttonRect.height,
+      },
+      beforePoint: { x: 90, y: 192, tag: 'BUTTON', verb: item.verb, close: false },
+      afterRenderPoint: { x: 90, y: 192, tag: 'BUTTON', verb: item.verb, close: false },
+      accessibleName: item.button.label,
+      focus: {
+        modality: 'keyboard', focused: true, verb: item.verb,
+        semanticKey: `capture:${item.verb}`, focusVisible: true,
+        decorationPainted: true, styleChanged: true,
+      },
+    };
+  });
+  const geometryBundle = {
+    schema: ARC4_CAPTURE_GEOMETRY_EVIDENCE_SCHEMA,
+    layoutCoordinateSpace: ARC4_CAPTURE_LAYOUT_COORDINATE_SPACE,
+    viewport: { name: 'selftest', width: 420, height: 800 }, ui,
+    planetsideRect: { left: 10, top: 530, right: 410, bottom: 700, width: 400, height: 170 },
+    controls,
+    close: {
+      rect: { ...ui.close.rect }, beforePoint: { ...ui.close.point },
+      afterRenderPoint: { ...ui.close.point }, accessibleName: ui.close.label,
+      focus: {
+        modality: 'keyboard', focused: true, close: true, focusVisible: true,
+        decorationPainted: true, styleChanged: true,
+      },
+    },
+    scrollWidth: 420, clientWidth: 420,
+  };
+  const geometry = assessArc4CaptureCardGeometryFocus(geometryBundle);
+  const geometryClauses = arc4GeometryClauseProjection(geometryBundle);
+  const wrongOverlap = structuredClone(geometryBundle);
+  wrongOverlap.controls[1].scrollOffset = { ...wrongOverlap.controls[0].scrollOffset };
+  wrongOverlap.controls[1].layoutRect = { ...wrongOverlap.controls[0].layoutRect };
+  const wrongOverlapAssessment = assessArc4CaptureCardGeometryFocus(wrongOverlap);
+  const stretchedButton = structuredClone(geometryBundle);
+  Object.assign(stretchedButton.controls[2].buttonRect, { bottom: 570, height: 400 });
+  Object.assign(stretchedButton.controls[2].layoutRect, { bottom: 730, height: 400 });
+  const stretchedButtonAssessment = assessArc4CaptureCardGeometryFocus(stretchedButton);
+  const stretchedButtonClauses = arc4GeometryClauseProjection(stretchedButton);
+  const durableBefore = arc4DurableProjectionSelftestFixture();
+  const durableCheckpoint = arc4DurableProjectionSelftestFixture({
+    outerRevision: 10, activePlayMs: 5_000, checkpointAt: 2_000,
+  });
+  const durableOwnership = arc4DurableProjectionSelftestFixture({
+    speciesAlias: 'Wayfinder II',
+  });
+  const durableRng = arc4DurableProjectionSelftestFixture({
+    sessionOrdinal: 4, sessionDraws: { existing: 3, 'capture.candidate': 1 },
+  });
+  const durableReceipt = arc4DurableProjectionSelftestFixture({
+    receipts: [
+      { ordinal: 2, kind: 'capture-attempt', witness: 'prior' },
+      { ordinal: 3, kind: 'capture-attempt', witness: 'unexpected' },
+    ],
+  });
+  const durableEpoch = arc4DurableProjectionSelftestFixture({ ecologyEpoch: 1 });
+  const durableCounter = arc4DurableProjectionSelftestFixture({
+    ownedCounters: { hybrids: 3, best: 5, maxGen: 1, bestRank: 3 },
+  });
+  const durableCanonicalAuthority = arc4DurableProjectionSelftestFixture({
+    canonicalAuthority: true,
+  });
+  const durableAssessments = Object.fromEntries(Object.entries({
+    before: durableBefore, checkpoint: durableCheckpoint, ownership: durableOwnership,
+    rng: durableRng, receipt: durableReceipt, epoch: durableEpoch, counter: durableCounter,
+  }).map(([name, evidence]) => [name, assessArc4DurableEvidence(evidence)]));
+  const durableProjection = arc4DurableNoMutationProjection(durableBefore);
+  const durableCounterProjection = arc4DurableNoMutationProjection(durableCounter);
+  const durableBeforeFingerprint = arc4DurableFingerprint(durableBefore);
+  const durableCheckpointFingerprint = arc4DurableFingerprint(durableCheckpoint);
+  const durableOwnershipFingerprint = arc4DurableFingerprint(durableOwnership);
+  const durableRngFingerprint = arc4DurableFingerprint(durableRng);
+  const durableReceiptFingerprint = arc4DurableFingerprint(durableReceipt);
+  const durableEpochFingerprint = arc4DurableFingerprint(durableEpoch);
+  const durableCounterFingerprint = arc4DurableFingerprint(durableCounter);
+  const canonicalAuthorityAssessment = assessArc4DurableEvidence(durableCanonicalAuthority);
+  const capture = { schema: 'cf-v2-arc4-app-state/v1', revision: 0, lastOutcome: null };
+  const surface = {
+    mode: 'surface', galaxySeed: 999, starSeed: 424242, planetSeed: 133,
+    planetOrdinal: 2, worldKey, cardOpen: true, expanded: 'true', cardTitle: oracle.title,
+  };
+  const nativeEvidence = {
+    beforeSurface: surface, afterSurface: structuredClone(surface),
+    beforePlanetside: planetside, afterPlanetside: structuredClone(planetside),
+    beforeCapture: capture, afterCapture: structuredClone(capture),
+    beforeDurableSettled: true, afterDurableSettled: true,
+    beforeDurableFingerprint: durableBeforeFingerprint,
+    afterDurableFingerprint: durableCheckpointFingerprint,
+    setupClose: { ok: true }, setupClosed: { cardOpen: false },
+    open: { ok: true }, opened: { cardOpen: true, expanded: 'true' },
+    sampleScrollSettled: true,
+    sampleFocus: {
+      modality: 'keyboard', focused: true, focusVisible: true, styleChanged: true,
+      decorationPainted: true, verb: 'sample', semanticKey: 'capture:sample', close: false,
+      nativeTabTrusted: true,
+    },
+    close: {
+      ok: true,
+      target: { surveyClose: true, accessibleName: 'Close Survey card' },
+      receipt: { trusted: true, key: 'Enter', code: 'Enter', surveyClose: true },
+    },
+    returned: { cardOpen: false, expanded: 'false', focusId: 'docksurvey' },
+    reopen: { ok: true }, reopened: { cardOpen: true, expanded: 'true' },
+    captureActivationTrace: [],
+  };
+  const nativeReturn = assessArc4NativeSurveyCloseReturn(nativeEvidence);
+  const wrongReturn = structuredClone(nativeEvidence);
+  wrongReturn.returned.focusId = 'canvas';
+  const wrongReturnAssessment = assessArc4NativeSurveyCloseReturn(wrongReturn);
+  const wrongClose = structuredClone(nativeEvidence);
+  wrongClose.close.receipt.trusted = false;
+  const wrongCloseAssessment = assessArc4NativeSurveyCloseReturn(wrongClose);
+  const wrongSurface = structuredClone(nativeEvidence);
+  wrongSurface.afterSurface.cardTitle = 'Earth';
+  const wrongSurfaceAssessment = assessArc4NativeSurveyCloseReturn(wrongSurface);
+  const wrongPlanetside = structuredClone(nativeEvidence);
+  wrongPlanetside.afterPlanetside.previewCount = 7;
+  const wrongPlanetsideAssessment = assessArc4NativeSurveyCloseReturn(wrongPlanetside);
+  const wrongCapture = structuredClone(nativeEvidence);
+  wrongCapture.afterCapture.revision = 1;
+  const wrongCaptureAssessment = assessArc4NativeSurveyCloseReturn(wrongCapture);
+  const wrongOwnership = structuredClone(nativeEvidence);
+  wrongOwnership.afterDurableFingerprint = durableOwnershipFingerprint;
+  const wrongOwnershipAssessment = assessArc4NativeSurveyCloseReturn(wrongOwnership);
+  const wrongRng = structuredClone(nativeEvidence);
+  wrongRng.afterDurableFingerprint = durableRngFingerprint;
+  const wrongRngAssessment = assessArc4NativeSurveyCloseReturn(wrongRng);
+  const wrongReceipt = structuredClone(nativeEvidence);
+  wrongReceipt.afterDurableFingerprint = durableReceiptFingerprint;
+  const wrongReceiptAssessment = assessArc4NativeSurveyCloseReturn(wrongReceipt);
+  const wrongEpoch = structuredClone(nativeEvidence);
+  wrongEpoch.afterDurableFingerprint = durableEpochFingerprint;
+  const wrongEpochAssessment = assessArc4NativeSurveyCloseReturn(wrongEpoch);
+  const wrongCounter = structuredClone(nativeEvidence);
+  wrongCounter.afterDurableFingerprint = durableCounterFingerprint;
+  const wrongCounterAssessment = assessArc4NativeSurveyCloseReturn(wrongCounter);
+  const wrongActivation = structuredClone(nativeEvidence);
+  wrongActivation.captureActivationTrace.push({
+    type: 'keydown', key: 'Enter', code: 'Enter', trusted: true, verb: 'sample',
+  });
+  const wrongActivationAssessment = assessArc4NativeSurveyCloseReturn(wrongActivation);
+  const planetsideOwnership = { ok: true };
+  const dependentBaseline = assessArc4DependentBaseline({
+    planetsideOwnership, nativeReturn, presentation, geometry,
+  });
+  const wrongDependentBaseline = assessArc4DependentBaseline({
+    planetsideOwnership, nativeReturn: wrongSurfaceAssessment, presentation, geometry,
+  });
+  const wrongPlanetsideOwnershipBaseline = assessArc4DependentBaseline({
+    planetsideOwnership: { ok: false }, nativeReturn, presentation, geometry,
+  });
+  const wrongPresentationBaseline = assessArc4DependentBaseline({
+    planetsideOwnership, nativeReturn, presentation: wrongTitleAssessment, geometry,
+  });
+  const wrongGeometryBaseline = assessArc4DependentBaseline({
+    planetsideOwnership, nativeReturn, presentation, geometry: wrongOverlapAssessment,
+  });
+  const fixtureViewports = [{ label: 'one' }, { label: 'two' }];
+  const outcomeRows = fixtureViewports.flatMap((viewport) => ARC4_CAPTURE_OUTCOME_CODES.map((code) => ({
+    viewport: viewport.label, surface: 'survey-capture', code, ok: true, checks: { selftest: true },
+  })));
+  const inventory = arc4CaptureOutcomeInventoryOutcome(outcomeRows, fixtureViewports);
+  const inventoryMissing = arc4CaptureOutcomeInventoryOutcome(outcomeRows.slice(0, -1), fixtureViewports);
+  const inventoryDuplicate = arc4CaptureOutcomeInventoryOutcome([...outcomeRows, outcomeRows[0]], fixtureViewports);
+  const inventoryUnknown = arc4CaptureOutcomeInventoryOutcome([
+    ...outcomeRows.slice(0, -1), { ...outcomeRows.at(-1), code: 'ARC4_UNKNOWN' },
+  ], fixtureViewports);
+  const diagnosticSource = {
+    ui: { cardTitle: oracle.title },
+    planetside: { ecologyEpoch: oracle.ecologyEpoch },
+    geometry: { clauseProjection: geometryClauses },
+  };
+  const diagnosticReportRow = arc4CaptureOutcomeReportRow({
+    viewport: 'one', surface: 'survey-capture', code: ARC4_CAPTURE_OUTCOME_CODES[2],
+    outcome: { ...geometry, diagnostics: diagnosticSource },
+  });
+  diagnosticSource.ui.cardTitle = 'mutated after projection';
+  const ok = fixturePreflight.ok
+    && arc4IsolatedFailure(wrongFixtureRawAssessment, 'rawBound')
+    && arc4IsolatedFailure(wrongFixtureEpochAssessment, 'epochSource')
+    && arc4IsolatedFailure(wrongFixtureContactAssessment, 'contactSource')
+    && arc4IsolatedFailure(wrongFixtureLoadoutAssessment, 'loadoutSource')
+    && presentation.ok && geometry.ok && nativeReturn.ok
+    && [durableBefore, durableCheckpoint, durableOwnership, durableRng, durableReceipt,
+      durableEpoch, durableCounter]
+      .every(arc4DurableEvidenceComplete)
+    && durableProjection?.ownershipCarriers?.length === 18
+    && exactJson(durableProjection?.v4Mirror?.legacy?.ownedAliases,
+      [['cs111', 'Wayfinder']])
+    && durableProjection?.v4Mirror?.legacy?.essence === 7
+    && durableProjection?.v4Mirror?.legacy?.essenceEarned === 7
+    && exactJson(durableProjection?.v4OwnedCounters, {
+      legacy: { hybrids: 2, best: 5, maxGen: 1, bestRank: 3 },
+      split: { hybrids: 2, best: 5, maxGen: 1, bestRank: 3 },
+    })
+    && durableBeforeFingerprint === durableCheckpointFingerprint
+    && typeof durableBeforeFingerprint === 'string'
+    && durableOwnershipFingerprint !== durableBeforeFingerprint
+    && durableRngFingerprint !== durableBeforeFingerprint
+    && durableReceiptFingerprint !== durableBeforeFingerprint
+    && durableEpochFingerprint !== durableBeforeFingerprint
+    && durableCounterFingerprint !== durableBeforeFingerprint
+    && exactJson(durableCounterProjection?.ownershipCarriers,
+      durableProjection?.ownershipCarriers)
+    && exactJson(durableCounterProjection?.v4Mirror, durableProjection?.v4Mirror)
+    && exactJson(durableCounterProjection?.sessionRng, durableProjection?.sessionRng)
+    && exactJson(durableCounterProjection?.receipts, durableProjection?.receipts)
+    && arc4DurableFingerprint({}) === null
+    && arc4IsolatedFailure(canonicalAuthorityAssessment, 'f4Authority')
+    && arc4IsolatedFailure(wrongTitleAssessment, 'homeworldTitle')
+    && arc4IsolatedFailure(wrongCountsAssessment, 'rosterCounts')
+    && arc4IsolatedFailure(wrongFingerprintAssessment, 'rosterFingerprint')
+    && arc4IsolatedFailure(wrongYieldAssessment, 'yieldExact')
+    && arc4IsolatedFailure(wrongOddsAssessments.tame, 'tameOdds')
+    && arc4IsolatedFailure(wrongOddsAssessments.scavenge, 'scavengeOdds')
+    && arc4IsolatedFailure(wrongOddsAssessments.sample, 'sampleOdds')
+    && arc4IsolatedFailure(wrongCopyAssessment, 'fullPoolCopy')
+    && arc4IsolatedFailure(wrongDisabledAssessment, 'modelDisabledParity')
+    && arc4IsolatedFailure(wrongOverlapAssessment, 'noControlOverlap')
+    && geometryClauses.length === 3 && geometryClauses.every((row) => row.ok)
+    && exactJson(arc4FailedChecks(stretchedButtonAssessment), ['controlsExact', 'controlsGeometry'])
+    && stretchedButtonClauses.length === 3
+    && stretchedButtonClauses[2]?.ok === false
+    && exactJson(Object.entries(stretchedButtonClauses[2]?.clauses || {})
+      .filter(([, value]) => value !== true).map(([name]) => name), ['cardContained'])
+    && stretchedButtonClauses.slice(0, 2).every((row) => row.ok)
+    && arc4IsolatedFailure(wrongReturnAssessment, 'openerReturn')
+    && arc4IsolatedFailure(wrongCloseAssessment, 'closeTrusted')
+    && arc4IsolatedFailure(wrongSurfaceAssessment, 'surfaceUnchanged')
+    && arc4IsolatedFailure(wrongPlanetsideAssessment, 'planetsideUnchanged')
+    && arc4IsolatedFailure(wrongCaptureAssessment, 'captureUnchanged')
+    && arc4IsolatedFailure(wrongOwnershipAssessment, 'persistenceUnchanged')
+    && arc4IsolatedFailure(wrongRngAssessment, 'persistenceUnchanged')
+    && arc4IsolatedFailure(wrongReceiptAssessment, 'persistenceUnchanged')
+    && arc4IsolatedFailure(wrongEpochAssessment, 'persistenceUnchanged')
+    && arc4IsolatedFailure(wrongCounterAssessment, 'persistenceUnchanged')
+    && arc4IsolatedFailure(wrongActivationAssessment, 'noCaptureActivation')
+    && dependentBaseline.ok
+    && arc4IsolatedFailure(wrongDependentBaseline, 'nativeCloseReturn')
+    && arc4IsolatedFailure(wrongPlanetsideOwnershipBaseline, 'planetsideOwnership')
+    && arc4IsolatedFailure(wrongPresentationBaseline, 'planetsidePresentation')
+    && arc4IsolatedFailure(wrongGeometryBaseline, 'captureGeometry')
+    && assessArc4GlassPresentation().ok === false
+    && assessArc4NativeSurveyCloseReturn().ok === false
+    && assessArc4CaptureCardGeometryFocus().ok === false
+    && inventory.ok && inventory.complete
+    && inventoryMissing.ok && !inventoryMissing.complete
+    && !inventoryDuplicate.ok && !inventoryUnknown.ok
+    && diagnosticReportRow.ok === true
+    && diagnosticReportRow.diagnostics?.ui?.cardTitle === oracle.title
+    && diagnosticReportRow.diagnostics?.planetside?.ecologyEpoch === oracle.ecologyEpoch
+    && diagnosticReportRow.diagnostics?.geometry?.clauseProjection?.every((row) => row.ok);
+  return {
+    ok, fixturePreflight, wrongFixtureRawAssessment, wrongFixtureEpochAssessment,
+    wrongFixtureContactAssessment, wrongFixtureLoadoutAssessment,
+    presentation, wrongTitle: wrongTitleAssessment, wrongCounts: wrongCountsAssessment,
+    wrongFingerprint: wrongFingerprintAssessment, wrongYield: wrongYieldAssessment,
+    wrongOdds: wrongOddsAssessments,
+    wrongCopy: wrongCopyAssessment, wrongDisabled: wrongDisabledAssessment,
+    geometry, geometryClauses, wrongOverlap: wrongOverlapAssessment,
+    stretchedButton: stretchedButtonAssessment, stretchedButtonClauses,
+    nativeReturn, wrongReturn: wrongReturnAssessment,
+    wrongClose: wrongCloseAssessment, wrongSurface: wrongSurfaceAssessment,
+    wrongPlanetside: wrongPlanetsideAssessment, wrongCapture: wrongCaptureAssessment,
+    dependentBaseline, wrongDependentBaseline, wrongPlanetsideOwnershipBaseline,
+    wrongPresentationBaseline, wrongGeometryBaseline,
+    durableProjection, durableBeforeFingerprint, durableCheckpointFingerprint,
+    durableAssessments, canonicalAuthorityAssessment,
+    wrongOwnership: wrongOwnershipAssessment, wrongRng: wrongRngAssessment,
+    wrongReceipt: wrongReceiptAssessment, wrongEpoch: wrongEpochAssessment,
+    wrongCounter: wrongCounterAssessment,
+    wrongActivation: wrongActivationAssessment,
+    inventory, inventoryMissing, inventoryDuplicate, inventoryUnknown,
+    diagnosticReportRow,
+  };
+}
+
 async function reportSelftest() {
+  const arc4 = arc4GlassSelftest();
+  if (!arc4.ok) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: Arc 4 presentation/geometry/return controls failed (${JSON.stringify(arc4)})`);
+  }
   const shipyardSettlement = glassShipyardSettlementSelftest();
   if (!shipyardSettlement.ok) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: Shipyard fixture/settlement controls failed (${JSON.stringify(shipyardSettlement)})`);
@@ -2367,9 +3508,19 @@ async function reportSelftest() {
     || productBlockedSuffixForViewport('small-phone', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', []).length) {
     throw new Error('GLASS MATRIX REPORT SELFTEST: full/targeted product-blocked suffix accounting failed');
   }
+  const shapedArc4Outcomes = MATRIX_VIEWPORTS.flatMap((viewport) => ARC4_CAPTURE_OUTCOME_CODES.map((code) => ({
+    viewport: viewport.label, surface: 'survey-capture', code, ok: true,
+    checks: { selftest: true }, reasons: [],
+  })));
+  const shapedArc4Inventory = arc4CaptureOutcomeInventoryOutcome(shapedArc4Outcomes);
   const shaped = {
     schema: 'cf-v2-glassmatrix/v1', status: fixture.status, scope: 'full-certifying', certifying: true,
     viewportInventory: viewportInventory(),
+    arc4CaptureOutcomeInventory: {
+      plannedOutcomeCodes: [...ARC4_CAPTURE_OUTCOME_CODES], complete: shapedArc4Inventory.complete,
+      expectedCount: shapedArc4Inventory.expectedCount, observedCount: shapedArc4Inventory.observedCount,
+      omitted: shapedArc4Inventory.omitted, outcomes: shapedArc4Outcomes,
+    },
     controlSummary: {
       selftestRan: fixture.controlsRun,
       negativeControls: [...NEGATIVE_CONTROLS],
@@ -2394,6 +3545,10 @@ async function reportSelftest() {
   if (shaped.schema !== 'cf-v2-glassmatrix/v1' || shaped.status !== 'fail'
     || shaped.scope !== 'full-certifying' || shaped.certifying !== true
     || shaped.viewportInventory.length !== 12 || shaped.summary.counts.TARGET_TOO_SMALL !== 1
+    || shaped.arc4CaptureOutcomeInventory?.complete !== true
+    || shaped.arc4CaptureOutcomeInventory?.expectedCount !== 36
+    || shaped.arc4CaptureOutcomeInventory?.observedCount !== 36
+    || !exactJson(shaped.arc4CaptureOutcomeInventory?.plannedOutcomeCodes, ARC4_CAPTURE_OUTCOME_CODES)
     || shaped.findings[0].actual.height !== 20 || shaped.controlSummary.automaticRetries !== 0
     || shaped.controlSummary.blockedNegativeControls.length !== 0
     || shaped.controlSummary.omittedNegativeControls.length !== 0
@@ -2426,7 +3581,16 @@ async function reportSelftest() {
       'inventory-modal-focus', 'inventory-focus-wrap', 'inventory-protected-action', 'inventory-action-publication',
       'inventory-convergence-retry',
       'shipyard-preview-uniqueness', 'shipyard-dom-state-parity',
-      'shipyard-close-release', 'shipyard-opener-path', 'shipyard-geometry-focus']
+      'shipyard-close-release', 'shipyard-opener-path', 'shipyard-geometry-focus',
+      'arc4-capture-full-pool-copy', 'arc4-capture-model-disabled-parity',
+      'arc4-capture-earth-title', 'arc4-capture-roster-counts',
+      'arc4-capture-roster-fingerprint', 'arc4-capture-yield',
+      'arc4-capture-tame-odds', 'arc4-capture-scavenge-odds',
+      'arc4-capture-sample-odds',
+      'arc4-capture-native-survey-return', 'arc4-capture-ownership-mutation',
+      'arc4-capture-session-rng-mutation', 'arc4-capture-receipt-mutation',
+      'arc4-capture-epoch-mutation', 'arc4-capture-v4-counter-mutation',
+      'arc4-capture-native-activation', 'arc4-capture-control-overlap']
       .every((name) => shaped.controlSummary.negativeControls.includes(name))) {
     throw new Error('GLASS MATRIX REPORT SELFTEST: injected finding/report grouping drifted');
   }
@@ -2447,7 +3611,7 @@ async function reportSelftest() {
     throw new Error('GLASS MATRIX REPORT SELFTEST: viewport timing evidence controls failed');
   }
   console.log('GLASS MATRIX REPORT SELFTEST: PASS');
-  console.log('  injected finding retained; 12 viewport definitions retained; retry policy remains zero');
+  console.log('  injected finding retained; 12 viewport definitions and 36 exact Arc 4 capture outcomes retained; retry policy remains zero');
   console.log('  missing Shipyard generated expression returns {ok:false} without throw; import, release, exact boot subphases, twin-canvas budgets, navigation, and boot-ready deadlines fail closed');
 }
 
@@ -3743,6 +4907,7 @@ async function main() {
     : [];
   runReloadEvidence = [];
   runViewportTimings = [];
+  runArc4CaptureOutcomes = [];
   const releaseLock = acquireWorkspaceLock('v2 responsive glass matrix');
   try {
     runSource = sourceIdentity();
@@ -3789,7 +4954,7 @@ async function main() {
     modalControlRun = false, modalLiveControlRun = false, closeLabelControlRun = false,
     hiddenOpenerControlRun = false, reloadBindingControlRun = false,
     releaseDetailControlRun = false, releaseTailControlRun = false, phoneDockControlRun = false,
-    shipyardControlRun = false, inventoryControlRun = false;
+    shipyardControlRun = false, inventoryControlRun = false, arc4CaptureControlRun = false;
   const add = (viewport, surface, rows) => {
     for (const row of rows || []) findings.push({ context: { viewport, surface }, row });
   };
@@ -3799,6 +4964,29 @@ async function main() {
       row: { code, surface, element, actual: outcome, expected },
     });
   };
+  const addArc4Outcome = (viewport, surface, code, element, outcome, expected) => {
+    runArc4CaptureOutcomes.push(arc4CaptureOutcomeReportRow({
+      viewport, surface, code, outcome,
+    }));
+    addOutcome(viewport, surface, code, element, outcome, expected);
+  };
+  const arc4Controls = arc4GlassSelftest();
+  if (!arc4Controls.ok) {
+    instrumentFailures.push(`ARC 4 GLASS SELFTEST ${JSON.stringify(arc4Controls)}`);
+  } else {
+    arc4CaptureControlRun = true;
+    recordControls(
+      'arc4-capture-full-pool-copy', 'arc4-capture-model-disabled-parity',
+      'arc4-capture-earth-title', 'arc4-capture-roster-counts',
+      'arc4-capture-roster-fingerprint', 'arc4-capture-yield',
+      'arc4-capture-tame-odds', 'arc4-capture-scavenge-odds',
+      'arc4-capture-sample-odds',
+      'arc4-capture-native-survey-return', 'arc4-capture-ownership-mutation',
+      'arc4-capture-session-rng-mutation', 'arc4-capture-receipt-mutation',
+      'arc4-capture-epoch-mutation', 'arc4-capture-v4-counter-mutation',
+      'arc4-capture-native-activation', 'arc4-capture-control-overlap',
+    );
+  }
   try {
     for (const vp of MATRIX_VIEWPORTS) {
       /* Per-row wall-clock ownership. CI runs this instrument ~20× slower
@@ -3966,6 +5154,21 @@ async function main() {
           }
           throw new Error(`${vp.label}/${label}: outcome did not arrive within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
         };
+        const readSettledArc4Durable = async (label) => {
+          let prior = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+          let priorFingerprint = arc4DurableFingerprint(prior);
+          for (let attempt = 0; attempt < 8; attempt++) {
+            await sleep(50);
+            const current = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+            const fingerprint = arc4DurableFingerprint(current);
+            if (typeof fingerprint === 'string' && fingerprint === priorFingerprint) {
+              return { settled: true, fingerprint, raw: current, attempts: attempt + 2 };
+            }
+            prior = current;
+            priorFingerprint = fingerprint;
+          }
+          return { settled: false, fingerprint: priorFingerprint, raw: prior, label, attempts: 9 };
+        };
         const pressEscape = async () => {
           const key = { key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 };
           await send('Input.dispatchKeyEvent', { type: 'rawKeyDown', ...key }, session);
@@ -3984,11 +5187,14 @@ async function main() {
             const controller=new AbortController();window.__cfGlassEngineeringKeyAbort=controller;
             document.addEventListener('keydown',(event)=>{if(event.target!==target)return;
               window.__cfGlassEngineeringKeyReceipt={key:event.key,code:event.code,trusted:event.isTrusted===true,
-                tag:target?.tagName||null,focusKey:target?.getAttribute?.('data-focus-key')||null};},
+                tag:target?.tagName||null,focusKey:target?.getAttribute?.('data-focus-key')||null,
+                surveyClose:target?.hasAttribute?.('data-survey-close')===true};},
               {capture:true,once:true,signal:controller.signal});target?.focus();return {
                 ok:!!target&&style?.display!=='none'&&style?.visibility!=='hidden'&&!!rect
                   &&rect.width>0&&rect.height>=44&&document.activeElement===target,
                 tag:target?.tagName||null,focusKey:target?.getAttribute?.('data-focus-key')||null,
+                surveyClose:target?.hasAttribute?.('data-survey-close')===true,
+                accessibleName:(target?.getAttribute?.('aria-label')||target?.textContent||'').trim(),
                 rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null};})()`);
           if (!target.ok) return { ok: false, why: `${label} is not one focused visible 44px control`, target, receipt: null };
           const key = { key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 };
@@ -4002,7 +5208,8 @@ async function main() {
             delete window.__cfGlassEngineeringKeyReceipt;return value;})()`);
           return { ok: receipt?.trusted === true && receipt?.key === 'Enter'
             && receipt?.code === 'Enter' && receipt?.tag === target.tag
-            && receipt?.focusKey === target.focusKey, target, receipt };
+            && receipt?.focusKey === target.focusKey
+            && receipt?.surveyClose === target.surveyClose, target, receipt };
         };
         /* Engineering/Shipyard is a real Arc 3 route. Preserve an input
            receipt for its opener and Close rather than using the panel helper's
@@ -5096,7 +6303,8 @@ async function main() {
           const hit=document.elementFromPoint(x,y),owned=!!hit&&side.contains(hit);
           return {ok:!overlap&&visibleIntersection&&owned,overlap,visibleIntersection,owned,hit:hit?.id||hit?.getAttribute?.('data-sel')||hit?.tagName||null,
             side:[a.left,a.top,a.right,a.bottom],survey:[b.left,b.top,b.right,b.bottom],specimen:[p.left,p.top,p.right,p.bottom],point:[x,y]}; })()`;
-        addOutcome(vp.label, 'planetside', 'PLANETSIDE_SURFACE_OCCLUDED', '#planetside', await evalIn(planetsideOwnershipCheck),
+        const planetsideOwnership = await evalIn(planetsideOwnershipCheck);
+        addOutcome(vp.label, 'planetside', 'PLANETSIDE_SURFACE_OCCLUDED', '#planetside', planetsideOwnership,
           'the populated living-world strip does not overlap the open survey and owns a representative rendered point');
         if (!planetsideControlRun) {
           planetsideControlRun = true;
@@ -5120,6 +6328,182 @@ async function main() {
           const railPreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#raillft','#railcharters','var(--ink)')`);
           addOutcome(vp.label, 'rail-preferences', 'PREFERENCE_SURFACE_INERT', '#railcharters', railPreference,
             'desktop rail label computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
+        }
+
+        /* Arc 4 capture remains a pure presentation/geometry audit here.
+           The Slice suite owns writer settlement. Glass uses only Survey
+           disclosure, focus, and its visible Close action, then proves the exact Arc 4-owned
+           durability projection and capture authority were unchanged across
+           the complete audit despite permissible checkpoint-only churn. */
+        await waitFor('Homeworld Arc 4 capture route', `(()=>{const state=window.__CF_SLICE__?.api?.state?.();
+          return state?.mode==='surface'&&state?.planet===133&&state?.cardOpen===true;})()`, 10000);
+        const arc4BeforeUi = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
+        const arc4BeforeSurface = await evalIn(ARC4_SURFACE_EXPRESSION);
+        const arc4BeforePlanetside = await evalIn(ARC4_PLANETSIDE_EXPRESSION);
+        const arc4BeforeDurable = await readSettledArc4Durable('before non-mutating Arc 4 Glass audit');
+        await evalIn(`(()=>{window.__cfGlassArc4ActivationAbort?.abort();
+          const controller=new AbortController(),trace=[];window.__cfGlassArc4ActivationAbort=controller;
+          window.__cfGlassArc4ActivationTrace=trace;const record=(event)=>{const target=event.target instanceof Element
+            ?event.target.closest('button[data-capture-action]'):null;if(!target)return;
+            const activates=event.type==='click'||event.key==='Enter'||event.key===' '
+              ||event.key==='Spacebar'||event.code==='Space';if(activates)trace.push({type:event.type,
+                key:event.key??null,code:event.code??null,trusted:event.isTrusted===true,
+                verb:target.getAttribute('data-capture-action')});};
+          document.addEventListener('click',record,{capture:true,signal:controller.signal});
+          document.addEventListener('keydown',record,{capture:true,signal:controller.signal});return true;})()`);
+        const captureDisclosureState = `(()=>{const state=window.__CF_SLICE__?.api?.state?.(),button=document.getElementById('docksurvey');return {
+          cardOpen:state?.cardOpen===true,expanded:button?.getAttribute('aria-expanded')??null,
+          focusId:document.activeElement?.id??null,rowCount:document.querySelectorAll('#survey [data-capture-row]').length};})()`;
+        const setupClose = await activateRealKeyboardControl('#docksurvey', `${vp.label} Arc 4 Survey setup close`);
+        const setupClosed = await waitFor('Arc 4 Survey setup close', captureDisclosureState, 5000,
+          (value) => value?.cardOpen === false && value?.expanded === 'false');
+        const open = await activateRealKeyboardControl('#docksurvey', `${vp.label} Arc 4 Survey opener`);
+        const opened = await waitFor('Arc 4 Survey native open', captureDisclosureState, 5000,
+          (value) => value?.cardOpen === true && value?.expanded === 'true');
+        const sampleFocusSetup = await evalIn(arc4NativeTabFocusSetupExpression('sample', 'scavenge'));
+        await pressTab();
+        const sampleFocus = await evalIn(arc4NativeTabFocusEvidenceExpression('sample'));
+        const sampleScroll = await evalIn(arc4ScrollSettleExpression('#survey button[data-capture-action="sample"]'));
+        const close = await activateRealKeyboardControl('#survey [data-survey-close]',
+          `${vp.label} Arc 4 Survey Close return`);
+        const returned = await waitFor('Arc 4 Survey Close return', captureDisclosureState, 5000,
+          (value) => value?.cardOpen === false && value?.expanded === 'false' && value?.focusId === 'docksurvey');
+        const reopen = await activateRealKeyboardControl('#docksurvey', `${vp.label} Arc 4 Survey reopen`);
+        const reopened = await waitFor('Arc 4 Survey native reopen', captureDisclosureState, 5000,
+          (value) => value?.cardOpen === true && value?.expanded === 'true');
+        const arc4Ui = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
+        const arc4AfterSurface = await evalIn(ARC4_SURFACE_EXPRESSION);
+        const arc4AfterPlanetside = await evalIn(ARC4_PLANETSIDE_EXPRESSION);
+        const arc4Presentation = assessArc4GlassPresentation({ ui: arc4Ui, planetside: arc4AfterPlanetside });
+
+        const arc4ControlsGeometry = [];
+        for (const verb of ARC4_CAPTURE_VERBS) {
+          const selector = `#survey button[data-capture-action=${JSON.stringify(verb)}]`;
+          const scroll = await evalIn(arc4ScrollSettleExpression(selector));
+          const before = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
+          const focus = await evalIn(arc4FocusEvidenceExpression({ verb }));
+          await evalIn('new Promise(resolve=>requestAnimationFrame(()=>setTimeout(()=>resolve(true),0)))');
+          const after = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
+          const beforeRow = before?.rows?.find((row) => row?.verb === verb);
+          const afterRow = after?.rows?.find((row) => row?.verb === verb);
+          arc4ControlsGeometry.push({
+            verb, scrollSettled: scroll?.ok === true,
+            buttonRect: scroll?.second?.buttonRect ?? beforeRow?.button?.rect ?? null,
+            cardRect: scroll?.second?.cardRect ?? before?.cardRect ?? null,
+            scrollOffset: scroll?.second?.scrollOffset ?? null,
+            layoutRect: scroll?.second?.layoutRect ?? null,
+            beforePoint: beforeRow?.button?.point ?? null,
+            afterRenderPoint: afterRow?.button?.point ?? null,
+            accessibleName: focus?.accessibleName ?? null,
+            focus,
+          });
+        }
+        const arc4CloseScroll = await evalIn(arc4ScrollSettleExpression('#survey [data-survey-close]'));
+        const arc4CloseBefore = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
+        const arc4CloseFocus = await evalIn(arc4FocusEvidenceExpression({ close: true }));
+        await evalIn('new Promise(resolve=>requestAnimationFrame(()=>setTimeout(()=>resolve(true),0)))');
+        const arc4CloseAfter = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
+        const arc4Layout = await evalIn(ARC4_LAYOUT_EXPRESSION);
+        const arc4GeometryBundle = {
+          schema: ARC4_CAPTURE_GEOMETRY_EVIDENCE_SCHEMA,
+          layoutCoordinateSpace: ARC4_CAPTURE_LAYOUT_COORDINATE_SPACE,
+          viewport: { name: vp.label, width: vp.width, height: vp.height },
+          ui: arc4CloseAfter,
+          planetsideRect: arc4Layout.planetsideRect,
+          controls: arc4ControlsGeometry,
+          close: {
+            scrollSettled: arc4CloseScroll?.ok === true,
+            rect: arc4CloseBefore?.close?.rect ?? null,
+            beforePoint: arc4CloseBefore?.close?.point ?? null,
+            afterRenderPoint: arc4CloseAfter?.close?.point ?? null,
+            accessibleName: arc4CloseFocus?.accessibleName ?? null,
+            focus: arc4CloseFocus,
+          },
+          scrollWidth: arc4Layout.scrollWidth,
+          clientWidth: arc4Layout.clientWidth,
+        };
+        const arc4GeometryClauses = arc4GeometryClauseProjection(arc4GeometryBundle);
+        const arc4GeometryAssessment = assessArc4CaptureCardGeometryFocus(arc4GeometryBundle);
+        const arc4Geometry = {
+          ...arc4GeometryAssessment,
+          diagnostics: {
+            schema: 'cf-v2-glass-arc4-geometry-diagnostics/v1',
+            viewport: { ...arc4GeometryBundle.viewport },
+            planetsideRect: arc4GeometryBundle.planetsideRect,
+            controls: arc4GeometryBundle.controls,
+            close: arc4GeometryBundle.close,
+            scrollWidth: arc4GeometryBundle.scrollWidth,
+            clientWidth: arc4GeometryBundle.clientWidth,
+            clauseProjection: arc4GeometryClauses,
+          },
+        };
+        const arc4AfterDurable = await readSettledArc4Durable('after non-mutating Arc 4 Glass audit');
+        const arc4AfterCapture = (await evalIn(ARC4_CAPTURE_UI_EXPRESSION)).captureState;
+        const arc4CaptureActivationTrace = await evalIn(`(()=>{const trace=Array.isArray(window.__cfGlassArc4ActivationTrace)
+          ?window.__cfGlassArc4ActivationTrace.map((row)=>({...row})):null;
+          window.__cfGlassArc4ActivationAbort?.abort();delete window.__cfGlassArc4ActivationAbort;
+          delete window.__cfGlassArc4ActivationTrace;return trace;})()`);
+        const arc4NativeAssessment = assessArc4NativeSurveyCloseReturn({
+          beforeSurface: arc4BeforeSurface,
+          afterSurface: arc4AfterSurface,
+          beforePlanetside: arc4BeforePlanetside,
+          afterPlanetside: arc4AfterPlanetside,
+          beforeCapture: arc4BeforeUi.captureState,
+          afterCapture: arc4AfterCapture,
+          beforeDurableSettled: arc4BeforeDurable.settled,
+          afterDurableSettled: arc4AfterDurable.settled,
+          beforeDurableFingerprint: arc4BeforeDurable.fingerprint,
+          afterDurableFingerprint: arc4AfterDurable.fingerprint,
+          setupClose, setupClosed, open, opened,
+          sampleScrollSettled: sampleFocusSetup?.ok === true && sampleScroll?.ok === true,
+          sampleFocus,
+          close, returned, reopen, reopened,
+          captureActivationTrace: arc4CaptureActivationTrace,
+        });
+        const arc4NativeReturn = {
+          ...arc4NativeAssessment,
+          diagnostics: {
+            schema: 'cf-v2-glass-arc4-native-close-diagnostics/v1',
+            beforeSurface: arc4BeforeSurface, afterSurface: arc4AfterSurface,
+            beforePlanetside: arc4BeforePlanetside, afterPlanetside: arc4AfterPlanetside,
+            beforeCapture: arc4BeforeUi.captureState, afterCapture: arc4AfterCapture,
+            beforeDurableFingerprint: arc4BeforeDurable.fingerprint,
+            afterDurableFingerprint: arc4AfterDurable.fingerprint,
+          },
+        };
+        const arc4PresentationEvidence = {
+          ...arc4Presentation,
+          diagnostics: {
+            schema: 'cf-v2-glass-arc4-presentation-diagnostics/v1',
+            ui: arc4Ui,
+            planetside: arc4AfterPlanetside,
+          },
+        };
+        addArc4Outcome(vp.label, 'survey-capture', 'ARC4_CAPTURE_NATIVE_SURVEY_RETURN',
+          '#docksurvey,#survey [data-capture-action="sample"]', arc4NativeReturn,
+          'a trusted Survey open, idle Sample keyboard focus and visible Close return to the opener emit no capture activation and leave the exact surface, Planetside, capture state, Arc 4 ownership/rewards/counters, bound epoch, SessionRNG and receipts unchanged');
+        addArc4Outcome(vp.label, 'survey-capture', 'ARC4_CAPTURE_PRESENTATION_TRUTH',
+          '#survey [data-capture-card-body]', arc4PresentationEvidence,
+          arc4VeteranPresentationExpectation());
+        addArc4Outcome(vp.label, 'survey-capture', 'ARC4_CAPTURE_GEOMETRY_FOCUS',
+          '#survey [data-capture-card-body]', arc4Geometry,
+          'Survey capture owns one separated card/Planetside composition with settled 44px named, hittable, unclipped and visibly keyboard-focused actions and Close');
+        const arc4DependentAssessment = assessArc4DependentBaseline({
+          planetsideOwnership, nativeReturn: arc4NativeReturn,
+          presentation: arc4PresentationEvidence, geometry: arc4Geometry,
+        });
+        const arc4DependentBaseline = {
+          ...arc4DependentAssessment,
+          diagnostics: {
+            schema: 'cf-v2-glass-arc4-dependent-baseline-diagnostics/v1',
+            ui: { before: arc4BeforeUi, after: arc4Ui },
+            planetside: { before: arc4BeforePlanetside, after: arc4AfterPlanetside },
+            planetsideOwnership,
+            geometry: arc4Geometry.diagnostics,
+          },
+        };
+        if (!arc4DependentBaseline.ok) {
+          throw new Error(`Arc 4 dependent baseline red; Planetside/panel outcomes blocked (${JSON.stringify(arc4DependentBaseline)})`);
         }
 
         /* Every ordinary panel is deliberately exercised with populated real
@@ -6596,8 +7980,14 @@ async function main() {
               {id:'codes',required:['Before any shared galaxy, star, or planet route is accepted','uses only the source-verified destination','A stale or forged code leaves the current view unchanged and keeps the exact query in Search'],forbidden:['Opening it returns another explorer to the live system survey'],stale:'Share on a planet card prepares a deterministic CF1 address. Opening it returns another explorer to the live system survey when the destination is inside that expedition’s saved reach.'},
               {id:'atlas',required:['Each saved galaxy, star, or planet route is regenerated from the seeded universe','must produce a source-verified destination before its row can travel','A stale, forged, or incomplete imported route remains visible but disabled'],forbidden:['choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level'],stale:'Use Star Atlas on a planet card to chart it. The Atlas lists saved galaxies, stars, and worlds; choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level.'},
               {id:'determinism',required:['A CF1 address is a pointer into that shared math, not authority of its own','accepts only a source-verified match','a stale or forged address cannot replace the current view'],forbidden:['which is why deterministic CF1 addresses work without an account or game server'],stale:'The same supported coordinates resolve to the same galaxy, star, world, and current-slice survey, which is why deterministic CF1 addresses work without an account or game server.'},
-              {id:'kingdoms',required:['read-only Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Discovery, capture, husbandry, renaming, and other collection-writing actions remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Capture is now live'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Capture is now live.']},
-              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','profile remains read-only','Capture, feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry or collection-writing outcomes are deliberately absent'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Capture is now live'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Capture is now live.']},
+              {id:'survey',paragraph:2,required:['After landing on a living world, Planetside reveals the biosphere roster','landing still catalogues nothing','at-most-eight-row strip is only a preview','Tame, Scavenge, and Sample are separate finite actions','choose uniformly from their eligible species across the full biosphere'],requiredControls:['landing still catalogues nothing','at-most-eight-row strip is only a preview','choose uniformly from their eligible species across the full biosphere'],forbidden:['Landing catalogues the preview','Planetside preview row is the capture target','Capture draws only from the preview'],stale:'Landing catalogues the preview, and each Planetside preview row is the capture target. Capture draws only from the preview.',contradictions:['Landing catalogues the preview.','The Planetside preview row is the capture target.','Capture draws only from the preview.']},
+              {id:'discover',paragraph:2,required:['choose uniformly from every eligible species for that action in the full biosphere','no species row is a target','Tame chooses fauna and a hit adds one owned creature','Scavenge chooses flora or fungi','Sample chooses microbes','either hit adds one specimen lot, never a living companion','Every attempt spends 1 Yield on a hit or miss','successful species leaves that action’s eligible pool','a miss stays eligible','20-minute active-play cycle','closing the game or moving the wall clock does not advance recovery','first successful observation of a species adds its one Compendium page','later-world or later-cycle repeat adds another creature or lot without another page or first-find reward','first successful Legendary-or-better observation earns its one Rare Find Stardust bonus','A miss adds no page, creature, specimen, or Stardust','Capture never banks the Charter’s separate bioscan milestone'],requiredControls:['Every attempt spends 1 Yield on a hit or miss','successful species leaves that action’s eligible pool','a miss stays eligible','20-minute active-play cycle','closing the game or moving the wall clock does not advance recovery'],forbidden:['A miss spends no Yield','Biosphere Yield recovers while the game is closed','moving the wall clock advances recovery','successful species stays eligible for the cycle'],stale:'A miss spends no Yield. Biosphere Yield recovers while the game is closed or when the wall clock advances, and a successful species stays eligible for the cycle.',contradictions:['A miss spends no Yield.','Biosphere Yield recovers while the game is closed.','Moving the wall clock advances recovery.','A successful species stays eligible for the cycle.']},
+              {id:'rarity',paragraph:1,required:['Rarity lowers a species’ base Tame, Scavenge, or Sample chance','each action first chooses uniformly from its eligible full-biosphere pool','selected species and its exact chance appear with the result','Only the first successful Legendary-or-better observation earns a Rare Find Stardust bonus','later-world or later-cycle repeat can add another creature or specimen lot, but never another Compendium page or first-find reward'],requiredControls:['each action first chooses uniformly from its eligible full-biosphere pool','selected species and its exact chance appear with the result'],forbidden:['preview row is the chosen capture target','Every species has the same capture chance'],stale:'The preview row is the chosen capture target. Every species has the same capture chance.',contradictions:['The preview row is the chosen capture target.','Every species has the same capture chance.']},
+              {id:'stardust',paragraph:1,required:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','result shows the exact amount','A miss and every later-world or later-cycle repeat earn none','No other current v2 action earns Stardust'],requiredControls:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','A miss and every later-world or later-cycle repeat earn none'],forbidden:['Every Legendary capture earns Stardust','A repeat find earns another Rare Find Stardust bonus','A miss can earn Stardust'],stale:'Every Legendary capture earns Stardust, a repeat find earns another Rare Find Stardust bonus, and a miss can earn Stardust.',contradictions:['Every Legendary capture earns Stardust.','A repeat find earns another Rare Find Stardust bonus.','A miss can earn Stardust.']},
+              {id:'charters',paragraph:1,required:['Planetside capture is separate and never banks the Charter’s bioscan milestone','that milestone, conquest, and breeding goals stay hidden and unavailable until their writers exist'],requiredControls:['Planetside capture is separate and never banks the Charter’s bioscan milestone','that milestone, conquest, and breeding goals stay hidden and unavailable until their writers exist'],forbidden:['Capture banks the Charter bioscan milestone','Capture completes the bioscan Charter goal'],stale:'Capture banks the Charter bioscan milestone and completes the bioscan Charter goal.',contradictions:['Capture banks the Charter bioscan milestone.','Capture completes the bioscan Charter goal.']},
+              {id:'ascent',paragraph:2,required:['Planetside capture never banks the Charter’s separate bioscan milestone','that writer, conquest, and breeding milestones remain unavailable'],requiredControls:['Planetside capture never banks the Charter’s separate bioscan milestone','that writer, conquest, and breeding milestones remain unavailable'],forbidden:['Capture banks the Charter bioscan milestone','Capture advances Ascent bioscan'],stale:'Capture banks the Charter bioscan milestone and advances Ascent bioscan.',contradictions:['Capture banks the Charter bioscan milestone.','Capture advances Ascent bioscan.']},
+              {id:'kingdoms',required:['read-only Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Compendium itself remains a read-only browser','successful first Planetside capture can add one page','Tame also adds an owned fauna creature','Scavenge and Sample add specimen lots','Later-world or later-cycle successes add another creature or lot without duplicating the page','Feeding, breeding, husbandry, renaming, and other Compendium-row actions remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Choose a Compendium row to capture that species','Planetside preview row is the capture target'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.']},
+              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','profile remains read-only','Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row','Tame hit adds one owned fauna creature','Scavenge or Sample adds one specimen lot and never a living companion','Feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry remain unavailable'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Choose a Compendium row to capture that species','Planetside preview row is the capture target'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.']},
               {id:'research',paragraph:2,required:['Engineering & Shipyard combines the capability-derived ship preview','Research Bench lists exactly six canonical rows','Deep Scanners is the only current purchase','current Survey card does not yet render those orbital rows','other five','visible but disabled','Fabricator groups all 62 fixed recipes','exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable','Only one Engineering action can be pending','receipt-bearing transaction commits'],requiredControls:['exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable'],forbidden:['All six research rows can be purchased','Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'The Shipyard is read-only in this development slice, and fabrication, Research Bench purchases, and upgrades remain unavailable.',contradictions:['All six research rows can be purchased.','Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
               {id:'crafting',paragraph:2,required:['Inventory is a separate board','stable item instance','Equip, Unequip, Salvage, and pending-reward claim','Engineering & Shipyard → Fabricator','lists all 62 fixed recipes','can settle only rows whose output has a connected effect','Outputs with dormant effects','fully exceptional slotted crafting','authored affixes/drawbacks','item upgrades, sockets, and vendors remain unavailable'],requiredControls:['can settle only rows whose output has a connected effect','item upgrades, sockets, and vendors remain unavailable'],forbidden:['Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'Inventory exposes only the imported Equip, Unequip, Salvage, and reward-claim actions; Fabricator recipes are not available in this slice.',contradictions:['Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
               {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
@@ -6683,6 +8073,7 @@ async function main() {
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
             worldCode=bulletNodes.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
             atlasRoute=bulletNodes.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
+            capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
             training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
             art=bulletNodes.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
             workspace=bulletNodes.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
@@ -6691,9 +8082,9 @@ async function main() {
             shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
             hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
             headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
-            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),trainingHeading=headingFor(training),artHeading=headingFor(art),
+            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),captureHeading=headingFor(capture),trainingHeading=headingFor(training),artHeading=headingFor(art),
             shipyardHeading=headingFor(shipyard),hdSurfaceHeading=headingFor(hdSurface),
-            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',
+            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',
             shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
             charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
             ingressPlacement=!!worldCode&&!!atlasRoute&&worldCode!==atlasRoute&&worldCodeHeading==='Gameplay'&&atlasRouteHeading==='Gameplay',
@@ -6705,6 +8096,30 @@ async function main() {
               &&atlasRouteText.includes('Stale, forged, or incomplete rows remain visible but disabled')
               &&atlasRouteText.includes('a proven planet entry returns to Survey and Land remains explicit')
               &&!atlasRouteText.includes('through list-based deterministic travel'),
+            captureContradiction=/(?:preview row|Planetside preview)[^.!?]{0,80}(?:is|as) (?:the )?(?:chosen )?(?:capture )?target/i.test(captureText)
+              ||/miss[^.!?]{0,80}(?:spends? no|does not spend) (?:Biosphere )?Yield/i.test(captureText)
+              ||unnegated(captureText,/(?:Biosphere Yield|pool)[^.!?]{0,100}(?:recovers?|advances?)[^.!?]{0,64}(?:closed|closing|wall clock|offline)/i)
+              ||/(?:repeat|later-world|later-cycle)[^.!?]{0,120}(?:adds?|awards?|earns?) (?:another|a second) (?:Compendium page|first-find reward|Rare Find Stardust)/i.test(captureText)
+              ||unnegated(captureText,/Capture[^.!?]{0,80}banks?[^.!?]{0,48}(?:Charter’s|Charter's|Charter) (?:separate )?bioscan/i),
+            captureContract=captureHeading==='Gameplay'
+              &&captureText.includes('Tame chooses uniformly from every eligible fauna in the full biosphere')
+              &&captureText.includes('Scavenge from eligible flora and fungi')
+              &&captureText.includes('Sample from eligible microbes—not only the at-most-eight-row Planetside preview')
+              &&captureText.includes('All three share one finite Biosphere Yield')
+              &&captureText.includes('every attempt spends 1 on a hit or miss')
+              &&captureText.includes('pool fully recovers at the next 20-minute active-play cycle')
+              &&captureText.includes('never from closing the game or moving the wall clock')
+              &&captureText.includes('successful species leaves that action’s pool for the rest of the cycle')
+              &&captureText.includes('a miss stays eligible')
+              &&captureText.includes('first successful observation adds one Compendium page plus one owned creature for Tame or one specimen lot for Scavenge and Sample')
+              &&captureText.includes('Legendary-or-better first find also awards its one Rare Find Stardust bonus')
+              &&captureText.includes('exact amount shown in the result')
+              &&captureText.includes('later-world or later-cycle repeat adds another creature or lot without another page or first-find reward')
+              &&captureText.includes('a miss adds none of them')
+              &&captureText.includes('Scavenge and Sample never create living companions')
+              &&captureText.includes('Capture never banks the Charter’s separate bioscan milestone')
+              &&captureText.includes('Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
+              &&!captureContradiction,
             trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
               ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
               ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
@@ -6716,6 +8131,7 @@ async function main() {
               ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:close|dismiss|continue|keep playing|keep exploring)/i.test(trainingText)
               ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i.test(trainingText),
             trainingContract=trainingHeading==='Gameplay'
+              &&trainingText.includes('Finish for now that points to live Engineering & Shipyard and Planetside capture')
               &&trainingText.includes('A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view')
               &&trainingText.includes('if verification pauses, that exact view stays saved')
               &&trainingText.includes('when Sol can still be verified, Training returns there')
@@ -6752,7 +8168,7 @@ async function main() {
             shipyardContradiction=/all six Research rows can (?:currently )?be purchased/i.test(shipyardText)
               ||/current Survey card (?:now )?(?:renders?|paints?|shows?)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
               ||/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i.test(shipyardText)
-              ||/(?:Capture|biosphere discovery)[^.!?]{0,48}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+              ||/(?:biosphere discovery)[^.!?]{0,48}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
               ||unnegated(shipyardText,/(?:reward|cost|Charter tick|optimistic panel change)[^.!?]{0,80}publishes? before[^.!?]{0,48}(?:transaction )?commit/i)
               ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
               ||/authored affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
@@ -6769,9 +8185,9 @@ async function main() {
               &&shipyardText.includes('Fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
               &&shipyardText.includes('Built permanent systems change the real ship and star reach')
               &&shipyardText.includes('Remnant skim damage is previewed before it can spend HP')
-              &&shipyardText.includes('Engineering may spend preserved Stardust but cannot earn it')
+              &&shipyardText.includes('Engineering can spend preserved Stardust but does not earn it')
               &&shipyardText.includes('no reward, cost, Charter tick, or optimistic panel change publishes before the one receipt-bearing transaction commits')
-              &&shipyardText.includes('Capture and biosphere discovery remain unavailable')&&!shipyardContradiction,
+              &&!shipyardContradiction,
             hdSurfaceContract=hdSurfaceHeading==='Under the Hood'
               &&hdSurfaceText.includes('named HD surface-planet texture attachment')
               &&hdSurfaceText.includes('exact surface generation and planet identity')
@@ -6786,14 +8202,14 @@ async function main() {
             ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-            ||/(?:Capture|biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/(?:biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
-          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
+          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!captureContradiction&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
-            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===53&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
-            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&trainingContract&&artContract
+            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===54&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
+            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&trainingContract&&artContract
             &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
@@ -6806,12 +8222,12 @@ async function main() {
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
             identity,honest,overclaim,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
             charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
-            worldCodeContract,atlasRouteContract,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
+            worldCodeContract,atlasRouteContract,captureHeading,captureContract,captureContradiction,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
             workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,hdSurfaceHeading,hdSurfaceContract,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 53-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 54-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -6823,6 +8239,7 @@ async function main() {
               recovery=items.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
               worldCode=items.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
               atlasRoute=items.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
+              capture=items.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
               training=items.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
               art=items.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
               workspace=items.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
@@ -6830,25 +8247,25 @@ async function main() {
               worker=items.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
               shipyard=items.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
               hdSurface=items.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
-              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
+              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
               shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
               artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
               coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
-            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,hdSurfaceChanged=false;
+            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,hdSurfaceChanged=false;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!recoveryParent)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
               title.textContent=titleText.replace('v2.0','v2x0');identity=${developmentDetailCheck};title.textContent=titleText;
-              for(const copy of ['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Exploration audio is now live.']){
+              for(const copy of ['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Exploration audio is now live.','Capture is now playable.']){
                 claim.textContent=claimText+' '+copy;truthfulFeatureClaims.push({copy,result:${developmentDetailCheck}});
               }
               for(const copy of ['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
                 'Disconnected Fabricator outputs are now playable.','Fully-exceptional slotted craft is now playable.',
                 'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Item upgrades are now live.',
-                'Sockets are now available.','Vendors are now live.','Capture is now playable.','Discover Life is now playable.',
+                'Sockets are now available.','Vendors are now live.','Discover Life is now playable.',
                 'Breeding is now playable.','Creature combat is now playable.']){
                 claim.textContent=claimText+' '+copy;unavailableFeatureClaims.push({copy,result:${developmentDetailCheck}});
               }claim.textContent=claimText;
@@ -6865,6 +8282,27 @@ async function main() {
               worldCodeStale=${developmentDetailCheck};worldCode.textContent=worldCodeText;
               atlasRoute.textContent='🧭 THE ATLAS LEADS BACK: Charted galaxies, stars, and worlds can reopen their own navigation level through list-based deterministic travel, while incomplete imported routes remain visible with an honest unavailable label.';
               atlasRouteStale=${developmentDetailCheck};atlasRoute.textContent=atlasRouteText;
+              for(const part of [
+                'Sample from eligible microbes—not only the at-most-eight-row Planetside preview',
+                'every attempt spends 1 on a hit or miss',
+                'pool fully recovers at the next 20-minute active-play cycle, never from closing the game or moving the wall clock',
+                'later-world or later-cycle repeat adds another creature or lot without another page or first-find reward',
+                'Capture never banks the Charter’s separate bioscan milestone',
+              ]){
+                const changed=captureText.replace(part,'isolated capture limit omitted');
+                capture.textContent=changed;captureLimitControls.push({part,changed:changed!==captureText,result:${developmentDetailCheck}});
+                capture.textContent=captureText;
+              }
+              for(const copy of [
+                'The Planetside preview row is the chosen capture target.',
+                'A miss spends no Biosphere Yield.',
+                'Biosphere Yield recovers while the game is closed.',
+                'A later-world repeat adds a second Compendium page and first-find reward.',
+                'Capture banks the Charter’s separate bioscan milestone.',
+              ]){
+                capture.textContent=captureText+' '+copy;captureContradictions.push({copy,result:${developmentDetailCheck}});
+                capture.textContent=captureText;
+              }
               training.textContent=trainingText.replace('if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry',
                 'if verification pauses, that exact view stays saved and a reload safely restarts Field Training from proven Sol');
               trainingStale=${developmentDetailCheck};training.textContent=trainingText;
@@ -6919,7 +8357,7 @@ async function main() {
               if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;
               if(panelBoundary)panelBoundary.textContent=panelBoundaryText;
               if(first)first.textContent=firstText;if(recovery){recovery.textContent=recoveryText;if(recoveryParent&&recovery.parentNode!==recoveryParent)recoveryParent.insertBefore(recovery,recoveryNext);}
-              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(training)training.textContent=trainingText;
+              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(capture)capture.textContent=captureText;if(training)training.textContent=trainingText;
               if(art){art.textContent=artText;if(artParent&&art.parentNode!==artParent)artParent.insertBefore(art,artNext);}
               if(workspace){workspace.textContent=workspaceText;if(workspaceParent&&workspace.parentNode!==workspaceParent)workspaceParent.insertBefore(workspace,workspaceNext);}
               if(coldArt){coldArt.textContent=coldArtText;if(coldArtParent&&coldArt.parentNode!==coldArtParent)coldArtParent.insertBefore(coldArt,coldArtNext);}
@@ -6929,22 +8367,29 @@ async function main() {
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
               &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
               &&panelBoundary?.textContent===panelBoundaryText&&recovery?.textContent===recoveryText
-              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&training?.textContent===trainingText&&art?.textContent===artText
+              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&capture?.textContent===captureText&&training?.textContent===trainingText&&art?.textContent===artText
               &&art?.parentNode===artParent&&art?.nextSibling===artNext
               &&workspace?.textContent===workspaceText&&workspace?.parentNode===workspaceParent&&workspace?.nextSibling===workspaceNext
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===52
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===53
               &&identity?.ok===false&&identity?.identity===false
-              &&truthfulFeatureClaims.length===3
+              &&truthfulFeatureClaims.length===4
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)
-              &&unavailableFeatureClaims.length===13
+              &&unavailableFeatureClaims.length===12
               &&unavailableFeatureClaims.every((row)=>row.result?.ok===false&&row.result?.honest===false&&row.result?.overclaim===true)
               &&closeContract?.ok===false&&panelBoundaryContract?.ok===false&&emptySkyContract?.ok===false
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
               &&worldCodeStale?.ok===false&&worldCodeStale?.worldCodeContract===false
               &&atlasRouteStale?.ok===false&&atlasRouteStale?.atlasRouteContract===false
+              &&captureLimitControls.length===5
+              &&captureLimitControls.every((row)=>row.changed&&row.result?.ok===false
+                &&row.result?.captureContract===false&&row.result?.captureContradiction===false
+                &&row.result?.honest===true&&row.result?.shipyardContract===true&&row.result?.trainingContract===true)
+              &&captureContradictions.length===5
+              &&captureContradictions.every((row)=>row.result?.ok===false&&row.result?.captureContract===false
+                &&row.result?.captureContradiction===true&&row.result?.honest===false)
               &&trainingStale?.ok===false&&trainingStale?.trainingContract===false
               &&trainingContradictory?.ok===false&&trainingContradictory?.honest===false&&trainingContradictory?.trainingContradiction===true
               &&trainingLegacyStale?.ok===false&&trainingLegacyStale?.trainingContract===false
@@ -6973,7 +8418,7 @@ async function main() {
               &&hdSurfaceChanged&&hdSurfaceStale?.ok===false&&hdSurfaceStale?.hdSurfaceContract===false
               &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
+              order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,captureLimitControls,captureContradictions,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
               artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
               workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
               workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,
@@ -7401,10 +8846,18 @@ async function main() {
   if (!inventoryControlRun && !targetedProductBlocked) {
     instrumentFailures.push('Inventory carrier/row/modal/focus/action/release controls never ran');
   }
+  if (!arc4CaptureControlRun && !targetedProductBlocked) {
+    instrumentFailures.push('Arc 4 capture presentation/geometry/native-return controls never ran');
+  }
   if (!phoneDockControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900)) {
     instrumentFailures.push('exact ten-control 5x2 phone dock control never ran');
   }
   if (!reloadBindingControlRun && !targetedProductBlocked) instrumentFailures.push('live slice-ready binding controls never ran');
+  const arc4OutcomeInventory = arc4CaptureOutcomeInventoryOutcome(runArc4CaptureOutcomes);
+  if (!arc4OutcomeInventory.ok
+    || (!instrumentFailures.length && !findings.length && !arc4OutcomeInventory.complete)) {
+    instrumentFailures.push(`Arc 4 capture outcome inventory failed closed: ${JSON.stringify(arc4OutcomeInventory)}`);
+  }
   const browser = browserVersions.length ? {
     ...browserVersions[0],
     consistentAcrossViewports: browserVersions.every((row) => JSON.stringify(row) === JSON.stringify(browserVersions[0])),
@@ -7447,7 +8900,7 @@ async function main() {
     console.log(`GLASS MATRIX TARGETED DIAGNOSTIC PASS — ${viewportLabel}; this does not certify the 12-viewport matrix.`);
     console.log(`diagnostic evidence: apps/game/smoke/${path.basename(reportPath)}`);
   } else {
-    console.log(`GLASS MATRIX PASS — ${MATRIX_VIEWPORTS.length} isolated viewport classes; populated Training, toast, survey, Planetside, Inventory, Guide, Settings and import surfaces; safe-area, zoom, focus, target, contrast, reduced-motion and DPR controls all passed.`);
+    console.log(`GLASS MATRIX PASS — ${MATRIX_VIEWPORTS.length} isolated viewport classes; populated Training, toast, Survey capture, Planetside, Inventory, Guide, Settings and import surfaces; safe-area, zoom, focus, target, contrast, reduced-motion and DPR controls all passed.`);
     console.log('structured evidence: apps/game/smoke/glassmatrix-report.json');
   }
   } finally {

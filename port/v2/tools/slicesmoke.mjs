@@ -52,6 +52,26 @@ import {
   withEngineeringUiOpportunityStatus,
   withEngineeringUiRecipeOwned,
 } from './engineering-browser-contract.mjs';
+import {
+  ARC4_ACTIVE_PLAY_CYCLE_MS,
+  ARC4_CAPTURE_UI_EXPRESSION,
+  ARC4_DURABLE_READ_EXPRESSION,
+  ARC4_PERTAR_FIXTURE,
+  ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA,
+  ARC4_STALE_FAULT_CAPTURE_SCHEMA,
+  arc4BrowserOutcomePasses,
+  arc4CaptureUiSnapshotComplete,
+  arc4DurableEvidenceComplete,
+  assessArc4BurnStep,
+  assessArc4CapturePendingNoOptimism,
+  assessArc4CapturePrecondition,
+  assessArc4CommittedHit,
+  assessArc4CommittedMiss,
+  assessArc4Exhaustion,
+  assessArc4PublicationConvergence,
+  assessArc4StaleConvergence,
+  assessArc4StorageRefusal,
+} from './arc4-browser-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 /* Direct runs own the checkout lock. The structured-report wrapper owns one
@@ -168,6 +188,84 @@ const SAVE_FIXTURES = JSON.parse(fs.readFileSync(
   path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8',
 )).inputs;
 const VETERAN_RAW = JSON.stringify(SAVE_FIXTURES.veteran_rich);
+const ARC4_PERTAR_SYSTEM_ITEM_IDS = Object.freeze([
+  'jumpdrive', 'array', 'igdrive', 'autoext', 'cscoop',
+]);
+const ARC4_PERTAR_CONTACT_ITEM_IDS = Object.freeze([
+  'earpiece', 'diplobeacon', 'prismpendant', 'rl-mind', 'rl-star',
+]);
+const ARC4_PERTAR_RAW = (() => {
+  const save = JSON.parse(VETERAN_RAW);
+  const replacedItemIds = new Set([
+    ...ARC4_PERTAR_SYSTEM_ITEM_IDS, ...ARC4_PERTAR_CONTACT_ITEM_IDS,
+  ]);
+  save.me = 'Arc 4 Pertar Browser Fixture';
+  save.essence = 100;
+  save.essenceEarned = 100;
+  /* The mapped seed-68 result includes the capped +0.25 capture bonus.
+     Close the source first: no veteran system/contact item or orphan Sol skim
+     cursor may leak into the Pertar-only replacement. Then add the one real
+     travel system and two equipped catalogue items that provide 30 contact
+     points; Main derives both the stage-1 route and capture bonus itself. */
+  save.items = [
+    ...save.items.filter(([id]) => !replacedItemIds.has(id)),
+    ['jumpdrive', 1],
+    ['earpiece', 1],
+    ['diplobeacon', 1],
+  ];
+  const retainedEquip = Object.fromEntries(Object.entries(save.eq ?? {})
+    .filter(([, id]) => !replacedItemIds.has(id)));
+  save.eq = { ...retainedEquip, ears: 'earpiece', necklace: 'diplobeacon' };
+  save.ea = Object.fromEntries(Object.entries(save.ea ?? {})
+    .filter(([slot]) => Object.prototype.hasOwnProperty.call(retainedEquip, slot)));
+  save.codex = [];
+  save.names = [];
+  save.bx = [];
+  save.scout = null;
+  save.conq = [];
+  save.minedw = [];
+  save.mx = [];
+  save.skx = [];
+  save.log = [];
+  save.land = [ARC4_PERTAR_FIXTURE.planet.seed];
+  save.epoch = ARC4_PERTAR_FIXTURE.ecologyEpoch;
+  save.tut = 1;
+  delete save.tsnap;
+  save.view = {
+    type: 'star',
+    gal: {
+      x: ARC4_PERTAR_FIXTURE.galaxy.x,
+      y: ARC4_PERTAR_FIXTURE.galaxy.y,
+      size: 78,
+      sp: 0,
+      tilt: 0.62,
+      rot: 0.5,
+      seed: ARC4_PERTAR_FIXTURE.galaxy.seed,
+      home: true,
+      quasar: false,
+      dwarf: false,
+    },
+    star: {
+      x: ARC4_PERTAR_FIXTURE.publicStar.x,
+      y: ARC4_PERTAR_FIXTURE.publicStar.y,
+      seed: ARC4_PERTAR_FIXTURE.star.seed,
+    },
+  };
+  return JSON.stringify(save);
+})();
+const ARC4_PERTAR_SOURCE_SAVE = JSON.parse(ARC4_PERTAR_RAW);
+if (JSON.stringify(ARC4_PERTAR_SOURCE_SAVE.items) !== JSON.stringify([
+  ['plate', 3], ['lens', 1], ['cell', 2], ['headlamp', 1],
+  ['jumpdrive', 1], ['earpiece', 1], ['diplobeacon', 1],
+]) || JSON.stringify(ARC4_PERTAR_SOURCE_SAVE.eq) !== JSON.stringify({
+  helmet: 'headlamp', ears: 'earpiece', necklace: 'diplobeacon',
+}) || JSON.stringify(ARC4_PERTAR_SOURCE_SAVE.ea) !== JSON.stringify({
+  helmet: { k: 'strike', v: 0.05, forId: 'headlamp' },
+}) || JSON.stringify(ARC4_PERTAR_SOURCE_SAVE.skx) !== '[]'
+  || ARC4_PERTAR_SOURCE_SAVE.asc !== SAVE_FIXTURES.veteran_rich.asc
+  || ARC4_PERTAR_SOURCE_SAVE.asc !== 2) {
+  throw new Error('Arc 4 Pertar replacement source closure drifted');
+}
 const GENUINE_TRAINING_CHECKPOINT = JSON.parse(fs.readFileSync(
   path.join(here, '..', '..', 'baseline-v1.8.9', 'training-restart-fixture.json'), 'utf8',
 )).snapshot;
@@ -702,6 +800,19 @@ const dispatchKeyPress = async (session, key, code = key, modifiers = 0) => {
 };
 
 const fails = [];
+const ARC4_SLICE_LEDGER_STAGES = Object.freeze([
+  'precondition',
+  'pending-no-optimism',
+  'hit',
+  'storage-refusal',
+  'stale-convergence',
+  'miss',
+  'burn-down',
+  'disabled-suppression',
+  'publication-convergence',
+]);
+const ARC4_SLICE_LEDGER_EXPECTED_JSON = '{"schema":"cf-v2-slice-arc4-ledger/v1","stages":["precondition","pending-no-optimism","hit","storage-refusal","stale-convergence","miss","burn-down","disabled-suppression","publication-convergence"],"burnSteps":14,"recoveryClaimed":false,"ok":true}';
+let arc4SliceLedger = null;
 const canonicalJson = (value) => {
   if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
   if (value && typeof value === 'object') {
@@ -4361,12 +4472,32 @@ try {
      9 categories / 43 authored stable IDs / 41 legacy-live topics, with
      capability-aware v2 copy, search, cross-links and the complete release
      history. Import remains reachable through Settings. */
+  const guideInventoryExpression = (mutation = null) => `(()=>{const panel=document.getElementById('guidepanel'),
+    body=panel?.querySelector('[data-sel="guide-body"]'),categoryIds=body?[...body.querySelectorAll(':scope > .guide-category[data-guide-category]')]
+      .map((row)=>row.getAttribute('data-guide-category')).filter(Boolean):[],topics=[];let mutated=false;
+    for(const categoryId of categoryIds){const category=[...body.querySelectorAll(':scope > .guide-category[data-guide-category]')]
+      .find((row)=>row.getAttribute('data-guide-category')===categoryId);category?.click();
+      const rows=[...body.querySelectorAll(':scope > [data-sel="guide-topic"][data-guide-topic]')];
+      if(${JSON.stringify(mutation)}==='partial-to-unavailable'&&!mutated){const row=rows.find((item)=>item.getAttribute('data-guide-availability')==='partial');
+        if(row){row.setAttribute('data-guide-availability','unavailable');mutated=true;}}
+      topics.push(...rows.map((row)=>({id:row.getAttribute('data-guide-topic'),availability:row.getAttribute('data-guide-availability')})));
+      body.querySelector(':scope > [data-guide-home]')?.click();}
+    const topicIds=topics.map((topic)=>topic.id),availability=topics.map((topic)=>topic.availability);
+    return {categoryCount:categoryIds.length,topicCount:topics.length,uniqueTopicCount:new Set(topicIds).size,
+      partialCount:availability.filter((value)=>value==='partial').length,
+      unavailableCount:availability.filter((value)=>value==='unavailable').length,
+      availableCount:availability.filter((value)=>value==='available').length,
+      invalidAvailabilityCount:availability.filter((value)=>!['available','partial','unavailable'].includes(value)).length,
+      mutated,topicIds};})()`;
   const guideCheck = `(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel');
     const categories=panel?[...panel.querySelectorAll('[data-guide-category]')]:[];
     const builds=[...document.querySelectorAll('[data-sel="guide-build"]')];
-    const text=panel?.textContent||'';
+    const text=panel?.textContent||'',inventory=${guideInventoryExpression()};
     return { open:S.api.state().panelOpen==='guide'&&!!panel&&panel.style.display!=='none',
       categoryCount:categories.length,categoryIds:categories.map((row)=>row.getAttribute('data-guide-category')),
+      topicCount:inventory.topicCount,uniqueTopicCount:inventory.uniqueTopicCount,
+      partialCount:inventory.partialCount,unavailableCount:inventory.unavailableCount,
+      availableCount:inventory.availableCount,invalidAvailabilityCount:inventory.invalidAvailabilityCount,
       search:!!panel?.querySelector('#guidesearch'),releases:!!panel?.querySelector('[data-guide-releases]'),
       buildCount:builds.length,buildInsideGuide:builds.length===1&&!!panel?.contains(builds[0]),
       buildText:(builds[0]?.textContent||'').trim(),releasePending:S.api.state().releasePending,
@@ -4374,6 +4505,9 @@ try {
   await evalIn(`(()=>{ const button=document.getElementById('dockguide'); button.focus(); button.click(); return true; })()`);
   const guide = await evalIn(guideCheck);
   if (!guide.open || guide.categoryCount !== 9 || new Set(guide.categoryIds).size !== 9
+    || guide.topicCount !== 41 || guide.uniqueTopicCount !== 41
+    || guide.partialCount !== 24 || guide.unavailableCount !== 17
+    || guide.availableCount !== 0 || guide.invalidAvailabilityCount !== 0
     || !guide.search || !guide.releases || guide.buildCount !== 1 || !guide.buildInsideGuide
     || !/Celestial Frontier v2\.0 development/i.test(guide.buildText)
     || guide.releasePending !== null || !guide.seen || guide.stale) {
@@ -4395,6 +4529,24 @@ try {
     const result=${guideCheck}; marker.remove(); return result; })()`);
   if (!guideStaleCtl.stale) {
     fails.push('GUIDE CONTROL FAILED — injected stale double-tap copy stayed green: ' + JSON.stringify(guideStaleCtl));
+  }
+  const guideAvailabilityCtl = await evalIn(`(()=>{const mutated=${guideInventoryExpression('partial-to-unavailable')},
+    restored=${guideCheck};return {mutated,restored};})()`);
+  if (guideAvailabilityCtl.mutated?.mutated !== true
+    || guideAvailabilityCtl.mutated?.topicCount !== 41
+    || guideAvailabilityCtl.mutated?.uniqueTopicCount !== 41
+    || guideAvailabilityCtl.mutated?.partialCount !== 23
+    || guideAvailabilityCtl.mutated?.unavailableCount !== 18
+    || guideAvailabilityCtl.mutated?.availableCount !== 0
+    || guideAvailabilityCtl.mutated?.invalidAvailabilityCount !== 0
+    || guideAvailabilityCtl.restored?.topicCount !== 41
+    || guideAvailabilityCtl.restored?.uniqueTopicCount !== 41
+    || guideAvailabilityCtl.restored?.partialCount !== 24
+    || guideAvailabilityCtl.restored?.unavailableCount !== 17
+    || guideAvailabilityCtl.restored?.availableCount !== 0
+    || guideAvailabilityCtl.restored?.invalidAvailabilityCount !== 0) {
+    fails.push('GUIDE INVENTORY CONTROL FAILED — exact 41-topic 24-partial/17-unavailable capability inventory did not reject one status mutation and restore: '
+      + JSON.stringify(guideAvailabilityCtl));
   }
   const guideSearch = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='landing';
     input.dispatchEvent(new Event('input',{bubbles:true})); const rows=[...document.querySelectorAll('#guidepanel [data-sel=guide-topic]')];
@@ -4445,10 +4597,13 @@ try {
   }
   const arc3GuideSpecs = [
     { id: 'survey', title: 'Survey cards', missingAnchor: 'selection is navigation and inspection', required: [
-      'selection is navigation and inspection', 'does not spend a resource, discover life, capture a species, or authorize extraction',
+      'selection is navigation and inspection', 'does not spend a resource, catalogue life, make a capture attempt, or authorize extraction',
+      'landing still catalogues nothing', 'at-most-eight-row strip is only a preview',
+      'Tame, Scavenge, and Sample', 'separate finite actions', 'choose uniformly', 'full biosphere',
       'separate grounded mineral reveal and its finite Mine action', 'not itself a mining receipt',
       'current Survey card does not yet paint those orbital mineral rows',
-    ], contradictions: ['Survey authorizes mining and captures a species.'] },
+    ], contradictions: ['Survey catalogues life and makes a capture attempt.',
+      'The current Survey card now renders every orbital mineral.'] },
     { id: 'mining', title: 'Mining & the Cargo hold', missingAnchor: 'exact pulls remaining', required: [
       'lifeless, non-Earth world', 'exact pulls remaining', 'reveal is inspection only', 'separate durable action',
       'ordinary, rich-strike, cosmic, and exceptional results into Cargo', 'Worked out',
@@ -4459,10 +4614,41 @@ try {
       'unguarded remnant costs exactly 3 HP', 'HP of 4 or lower blocks the unsafe attempt',
       'does not bank a mining Charter goal', 'no wall-clock recharge',
     ], contradictions: ['A remnant skim can never harm HP, and corona passes are unlimited.'] },
-    { id: 'stardust', title: 'Stardust', missingAnchor: 'No current v2 action earns Stardust', required: [
+    { id: 'stardust', title: 'Stardust', missingAnchor: 'No other current v2 action earns Stardust', required: [
       'preserves its imported/current Stardust', 'Deep Scanners purchase or eligible fixed Fabricator recipe spends its stated Stardust',
-      'same durable transaction as the result', 'No current v2 action earns Stardust',
-    ], contradictions: ['Survey earns Stardust on every world.'] },
+      'same durable transaction as the result',
+      'first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus',
+      'same durable transaction as its page and ownership', 'result shows the exact amount',
+      'miss and every later-world or later-cycle repeat earn none', 'No other current v2 action earns Stardust',
+      'Charter rewards, passive gain', 'remain unavailable',
+    ], contradictions: ['Survey earns Stardust on every world.',
+      'Mine earns Stardust on every world.', 'Skim earns Stardust on every star.',
+      'A later-cycle repeat earns a new Rare Find reward.'] },
+    { id: 'discover', title: 'Discovering life', missingAnchor: 'choose uniformly from every eligible species for that action in the full biosphere', required: [
+      'Landing on a living world reveals its biosphere roster', 'does not add a Compendium page',
+      'at most eight rows as a preview', 'choose uniformly from every eligible species for that action in the full biosphere',
+      'including species outside that preview', 'no species row is a target',
+      'Tame chooses fauna and a hit adds one owned creature', 'Scavenge chooses flora or fungi',
+      'Sample chooses microbes', 'either hit adds one specimen lot, never a living companion',
+      'selected species and its exact chance are shown with the result',
+      'three actions share one finite Biosphere Yield', 'Every attempt spends 1 Yield on a hit or miss',
+      'successful species leaves that action’s eligible pool', 'rest of the world’s current cycle',
+      'miss stays eligible', 'Empty, worked-out, or protected-save refusals roll nothing and spend nothing',
+      'Busy, stale, and failed-write outcomes publish nothing and leave saved Yield and draw counters unchanged',
+      'next 20-minute active-play cycle', 'closing the game or moving the wall clock does not advance recovery',
+      'first successful observation of a species adds its one Compendium page plus the creature or specimen lot',
+      'later-world or later-cycle repeat adds another creature or lot without another page or first-find reward',
+      'first successful Legendary-or-better observation earns its one Rare Find Stardust bonus',
+      'result shows the exact amount', 'miss adds no page, creature, specimen, or Stardust',
+      'Capture never banks the Charter’s separate bioscan milestone', 'writer remains unavailable',
+      'Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable',
+    ], contradictions: [
+      'The player chooses a visible species row to target.', 'Sample creates a living companion.',
+      'Tame chooses only from the visible preview.',
+      'Only a hit spends Yield.', 'Biosphere Yield is separate for each action.',
+      'The Yield pool recovers while the game is closed.',
+      'A later-cycle repeat earns a new Rare Find reward.', 'Capture advances the Charter bioscan milestone.',
+    ] },
     { id: 'research', title: 'Research & ships', missingAnchor: 'Research Bench lists exactly six canonical rows', required: [
       'Engineering & Shipyard', 'Research Bench lists exactly six canonical rows', 'Deep Scanners is the only current purchase',
       'current Survey card does not yet render those orbital rows', 'other five', 'visible but disabled',
@@ -4499,7 +4685,7 @@ try {
     text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
     required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),
-    contradictory=/Survey authorizes mining|captures a species|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|Survey earns Stardust|All six research rows can be purchased|Research banks Charter fabrication credit|fully[- ]?exceptional slotted craft(?:ing)? is now available|authored affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
+    contradictory=/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)|current Survey card (?:now )?(?:renders|shows|paints)[^.!?]{0,80}(?:orbit|mineral)|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|(?:Mine|Skim|Survey)[^.!?]{0,80}earns? Stardust|(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)|(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)|(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)|miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)|(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)|Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)|(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)|(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)|(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,96}\\bnever\\b)[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan)|(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)|All six research rows can be purchased|Research banks Charter fabrication credit|fully[- ]?exceptional slotted craft(?:ing)? is now available|authored affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
     return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
       title,status,missing,contradictory,text};})()`;
   for (const spec of arc3GuideSpecs) {
@@ -4532,14 +4718,21 @@ try {
       'complete genome—not only the displayed name or seed—owns visual identity',
       'Planetside shares the same bounded thumbnail lease path',
       'thumbnails are released when their visible owner leaves',
-      'Discovery, capture, husbandry, renaming, and other collection-writing actions remain unavailable',
+      'Compendium itself remains a read-only browser',
+      'successful first Planetside capture can add one page',
+      'Tame also adds an owned fauna creature', 'Scavenge and Sample add specimen lots',
+      'Later-world or later-cycle successes add another creature or lot without duplicating the page',
+      'Feeding, breeding, husbandry, renaming, and other Compendium-row actions remain unavailable',
     ] },
     { id: 'specimen', title: 'Reading a specimen card', required: [
       'exact 440px portrait', 'same complete-genome identity as its exact 132px list thumbnail',
       '440px image is reserved for this detail rather than the list or Planetside',
       'Back returns to the saved list position and restores focus to the same logical row',
       'Close returns focus to the exact Compendium opener', 'profile remains read-only',
-      'Capture, feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry or collection-writing outcomes are deliberately absent',
+      'Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row',
+      'Tame hit adds one owned fauna creature',
+      'Scavenge or Sample adds one specimen lot and never a living companion',
+      'Feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry remain unavailable',
     ] },
   ];
   const renderedCompendiumGuideCheck = (spec) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
@@ -4550,7 +4743,9 @@ try {
       ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(text)
       ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(text)
       ||/(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i.test(text)
-      ||/(?:capture|feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i.test(text);
+      ||/(?:capture|feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i.test(text)
+      ||/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(text)
+      ||/(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i.test(text);
     return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
       title,status,missing,contradictory,text};})()`;
   const renderCompendiumGuideTopic = async (spec) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
@@ -4558,24 +4753,36 @@ try {
     document.querySelector('[data-guide-topic=${JSON.stringify(spec.id)}]')?.click();return ${renderedCompendiumGuideCheck(spec)};})()`);
   const kingdomsGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[0]);
   const kingdomsGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),paragraph=article?.querySelector('p'),
-    prior=paragraph?.innerHTML||'',marker=document.createElement('p');let stale=null,contradiction=null;
+    captureParagraph=[...(article?.querySelectorAll('p')??[])].find((node)=>(node.textContent||'').includes('successful first Planetside capture can add one page')),
+    prior=paragraph?.innerHTML||'',capturePrior=captureParagraph?.innerHTML||'',marker=document.createElement('p');let stale=null,captureMissing=null,contradiction=null,rowTarget=null;
     if(paragraph){paragraph.textContent='The Compendium reads the expedition’s discovered life. Choose a row to inspect the deterministic portrait.';
       stale=${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])};paragraph.innerHTML=prior;}
+    if(captureParagraph){captureParagraph.innerHTML=capturePrior.replace('successful first Planetside capture can add one page','capture write boundary omitted');
+      captureMissing=${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])};captureParagraph.innerHTML=capturePrior;}
     marker.textContent='The Compendium mounts all 1,500 portraits at once.';article?.appendChild(marker);
     contradiction=${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])};marker.remove();
-    const restored=!!paragraph&&paragraph.innerHTML===prior&&${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])}.ok;
-    return {ok:stale?.ok===false&&stale?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true&&restored,
-      stale,contradiction,restored};})()`);
+    marker.textContent='The player chooses a Compendium row to target.';article?.appendChild(marker);
+    rowTarget=${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])};marker.remove();
+    const restored=!!paragraph&&paragraph.innerHTML===prior&&!!captureParagraph&&captureParagraph.innerHTML===capturePrior
+      &&${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])}.ok;
+    return {ok:stale?.ok===false&&stale?.missing?.length>0
+      &&captureMissing?.ok===false&&captureMissing?.missing?.includes('successful first Planetside capture can add one page')
+      &&contradiction?.ok===false&&contradiction?.contradictory===true
+      &&rowTarget?.ok===false&&rowTarget?.contradictory===true&&restored,
+      stale,captureMissing,contradiction,rowTarget,restored};})()`);
   const specimenGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[1]);
   const specimenGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),paragraph=article?.querySelector('p'),
-    prior=paragraph?.innerHTML||'',marker=document.createElement('p');let stale=null,contradiction=null;
+    prior=paragraph?.innerHTML||'',marker=document.createElement('p');let stale=null,contradiction=null,rowTarget=null;
     if(paragraph){paragraph.textContent='Select a Compendium row to open its current specimen detail and deterministic portrait.';
       stale=${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])};paragraph.innerHTML=prior;}
     marker.textContent='Planetside renders a 440px portrait for every row, and thumbnail leases remain pinned after Close.';article?.appendChild(marker);
     contradiction=${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])};marker.remove();
+    marker.textContent='The player selects this Compendium row to target.';article?.appendChild(marker);
+    rowTarget=${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])};marker.remove();
     const restored=!!paragraph&&paragraph.innerHTML===prior&&${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])}.ok;
-    return {ok:stale?.ok===false&&stale?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true&&restored,
-      stale,contradiction,restored};})()`);
+    return {ok:stale?.ok===false&&stale?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true
+      &&rowTarget?.ok===false&&rowTarget?.contradictory===true&&restored,
+      stale,contradiction,rowTarget,restored};})()`);
   if (!kingdomsGuide.ok || !specimenGuide.ok) {
     fails.push('GUIDE Compendium virtualization/art/focus contract did not render in Kingdoms and Specimen: '
       + JSON.stringify({ kingdomsGuide, specimenGuide }));
@@ -4746,8 +4953,12 @@ try {
     fails.push('GUIDE release history did not preserve draft/legacy separation and full inventory: ' + JSON.stringify(releaseGuide));
   }
   const releaseDraftCheck = `(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),article=panel?.querySelector('.guide-topic');
-    const headings=article?[...article.querySelectorAll('h5')].map((row)=>row.textContent?.trim()||''):[];
-    const bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((row)=>row.textContent?.trim()||'');
+    const headingNodes=article?[...article.querySelectorAll('h5')]:[],headings=headingNodes.map((row)=>row.textContent?.trim()||'');
+    const bulletNodes=article?[...article.querySelectorAll('li')]:[],bulletRaw=bulletNodes.map((row)=>row.textContent||''),
+      bullets=bulletRaw.map((value)=>value.trim()),sectionBulletCounts=headingNodes.map((heading)=>
+        heading.nextElementSibling?.matches('ul')?[...heading.nextElementSibling.children].filter((row)=>row.matches('li')).length:-1),
+      sectionsPopulated=sectionBulletCounts.length===5&&sectionBulletCounts.every((count)=>count>0),
+      uniqueBullets=new Set(bullets).size===bullets.length;
     const text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),title=article?.querySelector('[data-guide-heading]')?.textContent||'';
     const unnegated=${hasUnnegatedSentenceClaim};
     const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
@@ -4758,12 +4969,13 @@ try {
       coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
       worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
       shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
+      capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
       hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
       headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
       firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),artHeading=headingFor(art),
-      shipyardHeading=headingFor(shipyard),hdSurfaceHeading=headingFor(hdSurface),
+      shipyardHeading=headingFor(shipyard),captureHeading=headingFor(capture),hdSurfaceHeading=headingFor(hdSurface),
       charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
-      trainingText=training?.textContent||'',artText=art?.textContent||'',shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
+      trainingText=training?.textContent||'',artText=art?.textContent||'',shipyardText=shipyard?.textContent||'',captureText=capture?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
       trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
@@ -4810,7 +5022,6 @@ try {
       shipyardContradiction=/all six Research rows can (?:currently )?be purchased/i.test(shipyardText)
         ||/current Survey card (?:now )?(?:renders?|paints?|shows?)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
         ||/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i.test(shipyardText)
-        ||/(?:Capture|biosphere discovery)[^.!?]{0,48}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
         ||unnegated(shipyardText,/(?:reward|cost|Charter tick|optimistic panel change)[^.!?]{0,80}publishes? before[^.!?]{0,48}(?:transaction )?commit/i)
         ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
         ||/authored affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
@@ -4827,9 +5038,39 @@ try {
         &&shipyardText.includes('Fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
         &&shipyardText.includes('Built permanent systems change the real ship and star reach')
         &&shipyardText.includes('Remnant skim damage is previewed before it can spend HP')
-        &&shipyardText.includes('Engineering may spend preserved Stardust but cannot earn it')
+        &&shipyardText.includes('Engineering can spend preserved Stardust but does not earn it')
         &&shipyardText.includes('no reward, cost, Charter tick, or optimistic panel change publishes before the one receipt-bearing transaction commits')
-        &&shipyardText.includes('Capture and biosphere discovery remain unavailable')&&!shipyardContradiction,
+        &&!shipyardContradiction,
+      captureContradiction=/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(captureText)
+        ||/(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i.test(captureText)
+        ||/(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)/i.test(captureText)
+        ||/miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)/i.test(captureText)
+        ||/(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)/i.test(captureText)
+        ||/Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)/i.test(captureText)
+        ||/(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)/i.test(captureText)
+        ||/(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)/i.test(captureText)
+        ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,96}\\bnever\\b)[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan)/i.test(captureText)
+        ||/(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)/i.test(captureText),
+      captureContract=captureHeading==='Gameplay'
+        &&captureText.includes('Tame chooses uniformly from every eligible fauna in the full biosphere')
+        &&captureText.includes('Scavenge from eligible flora and fungi')
+        &&captureText.includes('Sample from eligible microbes')
+        &&captureText.includes('not only the at-most-eight-row Planetside preview')
+        &&captureText.includes('All three share one finite Biosphere Yield')
+        &&captureText.includes('every attempt spends 1 on a hit or miss')
+        &&captureText.includes('next 20-minute active-play cycle')
+        &&captureText.includes('never from closing the game or moving the wall clock')
+        &&captureText.includes('successful species leaves that action’s pool for the rest of the cycle')
+        &&captureText.includes('miss stays eligible')
+        &&captureText.includes('first successful observation adds one Compendium page plus one owned creature for Tame or one specimen lot for Scavenge and Sample')
+        &&captureText.includes('Legendary-or-better first find also awards its one Rare Find Stardust bonus')
+        &&captureText.includes('exact amount shown in the result')
+        &&captureText.includes('later-world or later-cycle repeat adds another creature or lot without another page or first-find reward')
+        &&captureText.includes('miss adds none of them')
+        &&captureText.includes('Scavenge and Sample never create living companions')
+        &&captureText.includes('Capture never banks the Charter’s separate bioscan milestone')
+        &&captureText.includes('Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
+        &&!captureContradiction,
       hdSurfaceContract=hdSurfaceHeading==='Under the Hood'
         &&hdSurfaceText.includes('named HD surface-planet texture attachment')
         &&hdSurfaceText.includes('exact surface generation and planet identity')
@@ -4844,15 +5085,17 @@ try {
       ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-      ||/(?:Capture|biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/(?:biosphere discovery|Discover Life|feeding|renaming|Field Scouts?|duels?|breeding|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
     return {title,identity:title.includes('v2.0 · A New Foundation'),
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
-      populated:bullets.length===53&&bullets.every((bullet)=>bullet.length>0),
+      sectionBulletCounts,sectionsPopulated,uniqueBullets,
+      populated:bullets.length===54&&sectionsPopulated&&uniqueBullets
+        &&bulletRaw.every((bullet)=>bullet.length>0&&bullet===bullet.trim()),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
       complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
-        &&shipyardContract&&hdSurfaceContract
+        &&shipyardContract&&captureContract&&hdSurfaceContract
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
@@ -4861,13 +5104,15 @@ try {
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
       charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
-      workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,hdSurfaceHeading,hdSurfaceContract,overclaim,
-      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
+      workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,
+      captureHeading,captureContract,captureContradiction,hdSurfaceHeading,hdSurfaceContract,overclaim,
+      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!captureContradiction
+        &&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
   const releaseDraft = await evalIn(releaseDraftCheck);
   if (!releaseDraft.identity || releaseDraft.status !== 'draft'
-    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 53 || !releaseDraft.complete
+    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 54 || !releaseDraft.complete
     || !releaseDraft.honest || !releaseDraft.authority || releaseDraft.releasePending !== releaseBaseline.releasePending
     || releaseDraft.rnSeen !== releaseBaseline.rnSeen) {
     fails.push('GUIDE v2.0 development bulletin is incomplete or changed shipped-release state: '
@@ -4880,11 +5125,42 @@ try {
     fails.push('GUIDE RELEASE CONTROL FAILED — reordering two v2.0 categories stayed canonical: ' + JSON.stringify(releaseOrderCtl));
   }
   const releaseInventoryCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][12];
-    if(!row)return {populated:true,error:'missing control row'};const parent=row.parentNode,next=row.nextSibling;row.remove();const result=${releaseDraftCheck};
-    parent.insertBefore(row,next);return result; })()`);
-  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 52) {
-    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet did not produce the exact 52-row incomplete inventory: '
+    if(!row)return {removed:{populated:true},restored:{populated:false},error:'missing control row'};
+    const parent=row.parentNode,next=row.nextSibling;row.remove();const removed=${releaseDraftCheck};
+    parent.insertBefore(row,next);const restored=${releaseDraftCheck};return {removed,restored}; })()`);
+  if (releaseInventoryCtl.removed?.populated || releaseInventoryCtl.removed?.bulletCount !== 53
+    || releaseInventoryCtl.restored?.bulletCount !== 54 || !releaseInventoryCtl.restored?.populated
+    || !releaseInventoryCtl.restored?.sectionsPopulated || !releaseInventoryCtl.restored?.uniqueBullets) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet did not produce the exact 53-row incomplete inventory: '
       + JSON.stringify(releaseInventoryCtl));
+  }
+  const releaseDuplicateCtl = await evalIn(`(()=>{const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+    source=rows[0],target=rows[1];if(!source||!target||source===target)return {duplicate:{populated:true},restored:{populated:false},error:'missing distinct duplicate controls'};
+    const prior=target.innerHTML;target.innerHTML=source.innerHTML;const duplicate=${releaseDraftCheck};
+    target.innerHTML=prior;const restored=${releaseDraftCheck};return {duplicate,restored};})()`);
+  if (releaseDuplicateCtl.duplicate?.bulletCount !== 54
+    || releaseDuplicateCtl.duplicate?.uniqueBullets !== false
+    || releaseDuplicateCtl.duplicate?.populated !== false
+    || releaseDuplicateCtl.restored?.bulletCount !== 54
+    || releaseDuplicateCtl.restored?.uniqueBullets !== true
+    || releaseDuplicateCtl.restored?.populated !== true) {
+    fails.push('GUIDE RELEASE DUPLICATE CONTROL FAILED — a constant-count duplicate bullet stayed populated or exact restoration failed: '
+      + JSON.stringify(releaseDuplicateCtl));
+  }
+  const releaseEmptySectionCtl = await evalIn(`(()=>{const lists=[...document.querySelectorAll('#guidepanel .guide-topic h5 + ul')],
+    source=lists.find((list)=>list.children.length>0),target=lists.find((list)=>list!==source&&list.children.length>0);
+    if(!source||!target)return {empty:{populated:true},restored:{populated:false},error:'missing section controls'};
+    const moved=[...source.children],anchor=target.firstChild;for(const row of moved)target.insertBefore(row,anchor);
+    const empty=${releaseDraftCheck};for(const row of moved)source.appendChild(row);const restored=${releaseDraftCheck};
+    return {empty,restored};})()`);
+  if (releaseEmptySectionCtl.empty?.bulletCount !== 54
+    || releaseEmptySectionCtl.empty?.sectionsPopulated !== false
+    || releaseEmptySectionCtl.empty?.populated !== false
+    || releaseEmptySectionCtl.restored?.bulletCount !== 54
+    || releaseEmptySectionCtl.restored?.sectionsPopulated !== true
+    || releaseEmptySectionCtl.restored?.populated !== true) {
+    fails.push('GUIDE RELEASE EMPTY-SECTION CONTROL FAILED — a constant-count empty release section stayed populated or exact restoration failed: '
+      + JSON.stringify(releaseEmptySectionCtl));
   }
   const releaseShipyardCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
     .find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||''));
@@ -4892,6 +5168,8 @@ try {
     const prior=row.textContent;
     row.textContent=prior.replace('Only Deep Scanners can currently be purchased','Research purchase boundary removed');
     const missing=${releaseDraftCheck};
+    row.textContent=prior.replace('Engineering can spend preserved Stardust but does not earn it','Engineering Stardust boundary omitted');
+    const stardustMissing=${releaseDraftCheck};
     row.textContent=prior.replace('and no reward, cost, Charter tick, or optimistic panel change publishes before',
       'and reward, cost, Charter tick, or optimistic panel change publishes before');
     const publicationChanged=row.textContent!==prior,publicationPolarity=${releaseDraftCheck};
@@ -4900,9 +5178,10 @@ try {
       'Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.',
       'Sockets are now available.','Vendors are now available.'],contradictions=[];
     for(const copy of claims){row.textContent=prior+' '+copy;const result=${releaseDraftCheck};contradictions.push({copy,result});}
-    row.textContent=prior;const restored=${releaseDraftCheck};return {missing,publicationChanged,publicationPolarity,contradictions,
+    row.textContent=prior;const restored=${releaseDraftCheck};return {missing,stardustMissing,publicationChanged,publicationPolarity,contradictions,
       restored:restored.shipyardContract===true&&restored.honest===true}; })()`);
   if (releaseShipyardCopyCtl.missing?.complete || releaseShipyardCopyCtl.missing?.shipyardContract
+    || releaseShipyardCopyCtl.stardustMissing?.complete || releaseShipyardCopyCtl.stardustMissing?.shipyardContract
     || !releaseShipyardCopyCtl.publicationChanged || releaseShipyardCopyCtl.publicationPolarity?.complete !== false
     || releaseShipyardCopyCtl.publicationPolarity?.shipyardContract !== false
     || releaseShipyardCopyCtl.publicationPolarity?.honest !== false
@@ -4912,6 +5191,30 @@ try {
       || !row.result?.shipyardContradiction) || !releaseShipyardCopyCtl.restored) {
     fails.push('GUIDE RELEASE ENGINEERING CONTROL FAILED — missing/contradictory Arc 3 truth stayed complete or failed to restore: '
       + JSON.stringify(releaseShipyardCopyCtl));
+  }
+  const releaseCaptureCopyCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+    row=rows.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
+    wrongSection=rows.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||''))?.parentNode;
+    if(!row||!wrongSection)return {missing:{complete:true,captureContract:true},contradictions:[],placement:{captureContract:true},restored:false,error:'missing Capture release row'};
+    const prior=row.textContent,parent=row.parentNode,next=row.nextSibling;
+    row.textContent=prior.replace('Tame chooses uniformly from every eligible fauna in the full biosphere','capture selection boundary removed');
+    const missing=${releaseDraftCheck};row.textContent=prior;
+    const claims=['Tame targets the selected preview row.','Tame chooses only from the visible preview.',
+      'Biosphere Yield is separate for each action.'],contradictions=[];
+    for(const copy of claims){row.textContent=prior+' '+copy;const result=${releaseDraftCheck};contradictions.push({copy,result});}
+    row.textContent=prior;
+    wrongSection.appendChild(row);const placement=${releaseDraftCheck};parent.insertBefore(row,next);
+    const restored=${releaseDraftCheck};return {missing,contradictions,placement,
+      restored:row.textContent===prior&&row.parentNode===parent&&restored.captureContract===true&&restored.honest===true};})()`);
+  if (releaseCaptureCopyCtl.missing?.complete || releaseCaptureCopyCtl.missing?.captureContract
+    || releaseCaptureCopyCtl.missing?.captureContradiction
+    || releaseCaptureCopyCtl.contradictions?.length !== 3
+    || releaseCaptureCopyCtl.contradictions.some(({ result }) => result?.complete
+      || result?.honest || result?.captureContract || !result?.captureContradiction)
+    || releaseCaptureCopyCtl.placement?.complete || releaseCaptureCopyCtl.placement?.captureContract
+    || releaseCaptureCopyCtl.placement?.captureHeading === 'Gameplay' || !releaseCaptureCopyCtl.restored) {
+    fails.push('GUIDE RELEASE CAPTURE CONTROL FAILED — missing, contradictory, or non-Gameplay capture truth stayed current: '
+      + JSON.stringify(releaseCaptureCopyCtl));
   }
   const releaseHdSurfaceCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
     .find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||''));
@@ -5065,21 +5368,25 @@ try {
   }
   const releaseOverclaimCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][1];
     if(!row)return {truthful:[],unavailable:[],restored:false,error:'missing overclaim control row'};const prior=row.textContent,
-      truthfulClaims=['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Exploration audio is now live.'],
+      truthfulClaims=['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.',
+        'Capture is now playable.','Exploration audio is now live.'],
       unavailableClaims=['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
         'Disconnected Fabricator outputs are now playable.','Fully-exceptional slotted craft is now playable.',
         'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Item upgrades are now live.',
-        'Sockets are now available.','Vendors are now live.','Capture is now playable.','Discover Life is now playable.',
-        'Breeding is now playable.','Creature combat is now playable.'],truthful=[],unavailable=[];
+        'Sockets are now available.','Vendors are now live.','Discover Life is now playable.',
+        'Breeding is now playable.','Creature combat is now playable.','Feeding is now playable.',
+        'Renaming is now available.','Field Scouts are now live.','Duels are now playable.',
+        'Passive evolution is now available.','Companion assignment is now live.',
+        'Missions are now playable.'],truthful=[],unavailable=[];
     for(const copy of truthfulClaims){row.textContent=prior+' '+copy;truthful.push({copy,result:${releaseDraftCheck}});}
     for(const copy of unavailableClaims){row.textContent=prior+' '+copy;unavailable.push({copy,result:${releaseDraftCheck}});}
     row.textContent=prior;const restored=${releaseDraftCheck};return {truthful,unavailable,restored}; })()`);
-  if (releaseOverclaimCtl.truthful?.length !== 3
+  if (releaseOverclaimCtl.truthful?.length !== 4
     || releaseOverclaimCtl.truthful.some((row) => !row.result?.complete || !row.result?.honest || row.result?.overclaim)
-    || releaseOverclaimCtl.unavailable?.length !== 13
+    || releaseOverclaimCtl.unavailable?.length !== 19
     || releaseOverclaimCtl.unavailable.some((row) => !row.result?.complete || row.result?.honest || !row.result?.overclaim)
     || !releaseOverclaimCtl.restored?.complete || !releaseOverclaimCtl.restored?.honest) {
-    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — live Mining/fixed crafting went red, an unavailable claim stayed green, or copy failed to restore: '
+    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — live Mining/fixed crafting/Capture went red, an unavailable claim stayed green, or copy failed to restore: '
       + JSON.stringify(releaseOverclaimCtl));
   }
   const releaseAuthorityCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,prior=S.api.state;let result;
@@ -8430,6 +8737,1650 @@ try {
         publicationReceiptControl, publicationAtomicControlsRejectedSpecifically,
         publicationFaultControls, publicationFaultControlsIsolated,
         publicationHoldUiControlsIsolated }));
+  }
+
+  /* ARC 4 CAPTURE. One full replacement boots the exact Pertar source star,
+     lands through Main's verb-only route, and owns the resulting surface with
+     a preload-supplied F4 seed of 68. The seed fixture is the only entropy
+     seam; every capture itself begins at a real native button and Main
+     receives only its opaque verb. Raw verdicts come from one readonly
+     transaction over all v5 rows, all 18 ownership namespaces, F4 and
+     receipts. */
+  const arc4SeedPreloadSource = `(()=>{const native=globalThis.crypto.getRandomValues.bind(globalThis.crypto),
+    witness={schema:'cf-v2-slice-arc4-seed-fixture/v1',seed:68,seedCalls:0,nativeFallbackCalls:0};
+    Object.defineProperty(globalThis.crypto,'getRandomValues',{configurable:true,value:(value)=>{
+      if(value instanceof Uint32Array&&value.length===1&&witness.seedCalls===0){witness.seedCalls++;
+        value[0]=witness.seed;return value}witness.nativeFallbackCalls++;return native(value)}});
+    globalThis.__cfArc4SeedFixture=witness})()`;
+  const arc4PertarGalaxyKey = ARC4_PERTAR_FIXTURE.worldKey.slice(
+    0, ARC4_PERTAR_FIXTURE.worldKey.indexOf('|s:'),
+  );
+  const arc4PertarStarKey = ARC4_PERTAR_FIXTURE.worldKey.slice(
+    0, ARC4_PERTAR_FIXTURE.worldKey.lastIndexOf('|p:'),
+  );
+  const arc4PertarSavedStarView = JSON.parse(ARC4_PERTAR_RAW).view;
+  const arc4PertarSavedPlanetView = Object.freeze({
+    ...arc4PertarSavedStarView,
+    type: 'planet',
+    pseed: ARC4_PERTAR_FIXTURE.planet.seed,
+  });
+  const arc4PertarSourceRouteExact = (state) => state?.mode === 'system'
+    && state?.gal === ARC4_PERTAR_FIXTURE.galaxy.seed
+    && state?.galX === ARC4_PERTAR_FIXTURE.galaxy.x
+    && state?.galY === ARC4_PERTAR_FIXTURE.galaxy.y
+    && state?.star === ARC4_PERTAR_FIXTURE.publicStar.seed
+    && state?.starX === ARC4_PERTAR_FIXTURE.publicStar.x
+    && state?.starY === ARC4_PERTAR_FIXTURE.publicStar.y
+    && state?.planet === null && state?.planetOrdinal === null
+    && state?.navGalaxyKey === arc4PertarGalaxyKey
+    && state?.navStarKey === arc4PertarStarKey && state?.navWorldKey === null
+    && state?.cardOpen === false && renderedSceneMatchesNav(state)
+    && state?.renderedScene?.mode === 'system'
+    && state?.renderedScene?.galaxyKey === arc4PertarGalaxyKey
+    && state?.renderedScene?.starKey === arc4PertarStarKey
+    && state?.renderedScene?.worldKey === null;
+  const arc4PertarCharterStageExact = (state) => state?.stage === 1
+    && state?.shipVisual?.chassisStage === 1;
+  const arc4PertarShipOwnershipExact = (state) => {
+    const ship = state?.shipVisual;
+    return ship?.provenance === 'owned-items'
+      && canonicalJson(ship?.installedSystemIds) === canonicalJson(['jumpdrive'])
+      && canonicalJson(ship?.hardpoints) === canonicalJson({
+        array: false, autoext: false, cscoop: false,
+      })
+      && Number.isSafeInteger(ship?.liverySeed) && ship.liverySeed >= 0;
+  };
+  const arc4PertarEngineeringLoadedExact = (state) => {
+    const engineering = state?.engineering;
+    return engineering?.schema === 'cf-v2-arc3-app-state/v1'
+      && engineering?.stateKind === 'loaded'
+      && engineering?.protection === null
+      && engineering?.bootstrapPending === false
+      && engineering?.bootstrapCandidateReady === false
+      && Number.isSafeInteger(engineering?.revision) && engineering.revision >= 0;
+  };
+  const arc4PertarEngineeringLegacyDiagnosticsExact = (state) => canonicalJson(
+    state?.engineering?.legacyDiagnostics,
+  ) === canonicalJson({
+    missingWorldSeeds: [], ambiguousWorldSeeds: [],
+    missingStarSeeds: [], ambiguousStarSeeds: [],
+  });
+  const arc4PertarSavedStarRouteExact = (state) => state?.save?.viewType === 'star'
+    && !Object.prototype.hasOwnProperty.call(state?.save?.savedView ?? {}, 'pseed')
+    && canonicalJson(state?.save?.savedView) === canonicalJson(arc4PertarSavedStarView);
+  const arc4PertarSavedPlanetRouteExact = (state) => state?.save?.viewType === 'planet'
+    && canonicalJson(state?.save?.savedView) === canonicalJson(arc4PertarSavedPlanetView);
+  const arc4PertarLegacyRouteExact = (raw, expected) => {
+    try {
+      return typeof raw?.legacyRaw === 'string'
+        && canonicalJson(JSON.parse(raw.legacyRaw)) === canonicalJson(raw.legacy)
+        && canonicalJson(raw.legacy?.view) === canonicalJson(expected);
+    } catch { return false; }
+  };
+  const arc4PertarSplitRouteExact = (raw, expected) => {
+    try {
+      return typeof raw?.playerRaw === 'string'
+        && canonicalJson(JSON.parse(raw.playerRaw)) === canonicalJson(raw.playerRow)
+        && canonicalJson(raw.playerRow?.data?.view) === canonicalJson(expected);
+    } catch { return false; }
+  };
+  const arc4PertarSurfaceRouteExact = (state) => state?.mode === 'surface'
+    && state?.gal === ARC4_PERTAR_FIXTURE.galaxy.seed
+    && state?.galX === ARC4_PERTAR_FIXTURE.galaxy.x
+    && state?.galY === ARC4_PERTAR_FIXTURE.galaxy.y
+    && state?.star === ARC4_PERTAR_FIXTURE.publicStar.seed
+    && state?.starX === ARC4_PERTAR_FIXTURE.publicStar.x
+    && state?.starY === ARC4_PERTAR_FIXTURE.publicStar.y
+    && state?.planet === ARC4_PERTAR_FIXTURE.planet.seed
+    && state?.planetOrdinal === ARC4_PERTAR_FIXTURE.planet.ordinal
+    && state?.navGalaxyKey === arc4PertarGalaxyKey
+    && state?.navStarKey === arc4PertarStarKey
+    && state?.navWorldKey === ARC4_PERTAR_FIXTURE.worldKey
+    && renderedSceneMatchesNav(state)
+    && state?.renderedScene?.mode === 'surface'
+    && state?.renderedScene?.galaxyKey === arc4PertarGalaxyKey
+    && state?.renderedScene?.starKey === arc4PertarStarKey
+    && state?.renderedScene?.worldKey === ARC4_PERTAR_FIXTURE.worldKey;
+  const arc4PertarEnabledRowsExact = (ui) => canonicalJson(ui?.rows?.map((row) => row?.verb))
+      === canonicalJson(['tame', 'scavenge', 'sample'])
+    && ui.rows.every((row) => row?.status === 'ready'
+      && row?.semanticKey === `capture:${row.verb}`
+      && row?.button?.exists === true && row?.button?.connected === true
+      && row?.button?.tag === 'BUTTON' && row?.button?.verb === row.verb
+      && row?.button?.focusKey === `capture:${row.verb}`
+      && row?.button?.modelEnabled === 'true' && row?.button?.disabled === false
+      && row?.button?.ariaDisabled === 'false');
+  const arc4PertarSurfaceObservationExact = ({ state, ui } = {}) => (
+    arc4PertarSurfaceRouteExact(state)
+    && arc4CaptureUiSnapshotComplete(ui)
+    && ui?.cardOpen === true && ui?.cardTitle === 'Pertar'
+    && ui?.planetsideHeading === 'PLANETSIDE — Biosphere'
+    && ui?.contextKey === `${ARC4_PERTAR_FIXTURE.worldKey}|epoch:${ARC4_PERTAR_FIXTURE.ecologyEpoch}|${ARC4_PERTAR_FIXTURE.fullRosterFingerprint}`
+    && ui?.budget?.yield === ARC4_PERTAR_FIXTURE.biosphereYield
+    && ui?.budget?.used === 0
+    && ui?.budget?.remaining === ARC4_PERTAR_FIXTURE.biosphereYield
+    && ui?.rows?.length === 3 && arc4PertarEnabledRowsExact(ui)
+  );
+  const arc4PertarStableStateProjection = (state) => {
+    const stable = structuredClone(state);
+    if (stable?.persistence?.runtime) {
+      delete stable.persistence.runtime.activePlayMs;
+    }
+    delete stable?.tickerTicks;
+    return stable;
+  };
+  const arc4PertarAdvancingDiagnosticsValid = (before, after) => {
+    const beforeActivePlayMs = before?.persistence?.runtime?.activePlayMs;
+    const afterActivePlayMs = after?.persistence?.runtime?.activePlayMs;
+    const beforeTickerTicks = before?.tickerTicks;
+    const afterTickerTicks = after?.tickerTicks;
+    return Number.isSafeInteger(beforeActivePlayMs) && beforeActivePlayMs >= 0
+      && Number.isSafeInteger(afterActivePlayMs) && afterActivePlayMs >= beforeActivePlayMs
+      && afterActivePlayMs - beforeActivePlayMs <= 10_000
+      && Number.isSafeInteger(beforeTickerTicks) && beforeTickerTicks >= 0
+      && Number.isSafeInteger(afterTickerTicks) && afterTickerTicks >= beforeTickerTicks
+      && afterTickerTicks - beforeTickerTicks <= 1;
+  };
+  const waitForArc4PertarSurface = async (label, timeoutMs = 10_000) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = { state: null, ui: null };
+    while (Date.now() < deadline) {
+      last = await evalIn(`(()=>{const S=window.__CF_SLICE__,ui=${ARC4_CAPTURE_UI_EXPRESSION},
+        state=S?.api?.state?.()??null;return {state,ui}})()`);
+      if (arc4PertarSurfaceObservationExact(last)) return last;
+      await sleep(50);
+    }
+    throw new Error(`${label} did not reach its exact Pertar surface/card/three-enabled-row outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  const assessArc4PertarFixtureSetup = ({ priorToken, sourceReady, sourceState,
+    wrongOrdinal, landing, landedReady, landedRaw, surface } = {}) => {
+    const checks = {
+      sourceRoute: arc4PertarSourceRouteExact(sourceState),
+      charterStage: arc4PertarCharterStageExact(sourceState),
+      shipOwnership: arc4PertarShipOwnershipExact(sourceState),
+      engineeringLoaded: arc4PertarEngineeringLoadedExact(sourceState),
+      engineeringLegacyDiagnostics:
+        arc4PertarEngineeringLegacyDiagnosticsExact(sourceState),
+      savedStarRoute: arc4PertarSavedStarRouteExact(sourceState),
+      durableStarLegacyRoute: arc4PertarLegacyRouteExact(
+        wrongOrdinal?.rawBefore, arc4PertarSavedStarView,
+      ),
+      durableStarSplitRoute: arc4PertarSplitRouteExact(
+        wrongOrdinal?.rawBefore, arc4PertarSavedStarView,
+      ),
+      sourceToken: typeof sourceReady?.token === 'string' && sourceReady.token.length >= 16
+        && sourceState?.persistence?.documentToken === sourceReady.token
+        && sourceReady.token !== priorToken,
+      wrongOrdinalRejected: wrongOrdinal?.accepted === false,
+      wrongOrdinalStateStable: canonicalJson(arc4PertarStableStateProjection(
+        wrongOrdinal?.stateAfter,
+      )) === canonicalJson(arc4PertarStableStateProjection(wrongOrdinal?.stateBefore))
+        && arc4PertarAdvancingDiagnosticsValid(
+          wrongOrdinal?.stateBefore, wrongOrdinal?.stateAfter,
+        ),
+      wrongOrdinalRawStable: canonicalJson(wrongOrdinal?.rawAfter)
+        === canonicalJson(wrongOrdinal?.rawBefore),
+      exactLandAccepted: landing?.accepted === true,
+      sameDocument: landing?.beforeToken === sourceReady?.token
+        && landing?.afterToken === sourceReady?.token
+        && landedReady?.token === sourceReady?.token
+        && surface?.state?.persistence?.documentToken === sourceReady?.token,
+      landedWritable: landedReady?.state?.sceneResources?.pendingPersistenceWrites === 0
+        && landedReady?.state?.persistence?.hold === null
+        && landedReady?.state?.persistence?.mutationBlocked === false,
+      savedPlanetRoute: arc4PertarSavedPlanetRouteExact(surface?.state),
+      durablePlanetLegacyRoute: arc4PertarLegacyRouteExact(
+        landedRaw, arc4PertarSavedPlanetView,
+      ),
+      durablePlanetSplitRoute: arc4PertarSplitRouteExact(
+        landedRaw, arc4PertarSavedPlanetView,
+      ),
+      exactSurface: arc4PertarSurfaceObservationExact(surface),
+    };
+    return { ok: Object.values(checks).every((value) => value === true), checks };
+  };
+  const installArc4PertarFixture = async (label) => {
+    const preload = await send('Page.addScriptToEvaluateOnNewDocument', {
+      source: arc4SeedPreloadSource,
+    }, sess);
+    if (typeof preload?.identifier !== 'string') {
+      throw new Error(`${label} did not install its bounded seed preload`);
+    }
+    const priorToken = await sliceToken(sess);
+    try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(ARC4_PERTAR_RAW)})`); }
+    catch { /* successful replacement destroys the old execution context */ }
+    await waitForSlice(sess, label, { previousToken: priorToken });
+    await assertBootTickerRunning(label);
+    const sourceReady = await waitForF4Writable(`${label} source-route writable authority`, {
+      previousToken: priorToken,
+    });
+    await send('Page.removeScriptToEvaluateOnNewDocument', {
+      identifier: preload.identifier,
+    }, sess);
+    const seedWitness = await evalIn(`globalThis.__cfArc4SeedFixture??null`);
+    const sourceState = await evalIn(`window.__CF_SLICE__.api.state()`);
+    const wrongOrdinal = await evalIn(`(async()=>{const S=window.__CF_SLICE__,clone=(value)=>JSON.parse(JSON.stringify(value)),
+      rawBefore=await (${ARC4_DURABLE_READ_EXPRESSION}),stateBefore=clone(S.api.state()),
+      accepted=S.api.landOn({seed:${ARC4_PERTAR_FIXTURE.planet.seed},ordinal:${ARC4_PERTAR_FIXTURE.planet.ordinal + 1}}),
+      stateAfter=clone(S.api.state()),rawAfter=await (${ARC4_DURABLE_READ_EXPRESSION});
+      return {accepted,stateBefore,stateAfter,rawBefore,rawAfter}})()`, { timeoutMs: 5_000 });
+    const landing = await evalIn(`(()=>{const S=window.__CF_SLICE__,beforeToken=S.documentToken,
+      accepted=S.api.landOn(${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)}),afterToken=S.documentToken;
+      return {accepted,beforeToken,afterToken,state:S.api.state()}})()`);
+    const landedReady = await waitForF4Writable(`${label} landed writable authority`);
+    const landedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    const surface = await waitForArc4PertarSurface(`${label} exact Pertar capture card`);
+    const setupAssessment = assessArc4PertarFixtureSetup({
+      priorToken, sourceReady, sourceState, wrongOrdinal, landing,
+      landedReady, landedRaw, surface,
+    });
+    return {
+      priorToken, token: sourceReady.token, sourceReady, sourceState,
+      wrongOrdinal, landing, landedReady, landedRaw, surface,
+      setupAssessment, seedWitness,
+    };
+  };
+  const arc4IsolatedCheck = (result, expected) => result?.ok === false
+    && result?.checks?.[expected] === false
+    && Object.entries(result?.checks ?? {}).every(([name, value]) => (
+      name === expected ? value === false : value === true
+    ));
+  const arc4ExactFailureSet = (result, expected) => result?.ok === false
+    && JSON.stringify(Object.entries(result?.checks ?? {})
+      .filter(([, value]) => value !== true)
+      .map(([name]) => name)) === JSON.stringify(expected);
+  const arc4MutateStateActivePlay = (state) => {
+    const next = structuredClone(state);
+    if (!Number.isSafeInteger(next?.persistence?.runtime?.activePlayMs)) return null;
+    next.persistence.runtime.activePlayMs += 123_456;
+    return next;
+  };
+  const arc4MutateStateBelowRaw = (raw, state) => {
+    const activePlayMs = raw?.authority?.activePlayMs;
+    if (!Number.isSafeInteger(activePlayMs) || activePlayMs <= 0) return null;
+    const next = structuredClone(state);
+    if (!Number.isSafeInteger(next?.persistence?.runtime?.activePlayMs)) return null;
+    next.persistence.runtime.activePlayMs = activePlayMs - 1;
+    return next;
+  };
+  const arc4MutateRawActivePlay = (raw, activePlayMs) => {
+    const next = structuredClone(raw);
+    if (!Number.isSafeInteger(activePlayMs) || activePlayMs < 0
+      || !next?.authority || !next?.playerRow?.extensions?.['f4.authority']) return null;
+    next.authority.activePlayMs = activePlayMs;
+    const rng = next.authority.sessionRng;
+    const draws = Object.fromEntries(Object.entries(rng.draws)
+      .sort(([left], [right]) => left < right ? -1 : left > right ? 1 : 0));
+    next.authorityJson = JSON.stringify({
+      activePlayMs,
+      sessionRng: { seed: rng.seed, ordinal: rng.ordinal, draws },
+    });
+    next.playerRow.extensions['f4.authority'].json = next.authorityJson;
+    next.playerRaw = JSON.stringify(next.playerRow);
+    return next;
+  };
+  const arc4CountdownPattern
+    = /\b[0-9]+:[0-5][0-9](?= of active play remaining\.)/gu;
+  const arc4CountdownText = (activePlayMs) => {
+    const seconds = Math.max(0, Math.ceil(activePlayMs / 1_000));
+    const minutes = Math.floor(seconds / 60);
+    return `${minutes}:${String(seconds % 60).padStart(2, '0')}`;
+  };
+  const arc4MutateUiActivePlay = (ui, activePlayMs) => {
+    const next = structuredClone(ui);
+    if (!Number.isSafeInteger(activePlayMs) || activePlayMs < 0
+      || !next?.persistence?.runtime || !next?.budget) return null;
+    const cycle = Math.floor(activePlayMs / ARC4_ACTIVE_PLAY_CYCLE_MS);
+    next.persistence.runtime.activePlayMs = activePlayMs;
+    next.budget.cycle = cycle;
+    next.budget.recoveryRemainingActivePlayMs
+      = (cycle + 1) * ARC4_ACTIVE_PLAY_CYCLE_MS - activePlayMs;
+    next.budget.text = next.budget.text.replace(
+      arc4CountdownPattern,
+      arc4CountdownText(next.budget.recoveryRemainingActivePlayMs),
+    );
+    return next;
+  };
+  const arc4MutateV4Ever = (evidence, mutate) => {
+    const next = structuredClone(evidence);
+    const legacyEver = structuredClone(next.legacy?.ever);
+    const splitEver = structuredClone(next.playerRow?.data?.ever);
+    if (!legacyEver || !splitEver) return null;
+    mutate(legacyEver);
+    mutate(splitEver);
+    next.legacy.ever = legacyEver;
+    next.playerRow.data.ever = splitEver;
+    next.legacyRaw = JSON.stringify(next.legacy);
+    next.playerRaw = JSON.stringify(next.playerRow);
+    return next;
+  };
+  const arc4InteractionKey = 'cf_slice_arc4_capture_interaction_v1';
+  const armArc4Interaction = async () => evalIn(`(()=>{const key=${JSON.stringify(arc4InteractionKey)};
+    localStorage.removeItem(key);window.__cfArc4InteractionAbort?.abort();const controller=new AbortController();
+    window.__cfArc4InteractionAbort=controller;const trace={pointer:[],keys:[],clicks:[]},
+    save=()=>localStorage.setItem(key,JSON.stringify(trace)),row=(event)=>{const target=event.target instanceof Element
+      ?event.target.closest('button[data-capture-action]'):null;return target?{verb:target.getAttribute('data-capture-action'),
+        trusted:event.isTrusted===true}:null};
+    document.addEventListener('pointerdown',(event)=>{const value=row(event);if(value)trace.pointer.push({...value,
+      pointerType:event.pointerType||null,x:event.clientX,y:event.clientY});save()},{capture:true,signal:controller.signal});
+    document.addEventListener('keydown',(event)=>{const value=row(event);if(value)trace.keys.push({...value,
+      key:event.key,code:event.code});save()},{capture:true,signal:controller.signal});
+    document.addEventListener('click',(event)=>{const value=row(event);if(value)trace.clicks.push(value);save()},
+      {capture:true,signal:controller.signal});save();return true})()`);
+  const readArc4InteractionTrace = async (take = false) => evalIn(`(()=>{const key=${JSON.stringify(arc4InteractionKey)},
+    value=JSON.parse(localStorage.getItem(key)||'null');${take
+      ? 'window.__cfArc4InteractionAbort?.abort();delete window.__cfArc4InteractionAbort;localStorage.removeItem(key);'
+      : ''}return value})()`);
+  const arc4InteractionFromTrace = (trace, verb, modality = 'keyboard') => {
+    const clicks = Array.isArray(trace?.clicks) ? trace.clicks : [];
+    const keys = Array.isArray(trace?.keys) ? trace.keys : [];
+    const click = clicks[0];
+    const key = keys[0];
+    return {
+      pressCount: clicks.length,
+      verb,
+      trusted: click?.trusted === true && click?.verb === verb
+        && (modality !== 'keyboard' || (keys.length === 1 && key?.trusted === true
+          && key?.verb === verb && key?.key === 'Enter' && key?.code === 'Enter')),
+      modality,
+      trace,
+    };
+  };
+  const arc4ButtonTargetExpression = (verb, requireEnabled = true) => `(()=>{const button=document.querySelector(
+    '#survey button[data-capture-action="'+${JSON.stringify(verb)}+'"]');button?.scrollIntoView({block:'center',inline:'nearest'});
+    button?.focus();const rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:NaN,
+    y=rect?(rect.top+rect.bottom)/2:NaN,hit=rect?document.elementFromPoint(x,y):null;
+    return {ok:!!button&&button.tagName==='BUTTON'&&!!rect&&rect.width>0&&rect.height>=44
+      &&!!hit&&(hit===button||button.contains(hit))${requireEnabled
+        ? "&&!button.disabled&&button.getAttribute('data-model-enabled')==='true'" : ''},
+      verb:button?.getAttribute('data-capture-action')??null,x,y,width:rect?.width??0,height:rect?.height??0,
+      disabled:button?.disabled??null,ariaDisabled:button?.getAttribute('aria-disabled')??null,
+      modelEnabled:button?.getAttribute('data-model-enabled')??null,
+      focus:document.activeElement===button}})()`;
+  const pressArc4Keyboard = async (verb) => {
+    const armed = await armArc4Interaction();
+    const target = await evalIn(arc4ButtonTargetExpression(verb));
+    if (armed && target.ok) await keyIn('Enter', 'Enter');
+    return { armed, target };
+  };
+  const pressArc4SurveyDockKeyboard = async () => {
+    const armed = await evalIn(`(()=>{window.__cfArc4SurveyDockAbort?.abort();
+      const controller=new AbortController();window.__cfArc4SurveyDockAbort=controller;
+      const trace={keys:[],clicks:[]},row=(event)=>{const target=event.target instanceof Element
+        ?event.target.closest('#docksurvey'):null;return target?{id:target.id,
+          trusted:event.isTrusted===true}:null};window.__cfArc4SurveyDockTrace=trace;
+      document.addEventListener('keydown',(event)=>{const value=row(event);if(value)trace.keys.push({...value,
+        key:event.key,code:event.code})},{capture:true,signal:controller.signal});
+      document.addEventListener('click',(event)=>{const value=row(event);if(value)trace.clicks.push(value)},
+        {capture:true,signal:controller.signal});return true})()`);
+    const target = await evalIn(`(()=>{const button=document.getElementById('docksurvey');button?.focus();
+      const rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:NaN,
+      y=rect?(rect.top+rect.bottom)/2:NaN,hit=rect?document.elementFromPoint(x,y):null;
+      return {ok:button?.tagName==='BUTTON'&&!!rect&&rect.width>0&&rect.height>=44
+        &&!!hit&&(hit===button||button.contains(hit)),id:button?.id??null,
+        tag:button?.tagName??null,ariaControls:button?.getAttribute('aria-controls')??null,
+        focus:document.activeElement===button,x,y,width:rect?.width??0,height:rect?.height??0}})()`);
+    if (armed && target.ok) await keyIn('Enter', 'Enter');
+    const trace = await evalIn(`(()=>{const trace=window.__cfArc4SurveyDockTrace??null;
+      window.__cfArc4SurveyDockAbort?.abort();delete window.__cfArc4SurveyDockAbort;
+      delete window.__cfArc4SurveyDockTrace;return trace})()`);
+    const key = trace?.keys?.[0], click = trace?.clicks?.[0];
+    return {
+      armed, target,
+      interaction: {
+        pressCount: trace?.clicks?.length ?? 0,
+        trusted: trace?.keys?.length === 1 && key?.trusted === true
+          && key?.id === 'docksurvey' && key?.key === 'Enter' && key?.code === 'Enter'
+          && trace?.clicks?.length === 1 && click?.trusted === true
+          && click?.id === 'docksurvey',
+        modality: 'keyboard', trace,
+      },
+    };
+  };
+  const arc4ReloadedSurfaceObservationExact = ({ state, ui } = {}, expectedUsed) => (
+    arc4PertarSurfaceRouteExact(state)
+    && arc4CaptureUiSnapshotComplete(ui)
+    && state?.cardOpen === true && state?.cardTitle === 'Pertar'
+    && ui?.cardOpen === true && ui?.cardTitle === 'Pertar'
+    && ui?.planetsideHeading === 'PLANETSIDE — Biosphere'
+    && ui?.contextKey === `${ARC4_PERTAR_FIXTURE.worldKey}|epoch:${ARC4_PERTAR_FIXTURE.ecologyEpoch}|${ARC4_PERTAR_FIXTURE.fullRosterFingerprint}`
+    && ui?.budget?.yield === ARC4_PERTAR_FIXTURE.biosphereYield
+    && ui?.budget?.used === expectedUsed
+    && ui?.budget?.remaining === ARC4_PERTAR_FIXTURE.biosphereYield - expectedUsed
+    && ui?.budget?.cycle === 0 && arc4PertarEnabledRowsExact(ui)
+    && ui?.ariaBusy === 'false' && ui?.diagnostics?.pendingWork === 0
+    && ui?.diagnostics?.convergenceLatched === false
+    && ui?.status?.hidden === true && ui?.status?.kind === null
+    && ui?.status?.convergence === null
+  );
+  const waitForArc4ReloadedSurface = async (label, expectedUsed, timeoutMs = 10_000) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = { state: null, ui: null };
+    while (Date.now() < deadline) {
+      last = await evalIn(`(()=>{const ui=${ARC4_CAPTURE_UI_EXPRESSION},
+        state=window.__CF_SLICE__?.api?.state?.()??null;return {state,ui}})()`);
+      if (arc4ReloadedSurfaceObservationExact(last, expectedUsed)) return last;
+      await sleep(50);
+    }
+    throw new Error(`${label} did not reach its exact current-surface Survey outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+
+  const arc4FirstFixture = await installArc4PertarFixture('Arc 4 Pertar seed-68 replacement');
+  const arc4FixtureSetupBundle = {
+    priorToken: arc4FirstFixture.priorToken,
+    sourceReady: arc4FirstFixture.sourceReady,
+    sourceState: arc4FirstFixture.sourceState,
+    wrongOrdinal: arc4FirstFixture.wrongOrdinal,
+    landing: arc4FirstFixture.landing,
+    landedReady: arc4FirstFixture.landedReady,
+    landedRaw: arc4FirstFixture.landedRaw,
+    surface: arc4FirstFixture.surface,
+  };
+  const arc4FixtureSetupVariant = (mutate) => {
+    const next = structuredClone(arc4FixtureSetupBundle);
+    mutate(next);
+    return assessArc4PertarFixtureSetup(next);
+  };
+  const arc4FixtureSetupControls = {
+    sourceRoute: arc4FixtureSetupVariant((next) => { next.sourceState.starX += 1; }),
+    charterStage: arc4FixtureSetupVariant((next) => {
+      next.sourceState.stage = 0;
+    }),
+    shipOwnership: arc4FixtureSetupVariant((next) => {
+      next.sourceState.shipVisual.installedSystemIds = [];
+    }),
+    engineeringLoaded: arc4FixtureSetupVariant((next) => {
+      next.sourceState.engineering.protection = 'control-protection';
+    }),
+    engineeringLegacyDiagnostics: arc4FixtureSetupVariant((next) => {
+      next.sourceState.engineering.legacyDiagnostics = {
+        missingWorldSeeds: [], ambiguousWorldSeeds: [],
+        missingStarSeeds: [424_242], ambiguousStarSeeds: [],
+      };
+    }),
+    savedStarRoute: arc4FixtureSetupVariant((next) => {
+      next.sourceState.save.savedView.pseed = ARC4_PERTAR_FIXTURE.planet.seed;
+    }),
+    durableStarLegacyRoute: arc4FixtureSetupVariant((next) => {
+      next.wrongOrdinal.rawBefore.legacy.view.pseed = ARC4_PERTAR_FIXTURE.planet.seed;
+      next.wrongOrdinal.rawAfter.legacy.view.pseed = ARC4_PERTAR_FIXTURE.planet.seed;
+      next.wrongOrdinal.rawBefore.legacyRaw = JSON.stringify(
+        next.wrongOrdinal.rawBefore.legacy,
+      );
+      next.wrongOrdinal.rawAfter.legacyRaw = JSON.stringify(
+        next.wrongOrdinal.rawAfter.legacy,
+      );
+    }),
+    durableStarSplitRoute: arc4FixtureSetupVariant((next) => {
+      next.wrongOrdinal.rawBefore.playerRow.data.view.pseed
+        = ARC4_PERTAR_FIXTURE.planet.seed;
+      next.wrongOrdinal.rawAfter.playerRow.data.view.pseed
+        = ARC4_PERTAR_FIXTURE.planet.seed;
+      next.wrongOrdinal.rawBefore.playerRaw = JSON.stringify(
+        next.wrongOrdinal.rawBefore.playerRow,
+      );
+      next.wrongOrdinal.rawAfter.playerRaw = JSON.stringify(
+        next.wrongOrdinal.rawAfter.playerRow,
+      );
+    }),
+    sourceToken: arc4FixtureSetupVariant((next) => {
+      next.sourceState.persistence.documentToken += ':wrong';
+    }),
+    wrongOrdinalRejected: arc4FixtureSetupVariant((next) => {
+      next.wrongOrdinal.accepted = true;
+    }),
+    wrongOrdinalStateStable: arc4FixtureSetupVariant((next) => {
+      next.wrongOrdinal.stateAfter.mode = 'galaxy';
+    }),
+    wrongOrdinalRawStable: arc4FixtureSetupVariant((next) => {
+      next.wrongOrdinal.rawAfter.revision += 1;
+    }),
+    exactLandAccepted: arc4FixtureSetupVariant((next) => { next.landing.accepted = false; }),
+    sameDocument: arc4FixtureSetupVariant((next) => { next.landing.afterToken += ':wrong'; }),
+    landedWritable: arc4FixtureSetupVariant((next) => {
+      next.landedReady.state.sceneResources.pendingPersistenceWrites = 1;
+    }),
+    savedPlanetRoute: arc4FixtureSetupVariant((next) => {
+      next.surface.state.save.savedView.pseed += 1;
+    }),
+    durablePlanetLegacyRoute: arc4FixtureSetupVariant((next) => {
+      next.landedRaw.legacy.view.pseed += 1;
+      next.landedRaw.legacyRaw = JSON.stringify(next.landedRaw.legacy);
+    }),
+    durablePlanetSplitRoute: arc4FixtureSetupVariant((next) => {
+      next.landedRaw.playerRow.data.view.pseed += 1;
+      next.landedRaw.playerRaw = JSON.stringify(next.landedRaw.playerRow);
+    }),
+    exactSurface: arc4FixtureSetupVariant((next) => {
+      next.surface.state.planetOrdinal += 1;
+    }),
+  };
+  const arc4FixtureIncompleteSurfaceControl = arc4FixtureSetupVariant((next) => {
+    next.surface.ui.rows[0].odds = null;
+  });
+  const arc4FixtureWrongOrdinalClockControl = arc4FixtureSetupVariant((next) => {
+    next.wrongOrdinal.stateAfter.persistence.runtime.activePlayMs
+      = next.wrongOrdinal.stateBefore.persistence.runtime.activePlayMs + 123_456;
+  });
+  const arc4FixtureSetupControlsIsolated = Object.entries(arc4FixtureSetupControls)
+    .every(([check, assessment]) => arc4IsolatedCheck(assessment, check))
+    && arc4IsolatedCheck(arc4FixtureIncompleteSurfaceControl, 'exactSurface')
+    && arc4IsolatedCheck(
+      arc4FixtureWrongOrdinalClockControl, 'wrongOrdinalStateStable',
+    );
+  const arc4PreUi = arc4FirstFixture.surface.ui;
+  const arc4PreState = arc4FirstFixture.surface.state;
+  const arc4PreRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4PreconditionBundle = {
+    raw: arc4PreRaw, state: arc4PreState, ui: arc4PreUi,
+    routeError: null, authorityReady: true,
+  };
+  const arc4Precondition = assessArc4CapturePrecondition(arc4PreconditionBundle);
+  const arc4PreWrongHeading = structuredClone(arc4PreUi);
+  arc4PreWrongHeading.planetsideHeading = 'PLANETSIDE — Wrong';
+  const arc4PreMissingHeading = structuredClone(arc4PreUi);
+  delete arc4PreMissingHeading.planetsideHeading;
+  const arc4PreDownwardState = structuredClone(arc4PreState);
+  arc4PreDownwardState.persistence.runtime.activePlayMs = 0;
+  const arc4PreOrderingBase = arc4PreRaw.authority.activePlayMs + 9_000;
+  const arc4PreOrderingState = structuredClone(arc4PreState);
+  arc4PreOrderingState.persistence.runtime.activePlayMs = arc4PreOrderingBase;
+  const arc4PreconditionControls = {
+    route: assessArc4CapturePrecondition({ ...arc4PreconditionBundle,
+      routeError: 'negative route settlement' }),
+    heading: assessArc4CapturePrecondition({ ...arc4PreconditionBundle,
+      ui: arc4PreWrongHeading }),
+    stateRuntime: assessArc4CapturePrecondition({ ...arc4PreconditionBundle,
+      state: arc4MutateStateActivePlay(arc4PreState) }),
+    downwardStateRuntime: assessArc4CapturePrecondition({
+      ...arc4PreconditionBundle,
+      raw: arc4MutateRawActivePlay(arc4PreRaw, 9_000),
+      state: arc4PreDownwardState,
+      ui: arc4MutateUiActivePlay(arc4PreUi, 9_000),
+    }),
+    nonzeroOrdering: assessArc4CapturePrecondition({
+      ...arc4PreconditionBundle,
+      state: arc4PreOrderingState,
+      ui: arc4MutateUiActivePlay(arc4PreUi, arc4PreOrderingBase + 1),
+    }),
+  };
+  if (!arc4Precondition.ok
+    || !arc4FirstFixture.setupAssessment?.ok
+    || !arc4FixtureSetupControlsIsolated
+    || arc4FirstFixture.seedWitness?.schema !== 'cf-v2-slice-arc4-seed-fixture/v1'
+    || arc4FirstFixture.seedWitness?.seed !== ARC4_PERTAR_FIXTURE.sessionSeed
+    || arc4FirstFixture.seedWitness?.seedCalls !== 1
+    || arc4FirstFixture.seedWitness?.nativeFallbackCalls !== 0
+    || !arc4IsolatedCheck(arc4PreconditionControls.route, 'routeSettled')
+    || !arc4IsolatedCheck(arc4PreconditionControls.heading, 'surfaceCopy')
+    || !arc4IsolatedCheck(arc4PreconditionControls.stateRuntime,
+      'runtimeCaptureOrder')
+    || !arc4IsolatedCheck(arc4PreconditionControls.downwardStateRuntime,
+      'runtimeCaptureOrder')
+    || !arc4IsolatedCheck(arc4PreconditionControls.nonzeroOrdering,
+      'runtimeCaptureOrder')
+    || arc4CaptureUiSnapshotComplete(arc4PreMissingHeading)) {
+    fails.push('ARC 4 PRECONDITION: Pertar route, seed-68 F4 authority, exact v5/18-carrier mirror, or card identity failed: '
+      + JSON.stringify({ fixture: arc4FirstFixture, assessment: arc4Precondition,
+        setupControls: arc4FixtureSetupControls,
+        incompleteSurfaceControl: arc4FixtureIncompleteSurfaceControl,
+        wrongOrdinalClockControl: arc4FixtureWrongOrdinalClockControl,
+        controls: arc4PreconditionControls, uiMissingHeadingAccepted:
+          arc4CaptureUiSnapshotComplete(arc4PreMissingHeading) }));
+  }
+
+  const arc4HitHoldArmed = await evalIn(`window.__CF_SLICE__.api.__smokeArmProductActionHold()`);
+  const arc4HitPress = await pressArc4Keyboard('sample');
+  const arc4HitHolding = await waitDesktopValue('Arc 4 Sample held no-optimism', `(()=>{const state=window.__CF_SLICE__.api.state(),
+    ui=${ARC4_CAPTURE_UI_EXPRESSION},c=state?.capture?.actionCoordinator;
+    return c?.inFlight===true&&c?.owner?.operation==='arc4.capture.sample'&&c?.hold?.phase==='holding'
+      &&ui?.status?.kind==='pending'?{state,ui}:null})()`);
+  const arc4HitPendingRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4HitPendingTrace = await readArc4InteractionTrace();
+  const arc4HitPendingInteraction = arc4InteractionFromTrace(
+    arc4HitPendingTrace, 'sample', 'keyboard',
+  );
+  const arc4HitPendingBundle = {
+    beforeRaw: arc4PreRaw, duringRaw: arc4HitPendingRaw,
+    beforeState: arc4PreState, duringState: arc4HitHolding.state,
+    beforeUi: arc4PreUi, duringUi: arc4HitHolding.ui,
+    interaction: arc4HitPendingInteraction, verb: 'sample',
+  };
+  const arc4HitPending = assessArc4CapturePendingNoOptimism(arc4HitPendingBundle);
+  const arc4HitPendingControl = assessArc4CapturePendingNoOptimism({
+    ...arc4HitPendingBundle,
+    interaction: { ...arc4HitPendingInteraction, pressCount: 2 },
+  });
+  const arc4HitPendingRuntimeControl = assessArc4CapturePendingNoOptimism({
+    ...arc4HitPendingBundle,
+    duringState: arc4MutateStateActivePlay(arc4HitHolding.state),
+  });
+  const arc4HitReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseProductActionHold()`);
+  const arc4HitState = await waitDesktopValue('Arc 4 deterministic Sample hit', `(()=>{const state=window.__CF_SLICE__.api.state(),
+    c=state?.capture?.actionCoordinator;return state?.capture?.lastOutcome?.startsWith('sample-committed:')
+      &&state?.capture?.lastResult?.hit===true&&c?.inFlight===false&&c?.owner?.busy===false
+      &&state?.capture?.card?.pendingWork===0?state:null})()`, 10_000);
+  const arc4HitRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4HitUi = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
+  const arc4HitInteraction = arc4InteractionFromTrace(
+    await readArc4InteractionTrace(true), 'sample', 'keyboard',
+  );
+  const arc4HitBundle = {
+    before: arc4PreRaw, after: arc4HitRaw,
+    beforeState: arc4PreState, afterState: arc4HitState,
+    afterUi: arc4HitUi, interaction: arc4HitInteraction,
+  };
+  const arc4Hit = assessArc4CommittedHit(arc4HitBundle);
+  const arc4HitControl = assessArc4CommittedHit({
+    ...arc4HitBundle, interaction: { ...arc4HitInteraction, pressCount: 2 },
+  });
+  const arc4HitRuntimeControl = assessArc4CommittedHit({
+    ...arc4HitBundle,
+    afterState: arc4MutateStateActivePlay(arc4HitState),
+  });
+  const arc4HitDownwardRuntimeControl = assessArc4CommittedHit({
+    ...arc4HitBundle,
+    afterState: arc4MutateStateBelowRaw(arc4HitRaw, arc4HitState),
+  });
+  const arc4HitV4ScanhitsControl = assessArc4CommittedHit({
+    ...arc4HitBundle,
+    before: arc4MutateV4Ever(arc4PreRaw, (ever) => { ever.scanhits += 1; }),
+    after: arc4MutateV4Ever(arc4HitRaw, (ever) => { ever.scanhits += 1; }),
+  });
+  const arc4HitV4ArrivalsControl = assessArc4CommittedHit({
+    ...arc4HitBundle,
+    before: arc4MutateV4Ever(arc4PreRaw, (ever) => { ever.arrivals = 999; }),
+    after: arc4MutateV4Ever(arc4HitRaw, (ever) => { ever.arrivals = 999; }),
+  });
+  const arc4HitOuterRevisionControlState = structuredClone(arc4HitState);
+  arc4HitOuterRevisionControlState.capture.lastResult.revision
+    = arc4HitRaw.revision + 1;
+  const arc4HitOuterRevisionControl = assessArc4CommittedHit({
+    ...arc4HitBundle, afterState: arc4HitOuterRevisionControlState,
+  });
+  const arc4HitV4MaxGenControl = assessArc4CommittedHit({
+    ...arc4HitBundle,
+    before: arc4MutateV4Ever(arc4PreRaw, (ever) => { ever.maxGen += 1; }),
+    after: arc4MutateV4Ever(arc4HitRaw, (ever) => { ever.maxGen += 1; }),
+  });
+  if (!arc4HitHoldArmed || !arc4HitPress.armed || !arc4HitPress.target.ok
+    || !arc4HitPending.ok || !arc4IsolatedCheck(arc4HitPendingControl, 'oneTrustedAction')
+    || !arc4IsolatedCheck(arc4HitPendingRuntimeControl, 'runtimeCaptureOrder')
+    || !arc4Hit.ok || !arc4IsolatedCheck(arc4HitControl, 'interaction')
+    || !arc4IsolatedCheck(arc4HitRuntimeControl, 'runtimeCaptureOrder')
+    || !arc4IsolatedCheck(arc4HitDownwardRuntimeControl, 'runtimeCaptureOrder')
+    || !arc4ExactFailureSet(arc4HitV4ScanhitsControl,
+      ['v4OwnedCompatibility', 'v4OwnedCounters'])
+    || !arc4ExactFailureSet(arc4HitV4ArrivalsControl,
+      ['v4OwnedCompatibility', 'v4OwnedCounters'])
+    || !arc4IsolatedCheck(arc4HitOuterRevisionControl, 'appResult')
+    || !arc4ExactFailureSet(arc4HitV4MaxGenControl,
+      ['v4OwnedCompatibility', 'v4OwnedCounters'])
+    || !arc4BrowserOutcomePasses({ released: arc4HitReleased,
+      assessment: arc4Hit, surface: 'survey' })) {
+    fails.push('ARC 4 SAMPLE HIT: one held native action did not remain non-optimistic then commit hidden ordinal-13 first-page/+2 truth: '
+      + JSON.stringify({ holdArmed: arc4HitHoldArmed, press: arc4HitPress,
+        released: arc4HitReleased, pending: arc4HitPending,
+        pendingControl: arc4HitPendingControl,
+        pendingRuntimeControl: arc4HitPendingRuntimeControl,
+        hit: arc4Hit, hitControl: arc4HitControl,
+        hitRuntimeControl: arc4HitRuntimeControl,
+        hitDownwardRuntimeControl: arc4HitDownwardRuntimeControl,
+        hitV4ScanhitsControl: arc4HitV4ScanhitsControl,
+        hitV4ArrivalsControl: arc4HitV4ArrivalsControl,
+        hitOuterRevisionControl: arc4HitOuterRevisionControl,
+        hitV4MaxGenControl: arc4HitV4MaxGenControl,
+        interaction: arc4HitInteraction }));
+  }
+
+  const arc4StorageBeforeState = arc4HitState;
+  const arc4StorageBeforeRaw = arc4HitRaw;
+  const arc4StorageBeforeUi = arc4HitUi;
+  const arc4StorageArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextArc4ActionStorage()`);
+  const arc4StoragePress = await pressArc4Keyboard('tame');
+  const arc4StorageState = await waitDesktopValue('Arc 4 storage refusal', `(()=>{const state=window.__CF_SLICE__.api.state(),
+    c=state?.capture?.actionCoordinator;return /storage failure/i.test(state?.capture?.lastOutcome||'')
+      &&c?.inFlight===false&&c?.owner?.busy===false&&c?.owner?.operation===null
+      &&c?.faultArmed?.storageFailure===false&&c?.lastFault?.phase==='settled'
+      &&c?.lastFault?.outcome==='storage-error'&&state?.capture?.card?.pendingWork===0?state:null})()`, 10_000);
+  const arc4StorageRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4StorageUi = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
+  const arc4StorageInteraction = arc4InteractionFromTrace(
+    await readArc4InteractionTrace(true), 'tame', 'keyboard',
+  );
+  const arc4StorageBundle = {
+    before: arc4StorageBeforeRaw, after: arc4StorageRaw,
+    beforeState: arc4StorageBeforeState, afterState: arc4StorageState,
+    beforeUi: arc4StorageBeforeUi, afterUi: arc4StorageUi,
+    interaction: arc4StorageInteraction, armed: arc4StorageArmed,
+    verb: 'tame', waitError: null, captureErrors: [],
+  };
+  const arc4Storage = assessArc4StorageRefusal(arc4StorageBundle);
+  const arc4StorageFaultControlState = structuredClone(arc4StorageState);
+  arc4StorageFaultControlState.capture.actionCoordinator.lastFault.outcome = 'rejected';
+  const arc4StorageFaultControl = assessArc4StorageRefusal({
+    ...arc4StorageBundle, afterState: arc4StorageFaultControlState,
+  });
+  const arc4StorageResultControlState = structuredClone(arc4StorageState);
+  arc4StorageResultControlState.capture.lastResult = arc4HitState.capture.lastResult;
+  const arc4StorageResultControl = assessArc4StorageRefusal({
+    ...arc4StorageBundle, afterState: arc4StorageResultControlState,
+  });
+  const arc4StorageRuntimeControl = assessArc4StorageRefusal({
+    ...arc4StorageBundle,
+    afterState: arc4MutateStateActivePlay(arc4StorageState),
+  });
+  const arc4StorageDriftUi = arc4MutateUiActivePlay(
+    arc4StorageUi,
+    arc4StorageState.persistence.runtime.activePlayMs + 1_000,
+  );
+  const arc4StorageClockDriftControl = assessArc4StorageRefusal({
+    ...arc4StorageBundle, afterUi: arc4StorageDriftUi,
+  });
+  const arc4StorageSemanticUi = structuredClone(arc4StorageDriftUi);
+  arc4StorageSemanticUi.summary += ' Contradictory ownership copy.';
+  const arc4StorageSemanticUiControl = assessArc4StorageRefusal({
+    ...arc4StorageBundle, afterUi: arc4StorageSemanticUi,
+  });
+  const arc4StorageBudgetSemanticUi = structuredClone(arc4StorageDriftUi);
+  arc4StorageBudgetSemanticUi.budget.text
+    = arc4StorageBudgetSemanticUi.budget.text.replace(
+      'Every attempt spends 1, hit or miss.',
+      'Every attempt spends 2, hit or miss.',
+    );
+  const arc4StorageBudgetSemanticUiControl = assessArc4StorageRefusal({
+    ...arc4StorageBundle, afterUi: arc4StorageBudgetSemanticUi,
+  });
+  const arc4StorageCountdownTextUi = structuredClone(arc4StorageDriftUi);
+  arc4StorageCountdownTextUi.budget.text
+    = arc4StorageCountdownTextUi.budget.text.replace(
+      arc4CountdownPattern, '99:59',
+    );
+  const arc4StorageCountdownTextControl = assessArc4StorageRefusal({
+    ...arc4StorageBundle, afterUi: arc4StorageCountdownTextUi,
+  });
+  if (!arc4StoragePress.armed || !arc4StoragePress.target.ok || !arc4Storage.ok
+    || !arc4IsolatedCheck(arc4StorageFaultControl, 'faultOutcome')
+    || !arc4IsolatedCheck(arc4StorageResultControl, 'liveProjectionStable')
+    || !arc4IsolatedCheck(arc4StorageRuntimeControl, 'runtimeCaptureOrder')
+    || !arc4StorageClockDriftControl.ok
+    || !arc4IsolatedCheck(arc4StorageSemanticUiControl, 'uiFactsStable')
+    || !arc4IsolatedCheck(arc4StorageBudgetSemanticUiControl, 'uiFactsStable')
+    || !arc4IsolatedCheck(arc4StorageCountdownTextControl,
+      'activePlayProjection')) {
+    fails.push('ARC 4 STORAGE REFUSAL: native Tame changed durable/visible ownership, retained the prior hit, or lost exact storage-fault truth: '
+      + JSON.stringify({ armed: arc4StorageArmed, press: arc4StoragePress,
+        assessment: arc4Storage, faultControl: arc4StorageFaultControl,
+        resultControl: arc4StorageResultControl,
+        runtimeControl: arc4StorageRuntimeControl,
+        clockDriftControl: arc4StorageClockDriftControl,
+        semanticUiControl: arc4StorageSemanticUiControl,
+        budgetSemanticUiControl: arc4StorageBudgetSemanticUiControl,
+        countdownTextControl: arc4StorageCountdownTextControl,
+        interaction: arc4StorageInteraction }));
+  }
+
+  const arc4StaleFaultKey = 'cf_slice_arc4_stale_fault_capture_v1';
+  const arc4StaleBeforeToken = await sliceToken(sess);
+  const arc4StaleBeforeState = arc4StorageState;
+  const arc4StaleBeforeRaw = arc4StorageRaw;
+  const arc4StaleCaptureArmed = await evalIn(`(()=>{const faultKey=${JSON.stringify(arc4StaleFaultKey)},
+    schema=${JSON.stringify(ARC4_STALE_FAULT_CAPTURE_SCHEMA)},S=window.__CF_SLICE__;
+    sessionStorage.removeItem(faultKey);const handler=()=>{const ui=${ARC4_CAPTURE_UI_EXPRESSION},live=S?.api?.state?.(),
+      state={...live,capture:ui?.captureState??null,persistence:ui?.persistence??null},
+      fault=state?.capture?.actionCoordinator?.lastFault??null;
+      sessionStorage.setItem(faultKey,JSON.stringify({schema,documentToken:S?.documentToken??null,
+        fault:fault===null?null:JSON.parse(JSON.stringify(fault)),state,ui}))};
+    addEventListener('pagehide',handler,{capture:true,once:true});return true})()`);
+  const arc4StaleArmed = await evalIn(`window.__CF_SLICE__.api.__smokeStaleNextArc4ActionAuthority()`);
+  const arc4StalePress = await pressArc4Keyboard('tame');
+  await waitForSlice(sess, 'Arc 4 stale-authority convergence', {
+    previousToken: arc4StaleBeforeToken,
+  });
+  await assertBootTickerRunning('Arc 4 stale-authority convergence');
+  const arc4StaleReady = await waitForF4Writable('Arc 4 stale-authority replacement', {
+    previousToken: arc4StaleBeforeToken,
+  });
+  const arc4StaleCaptured = await evalIn(`(()=>{const faultKey=${JSON.stringify(arc4StaleFaultKey)},
+    raw=sessionStorage.getItem(faultKey);let parsed=null;try{parsed=raw===null?null:JSON.parse(raw)}catch{}
+    sessionStorage.removeItem(faultKey);return {fault:{raw,parsed,
+      cleared:sessionStorage.getItem(faultKey)===null}}})()`);
+  const arc4StaleCommittedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4StaleReloadedStateBeforeDock = await evalIn(
+    `window.__CF_SLICE__.api.state()`,
+  );
+  const arc4StaleReloadActivation = await pressArc4SurveyDockKeyboard();
+  const arc4StaleReloadedSurface = await waitForArc4ReloadedSurface(
+    'Arc 4 stale reloaded current-surface Survey', 1,
+  );
+  const arc4StaleReloadedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4StaleReloadedState = arc4StaleReloadedSurface.state;
+  const arc4StaleReloadedUi = arc4StaleReloadedSurface.ui;
+  const arc4StaleInteraction = arc4InteractionFromTrace(
+    await readArc4InteractionTrace(true), 'tame', 'keyboard',
+  );
+  const arc4StaleBundle = {
+    before: arc4StaleBeforeRaw, committed: arc4StaleCommittedRaw,
+    beforeState: arc4StaleBeforeState,
+    oldState: arc4StaleCaptured.fault?.parsed?.state,
+    oldUi: arc4StaleCaptured.fault?.parsed?.ui,
+    reloaded: arc4StaleReloadedRaw,
+    reloadedState: arc4StaleReloadedState,
+    reloadedUi: arc4StaleReloadedUi,
+    reloadBeforeActivationState: arc4StaleReloadedStateBeforeDock,
+    reloadActivation: arc4StaleReloadActivation,
+    armed: arc4StaleArmed, captureArmed: arc4StaleCaptureArmed,
+    faultCapture: arc4StaleCaptured.fault,
+    interaction: arc4StaleInteraction,
+    priorToken: arc4StaleBeforeToken, token: arc4StaleReady.token,
+    waitError: null,
+  };
+  const arc4Stale = assessArc4StaleConvergence(arc4StaleBundle);
+  const arc4StaleTokenControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle, token: arc4StaleBeforeToken,
+  });
+  const arc4StaleReloadUiControlValue = structuredClone(arc4StaleReloadedUi);
+  arc4StaleReloadUiControlValue.cardTitle = 'Not Pertar';
+  const arc4StaleReloadUiControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle, reloadedUi: arc4StaleReloadUiControlValue,
+  });
+  const arc4StaleReloadActivationValue = structuredClone(
+    arc4StaleReloadActivation,
+  );
+  arc4StaleReloadActivationValue.interaction.trace.clicks[0].trusted = false;
+  const arc4StaleReloadActivationControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle, reloadActivation: arc4StaleReloadActivationValue,
+  });
+  const arc4StaleReloadStartsOpenValue = structuredClone(
+    arc4StaleReloadedStateBeforeDock,
+  );
+  arc4StaleReloadStartsOpenValue.cardOpen = true;
+  arc4StaleReloadStartsOpenValue.cardTitle = 'Pertar';
+  const arc4StaleReloadStartsOpenControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle,
+    reloadBeforeActivationState: arc4StaleReloadStartsOpenValue,
+  });
+  const arc4StaleReloadRawControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle,
+    reloaded: arc4MutateV4Ever(
+      arc4StaleReloadedRaw, (ever) => { ever.scanhits += 1; },
+    ),
+  });
+  const arc4StaleResultControlParsed = structuredClone(
+    arc4StaleCaptured.fault?.parsed,
+  );
+  if (arc4StaleResultControlParsed?.state?.capture) {
+    arc4StaleResultControlParsed.state.capture.lastResult
+      = arc4HitState.capture.lastResult;
+    arc4StaleResultControlParsed.ui.captureState = structuredClone(
+      arc4StaleResultControlParsed.state.capture,
+    );
+  }
+  const arc4StaleResultControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle,
+    oldState: arc4StaleResultControlParsed?.state,
+    oldUi: arc4StaleResultControlParsed?.ui,
+    faultCapture: {
+      raw: JSON.stringify(arc4StaleResultControlParsed),
+      parsed: arc4StaleResultControlParsed, cleared: true,
+    },
+  });
+  const arc4StaleTupleStateParsed = structuredClone(arc4StaleCaptured.fault?.parsed);
+  if (arc4StaleTupleStateParsed?.state?.capture) {
+    arc4StaleTupleStateParsed.state.capture.revision += 1;
+  }
+  const arc4StaleTupleStateControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle,
+    faultCapture: {
+      raw: JSON.stringify(arc4StaleTupleStateParsed),
+      parsed: arc4StaleTupleStateParsed, cleared: true,
+    },
+  });
+  const arc4StaleTupleFaultParsed = structuredClone(arc4StaleCaptured.fault?.parsed);
+  if (arc4StaleTupleFaultParsed?.state?.capture?.actionCoordinator) {
+    arc4StaleTupleFaultParsed.state.capture.actionCoordinator.lastFault = null;
+  }
+  const arc4StaleTupleFaultControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle,
+    faultCapture: {
+      raw: JSON.stringify(arc4StaleTupleFaultParsed),
+      parsed: arc4StaleTupleFaultParsed, cleared: true,
+    },
+  });
+  const arc4StaleTupleUiParsed = structuredClone(arc4StaleCaptured.fault?.parsed);
+  if (arc4StaleTupleUiParsed?.ui) arc4StaleTupleUiParsed.ui.cardTitle = 'Not tuple Pertar';
+  const arc4StaleTupleUiControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle,
+    faultCapture: {
+      raw: JSON.stringify(arc4StaleTupleUiParsed),
+      parsed: arc4StaleTupleUiParsed, cleared: true,
+    },
+  });
+  if (!arc4StalePress.armed || !arc4StalePress.target.ok
+    || !arc4StaleCaptured.fault?.cleared || !arc4Stale.ok
+    || !arc4PertarSurfaceRouteExact(arc4StaleReloadedStateBeforeDock)
+    || !arc4IsolatedCheck(arc4StaleTokenControl, 'readOnlyReload')
+    || !arc4IsolatedCheck(arc4StaleReloadUiControl, 'readOnlyReload')
+    || !arc4IsolatedCheck(arc4StaleReloadActivationControl, 'reloadActivation')
+    || !arc4IsolatedCheck(arc4StaleReloadStartsOpenControl,
+      'reloadStartsClosed')
+    || !arc4IsolatedCheck(arc4StaleReloadRawControl, 'readOnlyReload')
+    || !arc4IsolatedCheck(arc4StaleResultControl, 'oldOutcome')
+    || !arc4IsolatedCheck(arc4StaleTupleStateControl, 'pagehideTuple')
+    || !arc4IsolatedCheck(arc4StaleTupleFaultControl, 'pagehideTuple')
+    || !arc4IsolatedCheck(arc4StaleTupleUiControl, 'pagehideTuple')) {
+    fails.push('ARC 4 STALE CONVERGENCE: one native Tame did not empty-CAS then reload exact hit authority without a roll/retry: '
+      + JSON.stringify({ armed: arc4StaleArmed, captureArmed: arc4StaleCaptureArmed,
+        press: arc4StalePress, captured: arc4StaleCaptured,
+        assessment: arc4Stale, tokenControl: arc4StaleTokenControl,
+        reloadUiControl: arc4StaleReloadUiControl,
+        reloadActivation: arc4StaleReloadActivation,
+        reloadActivationControl: arc4StaleReloadActivationControl,
+        reloadStartsOpenControl: arc4StaleReloadStartsOpenControl,
+        reloadRawControl: arc4StaleReloadRawControl,
+        reloadedStateBeforeDock: arc4StaleReloadedStateBeforeDock,
+        resultControl: arc4StaleResultControl,
+        tupleStateControl: arc4StaleTupleStateControl,
+        tupleFaultControl: arc4StaleTupleFaultControl,
+        tupleUiControl: arc4StaleTupleUiControl,
+        interaction: arc4StaleInteraction }));
+  }
+
+  const arc4MissBeforeRaw = arc4StaleReloadedRaw;
+  const arc4MissBeforeState = arc4StaleReloadedState;
+  const arc4MissPress = await pressArc4Keyboard('tame');
+  const arc4MissState = await waitDesktopValue('Arc 4 counter-1 Tame miss', `(()=>{const state=window.__CF_SLICE__.api.state(),
+    c=state?.capture?.actionCoordinator;return state?.capture?.lastOutcome?.startsWith('tame-committed:')
+      &&state?.capture?.lastResult?.hit===false&&state?.capture?.lastResult?.remainingAfter===14
+      &&c?.inFlight===false&&c?.owner?.busy===false&&state?.capture?.card?.pendingWork===0?state:null})()`, 10_000);
+  const arc4MissRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4MissUi = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
+  const arc4MissInteraction = arc4InteractionFromTrace(
+    await readArc4InteractionTrace(true), 'tame', 'keyboard',
+  );
+  const arc4MissBundle = {
+    before: arc4MissBeforeRaw, after: arc4MissRaw,
+    beforeState: arc4MissBeforeState, afterState: arc4MissState,
+    afterUi: arc4MissUi, interaction: arc4MissInteraction,
+  };
+  const arc4Miss = assessArc4CommittedMiss(arc4MissBundle);
+  const arc4MissControl = assessArc4CommittedMiss({
+    ...arc4MissBundle, interaction: { ...arc4MissInteraction, pressCount: 2 },
+  });
+  const arc4MissRuntimeControl = assessArc4CommittedMiss({
+    ...arc4MissBundle,
+    afterState: arc4MutateStateActivePlay(arc4MissState),
+  });
+  const arc4MissV4ScanhitsControl = assessArc4CommittedMiss({
+    ...arc4MissBundle,
+    before: arc4MutateV4Ever(arc4MissBeforeRaw, (ever) => { ever.scanhits += 1; }),
+    after: arc4MutateV4Ever(arc4MissRaw, (ever) => { ever.scanhits += 1; }),
+  });
+  if (!arc4MissPress.armed || !arc4MissPress.target.ok || !arc4Miss.ok
+    || !arc4IsolatedCheck(arc4MissControl, 'interaction')
+    || !arc4IsolatedCheck(arc4MissRuntimeControl, 'runtimeCaptureOrder')
+    || !arc4ExactFailureSet(arc4MissV4ScanhitsControl,
+      ['v4OwnedCompatibility', 'v4OwnedCounters'])
+    || !arc4BrowserOutcomePasses({ released: true,
+      assessment: arc4Miss, surface: 'survey' })) {
+    fails.push('ARC 4 TAME MISS: counter-1 native Tame did not spend exactly one with no ownership/reward grant: '
+      + JSON.stringify({ press: arc4MissPress, assessment: arc4Miss,
+        control: arc4MissControl, runtimeControl: arc4MissRuntimeControl,
+        v4ScanhitsControl: arc4MissV4ScanhitsControl,
+        interaction: arc4MissInteraction }));
+  }
+
+  /* Burn down only the remaining finite budget through Main's registered
+     verb-only writer. This is setup, not player-input evidence: each call is
+     independently bound to a valid before/after durable carrier, one F4
+     revision/receipt/draw pair and one progress increment. The terminal
+     disabled control then returns to a real trusted pointer. */
+  const arc4ProgressUsed = (raw) => raw?.captureState?.biosphereProgress
+    ?.find((row) => row?.worldKey === ARC4_PERTAR_FIXTURE.worldKey)?.used ?? 0;
+  const arc4MutateNewReceipt = (evidence, ordinal, mutate) => {
+    const next = structuredClone(evidence);
+    const index = next.receiptRows.findIndex((row) => row?.ordinal === ordinal);
+    if (index < 0) return null;
+    mutate(next.receiptRows[index]);
+    next.receiptRawRows[index] = JSON.stringify(next.receiptRows[index]);
+    return next;
+  };
+  let arc4BurnRaw = arc4MissRaw;
+  let arc4BurnState = arc4MissState;
+  let arc4BurnUi = arc4MissUi;
+  let arc4BurnComplete = true;
+  const arc4BurnLedger = [];
+  for (let expectedUsed = 3; expectedUsed <= ARC4_PERTAR_FIXTURE.biosphereYield; expectedUsed++) {
+    arc4BurnUi = await waitDesktopValue(`Arc 4 burn-down UI ${expectedUsed - 1}`, `(()=>{const ui=${ARC4_CAPTURE_UI_EXPRESSION};
+      return ui?.budget?.used===${expectedUsed - 1}&&ui?.diagnostics?.pendingWork===0?ui:null})()`, 10_000);
+    const readyRow = arc4BurnUi.rows.find((row) => row?.status === 'ready'
+      && row?.button?.modelEnabled === 'true');
+    if (!readyRow || !['tame', 'scavenge', 'sample'].includes(readyRow.verb)) {
+      arc4BurnComplete = false;
+      fails.push(`ARC 4 WORKED OUT SETUP: no authoritative ready verb at used=${expectedUsed - 1}: `
+        + JSON.stringify(arc4BurnUi));
+      break;
+    }
+    const before = arc4BurnRaw;
+    const beforeUi = arc4BurnUi;
+    const outcome = await evalIn(
+      `window.__CF_SLICE__.api.__smokeCaptureCurrentSurface(${JSON.stringify(readyRow.verb)})`,
+    );
+    const afterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+    const after = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    const assessment = assessArc4BurnStep({
+      before, after, beforeUi, outcome, verb: readyRow.verb, expectedUsed, afterState,
+    });
+    const outcomeControl = structuredClone(outcome);
+    if (outcomeControl?.result) outcomeControl.result.remainingAfter++;
+    const outcomeControlAssessment = assessArc4BurnStep({
+      before, after, beforeUi, outcome: outcomeControl,
+      verb: readyRow.verb, expectedUsed, afterState,
+    });
+    const outcomeRevisionControl = structuredClone(outcome);
+    if (outcomeRevisionControl?.result) {
+      outcomeRevisionControl.result.revision = after.captureRevision === after.revision
+        ? after.captureRevision + 1 : after.captureRevision;
+    }
+    const ordinal = before?.authority?.sessionRng?.ordinal;
+    const kindControlAfter = arc4MutateNewReceipt(after, ordinal, (row) => {
+      row.kind = 'not-capture-attempt';
+    });
+    const witnessControlAfter = arc4MutateNewReceipt(after, ordinal, (row) => {
+      row.witness = 'not-json';
+    });
+    const eventControlAfter = arc4MutateNewReceipt(after, ordinal, (row) => {
+      const witness = JSON.parse(row.witness);
+      witness.event = 'c'.repeat(64);
+      row.witness = canonicalJson(witness);
+    });
+    const digestControlAfter = arc4MutateNewReceipt(after, ordinal, (row) => {
+      const witness = JSON.parse(row.witness);
+      witness.successorDigest = 'd'.repeat(64);
+      row.witness = canonicalJson(witness);
+    });
+    const v4ControlAfter = arc4MutateV4Ever(after, (ever) => { ever.scanhits += 1; });
+    const v4CoordinatedBefore = arc4MutateV4Ever(
+      before, (ever) => { ever.scanhits += 1; },
+    );
+    const v4CoordinatedAfter = arc4MutateV4Ever(
+      after, (ever) => { ever.scanhits += 1; },
+    );
+    const v4MaxGenBefore = arc4MutateV4Ever(
+      before, (ever) => { ever.maxGen += 1; },
+    );
+    const v4MaxGenAfter = arc4MutateV4Ever(
+      after, (ever) => { ever.maxGen += 1; },
+    );
+    const controlBundles = {
+      outcome: {
+        expected: 'outcome', result: outcomeControlAssessment,
+      },
+      outcomeRevision: {
+        expected: ['outcome', 'oneRevision'], result: assessArc4BurnStep({
+          before, after, beforeUi, outcome: outcomeRevisionControl,
+          verb: readyRow.verb, expectedUsed, afterState,
+        }),
+      },
+      receiptKind: {
+        expected: 'receipt', result: assessArc4BurnStep({
+          before, after: kindControlAfter, beforeUi, outcome,
+          verb: readyRow.verb, expectedUsed, afterState,
+        }),
+      },
+      receiptWitness: {
+        expected: 'receipt', result: assessArc4BurnStep({
+          before, after: witnessControlAfter, beforeUi, outcome,
+          verb: readyRow.verb, expectedUsed, afterState,
+        }),
+      },
+      receiptEvent: {
+        expected: 'receipt', result: assessArc4BurnStep({
+          before, after: eventControlAfter, beforeUi, outcome,
+          verb: readyRow.verb, expectedUsed, afterState,
+        }),
+      },
+      receiptDigest: {
+        expected: 'receipt', result: assessArc4BurnStep({
+          before, after: digestControlAfter, beforeUi, outcome,
+          verb: readyRow.verb, expectedUsed, afterState,
+        }),
+      },
+      v4Compatibility: {
+        expected: 'v4OwnedCompatibility', result: assessArc4BurnStep({
+          before, after: v4ControlAfter, beforeUi, outcome,
+          verb: readyRow.verb, expectedUsed, afterState,
+        }),
+      },
+      v4CoordinatedCompatibility: {
+        expected: 'v4OwnedCompatibility', result: assessArc4BurnStep({
+          before: v4CoordinatedBefore, after: v4CoordinatedAfter,
+          beforeUi, outcome, verb: readyRow.verb, expectedUsed, afterState,
+        }),
+      },
+      v4MaxGenCompatibility: {
+        expected: 'v4OwnedCompatibility', result: assessArc4BurnStep({
+          before: v4MaxGenBefore, after: v4MaxGenAfter,
+          beforeUi, outcome, verb: readyRow.verb, expectedUsed, afterState,
+        }),
+      },
+      downwardRuntime: {
+        expected: 'liveAuthority', result: assessArc4BurnStep({
+          before, after, beforeUi, outcome, verb: readyRow.verb, expectedUsed,
+          afterState: arc4MutateStateBelowRaw(after, afterState),
+        }),
+      },
+    };
+    const baselineChecks = Object.values(assessment?.checks ?? {});
+    const baselineGreen = assessment?.ok === true && baselineChecks.length > 0
+      && baselineChecks.every((value) => value === true);
+    const controlsIsolated = Object.fromEntries(Object.entries(controlBundles).map(
+      ([name, control]) => [name, baselineGreen && (Array.isArray(control.expected)
+        ? arc4ExactFailureSet(control.result, control.expected)
+        : arc4IsolatedCheck(control.result, control.expected))],
+    ));
+    const controlIsolated = baselineGreen && Object.values(controlsIsolated).every(Boolean);
+    arc4BurnLedger.push({
+      expectedUsed, verb: readyRow.verb, revision: after.revision,
+      ordinal: after.authority?.sessionRng?.ordinal,
+      receiptCount: after.receiptKeys?.length, hit: outcome?.result?.hit,
+      assessment, baselineGreen, controlsIsolated, controlIsolated,
+    });
+    if (!assessment.ok || !controlIsolated) {
+      arc4BurnComplete = false;
+      fails.push(`ARC 4 WORKED OUT SETUP: verb-only step ${expectedUsed} lost one exact revision/receipt/used increment: `
+        + JSON.stringify(arc4BurnLedger.at(-1)));
+      break;
+    }
+    arc4BurnRaw = after;
+    arc4BurnState = afterState;
+  }
+
+  let arc4Exhaustion = { ok: false, checks: {}, reasons: ['burn-down incomplete'] };
+  if (arc4BurnComplete && arc4ProgressUsed(arc4BurnRaw) === ARC4_PERTAR_FIXTURE.biosphereYield) {
+    const arc4ExhaustedUi = await waitDesktopValue('Arc 4 Worked Out presentation', `(()=>{const ui=${ARC4_CAPTURE_UI_EXPRESSION};
+      return ui?.budget?.used===${ARC4_PERTAR_FIXTURE.biosphereYield}&&ui?.budget?.remaining===0
+        &&ui?.rows?.every((row)=>row.status==='depleted'&&row.button?.disabled===true)?ui:null})()`, 10_000);
+    const arc4SuppressionArmed = await armArc4Interaction();
+    const arc4SuppressionTarget = await evalIn(arc4ButtonTargetExpression('tame', false));
+    const arc4SuppressionBeforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    const arc4SuppressionBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+    if (arc4SuppressionArmed && arc4SuppressionTarget.ok) {
+      await clickDesktopPoint(arc4SuppressionTarget);
+    }
+    await sleep(200);
+    const arc4SuppressionAfterRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    const arc4SuppressionAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+    const arc4SuppressionTrace = await readArc4InteractionTrace(true);
+    const arc4Suppressed = {
+      verb: 'tame',
+      point: {
+        height: arc4SuppressionTarget.height, width: arc4SuppressionTarget.width,
+        disabled: arc4SuppressionTarget.disabled,
+        modelEnabled: arc4SuppressionTarget.modelEnabled,
+      },
+      pointer: arc4SuppressionTrace?.pointer?.[0] ?? null,
+      clickCount: arc4SuppressionTrace?.clicks?.length ?? -1,
+      beforeRaw: arc4SuppressionBeforeRaw, afterRaw: arc4SuppressionAfterRaw,
+      beforeState: arc4SuppressionBeforeState, afterState: arc4SuppressionAfterState,
+    };
+    const arc4ExhaustionBundle = {
+      exhaustedRaw: arc4BurnRaw, exhaustedState: arc4BurnState,
+      exhaustedUi: arc4ExhaustedUi, suppressed: arc4Suppressed,
+    };
+    arc4Exhaustion = assessArc4Exhaustion(arc4ExhaustionBundle);
+    const arc4ExhaustionControl = assessArc4Exhaustion({
+      ...arc4ExhaustionBundle,
+      suppressed: { ...arc4Suppressed, clickCount: 1 },
+    });
+    if (!arc4SuppressionTarget.ok || arc4SuppressionTarget.disabled !== true
+      || arc4SuppressionTrace?.pointer?.length !== 1
+      || arc4SuppressionTrace.pointer[0]?.trusted !== true
+      || arc4SuppressionTrace.pointer[0]?.pointerType !== 'mouse'
+      || arc4SuppressionTrace?.keys?.length !== 0
+      || !arc4Exhaustion.ok
+      || !arc4IsolatedCheck(arc4ExhaustionControl, 'disabledSuppression')) {
+      fails.push('ARC 4 WORKED OUT: finite yield did not disable a 44px real control or suppress its native click/durable mutation: '
+        + JSON.stringify({ target: arc4SuppressionTarget, trace: arc4SuppressionTrace,
+          assessment: arc4Exhaustion, control: arc4ExhaustionControl,
+          burnLedger: arc4BurnLedger }));
+    }
+  } else {
+    fails.push('ARC 4 WORKED OUT: verified verb-only burn-down did not reach exact used=16 authority: '
+      + JSON.stringify({ complete: arc4BurnComplete, used: arc4ProgressUsed(arc4BurnRaw),
+        ledger: arc4BurnLedger }));
+  }
+
+  /* A second isolated full replacement returns to ordinal-zero seed 68 so a
+     known Sample hit can prove the post-durable publication-failure law. It
+     is a separate expedition by design: no observed result is fed back as a
+     plan, draw, snapshot or outcome. */
+  const arc4PublicationFixture = await installArc4PertarFixture(
+    'Arc 4 Pertar publication seed-68 replacement',
+  );
+  const arc4PublicationBeforeUi = arc4PublicationFixture.surface.ui;
+  const arc4PublicationBeforeState = arc4PublicationFixture.surface.state;
+  const arc4PublicationBeforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4PublicationPrecondition = assessArc4CapturePrecondition({
+    raw: arc4PublicationBeforeRaw, state: arc4PublicationBeforeState,
+    ui: arc4PublicationBeforeUi, routeError: null, authorityReady: true,
+  });
+  const arc4PublicationFaultKey = 'cf_slice_arc4_publication_fault_capture_v1';
+  const arc4PublicationBeforeToken = await sliceToken(sess);
+  const arc4PublicationCaptureArmed = await evalIn(`(()=>{const faultKey=${JSON.stringify(arc4PublicationFaultKey)},
+    schema=${JSON.stringify(ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA)},S=window.__CF_SLICE__;
+    sessionStorage.removeItem(faultKey);const handler=()=>{const ui=${ARC4_CAPTURE_UI_EXPRESSION},live=S?.api?.state?.(),
+      state={...live,capture:ui?.captureState??null,persistence:ui?.persistence??null},
+      fault=state?.capture?.actionCoordinator?.lastFault??null;
+      sessionStorage.setItem(faultKey,JSON.stringify({schema,documentToken:S?.documentToken??null,
+        fault:fault===null?null:JSON.parse(JSON.stringify(fault)),state,ui}))};
+    addEventListener('pagehide',handler,{capture:true,once:true});return true})()`);
+  const arc4PublicationArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextArc4Publication()`);
+  const arc4PublicationHoldArmed = await evalIn(`window.__CF_SLICE__.api.__smokeArmProductActionHold()`);
+  const arc4PublicationPress = await pressArc4Keyboard('sample');
+  const arc4PublicationHolding = await waitDesktopValue('Arc 4 publication held no-optimism', `(()=>{const state=window.__CF_SLICE__.api.state(),
+    ui=${ARC4_CAPTURE_UI_EXPRESSION},c=state?.capture?.actionCoordinator;
+    return c?.inFlight===true&&c?.owner?.operation==='arc4.capture.sample'&&c?.hold?.phase==='holding'
+      &&ui?.status?.kind==='pending'?{state,ui}:null})()`);
+  const arc4PublicationHeldRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4PublicationPendingInteraction = arc4InteractionFromTrace(
+    await readArc4InteractionTrace(), 'sample', 'keyboard',
+  );
+  const arc4PublicationPendingBundle = {
+    beforeRaw: arc4PublicationBeforeRaw, duringRaw: arc4PublicationHeldRaw,
+    beforeState: arc4PublicationBeforeState,
+    duringState: arc4PublicationHolding.state,
+    beforeUi: arc4PublicationBeforeUi, duringUi: arc4PublicationHolding.ui,
+    interaction: arc4PublicationPendingInteraction, verb: 'sample',
+  };
+  const arc4PublicationPending = assessArc4CapturePendingNoOptimism(
+    arc4PublicationPendingBundle,
+  );
+  const arc4PublicationPendingControl = assessArc4CapturePendingNoOptimism({
+    ...arc4PublicationPendingBundle,
+    interaction: { ...arc4PublicationPendingInteraction, pressCount: 2 },
+  });
+  const arc4PublicationReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseProductActionHold()`);
+  await waitForSlice(sess, 'Arc 4 publication convergence', {
+    previousToken: arc4PublicationBeforeToken,
+  });
+  await assertBootTickerRunning('Arc 4 publication convergence');
+  const arc4PublicationReady = await waitForF4Writable('Arc 4 publication replacement', {
+    previousToken: arc4PublicationBeforeToken,
+  });
+  const arc4PublicationCaptured = await evalIn(`(()=>{const faultKey=${JSON.stringify(arc4PublicationFaultKey)},
+    raw=sessionStorage.getItem(faultKey);let parsed=null;try{parsed=raw===null?null:JSON.parse(raw)}catch{}
+    sessionStorage.removeItem(faultKey);return {fault:{raw,parsed,
+      cleared:sessionStorage.getItem(faultKey)===null}}})()`);
+  const arc4PublicationCommittedRaw = await evalIn(
+    ARC4_DURABLE_READ_EXPRESSION,
+  );
+  const arc4PublicationReloadedStateBeforeDock = await evalIn(
+    `window.__CF_SLICE__.api.state()`,
+  );
+  const arc4PublicationReloadActivation = await pressArc4SurveyDockKeyboard();
+  const arc4PublicationReloadedSurface = await waitForArc4ReloadedSurface(
+    'Arc 4 publication reloaded current-surface Survey', 1,
+  );
+  const arc4PublicationReloadedRaw = await evalIn(
+    ARC4_DURABLE_READ_EXPRESSION,
+  );
+  const arc4PublicationReloadedState = arc4PublicationReloadedSurface.state;
+  const arc4PublicationReloadedUi = arc4PublicationReloadedSurface.ui;
+  const arc4PublicationInteraction = arc4InteractionFromTrace(
+    await readArc4InteractionTrace(true), 'sample', 'keyboard',
+  );
+  const arc4PublicationBundle = {
+    before: arc4PublicationBeforeRaw, committed: arc4PublicationCommittedRaw,
+    beforeState: arc4PublicationBeforeState,
+    beforeUi: arc4PublicationBeforeUi,
+    pendingUi: arc4PublicationHolding.ui,
+    oldState: arc4PublicationCaptured.fault?.parsed?.state,
+    oldUi: arc4PublicationCaptured.fault?.parsed?.ui,
+    reloaded: arc4PublicationReloadedRaw,
+    reloadedState: arc4PublicationReloadedState,
+    reloadedUi: arc4PublicationReloadedUi,
+    reloadBeforeActivationState: arc4PublicationReloadedStateBeforeDock,
+    armed: arc4PublicationArmed,
+    captureArmed: arc4PublicationCaptureArmed,
+    reloadActivation: arc4PublicationReloadActivation,
+    faultCapture: arc4PublicationCaptured.fault,
+    interaction: arc4PublicationInteraction,
+    priorToken: arc4PublicationBeforeToken,
+    token: arc4PublicationReady.token,
+    waitError: null,
+  };
+  const arc4Publication = assessArc4PublicationConvergence(arc4PublicationBundle);
+  const assessArc4PublicationOldSurfaceControl = (mutate) => {
+    const bundle = structuredClone(arc4PublicationBundle);
+    if (bundle.oldState && bundle.oldUi) {
+      mutate(bundle.oldState, bundle.oldUi);
+      bundle.oldUi.captureState = structuredClone(bundle.oldState.capture);
+      bundle.oldUi.persistence = structuredClone(bundle.oldState.persistence);
+    }
+    const parsed = structuredClone(bundle.faultCapture?.parsed);
+    if (parsed) {
+      parsed.state = structuredClone(bundle.oldState);
+      parsed.ui = structuredClone(bundle.oldUi);
+    }
+    bundle.faultCapture = {
+      raw: parsed === undefined ? null : JSON.stringify(parsed),
+      parsed: parsed ?? null,
+      cleared: true,
+    };
+    return assessArc4PublicationConvergence(bundle);
+  };
+  const arc4PublicationWaitControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle, waitError: 'negative convergence wait',
+  });
+  const arc4PublicationReloadUiControlValue = structuredClone(
+    arc4PublicationReloadedUi,
+  );
+  arc4PublicationReloadUiControlValue.planetsideHeading = 'PLANETSIDE — Wrong';
+  const arc4PublicationReloadUiControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle, reloadedUi: arc4PublicationReloadUiControlValue,
+  });
+  const arc4PublicationReloadActivationValue = structuredClone(
+    arc4PublicationReloadActivation,
+  );
+  arc4PublicationReloadActivationValue.target.ariaControls = 'wrong-surface';
+  const arc4PublicationReloadActivationControl
+    = assessArc4PublicationConvergence({
+      ...arc4PublicationBundle,
+      reloadActivation: arc4PublicationReloadActivationValue,
+    });
+  const arc4PublicationReloadStartsOpenValue = structuredClone(
+    arc4PublicationReloadedStateBeforeDock,
+  );
+  arc4PublicationReloadStartsOpenValue.cardOpen = true;
+  arc4PublicationReloadStartsOpenValue.cardTitle = 'Pertar';
+  const arc4PublicationReloadStartsOpenControl
+    = assessArc4PublicationConvergence({
+      ...arc4PublicationBundle,
+      reloadBeforeActivationState: arc4PublicationReloadStartsOpenValue,
+    });
+  const arc4PublicationReloadRawControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle,
+    reloaded: arc4MutateV4Ever(
+      arc4PublicationReloadedRaw, (ever) => { ever.scanhits += 1; },
+    ),
+  });
+  const arc4PublicationInteractionControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle,
+    interaction: { ...arc4PublicationInteraction, pressCount: 2 },
+  });
+  const arc4PublicationFaultControlParsed = structuredClone(
+    arc4PublicationCaptured.fault?.parsed,
+  );
+  if (arc4PublicationFaultControlParsed?.fault) {
+    arc4PublicationFaultControlParsed.fault.outcome = 'committed';
+    arc4PublicationFaultControlParsed.state.capture.actionCoordinator.lastFault
+      = structuredClone(arc4PublicationFaultControlParsed.fault);
+    arc4PublicationFaultControlParsed.ui.captureState.actionCoordinator.lastFault
+      = structuredClone(arc4PublicationFaultControlParsed.fault);
+  }
+  const arc4PublicationFaultControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle,
+    oldState: arc4PublicationFaultControlParsed?.state,
+    oldUi: arc4PublicationFaultControlParsed?.ui,
+    faultCapture: {
+      raw: JSON.stringify(arc4PublicationFaultControlParsed),
+      parsed: arc4PublicationFaultControlParsed,
+      cleared: true,
+    },
+  });
+  const arc4PublicationTupleStateParsed = structuredClone(
+    arc4PublicationCaptured.fault?.parsed,
+  );
+  if (arc4PublicationTupleStateParsed?.state?.capture) {
+    arc4PublicationTupleStateParsed.state.capture.catalogueSpecies += 1;
+  }
+  const arc4PublicationTupleStateControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle,
+    faultCapture: {
+      raw: JSON.stringify(arc4PublicationTupleStateParsed),
+      parsed: arc4PublicationTupleStateParsed, cleared: true,
+    },
+  });
+  const arc4PublicationTupleFaultParsed = structuredClone(
+    arc4PublicationCaptured.fault?.parsed,
+  );
+  if (arc4PublicationTupleFaultParsed?.state?.capture?.actionCoordinator) {
+    arc4PublicationTupleFaultParsed.state.capture.actionCoordinator.lastFault = null;
+  }
+  const arc4PublicationTupleFaultControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle,
+    faultCapture: {
+      raw: JSON.stringify(arc4PublicationTupleFaultParsed),
+      parsed: arc4PublicationTupleFaultParsed, cleared: true,
+    },
+  });
+  const arc4PublicationTupleUiParsed = structuredClone(
+    arc4PublicationCaptured.fault?.parsed,
+  );
+  if (arc4PublicationTupleUiParsed?.ui) {
+    arc4PublicationTupleUiParsed.ui.planetsideHeading = 'PLANETSIDE — Tuple Wrong';
+  }
+  const arc4PublicationTupleUiControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle,
+    faultCapture: {
+      raw: JSON.stringify(arc4PublicationTupleUiParsed),
+      parsed: arc4PublicationTupleUiParsed, cleared: true,
+    },
+  });
+  const arc4PublicationV4ScanhitsControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle,
+    before: arc4MutateV4Ever(
+      arc4PublicationBeforeRaw, (ever) => { ever.scanhits += 1; },
+    ),
+    committed: arc4MutateV4Ever(
+      arc4PublicationReloadedRaw, (ever) => { ever.scanhits += 1; },
+    ),
+    reloaded: arc4MutateV4Ever(
+      arc4PublicationReloadedRaw, (ever) => { ever.scanhits += 1; },
+    ),
+  });
+  const arc4PublicationReloadDownwardRuntimeControl
+    = assessArc4PublicationConvergence({
+      ...arc4PublicationBundle,
+      reloadedState: arc4MutateStateBelowRaw(
+        arc4PublicationReloadedRaw, arc4PublicationReloadedState,
+      ),
+    });
+  const arc4PublicationReloadUpwardRuntimeControl
+    = assessArc4PublicationConvergence({
+      ...arc4PublicationBundle,
+      reloadedState: arc4MutateStateActivePlay(arc4PublicationReloadedState),
+    });
+  const arc4PublicationPreservedBudgetControl
+    = assessArc4PublicationOldSurfaceControl((_oldState, oldUi) => {
+      const budget = oldUi?.budget;
+      if (!Number.isSafeInteger(budget?.used)
+        || !Number.isSafeInteger(budget?.remaining) || budget.remaining <= 0) return;
+      const priorUsed = budget.used;
+      const priorRemaining = budget.remaining;
+      budget.used += 1;
+      budget.remaining -= 1;
+      budget.text = budget.text
+        .replace(`${priorRemaining} of ${budget.yield} capture attempts remain`,
+          `${budget.remaining} of ${budget.yield} capture attempts remain`)
+        .replace(`${priorUsed} spent this active-play cycle`,
+          `${budget.used} spent this active-play cycle`);
+    });
+  const arc4PublicationOldRuntimeControl
+    = assessArc4PublicationOldSurfaceControl((oldState) => {
+      const runtime = oldState?.persistence?.runtime;
+      if (Number.isSafeInteger(runtime?.sessionOrdinal)) runtime.sessionOrdinal += 1;
+    });
+  const arc4PublicationRenderedFutureControl
+    = assessArc4PublicationOldSurfaceControl((_oldState, oldUi) => {
+      const runtime = oldUi?.persistence?.runtime;
+      const budget = oldUi?.budget;
+      if (!Number.isSafeInteger(runtime?.activePlayMs)
+        || !Number.isSafeInteger(budget?.cycle)) return;
+      const renderedActivePlayMs = runtime.activePlayMs + 1;
+      budget.recoveryRemainingActivePlayMs
+        = (budget.cycle + 1) * ARC4_ACTIVE_PLAY_CYCLE_MS - renderedActivePlayMs;
+      budget.text = budget.text.replace(
+        arc4CountdownPattern,
+        arc4CountdownText(budget.recoveryRemainingActivePlayMs),
+      );
+    });
+  const arc4PublicationExcessiveUiLagControl
+    = assessArc4PublicationOldSurfaceControl((oldState, oldUi) => {
+      const budget = oldUi?.budget;
+      const runtime = oldState?.persistence?.runtime;
+      const committedActivePlayMs
+        = arc4PublicationCommittedRaw?.authority?.activePlayMs;
+      if (!Number.isSafeInteger(budget?.cycle)
+        || !Number.isSafeInteger(budget?.recoveryRemainingActivePlayMs)
+        || !Number.isSafeInteger(committedActivePlayMs) || !runtime) return;
+      const renderedActivePlayMs = (budget.cycle + 1)
+        * ARC4_ACTIVE_PLAY_CYCLE_MS - budget.recoveryRemainingActivePlayMs;
+      runtime.activePlayMs = Math.max(
+        committedActivePlayMs, renderedActivePlayMs,
+      ) + 10_001;
+    });
+  const arc4PublicationPendingBaselineChecks = Object.values(
+    arc4PublicationPending?.checks ?? {},
+  );
+  const arc4PublicationPendingBaselineGreen = arc4PublicationPending?.ok === true
+    && arc4PublicationPendingBaselineChecks.length > 0
+    && arc4PublicationPendingBaselineChecks.every((value) => value === true);
+  const arc4PublicationPendingControlIsolated
+    = arc4PublicationPendingBaselineGreen
+      && arc4IsolatedCheck(arc4PublicationPendingControl, 'oneTrustedAction');
+  const arc4PublicationControlBundles = {
+    wait: { expected: 'waitSettled', result: arc4PublicationWaitControl },
+    reloadUi: { expected: 'readOnlyReload', result: arc4PublicationReloadUiControl },
+    reloadActivation: {
+      expected: 'reloadActivation', result: arc4PublicationReloadActivationControl,
+    },
+    reloadStartsOpen: {
+      expected: 'reloadStartsClosed', result: arc4PublicationReloadStartsOpenControl,
+    },
+    reloadRaw: {
+      expected: 'readOnlyReload', result: arc4PublicationReloadRawControl,
+    },
+    interaction: {
+      expected: 'oneNativeAction', result: arc4PublicationInteractionControl,
+    },
+    fault: { expected: 'faultSettlement', result: arc4PublicationFaultControl },
+    tupleState: { expected: 'pagehideTuple', result: arc4PublicationTupleStateControl },
+    tupleFault: { expected: 'pagehideTuple', result: arc4PublicationTupleFaultControl },
+    tupleUi: { expected: 'pagehideTuple', result: arc4PublicationTupleUiControl },
+    v4Scanhits: {
+      expected: ['committedOutcome', 'v4OwnedCounters'],
+      result: arc4PublicationV4ScanhitsControl,
+    },
+    reloadDownwardRuntime: {
+      expected: 'readOnlyReload', result: arc4PublicationReloadDownwardRuntimeControl,
+    },
+    reloadUpwardRuntime: {
+      expected: 'readOnlyReload', result: arc4PublicationReloadUpwardRuntimeControl,
+    },
+    preservedBudget: {
+      expected: 'preservedUiFacts', result: arc4PublicationPreservedBudgetControl,
+    },
+    oldRuntime: {
+      expected: 'pagehideRuntime', result: arc4PublicationOldRuntimeControl,
+    },
+    renderedFuture: {
+      expected: 'oldUiTimeDirection', result: arc4PublicationRenderedFutureControl,
+    },
+    excessiveUiLag: {
+      expected: 'oldUiTimeDirection', result: arc4PublicationExcessiveUiLagControl,
+    },
+  };
+  const arc4PublicationBaselineChecks = Object.values(
+    arc4Publication?.checks ?? {},
+  );
+  const arc4PublicationBaselineGreen = arc4Publication?.ok === true
+    && arc4PublicationBaselineChecks.length > 0
+    && arc4PublicationBaselineChecks.every((value) => value === true);
+  const arc4PublicationControlsIsolated = Object.fromEntries(
+    Object.entries(arc4PublicationControlBundles).map(([name, control]) => [
+      name,
+      arc4PublicationBaselineGreen && (Array.isArray(control.expected)
+        ? arc4ExactFailureSet(control.result, control.expected)
+        : arc4IsolatedCheck(control.result, control.expected)),
+    ]),
+  );
+  const arc4PublicationControlIsolated = arc4PublicationBaselineGreen
+    && Object.values(arc4PublicationControlsIsolated).every(Boolean);
+  if (!arc4PublicationPrecondition.ok
+    || !arc4PublicationFixture.setupAssessment?.ok
+    || arc4PublicationFixture.seedWitness?.seedCalls !== 1
+    || arc4PublicationFixture.seedWitness?.nativeFallbackCalls !== 0
+    || !arc4PublicationCaptureArmed || !arc4PublicationArmed
+    || !arc4PublicationHoldArmed || !arc4PublicationPress.armed
+    || !arc4PublicationPress.target.ok || !arc4PublicationPending.ok
+    || !arc4PublicationPendingControlIsolated
+    || !arc4PublicationCaptured.fault?.cleared
+    || !arc4PublicationControlIsolated
+    || !arc4PertarSurfaceRouteExact(arc4PublicationReloadedStateBeforeDock)
+    || !arc4BrowserOutcomePasses({ released: arc4PublicationReleased,
+      assessment: arc4Publication, surface: 'survey' })) {
+    fails.push('ARC 4 PUBLICATION CONVERGENCE: isolated seed-68 native Sample did not reload its one committed hit without optimism/retry: '
+      + JSON.stringify({ fixture: arc4PublicationFixture,
+        precondition: arc4PublicationPrecondition,
+        captureArmed: arc4PublicationCaptureArmed, armed: arc4PublicationArmed,
+        holdArmed: arc4PublicationHoldArmed, released: arc4PublicationReleased,
+        press: arc4PublicationPress, pending: arc4PublicationPending,
+        pendingControl: arc4PublicationPendingControl,
+        pendingBaselineGreen: arc4PublicationPendingBaselineGreen,
+        pendingControlIsolated: arc4PublicationPendingControlIsolated,
+        captured: arc4PublicationCaptured, assessment: arc4Publication,
+        baselineGreen: arc4PublicationBaselineGreen,
+        controlsIsolated: arc4PublicationControlsIsolated,
+        controlIsolated: arc4PublicationControlIsolated,
+        waitControl: arc4PublicationWaitControl,
+        reloadUiControl: arc4PublicationReloadUiControl,
+        reloadActivation: arc4PublicationReloadActivation,
+        reloadActivationControl: arc4PublicationReloadActivationControl,
+        reloadStartsOpenControl: arc4PublicationReloadStartsOpenControl,
+        reloadRawControl: arc4PublicationReloadRawControl,
+        reloadedStateBeforeDock: arc4PublicationReloadedStateBeforeDock,
+        interactionControl: arc4PublicationInteractionControl,
+        faultControl: arc4PublicationFaultControl,
+        tupleStateControl: arc4PublicationTupleStateControl,
+        tupleFaultControl: arc4PublicationTupleFaultControl,
+        tupleUiControl: arc4PublicationTupleUiControl,
+        v4ScanhitsControl: arc4PublicationV4ScanhitsControl,
+        reloadDownwardRuntimeControl: arc4PublicationReloadDownwardRuntimeControl,
+        reloadUpwardRuntimeControl: arc4PublicationReloadUpwardRuntimeControl,
+        preservedBudgetControl: arc4PublicationPreservedBudgetControl,
+        oldRuntimeControl: arc4PublicationOldRuntimeControl,
+        renderedFutureControl: arc4PublicationRenderedFutureControl,
+        excessiveUiLagControl: arc4PublicationExcessiveUiLagControl,
+        interaction: arc4PublicationInteraction }));
+  }
+
+  arc4SliceLedger = {
+    schema: 'cf-v2-slice-arc4-ledger/v1',
+    stages: [...ARC4_SLICE_LEDGER_STAGES],
+    burnSteps: arc4BurnLedger.length,
+    recoveryClaimed: false,
+    ok: arc4Precondition.ok === true
+      && arc4HitPending.ok === true
+      && arc4Hit.ok === true
+      && arc4Storage.ok === true
+      && arc4Stale.ok === true
+      && arc4Miss.ok === true
+      && arc4BurnComplete === true
+      && arc4BurnLedger.length === 14
+      && arc4BurnLedger.every((entry) => (
+        entry?.assessment?.ok === true && entry?.controlIsolated === true
+      ))
+      && arc4Exhaustion.ok === true
+      && arc4PublicationPrecondition.ok === true
+      && arc4PublicationPending.ok === true
+      && arc4Publication.ok === true
+      && arc4PublicationReleased === true,
+  };
+  if (JSON.stringify(arc4SliceLedger) !== ARC4_SLICE_LEDGER_EXPECTED_JSON) {
+    fails.push('ARC 4 STRUCTURED LEDGER: exact stage order, 14 burn steps, or non-recovery PASS truth failed: '
+      + JSON.stringify(arc4SliceLedger));
   }
 
   /* A current one-key Training snapshot can be perfectly source-proven and
@@ -13714,5 +15665,7 @@ if (fails.length) {
   process.exit(1);
 }
 console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail/Equip, exact carrier↔legacy↔DOM parity, conditional comparison, one receipt, reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
+console.log('SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18-namespace/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);

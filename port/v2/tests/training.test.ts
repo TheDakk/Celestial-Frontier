@@ -103,14 +103,27 @@ function driveToGraduation(training: typeof import('../apps/game/src/training.js
 }
 
 function graduationCopyIsTruthful(html: string): boolean {
-  const copy = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const copy = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
+    .replace(/\s+([,.;:])/g, '$1').trim();
   return /short drill stays focused on real navigation/i.test(copy)
     && /open Engineering &amp; Shipyard from the 🛠 control/i.test(copy)
     && /grounded lifeless world can expose Mine/i.test(copy)
     && /proven star with the right drive can expose Skim/i.test(copy)
     && /Research and fixed Fabricator rows enable only actions whose effects are connected/i.test(copy)
-    && /does not discover or capture its life/i.test(copy)
+    && /living world, Planetside offers Tame, Scavenge, and Sample/i.test(copy)
+    && /each chooses uniformly from its eligible species across the full biosphere, not only the at-most-eight-row preview/i.test(copy)
+    && /All three share finite Biosphere Yield/i.test(copy)
+    && /hit or miss spends 1 attempt/i.test(copy)
+    && /pool fully recovers at the next 20-minute active-play cycle/i.test(copy)
+    && /never while the game is closed/i.test(copy)
+    && /navigation drill makes no capture attempt[^.!?]{0,64}use those actions after Finish/i.test(copy)
+    && /Capture does not bank the Charter’s separate bioscan milestone[^.!?]{0,64}writer remains unavailable/i.test(copy)
     && !/(?:Surveying|landing)[^.!?]{0,80}(?:discovers|captures) (?:its )?life/i.test(copy)
+    && !/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(copy)
+    && !/miss(?:es)?[^.!?]{0,48}(?:cost|spend)s? (?:nothing|no Yield|zero)/i.test(copy)
+    && !/(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?)[^.!?]{0,32}(?:while|when)[^.!?]{0,32}(?:closed|offline)/i.test(copy)
+    && !/(?:drill|Training)[^.!?]{0,64}(?:makes|performs) a capture attempt/i.test(copy)
+    && !/Capture (?:banks|advances|counts)[^.!?]{0,48}(?:Charter|bioscan)/i.test(copy)
     && !/(?:all|every) Research[^.!?]{0,80}(?:available|purchasable)/i.test(copy);
 }
 
@@ -146,6 +159,21 @@ describe('Field Training completion transaction UI', () => {
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation + ' Surveying a living world captures its life.',
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation.replace(
+        'each chooses uniformly from its eligible species across the full biosphere',
+        'each targets the selected preview row',
+      ),
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation.replace('a hit or miss spends 1 attempt', 'misses spend nothing'),
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation + ' The Yield pool recovers while the game is closed.',
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation + ' Capture advances the Charter bioscan milestone.',
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation + ' Every Research row is now purchasable.',

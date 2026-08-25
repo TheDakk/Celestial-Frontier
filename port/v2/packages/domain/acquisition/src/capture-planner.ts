@@ -4,6 +4,7 @@
    and truthful OwnershipSuccessorV1 construction. The app writer is exposed
    only through the registered all-scenario, no-value capacity transaction. */
 import { describeSpecies, type Genome } from '@cf/domain-genome';
+import { MAX_ACTIVE_PLAY_MS } from '@cf/domain-progression';
 import { clamp } from '@cf/domain-rand';
 import { ringGrade } from '@cf/domain-strays';
 import {
@@ -29,6 +30,7 @@ import {
 } from './model.js';
 import { canonicalJson, sha256Hex } from './canonical.js';
 import {
+  ACTIVE_PLAY_CAPTURE_CYCLE_MS,
   isAcquisitionSnapshotV1,
   isCaptureDrawBundleV1,
   type AcquisitionCandidateV1,
@@ -53,7 +55,7 @@ export const CAPTURE_PLANNER_POLICY_BLOCKERS_V1 = Object.freeze({
   breedingProvenance: 'unsupported-by-ownership-v1',
   guardianProvenance: 'unsupported-by-ownership-v1',
   writerExposed: true,
-  playerControlExposed: false,
+  playerControlExposed: true,
 } as const);
 
 export interface CaptureChanceInputV1 {
@@ -174,6 +176,200 @@ function captureTierFromSnapshotCandidateV1(
   return tier as CaptureTierV1;
 }
 
+export const CAPTURE_PRESENTATION_SCHEMA = 'cf-v2-capture-presentation/v1' as const;
+export const CAPTURE_PRESENTATION_FENCE_PREFIX = 'cpf1:' as const;
+
+export interface CapturePresentationObservationV1 {
+  /** Current F4 runtime observation. This may be newer than the persisted
+   * snapshot, but may never precede it or exceed F4's active-play cap. */
+  readonly observedActivePlayMs: number;
+}
+
+export type CapturePresentationRefusalReasonV1 =
+  | 'snapshot-unregistered'
+  | 'observation-invalid'
+  | 'observation-before-snapshot';
+
+export interface CapturePresentationRefusalV1 {
+  readonly kind: 'refused';
+  readonly reason: CapturePresentationRefusalReasonV1;
+}
+
+export type CapturePresentationVerbStatusV1 =
+  | 'ready'
+  | 'empty'
+  | 'completed'
+  | 'depleted'
+  | 'unavailable';
+
+export type CapturePresentationVerbReasonV1 =
+  | 'ready'
+  | 'natural-pool-empty'
+  | 'completed-this-cycle'
+  | 'biosphere-yield-depleted'
+  | 'revision-exhausted'
+  | 'legacy-biosphere-unresolved'
+  | 'future-cycle-progress'
+  | 'model-row-capacity';
+
+export interface CapturePresentationChanceV1 {
+  readonly minimum: number;
+  readonly maximum: number;
+  readonly arithmeticMean: number;
+  readonly minimumPercent: string;
+  readonly maximumPercent: string;
+  readonly arithmeticMeanPercent: string;
+}
+
+export interface CapturePresentationVerbV1 {
+  readonly verb: AcquisitionVerbV1;
+  /** The authoritative full biosphere size, repeated here so each verb row is
+   * independently auditable and cannot be mistaken for the preview strip. */
+  readonly fullRosterCount: number;
+  /** Every naturally matching species before current-cycle success exclusion. */
+  readonly naturalPoolCount: number;
+  /** The exact uniformly selected pool if an attempt is currently permitted. */
+  readonly eligiblePoolCount: number;
+  readonly successfulExclusionCount: number;
+  readonly status: CapturePresentationVerbStatusV1;
+  readonly reason: CapturePresentationVerbReasonV1;
+  /** Null only when there is no candidate that could be drawn. */
+  readonly chance: CapturePresentationChanceV1 | null;
+}
+
+export interface CapturePresentationBiosphereYieldV1 {
+  readonly total: number;
+  readonly used: number;
+  readonly remaining: number;
+  readonly cycle: number;
+  readonly cycleDurationActivePlayMs: typeof ACTIVE_PLAY_CAPTURE_CYCLE_MS;
+  readonly recoveredSinceSnapshot: boolean;
+  /** Null only after F4's bounded active-play clock can no longer reach a new
+   * capture cycle. Wall-clock or hidden time never appears in this model. */
+  readonly nextCycleAtActivePlayMs: number | null;
+  readonly activePlayMsUntilNextCycle: number | null;
+}
+
+export interface CapturePresentationReadyV1 {
+  readonly kind: 'ready';
+  readonly schema: typeof CAPTURE_PRESENTATION_SCHEMA;
+  readonly snapshotFingerprint: string;
+  readonly worldKey: AcquisitionSnapshotV1['worldKey'];
+  readonly observedActivePlayMs: number;
+  readonly fullRosterCount: number;
+  readonly biosphereYield: CapturePresentationBiosphereYieldV1;
+  readonly verbs: Readonly<{
+    tame: CapturePresentationVerbV1;
+    scavenge: CapturePresentationVerbV1;
+    sample: CapturePresentationVerbV1;
+  }>;
+}
+
+export type CapturePresentationOutcomeV1 =
+  | CapturePresentationRefusalV1
+  | CapturePresentationReadyV1;
+
+function presentationRefusal(
+  reason: CapturePresentationRefusalReasonV1,
+): CapturePresentationRefusalV1 {
+  return Object.freeze({ kind: 'refused', reason });
+}
+
+/** Locale-independent capture percentage copy. Raw probabilities remain on
+ * the projection; this bounded display helper never rounds a nonzero value to
+ * a deceptive `0%`. */
+export function formatCaptureChancePercentV1(chanceValue: unknown): string {
+  if (typeof chanceValue !== 'number' || !Number.isFinite(chanceValue)
+    || chanceValue < 0 || chanceValue > 1) {
+    throw new RangeError('capture chance must be a finite number in [0, 1]');
+  }
+  if (chanceValue === 0) return '0%';
+  const percentage = chanceValue * 100;
+  if (percentage < 0.01) return '<0.01%';
+  return `${percentage.toFixed(2).replace(/\.?0+$/u, '')}%`;
+}
+
+function observedActivePlayMs(
+  value: unknown,
+): number | null {
+  try {
+    if (value === null || typeof value !== 'object' || Array.isArray(value)
+      || Object.getPrototypeOf(value) !== Object.prototype) return null;
+    const keys = Reflect.ownKeys(value);
+    if (keys.length !== 1 || keys[0] !== 'observedActivePlayMs') return null;
+    const descriptor = Object.getOwnPropertyDescriptor(value, 'observedActivePlayMs');
+    if (!descriptor || !Object.hasOwn(descriptor, 'value') || !descriptor.enumerable) return null;
+    const observed = descriptor.value;
+    return Number.isSafeInteger(observed) && (observed as number) >= 0
+      && (observed as number) <= MAX_ACTIVE_PLAY_MS
+      ? observed as number
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+interface CapturePoolsV1 {
+  readonly priorProgress: BiosphereProgressV1 | null;
+  readonly sameCycle: boolean;
+  readonly successful: readonly BiosphereSuccessV1[];
+  readonly natural: readonly AcquisitionCandidateV1[];
+  readonly eligible: readonly AcquisitionCandidateV1[];
+}
+
+function capturePoolsForCycleV1(
+  snapshot: AcquisitionSnapshotV1,
+  verb: AcquisitionVerbV1,
+  cycle: number,
+): CapturePoolsV1 {
+  const priorProgress = snapshot.ownership.biosphereProgress.find((row) => (
+    row.worldKey === snapshot.worldKey
+  )) ?? null;
+  const sameCycle = priorProgress !== null && priorProgress.cycle === cycle;
+  const successful = Object.freeze(sameCycle ? [...priorProgress.successful] : []);
+  const successfulKeys = new Set(successful.map((row) => (
+    `${row.speciesId}\u0000${row.source}`
+  )));
+  const natural = Object.freeze(snapshot.candidates.filter((candidate) => (
+    matchingKingdom(candidate, verb)
+  )));
+  const eligible = Object.freeze(natural.filter((candidate) => (
+    !successfulKeys.has(`${candidate.identity.speciesId}\u0000${verb}`)
+  )));
+  return Object.freeze({ priorProgress, sameCycle, successful, natural, eligible });
+}
+
+function capturePresentationChanceV1(
+  snapshot: AcquisitionSnapshotV1,
+  verb: AcquisitionVerbV1,
+  candidates: readonly AcquisitionCandidateV1[],
+): CapturePresentationChanceV1 | null {
+  if (candidates.length === 0) return null;
+  let minimum = Number.POSITIVE_INFINITY;
+  let maximum = Number.NEGATIVE_INFINITY;
+  let sum = 0;
+  for (const candidate of candidates) {
+    const chance = captureChanceV1({
+      verb,
+      tier: captureTierFromSnapshotCandidateV1(candidate, snapshot),
+      ring: snapshot.captureRing,
+      contactCapturePoints: snapshot.contactCapturePoints,
+    });
+    minimum = Math.min(minimum, chance);
+    maximum = Math.max(maximum, chance);
+    sum += chance;
+  }
+  const arithmeticMean = sum / candidates.length;
+  return Object.freeze({
+    minimum,
+    maximum,
+    arithmeticMean,
+    minimumPercent: formatCaptureChancePercentV1(minimum),
+    maximumPercent: formatCaptureChancePercentV1(maximum),
+    arithmeticMeanPercent: formatCaptureChancePercentV1(arithmeticMean),
+  });
+}
+
 function globalOwnershipRows(state: OwnershipStateV1): number {
   let rows = state.catalogSpecies.length + state.discoveries.length + state.creatures.length
     + state.specimenLots.length + state.biosphereProgress.length;
@@ -184,6 +380,191 @@ function globalOwnershipRows(state: OwnershipStateV1): number {
     }
   }
   return rows;
+}
+
+function presentationVerbV1(
+  snapshot: AcquisitionSnapshotV1,
+  verb: AcquisitionVerbV1,
+  cycle: number,
+  remaining: number,
+): CapturePresentationVerbV1 {
+  const pools = capturePoolsForCycleV1(snapshot, verb, cycle);
+  const naturalPoolCount = pools.natural.length;
+  const eligiblePoolCount = pools.eligible.length;
+  const successfulExclusionCount = naturalPoolCount - eligiblePoolCount;
+  let status: CapturePresentationVerbStatusV1 = 'ready';
+  let reason: CapturePresentationVerbReasonV1 = 'ready';
+  if (snapshot.ownership.revision === MAX_OWNERSHIP_REVISION) {
+    status = 'unavailable'; reason = 'revision-exhausted';
+  } else if (snapshot.ownership.legacyBioX.some((row) => (
+    row.legacyPlanetSeed === snapshot.planetSeed
+  ))) {
+    status = 'unavailable'; reason = 'legacy-biosphere-unresolved';
+  } else if (pools.priorProgress !== null && pools.priorProgress.cycle > cycle) {
+    status = 'unavailable'; reason = 'future-cycle-progress';
+  } else if (naturalPoolCount === 0) {
+    status = 'empty'; reason = 'natural-pool-empty';
+  } else if (eligiblePoolCount === 0) {
+    status = 'completed'; reason = 'completed-this-cycle';
+  } else if (remaining === 0) {
+    status = 'depleted'; reason = 'biosphere-yield-depleted';
+  } else {
+    const cataloguedSpecies = new Set(snapshot.ownership.catalogSpecies.map((row) => row.speciesId));
+    const anyFirstForSpecies = pools.eligible.some((candidate) => (
+      !cataloguedSpecies.has(candidate.identity.speciesId)
+    ));
+    const requiredHitHeadroom = 3 + (pools.priorProgress === null ? 1 : 0)
+      + (anyFirstForSpecies ? 1 : 0);
+    if (globalOwnershipRows(snapshot.ownership) > MAX_OWNERSHIP_ROWS - requiredHitHeadroom) {
+      status = 'unavailable'; reason = 'model-row-capacity';
+    }
+  }
+  return Object.freeze({
+    verb,
+    fullRosterCount: snapshot.candidates.length,
+    naturalPoolCount,
+    eligiblePoolCount,
+    successfulExclusionCount,
+    status,
+    reason,
+    chance: capturePresentationChanceV1(snapshot, verb, pools.eligible),
+  });
+}
+
+/** Pure player-facing projection from the exact registered capture snapshot.
+ * The caller may supply a newer bounded F4 active-play observation solely to
+ * show cycle recovery. This function neither consumes F4 draws nor returns an
+ * ownership successor, and it never mutates or persists the observed cycle. */
+export function projectCapturePresentationV1(
+  snapshotValue: unknown,
+  observationValue: unknown,
+): CapturePresentationOutcomeV1 {
+  if (!isAcquisitionSnapshotV1(snapshotValue)) {
+    return presentationRefusal('snapshot-unregistered');
+  }
+  const snapshot = snapshotValue;
+  const observed = observedActivePlayMs(observationValue);
+  if (observed === null) return presentationRefusal('observation-invalid');
+  if (observed < snapshot.activePlayMs) {
+    return presentationRefusal('observation-before-snapshot');
+  }
+  const cycle = Math.floor(observed / ACTIVE_PLAY_CAPTURE_CYCLE_MS);
+  const priorProgress = snapshot.ownership.biosphereProgress.find((row) => (
+    row.worldKey === snapshot.worldKey
+  )) ?? null;
+  const sameCycle = priorProgress !== null && priorProgress.cycle === cycle;
+  const used = sameCycle ? priorProgress.used : 0;
+  const remaining = Math.max(0, snapshot.biosphereYield - used);
+  const nextCycle = (cycle + 1) * ACTIVE_PLAY_CAPTURE_CYCLE_MS;
+  const nextCycleAtActivePlayMs = nextCycle <= MAX_ACTIVE_PLAY_MS ? nextCycle : null;
+  const biosphereYield: CapturePresentationBiosphereYieldV1 = Object.freeze({
+    total: snapshot.biosphereYield,
+    used,
+    remaining,
+    cycle,
+    cycleDurationActivePlayMs: ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+    recoveredSinceSnapshot: cycle > snapshot.cycle,
+    nextCycleAtActivePlayMs,
+    activePlayMsUntilNextCycle: nextCycleAtActivePlayMs === null
+      ? null
+      : nextCycleAtActivePlayMs - observed,
+  });
+  const ready: CapturePresentationReadyV1 = Object.freeze({
+    kind: 'ready',
+    schema: CAPTURE_PRESENTATION_SCHEMA,
+    snapshotFingerprint: snapshot.fingerprint,
+    worldKey: snapshot.worldKey,
+    observedActivePlayMs: observed,
+    fullRosterCount: snapshot.candidates.length,
+    biosphereYield,
+    verbs: Object.freeze({
+      tame: presentationVerbV1(snapshot, 'tame', cycle, remaining),
+      scavenge: presentationVerbV1(snapshot, 'scavenge', cycle, remaining),
+      sample: presentationVerbV1(snapshot, 'sample', cycle, remaining),
+    }),
+  });
+  return ready;
+}
+
+/** Opaque consent fence for one rendered capture opportunity. It binds every
+ * semantic input that can change the selected pool, displayed odds, or shared
+ * attempt budget, while deliberately excluding the live countdown and F4 RNG
+ * cursor. A click therefore remains valid while time advances inside the same
+ * active-play cycle, but cannot silently become a different capture action. */
+export function capturePresentationFenceV1(
+  snapshotValue: unknown,
+  observationValue: unknown,
+): string | null {
+  try {
+    if (!isAcquisitionSnapshotV1(snapshotValue)) return null;
+    const snapshot = snapshotValue;
+    const presentation = projectCapturePresentationV1(snapshot, observationValue);
+    if (presentation.kind !== 'ready') return null;
+    const cataloguedSpecies = new Set(snapshot.ownership.catalogSpecies.map((row) => (
+      row.speciesId
+    )));
+    const cycle = presentation.biosphereYield.cycle;
+    const verbs = (['tame', 'scavenge', 'sample'] as const).map((verb) => {
+      const projected = presentation.verbs[verb];
+      const pools = capturePoolsForCycleV1(snapshot, verb, cycle);
+      return {
+        verb,
+        naturalPoolCount: projected.naturalPoolCount,
+        eligiblePoolCount: projected.eligiblePoolCount,
+        successfulExclusionCount: projected.successfulExclusionCount,
+        status: projected.status,
+        reason: projected.reason,
+        chance: projected.chance === null ? null : {
+          minimum: projected.chance.minimum,
+          maximum: projected.chance.maximum,
+          arithmeticMean: projected.chance.arithmeticMean,
+        },
+        eligible: pools.eligible.map((candidate) => {
+          const tier = captureTierFromSnapshotCandidateV1(candidate, snapshot);
+          return {
+            sourceOrdinal: candidate.sourceOrdinal,
+            legacyCatalogueId: candidate.legacyCatalogueId,
+            speciesId: candidate.identity.speciesId,
+            genomeIdentity: candidate.identity.genomeIdentity,
+            tier,
+            chance: captureChanceV1({
+              verb,
+              tier,
+              ring: snapshot.captureRing,
+              contactCapturePoints: snapshot.contactCapturePoints,
+            }),
+            firstForSpecies: !cataloguedSpecies.has(candidate.identity.speciesId),
+          };
+        }),
+      };
+    });
+    return `${CAPTURE_PRESENTATION_FENCE_PREFIX}${sha256Hex(canonicalJson({
+      schema: 'cf-v2-capture-presentation-fence/v1',
+      worldKey: snapshot.worldKey,
+      planetSeed: snapshot.planetSeed,
+      ecologyEpoch: snapshot.ecologyEpoch,
+      fullRosterFingerprint: snapshot.fullRosterFingerprint,
+      biosphereKey: snapshot.biosphereKey,
+      candidates: snapshot.candidates.map((candidate) => ({
+        sourceOrdinal: candidate.sourceOrdinal,
+        legacyCatalogueId: candidate.legacyCatalogueId,
+        speciesId: candidate.identity.speciesId,
+        genomeIdentity: candidate.identity.genomeIdentity,
+      })),
+      biosphereYield: snapshot.biosphereYield,
+      captureRing: snapshot.captureRing,
+      capabilityFingerprint: snapshot.capabilityFingerprint,
+      inventoryRevision: snapshot.inventoryRevision,
+      contactCapturePoints: snapshot.contactCapturePoints,
+      ownershipDigest: snapshot.ownershipDigest,
+      cycle,
+      used: presentation.biosphereYield.used,
+      remaining: presentation.biosphereYield.remaining,
+      verbs,
+    }))}`;
+  } catch {
+    return null;
+  }
 }
 
 /** Refuse every known state/policy/capacity condition before F4 is asked for
@@ -203,24 +584,18 @@ export function preflightCaptureV1(
   if (state.legacyBioX.some((row) => row.legacyPlanetSeed === snapshot.planetSeed)) {
     return refusal('legacy-biosphere-unresolved');
   }
-  const priorProgress = state.biosphereProgress.find((row) => row.worldKey === snapshot.worldKey) ?? null;
+  const pools = capturePoolsForCycleV1(snapshot, verb, snapshot.cycle);
+  const priorProgress = pools.priorProgress;
   if (priorProgress !== null && priorProgress.cycle > snapshot.cycle) {
     return refusal('future-cycle-progress');
   }
-  const sameCycle = priorProgress !== null && priorProgress.cycle === snapshot.cycle;
   /* A successful species/verb pair is spent only on this exact full world in
      this active-play cycle. Misses never enter `successful`; a later cycle or
      another full-world key can therefore acquire a new individual/lot. */
-  const successfulKeys = new Set((sameCycle ? priorProgress.successful : []).map((row) => (
-    `${row.speciesId}\u0000${row.source}`
-  )));
-  const pool = Object.freeze(snapshot.candidates.filter((candidate) => (
-    matchingKingdom(candidate, verb)
-      && !successfulKeys.has(`${candidate.identity.speciesId}\u0000${verb}`)
-  )));
+  const pool = pools.eligible;
   if (pool.length === 0) return refusal('empty');
-  const used = sameCycle ? priorProgress.used : 0;
-  const successful = Object.freeze(sameCycle ? [...priorProgress.successful] : []);
+  const used = pools.sameCycle && priorProgress !== null ? priorProgress.used : 0;
+  const successful = pools.successful;
   const remainingBefore = Math.max(0, snapshot.biosphereYield - used);
   if (remainingBefore === 0) return refusal('depleted');
   const cataloguedSpecies = new Set(state.catalogSpecies.map((row) => row.speciesId));

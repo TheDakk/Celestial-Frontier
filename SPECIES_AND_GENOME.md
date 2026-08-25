@@ -1,7 +1,7 @@
 # Celestial Frontier — Species & Genome System
 
-**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 reset
-overlay below matches `port/v2` as of 2026-08-11, and the partially implemented package-only
+**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 reset and Arc 4
+ownership overlays match `port/v2` as of 2026-08-25, and the partially implemented package-only
 audio-identity overlay matches `@cf/audio` as of 2026-08-24. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
@@ -9,14 +9,20 @@ in §2.4.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
 
-> **2026-08-24 Arc 4/5 ownership overlay — package foundation only:** the port now has a strict
+> **2026-08-25 Arc 4/5 ownership overlay — Arc 4 player-live locally; Arc 5 model-only:** the port has a strict
 > identity split between immutable catalogue/discovery facts, stable owned fauna instances and
 > nonliving specimen lots. Ownership-v1 binds canonical genome identity, exact CF1 provenance,
 > biosphere progress and bounded legacy evidence. Ownership-v2 adds receipt-bound acquisitions,
 > deterministic fauna-only bred-child successors, ordered parent/lineage evidence and tombstones;
 > its migration certificate records only source/target digests, never duplicate ownership bytes.
-> These are registered domain/persistence models, not player capability: no capture/breed/care/
-> companion writer, app migration, UI or browser outcome exists yet.
+> Arc 4's native Survey Tame/Scavenge/Sample controls now consume the canonical full roster through
+> the durable writer. A first successful verb creates the one catalogue/discovery fact; Tame may
+> add a stable-ID living fauna instance, while Scavenge/Sample add nonliving specimen lots. Eligible
+> repeats can add another individual/lot without duplicating the first-only page or Stardust grant.
+> Hit/miss, reload, storage refusal, stale convergence, publication convergence and 12-viewport
+> presentation/geometry are locally browser-proven. Arc 5 remains model/certificate only: no
+> breed/care/companion writer, V1→V2 app migration, assignment or mission UI exists. The real
+> 20-minute Arc 4 recovery edge and HUMAN ownership/first-journey review remain open.
 
 > **2026-08-11 v2 executable-contract correction:** No genome, descriptor or
 > portrait output changed. The SpeciesTraits declaration now matches its tables:

@@ -2,11 +2,11 @@
 
 **STATUS:** §1 verified against code as of **2026-07-31 (v1.8.9)**. §§2–4 are design-pack content and
 are NOT derivable from source — see PROVENANCE below. The environmental-audio overlay matches the
-package-only pure hint foundation and remaining v2 contract as of **2026-08-24**. Audited and
+package-only pure hint foundation and remaining v2 contract as of **2026-08-25**. Audited and
 promoted from `tools/` to the repo root during port **Phase 0** (Gate A); the file itself dates from
 2026-07-20.
 
-> **2026-08-24 Arc 3/4 current opportunity boundary:** canonical Arc 3 world snapshots now derive
+> **2026-08-25 Arc 3/4 current opportunity boundary:** canonical Arc 3 world snapshots now derive
 > finite deposits, exceptional/cosmic veins, raw tier and player-facing rarity from the exact
 > source-proven CF1 world. The Engineering panel exposes truthful Mine/Skim actions and displays six
 > research rows, but only Deep Scanners is purchasable. Its pure orbital-reveal policy exists; the
@@ -14,10 +14,13 @@ promoted from `tools/` to the repo root during port **Phase 0** (Gate A); the fi
 > only connected-effect outputs with exact costs/preconditions and capacity/revision headroom are
 > actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
 > This is a resource subset, not a generic biome opportunity resolver:
-> no anomaly, blueprint, lore, Guardian or project-site table has been invented. Arc 4 can project
-> the exact epoch-bound roster into a pure acquisition snapshot/plan, but no Tame/Scavenge/Sample
-> writer or UI exists. Neither package changes the 43 biome definitions or promotes design-pack
-> rows into runtime keys.
+> no anomaly, blueprint, lore, Guardian or project-site table has been invented. Arc 4 projects the
+> exact epoch-bound full roster into its acquisition snapshot/plan and exposes native Survey
+> Tame/Scavenge/Sample controls. Those controls select from the complete eligible kingdom pool,
+> show truthful odds and shared Biosphere Yield, and settle through the durable writer; they do not
+> make biome/design-pack rows into targets or runtime keys. Neither package changes the 43 biome
+> definitions. Capture audio remains absent, and real next-cycle recovery plus HUMAN review remain
+> open.
 
 _Originally generated 2026-07-20 from: live `BIOME_SETS` (main.js) + data-pack CSVs (01_EARTH 93 ·
 02_NON_EARTH 315) + Additional Biomes file. Colors are PROPOSED signatures for the biome→dot /
@@ -93,9 +96,10 @@ background restart policy, captions and human listening gate are defined in `AUD
 
 `WORLD_GENERATION.md` owns the canonical World Opportunity Manifest. Arc 3 now owns its finite
 resource/star-skimming subset and real Engineering actions; this atlas still supplies only
-**biome compatibility and presentation vocabulary**. No generic biome-opportunity resolver,
-capture writer, project site, new loot-occurrence table, anomaly, blueprint, Guardian lead or
-extra biome becomes live because this section exists.
+**biome compatibility and presentation vocabulary**. Arc 4's capture writer/UI consumes canonical
+ecology owned elsewhere; this atlas does not become a generic biome-opportunity resolver, project
+site, new loot-occurrence table, anomaly, blueprint, Guardian lead or extra live biome because that
+player path exists.
 
 For the 43 source-derived live profiles, a future compatibility layer may describe how terrain,
 weather, hazard, life forms and atmosphere make an already-generated opportunity readable:

@@ -14,9 +14,14 @@
 > Arc 4's epoch-bound full roster, registered acquisition snapshot and pure planner separate target
 > selection/success draws from mutation. The ownership-v1 package and Arc 5 ownership-v2 model bind
 > canonical genome/owner/receipt evidence, deterministic fauna-only child ids, ordered parents and
-> tombstones. The Arc 5 migration artifact is digest-only. None of these package seams is a live
-> capture/breed writer yet. The committed pre-draw/capacity all-scenario certification and
-> settlement prerequisite remains a prerequisite only; it does not settle capture or publish state.
+> tombstones. The Arc 5 migration artifact is digest-only. Arc 4 now exposes its real writer through
+> native Survey Tame/Scavenge/Sample controls. The presentation model and action bind the same
+> canonical world, current epoch, full-roster fingerprint, eligible random pool, odds and Biosphere
+> budget; the eight-row preview never becomes selection authority. `captureCandidate` and
+> `captureSuccess` advance only inside the one durable transaction. A failed/stale/storage path
+> publishes no result and preserves the plan; post-durable convergence reads committed bytes without
+> a second draw or write. Reopen/reload and UI order do not reroll or retarget the action. Arc 5
+> breeding/care/companion writers remain absent.
 
 > **2026-08-24 F4 + Arc 2 outcome-determinism overlay — current local implementation:**
 > `SessionRNGState` now persists one uint32 seed, isolated semantic-domain counters and one global
@@ -36,13 +41,17 @@
 >
 > The audited 24 legacy `Math.random()` physical sites remain classified as 14 outcome and 10
 > presentation calls. This inventory plus the live authority seam does **not** mean every legacy
-> gameplay call site has migrated: Arc 4+ writers still own their semantic settlement, and audio/FX
+> gameplay call site has migrated: Arc 4 capture owns its semantic settlement, while later care,
+> breeding, combat and mission writers remain open; audio/FX
 > presentation never share an outcome counter. Current focused tests and real local Inventory plus
 > Arc 3 Engineering browser paths are green. Commit `c4a02be` records the product/browser-tool batch,
 > but the no-retry Slice and Glass reports bind different dirty snapshots on base `768fb32`—Slice
 > `29d54731…`, Glass `d9b51284…`—so they remain bounded local exact-input evidence rather than
 > exact-head/full-battery, hosted, integration, HUMAN, preview, release, or deployment authority.
-> All later outcome writers remain open.
+> Arc 4's final local Slice/Glass pair separately proves native hit/miss, no-optimism, full-roster
+> odds, storage/stale/publication convergence, reload and responsive control outcomes on one dirty
+> executable snapshot; it explicitly does not claim the real 20-minute recovery edge. All later
+> outcome writers remain open.
 
 > **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the F4 overlay
 > does not supersede it):** Deterministic
@@ -113,7 +122,7 @@
 > Static generation remains independent of browser timing.
 
 **STATUS:** legacy sections match `main.js` + `tools/` as of 2026-08-12; the
-current dated v2 overlay matches `port/v2` as of 2026-08-24. The 2026-07-30 pass added §6's
+current dated v2 overlay matches `port/v2` as of 2026-08-25. The 2026-07-30 pass added §6's
 "WHEN art is drawn is not fingerprint input", corrected the layout gate to 10
 viewports, and registered `bootperf.js` + `simrun dom` in the battery.
 **Purpose:** the single law that governs the whole game — every world, genome, descriptor, portrait, duel and share code is a pure function of seeds, so the same address regenerates byte-for-byte on every device, forever, with no server.
