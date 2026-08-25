@@ -978,7 +978,8 @@ describe('Arc 4 exact capture formula and truthful successor', () => {
       encodedExtensionByteCapacity: 'registered-all-scenario-certificate-required-before-draw',
       breedingProvenance: 'unsupported-by-ownership-v1',
       guardianProvenance: 'unsupported-by-ownership-v1',
-      writerExposed: false,
+      writerExposed: true,
+      playerControlExposed: false,
     });
     expect(TAME_ODDS_V1).toEqual([
       0.60, 0.45, 0.36, 0.27, 0.19, 0.13, 0.09, 0.06, 0.04, 0.025,

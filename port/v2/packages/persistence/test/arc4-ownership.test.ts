@@ -28,6 +28,7 @@ import {
   ARC4_OWNERSHIP_PREFIX,
   V5_MAX_EXTENSION_JSON_BYTES,
   V5_MAX_EXTENSION_TOTAL_BYTES,
+  arc4OwnershipLegacyMirrorMatches,
   canonicalizeV5Extensions,
   encodeArc4Ownership,
   migrateLegacyOwnership,
@@ -74,6 +75,26 @@ function legacyFixture(): Legacy {
     customNames: [['cs1', 'Catalogue One'], ['cs5', 'Catalogue Five']],
     bioX: [[133, [2, 9]], [144, [3, 10]], [155, [4, 11]]],
     scoutId: 's1',
+  };
+}
+
+function projectedLegacyFixture(state: OwnershipStateV1): Legacy {
+  const mirror = projectLegacyOwnershipMirror(state);
+  if (mirror.kind !== 'projected') throw new Error(`expected projected mirror, received ${mirror.kind}`);
+  return {
+    EPOCH_BASE: 10,
+    codex: mirror.codex.map((row) => [
+      row.legacyCodexId,
+      entry(
+        row.legacyCodexId,
+        structuredClone(row.g) as Record<string, unknown>,
+        row.f,
+        row.w === null ? null : structuredClone(row.w) as Record<string, unknown>,
+      ),
+    ]),
+    customNames: mirror.customNames.map(([key, name]) => [key, name]),
+    bioX: mirror.bioX.map(([seed, progress]) => [seed, [...progress]]),
+    scoutId: mirror.scoutId,
   };
 }
 
@@ -152,6 +173,10 @@ describe('@cf/persistence — strict sharded Arc 4 ownership', () => {
     expect(prepared.kind).toBe('prepared');
     if (prepared.kind !== 'prepared') return;
     expect(prepared.migration).toBe('migrated');
+    const migration = migrateLegacyOwnership(legacyFixture());
+    expect(migration.kind).toBe('migrated');
+    if (migration.kind !== 'migrated') return;
+    expect(prepared.migrationSourceEvidence).toEqual(migration.sourceEvidence);
     expect(prepared.writes).toHaveLength(2 + 4 * ARC4_OWNERSHIP_FIXED_SHARDS);
     expect(prepared.writes.map(({ segment, namespace }) => ({ segment, namespace }))).toEqual(
       ARC4_OWNERSHIP_EXTENSION_TARGETS,
@@ -205,6 +230,57 @@ describe('@cf/persistence — strict sharded Arc 4 ownership', () => {
     expect(Object.isFrozen(mirror.codex)).toBe(true);
     expect(() => (mirror.codex as Array<unknown>).push('mutate')).toThrow();
     expect(migrated.state.catalogSpecies[0]).toBeDefined();
+    expect(arc4OwnershipLegacyMirrorMatches(changed, projectedLegacyFixture(changed))).toBe(true);
+  });
+
+  it('matches every owned legacy fact exactly and fails closed on hostile or divergent mirrors', () => {
+    const migrated = migrateLegacyOwnership(legacyFixture());
+    if (migrated.kind !== 'migrated') throw new Error(`fixture failed: ${migrated.kind}`);
+    const state = migrated.state;
+    const source = projectedLegacyFixture(state);
+    expect(arc4OwnershipLegacyMirrorMatches(state, source)).toBe(true);
+    expect(arc4OwnershipLegacyMirrorMatches(state, {
+      ...source,
+      customNames: [['p133', 'Unrelated Earth name'], ...source.customNames],
+    })).toBe(true);
+
+    const wrongCodex = structuredClone(source);
+    wrongCodex.codex[0]![1].g.xp = 41;
+    expect(arc4OwnershipLegacyMirrorMatches(state, wrongCodex)).toBe(false);
+    const wrongEntryId = structuredClone(source);
+    wrongEntryId.codex[0]![1].id = 's-hostile';
+    expect(arc4OwnershipLegacyMirrorMatches(state, wrongEntryId)).toBe(false);
+    const reorderedCodex = { ...source, codex: [...source.codex].reverse() };
+    expect(arc4OwnershipLegacyMirrorMatches(state, reorderedCodex)).toBe(false);
+    expect(arc4OwnershipLegacyMirrorMatches(state, {
+      ...source,
+      customNames: [...source.customNames, ['cs1', 'Duplicate alias']],
+    })).toBe(false);
+    expect(arc4OwnershipLegacyMirrorMatches(state, {
+      ...source,
+      bioX: [...source.bioX].reverse(),
+    })).toBe(false);
+    expect(arc4OwnershipLegacyMirrorMatches(state, { ...source, scoutId: null })).toBe(false);
+
+    let getterReads = 0;
+    const accessor = Object.defineProperty({
+      customNames: source.customNames,
+      bioX: source.bioX,
+      scoutId: source.scoutId,
+    }, 'codex', {
+      enumerable: true,
+      get: () => { getterReads++; return source.codex; },
+    });
+    expect(arc4OwnershipLegacyMirrorMatches(state, accessor as Legacy)).toBe(false);
+    expect(getterReads).toBe(0);
+    expect(arc4OwnershipLegacyMirrorMatches(
+      state,
+      Object.create({ codex: source.codex }) as Legacy,
+    )).toBe(false);
+    const proxy = new Proxy(source, {
+      getOwnPropertyDescriptor: () => { throw new Error('hostile descriptor'); },
+    });
+    expect(arc4OwnershipLegacyMirrorMatches(state, proxy)).toBe(false);
   });
 
   it('projects new world catalogue and Biosphere authority and refuses leaf-seed collisions', () => {
@@ -268,6 +344,9 @@ describe('@cf/persistence — strict sharded Arc 4 ownership', () => {
     expect(projectLegacyOwnershipMirror(collisionState)).toMatchObject({
       kind: 'unrepresentable', reason: 'biosphere-seed-collision', leafSeed: 133,
     });
+    expect(arc4OwnershipLegacyMirrorMatches(collisionState, {
+      codex: [], customNames: [], bioX: [], scoutId: null,
+    })).toBe(false);
 
     const collidingIdentity = canonicalGenomeIdentityV1({ seed: 101, kingdom: 'flora', form: 4 });
     const collidingDiscovery = createWorldDiscoveryRecordV1({

@@ -16,26 +16,54 @@ function sourceSection(source: string, startText: string, endText: string): stri
   return start >= 0 && end > start ? source.slice(start, end) : '';
 }
 
-function actionOrderErrors(body: string, arc: 'Arc 2' | 'Arc 3'): string[] {
+function replaceInSourceSectionExact(
+  source: string,
+  startText: string,
+  endText: string,
+  needle: string,
+  replacement: string,
+): string {
+  const start = source.indexOf(startText);
+  const end = source.indexOf(endText, start);
+  if (start < 0 || end <= start) throw new Error(`source section is missing: ${startText}`);
+  const body = source.slice(start, end);
+  if (body.split(needle).length !== 2) {
+    throw new Error(`source section must contain exactly one mutation target: ${needle}`);
+  }
+  return source.slice(0, start) + body.replace(needle, replacement) + source.slice(end);
+}
+
+function actionOrderErrors(body: string, arc: 'Arc 2' | 'Arc 3' | 'Arc 4'): string[] {
   const errors: string[] = [];
+  if (body.length === 0) {
+    errors.push(`${arc} source section is missing`);
+    return errors;
+  }
   const claim = body.indexOf('const actionClaim = productActionCoordinator.tryClaim(');
   const barrier = body.indexOf('activePersist = actionBarrier;');
   const hold = body.indexOf('await smokeProductActionHold.holdIfArmed(actionClaim.operation);');
   const heartbeat = body.indexOf('await settleF4Heartbeat();');
   const commit = body.indexOf(arc === 'Arc 2'
     ? 'await runtime.commitProduct({'
-    : 'await runtime.commitAction({');
+    : arc === 'Arc 3'
+      ? 'await runtime.commitAction({'
+      : 'await commitArc4CaptureAttemptV1({');
   const settle = body.indexOf('actionClaim.settle(durable);');
   if (!(claim >= 0 && barrier > claim && hold > barrier && heartbeat > hold
     && commit > heartbeat && settle > commit)) {
     errors.push(`${arc} must claim/fence/hold synchronously before heartbeat and commit`);
   }
   const secondGuardStart = body.indexOf('if (!f4RuntimeMayMutate(runtime)', heartbeat);
-  const secondGuardEnd = body.indexOf("return unavailable('write-authority-changed');", secondGuardStart);
+  const secondGuardReturn = arc === 'Arc 4'
+    ? "return unavailable('write-authority-changed', verb);"
+    : "return unavailable('write-authority-changed');";
+  const secondGuardEnd = body.indexOf(secondGuardReturn, secondGuardStart);
   const secondGuard = secondGuardStart >= 0 && secondGuardEnd > secondGuardStart
     ? body.slice(secondGuardStart, secondGuardEnd)
     : '';
-  if (secondGuard.includes('activePersist')) {
+  if (secondGuard.length === 0) {
+    errors.push(`${arc} post-heartbeat authority guard is missing or unparseable`);
+  } else if (secondGuard.includes('activePersist')) {
     errors.push(`${arc} post-heartbeat guard rejects persistence queued behind its own barrier`);
   }
   return errors;
@@ -53,12 +81,21 @@ function coordinatorContractErrors(source: string): string[] {
     'async function commitArc3EngineeringAction(',
     '\nasync function mineCurrentSurface()',
   );
-  errors.push(...actionOrderErrors(arc2, 'Arc 2'), ...actionOrderErrors(arc3, 'Arc 3'));
+  const arc4 = sourceSection(
+    source,
+    'async function commitArc4CaptureAction(',
+    '\nfunction engineeringOutcomeConverges(',
+  );
+  errors.push(
+    ...actionOrderErrors(arc2, 'Arc 2'),
+    ...actionOrderErrors(arc3, 'Arc 3'),
+    ...actionOrderErrors(arc4, 'Arc 4'),
+  );
   if (!source.includes('if (checkpointDue && !productActionInFlight) await persistView();')) {
     errors.push('Heartbeat checkpoint can wait on the product action that is waiting on that heartbeat');
   }
   if (!source.includes('const productActionCoordinator = createProductActionCoordinator();')) {
-    errors.push('Arc 2 and Arc 3 do not share one main-owned product coordinator');
+    errors.push('Arc 2, Arc 3 and Arc 4 do not share one main-owned product coordinator');
   }
   return errors;
 }
@@ -257,6 +294,7 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
     const waiting = hold.holdIfArmed(claim.operation);
     expect(hold.diagnostics()).toMatchObject({ phase: 'holding', operation: 'arc2.salvage' });
     expect(coordinator.tryClaim('arc3.mine-world')).toBeNull();
+    expect(coordinator.tryClaim('arc4.capture.tame')).toBeNull();
     expect(hold.release()).toBe(true);
     expect(hold.release()).toBe(false);
     expect(hold.diagnostics().phase).toBe('release-requested');
@@ -265,16 +303,44 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
     claim.settle(false);
   });
 
-  it('binds both production paths, heartbeat deadlock protection, refresh, and diagnostic faults', () => {
+  it('dynamically fences Arc 2, Arc 3, and queued persistence behind an Arc 4 owner', async () => {
+    const coordinator = createProductActionCoordinator();
+    const hold = createProductActionDiagnosticHold();
+    expect(hold.arm()).toBe(true);
+    const claim = coordinator.tryClaim('arc4.capture.sample');
+    expect(claim).not.toBeNull();
+    if (claim === null) return;
+
+    const held = hold.holdIfArmed(claim.operation);
+    expect(hold.diagnostics()).toMatchObject({
+      phase: 'holding', operation: 'arc4.capture.sample', sequence: 1,
+    });
+    expect(coordinator.tryClaim('arc2.equip')).toBeNull();
+    expect(coordinator.tryClaim('arc3.mine-world')).toBeNull();
+    const queuedPersist = vi.fn((durable: boolean) => durable);
+    const queued = claim.barrier.then(queuedPersist);
+    await Promise.resolve();
+    expect(queuedPersist).not.toHaveBeenCalled();
+
+    expect(hold.release()).toBe(true);
+    await held;
+    claim.settle(true);
+    await expect(queued).resolves.toBe(true);
+    expect(queuedPersist).toHaveBeenCalledOnce();
+    expect(coordinator.diagnostics()).toMatchObject({ busy: false, operation: null });
+  });
+
+  it('binds all production paths, heartbeat deadlock protection, refresh, and diagnostic faults', () => {
     expect(coordinatorContractErrors(mainSource)).toEqual([]);
     expect(readModelRefreshContractErrors(mainSource)).toEqual([]);
     expect(diagnosticFaultContractErrors(mainSource)).toEqual([]);
     expect(arc3ActionBindingErrors(mainSource)).toEqual([]);
   });
 
-  it('negative-controls Arc 2 and Arc 3 late claims independently', () => {
+  it('negative-controls Arc 2, Arc 3 and Arc 4 late claims independently', () => {
     const arc2Start = mainSource.indexOf('async function commitArc2InventoryAction(');
     const arc3Start = mainSource.indexOf('async function commitArc3EngineeringAction(');
+    const arc4Start = mainSource.indexOf('async function commitArc4CaptureAction(');
     const lateArc2 = mainSource.slice(0, arc2Start)
       + mainSource.slice(arc2Start, arc3Start)
         .replace('  const actionClaim = productActionCoordinator.tryClaim(`arc2.${operation}`);', '  /* Arc 2 claim moved */')
@@ -292,6 +358,15 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
     expect(lateArc3).not.toBe(mainSource);
     expect(coordinatorContractErrors(lateArc3)).toContain(
       'Arc 3 must claim/fence/hold synchronously before heartbeat and commit',
+    );
+
+    const lateArc4 = mainSource.slice(0, arc4Start)
+      + mainSource.slice(arc4Start)
+        .replace('  const actionClaim = productActionCoordinator.tryClaim(`arc4.capture.${verb}`);', '  /* Arc 4 claim moved */')
+        .replace('    await settleF4Heartbeat();', '    await settleF4Heartbeat();\n    const actionClaim = productActionCoordinator.tryClaim(`arc4.capture.${verb}`);');
+    expect(lateArc4).not.toBe(mainSource);
+    expect(coordinatorContractErrors(lateArc4)).toContain(
+      'Arc 4 must claim/fence/hold synchronously before heartbeat and commit',
     );
   });
 
@@ -312,6 +387,37 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
     expect(mistakenOwner).not.toBe(mainSource);
     expect(coordinatorContractErrors(mistakenOwner)).toContain(
       'Arc 2 post-heartbeat guard rejects persistence queued behind its own barrier',
+    );
+
+    const mistakenArc4Owner = replaceInSourceSectionExact(
+      mainSource,
+      'async function commitArc4CaptureAction(',
+      '\nfunction engineeringOutcomeConverges(',
+      'if (!f4RuntimeMayMutate(runtime) || importWriteInFlight',
+      'if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight',
+    );
+    expect(coordinatorContractErrors(mistakenArc4Owner)).toContain(
+      'Arc 4 post-heartbeat guard rejects persistence queued behind its own barrier',
+    );
+
+    const unparseableArc4Guard = replaceInSourceSectionExact(
+      mainSource,
+      'async function commitArc4CaptureAction(',
+      '\nfunction engineeringOutcomeConverges(',
+      "return unavailable('write-authority-changed', verb);",
+      "return unavailable('authority-changed', verb);",
+    );
+    expect(coordinatorContractErrors(unparseableArc4Guard)).toContain(
+      'Arc 4 post-heartbeat authority guard is missing or unparseable',
+    );
+
+    const missingArc4Section = mainSource.replace(
+      'async function commitArc4CaptureAction(',
+      'async function commitArc4CaptureActionRenamed(',
+    );
+    expect(missingArc4Section).not.toBe(mainSource);
+    expect(coordinatorContractErrors(missingArc4Section)).toContain(
+      'Arc 4 source section is missing',
     );
 
     const cachedCarrier = mainSource.replace(

@@ -1350,20 +1350,24 @@ describe('Arc 3 app bootstrap wiring contract', () => {
     expect(ensureEnd).toBeGreaterThan(ensureStart);
     const ensure = source.slice(ensureStart, ensureEnd);
 
-    /* There is one write site. Arc 3 live publication is reachable only after
-       that write reports committed; a rejection cannot publish the detached
-       candidate or leave a pending bit that a later visibility edge retries. */
+    /* There is one write site. Arc 3 and Arc 4 live publication are reachable
+       only after that write reports committed; a rejection cannot publish the
+       shared detached candidate or leave a pending bit for a visibility retry. */
     expect(ensure.match(/runtime\.commit\(/g) ?? []).toHaveLength(1);
     const durableEdge = ensure.indexOf('durable = true;');
     const publication = ensure.indexOf('publishArc3LegacyCompatibilityFields(');
+    const ownershipPublication = ensure.indexOf('publishArc4LegacyCompatibilityFields(');
     expect(durableEdge).toBeGreaterThanOrEqual(0);
     expect(publication).toBeGreaterThan(durableEdge);
+    expect(ownershipPublication).toBeGreaterThan(durableEdge);
     const refusal = ensure.slice(ensure.indexOf('/* Any pre-durable bootstrap refusal'));
     expect(refusal).toContain('f4SeedBootstrapPending = false;');
     expect(refusal).toContain('bootRouteRepairPending = false;');
     expect(refusal).toContain('arc2LootBootstrapPending = false;');
     expect(refusal).toContain('arc3EngineeringBootstrapPending = false;');
-    expect(refusal).toContain('arc3EngineeringBootstrapCandidate = null;');
+    expect(refusal).toContain('arc4OwnershipBootstrapPending = false;');
+    expect(refusal).toContain('bootProductBootstrapCandidate = null;');
+    expect(refusal).toContain('arc4OwnershipState = null;');
     expect(refusal).toContain('runtime.setAnswerable(false);');
     expect(refusal).toContain('await runtime.release().catch(() => undefined);');
     expect(refusal).toContain('if (f4Runtime === runtime) f4Runtime = null;');

@@ -53,6 +53,7 @@ import {
   ARC4_CAPTURE_DOMAINS,
   certifyArc4CaptureCapacityV1,
   isArc4CaptureCapacityCertificateV1,
+  isArc4CaptureDerivedSettlementV1,
   settleCertifiedArc4CaptureV1,
   type Arc4CaptureCapacityCertificateV1,
 } from '../apps/game/src/arc4-capture-capacity.js';
@@ -296,6 +297,8 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     expect(JSON.stringify(certificate)).not.toMatch(/candidateDraw|successDraw|"value"/u);
 
     const settled = await settleThroughGenuineOwner(preflight, state, extensions);
+    expect(isArc4CaptureDerivedSettlementV1(settled)).toBe(true);
+    expect(isArc4CaptureDerivedSettlementV1({ ...settled })).toBe(false);
     expect(settled.plan.hit).toBe(true);
     expect(settled.derivation.extensionWrites).toHaveLength(
       ARC4_OWNERSHIP_EXTENSION_TARGETS.length,
@@ -821,6 +824,13 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
       preflight,
       preDraw: { ...preDraw, activePlayMs: ACTIVE_PLAY_CAPTURE_CYCLE_MS },
     })).toEqual({ kind: 'refused', reason: 'snapshot-authority-mismatch' });
+    expect(certifyArc4CaptureCapacityV1({
+      preflight,
+      preDraw: {
+        ...preDraw,
+        draft: { ...preDraw.draft, EPOCH_BASE: preflight.snapshot.ecologyEpoch + 1 },
+      },
+    })).toEqual({ kind: 'refused', reason: 'draft-ecology-epoch-mismatch' });
     let codecPrepareReads = 0;
     const accessorCodec = {
       now: NOW,

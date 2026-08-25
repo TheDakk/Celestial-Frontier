@@ -121,6 +121,8 @@ export interface PreparedArc4OwnershipWriteV1 {
   readonly writes: readonly Arc4OwnershipExtensionWriteV1[];
   readonly extensions: V5Extensions;
   readonly migration?: 'migrated' | 'legacy-protected';
+  /** Exact canonical source authority for a legacy migration preparation. */
+  readonly migrationSourceEvidence?: LegacyOwnershipSourceEvidenceV1;
 }
 
 export type Arc4OwnershipWritePreparation =
@@ -155,6 +157,11 @@ export type Arc4OwnershipMigrationOutcome =
 type LegacyOwnershipFields = Pick<
   SaveStateV2,
   'EPOCH_BASE' | 'codex' | 'customNames' | 'bioX' | 'scoutId'
+>;
+
+type LegacyOwnershipMirrorFields = Pick<
+  SaveStateV2,
+  'codex' | 'customNames' | 'bioX' | 'scoutId'
 >;
 
 export interface ProjectedLegacyOwnershipMirrorV1 {
@@ -773,6 +780,7 @@ function prepared(
   base: V5Extensions,
   state: OwnershipStateV1,
   migration?: PreparedArc4OwnershipWriteV1['migration'],
+  migrationSourceEvidence?: LegacyOwnershipSourceEvidenceV1,
 ): Arc4OwnershipWritePreparation {
   let encoded: EncodedArc4OwnershipV1;
   try { encoded = encodeArc4Ownership(state); } catch (error) {
@@ -790,6 +798,7 @@ function prepared(
     return Object.freeze({
       kind: 'prepared', state, writes: encoded.writes, extensions: applied.extensions,
       ...(migration === undefined ? {} : { migration }),
+      ...(migrationSourceEvidence === undefined ? {} : { migrationSourceEvidence }),
     });
   } catch {
     return Object.freeze({ kind: 'protected', reason: 'extension-bounds' });
@@ -847,7 +856,7 @@ export function prepareArc4OwnershipLegacyMigration(input: Readonly<{
   if (migration.kind === 'refused') {
     return Object.freeze({ kind: 'protected', reason: 'legacy-corrupt' });
   }
-  return prepared(base, migration.state, migration.kind);
+  return prepared(base, migration.state, migration.kind, migration.sourceEvidence);
 }
 
 function legacyWorldWhere(
@@ -991,4 +1000,66 @@ export function projectLegacyOwnershipMirror(state: OwnershipStateV1): LegacyOwn
     bioX: Object.freeze(bioX),
     scoutId,
   });
+}
+
+/** Semantic join between Arc 4 authority and the complete v4 compatibility
+    surface it owns. Unrelated custom names remain outside Arc 4; every name
+    keyed to one projected Compendium row is compared in projected order.
+    Hostile, malformed, protected or unrepresentable inputs fail closed. */
+export function arc4OwnershipLegacyMirrorMatches(
+  state: OwnershipStateV1,
+  legacy: LegacyOwnershipMirrorFields,
+): boolean {
+  try {
+    if (!legacy || typeof legacy !== 'object' || Array.isArray(legacy)) return false;
+    const prototype = Object.getPrototypeOf(legacy);
+    if (prototype !== Object.prototype && prototype !== null) return false;
+    const mirror = projectLegacyOwnershipMirror(state);
+    if (mirror.kind !== 'projected') return false;
+
+    const rawCodex = canonicalizeData(ownData(legacy, 'codex'));
+    const rawNames = canonicalizeData(ownData(legacy, 'customNames'));
+    const rawBioX = canonicalizeData(ownData(legacy, 'bioX'));
+    const rawScout = canonicalizeData(ownData(legacy, 'scoutId'));
+    if (!Array.isArray(rawCodex) || !Array.isArray(rawNames) || !Array.isArray(rawBioX)
+      || (rawScout !== null && typeof rawScout !== 'string')) return false;
+
+    const actualCodex = rawCodex.map((candidate, index) => {
+      if (!Array.isArray(candidate) || candidate.length !== 2 || typeof candidate[0] !== 'string') {
+        throw new TypeError(`legacy ownership codex pair ${index} is invalid`);
+      }
+      const entry = object(candidate[1], `legacy ownership codex entry ${index}`);
+      if (!Object.prototype.hasOwnProperty.call(entry, 'id')
+        || !Object.prototype.hasOwnProperty.call(entry, 'g')
+        || !Object.prototype.hasOwnProperty.call(entry, 'from')
+        || !Object.prototype.hasOwnProperty.call(entry, 'where')
+        || entry.id !== candidate[0]
+        || typeof entry.from !== 'string'
+        || !entry.g || typeof entry.g !== 'object' || Array.isArray(entry.g)
+        || (entry.where !== null && (typeof entry.where !== 'object' || Array.isArray(entry.where)))) {
+        throw new TypeError(`legacy ownership codex entry ${index} is invalid`);
+      }
+      return Object.freeze({
+        legacyCodexId: candidate[0],
+        g: entry.g,
+        f: entry.from,
+        w: entry.where,
+      });
+    });
+    const ownedNameKeys = new Set(mirror.codex.map(({ legacyCodexId }) => `c${legacyCodexId}`));
+    const actualOwnedNames = rawNames.filter((candidate, index): candidate is CanonicalJson[] => {
+      if (!Array.isArray(candidate) || candidate.length !== 2
+        || typeof candidate[0] !== 'string' || typeof candidate[1] !== 'string') {
+        throw new TypeError(`legacy ownership name row ${index} is invalid`);
+      }
+      return ownedNameKeys.has(candidate[0]);
+    });
+
+    return canonicalJson(actualCodex) === canonicalJson(mirror.codex)
+      && canonicalJson(actualOwnedNames) === canonicalJson(mirror.customNames)
+      && canonicalJson(rawBioX) === canonicalJson(mirror.bioX)
+      && rawScout === mirror.scoutId;
+  } catch {
+    return false;
+  }
 }
