@@ -17,18 +17,18 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-25 · ARC 5A OWNERSHIP AUTHORITY TERMINAL-GREEN LOCALLY · INFRASTRUCTURE-ONLY · LOCAL COMMIT PENDING ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-25 · ARC 5A OWNERSHIP AUTHORITY TERMINAL-GREEN AND COMMITTED LOCALLY · INFRASTRUCTURE-ONLY ◀◀◀
 
 ### Current integration state
 
-- **Last committed local handoff base before the active Arc 5A batch:**
-  `9d91810738337813cb6db6ef81c9f6f229c3d269` on `openai/mac`; its player-facing Arc 4
+- **Current committed local Arc 5A product/reference snapshot:**
+  `4b9504f9c22297f9474a257367880e6704aa6f33` on `openai/mac`, built from handoff base
+  `9d91810738337813cb6db6ef81c9f6f229c3d269`; its player-facing Arc 4
   product/reference snapshot is `0d56106bcecf5603f8cfa5fd54da0a36bfd85a27`. Arc 3 recovery
   remains committed at `c4a02be`, and Arc 4's strict ownership bootstrap/durable foundation remains
-  committed at `fd72c06`. The active Arc 5A product/test/tool candidate is terminal-green on the
-  exact current-input evidence recorded below. This documentation-only synchronization changes no
-  executable, test, tool or report byte. The **exact local Arc 5A commit remains PENDING until the
-  parent commits this reviewed batch**. This is not a remote, hosted, integration or release
+  committed at `fd72c06`. The Arc 5A product/test/tool snapshot is terminal-green on the exact
+  current-input evidence recorded below and independently audited clear. This ROADMAP-only handoff
+  changes no executable, test, tool or report byte. This is not a remote, hosted, integration or release
   milestone. The sole full-Vitest failure remains the known deferred Compendium measurement-authority
   seal (`6a961df8…` expected, `2ab18865…` live), scheduled only after the final multi-Arc dependency
   graph freezes.
@@ -282,8 +282,9 @@ mission/dispatch, companion UI, Guide capability, Training lesson and release co
 Before any V2-only mutation lands, the design-only fixed-four-shard delta carrier recorded in
 `SAVE_SYSTEM.md` must preserve O(1) namespace count, be implemented and be outcome-tested; that
 engineering representation is not a Nick product decision.
-The verification/evidence identifiers above are final. The exact local Arc 5A commit alone remains
-**PENDING until the parent commits this reviewed batch**.
+The verification/evidence identifiers above are final and bind the executable/tool inputs committed
+in `4b9504f9c22297f9474a257367880e6704aa6f33`; this ROADMAP-only handoff follows it without changing
+those bytes.
 
 **Arc 7/8 audio package foundation (local, 2026-08-24; package-only partial):** `@cf/audio` now
 owns pure resolver-v1 signature/profile/call-plan data over already-normalized inputs, a pinned
@@ -333,10 +334,10 @@ current-source local browser proof is recorded above; audio browser/listening ev
 
 ### In-session continuation / fresh-session recovery
 
-1. Continue only in the Codex macOS root on `openai/mac`. The last committed Arc 4 product/reference
-   snapshot is `0d56106bcecf5603f8cfa5fd54da0a36bfd85a27`, followed by ROADMAP handoff `9d918107…`.
-   Arc 5A is a terminal-green active uncommitted candidate; its exact test/browser/audit identifiers
-   are final above, and only its local commit hash remains to be filled after the parent commits.
+1. Continue only in the Codex macOS root on `openai/mac`. The current committed Arc 5A
+   product/reference snapshot is `4b9504f9c22297f9474a257367880e6704aa6f33`, built after Arc 4
+   product/reference `0d56106bcecf5603f8cfa5fd54da0a36bfd85a27` and handoff `9d918107…`.
+   Its exact test/browser/audit identifiers are final above.
    Do not fetch/merge, switch branches, push, or run
    GitHub workflows without a new exact authorization.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
@@ -362,8 +363,8 @@ current-source local browser proof is recorded above; audio browser/listening ev
 **Current side:** Codex macOS is on `openai/mac`, based on merged `develop` `7a9f4c1…`. Arc 4's
 durable foundation is committed at `fd72c06`; its audited player UI/copy/tools/references are
 committed locally at `0d56106`, followed by ROADMAP handoff `9d918107…`. Arc 5A authority activation
-is implemented and terminal-green in the current uncommitted candidate; only its parent-created local
-commit remains pending. Arc 4 remains `[PARTIAL]` for recovery/HUMAN only; Arc 5 remains `[PARTIAL]` and
+is implemented, terminal-green and committed locally at `4b9504f9c22297f9474a257367880e6704aa6f33`.
+Arc 4 remains `[PARTIAL]` for recovery/HUMAN only; Arc 5 remains `[PARTIAL]` and
 infrastructure-only.
 `origin/openai/mac` remains the contained PR #34 head until a later exact final-head authorization.
 **GitHub step:** none.
