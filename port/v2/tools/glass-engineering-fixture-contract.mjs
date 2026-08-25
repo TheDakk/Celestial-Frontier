@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -18,6 +19,12 @@ export const GLASS_VETERAN_EARTH_WHERE = Object.freeze({
 });
 
 const exact = (left, right) => JSON.stringify(left) === JSON.stringify(right);
+
+function deepFreeze(value) {
+  if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
+  for (const key of Reflect.ownKeys(value)) deepFreeze(value[key]);
+  return Object.freeze(value);
+}
 
 function sourceFixture() {
   const parsed = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
@@ -56,6 +63,55 @@ export function glassVeteranPreferenceRaw(variant = 'cleared') {
 }
 
 export const GLASS_VETERAN_PREF_RAW = glassVeteranPreferenceRaw('cleared');
+export const GLASS_VETERAN_PREF_RAW_SHA256 = '3ea92b8b7fbb87357c1c275105fc1f520618aa9e8a14aeda11ad362e871311b0';
+
+const preferenceRawSha256 = createHash('sha256').update(GLASS_VETERAN_PREF_RAW).digest('hex');
+if (preferenceRawSha256 !== GLASS_VETERAN_PREF_RAW_SHA256) {
+  throw new Error(`Glass veteran preference raw bytes drifted (${preferenceRawSha256})`);
+}
+
+/** Fixed source-bound oracle consumed by Glass. The focused Vitest owner
+ * independently recreates every field through the real v4 importer, Arc 2
+ * capability bridge, Arc 4 ownership migration, canonical full-roster owner,
+ * acquisition compositor, and capture presentation projector. */
+export const GLASS_VETERAN_CAPTURE_ORACLE = deepFreeze({
+  schema: 'cf-v2-glass-veteran-capture-oracle/v1',
+  preferenceRawSha256: GLASS_VETERAN_PREF_RAW_SHA256,
+  title: 'Homeworld',
+  worldKey: 'CF1|g:999@90,-60|s:424242@560,170|p:133#2',
+  ecologyEpoch: 12,
+  previewCount: 8,
+  fullRosterCount: 21,
+  fullRosterFingerprint: 'cwr1:21:6980:bc437ec6',
+  contextKey: 'CF1|g:999@90,-60|s:424242@560,170|p:133#2|epoch:12|cwr1:21:6980:bc437ec6',
+  contactCapturePoints: 0,
+  biosphereYield: {
+    yield: 16,
+    used: 0,
+    remaining: 16,
+    cycle: 0,
+  },
+  odds: {
+    tame: {
+      eligibleCount: 9,
+      overallChance: 0.43333333333333335,
+      chanceMin: 0.36,
+      chanceMax: 0.6,
+    },
+    scavenge: {
+      eligibleCount: 9,
+      overallChance: 0.7486666666666666,
+      chanceMin: 0.576,
+      chanceMax: 0.95,
+    },
+    sample: {
+      eligibleCount: 3,
+      overallChance: 0.7050000000000001,
+      chanceMin: 0.54,
+      chanceMax: 0.8999999999999999,
+    },
+  },
+});
 
 export function glassEngineeringFixtureOutcome(value) {
   const earthRows = Array.isArray(value?.log)

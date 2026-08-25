@@ -33,6 +33,28 @@ const reportPath = path.join(outputRoot, 'slice-smoke-report.json');
 const logPath = path.join(outputRoot, 'slice-smoke.log');
 const startedAt = new Date();
 
+const ARC4_LEDGER_PREFIX = 'SLICE SMOKE ARC 4 LEDGER: ';
+const ARC4_LEDGER_STAGES = Object.freeze([
+  'precondition',
+  'pending-no-optimism',
+  'hit',
+  'storage-refusal',
+  'stale-convergence',
+  'miss',
+  'burn-down',
+  'disabled-suppression',
+  'publication-convergence',
+]);
+const ARC4_LEDGER = Object.freeze({
+  schema: 'cf-v2-slice-arc4-ledger/v1',
+  stages: ARC4_LEDGER_STAGES,
+  burnSteps: 14,
+  recoveryClaimed: false,
+  ok: true,
+});
+const ARC4_LEDGER_LINE = ARC4_LEDGER_PREFIX + JSON.stringify(ARC4_LEDGER);
+const ARC4_PASS_MARKER = 'SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18-namespace/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.';
+
 function sha256(value) { return crypto.createHash('sha256').update(value).digest('hex'); }
 function git(args) {
   try {
@@ -97,27 +119,154 @@ function commandVersion(executable) {
   } catch { return null; }
 }
 function scopeOf(message) {
-  if (/^harness:|browser|CDP|timed out|timeout|\blisten\b|EPERM|EADDRINUSE/i.test(message)) return 'harness';
+  if (/^harness:/i.test(message)) return 'harness';
   const prefix = message.match(/^([A-Z][A-Z0-9 /_-]{1,48})(?::| —)/);
   if (prefix) return prefix[1].trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
   if (/CONTROL FAILED/i.test(message)) return 'instrument-control';
+  if (/browser|CDP|timed out|timeout|\blisten\b|EPERM|EADDRINUSE/i.test(message)) return 'harness';
   return 'core-flow';
 }
-function parseFindings(stderr, status) {
-  if (status === 0) return [];
-  const lines = stderr.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+function failureDeclaration(line) {
+  const match = line.match(/^SLICE SMOKE: FAIL — (\d+) (finding|findings)$/)
+    || line.match(/^SLICE SMOKE: FAIL \((\d+) (finding|findings)\)$/);
+  if (!match) return null;
+  return { count: Number(match[1]), noun: match[2] };
+}
+function parseFailureEvidence(output, status) {
+  const lines = output.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
   /* Only bullets owned by the harness's explicit failure block are product
      findings. Vite also prints generic `- Using dynamic import…` advice;
      treating those lines as the failure once hid a later `listen EPERM`. */
-  const marker = lines.findIndex((line) => /^SLICE SMOKE: FAIL\b/.test(line));
-  const bullets = marker >= 0
-    ? lines.slice(marker + 1).filter((line) => /^- /.test(line)).map((line) => line.slice(2))
+  const markerIndexes = lines.flatMap((line, index) => /^SLICE SMOKE: FAIL\b/.test(line) ? [index] : []);
+  const detailIndexes = lines.flatMap((line, index) => line === 'SLICE SMOKE: FAILURE DETAILS' ? [index] : []);
+  const detailIndex = detailIndexes[0] ?? -1;
+  const bullets = detailIndex >= 0
+    ? lines.slice(detailIndex + 1).filter((line) => /^- /.test(line)).map((line) => line.slice(2))
     : [];
-  if (bullets.length) return bullets;
+  const diagnostics = [];
+  if (markerIndexes.length === 0 && detailIndexes.length !== 0) {
+    diagnostics.push(`harness: SLICE SMOKE FAILURE DETAILS has no failure declaration (${detailIndexes.length} blocks)`);
+  }
+  if (markerIndexes.length) {
+    if (markerIndexes.length !== 1) {
+      diagnostics.push(`harness: expected one SLICE SMOKE failure declaration, observed ${markerIndexes.length}`);
+    }
+    if (detailIndexes.length !== 1) {
+      diagnostics.push(`harness: expected one SLICE SMOKE FAILURE DETAILS block, observed ${detailIndexes.length}`);
+    }
+    for (const markerIndex of markerIndexes) {
+      const declaration = lines[markerIndex];
+      const parsed = failureDeclaration(declaration);
+      if (!parsed) {
+        diagnostics.push(`harness: malformed SLICE SMOKE failure declaration ${JSON.stringify(declaration)}`);
+        continue;
+      }
+      const declaredCount = parsed.count;
+      if (!Number.isSafeInteger(declaredCount) || declaredCount < 1) {
+        diagnostics.push(`harness: invalid SLICE SMOKE declared finding count ${JSON.stringify(declaredCount)}`);
+      } else {
+        if (parsed.noun !== (declaredCount === 1 ? 'finding' : 'findings')) {
+          diagnostics.push(`harness: SLICE SMOKE declared finding grammar drifted for count ${declaredCount}`);
+        }
+        if (declaredCount !== bullets.length) {
+          diagnostics.push(`harness: SLICE SMOKE declared ${declaredCount} findings but FAILURE DETAILS contains ${bullets.length} bullets`);
+        }
+      }
+    }
+    if (status === 0) {
+      diagnostics.push('harness: slice smoke exited 0 while declaring failure');
+    }
+  }
+  if (status === 0 && markerIndexes.length === 0 && detailIndexes.length === 0) {
+    return { findings: [], diagnostics, declaredCount: null, bulletCount: 0 };
+  }
+  if (bullets.length) {
+    const firstDeclaration = markerIndexes.length === 1
+      ? failureDeclaration(lines[markerIndexes[0]]) : null;
+    return {
+      findings: bullets,
+      diagnostics,
+      declaredCount: firstDeclaration?.count ?? null,
+      bulletCount: bullets.length,
+    };
+  }
   const fatal = lines.find((line) => /^(?:Error|TypeError|ReferenceError|SyntaxError|RangeError):/.test(line));
-  if (fatal) return [fatal];
+  if (fatal) return { findings: [fatal], diagnostics, declaredCount: null, bulletCount: 0 };
   const useful = lines.find((line) => !/^(?:at |Node\.js |\[plugin |\(!\)|Some chunks|Using dynamic import|Use build\.|Adjust chunk)/i.test(line));
-  return [useful || `slice smoke exited ${String(status)}`];
+  return {
+    findings: [useful || `slice smoke exited ${String(status)}`],
+    diagnostics,
+    declaredCount: null,
+    bulletCount: 0,
+  };
+}
+
+function assessArc4SuccessEvidence(stdout, stderr = '') {
+  const stdoutLines = String(stdout).split(/\r?\n/);
+  const stderrLines = String(stderr).split(/\r?\n/);
+  const lines = [...stdoutLines, ...stderrLines];
+  const ledgerLines = lines.filter((line) => line.startsWith('SLICE SMOKE ARC 4 LEDGER:'));
+  const passMarkers = lines.filter((line) => line.startsWith('SLICE SMOKE ARC 4: PASS'));
+  const reasons = [];
+  let ledger = null;
+
+  if (ledgerLines.length !== 1) {
+    reasons.push(`expected exactly one Arc 4 ledger line, observed ${ledgerLines.length}`);
+  } else {
+    const line = ledgerLines[0];
+    if (!line.startsWith(ARC4_LEDGER_PREFIX)) {
+      reasons.push('Arc 4 ledger prefix/spacing is not canonical');
+    } else {
+      const payload = line.slice(ARC4_LEDGER_PREFIX.length);
+      let parsed = false;
+      try { ledger = JSON.parse(payload); parsed = true; }
+      catch { reasons.push('Arc 4 ledger payload is not valid JSON'); }
+      if (parsed) {
+        const isRecord = ledger !== null && typeof ledger === 'object' && !Array.isArray(ledger);
+        const keys = isRecord ? Object.keys(ledger) : [];
+        const expectedKeys = Object.keys(ARC4_LEDGER);
+        if (!isRecord) reasons.push('Arc 4 ledger payload is not an object');
+        if (JSON.stringify(keys) !== JSON.stringify(expectedKeys)) {
+          reasons.push(`Arc 4 ledger keys/order drifted: ${JSON.stringify(keys)}`);
+        }
+        if (ledger?.schema !== ARC4_LEDGER.schema) {
+          reasons.push(`Arc 4 ledger schema drifted: ${JSON.stringify(ledger?.schema)}`);
+        }
+        if (JSON.stringify(ledger?.stages) !== JSON.stringify(ARC4_LEDGER_STAGES)) {
+          reasons.push(`Arc 4 ledger stages/order drifted: ${JSON.stringify(ledger?.stages)}`);
+        }
+        if (ledger?.burnSteps !== ARC4_LEDGER.burnSteps) {
+          reasons.push(`Arc 4 ledger burnSteps drifted: ${JSON.stringify(ledger?.burnSteps)}`);
+        }
+        if (ledger?.recoveryClaimed !== false) {
+          reasons.push(`Arc 4 ledger claimed browser recovery: ${JSON.stringify(ledger?.recoveryClaimed)}`);
+        }
+        if (ledger?.ok !== true) {
+          reasons.push(`Arc 4 ledger ok drifted: ${JSON.stringify(ledger?.ok)}`);
+        }
+        if (JSON.stringify(ledger) !== payload || line !== ARC4_LEDGER_LINE) {
+          reasons.push('Arc 4 ledger JSON bytes are not canonical');
+        }
+      }
+    }
+    if (!stdoutLines.includes(line)) reasons.push('Arc 4 ledger line was not emitted on stdout');
+  }
+  if (passMarkers.length !== 1) {
+    reasons.push(`expected exactly one Arc 4 PASS marker, observed ${passMarkers.length}`);
+  } else if (passMarkers[0] !== ARC4_PASS_MARKER) {
+    reasons.push(`Arc 4 PASS marker drifted: ${JSON.stringify(passMarkers[0])}`);
+  }
+  if (passMarkers.length === 1 && !stdoutLines.includes(passMarkers[0])) {
+    reasons.push('Arc 4 PASS marker was not emitted on stdout');
+  }
+
+  return {
+    ok: reasons.length === 0,
+    ledger,
+    ledgerLineCount: ledgerLines.length,
+    passMarkerCount: passMarkers.length,
+    reasons,
+  };
 }
 function groupFindings(findings) {
   const groups = new Map();
@@ -157,22 +306,51 @@ function runSelftest() {
     '  - PHONE: related rendered outcome',
     '  - harness: injected browser timeout',
   ].join('\n');
-  const findings = parseFindings(injected, 1);
+  const parsedInjected = parseFailureEvidence(injected, 1);
+  const findings = parsedInjected.findings;
   if (findings.length !== 3) throw new Error(`SELFTEST finding extraction drifted: ${JSON.stringify(findings)}`);
+  if (parsedInjected.diagnostics.length !== 0
+    || parsedInjected.declaredCount !== 3 || parsedInjected.bulletCount !== 3) {
+    throw new Error(`SELFTEST matching failure count was refused: ${JSON.stringify(parsedInjected)}`);
+  }
   const groups = groupFindings(findings);
   if (groups.length !== 2 || groups[0].scope !== 'phone' || groups[0].related.length !== 1
     || groups[1].scope !== 'harness') {
     throw new Error(`SELFTEST scoped cascade grouping drifted: ${JSON.stringify(groups)}`);
   }
-  if (parseFindings(injected, 0).length !== 0) throw new Error('SELFTEST passing status retained failure text');
+  const contradictorySuccess = parseFailureEvidence(injected, 0);
+  if (contradictorySuccess.findings.length !== 3
+    || !contradictorySuccess.diagnostics.includes('harness: slice smoke exited 0 while declaring failure')) {
+    throw new Error(`SELFTEST successful exit trusted contradictory failure text: ${JSON.stringify(contradictorySuccess)}`);
+  }
+  for (const [name, declared] of [['under-count', 2], ['over-count', 4]]) {
+    const mutant = parseFailureEvidence(injected.replace('3 findings', `${declared} findings`), 1);
+    if (mutant.findings.length !== 3
+      || !mutant.diagnostics.some((diagnosis) => diagnosis.includes(`declared ${declared} findings`)
+        && diagnosis.includes('contains 3 bullets'))) {
+      throw new Error(`SELFTEST ${name} failure-count mutant stayed green: ${JSON.stringify(mutant)}`);
+    }
+  }
   const infrastructure = [
     '- Using dynamic import() to code-split the application',
     'Error: listen EPERM: operation not permitted 127.0.0.1',
   ].join('\n');
-  const infrastructureFindings = parseFindings(infrastructure, 1);
+  const infrastructureFindings = parseFailureEvidence(infrastructure, 1).findings;
   if (infrastructureFindings.length !== 1 || !/listen EPERM/.test(infrastructureFindings[0])
     || scopeOf(infrastructureFindings[0]) !== 'harness') {
     throw new Error(`SELFTEST infrastructure failure was hidden by build advice: ${JSON.stringify(infrastructureFindings)}`);
+  }
+  const scopeControls = [
+    ['prefixed-arc4-product', 'ARC 4 SAMPLE HIT: browser CDP timed out after timeout', 'arc-4-sample-hit'],
+    ['literal-harness-priority', 'harness: ARC 4 SAMPLE HIT', 'harness'],
+    ['unprefixed-infrastructure', 'browser CDP timed out after timeout', 'harness'],
+  ];
+  const scopeDrift = scopeControls.flatMap(([name, message, expected]) => {
+    const actual = scopeOf(message);
+    return actual === expected ? [] : [{ name, message, expected, actual }];
+  });
+  if (scopeDrift.length) {
+    throw new Error(`SELFTEST finding scope priority controls drifted: ${JSON.stringify(scopeDrift)}`);
   }
   const source = {
     commit: 'a'.repeat(40), branch: 'openai/test',
@@ -181,6 +359,45 @@ function runSelftest() {
   if (!sameSource(source, { ...source })
     || sameSource(source, { ...source, workingTreeSha256: 'd'.repeat(64) })) {
     throw new Error('SELFTEST source-identity change control drifted');
+  }
+  const canonicalArc4Output = [ARC4_LEDGER_LINE, ARC4_PASS_MARKER].join('\n');
+  const canonicalArc4 = assessArc4SuccessEvidence(canonicalArc4Output);
+  if (!canonicalArc4.ok || canonicalArc4.ledgerLineCount !== 1
+    || canonicalArc4.passMarkerCount !== 1
+    || JSON.stringify(canonicalArc4.ledger) !== JSON.stringify(ARC4_LEDGER)) {
+    throw new Error(`SELFTEST canonical Arc 4 evidence was refused: ${JSON.stringify(canonicalArc4)}`);
+  }
+  const arc4LedgerLine = (ledger) => ARC4_LEDGER_PREFIX + JSON.stringify(ledger);
+  const reorderedStages = [...ARC4_LEDGER_STAGES];
+  [reorderedStages[0], reorderedStages[1]] = [reorderedStages[1], reorderedStages[0]];
+  const arc4Mutants = [
+    ['missing-ledger', ARC4_PASS_MARKER, 'ledger line'],
+    ['duplicate-ledger', [ARC4_LEDGER_LINE, ARC4_LEDGER_LINE, ARC4_PASS_MARKER].join('\n'), 'ledger line'],
+    ['primitive-ledger', [ARC4_LEDGER_PREFIX + 'null', ARC4_PASS_MARKER].join('\n'), 'not an object'],
+    ['extra-key', [arc4LedgerLine({ ...ARC4_LEDGER, extra: true }), ARC4_PASS_MARKER].join('\n'), 'keys/order'],
+    ['key-order', [arc4LedgerLine({ stages: ARC4_LEDGER_STAGES, schema: ARC4_LEDGER.schema,
+      burnSteps: 14, recoveryClaimed: false, ok: true }), ARC4_PASS_MARKER].join('\n'), 'keys/order'],
+    ['stage-order', [arc4LedgerLine({ ...ARC4_LEDGER, stages: reorderedStages }), ARC4_PASS_MARKER].join('\n'), 'stages/order'],
+    ['wrong-count', [arc4LedgerLine({ ...ARC4_LEDGER, burnSteps: 13 }), ARC4_PASS_MARKER].join('\n'), 'burnSteps'],
+    ['claimed-recovery', [arc4LedgerLine({ ...ARC4_LEDGER, recoveryClaimed: true }), ARC4_PASS_MARKER].join('\n'), 'claimed browser recovery'],
+    ['false-ok', [arc4LedgerLine({ ...ARC4_LEDGER, ok: false }), ARC4_PASS_MARKER].join('\n'), 'ledger ok'],
+    ['missing-pass', ARC4_LEDGER_LINE, 'PASS marker'],
+    ['duplicate-pass', [ARC4_LEDGER_LINE, ARC4_PASS_MARKER, ARC4_PASS_MARKER].join('\n'), 'PASS marker'],
+    ['drifted-pass', [ARC4_LEDGER_LINE, ARC4_PASS_MARKER.replace('Pertar', 'Earth')].join('\n'), 'PASS marker drifted'],
+  ];
+  const arc4MutantDrift = arc4Mutants.flatMap(([name, output, diagnosis]) => {
+    const actual = assessArc4SuccessEvidence(output);
+    return !actual.ok && actual.reasons.some((reason) => reason.includes(diagnosis))
+      ? [] : [{ name, diagnosis, actual }];
+  });
+  if (arc4MutantDrift.length) {
+    throw new Error(`SELFTEST Arc 4 evidence mutants stayed green: ${JSON.stringify(arc4MutantDrift)}`);
+  }
+  const stderrOnlyArc4 = assessArc4SuccessEvidence('', canonicalArc4Output);
+  if (stderrOnlyArc4.ok
+    || !stderrOnlyArc4.reasons.includes('Arc 4 ledger line was not emitted on stdout')
+    || !stderrOnlyArc4.reasons.includes('Arc 4 PASS marker was not emitted on stdout')) {
+    throw new Error(`SELFTEST stderr-only Arc 4 evidence stayed green: ${JSON.stringify(stderrOnlyArc4)}`);
   }
   const foregroundExpected = Object.freeze({
     targetId: 'lazy-primary', documentToken: 'document-current', serviceToken: 'service-current',
@@ -466,8 +683,11 @@ function runSelftest() {
   }
   console.log('SLICE SMOKE REPORT SELFTEST: PASS');
   console.log('  three injected findings retained; two PHONE findings grouped; harness separated');
+  console.log('  failure declarations: exact bullet counts accepted; under/over-count and successful-exit contradictions rejected');
+  console.log('  Arc 4 success: one canonical ordered ledger + one exact PASS marker accepted; missing/duplicate/key/stage/count/recovery/ok/marker mutants rejected');
   console.log('  source-identity change: mixed-source evidence rejected');
   console.log('  screenshot provenance: injected stale PNG excluded from the exact run manifest');
+  console.log('  finding scopes: literal harness wins; explicit Arc 4 product prefix survives browser/CDP/timeout payload; unprefixed infrastructure falls back to harness');
   console.log('  infrastructure fatal: retained ahead of generic bundler advice');
   console.log('  foreground service: exact target/document/token, continuous visible focused rAF→later-task authority, exact/late receipt rejection');
   console.log('  D-TRAIN busy refusal: exact fixture/document/card action required; setup/parent drift and exact/late binding receipts rejected');
@@ -524,7 +744,17 @@ fs.writeFileSync(logPath, combinedLog);
 
 const childStatus = Number.isInteger(run.status) ? run.status : 1;
 let status = childStatus;
-const findings = parseFindings(stderr, childStatus);
+const failureEvidence = parseFailureEvidence([stdout, stderr].join('\n'), childStatus);
+const findings = [...failureEvidence.findings];
+if (failureEvidence.diagnostics.length) {
+  status = 1;
+  findings.unshift(...failureEvidence.diagnostics);
+}
+const arc4SuccessEvidence = assessArc4SuccessEvidence(stdout, stderr);
+if (childStatus === 0 && !arc4SuccessEvidence.ok) {
+  status = 1;
+  findings.unshift(...arc4SuccessEvidence.reasons.map((reason) => `harness: ${reason}`));
+}
 if (run.error) findings.unshift(`harness: slice-smoke child process failed (${run.error.message})`);
 else if (run.signal) findings.unshift(`harness: slice-smoke child process ended on signal ${run.signal}`);
 const endingSource = sourceIdentity();
@@ -560,6 +790,19 @@ const report = {
   retryPolicy: {
     automaticRetries: 0,
     reason: 'A red run remains red; diagnose the first scoped outcome rather than retrying it away.',
+  },
+  failureEvidence: {
+    declaredCount: failureEvidence.declaredCount,
+    bulletCount: failureEvidence.bulletCount,
+    diagnostics: failureEvidence.diagnostics,
+  },
+  arc4SuccessEvidence: {
+    required: childStatus === 0,
+    ok: childStatus === 0 ? arc4SuccessEvidence.ok : null,
+    ledger: childStatus === 0 ? arc4SuccessEvidence.ledger : null,
+    ledgerLineCount: arc4SuccessEvidence.ledgerLineCount,
+    passMarkerCount: arc4SuccessEvidence.passMarkerCount,
+    reasons: childStatus === 0 ? arc4SuccessEvidence.reasons : [],
   },
   summary: { findingCount: findings.length, scopeCount: groups.length },
   groups,

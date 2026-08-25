@@ -2,7 +2,7 @@
 
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
 2026-07-30. The dated v2 overlay below matches the development boundary and approved direction as
-of **2026-08-24**. It distinguishes the stings-only player application from the separate
+of **2026-08-25**. It distinguishes the stings-only player application from the separate
 package-only Arc 7 foundation and the later content, integration and HUMAN work that remain open.
 **Shipped (production v1):** v1.8.0 "The Connection" · corrected and widened in v1.8.4
 "Clear Ground".
@@ -12,14 +12,16 @@ whole layer undocumented despite being the largest single feature of v1.8.
 
 ---
 
-## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-24)
+## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-25)
 
 ### 0.1 Truth boundary
 
 The current v2 **player application is stings-only**. `@cf/audio` exports the synthesized rarity,
 survey and navigation compatibility facade; the application imports initialization, survey,
 navigation and gain operations, calls survey ping and travel whoosh, and leaves the rarity sting as
-an exported discovery seam. Current v2 Settings expose only master Sound and volume.
+an exported discovery seam. Current v2 Settings expose only master Sound and volume. Arc 4's
+Tame/Scavenge/Sample controls are player-live, but they have no canonical capture-audio adapter,
+authored cue or app-owned playback path yet.
 
 The package facade is safe before application initialization: every exported sting and
 `applySfxGain()` is a no-op until `initAudio()` installs the save-backed seam. Initialization itself
@@ -281,8 +283,9 @@ CreatureCallPlan + settled AudioEvent -> CreatureExpressionCue
 ```
 
 The package now implements the pure settled-event/caption-gated expression resolver and rejects
-absence/polling, missing-counterpart and mutated-plan inputs. No live care, capture, companion or
-combat writer emits these events, and no player playback path consumes the resulting cue.
+absence/polling, missing-counterpart and mutated-plan inputs. Arc 4 capture is player-live, but its
+settled action does not emit an audio-expression event; no care, companion or combat writer does
+either, and no player playback path consumes the resulting cue.
 
 `CreatureCallPlan` is an invariant repertoire. `hurt`, `fed`, `bond`, care and assignment state do
 not change its serialized bytes, the signature or the identity profile. A separate pure resolver

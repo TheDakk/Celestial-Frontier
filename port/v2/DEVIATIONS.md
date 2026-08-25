@@ -9,7 +9,7 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — Arc 3 Engineering, headless Arc 4 writer and Arc 5 foundation (2026-08-25)
+## Current-state boundary — Arc 3 Engineering, player-facing Arc 4 capture and Arc 5 foundation (2026-08-25)
 
 - ★ **D-ARC3-ENGINEERING — fixed Engineering is player-live locally.** Registered full-CF1
   world/star opportunity snapshots preserve raw tiers 0–14, finite reserves and active-play cursors.
@@ -26,20 +26,28 @@ as any change that touches an entry.
   instrument failures, or retries). Both reports name base `768fb32` but bind different dirty
   snapshots—Slice `29d54731…`, Glass `d9b51284…`—so this is bounded local exact-input proof, not
   exact-head/full-battery, hosted, integration, HUMAN, preview, release, or deployment authority.
-- ◐ **D-ARC4-OWNERSHIP — headless durable authority; player presentation remains open.** The full
+- ◐ **D-ARC4-OWNERSHIP — player-facing durable authority; recovery/HUMAN proof remains open.** The full
   epoch-bound roster, contact capability, 18 owner namespaces, ownership-v1/import codecs,
   acquisition snapshot and pure capture planner now feed an app-wired writer. Boot prepares absent
   ownership or reconciles a projectable mirror in the shared receipt-free CAS and protects future,
   corrupt, unrepresentable or Training-deferred evidence. Genuine legacy Training joins one Arc 2
-  write with all 18 Arc 4 writes under exact migrated source evidence. The diagnostics-only action
-  binds exact surface/address, production full roster/current epoch and every capacity scenario
+  write with all 18 Arc 4 writes under exact migrated source evidence. Native Survey-card actions
+  bind exact surface/address, production full roster/current epoch and every capacity scenario
   before two persisted F4 draws; one fenced receipt/CAS spends on hit or miss and settles first-only
   catalogue/reward facts or repeat fauna/specimen ownership. Pre-CAS retains only the private pending
   registered plan/settlement identities and prepared fingerprint. The committed path alone mints
   the evidence token and performs the sole WeakMap registration, binding that payload to the exact
   transaction/kind/revision. The verifier then requires the full prepared save before targeted
-  publication or read-only reload convergence. No player control, copy/toast, Guide capability,
-  browser outcome or HUMAN proof exists; random-pool versus targeted presentation remains open.
+  publication or read-only reload convergence. Presentation is one source-bound uniform random
+  eligible pool—not targeted selection—with preview/full counts, aggregate and individual odds,
+  shared hit-or-miss Biosphere Yield, active-play recovery, committed-only outcomes and native
+  Close/reopen. Current-source Slice passes the exact nine-stage ledger in 336,913 ms (report
+  `4cc6fe02…`, 14 burn steps, `recoveryClaimed:false`); Glass passes 12 viewports/36 outcomes with
+  every planned control and no omissions in 71,713 ms (report `03a14ce5…`). Both bind exact-input
+  tree `b83ccef5…`. Guide is 24 partial/17 unavailable, the draft is 54 bullets, and Training
+  remains six lessons plus graduation with no Capture lesson. The uninterrupted 20-minute recovery
+  observation and HUMAN review remain open; no Charter bioscan, targeted preview, hosted or release
+  authority is implied.
 - ◐ **D-ARC5-OWNERSHIP-V2 — successor model and migration certificate only.** V2 binds capture
   receipts, deterministic fauna-only children, ordered parents, dispositions and tombstones. Its
   migration carrier stores only V1/V2 digests derived from a fresh import. It is not duplicate
@@ -54,7 +62,7 @@ as any change that touches an entry.
   publication fault remains committed and reload-converges without a second action, receipt, or write.
   Arc 3 settles Auto-Extractor loads from the prior active-play cursor, caps them by finite
   reserves, ignores legacy wall timestamps and reanchors a newly fabricated extractor. Arc 2 owns
-  exact gear instances; Arc 4 owns the headless exact-once capture writer above, while Arc 5 owns
+  exact gear instances; Arc 4 owns the player-live exact-once capture writer above, while Arc 5 owns
   only the successor catalogue/specimen/fauna model and migration evidence. Unmigrated combat,
   breeding, care, assignment and later random writers remain open. This overlay supersedes current-
   state implications in the dated `D-EPOCH-1`, `D-STORE`, `D-IDENTITY-LOOT`,
@@ -1790,9 +1798,10 @@ duplicates).
   Browser smoke drives the real touch and desktop outcomes and rejects injected density, buried-
   action and same-seed/different-coordinate stale-card regressions.
 - ★ **D-GUIDE-1 — the port continues the mature Guide; it does not fork a second manual
-  (2026-08-11).** The temporary seven-topic literal is gone. `guide-content.ts` carries an exact,
+  (updated 2026-08-25).** The temporary seven-topic literal is gone. `guide-content.ts` carries an exact,
   SHA-256-bound v1.8.9 Guide snapshot: 9 categories, 43 authored stable topic ids and 41 legacy-live
-  topics (`beacon` / `events` retained as dormant), with category drill-down, keyword/body search and
+  topics (`beacon` / `events` retained as dormant), currently 24 partial and 17 unavailable, with
+  category drill-down, keyword/body search and
   live `data-gt` cross-links. A typed capability table substitutes v2-current copy for partially
   ported systems and an explicit **Not yet in v2** explanation for unported systems, so stable ids
   remain linkable without advertising dead mechanics. Its test fails on source-hash drift, missing or
@@ -1802,9 +1811,9 @@ duplicates).
   restoration. Guide uses z24 above the z23 survey card. Tooltip deep-links and Advanced Briefings
   remain OPEN; the Guide model existing does not claim those interaction layers are ported.
 - ★ **D-RELEASE-1 — legacy history, v2 development identity and a shipped version are three different states
-  (updated 2026-08-13).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
+  (updated 2026-08-25).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
   398 bullets, v1.8.9 first and v1.0 last. **A New Foundation** is the separate cumulative v2.0
-  development bulletin: a categorized, implemented-outcome technical outline whose explicit
+  development bulletin: a 54-bullet categorized, implemented-outcome technical outline whose explicit
   `draft`, `version:"2.0"` and `Unreleased` state does not turn open roadmap work into a promise.
   `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2 list is empty. Therefore draft copy
   can appear in the cumulative Guide history but can never fire the mature one-time update rule,
@@ -2096,21 +2105,29 @@ duplicates).
   the exported save as one blob in `meta`. Multi-tab last-writer-wins and incremental domain-store
   transactions remain open; do not describe them as shipped until revisions/CAS or equivalent
   transactional records land.
-- ☐ **D-IDENTITY-LOOT — catalogue, creature and gear ownership must split before the
-  companion/loot arc (2026-08-13).** Legacy Codex rows conflate a discovered species with
+- ★ **D-IDENTITY-LOOT — historical split proposal, now implemented for current Arc 2/4 authority
+  before later companion mutations (2026-08-13).** Legacy Codex rows conflate a discovered species with
   one living specimen, while `items`/`equipAff` conflate a base definition with a rolled
   equipped copy. That cannot support duplicate companions, stable attachment, away-state,
   provenance or multiple affixed copies. The approved delta in
   `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` introduces `CatalogSpecies`,
   `CreatureInstance` and `GearInstance` with explicit migration; imported fields remaining
   round-trippable is not proof the live systems exist.
-- ☐ **D-CAPTURE-OWNER — survey is not an acquisition writer (2026-08-13).** Current v2
+  **Superseded current state (2026-08-25):** Arc 2 owns stable gear instances and Arc 4 owns the
+  durable catalogue/specimen/fauna split. Breed/feed/combat/delete/assignment mutations remain
+  later work and must preserve those identities.
+- ★ **D-CAPTURE-OWNER — historical proposal, native acquisition writer now implemented
+  (2026-08-13).** Current v2
   can reveal life and display imported Compendium rows but has no live Tame, Scavenge, Sample or
   Biosphere Yield action. Before collection/breeding/dispatch can be advertised, port finite
   receipt-backed acquisition: every successful verb creates/updates `CatalogSpecies`; fauna Tame
   may create a stable `CreatureInstance`; Scavenge/Sample create specimens/resources, never living
   companions. Miss/Worked Out, reload and stale-tab controls must prove no free page, duplicate
   creature, reroll or double spend.
+  **Superseded current state (2026-08-25):** the native Survey controls now implement that finite
+  writer and the current-source Slice/Glass pair proves the named hit/miss, refusal, stale,
+  publication, Close/reopen and reload outcomes. The uninterrupted real 20-minute recovery
+  observation and HUMAN first-journey/ownership review remain open.
 - ☐ **D-RECEIPT — companion/Guardian loot requires revisioned exact-once persistence
   (2026-08-13).** Roll and commit a save-lifetime RNG ordinal plus immutable receipt at
   dispatch/encounter settlement, not at reveal/claim. A dedicated persisted visible-and-answerable

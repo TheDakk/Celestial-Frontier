@@ -79,7 +79,20 @@ const COMPENDIUM_COPY_CONTRADICTIONS = Object.freeze([
   /(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i,
   /(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i,
   /(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i,
-  /(?:capture|feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i,
+  /(?:feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i,
+]);
+
+const CAPTURE_COPY_CONTRADICTIONS = Object.freeze([
+  /(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i,
+  /(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i,
+  /(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)/i,
+  /miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)/i,
+  /(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)/i,
+  /Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)/i,
+  /(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)/i,
+  /(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)/i,
+  /(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,96}\bnever\b)[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan)/i,
+  /(?:Scavenge|Sample)(?![^.!?]*\bnever\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)/i,
 ]);
 
 const DORMANT_CRAFTING_COPY_CONTRADICTIONS = Object.freeze([
@@ -95,7 +108,7 @@ const UNAVAILABLE_V2_FEATURE_OVERCLAIMS = Object.freeze([
   /all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\s+(?:actionable|playable|available|live)/i,
   /(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i,
   ...DORMANT_CRAFTING_COPY_CONTRADICTIONS,
-  /(?:Capture|biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i,
+  /(?:biosphere discovery|Discover Life|feeding|renaming|Field Scouts?|duels?|breeding|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i,
 ]);
 
 const ENGINEERING_COPY_CONTRADICTIONS = Object.freeze([
@@ -103,7 +116,6 @@ const ENGINEERING_COPY_CONTRADICTIONS = Object.freeze([
   /current Survey card (?:now )?(?:renders|shows|paints)[^.!?]{0,80}(?:orbit|mineral)/i,
   /(?:Research|Skim)[^.!?]{0,80}banks?[^.!?]{0,48}Charter/i,
   /(?:Rewards?|Costs?|HP changes?|Charter ticks?) publish(?:es)? before[^.!?]{0,48}commit/i,
-  /(?:Capture|biosphere discovery)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|playable|available)/i,
   /legacy charter refit[^.!?]{0,96}(?:names|draws|includes) (?:(?:an?|the) )?(?:unowned |missing )?Intergalactic Drive/i,
   /hardpoints?[^.!?]{0,80}(?:inferred|assumed|granted) from (?:the )?(?:chassis|stage|reach)/i,
   /(?:chassis|visual state)[^.!?]{0,80}(?:saved separately|separate saved state|writes? to the save)/i,
@@ -131,7 +143,8 @@ const HD_ATTACHMENT_COPY_CONTRADICTIONS = Object.freeze([
 ]);
 
 function plainCopy(body: string): string {
-  return body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
+    .replace(/\s+([,.;:])/g, '$1').trim();
 }
 
 function engineeringGuideCopyIsTruthful(body: string): boolean {
@@ -221,20 +234,78 @@ function stardustGuideCopyIsTruthful(body: string): boolean {
   return /preserves its imported\/current Stardust/i.test(copy)
     && /Deep Scanners purchase or eligible fixed Fabricator recipe spends its stated Stardust/i.test(copy)
     && /same durable transaction as the result/i.test(copy)
-    && /No current v2 action earns Stardust/i.test(copy)
-    && /Rare-life discovery rewards[^.!?]{0,160}remain unavailable/i.test(copy)
-    && !/(?:Mine|Skim|Survey|Capture)[^.!?]{0,80}earns? Stardust/i.test(copy);
+    && /first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus/i.test(copy)
+    && /same durable transaction as its page and ownership/i.test(copy)
+    && /result shows the exact amount/i.test(copy)
+    && /miss and every later-world or later-cycle repeat earn none/i.test(copy)
+    && /No other current v2 action earns Stardust/i.test(copy)
+    && /Charter rewards, passive gain[^.!?]{0,96}remain unavailable/i.test(copy)
+    && !/(?:Mine|Skim|Survey)[^.!?]{0,80}earns? Stardust/i.test(copy)
+    && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
 function surveyBoundaryCopyIsTruthful(body: string): boolean {
   const copy = plainCopy(body);
   return /selection is navigation and inspection/i.test(copy)
-    && /does not spend a resource, discover life, capture a species, or authorize extraction/i.test(copy)
+    && /does not spend a resource, catalogue life, make a capture attempt, or authorize extraction/i.test(copy)
+    && /landing still catalogues nothing/i.test(copy)
+    && /at-most-eight-row strip is only a preview/i.test(copy)
+    && /Tame, Scavenge, and Sample[^.!?]{0,96}separate finite actions[^.!?]{0,96}choose uniformly[^.!?]{0,96}full biosphere/i.test(copy)
     && /separate grounded mineral reveal and its finite Mine action/i.test(copy)
     && /reveal describes the current opportunity but is not itself a mining receipt/i.test(copy)
     && /current Survey card does not yet paint those orbital mineral rows/i.test(copy)
-    && !/Survey[^.!?]{0,80}(?:discovers life|captures a species|authorizes mining)/i.test(copy)
-    && !/current Survey card (?:now )?(?:renders|shows|paints)[^.!?]{0,80}(?:orbit|mineral)/i.test(copy);
+    && !/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)/i.test(copy)
+    && !/current Survey card (?:now )?(?:renders|shows|paints)[^.!?]{0,80}(?:orbit|mineral)/i.test(copy)
+    && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
+}
+
+function captureGuideCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /Landing on a living world reveals its biosphere roster[^.!?]{0,96}does not add a Compendium page/i.test(copy)
+    && /at most eight rows as a preview/i.test(copy)
+    && /Tame, Scavenge, and Sample each choose uniformly from every eligible species[^.!?]{0,96}full biosphere/i.test(copy)
+    && /including species outside that preview/i.test(copy)
+    && /no species row is a target/i.test(copy)
+    && /Tame chooses fauna and a hit adds one owned creature/i.test(copy)
+    && /Scavenge chooses flora or fungi[^.!?]{0,96}Sample chooses microbes/i.test(copy)
+    && /either hit adds one specimen lot, never a living companion/i.test(copy)
+    && /selected species and its exact chance are shown with the result/i.test(copy)
+    && /three actions share one finite Biosphere Yield/i.test(copy)
+    && /Every attempt spends 1 Yield on a hit or miss/i.test(copy)
+    && /successful species leaves that action’s eligible pool[^.!?]{0,96}rest of the world’s current cycle/i.test(copy)
+    && /miss stays eligible/i.test(copy)
+    && /Empty, worked-out, or protected-save refusals roll nothing and spend nothing/i.test(copy)
+    && /Busy, stale, and failed-write outcomes publish nothing and leave saved Yield and draw counters unchanged/i.test(copy)
+    && /next 20-minute active-play cycle/i.test(copy)
+    && /closing the game or moving the wall clock does not advance recovery/i.test(copy)
+    && /first successful observation of a species adds its one Compendium page plus the creature or specimen lot/i.test(copy)
+    && /later-world or later-cycle repeat adds another creature or lot without another page or first-find reward/i.test(copy)
+    && /first successful Legendary-or-better observation earns its one Rare Find Stardust bonus/i.test(copy)
+    && /result shows the exact amount/i.test(copy)
+    && /miss adds no page, creature, specimen, or Stardust/i.test(copy)
+    && /Capture never banks the Charter’s separate bioscan milestone[^.!?]{0,64}writer remains unavailable/i.test(copy)
+    && /Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable/i.test(copy)
+    && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
+}
+
+function rarityCaptureCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /Rarity lowers a species’ base Tame, Scavenge, or Sample chance/i.test(copy)
+    && /action first chooses uniformly from its eligible full-biosphere pool/i.test(copy)
+    && /selected species and its exact chance appear with the result/i.test(copy)
+    && /preview row was targeted/i.test(copy)
+    && /first successful Legendary-or-better observation earns a Rare Find Stardust bonus/i.test(copy)
+    && /result shows the exact amount/i.test(copy)
+    && /later-world or later-cycle repeat[^.!?]{0,96}never another Compendium page or first-find reward/i.test(copy)
+    && /broader rarity economy and breeding outcomes remain unavailable/i.test(copy)
+    && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
+}
+
+function charterCaptureBoundaryIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /Planetside capture[^.!?]{0,48}never banks the Charter’s (?:separate )?bioscan milestone/i.test(copy)
+    && /(?:milestone|writer)[^.!?]{0,96}(?:hidden and )?unavailable/i.test(copy)
+    && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
 function engineeringReleaseCopyIsTruthful(body: string): boolean {
@@ -249,10 +320,32 @@ function engineeringReleaseCopyIsTruthful(body: string): boolean {
     && /Built permanent systems change the real ship and star reach/i.test(body)
     && /legacy charter refit still never names or draws a missing drive/i.test(body)
     && /Remnant skim damage is previewed before it can spend HP/i.test(body)
-    && /may spend preserved Stardust but cannot earn it/i.test(body)
+    && /can spend preserved Stardust but does not earn it/i.test(body)
     && /no reward, cost, Charter tick, or optimistic panel change publishes before the one receipt-bearing transaction commits/i.test(body)
-    && /Capture and biosphere discovery remain unavailable/i.test(body)
     && ENGINEERING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+}
+
+function captureReleaseCopyIsTruthful(body: string): boolean {
+  return /BIOSPHERE CAPTURE HAS HONEST LIMITS/i.test(body)
+    && /Tame chooses uniformly from every eligible fauna in the full biosphere/i.test(body)
+    && /Scavenge from eligible flora and fungi/i.test(body)
+    && /Sample from eligible microbes/i.test(body)
+    && /not only the at-most-eight-row Planetside preview/i.test(body)
+    && /All three share one finite Biosphere Yield/i.test(body)
+    && /every attempt spends 1 on a hit or miss/i.test(body)
+    && /next 20-minute active-play cycle/i.test(body)
+    && /never from closing the game or moving the wall clock/i.test(body)
+    && /successful species leaves that action’s pool for the rest of the cycle/i.test(body)
+    && /miss stays eligible/i.test(body)
+    && /first successful observation adds one Compendium page plus one owned creature for Tame or one specimen lot for Scavenge and Sample/i.test(body)
+    && /Legendary-or-better first find also awards its one Rare Find Stardust bonus/i.test(body)
+    && /exact amount shown in the result/i.test(body)
+    && /later-world or later-cycle repeat adds another creature or lot without another page or first-find reward/i.test(body)
+    && /miss adds none of them/i.test(body)
+    && /Scavenge and Sample never create living companions/i.test(body)
+    && /Capture never banks the Charter’s separate bioscan milestone/i.test(body)
+    && /Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable/i.test(body)
+    && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
 
 function hdAttachmentReleaseCopyIsTruthful(body: string): boolean {
@@ -278,8 +371,14 @@ function compendiumCatalogueCopyIsTruthful(body: string): boolean {
     && /complete genome[^.!?]{0,80}not only the displayed name or seed[^.!?]{0,80}owns visual identity/i.test(body)
     && /Planetside shares the same bounded thumbnail lease path/i.test(body)
     && /thumbnails are released when their visible owner leaves/i.test(body)
-    && /Discovery, capture, husbandry, renaming, and other collection-writing actions remain unavailable/i.test(body)
-    && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+    && /Compendium itself remains a read-only browser/i.test(body)
+    && /successful first Planetside capture can add one page/i.test(body)
+    && /Tame also adds an owned fauna creature/i.test(body)
+    && /Scavenge and Sample add specimen lots/i.test(body)
+    && /Later-world or later-cycle successes add another creature or lot without duplicating the page/i.test(body)
+    && /Feeding, breeding, husbandry, renaming, and other Compendium-row actions remain unavailable/i.test(body)
+    && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body))
+    && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(plainCopy(body)));
 }
 
 function specimenDetailCopyIsTruthful(body: string): boolean {
@@ -289,8 +388,12 @@ function specimenDetailCopyIsTruthful(body: string): boolean {
     && /<b>Back<\/b> returns to the saved list position and restores focus to the same logical row/i.test(body)
     && /<b>Close<\/b> returns focus to the exact Compendium opener/i.test(body)
     && /profile remains read-only/i.test(body)
-    && /Capture, feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry or collection-writing outcomes are deliberately absent/i.test(body)
-    && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+    && /Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row/i.test(body)
+    && /Tame hit adds one owned fauna creature/i.test(body)
+    && /Scavenge or Sample adds one specimen lot and never a living companion/i.test(body)
+    && /Feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry remain unavailable/i.test(body)
+    && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body))
+    && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(plainCopy(body)));
 }
 
 function compendiumArtReleaseCopyIsTruthful(body: string): boolean {
@@ -381,8 +484,8 @@ describe('v2 Guide capability filter', () => {
     expect(categories).toHaveLength(9);
     expect(topics).toHaveLength(41);
     expect(topics.filter((topic) => topic.availability === 'available')).toHaveLength(0);
-    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(23);
-    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(18);
+    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(24);
+    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(17);
     expect(topics.filter((topic) => topic.availability === 'partial')
       .every((topic) => topic.body !== topic.legacyBody)).toBe(true);
     expect(topics.some((topic) => topic.id === 'beacon' || topic.id === 'events')).toBe(false);
@@ -433,11 +536,13 @@ describe('v2 Guide capability filter', () => {
     expect(getGuideTopic('ascent')?.body).toContain('owned system that backs the next reach stage');
     expect(getGuideTopic('ascent')?.body).toContain('without invented goals, rewards, systems, or reach');
     expect(getGuideTopic('ascent')?.body).toContain('Saved Prime Signatures');
+    expect(charterCaptureBoundaryIsTruthful(getGuideTopic('ascent')!.body)).toBe(true);
     expect(getGuideTopic('charters')?.body).toContain('first landfalls, successful <b>Mine</b> actions, and successful fixed <b>Fabricator</b> outputs');
     expect(getGuideTopic('charters')?.body).toContain('Each Mine press banks one mining-goal tick');
     expect(getGuideTopic('charters')?.body).toContain('Research and Skim do not counterfeit');
     expect(getGuideTopic('charters')?.body).toContain('newly built Jump Drive, Long-Range Array, or Intergalactic Drive');
     expect(getGuideTopic('charters')?.body).toContain('canonical progress and owned reach');
+    expect(charterCaptureBoundaryIsTruthful(getGuideTopic('charters')!.body)).toBe(true);
     expect(getGuideTopic('regions')?.body).toContain('permanent ship systems');
     expect(getGuideTopic('regions')?.body).toContain('eligible fixed Fabricator recipes');
     expect(getGuideTopic('regions')?.body).toContain('In-progress chapter state never invents a permanent system');
@@ -461,8 +566,9 @@ describe('v2 Guide capability filter', () => {
     expect(getGuideTopic('hp')?.body).toContain('costs exactly <b>3 HP</b>');
     expect(getGuideTopic('hp')?.body).toContain('HP is 4 or lower');
     expect(getGuideTopic('hp')?.body).toContain('only current HP writer');
-    expect(getGuideTopic('discover')?.availability).toBe('unavailable');
-    expect(getGuideTopic('discover')?.body).toContain('Survey selection and Engineering mineral reveal do not catalogue life');
+    expect(V2_DEVELOPMENT_GUIDE_CAPABILITIES).toContain('life-discovery');
+    expect(getGuideTopic('discover')?.availability).toBe('partial');
+    expect(captureGuideCopyIsTruthful(getGuideTopic('discover')!.body)).toBe(true);
   });
 
   it('describes the exact live Engineering and Inventory actions without promoting dormant rows', () => {
@@ -533,7 +639,10 @@ describe('v2 Guide capability filter', () => {
       engineeringBullet! + ' All six research rows can be purchased.',
     )).toBe(false);
     expect(engineeringReleaseCopyIsTruthful(
-      engineeringBullet! + ' Capture is now available.',
+      engineeringBullet!.replace(
+        'Engineering can spend preserved Stardust but does not earn it',
+        'Engineering Stardust boundary omitted',
+      ),
     )).toBe(false);
     expect(engineeringReleaseCopyIsTruthful(
       engineeringBullet!.replace(
@@ -555,16 +664,25 @@ describe('v2 Guide capability filter', () => {
     )).toBe(false);
   });
 
-  it('separates Survey reveal, finite extraction, HP risk, and Stardust spending from unavailable capture', () => {
+  it('separates Survey reveal and Engineering extraction from random finite Planetside capture', () => {
     const survey = getGuideTopic('survey')!.body;
+    const capture = getGuideTopic('discover')!.body;
+    const rarity = getGuideTopic('rarity')!.body;
     const mining = getGuideTopic('mining')!.body;
     const skimming = getGuideTopic('skimming')!.body;
     const stardust = getGuideTopic('stardust')!.body;
+    const captureBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('BIOSPHERE CAPTURE HAS HONEST LIMITS'));
     expect(surveyBoundaryCopyIsTruthful(survey)).toBe(true);
+    expect(getGuideTopic('discover')?.availability).toBe('partial');
+    expect(captureGuideCopyIsTruthful(capture)).toBe(true);
+    expect(rarityCaptureCopyIsTruthful(rarity)).toBe(true);
     expect(miningGuideCopyIsTruthful(mining)).toBe(true);
     expect(skimmingGuideCopyIsTruthful(skimming)).toBe(true);
     expect(stardustGuideCopyIsTruthful(stardust)).toBe(true);
-    expect(getGuideTopic('discover')?.availability).toBe('unavailable');
+    expect(captureBullet).toBeDefined();
+    expect(captureReleaseCopyIsTruthful(captureBullet!)).toBe(true);
 
     /* Missing-anchor and contradictory controls are independent: each must
        turn the same semantic predicate red for the intended reason. */
@@ -572,10 +690,64 @@ describe('v2 Guide capability filter', () => {
       survey.replace('selection is navigation and inspection', 'selection boundary omitted'),
     )).toBe(false);
     expect(surveyBoundaryCopyIsTruthful(
-      survey + ' Survey authorizes mining and captures a species.',
+      survey + ' Survey catalogues life and makes a capture attempt.',
     )).toBe(false);
     expect(surveyBoundaryCopyIsTruthful(
       survey + ' The current Survey card now renders every orbital mineral.',
+    )).toBe(false);
+    expect(captureGuideCopyIsTruthful(
+      capture.replace(
+        'choose uniformly from every eligible species for that action in the full biosphere',
+        'choose from the visible preview',
+      ),
+    )).toBe(false);
+    expect(captureGuideCopyIsTruthful(
+      capture + ' The player chooses a visible species row to target.',
+    )).toBe(false);
+    expect(captureGuideCopyIsTruthful(
+      capture + ' Sample creates a living companion.',
+    )).toBe(false);
+    expect(captureGuideCopyIsTruthful(
+      capture.replace('Every attempt spends 1 Yield on a hit or miss', 'Only a hit spends Yield'),
+    )).toBe(false);
+    expect(captureGuideCopyIsTruthful(
+      capture + ' The Yield pool recovers while the game is closed.',
+    )).toBe(false);
+    expect(captureGuideCopyIsTruthful(
+      capture + ' A later-cycle repeat earns a new Rare Find reward.',
+    )).toBe(false);
+    expect(captureGuideCopyIsTruthful(
+      capture + ' Capture advances the Charter bioscan milestone.',
+    )).toBe(false);
+    expect(captureReleaseCopyIsTruthful(
+      captureBullet!.replace(
+        'Tame chooses uniformly from every eligible fauna in the full biosphere',
+        'Tame targets one visible fauna row',
+      ),
+    )).toBe(false);
+    expect(captureReleaseCopyIsTruthful(
+      captureBullet! + ' Tame targets the selected preview row.',
+    )).toBe(false);
+    expect(captureReleaseCopyIsTruthful(
+      captureBullet! + ' Scavenge adds a living companion.',
+    )).toBe(false);
+    expect(captureReleaseCopyIsTruthful(
+      captureBullet!.replace('every attempt spends 1 on a hit or miss', 'only a hit spends an attempt'),
+    )).toBe(false);
+    expect(captureReleaseCopyIsTruthful(
+      captureBullet! + ' The Yield pool recovers while the game is closed.',
+    )).toBe(false);
+    expect(captureReleaseCopyIsTruthful(
+      captureBullet! + ' A later-world repeat earns a second Compendium page.',
+    )).toBe(false);
+    expect(captureReleaseCopyIsTruthful(
+      captureBullet! + ' Capture counts for the Charter bioscan milestone.',
+    )).toBe(false);
+    expect(rarityCaptureCopyIsTruthful(
+      rarity.replace('result shows the exact amount', 'rare reward amount omitted'),
+    )).toBe(false);
+    expect(rarityCaptureCopyIsTruthful(
+      rarity + ' The player selects a preview row to target.',
     )).toBe(false);
     expect(miningGuideCopyIsTruthful(
       mining.replace('exact pulls remaining', 'pull count omitted'),
@@ -590,10 +762,13 @@ describe('v2 Guide capability filter', () => {
       skimming + ' A remnant skim can never harm HP, and corona passes are unlimited.',
     )).toBe(false);
     expect(stardustGuideCopyIsTruthful(
-      stardust.replace('No current v2 action earns Stardust', 'earning boundary omitted'),
+      stardust.replace('No other current v2 action earns Stardust', 'other earning boundary omitted'),
     )).toBe(false);
     expect(stardustGuideCopyIsTruthful(
       stardust + ' Survey earns Stardust on every world.',
+    )).toBe(false);
+    expect(charterCaptureBoundaryIsTruthful(
+      getGuideTopic('charters')!.body + ' Capture banks the Charter bioscan milestone.',
     )).toBe(false);
   });
 
@@ -785,7 +960,7 @@ describe('v2 Guide capability filter', () => {
     )).toBe(false);
   });
 
-  it('documents the bounded Compendium art, virtualization, and focus contract without collection-writer overclaims', () => {
+  it('keeps the Compendium read-only while documenting Planetside first-find writes', () => {
     const kingdoms = getGuideTopic('kingdoms')!.body;
     const specimen = getGuideTopic('specimen')!.body;
     const artBullet = V2_DRAFT_RELEASE.sections
@@ -809,11 +984,20 @@ describe('v2 Guide capability filter', () => {
     expect(compendiumCatalogueCopyIsTruthful(
       kingdoms + ' The Compendium mounts all 1,500 portraits at once.',
     )).toBe(false);
+    expect(compendiumCatalogueCopyIsTruthful(
+      kingdoms.replace('successful first Planetside capture can add one page', 'capture write boundary omitted'),
+    )).toBe(false);
+    expect(compendiumCatalogueCopyIsTruthful(
+      kingdoms + ' The player chooses a Compendium row to target.',
+    )).toBe(false);
     expect(specimenDetailCopyIsTruthful(
       specimen.replace('Close</b> returns focus to the exact Compendium opener', 'Close</b> dismisses the panel'),
     )).toBe(false);
     expect(specimenDetailCopyIsTruthful(
       specimen + ' Planetside renders a 440px portrait for every row.',
+    )).toBe(false);
+    expect(specimenDetailCopyIsTruthful(
+      specimen + ' The player selects this Compendium row to target.',
     )).toBe(false);
     expect(compendiumArtReleaseCopyIsTruthful(
       'ART ARRIVES WHEN IT IS NEEDED: The large species-art payload loads lazily for Compendium or Planetside and retains only the latest subscriber per surface.',
@@ -862,6 +1046,15 @@ describe('v2 Guide capability filter', () => {
     expect(topic?.availability).toBe('unavailable');
     expect(topic?.body).toContain('Exact Inventory actions have not been connected');
     expect(topic?.body).not.toContain('revision-checked actions');
+  });
+
+  it('negative control: Discovering life is partial only with the live capture capability', () => {
+    const withoutCapture = V2_DEVELOPMENT_GUIDE_CAPABILITIES
+      .filter((capability) => capability !== 'life-discovery');
+    const topic = getGuideTopic('discover', withoutCapture);
+    expect(topic?.availability).toBe('unavailable');
+    expect(topic?.body).toContain('Planetside capture has not been connected');
+    expect(topic?.body).not.toContain('Every attempt spends 1 Yield on a hit or miss');
   });
 
   it('can expose dormant inventory explicitly without presenting it as live', () => {
@@ -978,9 +1171,20 @@ describe('legacy and v2 release channels', () => {
       /current Survey card does not yet render those mineral rows/,
       /Fully exceptional slotted crafting, authored affixes\/drawbacks, item upgrades, sockets, and vendors remain unavailable/,
       /Built permanent systems change the real ship and star reach/,
-      /may spend preserved Stardust but cannot earn it/,
-      /Capture and biosphere discovery remain unavailable/,
-      /Finish for now that points to the live Engineering & Shipyard/,
+      /can spend preserved Stardust but does not earn it/,
+      /BIOSPHERE CAPTURE HAS HONEST LIMITS/,
+      /Tame chooses uniformly from every eligible fauna in the full biosphere/,
+      /Scavenge from eligible flora and fungi/,
+      /Sample from eligible microbes[^.!?]{0,96}not only the at-most-eight-row Planetside preview/,
+      /All three share one finite Biosphere Yield[^.!?]{0,96}every attempt spends 1 on a hit or miss/,
+      /next 20-minute active-play cycle[^.!?]{0,96}never from closing the game or moving the wall clock/,
+      /successful species leaves that action’s pool for the rest of the cycle[^.!?]{0,96}miss stays eligible/,
+      /first successful observation adds one Compendium page plus one owned creature for Tame or one specimen lot for Scavenge and Sample/,
+      /Legendary-or-better first find also awards its one Rare Find Stardust bonus[^.!?]{0,96}exact amount shown in the result/,
+      /later-world or later-cycle repeat adds another creature or lot without another page or first-find reward/,
+      /Capture never banks the Charter’s separate bioscan milestone/,
+      /Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable/,
+      /Finish for now that points to live Engineering & Shipyard and Planetside capture/,
       /named HD surface-planet texture attachment/,
       /retains the displayed predecessor until an acquired successor publishes/,
       /Automated lenses still do not replace human play/,
@@ -997,6 +1201,7 @@ describe('legacy and v2 release channels', () => {
       ...TRAINING_RESTORE_CONTRADICTIONS,
       ...TRAINING_LEGACY_RECOVERY_CONTRADICTIONS,
       ...COMPENDIUM_COPY_CONTRADICTIONS,
+      ...CAPTURE_COPY_CONTRADICTIONS,
       ...ENGINEERING_COPY_CONTRADICTIONS,
       ...HD_ATTACHMENT_COPY_CONTRADICTIONS,
     ];
@@ -1010,7 +1215,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 53,
+        inventory: bullets.length === 54,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
@@ -1145,6 +1350,7 @@ describe('legacy and v2 release channels', () => {
     for (const truthfulClaim of [
       'Mining is now playable.',
       'Eligible fixed Fabricator crafting is now playable.',
+      'Capture is now playable.',
       'Exploration audio is now live.',
     ]) {
       expect(bulletinOutcome(withInjectedFeatureClaim(truthfulClaim)), truthfulClaim).toEqual({
@@ -1161,10 +1367,16 @@ describe('legacy and v2 release channels', () => {
       'Item upgrades are now live.',
       'Sockets are now available.',
       'Vendors are now live.',
-      'Capture is now playable.',
       'Discover Life is now playable.',
       'Breeding is now playable.',
       'Creature combat is now playable.',
+      'Feeding is now playable.',
+      'Renaming is now available.',
+      'Field Scouts are now live.',
+      'Duels are now playable.',
+      'Passive evolution is now available.',
+      'Companion assignment is now live.',
+      'Missions are now playable.',
     ]) {
       expect(bulletinOutcome(withInjectedFeatureClaim(unavailableClaim)), unavailableClaim)
         .toMatchObject({

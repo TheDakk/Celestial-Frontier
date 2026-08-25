@@ -30,14 +30,19 @@ Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice. Its Guide is now a source-addressed
 continuation of the mature manual: all 9 categories /43 authored IDs /41 player
 topics remain searchable and cross-linked, while capability-aware v2 copy marks
-unported mechanics honestly instead of repeating their legacy promises. The exact
+unported mechanics honestly instead of repeating their legacy promises. At the current Arc 4
+boundary, those 41 topics are 24 partial and 17 unavailable. Native Survey-card
+Tame/Scavenge/Sample now uses a source-bound random eligible pool with full-roster counts/odds,
+one shared hit-or-miss Biosphere Yield, committed-only durable Compendium/creature/specimen and
+eligible first-only Stardust outcomes, plus storage/stale/reload convergence; it does not offer targeted species
+selection or a Charter bioscan. The exact
 56-release/398-bullet legacy history is present beside **A New Foundation**, the
-cumulative **v2.0 development** bulletin. Its categorized technical outline summarizes
+cumulative **v2.0 development** bulletin, currently 54 draft bullets. Its categorized technical outline summarizes
 the complete implemented playtest surface and explicitly stops at the current slice
 instead of advertising open port work. `v2.0` identifies the playtest build only: the
 bulletin remains `draft` / `Unreleased`, `V2_CURRENT_RELEASE_VERSION` remains `null`,
 and reading it cannot trigger an update popup or mutate the seen-release marker. Field Training
-currently covers the six chart/travel/landing lessons plus an honest graduation;
+currently covers the six chart/travel/landing lessons plus an honest graduation and no Capture lesson;
 tooltip deep-links, Advanced Briefings, and the rest of the 21-step training arc
 remain port work. From `port/v2`, run `npm install`, `npm test`, `npm run typecheck`,
 and `npm run smoke`; see its README for the full current battery and open gates.
@@ -50,7 +55,7 @@ It connects the planned Inventory/character portrait, visibly upgrading Shipyard
 item-instance loot, creature/companion ownership, active-play return missions, combat/
 Guardian receipts and full HD audio into one deterministic capability ladder. It also
 records the current implementation boundary and unfinished-system inventory: these are
-design and acceptance contracts, not claims that the Phase-4 Guide capabilities are live.
+design and acceptance contracts, not claims that every planned Phase-4 capability is live.
 The player-respect rule is explicit—mastery, attachment and discovery without streak decay,
 FOMO, paid random rewards, expiring missions or punishment for taking a break.
 Any future recorded/source audio also follows the empty-until-proven rights contract in

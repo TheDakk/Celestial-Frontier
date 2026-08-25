@@ -2,8 +2,8 @@
 
 ## Current port status — 2026-08-25
 
-> **The current local product boundary includes Arc 3 Engineering and Arc 4's headless durable
-> writer.** Full-CF1 finite Mine/Skim, the Engineering & Shipyard panel, shared
+> **The current local product boundary includes Arc 3 Engineering and player-facing Arc 4
+> capture.** Full-CF1 finite Mine/Skim, the Engineering & Shipyard panel, shared
 > ProductActionCoordinator and committed-only Charter mine/fabrication banking are live. Six
 > research rows are displayed but only Deep Scanners is purchasable; its pure orbital-reveal policy
 > exists while current Survey renders no orbital mineral rows. All 62 fixed recipes are listed, but
@@ -11,7 +11,7 @@
 > actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
 > Arc 4 bootstraps/reconciles its strict 18-namespace ownership carrier in the shared receipt-free
 > boot CAS. A genuine legacy Training restore couples one Arc 2 write with all 18 Arc 4 writes and
-> verifies exact migrated source evidence. Its diagnostics-only Tame/Scavenge/Sample path consumes
+> verifies exact migrated source evidence. Its native Survey-card Tame/Scavenge/Sample path consumes
 > the production full roster and current epoch, certifies miss plus every eligible hit against the
 > complete save before its two F4 draws, and commits one hit-or-miss attempt spend, ownership/v4
 > mirror, next F4 authority, one receipt and revision in one CAS. First-species catalogue/reward
@@ -25,8 +25,16 @@
 > Guide/release/Training guidance, read-only aligned boot behavior, explicit coalesced route-repair
 > persistence and post-durable convergence are committed at `c4a02be`. Current-source local Slice
 > Smoke and Glass Matrix proof is complete below; only the final multi-Arc measurement reseal remains
-> deferred. Arc 4 still has no player control, copy, toast, browser/HUMAN proof or Guide capability;
-> Capture remains Guide-unavailable, and random-pool versus targeted presentation is still open.
+> deferred. Arc 4's presentation is a source-bound uniform random eligible pool, not targeted
+> species selection: the card reports preview/full counts, aggregate and individual odds, shared
+> hit-or-miss Biosphere Yield and the active-play recovery countdown. The controls, pending state,
+> native Close/reopen and reload path are player-live; storage/stale/publication faults remain
+> non-optimistic and converge without reroll or second write. Guide remains 41 player topics, now
+> 24 partial /17 unavailable; **A New Foundation** has 54 draft bullets. Training remains six
+> lessons plus graduation with no Capture lesson. Arc 4 is `[PARTIAL]` only because the real
+> uninterrupted 20-minute next-cycle recovery observation and combined HUMAN review remain open.
+> No Charter bioscan, targeted preview, production release/version, `rnSeen` mutation or
+> preview/publication authority is claimed.
 >
 > **Arc 2 implementation boundary — historical foundation, still current where not superseded:**
 > F3/F4 supply live v5 split rows, revision/lease authority, a protected
@@ -81,6 +89,25 @@
 > the final Glass fixture/contract/tool additions, with no intervening app-product change. This is
 > bounded current-source local evidence, not a same-snapshot clean exact-head, hosted, HUMAN,
 > integration, whole-Gate, release or deployment certificate.
+
+> **Arc 4 current-source browser boundary (2026-08-25):** no-retry Slice Smoke run
+> `20260825143239498-59502-655815e34a3e` passed on Edge `151.0.4129.101` in 336,913 ms with
+> zero findings/failure scopes, zero retries and the exact nine-stage capture ledger:
+> precondition, pending-no-optimism, hit, storage-refusal, stale-convergence, miss, burn-down,
+> disabled-suppression and publication-convergence. It records 14 burn steps and
+> `recoveryClaimed:false`; report/log SHA-256 are
+> `4cc6fe02fb6965e4b67baef1d6b90d0a5ac64dff836cdc6416f49d5ad5bbbdde` /
+> `15683111584df5f1fead034b0b28f0e1a9b9ec96c2eb5cc3978b78c5ca1436b2`.
+> Full-certifying Glass Matrix then passed in 71,713 ms across 12 viewports and 36 Arc 4
+> outcomes, executing every planned control with none blocked or omitted and zero findings,
+> instrument failures or retries (report SHA-256
+> `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Both bind base
+> `8633bb48fc89c7ae658fa9ed4a7f47b683be102d`, status
+> `61fc362edebc5f747143131de7cf4a27a7228a3734f6becb49b2089ca6381cac` and the same dirty
+> working-tree snapshot
+> `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. This is exact-input
+> local evidence, not an exact-head, hosted, HUMAN, preview/publication, release or deployment
+> certificate.
 
 > **Arc 1 automated implementation and hosted integration are complete; HUMAN judgment remains
 > open.** PR #33 merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`
@@ -539,8 +566,8 @@
 > reload remain available, and every boot reopens it while the protected source
 > remains. The five replacement reasons are `training-restart`,
 > `training-complete`, `training-recovery`, `save-import`, and `storage-retry`.
-> This does not add the remaining fifteen D-TRAIN-2 lessons, close real-save Gate
-> C, add a Guide capability, alter the five-category/44-bullet draft, set a current
+> At that historical D-TRAIN-1 boundary, this did not add the remaining fifteen D-TRAIN-2 lessons,
+> close real-save Gate C, add a Guide capability, alter the five-category/44-bullet draft, set a current
 > release, or authorize a version/release.
 >
 > Ignored local evidence is now terminal PASS on Edge `151.0.4129.86` at
@@ -760,12 +787,14 @@ authority and Arc 3 Auto-Extractor settlement.
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
 43 authored stable IDs and 41 player topics with search, categories, native-keyboard
-cross-links and capability-aware v2 copy. Non-dormant unported mechanics remain
-discoverable but are explicitly unavailable; intentionally dormant topics remain
-source-recorded and player-hidden. No legacy promise is presented as current behavior.
+cross-links and capability-aware v2 copy. At the current Arc 4 boundary, 24 topics are
+partial and 17 are unavailable; the Capture/Discover guidance describes the live
+random-pool Survey controls without inventing targeted selection or a Charter bioscan.
+Intentionally dormant topics remain source-recorded and player-hidden. No legacy promise is
+presented as current behavior.
 Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
-categorized v2.0 development bulletin. The draft summarizes the implemented playtest
+categorized v2.0 development bulletin, now 54 bullets. The draft summarizes the implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
 nonempty bullets, the key player-facing outcomes, and a scroll-reachable final item.
 That playtest identity cannot trigger the one-time update popup, update `rnSeen`,
@@ -779,7 +808,8 @@ Advanced Briefings, or every late-game system has already been ported.
 Field Training is equally explicit about its boundary: the slice runs the six
 welcome/find-Earth/survey/chart/Atlas/land lessons and then an honest
 "Finish for now" step. Cache, feeding, breeding, duel, hazard, healing, forge,
-and the rest of the legacy 21-step curriculum remain open with their systems.
+Capture, and the rest of the legacy 21-step curriculum remain open with their systems; live Arc 4
+capture does not add a seventh lesson.
 Genuine v1.8.9 checkpoints restore only their eleven owned pre-drill surfaces;
 surrounding expedition state stays with the surrounding save. Unknown checkpoint
 or unavailable-route recovery reuses the import sheet in a stricter persistent
@@ -1599,7 +1629,7 @@ retry, fallback, product, launch-argument, or producer drift occurred in that hi
 | `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import/Shipyard surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion, aggregate twin-canvas DPR and boot order without retrying. Focus evidence owns indicated-focus modality after real pointer routes: it requests `focusVisible:true`, then requires active focus, `:focus-visible`, changed computed style and visible paint. Its selftest proves `focusVisible:false` suppresses the indicator, removed focus paint fails, and restored paint passes, preventing the Shipyard pointer leg from turning later programmatic focus audits into modality-dependent false reds. The Guide carrier control requires an actual exact-one-carrier removal and rejects zero/multiple/no-op/wrong/still-rendered mutations. Short-landscape Compendium uses the left safe-height workspace while Search, dock, and Survey when open remain operable at right; hostile A++ first/middle/last/focus-pinned rows and exact clipping-ancestor diagnostics make a 48px row regression fail for its real cause. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`; the product derives its lower cap from the shared bottom anchor so a 44px Survey, 72px scrollable Planetside band, and 8px gap coexist at compact-phone height. Import/reload owns `import-phase-sequence`, `replacement-ticker-quiescence`, `replacement-document-loader-token-phase`, `reload-resource-release`, and `replacement-boot-phase-sequence`: the exact import stream requires ticker-running invocation, a stopped claim/write/release, and one absolute 20-second clock before the bounded arm. A capture-scoped ordinal requires the exact release-started N → release N+1 → release-complete N+2 tail; only the valid release-first intermediate waits under that unchanged clock. Sticky receipts then require a changed-loader commit within 5 seconds, the exact 12-stage `cf-v2-boot-phase/v1` sequence, and one `cf-v2-slice-ready/v1` tail from the new session/context/generation/origin/loader/token within 20 seconds. The ticker stays false through wiring and true thereafter; browser-native `performanceNow` is strictly below the bound. Two strict at-most-2-second post-ready cycles each pair an exact-context target probe with an independent browser-process heartbeat, with cycle two awaiting a later post-render ticker turn; the import arm plus both pairs form the exact five-row command ledger. The same-backing ultra control applies that target/heartbeat discriminator to both downshift and restore, requires a later advancing ticker turn, and rejects stopped/stale-ticker states. Bounded sticky failure evidence diagnoses red and separates a target-only product answerability failure from transport/instrument failure. No retry, timeout increase, or IndexedDB timeout race is used. The command owns the shared workspace lock while building/browsing. |
 | **Arc 2 extensions to Smoke + Glass (2026-08-24)** | Smoke drives the real Inventory opener, exact carrier↔legacy↔raw↔runtime↔DOM parity, conditional comparison, one durable action/receipt, reload + Atlas continuity, rejected-bootstrap rollback, and genuine legacy-Training carrier replacement; source-deferred/current-view and corrupt/future controls prevent false repair. Glass adds the exact ten-button/5×2 phone dock; real action receipts; bidirectional modal focus; complete pending-action runtime and raw-DOM equipped snapshots; and independent carrier, legacy mirror, raw authority, runtime and DOM mutations. Duplicate/missing rows, hidden pending items, conditional-copy loss, protection bypass, stale publication and convergence retry remain red even when sibling representations agree. The retained local outcomes are Slice PASS (239,546 ms) and Glass PASS (61,039 ms, 12/12, 78/78) on Edge `.101`, both dirty-input diagnostic evidence with no retries. |
 | **Arc 3 extensions to Smoke + Glass (2026-08-25)** | Smoke uses native input for Mine, Skim, Deep Scanners and fixed Plate Fabrication, and proves no optimism, shared single-flight ownership, pending Close/reopen, exact focus restoration, Charter banking, complete v5/Arc2/Arc3/F4/mirror/receipt parity, storage refusal, stale reload and post-durable publication convergence. Glass opens the real Engineering & Shipyard surface at all 12 viewports, drives keyboard disclosures, and checks six research rows, five ordered recipe groups, 62 recipes, 70 honest action controls, an independent status/effect/enabled oracle, 44px geometry, focus/ARIA, exactly one preview while open and zero retained work after Close. The final report ledger remains 78/78; fixture and hostile controls do not invent a 79th named report outcome. |
-| **Arc 4 focused/static evidence (2026-08-25)** | Persistence, Training restore, acquisition planner/capacity/action, app bootstrap/wiring and coordinator tests cover strict 18-namespace bootstrap, exact legacy source evidence, full-roster/current-epoch two-draw settlement, every pre-draw miss/hit capacity scenario, one receipt/CAS, hit/miss spend, first-only/repeat ownership, full committed verification, targeted publication and synchronous overlap barriers. Hostile, source-slicing and TOCTOU controls fail closed. This is diagnostics-only browser-free evidence: no player control, Guide capability, real-browser/reload outcome, full-battery, HUMAN, hosted, preview or release authority is claimed. |
+| **Arc 4 focused + browser evidence (2026-08-25)** | Persistence, Training restore, acquisition planner/capacity/action, app bootstrap/wiring and coordinator tests cover strict 18-namespace bootstrap, exact legacy source evidence, full-roster/current-epoch two-draw settlement, every pre-draw miss/hit capacity scenario, one receipt/CAS, hit/miss spend, first-only/repeat ownership, full committed verification, targeted publication and synchronous overlap barriers. Current-source Slice then passes the exact nine-stage native-control ledger, including pending non-optimism, storage refusal, stale/publication convergence, hit, miss, disabled suppression and 14-step burn-down; Glass passes 12 viewports/36 Arc 4 outcomes with every planned control executed. The shared exact-input tree is `b83ccef5…`; `recoveryClaimed:false`. The separate uninterrupted 20-minute recovery observation and HUMAN review remain open, and no hosted, preview/publication, release or whole-Gate authority is claimed. |
 | `npm run compendiummem:selftest` / `npm run compendiummem` / `node tools/compendiummem.mjs --verify-run=<run-id>` | Negative-controls the browser-free Compendium instrument, performs one standalone browser run without automatic retry, and independently verifies the named report. Exact `aecf386…` adds an immutable monotonic 2,000 ms static-server close boundary: just-before succeeds; exact/late/missing/error force one connection cleanup and reject; cleanup red suppresses PASS/sample. Clean `6736ef4…` c27/baseline11/c28/c29 evidence owns three candidates plus paired baseline under measurement `23aacc2c…`. Cross-host budget/test `e3a71c8a…` / `0793772d…` retain their 78/78 lifecycle evidence and 14/13 baseline breach inventory while admitting committed exact Linux report `a486fe8e…`; three just-below controls recover its original failures. Exact run `32462323775` passed this gate and the complete PR battery once on `c68aee2…`; PR #32 merged at `d4ab7e6…`. The gate still owns the 1,500-row fixture, authority graph, six review PNGs, and instrument/product distinction; automation never supplies HUMAN judgment. |
 | `npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts tests/scenemem-workflow.test.ts` / `node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json` / `node tools/scenemem.mjs --verify-run=<run-id> --budget=budgets/scene-memory-v2.json` | Negative-controls the Arc 1 scene-memory contract, tracked v2 budget, workflow binding and terminal verifier; then performs one no-retry raw-CDP certification and independently verifies the exact named report. One Edge `.101` process owns four unmeasured warmups plus exactly four measured phone/desktop cycles through Universe, Galaxy, Galaxy fine, Sol/System, Earth/Surface, the 1,500-row Compendium and real Shipyard before settled Universe. Forty-two outcomes bind exact scene ownership/work, transient peaks, canonical per-hash Pixi inventory, heap/DOM/resource bounds, target answerability, an independent browser heartbeat, zero pending work, same-document bfcache survival, and per-profile Shipyard lifecycle through its visible opener and owned Close. `59530da…` / budget `3b71d14c…` / run `20260822-arc1-local-certification` remain historical authority for the former 250 ms local ruler. Active repair `7d8dc380…` changes no product, collector, or contract bytes; budget `5c8a6e75…` selects the fixed strict `<1000 ms` SLA. Run `20260823-pr33-cross-host-sla-certification` passed 42/42 locally with named verification; raw/gzip SHA-256 are `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` / `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run `32618995487` remains exact terminal-red 40/42: only the old 250 ms phone/desktop ruler failed against Linux 493–647 ms while every liveness and memory outcome passed. It was not retried and is not hosted-green. Automation supplies neither HUMAN nor merge authority. |
 | `node tools/compendiummem-browser-preflight.mjs --selftest` / `node tools/compendiummem-browser-preflight.mjs` | Owns the exact-Edge workflow's one cold authority proof without changing any hashed Compendium measurement input. One 45-second startup / 15-second socket / sealed 5-second candidate-command / 2-second shutdown launch must match the budget's product, revision, JS, protocol and selected executable, then create and attach a fresh target and enable Runtime/Page/HeapProfiler. Its evaluate return and exact-marker, same-session console event share one immutable 5-second monotonic phase; both must arrive strictly before the deadline. Portable controls accept just-before evaluate/event receipts, reject exact and just-late receipts, reject missing/wrong-marker/wrong-session events and a backward clock, and prove one open/close with cleanup and no retry. Browser/executable mismatch, command/sentinel failure, and deliberate cleanup leak are also terminal. There is no warmup, retry, fallback, alternate browser, or authority rebaseline. Both PR certification and development-preview packaging workflows run this same preflight before the Compendium selftest/candidate. The selftest also parses each workflow fail-closed: it requires one unique owned Edge-install step with the exact ordered URL, SHA, download, hash check, `apt-get install --reinstall --yes "$edge_package"`, installed-version check, executable check, and following preflight; it rejects either workflow's removal plus outside-step decoys. That browser-free control proves workflow structure, not live hosted-runner launch. Run `32394244417` stopped before product when image `ubuntu24/20260816.277`'s already-resident .86 made the prior plain install a no-op and the unchanged live launch found no endpoint; exact changed-head run `32462323775` later confirmed the same-package reinstall and live preflight path. |

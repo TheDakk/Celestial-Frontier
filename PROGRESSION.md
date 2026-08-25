@@ -1,5 +1,22 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-25 Arc 4 progression overlay — current local implementation:** native Survey
+> Tame/Scavenge/Sample actions now turn a finite Biosphere attempt into one durable hit or miss.
+> The card states that it selects randomly from the verb's eligible species across the canonical
+> full roster, not the eight-row preview, and shows aggregate/individual odds plus the shared
+> hit-or-miss budget and active-play recovery countdown. A genuinely first successful species adds
+> its catalogue/discovery facts and eligible Legendary+ Stardust exactly once; repeat success may
+> add another stable fauna instance or specimen lot without paying the first-only reward again.
+> Charter bioscan progress is deliberately not exposed, and no targeted-species preview exists.
+>
+> Player publication follows the single F3/F4 receipt/CAS. Pending, storage-refused and stale paths
+> grant nothing optimistically; a post-durable fault reloads the committed result without reroll or
+> duplicate award. One no-retry Slice pass proves hit, miss, 14-attempt depletion and convergence;
+> full Glass proves the 12-viewport native controls/Close/reopen and exact source-bound copy. The
+> genuine 20-minute next-cycle recovery observation and combined HUMAN first-journey review remain
+> open, so Arc 4 is **[PARTIAL]**. Guide/release copy is current, but Field Training remains six
+> lessons plus graduation with no Capture lesson, and no shipped version/release follows.
+
 > **2026-08-24 Arc 3 progression overlay — current local implementation:** Mine and Skim are live
 > through the Engineering panel. Six research rows are displayed, but only Deep Scanners is
 > purchasable; its pure orbital-reveal policy exists while current Survey does not render orbital
@@ -14,9 +31,8 @@
 > Inventory publication.
 >
 > This does not complete progression: authored random loot, variable crafting, upgrades/sockets,
-> capture/companions, combat/Guardians, the complete Charter/Training journey and HUMAN pacing remain
-> open. Arc 4's ownership/snapshot/planner packages add no player progression until a capture writer
-> and UI land.
+> companions, combat/Guardians, the complete Charter/Training journey and HUMAN pacing remain open.
+> The Arc 4 overlay above supersedes only the former absent-capture boundary.
 
 > **2026-08-24 F3/F4 + Arc 2 progression overlay — current local implementation:** the v5 app now
 > persists one protected F4 authority containing visible/answerable/lease-owned `activePlayMs` and
@@ -213,7 +229,7 @@
 > replay may still receive its lesson event without receiving progression credit.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlay
-matches `port/v2` as of 2026-08-24, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
+matches the local `port/v2` boundary as of 2026-08-25, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy

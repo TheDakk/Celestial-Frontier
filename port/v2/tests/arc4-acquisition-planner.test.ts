@@ -7,11 +7,15 @@ import * as acquisitionRoot from '@cf/domain-acquisition';
 import {
   MAX_OWNERSHIP_REVISION,
   ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+  CAPTURE_PRESENTATION_SCHEMA,
+  CAPTURE_PRESENTATION_FENCE_PREFIX,
   CAPTURE_PLANNER_POLICY_BLOCKERS_V1,
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   TAME_ODDS_V1,
   captureChanceV1,
   captureHitV1,
+  capturePresentationFenceV1,
+  formatCaptureChancePercentV1,
   createBiosphereProgressV1,
   createEmptyOwnershipStateV1,
   createInitialOwnershipStateV1,
@@ -31,6 +35,7 @@ import {
   planCaptureV1,
   preflightCaptureV1,
   projectCaptureCapacityScenariosV1,
+  projectCapturePresentationV1,
   sha256Hex,
   type AcquisitionCandidateV1,
   type CanonicalJson,
@@ -970,6 +975,334 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
   });
 });
 
+describe('Arc 4 pure capture presentation', () => {
+  it('projects every full-roster verb pool and exact chance summary without a draw or write', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const roster = rosterOf(earth);
+    const ownership = createEmptyOwnershipStateV1();
+    const activePlayMs = 400_123;
+    const extensions = authorityExtensions(
+      activePlayMs, HIT_SEED, {}, 0, true, ownership,
+    );
+    const snapshot = readySnapshot(earth, roster, extensions);
+    const ownershipBefore = encodeOwnershipStateV1(ownership);
+    const f4Before = readF4Authority(extensions);
+    const projected = projectCapturePresentationV1(
+      snapshot,
+      { observedActivePlayMs: activePlayMs },
+    );
+    expect(projected.kind).toBe('ready');
+    if (projected.kind !== 'ready') return;
+    expect(projected).toMatchObject({
+      schema: CAPTURE_PRESENTATION_SCHEMA,
+      snapshotFingerprint: snapshot.fingerprint,
+      worldKey: earth.key,
+      observedActivePlayMs: activePlayMs,
+      fullRosterCount: snapshot.candidates.length,
+      biosphereYield: {
+        total: snapshot.biosphereYield,
+        used: 0,
+        remaining: snapshot.biosphereYield,
+        cycle: 0,
+        cycleDurationActivePlayMs: ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+        recoveredSinceSnapshot: false,
+        nextCycleAtActivePlayMs: ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+        activePlayMsUntilNextCycle: ACTIVE_PLAY_CAPTURE_CYCLE_MS - activePlayMs,
+      },
+    });
+    const accepts = {
+      tame: (kingdom: string) => kingdom === 'fauna',
+      scavenge: (kingdom: string) => kingdom === 'flora' || kingdom === 'fungi',
+      sample: (kingdom: string) => kingdom === 'microbe',
+    } as const;
+    for (const verb of ['tame', 'scavenge', 'sample'] as const) {
+      const candidates = snapshot.candidates.filter((candidate) => (
+        accepts[verb](candidate.identity.kingdom)
+      ));
+      const chances = candidates.map((candidate) => captureChanceV1({
+        verb,
+        tier: independentCaptureTier(snapshot, candidate) as Parameters<
+          typeof captureChanceV1
+        >[0]['tier'],
+        ring: snapshot.captureRing,
+        contactCapturePoints: snapshot.contactCapturePoints,
+      }));
+      const minimum = Math.min(...chances);
+      const maximum = Math.max(...chances);
+      const arithmeticMean = chances.reduce((sum, chance) => sum + chance, 0) / chances.length;
+      expect(projected.verbs[verb]).toEqual({
+        verb,
+        fullRosterCount: snapshot.candidates.length,
+        naturalPoolCount: candidates.length,
+        eligiblePoolCount: candidates.length,
+        successfulExclusionCount: 0,
+        status: 'ready',
+        reason: 'ready',
+        chance: {
+          minimum,
+          maximum,
+          arithmeticMean,
+          minimumPercent: formatCaptureChancePercentV1(minimum),
+          maximumPercent: formatCaptureChancePercentV1(maximum),
+          arithmeticMeanPercent: formatCaptureChancePercentV1(arithmeticMean),
+        },
+      });
+      const preflight = preflightCaptureV1(snapshot, verb);
+      if (preflight.kind !== 'ready') throw new Error(`${verb} presentation fixture was empty`);
+      expect(projected.verbs[verb].eligiblePoolCount).toBe(preflight.pool.length);
+    }
+    expect(Object.isFrozen(projected)).toBe(true);
+    expect(Object.isFrozen(projected.biosphereYield)).toBe(true);
+    expect(Object.isFrozen(projected.verbs)).toBe(true);
+    expect(Object.isFrozen(projected.verbs.tame)).toBe(true);
+    expect(Object.isFrozen(projected.verbs.tame.chance)).toBe(true);
+    expect(JSON.stringify(projected)).not.toMatch(/candidateDraw|successDraw|successor/u);
+    expect(encodeOwnershipStateV1(ownership)).toBe(ownershipBefore);
+    expect(readF4Authority(extensions)).toEqual(f4Before);
+  });
+
+  it('distinguishes natural emptiness from same-cycle completion', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const roster = rosterOf(earth);
+    const fauna = roster.view.all.find((row) => row.kingdom === 'fauna');
+    if (!fauna) throw new Error('Earth presentation fixture has no fauna');
+    const ownership = createEmptyOwnershipStateV1();
+    const extensions = authorityExtensions(0, HIT_SEED, {}, 0, true, ownership);
+    const snapshot = registeredSnapshotFromRows(
+      earth, Object.freeze([fauna]), extensions, ownership,
+    );
+    const preflight = preflightCaptureV1(snapshot, 'tame');
+    if (preflight.kind !== 'ready') throw new Error(`single-fauna preflight was ${preflight.reason}`);
+    const draws = composeCaptureDrawBundleV1(preflight, extensions);
+    if (draws.kind !== 'planned') throw new Error(`single-fauna draws were ${draws.reason}`);
+    const capture = planCaptureV1(preflight, draws.bundle);
+    if (capture.kind !== 'planned' || !capture.plan.hit) {
+      throw new Error('single-fauna completion fixture did not hit');
+    }
+    const settledExtensions = authorityExtensions(
+      0, HIT_SEED, {}, 0, true, capture.plan.successor,
+    );
+    const settledSnapshot = registeredSnapshotFromRows(
+      earth,
+      Object.freeze([fauna]),
+      settledExtensions,
+      capture.plan.successor,
+    );
+    const projected = projectCapturePresentationV1(
+      settledSnapshot,
+      { observedActivePlayMs: 0 },
+    );
+    if (projected.kind !== 'ready') throw new Error(`completion projection was ${projected.reason}`);
+    expect(projected.biosphereYield).toMatchObject({
+      total: 3, used: 1, remaining: 2,
+    });
+    expect(projected.verbs.tame).toMatchObject({
+      naturalPoolCount: 1,
+      eligiblePoolCount: 0,
+      successfulExclusionCount: 1,
+      status: 'completed',
+      reason: 'completed-this-cycle',
+      chance: null,
+    });
+    expect(projected.verbs.scavenge).toMatchObject({
+      naturalPoolCount: 0,
+      eligiblePoolCount: 0,
+      successfulExclusionCount: 0,
+      status: 'empty',
+      reason: 'natural-pool-empty',
+      chance: null,
+    });
+    expect(projected.verbs.sample.status).toBe('empty');
+    expect(preflightCaptureV1(settledSnapshot, 'tame'))
+      .toEqual({ kind: 'refused', reason: 'empty' });
+  });
+
+  it('projects finite shared-yield depletion and active-play-only recovery without persisting it', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const roster = rosterOf(earth);
+    const initial = readySnapshot(earth, roster, authorityExtensions());
+    const depletedOwnership = createInitialOwnershipStateV1({
+      catalogSpecies: [], discoveries: [], creatures: [], specimenLots: [],
+      biosphereProgress: [createBiosphereProgressV1({
+        worldAddress: earth,
+        cycle: 0,
+        used: initial.biosphereYield,
+        successful: [],
+      })],
+      legacyBioX: [], scoutCreatureId: null,
+    });
+    const extensions = authorityExtensions(
+      0, HIT_SEED, {}, 0, true, depletedOwnership,
+    );
+    const snapshot = readySnapshot(earth, roster, extensions);
+    const ownershipBefore = encodeOwnershipStateV1(depletedOwnership);
+    const f4Before = readF4Authority(extensions);
+    const depleted = projectCapturePresentationV1(
+      snapshot,
+      { observedActivePlayMs: 0 },
+    );
+    if (depleted.kind !== 'ready') throw new Error(`depleted projection was ${depleted.reason}`);
+    expect(depleted.biosphereYield).toMatchObject({
+      total: snapshot.biosphereYield,
+      used: snapshot.biosphereYield,
+      remaining: 0,
+      cycle: 0,
+      recoveredSinceSnapshot: false,
+      nextCycleAtActivePlayMs: ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+      activePlayMsUntilNextCycle: ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+    });
+    expect(depleted.verbs.tame).toMatchObject({
+      status: 'depleted', reason: 'biosphere-yield-depleted',
+    });
+    const recovered = projectCapturePresentationV1(
+      snapshot,
+      { observedActivePlayMs: ACTIVE_PLAY_CAPTURE_CYCLE_MS },
+    );
+    if (recovered.kind !== 'ready') throw new Error(`recovery projection was ${recovered.reason}`);
+    expect(recovered.biosphereYield).toMatchObject({
+      total: snapshot.biosphereYield,
+      used: 0,
+      remaining: snapshot.biosphereYield,
+      cycle: 1,
+      recoveredSinceSnapshot: true,
+      nextCycleAtActivePlayMs: 2 * ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+      activePlayMsUntilNextCycle: ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+    });
+    expect(recovered.verbs.tame).toMatchObject({ status: 'ready', reason: 'ready' });
+    expect(preflightCaptureV1(snapshot, 'tame'))
+      .toEqual({ kind: 'refused', reason: 'depleted' });
+    expect(encodeOwnershipStateV1(depletedOwnership)).toBe(ownershipBefore);
+    expect(readF4Authority(extensions)).toEqual(f4Before);
+  });
+
+  it('rejects unregistered authority and malformed observations, and formats low chances honestly', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const roster = rosterOf(earth);
+    const snapshot = readySnapshot(earth, roster, authorityExtensions(10));
+    expect(projectCapturePresentationV1(
+      { ...snapshot }, { observedActivePlayMs: 10 },
+    )).toEqual({ kind: 'refused', reason: 'snapshot-unregistered' });
+    expect(projectCapturePresentationV1(
+      snapshot, { observedActivePlayMs: 9 },
+    )).toEqual({ kind: 'refused', reason: 'observation-before-snapshot' });
+    const invalidObservations: unknown[] = [
+      null,
+      {},
+      { observedActivePlayMs: 10, extra: true },
+      { observedActivePlayMs: 10.5 },
+      { observedActivePlayMs: Number.MAX_SAFE_INTEGER },
+      Object.assign(Object.create({}), { observedActivePlayMs: 10 }),
+      { observedActivePlayMs: 10, [Symbol('forged')]: true },
+      new Proxy({ observedActivePlayMs: 10 }, {
+        ownKeys: () => { throw new Error('forged observation trap ran'); },
+      }),
+    ];
+    for (const observation of invalidObservations) {
+      expect(projectCapturePresentationV1(snapshot, observation))
+        .toEqual({ kind: 'refused', reason: 'observation-invalid' });
+    }
+    let accessorRead = false;
+    const accessor: Record<string, unknown> = {};
+    Object.defineProperty(accessor, 'observedActivePlayMs', {
+      enumerable: true,
+      get: () => {
+        accessorRead = true;
+        throw new Error('presentation observation getter ran');
+      },
+    });
+    expect(projectCapturePresentationV1(snapshot, accessor))
+      .toEqual({ kind: 'refused', reason: 'observation-invalid' });
+    expect(accessorRead).toBe(false);
+    expect(formatCaptureChancePercentV1(0)).toBe('0%');
+    expect(formatCaptureChancePercentV1(0.000_001)).toBe('<0.01%');
+    expect(formatCaptureChancePercentV1(0.0025)).toBe('0.25%');
+    expect(formatCaptureChancePercentV1(0.95)).toBe('95%');
+    expect(() => formatCaptureChancePercentV1(Number.NaN)).toThrow(/capture chance/u);
+    expect(() => formatCaptureChancePercentV1(1.01)).toThrow(/capture chance/u);
+  });
+
+  it('fences exact displayed semantics while ignoring countdown and SessionRNG-only drift', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const roster = rosterOf(earth);
+    const ownership = createEmptyOwnershipStateV1();
+    const activePlayMs = 400_123;
+    const snapshot = readySnapshot(earth, roster, authorityExtensions(
+      activePlayMs, 12_345, {}, 0, true, ownership,
+    ));
+    const fence = capturePresentationFenceV1(
+      snapshot,
+      { observedActivePlayMs: activePlayMs },
+    );
+    expect(fence).toMatch(new RegExp(`^${CAPTURE_PRESENTATION_FENCE_PREFIX}[0-9a-f]{64}$`, 'u'));
+    expect(capturePresentationFenceV1(
+      snapshot,
+      { observedActivePlayMs: activePlayMs + 20_000 },
+    )).toBe(fence);
+
+    const rngOnly = readySnapshot(earth, roster, authorityExtensions(
+      activePlayMs, 98_765, { unrelated: 4 }, 19, true, ownership,
+    ));
+    expect(rngOnly.f4AuthorityFingerprint).not.toBe(snapshot.f4AuthorityFingerprint);
+    expect(capturePresentationFenceV1(
+      rngOnly,
+      { observedActivePlayMs: activePlayMs + 20_000 },
+    )).toBe(fence);
+
+    const noContact = readySnapshot(earth, roster, authorityExtensions(
+      activePlayMs, 12_345, {}, 0, false, ownership,
+    ));
+    expect(noContact.contactCapturePoints).not.toBe(snapshot.contactCapturePoints);
+    expect(capturePresentationFenceV1(
+      noContact,
+      { observedActivePlayMs: activePlayMs },
+    )).not.toBe(fence);
+
+    const usedOwnership = createInitialOwnershipStateV1({
+      catalogSpecies: [], discoveries: [], creatures: [], specimenLots: [],
+      biosphereProgress: [createBiosphereProgressV1({
+        worldAddress: earth,
+        cycle: 0,
+        used: 1,
+        successful: [],
+      })],
+      legacyBioX: [], scoutCreatureId: null,
+    });
+    const used = readySnapshot(earth, roster, authorityExtensions(
+      activePlayMs, 12_345, {}, 0, true, usedOwnership,
+    ));
+    expect(capturePresentationFenceV1(
+      used,
+      { observedActivePlayMs: activePlayMs },
+    )).not.toBe(fence);
+
+    expect(capturePresentationFenceV1(
+      snapshot,
+      { observedActivePlayMs: ACTIVE_PLAY_CAPTURE_CYCLE_MS },
+    )).not.toBe(fence);
+    const nextRoster = rosterOf(earth, 1);
+    const nextEpoch = readySnapshot(earth, nextRoster, authorityExtensions(
+      activePlayMs, 12_345, {}, 0, true, ownership,
+    ));
+    expect(capturePresentationFenceV1(
+      nextEpoch,
+      { observedActivePlayMs: activePlayMs },
+    )).not.toBe(fence);
+
+    expect(capturePresentationFenceV1(
+      { ...snapshot },
+      { observedActivePlayMs: activePlayMs },
+    )).toBeNull();
+    let getterReads = 0;
+    const accessor: Record<string, unknown> = {};
+    Object.defineProperty(accessor, 'observedActivePlayMs', {
+      enumerable: true,
+      get() { getterReads++; return activePlayMs; },
+    });
+    expect(capturePresentationFenceV1(snapshot, accessor)).toBeNull();
+    expect(getterReads).toBe(0);
+  });
+});
+
 describe('Arc 4 exact capture formula and truthful successor', () => {
   it('pins the complete tier/verb/ring/contact formula matrix independently', () => {
     expect(CAPTURE_PLANNER_POLICY_BLOCKERS_V1).toEqual({
@@ -979,7 +1312,7 @@ describe('Arc 4 exact capture formula and truthful successor', () => {
       breedingProvenance: 'unsupported-by-ownership-v1',
       guardianProvenance: 'unsupported-by-ownership-v1',
       writerExposed: true,
-      playerControlExposed: false,
+      playerControlExposed: true,
     });
     expect(TAME_ODDS_V1).toEqual([
       0.60, 0.45, 0.36, 0.27, 0.19, 0.13, 0.09, 0.06, 0.04, 0.025,

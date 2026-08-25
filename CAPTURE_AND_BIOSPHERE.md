@@ -1,14 +1,14 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
-ecology/audio overlay matches the headless durable Arc 4 writer and remaining presentation contract
-as of **2026-08-25**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
+ecology/audio overlay matches the player-facing durable Arc 4 capture slice and its remaining
+evidence boundary as of **2026-08-25**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
 well as biosphere recovery, so EPOCH_TICK is a shared knob.
 **Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy mechanics, while
 the current v2 authority is the TypeScript port named in the overlay below.
 
-> **2026-08-25 Arc 4 headless durable-writer boundary:** `@cf/domain-acquisition` separates
+> **2026-08-25 Arc 4 durable acquisition boundary:** `@cf/domain-acquisition` separates
 > catalogue species, discovery records, stable fauna `CreatureInstance`s, specimen lots and
 > per-world biosphere progress under 18 owner namespaces. The app now prepares an absent strict
 > ownership-v1 carrier—or reconciles a projectable stale compatibility mirror—inside the same
@@ -17,7 +17,7 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > A genuine legacy Field Training completion couples its one Arc 2 write and all 18 Arc 4 writes to
 > the same replacement transaction and verifies the exact migrated source evidence after durability.
 >
-> A diagnostics-only Tame/Scavenge/Sample front door captures the exact current surface, canonical
+> The app's native Survey-card Tame/Scavenge/Sample front door captures the exact current surface, canonical
 > CF1 address, production **full** roster and current ecology epoch. Before either of its two F4 draws
 > exists, registered preflight certifies the miss plus every eligible hit as a complete save under
 > ownership, v4 mirror, namespace and byte/counter capacity. The selected outcome then spends one
@@ -31,16 +31,45 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > exact transaction/kind/revision; verification then binds it to the full prepared save, current
 > carrier/mirror and F4 result before targeted live publication.
 >
-> This is still **not player-live capture**. There is no button, player copy, toast, Guide capability,
-> browser outcome, or HUMAN proof; Capture remains Guide-unavailable. The player presentation policy
-> —including random eligible-pool selection versus a targeted roster choice—remains open. The legacy
-> formulas below remain parity/design input rather than a claim about current v2 UI.
+> Capture is now **player-live locally**. Survey shows exactly one Tame, Scavenge and Sample action,
+> the shared Biosphere Yield budget and its active-play recovery countdown. Each action says that it
+> selects uniformly from every eligible species in the canonical full roster—not only the eight-row
+> Planetside preview—and shows the aggregate success chance plus the individual-odds range. This is
+> random eligible-pool presentation; it is not targeted species selection. The same source-bound
+> presentation model owns enabled/disabled status, context identity and action input, so copy cannot
+> imply a target or budget that the writer will not consume. Pending actions disable competing work
+> without optimistic catalogue, creature, specimen, Stardust or attempt publication. Storage refusal
+> and pre-durable stale authority publish nothing; post-durable verification/publication faults clear
+> the old projection and converge by one read-only reload without reroll or second write. Native Close,
+> reload reconstruction and focus return are part of the player path.
+>
+> Guide remains 41 player topics, now **24 partial / 17 unavailable**; Capture/Discover-Life copy
+> describes the live bounded actions. The cumulative **A New Foundation** draft has 54 bullets.
+> Field Training deliberately remains six lessons plus graduation and adds no Capture lesson.
+> `V2_CURRENT_RELEASE_VERSION` stays `null`; reading the draft does not mutate `rnSeen`, and no
+> production version, shipped release, Charter bioscan, targeted-preview, hosted, preview/publication
+> or HUMAN authority follows.
+>
+> Local Edge `151.0.4129.101` evidence binds dirty executable snapshot
+> `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f` at base
+> `8633bb48fc89c7ae658fa9ed4a7f47b683be102d`. Slice run
+> `20260825143239498-59502-655815e34a3e` passed once in 336,913 ms with zero findings/scopes/retries,
+> nine ordered Arc 4 stages and 14 burn-down attempts; it explicitly records
+> `recoveryClaimed:false` (report/log SHA-256
+> `4cc6fe02fb6965e4b67baef1d6b90d0a5ac64dff836cdc6416f49d5ad5bbbdde` /
+> `15683111584df5f1fead034b0b28f0e1a9b9ec96c2eb5cc3978b78c5ca1436b2`). Full-certifying Glass
+> passed in 71,713 ms across 12/12 viewports with all 36 Arc 4 outcomes and all planned controls,
+> none blocked/omitted, and zero findings/instrument failures/retries (report SHA-256
+> `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Arc 4 remains
+> **[PARTIAL]** until a real uninterrupted next-cycle recovery observation and the combined HUMAN
+> first-journey review are complete. The legacy formulas below remain parity/design input; current
+> v2 implementation authority is the typed path described here.
 
-## 0. v2.0 ecology/audio link (headless writer; presentation still absent — 2026-08-25)
+## 0. v2.0 ecology/audio link (capture presentation live; capture audio still absent — 2026-08-25)
 
-The current v2 development slice exposes no player Tame, Scavenge, Sample, Biosphere Yield or living
-companion control, although the headless Arc 4 ownership writer above is durable; its player audio
-remains stings-only. `@cf/audio` has pure
+The current v2 development slice exposes player Tame, Scavenge, Sample and Biosphere Yield through
+the native Survey card, but no living Companion control; its player audio remains stings-only.
+`@cf/audio` has pure
 `DistantEcologyHintPlan` and settled caption-gated expression-cue seams, but no app audio adapter
 supplies them from capture/survey and they perform no playback or state write. The v1 mechanics and formulas below
 remain unchanged. This overlay specifies the later presentation link; it does not alter success
@@ -57,7 +86,7 @@ Future capture audio is driven by typed outcomes after the authoritative action 
   never fires from a render function and never substitutes for visible odds, remaining attempts or
   result text.
 
-The headless acquisition writer is explicit and separate from that future presentation layer:
+The durable acquisition writer is explicit and separate from that future audio presentation layer:
 
 - A genuinely first successful Tame, Scavenge or Sample creates the corresponding `CatalogSpecies`
   first-discovery/reward facts; an eligible repeat does not duplicate them.
@@ -201,8 +230,8 @@ const TAME_ODDS=[0.60,0.45,0.36,0.27,0.19,0.13,0.09,0.06,0.04,0.025,0.015,0.010,
 
 ## 5. Determinism (seeded? feeds the fingerprint?)
 
-**Current v2 overlay:** the headless writer does not use the legacy app-layer `Math.random()` or a
-presentation-limited roster. It captures the production full roster at the current canonical
+**Current v2 overlay:** the player-live writer does not use the legacy app-layer `Math.random()` or
+a presentation-limited roster. It captures the production full roster at the current canonical
 ecology epoch and consumes the persisted F4 SessionRNG domains `captureCandidate` and
 `captureSuccess` only after all-scenario preflight/capacity succeeds. The legacy statements below
 remain true of `main.js`; they are parity/history, not current v2 writer authority.

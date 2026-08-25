@@ -35,7 +35,7 @@
 > derives one Arc 2 plus all 18 Arc 4 writes from the final candidate and postcommit-remigrates the
 > committed canonical state to bind exact source evidence.
 >
-> The diagnostics-only Tame/Scavenge/Sample adapter captures exact current nav/address, the
+> The native Survey-card Tame/Scavenge/Sample adapter captures exact current nav/address, the
 > production full roster and current epoch. Its registered all-scenario certificate prepares the
 > miss and every eligible hit as a complete save before either capture-domain draw. The selected
 > hit or miss spends one Biosphere attempt and commits ownership, compatibility fields, next F4
@@ -46,9 +46,21 @@
 > prepared fingerprint before durability. The committed path mints the evidence token and performs
 > the sole WeakMap registration, binding that payload to the exact transaction/kind/revision. The
 > verifier then requires the full prepared save before targeted publication; failures converge by
-> reload without reroll or second write. There is still no Capture button, player copy/toast,
-> browser/HUMAN outcome or Guide
-> capability, and random-pool versus targeted presentation remains undecided. Arc 5 adds the
+> reload without reroll or second write. `capture-card.ts` presents a source-bound uniform random
+> eligible pool—not targeted species selection—with preview/full counts, aggregate and individual
+> odds, one shared hit-or-miss Biosphere Yield, active-play recovery, pending non-optimism and
+> native Close/reopen/focus behavior. Guide Capture/Discover copy is live/partial within the current
+> 24-partial/17-unavailable inventory; **A New Foundation** contains 54 draft bullets. Training
+> remains six lessons plus graduation with no Capture lesson. Current-source Slice passes the exact
+> nine-stage capture ledger in 336,913 ms (report
+> `4cc6fe02fb6965e4b67baef1d6b90d0a5ac64dff836cdc6416f49d5ad5bbbdde`, 14 burn steps,
+> `recoveryClaimed:false`); Glass passes 12 viewports/36 Arc 4 outcomes with every planned control
+> and no omissions in 71,713 ms (report
+> `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Both bind base
+> `8633bb48fc89c7ae658fa9ed4a7f47b683be102d`, status `61fc362e…` and exact-input dirty tree
+> `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. The uninterrupted
+> 20-minute recovery observation and HUMAN review remain open; no Charter bioscan, targeted
+> preview, hosted, release/version, `rnSeen` or preview/publication authority is claimed. Arc 5 adds the
 > receipt-bound ownership-v2 model and a digest-only V1→V2 migration certificate—not duplicated V2
 > state, a writer, breed action or companion UI. Arc 7 has pure identity/taxonomy/ecology/expression,
 > an injected runtime, lab and empty-rights validator; it is not app-owned playback. Its absolute
@@ -606,7 +618,7 @@
 > still reachable, and synchronous reopen on every boot while the protected
 > source remains. Replacement reasons are now `training-restart`,
 > `training-complete`, `training-recovery`, `save-import`, and `storage-retry`.
-> Guide capability inventory and release structure remain unchanged (five
+> At that historical boundary, Guide capability inventory and release structure remained unchanged (five
 > categories /44 bullets, draft only, current release null); the remaining
 > fifteen D-TRAIN-2 lessons, real-save Gate C, and any version/release remain open.
 >
@@ -962,12 +974,13 @@
 > Planetside has a minimum-44px **Leave world** action. The eighth dock slot opens
 > the canonical **Guide to the Universe**: `guide-content.ts` carries a
 > source-addressed v1.8.9 snapshot of all 9 categories /43 authored stable ids /41
-> legacy-live topics, category browsing, search and `data-gt` cross-links. A
+> legacy-live topics—currently 24 partial and 17 unavailable—plus category browsing, search and
+> `data-gt` cross-links. A
 > capability table supplies current copy for partial systems and explicit
 > unavailable copy for unported mechanics; dormant `beacon` / `events` remain
 > retained but hidden. `release-content.ts` similarly preserves all 56 legacy
 > releases /398 bullets and keeps **A New Foundation**, the cumulative categorized
-> v2.0 development bulletin, separate. Its implemented-outcome outline is explicitly
+> v2.0 development bulletin, separate. Its 54-bullet implemented-outcome outline is explicitly
 > `draft` / `Unreleased`; structural and rendered controls require canonical section
 > order, unique nonempty bullets, scroll-reachable tail copy, and unchanged `rnSeen` /
 > `releasePending` across open and reload. `V2_CURRENT_RELEASE_VERSION` is `null`,
@@ -1925,13 +1938,14 @@ The `codex` Map stores discovered species. `discoverSpecies`, `autoScanWorld`,
 (button, headers, prose). NOTE: "Prime Codex" (win track) and "Cosmic Codex" (app title)
 are intentionally **kept** as "Codex."
 
-The current v2 read-only Compendium projects as many as 1,500 deterministic species through
+The current v2 Compendium projects as many as 1,500 deterministic species through
 `CompendiumVirtualList`, mounting only its measured window, bounded overscan, and any
 focus-pinned row. Rows acquire 132px art leases; detail alone retains a 440px portrait. Logical
 anchor-plus-offset, selected-row focus, and exact release/recovery ownership survive filter,
-detail/Back, resize, and close. "Read-only" describes the player-visible surface: the diagnostics-
-only Arc 4 action can durably add first-only catalogue compatibility data after its exact committed
-transaction verifies, but no visible Tame/Scavenge/Sample control exposes that writer yet.
+detail/Back, resize, and close. Native Arc 4 Tame/Scavenge/Sample controls can durably add first-only
+catalogue compatibility data after the exact committed transaction verifies; eligible repeats add
+only the appropriate stable fauna individual or specimen lot. Failed or refused attempts do not
+publish optimistic ownership, reroll, or perform a second write.
 
 ### Star Atlas (bookmarks)
 The `logMap` Map. `addToLog`, `renderLog`. Every survey card (galaxy/star/planet/moon/etc.)
@@ -2090,13 +2104,14 @@ Compendium / Star Atlas / Cosmic Events / Settings.
 - **Current v2 counterpart** (`port/v2/apps/game/src/guide-content.ts`,
   `release-content.ts`, wired by `main.ts`): `LEGACY_GUIDE_CATEGORIES` and
   `LEGACY_RELEASES` are exact source-addressed snapshots, guarded by
-  `tests/guide-release.test.ts`. `getGuideCatalogue` defaults to 41 player topics
-  (dormant hidden, unavailable retained with honest copy); `getGuideTopic` and
+  `tests/guide-release.test.ts`. `getGuideCatalogue` defaults to 41 player topics—currently
+  24 partial and 17 unavailable—with dormant topics hidden and unavailable topics retained with
+  honest copy; `getGuideTopic` and
   `searchGuide` keep stable ids, search and live cross-links. `fillGuide` /
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
-  by the 56 legacy releases. Its exact five-section /44-bullet implemented-outcome
+  by the 56 legacy releases. Its exact 54-bullet implemented-outcome
   inventory is checked structurally and in the rendered Guide, including real-scroll
   tail reach and unchanged shipped-release state. That version is development identity
   only. `getCurrentV2Release()` returns nothing while

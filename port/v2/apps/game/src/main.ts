@@ -79,7 +79,7 @@ import { createSceneText } from './scene-text.js';
 import {
   shipVisualStateKey,
 } from './shipyard-preview.js';
-import { canonicalWorldRoster } from './world-roster.js';
+import { canonicalWorldRoster, type CanonicalWorldRoster } from './world-roster.js';
 import {
   getGuideCatalogue, getGuideTopic, searchGuide,
   type GuideCategoryId, type GuideTopicId, type GuideTopicView,
@@ -108,8 +108,12 @@ import {
 } from '@cf/domain-opportunity';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  capturePresentationFenceV1,
+  formatCaptureChancePercentV1,
   ownershipStateDigestV1,
+  projectCapturePresentationV1,
   type AcquisitionVerbV1,
+  type CapturePresentationReadyV1,
   type OwnershipStateV1,
 } from '@cf/domain-acquisition';
 import { galaxyProfile, galaxyHaze, systemFor, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
@@ -184,6 +188,18 @@ import {
   stageArc4BootstrapLegacyProjection,
   verifyArc4CommittedCaptureV1,
 } from './arc4-capture-action.js';
+import {
+  CAPTURE_CARD_OUTCOME_SCHEMA,
+  CAPTURE_CARD_READ_MODEL_SCHEMA,
+  CAPTURE_CARD_VERB_ORDER,
+  CaptureCardController,
+  type CaptureCardActionOutcome,
+  type CaptureCardActionRequest,
+  type CaptureCardOpportunityReadModel,
+  type CaptureCardReadModelV1,
+  type CaptureCardVerb,
+} from './capture-card.js';
+import { composeAcquisitionSnapshotV1 } from './acquisition-snapshot.js';
 import {
   createF4RuntimeAuthority,
   type F4RuntimeAuthority,
@@ -266,6 +282,19 @@ let arc4OwnershipBootstrapPending = false;
 let arc4OwnershipProtection: string | null = null;
 let lastArc4BootstrapOutcome: string | null = null;
 let lastArc4CaptureOutcome: string | null = null;
+let currentCapturePresentationFence: string | null = null;
+let smokeRejectNextArc4ActionStorage = false;
+let smokeStaleNextArc4ActionAuthority = false;
+let smokeRejectNextArc4Publication = false;
+let lastSmokeArc4ActionFaultWitness: Readonly<{
+  schema: 'cf-v2-arc4-action-fault-witness/v1';
+  operation: string;
+  injection: 'storage-failure' | 'stale-authority' | 'publication-failure';
+  phase: 'injecting' | 'settled' | 'injection-failed';
+  beforeRevision: number;
+  injectedRevision: number | null;
+  outcome: string | null;
+}> | null = null;
 let f4AuthorityReloadScheduled = false;
 let smokeRejectNextF4HideCheckpoint = false;
 let lastF4HideWitness: Readonly<{
@@ -501,6 +530,10 @@ const heartbeatF4 = async (): Promise<void> => {
   if (checkpointDue && !productActionInFlight) await persistView();
   if (heartbeatOwned && openPanelId() === 'shipyard' && !productActionInFlight) {
     refreshEngineeringPanelState();
+  }
+  if (heartbeatOwned && card.style.display !== 'none'
+    && surveyOwnsCurrentCaptureSurface() && !productActionInFlight) {
+    refreshCaptureCardState();
   }
 };
 const settleF4Heartbeat = async (): Promise<void> => {
@@ -912,8 +945,9 @@ function setTrail(segs: string[]): void {
 }
 const indexedDBPersistenceBackend = createIndexedDBBackend('cf-v2-slice');
 let smokeRejectArc3StorageBoundary = false;
-/* The browser gate's one-shot storage fault still crosses the production
-   revision repository and commitAction owner. Only that action-scoped
+let smokeRejectArc4StorageBoundary = false;
+/* Browser-gate one-shot storage faults still cross the production revision
+   repository and exact product-action owner. Only the armed action-scoped
    compare-and-apply is rejected; ordinary play delegates byte-for-byte. */
 const persistenceBackend: StorageBackend = {
   get: (store, key) => indexedDBPersistenceBackend.get(store, key),
@@ -922,6 +956,10 @@ const persistenceBackend: StorageBackend = {
     if (smokeRejectArc3StorageBoundary) {
       smokeRejectArc3StorageBoundary = false;
       return Promise.reject(new Error('slice-smoke injected Arc 3 action storage failure'));
+    }
+    if (smokeRejectArc4StorageBoundary) {
+      smokeRejectArc4StorageBoundary = false;
+      return Promise.reject(new Error('slice-smoke injected Arc 4 capture storage failure'));
     }
     return indexedDBPersistenceBackend.compareAndApply(checks, operations, clearStores);
   },
@@ -1131,6 +1169,43 @@ let cardCtx: {
 } | null = null;
 interface CardTravelAction { label: 'Enter galaxy' | 'Enter system'; run: () => void; }
 let cardTravelAction: CardTravelAction | null = null;
+const captureCardController = new CaptureCardController({
+  root: card,
+  onAction: (request) => {
+    const presentationFence = currentCapturePresentationFence;
+    captureCardController.setPending(request);
+    void runCaptureCardAction(request, presentationFence);
+  },
+});
+function surveyOwnsCurrentCaptureSurface(): boolean {
+  return nav.mode === 'surface' && cardCtx !== null
+    && getProvenGalaxyKey(nav.gal) === getProvenGalaxyKey(cardCtx.gal)
+    && getProvenStarKey(nav.star) === getProvenStarKey(cardCtx.star)
+    && getProvenPlanetKey(nav.planet) === getProvenPlanetKey(cardCtx.planet)
+    && !trainingActive();
+}
+function reconstructCurrentSurfaceSurvey() {
+  /* A replacement document restores only its durable route. The first Survey
+     activation may rebuild presentation from that route, but only after the
+     live hierarchy, source ordinal and completed render all prove the same
+     world. This path presents no new player action and therefore owns no
+     persistence, capture draw/receipt, Survey event or audio. */
+  if (nav.mode !== 'surface' || trainingActive()) return false;
+  const address = canonicalCF1WorldAddressFromNav(nav);
+  if (!address.ok
+    || renderedSceneReceipt.serial <= 0
+    || renderedSceneReceipt.mode !== 'surface'
+    || renderedSceneReceipt.galaxyKey !== getProvenGalaxyKey(nav.gal)
+    || renderedSceneReceipt.starKey !== getProvenStarKey(nav.star)
+    || renderedSceneReceipt.worldKey !== address.address.key) return false;
+  const planet = planetNodeForProof(nav.star, nav.planet);
+  if (planet === null
+    || planet.seed !== address.address.planet.seed
+    || planet.ordinal !== address.address.planet.ordinal
+    || !presentPlanetSurvey(planet, nav.star, nav.planet)) return false;
+  surveyFocusReturn = surveyDockEl;
+  return true;
+}
 function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTravelAction | null = null): void {
   if (document.activeElement === app.canvas) surveyFocusReturn = app.canvas;
   cardTravelAction = travelAction;
@@ -1149,6 +1224,10 @@ function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTrave
   const rarity = rarityVisible
     ? `<div data-row="Rarity" class="survey-row"><span>Rarity</span><br>${esc(rarityName)}</div>`
     : '';
+  const ownsCurrentSurface = surveyOwnsCurrentCaptureSurface();
+  const captureHtml = ownsCurrentSurface
+    ? '<section data-capture-card-body aria-label="Biosphere capture"></section>'
+    : '';
   card.innerHTML =
     '<div class="survey-head">' +
     `<div><h2 data-sel="title">${esc(d.title)}</h2>` +
@@ -1156,8 +1235,14 @@ function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTrave
     '<button type="button" class="surface-close" data-survey-close aria-label="Close Survey card">✕</button></div>' +
     travelHtml +
     (actionsHtml || '') +   /* the card's ACTION ROW (Land · +Atlas · share) — buttons are trusted markup, never save text */
-    rarity + rows.map(([k, v, cls]) =>
+    captureHtml + rarity + rows.map(([k, v, cls]) =>
       `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" class="survey-row"><span>${esc(k)}</span><br>${esc(v)}</div>`).join('');
+  const captureMount = card.querySelector<HTMLElement>('[data-capture-card-body]');
+  if (captureMount === null) captureCardController.detach();
+  else {
+    captureCardController.attach(captureMount);
+    if (!productActionInFlight) refreshCaptureCardState();
+  }
   card.style.display = 'block';
   card.setAttribute('aria-hidden', 'false');
   document.body.classList.add('card-open');
@@ -1177,6 +1262,14 @@ function hideSurvey(restoreFocus = false): void {
     surveyFocusReturn = null;
     queueMicrotask(() => target.focus());
   }
+}
+function closeVisibleSurveyAndAscend(restoreFocus: boolean): void {
+  /* Survey Close remains available while an action settles, but the shared
+     goUp() fence still owns whether this same input may change route. Idle
+     surface Escape/right-click therefore closes and lifts exactly once;
+     pending capture closes only and cannot reach rerender/persistence. */
+  hideSurvey(restoreFocus);
+  if (nav.mode === 'surface') goUp();
 }
 function invalidateSurveyTravel(): void {
   cardTravelAction = null;
@@ -1301,13 +1394,25 @@ document.addEventListener('focusin', (event) => {
   (sheet.querySelector<HTMLElement>('#importtext') || sheet.querySelector<HTMLElement>('button'))?.focus();
 }, true);
 surveyDockEl.addEventListener('click', () => {
-  /* re-show the LAST card (no rebuild — the fold law's no-rebuild spirit) */
+  /* Re-show a retained card. A fresh replacement document deliberately has
+     none, so its native dock activation may source-prove and present the
+     current rendered surface without replaying a Survey action. */
   if (cardCtx && !activeCardPlanetWhere()) {
     cardCtx = null;
+    captureCardController.detach();
     card.innerHTML = '';
     hideSurvey();
     return;
   }
+  const staleCaptureMount = card.querySelector<HTMLElement>('[data-capture-card-body]');
+  if (staleCaptureMount !== null && !surveyOwnsCurrentCaptureSurface()) {
+    captureCardController.detach();
+    staleCaptureMount.remove();
+  }
+  if (staleCaptureMount !== null && surveyOwnsCurrentCaptureSurface()
+    && !productActionInFlight) refreshCaptureCardState();
+  if (card.style.display === 'none' && !card.innerHTML
+    && reconstructCurrentSurfaceSurvey()) return;
   if (card.style.display === 'none' && card.innerHTML) {
     surveyFocusReturn = surveyDockEl;
     card.style.display = 'block';
@@ -2116,6 +2221,7 @@ function trainingEarthSurfaceNav(): TrainingRouteProofResult<Extract<NavState, {
   return exact ? { ok: true, state } : { ok: false, reason: 'unavailable' };
 }
 function jumpToProvenNav(target: NavState, incomingName: string | null = null): boolean {
+  if (blockRouteChangeWhileProductAction()) return false;
   if (!save || target.mode === 'universe') return false;
   const authorityFailure = navigationAuthorityFailure(target);
   if (authorityFailure === 'prime-reach') {
@@ -3707,6 +3813,7 @@ function rerender(options: { preserveSurvey?: boolean; skipPersist?: boolean } =
 }
 /* descents EASE in: cam jumps wide, camT is the destination (the goTo feel) */
 function descendGalaxy(g: { seed: number; x: number; y: number }): boolean {
+  if (blockRouteChangeWhileProductAction()) return false;
   const proven = resolveCF1Galaxy(g);
   if (!proven.ok) return false;
   const galaxy = proven.galaxy;
@@ -3729,6 +3836,7 @@ function descendGalaxy(g: { seed: number; x: number; y: number }): boolean {
   return true;
 }
 function descendSystem(starCandidate: { seed: number; x: number; y: number }): boolean {
+  if (blockRouteChangeWhileProductAction()) return false;
   if (nav.mode !== 'galaxy') return false;
   const proven = resolveCF1Star(nav.gal, starCandidate);
   if (!proven.ok) return false;
@@ -3767,7 +3875,7 @@ function planetNodeForProof(star: ProvenStar, planet: ProvenPlanet): PlanetNode 
   return systemScene(star.seed).planets.find((node) =>
     node.seed === planet.seed && node.ordinal === planet.ordinal) ?? null;
 }
-function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet): boolean {
+function presentPlanetSurvey(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet): boolean {
   if ((nav.mode !== 'system' && nav.mode !== 'surface')
     || getProvenStarKey(nav.star) !== getProvenStarKey(star)) return false;
   const resolved = supplied
@@ -3789,6 +3897,10 @@ function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet):
     planet: resolved.planet,
   };
   showSurvey(d, buildCardActions(p));
+  return true;
+}
+function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet): boolean {
+  if (!presentPlanetSurvey(p, star, supplied)) return false;
   playSurveyPing();   /* the ACT of surveying answers back (main.js) */
   gameEvent('survey', { planetSeed: p.seed });
   return true;
@@ -3944,6 +4056,7 @@ card.addEventListener('click', (e) => {
     if (nav.mode !== 'surface' || !cardCtx
       || getProvenPlanetKey(nav.planet) !== getProvenPlanetKey(cardCtx.planet)
       || !activeCardPlanetWhere()) return;
+    if (blockRouteChangeWhileProductAction()) return;
     hideSurvey();
     goUp();
     if (keyboard) app.canvas.focus();
@@ -3976,6 +4089,10 @@ function clearPlanetside(): void {
   releasePlanetsideThumbs();
   planetsideWorldKey = null;
   delete sideEl.dataset.rosterState;
+  delete sideEl.dataset.previewCount;
+  delete sideEl.dataset.fullRosterCount;
+  delete sideEl.dataset.fullRosterFingerprint;
+  delete sideEl.dataset.ecologyEpoch;
   sideEl.replaceChildren();
   sideEl.style.display = 'none';
   document.documentElement.style.removeProperty('--planetside-top');
@@ -3985,9 +4102,13 @@ function showPlanetsideRosterFailure(reason: string): void {
   releasePlanetsideThumbs();
   planetsideWorldKey = null;
   sideEl.dataset.rosterState = 'authority-error';
+  delete sideEl.dataset.previewCount;
+  delete sideEl.dataset.fullRosterCount;
+  delete sideEl.dataset.fullRosterFingerprint;
+  delete sideEl.dataset.ecologyEpoch;
   const heading = document.createElement('div');
   heading.className = 'planetside-heading';
-  heading.textContent = 'PLANETSIDE — survey unavailable';
+  heading.textContent = 'PLANETSIDE — Biosphere unavailable';
   const detail = document.createElement('div');
   detail.textContent = 'Ecology records could not be source-verified.';
   detail.dataset.rosterError = reason;
@@ -4019,21 +4140,42 @@ new MutationObserver(() => {
     fillPlanetside(nav);
   }
 }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-function fillPlanetside(state: Extract<NavState, { mode: 'surface' }>): void {
+function planetsideMatchesFullRoster(roster: CanonicalWorldRoster): boolean {
+  if (roster.view.total === 0) {
+    return planetsideWorldKey === null && sideEl.style.display === 'none';
+  }
+  return sideEl.dataset.rosterState === 'ready'
+    && planetsideWorldKey === roster.worldKey
+    && sideEl.dataset.previewCount === String(roster.view.preview.length)
+    && sideEl.dataset.fullRosterCount === String(roster.view.total)
+    && sideEl.dataset.fullRosterFingerprint === roster.fullRosterFingerprint
+    && sideEl.dataset.ecologyEpoch === String(roster.ecologyEpoch);
+}
+function fillPlanetside(
+  state: Extract<NavState, { mode: 'surface' }>,
+  preparedRoster: CanonicalWorldRoster | null = null,
+): void {
   /* THE LIVING PLANETSIDE: MAIN-3's source-verified full ecology roster,
      bounded here—only here—to eight portrait chips. Capture and later world
      owners retain the complete canonical view. */
-  const addressResult = canonicalCF1WorldAddressFromNav(state);
-  if (!addressResult.ok) {
-    showPlanetsideRosterFailure(`address:${addressResult.reason}`);
+  let fullRoster = preparedRoster;
+  if (fullRoster === null) {
+    const addressResult = canonicalCF1WorldAddressFromNav(state);
+    if (!addressResult.ok) {
+      showPlanetsideRosterFailure(`address:${addressResult.reason}`);
+      return;
+    }
+    const rosterResult = canonicalWorldRoster(addressResult.address, epochClock.current());
+    if (!rosterResult.ok) {
+      showPlanetsideRosterFailure(`${rosterResult.reason}:${rosterResult.message}`);
+      return;
+    }
+    fullRoster = rosterResult.roster;
+  } else if (fullRoster.worldKey !== getProvenPlanetKey(state.planet)) {
+    showPlanetsideRosterFailure('prepared-roster-world-mismatch');
     return;
   }
-  const rosterResult = canonicalWorldRoster(addressResult.address, epochClock.current());
-  if (!rosterResult.ok) {
-    showPlanetsideRosterFailure(`${rosterResult.reason}:${rosterResult.message}`);
-    return;
-  }
-  const roster = rosterResult.roster.view.preview;
+  const roster = fullRoster.view.preview;
   if (!roster.length) {
     clearPlanetside();
     syncPlanetsideLayout();
@@ -4042,12 +4184,16 @@ function fillPlanetside(state: Extract<NavState, { mode: 'surface' }>): void {
   planetsideGeneration++;
   const generation = planetsideGeneration;
   releasePlanetsideThumbs();
-  const worldKey = rosterResult.roster.worldKey;
+  const worldKey = fullRoster.worldKey;
   planetsideWorldKey = worldKey;
   sideEl.dataset.rosterState = 'ready';
+  sideEl.dataset.previewCount = String(roster.length);
+  sideEl.dataset.fullRosterCount = String(fullRoster.view.total);
+  sideEl.dataset.fullRosterFingerprint = fullRoster.fullRosterFingerprint;
+  sideEl.dataset.ecologyEpoch = String(fullRoster.ecologyEpoch);
   const heading = document.createElement('div');
   heading.className = 'planetside-heading';
-  heading.textContent = 'PLANETSIDE — the ground survey';
+  heading.textContent = 'PLANETSIDE — Biosphere';
   const fragment = document.createDocumentFragment();
   fragment.append(heading);
   const pending: Array<{
@@ -4326,6 +4472,7 @@ function drawSurface(p: PlanetNode, state: Extract<NavState, { mode: 'surface' }
   recordRenderedScene(state);
 }
 function goUp(): void {
+  if (blockRouteChangeWhileProductAction()) return;
   const wasGal = nav.gal, wasStar = nav.star;
   const r = ascend(nav);
   if (!r.ok) return;
@@ -4350,6 +4497,7 @@ function goUp(): void {
    dive by zooming into a thing, rise by zooming out past the mode floor.
    Wormhole travel + charter/Ascent gating: Phase 4+ (recorded). */
 function checkTransitions(): void {
+  if (productActionInFlight) return;
   /* transitions read camT — the INTENT — not the eased cam: a descent's
      ease-in starts below the ascend floor and would bounce straight back */
   const mw = minWH();
@@ -4565,6 +4713,7 @@ function installKeyboardExploration(): void {
     }
     if ((event.key === '+' || event.key === '=' || event.key === '-' || event.key === '_') && target) {
       event.preventDefault(); event.stopPropagation();
+      if (blockRouteChangeWhileProductAction()) return;
       const [lo, hi] = zoomLimits();
       camT.x = target.world.x; camT.y = target.world.y;
       camT.z = Math.min(hi, Math.max(lo, camT.z * (event.key === '-' || event.key === '_' ? 0.82 : 1.22)));
@@ -4843,6 +4992,14 @@ type Arc3CommittedVerification =
   | ReturnType<typeof verifyArc3CommittedResearchAction>
   | ReturnType<typeof verifyArc3CommittedFixedFabricationAction>;
 let smokeRejectNextArc3Publication = false;
+function productActionFaultInjectionArmed(): boolean {
+  return smokeRejectNextArc3ActionStorage
+    || smokeStaleNextArc3ActionAuthority
+    || smokeRejectNextArc3Publication
+    || smokeRejectNextArc4ActionStorage
+    || smokeStaleNextArc4ActionAuthority
+    || smokeRejectNextArc4Publication;
+}
 
 async function commitArc3EngineeringAction(spec: Readonly<{
   operation: Arc3AppActionOperation;
@@ -5166,11 +5323,21 @@ async function fabricateFixedEngineeringRecipe(baseId: string): Promise<Arc3AppA
 
 type Arc4CaptureActionOutcome = Readonly<{
   kind: 'committed' | 'unavailable' | 'refused';
+  durability: 'none' | 'committed';
+  convergence: 'none' | 'read-only-reload';
   verb: AcquisitionVerbV1 | null;
   detail: string;
   result: Readonly<{
     hit: boolean;
     speciesId: string;
+    speciesName: string;
+    kingdom: 'microbe' | 'flora' | 'fungi' | 'fauna';
+    sourceOrdinal: number;
+    tier: number;
+    chance: number;
+    worldKey: string;
+    ecologyEpoch: number;
+    fullRosterFingerprint: string;
     firstForSpecies: boolean;
     spent: 1;
     remainingAfter: number;
@@ -5179,21 +5346,32 @@ type Arc4CaptureActionOutcome = Readonly<{
     revision: number;
   }> | null;
 }>;
+let lastArc4CaptureResult: Arc4CaptureActionOutcome['result'] = null;
 
 function isArc4CaptureVerb(value: unknown): value is AcquisitionVerbV1 {
   return value === 'tame' || value === 'scavenge' || value === 'sample';
 }
 
-/** Diagnostics-only Arc 4 front door. It deliberately owns no button, copy,
- * toast, Charter event or optimistic projection; the durable carrier remains
- * the sole outcome authority. */
-async function commitArc4CaptureAction(verbValue: unknown): Promise<Arc4CaptureActionOutcome> {
+/** Sole Arc 4 capture writer. Presentation supplies one opaque semantics
+ * fence plus one verb, but never a candidate, snapshot, draw or successor;
+ * the durable carrier and registered postcommit evidence remain the sole
+ * outcome authority. Diagnostics with no supplied fence mint the same
+ * current-surface fence synchronously before the first await. */
+async function commitArc4CaptureAction(
+  verbValue: unknown,
+  presentationFenceValue?: string,
+): Promise<Arc4CaptureActionOutcome> {
   const unavailable = (
     detail: string,
     verb: AcquisitionVerbV1 | null = isArc4CaptureVerb(verbValue) ? verbValue : null,
-  ): Arc4CaptureActionOutcome => Object.freeze({
-    kind: 'unavailable', verb, detail, result: null,
-  });
+  ): Arc4CaptureActionOutcome => {
+    lastArc4CaptureResult = null;
+    lastArc4CaptureOutcome = `${verb ?? 'invalid'}-unavailable:${detail}`;
+    return Object.freeze({
+      kind: 'unavailable', durability: 'none', convergence: 'none',
+      verb, detail, result: null,
+    });
+  };
   if (!isArc4CaptureVerb(verbValue)) return unavailable('invalid-verb', null);
   const verb = verbValue;
   const intendedSurface = nav;
@@ -5206,11 +5384,19 @@ async function commitArc4CaptureAction(verbValue: unknown): Promise<Arc4CaptureA
     || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
     return unavailable('write-authority-unavailable', verb);
   }
+  const presentationFence = presentationFenceValue === undefined
+    ? capturePresentationFenceForSurface(runtime, intendedSurface)
+    : presentationFenceValue;
+  if (presentationFence === null || !/^cpf1:[0-9a-f]{64}$/u.test(presentationFence)) {
+    return unavailable('presentation-authority-unavailable', verb);
+  }
   /* Shared ownership is acquired synchronously before heartbeat settlement.
      This fences Arc 2, Arc 3, autosave and every other capture attempt. */
   const actionClaim = productActionCoordinator.tryClaim(`arc4.capture.${verb}`);
   if (actionClaim === null) return unavailable('product-action-pending', verb);
   const actionBarrier = actionClaim.barrier;
+  lastArc4CaptureResult = null;
+  lastArc4CaptureOutcome = `${verb}-pending`;
   productActionInFlight = true;
   activePersist = actionBarrier;
   let durable = false;
@@ -5230,19 +5416,78 @@ async function commitArc4CaptureAction(verbValue: unknown): Promise<Arc4CaptureA
     if (!rosterResult.ok) {
       return unavailable(`world-roster:${rosterResult.reason}`, verb);
     }
-
-    const attempt = await commitArc4CaptureAttemptV1({
-      runtime,
-      state: save,
-      nav,
-      address: address.address,
-      roster: rosterResult.roster,
-      verb,
-      codecNow: Date.now(),
-    });
+    const faultInjection = smokeRejectNextArc4ActionStorage
+      ? 'storage-failure'
+      : smokeStaleNextArc4ActionAuthority
+        ? 'stale-authority'
+        : null;
+    if (faultInjection === 'storage-failure') smokeRejectNextArc4ActionStorage = false;
+    else if (faultInjection === 'stale-authority') smokeStaleNextArc4ActionAuthority = false;
+    const faultBeforeRevision = runtime.revision;
+    let injectedRevision: number | null = null;
+    if (faultInjection !== null) {
+      lastSmokeArc4ActionFaultWitness = Object.freeze({
+        schema: 'cf-v2-arc4-action-fault-witness/v1',
+        operation: actionClaim.operation,
+        injection: faultInjection,
+        phase: 'injecting',
+        beforeRevision: faultBeforeRevision,
+        injectedRevision,
+        outcome: null,
+      });
+    }
+    if (faultInjection === 'stale-authority') {
+      const injected = await revisionRepo.mutate({
+        expectedRevision: faultBeforeRevision,
+        writes: [],
+      });
+      if (injected.kind !== 'committed') {
+        lastSmokeArc4ActionFaultWitness = Object.freeze({
+          schema: 'cf-v2-arc4-action-fault-witness/v1',
+          operation: actionClaim.operation,
+          injection: faultInjection,
+          phase: 'injection-failed',
+          beforeRevision: faultBeforeRevision,
+          injectedRevision: null,
+          outcome: injected.kind,
+        });
+        throw new Error(`slice-smoke Arc 4 stale injection became ${injected.kind}`);
+      }
+      injectedRevision = injected.revision;
+    }
+    let attempt: Awaited<ReturnType<typeof commitArc4CaptureAttemptV1>>;
+    if (faultInjection === 'storage-failure') smokeRejectArc4StorageBoundary = true;
+    try {
+      attempt = await commitArc4CaptureAttemptV1({
+        runtime,
+        state: save,
+        nav,
+        address: address.address,
+        roster: rosterResult.roster,
+        presentationFence,
+        verb,
+        codecNow: Date.now(),
+      });
+    } finally {
+      if (faultInjection === 'storage-failure') smokeRejectArc4StorageBoundary = false;
+    }
+    if (faultInjection !== null) {
+      lastSmokeArc4ActionFaultWitness = Object.freeze({
+        schema: 'cf-v2-arc4-action-fault-witness/v1',
+        operation: actionClaim.operation,
+        injection: faultInjection,
+        phase: 'settled',
+        beforeRevision: faultBeforeRevision,
+        injectedRevision,
+        outcome: attempt.kind === 'refused'
+          ? attempt.transaction?.kind ?? attempt.detail
+          : attempt.kind,
+      });
+    }
     lastArc4CaptureOutcome = `${verb}-${attempt.kind}:${attempt.kind === 'refused'
       ? attempt.detail : attempt.convergence}`;
     if (attempt.kind === 'refused') {
+      lastArc4CaptureResult = null;
       if (attempt.convergence === 'read-only-reload') {
         scheduleF4AuthorityConvergenceReload(
           runtime,
@@ -5250,7 +5495,8 @@ async function commitArc4CaptureAction(verbValue: unknown): Promise<Arc4CaptureA
         );
       }
       return Object.freeze({
-        kind: 'refused', verb, detail: attempt.detail, result: null,
+        kind: 'refused', durability: 'none', convergence: attempt.convergence,
+        verb, detail: attempt.detail, result: null,
       });
     }
 
@@ -5261,6 +5507,7 @@ async function commitArc4CaptureAction(verbValue: unknown): Promise<Arc4CaptureA
     const transaction = attempt.transaction;
     lastPersistenceOutcome = `arc4-${verb}-committed:${transaction.revision}`;
     if (attempt.kind === 'committed-convergence') {
+      lastArc4CaptureResult = null;
       arc4OwnershipState = null;
       arc4OwnershipProtection = 'committed-publication-reload';
       lastArc4CaptureOutcome = `${verb}-committed-publication-reload`;
@@ -5269,12 +5516,25 @@ async function commitArc4CaptureAction(verbValue: unknown): Promise<Arc4CaptureA
         `Arc 4 ${verb} committed at revision ${transaction.revision}; ${attempt.detail}`,
       );
       return Object.freeze({
-        kind: 'committed', verb,
+        kind: 'committed', durability: 'committed', convergence: 'read-only-reload', verb,
         detail: `revision:${transaction.revision};publication-reload`, result: null,
       });
     }
 
     try {
+      if (smokeRejectNextArc4Publication) {
+        smokeRejectNextArc4Publication = false;
+        lastSmokeArc4ActionFaultWitness = Object.freeze({
+          schema: 'cf-v2-arc4-action-fault-witness/v1',
+          operation: actionClaim.operation,
+          injection: 'publication-failure',
+          phase: 'settled',
+          beforeRevision: faultBeforeRevision,
+          injectedRevision: transaction.revision,
+          outcome: 'committed-publication-reload',
+        });
+        throw new Error('slice-smoke injected Arc 4 publication rejection');
+      }
       const verified = verifyArc4CommittedCaptureV1({
         runtimeExtensions: runtime.extensions,
         committed: attempt,
@@ -5287,6 +5547,16 @@ async function commitArc4CaptureAction(verbValue: unknown): Promise<Arc4CaptureA
       const result = Object.freeze({
         hit: verified.plan.hit,
         speciesId: verified.plan.candidate.identity.speciesId,
+        speciesName: String(describeSpecies(
+          verified.plan.candidate.identity.genome as never,
+        ).name || 'Unknown species'),
+        kingdom: verified.plan.candidate.identity.kingdom,
+        sourceOrdinal: verified.plan.candidate.sourceOrdinal,
+        tier: verified.plan.tier,
+        chance: verified.plan.chance,
+        worldKey: attempt.preflight.snapshot.worldKey,
+        ecologyEpoch: attempt.preflight.snapshot.ecologyEpoch,
+        fullRosterFingerprint: attempt.preflight.snapshot.fullRosterFingerprint,
         firstForSpecies: verified.plan.firstForSpecies,
         spent: verified.plan.spent,
         remainingAfter: verified.plan.remainingAfter,
@@ -5294,12 +5564,14 @@ async function commitArc4CaptureAction(verbValue: unknown): Promise<Arc4CaptureA
         stardustReward: verified.stardustReward,
         revision: transaction.revision,
       });
+      lastArc4CaptureResult = result;
       lastArc4CaptureOutcome = `${verb}-committed:${transaction.revision}`;
       return Object.freeze({
-        kind: 'committed', verb,
+        kind: 'committed', durability: 'committed', convergence: 'none', verb,
         detail: `revision:${transaction.revision}`, result,
       });
     } catch (error) {
+      lastArc4CaptureResult = null;
       const detail = error instanceof Error ? error.message : String(error);
       arc4OwnershipState = null;
       arc4OwnershipProtection = 'committed-publication-reload';
@@ -5309,13 +5581,14 @@ async function commitArc4CaptureAction(verbValue: unknown): Promise<Arc4CaptureA
         `Arc 4 ${verb} committed at revision ${transaction.revision}; publication ${detail}`,
       );
       return Object.freeze({
-        kind: 'committed', verb,
+        kind: 'committed', durability: 'committed', convergence: 'read-only-reload', verb,
         detail: `revision:${transaction.revision};publication-reload`, result: null,
       });
     }
   } catch (error) {
     lastArc4CaptureOutcome = `${verb}-${durable ? 'committed-publication-reload' : 'rejected'}`;
     if (durable) {
+      lastArc4CaptureResult = null;
       arc4OwnershipState = null;
       arc4OwnershipProtection = 'committed-publication-reload';
       scheduleF4AuthorityConvergenceReload(
@@ -5323,17 +5596,346 @@ async function commitArc4CaptureAction(verbValue: unknown): Promise<Arc4CaptureA
         `Arc 4 ${verb} committed; publication ${error instanceof Error ? error.message : String(error)}`,
       );
       return Object.freeze({
-        kind: 'committed', verb, detail: 'committed;publication-reload', result: null,
+        kind: 'committed', durability: 'committed', convergence: 'read-only-reload',
+        verb, detail: 'committed;publication-reload', result: null,
       });
     }
+    lastArc4CaptureResult = null;
     return Object.freeze({
-      kind: 'refused', verb,
+      kind: 'refused', durability: 'none', convergence: 'none', verb,
       detail: error instanceof Error ? error.message : String(error), result: null,
     });
   } finally {
     productActionInFlight = false;
     actionClaim.settle(durable);
     if (activePersist === actionBarrier) activePersist = null;
+  }
+}
+
+function captureActivePlayCountdown(activePlayMs: number): string {
+  const seconds = Math.max(0, Math.ceil(activePlayMs / 1_000));
+  const minutes = Math.floor(seconds / 60);
+  return `${minutes}:${String(seconds % 60).padStart(2, '0')}`;
+}
+
+function captureRowDetail(
+  row: CapturePresentationReadyV1['verbs'][CaptureCardVerb],
+): string {
+  if (row.reason === 'natural-pool-empty') {
+    return row.verb === 'tame' ? 'No fauna live here to tame.'
+      : row.verb === 'scavenge' ? 'No flora or fungi live here to scavenge.'
+        : 'No microbes live here to sample.';
+  }
+  if (row.reason === 'completed-this-cycle') {
+    return row.verb === 'tame'
+      ? 'Every eligible fauna species has already been tamed on this world this cycle. No attempt was spent.'
+      : row.verb === 'scavenge'
+        ? 'Every eligible flora or fungi species has already been scavenged on this world this cycle. No attempt was spent.'
+        : 'Every eligible microbe species has already been sampled on this world this cycle. No attempt was spent.';
+  }
+  if (row.reason === 'biosphere-yield-depleted') {
+    return 'Worked Out — no Biosphere Yield remains this cycle. No roll or attempt was spent.';
+  }
+  if (row.status === 'unavailable') {
+    return row.reason === 'legacy-biosphere-unresolved'
+      ? 'Legacy biosphere evidence for this world is protected. Nothing was spent.'
+      : row.reason === 'future-cycle-progress'
+        ? 'This world carries newer capture-cycle evidence. Nothing was spent.'
+        : row.reason === 'revision-exhausted'
+          ? 'The ownership ledger has reached its revision limit. Nothing was spent.'
+          : 'The ownership ledger has no safe room for every possible result. Nothing was spent.';
+  }
+  return row.verb === 'tame'
+    ? `Randomly attempts one of ${row.eligiblePoolCount} eligible fauna from the full biosphere. Success adds one owned creature.`
+    : row.verb === 'scavenge'
+      ? `Randomly attempts one of ${row.eligiblePoolCount} eligible flora or fungi from the full biosphere. Success adds one specimen lot.`
+      : `Randomly attempts one of ${row.eligiblePoolCount} eligible microbes from the full biosphere. Success adds one specimen lot.`;
+}
+
+function captureCardModelFromPresentation(
+  presentation: CapturePresentationReadyV1,
+  contextKey: string,
+  previewCount: number,
+  unavailableDetail: string | null,
+): CaptureCardReadModelV1 {
+  const until = presentation.biosphereYield.activePlayMsUntilNextCycle;
+  const recoveryDetail = until === null
+    ? 'The bounded active-play clock cannot schedule another recovery cycle.'
+    : `Tame, Scavenge, and Sample share Biosphere Yield. Every attempt spends 1, hit or miss. Full recovery at the next 20-minute active-play cycle — ${captureActivePlayCountdown(until)} of active play remaining. Closing the game does not advance recovery.`;
+  const rows = Object.freeze(CAPTURE_CARD_VERB_ORDER.map((verb): CaptureCardOpportunityReadModel => {
+    const projected = presentation.verbs[verb];
+    const status = unavailableDetail !== null ? 'unavailable'
+      : projected.status === 'ready' ? 'ready'
+        : projected.status === 'depleted' ? 'depleted'
+          : projected.status === 'empty' || projected.status === 'completed' ? 'empty'
+            : 'unavailable';
+    return Object.freeze({
+      verb,
+      status,
+      eligibleCount: projected.eligiblePoolCount,
+      overallChance: status === 'ready' ? projected.chance!.arithmeticMean : null,
+      chanceMin: status === 'ready' ? projected.chance!.minimum : null,
+      chanceMax: status === 'ready' ? projected.chance!.maximum : null,
+      detail: unavailableDetail ?? captureRowDetail(projected),
+    });
+  }));
+  return Object.freeze({
+    schema: CAPTURE_CARD_READ_MODEL_SCHEMA,
+    contextKey,
+    summary: `Showing ${previewCount} of ${presentation.fullRosterCount} life forms. Capture draws from all ${presentation.fullRosterCount}, not only this preview. Each action chooses uniformly from every eligible species for that action in the full biosphere.`,
+    budget: Object.freeze({
+      yield: presentation.biosphereYield.total,
+      used: presentation.biosphereYield.used,
+      remaining: presentation.biosphereYield.remaining,
+      cycle: presentation.biosphereYield.cycle,
+      recoveryRemainingActivePlayMs: until ?? 0,
+      recoveryDetail,
+    }),
+    rows,
+  });
+}
+
+function captureCardUnavailableModel(
+  contextKey: string,
+  previewCount: number,
+  fullRosterCount: number,
+  detail: string,
+): CaptureCardReadModelV1 {
+  return Object.freeze({
+    schema: CAPTURE_CARD_READ_MODEL_SCHEMA,
+    contextKey,
+    summary: `Showing ${previewCount} of ${fullRosterCount} life forms. Capture uses the full biosphere, never only this preview.`,
+    budget: null,
+    rows: Object.freeze(CAPTURE_CARD_VERB_ORDER.map((verb) => Object.freeze({
+      verb,
+      status: 'unavailable' as const,
+      eligibleCount: 0,
+      overallChance: null,
+      chanceMin: null,
+      chanceMax: null,
+      detail,
+    }))),
+  });
+}
+
+function capturePresentationFenceForSurface(
+  runtime: F4RuntimeAuthority,
+  surface: NavState,
+): string | null {
+  if (surface.mode !== 'surface') return null;
+  const address = canonicalCF1WorldAddressFromNav(surface);
+  if (!address.ok) return null;
+  const rosterResult = canonicalWorldRoster(address.address, epochClock.current());
+  if (!rosterResult.ok) return null;
+  const roster = rosterResult.roster;
+  const composed = composeAcquisitionSnapshotV1({
+    nav: surface,
+    address: address.address,
+    roster,
+    ecologyEpoch: roster.ecologyEpoch,
+    fullRosterFingerprint: roster.fullRosterFingerprint,
+    extensions: runtime.extensions,
+  });
+  if (composed.kind !== 'ready') return null;
+  return capturePresentationFenceV1(composed.snapshot, {
+    observedActivePlayMs: runtime.diagnostics().activePlayMs,
+  });
+}
+
+function refreshCaptureCardState(): void {
+  if (!surveyOwnsCurrentCaptureSurface() || nav.mode !== 'surface') {
+    currentCapturePresentationFence = null;
+    captureCardController.setState(null);
+    return;
+  }
+  const runtime = f4Runtime;
+  const address = canonicalCF1WorldAddressFromNav(nav);
+  if (!address.ok) {
+    currentCapturePresentationFence = null;
+    captureCardController.setState(null);
+    return;
+  }
+  const rosterResult = canonicalWorldRoster(address.address, epochClock.current());
+  if (!rosterResult.ok) {
+    currentCapturePresentationFence = null;
+    captureCardController.setState(null);
+    return;
+  }
+  const roster = rosterResult.roster;
+  if (!planetsideMatchesFullRoster(roster)) fillPlanetside(nav, roster);
+  if (!planetsideMatchesFullRoster(roster)) {
+    currentCapturePresentationFence = null;
+    captureCardController.setState(captureCardUnavailableModel(
+      `${roster.worldKey}|epoch:${roster.ecologyEpoch}|${roster.fullRosterFingerprint}`,
+      roster.view.preview.length,
+      roster.view.total,
+      'The visible Biosphere preview did not align with capture authority. Nothing was spent.',
+    ));
+    return;
+  }
+  const fallbackKey = `${roster.worldKey}|epoch:${roster.ecologyEpoch}|${roster.fullRosterFingerprint}`;
+  if (runtime === null) {
+    currentCapturePresentationFence = null;
+    captureCardController.setState(captureCardUnavailableModel(
+      fallbackKey, roster.view.preview.length, roster.view.total,
+      'Capture authority is unavailable. Nothing was spent.',
+    ));
+    return;
+  }
+  const composed = composeAcquisitionSnapshotV1({
+    nav,
+    address: address.address,
+    roster,
+    ecologyEpoch: roster.ecologyEpoch,
+    fullRosterFingerprint: roster.fullRosterFingerprint,
+    extensions: runtime.extensions,
+  });
+  if (composed.kind !== 'ready') {
+    currentCapturePresentationFence = null;
+    captureCardController.setState(captureCardUnavailableModel(
+      fallbackKey, roster.view.preview.length, roster.view.total,
+      'Capture authority for this world could not be verified. Nothing was spent.',
+    ));
+    return;
+  }
+  const observedActivePlayMs = runtime.diagnostics().activePlayMs;
+  const observation = { observedActivePlayMs };
+  const presentation = projectCapturePresentationV1(composed.snapshot, observation);
+  const presentationFence = capturePresentationFenceV1(composed.snapshot, observation);
+  if (presentation.kind !== 'ready' || presentationFence === null) {
+    currentCapturePresentationFence = null;
+    captureCardController.setState(captureCardUnavailableModel(
+      fallbackKey, roster.view.preview.length, roster.view.total,
+      'Capture timing authority could not be verified. Nothing was spent.',
+    ));
+    return;
+  }
+  const unavailableDetail = arc4OwnershipState?.mode !== 'current'
+    || arc4OwnershipProtection !== null
+    ? 'Capture is unavailable while this expedition save is protected. Nothing was spent.'
+    : !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
+      || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld
+      || productActionCoordinator.busy
+      ? 'Another expedition action is settling or save authority is read-only. Nothing was spent.'
+      : null;
+  captureCardController.setState(captureCardModelFromPresentation(
+    presentation,
+    fallbackKey,
+    roster.view.preview.length,
+    unavailableDetail,
+  ));
+  currentCapturePresentationFence = presentationFence;
+}
+
+function captureOutcomeCopy(outcome: Arc4CaptureActionOutcome): CaptureCardActionOutcome {
+  const verb = outcome.verb as CaptureCardVerb;
+  if (outcome.kind === 'committed' && outcome.result !== null) {
+    const result = outcome.result;
+    const chance = formatCaptureChancePercentV1(result.chance);
+    if (!result.hit) {
+      return Object.freeze({
+        schema: CAPTURE_CARD_OUTCOME_SCHEMA,
+        kind: 'committed-miss', verb, convergence: 'none',
+        title: `${result.speciesName} slipped away.`,
+        detail: `${chance} odds. No page, creature, specimen, or Stardust was added. 1 Biosphere Yield spent; ${result.remainingAfter} remain.`,
+      });
+    }
+    const past = verb === 'tame' ? 'Tamed' : verb === 'scavenge' ? 'Scavenged' : 'Sampled';
+    const owned = verb === 'tame' ? 'one owned creature' : 'one specimen lot';
+    const discovery = result.firstForSpecies
+      ? `New Compendium page; ${owned}.`
+      : `${owned[0]!.toUpperCase()}${owned.slice(1)} added. Its Compendium page and first-find reward were already earned.`;
+    const reward = result.stardustReward > 0
+      ? ` Rare Find: +${result.stardustReward} Stardust.` : '';
+    return Object.freeze({
+      schema: CAPTURE_CARD_OUTCOME_SCHEMA,
+      kind: 'committed-hit', verb, convergence: 'none',
+      title: `${past} ${result.firstForSpecies ? '' : 'another '}${result.speciesName}.`,
+      detail: `${chance} odds. ${discovery}${reward} 1 Biosphere Yield spent; ${result.remainingAfter} remain.`,
+    });
+  }
+  if (outcome.kind === 'committed') {
+    return Object.freeze({
+      schema: CAPTURE_CARD_OUTCOME_SCHEMA,
+      kind: 'committed-unknown', verb, convergence: 'read-only-reload',
+      title: 'Capture committed.',
+      detail: 'The durable result is reloading for exact publication. Do not try again.',
+    });
+  }
+  const detail = outcome.convergence === 'read-only-reload'
+    ? 'Save authority changed. Nothing was published here; the expedition is reloading read-only and will not retry this attempt.'
+    : outcome.detail === 'presentation:changed'
+      ? 'Capture opportunities changed before the roll. Nothing was spent; the card now shows current odds and availability.'
+      : outcome.detail.includes('depleted')
+      ? 'Worked Out — no Biosphere Yield remains this cycle. No roll or attempt was spent.'
+      : outcome.detail.includes('empty')
+        ? 'No eligible species remain for this action this cycle. No attempt was spent.'
+        : outcome.detail.includes('storage') || outcome.detail.includes('save')
+          ? 'The expedition could not be saved. Nothing was spent.'
+          : outcome.detail.includes('pending')
+            ? 'Another expedition action is settling. Nothing was spent.'
+            : 'Capture authority was unavailable. Nothing was spent.';
+  return Object.freeze({
+    schema: CAPTURE_CARD_OUTCOME_SCHEMA,
+    kind: outcome.kind === 'refused' ? 'refused' : 'unavailable',
+    verb,
+    convergence: outcome.convergence,
+    title: outcome.convergence === 'read-only-reload' ? 'Reload required.' : 'Capture unavailable.',
+    detail,
+  });
+}
+
+async function runCaptureCardAction(
+  request: CaptureCardActionRequest,
+  presentationFence: string | null,
+): Promise<void> {
+  let outcome: Arc4CaptureActionOutcome;
+  try {
+    outcome = presentationFence === null
+      ? Object.freeze({
+        kind: 'unavailable' as const,
+        durability: 'none' as const,
+        convergence: 'none' as const,
+        verb: request.verb,
+        detail: 'presentation-authority-unavailable',
+        result: null,
+      })
+      : await commitArc4CaptureAction(request.verb, presentationFence);
+  } catch (error) {
+    outcome = Object.freeze({
+      kind: 'refused', durability: 'none', convergence: 'none', verb: request.verb,
+      detail: error instanceof Error ? error.message : String(error), result: null,
+    });
+  }
+  const copy = captureOutcomeCopy(outcome);
+  try {
+    captureCardController.settle(copy);
+    /* Settle the exact pending verb before refreshing opportunity authority.
+       A genuine ecology-context change may replace an IDLE receipt, but it
+       must never strand a completed transaction behind the controller's
+       deliberate pending-context guard. A converging document stays latched
+       on its terminal copy until replacement. */
+    if (copy.convergence === 'none') refreshCaptureCardState();
+    if (outcome.kind === 'committed' && outcome.result !== null) {
+      updateChips();
+      if (openPanelId() === 'codex') fillCodex(codexFilter);
+    }
+    toast(copy.title, copy.detail, true);
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    if (outcome.durability === 'committed' && f4Runtime !== null) {
+      lastArc4CaptureResult = null;
+      arc4OwnershipState = null;
+      arc4OwnershipProtection = 'committed-publication-reload';
+      lastArc4CaptureOutcome = `${request.verb}-committed-publication-reload`;
+      scheduleF4AuthorityConvergenceReload(
+        f4Runtime,
+        `Arc 4 ${request.verb} committed; capture presentation ${detail}`,
+      );
+      return;
+    }
+    captureCardController.setPending(null);
+    toast('Capture presentation unavailable', 'Nothing was spent. Reopen Survey to try again.', true);
   }
 }
 
@@ -5535,10 +6137,19 @@ const READ_ONLY_MUTATION_SELECTOR = [
   '#dockcharts', '#setsnd', '#setvol', '[data-pref]', '[data-motion]',
   '#setcharts', '#setglass', '#setrestart',
   '[data-act="landcta"]', '[data-act="add"]',
+  '[data-capture-action]',
   '[data-sel="tutbtn"]', '[data-sel="tutskip"]',
 ].join(',');
 function playerMutationsBlocked(): boolean {
   return smokeForceReadOnly || productActionInFlight || !f4RuntimeMayMutate();
+}
+function blockRouteChangeWhileProductAction(): boolean {
+  if (!productActionInFlight) return false;
+  toast(
+    'Expedition action settling',
+    'Stay on this location until its durable result settles. Survey Close remains available.',
+  );
+  return true;
 }
 function blockPlayerMutation(action: string): boolean {
   if (!playerMutationsBlocked()) return false;
@@ -5988,6 +6599,8 @@ async function loadSave(): Promise<void> {
   arc4OwnershipProtection = null;
   lastArc4BootstrapOutcome = null;
   lastArc4CaptureOutcome = null;
+  currentCapturePresentationFence = null;
+  lastArc4CaptureResult = null;
 
   const useProtectedFresh = (
     kind: Exclude<PersistenceBootKind, 'fresh-v5' | 'migrated-v4' | 'current-v5'>,
@@ -6663,6 +7276,7 @@ async function loadSave(): Promise<void> {
     closeCodexSurface();
     engineeringPanelReleased = true;
     engineeringPanelController.dispose();
+    captureCardController.dispose();
     clearPlanetside();
     speciesArtLoader.dispose(`intentional replacement: ${reason}`);
     try { clearWorld(false); }
@@ -6818,6 +7432,19 @@ async function loadSave(): Promise<void> {
           specimenLots: arc4OwnershipState?.specimenLots.length ?? 0,
           biospheres: arc4OwnershipState?.biosphereProgress.length ?? 0,
           lastOutcome: lastArc4CaptureOutcome,
+          lastResult: lastArc4CaptureResult,
+          card: captureCardController.diagnostics(),
+          actionCoordinator: {
+            inFlight: productActionInFlight,
+            owner: productActionCoordinator.diagnostics(),
+            hold: smokeProductActionHold.diagnostics(),
+            faultArmed: {
+              storageFailure: smokeRejectNextArc4ActionStorage,
+              staleAuthority: smokeStaleNextArc4ActionAuthority,
+              publicationFailure: smokeRejectNextArc4Publication,
+            },
+            lastFault: lastSmokeArc4ActionFaultWitness,
+          },
         },
         cardOpen: card.style.display !== 'none',
         cardTitle: card.querySelector('[data-sel=title]')?.textContent ?? null,
@@ -6910,27 +7537,47 @@ async function loadSave(): Promise<void> {
       __smokePersistNow: persistView,
       __smokeCommitF4Outcome: smokeCommitF4Outcome,
       __smokeCaptureCurrentSurface: commitArc4CaptureAction,
+      __smokeRejectNextArc4ActionStorage: () => {
+        if (productActionCoordinator.busy || productActionFaultInjectionArmed()) return false;
+        smokeRejectNextArc4ActionStorage = true;
+        return true;
+      },
+      __smokeStaleNextArc4ActionAuthority: () => {
+        if (productActionCoordinator.busy || productActionFaultInjectionArmed()) return false;
+        smokeStaleNextArc4ActionAuthority = true;
+        return true;
+      },
+      __smokeRejectNextArc4Publication: () => {
+        if (productActionCoordinator.busy || productActionFaultInjectionArmed()) return false;
+        smokeRejectNextArc4Publication = true;
+        return true;
+      },
       __smokeMineCurrentSurface: mineCurrentSurface,
       __smokeSkimCurrentSystem: skimCurrentSystem,
       __smokePurchaseEngineeringResearch: purchaseEngineeringResearch,
       __smokeFabricateFixedEngineeringRecipe: fabricateFixedEngineeringRecipe,
+      __smokeArmProductActionHold: () => {
+        if (productActionCoordinator.busy) return false;
+        return smokeProductActionHold.arm();
+      },
+      __smokeReleaseProductActionHold: () => smokeProductActionHold.release(),
       __smokeArmArc3ActionHold: () => {
         if (productActionCoordinator.busy) return false;
         return smokeProductActionHold.arm();
       },
       __smokeReleaseArc3ActionHold: () => smokeProductActionHold.release(),
       __smokeRejectNextArc3ActionStorage: () => {
-        if (productActionCoordinator.busy || smokeRejectNextArc3ActionStorage) return false;
+        if (productActionCoordinator.busy || productActionFaultInjectionArmed()) return false;
         smokeRejectNextArc3ActionStorage = true;
         return true;
       },
       __smokeStaleNextArc3ActionAuthority: () => {
-        if (productActionCoordinator.busy || smokeStaleNextArc3ActionAuthority) return false;
+        if (productActionCoordinator.busy || productActionFaultInjectionArmed()) return false;
         smokeStaleNextArc3ActionAuthority = true;
         return true;
       },
       __smokeRejectNextArc3Publication: () => {
-        if (productActionCoordinator.busy || smokeRejectNextArc3Publication) return false;
+        if (productActionCoordinator.busy || productActionFaultInjectionArmed()) return false;
         smokeRejectNextArc3Publication = true;
         return true;
       },
@@ -7256,6 +7903,10 @@ async function loadSave(): Promise<void> {
         toast('Save unavailable', 'Storage is still unavailable. This expedition remains protected from overwrite.');
       }).finally(() => { persistRetrying = false; });
     }
+    if (blockRouteChangeWhileProductAction()) {
+      e.preventDefault();
+      return;
+    }
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
@@ -7286,6 +7937,7 @@ async function loadSave(): Promise<void> {
   addEventListener('pointercancel', lift);
   app.canvas.addEventListener('wheel', (e) => {
     e.preventDefault();
+    if (blockRouteChangeWhileProductAction()) return;
     const [lo, hi] = zoomLimits();
     const z2 = Math.min(hi, Math.max(lo, camT.z * (e.deltaY > 0 ? 0.88 : 1.14)));
     /* cursor-anchored: the world point under the cursor stays put */
@@ -7294,7 +7946,11 @@ async function loadSave(): Promise<void> {
     camT.x = wx - cx / z2; camT.y = wy - cy / z2;
     camT.z = z2;
   }, { passive: false });
-  app.canvas.addEventListener('contextmenu', (e) => { e.preventDefault(); hideSurvey(); goUp(); });
+  app.canvas.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    if (card.style.display !== 'none') { closeVisibleSurveyAndAscend(false); return; }
+    goUp();
+  });
   addEventListener('keydown', (e) => {
     if (e.defaultPrevented) return;
     if (sheet.style.display !== 'none' && e.key === 'Tab') {
@@ -7319,9 +7975,9 @@ async function loadSave(): Promise<void> {
     if (document.activeElement === searchEl) { searchEl.blur(); return; }
     if (openPanelId()) { closePanels(); return; }
     if (card.style.display !== 'none') {
-      const restoreCanvas = card.contains(document.activeElement);
-      hideSurvey(restoreCanvas);
-      if (nav.mode === 'surface') goUp();
+      const restoreSurveyOpener = card.contains(document.activeElement)
+        || captureCardController.diagnostics().pendingDisabledBodyFocusOwned;
+      closeVisibleSurveyAndAscend(restoreSurveyOpener);
       return;
     }
     goUp();
