@@ -17,20 +17,26 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-26 · MULTI-ARC SOURCE FREEZE GREEN · CLEAN COMMIT + BROWSER EVIDENCE PENDING ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-26 · SIGNED MULTI-ARC SOURCE FREEZE GREEN · BROWSER EVIDENCE PENDING ◀◀◀
 
 ### Current integration state
 
 - **Current local candidate:** OpenAI/Codex on macOS in the exact owned root
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, tracking
-  `origin/openai/mac`. Current committed parent is `35a22b130a65f936769dfcfe88b150f44b4295d9`;
-  the branch is ahead 70 and intentionally carries one reviewed multi-lane working tree. The final
+  `origin/openai/mac`. Signed source-freeze commit
+  `913a327119465ad1f3df85a682d8d78d1ff35cea` (tree
+  `afc95f38c517957e5a5bfa14f011b9461925f3d2`) is the child of
+  `35a22b130a65f936769dfcfe88b150f44b4295d9`; the branch is ahead 71 at that clean commit. The final
   pre-policy inventory assigned every one of its 69 implementation/test/budget paths to an
   authorized lane and found no generated report, screenshot, binary, coverage or unrelated file.
   Current references are refreshed in the same batch. The Compendium browser-policy repair adds six owned contract/tool
   paths, bringing the candidate to 75 implementation/test/budget paths plus 23 Markdown/reference
-  paths; all 98 are now independently audited, fully staged together and free of index/worktree
-  overlap. Nothing in this candidate is signed, pushed, hosted, integrated or released yet.
+  paths; all 98 were independently audited and committed together with no index/worktree overlap.
+  `git verify-commit` reports a good `git` signature for
+  `79046704+TheDakk@users.noreply.github.com`, Ed25519 fingerprint
+  `SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`. This handoff refresh is the sole intentional
+  post-freeze docs delta until its signed descendant commit. Nothing is pushed, hosted, integrated
+  or released.
 - **Integrated non-browser freeze:** all 121 Vitest files are green with 1,355 passing tests, one
   intentional skip and zero failures. Root/app/worker TypeScript, no-unused, the 884-module Vite
   build, all changed-tool syntax/import/selftests, root `validate.js`, its unchanged 50-probe
@@ -62,16 +68,12 @@ the archive verbatim and refresh this handoff in place.
 
 ### Remaining evidence and decisions
 
-- Nick's first `ready` authorized one configured source-freeze signing attempt; it failed before commit
-  creation with `1Password: failed to fill whole buffer`. HEAD remains unchanged and the exact
-  92-path candidate remains fully staged. Read-only follow-up found no active 1Password launch
-  service and no `~/.1password/agent.sock`. Nick replied `ready` again after requesting the
-  version-tolerant browser policy. That configured retry was made after all 98 paths were restaged
-  and audited; it again failed before commit creation with `1Password: failed to fill whole buffer`.
-  Nick then enabled/unlocked the agent and replied `ready`; the actual `op-ssh-sign` retry still
-  timed out with the same error before commit creation. HEAD remains unchanged and the exact
-  98-path candidate remains fully staged. Never substitute an unsigned commit. There is no longer
-  an Edge `.101` versus `.107` rebaseline decision.
+- **Source signing is resolved:** after three timed-out 1Password attempts, Nick foregrounded and
+  approved the signer; the next explicitly authorized attempt created signed source-freeze commit
+  `913a327119465ad1f3df85a682d8d78d1ff35cea`. Its SSH signature and exact tree are independently
+  verified above; no unsigned substitute was used. This ROADMAP-only self-reference refresh must be
+  committed as one signed descendant before browser work. There is no Edge `.101` versus `.107`
+  rebaseline decision.
 - After that clean commit: collect one paired legacy baseline plus three independent current
   Compendium candidates, activate and certify the ruler once; then run one no-retry current-input
   Slice, one full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms Arc 4 recovery
@@ -317,30 +319,24 @@ are browserless-green and independently audited; their real current-input runs h
 
 1. Continue only as OpenAI/Codex on macOS in
    `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, tracking
-   `origin/openai/mac`, exact SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`. Current
-   parent is `35a22b130a65f936769dfcfe88b150f44b4295d9`, ahead 70. Do not fetch/merge, switch branches,
-   push, dispatch, release or deploy from this intentionally dirty source-freeze candidate.
+   `origin/openai/mac`, exact SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`. Signed
+   product/source freeze is `913a327119465ad1f3df85a682d8d78d1ff35cea`, ahead 71 at that commit.
+   Do not fetch/merge, switch branches, push, dispatch, release or deploy.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md` and
    `GITHUB_ACTIONS_BUDGET.md`. The exact 75 implementation/test/budget paths and 23 current
-   references belong to one reviewed local campaign. The index already contains all 98 paths with
-   zero unstaged overlap and clean cached/working diff checks; preserve that exact transaction.
+   references were committed as one reviewed 98-path transaction. Preserve source commit
+   `913a327…`; the only expected immediate delta is this ROADMAP self-reference refresh, which needs
+   one signed docs-only descendant before browser evidence.
 3. The implementation/reference freeze is browserless-green: 121 files/1,355 tests/one skip, all
    TypeScript/no-unused, Vite 884, root validation/fingerprint/smoke and instrument selftests pass.
    Compendium is honestly `calibration-required` under measurement `cb5cd9f8…` and producer
    `587d3bdf…`; no sample or ceiling is active. Its v2 compatibility authority is Edge family + CDP
    `1.3` + sealed capability-contract hash, with exact browser-build fields retained only as per-run
    provenance and same-run phone/desktop pairing. Preserve that state for the first clean signed commit.
-4. **External prerequisite:** three authorized configured 1Password signing attempts failed before
-   commit creation with `failed to fill whole buffer`; the latter two were made only after the
-   complete 98-path candidate was restaged and audited. HEAD is unchanged and all 98 paths remain staged.
-   Signing config remains `commit.gpgsign=true`, SSH format, the configured Ed25519 public key and
-   `/Applications/1Password.app/Contents/MacOS/op-ssh-sign`. Read-only diagnosis found the 1Password
-   launch services present, but `~/.1password/agent.sock` absent and the active system SSH agent
-   reports `The agent has no identities.` The latest helper failure occurred after roughly its
-   one-minute authorization window, matching 1Password's documented background-prompt timeout
-   symptom. The app has now been brought to the foreground; approve a direct signing prompt there
-   or restart the app/Mac, then obtain Nick's explicit `ready` before one new configured retry. Never
-   substitute an unsigned commit. No Compendium browser rebaseline is needed for Edge auto-update;
+4. **Signing proof:** source commit `913a327…` has a good SSH signature for the configured identity
+   and fingerprint `SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`; no unsigned fallback was
+   used. Commit this ROADMAP-only refresh as a signed descendant, verify it, and require a clean tree
+   before launching a browser. No Compendium browser rebaseline is needed for Edge auto-update;
    exact version/revision/JavaScript/path/UA are run provenance, while compatibility and real budget
    outcomes remain fail-closed. The clean detached baseline at
    `/private/tmp/cf-compendium-baseline-3844701-20260826` is exact commit `3844701…`, dependency-
