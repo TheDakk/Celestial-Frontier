@@ -14,12 +14,14 @@ as any change that touches an entry.
 
 The completed pre-Slice source lanes and three diagnosed repairs are locally committed at signed
 source `8ffd2e2…`. Browser-free evidence is green at 121 test files /
-1,357 passed /one intentional skip /zero failures; root, app, worker and `noUnused` TypeScript; the
+1,358 passed /one intentional skip /zero failures; root, app, worker and `noUnused` TypeScript; the
 884-module Vite build; root validation/fingerprint; legacy jsdom smoke; and applicable contract/
 reporter/Glass/recovery/Compendium selftests. The former Compendium calibration/certificate on
 signed activation `d33e540…` remains historical for producer `587d3bdf…`. The current
 `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` ruler is active under budget
-`6284a394…`, with exact-budget certification/named verification pending. Current-input Slice
+`6284a394…`. Clean signed activation `91f4e044…` passed exact-budget run
+`20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
+attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Current-input Slice
 `20260826214541492-83064-b252b137f7a3` executed once
 from clean signed `8553bd7…` on Edge `.107` and failed after 92,772 ms with three findings and zero
 retries. The Settings count and Arc 3 reach fixture were instrument false reds; retained Survey
@@ -66,7 +68,7 @@ closure, release/version, preview/publication or deployment claim.
 - ◐ **D-ARC4-RECOVERY-CERT — instrument ready, real duration open.** The dedicated real-time,
   one-attempt/no-forged-clock collector and mutation-sensitive selftest are ready. The uninterrupted
   real 20-minute certificate has not run.
-- ◐ **D-COMPENDIUM-CALIBRATION — version-tolerant current ruler active; certificate remains open.** Measurement
+- ★ **D-COMPENDIUM-CALIBRATION — version-tolerant current ruler certified; visual judgment remains open.** Measurement
   `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
   `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` bind clean committed
   candidate3/5/6 plus paired baseline1. Signed activation
@@ -89,8 +91,13 @@ closure, release/version, preview/publication or deployment claim.
   `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52` binds the same measurement,
   current producer `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, all four sealed baseline
   faults and exact 14-phone/13-desktop discrimination. Only the phone warm ceiling changed to
-  `524288`; every other numeric ceiling is unchanged. Exact-budget certification and named
-  verification remain pending. This transition follows real product-owner drift, not Edge `.107`;
+  `524288`; every other numeric ceiling is unchanged. Clean signed activation source
+  `91f4e04410b893c43ee5d261ebfc1fa3be127c29` passed exact-budget run
+  `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
+  attempt/zero retries (`2026-08-26T23:42:19.150Z`–`23:43:03.997Z`, 44,847 ms). Report raw/gzip
+  SHA-256 are `81c27ed5caa12e0c114a788041dfc5d109742bb9d86a256b548a8e9443d46108` /
+  `6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. The six review images still
+  require HUMAN judgment. This transition follows real product-owner drift, not Edge `.107`;
   it is Compendium-only and not a SceneMemory or root Gate-A rebaseline.
 
 ## Historical current-state checkpoint — Arc 3 Engineering, player-facing Arc 4 capture and Arc 5A authority infrastructure (2026-08-25)
@@ -2275,8 +2282,9 @@ duplicates).
   their own producer. Former producer `587d3bdf…` had an active ruler and exact-budget certificate
   under signed activation `d33e540…`; that evidence is now historical and remains separate from the
   dated structural finding. Signed source `8ffd2e2…` now has a separately calibrated active ruler
-  for current producer `f7c87f22…`, budget `6284a394…`, with certification still pending; it does
-  not retroactively rebind any earlier measurement.
+  for current producer `f7c87f22…`, budget `6284a394…`; clean signed activation `91f4e044…` passed
+  `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle. It
+  does not retroactively rebind any earlier measurement or supply the outstanding HUMAN judgment.
 - ★ **D-AUTOEXTRACT-CLOCK — historical wall-time finding, repaired for the implemented Arc 3
   writer.** Auto-Extractor settlement derives capped loads from persisted F4 active-play progress,
   ignores legacy wall timestamps, preserves remainders/finite reserves and reanchors new extractors.

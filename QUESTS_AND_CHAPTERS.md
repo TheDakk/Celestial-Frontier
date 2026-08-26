@@ -7,12 +7,15 @@
 > false reds. Retained Survey Close returning focus to canvas instead of its dock opener was a
 > product regression. All three are repaired locally; no rerun PASS exists. The Arc 3 route fixture
 > now uses a source-proven stage-1-reachable target without widening player reach, while the pure
-> far-target refusal remains. Browser-free verification remains green at 121 test files, 1,357
+> far-target refusal remains. Browser-free verification remains green at 121 test files, 1,358
 > passing tests and one intentional skip. The former Compendium certificate is historical for producer
 > `587d3bdf…`; current producer
 > `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is active under budget
-> `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. Its exact-budget
-> certificate/named verifier, current-input Glass and recovery evidence remain open.
+> `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. Exact-budget run
+> `20260826-slice-repair-certification` passed 78/78 with complete lifecycle and named verification
+> from clean signed activation source `91f4e044…` in one attempt/zero retries (44,847 ms); raw/gzip
+> SHA-256 are `81c27ed5…` / `6f3deb0f…`. A repaired current-input Slice PASS, current-input Glass and
+> recovery evidence remain open.
 
 > **2026-08-25 Arc 4 current-capability overlay:** finite Tame/Scavenge/Sample is now a native
 > Survey-card action over the production full roster and current epoch. It presents a source-bound

@@ -29,7 +29,7 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-26; repaired locally, current browser evidence still red):** the current
+**Current local v2 candidate (2026-08-26; repaired locally, current Slice evidence still red):** the current
 working tree completes the bounded source lanes that followed the retained Arc 5A checkpoint.
 Gate B now recursively seals the exact 62-file domain-source inventory against DOM, storage,
 `navigator`, network, wall/monotonic clock, and uncontrolled-random access; its only two waivers are
@@ -72,8 +72,12 @@ measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, 
 `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, and budget-file SHA-256
 `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. It retains all four sealed
 baseline faults and the exact 14-phone/13-desktop breach inventory; only the phone warm ceiling
-changed, to `524288`, while every other numeric ceiling remains unchanged. Its exact-budget
-certificate and named verifier are still pending. The version-tolerant v2 browser authority remains Microsoft
+changed, to `524288`, while every other numeric ceiling remains unchanged. Clean signed activation
+source `91f4e04410b893c43ee5d261ebfc1fa3be127c29` then supplied one exact-budget, no-retry run,
+`20260826-slice-repair-certification`: terminal PASS, 78/78 outcomes, complete lifecycle and named
+verifier PASS in 44,847 ms (`2026-08-26T23:42:19.150Z`–`23:43:03.997Z`). Its raw/gzip report
+SHA-256 values are `81c27ed5caa12e0c114a788041dfc5d109742bb9d86a256b548a8e9443d46108` /
+`6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. The version-tolerant v2 browser authority remains Microsoft
 Edge family + CDP `1.3` + sealed capability
 contract `cf-v2-compendium-cdp-capabilities/v1` (SHA-256
 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`). Exact product version,
@@ -82,7 +86,7 @@ phone and desktop samples with one run ID must bind that exact tuple. An Edge au
 forces calibration nor changes a numeric ceiling, while a real observed budget breach remains red.
 This change is Compendium-only: SceneMemory and the root Gate-A browser contract are unchanged.
 
-Browser-free verification of these local bytes is green: 121 test files / 1,357 passed / one
+Browser-free verification of these local bytes is green: 121 test files / 1,358 passed / one
 intentional skip / zero failures; root, app, worker, and `noUnused` TypeScript; an 884-module Vite
 build; root validation with the unchanged 50-probe fingerprint; legacy jsdom smoke; and the
 applicable contract/reporter/Glass/recovery/Compendium selftests. These are local working-tree
@@ -91,8 +95,8 @@ results only. One clean, one-shot current-input Slice run
 `151.0.4129.107` ended terminal FAIL after 92,772 ms with three findings and zero retries. The
 Settings 14-versus-15 pressed-control expectation and the Arc 3 stage-1-unreachable target were
 instrument false reds; retained Survey Close focus was a product regression. All three are repaired
-locally, but no rerun PASS exists yet. Current-input Glass, the fresh Compendium certificate,
-the real recovery certificate, hosted execution, HUMAN review, whole-Gate closure, release, version
+locally, but no rerun PASS exists yet. Current-input Glass, the real recovery certificate, hosted
+execution, HUMAN review, whole-Gate closure, release, version
 bump, preview/publication, and deployment remain unclaimed.
 
 The retained Arc 4/5A checkpoint remains useful historical foundation. Its source-addressed Guide
