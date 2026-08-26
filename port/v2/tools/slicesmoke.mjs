@@ -478,12 +478,29 @@ const ARC3_OTHER_WORLD_CONTROL_ADDRESS = Object.freeze({
   planet: Object.freeze({ seed: 133, ordinal: 2 }),
   key: 'CF1|g:999@90,-60|s:424242@560,170|p:133#2',
 });
+const ARC3_SLICE_STAGE_ONE_ORIGIN = Object.freeze({ x: 560, y: 170 });
+const ARC3_SLICE_STAGE_ONE_RADIUS = 300;
+const arc3SliceStageOneReachable = (star) => {
+  const distance = Math.hypot(
+    Number(star?.x) - ARC3_SLICE_STAGE_ONE_ORIGIN.x,
+    Number(star?.y) - ARC3_SLICE_STAGE_ONE_ORIGIN.y,
+  );
+  return Number.isFinite(distance) && distance <= ARC3_SLICE_STAGE_ONE_RADIUS;
+};
 const ARC3_BIOME_SURVEY_TARGET = Object.freeze({
   galaxySeed: 999,
-  star: Object.freeze({ seed: 3037235558, x: -897.16, y: -86.2 }),
-  planetSeed: 171668249,
-  expectedValue: 'Chromium · Iron · Calcium · Aluminium · Magnesium · Promethium ✦',
+  star: Object.freeze({ seed: 380168149, x: 347.25, y: 24.8 }),
+  planetSeed: 2279762356,
+  planetOrdinal: 3,
+  expectedValue: 'Calcium · Magnesium · Chromium · Aluminium · Neodymium ✦',
 });
+/* The Slice fixture owns only Stage-1 jumpdrive reach. Keep a positive target
+   and a known formerly-selected far target as opposite controls so fixture
+   drift fails before a six-second Search timeout can hide charter refusal. */
+if (!arc3SliceStageOneReachable(ARC3_BIOME_SURVEY_TARGET.star)
+  || arc3SliceStageOneReachable({ x: -897.16, y: -86.2 })) {
+  throw new Error('Arc 3 Slice biome Survey target is incompatible with Stage-1 charter reach');
+}
 const ARC3_REMNANT_STAR_ADDRESS = Object.freeze({
   format: 'CF1',
   galaxy: ARC3_MARS_WORLD_ADDRESS.galaxy,
@@ -951,13 +968,13 @@ const assessArc3OrbitalSurvey = ({ observation, owned }) => {
       && observation?.starX === ARC3_BIOME_SURVEY_TARGET.star.x
       && observation?.starY === ARC3_BIOME_SURVEY_TARGET.star.y
       && observation?.planet === ARC3_BIOME_SURVEY_TARGET.planetSeed
-      && Number.isSafeInteger(observation?.planetOrdinal),
+      && observation?.planetOrdinal === ARC3_BIOME_SURVEY_TARGET.planetOrdinal,
     currentCard: observation?.cardOpen === true && typeof observation?.cardTitle === 'string'
       && observation.cardTitle.length > 0,
     exactCardinality: observation?.rowCount === (owned ? 1 : 0),
     exactLabel: owned ? row?.label === 'Mineral veins' : row === null,
     exactOrderedValue: owned ? row?.value === ARC3_BIOME_SURVEY_TARGET.expectedValue : row === null,
-    biomeMarker: owned ? row?.value?.endsWith('Promethium ✦') === true : true,
+    biomeMarker: owned ? row?.value?.endsWith('Neodymium ✦') === true : true,
     groundedSensitiveFacts: observation?.sensitiveCount === 0,
     noMineAction: observation?.mineActionCount === 0,
     passiveRow: owned ? row?.passive === true : true,
@@ -4190,16 +4207,23 @@ try {
     document.querySelector('[data-pref="font"][data-value="font-mono"]')?.click();
     const stateButtons=[...document.querySelectorAll('#setpanel [aria-pressed]')];
     const groups=[...document.querySelectorAll('#setpanel [role="group"]')];
-    const a11y={ok:stateButtons.length===14&&stateButtons.every((b)=>['true','false'].includes(b.getAttribute('aria-pressed')))
-      &&groups.length===4&&groups.every((g)=>!!g.getAttribute('aria-label'))
+    const groupLabels=groups.map((g)=>g.getAttribute('aria-label'));
+    const groupStates=groups.map((g)=>{const choices=[...g.querySelectorAll('[aria-pressed]')];return {
+      count:choices.length,selected:choices.filter((choice)=>choice.getAttribute('aria-pressed')==='true').length};});
+    const a11y={ok:stateButtons.length===15&&stateButtons.every((b)=>['true','false'].includes(b.getAttribute('aria-pressed')))
+      &&JSON.stringify(groupLabels)===JSON.stringify(['Text size','Text tone','Font','Motion'])
+      &&groupStates.every((group)=>group.count===3&&group.selected===1)
       &&document.querySelector('[data-pref="size"][data-value="fs-xl"]')?.getAttribute('aria-pressed')==='true'
       &&document.querySelector('[data-pref="tone"][data-value="tone-max"]')?.getAttribute('aria-pressed')==='true'
       &&document.querySelector('[data-pref="font"][data-value="font-mono"]')?.getAttribute('aria-pressed')==='true',
-      stateCount:stateButtons.length,groupLabels:groups.map((g)=>g.getAttribute('aria-label'))};
+      stateCount:stateButtons.length,groupLabels,groupStates};
+    const voice=document.getElementById('setvoice'),priorVoicePressed=voice?.getAttribute('aria-pressed');
+    voice?.removeAttribute('aria-pressed');
+    const voiceA11yControl=stateButtons.every((button)=>['true','false'].includes(button.getAttribute('aria-pressed')));
+    if(voice&&priorVoicePressed!==null)voice.setAttribute('aria-pressed',priorVoicePressed);
     const selected=document.querySelector('[data-pref="size"][data-value="fs-xl"]'),priorPressed=selected?.getAttribute('aria-pressed');
     selected?.removeAttribute('aria-pressed');
-    const a11yControl=[...document.querySelectorAll('#setpanel button:is([data-pref],[data-motion]),#setsnd,#setcharts')]
-      .every((b)=>['true','false'].includes(b.getAttribute('aria-pressed')));
+    const a11yControl=stateButtons.every((button)=>['true','false'].includes(button.getAttribute('aria-pressed')));
     if(selected&&priorPressed!==null) selected.setAttribute('aria-pressed',priorPressed);
     const pref={state:st(),classes:[...document.body.classList],font:getComputedStyle(document.body).fontFamily};
     document.querySelector('[data-pref="size"][data-value=""]')?.click();
@@ -4207,7 +4231,7 @@ try {
     document.querySelector('[data-pref="font"][data-value=""]')?.click();
     document.querySelector('#setpanel [data-pnx]').click();
     const c = st().panelOpen;
-    return { a, b, setsHidden, v, c, rst, imp, pref, a11y, a11yControl }; })()`);
+    return { a, b, setsHidden, v, c, rst, imp, pref, a11y, a11yControl, voiceA11yControl }; })()`);
   if (law.a !== 'set') fails.push('settings panel did not open: ' + JSON.stringify(law.a));
   if (law.b !== 'codex' || !law.setsHidden) fails.push('ONE-PANEL LAW BROKEN — opening codex left settings up: ' + JSON.stringify(law));
   if (Math.abs(law.v - 0.3) > 1e-9) fails.push('volume slider did not drive save.sfxVol: ' + JSON.stringify(law.v));
@@ -4216,6 +4240,7 @@ try {
   if (!law.imp) fails.push('Settings lost the Bring-expedition import control');
   if (!law.a11y?.ok) fails.push('SETTINGS STATE SEMANTICS: current choices lack pressed/group state: ' + JSON.stringify(law.a11y));
   if (law.a11yControl) fails.push('SETTINGS STATE SEMANTICS CONTROL FAILED — removing aria-pressed stayed green');
+  if (law.voiceA11yControl) fails.push('SETTINGS STATE SEMANTICS CONTROL FAILED — removing Creature Voices aria-pressed stayed green');
   if (law.pref.state.fsMode !== 'fs-xl' || law.pref.state.toneMode !== 'tone-max' || law.pref.state.fontMode !== 'font-mono'
     || !law.pref.classes.includes('fs-xl') || !law.pref.classes.includes('tone-max') || !law.pref.classes.includes('font-mono')
     || !/mono/i.test(law.pref.font)) {
@@ -7874,7 +7899,8 @@ try {
     return s.mode==='system'&&s.gal===${ARC3_BIOME_SURVEY_TARGET.galaxySeed}
       &&s.star===${ARC3_BIOME_SURVEY_TARGET.star.seed}
       &&s.starX===${ARC3_BIOME_SURVEY_TARGET.star.x}&&s.starY===${ARC3_BIOME_SURVEY_TARGET.star.y}
-      &&s.planet===${ARC3_BIOME_SURVEY_TARGET.planetSeed}&&s.cardOpen
+      &&s.planet===${ARC3_BIOME_SURVEY_TARGET.planetSeed}
+      &&s.planetOrdinal===${ARC3_BIOME_SURVEY_TARGET.planetOrdinal}&&s.cardOpen
       &&s.sceneResources?.pendingPersistenceWrites===0?s:null})()`);
   await waitForF4Writable('Arc 3 biome Survey pre-purchase authority');
   const biomePreObservation = await evalIn(ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION);
@@ -7990,7 +8016,7 @@ try {
     parent=row?.parentNode??null,next=row?.nextSibling??null;row?.remove();const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};
     if(row&&parent)parent.insertBefore(row,next);return result})()`);
   const biomeReorderedObservation = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
-    prior=row?.innerHTML??null;if(row)row.innerHTML='<span>Mineral veins</span><br>Iron · Chromium · Calcium · Aluminium · Magnesium · Promethium ✦';
+    prior=row?.innerHTML??null;if(row)row.innerHTML='<span>Mineral veins</span><br>Magnesium · Calcium · Chromium · Aluminium · Neodymium ✦';
     const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};if(row&&prior!==null)row.innerHTML=prior;return result})()`);
   const biomeSensitiveObservation = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
     leak=document.createTextNode(' · Void Essence · Exceptional · Tier 9 · 2714 pulls remaining');row?.append(leak);

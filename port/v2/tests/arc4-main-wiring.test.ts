@@ -458,6 +458,25 @@ function captureReconstructionErrors(source: string): string[] {
   const focus = reconstruction.indexOf('surveyFocusReturn = surveyDockEl;');
   if (!(present >= 0 && focus > present)) errors.push('capture-reconstruction-focus-lineage');
 
+  const retainedStart = dock.indexOf(
+    "if (card.style.display === 'none' && card.innerHTML && cardCtx) {",
+  );
+  const retainedEnd = dock.indexOf(
+    "\n  if (card.style.display === 'none' && card.innerHTML) {",
+    retainedStart,
+  );
+  const retained = retainedStart >= 0 && retainedEnd > retainedStart
+    ? dock.slice(retainedStart, retainedEnd)
+    : '';
+  const retainedPresent = retained.indexOf(
+    'if (presentPlanetSurvey(context.p, context.star, context.planet)) {',
+  );
+  const retainedFocus = retained.indexOf('surveyFocusReturn = surveyDockEl;', retainedPresent);
+  const retainedReturn = retained.indexOf('return;', retainedFocus);
+  if (!(retainedPresent >= 0 && retainedFocus > retainedPresent && retainedReturn > retainedFocus)) {
+    errors.push('capture-retained-dock-focus-lineage');
+  }
+
   const presentationOnly = `${reconstruction}\n${presenter}`;
   for (const forbidden of [
     'persistView(',
@@ -1366,6 +1385,32 @@ describe('Arc 4 main authority wiring', () => {
     );
     expect(captureReconstructionErrors(missingReconstruction))
       .toContain('capture-reconstruction-dock-only');
+
+    const earlyRetainedFocus = replaceInSectionExact(
+      mainSource,
+      "surveyDockEl.addEventListener('click', () => {",
+      "\nchartsDockEl.addEventListener('click',",
+      "    if (presentPlanetSurvey(context.p, context.star, context.planet)) {\n" +
+        "      /* Rebuilding may infer the still-focused canvas as an opener. The\n" +
+        "         explicit dock activation owns the final return lineage. */\n" +
+        "      surveyFocusReturn = surveyDockEl;\n" +
+        "      return;\n" +
+        "    }",
+      "    surveyFocusReturn = surveyDockEl;\n" +
+        "    if (presentPlanetSurvey(context.p, context.star, context.planet)) return;",
+    );
+    expect(captureReconstructionErrors(earlyRetainedFocus))
+      .toContain('capture-retained-dock-focus-lineage');
+
+    const missingRetainedFocus = replaceInSectionExact(
+      mainSource,
+      "surveyDockEl.addEventListener('click', () => {",
+      "\nchartsDockEl.addEventListener('click',",
+      "      surveyFocusReturn = surveyDockEl;\n      return;",
+      '      return;',
+    );
+    expect(captureReconstructionErrors(missingRetainedFocus))
+      .toContain('capture-retained-dock-focus-lineage');
 
     const wrongRouteGuard = replaceInSectionExact(
       mainSource,

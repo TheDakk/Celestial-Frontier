@@ -40,7 +40,7 @@ const latestHostedFailureEvidence = Object.freeze({
   rawSha256: '544015e9e8e9e09e6ad6e13c5be40e7629f3e5884e55a147c503234a754f45da',
   gzipSha256: 'cc5ed778f402763f34ceb76785f080b56d61f6067033087b6fe1143a492a28c9',
 });
-const currentEvidence = [
+const historicalPhase4CandidateEvidence = [
   {
     runId: '20260826-phase4-candidate3',
     file: 'ARC1_COMPENDIUM_PHASE4_CANDIDATE3_20260826.json.gz',
@@ -60,7 +60,7 @@ const currentEvidence = [
     gzipSha256: '9e2bb5fbeea3665756e070bd0bc68cfe3383416228a4de99749be2b75b12febe',
   },
 ] as const;
-const currentBaselineEvidence = Object.freeze({
+const historicalPhase4BaselineEvidence = Object.freeze({
   file: 'ARC1_COMPENDIUM_PHASE4_BASELINE1_SAMPLE_20260826.json.gz',
   rawSha256: '24076ba17f0407029e495f56c807ad35fb13c944a4c6bf8f566ec65f136eaec5',
   gzipSha256: 'faae83b7168bb12c9140f3c80be734990f840b3747559a7be690f7d60d15653c',
@@ -97,7 +97,51 @@ const EXPECTED_COLLECTOR_AUTHORITY =
 const HISTORICAL_MEASUREMENT_AUTHORITY =
   '6a961df806e460d6ed02600f5366485d09d0878efa0129960b683cc4037173c7';
 const EXPECTED_PRODUCER_AUTHORITY =
-  '587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73';
+  'f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224';
+const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
+  schema: 'cf-v2-compendium-producer-authority/v1',
+  sha256: EXPECTED_PRODUCER_AUTHORITY,
+  inputs: Object.freeze({
+    index: Object.freeze({
+      relativePath: 'index.html',
+      sha256: '63e07c250141fc25f88a368e4983b15384ae881401c8f93811a8713a537f2395',
+    }),
+    owner: Object.freeze({
+      relativePath: 'assets/main-DZUgE3Xi.js',
+      sha256: '8300b53a3300aeff0e2d3916830eaa247164645cbf37a0754a2a48b3c07c9fc5',
+    }),
+    worker: Object.freeze({
+      relativePath: 'assets/species-art.worker-MsuHQ8El.js',
+      sha256: '85f4fdf2e8214814466735d3b4f2abbe3b7c7bb601ebe40034dd9ab06d2d7c28',
+    }),
+    painter: Object.freeze({
+      relativePath: 'assets/speciespainter-Bt9w5VDj.js',
+      sha256: '85b8e2eae90b245e3d4f03bab6d9cbbe8d1a1baaaf05ba51a719a2ec06807b04',
+    }),
+  }),
+});
+const HISTORICAL_PHASE4_PRODUCER_AUTHORITY = Object.freeze({
+  schema: 'cf-v2-compendium-producer-authority/v1',
+  sha256: '587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73',
+  inputs: Object.freeze({
+    index: Object.freeze({
+      relativePath: 'index.html',
+      sha256: '19b739e6ce6ca390b1e7d7a8486fc37551987e7178b1a8e2ac0a28c8e03f2600',
+    }),
+    owner: Object.freeze({
+      relativePath: 'assets/main-I89vYRzv.js',
+      sha256: '89861d67f9b130dcf55fa24c076f76bff4c90335b4b64419374b0f1e3c08c6b0',
+    }),
+    worker: Object.freeze({
+      relativePath: 'assets/species-art.worker-MsuHQ8El.js',
+      sha256: '85f4fdf2e8214814466735d3b4f2abbe3b7c7bb601ebe40034dd9ab06d2d7c28',
+    }),
+    painter: Object.freeze({
+      relativePath: 'assets/speciespainter-Bt9w5VDj.js',
+      sha256: '85b8e2eae90b245e3d4f03bab6d9cbbe8d1a1baaaf05ba51a719a2ec06807b04',
+    }),
+  }),
+});
 type BrowserAuthority = {
   schema: string;
   scope: string;
@@ -138,7 +182,7 @@ const EXPECTED_CANDIDATE_RUNS = [
   '20260826-phase4-candidate6',
 ] as const;
 const EXPECTED_BASELINE_RUN = '20260826-phase4-baseline1';
-const currentCertificationEvidence = Object.freeze({
+const historicalPhase4CertificationEvidence = Object.freeze({
   file: 'ARC1_COMPENDIUM_PHASE4_CERTIFICATION_20260826.json.gz',
   runId: '20260826-phase4-certification',
   sourceCommit: 'd33e540f0d620eac34bdc259b7814db0f11a9006',
@@ -425,8 +469,10 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(compendiumBudgetBrowserAuthority(budget)).toEqual(EXPECTED_BROWSER_AUTHORITY);
     expect(liveMeasurementAuthority?.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
     expect(budget.measurementAuthority).toEqual(liveMeasurementAuthority);
+    expect(budget.producerAuthority).toEqual(EXPECTED_PRODUCER_AUTHORITY_RECORD);
     expect(validateBudgetRecord(
       budget, fixture.rowsSha256, baselineProjection.rowsSha256, liveMeasurementAuthority,
+      EXPECTED_PRODUCER_AUTHORITY_RECORD,
     ))
       .toEqual({ ok: true, errors: [] });
     expect((budget.pairedBrokenBaseline as { projectionRowsSha256: string }).projectionRowsSha256)
@@ -598,11 +644,14 @@ describe('Arc 1A Compendium budget authority', () => {
     }).join('\n')).toContain('lacks Browser.getVersion provenance');
   });
 
-  it('activates only the version-tolerant Arc-local Edge compatibility authority and samples', () => {
+  it('fails closed for the current producer without rebinding the historical ruler', () => {
+    expect(activeBudget.status).toBe('calibration-required');
     if (activeBudget.status === 'calibration-required') {
       expect(activeBudget.browserAuthority).toEqual(EXPECTED_BROWSER_AUTHORITY);
       expect(activeBudget.measurementAuthority.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
       expect(activeBudget.producerAuthority.sha256).toBe(EXPECTED_PRODUCER_AUTHORITY);
+      expect(activeBudget.producerAuthority).toEqual(EXPECTED_PRODUCER_AUTHORITY_RECORD);
+      expect(activeBudget.producerAuthority).not.toEqual(HISTORICAL_PHASE4_PRODUCER_AUTHORITY);
       expect(activeBudget.ceilings).toBeNull();
       expect(activeBudget.calibration.requiredIndependentRunsPerProfile).toBe(3);
       for (const profile of PROFILE_NAMES) {
@@ -629,11 +678,43 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(activeBudget.calibration.selectionRule).toContain('one attempt');
       expect(activeBudget.calibration.selectionRule).toContain('zero retries');
       expect(activeBudget.calibration.selectionRule).toContain('strict measured headroom');
+      expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_PRODUCER_AUTHORITY);
+      expect(activeBudget.calibration.selectionRule)
+        .toContain(HISTORICAL_PHASE4_PRODUCER_AUTHORITY.sha256);
+      for (const runId of EXPECTED_CANDIDATE_RUNS) {
+        expect(activeBudget.calibration.selectionRule).toContain(runId);
+      }
+      expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_BASELINE_RUN);
+      expect(activeBudget.calibration.selectionRule)
+        .toContain(historicalPhase4CertificationEvidence.sourceCommit);
+      expect(activeBudget.calibration.selectionRule)
+        .toContain(historicalPhase4CertificationEvidence.budgetSha256);
+      expect(activeBudget.calibration.selectionRule)
+        .toContain(historicalPhase4CertificationEvidence.runId);
+      expect(activeBudget.calibration.selectionRule)
+        .toContain(historicalPhase4CertificationEvidence.rawSha256);
+      expect(activeBudget.calibration.selectionRule)
+        .toContain(historicalPhase4CertificationEvidence.gzipSha256);
+      expect(activeBudget.calibration.selectionRule).toContain('strictly historical');
+      expect(activeBudget.calibration.selectionRule).toContain('not rebound');
+      expect(activeBudget.calibration.selectionRule)
+        .toContain('Edge auto-updates do not trigger recalibration');
       expect(activeBudget.calibration.selectionRule)
         .toContain('does not re-pin Gate A');
       expect((budget.measurementAuthority as {
         inputs: { collector: string };
       }).inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
+
+      const staleRebind = structuredClone(budget) as Record<string, unknown> & {
+        producerAuthority: typeof HISTORICAL_PHASE4_PRODUCER_AUTHORITY;
+      };
+      staleRebind.producerAuthority = HISTORICAL_PHASE4_PRODUCER_AUTHORITY;
+      expect(validateBudgetRecord(
+        staleRebind, fixture.rowsSha256, baselineProjection.rowsSha256,
+        liveMeasurementAuthority, EXPECTED_PRODUCER_AUTHORITY_RECORD,
+      ).errors.join('\n')).toContain(
+        'budget producer authority does not match the current built index/owner/worker/painter',
+      );
       return;
     }
     expect(activeBudget.status).toBe('active');
@@ -725,9 +806,9 @@ describe('Arc 1A Compendium budget authority', () => {
     }
   });
 
-  it('re-derives every selected current-product sample from durable raw evidence', () => {
-    if (activeBudget.status === 'calibration-required') return;
-    for (const evidence of currentEvidence) {
+  it('retains the prior phase-4 calibration capsules as historical evidence only', () => {
+    expect(activeBudget.status).toBe('calibration-required');
+    for (const evidence of historicalPhase4CandidateEvidence) {
       const compressed = fs.readFileSync(path.join(v2Root, '..', '..', 'audits', evidence.file));
       expect(createHash('sha256').update(compressed).digest('hex')).toBe(evidence.gzipSha256);
       const raw = gunzipSync(compressed);
@@ -751,82 +832,77 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(report.source.begin.state).toBe('committed');
       expect(report.budget.producerAuthorityMatch).toBe(true);
       expect(report.budget.browserAuthorityMatch).toBe(true);
-      expect(report.budget.producerAuthority).toEqual(budget.producerAuthority);
-      expect(report.budget.observedProducerAuthority).toEqual(budget.producerAuthority);
+      expect(report.budget.producerAuthority).toEqual(HISTORICAL_PHASE4_PRODUCER_AUTHORITY);
+      expect(report.budget.observedProducerAuthority)
+        .toEqual(HISTORICAL_PHASE4_PRODUCER_AUTHORITY);
+      expect(report.budget.producerAuthority).not.toEqual(budget.producerAuthority);
+      expect(report.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
+      expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
+        .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
       expect(report.outcomes).toHaveLength(78);
       expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
-      const inputDigest = createHash('sha256').update(stableJson(report.inputs)).digest('hex');
       for (const profile of PROFILE_NAMES) {
-        const selected = activeBudget.calibration.samples[profile]
-          .find((sample) => sample.runId === evidence.runId);
-        expect(selected).toBeDefined();
-        const { measuredAt, ...selectedWithoutMeasuredAt } = selected as CalibrationSample & {
-          measuredAt: string;
-        };
-        expect(Date.parse(measuredAt)).toBeGreaterThanOrEqual(Date.parse(report.startedAt));
-        expect(Date.parse(measuredAt)).toBeLessThanOrEqual(Date.parse(report.endedAt));
-        expect(selectedWithoutMeasuredAt).toEqual({
-          runId: evidence.runId,
-          commit: report.source.begin.commit,
-          workingTreeDigest: report.source.begin.workingTreeSha256,
-          inputDigest,
-          measurementAuthoritySha256: EXPECTED_MEASUREMENT_AUTHORITY,
-          producerAuthoritySha256: EXPECTED_PRODUCER_AUTHORITY,
-          sourceState: report.source.begin.state,
-          sourceChanged: false,
-          fixtureRowsSha256: fixture.rowsSha256,
-          browser: {
-            executable: report.browser.executable,
-            product: report.browser.product,
-            revision: report.browser.revision,
-            userAgent: report.browser.user_agent,
-            jsVersion: report.browser.js_version,
-            protocolVersion: report.browser.protocol_version,
-          },
-          metrics: calibrationMetrics(report.profiles[profile]),
-          evidence: candidateCalibrationEvidence(report.profiles[profile], { runId: evidence.runId }),
-        });
+        expect(calibrationMetrics(report.profiles[profile])).toBeDefined();
+        expect(candidateCalibrationEvidence(
+          report.profiles[profile], { runId: evidence.runId },
+        )?.schema).toBe(CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA);
       }
     }
 
     const baselineCompressed = fs.readFileSync(path.join(
-      v2Root, '..', '..', 'audits', currentBaselineEvidence.file,
+      v2Root, '..', '..', 'audits', historicalPhase4BaselineEvidence.file,
     ));
     expect(createHash('sha256').update(baselineCompressed).digest('hex'))
-      .toBe(currentBaselineEvidence.gzipSha256);
+      .toBe(historicalPhase4BaselineEvidence.gzipSha256);
     const baselineRaw = gunzipSync(baselineCompressed);
     expect(createHash('sha256').update(baselineRaw).digest('hex'))
-      .toBe(currentBaselineEvidence.rawSha256);
+      .toBe(historicalPhase4BaselineEvidence.rawSha256);
     const baselineCarrier = JSON.parse(baselineRaw.toString('utf8')) as {
-      runId: string; samples: Record<ProfileName, CalibrationSample>;
+      runId: string;
+      status: string;
+      budgetAuthority: { collectorCommit: string; measurementAuthoritySha256: string };
+      baselineSource: { begin: { commit: string }; end: { commit: string } };
+      collectorSource: { begin: { commit: string }; end: { commit: string } };
+      samples: Record<ProfileName, CalibrationSample>;
     };
     expect(baselineCarrier.runId).toBe(EXPECTED_BASELINE_RUN);
+    expect(baselineCarrier.status).toBe('paired-broken-baseline-observation-not-a-budget');
+    expect(baselineCarrier.budgetAuthority.measurementAuthoritySha256)
+      .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+    expect(baselineCarrier.baselineSource.begin.commit)
+      .toBe(activeBudget.pairedBrokenBaseline.commit);
+    expect(baselineCarrier.baselineSource.end).toEqual(baselineCarrier.baselineSource.begin);
+    expect(baselineCarrier.collectorSource.begin.commit).toBe('6d8f18479cce14dc031608aaa12fca331d1eea20');
+    expect(baselineCarrier.collectorSource.end).toEqual(baselineCarrier.collectorSource.begin);
     for (const profile of PROFILE_NAMES) {
-      expect(baselineCarrier.samples[profile])
-        .toEqual(activeBudget.pairedBrokenBaseline.samples[profile][0]);
+      expect(sampleObjectSha256(baselineCarrier.samples[profile]))
+        .toBe(EXPECTED_SAMPLE_OBJECT_SHA256[profile].baseline);
+      expect(baselineCarrier.samples[profile].observedFaults)
+        .toEqual(BROKEN_BASELINE_EXPECTED_FAULTS);
+      expect(activeBudget.pairedBrokenBaseline.samples[profile]).toEqual([]);
     }
   });
 
-  it('binds and independently replays the current exact-budget certificate', () => {
+  it('retains the prior phase-4 exact-budget certificate without rebinding it', () => {
     const compressed = fs.readFileSync(path.join(
-      v2Root, '..', '..', 'audits', currentCertificationEvidence.file,
+      v2Root, '..', '..', 'audits', historicalPhase4CertificationEvidence.file,
     ));
     expect(createHash('sha256').update(compressed).digest('hex'))
-      .toBe(currentCertificationEvidence.gzipSha256);
+      .toBe(historicalPhase4CertificationEvidence.gzipSha256);
     const raw = gunzipSync(compressed);
     expect(createHash('sha256').update(raw).digest('hex'))
-      .toBe(currentCertificationEvidence.rawSha256);
+      .toBe(historicalPhase4CertificationEvidence.rawSha256);
     const report = JSON.parse(raw.toString('utf8')) as RetainedLinuxReport & {
       startedAt: string; endedAt: string; durationMs: number; expectedOutcomes: string[];
     };
 
     expect(report).toMatchObject({
       schema: 'cf-v2-compendium-memory-report/v1',
-      runId: currentCertificationEvidence.runId,
+      runId: historicalPhase4CertificationEvidence.runId,
       status: 'pass',
-      startedAt: currentCertificationEvidence.startedAt,
-      endedAt: currentCertificationEvidence.endedAt,
-      durationMs: currentCertificationEvidence.durationMs,
+      startedAt: historicalPhase4CertificationEvidence.startedAt,
+      endedAt: historicalPhase4CertificationEvidence.endedAt,
+      durationMs: historicalPhase4CertificationEvidence.durationMs,
       lifecycle: { schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete' },
       policy: {
         attemptCount: 1,
@@ -842,39 +918,42 @@ describe('Arc 1A Compendium budget authority', () => {
     });
     expect(report.source.begin).toEqual(report.source.end);
     expect(report.source.begin).toEqual({
-      commit: currentCertificationEvidence.sourceCommit,
+      commit: historicalPhase4CertificationEvidence.sourceCommit,
       branch: 'openai/mac',
       state: 'committed',
       statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-      workingTreeSha256: currentCertificationEvidence.sourceWorkingTreeSha256,
+      workingTreeSha256: historicalPhase4CertificationEvidence.sourceWorkingTreeSha256,
     });
 
-    expect(fileSha256(budgetPath)).toBe(currentCertificationEvidence.budgetSha256);
-    expect(report.inputs.budget).toBe(currentCertificationEvidence.budgetSha256);
+    expect(fileSha256(budgetPath)).not.toBe(historicalPhase4CertificationEvidence.budgetSha256);
+    expect(report.inputs.budget).toBe(historicalPhase4CertificationEvidence.budgetSha256);
     expect(report.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
     expect(compendiumMeasurementAuthority(report.inputs)).toEqual(liveMeasurementAuthority);
     expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
-      .toBe(currentCertificationEvidence.measurementAuthoritySha256);
-    expect(currentCertificationEvidence.measurementAuthoritySha256)
+      .toBe(historicalPhase4CertificationEvidence.measurementAuthoritySha256);
+    expect(historicalPhase4CertificationEvidence.measurementAuthoritySha256)
       .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
     expect(report.budget).toMatchObject({
       status: 'active',
       path: 'budgets/compendium-memory-v1.json',
-      sha256: currentCertificationEvidence.budgetSha256,
+      sha256: historicalPhase4CertificationEvidence.budgetSha256,
       browserAuthority: EXPECTED_BROWSER_AUTHORITY,
       browserAuthorityMatch: true,
       producerAuthorityMatch: true,
     });
     expect(report.budget.browserAuthority).toEqual(activeBudget.browserAuthority);
-    expect(report.budget.producerAuthority).toEqual(budget.producerAuthority);
+    expect(report.budget.producerAuthority).toEqual(HISTORICAL_PHASE4_PRODUCER_AUTHORITY);
     expect(report.budget.producerAuthority).toMatchObject({
-      sha256: currentCertificationEvidence.producerAuthoritySha256,
+      sha256: historicalPhase4CertificationEvidence.producerAuthoritySha256,
     });
     expect(report.budget.observedProducerAuthority).toEqual(report.budget.producerAuthority);
-    expect(currentCertificationEvidence.producerAuthoritySha256)
-      .toBe(EXPECTED_PRODUCER_AUTHORITY);
+    expect(report.budget.producerAuthority).not.toEqual(budget.producerAuthority);
+    expect(historicalPhase4CertificationEvidence.producerAuthoritySha256)
+      .toBe(HISTORICAL_PHASE4_PRODUCER_AUTHORITY.sha256);
+    expect(historicalPhase4CertificationEvidence.producerAuthoritySha256)
+      .not.toBe(EXPECTED_PRODUCER_AUTHORITY);
 
-    expect(report.browser).toEqual(currentCertificationEvidence.browser);
+    expect(report.browser).toEqual(historicalPhase4CertificationEvidence.browser);
     expect(compendiumBrowserAuthorityMatches(
       report.browser, report.budget.browserAuthority,
     )).toBe(true);
@@ -882,12 +961,8 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(report.outcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
     expect(report.outcomes).toHaveLength(78);
     expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
-
-    const replayedOutcomes = PROFILE_NAMES.flatMap((profile) =>
-      evaluateProfile(report.profiles[profile], activeBudget, fixture));
-    expect(replayedOutcomes).toEqual(report.outcomes);
-    expect(replayedOutcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
-    expect(replayedOutcomes.filter((outcome) => outcome.status === 'fail')).toEqual([]);
+    expect(activeBudget.status).toBe('calibration-required');
+    expect(activeBudget.ceilings).toBeNull();
   });
 
   it('retains the superseded exact-budget certificate without rebinding it', () => {

@@ -1557,10 +1557,14 @@ surveyDockEl.addEventListener('click', () => {
     && reconstructCurrentSurfaceSurvey()) return;
   if (card.style.display === 'none' && card.innerHTML && cardCtx) {
     const context = cardCtx;
-    surveyFocusReturn = surveyDockEl;
     /* A retained planet card may have crossed Surface/System since it was
        painted. Re-prove and rebuild it without replaying the Survey action. */
-    if (presentPlanetSurvey(context.p, context.star, context.planet)) return;
+    if (presentPlanetSurvey(context.p, context.star, context.planet)) {
+      /* Rebuilding may infer the still-focused canvas as an opener. The
+         explicit dock activation owns the final return lineage. */
+      surveyFocusReturn = surveyDockEl;
+      return;
+    }
   }
   if (card.style.display === 'none' && card.innerHTML) {
     surveyFocusReturn = surveyDockEl;
