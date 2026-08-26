@@ -17,17 +17,20 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-25 · ARC 5A COMPACT V2 TERMINAL-GREEN LOCALLY · DOCS AUDIT-READY · INFRASTRUCTURE-ONLY ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-25 · ARC 5A COMPACT V2 COMMITTED + TERMINAL-GREEN LOCALLY · INFRASTRUCTURE-ONLY ◀◀◀
 
 ### Current integration state
 
-- **Current local Arc 5A compact-v2 executable/tool candidate:** retained Slice and Glass reports
-  bind source commit `48ce0b1662a59b21070667be339a1e59503e1f19` on `openai/mac`, dirty-diagnostic
+- **Current local Arc 5A compact-v2 implementation:** signed local commit
+  `526eaa71919d08f37a11515c1a5bb7582f09ea07` on `openai/mac`. Retained Slice and Glass reports
+  bind its exact executable/test/tool bytes under source parent `48ce0b1662a59b21070667be339a1e59503e1f19`, dirty-diagnostic
   status SHA-256 `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working-tree
-  SHA-256 `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`. The implementation,
-  focused gates, browser tools and retained reports are terminal-green and independently audited
-  clear. This Markdown-only refresh changes no executable, test, tool or report byte and claims no
-  exact-head commit, hosted run, integration or release milestone. The sole full-run red remains the
+  SHA-256 `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; only audited
+  Markdown evidence/handoff bytes changed after those runs. The implementation, focused gates,
+  browser tools and retained reports are terminal-green and independently audited clear. This
+  ROADMAP-only handoff records the implementation commit locally; that commit remains unpushed, and no
+  push is authorized. The reports are not claimed as clean exact-head, hosted, integration or release
+  evidence. The sole full-run red remains the
   known deferred Compendium measurement-authority seal (`6a961df8…` stored versus `2ab18865…` live),
   whose exact drift is `packageLock+appPackage`; the dependency graph is not frozen, so no rebaseline
   is valid yet.
@@ -208,7 +211,7 @@ aligned current-v2 Arc 5 authority before either draw, prepares the exact 18 Arc
 replacement writes for every capacity scenario, and publishes verified V1/V2 together only after
 the one receipt-bearing CAS commits.
 
-**Arc 5A compact-v2 authority (active local candidate, 2026-08-25; infrastructure-only):**
+**Arc 5A compact-v2 authority (committed local `526eaa7`, 2026-08-25; infrastructure-only):**
 `player/arc5.ownership.migration` is now the version-2 manifest and
 `creatures/arc5.ownership.delta.0` through `.3` are exactly four fixed generic delta shards. Every
 prepared successor is one exact five-write tuple. The manifest binds the exact Arc 4 source,
@@ -229,7 +232,7 @@ mismatch makes V1/V2 unavailable and read-only reload-converges without a second
 feed/care, Recovery, assignment, disposition, Chronicle, mission/dispatch, companion UI, Guide
 capability, Training lesson and release copy remain absent.
 
-**Arc 5A final current-input local evidence — terminal green:** the focused compact-v2 gate passed
+**Arc 5A final implementation-input local evidence — terminal green:** the focused compact-v2 gate passed
 109/109. Root/app/worker/noUnused TypeScript, `artunused` and the 876-module Vite build passed;
 syntax, contract/Glass/reporter selftests, imports and scoped diff checks were clean. The final full
 run recorded 102 passing files and one failing file, with 1,218 tests passed, one failed and one
@@ -306,9 +309,10 @@ current-source local browser proof is recorded above; audio browser/listening ev
 
 ### In-session continuation / fresh-session recovery
 
-1. Continue only in the Codex macOS root on `openai/mac`. The retained compact-v2 evidence binds
-   source commit/status/tree and tool/report hashes exactly as recorded above; it is a local
-   dirty-diagnostic package, not a claimed exact-head commit. This docs-only refresh invoked no Git.
+1. Continue only in the Codex macOS root on `openai/mac`. Arc 5A compact-v2 is signed local commit
+   `526eaa71919d08f37a11515c1a5bb7582f09ea07`; this ROADMAP-only handoff follows it. The retained
+   evidence binds its exact executable/test/tool bytes under the dirty-diagnostic source
+   commit/status/tree and tool/report hashes recorded above; later changes were audited Markdown only.
    Do not fetch/merge, switch branches, push, or run
    GitHub workflows without a new exact authorization.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
@@ -331,9 +335,10 @@ current-source local browser proof is recorded above; audio browser/listening ev
    merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
    manual file copying. Nick does not need to open Claude now.
 
-**Current side:** retained reports identify Codex macOS `openai/mac` and the exact local
-dirty-diagnostic source/tool package above; this Markdown-only batch intentionally ran no Git and
-makes no new commit/head claim. Arc 5A compact-v2 authority is implemented and locally terminal-green.
+**Current side:** Codex macOS `openai/mac` contains signed local implementation commit
+`526eaa71919d08f37a11515c1a5bb7582f09ea07`, recorded by this ROADMAP-only handoff. Retained reports
+bind the exact executable/test/tool bytes under the dirty-diagnostic identity above. The implementation
+commit remains local and unpushed; this handoff carries no push authority. Arc 5A compact-v2 authority is implemented and locally terminal-green.
 Arc 4 remains `[PARTIAL]` for recovery/HUMAN only; Arc 5 remains `[PARTIAL]` and
 infrastructure-only.
 `origin/openai/mac` remains the contained PR #34 head until a later exact final-head authorization.
