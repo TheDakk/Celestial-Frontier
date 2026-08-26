@@ -138,6 +138,31 @@ const EXPECTED_CANDIDATE_RUNS = [
   '20260826-phase4-candidate6',
 ] as const;
 const EXPECTED_BASELINE_RUN = '20260826-phase4-baseline1';
+const currentCertificationEvidence = Object.freeze({
+  file: 'ARC1_COMPENDIUM_PHASE4_CERTIFICATION_20260826.json.gz',
+  runId: '20260826-phase4-certification',
+  sourceCommit: 'd33e540f0d620eac34bdc259b7814db0f11a9006',
+  sourceWorkingTreeSha256:
+    'f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a',
+  budgetSha256: 'f4627dbc8e90d93fade801c5bbeb9f8f28146d5b7814e528647119cdeef94116',
+  measurementAuthoritySha256:
+    'cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d',
+  producerAuthoritySha256:
+    '587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73',
+  rawSha256: '3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd',
+  gzipSha256: '5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70',
+  startedAt: '2026-08-26T21:26:17.712Z',
+  endedAt: '2026-08-26T21:27:02.805Z',
+  durationMs: 45_093,
+  browser: Object.freeze({
+    executable: '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+    product: 'Edg/151.0.4129.107',
+    revision: '@419e77616b4ed7d0a544b85cb53ccd5b74d5f135',
+    user_agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0',
+    js_version: '15.1.23.12',
+    protocol_version: '1.3',
+  }),
+});
 
 type ProfileName = typeof PROFILE_NAMES[number];
 type CalibrationSample = {
@@ -780,6 +805,89 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(baselineCarrier.samples[profile])
         .toEqual(activeBudget.pairedBrokenBaseline.samples[profile][0]);
     }
+  });
+
+  it('binds and independently replays the current exact-budget certificate', () => {
+    const compressed = fs.readFileSync(path.join(
+      v2Root, '..', '..', 'audits', currentCertificationEvidence.file,
+    ));
+    expect(createHash('sha256').update(compressed).digest('hex'))
+      .toBe(currentCertificationEvidence.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(createHash('sha256').update(raw).digest('hex'))
+      .toBe(currentCertificationEvidence.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as RetainedLinuxReport & {
+      startedAt: string; endedAt: string; durationMs: number; expectedOutcomes: string[];
+    };
+
+    expect(report).toMatchObject({
+      schema: 'cf-v2-compendium-memory-report/v1',
+      runId: currentCertificationEvidence.runId,
+      status: 'pass',
+      startedAt: currentCertificationEvidence.startedAt,
+      endedAt: currentCertificationEvidence.endedAt,
+      durationMs: currentCertificationEvidence.durationMs,
+      lifecycle: { schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete' },
+      policy: {
+        attemptCount: 1,
+        automaticRetries: 0,
+        commandTimeoutMs: 2_000,
+        targetTimeoutMs: 2_000,
+        heartbeatTimeoutMs: 2_000,
+        transportTimeoutMs: 5_000,
+      },
+      findings: [],
+      partialFailure: null,
+      blockedOutcomes: [],
+    });
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.source.begin).toEqual({
+      commit: currentCertificationEvidence.sourceCommit,
+      branch: 'openai/mac',
+      state: 'committed',
+      statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      workingTreeSha256: currentCertificationEvidence.sourceWorkingTreeSha256,
+    });
+
+    expect(fileSha256(budgetPath)).toBe(currentCertificationEvidence.budgetSha256);
+    expect(report.inputs.budget).toBe(currentCertificationEvidence.budgetSha256);
+    expect(report.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
+    expect(compendiumMeasurementAuthority(report.inputs)).toEqual(liveMeasurementAuthority);
+    expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
+      .toBe(currentCertificationEvidence.measurementAuthoritySha256);
+    expect(currentCertificationEvidence.measurementAuthoritySha256)
+      .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+    expect(report.budget).toMatchObject({
+      status: 'active',
+      path: 'budgets/compendium-memory-v1.json',
+      sha256: currentCertificationEvidence.budgetSha256,
+      browserAuthority: EXPECTED_BROWSER_AUTHORITY,
+      browserAuthorityMatch: true,
+      producerAuthorityMatch: true,
+    });
+    expect(report.budget.browserAuthority).toEqual(activeBudget.browserAuthority);
+    expect(report.budget.producerAuthority).toEqual(budget.producerAuthority);
+    expect(report.budget.producerAuthority).toMatchObject({
+      sha256: currentCertificationEvidence.producerAuthoritySha256,
+    });
+    expect(report.budget.observedProducerAuthority).toEqual(report.budget.producerAuthority);
+    expect(currentCertificationEvidence.producerAuthoritySha256)
+      .toBe(EXPECTED_PRODUCER_AUTHORITY);
+
+    expect(report.browser).toEqual(currentCertificationEvidence.browser);
+    expect(compendiumBrowserAuthorityMatches(
+      report.browser, report.budget.browserAuthority,
+    )).toBe(true);
+    expect(report.expectedOutcomes).toEqual(EXPECTED_OUTCOMES);
+    expect(report.outcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
+    expect(report.outcomes).toHaveLength(78);
+    expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
+
+    const replayedOutcomes = PROFILE_NAMES.flatMap((profile) =>
+      evaluateProfile(report.profiles[profile], activeBudget, fixture));
+    expect(replayedOutcomes).toEqual(report.outcomes);
+    expect(replayedOutcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
+    expect(replayedOutcomes.filter((outcome) => outcome.status === 'fail')).toEqual([]);
   });
 
   it('retains the superseded exact-budget certificate without rebinding it', () => {

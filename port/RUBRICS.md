@@ -17,20 +17,25 @@ lower-parent half-fed child invariant; and one narrow app-owned Tame greeting th
 audio identity, runtime lifecycle, persisted Creature Voices and an accessible counterpart.
 
 The dedicated recovery collector/selftest is ready but the uninterrupted real 20-minute
-certificate has not run. Compendium is `calibration-required` under measurement
+certificate has not run. Compendium is active under measurement
 `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
-`587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, with empty phone/desktop
-samples, measurement-required paired baseline, null collector commit and null ceilings. Its v2
+`587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`. Clean committed source
+`6d8f184…` supplied selected independent candidate3/5/6 plus paired baseline1; signed activation
+`d33e540…` preserves exact 14-phone/13-desktop discrimination. Its v2
 browser authority binds Microsoft Edge family, CDP `1.3` and sealed capability contract
 `cf-v2-compendium-cdp-capabilities/v1` / SHA-256
 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Exact browser-build fields
-remain per-run provenance, with an exact phone/desktop tuple for each run; Edge auto-update does not
-recalibrate or change ceilings, while a real measured breach remains red. This is Compendium-only;
-SceneMemory and root Gate A are unchanged. Browser-free verification of the uncommitted working
-tree is green at 121 files /1,354
+remain per-run provenance, with an exact phone/desktop tuple for each run; Edge auto-update alone
+never rebaselines or changes ceilings, while a real measured breach remains red. Exact-budget run
+`20260826-phase4-certification` passed 78/78 plus its named verifier from signed activation
+`d33e540…`; exact Edge `151.0.4129.107` is provenance only, and report raw/gzip SHA-256 are
+`3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd` /
+`5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. This is Compendium-only;
+SceneMemory and root Gate A are unchanged. Browser-free verification is green at 121 files /1,356
 passed /one intentional skip /zero failures, `root/app/worker/noUnused` TypeScript, 884-module Vite,
-root validation/fingerprint, legacy smoke and applicable selftests. There is no current-input
-browser evidence and no hosted, HUMAN, whole-Arc/Gate, preview, version, release or deployment claim.
+root validation/fingerprint, legacy smoke and applicable selftests. Current-input Slice, Glass and
+recovery evidence remain open; there is no hosted, HUMAN, whole-Arc/Gate, preview, version, release
+or deployment claim.
 
 **Recorded historical pre-current-WIP local evidence boundary (2026-08-24):** Arc 2's focused domain/
 persistence/app checks, TypeScript programs, Vite, one real no-retry Slice Smoke and one full Glass
@@ -202,7 +207,7 @@ ever substitute for a person, and it is deliberately expensive.
 
 | | Criterion | Evidence |
 |---|---|---|
-| `[EXEC-TODO]` | Maximum-size Compendium mounts/paints only a bounded visible window and plateaus after warmup for the current producer | Product virtualization, art ownership, focus/filter/detail/Close outcomes and historical exact-source certificates remain implemented evidence. The current ruler is deliberately `calibration-required`: measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, producer `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, empty phone/desktop samples, measurement-required paired baseline/null collector commit and null ceilings. Browser authority v2 binds Edge family + CDP `1.3` + sealed capability-contract SHA-256 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`; exact version/revision/JavaScript/path/UA remain same-run paired provenance only. Auto-update cannot recalibrate or move a ceiling, and any compatible run that exceeds the eventual active ruler remains red. Until calibration plus a candidate run exists, historical 78/78 evidence cannot certify current bytes; six-image HUMAN judgment also remains separate. SceneMemory and root Gate A are unchanged. |
+| `[EXEC]` | Maximum-size Compendium mounts/paints only a bounded visible window and plateaus after warmup for the current producer | Product virtualization, art ownership, focus/filter/detail/Close outcomes and the active exact-source certificate are executable evidence. Measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` bind clean selected candidate3/5/6 plus baseline1. Signed activation `d33e540…` retains strictly-above ceilings and exact 14-phone/13-desktop paired-baseline discrimination. Run `20260826-phase4-certification` passed 78/78 plus named verification; raw/gzip SHA-256 are `3afe4103…` / `5677d9ed…`. Browser authority v2 binds Edge family + CDP `1.3` + sealed capability-contract SHA-256 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`; exact Edge `.107` and its revision/JavaScript/path/UA tuple are same-run provenance only. Auto-update alone never rebaselines or moves a ceiling, and any compatible run that exceeds the active ruler remains red. Six-image HUMAN judgment remains separate; SceneMemory and root Gate A are unchanged. |
 | `[HUMAN]` | The maximum Compendium's 132px list art, 440px detail art, hierarchy and focus treatment read correctly on phone and desktop | **OUTSTANDING — not run.** Review six fresh run-bound list/detail/focus-pinned images. Automated geometry, reachability and resource evidence cannot certify visual quality or focus feel |
 | `[EXEC]` | Ship art, installed-system captions and travel reach derive from one normalized state | Product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` makes travel, captions, four SVG chassis, exact `array`/`autoext`/`cscoop` hardpoints and diagnostics consume one unsaved projection. Unit/integration/browser controls cover 64 normalized cases, all eight hardpoint permutations, reload-shaped reconstruction, imported-veteran fallback, friendly-alias rejection, deliberately mismatched selectors, one-preview ownership and real opener/Close state parity. Active repair source `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` passed the current scene-memory-v2 42/42 certification and named verifier under budget `5c8a6e75…`; `59530da…` / `3b71d14c…` remains historical. Terminal-green run `32646110946` then merged this evidence in PR #33. |
 | `[HUMAN]` | Inventory item treatment and every ship stage read clearly at phone row, inspector and native scales | **OUTSTANDING.** Exact Inventory rows/detail/comparison and all four Shipyard stages are now reviewable, but automation cannot judge item-art hierarchy, conditional-copy comprehension, appeal or silhouette strength; the bespoke paper-doll/item-art layer remains open. |
