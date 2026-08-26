@@ -24,8 +24,10 @@ import {
   _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr,
   _wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr,
   _quasarSpr, _visitorSpr, _comaSpr, _vtrailSpr,
+  galaxyHaze,
 } from '@cf/art';
 import { initAudio, playWhoosh, playSurveyPing, applySfxGain } from '@cf/audio';
+import type { AudioContextLike, AudioCounterpartReceipt } from '@cf/audio';
 import {
   registerPanel, fillPanel, togglePanel, openPanel, closePanels, openPanelId,
   createPanelOpenController,
@@ -97,18 +99,24 @@ import {
   getCurrentV2Release, getReleaseHistory, hasUnseenV2Release, V2_DEVELOPMENT_VERSION,
   type ReleaseNoteView, type V2ShippedRelease,
 } from './release-content.js';
+import { projectDisplayRarity } from './rarity-presentation.js';
+import {
+  createSearchTravelController,
+  navigationAuthorityFailureFor,
+} from './search-travel.js';
+import { createAppChromeController } from './app-chrome.js';
 import {
   NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, resolveViewToNav,
-  navFromCanonicalCF1Address, canonicalCF1WorldAddressFromNav, parseStrictCF1Code,
+  canonicalCF1WorldAddressFromNav,
   resolveCF1Galaxy, resolveCF1Star, resolveCF1World,
-  resolveCF1GalaxyAddress, resolveCF1StarAddress, resolveCF1WorldAddress,
+  resolveCF1WorldAddress,
   isProvenPlanetFor, getProvenGalaxyKey, getProvenStarKey, getProvenPlanetKey,
   universeGalaxies, provenGalaxyCell, galaxyFineCell, galaxyCellWindow, systemScene,
-  ascAllowsStar, reachRadiusOf, withinReachOf, currentRegionOf, ascHintFor, primeReachHint,
+  reachRadiusOf, currentRegionOf, ascHintFor, primeReachHint,
   bankLandfall, reconcileV2Chapters, currentV2Objective, projectV2Charter,
   shipVisualStateOf,
   GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
-  type CanonicalCF1Address, type ProvenGalaxy, type ProvenStar, type ProvenPlanet,
+  type ProvenGalaxy, type ProvenStar, type ProvenPlanet,
   type ShipVisualState,
 } from '@cf/scene';
 import {
@@ -128,17 +136,16 @@ import {
   type OwnershipStateV1,
   type OwnershipStateV2,
 } from '@cf/domain-acquisition';
-import { galaxyProfile, galaxyHaze, systemFor, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
-import { SYS_R, UCELL, OBS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED, SOL_POS } from '@cf/domain-worldconfig';
+import { galaxyProfile, systemFor, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
+import { SYS_R, UCELL, OBS_R, HOME_POS, SOL_SEED } from '@cf/domain-worldconfig';
 import { galaxyName, starName, properName } from '@cf/domain-naming';
-import { createEpochClock, type EpochClock } from '@cf/domain-progression';
 import { mulberry32, hashInt, TAU } from '@cf/domain-rand';
 import {
   installCaptureHooks, planetDescriptor, describePickWithState,
   SOL_MOONS, galaxyStats, fmtBig,
   type Descriptor, type DescriptorPick,
 } from '@cf/domain-descriptors';
-import { cleanName, encodeWhere } from '@cf/domain-strays';
+import { encodeWhere } from '@cf/domain-strays';
 import { describeSpecies } from '@cf/domain-genome';
 import { battleStats, STAT_NAMES, STAT_HUES } from '@cf/domain-combatcore';
 import {
@@ -164,6 +171,14 @@ import {
 } from '@cf/domain-loot';
 import { runF3PersistenceBrowserProbe } from './f3-persistence-browser-probe.js';
 import {
+  createEcologyEpochEdgeAuthority,
+  type EcologyEpochCheckpointIntent,
+  type EcologyEpochEdgeAuthority,
+  type EcologyEpochPublication,
+  type EcologyEpochProjectionRefreshToken,
+  type EcologyEpochStage,
+} from './ecology-epoch-edge.js';
+import {
   planArc2InventoryAction,
   projectArc2LegacyAction,
   type Arc2InventoryOperation,
@@ -177,7 +192,10 @@ import {
   createProductActionCoordinator,
   createProductActionDiagnosticHold,
 } from './product-action-coordinator.js';
-import { projectEngineeringPanelReadModel } from './engineering-panel-model.js';
+import {
+  projectEngineeringPanelReadModel,
+  projectOrbitalMineralSurveyRow,
+} from './engineering-panel-model.js';
 import {
   deriveArc3FixedFabricationAction,
   deriveArc3MineAction,
@@ -217,6 +235,13 @@ import {
   type CaptureCardVerb,
 } from './capture-card.js';
 import { composeAcquisitionSnapshotV1 } from './acquisition-snapshot.js';
+import {
+  TAME_GREETING_AUDIO_DIAGNOSTICS_SCHEMA,
+  createTameGreetingAudioOwner,
+  type TameGreetingAudioDiagnostics,
+  type TameGreetingAudioOwner,
+  type TameGreetingClaim,
+} from './tame-greeting-audio.js';
 import {
   createF4RuntimeAuthority,
   type F4RuntimeAuthority,
@@ -306,6 +331,7 @@ let arc5OwnershipBootstrapPending = false;
 let arc5OwnershipProtection: string | null = null;
 let lastArc5BootstrapOutcome: string | null = null;
 let currentCapturePresentationFence: string | null = null;
+let tameGreetingAudioOwner: TameGreetingAudioOwner | null = null;
 let smokeRejectNextArc4ActionStorage = false;
 let smokeStaleNextArc4ActionAuthority = false;
 let smokeRejectNextArc4Publication = false;
@@ -329,10 +355,17 @@ function scheduleF4AuthorityConvergenceReload(runtime: F4RuntimeAuthority, detai
   persistHold = 'transient-read';
   persistenceProtectedDetail = detail;
   runtime.setAnswerable(false);
+  tameGreetingAudioOwner?.setAnswerable(false);
   stopF4Heartbeat();
   if (f4AuthorityReloadScheduled) return;
   f4AuthorityReloadScheduled = true;
-  setTimeout(() => { void runtime.release().catch(() => undefined).finally(() => location.reload()); }, 0);
+  setTimeout(() => {
+    void (async () => {
+      await tameGreetingAudioOwner?.dispose().catch(() => undefined);
+      await runtime.release().catch(() => undefined);
+      location.reload();
+    })();
+  }, 0);
 }
 async function ensureF4RevisionCurrent(runtime: F4RuntimeAuthority): Promise<boolean> {
   try {
@@ -348,6 +381,7 @@ async function ensureF4RevisionCurrent(runtime: F4RuntimeAuthority): Promise<boo
     persistenceBootKind = 'transient-protected';
     persistenceProtectedDetail = `revision verification failed (${error instanceof Error ? error.message : String(error)})`;
     runtime.setAnswerable(false);
+    tameGreetingAudioOwner?.setAnswerable(false);
     stopF4Heartbeat();
     return false;
   }
@@ -560,7 +594,8 @@ function f4RuntimeMayMutate(runtime: F4RuntimeAuthority | null = f4Runtime): run
   return diagnostics.leaseOwned && !diagnostics.staleBlocked;
 }
 function f4RuntimeMayAnswer(runtime: F4RuntimeAuthority | null = f4Runtime): runtime is F4RuntimeAuthority {
-  return f4PageVisible() && f4RuntimeMayMutate(runtime);
+  return f4PageVisible() && ecologyEpochAuthority.projectionMayAnswer()
+    && f4RuntimeMayMutate(runtime);
 }
 const stopF4Heartbeat = (): void => {
   if (f4HeartbeatTimer !== 0) clearInterval(f4HeartbeatTimer);
@@ -587,7 +622,10 @@ const heartbeatF4 = async (): Promise<void> => {
       || arc2LootBootstrapPending || arc3EngineeringBootstrapPending
       || arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending)
       && !await ensureBootAuthorityCommit(runtime)) return;
-    if (f4RuntimeMayAnswer(runtime)) runtime.setAnswerable(app.ticker?.started === true);
+    if (f4RuntimeMayAnswer(runtime)) {
+      runtime.setAnswerable(app.ticker?.started === true);
+      tameGreetingAudioOwner?.setAnswerable(runtime.diagnostics().answerable);
+    }
   }
   /* A receipt-bearing product action may already own activePersist while awaiting this
      heartbeat. Queuing this heartbeat's checkpoint behind that same barrier
@@ -620,6 +658,7 @@ const checkpointAndHideF4 = (): Promise<void> => {
      while the old lease is still fenced. The periodic checkpoint bounds loss
      when pagehide itself cannot finish asynchronous storage. */
   runtime.setAnswerable(false);
+  tameGreetingAudioOwner?.setAnswerable(false);
   const run = (async () => {
     let checkpoint: 'committed' | 'skipped' | 'rejected' = 'skipped';
     let checkpointError: string | null = null;
@@ -669,11 +708,27 @@ const showF4 = async (): Promise<void> => {
       || arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending)
       && !await ensureBootAuthorityCommit(runtime)) return;
     if (persistHold || runtime !== f4Runtime) return;
+    if (!ecologyEpochAuthority.projectionMayAnswer()) {
+      try { refreshCommittedEcologyProjection(); }
+      catch (error) {
+        scheduleF4AuthorityConvergenceReload(
+          runtime,
+          `deferred ecology projection rejected (${error instanceof Error ? error.message : String(error)})`,
+        );
+        return;
+      }
+    }
     runtime.setAnswerable(f4RuntimeMayAnswer(runtime) && app.ticker?.started === true);
-  } else runtime.setAnswerable(false);
+    tameGreetingAudioOwner?.setAnswerable(runtime.diagnostics().answerable);
+  } else {
+    runtime.setAnswerable(false);
+    tameGreetingAudioOwner?.setAnswerable(false);
+  }
   startF4Heartbeat();
 };
 addEventListener('pagehide', (event) => {
+  tameGreetingAudioOwner?.setHidden(true);
+  if (!event.persisted) void tameGreetingAudioOwner?.dispose();
   stopF4Heartbeat();
   void checkpointAndHideF4();
   if (event.persisted) {
@@ -686,10 +741,12 @@ addEventListener('pageshow', (event) => {
   if (event.persisted) {
     persistedPageshowCount++;
     speciesArtLoader.resumeFromBfcache();
+    tameGreetingAudioOwner?.setHidden(false);
     void showF4();
   }
 });
 addEventListener('visibilitychange', () => {
+  tameGreetingAudioOwner?.setHidden(document.visibilityState !== 'visible');
   if (!f4Runtime) return;
   if (document.visibilityState !== 'visible') {
     stopF4Heartbeat();
@@ -746,12 +803,34 @@ type ReloadReleaseWitness = {
   error: string | null;
   reason: ReplacementReloadReason;
   documentToken: string;
+  audio: TameGreetingAudioDiagnostics | null;
   rendererReleased: boolean;
   stageReleased: boolean;
   viewDetached: boolean;
   appCanvas: ReloadCanvasRelease;
   backdropCanvas: ReloadCanvasRelease;
 };
+function tameGreetingAudioReleasedForReload(
+  diagnostics: TameGreetingAudioDiagnostics | null,
+): diagnostics is TameGreetingAudioDiagnostics {
+  if (diagnostics === null) return false;
+  const counterpartReleased = diagnostics.counterpart.status === 'none'
+    ? diagnostics.counterpart.key === null && diagnostics.counterpart.generation === null
+    : diagnostics.counterpart.status === 'lost';
+  return diagnostics.schema === TAME_GREETING_AUDIO_DIAGNOSTICS_SCHEMA
+    && diagnostics.disposed === true
+    && diagnostics.armed === 0
+    && diagnostics.activeVoiceId === null
+    && counterpartReleased
+    && diagnostics.runtime.state === 'disposed'
+    && diagnostics.runtime.contextState === null
+    && diagnostics.runtime.nodes.active === 0
+    && diagnostics.runtime.voices.active === 0
+    && diagnostics.runtime.voices.ids.length === 0
+    && diagnostics.runtime.creatureEmitters.active === 0
+    && diagnostics.runtime.reservations.voices.active === 0
+    && diagnostics.runtime.reservations.nodes.active === 0;
+}
 type BootPhaseStage =
   | 'app-init-start' | 'app-init-complete' | 'backdrop-complete'
   | 'save-load-start' | 'save-load-complete' | 'scene-rendered'
@@ -782,10 +861,13 @@ function emitBootPhase(stage: BootPhaseStage): void {
 const unreleasedCanvas = (): ReloadCanvasRelease => ({
   beforeWidth: 0, beforeHeight: 0, afterWidth: 0, afterHeight: 0,
 });
-let releaseRendererForReload = (reason: ReplacementReloadReason): ReloadReleaseWitness => ({
+let releaseRendererForReload = (
+  reason: ReplacementReloadReason,
+  audio: TameGreetingAudioDiagnostics | null,
+): ReloadReleaseWitness => ({
   schema: 'cf-v2-reload-release/v1', status: 'release-failed',
   error: 'renderer release hook was not initialized', reason,
-  documentToken: DOCUMENT_TOKEN,
+  documentToken: DOCUMENT_TOKEN, audio,
   rendererReleased: false, stageReleased: false, viewDetached: false,
   appCanvas: unreleasedCanvas(), backdropCanvas: unreleasedCanvas(),
 });
@@ -803,6 +885,7 @@ function claimReplacementTransaction(reason: ReplacementReloadReason): Replaceme
      but are distinct writes. One opaque claim per operation prevents either
      flow from releasing/reloading while another same-kind write is pending. */
   if (replacementTransaction) return null;
+  tameGreetingAudioOwner?.setAnswerable(false);
   stopF4Heartbeat();
   /* Stop the outgoing renderer before the first persistence await. At an 8K
      software-rendered viewport, allowing another 16.7M-pixel frame to start
@@ -828,7 +911,10 @@ function releaseReplacementTransaction(claim: ReplacementTransaction, rearmPersi
     if (claim.tickerWasStarted && app.ticker && !app.ticker.started) {
       app.start();
       const runtime = f4Runtime;
-      if (f4RuntimeMayAnswer(runtime)) runtime.setAnswerable(true);
+      if (f4RuntimeMayAnswer(runtime)) {
+        runtime.setAnswerable(true);
+        tameGreetingAudioOwner?.setAnswerable(true);
+      }
     }
     if (!persistHold) startF4Heartbeat();
     /* A refused replacement must not silently discard a pending settings
@@ -853,25 +939,51 @@ function scheduleReplacementReload(
     /* The old document must release its private lease before its renderer is
        destroyed and a fresh document token tries to acquire. */
     await settleF4Heartbeat();
+    const audioOwner = tameGreetingAudioOwner;
+    const audioReleaseErrors: string[] = [];
+    try { await audioOwner?.dispose(); }
+    catch (error) {
+      audioReleaseErrors.push(error instanceof Error ? error.message : String(error));
+    }
+    let audioRelease: TameGreetingAudioDiagnostics | null = null;
+    try { audioRelease = audioOwner?.diagnostics() ?? null; }
+    catch (error) {
+      audioReleaseErrors.push(error instanceof Error ? error.message : String(error));
+    }
+    if (!tameGreetingAudioReleasedForReload(audioRelease)) {
+      audioReleaseErrors.push('audio release postcondition failed');
+    }
     const runtime = f4Runtime;
     let runtimeReleaseError: string | null = null;
     try { await runtime?.release(); }
     catch (error) { runtimeReleaseError = error instanceof Error ? error.message : String(error); }
     if (f4Runtime === runtime) f4Runtime = null;
 
+    let appChromeReleaseError: string | null = null;
+    try { appChrome.dispose(); }
+    catch (error) {
+      appChromeReleaseError = error instanceof Error ? error.message : String(error);
+    }
+
     let witness: ReloadReleaseWitness;
-    try { witness = releaseRendererForReload(reason); }
+    try { witness = releaseRendererForReload(reason, audioRelease); }
     catch (error) {
       witness = {
         schema: 'cf-v2-reload-release/v1', status: 'release-failed',
         error: error instanceof Error ? error.message : String(error), reason,
-        documentToken: DOCUMENT_TOKEN,
+        documentToken: DOCUMENT_TOKEN, audio: audioRelease,
         rendererReleased: false, stageReleased: false, viewDetached: false,
         appCanvas: unreleasedCanvas(), backdropCanvas: unreleasedCanvas(),
       };
     }
-    if (runtimeReleaseError !== null && witness.error === null) {
-      witness = { ...witness, status: 'release-failed', error: runtimeReleaseError };
+    const ownerReleaseErrors = [...audioReleaseErrors, runtimeReleaseError, appChromeReleaseError]
+      .filter((error): error is string => error !== null);
+    if (ownerReleaseErrors.length > 0) {
+      witness = {
+        ...witness,
+        status: 'release-failed',
+        error: [witness.error, ...ownerReleaseErrors].filter(Boolean).join('; '),
+      };
     }
     /* Runtime.addBinding installs this optional diagnostics seam before the
        page boots. Ordinary play has no such property. CDP receives the release
@@ -891,20 +1003,29 @@ function scheduleReplacementReload(
 /* ---- THE PHASE 4 CHROME (UI_PRESENTATION contracts): the unified topbar
    (trail · player chip · objective chip) publishing --topbar-h, the hint
    pill, the Georgia-italic caption line, and the 44px dock. Static DOM in
-   index.html; this file only FILLS it. ---- */
-const trailEl = document.getElementById('trail')!;
-const playerChipEl = document.getElementById('playerchip')!;
-const primeChipEl = document.getElementById('primechip')!;
-const hpFillEl = document.querySelector('#hpbar .fill') as HTMLElement;
-const hpTxtEl = document.querySelector('#hpbar .txt') as HTMLElement;
-const objChipEl = document.getElementById('objchip')!;
-const ctxEl = document.getElementById('ctxbar')!;
-const hintEl = document.getElementById('hintpill')!;
-const topbarEl = document.getElementById('topbar')!;
-const dockEl = document.getElementById('dock')!;
-const surfaceTopChromeEls = ['topbar', 'searchbox', 'objchip']
-  .map((id) => document.getElementById(id)!) as HTMLElement[];
-let lastSurfaceTrailBottom = 0;
+   index.html; app-chrome owns filling, measurement, and observation. ---- */
+const appChrome = createAppChromeController({
+  onViewportResize: () => {
+    /* rotation moves minWH while the ascend floors read gz0/sz0 live (audit
+       #8) — recompute for the mode you are IN so the thresholds agree */
+    if (nav.mode === 'galaxy') gz0 = 0.42 * minWH() / GR;
+    else if (nav.mode === 'system') sz0 = 0.40 * minWH() / SYS_R;
+  },
+});
+const {
+  syncTopbarH,
+  syncDockH,
+  syncContextH: syncCtxH,
+  syncHintH,
+  setContext: setCtx,
+  setHint,
+  setTrail,
+} = appChrome;
+/* Survey and Planetside retain their existing synchronization seam while the
+   DOM and geometry authority live entirely in app-chrome. */
+function syncSurfaceChromeBottom(): void {
+  appChrome.syncSurfaceChromeBottom();
+}
 const esc = (s: unknown): string => String(s ?? '').replace(/[<>&"']/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]!));
 type DevelopmentPreviewIdentity = Readonly<{
   sourceCommit: string;
@@ -923,91 +1044,6 @@ function guideBuildIdentity(): string {
     ? `<span data-sel="guide-build-commit">Build ${esc(source)}</span>`
     : '<span data-sel="guide-build-commit">Local development source</span>';
   return `<div class="guide-build" data-sel="guide-build"><b>Celestial Frontier v${esc(V2_DEVELOPMENT_VERSION)} development</b>${build}</div>`;
-}
-function syncTopbarH(): void {
-  /* the game's height-sync law: MEASURED, never guessed (main.js 119) */
-  document.documentElement.style.setProperty('--topbar-h', topbarEl.offsetHeight + 'px');
-}
-function syncDockH(): void {
-  /* Phone owns two rows while desktop owns one. All lower chrome reads the
-     measured result, so a media-query or safe-area change cannot bury it. */
-  document.documentElement.style.setProperty('--dock-h', dockEl.offsetHeight + 'px');
-  syncSurfaceChromeBottom();
-}
-function syncCtxH(): void {
-  /* The contextual line can wrap on a phone. Planetside anchors above its
-     rendered height rather than assuming one line and covering the copy. */
-  document.documentElement.style.setProperty('--ctx-h', ctxEl.offsetHeight + 'px');
-  syncSurfaceChromeBottom();
-}
-function syncHintH(): void {
-  /* A++ can enlarge the hint. The caption reads its rendered height rather
-     than retaining the default-font offset and overlapping it. */
-  document.documentElement.style.setProperty('--hint-h', hintEl.offsetHeight + 'px');
-}
-function syncSurfaceChromeBottom(): void {
-  /* Portrait Planetside is bottom-anchored above measured lower chrome. Its
-     upper bound must be measured too: at 320px/A++ the trail is lower than the
-     HP bar, and a natural-height roster otherwise rises through that trail.
-     If fewer than 72 useful pixels remain, the noninteractive trail yields;
-     retaining its last visible edge prevents that choice oscillating. */
-  const renderedBottom = (el: HTMLElement): number | null => {
-    const style = getComputedStyle(el);
-    const rect = el.getBoundingClientRect();
-    return style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity) > 0
-      && rect.width > 0 && rect.height > 0 ? rect.bottom : null;
-  };
-  const trailBottom = renderedBottom(trailEl);
-  if (trailBottom !== null) lastSurfaceTrailBottom = trailBottom;
-  let fixedBottom = 0;
-  for (const el of surfaceTopChromeEls) {
-    const bottom = renderedBottom(el);
-    if (bottom !== null) fixedBottom = Math.max(fixedBottom, bottom);
-  }
-  const withTrailBottom = Math.max(fixedBottom, lastSurfaceTrailBottom);
-  const side = document.getElementById('planetside');
-  const sideRect = side?.getBoundingClientRect();
-  const sideStyle = side ? getComputedStyle(side) : null;
-  const sideVisible = !!sideRect && !!sideStyle && sideStyle.display !== 'none'
-    && sideStyle.visibility !== 'hidden' && sideRect.width > 0 && sideRect.height > 0;
-  const portraitPhone = matchMedia('(max-width: 900px) and (orientation: portrait)').matches;
-  const overlaysYieldChrome = document.body.classList.contains('card-open')
-    || document.body.classList.contains('panel-open');
-  const yieldTrail = document.body.classList.contains('surface-mode') && portraitPhone
-    && !overlaysYieldChrome && sideVisible && sideRect!.bottom - withTrailBottom - 6 < 72;
-  document.body.classList.toggle('surface-trail-yield', yieldTrail);
-  const visibleBottom = Math.max(fixedBottom, trailBottom ?? (portraitPhone ? lastSurfaceTrailBottom : 0));
-  document.documentElement.style.setProperty('--surface-chrome-bottom',
-    (yieldTrail ? fixedBottom : visibleBottom).toFixed(2) + 'px');
-}
-new ResizeObserver(syncTopbarH).observe(topbarEl);
-new ResizeObserver(syncDockH).observe(dockEl);
-new ResizeObserver(syncCtxH).observe(ctxEl);
-new ResizeObserver(syncHintH).observe(hintEl);
-for (const el of surfaceTopChromeEls) new ResizeObserver(syncSurfaceChromeBottom).observe(el);
-new MutationObserver(syncSurfaceChromeBottom).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-addEventListener('resize', () => {
-  syncTopbarH();
-  syncDockH();
-  syncCtxH();
-  syncHintH();
-  syncSurfaceChromeBottom();
-  /* rotation moves minWH while the ascend floors read gz0/sz0 live (audit
-     #8) — recompute for the mode you are IN so the thresholds agree */
-  if (nav.mode === 'galaxy') gz0 = 0.42 * minWH() / GR;
-  else if (nav.mode === 'system') sz0 = 0.40 * minWH() / SYS_R;
-});
-let _ctxTxt = '', _hintTxt = '';
-function setCtx(t: string): void { if (t !== _ctxTxt) { _ctxTxt = t; ctxEl.textContent = t; } }
-function setHint(t: string): void {
-  if (t === _hintTxt) return;
-  _hintTxt = t;
-  /* verbs light up blue — the golden's scanability (static strings only) */
-  hintEl.innerHTML = t.replace(/\b(tap|drag|zoom|press|Enter|Land|Leave|right-click|Escape|wheel|pinch)\b/gi, '<b class="kw">$1</b>');
-}
-function setTrail(segs: string[]): void {
-  trailEl.innerHTML = segs.map((s, i) =>
-    `<span class="seg${i === segs.length - 1 ? ' cur' : ''}">${esc(s)}</span>`).join('<span class="sep">›</span>');
 }
 const indexedDBPersistenceBackend = createIndexedDBBackend('cf-v2-slice');
 let smokeRejectArc3StorageBoundary = false;
@@ -1088,14 +1124,32 @@ let smokeRejectNextTrainingCommit = false;
 let smokeRejectNextTrainingPublish = false;
 let trainingRestoreOperationSerial = 0;
 let lastTrainingRestoreWitness: TrainingRestoreWitness | null = null;
-/* COSMIC_EPOCH, for real: construct once from the saved snapshot, then advance
-   from an app-owned monotonic elapsed page-residence segment. This is not the
-   future foreground-only activePlayMs policy: hidden-time treatment remains F4.
-   Ecology reads the global (typeof-guarded in the verbatim), so biospheres age
-   in the browser without consulting the device wall clock. */
-let epochClock: EpochClock = createEpochClock(0, () => 0);
-let epochElapsedT0 = 0;
-const epochElapsedSeconds = (): number => (performance.now() - epochElapsedT0) / 1000;
+/* COSMIC_EPOCH is a separately capped ecology/legacy-harvest projection over
+   F4's already-authoritative activePlayMs. Candidate time stays private until
+   one receipt-free lease/revision CAS commits; gameplay and rendering consume
+   only published(). Hidden, unanswerable and lease-losing documents therefore
+   accrue neither readiness nor ecology without duplicating F4's clock policy. */
+let ecologyEpochAuthority: EcologyEpochEdgeAuthority = createEcologyEpochEdgeAuthority({
+  restoredEpoch: 0,
+  activePlayAtBootMs: 0,
+});
+let ecologyObservedActivePlayMs = 0;
+let ecologyEdgeCheckpointInFlight: Promise<boolean> | null = null;
+let lastEcologyEdgeOutcome: string | null = null;
+const currentEcologyEpoch = (): number => ecologyEpochAuthority.published();
+const ecologyActivePlayNow = (): number => {
+  const runtime = f4Runtime;
+  if (runtime !== null) {
+    ecologyObservedActivePlayMs = Math.max(
+      ecologyObservedActivePlayMs,
+      runtime.diagnostics().activePlayMs,
+    );
+  }
+  return ecologyObservedActivePlayMs;
+};
+const ecologyEpochBlocksActions = (): boolean => (
+  ecologyEpochAuthority.blocksEcology(ecologyActivePlayNow())
+);
 const TOUCH_DPR = navigator.maxTouchPoints > 0
   || (typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches);
 /* The app and its full-viewport 2D backdrop coexist. Treat one 4096² store
@@ -1182,12 +1236,14 @@ function statsForProvenGalaxy(galaxy: ProvenGalaxy): ProvenGalaxyStats {
 type RenderedSceneReceipt = Readonly<{
   serial: number;
   mode: NavState['mode'];
+  ecologyEpoch: number;
   galaxyKey: string | null;
   starKey: string | null;
   worldKey: string | null;
 }>;
 let renderedSceneReceipt: RenderedSceneReceipt = Object.freeze({
-  serial: 0, mode: 'universe', galaxyKey: null, starKey: null, worldKey: null,
+  serial: 0, mode: 'universe', ecologyEpoch: 0,
+  galaxyKey: null, starKey: null, worldKey: null,
 });
 let smokeAbortNextRenderBeforeReceipt = false;
 function abortRenderBeforeReceiptForSmoke(): boolean {
@@ -1199,6 +1255,7 @@ function recordRenderedScene(state: NavState): void {
   renderedSceneReceipt = Object.freeze({
     serial: renderedSceneReceipt.serial + 1,
     mode: state.mode,
+    ecologyEpoch: currentEcologyEpoch(),
     galaxyKey: state.mode === 'universe' ? null : getProvenGalaxyKey(state.gal),
     starKey: state.mode === 'system' || state.mode === 'surface' ? getProvenStarKey(state.star) : null,
     worldKey: state.mode === 'surface' ? getProvenPlanetKey(state.planet) : null,
@@ -1237,6 +1294,9 @@ interface CardTravelAction { label: 'Enter galaxy' | 'Enter system'; run: () => 
 let cardTravelAction: CardTravelAction | null = null;
 const captureCardController = new CaptureCardController({
   root: card,
+  onNativeTameGesture: () => {
+    tameGreetingAudioOwner?.armNativeTameGesture();
+  },
   onAction: (request) => {
     const presentationFence = currentCapturePresentationFence;
     captureCardController.setPending(request);
@@ -1261,6 +1321,7 @@ function reconstructCurrentSurfaceSurvey() {
   if (!address.ok
     || renderedSceneReceipt.serial <= 0
     || renderedSceneReceipt.mode !== 'surface'
+    || renderedSceneReceipt.ecologyEpoch !== currentEcologyEpoch()
     || renderedSceneReceipt.galaxyKey !== getProvenGalaxyKey(nav.gal)
     || renderedSceneReceipt.starKey !== getProvenStarKey(nav.star)
     || renderedSceneReceipt.worldKey !== address.address.key) return false;
@@ -1272,7 +1333,16 @@ function reconstructCurrentSurfaceSurvey() {
   surveyFocusReturn = surveyDockEl;
   return true;
 }
-function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTravelAction | null = null): void {
+type SurveyPresentationRow = readonly [key: string, value: string, cls?: string];
+const EMPTY_SURVEY_PRESENTATION_ROWS = Object.freeze([]) as readonly SurveyPresentationRow[];
+
+function showSurvey(
+  d: Descriptor,
+  actionsHtml?: string,
+  travelAction: CardTravelAction | null = null,
+  supplementalRows: readonly SurveyPresentationRow[] = EMPTY_SURVEY_PRESENTATION_ROWS,
+  preparedCaptureRoster: CanonicalWorldRoster | null = null,
+): void {
   if (document.activeElement === app.canvas) surveyFocusReturn = app.canvas;
   cardTravelAction = travelAction;
   if (actionsHtml === undefined) cardCtx = null;
@@ -1282,13 +1352,18 @@ function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTrave
       `<button data-act="travel" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">${esc(travelAction.label)}</button>` +
       '</div>'
     : '';
-  const rows = (d.rows as Array<[string, string, string?]>).filter(([key]) => key !== 'Spectral class');
+  const rows = [
+    ...(d.rows as Array<[string, string, string?]>).filter(([key]) => key !== 'Spectral class'),
+    ...supplementalRows,
+  ];
   const isPlanet = typeof d.planetSeed === 'number';
   const landedPlanet = isPlanet && !!save?.landed.includes(d.planetSeed as number);
-  const rarityName = d.designation?.name;
-  const rarityVisible = typeof rarityName === 'string' && (!isPlanet || landedPlanet);
+  const rarityView = typeof d.designation?.name === 'string'
+    ? projectDisplayRarity(d.designation.tier)
+    : null;
+  const rarityVisible = rarityView !== null && (!isPlanet || landedPlanet);
   const rarity = rarityVisible
-    ? `<div data-row="Rarity" class="survey-row"><span>Rarity</span><br>${esc(rarityName)}</div>`
+    ? `<div data-row="Rarity" class="survey-row"><span>Rarity</span><br>${esc(rarityView.name)}</div>`
     : '';
   const ownsCurrentSurface = surveyOwnsCurrentCaptureSurface();
   const captureHtml = ownsCurrentSurface
@@ -1307,9 +1382,10 @@ function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTrave
   if (captureMount === null) captureCardController.detach();
   else {
     captureCardController.attach(captureMount);
-    if (!productActionInFlight) refreshCaptureCardState();
+    if (!productActionInFlight) refreshCaptureCardState(preparedCaptureRoster);
   }
   card.style.display = 'block';
+  card.dataset.ecologyEpoch = String(currentEcologyEpoch());
   card.setAttribute('aria-hidden', 'false');
   document.body.classList.add('card-open');
   syncSurfaceChromeBottom();
@@ -1479,6 +1555,13 @@ surveyDockEl.addEventListener('click', () => {
     && !productActionInFlight) refreshCaptureCardState();
   if (card.style.display === 'none' && !card.innerHTML
     && reconstructCurrentSurfaceSurvey()) return;
+  if (card.style.display === 'none' && card.innerHTML && cardCtx) {
+    const context = cardCtx;
+    surveyFocusReturn = surveyDockEl;
+    /* A retained planet card may have crossed Surface/System since it was
+       painted. Re-prove and rebuild it without replaying the Survey action. */
+    if (presentPlanetSurvey(context.p, context.star, context.planet)) return;
+  }
   if (card.style.display === 'none' && card.innerHTML) {
     surveyFocusReturn = surveyDockEl;
     card.style.display = 'block';
@@ -1532,6 +1615,7 @@ function fillSettings(): void {
     '<h3>Settings</h3>' +
     `<div class="row"><label>Sound</label><button id="setsnd" aria-label="Sound" aria-pressed="${save.sndOn}" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" aria-label="Sound volume" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
+    `<div class="row"><label>Creature voices</label><button id="setvoice" aria-label="Creature voices" aria-pressed="${save.voiceOn}" class="${save.voiceOn ? 'on' : ''}" data-sel="set-voice">${save.voiceOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Text size</label><span class="seg" role="group" aria-label="Text size">` +
     [['', 'A'], ['fs-lg', 'A+'], ['fs-xl', 'A++']].map(([v, t]) =>
       `<button data-pref="size" data-value="${v}" aria-pressed="${save.fsMode === v}" class="${save.fsMode === v ? 'on' : ''}">${t}</button>`).join('') +
@@ -1558,12 +1642,21 @@ function fillSettings(): void {
     el.querySelector<HTMLElement>(selector)?.focus();
   };
   el.querySelector('#setsnd')!.addEventListener('click', () => {
-    save.sndOn = !save.sndOn; refillAndFocus('#setsnd'); void persistView();
+    save.sndOn = !save.sndOn;
+    applySfxGain();   /* Sound Off zeros and suspends the live sting bus */
+    tameGreetingAudioOwner?.syncSettings();
+    refillAndFocus('#setsnd'); void persistView();
   });
   el.querySelector('#setvol')!.addEventListener('input', (e) => {
     save.sfxVol = (+(e.target as HTMLInputElement).value) / 100;
     applySfxGain();   /* the shared bus retapers live */
+    tameGreetingAudioOwner?.syncSettings();
     persistSoon();
+  });
+  el.querySelector('#setvoice')!.addEventListener('click', () => {
+    save.voiceOn = !save.voiceOn;
+    tameGreetingAudioOwner?.syncSettings();
+    refillAndFocus('#setvoice'); void persistView();
   });
   for (const b of el.querySelectorAll<HTMLElement>('[data-pref]')) b.addEventListener('click', () => {
     const value = b.dataset.value || '';
@@ -1592,7 +1685,7 @@ function fillSettings(): void {
       toast('Training checkpoint retained', 'Finish or recover the pending Field Training checkpoint before starting another drill. Nothing changed.');
       return;
     }
-    const homeNav = trainingSolSystemNav();
+    const homeNav = searchTravel.trainingSolSystemNav();
     if (!homeNav) {
       toast('Route unavailable', 'Field Training could not verify the route to Sol. Your expedition is unchanged.');
       return;
@@ -1880,6 +1973,7 @@ function mountCodexRow(row: CodexVirtualRow, generation: number): {
   dispose(): void;
 } {
   const e = row.value;
+  const rarityView = projectDisplayRarity(e.tier);
   const button = document.createElement('button');
   button.type = 'button';
   button.className = 'centry compendium-row';
@@ -1892,7 +1986,7 @@ function mountCodexRow(row: CodexVirtualRow, generation: number): {
   image.height = 132;
   const copy = document.createElement('span');
   copy.className = 'compendium-row-copy';
-  copy.innerHTML = `<b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span>` +
+  copy.innerHTML = `<b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${rarityView ? ` · <span data-sel="codex-row-rarity" style="color:${esc(rarityView.hex)}">${esc(rarityView.name)}</span>` : ''}${e.hybrid ? ' · hybrid' : ''}</span>` +
     `<span class="sub compendium-row-origin">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</span>`;
   button.append(image, copy);
   let binding: SpeciesThumbBinding | null = null;
@@ -1993,9 +2087,10 @@ function fillCodexDetail(idx: number): void {
   codexDetailLogicalId = String(row[0]);
   document.getElementById('codexpanel')!.classList.remove('codex-list-mode');
   const e = row[1];
+  const rarityView = projectDisplayRarity(e.tier);
   let body = '';
   try {
-    const d = describeSpecies(e.g as never) as { grade?: { label?: string; hex?: string }; desc?: string; detail?: string; diet?: string; anatomy?: string; temper?: string; sense?: string; repro?: string; life?: string; metab?: string; habitat?: string; behavior?: string };
+    const d = describeSpecies(e.g as never) as { desc?: string; detail?: string; diet?: string; anatomy?: string; temper?: string; sense?: string; repro?: string; life?: string; metab?: string; habitat?: string; behavior?: string };
     const st = battleStats(e.g as never) as Record<string, number>;
     const KEYS = ['vit', 'fer', 'res', 'agi', 'ins'];   /* STAT_KEYS order — names/hues are position-indexed */
     const mx = Math.max(1, ...KEYS.map((k) => st[k] || 0));
@@ -2004,7 +2099,7 @@ function fillCodexDetail(idx: number): void {
       '<img data-sel="detail-portrait" data-art-state="placeholder" alt="" width="440" height="440" ' +
       'style="width:100%;height:auto;border-radius:10px;border:1px solid #22304a;margin:2px 0 8px;background:#0b1220">' +
       `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
-      (d.grade ? ` <span data-sel="detail-grade" style="border:1px solid ${esc(d.grade.hex || '#888')};color:${esc(d.grade.hex || '#ccc')};border-radius:999px;padding:1px 9px;font-size:11px">${esc(d.grade.label || '')}</span>` : '') +
+      (rarityView ? ` <span data-sel="detail-grade" style="border:1px solid ${esc(rarityView.hex)};color:${esc(rarityView.hex)};border-radius:999px;padding:1px 9px;font-size:11px">${esc(rarityView.name)}</span>` : '') +
       `<div class="sub">${esc(e.kind)} · ${esc(e.realm)}${e.hybrid ? ' · hybrid' : ''}${e.from ? ' · ' + esc(e.from) : ''}</div></div>` +
       `<div style="color:#b7c8e4;margin-bottom:8px" data-sel="detail-desc">${esc(d.desc || '')} ${esc(d.detail || '')}</div>` +
       KEYS.map((k, i) => {
@@ -2091,7 +2186,7 @@ document.getElementById('atlaspanel')!.addEventListener('click', (e) => {
     const route = atlasRouteStates.get(hit[1] as Record<string, unknown>);
     if (!route) return;
     const keyboard = document.activeElement === row;
-    const moved = jumpToProvenNav(route);
+    const moved = searchTravel.jumpToProvenNav(route);
     if (moved) {
       closePanels();
       if (keyboard) app.canvas.focus();
@@ -2201,184 +2296,48 @@ document.getElementById('codexpanel')!.addEventListener('click', (e) => {
 /* ---- THE SEARCH BAR (the goldens' top-right slot): a marked CF1 string is
    exact route input, never tolerant display data. All three route tiers are
    regenerated and proven before the common authorization/commit seam. */
-const searchEl = document.getElementById('searchbox') as HTMLInputElement;
-function encodeHere(): string | null {
-  const v = navToView(nav);
-  if (!v) return null;
-  const name = v.type === 'planet' && v.pseed != null ? customNames.get('p' + v.pseed) : null;
-  return encodeWhere(v as never, name || undefined) as string;
-}
-function resolveStrictAddress(
-  parsed: Exclude<ReturnType<typeof parseStrictCF1Code>, { kind: 'not-code' | 'invalid' }>,
-): CanonicalCF1Address | null {
-  const resolved = parsed.tier === 'galaxy'
-    ? resolveCF1GalaxyAddress(parsed.candidate)
-    : parsed.tier === 'star'
-      ? resolveCF1StarAddress(parsed.candidate)
-      : resolveCF1WorldAddress(parsed.candidate);
-  return resolved.ok ? resolved.address : null;
-}
-type NavigationAuthorityFailure = 'prime-reach' | 'charter-reach';
-function navigationAuthorityFailureFor(
-  authoritySave: Pick<SaveStateV2, 'primeFill' | 'items' | 'ascCh'>,
-  target: NavState,
-): NavigationAuthorityFailure | null {
-  if (target.mode === 'universe') return null;
-  const candidatePrimeCount = Object.keys(authoritySave.primeFill || {}).length;
-  const candidateStage = shipVisualStateOf({
-    items: authoritySave.items,
-    ascCh: authoritySave.ascCh,
-    liverySeed: SHIP_LIVERY_SEED,
-  }).chassisStage;
-  if (!withinReachOf(candidatePrimeCount, target.gal.x, target.gal.y)) return 'prime-reach';
-  if ((target.mode === 'system' || target.mode === 'surface')
-    && !ascAllowsStar(candidateStage, target.gal.seed, target.star)) return 'charter-reach';
-  return null;
-}
-function navigationAuthorityFailure(target: NavState): NavigationAuthorityFailure | null {
-  return navigationAuthorityFailureFor(save, target);
-}
-type TrainingRouteProofResult<T extends NavState> =
-  | { readonly ok: true; readonly state: T }
-  | { readonly ok: false; readonly reason: 'source-error' | 'unavailable' };
-function trainingSolSystemNav(): Extract<NavState, { mode: 'system' }> | null {
-  const isSol = (state: NavState): state is Extract<NavState, { mode: 'system' }> =>
-    state.mode === 'system'
-    && state.gal.seed === HOME_GAL_SEED
-    && state.gal.x === HOME_POS.x
-    && state.gal.y === HOME_POS.y
-    && state.star.seed === SOL_SEED
-    && state.star.x === SOL_POS.x
-    && state.star.y === SOL_POS.y
-    && navigationAuthorityFailure(state) === null;
-  if (isSol(nav)) return nav;
-  if (nav.mode === 'surface') {
-    const lifted = ascend(nav);
-    if (lifted.ok && isSol(lifted.state)) return lifted.state;
-  }
-  const address = resolveCF1StarAddress({
-    galaxy: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y },
-    star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },
-  });
-  if (!address.ok) return null;
-  const resolved = navFromCanonicalCF1Address(address.address);
-  return resolved.ok && isSol(resolved.state) ? resolved.state : null;
-}
-function trainingEarthSurfaceNav(): TrainingRouteProofResult<Extract<NavState, { mode: 'surface' }>> {
-  const address = resolveCF1WorldAddress({
-    galaxy: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y },
-    star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },
-    planet: { seed: 133 },
-  });
-  if (!address.ok) {
-    return { ok: false, reason: address.reason === 'source-error' ? 'source-error' : 'unavailable' };
-  }
-  const resolved = navFromCanonicalCF1Address(address.address);
-  if (!resolved.ok || resolved.state.mode !== 'surface') return { ok: false, reason: 'unavailable' };
-  const state = resolved.state;
-  const exact = state.gal.seed === HOME_GAL_SEED
-    && state.gal.x === HOME_POS.x && state.gal.y === HOME_POS.y
-    && state.star.seed === SOL_SEED && state.star.x === SOL_POS.x && state.star.y === SOL_POS.y
-    && state.planet.seed === 133 && state.planet.ordinal === 2
-    && getProvenGalaxyKey(state.gal) !== null
-    && getProvenStarKey(state.star) !== null
-    && getProvenPlanetKey(state.planet) !== null
-    && navigationAuthorityFailure(state) === null;
-  return exact ? { ok: true, state } : { ok: false, reason: 'unavailable' };
-}
-function jumpToProvenNav(target: NavState, incomingName: string | null = null): boolean {
-  if (blockRouteChangeWhileProductAction()) return false;
-  if (!save || target.mode === 'universe') return false;
-  const authorityFailure = navigationAuthorityFailure(target);
-  if (authorityFailure === 'prime-reach') {
-      toastPrimeReachBoundary();
-      return false;
-  }
-  if (authorityFailure === 'charter-reach') {
-    toastCharterBoundary(ascHintFor(ascStage()));
-    return false;
-  }
-  const focusPlanet = target.mode === 'surface'
-    ? planetNodeForProof(target.star, target.planet)
-    : null;
-  if (target.mode === 'surface'
-    && (!focusPlanet || focusPlanet.seed !== target.planet.seed
-      || focusPlanet.ordinal !== target.planet.ordinal)) return false;
-
-  let committedNav: NavState = target;
-  if (target.mode === 'surface') {
-    const lifted = ascend(target);
-    if (!lifted.ok || lifted.state.mode !== 'system') return false;
-    committedNav = lifted.state;
-  }
-  if (focusPlanet && incomingName && !playerMutationsBlocked()) {
-    const name = cleanName(incomingName);
-    if (name) {
-      customNames.set('p' + focusPlanet.seed, name);
+const searchTravel = createSearchTravelController({
+  search: document.getElementById('searchbox') as HTMLInputElement,
+  currentNav: () => nav,
+  currentSave: () => save || null,
+  shipLiverySeed: () => SHIP_LIVERY_SEED,
+  currentPlanetName: (planetSeed) => customNames.get('p' + planetSeed) || null,
+  routeChangeBlocked: () => blockRouteChangeWhileProductAction(),
+  mutationsBlocked: () => playerMutationsBlocked(),
+  planetNodeForProof,
+  commitNavigation: ({ target, committedNav, focusPlanet, customPlanetName }) => {
+    if (focusPlanet && customPlanetName) {
+      customNames.set('p' + focusPlanet.seed, customPlanetName);
       save.customNames = [...customNames.entries()];
     }
-  }
-  nav = committedNav;
-  savedRouteWriteHeld = false;
-  if (nav.mode === 'galaxy') { gz0 = 0.42 * minWH() / GR; camT.z = gz0 * 1.05; }
-  else if (nav.mode === 'system') { sz0 = 0.40 * minWH() / SYS_R; camT.z = sz0 * 1.05; }
-  else camT.z = 1;
-  cam.z = camT.z * 0.7; cam.x = camT.x = 0; cam.y = camT.y = 0;
-  playWhoosh();
-  rerender();
-  if (focusPlanet && target.mode === 'surface') surveyPlanet(focusPlanet, target.star, target.planet);
-  return true;
-}
-function jumpToCanonicalAddress(address: CanonicalCF1Address, incomingName: string | null = null): boolean {
-  const resolved = navFromCanonicalCF1Address(address);
-  return resolved.ok ? jumpToProvenNav(resolved.state, incomingName) : false;
-}
-searchEl.addEventListener('keydown', (e) => {
-  if (e.key !== 'Enter') return;
-  /* Search owns Enter. Prevent the browser's type=search default action from
-     dispatching a secondary implicit activation after this handler has
-     opened/focused a panel or navigated the canvas. */
-  e.preventDefault();
-  e.stopPropagation();
-  const q = searchEl.value.trim();
-  if (!q) {
-    /* Empty Enter is normally inert. While an already-open Compendium list
-       owns a filter, however, it is the keyboard clear action: rebuild the
-       full logical catalogue and move focus to its first continuation. */
-    if (openPanelId() === 'codex' && codexMode === 'list' && codexFilter) {
-      searchEl.value = '';
-      fillCodex('');
-      (document.querySelector<HTMLElement>('#codexpanel [data-ci]')
-        || document.querySelector<HTMLElement>('#codexpanel [data-pnx]'))?.focus();
+    nav = committedNav;
+    savedRouteWriteHeld = false;
+    if (nav.mode === 'galaxy') { gz0 = 0.42 * minWH() / GR; camT.z = gz0 * 1.05; }
+    else { sz0 = 0.40 * minWH() / SYS_R; camT.z = sz0 * 1.05; }
+    cam.z = camT.z * 0.7; cam.x = camT.x = 0; cam.y = camT.y = 0;
+    playWhoosh();
+    rerender();
+    if (focusPlanet && target.mode === 'surface') {
+      surveyPlanet(focusPlanet, target.star, target.planet);
     }
-    return;
-  }
-  const strict = parseStrictCF1Code(q);
-  if (strict.kind === 'invalid') {
-    /* A malformed marked code is a correction outcome, not a Compendium
-       query. Keep its exact text/focus so the explorer can repair it. */
-    searchEl.focus();
-    return;
-  }
-  if (strict.kind === 'valid') {
-    const address = resolveStrictAddress(strict);
-    if (address && jumpToCanonicalAddress(address, strict.name)) {
-      searchEl.value = '';
-      /* Route rendering replaces scene/card DOM synchronously. Continue the
-         keyboard journey at the live action when a planet card opened, or
-         at the exploration canvas for galaxy/star destinations. A rejected
-         code deliberately keeps its query and focus for correction. */
-      queueMicrotask(() => {
-        const action = card.querySelector<HTMLElement>('[data-act="landcta"],[data-act="travel"]');
-        (action || app.canvas).focus();
-      });
-    } else searchEl.focus();
-    return;
-  }
-  /* not a code — a Compendium name filter */
-  codexOpenController.present(q, searchEl);
-  (document.querySelector<HTMLElement>('#codexpanel [data-ci]')
-    || document.querySelector<HTMLElement>('#codexpanel [data-pnx]'))?.focus();
+  },
+  onPrimeReachBlocked: () => { toastPrimeReachBoundary(); },
+  onCharterReachBlocked: () => { toastCharterBoundary(ascHintFor(ascStage())); },
+  compendiumState: () => ({
+    panelOpen: openPanelId() === 'codex',
+    mode: codexMode,
+    filter: codexFilter,
+  }),
+  clearCompendium: () => { fillCodex(''); },
+  presentCompendium: (query, opener) => { codexOpenController.present(query, opener); },
+  focusCompendiumContinuation: () => {
+    (document.querySelector<HTMLElement>('#codexpanel [data-ci]')
+      || document.querySelector<HTMLElement>('#codexpanel [data-pnx]'))?.focus();
+  },
+  focusAfterAcceptedRoute: () => {
+    const action = card.querySelector<HTMLElement>('[data-act="landcta"],[data-act="travel"]');
+    (action || app.canvas).focus();
+  },
 });
 sheet.querySelector('#importclose')!.addEventListener('click', closeImportSheet);
 sheet.querySelector('#importpick')!.addEventListener('click', () => (sheet.querySelector('#importfile') as HTMLInputElement).click());
@@ -2514,14 +2473,50 @@ toastEl.className = 'glass';
 document.body.appendChild(toastEl);
 let _toastT = 0, _toastHide = 0, _toastSerial = 0;
 let _boundaryToastKey = '', _boundaryToastT = -Infinity, _boundaryToastSerial = -1;
+let tameToastCounterpart: Readonly<{
+  receipt: AudioCounterpartReceipt;
+  title: string;
+  detail: string;
+}> | null = null;
 const TOAST_DEDUP_MS = 1800;
+function toastDetailText(): string | null {
+  const title = toastEl.querySelector<HTMLElement>('[data-sel="toast-title"]');
+  const lineBreak = title?.nextSibling;
+  const detail = lineBreak?.nextSibling;
+  return title && lineBreak?.nodeName === 'BR' && detail?.nodeType === Node.TEXT_NODE
+    ? detail.textContent : null;
+}
+function tameToastCounterpartIsCurrent(receipt: AudioCounterpartReceipt): boolean {
+  const registered = tameToastCounterpart;
+  const title = toastEl.querySelector<HTMLElement>('[data-sel="toast-title"]');
+  return registered !== null
+    && registered.receipt.counterpartKey === receipt.counterpartKey
+    && registered.receipt.eventKey === receipt.eventKey
+    && registered.receipt.generation === receipt.generation
+    && receipt.generation === _toastSerial
+    && toastEl.getAttribute('role') === 'status'
+    && toastEl.getAttribute('aria-live') === 'assertive'
+    && toastEl.getAttribute('aria-atomic') === 'true'
+    && toastEl.style.opacity === '1'
+    && title?.textContent === registered.title
+    && toastDetailText() === registered.detail;
+}
+function invalidateTameToastCounterpart(): void {
+  if (tameToastCounterpart === null) return;
+  tameToastCounterpart = null;
+  tameGreetingAudioOwner?.counterpartLost();
+}
 function showToast(title: string, msg: string, assertive: boolean): void {
+  invalidateTameToastCounterpart();
   toastEl.setAttribute('aria-live', assertive ? 'assertive' : 'polite');
   toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;   /* every sink escapes (audit #6) */
   _toastSerial++;
   toastEl.style.opacity = '1';
   clearTimeout(_toastHide);
-  _toastHide = window.setTimeout(() => { toastEl.style.opacity = '0'; }, 3600);
+  _toastHide = window.setTimeout(() => {
+    invalidateTameToastCounterpart();
+    toastEl.style.opacity = '0';
+  }, 3600);
 }
 function toast(title: string, msg: string, force = false): void {
   const now = performance.now();
@@ -2557,6 +2552,43 @@ function toastCharterBoundary(msg: string): boolean {
 function toastPrimeReachBoundary(): boolean {
   return toastReachBoundary('⬆ Beyond Your Saved Reach', primeReachHint());
 }
+function bindTameToastCounterpart(
+  eventKey: string,
+  title: string,
+  detail: string,
+): AudioCounterpartReceipt | null {
+  const receipt = Object.freeze({
+    counterpartKey: `capture-toast:${_toastSerial}`,
+    eventKey,
+    generation: _toastSerial,
+  });
+  tameToastCounterpart = Object.freeze({ receipt, title, detail });
+  if (tameToastCounterpartIsCurrent(receipt)) return receipt;
+  tameToastCounterpart = null;
+  return null;
+}
+function currentTameGreetingRouteKey(): string | null {
+  if (nav.mode !== 'surface') return null;
+  const address = canonicalCF1WorldAddressFromNav(nav);
+  return address.ok ? address.address.key : null;
+}
+tameGreetingAudioOwner = createTameGreetingAudioOwner({
+  createContext: () => new AudioContext() as unknown as AudioContextLike,
+  nowMs: () => performance.now(),
+  readPolicy: () => ({
+    soundOn: save.sndOn,
+    creatureVoicesOn: save.voiceOn,
+    visible: document.visibilityState === 'visible',
+    answerable: f4RuntimeMayAnswer(f4Runtime)
+      && f4Runtime!.diagnostics().answerable
+      && app.ticker?.started === true
+      && !replacementTransaction
+      && !replacementReloadPending,
+    masterGain: save.sfxVol * save.sfxVol,
+    routeKey: currentTameGreetingRouteKey(),
+  }),
+  verifyCounterpart: tameToastCounterpartIsCurrent,
+});
 const primeCount = (): number => Object.keys(save.primeFill || {}).length;
 const SHIP_LIVERY_SEED = 0x5111;   /* legacy ship painter's stable livery authority */
 type ShipVisualViewState = ShipVisualState & { readonly stateKey: string };
@@ -2635,19 +2667,22 @@ function refreshEngineeringPanelState(): void {
 }
 
 function updateChips(): void {
-  playerChipEl.innerHTML = `⚙ ${esc(save.explorerName || 'Explorer')} <span class="dim">— ✦ ${save.essence}<span class="player-worlds"> · ${save.landed.length} worlds</span></span>`;
-  hpFillEl.style.width = Math.max(0, Math.min(100, (save.hp / Math.max(1, save.HP_MAX)) * 100)) + '%';
-  hpTxtEl.textContent = `${save.hp}/${save.HP_MAX} HP`;
-  primeChipEl.textContent = `✦ Prime Codex ${primeCount()} / 9`;
   const stage = ascStage();
   const objective = currentV2Objective(save.ascCh, save.ascProg, stage);
   const projection = projectV2Charter(save.ascCh, save.ascProg, stage);
-  objChipEl.innerHTML = objective
-    ? `⬆ ${esc(objective.text)} · <span class="prog" data-sel="objprog">${objective.have} / ${objective.need}</span>`
-    : projection?.state === 'boundary'
-      ? `⬆ ${esc(projection.name)} is recorded — the next Charter action is not available in this development slice`
-      : '';
-  syncTopbarH();   /* the chip wraps on narrow phones — remeasure, never guess */
+  appChrome.renderStatus({
+    explorerName: save.explorerName,
+    essence: save.essence,
+    landedWorlds: save.landed.length,
+    hp: save.hp,
+    hpMax: save.HP_MAX,
+    primeCount: primeCount(),
+    objective: objective
+      ? { kind: 'progress', text: objective.text, have: objective.have, need: objective.need }
+      : projection?.state === 'boundary'
+        ? { kind: 'boundary', name: projection.name }
+        : null,
+  });
 }
 function hudText(): void {
   /* the chrome per mode: trail (setTrail), hint pill, the caption line
@@ -3165,8 +3200,8 @@ function drawGalaxy(state: Extract<NavState, { mode: 'galaxy' }>): void {
   const _b0 = performance.now();
   clearWorld();
   const prof = galaxyProfile(galSeed) as Record<string, unknown>;
-  /* THE HAZE — unresolved starlight matching the exact star-density math
-     (verbatim galaxyHaze; D-HAZE's render-layer ownership starts here) */
+  /* THE HAZE — unresolved starlight matching the exact star-density math,
+     owned by the browser-only art package. */
   const hazeSpr = new Sprite(sceneTexture(
     galaxyHaze(galSeed, prof) as HTMLCanvasElement,
     'galaxy-haze',
@@ -3284,7 +3319,7 @@ function drawGalaxy(state: Extract<NavState, { mode: 'galaxy' }>): void {
   }
   /* supernova aftermath — epoch-anchored: sites shift as COSMIC_EPOCH climbs
      (main.js 4214). Every death is a cloud; remnants keep their cores. */
-  for (const site of supernovaSites(galSeed, epochClock.current())) {
+  for (const site of supernovaSites(galSeed, currentEcologyEpoch())) {
     const ss = new Sprite(sceneTexture(snSiteSprite(site.seed)));
     ss.anchor.set(0.5);
     ss.position.set(site.x, site.y);
@@ -3828,14 +3863,16 @@ function rebuildSystemHD(scheduleRefresh = true): void {
   if (scheduleRefresh) scheduleSystemPlanetTextureRefresh();
 }
 
-function buildCurrentSceneTransaction(): void {
+function buildCurrentSceneTransaction(
+  preparedSurfaceRoster: CanonicalWorldRoster | null = null,
+): void {
   try {
     if (nav.mode === 'universe') drawUniverse();
     else if (nav.mode === 'galaxy') drawGalaxy(nav);
     else if (nav.mode === 'system') drawSystem(nav);
     else if (nav.mode === 'surface' && nav.star && nav.planet) {
       const exact = planetNodeForProof(nav.star, nav.planet);
-      if (exact) drawSurface(exact, nav); else {
+      if (exact) drawSurface(exact, nav, preparedSurfaceRoster); else {
         nav = NAV_HOME;
         document.body.classList.remove('surface-mode');
         clearPlanetside();
@@ -3860,6 +3897,7 @@ function buildCurrentSceneTransaction(): void {
 
 /* ---- navigation (every transition through the tested state machine) ---- */
 function rerender(options: { preserveSurvey?: boolean; skipPersist?: boolean } = {}): void {
+  tameGreetingAudioOwner?.syncRoute(currentTameGreetingRouteKey());
   /* A density-only rebuild replaces Pixi textures, not the player's selected
      object. Navigation transitions invalidate the card as before; monitor/
      DPR changes preserve its exact DOM, full-identity context, and action. */
@@ -3887,7 +3925,7 @@ function descendGalaxy(g: { seed: number; x: number; y: number }): boolean {
   if (!r.ok) return false;
   /* The saved Prime Signature radius gates intergalactic reach. It is not a
      drive/Charter gate, so preserve that distinction in the visible boundary. */
-  if (navigationAuthorityFailure(r.state) === 'prime-reach') {
+  if (searchTravel.navigationAuthorityFailure(r.state) === 'prime-reach') {
     camT.z = Math.min(camT.z, (0.55 * minWH() / Math.max(galaxy.size, 8)) * 0.97);
     toastPrimeReachBoundary();
     return false;
@@ -3912,7 +3950,7 @@ function descendSystem(starCandidate: { seed: number; x: number; y: number }): b
   /* the Ascent gates star dives (main.js 3450): stage 0 = Sol only,
      1 = the Neighborhood ring, 2 = the whole home galaxy, 3 = everywhere.
      LOOKING stays free — only the dive is charted. */
-  const authorityFailure = navigationAuthorityFailure(r.state);
+  const authorityFailure = searchTravel.navigationAuthorityFailure(r.state);
   if (authorityFailure === 'prime-reach') {
     toastPrimeReachBoundary();
     return false;
@@ -3941,7 +3979,40 @@ function planetNodeForProof(star: ProvenStar, planet: ProvenPlanet): PlanetNode 
   return systemScene(star.seed).planets.find((node) =>
     node.seed === planet.seed && node.ordinal === planet.ordinal) ?? null;
 }
-function presentPlanetSurvey(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet): boolean {
+function orbitalMineralSurveyRows(
+  star: ProvenStar,
+  planet: ProvenPlanet,
+): readonly SurveyPresentationRow[] {
+  if (nav.mode !== 'system' || arc3EngineeringState === null || arc3EngineeringProtection !== null
+    || getProvenStarKey(nav.star) !== getProvenStarKey(star)) {
+    return EMPTY_SURVEY_PRESENTATION_ROWS;
+  }
+  const address = resolveCF1WorldAddress({
+    galaxy: { seed: nav.gal.seed, x: nav.gal.x, y: nav.gal.y },
+    star: { seed: star.seed, x: star.x, y: star.y },
+    planet: { seed: planet.seed },
+  });
+  if (!address.ok
+    || getProvenGalaxyKey(address.address.galaxy) !== getProvenGalaxyKey(nav.gal)
+    || getProvenStarKey(address.address.star) !== getProvenStarKey(star)
+    || getProvenPlanetKey(address.address.planet) !== getProvenPlanetKey(planet)) {
+    return EMPTY_SURVEY_PRESENTATION_ROWS;
+  }
+  const row = projectOrbitalMineralSurveyRow({
+    engineering: arc3EngineeringState,
+    nav,
+    address: address.address,
+  });
+  return row === null
+    ? EMPTY_SURVEY_PRESENTATION_ROWS
+    : Object.freeze([Object.freeze([row.key, row.value] as const)]);
+}
+function presentPlanetSurvey(
+  p: PlanetNode,
+  star: ProvenStar,
+  supplied?: ProvenPlanet,
+  preparedCaptureRoster: CanonicalWorldRoster | null = null,
+): boolean {
   if ((nav.mode !== 'system' && nav.mode !== 'surface')
     || getProvenStarKey(nav.star) !== getProvenStarKey(star)) return false;
   const resolved = supplied
@@ -3962,7 +4033,13 @@ function presentPlanetSurvey(p: PlanetNode, star: ProvenStar, supplied?: ProvenP
     star: nav.star,
     planet: resolved.planet,
   };
-  showSurvey(d, buildCardActions(p));
+  showSurvey(
+    d,
+    buildCardActions(p),
+    null,
+    orbitalMineralSurveyRows(star, resolved.planet),
+    preparedCaptureRoster,
+  );
   return true;
 }
 function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet): boolean {
@@ -3990,6 +4067,17 @@ function buildCardActions(p: PlanetNode): string {
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
     '</div>';
+}
+function refreshPlanetSurveyCard(): boolean {
+  const context = cardCtx;
+  if (context === null || lastCard === null || card.style.display === 'none') return false;
+  showSurvey(
+    lastCard,
+    buildCardActions(context.p),
+    null,
+    orbitalMineralSurveyRows(context.star, context.planet),
+  );
+  return true;
 }
 function surveyAndLand(p: PlanetNode, star: ProvenStar): boolean {
   /* the api's one-call path (smoke compatibility): survey, then land */
@@ -4027,9 +4115,7 @@ async function copyShareCode(code: string): Promise<boolean> {
     /* Never claim a copy that the browser denied. Put the exact code in a
        familiar editable surface and select it so keyboard/touch assistive
        copy remains one honest action away. */
-    searchEl.value = code;
-    searchEl.focus();
-    searchEl.select();
+    searchTravel.selectForManualCopy(code);
     toast('Copy unavailable', 'The share code is selected in Search. Use your browser’s Copy command.', true);
     return false;
   }
@@ -4070,7 +4156,7 @@ function doLand(): boolean {
     if (openPanelId() === 'ch') fillCharters();
     playWhoosh();   /* planetfall */
     buildCurrentSceneTransaction(); hudText(); void persistView();
-    if (lastCard) showSurvey(lastCard, buildCardActions(p));
+    refreshPlanetSurveyCard();
     /* A repeated landing is not new progression. The one exception is the
        explicit veteran training replay: its lesson waits for the action,
        but still receives no second landfall credit. */
@@ -4096,7 +4182,7 @@ function addToAtlas(): void {
     toast('★ Charted', d + ' joined your Star Atlas.');
   }
   gameEvent('atlas-add', { id });
-  if (cardCtx) showSurvey(lastCard!, buildCardActions(p));   /* refresh: the button becomes ★ charted */
+  refreshPlanetSurveyCard();   /* refresh: the button becomes ★ charted */
 }
 card.addEventListener('click', (e) => {
   if ((e.target as HTMLElement).closest('[data-survey-close]')) {
@@ -4231,7 +4317,7 @@ function fillPlanetside(
       showPlanetsideRosterFailure(`address:${addressResult.reason}`);
       return;
     }
-    const rosterResult = canonicalWorldRoster(addressResult.address, epochClock.current());
+    const rosterResult = canonicalWorldRoster(addressResult.address, currentEcologyEpoch());
     if (!rosterResult.ok) {
       showPlanetsideRosterFailure(`${rosterResult.reason}:${rosterResult.message}`);
       return;
@@ -4466,7 +4552,11 @@ function compendiumDiagnostics(): unknown {
     art: speciesArtLoader.artDiagnostics(),
   });
 }
-function drawSurface(p: PlanetNode, state: Extract<NavState, { mode: 'surface' }>): void {
+function drawSurface(
+  p: PlanetNode,
+  state: Extract<NavState, { mode: 'surface' }>,
+  preparedRoster: CanonicalWorldRoster | null = null,
+): void {
   if (p.seed !== state.planet.seed || p.ordinal !== state.planet.ordinal) return;
   /* surface mode, slice edition: the world fills the view as its painterly
      surface (full biome scenes are Phase 6); the survey card carries the
@@ -4533,7 +4623,7 @@ function drawSurface(p: PlanetNode, state: Extract<NavState, { mode: 'surface' }
     surfClouds = { a, b, w: R * 2 };
   }
   cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0; camT.z = fitZ; cam.z = fitZ * 0.8;
-  fillPlanetside(state);
+  fillPlanetside(state, preparedRoster);
   if (abortRenderBeforeReceiptForSmoke()) return;
   recordRenderedScene(state);
 }
@@ -4792,72 +4882,128 @@ function installKeyboardExploration(): void {
 }
 
 /* ---- the save/reload leg — THE REAL PIPELINE ---- */
-async function persistView(replacementOwner: ReplacementTransaction | null = null): Promise<boolean> {
+async function persistView(
+  replacementOwner: ReplacementTransaction | null = null,
+  intent: EcologyEpochCheckpointIntent = 'ordinary',
+): Promise<boolean> {
   if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
     || !f4RuntimeMayMutate() || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
   const write = async (): Promise<boolean> => {
-    const priorSavedView = save.savedView;
-    const priorEpochBase = save.EPOCH_BASE;
-    const rollbackAppOwnedSnapshot = (): void => {
-      save.savedView = priorSavedView;
-      save.EPOCH_BASE = priorEpochBase;
-    };
+    let epochStage: EcologyEpochStage | null = null;
+    let durable = false;
     try {
-    await settleF4Heartbeat();
-    const runtime = f4Runtime;
-    if (!f4RuntimeMayMutate(runtime)) return false;
-    /* A transient generator failure is not proof that a valid imported route
-       is stale. Hold that one field until a later successful resolution or
-       player navigation; unrelated save progress may still persist. */
-    if (!savedRouteWriteHeld) save.savedView = navToView(nav);
-    /* Snapshot the advancing value. base() is only this session's immutable
-       construction origin and would freeze elapsed epoch progress on reload. */
-    save.EPOCH_BASE = epochClock.current();
-    if (smokeRejectNextPersist) {
-      /* Browser evidence needs a deterministic storage-rejection outcome;
-         this diagnostics-only latch enters the same rollback branch as an
-         IndexedDB failure without changing ordinary repository behavior. */
-      smokeRejectNextPersist = false;
-      throw new Error('slice-smoke injected persistence rejection');
-    }
-    const outcome = await runtime.commit(save, Date.now());
-    lastPersistenceOutcome = outcome.kind === 'committed'
-      ? `committed:${outcome.revision}` : outcome.kind;
-    if (outcome.kind === 'committed') {
-      f4LastCheckpointAt = performance.now();
-      return true;
-    }
-    rollbackAppOwnedSnapshot();
-    const detail = outcome.kind === 'stale'
-      ? `stale revision ${outcome.expectedRevision}/${outcome.actualRevision}`
-      : `save authority ${outcome.kind}; reload required`;
-    scheduleF4AuthorityConvergenceReload(runtime, detail);
-    toast('Reload required', 'Another save authority won. This page is now read-only so no progress can be overwritten.', true);
-    return false;
-  } catch (error) {
-    /* Only these two fields are staged by persistView itself. Restore them on
-       rejection so a failed authority attempt cannot masquerade as a live
-       player mutation while the durable expedition remains unchanged. */
-    rollbackAppOwnedSnapshot();
-    if (!(error instanceof Error && error.message === 'slice-smoke injected persistence rejection')) {
+      await settleF4Heartbeat();
       const runtime = f4Runtime;
-      if (runtime) scheduleF4AuthorityConvergenceReload(
-        runtime,
-        `save attempt rejected (${error instanceof Error ? error.message : String(error)}); reload required`,
-      );
+      if (!f4RuntimeMayMutate(runtime)) return false;
+      const staged = ecologyEpochAuthority.stage(ecologyActivePlayNow(), intent);
+      if (staged.kind !== 'staged') {
+        lastEcologyEdgeOutcome = `${intent}:${staged.kind}`;
+        return false;
+      }
+      epochStage = staged.stage;
+      /* Route + epoch are detached checkpoint fields. Neither may become live
+         merely because a CAS was attempted; durable publication follows the
+         exact committed stage below. */
+      const candidate: SaveStateV2 = {
+        ...save,
+        savedView: savedRouteWriteHeld ? save.savedView : navToView(nav),
+        EPOCH_BASE: epochStage.epoch,
+      };
+      if (smokeRejectNextPersist) {
+        /* Browser evidence needs a deterministic storage-rejection outcome;
+           this diagnostics-only latch enters the same pre-durable branch as
+           an IndexedDB failure without changing ordinary repository behavior. */
+        smokeRejectNextPersist = false;
+        throw new Error('slice-smoke injected persistence rejection');
+      }
+      const outcome = await runtime.commit(candidate, Date.now());
+      lastPersistenceOutcome = outcome.kind === 'committed'
+        ? `committed:${outcome.revision}` : outcome.kind;
+      if (outcome.kind === 'committed') {
+        durable = true;
+        const settled = ecologyEpochAuthority.commit(epochStage, outcome.revision);
+        if (settled.kind === 'invalid-stage') {
+          throw new Error('committed ecology checkpoint lost its exact stage token');
+        }
+        save.savedView = outcome.saved.canonicalState.savedView;
+        save.EPOCH_BASE = outcome.saved.canonicalState.EPOCH_BASE;
+        f4LastCheckpointAt = performance.now();
+        if (settled.kind === 'published') publishCommittedEcologyEpoch(settled.publication);
+        else lastEcologyEdgeOutcome = `steady:${settled.epoch}:revision:${settled.revision}`;
+        return true;
+      }
+      ecologyEpochAuthority.reject(epochStage);
+      epochStage = null;
+      lastEcologyEdgeOutcome = `${intent}:pre-durable-${outcome.kind}`;
+      const detail = outcome.kind === 'stale'
+        ? `stale revision ${outcome.expectedRevision}/${outcome.actualRevision}`
+        : `save authority ${outcome.kind}; reload required`;
+      scheduleF4AuthorityConvergenceReload(runtime, detail);
+      toast('Reload required', 'Another save authority won. This page is now read-only so no progress can be overwritten.', true);
+      return false;
+    } catch (error) {
+      const runtime = f4Runtime;
+      if (durable) {
+        suppressEcologyProjection();
+        if (runtime) scheduleF4AuthorityConvergenceReload(
+          runtime,
+          `ecology checkpoint committed; publication ${error instanceof Error ? error.message : String(error)}`,
+        );
+        return true;
+      }
+      if (epochStage !== null) ecologyEpochAuthority.reject(epochStage);
+      lastEcologyEdgeOutcome = `${intent}:rejected`;
+      if (!(error instanceof Error && error.message === 'slice-smoke injected persistence rejection')) {
+        if (runtime) scheduleF4AuthorityConvergenceReload(
+          runtime,
+          `save attempt rejected (${error instanceof Error ? error.message : String(error)}); reload required`,
+        );
+      }
+      return false;
     }
-    return false;
-  } };
+  };
   const prior = activePersist;
   const run = prior ? prior.catch(() => false).then(write) : write();
   activePersist = run;
   try { return await run; }
-  finally { if (activePersist === run) activePersist = null; }
+  finally {
+    if (activePersist === run) {
+      activePersist = null;
+      const runtimeDiagnostics = f4Runtime?.diagnostics();
+      if (ecologyEpochAuthority.projection().state === 'dirty' && f4PageVisible()
+        && app.ticker?.started === true
+        && runtimeDiagnostics?.visible === true
+        && runtimeDiagnostics.answerable
+        && runtimeDiagnostics.leaseOwned
+        && !runtimeDiagnostics.staleBlocked) {
+        const runtime = f4Runtime;
+        try { refreshCommittedEcologyProjection(); }
+        catch (error) {
+          if (runtime) scheduleF4AuthorityConvergenceReload(
+            runtime,
+            `ecology projection refresh rejected (${error instanceof Error ? error.message : String(error)})`,
+          );
+        }
+      }
+    }
+  }
 }
 let _persistT = 0;
 let importWriteInFlight = false;
 let activePersist: Promise<boolean> | null = null;
 let productActionInFlight = false;
+function requestEcologyEpochCheckpoint(): void {
+  if (ecologyEdgeCheckpointInFlight !== null || activePersist || productActionInFlight
+    || importWriteInFlight || replacementTransaction || replacementReloadPending
+    || trainingCheckpointWriteHeld || !f4RuntimeMayMutate()) return;
+  if (!ecologyEpochAuthority.autoCheckpointDue(ecologyActivePlayNow())) return;
+  const run = persistView(null, 'ecology-edge');
+  ecologyEdgeCheckpointInFlight = run;
+  const clear = (): void => {
+    if (ecologyEdgeCheckpointInFlight === run) ecologyEdgeCheckpointInFlight = null;
+  };
+  void run.then(clear, clear);
+}
 const productActionCoordinator = createProductActionCoordinator();
 const smokeProductActionHold = createProductActionDiagnosticHold();
 let smokeRejectNextArc3ActionStorage = false;
@@ -5452,6 +5598,7 @@ async function commitArc4CaptureAction(
     || arc5OwnershipProtection !== null) {
     return unavailable(`arc5:${arc5OwnershipProtection ?? 'ownership-v2-unavailable'}`, verb);
   }
+  if (ecologyEpochBlocksActions()) return unavailable('ecology-epoch-pending', verb);
   if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
     || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
     return unavailable('write-authority-unavailable', verb);
@@ -5475,6 +5622,7 @@ async function commitArc4CaptureAction(
   try {
     await smokeProductActionHold.holdIfArmed(actionClaim.operation);
     await settleF4Heartbeat();
+    if (ecologyEpochBlocksActions()) return unavailable('ecology-epoch-changed', verb);
     if (!f4RuntimeMayMutate(runtime) || importWriteInFlight
       || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
       return unavailable('write-authority-changed', verb);
@@ -5484,7 +5632,7 @@ async function commitArc4CaptureAction(
     }
     const address = canonicalCF1WorldAddressFromNav(nav);
     if (!address.ok) return unavailable(`surface-address:${address.reason}`, verb);
-    const rosterResult = canonicalWorldRoster(address.address, epochClock.current());
+    const rosterResult = canonicalWorldRoster(address.address, currentEcologyEpoch());
     if (!rosterResult.ok) {
       return unavailable(`world-roster:${rosterResult.reason}`, verb);
     }
@@ -5817,10 +5965,10 @@ function capturePresentationFenceForSurface(
   runtime: F4RuntimeAuthority,
   surface: NavState,
 ): string | null {
-  if (surface.mode !== 'surface') return null;
+  if (surface.mode !== 'surface' || ecologyEpochBlocksActions()) return null;
   const address = canonicalCF1WorldAddressFromNav(surface);
   if (!address.ok) return null;
-  const rosterResult = canonicalWorldRoster(address.address, epochClock.current());
+  const rosterResult = canonicalWorldRoster(address.address, currentEcologyEpoch());
   if (!rosterResult.ok) return null;
   const roster = rosterResult.roster;
   const composed = composeAcquisitionSnapshotV1({
@@ -5837,7 +5985,7 @@ function capturePresentationFenceForSurface(
   });
 }
 
-function refreshCaptureCardState(): void {
+function refreshCaptureCardState(preparedRoster: CanonicalWorldRoster | null = null): void {
   if (!surveyOwnsCurrentCaptureSurface() || nav.mode !== 'surface') {
     currentCapturePresentationFence = null;
     captureCardController.setState(null);
@@ -5850,13 +5998,24 @@ function refreshCaptureCardState(): void {
     captureCardController.setState(null);
     return;
   }
-  const rosterResult = canonicalWorldRoster(address.address, epochClock.current());
-  if (!rosterResult.ok) {
-    currentCapturePresentationFence = null;
-    captureCardController.setState(null);
-    return;
+  let roster: CanonicalWorldRoster;
+  if (preparedRoster !== null) {
+    if (preparedRoster.worldKey !== address.address.key
+      || preparedRoster.ecologyEpoch !== currentEcologyEpoch()) {
+      currentCapturePresentationFence = null;
+      captureCardController.setState(null);
+      return;
+    }
+    roster = preparedRoster;
+  } else {
+    const rosterResult = canonicalWorldRoster(address.address, currentEcologyEpoch());
+    if (!rosterResult.ok) {
+      currentCapturePresentationFence = null;
+      captureCardController.setState(null);
+      return;
+    }
+    roster = rosterResult.roster;
   }
-  const roster = rosterResult.roster;
   if (!planetsideMatchesFullRoster(roster)) fillPlanetside(nav, roster);
   if (!planetsideMatchesFullRoster(roster)) {
     currentCapturePresentationFence = null;
@@ -5911,6 +6070,8 @@ function refreshCaptureCardState(): void {
     || arc5OwnershipEvidence?.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION
     || arc5OwnershipProtection !== null
     ? 'Capture is unavailable while this expedition save is protected. Nothing was spent.'
+    : ecologyEpochBlocksActions()
+      ? 'The living biosphere is settling a new ecology epoch. Nothing was spent.'
     : !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
       || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld
       || productActionCoordinator.busy
@@ -5922,7 +6083,136 @@ function refreshCaptureCardState(): void {
     roster.view.preview.length,
     unavailableDetail,
   ));
-  currentCapturePresentationFence = presentationFence;
+  currentCapturePresentationFence = unavailableDetail === null ? presentationFence : null;
+}
+
+type SurveyFocusIdentity = Readonly<{
+  kind: 'capture' | 'action' | 'close';
+  key: string;
+}>;
+
+function captureSurveyFocusIdentity(): SurveyFocusIdentity | null {
+  const active = document.activeElement;
+  if (!(active instanceof HTMLElement) || !card.contains(active)) return null;
+  const captureControl = active.closest<HTMLElement>('[data-focus-key]');
+  const captureKey = captureControl?.dataset.focusKey;
+  if (captureKey) return Object.freeze({ kind: 'capture', key: captureKey });
+  const action = active.closest<HTMLElement>('[data-act]')?.dataset.act;
+  if (action) return Object.freeze({ kind: 'action', key: action });
+  if (active.closest('[data-survey-close]')) return Object.freeze({ kind: 'close', key: 'close' });
+  return null;
+}
+
+function restoreSurveyFocusIdentity(identity: SurveyFocusIdentity | null): void {
+  if (identity === null || card.style.display === 'none') return;
+  let target: HTMLElement | null = null;
+  if (identity.kind === 'capture') {
+    target = [...card.querySelectorAll<HTMLElement>('[data-focus-key]')]
+      .find((candidate) => candidate.dataset.focusKey === identity.key) ?? null;
+  } else if (identity.kind === 'action') {
+    target = [...card.querySelectorAll<HTMLElement>('[data-act]')]
+      .find((candidate) => candidate.dataset.act === identity.key) ?? null;
+  } else target = card.querySelector<HTMLElement>('[data-survey-close]');
+  (target ?? card.querySelector<HTMLElement>('[data-survey-close]'))?.focus();
+}
+
+function canonicalCurrentSurfaceRoster(): CanonicalWorldRoster | null {
+  if (nav.mode !== 'surface') return null;
+  const address = canonicalCF1WorldAddressFromNav(nav);
+  if (!address.ok) return null;
+  const result = canonicalWorldRoster(address.address, currentEcologyEpoch());
+  return result.ok ? result.roster : null;
+}
+
+function suppressEcologyProjection(
+  refreshToken: EcologyEpochProjectionRefreshToken | null = null,
+): void {
+  const outcome = refreshToken === null
+    ? ecologyEpochAuthority.suppressProjection()
+    : ecologyEpochAuthority.failProjectionRefresh(refreshToken);
+  if (outcome.kind === 'invalid-token') ecologyEpochAuthority.suppressProjection();
+  currentCapturePresentationFence = null;
+  captureCardController.setState(null);
+  clearPlanetside();
+  invalidateSurveyTravel();
+  hideSurvey();
+  lastCard = null;
+  cardCtx = null;
+  try { clearWorld(); } catch { /* the convergence reload owns final cleanup */ }
+}
+
+function refreshCommittedEcologyProjection(): void {
+  const begun = ecologyEpochAuthority.beginProjectionRefresh();
+  if (begun.kind === 'current') return;
+  if (begun.kind !== 'started') {
+    throw new Error(`ecology projection refresh is ${begun.kind}`);
+  }
+  const refreshToken = begun.token;
+  try {
+    const focusIdentity = captureSurveyFocusIdentity();
+    const cardWasOpen = card.style.display !== 'none';
+    const planetContext = cardWasOpen ? cardCtx : null;
+    const surfaceRoster = canonicalCurrentSurfaceRoster();
+    const priorSceneSerial = renderedSceneReceipt.serial;
+    currentCapturePresentationFence = null;
+    buildCurrentSceneTransaction(surfaceRoster);
+    if (renderedSceneReceipt.serial !== priorSceneSerial + 1
+      || renderedSceneReceipt.mode !== nav.mode
+      || renderedSceneReceipt.ecologyEpoch !== currentEcologyEpoch()) {
+      throw new Error('ecology scene did not publish exactly one current-epoch receipt');
+    }
+    if (cardWasOpen && planetContext !== null) {
+      const prepared = nav.mode === 'surface'
+        && getProvenPlanetKey(nav.planet) === getProvenPlanetKey(planetContext.planet)
+        ? surfaceRoster : null;
+      if (!presentPlanetSurvey(
+        planetContext.p,
+        planetContext.star,
+        planetContext.planet,
+        prepared,
+      )) {
+        invalidateSurveyTravel();
+        hideSurvey();
+        lastCard = null;
+        cardCtx = null;
+      }
+      restoreSurveyFocusIdentity(focusIdentity);
+    } else if (cardWasOpen) {
+      /* Generic/decorative cards currently retain no source-proven selector.
+         Closing is the only honest invalidation after their scene objects are
+         replaced; a stale transient descriptor must not survive the edge. */
+      invalidateSurveyTravel();
+      hideSurvey();
+      lastCard = null;
+      cardCtx = null;
+      if (focusIdentity !== null) app.canvas.focus();
+    }
+    if (card.style.display !== 'none'
+      && card.dataset.ecologyEpoch !== String(currentEcologyEpoch())) {
+      throw new Error('Survey retained a stale ecology epoch');
+    }
+    if (surfaceRoster !== null && !planetsideMatchesFullRoster(surfaceRoster)) {
+      throw new Error('Planetside retained a stale ecology roster');
+    }
+    const completed = ecologyEpochAuthority.completeProjectionRefresh(refreshToken);
+    if (completed.kind !== 'current') {
+      throw new Error('ecology projection lost its exact refresh token');
+    }
+  } catch (error) {
+    suppressEcologyProjection(refreshToken);
+    throw error;
+  }
+}
+
+function publishCommittedEcologyEpoch(publication: EcologyEpochPublication): void {
+  const projection = ecologyEpochAuthority.projection();
+  if (publication.epoch !== currentEcologyEpoch()
+    || projection.publishedEpoch !== publication.epoch
+    || projection.state !== 'dirty') {
+    throw new Error('committed ecology publication did not enter the dirty projection lifecycle');
+  }
+  (globalThis as Record<string, unknown>).COSMIC_EPOCH = publication.epoch;
+  lastEcologyEdgeOutcome = `committed:${publication.fromEpoch}->${publication.epoch}:revision:${publication.revision}`;
 }
 
 function captureOutcomeCopy(outcome: Arc4CaptureActionOutcome): CaptureCardActionOutcome {
@@ -6018,8 +6308,23 @@ async function runCaptureCardAction(
       updateChips();
       if (openPanelId() === 'codex') fillCodex(codexFilter);
     }
+    const greetingClaim: TameGreetingClaim | null = tameGreetingAudioOwner
+      ?.claimCommittedTameGreeting(outcome, arc5OwnershipState) ?? null;
     toast(copy.title, copy.detail, true);
+    if (greetingClaim !== null) {
+      const counterpart = bindTameToastCounterpart(
+        greetingClaim.eventKey,
+        copy.title,
+        copy.detail,
+      );
+      if (counterpart === null) {
+        tameGreetingAudioOwner?.cancelTameAttempt('counterpart-unavailable');
+      } else {
+        void tameGreetingAudioOwner?.playClaimedTameGreeting(greetingClaim, counterpart);
+      }
+    }
   } catch (error) {
+    tameGreetingAudioOwner?.cancelTameAttempt('presentation-fault');
     const detail = error instanceof Error ? error.message : String(error);
     if (outcome.durability === 'committed' && f4Runtime !== null) {
       lastArc4CaptureResult = null;
@@ -6096,6 +6401,7 @@ async function runEngineeringPanelAction(request: EngineeringPanelActionRequest)
   }
   if (outcome.kind === 'committed' && !converging) {
     updateChips();
+    if (outcome.operation === 'purchase-research') refreshPlanetSurveyCard();
     if (openPanelId() === 'ch') fillCharters();
     toast('Engineering committed', 'The durable expedition record now reflects this action.', true);
   } else if (outcome.kind !== 'committed' && !converging) {
@@ -6301,7 +6607,11 @@ function prepareTrainingCandidate(
     first.ingress.savedView === undefined ? null : first.ingress.savedView,
   );
   if (!firstSavedRoute.ok
-    || navigationAuthorityFailureFor(first.state, firstSavedRoute.state) !== null) return null;
+    || navigationAuthorityFailureFor(
+      first.state,
+      firstSavedRoute.state,
+      SHIP_LIVERY_SEED,
+    ) !== null) return null;
   first.state.savedView = navToView(firstSavedRoute.state);
 
   /* Mirror boot's F2 boundary on the detached copy. Atlas history remains
@@ -6328,7 +6638,11 @@ function prepareTrainingCandidate(
     final.ingress.savedView === undefined ? null : final.ingress.savedView,
   );
   if (!savedRoute.ok
-    || navigationAuthorityFailureFor(final.state, savedRoute.state) !== null) return null;
+    || navigationAuthorityFailureFor(
+      final.state,
+      savedRoute.state,
+      SHIP_LIVERY_SEED,
+    ) !== null) return null;
   const atlasRoutes = new WeakMap<Record<string, unknown>, NavState>();
   let earthKey: string | null = null;
   for (const [id, entry] of final.state.logMap) {
@@ -6399,7 +6713,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
 
     phase('candidate-started');
     const now = Date.now();
-    const epoch = epochClock.current();
+    const epoch = currentEcologyEpoch();
     const liveView = savedRouteWriteHeld ? save.savedView : navToView(nav);
     const baseRaw = exportSaveV2({ ...save, EPOCH_BASE: epoch, savedView: liveView }, now);
     const base = importSaveV2(baseRaw, REGISTRY, now);
@@ -6417,7 +6731,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
             { ok: false as const, reason: 'source-error' as const })
         : resolveViewToNav(checkpoint.view);
       if (!restored.ok && restored.reason === 'source-error') {
-        const retryNav = trainingSolSystemNav();
+        const retryNav = searchTravel.trainingSolSystemNav();
         if (!retryNav) throw new Error('Training retry route to Sol could not be proven');
         candidate.tutDone = false;
         /* `checkpoint.view` is deliberately only the bounded route-proof
@@ -6431,7 +6745,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
         phase('source-deferred');
       } else {
         const authorized = restored.ok
-          && navigationAuthorityFailureFor(candidate, restored.state) === null;
+          && navigationAuthorityFailureFor(candidate, restored.state, SHIP_LIVERY_SEED) === null;
         targetNav = authorized ? restored.state : NAV_HOME;
         candidate.savedView = authorized ? navToView(restored.state) : null;
         candidate.tutDone = true;
@@ -6441,10 +6755,10 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
       const earth = smokeRejectNextTrainingRouteResolution
         ? (smokeRejectNextTrainingRouteResolution = false,
             { ok: false as const, reason: 'source-error' as const })
-        : trainingEarthSurfaceNav();
+        : searchTravel.trainingEarthSurfaceNav();
       if (!earth.ok) {
         if (earth.reason !== 'source-error') throw new Error('legacy Earth route is unavailable');
-        const retryNav = trainingSolSystemNav();
+        const retryNav = searchTravel.trainingSolSystemNav();
         if (!retryNav) throw new Error('Training retry route to Sol could not be proven');
         candidate.tutDone = false;
         candidate.tutSnapPending = checkpoint.snapshot;
@@ -6468,7 +6782,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
         }
         candidate = restored.state;
         legacyGearRestored = true;
-        if (navigationAuthorityFailureFor(candidate, targetNav) !== null) {
+        if (navigationAuthorityFailureFor(candidate, targetNav, SHIP_LIVERY_SEED) !== null) {
           targetNav = NAV_HOME;
           candidate.savedView = null;
         }
@@ -6477,7 +6791,9 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     } else {
       candidate.tutDone = true;
       candidate.tutSnapPending = null;
-      if (navigationAuthorityFailureFor(candidate, targetNav) !== null) targetNav = NAV_HOME;
+      if (navigationAuthorityFailureFor(candidate, targetNav, SHIP_LIVERY_SEED) !== null) {
+        targetNav = NAV_HOME;
+      }
       candidate.savedView = navToView(targetNav);
     }
     candidate.EPOCH_BASE = epoch;
@@ -6883,7 +7199,7 @@ async function loadSave(): Promise<void> {
      object and not a corrupt/read-only placeholder. */
   if (trulyFresh && !persistHold) {
     save.tutDone = false;
-    const freshSol = trainingSolSystemNav();
+    const freshSol = searchTravel.trainingSolSystemNav();
     if (freshSol) save.savedView = navToView(freshSol);
     await awaitSmokeFreshInitializationRaceGate();
     const initialized = await initializeFreshV5(
@@ -6938,7 +7254,7 @@ async function loadSave(): Promise<void> {
     bootIngress.savedView === undefined ? null : bootIngress.savedView,
   );
   let savedEngineeringRoute: NavState | null = null;
-  if (savedRoute.ok && navigationAuthorityFailure(savedRoute.state) === null) {
+  if (savedRoute.ok && searchTravel.navigationAuthorityFailure(savedRoute.state) === null) {
     nav = savedRoute.state;
     savedEngineeringRoute = savedRoute.state;
     save.savedView = navToView(nav);
@@ -6990,7 +7306,7 @@ async function loadSave(): Promise<void> {
   const recognizedPendingTraining = !save.tutDone
     && trainingSnapshotIngress.kind !== 'legacy-or-unknown';
   if (recognizedPendingTraining) {
-    const solNav = trainingSolSystemNav();
+    const solNav = searchTravel.trainingSolSystemNav();
     if (solNav) {
       nav = solNav;
       if (trulyFresh) {
@@ -7390,9 +7706,13 @@ async function loadSave(): Promise<void> {
   }
   if (nav.mode === 'galaxy') { camT.z = gz0 * 1.05; cam.z = camT.z; }
   else if (nav.mode === 'system') { camT.z = sz0 * 1.05; cam.z = camT.z; }
-  epochElapsedT0 = performance.now();
-  epochClock = createEpochClock(save.EPOCH_BASE, epochElapsedSeconds);
-  (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
+  ecologyObservedActivePlayMs = f4Runtime?.diagnostics().activePlayMs ?? 0;
+  ecologyEpochAuthority = createEcologyEpochEdgeAuthority({
+    restoredEpoch: save.EPOCH_BASE,
+    activePlayAtBootMs: ecologyObservedActivePlayMs,
+  });
+  lastEcologyEdgeOutcome = `boot:${currentEcologyEpoch()}`;
+  (globalThis as Record<string, unknown>).COSMIC_EPOCH = currentEcologyEpoch();
   initAudio({ sndOn: () => save.sndOn, sfxVol: () => save.sfxVol });   /* the save's own audio settings */
   /* dock + chrome mirror the save from the first frame */
   chartsDockEl.classList.toggle('on', save.chartsOn);
@@ -7565,7 +7885,7 @@ async function loadSave(): Promise<void> {
   };
   addEventListener('resize', syncRendererDensity);
   visualViewport?.addEventListener('resize', syncRendererDensity);
-  releaseRendererForReload = (reason): ReloadReleaseWitness => {
+  releaseRendererForReload = (reason, audio): ReloadReleaseWitness => {
     const view = app.canvas;
     const backdrop = activeBackdropCanvas;
     const before = (canvas: HTMLCanvasElement | null): ReloadCanvasRelease => ({
@@ -7621,7 +7941,7 @@ async function loadSave(): Promise<void> {
     if (!complete && !error) error = 'Pixi/canvas release postcondition failed';
     return {
       schema: 'cf-v2-reload-release/v1', status: complete ? 'released' : 'release-failed',
-      error, reason, documentToken: DOCUMENT_TOKEN,
+      error, reason, documentToken: DOCUMENT_TOKEN, audio,
       rendererReleased, stageReleased, viewDetached, appCanvas, backdropCanvas,
     };
   };
@@ -7656,7 +7976,7 @@ async function loadSave(): Promise<void> {
         galX: nav.gal?.x ?? null, galY: nav.gal?.y ?? null, galSize: nav.gal?.size ?? null,
         starX: nav.star?.x ?? null, starY: nav.star?.y ?? null,
         fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
-        epoch: epochClock.current(),
+        epoch: currentEcologyEpoch(),
         persistence: {
           schema: 'cf-v2-app-persistence/v1',
           ready: app.ticker?.started === true && tickerTicks >= 1,
@@ -7680,6 +8000,13 @@ async function loadSave(): Promise<void> {
           importPhase: lastImportPhaseWitness,
           importRace: lastSmokeImportRaceWitness,
           runtime: f4Runtime?.diagnostics() ?? null,
+          ecology: Object.freeze({
+            ...ecologyEpochAuthority.diagnostics(ecologyActivePlayNow()),
+            projectionDirty: ecologyEpochAuthority.projection().state === 'dirty',
+            projectionSuppressed: ecologyEpochAuthority.projection().state === 'suppressed',
+            checkpointInFlight: ecologyEdgeCheckpointInFlight !== null,
+            lastOutcome: lastEcologyEdgeOutcome,
+          }),
         },
         inventory: {
           stateKind: arc2LootState?.kind ?? 'unavailable',
@@ -7786,14 +8113,15 @@ async function loadSave(): Promise<void> {
           specimenTombstones: arc5OwnershipState?.specimenTombstones.length ?? 0,
           biospheres: arc5OwnershipState?.biosphereProgress.length ?? 0,
         },
+        audio: tameGreetingAudioOwner?.diagnostics() ?? null,
         cardOpen: card.style.display !== 'none',
         cardTitle: card.querySelector('[data-sel=title]')?.textContent ?? null,
         stage: ascStage(), reach: reachRadiusOf(primeCount()),
         shipVisual: currentShipVisualState(),
         toastOn: toastEl.style.opacity === '1', toastText: toastEl.textContent || '', toastSerial: _toastSerial,
         galaxyBuildMs: lastGalaxyBuildMs,
-        trail: trailEl.textContent || '', ctx: ctxEl.textContent || '',
-        objective: objChipEl.textContent || '',
+        trail: appChrome.diagnostics().trail, ctx: appChrome.diagnostics().context,
+        objective: appChrome.diagnostics().objective,
         chartsOn: save.chartsOn, chartsVisible: !!(chartLayer && chartLayer.visible),
         panelOpen: openPanelId(), codexCount: save.codex.length, seenGuide: save.seenGuide,
         rnSeen: save.rnSeen ?? null, releasePending: pendingReleaseBulletin?.version ?? null,
@@ -7806,7 +8134,8 @@ async function loadSave(): Promise<void> {
         atlasCount: save.logMap.length,
         atlasTravelable: save.logMap.filter(([, entry]) => atlasRouteStates.has(entry)).length,
         savedRouteWriteHeld,
-        sfxVol: save.sfxVol, motionMode: save.motionMode,
+        sndOn: save.sndOn, voiceOn: save.voiceOn, sfxVol: save.sfxVol,
+        motionMode: save.motionMode,
         fsMode: save.fsMode, toneMode: save.toneMode, fontMode: save.fontMode,
         glassA: getComputedStyle(document.documentElement).getPropertyValue('--glass-a').trim(),
         rendererDpr: app.renderer.resolution,
@@ -7824,7 +8153,7 @@ async function loadSave(): Promise<void> {
         sceneResources: sceneResourceDiagnostics(),
         keyboardTarget: keyboardTargetKey,
         tickerTicks,
-        topbarH: getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'),
+        topbarH: appChrome.diagnostics().topbarH,
         save: {
           name: save.explorerName, essence: save.essence,
           landed: save.landed.slice(), customNames: save.customNames.map(([key, name]) => [key, name]),
@@ -7983,7 +8312,7 @@ async function loadSave(): Promise<void> {
         rerender({ skipPersist: true });
         return true;
       },
-      encodeHere,   /* the share-code round trip, drivable by the smoke */
+      encodeHere: searchTravel.encodeHere,   /* the share-code round trip, drivable by the smoke */
       cardShareCode,
       showReleaseFixture: (version = '2.0.0-test') => {
         const fixture: V2ShippedRelease = {
@@ -8092,8 +8421,10 @@ async function loadSave(): Promise<void> {
     world.scale.set(cam.z);
     if (world.alpha < 1) world.alpha = animate ? Math.min(1, world.alpha + tk.deltaMS / 400) : 1;
     const t = animate ? performance.now() * 0.001 : 0;
-    /* Publish the capped ecology/world-presentation epoch each ticker turn. */
-    (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
+    /* The ticker may observe an active-play edge, but it never publishes one.
+       One receipt-free lease/revision CAS owns the durable transition first;
+       Reduced Motion changes only rendering and cannot enter this request. */
+    requestEcologyEpochCheckpoint();
     /* galaxies turn on cosmic time — barely perceptible (main.js ~3742) */
     for (const gs of galaxySpins) gs.spr.rotation = gs.base + t * 0.0012;
     checkTransitions();
@@ -8312,7 +8643,7 @@ async function loadSave(): Promise<void> {
       closeImportSheet();
       return;
     }
-    if (document.activeElement === searchEl) { searchEl.blur(); return; }
+    if (searchTravel.blurIfFocused()) return;
     if (openPanelId()) { closePanels(); return; }
     if (card.style.display !== 'none') {
       const restoreSurveyOpener = card.contains(document.activeElement)

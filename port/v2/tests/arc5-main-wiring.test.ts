@@ -310,10 +310,14 @@ function captureErrors(source: string): string[] {
   }
   const refresh = section(
     source,
-    'function refreshCaptureCardState(): void {',
+    'function refreshCaptureCardState(',
     '\nfunction captureOutcomeCopy(',
   );
   if (refresh.length === 0
+    || !refresh.includes('preparedRoster: CanonicalWorldRoster | null = null')
+    || !refresh.includes('preparedRoster.worldKey !== address.address.key')
+    || !refresh.includes('preparedRoster.ecologyEpoch !== currentEcologyEpoch()')
+    || !refresh.includes('canonicalWorldRoster(address.address, currentEcologyEpoch())')
     || !refresh.includes("arc4OwnershipState?.mode !== 'current'")
     || !refresh.includes('arc4OwnershipProtection !== null')
     || !refresh.includes("arc5OwnershipState?.mode !== 'current'")
@@ -887,12 +891,30 @@ describe('Arc 5 Main authority wiring', () => {
 
     const readModelOptimistic = replaceInSectionExact(
       mainSource,
-      'function refreshCaptureCardState(): void {',
+      'function refreshCaptureCardState(',
       '\nfunction captureOutcomeCopy(',
       "    || arc5OwnershipState?.mode !== 'current'\n    || arc5OwnershipEvidence?.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION\n    || arc5OwnershipProtection !== null\n",
       '',
     );
     expect(captureErrors(readModelOptimistic)).toContain('capture-read-model-authority');
+
+    const stalePreparedRoster = replaceInSectionExact(
+      mainSource,
+      'function refreshCaptureCardState(',
+      '\nfunction captureOutcomeCopy(',
+      '      || preparedRoster.ecologyEpoch !== currentEcologyEpoch()) {',
+      '      || preparedRoster.ecologyEpoch !== preparedRoster.ecologyEpoch) {',
+    );
+    expect(captureErrors(stalePreparedRoster)).toContain('capture-read-model-authority');
+
+    const wrongWorldPreparedRoster = replaceInSectionExact(
+      mainSource,
+      'function refreshCaptureCardState(',
+      '\nfunction captureOutcomeCopy(',
+      '    if (preparedRoster.worldKey !== address.address.key',
+      '    if (preparedRoster.worldKey !== preparedRoster.worldKey',
+    );
+    expect(captureErrors(wrongWorldPreparedRoster)).toContain('capture-read-model-authority');
   });
 
   it('negative-controls the public diagnostic carrier', () => {

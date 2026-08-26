@@ -27,24 +27,72 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 (`HANDOFF.md` is a frozen v1.0 handoff, kept for history — not current state.)
 
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
-workspace plus a playable Pixi/browser slice. Its Guide is now a source-addressed
-continuation of the mature manual: all 9 categories /43 authored IDs /41 player
-topics remain searchable and cross-linked, while capability-aware v2 copy marks
-unported mechanics honestly instead of repeating their legacy promises. At the current Arc 4
-boundary, those 41 topics are 24 partial and 17 unavailable. Native Survey-card
-Tame/Scavenge/Sample now uses a source-bound random eligible pool with full-roster counts/odds,
-one shared hit-or-miss Biosphere Yield, committed-only durable Compendium/creature/specimen and
-eligible first-only Stardust outcomes, plus storage/stale/reload convergence; it does not offer targeted species
-selection or a Charter bioscan. The exact
-56-release/398-bullet legacy history is present beside **A New Foundation**, the
-cumulative **v2.0 development** bulletin, currently 54 draft bullets. Its categorized technical outline summarizes
-the complete implemented playtest surface and explicitly stops at the current slice
-instead of advertising open port work. `v2.0` identifies the playtest build only: the
-bulletin remains `draft` / `Unreleased`, `V2_CURRENT_RELEASE_VERSION` remains `null`,
-and reading it cannot trigger an update popup or mutate the seen-release marker. Field Training
-currently covers the six chart/travel/landing lessons plus an honest graduation and no Capture lesson;
-tooltip deep-links, Advanced Briefings, and the rest of the 21-step training arc
-remain port work. From `port/v2`, run `npm install`, `npm test`, `npm run typecheck`,
+workspace plus a playable Pixi/browser slice.
+
+**Current local v2 candidate (2026-08-26; uncommitted and not browser-certified):** the current
+working tree completes the bounded source lanes that followed the retained Arc 5A checkpoint.
+Gate B now recursively seals the exact 62-file domain-source inventory against DOM, storage,
+`navigator`, network, wall/monotonic clock, and uncontrolled-random access; its only two waivers are
+exact `document.createElement('')` expressions for CombatCore's legacy `playerAvatar` and
+`paperdollAvatar` canvas painters. `galaxyHaze` and its cache moved byte-for-byte from WorldGen to
+the app-layer `GalaxyArt` owner. Focused `search-travel.ts` and `app-chrome.ts` controllers now own
+Search/CF1 travel and topbar/dock/context/hint/viewport lifecycle respectively, leaving `main.ts`
+as their renderer/persistence adapter. F4 owns the active-play ecology-epoch edge and committed-only
+projection refresh; persistence now fixed-points injected-clock notification stamps and
+`conq[].e`, and preserves more than 4,000 legacy XP-first keys through a paired v4 binding plus
+v5 overflow authority.
+
+Deep Scanners now add one honest **Mineral veins** row to orbital Survey for an exact proven
+lifeless non-Earth world, without exposing cosmic/exceptional veins, grade, reserves, progress, or
+the grounded Mine action. One strict rarity projector maps raw deterministic tiers 0–14 to the
+plain player-facing 0–9 vocabulary and discloses nothing for malformed input. Arc 5's compact
+ownership model also fixes the approved bred-child care invariant: a new child receives exactly
+half the lower registered parent's bounded `fed` value, symmetrically and once; the public
+breed/care writer remains future work.
+
+Audio is no longer package-only, but remains deliberately narrow. The app projects one exact live
+owned creature into the deterministic signature/profile/call-plan pipeline, owns a fail-closed
+five-bus runtime lifecycle, persists **Creature Voices**, and may synthesize one bounded fauna
+greeting only after a native Tame gesture, an exact durable wild-fauna result, and its accessible
+status counterpart all agree. Sound or Creature Voices off, hidden/unanswerable play, a miss,
+refusal, stale/reload convergence, route/counterpart loss, or replay stays silent and releases its
+audio/runtime owner. Other creature actions, ambience, music, combat/Guardian audio, recorded
+assets, full audio accessibility, device plateaus, and HUMAN listening remain open.
+
+The dedicated no-forged-time Arc 4 recovery collector and its mutation-sensitive selftest are
+ready, but the uninterrupted real 20-minute certificate has not run. The current Compendium ruler
+is correctly `calibration-required`: measurement authority
+`cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, producer authority
+`587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, empty phone/desktop
+samples, a measurement-required paired baseline with null collector commit, and `ceilings:null`.
+Its version-tolerant v2 browser authority is Microsoft Edge family + CDP `1.3` + sealed capability
+contract `cf-v2-compendium-cdp-capabilities/v1` (SHA-256
+`6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`). Exact product version,
+revision, JavaScript version, executable path and user agent remain mandatory per-run provenance;
+phone and desktop samples with one run ID must bind that exact tuple. An Edge auto-update neither
+forces calibration nor changes a numeric ceiling, while a real observed budget breach remains red.
+This change is Compendium-only: SceneMemory and the root Gate-A browser contract are unchanged.
+
+Browser-free verification of these local bytes is green: 121 test files / 1,354 passed / one
+intentional skip / zero failures; root, app, worker, and `noUnused` TypeScript; an 884-module Vite
+build; root validation with the unchanged 50-probe fingerprint; legacy jsdom smoke; and the
+applicable contract/reporter/Glass/recovery/Compendium selftests. These are local working-tree
+results only. No current-input Slice, Glass, Compendium calibration, recovery certificate, hosted
+run, HUMAN review, whole-Gate closure, release, version bump, preview/publication, or deployment is
+claimed.
+
+The retained Arc 4/5A checkpoint remains useful historical foundation. Its source-addressed Guide
+kept all 9 categories /43 authored IDs /41 player topics searchable and cross-linked; 24 topics
+were partial and 17 unavailable. Native Survey-card Tame/Scavenge/Sample used a source-bound random
+eligible pool with full-roster counts/odds, one shared hit-or-miss Biosphere Yield, committed-only
+durable Compendium/creature/specimen and eligible first-only Stardust outcomes, plus storage/stale/
+reload convergence; it did not offer targeted species selection or a Charter bioscan. The exact
+56-release/398-bullet legacy history appeared beside **A New Foundation**, then at 54 draft
+bullets. The bulletin stayed `draft` / `Unreleased`, `V2_CURRENT_RELEASE_VERSION` stayed `null`, and
+reading it could not trigger an update popup or mutate the seen-release marker. Field Training had
+six chart/travel/landing lessons plus an honest graduation and no Capture lesson; tooltip links,
+Advanced Briefings and the rest of the 21-step arc remained open. From `port/v2`, run
+`npm install`, `npm test`, `npm run typecheck`,
 and `npm run smoke`; see its README for the full current battery and open gates.
 Both root and v2 install surfaces declare the pinned raw-CDP `ws` transport and
 support Node `^20.19.0 || ^22.13.0 || >=24.0.0`.

@@ -161,8 +161,12 @@ const SIGNATURE_IDS = new Set<string>(LOOT_CATALOGUE_V1.flatMap(({ signatureId }
   signatureId === null ? [] : [signatureId]
 )));
 
+function codeUnitCompare(left: string, right: string): number {
+  return left < right ? -1 : left > right ? 1 : 0;
+}
+
 function sortedSet(values: Iterable<string>): string[] {
-  return [...new Set(values)].sort((left, right) => left.localeCompare(right));
+  return [...new Set(values)].sort(codeUnitCompare);
 }
 
 /** Reports executable sink truth separately from future source/rate claims. */
@@ -221,7 +225,7 @@ function checkedText(value: unknown, label: string): string {
 function quantities(value: unknown, label: string): Record<string, number> {
   assertPlainRecord(value, label);
   const result: Record<string, number> = {};
-  for (const [id, quantity] of Object.entries(value).sort(([left], [right]) => left.localeCompare(right))) {
+  for (const [id, quantity] of Object.entries(value).sort(([left], [right]) => codeUnitCompare(left, right))) {
     result[id] = checkedInteger(quantity, 0, Number.MAX_SAFE_INTEGER, `${label} ${id}`);
   }
   return result;
@@ -229,7 +233,7 @@ function quantities(value: unknown, label: string): Record<string, number> {
 
 function positiveQuantities(value: Readonly<Record<string, number>>): Record<string, number> {
   return Object.fromEntries(Object.entries(value).filter(([, quantity]) => quantity > 0)
-    .sort(([left], [right]) => left.localeCompare(right)));
+    .sort(([left], [right]) => codeUnitCompare(left, right)));
 }
 
 function rejected(

@@ -12,7 +12,8 @@ import {
   COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS,
   EXPECTED_OUTCOMES, OUTCOME_IDS, PROFILES, SAMPLE_METRIC_FIELDS,
   calibrationMetrics, candidateCalibrationEvidence,
-  compendiumBrowserAuthorityMatches, compendiumBudgetBrowserAuthority,
+  compendiumBrowserAuthorityMatches, compendiumBrowserCapabilityInventoryErrors,
+  compendiumBudgetBrowserAuthority,
   compendiumMeasurementAuthority, evaluateProfile, validCompendiumBrowserAuthority,
   validateBudgetRecord,
 } from '../tools/compendiummem-contract.mjs';
@@ -35,6 +36,7 @@ const latestHostedFailureEvidence = Object.freeze({
   budgetSha256: '208af9558317cae7748f01470dd50e608485d4a197212ecd04db823f7c15a424',
   measurementAuthoritySha256: 'cfc40f891e817c54c5b382cd5ef39ff606a0af27e1c142382c19da3d213edf0a',
   collectorSha256: '50c28928c7aac758c2b19d0a7c52de1d05f730d03e293b0d83fa324cdd300cf7',
+  producerAuthoritySha256: '5a316197d9aca27967f4e930f43089d2bbe2b9e4a66a40c207ea59c809405d94',
   rawSha256: '544015e9e8e9e09e6ad6e13c5be40e7629f3e5884e55a147c503234a754f45da',
   gzipSha256: 'cc5ed778f402763f34ceb76785f080b56d61f6067033087b6fe1143a492a28c9',
 });
@@ -89,29 +91,45 @@ const currentCertificationEvidence = Object.freeze({
 });
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '6a961df806e460d6ed02600f5366485d09d0878efa0129960b683cc4037173c7';
+  'cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d';
 const EXPECTED_COLLECTOR_AUTHORITY =
-  '6d681d19ab8c9a6ec77de04db9cbacc2ab49fb9f65044b421635ba9fed09487b';
+  '18e05ddf03551e7ec5d8352280ed5ad43fa6bf684f1ebecca1242890e02c3d88';
 const HISTORICAL_MEASUREMENT_AUTHORITY =
-  'cfc40f891e817c54c5b382cd5ef39ff606a0af27e1c142382c19da3d213edf0a';
+  '6a961df806e460d6ed02600f5366485d09d0878efa0129960b683cc4037173c7';
 const EXPECTED_PRODUCER_AUTHORITY =
-  '5a316197d9aca27967f4e930f43089d2bbe2b9e4a66a40c207ea59c809405d94';
+  '587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73';
 type BrowserAuthority = {
   schema: string;
   scope: string;
+  family: string;
+  protocolVersion: string;
+  capabilityContract: string;
+  capabilityContractSha256: string;
+};
+const EXPECTED_BROWSER_AUTHORITY: BrowserAuthority = {
+  schema: COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
+  scope: COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
+  family: 'microsoft-edge',
+  protocolVersion: '1.3',
+  capabilityContract: 'cf-v2-compendium-cdp-capabilities/v1',
+  capabilityContractSha256: '6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476',
+};
+type LegacyBrowserAuthority = {
+  schema: 'cf-v2-compendium-browser-authority/v1';
+  scope: 'arc1a-compendium-memory-only';
   product: string;
   revision: string;
   jsVersion: string;
   protocolVersion: string;
 };
-const EXPECTED_BROWSER_AUTHORITY: BrowserAuthority = {
-  schema: COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
-  scope: COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
+const HISTORICAL_EDGE_101_BROWSER_AUTHORITY: LegacyBrowserAuthority = Object.freeze({
+  schema: 'cf-v2-compendium-browser-authority/v1',
+  scope: 'arc1a-compendium-memory-only',
   product: 'Edg/151.0.4129.101',
   revision: '@cc1d9f4080fd9140611a9600b8d1615db310105d',
   jsVersion: '15.1.23.9',
   protocolVersion: '1.3',
-};
+});
 const EXPECTED_CANDIDATE_RUNS = [
   '20260823-pr34-render-stable-row-candidate1',
   '20260823-pr34-render-stable-row-candidate2',
@@ -282,8 +300,8 @@ const RETAINED_LINUX_COMPATIBILITY = Object.freeze({
     livePortraitEncodedBytes: 220_530,
   }),
 });
-const RETAINED_LINUX_BROWSER_AUTHORITY: BrowserAuthority = Object.freeze({
-  schema: COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
+const RETAINED_LINUX_BROWSER_AUTHORITY: LegacyBrowserAuthority = Object.freeze({
+  schema: 'cf-v2-compendium-browser-authority/v1',
   scope: COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
   product: 'Edg/151.0.4129.86',
   revision: '@083e754915c9ab93da1d8f7b9c860e4520273900',
@@ -332,14 +350,17 @@ function authorityKey(sample: CalibrationSample): string {
   return [product, revision, jsVersion, protocolVersion].join('\0');
 }
 
-function rawBrowserForAuthority(authority: BrowserAuthority): Record<string, string> {
+function rawBrowserForAuthority(
+  authority: BrowserAuthority,
+  provenance: Partial<Record<'product' | 'revision' | 'jsVersion' | 'protocolVersion', string>> = {},
+): Record<string, string> {
   return {
     executable: '/isolated/microsoft-edge',
-    product: authority.product,
-    revision: authority.revision,
+    product: provenance.product ?? 'Edg/151.0.4129.101',
+    revision: provenance.revision ?? '@cc1d9f4080fd9140611a9600b8d1615db310105d',
     userAgent: 'host-specific user agent',
-    jsVersion: authority.jsVersion,
-    protocolVersion: authority.protocolVersion,
+    jsVersion: provenance.jsVersion ?? '15.1.23.9',
+    protocolVersion: provenance.protocolVersion ?? authority.protocolVersion,
   };
 }
 
@@ -430,15 +451,15 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
       .toBe(latestHostedFailureEvidence.measurementAuthoritySha256);
     expect(report.browser).toMatchObject({
-      product: EXPECTED_BROWSER_AUTHORITY.product,
-      revision: EXPECTED_BROWSER_AUTHORITY.revision,
-      js_version: EXPECTED_BROWSER_AUTHORITY.jsVersion,
-      protocol_version: EXPECTED_BROWSER_AUTHORITY.protocolVersion,
+      product: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.product,
+      revision: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.revision,
+      js_version: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.jsVersion,
+      protocol_version: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.protocolVersion,
     });
     expect(report.budget).toMatchObject({
       sha256: latestHostedFailureEvidence.budgetSha256,
       browserAuthorityMatch: true, producerAuthorityMatch: true,
-      producerAuthority: { sha256: EXPECTED_PRODUCER_AUTHORITY },
+      producerAuthority: { sha256: latestHostedFailureEvidence.producerAuthoritySha256 },
     });
     expect(report.budget.observedProducerAuthority).toEqual(report.budget.producerAuthority);
     expect(report.outcomes).toEqual([]);
@@ -491,10 +512,12 @@ describe('Arc 1A Compendium budget authority', () => {
       .toEqual([...COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS].sort());
     expect(definitions.browserAuthority.additionalProperties).toBe(false);
     expect([...definitions.browserAuthority.required].sort()).toEqual([
-      'schema', 'scope', 'product', 'revision', 'jsVersion', 'protocolVersion',
+      'schema', 'scope', 'family', 'protocolVersion', 'capabilityContract',
+      'capabilityContractSha256',
     ].sort());
     expect(Object.keys(definitions.browserAuthority.properties).sort()).toEqual([
-      'schema', 'scope', 'product', 'revision', 'jsVersion', 'protocolVersion',
+      'schema', 'scope', 'family', 'protocolVersion', 'capabilityContract',
+      'capabilityContractSha256',
     ].sort());
     expect(definitions.metrics.additionalProperties).toBe(false);
     expect([...definitions.metrics.required].sort()).toEqual([...SAMPLE_METRIC_FIELDS].sort());
@@ -517,7 +540,38 @@ describe('Arc 1A Compendium budget authority', () => {
       .toEqual([...BROKEN_BASELINE_EXPECTED_FAULTS].sort());
   });
 
-  it('activates only the exact Arc-local Edge build authority and paired samples', () => {
+  it('seals the exact CDP capability inventory used by the version-tolerant ruler', () => {
+    const collectorSource = fs.readFileSync(
+      path.join(v2Root, 'tools', 'compendiummem.mjs'), 'utf8',
+    );
+    const browserCdpSource = fs.readFileSync(
+      path.join(v2Root, 'tools', 'browsercdp.mjs'), 'utf8',
+    );
+    expect(compendiumBrowserCapabilityInventoryErrors({
+      collectorSource, browserCdpSource,
+    })).toEqual([]);
+    for (const method of [
+      'Emulation.setDeviceMetricsOverride', 'HeapProfiler.collectGarbage',
+      'Input.dispatchMouseEvent', 'Memory.getDOMCounters', 'Page.captureScreenshot',
+      'Runtime.getHeapUsage', 'Target.createBrowserContext',
+    ]) {
+      const mutated = collectorSource.replaceAll(`'${method}'`, `'Removed.${method}'`);
+      expect(mutated, `${method} mutation must change source`).not.toBe(collectorSource);
+      expect(compendiumBrowserCapabilityInventoryErrors({
+        collectorSource: mutated, browserCdpSource,
+      }).join('\n'), method).toContain(`missing ${method}`);
+    }
+    expect(compendiumBrowserCapabilityInventoryErrors({
+      collectorSource: `${collectorSource}\nconst injected = 'Runtime.compileScript';`,
+      browserCdpSource,
+    }).join('\n')).toContain('unsealed Runtime.compileScript');
+    expect(compendiumBrowserCapabilityInventoryErrors({
+      collectorSource,
+      browserCdpSource: browserCdpSource.replaceAll('Browser.getVersion', 'Browser.getVersionRemoved'),
+    }).join('\n')).toContain('lacks Browser.getVersion provenance');
+  });
+
+  it('activates only the version-tolerant Arc-local Edge compatibility authority and samples', () => {
     if (activeBudget.status === 'calibration-required') {
       expect(activeBudget.browserAuthority).toEqual(EXPECTED_BROWSER_AUTHORITY);
       expect(activeBudget.measurementAuthority.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
@@ -532,7 +586,9 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(activeBudget.pairedBrokenBaseline.commit)
         .toBe('38447019517147319bd08c598202d097ee866874');
       expect(activeBudget.pairedBrokenBaseline.collectorCommit).toBeNull();
-      expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.101');
+      expect(activeBudget.calibration.selectionRule).toContain('version-tolerant');
+      expect(activeBudget.calibration.selectionRule).toContain('provenance only');
+      expect(activeBudget.calibration.selectionRule).toContain('do not trigger recalibration');
       expect(activeBudget.calibration.selectionRule).toContain(HISTORICAL_MEASUREMENT_AUTHORITY);
       expect(activeBudget.calibration.selectionRule).toContain('historical');
       expect(activeBudget.calibration.selectionRule).toContain('All earlier samples');
@@ -600,17 +656,22 @@ describe('Arc 1A Compendium budget authority', () => {
       ...activeBudget.calibration.samples[profile],
       ...activeBudget.pairedBrokenBaseline.samples[profile],
     ]);
-    expect(new Set(everySample.map(authorityKey))).toEqual(new Set([
-      [
-        EXPECTED_BROWSER_AUTHORITY.product,
-        EXPECTED_BROWSER_AUTHORITY.revision,
-        EXPECTED_BROWSER_AUTHORITY.jsVersion,
-        EXPECTED_BROWSER_AUTHORITY.protocolVersion,
-      ].join('\0'),
-    ]));
     expect(everySample.every((sample) =>
       compendiumBrowserAuthorityMatches(sample.browser, activeBudget.browserAuthority))).toBe(true);
-    expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.101');
+    for (const samples of [
+      activeBudget.calibration.samples,
+      activeBudget.pairedBrokenBaseline.samples,
+    ]) {
+      const byRun = new Map<string, Set<string>>();
+      for (const profile of PROFILE_NAMES) {
+        for (const sample of samples[profile]) {
+          if (!byRun.has(sample.runId)) byRun.set(sample.runId, new Set());
+          byRun.get(sample.runId)!.add(authorityKey(sample));
+        }
+      }
+      expect([...byRun.values()].every((keys) => keys.size === 1)).toBe(true);
+    }
+    expect(activeBudget.calibration.selectionRule).toContain('version-tolerant');
     expect(activeBudget.calibration.selectionRule).toContain('raw-capsule');
     expect(activeBudget.calibration.selectionRule).toContain('strictly above');
     expect(activeBudget.calibration.selectionRule).toContain('rational headroom');
@@ -752,17 +813,17 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(report.budget).toMatchObject({
       status: 'active',
       sha256: historicalCertificationEvidence.budgetSha256,
-      browserAuthority: EXPECTED_BROWSER_AUTHORITY,
+      browserAuthority: HISTORICAL_EDGE_101_BROWSER_AUTHORITY,
       browserAuthorityMatch: true,
       producerAuthorityMatch: true,
     });
     expect(report.budget.producerAuthority).toEqual(budget.producerAuthority);
     expect(report.budget.observedProducerAuthority).toEqual(budget.producerAuthority);
     expect(report.browser).toMatchObject({
-      product: EXPECTED_BROWSER_AUTHORITY.product,
-      revision: EXPECTED_BROWSER_AUTHORITY.revision,
-      js_version: EXPECTED_BROWSER_AUTHORITY.jsVersion,
-      protocol_version: EXPECTED_BROWSER_AUTHORITY.protocolVersion,
+      product: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.product,
+      revision: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.revision,
+      js_version: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.jsVersion,
+      protocol_version: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.protocolVersion,
     });
     const replay = PROFILE_NAMES.flatMap((profile) =>
       evaluateProfile(report.profiles[profile], activeBudget, fixture));
@@ -807,17 +868,17 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(report.budget).toMatchObject({
       status: 'active',
       sha256: supersededRowActivationCertificationEvidence.budgetSha256,
-      browserAuthority: EXPECTED_BROWSER_AUTHORITY,
+      browserAuthority: HISTORICAL_EDGE_101_BROWSER_AUTHORITY,
       browserAuthorityMatch: true,
       producerAuthorityMatch: true,
     });
     expect(report.budget.producerAuthority).toEqual(budget.producerAuthority);
     expect(report.budget.observedProducerAuthority).toEqual(budget.producerAuthority);
     expect(report.browser).toMatchObject({
-      product: EXPECTED_BROWSER_AUTHORITY.product,
-      revision: EXPECTED_BROWSER_AUTHORITY.revision,
-      js_version: EXPECTED_BROWSER_AUTHORITY.jsVersion,
-      protocol_version: EXPECTED_BROWSER_AUTHORITY.protocolVersion,
+      product: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.product,
+      revision: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.revision,
+      js_version: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.jsVersion,
+      protocol_version: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.protocolVersion,
     });
     const replay = PROFILE_NAMES.flatMap((profile) =>
       evaluateProfile(report.profiles[profile], activeBudget, fixture));
@@ -860,17 +921,17 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(report.budget).toMatchObject({
       status: 'active',
       sha256: currentCertificationEvidence.budgetSha256,
-      browserAuthority: EXPECTED_BROWSER_AUTHORITY,
+      browserAuthority: HISTORICAL_EDGE_101_BROWSER_AUTHORITY,
       browserAuthorityMatch: true,
       producerAuthorityMatch: true,
     });
     expect(report.budget.producerAuthority).toEqual(budget.producerAuthority);
     expect(report.budget.observedProducerAuthority).toEqual(budget.producerAuthority);
     expect(report.browser).toMatchObject({
-      product: EXPECTED_BROWSER_AUTHORITY.product,
-      revision: EXPECTED_BROWSER_AUTHORITY.revision,
-      js_version: EXPECTED_BROWSER_AUTHORITY.jsVersion,
-      protocol_version: EXPECTED_BROWSER_AUTHORITY.protocolVersion,
+      product: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.product,
+      revision: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.revision,
+      js_version: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.jsVersion,
+      protocol_version: HISTORICAL_EDGE_101_BROWSER_AUTHORITY.protocolVersion,
     });
     const replay = PROFILE_NAMES.flatMap((profile) =>
       evaluateProfile(report.profiles[profile], activeBudget, fixture));
@@ -1100,7 +1161,7 @@ describe('Arc 1A Compendium budget authority', () => {
     }
   });
 
-  it('requires one explicit exact browser authority even before samples exist', () => {
+  it('requires one explicit version-tolerant Edge compatibility authority', () => {
     expect(validCompendiumBrowserAuthority(activeBudget.browserAuthority)).toBe(true);
     expect(activeBudget.browserAuthority).toEqual(EXPECTED_BROWSER_AUTHORITY);
 
@@ -1136,39 +1197,37 @@ describe('Arc 1A Compendium budget authority', () => {
     for (const field of Object.keys(EXPECTED_BROWSER_AUTHORITY) as Array<
       keyof typeof EXPECTED_BROWSER_AUTHORITY
     >) {
-      const drifted = structuredClone(activeBudget) as unknown as ActiveBudgetRecord & {
-        calibration: { samples: Record<ProfileName, Array<{
-          browser: Record<string, string>;
-        }>> };
-      };
-      drifted.calibration.samples.phone = [{
-        browser: rawBrowserForAuthority(EXPECTED_BROWSER_AUTHORITY),
-      }] as never;
+      const drifted = structuredClone(activeBudget);
       drifted.browserAuthority[field] = `${drifted.browserAuthority[field]}-other` as never;
-      expect(drifted.browserAuthority, `${field} drift must leave the checked-in pin`)
+      expect(drifted.browserAuthority, `${field} drift must leave the checked-in policy`)
         .not.toEqual(EXPECTED_BROWSER_AUTHORITY);
       const errors = validateBudgetRecord(
         drifted, fixture.rowsSha256, baselineProjection.rowsSha256,
       ).errors.join('\n');
-      expect(errors, `${field} authority drift`).toMatch(
-        field === 'schema' || field === 'scope'
-          ? /budget browser authority is invalid/
-          : /candidate calibration browser does not match/,
-      );
+      expect(errors, `${field} authority drift`).toMatch(/budget browser authority is invalid/);
     }
 
-    expect(compendiumBrowserAuthorityMatches({
-      executable: '/isolated/mislabeled-edge-151.0.4129.86',
-      product: 'Edg/151.0.4129.93',
-      revision: '@4a822b1bb7a8566144cff23f6c09a2ab162665f9',
-      user_agent: 'candidate20 host provenance',
-      js_version: '15.1.23.7',
-      protocol_version: '1.3',
-    }, activeBudget.browserAuthority), 'candidate20 self-updated .93 must remain invalid')
-      .toBe(false);
+    for (const product of [
+      'Edg/151.0.4129.93', 'Edg/151.0.4129.101',
+      'Edg/151.0.4129.107', 'Edg/999.8.7.6',
+    ]) {
+      expect(compendiumBrowserAuthorityMatches({
+        product, revision: `@${product}`, js_version: `js-${product}`,
+        protocol_version: '1.3',
+      }, activeBudget.browserAuthority), `${product} should satisfy the same policy`).toBe(true);
+    }
+    for (const browser of [
+      { product: 'Chrome/151.0.4129.107', revision: '@chrome', js_version: '15.1.23.9', protocol_version: '1.3' },
+      { product: 'Edg/151.0.4129', revision: '@short', js_version: '15.1.23.9', protocol_version: '1.3' },
+      { product: 'Edg/151.0.4129.107', revision: '', js_version: '15.1.23.9', protocol_version: '1.3' },
+      { product: 'Edg/151.0.4129.107', revision: '@edge', js_version: '', protocol_version: '1.3' },
+      { product: 'Edg/151.0.4129.107', revision: '@edge', js_version: '15.1.23.9', protocol_version: '1.2' },
+    ]) {
+      expect(compendiumBrowserAuthorityMatches(browser, activeBudget.browserAuthority)).toBe(false);
+    }
   });
 
-  it('rejects every candidate and baseline raw browser that differs from the explicit pin', () => {
+  it('accepts Edge build drift but rejects browser-family and protocol drift', () => {
     type BrowserOnlySample = { browser: Record<string, string> };
     type MutableRecord = {
       calibration: { samples: Record<ProfileName, BrowserOnlySample[]> };
@@ -1180,27 +1239,45 @@ describe('Arc 1A Compendium budget authority', () => {
       ['baseline', /paired broken-baseline browser does not match/],
     ] as const) {
       const matching = structuredClone(activeBudget) as unknown as MutableRecord;
-      const matchingSample = { browser: { ...rawBrowser } };
-      if (collection === 'candidate') matching.calibration.samples.phone = [matchingSample];
-      else matching.pairedBrokenBaseline.samples.phone = [matchingSample];
+      const matchingSample = { runId: 'same-run', browser: { ...rawBrowser } };
+      if (collection === 'candidate') {
+        matching.calibration.samples.phone = [matchingSample];
+        matching.calibration.samples.desktop = [structuredClone(matchingSample)];
+      } else {
+        matching.pairedBrokenBaseline.samples.phone = [matchingSample];
+        matching.pairedBrokenBaseline.samples.desktop = [structuredClone(matchingSample)];
+      }
       expect(validateBudgetRecord(
         matching, fixture.rowsSha256, baselineProjection.rowsSha256,
       ).errors.join('\n'), `${collection} matching authority control`)
         .not.toMatch(mismatchPattern);
 
-      for (const field of ['product', 'revision', 'jsVersion', 'protocolVersion'] as const) {
+      for (const [field, value, rejected] of [
+        ['product', 'Edg/777.6.5.4', false],
+        ['revision', '@different-edge-revision', false],
+        ['jsVersion', '99.8.7.6', false],
+        ['product', 'Chrome/151.0.4129.107', true],
+        ['protocolVersion', '1.2', true],
+      ] as const) {
         const wrong = structuredClone(activeBudget) as unknown as MutableRecord;
-        const sample = { browser: { ...rawBrowser, [field]: `${rawBrowser[field]}-other` } };
-        if (collection === 'candidate') wrong.calibration.samples.phone = [sample];
-        else wrong.pairedBrokenBaseline.samples.phone = [sample];
-        expect(validateBudgetRecord(
+        const sample = { runId: 'drift-run', browser: { ...rawBrowser, [field]: value } };
+        if (collection === 'candidate') {
+          wrong.calibration.samples.phone = [sample];
+          wrong.calibration.samples.desktop = [structuredClone(sample)];
+        } else {
+          wrong.pairedBrokenBaseline.samples.phone = [sample];
+          wrong.pairedBrokenBaseline.samples.desktop = [structuredClone(sample)];
+        }
+        const errors = validateBudgetRecord(
           wrong, fixture.rowsSha256, baselineProjection.rowsSha256,
-        ).errors.join('\n'), `${collection} ${field} mismatch`).toMatch(mismatchPattern);
+        ).errors.join('\n');
+        if (rejected) expect(errors, `${collection} ${field} incompatibility`).toMatch(mismatchPattern);
+        else expect(errors, `${collection} ${field} diagnostic drift`).not.toMatch(mismatchPattern);
       }
     }
   });
 
-  it('accepts fresh per-run browser paths and host UAs without weakening build identity', () => {
+  it('allows builds and host provenance to vary across runs but binds each run across profiles', () => {
     type IdentitySample = {
       runId: string;
       commit: string;
@@ -1221,7 +1298,11 @@ describe('Arc 1A Compendium budget authority', () => {
       fixtureRowsSha256: fixture.rowsSha256,
       measuredAt: `2026-08-20T16:00:0${run}.000Z`,
       browser: {
-        ...rawBrowserForAuthority(EXPECTED_BROWSER_AUTHORITY),
+        ...rawBrowserForAuthority(EXPECTED_BROWSER_AUTHORITY, {
+          product: `Edg/151.0.4129.${100 + run}`,
+          revision: `@edge-revision-${run}`,
+          jsVersion: `15.1.23.${run}`,
+        }),
         executable: `/private/tmp/cf-edge-fresh-${run}/Microsoft Edge`,
         userAgent: `host provenance ${run}`,
       },
@@ -1229,27 +1310,33 @@ describe('Arc 1A Compendium budget authority', () => {
     const freshPaths = structuredClone(activeBudget) as unknown as MutableRecord;
     freshPaths.calibration.samples.phone = [sample(1), sample(2), sample(3)];
     freshPaths.calibration.samples.desktop = [sample(1), sample(2), sample(3)];
-    const sharedIdentityPattern = /do not share one exact .*browser-authority identity/;
+    const pairedProvenancePattern = /does not bind one exact browser provenance tuple across profiles/;
     const freshErrors = validateBudgetRecord(
       freshPaths, fixture.rowsSha256, baselineProjection.rowsSha256,
     ).errors.join('\n');
-    expect(freshErrors).not.toMatch(sharedIdentityPattern);
+    expect(freshErrors).not.toMatch(pairedProvenancePattern);
     expect(new Set(freshPaths.calibration.samples.phone
       .map((entry) => entry.browser?.executable))).toHaveLength(3);
     expect(new Set(freshPaths.calibration.samples.phone
       .map((entry) => entry.browser?.userAgent))).toHaveLength(3);
 
-    for (const field of ['product', 'revision', 'jsVersion', 'protocolVersion'] as const) {
+    for (const field of [
+      'executable', 'product', 'revision', 'userAgent', 'jsVersion', 'protocolVersion',
+    ] as const) {
       const drifted = structuredClone(freshPaths);
       drifted.calibration.samples.phone[1]!.browser![field]
         = `${drifted.calibration.samples.phone[1]!.browser![field]}-other`;
       const driftErrors = validateBudgetRecord(
         drifted, fixture.rowsSha256, baselineProjection.rowsSha256,
       ).errors.join('\n');
-      expect(driftErrors, `${field} shared identity drift`).toMatch(sharedIdentityPattern);
-      expect(driftErrors, `${field} explicit authority drift`)
-        .toMatch(/candidate calibration browser does not match/);
+      expect(driftErrors, `${field} same-run provenance drift`).toMatch(pairedProvenancePattern);
     }
+
+    const timestampDrift = structuredClone(freshPaths);
+    timestampDrift.calibration.samples.phone[1]!.measuredAt = '2026-08-20T17:00:00.000Z';
+    expect(validateBudgetRecord(
+      timestampDrift, fixture.rowsSha256, baselineProjection.rowsSha256,
+    ).errors.join('\n')).toMatch(/does not bind one exact measurement timestamp across profiles/);
 
     const missingBrowser = structuredClone(freshPaths);
     delete missingBrowser.calibration.samples.phone[1]!.browser;
@@ -1257,8 +1344,17 @@ describe('Arc 1A Compendium budget authority', () => {
       missingBrowser, fixture.rowsSha256, baselineProjection.rowsSha256,
     ).errors.join('\n');
     expect(missingErrors).toMatch(/browser provenance is incomplete/);
-    expect(missingErrors).toMatch(sharedIdentityPattern);
+    expect(missingErrors).toMatch(pairedProvenancePattern);
     expect(missingErrors).toMatch(/candidate calibration browser does not match/);
+
+    for (const executable of ['', 'relative/microsoft-edge', '../microsoft-edge']) {
+      const relativePath = structuredClone(freshPaths);
+      relativePath.calibration.samples.phone[0]!.browser!.executable = executable;
+      relativePath.calibration.samples.desktop[0]!.browser!.executable = executable;
+      expect(validateBudgetRecord(
+        relativePath, fixture.rowsSha256, baselineProjection.rowsSha256,
+      ).errors.join('\n'), executable).toMatch(/browser provenance is incomplete/);
+    }
   });
 
   it('pins a complete, unique profile/outcome inventory', () => {

@@ -22,6 +22,8 @@ export const ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA =
   'cf-v2-slice-arc4-publication-fault-capture/v1';
 export const ARC4_RECOVERY_CLOSURE_EVIDENCE_SCHEMA =
   'cf-v2-arc4-recovery-closure-evidence/v1';
+export const ARC4_TAME_GREETING_AUDIO_EVIDENCE_SCHEMA =
+  'cf-v2-arc4-tame-greeting-audio-evidence/v1';
 export const ARC4_ACTIVE_PLAY_CYCLE_MS = 1_200_000;
 export const ARC4_RECOVERY_CLOSED_INTERVAL_MIN_MS = 2_000;
 export const ARC4_CAPTURE_RECEIPT_KIND = 'capture-attempt';
@@ -182,6 +184,7 @@ export const ARC4_PERTAR_FIXTURE = Object.freeze({
   v4OwnedCounters: Object.freeze({
     before: Object.freeze({ hybrids: 0, best: 0, maxGen: 0, bestRank: 3 }),
     afterFirstHit: Object.freeze({ hybrids: 0, best: 5, maxGen: 2, bestRank: 3 }),
+    afterTameGreetingHit: Object.freeze({ hybrids: 0, best: 2, maxGen: 2, bestRank: 3 }),
   }),
   v4OwnedCompatibility: Object.freeze({
     before: Object.freeze({
@@ -192,8 +195,34 @@ export const ARC4_PERTAR_FIXTURE = Object.freeze({
       ever: Object.freeze({ v: 1, hybrids: 0, best: 5, maxGen: 2, scanhits: 0 }),
       br: 3,
     }),
+    afterTameGreetingHit: Object.freeze({
+      ever: Object.freeze({ v: 1, hybrids: 0, best: 2, maxGen: 2, scanhits: 0 }),
+      br: 3,
+    }),
   }),
   actions: Object.freeze({
+    /* Alternative first action over the same seed-68 authority. Slice Smoke
+       uses this exact native Tame oracle for the one player-live greeting;
+       the historical Sample-first nine-stage fixture remains available to
+       its existing specimen/Arc 5 mutation controls. */
+    tameGreetingHit: Object.freeze({
+      verb: 'tame',
+      sourceOrdinal: 5,
+      speciesName: 'Glauothoid',
+      tier: 2,
+      chance: 0.61,
+      candidateDraw: 0.19538691570051014,
+      successDraw: 0.44373711268417537,
+      hit: true,
+      firstForSpecies: true,
+      generation: 2,
+      speciesId: 'species-v1:1b7f32606f538497e96bc6242ef2121e7b510bbe3986f10a5c7330fa9fe975c3',
+      kingdom: 'fauna',
+      stardustReward: 0,
+      spent: 1,
+      remainingAfter: 15,
+      hiddenBeyondPreview: false,
+    }),
     firstHit: Object.freeze({
       verb: 'sample',
       sourceOrdinal: 13,
@@ -3536,6 +3565,262 @@ const exactRawCaptureOutcome = (before, after, expected) => {
     && hitRows;
 };
 
+const tameGreetingAudioOf = (observation) => observation?.audio ?? null;
+const tameGreetingRuntimeOf = (observation) => tameGreetingAudioOf(observation)?.runtime ?? null;
+
+const tameGreetingAudioShape = (observation) => {
+  const audio = tameGreetingAudioOf(observation), runtime = tameGreetingRuntimeOf(observation);
+  return audio?.schema === 'cf-v2-tame-greeting-audio/v1'
+    && typeof audio.disposed === 'boolean' && [0, 1].includes(audio.armed)
+    && counter(audio.claimedEvents)
+    && (audio.activeVoiceId === null || boundedText(audio.activeVoiceId, 192))
+    && (audio.lastEventKey === null || boundedText(audio.lastEventKey, 512))
+    && boundedText(audio.lastDisposition, 128)
+    && record(audio.counterpart)
+    && (audio.counterpart.key === null || boundedText(audio.counterpart.key, 512))
+    && (audio.counterpart.generation === null || counter(audio.counterpart.generation))
+    && ['none', 'claimed', 'live', 'lost', 'rejected'].includes(audio.counterpart.status)
+    && record(runtime) && counter(runtime.contextGeneration)
+    && (runtime.contextState === null || boundedText(runtime.contextState, 32))
+    && typeof runtime.muted === 'boolean' && record(runtime.nodes)
+    && counter(runtime.nodes.active) && counter(runtime.nodes.peak)
+    && record(runtime.voices) && counter(runtime.voices.active)
+    && counter(runtime.voices.peak) && counter(runtime.voices.started)
+    && Array.isArray(runtime.voices.ids)
+    && record(runtime.creatureEmitters)
+    && counter(runtime.creatureEmitters.active)
+    && counter(runtime.creatureEmitters.peak);
+};
+
+const tameGreetingAudioVirgin = (observation) => {
+  const audio = tameGreetingAudioOf(observation), runtime = tameGreetingRuntimeOf(observation);
+  return tameGreetingAudioShape(observation)
+    && audio.disposed === false && audio.armed === 0
+    && audio.claimedEvents === 0 && audio.activeVoiceId === null
+    && audio.lastEventKey === null && audio.counterpart.status === 'none'
+    && runtime.state === 'blocked' && runtime.contextState === null
+    && runtime.contextGeneration === 0 && runtime.muted === true
+    && runtime.nodes.active === 0 && runtime.voices.active === 0
+    && runtime.voices.started === 0 && runtime.voices.ids.length === 0
+    && runtime.creatureEmitters.active === 0;
+};
+
+const tameGreetingVoiceOwnerExact = (observation, eventKey, creatureId) => {
+  const audio = tameGreetingAudioOf(observation), runtime = tameGreetingRuntimeOf(observation);
+  if (!tameGreetingAudioShape(observation)
+    || !boundedText(eventKey, 512) || !boundedText(creatureId, 192)
+    || runtime.voices.active !== runtime.voices.ids.length
+    || runtime.creatureEmitters.active !== runtime.voices.active) return false;
+  if (runtime.voices.active === 0) {
+    return audio.activeVoiceId === null && runtime.voices.ids.length === 0;
+  }
+  return runtime.voices.active === 1 && runtime.voices.ids.length === 1
+    && audio.activeVoiceId === runtime.voices.ids[0]
+    && audio.lastEventKey === eventKey
+    && observation?.result?.ownedRowId === creatureId;
+};
+
+const tameGreetingStartCountStable = (
+  observation, eventKey, creatureId, contextGeneration,
+) => {
+  const audio = tameGreetingAudioOf(observation), runtime = tameGreetingRuntimeOf(observation);
+  return tameGreetingAudioShape(observation)
+    && audio.disposed === false && audio.armed === 0 && audio.claimedEvents === 1
+    && audio.lastEventKey === eventKey
+    && runtime.contextGeneration === contextGeneration
+    && runtime.voices.started === 1 && runtime.voices.active <= 1
+    && runtime.creatureEmitters.active <= 1
+    && tameGreetingVoiceOwnerExact(observation, eventKey, creatureId);
+};
+
+const tameGreetingResultProjection = (result) => ({
+  speciesId: result?.speciesId ?? null,
+  speciesName: result?.speciesName ?? null,
+  sourceOrdinal: result?.sourceOrdinal ?? null,
+  tier: result?.tier ?? null,
+  chance: result?.chance ?? null,
+  worldKey: result?.worldKey ?? null,
+  ecologyEpoch: result?.ecologyEpoch ?? null,
+  fullRosterFingerprint: result?.fullRosterFingerprint ?? null,
+  firstForSpecies: result?.firstForSpecies ?? null,
+  spent: result?.spent ?? null,
+  remainingAfter: result?.remainingAfter ?? null,
+  ownedRowId: result?.ownedRowId ?? null,
+  stardustReward: result?.stardustReward ?? null,
+  revision: result?.revision ?? null,
+});
+
+const tameGreetingFreshFixtureIsolated = (freshFixture, reloaded) => {
+  const raw = freshFixture?.raw;
+  const durable = assessArc4DurableEvidence(raw);
+  const mirror = durable.ownership?.mirror;
+  return record(freshFixture)
+    && boundedText(freshFixture.priorToken, 256)
+    && boundedText(freshFixture.token, 256)
+    && freshFixture.priorToken === reloaded?.documentToken
+    && freshFixture.token !== freshFixture.priorToken
+    && freshFixture.observation?.documentToken === freshFixture.token
+    && freshFixture.observation?.answerable === true
+    && tameGreetingAudioVirgin(freshFixture.observation)
+    && durable.ok === true && raw?.captureRevision === 0
+    && mirror?.revision === 0
+    && ['catalogSpecies', 'discoveries', 'creatures', 'specimenLots', 'biosphereProgress']
+      .every((field) => Array.isArray(mirror?.[field]) && mirror[field].length === 0)
+    && raw?.authority?.sessionRng?.seed === ARC4_PERTAR_FIXTURE.sessionSeed
+    && raw?.authority?.sessionRng?.ordinal === ARC4_PERTAR_FIXTURE.initialSessionOrdinal
+    && same(raw?.authority?.sessionRng?.draws, ARC4_PERTAR_FIXTURE.initialSessionDraws)
+    && Array.isArray(raw?.receiptKeys) && raw.receiptKeys.length === 0
+    && Array.isArray(raw?.receiptRows) && raw.receiptRows.length === 0;
+};
+
+/** Node-owned verdict for the one current player-live Arc 7/8 vertical. The
+ * browser collector supplies only raw durable bytes plus bounded observations;
+ * this classifier independently resolves the exact Tame acquisition/creature,
+ * accessible toast counterpart, answerability, and no-replay lifecycle. */
+export const assessArc4TameGreetingAudio = ({
+  schema, beforeRaw, afterRaw, before, diagnosticRead, pending, started,
+  closed, reopened, refreshed, waited, reloaded, freshFixture,
+  expected = ARC4_PERTAR_FIXTURE.actions.tameGreetingHit,
+} = {}) => {
+  const receipt = captureReceiptTransition(beforeRaw, afterRaw, expected);
+  const beforeAssessment = assessArc4DurableEvidence(beforeRaw);
+  const afterAssessment = assessArc4DurableEvidence(afterRaw);
+  const beforeMirror = beforeAssessment.ownership?.mirror;
+  const afterMirror = afterAssessment.ownership?.mirror;
+  const newDiscoveries = afterMirror?.discoveries?.filter((row) => (
+    !beforeMirror?.discoveries?.some((prior) => prior.recordId === row.recordId)
+  )) ?? [];
+  const newCreatures = afterMirror?.creatures?.filter((row) => (
+    !beforeMirror?.creatures?.some((prior) => prior.creatureId === row.creatureId)
+  )) ?? [];
+  const discovery = newDiscoveries.length === 1 ? newDiscoveries[0] : null;
+  const creature = newCreatures.length === 1 ? newCreatures[0] : null;
+  const eventKey = discovery === null ? null
+    : `arc4:taming-succeeded:${discovery.recordId}`;
+  const result = started?.result ?? null;
+  const startedAudio = tameGreetingAudioOf(started);
+  const startedRuntime = tameGreetingRuntimeOf(started);
+  const contextGeneration = startedRuntime?.contextGeneration;
+  const sameDocument = [before, diagnosticRead, pending, started, closed, reopened, refreshed, waited]
+    .every((row) => boundedText(row?.documentToken, 256)
+      && row.documentToken === before?.documentToken);
+  const replayRows = [closed, reopened, refreshed, waited];
+  const expectedResult = tameGreetingResultProjection({
+    speciesId: expected?.speciesId,
+    speciesName: expected?.speciesName,
+    sourceOrdinal: expected?.sourceOrdinal,
+    tier: expected?.tier,
+    chance: expected?.chance,
+    worldKey: ARC4_PERTAR_FIXTURE.worldKey,
+    ecologyEpoch: ARC4_PERTAR_FIXTURE.ecologyEpoch,
+    fullRosterFingerprint: ARC4_PERTAR_FIXTURE.fullRosterFingerprint,
+    firstForSpecies: expected?.firstForSpecies,
+    spent: expected?.spent,
+    remainingAfter: expected?.remainingAfter,
+    ownedRowId: creature?.creatureId,
+    stardustReward: expected?.stardustReward,
+    revision: afterRaw?.captureRevision,
+  });
+  const expectedTitle = boundedText(expected?.speciesName, 160)
+    ? `Tamed ${expected.speciesName}.` : null;
+  const expectedDetail = `${expected.chance * 100}% odds. New Compendium page; one owned creature. 1 Biosphere Yield spent; ${expected.remainingAfter} remain.`;
+  const checks = {
+    fixtureOracle: schema === ARC4_TAME_GREETING_AUDIO_EVIDENCE_SCHEMA
+      && !!beforeRaw && !!afterRaw && !!before && !!pending && !!started
+      && !!diagnosticRead && !!closed && !!reopened && !!refreshed && !!waited
+      && !!reloaded && !!freshFixture
+      && same(expected, ARC4_PERTAR_FIXTURE.actions.tameGreetingHit)
+      && receipt?.oracle?.pool?.length === 9
+      && receipt?.oracle?.candidate?.sourceOrdinal === expected.sourceOrdinal
+      && sameNumber(receipt?.oracle?.candidateDraw, expected.candidateDraw)
+      && sameNumber(receipt?.oracle?.successDraw, expected.successDraw)
+      && sameNumber(receipt?.oracle?.chance, expected.chance)
+      && receipt?.oracle?.hit === true,
+    committedTame: exactRawCaptureOutcome(beforeRaw, afterRaw, expected),
+    exactResult: discovery?.recordId === `discovery-v1:${receipt?.witness?.event}`
+      && discovery?.speciesId === expected.speciesId
+      && discovery?.acquisition === 'tame'
+      && discovery?.firstForSpecies === true
+      && discovery?.provenance?.kind === 'world'
+      && discovery?.provenance?.verb === 'tame'
+      && discovery?.provenance?.worldKey === ARC4_PERTAR_FIXTURE.worldKey
+      && discovery?.provenance?.sourceOrdinal === expected.sourceOrdinal
+      && creature?.creatureId === result?.ownedRowId
+      && creature?.speciesId === expected.speciesId
+      && creature?.origin === 'wild'
+      && creature?.acquisitionRecordId === discovery?.recordId
+      && result?.hit === true && result?.kingdom === 'fauna'
+      && same(tameGreetingResultProjection(result), expectedResult),
+    oneAnswerableDocument: sameDocument
+      && [before, diagnosticRead, pending, started, closed, reopened, refreshed, waited]
+        .every((row) => row?.answerable === true),
+    diagnosticReadNoContext: tameGreetingAudioVirgin(before)
+      && tameGreetingAudioVirgin(diagnosticRead)
+      && same(tameGreetingAudioOf(before), tameGreetingAudioOf(diagnosticRead)),
+    silentArm: tameGreetingAudioShape(before) && tameGreetingAudioShape(pending)
+      && tameGreetingAudioOf(before).disposed === false
+      && tameGreetingAudioOf(before).armed === 0
+      && tameGreetingAudioOf(before).claimedEvents === 0
+      && tameGreetingRuntimeOf(before).contextGeneration === 0
+      && tameGreetingRuntimeOf(before).contextState === null
+      && tameGreetingRuntimeOf(before).voices.started === 0
+      && tameGreetingAudioOf(pending).armed === 1
+      && tameGreetingAudioOf(pending).claimedEvents === 0
+      && tameGreetingRuntimeOf(pending).state === 'running'
+      && tameGreetingRuntimeOf(pending).contextState === 'running'
+      && tameGreetingRuntimeOf(pending).contextGeneration === 1
+      && tameGreetingRuntimeOf(pending).muted === false
+      && tameGreetingRuntimeOf(pending).voices.started === 0
+      && tameGreetingRuntimeOf(pending).voices.active === 0
+      && tameGreetingRuntimeOf(pending).creatureEmitters.active === 0,
+    eventCreatureVoiceOwner: boundedText(eventKey, 512)
+      && startedAudio?.claimedEvents === 1
+      && startedAudio?.lastEventKey === eventKey
+      && startedAudio?.disposed === false && startedAudio?.armed === 0
+      && startedAudio?.lastDisposition === 'voice-started'
+      && startedRuntime?.contextGeneration === 1
+      && startedRuntime?.voices?.started === 1
+      && startedRuntime?.voices?.peak === 1
+      && startedRuntime?.voices?.active === 1
+      && startedRuntime?.voices?.ids?.length === 1
+      && startedRuntime?.creatureEmitters?.active === 1
+      && startedRuntime?.creatureEmitters?.peak === 1
+      && tameGreetingVoiceOwnerExact(started, eventKey, creature?.creatureId),
+    accessibleCounterpart: started?.toast?.visible === true
+      && counter(started.toast.serial)
+      && started.toast.role === 'status'
+      && started.toast.live === 'assertive'
+      && started.toast.atomic === 'true'
+      && started.toast.title === expectedTitle
+      && started.toast.detail === expectedDetail
+      && startedAudio?.counterpart?.key === `capture-toast:${started.toast.serial}`
+      && startedAudio?.counterpart?.generation === started.toast.serial
+      && startedAudio?.counterpart?.status === 'live',
+    lifecycleNoReplay: contextGeneration === 1
+      && closed?.cardOpen === false && reopened?.cardOpen === true
+      && refreshed?.cardOpen === true && waited?.cardOpen === true
+      && replayRows.every((row) => tameGreetingStartCountStable(
+        row, eventKey, creature?.creatureId, contextGeneration,
+      ))
+      && tameGreetingRuntimeOf(waited)?.voices?.active === 0
+      && tameGreetingRuntimeOf(waited)?.voices?.ids?.length === 0
+      && tameGreetingRuntimeOf(waited)?.creatureEmitters?.active === 0
+      && tameGreetingAudioOf(waited)?.activeVoiceId === null
+      && tameGreetingAudioOf(waited)?.counterpart?.status === 'lost',
+    reloadNoReplay: boundedText(reloaded?.documentToken, 256)
+      && reloaded.documentToken !== before?.documentToken
+      && reloaded?.answerable === true
+      && tameGreetingAudioVirgin(reloaded),
+    freshFixtureIsolation: tameGreetingFreshFixtureIsolated(freshFixture, reloaded),
+  };
+  return assessment('Arc 4 Tame greeting audio', checks, {
+    eventKey, discoveryRecordId: discovery?.recordId ?? null,
+    creatureId: creature?.creatureId ?? null,
+    activeVoiceId: startedAudio?.activeVoiceId ?? null,
+    counterpartKey: startedAudio?.counterpart?.key ?? null,
+  });
+};
+
 export const assessArc4PublicationConvergence = ({
   before, committed, beforeState, beforeUi, pendingUi, oldState, oldUi,
   reloaded, reloadedState, reloadedUi, reloadBeforeActivationState,
@@ -5524,6 +5809,319 @@ const publicationBundleSelftest = {
   interaction: sampleInteraction, priorToken: publicationPriorTokenSelftest,
   token: publicationTokenSelftest,
 };
+
+/* The audio verdict gets its own independently assembled Tame successor. It
+   does not reuse the historical Sample-first result or trust app diagnostics
+   for candidate, event, acquisition, creature, or revision authority. */
+const tameGreetingExpectedSelftest = ARC4_PERTAR_FIXTURE.actions.tameGreetingHit;
+const tameGreetingAttemptOracleSelftest = captureAttemptOracle(
+  beforeRawSelftest, 'tame',
+);
+if (tameGreetingAttemptOracleSelftest?.event === null
+  || tameGreetingAttemptOracleSelftest?.candidate?.speciesId
+    !== tameGreetingExpectedSelftest.speciesId) {
+  throw new Error('Arc 4 Tame greeting audio selftest oracle was unavailable');
+}
+const tameGreetingDiscoveryIdSelftest =
+  `discovery-v1:${tameGreetingAttemptOracleSelftest.event}`;
+const tameGreetingCreatureIdSelftest = `creature-v1:${sha256(canonicalToolJson({
+  schema: 'cf-v2-local-creature-id/v1',
+  acquisitionId: tameGreetingDiscoveryIdSelftest,
+}))}`;
+const tameGreetingGenomeSelftest = Object.freeze({
+  gen: tameGreetingExpectedSelftest.generation,
+  kingdom: 'fauna',
+  seed: Number(tameGreetingAttemptOracleSelftest.candidate.legacyCatalogueId.slice(1)),
+});
+const tameGreetingMirrorSelftest = {
+  ...emptyMirror(1),
+  catalogSpecies: [{
+    speciesId: tameGreetingExpectedSelftest.speciesId,
+    genomeIdentity: tameGreetingAttemptOracleSelftest.candidate.genomeIdentity,
+    kingdom: 'fauna', genome: tameGreetingGenomeSelftest, alias: null,
+    firstObservationId: tameGreetingDiscoveryIdSelftest,
+  }],
+  discoveries: [{
+    recordId: tameGreetingDiscoveryIdSelftest,
+    speciesId: tameGreetingExpectedSelftest.speciesId,
+    acquisition: 'tame', firstForSpecies: true,
+    provenance: {
+      kind: 'world', verb: 'tame', worldKey: ARC4_PERTAR_FIXTURE.worldKey,
+      worldAddress: SELFTEST_WORLD_ADDRESS,
+      cycle: tameGreetingAttemptOracleSelftest.cycle,
+      sourceOrdinal: tameGreetingExpectedSelftest.sourceOrdinal,
+    },
+  }],
+  creatures: [{
+    creatureId: tameGreetingCreatureIdSelftest,
+    speciesId: tameGreetingExpectedSelftest.speciesId,
+    genomeIdentity: tameGreetingAttemptOracleSelftest.candidate.genomeIdentity,
+    genome: tameGreetingGenomeSelftest,
+    nickname: null, origin: 'wild',
+    acquisitionRecordId: tameGreetingDiscoveryIdSelftest,
+    lineage: { kind: 'none', generation: 0 },
+    xp: null, hurt: null, fed: null, brood: null,
+    assignment: null, bond: null,
+  }],
+  biosphereProgress: [{
+    worldKey: ARC4_PERTAR_FIXTURE.worldKey,
+    worldAddress: SELFTEST_WORLD_ADDRESS,
+    cycle: tameGreetingAttemptOracleSelftest.cycle,
+    used: 1,
+    successful: [{
+      speciesId: tameGreetingExpectedSelftest.speciesId, source: 'tame',
+    }],
+  }],
+};
+const tameGreetingAfterOptionsSelftest = {
+  revision: 1, ordinal: 1,
+  draws: { 'capture.candidate': 1, 'capture.success': 1 },
+  ownedCounters: ARC4_PERTAR_FIXTURE.v4OwnedCounters.afterTameGreetingHit,
+};
+const tameGreetingManifestDigestSelftest = inspectArc4Ownership(inspectV5Rows(
+  makeDurable(tameGreetingMirrorSelftest, tameGreetingAfterOptionsSelftest),
+).rows)?.manifest?.stateDigest;
+if (!hexDigest(tameGreetingManifestDigestSelftest)) {
+  throw new Error('Arc 4 Tame greeting audio selftest successor was unavailable');
+}
+const tameGreetingAfterRawSelftest = makeDurable(tameGreetingMirrorSelftest, {
+  ...tameGreetingAfterOptionsSelftest,
+  receipts: [captureReceipt(
+    beforeRawSelftest, tameGreetingExpectedSelftest,
+    tameGreetingManifestDigestSelftest,
+  )],
+});
+const tameGreetingResultSelftest = Object.freeze({
+  hit: true,
+  speciesId: tameGreetingExpectedSelftest.speciesId,
+  speciesName: tameGreetingExpectedSelftest.speciesName, kingdom: 'fauna',
+  sourceOrdinal: tameGreetingExpectedSelftest.sourceOrdinal,
+  tier: tameGreetingExpectedSelftest.tier,
+  chance: tameGreetingExpectedSelftest.chance,
+  worldKey: ARC4_PERTAR_FIXTURE.worldKey,
+  ecologyEpoch: ARC4_PERTAR_FIXTURE.ecologyEpoch,
+  fullRosterFingerprint: ARC4_PERTAR_FIXTURE.fullRosterFingerprint,
+  firstForSpecies: true, spent: 1,
+  remainingAfter: tameGreetingExpectedSelftest.remainingAfter,
+  ownedRowId: tameGreetingCreatureIdSelftest,
+  stardustReward: 0,
+  revision: tameGreetingAfterRawSelftest.captureRevision,
+});
+
+const tameGreetingRuntimeSelftest = ({
+  state = 'running', contextState = 'running', contextGeneration = 1,
+  muted = false, nodesActive = 13, nodesPeak = nodesActive,
+  voicesActive = 0, voicesPeak = voicesActive, voicesStarted = 0,
+  voiceIds = [], creatureActive = 0, creaturePeak = creatureActive,
+} = {}) => ({
+  state, contextState, contextGeneration, muted, hidden: false,
+  gains: {
+    master: 1, effectiveMaster: muted ? 0 : 1,
+    categories: { music: 1, ambience: 1, sfx: 1, ui: 1, creature: 1 },
+  },
+  nodes: { active: nodesActive, peak: nodesPeak, budget: 96 },
+  cache: { active: 0, peak: 0, budget: 32, evictions: 0 },
+  voices: {
+    active: voicesActive, peak: voicesPeak, budget: 24,
+    ids: voiceIds, started: voicesStarted, completed: 0, stopped: 0,
+    stolen: 0, cooldownRejects: 0, concurrencyRejects: 0,
+  },
+  creatureEmitters: { active: creatureActive, peak: creaturePeak, budget: 8 },
+  cooldowns: { active: 0, budget: 128 },
+  reservations: {
+    voices: { active: 0, peak: 0, activePlusReservedPeak: voicesPeak },
+    nodes: { active: 0, peak: 0, activePlusReservedPeak: nodesPeak },
+  },
+  cleanup: {
+    sourceStopFailures: 0, nodeDisconnectFailures: 0, cacheReleaseFailures: 0,
+  },
+  peaks: { master: 0, music: 0, ambience: 0, sfx: 0, ui: 0, creature: 0 },
+  faults: { total: 0, retained: [], budget: 20 },
+});
+const tameGreetingAudioSelftest = ({
+  armed = 0, claimedEvents = 0, activeVoiceId = null,
+  lastEventKey = null, lastDisposition = 'idle',
+  counterpartKey = null, counterpartGeneration = null,
+  counterpartStatus = 'none', runtime,
+} = {}) => ({
+  schema: 'cf-v2-tame-greeting-audio/v1', disposed: false,
+  armed, claimedEvents, activeVoiceId, lastEventKey, lastDisposition,
+  counterpart: {
+    key: counterpartKey, generation: counterpartGeneration,
+    status: counterpartStatus,
+  },
+  runtime,
+});
+const tameGreetingDocumentSelftest = 'selftest-tame-greeting-audio-document';
+const tameGreetingEventKeySelftest =
+  `arc4:taming-succeeded:${tameGreetingDiscoveryIdSelftest}`;
+const tameGreetingVoiceIdSelftest = 'voice:creature-expression:selftest';
+const tameGreetingToastSerialSelftest = 7;
+const tameGreetingToastSelftest = Object.freeze({
+  visible: true, serial: tameGreetingToastSerialSelftest,
+  role: 'status', live: 'assertive', atomic: 'true',
+  title: `Tamed ${tameGreetingResultSelftest.speciesName}.`,
+  detail: '61% odds. New Compendium page; one owned creature. 1 Biosphere Yield spent; 15 remain.',
+});
+const tameGreetingBeforeObservationSelftest = {
+  documentToken: tameGreetingDocumentSelftest,
+  answerable: true, cardOpen: true, result: null,
+  audio: tameGreetingAudioSelftest({
+    runtime: tameGreetingRuntimeSelftest({
+      state: 'blocked', contextState: null, contextGeneration: 0,
+      muted: true, nodesActive: 0, nodesPeak: 0,
+    }),
+  }),
+};
+const tameGreetingPendingObservationSelftest = {
+  documentToken: tameGreetingDocumentSelftest,
+  answerable: true, cardOpen: true, result: null,
+  audio: tameGreetingAudioSelftest({
+    armed: 1, lastDisposition: 'armed',
+    runtime: tameGreetingRuntimeSelftest(),
+  }),
+};
+const tameGreetingStartedObservationSelftest = {
+  documentToken: tameGreetingDocumentSelftest,
+  answerable: true, cardOpen: true, result: tameGreetingResultSelftest,
+  toast: tameGreetingToastSelftest,
+  audio: tameGreetingAudioSelftest({
+    claimedEvents: 1, activeVoiceId: tameGreetingVoiceIdSelftest,
+    lastEventKey: tameGreetingEventKeySelftest,
+    lastDisposition: 'voice-started',
+    counterpartKey: `capture-toast:${tameGreetingToastSerialSelftest}`,
+    counterpartGeneration: tameGreetingToastSerialSelftest,
+    counterpartStatus: 'live',
+    runtime: tameGreetingRuntimeSelftest({
+      nodesActive: 15, nodesPeak: 15,
+      voicesActive: 1, voicesPeak: 1, voicesStarted: 1,
+      voiceIds: [tameGreetingVoiceIdSelftest],
+      creatureActive: 1, creaturePeak: 1,
+    }),
+  }),
+};
+const tameGreetingReplayObservationSelftest = (cardOpen) => ({
+  ...structuredClone(tameGreetingStartedObservationSelftest), cardOpen,
+});
+const tameGreetingWaitedObservationSelftest = {
+  ...structuredClone(tameGreetingStartedObservationSelftest),
+  audio: tameGreetingAudioSelftest({
+    claimedEvents: 1, lastEventKey: tameGreetingEventKeySelftest,
+    lastDisposition: 'counterpart-lost',
+    counterpartKey: `capture-toast:${tameGreetingToastSerialSelftest}`,
+    counterpartGeneration: tameGreetingToastSerialSelftest,
+    counterpartStatus: 'lost',
+    runtime: tameGreetingRuntimeSelftest({
+      nodesActive: 13, nodesPeak: 15,
+      voicesPeak: 1, voicesStarted: 1,
+      creaturePeak: 1,
+    }),
+  }),
+};
+const tameGreetingReloadedObservationSelftest = {
+  ...structuredClone(tameGreetingBeforeObservationSelftest),
+  documentToken: 'selftest-tame-greeting-audio-reloaded-document',
+};
+const tameGreetingFreshDocumentSelftest =
+  'selftest-tame-greeting-audio-fresh-fixture-document';
+const tameGreetingFreshObservationSelftest = {
+  ...structuredClone(tameGreetingBeforeObservationSelftest),
+  documentToken: tameGreetingFreshDocumentSelftest,
+};
+const tameGreetingAudioBundleSelftest = {
+  schema: ARC4_TAME_GREETING_AUDIO_EVIDENCE_SCHEMA,
+  beforeRaw: beforeRawSelftest, afterRaw: tameGreetingAfterRawSelftest,
+  before: tameGreetingBeforeObservationSelftest,
+  diagnosticRead: structuredClone(tameGreetingBeforeObservationSelftest),
+  pending: tameGreetingPendingObservationSelftest,
+  started: tameGreetingStartedObservationSelftest,
+  closed: tameGreetingReplayObservationSelftest(false),
+  reopened: tameGreetingReplayObservationSelftest(true),
+  refreshed: tameGreetingReplayObservationSelftest(true),
+  waited: tameGreetingWaitedObservationSelftest,
+  reloaded: tameGreetingReloadedObservationSelftest,
+  freshFixture: {
+    priorToken: tameGreetingReloadedObservationSelftest.documentToken,
+    token: tameGreetingFreshDocumentSelftest,
+    raw: beforeRawSelftest,
+    observation: tameGreetingFreshObservationSelftest,
+  },
+};
+
+const tameGreetingAudioMutationSelftest = (mutate) => {
+  const bundle = structuredClone(tameGreetingAudioBundleSelftest);
+  mutate(bundle);
+  return assessArc4TameGreetingAudio(bundle);
+};
+const tameGreetingAudioMutationSelftests = Object.freeze({
+  fixtureOracle: Object.freeze({
+    expected: Object.freeze(['fixtureOracle']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.schema = 'cf-v2-arc4-tame-greeting-audio-evidence/mutated';
+    }),
+  }),
+  committedTame: Object.freeze({
+    expected: Object.freeze(['committedTame']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.afterRaw.revision += 1;
+      bundle.afterRaw.revisionRaw = String(bundle.afterRaw.revision);
+    }),
+  }),
+  exactResult: Object.freeze({
+    expected: Object.freeze(['exactResult']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.started.result.tier += 1;
+    }),
+  }),
+  oneAnswerableDocument: Object.freeze({
+    expected: Object.freeze(['oneAnswerableDocument']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.pending.answerable = false;
+    }),
+  }),
+  diagnosticReadNoContext: Object.freeze({
+    expected: Object.freeze(['diagnosticReadNoContext']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.diagnosticRead.audio.runtime.contextGeneration = 1;
+    }),
+  }),
+  silentArm: Object.freeze({
+    expected: Object.freeze(['silentArm']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.pending.audio.runtime.voices.started = 1;
+    }),
+  }),
+  eventCreatureVoiceOwner: Object.freeze({
+    expected: Object.freeze(['eventCreatureVoiceOwner']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.started.audio.activeVoiceId = 'voice-000002';
+    }),
+  }),
+  accessibleCounterpart: Object.freeze({
+    expected: Object.freeze(['accessibleCounterpart']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.started.audio.counterpart.key = 'capture-toast:8';
+    }),
+  }),
+  lifecycleNoReplay: Object.freeze({
+    expected: Object.freeze(['lifecycleNoReplay']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.closed.audio.runtime.voices.started = 2;
+    }),
+  }),
+  reloadNoReplay: Object.freeze({
+    expected: Object.freeze(['reloadNoReplay']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.reloaded.audio.claimedEvents = 1;
+    }),
+  }),
+  freshFixtureIsolation: Object.freeze({
+    expected: Object.freeze(['freshFixtureIsolation']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.freshFixture.observation.audio.claimedEvents = 1;
+    }),
+  }),
+});
 const nonzeroActivePlaySelftest = 9_000;
 const nonzeroPreconditionRawSelftest = withAuthorityActivePlaySelftest(
   beforeRawSelftest, nonzeroActivePlaySelftest,
@@ -5658,6 +6256,9 @@ const positiveSelftestAssessments = Object.freeze({
   publicationCommittedAhead: assessArc4PublicationConvergence(
     nonzeroPublicationBundleSelftest,
   ),
+  tameGreetingAudio: assessArc4TameGreetingAudio(
+    tameGreetingAudioBundleSelftest,
+  ),
   exhaustionOnly: assessArc4Exhaustion(exhaustionBundleSelftest),
   exhaustion: assessArc4ExhaustionRecovery(exhaustionBundleSelftest),
   geometry: assessArc4CaptureCardGeometryFocus(geometryBundleSelftest),
@@ -5666,6 +6267,15 @@ const positiveSelftestAssessments = Object.freeze({
 for (const [name, result] of Object.entries(positiveSelftestAssessments)) {
   if (result.ok !== true) {
     throw new Error(`Arc 4 browser contract positive selftest failed (${name}): ${result.reasons.join(', ')}; ${JSON.stringify(result)}`);
+  }
+}
+
+for (const [name, control] of Object.entries(tameGreetingAudioMutationSelftests)) {
+  const failed = Object.entries(control.result.checks)
+    .filter(([, value]) => value !== true)
+    .map(([check]) => check);
+  if (control.result.ok !== false || !same(failed, control.expected)) {
+    throw new Error(`Arc 4 Tame greeting audio mutation control drifted (${name}): ${failed.join(', ')}`);
   }
 }
 
@@ -6715,6 +7325,7 @@ const failClosedSelftests = Object.freeze({
   storage: assessArc4StorageRefusal(),
   stale: assessArc4StaleConvergence(),
   publication: assessArc4PublicationConvergence(),
+  tameGreetingAudio: assessArc4TameGreetingAudio(),
   exhaustionOnly: assessArc4Exhaustion(),
   exhaustion: assessArc4ExhaustionRecovery(),
   geometry: assessArc4CaptureCardGeometryFocus(),
@@ -6808,7 +7419,7 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
   || sha256(canonicalToolJson(ARC4_OWNERSHIP_EXTENSION_TARGETS))
     !== 'cb4bf8df5f5eaca8f57b842a2187c5c5791516dc7d4e389d58f9ab729b15b026'
   || sha256(canonicalToolJson(ARC4_PERTAR_FIXTURE))
-    !== '801230daf3f7e627d23a80d5f6e9e711a94be465619068886faee28fc45df021'
+    !== 'fdd9a400d67ee97421eba603db6d6907a029ecfddc23d8c9880a97eb956c4465'
   || sha256(canonicalToolJson(ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET))
     !== 'e548f628e5859335b608a12632e66d4220432ab188a76af460fbc5261eefded4'
   || sha256(canonicalToolJson(ARC5_OWNERSHIP_EXTENSION_TARGETS))

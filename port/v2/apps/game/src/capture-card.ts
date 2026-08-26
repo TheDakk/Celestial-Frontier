@@ -97,6 +97,9 @@ export interface CaptureCardDiagnostics {
 export interface CaptureCardControllerOptions {
   /** Persistent Survey-card root. Dynamic refills replace only its mount. */
   readonly root: HTMLElement;
+  /** Browser-trusted Tame input only. Called synchronously before onAction so
+   * Web Audio may consume the same user-activation stack. */
+  readonly onNativeTameGesture?: () => void;
   /** Called synchronously. Any returned promise is deliberately ignored. */
   readonly onAction?: (request: CaptureCardActionRequest) => void;
 }
@@ -293,6 +296,7 @@ function percent(value: number): string {
 export class CaptureCardController {
   readonly #root: HTMLElement;
   readonly #document: Document;
+  readonly #onNativeTameGesture: (() => void) | null;
   readonly #onAction: ((request: CaptureCardActionRequest) => void) | null;
   #mount: HTMLElement | null = null;
   #state: CaptureCardReadModelV1 | null = null;
@@ -311,6 +315,7 @@ export class CaptureCardController {
   constructor(options: CaptureCardControllerOptions) {
     this.#root = options.root;
     this.#document = options.root.ownerDocument;
+    this.#onNativeTameGesture = options.onNativeTameGesture ?? null;
     this.#onAction = options.onAction ?? null;
     this.#root.addEventListener('click', this.#onClick);
     this.#listenerInstalled = true;
@@ -478,6 +483,7 @@ export class CaptureCardController {
     this.#applyActionAvailabilityWithFocusProof();
     this.#paintStatus();
     try {
+      if (verb === 'tame' && event.isTrusted) this.#onNativeTameGesture?.();
       this.#onAction?.(request);
     } catch (error) {
       if (!this.#convergenceLatched && this.#emissionLocked && this.#pending !== null

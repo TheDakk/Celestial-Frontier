@@ -406,6 +406,7 @@ describe('Arc 4 Capture card controller', () => {
   it('locks all capture verbs locally before one synchronous immutable request escapes', () => {
     const view = shell();
     let observed: CaptureCardActionRequest | null = null;
+    const onNativeTameGesture = vi.fn();
     const onAction = vi.fn((request: CaptureCardActionRequest) => {
       observed = request;
       expect(Object.isFrozen(request)).toBe(true);
@@ -415,7 +416,7 @@ describe('Arc 4 Capture card controller', () => {
         .toBe(true);
       expect(status(view).textContent).toContain('No capture, attempt spend, Compendium page or reward is published');
     });
-    controller = new CaptureCardController({ root: view.root, onAction });
+    controller = new CaptureCardController({ root: view.root, onNativeTameGesture, onAction });
     controller.setState(readModel());
     controller.attach(view.mount);
     const beforeBudget = view.mount.querySelector('[data-capture-budget]')?.textContent;
@@ -424,6 +425,9 @@ describe('Arc 4 Capture card controller', () => {
     button(view, 'scavenge').dispatchEvent(new dom!.window.Event('click', { bubbles: true }));
 
     expect(onAction).toHaveBeenCalledOnce();
+    /* jsdom .click() is deliberately untrusted: diagnostics and synthetic
+       callers still exercise presentation, but can never arm Web Audio. */
+    expect(onNativeTameGesture).not.toHaveBeenCalled();
     expect(observed).toEqual({ verb: 'tame' });
     expect(view.mount.querySelector('[data-capture-budget]')?.textContent).toBe(beforeBudget);
     expect(view.close.disabled).toBe(false);

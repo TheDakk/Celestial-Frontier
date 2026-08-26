@@ -4,18 +4,18 @@
    per-seed baker.
 
    ⚠ BROWSER-ONLY: GAL_SPRITES bakes 16×512px canvases AT MODULE LOAD.
-   Import this from apps/*, never from vitest/node. (The lifted header says
-   [domain] — the lifter's fixed banner; GalaxyArt is an [app] module.)
+   Import this from apps/*, never from vitest/node. The generated lift derives
+   GalaxyArt's [app] ownership from the authoritative source banner.
 
    galSpriteFor mirrors main.js getGalaxySprite's ART CONTRACT — per-seed
    face, morphology KIND-LOCKED to the archetype so the sprite can never
    contradict the card's Lenticular/Elliptical/Irregular row — without the
    old build's deferred-bake machinery (that was a boot-perf device for a
    1.9MB single file; the slice bakes on first sight and caches). */
-import { GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS } from './galaxyart.verbatim.js';
+import { GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS, galaxyHaze } from './galaxyart.verbatim.js';
 import { decoSprite, _quasarSpr, starSprite } from './artextras.verbatim.js';
 
-export { GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS };
+export { GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS, galaxyHaze };
 export { decoSprite, _quasarSpr, starSprite };
 export {
   _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr,

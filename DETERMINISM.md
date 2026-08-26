@@ -1,11 +1,46 @@
 # Celestial Frontier — Determinism Discipline
 
-> **2026-08-25 Arc 3–5 current deterministic boundary:** Arc 3 world/star opportunities are pure
+> **2026-08-26 current-candidate determinism corrections:** F4 exposes one ecology epoch only after
+> visible-and-answerable, lease-owned `activePlayMs` crosses an integer edge, one receipt-free
+> lease/revision CAS commits it, and the exact publication/reprojection refresh completes. The
+> staged candidate is private; hidden/unanswered time, render cadence, reduced motion, wall time and
+> a failed/stale commit cannot advance or reveal it. Scene, Survey, Planetside and capture consume
+> only the published epoch and remain fenced while its projection is dirty.
+>
+> Deep Scanner presentation is now a pure, passive projection after owned `scan1`: an eligible
+> registered current-system lifeless non-Earth orbital **Mineral veins** Survey row lists ordinary
+> deposits in canonical order plus the optional biome-only vein marked `✦`. It draws no RNG,
+> mutates nothing, and discloses no Mine action,
+> cosmic/exceptional material, grade, reserve or extraction state. The internal-only Arc 5 bred
+> successor is likewise deterministic and parent-order invariant: a newly admitted child receives
+> `0.5 * min(clamp(parentA.fed, 0..200), clamp(parentB.fed, 0..200))` once, while later child `fed`
+> changes survive subsequent encode/decode. Arc 5B odds, Recovery timing/locks, player action and UI
+> remain undecided/unimplemented product work.
+>
+> XP-first persistence now retains the newest 4,000 unique bounded keys in `xpf` and moves displaced
+> authority to the strict v5-only `progression.xp-firsts` archive, bound by `xpa` v1 total-count and
+> carrier digest. Missing/mismatched/future/corrupt archive evidence protects rather than rearming
+> awards; there is still no live v2 XP-award writer. `conq[].e` import/export/readiness vectors prove
+> the absent-ready versus present-not-ready distinction survives sanitation and round trip, without
+> claiming the open real-veteran Gate-C run. Notification split/mirror migration comparisons use the
+> stored envelope clock, while ordinary runtime sanitation still receives caller `now` and preserves
+> honest future timestamps.
+>
+> Player rarity is a strict projection boundary, not a new outcome: only integer raw tiers `0..14`
+> enter the ten-name ladder, raw `9..14` collapse to Transcendent, invalid/missing values render
+> nothing, and internal art-grade labels/raw numbers never become player copy. The current Tame
+> fauna greeting is also presentation-only: it may sound once only after the exact durable result
+> and matching current ownership revision, uses the deterministic creature-audio identity, and can
+> neither choose nor change the capture. Broader audio remains absent. Existing ordinary Slice
+> evidence records `recoveryClaimed:false`; the dedicated uninterrupted 20-minute recovery
+> certificate remains pending.
+
+> **2026-08-25 Arc 3–5 recorded deterministic boundary:** Arc 3 world/star opportunities are pure
 > projections of registered full-CF1 addresses. Mine/Skim outcomes and fixed craft identities use
 > canonical source facts and explicit ordered plans; active-play cursor settlement is computed from
 > the prior carrier, never a caller timestamp. Six research rows are displayed, but only Deep
-> Scanners is purchasable; its pure orbital-reveal policy exists while current Survey renders no
-> orbital mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with
+> Scanners is purchasable; its bounded passive Survey row is described by the 2026-08-26 correction
+> above. All 62 fixed recipes are listed, but only connected-effect outputs with
 > exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional slotted
 > outputs and disconnected-effect rows remain unavailable. Eligible Deep-Scanner and fixed-
 > Fabrication actions use the no-RNG sibling transaction, while any random plan is committed with its exact successor authority. Reopening,
@@ -29,7 +64,8 @@
 > Reopen/reload and UI order do not reroll or retarget the action. Source-only Arc 4 growth leaves the
 > four canonical empty-shard bytes invariant, proving the delta does not duplicate unchanged source
 > state. Arc 5 breeding/care/companion writers remain absent; the internal V2-only successor has an
-> exact five-carrier output and is not exported publicly.
+> exact five-carrier output, applies the one-time bounded child-`fed` rule above and is not exported
+> publicly.
 
 > **2026-08-24 F4 + Arc 2 outcome-determinism overlay — current local implementation:**
 > `SessionRNGState` now persists one uint32 seed, isolated semantic-domain counters and one global
@@ -60,7 +96,8 @@
 > odds, storage/stale/publication convergence, reload and responsive control outcomes on one dirty
 > executable snapshot; it explicitly does not claim the real 20-minute recovery edge. All later
 > outcome writers remain open.
-> That retained pair predates compact Arc 5 V2. Final current-input evidence is Slice run
+> That retained pair predates compact Arc 5 V2. The later exact-input evidence for this recorded
+> 2026-08-25 boundary is Slice run
 > `20260825213041239-98104-c96d3b2d0652` on Edge `151.0.4129.101` (363,053 ms, one exact
 > nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS, zero findings/retries/source
 > change; report/log SHA-256 `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
@@ -143,7 +180,7 @@
 > Static generation remains independent of browser timing.
 
 **STATUS:** legacy sections match `main.js` + `tools/` as of 2026-08-12; the
-current dated v2 overlay matches `port/v2` as of 2026-08-25. The 2026-07-30 pass added §6's
+current dated v2 overlay matches the local `port/v2` candidate as of 2026-08-26. The 2026-07-30 pass added §6's
 "WHEN art is drawn is not fingerprint input", corrected the layout gate to 10
 viewports, and registered `bootperf.js` + `simrun dom` in the battery.
 **Purpose:** the single law that governs the whole game — every world, genome, descriptor, portrait, duel and share code is a pure function of seeds, so the same address regenerates byte-for-byte on every device, forever, with no server.

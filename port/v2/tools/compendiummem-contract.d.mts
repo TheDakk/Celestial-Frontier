@@ -8,8 +8,15 @@ export const CANDIDATE_TRANSPORT_TIMEOUT_MS: number;
 export const BASELINE_OBSERVATION_TIMEOUT_MS: number;
 export const CANDIDATE_BROWSER_LABEL: string;
 export const COMPENDIUM_BROWSER_AUTHORITY_SCHEMA:
-  'cf-v2-compendium-browser-authority/v1';
+  'cf-v2-compendium-browser-authority/v2';
 export const COMPENDIUM_BROWSER_AUTHORITY_SCOPE: 'arc1a-compendium-memory-only';
+export const COMPENDIUM_BROWSER_FAMILY: 'microsoft-edge';
+export const COMPENDIUM_BROWSER_CAPABILITY_CONTRACT:
+  'cf-v2-compendium-cdp-capabilities/v1';
+export const COMPENDIUM_BROWSER_PROTOCOL_VERSION: '1.3';
+export const COMPENDIUM_BROWSER_REQUIRED_CDP_METHODS: readonly string[];
+export const COMPENDIUM_BROWSER_BEST_EFFORT_CDP_METHODS: readonly string[];
+export const COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256: string;
 export const COMPENDIUM_MEASUREMENT_AUTHORITY_SCHEMA:
   'cf-v2-compendium-measurement-authority/v1';
 export const COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS: readonly string[];
@@ -47,12 +54,12 @@ export const COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS: readonly string[];
 export const CEILING_FIELDS: readonly string[];
 export const SAMPLE_METRIC_FIELDS: readonly string[];
 export type CompendiumBrowserAuthority = Readonly<{
-  schema: 'cf-v2-compendium-browser-authority/v1';
+  schema: 'cf-v2-compendium-browser-authority/v2';
   scope: 'arc1a-compendium-memory-only';
-  product: string;
-  revision: string;
-  jsVersion: string;
-  protocolVersion: string;
+  family: 'microsoft-edge';
+  protocolVersion: '1.3';
+  capabilityContract: 'cf-v2-compendium-cdp-capabilities/v1';
+  capabilityContractSha256: string;
 }>;
 export type CompendiumMeasurementAuthority = Readonly<{
   schema: 'cf-v2-compendium-measurement-authority/v1';
@@ -90,6 +97,10 @@ export function reduceCalibrationEvidence(evidence: unknown): {
   observedFaults: string[] | null;
 } | null;
 export function compendiumBrowserAuthority(browser: unknown): CompendiumBrowserAuthority | null;
+export function compendiumBrowserCapabilityInventoryErrors(sources: {
+  collectorSource: string;
+  browserCdpSource: string;
+}): string[];
 export function validCompendiumBrowserAuthority(authority: unknown):
   authority is CompendiumBrowserAuthority;
 export function compendiumBrowserAuthorityMatches(browser: unknown,

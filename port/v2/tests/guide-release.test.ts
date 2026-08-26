@@ -113,7 +113,9 @@ const UNAVAILABLE_V2_FEATURE_OVERCLAIMS = Object.freeze([
 
 const ENGINEERING_COPY_CONTRADICTIONS = Object.freeze([
   /all six research rows[^.!?]{0,80}(?:can be|are) (?:bought|purchased|available)/i,
-  /current Survey card (?:now )?(?:renders|shows|paints)[^.!?]{0,80}(?:orbit|mineral)/i,
+  /(?:current )?Survey card[^.!?]{0,96}(?:does not yet|renders no|shows no|paints no)[^.!?]{0,80}(?:orbit|mineral)/i,
+  /(?:renders|shows|reveals|paints) every orbital mineral/i,
+  /(?:orbit|orbital Survey)[^.!?]{0,96}(?:also|now) (?:shows|reveals|includes|names)[^.!?]{0,80}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)/i,
   /(?:Research|Skim)[^.!?]{0,80}banks?[^.!?]{0,48}Charter/i,
   /(?:Rewards?|Costs?|HP changes?|Charter ticks?) publish(?:es)? before[^.!?]{0,48}commit/i,
   /legacy charter refit[^.!?]{0,96}(?:names|draws|includes) (?:(?:an?|the) )?(?:unowned |missing )?Intergalactic Drive/i,
@@ -158,7 +160,9 @@ function engineeringGuideCopyIsTruthful(body: string): boolean {
     && /Research Bench lists exactly six canonical rows/i.test(copy)
     && /Deep Scanners is the only current purchase/i.test(copy)
     && /consumes 6 Iron, 4 Silicon, and 20 Stardust/i.test(copy)
-    && /current Survey card does not yet render those orbital rows/i.test(copy)
+    && /adds a bounded Mineral veins row to eligible orbital Survey cards/i.test(copy)
+    && /Orbit shows only the ordered ordinary deposits plus a separately marked biome vein/i.test(copy)
+    && /cosmic and exceptional veins, grades, reserves and progress, and mining remain grounded/i.test(copy)
     && /other five[^.!?]{0,96}visible but disabled/i.test(copy)
     && /Fabricator groups all 62 fixed recipes/i.test(copy)
     && /exposes an action only when its output has a connected gameplay effect/i.test(copy)
@@ -253,9 +257,11 @@ function surveyBoundaryCopyIsTruthful(body: string): boolean {
     && /Tame, Scavenge, and Sample[^.!?]{0,96}separate finite actions[^.!?]{0,96}choose uniformly[^.!?]{0,96}full biosphere/i.test(copy)
     && /separate grounded mineral reveal and its finite Mine action/i.test(copy)
     && /reveal describes the current opportunity but is not itself a mining receipt/i.test(copy)
-    && /current Survey card does not yet paint those orbital mineral rows/i.test(copy)
+    && /Owned Deep Scanners adds one Mineral veins row to the orbital Survey card for a proven lifeless non-Earth world/i.test(copy)
+    && /preserves the generated ordinary-deposit order and marks the separate biome vein with ✦/i.test(copy)
+    && /cosmic and exceptional veins, grades, reserve and progress facts, and the Mine action remain grounded Engineering information/i.test(copy)
     && !/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)/i.test(copy)
-    && !/current Survey card (?:now )?(?:renders|shows|paints)[^.!?]{0,80}(?:orbit|mineral)/i.test(copy)
+    && ENGINEERING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy))
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
@@ -284,6 +290,10 @@ function captureGuideCopyIsTruthful(body: string): boolean {
     && /result shows the exact amount/i.test(copy)
     && /miss adds no page, creature, specimen, or Stardust/i.test(copy)
     && /Capture never banks the Charter’s separate bioscan milestone[^.!?]{0,64}writer remains unavailable/i.test(copy)
+    && /Sound and Creature voices on[^.!?]{0,96}verified successful wild-fauna Tame[^.!?]{0,96}once[^.!?]{0,96}deterministic synthesized greeting/i.test(copy)
+    && /only after the durable result and its visible status alert have settled/i.test(copy)
+    && /miss, refusal, repeated invocation, reload, hidden page, or disabled audio stays silent and never replays/i.test(copy)
+    && /other creature actions, ambience, music, and combat sound remain unavailable/i.test(copy)
     && /Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable/i.test(copy)
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
@@ -314,7 +324,9 @@ function engineeringReleaseCopyIsTruthful(body: string): boolean {
     && /exactly six Research rows/i.test(body)
     && /all 62 fixed Fabricator recipes/i.test(body)
     && /Only Deep Scanners can currently be purchased/i.test(body)
-    && /current Survey card does not yet render those mineral rows/i.test(body)
+    && /durable ownership now adds one Mineral veins row to eligible lifeless non-Earth orbital Survey cards/i.test(body)
+    && /preserves ordinary-deposit order and marks the separate biome vein with ✦/i.test(body)
+    && /cosmic and exceptional veins, grades, reserves, progress, and mining remain grounded/i.test(body)
     && /enables only outputs with connected effects/i.test(body)
     && /Fully exceptional slotted crafting, authored affixes\/drawbacks, item upgrades, sockets, and vendors remain unavailable/i.test(body)
     && /Built permanent systems change the real ship and star reach/i.test(body)
@@ -504,6 +516,8 @@ describe('v2 Guide capability filter', () => {
     expect(breeding?.body).not.toBe(breeding?.legacyBody);
     expect(getGuideTopic('settings')?.crossLinks).toContain('saving');
     expect(getGuideTopic('settings')?.body).toContain('Star charts');
+    expect(getGuideTopic('settings')?.body).toContain('Creature voices');
+    expect(getGuideTopic('settings')?.body).toContain('only the one synthesized greeting');
     expect(getGuideTopic('atlas')?.body).toContain('saved galaxies, stars, and worlds');
     expect(getGuideTopic('atlas')?.body).toContain('A world entry reopens its system survey');
     expect(getGuideTopic('atlas')?.body).toContain('source-verified destination');
@@ -569,6 +583,13 @@ describe('v2 Guide capability filter', () => {
     expect(V2_DEVELOPMENT_GUIDE_CAPABILITIES).toContain('life-discovery');
     expect(getGuideTopic('discover')?.availability).toBe('partial');
     expect(captureGuideCopyIsTruthful(getGuideTopic('discover')!.body)).toBe(true);
+    const audioBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('THE FRONTIER SPEAKS'));
+    expect(audioBullet).toContain('verified durable wild-fauna Tame');
+    expect(audioBullet).toContain('visible status alert settles');
+    expect(audioBullet).toContain('without retry or replay');
+    expect(audioBullet).toContain('ambience, music, and combat sound remain future work');
   });
 
   it('describes the exact live Engineering and Inventory actions without promoting dormant rows', () => {
@@ -598,7 +619,10 @@ describe('v2 Guide capability filter', () => {
       research!.body + ' All six research rows can be purchased now.',
     )).toBe(false);
     expect(engineeringGuideCopyIsTruthful(
-      research!.body + ' The current Survey card now renders the orbital mineral reveal.',
+      research!.body + ' The current Survey card does not yet render those orbital rows.',
+    )).toBe(false);
+    expect(engineeringGuideCopyIsTruthful(
+      research!.body + ' Orbit now shows cosmic veins and grades.',
     )).toBe(false);
     expect(engineeringGuideCopyIsTruthful(
       research!.body + ' Research banks one Charter fabrication goal.',
@@ -1168,7 +1192,9 @@ describe('legacy and v2 release channels', () => {
       /exactly six Research rows/,
       /all 62 fixed Fabricator recipes/,
       /Only Deep Scanners can currently be purchased/,
-      /current Survey card does not yet render those mineral rows/,
+      /durable ownership now adds one Mineral veins row to eligible lifeless non-Earth orbital Survey cards/,
+      /marks the separate biome vein with ✦/,
+      /cosmic and exceptional veins, grades, reserves, progress, and mining remain grounded/,
       /Fully exceptional slotted crafting, authored affixes\/drawbacks, item upgrades, sockets, and vendors remain unavailable/,
       /Built permanent systems change the real ship and star reach/,
       /can spend preserved Stardust but does not earn it/,

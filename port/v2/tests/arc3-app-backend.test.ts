@@ -17,6 +17,7 @@ import {
   createRevisionedRepository,
   importSaveV2,
   initializeFreshV5,
+  PORTABLE_V5_MAX_CLOCK_MS,
   prepareArc2LootLegacyMigration,
   readArc2Loot,
   readF4Authority,
@@ -1066,8 +1067,10 @@ describe('Arc 3 app action transaction seam', () => {
 
   it('binds Auto-Extractor initialization to the transaction-owned active-play snapshot, not wall or caller time', async () => {
     const save = freshSave();
+    const legacyWallClock = 4_102_444_800_000;
+    const canonicalCodecNow = PORTABLE_V5_MAX_CLOCK_MS;
     save.mineX = [[134, 1]];
-    save.mined = [[134, 4_102_444_800_000]];
+    save.mined = [[134, legacyWallClock]];
     save.items = [['autoext', 1]];
     const mars = surface(world(MARS));
     const extensions = productExtensions({
@@ -1076,7 +1079,7 @@ describe('Arc 3 app action transaction seam', () => {
     const forgedActivePlayMs = 9_000_000;
     const negativeControl = deriveArc3MineAction({
       draft: structuredClone(save), extensions, currentSurface: mars,
-      activePlayMs: forgedActivePlayMs, receiptOrdinal: 0, codecNow: 4_102_444_800_000,
+      activePlayMs: forgedActivePlayMs, receiptOrdinal: 0, codecNow: canonicalCodecNow,
     });
     expect(negativeControl.kind).toBe('ready');
     if (negativeControl.kind === 'ready') {
@@ -1091,7 +1094,7 @@ describe('Arc 3 app action transaction seam', () => {
       runtime,
       save,
       mars,
-      4_102_444_800_000,
+      canonicalCodecNow,
       (value) => { planHolder.value = value; },
     );
     expect(committed.kind).toBe('committed');
@@ -1106,7 +1109,8 @@ describe('Arc 3 app action transaction seam', () => {
     });
     expect(JSON.parse(plan.witness)).toMatchObject({ activePlayMs: 12_345 });
     expect(plan.witness).not.toContain(String(forgedActivePlayMs));
-    expect(plan.witness).not.toContain('4102444800000');
+    expect(plan.witness).not.toContain(String(canonicalCodecNow));
+    expect(plan.witness).not.toContain(String(legacyWallClock));
 
     const reloaded = await readSaveV5(backend, REGISTRY, NOW);
     if (reloaded.kind !== 'loaded') throw new Error(`reload was ${reloaded.kind}`);

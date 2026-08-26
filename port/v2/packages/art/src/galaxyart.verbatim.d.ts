@@ -3,3 +3,4 @@ export const GAL_SPRITES: readonly HTMLCanvasElement[];
 export const GAL_KIND: readonly string[];
 export const GAL_SPRITE_SEEDS: readonly number[];
 export function makeGalaxySprite(seed: number, kindLock?: string): HTMLCanvasElement;
+export function galaxyHaze(seed: number, prof: Record<string, unknown>): HTMLCanvasElement;

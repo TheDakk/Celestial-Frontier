@@ -4,13 +4,76 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches code as of 2026-08-25.**
+> **Current port/v2 source overlay matches the local working tree as of 2026-08-26.**
 >
-> **2026-08-25 Arc 3–5 + Arc 7 current local overlay:** `@cf/domain-opportunity`,
+> **2026-08-26 local candidate overlay — implemented source lanes, not certification:** Gate B's
+> recursive scanner now seals an exact 62-domain-source inventory against DOM, storage,
+> `navigator`, network, wall/monotonic clock and uncontrolled randomness. Its only two reasoned
+> waivers are the exact `document.createElement('')` expressions used by CombatCore's legacy
+> `playerAvatar` and
+> `paperdollAvatar` canvas painters; duplicate, reason/matcher drift and injected forbidden-access
+> controls fail closed. D-HAZE is no longer a domain exception: `galaxyHaze` and its cache moved
+> byte-for-byte from WorldGen to the app-owned `GalaxyArt` layer, with main/html/lifter parity and
+> package-edge controls. `search-travel.ts` now owns Search, CF1 travel, native-keyboard lifecycle,
+> Compendium continuation/focus and boundary notices. `app-chrome.ts` owns topbar, dock, context,
+> hint and viewport/observer lifecycle. `main.ts` remains their rendering and persistence adapter.
+>
+> F4 now owns the active-play ecology-epoch stage/commit/reject edge, blocks ecology during a
+> transition, coalesces the accepted edge into the ordinary checkpoint and refreshes projections
+> only after commitment. The import/persistence boundary now preserves three formerly exposed
+> seams: injected-clock notification stamps normalize to a fixed point, missing `conq[].e` becomes
+> exactly one legacy-ready cycle and all values clamp to `[0, EPOCH_BASE]`, and more than 4,000
+> legacy XP-first keys survive through the paired v4 `xpa` binding plus v5
+> `progression.xp-firsts` overflow authority without rearming an award.
+>
+> Deep Scanners now has a live, source-addressed Survey consumer. On the exact eligible scanned,
+> registered lifeless non-Earth world it adds one **Mineral veins** row in deterministic ordinary
+> deposit order plus the biome marker, while withholding cosmic/exceptional veins, grade, reserves,
+> progress and the grounded Mine action. A strict presentation projector maps raw deterministic
+> rarity integers 0–14 onto the player-facing 0–9 vocabulary; malformed input discloses nothing,
+> and Survey/Compendium consumers use that one conversion. Arc 5's compact model also implements
+> the approved child-care invariant: each new bred child receives exactly
+> `0.5 * min(clampedLeftFed, clampedRightFed)`, symmetrically and once. No public breed/care writer
+> or companion UI exists yet.
+>
+> Arc 7/8 has crossed one deliberately narrow app boundary. `audio-identity-projector.ts` resolves
+> only an exact current registered owned creature into the deterministic signature/profile/call
+> plan, excluding mutable XP/hurt/fed/brood state. The app owns the five-bus fail-closed runtime,
+> persisted **Creature Voices** setting and an asset-free bounded fauna renderer. Only a native
+> Tame gesture followed by the exact durable, nonconverging fauna acquisition and its accessible
+> status counterpart may emit one greeting, keyed once to the acquisition record. Mute, Creature
+> Voices off, hidden/unanswerable play, miss/refusal, stale or reload convergence, route/counterpart
+> loss, replacement and disposal remain silent and synchronously release the audio/runtime owner. Other creature
+> actions, ambience, music, combat/Guardian audio, recorded assets, full accessibility/device
+> plateaus and HUMAN listening remain open.
+>
+> The dedicated real-time Arc 4 recovery collector and mutation-sensitive selftest are ready, but
+> the uninterrupted real 20-minute certificate has not run. The Compendium ruler is correctly
+> `calibration-required`: measurement authority
+> `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, producer authority
+> `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, empty phone/desktop
+> calibration samples, a measurement-required paired baseline and `ceilings:null`. Its exact
+> Arc-local v2 browser authority is Microsoft Edge family + CDP `1.3` + sealed capability contract
+> `cf-v2-compendium-cdp-capabilities/v1` (SHA-256
+> `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`). Exact product version,
+> revision, JavaScript version, executable and user agent are mandatory per-run provenance only;
+> phone/desktop samples sharing a run ID bind the same tuple. Edge auto-update does not recalibrate
+> or move ceilings, and a real observed breach remains red. This Compendium-only policy does not
+> alter SceneMemory or the root Gate-A browser contract.
+>
+> Browser-free verification for these local, uncommitted bytes is green: 121 test files, 1,354
+> passed, one intentional skip and zero failures; `root/app/worker/noUnused` TypeScript; an
+> 884-module Vite build; root validation with the unchanged 50-probe fingerprint; legacy jsdom
+> smoke; and the applicable contract, reporter, Glass, recovery and Compendium selftests. There is
+> no current-input browser evidence for this candidate and no hosted, HUMAN, whole-Gate, release,
+> version, preview/publication or deployment claim.
+>
+> **2026-08-25 Arc 3–5 + Arc 7 historical checkpoint — retained as foundation where the
+> 2026-08-26 overlay does not supersede it:** `@cf/domain-opportunity`,
 > `arc3-engineering-actions.ts`, `engineering-panel-model.ts`, `engineering-panel.ts`, and
 > `product-action-coordinator.ts` now own full-CF1 finite world/star opportunities and the live
 > Mine/Skim and eligible fixed-Engineering path. The panel displays six research rows but only Deep
-> Scanners is purchasable. Its pure orbital-reveal policy exists, while current Survey renders no
+> Scanners was purchasable. Its pure orbital-reveal policy existed, while that checkpoint's Survey rendered no
 > orbital mineral rows. The panel lists all 62 fixed recipes, but only connected-effect outputs with
 > exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional slotted
 > outputs and disconnected-effect rows remain unavailable. One transaction commits Cargo/items/technology, Arc 2/3
@@ -67,7 +130,7 @@
 > odds, one shared hit-or-miss Biosphere Yield, active-play recovery, pending non-optimism and
 > native Close/reopen/focus behavior. Guide Capture/Discover copy is live/partial within the current
 > 24-partial/17-unavailable inventory; **A New Foundation** contains 54 draft bullets. Training
-> remains six lessons plus graduation with no Capture lesson. Current-source Slice passes the exact
+> remained six lessons plus graduation with no Capture lesson. The historical exact-input Slice passed the exact
 > nine-stage capture ledger in 336,913 ms (report
 > `4cc6fe02fb6965e4b67baef1d6b90d0a5ac64dff836cdc6416f49d5ad5bbbdde`, 14 burn steps,
 > `recoveryClaimed:false`); Glass passes 12 viewports/36 Arc 4 outcomes with every planned control
@@ -86,7 +149,7 @@
 > Arc 7 has pure identity/taxonomy/ecology/expression,
 > an injected runtime, lab and empty-rights validator; it is not app-owned playback. Its absolute
 > eight-emitter/120-node configuration caps are committed package policy.
-> Retained Arc 4 browser reports predate compact Arc 5 V2. Final current-input Slice run
+> Retained Arc 4 browser reports predate compact Arc 5 V2. The historical exact-input Slice run
 > `20260825213041239-98104-c96d3b2d0652` passed once on Edge `151.0.4129.101` in 363,053 ms with
 > zero findings/retries/source change, one exact nine-stage/14-burn/`recoveryClaimed:false`/`ok`
 > ledger plus PASS, 10 hashed PNGs and executable Arc 5 fixed-point/successor/fault/reload controls
@@ -150,7 +213,7 @@
 > item/compare art remain open. No hosted/integration, preview, Gate, version, release or deployment
 > authority follows.
 >
-> **2026-08-25 Arc 3 current-source local evidence:** commit `c4a02be` contains the boot/recovery
+> **2026-08-25 Arc 3 historical exact-input local evidence:** commit `c4a02be` contains the boot/recovery
 > product and instruments. No-retry Slice Smoke run `20260825013823076-822-b99fea33b17b` passed on
 > Edge `151.0.4129.101` in 253,181 ms with zero findings/failure scopes, zero retries and ten
 > run-bound screenshots; its report SHA-256 is
@@ -160,7 +223,7 @@
 > SHA-256 is `a3a67426828efb82962a73fdeb2d99c410a575488e8a416c17f75338e296aa57`. Both reports are
 > precommit dirty diagnostics against `768fb32`; Glass reconstructs `c4a02be`, while Slice predates
 > only final Glass-only fixture/contract/tool additions and no intervening app-product change. This
-> is bounded current-source local evidence, not a same-snapshot clean exact-head, hosted, HUMAN,
+> is bounded historical exact-input local evidence, not a same-snapshot clean exact-head, hosted, HUMAN,
 > integration, whole-Gate, release or deployment certificate.
 >
 > **2026-08-22 Arc 1C ship/surface implementation and SceneMemory v2 overlay (historical pre-Arc-2 source):**
@@ -760,7 +823,7 @@
 > branch; `installCaptureHooks()` remains the current boot seam. This is
 > contract truth, not removal of the free-global dependency, D-HAZE, CF1/F2,
 > `_sanitizeSavedGenome` mutation, or the then-open F4 clock work.
-> **2026-08-15 F1b audio package overlay:** The v2 package remains stings-only, but its public
+> **2026-08-15 F1b audio package overlay (historical pre-Arc-7 app ownership):** The v2 package was stings-only, but its public
 > rarity/survey/navigation stings and `applySfxGain()` now no-op before `initAudio()` installs the
 > save-backed seam. Initialization creates no context. After it, Sound-off prevents construction;
 > the first enabled sting lazily prefers standard `AudioContext`, falls back to
@@ -868,7 +931,7 @@
 > battery, automatic agent-branch sync, and post-green `workflow_run` publisher are retired as
 > default execution paths on the remote. `.github/workflows/test.yml` exposes one tiny authorization job followed by
 > one fail-fast serial runner whose display name remains the required `battery` context and whose job id remains
-> `v2-compendium-memory` for the sealed exact-Edge workflow control. It is eligible only on a PR
+> `v2-compendium-memory` for the sealed Edge workflow control. It is eligible only on a PR
 > `labeled` event where the repository owner applied exact label `actions-budget-approved`. The
 > dependency preserves the sealed Compendium owner's no-`if` contract. Branch direction runs in the
 > authorization job; cheap/static gates run before the shorter SceneMemory exact-Edge ruler, then
@@ -1909,7 +1972,10 @@ Specimen cards (`showReveal`) wear a `.gbadge` grade badge; the character sheet 
 chased, not checklisted) and "Apex Guardians felled".
 `rarityRoll` / `speciesGrade` / `colorGrade` retain the raw deterministic score; higher
 scores still drive sorting, stings, FX, and Stardust bonuses (§9). `displayRarity(raw)`
-is the single player-facing clamp. Spectral art designations may still combine an
+is the canonical clamp. Current v2 routes it through `rarity-presentation.ts`, which accepts only
+integer raw values 0–14, returns the exact 0–9 label/color projection, and returns null rather than
+inventing disclosure for malformed input. Survey and Compendium consumers use that projector.
+Spectral art designations may still combine an
 internal prefix with a domain hue (for example "Radiant Fire"), but badges, filters,
 items, and collection progress use the ten-grade display ladder. `tiersOwned()` clamps
 raw 9–14 to display tier 9, and the historical `tiers12` ID now truthfully awards all
@@ -1983,6 +2049,20 @@ detail/Back, resize, and close. Native Arc 4 Tame/Scavenge/Sample controls can d
 catalogue compatibility data after the exact committed transaction verifies; eligible repeats add
 only the appropriate stable fauna individual or specimen lot. Failed or refused attempts do not
 publish optimistic ownership, reroll, or perform a second write.
+
+The current local ruler is intentionally not certified. Its state is `calibration-required` under
+measurement authority `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`
+and producer authority `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`.
+Phone and desktop calibration samples are empty, the paired baseline is
+`measurement-required`, its collector commit is null, and numeric ceilings are null. Browser
+authority schema `cf-v2-compendium-browser-authority/v2` accepts canonical Microsoft Edge builds
+that report CDP `1.3` and satisfy sealed capability contract
+`cf-v2-compendium-cdp-capabilities/v1` / SHA-256
+`6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Exact product version,
+revision, JavaScript version, executable and user agent remain mandatory evidence, but only as one
+per-run provenance tuple shared by that run's phone and desktop samples. Independent runs may span
+Edge auto-updates without recalibration or threshold changes; an actual threshold breach still
+fails. SceneMemory and the root Gate-A browser authority are outside this change.
 
 ### Star Atlas (bookmarks)
 The `logMap` Map. `addToLog`, `renderLog`. Every survey card (galaxy/star/planet/moon/etc.)
@@ -2060,6 +2140,12 @@ live by `syncTopbarH` + ResizeObserver):
 - **Left rail** (anchored below full topbar): **Prime Codex** (endgame — moved here
   in the v1.5 swap). Traveler's Beacon + Cosmic Events are HIDDEN for rework
   (`EVENTS_DORMANT`; buttons `display:none`, engines refuse clicks).
+
+In the current v2 app, `app-chrome.ts` is the focused owner for this chrome: safe-text nameplate,
+topbar/dock/context/hint publication, the 72px visibility boundary, resize/mutation observers and
+dispose-before-replacement. `search-travel.ts` separately owns Search/CF1 travel, native keyboard
+listener lifecycle, Compendium continuation/focus and boundary notices. `main.ts` supplies their
+rendering and persistence adapters rather than owning either lifecycle directly.
 
 ### Key panels / modals (and their elements)
 | Element id | What |
@@ -2224,30 +2310,31 @@ Compendium / Star Atlas / Cosmic Events / Settings.
 > **See `AUDIO.md` for the full system** (creature voices, combat, ambience, the
 > feedback grammar, the toggles, and the traps). This section is the code map only.
 
-The current v2 application is deliberately narrower than production v1. It imports the
-compatibility `initAudio`, survey/navigation stings and shared-gain updater; the package also exports
-the rarity sting discovery seam. Sting calls and the gain updater are inert before `initAudio()`
-installs live Sound/Volume getters, and initialization allocates nothing. Thereafter Sound-off
-remains mute-before-create, while an enabled call lazily selects standard `AudioContext` before the
-`webkitAudioContext` fallback and reuses it. During awaited save-load, the app assigns the save and
-calls `initAudio()` synchronously before later playable scene/input publication. Current audible v2
-behavior is still survey ping and travel whoosh only.
+The current v2 application remains deliberately narrower than production v1, but its Arc 7
+foundation is no longer package-only. `audio-identity-projector.ts` admits only the exact current,
+registered owned creature and projects immutable genome/owner/lineage evidence into the pure
+signature/profile/call-plan pipeline; XP, hurt, fed, bond, assignment and brood state cannot alter
+that identity. `createAudioRuntime()` owns master plus music, ambience, creature, combat/gameplay
+and UI buses; limiter/meters; priority/cooldown/concurrency/stealing; cancellation-aware resume;
+and exact node, cache and context cleanup. Mute and stop are synchronous, unmute does not allocate,
+failed or closing contexts stay fail-closed, and hostile close/re-entry cannot resurrect an old
+owner. The absolute eight-creature-emitter/120-node policy remains intact.
 
-The package's separate Arc 7 surface exports pure identity serialization/profile/call planning,
-set-qualified taxonomy and sound witnesses, static-purity auditing, distant-ecology and
-settled-expression plans, the injected `createAudioRuntime()` owner and diagnostics/lab audits, and
-the versioned empty rights authority/validator. The runtime owns five category buses, limiter,
-meters, priority/cooldown/concurrency/stealing, reservations, exact node/cache/context cleanup,
-mute/hidden/restart/context-loss handling and disposal for graphs submitted to it. The committed
-policy defaults it to 24 voices, eight creature emitters and 96 nodes and rejects
-configuration above the absolute eight-emitter/120-node caps before context creation. It neither
-owns nor counts the compatibility stings.
+`creature-expression-voice.ts` supplies a deterministic asset-free fauna graph bounded to one
+oscillator and one gain node in a single expression concurrency group. `tame-greeting-audio.ts`
+arms only from the native Tame gesture and admits only the exact committed durable nonconverging
+fauna Tame result whose species/world/revision, current ownership, acquisition record and projector
+all match. It pairs that sound with the exact accessible status event and keys the one allowed
+greeting as `arc4:taming-succeeded:${recordId}`. Sound off, persisted **Creature Voices** off,
+hidden/unanswerable play, miss/refusal, stale/reload convergence, route or counterpart loss,
+replacement and disposal stay silent and stop/release the audio/runtime owner. Reload begins disposed, unarmed
+and without context, counterpart, voice or nodes.
 
-No canonical app creature/save/event adapter or authored graph feeds that runtime, and no v2
-creature voice, ambience, combat/Guardian cue, music or recorded asset is player-live. Browser/device
-plateaus, decoded-byte policy, file/media rights observation, captions, mono, dynamic range,
-reduced-intensity behavior and HUMAN listening/quality acceptance remain open. Gate G and Arc 7/8
-remain partial; no player-facing capability or version follows from the package foundation.
+Compatibility survey/navigation stings remain separate. No other creature expression, distant
+ecology, ambience, music, combat/Guardian cue or recorded asset is player-live. Compendium audition,
+decoded-byte/media plateau, full captions/mono/dynamic-range/reduced-intensity behavior, device
+heat and HUMAN listening/quality acceptance remain open. This narrow implementation does not close
+Arc 7, Arc 8 or Gate G and grants no release/version authority.
 
 **v1.8 "The Connection" added the largest part of this layer** and it is not
 described below: `voiceOf`/`playVoice` (deterministic per-genome creature voices
@@ -2277,7 +2364,7 @@ presentation, the determinism ban covers domain modules only.
 
 ## 10. Save format (`localStorage['cfcc_save_v2']`)
 
-**Current v2 topology (2026-08-25):** v4 remains the imported/exported compatibility codec, while
+**Current v2 topology (2026-08-26):** v4 remains the imported/exported compatibility codec, while
 repository schema v5 stores owner-partitioned rows, pre-migration source snapshot/journal, revision,
 receipts and independently versioned extension namespaces. Current product authorities include
 `player/f4.authority` v1 (active-play + SessionRNG), `inventory/arc2.loot` v1 (exact gear +
@@ -2287,6 +2374,13 @@ v4 envelope would erase authority. Receipt-free boot migration/reconciliation sh
 lease-fenced CAS, while product actions join their carrier/compatibility/F4 changes with one receipt
 and next revision. This schema number is independent of the development display identity and
 production `GAME_VERSION`.
+
+Three bounded compatibility seams are now separately executable. Notification stamps use only the
+injected clock and converge to identical later-v5 bytes. A missing conquest epoch `conq[].e`
+imports as exactly one legacy-ready cycle, hostile values clamp to `[0, EPOCH_BASE]`, and the result
+round-trips. XP-first authority stores the newest exact 4,000 legacy keys in v4 `xpf`; v4 `xpa` is
+the strict binding to the full v5 `progression.xp-firsts` overflow authority. Together they carry
+the complete set without rearm and protect mismatch, future, corrupt or source-protected evidence.
 
 **Current v2 Training compatibility fields (2026-08-16):** the outer envelope
 remains `v:4`. While Training is incomplete, optional `tsnap` carries either the
@@ -2395,6 +2489,13 @@ for a name.
 ---
 
 ## 12. Test suites (all must pass)
+
+**Current local candidate snapshot (2026-08-26):** browser-free verification is green at 121 test
+files / 1,354 passed / one intentional skip / zero failures, with root, app, worker and no-unused
+TypeScript, the 884-module Vite build, root validation/fingerprint, legacy jsdom smoke, and the
+applicable contract/reporter/Glass/recovery/Compendium selftests green. These results describe
+uncommitted working-tree bytes. No current-input browser run, 20-minute recovery certificate,
+Compendium calibration, hosted execution, HUMAN review, whole-Gate closure or release follows.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost
 with the previous working environment. They are superseded by `tools/validate.js`

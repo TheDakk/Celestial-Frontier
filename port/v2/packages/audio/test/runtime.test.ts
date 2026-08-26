@@ -206,6 +206,73 @@ class DeferredContext extends FakeContext {
   }
 }
 
+class RetryCloseContext extends FakeContext {
+  private remainingFailures: number;
+
+  constructor(failures: number) {
+    super();
+    this.remainingFailures = failures;
+  }
+
+  override async close(): Promise<void> {
+    this.closeCalls++;
+    if (this.remainingFailures > 0) {
+      this.remainingFailures--;
+      throw new Error('injected close refusal');
+    }
+    this.forceState('closed');
+  }
+}
+
+class PermanentCloseContext extends FakeContext {
+  override async close(): Promise<void> {
+    this.closeCalls++;
+    throw new Error('injected permanent close refusal');
+  }
+}
+
+class NeverResumeContext extends FakeContext {
+  override resume(): Promise<void> {
+    this.resumeCalls++;
+    return new Promise<void>(() => { /* deliberately never settles */ });
+  }
+}
+
+class NeverCloseContext extends FakeContext {
+  override close(): Promise<void> {
+    this.closeCalls++;
+    return new Promise<void>(() => { /* deliberately never settles */ });
+  }
+}
+
+class RejectThenNeverCloseContext extends FakeContext {
+  override close(): Promise<void> {
+    this.closeCalls++;
+    if (this.closeCalls === 1) return Promise.reject(new Error('injected first close refusal'));
+    return new Promise<void>(() => { /* deliberately never settles */ });
+  }
+}
+
+class ReentrantRejectResumeContext extends FakeContext {
+  resumeHook: (() => void) | null = null;
+
+  override resume(): Promise<void> {
+    this.resumeCalls++;
+    this.resumeHook?.();
+    return Promise.reject(new Error('resume rejected after cancellation'));
+  }
+}
+
+class ReentrantCloseContext extends FakeContext {
+  closeHook: (() => Promise<void>) | null = null;
+
+  override async close(): Promise<void> {
+    this.closeCalls++;
+    if (this.closeHook) await this.closeHook();
+    this.forceState('closed');
+  }
+}
+
 function contextFactory(contexts: readonly FakeContext[]): {
   readonly create: () => AudioContextLike;
   readonly created: () => number;
@@ -360,7 +427,7 @@ describe('Arc 7 injected audio runtime', () => {
     await expect(runtime.activate()).resolves.toEqual({ kind: 'blocked', reason: 'muted' });
     expect(factory.created()).toBe(0);
 
-    runtime.setMuted(false);
+    await runtime.setMuted(false);
     await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
     expect(factory.created()).toBe(1);
     expect(context.gains).toHaveLength(6); // master + five category buses
@@ -398,18 +465,27 @@ describe('Arc 7 injected audio runtime', () => {
     expect(diagnostics.peaks.master).toBeCloseTo(0.6);
     expect(diagnostics.peaks.ui).toBeCloseTo(0.8);
 
-    runtime.setMuted(true);
+    const muting = runtime.setMuted(true);
+    const repeatedDuringClose = runtime.setMuted(true);
+    expect(repeatedDuringClose).not.toBe(muting);
+    await expect(repeatedDuringClose).resolves.toBeUndefined();
     expect(source.stopCalls).toBe(1);
     expect(source.disconnectCalls).toBe(1);
     expect(perVoiceGain.disconnectCalls).toBe(1);
     expect(context.gains[0]!.gain.value).toBe(0);
     expect(runtime.playVoice(request(new FakeSource('muted')))).toEqual({ kind: 'rejected', reason: 'muted' });
+    await muting;
+    expect(context.closeCalls).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'blocked', contextState: null, nodes: { active: 0 }, voices: { active: 0 },
+    });
   });
 
   it('preserves exact master and category gains before activation, through mute, and across context recovery', async () => {
     const first = new FakeContext();
     const second = new FakeContext();
-    const factory = contextFactory([first, second]);
+    const third = new FakeContext();
+    const factory = contextFactory([first, second, third]);
     const runtime = createAudioRuntime({
       createContext: factory.create,
       nowMs: () => 0,
@@ -435,7 +511,7 @@ describe('Arc 7 injected audio runtime', () => {
     expect(factory.created()).toBe(0);
     expect(runtime.diagnostics().gains).toMatchObject({ master: 0.29, effectiveMaster: 0 });
 
-    runtime.setMuted(false);
+    await runtime.setMuted(false);
     await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
     expect(first.gains[0]!.gain.value).toBe(0.29);
     expect(first.gains[5]!.gain.value).toBe(0.17);
@@ -443,20 +519,29 @@ describe('Arc 7 injected audio runtime', () => {
 
     runtime.setMasterGain(0.23);
     expect(first.gains[0]!.gain.value).toBe(0.23);
-    runtime.setMuted(true);
+    const muting = runtime.setMuted(true);
     expect(first.gains[0]!.gain.value).toBe(0);
     runtime.setMasterGain(0.19);
     expect(first.gains[0]!.gain.value).toBe(0);
     expect(runtime.diagnostics().gains).toMatchObject({ master: 0.19, effectiveMaster: 0 });
-    runtime.setMuted(false);
-    expect(first.gains[0]!.gain.value).toBe(0.19);
-
-    first.forceState('closed');
+    await muting;
+    expect(first.closeCalls).toBe(1);
     expect(runtime.diagnostics()).toMatchObject({ contextState: null, nodes: { active: 0 } });
+
+    await runtime.setMuted(false);
+    expect(factory.created()).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({ state: 'blocked', contextState: null });
     await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
     expect(second.gains[0]!.gain.value).toBe(0.19);
     expect(second.gains[1]!.gain.value).toBe(0.41);
     expect(second.gains[5]!.gain.value).toBe(0.17);
+
+    second.forceState('closed');
+    expect(runtime.diagnostics()).toMatchObject({ contextState: null, nodes: { active: 0 } });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(third.gains[0]!.gain.value).toBe(0.19);
+    expect(third.gains[1]!.gain.value).toBe(0.41);
+    expect(third.gains[5]!.gain.value).toBe(0.17);
     expect(runtime.diagnostics().gains).toEqual({
       master: 0.19,
       effectiveMaster: 0.19,
@@ -471,6 +556,282 @@ describe('Arc 7 injected audio runtime', () => {
 
     await runtime.dispose();
     expect(runtime.diagnostics().gains).toMatchObject({ master: 0.19, effectiveMaster: 0.19 });
+  });
+
+  it('keeps the original close obligation when unmute wins in the same turn', async () => {
+    const first = new DeferredContext();
+    const second = new FakeContext();
+    const factory = contextFactory([first, second]);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    await runtime.activate();
+    const source = new FakeSource('same-turn-mute-voice');
+    expect(runtime.playVoice(request(source)).kind).toBe('started');
+    first.deferClose();
+
+    let muteSettled = false;
+    const muting = runtime.setMuted(true);
+    void muting.then(() => { muteSettled = true; });
+    const unmuting = runtime.setMuted(false);
+    expect(source.stopCalls).toBe(1);
+    expect(first.gains[0]!.gain.value).toBe(0);
+    expect(first.closeCalls).toBe(1);
+    expect(factory.created()).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'blocked', muted: false, contextState: null,
+      nodes: { active: 0 }, voices: { active: 0 },
+    });
+    await Promise.resolve();
+    expect(muteSettled).toBe(false);
+    await unmuting;
+    expect(factory.created()).toBe(1);
+
+    first.releaseClose();
+    await muting;
+    expect(muteSettled).toBe(true);
+    expect(first.state).toBe('closed');
+    expect(factory.created()).toBe(1);
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(factory.created()).toBe(2);
+  });
+
+  it('shares the outer mute settlement with source-stop reentrancy', async () => {
+    const context = new DeferredContext();
+    context.deferClose();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const source = new FakeSource('reentrant-mute-voice');
+    const originalStop = source.stop.bind(source);
+    let nested: Promise<void> | null = null;
+    source.stop = () => {
+      nested = runtime.setMuted(true);
+      originalStop();
+    };
+    expect(runtime.playVoice(request(source)).kind).toBe('started');
+
+    const outer = runtime.setMuted(true);
+    expect(nested).toBe(outer);
+    let nestedSettled = false;
+    void nested!.then(() => { nestedSettled = true; });
+    await Promise.resolve();
+    expect(nestedSettled).toBe(false);
+    expect(context.closeCalls).toBe(1);
+    context.releaseClose();
+    await outer;
+    expect(nestedSettled).toBe(true);
+  });
+
+  it('detaches the closing graph before source-stop reentrant unmute and activation', async () => {
+    const first = new FakeContext();
+    const second = new FakeContext();
+    const factory = contextFactory([first, second]);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    await runtime.activate();
+    const source = new FakeSource('source-stop-reactivation');
+    const originalStop = source.stop.bind(source);
+    let nestedActivation: Promise<unknown> | null = null;
+    source.stop = () => {
+      void runtime.setMuted(false);
+      nestedActivation = runtime.activate();
+      originalStop();
+    };
+    expect(runtime.playVoice(request(source)).kind).toBe('started');
+
+    await runtime.setMuted(true);
+    expect(nestedActivation).not.toBeNull();
+    await expect(nestedActivation!).resolves.toEqual({ kind: 'running' });
+    expect(first.closeCalls).toBe(1);
+    expect(first.state).toBe('closed');
+    expect(second.closeCalls).toBe(0);
+    expect(factory.created()).toBe(2);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'running', muted: false, contextState: 'running', contextGeneration: 2,
+      nodes: { active: 13 }, voices: { active: 0 },
+    });
+  });
+
+  it('retries a retained silent teardown before activation can allocate a replacement', async () => {
+    const first = new RetryCloseContext(1);
+    const second = new FakeContext();
+    const factory = contextFactory([first, second]);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    await runtime.activate();
+
+    await expect(runtime.setMuted(true)).resolves.toBeUndefined();
+    expect(first.closeCalls).toBe(1);
+    expect(first.state).toBe('running');
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'blocked', contextState: null, nodes: { active: 0 }, faults: { total: 1 },
+    });
+    await runtime.setMuted(false);
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(factory.created()).toBe(2);
+    expect(first.closeCalls).toBe(2);
+    expect(first.state).toBe('closed');
+    expect(runtime.diagnostics()).toMatchObject({ state: 'running', contextState: 'running' });
+
+    await expect(runtime.setMuted(true)).resolves.toBeUndefined();
+    expect(first.closeCalls).toBe(2);
+    expect(second.closeCalls).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'blocked', contextState: null, nodes: { active: 0 }, faults: { total: 1 },
+    });
+    expect(factory.created()).toBe(2);
+  });
+
+  it('fails closed on permanent close refusal without growing contexts or retained teardown owners', async () => {
+    const contexts = Array.from({ length: 6 }, () => new PermanentCloseContext());
+    const factory = contextFactory(contexts);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+
+    for (let cycle = 0; cycle < 5; cycle++) {
+      await expect(runtime.setMuted(true)).resolves.toBeUndefined();
+      await runtime.setMuted(false);
+      await expect(runtime.activate()).resolves.toEqual({
+        kind: 'blocked', reason: 'context-unavailable',
+      });
+      expect(factory.created(), `factory cycle ${cycle}`).toBe(1);
+      expect(runtime.playVoice(request(new FakeSource(`permanent-${cycle}`)))).toEqual({
+        kind: 'rejected', reason: 'not-running',
+      });
+    }
+
+    const internals = runtime as unknown as {
+      failedTeardownContexts: Set<AudioContextLike>;
+      pendingActivations: Set<unknown>;
+    };
+    expect(internals.failedTeardownContexts.size).toBe(1);
+    expect(internals.pendingActivations.size).toBe(0);
+    expect(contexts[0]!.closeCalls).toBe(10);
+    expect(contexts[0]!.state).toBe('running');
+    expect(contexts.slice(1).every((context) => context.closeCalls === 0)).toBe(true);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'blocked', contextState: null, contextGeneration: 1,
+      nodes: { active: 0 }, faults: { total: 10 },
+    });
+  });
+
+  it('fails closed before the factory while any physical context close is unresolved', async () => {
+    const contexts = Array.from({ length: 5 }, () => new NeverCloseContext());
+    const factory = contextFactory(contexts);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    void runtime.setMuted(true);
+    expect(contexts[0]!.closeCalls).toBe(1);
+
+    for (let cycle = 0; cycle < 5; cycle++) {
+      await runtime.setMuted(false);
+      await expect(runtime.activate()).resolves.toEqual({
+        kind: 'blocked', reason: 'context-unavailable',
+      });
+      expect(factory.created(), `factory cycle ${cycle}`).toBe(1);
+      await expect(runtime.setMuted(true)).resolves.toBeUndefined();
+    }
+
+    const internals = runtime as unknown as {
+      closeSettlements: Map<AudioContextLike, Promise<void>>;
+      failedTeardownContexts: Set<AudioContextLike>;
+      pendingActivations: Set<unknown>;
+    };
+    expect(internals.closeSettlements.size).toBe(1);
+    expect(internals.failedTeardownContexts.size).toBe(0);
+    expect(internals.pendingActivations.size).toBe(0);
+    expect(contexts[0]!.state).toBe('running');
+    expect(contexts.slice(1).every((context) => context.closeCalls === 0)).toBe(true);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'blocked', muted: true, contextState: null, contextGeneration: 1,
+      nodes: { active: 0 }, faults: { total: 0 },
+    });
+  });
+
+  it('cancels activation waiting on a retained close retry when disposal wins', async () => {
+    const context = new RejectThenNeverCloseContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    await expect(runtime.setMuted(true)).resolves.toBeUndefined();
+    expect(context.closeCalls).toBe(1);
+    await runtime.setMuted(false);
+
+    const activation = runtime.activate();
+    expect(context.closeCalls).toBe(2);
+    await expect(runtime.dispose()).resolves.toBeUndefined();
+    await expect(activation).resolves.toEqual({ kind: 'disposed' });
+    const internals = runtime as unknown as {
+      closeSettlements: Map<AudioContextLike, Promise<void>>;
+      failedTeardownContexts: Set<AudioContextLike>;
+      pendingActivations: Set<unknown>;
+    };
+    expect(internals.pendingActivations.size).toBe(0);
+    expect(internals.closeSettlements.size).toBe(1);
+    expect(internals.failedTeardownContexts.size).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'disposed', contextState: null, contextGeneration: 1,
+      nodes: { active: 0 }, faults: { total: 1 },
+    });
+  });
+
+  it('returns immediate mute results throughout an unresolved close instead of self-awaiting', async () => {
+    const context = new ReentrantCloseContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    let nested: Promise<void> | null = null;
+    context.closeHook = () => {
+      nested = runtime.setMuted(true);
+      return nested;
+    };
+
+    const outer = runtime.setMuted(true);
+    const externalRepeat = runtime.setMuted(true);
+    expect(nested).not.toBeNull();
+    expect(nested).not.toBe(outer);
+    expect(externalRepeat).not.toBe(outer);
+    let nestedSettled = false;
+    void nested!.then(() => { nestedSettled = true; });
+    await Promise.resolve();
+    expect(nestedSettled).toBe(true);
+    await expect(externalRepeat).resolves.toBeUndefined();
+    await outer;
+    expect(context.closeCalls).toBe(1);
+    expect(context.state).toBe('closed');
+    expect(runtime.diagnostics().faults.total).toBe(0);
+  });
+
+  it('keeps synchronous and asynchronous close callbacks from cycling through mute or dispose', async () => {
+    const outerKinds = ['mute', 'dispose'] as const;
+    const nestedKinds = ['mute', 'dispose'] as const;
+    const timings = ['sync', 'async'] as const;
+
+    for (const outerKind of outerKinds) {
+      for (const nestedKind of nestedKinds) {
+        for (const timing of timings) {
+          const context = new ReentrantCloseContext();
+          const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+          await runtime.activate();
+          let nested: Promise<void> | null = null;
+          context.closeHook = async () => {
+            if (timing === 'async') await Promise.resolve();
+            nested = nestedKind === 'mute' ? runtime.setMuted(true) : runtime.dispose();
+            await nested;
+          };
+
+          const outer = outerKind === 'mute' ? runtime.setMuted(true) : runtime.dispose();
+          await Promise.resolve();
+          await Promise.resolve();
+          expect(nested, `${outerKind}/${nestedKind}/${timing}`).not.toBeNull();
+          expect(nested, `${outerKind}/${nestedKind}/${timing}`).not.toBe(outer);
+          await expect(nested!).resolves.toBeUndefined();
+          await expect(outer).resolves.toBeUndefined();
+          expect(context.closeCalls, `${outerKind}/${nestedKind}/${timing}`).toBe(1);
+          expect(context.state, `${outerKind}/${nestedKind}/${timing}`).toBe('closed');
+          expect(runtime.diagnostics()).toMatchObject({
+            state: outerKind === 'dispose' || nestedKind === 'dispose' ? 'disposed' : 'blocked',
+            contextState: null,
+            nodes: { active: 0 },
+            faults: { total: 0 },
+          });
+        }
+      }
+    }
   });
 
   it('snapshots hostile option, request, meaning, and graph fields exactly once', async () => {
@@ -638,14 +999,91 @@ describe('Arc 7 injected audio runtime', () => {
   });
 
   it('does not report running when mute wins a deferred activation race', async () => {
-    const context = new DeferredContext('suspended');
-    context.deferResume();
-    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    const first = new DeferredContext('suspended');
+    const second = new FakeContext();
+    first.deferResume();
+    first.deferClose();
+    const factory = contextFactory([first, second]);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
     const activation = runtime.activate();
-    runtime.setMuted(true);
-    context.releaseResume();
+    const muting = runtime.setMuted(true);
+    await Promise.resolve();
+    expect(first.closeCalls).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'blocked', muted: true, contextState: null, nodes: { active: 0 },
+    });
     await expect(activation).resolves.toEqual({ kind: 'blocked', reason: 'muted' });
-    expect(runtime.diagnostics()).toMatchObject({ state: 'blocked', muted: true, contextState: 'running' });
+
+    await runtime.setMuted(false);
+    expect(factory.created()).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({ state: 'blocked', contextState: null });
+    await expect(runtime.activate()).resolves.toEqual({
+      kind: 'blocked', reason: 'context-unavailable',
+    });
+    expect(factory.created()).toBe(1);
+    first.releaseClose();
+    await muting;
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(factory.created()).toBe(2);
+    first.releaseResume();
+    await Promise.resolve();
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'running', muted: false, contextState: 'running', contextGeneration: 2,
+    });
+  });
+
+  it('cancels never-settling resumes on mute and dispose without retaining activation records', async () => {
+    const contexts = Array.from({ length: 5 }, () => new NeverResumeContext('suspended'));
+    const factory = contextFactory(contexts);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    const internals = runtime as unknown as { pendingActivations: Set<unknown> };
+
+    for (let cycle = 0; cycle < 4; cycle++) {
+      const activation = runtime.activate();
+      expect(contexts[cycle]!.resumeCalls).toBe(1);
+      await expect(runtime.setMuted(true)).resolves.toBeUndefined();
+      await expect(activation).resolves.toEqual({ kind: 'blocked', reason: 'muted' });
+      expect(contexts[cycle]!.closeCalls).toBe(1);
+      expect(contexts[cycle]!.state).toBe('closed');
+      expect(internals.pendingActivations.size).toBe(0);
+      await runtime.setMuted(false);
+    }
+
+    const finalActivation = runtime.activate();
+    expect(contexts[4]!.resumeCalls).toBe(1);
+    await expect(runtime.dispose()).resolves.toBeUndefined();
+    await expect(finalActivation).resolves.toEqual({ kind: 'disposed' });
+    expect(contexts[4]!.closeCalls).toBe(1);
+    expect(contexts[4]!.state).toBe('closed');
+    expect(internals.pendingActivations.size).toBe(0);
+    expect(factory.created()).toBe(5);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'disposed', contextState: null, contextGeneration: 5,
+      nodes: { active: 0 }, faults: { total: 0 },
+    });
+  });
+
+  it('observes a resume rejection before honoring synchronous mute cancellation', async () => {
+    const context = new ReentrantRejectResumeContext('suspended');
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    let muting: Promise<void> | null = null;
+    context.resumeHook = () => { muting = runtime.setMuted(true); };
+    const unhandled: unknown[] = [];
+    const onUnhandled = (reason: unknown): void => { unhandled.push(reason); };
+    process.on('unhandledRejection', onUnhandled);
+    try {
+      await expect(runtime.activate()).resolves.toEqual({ kind: 'blocked', reason: 'muted' });
+      await expect(muting!).resolves.toBeUndefined();
+      await new Promise<void>((resolve) => { setTimeout(resolve, 0); });
+      expect(unhandled).toEqual([]);
+      expect(context.closeCalls).toBe(1);
+      expect(runtime.diagnostics()).toMatchObject({
+        state: 'blocked', muted: true, contextState: null,
+        nodes: { active: 0 }, faults: { total: 0 },
+      });
+    } finally {
+      process.off('unhandledRejection', onUnhandled);
+    }
   });
 
   it('shuts down while hidden, requires an explicit restart, and recreates after context loss', async () => {
@@ -696,26 +1134,91 @@ describe('Arc 7 injected audio runtime', () => {
     expect(runtime.diagnostics().contextGeneration).toBe(3);
   });
 
-  it('cancels a stale hide when visibility returns during a deferred activation', async () => {
-    const context = new DeferredContext('suspended');
-    context.deferResume();
-    const factory = contextFactory([context]);
+  it('fences a stale activation when visibility returns and lets the next gesture reactivate', async () => {
+    const first = new DeferredContext('suspended');
+    const second = new FakeContext();
+    first.deferResume();
+    const factory = contextFactory([first, second]);
     const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
 
     const activation = runtime.activate();
     const hiding = runtime.setHidden(true);
     await runtime.setHidden(false);
-    context.releaseResume();
+    first.releaseResume();
 
-    await expect(activation).resolves.toEqual({ kind: 'running' });
+    await expect(activation).resolves.toEqual({ kind: 'blocked', reason: 'context-unavailable' });
     await hiding;
-    expect(context.closeCalls).toBe(0);
+    expect(first.closeCalls).toBe(1);
     expect(runtime.diagnostics()).toMatchObject({
-      state: 'running', hidden: false, contextState: 'running', contextGeneration: 1,
+      state: 'blocked', hidden: false, contextState: null, contextGeneration: 1,
+    });
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(factory.created()).toBe(2);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'running', hidden: false, contextState: 'running', contextGeneration: 2,
     });
   });
 
-  it('never lets a deferred stale hide clobber a replacement context or resurrect disposal', async () => {
+  it('does not allocate a replacement until a deferred mute close settles', async () => {
+    const first = new DeferredContext();
+    const second = new FakeContext();
+    const factory = contextFactory([first, second]);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    await runtime.activate();
+    first.deferClose();
+
+    const muting = runtime.setMuted(true);
+    await Promise.resolve();
+    expect(first.closeCalls).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'blocked', muted: true, contextState: null, nodes: { active: 0 },
+    });
+    await runtime.setMuted(false);
+    await expect(runtime.activate()).resolves.toEqual({
+      kind: 'blocked', reason: 'context-unavailable',
+    });
+    expect(factory.created()).toBe(1);
+
+    first.releaseClose();
+    await muting;
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(factory.created()).toBe(2);
+    expect(second.closeCalls).toBe(0);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'running', muted: false, contextState: 'running', contextGeneration: 2,
+    });
+  });
+
+  it('makes disposal terminal while a deferred mute close blocks replacement allocation', async () => {
+    const first = new DeferredContext();
+    const second = new FakeContext();
+    const factory = contextFactory([first, second]);
+    const runtime = createAudioRuntime({ createContext: factory.create, nowMs: () => 0 });
+    await runtime.activate();
+    first.deferClose();
+
+    const muting = runtime.setMuted(true);
+    await Promise.resolve();
+    await runtime.setMuted(false);
+    await expect(runtime.activate()).resolves.toEqual({
+      kind: 'blocked', reason: 'context-unavailable',
+    });
+    expect(factory.created()).toBe(1);
+    const disposing = runtime.dispose();
+    await Promise.resolve();
+    expect(second.closeCalls).toBe(0);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'disposed', contextState: null, nodes: { active: 0 },
+    });
+
+    first.releaseClose();
+    await Promise.all([muting, disposing]);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'disposed', contextState: null, nodes: { active: 0 },
+    });
+  });
+
+  it('blocks replacement during a deferred hide close and never resurrects disposal', async () => {
     const first = new DeferredContext();
     const second = new FakeContext();
     const factory = contextFactory([first, second]);
@@ -726,17 +1229,73 @@ describe('Arc 7 injected audio runtime', () => {
     const hiding = runtime.setHidden(true);
     expect(first.closeCalls).toBe(1);
     await runtime.setHidden(false);
-    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
-    expect(runtime.diagnostics()).toMatchObject({ state: 'running', contextGeneration: 2 });
+    await expect(runtime.activate()).resolves.toEqual({
+      kind: 'blocked', reason: 'context-unavailable',
+    });
+    expect(factory.created()).toBe(1);
 
-    await runtime.dispose();
     first.releaseClose();
     await hiding;
+    await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(runtime.diagnostics()).toMatchObject({ state: 'running', contextGeneration: 2 });
+    await runtime.dispose();
     expect(second.closeCalls).toBe(1);
     expect(runtime.diagnostics()).toMatchObject({
       state: 'disposed', hidden: false, contextState: null, nodes: { active: 0 },
     });
     await expect(runtime.activate()).resolves.toEqual({ kind: 'disposed' });
+  });
+
+  it('does not settle reentrant factory disposal before its unpublished context closes', async () => {
+    const context = new DeferredContext();
+    context.deferClose();
+    let runtime!: ReturnType<typeof createAudioRuntime>;
+    let reentrantDisposal: Promise<void> | null = null;
+    runtime = createAudioRuntime({
+      createContext: () => {
+        reentrantDisposal = runtime.dispose();
+        return context;
+      },
+      nowMs: () => 0,
+    });
+
+    const activation = runtime.activate();
+    expect(reentrantDisposal).not.toBeNull();
+    const repeatedDuringClose = runtime.dispose();
+    expect(repeatedDuringClose).not.toBe(reentrantDisposal);
+    await expect(repeatedDuringClose).resolves.toBeUndefined();
+    expect(context.closeCalls).toBe(1);
+    expect(context.state).toBe('running');
+    let disposalSettled = false;
+    void reentrantDisposal!.then(() => { disposalSettled = true; });
+    await Promise.resolve();
+    expect(disposalSettled).toBe(false);
+
+    context.releaseClose();
+    await expect(activation).resolves.toEqual({ kind: 'disposed' });
+    await reentrantDisposal;
+    expect(disposalSettled).toBe(true);
+    expect(context.state).toBe('closed');
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'disposed', contextState: null, nodes: { active: 0 },
+    });
+  });
+
+  it('fault-contains a failed disposal close and retries it on later disposal', async () => {
+    const context = new RetryCloseContext(1);
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+
+    await expect(runtime.dispose()).resolves.toBeUndefined();
+    expect(context.closeCalls).toBe(1);
+    expect(context.state).toBe('running');
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'disposed', contextState: null, nodes: { active: 0 }, faults: { total: 1 },
+    });
+    await expect(runtime.dispose()).resolves.toBeUndefined();
+    expect(context.closeCalls).toBe(2);
+    expect(context.state).toBe('closed');
+    expect(runtime.diagnostics().faults.total).toBe(1);
   });
 
   it('disposes idempotently with exact voice, cache, graph, and context ownership', async () => {
@@ -986,7 +1545,7 @@ describe('Arc 7 injected audio runtime', () => {
       let transitionDone: Promise<void> | null = null;
       replacement.start = () => {
         originalStart();
-        if (transition === 'mute') runtime.setMuted(true);
+        if (transition === 'mute') transitionDone = runtime.setMuted(true);
         else if (transition === 'hide') transitionDone = runtime.setHidden(true);
         else if (transition === 'context-loss') context.forceState('closed');
         else transitionDone = runtime.dispose();

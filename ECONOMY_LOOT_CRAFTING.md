@@ -1,10 +1,27 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-> **2026-08-24 Arc 3 Engineering overlay — current local implementation:** the port now exposes
+> **2026-08-26 locale-independent economy ordering — current local candidate:** the source-neutral
+> Arc 2 ledger no longer calls ambient `String.prototype.localeCompare()` when it canonicalizes
+> coverage identifiers or quantity maps. One explicit `<` / `>` comparator now gives JavaScript's
+> deterministic UTF-16 code-unit order (for example `Z`, `a`, `ä`) to audit sets, imported snapshots,
+> source receipts and positive-quantity projections. A hostile-locale control makes
+> `localeCompare()` throw and still obtains the exact canonical order.
+>
+> This changes ordering mechanism only. It changes no material/item/recipe/research definition,
+> quantity, cost, source receipt, loot pool, affix/crafting policy, RNG, active-play cursor, save
+> authority, reward rate or ETA claim. It is pure automated determinism evidence, not current
+> real-browser, HUMAN, hosted, integration, release or deployment evidence.
+
+> **2026-08-26 Arc 3 Engineering overlay — current local implementation (2026-08-24
+> foundation):** the port now exposes
 > finite full-CF1 world mining, star skimming, six Research rows and every fixed legacy recipe in
 > the **Engineering & Shipyard** panel. Only Deep Scanners is purchasable among those six research
-> rows. Its pure orbital-reveal policy exists, but current Survey does not render orbital mineral
-> rows. All 62 fixed recipes are listed; only connected-effect outputs with exact costs/
+> rows. Aligned current Deep Scanner ownership now adds one read-only **Mineral veins** row to the
+> orbital Survey card for an eligible exact proven lifeless non-Earth world. The row preserves
+> ordinary-deposit order and marks the separate biome vein with ✦. Living worlds, Earth,
+> cosmic/exceptional veins, grades, reserves, progress and the Mine action remain omitted from
+> orbit. All 62 fixed recipes are listed;
+> only connected-effect outputs with exact costs/
 > preconditions and capacity/revision headroom are actionable, while fully exceptional slotted
 > outputs and disconnected-effect rows remain unavailable. Mine, Skim, the eligible Deep-Scanner
 > purchase and eligible fixed Fabrication settle through one lease-fenced F3/F4 CAS with the exact

@@ -1,15 +1,39 @@
 # Celestial Frontier — Species & Genome System
 
-**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 reset and Arc 4/5A
-ownership overlays match the current local `port/v2` candidate as of 2026-08-25, and the partially implemented package-only
-audio-identity overlay matches `@cf/audio` as of 2026-08-24. ⚠ v1.8.9: every reader of the
+**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
+ownership, one-time bred-child feeding, rarity-presentation and narrow Tame-audio overlays match the
+local `port/v2` candidate as of 2026-08-26. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
 
-> **2026-08-25 Arc 4/5A ownership overlay — Arc 4 player-live; Arc 5A infrastructure-only:** the port has a strict
+> **2026-08-26 current-candidate species boundary:** the internal-only Arc 5 bred-successor seam
+> initializes a newly admitted child with
+> `fed = 0.5 * min(clamp(parentA.fed, 0..200), clamp(parentB.fed, 0..200))` exactly once. Reversing
+> the parents yields the same value, absent input becomes zero, encode/decode preserves it, and a
+> later care change is not overwritten. No public/player breed action invokes this seam: breeding
+> odds, parent Recovery duration and locks, care/timing/capacity, confirmation, UI and copy remain
+> Arc 5B product-open.
+>
+> Raw deterministic grade remains mechanics/internal-art data. Player surfaces use only the strict
+> ten-name rarity projector: integer tiers `0..8` map directly, raw `9..14` present as
+> Transcendent, invalid/missing values are omitted rather than coerced to Common, and neither the
+> internal art label nor raw tier number is shown. Planet rarity stays hidden before landing; a
+> legitimate scientific stellar class is not a creature rarity label.
+>
+> The app now has one deliberately narrow creature-audio path. A trusted native Tame gesture may arm
+> one silent audio context only while the current surface is visible and answerable and Sound plus
+> Creature Voices are enabled. Playback occurs only after the exact durable successful fauna result,
+> no convergence, and a matching current ownership revision/species/live-wild-creature identity; it
+> emits one deterministic greeting with a visible live-region counterpart and no retry/replay.
+> Disabling sound/voices, losing visibility/answerability or replacing the result stops it. This is
+> current-system Tame feedback only: Compendium audition, ambience, broader companion actions,
+> music and combat audio remain absent. Ordinary Arc 4 Slice evidence still says
+> `recoveryClaimed:false`; its dedicated uninterrupted 20-minute recovery certificate remains open.
+
+> **2026-08-25 Arc 4/5A ownership overlay — recorded boundary; Arc 4 player-live, Arc 5A infrastructure-only:** the port has a strict
 > identity split between immutable catalogue/discovery facts, stable owned fauna instances and
 > nonliving specimen lots. Ownership-v1 binds canonical genome identity, exact CF1 provenance,
 > biosphere progress and bounded legacy evidence. Ownership-v2 adds receipt-bound acquisitions,
@@ -27,11 +51,13 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > aligned current-v2 fixed point writes nothing. Genuine legacy Training couples one Arc 2, 18 Arc 4
 > and five Arc 5 writes; every capture hit or miss advances 18+5 replacements and postcommit-publishes Arc 4/V2
 > together. No public or Arc 5-only breed/care/companion writer, Recovery, assignment, Chronicle or
-> mission UI exists. The internal V2-only successor produces the same exact five-carrier tuple but is
-> not exported publicly. Source-only growth preserves all four canonical empty-shard bytes, keeping
+> mission UI exists. The internal V2-only successor produces the same exact five-carrier tuple and
+> now applies the one-time child-`fed` rule above, but is not exported publicly. Source-only growth
+> preserves all four canonical empty-shard bytes, keeping
 > unchanged-state growth O(1). The real
 > 20-minute Arc 4 recovery edge and HUMAN ownership/first-journey review remain open.
-> Retained Arc 4 browser evidence predates compact Arc 5 V2. Final current-input evidence is Slice run
+> Retained Arc 4 browser evidence predates compact Arc 5 V2. The later exact-input evidence for this
+> recorded 2026-08-25 boundary is Slice run
 > `20260825213041239-98104-c96d3b2d0652` on Edge `151.0.4129.101` (363,053 ms, zero
 > findings/retries/source change; report/log SHA-256
 > `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
@@ -77,7 +103,8 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > **PASS with optional polish only**; the sealed archive's generated UNREVIEWED status
 > remains its preparation state, and final all-bloodline certification remains open.
 
-> **2026-08-24 v2 Arc 7 audio identity — package foundation only:** Catalogue
+> **2026-08-24 v2 Arc 7 audio identity — historical package foundation, superseded for current
+> playback by the 2026-08-26 boundary above:** Catalogue
 > identity and living-creature identity are separate. The Earth catalogue owns 1,010
 > identities and 1,014 set-qualified route rows; every art/audio join carries the exact
 > catalogue set/kingdom + species rather than a bare display name. `@cf/audio` now pins that
@@ -92,10 +119,12 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > reverse-parent children inherit different audio-relevant phenotype or lineage, while
 > changing any excluded mutable field must leave the signature, audio profile and cue plan
 > exactly unchanged. The audio product is stable typed data, not byte-identical browser PCM.
-> Resolver-v1 and its negative/positive vectors are implemented only over an already-normalized
-> `AudioIdentityInput`. The canonical app creature/save → audio-input projector, authored voice
-> graph and player playback are not implemented; the current app remains stings-only. This
-> paragraph changes no genome, save, portrait, descriptor, Guide capability or player mechanic.
+> Resolver-v1 and its negative/positive vectors were implemented only over an already-normalized
+> `AudioIdentityInput`. At this historical 2026-08-24 boundary, the canonical app creature/save →
+> audio-input projector, authored voice graph and player playback were not implemented and the app
+> remained stings-only; the narrow current Tame greeting above supersedes that playback boundary.
+> This package-foundation paragraph changed no genome, save, portrait, descriptor, Guide capability
+> or player mechanic.
 >
 > The package assigns fauna and each non-fauna kingdom a distinct truthful coarse policy; curated
 > biological/foley families and authored ecological or Compendium sonification remain future and
@@ -105,7 +134,7 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > Resolver-v1 accepts exact owner/anchor and ordered parent-seed fields and keeps reverse-parent
 > signatures distinct, but no app projector claims a complete parent-voice blend. It may not depend
 > on unregistered legacy `parents` objects. Ownership-v2 now defines a receipt-bound ordered parent
-> projection for future writers, but the audio app projector still does not consume it. Automated
+> projection for future writers; at this historical boundary no audio app projector consumed it. Automated
 > identity acceptance includes negative controls for each excluded mutable
 > field. See `AUDIO.md` §0 for the typed resolver, rights, listening and resource gates.
 
@@ -253,7 +282,10 @@ it explicitly. It is render ownership metadata, not a new RNG draw.
 - The draw order and the hard-coded `form` length `18` are baked into the **50-probe determinism fingerprint** (`tools/baseline.json`); changing either re-rolls the universe and fails validation.
 - Markers `x`/`aq`/`af` are set *after* synthesis and ride WITHOUT touching the rng stream, so adding them didn't move the fingerprint. `crossGenome` inheritance of markers is likewise stream-neutral.
 - `_earthName`/`_earthArt`/`_earthFlora` are gated on a name being present, so probed (un-named) creatures are untouched → fingerprint safe.
-- **Rarity is deterministic and authoritative** — see RARITY_AND_GRADES.md.
+- **Rarity mechanics are deterministic and authoritative; presentation is narrower.** Player
+  surfaces accept only valid integer raw tiers `0..14`, map them through the ten-name ladder
+  (`9..14` → Transcendent), and omit invalid/missing values. Internal art-grade labels and raw tier
+  numbers do not cross that boundary. See RARITY_AND_GRADES.md.
 
 ## 6. Code anchors
 - `@module SpeciesTraits [domain]` — main.js ~1379–1609. `SP_COLOR`/`SP_HEX` ~1386; all `FA_*` tables ~1546–1598; `FLORA_FORM`/`FUNGI_FORM`/`MICROBE_FORM` ~1515–1523; `EX_*`/`AQ_*`/`AIR_*` + `habOf`/`locoOf`/`floraFormOf` ~1530–1544; `speciesName` ~1602.

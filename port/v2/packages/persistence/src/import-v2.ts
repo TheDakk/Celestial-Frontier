@@ -84,6 +84,10 @@ export interface SaveStateV2 {
   sfxVol: number; glassTint: number; motionMode: number; cardExpand: number;
   notifications: Array<{ id: number; tt: string; ms: string; t: number; read: boolean }>;
   surveyedSet: string[]; galSeen: unknown[]; surfSeen: unknown[]; xpFirsts: string[];
+  /** Optional v5 overflow binding mirrored into the additive v4 `xpa` field.
+   * Older saves omit it. Once present, the matching v5 extension is required;
+   * silently treating a lost extension as an old save would re-arm XP. */
+  xpFirstsBinding?: LegacyXpFirstsBindingV1 | null;
   sysSeen: number[]; starKindsSeen: string[]; ptypesSeen: string[];
   eventKeysSeen: string[]; evAnnounced: string[]; unlocked: string[];
   landed: number[]; contacted: number[];
@@ -97,6 +101,12 @@ export interface SaveStateV2 {
   homeId: string | null; voiceOn: boolean; combatSfxOn: boolean;
   logMap: Array<[string, Record<string, unknown>]>;
   codex: Array<[string, CodexEntry]>;
+}
+
+export interface LegacyXpFirstsBindingV1 {
+  readonly v: 1;
+  readonly totalCount: number;
+  readonly carrierDigest: string;
 }
 
 const HARVEST_CD = 3600e3;   /* key anchor (CLAUDE.md) — the harvest stamp floor window */
@@ -523,6 +533,36 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       }
     }
 
+    let xpFirstsBinding: LegacyXpFirstsBindingV1 | null = null;
+    if (data.xpa !== undefined) {
+      if (!data.xpa || typeof data.xpa !== 'object' || Array.isArray(data.xpa)) {
+        return { ok: false, reason: 'invalid' };
+      }
+      const binding = data.xpa as Record<string, unknown>;
+      if (Number.isSafeInteger(binding.v) && (binding.v as number) > 1) {
+        return { ok: false, reason: 'future-version' };
+      }
+      const keys = Object.keys(binding).sort();
+      if (keys.length !== 3
+        || keys[0] !== 'carrierDigest'
+        || keys[1] !== 'totalCount'
+        || keys[2] !== 'v') {
+        return { ok: false, reason: 'invalid' };
+      }
+      if (binding.v !== 1
+        || !Number.isSafeInteger(binding.totalCount)
+        || (binding.totalCount as number) <= 4000
+        || typeof binding.carrierDigest !== 'string'
+        || !/^[0-9a-f]{64}$/u.test(binding.carrierDigest)) {
+        return { ok: false, reason: 'invalid' };
+      }
+      xpFirstsBinding = Object.freeze({
+        v: 1,
+        totalCount: binding.totalCount as number,
+        carrierDigest: binding.carrierDigest,
+      });
+    }
+
     const num = (v: unknown, d?: number): number => {
       const x = +(v as number);
       return Number.isFinite(x) ? x : (d === undefined ? 0 : d);
@@ -717,6 +757,12 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const galSeen = new Set<unknown>(); for (const s of _capA(data.gals, 20000)) galSeen.add(s);
     const surfSeen = new Set<unknown>(); for (const s of _capA(data.surf, 60000)) surfSeen.add(s);
     const xpFirsts = new Set<string>(); for (const s of _capA(data.xpf, 4000)) if (typeof s === 'string') xpFirsts.add(s.slice(0, 64));
+    if (xpFirstsBinding !== null && (
+      !Array.isArray(data.xpf)
+      || data.xpf.length !== 4000
+      || data.xpf.some((entry) => typeof entry !== 'string' || entry.length > 64)
+      || xpFirsts.size !== 4000
+    )) return { ok: false, reason: 'invalid' };
     const sysSeen = new Set<number>(); for (const s of _capA(data.sysv, 60000)) { const n = +(s as number); if (Number.isFinite(n)) sysSeen.add(n); }
     /* A legacy save may contain sysSeen without ever having serialized the
        corresponding dynamic Records counter. Preserve that v1 shape unless
@@ -967,7 +1013,7 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
         fsMode, toneMode, fontMode, sndOn, fxOn, chartsOn, shakeOn, salvageConfirm,
         notifOn, tipsOn, sfxVol, glassTint, motionMode, cardExpand, notifications,
         surveyedSet: [...surveyedSet.values()], galSeen: [...galSeen.values()],
-        surfSeen: [...surfSeen.values()], xpFirsts: [...xpFirsts.values()],
+        surfSeen: [...surfSeen.values()], xpFirsts: [...xpFirsts.values()], xpFirstsBinding,
         sysSeen: [...sysSeen.values()], starKindsSeen: [...starKindsSeen.values()],
         ptypesSeen: [...ptypesSeen.values()], eventKeysSeen: [...eventKeysSeen.values()],
         evAnnounced: [...evAnnounced.values()], unlocked: [...unlocked.values()],

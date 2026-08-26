@@ -1,10 +1,51 @@
 # Celestial Frontier — Save System
 
-> **2026-08-25 Arc 3–5 persistence overlay — current local boundary; Arc 5A terminal-green locally:** Arc 3 adds the strict
+> **2026-08-26 current-candidate persistence corrections (local code/test truth; no whole-gate or
+> release claim):** F4's published ecology epoch is now derived only from the authority's
+> visible-and-answerable, lease-owned `activePlayMs`. An integer edge is staged privately, then one
+> **receipt-free** lease/revision CAS durably commits the authority and epoch before publication and
+> reprojection; dirty consumers stay fenced until the exact refresh token completes. Hidden or
+> unanswered time cannot advance the epoch, and resume must refresh before the scene becomes
+> answerable.
+>
+> Notification migration compares the v4 mirror and v5 split rows using the saved envelope's own
+> bounded `at` clock, so reading the same authentic save later cannot manufacture corruption. The
+> runtime import remains deliberately caller-time based: malformed or zero notification timestamps
+> fall back to the caller's `now`, while an honest future timestamp remains representable. The
+> fixed-point migration clock and the runtime sanitizer clock are therefore separate authorities.
+>
+> The legacy XP-first mirror now exports only the newest 4,000 validated keys in `xpf`; older keys
+> move into the strict v5-only `progression.xp-firsts` archive. The additive `xpa` v1 binding ties
+> the mirror window to archive carrier digest and total count. Missing, future, corrupt, wrong-owner
+> or mismatched archive evidence protects instead of rearming a one-time award. This is persistence
+> authority only: no live v2 XP-award writer exists yet. Likewise, executable import/export/readiness
+> vectors now prove `conq[].e`: absent/null remains the one-cycle-ready migration, valid present
+> values round-trip exactly, and malformed/future/negative values remain present and cannot
+> impersonate absence. That is codec/readiness proof, not the still-open real-veteran Gate-C run.
+>
+> Owned `scan1` now unlocks a passive **Mineral veins** Survey row for an eligible registered
+> current-system lifeless, non-Earth orbital world. It presents ordered ordinary mineral labels plus
+> the optional biome-only vein marked `✦` and
+> exposes no Mine control, cosmic/exceptional material, grade, reserve, progress or extraction
+> authority. The internal-only Arc 5 bred-successor seam now assigns a newly admitted child
+> `fed = 0.5 * min(clamp(parentA.fed, 0..200), clamp(parentB.fed, 0..200))` exactly once; later stored
+> child care state is preserved. Breeding odds, parent Recovery duration/locks, confirmation, copy
+> and the whole Arc 5B action/UI transaction remain product-open, with no live player writer.
+>
+> Player rarity is a strict ten-name projection of valid raw tiers (`0..8` unchanged, raw `9..14`
+> shown as Transcendent); invalid or absent input is omitted rather than relabelled Common, and
+> internal grade/art labels and raw tier numbers stay out of player surfaces. The only new creature
+> playback is the narrow Tame-fauna greeting after the exact durable current-system result and
+> matching current ownership revision; it writes no save state or reward. Broader creature,
+> Compendium, ambience, music and combat audio remain absent. Existing ordinary Slice evidence still
+> records `recoveryClaimed:false`; a dedicated uninterrupted 20-minute Arc 4 recovery certificate
+> remains pending.
+
+> **2026-08-25 Arc 3–5 persistence overlay — recorded local boundary and exact-input evidence:** Arc 3 adds the strict
 > `engineering/arc3.state` carrier and a bounded legacy seed-only migration that resolves every
 > source through exact canonical CF1 evidence or protects the source instead of guessing. The panel
-> displays six research rows but only Deep Scanners is purchasable; its pure orbital-reveal policy
-> exists while current Survey renders no orbital mineral rows. It lists all 62 fixed recipes, but
+> displays six research rows but only Deep Scanners is purchasable; the 2026-08-26 correction above
+> records its now-live bounded orbital Survey row. It lists all 62 fixed recipes, but
 > only connected-effect outputs with exact costs/preconditions and capacity/revision headroom are
 > actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
 > Mine, Skim, the eligible Deep-Scanner purchase and eligible fixed Fabrication update the engineering
@@ -77,7 +118,8 @@
 > replaces exactly the five Arc 5 carriers, but it is absent from the public package root and has no
 > app player path. Postcommit verification binds the five prepared bytes to the exact durable Arc 4
 > source and all source/delta/target/shard fixed points before V1/V2 publication; mismatch makes the
-> projection unavailable and reload-converges without a second write. No breeding, care, Recovery,
+> projection unavailable and reload-converges without a second write. The internal successor now
+> applies the one-time bounded child-`fed` rule described above, but no breeding, care, Recovery,
 > assignment, disposition, Chronicle, mission or companion capability is visible.
 
 > **2026-08-24 F3/F4 + Arc 2 persistence overlay — current local implementation:** v4 remains the
@@ -149,8 +191,9 @@
 > snapshot `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. They are exact-input
 > local proof, not exact-head, hosted, integration, real-save Gate C, HUMAN, release, preview or
 > deployment authority.
-> Those reports predate compact Arc 5 V2 and do not certify it. Final current-input evidence now
-> supersedes them: Slice run `20260825213041239-98104-c96d3b2d0652` passed once on Edge
+> Those reports predate compact Arc 5 V2 and do not certify it. For the recorded 2026-08-25
+> boundary, the later exact-input pair superseded them: Slice run
+> `20260825213041239-98104-c96d3b2d0652` passed once on Edge
 > `151.0.4129.101` in 363,053 ms with zero findings/failure scopes/retries/source change, exactly one
 > nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS, 10 hashed PNGs and executable
 > legacy-v1 upgrade/current-v2 zero-write/five-carrier successor/fault/reload controls. Report/log
@@ -381,8 +424,8 @@
 > fixed-point round-trip every supported shape. Nothing in this planned overlay
 > changes the current save envelope, Guide, release marker or import behavior.
 
-> **2026-08-15 v2 epoch-snapshot overlay (historical foundation; current only where the 2026-08-25
-> F3/F4 overlay above does not supersede it):** The compatibility-
+> **2026-08-15 v2 epoch-snapshot overlay (historical foundation; retained only where the later
+> 2026-08-25/26 overlays above do not supersede it):** The compatibility-
 > named `SaveStateV2.EPOCH_BASE` field carries the advancing snapshot written as
 > `epoch`; it is not synonymous with `EpochClock.base()`. On boot, the app creates
 > one clock from imported `EPOCH_BASE` and a fresh zero-origin monotonic elapsed
@@ -926,10 +969,11 @@ reasoning has to be revisited.
 
 ## 1. Overview
 
-**Current v2 persistence topology (2026-08-25):** the imported/exported legacy product envelope
+**Current v2 persistence topology (2026-08-26):** the imported/exported legacy product envelope
 remains canonical v4 compatibility data, while the live repository schema is v5 with split owner rows,
 revision, migration snapshot/journal and independently versioned extension carriers. The protected
-`player/f4.authority`, `inventory/arc2.loot`, `engineering/arc3.state`, 18 fixed Arc 4 ownership
+`player/f4.authority`, `inventory/arc2.loot`, the `inventory`-segment
+`progression.xp-firsts` archive namespace, `engineering/arc3.state`, 18 fixed Arc 4 ownership
 namespaces and the active Arc 5 manifest/four-shard authority are not v4 fields and
 therefore must pass through every v5 read/write/replacement
 explicitly. Product carriers are authoritative once present; their narrowly projected v4 fields keep

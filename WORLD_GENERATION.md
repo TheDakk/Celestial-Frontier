@@ -1,20 +1,39 @@
 # Celestial Frontier — World & Universe Generation
 
 **STATUS:** legacy mechanics match `main.js` as of 2026-07-23; the dated v2 overlays
-match the current local `port/v2` boundary as of 2026-08-25.
+match the current local candidate boundary as of 2026-08-26.
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime, `port/v2/packages/domain/{planetgen,worldgen,surveyphrases}` own the
 generated content contracts, and `port/v2/packages/scene/{address,cf1-code,system,universe,zoommode}`
 own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION.md. The biome CONTENT catalog is `BIOME_ATLAS.md` at the repo root (audited and promoted there from `tools/` on 2026-07-31; it had existed since 2026-07-21, and an earlier same-day note in these docs wrongly declared it missing — see ART_DIRECTION §6.1).
 
-> **2026-08-25 Arc 3/4 current-world overlay:** `@cf/domain-opportunity` now projects exact
+> **2026-08-26 D-HAZE ownership correction — current local candidate:** the exact
+> `galaxyHaze(seed, profile)` canvas generator and its cache now belong to the `GalaxyArt [app]`
+> render module, not the `WorldGen [domain]` generator. The root source/HTML, generated verbatim
+> lifts, declarations, `@cf/art` export and app import all agree; the domain lift/declaration contains
+> neither the DOM-dependent painter nor its cache. The lifter now derives `[app]` versus `[domain]`
+> from one exact source module banner and fails closed on missing, wrong or duplicate ownership.
+>
+> This is an ownership correction, not a universe redesign. The complete haze generator/cache block
+> remains byte-identical across source, built HTML and the art lift, so its seeded draws, canvas
+> output, keys and call sites are unchanged; world generation output and the determinism fingerprint
+> are not re-pinned. The source condition deletes the oldest key only when the pre-insert size is
+> already greater than three, so `hazeCache` is an effective FIFO of **four** canvases—not three.
+> Focused source/parity/mutation gates cover this relocation; final real-browser evidence for the
+> current combined candidate remains pending.
+
+> **2026-08-26 Arc 3/4 current-world overlay (2026-08-25 foundation):**
+> `@cf/domain-opportunity` now projects exact
 > source-proven CF1 world and star opportunities, preserves raw tiers 0–14 separately from the
 > display rarity ladder, and exposes finite world deposits, stellar skim material/hazard and
 > worked-out/active-play cursor facts. The player can Mine and Skim; the Engineering panel displays
-> six research rows but only Deep Scanners is purchasable. A pure Deep-Scanner orbital-reveal policy
-> exposes already-generated mineral facts without mutating generation, but the current Survey surface
-> does not render orbital mineral rows. All 62 fixed recipes are listed; only connected-effect outputs
+> six research rows but only Deep Scanners is purchasable. Aligned current ownership drives a pure
+> read-only projector that adds one **Mineral veins** row to an eligible exact proven lifeless
+> non-Earth orbital Survey card without mutating generation. It preserves ordinary-deposit order
+> and marks the separate biome vein with ✦. Living worlds, Earth, cosmic/exceptional veins, grades,
+> reserves, progress and mining
+> remain grounded. All 62 fixed recipes are listed; only connected-effect outputs
 > with exact costs/preconditions and capacity/revision headroom are actionable, while fully
 > exceptional slotted outputs and disconnected-effect rows remain unavailable. Eligible Engineering
 > actions use one receipt-bearing F3/F4 transaction.
@@ -304,7 +323,7 @@ From **`WorldConfig`** (~843) and **`StarCatalog`** (~864):
 
 ## 5. Data / save fields
 
-**None.** The universe is *never* persisted — it is regenerated from seeds on demand and held only in bounded FIFO caches (`ugCache` 3000, `starCache` 4000, `fineCache` 8000, `_sysCache` 240, `_wormCache` 600, `_snovaCache` 200, `CARD_FACTS` 6000, `hazeCache` 3). What the save *does* hold is the player's relationship to worlds (settled/conquered flags, per-world logs, tutorial/charter progress) keyed by planet/star seed — those live in the SaveSystem spec, not here. Save key: `cfcc_save_v2`.
+**None.** The universe is *never* persisted — it is regenerated from seeds on demand and held only in bounded FIFO caches (`ugCache` 3000, `starCache` 4000, `fineCache` 8000, `_sysCache` 240, `_wormCache` 600, `_snovaCache` 200, `CARD_FACTS` 6000). The render-owned `GalaxyArt.hazeCache` separately retains an effective FIFO of **4** generated canvases. What the save *does* hold is the player's relationship to worlds (settled/conquered flags, per-world logs, tutorial/charter progress) keyed by planet/star seed — those live in the SaveSystem spec, not here. Save key: `cfcc_save_v2`.
 
 `CARD_FACTS` (~357) is a side map (`P.seed → {band, lush, civLights}`) written by `planetDescriptor`/vista code and read by the sprite/thumb art. It is deliberately **off** the `P`/`sys`/`pl` objects so it cannot leak into the determinism fingerprint.
 
@@ -327,7 +346,8 @@ The first `moons`/`ring` rolls are discarded values but their RNG consumption is
 - **`@module Naming`** (~822): `properName` (825), `starName` (832), `galaxyName` (831).
 - **`@module WorldConfig`** (~843): all anchor constants (845–853).
 - **`@module StarCatalog`** (~864): `starClass` (866), `KIND_DESC` (884), `SOL_PLANETS` (899).
-- **`@module WorldGen`** (~918): `galaxiesInCell` (928), `galaxyProfile` (992), `galaxyWormhole` (998), `supernovaSites` (1017), `galaxyHaze` (1047), `fineStarsInCell` (1118), `starsInCell` (1148), `systemFor`/`_systemFor` (1216/1224), `genRocks` (919).
+- **`@module GalaxyArt [app]`** (~952): the render-owned `galaxyHaze` canvas generator/cache (~1107), alongside galaxy sprite art.
+- **`@module WorldGen [domain]`** (~1318): `genRocks` (1319), `galaxiesInCell` (1328), `galaxyProfile` (1392), `galaxyWormhole` (1398), `supernovaSites` (1417), `fineStarsInCell` (1444), `starsInCell` (1474), `systemFor`/`_systemFor` (1542/1550). It has no DOM or haze painter/cache.
 - **`@module SurveyPhrases`** (~1303): `TYPE_LABEL` (1305), `COMP` (1307), `atmosphereText` (1317), `climateText` (1331), `waterText` (1343), `gravityText` (1350), `climateBand` (1356).
 - **`planetDescriptor`** (2192) and `starDescriptor` (2297) — assemble the survey cards; `CARD_FACTS`/`_cardFactsSet` (357–363).
 - **`@section biomes`** (~10750): `BIOME_SETS` (10763), `biomeFor` (10824), `biomeComposition` (10836), `biomeForLanding` (10886), `descentTierFromPct` (10899), `descentFor` (10963). *(All corrected 2026-07-31; the previous ~7464/7477/7538/7550 dated from when the html was the source of truth and were stale by ~3,300 lines.)*

@@ -205,7 +205,8 @@ export interface AudioRuntimeOptions {
 
 export interface AudioRuntime {
   activate(): Promise<AudioActivationResult>;
-  setMuted(muted: boolean): void;
+  /** Immediate zero/stop plus settled teardown of every owned context. */
+  setMuted(muted: boolean): Promise<void>;
   setMasterGain(gain: number): void;
   setCategoryGain(category: AudioCategory, gain: number): void;
   setHidden(hidden: boolean): Promise<void>;
@@ -267,6 +268,16 @@ interface CacheEntry {
 
 interface CooldownEntry {
   readonly untilMs: number;
+}
+
+interface PendingActivation {
+  readonly lifecycle: number;
+  promise: Promise<AudioActivationResult> | null;
+  context: AudioContextLike | null;
+  published: boolean;
+  cancelled: boolean;
+  readonly cancellation: Promise<void>;
+  readonly cancel: () => void;
 }
 
 type VoiceAdmission = Readonly<{
@@ -457,7 +468,12 @@ class InjectedAudioRuntime implements AudioRuntime {
   private hidden = false;
   private disposedTerminal = false;
   private resumeBlocked = false;
-  private activation: Promise<AudioActivationResult> | null = null;
+  private activation: PendingActivation | null = null;
+  private readonly pendingActivations = new Set<PendingActivation>();
+  private readonly failedTeardownContexts = new Set<AudioContextLike>();
+  private readonly closeSettlements = new Map<AudioContextLike, Promise<void>>();
+  private muteSettlement: Promise<void> | null = null;
+  private disposeSettlement: Promise<void> | null = null;
   private stateListener: (() => void) | null = null;
   private contextGeneration = 0;
   private lifecycleGeneration = 0;
@@ -535,16 +551,55 @@ class InjectedAudioRuntime implements AudioRuntime {
   }
 
   activate(): Promise<AudioActivationResult> {
-    if (this.activation) return this.activation;
-    const pending = this.activateInner();
-    this.activation = pending;
-    const clear = (): void => { if (this.activation === pending) this.activation = null; };
+    if (this.activation
+      && (this.activation.lifecycle === this.lifecycleGeneration || this.context !== null)) {
+      return this.activation.promise!;
+    }
+    const lifecycle = this.lifecycleGeneration;
+    let resolveCancellation!: () => void;
+    const cancellation = new Promise<void>((resolve) => {
+      resolveCancellation = resolve;
+    });
+    const record: PendingActivation = {
+      lifecycle,
+      promise: null,
+      context: null,
+      published: false,
+      cancelled: false,
+      cancellation,
+      cancel: () => {
+        if (record.cancelled) return;
+        record.cancelled = true;
+        resolveCancellation();
+      },
+    };
+    /* Register before invoking an injected factory. Besides making ordinary
+       activation coalescing exact, this lets reentrant mute/dispose calls own
+       the still-unpublished context through this record. */
+    let resolveActivation!: (result: AudioActivationResult) => void;
+    let rejectActivation!: (error: unknown) => void;
+    const pending = new Promise<AudioActivationResult>((resolve, reject) => {
+      resolveActivation = resolve;
+      rejectActivation = reject;
+    });
+    record.promise = pending;
+    this.activation = record;
+    this.pendingActivations.add(record);
+    const clear = (): void => {
+      this.pendingActivations.delete(record);
+      if (this.activation === record) this.activation = null;
+    };
     void pending.then(clear, clear);
+    void this.activateInner(record).then(resolveActivation, rejectActivation);
     return pending;
   }
 
-  private async activateInner(): Promise<AudioActivationResult> {
+  private async activateInner(record: PendingActivation): Promise<AudioActivationResult> {
+    const lifecycle = record.lifecycle;
     if (this.isDisposed()) return Object.freeze({ kind: 'disposed' });
+    if (record.cancelled || lifecycle !== this.lifecycleGeneration) {
+      return this.activationResultForCurrentPolicy();
+    }
     if (this.hidden) {
       this.state = 'suspended';
       return Object.freeze({ kind: 'suspended', reason: 'hidden' });
@@ -555,28 +610,79 @@ class InjectedAudioRuntime implements AudioRuntime {
     }
     this.syncContextState();
     if (!this.context) {
+      if (this.failedTeardownContexts.size > 0) {
+        const retryOutcome = await Promise.race([
+          Promise.all(this.retryFailedTeardownContexts()).then(
+            () => Object.freeze({ kind: 'settled' as const }),
+          ),
+          record.cancellation.then(() => Object.freeze({ kind: 'cancelled' as const })),
+        ]);
+        if (retryOutcome.kind === 'cancelled' || record.cancelled
+          || lifecycle !== this.lifecycleGeneration
+          || this.isDisposed() || this.hidden || this.muted) {
+          return this.activationResultForCurrentPolicy();
+        }
+        /* A context that refused teardown is silent and quarantined. Never
+           allocate or republish another context while that retained owner is
+           still running; a later eligible activation may retry the same one. */
+        if (this.failedTeardownContexts.size > 0) {
+          this.state = 'blocked';
+          return Object.freeze({ kind: 'blocked', reason: 'context-unavailable' });
+        }
+      }
+      /* One detached physical owner is the hard bound. Until its close has
+         actually settled, another gesture cannot allocate a replacement. */
+      if (this.closeSettlements.size > 0) {
+        this.state = 'blocked';
+        return Object.freeze({ kind: 'blocked', reason: 'context-unavailable' });
+      }
       let context: AudioContextLike | null = null;
       try {
         context = this.createContext();
+        record.context = context;
         this.contextGeneration++;
+        /* A singleton/hostile factory may return the exact context whose close
+           is unresolved or already failed. It remains non-publishable. */
+        if (this.closeSettlements.has(context) || this.failedTeardownContexts.has(context)) {
+          this.state = 'blocked';
+          return Object.freeze({ kind: 'blocked', reason: 'context-unavailable' });
+        }
         const graph = createGraph(context, this.masterGain, this.gains);
+        /* Context/node factories are injected and may call back into lifecycle
+           policy synchronously. A context created by an overtaken gesture is
+           never published, even when the final policy is enabled again. */
+        if (lifecycle !== this.lifecycleGeneration || this.isDisposed()
+          || this.hidden || this.muted) {
+          await this.closeUnpublishedContext(context, graph);
+          return this.activationResultForCurrentPolicy();
+        }
         this.context = context;
         this.graph = graph;
+        record.published = true;
         this.attachStateListener(context);
         this.observeBudgets();
+        if (record.cancelled || lifecycle !== this.lifecycleGeneration
+          || this.isDisposed() || this.hidden || this.muted
+          || this.context !== context || this.graph !== graph) {
+          return this.activationResultForCurrentPolicy();
+        }
       } catch (error) {
         this.recordFault('context-create', error);
-        if (context && this.context === context) {
+        const publishedHere = context !== null && this.context === context;
+        if (context && publishedHere) {
           try { this.detachStateListener(context); } catch (detachError) {
             this.recordFault('context-listener-remove', detachError);
           }
         }
-        const failedGraph = this.graph;
-        this.context = null;
-        this.graph = null;
+        const failedGraph = publishedHere ? this.graph : null;
+        if (publishedHere) {
+          this.context = null;
+          this.graph = null;
+        }
         if (failedGraph) this.disconnectOwned(failedGraph.nodes, 'graph-disconnect');
-        if (context && context.state !== 'closed') {
-          try { await context.close(); } catch (closeError) { this.recordFault('context-close', closeError); }
+        if (context) await this.closeContext(context);
+        if (lifecycle !== this.lifecycleGeneration) {
+          return this.activationResultForCurrentPolicy();
         }
         if (this.isDisposed()) return Object.freeze({ kind: 'disposed' });
         this.state = this.hidden ? 'suspended' : 'blocked';
@@ -588,14 +694,42 @@ class InjectedAudioRuntime implements AudioRuntime {
       this.state = 'blocked';
       return Object.freeze({ kind: 'blocked', reason: 'context-unavailable' });
     }
+    record.context = context;
+    record.published = true;
     if (context.state === 'suspended') {
       this.state = 'suspended';
+      let resumeOutcome:
+        | Readonly<{ kind: 'resumed' }>
+        | Readonly<{ kind: 'cancelled' }>
+        | Readonly<{ kind: 'failed'; error: unknown }>;
       try {
-        await context.resume();
-        this.resumeBlocked = false;
+        const resume = context.resume();
+        const resumeAttempt = Promise.resolve(resume).then(
+          () => Object.freeze({ kind: 'resumed' as const }),
+          (error) => Object.freeze({ kind: 'failed' as const, error }),
+        );
+        /* Install the rejection observer before consulting synchronous
+           cancellation: resume() may itself invoke mute/dispose and then
+           return an already-rejected promise. */
+        if (record.cancelled) return this.activationResultForCurrentPolicy();
+        resumeOutcome = await Promise.race([
+          resumeAttempt,
+          record.cancellation.then(() => Object.freeze({ kind: 'cancelled' as const })),
+        ]);
       } catch (error) {
+        resumeOutcome = Object.freeze({ kind: 'failed', error });
+      }
+      if (resumeOutcome.kind === 'cancelled' || record.cancelled) {
+        return this.activationResultForCurrentPolicy();
+      }
+      if (resumeOutcome.kind === 'failed') {
+        const { error } = resumeOutcome;
         this.resumeBlocked = true;
         this.recordFault('resume', error);
+        if (lifecycle !== this.lifecycleGeneration) {
+          await this.shutdownContext('stale-activation', context);
+          return this.activationResultForCurrentPolicy();
+        }
         if (this.isDisposed()) return Object.freeze({ kind: 'disposed' });
         if (this.hidden) {
           this.state = 'suspended';
@@ -604,6 +738,11 @@ class InjectedAudioRuntime implements AudioRuntime {
         if (this.context === context && !this.isDisposed()) this.state = 'blocked';
         return Object.freeze({ kind: 'blocked', reason: 'resume-failed' });
       }
+      this.resumeBlocked = false;
+    }
+    if (record.cancelled || lifecycle !== this.lifecycleGeneration) {
+      await this.shutdownContext('stale-activation', context);
+      return this.activationResultForCurrentPolicy();
     }
     if (this.isDisposed()) return Object.freeze({ kind: 'disposed' });
     if (this.hidden) {
@@ -625,12 +764,90 @@ class InjectedAudioRuntime implements AudioRuntime {
     return Object.freeze({ kind: 'running' });
   }
 
-  setMuted(muted: boolean): void {
-    if (this.isDisposed()) return;
-    this.muted = muted === true;
-    if (this.muted) this.stopAllVoices('mute');
+  setMuted(muted: boolean): Promise<void> {
+    const next = muted === true;
+    /* No call made during a physical close may await that close's owning
+       lifecycle settlement: injected close implementations can call back
+       synchronously or asynchronously and would otherwise self-cycle. The
+       requested policy and synchronous cleanup are authoritative immediately;
+       the already-owned close continues independently. */
+    if (next && this.closeSettlements.size > 0) {
+      if (this.isDisposed()) return Promise.resolve();
+      if (!this.muted) {
+        this.lifecycleGeneration++;
+        this.muted = true;
+        this.cancelPendingActivations();
+      }
+      this.state = this.hidden ? 'suspended' : 'blocked';
+      this.applyMasterMute();
+      void this.shutdownContext('mute');
+      return Promise.resolve();
+    }
+    if (this.isDisposed()) {
+      if (next && this.failedTeardownContexts.size > 0) {
+        return this.dispose();
+      }
+      return Promise.resolve();
+    }
+    if (this.muted === next) {
+      if (!next) return Promise.resolve();
+      if (this.muteSettlement) return this.muteSettlement;
+      if (this.failedTeardownContexts.size === 0) return Promise.resolve();
+      return this.beginMasterMuteSettlement(this.lifecycleGeneration, null);
+    }
+    const lifecycle = ++this.lifecycleGeneration;
+    this.muted = next;
+    this.cancelPendingActivations();
+    if (!this.muted) {
+      this.applyMasterMute();
+      this.syncContextState();
+      if (!this.context) this.state = this.hidden ? 'suspended' : 'blocked';
+      return Promise.resolve();
+    }
+
+    return this.beginMasterMuteSettlement(lifecycle, this.muteSettlement);
+  }
+
+  private beginMasterMuteSettlement(
+    lifecycle: number,
+    prior: Promise<void> | null,
+  ): Promise<void> {
+    let resolveSettlement!: () => void;
+    let rejectSettlement!: (error: unknown) => void;
+    const settlement = new Promise<void>((resolve, reject) => {
+      resolveSettlement = resolve;
+      rejectSettlement = reject;
+    });
+    /* Publish before any injected source.stop() or context.close() callback.
+       Source-stop reentrancy shares this attempt. Once a physical close is
+       unresolved, mute/dispose reentrancy uses the explicit immediate-result
+       exception above and cannot self-await this settlement. */
+    this.muteSettlement = settlement;
+    const clear = (): void => {
+      if (this.muteSettlement === settlement) this.muteSettlement = null;
+    };
+    void settlement.then(clear, clear);
+    /* Gain zero and source cleanup are synchronous. Context close is awaited
+       by the returned settlement, so Settings can truthfully report that no
+       running context remains without making unmute allocate one. */
+    this.state = this.hidden ? 'suspended' : 'blocked';
     this.applyMasterMute();
-    this.syncContextState();
+    const unpublishedActivations = this.unpublishedActivationPromises();
+    const failedContexts = [...this.failedTeardownContexts];
+    const context = this.context;
+    const closing = context
+      ? this.shutdownContext('mute', context)
+      : Promise.resolve();
+    const failedTeardowns = this.retryFailedTeardownContexts(failedContexts);
+    const operation = this.settleMasterMute(
+      lifecycle,
+      prior,
+      unpublishedActivations,
+      closing,
+      failedTeardowns,
+    );
+    void operation.then(resolveSettlement, rejectSettlement);
+    return settlement;
   }
 
   setMasterGain(gain: number): void {
@@ -651,11 +868,16 @@ class InjectedAudioRuntime implements AudioRuntime {
     if (this.isDisposed()) return;
     const lifecycle = ++this.lifecycleGeneration;
     this.hidden = hidden === true;
+    this.cancelPendingActivations();
     if (!this.hidden) return;
     this.state = 'suspended';
-    if (this.activation) await this.activation;
+    /* A published activation may be awaiting resume forever. Detaching its
+       exact context cancels that wait; only a still-unpublished factory needs
+       to finish before hidden settlement can be truthful. */
+    if (this.context) await this.shutdownContext('hidden', this.context);
+    else if (this.activation?.promise) await this.activation.promise;
     if (this.isDisposed() || lifecycle !== this.lifecycleGeneration || !this.hidden) return;
-    await this.shutdownContext('hidden');
+    if (this.context) await this.shutdownContext('hidden', this.context);
     if (!this.isDisposed() && lifecycle === this.lifecycleGeneration && this.hidden) {
       this.state = 'suspended';
     }
@@ -1038,16 +1260,59 @@ class InjectedAudioRuntime implements AudioRuntime {
     });
   }
 
-  async dispose(): Promise<void> {
-    if (this.isDisposed()) return;
-    this.disposedTerminal = true;
-    this.lifecycleGeneration++;
+  dispose(): Promise<void> {
+    /* This is the disposal counterpart to setMuted's close reentrancy rule.
+       A close callback receives an immediate terminal result and never the
+       settlement that is waiting for that same callback. Any independently
+       attached context is detached synchronously and closes in the background. */
+    if (this.closeSettlements.size > 0) {
+      if (!this.disposedTerminal) {
+        this.disposedTerminal = true;
+        this.lifecycleGeneration++;
+        this.cancelPendingActivations();
+      }
+      this.state = 'disposed';
+      void this.shutdownContext('dispose');
+      this.clearCache();
+      this.cooldowns.clear();
+      return Promise.resolve();
+    }
+    if (this.disposeSettlement) return this.disposeSettlement;
+    let resolveSettlement!: () => void;
+    let rejectSettlement!: (error: unknown) => void;
+    const settlement = new Promise<void>((resolve, reject) => {
+      resolveSettlement = resolve;
+      rejectSettlement = reject;
+    });
+    this.disposeSettlement = settlement;
+    const firstDisposal = !this.disposedTerminal;
+    if (firstDisposal) {
+      this.disposedTerminal = true;
+      this.lifecycleGeneration++;
+      this.cancelPendingActivations();
+    }
     this.state = 'disposed';
-    if (this.activation) await this.activation;
-    await this.shutdownContext('dispose');
-    this.clearCache();
-    this.cooldowns.clear();
-    this.state = 'disposed';
+    const unpublishedActivations = this.unpublishedActivationPromises();
+    const failedContexts = [...this.failedTeardownContexts];
+    const closing = this.shutdownContext('dispose');
+    const failedTeardowns = this.retryFailedTeardownContexts(failedContexts);
+    const obligations: Promise<unknown>[] = [
+      closing,
+      ...unpublishedActivations,
+      ...failedTeardowns,
+    ];
+    if (this.muteSettlement) obligations.push(this.muteSettlement);
+    const operation = Promise.all(obligations).then(() => {
+      this.clearCache();
+      this.cooldowns.clear();
+      this.state = 'disposed';
+    });
+    const clear = (): void => {
+      if (this.disposeSettlement === settlement) this.disposeSettlement = null;
+    };
+    void settlement.then(clear, clear);
+    void operation.then(resolveSettlement, rejectSettlement);
+    return settlement;
   }
 
   private counterpartResult(counterpart: AudioCounterpartReceipt | null): AudioVoiceStartResult | null {
@@ -1168,6 +1433,119 @@ class InjectedAudioRuntime implements AudioRuntime {
     return this.disposedTerminal;
   }
 
+  private async settleMasterMute(
+    lifecycle: number,
+    prior: Promise<void> | null,
+    unpublishedActivations: readonly Promise<AudioActivationResult>[],
+    closing: Promise<void>,
+    failedTeardowns: readonly Promise<void>[],
+  ): Promise<void> {
+    /* These are context-specific teardown obligations. A later unmute or
+       lifecycle generation may change final policy, but cannot cancel closing
+       the context that observed this mute. */
+    const obligations: Promise<unknown>[] = [
+      closing,
+      ...unpublishedActivations,
+      ...failedTeardowns,
+    ];
+    if (prior) obligations.push(prior);
+    await Promise.all(obligations);
+    if (!this.isDisposed() && lifecycle === this.lifecycleGeneration && this.muted) {
+      this.state = this.hidden ? 'suspended' : 'blocked';
+    }
+  }
+
+  private unpublishedActivationPromises(): readonly Promise<AudioActivationResult>[] {
+    const pending: Promise<AudioActivationResult>[] = [];
+    for (const record of this.pendingActivations) {
+      if (!record.published && record.promise) pending.push(record.promise);
+    }
+    return pending;
+  }
+
+  private retryFailedTeardownContexts(
+    contexts: readonly AudioContextLike[] = [...this.failedTeardownContexts],
+  ): readonly Promise<void>[] {
+    return contexts.map((context) => this.closeContext(context));
+  }
+
+  private cancelActivationsForContext(
+    context: AudioContextLike,
+  ): readonly Promise<AudioActivationResult>[] {
+    const pending: Promise<AudioActivationResult>[] = [];
+    for (const record of this.pendingActivations) {
+      if (record.context !== context) continue;
+      record.cancel();
+      if (record.promise) pending.push(record.promise);
+    }
+    return pending;
+  }
+
+  private cancelPendingActivations(): void {
+    for (const record of this.pendingActivations) record.cancel();
+  }
+
+  private activationResultForCurrentPolicy(): AudioActivationResult {
+    if (this.isDisposed()) return Object.freeze({ kind: 'disposed' });
+    if (this.hidden) {
+      if (!this.context) this.state = 'suspended';
+      return Object.freeze({ kind: 'suspended', reason: 'hidden' });
+    }
+    if (!this.context) this.state = 'blocked';
+    return this.muted
+      ? Object.freeze({ kind: 'blocked', reason: 'muted' })
+      : Object.freeze({ kind: 'blocked', reason: 'context-unavailable' });
+  }
+
+  private async closeUnpublishedContext(
+    context: AudioContextLike,
+    graph: RuntimeGraph,
+  ): Promise<void> {
+    this.disconnectOwned(graph.nodes, 'graph-disconnect');
+    await this.closeContext(context);
+  }
+
+  private closeContext(context: AudioContextLike): Promise<void> {
+    if (context.state === 'closed') {
+      this.failedTeardownContexts.delete(context);
+      return Promise.resolve();
+    }
+    const existing = this.closeSettlements.get(context);
+    if (existing) return existing;
+    let resolveSettlement!: () => void;
+    const settlement = new Promise<void>((resolve) => {
+      resolveSettlement = resolve;
+    });
+    this.closeSettlements.set(context, settlement);
+    let settled = false;
+    const finish = (error?: unknown): void => {
+      if (settled) return;
+      settled = true;
+      if (error !== undefined) this.recordFault('context-close', error);
+      if (context.state === 'closed') this.failedTeardownContexts.delete(context);
+      else this.failedTeardownContexts.add(context);
+      if (this.closeSettlements.get(context) === settlement) {
+        this.closeSettlements.delete(context);
+      }
+      resolveSettlement();
+    };
+    let pending: Promise<void>;
+    try {
+      pending = context.close();
+    } catch (error) {
+      finish(error);
+      return settlement;
+    }
+    void Promise.resolve(pending).then(() => {
+      if (context.state !== 'closed') {
+        finish(new Error(`audio context close resolved in ${context.state}`));
+        return;
+      }
+      finish();
+    }, finish);
+    return settlement;
+  }
+
   private attachStateListener(context: AudioContextLike): void {
     if (!context.addEventListener) return;
     const listener = (): void => {
@@ -1205,38 +1583,68 @@ class InjectedAudioRuntime implements AudioRuntime {
     if (context.state === 'closed' || context.state === 'interrupted') {
       const lostState = context.state;
       this.recordFault('context-loss', new Error(`audio context entered ${lostState}`));
-      this.detachStateListener(context);
-      this.context = null;
-      this.resumeBlocked = false;
-      this.stopAllVoices('context-loss');
-      this.disconnectRuntimeGraph();
-      this.clearCache();
       this.state = 'suspended';
+      const detached = this.detachContextOwnership('context-loss', context);
       if (lostState !== 'closed') {
-        void context.close().catch((error) => { this.recordFault('context-close', error); });
+        void this.closeContext(context);
       }
+      if (detached) void this.settleCancelledActivations(detached.activations);
       return;
     }
     this.state = 'blocked';
   }
 
-  private async shutdownContext(reason: 'hidden' | 'dispose'): Promise<void> {
-    const context = this.context;
-    if (context) this.detachStateListener(context);
-    this.context = null;
-    this.resumeBlocked = false;
-    this.stopAllVoices(reason);
-    this.disconnectRuntimeGraph();
-    this.clearCache();
-    if (context && context.state !== 'closed') {
-      try { await context.close(); } catch (error) { this.recordFault('context-close', error); }
+  private async shutdownContext(
+    reason: 'mute' | 'hidden' | 'dispose' | 'stale-activation',
+    expectedContext?: AudioContextLike,
+  ): Promise<void> {
+    const detached = this.detachContextOwnership(reason, expectedContext);
+    if (!detached) return;
+    const obligations: Promise<unknown>[] = [];
+    if (detached.context) obligations.push(this.closeContext(detached.context));
+    /* A stale activation cannot await its own public promise. External
+       lifecycle owners do await cancellation so their settled result leaves
+       no retained activation record, even when resume never resolves. */
+    if (reason !== 'stale-activation') {
+      obligations.push(this.settleCancelledActivations(detached.activations));
     }
+    await Promise.all(obligations);
   }
 
-  private disconnectRuntimeGraph(): void {
+  private detachContextOwnership(
+    reason: 'mute' | 'hidden' | 'dispose' | 'stale-activation' | 'context-loss',
+    expectedContext?: AudioContextLike,
+  ): Readonly<{
+    context: AudioContextLike | null;
+    activations: readonly Promise<AudioActivationResult>[];
+  }> | null {
+    if (expectedContext && this.context !== expectedContext) return null;
+    const context = this.context;
     const graph = this.graph;
+    if (context) this.detachStateListener(context);
+    this.context = null;
     this.graph = null;
+    this.resumeBlocked = false;
+    const activations = context ? this.cancelActivationsForContext(context) : [];
+    /* Detach both context and graph before any injected release/stop callback.
+       A reentrant unmute + activate can then publish only a new graph, never
+       the context this lifecycle owner is about to close. */
+    this.clearCache();
+    this.stopAllVoices(reason);
     if (graph) this.disconnectOwned(graph.nodes, 'graph-disconnect');
+    return Object.freeze({ context, activations: Object.freeze(activations) });
+  }
+
+  private async settleCancelledActivations(
+    activations: readonly Promise<AudioActivationResult>[],
+  ): Promise<void> {
+    for (const activation of activations) {
+      try {
+        await activation;
+      } catch (error) {
+        this.recordFault('activation-shutdown', error);
+      }
+    }
   }
 
   private snapshotVoiceGraph(graph: unknown): VoiceGraphSnapshot | null {
@@ -1305,7 +1713,8 @@ class InjectedAudioRuntime implements AudioRuntime {
 
   private finishVoice(
     id: string,
-    reason: 'natural' | 'manual' | 'stolen' | 'mute' | 'hidden' | 'dispose' | 'context-loss',
+    reason: 'natural' | 'manual' | 'stolen' | 'mute' | 'hidden' | 'dispose'
+      | 'context-loss' | 'stale-activation',
   ): void {
     const voice = this.active.get(id);
     if (!voice || voice.cleaned) return;
@@ -1321,7 +1730,9 @@ class InjectedAudioRuntime implements AudioRuntime {
     }
   }
 
-  private stopAllVoices(reason: 'mute' | 'hidden' | 'dispose' | 'context-loss'): void {
+  private stopAllVoices(
+    reason: 'mute' | 'hidden' | 'dispose' | 'context-loss' | 'stale-activation',
+  ): void {
     for (const id of [...this.active.keys()]) this.finishVoice(id, reason);
   }
 

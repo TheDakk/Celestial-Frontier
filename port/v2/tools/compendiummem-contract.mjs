@@ -17,8 +17,40 @@ export const CANDIDATE_TRANSPORT_TIMEOUT_MS = 5000;
 export const BASELINE_OBSERVATION_TIMEOUT_MS = 180000;
 export const CANDIDATE_BROWSER_LABEL = 'Compendium memory/resource gate';
 export const COMPENDIUM_BROWSER_AUTHORITY_SCHEMA =
-  'cf-v2-compendium-browser-authority/v1';
+  'cf-v2-compendium-browser-authority/v2';
 export const COMPENDIUM_BROWSER_AUTHORITY_SCOPE = 'arc1a-compendium-memory-only';
+export const COMPENDIUM_BROWSER_FAMILY = 'microsoft-edge';
+export const COMPENDIUM_BROWSER_CAPABILITY_CONTRACT =
+  'cf-v2-compendium-cdp-capabilities/v1';
+export const COMPENDIUM_BROWSER_PROTOCOL_VERSION = '1.3';
+export const COMPENDIUM_BROWSER_REQUIRED_CDP_METHODS = Object.freeze([
+  'Browser.getVersion',
+  'Emulation.setDeviceMetricsOverride',
+  'Emulation.setTouchEmulationEnabled',
+  'HeapProfiler.collectGarbage',
+  'HeapProfiler.enable',
+  'Input.dispatchKeyEvent',
+  'Input.dispatchMouseEvent',
+  'Input.insertText',
+  'Memory.getDOMCounters',
+  'Page.addScriptToEvaluateOnNewDocument',
+  'Page.captureScreenshot',
+  'Page.enable',
+  'Page.navigate',
+  'Runtime.enable',
+  'Runtime.evaluate',
+  'Runtime.getHeapUsage',
+  'Target.activateTarget',
+  'Target.attachToTarget',
+  'Target.createBrowserContext',
+  'Target.createTarget',
+]);
+export const COMPENDIUM_BROWSER_BEST_EFFORT_CDP_METHODS = Object.freeze([
+  'Target.detachFromTarget',
+  'Target.disposeBrowserContext',
+]);
+export const COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256 =
+  sha256(JSON.stringify(COMPENDIUM_BROWSER_REQUIRED_CDP_METHODS));
 export const COMPENDIUM_MEASUREMENT_AUTHORITY_SCHEMA =
   'cf-v2-compendium-measurement-authority/v1';
 export const COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS = Object.freeze([
@@ -119,6 +151,10 @@ function finite(value) { return typeof value === 'number' && Number.isFinite(val
 function nonnegative(value) { return finite(value) && value >= 0; }
 function integer(value) { return Number.isSafeInteger(value); }
 function sameJson(left, right) { return JSON.stringify(left) === JSON.stringify(right); }
+function absoluteExecutable(value) {
+  return typeof value === 'string' && value.length > 0
+    && (value.startsWith('/') || /^[A-Za-z]:[\\/]/.test(value));
+}
 function exactKeys(value, expected, where, errors) {
   if (!isObject(value)) { errors.push(`${where} must be an object`); return false; }
   const actual = Object.keys(value).sort();
@@ -128,6 +164,34 @@ function exactKeys(value, expected, where, errors) {
     return false;
   }
   return true;
+}
+
+export function compendiumBrowserCapabilityInventoryErrors({
+  collectorSource, browserCdpSource,
+} = {}) {
+  const errors = [];
+  if (typeof collectorSource !== 'string' || typeof browserCdpSource !== 'string') {
+    return ['Compendium browser capability inventory sources are unavailable'];
+  }
+  const domains = '(?:Browser|Emulation|HeapProfiler|Input|Memory|Page|Runtime|Target)';
+  const methodPattern = new RegExp(`["'](${domains}\\.[A-Za-z]+)["']`, 'g');
+  const collectorMethods = [...collectorSource.matchAll(methodPattern)].map((match) => match[1]);
+  const actual = [...new Set(collectorMethods)].sort();
+  const expected = [
+    ...COMPENDIUM_BROWSER_REQUIRED_CDP_METHODS
+      .filter((method) => method !== 'Browser.getVersion'),
+    ...COMPENDIUM_BROWSER_BEST_EFFORT_CDP_METHODS,
+  ].sort();
+  if (!sameJson(actual, expected)) {
+    const missing = expected.filter((method) => !actual.includes(method));
+    const extra = actual.filter((method) => !expected.includes(method));
+    if (missing.length) errors.push(`Compendium collector capability inventory is missing ${missing.join(', ')}`);
+    if (extra.length) errors.push(`Compendium collector capability inventory has unsealed ${extra.join(', ')}`);
+  }
+  if (!/["']Browser\.getVersion["']/.test(browserCdpSource)) {
+    errors.push('Compendium browser transport lacks Browser.getVersion provenance');
+  }
+  return errors;
 }
 
 export function compendiumMeasurementAuthority(inputs) {
@@ -190,25 +254,33 @@ function validProducerAuthority(value) {
 }
 
 const COMPENDIUM_BROWSER_AUTHORITY_FIELDS = Object.freeze([
-  'product', 'revision', 'jsVersion', 'protocolVersion',
+  'family', 'protocolVersion', 'capabilityContract', 'capabilityContractSha256',
 ]);
+const COMPENDIUM_EDGE_PRODUCT = /^Edg\/(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/;
 
-/** Cross-host Arc 1A browser-build authority. Executable and user agent stay
- * recorded provenance, but cannot be authority fields because the same exact
- * Edge build has different paths and OS tokens on macOS and Linux. */
+/** Version-tolerant Arc 1A browser compatibility authority. Exact product
+ * version, revision, JavaScript version, executable and user agent remain
+ * mandatory per-run provenance, but auto-update drift cannot change the
+ * ruler. The live preflight and collector own the capability contract. */
 export function compendiumBrowserAuthority(browser) {
   if (!isObject(browser)) return null;
+  const product = browser.product;
+  const revision = browser.revision;
+  const jsVersion = browser.jsVersion ?? browser.js_version;
+  const protocolVersion = browser.protocolVersion ?? browser.protocol_version;
+  if (typeof product !== 'string' || !COMPENDIUM_EDGE_PRODUCT.test(product)
+    || typeof revision !== 'string' || revision.length === 0
+    || typeof jsVersion !== 'string' || jsVersion.length === 0
+    || protocolVersion !== COMPENDIUM_BROWSER_PROTOCOL_VERSION) return null;
   const authority = {
     schema: COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
     scope: COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
-    product: browser.product,
-    revision: browser.revision,
-    jsVersion: browser.jsVersion ?? browser.js_version,
-    protocolVersion: browser.protocolVersion ?? browser.protocol_version,
+    family: COMPENDIUM_BROWSER_FAMILY,
+    protocolVersion,
+    capabilityContract: COMPENDIUM_BROWSER_CAPABILITY_CONTRACT,
+    capabilityContractSha256: COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256,
   };
-  return COMPENDIUM_BROWSER_AUTHORITY_FIELDS.every((field) =>
-    typeof authority[field] === 'string' && authority[field].length > 0)
-    ? Object.freeze(authority) : null;
+  return Object.freeze(authority);
 }
 
 export function validCompendiumBrowserAuthority(authority) {
@@ -218,8 +290,11 @@ export function validCompendiumBrowserAuthority(authority) {
     ].sort())
     && authority.schema === COMPENDIUM_BROWSER_AUTHORITY_SCHEMA
     && authority.scope === COMPENDIUM_BROWSER_AUTHORITY_SCOPE
-    && COMPENDIUM_BROWSER_AUTHORITY_FIELDS.every((field) =>
-      typeof authority[field] === 'string' && authority[field].length > 0);
+    && authority.family === COMPENDIUM_BROWSER_FAMILY
+    && authority.protocolVersion === COMPENDIUM_BROWSER_PROTOCOL_VERSION
+    && authority.capabilityContract === COMPENDIUM_BROWSER_CAPABILITY_CONTRACT
+    && authority.capabilityContractSha256
+      === COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256;
 }
 
 export function compendiumBrowserAuthorityMatches(browser, authority) {
@@ -2250,7 +2325,8 @@ function validateCalibrationSample(
   ];
   if (!isObject(sample.browser)
     || browserFields.some((field) => typeof sample.browser[field] !== 'string'
-      || sample.browser[field].length === 0)) {
+      || sample.browser[field].length === 0)
+    || !absoluteExecutable(sample.browser.executable)) {
     errors.push(`${where}.browser provenance is incomplete`);
   } else {
     exactKeys(sample.browser, browserFields, `${where}.browser`, errors);
@@ -2284,22 +2360,60 @@ function validateCalibrationSample(
 function enforceSharedSampleIdentity(samples, label, errors, expectedCommit = null,
   expectedFixture = null) {
   if (!samples.length) return;
-  const identity = (sample) => {
-    const authority = compendiumBrowserAuthority(sample.browser);
-    return [sample.commit, sample.workingTreeDigest,
-      sample.inputDigest, sample.fixtureRowsSha256,
-      authority?.product, authority?.revision,
-      authority?.jsVersion, authority?.protocolVersion].join('\0');
-  };
+  const identity = (sample) => [sample.commit, sample.workingTreeDigest,
+    sample.inputDigest, sample.fixtureRowsSha256].join('\0');
   const first = identity(samples[0]);
   if (samples.some((sample) => identity(sample) !== first)) {
-    errors.push(`${label} samples do not share one exact commit/working-tree/input/fixture/browser-authority identity`);
+    errors.push(`${label} samples do not share one exact commit/working-tree/input/fixture identity`);
   }
   if (expectedCommit && samples.some((sample) => sample.commit !== expectedCommit)) {
     errors.push(`${label} samples do not match the recorded baseline commit`);
   }
   if (expectedFixture && samples.some((sample) => sample.fixtureRowsSha256 !== expectedFixture)) {
     errors.push(`${label} samples do not match the budget fixture digest`);
+  }
+}
+
+function enforceSameRunBrowserProvenance(samplesByProfile, label, errors) {
+  if (!isObject(samplesByProfile)) return;
+  const browserKey = (browser) => [
+    browser?.executable, browser?.product, browser?.revision,
+    browser?.userAgent, browser?.jsVersion, browser?.protocolVersion,
+  ].join('\0');
+  const byRun = new Map();
+  for (const profile of PROFILES) {
+    const samples = Array.isArray(samplesByProfile[profile]) ? samplesByProfile[profile] : [];
+    for (const sample of samples) {
+      if (!byRun.has(sample?.runId)) byRun.set(sample?.runId, new Map());
+      const profiles = byRun.get(sample?.runId);
+      if (profiles.has(profile)) {
+        errors.push(`${label} run ${String(sample?.runId)} has duplicate ${profile} provenance`);
+      } else profiles.set(profile, {
+        browser: sample?.browser,
+        measuredAt: sample?.measuredAt,
+      });
+    }
+  }
+  for (const [runId, profiles] of byRun) {
+    if (profiles.size !== PROFILES.length || PROFILES.some((profile) => !profiles.has(profile))) {
+      errors.push(`${label} run ${String(runId)} is not represented once in every profile`);
+      continue;
+    }
+    const first = browserKey(profiles.get(PROFILES[0])?.browser);
+    if (PROFILES.some((profile) => browserKey(profiles.get(profile)?.browser) !== first)) {
+      errors.push(`${label} run ${String(runId)} does not bind one exact browser provenance tuple across profiles`);
+    }
+    const measuredAt = profiles.get(PROFILES[0])?.measuredAt;
+    if (PROFILES.some((profile) => profiles.get(profile)?.measuredAt !== measuredAt)) {
+      errors.push(`${label} run ${String(runId)} does not bind one exact measurement timestamp across profiles`);
+    }
+  }
+  const runSets = PROFILES.map((profile) => new Set(
+    (Array.isArray(samplesByProfile[profile]) ? samplesByProfile[profile] : [])
+      .map((sample) => sample?.runId),
+  ));
+  if (!sameJson([...runSets[0]].sort(), [...runSets[1]].sort())) {
+    errors.push(`${label} profile run-id inventories differ`);
   }
 }
 
@@ -2396,6 +2510,7 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
       Array.isArray(record.calibration.samples[profile]) ? record.calibration.samples[profile] : []);
     enforceSharedSampleIdentity(allCandidateSamples, 'candidate calibration', errors,
       null, record.fixture?.rowsSha256 || null);
+    enforceSameRunBrowserProvenance(record.calibration.samples, 'candidate calibration', errors);
     if (allCandidateSamples.some((sample) => sample.measurementAuthoritySha256
       !== record.measurementAuthority?.sha256)) {
       errors.push('candidate calibration samples do not match the budget measurement authority');
@@ -2442,6 +2557,9 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
         ? record.pairedBrokenBaseline.samples[profile] : []);
     enforceSharedSampleIdentity(allBaselineSamples, 'paired broken-baseline', errors,
       record.pairedBrokenBaseline.commit, record.fixture?.rowsSha256 || null);
+    enforceSameRunBrowserProvenance(
+      record.pairedBrokenBaseline.samples, 'paired broken-baseline', errors,
+    );
     if (allBaselineSamples.some((sample) => sample.measurementAuthoritySha256
       !== record.measurementAuthority?.sha256)) {
       errors.push('paired broken-baseline samples do not match the budget measurement authority');
@@ -3743,7 +3861,8 @@ function validBrowserProvenance(browser) {
     'executable', 'product', 'revision', 'user_agent', 'js_version', 'protocol_version',
   ];
   return isObject(browser) && fields.every((field) =>
-    typeof browser[field] === 'string' && browser[field].length > 0);
+    typeof browser[field] === 'string' && browser[field].length > 0)
+    && absoluteExecutable(browser.executable);
 }
 
 function validateReportBudgetAuthority(report, errors) {
@@ -3783,13 +3902,13 @@ function validateReportBudgetAuthority(report, errors) {
   const browserMeasuredOutcome = hasBrowser
     && ['pass', 'fail', 'calibration', 'product-unanswerable'].includes(report.status);
   if (browserMeasuredOutcome && budget.browserAuthorityMatch !== true) {
-    errors.push('complete Compendium outcome lacks the exact Arc 1A browser authority');
+    errors.push('complete Compendium outcome lacks the Arc 1A browser compatibility authority');
   }
   if (report.status === 'instrument-fail' && budget.browserAuthorityMatch === false) {
     const exactAuthorityMismatch = report.partialFailure?.classification === 'instrument'
       && report.partialFailure?.profile === null
       && report.partialFailure?.lastCompletedStage === null
-      && report.partialFailure?.failingStage === 'Arc 1A browser authority'
+      && report.partialFailure?.failingStage === 'Arc 1A browser compatibility authority'
       && report.partialFailure?.command === null
       && isObject(report.profiles) && Object.keys(report.profiles).length === 0
       && Array.isArray(report.reviewPacket) && report.reviewPacket.length === 0;
@@ -3866,7 +3985,7 @@ export function verifyTerminalReport(report, expectedRunId, {
       errors.push('report budget status does not match the exact budget record');
     }
     if (!sameJson(report.budget?.browserAuthority ?? null, expectedAuthority)) {
-      errors.push('report Arc 1A browser authority does not match the exact budget record');
+      errors.push('report Arc 1A browser compatibility authority does not match the budget record');
     }
     if (!sameJson(report.budget?.producerAuthority ?? null,
       budgetRecord?.producerAuthority ?? null)) {

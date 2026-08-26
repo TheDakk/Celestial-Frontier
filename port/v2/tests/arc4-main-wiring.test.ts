@@ -185,7 +185,7 @@ function captureErrors(source: string): string[] {
     errors.push('capture-surface-input');
   }
   if (!body.includes(
-    'const rosterResult = canonicalWorldRoster(address.address, epochClock.current());',
+    'const rosterResult = canonicalWorldRoster(address.address, currentEcologyEpoch());',
   )) {
     errors.push('capture-ecology-input');
   }
@@ -284,7 +284,7 @@ function capturePresentationErrors(source: string, cssSource = indexSource): str
     '\n  if (composed.kind !==',
   );
   for (const needle of [
-    'const rosterResult = canonicalWorldRoster(address.address, epochClock.current());',
+    'const rosterResult = canonicalWorldRoster(address.address, currentEcologyEpoch());',
     'if (!planetsideMatchesFullRoster(roster)) fillPlanetside(nav, roster);',
     'if (!planetsideMatchesFullRoster(roster)) {',
     'const fallbackKey = `${roster.worldKey}|epoch:${roster.ecologyEpoch}|${roster.fullRosterFingerprint}`;',
@@ -292,7 +292,7 @@ function capturePresentationErrors(source: string, cssSource = indexSource): str
     'const observation = { observedActivePlayMs };',
     'const presentation = projectCapturePresentationV1(composed.snapshot, observation);',
     'const presentationFence = capturePresentationFenceV1(composed.snapshot, observation);',
-    'currentCapturePresentationFence = presentationFence;',
+    'currentCapturePresentationFence = unavailableDetail === null ? presentationFence : null;',
     'captureCardModelFromPresentation(\n    presentation,\n    fallbackKey,',
   ]) {
     if (!refresh.includes(needle)) errors.push('capture-full-authority-model');
@@ -409,7 +409,7 @@ function captureReconstructionErrors(source: string): string[] {
   const reconstruction = section(
     source,
     'function reconstructCurrentSurfaceSurvey()',
-    '\nfunction showSurvey(',
+    '\ntype SurveyPresentationRow =',
   );
   const dock = section(
     source,
@@ -440,6 +440,7 @@ function captureReconstructionErrors(source: string): string[] {
     'const address = canonicalCF1WorldAddressFromNav(nav);',
     'renderedSceneReceipt.serial <= 0',
     "renderedSceneReceipt.mode !== 'surface'",
+    'renderedSceneReceipt.ecologyEpoch !== currentEcologyEpoch()',
     'renderedSceneReceipt.galaxyKey !== getProvenGalaxyKey(nav.gal)',
     'renderedSceneReceipt.starKey !== getProvenStarKey(nav.star)',
     'renderedSceneReceipt.worldKey !== address.address.key',
@@ -741,6 +742,8 @@ type ReconstructionRunOptions = Readonly<{
   addressOk?: boolean;
   receiptSerial?: number;
   receiptMode?: 'universe' | 'galaxy' | 'system' | 'surface';
+  receiptEcologyEpoch?: number;
+  currentEcologyEpoch?: number;
   receiptGalaxyKey?: string | null;
   receiptStarKey?: string | null;
   receiptWorldKey?: string | null;
@@ -754,7 +757,7 @@ function runReconstructionFromSource(source: string, options: ReconstructionRunO
   const reconstruction = section(
     source,
     'function reconstructCurrentSurfaceSurvey()',
-    '\nfunction showSurvey(',
+    '\ntype SurveyPresentationRow =',
   );
   if (reconstruction.length === 0) throw new Error('reconstruction source is missing');
   const galaxy = Object.freeze({ proofKey: 'galaxy:proof' });
@@ -767,7 +770,7 @@ function runReconstructionFromSource(source: string, options: ReconstructionRunO
   };
   const evaluator = new Function(
     'nav', 'trainingActive', 'canonicalCF1WorldAddressFromNav',
-    'renderedSceneReceipt', 'getProvenGalaxyKey', 'getProvenStarKey',
+    'renderedSceneReceipt', 'currentEcologyEpoch', 'getProvenGalaxyKey', 'getProvenStarKey',
     'planetNodeForProof', 'presentPlanetSurvey', 'surveyDockEl', 'trace',
     'persistView', 'gameEvent', 'playSurveyPing', 'playWhoosh',
     'commitArc4CaptureAction', 'f4Runtime',
@@ -803,10 +806,12 @@ function runReconstructionFromSource(source: string, options: ReconstructionRunO
     Object.freeze({
       serial: options.receiptSerial ?? 1,
       mode: options.receiptMode ?? 'surface',
+      ecologyEpoch: options.receiptEcologyEpoch ?? 7,
       galaxyKey: options.receiptGalaxyKey === undefined ? 'galaxy:proof' : options.receiptGalaxyKey,
       starKey: options.receiptStarKey === undefined ? 'star:proof' : options.receiptStarKey,
       worldKey: options.receiptWorldKey === undefined ? 'world:proof' : options.receiptWorldKey,
     }),
+    () => options.currentEcologyEpoch ?? 7,
     (value: unknown) => (value as { proofKey?: string }).proofKey ?? null,
     (value: unknown) => (value as { proofKey?: string }).proofKey ?? null,
     () => {
@@ -1111,8 +1116,8 @@ describe('Arc 4 main authority wiring', () => {
       ],
       [
         'action',
-        'const rosterResult = canonicalWorldRoster(address.address, epochClock.current());',
-        'const rosterResult = canonicalWorldRoster(address.address, epochClock.current() + 1);',
+        'const rosterResult = canonicalWorldRoster(address.address, currentEcologyEpoch());',
+        'const rosterResult = canonicalWorldRoster(address.address, currentEcologyEpoch() + 1);',
         'capture-ecology-input',
       ],
       ['helper', '      runtime,', '      runtime: {} as never,', 'capture-helper-inputs'],
@@ -1201,7 +1206,7 @@ describe('Arc 4 main authority wiring', () => {
     expect(capturePresentationErrors(staleVisiblePreview)).toContain('capture-full-authority-model');
 
     const rngBoundContext = mainSource.replace(
-      '  currentCapturePresentationFence = presentationFence;',
+      '  currentCapturePresentationFence = unavailableDetail === null ? presentationFence : null;',
       '  currentCapturePresentationFence = composed.snapshot.fingerprint;',
     );
     expect(rngBoundContext).not.toBe(mainSource);
@@ -1326,6 +1331,7 @@ describe('Arc 4 main authority wiring', () => {
     for (const options of [
       { receiptSerial: 0 },
       { receiptMode: 'system' as const },
+      { receiptEcologyEpoch: 6 },
       { receiptGalaxyKey: 'other-galaxy' },
       { receiptStarKey: 'other-star' },
       { receiptWorldKey: 'other-world' },
@@ -1364,7 +1370,7 @@ describe('Arc 4 main authority wiring', () => {
     const wrongRouteGuard = replaceInSectionExact(
       mainSource,
       'function reconstructCurrentSurfaceSurvey()',
-      '\nfunction showSurvey(',
+      '\ntype SurveyPresentationRow =',
       "  if (nav.mode !== 'surface' || trainingActive()) return false;",
       "  if (nav.mode === 'universe' || trainingActive()) return false;",
     );
@@ -1375,7 +1381,7 @@ describe('Arc 4 main authority wiring', () => {
     const removedReceiptProof = replaceInSectionExact(
       mainSource,
       'function reconstructCurrentSurfaceSurvey()',
-      '\nfunction showSurvey(',
+      '\ntype SurveyPresentationRow =',
       '    || renderedSceneReceipt.worldKey !== address.address.key) return false;',
       '    || false) return false;',
     );
@@ -1385,10 +1391,24 @@ describe('Arc 4 main authority wiring', () => {
       receiptWorldKey: 'stale-world',
     }).result).toBe(true);
 
+    const removedEpochProof = replaceInSectionExact(
+      mainSource,
+      'function reconstructCurrentSurfaceSurvey()',
+      '\ntype SurveyPresentationRow =',
+      '    || renderedSceneReceipt.ecologyEpoch !== currentEcologyEpoch()',
+      '    || false',
+    );
+    expect(captureReconstructionErrors(removedEpochProof))
+      .toContain('capture-reconstruction-route-proof');
+    expect(runReconstructionFromSource(removedEpochProof, {
+      receiptEcologyEpoch: 6,
+      currentEcologyEpoch: 7,
+    }).result).toBe(true);
+
     const removedPlanetProof = replaceInSectionExact(
       mainSource,
       'function reconstructCurrentSurfaceSurvey()',
-      '\nfunction showSurvey(',
+      '\ntype SurveyPresentationRow =',
       '  const planet = planetNodeForProof(nav.star, nav.planet);',
       '  const planet = nav.planet;',
     );
@@ -1401,7 +1421,7 @@ describe('Arc 4 main authority wiring', () => {
     const lostFocusLineage = replaceInSectionExact(
       mainSource,
       'function reconstructCurrentSurfaceSurvey()',
-      '\nfunction showSurvey(',
+      '\ntype SurveyPresentationRow =',
       '  surveyFocusReturn = surveyDockEl;',
       '  /* Survey opener lineage omitted */',
     );
@@ -1423,7 +1443,7 @@ describe('Arc 4 main authority wiring', () => {
       const mutant = replaceInSectionExact(
         mainSource,
         'function reconstructCurrentSurfaceSurvey()',
-        '\nfunction showSurvey(',
+        '\ntype SurveyPresentationRow =',
         '  surveyFocusReturn = surveyDockEl;',
         `  ${statement}\n  surveyFocusReturn = surveyDockEl;`,
       );
@@ -1436,7 +1456,7 @@ describe('Arc 4 main authority wiring', () => {
     const receiptMutation = replaceInSectionExact(
       mainSource,
       'function reconstructCurrentSurfaceSurvey()',
-      '\nfunction showSurvey(',
+      '\ntype SurveyPresentationRow =',
       '  surveyFocusReturn = surveyDockEl;',
       '  lastArc4CaptureResult = {};\n  surveyFocusReturn = surveyDockEl;',
     );
