@@ -61,13 +61,19 @@ assets, full audio accessibility, device plateaus, and HUMAN listening remain op
 
 The dedicated no-forged-time Arc 4 recovery collector and its mutation-sensitive selftest are
 ready, but the uninterrupted real 20-minute certificate has not run. The former Compendium ruler
-and exact-budget certificate remain truthful historical evidence for producer
+and exact-budget certificate `20260826-phase4-certification` remain truthful historical evidence for producer
 `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`; they are not rebound to the
-current product. A real product-owner/built-producer change—not the Edge update—moves current
-authority to `calibration-required` for producer
-`f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`. Fresh calibration still
-requires three independent candidates, one paired legacy baseline, activation, and an exact-budget
-certificate plus named verification. The version-tolerant v2 browser authority remains Microsoft
+current product. Fresh current-product calibration from signed source
+`8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527` selected independent candidates
+`20260826-slice-repair-candidate1`, `20260826-slice-repair-candidate2` and
+`20260826-slice-repair-candidate3` plus paired legacy baseline
+`20260826-slice-repair-baseline1`, each in one attempt with zero retries. The active ruler binds
+measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, current producer
+`f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, and budget-file SHA-256
+`6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. It retains all four sealed
+baseline faults and the exact 14-phone/13-desktop breach inventory; only the phone warm ceiling
+changed, to `524288`, while every other numeric ceiling remains unchanged. Its exact-budget
+certificate and named verifier are still pending. The version-tolerant v2 browser authority remains Microsoft
 Edge family + CDP `1.3` + sealed capability
 contract `cf-v2-compendium-cdp-capabilities/v1` (SHA-256
 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`). Exact product version,
@@ -76,7 +82,7 @@ phone and desktop samples with one run ID must bind that exact tuple. An Edge au
 forces calibration nor changes a numeric ceiling, while a real observed budget breach remains red.
 This change is Compendium-only: SceneMemory and the root Gate-A browser contract are unchanged.
 
-Browser-free verification of these local bytes is green: 121 test files / 1,356 passed / one
+Browser-free verification of these local bytes is green: 121 test files / 1,357 passed / one
 intentional skip / zero failures; root, app, worker, and `noUnused` TypeScript; an 884-module Vite
 build; root validation with the unchanged 50-probe fingerprint; legacy jsdom smoke; and the
 applicable contract/reporter/Glass/recovery/Compendium selftests. These are local working-tree
@@ -85,7 +91,7 @@ results only. One clean, one-shot current-input Slice run
 `151.0.4129.107` ended terminal FAIL after 92,772 ms with three findings and zero retries. The
 Settings 14-versus-15 pressed-control expectation and the Arc 3 stage-1-unreachable target were
 instrument false reds; retained Survey Close focus was a product regression. All three are repaired
-locally, but no rerun PASS exists yet. Current-input Glass, fresh Compendium calibration/certificate,
+locally, but no rerun PASS exists yet. Current-input Glass, the fresh Compendium certificate,
 the real recovery certificate, hosted execution, HUMAN review, whole-Gate closure, release, version
 bump, preview/publication, and deployment remain unclaimed.
 

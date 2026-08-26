@@ -33,10 +33,11 @@
 > target were instrument false reds. Retained Survey Close focus returning to canvas instead of the
 > dock opener was a product regression; its opener lineage and both instrument fixtures are repaired
 > locally, but no rerun PASS exists. Browser-free verification remains green at 121 test files,
-> 1,356 passing tests and one intentional skip. The former Compendium certificate remains historical for
-> producer `587d3bdf…`; real product-owner drift moves current producer
-> `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` to
-> `calibration-required`. Edge `.107` is provenance, not the reason. Fresh Compendium proof,
+> 1,357 passing tests and one intentional skip. The former Compendium certificate remains historical for
+> producer `587d3bdf…`; current producer
+> `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is active under budget
+> `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. Edge `.107` is provenance
+> only. The exact-budget certificate/named verifier,
 > current-input Glass/recovery, hosted, integration, HUMAN, preview, release and deployment
 > authority remain open. Broader Arc 7/8 soundscape/assets and listening/comfort review remain
 > partial.
