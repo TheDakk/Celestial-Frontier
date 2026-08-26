@@ -55,7 +55,7 @@ interface Fixture {
   readonly lotId: SpecimenLotId;
 }
 
-function fixture(): Fixture {
+function fixture(leftFed: number | null = 80, rightFed: number | null = 80): Fixture {
   const fauna = canonicalGenomeIdentityV1({ seed: 11, kingdom: 'fauna', form: 3 });
   const otherFauna = canonicalGenomeIdentityV1({ seed: 22, kingdom: 'fauna', form: 7 });
   const flora = canonicalGenomeIdentityV1({ seed: 29, kingdom: 'flora', form: 1 });
@@ -86,7 +86,7 @@ function fixture(): Fixture {
   const leftId = ownershipContentId('creature', 'v2-left') as CreatureInstanceId;
   const twinId = ownershipContentId('creature', 'v2-twin') as CreatureInstanceId;
   const rightId = ownershipContentId('creature', 'v2-right') as CreatureInstanceId;
-  const common = (identity: typeof fauna) => ({
+  const common = (identity: typeof fauna, fed: number | null = 80) => ({
     speciesId: identity.speciesId,
     genomeIdentity: identity.genomeIdentity,
     genome: identity.genome,
@@ -94,13 +94,13 @@ function fixture(): Fixture {
     origin: 'legacy' as const,
     xp: null,
     hurt: null,
-    fed: 80,
+    fed,
     brood: null,
     assignment: null,
     bond: null,
   });
   const left = createCreatureInstanceV1({
-    ...common(fauna),
+    ...common(fauna, leftFed),
     creatureId: leftId,
     acquisitionRecordId: leftDiscovery.recordId,
     lineage: { kind: 'legacy-parent-seeds', generation: 4, parentSeeds: [1, 2] },
@@ -112,7 +112,7 @@ function fixture(): Fixture {
     lineage: { kind: 'none', generation: 0 },
   });
   const right = createCreatureInstanceV1({
-    ...common(otherFauna),
+    ...common(otherFauna, rightFed),
     creatureId: rightId,
     acquisitionRecordId: rightDiscovery.recordId,
     lineage: { kind: 'none', generation: 2 },
@@ -176,6 +176,7 @@ function plannedBreed(
   ordinal = 7,
   seedPair: readonly [number, number] = [11, 22],
   parentIds?: readonly [CreatureInstanceId, CreatureInstanceId],
+  draftFed: number | null = 40,
 ): { readonly acquisition: BredAcquisitionRecordV2; readonly child: ReturnType<typeof createBredCreatureInstanceV2> } {
   const defaultLeft = state.creatures.find((row) => (
     row.genome.seed === 11 && row.lineage.generation === 4
@@ -198,7 +199,7 @@ function plannedBreed(
     nickname: 'Nova',
     xp: 0,
     hurt: 0,
-    fed: 40,
+    fed: draftFed,
     brood: 0,
     assignment: null,
     bond: null,
@@ -269,6 +270,100 @@ describe('@cf/domain-acquisition — Arc 5 ownership V2 foundation', () => {
     expect(distinct.child.genomeIdentity).toBe(child.genomeIdentity);
     expect(distinct.acquisition.recordId).not.toBe(acquisition.recordId);
     expect(distinct.child.creatureId).not.toBe(child.creatureId);
+  });
+
+  it('assigns a new bred child half the lower registered parent fed once and symmetrically', () => {
+    const vectors = [
+      [80, 30, 15],
+      [30, 80, 15],
+      [200, 50, 25],
+      [50, 200, 25],
+      [0, 200, 0],
+      [200, 0, 0],
+      [null, 200, 0],
+      [200, null, 0],
+    ] as const;
+
+    for (let index = 0; index < vectors.length; index++) {
+      const [leftFed, rightFed, expectedFed] = vectors[index]!;
+      const base = fixture(leftFed, rightFed);
+      const migrated = migrateOwnershipStateV1ToV2(base.source);
+      const breed = plannedBreed(
+        migrated,
+        40 + index,
+        [11, 22],
+        [base.leftId, base.rightId],
+        199,
+      );
+      const next = createOwnershipSuccessorV2(migrated, contents(migrated, {
+        bredAcquisitions: [breed.acquisition],
+        creatures: [...migrated.creatures, breed.child],
+      }));
+      const child = next.creatures.find((row) => (
+        row.acquisitionRecordId === breed.acquisition.recordId
+      ));
+      expect(child?.fed).toBe(expectedFed);
+      const reloaded = decodeOwnershipStateV2(
+        encodeOwnershipStateV2(next),
+        SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      );
+      expect(reloaded.creatures.find((row) => row.creatureId === child?.creatureId)?.fed)
+        .toBe(expectedFed);
+    }
+
+    const base = fixture(80, 30);
+    const migrated = migrateOwnershipStateV1ToV2(base.source);
+    const breed = plannedBreed(migrated, 50, [11, 22], [base.leftId, base.rightId], 199);
+    const bred = createOwnershipSuccessorV2(migrated, contents(migrated, {
+      bredAcquisitions: [breed.acquisition],
+      creatures: [...migrated.creatures, breed.child],
+    }));
+    const inherited = bred.creatures.find((row) => (
+      row.acquisitionRecordId === breed.acquisition.recordId
+    ))!;
+    const laterFed = createCreatureInstanceV2({ ...inherited, fed: 17 });
+    const later = createOwnershipSuccessorV2(bred, contents(bred, {
+      creatures: bred.creatures.map((row) => (
+        row.creatureId === laterFed.creatureId ? laterFed : row
+      )),
+    }));
+    expect(later.creatures.find((row) => row.creatureId === laterFed.creatureId)?.fed).toBe(17);
+  });
+
+  it('keeps hostile and out-of-range fed values outside registered parent and child rows', () => {
+    expect(() => fixture(-1, 80)).toThrow(/creature fed/u);
+    expect(() => fixture(201, 80)).toThrow(/creature fed/u);
+    expect(() => fixture(Number.NaN, 80)).toThrow();
+    expect(() => fixture(Number.POSITIVE_INFINITY, 80)).toThrow();
+
+    const migrated = migrateOwnershipStateV1ToV2(fixture().source);
+    const normal = plannedBreed(migrated, 51);
+    const childGenome = { seed: 77, kingdom: 'fauna', form: 9, gen: 5, parents: [11, 22] };
+    const childInput = {
+      acquisition: normal.acquisition,
+      genome: childGenome,
+      generation: 5,
+      nickname: 'Nova',
+      xp: 0,
+      hurt: 0,
+      fed: 40,
+      brood: 0,
+      assignment: null,
+      bond: null,
+    };
+    expect(() => createBredCreatureInstanceV2({ ...childInput, fed: -1 })).toThrow(/creature fed/u);
+    expect(() => createBredCreatureInstanceV2({ ...childInput, fed: 201 })).toThrow(/creature fed/u);
+
+    let touched = false;
+    const hostile = { ...childInput } as Record<string, unknown>;
+    Object.defineProperty(hostile, 'fed', {
+      enumerable: true,
+      get() { touched = true; return 200; },
+    });
+    expect(() => createBredCreatureInstanceV2(
+      hostile as unknown as Parameters<typeof createBredCreatureInstanceV2>[0],
+    )).toThrow(/own data field/u);
+    expect(touched).toBe(false);
   });
 
   it('uses creature IDs as parent authority and treats seed tuples only as checked portability evidence', () => {

@@ -20,7 +20,10 @@ export const ARC4_STALE_FAULT_CAPTURE_SCHEMA =
   'cf-v2-slice-arc4-stale-fault-capture/v1';
 export const ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA =
   'cf-v2-slice-arc4-publication-fault-capture/v1';
+export const ARC4_RECOVERY_CLOSURE_EVIDENCE_SCHEMA =
+  'cf-v2-arc4-recovery-closure-evidence/v1';
 export const ARC4_ACTIVE_PLAY_CYCLE_MS = 1_200_000;
+export const ARC4_RECOVERY_CLOSED_INTERVAL_MIN_MS = 2_000;
 export const ARC4_CAPTURE_RECEIPT_KIND = 'capture-attempt';
 
 export const ARC4_CAPTURE_VERBS = Object.freeze([
@@ -3757,35 +3760,67 @@ export const assessArc4Exhaustion = ({
 
 export const assessArc4ExhaustionRecovery = ({
   exhaustedRaw, exhaustedState, exhaustedUi,
-  suppressed, offlineRaw, offlineState, offlineUi, offlineElapsedMs,
+  suppressed, closedRaw, closedState, closure,
+  offlineRaw, offlineState, offlineUi, offlineElapsedMs,
   recoveredRaw, recoveredState, recoveredUi,
 } = {}) => {
   const exhaustedProgress = progressForFixture(exhaustedRaw);
+  const closedProgress = progressForFixture(closedRaw);
   const offlineProgress = progressForFixture(offlineRaw);
   const recoveredProgress = progressForFixture(recoveredRaw);
   const exhaustedCycle = exhaustedUi?.budget?.cycle;
   const recoveredReady = recoveredUi?.rows?.filter((row) => row?.status === 'ready') ?? [];
+  const closedRuntime = persistenceStateOf(closedState)?.runtime;
+  const exhaustedDocumentToken = persistenceStateOf(exhaustedState)?.documentToken;
+  const closedDocumentToken = persistenceStateOf(closedState)?.documentToken;
+  const offlineDocumentToken = persistenceStateOf(offlineState)?.documentToken;
+  const recoveredDocumentToken = persistenceStateOf(recoveredState)?.documentToken;
+  const offlineStateRuntime = persistenceStateOf(offlineState)?.runtime;
+  const offlineUiRuntime = persistenceStateOf(offlineUi)?.runtime;
+  const reopenedDocumentElapsedMs = counter(
+    closure?.reopenedDocumentStartedAtPerformanceMs,
+  ) && counter(closure?.offlineObservedAtDocumentPerformanceMs)
+    ? closure.offlineObservedAtDocumentPerformanceMs
+      - closure.reopenedDocumentStartedAtPerformanceMs
+    : Number.NaN;
+  const closureTimesOrdered = counter(closure?.checkpointStartedAtMonotonicMs)
+    && counter(closure?.checkpointCompletedAtMonotonicMs)
+    && counter(closure?.closeRequestedAtMonotonicMs)
+    && counter(closure?.closeConfirmedAtMonotonicMs)
+    && counter(closure?.reopenedAtMonotonicMs)
+    && counter(closure?.offlineObservedAtMonotonicMs)
+    && closure.checkpointStartedAtMonotonicMs
+      <= closure.checkpointCompletedAtMonotonicMs
+    && closure.checkpointCompletedAtMonotonicMs
+      <= closure.closeRequestedAtMonotonicMs
+    && closure.closeRequestedAtMonotonicMs <= closure.closeConfirmedAtMonotonicMs
+    && closure.closeConfirmedAtMonotonicMs <= closure.reopenedAtMonotonicMs
+    && closure.reopenedAtMonotonicMs <= closure.offlineObservedAtMonotonicMs;
   const exhaustion = exhaustedPresentationChecks({
     exhaustedRaw, exhaustedState, exhaustedUi, suppressed,
   });
   const checks = {
     captured: !!exhaustedRaw && !!exhaustedState && !!exhaustedUi
-      && !!suppressed && !!offlineRaw && !!offlineState && !!offlineUi
+      && !!suppressed && !!closedRaw && !!closedState && !!closure
+      && !!offlineRaw && !!offlineState && !!offlineUi
       && !!recoveredRaw && !!recoveredState && !!recoveredUi,
     durableEvidence: arc4DurableEvidenceComplete(exhaustedRaw)
+      && arc4DurableEvidenceComplete(closedRaw)
       && arc4DurableEvidenceComplete(offlineRaw)
       && arc4DurableEvidenceComplete(recoveredRaw),
     exhaustedLive: exhaustedLiveParity(exhaustedRaw, exhaustedState),
     ownershipV2Live: arc5OwnershipV2RuntimeExact(exhaustedRaw, exhaustedUi, {
       bootstrapOutcome: 'capture-committed-published',
+    }) && arc5OwnershipV2RuntimeExact(closedRaw, closedState, {
+      bootstrapOutcome: 'capture-committed-published',
     }) && arc5OwnershipV2RuntimeExact(offlineRaw, offlineState, {
-      bootstrapOutcome: 'capture-committed-published',
+      bootstrapOutcome: 'already-aligned',
     }) && arc5OwnershipV2RuntimeExact(offlineRaw, offlineUi, {
-      bootstrapOutcome: 'capture-committed-published',
+      bootstrapOutcome: 'already-aligned',
     }) && arc5OwnershipV2RuntimeExact(recoveredRaw, recoveredState, {
-      bootstrapOutcome: 'capture-committed-published',
+      bootstrapOutcome: 'already-aligned',
     }) && arc5OwnershipV2RuntimeExact(recoveredRaw, recoveredUi, {
-      bootstrapOutcome: 'capture-committed-published',
+      bootstrapOutcome: 'already-aligned',
     }),
     uiComplete: arc4CaptureUiSnapshotComplete(exhaustedUi)
       && arc4CaptureUiSnapshotComplete(offlineUi)
@@ -3801,14 +3836,83 @@ export const assessArc4ExhaustionRecovery = ({
       recoveredRaw, recoveredState, recoveredUi, 'state-ui',
     ),
     ...exhaustion,
+    closeCheckpoint: closedRuntime?.visible === false
+      && closedRuntime?.answerable === false
+      && closedRuntime?.leaseOwned === false
+      && closedRuntime?.accruing === false
+      && exactRuntimeAtOrAfterRaw(closedRaw, closedState)
+      && closedRaw?.authority?.activePlayMs >= exhaustedRaw?.authority?.activePlayMs
+      && closureTimesOrdered
+      && closedRaw?.authority?.activePlayMs - exhaustedRaw?.authority?.activePlayMs
+        <= closure.checkpointCompletedAtMonotonicMs
+          - closure.checkpointStartedAtMonotonicMs + 1_000
+      && sameCaptureAuthority(exhaustedRaw, closedRaw)
+      && same(receiptBytes(exhaustedRaw), receiptBytes(closedRaw))
+      && same(exhaustedProgress, closedProgress),
+    genuineClosureReload: closure?.schema
+        === ARC4_RECOVERY_CLOSURE_EVIDENCE_SCHEMA
+      && closure?.closeAccepted === true
+      && closure?.targetDestroyedObserved === true
+      && closure?.closedTargetAbsent === true
+      && closure?.targetDestroyedEvent?.method === 'Target.targetDestroyed'
+      && closure.targetDestroyedEvent.targetId === closure.closedTargetId
+      && counter(closure.targetDestroyedEvent.receivedAtMonotonicMs)
+      && counter(closure?.postCloseInventoryObservedAtMonotonicMs)
+      && closure.closeRequestedAtMonotonicMs
+        <= closure.targetDestroyedEvent.receivedAtMonotonicMs
+      && closure.targetDestroyedEvent.receivedAtMonotonicMs
+        <= closure.postCloseInventoryObservedAtMonotonicMs
+      && closure.closeConfirmedAtMonotonicMs
+        <= closure.postCloseInventoryObservedAtMonotonicMs
+      && closure.postCloseInventoryObservedAtMonotonicMs
+        <= closure.reopenedAtMonotonicMs
+      && closure.reopenedAtMonotonicMs
+        - closure.postCloseInventoryObservedAtMonotonicMs
+        >= ARC4_RECOVERY_CLOSED_INTERVAL_MIN_MS
+      && Array.isArray(closure?.postCloseTargetInventory)
+      && closure.postCloseTargetInventory.every((entry) =>
+        typeof entry?.targetId === 'string' && entry.targetId.length > 0)
+      && !closure.postCloseTargetInventory.some((entry) =>
+        entry.targetId === closure.closedTargetId)
+      && typeof closure?.closedTargetId === 'string'
+      && closure.closedTargetId.length > 0
+      && typeof closure?.reopenedTargetId === 'string'
+      && closure.reopenedTargetId.length > 0
+      && closure.closedTargetId !== closure.reopenedTargetId
+      && typeof exhaustedDocumentToken === 'string'
+      && exhaustedDocumentToken.length >= 16
+      && closedDocumentToken === exhaustedDocumentToken
+      && typeof offlineDocumentToken === 'string'
+      && offlineDocumentToken.length >= 16
+      && offlineDocumentToken !== exhaustedDocumentToken
+      && recoveredDocumentToken === offlineDocumentToken
+      && closure?.closedDocumentToken === exhaustedDocumentToken
+      && closure?.reopenedDocumentToken === offlineDocumentToken
+      && closureTimesOrdered
+      && offlineElapsedMs === Math.trunc(
+        closure.offlineObservedAtMonotonicMs - closure.closeConfirmedAtMonotonicMs,
+      ),
     offlineDoesNotRecover: counter(offlineElapsedMs) && offlineElapsedMs >= 1_000
-      && offlineRaw?.authority?.activePlayMs === exhaustedRaw?.authority?.activePlayMs
+      && offlineRaw?.authority?.activePlayMs === closedRaw?.authority?.activePlayMs
       && offlineUi?.budget?.cycle === exhaustedCycle
       && offlineUi?.budget?.used === ARC4_PERTAR_FIXTURE.biosphereYield
       && offlineUi?.budget?.remaining === 0
-      && sameCaptureAuthority(exhaustedRaw, offlineRaw)
-      && same(receiptBytes(exhaustedRaw), receiptBytes(offlineRaw))
-      && same(exhaustedProgress, offlineProgress),
+      && sameCaptureAuthority(closedRaw, offlineRaw)
+      && same(receiptBytes(closedRaw), receiptBytes(offlineRaw))
+      && same(closedProgress, offlineProgress),
+    offlineLiveNoWallTimeCredit: counter(reopenedDocumentElapsedMs)
+      && counter(offlineStateRuntime?.activePlayMs)
+      && counter(offlineUiRuntime?.activePlayMs)
+      && offlineStateRuntime.activePlayMs === offlineRaw?.authority?.activePlayMs
+      && offlineUiRuntime.activePlayMs === offlineRaw?.authority?.activePlayMs
+      && offlineStateRuntime.visible === false
+      && offlineStateRuntime.answerable === false
+      && offlineStateRuntime.leaseOwned === false
+      && offlineStateRuntime.accruing === false
+      && offlineUiRuntime.visible === false
+      && offlineUiRuntime.answerable === false
+      && offlineUiRuntime.leaseOwned === false
+      && offlineUiRuntime.accruing === false,
     activePlayBoundary: counter(exhaustedCycle)
       && recoveredRaw?.authority?.activePlayMs >= (exhaustedCycle + 1) * ARC4_ACTIVE_PLAY_CYCLE_MS
       && recoveredRaw?.authority?.activePlayMs > offlineRaw?.authority?.activePlayMs
@@ -3829,8 +3933,8 @@ export const assessArc4ExhaustionRecovery = ({
       && /closing the game does not advance recovery/i
         .test(recoveredUi?.budget?.text ?? ''),
     liveProjectionStable: same(
-      stableCaptureProjection(exhaustedState),
-      stableCaptureProjection(offlineState),
+      omitted(stableCaptureProjection(exhaustedState), ['lastResult']),
+      omitted(stableCaptureProjection(offlineState), ['lastResult']),
     ) && same(
       omitted(stableCaptureProjection(recoveredState), ['lastResult']),
       omitted(stableCaptureProjection(offlineState), ['lastResult']),
@@ -5229,21 +5333,40 @@ const publicationReloadUiSelftest = uiSnapshot(
 );
 
 const exhaustedRawSelftest = makeDurable(exhaustedMirror(), {
-  revision: 16, activePlayMs: ARC4_ACTIVE_PLAY_CYCLE_MS - 500,
+  revision: 16, activePlayMs: ARC4_ACTIVE_PLAY_CYCLE_MS - 10_000,
 });
+const exhaustedDocumentTokenSelftest = 'selftest-exhausted-document-token';
+const reopenedDocumentTokenSelftest = 'selftest-reopened-document-token';
 const exhaustedCaptureSelftest = appCaptureState(exhaustedRawSelftest);
 const exhaustedStateSelftest = appState(exhaustedRawSelftest, exhaustedCaptureSelftest);
+exhaustedStateSelftest.persistence.documentToken = exhaustedDocumentTokenSelftest;
 const depletedStatusesSelftest = {
   tame: 'depleted', scavenge: 'depleted', sample: 'depleted',
 };
 const exhaustedUiSelftest = uiSnapshot(exhaustedCaptureSelftest, {
   used: 16, statuses: depletedStatusesSelftest, raw: exhaustedRawSelftest,
 });
+const closedRawSelftest = structuredClone(exhaustedRawSelftest);
+const closedCaptureSelftest = appCaptureState(closedRawSelftest);
+const closedStateSelftest = appState(closedRawSelftest, closedCaptureSelftest);
+closedStateSelftest.persistence.documentToken = exhaustedDocumentTokenSelftest;
+Object.assign(closedStateSelftest.persistence.runtime, {
+  visible: false, answerable: false, leaseOwned: false, accruing: false,
+});
 const offlineRawSelftest = structuredClone(exhaustedRawSelftest);
 const offlineCaptureSelftest = appCaptureState(offlineRawSelftest);
-const offlineStateSelftest = appState(offlineRawSelftest, offlineCaptureSelftest);
+const offlineStateSelftest = appState(offlineRawSelftest, offlineCaptureSelftest, {
+  boot: true,
+});
+offlineStateSelftest.persistence.documentToken = reopenedDocumentTokenSelftest;
+Object.assign(offlineStateSelftest.persistence.runtime, {
+  visible: false, answerable: false, leaseOwned: false, accruing: false,
+});
 const offlineUiSelftest = uiSnapshot(offlineCaptureSelftest, {
-  used: 16, statuses: depletedStatusesSelftest, raw: offlineRawSelftest,
+  used: 16, statuses: depletedStatusesSelftest, raw: offlineRawSelftest, boot: true,
+});
+Object.assign(offlineUiSelftest.persistence.runtime, {
+  visible: false, answerable: false, leaseOwned: false, accruing: false,
 });
 const recoveredRawSelftest = makeDurable(exhaustedMirror(), {
   revision: 17, activePlayMs: ARC4_ACTIVE_PLAY_CYCLE_MS,
@@ -5251,9 +5374,12 @@ const recoveredRawSelftest = makeDurable(exhaustedMirror(), {
 const recoveredCaptureSelftest = appCaptureState(recoveredRawSelftest, {
   lastResult: null,
 });
-const recoveredStateSelftest = appState(recoveredRawSelftest, recoveredCaptureSelftest);
+const recoveredStateSelftest = appState(recoveredRawSelftest, recoveredCaptureSelftest, {
+  boot: true,
+});
+recoveredStateSelftest.persistence.documentToken = reopenedDocumentTokenSelftest;
 const recoveredUiSelftest = uiSnapshot(recoveredCaptureSelftest, {
-  used: 0, cycle: 1, raw: recoveredRawSelftest,
+  used: 0, cycle: 1, raw: recoveredRawSelftest, boot: true,
 });
 const suppressedSelftest = {
   verb: 'tame',
@@ -5478,6 +5604,29 @@ const nonzeroPublicationBundleSelftest = {
 const exhaustionBundleSelftest = {
   exhaustedRaw: exhaustedRawSelftest, exhaustedState: exhaustedStateSelftest,
   exhaustedUi: exhaustedUiSelftest, suppressed: suppressedSelftest,
+  closedRaw: closedRawSelftest, closedState: closedStateSelftest,
+  closure: {
+    schema: ARC4_RECOVERY_CLOSURE_EVIDENCE_SCHEMA,
+    closedTargetId: 'selftest-closed-target',
+    reopenedTargetId: 'selftest-reopened-target',
+    closedDocumentToken: exhaustedDocumentTokenSelftest,
+    reopenedDocumentToken: reopenedDocumentTokenSelftest,
+    closeAccepted: true, targetDestroyedObserved: true, closedTargetAbsent: true,
+    checkpointStartedAtMonotonicMs: 1_000,
+    checkpointCompletedAtMonotonicMs: 1_100,
+    closeRequestedAtMonotonicMs: 1_100,
+    closeConfirmedAtMonotonicMs: 1_120,
+    targetDestroyedEvent: {
+      method: 'Target.targetDestroyed', targetId: 'selftest-closed-target',
+      receivedAtMonotonicMs: 1_130,
+    },
+    postCloseInventoryObservedAtMonotonicMs: 1_140,
+    postCloseTargetInventory: [],
+    reopenedAtMonotonicMs: 5_120,
+    offlineObservedAtMonotonicMs: 6_120,
+    reopenedDocumentStartedAtPerformanceMs: 0,
+    offlineObservedAtDocumentPerformanceMs: 1_000,
+  },
   offlineRaw: offlineRawSelftest, offlineState: offlineStateSelftest,
   offlineUi: offlineUiSelftest, offlineElapsedMs: 5_000,
   recoveredRaw: recoveredRawSelftest, recoveredState: recoveredStateSelftest,
@@ -5969,8 +6118,57 @@ const negativePublicationExcessiveUiLagSelftest
     },
   );
 const negativeExhaustionSelftest = {
-  ...exhaustionBundleSelftest, offlineElapsedMs: 0,
+  ...exhaustionBundleSelftest,
+  closure: {
+    ...exhaustionBundleSelftest.closure,
+    reopenedAtMonotonicMs:
+      exhaustionBundleSelftest.closure.closeConfirmedAtMonotonicMs,
+    offlineObservedAtMonotonicMs:
+      exhaustionBundleSelftest.closure.closeConfirmedAtMonotonicMs,
+  },
+  offlineElapsedMs: 0,
 };
+const negativeExhaustionClosureSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionClosureSelftest.closure.targetDestroyedObserved = false;
+const negativeExhaustionSameTargetSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionSameTargetSelftest.closure.reopenedTargetId
+  = negativeExhaustionSameTargetSelftest.closure.closedTargetId;
+const negativeExhaustionSameDocumentSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionSameDocumentSelftest.offlineState.persistence.documentToken
+  = exhaustedDocumentTokenSelftest;
+negativeExhaustionSameDocumentSelftest.recoveredState.persistence.documentToken
+  = exhaustedDocumentTokenSelftest;
+negativeExhaustionSameDocumentSelftest.closure.reopenedDocumentToken
+  = exhaustedDocumentTokenSelftest;
+const negativeExhaustionInventorySelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionInventorySelftest.closure.postCloseTargetInventory.push({
+  targetId: negativeExhaustionInventorySelftest.closure.closedTargetId,
+});
+const negativeExhaustionNoClosedIntervalSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionNoClosedIntervalSelftest.closure.reopenedAtMonotonicMs
+  = negativeExhaustionNoClosedIntervalSelftest.closure
+    .postCloseInventoryObservedAtMonotonicMs;
+const negativeExhaustionOfflineCreditSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionOfflineCreditSelftest.offlineState = withRuntimeActivePlaySelftest(
+  offlineStateSelftest,
+  offlineRawSelftest.authority.activePlayMs + 5_000,
+);
+negativeExhaustionOfflineCreditSelftest.offlineUi = withUiActivePlaySelftest(
+  offlineUiSelftest,
+  offlineRawSelftest.authority.activePlayMs + 5_000,
+);
 const negativeExhaustionSuppressionSelftest = structuredClone(exhaustionBundleSelftest);
 negativeExhaustionSuppressionSelftest.suppressed.clickCount = 1;
 const negativeExhaustionLiveSelftest = structuredClone(exhaustionBundleSelftest);
@@ -6392,8 +6590,38 @@ const isolatedNegativeSelftests = Object.freeze({
     ),
   }),
   exhaustion: Object.freeze({
-    expected: 'offlineDoesNotRecover',
+    expected: Object.freeze(['genuineClosureReload', 'offlineDoesNotRecover']),
     result: assessArc4ExhaustionRecovery(negativeExhaustionSelftest),
+  }),
+  exhaustionClosure: Object.freeze({
+    expected: 'genuineClosureReload',
+    result: assessArc4ExhaustionRecovery(negativeExhaustionClosureSelftest),
+  }),
+  exhaustionSameTarget: Object.freeze({
+    expected: 'genuineClosureReload',
+    result: assessArc4ExhaustionRecovery(negativeExhaustionSameTargetSelftest),
+  }),
+  exhaustionSameDocument: Object.freeze({
+    expected: 'genuineClosureReload',
+    result: assessArc4ExhaustionRecovery(
+      negativeExhaustionSameDocumentSelftest,
+    ),
+  }),
+  exhaustionInventory: Object.freeze({
+    expected: 'genuineClosureReload',
+    result: assessArc4ExhaustionRecovery(negativeExhaustionInventorySelftest),
+  }),
+  exhaustionNoClosedInterval: Object.freeze({
+    expected: 'genuineClosureReload',
+    result: assessArc4ExhaustionRecovery(
+      negativeExhaustionNoClosedIntervalSelftest,
+    ),
+  }),
+  exhaustionOfflineCredit: Object.freeze({
+    expected: 'offlineLiveNoWallTimeCredit',
+    result: assessArc4ExhaustionRecovery(
+      negativeExhaustionOfflineCreditSelftest,
+    ),
   }),
   exhaustionSuppression: Object.freeze({
     expected: 'disabledSuppression',

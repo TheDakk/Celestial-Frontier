@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { canon } from '../../../tests/parity.js';
 import { battleStats } from '@cf/domain-combatcore';
 import { describeSpecies } from '@cf/domain-genome';
+import { harvestReady } from '@cf/domain-progression';
 import {
   exportSaveV2, importSaveV2, isLegacySliceEnvelope, isPlausibleSaveEnvelope,
   isKnownFrontierEndingId, sanitizeImportedGenomeV2,
@@ -161,6 +162,58 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
     const row = (res as { ok: true; state: SaveStateV2 }).state.conquered[0]![1];
     expect(row.t).toBe(NOW);
     expect(row.e).toBeUndefined();
+  });
+  it('Gate C: conq[].e migration preserves one ready legacy cycle, clamps hostile bounds, and round-trips', () => {
+    const source = structuredClone(FX.inputs.veteran_rich) as Record<string, unknown>;
+    source.epoch = 1;
+    source.conq = [
+      ['absent', { t: NOW, tier: 1 }],
+      ['null', { t: NOW, tier: 1, e: null }],
+      ['zero', { t: NOW, tier: 1, e: 0 }],
+      ['boundary', { t: NOW, tier: 1, e: 1 }],
+      ['future', { t: NOW, tier: 1, e: 1_000_000_000 }],
+      ['negative', { t: NOW, tier: 1, e: -7 }],
+      ['malformed', { t: NOW, tier: 1, e: 'not-an-epoch' }],
+    ];
+
+    const imported = importSaveV2(JSON.stringify(source), REGISTRY, NOW);
+    expect(imported.ok).toBe(true);
+    if (!imported.ok) return;
+    expect(imported.state.EPOCH_BASE).toBe(1);
+    const rows = new Map(imported.state.conquered);
+    const row = (id: string) => rows.get(id)!;
+
+    /* Mutation control: assigning `e = 0` unconditionally would erase the
+       absent/null migration signal and make these rows unready at epoch 1. */
+    for (const id of ['absent', 'null']) {
+      expect(Object.hasOwn(row(id), 'e'), `${id} must retain absent e`).toBe(false);
+      expect(harvestReady(row(id), imported.state.EPOCH_BASE), `${id} must be ready once`).toBe(true);
+    }
+
+    expect(Object.hasOwn(row('zero'), 'e')).toBe(true);
+    expect(row('zero').e).toBe(0);
+    expect(Object.hasOwn(row('boundary'), 'e')).toBe(true);
+    expect(row('boundary').e).toBe(1);
+    expect(harvestReady(row('zero'), imported.state.EPOCH_BASE)).toBe(false);
+    expect(harvestReady(row('boundary'), imported.state.EPOCH_BASE)).toBe(false);
+
+    /* Mutation controls: a missing upper clamp cannot retain the hostile
+       future value, and a missing lower clamp cannot retain the negative. */
+    expect(row('future').e).toBe(1);
+    expect(row('negative').e).toBe(0);
+    expect(row('malformed').e).toBe(0);
+    for (const id of ['future', 'negative', 'malformed']) {
+      expect(Object.hasOwn(row(id), 'e'), `${id} must remain a present sanitized stamp`).toBe(true);
+      expect(harvestReady(row(id), imported.state.EPOCH_BASE), `${id} must not impersonate absent`).toBe(false);
+    }
+
+    const reloaded = importSaveV2(exportSaveV2(imported.state, NOW), REGISTRY, NOW);
+    expect(reloaded.ok).toBe(true);
+    if (!reloaded.ok) return;
+    expect(reloaded.state.conquered).toEqual(imported.state.conquered);
+    const reloadedRows = new Map(reloaded.state.conquered);
+    expect(Object.hasOwn(reloadedRows.get('absent')!, 'e')).toBe(false);
+    expect(Object.hasOwn(reloadedRows.get('null')!, 'e')).toBe(false);
   });
   it('D-9i: generation strings become numbers and invalid counters cannot poison maxGen', () => {
     const baseInput = FX.inputs.hostile_markup_caps as { codex: Array<{ g: Record<string, unknown> }> };
