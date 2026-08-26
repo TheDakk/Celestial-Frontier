@@ -6,7 +6,8 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-26.**
 >
-> **2026-08-26 local candidate overlay — implemented source lanes, not certification:** Gate B's
+> **2026-08-26 local candidate overlay — implemented source lanes with a signed, certified
+> Compendium ruler; Slice/Glass/recovery evidence still open:** Gate B's
 > recursive scanner now seals an exact 62-domain-source inventory against DOM, storage,
 > `navigator`, network, wall/monotonic clock and uncontrolled randomness. Its only two reasoned
 > waivers are the exact `document.createElement('')` expressions used by CombatCore's legacy
@@ -48,25 +49,30 @@
 > plateaus and HUMAN listening remain open.
 >
 > The dedicated real-time Arc 4 recovery collector and mutation-sensitive selftest are ready, but
-> the uninterrupted real 20-minute certificate has not run. The Compendium ruler is correctly
-> `calibration-required`: measurement authority
-> `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, producer authority
-> `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, empty phone/desktop
-> calibration samples, a measurement-required paired baseline and `ceilings:null`. Its exact
+> the uninterrupted real 20-minute certificate has not run. The Compendium ruler is active under
+> measurement authority `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`
+> and producer authority `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`.
+> Clean committed source `6d8f184…` supplied selected candidate3/5/6 plus paired baseline1; signed
+> activation `d33e540…` retains exact 14-phone/13-desktop baseline discrimination. Its exact
 > Arc-local v2 browser authority is Microsoft Edge family + CDP `1.3` + sealed capability contract
 > `cf-v2-compendium-cdp-capabilities/v1` (SHA-256
 > `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`). Exact product version,
 > revision, JavaScript version, executable and user agent are mandatory per-run provenance only;
-> phone/desktop samples sharing a run ID bind the same tuple. Edge auto-update does not recalibrate
-> or move ceilings, and a real observed breach remains red. This Compendium-only policy does not
-> alter SceneMemory or the root Gate-A browser contract.
+> phone/desktop samples sharing a run ID bind the same tuple. Edge auto-update alone never
+> rebaselines or moves ceilings, and a real observed breach remains red. Exact-budget run
+> `20260826-phase4-certification` passed 78/78 plus its named verifier on exact Edge
+> `151.0.4129.107`, whose full build tuple is provenance only. Report raw/gzip SHA-256 are
+> `3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd` /
+> `5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. This Compendium-only
+> policy does not alter SceneMemory or the root Gate-A browser contract.
 >
-> Browser-free verification for these local, uncommitted bytes is green: 121 test files, 1,354
+> Browser-free verification for these local bytes is green: 121 test files, 1,356
 > passed, one intentional skip and zero failures; `root/app/worker/noUnused` TypeScript; an
 > 884-module Vite build; root validation with the unchanged 50-probe fingerprint; legacy jsdom
-> smoke; and the applicable contract, reporter, Glass, recovery and Compendium selftests. There is
-> no current-input browser evidence for this candidate and no hosted, HUMAN, whole-Gate, release,
-> version, preview/publication or deployment claim.
+> smoke; and the applicable contract, reporter, Glass, recovery and Compendium selftests. Current-
+> input Compendium evidence is complete; current-input Slice/Glass and recovery evidence remain
+> open. There is no hosted, HUMAN, whole-Gate, release, version, preview/publication or deployment
+> claim.
 >
 > **2026-08-25 Arc 3–5 + Arc 7 historical checkpoint — retained as foundation where the
 > 2026-08-26 overlay does not supersede it:** `@cf/domain-opportunity`,
@@ -2050,19 +2056,27 @@ catalogue compatibility data after the exact committed transaction verifies; eli
 only the appropriate stable fauna individual or specimen lot. Failed or refused attempts do not
 publish optimistic ownership, reroll, or perform a second write.
 
-The current local ruler is intentionally not certified. Its state is `calibration-required` under
-measurement authority `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`
-and producer authority `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`.
-Phone and desktop calibration samples are empty, the paired baseline is
-`measurement-required`, its collector commit is null, and numeric ceilings are null. Browser
+The current local ruler is active under measurement authority
+`cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer authority
+`587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`. Clean committed source
+`6d8f184…` supplied independent `20260826-phase4-candidate3`,
+`20260826-phase4-candidate5` and `20260826-phase4-candidate6` plus paired legacy-product
+`20260826-phase4-baseline1`, each one attempt and zero retries. Signed activation
+`d33e540f0d620eac34bdc259b7814db0f11a9006` installs rational ceilings strictly above selected
+candidate maxima while preserving all four sealed baseline faults and exact 14-phone/13-desktop
+breach discrimination. Browser
 authority schema `cf-v2-compendium-browser-authority/v2` accepts canonical Microsoft Edge builds
 that report CDP `1.3` and satisfy sealed capability contract
 `cf-v2-compendium-cdp-capabilities/v1` / SHA-256
 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Exact product version,
 revision, JavaScript version, executable and user agent remain mandatory evidence, but only as one
 per-run provenance tuple shared by that run's phone and desktop samples. Independent runs may span
-Edge auto-updates without recalibration or threshold changes; an actual threshold breach still
-fails. SceneMemory and the root Gate-A browser authority are outside this change.
+Edge auto-updates without rebaselining or threshold changes; an actual threshold breach still
+fails. Exact-budget run `20260826-phase4-certification` passed 78/78 plus its named verifier from
+clean committed activation `d33e540…`; exact Edge `151.0.4129.107` is provenance only. Report
+raw/gzip SHA-256 are `3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd` /
+`5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. SceneMemory and the root
+Gate-A browser authority are outside this change.
 
 ### Star Atlas (bookmarks)
 The `logMap` Map. `addToLog`, `renderLog`. Every survey card (galaxy/star/planet/moon/etc.)
@@ -2491,11 +2505,12 @@ for a name.
 ## 12. Test suites (all must pass)
 
 **Current local candidate snapshot (2026-08-26):** browser-free verification is green at 121 test
-files / 1,354 passed / one intentional skip / zero failures, with root, app, worker and no-unused
+files / 1,356 passed / one intentional skip / zero failures, with root, app, worker and no-unused
 TypeScript, the 884-module Vite build, root validation/fingerprint, legacy jsdom smoke, and the
-applicable contract/reporter/Glass/recovery/Compendium selftests green. These results describe
-uncommitted working-tree bytes. No current-input browser run, 20-minute recovery certificate,
-Compendium calibration, hosted execution, HUMAN review, whole-Gate closure or release follows.
+applicable contract/reporter/Glass/recovery/Compendium selftests green. Current-input Compendium run
+`20260826-phase4-certification` passed 78/78 and named verification from signed activation
+`d33e540…`. Current-input Slice/Glass, the 20-minute recovery certificate, hosted execution, HUMAN
+review, whole-Gate closure and release remain open.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost
 with the previous working environment. They are superseded by `tools/validate.js`

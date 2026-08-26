@@ -12,12 +12,13 @@ as any change that touches an entry.
 
 ## Current-state boundary — completed local candidate lanes (2026-08-26)
 
-All facts in this section describe uncommitted local working-tree bytes. They have browser-free
-evidence only: 121 test files /1,354 passed /one intentional skip /zero failures; root, app, worker
-and `noUnused` TypeScript; the 884-module Vite build; root validation/fingerprint; legacy jsdom smoke;
-and applicable contract/reporter/Glass/recovery/Compendium selftests. There is no current-input
-browser evidence, real recovery certificate, Compendium calibration, hosted run, HUMAN judgment,
-whole-Arc/Gate closure, release/version, preview/publication or deployment claim.
+The completed source lanes are locally committed. Browser-free evidence is green at 121 test files /
+1,356 passed /one intentional skip /zero failures; root, app, worker and `noUnused` TypeScript; the
+884-module Vite build; root validation/fingerprint; legacy jsdom smoke; and applicable contract/
+reporter/Glass/recovery/Compendium selftests. Current-input Compendium calibration and certification
+are complete on signed activation `d33e540…`; Slice, Glass and real recovery evidence remain pending.
+There is no hosted run, HUMAN judgment, whole-Arc/Gate closure, release/version, preview/publication
+or deployment claim.
 
 - ★ **D-GATE-B-62 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 62 domain
   sources against DOM, storage, `navigator`, network, wall/monotonic clock and uncontrolled random.
@@ -58,18 +59,23 @@ whole-Arc/Gate closure, release/version, preview/publication or deployment claim
 - ◐ **D-ARC4-RECOVERY-CERT — instrument ready, real duration open.** The dedicated real-time,
   one-attempt/no-forged-clock collector and mutation-sensitive selftest are ready. The uninterrupted
   real 20-minute certificate has not run.
-- ◐ **D-COMPENDIUM-CALIBRATION — authority selected, measurements absent.** Status is correctly
-  `calibration-required` under measurement
+- ★ **D-COMPENDIUM-CALIBRATION — active version-tolerant ruler certified.** Measurement
   `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
-  `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`; phone/desktop samples
-  are empty, paired baseline is measurement-required with null collector commit, and ceilings are
-  null. Browser authority v2 replaces an exact-build identity with Microsoft Edge family + CDP
+  `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` bind clean committed
+  candidate3/5/6 plus paired baseline1. Signed activation
+  `d33e540f0d620eac34bdc259b7814db0f11a9006` keeps rational strictly-above ceilings and exact
+  14-phone/13-desktop baseline discrimination. Browser authority v2 replaces an exact-build
+  identity with Microsoft Edge family + CDP
   `1.3` + sealed `cf-v2-compendium-cdp-capabilities/v1` SHA-256
   `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Exact product version,
   revision, JavaScript version, executable path and user agent remain mandatory provenance, and
-  one run's phone/desktop samples must bind the same exact tuple. Edge auto-update does not
-  recalibrate or change thresholds; a compatible run's real budget breach remains red. This is a
-  Compendium-only authority change, not a SceneMemory or root Gate-A rebaseline.
+  one run's phone/desktop samples must bind the same exact tuple. Edge auto-update alone never
+  rebaselines or changes thresholds; a compatible run's real budget breach remains red. Exact-budget
+  run `20260826-phase4-certification` passed 78/78 plus named verification; exact Edge
+  `151.0.4129.107` is provenance only. Report raw/gzip SHA-256 are
+  `3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd` /
+  `5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. This is a Compendium-only
+  authority change, not a SceneMemory or root Gate-A rebaseline.
 
 ## Historical current-state checkpoint — Arc 3 Engineering, player-facing Arc 4 capture and Arc 5A authority infrastructure (2026-08-25)
 
@@ -240,7 +246,8 @@ report must not be reused as hosted, HUMAN, integration, or Arc 1C evidence.
 
 **Status at this historical product boundary: ★ automated implementation and integration complete;
 six-image `[HUMAN]` review open.** The 2026-08-26 overlay supersedes its measurement disposition:
-the current producer is calibration-required with empty samples and null ceilings.
+the current producer has an active, exact-budget-certified ruler under signed activation
+`d33e540…`, selected candidate3/5/6 plus baseline1, and exact 14-phone/13-desktop discrimination.
 Product virtualization, serviced-turn scheduling, compact-phone layout, displayed-demand texture
 ownership, bounded static-server shutdown and the repaired ruler are present. Exact changed-head run
 `32462323775` passed the complete battery once on `c68aee2…`; its approval label was removed and
@@ -2249,8 +2256,9 @@ duplicates).
 - ★ **D-COMPENDIUM-MEM — historical eager-catalogue finding, product repair implemented
   (2026-08-13).** The current 1,500-row product uses a bounded virtual window and broker-owned
   132px/440px work instead of eager row data URLs. Historical plateau certificates remain scoped to
-  their own producer. The 2026-08-26 producer is `calibration-required` with empty samples and null
-  ceilings, so the structural repair must not be restated as a current measurement certificate.
+  their own producer. The 2026-08-26 producer now has an active ruler and exact-budget certificate
+  under signed activation `d33e540…`; that current evidence is separate from the dated structural
+  finding and does not retroactively rebind historical measurements.
 - ★ **D-AUTOEXTRACT-CLOCK — historical wall-time finding, repaired for the implemented Arc 3
   writer.** Auto-Extractor settlement derives capped loads from persisted F4 active-play progress,
   ignores legacy wall timestamps, preserves remainders/finite reserves and reanchors new extractors.

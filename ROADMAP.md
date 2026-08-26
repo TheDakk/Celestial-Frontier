@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-26 · SIGNED MULTI-ARC SOURCE FREEZE GREEN · BROWSER EVIDENCE PENDING ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-26 · SIGNED COMPENDIUM RULER CERTIFIED · SLICE/GLASS/RECOVERY PENDING ◀◀◀
 
 ### Current integration state
 
@@ -34,50 +34,55 @@ the archive verbatim and refresh this handoff in place.
   paths; all 98 were independently audited and committed together with no index/worktree overlap.
   `git verify-commit` reports a good `git` signature for
   `79046704+TheDakk@users.noreply.github.com`, Ed25519 fingerprint
-  `SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`. This handoff refresh is the sole intentional
-  post-freeze docs delta until its signed descendant commit. Nothing is pushed, hosted, integrated
-  or released.
-- **Integrated non-browser freeze:** all 121 Vitest files are green with 1,355 passing tests, one
+  `SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`. Signed descendant
+  `6d8f18479cce14dc031608aaa12fca331d1eea20` records that freeze, and signed activation
+  `d33e540f0d620eac34bdc259b7814db0f11a9006` installs the current Compendium ruler and its four
+  retained calibration capsules. Nothing is pushed, hosted, integrated or released.
+- **Integrated non-browser freeze:** all 121 Vitest files are green with 1,356 passing tests, one
   intentional skip and zero failures. Root/app/worker TypeScript, no-unused, the 884-module Vite
   build, all changed-tool syntax/import/selftests, root `validate.js`, its unchanged 50-probe
   determinism fingerprint, and the complete legacy jsdom smoke pass. Independent audits are clear
   for the implementation lanes, integration repairs, Compendium transition and the frozen
   contract/Slice/Glass tool bytes.
-- **Compendium is fail-closed for fresh calibration:** the final dependency graph invalidated the
-  old active ruler without rebinding its historical evidence. `compendium-memory-v1.json` is now
-  `calibration-required` with measurement authority
-  `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, producer authority
-  `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, empty candidate and paired-
-  baseline samples, `ceilings:null`, and baseline `measurement-required`. The exact legacy baseline
-  commit `38447019517147319bd08c598202d097ee866874` is materialized clean with locked dependencies in
-  an isolated local worktree. Calibration still requires a clean committed candidate. Compendium's
-  version-tolerant v2 authority now binds Microsoft Edge family, CDP `1.3`, and sealed capability
+- **Compendium's current ruler is active and certified:** clean committed source `6d8f184…` supplied
+  independent candidates `20260826-phase4-candidate3`, `20260826-phase4-candidate5` and
+  `20260826-phase4-candidate6`, plus paired legacy-product baseline
+  `20260826-phase4-baseline1` at exact baseline commit
+  `38447019517147319bd08c598202d097ee866874`. Each selected run had one attempt and zero retries.
+  Signed activation `d33e540…` binds measurement
+  `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, producer
+  `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, strictly-above rational
+  ceilings and the exact 14-phone/13-desktop paired-baseline breach inventory. Compendium's
+  version-tolerant v2 authority binds Microsoft Edge family, CDP `1.3`, and sealed capability
   contract `cf-v2-compendium-cdp-capabilities/v1` SHA-256
   `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Exact product version,
   revision, JavaScript version, executable and user agent are mandatory per-run provenance only;
-  phone and desktop samples with the same run ID must bind one exact tuple. An Edge auto-update does
-  not trigger recalibration or alter ceilings, and any real measured breach remains terminal red.
-  This Arc-local change does not repin SceneMemory or the root Gate-A browser.
+  phone and desktop samples with the same run ID must bind one exact tuple. Edge auto-update alone
+  never triggers rebaselining or alters ceilings, while any real measured breach remains terminal
+  red. Exact-budget run `20260826-phase4-certification` then passed 78/78 from clean committed
+  activation `d33e540…`, with its named verifier PASS. Its exact Edge
+  `151.0.4129.107`/revision/JavaScript/path/UA tuple is provenance only. Report raw/gzip SHA-256 are
+  `3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd` /
+  `5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. This Arc-local ruler does
+  not repin SceneMemory or the root Gate-A browser.
 - PR #33 remains merged in `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`
   and PR #34 as `7a9f4c1370dd84292388d718c38ff34214f6203b`; their retained hosted/browser evidence remains
-  historical integration evidence only. The current 2026-08-26 candidate has launched no browser
-  and cannot reuse those reports as exact-input proof.
+  historical integration evidence only; the current Compendium certificate above is separate
+  exact-input local proof for `d33e540…` and does not rebind those reports.
 - `main`, the production site and the parked development-preview publisher are unchanged. No push,
   hosted attempt, PR update, merge, preview package, publication, release, deployment, production
   version bump, `rnSeen` mutation or production save-key change is authorized or performed.
 
 ### Remaining evidence and decisions
 
-- **Source signing is resolved:** after three timed-out 1Password attempts, Nick foregrounded and
-  approved the signer; the next explicitly authorized attempt created signed source-freeze commit
-  `913a327119465ad1f3df85a682d8d78d1ff35cea`. Its SSH signature and exact tree are independently
-  verified above; no unsigned substitute was used. This ROADMAP-only self-reference refresh must be
-  committed as one signed descendant before browser work. There is no Edge `.101` versus `.107`
-  rebaseline decision.
-- After that clean commit: collect one paired legacy baseline plus three independent current
-  Compendium candidates, activate and certify the ruler once; then run one no-retry current-input
-  Slice, one full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms Arc 4 recovery
-  certificate. Ordinary Slice remains a deliberate nonclaim with `recoveryClaimed:false`.
+- **Source signing and Compendium certification are resolved:** the source freeze, handoff
+  descendant and activation are signed; no unsigned substitute was used. Selected baseline/candidate
+  evidence, active ceilings, exact-budget certificate and named verifier are complete under the
+  version-tolerant authority. Edge `.101` versus `.107` is provenance drift, not a rebaseline
+  decision.
+- **Next evidence, serial and no-retry:** run one current-input Slice, one full 12-viewport Glass,
+  and the dedicated uninterrupted 1,200,000 ms Arc 4 recovery certificate. Ordinary Slice remains a
+  deliberate nonclaim with `recoveryClaimed:false`.
 - HUMAN review remains required for Compendium list/detail/focus, ship readability, the combined Arc
   4 first-journey/ownership experience, Arc 5 attachment, and applicable Arc 7/8 listening/comfort.
   Real-device accessibility, heat and battery evidence remain open. No whole Gate or release is closed.
@@ -261,12 +266,13 @@ mission/dispatch, companion UI, Guide capability and Training lesson remain abse
 rules are not inferred from legacy destructive behavior.
 
 **Current integrated non-browser evidence (2026-08-26):** the complete v2 suite is 121/121 files,
-1,354 passing tests and one intentional skip. TypeScript/no-unused, Vite 884, root validation,
+1,356 passing tests and one intentional skip. TypeScript/no-unused, Vite 884, root validation,
 legacy smoke, Compendium 222-control selftest, Arc 4 contract/Slice/Glass/recovery selftests and
 scoped diff checks are green. The Compendium budget transition independently rejects stale samples,
 invented ceilings, stale baseline state, self-consistent authority drift and premature activation.
-This proves the frozen local bytes and browser-free rulers only; clean current-input calibration,
-Slice, Glass and recovery results remain pending.
+Signed activation `d33e540…` and exact-budget run `20260826-phase4-certification` now add current-input
+Compendium 78/78 plus named-verifier proof; report raw/gzip SHA-256 are `3afe4103…` / `5677d9ed…`.
+Current-input Slice, Glass and recovery results remain pending.
 
 **Arc 7/8 current-system Tame expression (local, 2026-08-26; bounded partial):** `@cf/audio` retains
 its pure resolver-v1 identity/profile/call-plan foundation and injected bounded runtime. The app now
@@ -320,33 +326,27 @@ are browserless-green and independently audited; their real current-input runs h
 1. Continue only as OpenAI/Codex on macOS in
    `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, tracking
    `origin/openai/mac`, exact SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`. Signed
-   product/source freeze is `913a327119465ad1f3df85a682d8d78d1ff35cea`, ahead 71 at that commit.
+   product/source freeze is `913a327119465ad1f3df85a682d8d78d1ff35cea`; signed Compendium
+   activation is `d33e540f0d620eac34bdc259b7814db0f11a9006`, ahead 73 at that commit.
    Do not fetch/merge, switch branches, push, dispatch, release or deploy.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md` and
    `GITHUB_ACTIONS_BUDGET.md`. The exact 75 implementation/test/budget paths and 23 current
    references were committed as one reviewed 98-path transaction. Preserve source commit
-   `913a327…`; the only expected immediate delta is this ROADMAP self-reference refresh, which needs
-   one signed docs-only descendant before browser evidence.
-3. The implementation/reference freeze is browserless-green: 121 files/1,355 tests/one skip, all
+   `913a327…`, signed handoff descendant `6d8f184…`, and signed ruler activation `d33e540…`.
+3. The implementation/reference freeze is browserless-green: 121 files/1,356 tests/one skip, all
    TypeScript/no-unused, Vite 884, root validation/fingerprint/smoke and instrument selftests pass.
-   Compendium is honestly `calibration-required` under measurement `cb5cd9f8…` and producer
-   `587d3bdf…`; no sample or ceiling is active. Its v2 compatibility authority is Edge family + CDP
-   `1.3` + sealed capability-contract hash, with exact browser-build fields retained only as per-run
-   provenance and same-run phone/desktop pairing. Preserve that state for the first clean signed commit.
-4. **Signing proof:** source commit `913a327…` has a good SSH signature for the configured identity
-   and fingerprint `SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`; no unsigned fallback was
-   used. Commit this ROADMAP-only refresh as a signed descendant, verify it, and require a clean tree
-   before launching a browser. No Compendium browser rebaseline is needed for Edge auto-update;
-   exact version/revision/JavaScript/path/UA are run provenance, while compatibility and real budget
-   outcomes remain fail-closed. The clean detached baseline at
-   `/private/tmp/cf-compendium-baseline-3844701-20260826` is exact commit `3844701…`, dependency-
-   complete and ready for one baseline run after the clean source-freeze commit.
-5. After the clean source-freeze commit, collect exactly one paired legacy baseline plus three
-   independent current candidates, one attempt each and zero retries. Activate the ruler only from
-   their verified raw capsules and strictly-above maxima, commit that activation locally, then run
-   one exact-budget Compendium certificate plus its named verifier. Next run one current-input Slice,
-   one full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms recovery collector. Do
-   not reinterpret Slice's exact nine-stage/14-burn/`recoveryClaimed:false` ledger as recovery proof.
+   Compendium is active under measurement `cb5cd9f8…` and producer `587d3bdf…`; selected c3/c5/c6
+   plus baseline1 retain exact 14-phone/13-desktop discrimination. Its v2 compatibility authority is
+   Edge family + CDP `1.3` + sealed capability-contract hash, with exact browser-build fields retained
+   only as per-run provenance and same-run phone/desktop pairing. Edge auto-update alone never
+   rebaselines or changes ceilings.
+4. **Signing and Compendium proof:** source commit `913a327…`, handoff descendant `6d8f184…`, and
+   activation `d33e540…` are signed; no unsigned fallback was used. Exact-budget run
+   `20260826-phase4-certification` passed 78/78 plus named verification on exact Edge `.107`, whose
+   build tuple is provenance only. Preserve raw/gzip report hashes `3afe4103…` / `5677d9ed…`.
+5. Require the next evidence-doc descendant to be clean and committed, then run one current-input
+   Slice, one full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms recovery collector.
+   Do not reinterpret Slice's exact nine-stage/14-burn/`recoveryClaimed:false` ledger as recovery proof.
 6. After evidence, substitute exact run IDs, commits, browser/source/report hashes and findings into
    current references and this handoff; keep later documentation-only provenance explicit. No further
    decision-safe product writer is required before that evidence. Arc 5B breeding/care/mission rules,
@@ -356,10 +356,9 @@ are browserless-green and independently audited; their real current-input runs h
    after a future reviewed merge into `develop` should Claude fetch `origin` and merge
    `origin/develop` into a clean `anthropic/mac`; never copy files manually.
 
-**Current side:** OpenAI/Codex macOS — implementation and current-reference freeze remains local,
-uncommitted and unpushed. Nick's one new configured 1Password signing retry is authorized but not
-yet attempted; the 98-path candidate must first be restaged and audited as one whole. Current-input
-browser evidence is pending, with no Edge-version rebaseline decision remaining.
+**Current side:** OpenAI/Codex macOS — implementation and signed Compendium activation remain local
+and unpushed. Current-input Compendium evidence is certified; Slice, Glass and recovery evidence are
+pending. No Edge-version rebaseline decision remains.
 **GitHub step:** none. No push or hosted attempt is authorized.
 **PR details:** not needed while the local campaign is still batching. A future PR, if authorized,
 must use base `develop`, source `openai/mac`, and a refreshed title/body covering the final exact head.
