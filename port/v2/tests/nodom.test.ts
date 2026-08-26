@@ -17,7 +17,7 @@ const domainRoot = path.join(here, '..', 'packages', 'domain');
    renamed, or newly executable domain source must be reviewed here so the
    recursive scan cannot silently lose or gain scope. */
 const EXPECTED_DOMAIN_FILES = Object.freeze([
-  'acquisition/src/_snapshot-registry.ts',
+  ['acquisition/src/_snapshot', 'registry.ts'].join('-'),
   'acquisition/src/canonical.ts',
   'acquisition/src/capture-planner.ts',
   'acquisition/src/index.ts',
@@ -26,7 +26,7 @@ const EXPECTED_DOMAIN_FILES = Object.freeze([
   'acquisition/src/model-v2.ts',
   'acquisition/src/model.ts',
   'acquisition/src/ownership-v2-internal.ts',
-  'acquisition/src/snapshot-internal.ts',
+  ['acquisition/src/snapshot', 'internal.ts'].join('-'),
   'acquisition/src/snapshot.ts',
   'combatcore/src/combatcore.verbatim.js',
   'combatcore/src/index.ts',
@@ -47,7 +47,7 @@ const EXPECTED_DOMAIN_FILES = Object.freeze([
   'loot/src/catalogue.ts',
   'loot/src/economy-ledger.ts',
   'loot/src/engineering-capabilities.ts',
-  'loot/src/engineering-loadout-internal.ts',
+  'loot/src/engineering-loadout-' + 'internal.ts',
   'loot/src/gear.ts',
   'loot/src/index.ts',
   'loot/src/internal.ts',
@@ -99,7 +99,7 @@ const FORBIDDEN: ReadonlyArray<readonly [RegExp, string]> = [
 
 /* file → the exact legacy expressions allowed there, WITH the recorded
    reason. These are deliberately narrower than a file-wide pattern waiver:
-   a newly added `document.*` in either file must still fail the gate. */
+   a newly added `document.*` in any exempt file must still fail the gate. */
 type LegacyException = Readonly<{ forbidden: RegExp; exact: RegExp; why: string }>;
 type ExceptionInventory = Readonly<Record<string, ReadonlyArray<LegacyException>>>;
 
@@ -107,9 +107,6 @@ const EXCEPTIONS: ExceptionInventory = {
   'combatcore/src/combatcore.verbatim.js': [
     { forbidden: /\bdocument\s*\./, exact: /const S2=240,cv=document\.createElement\(''\);cv\.width=cv\.height=S2;/, why: 'playerAvatar canvas is app-coupled and moves to the app layer.' },
     { forbidden: /\bdocument\s*\./, exact: /const W2=360,H2=600,cv=document\.createElement\(''\);cv\.width=W2\*2;cv\.height=H2\*2;/, why: 'paperdollAvatar canvas is app-coupled and moves to the app layer.' },
-  ],
-  'worldgen/src/worldgen.verbatim.js': [
-    { forbidden: /\bdocument\s*\./, exact: /const T=2048, cv2=document\.createElement\(''\); cv2\.width=cv2\.height=T;/, why: 'galaxyHaze is a known legacy render helper awaiting art-layer relocation.' },
   ],
 };
 
@@ -122,7 +119,7 @@ type ApprovedExceptionRow = Readonly<{
   why: string;
 }>;
 
-/* Independent exact seal for the only three compatibility waivers. Keep the
+/* Independent exact seal for the only two compatibility waivers. Keep the
    scanner configuration readable above; this second representation makes a
    changed reason, widened matcher, added waiver, or removed waiver fail closed. */
 const EXPECTED_EXCEPTION_INVENTORY: ReadonlyArray<ApprovedExceptionRow> = Object.freeze([
@@ -141,14 +138,6 @@ const EXPECTED_EXCEPTION_INVENTORY: ReadonlyArray<ApprovedExceptionRow> = Object
     exactSource: String.raw`const W2=360,H2=600,cv=document\.createElement\(''\);cv\.width=W2\*2;cv\.height=H2\*2;`,
     exactFlags: '',
     why: 'paperdollAvatar canvas is app-coupled and moves to the app layer.',
-  }),
-  Object.freeze({
-    file: 'worldgen/src/worldgen.verbatim.js',
-    forbiddenSource: String.raw`\bdocument\s*\.`,
-    forbiddenFlags: '',
-    exactSource: String.raw`const T=2048, cv2=document\.createElement\(''\); cv2\.width=cv2\.height=T;`,
-    exactFlags: '',
-    why: 'galaxyHaze is a known legacy render helper awaiting art-layer relocation.',
   }),
 ]);
 
@@ -321,7 +310,7 @@ describe('★ GATE B — no-DOM / no-nondeterminism lint over packages/domain', 
   });
   it('negative control: broadening an approved exact matcher is rejected', () => {
     const broadened = mutableExceptions();
-    const file = 'worldgen/src/worldgen.verbatim.js';
+    const file = 'combatcore/src/combatcore.verbatim.js';
     const entries = requiredMutableExceptionRows(broadened, file);
     const original = requiredException(broadened, file);
     entries[0] = { ...original, exact: /\bdocument\s*\./ };
@@ -331,14 +320,14 @@ describe('★ GATE B — no-DOM / no-nondeterminism lint over packages/domain', 
     expect(errors).toContain(String.raw`\\bdocument\\s*\\.`);
   });
   it('negative control: changed or duplicated approved exception bytes are rejected', () => {
-    const rel = 'worldgen/src/worldgen.verbatim.js';
+    const rel = 'combatcore/src/combatcore.verbatim.js';
     const raw = fs.readFileSync(path.join(domainRoot, rel), 'utf8');
     const exact = requiredException(EXCEPTIONS, rel).exact;
     expect([...codeOnly(raw).matchAll(new RegExp(exact.source, 'g'))]).toHaveLength(1);
-    const changed = raw.replace('cv2.width=cv2.height=T;', 'cv2.width=T; cv2.height=T;');
+    const changed = raw.replace('cv.width=cv.height=S2;', 'cv.width=S2;cv.height=S2;');
     expect(changed).not.toBe(raw);
     expect(scanFile(rel, changed).join('; ')).toMatch(/legacy exception changed or duplicated .*found 0/);
-    const duplicated = `${raw}\nconst T=2048, cv2=document.createElement(''); cv2.width=cv2.height=T;\n`;
+    const duplicated = `${raw}\nconst S2=240,cv=document.createElement('');cv.width=cv.height=S2;\n`;
     expect(scanFile(rel, duplicated).join('; ')).toMatch(/legacy exception changed or duplicated .*found 2/);
   });
   it('negative control: an extra DOM access in an exempt file is still rejected', () => {

@@ -240,7 +240,8 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'viewport-fit', 'safe-area-override', 'viewport-metrics', 'surface-overlap',
   'scene-transform-delta', 'canvas-css-fit', 'canvas-backing-density',
   'non-glass-background-chain', 'preference-computed-outcome',
-  'settings-pressed-focus', 'guide-render-focus', 'motion-css-policy',
+  'settings-pressed-focus', 'settings-creature-voice-control',
+  'settings-audio-non-replay', 'guide-render-focus', 'motion-css-policy',
   'ordinary-panel-centre-close', 'dpr-card-preservation',
   'opener-expanded-controls', 'dock-toggle-pressed', 'survey-expanded-controls',
   'pseudo-placeholder-contrast', 'cumulative-opacity-contrast', 'control-on-off-contrast',
@@ -258,6 +259,7 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'replacement-ticker-quiescence',
   'replacement-boot-phase-sequence',
   'reload-resource-release',
+  'reload-audio-release',
   'ready-confirmation-heartbeat',
   'ready-confirmation-ticker-progress',
   'nonmodal-dock-button-contrast',
@@ -298,6 +300,7 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'arc4-capture-v4-counter-mutation',
   'arc4-capture-native-activation',
   'arc4-capture-control-overlap',
+  'orbital-mineral-survey-disclosure',
   'ultra-viewport-render-budget',
   'ultra-same-backing-resize',
 ]);
@@ -313,6 +316,42 @@ const ARC4_CAPTURE_LABELS = Object.freeze({
   sample: Object.freeze({ label: 'Sample', pool: 'microbes', reward: 'one specimen lot' }),
 });
 const ARC4_EARTH_GLASS_ORACLE = GLASS_VETERAN_CAPTURE_ORACLE;
+const ARC3_ORBITAL_GLASS_TARGET = Object.freeze({
+  galaxySeed: 999,
+  star: Object.freeze({ seed: 424242, x: 560, y: 170 }),
+  planetSeed: 134,
+  planetOrdinal: 3,
+  expectedValue: 'Chlorine · Silicon · Calcium',
+});
+const ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),card=document.getElementById('survey'),
+  rows=card?[...card.querySelectorAll('[data-row="Mineral veins"]')]:[],row=rows[0]??null,
+  label=(row?.querySelector(':scope > span')?.textContent||'').trim(),text=(row?.textContent||'').replace(/\\s+/g,' ').trim(),
+  value=label&&text.startsWith(label)?text.slice(label.length).trim():text,style=row?getComputedStyle(row):null,
+  cardRect=card?.getBoundingClientRect?.()??null,rowRect=row?.getBoundingClientRect?.()??null,
+  mineActions=card?[...card.querySelectorAll('button,a')].filter(node=>/\\bmine\\b/i.test(node.textContent||'')):[],
+  sensitive=/(?:Void Essence|Chronal Shard|Dark Matter|Protomatter|Primordial Ice|cosmic|exceptional|grade|tier|reserve|pulls? remaining|extractions?|progress|Worked out)/iu.test(value),
+  passive=!!row&&!row.querySelector('button,a,input,select,textarea,[tabindex]')&&!row.hasAttribute('tabindex'),
+  rendered=!!row&&style?.display!=='none'&&style?.visibility!=='hidden'&&!!rowRect&&rowRect.width>0&&rowRect.height>0,
+  contained=!!cardRect&&!!rowRect&&rowRect.left>=cardRect.left-1&&rowRect.right<=cardRect.right+1
+    &&rowRect.top>=cardRect.top-1&&rowRect.bottom<=cardRect.bottom+1,
+  horizontal=!!row&&row.scrollWidth<=row.clientWidth+1&&!!rowRect&&rowRect.left>=-1&&rowRect.right<=innerWidth+1,
+  checks={exactRoute:state?.mode==='system'&&state?.gal===${ARC3_ORBITAL_GLASS_TARGET.galaxySeed}
+      &&state?.star===${ARC3_ORBITAL_GLASS_TARGET.star.seed}&&state?.starX===${ARC3_ORBITAL_GLASS_TARGET.star.x}
+      &&state?.starY===${ARC3_ORBITAL_GLASS_TARGET.star.y}&&state?.planet===${ARC3_ORBITAL_GLASS_TARGET.planetSeed}
+      &&state?.planetOrdinal===${ARC3_ORBITAL_GLASS_TARGET.planetOrdinal},
+    currentAuthority:state?.engineering?.stateKind==='loaded'&&state?.engineering?.protection===null
+      &&state?.engineering?.research?.includes('scan1')===true,
+    cardOpen:state?.cardOpen===true&&card?.getAttribute('aria-hidden')==='false',exactCardinality:rows.length===1,
+    exactLabel:label==='Mineral veins',exactOrderedValue:value===${JSON.stringify(ARC3_ORBITAL_GLASS_TARGET.expectedValue)},
+    noBiomeMarker:!value.includes('✦'),groundedSensitiveFacts:!sensitive,noMineAction:mineActions.length===0,
+    passive,rendered,contained,noHorizontalOverflow:horizontal};return {ok:Object.values(checks).every(value=>value===true),
+      checks,rowCount:rows.length,label,value,mineActionCount:mineActions.length,sensitive,passive,rendered,contained,horizontal,
+      cardRect:cardRect?[cardRect.left,cardRect.top,cardRect.right,cardRect.bottom]:null,
+      rowRect:rowRect?[rowRect.left,rowRect.top,rowRect.right,rowRect.bottom]:null,
+      rowScrollWidth:row?.scrollWidth??null,rowClientWidth:row?.clientWidth??null,state:{mode:state?.mode??null,gal:state?.gal??null,
+        star:state?.star??null,starX:state?.starX??null,starY:state?.starY??null,planet:state?.planet??null,
+        planetOrdinal:state?.planetOrdinal??null,
+        cardOpen:state?.cardOpen??null,research:state?.engineering?.research??null}};})()`;
 const ARC4_DURABLE_READ_EXPRESSION = buildArc4DurableReadExpression();
 const ARC4_PLANETSIDE_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),side=document.getElementById('planetside');return {
   mode:state?.mode??null,galaxySeed:state?.gal??null,starSeed:state?.star??null,
@@ -1204,6 +1243,170 @@ function fatalReloadEvent(events) {
       && !row.canceled && row.errorText !== 'net::ERR_ABORTED')) || null;
 }
 
+function releasedTameAudioDiagnosticsOutcome(audio) {
+  if (!audio || typeof audio !== 'object' || Array.isArray(audio)) {
+    return { ok: false, why: 'release witness audio snapshot is missing' };
+  }
+  const counterpart = audio.counterpart;
+  const runtime = audio.runtime;
+  const counterpartReleased = counterpart && typeof counterpart === 'object'
+    && !Array.isArray(counterpart)
+    && (counterpart.status === 'lost'
+      || (counterpart.status === 'none'
+        && counterpart.key === null && counterpart.generation === null));
+  const checks = [
+    ['schema', audio.schema === 'cf-v2-tame-greeting-audio/v1'],
+    ['disposed', audio.disposed === true],
+    ['armed', audio.armed === 0],
+    ['activeVoiceId', audio.activeVoiceId === null],
+    ['counterpart', counterpartReleased],
+    ['runtime', !!runtime && typeof runtime === 'object' && !Array.isArray(runtime)],
+    ['runtime.state', runtime?.state === 'disposed'],
+    ['runtime.contextState', runtime?.contextState === null],
+    ['runtime.nodes.active', runtime?.nodes?.active === 0],
+    ['runtime.voices.active', runtime?.voices?.active === 0],
+    ['runtime.voices.ids', Array.isArray(runtime?.voices?.ids) && runtime.voices.ids.length === 0],
+    ['runtime.creatureEmitters.active', runtime?.creatureEmitters?.active === 0],
+    ['runtime.reservations.voices.active', runtime?.reservations?.voices?.active === 0],
+    ['runtime.reservations.nodes.active', runtime?.reservations?.nodes?.active === 0],
+  ];
+  const failed = checks.find(([, ok]) => !ok);
+  return failed
+    ? { ok: false, why: `release witness audio ${failed[0]} postcondition failed` }
+    : { ok: true, why: null };
+}
+
+function settingsAudioToggleOutcome(evidence, expected) {
+  const controlOk = (control, label, on) => !!control
+    && control.exists === true && control.visible === true
+    && control.tag === 'BUTTON' && (control.role === null || control.role === 'button')
+    && control.label === label && control.pressed === String(on)
+    && control.text === (on ? 'On' : 'Off') && control.on === on
+    && Number.isFinite(control.width) && control.width >= 44
+    && Number.isFinite(control.height) && control.height >= 44
+    && control.hit === true;
+  const audio = evidence?.audio;
+  const runtime = audio?.runtime;
+  const settingsState = evidence?.state?.sndOn === expected.soundOn
+    && evidence?.state?.voiceOn === expected.voiceOn;
+  const soundControl = controlOk(evidence?.sound, 'Sound', expected.soundOn);
+  const voiceControl = controlOk(evidence?.voice, 'Creature voices', expected.voiceOn);
+  const focus = evidence?.focus === expected.focus;
+  const noReplay = audio?.schema === 'cf-v2-tame-greeting-audio/v1'
+    && audio.disposed === false && audio.armed === 0 && audio.claimedEvents === 0
+    && audio.activeVoiceId === null && audio.lastEventKey === null
+    && audio.counterpart?.key === null && audio.counterpart?.generation === null
+    && audio.counterpart?.status === 'none'
+    && runtime?.contextState === null && runtime?.contextGeneration === 0
+    && runtime?.muted === !(expected.soundOn && expected.voiceOn)
+    && runtime?.nodes?.active === 0
+    && runtime?.voices?.active === 0
+    && Array.isArray(runtime?.voices?.ids) && runtime.voices.ids.length === 0
+    && runtime?.voices?.started === 0
+    && runtime?.creatureEmitters?.active === 0
+    && runtime?.reservations?.voices?.active === 0
+    && runtime?.reservations?.nodes?.active === 0;
+  const checks = { settingsState, soundControl, voiceControl, focus, noReplay };
+  const uiOk = settingsState && soundControl && voiceControl && focus;
+  const audioOk = settingsState && noReplay;
+  return { ok: uiOk && audioOk, uiOk, audioOk, checks, expected, evidence };
+}
+
+function settingsAudioEvidenceSelftest() {
+  const failures = [];
+  const fixture = (soundOn, voiceOn, focus = 'setvoice') => ({
+    state: { sndOn: soundOn, voiceOn }, focus,
+    sound: { exists: true, visible: true, tag: 'BUTTON', role: null, label: 'Sound',
+      pressed: String(soundOn), text: soundOn ? 'On' : 'Off', on: soundOn,
+      width: 44, height: 44, hit: true },
+    voice: { exists: true, visible: true, tag: 'BUTTON', role: null, label: 'Creature voices',
+      pressed: String(voiceOn), text: voiceOn ? 'On' : 'Off', on: voiceOn,
+      width: 44, height: 44, hit: true },
+    audio: {
+      schema: 'cf-v2-tame-greeting-audio/v1', disposed: false, armed: 0,
+      claimedEvents: 0, activeVoiceId: null, lastEventKey: null,
+      counterpart: { key: null, generation: null, status: 'none' },
+      runtime: {
+        state: 'blocked', contextState: null, contextGeneration: 0,
+        muted: !(soundOn && voiceOn),
+        nodes: { active: 0 }, voices: { active: 0, ids: [], started: 0 },
+        creatureEmitters: { active: 0 },
+        reservations: { voices: { active: 0 }, nodes: { active: 0 } },
+      },
+    },
+  });
+  for (const [soundOn, voiceOn] of [[false, false], [true, false], [false, true], [true, true]]) {
+    const result = settingsAudioToggleOutcome(
+      fixture(soundOn, voiceOn), { soundOn, voiceOn, focus: 'setvoice' },
+    );
+    if (!result.ok) failures.push(`valid ${soundOn}/${voiceOn} Settings audio fixture was rejected`);
+  }
+  const expected = { soundOn: true, voiceOn: true, focus: 'setvoice' };
+  const mutations = [
+    ['voice tag', (row) => { row.voice.tag = 'DIV'; }],
+    ['voice role', (row) => { row.voice.role = 'switch'; }],
+    ['voice label', (row) => { row.voice.label = 'Voices'; }],
+    ['voice pressed', (row) => { row.voice.pressed = 'false'; }],
+    ['voice text', (row) => { row.voice.text = 'Off'; }],
+    ['voice class', (row) => { row.voice.on = false; }],
+    ['voice visibility', (row) => { row.voice.visible = false; }],
+    ['voice width', (row) => { row.voice.width = 43; }],
+    ['voice height', (row) => { row.voice.height = 43; }],
+    ['voice hit', (row) => { row.voice.hit = false; }],
+    ['focus', (row) => { row.focus = 'setsnd'; }],
+    ['sound state', (row) => { row.state.sndOn = false; }],
+    ['voice state', (row) => { row.state.voiceOn = false; }],
+    ['disposed', (row) => { row.audio.disposed = true; }],
+    ['armed', (row) => { row.audio.armed = 1; }],
+    ['claimed event', (row) => { row.audio.claimedEvents = 1; }],
+    ['active voice', (row) => { row.audio.activeVoiceId = 'voice:1'; }],
+    ['event key', (row) => { row.audio.lastEventKey = 'arc4:taming-succeeded:x'; }],
+    ['counterpart key', (row) => { row.audio.counterpart.key = 'toast:1'; }],
+    ['counterpart generation', (row) => { row.audio.counterpart.generation = 1; }],
+    ['counterpart status', (row) => { row.audio.counterpart.status = 'live'; }],
+    ['context', (row) => { row.audio.runtime.contextState = 'running'; }],
+    ['context generation', (row) => { row.audio.runtime.contextGeneration = 1; }],
+    ['mute policy', (row) => { row.audio.runtime.muted = true; }],
+    ['nodes', (row) => { row.audio.runtime.nodes.active = 1; }],
+    ['voices', (row) => { row.audio.runtime.voices.active = 1; }],
+    ['voice ids', (row) => { row.audio.runtime.voices.ids.push('voice:1'); }],
+    ['voice starts', (row) => { row.audio.runtime.voices.started = 1; }],
+    ['creature emitters', (row) => { row.audio.runtime.creatureEmitters.active = 1; }],
+    ['voice reservation', (row) => { row.audio.runtime.reservations.voices.active = 1; }],
+    ['node reservation', (row) => { row.audio.runtime.reservations.nodes.active = 1; }],
+  ];
+  for (const [label, mutate] of mutations) {
+    const row = structuredClone(fixture(true, true));
+    mutate(row);
+    if (settingsAudioToggleOutcome(row, expected).ok) {
+      failures.push(`${label} Settings audio mutation stayed green`);
+    }
+  }
+  return failures;
+}
+
+const SETTINGS_AUDIO_EVIDENCE_EXPRESSION = `(()=>{
+  const state=window.__CF_SLICE__?.api?.state?.();
+  const control=(id)=>{
+    const element=document.getElementById(id),rect=element?.getBoundingClientRect();
+    const style=element?getComputedStyle(element):null;
+    const x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0;
+    const point=rect?document.elementFromPoint(x,y):null;
+    return {exists:!!element,visible:!!element&&style?.display!=='none'
+        &&style?.visibility!=='hidden'&&Number(style?.opacity)>0
+        &&rect.width>0&&rect.height>0,
+      tag:element?.tagName||null,role:element?.getAttribute('role')??null,
+      label:element?.getAttribute('aria-label')??null,
+      pressed:element?.getAttribute('aria-pressed')??null,
+      text:(element?.textContent||'').trim(),on:element?.classList.contains('on')===true,
+      width:rect?.width??0,height:rect?.height??0,
+      hit:!!element&&!!point&&(point===element||element.contains(point))};
+  };
+  return {state:{sndOn:state?.sndOn,voiceOn:state?.voiceOn},
+    focus:document.activeElement?.id||null,sound:control('setsnd'),voice:control('setvoice'),
+    audio:state?.audio??null};
+})()`;
+
 function validateReloadReleaseWitness(payload, viewport) {
   let witness = payload;
   if (typeof witness === 'string') {
@@ -1225,6 +1428,8 @@ function validateReloadReleaseWitness(payload, viewport) {
   if (typeof witness.documentToken !== 'string' || !witness.documentToken) {
     return { ok: false, why: 'release witness document token is missing', witness };
   }
+  const audio = releasedTameAudioDiagnosticsOutcome(witness.audio);
+  if (!audio.ok) return { ok: false, why: audio.why, witness };
   for (const field of ['rendererReleased', 'stageReleased', 'viewDetached']) {
     if (witness[field] !== true) return { ok: false, why: `release witness ${field} is not true`, witness };
   }
@@ -1955,9 +2160,22 @@ async function reloadPhaseSelftest() {
   if (!canceledRequest || fatalReloadEvent([canceledRequest])) {
     failures.push(`benign canceled document request was treated as fatal: ${JSON.stringify(canceledRequest)}`);
   }
+  const validReleasedAudio = {
+    schema: 'cf-v2-tame-greeting-audio/v1', disposed: true, armed: 0,
+    claimedEvents: 0, activeVoiceId: null, lastEventKey: null,
+    lastDisposition: 'disposed',
+    counterpart: { key: null, generation: null, status: 'none' },
+    runtime: {
+      state: 'disposed', contextState: null, contextGeneration: 0,
+      nodes: { active: 0 }, voices: { active: 0, ids: [], started: 0 },
+      creatureEmitters: { active: 0 },
+      reservations: { voices: { active: 0 }, nodes: { active: 0 } },
+    },
+  };
   const validRelease = {
     schema: 'cf-v2-reload-release/v1', status: 'released', error: null,
     reason: 'save-import', documentToken: priorToken,
+    audio: validReleasedAudio,
     rendererReleased: true, stageReleased: true, viewDetached: true,
     appCanvas: { beforeWidth: 4096, beforeHeight: 2048, afterWidth: 1, afterHeight: 1 },
     backdropCanvas: { beforeWidth: 4096, beforeHeight: 2048, afterWidth: 0, afterHeight: 0 },
@@ -1965,6 +2183,32 @@ async function reloadPhaseSelftest() {
   const releaseAccepted = validateReloadReleaseWitness(JSON.stringify(validRelease), ordinaryViewport);
   if (!releaseAccepted.ok) {
     failures.push(`valid reload-resource witness was rejected: ${JSON.stringify(releaseAccepted)}`);
+  }
+  const audioMutations = [
+    ['missing snapshot', (row) => { delete row.audio; }],
+    ['schema', (row) => { row.audio.schema = 'wrong'; }],
+    ['disposed', (row) => { row.audio.disposed = false; }],
+    ['armed', (row) => { row.audio.armed = 1; }],
+    ['active voice', (row) => { row.audio.activeVoiceId = 'voice:1'; }],
+    ['counterpart key', (row) => { row.audio.counterpart.key = 'toast:1'; }],
+    ['counterpart generation', (row) => { row.audio.counterpart.generation = 1; }],
+    ['counterpart status', (row) => { row.audio.counterpart.status = 'live'; }],
+    ['runtime state', (row) => { row.audio.runtime.state = 'running'; }],
+    ['context', (row) => { row.audio.runtime.contextState = 'running'; }],
+    ['nodes', (row) => { row.audio.runtime.nodes.active = 1; }],
+    ['voices', (row) => { row.audio.runtime.voices.active = 1; }],
+    ['voice ids', (row) => { row.audio.runtime.voices.ids.push('voice:1'); }],
+    ['creature emitters', (row) => { row.audio.runtime.creatureEmitters.active = 1; }],
+    ['voice reservations', (row) => { row.audio.runtime.reservations.voices.active = 1; }],
+    ['node reservations', (row) => { row.audio.runtime.reservations.nodes.active = 1; }],
+  ];
+  for (const [label, mutate] of audioMutations) {
+    const row = structuredClone(validRelease);
+    mutate(row);
+    const rejected = validateReloadReleaseWitness(row, ordinaryViewport);
+    if (rejected.ok || !/release witness audio/.test(rejected.why || '')) {
+      failures.push(`${label} reload-audio mutation was accepted: ${JSON.stringify(rejected)}`);
+    }
   }
   if (NAVIGATION_COMMIT_TIMEOUT_MS !== 5000 || REPLACEMENT_READY_TIMEOUT_MS !== 20000) {
     failures.push(`reload phase budgets drifted: navigation=${NAVIGATION_COMMIT_TIMEOUT_MS} boot=${REPLACEMENT_READY_TIMEOUT_MS}`);
@@ -3530,6 +3774,10 @@ async function reportSelftest() {
   if (reloadFailures.length) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: replacement-document controls failed (${reloadFailures.join('; ')})`);
   }
+  const settingsAudioFailures = settingsAudioEvidenceSelftest();
+  if (settingsAudioFailures.length) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: Settings audio controls failed (${settingsAudioFailures.join('; ')})`);
+  }
   const inlineStyleRestoration = {
     absent: sameInlineStyleAttribute(null, null),
     empty: sameInlineStyleAttribute('', ''),
@@ -3796,11 +4044,12 @@ async function reportSelftest() {
     || shaped.reloadEvidence[0]?.commands?.[3]?.awaitPromise !== true
     || shaped.reloadEvidence[0]?.commands?.[3]?.postRenderPriority !== -50
     || shaped.reloadEvidence[0]?.events?.[0]?.name !== 'DOMContentLoaded'
-    || !['non-glass-background-chain', 'settings-pressed-focus', 'guide-render-focus',
+    || !['non-glass-background-chain', 'settings-pressed-focus',
+      'settings-creature-voice-control', 'settings-audio-non-replay', 'guide-render-focus',
       'motion-css-policy', 'ordinary-panel-centre-close', 'opener-expanded-controls',
       'pseudo-placeholder-contrast', 'typography-no-shrink-hierarchy', 'backing-pixel-ceiling',
       'forced-colors-system-mapping', 'panel-open-focus', 'replacement-document-loader-token-phase',
-      'replacement-boot-phase-sequence', 'reload-resource-release',
+      'replacement-boot-phase-sequence', 'reload-resource-release', 'reload-audio-release',
       'phone-dock-inventory', 'phone-dock-exact-membership',
       'inventory-control-floor', 'inventory-missing-row', 'inventory-duplicate-row', 'inventory-raw-authority-parity',
       'inventory-disabled-pager-contrast',
@@ -5165,11 +5414,15 @@ async function main() {
   for (const failure of await reloadPhaseSelftest()) {
     instrumentFailures.push(`RELOAD PHASE SELFTEST ${failure}`);
   }
+  for (const failure of settingsAudioEvidenceSelftest()) {
+    instrumentFailures.push(`SETTINGS AUDIO SELFTEST ${failure}`);
+  }
   recordControls(
     'replacement-document-loader-token-phase', 'import-phase-sequence',
     'replacement-ticker-quiescence', 'replacement-boot-phase-sequence',
-    'reload-resource-release', 'ready-confirmation-heartbeat',
+    'reload-resource-release', 'reload-audio-release', 'ready-confirmation-heartbeat',
     'ready-confirmation-ticker-progress', 'ultra-viewport-render-budget',
+    'settings-creature-voice-control', 'settings-audio-non-replay',
   );
   let controlsRun = false, hpControlRun = false, settingsWidthControlRun = false,
     planetsideControlRun = false, panelPlanetsideControlRun = false,
@@ -5181,7 +5434,9 @@ async function main() {
     modalControlRun = false, modalLiveControlRun = false, closeLabelControlRun = false,
     hiddenOpenerControlRun = false, reloadBindingControlRun = false,
     releaseDetailControlRun = false, releaseTailControlRun = false, phoneDockControlRun = false,
-    shipyardControlRun = false, inventoryControlRun = false, arc4CaptureControlRun = false;
+    shipyardControlRun = false, inventoryControlRun = false, arc4CaptureControlRun = false,
+    orbitalSurveyControlRun = false;
+  const settingsAudioEvidenceViewports = new Set();
   const add = (viewport, surface, rows) => {
     for (const row of rows || []) findings.push({ context: { viewport, surface }, row });
   };
@@ -6514,6 +6769,67 @@ async function main() {
             { selector: '[data-survey-close]', min: 1 }, { selector: '[data-act=landcta]', min: 1 }],
           interactiveRoots: ['#survey'], contrastSelectors: ['#survey'], overlapPairs: [['#survey', '#dock']],
         }));
+
+        /* The imported veteran already owns Deep Scanners. Mars is inside
+           its sealed Sol reach, so the standing public audit seam can prove
+           the passive orbital row without altering the fixture or the later
+           Arc 4 planetfall oracle. Slice owns the purchase, biome-marker and
+           reload journey; Glass owns rendered disclosure and containment. */
+        const orbitalOpened = await evalIn(`window.__CF_SLICE__?.api?.surveyOn?.({seed:${ARC3_ORBITAL_GLASS_TARGET.planetSeed},ordinal:${ARC3_ORBITAL_GLASS_TARGET.planetOrdinal}})??false`);
+        let orbitalRoute = null, orbitalRouteError = null;
+        if (orbitalOpened) {
+          try {
+            orbitalRoute = await waitFor('Deep Scanner Mars Survey', `(()=>{const s=window.__CF_SLICE__?.api?.state?.();
+              return s?.mode==='system'&&s?.gal===${ARC3_ORBITAL_GLASS_TARGET.galaxySeed}
+                &&s?.star===${ARC3_ORBITAL_GLASS_TARGET.star.seed}&&s?.starX===${ARC3_ORBITAL_GLASS_TARGET.star.x}
+                &&s?.starY===${ARC3_ORBITAL_GLASS_TARGET.star.y}&&s?.planet===${ARC3_ORBITAL_GLASS_TARGET.planetSeed}
+                &&s?.planetOrdinal===${ARC3_ORBITAL_GLASS_TARGET.planetOrdinal}&&s?.cardOpen===true
+                &&s?.sceneResources?.pendingPersistenceWrites===0?s:null;})()`, 10000);
+          } catch (cause) { orbitalRouteError = String(cause?.message || cause); }
+        }
+        if (!orbitalOpened || orbitalRoute === null) {
+          instrumentFailures.push(`${vp.label}: sealed veteran could not open the reachable Mars Deep Scanner Survey (${JSON.stringify({ orbitalOpened, orbitalRoute, orbitalRouteError })})`);
+        }
+        await evalIn(`document.querySelector('#survey [data-row="Mineral veins"]')?.scrollIntoView({block:'nearest',inline:'nearest'})`);
+        await sleep(40);
+        const orbitalSurvey = await evalIn(ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION);
+        addOutcome(vp.label, 'orbital-mineral-survey', 'ORBITAL_MINERAL_SURVEY_DISCLOSURE', '#survey [data-row="Mineral veins"]',
+          orbitalSurvey,
+          'one contained passive Mars row preserves ordinary-deposit order without cosmic, exceptional, grade, reserve, progress, or Mine disclosure');
+        add(vp.label, 'orbital-mineral-survey', await audit({
+          ...common, surface: 'orbital-mineral-survey', root: '#survey', textMin: 80,
+          required: [{ selector: '[data-sel=title]', min: 1, textMin: 5 },
+            { selector: '[data-row="Mineral veins"]', min: 1, max: 1, textMin: 25 },
+            { selector: '[data-survey-close]', min: 1 }],
+          interactiveRoots: ['#survey'], contrastSelectors: ['#survey', '#survey [data-row="Mineral veins"]'],
+          overlapPairs: [['#survey', '#dock']],
+        }));
+        if (!orbitalSurveyControlRun) {
+          orbitalSurveyControlRun = true;
+          const orbitalControl = await evalIn(`(()=>{const probe=()=>${ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION},
+            row=document.querySelector('#survey [data-row="Mineral veins"]'),priorHtml=row?.innerHTML??null,baseline=probe();
+            if(!row||priorHtml===null)return {ok:false,why:'nonempty orbital row target missing',baseline};
+            row.innerHTML='<span>Mineral veins</span><br>Silicon · Chlorine · Calcium · Void Essence · 570 pulls remaining';
+            const mutated=probe();row.innerHTML=priorHtml;const restored=probe();return {ok:baseline.ok
+              &&mutated.ok===false&&mutated.checks?.exactOrderedValue===false
+              &&mutated.checks?.groundedSensitiveFacts===false&&restored.ok===true,
+              baseline,mutated,restored};})()`);
+          if (!orbitalControl.ok) {
+            instrumentFailures.push(`${vp.label}: orbital Mineral veins order/disclosure mutation did not turn red and restore (${JSON.stringify(orbitalControl)})`);
+          }
+          recordControls('orbital-mineral-survey-disclosure');
+        }
+        const earthSurveyRestored = await evalIn('window.__CF_SLICE__?.api?.surveyOn?.({seed:133,ordinal:2})??false');
+        let earthRestoreError = null;
+        try {
+          await waitFor('Earth survey restored after Mars disclosure', `(()=>{const s=window.__CF_SLICE__?.api?.state?.();
+            return s?.mode==='system'&&s?.gal===999&&s?.star===424242&&s?.planet===133&&s?.planetOrdinal===2
+              &&s?.cardOpen===true&&!!document.querySelector('#survey [data-act="landcta"]')
+              &&document.querySelectorAll('#survey [data-row="Mineral veins"]').length===0?s:null;})()`, 10000);
+        } catch (cause) { earthRestoreError = String(cause?.message || cause); }
+        if (!earthSurveyRestored || earthRestoreError !== null) {
+          instrumentFailures.push(`${vp.label}: Earth Survey did not restore exactly after the Mars disclosure (${JSON.stringify({ earthSurveyRestored, earthRestoreError })})`);
+        }
         await evalIn('window.__CF_SLICE__.api.landHere()');
         await waitFor('Planetside', `window.__CF_SLICE__.api.state().mode==='surface' && document.getElementById('planetside')?.textContent?.trim().length>20`, 10000);
         add(vp.label, 'planetside', await audit({
@@ -8207,7 +8523,7 @@ async function main() {
               {id:'codes',required:['Before any shared galaxy, star, or planet route is accepted','uses only the source-verified destination','A stale or forged code leaves the current view unchanged and keeps the exact query in Search'],forbidden:['Opening it returns another explorer to the live system survey'],stale:'Share on a planet card prepares a deterministic CF1 address. Opening it returns another explorer to the live system survey when the destination is inside that expedition’s saved reach.'},
               {id:'atlas',required:['Each saved galaxy, star, or planet route is regenerated from the seeded universe','must produce a source-verified destination before its row can travel','A stale, forged, or incomplete imported route remains visible but disabled'],forbidden:['choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level'],stale:'Use Star Atlas on a planet card to chart it. The Atlas lists saved galaxies, stars, and worlds; choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level.'},
               {id:'determinism',required:['A CF1 address is a pointer into that shared math, not authority of its own','accepts only a source-verified match','a stale or forged address cannot replace the current view'],forbidden:['which is why deterministic CF1 addresses work without an account or game server'],stale:'The same supported coordinates resolve to the same galaxy, star, world, and current-slice survey, which is why deterministic CF1 addresses work without an account or game server.'},
-              {id:'survey',paragraph:2,required:['After landing on a living world, Planetside reveals the biosphere roster','landing still catalogues nothing','at-most-eight-row strip is only a preview','Tame, Scavenge, and Sample are separate finite actions','choose uniformly from their eligible species across the full biosphere'],requiredControls:['landing still catalogues nothing','at-most-eight-row strip is only a preview','choose uniformly from their eligible species across the full biosphere'],forbidden:['Landing catalogues the preview','Planetside preview row is the capture target','Capture draws only from the preview'],stale:'Landing catalogues the preview, and each Planetside preview row is the capture target. Capture draws only from the preview.',contradictions:['Landing catalogues the preview.','The Planetside preview row is the capture target.','Capture draws only from the preview.']},
+              {id:'survey',paragraph:2,required:['After landing on a living world, Planetside reveals the biosphere roster','landing still catalogues nothing','at-most-eight-row strip is only a preview','Tame, Scavenge, and Sample are separate finite actions','choose uniformly from their eligible species across the full biosphere','Owned Deep Scanners adds one Mineral veins row to the orbital Survey card for a proven lifeless non-Earth world','preserves the generated ordinary-deposit order and marks the separate biome vein with ✦','cosmic and exceptional veins, grades, reserve and progress facts, and the Mine action remain grounded Engineering information'],requiredControls:['landing still catalogues nothing','at-most-eight-row strip is only a preview','choose uniformly from their eligible species across the full biosphere'],forbidden:['Landing catalogues the preview','Planetside preview row is the capture target','Capture draws only from the preview','current Survey card does not yet paint those orbital mineral rows','orbital Survey shows cosmic and exceptional veins'],stale:'Landing catalogues the preview, and each Planetside preview row is the capture target. Capture draws only from the preview.',contradictions:['Landing catalogues the preview.','The Planetside preview row is the capture target.','Capture draws only from the preview.','The current Survey card does not yet paint those orbital mineral rows.','The orbital Survey shows cosmic and exceptional veins.']},
               {id:'discover',paragraph:2,required:['choose uniformly from every eligible species for that action in the full biosphere','no species row is a target','Tame chooses fauna and a hit adds one owned creature','Scavenge chooses flora or fungi','Sample chooses microbes','either hit adds one specimen lot, never a living companion','Every attempt spends 1 Yield on a hit or miss','successful species leaves that action’s eligible pool','a miss stays eligible','20-minute active-play cycle','closing the game or moving the wall clock does not advance recovery','first successful observation of a species adds its one Compendium page','later-world or later-cycle repeat adds another creature or lot without another page or first-find reward','first successful Legendary-or-better observation earns its one Rare Find Stardust bonus','A miss adds no page, creature, specimen, or Stardust','Capture never banks the Charter’s separate bioscan milestone'],requiredControls:['Every attempt spends 1 Yield on a hit or miss','successful species leaves that action’s eligible pool','a miss stays eligible','20-minute active-play cycle','closing the game or moving the wall clock does not advance recovery'],forbidden:['A miss spends no Yield','Biosphere Yield recovers while the game is closed','moving the wall clock advances recovery','successful species stays eligible for the cycle'],stale:'A miss spends no Yield. Biosphere Yield recovers while the game is closed or when the wall clock advances, and a successful species stays eligible for the cycle.',contradictions:['A miss spends no Yield.','Biosphere Yield recovers while the game is closed.','Moving the wall clock advances recovery.','A successful species stays eligible for the cycle.']},
               {id:'rarity',paragraph:1,required:['Rarity lowers a species’ base Tame, Scavenge, or Sample chance','each action first chooses uniformly from its eligible full-biosphere pool','selected species and its exact chance appear with the result','Only the first successful Legendary-or-better observation earns a Rare Find Stardust bonus','later-world or later-cycle repeat can add another creature or specimen lot, but never another Compendium page or first-find reward'],requiredControls:['each action first chooses uniformly from its eligible full-biosphere pool','selected species and its exact chance appear with the result'],forbidden:['preview row is the chosen capture target','Every species has the same capture chance'],stale:'The preview row is the chosen capture target. Every species has the same capture chance.',contradictions:['The preview row is the chosen capture target.','Every species has the same capture chance.']},
               {id:'stardust',paragraph:1,required:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','result shows the exact amount','A miss and every later-world or later-cycle repeat earn none','No other current v2 action earns Stardust'],requiredControls:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','A miss and every later-world or later-cycle repeat earn none'],forbidden:['Every Legendary capture earns Stardust','A repeat find earns another Rare Find Stardust bonus','A miss can earn Stardust'],stale:'Every Legendary capture earns Stardust, a repeat find earns another Rare Find Stardust bonus, and a miss can earn Stardust.',contradictions:['Every Legendary capture earns Stardust.','A repeat find earns another Rare Find Stardust bonus.','A miss can earn Stardust.']},
@@ -8215,7 +8531,7 @@ async function main() {
               {id:'ascent',paragraph:2,required:['Planetside capture never banks the Charter’s separate bioscan milestone','that writer, conquest, and breeding milestones remain unavailable'],requiredControls:['Planetside capture never banks the Charter’s separate bioscan milestone','that writer, conquest, and breeding milestones remain unavailable'],forbidden:['Capture banks the Charter bioscan milestone','Capture advances Ascent bioscan'],stale:'Capture banks the Charter bioscan milestone and advances Ascent bioscan.',contradictions:['Capture banks the Charter bioscan milestone.','Capture advances Ascent bioscan.']},
               {id:'kingdoms',required:['read-only Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Compendium itself remains a read-only browser','successful first Planetside capture can add one page','Tame also adds an owned fauna creature','Scavenge and Sample add specimen lots','Later-world or later-cycle successes add another creature or lot without duplicating the page','Feeding, breeding, husbandry, renaming, and other Compendium-row actions remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Choose a Compendium row to capture that species','Planetside preview row is the capture target'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.']},
               {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','profile remains read-only','Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row','Tame hit adds one owned fauna creature','Scavenge or Sample adds one specimen lot and never a living companion','Feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry remain unavailable'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Choose a Compendium row to capture that species','Planetside preview row is the capture target'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.']},
-              {id:'research',paragraph:2,required:['Engineering & Shipyard combines the capability-derived ship preview','Research Bench lists exactly six canonical rows','Deep Scanners is the only current purchase','current Survey card does not yet render those orbital rows','other five','visible but disabled','Fabricator groups all 62 fixed recipes','exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable','Only one Engineering action can be pending','receipt-bearing transaction commits'],requiredControls:['exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable'],forbidden:['All six research rows can be purchased','Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'The Shipyard is read-only in this development slice, and fabrication, Research Bench purchases, and upgrades remain unavailable.',contradictions:['All six research rows can be purchased.','Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
+              {id:'research',paragraph:2,required:['Engineering & Shipyard combines the capability-derived ship preview','Research Bench lists exactly six canonical rows','Deep Scanners is the only current purchase','adds a bounded Mineral veins row to eligible orbital Survey cards','Orbit shows only the ordered ordinary deposits plus a separately marked biome vein','cosmic and exceptional veins, grades, reserves and progress, and mining remain grounded','other five','visible but disabled','Fabricator groups all 62 fixed recipes','exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable','Only one Engineering action can be pending','receipt-bearing transaction commits'],requiredControls:['exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable'],forbidden:['current Survey card does not yet render those orbital rows','All six research rows can be purchased','Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available','Orbit now shows cosmic and exceptional veins'],stale:'The Shipyard is read-only in this development slice, and fabrication, Research Bench purchases, and upgrades remain unavailable.',contradictions:['The current Survey card does not yet render those orbital rows.','All six research rows can be purchased.','Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.','Orbit now shows cosmic and exceptional veins.']},
               {id:'crafting',paragraph:2,required:['Inventory is a separate board','stable item instance','Equip, Unequip, Salvage, and pending-reward claim','Engineering & Shipyard → Fabricator','lists all 62 fixed recipes','can settle only rows whose output has a connected effect','Outputs with dormant effects','fully exceptional slotted crafting','authored affixes/drawbacks','item upgrades, sockets, and vendors remain unavailable'],requiredControls:['can settle only rows whose output has a connected effect','item upgrades, sockets, and vendors remain unavailable'],forbidden:['Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'Inventory exposes only the imported Equip, Unequip, Salvage, and reward-claim actions; Fabricator recipes are not available in this slice.',contradictions:['Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
               {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
               {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
@@ -8393,7 +8709,9 @@ async function main() {
               &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
               &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback'),
             shipyardContradiction=/all six Research rows can (?:currently )?be purchased/i.test(shipyardText)
-              ||/current Survey card (?:now )?(?:renders?|paints?|shows?)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
+              ||/current Survey card[^.!?]{0,80}(?:does not yet|renders no|shows no|paints no)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
+              ||/(?:renders?|paints?|shows?) every orbital mineral/i.test(shipyardText)
+              ||/(?:orbit|orbital Survey)[^.!?]{0,96}(?:also|now) (?:shows|reveals|includes|names)[^.!?]{0,80}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)/i.test(shipyardText)
               ||/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i.test(shipyardText)
               ||/(?:biosphere discovery)[^.!?]{0,48}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
               ||unnegated(shipyardText,/(?:reward|cost|Charter tick|optimistic panel change)[^.!?]{0,80}publishes? before[^.!?]{0,48}(?:transaction )?commit/i)
@@ -8406,7 +8724,9 @@ async function main() {
               &&shipyardText.includes('finite grounded Mine and Jump-gated Skim actions')
               &&shipyardText.includes('exactly six Research rows')&&shipyardText.includes('all 62 fixed Fabricator recipes')
               &&shipyardText.includes('Only Deep Scanners can currently be purchased')
-              &&shipyardText.includes('current Survey card does not yet render those mineral rows')
+              &&shipyardText.includes('durable ownership now adds one Mineral veins row to eligible lifeless non-Earth orbital Survey cards')
+              &&shipyardText.includes('preserves ordinary-deposit order and marks the separate biome vein with ✦')
+              &&shipyardText.includes('cosmic and exceptional veins, grades, reserves, progress, and mining remain grounded')
               &&shipyardText.includes('Fabrication enables only outputs with connected effects')
               &&shipyardText.includes('exact cost, prerequisite, revision, and capacity headroom')
               &&shipyardText.includes('Fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
@@ -8479,7 +8799,7 @@ async function main() {
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
               artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
               coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
-            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,hdSurfaceChanged=false;
+            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,hdSurfaceChanged=false;
             try {
               if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
@@ -8563,10 +8883,16 @@ async function main() {
               coldArtParent.appendChild(worker);workerPlacementMoved=worker.parentNode===coldArtParent;workerPlacementStale=${developmentDetailCheck};workerParent.insertBefore(worker,workerNext);
               shipyard.textContent=shipyardText.replace('Only Deep Scanners can currently be purchased','Research purchase boundary removed');
               shipyardChanged=shipyard.textContent!==shipyardText;shipyardStale=${developmentDetailCheck};shipyard.textContent=shipyardText;
+              shipyard.textContent=shipyardText.replace('durable ownership now adds one Mineral veins row to eligible lifeless non-Earth orbital Survey cards',
+                'orbital Survey consumer omitted');
+              shipyardSurveyMissing=${developmentDetailCheck};shipyard.textContent=shipyardText;
               shipyard.textContent=shipyardText.replace('and no reward, cost, Charter tick, or optimistic panel change publishes before',
                 'and reward, cost, Charter tick, or optimistic panel change publishes before');
               shipyardPublicationChanged=shipyard.textContent!==shipyardText;shipyardPublicationContradiction=${developmentDetailCheck};shipyard.textContent=shipyardText;
-              for(const copy of ['All six Research rows can currently be purchased.','Fully exceptional slotted crafting is now available.',
+              for(const copy of ['The current Survey card does not yet render those mineral rows.',
+                'The current Survey card renders every orbital mineral.',
+                'Orbit now also reveals cosmic and exceptional veins, grades, reserves, progress, and Mine.',
+                'All six Research rows can currently be purchased.','Fully exceptional slotted crafting is now available.',
                 'Fully-exceptional slotted craft is now available.',
                 'Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.',
                 'Sockets are now available.','Vendors are now available.']){
@@ -8635,11 +8961,13 @@ async function main() {
               &&workerReleaseChanged&&workerReleaseStale?.ok===false&&workerReleaseStale?.workerContract===false
               &&workerPlacementMoved&&workerPlacementStale?.ok===false&&workerPlacementStale?.workerContract===false
               &&shipyardChanged&&shipyardStale?.ok===false&&shipyardStale?.shipyardContract===false
+              &&shipyardSurveyMissing?.ok===false&&shipyardSurveyMissing?.shipyardContract===false
+              &&shipyardSurveyMissing?.honest===true&&shipyardSurveyMissing?.shipyardContradiction===false
               &&shipyardPublicationChanged&&shipyardPublicationContradiction?.ok===false
               &&shipyardPublicationContradiction?.shipyardContract===false
               &&shipyardPublicationContradiction?.honest===false
               &&shipyardPublicationContradiction?.shipyardContradiction===true
-              &&shipyardContradictionsChanged&&shipyardContradictions.length===8
+              &&shipyardContradictionsChanged&&shipyardContradictions.length===11
               &&shipyardContradictions.every((row)=>row.result?.ok===false&&row.result?.shipyardContract===false
                 &&row.result?.honest===false&&row.result?.shipyardContradiction===true)
               &&hdSurfaceChanged&&hdSurfaceStale?.ok===false&&hdSurfaceStale?.hdSurfaceContract===false
@@ -8649,7 +8977,7 @@ async function main() {
               artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
               workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
               workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,
-              shipyardChanged,shipyardStale,shipyardPublicationChanged,shipyardPublicationContradiction,shipyardContradictionsChanged,shipyardContradictions,hdSurfaceChanged,hdSurfaceStale,artContradictory,authority,restored,error};})()`);
+              shipyardChanged,shipyardStale,shipyardSurveyMissing,shipyardPublicationChanged,shipyardPublicationContradiction,shipyardContradictionsChanged,shipyardContradictions,hdSurfaceChanged,hdSurfaceStale,artContradictory,authority,restored,error};})()`);
           if (!detailControls.ok) {
             instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }
@@ -8728,7 +9056,8 @@ async function main() {
           ...common, surface: 'settings', root: '#setpanel', textMin: 80,
           required: [{ selector: '[data-pnx]', min: 1 }, { selector: '.row', min: 6 }, { selector: 'input[type=range]', min: 2 }],
           interactiveRoots: ['#setpanel'], contrastSelectors: ['#setpanel'],
-          focusSelectors: vp.label === 'primary-phone' || vp.label === 'desktop' ? ['#setpanel [data-pnx]', '#setvol', '#setglass', '#setimport'] : [],
+          focusSelectors: ['#setsnd', '#setvoice', ...(vp.label === 'primary-phone' || vp.label === 'desktop'
+            ? ['#setpanel [data-pnx]', '#setvol', '#setglass', '#setimport'] : [])],
           overlapPairs: [['#setpanel', '#dock']],
         }));
         const settingsWidthCheck = `(()=>{ const panel=document.getElementById('setpanel');
@@ -8742,6 +9071,42 @@ async function main() {
           if (settingsWidthControl.ok) instrumentFailures.push(`${vp.label}: Settings horizontal-overflow injection stayed green (${JSON.stringify(settingsWidthControl)})`);
           recordControls('settings-horizontal-overflow');
         }
+        const recordSettingsAudioPhase = async (surface, expected) => {
+          const evidence = await evalIn(SETTINGS_AUDIO_EVIDENCE_EXPRESSION);
+          const outcome = settingsAudioToggleOutcome(evidence, expected);
+          addOutcome(vp.label, surface, 'SETTINGS_CREATURE_VOICE_CONTROL', '#setsnd, #setvoice',
+            { ...outcome, ok: outcome.uiOk },
+            'native Sound and Creature voices buttons expose exact names, roles, pressed/text/class state, retained focus, centre hit, and 44px geometry');
+          addOutcome(vp.label, surface, 'SETTINGS_AUDIO_NON_REPLAY', 'audio diagnostics',
+            { ...outcome, ok: outcome.audioOk },
+            'Settings changes alone create no context, claim, counterpart, voice, node, creature emitter, or reservation and replay nothing');
+        };
+        await evalIn(`document.getElementById('setvoice')?.focus()`);
+        await waitFor('Settings audio baseline', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sndOn===false&&s.voiceOn===false&&document.activeElement?.id==='setvoice'})()`);
+        await recordSettingsAudioPhase('settings-audio-off', {
+          soundOn: false, voiceOn: false, focus: 'setvoice',
+        });
+        await evalIn(`(()=>{const b=document.getElementById('setsnd');b?.focus();b?.click();return true})()`);
+        await waitFor('Sound on with Creature voices off', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sndOn===true&&s.voiceOn===false&&document.activeElement?.id==='setsnd'})()`);
+        await recordSettingsAudioPhase('settings-sound-on-voices-off', {
+          soundOn: true, voiceOn: false, focus: 'setsnd',
+        });
+        await evalIn(`(()=>{const b=document.getElementById('setvoice');b?.focus();b?.click();return true})()`);
+        await waitFor('Creature voices on', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sndOn===true&&s.voiceOn===true&&document.activeElement?.id==='setvoice'})()`);
+        await recordSettingsAudioPhase('settings-sound-and-voices-on', {
+          soundOn: true, voiceOn: true, focus: 'setvoice',
+        });
+        await evalIn(`(()=>{const b=document.getElementById('setvoice');b?.focus();b?.click();return true})()`);
+        await waitFor('Creature voices off', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sndOn===true&&s.voiceOn===false&&document.activeElement?.id==='setvoice'})()`);
+        await recordSettingsAudioPhase('settings-voices-off-restored', {
+          soundOn: true, voiceOn: false, focus: 'setvoice',
+        });
+        await evalIn(`(()=>{const b=document.getElementById('setsnd');b?.focus();b?.click();return true})()`);
+        await waitFor('Sound off restored', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sndOn===false&&s.voiceOn===false&&document.activeElement?.id==='setsnd'})()`);
+        await recordSettingsAudioPhase('settings-audio-off-restored', {
+          soundOn: false, voiceOn: false, focus: 'setsnd',
+        });
+        settingsAudioEvidenceViewports.add(vp.label);
         for (const [pref, value] of [['size', 'fs-xl'], ['tone', 'tone-max'], ['font', 'font-mono']]) {
           addOutcome(vp.label, 'settings', 'SETTINGS_CHOICE_STATE', `[data-pref="${pref}"][data-value="${value}"]`,
             await evalIn(`window.__CF_GLASS_AUDIT__.choiceOutcome('#setpanel','[data-pref=${JSON.stringify(pref)}]','[data-pref=${JSON.stringify(pref)}][data-value=${JSON.stringify(value)}]',false)`),
@@ -9028,6 +9393,11 @@ async function main() {
      global sentinels; only the explicit reachable suffix in the control
      ledger may be product-blocked there. */
   const targetedProductBlocked = targetedProductRemainderBlocked(viewportLabel, targetedProductFailure);
+  if (!targetedProductBlocked && !exactJson(
+    [...settingsAudioEvidenceViewports], MATRIX_VIEWPORTS.map((viewport) => viewport.label),
+  )) {
+    instrumentFailures.push(`Settings audio evidence did not run once across every selected viewport (${JSON.stringify([...settingsAudioEvidenceViewports])})`);
+  }
   if (!controlsRun && !targetedProductBlocked) instrumentFailures.push('injected matrix controls never ran');
   if (!hpControlRun && !targetedProductBlocked) instrumentFailures.push('HP dual-background contrast control never ran');
   if (!settingsWidthControlRun && !targetedProductBlocked) instrumentFailures.push('Settings horizontal-overflow control never ran');

@@ -29,6 +29,7 @@ import {
 import {
   canonicalCF1StarAddressFromNav,
   canonicalCF1WorldAddressFromNav,
+  type CanonicalCF1WorldAddress,
   type NavState,
   type ShipVisualState,
 } from '@cf/scene';
@@ -110,6 +111,47 @@ function quantityMap(rows: readonly (readonly [string, number])[], label: string
 
 function labelFor(id: string): string {
   return MATERIAL_NAMES[id] ?? DEFINITION_BY_ID.get(id)?.name ?? id;
+}
+
+export interface OrbitalMineralSurveyRow {
+  readonly key: 'Mineral veins';
+  readonly value: string;
+}
+
+/** Presentation-only Deep Scanner consumer. The opportunity/reveal projectors
+ * retain provenance and disclosure authority; this adapter only labels the
+ * exact orbit-safe ordinary + biome facts and can never authorize mining. */
+export function projectOrbitalMineralSurveyRow(input: Readonly<{
+  engineering: EngineeringStateV2;
+  nav: NavState;
+  address: CanonicalCF1WorldAddress;
+}>): OrbitalMineralSurveyRow | null {
+  if (input.nav.mode !== 'system') return null;
+  try {
+    const opportunity = projectWorldOpportunity(input.address);
+    const reveal = projectWorldMineralReveal({
+      state: input.engineering,
+      opportunity,
+      currentNav: input.nav,
+    });
+    if (reveal.status !== 'projected'
+      || reveal.revealLevel !== 'orbit'
+      || reveal.deepScannersOwned !== true
+      || reveal.authorizesMining !== false
+      || reveal.ordinaryDeposits === null
+      || reveal.cosmicVein !== null
+      || reveal.exceptionalVein !== null
+      || reveal.resolvedGrades !== null
+      || reveal.reservePulls !== null
+      || reveal.extractionsTaken !== null
+      || reveal.pullsRemaining !== null) return null;
+    const labels = reveal.ordinaryDeposits.map(labelFor);
+    if (reveal.biomeVein !== null) labels.push(`${labelFor(reveal.biomeVein)} ✦`);
+    if (labels.length === 0) return null;
+    return deepFreeze({ key: 'Mineral veins', value: labels.join(' · ') });
+  } catch {
+    return null;
+  }
 }
 
 function costRows(

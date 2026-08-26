@@ -96,6 +96,7 @@ export function exportSaveV2(s: SaveStateV2, now: number): string {
     items: s.items, eq: s.equip, ea: s.equipAff,
     crafts: s.stats.crafts || 0, minedout: s.stats.minedout || 0,
     xpf: s.xpFirsts.slice(-4000),
+    ...(s.xpFirstsBinding == null ? {} : { xpa: s.xpFirstsBinding }),
     skims: s.stats.skims || 0, cosmics: s.stats.cosmics || 0,
     asc: s.ascCh, ascp: s.ascProg,
     names: s.customNames,

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -214,6 +214,40 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
     const reloadedRows = new Map(reloaded.state.conquered);
     expect(Object.hasOwn(reloadedRows.get('absent')!, 'e')).toBe(false);
     expect(Object.hasOwn(reloadedRows.get('null')!, 'e')).toBe(false);
+  });
+  it('normalizes notification timestamps only against the injected clock and then reaches a fixed point', () => {
+    const dateNow = vi.spyOn(Date, 'now').mockImplementation(() => {
+      throw new Error('notification import must not consult the ambient wall clock');
+    });
+    try {
+      const future = NOW + 90_000;
+      const imported = importSaveV2(JSON.stringify({
+        notifs: [
+          { id: 1, tt: 'zero', ms: '', t: 0 },
+          { id: 2, tt: 'invalid', ms: '', t: 'not-a-clock' },
+          { id: 3, tt: 'negative', ms: '', t: -1 },
+          { id: 4, tt: 'future', ms: '', t: future },
+          { id: 5, tt: 'over-cap', ms: '', t: 4_000_000_000_001 },
+        ],
+      }), REGISTRY, NOW);
+      expect(imported.ok).toBe(true);
+      if (!imported.ok) return;
+      expect(imported.state.notifications.map(({ t }) => t)).toEqual([
+        NOW, NOW, NOW, future, 4_000_000_000_000,
+      ]);
+
+      const reloaded = importSaveV2(
+        exportSaveV2(imported.state, NOW),
+        REGISTRY,
+        NOW + 180_000,
+      );
+      expect(reloaded.ok).toBe(true);
+      if (!reloaded.ok) return;
+      expect(reloaded.state.notifications).toEqual(imported.state.notifications);
+      expect(dateNow).not.toHaveBeenCalled();
+    } finally {
+      dateNow.mockRestore();
+    }
   });
   it('D-9i: generation strings become numbers and invalid counters cannot poison maxGen', () => {
     const baseInput = FX.inputs.hostile_markup_caps as { codex: Array<{ g: Record<string, unknown> }> };

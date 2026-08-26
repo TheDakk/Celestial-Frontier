@@ -2,13 +2,28 @@
 
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
 ecology/audio overlay matches the player-facing durable Arc 4 capture slice and its remaining
-evidence boundary as of **2026-08-25**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
+evidence boundary as of **2026-08-26**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
 well as biosphere recovery, so EPOCH_TICK is a shared knob.
 **Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy mechanics, while
 the current v2 authority is the TypeScript port named in the overlay below.
 
-> **2026-08-25 Arc 4 durable acquisition boundary:** `@cf/domain-acquisition` separates
+> **2026-08-26 current-candidate ecology/presentation correction:** the capture epoch is the sole
+> **published** F4 ecology epoch, derived from visible-and-answerable, lease-owned `activePlayMs`.
+> Crossing an integer edge stages a private candidate; exactly one receipt-free lease/revision CAS
+> must commit it before publication and exact scene/Survey/Planetside/capture reprojection. Those
+> consumers remain fenced while the projection is dirty, and hidden/unanswered time adds nothing.
+> This executable edge does not certify elapsed recovery: the ordinary Slice still records
+> `recoveryClaimed:false`, and the dedicated uninterrupted 20-minute Arc 4 recovery certificate
+> remains pending.
+>
+> Capture mechanics continue to use raw deterministic grade internally, but player rarity is a
+> strict ten-name projection only. Integer tiers `0..8` map directly, raw `9..14` show as
+> Transcendent, invalid/missing values show no rarity instead of Common, and raw numbers/internal
+> art-grade labels are never exposed. The narrow Tame-fauna greeting described in §0 is current
+> presentation only: it cannot alter the candidate, odds, attempt, ownership, reward or epoch.
+
+> **2026-08-25 Arc 4 recorded durable acquisition boundary:** `@cf/domain-acquisition` separates
 > catalogue species, discovery records, stable fauna `CreatureInstance`s, specimen lots and
 > per-world biosphere progress under 18 owner namespaces. The app now prepares an absent strict
 > ownership-v1 carrier—or reconciles a projectable stale compatibility mirror—inside the same
@@ -73,8 +88,9 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > **[PARTIAL]** until a real uninterrupted next-cycle recovery observation and the combined HUMAN
 > first-journey review are complete. The legacy formulas below remain parity/design input; current
 > v2 implementation authority is the typed path described here.
-> Those retained Arc 4 reports predate compact Arc 5 V2 and do not certify it. Final current-input
-> Slice run `20260825213041239-98104-c96d3b2d0652` passed on Edge `151.0.4129.101` in 363,053 ms
+> Those retained Arc 4 reports predate compact Arc 5 V2 and do not certify it. The later exact-input
+> pair for this recorded 2026-08-25 boundary used Slice run
+> `20260825213041239-98104-c96d3b2d0652`, which passed on Edge `151.0.4129.101` in 363,053 ms
 > with exactly one nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS, 10 hashed PNGs
 > and zero findings/failure scopes/retries/source change (report/log SHA-256
 > `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
@@ -89,28 +105,38 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > remains `[PARTIAL]` for real 20-minute recovery plus HUMAN review, and Arc 5 remains
 > `[PARTIAL]`/infrastructure-only.
 
-## 0. v2.0 ecology/audio link (capture presentation live; capture audio still absent — 2026-08-25)
+## 0. v2.0 ecology/audio link (one narrow Tame greeting live; broader capture audio absent — 2026-08-26)
 
 The current v2 development slice exposes player Tame, Scavenge, Sample and Biosphere Yield through
-the native Survey card, but no living Companion control; its player audio remains stings-only.
-`@cf/audio` has pure
-`DistantEcologyHintPlan` and settled caption-gated expression-cue seams, but no app audio adapter
-supplies them from capture/survey and they perform no playback or state write. The v1 mechanics and formulas below
-remain unchanged. This overlay specifies the later presentation link; it does not alter success
-odds, attempt spending, pool recovery, epoch cadence, Compendium ownership, rare-find rewards or
-capture randomness.
+the native Survey card, but no living Companion control. A trusted native **Tame** gesture may now
+synchronously arm exactly one silent audio context only while that same current surface is visible
+and answerable and both Sound and Creature Voices are enabled. Programmatic activation,
+diagnostics, Scavenge/Sample and non-current surfaces cannot arm it. Miss, refusal and convergence
+close with zero creature voice.
 
-Future capture audio is driven by typed outcomes after the authoritative action resolves:
+After the exact durable Tame success, and only without convergence, playback rechecks the matching
+current ownership revision, exact result species, live wild creature and discovery/acquisition
+identity. It then emits one deterministic greeting through the canonical owned-creature audio
+identity plus the registered visible `role=status`/assertive live-region counterpart. It never
+retries or replays. Turning Sound or Creature Voices off, losing visibility/answerability, losing
+the result surface or replacing/converging it stops the greeting. The audio path writes no state and
+does not alter success odds, attempt spending, pool recovery, epoch cadence, Compendium ownership,
+rare-find rewards or capture randomness.
 
-- **Tame** may use the targeted fauna specimen's deterministic call/foley signature.
-- **Scavenge** uses flora/fungi environmental sonification, never an animal-call fallback.
-- **Sample** uses microbe/substrate/instrument sonification rather than pretending a microorganism
-  has a recorded voice.
-- Miss, Worked Out, success and genuinely-new discovery remain distinct event/caption pairs; sound
-  never fires from a render function and never substitutes for visible odds, remaining attempts or
-  result text.
+The boundary is intentionally narrow:
 
-The durable acquisition writer is explicit and separate from that future audio presentation layer:
+- **Tame** alone may greet from the exact committed current fauna result.
+- **Scavenge** flora/fungi environmental sonification remains future and must never use an
+  animal-call fallback.
+- **Sample** microbe/substrate/instrument sonification remains future and must not pretend a
+  microorganism has a recorded voice.
+- Miss, Worked Out and general success/discovery audio remain outside this path; sound never fires
+  from a render function and never substitutes for visible odds, remaining attempts or result text.
+- Compendium audition, broader companion actions, biome ambience, music and combat audio remain
+  absent.
+
+The durable acquisition writer remains explicit and separate from the broader future audio
+presentation layer:
 
 - A genuinely first successful Tame, Scavenge or Sample creates the corresponding `CatalogSpecies`
   first-discovery/reward facts; an eligible repeat does not duplicate them.

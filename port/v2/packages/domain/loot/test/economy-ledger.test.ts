@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   LEGACY_RESEARCH_SINKS_V1,
   LOOT_CATALOGUE_V1,
@@ -82,6 +82,32 @@ describe('@cf/domain-loot — source-neutral economy ledger', () => {
     const negative = auditEconomyCoverage(removed);
     expect(negative.combinedSinkMaterialIds).toHaveLength(33);
     expect(negative.sinklessMaterialIds).toEqual([...audit.sinklessMaterialIds, 'Pro']);
+  });
+
+  it('uses exact code-unit ordering without consulting ambient locale collation', () => {
+    const localeCompare = vi.spyOn(String.prototype, 'localeCompare').mockImplementation(() => {
+      throw new Error('economy authority must not consult ambient locale collation');
+    });
+    try {
+      const audit = auditEconomyCoverage([
+        { id: 'ordering-probe', materialCost: { 'ä': 1, a: 1, Z: 1 }, stardustCost: 0 },
+      ], [], ['Z', 'a', 'ä']);
+      expect(audit.valid).toBe(true);
+      expect(audit.recipeSinkMaterialIds).toEqual(['Z', 'a', 'ä']);
+
+      const replay = replayEconomyTrace({
+        initial: initial({ materials: { Si: 1, C: 1, Al: 1 } }),
+        sourceAuthorities: [],
+        events: [],
+        target: null,
+      });
+      expect(replay.status).toBe('replayed');
+      if (replay.status !== 'replayed') return;
+      expect(Object.keys(replay.state.materials)).toEqual(['Al', 'C', 'Si']);
+      expect(localeCompare).not.toHaveBeenCalled();
+    } finally {
+      localeCompare.mockRestore();
+    }
   });
 
   it('replays the exact raw-to-Jump-Drive trace deterministically without predicting an ETA', () => {

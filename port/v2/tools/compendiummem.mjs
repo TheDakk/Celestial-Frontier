@@ -507,7 +507,7 @@ export function compendiumBudgetModeAllowed({ calibrate, budgetStatus }) {
     && (calibrate ? budgetStatus === 'calibration-required' : budgetStatus === 'active');
 }
 
-/* This is the one pre-measurement browser-authority seam for candidate and
+/* This is the one pre-measurement browser-compatibility seam for candidate and
    paired-baseline calibration. It records the collector-computed comparison
    before deciding whether collection may begin; neither the budget nor the
    recorder can supply a trusted match boolean. The injected collector keeps
@@ -2477,7 +2477,7 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
         }
       },
       mismatchMessage:
-        'paired broken-baseline browser does not match the exact Arc 1A calibration authority',
+        'paired broken-baseline browser does not satisfy the Arc 1A compatibility authority',
     });
     const expectedFaults = [...budget.pairedBrokenBaseline.expectedFaults].sort();
     for (const measurement of measurements) {
@@ -2676,7 +2676,7 @@ async function runGate({ calibrate }) {
       label: CANDIDATE_BROWSER_LABEL, userDataPrefix: 'cf-compendiummem',
       startupTimeoutMs: 15000,
     }));
-    gateStage = 'Arc 1A browser authority';
+    gateStage = 'Arc 1A browser compatibility authority';
     await collectWithCompendiumBrowserAuthority({
       budget, browser: browser.browser,
       recordEvidence: (evidence) => {
@@ -2698,7 +2698,7 @@ async function runGate({ calibrate }) {
           }));
         }
       },
-      mismatchMessage: 'browser does not match the exact Arc 1A calibration authority',
+      mismatchMessage: 'browser does not satisfy the Arc 1A compatibility authority',
     });
     gateStage = 'sealed outcome evaluation';
     const evaluatorBudget = calibrate

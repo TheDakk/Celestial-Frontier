@@ -1,5 +1,29 @@
 # Celestial Frontier — Combat & Conquest
 
+> **2026-08-26 current-candidate dependency correction:** combat/conquest is still not a live v2
+> action, but two persistence seams it will consume are now executable. `xpFirsts` keeps only its
+> newest 4,000 bounded unique keys in the `xpf` compatibility window; displaced membership is strict
+> v5 `progression.xp-firsts` archive authority, and `xpa` v1 binds total count plus carrier digest.
+> Missing, mismatched, future or corrupt archive evidence protects rather than rearming an award.
+> There is no live v2 XP-award writer yet, so this is anti-farm persistence authority—not proof that
+> any combat award call site has landed.
+>
+> `conq[].e` now has executable import/export/readiness coverage: absent or null remains the deliberate
+> one-cycle-ready veteran migration; valid present zero/boundary values round-trip exactly and gate by
+> elapsed epochs; malformed, future and negative inputs sanitize to a **present** bound and cannot
+> impersonate absence. This is codec/readiness proof, not the still-open real-veteran Gate-C run or a
+> live conquest/harvest UI. Any future harvest consumer must use F4's published ecology epoch, which
+> advances from visible-and-answerable active play through one receipt-free CAS before reprojection.
+>
+> The internal-only Arc 5 bred successor now initializes a newly admitted child's `fed` to half the
+> lower clamped parent value once; later care state survives. No player breed writer, parent Recovery
+> rule or live v2 combat reader follows from that seam. Player-facing combat rarity must use the
+> strict ten-name projector (`9..14` display as Transcendent; invalid/missing omitted), never raw
+> tier/internal art-grade labels. The only creature voice currently wired is the exact durable
+> current-system Tame-fauna greeting; combat, victory and Guardian audio remain absent. Ordinary Arc
+> 4 Slice evidence still records `recoveryClaimed:false`, with its dedicated 20-minute recovery
+> certificate pending.
+
 > **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** The v2 port
 > currently has executable `battleStats`/`runDuel` parity contracts but no live
 > duel, conquest, Guardian encounter or reward action. Legacy v1.8.9 remains the
@@ -25,7 +49,8 @@
 > Guide until the real controls and reward outcomes exist.
 
 **STATUS:** legacy mechanics reverified against `celestial-frontier.html` on
-2026-08-13; the v2 type-contract overlay remains planned, not implemented. The
+2026-08-13; current v2 dependency seams match the local candidate as of 2026-08-26, while the
+combat action/receipt/UI overlay remains planned and unimplemented. The
 `size` arc CLOSED in v1.8.9 — see the 2026-07-31 addendum; all six readers now
 share one helper and the fingerprint held.
 
@@ -247,7 +272,10 @@ seeded combatant-seed coin described in §2.3.
   `COSMIC_EPOCH` of the last harvest, and absence is the deliberate one-time
   ready migration. `tier` drives yield. `t` is retained legacy timestamp/clamp
   data and does not gate readiness. Presence = "held" (blocks re-conquest;
-  makes bioscans safe).
+  makes bioscans safe). The current port's executable codec/readiness vectors
+  preserve valid present `e`, keep sanitized invalid values present, and prove
+  absent/null cannot be conflated with a present not-ready cycle; they do not
+  constitute the open real-veteran Gate-C run.
 - **`g.hurt`** — persistent wound 0..0.85 on a genome; drives `battleStats` penalty and `creatureCondition`. **Stripped from shared codes** (`normGenome` deletes `hurt`/`xp`/`_mult`/`_wf`) — challengers arrive fresh.
 - **`g.xp`** — win-fed; `levelOf` derives level. Exhibit codes may carry a clamped level (`o.x`) for showcase only (`decodeCreature` sets `exhibit:true`, never owned/breedable).
 - **`g.apex`** — guardian/titan tier band (12–14); `g.ep` = epithet index; `g.brood`/`g.fed` = breeding/feeding bonuses; `g._cradle` = Earth-starter flag.

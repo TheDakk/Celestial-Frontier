@@ -374,6 +374,33 @@ function activeBudget(fixture) {
       },
     };
   };
+  const browserForRun = (runId) => {
+    const variants = {
+      'selftest-1': {
+        product: 'Edg/151.0.4129.101', revision: '@selftest-edge-101',
+        jsVersion: '15.1.23.9', executable: '/selftest/edge-101',
+      },
+      'selftest-2': {
+        product: 'Edg/151.0.4129.107', revision: '@selftest-edge-107',
+        jsVersion: '15.1.24.1', executable: '/selftest/edge-107',
+      },
+      'selftest-3': {
+        product: 'Edg/999.42.7.3', revision: '@selftest-edge-future',
+        jsVersion: '99.42.7.3', executable: '/selftest/edge-future',
+      },
+      'selftest-baseline-1': {
+        product: 'Edg/152.0.4200.1', revision: '@selftest-edge-baseline',
+        jsVersion: '15.2.1.0', executable: '/selftest/edge-baseline',
+      },
+    };
+    const variant = variants[runId];
+    assert(variant, `synthetic browser provenance is missing for ${runId}`);
+    return {
+      ...variant,
+      userAgent: `Microsoft Edge selftest provenance for ${runId}`,
+      protocolVersion: '1.3',
+    };
+  };
   const sample = (
     profile, index, commit = 'a'.repeat(40), observedFaults = null,
     runId = `selftest-${index}`,
@@ -390,10 +417,7 @@ function activeBudget(fixture) {
     sourceState: 'committed',
     fixtureRowsSha256: fixture.rowsSha256,
     measuredAt: `2026-08-16T00:00:0${index}.000Z`,
-    browser: {
-      executable: '/selftest/chrome', product: 'Chrome/Selftest', revision: 'selftest',
-      userAgent: 'selftest', jsVersion: 'selftest', protocolVersion: '1.3',
-    },
+    browser: browserForRun(runId),
     metrics: { ...reduced.metrics }, evidence,
     ...(observedFaults ? { observedFaults: [...observedFaults] } : {}),
   }; };
@@ -410,8 +434,8 @@ function activeBudget(fixture) {
     warmHeapAggregateRangeBytesMax: 1000, warmEncodedBytesRangeMax: 1000,
   };
   const browserAuthority = compendiumBrowserAuthority({
-    product: 'Chrome/Selftest', revision: 'selftest',
-    jsVersion: 'selftest', protocolVersion: '1.3',
+    product: 'Edg/151.0.4129.101', revision: '@selftest-edge-101',
+    jsVersion: '15.1.23.9', protocolVersion: '1.3',
   });
   assert(browserAuthority, 'synthetic browser authority did not canonicalize');
   return {
@@ -805,7 +829,7 @@ function syntheticProducerErrorWitness(profile, fixture) {
     },
     answerability: {
       target: { ok: true, ms: 10, value: `${profile}-error`, expected: `${profile}-error` },
-      heartbeat: { ok: true, ms: 15, product: 'Chrome/Selftest' },
+      heartbeat: { ok: true, ms: 15, product: 'Edg/151.0.4129.107' },
     },
     closeTarget: syntheticFilterTargetGroup(),
     recoveryOpenTarget: syntheticFilterTargetGroup(),
@@ -1046,9 +1070,9 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
     },
     answerability: [
       { target: { ok: true, ms: 20, value: `${profile}-first`, expected: `${profile}-first` },
-        heartbeat: { ok: true, ms: 15, product: 'Chrome/Selftest' } },
+        heartbeat: { ok: true, ms: 15, product: 'Edg/151.0.4129.107' } },
       { target: { ok: true, ms: 25, value: `${profile}-last`, expected: `${profile}-last` },
-        heartbeat: { ok: true, ms: 18, product: 'Chrome/Selftest' } },
+        heartbeat: { ok: true, ms: 18, product: 'Edg/151.0.4129.107' } },
     ],
   };
 }
@@ -1079,8 +1103,9 @@ function terminalReport(runId, outcomes, budget, profiles) {
   );
   inputs.fixtureRows = budget.fixture.rowsSha256;
   const browser = {
-    executable: '/selftest/chrome', product: 'Chrome/Selftest', revision: 'selftest',
-    user_agent: 'selftest', js_version: 'selftest', protocol_version: '1.3',
+    executable: '/selftest/edge-107', product: 'Edg/151.0.4129.107',
+    revision: '@selftest-edge-107', user_agent: 'Microsoft Edge selftest',
+    js_version: '15.1.24.1', protocol_version: '1.3',
   };
   const browserAuthority = compendiumBudgetBrowserAuthority(budget);
   return {
@@ -1272,7 +1297,7 @@ export async function runCompendiumMemSelftest() {
           ? { exceptionDetails: { text: side.exception } }
           : { result: { value: side.value } };
       }
-      return { product: side.product ?? 'Chrome/Selftest' };
+      return { product: side.product ?? 'Edg/151.0.4129.107' };
     };
     let value = null;
     let failure = null;
@@ -1302,7 +1327,7 @@ export async function runCompendiumMemSelftest() {
   };
   const readyPlan = {
     target: { deltaMs: 10, value: { ready: true } },
-    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+    heartbeat: { deltaMs: 15, product: 'Edg/151.0.4129.107' },
   };
   const candidateReady = await runCandidateWaitScenario([readyPlan]);
   assert(candidateReady.failure === null && candidateReady.value.ready === true
@@ -1339,7 +1364,7 @@ export async function runCompendiumMemSelftest() {
   'the real collector command callback did not retain the exact producer subset only while owned');
   const candidateAnswerabilityReady = await runCandidateWaitScenario([{
     target: { deltaMs: 10, value: 'phone-first' },
-    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+    heartbeat: { deltaMs: 15, product: 'Edg/151.0.4129.107' },
   }], { phaseWindowMs: COMMAND_TIMEOUT_MS, answerabilityExpected: 'phone-first' });
   assert(candidateAnswerabilityReady.failure === null
     && candidateAnswerabilityReady.value.target.ok === true
@@ -1842,7 +1867,7 @@ export async function runCompendiumMemSelftest() {
       deltaMs: COMMAND_TIMEOUT_MS, reject: true,
       error: `${CANDIDATE_BROWSER_LABEL}: timed out waiting for Runtime.evaluate`,
     },
-    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+    heartbeat: { deltaMs: 15, product: 'Edg/151.0.4129.107' },
   }]);
   assert(candidateTargetTimeout.failure?.classification === 'product-unanswerable'
     && candidateTargetTimeout.failure.message.includes('phone list thumb settlement')
@@ -1857,7 +1882,7 @@ export async function runCompendiumMemSelftest() {
       deltaMs: COMMAND_TIMEOUT_MS, reject: true,
       error: `${CANDIDATE_BROWSER_LABEL}: timed out waiting for Runtime.evaluate`,
     },
-    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+    heartbeat: { deltaMs: 15, product: 'Edg/151.0.4129.107' },
   }], { phaseWindowMs: COMMAND_TIMEOUT_MS, answerabilityExpected: 'phone-first' });
   assert(candidateAnswerabilityTimeout.failure?.classification === 'product-unanswerable'
     && candidateAnswerabilityTimeout.failure.message.includes('answerability phone-first')
@@ -1870,7 +1895,7 @@ export async function runCompendiumMemSelftest() {
       deltaMs: COMMAND_TIMEOUT_MS, reject: true,
       error: 'timed out waiting for Runtime.evaluate',
     },
-    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+    heartbeat: { deltaMs: 15, product: 'Edg/151.0.4129.107' },
   }]);
   assert(candidateUnprefixedTimeout.failure?.classification === 'instrument',
     'an unbranded/unprefixed timeout string fabricated product starvation');
@@ -1890,27 +1915,27 @@ export async function runCompendiumMemSelftest() {
   'a failed/late root heartbeat was not retained as terminal instrument evidence');
   const candidateExactBoundary = await runCandidateWaitScenario([{
     target: { deltaMs: COMMAND_TIMEOUT_MS, value: { ready: true } },
-    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+    heartbeat: { deltaMs: 15, product: 'Edg/151.0.4129.107' },
   }]);
   assert(candidateExactBoundary.failure?.classification === 'product-unanswerable'
     && candidateExactBoundary.calls.length === 2 && candidateExactBoundary.sleeps.length === 0,
   'an exact-deadline truthy target observation was accepted or retried');
   const candidateClipped = await runCandidateWaitScenario([{
     target: { deltaMs: 1199, value: { ready: true } },
-    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+    heartbeat: { deltaMs: 15, product: 'Edg/151.0.4129.107' },
   }], { phaseWindowMs: 1200 });
   assert(candidateClipped.failure === null
     && candidateClipped.calls.every((call) => call.options.timeoutMs === 1200),
   'candidate target/heartbeat commands were not clipped to the positive remaining phase time');
   const candidateEarlyFakeTimeout = await runCandidateWaitScenario([{
     target: { deltaMs: 10, reject: true, error: 'timed out waiting for Runtime.evaluate' },
-    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+    heartbeat: { deltaMs: 15, product: 'Edg/151.0.4129.107' },
   }]);
   assert(candidateEarlyFakeTimeout.failure?.classification === 'instrument',
     'an early protocol rejection merely spelling “timeout” fabricated product starvation');
   const candidatePageException = await runCandidateWaitScenario([{
     target: { deltaMs: 10, exception: 'selftest candidate page exception' },
-    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+    heartbeat: { deltaMs: 15, product: 'Edg/151.0.4129.107' },
   }]);
   assert(candidatePageException.failure?.classification === 'instrument'
     && candidatePageException.failure.command?.target?.resultState === 'page-exception'
@@ -2600,20 +2625,47 @@ export async function runCompendiumMemSelftest() {
     && !compendiumBudgetModeAllowed({ calibrate: 'false', budgetStatus: 'active' }),
   'calibration/certification mode was not fail-closed against the exact budget state');
   const browserAuthority = compendiumBudgetBrowserAuthority(budget);
-  assert(validCompendiumBrowserAuthority(browserAuthority)
-    && JSON.stringify(compendiumBrowserAuthority(
-      budget.calibration.samples.phone[0].browser,
-    )) === JSON.stringify(browserAuthority)
-    && compendiumBrowserAuthorityMatches({
-      executable: '/usr/bin/microsoft-edge-stable', product: 'Chrome/Selftest',
-      revision: 'selftest', user_agent: 'Linux selftest', js_version: 'selftest',
-      protocol_version: '1.3',
-    }, browserAuthority),
-  'Arc browser authority did not accept the same exact build across host path/UA provenance');
-  assert(!compendiumBrowserAuthorityMatches({
-    product: 'Chrome/Other', revision: 'selftest', js_version: 'selftest',
-    protocol_version: '1.3',
-  }, browserAuthority), 'a different browser product matched the Arc authority');
+  assert(validCompendiumBrowserAuthority(browserAuthority),
+    'synthetic Arc browser compatibility authority was invalid');
+  const compatibleBrowserVariants = [
+    {
+      executable: '/selftest/edge-101', product: 'Edg/151.0.4129.101',
+      revision: '@selftest-edge-101', user_agent: 'macOS Edge selftest',
+      js_version: '15.1.23.9', protocol_version: '1.3',
+    },
+    {
+      executable: '/usr/bin/microsoft-edge-stable', product: 'Edg/151.0.4129.107',
+      revision: '@selftest-edge-107', user_agent: 'Linux Edge selftest',
+      js_version: '15.1.24.1', protocol_version: '1.3',
+    },
+    {
+      executable: '/future/edge', product: 'Edg/999.42.7.3',
+      revision: '@selftest-edge-future', user_agent: 'Future Edge selftest',
+      js_version: '99.42.7.3', protocol_version: '1.3',
+    },
+  ];
+  for (const browser of compatibleBrowserVariants) {
+    assert(JSON.stringify(compendiumBrowserAuthority(browser))
+      === JSON.stringify(browserAuthority)
+      && compendiumBrowserAuthorityMatches(browser, browserAuthority),
+    `version-tolerant Edge authority rejected ${browser.product}`);
+  }
+  const incompatibleBrowserVariants = [
+    ['Chrome family', { ...compatibleBrowserVariants[0], product: 'Chrome/151.0.4129.101' }],
+    ['malformed Edge product', { ...compatibleBrowserVariants[0], product: 'Edg/151.0.4129' }],
+    ['missing product', { ...compatibleBrowserVariants[0], product: '' }],
+    ['missing revision', { ...compatibleBrowserVariants[0], revision: '' }],
+    ['missing JavaScript version', { ...compatibleBrowserVariants[0], js_version: '' }],
+    ['incompatible CDP protocol', { ...compatibleBrowserVariants[0], protocol_version: '9.9' }],
+  ];
+  for (const [label, browser] of incompatibleBrowserVariants) {
+    assert(compendiumBrowserAuthority(browser) === null
+      && !compendiumBrowserAuthorityMatches(browser, browserAuthority),
+    `${label} matched the Arc browser compatibility authority`);
+  }
+  assert(new Set(budget.calibration.samples.phone
+    .map((sample) => sample.browser.product)).size === 3,
+  'synthetic calibration did not exercise three independently updated Edge versions');
   const freshHostProvenanceBudget = clone(budget);
   for (const profile of ['phone', 'desktop']) {
     for (const sample of freshHostProvenanceBudget.calibration.samples[profile]) {
@@ -2629,10 +2681,11 @@ export async function runCompendiumMemSelftest() {
   assert(freshHostProvenanceCheck.ok
     && new Set(freshHostProvenanceBudget.calibration.samples.phone
       .map((sample) => sample.browser.executable)).size === 3,
-  `distinct fresh browser paths/host UAs did not embed under one exact build authority: ${freshHostProvenanceCheck.errors.join('; ')}`);
+  `distinct per-run browser paths/host UAs did not embed under one compatibility authority: ${freshHostProvenanceCheck.errors.join('; ')}`);
   const exactObservedBrowser = {
-    executable: '/selftest/edge', product: 'Chrome/Selftest', revision: 'selftest',
-    user_agent: 'selftest', js_version: 'selftest', protocol_version: '1.3',
+    executable: '/selftest/edge-101', product: 'Edg/151.0.4129.101',
+    revision: '@selftest-edge-101', user_agent: 'Microsoft Edge selftest',
+    js_version: '15.1.23.9', protocol_version: '1.3',
   };
   const runInjectedBrowserAuthority = async ({
     label, budgetRecord = budget, observedBrowser = exactObservedBrowser,
@@ -2651,32 +2704,38 @@ export async function runCompendiumMemSelftest() {
     } catch (error) { thrown = error; }
     return { evidence, collectionCalls, thrown, value };
   };
-  const exactAuthorityCollection = await runInjectedBrowserAuthority({
-    label: 'candidate-exact',
+  const compatibleAuthorityCollection = await runInjectedBrowserAuthority({
+    label: 'candidate-compatible',
   });
-  assert(exactAuthorityCollection.thrown === null
-    && exactAuthorityCollection.value === 'candidate-exact-collected'
-    && exactAuthorityCollection.collectionCalls === 1
-    && exactAuthorityCollection.evidence.length === 1
-    && exactAuthorityCollection.evidence[0].browserAuthorityMatch === true
-    && JSON.stringify(exactAuthorityCollection.evidence[0].browserAuthority)
+  assert(compatibleAuthorityCollection.thrown === null
+    && compatibleAuthorityCollection.value === 'candidate-compatible-collected'
+    && compatibleAuthorityCollection.collectionCalls === 1
+    && compatibleAuthorityCollection.evidence.length === 1
+    && compatibleAuthorityCollection.evidence[0].browserAuthorityMatch === true
+    && JSON.stringify(compatibleAuthorityCollection.evidence[0].browserAuthority)
       === JSON.stringify(browserAuthority),
-  'exact browser authority did not record true once before one protected collection');
+  'browser compatibility authority did not record true before one protected collection');
   for (const kind of ['candidate', 'baseline']) {
-    for (const [authorityField, observedField] of [
-      ['product', 'product'], ['revision', 'revision'],
-      ['jsVersion', 'js_version'], ['protocolVersion', 'protocol_version'],
-    ]) {
-      const observedBrowser = clone(exactObservedBrowser);
-      observedBrowser[observedField] = `${observedBrowser[observedField]}-drift`;
-      const drift = await runInjectedBrowserAuthority({
-        label: `${kind}-${authorityField}-drift`, observedBrowser,
+    for (const browser of compatibleBrowserVariants) {
+      const updated = await runInjectedBrowserAuthority({
+        label: `${kind}-${browser.product.replaceAll('.', '-')}`,
+        observedBrowser: browser,
       });
-      assert(drift.thrown?.message === `${kind}-${authorityField}-drift browser authority mismatch`
-        && drift.collectionCalls === 0 && drift.evidence.length === 1
-        && JSON.stringify(drift.evidence[0].browserAuthority) === JSON.stringify(browserAuthority)
-        && drift.evidence[0].browserAuthorityMatch === false,
-      `${kind} ${authorityField} drift collected product/profile evidence or retried`);
+      assert(updated.thrown === null && updated.collectionCalls === 1
+        && updated.evidence.length === 1
+        && updated.evidence[0].browserAuthorityMatch === true,
+      `${kind} ${browser.product} update was rejected or retried`);
+    }
+    for (const [label, observedBrowser] of incompatibleBrowserVariants) {
+      const incompatible = await runInjectedBrowserAuthority({
+        label: `${kind}-${label.replaceAll(' ', '-').toLowerCase()}`, observedBrowser,
+      });
+      assert(incompatible.thrown?.message.endsWith('browser authority mismatch')
+        && incompatible.collectionCalls === 0 && incompatible.evidence.length === 1
+        && JSON.stringify(incompatible.evidence[0].browserAuthority)
+          === JSON.stringify(browserAuthority)
+        && incompatible.evidence[0].browserAuthorityMatch === false,
+      `${kind} ${label} collected product/profile evidence or retried`);
     }
     const nullAuthorityBudget = clone(budget);
     nullAuthorityBudget.browserAuthority = null;
@@ -2690,7 +2749,7 @@ export async function runCompendiumMemSelftest() {
     `${kind} null browser authority collected product/profile evidence or retried`);
     const forgedAuthorityBudget = clone(budget);
     forgedAuthorityBudget.browserAuthority = {
-      ...clone(browserAuthority), product: 'Chrome/Forged', browserAuthorityMatch: true,
+      ...clone(browserAuthority), family: 'google-chrome',
     };
     const forgedAuthority = await runInjectedBrowserAuthority({
       label: `${kind}-forged`, budgetRecord: forgedAuthorityBudget,
@@ -2698,15 +2757,29 @@ export async function runCompendiumMemSelftest() {
     assert(forgedAuthority.thrown?.message === `${kind}-forged browser authority mismatch`
       && forgedAuthority.collectionCalls === 0 && forgedAuthority.evidence.length === 1
       && forgedAuthority.evidence[0].browserAuthorityMatch === false,
-    `${kind} forged browser authority/match boolean collected product evidence or retried`);
+    `${kind} forged compatibility authority collected product evidence or retried`);
   }
-  for (const field of ['product', 'revision', 'jsVersion', 'protocolVersion']) {
-    const mismatchedBaselineBrowser = clone(budget);
-    const sampleBrowser = mismatchedBaselineBrowser.pairedBrokenBaseline.samples.phone[0].browser;
-    sampleBrowser[field] = `${sampleBrowser[field]}-other`;
-    assert(validateBudget(mismatchedBaselineBrowser).errors.some((error) =>
-      /does not match the Arc 1A calibration authority/.test(error)),
-    `paired baseline ${field} drift escaped the candidate browser authority`);
+  const updatedBaselineBrowser = clone(budget);
+  for (const profile of ['phone', 'desktop']) {
+    updatedBaselineBrowser.pairedBrokenBaseline.samples[profile][0].browser = {
+      executable: '/selftest/edge-baseline-updated', product: 'Edg/1000.0.0.1',
+      revision: '@selftest-edge-baseline-updated',
+      userAgent: 'Updated baseline Edge selftest', jsVersion: '100.0.0.1',
+      protocolVersion: '1.3',
+    };
+  }
+  assert(validateBudget(updatedBaselineBrowser).ok,
+    'a paired baseline Edge update shared by both profiles forced a rebaseline');
+  for (const [field, value] of [
+    ['product', 'Edg/1001.0.0.1'], ['revision', '@other-revision'],
+    ['jsVersion', '101.0.0.1'], ['executable', '/other/edge'],
+    ['userAgent', 'other host provenance'], ['protocolVersion', '9.9'],
+  ]) {
+    const mismatchedRunBrowser = clone(updatedBaselineBrowser);
+    mismatchedRunBrowser.pairedBrokenBaseline.samples.phone[0].browser[field] = value;
+    assert(validateBudget(mismatchedRunBrowser).errors.some((error) =>
+      /does not bind one exact browser provenance tuple across profiles/.test(error)),
+    `paired baseline same-run ${field} mismatch escaped provenance pairing`);
   }
   const equalMeasuredCeiling = clone(budget);
   equalMeasuredCeiling.ceilings.phone.queuedJobsPeakMax
@@ -3809,13 +3882,41 @@ export async function runCompendiumMemSelftest() {
   failedPassLifecycle.lifecycle.status = 'failed';
   assert(!productionVerify(failedPassLifecycle).ok,
     'lifecycle-failed PASS stayed verifier-green');
-  const locallyConsistentWrongAuthority = clone(report);
-  locallyConsistentWrongAuthority.browser.revision = 'other-revision';
-  locallyConsistentWrongAuthority.budget.browserAuthority.revision = 'other-revision';
-  locallyConsistentWrongAuthority.budget.browserAuthorityMatch = true;
-  assert(verifyTerminalReport(locallyConsistentWrongAuthority, 'selftest-current').ok
-    && !productionVerify(locallyConsistentWrongAuthority).ok,
-  'a locally self-consistent report laundered a browser authority different from the exact budget');
+  const independentlyUpdatedBrowser = clone(report);
+  independentlyUpdatedBrowser.browser.product = 'Edg/999.42.7.3';
+  independentlyUpdatedBrowser.browser.revision = '@selftest-edge-future';
+  independentlyUpdatedBrowser.browser.js_version = '99.42.7.3';
+  independentlyUpdatedBrowser.browser.executable = '/future/edge';
+  independentlyUpdatedBrowser.browser.user_agent = 'Future Edge selftest';
+  const replaceHeartbeatProduct = (value) => {
+    if (Array.isArray(value)) {
+      for (const item of value) replaceHeartbeatProduct(item);
+      return;
+    }
+    if (value === null || typeof value !== 'object') return;
+    for (const [key, item] of Object.entries(value)) {
+      if (key === 'product' && item === 'Edg/151.0.4129.107') {
+        value[key] = 'Edg/999.42.7.3';
+      } else replaceHeartbeatProduct(item);
+    }
+  };
+  replaceHeartbeatProduct(independentlyUpdatedBrowser.profiles);
+  independentlyUpdatedBrowser.budget.browserAuthorityMatch = true;
+  const independentlyUpdatedLocalCheck = verifyTerminalReport(
+    independentlyUpdatedBrowser, 'selftest-current',
+  );
+  const independentlyUpdatedProductionCheck = productionVerify(independentlyUpdatedBrowser);
+  assert(independentlyUpdatedLocalCheck.ok && independentlyUpdatedProductionCheck.ok,
+    `an independently updated compatible Edge report was rejected by the active budget: ${[
+      ...independentlyUpdatedLocalCheck.errors, ...independentlyUpdatedProductionCheck.errors,
+    ].join('; ')}`);
+  const corruptedCompatibilityAuthority = clone(report);
+  corruptedCompatibilityAuthority.budget.browserAuthority.capabilityContractSha256
+    = 'f'.repeat(64);
+  corruptedCompatibilityAuthority.budget.browserAuthorityMatch = true;
+  assert(!verifyTerminalReport(corruptedCompatibilityAuthority, 'selftest-current').ok
+    && !productionVerify(corruptedCompatibilityAuthority).ok,
+  'a forged capability-contract digest remained verifier-green');
   const locallyConsistentWrongProducer = clone(report);
   const wrongProducer = compendiumProducerAuthority({
     ...clone(report.budget.producerAuthority.inputs),
@@ -5588,7 +5689,7 @@ export async function runCompendiumMemSelftest() {
   crossHostBrowser.browser.executable = '/usr/bin/microsoft-edge-stable';
   crossHostBrowser.browser.user_agent = 'Linux selftest';
   assert(verifyTerminalReport(crossHostBrowser, 'selftest-current').ok,
-    'same exact Arc browser build was rejected solely for a cross-host path/UA');
+    'compatible Edge provenance was rejected solely for a cross-host path/UA');
   const missingPassAuthority = clone(report);
   missingPassAuthority.budget.browserAuthority = null;
   missingPassAuthority.budget.browserAuthorityMatch = null;
@@ -5609,17 +5710,18 @@ export async function runCompendiumMemSelftest() {
   authorityMismatch.budget.browserAuthorityMatch = false;
   authorityMismatch.outcomes = [];
   authorityMismatch.findings = [
-    'instrument: browser does not match the exact Arc 1A calibration authority',
+    'instrument: browser does not match the Arc 1A browser compatibility authority',
   ];
   authorityMismatch.profiles = {};
   authorityMismatch.reviewPacket = [];
   authorityMismatch.partialFailure = {
     schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
-    lastCompletedStage: null, failingStage: 'Arc 1A browser authority', command: null,
+    lastCompletedStage: null, failingStage: 'Arc 1A browser compatibility authority', command: null,
   };
   authorityMismatch.blockedOutcomes = [...EXPECTED_OUTCOMES];
-  assert(verifyTerminalReport(authorityMismatch, 'selftest-current').ok,
-    'exact pre-measurement browser-authority mismatch report was rejected');
+  const authorityMismatchCheck = verifyTerminalReport(authorityMismatch, 'selftest-current');
+  assert(authorityMismatchCheck.ok,
+    `pre-measurement browser-compatibility mismatch report was rejected: ${authorityMismatchCheck.errors.join('; ')}`);
   const lateAuthorityMismatch = clone(authorityMismatch);
   lateAuthorityMismatch.profiles.phone = clone(phone);
   assert(!verifyTerminalReport(lateAuthorityMismatch, 'selftest-current').ok,

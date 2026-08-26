@@ -1,6 +1,35 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-25 Arc 4 progression overlay — current local implementation:** native Survey
+> **2026-08-26 current-candidate progression correction:** the published ecology epoch now advances
+> only from F4's visible-and-answerable, lease-owned `activePlayMs`, through one receipt-free
+> lease/revision CAS before publication and exact scene reprojection. Until that refresh completes,
+> epoch-dependent Survey/Planetside/capture progression is fenced. This does not close Arc 4: the
+> ordinary Slice still records `recoveryClaimed:false`, and a dedicated uninterrupted 20-minute
+> recovery certificate plus HUMAN first-journey review remain pending.
+>
+> After owned `scan1`, an eligible registered current-system lifeless non-Earth orbital **Mineral
+> veins** Survey row passively lists ordinary mineral deposits in canonical order plus the optional
+> biome-only vein marked `✦`. It grants nothing
+> and exposes no Mine action, cosmic/exceptional material, grades, reserves, progress or extraction
+> state. Player rarity uses the strict ten-name presentation projector: valid raw tiers `0..8` map
+> directly, `9..14` display as Transcendent, and invalid/missing values are omitted rather than
+> defaulted to Common; internal art-grade labels and raw numbers remain private.
+>
+> The XP anti-farm seam is now durable but not yet a live v2 XP faucet: `xpf` holds the newest 4,000
+> bounded unique keys, older membership moves to the strict v5-only `progression.xp-firsts` archive,
+> and `xpa` v1 binds total count plus archive-carrier digest. Missing or inconsistent archive
+> evidence protects instead of rearming one-time awards. Executable `conq[].e` codec/readiness
+> vectors likewise preserve absent-as-ready and present-as-gated semantics, but do not replace the
+> still-open real-veteran Gate-C run.
+>
+> The internal-only Arc 5 successor now initializes a newly admitted bred child's `fed` to half the
+> lower clamped parent value exactly once. No player breeding writer exists; odds, parent Recovery
+> duration/locks, care, capacity, confirmation and UI/copy remain Arc 5B product decisions. The only
+> new creature audio is one deterministic Tame-fauna greeting after the exact durable result and
+> current ownership revision; it grants no progression and broader creature/Compendium/ambience/
+> music/combat playback remains absent.
+
+> **2026-08-25 Arc 4 progression overlay — recorded local boundary:** native Survey
 > Tame/Scavenge/Sample actions now turn a finite Biosphere attempt into one durable hit or miss.
 > The card states that it selects randomly from the verb's eligible species across the canonical
 > full roster, not the eight-row preview, and shows aggregate/individual odds plus the shared
@@ -19,8 +48,8 @@
 
 > **2026-08-24 Arc 3 progression overlay — current local implementation:** Mine and Skim are live
 > through the Engineering panel. Six research rows are displayed, but only Deep Scanners is
-> purchasable; its pure orbital-reveal policy exists while current Survey does not render orbital
-> mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with exact costs/
+> purchasable; the 2026-08-26 correction above records its now-live bounded passive orbital Survey
+> row. All 62 fixed recipes are listed, but only connected-effect outputs with exact costs/
 > preconditions and capacity/revision headroom are actionable; fully exceptional slotted outputs
 > and disconnected-effect rows remain unavailable. Eligible Deep-Scanner and fixed-Fabrication
 > actions use the durable transaction. Canonical source opportunities, technology prerequisites,
@@ -229,7 +258,7 @@
 > replay may still receive its lesson event without receiving progression credit.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlay
-matches the local `port/v2` boundary as of 2026-08-25, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
+matches the local `port/v2` candidate as of 2026-08-26, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
@@ -258,7 +287,10 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
   - **Conquest** win: **+20 + world tier**
   - **Guardian/Titan** conquest win: **+60 + world tier**
   - Cataloguing a **genuinely new species** teaches your standing **Field Scout** creature **+2** (a single-catalogue path to XP that needs no fight).
-  - **Care faucets (v1.8; ledgering CORRECTED in v1.8.4):** welcome meal **+1** *(once per creature — it was a bare unledgered `awardXP` paying on every loved meal until v1.8.4)* · taste discovered **+2** (once per creature per flavour) · bout survived **+2** · fight taken to the wire **+3** *(both unreachable until v1.8.4: the guard read `mine.id`, which no `fightNow` call site sets — the identity is now derived from the genome)* · conquest lost **+3** · defender pushed to the brink **+5** *(both now keyed per creature per world; unledgered, an unconquered world paid on every attempt forever, and one meal undoes the `hurt=0.85` brake)*. Anti-farm is a **per-creature ledger** (`xpFirsts`, persisted as `xpf`, capped 4000 entries of ≤64 chars), not a global cooldown.
+  - **Care faucets (v1.8; ledgering CORRECTED in v1.8.4):** welcome meal **+1** *(once per creature — it was a bare unledgered `awardXP` paying on every loved meal until v1.8.4)* · taste discovered **+2** (once per creature per flavour) · bout survived **+2** · fight taken to the wire **+3** *(both unreachable until v1.8.4: the guard read `mine.id`, which no `fightNow` call site sets — the identity is now derived from the genome)* · conquest lost **+3** · defender pushed to the brink **+5** *(both now keyed per creature per world; unledgered, an unconquered world paid on every attempt forever, and one meal undoes the `hurt=0.85` brake)*. In legacy v1.8.9, anti-farm is a **per-creature ledger** (`xpFirsts`) whose `xpf` save mirror is capped at 4,000 entries of ≤64 chars, not a global cooldown.
+  - **Current v2 persistence boundary:** the strict archive/`xpa` binding preserves membership older
+    than the newest-4,000 `xpf` window, but no live v2 XP-award writer exists. See the 2026-08-26
+    overlay above.
   - **Union (v1.8, CORRECTED in v1.8.3):** a successful breed pays **+2** to the **newborn**, plus **+5** the first time a given *species pair* is crossed (`awardXPPair`). Until v1.8.3 both awards landed on `aEntry` — which the union consumes moments later, so the XP was destroyed as it was earned. The lineage key was also `[a.kind,b.kind]`, and breeding is always Fauna×Fauna, so it could only ever read `'Fauna+Fauna'`: a once-per-parent payout wearing a lineage's name. It now keys on the two parent **species**, FNV-hashed short so it survives the ledger's 64-char load truncation.
 - **Level-ups wake innate arts, not stats.** `classKit` grants `1 + (lvl≥3) + (lvl≥6)` innate-art slots → **1 / 2 / 3 arts** at levels 1 / 3 / 6. A level-up at 3 or 6 toasts "A new innate art awakens!"
 - Levels are *your* creature's story: a **shared code arrives at level 1** (`normGenome` strips `xp`); an **exhibit** code may carry `xp` clamped to `6·81 = 486` (exactly the L9 threshold).

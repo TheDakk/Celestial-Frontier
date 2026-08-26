@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@cf/domain-rand": "*",
+    "@cf/domain-worldconfig": "*",
     "@cf/domain-surveyphrases": "*",
     "@cf/domain-speciestraits": "*",
     "@cf/domain-combatcore": "*",

@@ -1,20 +1,46 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-25**.
+**STATUS:** approved product direction and implementation contract as of **2026-08-26**.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
 exact-instance Inventory, Arc 3 Engineering actions and Arc 4 player-facing capture loop described
 below. Arc 5A now activates its compact ownership-v2 five-carrier authority across boot, genuine legacy
 Training and every Arc 4 capture successor, but remains infrastructure-only. Five non-Deep-Scanner research purchases,
-Survey orbital-mineral-row rendering, disconnected-effect and fully exceptional slotted fixed-
+disconnected-effect and fully exceptional slotted fixed-
 recipe actions, new random loot sources, upgrades/sockets, companion
 expeditions, breeding, live combat and Guardians remain
 **not implemented** unless a row below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
 
-> **2026-08-25 Arc 3–5 current boundary:** the **Engineering & Shipyard** panel now owns truthful
+> **2026-08-26 current-candidate correction:** the ecology epoch now publishes only from F4's
+> visible-and-answerable, lease-owned `activePlayMs`. One receipt-free lease/revision CAS must commit
+> the private integer-edge candidate before publication, save projection and exact reprojection;
+> epoch-dependent surfaces stay fenced while dirty. Existing ordinary Slice evidence still records
+> `recoveryClaimed:false`: a dedicated uninterrupted 20-minute Arc 4 recovery certificate and HUMAN
+> first-journey review remain open.
+>
+> Owned `scan1` now passively adds an eligible registered current-system lifeless non-Earth orbital
+> **Mineral veins** Survey row with ordinary deposits in canonical order plus the optional biome-only
+> vein marked `✦`. It is information only:
+> no Mine control, cosmic/exceptional material, grade, reserve, progress or extraction disclosure.
+> XP-first persistence now keeps the newest 4,000 bounded unique keys in `xpf`, archives displaced
+> membership in strict v5 `progression.xp-firsts`, and binds the pair with `xpa` v1 total-count plus
+> carrier digest; no live v2 XP-award writer exists. Executable `conq[].e` import/export/readiness
+> proof preserves absent-ready versus present-gated behavior, without closing real-veteran Gate C.
+>
+> The internal exact-five Arc 5 successor now sets a newly admitted bred child's `fed` to half the
+> lower clamped parent value exactly once and preserves later child care state. No player action
+> invokes it. Breeding odds, parent Recovery duration/locks, capacity, timing, confirmation and UI/
+> copy remain Arc 5B product-open. Player rarity is the strict ten-name projection of valid raw
+> tiers (`9..14` display as Transcendent); invalid/missing values and internal art-grade/raw-tier
+> labels are omitted. The only creature playback now live is a single deterministic greeting after
+> a trusted native Tame gesture, exact durable fauna success and matching current ownership revision.
+> It is current-system feedback, not a reward or writer; Compendium audition, ambience, broader
+> companion actions, music and combat audio remain absent.
+
+> **2026-08-25 Arc 3–5 recorded boundary:** the **Engineering & Shipyard** panel now owns truthful
 > Mine and Skim actions around the existing static ship projection. It displays six research rows,
-> but only Deep Scanners is purchasable. The pure orbital-reveal policy exists, while current Survey
-> does not render orbital mineral rows. It lists all 62 fixed recipes, but only connected-effect
+> but only Deep Scanners is purchasable. Its current bounded passive Survey row is described in the
+> 2026-08-26 correction above. It lists all 62 fixed recipes, but only connected-effect
 > outputs with exact costs/preconditions and capacity/revision headroom are actionable; fully
 > exceptional slotted outputs and disconnected-effect rows remain unavailable. Each eligible action
 > settles Cargo/items/technology, Arc 2/3 carriers, compatibility mirrors, Charter progress where
@@ -48,8 +74,9 @@ does not silently promote planned behavior into the in-game Guide.
 > is zero-write. Genuine legacy Training composes one Arc 2, 18 Arc 4 and five Arc 5 writes; every hit
 > or miss pre-certifies 18+5 and postcommit-publishes V1/V2 together. The delta stores only changed or
 > V2-exclusive rows, and source-only growth leaves all four canonical empty-shard bytes invariant.
-> The internal V2-only successor also outputs exactly five carriers but is not public. There is still
-> no live breed/care/Recovery/assignment, Chronicle or companion expedition.
+> The internal V2-only successor also outputs exactly five carriers and applies the one-time child-
+> `fed` rule above, but is not public. There is still no live breed/care/Recovery/assignment,
+> Chronicle or companion expedition.
 > Arc 4 remains `[PARTIAL]` only for the genuine 20-minute recovery observation and combined HUMAN
 > first-journey review; no Charter bioscan, shipped release/version or preview/publication is claimed.
 >
@@ -64,8 +91,9 @@ does not silently promote planned behavior into the in-game Guide.
 > findings/instrument failures/retries (report
 > `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). This is local
 > exact-input proof, not exact-head/hosted/integration/HUMAN/release authority.
-> Those retained Arc 4 reports predate compact Arc 5 V2 and do not certify it. Final current-input
-> Slice `20260825213041239-98104-c96d3b2d0652` passed on Edge `151.0.4129.101` in 363,053 ms with
+> Those retained Arc 4 reports predate compact Arc 5 V2 and do not certify it. The later exact-input
+> pair for this recorded 2026-08-25 boundary used Slice `20260825213041239-98104-c96d3b2d0652`,
+> which passed on Edge `151.0.4129.101` in 363,053 ms with
 > zero findings/retries/source change, exactly one nine-stage/14-burn/`recoveryClaimed:false`/`ok`
 > ledger plus PASS and 10 hashed PNGs (report/log SHA-256
 > `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
@@ -269,14 +297,14 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
 | Charters / reach language | Stage-aware landfall projection plus committed-only Arc 3 mining/fixed-fabrication goal banking; imported drive/chapter facts still gate reach | Port remaining outcome writers and expose goals/transitions/rewards only with them |
 | Compendium | Virtualized 1,500-row browsing surface with bounded asynchronous thumbnails and selected static detail; native Arc 4 acquisition may add durable rows through Survey, not through the Compendium panel itself | HUMAN Arc 1 art review, then any separately bounded living selected preview |
-| Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Final Slice `20260825213041239-98104-c96d3b2d0652` and 95/95-control Glass evidence are terminal PASS with CLEAR audits; the exact hashes/provenance are recorded above | Observe one real 20-minute next-cycle recovery and complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
+| Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current published epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Retained 2026-08-25 Slice `20260825213041239-98104-c96d3b2d0652` and 95/95-control Glass evidence passed their exact recorded inputs with CLEAR audits; the hashes/provenance above do not certify the later current candidate | Run the dedicated real uninterrupted 20-minute next-cycle recovery certificate and complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
 | Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
-| Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, the sole purchasable Deep-Scanner row, and eligible fixed-Fabrication actions; the pure orbital-reveal policy exists but Survey renders no orbital mineral rows; connected exact system outputs can update reach | Other five research purchases, Survey orbital mineral rows, fully exceptional slotted/disconnected recipe outputs, HUMAN silhouette and Engineering comprehension, and later authored upgrades/variable construction |
+| Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, the sole purchasable Deep-Scanner row, eligible fixed-Fabrication actions and the passive ordered ordinary-plus-biome-only orbital **Mineral veins** Survey row after owned `scan1`; connected exact system outputs can update reach | Other five research purchases, fully exceptional slotted/disconnected recipe outputs, HUMAN silhouette and Engineering comprehension, and later authored upgrades/variable construction; the Survey row remains informational and never becomes Mine/reserve/grade/cosmic authority |
 | Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six displayed Research rows and all 62 listed fixed recipes are present; only Deep Scanners and connected-effect recipes with exact costs/preconditions and capacity/revision headroom are actionable and receipt-backed | Fully exceptional slotted/disconnected outputs, authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing |
-| Breeding / care | Domain genetics and the activated compact five-carrier V2 ownership authority exist; no V2-only action writer exists | Implement nonlethal breeding with bounded parent Recovery, lineage, care and bond outcomes |
+| Breeding / care | Domain genetics and the activated compact five-carrier V2 ownership authority exist; its internal successor initializes a newly admitted child's `fed` to half the lower clamped parent value once, but no V2-only player action writer exists | Decide and implement Arc 5B odds, bounded parent Recovery duration/locks, capacity/timing, confirmation, lineage, care and bond outcomes |
 | Combat / conquest / Guardians | Deterministic domain duel exists; no live v2 action | Outcome-driven combat UI, rewards, injury and Guardian encounters |
 | Companion expeditions | Stable identity/assignment schema and the compact V2 ownership carrier exist, but no committed mission runtime exists | Implement active-play missions with sealed exact-once receipts |
-| Audio | Player path: whoosh and survey ping only. Package-only partial: pure resolver/taxonomy/ecology/expression data, injected bounded mixer/lifecycle/lab, and empty rights validator; compatibility stings are outside it | Canonical app adapters and owned playback first; then authored creature/ship/biome sound, accessibility, browser/device plateaus and HUMAN listening. Combat/Guardian integration waits for Arc 6 |
+| Audio | Existing navigation/survey cues plus one narrow owned Tame-fauna greeting: a trusted native gesture arms it, and only the exact durable current-system result with matching current ownership revision may play once; deterministic identity, lifecycle stops and a visible status counterpart are wired | Broader companion actions, Compendium audition, authored ambience/ship/biome/music, accessibility/device plateaus and HUMAN listening remain open; combat/Guardian integration waits for Arc 6 |
 
 The in-game Guide must continue to say genuinely unavailable outcomes are unavailable. It may
 describe a new capability only after the action exists, persists, reloads, is reachable by
@@ -571,11 +599,14 @@ cover refusal, failure, replay, stale, exact committed verification, reachabilit
 recovery presentation. A real uninterrupted next-cycle recovery observation and HUMAN
 comprehension remain open.
 
-Normal v2 companion breeding is nonlethal: both parent instances remain owned but enter a bounded
-active-play **Recovery** assignment that blocks breeding, dispatch and combat until complete. The
-child inherits half of the lower parent's `fed` value. Legacy v1 parent consumption remains
-historical behavior; any future irreversible Fusion must be separately named, optional, expressly
-confirmed and never required for alien progression.
+The internal ownership successor now implements one narrow part of normal v2 breeding: at the
+newly admitted child boundary it assigns half of the lower parent's clamped `fed` value exactly
+once, and later stored child care state is not recomputed. It does not expose a player action or
+decide Arc 5B. The product contract still requires both parent instances to remain owned and enter
+a disclosed bounded active-play **Recovery** assignment that blocks breeding, dispatch and combat
+until complete; odds, duration, locks, capacity, timing, confirmation and UI/copy remain open.
+Legacy v1 parent consumption remains historical behavior; any future irreversible Fusion must be
+separately named, optional, expressly confirmed and never required for alien progression.
 
 ### 7.2 Dispatch/return contract
 
@@ -710,8 +741,10 @@ changes must change it.
   millisecond clock used by missions/recovery. The legacy Auto-Extractor's wall-clock accrual is a
   known clock-wind exploit and must migrate to that active-play authority before it returns.
 - Reject arrays where object maps are expected and bound every counter used to derive rewards.
-- Replace the legacy `xpFirsts` last-4,000 serialization cap with durable typed award state;
-  dropping old keys can otherwise re-arm supposedly one-time XP after reload.
+- Preserve the implemented XP-first authority seam: `xpf` is only the newest-4,000 mirror window,
+  strict v5 `progression.xp-firsts` owns displaced membership, and `xpa` v1 binds total count plus
+  archive-carrier digest. Protected/missing evidence must never be treated as an old save or rearm
+  an award. A live v2 XP-award writer remains future product work.
 - Version new mission, item-instance, bond and audio-profile records; unknown future schemas
   remain protected, not silently coerced.
 - Import/migration is fixed-point tested and cannot partially consume a legacy inventory. Arc 2's
@@ -786,13 +819,13 @@ batch. Planned systems live here and in their system docs, not in player-visible
 | 0 — repair/current truth | Actionable Charter projection/copy; canonical CF1 galaxy → star → planet identity proof; deterministic world-opportunity and first-journey contracts; source/doc table corrections | fresh save can never receive an impossible live goal; every surfaced opportunity maps to a real action; no world-bound ownership receipt/writer exists before the canonical identity seam is proven; Guide remains honest |
 | 1 — portrait/ship foundation | virtualized thumbnails, character portrait service, pure `ShipVisualState`, static Shipyard proof | Automated foundation and 42/42 memory route are complete; phone/desktop HUMAN portrait and four-silhouette judgment remain open |
 | 2 — item instances and readable economy **[PARTIAL; recorded local candidate green]** | Schema/migration, strict carrier, Inventory, equip/unequip/salvage/pending-claim, canonical fixed tables and exact inspect/conditional compare are implemented; production source/craft policy is not | The recorded pre-current-WIP Arc 2 candidate's fixed-point/exact-instance/browser outcomes were green; this does not certify the current moving tree. Authored source/range/targeted-craft/pacing policy and HUMAN phone/desktop review remain before program closure |
-| 3 — engineering loop **[PARTIAL locally implemented; bounded browser pair green]** | Mine/Skim, sole purchasable Deep-Scanner row, six-row Research presentation, all-62 fixed-recipe listing, eligible connected-effect/exact-cost/headroom fabrication actions, and truthful Guide/release/Training guidance are implemented; Survey orbital mineral rows, the other five research purchases, fully exceptional slotted/disconnected outputs and wider engineering depth remain open | Local Slice/Glass exact-input proof covers real actions, finite active-play sources, durable receipt/reload parity, and storage/stale/publication convergence. Exact-head/full-battery evidence, economy simulation, reach/visual/Guide agreement, and HUMAN comprehension remain open |
-| 4 — capture/ownership **[PARTIAL player-live locally]** | Strict 18-namespace bootstrap/Training coupling and native Tame/Scavenge/Sample now provide source-bound full-roster random-pool odds/Yield, all-scenario-before-draw, one-receipt/CAS hit/miss ownership outcomes, no optimism, reload and storage/stale/publication convergence. Arc 5A additionally advances the exact compact five-carrier V2 authority in the same boot/Training/capture transactions. Final current-input Slice plus 12/12-row, 95/95-control Glass evidence are terminal PASS with CLEAR audits | observe a real 20-minute next-cycle recovery and complete the combined HUMAN first-journey/ownership review; do not infer Charter bioscan, targeted selection or release authority |
+| 3 — engineering loop **[PARTIAL locally implemented; bounded browser pair green]** | Mine/Skim, sole purchasable Deep-Scanner row, its passive ordered ordinary-plus-biome-only orbital Survey projection, six-row Research presentation, all-62 fixed-recipe listing, eligible connected-effect/exact-cost/headroom fabrication actions, and truthful Guide/release/Training guidance are implemented; the other five research purchases, fully exceptional slotted/disconnected outputs and wider engineering depth remain open | Local Slice/Glass exact-input proof covers the earlier real actions, finite active-play sources, durable receipt/reload parity, and storage/stale/publication convergence. The new Survey projection is code/test truth only here; exact-head/full-battery evidence, economy simulation, reach/visual/Guide agreement, and HUMAN comprehension remain open |
+| 4 — capture/ownership **[PARTIAL player-live locally]** | Strict 18-namespace bootstrap/Training coupling and native Tame/Scavenge/Sample now provide source-bound full-roster random-pool odds/Yield, all-scenario-before-draw, one-receipt/CAS hit/miss ownership outcomes, no optimism, reload and storage/stale/publication convergence. Arc 5A additionally advances the exact compact five-carrier V2 authority in the same boot/Training/capture transactions. The retained 2026-08-25 Slice/Glass pair passed its exact recorded inputs but does not certify this later candidate | run the dedicated real uninterrupted 20-minute recovery certificate and complete the combined HUMAN first-journey/ownership review; do not infer Charter bioscan, targeted selection, whole-gate or release authority |
 | 4.5 — first complete journey | Fresh-start Survey → opportunity → Gather → Build → Tame → ship upgrade → farther reach → meaningful Return | first-time 30–60-minute human path proves comprehension, agency and satisfying pacing without idle waits or a scripted fake reward |
-| 5 — companions **[PARTIAL infrastructure-only]** | Implemented source-bound compact V2 manifest/four-shard authority across boot, genuine legacy Training and every Arc 4 hit/miss; exact-five internal V2-only successor exists but no player capability invokes it. Nonlethal breeding/recovery, care/bond/Chronicle and active-play missions remain open | wire only after product authority: fed inheritance, recovery/away locks, exact-once return, save-failure/two-tab controls |
+| 5 — companions **[PARTIAL infrastructure-only]** | Implemented source-bound compact V2 manifest/four-shard authority across boot, genuine legacy Training and every Arc 4 hit/miss; exact-five internal V2-only successor applies one-time half-lower-clamped-parent child `fed`, but no player capability invokes it. Arc 5B action/UI rules, nonlethal parent Recovery, care/bond/Chronicle and active-play missions remain open | Decide and wire odds, duration/locks/capacity/timing/confirmation, recovery/away locks, exact-once return and save-failure/two-tab controls |
 | 5.5 — combat decision model | role, preparation, telegraphing, counterplay, retreat and settlement rules are specified and scenario-proven before battle UI expands | humans can choose and explain a viable response; no opaque hard-counter or stat-only outcome passes as strategy |
 | 6 — combat/Guardians | live duel/conquest party presentation and receipt rewards | transcript-driven presentation; every reward/injury/settlement outcome tested |
-| 7 — audio foundation **[PARTIAL package-only]** | Pure resolver/taxonomy/ecology/expression seams, injected mixer/lifecycle/voice owner, lab accounting and the hard ≤8-creature/≤120-node configuration cap are committed; app adapters/playback and accessibility remain open | Canonical app projection and owned playback, real-browser node/voice plateau, captions/mono/dynamic-range/reduced-intensity behavior, visibility outcome and HUMAN listening gate |
+| 7 — audio foundation **[PARTIAL; narrow app playback]** | Pure resolver/taxonomy/ecology/expression seams, injected mixer/lifecycle/voice owner, lab accounting and the hard ≤8-creature/≤120-node configuration cap remain; canonical current-system ownership projection now drives one exact durable Tame-fauna greeting with gesture/lifecycle/live-region guards | Broader creature/Compendium/ambience/ship/music playback, real-browser node/voice plateau, captions/mono/dynamic-range/reduced-intensity coverage and HUMAN listening gate |
 | 8 — HD audio/content | Empty rights authority exists; Earth family mapping, hybrid voice and current-system authored creature/ship/biome layers remain open, while combat/Guardian layers wait for Arc 6 | Nonempty rights/file evidence and complete authored route coverage, family distinctness, real-device heat/listening |
 | 9 — frontier legacy and projects | Chronicle/museum, ship/discovery/Guardian history, share cards and optional bounded frontier projects | finite visible inputs; no decay, mandatory maintenance or offline-income loop; every legacy record has a real action owner |
 | 10 — integration beta | living previews, travel reuse, balance and complete Guide/Training | full battery, save migration, long-session memory/audio plateau, multi-lens human play |
@@ -857,7 +890,8 @@ cannot understand, enjoy or comfortably use it.
 - Compendium and Shipyard HUMAN art judgment, plus bounded living-preview/audio work;
 - physical-device long-session memory/heat judgment beyond the automated Pixi/Canvas ownership plateau;
 - broader HD planet art beyond the named transactional surface attachment, living organism rigs and biome/ecology scenes;
-- epoch invalidation and hidden-tab/reduced-motion policy;
+- dedicated uninterrupted 20-minute Arc 4 recovery certification over the implemented
+  visible/answerable published-epoch edge; ordinary Slice remains `recoveryClaimed:false`;
 - clean exact-head/browser schema-upgrade and representative later-writer two-tab evidence for the
   implemented v5 split-store/CAS/lease/receipt authority;
 - real veteran-save Gate C, human listening Gate G, physical mobile Gate I and sustained heat QA;

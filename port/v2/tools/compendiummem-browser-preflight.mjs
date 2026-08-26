@@ -1,9 +1,11 @@
-/* Arc-local exact-Edge preflight for the Compendium resource gate.
+/* Arc-local Edge-compatibility preflight for the Compendium resource gate.
 
    This caller replaces the generic launcher's cold live leg in the Edge-only
    workflow job. It deliberately leaves every Compendium measurement-authority
    input byte-identical: the shared launcher and candidate collector retain
-   their sealed bounds and semantics.
+   their sealed bounds and semantics. This short preflight proves the browser
+   family/protocol and fresh-target prerequisite subset; the contract seals the
+   complete CDP method inventory and the full collector exercises that inventory.
 
    Usage:
      node tools/compendiummem-browser-preflight.mjs --selftest
@@ -21,6 +23,8 @@ import {
   CANDIDATE_TRANSPORT_TIMEOUT_MS,
   COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
   COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
+  COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256,
+  compendiumBrowserAuthority,
   compendiumBrowserAuthorityMatches,
   compendiumBudgetBrowserAuthority,
   compendiumCdpOptions,
@@ -633,7 +637,7 @@ export async function runCompendiumBrowserPreflight({
     assert(connection.browser?.executable === portable(selectedExecutable),
       `Compendium browser preflight executable mismatch: expected ${portable(selectedExecutable)}, got ${String(connection.browser?.executable)}`);
     assert(compendiumBrowserAuthorityMatches(connection.browser, expectedAuthority),
-      'Compendium browser preflight browser does not match the exact Arc 1A authority');
+      'Compendium browser preflight browser does not match the Arc 1A compatibility authority');
 
     const target = await connection.send('Target.createTarget', { url: 'about:blank' });
     assert(typeof target?.targetId === 'string' && target.targetId.length > 0,
@@ -719,24 +723,29 @@ async function expectRejected(label, work, pattern) {
 }
 
 function selftestAuthority() {
-  return Object.freeze({
-    schema: COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
-    scope: COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
-    product: 'Edg/151.0.4129.101',
-    revision: '@selftest-edge-revision',
-    jsVersion: '15.1.selftest',
-    protocolVersion: '1.3',
+  const authority = compendiumBrowserAuthority({
+    product: 'Edg/151.0.4129.101', revision: '@selftest-edge-revision',
+    jsVersion: '15.1.23.9', protocolVersion: '1.3',
   });
+  assert(validCompendiumBrowserAuthority(authority)
+    && authority.schema === COMPENDIUM_BROWSER_AUTHORITY_SCHEMA
+    && authority.scope === COMPENDIUM_BROWSER_AUTHORITY_SCOPE
+    && authority.capabilityContractSha256
+      === COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256,
+  'SELFTEST could not derive the browser compatibility authority');
+  return authority;
 }
 
 function selftestBrowser(authority, executable, overrides = {}) {
+  assert(validCompendiumBrowserAuthority(authority),
+    'SELFTEST fake browser received an invalid compatibility authority');
   return Object.freeze({
     executable: portable(executable),
-    product: authority.product,
-    revision: authority.revision,
+    product: 'Edg/151.0.4129.101',
+    revision: '@selftest-edge-revision',
     user_agent: 'cf-compendiummem-edge-preflight-selftest',
-    js_version: authority.jsVersion,
-    protocol_version: authority.protocolVersion,
+    js_version: '15.1.23.9',
+    protocol_version: '1.3',
     ...overrides,
   });
 }
@@ -987,6 +996,43 @@ async function runSelftest() {
   'SELFTEST target-domain commands escaped the fresh attached session');
   assertNoOwnedProfiles(successPrefix, 'SELFTEST successful cleanup');
 
+  for (const variant of [
+    {
+      key: 'installed-107', product: 'Edg/151.0.4129.107',
+      revision: '@selftest-edge-107', jsVersion: '15.1.24.1',
+    },
+    {
+      key: 'future', product: 'Edg/999.42.7.3',
+      revision: '@selftest-edge-future', jsVersion: '99.42.7.3',
+    },
+  ]) {
+    const variantClock = selftestClock();
+    const profilePrefix = `cf-compendiummem-edge-preflight-selftest-${variant.key}`;
+    const variantNonce = `compatible-${variant.key}`;
+    const variantMarker = `cf-compendiummem-edge-preflight-${variantNonce}`;
+    const compatible = fakeOpener({
+      authority, executable, profilePrefix, eventMarker: variantMarker,
+      phaseClock: variantClock.clock, eventAtMs: 100, evaluateReceiptAtMs: 100,
+      browserOverrides: {
+        product: variant.product, revision: variant.revision,
+        js_version: variant.jsVersion,
+      },
+    });
+    const compatibleResult = await runCompendiumBrowserPreflight({
+      openCdp: compatible.opener,
+      selectedExecutable: executable,
+      expectedAuthority: authority,
+      profilePrefix,
+      nonce: variantNonce,
+      now: variantClock.now,
+    });
+    assert(compatibleResult.browser.product === variant.product
+      && compatibleResult.browser.revision === variant.revision
+      && compatibleResult.browser.js_version === variant.jsVersion
+      && compatible.state.calls === 1 && compatible.state.closeCalls === 1,
+    `SELFTEST compatible ${variant.product} provenance was rejected or retried`);
+  }
+
   const evaluateBoundaryScenarios = [
     { key: 'just-before', evaluateAtMs: 4_999, accepted: true },
     { key: 'exact', evaluateAtMs: 5_000, accepted: false },
@@ -1024,10 +1070,12 @@ async function runSelftest() {
   }
 
   const authorityMismatchCases = [
-    ['product', { product: 'Edg/151.0.4129.87' }],
-    ['revision', { revision: '@wrong-revision' }],
-    ['jsVersion', { js_version: 'wrong-js' }],
-    ['protocolVersion', { protocol_version: '9.9' }],
+    ['chrome-family', { product: 'Chrome/151.0.4129.101' }],
+    ['malformed-edge-product', { product: 'Edg/151.0.4129' }],
+    ['missing-product', { product: '' }],
+    ['missing-revision', { revision: '' }],
+    ['missing-js-version', { js_version: '' }],
+    ['protocol-version', { protocol_version: '9.9' }],
   ];
   for (const [field, browserOverrides] of authorityMismatchCases) {
     const profilePrefix = `cf-compendiummem-edge-preflight-selftest-${field.toLowerCase()}`;
@@ -1042,7 +1090,7 @@ async function runSelftest() {
         expectedAuthority: authority,
         profilePrefix,
         nonce: field,
-      }), /does not match the exact Arc 1A authority/);
+      }), /does not match the Arc 1A compatibility authority/);
     assert(mismatch.state.calls === 1 && mismatch.state.closeCalls === 1,
       `SELFTEST ${field} mismatch retried or failed to close`);
   }
@@ -1265,7 +1313,9 @@ async function runSelftest() {
   console.log('  job/install/preflight/certification skip and soft-fail controls: rejected');
   console.log('  exact options 45s startup / 15s socket / 5s command / 2s shutdown: PASS');
   console.log('  one opener call, fresh target/domain order, evaluate result and event: PASS');
-  console.log('  product/revision/JS/protocol and executable mismatches: rejected');
+  console.log('  Edge .101/.107/future versions: compatible; exact build fields retained as provenance');
+  console.log('  Chrome/malformed/incomplete/protocol-incompatible browsers and executable mismatch: rejected');
+  console.log('  preflight proves its prerequisite subset; the full collector exercises the sealed CDP inventory');
   console.log('  one immutable 5s evaluate+event phase; just-before/exact/late receipts: PASS/rejected/rejected');
   console.log('  setup/sentinel/missing-event/wrong-marker/wrong-session/backward-clock failures: terminal, one close, no retry');
   console.log('  owned profile cleanup and deliberate leak control: PASS');
@@ -1277,7 +1327,7 @@ async function runLive() {
     'Compendium browser preflight requires the active numeric budget');
   const authority = compendiumBudgetBrowserAuthority(budget);
   assert(validCompendiumBrowserAuthority(authority),
-    'Compendium browser preflight budget has no exact Arc 1A Edge authority');
+    'Compendium browser preflight budget has no Arc 1A Edge compatibility authority');
   const result = await runCompendiumBrowserPreflight({ expectedAuthority: authority });
   console.log('COMPENDIUM BROWSER PREFLIGHT PASS');
   console.log(JSON.stringify({

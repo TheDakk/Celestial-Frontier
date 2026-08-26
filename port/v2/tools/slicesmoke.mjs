@@ -13,6 +13,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
+import { createHash } from 'node:crypto';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { performance } from 'node:perf_hooks';
@@ -59,6 +60,7 @@ import {
   ARC4_PERTAR_FIXTURE,
   ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA,
   ARC4_STALE_FAULT_CAPTURE_SCHEMA,
+  ARC4_TAME_GREETING_AUDIO_EVIDENCE_SCHEMA,
   ARC5_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
   arc4BrowserOutcomePasses,
@@ -75,6 +77,7 @@ import {
   assessArc4PublicationConvergence,
   assessArc4StaleConvergence,
   assessArc4StorageRefusal,
+  assessArc4TameGreetingAudio as classifyTameGreetingAudioEvidence,
   projectArc5OwnershipMigrationEvidence,
 } from './arc4-browser-contract.mjs';
 
@@ -131,6 +134,16 @@ const withCodeStarIdentity = (code, { seed, x, y }) => {
   payload.s[1] = y;
   payload.s[2] = seed;
   delete payload.p;
+  delete payload.n;
+  return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
+};
+const withCodeWorldIdentity = (code, { star, planetSeed }) => {
+  const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
+  payload.t = 'p';
+  payload.s[0] = star.x;
+  payload.s[1] = star.y;
+  payload.s[2] = star.seed;
+  payload.p = planetSeed;
   delete payload.n;
   return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
 };
@@ -193,6 +206,27 @@ const SAVE_FIXTURES = JSON.parse(fs.readFileSync(
   path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8',
 )).inputs;
 const VETERAN_RAW = JSON.stringify(SAVE_FIXTURES.veteran_rich);
+const RARITY_COMPENDIUM_SPECS = Object.freeze([
+  Object.freeze({ id: 'rarity-summit-alpha', tier: 10, expected: 'Transcendent' }),
+  Object.freeze({ id: 'rarity-summit-beta', tier: 12, expected: 'Transcendent' }),
+  Object.freeze({ id: 'rarity-summit-gamma', tier: 13, expected: 'Transcendent' }),
+  Object.freeze({ id: 'rarity-summit-delta', tier: 14, expected: 'Transcendent' }),
+  Object.freeze({ id: 'rarity-invalid', tier: '14', expected: null }),
+  Object.freeze({ id: 'rarity-missing', expected: null }),
+]);
+const RARITY_COMPENDIUM_FIXTURE = Object.freeze(RARITY_COMPENDIUM_SPECS.map((spec, index) => {
+  const sourceGenome = structuredClone(SAVE_FIXTURES.veteran_rich.codex[0].g);
+  const entry = {
+    id: spec.id,
+    name: `Boundary Specimen ${String.fromCharCode(65 + index)}`,
+    kind: 'Surveyed life', realm: 'Land Fauna', sapient: 0,
+    from: 'Rarity Boundary', hybrid: false,
+    g: { ...sourceGenome, seed: (Number(sourceGenome.seed) + index + 1) >>> 0 },
+    where: null,
+  };
+  if (Object.prototype.hasOwnProperty.call(spec, 'tier')) entry.tier = spec.tier;
+  return Object.freeze([spec.id, Object.freeze(entry)]);
+}));
 const ARC4_PERTAR_SYSTEM_ITEM_IDS = Object.freeze([
   'jumpdrive', 'array', 'igdrive', 'autoext', 'cscoop',
 ]);
@@ -259,6 +293,42 @@ const ARC4_PERTAR_RAW = (() => {
   return JSON.stringify(save);
 })();
 const ARC4_PERTAR_SOURCE_SAVE = JSON.parse(ARC4_PERTAR_RAW);
+const ARC4_PERTAR_AUDIO_RAW = (() => {
+  const save = JSON.parse(ARC4_PERTAR_RAW);
+  save.snd = 1;
+  save.vce = 1;
+  return JSON.stringify(save);
+})();
+const ARC4_PERTAR_AUDIO_RAW_SHA256 =
+  'f6ab3bacccb0a1a2061bfaed3e199023f0f138fc529a5f832e43f628242c608f';
+const ARC4_PERTAR_AUDIO_SOURCE_SAVE = JSON.parse(ARC4_PERTAR_AUDIO_RAW);
+const arc4PertarAudioRawDeltaOutcome = (base, audio) => {
+  const baseKeys = Object.keys(base ?? {}).sort();
+  const audioKeys = Object.keys(audio ?? {}).sort();
+  const keys = [...new Set([...baseKeys, ...audioKeys])].sort();
+  const deltas = keys.filter((key) => (
+    JSON.stringify(base?.[key]) !== JSON.stringify(audio?.[key])
+  )).map((key) => ({ key, before: base?.[key], after: audio?.[key] }));
+  const expected = [
+    { key: 'snd', before: 0, after: 1 },
+    { key: 'vce', before: 0, after: 1 },
+  ];
+  return {
+    ok: JSON.stringify(baseKeys) === JSON.stringify(audioKeys)
+      && JSON.stringify(deltas) === JSON.stringify(expected),
+    baseKeys, audioKeys, deltas,
+  };
+};
+const ARC4_PERTAR_AUDIO_RAW_DELTA = arc4PertarAudioRawDeltaOutcome(
+  ARC4_PERTAR_SOURCE_SAVE, ARC4_PERTAR_AUDIO_SOURCE_SAVE,
+);
+const arc4PertarAudioHostileExtraDelta = structuredClone(
+  ARC4_PERTAR_AUDIO_SOURCE_SAVE,
+);
+arc4PertarAudioHostileExtraDelta.asc += 1;
+const ARC4_PERTAR_AUDIO_HOSTILE_DELTA = arc4PertarAudioRawDeltaOutcome(
+  ARC4_PERTAR_SOURCE_SAVE, arc4PertarAudioHostileExtraDelta,
+);
 if (JSON.stringify(ARC4_PERTAR_SOURCE_SAVE.items) !== JSON.stringify([
   ['plate', 3], ['lens', 1], ['cell', 2], ['headlamp', 1],
   ['jumpdrive', 1], ['earpiece', 1], ['diplobeacon', 1],
@@ -268,7 +338,17 @@ if (JSON.stringify(ARC4_PERTAR_SOURCE_SAVE.items) !== JSON.stringify([
   helmet: { k: 'strike', v: 0.05, forId: 'headlamp' },
 }) || JSON.stringify(ARC4_PERTAR_SOURCE_SAVE.skx) !== '[]'
   || ARC4_PERTAR_SOURCE_SAVE.asc !== SAVE_FIXTURES.veteran_rich.asc
-  || ARC4_PERTAR_SOURCE_SAVE.asc !== 2) {
+  || ARC4_PERTAR_SOURCE_SAVE.asc !== 2
+  || ARC4_PERTAR_SOURCE_SAVE.snd !== 0
+  || ARC4_PERTAR_SOURCE_SAVE.vce !== 0
+  || ARC4_PERTAR_AUDIO_SOURCE_SAVE.snd !== 1
+  || ARC4_PERTAR_AUDIO_SOURCE_SAVE.vce !== 1
+  || ARC4_PERTAR_AUDIO_RAW !== JSON.stringify(ARC4_PERTAR_AUDIO_SOURCE_SAVE)
+  || createHash('sha256').update(ARC4_PERTAR_AUDIO_RAW).digest('hex')
+    !== ARC4_PERTAR_AUDIO_RAW_SHA256
+  || ARC4_PERTAR_AUDIO_RAW_DELTA.ok !== true
+  || ARC4_PERTAR_AUDIO_HOSTILE_DELTA.ok !== false
+  || !ARC4_PERTAR_AUDIO_HOSTILE_DELTA.deltas.some(({ key }) => key === 'asc')) {
   throw new Error('Arc 4 Pertar replacement source closure drifted');
 }
 const GENUINE_TRAINING_CHECKPOINT = JSON.parse(fs.readFileSync(
@@ -397,6 +477,12 @@ const ARC3_OTHER_WORLD_CONTROL_ADDRESS = Object.freeze({
   star: ARC3_MARS_WORLD_ADDRESS.star,
   planet: Object.freeze({ seed: 133, ordinal: 2 }),
   key: 'CF1|g:999@90,-60|s:424242@560,170|p:133#2',
+});
+const ARC3_BIOME_SURVEY_TARGET = Object.freeze({
+  galaxySeed: 999,
+  star: Object.freeze({ seed: 3037235558, x: -897.16, y: -86.2 }),
+  planetSeed: 171668249,
+  expectedValue: 'Chromium · Iron · Calcium · Aluminium · Magnesium · Promethium ✦',
 });
 const ARC3_REMNANT_STAR_ADDRESS = Object.freeze({
   format: 'CF1',
@@ -818,12 +904,93 @@ const ARC4_SLICE_LEDGER_STAGES = Object.freeze([
 ]);
 const ARC4_SLICE_LEDGER_EXPECTED_JSON = '{"schema":"cf-v2-slice-arc4-ledger/v1","stages":["precondition","pending-no-optimism","hit","storage-refusal","stale-convergence","miss","burn-down","disabled-suppression","publication-convergence"],"burnSteps":14,"recoveryClaimed":false,"ok":true}';
 let arc4SliceLedger = null;
+const ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,
+  state=S?.api?.state?.()??null,toast=document.getElementById('toast'),
+  title=toast?.querySelector('[data-sel="toast-title"]')??null,
+  lineBreak=title?.nextSibling??null,detailNode=lineBreak?.nextSibling??null,
+  style=toast?getComputedStyle(toast):null,rect=toast?.getBoundingClientRect?.()??null;
+  return {documentToken:S?.documentToken??state?.persistence?.documentToken??null,
+    answerable:state?.persistence?.ready===true
+      &&state?.persistence?.runtime?.answerable===true
+      &&document.visibilityState==='visible',
+    cardOpen:state?.cardOpen===true,result:state?.capture?.lastResult??null,
+    audio:state?.audio??null,toast:{visible:toast?.style?.opacity==='1'
+      &&style?.display!=='none'&&style?.visibility==='visible'
+      &&Number.parseFloat(style?.opacity??'0')>0&&rect?.width>0&&rect?.height>0,
+      serial:state?.toastSerial??null,role:toast?.getAttribute('role')??null,
+      live:toast?.getAttribute('aria-live')??null,
+      atomic:toast?.getAttribute('aria-atomic')??null,
+      title:title?.textContent??null,
+      detail:title&&lineBreak?.nodeName==='BR'&&detailNode?.nodeType===Node.TEXT_NODE
+        ?detailNode.textContent:null}}})()`;
 const canonicalJson = (value) => {
   if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
   if (value && typeof value === 'object') {
     return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(',')}}`;
   }
   return JSON.stringify(value);
+};
+const ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+  card=document.getElementById('survey'),text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),
+  rows=[...card?.querySelectorAll('[data-row="Mineral veins"]')??[]].map((row)=>{const label=text(row.querySelector('span')),
+    value=text(row).slice(label.length).trim();return {label,value,passive:!row.matches('[tabindex]')
+      &&row.querySelector('button,a,input,select,textarea,[tabindex]')===null}}),
+  sensitive=rows.filter(({value})=>/(?:Void Essence|Chronal Shard|Dark Matter|Protomatter|Primordial Ice|cosmic|exceptional|grade|tier|reserve|pulls? remaining|extractions?|progress|Worked out)/iu.test(value)).length,
+  mine=[...card?.querySelectorAll('button')??[]].filter((button)=>/\\bMine\\b|Mine this world|Mine Deposits/iu.test(text(button))).length;
+  return {mode:state?.mode??null,gal:state?.gal??null,star:state?.star??null,starX:state?.starX??null,
+    starY:state?.starY??null,planet:state?.planet??null,planetOrdinal:state?.planetOrdinal??null,
+    navGalaxyKey:state?.navGalaxyKey??null,navStarKey:state?.navStarKey??null,
+    navWorldKey:state?.navWorldKey??null,cardOpen:state?.cardOpen??null,cardTitle:state?.cardTitle??null,
+    rowCount:rows.length,rows,sensitiveCount:sensitive,mineActionCount:mine}})()`;
+const assessArc3OrbitalSurvey = ({ observation, owned }) => {
+  const row = observation?.rows?.[0] ?? null;
+  const checks = Object.freeze({
+    exactOrbit: observation?.mode === 'system'
+      && observation?.gal === ARC3_BIOME_SURVEY_TARGET.galaxySeed
+      && observation?.star === ARC3_BIOME_SURVEY_TARGET.star.seed
+      && observation?.starX === ARC3_BIOME_SURVEY_TARGET.star.x
+      && observation?.starY === ARC3_BIOME_SURVEY_TARGET.star.y
+      && observation?.planet === ARC3_BIOME_SURVEY_TARGET.planetSeed
+      && Number.isSafeInteger(observation?.planetOrdinal),
+    currentCard: observation?.cardOpen === true && typeof observation?.cardTitle === 'string'
+      && observation.cardTitle.length > 0,
+    exactCardinality: observation?.rowCount === (owned ? 1 : 0),
+    exactLabel: owned ? row?.label === 'Mineral veins' : row === null,
+    exactOrderedValue: owned ? row?.value === ARC3_BIOME_SURVEY_TARGET.expectedValue : row === null,
+    biomeMarker: owned ? row?.value?.endsWith('Promethium ✦') === true : true,
+    groundedSensitiveFacts: observation?.sensitiveCount === 0,
+    noMineAction: observation?.mineActionCount === 0,
+    passiveRow: owned ? row?.passive === true : true,
+  });
+  return { ok: Object.values(checks).every((value) => value === true), checks };
+};
+const assessArc3SurveyReadOnly = ({ beforeRaw, afterRaw, beforeState, afterState }) => {
+  const rawComplete = (value) => value && typeof value === 'object'
+    && ['revisionRaw', 'legacyRaw', 'playerRaw', 'creaturesRaw', 'catalogRaw', 'inventoryRaw',
+      'settingsRaw', 'authorityJson', 'engineeringJson', 'receiptKeys', 'receiptRawRows']
+      .every((key) => Object.prototype.hasOwnProperty.call(value, key));
+  const checks = Object.freeze({
+    complete: rawComplete(beforeRaw) && rawComplete(afterRaw),
+    f3Revision: beforeRaw?.revisionRaw === afterRaw?.revisionRaw,
+    legacySave: beforeRaw?.legacyRaw === afterRaw?.legacyRaw,
+    splitRows: beforeRaw?.playerRaw === afterRaw?.playerRaw
+      && beforeRaw?.creaturesRaw === afterRaw?.creaturesRaw
+      && beforeRaw?.catalogRaw === afterRaw?.catalogRaw
+      && beforeRaw?.inventoryRaw === afterRaw?.inventoryRaw
+      && beforeRaw?.settingsRaw === afterRaw?.settingsRaw,
+    engineeringCarrier: beforeRaw?.engineeringVersion === afterRaw?.engineeringVersion
+      && beforeRaw?.engineeringJson === afterRaw?.engineeringJson,
+    f4Authority: beforeRaw?.authorityVersion === afterRaw?.authorityVersion
+      && beforeRaw?.authorityJson === afterRaw?.authorityJson,
+    receipts: canonicalJson(beforeRaw?.receiptKeys) === canonicalJson(afterRaw?.receiptKeys)
+      && canonicalJson(beforeRaw?.receiptRawRows) === canonicalJson(afterRaw?.receiptRawRows),
+    liveCargoResearch: canonicalJson(beforeState?.save?.cargo) === canonicalJson(afterState?.save?.cargo)
+      && canonicalJson(beforeState?.save?.techOwned) === canonicalJson(afterState?.save?.techOwned)
+      && canonicalJson(beforeState?.engineering?.research) === canonicalJson(afterState?.engineering?.research),
+    quiescent: beforeState?.sceneResources?.pendingPersistenceWrites === 0
+      && afterState?.sceneResources?.pendingPersistenceWrites === 0,
+  });
+  return { ok: Object.values(checks).every((value) => value === true), checks };
 };
 const shareCharterSnapshot = (state) => ({
   objective: state?.objective ?? null,
@@ -4606,8 +4773,11 @@ try {
       'landing still catalogues nothing', 'at-most-eight-row strip is only a preview',
       'Tame, Scavenge, and Sample', 'separate finite actions', 'choose uniformly', 'full biosphere',
       'separate grounded mineral reveal and its finite Mine action', 'not itself a mining receipt',
-      'current Survey card does not yet paint those orbital mineral rows',
+      'Owned Deep Scanners adds one Mineral veins row to the orbital Survey card for a proven lifeless non-Earth world',
+      'preserves the generated ordinary-deposit order and marks the separate biome vein with ✦',
+      'cosmic and exceptional veins, grades, reserve and progress facts, and the Mine action remain grounded Engineering information',
     ], contradictions: ['Survey catalogues life and makes a capture attempt.',
+      'The current Survey card does not yet render those orbital rows.',
       'The current Survey card now renders every orbital mineral.'] },
     { id: 'mining', title: 'Mining & the Cargo hold', missingAnchor: 'exact pulls remaining', required: [
       'lifeless, non-Earth world', 'exact pulls remaining', 'reveal is inspection only', 'separate durable action',
@@ -4656,12 +4826,17 @@ try {
     ] },
     { id: 'research', title: 'Research & ships', missingAnchor: 'Research Bench lists exactly six canonical rows', required: [
       'Engineering & Shipyard', 'Research Bench lists exactly six canonical rows', 'Deep Scanners is the only current purchase',
-      'current Survey card does not yet render those orbital rows', 'other five', 'visible but disabled',
+      'adds a bounded Mineral veins row to eligible orbital Survey cards',
+      'Orbit shows only the ordered ordinary deposits plus a separately marked biome vein',
+      'cosmic and exceptional veins, grades, reserves and progress, and mining remain grounded',
+      'other five', 'visible but disabled',
       'Fabricator groups all 62 fixed recipes', 'built drive or Array changes the actual ship and reach',
       'Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
       'Only one Engineering action can be pending', 'receipt-bearing transaction commits',
     ], contradictions: [
       'All six research rows can be purchased, and Research banks Charter fabrication credit.',
+      'The current Survey card does not yet render those orbital rows.',
+      'Orbital Survey also shows cosmic and exceptional veins, grades, reserves, progress, and Mine.',
       'Fully exceptional slotted crafting is now available.', 'Fully-exceptional slotted craft is now available.',
       'Authored affixes/drawbacks are now available.',
       'Upgrades are now available.', 'Item upgrades are now available.', 'Sockets are now available.', 'Vendors are now available.',
@@ -4690,7 +4865,7 @@ try {
     text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
     required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),
-    contradictory=/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)|current Survey card (?:now )?(?:renders|shows|paints)[^.!?]{0,80}(?:orbit|mineral)|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|(?:Mine|Skim|Survey)[^.!?]{0,80}earns? Stardust|(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)|(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)|(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)|miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)|(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)|Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)|(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)|(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)|(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,96}\\bnever\\b)[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan)|(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)|All six research rows can be purchased|Research banks Charter fabrication credit|fully[- ]?exceptional slotted craft(?:ing)? is now available|authored affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
+    contradictory=/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)|current Survey card does not yet (?:render|show|paint)[^.!?]{0,80}(?:orbit|mineral)|(?:renders|shows|paints) every orbital mineral|orbital Survey (?:also |now )?(?:shows|reveals|includes|names)[^.!?]{0,96}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|(?:Mine|Skim|Survey)[^.!?]{0,80}earns? Stardust|(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)|(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)|(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)|miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)|(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)|Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)|(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)|(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)|(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,96}\\bnever\\b)[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan)|(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)|All six research rows can be purchased|Research banks Charter fabrication credit|fully[- ]?exceptional slotted craft(?:ing)? is now available|authored affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
     return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
       title,status,missing,contradictory,text};})()`;
   for (const spec of arc3GuideSpecs) {
@@ -5025,7 +5200,9 @@ try {
         &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
         &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback'),
       shipyardContradiction=/all six Research rows can (?:currently )?be purchased/i.test(shipyardText)
-        ||/current Survey card (?:now )?(?:renders?|paints?|shows?)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
+        ||/current Survey card does not yet (?:render|paint|show)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
+        ||/(?:renders?|paints?|shows?) every orbital mineral/i.test(shipyardText)
+        ||/orbital Survey (?:also |now )?(?:shows|reveals|includes|names)[^.!?]{0,96}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)/i.test(shipyardText)
         ||/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i.test(shipyardText)
         ||unnegated(shipyardText,/(?:reward|cost|Charter tick|optimistic panel change)[^.!?]{0,80}publishes? before[^.!?]{0,48}(?:transaction )?commit/i)
         ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
@@ -5037,7 +5214,9 @@ try {
         &&shipyardText.includes('finite grounded Mine and Jump-gated Skim actions')
         &&shipyardText.includes('exactly six Research rows')&&shipyardText.includes('all 62 fixed Fabricator recipes')
         &&shipyardText.includes('Only Deep Scanners can currently be purchased')
-        &&shipyardText.includes('current Survey card does not yet render those mineral rows')
+        &&shipyardText.includes('durable ownership now adds one Mineral veins row to eligible lifeless non-Earth orbital Survey cards')
+        &&shipyardText.includes('preserves ordinary-deposit order and marks the separate biome vein with ✦')
+        &&shipyardText.includes('cosmic and exceptional veins, grades, reserves, progress, and mining remain grounded')
         &&shipyardText.includes('Fabrication enables only outputs with connected effects')
         &&shipyardText.includes('exact cost, prerequisite, revision, and capacity headroom')
         &&shipyardText.includes('Fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
@@ -5173,25 +5352,33 @@ try {
     const prior=row.textContent;
     row.textContent=prior.replace('Only Deep Scanners can currently be purchased','Research purchase boundary removed');
     const missing=${releaseDraftCheck};
+    row.textContent=prior.replace('durable ownership now adds one Mineral veins row to eligible lifeless non-Earth orbital Survey cards',
+      'orbital Survey consumer omitted');
+    const surveyMissing=${releaseDraftCheck};
     row.textContent=prior.replace('Engineering can spend preserved Stardust but does not earn it','Engineering Stardust boundary omitted');
     const stardustMissing=${releaseDraftCheck};
     row.textContent=prior.replace('and no reward, cost, Charter tick, or optimistic panel change publishes before',
       'and reward, cost, Charter tick, or optimistic panel change publishes before');
     const publicationChanged=row.textContent!==prior,publicationPolarity=${releaseDraftCheck};
-    const claims=['All six Research rows can currently be purchased.','Fully exceptional slotted crafting is now available.',
+    const claims=['All six Research rows can currently be purchased.',
+      'The current Survey card does not yet render those orbital mineral rows.',
+      'The current Survey card renders every orbital mineral.',
+      'Orbital Survey also shows cosmic and exceptional veins, grades, reserves, progress, and Mine.',
+      'Fully exceptional slotted crafting is now available.',
       'Fully-exceptional slotted craft is now available.',
       'Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.',
       'Sockets are now available.','Vendors are now available.'],contradictions=[];
     for(const copy of claims){row.textContent=prior+' '+copy;const result=${releaseDraftCheck};contradictions.push({copy,result});}
-    row.textContent=prior;const restored=${releaseDraftCheck};return {missing,stardustMissing,publicationChanged,publicationPolarity,contradictions,
+    row.textContent=prior;const restored=${releaseDraftCheck};return {missing,surveyMissing,stardustMissing,publicationChanged,publicationPolarity,contradictions,
       restored:restored.shipyardContract===true&&restored.honest===true}; })()`);
   if (releaseShipyardCopyCtl.missing?.complete || releaseShipyardCopyCtl.missing?.shipyardContract
+    || releaseShipyardCopyCtl.surveyMissing?.complete || releaseShipyardCopyCtl.surveyMissing?.shipyardContract
     || releaseShipyardCopyCtl.stardustMissing?.complete || releaseShipyardCopyCtl.stardustMissing?.shipyardContract
     || !releaseShipyardCopyCtl.publicationChanged || releaseShipyardCopyCtl.publicationPolarity?.complete !== false
     || releaseShipyardCopyCtl.publicationPolarity?.shipyardContract !== false
     || releaseShipyardCopyCtl.publicationPolarity?.honest !== false
     || releaseShipyardCopyCtl.publicationPolarity?.shipyardContradiction !== true
-    || releaseShipyardCopyCtl.contradictions?.length !== 8
+    || releaseShipyardCopyCtl.contradictions?.length !== 11
     || releaseShipyardCopyCtl.contradictions.some((row) => row.result?.complete || row.result?.honest
       || !row.result?.shipyardContradiction) || !releaseShipyardCopyCtl.restored) {
     fails.push('GUIDE RELEASE ENGINEERING CONTROL FAILED — missing/contradictory Arc 3 truth stayed complete or failed to restore: '
@@ -7660,6 +7847,75 @@ try {
         mineF4RuntimeLagControl, mineF4RuntimeLagControlIsolated }));
   }
 
+  /* Deep Scanners must be proved through the real orbital Survey consumer,
+     including the legacy biome marker position. Mars is deliberately not the
+     positive oracle because it has no distinct biome vein; preserve its real
+     CF1 galaxy envelope, then replace only the strict star/world identity. */
+  const biomeRouteClose = await closeEngineeringPanel('Arc 3 biome Survey route');
+  const marsCode = await evalIn(`window.__CF_SLICE__.api.encodeHere()`);
+  const biomeSurveyCode = typeof marsCode === 'string' ? withCodeWorldIdentity(marsCode, {
+    star: ARC3_BIOME_SURVEY_TARGET.star,
+    planetSeed: ARC3_BIOME_SURVEY_TARGET.planetSeed,
+  }) : null;
+  await keyIn('Escape', 'Escape');
+  const biomeLifted = await waitDesktopValue('Arc 3 biome Survey lift', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.mode==='system'&&s.gal===999&&s.star===424242&&!s.cardOpen?s:null})()`);
+  if (!biomeRouteClose.point?.ok || biomeRouteClose.pointer?.trusted !== true
+    || biomeRouteClose.pointer?.pointerType !== 'mouse' || biomeRouteClose.settled !== true
+    || biomeLifted.planet !== null || typeof biomeSurveyCode !== 'string') {
+    fails.push('ARC 3 BIOME SURVEY ROUTE: native close/lift or strict CF1 target was unavailable: '
+      + JSON.stringify({ biomeRouteClose, biomeLifted, biomeSurveyCode }));
+  }
+  if (biomeSurveyCode) {
+    await evalIn(`(()=>{const input=document.getElementById('searchbox');input.value=${JSON.stringify(biomeSurveyCode)};input.focus();return true})()`);
+    await keyIn('Enter', 'Enter');
+  }
+  await waitDesktopValue('Arc 3 biome Survey pre-purchase route', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.mode==='system'&&s.gal===${ARC3_BIOME_SURVEY_TARGET.galaxySeed}
+      &&s.star===${ARC3_BIOME_SURVEY_TARGET.star.seed}
+      &&s.starX===${ARC3_BIOME_SURVEY_TARGET.star.x}&&s.starY===${ARC3_BIOME_SURVEY_TARGET.star.y}
+      &&s.planet===${ARC3_BIOME_SURVEY_TARGET.planetSeed}&&s.cardOpen
+      &&s.sceneResources?.pendingPersistenceWrites===0?s:null})()`);
+  await waitForF4Writable('Arc 3 biome Survey pre-purchase authority');
+  const biomePreObservation = await evalIn(ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION);
+  const biomePreAssessment = assessArc3OrbitalSurvey({ observation: biomePreObservation, owned: false });
+  const biomePreInjected = await evalIn(`(()=>{const card=document.getElementById('survey'),row=document.createElement('div');
+    row.dataset.row='Mineral veins';row.className='survey-row';row.innerHTML='<span>Mineral veins</span><br>${ARC3_BIOME_SURVEY_TARGET.expectedValue}';
+    card?.append(row);const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};row.remove();return result})()`);
+  const biomePreRestored = await evalIn(ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION);
+  const biomePreInjectedControl = assessArc3OrbitalSurvey({ observation: biomePreInjected, owned: false });
+  const biomePreRestoredAssessment = assessArc3OrbitalSurvey({ observation: biomePreRestored, owned: false });
+
+  /* Reopening the retained card is a genuine read-only consumer. Compare
+     exact F3/split/F4/receipt bytes plus the live cargo/research projection. */
+  await keyIn('Escape', 'Escape');
+  await waitDesktopValue('Arc 3 pre-purchase Survey close', `!window.__CF_SLICE__.api.state().cardOpen`);
+  await waitForF4Writable('Arc 3 pre-purchase Survey close authority');
+  const biomePreOpenState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const biomePreOpenRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const biomeDockFocus = await evalIn(`(()=>{const button=document.getElementById('docksurvey');button?.focus();return {
+    focused:document.activeElement===button,expanded:button?.getAttribute('aria-expanded')??null}})()`);
+  if (biomeDockFocus.focused) await keyIn('Enter', 'Enter');
+  await waitDesktopValue('Arc 3 pre-purchase Survey dock reopen', `window.__CF_SLICE__.api.state().cardOpen`);
+  const biomePreOpenStateAfter = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const biomePreOpenRawAfter = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const biomePreReadOnly = assessArc3SurveyReadOnly({
+    beforeRaw: biomePreOpenRaw, afterRaw: biomePreOpenRawAfter,
+    beforeState: biomePreOpenState, afterState: biomePreOpenStateAfter,
+  });
+  if (!biomePreAssessment.ok || biomePreInjectedControl.ok || !biomePreRestoredAssessment.ok
+    || !biomeDockFocus.focused || !biomePreReadOnly.ok) {
+    fails.push('ARC 3 BIOME SURVEY PRE-PURCHASE: absence, injected-row control, retained-card reopen, or read-only authority failed: '
+      + JSON.stringify({ biomePreObservation, biomePreAssessment, biomePreInjectedControl,
+        biomePreRestoredAssessment, biomeDockFocus, biomePreReadOnly }));
+  }
+
+  const biomeResearchOpen = await openEngineeringPanel('ARC 3 DEEP SCANNERS PURCHASE');
+  if (!biomeResearchOpen.opened || biomeResearchOpen.pointer?.trusted !== true
+    || biomeResearchOpen.pointer?.pointerType !== 'mouse') {
+    fails.push('ARC 3 BIOME SURVEY RESEARCH OPEN: native Engineering opener failed: '
+      + JSON.stringify(biomeResearchOpen));
+  }
   await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="research"]')?.setAttribute('open','')`);
   const researchBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
   const researchBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
@@ -7724,6 +7980,97 @@ try {
         researchExtraTechControlIsolated }));
   }
 
+  const biomePostClose = await closeEngineeringPanel('Arc 3 owned biome Survey');
+  const biomePostObservation = await waitDesktopValue(
+    'Arc 3 owned biome Survey row',
+    `(()=>{const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};return result.rowCount>0?result:null})()`,
+  );
+  const biomePostAssessment = assessArc3OrbitalSurvey({ observation: biomePostObservation, owned: true });
+  const biomeMissingObservation = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
+    parent=row?.parentNode??null,next=row?.nextSibling??null;row?.remove();const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};
+    if(row&&parent)parent.insertBefore(row,next);return result})()`);
+  const biomeReorderedObservation = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
+    prior=row?.innerHTML??null;if(row)row.innerHTML='<span>Mineral veins</span><br>Iron · Chromium · Calcium · Aluminium · Magnesium · Promethium ✦';
+    const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};if(row&&prior!==null)row.innerHTML=prior;return result})()`);
+  const biomeSensitiveObservation = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
+    leak=document.createTextNode(' · Void Essence · Exceptional · Tier 9 · 2714 pulls remaining');row?.append(leak);
+    const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};leak.remove();return result})()`);
+  const biomeMineObservation = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
+    button=document.createElement('button');button.textContent='Mine Deposits';row?.append(button);
+    const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};button.remove();return result})()`);
+  const biomeDuplicateObservation = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
+    duplicate=row?.cloneNode(true)??null;row?.parentNode?.append(duplicate);const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};
+    duplicate?.remove();return result})()`);
+  const biomePostRestored = await evalIn(ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION);
+  const biomeDomControls = {
+    missing: assessArc3OrbitalSurvey({ observation: biomeMissingObservation, owned: true }),
+    reordered: assessArc3OrbitalSurvey({ observation: biomeReorderedObservation, owned: true }),
+    sensitive: assessArc3OrbitalSurvey({ observation: biomeSensitiveObservation, owned: true }),
+    mine: assessArc3OrbitalSurvey({ observation: biomeMineObservation, owned: true }),
+    duplicate: assessArc3OrbitalSurvey({ observation: biomeDuplicateObservation, owned: true }),
+  };
+  const biomePostRestoredAssessment = assessArc3OrbitalSurvey({ observation: biomePostRestored, owned: true });
+
+  await keyIn('Escape', 'Escape');
+  await waitDesktopValue('Arc 3 owned Survey close', `!window.__CF_SLICE__.api.state().cardOpen`);
+  await waitForF4Writable('Arc 3 owned Survey close authority');
+  const biomePostOpenState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const biomePostOpenRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const biomePostDockFocus = await evalIn(`(()=>{const button=document.getElementById('docksurvey');button?.focus();return {
+    focused:document.activeElement===button,expanded:button?.getAttribute('aria-expanded')??null}})()`);
+  if (biomePostDockFocus.focused) await keyIn('Enter', 'Enter');
+  const biomePostReopenedObservation = await waitDesktopValue(
+    'Arc 3 owned Survey retained-card reopen',
+    `(()=>{const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};return result.cardOpen?result:null})()`,
+  );
+  const biomePostOpenStateAfter = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const biomePostOpenRawAfter = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const biomePostReadOnlyBundle = {
+    beforeRaw: biomePostOpenRaw, afterRaw: biomePostOpenRawAfter,
+    beforeState: biomePostOpenState, afterState: biomePostOpenStateAfter,
+  };
+  const biomePostReadOnly = assessArc3SurveyReadOnly(biomePostReadOnlyBundle);
+  const biomeCargoDriftState = structuredClone(biomePostOpenStateAfter);
+  biomeCargoDriftState.save.cargo = [...biomeCargoDriftState.save.cargo, ['Control ore', 1]];
+  const biomeResearchDriftState = structuredClone(biomePostOpenStateAfter);
+  biomeResearchDriftState.engineering.research = [...biomeResearchDriftState.engineering.research, 'hull1'];
+  const biomeReadOnlyControls = {
+    revision: assessArc3SurveyReadOnly({ ...biomePostReadOnlyBundle,
+      afterRaw: { ...biomePostOpenRawAfter, revisionRaw: `${biomePostOpenRawAfter.revisionRaw}-control` } }),
+    cargo: assessArc3SurveyReadOnly({ ...biomePostReadOnlyBundle, afterState: biomeCargoDriftState }),
+    research: assessArc3SurveyReadOnly({ ...biomePostReadOnlyBundle, afterState: biomeResearchDriftState }),
+    sessionRng: assessArc3SurveyReadOnly({ ...biomePostReadOnlyBundle,
+      afterRaw: { ...biomePostOpenRawAfter, authorityJson: `${biomePostOpenRawAfter.authorityJson} ` } }),
+    receipt: assessArc3SurveyReadOnly({ ...biomePostReadOnlyBundle,
+      afterRaw: { ...biomePostOpenRawAfter,
+        receiptKeys: [...biomePostOpenRawAfter.receiptKeys, 'control:survey-write'] } }),
+  };
+  const biomeReopenedAssessment = assessArc3OrbitalSurvey({
+    observation: biomePostReopenedObservation, owned: true,
+  });
+  if (!biomePostClose.point?.ok || biomePostClose.pointer?.trusted !== true
+    || biomePostClose.pointer?.pointerType !== 'mouse' || biomePostClose.settled !== true
+    || !biomePostAssessment.ok || Object.values(biomeDomControls).some((control) => control.ok)
+    || !biomePostRestoredAssessment.ok || !biomePostDockFocus.focused
+    || !biomePostReadOnly.ok || Object.values(biomeReadOnlyControls).some((control) => control.ok)
+    || !biomeReopenedAssessment.ok
+    || biomeReadOnlyControls.revision.checks?.f3Revision !== false
+    || biomeReadOnlyControls.cargo.checks?.liveCargoResearch !== false
+    || biomeReadOnlyControls.research.checks?.liveCargoResearch !== false
+    || biomeReadOnlyControls.sessionRng.checks?.f4Authority !== false
+    || biomeReadOnlyControls.receipt.checks?.receipts !== false) {
+    fails.push('ARC 3 OWNED BIOME SURVEY: exact marker/order, hostile DOM controls, reload-safe retained card, or read-only authority failed: '
+      + JSON.stringify({ biomePostClose, biomePostObservation, biomePostAssessment, biomeDomControls,
+        biomePostRestoredAssessment, biomePostDockFocus, biomePostReadOnly,
+        biomeReadOnlyControls, biomeReopenedAssessment }));
+  }
+
+  const biomeFixedOpen = await openEngineeringPanel('ARC 3 FIXED FABRICATION RETURN');
+  if (!biomeFixedOpen.opened || biomeFixedOpen.pointer?.trusted !== true
+    || biomeFixedOpen.pointer?.pointerType !== 'mouse') {
+    fails.push('ARC 3 FIXED FABRICATION RETURN: native Engineering opener failed: '
+      + JSON.stringify(biomeFixedOpen));
+  }
   await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="fabricator"]')?.setAttribute('open','')`);
   const fixedBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
   const fixedBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
@@ -7797,7 +8144,6 @@ try {
   }
 
   const engineeringRouteClose = await closeEngineeringPanel('Arc 3 route to remnant');
-  const marsCode = await evalIn(`window.__CF_SLICE__.api.encodeHere()`);
   const runLegacyRemnantSearchControl = async (kind, target) => {
     const code = typeof marsCode === 'string' ? withCodeStarIdentity(marsCode, target) : null;
     const beforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -8225,6 +8571,24 @@ try {
           currentEngineeringJson: engineeringReloadRaw.engineeringJson,
           staleEngineeringJson }));
     }
+  }
+
+  if (biomeSurveyCode) {
+    await evalIn(`(()=>{const input=document.getElementById('searchbox');input.value=${JSON.stringify(biomeSurveyCode)};input.focus();return true})()`);
+    await keyIn('Enter', 'Enter');
+  }
+  const biomeReloadObservation = await waitDesktopValue(
+    'Arc 3 owned biome Survey after new-document reload',
+    `(()=>{const s=window.__CF_SLICE__.api.state(),result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};
+      return s.engineering?.stateKind==='loaded'&&s.engineering?.research?.includes('scan1')
+        &&s.sceneResources?.pendingPersistenceWrites===0&&result.cardOpen?result:null})()`,
+  );
+  const biomeReloadAssessment = assessArc3OrbitalSurvey({
+    observation: biomeReloadObservation, owned: true,
+  });
+  if (!biomeReloadAssessment.ok) {
+    fails.push('ARC 3 BIOME SURVEY RELOAD: durable Deep Scanners ownership did not restore the exact marker/order row: '
+      + JSON.stringify({ biomeReloadObservation, biomeReloadAssessment }));
   }
 
   const storageOpen = await openEngineeringPanel('ARC 3 STORAGE CONTROL');
@@ -8958,7 +9322,7 @@ try {
     };
     return { ok: Object.values(checks).every((value) => value === true), checks };
   };
-  const installArc4PertarFixture = async (label) => {
+  const installArc4PertarFixture = async (label, raw = ARC4_PERTAR_RAW) => {
     const preload = await send('Page.addScriptToEvaluateOnNewDocument', {
       source: arc4SeedPreloadSource,
     }, sess);
@@ -8966,7 +9330,7 @@ try {
       throw new Error(`${label} did not install its bounded seed preload`);
     }
     const priorToken = await sliceToken(sess);
-    try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(ARC4_PERTAR_RAW)})`); }
+    try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(raw)})`); }
     catch { /* successful replacement destroys the old execution context */ }
     await waitForSlice(sess, label, { previousToken: priorToken });
     await assertBootTickerRunning(label);
@@ -9244,6 +9608,54 @@ try {
       },
     };
   };
+  const pressArc4SurveyCloseKeyboard = async () => {
+    const armed = await evalIn(`(()=>{window.__cfArc4SurveyCloseAbort?.abort();
+      const controller=new AbortController();window.__cfArc4SurveyCloseAbort=controller;
+      const trace={keys:[],clicks:[]},row=(event)=>{const target=event.target instanceof Element
+        ?event.target.closest('#survey [data-survey-close]'):null;return target?{
+          trusted:event.isTrusted===true,label:target.getAttribute('aria-label')}:null};
+      window.__cfArc4SurveyCloseTrace=trace;
+      document.addEventListener('keydown',(event)=>{const value=row(event);if(value)trace.keys.push({...value,
+        key:event.key,code:event.code})},{capture:true,signal:controller.signal});
+      document.addEventListener('click',(event)=>{const value=row(event);if(value)trace.clicks.push(value)},
+        {capture:true,signal:controller.signal});return true})()`);
+    const target = await evalIn(`(()=>{const button=document.querySelector('#survey [data-survey-close]');
+      button?.focus();const rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:NaN,
+      y=rect?(rect.top+rect.bottom)/2:NaN,hit=rect?document.elementFromPoint(x,y):null;
+      return {ok:button?.tagName==='BUTTON'&&!!rect&&rect.width>0&&rect.height>=44
+        &&!!hit&&(hit===button||button.contains(hit)),tag:button?.tagName??null,
+        label:button?.getAttribute('aria-label')??null,focus:document.activeElement===button,
+        x,y,width:rect?.width??0,height:rect?.height??0}})()`);
+    if (armed && target.ok) await keyIn('Enter', 'Enter');
+    const trace = await evalIn(`(()=>{const trace=window.__cfArc4SurveyCloseTrace??null;
+      window.__cfArc4SurveyCloseAbort?.abort();delete window.__cfArc4SurveyCloseAbort;
+      delete window.__cfArc4SurveyCloseTrace;return trace})()`);
+    const key = trace?.keys?.[0], click = trace?.clicks?.[0];
+    return {
+      armed, target,
+      interaction: {
+        pressCount: trace?.clicks?.length ?? 0,
+        trusted: trace?.keys?.length === 1 && key?.trusted === true
+          && key?.label === 'Close Survey card'
+          && key?.key === 'Enter' && key?.code === 'Enter'
+          && trace?.clicks?.length === 1 && click?.trusted === true
+          && click?.label === 'Close Survey card',
+        modality: 'keyboard', trace,
+      },
+    };
+  };
+  const arc4TameGreetingAudioVirgin = (observation) => {
+    const audio = observation?.audio, runtime = audio?.runtime;
+    return audio?.schema === 'cf-v2-tame-greeting-audio/v1'
+      && audio.disposed === false && audio.armed === 0
+      && audio.claimedEvents === 0 && audio.activeVoiceId === null
+      && audio.lastEventKey === null && audio.counterpart?.status === 'none'
+      && runtime?.state === 'blocked' && runtime?.contextState === null
+      && runtime?.contextGeneration === 0 && runtime?.muted === true
+      && runtime?.nodes?.active === 0 && runtime?.voices?.active === 0
+      && runtime?.voices?.started === 0
+      && runtime?.creatureEmitters?.active === 0;
+  };
   const arc4ReloadedSurfaceObservationExact = ({ state, ui } = {}, expectedUsed) => (
     arc4PertarSurfaceRouteExact(state)
     && arc4CaptureUiSnapshotComplete(ui)
@@ -9406,7 +9818,307 @@ try {
         alignedState: arc5AlignedState }));
   }
 
+  /* Arc 7/8's one player-live greeting is rehearsed on its own fresh Pertar
+     authority. It deliberately does not become a tenth Arc 4 ledger stage:
+     the historical Sample-first hit/miss/burn sequence below remains sealed.
+     A real replacement reload ends this rehearsal before that fixture is
+     installed again, so no context, claim, receipt, RNG draw or ownership row
+     can leak into the nine-stage run. */
+  const arc4TameAudioFixture = await installArc4PertarFixture(
+    'Arc 4 Tame greeting audio rehearsal', ARC4_PERTAR_AUDIO_RAW,
+  );
+  const arc4TameAudioBeforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4TameAudioBefore = await evalIn(
+    ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION,
+  );
+  const arc4TameAudioDiagnosticRead = await evalIn(
+    ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION,
+  );
+  const arc4TameAudioHoldArmed = await evalIn(
+    `window.__CF_SLICE__.api.__smokeArmProductActionHold()`,
+  );
+  const arc4TameAudioPress = await pressArc4Keyboard('tame');
+  const arc4TameAudioPending = await waitDesktopValue(
+    'Arc 4 Tame greeting silent gesture arm',
+    `(()=>{const observation=${ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION},
+      state=window.__CF_SLICE__?.api?.state?.(),audio=observation?.audio,
+      runtime=audio?.runtime,c=state?.capture?.actionCoordinator;
+      return c?.inFlight===true&&c?.owner?.operation==='arc4.capture.tame'
+        &&c?.hold?.phase==='holding'&&audio?.armed===1
+        &&audio?.claimedEvents===0&&audio?.activeVoiceId===null
+        &&runtime?.state==='running'&&runtime?.contextState==='running'
+        &&runtime?.contextGeneration===1&&runtime?.voices?.active===0
+        &&runtime?.voices?.started===0&&runtime?.creatureEmitters?.active===0
+        ?observation:null})()`,
+  );
+  const arc4TameAudioReleased = await evalIn(
+    `window.__CF_SLICE__.api.__smokeReleaseProductActionHold()`,
+  );
+  const arc4TameAudioStarted = await waitDesktopValue(
+    'Arc 4 exact committed Tame greeting voice',
+    `(()=>{const observation=${ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION},
+      audio=observation?.audio,runtime=audio?.runtime;
+      return observation?.result?.hit===true
+        &&observation?.result?.speciesId===${JSON.stringify(ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.speciesId)}
+        &&observation?.result?.speciesName===${JSON.stringify(ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.speciesName)}
+        &&observation?.result?.sourceOrdinal===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.sourceOrdinal}
+        &&observation?.result?.tier===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.tier}
+        &&observation?.result?.chance===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.chance}
+        &&observation?.result?.worldKey===${JSON.stringify(ARC4_PERTAR_FIXTURE.worldKey)}
+        &&observation?.result?.ecologyEpoch===${ARC4_PERTAR_FIXTURE.ecologyEpoch}
+        &&observation?.result?.fullRosterFingerprint===${JSON.stringify(ARC4_PERTAR_FIXTURE.fullRosterFingerprint)}
+        &&observation?.result?.firstForSpecies===true
+        &&observation?.result?.spent===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.spent}
+        &&observation?.result?.remainingAfter===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.remainingAfter}
+        &&typeof observation?.result?.ownedRowId==='string'&&observation.result.ownedRowId.length>0
+        &&observation?.result?.stardustReward===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.stardustReward}
+        &&Number.isSafeInteger(observation?.result?.revision)
+        &&audio?.claimedEvents===1&&audio?.armed===0
+        &&audio?.activeVoiceId!==null&&audio?.activeVoiceId===runtime?.voices?.ids?.[0]
+        &&audio?.lastDisposition==='voice-started'
+        &&audio?.counterpart?.status==='live'
+        &&runtime?.contextGeneration===1&&runtime?.voices?.started===1
+        &&runtime?.voices?.active===1&&runtime?.creatureEmitters?.active===1
+        &&observation?.toast?.visible===true&&observation?.toast?.live==='assertive'
+        ?observation:null})()`,
+    10_000,
+  );
+  const arc4TameAudioAfterRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc4TameAudioInteraction = arc4InteractionFromTrace(
+    await readArc4InteractionTrace(true), 'tame', 'keyboard',
+  );
+  const arc4TameAudioClose = await pressArc4SurveyCloseKeyboard();
+  const arc4TameAudioClosed = await waitDesktopValue(
+    'Arc 4 Tame greeting close no replay',
+    `(()=>{const observation=${ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION};
+      return observation?.cardOpen===false&&observation?.audio?.runtime?.voices?.started===1
+        ?observation:null})()`,
+  );
+  const arc4TameAudioReopen = await pressArc4SurveyDockKeyboard();
+  const arc4TameAudioReopened = await waitDesktopValue(
+    'Arc 4 Tame greeting reopen no replay',
+    `(()=>{const observation=${ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION};
+      return observation?.cardOpen===true&&observation?.audio?.runtime?.voices?.started===1
+        ?observation:null})()`,
+  );
+  const arc4TameAudioRefreshClose = await pressArc4SurveyCloseKeyboard();
+  await waitDesktopValue(
+    'Arc 4 Tame greeting retained-card refresh close',
+    `(()=>{const observation=${ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION};
+      return observation?.cardOpen===false&&observation?.audio?.runtime?.voices?.started===1
+        ?observation:null})()`,
+  );
+  const arc4TameAudioRefreshReopen = await pressArc4SurveyDockKeyboard();
+  const arc4TameAudioRefreshed = await waitDesktopValue(
+    'Arc 4 Tame greeting retained-card refresh reopen',
+    `(()=>{const observation=${ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION};
+      return observation?.cardOpen===true&&observation?.audio?.runtime?.voices?.started===1
+        ?observation:null})()`,
+  );
+  const arc4TameAudioWaited = await waitDesktopValue(
+    'Arc 4 Tame greeting counterpart expiry no replay',
+    `(()=>{const observation=${ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION},
+      audio=observation?.audio,runtime=audio?.runtime;
+      return observation?.cardOpen===true&&audio?.counterpart?.status==='lost'
+        &&audio?.claimedEvents===1&&runtime?.voices?.started===1
+        &&audio?.activeVoiceId===null&&runtime?.voices?.active===0
+        &&runtime?.voices?.ids?.length===0&&runtime?.creatureEmitters?.active===0
+        ?observation:null})()`,
+    10_000,
+  );
+  const arc4TameAudioPriorToken = await sliceToken(sess);
+  const arc4TameAudioReloadToken = await navigateToSlice(
+    sess, URL0, 'Arc 4 Tame greeting no-replay reload',
+  );
+  await waitForF4Writable('Arc 4 Tame greeting no-replay reload authority', {
+    previousToken: arc4TameAudioPriorToken,
+  });
+  const arc4TameAudioReloaded = await waitDesktopValue(
+    'Arc 4 Tame greeting reload starts silent',
+    `(()=>{const observation=${ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION},
+      audio=observation?.audio,runtime=audio?.runtime;
+      return observation?.answerable===true&&audio?.armed===0
+        &&audio?.claimedEvents===0&&audio?.activeVoiceId===null
+        &&audio?.lastEventKey===null&&audio?.counterpart?.status==='none'
+        &&runtime?.state==='blocked'&&runtime?.contextState===null
+        &&runtime?.contextGeneration===0&&runtime?.voices?.started===0
+        &&runtime?.voices?.active===0&&runtime?.creatureEmitters?.active===0
+        ?observation:null})()`,
+  );
+  const arc4TameAudioBundleBase = {
+    schema: ARC4_TAME_GREETING_AUDIO_EVIDENCE_SCHEMA,
+    beforeRaw: arc4TameAudioBeforeRaw, afterRaw: arc4TameAudioAfterRaw,
+    before: arc4TameAudioBefore, diagnosticRead: arc4TameAudioDiagnosticRead,
+    pending: arc4TameAudioPending,
+    started: arc4TameAudioStarted, closed: arc4TameAudioClosed,
+    reopened: arc4TameAudioReopened, refreshed: arc4TameAudioRefreshed,
+    waited: arc4TameAudioWaited, reloaded: arc4TameAudioReloaded,
+  };
+
   const arc4FirstFixture = await installArc4PertarFixture('Arc 4 Pertar seed-68 replacement');
+  const arc4TameAudioResetObservation = await evalIn(
+    ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION,
+  );
+  const arc4TameAudioResetChecks = {
+    replacedDocument: arc4FirstFixture.priorToken === arc4TameAudioReloadToken
+      && arc4FirstFixture.token !== arc4TameAudioReloadToken,
+    freshAudio: arc4TameGreetingAudioVirgin(arc4TameAudioResetObservation),
+    emptyOwnership: arc4FirstFixture.landedRaw?.captureState?.catalogSpecies?.length === 0
+      && arc4FirstFixture.landedRaw?.captureState?.discoveries?.length === 0
+      && arc4FirstFixture.landedRaw?.captureState?.creatures?.length === 0
+      && arc4FirstFixture.landedRaw?.captureState?.specimenLots?.length === 0
+      && arc4FirstFixture.landedRaw?.captureState?.biosphereProgress?.length === 0,
+    virginRngAndReceipts:
+      arc4FirstFixture.landedRaw?.authority?.sessionRng?.ordinal === 0
+      && canonicalJson(arc4FirstFixture.landedRaw?.authority?.sessionRng?.draws)
+        === '{}'
+      && arc4FirstFixture.landedRaw?.receiptKeys?.length === 0
+      && arc4FirstFixture.landedRaw?.receiptRows?.length === 0,
+  };
+  if (!Object.values(arc4TameAudioResetChecks).every((value) => value === true)) {
+    fails.push('ARC 4 TAME GREETING AUDIO RESET: rehearsal authority or runtime leaked into the sealed Sample-first ledger fixture: '
+      + JSON.stringify({ checks: arc4TameAudioResetChecks,
+        priorToken: arc4TameAudioReloadToken, fixture: arc4FirstFixture,
+        observation: arc4TameAudioResetObservation }));
+  }
+  const arc4TameAudioBundle = {
+    ...arc4TameAudioBundleBase,
+    freshFixture: {
+      priorToken: arc4FirstFixture.priorToken,
+      token: arc4FirstFixture.token,
+      raw: arc4FirstFixture.landedRaw,
+      observation: arc4TameAudioResetObservation,
+    },
+  };
+  const arc4TameAudioAssessment = classifyTameGreetingAudioEvidence(
+    arc4TameAudioBundle,
+  );
+  const arc4TameAudioMutation = (mutate) => {
+    const next = structuredClone(arc4TameAudioBundle);
+    mutate(next);
+    return classifyTameGreetingAudioEvidence(next);
+  };
+  const arc4TameAudioControls = {
+    fixtureOracle: {
+      expected: ['fixtureOracle'],
+      result: arc4TameAudioMutation((next) => {
+        next.schema = 'cf-v2-arc4-tame-greeting-audio-evidence/mutated';
+      }),
+    },
+    committedTame: {
+      expected: ['committedTame'],
+      result: arc4TameAudioMutation((next) => {
+        next.afterRaw.revision += 1;
+        next.afterRaw.revisionRaw = String(next.afterRaw.revision);
+      }),
+    },
+    exactResult: {
+      expected: ['exactResult'],
+      result: arc4TameAudioMutation((next) => {
+        next.started.result.tier += 1;
+      }),
+    },
+    oneAnswerableDocument: {
+      expected: ['oneAnswerableDocument'],
+      result: arc4TameAudioMutation((next) => {
+        next.pending.answerable = false;
+      }),
+    },
+    diagnosticReadNoContext: {
+      expected: ['diagnosticReadNoContext'],
+      result: arc4TameAudioMutation((next) => {
+        next.diagnosticRead.audio.runtime.contextGeneration = 1;
+      }),
+    },
+    silentArm: {
+      expected: ['silentArm'],
+      result: arc4TameAudioMutation((next) => {
+        next.pending.audio.runtime.voices.started = 1;
+      }),
+    },
+    eventCreatureVoiceOwner: {
+      expected: ['eventCreatureVoiceOwner'],
+      result: arc4TameAudioMutation((next) => {
+        next.started.audio.activeVoiceId = 'voice-zzzzzz';
+      }),
+    },
+    accessibleCounterpart: {
+      expected: ['accessibleCounterpart'],
+      result: arc4TameAudioMutation((next) => {
+        next.started.audio.counterpart.key = 'capture-toast:mutated';
+      }),
+    },
+    lifecycleNoReplay: {
+      expected: ['lifecycleNoReplay'],
+      result: arc4TameAudioMutation((next) => {
+        next.closed.audio.runtime.voices.started = 2;
+      }),
+    },
+    reloadNoReplay: {
+      expected: ['reloadNoReplay'],
+      result: arc4TameAudioMutation((next) => {
+        next.reloaded.audio.claimedEvents = 1;
+      }),
+    },
+    freshFixtureIsolation: {
+      expected: ['freshFixtureIsolation'],
+      result: arc4TameAudioMutation((next) => {
+        next.freshFixture.observation.audio.claimedEvents = 1;
+      }),
+    },
+  };
+  const arc4TameAudioControlsIsolated = Object.keys(arc4TameAudioControls).length === 11
+    && Object.values(arc4TameAudioControls)
+      .every((control) => arc4ExactFailureSet(control.result, control.expected));
+  const arc4TameAudioRehearsalChecks = {
+    fixture: arc4TameAudioFixture.setupAssessment?.ok === true
+      && arc4TameAudioFixture.seedWitness?.seedCalls === 1
+      && arc4TameAudioFixture.seedWitness?.nativeFallbackCalls === 0
+      && arc4TameAudioFixture.surface?.state?.sndOn === true
+      && arc4TameAudioFixture.surface?.state?.voiceOn === true,
+    audioRawSeal: ARC4_PERTAR_AUDIO_RAW_DELTA.ok === true
+      && ARC4_PERTAR_AUDIO_HOSTILE_DELTA.ok === false
+      && createHash('sha256').update(ARC4_PERTAR_AUDIO_RAW).digest('hex')
+        === ARC4_PERTAR_AUDIO_RAW_SHA256,
+    diagnosticReadsCreateNoContext: arc4TameGreetingAudioVirgin(
+      arc4TameAudioBefore,
+    ) && arc4TameGreetingAudioVirgin(arc4TameAudioDiagnosticRead)
+      && canonicalJson(arc4TameAudioBefore.audio)
+        === canonicalJson(arc4TameAudioDiagnosticRead.audio),
+    nativeTame: arc4TameAudioHoldArmed === true
+      && arc4TameAudioPress.armed === true && arc4TameAudioPress.target.ok === true
+      && arc4TameAudioInteraction.pressCount === 1
+      && arc4TameAudioInteraction.verb === 'tame'
+      && arc4TameAudioInteraction.trusted === true,
+    released: arc4TameAudioReleased === true,
+    nativeClose: arc4TameAudioClose.armed === true
+      && arc4TameAudioClose.target.ok === true
+      && arc4TameAudioClose.interaction.trusted === true,
+    nativeReopen: arc4TameAudioReopen.armed === true
+      && arc4TameAudioReopen.target.ok === true
+      && arc4TameAudioReopen.interaction.trusted === true,
+    nativeRefresh: arc4TameAudioRefreshClose.armed === true
+      && arc4TameAudioRefreshClose.target.ok === true
+      && arc4TameAudioRefreshClose.interaction.trusted === true
+      && arc4TameAudioRefreshReopen.armed === true
+      && arc4TameAudioRefreshReopen.target.ok === true
+      && arc4TameAudioRefreshReopen.interaction.trusted === true,
+    exactClassifier: arc4TameAudioAssessment.ok === true,
+    mutations: arc4TameAudioControlsIsolated,
+    replacement: arc4TameAudioReloadToken !== arc4TameAudioPriorToken
+      && arc4TameGreetingAudioVirgin(arc4TameAudioReloaded),
+    freshFixtureIsolation: Object.values(arc4TameAudioResetChecks)
+      .every((value) => value === true),
+  };
+  if (!Object.values(arc4TameAudioRehearsalChecks).every((value) => value === true)) {
+    fails.push('ARC 4 TAME GREETING AUDIO: isolated native Tame did not arm silently, bind exactly one durable greeting to its assertive toast, remain single-start through close/reopen/refresh/wait, or reload without replay: '
+      + JSON.stringify({ checks: arc4TameAudioRehearsalChecks,
+        fixture: arc4TameAudioFixture, press: arc4TameAudioPress,
+        close: arc4TameAudioClose, reopen: arc4TameAudioReopen,
+        refreshClose: arc4TameAudioRefreshClose,
+        refreshReopen: arc4TameAudioRefreshReopen,
+        assessment: arc4TameAudioAssessment, controls: arc4TameAudioControls }));
+  }
   const arc4FixtureSetupBundle = {
     priorToken: arc4FirstFixture.priorToken,
     sourceReady: arc4FirstFixture.sourceReady,
@@ -12818,6 +13530,96 @@ try {
     || postDtrainBaseline.state.save.landed.length !== normalizedRecordsLandedCount) {
     fails.push('D-TRAIN CLEANUP: normalized veteran baseline was not restored for later smoke legs: '
       + JSON.stringify(postDtrainBaseline.state));
+  }
+
+  /* Rarity is a strict presentation boundary over the stored Compendium tier.
+     Exercise deep raw grades and malformed fixture records through the real
+     list/detail DOM, then restore the veteran source before the existing
+     query/focus journey. No fixture row is persisted. */
+  const rarityFixtureInstall = await evalIn(
+    `window.__CF_SLICE__.api.__compendiumEvidence.installFixture(${JSON.stringify(RARITY_COMPENDIUM_FIXTURE)})`,
+  );
+  if (rarityFixtureInstall?.installed !== RARITY_COMPENDIUM_FIXTURE.length) {
+    fails.push('COMPENDIUM RARITY FIXTURE: transient rows did not install exactly: '
+      + JSON.stringify(rarityFixtureInstall));
+  }
+  await evalIn(`(()=>{const S=window.__CF_SLICE__;if(S.api.state().panelOpen!=='codex')document.getElementById('dockcodex')?.click();return true;})()`);
+  await waitDesktopValue('Compendium rarity fixture list', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
+    return d.panel.mode==='list'&&d.panel.sourceCount===${RARITY_COMPENDIUM_FIXTURE.length}
+      &&document.querySelectorAll('#codexpanel [data-sel="codex-entry"]').length===${RARITY_COMPENDIUM_FIXTURE.length};})()`);
+  const rarityListCheck = `(()=>{const specs=${JSON.stringify(RARITY_COMPENDIUM_SPECS)};
+    const observations=specs.map(spec=>{const row=document.querySelector('#codexpanel [data-cid="'+spec.id+'"]'),
+      badge=row?.querySelector('[data-sel="codex-row-rarity"]')||null;return {id:spec.id,expected:spec.expected,
+        row:!!row,badgeCount:row?.querySelectorAll('[data-sel="codex-row-rarity"]').length??-1,
+        badge:badge?.textContent?.trim()||null,color:badge?getComputedStyle(badge).color:null,
+        text:row?.textContent?.replace(/\\s+/g,' ').trim()||''};});
+    const ok=observations.every(row=>row.row&&(row.expected===null
+      ? row.badgeCount===0&&row.badge===null
+      : row.badgeCount===1&&row.badge===row.expected&&row.color==='rgb(247, 241, 255)')
+      &&!/\\btier\\s+(?:10|12|13|14)\\b|Empyrean|Eternal|Omnipotent/u.test(row.text));
+    return {ok,observations};})()`;
+  const rarityList = await evalIn(rarityListCheck);
+  if (!rarityList.ok) {
+    fails.push('COMPENDIUM RARITY LIST: deep raw grades did not collapse or malformed values disclosed a grade: '
+      + JSON.stringify(rarityList));
+  }
+  const rarityListControls = await evalIn(`(()=>{const assess=()=>${rarityListCheck};
+    const summit=document.querySelector('#codexpanel [data-cid="rarity-summit-delta"] [data-sel="codex-row-rarity"]');
+    const prior=summit?.textContent??null;if(summit)summit.textContent='tier 14';const rawRejected=!assess().ok;
+    if(summit)summit.textContent='Empyrean Green';const artRejected=!assess().ok;
+    if(summit&&prior!==null)summit.textContent=prior;
+    const invalid=document.querySelector('#codexpanel [data-cid="rarity-invalid"]'),marker=document.createElement('span');
+    marker.dataset.sel='codex-row-rarity';marker.textContent='Common';invalid?.appendChild(marker);
+    const invalidCommonRejected=!assess().ok;marker.remove();const restored=assess();
+    return {rawRejected,artRejected,invalidCommonRejected,restored};})()`);
+  if (!rarityListControls.rawRejected || !rarityListControls.artRejected
+    || !rarityListControls.invalidCommonRejected || !rarityListControls.restored.ok) {
+    fails.push('COMPENDIUM RARITY LIST CONTROLS FAILED — injected raw/art/default grade stayed green or did not restore: '
+      + JSON.stringify(rarityListControls));
+  }
+
+  const rarityDetails = await evalIn(`(async()=>{const specs=${JSON.stringify(RARITY_COMPENDIUM_SPECS)},out=[];
+    const turn=()=>new Promise(resolve=>requestAnimationFrame(()=>resolve()));
+    const observe=(spec)=>{const badge=document.querySelector('#codexpanel [data-sel="detail-grade"]');return {
+      id:spec.id,expected:spec.expected,detail:!!document.querySelector('#codexpanel [data-sel="codex-detail"]'),
+      gradeCount:document.querySelectorAll('#codexpanel [data-sel="detail-grade"]').length,
+      badge:badge?.textContent?.trim()||null,color:badge?getComputedStyle(badge).color:null};};
+    for(const spec of specs){const row=document.querySelector('#codexpanel [data-cid="'+spec.id+'"]');row?.click();await turn();
+      out.push(observe(spec));document.getElementById('codexback')?.click();await turn();}
+    const accept=(expected)=>{const badges=[...document.querySelectorAll('#codexpanel [data-sel="detail-grade"]')],badge=badges[0]||null;
+      return expected===null?badges.length===0:badges.length===1&&badge?.textContent?.trim()===expected
+        &&getComputedStyle(badge).color==='rgb(247, 241, 255)';};
+    document.querySelector('#codexpanel [data-cid="rarity-summit-delta"]')?.click();await turn();
+    const summit=document.querySelector('#codexpanel [data-sel="detail-grade"]'),prior=summit?.textContent??null;
+    if(summit)summit.textContent='tier 14';const rawRejected=!accept('Transcendent');
+    if(summit)summit.textContent='Omnipotent Green';const artRejected=!accept('Transcendent');
+    if(summit&&prior!==null)summit.textContent=prior;const summitRestored=accept('Transcendent');
+    document.getElementById('codexback')?.click();await turn();
+    document.querySelector('#codexpanel [data-cid="rarity-invalid"]')?.click();await turn();
+    const host=document.querySelector('#codexpanel [data-sel="codex-detail"] div'),marker=document.createElement('span');
+    marker.dataset.sel='detail-grade';marker.textContent='Common';host?.appendChild(marker);
+    const invalidCommonRejected=!accept(null);marker.remove();const invalidRestored=accept(null);
+    document.getElementById('codexback')?.click();await turn();
+    return {out,rawRejected,artRejected,invalidCommonRejected,summitRestored,invalidRestored};})()`);
+  const rarityDetailsOk = rarityDetails.out.length === RARITY_COMPENDIUM_SPECS.length
+    && rarityDetails.out.every((row) => row.detail && (row.expected === null
+      ? row.gradeCount === 0 && row.badge === null
+      : row.gradeCount === 1 && row.badge === row.expected && row.color === 'rgb(247, 241, 255)'));
+  if (!rarityDetailsOk) {
+    fails.push('COMPENDIUM RARITY DETAIL: stored deep tiers did not collapse or malformed values disclosed a badge: '
+      + JSON.stringify(rarityDetails.out));
+  }
+  if (!rarityDetails.rawRejected || !rarityDetails.artRejected
+    || !rarityDetails.invalidCommonRejected || !rarityDetails.summitRestored
+    || !rarityDetails.invalidRestored) {
+    fails.push('COMPENDIUM RARITY DETAIL CONTROLS FAILED — injected raw/art/default badge stayed green or did not restore: '
+      + JSON.stringify(rarityDetails));
+  }
+  await evalIn(`document.querySelector('#codexpanel [data-pnx]')?.click()`);
+  const rarityFixtureReset = await evalIn('window.__CF_SLICE__.api.__compendiumEvidence.resetFixture()');
+  if (rarityFixtureReset?.installed !== 3 || (await evalIn('window.__CF_SLICE__.api.state().codexCount')) !== 3) {
+    fails.push('COMPENDIUM RARITY FIXTURE: veteran source did not reset before the existing journey: '
+      + JSON.stringify(rarityFixtureReset));
   }
 
   /* A non-code Search owns one filtered Compendium visit. Detail → Back

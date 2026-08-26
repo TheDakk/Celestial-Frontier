@@ -4,7 +4,9 @@
    do in main.js, where the audio section owns the Sound/Volume flags). initAudio
    installs the seam: a lazy AudioContext factory (standard first, legacy
    WebKit fallback), resume-on-suspended, and live getters for the two
-   save-backed settings. The public facade stays inert until that seam exists.
+   save-backed settings. Sound/Volume synchronization retapers the existing
+   sting bus and uses context suspension as the fail-safe mute backstop without
+   creating a context. The public facade stays inert until that seam exists.
 
    The new runtime owns typed mixer buses, lifecycle, bounded voice policy,
    and diagnostics only for voice graphs submitted to that runtime. The
@@ -108,6 +110,8 @@ export type {
   CreatureExpressionCue,
   SettledCreatureAudioEvent,
 } from './events.js';
+export { createCreatureExpressionVoiceRequest } from './creature-expression-voice.js';
+export type { CreatureExpressionVoiceRequestInput } from './creature-expression-voice.js';
 export { AUDIO_CATEGORIES, createAudioRuntime } from './runtime.js';
 export type {
   AudioActivationResult,
@@ -168,6 +172,7 @@ let AC: AudioContext | null = null;
 let getSndOn: () => boolean = () => true;
 let getSfxVol: () => number = () => 1;
 let initialized = false;
+let resumePending: Promise<void> | null = null;
 
 type AudioContextConstructor = new () => AudioContext;
 type WebKitAudioGlobal = typeof globalThis & {
@@ -189,9 +194,48 @@ export function playWhoosh(): void {
   playWhooshRaw();
 }
 
+function soundEnabledOrFalse(): boolean {
+  try { return Boolean(getSndOn()); } catch { return false; }
+}
+
+function resumeExistingContext(context: AudioContext, retaperFirst: boolean): void {
+  if (AC !== context || resumePending || context.state !== 'suspended'
+    || !soundEnabledOrFalse()) return;
+  if (retaperFirst) applySfxGainRaw();
+  try {
+    const pending = context.resume();
+    resumePending = pending;
+    void pending.then(
+      () => {
+        if (resumePending !== pending) return;
+        resumePending = null;
+        /* A later Off may have raced this asynchronous resume. Reapply the
+           effective zero and suspend again so the last setting wins. */
+        if (!soundEnabledOrFalse()) applySfxGain();
+      },
+      () => { if (resumePending === pending) resumePending = null; },
+    );
+  } catch { /* refused synchronously */ }
+}
+
 export function applySfxGain(): void {
   if (!initialized) return;
+  const soundEnabled = soundEnabledOrFalse();
   applySfxGainRaw();
+  if (!AC) return;
+  const context = AC;
+  if (!soundEnabled) {
+    try {
+      const pending = context.suspend();
+      void pending.then(
+        () => { resumeExistingContext(context, true); },
+        () => { resumeExistingContext(context, true); },
+      );
+    }
+    catch { /* gain zero remains the mute */ }
+  } else {
+    resumeExistingContext(context, false);
+  }
 }
 
 /** the game's ac() (main.js ~13556): null when sound is off, lazy-created,
@@ -205,21 +249,32 @@ function ac(): AudioContext | null {
     try { AC = new Context(); } catch { return null; }
   }
   if (AC.state === 'suspended') {
-    try { void AC.resume().catch(() => { /* pre-gesture */ }); } catch { /* refused synchronously */ }
+    resumeExistingContext(AC, false);
   }
   return AC;
 }
 
+function effectiveSfxVolume(): number {
+  try {
+    if (!getSndOn()) return 0;
+    const volume = Number(getSfxVol());
+    return Number.isFinite(volume) ? Math.min(1, Math.max(0, volume)) : 0;
+  } catch {
+    return 0;
+  }
+}
+
 /** Install the seam. Call once at boot with save-backed getters; call
-    applySfxGain() again whenever the volume setting changes. */
+    applySfxGain() again whenever either Sound or Volume changes. */
 export function initAudio(opts: { sndOn: () => boolean; sfxVol: () => number }): void {
   getSndOn = opts.sndOn;
   getSfxVol = opts.sfxVol;
   const g = globalThis as Record<string, unknown>;
   g.ac = ac;
-  /* the verbatim bodies read `sfxVol` free (applySfxGain's squared taper);
-     `sndOn` gates through ac() above, so only the volume needs the global */
-  Object.defineProperty(g, 'sfxVol', { get: getSfxVol, configurable: true });
+  /* The verbatim bodies read `sfxVol` free and square it. Give them the
+     clamped effective setting so Sound Off retapers an existing bus to zero;
+     ac() above independently refuses every new source while muted. */
+  Object.defineProperty(g, 'sfxVol', { get: effectiveSfxVolume, configurable: true });
   initialized = true;
-  applySfxGainRaw();
+  applySfxGain();
 }

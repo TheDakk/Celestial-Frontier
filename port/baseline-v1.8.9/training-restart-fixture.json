@@ -9,7 +9,7 @@
     "fixtureJsonSha256": "26da9dc04940132a2dd4627391ef4a1be57d6a758bf3b6efb4dc6b217c273a16",
     "fixtureFileSha256": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
     "gameHtmlFile": "../../celestial-frontier.html",
-    "gameHtmlSha256": "d9ebc00c06757a141f97c939c8503d51db991d0668ccadbed1eb556d566a2fd7",
+    "gameHtmlSha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746",
     "probeHarnessFile": "../../tools/_probeboot.js",
     "probeHarnessSha256": "e20159437486c376e1b41424c3fd125e0d011299553646e859d46795770f7c06",
     "captureDriverFile": "../../tools/training-restart-fixture.js",

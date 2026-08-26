@@ -83,7 +83,7 @@ const SETTINGS_FIELDS = [
 ] as const;
 const INVENTORY_FIELDS = [
   'setsc', 'cargo', 'cgx', 'jrn', 'pin', 'ctb', 'minedw', 'mx', 'skx', 'bx',
-  'tech', 'items', 'eq', 'ea', 'xpf',
+  'tech', 'items', 'eq', 'ea', 'xpf', 'xpa',
 ] as const;
 const CATALOG_FIELDS = [
   'land', 'scout', 'wvo', 'cont', 'seen', 'surveyed', 'gals', 'surf', 'sysv',
@@ -844,7 +844,29 @@ export async function readSaveV5(
     }
 
     if (!isPlausibleSaveEnvelope(envelope)) return { kind: 'corrupt', scope: 'envelope' };
-    const imported = importSaveV2(JSON.stringify(envelope), registry, now);
+    const envelopeRaw = JSON.stringify(envelope);
+    const canonicalClock = envelope.at;
+    if (typeof canonicalClock !== 'number'
+      || !Number.isSafeInteger(canonicalClock)
+      || canonicalClock < 0
+      || canonicalClock > PORTABLE_V5_MAX_CLOCK_MS) {
+      return { kind: 'corrupt', scope: 'envelope' };
+    }
+    /* Some legacy compatibility fields intentionally normalize missing,
+       zero, or malformed timestamps to the importer's injected clock. The
+       split rows were minted under their embedded canonical `at`, while the
+       exact v4 mirror may retain the pre-normalized source bytes. Compare
+       those two authorities at the split writer's clock so an authentic
+       save cannot become corrupt merely because it is read later. Runtime
+       state still imports under the caller's current clock below. */
+    const storedSplit = importSaveV2(envelopeRaw, registry, canonicalClock);
+    if (!storedSplit.ok) {
+      return storedSplit.reason === 'future-version'
+        ? { kind: 'future-version', scope: 'schema' }
+        : { kind: 'corrupt', scope: 'envelope' };
+    }
+    const storedCanonical = canonicalV4FromState(storedSplit.state, registry, canonicalClock);
+    const imported = importSaveV2(envelopeRaw, registry, now);
     if (!imported.ok) {
       return imported.reason === 'future-version'
         ? { kind: 'future-version', scope: 'schema' }
@@ -859,7 +881,14 @@ export async function readSaveV5(
         ? { kind: 'future-version', scope: 'envelope' }
         : { kind: 'corrupt', scope: 'envelope' };
     }
-    if (canonicalV4FromState(mirror.state, registry, now).raw !== canonical.raw) {
+    const storedMirror = importSaveV2(mirrorRaw, registry, canonicalClock);
+    if (!storedMirror.ok) {
+      return storedMirror.reason === 'future-version'
+        ? { kind: 'future-version', scope: 'envelope' }
+        : { kind: 'corrupt', scope: 'envelope' };
+    }
+    if (canonicalV4FromState(storedMirror.state, registry, canonicalClock).raw
+      !== storedCanonical.raw) {
       return { kind: 'corrupt', scope: 'envelope' };
     }
     let checkedExtensions: V5Extensions;

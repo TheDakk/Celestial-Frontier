@@ -213,6 +213,42 @@ describe('@cf/persistence — F3 v4 -> v5 migration and compatibility codec', ()
     expect(await dump(backend)).toEqual(before);
   });
 
+  it('anchors notification normalization to the split export clock across later v5 reads', async () => {
+    const migrationNow = NOW + 10_000;
+    const laterNow = NOW + 600_000;
+    const future = laterNow + 90_000;
+    const source = structuredClone(FIXTURES.inputs.veteran_rich) as Record<string, unknown>;
+    source.at = NOW - 50_000;
+    source.notifs = [
+      { id: 1, tt: 'zero', ms: '', t: 0, read: false },
+      { id: 2, tt: 'invalid', ms: '', t: 'not-a-clock', read: false },
+      { id: 3, tt: 'future', ms: '', t: future, read: true },
+    ];
+    const raw = JSON.stringify(source);
+    const backend = createMemoryBackend();
+    await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: raw }]);
+
+    expect((await migrateStoredV4ToV5(backend, REGISTRY, migrationNow)).kind).toBe('migrated');
+    expect(await backend.get('meta', V4_PRIMARY_KEY)).toBe(raw);
+    const snapshot = JSON.parse((await backend.get('journal', V5_SNAPSHOT_KEY))!) as { raw: string };
+    expect(snapshot.raw).toBe(raw);
+    const player = JSON.parse((await backend.get('player', 'v5:player'))!) as {
+      data: { at: number; notifs: Array<{ t: number }> };
+    };
+    expect(player.data.at).toBe(migrationNow);
+    expect(player.data.notifs.map(({ t }) => t)).toEqual([migrationNow, migrationNow, future]);
+
+    const loaded = await readSaveV5(backend, REGISTRY, laterNow);
+    expect(loaded.kind).toBe('loaded');
+    if (loaded.kind !== 'loaded') return;
+    expect(loaded.state.notifications.map(({ t }) => t)).toEqual([
+      migrationNow, migrationNow, future,
+    ]);
+    expect(await backend.get('meta', V4_PRIMARY_KEY)).toBe(raw);
+    expect((JSON.parse((await backend.get('journal', V5_SNAPSHOT_KEY))!) as { raw: string }).raw)
+      .toBe(raw);
+  });
+
   it('carries corrected genome, Map, Set, and record semantics through migration and the v5 read fixed point', async () => {
     const numericSignatureRegistry: ContentRegistry = {
       ...REGISTRY,

@@ -27,5 +27,6 @@ export * from './arc3-engineering.js';
 export * from './arc3-legacy-projection.js';
 export * from './arc4-ownership.js';
 export * from './arc5-ownership-migration.js';
+export * from './xp-firsts-authority.js';
 export * from './import-v2.js';
 export * from './export-v2.js';

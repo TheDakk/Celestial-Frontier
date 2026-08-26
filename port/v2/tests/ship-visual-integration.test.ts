@@ -14,6 +14,10 @@ const engineeringPanelSource = readFileSync(
   fileURLToPath(new URL('../apps/game/src/engineering-panel.ts', import.meta.url)),
   'utf8',
 );
+const searchTravelSource = readFileSync(
+  fileURLToPath(new URL('../apps/game/src/search-travel.ts', import.meta.url)),
+  'utf8',
+);
 
 function synchronousShipyardPreviewErrors(source: string): string[] {
   const asynchronousTokens = [
@@ -22,16 +26,16 @@ function synchronousShipyardPreviewErrors(source: string): string[] {
   return asynchronousTokens.filter((token) => source.includes(token));
 }
 
-function shipVisualIntegrationErrors(main: string, panel: string): string[] {
+function shipVisualIntegrationErrors(
+  main: string,
+  panel: string,
+  searchTravel = searchTravelSource,
+): string[] {
   const errors: string[] = [];
   const mainBindings: ReadonlyArray<readonly [string, string]> = [
     [
       'const ascStage = (): 0 | 1 | 2 | 3 => currentShipVisualState().chassisStage;',
       'travel stage bypasses ShipVisualState',
-    ],
-    [
-      'const candidateStage = shipVisualStateOf({',
-      'candidate navigation bypasses ShipVisualState',
     ],
     [
       'const ship = shipVisualStateOf({',
@@ -82,6 +86,13 @@ function shipVisualIntegrationErrors(main: string, panel: string): string[] {
   for (const [binding, message] of panelBindings) {
     if (panel.split(binding).length - 1 !== 1) errors.push(message);
   }
+  if (searchTravel.split('const candidateStage = shipVisualStateOf({').length - 1 !== 1
+    || !searchTravel.includes('items: authoritySave.items,')
+    || !searchTravel.includes('ascCh: authoritySave.ascCh,')
+    || !searchTravel.includes('liverySeed: shipLiverySeed,')
+    || !searchTravel.includes('ascAllowsStar(candidateStage, target.gal.seed, target.star)')) {
+    errors.push('candidate navigation bypasses ShipVisualState');
+  }
   if (panel.includes('save.items') || panel.includes('save.ascCh')) {
     errors.push('Engineering controller rereads mutable save capability fields');
   }
@@ -101,6 +112,17 @@ describe('ShipVisualState app integration', () => {
     expect(broken).not.toBe(mainSource);
     expect(shipVisualIntegrationErrors(broken, engineeringPanelSource)).toContain(
       'travel stage bypasses ShipVisualState',
+    );
+  });
+
+  it('negative control: candidate travel cannot bypass ShipVisualState after extraction', () => {
+    const broken = searchTravelSource.replace(
+      'const candidateStage = shipVisualStateOf({',
+      'const candidateStage = ({ chassisStage: authoritySave.ascCh } as never); void shipVisualStateOf({',
+    );
+    expect(broken).not.toBe(searchTravelSource);
+    expect(shipVisualIntegrationErrors(mainSource, engineeringPanelSource, broken)).toContain(
+      'candidate navigation bypasses ShipVisualState',
     );
   });
 

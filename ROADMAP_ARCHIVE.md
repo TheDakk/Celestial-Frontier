@@ -1,3 +1,118 @@
+## ARCHIVED 2026-08-26 — Arc 5A pre-campaign continuation handoff
+
+> Moved byte-verbatim from ROADMAP.md after the 2026-08-26 multi-Arc source freeze superseded it.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: ARC5A PRE-CAMPAIGN CONTINUATION -->
+### In-session continuation / fresh-session recovery
+
+1. Continue only in the Codex macOS root on `openai/mac`. Arc 5A compact-v2 is signed local commit
+   `526eaa71919d08f37a11515c1a5bb7582f09ea07`; this ROADMAP-only handoff follows it. The retained
+   evidence binds its exact executable/test/tool bytes under the dirty-diagnostic source
+   commit/status/tree and tool/report hashes recorded above; later changes were audited Markdown only.
+   Do not fetch/merge, switch branches, push, or run
+   GitHub workflows without a new exact authorization.
+2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
+   `GITHUB_ACTIONS_BUDGET.md`; use `port/V2_PROGRAM_ROADMAP.md` §§5.3/5.5 for the Arc 4/5 boundary.
+3. Arc 4's native controls, random-pool presentation, current Guide/release copy and automated
+   browser outcomes are locally terminal-green. Before calling the Arc complete, run the real
+   uninterrupted 20-minute next-cycle recovery observation; do not substitute the 14-step burn-down
+   (`recoveryClaimed:false`) for it. Keep the combined HUMAN first-journey/ownership review queued
+   after Arc 5 as the approved campaign specifies.
+4. Arc 5A compact-v2 authority is implemented, terminal-green locally and independently audited
+   clear. Preserve source-bound random-pool semantics, exact stable ownership IDs, the exact-five
+   manifest/shard tuple, legacy-v1 one-CAS upgrade, current-v2 zero-write fixed point, 18+5 pre-draw
+   capture, O(1) empty-shard invariance and committed-only outcomes. Before exposing breeding, care
+   or missions, resolve the still-open product parameters and add the corresponding real-action
+   evidence; do not store a second full ownership mirror or expose the internal V2-only bridge. Keep
+   Guide/release/Training lesson capability unchanged, do not invent a Charter bioscan or targeted
+   preview, and keep audio package-only until its app/content/accessibility/evidence work exists.
+   Recalibrate/reseal Compendium only after the final multi-Arc dependency graph freezes.
+5. Claude/Anthropic should receive merged work only by fetching `origin` and
+   merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
+   manual file copying. Nick does not need to open Claude now.
+
+**Current side:** Codex macOS `openai/mac` contains signed local implementation commit
+`526eaa71919d08f37a11515c1a5bb7582f09ea07`, recorded by this ROADMAP-only handoff. Retained reports
+bind the exact executable/test/tool bytes under the dirty-diagnostic identity above. The implementation
+commit remains local and unpushed; this handoff carries no push authority. Arc 5A compact-v2 authority is implemented and locally terminal-green.
+Arc 4 remains `[PARTIAL]` for recovery/HUMAN only; Arc 5 remains `[PARTIAL]` and
+infrastructure-only.
+`origin/openai/mac` remains the contained PR #34 head until a later exact final-head authorization.
+**GitHub step:** none.
+**PR details:** not needed; the local campaign is still batching and no push/hosted attempt is
+authorized.
+**Other side:** Anthropic/Claude Code does not have this local Arc 4 player-facing or Arc 5A batch. Nick does not need to
+open Claude now; after a future reviewed merge into `develop`, Claude should fetch `origin` and
+merge `origin/develop` into a clean `anthropic/mac`, never copy files manually.
+**Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
+**Actions budget:** `UNFROZEN`; the repository is public as observed 2026-08-20, while 3,000 remains
+the fail-closed cap if it becomes private or billing is ambiguous. PR #34 runs `32665404776` and
+`32677088518` remain consumed terminal-red, and run `32681394532` is consumed terminal-green. All
+labels are removed; zero new hosted attempts and no push are authorized by this handoff.
+<!-- END VERBATIM ROADMAP BLOCK: ARC5A PRE-CAMPAIGN CONTINUATION -->
+
+## ARCHIVED 2026-08-26 — superseded Arc 3 and Arc 5 checkpoint evidence
+
+> Moved byte-verbatim from ROADMAP.md after the 2026-08-26 integrated source-freeze evidence
+> superseded these earlier local checkpoints.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: ARC3 ARC5 CHECKPOINT EVIDENCE -->
+**Arc 3 boot/recovery closure (committed local `c4a02be`, 2026-08-25):** the initial scene render is
+always `skipPersist`; rendering alone never authorizes a save. `classifyBootRouteRepair()` compares
+the durable saved view and ordered Atlas routes with their source-proven projection, normalizes
+semantically omitted false flags, and arms only a real unheld repair. Source-error, protected,
+Training-checkpoint, blocked-route and runtime-only Training-seat paths restore the held durable
+route before any other bootstrap candidate can carry it. `ensureBootAuthorityCommit()` coalesces an
+explicit route repair with F4 seed and Arc 2/3 bootstrap in one lease-fenced commit; an aligned
+current-v5 replacement performs zero boot commits and has no pending persistence work. A stale Arc 3
+outcome is pre-durable and publishes nothing. Once `commitAction()` reports committed, durability is
+terminal: a verification/publication failure makes the old projection unavailable and performs one
+read-only convergence reload, never a second derivation, receipt or write.
+
+**Arc 3 recovery/browser evidence (bounded local proof for `c4a02be`, 2026-08-25):** no-retry Slice
+Smoke run `20260825013823076-822-b99fea33b17b` passed on Edge `151.0.4129.101` in 253,181 ms with
+zero findings/failure scopes, zero retries and ten run-bound screenshots (report SHA-256
+`389bc3a857d1da3dc05dd0b20d046e1ec9d73fef9d0dae8220686b87387e76f0`). The following
+full-certifying Glass Matrix passed on the same Edge in 64,222 ms across 12/12 viewports and reload
+rows, with 78/78 planned controls executed, none blocked/omitted, and zero findings, instrument
+failures or retries (report SHA-256
+`a3a67426828efb82962a73fdeb2d99c410a575488e8a416c17f75338e296aa57`). Both reports honestly
+retain precommit `dirty-diagnostic` provenance against parent `768fb32`: Glass's source digest
+reconstructs `c4a02be`, while Slice predates only the final Glass fixture/contract/tool additions;
+no app product file changed between them. This is current-source local outcome evidence, not a
+same-snapshot clean exact-head, hosted, HUMAN, integration, whole-Gate, release or deployment
+certificate.
+
+**Arc 5A final implementation-input local evidence — terminal green:** the focused compact-v2 gate passed
+109/109. Root/app/worker/noUnused TypeScript, `artunused` and the 876-module Vite build passed;
+syntax, contract/Glass/reporter selftests, imports and scoped diff checks were clean. The final full
+run recorded 102 passing files and one failing file, with 1,218 tests passed, one failed and one
+skipped (1,220 total). Focused Compendium was 18 passed/one failed; its selftest passed 222 controls.
+The sole known failure is the deferred Compendium measurement-authority seal described above.
+
+No-retry Slice Smoke run `20260825213041239-98104-c96d3b2d0652` passed on Edge
+`151.0.4129.101` in 363,053 ms with zero findings/failure scopes/retries/source change. It produced
+exactly one ordered nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS and 10 hashed
+PNGs. Report/log SHA-256 are
+`b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+`5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`.
+Full-certifying Glass passed on the same Edge in 71,449 ms with all 12/12 viewport plus reload rows,
+95/95 controls and 36/36 Arc 4 outcomes. None were blocked or omitted; findings, instrument failures
+and retries were zero. The five-carrier fingerprint, coherent current-v2 corruption and source-growth
+four-empty-shard invariance controls were non-vacuous. Glass report SHA-256 is
+`c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`.
+
+Both browser reports bind the source identity recorded in Current integration state. Frozen tool
+SHA-256 are contract `149e3499e549642dca895d80431807d95477662ced09d26a4efb1ffdb2ce22e1`,
+Slice `add907d1e2b548ae0c1d1333517da11e960c8d03659935ba2aa38c5bfd865468`, Glass
+`b77a4dde5884ef43b6a06c2f2e1797a5476b2ac7e976f9744de4e6b88a9637f5` and reporter
+`aeb96bf9f51fcf7c5be3fa4298ae5548c3239e5b1c4852f2af12dc6adbce7ba4`. Independent runtime,
+persistence, browser-contract and evidence audits are **CLEAR**. Arc 4 remains **[PARTIAL]** for the
+real uninterrupted 20-minute recovery observation and combined HUMAN first-journey/ownership review;
+Arc 5 remains **[PARTIAL]** and infrastructure-only. None of this is exact-head, hosted, integration,
+HUMAN, preview/publication, release, version or deployment authority.
+<!-- END VERBATIM ROADMAP BLOCK: ARC3 ARC5 CHECKPOINT EVIDENCE -->
+
 ## ARCHIVED 2026-08-25 — PR #34 Compendium ruler repair
 
 > Moved byte-verbatim from ROADMAP.md after the live Arc 5 compact-v2 boundary superseded this

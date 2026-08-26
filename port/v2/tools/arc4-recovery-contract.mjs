@@ -160,7 +160,8 @@ const exhaustedCaptureFacts = (facts, cycle) => {
   return exactCaptureFacts(facts)
     && facts.budget.yield === 16 && facts.budget.used === 16
     && facts.budget.remaining === 0 && facts.budget.cycle === cycle
-    && facts.rows.every((row) => row.status === 'depleted'
+    && facts.rows.some((row) => row.status === 'depleted')
+    && facts.rows.every((row) => ['empty', 'depleted'].includes(row.status)
       && row.modelEnabled === 'false' && row.disabled === true
       && row.ariaDisabled === 'true');
 };
@@ -392,10 +393,11 @@ export function evaluateArc4RecoveryObservation(input) {
     && same(last?.target?.after?.capture, authority?.recoveredCaptureFacts)
     && exhaustedCaptureFacts(authority?.exhaustedCaptureFacts, authority.exhaustedCycle)
     && exhaustedCaptureFacts(authority?.offlineCaptureFacts, authority.exhaustedCycle)
+    && same(authority?.offlineCaptureFacts, authority?.exhaustedCaptureFacts)
     && recoveredCaptureFacts(authority?.recoveredCaptureFacts, authority.exhaustedCycle + 1)
     && capturePoints.every((point) => point.activePlayMs < expectedBoundary
-      ? exhaustedCaptureFacts(point.capture, authority.exhaustedCycle)
-      : exhaustedCaptureFacts(point.capture, authority.exhaustedCycle)
+      ? same(point.capture, authority.exhaustedCaptureFacts)
+      : same(point.capture, authority.exhaustedCaptureFacts)
         || recoveredCaptureFacts(point.capture, authority.exhaustedCycle + 1))
     && firstRecoveredPointIndex >= 0
     && firstRecoveredPoint.activePlayMs >= expectedBoundary

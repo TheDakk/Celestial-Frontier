@@ -31,6 +31,5 @@ export function fineStarsInCell(seed: number, prof: Record<string, unknown>, cx:
 export function systemFor(seed: number): StarSystem;
 /** `epoch` is the deterministic cosmic-time key, not a requested site count. */
 export function supernovaSites(galaxySeed: number, epoch: number): SupernovaSite[];
-export function galaxyHaze(seed: number, prof: Record<string, unknown>): unknown;   /* browser-only (canvas) — the lint's documented exception */
 export const FCELL: number;
 export const UNOISE: unknown;

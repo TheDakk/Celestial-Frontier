@@ -17,46 +17,68 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-25 · ARC 5A COMPACT V2 COMMITTED + TERMINAL-GREEN LOCALLY · INFRASTRUCTURE-ONLY ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-26 · MULTI-ARC SOURCE FREEZE GREEN · CLEAN COMMIT + BROWSER EVIDENCE PENDING ◀◀◀
 
 ### Current integration state
 
-- **Current local Arc 5A compact-v2 implementation:** signed local commit
-  `526eaa71919d08f37a11515c1a5bb7582f09ea07` on `openai/mac`. Retained Slice and Glass reports
-  bind its exact executable/test/tool bytes under source parent `48ce0b1662a59b21070667be339a1e59503e1f19`, dirty-diagnostic
-  status SHA-256 `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working-tree
-  SHA-256 `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; only audited
-  Markdown evidence/handoff bytes changed after those runs. The implementation, focused gates,
-  browser tools and retained reports are terminal-green and independently audited clear. This
-  ROADMAP-only handoff records the implementation commit locally; that commit remains unpushed, and no
-  push is authorized. The reports are not claimed as clean exact-head, hosted, integration or release
-  evidence. The sole full-run red remains the
-  known deferred Compendium measurement-authority seal (`6a961df8…` stored versus `2ab18865…` live),
-  whose exact drift is `packageLock+appPackage`; the dependency graph is not frozen, so no rebaseline
-  is valid yet.
-- PR #33 merged normally into `develop` as
-  `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after terminal-green
-  `test-battery` run `32646110946` (one attempt, no retry; battery 50m29s).
-  The approval label was removed. Arc 1A's Compendium, Arc 1B's explicit scene
-  ownership, and Arc 1C's normalized ship state/read-only Shipyard are integrated.
-- The terminal run included SceneMemory, Compendium, Slice Smoke, Glass Matrix,
-  persona synthesis, and preview packaging. It is integration evidence, not a
-  production release, whole-Gate closure, true-GPU-byte measurement, or physical-device
-  heat/battery evidence.
-- `main`, the production site, and the parked development-preview publisher are
-  unchanged. No release, deployment, production version bump, `rnSeen` mutation, preview package,
-  publication, or production save-key change occurred.
-- PR #34 merged normally as `7a9f4c1370dd84292388d718c38ff34214f6203b` after exact-head,
-  one-attempt terminal-green battery run `32681394532` (50m10s). The repair's Compendium 78/78
-  certificate/verifier, SceneMemory certificate/verifier, Slice Smoke, Glass Matrix, preview package,
-  artifacts, and cleanup all passed; the approval label was removed. This is integration evidence only.
+- **Current local candidate:** OpenAI/Codex on macOS in the exact owned root
+  `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, tracking
+  `origin/openai/mac`. Current committed parent is `35a22b130a65f936769dfcfe88b150f44b4295d9`;
+  the branch is ahead 70 and intentionally carries one reviewed multi-lane working tree. The final
+  pre-policy inventory assigned every one of its 69 implementation/test/budget paths to an
+  authorized lane and found no generated report, screenshot, binary, coverage or unrelated file.
+  Current references are refreshed in the same batch. The Compendium browser-policy repair adds six owned contract/tool
+  paths, bringing the candidate to 75 implementation/test/budget paths plus 23 Markdown/reference
+  paths; all 98 are now independently audited, fully staged together and free of index/worktree
+  overlap. Nothing in this candidate is signed, pushed, hosted, integrated or released yet.
+- **Integrated non-browser freeze:** all 121 Vitest files are green with 1,355 passing tests, one
+  intentional skip and zero failures. Root/app/worker TypeScript, no-unused, the 884-module Vite
+  build, all changed-tool syntax/import/selftests, root `validate.js`, its unchanged 50-probe
+  determinism fingerprint, and the complete legacy jsdom smoke pass. Independent audits are clear
+  for the implementation lanes, integration repairs, Compendium transition and the frozen
+  contract/Slice/Glass tool bytes.
+- **Compendium is fail-closed for fresh calibration:** the final dependency graph invalidated the
+  old active ruler without rebinding its historical evidence. `compendium-memory-v1.json` is now
+  `calibration-required` with measurement authority
+  `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, producer authority
+  `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, empty candidate and paired-
+  baseline samples, `ceilings:null`, and baseline `measurement-required`. The exact legacy baseline
+  commit `38447019517147319bd08c598202d097ee866874` is materialized clean with locked dependencies in
+  an isolated local worktree. Calibration still requires a clean committed candidate. Compendium's
+  version-tolerant v2 authority now binds Microsoft Edge family, CDP `1.3`, and sealed capability
+  contract `cf-v2-compendium-cdp-capabilities/v1` SHA-256
+  `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Exact product version,
+  revision, JavaScript version, executable and user agent are mandatory per-run provenance only;
+  phone and desktop samples with the same run ID must bind one exact tuple. An Edge auto-update does
+  not trigger recalibration or alter ceilings, and any real measured breach remains terminal red.
+  This Arc-local change does not repin SceneMemory or the root Gate-A browser.
+- PR #33 remains merged in `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`
+  and PR #34 as `7a9f4c1370dd84292388d718c38ff34214f6203b`; their retained hosted/browser evidence remains
+  historical integration evidence only. The current 2026-08-26 candidate has launched no browser
+  and cannot reuse those reports as exact-input proof.
+- `main`, the production site and the parked development-preview publisher are unchanged. No push,
+  hosted attempt, PR update, merge, preview package, publication, release, deployment, production
+  version bump, `rnSeen` mutation or production save-key change is authorized or performed.
 
-### Remaining Arc 1 evidence
+### Remaining evidence and decisions
 
-- HUMAN review remains required for Arc 1A's six Compendium list/detail/focus images
-  and Arc 1C's phone/desktop ship silhouette and caption readability.
-- Real-device iOS/iPadOS/Android/desktop accessibility, heat, and battery evidence
-  remain open. Arc 1 does not close Gates C, D, I, or any release gate.
+- Nick's first `ready` authorized one configured source-freeze signing attempt; it failed before commit
+  creation with `1Password: failed to fill whole buffer`. HEAD remains unchanged and the exact
+  92-path candidate remains fully staged. Read-only follow-up found no active 1Password launch
+  service and no `~/.1password/agent.sock`. Nick replied `ready` again after requesting the
+  version-tolerant browser policy. That configured retry was made after all 98 paths were restaged
+  and audited; it again failed before commit creation with `1Password: failed to fill whole buffer`.
+  Nick then enabled/unlocked the agent and replied `ready`; the actual `op-ssh-sign` retry still
+  timed out with the same error before commit creation. HEAD remains unchanged and the exact
+  98-path candidate remains fully staged. Never substitute an unsigned commit. There is no longer
+  an Edge `.101` versus `.107` rebaseline decision.
+- After that clean commit: collect one paired legacy baseline plus three independent current
+  Compendium candidates, activate and certify the ruler once; then run one no-retry current-input
+  Slice, one full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms Arc 4 recovery
+  certificate. Ordinary Slice remains a deliberate nonclaim with `recoveryClaimed:false`.
+- HUMAN review remains required for Compendium list/detail/focus, ship readability, the combined Arc
+  4 first-journey/ownership experience, Arc 5 attachment, and applicable Arc 7/8 listening/comfort.
+  Real-device accessibility, heat and battery evidence remain open. No whole Gate or release is closed.
 
 ### Approved full-session campaign
 
@@ -83,7 +105,7 @@ remain in force.
    does not waive any human criterion. Arc 5.5 remains the separate combat-model HUMAN gate before
    Arc 6.
 
-### Local campaign state — player-facing through Arc 4, with Arc 5A authority infrastructure active
+### Local campaign state — player-facing through Arc 4 plus one bounded Arc 7/8 Tame expression
 
 - F3/F4 now provide the live v5 split-store/revision/lease authority used by the app: the protected
   `player/f4.authority` carrier persists the visible/answerable active-play clock and SessionRNG,
@@ -91,6 +113,18 @@ remain in force.
   next revision in one fenced CAS. Random outcomes retain the same plan after a failed write.
   Deterministic Inventory operations reserve only the global receipt ordinal; they do not consume
   or perturb any per-domain RNG counter.
+- The current F4 ecology owner no longer publishes from page-residence time. It derives only from
+  visible, answerable, lease-owned `activePlayMs`, stages a detached epoch candidate, commits it in
+  one receipt-free revision CAS, and only then republishes the global/current scene. Scene, Survey,
+  Planetside and capture all consume one prepared roster at the published epoch. Hidden commits defer
+  painting until a proven foreground resume; refusal publishes nothing, while a post-durable rebuild
+  fault suppresses stale presentation and performs one read-only convergence reload.
+- Legacy notification sanitization still maps zero/invalid/negative stamps to the caller-injected
+  clock and preserves bounded future stamps. V5 split-to-exact-mirror verification now uses the
+  stored split envelope clock, preventing later reads from falsely corrupting an honest migrated
+  notification. The legacy `xpf` field remains the newest exact 4,000 keys; strict optional `xpa`
+  plus `inventory/progression.xp-firsts` archive authority preserves older membership without
+  truncation. This is persistence infrastructure only—there is no player-live v2 XP award writer.
 - Arc 2's canonical loot foundation contains all 62 v1.8.9 definitions—20 stackables and 42 slotted
   bases across nine slots—plus the exact six legacy affixes, fixed recipes, salvage rules, legacy
   imbue evidence, inspect/compare/filter projections, and a source-neutral economy trace. That Arc 2
@@ -124,8 +158,11 @@ remain in force.
    Those facts are refused or reported unavailable rather than fabricated.
 - Arc 3 now has committed product actions and presentation. Canonical full-CF1 world opportunities
   expose finite lifeless-world mining and star skimming at tiers 0–14. The Engineering panel displays
-  six research rows, but only **Deep Scanners** is purchasable; its pure orbital-reveal policy exists,
-  while the current Survey surface does **not** render orbital mineral rows. The panel lists all 62
+  six research rows, but only **Deep Scanners** is purchasable. After that committed research is owned,
+  an orbital Survey card renders one escaped, passive `Mineral veins` row in canonical ordinary order
+  with the biome vein marked `✦`; it discloses no cosmic/exceptional grade, reserve, progress or Mine
+  authority, disappears on the surface, refreshes an already-open card after commit, and reloads from
+  the same durable state. The panel lists all 62
   fixed recipes, but only outputs with a connected live effect, exact costs/preconditions and
   capacity/revision headroom are actionable; fully exceptional slotted outputs and disconnected-
   effect rows remain unavailable. Mine, Skim, the eligible Deep-Scanner purchase and eligible fixed
@@ -134,33 +171,9 @@ remain in force.
   seed-only cursors require an explicit collision-refusing canonical resolver. One shared product-
   action coordinator prevents overlapping Inventory and Engineering publication. Charter mining and
   fabrication progress banks only from committed outcomes. Authored variable crafting, new random
-  loot sources, upgrades/sockets and pacing remain open.
-
-**Arc 3 boot/recovery closure (committed local `c4a02be`, 2026-08-25):** the initial scene render is
-always `skipPersist`; rendering alone never authorizes a save. `classifyBootRouteRepair()` compares
-the durable saved view and ordered Atlas routes with their source-proven projection, normalizes
-semantically omitted false flags, and arms only a real unheld repair. Source-error, protected,
-Training-checkpoint, blocked-route and runtime-only Training-seat paths restore the held durable
-route before any other bootstrap candidate can carry it. `ensureBootAuthorityCommit()` coalesces an
-explicit route repair with F4 seed and Arc 2/3 bootstrap in one lease-fenced commit; an aligned
-current-v5 replacement performs zero boot commits and has no pending persistence work. A stale Arc 3
-outcome is pre-durable and publishes nothing. Once `commitAction()` reports committed, durability is
-terminal: a verification/publication failure makes the old projection unavailable and performs one
-read-only convergence reload, never a second derivation, receipt or write.
-
-**Arc 3 recovery/browser evidence (bounded local proof for `c4a02be`, 2026-08-25):** no-retry Slice
-Smoke run `20260825013823076-822-b99fea33b17b` passed on Edge `151.0.4129.101` in 253,181 ms with
-zero findings/failure scopes, zero retries and ten run-bound screenshots (report SHA-256
-`389bc3a857d1da3dc05dd0b20d046e1ec9d73fef9d0dae8220686b87387e76f0`). The following
-full-certifying Glass Matrix passed on the same Edge in 64,222 ms across 12/12 viewports and reload
-rows, with 78/78 planned controls executed, none blocked/omitted, and zero findings, instrument
-failures or retries (report SHA-256
-`a3a67426828efb82962a73fdeb2d99c410a575488e8a416c17f75338e296aa57`). Both reports honestly
-retain precommit `dirty-diagnostic` provenance against parent `768fb32`: Glass's source digest
-reconstructs `c4a02be`, while Slice predates only the final Glass fixture/contract/tool additions;
-no app product file changed between them. This is current-source local outcome evidence, not a
-same-snapshot clean exact-head, hosted, HUMAN, integration, whole-Gate, release or deployment
-certificate.
+  loot sources, upgrades/sockets and pacing remain open. Economy replay ordering no longer delegates
+  to locale-sensitive `localeCompare`; its explicit UTF-16 code-unit comparator changes no recipe,
+  quantity, affix, reward or source policy.
 
 **Arc 0 `D-CFB-1` kernel (local, 2026-08-24):** legacy `CFB-` remains the exact v1
 challenger/exhibit contract; a versioned `CFB2-` owned-creature codec now round-trips one bounded,
@@ -206,6 +219,16 @@ same product state. The Guide remains 41 player topics—24 partial and 17 unava
 honest Capture/Discover copy. **A New Foundation** has 54 draft bullets. Training remains six
 lessons plus graduation with no Capture lesson. There is no Charter bioscan or targeted preview.
 
+The dedicated recovery collector is now implemented and independently audited without changing the
+ordinary Slice ledger. It requires a genuinely destroyed target, a distinct reopened document,
+zero closed-time credit, 1,200,000 ms of continuously visible/focused/answerable service, exact
+pre-boundary exhausted presentation, all-three-row recovery within one honest heartbeat, fixed RNG
+and ownership/receipt evidence, one attempt/zero retry, cleanup before PASS, and terminal source/
+build/input replay. Its earlier instrument-only run exposed a valid mixed exhausted surface—Tame
+`empty`, Scavenge/Sample `depleted`, all disabled—and the repaired classifier now accepts only the
+exact stable `empty|depleted` exhausted shape with at least one depleted. **No real repaired recovery
+PASS exists yet**; the clean committed 20-minute run remains mandatory.
+
 The active Arc 5A candidate does not change that presentation. Every Arc 4 hit and miss now requires
 aligned current-v2 Arc 5 authority before either draw, prepares the exact 18 Arc 4 plus five Arc 5
 replacement writes for every capacity scenario, and publishes verified V1/V2 together only after
@@ -228,55 +251,38 @@ The delta contains only changed or V2-exclusive rows, never a second copy of unc
 Source-only Arc 4 growth changes fixed-size manifest evidence while all four canonical empty-shard
 bytes remain identical, making the O(1) anti-duplication claim executable. Postcommit verification
 binds the exact five prepared bytes to durable source/delta/target/shard evidence before publication;
-mismatch makes V1/V2 unavailable and read-only reload-converges without a second write. Breed,
-feed/care, Recovery, assignment, disposition, Chronicle, mission/dispatch, companion UI, Guide
-capability, Training lesson and release copy remain absent.
+mismatch makes V1/V2 unavailable and read-only reload-converges without a second write. The pure
+registered successor now sets only a newly admitted bred child's initial `fed` to
+`0.5 * min(clamped parent fed)` with null→0 and preserves all later values; it does not expose a
+breeding action or writer. Player breeding, care/feed, Recovery, assignment, disposition, Chronicle,
+mission/dispatch, companion UI, Guide capability and Training lesson remain absent; their product
+rules are not inferred from legacy destructive behavior.
 
-**Arc 5A final implementation-input local evidence — terminal green:** the focused compact-v2 gate passed
-109/109. Root/app/worker/noUnused TypeScript, `artunused` and the 876-module Vite build passed;
-syntax, contract/Glass/reporter selftests, imports and scoped diff checks were clean. The final full
-run recorded 102 passing files and one failing file, with 1,218 tests passed, one failed and one
-skipped (1,220 total). Focused Compendium was 18 passed/one failed; its selftest passed 222 controls.
-The sole known failure is the deferred Compendium measurement-authority seal described above.
+**Current integrated non-browser evidence (2026-08-26):** the complete v2 suite is 121/121 files,
+1,354 passing tests and one intentional skip. TypeScript/no-unused, Vite 884, root validation,
+legacy smoke, Compendium 222-control selftest, Arc 4 contract/Slice/Glass/recovery selftests and
+scoped diff checks are green. The Compendium budget transition independently rejects stale samples,
+invented ceilings, stale baseline state, self-consistent authority drift and premature activation.
+This proves the frozen local bytes and browser-free rulers only; clean current-input calibration,
+Slice, Glass and recovery results remain pending.
 
-No-retry Slice Smoke run `20260825213041239-98104-c96d3b2d0652` passed on Edge
-`151.0.4129.101` in 363,053 ms with zero findings/failure scopes/retries/source change. It produced
-exactly one ordered nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS and 10 hashed
-PNGs. Report/log SHA-256 are
-`b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
-`5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`.
-Full-certifying Glass passed on the same Edge in 71,449 ms with all 12/12 viewport plus reload rows,
-95/95 controls and 36/36 Arc 4 outcomes. None were blocked or omitted; findings, instrument failures
-and retries were zero. The five-carrier fingerprint, coherent current-v2 corruption and source-growth
-four-empty-shard invariance controls were non-vacuous. Glass report SHA-256 is
-`c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`.
+**Arc 7/8 current-system Tame expression (local, 2026-08-26; bounded partial):** `@cf/audio` retains
+its pure resolver-v1 identity/profile/call-plan foundation and injected bounded runtime. The app now
+adds a strict registered OwnershipStateV2→frozen audio projection and one synthesized, asset-free,
+fauna-only oscillator-plus-gain expression request. A trusted native Tame gesture may arm one silent
+context only while Sound and Creature Voices are on and the current document is visible/answerable.
+Playback claims exactly one event only after a durable committed, non-converging fauna Tame hit,
+binds the exact acquired live creature/species and matching acquisition, and requires the visible
+assertive capture toast as its registered accessible counterpart. Miss, refusal, stale identity,
+route/toast loss, mute/voice-off, hide, convergence, reload and replacement stop or close without
+retry/replay. Settings now expose Creature Voices; Sound Off immediately zeros/stops and resolves
+the owned context lifecycle without creating one while off.
 
-Both browser reports bind the source identity recorded in Current integration state. Frozen tool
-SHA-256 are contract `149e3499e549642dca895d80431807d95477662ced09d26a4efb1ffdb2ce22e1`,
-Slice `add907d1e2b548ae0c1d1333517da11e960c8d03659935ba2aa38c5bfd865468`, Glass
-`b77a4dde5884ef43b6a06c2f2e1797a5476b2ac7e976f9744de4e6b88a9637f5` and reporter
-`aeb96bf9f51fcf7c5be3fa4298ae5548c3239e5b1c4852f2af12dc6adbce7ba4`. Independent runtime,
-persistence, browser-contract and evidence audits are **CLEAR**. Arc 4 remains **[PARTIAL]** for the
-real uninterrupted 20-minute recovery observation and combined HUMAN first-journey/ownership review;
-Arc 5 remains **[PARTIAL]** and infrastructure-only. None of this is exact-head, hosted, integration,
-HUMAN, preview/publication, release, version or deployment authority.
-
-**Arc 7/8 audio package foundation (local, 2026-08-24; package-only partial):** `@cf/audio` now
-owns pure resolver-v1 signature/profile/call-plan data over already-normalized inputs, a pinned
-1,014-route/1,010-identity coarse kingdom taxonomy and sound-output witness, distant-ecology and
-settled-expression plan seams, an injected five-category mixer/limiter/voice runtime with lifecycle
-and diagnostics, a pure two-cycle lab audit, and a pinned empty rights authority/validator. The
-committed runtime policy fails closed above the absolute eight-creature/120-node ceiling and uses
-an eight/96 default.
-These foundations do **not** make audio player-live: the application
-still imports only the compatibility stings and calls survey ping/travel whoosh, those stings remain
-outside the new runtime's ownership/accounting, and Settings still expose only Sound/Volume.
-Canonical creature/event adapters, authored synthesis or licensed content, app/browser integration,
-captions/mono/dynamic-range/reduced-intensity controls, byte and device plateaus, combat/Guardian
-integration, and every HUMAN listening/comfort judgment remain open. Gate G and Arc 7/8 are not
-closed; no recorded audio asset exists. Commit `4e0a976` aligns Guide/release/Training with the
-eligible Arc 3 Engineering actions while keeping package-only audio unavailable. Arc 3's bounded
-current-source local browser proof is recorded above; audio browser/listening evidence remains open.
+This is one player-live current-system greeting, **not** Arc 7/8 or Gate G completion. Compendium
+audition, distant ecology, ambience/music, premium or licensed assets, mono/dynamic-range/reduced-
+intensity controls, combat/Guardian integration, physical-device byte/heat/battery plateaus and all
+HUMAN listening/comfort judgments remain open. Current Slice/Glass tool controls for the greeting
+are browserless-green and independently audited; their real current-input runs have not launched.
 
 ### SSH and branch discipline
 
@@ -309,47 +315,62 @@ current-source local browser proof is recorded above; audio browser/listening ev
 
 ### In-session continuation / fresh-session recovery
 
-1. Continue only in the Codex macOS root on `openai/mac`. Arc 5A compact-v2 is signed local commit
-   `526eaa71919d08f37a11515c1a5bb7582f09ea07`; this ROADMAP-only handoff follows it. The retained
-   evidence binds its exact executable/test/tool bytes under the dirty-diagnostic source
-   commit/status/tree and tool/report hashes recorded above; later changes were audited Markdown only.
-   Do not fetch/merge, switch branches, push, or run
-   GitHub workflows without a new exact authorization.
-2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
-   `GITHUB_ACTIONS_BUDGET.md`; use `port/V2_PROGRAM_ROADMAP.md` §§5.3/5.5 for the Arc 4/5 boundary.
-3. Arc 4's native controls, random-pool presentation, current Guide/release copy and automated
-   browser outcomes are locally terminal-green. Before calling the Arc complete, run the real
-   uninterrupted 20-minute next-cycle recovery observation; do not substitute the 14-step burn-down
-   (`recoveryClaimed:false`) for it. Keep the combined HUMAN first-journey/ownership review queued
-   after Arc 5 as the approved campaign specifies.
-4. Arc 5A compact-v2 authority is implemented, terminal-green locally and independently audited
-   clear. Preserve source-bound random-pool semantics, exact stable ownership IDs, the exact-five
-   manifest/shard tuple, legacy-v1 one-CAS upgrade, current-v2 zero-write fixed point, 18+5 pre-draw
-   capture, O(1) empty-shard invariance and committed-only outcomes. Before exposing breeding, care
-   or missions, resolve the still-open product parameters and add the corresponding real-action
-   evidence; do not store a second full ownership mirror or expose the internal V2-only bridge. Keep
-   Guide/release/Training lesson capability unchanged, do not invent a Charter bioscan or targeted
-   preview, and keep audio package-only until its app/content/accessibility/evidence work exists.
-   Recalibrate/reseal Compendium only after the final multi-Arc dependency graph freezes.
-5. Claude/Anthropic should receive merged work only by fetching `origin` and
-   merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
-   manual file copying. Nick does not need to open Claude now.
+1. Continue only as OpenAI/Codex on macOS in
+   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, tracking
+   `origin/openai/mac`, exact SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`. Current
+   parent is `35a22b130a65f936769dfcfe88b150f44b4295d9`, ahead 70. Do not fetch/merge, switch branches,
+   push, dispatch, release or deploy from this intentionally dirty source-freeze candidate.
+2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md` and
+   `GITHUB_ACTIONS_BUDGET.md`. The exact 75 implementation/test/budget paths and 23 current
+   references belong to one reviewed local campaign. The index already contains all 98 paths with
+   zero unstaged overlap and clean cached/working diff checks; preserve that exact transaction.
+3. The implementation/reference freeze is browserless-green: 121 files/1,355 tests/one skip, all
+   TypeScript/no-unused, Vite 884, root validation/fingerprint/smoke and instrument selftests pass.
+   Compendium is honestly `calibration-required` under measurement `cb5cd9f8…` and producer
+   `587d3bdf…`; no sample or ceiling is active. Its v2 compatibility authority is Edge family + CDP
+   `1.3` + sealed capability-contract hash, with exact browser-build fields retained only as per-run
+   provenance and same-run phone/desktop pairing. Preserve that state for the first clean signed commit.
+4. **External prerequisite:** three authorized configured 1Password signing attempts failed before
+   commit creation with `failed to fill whole buffer`; the latter two were made only after the
+   complete 98-path candidate was restaged and audited. HEAD is unchanged and all 98 paths remain staged.
+   Signing config remains `commit.gpgsign=true`, SSH format, the configured Ed25519 public key and
+   `/Applications/1Password.app/Contents/MacOS/op-ssh-sign`. Read-only diagnosis found the 1Password
+   launch services present, but `~/.1password/agent.sock` absent and the active system SSH agent
+   reports `The agent has no identities.` The latest helper failure occurred after roughly its
+   one-minute authorization window, matching 1Password's documented background-prompt timeout
+   symptom. The app has now been brought to the foreground; approve a direct signing prompt there
+   or restart the app/Mac, then obtain Nick's explicit `ready` before one new configured retry. Never
+   substitute an unsigned commit. No Compendium browser rebaseline is needed for Edge auto-update;
+   exact version/revision/JavaScript/path/UA are run provenance, while compatibility and real budget
+   outcomes remain fail-closed. The clean detached baseline at
+   `/private/tmp/cf-compendium-baseline-3844701-20260826` is exact commit `3844701…`, dependency-
+   complete and ready for one baseline run after the clean source-freeze commit.
+5. After the clean source-freeze commit, collect exactly one paired legacy baseline plus three
+   independent current candidates, one attempt each and zero retries. Activate the ruler only from
+   their verified raw capsules and strictly-above maxima, commit that activation locally, then run
+   one exact-budget Compendium certificate plus its named verifier. Next run one current-input Slice,
+   one full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms recovery collector. Do
+   not reinterpret Slice's exact nine-stage/14-burn/`recoveryClaimed:false` ledger as recovery proof.
+6. After evidence, substitute exact run IDs, commits, browser/source/report hashes and findings into
+   current references and this handoff; keep later documentation-only provenance explicit. No further
+   decision-safe product writer is required before that evidence. Arc 5B breeding/care/mission rules,
+   broader Arc 7/8 soundscape/assets, physical-device reviews and every HUMAN criterion remain later
+   product/review work—not missing implementation to invent now.
+7. Claude/Anthropic does not have this local candidate. Nick does not need to open Claude now. Only
+   after a future reviewed merge into `develop` should Claude fetch `origin` and merge
+   `origin/develop` into a clean `anthropic/mac`; never copy files manually.
 
-**Current side:** Codex macOS `openai/mac` contains signed local implementation commit
-`526eaa71919d08f37a11515c1a5bb7582f09ea07`, recorded by this ROADMAP-only handoff. Retained reports
-bind the exact executable/test/tool bytes under the dirty-diagnostic identity above. The implementation
-commit remains local and unpushed; this handoff carries no push authority. Arc 5A compact-v2 authority is implemented and locally terminal-green.
-Arc 4 remains `[PARTIAL]` for recovery/HUMAN only; Arc 5 remains `[PARTIAL]` and
-infrastructure-only.
-`origin/openai/mac` remains the contained PR #34 head until a later exact final-head authorization.
-**GitHub step:** none.
-**PR details:** not needed; the local campaign is still batching and no push/hosted attempt is
-authorized.
-**Other side:** Anthropic/Claude Code does not have this local Arc 4 player-facing or Arc 5A batch. Nick does not need to
-open Claude now; after a future reviewed merge into `develop`, Claude should fetch `origin` and
-merge `origin/develop` into a clean `anthropic/mac`, never copy files manually.
-**Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
-**Actions budget:** `UNFROZEN`; the repository is public as observed 2026-08-20, while 3,000 remains
-the fail-closed cap if it becomes private or billing is ambiguous. PR #34 runs `32665404776` and
-`32677088518` remain consumed terminal-red, and run `32681394532` is consumed terminal-green. All
-labels are removed; zero new hosted attempts and no push are authorized by this handoff.
+**Current side:** OpenAI/Codex macOS — implementation and current-reference freeze remains local,
+uncommitted and unpushed. Nick's one new configured 1Password signing retry is authorized but not
+yet attempted; the 98-path candidate must first be restaged and audited as one whole. Current-input
+browser evidence is pending, with no Edge-version rebaseline decision remaining.
+**GitHub step:** none. No push or hosted attempt is authorized.
+**PR details:** not needed while the local campaign is still batching. A future PR, if authorized,
+must use base `develop`, source `openai/mac`, and a refreshed title/body covering the final exact head.
+**Other side:** Anthropic/Claude Code does not have these bytes and should not copy or merge them.
+Nick does not need to open Claude now.
+**Release status:** `develop` contains PR #34; `main` and both sites are unchanged. No release,
+deployment, production version bump or publication occurred.
+**Actions budget:** `UNFROZEN`; repository visibility is public as observed 2026-08-20, with 3,000
+the fail-closed private cap. Zero hosted attempts are authorized and all prior approval labels are
+absent.

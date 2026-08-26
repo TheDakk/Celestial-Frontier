@@ -1,6 +1,38 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-25 Arc 4 capture UI overlay — current local source:** the native Survey card now
+> **2026-08-26 audio/rarity presentation overlay — current local candidate:** Settings now renders
+> persistent **Sound**, **Volume** and **Creature voices** controls from the actual saved values.
+> Sound Off immediately retapers the existing sting bus to effective zero, refuses new sources and
+> asks an existing context to suspend; it does not destroy the saved Volume choice. Live Volume
+> input retapers the squared-gain bus even while muted. Sound On and Creature voices On allocate no
+> context by themselves and never replay an earlier result. Turning either Sound or Creature voices
+> Off stops the bounded Tame greeting immediately. The controls retain native button/range semantics,
+> truthful `aria-pressed` state, focus restoration after panel refill and save persistence.
+>
+> One trusted native Tame activation may arm silent audio before the capture result is known. The
+> app plays exactly one deterministic synthesized fauna greeting only after the exact capture writer
+> reports a durable committed hit with no convergence, and after the result species, world, revision,
+> wild-Tame acquisition and live Arc 5 individual all agree. Playback additionally requires the
+> exact visible capture toast to remain registered as its accessible counterpart: `role=status`,
+> `aria-live=assertive`, `aria-atomic=true`, and matching title/detail/generation. A miss, refusal,
+> programmatic click, stale or protected authority, non-fauna result, lost toast/route/visibility/
+> answerability, disabled setting, repeated invocation or reload stays silent. There is no retry or
+> replay. Scavenge, Sample, ambience, music and combat audio remain outside this live boundary.
+>
+> Survey plus Compendium list/detail rarity now pass through one strict app projector. Only integer
+> raw grades 0–14 are accepted: 0–9 use the canonical display row (including Transcendent at 9),
+> while 10–14 display as Transcendent. Missing, fractional, coercible or out-of-range data renders no
+> rarity instead of inventing Common or leaking a raw/art label. Planet rarity remains absent before
+> landing. Raw mechanics, persisted grade, deterministic descriptors and art hue/designation stay
+> unchanged.
+>
+> Focused source/unit/type/build and browser-tool contract checks cover this local candidate, but its
+> final real-browser Slice/Glass/reload evidence is still pending. No hosted, integration, HUMAN,
+> preview, release or deployment authority follows. Broader Arc 7/8 soundscape/assets and listening/
+> comfort review remain partial.
+
+> **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
+> 2026-08-26 overlay does not supersede it:** the native Survey card now
 > renders one source-bound capture surface with exactly three player actions: **Tame**, **Scavenge**
 > and **Sample**. Its model binds the exact canonical world, ecology epoch and full-roster
 > fingerprint. It states the eight-row preview/full-roster counts, makes the random eligible-pool
@@ -35,16 +67,21 @@
 > remains **[PARTIAL]** for a real 20-minute next-cycle recovery observation and combined HUMAN
 > first-journey review.
 
-> **2026-08-25 Arc 3 Engineering UI overlay — current local source:** the former read-only
+> **2026-08-25 Arc 3 Engineering UI overlay — historical evidence foundation; current product
+> behavior updated 2026-08-26:** the former read-only
 > Shipyard panel now renders **Engineering & Shipyard** from one detached authority projection. It
 > retains the four code-native SVG chassis and exact installed-system/hardpoint facts, then adds
 > foldable Mine, Skim, Research and Fabricator sections. The model contains exact opportunity
 > status, deposits/material, six canonical research rows, all 62 fixed recipes, costs,
 > prerequisites, output type, effect-support truth, availability reason and pending state. Only
-> Deep Scanners is purchasable among the six research rows. Its pure orbital-reveal policy exists,
-> but the current Survey surface does not render orbital mineral rows. Only recipe outputs with a
-> connected live effect, exact costs/preconditions and capacity/revision headroom are actionable;
-> fully exceptional slotted outputs and disconnected-effect rows remain unavailable. Controls remain
+> Deep Scanners is purchasable among the six research rows. Once aligned current ownership is proven,
+> it adds one escaped, read-only **Mineral veins** row to an eligible exact proven lifeless
+> non-Earth orbital Survey card. The row preserves ordinary-deposit order and marks the separate
+> biome vein with ✦. Living worlds, Earth, cosmic/exceptional veins, grades, reserves, progress and
+> mining remain grounded. Only recipe
+> outputs with a connected live effect, exact costs/preconditions and capacity/revision headroom
+> are actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
+> Controls remain
 > keyboard/touch reachable, unavailable rows have no optimistic action, and Close remains available during a pending operation.
 >
 > Every press routes through the shared ProductActionCoordinator used by Engineering and Inventory;
@@ -1046,7 +1083,7 @@
 > merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
-v2 overlay matches `port/v2` as of 2026-08-24. The addenda at the end preserve
+current v2 overlays match the local `port/v2` candidate as of 2026-08-26. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson

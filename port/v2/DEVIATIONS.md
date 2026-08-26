@@ -4,19 +4,81 @@
 approved here.** Every entry below is a place the original does something imperfect
 that the port can do better — found while porting, each verified against the source
 or caught by a parity instrument. Status: ☐ proposed (parity preserved today) ·
-✔ approved by Nick · ★ already structurally better in the port without breaking parity.
+◐ implemented partial / required evidence still open · ✔ approved by Nick ·
+★ already structurally better in the port without breaking parity.
 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — Arc 3 Engineering, player-facing Arc 4 capture and Arc 5A authority infrastructure (2026-08-25)
+## Current-state boundary — completed local candidate lanes (2026-08-26)
+
+All facts in this section describe uncommitted local working-tree bytes. They have browser-free
+evidence only: 121 test files /1,354 passed /one intentional skip /zero failures; root, app, worker
+and `noUnused` TypeScript; the 884-module Vite build; root validation/fingerprint; legacy jsdom smoke;
+and applicable contract/reporter/Glass/recovery/Compendium selftests. There is no current-input
+browser evidence, real recovery certificate, Compendium calibration, hosted run, HUMAN judgment,
+whole-Arc/Gate closure, release/version, preview/publication or deployment claim.
+
+- ★ **D-GATE-B-62 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 62 domain
+  sources against DOM, storage, `navigator`, network, wall/monotonic clock and uncontrolled random.
+  Exactly two reasoned waivers remain: CombatCore's exact `document.createElement('')` expressions
+  for the legacy `playerAvatar` and `paperdollAvatar` canvas painters. Inventory, duplicate,
+  reason/matcher drift and injected forbidden-access controls fail closed.
+- ★ **D-HAZE — app-owned without generator drift.** The exact legacy `galaxyHaze` generator/cache
+  bytes moved from WorldGen to `GalaxyArt`; main/html/lifter parity, declaration/import and package
+  edge controls prove the app owner and domain absence. It is no longer a Gate-B waiver.
+- ★ **D-APP-OWNERS — focused Search/Travel and chrome lifecycles.** `search-travel.ts` owns Search,
+  CF1 travel, native-keyboard lifecycle, Compendium continuation/focus and boundary notices.
+  `app-chrome.ts` owns safe-text topbar/dock/context/hint publication, the 72px visibility boundary,
+  resize/mutation observers and dispose-before-replacement. Main supplies rendering/persistence.
+- ★ **D-F4-ECOLOGY — committed active-play edge.** The ecology epoch is staged, committed or
+  rejected by one owner; ecology work is blocked during transition, a successful edge coalesces
+  into the ordinary checkpoint, and projections refresh only from committed state.
+- ★ **D-PERSIST-SEAMS — bounded legacy authority fixed points.** Notification stamps normalize only
+  against the injected clock. Missing `conq[].e` becomes exactly one legacy-ready cycle and values
+  clamp to `[0, EPOCH_BASE]`. XP-firsts stores the newest exact 4,000 legacy keys in v4 `xpf`;
+  v4 `xpa` strictly binds that window to the full v5 overflow authority. Together they prevent award
+  rearm and retain mismatch/future/corrupt/protection controls.
+- ★ **D-SURVEY-RARITY — honest Deep Scanners disclosure.** The exact eligible scanned registered
+  lifeless non-Earth world gains one deterministic ordinary-deposit **Mineral veins** Survey row
+  plus biome marker, but no cosmic/exceptional veins, grade, reserves, progress or Mine action. A
+  strict projector maps only integer raw rarity 0–14 to canonical player-facing 0–9 and returns null
+  for malformed input; Survey/Compendium share it.
+- ★ **D-ARC5-FED — approved construction invariant.** A new bred child receives exactly
+  `0.5 * min(clampedLeftFed, clampedRightFed)`, symmetrically and once over bounded 0–200 inputs.
+  Later child care state remains mutable; no public breed/care writer or UI exists.
+- ★ **D-AUDIO-LIVE-TAME — one narrow, accessible app-owned expression.** A strict projector for the
+  current owned creature supplies deterministic immutable identity to the five-bus fail-closed
+  runtime; Settings persist Creature Voices. Only a native Tame gesture followed by the exact committed
+  durable nonconverging fauna result and its exact accessible status counterpart can synthesize one
+  bounded greeting keyed `arc4:taming-succeeded:${recordId}`. Mute/voices-off, hidden/unanswerable,
+  miss/refusal, stale/reload/replay, route/counterpart loss, replacement and disposal are silent.
+  Other expressions, distant ecology, ambience/music/combat, assets, device plateau and HUMAN
+  listening remain open.
+- ◐ **D-ARC4-RECOVERY-CERT — instrument ready, real duration open.** The dedicated real-time,
+  one-attempt/no-forged-clock collector and mutation-sensitive selftest are ready. The uninterrupted
+  real 20-minute certificate has not run.
+- ◐ **D-COMPENDIUM-CALIBRATION — authority selected, measurements absent.** Status is correctly
+  `calibration-required` under measurement
+  `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
+  `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`; phone/desktop samples
+  are empty, paired baseline is measurement-required with null collector commit, and ceilings are
+  null. Browser authority v2 replaces an exact-build identity with Microsoft Edge family + CDP
+  `1.3` + sealed `cf-v2-compendium-cdp-capabilities/v1` SHA-256
+  `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Exact product version,
+  revision, JavaScript version, executable path and user agent remain mandatory provenance, and
+  one run's phone/desktop samples must bind the same exact tuple. Edge auto-update does not
+  recalibrate or change thresholds; a compatible run's real budget breach remains red. This is a
+  Compendium-only authority change, not a SceneMemory or root Gate-A rebaseline.
+
+## Historical current-state checkpoint — Arc 3 Engineering, player-facing Arc 4 capture and Arc 5A authority infrastructure (2026-08-25)
 
 - ★ **D-ARC3-ENGINEERING — fixed Engineering is player-live locally.** Registered full-CF1
   world/star opportunity snapshots preserve raw tiers 0–14, finite reserves and active-play cursors.
   Mine and Skim settle through the existing F3/F4 receipt/CAS and publish through one shared
   Engineering/Inventory coordinator. Six research rows are displayed, but only Deep Scanners is
-  purchasable; its pure orbital-reveal policy exists while current Survey renders no orbital
-  mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with exact
+  purchasable; its pure orbital-reveal policy existed while that checkpoint's Survey rendered no
+  orbital mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with exact
   costs/preconditions and capacity/revision headroom are actionable; fully exceptional slotted
   outputs and disconnected-effect rows remain unavailable. Charter mining/fabrication banking
   derives only from committed outcomes. This intentionally does not invent variable crafting,
@@ -41,8 +103,8 @@ as any change that touches an entry.
   publication or read-only reload convergence. Presentation is one source-bound uniform random
   eligible pool—not targeted selection—with preview/full counts, aggregate and individual odds,
   shared hit-or-miss Biosphere Yield, active-play recovery, committed-only outcomes and native
-  Close/reopen. Current-source Slice passes the exact nine-stage ledger in 336,913 ms (report
-  `4cc6fe02…`, 14 burn steps, `recoveryClaimed:false`); Glass passes 12 viewports/36 outcomes with
+  Close/reopen. That checkpoint's exact-input Slice passed the exact nine-stage ledger in 336,913 ms
+  (report `4cc6fe02…`, 14 burn steps, `recoveryClaimed:false`); Glass passed 12 viewports/36 outcomes with
   every planned control and no omissions in 71,713 ms (report `03a14ce5…`). Both bind exact-input
   tree `b83ccef5…`. Guide is 24 partial/17 unavailable, the draft is 54 bullets, and Training
   remains six lessons plus graduation with no Capture lesson. The uninterrupted 20-minute recovery
@@ -59,7 +121,8 @@ as any change that touches an entry.
   staged route/Atlas/Arc 2 mirrors back to durable input. Source-only Arc 4 growth keeps all four
   canonical empty-shard bytes identical, preventing a duplicate source and keeping unchanged-state
   growth O(1). The internal V2-only successor emits exactly five carriers but is absent from the
-  public package root; there is no breeding/care UI or companion system. Final current-input Slice
+  public package root; there was no breeding/care UI or companion system. Its historical exact-input
+  Slice
   `20260825213041239-98104-c96d3b2d0652` passed on Edge `151.0.4129.101` in 363,053 ms (report/log
   SHA-256 `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
   `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`); Glass passed in 71,449 ms
@@ -86,7 +149,7 @@ as any change that touches an entry.
   `D-AUTOEXTRACT-CLOCK` and `D-RNG` entries below
   without rewriting their historical boundaries.
 
-## Current-state instrument correction — PR #34 Compendium native row activation (2026-08-23)
+## Historical instrument correction — PR #34 Compendium native row activation (2026-08-23)
 
 **Status: ★ second bounded correction locally certified; hosted proof remains open.** Runs
 `32665404776` and `32677088518` exposed two consecutive green-too-early row-activation boundaries.
@@ -173,9 +236,11 @@ source the gate covered Universe, Galaxy, Galaxy fine, Sol, Earth Surface and a 
 42/42 certificate above is the authority for the implemented Shipyard extension. The Arc 1B v1
 report must not be reused as hosted, HUMAN, integration, or Arc 1C evidence.
 
-## Current-state decision — Arc 1A maximum Compendium (2026-08-21)
+## Historical implementation decision — Arc 1A maximum Compendium (2026-08-21)
 
-**Status: ★ automated implementation and integration complete; six-image `[HUMAN]` review open.**
+**Status at this historical product boundary: ★ automated implementation and integration complete;
+six-image `[HUMAN]` review open.** The 2026-08-26 overlay supersedes its measurement disposition:
+the current producer is calibration-required with empty samples and null ceilings.
 Product virtualization, serviced-turn scheduling, compact-phone layout, displayed-demand texture
 ownership, bounded static-server shutdown and the repaired ruler are present. Exact changed-head run
 `32462323775` passed the complete battery once on `c68aee2…`; its approval label was removed and
@@ -1782,8 +1847,8 @@ duplicates).
   Creature voices, ambience, combat/Guardian cues, music, buses/mixing, node ownership,
   visibility/context-loss recovery, budgets, rights, device listening and all other Arc 7/8 /
   Gate G acceptance remain open. No Guide/Training/release-copy or version change is implied.
-- ◐ **D-AUDIO-FOUNDATION — Arc 7 now has a package-only injected foundation
-  (2026-08-24).** `@cf/audio` owns resolver-v1 signature/profile/call-plan data over
+- ★ **D-AUDIO-FOUNDATION — historical package boundary, superseded by the 2026-08-26 live-Tame
+  overlay above (2026-08-24).** `@cf/audio` owns resolver-v1 signature/profile/call-plan data over
   already-normalized inputs, the source-pinned 1,014-route/1,010-identity coarse kingdom manifest
   and sound witness, pure distant-ecology and settled-expression plans, an injected five-category
   mixer/limiter/meter with bounded voice/lifecycle ownership, a pure two-cycle lab audit, and a
@@ -1791,16 +1856,17 @@ duplicates).
   creature emitters or 120 nodes before context construction. This current overlay supersedes only
   the current-state implication of the dated
   `D-AUDIO-CAP` finding below; its original Phase 0 measurement remains historical. It does not supersede the dated
-  `D-AUDIO-INIT` history: the compatibility stings remain separate, player-live survey/travel are
-  still the only app sounds, and the app does not construct or account through the new runtime.
-  Canonical creature/event adapters, authored playback/assets, app/browser/device evidence,
-  complete accessibility, combat/Guardian integration and HUMAN listening remain open. Gate G,
-  Arc 7 and Arc 8 are not closed; no Guide/Training/release/version change is implied.
+  `D-AUDIO-INIT` history. At this historical checkpoint the compatibility stings were separate and
+  the app did not construct the new runtime. The current overlay adds the strict app identity
+  projector, runtime owner, persisted Creature Voices and one bounded accessible Tame greeting;
+  broader content, assets, browser/device evidence, complete accessibility, combat/Guardian
+  integration and HUMAN listening remain open. Gate G, Arc 7 and Arc 8 are not closed.
 - ★ **D-UI-1 — lower mobile chrome is measured as a group (2026-08-12; current geometry updated
   2026-08-22).** The phone dock originally wrapped 3/3/2 while context/hint/Planetside used fixed
   offsets, so green smoke evidence visibly covered copy and controls. The first bounded correction
-  was a 206×98 4×2 eight-control dock; Arc 1C now owns the exact 260px 5×2 nine-control dock required
-  by Shipyard. Both publish measured `--dock-h`/`--ctx-h` and derive every lower anchor from them.
+  was a 206×98 4×2 eight-control dock; the current app owns the exact 260px 5×2 ten-control dock
+  including Inventory and Shipyard. Both publish measured `--dock-h`/`--ctx-h` and derive every
+  lower anchor from them.
   Browser smoke asserts pairwise clearance, row geometry, button hit targets and CSS-variable
   equality, with an injected old-style overlap that must fail.
   Each dock button remains a 44px target while its icon uses the 42px client line inside the 1px
@@ -2093,15 +2159,15 @@ duplicates).
   app counts page residence, while F4 still owns visibility/answerability policy and exact edge
   behavior. F3 supplies the CAS/revision/tab-lease substrate; F4 owns the separate persisted
   `activePlayMs` clock/accrual policy for future mission/Recovery/Auto-Extractor readiness. The
-  no-DOM lint enforces `Math.random`/`Date.now`
-  absence across every domain package — the original could only enforce this by grep + discipline.
+  exact 62-source Gate-B scanner enforces wall/monotonic-clock and uncontrolled-random absence
+  across every domain package — the original could only enforce this by grep + discipline.
 
 ## Architecture / layering
 
-- ☐ **D-HAZE — `galaxyHaze` lives inside WorldGen [domain]** and draws a 2048px
-  canvas (the source violates its own architecture comment; it is the no-DOM lint's
-  documented exception). *Port fix:* render-layer ownership in Phase 3/4 scenes.
-  Also a candidate one-move cleanup upstream in main.js.
+- ★ **D-HAZE — historical layering finding, completed 2026-08-26.** `galaxyHaze` formerly lived
+  inside WorldGen `[domain]` and drew a 2048px canvas. Its exact generator/cache bytes now live in
+  app-owned `GalaxyArt`; package/lifter/main/html parity controls prove relocation without behavior
+  drift, and the 62-source scanner no longer waives it.
 - ☐ **D-ST — `describePick` reads app globals inside a [domain] module.**
   The card router (Descriptors, main.js ~3035) reads `st` (nav state) and
   `customNames` (rename map) as FREE identifiers — exported by the lift but
@@ -2117,11 +2183,11 @@ duplicates).
   `_sanitizeSavedGenome`, the ring-grade chain). The port already homes them in
   `@cf/domain-strays`; the *upstream* cleanup (moving them into [domain] modules in
   main.js) is optional and cosmetic.
-- ☐ **D-STORE — repository/recovery seam exists; §19.3 split stores do not yet.** The typed
-  repository owns IndexedDB open/retry, primary/backup promotion and recovery, but currently stores
-  the exported save as one blob in `meta`. Multi-tab last-writer-wins and incremental domain-store
-  transactions remain open; do not describe them as shipped until revisions/CAS or equivalent
-  transactional records land.
+- ★ **D-STORE — historical Phase-2 finding, superseded for implemented owners by F3/F4.** The typed
+  repository originally stored one exported blob in `meta`. Current v5 splits canonical owner rows,
+  binds revision/lease authority, protects F4, and commits product + next authority + immutable
+  receipt + revision through one CAS for implemented actions. This does not certify future breed,
+  care, mission, combat or other unwired writers.
 - ★ **D-IDENTITY-LOOT — historical split proposal, now implemented for current Arc 2/4 authority
   before later companion mutations (2026-08-13).** Legacy Codex rows conflate a discovered species with
   one living specimen, while `items`/`equipAff` conflate a base definition with a rolled
@@ -2134,27 +2200,28 @@ duplicates).
   durable catalogue/specimen/fauna split. Breed/feed/combat/delete/assignment mutations remain
   later work and must preserve those identities.
 - ★ **D-CAPTURE-OWNER — historical proposal, native acquisition writer now implemented
-  (2026-08-13).** Current v2
-  can reveal life and display imported Compendium rows but has no live Tame, Scavenge, Sample or
-  Biosphere Yield action. Before collection/breeding/dispatch can be advertised, port finite
+  (2026-08-13).** At that historical boundary v2
+  could reveal life and display imported Compendium rows but had no live Tame, Scavenge, Sample or
+  Biosphere Yield action. The requirement was a finite
   receipt-backed acquisition: every successful verb creates/updates `CatalogSpecies`; fauna Tame
   may create a stable `CreatureInstance`; Scavenge/Sample create specimens/resources, never living
   companions. Miss/Worked Out, reload and stale-tab controls must prove no free page, duplicate
   creature, reroll or double spend.
   **Superseded current state (2026-08-25):** the native Survey controls now implement that finite
-  writer and the current-source Slice/Glass pair proves the named hit/miss, refusal, stale,
+  writer and the 2026-08-25 exact-input Slice/Glass pair proves the named hit/miss, refusal, stale,
   publication, Close/reopen and reload outcomes. The uninterrupted real 20-minute recovery
   observation and HUMAN first-journey/ownership review remain open.
-- ☐ **D-RECEIPT — companion/Guardian loot requires revisioned exact-once persistence
-  (2026-08-13).** Roll and commit a save-lifetime RNG ordinal plus immutable receipt at
+- ◐ **D-RECEIPT — historical broad proposal; implemented action owners now use revisioned
+  exact-once persistence while later writers remain open (2026-08-13).** Roll and commit a save-lifetime RNG ordinal plus immutable receipt at
   dispatch/encounter settlement, not at reveal/claim. A dedicated persisted visible-and-answerable
   active-play millisecond clock owns readiness; it is not the capped ecology epoch. One leased tab
   advances it and stale deltas fail. Revision checks cover every reward/destructive mutation,
   including capture, craft/salvage, feed/breed/recovery, dispatch/recall, combat settlement and
   deletion—not mission claim alone. Same-parent/same-world stale-writer controls are required;
   wall-clock advance, reload, double-click and a stale second tab must not reroll or duplicate
-  rewards. Current one-blob last-writer-wins persistence is insufficient; CAS or one
-  authoritative serialized coordinator is prerequisite work.
+  rewards. F3/F4 now supplies the lease/revision/CAS/receipt substrate for implemented Inventory,
+  Engineering and capture actions. Feed/breed/recovery, missions, combat/Guardian settlement and
+  deletion remain future writers and do not inherit authority merely from that substrate.
 - ★ **D-CHARTER-CAP — current Charter presentation stops at the live frontier
   (2026-08-13).** `ASC_CHAPTERS_DATA` remains verbatim canonical/import data, including
   its unported mining, fabrication, bioscan, conquest and breeding goals. The player-facing
@@ -2179,26 +2246,26 @@ duplicates).
   feedback politely, and an already-open desktop Charters panel refills from the advanced ledger.
   Full legacy Charter writers, rewards, accepted chains and weeklies, the other F1b slices and F2
   remain open; this closes only D-CHARTER-CAP presentation plus SCN-1/SCN-2/SCN-6 hardening.
-- ☐ **D-COMPENDIUM-MEM — eager full-source thumbnails are not a bounded catalogue
-  (2026-08-13).** Up to 1,500 rows can synchronously paint/mount 440px data URLs before the
-  asynchronous 132px cache result exists, so entry-count caches do not bound decoded DOM
-  images. Window rows/jobs, swap to actual thumbnails, budget decoded pixels/bytes and prove
-  a warm plateau with an unbounded/no-disposal negative control before the inventory arc.
-- ☐ **D-AUTOEXTRACT-CLOCK — legacy Auto-Extractor accrual still trusts `Date.now()`
-  (2026-08-13).** Clock-forward plus reload/visit can mint another bounded batch. Port it to
-  persisted active-play progress with an absent-field migration and a clock-wind outcome test;
-  never reuse the wall-clock pattern for companion missions.
+- ★ **D-COMPENDIUM-MEM — historical eager-catalogue finding, product repair implemented
+  (2026-08-13).** The current 1,500-row product uses a bounded virtual window and broker-owned
+  132px/440px work instead of eager row data URLs. Historical plateau certificates remain scoped to
+  their own producer. The 2026-08-26 producer is `calibration-required` with empty samples and null
+  ceilings, so the structural repair must not be restated as a current measurement certificate.
+- ★ **D-AUTOEXTRACT-CLOCK — historical wall-time finding, repaired for the implemented Arc 3
+  writer.** Auto-Extractor settlement derives capped loads from persisted F4 active-play progress,
+  ignores legacy wall timestamps, preserves remainders/finite reserves and reanchors new extractors.
+  Companion missions must use the same active-play law when their writer exists.
 
 ## Determinism / replayability
 
-- ☐ **D-RNG — the 11 bare `Math.random()` outcome rolls** (tryCapture, openPicker,
-  _descRoll, attemptContact, hazardFlavor, _tutGrant, _tutDuel…) become
-  `@cf/domain-sessionrng` calls in Phase 4+ wiring — outcomes replayable per
-  (seed, domain, n), state in the save + diagnostics export. Reviewer §2.1;
-  package built, wiring pending. Player-visible behavior: none (still unpredictable).
-- ☐ **D-NOTIF-T — notification fallback stamps.** `pushNotif`/load fall back to
-  `Date.now()` for invalid stamps. *Port fix:* the injected clock everywhere
-  (already true in importSaveV2's signature).
+- ◐ **D-RNG — historical 11-site finding; implemented actions now use F4, remaining writers stay
+  open.** SessionRNG is persisted per domain with exact-once receipt authority. Player-live Arc 4
+  capture consumes its two isolated domains only after all-scenario certification; later care,
+  combat, Training and other audited outcome writers must migrate when implemented. The exact
+  62-source scanner independently rejects uncontrolled randomness in domain code.
+- ★ **D-NOTIF-T — completed injected-clock fixed point.** Notification fallback stamps normalize
+  only against the supplied clock, later v5 reads preserve the migrated value, and hostile/future
+  clock controls cannot mint wall-time authority.
 
 ## Coverage the original never had (already landed — no approval needed)
 
@@ -2212,13 +2279,16 @@ duplicates).
   then deterministic success after the official hook installs.
 - ★ The save-fixture harness (10 real-boot fixtures incl. recovery and the
   arrays-as-objects gate quirk) + content-registry gate + round-trip fixed point.
-- ★ The 9g rarity-collapse guard, data-level and end-to-end through speciesGrade.
+- ★ The 9g rarity-collapse guard now has an explicit strict projector: raw integer 0–14 enters,
+  canonical display tier 0–9 exits, malformed input returns null, and live Survey/Compendium
+  consumers cannot bypass it.
 
 ## Phase 7 pre-commitments (from Phase 0 measurements, so they aren't rediscovered)
 
-- ☐ **D-AUDIO-CAP — no audio concurrency bound exists anywhere** (10 AudioNodes per
-  utterance, unbounded in-flight). §15 requires mobile budgets; the port's mixer
-  must ship one. Measured during Phase 0; do not let the port inherit the absence.
+- ★ **D-AUDIO-CAP — historical absence repaired structurally.** The injected runtime rejects
+  configuration above eight creature emitters/120 nodes and defaults to eight/96; the live Tame
+  renderer adds only one oscillator and one gain in one expression group. Real browser/device
+  plateau and listening evidence remain open, so the structural cap is not Gate-G closure.
 - ☐ **D-LEGACY-VOICE / D-F0** — already decided in `port/DECISIONS.md` (fallback-only;
   soft saturation tuned after the listening test). Listed here only for completeness.
 

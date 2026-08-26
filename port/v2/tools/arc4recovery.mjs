@@ -461,21 +461,49 @@ async function waitForIneligibleAligned(send, sessionId, expectedToken) {
   'ineligible aligned Slice authority');
 }
 
+function arc4ExhaustedUiRows(rows) {
+  return Array.isArray(rows) && rows.length === 3
+    && new Set(rows.map((row) => row?.verb)).size === 3
+    && rows.every((row) => ['tame', 'scavenge', 'sample'].includes(row?.verb))
+    && rows.some((row) => row?.status === 'depleted')
+    && rows.every((row) => ['empty', 'depleted'].includes(row?.status)
+      && row?.button?.modelEnabled === 'false' && row?.button?.disabled === true
+      && row?.button?.ariaDisabled === 'true');
+}
+
 async function waitForPertarSurface(send, sessionId, { exhausted = false } = {}) {
-  return waitForValue(async () => evaluate(send, sessionId,
-    `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),ui=${ARC4_CAPTURE_UI_EXPRESSION};
-      const route=state?.mode==='surface'&&state?.gal===${ARC4_PERTAR_FIXTURE.galaxy.seed}
-        &&state?.star===${ARC4_PERTAR_FIXTURE.publicStar.seed}
-        &&state?.planet===${ARC4_PERTAR_FIXTURE.planet.seed}
-        &&state?.planetOrdinal===${ARC4_PERTAR_FIXTURE.planet.ordinal}
-        &&state?.navWorldKey===${JSON.stringify(ARC4_PERTAR_FIXTURE.worldKey)};
-      const budget=ui?.budget,rows=ui?.rows??[],presentation=${exhausted
-        ? `budget?.used===${ARC4_PERTAR_FIXTURE.biosphereYield}&&budget?.remaining===0
-          &&rows.length===3&&rows.every((row)=>row.status==='depleted'&&row.button?.disabled===true)`
-        : `budget?.used===0&&budget?.remaining===${ARC4_PERTAR_FIXTURE.biosphereYield}
-          &&rows.length===3&&rows.every((row)=>row.status==='ready'&&row.button?.disabled===false)`};
-      return route&&ui?.cardOpen===true&&ui?.cardTitle==='Pertar'&&presentation?{state,ui}:null})()`,
-    'read Pertar capture surface'), exhausted ? 'exhausted Pertar surface' : 'ready Pertar surface');
+  const label = exhausted ? 'exhausted Pertar surface' : 'ready Pertar surface';
+  let lastDiagnostic = null;
+  try {
+    return await waitForValue(async () => {
+      const observed = await evaluate(send, sessionId,
+        `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),ui=${ARC4_CAPTURE_UI_EXPRESSION};
+          const route=state?.mode==='surface'&&state?.gal===${ARC4_PERTAR_FIXTURE.galaxy.seed}
+            &&state?.star===${ARC4_PERTAR_FIXTURE.publicStar.seed}
+            &&state?.planet===${ARC4_PERTAR_FIXTURE.planet.seed}
+            &&state?.planetOrdinal===${ARC4_PERTAR_FIXTURE.planet.ordinal}
+            &&state?.navWorldKey===${JSON.stringify(ARC4_PERTAR_FIXTURE.worldKey)};
+          const budget=ui?.budget,rows=ui?.rows??[],presentation=${exhausted
+            ? `budget?.used===${ARC4_PERTAR_FIXTURE.biosphereYield}&&budget?.remaining===0
+              &&(${arc4ExhaustedUiRows.toString()})(rows)`
+            : `budget?.used===0&&budget?.remaining===${ARC4_PERTAR_FIXTURE.biosphereYield}
+              &&rows.length===3&&rows.every((row)=>row.status==='ready'&&row.button?.disabled===false)`};
+          const matched=route&&ui?.cardOpen===true&&ui?.cardTitle==='Pertar'&&presentation;
+          const diagnostic={route,cardOpen:ui?.cardOpen??null,cardTitle:ui?.cardTitle??null,
+            budget:budget?{yield:budget.yield,used:budget.used,remaining:budget.remaining,
+              cycle:budget.cycle}:null,
+            rows:rows.map((row)=>({verb:row?.verb??null,status:row?.status??null,
+              modelEnabled:row?.button?.modelEnabled??null,disabled:row?.button?.disabled??null,
+              ariaDisabled:row?.button?.ariaDisabled??null}))};
+          return {matched,state:matched?state:null,ui:matched?ui:null,diagnostic}})()`,
+      'read Pertar capture surface');
+      lastDiagnostic = observed?.diagnostic ?? null;
+      return observed?.matched === true ? { state: observed.state, ui: observed.ui } : null;
+    }, label);
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    throw new Error(`${detail}; observed=${JSON.stringify(lastDiagnostic)}`);
+  }
 }
 
 async function activateSurveyDock(send, sessionId) {
@@ -1295,7 +1323,7 @@ function syntheticCaptureFacts(recovered = false) {
       cycle: recovered ? 1 : 0,
     },
     rows: ['tame', 'scavenge', 'sample'].map((verb) => ({
-      verb, status: recovered ? 'ready' : 'depleted',
+      verb, status: recovered ? 'ready' : verb === 'tame' ? 'empty' : 'depleted',
       modelEnabled: recovered ? 'true' : 'false',
       disabled: !recovered, ariaDisabled: recovered ? 'false' : 'true',
     })),
@@ -1445,6 +1473,28 @@ function syntheticRecoveryFixture() {
 
 export function runSelftest() {
   const { input, recoveryBundle } = syntheticRecoveryFixture();
+  const mixedExhaustedFacts = input.authorityBinding.exhaustedCaptureFacts;
+  assert(same(mixedExhaustedFacts.rows.map(({ verb, status }) => ({ verb, status })), [
+    { verb: 'tame', status: 'empty' },
+    { verb: 'scavenge', status: 'depleted' },
+    { verb: 'sample', status: 'depleted' },
+  ]), 'synthetic recovery baseline does not reproduce the real mixed exhausted surface');
+  const mixedExhaustedUiRows = mixedExhaustedFacts.rows.map(({
+    verb, status, modelEnabled, disabled, ariaDisabled,
+  }) => ({ verb, status, button: { modelEnabled, disabled, ariaDisabled } }));
+  assert(arc4ExhaustedUiRows(mixedExhaustedUiRows),
+    'real mixed empty/depleted exhausted surface was rejected by the browser poll');
+  const noDepletedUiRows = structuredClone(mixedExhaustedUiRows);
+  for (const row of noDepletedUiRows) row.status = 'empty';
+  assert(!arc4ExhaustedUiRows(noDepletedUiRows),
+    'all-empty exhausted surface mutation stayed green');
+  const earlyReadyUiRows = structuredClone(mixedExhaustedUiRows);
+  Object.assign(earlyReadyUiRows[2], {
+    status: 'ready',
+    button: { modelEnabled: 'true', disabled: false, ariaDisabled: 'false' },
+  });
+  assert(!arc4ExhaustedUiRows(earlyReadyUiRows),
+    'partially ready exhausted surface mutation stayed green');
   const baseline = evaluateArc4RecoveryObservation(input);
   assert(baseline.status === 'pass',
     `recovery observation baseline is red: ${JSON.stringify(baseline.failures)}`);
@@ -1558,7 +1608,7 @@ export function runSelftest() {
         disabled: true, ariaDisabled: 'true',
       });
     },
-    oneRowEmpty: (next) => {
+    preBoundaryShapeDrift: (next) => {
       next.observation.samples[5].target.after.capture.rows[2].status = 'empty';
     },
     closedRng: (next) => { next.authorityBinding.closedSessionRng.ordinal += 1; },
@@ -1608,7 +1658,7 @@ export function runSelftest() {
     delayedUiRecovery: ['capture-recovery-transition'],
     noUiRecovery: ['capture-recovery-transition'],
     oneRowDepleted: ['capture-recovery-transition'],
-    oneRowEmpty: ['capture-recovery-transition'],
+    preBoundaryShapeDrift: ['capture-recovery-transition'],
     closedRng: ['session-rng-fixed-point'],
     offlineRng: ['session-rng-fixed-point'],
     sampleRng: [

@@ -1,6 +1,23 @@
 # Celestial Frontier — Breeding & Sharing
 
-> **2026-08-25 Arc 0/5A current local boundary:** legacy `CFB-` remains the exact v1
+> **2026-08-26 current-candidate Arc 5B boundary:** the non-public exact-five V2 successor now
+> implements one narrow bred-child rule. At newly admitted child creation only, it clamps each
+> parent `fed` to `0..200` and assigns
+> `child.fed = 0.5 * min(parentA.fed, parentB.fed)`. The result is parent-order invariant, absent
+> input becomes zero, the value round-trips, and later child feeding is not recomputed or overwritten.
+> This is internal ownership authority, not a player breeding action.
+>
+> Arc 5B still has no product decision/writer for odds, eligibility, parent Recovery duration and
+> locks, care, timing, capacity, confirmation, preview or UI/copy. No app control grants a child or
+> invokes the successor. The dedicated 20-minute certificate still pending for Arc 4 Biosphere
+> recovery cannot be repurposed as proof of future parent Recovery; the ordinary Arc 4 Slice remains
+> `recoveryClaimed:false`. Any future breeding rarity preview must use the strict ten-name player
+> projector—valid raw `0..14`, with `9..14` shown as Transcendent—and must never expose internal
+> art-grade labels/raw tier numbers or coerce invalid input to Common. The current creature-audio
+> addition is only the exact durable current-system Tame-fauna greeting; breeding/care audio remains
+> absent.
+
+> **2026-08-25 Arc 0/5A recorded local boundary:** legacy `CFB-` remains the exact v1
 > challenger/exhibit contract. Versioned `CFB2-` round-trips one bounded ordered uint32 parent
 > tuple for an owned-creature identity while excluding XP, feeding, brood, injury, bond and
 > assignment; forward/reverse parents remain distinct and malformed/future/mismatched payloads fail
@@ -10,8 +27,9 @@
 > the exact Arc 4 source, canonical delta and reconstructed V2 target fixed points without copying
 > unchanged Arc 4 ownership. App boot, genuine legacy Training and every Arc 4 capture successor use
 > the exact five-write tuple; aligned legacy-v1 upgrades once and aligned current-v2 writes nothing.
-> The internal V2-only successor also replaces exactly five carriers, but it is absent from the
-> public package root and cannot be invoked as a player Arc 5-only product change.
+> The internal V2-only successor also replaces exactly five carriers and applies the one-time
+> child-`fed` rule above, but it is absent from the public package root and cannot be invoked as a
+> player Arc 5-only product change.
 >
 > No breeding, feeding, care, Recovery, assignment, companion or share UI writer is live in v2.
 > The non-consuming parent/Recovery design below therefore remains the product contract, not a
@@ -83,7 +101,7 @@
 > deviation and new compatibility tests.
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the dated v2
-overlays match the current local `port/v2` boundary as of 2026-08-25. Carries v1.8.6
+overlays match the current local `port/v2` candidate as of 2026-08-26. Carries v1.8.6
 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette
@@ -234,15 +252,16 @@ the roll"; the range itself was wrong.
 **Now:** the band is computed from stats with `fed` stripped from both parents, and when either
 parent carries `fed` the card says so outright — *"fed bloodline does not carry over"*.
 
-**PLANNED V2 DECISION (Nick, authoritative; not implemented):** the child inherits
-**50% of the LOWER parent's `fed`**. Legacy v1.8.9 still starts the child at zero,
-so its current preview remains correct for that build; v2 changes the outcome and
-preview together when living-instance breeding lands. The resolver clamps both
-inputs to `0..200`, computes `0.5 × min(parentA.fed,parentB.fed)` once inside the
-child-creation transaction, and is parent-order invariant. Required reversed
-vectors include `80/30 → 15` and `30/80 → 15`, `200/50 → 25` and `50/200 → 25`,
-plus `0/200 → 0` in both orders. No preview-only calculation may become a second
-authority.
+**V2 DECISION — INTERNAL AUTHORITY IMPLEMENTED; PLAYER ACTION STILL OPEN:** the
+non-public V2 successor now gives a newly admitted child **50% of the LOWER
+parent's clamped `fed`** exactly once. Legacy v1.8.9 still starts the child at zero,
+so its current preview remains correct for that build. The internal resolver clamps
+both inputs to `0..200`, computes `0.5 × min(parentA.fed,parentB.fed)`, and is
+parent-order invariant. Reversed vectors cover `80/30 → 15` and `30/80 → 15`,
+`200/50 → 25` and `50/200 → 25`, plus `0/200 → 0` in both orders; absent input is
+zero and later child care state survives. No app/player writer, Arc 5B odds,
+Recovery/lock/capacity/timing rule, confirmation or preview is implied, and no
+preview-only calculation may become a second authority.
 
 ---
 
