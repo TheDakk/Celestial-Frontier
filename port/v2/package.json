@@ -20,6 +20,8 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json",
     "artunused": "tsc --noEmit --noUnusedLocals",
     "smoke": "node tools/slicesmoke.mjs",
+    "arc4recovery": "node tools/arc4recovery.mjs",
+    "arc4recovery:selftest": "node tools/arc4recovery.mjs --selftest",
     "smoke:ci": "node tools/smokereport.mjs",
     "smoke:report:selftest": "node tools/smokereport.mjs --selftest",
     "glassmatrix": "node tools/glassmatrix.mjs",

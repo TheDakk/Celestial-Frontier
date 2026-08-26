@@ -2,9 +2,10 @@
 
    Arc 4's registered V1 state remains the immutable discovery/capture source.
    V2 adds living-individual lineage, portable breeding evidence, and explicit
-   creature/specimen tombstones without making any breeding, care, timing, or
-   capacity decision. A genome identifies biology; it never identifies an
-   owned individual. */
+   creature/specimen tombstones. Its internal +1 successor applies the decided
+   fed inheritance for a newly admitted bred child without exposing a product
+   writer or deciding breeding odds, Recovery, care, timing, or capacity. A
+   genome identifies biology; it never identifies an owned individual. */
 import {
   MAX_OWNERSHIP_REVISION,
   MAX_OWNERSHIP_ROWS,
@@ -709,10 +710,34 @@ function buildState(
     (row) => row.recordId,
     'bred acquisitions',
   );
-  const creatures = registeredRows(
+  let creatures = registeredRows(
     captured.creatures as readonly CreatureInstanceV1[], CREATURES,
     (row) => row.creatureId, 'creatures',
   );
+  if (parent !== null) {
+    const previousBred = new Set(parent.bredAcquisitions.map((row) => row.recordId));
+    const newBred = new Map(bredAcquisitions
+      .filter((row) => !previousBred.has(row.recordId))
+      .map((row) => [row.recordId, row]));
+    const parentLive = new Map(parent.creatures.map((row) => [row.creatureId, row]));
+    creatures = Object.freeze(creatures.map((row) => {
+      const acquisition = newBred.get(row.acquisitionRecordId);
+      if (!acquisition || row.origin !== 'bred') return row;
+      const [leftId, rightId] = acquisition.provenance.parentCreatureIds;
+      const left = parentLive.get(leftId), right = parentLive.get(rightId);
+      if (!left || !right) return row;
+
+      // This registered +1 state is the child-creation authority. Parent rows
+      // already fail closed outside number|null/0..200, while the explicit
+      // clamp and null-as-zero rule keep inheritance local and order-invariant.
+      const leftFed = Math.min(200, Math.max(0, left.fed ?? 0));
+      const rightFed = Math.min(200, Math.max(0, right.fed ?? 0));
+      const inheritedFed = 0.5 * Math.min(leftFed, rightFed);
+      return row.fed === inheritedFed
+        ? row
+        : createCreatureInstanceV2({ ...row, fed: inheritedFed });
+    }));
+  }
   const creatureTombstones = registeredRows(
     captured.creatureTombstones as readonly CreatureTombstoneV2[], CREATURE_TOMBSTONES,
     (row) => row.creatureId, 'creature tombstones',
