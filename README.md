@@ -29,7 +29,7 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-26; uncommitted and not browser-certified):** the current
+**Current local v2 candidate (2026-08-26; repaired locally, current browser evidence still red):** the current
 working tree completes the bounded source lanes that followed the retained Arc 5A checkpoint.
 Gate B now recursively seals the exact 62-file domain-source inventory against DOM, storage,
 `navigator`, network, wall/monotonic clock, and uncontrolled-random access; its only two waivers are
@@ -60,12 +60,15 @@ audio/runtime owner. Other creature actions, ambience, music, combat/Guardian au
 assets, full audio accessibility, device plateaus, and HUMAN listening remain open.
 
 The dedicated no-forged-time Arc 4 recovery collector and its mutation-sensitive selftest are
-ready, but the uninterrupted real 20-minute certificate has not run. The current Compendium ruler
-is correctly `calibration-required`: measurement authority
-`cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, producer authority
-`587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, empty phone/desktop
-samples, a measurement-required paired baseline with null collector commit, and `ceilings:null`.
-Its version-tolerant v2 browser authority is Microsoft Edge family + CDP `1.3` + sealed capability
+ready, but the uninterrupted real 20-minute certificate has not run. The former Compendium ruler
+and exact-budget certificate remain truthful historical evidence for producer
+`587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`; they are not rebound to the
+current product. A real product-owner/built-producer change—not the Edge update—moves current
+authority to `calibration-required` for producer
+`f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`. Fresh calibration still
+requires three independent candidates, one paired legacy baseline, activation, and an exact-budget
+certificate plus named verification. The version-tolerant v2 browser authority remains Microsoft
+Edge family + CDP `1.3` + sealed capability
 contract `cf-v2-compendium-cdp-capabilities/v1` (SHA-256
 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`). Exact product version,
 revision, JavaScript version, executable path and user agent remain mandatory per-run provenance;
@@ -73,13 +76,18 @@ phone and desktop samples with one run ID must bind that exact tuple. An Edge au
 forces calibration nor changes a numeric ceiling, while a real observed budget breach remains red.
 This change is Compendium-only: SceneMemory and the root Gate-A browser contract are unchanged.
 
-Browser-free verification of these local bytes is green: 121 test files / 1,354 passed / one
+Browser-free verification of these local bytes is green: 121 test files / 1,356 passed / one
 intentional skip / zero failures; root, app, worker, and `noUnused` TypeScript; an 884-module Vite
 build; root validation with the unchanged 50-probe fingerprint; legacy jsdom smoke; and the
 applicable contract/reporter/Glass/recovery/Compendium selftests. These are local working-tree
-results only. No current-input Slice, Glass, Compendium calibration, recovery certificate, hosted
-run, HUMAN review, whole-Gate closure, release, version bump, preview/publication, or deployment is
-claimed.
+results only. One clean, one-shot current-input Slice run
+`20260826214541492-83064-b252b137f7a3` at signed source `8553bd7…` on Edge
+`151.0.4129.107` ended terminal FAIL after 92,772 ms with three findings and zero retries. The
+Settings 14-versus-15 pressed-control expectation and the Arc 3 stage-1-unreachable target were
+instrument false reds; retained Survey Close focus was a product regression. All three are repaired
+locally, but no rerun PASS exists yet. Current-input Glass, fresh Compendium calibration/certificate,
+the real recovery certificate, hosted execution, HUMAN review, whole-Gate closure, release, version
+bump, preview/publication, and deployment remain unclaimed.
 
 The retained Arc 4/5A checkpoint remains useful historical foundation. Its source-addressed Guide
 kept all 9 categories /43 authored IDs /41 player topics searchable and cross-linked; 24 topics

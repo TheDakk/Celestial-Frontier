@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-26 · SIGNED COMPENDIUM RULER CERTIFIED · SLICE/GLASS/RECOVERY PENDING ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-26 · SLICE RED PRESERVED/REPAIRED · COMPENDIUM RECALIBRATION REQUIRED ◀◀◀
 
 ### Current integration state
 
@@ -35,16 +35,19 @@ the archive verbatim and refresh this handoff in place.
   `git verify-commit` reports a good `git` signature for
   `79046704+TheDakk@users.noreply.github.com`, Ed25519 fingerprint
   `SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`. Signed descendant
-  `6d8f18479cce14dc031608aaa12fca331d1eea20` records that freeze, and signed activation
-  `d33e540f0d620eac34bdc259b7814db0f11a9006` installs the current Compendium ruler and its four
-  retained calibration capsules. Nothing is pushed, hosted, integrated or released.
+  `6d8f18479cce14dc031608aaa12fca331d1eea20` records that freeze, signed activation
+  `d33e540f0d620eac34bdc259b7814db0f11a9006` installs the now-historical Compendium ruler and its
+  four retained calibration capsules, and signed evidence descendant
+  `8553bd78a2b097dcf65c71f4d47f6815af8ee8c8` preserves its exact certificate. The current
+  source/instrument repairs and producer transition remain local. Nothing is pushed, hosted,
+  integrated or released.
 - **Integrated non-browser freeze:** all 121 Vitest files are green with 1,356 passing tests, one
   intentional skip and zero failures. Root/app/worker TypeScript, no-unused, the 884-module Vite
   build, all changed-tool syntax/import/selftests, root `validate.js`, its unchanged 50-probe
   determinism fingerprint, and the complete legacy jsdom smoke pass. Independent audits are clear
   for the implementation lanes, integration repairs, Compendium transition and the frozen
   contract/Slice/Glass tool bytes.
-- **Compendium's current ruler is active and certified:** clean committed source `6d8f184…` supplied
+- **Compendium's former ruler is certified historical evidence:** clean committed source `6d8f184…` supplied
   independent candidates `20260826-phase4-candidate3`, `20260826-phase4-candidate5` and
   `20260826-phase4-candidate6`, plus paired legacy-product baseline
   `20260826-phase4-baseline1` at exact baseline commit
@@ -63,11 +66,16 @@ the archive verbatim and refresh this handoff in place.
   activation `d33e540…`, with its named verifier PASS. Its exact Edge
   `151.0.4129.107`/revision/JavaScript/path/UA tuple is provenance only. Report raw/gzip SHA-256 are
   `3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd` /
-  `5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. This Arc-local ruler does
-  not repin SceneMemory or the root Gate-A browser.
+  `5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. A real
+  product-owner/built-producer change now prevents rebinding that ruler to the current product; this
+  is not an Edge-version rebaseline. Current Compendium authority is `calibration-required` for
+  producer `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, pending three fresh
+  independent candidates, one paired legacy baseline, activation, one exact-budget certificate and
+  named verification. The version-tolerant Edge-family/CDP/capability contract remains unchanged,
+  and this Arc-local transition does not repin SceneMemory or the root Gate-A browser.
 - PR #33 remains merged in `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`
   and PR #34 as `7a9f4c1370dd84292388d718c38ff34214f6203b`; their retained hosted/browser evidence remains
-  historical integration evidence only; the current Compendium certificate above is separate
+  historical integration evidence only; the former Compendium certificate above is separate
   exact-input local proof for `d33e540…` and does not rebind those reports.
 - `main`, the production site and the parked development-preview publisher are unchanged. No push,
   hosted attempt, PR update, merge, preview package, publication, release, deployment, production
@@ -75,14 +83,22 @@ the archive verbatim and refresh this handoff in place.
 
 ### Remaining evidence and decisions
 
-- **Source signing and Compendium certification are resolved:** the source freeze, handoff
-  descendant and activation are signed; no unsigned substitute was used. Selected baseline/candidate
-  evidence, active ceilings, exact-budget certificate and named verifier are complete under the
-  version-tolerant authority. Edge `.101` versus `.107` is provenance drift, not a rebaseline
-  decision.
-- **Next evidence, serial and no-retry:** run one current-input Slice, one full 12-viewport Glass,
-  and the dedicated uninterrupted 1,200,000 ms Arc 4 recovery certificate. Ordinary Slice remains a
-  deliberate nonclaim with `recoveryClaimed:false`.
+- **Source signing and the former Compendium certificate are resolved historical proof:** the source
+  freeze, handoff descendant, activation and certificate-evidence descendant are signed; no unsigned
+  substitute was used. The current product-owner drift requires a fresh calibration/certificate for
+  producer `f7c87f…`. Edge `.101` versus `.107` remains provenance drift and is not that transition's
+  cause.
+- **Current-input Slice chronology is terminal red and preserved:** one clean one-shot run
+  `20260826214541492-83064-b252b137f7a3` against signed source `8553bd7…` on exact Edge
+  `151.0.4129.107` ended FAIL after 92,772 ms with three findings and zero retries. Settings expected
+  14 instead of the actual 15 pressed controls after Creature Voices, and Arc 3 selected a target
+  unreachable at stage 1; both were instrument false reds. Retained Survey Close returned focus to
+  canvas instead of its dock opener; that was a product regression. All three are repaired locally,
+  but no rerun PASS exists yet.
+- **Next evidence, serial and no-retry:** complete the fresh Compendium three-candidate/paired-
+  baseline activation and exact-budget certificate, then run one repaired current-input Slice, one
+  full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms Arc 4 recovery certificate.
+  Ordinary Slice remains a deliberate nonclaim with `recoveryClaimed:false`.
 - HUMAN review remains required for Compendium list/detail/focus, ship readability, the combined Arc
   4 first-journey/ownership experience, Arc 5 attachment, and applicable Arc 7/8 listening/comfort.
   Real-device accessibility, heat and battery evidence remain open. No whole Gate or release is closed.
@@ -270,9 +286,13 @@ rules are not inferred from legacy destructive behavior.
 legacy smoke, Compendium 222-control selftest, Arc 4 contract/Slice/Glass/recovery selftests and
 scoped diff checks are green. The Compendium budget transition independently rejects stale samples,
 invented ceilings, stale baseline state, self-consistent authority drift and premature activation.
-Signed activation `d33e540…` and exact-budget run `20260826-phase4-certification` now add current-input
-Compendium 78/78 plus named-verifier proof; report raw/gzip SHA-256 are `3afe4103…` / `5677d9ed…`.
-Current-input Slice, Glass and recovery results remain pending.
+Signed activation `d33e540…` and exact-budget run `20260826-phase4-certification` remain historical
+78/78 plus named-verifier proof for former producer `587d3bdf…`; report raw/gzip SHA-256 are
+`3afe4103…` / `5677d9ed…`. Current product-owner drift moves authority to `calibration-required`
+for producer `f7c87f22…`. Current-input Slice
+`20260826214541492-83064-b252b137f7a3` is the preserved one-attempt/zero-retry 92,772 ms FAIL:
+two instrument false reds and one product focus regression, all repaired locally without a PASS
+rerun. Glass and recovery results remain pending.
 
 **Arc 7/8 current-system Tame expression (local, 2026-08-26; bounded partial):** `@cf/audio` retains
 its pure resolver-v1 identity/profile/call-plan foundation and injected bounded runtime. The app now
@@ -290,7 +310,8 @@ This is one player-live current-system greeting, **not** Arc 7/8 or Gate G compl
 audition, distant ecology, ambience/music, premium or licensed assets, mono/dynamic-range/reduced-
 intensity controls, combat/Guardian integration, physical-device byte/heat/battery plateaus and all
 HUMAN listening/comfort judgments remain open. Current Slice/Glass tool controls for the greeting
-are browserless-green and independently audited; their real current-input runs have not launched.
+are browserless-green and independently audited. The one current-input Slice execution is the
+preserved three-finding terminal red above; no repaired PASS or current-input Glass run exists yet.
 
 ### SSH and branch discipline
 
@@ -327,38 +348,44 @@ are browserless-green and independently audited; their real current-input runs h
    `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, tracking
    `origin/openai/mac`, exact SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`. Signed
    product/source freeze is `913a327119465ad1f3df85a682d8d78d1ff35cea`; signed Compendium
-   activation is `d33e540f0d620eac34bdc259b7814db0f11a9006`, ahead 73 at that commit.
-   Do not fetch/merge, switch branches, push, dispatch, release or deploy.
+   activation is `d33e540f0d620eac34bdc259b7814db0f11a9006`, and signed former-certificate
+   evidence is `8553bd78a2b097dcf65c71f4d47f6815af8ee8c8`. Do not fetch/merge, switch branches,
+   push, dispatch, release or deploy.
 2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md` and
-   `GITHUB_ACTIONS_BUDGET.md`. The exact 75 implementation/test/budget paths and 23 current
-   references were committed as one reviewed 98-path transaction. Preserve source commit
-   `913a327…`, signed handoff descendant `6d8f184…`, and signed ruler activation `d33e540…`.
+   `GITHUB_ACTIONS_BUDGET.md`. Preserve source commit `913a327…`, signed handoff descendant
+   `6d8f184…`, signed ruler activation `d33e540…`, signed former-certificate evidence `8553bd7…`,
+   and the terminal-red Slice chronology. Do not rebind any of those older artifacts to current
+   product bytes.
 3. The implementation/reference freeze is browserless-green: 121 files/1,356 tests/one skip, all
    TypeScript/no-unused, Vite 884, root validation/fingerprint/smoke and instrument selftests pass.
-   Compendium is active under measurement `cb5cd9f8…` and producer `587d3bdf…`; selected c3/c5/c6
-   plus baseline1 retain exact 14-phone/13-desktop discrimination. Its v2 compatibility authority is
-   Edge family + CDP `1.3` + sealed capability-contract hash, with exact browser-build fields retained
-   only as per-run provenance and same-run phone/desktop pairing. Edge auto-update alone never
-   rebaselines or changes ceilings.
-4. **Signing and Compendium proof:** source commit `913a327…`, handoff descendant `6d8f184…`, and
-   activation `d33e540…` are signed; no unsigned fallback was used. Exact-budget run
-   `20260826-phase4-certification` passed 78/78 plus named verification on exact Edge `.107`, whose
-   build tuple is provenance only. Preserve raw/gzip report hashes `3afe4103…` / `5677d9ed…`.
-5. Require the next evidence-doc descendant to be clean and committed, then run one current-input
-   Slice, one full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms recovery collector.
-   Do not reinterpret Slice's exact nine-stage/14-burn/`recoveryClaimed:false` ledger as recovery proof.
+   Former producer `587d3bdf…` retains historical c3/c5/c6 plus baseline1 and exact
+   14-phone/13-desktop discrimination. Current Compendium state is `calibration-required` for new
+   producer `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`. Its v2 compatibility
+   authority remains Edge family + CDP `1.3` + the sealed capability-contract hash; exact
+   browser-build fields remain per-run provenance with same-run phone/desktop pairing. Edge
+   auto-update alone never rebaselines or changes ceilings.
+4. **Slice red and repairs:** run `20260826214541492-83064-b252b137f7a3` executed exactly once from clean
+   signed `8553bd7…` on Edge `.107`, failed after 92,772 ms with three findings, and was not retried.
+   The 14-versus-15 Settings expectation and stage-1-unreachable Arc 3 target were instrument defects;
+   Survey Close focus was a product defect. All three are repaired locally, but there is no rerun PASS.
+5. Commit the audited repair plus fail-closed Compendium transition on one clean signed head. Then collect
+   three fresh Compendium candidates and one paired legacy baseline, activate only their justified ruler,
+   and run one exact-budget certificate plus named verifier. Only after that clean certificate run one repaired
+   current-input Slice, one full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms recovery
+   collector. Do not reinterpret Slice's exact nine-stage/14-burn/`recoveryClaimed:false` ledger as recovery proof.
 6. After evidence, substitute exact run IDs, commits, browser/source/report hashes and findings into
-   current references and this handoff; keep later documentation-only provenance explicit. No further
-   decision-safe product writer is required before that evidence. Arc 5B breeding/care/mission rules,
+   current references and this handoff; keep later documentation-only provenance explicit. Arc 5B
+   breeding/care/mission rules,
    broader Arc 7/8 soundscape/assets, physical-device reviews and every HUMAN criterion remain later
    product/review work—not missing implementation to invent now.
 7. Claude/Anthropic does not have this local candidate. Nick does not need to open Claude now. Only
    after a future reviewed merge into `develop` should Claude fetch `origin` and merge
    `origin/develop` into a clean `anthropic/mac`; never copy files manually.
 
-**Current side:** OpenAI/Codex macOS — implementation and signed Compendium activation remain local
-and unpushed. Current-input Compendium evidence is certified; Slice, Glass and recovery evidence are
-pending. No Edge-version rebaseline decision remains.
+**Current side:** OpenAI/Codex macOS — implementation, the repaired Slice findings and the Compendium
+producer transition remain local and unpushed. The former Compendium certificate is historical;
+current producer `f7c87f22…` is calibration-required. The one current-input Slice is terminal red
+with all three findings locally repaired and no PASS rerun; Glass and recovery remain pending. No Edge-version rebaseline decision is involved.
 **GitHub step:** none. No push or hosted attempt is authorized.
 **PR details:** not needed while the local campaign is still batching. A future PR, if authorized,
 must use base `develop`, source `openai/mac`, and a refreshed title/body covering the final exact head.

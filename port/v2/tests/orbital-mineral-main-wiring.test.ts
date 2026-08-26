@@ -63,8 +63,17 @@ function wiringErrors(source: string): string[] {
     "surveyDockEl.addEventListener('click', () => {",
     '\nchartsDockEl.addEventListener',
   );
-  if (!dock.includes('if (card.style.display === \'none\' && card.innerHTML && cardCtx) {')
-    || !dock.includes('if (presentPlanetSurvey(context.p, context.star, context.planet)) return;')) {
+  const retained = section(
+    dock,
+    "if (card.style.display === 'none' && card.innerHTML && cardCtx) {",
+    "\n  if (card.style.display === 'none' && card.innerHTML) {",
+  );
+  const retainedPresent = retained.indexOf(
+    'if (presentPlanetSurvey(context.p, context.star, context.planet)) {',
+  );
+  const retainedFocus = retained.indexOf('surveyFocusReturn = surveyDockEl;', retainedPresent);
+  const retainedReturn = retained.indexOf('return;', retainedFocus);
+  if (!(retainedPresent >= 0 && retainedFocus > retainedPresent && retainedReturn > retainedFocus)) {
     errors.push('retained-card-reprojection');
   }
 
@@ -215,7 +224,12 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
       mainSource,
       "surveyDockEl.addEventListener('click', () => {",
       '\nchartsDockEl.addEventListener',
-      '    if (presentPlanetSurvey(context.p, context.star, context.planet)) return;',
+      "    if (presentPlanetSurvey(context.p, context.star, context.planet)) {\n" +
+        "      /* Rebuilding may infer the still-focused canvas as an opener. The\n" +
+        "         explicit dock activation owns the final return lineage. */\n" +
+        "      surveyFocusReturn = surveyDockEl;\n" +
+        "      return;\n" +
+        "    }",
       '    if (card.innerHTML) return;',
     );
     expect(wiringErrors(staleRetainedCard)).toContain('retained-card-reprojection');

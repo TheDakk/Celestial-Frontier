@@ -76,8 +76,8 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-26 local candidate boundary — bounded source lanes plus certified Compendium ruler;
-> Slice, Glass and recovery remain open:** Gate
+> **2026-08-26 local candidate boundary — bounded source lanes; preserved Slice red and current
+> Compendium product-owner recalibration remain open:** Gate
 > B recursively seals an exact 62-file domain inventory against DOM, storage, `navigator`, network,
 > wall/monotonic clock and uncontrolled randomness. Its only two waivers are the exact CombatCore
 > `document.createElement('')` expressions for the legacy avatar painters. D-HAZE moved
@@ -103,9 +103,9 @@
 > combat/Guardian audio, recorded assets, device plateaus and HUMAN listening remain open.
 >
 > The dedicated recovery collector and mutation-sensitive selftest are ready, but the uninterrupted
-> real 20-minute certificate has not run. Compendium is active under measurement
+> real 20-minute certificate has not run. The former Compendium ruler under measurement
 > `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
-> `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`. Clean source
+> `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` is historical. Clean source
 > `6d8f184…` supplied selected candidate3/5/6 plus paired baseline1; signed activation
 > `d33e540…` retains exact 14-phone/13-desktop baseline discrimination. Its
 > version-tolerant v2 browser authority binds Microsoft Edge family, CDP `1.3`, and sealed capability
@@ -117,11 +117,19 @@
 > `20260826-phase4-certification` passed 78/78 plus its named verifier from signed activation
 > `d33e540…`; exact Edge `151.0.4129.107` is provenance only. Report raw/gzip SHA-256 are
 > `3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd` /
-> `5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. This change is scoped to
-> Compendium; SceneMemory and root Gate A are unchanged. Current browser-free local verification is 121 files /1,356 passed /
+> `5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. Real
+> product-owner/built-producer drift—not Edge `.107`—moves current Compendium authority to
+> `calibration-required` for producer
+> `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, pending three fresh
+> candidates, one paired legacy baseline, activation, and one exact-budget certificate plus named
+> verification. This change is scoped to Compendium; SceneMemory and root Gate A are unchanged.
+> Current browser-free local verification is 121 files /1,356 passed /
 > one intentional skip /zero failures, all TypeScript programs including `noUnused`, an 884-module
 > Vite build, root validation/fingerprint, legacy smoke and applicable selftests. Current-input
-> Compendium proof is complete; current-input Slice/Glass, recovery, hosted, HUMAN, whole-Gate,
+> Slice `20260826214541492-83064-b252b137f7a3` executed once at signed `8553bd7…` on Edge `.107`
+> and failed after 92,772 ms with three findings and zero retries: two instrument false reds and one
+> retained-Survey focus product regression. All three are repaired locally, but no rerun PASS exists.
+> Fresh Compendium proof, current-input Glass, recovery, hosted, HUMAN, whole-Gate,
 > release/version, preview/publication and deployment authority remain open.
 >
 > **2026-08-25 local campaign boundary — historical checkpoint, still foundational where the
@@ -1248,10 +1256,11 @@ Arc 2 is not marked program-complete: its source-neutral economy ledger delibera
 Mine/Skim, eligible Deep-Scanner and eligible fixed-Fabrication path; authored new-loot tables/rates, natural-affix
 compatibility, crafted modifier/drawback,
 upgrade/socket policy, source-to-upgrade recovery/pacing, and HUMAN phone/desktop item/compare review
-remain open. The current dependency set has selected Compendium measurement/producer authority;
-candidate3/5/6 plus baseline1 are active with exact 14-phone/13-desktop discrimination, and signed
-activation `d33e540…` passed current exact-budget certificate `20260826-phase4-certification` 78/78
-plus named verification. Slice, Glass and recovery remain pending as described in the status overlay.
+remain open. Candidate3/5/6 plus baseline1, signed activation `d33e540…`, exact
+14-phone/13-desktop discrimination and certificate `20260826-phase4-certification` remain
+historical evidence for former producer `587d3bdf…`. Current producer `f7c87f22…` is
+`calibration-required`; the preserved current-input Slice red and pending fresh Compendium, Glass
+and recovery evidence are described in the status overlay.
 
 ### 5.2 Arc 3 — engineering loop
 
@@ -1392,9 +1401,11 @@ writer, companion UI, assignment, Chronicle or mission exists. The pure model no
 approved care inheritance during new-child construction: exactly
 `0.5 * min(clampedLeftFed, clampedRightFed)` over the bounded 0–200 parent inputs, symmetrically and
 once; later child `fed` remains independently mutable. Focused tests cover that invariant. The
-retained Arc 5A Slice/Glass reports above certify only their 2026-08-25 inputs. Current-input
-Compendium certificate `20260826-phase4-certification` is green for signed activation `d33e540…`;
-current-input Slice, Glass and recovery evidence for the 2026-08-26 candidate remains open.
+retained Arc 5A Slice/Glass reports above certify only their 2026-08-25 inputs. Compendium
+certificate `20260826-phase4-certification` is historical green evidence for signed activation
+`d33e540…` and former producer `587d3bdf…`; current producer `f7c87f22…` requires fresh calibration.
+The one current-input Slice is terminal red with its three findings repaired locally and no PASS
+rerun; current-input Glass and recovery evidence remain open.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.

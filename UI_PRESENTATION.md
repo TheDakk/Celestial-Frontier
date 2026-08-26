@@ -26,10 +26,20 @@
 > landing. Raw mechanics, persisted grade, deterministic descriptors and art hue/designation stay
 > unchanged.
 >
-> Focused source/unit/type/build and browser-tool contract checks cover this local candidate, but its
-> final real-browser Slice/Glass/reload evidence is still pending. No hosted, integration, HUMAN,
-> preview, release or deployment authority follows. Broader Arc 7/8 soundscape/assets and listening/
-> comfort review remain partial.
+> Focused source/unit/type/build and browser-tool contract checks cover this local candidate.
+> Current-input Slice `20260826214541492-83064-b252b137f7a3` executed once from signed `8553bd7…`
+> on Edge `151.0.4129.107` and ended terminal FAIL after 92,772 ms with three findings and zero
+> retries. The Settings 14-versus-15 pressed-control expectation and Arc 3's stage-1-unreachable
+> target were instrument false reds. Retained Survey Close focus returning to canvas instead of the
+> dock opener was a product regression; its opener lineage and both instrument fixtures are repaired
+> locally, but no rerun PASS exists. Browser-free verification remains green at 121 test files,
+> 1,356 passing tests and one intentional skip. The former Compendium certificate remains historical for
+> producer `587d3bdf…`; real product-owner drift moves current producer
+> `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` to
+> `calibration-required`. Edge `.107` is provenance, not the reason. Fresh Compendium proof,
+> current-input Glass/recovery, hosted, integration, HUMAN, preview, release and deployment
+> authority remain open. Broader Arc 7/8 soundscape/assets and listening/comfort review remain
+> partial.
 
 > **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
 > 2026-08-26 overlay does not supersede it:** the native Survey card now
