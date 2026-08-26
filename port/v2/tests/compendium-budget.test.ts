@@ -14,7 +14,8 @@ import {
   calibrationMetrics, candidateCalibrationEvidence,
   compendiumBrowserAuthorityMatches, compendiumBrowserCapabilityInventoryErrors,
   compendiumBudgetBrowserAuthority,
-  compendiumMeasurementAuthority, evaluateProfile, validCompendiumBrowserAuthority,
+  compendiumMeasurementAuthority, evaluateProfile, reduceCalibrationEvidence,
+  validCompendiumBrowserAuthority,
   validateBudgetRecord,
 } from '../tools/compendiummem-contract.mjs';
 import {
@@ -40,6 +41,32 @@ const latestHostedFailureEvidence = Object.freeze({
   rawSha256: '544015e9e8e9e09e6ad6e13c5be40e7629f3e5884e55a147c503234a754f45da',
   gzipSha256: 'cc5ed778f402763f34ceb76785f080b56d61f6067033087b6fe1143a492a28c9',
 });
+const currentSliceRepairCandidateEvidence = [
+  {
+    runId: '20260826-slice-repair-candidate1',
+    file: 'ARC1_COMPENDIUM_SLICE_REPAIR_CANDIDATE1_20260826.json.gz',
+    rawSha256: '8af95c3ec84ce547d938e8574dfa8b6e88911e58170bf74a42f8dab6823bbf42',
+    gzipSha256: '70026ce3344cd1f49228a212fff1235ef5bf5ef523376e508f0f17912c582bd0',
+  },
+  {
+    runId: '20260826-slice-repair-candidate2',
+    file: 'ARC1_COMPENDIUM_SLICE_REPAIR_CANDIDATE2_20260826.json.gz',
+    rawSha256: '22e4fbcbb6f72c7d01d58f6387cf8fc58c97071f74a3be4357c370715994b31a',
+    gzipSha256: '3cb9eebd3145a84364107b3b77cdc14c3e2706fdab9fbf4ce24d1157fbe29863',
+  },
+  {
+    runId: '20260826-slice-repair-candidate3',
+    file: 'ARC1_COMPENDIUM_SLICE_REPAIR_CANDIDATE3_20260826.json.gz',
+    rawSha256: '749ba9301817165ebfe734b4fd6afbba29cc5c7cae0b7e6056910e08dd4b4804',
+    gzipSha256: 'd9e926c32ef19f457e1b88f7632211979f9997fd7e8b01469c81a4d38bff8901',
+  },
+] as const;
+const currentSliceRepairBaselineEvidence = Object.freeze({
+  runId: '20260826-slice-repair-baseline1',
+  file: 'ARC1_COMPENDIUM_SLICE_REPAIR_BASELINE1_SAMPLE_20260826.json.gz',
+  rawSha256: '229735ac1b2e3c87551515d001b6a0c8d76e67f7f1d286272c1517de98ae4109',
+  gzipSha256: '10d54ef58aa051f1eee384ffbf0dcb771f095ef04dbc95a0b6a958449eba91fa',
+});
 const historicalPhase4CandidateEvidence = [
   {
     runId: '20260826-phase4-candidate3',
@@ -61,9 +88,14 @@ const historicalPhase4CandidateEvidence = [
   },
 ] as const;
 const historicalPhase4BaselineEvidence = Object.freeze({
+  runId: '20260826-phase4-baseline1',
   file: 'ARC1_COMPENDIUM_PHASE4_BASELINE1_SAMPLE_20260826.json.gz',
   rawSha256: '24076ba17f0407029e495f56c807ad35fb13c944a4c6bf8f566ec65f136eaec5',
   gzipSha256: 'faae83b7168bb12c9140f3c80be734990f840b3747559a7be690f7d60d15653c',
+  sampleSha256: Object.freeze({
+    phone: '21b6b72e9679c2362922f2495878fd42ecfd8dd95e2d69de9849cc125fe95426',
+    desktop: '49447f67ea294379cbdf5a85a704d87354cca2201a4ab29c49aa663a7aa31b8d',
+  }),
 });
 const historicalCertificationEvidence = Object.freeze({
   file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_CERTIFICATION_20260823.json.gz',
@@ -177,11 +209,11 @@ const HISTORICAL_EDGE_101_BROWSER_AUTHORITY: LegacyBrowserAuthority = Object.fre
 const HISTORICAL_EDGE_101_PRODUCER_AUTHORITY =
   '5a316197d9aca27967f4e930f43089d2bbe2b9e4a66a40c207ea59c809405d94';
 const EXPECTED_CANDIDATE_RUNS = [
-  '20260826-phase4-candidate3',
-  '20260826-phase4-candidate5',
-  '20260826-phase4-candidate6',
+  '20260826-slice-repair-candidate1',
+  '20260826-slice-repair-candidate2',
+  '20260826-slice-repair-candidate3',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260826-phase4-baseline1';
+const EXPECTED_BASELINE_RUN = '20260826-slice-repair-baseline1';
 const historicalPhase4CertificationEvidence = Object.freeze({
   file: 'ARC1_COMPENDIUM_PHASE4_CERTIFICATION_20260826.json.gz',
   runId: '20260826-phase4-certification',
@@ -212,12 +244,19 @@ type ProfileName = typeof PROFILE_NAMES[number];
 type CalibrationSample = {
   runId: string;
   commit: string;
+  workingTreeDigest: string;
   inputDigest: string;
   measurementAuthoritySha256: string;
   producerAuthoritySha256?: string;
+  sourceState: string;
+  sourceChanged: boolean;
+  fixtureRowsSha256: string;
+  measuredAt: string;
   browser: {
+    executable: string;
     product: string;
     revision: string;
+    userAgent: string;
     jsVersion: string;
     protocolVersion: string;
   };
@@ -287,19 +326,19 @@ const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
 }> = {
   phone: {
     candidate: [
-      '03885d5df3618fa4c84e69c740b64e74d1bb80abb71d50e719b8b1d523f20354',
-      'a531e25965d349fcfd289b21b310a27dfaf2c936511fa40989ecb12f7829fb24',
-      'e9873249f91b6c3d4872796e58974a652996bfed16727a42c8a861015ee92861',
+      '1d5137aca8394957b917cf5dc2289db15cd8c676fe1176217c2789ff2256b05a',
+      '161c06a907b8afdb2ffe9a155f1a7d5a3218df1c7cd69e632312fee0434aba9f',
+      '84f5966269a6550d8aee90f13970041c421b963d32de6b19549d7b8e0c96471c',
     ],
-    baseline: '21b6b72e9679c2362922f2495878fd42ecfd8dd95e2d69de9849cc125fe95426',
+    baseline: '9da1f41e26a7fad2ec57996be9037002013f19a6b879f274e6e99134975afffe',
   },
   desktop: {
     candidate: [
-      'bd83077bdd6e5e3141b7047440f9216846438ef99a85940be6e10d0f84383bbe',
-      '17489ed5c50f111829c9a7fb6ec2713715aeb0a2666ba7e4a8b9afe7a0e97e55',
-      '2861984ea7f29067dd0daf997bdc434c5195e333fab974a4a3f09065466b221b',
+      '530ae0741a6f84a9596df455d20311eec4d9ab0a26dd1d7c251f1443487597f5',
+      '46d5372495a205f23ad80f18e4835da5026e00e89214885a5c669e908e68c27b',
+      '97e9014cbfdb9fc7c8ef67532e30a8af7c0ebe53d87dbe60713d7d60b4db8273',
     ],
-    baseline: '49447f67ea294379cbdf5a85a704d87354cca2201a4ab29c49aa663a7aa31b8d',
+    baseline: '493bb0c513abab7312eabf9ca0a9afe3e886e87f02fc438f5332816c92b449f9',
   },
 };
 
@@ -323,7 +362,7 @@ const EXPECTED_CEILINGS: Record<ProfileName, Record<string, number>> = {
     liveSubscribersMax: 0.5,
     livePortraitCacheEntriesMax: 1.5,
     livePortraitEncodedBytesMax: 262_144,
-    warmHeapAggregateRangeBytesMax: 262_144,
+    warmHeapAggregateRangeBytesMax: 524_288,
     warmEncodedBytesRangeMax: 0.5,
   },
   desktop: {
@@ -644,8 +683,8 @@ describe('Arc 1A Compendium budget authority', () => {
     }).join('\n')).toContain('lacks Browser.getVersion provenance');
   });
 
-  it('fails closed for the current producer without rebinding the historical ruler', () => {
-    expect(activeBudget.status).toBe('calibration-required');
+  it('activates the current producer without rebinding the historical ruler', () => {
+    expect(activeBudget.status).toBe('active');
     if (activeBudget.status === 'calibration-required') {
       expect(activeBudget.browserAuthority).toEqual(EXPECTED_BROWSER_AUTHORITY);
       expect(activeBudget.measurementAuthority.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
@@ -806,8 +845,127 @@ describe('Arc 1A Compendium budget authority', () => {
     }
   });
 
+  it('rederives every active sample from the four retained slice-repair carriers', () => {
+    expect(activeBudget.status).toBe('active');
+    for (const [runIndex, evidence] of currentSliceRepairCandidateEvidence.entries()) {
+      const compressed = fs.readFileSync(path.join(v2Root, '..', '..', 'audits', evidence.file));
+      expect(createHash('sha256').update(compressed).digest('hex')).toBe(evidence.gzipSha256);
+      const raw = gunzipSync(compressed);
+      expect(createHash('sha256').update(raw).digest('hex')).toBe(evidence.rawSha256);
+      const report = JSON.parse(raw.toString('utf8')) as {
+        schema: string; runId: string; status: string; startedAt: string; endedAt: string;
+        lifecycle: { status: string }; policy: { attemptCount: number; automaticRetries: number };
+        source: { begin: Record<string, string>; end: Record<string, string> };
+        inputs: Record<string, string>; browser: Record<string, string>;
+        budget: {
+          status: string; browserAuthorityMatch: boolean; producerAuthorityMatch: boolean;
+          producerAuthority: { sha256: string }; observedProducerAuthority: unknown;
+        };
+        outcomes: Array<{ status: string }>; findings: string[];
+        profiles: Record<ProfileName, Parameters<typeof calibrationMetrics>[0]>;
+      };
+      expect(report).toMatchObject({
+        schema: 'cf-v2-compendium-memory-report/v1',
+        runId: evidence.runId,
+        status: 'calibration',
+        lifecycle: { status: 'complete' },
+        policy: { attemptCount: 1, automaticRetries: 0 },
+        findings: [],
+      });
+      expect(report.source.begin).toEqual(report.source.end);
+      expect(report.source.begin).toMatchObject({
+        commit: '8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527',
+        branch: 'openai/mac',
+        state: 'committed',
+        statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      });
+      expect(report.budget).toMatchObject({
+        status: 'calibration-required',
+        browserAuthorityMatch: true,
+        producerAuthorityMatch: true,
+        producerAuthority: { sha256: EXPECTED_PRODUCER_AUTHORITY },
+      });
+      expect(report.budget.observedProducerAuthority).toEqual(report.budget.producerAuthority);
+      expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
+        .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+      expect(report.outcomes).toHaveLength(78);
+      expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
+
+      for (const profile of PROFILE_NAMES) {
+        const selected = activeBudget.calibration.samples[profile][runIndex] as
+          CalibrationSample & Record<string, unknown>;
+        const { measuredAt, ...selectedWithoutTimestamp } = selected;
+        const measurement = report.profiles[profile];
+        expect(selectedWithoutTimestamp).toEqual({
+          runId: report.runId,
+          commit: report.source.begin.commit,
+          workingTreeDigest: report.source.begin.workingTreeSha256,
+          inputDigest: createHash('sha256').update(stableJson(report.inputs)).digest('hex'),
+          measurementAuthoritySha256: compendiumMeasurementAuthority(report.inputs)?.sha256,
+          producerAuthoritySha256: report.budget.producerAuthority.sha256,
+          sourceState: report.source.begin.state,
+          sourceChanged: false,
+          fixtureRowsSha256: report.inputs.fixtureRows,
+          browser: {
+            executable: report.browser.executable,
+            product: report.browser.product,
+            revision: report.browser.revision,
+            userAgent: report.browser.user_agent,
+            jsVersion: report.browser.js_version,
+            protocolVersion: report.browser.protocol_version,
+          },
+          metrics: calibrationMetrics(measurement),
+          evidence: candidateCalibrationEvidence(measurement, { runId: report.runId }),
+        });
+        expect(typeof measuredAt).toBe('string');
+        expect(Date.parse(String(measuredAt))).toBeGreaterThanOrEqual(Date.parse(report.startedAt));
+        expect(Date.parse(String(measuredAt))).toBeLessThanOrEqual(Date.parse(report.endedAt));
+        expect(reduceCalibrationEvidence(selected.evidence)?.metrics).toEqual(selected.metrics);
+      }
+      expect(activeBudget.calibration.samples.phone[runIndex]?.measuredAt)
+        .toBe(activeBudget.calibration.samples.desktop[runIndex]?.measuredAt);
+    }
+
+    const baselineCompressed = fs.readFileSync(path.join(
+      v2Root, '..', '..', 'audits', currentSliceRepairBaselineEvidence.file,
+    ));
+    expect(createHash('sha256').update(baselineCompressed).digest('hex'))
+      .toBe(currentSliceRepairBaselineEvidence.gzipSha256);
+    const baselineRaw = gunzipSync(baselineCompressed);
+    expect(createHash('sha256').update(baselineRaw).digest('hex'))
+      .toBe(currentSliceRepairBaselineEvidence.rawSha256);
+    const baselineCarrier = JSON.parse(baselineRaw.toString('utf8')) as {
+      schema: string; runId: string; status: string;
+      budgetAuthority: { collectorCommit: string; measurementAuthoritySha256: string };
+      baselineSource: { begin: { commit: string }; end: { commit: string } };
+      collectorSource: { begin: { commit: string }; end: { commit: string } };
+      samples: Record<ProfileName, CalibrationSample>;
+    };
+    expect(baselineCarrier).toMatchObject({
+      schema: 'cf-v2-compendium-memory-baseline-sample/v1',
+      runId: currentSliceRepairBaselineEvidence.runId,
+      status: 'paired-broken-baseline-observation-not-a-budget',
+      budgetAuthority: {
+        collectorCommit: '8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527',
+        measurementAuthoritySha256: EXPECTED_MEASUREMENT_AUTHORITY,
+      },
+    });
+    expect(baselineCarrier.baselineSource.begin.commit)
+      .toBe(activeBudget.pairedBrokenBaseline.commit);
+    expect(baselineCarrier.baselineSource.end).toEqual(baselineCarrier.baselineSource.begin);
+    expect(baselineCarrier.collectorSource.begin.commit)
+      .toBe(activeBudget.pairedBrokenBaseline.collectorCommit);
+    expect(baselineCarrier.collectorSource.end).toEqual(baselineCarrier.collectorSource.begin);
+    for (const profile of PROFILE_NAMES) {
+      const selected = activeBudget.pairedBrokenBaseline.samples[profile][0];
+      expect(selected).toEqual(baselineCarrier.samples[profile]);
+      expect(reduceCalibrationEvidence(selected?.evidence)?.metrics).toEqual(selected?.metrics);
+      expect(selected?.observedFaults).toEqual(BROKEN_BASELINE_EXPECTED_FAULTS);
+    }
+  });
+
   it('retains the prior phase-4 calibration capsules as historical evidence only', () => {
-    expect(activeBudget.status).toBe('calibration-required');
+    expect(activeBudget.status).toBe('active');
     for (const evidence of historicalPhase4CandidateEvidence) {
       const compressed = fs.readFileSync(path.join(v2Root, '..', '..', 'audits', evidence.file));
       expect(createHash('sha256').update(compressed).digest('hex')).toBe(evidence.gzipSha256);
@@ -865,7 +1023,7 @@ describe('Arc 1A Compendium budget authority', () => {
       collectorSource: { begin: { commit: string }; end: { commit: string } };
       samples: Record<ProfileName, CalibrationSample>;
     };
-    expect(baselineCarrier.runId).toBe(EXPECTED_BASELINE_RUN);
+    expect(baselineCarrier.runId).toBe(historicalPhase4BaselineEvidence.runId);
     expect(baselineCarrier.status).toBe('paired-broken-baseline-observation-not-a-budget');
     expect(baselineCarrier.budgetAuthority.measurementAuthoritySha256)
       .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
@@ -876,10 +1034,13 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(baselineCarrier.collectorSource.end).toEqual(baselineCarrier.collectorSource.begin);
     for (const profile of PROFILE_NAMES) {
       expect(sampleObjectSha256(baselineCarrier.samples[profile]))
-        .toBe(EXPECTED_SAMPLE_OBJECT_SHA256[profile].baseline);
+        .toBe(historicalPhase4BaselineEvidence.sampleSha256[profile]);
       expect(baselineCarrier.samples[profile].observedFaults)
         .toEqual(BROKEN_BASELINE_EXPECTED_FAULTS);
-      expect(activeBudget.pairedBrokenBaseline.samples[profile]).toEqual([]);
+      expect(activeBudget.pairedBrokenBaseline.samples[profile][0]?.runId)
+        .toBe(EXPECTED_BASELINE_RUN);
+      expect(activeBudget.pairedBrokenBaseline.samples[profile][0])
+        .not.toEqual(baselineCarrier.samples[profile]);
     }
   });
 
@@ -961,8 +1122,8 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(report.outcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
     expect(report.outcomes).toHaveLength(78);
     expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
-    expect(activeBudget.status).toBe('calibration-required');
-    expect(activeBudget.ceilings).toBeNull();
+    expect(activeBudget.status).toBe('active');
+    expect(activeBudget.ceilings).not.toBeNull();
   });
 
   it('retains the superseded exact-budget certificate without rebinding it', () => {
@@ -1312,7 +1473,8 @@ describe('Arc 1A Compendium budget authority', () => {
         ceilingField: 'warmHeapAggregateRangeBytesMax',
         sampleField: 'warmHeapAggregateRangeBytes',
         observed: RETAINED_LINUX_COMPATIBILITY.phone.warmHeapAggregateRangeBytes,
-        expectedHeadroom: 164_824,
+        expectedCeiling: 524_288,
+        expectedHeadroom: 426_968,
         expectedFailure: 'phone/warm-plateau',
       },
       {
@@ -1320,6 +1482,7 @@ describe('Arc 1A Compendium budget authority', () => {
         ceilingField: 'livePortraitEncodedBytesMax',
         sampleField: 'livePortraitEncodedBytes',
         observed: RETAINED_LINUX_COMPATIBILITY.phone.livePortraitEncodedBytes,
+        expectedCeiling: 262_144,
         expectedHeadroom: 41_614,
         expectedFailure: 'phone/byte-ceiling',
       },
@@ -1328,6 +1491,7 @@ describe('Arc 1A Compendium budget authority', () => {
         ceilingField: 'livePortraitEncodedBytesMax',
         sampleField: 'livePortraitEncodedBytes',
         observed: RETAINED_LINUX_COMPATIBILITY.desktop.livePortraitEncodedBytes,
+        expectedCeiling: 262_144,
         expectedHeadroom: 41_614,
         expectedFailure: 'desktop/byte-ceiling',
       },
@@ -1336,7 +1500,7 @@ describe('Arc 1A Compendium budget authority', () => {
       const ceiling = Number(activeBudget.ceilings![observation.profile][observation.ceilingField]);
       const baseline = activeBudget.pairedBrokenBaseline.samples[observation.profile][0];
       const admitted = (value: number) => Number.isSafeInteger(value) && value <= ceiling;
-      expect(ceiling).toBe(262_144);
+      expect(ceiling).toBe(observation.expectedCeiling);
       expect(admitted(observation.observed)).toBe(true);
       expect(admitted(ceiling)).toBe(true);
       expect(admitted(ceiling + 1)).toBe(false);

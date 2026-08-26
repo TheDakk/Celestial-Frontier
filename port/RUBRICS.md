@@ -31,12 +31,16 @@ never rebaselines or changes ceilings, while a real measured breach remains red.
 `d33e540…`; exact Edge `151.0.4129.107` is provenance only, and report raw/gzip SHA-256 are
 `3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd` /
 `5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. A real
-product-owner/built-producer change—not the Edge update—moves current authority to
-`calibration-required` for producer
-`f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, pending three fresh
-candidates, one paired legacy baseline, activation, and one exact-budget certificate plus named
-verification. This is Compendium-only; SceneMemory and root Gate A are unchanged. Browser-free
-verification is green at 121 files /1,356 passed /one intentional skip /zero failures,
+product-owner/built-producer change—not the Edge update—required current-product calibration.
+Signed source `8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527` supplied independent
+`20260826-slice-repair-candidate1`, `20260826-slice-repair-candidate2` and `20260826-slice-repair-candidate3` plus paired `20260826-slice-repair-baseline1`, each one
+attempt and zero retries. The active ruler binds the same measurement authority, current producer
+`f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, and budget-file SHA-256
+`6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. All four sealed baseline
+faults and exact 14-phone/13-desktop discrimination remain; only the phone warm ceiling changed to
+`524288`, with every other numeric ceiling unchanged. Its exact-budget certificate and named
+verifier are pending. This is Compendium-only; exact Edge `.107` is provenance only, and
+SceneMemory/root Gate A are unchanged. Browser-free verification is green at 121 files /1,357 passed /one intentional skip /zero failures,
 `root/app/worker/noUnused` TypeScript, 884-module Vite, root validation/fingerprint, legacy smoke
 and applicable selftests. Current-input Slice `20260826214541492-83064-b252b137f7a3` ran once from
 signed `8553bd7…` on Edge `.107` and failed after 92,772 ms with three findings and zero retries: two
@@ -214,7 +218,7 @@ ever substitute for a person, and it is deliberately expensive.
 
 | | Criterion | Evidence |
 |---|---|---|
-| `[EXEC-TODO]` | Maximum-size Compendium mounts/paints only a bounded visible window and plateaus after warmup for the current producer | Product virtualization, art ownership and focus/filter/detail/Close outcomes are implemented. Measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, former producer `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, selected candidate3/5/6, baseline1, activation `d33e540…`, and certificate `20260826-phase4-certification` remain truthful historical proof with exact 14-phone/13-desktop discrimination. Current producer `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is `calibration-required` pending three fresh candidates, one paired baseline, activation and one certificate plus named verifier. This is real product-owner drift, not an Edge auto-update trigger. Browser authority remains Edge family + CDP `1.3` + sealed capability-contract SHA-256 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`; exact build fields stay same-run provenance. Six-image HUMAN judgment remains separate; SceneMemory and root Gate A are unchanged. |
+| `[EXEC-TODO]` | Maximum-size Compendium mounts/paints only a bounded visible window and plateaus after warmup for the current producer | Product virtualization, art ownership and focus/filter/detail/Close outcomes are implemented. Measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, former producer `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, selected candidate3/5/6, baseline1, activation `d33e540…`, and certificate `20260826-phase4-certification` remain truthful historical proof. Signed current source `8ffd2e2…` supplied `20260826-slice-repair-candidate1/2/3` plus paired `20260826-slice-repair-baseline1`, each one attempt/zero retries. Active budget `6284a394…` binds producer `f7c87f22…`, retains all four faults and exact 14-phone/13-desktop discrimination, and changes only the phone warm ceiling to `524288`; certificate/named verification remain pending. This is real product-owner drift, not an Edge auto-update trigger; `.107` is provenance only. Browser authority remains Edge family + CDP `1.3` + sealed capability-contract SHA-256 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Six-image HUMAN judgment remains separate; SceneMemory and root Gate A are unchanged. |
 | `[HUMAN]` | The maximum Compendium's 132px list art, 440px detail art, hierarchy and focus treatment read correctly on phone and desktop | **OUTSTANDING — not run.** Review six fresh run-bound list/detail/focus-pinned images. Automated geometry, reachability and resource evidence cannot certify visual quality or focus feel |
 | `[EXEC]` | Ship art, installed-system captions and travel reach derive from one normalized state | Product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` makes travel, captions, four SVG chassis, exact `array`/`autoext`/`cscoop` hardpoints and diagnostics consume one unsaved projection. Unit/integration/browser controls cover 64 normalized cases, all eight hardpoint permutations, reload-shaped reconstruction, imported-veteran fallback, friendly-alias rejection, deliberately mismatched selectors, one-preview ownership and real opener/Close state parity. Active repair source `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` passed the current scene-memory-v2 42/42 certification and named verifier under budget `5c8a6e75…`; `59530da…` / `3b71d14c…` remains historical. Terminal-green run `32646110946` then merged this evidence in PR #33. |
 | `[HUMAN]` | Inventory item treatment and every ship stage read clearly at phone row, inspector and native scales | **OUTSTANDING.** Exact Inventory rows/detail/comparison and all four Shipyard stages are now reviewable, but automation cannot judge item-art hierarchy, conditional-copy comprehension, appeal or silhouette strength; the bespoke paper-doll/item-art layer remains open. |
