@@ -9,10 +9,10 @@
  */
 import {
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
-  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
   arc4OwnershipLegacyMirrorMatches,
   arc2LootLegacyMirrorMatches,
   applyV5ExtensionWrites,
+  committedArc5OwnershipState,
   importSaveV2,
   migrateLegacyOwnership,
   prepareArc4OwnershipLegacyMigration,
@@ -22,6 +22,8 @@ import {
   readArc5OwnershipMigration,
   readArc2Loot,
   type Arc4OwnershipLegacyMigrationPreparation,
+  type Arc5OwnershipMigrationEvidence,
+  type Arc5OwnershipMigrationEvidenceV2,
   type Arc5OwnershipMigrationPreparation,
   type Arc2LootStateV1,
   type Arc2LootWritePreparation,
@@ -35,9 +37,7 @@ import { MAX_GEAR_CAPACITY } from '@cf/domain-loot';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   canonicalJson,
-  ownershipSourceStateV1,
   ownershipStateDigestV1,
-  ownershipStateDigestV2,
   type OwnershipStateV1,
   type OwnershipStateV2,
 } from '@cf/domain-acquisition';
@@ -102,6 +102,7 @@ export type TrainingArc5RestorePreparation =
   | {
       readonly kind: 'preserved';
       readonly state: OwnershipStateV2;
+      readonly evidence: Arc5OwnershipMigrationEvidenceV2;
       readonly writes: readonly [];
       readonly extensions: V5Extensions;
     }
@@ -109,6 +110,7 @@ export type TrainingArc5RestorePreparation =
       readonly kind: 'deferred';
       readonly reason: 'source-deferred';
       readonly state: OwnershipStateV2 | null;
+      readonly evidence: Arc5OwnershipMigrationEvidence | null;
       readonly writes: readonly [];
       readonly extensions: V5Extensions;
     }
@@ -184,10 +186,10 @@ export function prepareTrainingArc4Restore(
 }
 
 /** Keep Arc 5 coherent with Training's exact replacement boundary. A genuine
- * legacy restore derives a fresh certificate only after Arc 4's 18 writes are
- * prepared. Current aligned authority is preserved, while a source-deferred
- * completion may validate but never bootstrap or repair Arc 5. Any corrupt,
- * future, misplaced, or drifted certificate refuses the replacement. */
+ * legacy restore derives the compact manifest and four fixed delta shards only
+ * after Arc 4's 18 writes are prepared. Current aligned authority is preserved,
+ * while a source-deferred completion may validate but never bootstrap or repair
+ * Arc 5. Any corrupt, future, misplaced, or drifted carrier refuses the replacement. */
 export function prepareTrainingArc5Restore(input: Readonly<{
   checkpointKind: ImportTrainingSnapshotIngressV2['kind'] | 'source-deferred';
   legacyFieldsRestored: boolean;
@@ -256,6 +258,7 @@ export function prepareTrainingArc5Restore(input: Readonly<{
       kind: 'deferred',
       reason: 'source-deferred',
       state: current.kind === 'loaded' ? current.state : null,
+      evidence: current.kind === 'loaded' ? current.evidence : null,
       writes: EMPTY_ARC5_WRITES,
       extensions: input.baseExtensions,
     });
@@ -271,6 +274,7 @@ export function prepareTrainingArc5Restore(input: Readonly<{
   return Object.freeze({
     kind: 'preserved',
     state: prepared.state,
+    evidence: prepared.evidence,
     writes: EMPTY_ARC5_WRITES,
     extensions: input.baseExtensions,
   });
@@ -330,34 +334,18 @@ export function committedTrainingArc4State(
   }
 }
 
-/** Bind Training's one newly written certificate to its exact durable bytes
- * and the freshly committed Arc 4 source. Null is read-only convergence by
- * reload; it never authorizes a second Training write. */
+/** Bind Training's five newly written compact carriers to their exact durable
+ * bytes, current-v2 evidence and freshly committed Arc 4 source. Null is
+ * read-only convergence by reload; it never authorizes a second write. */
 export function committedTrainingArc5State(
   prepared: PreparedTrainingArc5Restore,
   extensions: V5Extensions,
-): OwnershipStateV2 | null {
-  try {
-    if (prepared.writes.length !== 1) return null;
-    const write = prepared.writes[0]!;
-    if (write.segment !== ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.segment
-      || write.namespace !== ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace) return null;
-    const carrier = extensions[write.segment]?.[write.namespace];
-    if (carrier === undefined
-      || carrier.version !== write.carrier.version
-      || carrier.json !== write.carrier.json) return null;
-    const loaded = readArc5OwnershipMigration(
-      extensions,
-      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    );
-    if (loaded.kind !== 'loaded'
-      || ownershipStateDigestV2(loaded.state) !== ownershipStateDigestV2(prepared.state)
-      || ownershipStateDigestV1(ownershipSourceStateV1(loaded.state))
-        !== ownershipStateDigestV1(ownershipSourceStateV1(prepared.state))) return null;
-    return loaded.state;
-  } catch {
-    return null;
-  }
+): ReturnType<typeof committedArc5OwnershipState> {
+  return committedArc5OwnershipState(
+    prepared,
+    extensions,
+    SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  );
 }
 
 function checkpointRaw(

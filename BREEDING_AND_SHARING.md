@@ -5,18 +5,20 @@
 > tuple for an owned-creature identity while excluding XP, feeding, brood, injury, bond and
 > assignment; forward/reverse parents remain distinct and malformed/future/mismatched payloads fail
 > closed. Ownership-v2 separately defines receipt-bound deterministic fauna-only child successors,
-> local child ids, ordered genome parent evidence, dispositions and tombstones. The additive Arc 5
-> projection certificate binds exact fresh V1/V2 modes, revisions and digests and stores no duplicate
-> state. Arc 5A activates that certificate in app boot, genuine legacy Training and every Arc 4
-> capture successor. The internal bridge can advance only the exact registered Arc 4-source
-> projection; it is absent from the public package root and cannot mint an Arc 5-only product change.
+> local child ids, ordered genome parent evidence, dispositions and tombstones. Arc 5's implemented
+> compact authority is one version-2 manifest plus exactly four fixed generic delta shards. It binds
+> the exact Arc 4 source, canonical delta and reconstructed V2 target fixed points without copying
+> unchanged Arc 4 ownership. App boot, genuine legacy Training and every Arc 4 capture successor use
+> the exact five-write tuple; aligned legacy-v1 upgrades once and aligned current-v2 writes nothing.
+> The internal V2-only successor also replaces exactly five carriers, but it is absent from the
+> public package root and cannot be invoked as a player Arc 5-only product change.
 >
 > No breeding, feeding, care, Recovery, assignment, companion or share UI writer is live in v2.
 > The non-consuming parent/Recovery design below therefore remains the product contract, not a
-> shipped action; the activated projection cannot grant a child or persist V2-exclusive state.
-> The fixed-four-shard compact delta carrier required for that later authority keeps namespace count
-> O(1) and is explicitly design-only in
-> `SAVE_SYSTEM.md`. Guide, release and Training lesson capability remain unchanged.
+> shipped action; no app path invokes the internal V2-only successor or grants a child. The compact
+> carrier keeps namespace count O(1): source-only growth leaves all four canonical empty-shard bytes
+> unchanged, and every reader verifies source/delta/target plus each shard. Guide, release and
+> Training lesson capability remain unchanged.
 
 > **2026-08-15 F2 sharing overlay (historical foundation; current where not superseded above;
 > supersedes the open CF1

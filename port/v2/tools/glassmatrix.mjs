@@ -45,6 +45,7 @@ import {
   ARC4_CAPTURE_UI_EXPRESSION,
   ARC4_CAPTURE_VERBS,
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
+  ARC5_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
   arc4DurableEvidenceComplete,
   arc4CaptureUiSnapshotComplete,
@@ -708,9 +709,9 @@ function arc4OwnedAliasRows(codex, names) {
    bound: a different ecology epoch would select a different authoritative
    roster and must not be normalized as checkpoint noise. Everything Arc 4
    can own or spend remains exact: all eighteen canonical Arc 4 ownership
-   carrier byte strings, the one aligned source-bound Arc 5 certificate,
-   both copies of the v4 mirrors/rewards/counters, SessionRNG, and every
-   receipt key/raw row. */
+   carrier byte strings, the aligned source-bound Arc 5 manifest and four
+   fixed delta-shard byte strings, both copies of the v4 mirrors/rewards/
+   counters, SessionRNG, and every receipt key/raw row. */
 function arc4DurableNoMutationProjection(value) {
   if (!arc4DurableEvidenceComplete(value)) return null;
   const v4OwnedCounters = projectArc4V4OwnedCounters(value);
@@ -728,10 +729,24 @@ function arc4DurableNoMutationProjection(value) {
     });
   }
   if (ownershipCarriers.length !== 18) return null;
-  const arc5Carrier = arc5Migration.carrier;
-  if (!arc5Carrier || arc5Migration.target.segment !== 'player'
-    || arc5Migration.target.namespace
-      !== ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace) return null;
+  if (arc5Migration.representationVersion !== 2
+    || !exactJson(arc5Migration.targets, ARC5_OWNERSHIP_EXTENSION_TARGETS)
+    || !Array.isArray(arc5Migration.carriers)
+    || arc5Migration.carriers.length !== ARC5_OWNERSHIP_EXTENSION_TARGETS.length
+    || arc5Migration.carriers.some((carrier) => (
+      !carrier || Object.keys(carrier).sort().join('\0') !== 'json\0version'
+      || carrier.version !== 2 || typeof carrier.json !== 'string'
+    ))) return null;
+  const arc5Carriers = ARC5_OWNERSHIP_EXTENSION_TARGETS.map((target, index) => {
+    const carrier = arc5Migration.carriers[index];
+    return {
+      ...target,
+      version: carrier.version,
+      json: carrier.json,
+      byteLength: Buffer.byteLength(carrier.json, 'utf8'),
+      jsonSha256: sha256(carrier.json),
+    };
+  });
   const legacy = value.legacy;
   const split = {
     codex: value.catalogRow?.data?.codex,
@@ -753,15 +768,20 @@ function arc4DurableNoMutationProjection(value) {
     schema: 'cf-v2-glass-arc4-no-mutation-projection/v1',
     ownershipCarriers,
     arc5Migration: {
-      target: { ...arc5Migration.target },
-      carrier: {
-        version: arc5Carrier.version,
-        json: arc5Carrier.json,
-        byteLength: Buffer.byteLength(arc5Carrier.json, 'utf8'),
-        jsonSha256: sha256(arc5Carrier.json),
-      },
+      representationVersion: arc5Migration.representationVersion,
+      targets: arc5Migration.targets,
+      carriers: arc5Carriers,
+      manifest: arc5Migration.manifest,
+      source: arc5Migration.source,
+      delta: arc5Migration.delta,
+      targetMirror: arc5Migration.targetMirror,
+      shards: arc5Migration.shards,
       sourceDigest: arc5Migration.sourceDigest,
+      deltaDigest: arc5Migration.deltaDigest,
       targetDigest: arc5Migration.targetDigest,
+      deltaRowCount: arc5Migration.deltaRowCount,
+      shardCount: arc5Migration.shards.length,
+      shardDigests: arc5Migration.shardDigests,
     },
     v4Mirror: {
       legacy: {
@@ -813,31 +833,56 @@ function arc5TargetMirrorFromArc4Mirror(source) {
   };
 }
 
-function arc5CertificateFromArc4Mirror(source) {
-  const target = arc5TargetMirrorFromArc4Mirror(source);
-  return {
-    schema: 'cf-v2-ownership-v1-to-v2/v1',
-    version: 1,
+function arc5CompactRepresentationFromArc4Mirror(source) {
+  const targetMirror = arc5TargetMirrorFromArc4Mirror(source);
+  const delta = {
+    schema: 'cf-v2-ownership-delta/v1', version: 1, rows: [],
+  };
+  const deltaDigest = sha256(arc4CanonicalJson(delta));
+  const emptyShardDigest = sha256(arc4CanonicalJson([]));
+  const shards = Array.from({ length: 4 }, (_, index) => ({
+    schema: 'cf-v2-ownership-delta-shard/v1',
+    version: 2,
+    index,
+    count: 4,
+    start: 0,
+    end: 0,
+    total: 0,
+    digest: emptyShardDigest,
+    rows: [],
+  }));
+  const shardDigests = shards.map(({ digest }) => digest);
+  const manifest = {
+    schema: 'cf-v2-ownership-v1-to-v2/v2',
+    version: 2,
     sourceSchema: source.schema,
     sourceVersion: source.version,
     sourceRevision: source.revision,
     sourceMode: source.mode,
     sourceDigest: sha256(JSON.stringify(source)),
-    targetSchema: target.schema,
-    targetVersion: target.version,
-    targetRevision: target.revision,
-    targetMode: target.source.mode,
-    targetDigest: sha256(JSON.stringify(target)),
+    targetSchema: targetMirror.schema,
+    targetVersion: targetMirror.version,
+    targetRevision: targetMirror.revision,
+    targetMode: targetMirror.source.mode,
+    targetDigest: sha256(JSON.stringify(targetMirror)),
+    deltaSchema: delta.schema,
+    deltaVersion: delta.version,
+    deltaDigest,
+    deltaRowCount: delta.rows.length,
+    fixedShardCount: shards.length,
+    shardDigests,
   };
+  return { manifest, shards, source, delta, targetMirror };
 }
 
 function arc5OwnershipV2SelftestState(evidence) {
   const migration = projectArc5OwnershipMigrationEvidence(evidence);
   if (migration === null) return null;
   return {
-    schema: 'cf-v2-arc5-app-state/v1',
+    schema: 'cf-v2-arc5-app-state/v2',
     stateKind: 'loaded',
     mode: migration.source.mode,
+    representationVersion: migration.representationVersion,
     protection: migration.source.mode === 'current' ? null : 'legacy-protected',
     bootstrapPending: false,
     bootstrapOutcome: 'aligned',
@@ -845,7 +890,12 @@ function arc5OwnershipV2SelftestState(evidence) {
     sourceRevision: migration.source.revision,
     sourceDigest: migration.sourceDigest,
     targetDigest: migration.targetDigest,
-    acquisitions: migration.source.discoveries.length,
+    deltaDigest: migration.deltaDigest,
+    deltaRows: migration.deltaRowCount,
+    deltaShardCount: migration.shards.length,
+    deltaShardDigests: migration.shardDigests,
+    acquisitions: migration.source.discoveries.length
+      + migration.targetMirror.bredAcquisitions.length,
     bredAcquisitions: migration.targetMirror.bredAcquisitions.length,
     creatures: migration.targetMirror.creatures.length,
     creatureTombstones: migration.targetMirror.creatureTombstones.length,
@@ -877,13 +927,17 @@ function arc4DurableProjectionSelftestFixture({
     },
     planet: { seed: 133, ordinal: 2 },
   };
+  const speciesId = `species-v1:${'1'.repeat(64)}`;
+  const genomeIdentity = `genome-v1:${'2'.repeat(64)}`;
+  const discoveryId = `discovery-v1:${'3'.repeat(64)}`;
+  const creatureId = `creature-v1:${'4'.repeat(64)}`;
   const species = {
-    speciesId: 'species-v1:selftest', genomeIdentity: 'genome-v1:selftest',
+    speciesId, genomeIdentity,
     kingdom: 'fauna', genome: { gen: 0, seed: 111 },
-    alias: speciesAlias, firstObservationId: 'discovery-v1:selftest',
+    alias: speciesAlias, firstObservationId: discoveryId,
   };
   const discovery = {
-    recordId: 'discovery-v1:selftest', speciesId: species.speciesId,
+    recordId: discoveryId, speciesId: species.speciesId,
     acquisition: 'tame',
     provenance: {
       kind: 'world', verb: 'tame', worldKey, worldAddress, cycle: 0,
@@ -892,7 +946,7 @@ function arc4DurableProjectionSelftestFixture({
     firstForSpecies: true,
   };
   const creature = {
-    creatureId: 'creature-v1:selftest', speciesId: species.speciesId,
+    creatureId, speciesId: species.speciesId,
     genomeIdentity: species.genomeIdentity, genome: species.genome,
     nickname: null, origin: 'wild', acquisitionRecordId: discovery.recordId,
     lineage: { kind: 'none', generation: 0 },
@@ -961,12 +1015,13 @@ function arc4DurableProjectionSelftestFixture({
   extensionRows.player['arc4.ownership.progress'] = {
     version: 1, json: arc4CanonicalJson(progress),
   };
-  extensionRows[ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.segment][
-    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
-  ] = {
-    version: 1,
-    json: arc4CanonicalJson(arc5CertificateFromArc4Mirror(mirror)),
-  };
+  const arc5 = arc5CompactRepresentationFromArc4Mirror(mirror);
+  for (const [index, target] of ARC5_OWNERSHIP_EXTENSION_TARGETS.entries()) {
+    extensionRows[target.segment][target.namespace] = {
+      version: 2,
+      json: arc4CanonicalJson(index === 0 ? arc5.manifest : arc5.shards[index - 1]),
+    };
+  }
   const sessionRng = {
     seed: sessionSeed, ordinal: sessionOrdinal,
     draws: Object.fromEntries(Object.entries(sessionDraws).sort(([left], [right]) => (
@@ -3171,15 +3226,24 @@ function arc4GlassSelftest() {
   const durableEpochFingerprint = arc4DurableFingerprint(durableEpoch);
   const durableCounterFingerprint = arc4DurableFingerprint(durableCounter);
   const durableArc5Mutation = structuredClone(durableBefore);
-  const mutatedArc5Carrier = durableArc5Mutation.playerRow.extensions[
+  const mutatedArc5ManifestCarrier = durableArc5Mutation.playerRow.extensions[
     ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
   ];
-  const mutatedArc5Certificate = JSON.parse(mutatedArc5Carrier.json);
-  mutatedArc5Certificate.targetDigest = (
-    mutatedArc5Certificate.targetDigest[0] === '0' ? '1' : '0'
-  ) + mutatedArc5Certificate.targetDigest.slice(1);
-  mutatedArc5Carrier.json = arc4CanonicalJson(mutatedArc5Certificate);
+  const mutatedArc5ShardTarget = ARC5_OWNERSHIP_EXTENSION_TARGETS[1];
+  const mutatedArc5ShardCarrier = durableArc5Mutation.creaturesRow.extensions[
+    mutatedArc5ShardTarget.namespace
+  ];
+  const mutatedArc5Manifest = JSON.parse(mutatedArc5ManifestCarrier.json);
+  const mutatedArc5Shard = JSON.parse(mutatedArc5ShardCarrier.json);
+  const mutatedShardDigest = (
+    mutatedArc5Shard.digest[0] === '0' ? '1' : '0'
+  ) + mutatedArc5Shard.digest.slice(1);
+  mutatedArc5Manifest.shardDigests[0] = mutatedShardDigest;
+  mutatedArc5Shard.digest = mutatedShardDigest;
+  mutatedArc5ManifestCarrier.json = arc4CanonicalJson(mutatedArc5Manifest);
+  mutatedArc5ShardCarrier.json = arc4CanonicalJson(mutatedArc5Shard);
   durableArc5Mutation.playerRaw = JSON.stringify(durableArc5Mutation.playerRow);
+  durableArc5Mutation.creaturesRaw = JSON.stringify(durableArc5Mutation.creaturesRow);
   const durableArc5MutationAssessment = assessArc4DurableEvidence(durableArc5Mutation);
   const durableArc5MutationFingerprint = arc4DurableFingerprint(durableArc5Mutation);
   const canonicalAuthorityAssessment = assessArc4DurableEvidence(durableCanonicalAuthority);
@@ -3298,18 +3362,37 @@ function arc4GlassSelftest() {
       durableEpoch, durableCounter]
       .every(arc4DurableEvidenceComplete)
     && durableProjection?.ownershipCarriers?.length === 18
-    && exactJson(durableProjection?.arc5Migration?.target,
-      ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET)
-    && durableProjection?.arc5Migration?.carrier?.version === 1
-    && typeof durableProjection?.arc5Migration?.carrier?.json === 'string'
-    && durableProjection.arc5Migration.carrier.byteLength
-      === Buffer.byteLength(durableProjection.arc5Migration.carrier.json, 'utf8')
-    && durableProjection.arc5Migration.carrier.jsonSha256
-      === sha256(durableProjection.arc5Migration.carrier.json)
+    && durableProjection?.arc5Migration?.representationVersion === 2
+    && exactJson(durableProjection?.arc5Migration?.targets,
+      ARC5_OWNERSHIP_EXTENSION_TARGETS)
+    && durableProjection?.arc5Migration?.carriers?.length === 5
+    && durableProjection.arc5Migration.carriers.every((carrier, index) => (
+      carrier.segment === ARC5_OWNERSHIP_EXTENSION_TARGETS[index].segment
+      && carrier.namespace === ARC5_OWNERSHIP_EXTENSION_TARGETS[index].namespace
+      && carrier.version === 2 && typeof carrier.json === 'string'
+      && carrier.byteLength === Buffer.byteLength(carrier.json, 'utf8')
+      && carrier.jsonSha256 === sha256(carrier.json)
+    ))
+    && durableProjection?.arc5Migration?.manifest?.version === 2
+    && durableProjection?.arc5Migration?.delta?.rows?.length === 0
+    && durableProjection?.arc5Migration?.targetMirror?.revision === 4
+    && durableProjection?.arc5Migration?.shards?.length === 4
+    && durableProjection.arc5Migration.shards.every((shard, index) => (
+      shard.version === 2 && shard.index === index && shard.count === 4
+      && shard.start === 0 && shard.end === 0 && shard.total === 0
+      && Array.isArray(shard.rows) && shard.rows.length === 0
+    ))
+    && durableProjection?.arc5Migration?.deltaRowCount === 0
+    && durableProjection?.arc5Migration?.shardCount === 4
+    && durableProjection?.arc5Migration?.shardDigests?.length === 4
     && durableProjection.arc5Migration.sourceDigest
       === selftestOwnershipV2?.sourceDigest
+    && durableProjection.arc5Migration.deltaDigest
+      === selftestOwnershipV2?.deltaDigest
     && durableProjection.arc5Migration.targetDigest
       === selftestOwnershipV2?.targetDigest
+    && exactJson(durableProjection.arc5Migration.shardDigests,
+      selftestOwnershipV2?.deltaShardDigests)
     && exactJson(durableProjection?.v4Mirror?.legacy?.ownedAliases,
       [['cs111', 'Wayfinder']])
     && durableProjection?.v4Mirror?.legacy?.essence === 7
@@ -3320,15 +3403,28 @@ function arc4GlassSelftest() {
     })
     && durableBeforeFingerprint === durableCheckpointFingerprint
     && typeof durableBeforeFingerprint === 'string'
+    && exactJson(durableCheckpointProjection, durableProjection)
     && exactJson(durableCheckpointProjection?.arc5Migration,
       durableProjection?.arc5Migration)
     && durableOwnershipFingerprint !== durableBeforeFingerprint
-    && durableOwnershipProjection?.arc5Migration?.carrier?.json
-      !== durableProjection?.arc5Migration?.carrier?.json
+    && !exactJson(durableOwnershipProjection?.ownershipCarriers,
+      durableProjection?.ownershipCarriers)
+    && durableOwnershipProjection?.arc5Migration?.carriers?.[0]?.json
+      !== durableProjection?.arc5Migration?.carriers?.[0]?.json
+    && exactJson(durableOwnershipProjection?.arc5Migration?.carriers?.slice(1),
+      durableProjection?.arc5Migration?.carriers?.slice(1))
     && durableOwnershipProjection?.arc5Migration?.sourceDigest
       !== durableProjection?.arc5Migration?.sourceDigest
+    && durableOwnershipProjection?.arc5Migration?.deltaDigest
+      === durableProjection?.arc5Migration?.deltaDigest
     && durableOwnershipProjection?.arc5Migration?.targetDigest
       !== durableProjection?.arc5Migration?.targetDigest
+    && exactJson(durableOwnershipProjection?.arc5Migration?.delta,
+      durableProjection?.arc5Migration?.delta)
+    && exactJson(durableOwnershipProjection?.arc5Migration?.shards,
+      durableProjection?.arc5Migration?.shards)
+    && exactJson(durableOwnershipProjection?.arc5Migration?.shardDigests,
+      durableProjection?.arc5Migration?.shardDigests)
     && durableRngFingerprint !== durableBeforeFingerprint
     && durableReceiptFingerprint !== durableBeforeFingerprint
     && durableEpochFingerprint !== durableBeforeFingerprint
@@ -3342,7 +3438,8 @@ function arc4GlassSelftest() {
     && exactJson(durableCounterProjection?.receipts, durableProjection?.receipts)
     && arc4DurableFingerprint({}) === null
     && durableArc5MutationFingerprint === null
-    && arc4IsolatedFailure(durableArc5MutationAssessment, 'arc5TargetFixedPoint')
+    && exactJson(arc4FailedChecks(durableArc5MutationAssessment),
+      ['arc5DeltaFixedPoint', 'arc5TargetFixedPoint'])
     && arc4IsolatedFailure(canonicalAuthorityAssessment, 'f4Authority')
     && arc4IsolatedFailure(wrongTitleAssessment, 'homeworldTitle')
     && arc4IsolatedFailure(wrongCountsAssessment, 'rosterCounts')

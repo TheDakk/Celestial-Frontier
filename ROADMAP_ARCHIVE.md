@@ -1,3 +1,33 @@
+## ARCHIVED 2026-08-25 — PR #34 Compendium ruler repair
+
+> Moved byte-verbatim from ROADMAP.md after the live Arc 5 compact-v2 boundary superseded this
+> completed integration detail.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR34 COMPENDIUM RULER REPAIR -->
+### PR #34 Compendium ruler repair
+
+- Runs `32665404776` and `32677088518` are consumed terminal-red, were not retried, and had their
+  labels removed. The second exact Linux report proves the first repaired activation succeeded,
+  then the Close/reopen activation passed a one-shot row check before a deferred
+  ResizeObserver/render turn invalidated its point. A passive 20-second wait issued 112 observations
+  and ended on a clipped 51 ms command with a timely root heartbeat. This is a virtual-row
+  positioning race, not a memory leak or a 51 ms product SLA.
+- The exact report is retained as `audits/PR34_COMPENDIUM_GHA_32677088518_FAILURE.json.gz` with
+  raw/gzip SHA-256 `544015e9…` / `cc5ed778…`. The bounded local correction repositions only through
+  the existing native-scroll path, consumes a double-render boundary, re-proves thumbnail
+  settlement, and requires the same exact owned point before and after that boundary. It then sends
+  one press/release and checks the immediate detail receipt; no click retry or timeout widening exists.
+- Collector `6d681d19…` changes measurement authority to `6a961df8…`. The former active budget
+  `208af955…`, its samples, baseline and local certificate are historical only. Clean repair source
+  `a95889d…` produced three independent 78/78 Edge `.101` candidates and the paired legacy baseline
+  retained by activation commit `d21ba26…`; no numeric memory ceiling was widened and the baseline
+  still breaches 14 phone / 13 desktop fields. Active budget SHA-256 is `faa160b3…`. Exact-budget
+  run `20260823-pr34-render-stable-row-certification` then passed 78/78 plus named verification on
+  clean `d21ba26…`; raw/gzip report hashes are `42753d5e…` / `a2ff5b00…`. The exact changed head
+  then passed terminal-green hosted run `32681394532` and merged in PR #34. No new hosted attempt is
+  authorized.
+<!-- END VERBATIM ROADMAP BLOCK: PR34 COMPENDIUM RULER REPAIR -->
+
 ## ARCHIVED 2026-08-24 — early F3/F4 campaign checkpoints
 
 > Moved byte-verbatim from ROADMAP.md after the live Arc 2 boundary superseded these preliminary

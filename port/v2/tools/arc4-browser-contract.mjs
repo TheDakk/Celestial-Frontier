@@ -61,10 +61,24 @@ export const ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET = Object.freeze({
   segment: 'player', namespace: 'arc5.ownership.migration',
 });
 
+export const ARC5_OWNERSHIP_FIXED_SHARDS = 4;
+export const ARC5_OWNERSHIP_EXTENSION_TARGETS = Object.freeze([
+  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
+  ...Array.from({ length: ARC5_OWNERSHIP_FIXED_SHARDS }, (_, index) => Object.freeze({
+    segment: 'creatures', namespace: `arc5.ownership.delta.${index}`,
+  })),
+]);
+
 const ARC5_OWNERSHIP_MIGRATION_PREFIX = 'arc5.ownership.';
-const ARC5_OWNERSHIP_MIGRATION_SCHEMA = 'cf-v2-ownership-v1-to-v2/v1';
+const ARC5_OWNERSHIP_MIGRATION_SCHEMA = 'cf-v2-ownership-v1-to-v2/v2';
+const ARC5_OWNERSHIP_DELTA_SHARD_SCHEMA = 'cf-v2-ownership-delta-shard/v1';
+const ARC5_OWNERSHIP_DELTA_SCHEMA = 'cf-v2-ownership-delta/v1';
 const ARC5_OWNERSHIP_SOURCE_SCHEMA = 'cf-v2-ownership-state/v1';
 const ARC5_OWNERSHIP_TARGET_SCHEMA = 'cf-v2-ownership-state/v2';
+const ARC5_OWNERSHIP_REPRESENTATION_VERSION = 2;
+const ARC5_OWNERSHIP_DELTA_VERSION = 1;
+const ARC5_MAX_DELTA_ROWS = 20_000;
+const ARC5_MAX_CARRIER_BYTES = 262_144;
 
 const ARC4_PERTAR_WORLD_ADDRESS = Object.freeze({
   format: 'CF1',
@@ -265,6 +279,73 @@ const canonicalToolJson = (value) => {
   return JSON.stringify(value);
 };
 
+/* Product decode canonicalizes the complete logical delta before it decodes
+   individual rows. Reproduce that data budget independently so canonical-
+   looking nested genomes cannot bypass the domain's bounded-data ingress. */
+const ARC5_CANONICAL_DATA_BUDGET = Object.freeze({
+  maxDepth: 24,
+  maxNodes: 250_000,
+  maxKeys: 256,
+  maxArrayLength: 20_000,
+  maxStringLength: 16_384,
+  maxCharacters: 4_000_000,
+});
+
+const arc5CanonicalDataWithinBudget = (value) => {
+  const mutable = { nodes: 0, characters: 0, active: new WeakSet() };
+  const visit = (candidate, depth) => {
+    mutable.nodes++;
+    if (mutable.nodes > ARC5_CANONICAL_DATA_BUDGET.maxNodes
+      || depth > ARC5_CANONICAL_DATA_BUDGET.maxDepth) return false;
+    if (candidate === null || typeof candidate === 'boolean') return true;
+    if (typeof candidate === 'number') return Number.isFinite(candidate);
+    if (typeof candidate === 'string') {
+      if (candidate.length > ARC5_CANONICAL_DATA_BUDGET.maxStringLength) return false;
+      mutable.characters += candidate.length;
+      return mutable.characters <= ARC5_CANONICAL_DATA_BUDGET.maxCharacters;
+    }
+    if (typeof candidate !== 'object' || mutable.active.has(candidate)) return false;
+    mutable.active.add(candidate);
+    try {
+      if (Array.isArray(candidate)) {
+        if (Object.getPrototypeOf(candidate) !== Array.prototype
+          || candidate.length > ARC5_CANONICAL_DATA_BUDGET.maxArrayLength) return false;
+        const keys = Reflect.ownKeys(candidate);
+        if (keys.some((key) => typeof key === 'symbol')
+          || keys.length !== candidate.length + 1 || !keys.includes('length')) return false;
+        const lengthDescriptor = Object.getOwnPropertyDescriptor(candidate, 'length');
+        if (!lengthDescriptor || !('value' in lengthDescriptor)
+          || lengthDescriptor.value !== candidate.length) return false;
+        for (let index = 0; index < candidate.length; index++) {
+          const descriptor = Object.getOwnPropertyDescriptor(candidate, String(index));
+          if (!descriptor || !('value' in descriptor) || descriptor.get !== undefined
+            || descriptor.set !== undefined || descriptor.enumerable !== true
+            || !visit(descriptor.value, depth + 1)) return false;
+        }
+        return true;
+      }
+      const prototype = Object.getPrototypeOf(candidate);
+      if (prototype !== Object.prototype && prototype !== null) return false;
+      const keys = Reflect.ownKeys(candidate);
+      if (keys.some((key) => typeof key === 'symbol')
+        || keys.length > ARC5_CANONICAL_DATA_BUDGET.maxKeys) return false;
+      for (const key of keys) {
+        if (key.length > 256) return false;
+        mutable.characters += key.length;
+        if (mutable.characters > ARC5_CANONICAL_DATA_BUDGET.maxCharacters) return false;
+        const descriptor = Object.getOwnPropertyDescriptor(candidate, key);
+        if (!descriptor || !('value' in descriptor) || descriptor.get !== undefined
+          || descriptor.set !== undefined || descriptor.enumerable !== true
+          || !visit(descriptor.value, depth + 1)) return false;
+      }
+      return true;
+    } finally {
+      mutable.active.delete(candidate);
+    }
+  };
+  try { return visit(value, 0); } catch { return false; }
+};
+
 const same = (left, right) => canonicalToolJson(left) === canonicalToolJson(right);
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const parseJson = (raw) => {
@@ -346,12 +427,20 @@ const inspectV5Rows = (evidence) => {
 };
 
 const carrierAt = (rows, segment, namespace) => rows?.[segment]?.extensions?.[namespace];
-const exactCanonicalCarrier = (carrier) => {
+const exactCanonicalCarrierVersion = (carrier, version) => {
   const parsed = parseJson(carrier?.json);
-  return exactKeys(carrier, ['version', 'json']) && carrier.version === 1
+  return exactKeys(carrier, ['version', 'json']) && carrier.version === version
     && record(parsed) && carrier.json === canonicalToolJson(parsed)
     ? parsed : null;
 };
+const exactBoundedArc5CarrierVersion = (carrier, version) => {
+  const parsed = parseJson(carrier?.json);
+  return exactKeys(carrier, ['version', 'json']) && carrier.version === version
+    && record(parsed) && arc5CanonicalDataWithinBudget(parsed)
+    && carrier.json === canonicalToolJson(parsed)
+    ? parsed : null;
+};
+const exactCanonicalCarrier = (carrier) => exactCanonicalCarrierVersion(carrier, 1);
 
 /* Carrier JSON sorts every object key, while the authoritative state digest
    hashes JSON.stringify() of the domain-registered mirror. Recreate the
@@ -414,23 +503,53 @@ const orderedLineage = (value) => {
       ? ['kind', 'generation', 'parentSeeds']
       : value?.kind === 'parent-creatures'
         ? ['kind', 'generation', 'parentCreatureIds'] : null;
-  return fields === null ? null : orderedObject(value, fields);
+  if (fields === null || !counter(value.generation)
+    || value.generation > 1_000_000_000) return null;
+  if (value.kind === 'legacy-parent-seeds'
+    && (!Array.isArray(value.parentSeeds) || value.parentSeeds.length !== 2
+      || value.parentSeeds.some((seed) => !uint32(seed)))) return null;
+  if (value.kind === 'parent-creatures'
+    && (!Array.isArray(value.parentCreatureIds)
+      || value.parentCreatureIds.length !== 2
+      || value.parentCreatureIds.some((id) => (
+        typeof id !== 'string' || !/^creature-v1:[0-9a-f]{64}$/u.test(id)
+      )))) return null;
+  return orderedObject(value, fields);
 };
 
 const orderedAssignment = (value) => {
   if (value === null) return null;
   const fields = value?.kind === 'mission' ? ['kind', 'missionId']
     : value?.kind === 'recovery' ? ['kind', 'readyAtActivePlayMs'] : null;
-  return fields === null ? undefined : orderedObject(value, fields);
+  if (fields === null
+    || (value.kind === 'mission' && !boundedText(value.missionId, 128))
+    || (value.kind === 'recovery' && !counter(value.readyAtActivePlayMs))) {
+    return undefined;
+  }
+  return orderedObject(value, fields);
 };
 
 const orderedBond = (value) => {
   if (value === null) return null;
-  if (!Array.isArray(value?.memories)) return undefined;
+  if (!exactKeys(value, [
+    'level', 'memories', 'preferredRole', 'worldsSurvived',
+    'guardianVictories', 'mementoIds',
+  ]) || !counter(value.level) || value.level > 1_000_000
+    || !Array.isArray(value.memories) || value.memories.length > 128
+    || !(value.preferredRole === null || boundedText(value.preferredRole, 64))
+    || !counter(value.worldsSurvived) || value.worldsSurvived > 1_000_000_000
+    || !counter(value.guardianVictories) || value.guardianVictories > 1_000_000_000
+    || !Array.isArray(value.mementoIds) || value.mementoIds.length > 128
+    || value.mementoIds.some((id) => !boundedText(id, 128))
+    || new Set(value.mementoIds).size !== value.mementoIds.length) return undefined;
   const memories = value.memories.map((memory) => orderedObject(memory, [
     'id', 'kind', 'worldKey', 'atActivePlayMs',
   ]));
-  if (memories.some((memory) => memory === null)) return undefined;
+  if (memories.some((memory) => memory === null
+      || !boundedText(memory.id, 128) || !boundedText(memory.kind, 64)
+      || !(memory.worldKey === null || boundedText(memory.worldKey, 512))
+      || !counter(memory.atActivePlayMs))
+    || new Set(memories.map(({ id }) => id)).size !== memories.length) return undefined;
   return orderedObject(value, [
     'level', 'memories', 'preferredRole', 'worldsSurvived',
     'guardianVictories', 'mementoIds',
@@ -594,25 +713,643 @@ const inspectArc4Ownership = (rows) => {
   }
 };
 
-/* Arc 5A persists no second ownership mirror. Its one digest-only carrier is
-   useful browser evidence only when this tool independently reconstructs the
-   exact registered V1 source and the exact ordered V2 migration mirror. */
-const arc5OwnershipTargetMirrorForDigest = (source) => {
-  const registeredSource = registeredMirrorForDigest(source);
-  if (registeredSource === null
-    || registeredSource.schema !== ARC5_OWNERSHIP_SOURCE_SCHEMA
-    || registeredSource.version !== 1) return null;
+/* Arc 5 stores only a source-bound logical delta: one exact manifest and four
+   fixed generic shards. This oracle intentionally reimplements the compact
+   format instead of importing the product codec. It validates every carrier,
+   reconstructs the V2 mirror from the Arc 4 source, re-derives the logical
+   delta, and then reproduces the persistence packer byte-for-byte. */
+const ARC5_DELTA_KIND_RANK = Object.freeze({
+  'bred-acquisition': 0,
+  'source-creature-live': 1,
+  'source-creature-tombstone': 2,
+  'bred-creature-live': 3,
+  'bred-creature-tombstone': 4,
+  'source-specimen-live': 5,
+  'source-specimen-tombstone': 6,
+  'scout-override': 7,
+});
+
+const arc5CreatureId = (value) => typeof value === 'string'
+  && /^creature-v1:[0-9a-f]{64}$/u.test(value);
+const arc5SpecimenId = (value) => typeof value === 'string'
+  && /^specimen-v1:[0-9a-f]{64}$/u.test(value);
+const arc5DiscoveryId = (value) => typeof value === 'string'
+  && /^discovery-v1:[0-9a-f]{64}$/u.test(value);
+const arc5SpeciesId = (value) => typeof value === 'string'
+  && /^species-v1:[0-9a-f]{64}$/u.test(value);
+const arc5NullableNumber = (value, maximum) => value === null
+  || (typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= maximum);
+const ARC5_NON_SPECIES_GENOME_FIELDS = new Set([
+  'xp', 'hurt', 'fed', 'brood', 'assignment', 'bond',
+]);
+const arc5GenomeIdentity = (value) => {
+  if (!record(value) || !uint32(value.seed)
+    || !['microbe', 'flora', 'fungi', 'fauna'].includes(value.kingdom)
+    || own(value, '__proto__')) return null;
+  const genome = Object.fromEntries(Object.entries(value).filter(
+    ([key]) => !ARC5_NON_SPECIES_GENOME_FIELDS.has(key),
+  ));
+  genome.seed = value.seed;
+  genome.kingdom = value.kingdom;
+  if (!same(genome, value)) return null;
+  const digest = sha256(canonicalToolJson(genome));
   return Object.freeze({
+    speciesId: `species-v1:${digest}`,
+    genomeIdentity: `genome-v1:${digest}`,
+    kingdom: value.kingdom,
+  });
+};
+
+const orderedArc5Receipt = (value) => exactKeys(value, [
+  'ordinal', 'actionKind', 'witnessDigest',
+]) && uint32(value.ordinal) && value.ordinal <= 0xffff_fffe
+  && typeof value.actionKind === 'string'
+  && /^[a-z][a-z0-9.-]{0,95}$/u.test(value.actionKind)
+  && hexDigest(value.witnessDigest)
+  ? orderedObject(value, ['ordinal', 'actionKind', 'witnessDigest']) : null;
+
+const orderedArc5Specimen = (value) => exactKeys(value, [
+  'lotId', 'speciesId', 'kind', 'quantity', 'origin', 'acquisitionRecordId',
+]) && arc5SpecimenId(value.lotId) && arc5SpeciesId(value.speciesId)
+  && ['microbe', 'flora', 'fungi'].includes(value.kind)
+  && counter(value.quantity) && value.quantity >= 1 && value.quantity <= 1_000_000_000
+  && ['wild', 'legacy'].includes(value.origin)
+  && arc5DiscoveryId(value.acquisitionRecordId)
+  ? orderedObject(value, [
+    'lotId', 'speciesId', 'kind', 'quantity', 'origin', 'acquisitionRecordId',
+  ]) : null;
+
+const orderedArc5Creature = (value) => {
+  const creature = orderedCreature(value);
+  return creature !== null
+    && arc5CreatureId(creature.creatureId)
+    && arc5SpeciesId(creature.speciesId)
+    && typeof creature.genomeIdentity === 'string'
+    && /^genome-v1:[0-9a-f]{64}$/u.test(creature.genomeIdentity)
+    && ['wild', 'bred', 'guardian', 'legacy'].includes(creature.origin)
+    && ((creature.origin === 'bred') === (creature.lineage.kind === 'parent-creatures'))
+    && (creature.lineage.kind !== 'legacy-parent-seeds' || creature.origin === 'legacy')
+    && arc5DiscoveryId(creature.acquisitionRecordId)
+    && (creature.nickname === null || boundedText(creature.nickname, 24))
+    && arc5NullableNumber(creature.xp, 486)
+    && arc5NullableNumber(creature.hurt, 1)
+    && arc5NullableNumber(creature.fed, 200)
+    && arc5NullableNumber(creature.brood, 200)
+    ? creature : null;
+};
+
+const arc5CreatureIdentityValid = (creature) => {
+  const identity = arc5GenomeIdentity(creature?.genome);
+  return identity !== null && creature.speciesId === identity.speciesId
+    && creature.genomeIdentity === identity.genomeIdentity;
+};
+
+const orderedArc5BredAcquisition = (value) => {
+  const provenance = value?.provenance;
+  const receipt = orderedArc5Receipt(provenance?.receipt);
+  if (!exactKeys(value, [
+    'recordId', 'speciesId', 'acquisition', 'provenance', 'firstForSpecies',
+  ]) || !exactKeys(provenance, [
+    'kind', 'parentCreatureIds', 'parentSeeds', 'receipt',
+  ]) || !arc5DiscoveryId(value.recordId) || !arc5SpeciesId(value.speciesId)
+    || value.acquisition !== 'breed' || value.firstForSpecies !== false
+    || provenance.kind !== 'bred' || !Array.isArray(provenance.parentCreatureIds)
+    || provenance.parentCreatureIds.length !== 2
+    || provenance.parentCreatureIds.some((id) => !arc5CreatureId(id))
+    || provenance.parentCreatureIds[0] === provenance.parentCreatureIds[1]
+    || !Array.isArray(provenance.parentSeeds) || provenance.parentSeeds.length !== 2
+    || provenance.parentSeeds.some((seed) => !uint32(seed))
+    || receipt === null || receipt.actionKind !== 'companion-breed') return null;
+  const witness = canonicalToolJson({
+    schema: 'cf-v2-bred-acquisition-id/v1',
+    ordinal: receipt.ordinal,
+    actionKind: receipt.actionKind,
+    witnessDigest: receipt.witnessDigest,
+  });
+  if (value.recordId !== `discovery-v1:${sha256(witness)}`) return null;
+  return orderedObject(value, [
+    'recordId', 'speciesId', 'acquisition', 'provenance', 'firstForSpecies',
+  ], {
+    provenance: orderedObject(provenance, [
+      'kind', 'parentCreatureIds', 'parentSeeds', 'receipt',
+    ], { receipt }),
+  });
+};
+
+const orderedArc5CreatureTombstone = (value) => {
+  const snapshot = orderedArc5Creature(value?.snapshot);
+  const disposition = orderedArc5Receipt(value?.disposition);
+  return exactKeys(value, ['kind', 'creatureId', 'snapshot', 'disposition'])
+    && value.kind === 'creature' && arc5CreatureId(value.creatureId)
+    && snapshot !== null && snapshot.creatureId === value.creatureId
+    && disposition !== null
+    ? orderedObject(value, ['kind', 'creatureId', 'snapshot', 'disposition'], {
+      snapshot, disposition,
+    }) : null;
+};
+
+const orderedArc5SpecimenTombstone = (value) => {
+  const snapshot = orderedArc5Specimen(value?.snapshot);
+  const disposition = orderedArc5Receipt(value?.disposition);
+  return exactKeys(value, ['kind', 'lotId', 'snapshot', 'disposition'])
+    && value.kind === 'specimen-lot' && arc5SpecimenId(value.lotId)
+    && snapshot !== null && snapshot.lotId === value.lotId
+    && disposition !== null
+    ? orderedObject(value, ['kind', 'lotId', 'snapshot', 'disposition'], {
+      snapshot, disposition,
+    }) : null;
+};
+
+const arc5MutableCreature = (row) => ({
+  nickname: row.nickname, xp: row.xp, hurt: row.hurt, fed: row.fed,
+  brood: row.brood, assignment: row.assignment, bond: row.bond,
+});
+
+const arc5CreatureHistoryMonotonic = (prior, current) => {
+  if (prior.xp !== null && (current.xp === null || current.xp < prior.xp)) return false;
+  if (prior.bond === null) return true;
+  if (current.bond === null || current.bond.level < prior.bond.level
+    || current.bond.worldsSurvived < prior.bond.worldsSurvived
+    || current.bond.guardianVictories < prior.bond.guardianVictories) return false;
+  for (let index = 0; index < prior.bond.memories.length; index++) {
+    if (!same(prior.bond.memories[index], current.bond.memories[index])) return false;
+  }
+  for (let index = 0; index < prior.bond.mementoIds.length; index++) {
+    if (prior.bond.mementoIds[index] !== current.bond.mementoIds[index]) return false;
+  }
+  return true;
+};
+
+const orderedArc5MutableRow = (value, tombstone) => {
+  const fields = [
+    'kind', 'creatureId', 'nickname', 'xp', 'hurt', 'fed', 'brood',
+    'assignment', 'bond', ...(tombstone ? ['disposition'] : []),
+  ];
+  const assignment = orderedAssignment(value?.assignment);
+  const bond = orderedBond(value?.bond);
+  const disposition = tombstone ? orderedArc5Receipt(value?.disposition) : null;
+  return exactKeys(value, fields) && arc5CreatureId(value.creatureId)
+    && (value.nickname === null || boundedText(value.nickname, 24))
+    && arc5NullableNumber(value.xp, 486) && arc5NullableNumber(value.hurt, 1)
+    && arc5NullableNumber(value.fed, 200) && arc5NullableNumber(value.brood, 200)
+    && assignment !== undefined && bond !== undefined
+    && (!tombstone || disposition !== null)
+    ? orderedObject(value, fields, {
+      assignment, bond, ...(tombstone ? { disposition } : {}),
+    }) : null;
+};
+
+const orderedArc5DeltaRow = (value) => {
+  const kind = value?.kind;
+  if (kind === 'bred-acquisition') {
+    const acquisition = orderedArc5BredAcquisition(value?.acquisition);
+    return exactKeys(value, ['kind', 'acquisition']) && acquisition !== null
+      ? orderedObject(value, ['kind', 'acquisition'], { acquisition }) : null;
+  }
+  if (kind === 'source-creature-live') return orderedArc5MutableRow(value, false);
+  if (kind === 'source-creature-tombstone') return orderedArc5MutableRow(value, true);
+  if (kind === 'bred-creature-live') {
+    const creature = orderedArc5Creature(value?.creature);
+    return exactKeys(value, ['kind', 'creature']) && creature !== null
+      && creature.origin === 'bred' && arc5CreatureIdentityValid(creature)
+      ? orderedObject(value, ['kind', 'creature'], { creature }) : null;
+  }
+  if (kind === 'bred-creature-tombstone') {
+    const tombstone = orderedArc5CreatureTombstone(value?.tombstone);
+    return exactKeys(value, ['kind', 'tombstone']) && tombstone !== null
+      && tombstone.snapshot.origin === 'bred'
+      && arc5CreatureIdentityValid(tombstone.snapshot)
+      ? orderedObject(value, ['kind', 'tombstone'], { tombstone }) : null;
+  }
+  if (kind === 'source-specimen-live') {
+    return exactKeys(value, ['kind', 'lotId', 'quantity'])
+      && arc5SpecimenId(value.lotId) && counter(value.quantity)
+      && value.quantity >= 1 && value.quantity <= 1_000_000_000
+      ? orderedObject(value, ['kind', 'lotId', 'quantity']) : null;
+  }
+  if (kind === 'source-specimen-tombstone') {
+    const disposition = orderedArc5Receipt(value?.disposition);
+    return exactKeys(value, ['kind', 'lotId', 'quantity', 'disposition'])
+      && arc5SpecimenId(value.lotId) && counter(value.quantity)
+      && value.quantity >= 1 && value.quantity <= 1_000_000_000
+      && disposition !== null
+      ? orderedObject(value, ['kind', 'lotId', 'quantity', 'disposition'], {
+        disposition,
+      }) : null;
+  }
+  if (kind === 'scout-override') {
+    return exactKeys(value, ['kind', 'scoutCreatureId'])
+      && (value.scoutCreatureId === null || arc5CreatureId(value.scoutCreatureId))
+      ? orderedObject(value, ['kind', 'scoutCreatureId']) : null;
+  }
+  return null;
+};
+
+const arc5DeltaIntrinsicId = (row) => {
+  if (row.kind === 'bred-acquisition') return row.acquisition.recordId;
+  if (row.kind === 'source-creature-live' || row.kind === 'source-creature-tombstone') {
+    return row.creatureId;
+  }
+  if (row.kind === 'bred-creature-live') return row.creature.creatureId;
+  if (row.kind === 'bred-creature-tombstone') return row.tombstone.creatureId;
+  if (row.kind === 'source-specimen-live' || row.kind === 'source-specimen-tombstone') {
+    return row.lotId;
+  }
+  return '';
+};
+
+const compareArc5DeltaRows = (left, right) => (
+  ARC5_DELTA_KIND_RANK[left.kind] - ARC5_DELTA_KIND_RANK[right.kind]
+  || (arc5DeltaIntrinsicId(left) < arc5DeltaIntrinsicId(right) ? -1
+    : arc5DeltaIntrinsicId(left) > arc5DeltaIntrinsicId(right) ? 1 : 0)
+);
+
+const normalizedArc5DeltaRows = (values) => {
+  if (!Array.isArray(values) || values.length > ARC5_MAX_DELTA_ROWS) return null;
+  if (!arc5CanonicalDataWithinBudget({
+    schema: ARC5_OWNERSHIP_DELTA_SCHEMA,
+    version: ARC5_OWNERSHIP_DELTA_VERSION,
+    rows: values,
+  })) return null;
+  const rows = values.map(orderedArc5DeltaRow);
+  if (rows.some((row) => row === null)) return null;
+  const acquisitions = new Set(), creatures = new Set(), specimens = new Set();
+  let scout = false;
+  for (let index = 0; index < rows.length; index++) {
+    const row = rows[index];
+    if (index > 0 && compareArc5DeltaRows(rows[index - 1], row) >= 0) return null;
+    const id = arc5DeltaIntrinsicId(row);
+    if (row.kind === 'bred-acquisition') {
+      if (acquisitions.has(id)) return null;
+      acquisitions.add(id);
+    } else if (row.kind.includes('creature')) {
+      if (creatures.has(id)) return null;
+      creatures.add(id);
+    } else if (row.kind.includes('specimen')) {
+      if (specimens.has(id)) return null;
+      specimens.add(id);
+    } else if (row.kind === 'scout-override') {
+      if (scout) return null;
+      scout = true;
+    }
+  }
+  return rows;
+};
+
+const arc5Sorted = (rows, id) => rows.sort((left, right) => (
+  id(left) < id(right) ? -1 : id(left) > id(right) ? 1 : 0
+));
+
+const arc5CreatureFromMutable = (source, row) => orderedArc5Creature({
+  ...source, ...arc5MutableCreature(row),
+});
+
+const deriveArc5DeltaRows = (source, target) => {
+  const rows = target.bredAcquisitions.map((acquisition) => ({
+    kind: 'bred-acquisition', acquisition,
+  }));
+  const sourceCreatures = new Map(source.creatures.map((row) => [row.creatureId, row]));
+  for (const creature of target.creatures) {
+    const prior = sourceCreatures.get(creature.creatureId);
+    rows.push(prior === undefined
+      ? { kind: 'bred-creature-live', creature }
+      : same(arc5MutableCreature(prior), arc5MutableCreature(creature)) ? null
+        : { kind: 'source-creature-live', creatureId: creature.creatureId,
+          ...arc5MutableCreature(creature) });
+  }
+  for (const tombstone of target.creatureTombstones) {
+    rows.push(sourceCreatures.has(tombstone.creatureId)
+      ? { kind: 'source-creature-tombstone', creatureId: tombstone.creatureId,
+        ...arc5MutableCreature(tombstone.snapshot), disposition: tombstone.disposition }
+      : { kind: 'bred-creature-tombstone', tombstone });
+  }
+  const sourceSpecimens = new Map(source.specimenLots.map((row) => [row.lotId, row]));
+  for (const specimen of target.specimenLots) {
+    const prior = sourceSpecimens.get(specimen.lotId);
+    if (prior === undefined) return null;
+    if (prior.quantity !== specimen.quantity) rows.push({
+      kind: 'source-specimen-live', lotId: specimen.lotId, quantity: specimen.quantity,
+    });
+  }
+  for (const tombstone of target.specimenTombstones) rows.push({
+    kind: 'source-specimen-tombstone', lotId: tombstone.lotId,
+    quantity: tombstone.snapshot.quantity, disposition: tombstone.disposition,
+  });
+  if (target.scoutCreatureId !== source.scoutCreatureId) rows.push({
+    kind: 'scout-override', scoutCreatureId: target.scoutCreatureId,
+  });
+  const present = rows.filter((row) => row !== null).sort(compareArc5DeltaRows);
+  return normalizedArc5DeltaRows(present);
+};
+
+const arc5ReconstructedRelationshipsValid = ({
+  source, bredAcquisitions, creatures, creatureTombstones,
+  specimenLots, specimenTombstones, scoutCreatureId,
+}) => {
+  if (source.mode === 'legacy-protected') {
+    return bredAcquisitions.length === 0 && creatures.length === 0
+      && creatureTombstones.length === 0 && specimenLots.length === 0
+      && specimenTombstones.length === 0 && scoutCreatureId === null;
+  }
+  const liveCreatures = new Map(creatures.map((row) => [row.creatureId, row]));
+  const deadCreatures = new Map(creatureTombstones.map((row) => [row.creatureId, row]));
+  const liveSpecimens = new Map(specimenLots.map((row) => [row.lotId, row]));
+  const deadSpecimens = new Map(specimenTombstones.map((row) => [row.lotId, row]));
+  if (liveCreatures.size !== creatures.length
+    || deadCreatures.size !== creatureTombstones.length
+    || liveSpecimens.size !== specimenLots.length
+    || deadSpecimens.size !== specimenTombstones.length
+    || [...liveCreatures.keys()].some((id) => deadCreatures.has(id))
+    || [...liveSpecimens.keys()].some((id) => deadSpecimens.has(id))) return false;
+
+  const sourceCreatures = new Map(source.creatures.map((row) => [row.creatureId, row]));
+  const sourceSpecimens = new Map(source.specimenLots.map((row) => [row.lotId, row]));
+  for (const prior of source.creatures) {
+    const current = liveCreatures.get(prior.creatureId)
+      ?? deadCreatures.get(prior.creatureId)?.snapshot;
+    if (current === undefined || !arc5CreatureHistoryMonotonic(prior, current)) return false;
+  }
+  for (const prior of source.specimenLots) {
+    const current = liveSpecimens.get(prior.lotId)
+      ?? deadSpecimens.get(prior.lotId)?.snapshot;
+    if (current === undefined || current.speciesId !== prior.speciesId
+      || current.kind !== prior.kind || current.origin !== prior.origin
+      || current.acquisitionRecordId !== prior.acquisitionRecordId
+      || current.quantity > prior.quantity) return false;
+  }
+
+  const sourceAcquisitionIds = new Set(source.discoveries.map((row) => row.recordId));
+  const bred = new Map(bredAcquisitions.map((row) => [row.recordId, row]));
+  if (bred.size !== bredAcquisitions.length
+    || [...bred.keys()].some((id) => sourceAcquisitionIds.has(id))) return false;
+  const bredOrdinals = new Set();
+  const receipts = new Map();
+  const observeReceipt = (receipt) => {
+    const prior = receipts.get(receipt.ordinal);
+    if (prior !== undefined && !same(prior, receipt)) return false;
+    receipts.set(receipt.ordinal, receipt);
+    return true;
+  };
+  for (const acquisition of bredAcquisitions) {
+    const ordinal = acquisition.provenance.receipt.ordinal;
+    if (bredOrdinals.has(ordinal) || !observeReceipt(acquisition.provenance.receipt)) {
+      return false;
+    }
+    bredOrdinals.add(ordinal);
+  }
+  if (creatureTombstones.some(({ disposition }) => !observeReceipt(disposition))
+    || specimenTombstones.some(({ disposition }) => !observeReceipt(disposition))) return false;
+
+  const acquisitionOwners = new Map();
+  for (const row of [
+    ...creatures, ...creatureTombstones.map(({ snapshot }) => snapshot),
+  ]) {
+    if (acquisitionOwners.has(row.acquisitionRecordId)) return false;
+    acquisitionOwners.set(row.acquisitionRecordId, row);
+    if (row.origin === 'bred') {
+      if (!bred.has(row.acquisitionRecordId)) return false;
+    } else if (!sourceCreatures.has(row.creatureId)) return false;
+  }
+  if (specimenLots.some((row) => !sourceSpecimens.has(row.lotId))
+    || specimenTombstones.some((row) => !sourceSpecimens.has(row.lotId))) return false;
+
+  const allCreatures = new Map([
+    ...creatures.map((row) => [row.creatureId, row]),
+    ...creatureTombstones.map((row) => [row.creatureId, row.snapshot]),
+  ]);
+  for (const acquisition of bredAcquisitions) {
+    const child = acquisitionOwners.get(acquisition.recordId);
+    const identity = arc5GenomeIdentity(child?.genome);
+    const [leftId, rightId] = acquisition.provenance.parentCreatureIds;
+    const left = allCreatures.get(leftId), right = allCreatures.get(rightId);
+    if (child === undefined || identity?.kingdom !== 'fauna'
+      || identity.speciesId !== child.speciesId
+      || identity.genomeIdentity !== child.genomeIdentity
+      || child.speciesId !== acquisition.speciesId || child.origin !== 'bred'
+      || child.creatureId !== `creature-v1:${sha256(canonicalToolJson({
+        schema: 'cf-v2-local-creature-id/v1', acquisitionId: acquisition.recordId,
+      }))}`
+      || child.lineage.kind !== 'parent-creatures'
+      || !same(child.lineage.parentCreatureIds, acquisition.provenance.parentCreatureIds)
+      || !Array.isArray(child.genome.parents) || child.genome.parents.length !== 2
+      || child.genome.parents[0] !== acquisition.provenance.parentSeeds[0]
+      || child.genome.parents[1] !== acquisition.provenance.parentSeeds[1]
+      || child.genome.gen !== child.lineage.generation
+      || leftId === rightId || child.creatureId === leftId || child.creatureId === rightId
+      || left === undefined || right === undefined
+      || left.genome.seed !== acquisition.provenance.parentSeeds[0]
+      || right.genome.seed !== acquisition.provenance.parentSeeds[1]
+      || child.lineage.generation
+        !== Math.max(left.lineage.generation, right.lineage.generation) + 1) return false;
+  }
+  if (scoutCreatureId !== null && !liveCreatures.has(scoutCreatureId)) return false;
+
+  let rows = source.catalogSpecies.length + source.discoveries.length
+    + bredAcquisitions.length + creatures.length + creatureTombstones.length
+    + specimenLots.length + specimenTombstones.length + source.biosphereProgress.length;
+  for (const progress of source.biosphereProgress) rows += progress.successful.length;
+  for (const creature of creatures) {
+    if (creature.bond !== null) {
+      rows += creature.bond.memories.length + creature.bond.mementoIds.length;
+    }
+  }
+  for (const { snapshot } of creatureTombstones) {
+    if (snapshot.bond !== null) {
+      rows += snapshot.bond.memories.length + snapshot.bond.mementoIds.length;
+    }
+  }
+  return rows <= ARC5_MAX_DELTA_ROWS;
+};
+
+const reconstructArc5Target = (source, revision, deltaRows) => {
+  if (!record(source) || !counter(revision) || revision < source.revision
+    || !Array.isArray(deltaRows)) return null;
+  if (source.mode === 'legacy-protected' && deltaRows.length !== 0) return null;
+  const bredAcquisitions = [];
+  const sourceCreatureLive = new Map(), sourceCreatureDead = new Map();
+  const bredCreatureLive = [], bredCreatureDead = [];
+  const sourceSpecimenLive = new Map(), sourceSpecimenDead = new Map();
+  let scoutOverride;
+  for (const row of deltaRows) {
+    if (row.kind === 'bred-acquisition') bredAcquisitions.push(row.acquisition);
+    else if (row.kind === 'source-creature-live') sourceCreatureLive.set(row.creatureId, row);
+    else if (row.kind === 'source-creature-tombstone') sourceCreatureDead.set(row.creatureId, row);
+    else if (row.kind === 'bred-creature-live') bredCreatureLive.push(row.creature);
+    else if (row.kind === 'bred-creature-tombstone') bredCreatureDead.push(row.tombstone);
+    else if (row.kind === 'source-specimen-live') sourceSpecimenLive.set(row.lotId, row);
+    else if (row.kind === 'source-specimen-tombstone') sourceSpecimenDead.set(row.lotId, row);
+    else if (row.kind === 'scout-override') scoutOverride = row.scoutCreatureId;
+  }
+  const sourceCreatureIds = new Set(source.creatures.map((row) => row.creatureId));
+  const sourceSpecimenIds = new Set(source.specimenLots.map((row) => row.lotId));
+  if ([...sourceCreatureLive.keys(), ...sourceCreatureDead.keys()]
+    .some((id) => !sourceCreatureIds.has(id))
+    || [...sourceSpecimenLive.keys(), ...sourceSpecimenDead.keys()]
+      .some((id) => !sourceSpecimenIds.has(id))) return null;
+  const creatures = [], creatureTombstones = [];
+  for (const prior of source.creatures) {
+    const dead = sourceCreatureDead.get(prior.creatureId);
+    const live = sourceCreatureLive.get(prior.creatureId);
+    if (dead !== undefined) {
+      const snapshot = arc5CreatureFromMutable(prior, dead);
+      if (snapshot === null || !arc5CreatureHistoryMonotonic(prior, snapshot)) return null;
+      creatureTombstones.push({
+        kind: 'creature', creatureId: prior.creatureId,
+        snapshot, disposition: dead.disposition,
+      });
+    } else if (live !== undefined) {
+      const current = arc5CreatureFromMutable(prior, live);
+      if (current === null || !arc5CreatureHistoryMonotonic(prior, current)
+        || same(arc5MutableCreature(current), arc5MutableCreature(prior))) {
+        return null;
+      }
+      creatures.push(current);
+    } else creatures.push(prior);
+  }
+  creatures.push(...bredCreatureLive);
+  creatureTombstones.push(...bredCreatureDead);
+  const specimenLots = [], specimenTombstones = [];
+  for (const prior of source.specimenLots) {
+    const dead = sourceSpecimenDead.get(prior.lotId);
+    const live = sourceSpecimenLive.get(prior.lotId);
+    if (dead !== undefined) {
+      if (dead.quantity > prior.quantity) return null;
+      specimenTombstones.push({
+        kind: 'specimen-lot', lotId: prior.lotId,
+        snapshot: { ...prior, quantity: dead.quantity },
+        disposition: dead.disposition,
+      });
+    } else if (live !== undefined) {
+      if (live.quantity === prior.quantity || live.quantity > prior.quantity) return null;
+      specimenLots.push({ ...prior, quantity: live.quantity });
+    } else specimenLots.push(prior);
+  }
+  const normalizedCreatures = arc5Sorted(
+    creatures.map(orderedArc5Creature), (row) => row?.creatureId ?? '',
+  );
+  const normalizedCreatureTombstones = arc5Sorted(
+    creatureTombstones.map(orderedArc5CreatureTombstone), (row) => row?.creatureId ?? '',
+  );
+  const normalizedSpecimens = arc5Sorted(
+    specimenLots.map(orderedArc5Specimen), (row) => row?.lotId ?? '',
+  );
+  const normalizedSpecimenTombstones = arc5Sorted(
+    specimenTombstones.map(orderedArc5SpecimenTombstone), (row) => row?.lotId ?? '',
+  );
+  if ([...normalizedCreatures, ...normalizedCreatureTombstones,
+    ...normalizedSpecimens, ...normalizedSpecimenTombstones].some((row) => row === null)) return null;
+  const scoutCreatureId = scoutOverride === undefined
+    ? source.scoutCreatureId : scoutOverride;
+  if (scoutOverride !== undefined && scoutCreatureId === source.scoutCreatureId) return null;
+  if (!arc5ReconstructedRelationshipsValid({
+    source, bredAcquisitions, creatures: normalizedCreatures,
+    creatureTombstones: normalizedCreatureTombstones,
+    specimenLots: normalizedSpecimens,
+    specimenTombstones: normalizedSpecimenTombstones,
+    scoutCreatureId,
+  })) return null;
+  const target = Object.freeze({
     schema: ARC5_OWNERSHIP_TARGET_SCHEMA,
     version: 2,
-    revision: registeredSource.revision,
-    source: registeredSource,
-    bredAcquisitions: Object.freeze([]),
-    creatures: registeredSource.creatures,
-    creatureTombstones: Object.freeze([]),
-    specimenLots: registeredSource.specimenLots,
-    specimenTombstones: Object.freeze([]),
-    scoutCreatureId: registeredSource.scoutCreatureId,
+    revision,
+    source,
+    bredAcquisitions: Object.freeze(arc5Sorted(
+      bredAcquisitions, (row) => row.recordId,
+    )),
+    creatures: Object.freeze(normalizedCreatures),
+    creatureTombstones: Object.freeze(normalizedCreatureTombstones),
+    specimenLots: Object.freeze(normalizedSpecimens),
+    specimenTombstones: Object.freeze(normalizedSpecimenTombstones),
+    scoutCreatureId,
+  });
+  const fixedRows = deriveArc5DeltaRows(source, target);
+  return fixedRows !== null && same(fixedRows, deltaRows)
+    ? Object.freeze({ target, fixedRows }) : null;
+};
+
+const arc5Carrier = (value) => Object.freeze({
+  version: ARC5_OWNERSHIP_REPRESENTATION_VERSION,
+  json: canonicalToolJson(value),
+});
+
+const arc5ShardValue = (index, start, end, rows) => ({
+  schema: ARC5_OWNERSHIP_DELTA_SHARD_SCHEMA,
+  version: ARC5_OWNERSHIP_REPRESENTATION_VERSION,
+  index,
+  count: ARC5_OWNERSHIP_FIXED_SHARDS,
+  start,
+  end,
+  total: rows.length,
+  digest: sha256(canonicalToolJson(rows.slice(start, end))),
+  rows: rows.slice(start, end),
+});
+
+const encodeArc5Shards = (rows) => {
+  const shards = [];
+  let start = 0;
+  for (let index = 0; index < ARC5_OWNERSHIP_FIXED_SHARDS; index++) {
+    let end = rows.length;
+    if (index < ARC5_OWNERSHIP_FIXED_SHARDS - 1 && start < rows.length) {
+      let low = start, high = rows.length;
+      while (low < high) {
+        const middle = Math.ceil((low + high) / 2);
+        const bytes = new TextEncoder().encode(
+          arc5Carrier(arc5ShardValue(index, start, middle, rows)).json,
+        ).byteLength;
+        if (bytes <= ARC5_MAX_CARRIER_BYTES) low = middle;
+        else high = middle - 1;
+      }
+      end = low;
+      if (end === start) return null;
+    }
+    const value = arc5ShardValue(index, start, end, rows);
+    if (!arc5CanonicalDataWithinBudget(value)) return null;
+    const carrier = arc5Carrier(value);
+    if (new TextEncoder().encode(carrier.json).byteLength > ARC5_MAX_CARRIER_BYTES) return null;
+    shards.push(Object.freeze({ value, carrier }));
+    start = end;
+  }
+  return start === rows.length ? Object.freeze(shards) : null;
+};
+
+const encodeArc5Current = (source, revision, candidateRows) => {
+  const rows = normalizedArc5DeltaRows(candidateRows);
+  const reconstructed = rows === null ? null : reconstructArc5Target(source, revision, rows);
+  const shards = rows === null ? null : encodeArc5Shards(rows);
+  if (rows === null || reconstructed === null || shards === null) return null;
+  const sourceDigest = sha256(JSON.stringify(source));
+  const targetDigest = sha256(JSON.stringify(reconstructed.target));
+  const delta = Object.freeze({
+    schema: ARC5_OWNERSHIP_DELTA_SCHEMA,
+    version: ARC5_OWNERSHIP_DELTA_VERSION,
+    rows: Object.freeze(rows),
+  });
+  const deltaDigest = sha256(canonicalToolJson(delta));
+  const shardDigests = Object.freeze(shards.map(({ value }) => value.digest));
+  const manifest = Object.freeze({
+    schema: ARC5_OWNERSHIP_MIGRATION_SCHEMA,
+    version: ARC5_OWNERSHIP_REPRESENTATION_VERSION,
+    sourceSchema: ARC5_OWNERSHIP_SOURCE_SCHEMA,
+    sourceVersion: 1,
+    sourceRevision: source.revision,
+    sourceMode: source.mode,
+    sourceDigest,
+    targetSchema: ARC5_OWNERSHIP_TARGET_SCHEMA,
+    targetVersion: 2,
+    targetRevision: revision,
+    targetMode: source.mode,
+    targetDigest,
+    deltaSchema: ARC5_OWNERSHIP_DELTA_SCHEMA,
+    deltaVersion: ARC5_OWNERSHIP_DELTA_VERSION,
+    deltaDigest,
+    deltaRowCount: rows.length,
+    fixedShardCount: ARC5_OWNERSHIP_FIXED_SHARDS,
+    shardDigests,
+  });
+  return Object.freeze({
+    source, target: reconstructed.target, delta, manifest,
+    sourceDigest, targetDigest, deltaDigest, shardDigests, shards,
+    carriers: Object.freeze([arc5Carrier(manifest), ...shards.map(({ carrier }) => carrier)]),
   });
 };
 
@@ -620,64 +1357,123 @@ const inspectArc5OwnershipMigration = (rows, ownership) => {
   const found = [];
   for (const [segment, row] of Object.entries(rows ?? {})) {
     for (const namespace of Object.keys(row?.extensions ?? {})) {
-      if (namespace.startsWith(ARC5_OWNERSHIP_MIGRATION_PREFIX)) {
-        found.push({ segment, namespace });
-      }
+      if (namespace.startsWith(ARC5_OWNERSHIP_MIGRATION_PREFIX)) found.push({ segment, namespace });
     }
   }
   found.sort((left, right) => ARC4_SEGMENT_ORDER[left.segment] - ARC4_SEGMENT_ORDER[right.segment]
     || (left.namespace < right.namespace ? -1 : left.namespace > right.namespace ? 1 : 0));
-  const namespaceInventoryMatches = same(
-    found, [ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET],
+  const namespaceInventoryMatches = same(found, ARC5_OWNERSHIP_EXTENSION_TARGETS);
+  const carriers = ARC5_OWNERSHIP_EXTENSION_TARGETS.map(({ segment, namespace }) => (
+    carrierAt(rows, segment, namespace) ?? null
+  ));
+  const manifest = exactBoundedArc5CarrierVersion(
+    carriers[0], ARC5_OWNERSHIP_REPRESENTATION_VERSION,
   );
-  const selected = carrierAt(
-    rows,
-    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.segment,
-    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace,
-  ) ?? (found.length === 1
-    ? carrierAt(rows, found[0].segment, found[0].namespace) : null);
-  const certificate = exactCanonicalCarrier(selected);
-  const certificateShapeMatches = exactKeys(certificate, [
+  const manifestShapeMatches = exactKeys(manifest, [
     'schema', 'version', 'sourceSchema', 'sourceVersion', 'sourceRevision',
     'sourceMode', 'sourceDigest', 'targetSchema', 'targetVersion',
-    'targetRevision', 'targetMode', 'targetDigest',
+    'targetRevision', 'targetMode', 'targetDigest', 'deltaSchema',
+    'deltaVersion', 'deltaDigest', 'deltaRowCount', 'fixedShardCount',
+    'shardDigests',
   ])
-    && certificate.schema === ARC5_OWNERSHIP_MIGRATION_SCHEMA
-    && certificate.version === 1
-    && certificate.sourceSchema === ARC5_OWNERSHIP_SOURCE_SCHEMA
-    && certificate.sourceVersion === 1
-    && counter(certificate.sourceRevision)
-    && ['current', 'legacy-protected'].includes(certificate.sourceMode)
-    && hexDigest(certificate.sourceDigest)
-    && certificate.targetSchema === ARC5_OWNERSHIP_TARGET_SCHEMA
-    && certificate.targetVersion === 2
-    && counter(certificate.targetRevision)
-    && ['current', 'legacy-protected'].includes(certificate.targetMode)
-    && hexDigest(certificate.targetDigest);
+    && manifest.schema === ARC5_OWNERSHIP_MIGRATION_SCHEMA
+    && manifest.version === ARC5_OWNERSHIP_REPRESENTATION_VERSION
+    && manifest.sourceSchema === ARC5_OWNERSHIP_SOURCE_SCHEMA
+    && manifest.sourceVersion === 1 && counter(manifest.sourceRevision)
+    && ['current', 'legacy-protected'].includes(manifest.sourceMode)
+    && hexDigest(manifest.sourceDigest)
+    && manifest.targetSchema === ARC5_OWNERSHIP_TARGET_SCHEMA
+    && manifest.targetVersion === 2 && counter(manifest.targetRevision)
+    && manifest.targetRevision >= manifest.sourceRevision
+    && manifest.targetMode === manifest.sourceMode
+    && hexDigest(manifest.targetDigest)
+    && manifest.deltaSchema === ARC5_OWNERSHIP_DELTA_SCHEMA
+    && manifest.deltaVersion === ARC5_OWNERSHIP_DELTA_VERSION
+    && hexDigest(manifest.deltaDigest)
+    && counter(manifest.deltaRowCount) && manifest.deltaRowCount <= ARC5_MAX_DELTA_ROWS
+    && manifest.fixedShardCount === ARC5_OWNERSHIP_FIXED_SHARDS
+    && Array.isArray(manifest.shardDigests)
+    && manifest.shardDigests.length === ARC5_OWNERSHIP_FIXED_SHARDS
+    && manifest.shardDigests.every(hexDigest);
   const source = ownership?.mirror ?? null;
-  const target = source === null ? null : arc5OwnershipTargetMirrorForDigest(source);
   const sourceDigest = source === null ? null : sha256(JSON.stringify(source));
-  const targetDigest = target === null ? null : sha256(JSON.stringify(target));
-  const sourceFixedPointMatches = certificateShapeMatches
+  const sourceFixedPointMatches = manifestShapeMatches
     && ownership?.stateDigestMatches === true
-    && certificate.sourceRevision === source?.revision
-    && certificate.sourceMode === source?.mode
-    && certificate.sourceDigest === sourceDigest
-    && certificate.sourceDigest === ownership?.manifest?.stateDigest;
-  const targetFixedPointMatches = certificateShapeMatches && target !== null
-    && certificate.targetRevision === target.revision
-    && certificate.targetRevision === certificate.sourceRevision
-    && certificate.targetMode === target.source.mode
-    && certificate.targetMode === certificate.sourceMode
-    && certificate.targetDigest === targetDigest;
+    && manifest.sourceRevision === source?.revision
+    && manifest.sourceMode === source?.mode
+    && manifest.sourceDigest === sourceDigest
+    && manifest.sourceDigest === ownership?.manifest?.stateDigest;
+  let parsedShards = null;
+  let delta = null;
+  let deltaDigest = null;
+  let deltaFixedPointMatches = false;
+  if (manifestShapeMatches) {
+    const values = [];
+    const logicalRows = [];
+    let start = 0;
+    let valid = true;
+    for (let index = 0; index < ARC5_OWNERSHIP_FIXED_SHARDS; index++) {
+      const shard = exactBoundedArc5CarrierVersion(
+        carriers[index + 1], ARC5_OWNERSHIP_REPRESENTATION_VERSION,
+      );
+      if (!exactKeys(shard, [
+        'schema', 'version', 'index', 'count', 'start', 'end', 'total',
+        'digest', 'rows',
+      ]) || shard.schema !== ARC5_OWNERSHIP_DELTA_SHARD_SCHEMA
+        || shard.version !== ARC5_OWNERSHIP_REPRESENTATION_VERSION
+        || shard.index !== index || shard.count !== ARC5_OWNERSHIP_FIXED_SHARDS
+        || shard.start !== start || !counter(shard.end) || shard.end < shard.start
+        || shard.total !== manifest.deltaRowCount || !Array.isArray(shard.rows)
+        || shard.rows.length !== shard.end - shard.start
+        || !hexDigest(shard.digest)
+        || sha256(canonicalToolJson(shard.rows)) !== shard.digest
+        || shard.digest !== manifest.shardDigests[index]) {
+        valid = false;
+        break;
+      }
+      values.push(shard);
+      logicalRows.push(...shard.rows);
+      start = shard.end;
+    }
+    const normalized = valid && start === manifest.deltaRowCount
+      && logicalRows.length === manifest.deltaRowCount
+      ? normalizedArc5DeltaRows(logicalRows) : null;
+    if (normalized !== null) {
+      delta = Object.freeze({
+        schema: ARC5_OWNERSHIP_DELTA_SCHEMA,
+        version: ARC5_OWNERSHIP_DELTA_VERSION,
+        rows: Object.freeze(normalized),
+      });
+      deltaDigest = sha256(canonicalToolJson(delta));
+      const fixedShards = encodeArc5Shards(normalized);
+      deltaFixedPointMatches = deltaDigest === manifest.deltaDigest
+        && fixedShards !== null
+        && fixedShards.every(({ carrier }, index) => (
+          carrier.version === carriers[index + 1]?.version
+          && carrier.json === carriers[index + 1]?.json
+        ));
+      parsedShards = Object.freeze(values);
+    }
+  }
+  const reconstructed = source !== null && deltaFixedPointMatches
+    ? reconstructArc5Target(source, manifest.targetRevision, delta.rows) : null;
+  const target = reconstructed?.target ?? null;
+  const targetDigest = target === null ? null : sha256(JSON.stringify(target));
+  const targetFixedPointMatches = reconstructed !== null
+    && manifest.targetMode === source.mode
+    && manifest.targetDigest === targetDigest
+    && same(reconstructed.fixedRows, delta.rows);
   return Object.freeze({
     found: Object.freeze(found),
-    carrier: selected ?? null,
-    certificate: certificateShapeMatches ? certificate : null,
-    source, target, sourceDigest, targetDigest,
+    carriers: Object.freeze(carriers),
+    manifestCarrier: carriers[0] ?? null,
+    manifest: manifestShapeMatches ? manifest : null,
+    shards: parsedShards,
+    source, delta, target, sourceDigest, deltaDigest, targetDigest,
     namespaceInventoryMatches,
-    certificateShapeMatches,
+    manifestShapeMatches,
     sourceFixedPointMatches,
+    deltaFixedPointMatches,
     targetFixedPointMatches,
   });
 };
@@ -923,8 +1719,9 @@ export const assessArc4DurableEvidence = (evidence = {}) => {
     ownershipProjection: inspectedOwnership !== null
       && same(inspectedOwnership.mirror, evidence?.captureState),
     arc5NamespaceInventory: inspectedArc5?.namespaceInventoryMatches === true,
-    arc5CertificateShape: inspectedArc5?.certificateShapeMatches === true,
+    arc5ManifestShape: inspectedArc5?.manifestShapeMatches === true,
     arc5SourceFixedPoint: inspectedArc5?.sourceFixedPointMatches === true,
+    arc5DeltaFixedPoint: inspectedArc5?.deltaFixedPointMatches === true,
     arc5TargetFixedPoint: inspectedArc5?.targetFixedPointMatches === true,
     f4Authority: v5RowsComplete && exactF4Authority(v5.rows, evidence),
     receiptRows: exactReceiptRows(evidence),
@@ -952,15 +1749,22 @@ export const projectArc4OwnershipEvidence = (evidence) => {
 
 export const projectArc5OwnershipMigrationEvidence = (evidence) => {
   const result = assessArc4DurableEvidence(evidence);
-  if (!result.ok || result.arc5Migration?.certificate === null) return null;
+  if (!result.ok || result.arc5Migration?.manifest === null
+    || result.arc5Migration?.delta === null || result.arc5Migration?.target === null) return null;
   return Object.freeze({
-    target: ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
-    carrier: result.arc5Migration.carrier,
-    certificate: result.arc5Migration.certificate,
+    representationVersion: ARC5_OWNERSHIP_REPRESENTATION_VERSION,
+    targets: ARC5_OWNERSHIP_EXTENSION_TARGETS,
+    carriers: result.arc5Migration.carriers,
+    manifest: result.arc5Migration.manifest,
+    shards: result.arc5Migration.shards,
     source: result.arc5Migration.source,
+    delta: result.arc5Migration.delta,
     targetMirror: result.arc5Migration.target,
     sourceDigest: result.arc5Migration.sourceDigest,
+    deltaDigest: result.arc5Migration.deltaDigest,
     targetDigest: result.arc5Migration.targetDigest,
+    deltaRowCount: result.arc5Migration.delta.rows.length,
+    shardDigests: result.arc5Migration.manifest.shardDigests,
   });
 };
 
@@ -1013,12 +1817,14 @@ const persistenceStateOf = (value) => value?.persistence ?? null;
 const ownershipV2StateOf = (value) => value?.ownershipV2 ?? null;
 
 const arc5AppDiagnosticsShape = (value) => exactKeys(value, [
-  'schema', 'stateKind', 'mode', 'protection', 'bootstrapPending',
-  'bootstrapOutcome', 'revision', 'sourceRevision', 'sourceDigest',
-  'targetDigest', 'acquisitions', 'bredAcquisitions', 'creatures',
-  'creatureTombstones', 'specimenLots', 'specimenTombstones', 'biospheres',
+  'schema', 'stateKind', 'mode', 'representationVersion', 'protection',
+  'bootstrapPending', 'bootstrapOutcome', 'revision', 'sourceRevision',
+  'sourceDigest', 'targetDigest', 'deltaDigest', 'deltaRows',
+  'deltaShardCount', 'deltaShardDigests', 'acquisitions',
+  'bredAcquisitions', 'creatures', 'creatureTombstones', 'specimenLots',
+  'specimenTombstones', 'biospheres',
 ])
-  && value.schema === 'cf-v2-arc5-app-state/v1'
+  && value.schema === 'cf-v2-arc5-app-state/v2'
   && ['loaded', 'unavailable'].includes(value.stateKind)
   && typeof value.bootstrapPending === 'boolean'
   && (value.bootstrapOutcome === null || boundedText(value.bootstrapOutcome, 128))
@@ -1032,8 +1838,19 @@ const arc5AppDiagnosticsShape = (value) => exactKeys(value, [
     ? ['current', 'legacy-protected'].includes(value.mode)
       && counter(value.revision) && counter(value.sourceRevision)
       && hexDigest(value.sourceDigest) && hexDigest(value.targetDigest)
+      && value.representationVersion === ARC5_OWNERSHIP_REPRESENTATION_VERSION
+      && hexDigest(value.deltaDigest) && counter(value.deltaRows)
+      && value.deltaRows <= ARC5_MAX_DELTA_ROWS
+      && value.deltaShardCount === ARC5_OWNERSHIP_FIXED_SHARDS
+      && Array.isArray(value.deltaShardDigests)
+      && value.deltaShardDigests.length === ARC5_OWNERSHIP_FIXED_SHARDS
+      && value.deltaShardDigests.every(hexDigest)
     : value.mode === null && value.revision === null && value.sourceRevision === null
-      && value.sourceDigest === null && value.targetDigest === null);
+      && value.representationVersion === null
+      && value.sourceDigest === null && value.targetDigest === null
+      && value.deltaDigest === null && value.deltaRows === null
+      && value.deltaShardCount === null && Array.isArray(value.deltaShardDigests)
+      && value.deltaShardDigests.length === 0);
 
 const expectedArc5Outcome = (actual, expected) => expected === undefined
   ? boundedText(actual, 128)
@@ -1055,14 +1872,20 @@ export const arc5OwnershipV2RuntimeExact = (
     && expectedArc5Outcome(diagnostic.bootstrapOutcome, bootstrapOutcome)
     && diagnostic.revision === target.revision
     && diagnostic.sourceRevision === source.revision
+    && diagnostic.representationVersion === migration.manifest.version
     && diagnostic.sourceDigest === migration.sourceDigest
+    && diagnostic.deltaDigest === migration.deltaDigest
+    && diagnostic.deltaRows === migration.delta.rows.length
+    && diagnostic.deltaShardCount === ARC5_OWNERSHIP_FIXED_SHARDS
+    && same(diagnostic.deltaShardDigests, migration.manifest.shardDigests)
     && diagnostic.targetDigest === migration.targetDigest
-    && diagnostic.acquisitions === source.discoveries.length
-    && diagnostic.bredAcquisitions === 0
+    && diagnostic.acquisitions
+      === source.discoveries.length + target.bredAcquisitions.length
+    && diagnostic.bredAcquisitions === target.bredAcquisitions.length
     && diagnostic.creatures === target.creatures.length
-    && diagnostic.creatureTombstones === 0
+    && diagnostic.creatureTombstones === target.creatureTombstones.length
     && diagnostic.specimenLots === target.specimenLots.length
-    && diagnostic.specimenTombstones === 0
+    && diagnostic.specimenTombstones === target.specimenTombstones.length
     && diagnostic.biospheres === source.biosphereProgress.length;
 };
 
@@ -1093,6 +1916,11 @@ const stableOwnershipV2Projection = (value) => {
     sourceRevision: diagnostic.sourceRevision,
     sourceDigest: diagnostic.sourceDigest,
     targetDigest: diagnostic.targetDigest,
+    representationVersion: diagnostic.representationVersion,
+    deltaDigest: diagnostic.deltaDigest,
+    deltaRows: diagnostic.deltaRows,
+    deltaShardCount: diagnostic.deltaShardCount,
+    deltaShardDigests: diagnostic.deltaShardDigests,
     acquisitions: diagnostic.acquisitions,
     bredAcquisitions: diagnostic.bredAcquisitions,
     creatures: diagnostic.creatures,
@@ -1820,27 +2648,31 @@ const omitted = (value, fields) => Object.fromEntries(
   Object.entries(value ?? {}).filter(([field]) => !fields.includes(field)),
 );
 
-const arc5PlayerCarrierValidatedBy = (evidence, durableAssessment) => {
-  const carrier = evidence?.playerRow?.extensions?.[
-    ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
-  ];
+const arc5CarriersValidatedBy = (evidence, durableAssessment) => {
   const migration = durableAssessment?.arc5Migration;
+  const carriers = ARC5_OWNERSHIP_EXTENSION_TARGETS.map(({ segment, namespace }) => {
+    const descriptor = V5_SEGMENTS.find((candidate) => candidate.segment === segment);
+    return descriptor === undefined ? null
+      : evidence?.[descriptor.row]?.extensions?.[namespace] ?? null;
+  });
   return durableAssessment?.ok === true
     && durableAssessment?.checks?.arc5NamespaceInventory === true
-    && durableAssessment?.checks?.arc5CertificateShape === true
+    && durableAssessment?.checks?.arc5ManifestShape === true
     && durableAssessment?.checks?.arc5SourceFixedPoint === true
+    && durableAssessment?.checks?.arc5DeltaFixedPoint === true
     && durableAssessment?.checks?.arc5TargetFixedPoint === true
     && migration?.namespaceInventoryMatches === true
-    && migration?.certificateShapeMatches === true
+    && migration?.manifestShapeMatches === true
     && migration?.sourceFixedPointMatches === true
+    && migration?.deltaFixedPointMatches === true
     && migration?.targetFixedPointMatches === true
-    && migration?.carrier === carrier;
+    && same(migration?.carriers, carriers);
 };
 
 const unrelatedDurableProjection = (
   evidence, durableAssessment, { omitCompatibility = false } = {},
 ) => {
-  const excludeArc5Carrier = arc5PlayerCarrierValidatedBy(evidence, durableAssessment);
+  const excludeArc5Carriers = arc5CarriersValidatedBy(evidence, durableAssessment);
   return {
     rows: Object.fromEntries(V5_SEGMENTS.map(({ segment, row }) => {
       const source = evidence?.[row];
@@ -1852,9 +2684,9 @@ const unrelatedDurableProjection = (
       const extensions = Object.fromEntries(Object.entries(source?.extensions ?? {})
         .filter(([namespace]) => namespace !== 'f4.authority'
           && !namespace.startsWith('arc4.ownership.')
-          && !(excludeArc5Carrier
-            && segment === ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.segment
-            && namespace === ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace)));
+          && !(excludeArc5Carriers && ARC5_OWNERSHIP_EXTENSION_TARGETS.some((target) => (
+            target.segment === segment && target.namespace === namespace
+          )))));
       return [segment, {
         schema: source?.schema,
         segment: source?.segment,
@@ -1869,19 +2701,30 @@ const unrelatedDurableProjection = (
   };
 };
 
-const exactArc5CertificateSuccessor = (beforeAssessment, afterAssessment) => {
+const exactArc5CarrierSuccessor = (beforeAssessment, afterAssessment) => {
   const before = beforeAssessment?.arc5Migration;
   const after = afterAssessment?.arc5Migration;
   return beforeAssessment?.ok === true && afterAssessment?.ok === true
-    && before?.certificate !== null && after?.certificate !== null
-    && before.carrier?.json !== after.carrier?.json
-    && after.certificate.sourceRevision === before.certificate.sourceRevision + 1
-    && after.certificate.targetRevision === before.certificate.targetRevision + 1
-    && after.certificate.sourceRevision === after.source?.revision
-    && after.certificate.targetRevision === after.target?.revision
-    && after.certificate.sourceDigest === after.sourceDigest
-    && after.certificate.sourceDigest === afterAssessment.ownership?.manifest?.stateDigest
-    && after.certificate.targetDigest === after.targetDigest;
+    && before?.manifest !== null && after?.manifest !== null
+    && before.carriers?.length === ARC5_OWNERSHIP_EXTENSION_TARGETS.length
+    && after.carriers?.length === ARC5_OWNERSHIP_EXTENSION_TARGETS.length
+    && before.carriers.every((carrier) => carrier?.version === 2)
+    && after.carriers.every((carrier) => carrier?.version === 2)
+    && before.manifestCarrier?.json !== after.manifestCarrier?.json
+    && same(before.delta, after.delta)
+    && before.deltaDigest === after.deltaDigest
+    && same(before.manifest.shardDigests, after.manifest.shardDigests)
+    && same(before.carriers.slice(1), after.carriers.slice(1))
+    && after.manifest.sourceRevision === before.manifest.sourceRevision + 1
+    && after.manifest.targetRevision === before.manifest.targetRevision + 1
+    && after.manifest.targetRevision - after.manifest.sourceRevision
+      === before.manifest.targetRevision - before.manifest.sourceRevision
+    && after.manifest.sourceRevision === after.source?.revision
+    && after.manifest.targetRevision === after.target?.revision
+    && after.manifest.sourceDigest === after.sourceDigest
+    && after.manifest.deltaDigest === after.deltaDigest
+    && after.manifest.sourceDigest === afterAssessment.ownership?.manifest?.stateDigest
+    && after.manifest.targetDigest === after.targetDigest;
 };
 
 const exactArc4V4FixtureCompatibility = (assessment) => {
@@ -2050,7 +2893,7 @@ const captureCore = ({ before, after, beforeState, afterState, afterUi, interact
       captured: !!before && !!after && !!beforeState && !!afterState && !!afterUi
         && !!interaction && !!expected,
       durableEvidence: beforeAssessment.ok && afterAssessment.ok,
-      arc5CertificateSuccessor: exactArc5CertificateSuccessor(
+      arc5CarrierSuccessor: exactArc5CarrierSuccessor(
         beforeAssessment, afterAssessment,
       ),
       oneRevision: after?.revision === before?.revision + 1
@@ -2298,7 +3141,7 @@ export const assessArc4BurnStep = ({
     captured: !!before && !!after && !!beforeUi && !!outcome && !!afterState
       && ARC4_CAPTURE_VERBS.includes(verb) && counter(expectedUsed),
     durableEvidence: beforeAssessment.ok && afterAssessment.ok,
-    arc5CertificateSuccessor: exactArc5CertificateSuccessor(
+    arc5CarrierSuccessor: exactArc5CarrierSuccessor(
       beforeAssessment, afterAssessment,
     ),
     readyVerb: arc4CaptureUiSnapshotComplete(beforeUi)
@@ -2676,7 +3519,7 @@ const exactRawCaptureOutcome = (before, after, expected) => {
       && same(beforeMirror?.creatures, afterMirror?.creatures)
       && same(beforeMirror?.specimenLots, afterMirror?.specimenLots);
   return beforeAssessment.ok && afterAssessment.ok
-    && exactArc5CertificateSuccessor(beforeAssessment, afterAssessment)
+    && exactArc5CarrierSuccessor(beforeAssessment, afterAssessment)
     && after?.revision === before?.revision + 1
     && after?.captureRevision === before?.captureRevision + 1
     && exactF4CaptureTransition(before, after)
@@ -3199,30 +4042,26 @@ const carrier = (value) => Object.freeze({
   version: 1, json: canonicalToolJson(value),
 });
 
-const arc5MigrationCertificate = (source) => {
+const arc5CurrentExtensions = (source, revision = source?.revision, rows = []) => {
   const registeredSource = registeredMirrorForDigest(source);
-  const target = registeredSource === null
-    ? null : arc5OwnershipTargetMirrorForDigest(registeredSource);
-  if (registeredSource === null || target === null) {
-    throw new Error('Arc 5 selftest source could not be registered for migration');
+  const encoded = registeredSource === null ? null
+    : encodeArc5Current(registeredSource, revision, rows);
+  if (registeredSource === null || encoded === null) {
+    throw new Error('Arc 5 selftest source could not be encoded as a compact delta');
   }
   return {
-    schema: ARC5_OWNERSHIP_MIGRATION_SCHEMA,
-    version: 1,
-    sourceSchema: ARC5_OWNERSHIP_SOURCE_SCHEMA,
-    sourceVersion: 1,
-    sourceRevision: registeredSource.revision,
-    sourceMode: registeredSource.mode,
-    sourceDigest: sha256(JSON.stringify(registeredSource)),
-    targetSchema: ARC5_OWNERSHIP_TARGET_SCHEMA,
-    targetVersion: 2,
-    targetRevision: target.revision,
-    targetMode: target.source.mode,
-    targetDigest: sha256(JSON.stringify(target)),
+    player: {
+      [ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace]: encoded.carriers[0],
+    },
+    creatures: Object.fromEntries(encoded.carriers.slice(1).map((value, index) => [
+      `arc5.ownership.delta.${index}`, value,
+    ])),
   };
 };
 
-const ownershipExtensions = (mirror) => {
+const ownershipExtensions = (mirror, {
+  arc5Revision = mirror.revision, arc5Rows = [],
+} = {}) => {
   const groupRows = {
     catalogSpecies: mirror.catalogSpecies,
     discoveries: mirror.discoveries,
@@ -3285,12 +4124,14 @@ const ownershipExtensions = (mirror) => {
     player: {
       'arc4.ownership.manifest': carrier(manifest),
       'arc4.ownership.progress': carrier(progress),
-      [ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace]: carrier(
-        arc5MigrationCertificate(reconstructedMirror),
-      ),
     },
     creatures: {}, catalog: {}, inventory: {}, settings: {},
   };
+  const compactArc5 = arc5CurrentExtensions(
+    reconstructedMirror, arc5Revision, arc5Rows,
+  );
+  Object.assign(extensions.player, compactArc5.player);
+  Object.assign(extensions.creatures, compactArc5.creatures);
   for (const group of ARC4_SHARD_GROUPS) {
     for (let index = 0; index < 4; index++) {
       extensions[group.segment][`${group.prefix}.${index}`] = carrier(shards[group.kind][index]);
@@ -3434,8 +4275,10 @@ const makeDurable = (mirror, {
   essence = 0,
   essenceEarned = essence,
   ownedCounters = ARC4_PERTAR_FIXTURE.v4OwnedCounters.before,
+  arc5Revision = mirror.revision,
+  arc5Rows = [],
 } = {}) => {
-  const ownership = ownershipExtensions(mirror);
+  const ownership = ownershipExtensions(mirror, { arc5Revision, arc5Rows });
   const projected = projectLegacyMirror(mirror);
   if (projected === null) throw new Error('Arc 4 selftest mirror did not project');
   const ever = {
@@ -3611,9 +4454,10 @@ const appOwnershipV2State = (raw, {
   const source = migration.source;
   const target = migration.targetMirror;
   return {
-    schema: 'cf-v2-arc5-app-state/v1',
+    schema: 'cf-v2-arc5-app-state/v2',
     stateKind: unavailable ? 'unavailable' : 'loaded',
     mode: unavailable ? null : source.mode,
+    representationVersion: unavailable ? null : migration.representationVersion,
     protection: unavailable ? 'committed-publication-reload' : null,
     bootstrapPending: false,
     bootstrapOutcome: outcome,
@@ -3621,12 +4465,17 @@ const appOwnershipV2State = (raw, {
     sourceRevision: unavailable ? null : source.revision,
     sourceDigest: unavailable ? null : migration.sourceDigest,
     targetDigest: unavailable ? null : migration.targetDigest,
-    acquisitions: unavailable ? 0 : source.discoveries.length,
-    bredAcquisitions: 0,
+    deltaDigest: unavailable ? null : migration.deltaDigest,
+    deltaRows: unavailable ? null : migration.deltaRowCount,
+    deltaShardCount: unavailable ? null : ARC5_OWNERSHIP_FIXED_SHARDS,
+    deltaShardDigests: unavailable ? [] : migration.shardDigests,
+    acquisitions: unavailable ? 0
+      : source.discoveries.length + target.bredAcquisitions.length,
+    bredAcquisitions: unavailable ? 0 : target.bredAcquisitions.length,
     creatures: unavailable ? 0 : target.creatures.length,
-    creatureTombstones: 0,
+    creatureTombstones: unavailable ? 0 : target.creatureTombstones.length,
     specimenLots: unavailable ? 0 : target.specimenLots.length,
-    specimenTombstones: 0,
+    specimenTombstones: unavailable ? 0 : target.specimenTombstones.length,
     biospheres: unavailable ? 0 : source.biosphereProgress.length,
   };
 };
@@ -3798,6 +4647,22 @@ const hitRawSelftest = makeDurable(hitMirror(), {
   receipts: [hitReceiptSelftest], essence: 2,
   ownedCounters: ARC4_PERTAR_FIXTURE.v4OwnedCounters.afterFirstHit,
 });
+const arc5TypedDeltaRowsSelftest = Object.freeze([Object.freeze({
+  kind: 'source-specimen-tombstone',
+  lotId: SELFTEST_IDS.lot,
+  quantity: 1,
+  disposition: Object.freeze({
+    ordinal: 17,
+    actionKind: 'companion-specimen-release',
+    witnessDigest: '7'.repeat(64),
+  }),
+})]);
+const arc5TypedDeltaRawSelftest = makeDurable(hitMirror(), {
+  revision: 1,
+  arc5Revision: 2,
+  arc5Rows: arc5TypedDeltaRowsSelftest,
+  ownedCounters: ARC4_PERTAR_FIXTURE.v4OwnedCounters.afterFirstHit,
+});
 const missManifestDigest = inspectArc4Ownership(inspectV5Rows(
   makeDurable(missMirror()),
 ).rows).manifest.stateDigest;
@@ -3812,6 +4677,211 @@ const missRawSelftest = makeDurable(missMirror(), {
 });
 const firstAttemptOracleSelftest = captureAttemptOracle(beforeRawSelftest, 'sample');
 const secondAttemptOracleSelftest = captureAttemptOracle(hitRawSelftest, 'tame');
+const arc5EmptyProjectionSelftest = projectArc5OwnershipMigrationEvidence(
+  beforeRawSelftest,
+);
+const arc5GrownSourceProjectionSelftest = projectArc5OwnershipMigrationEvidence(
+  hitRawSelftest,
+);
+const arc5TypedDeltaProjectionSelftest = projectArc5OwnershipMigrationEvidence(
+  arc5TypedDeltaRawSelftest,
+);
+const ARC5_HISTORY_GENOME_SELFTEST = Object.freeze({
+  gen: 0, kingdom: 'fauna', seed: 2_468,
+});
+const ARC5_HISTORY_GENOME_DIGEST_SELFTEST = sha256(
+  canonicalToolJson(ARC5_HISTORY_GENOME_SELFTEST),
+);
+const ARC5_HISTORY_DISCOVERY_ID_SELFTEST = `discovery-v1:${'8'.repeat(64)}`;
+const ARC5_HISTORY_CREATURE_ID_SELFTEST = `creature-v1:${'9'.repeat(64)}`;
+const ARC5_HISTORY_PRIOR_BOND_SELFTEST = Object.freeze({
+  level: 2,
+  memories: Object.freeze([Object.freeze({
+    id: 'arrival-1', kind: 'arrival', worldKey: ARC4_PERTAR_FIXTURE.worldKey,
+    atActivePlayMs: 100,
+  })]),
+  preferredRole: null,
+  worldsSurvived: 2,
+  guardianVictories: 1,
+  mementoIds: Object.freeze(['memento-1']),
+});
+const ARC5_HISTORY_CURRENT_BOND_SELFTEST = Object.freeze({
+  level: 3,
+  memories: Object.freeze([
+    ...ARC5_HISTORY_PRIOR_BOND_SELFTEST.memories,
+    Object.freeze({
+      id: 'arrival-2', kind: 'arrival', worldKey: null, atActivePlayMs: 200,
+    }),
+  ]),
+  preferredRole: 'scout',
+  worldsSurvived: 3,
+  guardianVictories: 2,
+  mementoIds: Object.freeze(['memento-1', 'memento-2']),
+});
+const ARC5_HISTORY_PRIOR_CREATURE_SELFTEST = Object.freeze({
+  creatureId: ARC5_HISTORY_CREATURE_ID_SELFTEST,
+  speciesId: `species-v1:${ARC5_HISTORY_GENOME_DIGEST_SELFTEST}`,
+  genomeIdentity: `genome-v1:${ARC5_HISTORY_GENOME_DIGEST_SELFTEST}`,
+  genome: ARC5_HISTORY_GENOME_SELFTEST,
+  nickname: 'Prior', origin: 'wild',
+  acquisitionRecordId: ARC5_HISTORY_DISCOVERY_ID_SELFTEST,
+  lineage: Object.freeze({ kind: 'none', generation: 0 }),
+  xp: 10, hurt: null, fed: null, brood: null, assignment: null,
+  bond: ARC5_HISTORY_PRIOR_BOND_SELFTEST,
+});
+const ARC5_HISTORY_SOURCE_SELFTEST = registeredMirrorForDigest({
+  ...emptyMirror(5),
+  catalogSpecies: [Object.freeze({
+    speciesId: ARC5_HISTORY_PRIOR_CREATURE_SELFTEST.speciesId,
+    genomeIdentity: ARC5_HISTORY_PRIOR_CREATURE_SELFTEST.genomeIdentity,
+    kingdom: 'fauna', genome: ARC5_HISTORY_GENOME_SELFTEST, alias: null,
+    firstObservationId: ARC5_HISTORY_DISCOVERY_ID_SELFTEST,
+  })],
+  discoveries: [Object.freeze({
+    recordId: ARC5_HISTORY_DISCOVERY_ID_SELFTEST,
+    speciesId: ARC5_HISTORY_PRIOR_CREATURE_SELFTEST.speciesId,
+    acquisition: 'tame', firstForSpecies: true,
+    provenance: Object.freeze({
+      kind: 'world', verb: 'tame', worldKey: ARC4_PERTAR_FIXTURE.worldKey,
+      worldAddress: ARC4_PERTAR_FIXTURE.worldAddress,
+      cycle: 0, sourceOrdinal: 0,
+    }),
+  })],
+  creatures: [ARC5_HISTORY_PRIOR_CREATURE_SELFTEST],
+});
+if (ARC5_HISTORY_SOURCE_SELFTEST === null) {
+  throw new Error('Arc 5 mutable-history selftest source is invalid');
+}
+const arc5HistoryRowSelftest = (overrides = {}) => ({
+  kind: 'source-creature-live', creatureId: ARC5_HISTORY_CREATURE_ID_SELFTEST,
+  nickname: 'Current', xp: 11, hurt: 1, fed: 100, brood: 5,
+  assignment: { kind: 'mission', missionId: 'mission-alpha' },
+  bond: ARC5_HISTORY_CURRENT_BOND_SELFTEST,
+  ...overrides,
+});
+const arc5HistoryProjectionSelftest = (row) => {
+  const rows = normalizedArc5DeltaRows([row]);
+  return rows === null ? null
+    : reconstructArc5Target(ARC5_HISTORY_SOURCE_SELFTEST, 6, rows);
+};
+const ARC5_HISTORY_DISPOSITION_SELFTEST = Object.freeze({
+  ordinal: 27, actionKind: 'companion-release', witnessDigest: '6'.repeat(64),
+});
+const arc5MutableLawSelftests = Object.freeze({
+  liveForwardAccepted: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest()) !== null,
+  tombstoneForwardAccepted: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest({
+    kind: 'source-creature-tombstone',
+    disposition: ARC5_HISTORY_DISPOSITION_SELFTEST,
+  })) !== null,
+  liveXpRollbackRejected: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest({
+    xp: 9,
+  })) === null,
+  tombstoneXpRollbackRejected: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest({
+    kind: 'source-creature-tombstone', xp: 9,
+    disposition: ARC5_HISTORY_DISPOSITION_SELFTEST,
+  })) === null,
+  bondCounterRollbackRejected: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest({
+    bond: { ...ARC5_HISTORY_CURRENT_BOND_SELFTEST, level: 1 },
+  })) === null,
+  bondMemoryPrefixRejected: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest({
+    bond: { ...ARC5_HISTORY_CURRENT_BOND_SELFTEST, memories: [] },
+  })) === null,
+  bondMementoPrefixRejected: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest({
+    bond: { ...ARC5_HISTORY_CURRENT_BOND_SELFTEST, mementoIds: ['changed'] },
+  })) === null,
+  missionShapeRejected: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest({
+    assignment: { kind: 'mission', missionId: 123 },
+  })) === null,
+  recoveryShapeRejected: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest({
+    assignment: { kind: 'recovery', readyAtActivePlayMs: 1.5 },
+  })) === null,
+  bondScalarRejected: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest({
+    bond: { ...ARC5_HISTORY_CURRENT_BOND_SELFTEST, worldsSurvived: '3' },
+  })) === null,
+  bondDuplicateIdRejected: arc5HistoryProjectionSelftest(arc5HistoryRowSelftest({
+    bond: {
+      ...ARC5_HISTORY_CURRENT_BOND_SELFTEST,
+      mementoIds: ['memento-1', 'memento-1'],
+    },
+  })) === null,
+});
+const arc5BredGenomeRowSelftest = (genome, ordinal = 0) => {
+  const identityDigest = sha256(canonicalToolJson(genome));
+  return {
+    kind: 'bred-creature-live',
+    creature: {
+      creatureId: `creature-v1:${sha256(`arc5-budget-creature-${ordinal}`)}`,
+      speciesId: `species-v1:${identityDigest}`,
+      genomeIdentity: `genome-v1:${identityDigest}`,
+      genome,
+      nickname: null,
+      origin: 'bred',
+      acquisitionRecordId: `discovery-v1:${sha256(`arc5-budget-acquisition-${ordinal}`)}`,
+      lineage: {
+        kind: 'parent-creatures', generation: genome.gen,
+        parentCreatureIds: [
+          `creature-v1:${'a'.repeat(64)}`,
+          `creature-v1:${'b'.repeat(64)}`,
+        ],
+      },
+      xp: null, hurt: null, fed: null, brood: null, assignment: null, bond: null,
+    },
+  };
+};
+const arc5BudgetGenomeSelftest = (entries = []) => Object.fromEntries([
+  ['gen', 1], ['kingdom', 'fauna'], ['parents', [101, 202]], ['seed', 303],
+  ...entries,
+]);
+const arc5DeepGenomeValueSelftest = (() => {
+  let value = 'leaf';
+  for (let depth = 0; depth < 30; depth++) value = { next: value };
+  return value;
+})();
+const arc5ShallowBudgetRowSelftest = arc5BredGenomeRowSelftest(
+  arc5BudgetGenomeSelftest([['trait', { value: 'bounded' }]]),
+);
+const arc5DeepBudgetRowSelftest = arc5BredGenomeRowSelftest(
+  arc5BudgetGenomeSelftest([['trait', arc5DeepGenomeValueSelftest]]), 1,
+);
+const arc5DeepShardValueSelftest = arc5ShardValue(
+  0, 0, 1, [arc5DeepBudgetRowSelftest],
+);
+const arc5CanonicalBudgetSelftests = Object.freeze({
+  shallowBredGenomeAccepted:
+    normalizedArc5DeltaRows([arc5ShallowBudgetRowSelftest])?.length === 1,
+  deepBredGenomeRejected:
+    normalizedArc5DeltaRows([arc5DeepBudgetRowSelftest]) === null,
+  deepCanonicalShardRejected: exactBoundedArc5CarrierVersion({
+    version: 2, json: canonicalToolJson(arc5DeepShardValueSelftest),
+  }, 2) === null,
+  longGenomeStringRejected: normalizedArc5DeltaRows([arc5BredGenomeRowSelftest(
+    arc5BudgetGenomeSelftest([['trait', 'x'.repeat(16_385)]]), 2,
+  )]) === null,
+  longGenomeKeyRejected: normalizedArc5DeltaRows([arc5BredGenomeRowSelftest(
+    arc5BudgetGenomeSelftest([['k'.repeat(257), true]]), 3,
+  )]) === null,
+  wideGenomeRejected: normalizedArc5DeltaRows([arc5BredGenomeRowSelftest(
+    arc5BudgetGenomeSelftest(Array.from(
+      { length: 253 }, (_, index) => [`trait${index}`, index],
+    )), 4,
+  )]) === null,
+  longGenomeArrayRejected: normalizedArc5DeltaRows([arc5BredGenomeRowSelftest(
+    arc5BudgetGenomeSelftest([['trait', Array.from({ length: 20_001 }, () => 0)]]), 5,
+  )]) === null,
+  aggregateNodeBudgetRejected: !arc5CanonicalDataWithinBudget({
+    schema: ARC5_OWNERSHIP_DELTA_SCHEMA,
+    version: ARC5_OWNERSHIP_DELTA_VERSION,
+    rows: Array.from({ length: 13 }, () => ({
+      payload: Array.from({ length: 20_000 }, () => 0),
+    })),
+  }),
+  aggregateCharacterBudgetRejected: !arc5CanonicalDataWithinBudget(
+    Array.from({ length: 245 }, () => 'x'.repeat(16_384)),
+  ),
+  protoGenomeRejected: normalizedArc5DeltaRows([arc5BredGenomeRowSelftest(
+    arc5BudgetGenomeSelftest([['__proto__', { smuggled: true }]]), 6,
+  )]) === null,
+});
 const exactFixtureAttemptOracle = (oracle, expected, event, poolLength) => (
   oracle?.event === event
   && oracle?.candidate?.sourceOrdinal === expected.sourceOrdinal
@@ -3835,32 +4905,32 @@ const withManifestStateDigest = (evidence, stateDigest) => {
   return next;
 };
 
-const withArc5CertificateMutation = (evidence, mutate) => {
+const withArc5ManifestMutation = (evidence, mutate) => {
   const next = structuredClone(evidence);
   const carrierValue = next.playerRow.extensions[
     ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
   ];
-  const certificate = parseJson(carrierValue?.json);
-  if (!record(certificate)) {
-    throw new Error('Arc 5 selftest certificate mutation target is absent');
+  const manifest = parseJson(carrierValue?.json);
+  if (!record(manifest)) {
+    throw new Error('Arc 5 selftest manifest mutation target is absent');
   }
-  mutate(certificate, carrierValue);
-  carrierValue.json = canonicalToolJson(certificate);
+  mutate(manifest, carrierValue);
+  carrierValue.json = canonicalToolJson(manifest);
   next.playerRaw = JSON.stringify(next.playerRow);
   return next;
 };
 
-const withNoncanonicalArc5Certificate = (evidence) => {
+const withNoncanonicalArc5Manifest = (evidence) => {
   const next = structuredClone(evidence);
   const carrierValue = next.playerRow.extensions[
     ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
   ];
-  const certificate = parseJson(carrierValue?.json);
-  if (!record(certificate)) {
-    throw new Error('Arc 5 selftest noncanonical certificate target is absent');
+  const manifest = parseJson(carrierValue?.json);
+  if (!record(manifest)) {
+    throw new Error('Arc 5 selftest noncanonical manifest target is absent');
   }
   carrierValue.json = JSON.stringify(
-    Object.fromEntries(Object.entries(certificate).reverse()),
+    Object.fromEntries(Object.entries(manifest).reverse()),
   );
   next.playerRaw = JSON.stringify(next.playerRow);
   return next;
@@ -3868,11 +4938,25 @@ const withNoncanonicalArc5Certificate = (evidence) => {
 
 const withArc5CarrierReplacement = (evidence, source) => {
   const next = structuredClone(evidence);
-  next.playerRow.extensions[ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace]
-    = structuredClone(source?.playerRow?.extensions?.[
-      ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
-    ]);
+  for (const { segment, namespace } of ARC5_OWNERSHIP_EXTENSION_TARGETS) {
+    const descriptor = V5_SEGMENTS.find((candidate) => candidate.segment === segment);
+    next[descriptor.row].extensions[namespace]
+      = structuredClone(source?.[descriptor.row]?.extensions?.[namespace]);
+    next[descriptor.raw] = JSON.stringify(next[descriptor.row]);
+  }
   next.playerRaw = JSON.stringify(next.playerRow);
+  return next;
+};
+
+const withArc5ShardMutation = (evidence, index, mutate) => {
+  const next = structuredClone(evidence);
+  const namespace = `arc5.ownership.delta.${index}`;
+  const carrierValue = next.creaturesRow?.extensions?.[namespace];
+  const shard = parseJson(carrierValue?.json);
+  if (!record(shard)) throw new Error('Arc 5 selftest shard mutation target is absent');
+  mutate(shard, carrierValue);
+  carrierValue.json = canonicalToolJson(shard);
+  next.creaturesRaw = JSON.stringify(next.creaturesRow);
   return next;
 };
 
@@ -4402,6 +5486,7 @@ const exhaustionBundleSelftest = {
 
 const positiveSelftestAssessments = Object.freeze({
   durable: assessArc4DurableEvidence(beforeRawSelftest),
+  arc5TypedDeltaDurable: assessArc4DurableEvidence(arc5TypedDeltaRawSelftest),
   precondition: assessArc4CapturePrecondition(preconditionBundleSelftest),
   preconditionNonzero: assessArc4CapturePrecondition(
     nonzeroPreconditionBundleSelftest,
@@ -4468,20 +5553,38 @@ negativeArc5DuplicateSelftest.settingsRow.extensions[
 negativeArc5DuplicateSelftest.settingsRaw = JSON.stringify(
   negativeArc5DuplicateSelftest.settingsRow,
 );
-const negativeArc5ShapeSelftest = withArc5CertificateMutation(
-  beforeRawSelftest, (certificate) => { certificate.extra = true; },
+const negativeArc5ShapeSelftest = withArc5ManifestMutation(
+  beforeRawSelftest, (manifest) => { manifest.extra = true; },
 );
-const negativeArc5NoncanonicalSelftest = withNoncanonicalArc5Certificate(
+const negativeArc5NoncanonicalSelftest = withNoncanonicalArc5Manifest(
   beforeRawSelftest,
 );
-const negativeArc5SourceDigestSelftest = withArc5CertificateMutation(
-  beforeRawSelftest, (certificate) => { certificate.sourceDigest = 'f'.repeat(64); },
+const negativeArc5SourceDigestSelftest = withArc5ManifestMutation(
+  beforeRawSelftest, (manifest) => { manifest.sourceDigest = 'f'.repeat(64); },
 );
-const negativeArc5TargetDigestSelftest = withArc5CertificateMutation(
-  beforeRawSelftest, (certificate) => { certificate.targetDigest = 'e'.repeat(64); },
+const negativeArc5TargetDigestSelftest = withArc5ManifestMutation(
+  beforeRawSelftest, (manifest) => { manifest.targetDigest = 'e'.repeat(64); },
 );
-const negativeArc5RetainedOldCertificateSelftest = withArc5CarrierReplacement(
+const negativeArc5ShardDigestSelftest = withArc5ShardMutation(
+  beforeRawSelftest, 0, (shard) => { shard.digest = 'd'.repeat(64); },
+);
+const negativeArc5RetainedOldCarrierSetSelftest = withArc5CarrierReplacement(
   hitRawSelftest, beforeRawSelftest,
+);
+const arc5HitchhikeCarrierSourceSelftest = makeDurable(hitMirror(), {
+  revision: 1, arc5Revision: 1, arc5Rows: arc5TypedDeltaRowsSelftest,
+  ownedCounters: ARC4_PERTAR_FIXTURE.v4OwnedCounters.afterFirstHit,
+});
+const negativeArc5HitchhikeRawSelftest = withArc5CarrierReplacement(
+  hitRawSelftest, arc5HitchhikeCarrierSourceSelftest,
+);
+const negativeArc5HitchhikeBundleSelftest = structuredClone(hitBundleSelftest);
+negativeArc5HitchhikeBundleSelftest.after = negativeArc5HitchhikeRawSelftest;
+negativeArc5HitchhikeBundleSelftest.afterState.ownershipV2 = appOwnershipV2State(
+  negativeArc5HitchhikeRawSelftest,
+);
+negativeArc5HitchhikeBundleSelftest.afterUi.ownershipV2 = appOwnershipV2State(
+  negativeArc5HitchhikeRawSelftest,
 );
 const negativeF4SerializerOrderSelftest = structuredClone(beforeRawSelftest);
 negativeF4SerializerOrderSelftest.authorityJson = canonicalToolJson(
@@ -4894,13 +5997,16 @@ const isolatedNegativeSelftests = Object.freeze({
   }),
   arc5Missing: Object.freeze({
     expected: Object.freeze([
-      'arc5NamespaceInventory', 'arc5CertificateShape',
-      'arc5SourceFixedPoint', 'arc5TargetFixedPoint',
+      'arc5NamespaceInventory', 'arc5ManifestShape',
+      'arc5SourceFixedPoint', 'arc5DeltaFixedPoint', 'arc5TargetFixedPoint',
     ]),
     result: assessArc4DurableEvidence(negativeArc5MissingSelftest),
   }),
   arc5Misplaced: Object.freeze({
-    expected: 'arc5NamespaceInventory',
+    expected: Object.freeze([
+      'arc5NamespaceInventory', 'arc5ManifestShape',
+      'arc5SourceFixedPoint', 'arc5DeltaFixedPoint', 'arc5TargetFixedPoint',
+    ]),
     result: assessArc4DurableEvidence(negativeArc5MisplacedSelftest),
   }),
   arc5Duplicate: Object.freeze({
@@ -4909,13 +6015,15 @@ const isolatedNegativeSelftests = Object.freeze({
   }),
   arc5Shape: Object.freeze({
     expected: Object.freeze([
-      'arc5CertificateShape', 'arc5SourceFixedPoint', 'arc5TargetFixedPoint',
+      'arc5ManifestShape', 'arc5SourceFixedPoint',
+      'arc5DeltaFixedPoint', 'arc5TargetFixedPoint',
     ]),
     result: assessArc4DurableEvidence(negativeArc5ShapeSelftest),
   }),
   arc5Noncanonical: Object.freeze({
     expected: Object.freeze([
-      'arc5CertificateShape', 'arc5SourceFixedPoint', 'arc5TargetFixedPoint',
+      'arc5ManifestShape', 'arc5SourceFixedPoint',
+      'arc5DeltaFixedPoint', 'arc5TargetFixedPoint',
     ]),
     result: assessArc4DurableEvidence(negativeArc5NoncanonicalSelftest),
   }),
@@ -4927,14 +6035,22 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'arc5TargetFixedPoint',
     result: assessArc4DurableEvidence(negativeArc5TargetDigestSelftest),
   }),
-  arc5RetainedOldCertificate: Object.freeze({
+  arc5ShardDigest: Object.freeze({
+    expected: Object.freeze(['arc5DeltaFixedPoint', 'arc5TargetFixedPoint']),
+    result: assessArc4DurableEvidence(negativeArc5ShardDigestSelftest),
+  }),
+  arc5RetainedOldCarrierSet: Object.freeze({
     expected: Object.freeze([
-      'durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+      'durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
       'ownershipV2Live',
     ]),
     result: assessArc4CommittedHit({
-      ...hitBundleSelftest, after: negativeArc5RetainedOldCertificateSelftest,
+      ...hitBundleSelftest, after: negativeArc5RetainedOldCarrierSetSelftest,
     }),
+  }),
+  arc5TypedDeltaHitchhike: Object.freeze({
+    expected: 'arc5CarrierSuccessor',
+    result: assessArc4CommittedHit(negativeArc5HitchhikeBundleSelftest),
   }),
   f4SerializerOrder: Object.freeze({
     expected: 'f4Authority',
@@ -4952,7 +6068,7 @@ const isolatedNegativeSelftests = Object.freeze({
   }),
   coordinatedManifestReceiptDigest: Object.freeze({
     expected: Object.freeze([
-      'durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+      'durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
       'ownershipV2Live',
     ]),
     result: assessArc4CommittedHit({
@@ -5467,6 +6583,8 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
     !== '801230daf3f7e627d23a80d5f6e9e711a94be465619068886faee28fc45df021'
   || sha256(canonicalToolJson(ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET))
     !== 'e548f628e5859335b608a12632e66d4220432ab188a76af460fbc5261eefded4'
+  || sha256(canonicalToolJson(ARC5_OWNERSHIP_EXTENSION_TARGETS))
+    !== '696ab19524799ff4eb172083a81b9b672ecd4166f36fe2dff50acd889e9e59ae'
   || hitNaiveCarrierDigest === hitManifestDigest
   || buildArc4DurableReadExpression() !== ARC4_DURABLE_READ_EXPRESSION
   || buildArc4CaptureUiExpression() !== ARC4_CAPTURE_UI_EXPRESSION
@@ -5495,10 +6613,33 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
     legacy: ARC4_PERTAR_FIXTURE.v4OwnedCounters.before,
     split: ARC4_PERTAR_FIXTURE.v4OwnedCounters.before,
   })
-  || projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.certificate?.sourceDigest
+  || projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.manifest?.sourceDigest
     !== projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.sourceDigest
-  || projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.certificate?.targetDigest
+  || projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.manifest?.deltaDigest
+    !== projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.deltaDigest
+  || projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.manifest?.targetDigest
     !== projectArc5OwnershipMigrationEvidence(beforeRawSelftest)?.targetDigest
+  || arc5TypedDeltaProjectionSelftest?.deltaRowCount !== 1
+  || arc5TypedDeltaProjectionSelftest?.delta?.rows?.[0]?.kind
+    !== 'source-specimen-tombstone'
+  || arc5TypedDeltaProjectionSelftest?.targetMirror?.revision !== 2
+  || arc5TypedDeltaProjectionSelftest?.targetMirror?.specimenLots?.length !== 0
+  || arc5TypedDeltaProjectionSelftest?.targetMirror?.specimenTombstones?.length !== 1
+  || Object.values(arc5MutableLawSelftests).some((value) => value !== true)
+  || Object.values(arc5CanonicalBudgetSelftests).some((value) => value !== true)
+  || !arc5OwnershipV2RuntimeExact(
+    arc5TypedDeltaRawSelftest,
+    { ownershipV2: appOwnershipV2State(arc5TypedDeltaRawSelftest) },
+    { bootstrapOutcome: 'capture-committed-published' },
+  )
+  || arc5EmptyProjectionSelftest?.carriers?.[0]?.json
+    === arc5GrownSourceProjectionSelftest?.carriers?.[0]?.json
+  || arc5EmptyProjectionSelftest?.deltaDigest
+    !== arc5GrownSourceProjectionSelftest?.deltaDigest
+  || !same(
+    arc5EmptyProjectionSelftest?.carriers?.slice(1),
+    arc5GrownSourceProjectionSelftest?.carriers?.slice(1),
+  )
   || !same(projectArc4V4OwnedCompatibility(beforeRawSelftest), {
     legacy: ARC4_PERTAR_FIXTURE.v4OwnedCompatibility.before,
     split: ARC4_PERTAR_FIXTURE.v4OwnedCompatibility.before,

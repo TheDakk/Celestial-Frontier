@@ -920,8 +920,8 @@ export function createOwnershipSourceSuccessorV2(
  * this bridge remints the same contents through the exact V2 parent without
  * granting authority to the caller's object, carries the existing V2
  * projection, and registers only genuinely new Arc 4 creature/specimen rows.
- * The digest-only certificate owner still refuses any V2-only delta that it
- * cannot represent. This bridge is exported solely through the package's
+ * The compact-delta persistence owner still refuses any V2 state that its
+ * fixed carrier inventory cannot represent. This bridge is exported solely through the package's
  * `ownership-v2-internal` subpath, never from the public root. */
 export function createOwnershipSourceProjectionSuccessorV2(
   parent: OwnershipStateV2,
@@ -1067,19 +1067,23 @@ function decodeSpecimenTombstone(value: CanonicalJson): SpecimenTombstoneV2 {
   return tombstone;
 }
 
-export function registerOwnershipStateMirrorV2(
+/** Internal row-registration seam used by the compact Arc 5 delta codec.
+ * The caller must supply the exact registered Arc 4 source; unlike the full
+ * persistence mirror decoder, this path never re-registers or substitutes a
+ * digest-equivalent source object. It is intentionally absent from the public
+ * acquisition root and the package's internal export surface. */
+export function registerOwnershipStateRowsMirrorV2(
+  sourceState: OwnershipStateV1,
   value: unknown,
-  resolver: OwnershipAddressResolver,
 ): OwnershipStateV2 {
-  const source = record(canonicalizeData(value), 'ownership V2 state');
-  exactKeys(source, [
-    'schema', 'version', 'revision', 'source', 'bredAcquisitions', 'creatures',
-    'creatureTombstones', 'specimenLots', 'specimenTombstones', 'scoutCreatureId',
-  ], 'ownership V2 state');
-  if (source.schema !== OWNERSHIP_STATE_SCHEMA_V2 || source.version !== OWNERSHIP_STATE_VERSION_V2) {
-    throw new TypeError('ownership V2 state version is unsupported');
+  if (!isOwnershipStateV1(sourceState)) {
+    throw new TypeError('ownership V2 row source must be registered');
   }
-  const sourceState = registerOwnershipStateMirrorV1(source.source, resolver);
+  const source = record(canonicalizeData(value), 'ownership V2 state rows');
+  exactKeys(source, [
+    'revision', 'bredAcquisitions', 'creatures', 'creatureTombstones',
+    'specimenLots', 'specimenTombstones', 'scoutCreatureId',
+  ], 'ownership V2 state rows');
   for (const key of [
     'bredAcquisitions', 'creatures', 'creatureTombstones',
     'specimenLots', 'specimenTombstones',
@@ -1106,6 +1110,30 @@ export function registerOwnershipStateMirrorV2(
     scoutCreatureId: source.scoutCreatureId === null
       ? null : checkedCreatureId(source.scoutCreatureId!),
   }, null);
+}
+
+export function registerOwnershipStateMirrorV2(
+  value: unknown,
+  resolver: OwnershipAddressResolver,
+): OwnershipStateV2 {
+  const source = record(canonicalizeData(value), 'ownership V2 state');
+  exactKeys(source, [
+    'schema', 'version', 'revision', 'source', 'bredAcquisitions', 'creatures',
+    'creatureTombstones', 'specimenLots', 'specimenTombstones', 'scoutCreatureId',
+  ], 'ownership V2 state');
+  if (source.schema !== OWNERSHIP_STATE_SCHEMA_V2 || source.version !== OWNERSHIP_STATE_VERSION_V2) {
+    throw new TypeError('ownership V2 state version is unsupported');
+  }
+  const sourceState = registerOwnershipStateMirrorV1(source.source, resolver);
+  return registerOwnershipStateRowsMirrorV2(sourceState, {
+    revision: source.revision,
+    bredAcquisitions: source.bredAcquisitions,
+    creatures: source.creatures,
+    creatureTombstones: source.creatureTombstones,
+    specimenLots: source.specimenLots,
+    specimenTombstones: source.specimenTombstones,
+    scoutCreatureId: source.scoutCreatureId,
+  });
 }
 
 export function decodeOwnershipStateV2(

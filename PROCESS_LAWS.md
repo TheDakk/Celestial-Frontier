@@ -22,7 +22,7 @@ Publish the initial scene with persistence explicitly skipped. Classify a boot w
 source-proven durable inputs before building any candidate; semantic defaults such as omitted versus
 false flags must fixed-point. Give every allowed repair a named intent and coalesce it with F4,
 route, Arc 2, Arc 3, Arc 4's strict 18-namespace ownership bootstrap and Arc 5's source-bound
-projection certificate under one receipt-free, lease-fenced commit. Training-deferred or protected
+five-carrier compact authority under one receipt-free, lease-fenced commit. Training-deferred or protected
 Arc 4/5 evidence must not hitchhike. Held repairs must restore their original durable bytes before
 another owner can construct a candidate. If a later authority protects after earlier staging, clearing
 pending flags is insufficient: restore every live saved-view, Atlas and compatibility-mirror field
@@ -42,7 +42,7 @@ publish nothing. Before CAS, Arc 4 may retain only a private pending payload of 
 settlement identities and prepared fingerprint. It mints no evidence token and registers no WeakMap
 entry until the transaction commits; that sole postcommit registration binds the payload to the exact
 committed transaction/kind/revision. The verifier must then bind that evidence, complete prepared
-save, Arc 4 ownership carrier/mirror, aligned Arc 5 certificate/reconstructed V2, F4 draws and receipt
+save, Arc 4 ownership carrier/mirror, aligned Arc 5 manifest/four shards/reconstructed V2, F4 draws and receipt
 before targeted publication. Post-durable verification/publication faults suppress the old live projection,
 retain the exact diagnostic witness and committed receipt evidence, and perform one read-only
 convergence reload. The replacement document must prove a changed loader token, exact committed
@@ -64,13 +64,19 @@ them; preserve the carrier when it does not; and refuse corrupt, future, source-
 evidence rather than guessing. Arc 4 applies the same law to ownership-v1 and the v4 `codex`, owned
 `c*` names, `bioX` and `scout` compatibility fields. A genuine legacy Training restore therefore
 commits exactly 18 Arc 4 namespace writes, plus its one Arc 2 write when applicable, from the exact
-restored source. Arc 5A extends the law one layer farther: its digest certificate is valid only for
-one exact Arc 4 source. Training adds the one Arc 5 write to the same replacement, and every capture
-hit or miss must pre-certify and commit all 18 exact Arc 4 successor replacements plus its one Arc 5
-certificate replacement together or refuse before RNG, receipt or CAS. It verifies the committed
-canonical state/source/target evidence; a lossless `legacy-protected` carrier is preserved without
-inventing a mirror. Commit state, carrier, protected authority and revision under the same fence/CAS
-boundary. After durability, publication verifies
+restored source. Arc 5A extends the law one layer farther: its legacy-v1 digest certificate is valid
+only for one exact Arc 4 source and may upgrade only when aligned. The current representation is
+exactly one version-2 manifest plus four fixed generic delta shards. Boot upgrades an aligned legacy
+certificate through one receipt-free CAS, while an aligned current-v2 fixed point writes nothing.
+Training adds all five Arc 5 writes to the same replacement, and every capture hit or miss must
+pre-certify and commit all 18 exact Arc 4 successor replacements plus all five Arc 5 replacements
+together or refuse before RNG, receipt or CAS. It verifies committed source, delta, target and each
+shard fixed point; a lossless `legacy-protected` carrier is preserved without inventing a mirror.
+The delta contains only V2-exclusive or changed rows, so source-only Arc 4 growth must leave all four
+canonical empty-shard bytes unchanged rather than duplicate the source. Any later internal V2-only
+successor likewise replaces exactly those five carriers; that authority is not a public player
+writer. Commit state, carriers, protected authority and revision under the same fence/CAS boundary.
+After durability, publication verifies
 the committed carrier or reloads; it never performs a second write. Grep every restore/import/reset
 writer whenever a compatibility projection or successor certificate gains a new authority—ordinary
 action tests alone cannot expose a replacement-only split.

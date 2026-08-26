@@ -14,20 +14,22 @@
 > Arc 4's epoch-bound full roster, registered acquisition snapshot and pure planner separate target
 > selection/success draws from mutation. The ownership-v1 package and Arc 5 ownership-v2 model bind
 > canonical genome/owner/receipt evidence, deterministic fauna-only child ids, ordered parents and
-> tombstones. Arc 5A activates the digest-only migration artifact as an exact Arc 4-source projection:
-> boot derives it after the Arc 4 fixed point, and a capture hit or miss can advance it only from the
-> registered exact-parent V1 successor. This projection consumes no RNG. Arc 4 now exposes its real
+> tombstones. Arc 5A implements one source-bound V2 manifest plus exactly four fixed generic delta
+> shards: boot derives them after the Arc 4 fixed point, and a capture hit or miss can advance them
+> only from the registered exact-parent V1 successor. This compact projection consumes no RNG. Arc 4 now exposes its real
 > writer through native Survey Tame/Scavenge/Sample controls. The presentation model and action bind the same
 > canonical world, current epoch, full-roster fingerprint, eligible random pool, odds and Biosphere
 > budget; the eight-row preview never becomes selection authority. `captureCandidate` and
 > `captureSuccess` advance only inside the one durable transaction. Every pre-draw scenario binds the
-> 18 Arc 4 replacement writes, one Arc 5 certificate replacement and reconstructed V2 digest before
+> 18 Arc 4 replacement writes, all five Arc 5 carrier replacements and reconstructed
+> source/delta/target/shard fixed points before
 > either value exists. A failed/stale/storage path
 > publishes no result and preserves the plan; post-durable convergence reads committed bytes without
 > a second draw or write. Postcommit publication verifies and exposes Arc 4 and V2 together.
-> Reopen/reload and UI order do not reroll or retarget the action. Arc 5 breeding/care/companion
-> writers remain absent; the fixed-four-shard, O(1)-namespace V2-only delta representation is
-> design-only.
+> Reopen/reload and UI order do not reroll or retarget the action. Source-only Arc 4 growth leaves the
+> four canonical empty-shard bytes invariant, proving the delta does not duplicate unchanged source
+> state. Arc 5 breeding/care/companion writers remain absent; the internal V2-only successor has an
+> exact five-carrier output and is not exported publicly.
 
 > **2026-08-24 F4 + Arc 2 outcome-determinism overlay — current local implementation:**
 > `SessionRNGState` now persists one uint32 seed, isolated semantic-domain counters and one global
@@ -58,18 +60,19 @@
 > odds, storage/stale/publication convergence, reload and responsive control outcomes on one dirty
 > executable snapshot; it explicitly does not claim the real 20-minute recovery edge. All later
 > outcome writers remain open.
-> That retained pair predates Arc 5A activation. Final current-input evidence is Slice run
-> `20260825171148040-77701-fb5c63191544` on Edge `151.0.4129.101` (336,570 ms, one exact
+> That retained pair predates compact Arc 5 V2. Final current-input evidence is Slice run
+> `20260825213041239-98104-c96d3b2d0652` on Edge `151.0.4129.101` (363,053 ms, one exact
 > nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS, zero findings/retries/source
-> change; report/log SHA-256 `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
-> `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`) plus Glass on the same
-> Edge (70,432 ms, 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes, zero
+> change; report/log SHA-256 `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+> `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`) plus Glass on the same
+> Edge (71,449 ms, 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes, zero
 > blocked/omitted/findings/instrument failures/retries; report SHA-256
-> `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`). The executable Arc 5
-> fixed-point/successor/fault/reload controls and Glass `targetDigest`-corruption/durable-projection
-> controls were non-vacuous. Both bind base `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
-> `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
-> `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; audits are CLEAR.
+> `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). The executable legacy-v1
+> upgrade/current-v2 zero-write/five-carrier fixed-point/successor/fault/reload controls and Glass
+> current-v2 corruption/O(1) empty-shard controls were non-vacuous. Both bind source commit
+> `48ce0b1662a59b21070667be339a1e59503e1f19`, status
+> `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits are CLEAR.
 
 > **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the F4 overlay
 > does not supersede it):** Deterministic

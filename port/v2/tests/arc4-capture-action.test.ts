@@ -5,18 +5,25 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   ACTIVE_PLAY_CAPTURE_CYCLE_MS,
+  canonicalJson,
   capturePresentationFenceV1,
   createEmptyOwnershipStateV1,
   createLegacyProtectedOwnershipStateV1,
+  ownershipSourceStateV1,
+  ownershipStateDigestV1,
   ownershipStateDigestV2,
   type AcquisitionVerbV1,
+  type OwnershipStateV2,
 } from '@cf/domain-acquisition';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import { MAX_ACTIVE_PLAY_MS } from '@cf/domain-progression';
 import { DOMAINS, createSessionRNG } from '@cf/domain-sessionrng';
 import {
   applyV5ExtensionWrites,
+  ARC4_OWNERSHIP_EXTENSION_TARGETS,
+  ARC5_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
+  ARC5_OWNERSHIP_MIGRATION_VERSION,
   arc4OwnershipLegacyMirrorMatches,
   createMemoryBackend,
   createRevisionedRepository,
@@ -122,6 +129,7 @@ const MISS_SEED = seedForSuccessDraw((value) => value > 0.99);
 function authorityExtensions(seed: number, withContact = true): Readonly<{
   extensions: V5Extensions;
   authority: ReturnType<typeof prepareF4AuthorityUpdate>['authority'];
+  ownershipV2: OwnershipStateV2;
 }> {
   const arc2 = prepareArc2LootLegacyMigration({
     extensions: {},
@@ -151,6 +159,7 @@ function authorityExtensions(seed: number, withContact = true): Readonly<{
   return Object.freeze({
     authority: f4.authority,
     extensions: arc5.extensions,
+    ownershipV2: arc5.state,
   });
 }
 
@@ -193,7 +202,11 @@ async function runtimeFixture(
   });
   const heartbeat = await runtime.heartbeat();
   if (heartbeat.kind !== 'owned') throw new Error(`capture runtime lease was ${heartbeat.kind}`);
-  return { backend, repository, runtime, state, receiptCas: () => receiptCas };
+  return {
+    backend, repository, runtime, state,
+    ownershipV2: initial.ownershipV2,
+    receiptCas: () => receiptCas,
+  };
 }
 
 type Arc5CaptureProtectionVariant =
@@ -209,20 +222,22 @@ function withArc5CaptureProtection(
   >;
   const namespace = ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace;
   const carrier = copy.player?.[namespace];
-  if (carrier === undefined) throw new Error('Arc 5 capture fixture certificate disappeared');
+  if (carrier === undefined) throw new Error('Arc 5 capture fixture manifest disappeared');
   if (variant === 'base-absent') {
-    delete copy.player![namespace];
+    for (const target of ARC5_OWNERSHIP_EXTENSION_TARGETS) {
+      delete copy[target.segment]?.[target.namespace];
+    }
   } else if (variant === 'base-corrupt') {
     copy.player![namespace] = { version: carrier.version, json: '{}' };
   } else if (variant === 'base-future') {
     copy.player![namespace] = { version: carrier.version + 1, json: carrier.json };
   } else {
-    const certificate = JSON.parse(carrier.json) as Record<string, unknown>;
-    certificate.sourceDigest = `${certificate.sourceDigest}` === '0'.repeat(64)
+    const manifest = JSON.parse(carrier.json) as Record<string, unknown>;
+    manifest.sourceDigest = `${manifest.sourceDigest}` === '0'.repeat(64)
       ? 'f'.repeat(64) : '0'.repeat(64);
     copy.player![namespace] = {
       version: carrier.version,
-      json: JSON.stringify(certificate),
+      json: JSON.stringify(manifest),
     };
   }
   return copy as unknown as V5Extensions;
@@ -265,11 +280,12 @@ describe('Arc 4 headless durable capture action', () => {
     ];
     for (const row of cases) {
       const fixture = await runtimeFixture(row.seed);
-      const beforeArc5Carrier = structuredClone(fixture.runtime.extensions.player?.[
-        ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
-      ]);
+      const beforeArc5Carriers = ARC5_OWNERSHIP_EXTENSION_TARGETS.map((target) => (
+        structuredClone(fixture.runtime.extensions[target.segment]?.[target.namespace])
+      ));
       const outcome = committed(await commitArc4CaptureAttemptV1({
         runtime: fixture.runtime,
+        ownershipV2: fixture.ownershipV2,
         state: fixture.state,
         ...context,
         presentationFence: presentationFence(context, fixture.runtime.extensions),
@@ -287,6 +303,15 @@ describe('Arc 4 headless durable capture action', () => {
         DOMAINS.captureCandidate, DOMAINS.captureSuccess,
       ]);
       expect(outcome.transaction.state.EPOCH_BASE).toBe(context.roster.ecologyEpoch);
+      expect(outcome.settlement.derivation.extensionWrites).toHaveLength(
+        ARC4_OWNERSHIP_EXTENSION_TARGETS.length + ARC5_OWNERSHIP_EXTENSION_TARGETS.length,
+      );
+      expect((outcome.settlement.derivation.extensionWrites ?? []).map(({ segment, namespace }) => ({
+        segment, namespace,
+      }))).toEqual([
+        ...ARC4_OWNERSHIP_EXTENSION_TARGETS,
+        ...ARC5_OWNERSHIP_EXTENSION_TARGETS,
+      ]);
       expect(fixture.receiptCas()).toBe(1);
       expect(await fixture.repository.readReceipt(0)).toEqual(outcome.transaction.receipt);
       const verified = verifyArc4CommittedCaptureV1({
@@ -313,8 +338,11 @@ describe('Arc 4 headless durable capture action', () => {
       expect(loadedArc5.kind).toBe('loaded');
       expect(fixture.runtime.extensions.player?.[
         ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
-      ]).not.toEqual(beforeArc5Carrier);
+      ]).not.toEqual(beforeArc5Carriers[0]);
       if (loadedArc5.kind === 'loaded' && verified.kind === 'verified') {
+        expect(loadedArc5.evidence.representationVersion)
+          .toBe(ARC5_OWNERSHIP_MIGRATION_VERSION);
+        expect(verified.ownershipV2Evidence).toEqual(loadedArc5.evidence);
         expect(ownershipStateDigestV2(loadedArc5.state))
           .toBe(outcome.settlement.ownershipV2Digest);
         expect(verified.ownershipV2).toEqual(loadedArc5.state);
@@ -329,6 +357,7 @@ describe('Arc 4 headless durable capture action', () => {
     const originalEssence = fixture.state.essence;
     const input: Arc4CaptureAttemptInputV1 = {
       runtime: fixture.runtime,
+      ownershipV2: fixture.ownershipV2,
       state: fixture.state,
       ...context,
       presentationFence: presentationFence(context, fixture.runtime.extensions),
@@ -372,6 +401,7 @@ describe('Arc 4 headless durable capture action', () => {
     const beforeRng = fixture.runtime.sessionRng;
     const outcome = await commitArc4CaptureAttemptV1({
       runtime: fixture.runtime,
+      ownershipV2: fixture.ownershipV2,
       state: fixture.state,
       nav: null,
       address: context.address,
@@ -423,6 +453,7 @@ describe('Arc 4 headless durable capture action', () => {
 
       const outcome = await commitArc4CaptureAttemptV1({
         runtime: fixture.runtime,
+        ownershipV2: fixture.ownershipV2,
         state: fixture.state,
         ...context,
         presentationFence: presentationFence(context, fixture.runtime.extensions),
@@ -508,6 +539,7 @@ describe('Arc 4 headless durable capture action', () => {
       const beforeRng = fixture.runtime.sessionRng;
       const outcome = await commitArc4CaptureAttemptV1({
         runtime: fixture.runtime,
+        ownershipV2: fixture.ownershipV2,
         state: fixture.state,
         ...context,
         presentationFence: probe.fence(fixture.runtime.extensions),
@@ -535,6 +567,7 @@ describe('Arc 4 headless durable capture action', () => {
     );
     const outcome = await commitArc4CaptureAttemptV1({
       runtime: fixture.runtime,
+      ownershipV2: fixture.ownershipV2,
       state: fixture.state,
       ...context,
       presentationFence: presentationFence(context, fixture.runtime.extensions),
@@ -564,6 +597,7 @@ describe('Arc 4 headless durable capture action', () => {
     const fixture = await runtimeFixture(HIT_SEED);
     const outcome = committed(await commitArc4CaptureAttemptV1({
       runtime: fixture.runtime,
+      ownershipV2: fixture.ownershipV2,
       state: fixture.state,
       ...context,
       presentationFence: presentationFence(context, fixture.runtime.extensions),
@@ -733,22 +767,86 @@ describe('Arc 4 headless durable capture action', () => {
       transaction: { ...outcome.transaction, saved: emptyCarrierPrepared },
       settlement: { ...outcome.settlement, prepared: emptyCarrierPrepared },
     } as typeof outcome, {})).toMatchObject({ detail: 'ownership-carrier-not-current' });
-    const mutableMissingArc5Extensions = structuredClone(
+    for (const target of ARC5_OWNERSHIP_EXTENSION_TARGETS) {
+      const missing = structuredClone(outcome.transaction.saved.extensions) as unknown as Record<
+        string, Record<string, { version: number; json: string }>
+      >;
+      delete missing[target.segment]?.[target.namespace];
+      const missingExtensions = missing as unknown as V5Extensions;
+      const missingPrepared = {
+        ...outcome.transaction.saved,
+        extensions: missingExtensions,
+      };
+      expect(check({
+        ...outcome,
+        transaction: { ...outcome.transaction, saved: missingPrepared },
+        settlement: { ...outcome.settlement, prepared: missingPrepared },
+      } as typeof outcome, missingExtensions), `missing ${target.namespace}`).toMatchObject({
+        detail: 'arc5-migration-not-current',
+      });
+
+      const corrupted = structuredClone(outcome.transaction.saved.extensions) as unknown as Record<
+        string, Record<string, { version: number; json: string }>
+      >;
+      corrupted[target.segment]![target.namespace] = {
+        version: ARC5_OWNERSHIP_MIGRATION_VERSION,
+        json: '{}',
+      };
+      const corruptExtensions = corrupted as unknown as V5Extensions;
+      const corruptPrepared = {
+        ...outcome.transaction.saved,
+        extensions: corruptExtensions,
+      };
+      expect(check({
+        ...outcome,
+        transaction: { ...outcome.transaction, saved: corruptPrepared },
+        settlement: { ...outcome.settlement, prepared: corruptPrepared },
+      } as typeof outcome, corruptExtensions), `corrupt ${target.namespace}`).toMatchObject({
+        detail: 'arc5-migration-not-current',
+      });
+    }
+
+    const currentArc5 = readArc5OwnershipMigration(
       outcome.transaction.saved.extensions,
-    ) as unknown as Record<string, Record<string, { version: number; json: string }>>;
-    delete mutableMissingArc5Extensions.player?.[
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    if (currentArc5.kind !== 'loaded') throw new Error('committed Arc 5 fixture disappeared');
+    const sourceV1 = ownershipSourceStateV1(currentArc5.state);
+    const retainedLegacy = structuredClone(outcome.transaction.saved.extensions) as unknown as Record<
+      string, Record<string, { version: number; json: string }>
+    >;
+    for (const target of ARC5_OWNERSHIP_EXTENSION_TARGETS) {
+      delete retainedLegacy[target.segment]?.[target.namespace];
+    }
+    (retainedLegacy.player ??= {})[
       ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
-    ];
-    const missingArc5Extensions = mutableMissingArc5Extensions as unknown as V5Extensions;
-    const missingArc5Prepared = {
+    ] = {
+      version: 1,
+      json: canonicalJson({
+        schema: 'cf-v2-ownership-v1-to-v2/v1',
+        version: 1,
+        sourceSchema: sourceV1.schema,
+        sourceVersion: sourceV1.version,
+        sourceRevision: sourceV1.revision,
+        sourceMode: sourceV1.mode,
+        sourceDigest: ownershipStateDigestV1(sourceV1),
+        targetSchema: currentArc5.state.schema,
+        targetVersion: currentArc5.state.version,
+        targetRevision: currentArc5.state.revision,
+        targetMode: currentArc5.state.mode,
+        targetDigest: ownershipStateDigestV2(currentArc5.state),
+      }),
+    };
+    const retainedLegacyExtensions = retainedLegacy as unknown as V5Extensions;
+    const retainedLegacyPrepared = {
       ...outcome.transaction.saved,
-      extensions: missingArc5Extensions,
+      extensions: retainedLegacyExtensions,
     };
     expect(check({
       ...outcome,
-      transaction: { ...outcome.transaction, saved: missingArc5Prepared },
-      settlement: { ...outcome.settlement, prepared: missingArc5Prepared },
-    } as typeof outcome, missingArc5Extensions)).toMatchObject({
+      transaction: { ...outcome.transaction, saved: retainedLegacyPrepared },
+      settlement: { ...outcome.settlement, prepared: retainedLegacyPrepared },
+    } as typeof outcome, retainedLegacyExtensions)).toMatchObject({
       detail: 'arc5-migration-not-current',
     });
     expect(check({
@@ -834,6 +932,7 @@ describe('Arc 4 headless durable capture action', () => {
     const otherFixture = await runtimeFixture(HIT_SEED);
     const otherOutcome = committed(await commitArc4CaptureAttemptV1({
       runtime: otherFixture.runtime,
+      ownershipV2: otherFixture.ownershipV2,
       state: otherFixture.state,
       ...context,
       presentationFence: presentationFence(context, otherFixture.runtime.extensions),

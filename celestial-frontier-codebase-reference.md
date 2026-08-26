@@ -27,8 +27,9 @@
 > verification/publication failure is a committed action that suppresses the stale live projection
 > and converges through one read-only reload—never a second derivation, receipt or write.
 >
-> Arc 5A stages only after the exact Arc 4 source fixed-points. `prepareArc5OwnershipMigration()`
-> creates the single digest certificate or loads an aligned zero-write fixed point. A protected
+> Arc 5A stages only after the exact Arc 4 source fixed point. `prepareArc5OwnershipMigration()`
+> creates the version-2 manifest plus exactly four fixed generic delta shards, upgrades an aligned
+> legacy-v1 certificate through one receipt-free CAS, or loads an aligned current-v2 zero-write fixed point. A protected
 > future/corrupt/misplaced/source-drift outcome cancels all earlier boot candidates and restores the
 > durable saved view, ordered Atlas routes and Arc 2 `items`/`equip`/`equipAff` mirror before runtime
 > creation. `main.ts` exposes this non-player state only through `state().ownershipV2` diagnostics.
@@ -38,20 +39,23 @@
 > acquisition snapshot/planner and the 18-namespace ownership-v1 codec. Boot migrates an absent
 > carrier or reconciles a projectable current mirror inside the shared receipt-free CAS; protected,
 > future, corrupt or unrepresentable evidence never rewinds. A genuine legacy Training completion
-> derives one Arc 2, all 18 Arc 4 writes and one Arc 5 certificate from the final candidate.
+> derives one Arc 2, all 18 Arc 4 writes and all five Arc 5 carrier writes from the final candidate.
 > `prepareTrainingArc5Restore()` preserves aligned authority, keeps source-deferred absence
-> explicitly write-free, and protects ambiguity; `committedTrainingArc5State()` binds the one newly
-> written certificate to the exact durable Arc 4 source before V1/V2 publication.
+> explicitly write-free, and protects ambiguity; `committedTrainingArc5State()` binds the five newly
+> written carriers and their source/delta/target/shard fixed points to the exact durable Arc 4 source
+> before V1/V2 publication.
 >
 > The native Survey-card Tame/Scavenge/Sample adapter captures exact current nav/address, the
 > production full roster and current epoch. Its registered all-scenario certificate prepares the
 > miss and every eligible hit as a complete save before either capture-domain draw. The selected
-> hit or miss spends one Biosphere attempt and commits the 18 Arc 4 replacements, one Arc 5
-> certificate replacement, compatibility fields, next F4 authority, one immutable receipt and
+> hit or miss spends one Biosphere attempt and commits the 18 Arc 4 replacements plus five Arc 5
+> carrier replacements, compatibility fields, next F4 authority, one immutable receipt and
 > revision in one CAS. `prepareArc5OwnershipMigrationSuccessor()` admits only the exact registered
 > Arc 4 successor at the next revision and uses the internal-only
 > `@cf/domain-acquisition/ownership-v2-internal` bridge; that
-> subpath is absent from the public package root. The compatibility projection includes
+> subpath is absent from the public package root. `prepareArc5OwnershipV2Successor()` likewise emits
+> exactly five carriers for future V2-only mutations, but has no public or app player entry point.
+> The compatibility projection includes
 > exact full `codex`, owned `c*` custom-name fields, `bioX` and `scout`. First-species catalogue/reward facts are
 > one-time; an eligible repeat may create another stable fauna instance or specimen lot. Independent
 > verification sees only a private pending payload of registered plan/settlement identities and
@@ -73,27 +77,28 @@
 > `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. The uninterrupted
 > 20-minute recovery observation and HUMAN review remain open; no Charter bioscan, targeted
 > preview, hosted, release/version, `rnSeen` or preview/publication authority is claimed. Arc 5A now
-> activates the receipt-bound ownership-v2 projection and digest-only V1→V2 certificate across boot,
-> Training and capture. Postcommit verification publishes V1/V2 together or makes both unavailable
-> and reload-converges. It stores no duplicated V2 state and provides no public or Arc 5-only writer,
-> breed action or companion UI. The fixed-four-shard compact V2 delta carrier in `SAVE_SYSTEM.md`
-> keeps namespace count O(1) and is design-only.
+> activates the receipt-bound compact ownership-v2 representation across boot, Training and capture.
+> The manifest binds the exact Arc 4 source, canonical delta and reconstructed target while the four
+> shards store only deterministic changed/V2-exclusive rows. Source-only growth leaves all four
+> canonical empty-shard bytes unchanged, explicitly preventing an Arc 4 duplicate and keeping
+> unchanged-state growth O(1). Postcommit verification publishes V1/V2 together or makes both
+> unavailable and reload-converges. There is no public breed/care/mission writer or companion UI.
 > Arc 7 has pure identity/taxonomy/ecology/expression,
 > an injected runtime, lab and empty-rights validator; it is not app-owned playback. Its absolute
 > eight-emitter/120-node configuration caps are committed package policy.
-> Retained Arc 4 browser reports predate Arc 5A. Final current-input Slice run
-> `20260825171148040-77701-fb5c63191544` passed once on Edge `151.0.4129.101` in 336,570 ms with
+> Retained Arc 4 browser reports predate compact Arc 5 V2. Final current-input Slice run
+> `20260825213041239-98104-c96d3b2d0652` passed once on Edge `151.0.4129.101` in 363,053 ms with
 > zero findings/retries/source change, one exact nine-stage/14-burn/`recoveryClaimed:false`/`ok`
 > ledger plus PASS, 10 hashed PNGs and executable Arc 5 fixed-point/successor/fault/reload controls
-> (report/log SHA-256 `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
-> `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`). Glass passed on the same
-> Edge in 70,432 ms with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and
+> (report/log SHA-256 `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+> `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`). Glass passed on the same
+> Edge in 71,449 ms with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and
 > zero blocked/omitted/findings/instrument failures/retries; its Arc 5 `targetDigest` corruption and
 > durable-projection controls were non-vacuous (report SHA-256
-> `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`). Both bind base
-> `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
-> `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
-> `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; audits are CLEAR.
+> `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). Both bind source commit
+> `48ce0b1662a59b21070667be339a1e59503e1f19`, status
+> `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits are CLEAR.
 >
 > **2026-08-24 F3/F4 + Arc 2 implementation overlay — historical foundation, still current where
 > the newer overlay does not supersede it:**
@@ -128,11 +133,12 @@
 > sheet owns inert background, bidirectional focus wrap/return, exact conditional comparison,
 > salvage confirmation, pending action and convergence diagnostics. Genuine legacy Training gear
 > replacement derives the Arc 2 carrier and, for absent Arc 4/5 targets, all 18 Arc 4 ownership
-> writes plus the one Arc 5 certificate inside the same checked state/extension/F4 transaction.
+> writes plus all five Arc 5 carriers inside the same checked state/extension/F4 transaction.
 > Current-view preserves aligned authority; source-deferred restore may retain an aligned Arc 5
 > projection or preserve explicit absence without a write. Existing/future/corrupt ownership
 > authority refuses rewind. Post-durable verification binds the committed canonical state's exact
-> migrated Arc 4 source plus the reconstructed V2 target; publication failure reloads without a
+> migrated Arc 4 source, five Arc 5 bytes and reconstructed source/delta/target/shard fixed points;
+> publication failure reloads without a
 > second write.
 >
 > For the recorded pre-current-WIP Arc 2 candidate, focused Arc 2/F3/F4 checks plus all TypeScript

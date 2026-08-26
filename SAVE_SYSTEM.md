@@ -30,9 +30,9 @@
 > `legacy-protected` evidence stays protected. Its player-facing Survey capture action snapshots the
 > exact current surface/full roster/current epoch, certifies miss plus every eligible hit against
 > complete-save capacity before two F4 draws, then commits one attempt spend, ownership, the aligned
-> Arc 5 projection certificate, v4 mirror, F4 authority, immutable receipt and revision in one CAS.
-> Every scenario contains exactly 18 Arc 4 replacement writes plus the one Arc 5 certificate
-> replacement. That mirror is the exact full `codex`,
+> Arc 5 compact authority, v4 mirror, F4 authority, immutable receipt and revision in one CAS.
+> Every scenario contains exactly 18 Arc 4 replacement writes plus the five Arc 5 carrier
+> replacements. That mirror is the exact full `codex`,
 > owned `c*` custom-name fields, `bioX` and `scout` projection. Independent postcommit verification binds
 > an evidence token that does not exist before durability: pre-CAS retains only the private pending
 > plan/settlement identities and prepared fingerprint. The committed path alone performs the sole
@@ -50,33 +50,35 @@
 > responsive rows. The real 20-minute next-cycle recovery observation and HUMAN review remain open.
 > No Charter bioscan, targeted preview, shipped release/version or `rnSeen` mutation was added.
 >
-> Arc 5A activates the digest-only `player/arc5.ownership.migration` projection certificate in the
-> app. Ordinary boot derives it only after the exact Arc 4 fixed point and joins its one write to the
-> shared receipt-free CAS; an aligned carrier is a zero-write fixed point. Future, corrupt, misplaced
-> or source-drifted evidence cancels every staged bootstrap and restores the durable saved view,
-> Atlas routes, `items`, `equip` and `equipAff` before runtime creation. The certificate binds exact
-> source/target modes, revisions and digests, stores no duplicate ownership-v2 bytes, and reconstructs
-> V2 only from the current Arc 4 source. Arc 4 capture advances both states in the same transaction;
-> postcommit verification publishes both or makes both unavailable and reload-converges once.
-> This is infrastructure, not a public or Arc 5-only mutation writer.
-
-> **[DESIGN — NOT YET IMPLEMENTED] Compact Arc 5 V2 delta carrier.** Before the first breed, care,
-> assignment, disposition or mission writer can create state that is not derivable from Arc 4, evolve
-> the existing `player/arc5.ownership.migration` namespace to the version-2 manifest owner and add
-> exactly four generic fixed delta shards, `creatures/arc5.ownership.delta.0` through `.3`. The
-> manifest binds the exact Arc 4 source revision/digest, reconstructed V2 target revision/digest,
-> canonical delta digest, fixed shard count and four ordered shard digests. The shards contain only
-> deterministic ordered V2-exclusive or changed rows—bred acquisitions, changed/live creature or
-> specimen rows, tombstones and the V2 scout override—not a second copy of unchanged Arc 4 state.
-> Every read reconstructs `V2 = exact Arc 4 source + exact delta`, recomputes source, delta and target
-> digests, and fails closed on an absent/extra/misplaced/duplicate/future/corrupt shard or any drift.
-> Growing only the Arc 4 source may change the manifest's fixed-size source/target digests, but all
-> four canonical empty delta shards must remain byte-unchanged and total Arc 5 storage must grow only
-> O(1), never in proportion to unchanged Arc 4 state.
-> Every V2-only writer must replace the manifest and all four shards atomically with its product/F4/
-> receipt/revision transaction; capacity is proven before RNG. This engineering representation is
-> recorded here for implementation review and is not a Nick product decision or permission to add a
-> player capability. No current code writes or reads this version-2 delta format.
+> **Implemented compact Arc 5 V2 carrier.** `player/arc5.ownership.migration` is the version-2
+> manifest owner and `creatures/arc5.ownership.delta.0` through `.3` are exactly four fixed generic
+> delta-shard owners. Every prepared replacement is therefore one exact five-write tuple. The
+> manifest binds the exact Arc 4 source schema/mode/revision/digest, reconstructed V2 target
+> schema/mode/revision/digest, canonical delta digest and row count, fixed shard count four and four
+> ordered shard digests. Each deterministically packed shard binds its own index/range/count/total,
+> digest and ordered rows; all four carriers are present even when their rows are empty.
+>
+> Every read independently parses the manifest and four shards, reconstructs
+> `V2 = exact Arc 4 source + exact delta`, and recomputes the source, delta, target and per-shard
+> fixed points. Missing, extra, misplaced, duplicated, future, corrupt, over-bound or drifted
+> evidence protects rather than repairs. An absent carrier bootstraps only after the exact Arc 4
+> fixed point. An aligned legacy-v1 single certificate is still readable and upgrades receipt-free
+> to the exact five current carriers in the one shared boot CAS. An aligned current-v2 carrier is a
+> strict zero-write fixed point. Any protected result cancels previously staged boot work and
+> restores the durable saved view, Atlas routes, `items`, `equip` and `equipAff` before runtime
+> creation.
+>
+> The shards contain only deterministic V2-exclusive or changed rows—bred acquisitions,
+> changed/live creature or specimen rows, tombstones and the V2 scout override—not a second copy of
+> unchanged Arc 4 ownership. Source-only Arc 4 growth changes fixed-size manifest source/target
+> evidence while all four canonical empty-shard bytes remain identical; Arc 5 namespace and
+> unchanged-state storage growth are explicitly O(1). Capture pre-certifies and atomically replaces
+> exactly 18 Arc 4 plus five Arc 5 carriers before RNG. The internal V2-only successor authority also
+> replaces exactly the five Arc 5 carriers, but it is absent from the public package root and has no
+> app player path. Postcommit verification binds the five prepared bytes to the exact durable Arc 4
+> source and all source/delta/target/shard fixed points before V1/V2 publication; mismatch makes the
+> projection unavailable and reload-converges without a second write. No breeding, care, Recovery,
+> assignment, disposition, Chronicle, mission or companion capability is visible.
 
 > **2026-08-24 F3/F4 + Arc 2 persistence overlay — current local implementation:** v4 remains the
 > supported compatibility codec, while v5 partitions its canonical fields into owner-named
@@ -103,12 +105,12 @@
 >
 > Field Training now respects both product representations. A genuine legacy checkpoint that
 > actually restores gear and ownership-bearing Compendium fields derives one Arc 2 write, all 18
-> Arc 4 writes and one Arc 5 certificate write from the final detached candidate inside the same
+> Arc 4 writes and all five Arc 5 carrier writes from the final detached candidate inside the same
 > checked state/extension/F4 transaction. Arc 4/5 preparation requires absent targets;
 > current/future/corrupt authority protects against rewind. Current `{view}` preserves aligned
 > carriers; source-deferred restoration may preserve aligned Arc 5 or keep its absence explicit and
 > write-free. After durability, Arc 4 remigrates the committed canonical state and Arc 5 verifies its
-> exact certificate/source/target evidence before publication; any mismatch reloads without a second
+> exact manifest/shards plus source/delta/target evidence before publication; any mismatch reloads without a second
 > write. This extends—not broadens—the checkpoint's established eleven-field ownership.
 >
 > For the recorded pre-current-WIP Arc 2 candidate, focused Arc 2/F3/F4 tests, TypeScript/build,
@@ -147,26 +149,28 @@
 > snapshot `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. They are exact-input
 > local proof, not exact-head, hosted, integration, real-save Gate C, HUMAN, release, preview or
 > deployment authority.
-> Those reports predate Arc 5A activation and do not certify it. Final current-input evidence now
-> supersedes them: Slice run `20260825171148040-77701-fb5c63191544` passed once on Edge
-> `151.0.4129.101` in 336,570 ms with zero findings/retries/source change, exactly one nine-stage/
-> 14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS, 10 hashed PNGs, and executable Arc 5
-> fixed-point/successor/fault/reload controls. Report/log SHA-256 are
-> `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
-> `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`.
-> Glass passed on the same Edge in 70,432 ms with 12/12 viewport plus reload rows, 95/95 controls,
-> 36/36 Arc 4 outcomes, no blocked/omitted outcome and zero findings/instrument failures/retries; its
-> Arc 5 `targetDigest`-corruption and durable-projection controls were non-vacuous. Report SHA-256 is
-> `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`.
-> Both bind base `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
-> `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
-> `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; independent audits are
-> CLEAR. Non-Compendium Vitest passed `101 files / 1,187 passed / 1 skipped`; full Vitest recorded
-> `102 files / 1,205 passed / 1 failed / 1 skipped`, solely the deferred Compendium measurement seal
-> (`6a961df8…` expected, `2ab18865…` live). Root/app/worker/noUnused TypeScript, the 875-module Vite
-> build and `artunused` passed; node syntax, contract/Glass/reporter selftests, imports and diff checks
-> were clean. Current tool SHA-256
-> prefixes are contract `b1328688…`, Slice `b30a93d1…`, Glass `692e90a2…`, reporter `1a94925f…`.
+> Those reports predate compact Arc 5 V2 and do not certify it. Final current-input evidence now
+> supersedes them: Slice run `20260825213041239-98104-c96d3b2d0652` passed once on Edge
+> `151.0.4129.101` in 363,053 ms with zero findings/failure scopes/retries/source change, exactly one
+> nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS, 10 hashed PNGs and executable
+> legacy-v1 upgrade/current-v2 zero-write/five-carrier successor/fault/reload controls. Report/log
+> SHA-256 are `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+> `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`.
+> Glass passed on the same Edge in 71,449 ms with 12/12 viewport and reload rows, 95/95 controls,
+> 36/36 Arc 4 outcomes, no blocked/omitted control and zero findings/instrument failures/retries. Its
+> five-carrier fingerprint, coherent current-v2 manifest/shard corruption and source-growth
+> four-empty-shard byte-invariance controls are non-vacuous. Report SHA-256 is
+> `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`.
+> Both bind source commit `48ce0b1662a59b21070667be339a1e59503e1f19` on `openai/mac`, status
+> `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; independent audits are
+> CLEAR. The focused compact-v2 gate passed 109/109. Root/app/worker/noUnused TypeScript,
+> `artunused` and the 876-module Vite build passed. The final full run recorded 102 passing files and
+> one failing file, with 1,218 tests passed, one failed and one skipped (1,220 total); focused
+> Compendium was 18 passed/one failed and its selftest passed 222 controls. The sole known red is the
+> intentionally deferred Compendium measurement-authority seal (`6a961df8…` stored versus
+> `2ab18865…` live), whose exact drift is `packageLock+appPackage`; the dependency graph is not frozen,
+> so it has not been rebaselined.
 
 > **2026-08-16 D-TRAIN-1 source-truth overlay (historical foundation; current where the
 > 2026-08-24 carrier overlay does not supersede it; local browser
@@ -926,7 +930,7 @@ reasoning has to be revisited.
 remains canonical v4 compatibility data, while the live repository schema is v5 with split owner rows,
 revision, migration snapshot/journal and independently versioned extension carriers. The protected
 `player/f4.authority`, `inventory/arc2.loot`, `engineering/arc3.state`, 18 fixed Arc 4 ownership
-namespaces and the active `player/arc5.ownership.migration` certificate are not v4 fields and
+namespaces and the active Arc 5 manifest/four-shard authority are not v4 fields and
 therefore must pass through every v5 read/write/replacement
 explicitly. Product carriers are authoritative once present; their narrowly projected v4 fields keep
 unported readers coherent. Boot migrations/reconciliations share one receipt-free lease-fenced CAS;

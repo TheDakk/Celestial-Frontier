@@ -40,6 +40,7 @@ import {
   type AcquisitionCandidateV1,
   type CanonicalJson,
   type OwnershipStateV1,
+  type OwnershipStateV2,
 } from '@cf/domain-acquisition';
 import {
   biosphere,
@@ -56,6 +57,7 @@ import {
 } from '@cf/domain-sessionrng';
 import {
   ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
+  ARC5_OWNERSHIP_MIGRATION_VERSION,
   V5_MAX_EXTENSION_JSON_BYTES,
   V5_MAX_EXTENSION_TOTAL_BYTES,
   applyV5ExtensionWrites,
@@ -74,6 +76,7 @@ import {
   projectF4MultiOutcomeDrawAdvance,
   projectLegacyOwnershipMirror,
   readArc2AcquisitionCapabilities,
+  readArc5OwnershipMigration,
   readF4Authority,
   type ContentRegistry,
   type F4MultiOutcomePreDrawInput,
@@ -312,6 +315,18 @@ function authorityExtensions(
   return arc5.extensions;
 }
 
+function currentArc5Parent(extensions: V5Extensions): OwnershipStateV2 {
+  const loaded = readArc5OwnershipMigration(
+    extensions,
+    SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  );
+  if (loaded.kind !== 'loaded'
+    || loaded.evidence.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION) {
+    throw new Error(`Arc 5 planner parent fixture was ${loaded.kind}`);
+  }
+  return loaded.state;
+}
+
 function extensionJsonBytes(extensions: V5Extensions): number {
   const encoder = new TextEncoder();
   return Object.values(extensions).reduce((total, segment) => (
@@ -473,7 +488,9 @@ async function settleCapacityThroughGenuineOwner(
     receiptKind: 'capture-attempt',
     now: CAPACITY_NOW,
     preDraw: (input, authorizer) => {
-      const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw: input });
+      const certified = certifyArc4CaptureCapacityV1({
+        preflight, parent: currentArc5Parent(extensions), preDraw: input,
+      });
       if (certified.kind !== 'certified') {
         return { kind: 'refused' as const, reason: certified.reason };
       }
@@ -1916,6 +1933,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     const beforeF4 = readF4Authority(extensions);
     const certified = certifyArc4CaptureCapacityV1({
       preflight,
+      parent: currentArc5Parent(extensions),
       preDraw,
     });
     expect(certified).toEqual({
@@ -1968,6 +1986,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     const beforeF4 = readF4Authority(extensions);
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent: currentArc5Parent(extensions),
       preDraw: capacityPreDrawInput(state, extensions, 0),
     })).toEqual({
       kind: 'refused',
@@ -1996,6 +2015,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     const beforeF4 = readF4Authority(extensions);
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent: currentArc5Parent(extensions),
       preDraw: capacityPreDrawInput(state, extensions, 0),
     })).toEqual({
       kind: 'refused',
@@ -2062,6 +2082,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     cappedState.stats.essenceEarned = 1_000_000_000;
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent: currentArc5Parent(extensions),
       preDraw: capacityPreDrawInput(cappedState, extensions, 0),
     })).toEqual({
       kind: 'refused',
@@ -2072,7 +2093,9 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
         sourceOrdinal: rareIndex,
       },
     });
-    const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw });
+    const certified = certifyArc4CaptureCapacityV1({
+      preflight, parent: currentArc5Parent(extensions), preDraw,
+    });
     if (certified.kind !== 'certified') throw new Error(`rare certificate was ${certified.reason}`);
     const settled = await settleCapacityThroughGenuineOwner(
       preflight,
@@ -2122,6 +2145,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     );
     const laterCertified = certifyArc4CaptureCapacityV1({
       preflight: laterPreflight,
+      parent: currentArc5Parent(laterExtensions),
       preDraw: laterPreDraw,
     });
     if (laterCertified.kind !== 'certified') {
@@ -2167,7 +2191,9 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     if (preflight.kind !== 'ready') throw new Error(`hybrid preflight was ${preflight.reason}`);
     const state = compatibilityStateForOwnership(ownership);
     const preDraw = capacityPreDrawInput(state, extensions, 0);
-    const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw });
+    const certified = certifyArc4CaptureCapacityV1({
+      preflight, parent: currentArc5Parent(extensions), preDraw,
+    });
     if (certified.kind !== 'certified') throw new Error(`hybrid certificate was ${certified.reason}`);
     const settled = await settleCapacityThroughGenuineOwner(
       preflight,

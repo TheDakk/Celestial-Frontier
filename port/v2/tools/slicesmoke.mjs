@@ -59,6 +59,7 @@ import {
   ARC4_PERTAR_FIXTURE,
   ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA,
   ARC4_STALE_FAULT_CAPTURE_SCHEMA,
+  ARC5_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
   arc4BrowserOutcomePasses,
   arc4CaptureUiSnapshotComplete,
@@ -74,6 +75,7 @@ import {
   assessArc4PublicationConvergence,
   assessArc4StaleConvergence,
   assessArc4StorageRefusal,
+  projectArc5OwnershipMigrationEvidence,
 } from './arc4-browser-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -8997,6 +8999,40 @@ try {
       setupAssessment, seedWitness,
     };
   };
+  const stageArc5LegacyV1Carrier = async (raw) => {
+    const manifestCarrier = raw?.playerRow?.extensions?.[
+      ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+    ];
+    let manifest = null;
+    try { manifest = JSON.parse(manifestCarrier?.json ?? 'null'); } catch {}
+    if (manifestCarrier?.version !== 2 || manifest?.version !== 2) return null;
+    const legacyCertificate = {
+      schema: 'cf-v2-ownership-v1-to-v2/v1', version: 1,
+      sourceSchema: manifest.sourceSchema, sourceVersion: manifest.sourceVersion,
+      sourceRevision: manifest.sourceRevision, sourceMode: manifest.sourceMode,
+      sourceDigest: manifest.sourceDigest,
+      targetSchema: manifest.targetSchema, targetVersion: manifest.targetVersion,
+      targetRevision: manifest.targetRevision, targetMode: manifest.targetMode,
+      targetDigest: manifest.targetDigest,
+    };
+    const playerRow = structuredClone(raw.playerRow);
+    const creaturesRow = structuredClone(raw.creaturesRow);
+    playerRow.extensions[ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace] = {
+      version: 1, json: canonicalJson(legacyCertificate),
+    };
+    for (let index = 0; index < 4; index++) {
+      delete creaturesRow.extensions[`arc5.ownership.delta.${index}`];
+    }
+    const staged = await evalIn(`(async()=>{const open=indexedDB.open('cf-v2-slice'),
+      db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
+      try{const tx=db.transaction(['player','creatures'],'readwrite'),done=new Promise((resolve,reject)=>{
+        tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('Arc 5 legacy stage aborted'))});
+        tx.objectStore('player').put(${JSON.stringify(JSON.stringify(playerRow))},'v5:player');
+        tx.objectStore('creatures').put(${JSON.stringify(JSON.stringify(creaturesRow))},'v5:creatures');
+        await done;return {manifestVersion:${legacyCertificate.version},playerBytes:${JSON.stringify(JSON.stringify(playerRow))}.length,
+          creatureBytes:${JSON.stringify(JSON.stringify(creaturesRow))}.length};}finally{db.close()}})()`);
+    return { staged, legacyCertificate, playerRow, creaturesRow };
+  };
   const arc4IsolatedCheck = (result, expected) => result?.ok === false
     && result?.checks?.[expected] === false
     && Object.entries(result?.checks ?? {}).every(([name, value]) => (
@@ -9071,40 +9107,58 @@ try {
     next.playerRaw = JSON.stringify(next.playerRow);
     return next;
   };
-  const arc4MutateArc5Certificate = (evidence, mutate) => {
+  const arc4MutateArc5Manifest = (evidence, mutate) => {
     const next = structuredClone(evidence);
     const namespace = ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace;
     const carrier = next?.playerRow?.extensions?.[namespace];
-    let certificate = null;
-    try { certificate = JSON.parse(carrier?.json ?? 'null'); } catch {}
-    if (!carrier || certificate === null || typeof certificate !== 'object'
-      || Array.isArray(certificate)) return null;
-    mutate(certificate);
-    carrier.json = canonicalJson(certificate);
+    let manifest = null;
+    try { manifest = JSON.parse(carrier?.json ?? 'null'); } catch {}
+    if (!carrier || manifest === null || typeof manifest !== 'object'
+      || Array.isArray(manifest)) return null;
+    mutate(manifest);
+    carrier.json = canonicalJson(manifest);
     next.playerRaw = JSON.stringify(next.playerRow);
     return next;
   };
-  const arc4NoncanonicalArc5Certificate = (evidence) => {
+  const arc4NoncanonicalArc5Manifest = (evidence) => {
     const next = structuredClone(evidence);
     const namespace = ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace;
     const carrier = next?.playerRow?.extensions?.[namespace];
-    let certificate = null;
-    try { certificate = JSON.parse(carrier?.json ?? 'null'); } catch {}
-    if (!carrier || certificate === null || typeof certificate !== 'object'
-      || Array.isArray(certificate)) return null;
+    let manifest = null;
+    try { manifest = JSON.parse(carrier?.json ?? 'null'); } catch {}
+    if (!carrier || manifest === null || typeof manifest !== 'object'
+      || Array.isArray(manifest)) return null;
     carrier.json = JSON.stringify(
-      Object.fromEntries(Object.entries(certificate).reverse()),
+      Object.fromEntries(Object.entries(manifest).reverse()),
     );
     next.playerRaw = JSON.stringify(next.playerRow);
     return next;
   };
-  const arc4ReplaceArc5Certificate = (evidence, source) => {
+  const arc4ReplaceArc5CarrierSet = (evidence, source) => {
     const next = structuredClone(evidence);
-    const namespace = ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace;
-    const carrier = source?.playerRow?.extensions?.[namespace];
-    if (!carrier) return null;
-    next.playerRow.extensions[namespace] = structuredClone(carrier);
-    next.playerRaw = JSON.stringify(next.playerRow);
+    const descriptors = {
+      player: ['playerRow', 'playerRaw'], creatures: ['creaturesRow', 'creaturesRaw'],
+    };
+    for (const { segment, namespace } of ARC5_OWNERSHIP_EXTENSION_TARGETS) {
+      const [row, raw] = descriptors[segment] ?? [];
+      const carrier = source?.[row]?.extensions?.[namespace];
+      if (!row || !carrier) return null;
+      next[row].extensions[namespace] = structuredClone(carrier);
+      next[raw] = JSON.stringify(next[row]);
+    }
+    return next;
+  };
+  const arc4MutateArc5Shard = (evidence, index, mutate) => {
+    const next = structuredClone(evidence);
+    const namespace = `arc5.ownership.delta.${index}`;
+    const carrier = next?.creaturesRow?.extensions?.[namespace];
+    let shard = null;
+    try { shard = JSON.parse(carrier?.json ?? 'null'); } catch {}
+    if (!carrier || shard === null || typeof shard !== 'object'
+      || Array.isArray(shard)) return null;
+    mutate(shard);
+    carrier.json = canonicalJson(shard);
+    next.creaturesRaw = JSON.stringify(next.creaturesRow);
     return next;
   };
   const arc4InteractionKey = 'cf_slice_arc4_capture_interaction_v1';
@@ -9221,6 +9275,136 @@ try {
     }
     throw new Error(`${label} did not reach its exact current-surface Survey outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
+
+  /* A genuine legacy v1 digest certificate is staged over an exact current
+     source, then boot must replace it with all five compact-v2 carriers in
+     one receipt-free CAS. The immediately following reload proves that the
+     aligned representation is a zero-write fixed point. This rehearsal is
+     isolated from the nine-stage capture ledger by a fresh fixture import. */
+  const arc5UpgradeFixture = await installArc4PertarFixture(
+    'Arc 5 legacy-carrier upgrade rehearsal',
+  );
+  const arc5UpgradeBeforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc5UpgradeBefore = projectArc5OwnershipMigrationEvidence(
+    arc5UpgradeBeforeRaw,
+  );
+  const arc5LegacyStage = await stageArc5LegacyV1Carrier(arc5UpgradeBeforeRaw);
+  const arc5LegacyRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc5UpgradePriorToken = await sliceToken(sess);
+  const arc5UpgradeToken = await navigateToSlice(
+    sess, URL0, 'Arc 5 v1-to-v2 boot upgrade',
+  );
+  await waitForF4Writable('Arc 5 upgraded writable authority', {
+    previousToken: arc5UpgradePriorToken,
+  });
+  const arc5UpgradeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const arc5UpgradeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc5UpgradeProjection = projectArc5OwnershipMigrationEvidence(
+    arc5UpgradeRaw,
+  );
+  const arc5AlignedPriorToken = await sliceToken(sess);
+  const arc5AlignedToken = await navigateToSlice(
+    sess, URL0, 'Arc 5 aligned-v2 zero-write reload',
+  );
+  await waitForF4Writable('Arc 5 aligned-v2 writable authority', {
+    previousToken: arc5AlignedPriorToken,
+  });
+  const arc5AlignedState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const arc5AlignedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+  const arc5AlignedProjection = projectArc5OwnershipMigrationEvidence(
+    arc5AlignedRaw,
+  );
+  const arc5LegacyNamespaces = [
+    ...Object.keys(arc5LegacyRaw?.playerRow?.extensions ?? {}),
+    ...Object.keys(arc5LegacyRaw?.creaturesRow?.extensions ?? {}),
+  ].filter((namespace) => namespace.startsWith('arc5.ownership.'));
+  const arc5UpgradeCarrierBytes = (raw) => ARC5_OWNERSHIP_EXTENSION_TARGETS.map(
+    ({ segment, namespace }) => {
+      const row = segment === 'player' ? raw?.playerRow : raw?.creaturesRow;
+      const carrier = row?.extensions?.[namespace];
+      return [segment, namespace, carrier?.version ?? null, carrier?.json ?? null];
+    },
+  );
+  const arc5UpgradeDiagnosticControl = structuredClone(arc5AlignedState);
+  arc5UpgradeDiagnosticControl.ownershipV2.representationVersion = 1;
+  const arc5UpgradeShardControl = structuredClone(arc5AlignedRaw);
+  delete arc5UpgradeShardControl.creaturesRow.extensions['arc5.ownership.delta.3'];
+  arc5UpgradeShardControl.creaturesRaw = JSON.stringify(
+    arc5UpgradeShardControl.creaturesRow,
+  );
+  const arc5UpgradeChecks = {
+    fixtureCurrent: arc5UpgradeFixture.setupAssessment?.ok === true
+      && arc5UpgradeBefore !== null && arc5UpgradeBefore.deltaRowCount === 0,
+    legacyStage: arc5LegacyStage?.staged?.manifestVersion === 1
+      && arc5LegacyNamespaces.length === 1
+      && arc5LegacyNamespaces[0] === ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+      && arc5LegacyRaw?.playerRow?.extensions?.[
+        ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace
+      ]?.version === 1
+      && projectArc5OwnershipMigrationEvidence(arc5LegacyRaw) === null,
+    legacySourceBound: arc5LegacyStage?.legacyCertificate?.sourceDigest
+        === arc5UpgradeBefore?.sourceDigest
+      && arc5LegacyStage?.legacyCertificate?.targetDigest
+        === arc5UpgradeBefore?.targetDigest
+      && arc5LegacyStage?.legacyCertificate?.sourceRevision
+        === arc5UpgradeBefore?.manifest?.sourceRevision
+      && arc5LegacyStage?.legacyCertificate?.targetRevision
+        === arc5UpgradeBefore?.manifest?.targetRevision,
+    oneCas: arc5UpgradeRaw?.revision === arc5UpgradeBeforeRaw?.revision + 1
+      && arc5UpgradeState?.persistence?.runtime?.commits === 1
+      && arc5UpgradeState?.ownershipV2?.bootstrapOutcome === 'committed-published'
+      && arc5UpgradeState?.ownershipV2?.bootstrapPending === false,
+    receiptFree: canonicalJson(arc5UpgradeRaw?.receiptKeys)
+        === canonicalJson(arc5UpgradeBeforeRaw?.receiptKeys)
+      && canonicalJson(arc5UpgradeRaw?.receiptRawRows)
+        === canonicalJson(arc5UpgradeBeforeRaw?.receiptRawRows),
+    rngStable: arc5UpgradeRaw?.authority?.sessionRng?.seed
+        === arc5UpgradeBeforeRaw?.authority?.sessionRng?.seed
+      && arc5UpgradeRaw?.authority?.sessionRng?.ordinal
+        === arc5UpgradeBeforeRaw?.authority?.sessionRng?.ordinal
+      && canonicalJson(arc5UpgradeRaw?.authority?.sessionRng?.draws)
+        === canonicalJson(arc5UpgradeBeforeRaw?.authority?.sessionRng?.draws),
+    upgradedFixedPoint: arc4DurableEvidenceComplete(arc5UpgradeRaw)
+      && arc5UpgradeProjection !== null
+      && arc5UpgradeProjection.representationVersion === 2
+      && arc5UpgradeProjection.deltaRowCount === 0
+      && arc5UpgradeProjection.shardDigests.length === 4
+      && arc5OwnershipV2RuntimeExact(arc5UpgradeRaw, arc5UpgradeState, {
+        bootstrapOutcome: 'committed-published',
+      }),
+    ownershipStable: arc5UpgradeProjection?.sourceDigest
+        === arc5UpgradeBefore?.sourceDigest
+      && arc5UpgradeProjection?.deltaDigest === arc5UpgradeBefore?.deltaDigest
+      && arc5UpgradeProjection?.targetDigest === arc5UpgradeBefore?.targetDigest,
+    zeroWrite: arc5AlignedRaw?.revision === arc5UpgradeRaw?.revision
+      && arc5AlignedState?.persistence?.runtime?.commits === 0
+      && arc5AlignedState?.ownershipV2?.bootstrapOutcome === 'already-aligned'
+      && arc5AlignedState?.ownershipV2?.bootstrapPending === false
+      && canonicalJson(arc5UpgradeCarrierBytes(arc5AlignedRaw))
+        === canonicalJson(arc5UpgradeCarrierBytes(arc5UpgradeRaw)),
+    alignedFixedPoint: arc4DurableEvidenceComplete(arc5AlignedRaw)
+      && arc5AlignedProjection !== null
+      && arc5OwnershipV2RuntimeExact(arc5AlignedRaw, arc5AlignedState, {
+        bootstrapOutcome: 'already-aligned',
+      }),
+    documentReplacement: typeof arc5UpgradeToken === 'string'
+      && typeof arc5AlignedToken === 'string'
+      && arc5UpgradeToken !== arc5UpgradePriorToken
+      && arc5AlignedToken !== arc5AlignedPriorToken,
+    diagnosticMutation: !arc5OwnershipV2RuntimeExact(
+      arc5AlignedRaw, arc5UpgradeDiagnosticControl,
+      { bootstrapOutcome: 'already-aligned' },
+    ),
+    shardMutation: !arc4DurableEvidenceComplete(arc5UpgradeShardControl),
+  };
+  if (!Object.values(arc5UpgradeChecks).every((value) => value === true)) {
+    fails.push('ARC 5 COMPACT CARRIER BOOT: exact v1 certificate did not upgrade once then remain an aligned zero-write v2 fixed point: '
+      + JSON.stringify({ checks: arc5UpgradeChecks, fixture: arc5UpgradeFixture,
+        legacyStage: arc5LegacyStage, legacyRaw: arc5LegacyRaw,
+        before: arc5UpgradeBeforeRaw, upgraded: arc5UpgradeRaw,
+        upgradedState: arc5UpgradeState, aligned: arc5AlignedRaw,
+        alignedState: arc5AlignedState }));
+  }
 
   const arc4FirstFixture = await installArc4PertarFixture('Arc 4 Pertar seed-68 replacement');
   const arc4FixtureSetupBundle = {
@@ -9363,7 +9547,12 @@ try {
   };
   const arc4Precondition = assessArc4CapturePrecondition(arc4PreconditionBundle);
   const arc4PreNoncanonicalArc5Control = assessArc4DurableEvidence(
-    arc4NoncanonicalArc5Certificate(arc4PreRaw),
+    arc4NoncanonicalArc5Manifest(arc4PreRaw),
+  );
+  const arc4PreArc5ShardDigestControl = assessArc4DurableEvidence(
+    arc4MutateArc5Shard(
+      arc4PreRaw, 0, (shard) => { shard.digest = 'e'.repeat(64); },
+    ),
   );
   const arc4PreWrongHeading = structuredClone(arc4PreUi);
   arc4PreWrongHeading.planetsideHeading = 'PLANETSIDE — Wrong';
@@ -9416,10 +9605,14 @@ try {
     || !arc4IsolatedCheck(arc4PreconditionControls.ownershipV2Ready,
       'ownershipV2Ready')
     || !arc4ExactFailureSet(arc4PreNoncanonicalArc5Control, [
-      'arc5CertificateShape', 'arc5SourceFixedPoint', 'arc5TargetFixedPoint',
+      'arc5ManifestShape', 'arc5SourceFixedPoint',
+      'arc5DeltaFixedPoint', 'arc5TargetFixedPoint',
+    ])
+    || !arc4ExactFailureSet(arc4PreArc5ShardDigestControl, [
+      'arc5DeltaFixedPoint', 'arc5TargetFixedPoint',
     ])
     || arc4CaptureUiSnapshotComplete(arc4PreMissingHeading)) {
-    fails.push('ARC 4 PRECONDITION: Pertar route, seed-68 F4 authority, exact v5/18 Arc 4 carriers + Arc 5 certificate, or card identity failed: '
+    fails.push('ARC 4 PRECONDITION: Pertar route, seed-68 F4 authority, exact v5/18 Arc 4 carriers + compact Arc 5 carrier set, or card identity failed: '
       + JSON.stringify({ fixture: arc4FirstFixture, assessment: arc4Precondition,
         setupControls: arc4FixtureSetupControls,
         setupControlExpectedFailures: arc4FixtureSetupExpectedFailures,
@@ -9428,6 +9621,7 @@ try {
         wrongOrdinalClockControl: arc4FixtureWrongOrdinalClockControl,
         controls: arc4PreconditionControls,
         noncanonicalArc5Control: arc4PreNoncanonicalArc5Control,
+        arc5ShardDigestControl: arc4PreArc5ShardDigestControl,
         uiMissingHeadingAccepted:
           arc4CaptureUiSnapshotComplete(arc4PreMissingHeading) }));
   }
@@ -9513,12 +9707,12 @@ try {
   });
   const arc4HitRetainedArc5Control = assessArc4CommittedHit({
     ...arc4HitBundle,
-    after: arc4ReplaceArc5Certificate(arc4HitRaw, arc4PreRaw),
+    after: arc4ReplaceArc5CarrierSet(arc4HitRaw, arc4PreRaw),
   });
   const arc4HitTargetDigestControl = assessArc4CommittedHit({
     ...arc4HitBundle,
-    after: arc4MutateArc5Certificate(
-      arc4HitRaw, (certificate) => { certificate.targetDigest = 'f'.repeat(64); },
+    after: arc4MutateArc5Manifest(
+      arc4HitRaw, (manifest) => { manifest.targetDigest = 'f'.repeat(64); },
     ),
   });
   if (!arc4HitHoldArmed || !arc4HitPress.armed || !arc4HitPress.target.ok
@@ -9536,10 +9730,10 @@ try {
     || !arc4ExactFailureSet(arc4HitV4MaxGenControl,
       ['v4OwnedCompatibility', 'v4OwnedCounters'])
     || !arc4ExactFailureSet(arc4HitRetainedArc5Control,
-      ['durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+      ['durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
         'ownershipV2Live'])
     || !arc4ExactFailureSet(arc4HitTargetDigestControl,
-      ['durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+      ['durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
         'ownershipV2Live'])
     || !arc4BrowserOutcomePasses({ released: arc4HitReleased,
       assessment: arc4Hit, surface: 'survey' })) {
@@ -9894,7 +10088,7 @@ try {
   });
   const arc4MissRetainedArc5Control = assessArc4CommittedMiss({
     ...arc4MissBundle,
-    after: arc4ReplaceArc5Certificate(arc4MissRaw, arc4MissBeforeRaw),
+    after: arc4ReplaceArc5CarrierSet(arc4MissRaw, arc4MissBeforeRaw),
   });
   if (!arc4MissPress.armed || !arc4MissPress.target.ok || !arc4Miss.ok
     || !arc4IsolatedCheck(arc4MissControl, 'interaction')
@@ -9902,7 +10096,7 @@ try {
     || !arc4ExactFailureSet(arc4MissV4ScanhitsControl,
       ['v4OwnedCompatibility', 'v4OwnedCounters'])
     || !arc4ExactFailureSet(arc4MissRetainedArc5Control,
-      ['durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+      ['durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
         'ownershipV2Live'])
     || !arc4BrowserOutcomePasses({ released: true,
       assessment: arc4Miss, surface: 'survey' })) {
@@ -10048,13 +10242,13 @@ try {
           beforeUi, outcome, verb: readyRow.verb, expectedUsed, afterState,
         }),
       },
-      arc5CertificateSuccessor: {
+      arc5CarrierSuccessor: {
         expected: [
-          'durableEvidence', 'arc5CertificateSuccessor', 'unrelatedDurable',
+          'durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
           'ownershipV2Live',
         ],
         result: assessArc4BurnStep({
-          before, after: arc4ReplaceArc5Certificate(after, before),
+          before, after: arc4ReplaceArc5CarrierSet(after, before),
           beforeUi, outcome, verb: readyRow.verb, expectedUsed, afterState,
         }),
       },
@@ -15915,6 +16109,6 @@ if (fails.length) {
 }
 console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail/Equip, exact carrier↔legacy↔DOM parity, conditional comparison, one receipt, reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
-console.log('SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces/aligned source-bound Arc 5 V1→V2 certificate/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.');
+console.log('SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);

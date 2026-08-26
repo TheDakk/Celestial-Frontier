@@ -14,6 +14,7 @@ import {
   capturePresentationFenceV1,
   isCaptureAttemptPlanV1,
   isCapturePreflightReadyV1,
+  isOwnershipStateV2,
   ownershipStateDigestV1,
   ownershipStateDigestV2,
   preflightCaptureV1,
@@ -27,6 +28,7 @@ import {
 } from '@cf/domain-acquisition';
 import { MAX_ACTIVE_PLAY_MS } from '@cf/domain-progression';
 import {
+  ARC5_OWNERSHIP_MIGRATION_VERSION,
   arc4OwnershipLegacyMirrorMatches,
   exportSaveV2,
   importSaveV2,
@@ -36,6 +38,7 @@ import {
   readArc5OwnershipMigration,
   readF4Authority,
   type ContentRegistry,
+  type Arc5OwnershipMigrationEvidenceV2,
   type ProjectedLegacyOwnershipMirrorV1,
   type SaveStateV2,
   type V5Extensions,
@@ -128,6 +131,8 @@ function preparedSaveFingerprint(
 
 export interface Arc4CaptureAttemptInputV1 {
   readonly runtime: Pick<F4RuntimeAuthority, 'commitOutcomesPreDraw'>;
+  /** Exact registered Arc 5 parent retained by the app after boot/commit. */
+  readonly ownershipV2: OwnershipStateV2;
   readonly state: SaveStateV2;
   readonly nav: unknown;
   readonly address: unknown;
@@ -139,6 +144,7 @@ export interface Arc4CaptureAttemptInputV1 {
 
 interface CapturedArc4CaptureAttemptInputV1 {
   readonly commit: F4RuntimeAuthority['commitOutcomesPreDraw'];
+  readonly ownershipV2: OwnershipStateV2;
   readonly state: SaveStateV2;
   readonly nav: unknown;
   readonly address: unknown;
@@ -149,7 +155,8 @@ interface CapturedArc4CaptureAttemptInputV1 {
 }
 
 const CAPTURE_ATTEMPT_INPUT_FIELDS = Object.freeze([
-  'runtime', 'state', 'nav', 'address', 'roster', 'presentationFence', 'verb', 'codecNow',
+  'runtime', 'ownershipV2', 'state', 'nav', 'address', 'roster',
+  'presentationFence', 'verb', 'codecNow',
 ] as const);
 const CAPTURE_STATE_CLONE_LIMIT = 1_500_000;
 
@@ -237,10 +244,13 @@ function captureAttemptInput(
     if (!commitDescriptor || !('value' in commitDescriptor)
       || typeof commitDescriptor.value !== 'function') return null;
     if (!isCanonicalWorldRoster(fields.roster)) return null;
+    if (!isOwnershipStateV2(fields.ownershipV2)
+      || fields.ownershipV2.mode !== 'current') return null;
     if (typeof fields.presentationFence !== 'string'
       || !/^cpf1:[0-9a-f]{64}$/u.test(fields.presentationFence)) return null;
     return Object.freeze({
       commit: commitDescriptor.value.bind(runtime) as F4RuntimeAuthority['commitOutcomesPreDraw'],
+      ownershipV2: fields.ownershipV2,
       state: cloneCapturePlainData(
         fields.state,
         new Set<object>(),
@@ -379,7 +389,11 @@ export async function commitArc4CaptureAttemptV1(
           reason: `preflight:${preflight.reason}` as const,
         });
       }
-      const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw });
+      const certified = certifyArc4CaptureCapacityV1({
+        preflight,
+        preDraw,
+        parent: captured.ownershipV2,
+      });
       if (certified.kind !== 'certified') {
         return Object.freeze({
           kind: 'refused' as const,
@@ -502,6 +516,7 @@ export type Arc4CaptureCommittedVerificationV1 =
     convergence: 'none';
     ownership: OwnershipStateV1;
     ownershipV2: OwnershipStateV2;
+    ownershipV2Evidence: Arc5OwnershipMigrationEvidenceV2;
     plan: Arc4CaptureDerivedSettlementV1['plan'];
     stardustReward: number;
   }>
@@ -606,7 +621,16 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
     input.runtimeExtensions,
     SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   );
-  if (arc5.kind !== 'loaded') return mismatch('arc5-migration-not-current');
+  const expectedArc5 = readArc5OwnershipMigration(
+    settlement.prepared.extensions,
+    SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  );
+  if (arc5.kind !== 'loaded'
+    || expectedArc5.kind !== 'loaded'
+    || arc5.evidence.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION
+    || expectedArc5.evidence.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION) {
+    return mismatch('arc5-migration-not-current');
+  }
   if (!arc4OwnershipLegacyMirrorMatches(ownership.state, transaction.state)) {
     return mismatch('ownership-legacy-mirror-mismatch');
   }
@@ -673,7 +697,9 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
       !== evidencePayload.sourceDraftFingerprint) {
     return mismatch('capture-settlement-authority-mismatch');
   }
-  if (ownershipStateDigestV2(arc5.state) !== settlement.ownershipV2Digest) {
+  if (ownershipStateDigestV2(arc5.state) !== settlement.ownershipV2Digest
+    || ownershipStateDigestV2(expectedArc5.state) !== settlement.ownershipV2Digest
+    || !sameJson(arc5.evidence, expectedArc5.evidence)) {
     return mismatch('arc5-migration-successor-mismatch');
   }
   return Object.freeze({
@@ -682,6 +708,7 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
     convergence: 'none',
     ownership: ownership.state,
     ownershipV2: arc5.state,
+    ownershipV2Evidence: arc5.evidence,
     plan: settlement.plan,
     stardustReward: expectedReward,
   });
