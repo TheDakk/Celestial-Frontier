@@ -4,9 +4,14 @@ import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  canonicalJson,
+  ownershipSourceStateV1,
+  ownershipStateDigestV1,
+  ownershipStateDigestV2,
 } from '@cf/domain-acquisition';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
+  ARC5_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
   ARC5_OWNERSHIP_MIGRATION_VERSION,
   importSaveV2,
@@ -67,6 +72,8 @@ function bootErrors(source: string): string[] {
   const errors: string[] = [];
   for (const needle of [
     'let arc5OwnershipState: OwnershipStateV2 | null = null;',
+    'let arc5OwnershipEvidence: Arc5OwnershipMigrationEvidence | null = null;',
+    'let arc5OwnershipBootstrapPrepared: PreparedArc5OwnershipMigrationV2 | null = null;',
     'let arc5OwnershipBootstrapPending = false;',
     'let arc5OwnershipProtection: string | null = null;',
     'let lastArc5BootstrapOutcome: string | null = null;',
@@ -82,7 +89,7 @@ function bootErrors(source: string): string[] {
   if (ensure.length === 0) return ['boot-ensure-section'];
   const commit = ensure.indexOf('const seeded = await runtime.commit(');
   const durable = ensure.indexOf('durable = true;', commit);
-  const verify = ensure.indexOf('const loaded = readArc5OwnershipMigration(', durable);
+  const verify = ensure.indexOf('const loaded = committedArc5OwnershipState(', durable);
   const publish = ensure.indexOf('arc5OwnershipState = loaded.state;', verify);
   if (!ensure.includes('if (!arc5OwnershipBootstrapPending')
     || !ensure.includes('&& !arc4OwnershipBootstrapPending) return true;')) {
@@ -91,14 +98,17 @@ function bootErrors(source: string): string[] {
   for (const needle of [
     'const ownershipV2BootstrapWasPending = arc5OwnershipBootstrapPending;',
     'const ownershipV2StateAtCommit = arc5OwnershipState;',
+    'const ownershipV2PreparedAtCommit = arc5OwnershipBootstrapPrepared;',
     'arc5OwnershipBootstrapPending = false;',
+    'arc5OwnershipBootstrapPrepared = null;',
     "arc5OwnershipProtection = durable\n          ? 'committed-publication-reload' : 'bootstrap-failed';",
   ]) {
     if (!ensure.includes(needle)) errors.push('boot-shared-authority');
   }
   if ((ensure.match(/runtime\.commit\(/gu) ?? []).length !== 1) errors.push('boot-single-cas');
   if (!(commit >= 0 && durable > commit && verify > durable && publish > verify)
-    || !ensure.includes('ownershipStateDigestV2(ownershipV2StateAtCommit)')) {
+    || !ensure.includes('ownershipV2PreparedAtCommit.state !== ownershipV2StateAtCommit')
+    || !ensure.includes('arc5OwnershipEvidence = loaded.evidence;')) {
     errors.push('boot-postcommit-verification');
   }
   if (!ensure.includes("if (durable) {\n          arc4OwnershipState = null;\n          arc4OwnershipProtection = 'committed-publication-reload';")) {
@@ -119,7 +129,7 @@ function bootErrors(source: string): string[] {
   const load = section(source, 'async function loadSave(', '\n/* ---- boot ---- */');
   const arc5 = section(
     load,
-    "  /* Arc 5's digest-only certificate",
+    "  /* Arc 5's compact source-bound manifest",
     '  /* A newly prepared or reconciled carrier',
   );
   if (load.length === 0 || arc5.length === 0) return [...new Set([...errors, 'boot-load-section'])];
@@ -129,6 +139,8 @@ function bootErrors(source: string): string[] {
   if (!(arc4At >= 0 && arc5At > arc4At && runtimeAt > arc5At)) errors.push('boot-owner-order');
   for (const needle of [
     'arc5OwnershipState = null;',
+    'arc5OwnershipEvidence = null;',
+    'arc5OwnershipBootstrapPrepared = null;',
     'arc5OwnershipBootstrapPending = false;',
     'arc5OwnershipProtection = null;',
     'lastArc5BootstrapOutcome = null;',
@@ -164,6 +176,8 @@ function bootErrors(source: string): string[] {
     'extensions: initialExtensions,',
     'arc5BootGateClassification = prepared;',
     'initialExtensions = prepared.extensions;',
+    'arc5OwnershipEvidence = prepared.evidence;',
+    'arc5OwnershipBootstrapPrepared = prepared;',
     'arc5OwnershipBootstrapPending = true;',
   ]) {
     if (!arc5.includes(needle)) errors.push('boot-classification');
@@ -235,7 +249,7 @@ function trainingErrors(source: string): string[] {
   const protect = body.indexOf("if (arc5Preparation.kind === 'protected')", arc5);
   const commit = body.indexOf('const committed = await f4Runtime!.commit(', protect);
   const durable = body.indexOf('durablyWritten = true;', commit);
-  const verify = body.indexOf('restoredOwnershipV2 = committedTrainingArc5State(', durable);
+  const verify = body.indexOf('const committedOwnershipV2 = committedTrainingArc5State(', durable);
   const preserveVerify = body.indexOf('const loadedOwnershipV2 = readArc5OwnershipMigration(', durable);
   const publish = body.indexOf('arc5OwnershipState = restoredOwnershipV2;', preserveVerify);
   if (!(arc4 >= 0 && arc5 > arc4 && protect > arc5 && commit > protect
@@ -251,6 +265,8 @@ function trainingErrors(source: string): string[] {
     "...(arc5Preparation.kind === 'prepared' ? arc5Preparation.writes : []),",
     "if (arc5Preparation.kind === 'prepared') {",
     'ownershipStateDigestV2(arc5Preparation.state)',
+    'JSON.stringify(loadedOwnershipV2.evidence)',
+    'arc5OwnershipEvidence = restoredOwnershipV2Evidence;',
     "arc5OwnershipProtection = 'training-deferred:source-deferred';",
   ]) {
     if (!body.includes(needle)) errors.push('training-composition');
@@ -278,7 +294,7 @@ function captureErrors(source: string): string[] {
   );
   if (writer.length === 0) return ['capture-section'];
   const arc4Ready = writer.indexOf("if (arc4OwnershipState?.mode !== 'current'");
-  const arc5Ready = writer.indexOf("if (arc5OwnershipState?.mode !== 'current'");
+  const arc5Ready = writer.indexOf("if (ownershipV2Parent?.mode !== 'current'");
   const claim = writer.indexOf('const actionClaim = productActionCoordinator.tryClaim(');
   const durable = writer.indexOf('durable = true;');
   const verify = writer.indexOf('const verified = verifyArc4CommittedCaptureV1({', durable);
@@ -301,12 +317,19 @@ function captureErrors(source: string): string[] {
     || !refresh.includes("arc4OwnershipState?.mode !== 'current'")
     || !refresh.includes('arc4OwnershipProtection !== null')
     || !refresh.includes("arc5OwnershipState?.mode !== 'current'")
+    || !refresh.includes('arc5OwnershipEvidence?.representationVersion')
     || !refresh.includes('arc5OwnershipProtection !== null')) {
     errors.push('capture-read-model-authority');
   }
   if ((writer.match(/arc5OwnershipProtection = 'committed-publication-reload';/gu) ?? []).length < 3
-    || (writer.match(/arc5OwnershipState = null;/gu) ?? []).length < 3) {
+    || (writer.match(/arc5OwnershipState = null;/gu) ?? []).length < 3
+    || (writer.match(/arc5OwnershipEvidence = null;/gu) ?? []).length < 3) {
     errors.push('capture-postdurable-convergence');
+  }
+  if (!writer.includes('ownershipV2: ownershipV2Parent,')
+    || !writer.includes('arc5OwnershipEvidence?.representationVersion')
+    || !writer.includes('arc5OwnershipEvidence = verified.ownershipV2Evidence;')) {
+    errors.push('capture-v2-evidence');
   }
   const runner = section(
     source,
@@ -324,17 +347,20 @@ function captureErrors(source: string): string[] {
 function diagnosticErrors(source: string): string[] {
   const errors: string[] = [];
   for (const needle of [
-    "schema: 'cf-v2-arc5-app-state/v1'",
+    "schema: 'cf-v2-arc5-app-state/v2'",
     "stateKind: arc5OwnershipState === null ? 'unavailable' : 'loaded'",
+    'representationVersion: arc5OwnershipEvidence?.representationVersion ?? null,',
     'protection: arc5OwnershipProtection,',
     'bootstrapPending: arc5OwnershipBootstrapPending,',
     'bootstrapOutcome: lastArc5BootstrapOutcome,',
     'sourceRevision: arc5OwnershipState === null',
     'ownershipSourceStateV1(arc5OwnershipState).revision,',
-    'sourceDigest: arc5OwnershipState === null',
-    'ownershipStateDigestV1(ownershipSourceStateV1(arc5OwnershipState)),',
-    'targetDigest: arc5OwnershipState === null',
-    'ownershipStateDigestV2(arc5OwnershipState),',
+    'sourceDigest: arc5OwnershipEvidence?.sourceDigest ?? null,',
+    'targetDigest: arc5OwnershipEvidence?.targetDigest ?? null,',
+    'deltaDigest: arc5OwnershipEvidence?.representationVersion',
+    'deltaRows: arc5OwnershipEvidence?.representationVersion',
+    'deltaShardCount: arc5OwnershipEvidence?.representationVersion',
+    'deltaShardDigests: arc5OwnershipEvidence?.representationVersion',
     'ownershipV2BootstrapPending: arc5OwnershipBootstrapPending,',
   ]) {
     if (!source.includes(needle)) errors.push('diagnostics');
@@ -389,6 +415,42 @@ function arc5TargetExtensions(kind: 'corrupt' | 'future'): V5Extensions {
       },
     },
   };
+}
+
+function legacyArc5Extensions(current: V5Extensions): V5Extensions {
+  const loaded = readArc5OwnershipMigration(
+    current,
+    SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  );
+  if (loaded.kind !== 'loaded'
+    || loaded.evidence.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION) {
+    throw new Error(`Arc 5 legacy fixture source was ${loaded.kind}`);
+  }
+  const source = ownershipSourceStateV1(loaded.state);
+  const legacy = structuredClone(current) as Record<
+    string, Record<string, { version: number; json: string }>
+  >;
+  for (const target of ARC5_OWNERSHIP_EXTENSION_TARGETS) {
+    delete legacy[target.segment]?.[target.namespace];
+  }
+  (legacy.player ??= {})[ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace] = {
+    version: 1,
+    json: canonicalJson({
+      schema: 'cf-v2-ownership-v1-to-v2/v1',
+      version: 1,
+      sourceSchema: source.schema,
+      sourceVersion: source.version,
+      sourceRevision: source.revision,
+      sourceMode: source.mode,
+      sourceDigest: ownershipStateDigestV1(source),
+      targetSchema: loaded.state.schema,
+      targetVersion: loaded.state.version,
+      targetRevision: loaded.state.revision,
+      targetMode: loaded.state.mode,
+      targetDigest: ownershipStateDigestV2(loaded.state),
+    }),
+  };
+  return legacy as unknown as V5Extensions;
 }
 
 function stageArc5BootLiveFields(save: SaveStateV2): void {
@@ -575,12 +637,35 @@ describe('Arc 5 Main authority wiring', () => {
     if (alreadyLoaded.kind !== 'already-loaded') {
       throw new Error(`Arc 5 fixed-point control was ${alreadyLoaded.kind}`);
     }
+    expect(prepared.writes).toHaveLength(ARC5_OWNERSHIP_EXTENSION_TARGETS.length);
+    expect(prepared.evidence.representationVersion).toBe(ARC5_OWNERSHIP_MIGRATION_VERSION);
+    expect(alreadyLoaded.writes).toEqual([]);
+    expect(alreadyLoaded.extensions).toEqual(prepared.extensions);
+    expect(alreadyLoaded.evidence).toEqual(prepared.evidence);
+
+    const legacyExtensions = legacyArc5Extensions(prepared.extensions);
+    const legacyRead = readArc5OwnershipMigration(
+      legacyExtensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    if (legacyRead.kind !== 'loaded') throw new Error(`Arc 5 legacy read was ${legacyRead.kind}`);
+    expect(legacyRead.evidence.representationVersion).toBe(1);
+    const upgrade = prepareArc5OwnershipMigration({
+      extensions: legacyExtensions,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    if (upgrade.kind !== 'prepared') throw new Error(`Arc 5 legacy upgrade was ${upgrade.kind}`);
+    expect(upgrade.representationUpgrade).toBe('legacy-v1');
+    expect(upgrade.writes).toHaveLength(ARC5_OWNERSHIP_EXTENSION_TARGETS.length);
+    expect(upgrade.evidence.representationVersion).toBe(ARC5_OWNERSHIP_MIGRATION_VERSION);
+    expect(ownershipStateDigestV2(upgrade.state)).toBe(ownershipStateDigestV2(legacyRead.state));
     const absent = readArc5OwnershipMigration({}, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
     expect(absent.kind).toBe('absent');
     const deferred = classifyArc5TrainingBootGate(absent);
     expect(deferred).toEqual({ kind: 'deferred' });
     const classifications = Object.freeze([
       ['prepared', prepared],
+      ['legacy-v1-upgrade', upgrade],
       ['already-loaded', alreadyLoaded],
       ['absent-training-deferred', deferred],
     ] as const);
@@ -654,8 +739,8 @@ describe('Arc 5 Main authority wiring', () => {
       mainSource,
       'async function ensureBootAuthorityCommit(',
       '\nfunction f4RuntimeMayMutate(',
-      'const loaded = readArc5OwnershipMigration(',
-      'const loaded = readArc4Ownership(',
+      'const loaded = committedArc5OwnershipState(',
+      'const loaded = null && committedArc5OwnershipState(',
     );
     expect(bootErrors(verify)).toContain('boot-postcommit-verification');
 
@@ -672,7 +757,7 @@ describe('Arc 5 Main authority wiring', () => {
   it('negative-controls Arc4-pending plus protected Arc5 as a zero-commit, zero-retry boot', () => {
     const noHold = replaceInSectionExact(
       mainSource,
-      "  /* Arc 5's digest-only certificate",
+      "  /* Arc 5's compact source-bound manifest",
       '  /* A newly prepared or reconciled carrier',
       "persistHold = 'protected-payload';",
       'persistHold = false;',
@@ -681,7 +766,7 @@ describe('Arc 5 Main authority wiring', () => {
 
     const retryPending = replaceInSectionExact(
       mainSource,
-      "  /* Arc 5's digest-only certificate",
+      "  /* Arc 5's compact source-bound manifest",
       '  /* A newly prepared or reconciled carrier',
       'arc4OwnershipBootstrapPending = false;',
       'arc4OwnershipBootstrapPending = true;',
@@ -690,7 +775,7 @@ describe('Arc 5 Main authority wiring', () => {
 
     const staleExtensions = replaceInSectionExact(
       mainSource,
-      "  /* Arc 5's digest-only certificate",
+      "  /* Arc 5's compact source-bound manifest",
       '  /* A newly prepared or reconciled carrier',
       'initialExtensions = prepared.extensions;',
       'initialExtensions = initialExtensions;',
@@ -717,7 +802,7 @@ describe('Arc 5 Main authority wiring', () => {
 
     const optimisticTrainingAnomaly = replaceInSectionExact(
       mainSource,
-      "  /* Arc 5's digest-only certificate",
+      "  /* Arc 5's compact source-bound manifest",
       '  /* A newly prepared or reconciled carrier',
       "        holdProtectedArc5Boot(\n          existing.kind === 'future-version' ? 'future-protected' : 'corrupt-protected',\n          `Arc 5 ownership authority ${arc5OwnershipProtection}`,\n        );\n",
       '',
@@ -757,8 +842,8 @@ describe('Arc 5 Main authority wiring', () => {
       mainSource,
       'async function completeTraining(',
       '\nconst F4_FRESH_RACE_RELEASE_KEY',
-      'restoredOwnershipV2 = committedTrainingArc5State(',
-      'restoredOwnershipV2 = null && committedTrainingArc5State(',
+      'const committedOwnershipV2 = committedTrainingArc5State(',
+      'const committedOwnershipV2 = null && committedTrainingArc5State(',
     );
     expect(trainingErrors(missingVerify)).toContain('training-order');
 
@@ -777,7 +862,7 @@ describe('Arc 5 Main authority wiring', () => {
       mainSource,
       'async function commitArc4CaptureAction(',
       '\nfunction captureActivePlayCountdown(',
-      "  if (arc5OwnershipState?.mode !== 'current' || arc5OwnershipProtection !== null) {\n    return unavailable(`arc5:${arc5OwnershipProtection ?? 'ownership-v2-unavailable'}`, verb);\n  }\n",
+      "  const ownershipV2Parent = arc5OwnershipState;\n  if (ownershipV2Parent?.mode !== 'current'\n    || arc5OwnershipEvidence?.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION\n    || arc5OwnershipProtection !== null) {\n    return unavailable(`arc5:${arc5OwnershipProtection ?? 'ownership-v2-unavailable'}`, verb);\n  }\n",
       '',
     );
     expect(captureErrors(missingDependency)).toContain('capture-dependent-authority');
@@ -804,7 +889,7 @@ describe('Arc 5 Main authority wiring', () => {
       mainSource,
       'function refreshCaptureCardState(): void {',
       '\nfunction captureOutcomeCopy(',
-      "    || arc5OwnershipState?.mode !== 'current'\n    || arc5OwnershipProtection !== null\n",
+      "    || arc5OwnershipState?.mode !== 'current'\n    || arc5OwnershipEvidence?.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION\n    || arc5OwnershipProtection !== null\n",
       '',
     );
     expect(captureErrors(readModelOptimistic)).toContain('capture-read-model-authority');
@@ -812,7 +897,7 @@ describe('Arc 5 Main authority wiring', () => {
 
   it('negative-controls the public diagnostic carrier', () => {
     const mutant = mainSource.replace(
-      "schema: 'cf-v2-arc5-app-state/v1'",
+      "schema: 'cf-v2-arc5-app-state/v2'",
       "schema: 'cf-v2-arc5-app-state/broken'",
     );
     expect(mutant).not.toBe(mainSource);
@@ -820,8 +905,11 @@ describe('Arc 5 Main authority wiring', () => {
 
     for (const needle of [
       '          sourceRevision: arc5OwnershipState === null\n            ? null : ownershipSourceStateV1(arc5OwnershipState).revision,\n',
-      '          sourceDigest: arc5OwnershipState === null\n            ? null : ownershipStateDigestV1(ownershipSourceStateV1(arc5OwnershipState)),\n',
-      '          targetDigest: arc5OwnershipState === null\n            ? null : ownershipStateDigestV2(arc5OwnershipState),\n',
+      '          representationVersion: arc5OwnershipEvidence?.representationVersion ?? null,\n',
+      '          sourceDigest: arc5OwnershipEvidence?.sourceDigest ?? null,\n',
+      '          targetDigest: arc5OwnershipEvidence?.targetDigest ?? null,\n',
+      '          deltaDigest: arc5OwnershipEvidence?.representationVersion\n            === ARC5_OWNERSHIP_MIGRATION_VERSION\n            ? arc5OwnershipEvidence.deltaDigest : null,\n',
+      '          deltaShardDigests: arc5OwnershipEvidence?.representationVersion\n            === ARC5_OWNERSHIP_MIGRATION_VERSION\n            ? arc5OwnershipEvidence.shardDigests : [],\n',
     ]) {
       const missingAuthority = replaceInSectionExact(
         mainSource,

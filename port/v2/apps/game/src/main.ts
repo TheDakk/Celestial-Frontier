@@ -146,12 +146,16 @@ import {
   createRevisionedRepository, initializeFreshV5, migrateStoredV4ToV5,
   prepareV5Replacement, readF4Authority, readRevisionedSaveV5WithRecovery,
   arc4OwnershipLegacyMirrorMatches, readArc4Ownership,
+  ARC5_OWNERSHIP_MIGRATION_VERSION,
+  committedArc5OwnershipState,
   prepareArc5OwnershipMigration, readArc5OwnershipMigration,
   arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
   prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror,
   readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
   importSaveV2, exportSaveV2,
   type SaveStateV2, type ContentRegistry, type Arc2LootStateV1,
+  type Arc5OwnershipMigrationEvidence,
+  type PreparedArc5OwnershipMigrationV2,
   type ImportRouteIngressV2, type ImportTrainingSnapshotIngressV2,
   type StorageBackend, type V5Extensions,
 } from '@cf/persistence';
@@ -296,6 +300,8 @@ let arc4OwnershipProtection: string | null = null;
 let lastArc4BootstrapOutcome: string | null = null;
 let lastArc4CaptureOutcome: string | null = null;
 let arc5OwnershipState: OwnershipStateV2 | null = null;
+let arc5OwnershipEvidence: Arc5OwnershipMigrationEvidence | null = null;
+let arc5OwnershipBootstrapPrepared: PreparedArc5OwnershipMigrationV2 | null = null;
 let arc5OwnershipBootstrapPending = false;
 let arc5OwnershipProtection: string | null = null;
 let lastArc5BootstrapOutcome: string | null = null;
@@ -359,6 +365,7 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
   const ownershipStateAtCommit = arc4OwnershipState;
   const ownershipV2BootstrapWasPending = arc5OwnershipBootstrapPending;
   const ownershipV2StateAtCommit = arc5OwnershipState;
+  const ownershipV2PreparedAtCommit = arc5OwnershipBootstrapPrepared;
   const productCandidate = bootProductBootstrapCandidate;
   const run = (async (): Promise<boolean> => {
     let durable = false;
@@ -444,19 +451,20 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
           ? 'committed-published' : 'committed-protected';
       }
       if (ownershipV2BootstrapWasPending) {
-        if (ownershipV2StateAtCommit === null) {
-          throw new Error('Arc 5 bootstrap state is missing');
+        if (ownershipV2StateAtCommit === null || ownershipV2PreparedAtCommit === null
+          || ownershipV2PreparedAtCommit.state !== ownershipV2StateAtCommit) {
+          throw new Error('Arc 5 bootstrap preparation is missing');
         }
-        const loaded = readArc5OwnershipMigration(
+        const loaded = committedArc5OwnershipState(
+          ownershipV2PreparedAtCommit,
           seeded.saved.extensions,
           SCENE_OWNERSHIP_ADDRESS_RESOLVER,
         );
-        if (loaded.kind !== 'loaded'
-          || ownershipStateDigestV2(loaded.state)
-            !== ownershipStateDigestV2(ownershipV2StateAtCommit)) {
-          throw new Error('Arc 5 bootstrap certificate did not converge');
+        if (loaded === null) {
+          throw new Error('Arc 5 bootstrap compact carrier did not converge');
         }
         arc5OwnershipState = loaded.state;
+        arc5OwnershipEvidence = loaded.evidence;
         arc5OwnershipProtection = loaded.state.mode === 'current'
           ? null : 'legacy-protected';
         lastArc5BootstrapOutcome = loaded.state.mode === 'current'
@@ -469,6 +477,7 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
       arc3EngineeringBootstrapPending = false;
       arc4OwnershipBootstrapPending = false;
       arc5OwnershipBootstrapPending = false;
+      arc5OwnershipBootstrapPrepared = null;
       if (productBootstrapWasPending) {
         arc2LootProtection = null;
         inventoryPanelController.setState(arc2LootState);
@@ -487,6 +496,7 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
       arc3EngineeringBootstrapPending = false;
       arc4OwnershipBootstrapPending = false;
       arc5OwnershipBootstrapPending = false;
+      arc5OwnershipBootstrapPrepared = null;
       bootProductBootstrapCandidate = null;
       if (productBootstrapWasPending) {
         arc2LootState = null;
@@ -509,6 +519,7 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
       }
       if (ownershipV2BootstrapWasPending) {
         arc5OwnershipState = null;
+        arc5OwnershipEvidence = null;
         arc5OwnershipProtection = durable
           ? 'committed-publication-reload' : 'bootstrap-failed';
         lastArc5BootstrapOutcome = durable
@@ -5435,7 +5446,10 @@ async function commitArc4CaptureAction(
   if (arc4OwnershipState?.mode !== 'current' || arc4OwnershipProtection !== null) {
     return unavailable(arc4OwnershipProtection ?? 'ownership-unavailable', verb);
   }
-  if (arc5OwnershipState?.mode !== 'current' || arc5OwnershipProtection !== null) {
+  const ownershipV2Parent = arc5OwnershipState;
+  if (ownershipV2Parent?.mode !== 'current'
+    || arc5OwnershipEvidence?.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION
+    || arc5OwnershipProtection !== null) {
     return unavailable(`arc5:${arc5OwnershipProtection ?? 'ownership-v2-unavailable'}`, verb);
   }
   if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
@@ -5518,6 +5532,7 @@ async function commitArc4CaptureAction(
     try {
       attempt = await commitArc4CaptureAttemptV1({
         runtime,
+        ownershipV2: ownershipV2Parent,
         state: save,
         nav,
         address: address.address,
@@ -5548,6 +5563,7 @@ async function commitArc4CaptureAction(
       lastArc4CaptureResult = null;
       if (attempt.detail.startsWith('capacity:arc5-migration:')) {
         arc5OwnershipState = null;
+        arc5OwnershipEvidence = null;
         arc5OwnershipProtection = attempt.detail;
         lastArc5BootstrapOutcome = 'capture-protected';
       }
@@ -5574,6 +5590,7 @@ async function commitArc4CaptureAction(
       arc4OwnershipState = null;
       arc4OwnershipProtection = 'committed-publication-reload';
       arc5OwnershipState = null;
+      arc5OwnershipEvidence = null;
       arc5OwnershipProtection = 'committed-publication-reload';
       lastArc5BootstrapOutcome = 'committed-publication-reload';
       lastArc4CaptureOutcome = `${verb}-committed-publication-reload`;
@@ -5610,6 +5627,7 @@ async function commitArc4CaptureAction(
       arc4OwnershipState = verified.ownership;
       arc4OwnershipProtection = null;
       arc5OwnershipState = verified.ownershipV2;
+      arc5OwnershipEvidence = verified.ownershipV2Evidence;
       arc5OwnershipProtection = null;
       lastArc5BootstrapOutcome = 'capture-committed-published';
       syncCustomNameIndex();
@@ -5645,6 +5663,7 @@ async function commitArc4CaptureAction(
       arc4OwnershipState = null;
       arc4OwnershipProtection = 'committed-publication-reload';
       arc5OwnershipState = null;
+      arc5OwnershipEvidence = null;
       arc5OwnershipProtection = 'committed-publication-reload';
       lastArc5BootstrapOutcome = 'committed-publication-reload';
       lastArc4CaptureOutcome = `${verb}-committed-publication-reload`;
@@ -5664,6 +5683,7 @@ async function commitArc4CaptureAction(
       arc4OwnershipState = null;
       arc4OwnershipProtection = 'committed-publication-reload';
       arc5OwnershipState = null;
+      arc5OwnershipEvidence = null;
       arc5OwnershipProtection = 'committed-publication-reload';
       lastArc5BootstrapOutcome = 'committed-publication-reload';
       scheduleF4AuthorityConvergenceReload(
@@ -5888,6 +5908,7 @@ function refreshCaptureCardState(): void {
   const unavailableDetail = arc4OwnershipState?.mode !== 'current'
     || arc4OwnershipProtection !== null
     || arc5OwnershipState?.mode !== 'current'
+    || arc5OwnershipEvidence?.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION
     || arc5OwnershipProtection !== null
     ? 'Capture is unavailable while this expedition save is protected. Nothing was spent.'
     : !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
@@ -6005,6 +6026,7 @@ async function runCaptureCardAction(
       arc4OwnershipState = null;
       arc4OwnershipProtection = 'committed-publication-reload';
       arc5OwnershipState = null;
+      arc5OwnershipEvidence = null;
       arc5OwnershipProtection = 'committed-publication-reload';
       lastArc5BootstrapOutcome = 'committed-publication-reload';
       lastArc4CaptureOutcome = `${request.verb}-committed-publication-reload`;
@@ -6500,9 +6522,10 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     });
     if (arc5Preparation.kind === 'protected') {
       arc5OwnershipState = null;
+      arc5OwnershipEvidence = null;
       arc5OwnershipProtection = `training:${arc5Preparation.reason}`;
       lastArc5BootstrapOutcome = 'training-protected';
-      throw new Error(`Training Arc 5 certificate refused: ${arc5Preparation.reason}`);
+      throw new Error(`Training Arc 5 authority refused: ${arc5Preparation.reason}`);
     }
     phase('primary-write-started');
     writeStarted = true;
@@ -6576,30 +6599,36 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
       publishArc4LegacyCompatibilityFields(prepared.state, trainingCommittedState);
     }
     let restoredOwnershipV2: OwnershipStateV2 | null = null;
+    let restoredOwnershipV2Evidence: Arc5OwnershipMigrationEvidence | null = null;
     if (arc5Preparation.kind === 'prepared') {
-      restoredOwnershipV2 = committedTrainingArc5State(
+      const committedOwnershipV2 = committedTrainingArc5State(
         arc5Preparation,
         f4Runtime!.extensions,
       );
-      if (restoredOwnershipV2 === null) {
-        throw new Error('Training Arc 5 certificate did not converge with restored ownership');
+      if (committedOwnershipV2 === null) {
+        throw new Error('Training Arc 5 compact carrier did not converge with restored ownership');
       }
+      restoredOwnershipV2 = committedOwnershipV2.state;
+      restoredOwnershipV2Evidence = committedOwnershipV2.evidence;
     } else {
       const loadedOwnershipV2 = readArc5OwnershipMigration(
         f4Runtime!.extensions,
         SCENE_OWNERSHIP_ADDRESS_RESOLVER,
       );
       if (arc5Preparation.state === null) {
-        if (loadedOwnershipV2.kind !== 'absent') {
+        if (arc5Preparation.evidence !== null || loadedOwnershipV2.kind !== 'absent') {
           throw new Error('Training deferred Arc 5 authority did not remain absent');
         }
       } else {
         if (loadedOwnershipV2.kind !== 'loaded'
           || ownershipStateDigestV2(loadedOwnershipV2.state)
-            !== ownershipStateDigestV2(arc5Preparation.state)) {
+            !== ownershipStateDigestV2(arc5Preparation.state)
+          || JSON.stringify(loadedOwnershipV2.evidence)
+            !== JSON.stringify(arc5Preparation.evidence)) {
           throw new Error('Training preserved Arc 5 authority did not converge');
         }
         restoredOwnershipV2 = loadedOwnershipV2.state;
+        restoredOwnershipV2Evidence = loadedOwnershipV2.evidence;
       }
     }
     save = prepared.state;
@@ -6617,6 +6646,8 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
       lastArc4BootstrapOutcome = 'training-committed-published';
     }
     arc5OwnershipState = restoredOwnershipV2;
+    arc5OwnershipEvidence = restoredOwnershipV2Evidence;
+    arc5OwnershipBootstrapPrepared = null;
     arc5OwnershipBootstrapPending = false;
     if (restoredOwnershipV2 === null) {
       arc5OwnershipProtection = 'training-deferred:source-deferred';
@@ -6664,6 +6695,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
       arc4OwnershipProtection = 'committed-publication-reload';
       lastArc4BootstrapOutcome = 'committed-publication-reload';
       arc5OwnershipState = null;
+      arc5OwnershipEvidence = null;
       arc5OwnershipProtection = 'committed-publication-reload';
       lastArc5BootstrapOutcome = 'committed-publication-reload';
       phase('reload-scheduled', message);
@@ -6740,6 +6772,8 @@ async function loadSave(): Promise<void> {
   lastArc4BootstrapOutcome = null;
   lastArc4CaptureOutcome = null;
   arc5OwnershipState = null;
+  arc5OwnershipEvidence = null;
+  arc5OwnershipBootstrapPrepared = null;
   arc5OwnershipBootstrapPending = false;
   arc5OwnershipProtection = null;
   lastArc5BootstrapOutcome = null;
@@ -7165,18 +7199,19 @@ async function loadSave(): Promise<void> {
       }
     }
   }
-  /* Arc 5's digest-only certificate is derived from the final Arc 4 carrier,
-     never directly from the legacy mirror. It therefore stages after Arc 4
-     and joins the same receipt-free F4/product CAS. Legacy Training owns the
+  /* Arc 5's compact source-bound manifest and four fixed delta shards derive
+     from the final Arc 4 carrier, never directly from the legacy mirror. They
+     therefore stage after Arc 4 and join the same receipt-free F4/product CAS.
+     Legacy Training owns the
      source fields and defers both authorities until its replacement write;
      any pre-existing Arc 5 carrier at that boundary is conflicting evidence,
-     not a certificate that boot may silently preserve or replace. */
+     not an authority carrier set that boot may silently preserve or replace. */
   if (!persistHold) {
     const holdProtectedArc5Boot = (
       kind: 'future-protected' | 'corrupt-protected',
       detail: string,
     ): void => {
-      /* Arc 4 and its migration certificate are one authority boundary.
+      /* Arc 4 and its compact Arc 5 carriers are one authority boundary.
          Never let an Arc 2/3/4 candidate hitchhike through the shared CAS
          while Arc 5's current/future bytes cannot be fixed-pointed. Drop
          every staged intent before runtime creation and retain the stored
@@ -7201,6 +7236,7 @@ async function loadSave(): Promise<void> {
       arc3EngineeringBootstrapPending = false;
       arc4OwnershipBootstrapPending = false;
       arc5OwnershipBootstrapPending = false;
+      arc5OwnershipBootstrapPrepared = null;
       bootProductBootstrapCandidate = null;
       persistHold = 'protected-payload';
       persistenceBootKind = kind;
@@ -7235,6 +7271,8 @@ async function loadSave(): Promise<void> {
       if (prepared.kind === 'prepared') {
         initialExtensions = prepared.extensions;
         arc5OwnershipState = prepared.state;
+        arc5OwnershipEvidence = prepared.evidence;
+        arc5OwnershipBootstrapPrepared = prepared;
         arc5OwnershipBootstrapPending = true;
         arc5OwnershipProtection = prepared.state.mode === 'current'
           ? null : 'legacy-protected';
@@ -7242,6 +7280,8 @@ async function loadSave(): Promise<void> {
           ? 'prepared' : 'legacy-protected-prepared';
       } else if (prepared.kind === 'already-loaded') {
         arc5OwnershipState = prepared.state;
+        arc5OwnershipEvidence = prepared.evidence;
+        arc5OwnershipBootstrapPrepared = null;
         arc5OwnershipProtection = prepared.state.mode === 'current'
           ? null : 'legacy-protected';
         lastArc5BootstrapOutcome = prepared.state.mode === 'current'
@@ -7327,8 +7367,12 @@ async function loadSave(): Promise<void> {
       arc3EngineeringBootstrapPending = false;
       if (arc4OwnershipBootstrapPending) arc4OwnershipState = null;
       arc4OwnershipBootstrapPending = false;
-      if (arc5OwnershipBootstrapPending) arc5OwnershipState = null;
+      if (arc5OwnershipBootstrapPending) {
+        arc5OwnershipState = null;
+        arc5OwnershipEvidence = null;
+      }
       arc5OwnershipBootstrapPending = false;
+      arc5OwnershipBootstrapPrepared = null;
       bootProductBootstrapCandidate = null;
       arc3EngineeringProtection ||= 'bootstrap-failed';
       arc4OwnershipProtection ||= 'bootstrap-failed';
@@ -7710,19 +7754,30 @@ async function loadSave(): Promise<void> {
           },
         },
         ownershipV2: {
-          schema: 'cf-v2-arc5-app-state/v1',
+          schema: 'cf-v2-arc5-app-state/v2',
           stateKind: arc5OwnershipState === null ? 'unavailable' : 'loaded',
           mode: arc5OwnershipState?.mode ?? null,
+          representationVersion: arc5OwnershipEvidence?.representationVersion ?? null,
           protection: arc5OwnershipProtection,
           bootstrapPending: arc5OwnershipBootstrapPending,
           bootstrapOutcome: lastArc5BootstrapOutcome,
           revision: arc5OwnershipState?.revision ?? null,
           sourceRevision: arc5OwnershipState === null
             ? null : ownershipSourceStateV1(arc5OwnershipState).revision,
-          sourceDigest: arc5OwnershipState === null
-            ? null : ownershipStateDigestV1(ownershipSourceStateV1(arc5OwnershipState)),
-          targetDigest: arc5OwnershipState === null
-            ? null : ownershipStateDigestV2(arc5OwnershipState),
+          sourceDigest: arc5OwnershipEvidence?.sourceDigest ?? null,
+          targetDigest: arc5OwnershipEvidence?.targetDigest ?? null,
+          deltaDigest: arc5OwnershipEvidence?.representationVersion
+            === ARC5_OWNERSHIP_MIGRATION_VERSION
+            ? arc5OwnershipEvidence.deltaDigest : null,
+          deltaRows: arc5OwnershipEvidence?.representationVersion
+            === ARC5_OWNERSHIP_MIGRATION_VERSION
+            ? arc5OwnershipEvidence.deltaRowCount : null,
+          deltaShardCount: arc5OwnershipEvidence?.representationVersion
+            === ARC5_OWNERSHIP_MIGRATION_VERSION
+            ? arc5OwnershipEvidence.shardCount : null,
+          deltaShardDigests: arc5OwnershipEvidence?.representationVersion
+            === ARC5_OWNERSHIP_MIGRATION_VERSION
+            ? arc5OwnershipEvidence.shardDigests : [],
           acquisitions: arc5OwnershipState?.acquisitions.length ?? 0,
           bredAcquisitions: arc5OwnershipState?.bredAcquisitions.length ?? 0,
           creatures: arc5OwnershipState?.creatures.length ?? 0,

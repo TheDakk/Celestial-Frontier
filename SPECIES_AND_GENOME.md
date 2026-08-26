@@ -14,31 +14,34 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > nonliving specimen lots. Ownership-v1 binds canonical genome identity, exact CF1 provenance,
 > biosphere progress and bounded legacy evidence. Ownership-v2 adds receipt-bound acquisitions,
 > deterministic fauna-only bred-child successors, ordered parent/lineage evidence and tombstones;
-> its active migration certificate records only exact source/target modes, revisions and digests,
-> never duplicate ownership bytes. The app reconstructs V2 from the exact current Arc 4 source.
+> its active compact representation is one source-bound version-2 manifest plus exactly four fixed
+> generic delta shards. The app reconstructs V2 from exact Arc 4 source + canonical changed/V2-only
+> rows and verifies source/delta/target/shard fixed points without duplicating unchanged ownership.
 > Arc 4's native Survey Tame/Scavenge/Sample controls now consume the canonical full roster through
 > the durable writer. A first successful verb creates the one catalogue/discovery fact; Tame may
 > add a stable-ID living fauna instance, while Scavenge/Sample add nonliving specimen lots. Eligible
 > repeats can add another individual/lot without duplicating the first-only page or Stardust grant.
 > Hit/miss, reload, storage refusal, stale convergence, publication convergence and 12-viewport
-> presentation/geometry are locally browser-proven. Arc 5A boot now creates or loads that projection
-> certificate in the shared receipt-free CAS; genuine legacy Training couples one Arc 2, 18 Arc 4
-> and one Arc 5 write; and every capture hit or miss advances and postcommit-publishes Arc 4/V2
+> presentation/geometry are locally browser-proven. Arc 5A boot now creates or loads those five
+> carriers in the shared receipt-free CAS; an aligned legacy-v1 certificate upgrades once and an
+> aligned current-v2 fixed point writes nothing. Genuine legacy Training couples one Arc 2, 18 Arc 4
+> and five Arc 5 writes; every capture hit or miss advances 18+5 replacements and postcommit-publishes Arc 4/V2
 > together. No public or Arc 5-only breed/care/companion writer, Recovery, assignment, Chronicle or
-> mission UI exists. A fixed-four-shard, O(1)-namespace compact V2-only delta carrier remains
-> design-only in `SAVE_SYSTEM.md`. The real
+> mission UI exists. The internal V2-only successor produces the same exact five-carrier tuple but is
+> not exported publicly. Source-only growth preserves all four canonical empty-shard bytes, keeping
+> unchanged-state growth O(1). The real
 > 20-minute Arc 4 recovery edge and HUMAN ownership/first-journey review remain open.
-> Retained Arc 4 browser evidence predates Arc 5A. Final current-input evidence is Slice run
-> `20260825171148040-77701-fb5c63191544` on Edge `151.0.4129.101` (336,570 ms, zero
+> Retained Arc 4 browser evidence predates compact Arc 5 V2. Final current-input evidence is Slice run
+> `20260825213041239-98104-c96d3b2d0652` on Edge `151.0.4129.101` (363,053 ms, zero
 > findings/retries/source change; report/log SHA-256
-> `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
-> `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`) and Glass on the same Edge
-> (70,432 ms, 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes, zero
+> `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+> `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`) and Glass on the same Edge
+> (71,449 ms, 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes, zero
 > blocked/omitted/findings/instrument failures/retries; report SHA-256
-> `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`). Both bind base
-> `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
-> `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
-> `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; audits are CLEAR.
+> `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). Both bind source commit
+> `48ce0b1662a59b21070667be339a1e59503e1f19`, status
+> `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits are CLEAR.
 
 > **2026-08-11 v2 executable-contract correction:** No genome, descriptor or
 > portrait output changed. The SpeciesTraits declaration now matches its tables:

@@ -10,10 +10,11 @@
 > only connected-effect outputs with exact costs/preconditions and capacity/revision headroom are
 > actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
 > Arc 4 bootstraps/reconciles its strict 18-namespace ownership carrier in the shared receipt-free
-> boot CAS. Arc 5A then creates or loads its digest-only exact-source V2 projection certificate in
+> boot CAS. Arc 5A then creates or loads its exact-source V2 manifest plus exactly four fixed generic
+> delta shards in
 > that same commit; protected evidence rolls the staged saved view, Atlas routes and Arc 2
 > `items` / `equip` / `equipAff` mirror back to durable input before runtime creation. A genuine
-> legacy Training restore couples one Arc 2 write, all 18 Arc 4 writes and one Arc 5 certificate and
+> legacy Training restore couples one Arc 2 write, all 18 Arc 4 writes and all five Arc 5 carriers and
 > verifies both authorities from durable evidence.
 > Its native Survey-card Tame/Scavenge/Sample path consumes
 > the production full roster and current epoch, certifies miss plus every eligible hit against the
@@ -24,11 +25,14 @@
 > prepared fingerprint. The committed path alone mints the evidence token and performs the sole
 > WeakMap registration, binding that payload to the exact transaction/kind/revision. The verifier
 > then requires the full prepared save before targeted publication. Every capture scenario now also
-> prepares and commits the one Arc 5 certificate replacement; postcommit publication exposes V1/V2
-> together or reload-converges once. Arc 5A remains infrastructure-only: the public package root has
-> no V2 writer and no breed/care/Recovery/assignment/mission/companion capability exists. The compact
-> fixed-four-shard V2-only delta carrier specified in `../../SAVE_SYSTEM.md` keeps namespace count
-> O(1) and is design-only. Arc 7 has package-only identity/runtime/lab/
+> prepares and commits all five Arc 5 carrier replacements; postcommit publication exposes V1/V2
+> together or reload-converges once. An aligned legacy-v1 certificate upgrades in that one
+> receipt-free CAS; aligned current-v2 is a strict zero-write fixed point. The manifest/four-shard
+> reader verifies source/delta/target and every shard, while source-only Arc 4 growth preserves all
+> four canonical empty-shard bytes and keeps unchanged-state growth O(1). Arc 5A remains
+> infrastructure-only: the internal V2-only successor emits exactly five carriers, but the public
+> package root has no V2 writer and no breed/care/Recovery/assignment/mission/companion capability
+> exists. Arc 7 has package-only identity/runtime/lab/
 > rights foundations plus committed absolute eight-emitter/120-node configuration caps. Arc 3
 > Guide/release/Training guidance, read-only aligned boot behavior, explicit coalesced route-repair
 > persistence and post-durable convergence are committed at `c4a02be`. Current-source local Slice
@@ -65,10 +69,10 @@
 > candidate-versus-equipped deltas with conditional wording, salvage confirmation, and durable
 > Equip/Unequip/Salvage/pending-claim. The UI publishes only after its F3/F4 receipt transaction
 > commits. Training's genuine legacy checkpoint now replaces the Arc 2 carrier with the gear mirror
-> it owns and, when the Arc 4/5 targets are absent, derives all 18 Arc 4 ownership writes and one
-> Arc 5 certificate from the same final candidate. Their 20 product writes share the one replacement
+> it owns and, when the Arc 4/5 targets are absent, derives all 18 Arc 4 ownership writes and all five
+> Arc 5 carriers from the same final candidate. Their 24 product writes share the one replacement
 > transaction; postcommit verification remigrates the committed canonical state and binds the exact
-> Arc 4 source plus reconstructed V2 target. Current-view preserves aligned carriers;
+> Arc 4 source, five Arc 5 bytes and reconstructed source/delta/target/shard fixed points. Current-view preserves aligned carriers;
 > source-deferred restore can keep Arc 5 absent and write-free, while existing/future/corrupt
 > authority protects against rewind.
 >
@@ -120,33 +124,38 @@
 > local evidence, not an exact-head, hosted, HUMAN, preview/publication, release or deployment
 > certificate.
 
-> **Arc 5A final current-input boundary (2026-08-25; terminal green locally):** non-Compendium
-> Vitest passed `101 files / 1,187 passed / 1 skipped`. Full Vitest recorded
-> `102 files / 1,205 passed / 1 failed / 1 skipped`; its sole failure is the known deferred
-> `tests/compendium-budget.test.ts` measurement-authority seal (`6a961df8…` expected,
-> `2ab18865…` live), scheduled only after the final multi-Arc dependency graph freezes. Root, app,
-> worker and noUnused TypeScript passed; the Vite production build passed with 875 modules;
-> `artunused` passed; and node syntax, contract/Glass/reporter selftests, imports and diff checks were
-> clean.
+> **Arc 5A compact-v2 final current-input boundary (2026-08-25; terminal green locally):** the
+> focused compact-v2 gate passed 109/109. Root, app, worker and noUnused TypeScript, `artunused` and
+> the 876-module Vite production build passed; node syntax, contract/Glass/reporter selftests,
+> imports and scoped diff checks were clean. The final full run recorded 102 passing files and one
+> failing file, with 1,218 tests passed, one failed and one skipped (1,220 total). Focused Compendium
+> was 18 passed/one failed; its selftest passed 222 controls. The sole known red is the deferred
+> Compendium measurement-authority seal (`6a961df8…` stored versus `2ab18865…` live), whose exact
+> drift is `packageLock+appPackage`; the dependency graph is not frozen, so no rebaseline is valid.
 >
-> No-retry Slice run `20260825171148040-77701-fb5c63191544` passed on Edge `151.0.4129.101` in
-> 336,570 ms with zero findings/retries/source change, exactly one nine-stage/14-burn/
+> No-retry Slice run `20260825213041239-98104-c96d3b2d0652` passed on Edge `151.0.4129.101` in
+> 363,053 ms with zero findings/failure scopes/retries/source change, exactly one nine-stage/14-burn/
 > `recoveryClaimed:false`/`ok` ledger plus PASS, 10 hashed PNGs and executable Arc 5 fixed-point,
 > successor, fault and reload controls. Report/log SHA-256 are
-> `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
-> `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`. Glass passed on the same
-> Edge in 70,432 ms with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and
+> `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+> `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`. Glass passed on the same
+> Edge in 71,449 ms with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and
 > zero blocked/omitted/findings/instrument failures/retries; its Arc 5 `targetDigest`-corruption and
-> durable-projection controls were non-vacuous. Glass report SHA-256 is
-> `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`.
+> coherent five-carrier corruption plus O(1) source-growth/empty-shard controls were non-vacuous.
+> Glass report SHA-256 is
+> `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`.
 >
-> Both reports bind base `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
-> `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
-> `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`. Current tool SHA-256
-> prefixes are contract `b1328688…`, Slice `b30a93d1…`, Glass `692e90a2…` and reporter
-> `1a94925f…`; independent runtime/browser-contract/docs audits are CLEAR. Arc 4 remains `[PARTIAL]`
+> Both reports bind source commit `48ce0b1662a59b21070667be339a1e59503e1f19` on `openai/mac`,
+> status `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`. Frozen tool SHA-256 are
+> contract `149e3499e549642dca895d80431807d95477662ced09d26a4efb1ffdb2ce22e1`, Slice
+> `add907d1e2b548ae0c1d1333517da11e960c8d03659935ba2aa38c5bfd865468`, Glass
+> `b77a4dde5884ef43b6a06c2f2e1797a5476b2ac7e976f9744de4e6b88a9637f5` and reporter
+> `aeb96bf9f51fcf7c5be3fa4298ae5548c3239e5b1c4852f2af12dc6adbce7ba4`; independent runtime/
+> browser-contract/docs audits are CLEAR. Arc 4 remains `[PARTIAL]`
 > for the real 20-minute recovery and HUMAN review; Arc 5 remains `[PARTIAL]`/infrastructure-only.
-> The exact local Arc 5A commit is pending only until the parent commits this reviewed batch.
+> This dirty-diagnostic package is local exact-input evidence, not an exact-head commit, hosted,
+> integration, HUMAN, preview/publication, release or deployment certificate.
 
 > **Arc 1 automated implementation and hosted integration are complete; HUMAN judgment remains
 > open.** PR #33 merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`
@@ -1669,7 +1678,7 @@ retry, fallback, product, launch-argument, or producer drift occurred in that hi
 | **Arc 2 extensions to Smoke + Glass (2026-08-24)** | Smoke drives the real Inventory opener, exact carrier↔legacy↔raw↔runtime↔DOM parity, conditional comparison, one durable action/receipt, reload + Atlas continuity, rejected-bootstrap rollback, and genuine legacy-Training carrier replacement; source-deferred/current-view and corrupt/future controls prevent false repair. Glass adds the exact ten-button/5×2 phone dock; real action receipts; bidirectional modal focus; complete pending-action runtime and raw-DOM equipped snapshots; and independent carrier, legacy mirror, raw authority, runtime and DOM mutations. Duplicate/missing rows, hidden pending items, conditional-copy loss, protection bypass, stale publication and convergence retry remain red even when sibling representations agree. The retained local outcomes are Slice PASS (239,546 ms) and Glass PASS (61,039 ms, 12/12, 78/78) on Edge `.101`, both dirty-input diagnostic evidence with no retries. |
 | **Arc 3 extensions to Smoke + Glass (2026-08-25)** | Smoke uses native input for Mine, Skim, Deep Scanners and fixed Plate Fabrication, and proves no optimism, shared single-flight ownership, pending Close/reopen, exact focus restoration, Charter banking, complete v5/Arc2/Arc3/F4/mirror/receipt parity, storage refusal, stale reload and post-durable publication convergence. Glass opens the real Engineering & Shipyard surface at all 12 viewports, drives keyboard disclosures, and checks six research rows, five ordered recipe groups, 62 recipes, 70 honest action controls, an independent status/effect/enabled oracle, 44px geometry, focus/ARIA, exactly one preview while open and zero retained work after Close. The final report ledger remains 78/78; fixture and hostile controls do not invent a 79th named report outcome. |
 | **Arc 4 focused + browser evidence (2026-08-25)** | Persistence, Training restore, acquisition planner/capacity/action, app bootstrap/wiring and coordinator tests cover strict 18-namespace bootstrap, exact legacy source evidence, full-roster/current-epoch two-draw settlement, every pre-draw miss/hit capacity scenario, one receipt/CAS, hit/miss spend, first-only/repeat ownership, full committed verification, targeted publication and synchronous overlap barriers. Current-source Slice then passes the exact nine-stage native-control ledger, including pending non-optimism, storage refusal, stale/publication convergence, hit, miss, disabled suppression and 14-step burn-down; Glass passes 12 viewports/36 Arc 4 outcomes with every planned control executed. The shared exact-input tree is `b83ccef5…`; `recoveryClaimed:false`. The separate uninterrupted 20-minute recovery observation and HUMAN review remain open, and no hosted, preview/publication, release or whole-Gate authority is claimed. |
-| **Arc 5A authority activation (2026-08-25; terminal-green local evidence)** | Focused domain/persistence/Training/capture/Main controls cover internal-only exact-parent successor authority, one digest certificate, boot zero-write fixed point and protection rollback, genuine legacy 20-write replacement, source-deferred absence, every hit/miss 18+1 successor, pre-draw refusal and paired postcommit V1/V2 publication/convergence. Non-Compendium Vitest is `101 files / 1,187 passed / 1 skipped`; the full run is `102 files / 1,205 passed / 1 failed / 1 skipped`, solely the deferred Compendium seal. Slice `20260825171148040-77701-fb5c63191544` and Glass report `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d` are terminal PASS on Edge `.101`; the detailed hashes/provenance are in the Arc 5A boundary above. Audits are CLEAR. This row grants no player capability, Guide/release/Training lesson, hosted, HUMAN, preview, version or release authority. |
+| **Arc 5A compact-v2 authority (2026-08-25; terminal-green local evidence)** | Focused domain/persistence/Training/capture/Main controls cover the exact manifest + four fixed generic shards, aligned legacy-v1 one-CAS upgrade, current-v2 zero-write fixed point, full protection rollback, genuine legacy 24-write replacement, source-deferred absence, every hit/miss 18+5 pre-draw successor, exact-five internal V2-only successor, source/delta/target/shard fixed points and paired postcommit V1/V2 publication/convergence. The compact-v2 gate is 109/109. Slice `20260825213041239-98104-c96d3b2d0652` and Glass report `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e` are terminal PASS on Edge `.101`; detailed hashes/provenance and the known deferred Compendium seal are in the Arc 5A boundary above. Audits are CLEAR. This row grants no player capability, Guide/release/Training lesson, hosted, HUMAN, preview, version or release authority. |
 | `npm run compendiummem:selftest` / `npm run compendiummem` / `node tools/compendiummem.mjs --verify-run=<run-id>` | Negative-controls the browser-free Compendium instrument, performs one standalone browser run without automatic retry, and independently verifies the named report. Exact `aecf386…` adds an immutable monotonic 2,000 ms static-server close boundary: just-before succeeds; exact/late/missing/error force one connection cleanup and reject; cleanup red suppresses PASS/sample. Clean `6736ef4…` c27/baseline11/c28/c29 evidence owns three candidates plus paired baseline under measurement `23aacc2c…`. Cross-host budget/test `e3a71c8a…` / `0793772d…` retain their 78/78 lifecycle evidence and 14/13 baseline breach inventory while admitting committed exact Linux report `a486fe8e…`; three just-below controls recover its original failures. Exact run `32462323775` passed this gate and the complete PR battery once on `c68aee2…`; PR #32 merged at `d4ab7e6…`. The gate still owns the 1,500-row fixture, authority graph, six review PNGs, and instrument/product distinction; automation never supplies HUMAN judgment. |
 | `npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts tests/scenemem-workflow.test.ts` / `node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json` / `node tools/scenemem.mjs --verify-run=<run-id> --budget=budgets/scene-memory-v2.json` | Negative-controls the Arc 1 scene-memory contract, tracked v2 budget, workflow binding and terminal verifier; then performs one no-retry raw-CDP certification and independently verifies the exact named report. One Edge `.101` process owns four unmeasured warmups plus exactly four measured phone/desktop cycles through Universe, Galaxy, Galaxy fine, Sol/System, Earth/Surface, the 1,500-row Compendium and real Shipyard before settled Universe. Forty-two outcomes bind exact scene ownership/work, transient peaks, canonical per-hash Pixi inventory, heap/DOM/resource bounds, target answerability, an independent browser heartbeat, zero pending work, same-document bfcache survival, and per-profile Shipyard lifecycle through its visible opener and owned Close. `59530da…` / budget `3b71d14c…` / run `20260822-arc1-local-certification` remain historical authority for the former 250 ms local ruler. Active repair `7d8dc380…` changes no product, collector, or contract bytes; budget `5c8a6e75…` selects the fixed strict `<1000 ms` SLA. Run `20260823-pr33-cross-host-sla-certification` passed 42/42 locally with named verification; raw/gzip SHA-256 are `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` / `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run `32618995487` remains exact terminal-red 40/42: only the old 250 ms phone/desktop ruler failed against Linux 493–647 ms while every liveness and memory outcome passed. It was not retried and is not hosted-green. Automation supplies neither HUMAN nor merge authority. |
 | `node tools/compendiummem-browser-preflight.mjs --selftest` / `node tools/compendiummem-browser-preflight.mjs` | Owns the exact-Edge workflow's one cold authority proof without changing any hashed Compendium measurement input. One 45-second startup / 15-second socket / sealed 5-second candidate-command / 2-second shutdown launch must match the budget's product, revision, JS, protocol and selected executable, then create and attach a fresh target and enable Runtime/Page/HeapProfiler. Its evaluate return and exact-marker, same-session console event share one immutable 5-second monotonic phase; both must arrive strictly before the deadline. Portable controls accept just-before evaluate/event receipts, reject exact and just-late receipts, reject missing/wrong-marker/wrong-session events and a backward clock, and prove one open/close with cleanup and no retry. Browser/executable mismatch, command/sentinel failure, and deliberate cleanup leak are also terminal. There is no warmup, retry, fallback, alternate browser, or authority rebaseline. Both PR certification and development-preview packaging workflows run this same preflight before the Compendium selftest/candidate. The selftest also parses each workflow fail-closed: it requires one unique owned Edge-install step with the exact ordered URL, SHA, download, hash check, `apt-get install --reinstall --yes "$edge_package"`, installed-version check, executable check, and following preflight; it rejects either workflow's removal plus outside-step decoys. That browser-free control proves workflow structure, not live hosted-runner launch. Run `32394244417` stopped before product when image `ubuntu24/20260816.277`'s already-resident .86 made the prior plain install a no-op and the unchanged live launch found no endpoint; exact changed-head run `32462323775` later confirmed the same-package reinstall and live preflight path. |

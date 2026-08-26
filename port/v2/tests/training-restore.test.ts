@@ -5,7 +5,9 @@ import {
   ARC2_LOOT_NAMESPACE,
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
   ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
+  ARC5_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
+  ARC5_OWNERSHIP_MIGRATION_VERSION,
   arc4OwnershipLegacyMirrorMatches,
   arc2LootLegacyMirrorMatches,
   canonicalizeV5Extensions,
@@ -765,7 +767,7 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     });
   });
 
-  it('couples one fresh Arc 5 certificate to Training legacy replacement and verifies durable Arc 4 + Arc 5', () => {
+  it('couples the five fresh Arc 5 carriers to Training legacy replacement and verifies durable Arc 4 + Arc 5', () => {
     const checkpoint = checkpointFrom();
     const restoredState = restore(trainingCurrent(checkpoint).current, checkpoint).state;
     const baseExtensions = canonicalizeV5Extensions({
@@ -791,12 +793,19 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     });
     expect(arc5.kind).toBe('prepared');
     if (arc5.kind !== 'prepared') return;
-    expect(arc5.writes).toHaveLength(1);
-    expect(arc5.writes[0]).toMatchObject({
-      segment: 'player', namespace: ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
-    });
-    expect(arc5.extensions.player?.[ARC5_OWNERSHIP_MIGRATION_NAMESPACE])
-      .toEqual(arc5.writes[0]!.carrier);
+    expect(arc4.writes).toHaveLength(ARC4_OWNERSHIP_EXTENSION_TARGETS.length);
+    expect(arc5.writes).toHaveLength(ARC5_OWNERSHIP_EXTENSION_TARGETS.length);
+    expect(arc5.writes.map(({ segment, namespace }) => ({ segment, namespace })))
+      .toEqual(ARC5_OWNERSHIP_EXTENSION_TARGETS);
+    expect([...arc4.writes, ...arc5.writes].map(({ segment, namespace }) => ({
+      segment, namespace,
+    }))).toEqual([
+      ...ARC4_OWNERSHIP_EXTENSION_TARGETS,
+      ...ARC5_OWNERSHIP_EXTENSION_TARGETS,
+    ]);
+    for (const write of arc5.writes) {
+      expect(arc5.extensions[write.segment]?.[write.namespace]).toEqual(write.carrier);
+    }
     expect(arc5.extensions.settings).toEqual(baseExtensions.settings);
     expect(arc5.extensions.inventory?.['arc2.keep'])
       .toEqual(baseExtensions.inventory?.['arc2.keep']);
@@ -805,23 +814,56 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     expect(committedArc4).toEqual(arc4.state);
     expect(committedArc5).not.toBeNull();
     if (committedArc4 && committedArc5) {
-      expect(ownershipStateDigestV1(ownershipSourceStateV1(committedArc5)))
+      expect(committedArc5.evidence.representationVersion)
+        .toBe(ARC5_OWNERSHIP_MIGRATION_VERSION);
+      expect(ownershipStateDigestV1(ownershipSourceStateV1(committedArc5.state)))
         .toBe(ownershipStateDigestV1(committedArc4));
-      expect(ownershipStateDigestV2(committedArc5)).toBe(ownershipStateDigestV2(arc5.state));
+      expect(ownershipStateDigestV2(committedArc5.state))
+        .toBe(ownershipStateDigestV2(arc5.state));
+      expect(committedArc5.evidence).toEqual(arc5.evidence);
     }
     expect(committedTrainingArc5State(arc5, arc4.extensions)).toBeNull();
     expect(committedTrainingArc5State({
       ...arc5,
       writes: [],
     } as unknown as PreparedTrainingArc5Restore, arc5.extensions)).toBeNull();
-    const corruptCommitted = canonicalizeV5Extensions({
-      ...arc5.extensions,
-      player: {
-        ...arc5.extensions.player,
-        [ARC5_OWNERSHIP_MIGRATION_NAMESPACE]: { version: 1, json: '{}' },
-      },
-    });
-    expect(committedTrainingArc5State(arc5, corruptCommitted)).toBeNull();
+    expect(committedTrainingArc5State({
+      ...arc5,
+      writes: [...arc5.writes].reverse(),
+    } as unknown as PreparedTrainingArc5Restore, arc5.extensions)).toBeNull();
+    for (const target of ARC5_OWNERSHIP_EXTENSION_TARGETS) {
+      const missing = structuredClone(arc5.extensions) as Record<
+        string, Record<string, { version: number; json: string }>
+      >;
+      delete missing[target.segment]?.[target.namespace];
+      expect(committedTrainingArc5State(
+        arc5,
+        canonicalizeV5Extensions(missing),
+      ), `missing ${target.namespace}`).toBeNull();
+
+      const corrupt = structuredClone(arc5.extensions) as Record<
+        string, Record<string, { version: number; json: string }>
+      >;
+      corrupt[target.segment]![target.namespace] = {
+        version: ARC5_OWNERSHIP_MIGRATION_VERSION,
+        json: '{}',
+      };
+      expect(committedTrainingArc5State(
+        arc5,
+        canonicalizeV5Extensions(corrupt),
+      ), `corrupt ${target.namespace}`).toBeNull();
+    }
+    const extra = structuredClone(arc5.extensions) as Record<
+      string, Record<string, { version: number; json: string }>
+    >;
+    (extra.creatures ??= {})['arc5.ownership.delta.extra'] = {
+      version: ARC5_OWNERSHIP_MIGRATION_VERSION,
+      json: '{}',
+    };
+    expect(committedTrainingArc5State(
+      arc5,
+      canonicalizeV5Extensions(extra),
+    )).toBeNull();
   });
 
   it('preserves aligned Arc 5, defers source-held absence, and refuses every ambiguous Training carrier', () => {
@@ -867,6 +909,7 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     });
     expect(deferredAbsent).toEqual({
       kind: 'deferred', reason: 'source-deferred', state: null,
+      evidence: null,
       writes: [], extensions: {},
     });
     const deferredAligned = prepareTrainingArc5Restore({
@@ -878,6 +921,7 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     expect(deferredAligned.kind).toBe('deferred');
     if (deferredAligned.kind === 'deferred') {
       expect(deferredAligned.state).not.toBeNull();
+      expect(deferredAligned.evidence).toEqual(arc5.evidence);
       expect(deferredAligned.writes).toEqual([]);
       expect(deferredAligned.extensions).toEqual(arc5.extensions);
     }
@@ -887,14 +931,20 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
       ...arc5.extensions,
       player: {
         ...arc5.extensions.player,
-        [ARC5_OWNERSHIP_MIGRATION_NAMESPACE]: { ...carrier, version: 2 },
+        [ARC5_OWNERSHIP_MIGRATION_NAMESPACE]: {
+          ...carrier,
+          version: ARC5_OWNERSHIP_MIGRATION_VERSION + 1,
+        },
       },
     });
     const corrupt = canonicalizeV5Extensions({
       ...arc5.extensions,
       player: {
         ...arc5.extensions.player,
-        [ARC5_OWNERSHIP_MIGRATION_NAMESPACE]: { version: 1, json: '{}' },
+        [ARC5_OWNERSHIP_MIGRATION_NAMESPACE]: {
+          version: ARC5_OWNERSHIP_MIGRATION_VERSION,
+          json: '{}',
+        },
       },
     });
     const misplaced = canonicalizeV5Extensions({
@@ -905,7 +955,10 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
       },
     });
     for (const [label, extensions, expected] of [
-      ['future', future, { kind: 'protected', reason: 'target-future', version: 2 }],
+      ['future', future, {
+        kind: 'protected', reason: 'target-future',
+        version: ARC5_OWNERSHIP_MIGRATION_VERSION + 1,
+      }],
       ['corrupt', corrupt, { kind: 'protected', reason: 'target-corrupt' }],
       ['misplaced', misplaced, { kind: 'protected', reason: 'target-corrupt' }],
     ] as const) {

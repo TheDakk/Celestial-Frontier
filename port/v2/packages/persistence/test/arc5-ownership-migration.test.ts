@@ -1,46 +1,127 @@
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 import * as acquisitionRoot from '@cf/domain-acquisition';
+import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  canonicalGenomeIdentityV1,
   canonicalJson,
+  createBiosphereProgressV1,
+  createCatalogSpeciesV1,
+  createCreatureInstanceV1,
   createEmptyOwnershipStateV1,
-  createLegacyProtectedOwnershipStateV1,
+  createInitialOwnershipStateV1,
+  createLegacyDiscoveryRecordV1,
   createOwnershipSuccessorV1,
-  decodeOwnershipStateV2,
-  encodeOwnershipStateV2,
-  isOwnershipStateV2,
+  createWorldDiscoveryRecordV1,
   migrateOwnershipStateV1ToV2,
+  ownershipContentId,
   ownershipSourceStateV1,
   ownershipStateDigestV1,
   ownershipStateDigestV2,
-  ownershipStateMirrorV2,
-  registerOwnershipStateMirrorV2,
+  sha256Hex,
   utf8ByteLength,
+  type CreatureInstanceId,
+  type DiscoveryRecordId,
   type OwnershipStateV1,
+  type OwnershipStateV2,
 } from '@cf/domain-acquisition';
+import { resolveCF1WorldAddress } from '@cf/scene';
 import {
-  ARC4_OWNERSHIP_EXTENSION_TARGETS,
-  ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
+  BREED_ACTION_KIND_V2,
+  createBredAcquisitionRecordV2,
+  createBredCreatureInstanceV2,
+  createCreatureInstanceV2,
+  createF4ReceiptEvidenceV2,
+  createOwnershipSuccessorV2,
+  type OwnershipStateContentsV2,
+} from '../../domain/acquisition/src/model-v2.js';
+import {
   ARC4_OWNERSHIP_PREFIX,
+  ARC5_OWNERSHIP_DELTA_PREFIX,
+  ARC5_OWNERSHIP_EXTENSION_TARGETS,
+  ARC5_OWNERSHIP_FIXED_SHARDS,
   ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
-  ARC5_OWNERSHIP_MIGRATION_PREFIX,
   ARC5_OWNERSHIP_MIGRATION_SCHEMA,
   ARC5_OWNERSHIP_MIGRATION_VERSION,
   V5_MAX_EXTENSION_JSON_BYTES,
   V5_MAX_EXTENSION_TOTAL_BYTES,
   applyV5ExtensionWrites,
   canonicalizeV5Extensions,
+  committedArc5OwnershipState,
   encodeArc4Ownership,
   prepareArc4OwnershipWrite,
   prepareArc5OwnershipMigration,
   prepareArc5OwnershipMigrationSuccessor,
+  prepareArc5OwnershipV2Successor,
   readArc4Ownership,
   readArc5OwnershipMigration,
-  type PreparedArc5OwnershipMigrationV1,
+  type PreparedArc5OwnershipMigrationV2,
   type V5ExtensionCarrier,
   type V5Extensions,
   type V5Segment,
 } from '../src/index.js';
+
+const LEGACY_SCHEMA = 'cf-v2-ownership-v1-to-v2/v1';
+
+beforeAll(() => installCaptureHooks());
+
+interface Fixture {
+  readonly source: OwnershipStateV1;
+  readonly leftId: CreatureInstanceId;
+  readonly rightId: CreatureInstanceId;
+}
+
+function fixture(): Fixture {
+  const identities = [11, 22].map((seed, index) => (
+    canonicalGenomeIdentityV1({ seed, kingdom: 'fauna', form: index + 1 })
+  ));
+  const discoveries = identities.map((identity, index) => createLegacyDiscoveryRecordV1({
+    recordId: ownershipContentId('discovery', `persistence-delta-${index}`) as DiscoveryRecordId,
+    speciesId: identity.speciesId,
+    legacyCodexId: `persistence-delta-${index}`,
+    legacySourceIndex: index,
+    from: 'Legacy',
+    legacyLocation: null,
+    firstForSpecies: true,
+  }));
+  const catalogSpecies = identities.map((identity, index) => createCatalogSpeciesV1({
+    identity,
+    alias: null,
+    firstObservationId: discoveries[index]!.recordId,
+  }));
+  const ids = ['left', 'right'].map((label) => (
+    ownershipContentId('creature', `persistence-delta-${label}`) as CreatureInstanceId
+  ));
+  const creatures = identities.map((identity, index) => createCreatureInstanceV1({
+    creatureId: ids[index]!,
+    speciesId: identity.speciesId,
+    genomeIdentity: identity.genomeIdentity,
+    genome: identity.genome,
+    nickname: null,
+    origin: 'legacy',
+    acquisitionRecordId: discoveries[index]!.recordId,
+    lineage: { kind: 'none', generation: 0 },
+    xp: null,
+    hurt: null,
+    fed: 80,
+    brood: null,
+    assignment: null,
+    bond: null,
+  }));
+  return Object.freeze({
+    source: createInitialOwnershipStateV1({
+      catalogSpecies,
+      discoveries,
+      creatures,
+      specimenLots: [],
+      biosphereProgress: [],
+      legacyBioX: [],
+      scoutCreatureId: ids[0]!,
+    }),
+    leftId: ids[0]!,
+    rightId: ids[1]!,
+  });
+}
 
 function baseExtensions(): V5Extensions {
   return canonicalizeV5Extensions({
@@ -81,17 +162,6 @@ function replace(
   return canonicalizeV5Extensions(copy);
 }
 
-function rawReplace(
-  extensions: V5Extensions,
-  segment: V5Segment,
-  namespace: string,
-  carrier: V5ExtensionCarrier,
-): unknown {
-  const copy = cloneExtensions(extensions);
-  copy[segment] = { ...(copy[segment] ?? {}), [namespace]: carrier };
-  return copy;
-}
-
 function remove(
   extensions: V5Extensions,
   segment: V5Segment,
@@ -118,43 +188,121 @@ function withoutPrefix(extensions: V5Extensions, prefix: string): V5Extensions {
   return canonicalizeV5Extensions(copy);
 }
 
-function expectCarriersPreserved(before: V5Extensions, after: V5Extensions): void {
-  for (const [segment, namespaces] of Object.entries(before) as Array<[
-    V5Segment,
-    Readonly<Record<string, V5ExtensionCarrier>>,
-  ]>) {
-    for (const [namespace, carrier] of Object.entries(namespaces)) {
-      expect(after[segment]?.[namespace], `${segment}/${namespace}`).toEqual(carrier);
-    }
-  }
-}
-
 function loadedArc4(extensions: V5Extensions): OwnershipStateV1 {
   const result = readArc4Ownership(extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
   if (result.kind !== 'loaded') throw new Error(`expected Arc 4 fixture, received ${result.kind}`);
   return result.state;
 }
 
-function certified(extensions: V5Extensions): PreparedArc5OwnershipMigrationV1 {
+function prepared(extensions: V5Extensions): PreparedArc5OwnershipMigrationV2 {
   const result = prepareArc5OwnershipMigration({
-    extensions, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    extensions,
+    resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   });
   if (result.kind !== 'prepared') throw new Error(`Arc 5 fixture failed: ${result.kind}`);
   return result;
 }
 
-function mutateCertificate(
-  extensions: V5Extensions,
-  mutate: (certificate: Record<string, unknown>) => void,
-): V5Extensions {
-  const carrier = extensions.player?.[ARC5_OWNERSHIP_MIGRATION_NAMESPACE];
-  if (carrier === undefined) throw new Error('Arc 5 fixture has no certificate');
-  const certificate = JSON.parse(carrier.json) as Record<string, unknown>;
-  mutate(certificate);
-  return replace(extensions, 'player', ARC5_OWNERSHIP_MIGRATION_NAMESPACE, {
-    version: carrier.version,
-    json: canonicalJson(certificate),
-  });
+function contents(
+  state: OwnershipStateV2,
+  overrides: Partial<OwnershipStateContentsV2> = {},
+): OwnershipStateContentsV2 {
+  return {
+    source: ownershipSourceStateV1(state),
+    bredAcquisitions: state.bredAcquisitions,
+    creatures: state.creatures,
+    creatureTombstones: state.creatureTombstones,
+    specimenLots: state.specimenLots,
+    specimenTombstones: state.specimenTombstones,
+    scoutCreatureId: state.scoutCreatureId,
+    ...overrides,
+  };
+}
+
+function mutableSuccessor(parent: OwnershipStateV2, nickname = 'Nova'): OwnershipStateV2 {
+  const left = parent.creatures[0]!;
+  const changed = createCreatureInstanceV2({ ...left, nickname, xp: (left.xp ?? 0) + 1 });
+  return createOwnershipSuccessorV2(parent, contents(parent, {
+    creatures: [changed, ...parent.creatures.slice(1)],
+  }));
+}
+
+function bulkBredSuccessor(parent: OwnershipStateV2, count: number): OwnershipStateV2 {
+  const acquisitions = [];
+  const children = [];
+  const parentIds = [parent.creatures[0]!.creatureId, parent.creatures[1]!.creatureId] as const;
+  for (let index = 0; index < count; index++) {
+    const receipt = createF4ReceiptEvidenceV2({
+      ordinal: index + 1,
+      actionKind: BREED_ACTION_KIND_V2,
+      witnessDigest: sha256Hex(`persistence-breed-${index}`),
+    });
+    const genome = {
+      seed: 10_000 + index,
+      kingdom: 'fauna',
+      form: 9,
+      gen: 1,
+      parents: [11, 22],
+    };
+    const identity = canonicalGenomeIdentityV1(genome);
+    const acquisition = createBredAcquisitionRecordV2({
+      speciesId: identity.speciesId,
+      parentCreatureIds: parentIds,
+      parentSeeds: [11, 22],
+      receipt,
+    });
+    acquisitions.push(acquisition);
+    children.push(createBredCreatureInstanceV2({
+      acquisition,
+      genome,
+      generation: 1,
+      nickname: `Child ${index}`,
+      xp: 0,
+      hurt: 0,
+      fed: 50,
+      brood: 0,
+      assignment: null,
+      bond: null,
+    }));
+  }
+  return createOwnershipSuccessorV2(parent, contents(parent, {
+    bredAcquisitions: acquisitions,
+    creatures: [...parent.creatures, ...children],
+  }));
+}
+
+function withLegacyCertificate(arc4: V5Extensions): V5Extensions {
+  const source = loadedArc4(arc4);
+  const target = migrateOwnershipStateV1ToV2(source);
+  return applyV5ExtensionWrites(arc4, [{
+    segment: 'player',
+    namespace: ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
+    carrier: {
+      version: 1,
+      json: canonicalJson({
+        schema: LEGACY_SCHEMA,
+        version: 1,
+        sourceSchema: source.schema,
+        sourceVersion: source.version,
+        sourceRevision: source.revision,
+        sourceMode: source.mode,
+        sourceDigest: ownershipStateDigestV1(source),
+        targetSchema: target.schema,
+        targetVersion: target.version,
+        targetRevision: target.revision,
+        targetMode: target.mode,
+        targetDigest: ownershipStateDigestV2(target),
+      }),
+    },
+  }]).extensions;
+}
+
+function extensionBytes(extensions: V5Extensions): number {
+  let total = 0;
+  for (const namespaces of Object.values(extensions)) {
+    for (const carrier of Object.values(namespaces)) total += utf8ByteLength(carrier.json);
+  }
+  return total;
 }
 
 function objectJsonOfLength(length: number): string {
@@ -178,471 +326,522 @@ function paddingExtensions(bytes: number): V5Extensions {
   return canonicalizeV5Extensions({ settings });
 }
 
-function extensionBytes(extensions: V5Extensions): number {
-  let total = 0;
-  for (const namespaces of Object.values(extensions)) {
-    for (const carrier of Object.values(namespaces)) total += utf8ByteLength(carrier.json);
-  }
-  return total;
+function mutateCarrierJson(
+  extensions: V5Extensions,
+  segment: V5Segment,
+  namespace: string,
+  mutate: (value: Record<string, unknown>) => void,
+): V5Extensions {
+  const carrier = extensions[segment]?.[namespace];
+  if (carrier === undefined) throw new Error(`missing carrier ${segment}/${namespace}`);
+  const value = JSON.parse(carrier.json) as Record<string, unknown>;
+  mutate(value);
+  return replace(extensions, segment, namespace, {
+    version: carrier.version,
+    json: canonicalJson(value),
+  });
 }
 
-describe('@cf/persistence — Arc 5 ownership migration certificate', () => {
-  it('exports only the V2 codec/read surface from the acquisition package root', () => {
-    const state = migrateOwnershipStateV1ToV2(createEmptyOwnershipStateV1());
-    const raw = encodeOwnershipStateV2(state);
-    const decoded = decodeOwnershipStateV2(raw, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
-    const registered = registerOwnershipStateMirrorV2(
-      ownershipStateMirrorV2(decoded), SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    );
-    expect(isOwnershipStateV2(registered)).toBe(true);
-    expect(ownershipStateDigestV2(registered)).toBe(ownershipStateDigestV2(state));
+describe('@cf/persistence — Arc 5 compact ownership delta', () => {
+  it('keeps all Arc 5 mutation constructors and delta codecs off the public acquisition root', () => {
     for (const internal of [
       'BREED_ACTION_KIND_V2',
-      'LAST_USABLE_F4_RECEIPT_ORDINAL_V2',
-      'bredAcquisitionIdV2',
-      'localCreatureIdV2',
       'createF4ReceiptEvidenceV2',
       'createBredAcquisitionRecordV2',
       'createBredCreatureInstanceV2',
       'createCreatureInstanceV2',
-      'createSpecimenLotV2',
-      'createCreatureTombstoneV2',
-      'createSpecimenTombstoneV2',
       'createOwnershipSuccessorV2',
-      'createOwnershipSourceSuccessorV2',
       'createOwnershipSourceProjectionSuccessorV2',
-      'isOwnershipSuccessorV2',
+      'deriveOwnershipDeltaV2',
+      'deriveOwnershipDeltaSuccessorV2',
+      'applyOwnershipDeltaV2',
+      'decodeOwnershipDeltaV2',
+      'encodeOwnershipDeltaV2',
+      'ownershipDeltaMirrorV2',
+      'ownershipDeltaDigestV2',
+      'OWNERSHIP_DELTA_SCHEMA_V2',
     ]) expect(internal in acquisitionRoot, internal).toBe(false);
   });
 
-  it('adds one digest-only certificate from freshly loaded current Arc 4 authority and is a zero-write fixed point', () => {
+  it('creates the exact five-target zero-delta v2 fixed point from absent authority', () => {
     const callerSource = createEmptyOwnershipStateV1();
     const arc4 = withArc4(baseExtensions(), callerSource);
-    const prepared = prepareArc5OwnershipMigration({
-      extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    });
-    expect(prepared.kind).toBe('prepared');
-    if (prepared.kind !== 'prepared') return;
-    expect(prepared.writes).toHaveLength(1);
-    expect(prepared.writes[0]).toMatchObject({
-      segment: 'player', namespace: ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
-      carrier: { version: ARC5_OWNERSHIP_MIGRATION_VERSION },
-    });
-    expectCarriersPreserved(arc4, prepared.extensions);
-    expect(ownershipSourceStateV1(prepared.state)).not.toBe(callerSource);
-    expect(ownershipStateDigestV1(ownershipSourceStateV1(prepared.state)))
-      .toBe(ownershipStateDigestV1(callerSource));
-    expect(prepared.state).toMatchObject({
-      revision: callerSource.revision,
-      mode: 'current',
-      bredAcquisitions: [], creatureTombstones: [], specimenTombstones: [],
-    });
-
-    const raw = prepared.writes[0]!.carrier.json;
-    const certificate = JSON.parse(raw) as Record<string, unknown>;
-    expect(Object.keys(certificate)).toEqual([
-      'schema', 'sourceDigest', 'sourceMode', 'sourceRevision', 'sourceSchema',
-      'sourceVersion', 'targetDigest', 'targetMode', 'targetRevision',
-      'targetSchema', 'targetVersion', 'version',
-    ]);
-    expect(certificate).toMatchObject({
-      schema: ARC5_OWNERSHIP_MIGRATION_SCHEMA,
-      version: ARC5_OWNERSHIP_MIGRATION_VERSION,
-      sourceRevision: callerSource.revision,
-      sourceMode: 'current',
+    const result = prepared(arc4);
+    expect(result.writes).toHaveLength(5);
+    expect(result.writes.map(({ segment, namespace }) => ({ segment, namespace })))
+      .toEqual(ARC5_OWNERSHIP_EXTENSION_TARGETS);
+    expect(result.evidence).toMatchObject({
+      representationVersion: 2,
       sourceDigest: ownershipStateDigestV1(callerSource),
-      targetRevision: prepared.state.revision,
-      targetMode: 'current',
-      targetDigest: ownershipStateDigestV2(prepared.state),
+      targetDigest: ownershipStateDigestV2(result.state),
+      deltaRowCount: 0,
+      shardCount: 4,
     });
-    expect('source' in certificate).toBe(false);
-    expect('target' in certificate).toBe(false);
+    expect(result.evidence.shardDigests).toHaveLength(4);
+    expect(result.state.revision).toBe(callerSource.revision);
+    expect(ownershipSourceStateV1(result.state)).not.toBe(callerSource);
+    expect(ownershipStateDigestV1(ownershipSourceStateV1(result.state)))
+      .toBe(ownershipStateDigestV1(callerSource));
+    for (const [index, target] of ARC5_OWNERSHIP_EXTENSION_TARGETS.entries()) {
+      const write = result.writes[index]!;
+      expect(write).toMatchObject({ ...target, carrier: { version: 2 } });
+      expect(utf8ByteLength(write.carrier.json)).toBeLessThanOrEqual(V5_MAX_EXTENSION_JSON_BYTES);
+      if (index === 0) continue;
+      expect(JSON.parse(write.carrier.json)).toEqual({
+        count: 4,
+        digest: sha256Hex('[]'),
+        end: 0,
+        index: index - 1,
+        rows: [],
+        schema: 'cf-v2-ownership-delta-shard/v1',
+        start: 0,
+        total: 0,
+        version: 2,
+      });
+    }
+    for (const [segment, namespaces] of Object.entries(arc4) as Array<[
+      V5Segment,
+      Readonly<Record<string, V5ExtensionCarrier>>,
+    ]>) {
+      for (const [namespace, carrier] of Object.entries(namespaces)) {
+        expect(result.extensions[segment]?.[namespace], `${segment}/${namespace}`).toEqual(carrier);
+      }
+    }
+    expect(extensionBytes(result.extensions)).toBeLessThanOrEqual(V5_MAX_EXTENSION_TOTAL_BYTES);
 
     const read = readArc5OwnershipMigration(
-      prepared.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      result.extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     );
     expect(read.kind).toBe('loaded');
     if (read.kind !== 'loaded') return;
-    expect(ownershipStateDigestV2(read.state)).toBe(ownershipStateDigestV2(prepared.state));
+    expect(read.evidence).toEqual(result.evidence);
+    expect(ownershipStateDigestV2(read.state)).toBe(ownershipStateDigestV2(result.state));
     const fixed = prepareArc5OwnershipMigration({
-      extensions: prepared.extensions, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      extensions: result.extensions,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     });
-    expect(fixed.kind).toBe('already-loaded');
-    if (fixed.kind !== 'already-loaded') return;
-    expect(fixed.writes).toEqual([]);
-    expect(fixed.extensions).toEqual(prepared.extensions);
-    expect(fixed.extensions.player?.[ARC5_OWNERSHIP_MIGRATION_NAMESPACE]?.json).toBe(raw);
+    expect(fixed).toMatchObject({ kind: 'already-loaded', writes: [], evidence: result.evidence });
+    if (fixed.kind === 'already-loaded') expect(fixed.extensions).toEqual(result.extensions);
   });
 
-  it('replaces one aligned certificate only with the exact staged registered Arc 4 +1', () => {
-    const certifiedBase = certified(withArc4(baseExtensions(), createEmptyOwnershipStateV1()));
-    const parent = loadedArc4(certifiedBase.extensions);
+  it('reads aligned v1 evidence distinctly and upgrades it without revision or receipt authority', () => {
+    const arc4 = withArc4(baseExtensions(), fixture().source);
+    const legacy = withLegacyCertificate(arc4);
+    const before = readArc5OwnershipMigration(legacy, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    expect(before.kind).toBe('loaded');
+    if (before.kind !== 'loaded') return;
+    expect(before.evidence).toEqual({
+      representationVersion: 1,
+      sourceDigest: ownershipStateDigestV1(ownershipSourceStateV1(before.state)),
+      targetDigest: ownershipStateDigestV2(before.state),
+    });
+    expect('deltaDigest' in before.evidence).toBe(false);
+
+    const upgrade = prepared(legacy);
+    expect(upgrade.representationUpgrade).toBe('legacy-v1');
+    expect(upgrade.writes).toHaveLength(5);
+    expect(upgrade.state.revision).toBe(before.state.revision);
+    expect(ownershipStateDigestV2(upgrade.state)).toBe(ownershipStateDigestV2(before.state));
+    expect(upgrade.evidence).toMatchObject({ representationVersion: 2, deltaRowCount: 0 });
+    const manifest = JSON.parse(upgrade.writes[0].carrier.json) as Record<string, unknown>;
+    expect(manifest).not.toHaveProperty('receipt');
+    expect(manifest).not.toHaveProperty('ordinal');
+    expect(Object.keys(manifest)).toEqual([
+      'deltaDigest', 'deltaRowCount', 'deltaSchema', 'deltaVersion', 'fixedShardCount',
+      'schema', 'shardDigests', 'sourceDigest', 'sourceMode', 'sourceRevision',
+      'sourceSchema', 'sourceVersion', 'targetDigest', 'targetMode', 'targetRevision',
+      'targetSchema', 'targetVersion', 'version',
+    ]);
+    expect(manifest).toMatchObject({
+      schema: ARC5_OWNERSHIP_MIGRATION_SCHEMA,
+      version: ARC5_OWNERSHIP_MIGRATION_VERSION,
+      sourceRevision: before.state.revision,
+      targetRevision: before.state.revision,
+    });
+    const read = readArc5OwnershipMigration(
+      upgrade.extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    expect(read.kind === 'loaded' ? read.evidence.representationVersion : null).toBe(2);
+
+    const partialV2 = mutateCarrierJson(
+      legacy,
+      'player',
+      ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
+      (certificate) => { certificate.version = 2; },
+    );
+    expect(readArc5OwnershipMigration(
+      partialV2,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    )).toEqual({ kind: 'corrupt' });
+    const futureLegacy = mutateCarrierJson(
+      legacy,
+      'player',
+      ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
+      (certificate) => { certificate.version = 3; },
+    );
+    expect(readArc5OwnershipMigration(
+      futureLegacy,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    )).toEqual({ kind: 'future-version', version: 3 });
+  });
+
+  it('advances an exact Arc 4 source successor with five replacements and O(1) empty shards', () => {
+    const initial = prepared(withArc4(baseExtensions(), fixture().source));
+    const initialShards = initial.writes.slice(1).map((write) => write.carrier.json);
+    const parent = loadedArc4(initial.extensions);
+    const extraIdentity = canonicalGenomeIdentityV1({ seed: 33, kingdom: 'fauna', form: 3 });
+    const resolved = resolveCF1WorldAddress({
+      galaxy: { seed: 999, x: 90, y: -60 },
+      star: { seed: 424242, x: 560, y: 170 },
+      planet: { seed: 133 },
+    });
+    if (!resolved.ok) throw new Error(`home address failed: ${resolved.reason}`);
+    const extraDiscovery = createWorldDiscoveryRecordV1({
+      recordId: ownershipContentId('discovery', 'arc5-source-growth') as DiscoveryRecordId,
+      speciesId: extraIdentity.speciesId,
+      verb: 'tame',
+      worldAddress: resolved.address,
+      cycle: 1,
+      sourceOrdinal: 0,
+      firstForSpecies: true,
+    });
+    const extraCatalog = createCatalogSpeciesV1({
+      identity: extraIdentity,
+      alias: null,
+      firstObservationId: extraDiscovery.recordId,
+    });
+    const extra = createCreatureInstanceV1({
+      creatureId: ownershipContentId('creature', 'arc5-source-growth') as CreatureInstanceId,
+      speciesId: extraIdentity.speciesId,
+      genomeIdentity: extraIdentity.genomeIdentity,
+      genome: extraIdentity.genome,
+      nickname: 'Source-grown',
+      origin: 'wild',
+      acquisitionRecordId: extraDiscovery.recordId,
+      lineage: { kind: 'none', generation: 0 },
+      xp: null,
+      hurt: null,
+      fed: 80,
+      brood: null,
+      assignment: null,
+      bond: null,
+    });
+    const extraProgress = createBiosphereProgressV1({
+      worldAddress: resolved.address,
+      cycle: 1,
+      used: 1,
+      successful: [{ speciesId: extraIdentity.speciesId, source: 'tame' }],
+    });
     const successor = createOwnershipSuccessorV1(parent, {
-      catalogSpecies: parent.catalogSpecies,
-      discoveries: parent.discoveries,
-      creatures: parent.creatures,
+      catalogSpecies: [...parent.catalogSpecies, extraCatalog],
+      discoveries: [...parent.discoveries, extraDiscovery],
+      creatures: [...parent.creatures, extra],
       specimenLots: parent.specimenLots,
-      biosphereProgress: parent.biosphereProgress,
+      biosphereProgress: [...parent.biosphereProgress, extraProgress],
       legacyBioX: parent.legacyBioX,
       scoutCreatureId: parent.scoutCreatureId,
     });
     const staged = prepareArc4OwnershipWrite({
-      extensions: certifiedBase.extensions,
+      extensions: initial.extensions,
       state: successor,
       resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     });
     if (staged.kind !== 'prepared') throw new Error(`Arc 4 stage failed: ${staged.kind}`);
-    const previousCertificate = certifiedBase.extensions.player?.[
-      ARC5_OWNERSHIP_MIGRATION_NAMESPACE
-    ];
-    expect(staged.extensions.player?.[ARC5_OWNERSHIP_MIGRATION_NAMESPACE])
-      .toEqual(previousCertificate);
-
-    const prepared = prepareArc5OwnershipMigrationSuccessor({
-      baseExtensions: certifiedBase.extensions,
+    const advanced = prepareArc5OwnershipMigrationSuccessor({
+      baseExtensions: initial.extensions,
+      parent: initial.state,
       successorExtensions: staged.extensions,
       successor,
       resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     });
-    expect(prepared.kind).toBe('prepared');
-    if (prepared.kind !== 'prepared') return;
-    expect(prepared.writes).toEqual([prepared.write]);
-    expect(prepared.writes).toHaveLength(1);
-    expect(prepared.write).toMatchObject({
-      segment: 'player',
-      namespace: ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
-      carrier: { version: ARC5_OWNERSHIP_MIGRATION_VERSION },
-    });
-    expect(prepared.write.carrier).not.toEqual(previousCertificate);
-    expect(ownershipSourceStateV1(prepared.state)).not.toBe(successor);
-    expect(prepared.state.revision).toBe(prepared.previousState.revision + 1);
-    expect(prepared.state.revision).toBe(successor.revision);
-    expect(ownershipStateDigestV1(ownershipSourceStateV1(prepared.state)))
-      .toBe(ownershipStateDigestV1(successor));
+    expect(advanced.kind).toBe('prepared');
+    if (advanced.kind !== 'prepared') return;
+    expect(advanced.writes).toHaveLength(5);
+    expect(advanced.evidence.deltaRowCount).toBe(0);
+    expect(advanced.state.revision).toBe(initial.state.revision + 1);
+    expect(advanced.writes.slice(1).map((write) => write.carrier.json)).toEqual(initialShards);
+    expect(advanced.writes[0].carrier.json).not.toBe(initial.writes[0].carrier.json);
+    expect(advanced.extensions.settings).toEqual(staged.extensions.settings);
+    expect(advanced.extensions.inventory).toEqual(staged.extensions.inventory);
     const read = readArc5OwnershipMigration(
-      prepared.extensions,
+      advanced.extensions,
       SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     );
-    expect(read.kind).toBe('loaded');
-    if (read.kind === 'loaded') {
-      expect(ownershipStateDigestV2(read.state)).toBe(ownershipStateDigestV2(prepared.state));
-    }
-    expect(prepareArc5OwnershipMigration({
-      extensions: prepared.extensions,
-      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toMatchObject({ kind: 'already-loaded' });
-    expect(prepared.extensions.settings).toEqual(staged.extensions.settings);
-    expect(prepared.extensions.inventory).toEqual(staged.extensions.inventory);
-    expect(prepared.extensions.catalog).toEqual(staged.extensions.catalog);
-    expect(prepared.extensions.creatures).toEqual(staged.extensions.creatures);
-    expect(prepared.extensions.player?.['f4.authority'])
-      .toEqual(staged.extensions.player?.['f4.authority']);
+    expect(read.kind === 'loaded' ? read.evidence : null).toEqual(advanced.evidence);
   });
 
-  it('refuses every unaligned base, staged successor, and hostile successor input before replacement', () => {
-    const arc4Only = withArc4(baseExtensions(), createEmptyOwnershipStateV1());
-    const certifiedBase = certified(arc4Only);
-    const parent = loadedArc4(certifiedBase.extensions);
-    const successor = createOwnershipSuccessorV1(parent, {
-      catalogSpecies: parent.catalogSpecies,
-      discoveries: parent.discoveries,
-      creatures: parent.creatures,
-      specimenLots: parent.specimenLots,
-      biosphereProgress: parent.biosphereProgress,
-      legacyBioX: parent.legacyBioX,
-      scoutCreatureId: parent.scoutCreatureId,
+  it('persists one exact registered V2-only +1, reconstructs it, and rejects nonchildren', () => {
+    const initial = prepared(withArc4(baseExtensions(), fixture().source));
+    const target = mutableSuccessor(initial.state);
+    const first = prepareArc5OwnershipV2Successor({
+      baseExtensions: initial.extensions,
+      parent: initial.state,
+      successor: target,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    expect(first.kind).toBe('prepared');
+    if (first.kind !== 'prepared') return;
+    expect(first.writes).toHaveLength(5);
+    expect(first.evidence).toMatchObject({ representationVersion: 2, deltaRowCount: 1 });
+    expect(first.state.revision).toBe(initial.state.revision + 1);
+    expect(ownershipStateDigestV1(ownershipSourceStateV1(first.state)))
+      .toBe(ownershipStateDigestV1(ownershipSourceStateV1(initial.state)));
+    const rowShard = JSON.parse(first.writes[1].carrier.json) as {
+      rows: Array<Record<string, unknown>>;
+    };
+    expect(rowShard.rows).toEqual([expect.objectContaining({
+      kind: 'source-creature-live',
+      creatureId: initial.state.creatures[0]!.creatureId,
+      nickname: 'Nova',
+      xp: 1,
+    })]);
+    expect(rowShard.rows[0]).not.toHaveProperty('genome');
+    expect(rowShard.rows[0]).not.toHaveProperty('speciesId');
+    for (const write of first.writes.slice(2)) {
+      expect((JSON.parse(write.carrier.json) as { rows: unknown[] }).rows).toEqual([]);
+    }
+    const read = readArc5OwnershipMigration(first.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    expect(read.kind).toBe('loaded');
+    if (read.kind === 'loaded') {
+      expect(ownershipStateDigestV2(read.state)).toBe(ownershipStateDigestV2(target));
+      expect(read.evidence).toEqual(first.evidence);
+    }
+    const repeat = prepareArc5OwnershipV2Successor({
+      baseExtensions: initial.extensions,
+      parent: initial.state,
+      successor: target,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    expect(repeat.kind === 'prepared' ? repeat.writes : null).toEqual(first.writes);
+
+    expect(prepareArc5OwnershipV2Successor({
+      baseExtensions: initial.extensions,
+      parent: initial.state,
+      successor: initial.state,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    })).toMatchObject({ kind: 'protected', reason: 'successor-conflict' });
+    const otherParent = migrateOwnershipStateV1ToV2(fixture().source);
+    const otherTarget = mutableSuccessor(otherParent, 'Other');
+    expect(prepareArc5OwnershipV2Successor({
+      baseExtensions: initial.extensions,
+      parent: initial.state,
+      successor: otherTarget,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    })).toMatchObject({ kind: 'protected', reason: 'successor-conflict' });
+  });
+
+  it('packs a large delta into deterministic consecutive byte-fit shards within both limits', () => {
+    const initial = prepared(withArc4({}, fixture().source));
+    const target = bulkBredSuccessor(initial.state, 350);
+    const result = prepareArc5OwnershipV2Successor({
+      baseExtensions: initial.extensions,
+      parent: initial.state,
+      successor: target,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    expect(result.kind).toBe('prepared');
+    if (result.kind !== 'prepared') return;
+    expect(result.evidence.deltaRowCount).toBe(700);
+    const shards = result.writes.slice(1).map((write) => (
+      JSON.parse(write.carrier.json) as {
+        start: number;
+        end: number;
+        total: number;
+        digest: string;
+        rows: unknown[];
+      }
+    ));
+    expect(shards.filter((shard) => shard.rows.length > 0).length).toBeGreaterThan(1);
+    let start = 0;
+    for (const [index, shard] of shards.entries()) {
+      expect(shard.start, `start ${index}`).toBe(start);
+      expect(shard.end - shard.start, `length ${index}`).toBe(shard.rows.length);
+      expect(shard.total, `total ${index}`).toBe(700);
+      expect(result.writes[index + 1]!.carrier.json.length).toBeLessThanOrEqual(
+        V5_MAX_EXTENSION_JSON_BYTES,
+      );
+      expect(utf8ByteLength(result.writes[index + 1]!.carrier.json)).toBeLessThanOrEqual(
+        V5_MAX_EXTENSION_JSON_BYTES,
+      );
+      start = shard.end;
+      if (index >= ARC5_OWNERSHIP_FIXED_SHARDS - 1 || shard.end >= shard.total) continue;
+      const nextRow = shards[index + 1]!.rows[0]!;
+      const overflowingRows = [...shard.rows, nextRow];
+      const overflowing = canonicalJson({
+        count: 4,
+        digest: sha256Hex(canonicalJson(overflowingRows)),
+        end: shard.end + 1,
+        index,
+        rows: overflowingRows,
+        schema: 'cf-v2-ownership-delta-shard/v1',
+        start: shard.start,
+        total: shard.total,
+        version: 2,
+      });
+      expect(utf8ByteLength(overflowing), `greedy boundary ${index}`)
+        .toBeGreaterThan(V5_MAX_EXTENSION_JSON_BYTES);
+    }
+    expect(start).toBe(700);
+    expect(extensionBytes(result.extensions)).toBeLessThanOrEqual(V5_MAX_EXTENSION_TOTAL_BYTES);
+    const repeat = prepareArc5OwnershipV2Successor({
+      baseExtensions: initial.extensions,
+      parent: initial.state,
+      successor: target,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    expect(repeat.kind === 'prepared' ? repeat.writes : null).toEqual(result.writes);
+  }, 30_000);
+
+  it('replaces every empty tail when an Arc 4 successor absorbs a former delta row', () => {
+    const initial = prepared(withArc4(baseExtensions(), fixture().source));
+    const v2Target = mutableSuccessor(initial.state);
+    const v2 = prepareArc5OwnershipV2Successor({
+      baseExtensions: initial.extensions,
+      parent: initial.state,
+      successor: v2Target,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    if (v2.kind !== 'prepared') throw new Error(`V2 stage failed: ${v2.kind}`);
+    expect(v2.evidence.deltaRowCount).toBe(1);
+    expect((JSON.parse(v2.writes[1].carrier.json) as { rows: unknown[] }).rows).toHaveLength(1);
+
+    const sourceParent = loadedArc4(v2.extensions);
+    const left = sourceParent.creatures[0]!;
+    const changed = createCreatureInstanceV1({ ...left, nickname: 'Nova', xp: 1 });
+    const sourceSuccessor = createOwnershipSuccessorV1(sourceParent, {
+      catalogSpecies: sourceParent.catalogSpecies,
+      discoveries: sourceParent.discoveries,
+      creatures: [changed, ...sourceParent.creatures.slice(1)],
+      specimenLots: sourceParent.specimenLots,
+      biosphereProgress: sourceParent.biosphereProgress,
+      legacyBioX: sourceParent.legacyBioX,
+      scoutCreatureId: sourceParent.scoutCreatureId,
     });
     const staged = prepareArc4OwnershipWrite({
-      extensions: certifiedBase.extensions,
-      state: successor,
+      extensions: v2.extensions,
+      state: sourceSuccessor,
       resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     });
     if (staged.kind !== 'prepared') throw new Error(`Arc 4 stage failed: ${staged.kind}`);
-    const call = (baseExtensions: unknown, successorExtensions: unknown, state: unknown = successor) => (
-      prepareArc5OwnershipMigrationSuccessor({
-        baseExtensions,
-        successorExtensions,
-        successor: state as OwnershipStateV1,
-        resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-      })
-    );
-
-    expect(call(arc4Only, staged.extensions)).toEqual({
-      kind: 'protected', reason: 'base-absent',
-    });
-    const baseCarrier = certifiedBase.extensions.player![ARC5_OWNERSHIP_MIGRATION_NAMESPACE]!;
-    const baseCorrupt = replace(
-      certifiedBase.extensions,
-      'player',
-      ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
-      { version: baseCarrier.version, json: '{}' },
-    );
-    expect(call(baseCorrupt, staged.extensions)).toEqual({
-      kind: 'protected', reason: 'base-corrupt',
-    });
-    const baseFuture = replace(
-      certifiedBase.extensions,
-      'player',
-      ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
-      { version: ARC5_OWNERSHIP_MIGRATION_VERSION + 1, json: '{}' },
-    );
-    expect(call(baseFuture, staged.extensions)).toEqual({
-      kind: 'protected', reason: 'base-future', version: 2,
-    });
-    expect(call(staged.extensions, staged.extensions)).toEqual({
-      kind: 'protected', reason: 'base-source-drift',
-    });
-
-    const successorAbsent = withoutPrefix(staged.extensions, ARC4_OWNERSHIP_PREFIX);
-    expect(call(certifiedBase.extensions, successorAbsent)).toEqual({
-      kind: 'protected', reason: 'successor-absent',
-    });
-    const manifest = staged.extensions.player![ARC4_OWNERSHIP_MANIFEST_NAMESPACE]!;
-    const successorFuture = replace(
-      staged.extensions,
-      'player',
-      ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
-      { ...manifest, version: manifest.version + 1 },
-    );
-    expect(call(certifiedBase.extensions, successorFuture)).toEqual({
-      kind: 'protected', reason: 'successor-future', version: 2,
-    });
-    const successorCorrupt = replace(
-      staged.extensions,
-      'player',
-      ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
-      { version: manifest.version, json: '{}' },
-    );
-    expect(call(certifiedBase.extensions, successorCorrupt)).toEqual({
-      kind: 'protected', reason: 'successor-corrupt',
-    });
-    expect(call(certifiedBase.extensions, certifiedBase.extensions)).toEqual({
-      kind: 'protected', reason: 'successor-conflict',
-      expectedRevision: parent.revision,
-      actualRevision: successor.revision,
-    });
-    expect(call(certifiedBase.extensions, staged.extensions, { ...successor })).toEqual({
-      kind: 'protected', reason: 'successor-conflict',
-    });
-    const unrelatedDrift = replace(staged.extensions, 'settings', 'other.settings', {
-      version: 3, json: '{"changed":true}',
-    });
-    expect(call(certifiedBase.extensions, unrelatedDrift)).toEqual({
-      kind: 'protected', reason: 'successor-conflict',
-      expectedRevision: parent.revision + 1,
-      actualRevision: successor.revision,
-    });
-
-    let getterReads = 0;
-    const hostile = Object.defineProperties({}, {
-      baseExtensions: { enumerable: true, value: certifiedBase.extensions },
-      successorExtensions: { enumerable: true, value: staged.extensions },
-      successor: { enumerable: true, value: successor },
-      resolver: {
-        enumerable: true,
-        get() { getterReads++; return SCENE_OWNERSHIP_ADDRESS_RESOLVER; },
-      },
-    });
-    expect(prepareArc5OwnershipMigrationSuccessor(hostile as never)).toEqual({
-      kind: 'protected', reason: 'base-corrupt',
-    });
-    expect(getterReads).toBe(0);
-  });
-
-  it('certifies legacy-protected authority without manufacturing owned rows', () => {
-    const protectedSource = createLegacyProtectedOwnershipStateV1({
-      schema: 'cf-v1.8.9-ownership-source/v1',
-      digest: 'a'.repeat(64),
-      jsonBytes: 123,
-      codexRows: 9,
-      uniqueSpecies: 7,
-      bioXRows: 3,
-      scoutCodexId: 's11',
-    });
-    const prepared = prepareArc5OwnershipMigration({
-      extensions: withArc4(baseExtensions(), protectedSource),
+    const absorbed = prepareArc5OwnershipMigrationSuccessor({
+      baseExtensions: v2.extensions,
+      parent: v2.state,
+      successorExtensions: staged.extensions,
+      successor: sourceSuccessor,
       resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     });
-    expect(prepared.kind).toBe('prepared');
-    if (prepared.kind !== 'prepared') return;
-    expect(prepared.state).toMatchObject({
-      mode: 'legacy-protected',
-      catalogSpecies: [], acquisitions: [], bredAcquisitions: [], creatures: [],
-      creatureTombstones: [], specimenLots: [], specimenTombstones: [],
-    });
-    const certificate = JSON.parse(prepared.writes[0]!.carrier.json) as Record<string, unknown>;
-    expect(certificate.sourceMode).toBe('legacy-protected');
-    expect(certificate.targetMode).toBe('legacy-protected');
-    expect(readArc5OwnershipMigration(
-      prepared.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    )).toMatchObject({ kind: 'loaded', state: { mode: 'legacy-protected' } });
+    expect(absorbed.kind).toBe('prepared');
+    if (absorbed.kind !== 'prepared') return;
+    expect(absorbed.writes).toHaveLength(5);
+    expect(absorbed.evidence.deltaRowCount).toBe(0);
+    expect(absorbed.writes.slice(1).map((write) => write.carrier.json))
+      .toEqual(initial.writes.slice(1).map((write) => write.carrier.json));
+    expect(absorbed.extensions.creatures?.[`${ARC5_OWNERSHIP_DELTA_PREFIX}0`])
+      .not.toEqual(v2.extensions.creatures?.[`${ARC5_OWNERSHIP_DELTA_PREFIX}0`]);
   });
 
-  it('binds every certificate schema, version, mode, revision, and digest field independently', () => {
-    const result = certified(withArc4(baseExtensions(), createEmptyOwnershipStateV1()));
-    const cases: readonly Readonly<{
-      field: string;
-      value: unknown;
-      reason: 'source-drift' | 'target-corrupt';
-      pairRevision?: true;
-    }>[] = [
-      { field: 'schema', value: 'cf-v2-ownership-v1-to-v2/wrong', reason: 'target-corrupt' },
-      { field: 'version', value: 0, reason: 'target-corrupt' },
-      { field: 'sourceSchema', value: 'cf-v2-ownership-state/wrong', reason: 'target-corrupt' },
-      { field: 'sourceVersion', value: 2, reason: 'target-corrupt' },
-      { field: 'sourceRevision', value: 1, reason: 'source-drift', pairRevision: true },
-      { field: 'sourceMode', value: 'legacy-protected', reason: 'source-drift' },
-      { field: 'sourceDigest', value: 'b'.repeat(64), reason: 'source-drift' },
-      { field: 'targetSchema', value: 'cf-v2-ownership-state/wrong', reason: 'target-corrupt' },
-      { field: 'targetVersion', value: 3, reason: 'target-corrupt' },
-      { field: 'targetRevision', value: 1, reason: 'target-corrupt' },
-      { field: 'targetMode', value: 'legacy-protected', reason: 'target-corrupt' },
-      { field: 'targetDigest', value: 'c'.repeat(64), reason: 'target-corrupt' },
-    ];
-    for (const testCase of cases) {
-      const tampered = mutateCertificate(result.extensions, (certificate) => {
-        certificate[testCase.field] = testCase.value;
-        if (testCase.pairRevision) certificate.targetRevision = testCase.value;
-      });
+  it('verifies exact prepared postcommit bytes and refuses legacy, partial, swapped, or forged proof', () => {
+    const arc4 = withArc4(baseExtensions(), fixture().source);
+    const result = prepared(arc4);
+    const committed = committedArc5OwnershipState(
+      result,
+      result.extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    expect(committed?.evidence).toEqual(result.evidence);
+    expect(committed && ownershipStateDigestV2(committed.state))
+      .toBe(ownershipStateDigestV2(result.state));
+
+    const target = ARC5_OWNERSHIP_EXTENSION_TARGETS[1];
+    const changed = mutateCarrierJson(
+      result.extensions,
+      target.segment,
+      target.namespace,
+      (shard) => { shard.digest = '0'.repeat(64); },
+    );
+    expect(committedArc5OwnershipState(
+      result,
+      changed,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    )).toBeNull();
+    expect(committedArc5OwnershipState(
+      result,
+      withLegacyCertificate(arc4),
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    )).toBeNull();
+    expect(committedArc5OwnershipState({
+      ...result,
+      writes: [result.writes[0], result.writes[2], result.writes[1], ...result.writes.slice(3)],
+    }, result.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER)).toBeNull();
+    expect(committedArc5OwnershipState({
+      ...result,
+      evidence: { ...result.evidence, targetDigest: 'f'.repeat(64) },
+    }, result.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER)).toBeNull();
+  });
+
+  it('fails closed on every partial, extra, misplaced, future, and source-drifted inventory', () => {
+    const result = prepared(withArc4(baseExtensions(), fixture().source));
+    for (const target of ARC5_OWNERSHIP_EXTENSION_TARGETS) {
+      const partial = remove(result.extensions, target.segment, target.namespace);
       expect(prepareArc5OwnershipMigration({
-        extensions: tampered, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-      }), testCase.field).toEqual({ kind: 'protected', reason: testCase.reason });
+        extensions: partial,
+        resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      }), `partial ${target.namespace}`).toEqual({ kind: 'protected', reason: 'target-corrupt' });
       expect(readArc5OwnershipMigration(
-        tampered, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-      ), testCase.field).toEqual({ kind: 'corrupt' });
-    }
-  });
-
-  it('rejects missing, extra, malformed, noncanonical, and invalid numeric certificate data', () => {
-    const result = certified(withArc4(baseExtensions(), createEmptyOwnershipStateV1()));
-    const missing = mutateCertificate(result.extensions, (certificate) => {
-      delete certificate.targetMode;
-    });
-    const extra = mutateCertificate(result.extensions, (certificate) => {
-      certificate.rows = [];
-    });
-    for (const [label, extensions] of [['missing', missing], ['extra', extra]] as const) {
-      expect(prepareArc5OwnershipMigration({
-        extensions, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-      }), label).toEqual({ kind: 'protected', reason: 'target-corrupt' });
+        partial,
+        SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      ), `partial read ${target.namespace}`).toEqual({ kind: 'corrupt' });
     }
 
-    const carrier = result.extensions.player![ARC5_OWNERSHIP_MIGRATION_NAMESPACE]!;
-    const pretty = replace(result.extensions, 'player', ARC5_OWNERSHIP_MIGRATION_NAMESPACE, {
-      version: carrier.version,
-      json: JSON.stringify(JSON.parse(carrier.json), null, 2),
+    const extra = replace(result.extensions, 'creatures', `${ARC5_OWNERSHIP_DELTA_PREFIX}4`, {
+      version: 2,
+      json: '{}',
     });
     expect(prepareArc5OwnershipMigration({
-      extensions: pretty, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      extensions: extra,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     })).toEqual({ kind: 'protected', reason: 'target-corrupt' });
-    const malformed = rawReplace(result.extensions, 'player', ARC5_OWNERSHIP_MIGRATION_NAMESPACE, {
-      version: carrier.version, json: '{',
-    });
-    expect(prepareArc5OwnershipMigration({
-      extensions: malformed, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'extensions-corrupt' });
+    const shard = result.extensions.creatures![`${ARC5_OWNERSHIP_DELTA_PREFIX}0`]!;
+    const misplaced = replace(
+      remove(result.extensions, 'creatures', `${ARC5_OWNERSHIP_DELTA_PREFIX}0`),
+      'catalog',
+      `${ARC5_OWNERSHIP_DELTA_PREFIX}0`,
+      shard,
+    );
     expect(readArc5OwnershipMigration(
-      malformed, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      misplaced,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    )).toEqual({ kind: 'corrupt' });
+    const legacyPlusShard = applyV5ExtensionWrites(
+      withLegacyCertificate(withArc4(baseExtensions(), fixture().source)),
+      [result.writes[1]],
+    ).extensions;
+    expect(readArc5OwnershipMigration(
+      legacyPlusShard,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     )).toEqual({ kind: 'corrupt' });
 
-    for (const field of ['version', 'sourceRevision', 'targetRevision'] as const) {
-      for (const value of [-1, 0.5, Number.MAX_SAFE_INTEGER + 1]) {
-        const invalid = mutateCertificate(result.extensions, (certificate) => {
-          certificate[field] = value;
-        });
-        expect(prepareArc5OwnershipMigration({
-          extensions: invalid, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-        }), `${field}=${value}`).toEqual({ kind: 'protected', reason: 'target-corrupt' });
-      }
-    }
-    for (const [field, value] of [
-      ['sourceMode', 'unknown'], ['targetMode', 'unknown'],
-      ['sourceDigest', 'not-a-digest'], ['targetDigest', 'not-a-digest'],
-    ] as const) {
-      const invalid = mutateCertificate(result.extensions, (certificate) => {
-        certificate[field] = value;
+    for (const target of ARC5_OWNERSHIP_EXTENSION_TARGETS) {
+      const carrier = result.extensions[target.segment]![target.namespace]!;
+      const future = replace(result.extensions, target.segment, target.namespace, {
+        ...carrier,
+        version: 3,
       });
+      expect(readArc5OwnershipMigration(
+        future,
+        SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      ), `future ${target.namespace}`).toEqual({ kind: 'future-version', version: 3 });
       expect(prepareArc5OwnershipMigration({
-        extensions: invalid, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-      }), field).toEqual({ kind: 'protected', reason: 'target-corrupt' });
+        extensions: future,
+        resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      }), `future prepare ${target.namespace}`).toEqual({
+        kind: 'protected', reason: 'target-future', version: 3,
+      });
     }
-  });
 
-  it('protects absent, corrupt, and future Arc 4 sources without writing a certificate', () => {
-    expect(prepareArc5OwnershipMigration({
-      extensions: baseExtensions(), resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'source-absent' });
-
-    const arc4 = withArc4(baseExtensions(), createEmptyOwnershipStateV1());
-    const manifest = arc4.player![ARC4_OWNERSHIP_MANIFEST_NAMESPACE]!;
-    const corrupt = replace(arc4, 'player', ARC4_OWNERSHIP_MANIFEST_NAMESPACE, {
-      version: manifest.version, json: '{}',
-    });
-    expect(prepareArc5OwnershipMigration({
-      extensions: corrupt, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'source-corrupt' });
-    const lastTarget = ARC4_OWNERSHIP_EXTENSION_TARGETS.at(-1)!;
-    const partial = remove(arc4, lastTarget.segment, lastTarget.namespace);
-    expect(prepareArc5OwnershipMigration({
-      extensions: partial, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'source-corrupt' });
-    const unknown = replace(arc4, 'catalog', `${ARC4_OWNERSHIP_PREFIX}extra`, {
-      version: 1, json: '{}',
-    });
-    expect(prepareArc5OwnershipMigration({
-      extensions: unknown, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'source-corrupt' });
-    const future = replace(arc4, 'player', ARC4_OWNERSHIP_MANIFEST_NAMESPACE, {
-      ...manifest, version: 2,
-    });
-    expect(prepareArc5OwnershipMigration({
-      extensions: future, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'source-future', version: 2 });
-    expect(readArc5OwnershipMigration(
-      future, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    )).toEqual({ kind: 'absent' });
-  });
-
-  it('protects corrupt, future, misplaced, and source-drifted certificates', () => {
-    const arc4 = withArc4(baseExtensions(), createEmptyOwnershipStateV1());
-    const malformed = replace(arc4, 'player', ARC5_OWNERSHIP_MIGRATION_NAMESPACE, {
-      version: ARC5_OWNERSHIP_MIGRATION_VERSION, json: '{}',
-    });
-    expect(prepareArc5OwnershipMigration({
-      extensions: malformed, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'target-corrupt' });
-    expect(readArc5OwnershipMigration(
-      malformed, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    )).toEqual({ kind: 'corrupt' });
-
-    const future = replace(arc4, 'player', ARC5_OWNERSHIP_MIGRATION_NAMESPACE, {
-      version: ARC5_OWNERSHIP_MIGRATION_VERSION + 1, json: '{}',
-    });
-    expect(prepareArc5OwnershipMigration({
-      extensions: future, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'target-future', version: 2 });
-    expect(readArc5OwnershipMigration(
-      future, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    )).toEqual({ kind: 'future-version', version: 2 });
-
-    const unknown = replace(arc4, 'player', `${ARC5_OWNERSHIP_MIGRATION_PREFIX}extra`, {
-      version: 1, json: '{}',
-    });
-    expect(prepareArc5OwnershipMigration({
-      extensions: unknown, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'target-corrupt' });
-    const misplaced = replace(arc4, 'catalog', ARC5_OWNERSHIP_MIGRATION_NAMESPACE, {
-      version: 1, json: '{}',
-    });
-    expect(prepareArc5OwnershipMigration({
-      extensions: misplaced, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'target-corrupt' });
-
-    const certified = prepareArc5OwnershipMigration({
-      extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    });
-    if (certified.kind !== 'prepared') throw new Error(`fixture failed: ${certified.kind}`);
-    const parent = loadedArc4(certified.extensions);
+    const parent = loadedArc4(result.extensions);
     const next = createOwnershipSuccessorV1(parent, {
       catalogSpecies: parent.catalogSpecies,
       discoveries: parent.discoveries,
@@ -653,34 +852,166 @@ describe('@cf/persistence — Arc 5 ownership migration certificate', () => {
       scoutCreatureId: parent.scoutCreatureId,
     });
     const advanced = prepareArc4OwnershipWrite({
-      extensions: certified.extensions,
+      extensions: result.extensions,
       state: next,
       resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     });
     if (advanced.kind !== 'prepared') throw new Error(`Arc 4 advance failed: ${advanced.kind}`);
-    expect(advanced.extensions.player?.[ARC5_OWNERSHIP_MIGRATION_NAMESPACE])
-      .toEqual(certified.extensions.player?.[ARC5_OWNERSHIP_MIGRATION_NAMESPACE]);
     expect(prepareArc5OwnershipMigration({
-      extensions: advanced.extensions, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      extensions: advanced.extensions,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     })).toEqual({ kind: 'protected', reason: 'source-drift' });
     expect(readArc5OwnershipMigration(
-      advanced.extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      advanced.extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     )).toEqual({ kind: 'corrupt' });
   });
 
-  it('fails closed on per-segment, global, and aggregate-byte exhaustion', () => {
-    const player: Record<string, V5ExtensionCarrier> = {
-      'f4.authority': { version: 1, json: '{"keep":true}' },
-    };
-    for (let index = 0; index < 61; index++) {
+  it('rejects noncanonical bytes and independently mutated manifest/shard fields', () => {
+    const result = prepared(withArc4(baseExtensions(), fixture().source));
+    const manifestCases: Array<readonly [string, (row: Record<string, unknown>) => void, string]> = [
+      ['schema', (row) => { row.schema = 'wrong'; }, 'target-corrupt'],
+      ['source digest', (row) => { row.sourceDigest = '0'.repeat(64); }, 'source-drift'],
+      ['source revision', (row) => { row.sourceRevision = 7; }, 'source-drift'],
+      ['target digest', (row) => { row.targetDigest = '1'.repeat(64); }, 'target-corrupt'],
+      ['target revision', (row) => { row.targetRevision = 7; }, 'target-corrupt'],
+      ['delta digest', (row) => { row.deltaDigest = '2'.repeat(64); }, 'target-corrupt'],
+      ['delta row count', (row) => { row.deltaRowCount = 1; }, 'target-corrupt'],
+      ['fixed shards', (row) => { row.fixedShardCount = 3; }, 'target-corrupt'],
+      ['shard digest', (row) => {
+        const digests = [...row.shardDigests as string[]];
+        digests[0] = '3'.repeat(64);
+        row.shardDigests = digests;
+      }, 'target-corrupt'],
+      ['extra', (row) => { row.extra = true; }, 'target-corrupt'],
+      ['missing', (row) => { delete row.deltaDigest; }, 'target-corrupt'],
+    ];
+    for (const [label, mutate, reason] of manifestCases) {
+      const changed = mutateCarrierJson(
+        result.extensions,
+        'player',
+        ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
+        mutate,
+      );
+      expect(prepareArc5OwnershipMigration({
+        extensions: changed,
+        resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      }), label).toEqual({ kind: 'protected', reason });
+      expect(readArc5OwnershipMigration(
+        changed,
+        SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      ), `${label} read`).toEqual({ kind: 'corrupt' });
+    }
+
+    const shardCases: Array<readonly [string, (row: Record<string, unknown>) => void]> = [
+      ['schema', (row) => { row.schema = 'wrong'; }],
+      ['index', (row) => { row.index = 1; }],
+      ['count', (row) => { row.count = 3; }],
+      ['start', (row) => { row.start = 1; }],
+      ['end', (row) => { row.end = 1; }],
+      ['total', (row) => { row.total = 1; }],
+      ['digest', (row) => { row.digest = '4'.repeat(64); }],
+      ['rows', (row) => { row.rows = [{}]; }],
+      ['extra', (row) => { row.extra = true; }],
+      ['missing', (row) => { delete row.rows; }],
+    ];
+    for (const [label, mutate] of shardCases) {
+      const changed = mutateCarrierJson(
+        result.extensions,
+        'creatures',
+        `${ARC5_OWNERSHIP_DELTA_PREFIX}0`,
+        mutate,
+      );
+      expect(prepareArc5OwnershipMigration({
+        extensions: changed,
+        resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      }), label).toEqual({ kind: 'protected', reason: 'target-corrupt' });
+    }
+
+    const manifestCarrier = result.extensions.player![ARC5_OWNERSHIP_MIGRATION_NAMESPACE]!;
+    const pretty = replace(result.extensions, 'player', ARC5_OWNERSHIP_MIGRATION_NAMESPACE, {
+      version: manifestCarrier.version,
+      json: JSON.stringify(JSON.parse(manifestCarrier.json), null, 2),
+    });
+    expect(prepareArc5OwnershipMigration({
+      extensions: pretty,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    })).toEqual({ kind: 'protected', reason: 'target-corrupt' });
+    const innerFuture = mutateCarrierJson(
+      result.extensions,
+      'player',
+      ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
+      (row) => { row.version = 3; },
+    );
+    expect(prepareArc5OwnershipMigration({
+      extensions: innerFuture,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    })).toEqual({ kind: 'protected', reason: 'target-future', version: 3 });
+  });
+
+  it('refuses unaligned source-successor inputs before any five-target replacement', () => {
+    const arc4Only = withArc4(baseExtensions(), fixture().source);
+    const initial = prepared(arc4Only);
+    const parent = loadedArc4(initial.extensions);
+    const successor = createOwnershipSuccessorV1(parent, {
+      catalogSpecies: parent.catalogSpecies,
+      discoveries: parent.discoveries,
+      creatures: parent.creatures,
+      specimenLots: parent.specimenLots,
+      biosphereProgress: parent.biosphereProgress,
+      legacyBioX: parent.legacyBioX,
+      scoutCreatureId: parent.scoutCreatureId,
+    });
+    const staged = prepareArc4OwnershipWrite({
+      extensions: initial.extensions,
+      state: successor,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    if (staged.kind !== 'prepared') throw new Error(`Arc 4 stage failed: ${staged.kind}`);
+    const call = (baseExtensions: unknown, successorExtensions: unknown, state: unknown = successor) => (
+      prepareArc5OwnershipMigrationSuccessor({
+        baseExtensions,
+        parent: initial.state,
+        successorExtensions,
+        successor: state as OwnershipStateV1,
+        resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      })
+    );
+    expect(call(arc4Only, staged.extensions)).toEqual({ kind: 'protected', reason: 'base-absent' });
+    expect(call(withLegacyCertificate(arc4Only), staged.extensions)).toEqual({
+      kind: 'protected', reason: 'base-corrupt',
+    });
+    expect(call(staged.extensions, staged.extensions)).toEqual({
+      kind: 'protected', reason: 'base-source-drift',
+    });
+    expect(call(initial.extensions, withoutPrefix(staged.extensions, ARC4_OWNERSHIP_PREFIX)))
+      .toEqual({ kind: 'protected', reason: 'successor-absent' });
+    expect(call(initial.extensions, initial.extensions)).toMatchObject({
+      kind: 'protected', reason: 'successor-conflict',
+    });
+    expect(call(initial.extensions, staged.extensions, { ...successor })).toMatchObject({
+      kind: 'protected', reason: 'successor-conflict',
+    });
+    const unrelatedDrift = replace(staged.extensions, 'settings', 'other.settings', {
+      version: 5,
+      json: '{"changed":true}',
+    });
+    expect(call(initial.extensions, unrelatedDrift)).toMatchObject({
+      kind: 'protected', reason: 'successor-conflict',
+    });
+  });
+
+  it('fails closed on per-segment, global namespace, and aggregate-byte exhaustion', () => {
+    const player: Record<string, V5ExtensionCarrier> = {};
+    for (let index = 0; index < 62; index++) {
       player[`padding.${String(index).padStart(2, '0')}`] = { version: 1, json: '{}' };
     }
-    const fullPlayer = withArc4(canonicalizeV5Extensions({ player }), createEmptyOwnershipStateV1());
-    expect(Object.keys(fullPlayer.player ?? {})).toHaveLength(64);
+    const playerFull = withArc4(canonicalizeV5Extensions({ player }), createEmptyOwnershipStateV1());
+    expect(Object.keys(playerFull.player ?? {})).toHaveLength(64);
     expect(prepareArc5OwnershipMigration({
-      extensions: fullPlayer, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      extensions: playerFull,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     })).toEqual({ kind: 'protected', reason: 'extension-bounds' });
-    expect(fullPlayer.player?.[ARC5_OWNERSHIP_MIGRATION_NAMESPACE]).toBeUndefined();
 
     const namespaceMaps: Partial<Record<V5Segment, Record<string, V5ExtensionCarrier>>> = {};
     const counts: Readonly<Record<V5Segment, number>> = {
@@ -694,159 +1025,161 @@ describe('@cf/persistence — Arc 5 ownership migration certificate', () => {
       namespaceMaps[segment] = namespaces;
     }
     const globalFull = withArc4(
-      canonicalizeV5Extensions(namespaceMaps), createEmptyOwnershipStateV1(),
+      canonicalizeV5Extensions(namespaceMaps),
+      createEmptyOwnershipStateV1(),
     );
     expect(Object.values(globalFull).reduce(
-      (total, namespaces) => total + Object.keys(namespaces).length, 0,
+      (total, namespaces) => total + Object.keys(namespaces).length,
+      0,
     )).toBe(128);
     expect(prepareArc5OwnershipMigration({
-      extensions: globalFull, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      extensions: globalFull,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     })).toEqual({ kind: 'protected', reason: 'extension-bounds' });
 
     const emptyArc4 = withArc4({}, createEmptyOwnershipStateV1());
-    const smallCertificate = certified(emptyArc4).writes[0]!.carrier.json;
+    const small = prepared(emptyArc4);
+    const arc5Bytes = small.writes.reduce(
+      (total, write) => total + utf8ByteLength(write.carrier.json),
+      0,
+    );
     const paddingBytes = V5_MAX_EXTENSION_TOTAL_BYTES
-      - extensionBytes(emptyArc4) - utf8ByteLength(smallCertificate) + 1;
+      - extensionBytes(emptyArc4) - arc5Bytes + 1;
     const byteFull = withArc4(paddingExtensions(paddingBytes), createEmptyOwnershipStateV1());
     expect(extensionBytes(byteFull)).toBe(
-      V5_MAX_EXTENSION_TOTAL_BYTES - utf8ByteLength(smallCertificate) + 1,
+      V5_MAX_EXTENSION_TOTAL_BYTES - arc5Bytes + 1,
     );
     expect(prepareArc5OwnershipMigration({
-      extensions: byteFull, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      extensions: byteFull,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     })).toEqual({ kind: 'protected', reason: 'extension-bounds' });
   });
 
-  it('rejects hostile extension and preparation-input shapes without observing getters', () => {
-    const arc4 = withArc4(baseExtensions(), createEmptyOwnershipStateV1());
+  it('classifies a valid exact child beyond four-shard capacity as extension-bounds', () => {
+    const initial = prepared(withArc4({}, fixture().source));
+    const oversized = bulkBredSuccessor(initial.state, 1_000);
+    expect(prepareArc5OwnershipV2Successor({
+      baseExtensions: initial.extensions,
+      parent: initial.state,
+      successor: oversized,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    })).toEqual({ kind: 'protected', reason: 'extension-bounds' });
+  }, 30_000);
 
+  it('classifies Arc4-source successor aggregate exhaustion as extension-bounds', () => {
+    const initial = prepared(withArc4({}, fixture().source));
+    const sourceParent = loadedArc4(initial.extensions);
+    const first = sourceParent.creatures[0]!;
+    const changed = createCreatureInstanceV1({ ...first, nickname: 'Arc 4 source growth' });
+    const sourceSuccessor = createOwnershipSuccessorV1(sourceParent, {
+      catalogSpecies: sourceParent.catalogSpecies,
+      discoveries: sourceParent.discoveries,
+      creatures: [changed, ...sourceParent.creatures.slice(1)],
+      specimenLots: sourceParent.specimenLots,
+      biosphereProgress: sourceParent.biosphereProgress,
+      legacyBioX: sourceParent.legacyBioX,
+      scoutCreatureId: sourceParent.scoutCreatureId,
+    });
+    const unpaddedArc4 = prepareArc4OwnershipWrite({
+      extensions: initial.extensions,
+      state: sourceSuccessor,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    if (unpaddedArc4.kind !== 'prepared') throw new Error('source fixture did not stage');
+    const unpaddedArc5 = prepareArc5OwnershipMigrationSuccessor({
+      baseExtensions: initial.extensions,
+      parent: initial.state,
+      successorExtensions: unpaddedArc4.extensions,
+      successor: sourceSuccessor,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    if (unpaddedArc5.kind !== 'prepared') throw new Error('source fixture did not encode');
+    expect(extensionBytes(unpaddedArc5.extensions))
+      .toBeGreaterThan(extensionBytes(unpaddedArc4.extensions));
+
+    const paddingBytes = V5_MAX_EXTENSION_TOTAL_BYTES - extensionBytes(unpaddedArc4.extensions);
+    const padding = paddingExtensions(paddingBytes);
+    const initialCopy = cloneExtensions(initial.extensions);
+    const paddedInitial = canonicalizeV5Extensions({
+      ...initialCopy,
+      settings: { ...(initialCopy.settings ?? {}), ...(padding.settings ?? {}) },
+    });
+    const paddedArc4 = prepareArc4OwnershipWrite({
+      extensions: paddedInitial,
+      state: sourceSuccessor,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    expect(paddedArc4.kind).toBe('prepared');
+    if (paddedArc4.kind !== 'prepared') return;
+    expect(extensionBytes(paddedArc4.extensions)).toBe(V5_MAX_EXTENSION_TOTAL_BYTES);
+    expect(prepareArc5OwnershipMigrationSuccessor({
+      baseExtensions: paddedInitial,
+      parent: initial.state,
+      successorExtensions: paddedArc4.extensions,
+      successor: sourceSuccessor,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    })).toEqual({ kind: 'protected', reason: 'extension-bounds' });
+  });
+
+  it('rejects hostile extension and input reflection shapes without observing getters', () => {
+    const arc4 = withArc4(baseExtensions(), createEmptyOwnershipStateV1());
     let reads = 0;
     const accessor = Object.defineProperty({}, 'player', {
       enumerable: true,
       get: () => { reads++; return {}; },
     });
     expect(prepareArc5OwnershipMigration({
-      extensions: accessor, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      extensions: accessor,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     })).toEqual({ kind: 'protected', reason: 'extensions-corrupt' });
     expect(readArc5OwnershipMigration(
-      accessor, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      accessor,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     )).toEqual({ kind: 'corrupt' });
     expect(reads).toBe(0);
 
-    const inherited = Object.create({ player: {} }) as unknown;
-    const hidden = Object.defineProperty({}, 'player', { enumerable: false, value: {} });
-    const symbol = { [Symbol('extension')]: 1 };
     const cycle: Record<string, unknown> = {};
     cycle.player = cycle;
-    const proxy = new Proxy({}, { ownKeys: () => { throw new Error('trap'); } });
+    const inherited = Object.create({ player: {} }) as unknown;
+    const hidden = Object.defineProperty({}, 'player', { enumerable: false, value: {} });
+    const throwing = new Proxy({}, { ownKeys: () => { throw new Error('trap'); } });
     for (const [label, extensions] of [
-      ['array', []], ['prototype', inherited], ['hidden', hidden],
-      ['symbol', symbol], ['cycle', cycle], ['proxy', proxy],
+      ['array', []],
+      ['cycle', cycle],
+      ['inherited', inherited],
+      ['hidden', hidden],
+      ['symbol', { [Symbol('extension')]: true }],
+      ['proxy', throwing],
     ] as const) {
       expect(prepareArc5OwnershipMigration({
-        extensions, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+        extensions,
+        resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
       }), label).toEqual({ kind: 'protected', reason: 'extensions-corrupt' });
-      expect(readArc5OwnershipMigration(
-        extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-      ), label).toEqual({ kind: 'corrupt' });
     }
 
-    let inputGetterReads = 0;
-    const extensionAccessor = Object.defineProperty(
+    let inputReads = 0;
+    const inputAccessor = Object.defineProperty(
       { resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER },
       'extensions',
-      { enumerable: true, get: () => { inputGetterReads++; return arc4; } },
+      { enumerable: true, get: () => { inputReads++; return arc4; } },
     );
-    const resolverAccessor = Object.defineProperty(
-      { extensions: arc4 },
-      'resolver',
-      { enumerable: true, get: () => { inputGetterReads++; return SCENE_OWNERSHIP_ADDRESS_RESOLVER; } },
-    );
-    const extraStateAccessor = Object.defineProperty(
-      { extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER },
-      'state',
-      { enumerable: true, get: () => { inputGetterReads++; return 'forbidden'; } },
-    );
-    const hiddenInput = Object.defineProperty(
-      { resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER },
-      'extensions',
-      { enumerable: false, value: arc4 },
-    );
-    const arrayInput = Object.assign([], {
-      extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    });
-    const inheritedInput = Object.assign(Object.create({ inherited: true }) as Record<string, unknown>, {
-      extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    });
-    const throwingInput = new Proxy({}, { getPrototypeOf: () => { throw new Error('trap'); } });
     for (const [label, input] of [
-      ['extension-accessor', extensionAccessor],
-      ['resolver-accessor', resolverAccessor],
-      ['extra-state-accessor', extraStateAccessor],
+      ['accessor', inputAccessor],
       ['missing', { extensions: arc4 }],
       ['extra', { extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER, extra: true }],
-      ['symbol', {
-        extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER, [Symbol('input')]: true,
-      }],
-      ['hidden', hiddenInput], ['array', arrayInput],
-      ['prototype', inheritedInput], ['proxy', throwingInput],
+      ['array', Object.assign([], {
+        extensions: arc4,
+        resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      })],
     ] as const) {
       expect(prepareArc5OwnershipMigration(input as never), label)
         .toEqual({ kind: 'protected', reason: 'extensions-corrupt' });
     }
-    expect(inputGetterReads).toBe(0);
-
-    const cyclicInput: Record<string, unknown> = {
-      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    };
-    cyclicInput.extensions = cyclicInput;
-    expect(prepareArc5OwnershipMigration(cyclicInput as never))
-      .toEqual({ kind: 'protected', reason: 'extensions-corrupt' });
-
-    const nullPrototypeInput = Object.assign(Object.create(null) as Record<string, unknown>, {
-      extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    });
-    expect(prepareArc5OwnershipMigration(nullPrototypeInput as never).kind).toBe('prepared');
-
-    let propertyReads = 0;
-    let extensionDescriptors = 0;
-    let resolverDescriptors = 0;
-    const stableInput = { extensions: arc4, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER };
-    const descriptorInput = new Proxy(stableInput, {
-      get: (target, property, receiver) => {
-        propertyReads++;
-        return Reflect.get(target, property, receiver);
-      },
-      getOwnPropertyDescriptor: (target, property) => {
-        if (property === 'extensions') extensionDescriptors++;
-        if (property === 'resolver') resolverDescriptors++;
-        return Reflect.getOwnPropertyDescriptor(target, property);
-      },
-    });
-    expect(prepareArc5OwnershipMigration(descriptorInput).kind).toBe('prepared');
-    expect({ propertyReads, extensionDescriptors, resolverDescriptors }).toEqual({
-      propertyReads: 0, extensionDescriptors: 1, resolverDescriptors: 1,
-    });
-
-    const certified = prepareArc5OwnershipMigration({
+    expect(inputReads).toBe(0);
+    const nullPrototype = Object.assign(Object.create(null) as Record<string, unknown>, {
       extensions: arc4,
       resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
     });
-    if (certified.kind !== 'prepared') throw new Error(`fixture failed: ${certified.kind}`);
-    const sourceMissing = withoutPrefix(certified.extensions, ARC4_OWNERSHIP_PREFIX);
-    expect(prepareArc5OwnershipMigration({
-      extensions: sourceMissing, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'source-absent' });
-
-    const innerFuture = JSON.parse(certified.writes[0]!.carrier.json) as Record<string, unknown>;
-    innerFuture.version = ARC5_OWNERSHIP_MIGRATION_VERSION + 1;
-    const innerFutureExtensions = replace(
-      certified.extensions,
-      'player',
-      ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
-      { version: 1, json: canonicalJson(innerFuture) },
-    );
-    expect(prepareArc5OwnershipMigration({
-      extensions: innerFutureExtensions, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
-    })).toEqual({ kind: 'protected', reason: 'target-future', version: 2 });
+    expect(prepareArc5OwnershipMigration(nullPrototype as never).kind).toBe('prepared');
   });
 });

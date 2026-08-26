@@ -3,8 +3,10 @@
 > **2026-08-25 v2 Arc 5A overlay — CURRENT versus PLANNED:** Current lineage code owns
 > deterministic ancestry, Earth-scaffold inheritance and portrait continuity. Ownership-v1/v2 now
 > separates `CatalogSpecies` discovery from stable `CreatureInstance` ownership, and Arc 5A
-> reconstructs the digest-certified V2 projection in app boot, genuine legacy Training and every
-> Arc 4 capture successor. That is infrastructure only: no V2-only mutation, expedition, Recovery,
+> reconstructs V2 from one source-bound manifest plus exactly four fixed generic delta shards in app
+> boot, genuine legacy Training and every Arc 4 capture successor. The implemented delta carries only
+> V2-exclusive or changed rows and keeps unchanged Arc 4 ownership out of Arc 5. That is
+> infrastructure only: no player V2-only mutation, expedition, Recovery,
 > bond/Chronicle action or companion presentation is live.
 >
 > **MODEL SHAPE EXISTS; PRODUCT BEHAVIOR PLANNED, not implemented:** the creature schema has stable
@@ -23,10 +25,10 @@
 > parent consumption remains historical parity only. Any future irreversible
 > **Fusion** is separately named, optional, informed-confirmed and never required
 > for progression. The Chronicle must reference stable creature/world/mission ids
-> and remain valid across rename, reload and catalogue deduplication. The fixed-four-shard compact V2
-> delta carrier required to persist those V2-exclusive mutations keeps namespace count O(1) and
-> remains explicitly design-only in
-> `SAVE_SYSTEM.md`. These are design contracts only and remain unavailable in the v2 Guide until implemented
+> and remain valid across rename, reload and catalogue deduplication. The implemented fixed-four-shard
+> compact V2 delta carrier keeps namespace count and unchanged-state growth O(1), but no app path
+> exposes its internal exact-five V2-only successor. These product behaviors remain design contracts
+> only and unavailable in the v2 Guide until implemented
 > and outcome-tested.
 >
 > A later **Expedition Museum** is a player-curated, read-only projection over those

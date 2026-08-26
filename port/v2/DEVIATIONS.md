@@ -48,23 +48,27 @@ as any change that touches an entry.
   remains six lessons plus graduation with no Capture lesson. The uninterrupted 20-minute recovery
   observation and HUMAN review remain open; no Charter bioscan, targeted preview, hosted or release
   authority is implied.
-- ◐ **D-ARC5-OWNERSHIP-V2 — activated projection authority; infrastructure-only.** V2 binds capture
+- ◐ **D-ARC5-OWNERSHIP-V2 — compact authority implemented; infrastructure-only.** V2 binds capture
   receipts, deterministic fauna-only children, ordered parents, dispositions and tombstones. Its
-  app-owned migration carrier stores only exact V1/V2 modes, revisions and digests and reconstructs
-  from the current Arc 4 source, never duplicate ownership state. Boot creates or loads it after Arc 4
-  in the shared receipt-free CAS; genuine legacy Training composes one Arc 2, 18 Arc 4 and one Arc 5
-  write; every hit/miss advances and postcommit-publishes V1/V2 together. Protection rolls staged
-  route/Atlas/Arc 2 mirrors back to durable input. This is not a public or V2-only mutation writer,
-  breeding/care UI or companion system. The compact V2 delta carrier is design-only in
-  `../../SAVE_SYSTEM.md` and keeps its future namespace count O(1). Final current-input Slice
-  `20260825171148040-77701-fb5c63191544` passed on Edge `151.0.4129.101` in 336,570 ms (report/log
-  SHA-256 `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
-  `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`); Glass passed in 70,432 ms
-  with 12/12 viewport plus reload rows, 95/95 controls and non-vacuous Arc 5 corruption/projection
-  controls (report SHA-256 `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`).
-  Both bind base `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
-  `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
-  `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; audits are CLEAR.
+  app-owned representation is one version-2 manifest plus exactly four fixed generic delta shards.
+  The manifest binds exact Arc 4 source, canonical delta and reconstructed V2 target evidence; the
+  shards store only changed/V2-exclusive rows and each has its own fixed point. Boot creates all five
+  after Arc 4, upgrades an aligned legacy-v1 certificate in the shared receipt-free CAS, or writes
+  nothing for aligned current-v2. Genuine legacy Training composes one Arc 2, 18 Arc 4 and five Arc 5
+  writes; every hit/miss pre-certifies 18+5 and postcommit-publishes V1/V2 together. Protection rolls
+  staged route/Atlas/Arc 2 mirrors back to durable input. Source-only Arc 4 growth keeps all four
+  canonical empty-shard bytes identical, preventing a duplicate source and keeping unchanged-state
+  growth O(1). The internal V2-only successor emits exactly five carriers but is absent from the
+  public package root; there is no breeding/care UI or companion system. Final current-input Slice
+  `20260825213041239-98104-c96d3b2d0652` passed on Edge `151.0.4129.101` in 363,053 ms (report/log
+  SHA-256 `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+  `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`); Glass passed in 71,449 ms
+  with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and non-vacuous coherent
+  five-carrier corruption/O(1) empty-shard controls (report SHA-256
+  `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). Both bind source commit
+  `48ce0b1662a59b21070667be339a1e59503e1f19`, status
+  `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
+  `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits are CLEAR.
 - ★ **D-F3F4-CURRENT — superseding persistence/time overlay (2026-08-25).** V5 now partitions
   canonical owner rows, protects F4 authority, and commits product state, next active-play/
   SessionRNG authority, one immutable receipt and the next revision through one lease-fenced CAS.
@@ -76,7 +80,7 @@ as any change that touches an entry.
   Arc 3 settles Auto-Extractor loads from the prior active-play cursor, caps them by finite
   reserves, ignores legacy wall timestamps and reanchors a newly fabricated extractor. Arc 2 owns
   exact gear instances; Arc 4 owns the player-live exact-once capture writer above, while Arc 5A owns
-  the activated source-projection certificate and successor catalogue/specimen/fauna model. Unmigrated combat,
+  the activated compact five-carrier authority and successor catalogue/specimen/fauna model. Unmigrated combat,
   breeding, care, assignment and later random writers remain open. This overlay supersedes current-
   state implications in the dated `D-EPOCH-1`, `D-STORE`, `D-IDENTITY-LOOT`,
   `D-AUTOEXTRACT-CLOCK` and `D-RNG` entries below

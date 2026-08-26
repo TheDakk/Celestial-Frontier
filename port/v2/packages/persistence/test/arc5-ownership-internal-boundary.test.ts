@@ -38,7 +38,7 @@ function relative(absolute: string): string {
 }
 
 describe('@cf/persistence — Arc 5 internal V2 source-projection boundary', () => {
-  it('keeps the internal subpath owned only by the Arc 5 certificate writer', () => {
+  it('keeps the internal subpath owned only by the Arc 5 compact-delta writer', () => {
     const productionFiles = [
       ...sourceFilesUnder(path.join(V2_ROOT, 'packages')),
       ...sourceFilesUnder(path.join(V2_ROOT, 'apps')),

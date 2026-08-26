@@ -53,7 +53,7 @@ const ARC4_LEDGER = Object.freeze({
   ok: true,
 });
 const ARC4_LEDGER_LINE = ARC4_LEDGER_PREFIX + JSON.stringify(ARC4_LEDGER);
-const ARC4_PASS_MARKER = 'SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces/aligned source-bound Arc 5 V1→V2 certificate/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.';
+const ARC4_PASS_MARKER = 'SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.';
 
 function sha256(value) { return crypto.createHash('sha256').update(value).digest('hex'); }
 function git(args) {

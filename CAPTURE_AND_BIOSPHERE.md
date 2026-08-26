@@ -13,18 +13,19 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > per-world biosphere progress under 18 owner namespaces. The app now prepares an absent strict
 > ownership-v1 carrier—or reconciles a projectable stale compatibility mirror—inside the same
 > receipt-free lease-fenced boot CAS as F4, route repair and Arc 2/3 bootstrap. Arc 5A then derives
-> its digest-only V2 projection certificate from that exact final Arc 4 source and joins the same
-> commit; an aligned certificate is a zero-write fixed point. Future, corrupt,
+> its compact V2 manifest and exactly four fixed generic delta shards from that exact final Arc 4
+> source and joins the same commit. An aligned legacy-v1 certificate upgrades through that one
+> receipt-free CAS; an aligned current-v2 five-carrier authority is a zero-write fixed point. Future, corrupt,
 > unrepresentable and lossless `legacy-protected` evidence remains protected rather than rewritten.
 > A genuine legacy Field Training completion couples its one Arc 2 write, all 18 Arc 4 writes and the
-> one Arc 5 certificate write to the same replacement transaction and verifies both reconstructed
+> five Arc 5 carrier writes to the same replacement transaction and verifies both reconstructed
 > ownership authorities after durability. Source-deferred absence stays explicit and write-free.
 >
 > The app's native Survey-card Tame/Scavenge/Sample front door captures the exact current surface, canonical
 > CF1 address, production **full** roster and current ecology epoch. Before either of its two F4 draws
 > exists, registered preflight certifies the miss plus every eligible hit as a complete save under
-> ownership, v4 mirror, Arc 5 projection, namespace and byte/counter capacity. Every scenario
-> prepares the exact 18 Arc 4 replacements plus one Arc 5 certificate replacement. The selected
+> ownership, v4 mirror, Arc 5 compact projection, namespace and byte/counter capacity. Every scenario
+> prepares the exact 18 Arc 4 replacements plus five Arc 5 carrier replacements. The selected
 > outcome then spends one Biosphere attempt on hit or miss and lands both ownership authorities,
 > compatibility fields, F4 authority, one immutable receipt and the next repository revision in one
 > CAS. Only a genuinely first species
@@ -34,7 +35,8 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > pending payload of registered plan/settlement identities and prepared fingerprint. The committed
 > path alone mints the token and performs the sole WeakMap registration, binding that payload to the
 > exact transaction/kind/revision; verification then binds it to the full prepared save, current
-> Arc 4 carrier/mirror, reconstructed V2 authority and F4 result before publishing V1 and V2
+> Arc 4 carrier/mirror, all five Arc 5 bytes, reconstructed source/delta/target/shard fixed points and
+> F4 result before publishing V1 and V2
 > together. Either projection mismatch performs one read-only convergence reload without a reroll.
 >
 > Capture is now **player-live locally**. Survey shows exactly one Tame, Scavenge and Sample action,
@@ -71,19 +73,19 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > **[PARTIAL]** until a real uninterrupted next-cycle recovery observation and the combined HUMAN
 > first-journey review are complete. The legacy formulas below remain parity/design input; current
 > v2 implementation authority is the typed path described here.
-> Those retained Arc 4 reports predate Arc 5A activation and do not certify it. Final current-input
-> Slice run `20260825171148040-77701-fb5c63191544` passed on Edge `151.0.4129.101` in 336,570 ms
+> Those retained Arc 4 reports predate compact Arc 5 V2 and do not certify it. Final current-input
+> Slice run `20260825213041239-98104-c96d3b2d0652` passed on Edge `151.0.4129.101` in 363,053 ms
 > with exactly one nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS, 10 hashed PNGs
-> and zero findings/retries/source change (report/log SHA-256
-> `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
-> `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`). Glass passed on the same
-> Edge in 70,432 ms with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and
-> zero blocked/omitted/findings/instrument failures/retries; Arc 5 `targetDigest` corruption and the
-> durable projection were non-vacuous (report SHA-256
-> `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`). Both bind base
-> `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
-> `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
-> `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; audits are CLEAR. Arc 4
+> and zero findings/failure scopes/retries/source change (report/log SHA-256
+> `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+> `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`). Glass passed on the same
+> Edge in 71,449 ms with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and
+> zero blocked/omitted/findings/instrument failures/retries; five-carrier corruption and O(1)
+> source-growth/empty-shard invariance were non-vacuous (report SHA-256
+> `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). Both bind source commit
+> `48ce0b1662a59b21070667be339a1e59503e1f19`, status
+> `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits are CLEAR. Arc 4
 > remains `[PARTIAL]` for real 20-minute recovery plus HUMAN review, and Arc 5 remains
 > `[PARTIAL]`/infrastructure-only.
 

@@ -3,7 +3,7 @@
 **STATUS:** approved product direction and implementation contract as of **2026-08-25**.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
 exact-instance Inventory, Arc 3 Engineering actions and Arc 4 player-facing capture loop described
-below. Arc 5A now activates its ownership-v2 projection certificate across boot, genuine legacy
+below. Arc 5A now activates its compact ownership-v2 five-carrier authority across boot, genuine legacy
 Training and every Arc 4 capture successor, but remains infrastructure-only. Five non-Deep-Scanner research purchases,
 Survey orbital-mineral-row rendering, disconnected-effect and fully exceptional slotted fixed-
 recipe actions, new random loot sources, upgrades/sockets, companion
@@ -23,13 +23,14 @@ does not silently promote planned behavior into the in-game Guide.
 >
 > Arc 4 owns the full epoch-bound roster, canonical acquisition snapshot, capture plan and
 > ownership-v1 model across 18 namespaces. Boot migration/reconciliation shares the one receipt-free
-> product CAS, then Arc 5A derives or loads its exact source-bound projection certificate inside that
+> product CAS, then Arc 5A derives or loads its exact source-bound manifest plus four fixed generic
+> delta shards inside that
 > same commit. Protected Arc 5 evidence cancels staged bootstrap and restores durable route, Atlas and
 > Arc 2 compatibility fields. Genuine legacy Training couples its Arc 2 write with all 18 Arc 4 writes
-> plus one Arc 5 certificate and exact source/target verification. The native Survey-card
+> plus all five Arc 5 carriers and exact source/delta/target/shard verification. The native Survey-card
 > Tame/Scavenge/Sample path certifies miss and every
 > eligible hit against complete-save capacity before two F4 draws, then commits hit-or-miss spend,
-> ownership/mirror, the one Arc 5 certificate replacement, one receipt and revision together.
+> ownership/mirror, the five Arc 5 carrier replacements, one receipt and revision together.
 > First-species catalogue/reward facts are
 > one-time; repeats may create another fauna individual or specimen lot. Postcommit publication
 > requires the evidence token minted only after commit: its sole WeakMap registration binds the
@@ -42,11 +43,13 @@ does not silently promote planned behavior into the in-game Guide.
 > stale/publication paths remain non-optimistic and converge without a reroll or second write.
 > Native Close/reopen/reload and 12-viewport geometry/focus are browser-proven. The Guide now has
 > 24 partial /17 unavailable topics and the draft release has 54 bullets; Training remains six
-> lessons plus graduation with no Capture lesson. Arc 5A owns a receipt-bound V2 model plus an
-> app-active digest-only projection certificate. Boot creates it after Arc 4 in the same receipt-free
-> CAS; genuine legacy Training composes one Arc 2, 18 Arc 4 and one Arc 5 write; and every hit or miss
-> advances and postcommit-publishes V1/V2 together. It still has no live breed/care/Recovery/
-> assignment, Chronicle or companion expedition. The V2-only delta carrier remains design-only.
+> lessons plus graduation with no Capture lesson. Arc 5A owns a receipt-bound V2 model plus the
+> app-active compact five-carrier representation. Aligned legacy-v1 upgrades once; aligned current-v2
+> is zero-write. Genuine legacy Training composes one Arc 2, 18 Arc 4 and five Arc 5 writes; every hit
+> or miss pre-certifies 18+5 and postcommit-publishes V1/V2 together. The delta stores only changed or
+> V2-exclusive rows, and source-only growth leaves all four canonical empty-shard bytes invariant.
+> The internal V2-only successor also outputs exactly five carriers but is not public. There is still
+> no live breed/care/Recovery/assignment, Chronicle or companion expedition.
 > Arc 4 remains `[PARTIAL]` only for the genuine 20-minute recovery observation and combined HUMAN
 > first-journey review; no Charter bioscan, shipped release/version or preview/publication is claimed.
 >
@@ -61,19 +64,19 @@ does not silently promote planned behavior into the in-game Guide.
 > findings/instrument failures/retries (report
 > `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). This is local
 > exact-input proof, not exact-head/hosted/integration/HUMAN/release authority.
-> Those retained Arc 4 reports predate Arc 5A activation and do not certify it. Final current-input
-> Slice `20260825171148040-77701-fb5c63191544` passed on Edge `151.0.4129.101` in 336,570 ms with
+> Those retained Arc 4 reports predate compact Arc 5 V2 and do not certify it. Final current-input
+> Slice `20260825213041239-98104-c96d3b2d0652` passed on Edge `151.0.4129.101` in 363,053 ms with
 > zero findings/retries/source change, exactly one nine-stage/14-burn/`recoveryClaimed:false`/`ok`
 > ledger plus PASS and 10 hashed PNGs (report/log SHA-256
-> `15b10bcf96f23721c60a2e547708251d6584be5d1b00b307dd9eed9a654438d0` /
-> `03e9529ff60c9b57a2f188ee8c9606710558172c23d80309d052662bed4231fe`). Glass passed on the same
-> Edge in 70,432 ms with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and
+> `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+> `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`). Glass passed on the same
+> Edge in 71,449 ms with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and
 > zero blocked/omitted/findings/instrument failures/retries; Arc 5 corruption/projection controls
-> were non-vacuous (report SHA-256
-> `7fc8fbae9b8d01af2d3e9b61fbdee8d2f8a5dad24c9fb28c2407b97a7526546d`). Both bind base
-> `9d91810738337813cb6db6ef81c9f6f229c3d269`, status
-> `42c0a48616468cdf3436345a9b0e407dbf82135648935f685680735c535b6275` and tree
-> `e981637a9bf7264633cc9c1711a24b7e9c0181ffcc1ae69157184d7aeebb45a9`; audits are CLEAR.
+> were non-vacuous, including coherent current-v2 corruption and O(1) empty-shard invariance (report SHA-256
+> `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). Both bind source commit
+> `48ce0b1662a59b21070667be339a1e59503e1f19`, status
+> `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits are CLEAR.
 >
 > Local commit `c4a02be` records the Arc 3 product/browser-tool repair batch. One no-retry Slice run
 > passed in 253,181 ms with 0 findings/10 screenshots; full Glass separately passed in 64,222 ms with
@@ -266,13 +269,13 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
 | Charters / reach language | Stage-aware landfall projection plus committed-only Arc 3 mining/fixed-fabrication goal banking; imported drive/chapter facts still gate reach | Port remaining outcome writers and expose goals/transitions/rewards only with them |
 | Compendium | Virtualized 1,500-row browsing surface with bounded asynchronous thumbnails and selected static detail; native Arc 4 acquisition may add durable rows through Survey, not through the Compendium panel itself | HUMAN Arc 1 art review, then any separately bounded living selected preview |
-| Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact V2 projection certificate in that same CAS and publishes both authorities together. Final Slice `20260825171148040-77701-fb5c63191544` and 95/95-control Glass evidence are terminal PASS with CLEAR audits; the exact hashes/provenance are recorded above | Observe one real 20-minute next-cycle recovery and complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
+| Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Final Slice `20260825213041239-98104-c96d3b2d0652` and 95/95-control Glass evidence are terminal PASS with CLEAR audits; the exact hashes/provenance are recorded above | Observe one real 20-minute next-cycle recovery and complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
 | Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
 | Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, the sole purchasable Deep-Scanner row, and eligible fixed-Fabrication actions; the pure orbital-reveal policy exists but Survey renders no orbital mineral rows; connected exact system outputs can update reach | Other five research purchases, Survey orbital mineral rows, fully exceptional slotted/disconnected recipe outputs, HUMAN silhouette and Engineering comprehension, and later authored upgrades/variable construction |
 | Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six displayed Research rows and all 62 listed fixed recipes are present; only Deep Scanners and connected-effect recipes with exact costs/preconditions and capacity/revision headroom are actionable and receipt-backed | Fully exceptional slotted/disconnected outputs, authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing |
-| Breeding / care | Domain genetics and the activated V2 ownership projection exist; no V2-only persistence carrier or live action exists | Implement the compact delta carrier, then nonlethal breeding with bounded parent Recovery, lineage, care and bond outcomes |
+| Breeding / care | Domain genetics and the activated compact five-carrier V2 ownership authority exist; no V2-only action writer exists | Implement nonlethal breeding with bounded parent Recovery, lineage, care and bond outcomes |
 | Combat / conquest / Guardians | Deterministic domain duel exists; no live v2 action | Outcome-driven combat UI, rewards, injury and Guardian encounters |
-| Companion expeditions | Stable identity/assignment schema exists, but no V2-only persistence carrier or committed mission runtime exists | Implement the compact delta carrier, then active-play missions with sealed exact-once receipts |
+| Companion expeditions | Stable identity/assignment schema and the compact V2 ownership carrier exist, but no committed mission runtime exists | Implement active-play missions with sealed exact-once receipts |
 | Audio | Player path: whoosh and survey ping only. Package-only partial: pure resolver/taxonomy/ecology/expression data, injected bounded mixer/lifecycle/lab, and empty rights validator; compatibility stings are outside it | Canonical app adapters and owned playback first; then authored creature/ship/biome sound, accessibility, browser/device plateaus and HUMAN listening. Combat/Guardian integration waits for Arc 6 |
 
 The in-game Guide must continue to say genuinely unavailable outcomes are unavailable. It may
@@ -483,7 +486,7 @@ more expressive ships and companions, not an infinite treadmill.
 A catalogue discovery and a living owned creature are different records. The legacy Codex
 conflates them, so consuming/breeding/losing the one specimen can erase the catalogue row and
 cannot represent two individuals of the same species. Ownership-v1/v2 now implements that identity
-split and Arc 5A reconstructs its exact source-bound app projection. The broader companion sketch
+split and Arc 5A reconstructs its exact source-bound app projection from the compact manifest and four shards. The broader companion sketch
 below remains a design target, not the literal current persisted carrier:
 
 ```ts
@@ -515,17 +518,18 @@ type CreatureInstance = {
 
 Legacy migration creates one deterministic content-derived `creature-v1:<digest>` individual for an
 owned fauna row while retaining the catalogue discovery. Non-fauna ownership becomes a stable
-`specimen-v1:<digest>` lot rather than a living companion. The active Arc 5A certificate stores only
-source/target digests and reconstructs those rows from Arc 4; it cannot yet persist a bred child,
-tombstone, changed living row or other V2-only delta.
+`specimen-v1:<digest>` lot rather than a living companion. The active Arc 5A manifest binds exact
+source/delta/target evidence while four fixed shards persist only changed or V2-exclusive rows. The
+internal authority can encode a bred child, tombstone or changed living row, but no public app action
+invokes it yet.
 
-**[DESIGN — NOT YET IMPLEMENTED]:** `SAVE_SYSTEM.md` specifies the prerequisite compact Arc 5
-delta carrier: the existing migration namespace becomes its v2 manifest and exactly four generic
-fixed shards store only V2-exclusive/changed rows, with exact source/target/delta digests. The fixed
-four-shard layout keeps namespace count O(1), independent of ownership count. No breed,
-care, Recovery, assignment or mission writer may land before that representation and its
-failure/capacity/readback controls exist. This is an engineering design, not a product decision in
-`port/DECISIONS.md`.
+**[ARC 5A AUTHORITY IMPLEMENTED — PLAYER WRITERS NOT YET IMPLEMENTED]:** `SAVE_SYSTEM.md`
+specifies the compact Arc 5 delta carrier now used by the app: the existing migration namespace is
+its v2 manifest and exactly four generic fixed shards store only V2-exclusive/changed rows, with
+exact source/target/delta digests. The fixed four-shard layout keeps namespace count O(1),
+independent of ownership count. Its failure, capacity and readback controls are live; breed, care,
+Recovery, assignment and mission writers remain unavailable. The representation is an engineering
+boundary, not a new product decision in `port/DECISIONS.md`.
 
 A companion is not disposable inventory. Its identity includes its stable owned-creature ID,
 name, lineage, explicit origin, current condition and a compact Chronicle of meaningful shared firsts. Bond
@@ -783,9 +787,9 @@ batch. Planned systems live here and in their system docs, not in player-visible
 | 1 — portrait/ship foundation | virtualized thumbnails, character portrait service, pure `ShipVisualState`, static Shipyard proof | Automated foundation and 42/42 memory route are complete; phone/desktop HUMAN portrait and four-silhouette judgment remain open |
 | 2 — item instances and readable economy **[PARTIAL; recorded local candidate green]** | Schema/migration, strict carrier, Inventory, equip/unequip/salvage/pending-claim, canonical fixed tables and exact inspect/conditional compare are implemented; production source/craft policy is not | The recorded pre-current-WIP Arc 2 candidate's fixed-point/exact-instance/browser outcomes were green; this does not certify the current moving tree. Authored source/range/targeted-craft/pacing policy and HUMAN phone/desktop review remain before program closure |
 | 3 — engineering loop **[PARTIAL locally implemented; bounded browser pair green]** | Mine/Skim, sole purchasable Deep-Scanner row, six-row Research presentation, all-62 fixed-recipe listing, eligible connected-effect/exact-cost/headroom fabrication actions, and truthful Guide/release/Training guidance are implemented; Survey orbital mineral rows, the other five research purchases, fully exceptional slotted/disconnected outputs and wider engineering depth remain open | Local Slice/Glass exact-input proof covers real actions, finite active-play sources, durable receipt/reload parity, and storage/stale/publication convergence. Exact-head/full-battery evidence, economy simulation, reach/visual/Guide agreement, and HUMAN comprehension remain open |
-| 4 — capture/ownership **[PARTIAL player-live locally]** | Strict 18-namespace bootstrap/Training coupling and native Tame/Scavenge/Sample now provide source-bound full-roster random-pool odds/Yield, all-scenario-before-draw, one-receipt/CAS hit/miss ownership outcomes, no optimism, reload and storage/stale/publication convergence. Arc 5A additionally advances the V2 projection certificate in the same boot/Training/capture transactions. Final current-input Slice plus 12/12-row, 95/95-control Glass evidence are terminal PASS with CLEAR audits | observe a real 20-minute next-cycle recovery and complete the combined HUMAN first-journey/ownership review; do not infer Charter bioscan, targeted selection or release authority |
+| 4 — capture/ownership **[PARTIAL player-live locally]** | Strict 18-namespace bootstrap/Training coupling and native Tame/Scavenge/Sample now provide source-bound full-roster random-pool odds/Yield, all-scenario-before-draw, one-receipt/CAS hit/miss ownership outcomes, no optimism, reload and storage/stale/publication convergence. Arc 5A additionally advances the exact compact five-carrier V2 authority in the same boot/Training/capture transactions. Final current-input Slice plus 12/12-row, 95/95-control Glass evidence are terminal PASS with CLEAR audits | observe a real 20-minute next-cycle recovery and complete the combined HUMAN first-journey/ownership review; do not infer Charter bioscan, targeted selection or release authority |
 | 4.5 — first complete journey | Fresh-start Survey → opportunity → Gather → Build → Tame → ship upgrade → farther reach → meaningful Return | first-time 30–60-minute human path proves comprehension, agency and satisfying pacing without idle waits or a scripted fake reward |
-| 5 — companions **[PARTIAL infrastructure-only]** | Activated source-bound V2 projection across boot, genuine legacy Training and every Arc 4 hit/miss; no player capability. The compact V2-only delta carrier, nonlethal breeding/recovery, care/bond/Chronicle and active-play missions remain open | implement and negative-control the delta carrier first; then fed inheritance, recovery/away locks, exact-once return, save-failure/two-tab controls |
+| 5 — companions **[PARTIAL infrastructure-only]** | Implemented source-bound compact V2 manifest/four-shard authority across boot, genuine legacy Training and every Arc 4 hit/miss; exact-five internal V2-only successor exists but no player capability invokes it. Nonlethal breeding/recovery, care/bond/Chronicle and active-play missions remain open | wire only after product authority: fed inheritance, recovery/away locks, exact-once return, save-failure/two-tab controls |
 | 5.5 — combat decision model | role, preparation, telegraphing, counterplay, retreat and settlement rules are specified and scenario-proven before battle UI expands | humans can choose and explain a viable response; no opaque hard-counter or stat-only outcome passes as strategy |
 | 6 — combat/Guardians | live duel/conquest party presentation and receipt rewards | transcript-driven presentation; every reward/injury/settlement outcome tested |
 | 7 — audio foundation **[PARTIAL package-only]** | Pure resolver/taxonomy/ecology/expression seams, injected mixer/lifecycle/voice owner, lab accounting and the hard ≤8-creature/≤120-node configuration cap are committed; app adapters/playback and accessibility remain open | Canonical app projection and owned playback, real-browser node/voice plateau, captions/mono/dynamic-range/reduced-intensity behavior, visibility outcome and HUMAN listening gate |
@@ -833,7 +837,7 @@ cannot understand, enjoy or comfortably use it.
   the canonical finite Arc 3 opportunities and their currently executable source subset;
 - one real uninterrupted next-cycle Biosphere recovery observation and the combined HUMAN
   first-journey/ownership review over the implemented player-facing capture loop;
-- the design-only compact Arc 5 V2 delta carrier and every V2-only mutation/readback/failure control;
+- player-visible Arc 5 V2 mutation actions and their complete save/readback/failure controls;
 - feeding, injury care, breeding, lineage actions, creature XP/classes and Companion bond;
 - friendly duels, conquest, Apex Guardians, settlement rewards and Binder/Paragons;
 - Companion missions/return loot;
@@ -847,8 +851,8 @@ cannot understand, enjoy or comfortably use it.
 
 - canonical CF1 source proof is live for runtime galaxy/star/planet navigation,
   including saved views and Atlas; Arc 4 capture now binds the current surface to canonical address,
-  full roster and current epoch; Arc 5A binds its reconstructed V2 projection to every Arc 4
-  successor, while V2-only companion/combat ownership ingress remains open;
+  full roster and current epoch; Arc 5A binds its reconstructed compact V2 authority to every Arc 4
+  successor, while public V2-only companion/combat ownership ingress remains open;
 - D-TRAIN-1 exact-head/integration plus real-save Gate-C evidence, and CFB parent identity;
 - Compendium and Shipyard HUMAN art judgment, plus bounded living-preview/audio work;
 - physical-device long-session memory/heat judgment beyond the automated Pixi/Canvas ownership plateau;

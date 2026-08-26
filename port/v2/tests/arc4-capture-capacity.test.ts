@@ -11,6 +11,7 @@ import {
   ownershipStateDigestV2,
   preflightCaptureV1,
   sha256Hex,
+  type OwnershipStateV2,
 } from '@cf/domain-acquisition';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
@@ -19,7 +20,9 @@ import {
 } from '@cf/domain-sessionrng';
 import {
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
+  ARC5_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
+  ARC5_OWNERSHIP_MIGRATION_VERSION,
   applyV5ExtensionWrites,
   createF4MultiOutcomePreDrawTransactionOwner,
   createMemoryBackend,
@@ -150,6 +153,18 @@ function authorityExtensions(seed: number): V5Extensions {
   return arc5.extensions;
 }
 
+function currentArc5Parent(extensions: V5Extensions): OwnershipStateV2 {
+  const loaded = readArc5OwnershipMigration(
+    extensions,
+    SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  );
+  if (loaded.kind !== 'loaded'
+    || loaded.evidence.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION) {
+    throw new Error(`Arc 5 parent fixture was ${loaded.kind}`);
+  }
+  return loaded.state;
+}
+
 function seedForSuccessDraw(predicate: (value: number) => boolean): number {
   for (let seed = 0; seed < 100_000; seed++) {
     if (predicate(createSessionRNG(seed).at(DOMAINS.captureSuccess, 0))) return seed;
@@ -253,7 +268,9 @@ async function settleThroughGenuineOwner(
     receiptKind: 'capture-attempt',
     now: NOW,
     preDraw: (input, authorizer) => {
-      const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw: input });
+      const certified = certifyArc4CaptureCapacityV1({
+        preflight, parent: currentArc5Parent(extensions), preDraw: input,
+      });
       if (certified.kind !== 'certified') {
         return { kind: 'refused' as const, reason: certified.reason };
       }
@@ -281,7 +298,9 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     const extensions = authorityExtensions(HIT_SEED);
     const preflight = readyPreflight(extensions);
     const preDraw = valueFreeInput(state, extensions);
-    const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw });
+    const certified = certifyArc4CaptureCapacityV1({
+      preflight, parent: currentArc5Parent(extensions), preDraw,
+    });
     expect(certified.kind).toBe('certified');
     if (certified.kind !== 'certified') return;
     const { certificate } = certified;
@@ -314,12 +333,12 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     expect(isArc4CaptureDerivedSettlementV1({ ...settled })).toBe(false);
     expect(settled.plan.hit).toBe(true);
     expect(settled.derivation.extensionWrites).toHaveLength(
-      ARC4_OWNERSHIP_EXTENSION_TARGETS.length + 1,
+      ARC4_OWNERSHIP_EXTENSION_TARGETS.length + ARC5_OWNERSHIP_EXTENSION_TARGETS.length,
     );
     expect(settled.derivation.extensionWrites?.map(({ segment, namespace }) => ({ segment, namespace })))
       .toEqual([
         ...ARC4_OWNERSHIP_EXTENSION_TARGETS,
-        ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
+        ...ARC5_OWNERSHIP_EXTENSION_TARGETS,
       ]);
     expect(settled.stardustReward).toBe(
       settled.plan.firstForSpecies && settled.plan.tier >= 5 ? settled.plan.tier - 3 : 0,
@@ -427,7 +446,7 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
       preDraw: (input, authorizer) => {
         trace.push('capacity');
         const certified = certifyArc4CaptureCapacityV1({
-          preflight, preDraw: input,
+          preflight, parent: currentArc5Parent(extensions), preDraw: input,
         });
         return certified.kind === 'certified'
           ? authorizer.ready(certified.certificate, (draw, settlementAuthorizer) => {
@@ -523,6 +542,7 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
       preDraw: (input, authorizer) => {
         const certified = certifyArc4CaptureCapacityV1({
           preflight,
+          parent: currentArc5Parent(extensions),
           preDraw: { ...input, codec: saveCodec(REGISTRY, NOW) },
         });
         if (certified.kind !== 'certified') {
@@ -553,7 +573,9 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
       receiptKind: 'not-a-capture',
       now: NOW,
       preDraw: (input, authorizer) => {
-        const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw: input });
+        const certified = certifyArc4CaptureCapacityV1({
+          preflight, parent: currentArc5Parent(extensions), preDraw: input,
+        });
         if (certified.kind !== 'certified') {
           return { kind: 'refused' as const, reason: certified.reason };
         }
@@ -598,7 +620,9 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
       receiptKind: 'capture-attempt',
       now: NOW,
       preDraw: (input, authorizer) => {
-        const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw: input });
+        const certified = certifyArc4CaptureCapacityV1({
+          preflight, parent: currentArc5Parent(extensions), preDraw: input,
+        });
         if (certified.kind !== 'certified') {
           return { kind: 'refused' as const, reason: certified.reason };
         }
@@ -646,7 +670,9 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
         receiptKind: 'capture-attempt',
         now: NOW,
         preDraw: (input, authorizer) => {
-          const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw: input });
+          const certified = certifyArc4CaptureCapacityV1({
+            preflight, parent: currentArc5Parent(extensions), preDraw: input,
+          });
           if (certified.kind !== 'certified') {
             return { kind: 'refused' as const, reason: certified.reason };
           }
@@ -711,7 +737,9 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
       receiptKind: 'capture-attempt',
       now: NOW,
       preDraw: (input, authorizer) => {
-        const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw: input });
+        const certified = certifyArc4CaptureCapacityV1({
+          preflight, parent: currentArc5Parent(extensions), preDraw: input,
+        });
         if (certified.kind !== 'certified') {
           return { kind: 'refused' as const, reason: certified.reason };
         }
@@ -799,7 +827,7 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
       now: NOW,
       preDraw: (input, authorizer) => {
         const certified = certifyArc4CaptureCapacityV1({
-          preflight, preDraw: input,
+          preflight, parent: currentArc5Parent(extensions), preDraw: input,
         });
         return certified.kind === 'certified'
           ? authorizer.ready(certified.certificate, (_draw, settlementAuthorizer) => {
@@ -824,9 +852,20 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     const extensions = authorityExtensions(MISS_SEED);
     const preflight = readyPreflight(extensions);
     const preDraw = valueFreeInput(state, extensions);
-    const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw });
+    const certified = certifyArc4CaptureCapacityV1({
+      preflight, parent: currentArc5Parent(extensions), preDraw,
+    });
     if (certified.kind !== 'certified') throw new Error(`miss certificate was ${certified.reason}`);
     const settled = await settleThroughGenuineOwner(preflight, state, extensions);
+    expect(settled.derivation.extensionWrites).toHaveLength(
+      ARC4_OWNERSHIP_EXTENSION_TARGETS.length + ARC5_OWNERSHIP_EXTENSION_TARGETS.length,
+    );
+    expect((settled.derivation.extensionWrites ?? []).map(({ segment, namespace }) => ({
+      segment, namespace,
+    }))).toEqual([
+      ...ARC4_OWNERSHIP_EXTENSION_TARGETS,
+      ...ARC5_OWNERSHIP_EXTENSION_TARGETS,
+    ]);
     expect(settled.plan.hit).toBe(false);
     expect(settled.plan.firstForSpecies).toBe(false);
     expect(settled.stardustReward).toBe(0);
@@ -869,16 +908,31 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     const preflight = readyPreflight(aligned);
     const namespace = ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace;
     const carrier = aligned.player?.[namespace];
-    if (carrier === undefined) throw new Error('Arc 5 fixture certificate disappeared');
+    if (carrier === undefined) throw new Error('Arc 5 fixture manifest disappeared');
 
     const absent = structuredClone(aligned) as Record<string, Record<string, unknown>>;
-    delete absent.player?.[namespace];
+    for (const target of ARC5_OWNERSHIP_EXTENSION_TARGETS) {
+      delete absent[target.segment]?.[target.namespace];
+    }
 
     const corrupt = structuredClone(aligned) as Record<
       string,
       Record<string, { version: number; json: string }>
     >;
     corrupt.player![namespace] = { version: carrier.version, json: '{}' };
+
+    const shardTarget = ARC5_OWNERSHIP_EXTENSION_TARGETS[1];
+    const shardCarrier = aligned[shardTarget.segment]?.[shardTarget.namespace];
+    if (shardCarrier === undefined) throw new Error('Arc 5 fixture shard disappeared');
+    const shardCorrupt = structuredClone(aligned) as Record<
+      string, Record<string, { version: number; json: string }>
+    >;
+    shardCorrupt[shardTarget.segment]![shardTarget.namespace] = {
+      version: shardCarrier.version,
+      json: '{}',
+    };
+    const shardMissing = structuredClone(aligned) as Record<string, Record<string, unknown>>;
+    delete shardMissing[shardTarget.segment]?.[shardTarget.namespace];
 
     const future = structuredClone(aligned) as Record<
       string,
@@ -890,31 +944,35 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
       string,
       Record<string, { version: number; json: string }>
     >;
-    const driftedCertificate = JSON.parse(carrier.json) as Record<string, unknown>;
-    driftedCertificate.sourceDigest = `${driftedCertificate.sourceDigest}` === '0'.repeat(64)
+    const driftedManifest = JSON.parse(carrier.json) as Record<string, unknown>;
+    driftedManifest.sourceDigest = `${driftedManifest.sourceDigest}` === '0'.repeat(64)
       ? 'f'.repeat(64) : '0'.repeat(64);
     drift.player![namespace] = {
       version: carrier.version,
-      json: JSON.stringify(driftedCertificate),
+      json: JSON.stringify(driftedManifest),
     };
 
     const controls = Object.freeze([
-      ['base-absent', absent],
-      ['base-corrupt', corrupt],
-      ['base-future', future],
-      ['base-source-drift', drift],
+      ['absent-all-five', 'base-absent', absent],
+      ['manifest-corrupt', 'base-corrupt', corrupt],
+      ['shard-corrupt', 'base-corrupt', shardCorrupt],
+      ['shard-missing', 'base-corrupt', shardMissing],
+      ['manifest-future', 'base-future', future],
+      ['source-drift', 'base-source-drift', drift],
     ] as const);
-    for (const [reason, extensions] of controls) {
+    const parent = currentArc5Parent(aligned);
+    for (const [label, reason, extensions] of controls) {
       const before = structuredClone(extensions);
       expect(certifyArc4CaptureCapacityV1({
         preflight,
+        parent,
         preDraw: valueFreeInput(state, extensions as unknown as V5Extensions),
-      }), reason).toEqual({
+      }), label).toEqual({
         kind: 'refused',
         reason: `arc5-migration:${reason}`,
         scenario: { kind: 'miss', candidateSpeciesId: null, sourceOrdinal: null },
       });
-      expect(extensions, reason).toEqual(before);
+      expect(extensions, label).toEqual(before);
     }
   }, 20_000);
 
@@ -923,23 +981,28 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     const extensions = authorityExtensions(HIT_SEED);
     const preflight = readyPreflight(extensions);
     const preDraw = valueFreeInput(state, extensions);
-    const certified = certifyArc4CaptureCapacityV1({ preflight, preDraw });
+    const parent = currentArc5Parent(extensions);
+    const certified = certifyArc4CaptureCapacityV1({ preflight, parent, preDraw });
     if (certified.kind !== 'certified') throw new Error(`control certificate was ${certified.reason}`);
     const realDraw = evaluatedInput(certified.certificate, state, extensions);
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent,
       preDraw: { ...preDraw, domains: [...ARC4_CAPTURE_DOMAINS].reverse() },
     })).toEqual({ kind: 'refused', reason: 'domain-order-mismatch' });
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent,
       preDraw: { ...preDraw, receiptOrdinal: preDraw.receiptOrdinal + 1 },
     })).toEqual({ kind: 'refused', reason: 'snapshot-authority-mismatch' });
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent,
       preDraw: { ...preDraw, activePlayMs: ACTIVE_PLAY_CAPTURE_CYCLE_MS },
     })).toEqual({ kind: 'refused', reason: 'snapshot-authority-mismatch' });
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent,
       preDraw: {
         ...preDraw,
         draft: { ...preDraw.draft, EPOCH_BASE: preflight.snapshot.ecologyEpoch + 1 },
@@ -962,6 +1025,7 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     Object.freeze(accessorCodec);
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent,
       preDraw: { ...preDraw, codec: accessorCodec as unknown as typeof preDraw.codec },
     })).toEqual({ kind: 'refused', reason: 'input-invalid' });
     expect(codecPrepareReads).toBe(0);
@@ -1071,10 +1135,11 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     });
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent,
       preDraw: accessorPreDraw as unknown as F4MultiOutcomePreDrawInput,
     })).toEqual({ kind: 'refused', reason: 'input-invalid' });
     expect(extensionAccessorReads).toBe(0);
-    const trapping = new Proxy({ preflight, preDraw }, {
+    const trapping = new Proxy({ preflight, parent, preDraw }, {
       ownKeys() { throw new Error('capacity proxy trap'); },
     });
     expect(certifyArc4CaptureCapacityV1(trapping))
@@ -1098,6 +1163,7 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     }
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent: currentArc5Parent(extensions),
       preDraw: { ...preDraw, extensions: perSegment as unknown as V5Extensions },
     })).toEqual({ kind: 'refused', reason: 'extensions-corrupt' });
 
@@ -1113,6 +1179,7 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     }
     expect(certifyArc4CaptureCapacityV1({
       preflight,
+      parent: currentArc5Parent(extensions),
       preDraw: { ...preDraw, extensions: global as unknown as V5Extensions },
     })).toEqual({ kind: 'refused', reason: 'extensions-corrupt' });
     expect(readF4Authority(extensions)).toEqual({

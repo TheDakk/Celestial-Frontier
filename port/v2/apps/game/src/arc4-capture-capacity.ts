@@ -1,11 +1,11 @@
 /* Arc 4 capture capacity transaction preparation.
 
    This app-owned helper joins the registered acquisition snapshot, current
-   Arc 2/F4/Arc 4 ownership, its aligned Arc 5 migration certificate, the
+   Arc 2/F4/Arc 4 ownership, its aligned Arc 5 compact-delta authority, the
    complete v4 compatibility mirror, and the bounded v5 writer without
    exposing a mutation. It enumerates the miss plus every eligible hit before
    SessionRNG values exist. Every scenario advances Arc 4 and Arc 5 together;
-   the settlement callback bound by that certificate must mint exactly one
+   the settlement callback bound by the capacity certificate must mint exactly one
    selected scenario authorization byte-for-byte. */
 import {
   ACTIVE_PLAY_CAPTURE_CYCLE_MS,
@@ -13,6 +13,7 @@ import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   canonicalJson,
   canonicalizeData,
+  isOwnershipStateV2,
   isCaptureCapacityScenariosV1,
   isCapturePreflightReadyV1,
   ownershipStateDigestV1,
@@ -25,13 +26,15 @@ import {
   type CaptureCapacityScenariosV1,
   type CapturePreflightReadyV1,
   type CanonicalJson,
+  type OwnershipStateV2,
 } from '@cf/domain-acquisition';
 import {
   DOMAINS,
 } from '@cf/domain-sessionrng';
 import {
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
-  ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
+  ARC5_OWNERSHIP_EXTENSION_TARGETS,
+  ARC5_OWNERSHIP_MIGRATION_VERSION,
   V5_MAX_EXTENSION_NAMESPACES,
   V5_MAX_EXTENSION_NAMESPACES_PER_SEGMENT,
   V5_MAX_EXTENSION_JSON_BYTES,
@@ -54,6 +57,7 @@ import {
   type F4MultiOutcomePreDrawSaveCodec,
   type F4MultiOutcomePreDrawSettlementAuthorizer,
   type F4OutcomeDerivation,
+  type Arc5OwnershipMigrationEvidenceV2,
   type PreparedV5SaveWrite,
   type Arc5OwnershipMigrationSuccessorProtectionReason,
   type ProjectedLegacyOwnershipMirrorV1,
@@ -120,6 +124,8 @@ export interface Arc4CaptureCapacityCertificateV1 {
 
 export interface Arc4CaptureCapacityCertificationInput {
   readonly preflight: unknown;
+  /** Exact current registered Arc 5 parent captured before any draw exists. */
+  readonly parent: OwnershipStateV2;
   /** Exact value-free callback input minted by the F4 pre-draw owner. */
   readonly preDraw: F4MultiOutcomePreDrawInput;
 }
@@ -187,7 +193,7 @@ interface CertificatePayloadV1 {
 const CERTIFICATES = new WeakMap<object, CertificatePayloadV1>();
 const DERIVED_SETTLEMENTS = new WeakSet<object>();
 
-const CERTIFICATION_FIELDS = Object.freeze(['preflight', 'preDraw'] as const);
+const CERTIFICATION_FIELDS = Object.freeze(['preflight', 'parent', 'preDraw'] as const);
 const PRE_DRAW_FIELDS = Object.freeze([
   'domains', 'counters', 'receiptOrdinal', 'activePlayMs', 'currentAuthority',
   'nextSessionRng', 'codec', 'draft', 'extensions',
@@ -254,6 +260,9 @@ function capturedCertificationInput(
     PRE_DRAW_FIELDS,
     'capture pre-draw input',
   );
+  if (!isOwnershipStateV2(input.parent) || input.parent.mode !== 'current') {
+    throw new CapacityRefusal('input-invalid', 'capture Arc 5 parent is not current authority');
+  }
   return Object.freeze({ ...input, preDraw });
 }
 
@@ -584,16 +593,19 @@ function assertExactOwnershipWrites(
 
 function assertExactArc5MigrationSuccessor(
   base: V5Extensions,
+  parent: OwnershipStateV2,
   ownership: Readonly<{ writes: readonly V5ExtensionWrite[]; extensions: V5Extensions }>,
   scenario: CaptureCapacityScenarioV1,
 ): Readonly<{
   stateDigest: string;
+  evidence: Arc5OwnershipMigrationEvidenceV2;
   writes: readonly V5ExtensionWrite[];
   combinedWrites: readonly V5ExtensionWrite[];
   extensions: V5Extensions;
 }> {
   const prepared = prepareArc5OwnershipMigrationSuccessor({
     baseExtensions: base,
+    parent,
     successorExtensions: ownership.extensions,
     successor: scenario.successor,
     resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -604,10 +616,11 @@ function assertExactArc5MigrationSuccessor(
       `capture Arc 5 migration successor is protected: ${prepared.reason}`,
     );
   }
-  if (prepared.writes.length !== 1
-    || prepared.write !== prepared.writes[0]
-    || prepared.write.segment !== ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.segment
-    || prepared.write.namespace !== ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET.namespace) {
+  if (prepared.writes.length !== ARC5_OWNERSHIP_EXTENSION_TARGETS.length
+    || prepared.writes.some((write, index) => (
+      write.segment !== ARC5_OWNERSHIP_EXTENSION_TARGETS[index]?.segment
+        || write.namespace !== ARC5_OWNERSHIP_EXTENSION_TARGETS[index]?.namespace
+    ))) {
     throw new CapacityRefusal(
       'arc5-migration:target-corrupt',
       'capture Arc 5 migration successor write is not exact',
@@ -631,7 +644,9 @@ function assertExactArc5MigrationSuccessor(
   const stateDigest = ownershipStateDigestV2(prepared.state);
   if (!sameJson(reapplied.extensions, prepared.extensions)
     || readBack.kind !== 'loaded'
-    || ownershipStateDigestV2(readBack.state) !== stateDigest) {
+    || readBack.evidence.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION
+    || ownershipStateDigestV2(readBack.state) !== stateDigest
+    || !sameJson(readBack.evidence, prepared.evidence)) {
     throw new CapacityRefusal(
       'arc5-migration:target-corrupt',
       'capture Arc 5 migration successor did not round-trip',
@@ -639,6 +654,7 @@ function assertExactArc5MigrationSuccessor(
   }
   return Object.freeze({
     stateDigest,
+    evidence: prepared.evidence,
     writes: prepared.writes,
     combinedWrites,
     extensions: prepared.extensions,
@@ -697,13 +713,19 @@ function scenarioIdentity(scenario: CaptureCapacityScenarioV1): Readonly<{
 
 function prepareScenario(
   scenario: CaptureCapacityScenarioV1,
+  parent: OwnershipStateV2,
   sourceLegacyV4Raw: string,
   sourceExtensions: V5Extensions,
   preDraw: Pick<F4MultiOutcomePreDrawInput, 'activePlayMs' | 'nextSessionRng'>,
   codec: F4MultiOutcomePreDrawSaveCodec,
 ): PreparedScenarioV1 {
   const ownership = assertExactOwnershipWrites(sourceExtensions, scenario);
-  const arc5 = assertExactArc5MigrationSuccessor(sourceExtensions, ownership, scenario);
+  const arc5 = assertExactArc5MigrationSuccessor(
+    sourceExtensions,
+    parent,
+    ownership,
+    scenario,
+  );
   const mirror = projectLegacyOwnershipMirror(scenario.successor);
   if (mirror.kind !== 'projected') {
     throw new CapacityRefusal(
@@ -749,7 +771,9 @@ function prepareScenario(
   if (ownershipRead.kind !== 'loaded'
     || ownershipStateDigestV1(ownershipRead.state) !== scenario.successorDigest
     || arc5Read.kind !== 'loaded'
+    || arc5Read.evidence.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION
     || ownershipStateDigestV2(arc5Read.state) !== arc5.stateDigest
+    || !sameJson(arc5Read.evidence, arc5.evidence)
     || f4Read.kind !== 'loaded'
     || f4Read.authority.activePlayMs !== preDraw.activePlayMs
     || !sameJson(f4Read.authority.sessionRng, preDraw.nextSessionRng)) {
@@ -834,6 +858,7 @@ export function certifyArc4CaptureCapacityV1(
     try {
       const prepared = prepareScenario(
         scenario,
+        captured.parent,
         base.legacyV4Raw,
         extensions,
         captured.preDraw,
