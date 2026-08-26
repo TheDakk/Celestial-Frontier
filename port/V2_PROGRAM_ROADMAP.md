@@ -76,8 +76,8 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-26 local candidate boundary — bounded source lanes; preserved Slice red and the active
-> Compendium ruler's certificate/verifier remain open:** Gate
+> **2026-08-26 local candidate boundary — bounded source lanes; preserved Slice red and a certified
+> active Compendium ruler:** Gate
 > B recursively seals an exact 62-file domain inventory against DOM, storage, `navigator`, network,
 > wall/monotonic clock and uncontrolled randomness. Its only two waivers are the exact CombatCore
 > `document.createElement('')` expressions for the legacy avatar painters. D-HAZE moved
@@ -125,16 +125,18 @@
 > `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52` binds the same measurement,
 > current producer `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, all four sealed baseline
 > faults and exact 14-phone/13-desktop discrimination. Only the phone warm ceiling changed to
-> `524288`; every other numeric ceiling is unchanged. Exact-budget certification and named
-> verification remain pending. This change is scoped to Compendium; Edge `.107` is provenance only,
+> `524288`; every other numeric ceiling is unchanged. Clean signed activation source
+> `91f4e04410b893c43ee5d261ebfc1fa3be127c29` passed exact-budget run
+> `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
+> attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). This change is scoped to Compendium; Edge `.107` is provenance only,
 > and SceneMemory/root Gate A are unchanged.
-> Current browser-free local verification is 121 files /1,357 passed /
+> Current browser-free local verification is 121 files /1,358 passed /
 > one intentional skip /zero failures, all TypeScript programs including `noUnused`, an 884-module
 > Vite build, root validation/fingerprint, legacy smoke and applicable selftests. Current-input
 > Slice `20260826214541492-83064-b252b137f7a3` executed once at signed `8553bd7…` on Edge `.107`
 > and failed after 92,772 ms with three findings and zero retries: two instrument false reds and one
 > retained-Survey focus product regression. All three are repaired locally, but no rerun PASS exists.
-> The current Compendium exact-budget certificate/named verifier, current-input Glass, recovery, hosted, HUMAN, whole-Gate,
+> A repaired current-input Slice PASS, current-input Glass, recovery, hosted, HUMAN, whole-Gate,
 > release/version, preview/publication and deployment authority remain open.
 >
 > **2026-08-25 local campaign boundary — historical checkpoint, still foundational where the
@@ -1266,8 +1268,10 @@ remain open. Candidate3/5/6 plus baseline1, signed activation `d33e540…`, exac
 historical evidence for former producer `587d3bdf…`. Signed current source `8ffd2e2…` supplied the
 active `f7c87f22…` ruler's candidate1/2/3 plus paired baseline1, each one attempt/zero retries;
 budget `6284a394…` retains all four faults and the exact 14/13 inventory, changing only phone warm
-to `524288`. Its certificate/named verifier, the preserved current-input Slice rerun, Glass and
-recovery evidence are pending as described in the status overlay.
+to `524288`. Clean signed activation `91f4e044…` passed current exact-budget certificate
+`20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
+attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). The preserved
+current-input Slice rerun, Glass and recovery evidence remain pending as described in the status overlay.
 
 ### 5.2 Arc 3 — engineering loop
 
@@ -1411,7 +1415,9 @@ once; later child `fed` remains independently mutable. Focused tests cover that 
 retained Arc 5A Slice/Glass reports above certify only their 2026-08-25 inputs. Compendium
 certificate `20260826-phase4-certification` is historical green evidence for signed activation
 `d33e540…` and former producer `587d3bdf…`; current producer `f7c87f22…` is active under budget
-`6284a394…`, with its exact-budget certificate and named verifier still pending.
+`6284a394…`, and clean signed activation `91f4e044…` passed current certificate
+`20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
+attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`).
 The one current-input Slice is terminal red with its three findings repaired locally and no PASS
 rerun; current-input Glass and recovery evidence remain open.
 

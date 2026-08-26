@@ -6,8 +6,8 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-26.**
 >
-> **2026-08-26 local candidate overlay — implemented source lanes; one preserved Slice red and the
-> active Compendium ruler's certificate/verifier remain open:** Gate B's
+> **2026-08-26 local candidate overlay — implemented source lanes; one preserved Slice red and a
+> certified active Compendium ruler:** Gate B's
 > recursive scanner now seals an exact 62-domain-source inventory against DOM, storage,
 > `navigator`, network, wall/monotonic clock and uncontrolled randomness. Its only two reasoned
 > waivers are the exact `document.createElement('')` expressions used by CombatCore's legacy
@@ -73,11 +73,17 @@
 > `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, and budget-file SHA-256
 > `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. It retains all four sealed
 > baseline faults and exact 14-phone/13-desktop breach discrimination; only the phone warm ceiling
-> changed to `524288`, with every other numeric ceiling unchanged. Its exact-budget certificate and
-> named verifier remain pending. This Compendium-only activation does not alter SceneMemory or the
+> changed to `524288`, with every other numeric ceiling unchanged. Exact-budget run
+> `20260826-slice-repair-certification` passed 78/78 from clean signed activation source
+> `91f4e04410b893c43ee5d261ebfc1fa3be127c29`, with complete lifecycle and named verification in one
+> attempt/zero retries. It ran `2026-08-26T23:42:19.150Z`–`23:43:03.997Z` (44,847 ms) on Edge
+> `151.0.4129.107`, revision `@419e77616b4ed7d0a544b85cb53ccd5b74d5f135`, JavaScript
+> `15.1.23.12`, CDP `1.3`; that build tuple is provenance only. Raw/gzip report SHA-256 are
+> `81c27ed5caa12e0c114a788041dfc5d109742bb9d86a256b548a8e9443d46108` /
+> `6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. This Compendium-only activation does not alter SceneMemory or the
 > root Gate-A browser contract.
 >
-> Browser-free verification for these local bytes is green: 121 test files, 1,357
+> Browser-free verification for these local bytes is green: 121 test files, 1,358
 > passed, one intentional skip and zero failures; `root/app/worker/noUnused` TypeScript; an
 > 884-module Vite build; root validation with the unchanged 50-probe fingerprint; legacy jsdom
 > smoke; and the applicable contract, reporter, Glass, recovery and Compendium selftests. Current-
@@ -85,8 +91,8 @@
 > `8553bd7…` on Edge `151.0.4129.107` and ended terminal FAIL after 92,772 ms with three findings and
 > zero retries. Settings' 14-versus-15 control count and the stage-1-unreachable Arc 3 target were
 > instrument false reds; retained Survey focus was a product regression. All three are repaired
-> locally, but no rerun PASS exists. The current Compendium exact-budget certificate/named verifier, current-input
-> Glass and recovery evidence remain open. There is no hosted, HUMAN, whole-Gate, release, version,
+> locally, but no rerun PASS exists. A repaired current-input Slice PASS, current-input Glass and recovery evidence remain
+> open. There is no hosted, HUMAN, whole-Gate, release, version,
 > preview/publication or deployment claim.
 >
 > **2026-08-25 Arc 3–5 + Arc 7 historical checkpoint — retained as foundation where the
@@ -2097,8 +2103,13 @@ raw/gzip SHA-256 are `3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0e
 zero retries. Active budget SHA-256 `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`
 retains the same measurement authority, all four sealed baseline faults and exact
 14-phone/13-desktop discrimination. Only the phone warm ceiling changed to `524288`; every other
-numeric ceiling is unchanged. Exact-budget certification and named verification are pending. This
-was real producer drift, not an Edge-version trigger; exact Edge `.107` is provenance only.
+numeric ceiling is unchanged. Clean signed activation source
+`91f4e04410b893c43ee5d261ebfc1fa3be127c29` then passed exact-budget run
+`20260826-slice-repair-certification` 78/78 with complete lifecycle and its named verifier in one
+attempt/zero retries. It ran `2026-08-26T23:42:19.150Z`–`23:43:03.997Z` (44,847 ms); report
+raw/gzip SHA-256 are `81c27ed5caa12e0c114a788041dfc5d109742bb9d86a256b548a8e9443d46108` /
+`6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. This was real producer
+drift, not an Edge-version trigger; exact Edge `.107` is provenance only.
 SceneMemory and the root Gate-A browser authority are outside this change.
 
 ### Star Atlas (bookmarks)
@@ -2528,14 +2539,16 @@ for a name.
 ## 12. Test suites (all must pass)
 
 **Current local candidate snapshot (2026-08-26):** browser-free verification is green at 121 test
-files / 1,357 passed / one intentional skip / zero failures, with root, app, worker and no-unused
+files / 1,358 passed / one intentional skip / zero failures, with root, app, worker and no-unused
 TypeScript, the 884-module Vite build, root validation/fingerprint, legacy jsdom smoke, and the
 applicable contract/reporter/Glass/recovery/Compendium selftests green. Compendium run
 `20260826-phase4-certification` remains historical 78/78 named-verifier proof for former producer
 `587d3bdf…`. Signed source `8ffd2e2…` supplied the active `f7c87f22…` ruler's fresh candidate1/2/3
 and paired baseline1, each one attempt/zero retries; budget `6284a394…` preserves all four faults
 and exact 14-phone/13-desktop discrimination, changing only the phone warm ceiling to `524288`.
-Its exact-budget certificate and named verifier remain pending. Current-input Slice
+Clean signed activation `91f4e044…` passed current exact-budget run
+`20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
+attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Current-input Slice
 `20260826214541492-83064-b252b137f7a3` is a preserved one-attempt/zero-retry FAIL after 92,772 ms:
 two instrument defects and one retained-Survey focus product regression, all repaired locally with
 no PASS rerun. Current-input Glass, the 20-minute recovery certificate, hosted execution, HUMAN

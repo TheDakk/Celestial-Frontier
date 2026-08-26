@@ -214,6 +214,31 @@ const EXPECTED_CANDIDATE_RUNS = [
   '20260826-slice-repair-candidate3',
 ] as const;
 const EXPECTED_BASELINE_RUN = '20260826-slice-repair-baseline1';
+const currentSliceRepairCertificationEvidence = Object.freeze({
+  file: 'ARC1_COMPENDIUM_SLICE_REPAIR_CERTIFICATION_20260826.json.gz',
+  runId: '20260826-slice-repair-certification',
+  sourceCommit: '91f4e04410b893c43ee5d261ebfc1fa3be127c29',
+  sourceWorkingTreeSha256:
+    'f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a',
+  budgetSha256: '6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52',
+  measurementAuthoritySha256:
+    'cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d',
+  producerAuthoritySha256:
+    'f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224',
+  rawSha256: '81c27ed5caa12e0c114a788041dfc5d109742bb9d86a256b548a8e9443d46108',
+  gzipSha256: '6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571',
+  startedAt: '2026-08-26T23:42:19.150Z',
+  endedAt: '2026-08-26T23:43:03.997Z',
+  durationMs: 44_847,
+  browser: Object.freeze({
+    executable: '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+    product: 'Edg/151.0.4129.107',
+    revision: '@419e77616b4ed7d0a544b85cb53ccd5b74d5f135',
+    user_agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0',
+    js_version: '15.1.23.12',
+    protocol_version: '1.3',
+  }),
+});
 const historicalPhase4CertificationEvidence = Object.freeze({
   file: 'ARC1_COMPENDIUM_PHASE4_CERTIFICATION_20260826.json.gz',
   runId: '20260826-phase4-certification',
@@ -1041,6 +1066,143 @@ describe('Arc 1A Compendium budget authority', () => {
         .toBe(EXPECTED_BASELINE_RUN);
       expect(activeBudget.pairedBrokenBaseline.samples[profile][0])
         .not.toEqual(baselineCarrier.samples[profile]);
+    }
+  });
+
+  it('binds the current slice-repair exact-budget certificate to the active ruler', () => {
+    const compressed = fs.readFileSync(path.join(
+      v2Root, '..', '..', 'audits', currentSliceRepairCertificationEvidence.file,
+    ));
+    expect(createHash('sha256').update(compressed).digest('hex'))
+      .toBe(currentSliceRepairCertificationEvidence.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(createHash('sha256').update(raw).digest('hex'))
+      .toBe(currentSliceRepairCertificationEvidence.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as RetainedLinuxReport & {
+      startedAt: string; endedAt: string; durationMs: number; expectedOutcomes: string[];
+      reviewPacket: Array<Record<string, unknown>>;
+    };
+    type CurrentCertificateProfile = {
+      reviewPacket: Array<Record<string, unknown>>;
+      points: { first: { raw: { mountedRowCount: number } } };
+    };
+    const requireCurrentCertificateProfile = (
+      value: unknown, profile: ProfileName,
+    ): CurrentCertificateProfile => {
+      if (typeof value !== 'object' || value === null || Array.isArray(value)) {
+        throw new Error(`${profile} certificate profile must be an object`);
+      }
+      const record = value as Record<string, unknown>;
+      const points = record.points;
+      if (!Array.isArray(record.reviewPacket)
+        || !record.reviewPacket.every((entry) =>
+          typeof entry === 'object' && entry !== null && !Array.isArray(entry))
+        || typeof points !== 'object' || points === null || Array.isArray(points)) {
+        throw new Error(`${profile} certificate profile lacks exact review/point evidence`);
+      }
+      const first = (points as Record<string, unknown>).first;
+      if (typeof first !== 'object' || first === null || Array.isArray(first)) {
+        throw new Error(`${profile} certificate profile lacks the first point`);
+      }
+      const firstRaw = (first as Record<string, unknown>).raw;
+      if (typeof firstRaw !== 'object' || firstRaw === null || Array.isArray(firstRaw)) {
+        throw new Error(`${profile} certificate profile lacks first-point raw evidence`);
+      }
+      const mountedRowCount = (firstRaw as Record<string, unknown>).mountedRowCount;
+      if (!Number.isSafeInteger(mountedRowCount) || Number(mountedRowCount) < 0) {
+        throw new Error(`${profile} certificate profile has invalid mounted-row evidence`);
+      }
+      return value as CurrentCertificateProfile;
+    };
+    const certificateProfiles = Object.fromEntries(PROFILE_NAMES.map((profile) => [
+      profile, requireCurrentCertificateProfile(report.profiles[profile], profile),
+    ])) as Record<ProfileName, CurrentCertificateProfile>;
+
+    expect(Object.keys(report).sort()).toEqual([
+      'schema', 'status', 'runId', 'lifecycle', 'startedAt', 'endedAt', 'durationMs',
+      'policy', 'source', 'inputs', 'browser', 'budget', 'expectedOutcomes', 'outcomes',
+      'findings', 'profiles', 'reviewPacket', 'partialFailure', 'blockedOutcomes',
+    ].sort());
+    expect(report).toMatchObject({
+      schema: 'cf-v2-compendium-memory-report/v1',
+      runId: currentSliceRepairCertificationEvidence.runId,
+      status: 'pass',
+      startedAt: currentSliceRepairCertificationEvidence.startedAt,
+      endedAt: currentSliceRepairCertificationEvidence.endedAt,
+      durationMs: currentSliceRepairCertificationEvidence.durationMs,
+      lifecycle: { schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete' },
+      policy: {
+        attemptCount: 1,
+        automaticRetries: 0,
+        commandTimeoutMs: 2_000,
+        targetTimeoutMs: 2_000,
+        heartbeatTimeoutMs: 2_000,
+        transportTimeoutMs: 5_000,
+      },
+      findings: [],
+      partialFailure: null,
+      blockedOutcomes: [],
+    });
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.source.begin).toEqual({
+      commit: currentSliceRepairCertificationEvidence.sourceCommit,
+      branch: 'openai/mac',
+      state: 'committed',
+      statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      workingTreeSha256: currentSliceRepairCertificationEvidence.sourceWorkingTreeSha256,
+    });
+
+    expect(fileSha256(budgetPath)).toBe(currentSliceRepairCertificationEvidence.budgetSha256);
+    expect(report.inputs).toEqual({
+      ...(liveMeasurementAuthority?.inputs ?? {}),
+      budget: currentSliceRepairCertificationEvidence.budgetSha256,
+    });
+    expect(compendiumMeasurementAuthority(report.inputs)).toEqual(liveMeasurementAuthority);
+    expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
+      .toBe(currentSliceRepairCertificationEvidence.measurementAuthoritySha256);
+    expect(currentSliceRepairCertificationEvidence.measurementAuthoritySha256)
+      .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+    expect(report.budget).toEqual({
+      status: 'active',
+      path: 'budgets/compendium-memory-v1.json',
+      sha256: currentSliceRepairCertificationEvidence.budgetSha256,
+      browserAuthority: activeBudget.browserAuthority,
+      browserAuthorityMatch: true,
+      producerAuthority: activeBudget.producerAuthority,
+      observedProducerAuthority: activeBudget.producerAuthority,
+      producerAuthorityMatch: true,
+    });
+    expect(report.budget.producerAuthority).toEqual(EXPECTED_PRODUCER_AUTHORITY_RECORD);
+    expect(report.budget.producerAuthority).not.toEqual(HISTORICAL_PHASE4_PRODUCER_AUTHORITY);
+    expect(currentSliceRepairCertificationEvidence.producerAuthoritySha256)
+      .toBe(EXPECTED_PRODUCER_AUTHORITY);
+    expect(report.browser).toEqual(currentSliceRepairCertificationEvidence.browser);
+    expect(compendiumBrowserAuthorityMatches(
+      report.browser, report.budget.browserAuthority,
+    )).toBe(true);
+
+    expect(report.expectedOutcomes).toEqual(EXPECTED_OUTCOMES);
+    expect(report.outcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
+    expect(report.outcomes).toHaveLength(78);
+    expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
+    expect(report.reviewPacket).toEqual(PROFILE_NAMES.flatMap(
+      (profile) => certificateProfiles[profile].reviewPacket,
+    ));
+    const replayedOutcomes = PROFILE_NAMES.flatMap((profile) =>
+      evaluateProfile(certificateProfiles[profile], activeBudget, fixture));
+    expect(replayedOutcomes).toEqual(report.outcomes);
+
+    for (const profile of PROFILE_NAMES) {
+      const overCeiling = structuredClone(certificateProfiles[profile]);
+      overCeiling.points.first.raw.mountedRowCount =
+        Number(activeBudget.ceilings?.[profile].mountedRowsMax) + 1;
+      const mutatedFailures = evaluateProfile(overCeiling, activeBudget, fixture)
+        .filter((outcome) => outcome.status === 'fail')
+        .map((outcome) => outcome.id);
+      expect(mutatedFailures).toEqual([
+        `${profile}/mounted-window-bounded`,
+        `${profile}/mounted-natural-dimensions`,
+      ]);
     }
   });
 
