@@ -20,6 +20,8 @@ export const ARC4_STALE_FAULT_CAPTURE_SCHEMA =
   'cf-v2-slice-arc4-stale-fault-capture/v1';
 export const ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA =
   'cf-v2-slice-arc4-publication-fault-capture/v1';
+export const ARC4_CONVERGENCE_RELEASE_WITNESS_SCHEMA =
+  'cf-v2-f4-authority-convergence/v1';
 export const ARC4_RECOVERY_CLOSURE_EVIDENCE_SCHEMA =
   'cf-v2-arc4-recovery-closure-evidence/v1';
 export const ARC4_TAME_GREETING_AUDIO_EVIDENCE_SCHEMA =
@@ -2414,8 +2416,7 @@ const captureAttemptOracle = (before, verb) => {
 };
 
 const ARC4_ACTIVE_PLAY_RENDER_LAG_MAX_MS = 10_000;
-const exactRuntimeAtOrAfterRaw = (raw, value) => {
-  const runtime = persistenceStateOf(value)?.runtime;
+const exactRuntimeAuthorityAtOrAfterRaw = (raw, runtime) => {
   const activePlayMs = raw?.authority?.activePlayMs;
   return counter(activePlayMs) && counter(runtime?.activePlayMs)
     && runtime.activePlayMs >= activePlayMs
@@ -2424,6 +2425,9 @@ const exactRuntimeAtOrAfterRaw = (raw, value) => {
     && runtime?.sessionOrdinal === raw?.authority?.sessionRng?.ordinal
     && same(runtime?.sessionDraws, raw?.authority?.sessionRng?.draws);
 };
+const exactRuntimeAtOrAfterRaw = (raw, value) => (
+  exactRuntimeAuthorityAtOrAfterRaw(raw, persistenceStateOf(value)?.runtime)
+);
 
 const renderedActivePlayMsOf = (ui) => {
   const budget = ui?.budget;
@@ -2435,9 +2439,8 @@ const renderedActivePlayMsOf = (ui) => {
     ? nextBoundary - countdown : Number.NaN;
 };
 
-const exactUiActivePlayRuntimeLag = (ui) => {
+const exactUiActivePlayRuntimeLagAgainst = (ui, runtime) => {
   const budget = ui?.budget;
-  const runtime = persistenceStateOf(ui)?.runtime;
   const cycle = budget?.cycle;
   const countdown = budget?.recoveryRemainingActivePlayMs;
   const renderedActivePlayMs = renderedActivePlayMsOf(ui);
@@ -2450,6 +2453,120 @@ const exactUiActivePlayRuntimeLag = (ui) => {
     && renderedActivePlayMs <= runtime.activePlayMs
     && runtime.activePlayMs - renderedActivePlayMs
       <= ARC4_ACTIVE_PLAY_RENDER_LAG_MAX_MS;
+};
+
+const exactUiActivePlayRuntimeLag = (ui) => (
+  exactUiActivePlayRuntimeLagAgainst(ui, persistenceStateOf(ui)?.runtime)
+);
+
+const exactReleasedPagehideRuntime = (state, ui) => (
+  record(persistenceStateOf(state)) && record(persistenceStateOf(ui))
+  && persistenceStateOf(state).runtime === null
+  && persistenceStateOf(ui).runtime === null
+);
+
+/* Keep this verdict aligned with tameGreetingAudioReleasedForReload in the
+   product. The binding payload is untrusted evidence: a copied `released`
+   label cannot substitute for the independently observed disposal result. */
+const exactConvergenceAudioReleased = (audio) => {
+  const counterpartReleased = audio?.counterpart?.status === 'none'
+    ? audio.counterpart.key === null && audio.counterpart.generation === null
+    : audio?.counterpart?.status === 'lost';
+  return audio?.schema === 'cf-v2-tame-greeting-audio/v1'
+    && audio.disposed === true
+    && audio.armed === 0
+    && audio.activeVoiceId === null
+    && counterpartReleased
+    && audio.runtime?.state === 'disposed'
+    && audio.runtime.contextState === null
+    && audio.runtime.nodes?.active === 0
+    && audio.runtime.voices?.active === 0
+    && Array.isArray(audio.runtime.voices.ids)
+    && audio.runtime.voices.ids.length === 0
+    && audio.runtime.creatureEmitters?.active === 0
+    && audio.runtime.reservations?.voices?.active === 0
+    && audio.runtime.reservations?.nodes?.active === 0;
+};
+
+const exactConvergenceRuntimeTuple = (left, right) => (
+  left?.revision === right?.revision
+  && left?.sessionSeed === right?.sessionSeed
+  && left?.sessionOrdinal === right?.sessionOrdinal
+  && same(left?.sessionDraws, right?.sessionDraws)
+  && left?.activePlayMs === right?.activePlayMs
+  && left?.staleBlocked === right?.staleBlocked
+  && left?.commits === right?.commits
+  && left?.staleWrites === right?.staleWrites
+  && left?.leaseLosses === right?.leaseLosses
+);
+
+const exactConvergenceBeforeLifecycle = (runtime, scenario) => {
+  if (runtime?.visible !== true) return false;
+  if (scenario === 'stale') {
+    return runtime.leaseOwned === false
+      && runtime.staleBlocked === true
+      && runtime.leaseHeartbeat === null
+      && counter(runtime.staleWrites) && runtime.staleWrites > 0;
+  }
+  if (scenario === 'publication') {
+    return runtime.leaseOwned === true
+      && runtime.staleBlocked === false
+      && counter(runtime.leaseHeartbeat)
+      && counter(runtime.commits) && runtime.commits > 0;
+  }
+  return false;
+};
+
+const assessConvergenceRelease = ({
+  raw, documentToken, expectedDetail, scenario,
+  convergenceWitness, convergenceWitnessCount,
+}) => {
+  const before = convergenceWitness?.before;
+  const after = convergenceWitness?.after;
+  const beforeRuntime = before?.runtime;
+  const afterRuntime = after?.runtime;
+  const checks = {
+    witnessCount: convergenceWitnessCount === 1,
+    witnessEnvelope: record(convergenceWitness)
+      && convergenceWitness.schema === ARC4_CONVERGENCE_RELEASE_WITNESS_SCHEMA
+      && convergenceWitness.status === 'released'
+      && Array.isArray(convergenceWitness.errors)
+      && convergenceWitness.errors.length === 0
+      && record(before) && record(after),
+    documentToken: boundedText(documentToken, 256)
+      && convergenceWitness?.documentToken === documentToken,
+    detailAttribution: boundedText(expectedDetail, 512)
+      && convergenceWitness?.detail === expectedDetail,
+    leaseReadsStable: counter(before?.leaseReadCount)
+      && after?.leaseReadCount === before.leaseReadCount,
+    revisionReadsStable: counter(before?.revisionReadCount)
+      && after?.revisionReadCount === before.revisionReadCount,
+    beforeAuthority: beforeRuntime?.schema === 'cf-v2-f4-runtime/v1'
+      && exactRuntimeAuthorityAtOrAfterRaw(raw, beforeRuntime),
+    beforeQuiesced: before?.hold === 'transient-read'
+      && before?.mutationBlocked === true
+      && before?.heartbeatRunning === false
+      && beforeRuntime?.answerable === false
+      && beforeRuntime?.accruing === false,
+    beforeLifecycle: exactConvergenceBeforeLifecycle(beforeRuntime, scenario),
+    afterReleased: after?.heartbeatRunning === false
+      && afterRuntime?.schema === 'cf-v2-f4-runtime/v1'
+      && afterRuntime?.visible === false
+      && afterRuntime?.leaseOwned === false
+      && afterRuntime?.leaseHeartbeat === null
+      && afterRuntime?.answerable === false
+      && afterRuntime?.accruing === false,
+    audioReleased: exactConvergenceAudioReleased(after?.audio),
+    tuplePreserved: exactConvergenceRuntimeTuple(beforeRuntime, afterRuntime),
+  };
+  return assessment('Arc 4 convergence release', checks);
+};
+
+const exactReleasedStaleActivePlayProjection = (raw, ui, convergenceWitness) => {
+  const renderedActivePlayMs = renderedActivePlayMsOf(ui);
+  return exactUiActivePlayRuntimeLagAgainst(ui, convergenceWitness?.before?.runtime)
+    && counter(raw?.authority?.activePlayMs)
+    && raw.authority.activePlayMs <= renderedActivePlayMs;
 };
 
 const exactActivePlayProjection = (raw, ui) => {
@@ -3460,11 +3577,18 @@ export const assessArc4StaleConvergence = ({
   before, committed, beforeState, oldState, oldUi, reloaded, reloadedState,
   reloadedUi, reloadBeforeActivationState, reloadActivation,
   armed = false, captureArmed = false, faultCapture, interaction,
-  priorToken, token, waitError = null,
+  priorToken, token, convergenceWitness = null,
+  convergenceWitnessCount = 0, waitError = null,
 } = {}) => {
   const pagehide = exactPagehideCapture(
     faultCapture, ARC4_STALE_FAULT_CAPTURE_SCHEMA, priorToken,
   );
+  const convergenceRelease = assessConvergenceRelease({
+    raw: before, documentToken: priorToken,
+    expectedDetail: `Arc 4 ${interaction?.verb} authority stale`,
+    scenario: 'stale',
+    convergenceWitness, convergenceWitnessCount,
+  });
   const fault = pagehide?.fault;
   const oldCapture = captureStateOf(oldState);
   const oldCoordinator = oldCapture?.actionCoordinator;
@@ -3480,9 +3604,8 @@ export const assessArc4StaleConvergence = ({
     captureEnvelope: pagehide !== null,
     pagehideTuple: exactPagehideTuple(pagehide, oldState, oldUi),
     beforeRuntime: exactRuntimeAtOrAfterRaw(before, beforeState),
-    pagehideRuntime: exactRuntimeCaptureOrder(
-      before, oldState, oldUi, 'state-ui',
-    ),
+    pagehideRuntime: exactReleasedPagehideRuntime(oldState, oldUi),
+    convergenceRelease: convergenceRelease.ok,
     durableEvidence: arc4DurableEvidenceComplete(before)
       && arc4DurableEvidenceComplete(committed)
       && arc4DurableEvidenceComplete(reloaded),
@@ -3510,7 +3633,9 @@ export const assessArc4StaleConvergence = ({
       ),
     oldUiConvergence: refusedUiOutcome(oldUi, interaction?.verb, 'read-only-reload')
       && /will not retry/i.test(oldUi?.status?.text ?? '')
-      && exactActivePlayProjection(before, oldUi),
+      && exactReleasedStaleActivePlayProjection(
+        before, oldUi, convergenceWitness,
+      ),
     faultShape: exactKeys(fault, [
       'schema', 'operation', 'injection', 'phase', 'beforeRevision',
       'injectedRevision', 'outcome',
@@ -3536,7 +3661,9 @@ export const assessArc4StaleConvergence = ({
       committed, reloaded, reloadedState, reloadedUi, priorToken, token,
     }),
   };
-  return assessment('Arc 4 stale convergence', checks);
+  return assessment('Arc 4 stale convergence', checks, {
+    convergenceReleaseDiagnostics: convergenceRelease,
+  });
 };
 
 const exactRawCaptureOutcome = (before, after, expected) => {
@@ -4045,11 +4172,18 @@ export const assessArc4PublicationConvergence = ({
   reloadActivation,
   expected = ARC4_PERTAR_FIXTURE.actions.firstHit,
   armed = false, captureArmed = false, faultCapture, interaction,
-  priorToken, token, waitError = null,
+  priorToken, token, convergenceWitness = null,
+  convergenceWitnessCount = 0, waitError = null,
 } = {}) => {
   const pagehide = exactPagehideCapture(
     faultCapture, ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA, priorToken,
   );
+  const convergenceRelease = assessConvergenceRelease({
+    raw: committed, documentToken: priorToken,
+    expectedDetail: `Arc 4 ${interaction?.verb} committed at revision ${committed?.revision}; publication slice-smoke injected Arc 4 publication rejection`,
+    scenario: 'publication',
+    convergenceWitness, convergenceWitnessCount,
+  });
   const fault = pagehide?.fault;
   const oldCapture = captureStateOf(oldState);
   const oldCoordinator = oldCapture?.actionCoordinator;
@@ -4065,11 +4199,11 @@ export const assessArc4PublicationConvergence = ({
     captureEnvelope: pagehide !== null,
     pagehideTuple: exactPagehideTuple(pagehide, oldState, oldUi),
     beforeRuntime: exactRuntimeAtOrAfterRaw(before, beforeState),
-    /* The pagehide tuple's runtime belongs to committed authority even though
-       its rendered card facts deliberately remain the certified precommit
-       presentation until the replacement document can publish exact truth. */
-    pagehideRuntime: exactRuntimeAtOrAfterRaw(committed, oldUi)
-      && exactRuntimeCaptureOrder(committed, oldState, oldUi, 'state-ui'),
+    /* Deliberate convergence releases the old document's runtime before its
+       pagehide tuple. The sole binding witness retains the authoritative
+       before/after release proof that pagehide can no longer carry. */
+    pagehideRuntime: exactReleasedPagehideRuntime(oldState, oldUi),
+    convergenceRelease: convergenceRelease.ok,
     fixtureOutcome: same(expected, ARC4_PERTAR_FIXTURE.actions.firstHit),
     committedOutcome: exactRawCaptureOutcome(before, committed, expected),
     ownershipV2Held: arc5OwnershipV2RuntimeExact(before, beforeState, {
@@ -4112,7 +4246,9 @@ export const assessArc4PublicationConvergence = ({
       && oldUi?.diagnostics?.lastOutcome?.convergence === 'read-only-reload'
       && oldUi?.status?.kind === 'committed-unknown'
       && /do not try again/i.test(oldUi?.status?.text ?? ''),
-    oldUiTimeDirection: exactUiActivePlayRuntimeLag(oldUi),
+    oldUiTimeDirection: exactUiActivePlayRuntimeLagAgainst(
+      oldUi, convergenceWitness?.before?.runtime,
+    ),
     faultShape: exactKeys(fault, [
       'schema', 'operation', 'injection', 'phase', 'beforeRevision',
       'injectedRevision', 'outcome',
@@ -4138,7 +4274,9 @@ export const assessArc4PublicationConvergence = ({
       committed, reloaded, reloadedState, reloadedUi, priorToken, token,
     }),
   };
-  return assessment('Arc 4 publication convergence', checks);
+  return assessment('Arc 4 publication convergence', checks, {
+    convergenceReleaseDiagnostics: convergenceRelease,
+  });
 };
 
 const progressForFixture = (evidence) => {
@@ -5096,6 +5234,79 @@ const runtimeFor = (raw, commits = 0) => ({
   commits,
 });
 
+const convergenceRuntimeFor = (raw, activePlayMs, leaseOwned, {
+  visible = leaseOwned, staleBlocked = false,
+  leaseHeartbeat = leaseOwned ? 1 : null,
+  commits = 1, staleWrites = staleBlocked ? 1 : 0,
+} = {}) => ({
+  schema: 'cf-v2-f4-runtime/v1',
+  ...runtimeFor(raw, commits),
+  visible,
+  answerable: false,
+  leaseOwned,
+  staleBlocked,
+  leaseHeartbeat,
+  activePlayMs,
+  accruing: false,
+  staleWrites,
+  leaseLosses: 0,
+});
+
+const releasedConvergenceAudioFor = () => ({
+  schema: 'cf-v2-tame-greeting-audio/v1',
+  disposed: true,
+  armed: 0,
+  activeVoiceId: null,
+  counterpart: { key: null, generation: null, status: 'none' },
+  runtime: {
+    state: 'disposed',
+    contextState: null,
+    nodes: { active: 0 },
+    voices: { active: 0, ids: [] },
+    creatureEmitters: { active: 0 },
+    reservations: { voices: { active: 0 }, nodes: { active: 0 } },
+  },
+});
+
+const convergenceWitnessFor = (raw, documentToken, {
+  activePlayMs = raw.authority.activePlayMs,
+  beforeLeaseOwned = true,
+  staleBlocked = false,
+  detail = 'Selftest deliberate authority convergence.',
+} = {}) => ({
+  schema: ARC4_CONVERGENCE_RELEASE_WITNESS_SCHEMA,
+  status: 'released',
+  errors: [],
+  detail,
+  documentToken,
+  before: {
+    hold: 'transient-read',
+    mutationBlocked: true,
+    heartbeatRunning: false,
+    leaseReadCount: 1,
+    revisionReadCount: 1,
+    runtime: convergenceRuntimeFor(raw, activePlayMs, beforeLeaseOwned, {
+      visible: true, staleBlocked,
+    }),
+    audio: null,
+  },
+  after: {
+    heartbeatRunning: false,
+    leaseReadCount: 1,
+    revisionReadCount: 1,
+    runtime: convergenceRuntimeFor(raw, activePlayMs, false, {
+      visible: false, staleBlocked,
+    }),
+    audio: releasedConvergenceAudioFor(),
+  },
+});
+
+const releasedPagehideSurface = (value) => {
+  const next = structuredClone(value);
+  next.persistence.runtime = null;
+  return next;
+};
+
 const appState = (raw, capture, {
   route = true, boot = false,
 } = {}) => ({
@@ -5739,18 +5950,28 @@ const staleOldCaptureSelftest = appCaptureState(hitRawSelftest, {
   lastOutcome: 'tame-refused:stale', lastResult: null,
   coordinator: actionCoordinator({ fault: staleFaultSelftest }),
 });
-const staleOldStateSelftest = appState(hitRawSelftest, staleOldCaptureSelftest);
+const staleOldStateSelftest = releasedPagehideSurface(
+  appState(hitRawSelftest, staleOldCaptureSelftest),
+);
 const staleOutcomeSelftest = {
   schema: 'cf-v2-capture-card-outcome/v1', kind: 'refused', verb: 'tame',
   convergence: 'read-only-reload', title: 'Expedition changed elsewhere.',
   detail: 'Refreshing from the saved expedition. The action will not retry.',
 };
-const staleOldUiSelftest = uiSnapshot(staleOldCaptureSelftest, {
-  used: 1, outcome: staleOutcomeSelftest, convergence: true,
-  raw: hitRawSelftest,
-});
+const staleOldUiSelftest = releasedPagehideSurface(
+  uiSnapshot(staleOldCaptureSelftest, {
+    used: 1, outcome: staleOutcomeSelftest, convergence: true,
+    raw: hitRawSelftest,
+  }),
+);
 const stalePriorTokenSelftest = 'selftest-stale-old-document';
 const staleTokenSelftest = 'selftest-stale-new-document';
+const staleConvergenceWitnessSelftest = convergenceWitnessFor(
+  hitRawSelftest, stalePriorTokenSelftest, {
+    beforeLeaseOwned: false, staleBlocked: true,
+    detail: 'Arc 4 tame authority stale',
+  },
+);
 const stalePagehideSelftest = {
   schema: ARC4_STALE_FAULT_CAPTURE_SCHEMA,
   documentToken: stalePriorTokenSelftest,
@@ -5792,8 +6013,8 @@ const publicationOldCaptureSelftest = appCaptureState(hitRawSelftest, {
   unavailable: true,
   coordinator: actionCoordinator({ fault: publicationFaultSelftest }),
 });
-const publicationOldStateSelftest = appState(
-  hitRawSelftest, publicationOldCaptureSelftest,
+const publicationOldStateSelftest = releasedPagehideSurface(
+  appState(hitRawSelftest, publicationOldCaptureSelftest),
 );
 const publicationOutcomeSelftest = {
   schema: 'cf-v2-capture-card-outcome/v1', kind: 'committed-unknown',
@@ -5801,12 +6022,19 @@ const publicationOutcomeSelftest = {
   title: 'Capture saved; display refreshing.',
   detail: 'Do not try again. Reloading the committed expedition read-only.',
 };
-const publicationOldUiSelftest = uiSnapshot(publicationOldCaptureSelftest, {
-  used: 0, outcome: publicationOutcomeSelftest, convergence: true,
-  raw: hitRawSelftest,
-});
+const publicationOldUiSelftest = releasedPagehideSurface(
+  uiSnapshot(publicationOldCaptureSelftest, {
+    used: 0, outcome: publicationOutcomeSelftest, convergence: true,
+    raw: hitRawSelftest,
+  }),
+);
 const publicationPriorTokenSelftest = 'selftest-publication-old-document';
 const publicationTokenSelftest = 'selftest-publication-new-document';
+const publicationConvergenceWitnessSelftest = convergenceWitnessFor(
+  hitRawSelftest, publicationPriorTokenSelftest, {
+    detail: `Arc 4 sample committed at revision ${hitRawSelftest.revision}; publication slice-smoke injected Arc 4 publication rejection`,
+  },
+);
 const publicationPagehideSelftest = {
   schema: ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA,
   documentToken: publicationPriorTokenSelftest,
@@ -6013,6 +6241,8 @@ const staleBundleSelftest = {
   reloadActivation: surveyDockActivationSelftest,
   interaction: tameInteraction, priorToken: stalePriorTokenSelftest,
   token: staleTokenSelftest,
+  convergenceWitness: staleConvergenceWitnessSelftest,
+  convergenceWitnessCount: 1,
 };
 const publicationBundleSelftest = {
   before: beforeRawSelftest, committed: hitRawSelftest,
@@ -6028,6 +6258,8 @@ const publicationBundleSelftest = {
   faultCapture: publicationFaultEnvelopeSelftest,
   interaction: sampleInteraction, priorToken: publicationPriorTokenSelftest,
   token: publicationTokenSelftest,
+  convergenceWitness: publicationConvergenceWitnessSelftest,
+  convergenceWitnessCount: 1,
 };
 
 /* The audio verdict gets its own independently assembled Tame successor. It
@@ -6531,11 +6763,17 @@ const nonzeroBurnBundleSelftest = {
   ),
 };
 const committedAheadOldRuntimeSelftest = nonzeroActivePlaySelftest + 137;
-const nonzeroPublicationOldStateSelftest = withRuntimeActivePlaySelftest(
-  publicationOldStateSelftest, committedAheadOldRuntimeSelftest,
+const nonzeroPublicationConvergenceWitnessSelftest = convergenceWitnessFor(
+  nonzeroHitRawSelftest, publicationPriorTokenSelftest, {
+    activePlayMs: committedAheadOldRuntimeSelftest,
+    detail: `Arc 4 sample committed at revision ${nonzeroHitRawSelftest.revision}; publication slice-smoke injected Arc 4 publication rejection`,
+  },
 );
-const nonzeroPublicationOldUiSelftest = withRuntimeActivePlaySelftest(
-  publicationOldUiSelftest, committedAheadOldRuntimeSelftest,
+const nonzeroPublicationOldStateSelftest = structuredClone(
+  publicationOldStateSelftest,
+);
+const nonzeroPublicationOldUiSelftest = structuredClone(
+  publicationOldUiSelftest,
 );
 const nonzeroPublicationPagehideSelftest = {
   ...publicationPagehideSelftest,
@@ -6547,6 +6785,7 @@ const nonzeroPublicationBundleSelftest = {
   committed: nonzeroHitRawSelftest,
   oldState: nonzeroPublicationOldStateSelftest,
   oldUi: nonzeroPublicationOldUiSelftest,
+  convergenceWitness: nonzeroPublicationConvergenceWitnessSelftest,
   reloaded: structuredClone(nonzeroHitRawSelftest),
   reloadedState: withRuntimeActivePlaySelftest(
     publicationReloadStateSelftest, nonzeroActivePlaySelftest,
@@ -6958,6 +7197,66 @@ const withPagehideEnvelopeMutation = (bundle, mutate) => {
     faultCapture: { raw: JSON.stringify(parsed), parsed, cleared: true },
   };
 };
+const withConvergenceWitnessMutation = (bundle, mutate) => {
+  const convergenceWitness = structuredClone(bundle.convergenceWitness);
+  mutate(convergenceWitness);
+  return { ...bundle, convergenceWitness };
+};
+const setRenderedActivePlaySelftest = (ui, activePlayMs) => {
+  const cycle = Math.floor(activePlayMs / ARC4_ACTIVE_PLAY_CYCLE_MS);
+  ui.budget.cycle = cycle;
+  ui.budget.recoveryRemainingActivePlayMs
+    = (cycle + 1) * ARC4_ACTIVE_PLAY_CYCLE_MS - activePlayMs;
+  ui.budget.text = ui.budget.text.replace(
+    ARC4_ACTIVE_PLAY_COUNTDOWN_PATTERN,
+    activePlayCountdownText(ui.budget.recoveryRemainingActivePlayMs),
+  );
+};
+const negativeStaleMissingConvergenceWitnessSelftest = {
+  ...staleBundleSelftest, convergenceWitness: null,
+};
+const negativeStaleZeroConvergenceWitnessSelftest = {
+  ...staleBundleSelftest, convergenceWitnessCount: 0,
+};
+const negativeStaleDuplicateConvergenceWitnessSelftest = {
+  ...staleBundleSelftest, convergenceWitnessCount: 2,
+};
+const negativeStaleMismatchedConvergenceWitnessSelftest
+  = withConvergenceWitnessMutation(staleBundleSelftest, (witness) => {
+    witness.documentToken = 'selftest-wrong-document';
+  });
+const negativeStaleConvergenceTupleSelftest
+  = withConvergenceWitnessMutation(staleBundleSelftest, (witness) => {
+    witness.after.runtime.sessionOrdinal += 1;
+  });
+const negativeStaleConvergenceUnreleasedSelftest
+  = withConvergenceWitnessMutation(staleBundleSelftest, (witness) => {
+    witness.after.runtime.leaseOwned = true;
+  });
+const negativeStaleRetainedPagehideRuntimeSelftest
+  = withCoordinatedPagehideOldSurface(
+    staleBundleSelftest,
+    (oldState) => {
+      oldState.persistence.runtime = convergenceRuntimeFor(
+        hitRawSelftest, hitRawSelftest.authority.activePlayMs, false,
+      );
+    },
+  );
+const negativeStaleRenderedFutureSelftest
+  = withCoordinatedPagehideOldSurface(
+    staleBundleSelftest,
+    (_oldState, oldUi) => {
+      setRenderedActivePlaySelftest(
+        oldUi, staleConvergenceWitnessSelftest.before.runtime.activePlayMs + 1,
+      );
+    },
+  );
+const negativeStaleExcessiveUiLagSelftest
+  = withConvergenceWitnessMutation(staleBundleSelftest, (witness) => {
+    const activePlayMs = ARC4_ACTIVE_PLAY_RENDER_LAG_MAX_MS + 1;
+    witness.before.runtime.activePlayMs = activePlayMs;
+    witness.after.runtime.activePlayMs = activePlayMs;
+  });
 const negativeStaleRetainedResultSelftest = withCoordinatedPagehideOldSurface(
   staleBundleSelftest,
   (oldState) => { oldState.capture.lastResult = hitResultSelftest; },
@@ -7091,27 +7390,41 @@ const negativePublicationPreservedBudgetSelftest
 const negativePublicationOldRuntimeSelftest
   = withCoordinatedPagehideOldSurface(
     nonzeroPublicationBundleSelftest,
-    (oldState) => { oldState.persistence.runtime.sessionOrdinal += 1; },
+    (oldState) => {
+      oldState.persistence.runtime = convergenceRuntimeFor(
+        nonzeroHitRawSelftest, committedAheadOldRuntimeSelftest, false,
+      );
+    },
+  );
+const negativePublicationPreactionConvergenceTupleSelftest
+  = withConvergenceWitnessMutation(
+    publicationBundleSelftest,
+    (witness) => {
+      witness.before.runtime = convergenceRuntimeFor(
+        beforeRawSelftest, beforeRawSelftest.authority.activePlayMs, true,
+      );
+      witness.after.runtime = convergenceRuntimeFor(
+        beforeRawSelftest, beforeRawSelftest.authority.activePlayMs, false,
+      );
+    },
   );
 const negativePublicationRenderedFutureSelftest
   = withCoordinatedPagehideOldSurface(
     nonzeroPublicationBundleSelftest,
     (_oldState, oldUi) => {
-      const renderedActivePlayMs = committedAheadOldRuntimeSelftest + 1;
-      oldUi.budget.recoveryRemainingActivePlayMs
-        = ARC4_ACTIVE_PLAY_CYCLE_MS - renderedActivePlayMs;
-      oldUi.budget.text = oldUi.budget.text.replace(
-        ARC4_ACTIVE_PLAY_COUNTDOWN_PATTERN,
-        activePlayCountdownText(oldUi.budget.recoveryRemainingActivePlayMs),
+      setRenderedActivePlaySelftest(
+        oldUi, committedAheadOldRuntimeSelftest + 1,
       );
     },
   );
 const negativePublicationExcessiveUiLagSelftest
-  = withCoordinatedPagehideOldSurface(
+  = withConvergenceWitnessMutation(
     nonzeroPublicationBundleSelftest,
-    (oldState) => {
-      oldState.persistence.runtime.activePlayMs
-        = ARC4_ACTIVE_PLAY_RENDER_LAG_MAX_MS + 1;
+    (witness) => {
+      const activePlayMs = nonzeroActivePlaySelftest
+        + ARC4_ACTIVE_PLAY_RENDER_LAG_MAX_MS + 1;
+      witness.before.runtime.activePlayMs = activePlayMs;
+      witness.after.runtime.activePlayMs = activePlayMs;
     },
   );
 const negativeExhaustionSelftest = {
@@ -7185,6 +7498,379 @@ negativeGeometrySelftest.controls[1].layoutRect = structuredClone(
 );
 const negativeGeometrySettlementSelftest = structuredClone(geometryBundleSelftest);
 negativeGeometrySettlementSelftest.settlement.pending.activeStatus = false;
+
+const convergenceReleaseMutationSelftest = (mutate, {
+  raw = hitRawSelftest,
+  documentToken = stalePriorTokenSelftest,
+  source = staleConvergenceWitnessSelftest,
+  count = 1,
+  expectedDetail = source?.detail,
+  scenario = 'stale',
+} = {}) => {
+  const convergenceWitness = structuredClone(source);
+  mutate(convergenceWitness);
+  return assessConvergenceRelease({
+    raw, documentToken, expectedDetail, scenario, convergenceWitness,
+    convergenceWitnessCount: count,
+  });
+};
+const publicationConvergenceReleaseSelftestOptions = Object.freeze({
+  raw: hitRawSelftest,
+  documentToken: publicationPriorTokenSelftest,
+  source: publicationConvergenceWitnessSelftest,
+  scenario: 'publication',
+});
+const convergenceReleaseDirectionalSelftests = Object.freeze({
+  zeroCount: Object.freeze({
+    expected: 'witnessCount',
+    result: convergenceReleaseMutationSelftest(() => {}, { count: 0 }),
+  }),
+  duplicateCount: Object.freeze({
+    expected: 'witnessCount',
+    result: convergenceReleaseMutationSelftest(() => {}, { count: 2 }),
+  }),
+  schema: Object.freeze({
+    expected: 'witnessEnvelope',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.schema = 'cf-v2-f4-authority-convergence/wrong';
+    }),
+  }),
+  status: Object.freeze({
+    expected: 'witnessEnvelope',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.status = 'release-failed';
+    }),
+  }),
+  errors: Object.freeze({
+    expected: 'witnessEnvelope',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.errors = ['selftest release failure'];
+    }),
+  }),
+  documentToken: Object.freeze({
+    expected: 'documentToken',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.documentToken = 'selftest-wrong-document';
+    }),
+  }),
+  detailAttribution: Object.freeze({
+    expected: 'detailAttribution',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.detail = 'Selftest wrong convergence operation.';
+    }),
+  }),
+  leaseReadsStable: Object.freeze({
+    expected: 'leaseReadsStable',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.leaseReadCount += 1;
+    }),
+  }),
+  revisionReadsStable: Object.freeze({
+    expected: 'revisionReadsStable',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.revisionReadCount += 1;
+    }),
+  }),
+  beforeAuthority: Object.freeze({
+    expected: 'beforeAuthority',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.sessionOrdinal += 1;
+      witness.after.runtime.sessionOrdinal += 1;
+    }),
+  }),
+  beforeHold: Object.freeze({
+    expected: 'beforeQuiesced',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.hold = null;
+    }),
+  }),
+  beforeMutation: Object.freeze({
+    expected: 'beforeQuiesced',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.mutationBlocked = false;
+    }),
+  }),
+  beforeHeartbeat: Object.freeze({
+    expected: 'beforeQuiesced',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.heartbeatRunning = true;
+    }),
+  }),
+  beforeAnswerable: Object.freeze({
+    expected: 'beforeQuiesced',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.answerable = true;
+    }),
+  }),
+  beforeAccruing: Object.freeze({
+    expected: 'beforeQuiesced',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.accruing = true;
+    }),
+  }),
+  beforeVisible: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.visible = false;
+    }),
+  }),
+  staleBeforeLease: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.leaseOwned = true;
+    }),
+  }),
+  staleBeforeBlocked: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.staleBlocked = false;
+      witness.after.runtime.staleBlocked = false;
+    }),
+  }),
+  staleBeforeHeartbeat: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.leaseHeartbeat = 1;
+    }),
+  }),
+  staleBeforeWrites: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.staleWrites = 0;
+      witness.after.runtime.staleWrites = 0;
+    }),
+  }),
+  staleLifecycleSwap: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.leaseOwned = true;
+      witness.before.runtime.staleBlocked = false;
+      witness.before.runtime.leaseHeartbeat = 1;
+      witness.before.runtime.staleWrites = 0;
+      witness.after.runtime.staleBlocked = false;
+      witness.after.runtime.staleWrites = 0;
+    }),
+  }),
+  publicationBeforeLease: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.leaseOwned = false;
+    }, publicationConvergenceReleaseSelftestOptions),
+  }),
+  publicationBeforeBlocked: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.staleBlocked = true;
+      witness.after.runtime.staleBlocked = true;
+    }, publicationConvergenceReleaseSelftestOptions),
+  }),
+  publicationBeforeHeartbeat: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.leaseHeartbeat = null;
+    }, publicationConvergenceReleaseSelftestOptions),
+  }),
+  publicationBeforeCommits: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.commits = 0;
+      witness.after.runtime.commits = 0;
+    }, publicationConvergenceReleaseSelftestOptions),
+  }),
+  publicationLifecycleSwap: Object.freeze({
+    expected: 'beforeLifecycle',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.runtime.leaseOwned = false;
+      witness.before.runtime.staleBlocked = true;
+      witness.before.runtime.leaseHeartbeat = null;
+      witness.before.runtime.staleWrites = 1;
+      witness.after.runtime.staleBlocked = true;
+      witness.after.runtime.staleWrites = 1;
+    }, publicationConvergenceReleaseSelftestOptions),
+  }),
+  afterLease: Object.freeze({
+    expected: 'afterReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.runtime.leaseOwned = true;
+    }),
+  }),
+  afterVisible: Object.freeze({
+    expected: 'afterReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.runtime.visible = true;
+    }),
+  }),
+  afterLeaseHeartbeat: Object.freeze({
+    expected: 'afterReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.runtime.leaseHeartbeat = 1;
+    }),
+  }),
+  afterAnswerable: Object.freeze({
+    expected: 'afterReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.runtime.answerable = true;
+    }),
+  }),
+  afterAccruing: Object.freeze({
+    expected: 'afterReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.runtime.accruing = true;
+    }),
+  }),
+  audioMissing: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio = null;
+    }),
+  }),
+  audioSchema: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.schema = 'cf-v2-tame-greeting-audio/wrong';
+    }),
+  }),
+  audioDisposed: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.disposed = false;
+    }),
+  }),
+  audioArmed: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.armed = 1;
+    }),
+  }),
+  audioVoiceId: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.activeVoiceId = 'voice:selftest-retained';
+    }),
+  }),
+  audioCounterpart: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.counterpart.status = 'live';
+    }),
+  }),
+  audioCounterpartKey: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.counterpart.key = 'capture-toast:selftest-retained';
+    }),
+  }),
+  audioCounterpartGeneration: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.counterpart.generation = 1;
+    }),
+  }),
+  audioRuntimeState: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.runtime.state = 'running';
+    }),
+  }),
+  audioContextState: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.runtime.contextState = 'running';
+    }),
+  }),
+  audioNodes: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.runtime.nodes.active = 1;
+    }),
+  }),
+  audioVoices: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.runtime.voices.active = 1;
+    }),
+  }),
+  audioVoiceIds: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.runtime.voices.ids = ['voice:selftest-retained'];
+    }),
+  }),
+  audioVoiceIdsShape: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.runtime.voices.ids = { length: 0 };
+    }),
+  }),
+  audioCreatureEmitter: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.runtime.creatureEmitters.active = 1;
+    }),
+  }),
+  audioVoiceReservation: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.runtime.reservations.voices.active = 1;
+    }),
+  }),
+  audioNodeReservation: Object.freeze({
+    expected: 'audioReleased',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.audio.runtime.reservations.nodes.active = 1;
+    }),
+  }),
+  tuplePreserved: Object.freeze({
+    expected: 'tuplePreserved',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.runtime.sessionOrdinal += 1;
+    }),
+  }),
+  tupleStaleBlocked: Object.freeze({
+    expected: 'tuplePreserved',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.runtime.staleBlocked = false;
+    }),
+  }),
+  tupleCommits: Object.freeze({
+    expected: 'tuplePreserved',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.runtime.commits += 1;
+    }),
+  }),
+  tupleStaleWrites: Object.freeze({
+    expected: 'tuplePreserved',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.runtime.staleWrites += 1;
+    }),
+  }),
+  tupleLeaseLosses: Object.freeze({
+    expected: 'tuplePreserved',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.runtime.leaseLosses += 1;
+    }),
+  }),
+});
+for (const [name, control] of Object.entries(
+  convergenceReleaseDirectionalSelftests,
+)) {
+  const failed = Object.entries(control.result.checks)
+    .filter(([, value]) => value !== true)
+    .map(([check]) => check);
+  if (control.result.ok !== false || !same(failed, [control.expected])) {
+    throw new Error(`Arc 4 convergence release control was not isolated (${name}): ${failed.join(', ')}`);
+  }
+}
+const convergenceLostCounterpartSelftest = convergenceReleaseMutationSelftest(
+  (witness) => {
+    witness.after.audio.counterpart = {
+      key: 'capture-toast:selftest-lost', generation: 1, status: 'lost',
+    };
+  },
+);
+if (!convergenceLostCounterpartSelftest.ok) {
+  throw new Error('Arc 4 convergence release rejected a released lost counterpart');
+}
 
 const isolatedNegativeSelftests = Object.freeze({
   durable: Object.freeze({
@@ -7456,6 +8142,60 @@ const isolatedNegativeSelftests = Object.freeze({
   stale: Object.freeze({
     expected: 'waitSettled', result: assessArc4StaleConvergence(negativeStaleSelftest),
   }),
+  staleMissingConvergenceWitness: Object.freeze({
+    expected: Object.freeze(['convergenceRelease', 'oldUiConvergence']),
+    result: assessArc4StaleConvergence(
+      negativeStaleMissingConvergenceWitnessSelftest,
+    ),
+  }),
+  staleZeroConvergenceWitness: Object.freeze({
+    expected: 'convergenceRelease',
+    result: assessArc4StaleConvergence(
+      negativeStaleZeroConvergenceWitnessSelftest,
+    ),
+  }),
+  staleDuplicateConvergenceWitness: Object.freeze({
+    expected: 'convergenceRelease',
+    result: assessArc4StaleConvergence(
+      negativeStaleDuplicateConvergenceWitnessSelftest,
+    ),
+  }),
+  staleMismatchedConvergenceWitness: Object.freeze({
+    expected: 'convergenceRelease',
+    result: assessArc4StaleConvergence(
+      negativeStaleMismatchedConvergenceWitnessSelftest,
+    ),
+  }),
+  staleConvergenceTuple: Object.freeze({
+    expected: 'convergenceRelease',
+    result: assessArc4StaleConvergence(
+      negativeStaleConvergenceTupleSelftest,
+    ),
+  }),
+  staleConvergenceUnreleased: Object.freeze({
+    expected: 'convergenceRelease',
+    result: assessArc4StaleConvergence(
+      negativeStaleConvergenceUnreleasedSelftest,
+    ),
+  }),
+  staleRetainedPagehideRuntime: Object.freeze({
+    expected: 'pagehideRuntime',
+    result: assessArc4StaleConvergence(
+      negativeStaleRetainedPagehideRuntimeSelftest,
+    ),
+  }),
+  staleRenderedFuture: Object.freeze({
+    expected: 'oldUiConvergence',
+    result: assessArc4StaleConvergence(
+      negativeStaleRenderedFutureSelftest,
+    ),
+  }),
+  staleExcessiveUiLag: Object.freeze({
+    expected: 'oldUiConvergence',
+    result: assessArc4StaleConvergence(
+      negativeStaleExcessiveUiLagSelftest,
+    ),
+  }),
   staleRetainedResult: Object.freeze({
     expected: 'oldOutcome',
     result: assessArc4StaleConvergence(negativeStaleRetainedResultSelftest),
@@ -7584,6 +8324,12 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'pagehideRuntime',
     result: assessArc4PublicationConvergence(
       negativePublicationOldRuntimeSelftest,
+    ),
+  }),
+  publicationPreactionConvergenceTuple: Object.freeze({
+    expected: 'convergenceRelease',
+    result: assessArc4PublicationConvergence(
+      negativePublicationPreactionConvergenceTupleSelftest,
     ),
   }),
   publicationRenderedFuture: Object.freeze({

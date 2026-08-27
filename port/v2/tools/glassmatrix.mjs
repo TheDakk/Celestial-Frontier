@@ -9326,7 +9326,17 @@ async function main() {
               &&hdSurfaceText.includes('exact surface generation and planet identity')
               &&hdSurfaceText.includes('retains the displayed predecessor until an acquired successor publishes')
               &&hdSurfaceText.includes('rejects stale work')&&hdSurfaceText.includes('suppresses same-texture swaps')
-              &&hdSurfaceText.includes('cancels and releases its timer and leases at the owning scene boundary');
+              &&hdSurfaceText.includes('cancels and releases its timer and leases at the owning scene boundary'),
+            publishing=bulletNodes.find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||'')),
+            publishingHeading=headingFor(publishing),publishingText=publishing?.textContent||'',
+            publishingClaim=/(?:(?:(?:v2(?:[.]0)?[ \t]+)?preview(?:[ \t]+package)?|PR battery|branch-site workflow|development site|production)[^.!?;]{0,120}(?<![A-Za-z])(?:publish(?:es)?|deploys?|ships|(?:is|are|was|were|be|been|being|has|have|had)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had)){0,3}[ \t]+(?:published|deployed|shipped)|(?:is|are|was|were|be|been|being|has|have|had|goes|went|going|gone)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had|gone)){0,3}[ \t]+live)(?![A-Za-z])|(?<![A-Za-z])(?:publish(?:es)?|deploys?|ships|(?:is|are|was|were|be|been|being|has|have|had)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had)){0,3}[ \t]+(?:published|deployed|shipped)|(?:is|are|was|were|be|been|being|has|have|had|goes|went|going|gone)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had|gone)){0,3}[ \t]+live)(?![A-Za-z])[^.!?;]{0,120}(?:(?:v2(?:[.]0)?[ \t]+)?preview(?:[ \t]+package)?|PR battery|branch-site workflow|development site|production))/i,
+            publishingContradiction=bullets.some((copy)=>unnegated(copy,publishingClaim)),
+            publishingContract=publishingHeading==='Under the Hood'
+              &&publishingText.includes('DEVELOPMENT PUBLISHING STAYS PARKED')
+              &&publishingText.includes('it does not publish')
+              &&publishingText.includes('The separate branch-site workflow remains manually parked')
+              &&publishingText.includes('production remains the v1.8.9 main-branch site')
+              &&!publishingContradiction;
           const overclaim=/all six Research rows[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:bought|purchased|playable|available|live)/i.test(text)
             ||/all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:actionable|playable|available|live)/i.test(text)
             ||/(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
@@ -9338,25 +9348,25 @@ async function main() {
             ||/(?:biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
-          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!captureContradiction&&!lessonContradiction&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
+          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!captureContradiction&&!lessonContradiction&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!publishingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
             &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===expectedBulletCount&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
             &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&lessonContract&&trainingContract&&artContract
-            &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract
+            &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract&&publishingContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
             &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
             &&/a genuine empty-sky press still dismisses it/.test(text)
             &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
             &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
-            &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)
-            &&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text)&&state.rnSeen===${JSON.stringify(guideReleaseBaseline.rnSeen)}
+            &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&state.rnSeen===${JSON.stringify(guideReleaseBaseline.rnSeen)}
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
             identity,honest,overclaim,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
             charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
             worldCodeContract,atlasRouteContract,captureHeading,captureContract,captureContradiction,lessonHeading,lessonContract,lessonContradiction,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
-            workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,hdSurfaceHeading,hdSurfaceContract,rnSeen:state.rnSeen,
+            workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,hdSurfaceHeading,hdSurfaceContract,
+            publishingHeading,publishingContract,publishingContradiction,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
@@ -9381,14 +9391,15 @@ async function main() {
               worker=items.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
               shipyard=items.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
               hdSurface=items.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
+              publishing=items.find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||'')),
               firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
-              shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
+              shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',publishingText=publishing?.textContent||'',
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
               artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
               coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
-            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],lessonStale=null,lessonContradictory=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,lessonStaleChanged=false,lessonContradictionChanged=false,hdSurfaceChanged=false;
+            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],lessonStale=null,lessonContradictory=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,publishingStale=null,publishingContradictory=null,publishingLiveProductionContradictory=null,publishingPassiveContradictory=null,publishingVariantContradictions=[],publishingCrossRowContradictory=null,publishingRestored=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,lessonStaleChanged=false,lessonContradictionChanged=false,hdSurfaceChanged=false,publishingChanged=false,publishingContradictionChanged=false,publishingLiveProductionChanged=false,publishingPassiveChanged=false,publishingVariantsChanged=true,publishingCrossRowChanged=false;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!lesson||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!recoveryParent)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!lesson||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!publishing||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
@@ -9494,6 +9505,23 @@ async function main() {
               }shipyard.textContent=shipyardText;
               hdSurface.textContent=hdSurfaceText.replace('binds each completion to the exact surface generation and planet identity','HD texture identity ownership removed');
               hdSurfaceChanged=hdSurface.textContent!==hdSurfaceText;hdSurfaceStale=${developmentDetailCheck};hdSurface.textContent=hdSurfaceText;
+              publishing.textContent=publishingText.replace('DEVELOPMENT PUBLISHING STAYS PARKED','DEVELOPMENT PUBLISHING CONTRACT REMOVED');
+              publishingChanged=publishing.textContent!==publishingText;publishingStale=${developmentDetailCheck};publishing.textContent=publishingText;
+              publishing.textContent=publishingText+' The preview package now publishes and deploys the v2.0 development site.';
+              publishingContradictionChanged=publishing.textContent!==publishingText;publishingContradictory=${developmentDetailCheck};publishing.textContent=publishingText;
+              publishing.textContent=publishingText+' The v2.0 preview is live in production.';
+              publishingLiveProductionChanged=publishing.textContent!==publishingText;publishingLiveProductionContradictory=${developmentDetailCheck};publishing.textContent=publishingText;
+              publishing.textContent=publishingText+' The preview package is published to the development site.';
+              publishingPassiveChanged=publishing.textContent!==publishingText;publishingPassiveContradictory=${developmentDetailCheck};publishing.textContent=publishingText;
+              for(const copy of ['The preview package is being published to the development site.',
+                'The development site was just published.','The development site is now deployed.',
+                'The preview package has gone live.']){
+                publishing.textContent=publishingText+' '+copy;publishingVariantsChanged=publishingVariantsChanged&&publishing.textContent!==publishingText;
+                publishingVariantContradictions.push({copy,result:${developmentDetailCheck}});
+              }publishing.textContent=publishingText;
+              first.textContent=firstText+' The development site now deploys the v2.0 preview package.';
+              publishingCrossRowChanged=first.textContent!==firstText;publishingCrossRowContradictory=${developmentDetailCheck};first.textContent=firstText;
+              publishingRestored=${developmentDetailCheck};
               art.textContent=artText+' Thumbnail leases remain pinned after Close, and Planetside renders a 440px portrait for every row.';
               artContradictory=${developmentDetailCheck};art.textContent=artText;
               S.api.state=()=>({...priorState(),rnSeen:'v2-control'});authority=${developmentDetailCheck};
@@ -9508,7 +9536,7 @@ async function main() {
               if(workspace){workspace.textContent=workspaceText;if(workspaceParent&&workspace.parentNode!==workspaceParent)workspaceParent.insertBefore(workspace,workspaceNext);}
               if(coldArt){coldArt.textContent=coldArtText;if(coldArtParent&&coldArt.parentNode!==coldArtParent)coldArtParent.insertBefore(coldArt,coldArtNext);}
               if(worker){worker.textContent=workerText;if(workerParent&&worker.parentNode!==workerParent)workerParent.insertBefore(worker,workerNext);}
-              if(shipyard)shipyard.textContent=shipyardText;if(hdSurface)hdSurface.textContent=hdSurfaceText;S.api.state=priorState;
+              if(shipyard)shipyard.textContent=shipyardText;if(hdSurface)hdSurface.textContent=hdSurfaceText;if(publishing)publishing.textContent=publishingText;S.api.state=priorState;
             }
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
               &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
@@ -9518,7 +9546,7 @@ async function main() {
               &&workspace?.textContent===workspaceText&&workspace?.parentNode===workspaceParent&&workspace?.nextSibling===workspaceNext
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
-              &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&S.api.state===priorState;
+              &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&publishing?.textContent===publishingText&&S.api.state===priorState;
             return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===54
               &&identity?.ok===false&&identity?.identity===false
               &&truthfulFeatureClaims.length===4
@@ -9567,13 +9595,36 @@ async function main() {
               &&shipyardContradictions.every((row)=>row.result?.ok===false&&row.result?.shipyardContract===false
                 &&row.result?.honest===false&&row.result?.shipyardContradiction===true)
               &&hdSurfaceChanged&&hdSurfaceStale?.ok===false&&hdSurfaceStale?.hdSurfaceContract===false
+              &&publishingChanged&&publishingStale?.ok===false&&publishingStale?.publishingContract===false
+                &&publishingStale?.publishingContradiction===false
+              &&publishingContradictionChanged&&publishingContradictory?.ok===false
+                &&publishingContradictory?.publishingContract===false
+                &&publishingContradictory?.publishingContradiction===true&&publishingContradictory?.honest===false
+              &&publishingLiveProductionChanged&&publishingLiveProductionContradictory?.ok===false
+                &&publishingLiveProductionContradictory?.publishingContract===false
+                &&publishingLiveProductionContradictory?.publishingContradiction===true
+                &&publishingLiveProductionContradictory?.honest===false
+              &&publishingPassiveChanged&&publishingPassiveContradictory?.ok===false
+                &&publishingPassiveContradictory?.publishingContract===false
+                &&publishingPassiveContradictory?.publishingContradiction===true
+                &&publishingPassiveContradictory?.honest===false
+              &&publishingVariantsChanged&&publishingVariantContradictions.length===4
+              &&publishingVariantContradictions.every((row)=>row.result?.ok===false
+                &&row.result?.publishingContract===false
+                &&row.result?.publishingContradiction===true&&row.result?.honest===false)
+              &&publishingCrossRowChanged&&publishingCrossRowContradictory?.ok===false
+                &&publishingCrossRowContradictory?.publishingContract===false
+                &&publishingCrossRowContradictory?.publishingContradiction===true
+                &&publishingCrossRowContradictory?.honest===false
+              &&publishingRestored?.ok===true&&publishingRestored?.publishingContract===true
+                &&publishingRestored?.publishingContradiction===false&&publishingRestored?.honest===true
               &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
               order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,captureLimitControls,captureContradictions,lessonStaleChanged,lessonStale,lessonContradictionChanged,lessonContradictory,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
               artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
               workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
               workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,
-              shipyardChanged,shipyardStale,shipyardSurveyMissing,shipyardPublicationChanged,shipyardPublicationContradiction,shipyardContradictionsChanged,shipyardContradictions,hdSurfaceChanged,hdSurfaceStale,artContradictory,authority,restored,error};})()`);
+              shipyardChanged,shipyardStale,shipyardSurveyMissing,shipyardPublicationChanged,shipyardPublicationContradiction,shipyardContradictionsChanged,shipyardContradictions,hdSurfaceChanged,hdSurfaceStale,publishingChanged,publishingStale,publishingContradictionChanged,publishingContradictory,publishingLiveProductionChanged,publishingLiveProductionContradictory,publishingPassiveChanged,publishingPassiveContradictory,publishingVariantsChanged,publishingVariantContradictions,publishingCrossRowChanged,publishingCrossRowContradictory,publishingRestored,artContradictory,authority,restored,error};})()`);
           if (!detailControls.ok) {
             instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }

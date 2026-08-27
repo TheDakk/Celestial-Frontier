@@ -10,6 +10,89 @@ summary of it.
 
 ## Contents
 
+### Three source-bound green carriers plus one Layout result carrier associated with signed `7362a0e…`
+
+Signed documentation boundary `7362a0ea32e90b24e4988c81d566b82e20549e66` (tree
+`711573279cbf8debbed7e67847016885e5647527`, parent `4a54c0d…`) is embedded by the standalone and
+serial SceneMemory reports and by the serial Compendium report. Their source/build checks stayed
+clean and unchanged. The retained campaign chronology also associates the Layout result below with
+that sequence, but Layout schema v2 embeds no Git/source identity and its non-commit-tagged run ID
+has no separately preserved clean-HEAD/target-blob execution record. Its carrier therefore proves
+the named 787/787 run result and verifier only, not standalone exact-source binding. Every stage ran
+once with zero automatic retries on Microsoft Edge `151.0.4129.107` / CDP `1.3`. Exact Edge version
+remains provenance only; compatible Edge-family point updates never trigger rebaselining,
+recalibration or threshold movement.
+
+- `ARC1C_SCENEMEM_ACTIVATION_PASS_20260827_180121090.json.gz` preserves standalone run
+  `20260827-phase4-activation-scenemem`: 42/42 outcomes, zero findings, complete browser/server/
+  workspace-lock cleanup and 10,159 ms duration. The compressed carrier is 24,078 bytes with
+  SHA-256 `3758559b54b2a04d5afdaeb59be0de7642ecf0cd73acb4a0d6402e61ad0ac953`;
+  decompressed JSON is 305,652 bytes with SHA-256
+  `e0449818a7f5163a1a4428dc58ee1f31eebdf1a2de37a937dae06be67944dcbe`.
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_180204174.json.gz` preserves serial run
+  `20260827-phase4-final-layout`: 787/787 sealed outcomes across all ten viewports and 76,155 ms
+  duration. The compressed carrier is 4,767 bytes with SHA-256
+  `fe93e9e36cb6f2d4f8d345d315b293c433d3ae74f4fff0110d803c5eab4b31d0`; decompressed JSON is
+  106,046 bytes with SHA-256
+  `89440ca9461c5466e72db09a255c5cc50ffad37b4b176a4737049e47050262fe`. The report and verifier
+  do not independently bind this result to `7362a0e…`; it is retained as chronology-associated
+  run provenance only.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260827_180352756.json.gz` preserves serial run
+  `20260827-phase4-final-scenemem`: 42/42 outcomes, zero findings, complete cleanup and 10,216 ms
+  duration. The compressed carrier is 24,076 bytes with SHA-256
+  `5bef9ef38a619882877187f7d240efebd7d0c4fc19df4ca1d76321c2abdabaf8`; decompressed JSON is
+  305,700 bytes with SHA-256
+  `97fb18592bf4bbd9b79cad17ca3e74392a503f3fbabd2a96935e95aa2c525006`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260827_180444018.json.gz` preserves serial run
+  `20260827-phase4-final-compendium`: 78/78 outcomes, zero findings, complete lifecycle and
+  44,852 ms duration under Compendium budget SHA-256 `91b91b53…a012` and producer SHA-256
+  `4bdd3e36…2cb4`. The compressed carrier is 543,916 bytes with SHA-256
+  `742d7391cdf2f93e1a3f3c3dbd0fdd02864ace56a88d847675b16bd7c74196ae`; decompressed JSON is
+  8,655,318 bytes with SHA-256
+  `45849b7e53d784c873abd5ddfa5dafdbee72ec8f0b794a32bea3e6f038c2e34f`.
+
+All four carriers pass gzip integrity. The two SceneMemory carriers and Compendium carrier remain
+truthful source-bound evidence for `7362a0e…`; the Layout carrier remains a truthful result carrier
+without standalone source authority. A later harness-source repair cannot inherit any of them as
+predecessors: the final immutable campaign must restart at Layout on one newly signed unchanged
+source. They grant no later Slice, Glass, recovery, HUMAN, hosted, integration, version, release or
+deployment authority.
+
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_181317782.{json,log}.gz` — seventh Slice red after three green predecessors
+
+Retains serial run `20260827-phase4-final-slice` from the same clean signed source `7362a0e…`.
+It ran exactly once from `2026-08-27T18:06:23.569Z` through `18:13:17.782Z` (414,213 ms), ended
+parent/child exit `1/1`, retained ten screenshot-manifest rows and reported 12 findings across 11
+scopes. There was no automatic retry. Glass and recovery correctly did not start.
+
+The red is diagnostic evidence for stale harness assumptions after earlier product hardening, not
+an Edge-version or new product regression. The first finding showed the exact issue: the truthful
+55-bullet development bulletin was canonical, populated and honest, but Slice still looked for
+`DEVELOPMENT PUBLISHING IS ISOLATED` after the live contract had become
+`DEVELOPMENT PUBLISHING STAYS PARKED`. The related findings exposed four more stale or incomplete
+oracles: Settings imported raw tint `0.55` correctly restores to the live slider floor `0.82`;
+Arc 4 convergence releases runtime/audio before pagehide and therefore needs its own exact release
+witness; Training restoration emits the canonical full-address Earth identity rather than legacy
+leaf ID `p133`; and rejected Arc 2 bootstrap leaves Inventory lazily unmounted, closed and empty.
+The bounded repair updates Slice/Glass and their negative controls without changing product bytes,
+numeric rulers, deadlines or browser authority.
+
+Carrier integrity:
+
+- Report gzip: 175,903 bytes, SHA-256
+  `10d91ce46c1d36c415ca54e03f8b802d3b9b376d960a30f6627fc6d08d124152`; decompressed JSON:
+  1,484,514 bytes, SHA-256
+  `dd79ea9b8106713937204ae7b3070bde1bb958695e986861ae6a9aea54ee86ff`.
+- Log gzip: 78,360 bytes, SHA-256
+  `36f659ae98c5179b6cb4842117c56465555c96d0996a7bbb6bb7bce08beaade7`; decompressed log:
+  636,187 bytes, SHA-256
+  `4f92fb9236c20b0e2ce9933bde2ad3c55d16268e728a0a66a2b34e267f9c69cf`.
+
+Both carriers pass gzip integrity. This red is never rewritten as green and authorizes no retry,
+later browser stage, hosted work, integration, HUMAN claim, version, release or deployment. The
+repaired source must be signed clean and restart the full Layout → SceneMemory → Compendium → Slice
+→ Glass → uninterrupted recovery chain with fresh IDs.
+
 ### `ARC1C_SCENEMEM_REPAIR_CALIBRATION_2026-08-27.md` and three calibration carriers — heap-only activation evidence
 
 Retains three independent clean current-product SceneMemory calibrations from commit

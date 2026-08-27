@@ -27,6 +27,63 @@ Close restores that exact element. Count capture listeners semantically (`true` 
 `{capture:true}` are the same owner), negative-control an extra owner, and prove open/open,
 close/close, late settlement and dispose/reopen boundaries independently.
 
+⚠⚠ **REQUIRED TRUE COPY DOES NOT DISPROVE AN ADDITIVE CONTRADICTION** (2026-08-27). A Guide
+oracle required every truthful parked-development phrase but still accepted the same bulletin with
+“the preview battery now publishes the development site” appended. Presence checks are monotonic:
+once their phrases are present, adding a contradictory claim cannot make them false.
+
+For any honesty or capability boundary, require the truthful statements and separately reject
+unnegated affirmative claims. The negative control must append—not replace—the contradiction while
+leaving every required phrase intact, then restore the original copy and prove both directions.
+Bind the same semantic predicate and control in every browser lens that claims the contract; a
+source-marker test for only one lens is not cross-tool evidence. Match affirmative claims in both
+subject→verb and verb→subject order, cover active and passive forms (`publishes`, `is published`,
+`is being published`, `was just published`, `is now deployed`, `has shipped`, `has gone live`), and
+bound the verb lexically: an unbounded `ship` alternative once mistook the truthful noun phrase
+“ship preview” for a production-shipping claim. Scan every rendered bulletin row independently;
+a truthful designated publishing row cannot make a contradictory claim in another row harmless.
+Negative-control both same-row grammar variants and an unrelated-row injection.
+
+⚠⚠ **PROVE THE FINAL LIFECYCLE TRANSITION, NOT A FLAG THAT WAS ALREADY FALSE** (2026-08-27).
+Arc 4 stale convergence cleared its lease before the deliberate runtime release. An oracle that
+checked only `leaseOwned:false`, `answerable:false` and `accruing:false` could therefore pass even
+if the final `release()` became a no-op.
+
+Capture one operation-attributed before/after witness. Bind scenario-specific preconditions: stale
+starts visible with a cleared lease, stale block and stale-write count; committed publication starts
+visible with its live lease/heartbeat and commit count. Then require the release-owned transition
+to invisible, no lease heartbeat and no answerability/accrual; require authority/read counters and
+all release-invariant diagnostics to remain coherent; and independently prove full audio disposal,
+zero nodes/voices/reservations and an allowed released counterpart. Directional controls must change
+only the before authority, only the after tuple, or only the final lifecycle field, and each must
+fail exactly its named clause.
+
+⚠⚠ **ABSENT, BLANK, EMPTY AND CLOSED ARE FOUR DIFFERENT UI FACTS** (2026-08-27). Rejected Arc 2
+bootstrap correctly left Inventory lazy, but the first oracle collapsed a blank
+`data-inventory-state=""` marker to `null` and counted zero rows/actions without proving the panel
+was closed. A mounted blank marker or visible empty shell could pass.
+
+Retain marker presence separately from its raw attribute value. A lazy closed surface must prove
+the marker is absent, the logical-owner field itself is present and exactly `null`, visual and ARIA
+state are hidden, every opener is collapsed, and owned rows/actions are zero. Optional chaining plus
+`?? null` must not turn a deleted diagnostic field into valid closure. Negative-control a missing
+logical-owner property, a blank marker, and logical, visual, ARIA and each-opener closure one field
+at a time; require each mutant to fail only its named reason before restoration passes. Visual state
+comes from `getComputedStyle`, not an inline declaration that a later stylesheet or `!important`
+rule can override; counting children alone never proves lifecycle ownership.
+
+⚠⚠ **A LEAF SEED DOES NOT IDENTIFY A WORLD** (2026-08-27). The first canonical-Training repair
+isolated wrong-parent and wrong-ordinal ID controls by selecting any Atlas row with planet seed
+`133` as Earth and omitting it from outer-state comparison. Planet leaf seeds repeat under different
+stars and galaxies, so that would ignore a legitimate unrelated row while claiming to prove full
+CF1 identity.
+
+When the serialized ID itself is the mutation target, find the physical checkpoint row from its
+independent canonical galaxy coordinates/seed/shape plus star coordinates/seed and planet leaf.
+Then judge parent and ordinal components of the ID separately and remove exactly that one proven
+row from the unrelated-state projection. Never make a full-address control green by reintroducing
+leaf-only matching through a side channel.
+
 ⚠⚠ **CLEAN UP OWNERS BEFORE CALIBRATING FIXED PRODUCT GROWTH; A BROWSER POINT UPDATE IS
 NEVER THE TRIGGER** (2026-08-27). Signed source
 `862a75b316142348636abea442dab15e87393642` passed named Layout 787/787, then one no-retry
@@ -68,9 +125,15 @@ Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree
 `ff11158ac2ccc214490f6f3289d4a7a3660138e6`, parent `6c9ad855…`) applied only those four
 profile-specific heap values under budget SHA-256
 `e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375`. Its good signature,
-134-file /1,469-pass /one-skip battery and matching producer bindings close activation, not
-certification: an exact SceneMemory certificate and the restarted serial campaign remain separate
-fail-fast steps. A documentation-only signed descendant changes neither producer nor budget bytes.
+134-file /1,469-pass /one-skip battery and matching producer bindings closed activation. Signed
+descendant `7362a0ea32e90b24e4988c81d566b82e20549e66` then supplied source-bound standalone
+and serial SceneMemory certificates at 42/42 plus serial Compendium 78/78 before Slice stopped red
+on stale harness assumptions. The retained Layout carrier is 787/787 and verifier-green, but its
+schema embeds no Git/source identity and its non-commit-tagged run lacks a preserved execution
+record, so it is chronology-associated result provenance rather than exact-source evidence. Repairing
+an evidence oracle changes the campaign source regardless: the final fail-fast chain must restart at
+Layout on one newly signed unchanged commit. A browser point update still has no role in that
+decision.
 
 ⚠⚠ **LATCH IRREVERSIBLE CONVERGENCE BEFORE FALLIBLE PRESENTATION** (2026-08-27).
 F4 authority loss originally tried to repaint an already-open full Shipyard before scheduling its

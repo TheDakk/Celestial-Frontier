@@ -76,18 +76,24 @@
 > aggregate ceilings. Exact phone/desktop headroom is 1,016,760 / 951,976 V8 bytes and 1,193,110 /
 > 1,237,686 aggregate bytes; every other ceiling stays unchanged, and the `862a75b…` paired red
 > remains red on nodes/listeners. Budget SHA-256 is `e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375`;
-> producer bindings match. A fresh certificate and the restarted serial campaign are next. Edge
-> `.107` is run provenance only;
-> a compatible point update never moves a ruler.
+> producer bindings match. Signed evidence source
+> `7362a0ea32e90b24e4988c81d566b82e20549e66` then passed standalone SceneMemory 42/42 and its named
+> verifier. Its serial chronology retained a Layout 787/787 carrier plus source-bound SceneMemory
+> 42/42 and Compendium 78/78 carriers, each once with named verification. The Layout schema does not
+> embed Git/source identity and that non-commit-tagged run lacks a preserved execution record, so it
+> is result provenance rather than standalone exact-source evidence. Slice then ran once and stopped
+> terminal-red on preserved stale harness assumptions after product hardening; it was not retried,
+> and Glass and recovery did not run.
 >
-> Focused changed-source checks and directionally independent controls have exercised these bounded
-> repairs. The complete current browserless activation battery is green at 134 Vitest files / 1,469
+> The current repaired working tree changes only evidence oracles, their focused tests and
+> evidence/documentation carriers. Its browser-free battery is green at 134 Vitest files / 1,474
 > passed / one intentional skip / zero failures, plus all TypeScript programs, `artunused`,
-> syntax/import selftests and the 887-module build. The final documentation/release-copy consistency
-> review and independent evidence/code whole-diff review are both CLEAR. The calibration source,
-> three candidates and signed activation are exact; the next signed documentation-only descendant
-> leaves producer/budget bytes identical, and fresh certification is next.
-> Current-input Slice retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
+> syntax/import selftests and the 887-module build. It must become a new signed clean commit, then
+> restart the complete fail-fast chain from Layout with fresh run IDs on one unchanged source. There
+> is no later browser result, publication, hosted attempt, release, deployment, version bump or
+> external authority.
+>
+> Earlier current-input history retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > Signed-clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7`, which failed after 397,101 ms with 23 findings
 > across 16 scopes and no Arc 4 success evidence. Required was false, `ok`/ledger were null, and
@@ -110,9 +116,9 @@
 > capability inventory derived from the root layout/boot sources and records executable, product,
 > revision, user agent, JavaScript version and protocol version per run. Compendium and SceneMemory
 > each retain a separate source-derived capability contract, producer binding and fixed ruler. Exact
-> browser versions are provenance, and a compatible point update alone never rebaselines or moves
-> ceilings. No current-input Slice PASS, current Glass result or recovery certificate exists;
-> hosted, integration, HUMAN, preview, release and deployment authority remain open.
+> browser versions are provenance, and a compatible Edge or Chrome point update alone never
+> rebaselines, repins or moves ceilings. No current certifying Slice PASS, Glass result or recovery
+> certificate exists.
 
 > **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
 > 2026-08-27 overlay does not supersede it:** the native Survey card now
@@ -183,8 +189,10 @@
 > historical Engineering implementation and browser evidence were committed through `c4a02be`.
 > The protected-preview product/diagnostic correction described above is included in signed
 > `862a75b…`; `bb5dc7c…` remains the exact earlier red that exposed it. Signed calibration source
-> `6c9ad855…` owns the three clean repair candidates; signed `4a54c0d…` owns the heap-only activation,
-> and fresh certificate IDs remain pending.
+> `6c9ad855…` owns the three clean repair candidates; signed `4a54c0d…` owns the heap-only activation.
+> Signed `7362a0e…` later supplied the exact standalone and serial certificates, followed by the
+> preserved Slice harness red summarized above; the repaired-source full restart remains the current
+> evidence requirement.
 > Retained no-retry Slice run `20260825013823076-822-b99fea33b17b` passed in 253,181 ms with
 > 0 findings and 10 screenshots; the full Glass Matrix separately passed in 64,222 ms across 12/12
 > viewports and 78/78 controls with none blocked/omitted and no findings, instrument failures, or

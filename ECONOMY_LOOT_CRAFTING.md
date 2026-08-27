@@ -78,10 +78,19 @@
 > 12 MiB (`12,582,912`) and aggregate heap to
 > 18 MiB (`18,874,368`), providing exact phone/desktop headroom of 1,016,760 / 951,976 and
 > 1,193,110 / 1,237,686 bytes respectively. Every other ceiling stays unchanged, and the preserved
-> `862a75b…` paired red still fails nodes/listeners. Budget SHA-256 is `e6c4aeea…`, the complete
-> 134-file battery is green at 1,469 passed /one skip, and producer bindings match. The forthcoming
-> documentation-only signed descendant changes neither product producer nor budget; fresh
-> certification is next. Edge `.107` is provenance, not a version pin or a rebaseline trigger.
+> `862a75b…` paired red still fails nodes/listeners. Budget SHA-256 is `e6c4aeea…`, and producer
+> bindings match. Signed evidence source `7362a0ea32e90b24e4988c81d566b82e20549e66` then passed
+> standalone SceneMemory 42/42 and its named verifier, followed by a serial Layout 787/787 result
+> carrier plus source-bound SceneMemory 42/42 and Compendium 78/78 carriers with named verification.
+> Layout schema v2 embeds no Git/source identity and that non-commit-tagged run lacks a preserved
+> execution record, so it is chronology-associated provenance rather than exact-source evidence.
+> Slice ran once and stopped terminal-red on preserved stale harness assumptions after product
+> hardening; it was not retried, and Glass and recovery did not run. The current repaired working tree changes only evidence oracles,
+> their focused tests and evidence/documentation carriers. It must become a new signed clean commit,
+> then restart the complete fail-fast chain from Layout with fresh run IDs on one unchanged source.
+> There is no later browser result, publication, hosted attempt, release, deployment, version bump or
+> external authority. Compatible Edge or Chrome point updates remain provenance only and never
+> trigger calibration, rebaselining, repinning or a threshold change.
 >
 > **At the Arc 2 boundary, still open and deliberately not fabricated:** its economy trace is
 > source-neutral and reports `sourceModelStatus: arc3-deferred`. Arc 3's current overlay above now

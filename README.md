@@ -29,7 +29,8 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-27; repair calibration and signed activation complete, current browser evidence still open):** the current
+**Current local v2 candidate (2026-08-27; standalone plus first-three serial browser stages green,
+preserved Slice harness red):** the current
 working tree completes the bounded source lanes that followed the retained Arc 5A checkpoint.
 Gate B now recursively seals the exact 62-file domain-source inventory against DOM, storage,
 `navigator`, network, wall/monotonic clock, and uncontrolled-random access; its only two waivers are
@@ -105,8 +106,8 @@ forces calibration nor changes a numeric ceiling, while a real observed budget b
 Those `f7c87f22…` / `91f4e044…` bytes remain historical evidence for their exact producer. Compendium
 and SceneMemory now own separate sealed Edge-family + CDP `1.3` capability/profile authorities;
 the version-tolerance change itself altered no numeric budget in either ruler. SceneMemory's clean
-three-run repair calibration and signed heap-only activation are complete, while its exact
-SceneMemory and Compendium certificates remain pending. Root Gate-A remains a separate contract.
+three-run repair calibration and signed heap-only activation are complete. The later signed evidence
+boundary and exact restart requirement are recorded below. Root Gate-A remains a separate contract.
 
 Signed clean source `862a75b316142348636abea442dab15e87393642` passed named Layout
 `20260827-phase4-successor-layout` at 787/787 across all ten viewports, then ran named SceneMemory
@@ -138,23 +139,31 @@ Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree
 `862a75b…` paired red remains red on nodes/listeners. Budget SHA-256 is
 `e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375`; the signed source's
 134-file battery is green at 1,469 passed / one intentional skip and both producer bindings match.
-This documentation-only descendant leaves those producer/budget bytes identical. A fresh
-exact-budget SceneMemory certificate and the restarted serial chain are next. Edge `.107`
-is provenance only: a compatible point update never triggers recalibration, rebaselining, repinning
-or a threshold change.
+Signed evidence source `7362a0ea32e90b24e4988c81d566b82e20549e66`, a clean descendant with
+those producer/budget bytes unchanged, then passed standalone SceneMemory at 42/42 and its named
+verifier. Its serial chronology retained a Layout 787/787 carrier plus source-bound SceneMemory
+42/42 and Compendium 78/78 carriers, each once with named verification, before Slice ran once and
+stopped terminal-red on preserved stale harness assumptions after product hardening. Layout schema
+v2 embeds no Git/source identity and that non-commit-tagged run lacks a preserved execution record,
+so it is result provenance rather than standalone exact-source evidence. Slice was not retried;
+Glass and recovery did not run.
+The current repaired working tree changes only evidence oracles, their focused tests and
+evidence/documentation carriers. It must become a new signed clean commit, then restart the complete
+fail-fast chain from Layout with fresh run IDs on that one unchanged source. There is no later browser
+result, publication, hosted attempt, release, deployment, version bump or external authority.
+Compatible Edge or Chrome point updates remain run provenance only and never trigger calibration,
+rebaselining, repinning or a threshold change.
 
-Current-input Slice retains six one-attempt/zero-retry reds. Signed-clean source
+Earlier current-input history retains six one-attempt/zero-retry reds. Signed-clean source
 `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 `20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`. It failed after
 397,101 ms with 23 findings across 16 scopes and no Arc 4 success evidence: required was false,
 `ok`/ledger were null, and no success marker or ledger line exists. Glass and recovery correctly
 did not run. Its first five independent roots—55-bullet Guide/Glass contract, paired ecology diagnostic
 clocks, contextless blocked audio state, committed-only epoch timing and Survey/Training DOM
-ownership—are locally repaired with negative controls. Exact Edge version is provenance only;
-Slice and Glass judge fresh behavior/geometry rather than a version pin, so a browser update alone
-does not trigger calibration, rebaselining, repinning or a ceiling change. Compendium and
-SceneMemory own separate sealed Edge-family + CDP `1.3` capability/profile authorities. No current-input Slice PASS, Glass
-result, recovery certificate, hosted/HUMAN whole-Gate or release authority exists.
+ownership—were locally repaired with negative controls. Compendium and SceneMemory retain separate
+sealed Edge-family + CDP `1.3` capability/profile authorities. No current certifying Slice PASS,
+Glass result or recovery certificate exists.
 
 The retained Arc 4/5A checkpoint remains useful historical foundation. Its source-addressed Guide
 kept all 9 categories /43 authored IDs /41 player topics searchable and cross-linked; 24 topics

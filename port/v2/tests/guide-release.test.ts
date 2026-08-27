@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
+// @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
+import { hasUnnegatedSentenceClaim } from '../tools/engineering-browser-contract.mjs';
 import {
   GUIDE_TOPIC_SUPPORT,
   LEGACY_DORMANT_TOPIC_IDS,
@@ -144,6 +146,9 @@ const HD_ATTACHMENT_COPY_CONTRADICTIONS = Object.freeze([
   /stale (?:work|completion)[^.!?]{0,64}(?:can|may|will|does) publish/i,
   /(?:timer|lease|texture)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,48}after[^.!?]{0,32}(?:scene|surface|dispose|teardown)/i,
 ]);
+
+const DEVELOPMENT_PUBLISHING_CLAIM =
+  /(?:(?:(?:v2(?:[.]0)?[ \t]+)?preview(?:[ \t]+package)?|PR battery|branch-site workflow|development site|production)[^.!?;]{0,120}(?<![A-Za-z])(?:publish(?:es)?|deploys?|ships|(?:is|are|was|were|be|been|being|has|have|had)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had)){0,3}[ \t]+(?:published|deployed|shipped)|(?:is|are|was|were|be|been|being|has|have|had|goes|went|going|gone)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had|gone)){0,3}[ \t]+live)(?![A-Za-z])|(?<![A-Za-z])(?:publish(?:es)?|deploys?|ships|(?:is|are|was|were|be|been|being|has|have|had)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had)){0,3}[ \t]+(?:published|deployed|shipped)|(?:is|are|was|were|be|been|being|has|have|had|goes|went|going|gone)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had|gone)){0,3}[ \t]+live)(?![A-Za-z])[^.!?;]{0,120}(?:(?:v2(?:[.]0)?[ \t]+)?preview(?:[ \t]+package)?|PR battery|branch-site workflow|development site|production))/i;
 
 function plainCopy(body: string): string {
   return body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
@@ -1289,6 +1294,7 @@ describe('legacy and v2 release channels', () => {
       /every registered panel opener shares one focus-capture owner/,
       /memory ruler names the exact exceeded counter and cannot move merely because the browser received a compatible point update/,
       /Automated lenses still do not replace human play/,
+      /DEVELOPMENT PUBLISHING STAYS PARKED:[^\n]*it does not publish[^\n]*The separate branch-site workflow remains manually parked/,
       /production remains the v1\.8\.9 main-branch site/,
     ];
     const forbiddenOverclaims = [
@@ -1313,6 +1319,8 @@ describe('legacy and v2 release channels', () => {
       const categories = sections.map((section) => section.category);
       const bullets = sections.flatMap((section) => section.bullets);
       const copy = bullets.join('\n');
+      const publishingContradiction = bullets.some((bullet) =>
+        hasUnnegatedSentenceClaim(bullet, DEVELOPMENT_PUBLISHING_CLAIM));
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
@@ -1321,12 +1329,15 @@ describe('legacy and v2 release channels', () => {
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
         required: requiredCopy.every((pattern) => pattern.test(copy)),
-        honest: forbiddenOverclaims.every((pattern) => !pattern.test(copy)),
+        publishingContradiction,
+        honest: forbiddenOverclaims.every((pattern) => !pattern.test(copy))
+          && !publishingContradiction,
       };
     };
     const outcome = bulletinOutcome(V2_DRAFT_RELEASE.sections);
     expect(outcome).toEqual({
-      categories: true, canonical: true, inventory: true, populated: true, required: true, honest: true,
+      categories: true, canonical: true, inventory: true, populated: true, required: true,
+      publishingContradiction: false, honest: true,
     });
 
     const reordered = [...V2_DRAFT_RELEASE.sections];
@@ -1369,6 +1380,61 @@ describe('legacy and v2 release channels', () => {
       )),
     }));
     expect(bulletinOutcome(browserVersionRuler).required).toBe(false);
+    const stalePublishingHeading = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'DEVELOPMENT PUBLISHING STAYS PARKED',
+        'DEVELOPMENT PUBLISHING IS ISOLATED',
+      )),
+    }));
+    expect(bulletinOutcome(stalePublishingHeading).required).toBe(false);
+    const contradictoryPublishing = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.includes('DEVELOPMENT PUBLISHING STAYS PARKED')
+        ? `${bullet} The preview package now publishes and deploys the v2.0 development site.`
+        : bullet),
+    }));
+    expect(bulletinOutcome(contradictoryPublishing)).toMatchObject({
+      required: true, publishingContradiction: true, honest: false,
+    });
+    const crossRowPublishing = V2_DRAFT_RELEASE.sections.map((section, sectionIndex) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet, bulletIndex) => sectionIndex === 0 && bulletIndex === 0
+        ? `${bullet} The development site now deploys the v2.0 preview package.`
+        : bullet),
+    }));
+    expect(bulletinOutcome(crossRowPublishing)).toMatchObject({
+      required: true, publishingContradiction: true, honest: false,
+    });
+    const liveProductionPublishing = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.includes('DEVELOPMENT PUBLISHING STAYS PARKED')
+        ? `${bullet} The v2.0 preview is live in production.`
+        : bullet),
+    }));
+    expect(bulletinOutcome(liveProductionPublishing)).toMatchObject({
+      required: true, publishingContradiction: true, honest: false,
+    });
+    for (const claim of [
+      'The preview package is published to the development site.',
+      'The development site was deployed.',
+      'The preview package has shipped.',
+      'The preview package is being published to the development site.',
+      'The development site was just published.',
+      'The development site is now deployed.',
+      'The preview package has gone live.',
+    ]) {
+      const passivePublishing = V2_DRAFT_RELEASE.sections.map((section) => ({
+        category: section.category,
+        bullets: section.bullets.map((bullet) => bullet.includes('DEVELOPMENT PUBLISHING STAYS PARKED')
+          ? `${bullet} ${claim}`
+          : bullet),
+      }));
+      expect(bulletinOutcome(passivePublishing), claim).toMatchObject({
+        required: true, publishingContradiction: true, honest: false,
+      });
+    }
+    expect(bulletinOutcome(V2_DRAFT_RELEASE.sections)).toEqual(outcome);
     const missingCloseContract = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
       bullets: section.bullets.map((bullet) => bullet.replace(
@@ -1536,7 +1602,8 @@ describe('legacy and v2 release channels', () => {
       'Exploration audio is now live.',
     ]) {
       expect(bulletinOutcome(withInjectedFeatureClaim(truthfulClaim)), truthfulClaim).toEqual({
-        categories: true, canonical: true, inventory: true, populated: true, required: true, honest: true,
+        categories: true, canonical: true, inventory: true, populated: true, required: true,
+        publishingContradiction: false, honest: true,
       });
     }
     for (const unavailableClaim of [
