@@ -63,7 +63,7 @@ function wiringErrors(main: string, owner: string): string[] {
     "search: document.getElementById('searchbox') as HTMLInputElement,",
     'currentNav: () => nav,',
     'currentSave: () => save || null,',
-    "currentPlanetName: (planetSeed) => customNames.get('p' + planetSeed) || null,",
+    'currentPlanetName: (address) => worldIdentityName(worldIdentityState, address),',
     'routeChangeBlocked: () => blockRouteChangeWhileProductAction(),',
     'mutationsBlocked: () => playerMutationsBlocked(),',
     'planetNodeForProof,',
@@ -78,6 +78,9 @@ function wiringErrors(main: string, owner: string): string[] {
 
   const commit = section(adapter, '  commitNavigation:', '\n  onPrimeReachBlocked:');
   const commitOrder = [
+    'const naming = setCanonicalWorldName(',
+    'if (naming.capacityProtected) {',
+    'worldIdentityState = naming.state;',
     "customNames.set('p' + focusPlanet.seed, customPlanetName);",
     'save.customNames = [...customNames.entries()];',
     'nav = committedNav;',
@@ -85,6 +88,7 @@ function wiringErrors(main: string, owner: string): string[] {
     'playWhoosh();',
     'rerender();',
     'surveyPlanet(focusPlanet, target.star, target.planet);',
+    'return true;',
   ].map((needle) => commit.indexOf(needle));
   if (commit.length === 0
     || commitOrder.some((index) => index < 0)
@@ -92,8 +96,13 @@ function wiringErrors(main: string, owner: string): string[] {
     errors.push('commit-order');
   }
   if (occurrences(commit, 'save.customNames = [...customNames.entries()];') !== 1
+    || occurrences(commit, 'const naming = setCanonicalWorldName(') !== 1
+    || occurrences(commit, 'if (naming.capacityProtected) {') !== 1
     || occurrences(commit, 'rerender();') !== 1
     || occurrences(commit, 'surveyPlanet(focusPlanet, target.star, target.planet);') !== 1
+    || occurrences(commit, 'rerender();') !== 1
+    || commit.includes('rerender({ skipPersist: true })')
+    || commit.includes('void persistView()')
     || !commit.includes("if (focusPlanet && target.mode === 'surface') {\n      surveyPlanet(focusPlanet, target.star, target.planet);\n    }")) {
     errors.push('commit-cardinality');
   }
@@ -119,6 +128,11 @@ function wiringErrors(main: string, owner: string): string[] {
   if (!owner.includes("ports.search.addEventListener('keydown', onSearchKeydown);")
     || !owner.includes("ports.search.removeEventListener('keydown', onSearchKeydown);")) {
     errors.push('listener-lifecycle');
+  }
+  if (!owner.includes('readonly commitNavigation: (plan: SearchTravelCommitPlan) => boolean;')
+    || !owner.includes('const committed = ports.commitNavigation(')
+    || !owner.includes('return committed;')) {
+    errors.push('commit-refusal');
   }
   if (owner.includes('querySelector(')
     || /\b(?:persistView|savedRouteWriteHeld|surveyPlanet|fillCodex|codexOpenController)\b/.test(owner)) {
@@ -152,7 +166,7 @@ describe('MAIN-1 Search/CF1 travel extraction wiring', () => {
     const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importclose')");
     for (const [needle, replacement] of [
       [
-        "  currentPlanetName: (planetSeed) => customNames.get('p' + planetSeed) || null,",
+        '  currentPlanetName: (address) => worldIdentityName(worldIdentityState, address),',
         '  currentPlanetName: () => null,',
       ],
       [
@@ -184,6 +198,14 @@ describe('MAIN-1 Search/CF1 travel extraction wiring', () => {
 
   it('negative-controls the atomic commit order and Survey-after-render seam', () => {
     const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importclose')");
+    const withoutCanonicalNameAdapter = replaceOnce(
+      adapter,
+      '      const naming = setCanonicalWorldName(\n        worldIdentityState,\n        namedWorld,\n        customPlanetName,\n        f4Runtime?.extensions ?? EMPTY_V5_EXTENSIONS,\n      );\n',
+      '      /* negative control omitted canonical world-name authority */\n',
+    );
+    expect(wiringErrors(mainSource.replace(adapter, withoutCanonicalNameAdapter), ownerSource))
+      .toContain('commit-order');
+
     const withoutDurableNameAdapter = replaceOnce(
       adapter,
       '      save.customNames = [...customNames.entries()];\n',

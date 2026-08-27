@@ -185,6 +185,35 @@ describe('Engineering panel production read model', () => {
     expect(Object.isFrozen(model.fabricationGroups[0]?.recipes)).toBe(true);
   });
 
+  it('offers connected contact gear only when its ordinary fabrication gates pass', () => {
+    const mars = world(MARS);
+    const parts = [['wire', 1], ['chip', 1]] as const;
+    const eligible = projectEngineeringPanelReadModel({
+      ship: ship(parts), nav: surface(mars), engineering: state(),
+      loadout: loadout(parts), economy, activePlayMs: 0,
+    }).fabricationGroups.flatMap(({ recipes }) => recipes);
+    expect(eligible.find(({ baseId }) => baseId === 'earpiece')).toMatchObject({
+      status: 'available', reason: null, effectSupport: 'live',
+      effectDetail: 'Live effects: capture chance.',
+    });
+    expect(eligible.find(({ baseId }) => baseId === 'diplobeacon')).toMatchObject({
+      status: 'unavailable', effectSupport: 'live',
+    });
+    expect(eligible.find(({ baseId }) => baseId === 'fieldsuit')).toMatchObject({
+      status: 'unavailable', reason: 'Gameplay effect is not connected.',
+      effectSupport: 'unavailable',
+    });
+
+    const missingParts = projectEngineeringPanelReadModel({
+      ship: ship([]), nav: surface(mars), engineering: state(),
+      loadout: loadout(), economy, activePlayMs: 0,
+    }).fabricationGroups.flatMap(({ recipes }) => recipes)
+      .find(({ baseId }) => baseId === 'earpiece');
+    expect(missingParts).toMatchObject({ status: 'unavailable', effectSupport: 'live' });
+    expect(missingParts?.reason).toContain('Missing 1 Aluminium Wire.');
+    expect(missingParts?.reason).toContain('Missing 1 Silicon Chip.');
+  });
+
   it('projects positive Auto-Extractor work only from the persisted active-play cursor', () => {
     const mars = world(MARS);
     const model = projectEngineeringPanelReadModel({

@@ -29,6 +29,7 @@ import {
   canonicalizeV5Extensions,
   encodeArc2LootCarrier,
   prepareArc2FixedFabrication,
+  readArc2AcquisitionCapabilities,
   readArc2EngineeringLoadout,
   type Arc2FixedFabricationSource,
 } from '@cf/persistence';
@@ -212,6 +213,51 @@ describe('@cf/persistence — Arc 2 fixed-fabrication settlement adapter', () =>
     expect(occupied.state.inventory.entries.map(({ instance }) => instance.baseId)).toEqual([
       'compass', 'meteor',
     ]);
+  });
+
+  it('persists a fabricated contact bonus only when the new gear owns the equipped slot', () => {
+    const plan = fabricationPlan('earpiece', {
+      materials: {}, exceptionalMaterials: {},
+      itemCounts: { wire: 1, chip: 1 },
+      stardust: 0, signatureIds: [],
+    }, 35);
+    const toCapabilities = (state: Parameters<typeof encodeArc2LootCarrier>[0]) => (
+      readArc2AcquisitionCapabilities(canonicalizeV5Extensions({
+        inventory: { [ARC2_LOOT_NAMESPACE]: encodeArc2LootCarrier(state) },
+      }))
+    );
+
+    const autoEquipped = prepareArc2FixedFabrication(
+      fabricationSource({ wire: 1, chip: 1 }),
+      plan,
+    );
+    expect(autoEquipped).toMatchObject({
+      status: 'ready', outputLocation: 'equipped', mirror: { equip: { ears: 'earpiece' } },
+    });
+    if (autoEquipped.status !== 'ready') return;
+    const equippedCapabilities = toCapabilities(autoEquipped.state);
+    expect(equippedCapabilities).toMatchObject({
+      kind: 'loaded', capabilities: { contactCaptureBonus: 10 },
+    });
+
+    const resonator = fixtureGear('resonator', 'occupied-ears');
+    let occupiedInventory = committedGrant(createGearInventory(3), resonator);
+    const equipped = equipGear(occupiedInventory, occupiedInventory.revision, resonator.instanceId);
+    expect(equipped.status).toBe('committed');
+    if (equipped.status !== 'committed') return;
+    occupiedInventory = equipped.state;
+    const heldOnly = prepareArc2FixedFabrication(
+      fabricationSource({ wire: 1, chip: 1 }, occupiedInventory),
+      plan,
+    );
+    expect(heldOnly).toMatchObject({
+      status: 'ready', outputLocation: 'inventory', mirror: { equip: { ears: 'resonator' } },
+    });
+    if (heldOnly.status !== 'ready') return;
+    const heldCapabilities = toCapabilities(heldOnly.state);
+    expect(heldCapabilities).toMatchObject({
+      kind: 'loaded', capabilities: { contactCaptureBonus: 0 },
+    });
   });
 
   it('routes a full gear bag to pending without auto-equip', () => {

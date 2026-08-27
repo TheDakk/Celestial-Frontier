@@ -3,6 +3,7 @@ import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
   NAV_HOME,
+  canonicalCF1WorldAddressFromNav,
   navFromCanonicalCF1Address,
   parseStrictCF1Code,
   resolveCF1GalaxyAddress,
@@ -113,6 +114,7 @@ function createHarness() {
   let authority: SearchTravelAuthoritySave | null = BASE_AUTHORITY;
   let routeBlocked = false;
   let mutationsBlocked = false;
+  let commitAccepted = true;
   let proofIdentity: ProofIdentity = 'exact';
   let lastProof: PlanetNode | null = null;
   let compendium: {
@@ -120,7 +122,7 @@ function createHarness() {
     mode: 'closed' | 'list' | 'detail';
     filter: string;
   } = { panelOpen: false, mode: 'closed', filter: '' };
-  const planetNames = new Map<number, string>();
+  const planetNames = new Map<string, string>();
   const commits: SearchTravelCommitPlan[] = [];
   const primeBlocks = vi.fn();
   const charterBlocks = vi.fn();
@@ -133,7 +135,7 @@ function createHarness() {
     currentNav: () => nav,
     currentSave: () => authority,
     shipLiverySeed: () => SHIP_LIVERY_SEED,
-    currentPlanetName: (seed) => planetNames.get(seed) ?? null,
+    currentPlanetName: (address) => planetNames.get(address.key) ?? null,
     routeChangeBlocked: () => routeBlocked,
     mutationsBlocked: () => mutationsBlocked,
     planetNodeForProof: (star, planet) => {
@@ -147,11 +149,13 @@ function createHarness() {
       return lastProof;
     },
     commitNavigation: (plan) => {
+      if (!commitAccepted) return false;
       commits.push(plan);
       nav = plan.committedNav;
-      if (plan.focusPlanet && plan.customPlanetName) {
-        planetNames.set(plan.focusPlanet.seed, plan.customPlanetName);
+      if (plan.focusAddress && plan.customPlanetName) {
+        planetNames.set(plan.focusAddress.key, plan.customPlanetName);
       }
+      return true;
     },
     onPrimeReachBlocked: primeBlocks,
     onCharterReachBlocked: charterBlocks,
@@ -182,10 +186,15 @@ function createHarness() {
     setAuthority: (value: SearchTravelAuthoritySave | null) => { authority = value; },
     setRouteBlocked: (value: boolean) => { routeBlocked = value; },
     setMutationsBlocked: (value: boolean) => { mutationsBlocked = value; },
+    setCommitAccepted: (value: boolean) => { commitAccepted = value; },
     setProofIdentity: (value: ProofIdentity) => { proofIdentity = value; },
     lastProof: () => lastProof,
     setCompendium: (value: typeof compendium) => { compendium = value; },
-    setPlanetName: (seed: number, name: string) => { planetNames.set(seed, name); },
+    setPlanetName: (state: Extract<NavState, { mode: 'surface' }>, name: string) => {
+      const address = canonicalCF1WorldAddressFromNav(state);
+      if (!address.ok) throw new Error(`name fixture address failed: ${address.reason}`);
+      planetNames.set(address.address.key, name);
+    },
   };
 }
 
@@ -205,7 +214,7 @@ describe('Search/CF1 travel application owner', () => {
     });
     if (!earth.ok) throw new Error('Earth route unexpectedly unavailable');
     h.setNav(earth.state);
-    h.setPlanetName(133, 'Blue Home');
+    h.setPlanetName(earth.state, 'Blue Home');
     const encoded = h.controller.encodeHere();
     expect(encoded).not.toBeNull();
     expect(parseStrictCF1Code(encoded!)).toMatchObject({
@@ -258,6 +267,9 @@ describe('Search/CF1 travel application owner', () => {
     const plan = h.commits.at(-1)!;
     expect(plan.target).toMatchObject({ mode: 'surface', planet: { seed: 133, ordinal: 2 } });
     expect(plan.committedNav).toMatchObject({ mode: 'system', star: { seed: 424242 } });
+    expect(plan.focusAddress).toMatchObject({
+      key: 'CF1|g:999@90,-60|s:424242@560,170|p:133#2',
+    });
     expect(plan.focusPlanet).toMatchObject({ seed: 133, ordinal: 2 });
     expect(plan.customPlanetName).toBe('Blue Home');
     expect(h.commits).toHaveLength(3);
@@ -295,6 +307,14 @@ describe('Search/CF1 travel application owner', () => {
     expect(h.commits).toHaveLength(0);
     expect(h.input.value).toBe(GALAXY);
     expect(h.document.activeElement).toBe(h.input);
+
+    h.setRouteBlocked(false);
+    h.setCommitAccepted(false);
+    h.enter(EARTH);
+    expect(h.commits).toHaveLength(0);
+    expect(h.input.value).toBe(EARTH);
+    expect(h.document.activeElement).toBe(h.input);
+    expect(h.acceptedFocuses).not.toHaveBeenCalled();
   });
 
   it('enforces Prime, Charter, source-proof, and mutation fences in both directions', () => {

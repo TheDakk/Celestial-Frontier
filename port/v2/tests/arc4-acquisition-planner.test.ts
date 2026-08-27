@@ -1369,6 +1369,19 @@ describe('Arc 4 exact capture formula and truthful successor', () => {
       .toBe(0.8999999999999999);
     expect(captureChanceV1({ verb: 'tame', tier: 14, ring: 5, contactCapturePoints: 0 }))
       .toBe(0.02);
+    const noGear = captureChanceV1({ verb: 'tame', tier: 5, ring: 0, contactCapturePoints: 0 });
+    const commsEarpiece = captureChanceV1({
+      verb: 'tame', tier: 5, ring: 0, contactCapturePoints: 10,
+    });
+    const cappedContact = captureChanceV1({
+      verb: 'tame', tier: 5, ring: 0, contactCapturePoints: 17,
+    });
+    expect(commsEarpiece - noGear).toBeCloseTo(0.15, 12);
+    expect(cappedContact - noGear).toBeCloseTo(0.25, 12);
+    expect(captureChanceV1({ verb: 'tame', tier: 5, ring: 0, contactCapturePoints: 37 }))
+      .toBe(cappedContact);
+    expect(captureChanceV1({ verb: 'scavenge', tier: 0, ring: 0, contactCapturePoints: 10 }))
+      .toBe(captureChanceV1({ verb: 'scavenge', tier: 0, ring: 0, contactCapturePoints: 0 }));
     expect(captureChanceV1({ verb: 'tame', tier: 14, ring: 5, contactCapturePoints: 17 }))
       .toBeCloseTo(0.251476225, 12);
     expect(() => captureChanceV1({

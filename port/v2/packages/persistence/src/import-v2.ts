@@ -23,6 +23,7 @@ import {
 import { describeSpecies, classifyRealm, ecologyRole, realmBiome, realmModifiers, sapienceTier } from '@cf/domain-genome';
 import type { Genome } from '@cf/domain-genome';
 import { sanitizeEpoch } from '@cf/domain-progression';
+import { CF1_WORLD_ATLAS_ID_MAX_CHARS } from '@cf/scene';
 
 export interface ContentRegistry {
   materials: string[];
@@ -927,7 +928,7 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const rawAtlasWhereById = new Map<string, unknown>();
     for (const it of _capA(data.log, 150) as Array<Record<string, unknown>>) {
       if (it && it.id != null) {
-        const _id = _cs(it.id, 24);
+        const _id = _cs(it.id, CF1_WORLD_ATLAS_ID_MAX_CHARS);
         if (!_id) continue;   /* an all-stripped id must not mint an empty key */
         const entry: Record<string, unknown> = {
           id: _id, title: _cs(it.title, 60) || 'Charted place', sub: _cs(it.sub, 120),
@@ -947,7 +948,10 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const atlasWhere = frozenAtlasWhereLookup(
       [...logMap].map(([id, entry]) => [entry, rawAtlasWhereById.get(id)] as const),
     );
-    const homeId = (() => { const _h = _cs(data.home, 24); return (_h && logMap.has(_h)) ? _h : null; })();
+    const homeId = (() => {
+      const _h = _cs(data.home, CF1_WORLD_ATLAS_ID_MAX_CHARS);
+      return (_h && logMap.has(_h)) ? _h : null;
+    })();
     const landed = new Set<number>(); for (const s of _capA(data.land, 60000)) { const n = +(s as number); if (Number.isFinite(n)) landed.add(n); }
     const contacted = new Set<number>(); for (const s of _capA(data.cont, 4000)) { const n = +(s as number); if (Number.isFinite(n)) contacted.add(n); }
     const waveOffs = new Map<number, number>();

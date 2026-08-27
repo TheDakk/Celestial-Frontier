@@ -45,7 +45,9 @@ function bootErrors(source: string): string[] {
   const earlyEntryEnd = ensure.indexOf('return true;');
   const earlyEntry = earlyEntryEnd >= 0 ? ensure.slice(0, earlyEntryEnd) : '';
   if (earlyEntry.length === 0
-    || !earlyEntry.includes('&& !arc4OwnershipBootstrapPending)')) {
+    || !earlyEntry.includes(
+      '&& !arc4OwnershipBootstrapPending && !worldIdentityBootstrapPending)',
+    )) {
     errors.push('boot-pending-entry');
   }
   if ((ensure.match(/runtime\.commit\(/g) ?? []).length !== 1) errors.push('boot-single-cas');
@@ -124,9 +126,9 @@ function trainingErrors(source: string): string[] {
     errors.push('training-source-deferral');
   }
   if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
-    || !body.includes('preparedLoot === null && preparedOwnership === null')
     || !body.includes('...(preparedLoot === null ? [] : [preparedLoot.write]),')
-    || !body.includes('...(preparedOwnership === null ? [] : preparedOwnership.writes),')) {
+    || !body.includes('...(preparedOwnership === null ? [] : preparedOwnership.writes),')
+    || !body.includes('...worldIdentityWrites,')) {
     errors.push('training-extension-write-composition');
   }
   if (!(committedState > commit && committedState < durable)) {
@@ -1038,7 +1040,7 @@ describe('Arc 4 main authority wiring', () => {
       mainSource,
       'async function ensureBootAuthorityCommit(',
       '\nfunction f4RuntimeMayMutate(',
-      '    && !arc4OwnershipBootstrapPending) return true;',
+      '    && !arc4OwnershipBootstrapPending && !worldIdentityBootstrapPending) return true;',
       '    && true) return true;',
     );
     expect(bootErrors(missingBootEntryPending)).toContain('boot-pending-entry');
@@ -1047,8 +1049,8 @@ describe('Arc 4 main authority wiring', () => {
       mainSource,
       'function f4RuntimeMayMutate(',
       '\nfunction f4RuntimeMayAnswer(',
-      '    || arc4OwnershipBootstrapPending) return false;',
-      '    ) return false;',
+      '    || arc4OwnershipBootstrapPending || worldIdentityBootstrapPending',
+      '    || worldIdentityBootstrapPending',
     );
     expect(bootErrors(ungatedBoot)).toContain('boot-mutation-gate');
 
@@ -1065,8 +1067,8 @@ describe('Arc 4 main authority wiring', () => {
       mainSource,
       'async function completeTraining(',
       '\nconst F4_FRESH_RACE_RELEASE_KEY',
-      '            ...(preparedLoot === null ? [] : [preparedLoot.write]),',
-      '            /* Arc 2 write omitted */',
+      '          ...(preparedLoot === null ? [] : [preparedLoot.write]),',
+      '          /* Arc 2 write omitted */',
     );
     expect(trainingErrors(trainingWithoutArc2)).toContain('training-extension-write-composition');
 
@@ -1074,8 +1076,8 @@ describe('Arc 4 main authority wiring', () => {
       mainSource,
       'async function completeTraining(',
       '\nconst F4_FRESH_RACE_RELEASE_KEY',
-      '            ...(preparedOwnership === null ? [] : preparedOwnership.writes),',
-      '            /* Arc 4 writes omitted */',
+      '          ...(preparedOwnership === null ? [] : preparedOwnership.writes),',
+      '          /* Arc 4 writes omitted */',
     );
     expect(trainingErrors(trainingWithoutOwnership)).toContain('training-extension-write-composition');
 

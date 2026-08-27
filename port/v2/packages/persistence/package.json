@@ -1,4 +1,4 @@
 { "name": "@cf/persistence", "private": true, "version": "0.0.0", "type": "module",
   "description": "Phase 2 (plan §19/§20): storage repository with transaction recovery, the v1.8.9 localStorage importer seam, and save DTOs. App-side package — may touch storage APIs; the domain no-DOM lint does not cover it by design.",
   "exports": { ".": "./src/index.ts" },
-  "dependencies": { "@cf/domain-acquisition": "*", "@cf/domain-loot": "*", "@cf/domain-opportunity": "*", "@cf/domain-progression": "*", "@cf/domain-sessionrng": "*" } }
+  "dependencies": { "@cf/domain-acquisition": "*", "@cf/domain-loot": "*", "@cf/domain-opportunity": "*", "@cf/domain-progression": "*", "@cf/domain-sessionrng": "*", "@cf/scene": "*" } }

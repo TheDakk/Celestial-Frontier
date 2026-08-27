@@ -6,6 +6,8 @@ import { describe, expect, it } from 'vitest';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const workflowPath = path.resolve(here, '..', '..', '..', '.github', 'workflows', 'test.yml');
 const workflow = fs.readFileSync(workflowPath, 'utf8');
+const SCENE_BROWSER_ENV =
+  'CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge';
 const ZERO_DEFAULT_CONTRACT = [
   'on:\n  pull_request:\n    types: [labeled]',
   "github.event.label.name == 'actions-budget-approved' &&",
@@ -14,11 +16,11 @@ const ZERO_DEFAULT_CONTRACT = [
 ] as const;
 const ORDERED_CONTRACT = [
   '- name: v2 parity, type, art, and coverage gates',
-  '- name: install exact Arc 1C Edge scene-memory browser',
-  'EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb',
-  'EDGE_PACKAGE_SHA256: bd7604025424914a61c06293cb6bf269141a29d8c54cf1997110bc96d3365d60',
-  'sudo apt-get install --reinstall --yes "$scene_edge_package"',
-  'test "$(dpkg-query -W -f=\'${Version}\' microsoft-edge-stable)" = "151.0.4129.101-1"',
+  '- name: install current Arc 1C Edge scene-memory browser',
+  'EDGE_PACKAGE_URL: https://go.microsoft.com/fwlink/?linkid=2149051',
+  'test "$(dpkg-deb --field "$scene_edge_package" Package)" = "microsoft-edge-stable"',
+  'dpkg-deb --extract "$scene_edge_package" "$scene_edge_root"',
+  'test -x "$scene_edge_browser"',
   '- name: scene-memory instrument and calibration controls',
   'npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts',
   '- name: one-attempt scene-memory certification',
@@ -31,7 +33,7 @@ const ORDERED_CONTRACT = [
 ] as const;
 const ORDERED_STEP_NAMES = [
   'v2 parity, type, art, and coverage gates',
-  'install exact Arc 1C Edge scene-memory browser',
+  'install current Arc 1C Edge scene-memory browser',
   'scene-memory instrument and calibration controls',
   'one-attempt scene-memory certification',
   'verify current scene-memory evidence',
@@ -64,9 +66,34 @@ const satisfiesSceneWorkflow = (source: string): boolean => {
   )) return false;
   const env = 'CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem';
   if (source.split(env).length !== 2) return false;
+  const sceneBrowserOwners = [
+    'scene-memory instrument and calibration controls',
+    'one-attempt scene-memory certification',
+    'verify current scene-memory evidence',
+  ];
+  for (const name of [
+    'install current Arc 1C Edge scene-memory browser',
+    ...sceneBrowserOwners,
+  ]) {
+    const index = ORDERED_STEP_NAMES.findIndex((candidate) => candidate === name);
+    const header = `      - name: ${name}`;
+    const start = source.indexOf(header);
+    if (start < 0) return false;
+    const nextName = ORDERED_STEP_NAMES[index + 1];
+    const end = nextName === undefined ? source.length : source.indexOf(`      - name: ${nextName}`, start + 1);
+    if (end < 0) return false;
+    const block = source.slice(start, end);
+    const browserMentions = block.split('\n').filter((line) => line.includes('CF_BROWSER'));
+    if (sceneBrowserOwners.includes(name)) {
+      if (browserMentions.length !== 1 || browserMentions[0]?.trim() !== SCENE_BROWSER_ENV) return false;
+    } else if (browserMentions.length !== 0) return false;
+  }
   return !owned.includes('continue-on-error')
     && !owned.includes('--calibrate')
     && !owned.includes('--allow-dirty')
+    && !owned.includes('$GITHUB_ENV')
+    && !owned.includes('151.0.4129.101')
+    && !owned.includes('EDGE_PACKAGE_SHA256')
     && source.includes('- name: archive scene-memory evidence')
     && source.includes('name: v2-scene-memory-evidence')
     && source.includes('path: port/v2/apps/game/smoke/scenemem-report.json');
@@ -90,7 +117,7 @@ describe('scene-memory test-battery workflow contract', () => {
     }
   });
 
-  it('keeps exact Edge install, one attempt, verification, and artifact ownership ordered', () => {
+  it('keeps current Edge-family setup, one attempt, verification, and artifact ownership ordered', () => {
     expect(satisfiesSceneWorkflow(workflow)).toBe(true);
   });
 
@@ -101,7 +128,7 @@ describe('scene-memory test-battery workflow contract', () => {
   });
 
   it('rejects anonymous work inserted ahead of the short fail-fast ruler', () => {
-    const anchor = '      - name: install exact Arc 1C Edge scene-memory browser';
+    const anchor = '      - name: install current Arc 1C Edge scene-memory browser';
     for (const anonymous of [
       '      - run: npm run compendiummem\n',
       '      - uses: actions/checkout@v4\n',
@@ -111,10 +138,32 @@ describe('scene-memory test-battery workflow contract', () => {
     }
   });
 
-  it('rejects the known no-op plain Edge install at the new first-browser boundary', () => {
+  it('rejects restoring a point-version pin at the SceneMemory browser boundary', () => {
     expect(satisfiesSceneWorkflow(workflow.replace(
-      'sudo apt-get install --reinstall --yes "$scene_edge_package"',
-      'sudo apt-get install --yes "$scene_edge_package"',
+      'https://go.microsoft.com/fwlink/?linkid=2149051',
+      'microsoft-edge-stable_151.0.4129.101-1_amd64.deb',
+    ))).toBe(false);
+  });
+
+  it('rejects SceneMemory browser scope drift or leakage into the exact Compendium boundary', () => {
+    let cursor = 0;
+    for (let occurrence = 0; occurrence < 3; occurrence++) {
+      const at = workflow.indexOf(SCENE_BROWSER_ENV, cursor);
+      expect(at).toBeGreaterThanOrEqual(0);
+      expect(satisfiesSceneWorkflow(
+        `${workflow.slice(0, at)}CF_BROWSER: /usr/bin/microsoft-edge-stable${workflow.slice(at + SCENE_BROWSER_ENV.length)}`,
+      )).toBe(false);
+      cursor = at + SCENE_BROWSER_ENV.length;
+    }
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      '          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge',
+      '          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge\n'
+        + '          CF_BROWSER_COPY: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge',
+    ))).toBe(false);
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      '          test -x "$scene_edge_browser"',
+      '          test -x "$scene_edge_browser"\n'
+        + '          printf \'CF_BROWSER=%s\\n\' "$scene_edge_browser" >> "$GITHUB_ENV"',
     ))).toBe(false);
   });
 });

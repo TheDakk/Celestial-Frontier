@@ -118,6 +118,16 @@ const tameAudioContractOwner = section(
   'const tameGreetingFreshFixtureIsolated = (freshFixture, reloaded) => {',
   'export const assessArc4PublicationConvergence = ({',
 );
+const tameAudioVirginOwner = section(
+  contractSource,
+  'const tameGreetingAudioVirgin = (observation) => {',
+  'const tameGreetingVoiceOwnerExact = (observation, eventKey, creatureId) => {',
+);
+const sliceTameAudioVirginOwner = section(
+  sliceSource,
+  '  const arc4TameGreetingAudioVirgin = (observation) => {',
+  '  const arc4ReloadedSurfaceObservationExact = ({ state, ui } = {}, expectedUsed) => (',
+);
 const tameAudioMutationOwner = section(
   contractSource,
   'const tameGreetingAudioMutationSelftests = Object.freeze({',
@@ -357,7 +367,25 @@ const SLICE_TAME_RELOAD_MUTATION_FIELDS = [
   ['fresh retained-result mutation',
     'next.freshFixture.observation.result = structuredClone('],
   ['expanded control cardinality',
-    'Object.keys(arc4TameAudioControls).length === 17'],
+    'Object.keys(arc4TameAudioControls).length === 19'],
+] as const satisfies readonly Field[];
+
+const TAME_CONTEXT_MUTATION_FIELDS = [
+  ['diagnostic context-state control', 'diagnosticReadContextState: Object.freeze({'],
+  ['diagnostic context-state mutation',
+    "bundle.diagnosticRead.audio.runtime.contextState = 'suspended';"],
+  ['reload context-created control', 'reloadCreatedContext: Object.freeze({'],
+  ['reload context-created mutation',
+    'bundle.reloaded.audio.runtime.contextGeneration = 1;'],
+] as const satisfies readonly Field[];
+
+const SLICE_TAME_CONTEXT_MUTATION_FIELDS = [
+  ['diagnostic context-state control', 'diagnosticReadContextState: {'],
+  ['diagnostic context-state mutation',
+    "next.diagnosticRead.audio.runtime.contextState = 'suspended';"],
+  ['reload context-created control', 'reloadCreatedContext: {'],
+  ['reload context-created mutation',
+    'next.reloaded.audio.runtime.contextGeneration = 1;'],
 ] as const satisfies readonly Field[];
 
 function expectOnlyChecksRed(assessment: Assessment, expected: readonly string[]): void {
@@ -585,6 +613,39 @@ describe('Slice Arc 4 Tame greeting post-release collector', () => {
     for (const [owner, fields] of owners) {
       for (const [label, target] of fields) {
         const mutant = replaceUnique(owner, target, `__ARC4_RELOAD_FIELD_${marker++}__`);
+        expect(fieldErrors(mutant, fields), label).toContain(
+          `${label}: expected one owner field, got 0`,
+        );
+      }
+    }
+  });
+
+  it('treats an unmuted blocked policy as contextless and independently controls context creation', () => {
+    expect(tameAudioVirginOwner).toContain('tameGreetingAudioShape(observation)');
+    expect(tameAudioVirginOwner).not.toContain('runtime.muted === true');
+    expect(sliceTameAudioVirginOwner).toContain("typeof runtime?.muted === 'boolean'");
+    expect(sliceTameAudioVirginOwner).not.toContain('runtime?.muted === true');
+    expect(contractSelftestOwner).toContain(
+      "muted: false, nodesActive: 0, nodesPeak: 0,",
+    );
+    expect(sliceSource).toContain('&&observation?.result===null');
+    expect(fieldErrors(
+      tameAudioMutationOwner,
+      TAME_CONTEXT_MUTATION_FIELDS,
+    )).toEqual([]);
+    expect(fieldErrors(
+      sliceTameAudioMutationOwner,
+      SLICE_TAME_CONTEXT_MUTATION_FIELDS,
+    )).toEqual([]);
+
+    const owners = [
+      [tameAudioMutationOwner, TAME_CONTEXT_MUTATION_FIELDS],
+      [sliceTameAudioMutationOwner, SLICE_TAME_CONTEXT_MUTATION_FIELDS],
+    ] as const;
+    let marker = 0;
+    for (const [owner, fields] of owners) {
+      for (const [label, target] of fields) {
+        const mutant = replaceUnique(owner, target, `__ARC4_CONTEXT_FIELD_${marker++}__`);
         expect(fieldErrors(mutant, fields), label).toContain(
           `${label}: expected one owner field, got 0`,
         );

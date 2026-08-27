@@ -1,52 +1,50 @@
 # Celestial Frontier — Quests & Chapters
 
-> **2026-08-27 current evidence overlay:** current-input Slice has five preserved terminal-red,
-> one-attempt/zero-retry runs on Edge `151.0.4129.107`. Run
-> `20260826214541492-83064-b252b137f7a3` executed from signed `8553bd7…` for 92,772 ms and retained
-> three findings: the Settings 14-versus-15 control inventory and stage-1-unreachable Arc 3 target
-> were instrument false reds, while retained Survey Close returning focus to canvas instead of its
-> dock opener was a product regression. Changed source `9d4b2b0…` then supplied run
-> `20260827000034983-98202-869d966f2f88`, which failed after 92,566 ms with only the Arc 3 harness
-> finding. That outcome clears Settings and Survey focus; the reachable replacement target exposed
-> a second instrument defect whose oracle simultaneously required system navigation and nav-owned
-> planet identity even though the selected world is card-owned. Clean signed source `8a23e22…`
-> then supplied run `20260827025804458-2742-c0c871ee52b6`, which ran once/zero retries and failed
-> after 93,582 ms with three findings from one instrument lifecycle cascade. The retained Survey card
-> correctly hid the right rail, but Slice attempted zero-rect `railshipyard` before yielding the card.
-> This outcome clears the prior card-context repair. Clean signed source `bd6b06b…` then supplied run
-> `20260827032748771-8092-d2a0130882c1`, which ran once/zero retries and failed after 119,502 ms
-> with six finding scopes from two harness roots. Stale Mars-source expectations plus an obsolete
-> five-key rendered receipt rejected valid Search/remnant evidence, cascading through two findings
-> and skipping Skim. After reload, retained Survey again correctly hid the rail before Slice tried
-> Engineering; the storage and stale-authority findings cascaded from that second lifecycle error.
-> Product Search, remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and
-> the repaired lifecycle were outcome-cleared by that fourth run. Signed-clean source
-> `9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied fifth run
-> `20260827041238239-16243-cbf9ca66283b` on the same Edge `.107`; it ran for 141,336 ms and retained
-> one finding: the exact committed Tame greeting voice timed out with `last null`. The fifth outcome
-> clears the repaired path through Skim and the Engineering, storage-refusal, stale-authority,
-> committed-publication and Arc 5 fixed-point stages. The generic null is only the old active-voice
-> predicate's evidence limit: it cannot distinguish product rejection, autoplay/environment behavior,
-> natural completion before sampling or collector failure.
+> **2026-08-27 current evidence overlay:** current-input Slice has six preserved terminal-red,
+> one-attempt/zero-retry runs. Signed-clean source
+> `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
+> `20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`; it ran for
+> 397,101 ms and retained 23 findings across 16 scopes without Arc 4 success evidence. Required was
+> false, `ok`/ledger were null, and no success marker or ledger line exists. Glass and recovery
+> correctly did not run.
 >
-> The current local repair preserves global F3 transaction `revision` as a counter distinct from the
-> explicit Arc 4/5 `ownershipRevision`, requires V1/V2 ownership revisions to agree before publish,
-> and makes the greeting owner fence only the latter. Its named retained seven-clause
-> result/global/ownership/claim/counterpart/runtime/toast collector requires exact `true` release
-> before collection and fails fast without cascading; it accepts one exact start while active or
-> after natural completion. Generic Arc 4 `ownershipRevision` and reload-result-null controls are
-> added in the same repair batch. Browser-free verification is green at 124 test files, 1,383
-> passing tests and one intentional skip, and the current **A New Foundation** draft has 55 bullets.
-> Post-start audio lifecycle, the current nine-stage/14-burn sequence, Glass and uninterrupted
-> recovery remain unproved. The former Compendium certificate is historical for producer
-> `587d3bdf…`; current producer
-> `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is active under budget
-> `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. Exact-budget run
-> `20260826-slice-repair-certification` passed 78/78 with complete lifecycle and named verification
-> from clean signed activation source `91f4e044…` in one attempt/zero retries (44,847 ms); raw/gzip
-> SHA-256 are `81c27ed5…` / `6f3deb0f…`. No current-input Slice PASS, current Glass result or
-> recovery certificate exists, and there is no hosted, integration, HUMAN, preview, release/version
-> or deployment authority.
+> The chapter/Training-owned root was a negative control that replaced Survey after bypassing the
+> document Escape path, leaving lesson locks bound to the old DOM before Land. Product now exports
+> `refreshTrainingScope()`; Survey invokes it once after the replacement card is visible and
+> aria/dock state is published. It rebuilds allowed roots, locks and spotlight, and only restores
+> focus when existing focus is no longer lesson-owned. Dynamic tests cover Survey-tour, Atlas-add
+> and Land; structural controls reject a missing, duplicate or pre-visibility call. The existing
+> **A LESSON OWNS ITS ESCAPE KEY** release-note bullet now covers this rebuild, so **A New
+> Foundation** remains exactly 55 bullets.
+>
+> The other four sixth-red roots were Guide/Glass count, ecology diagnostic comparison, contextless
+> blocked audio and committed-only epoch timing. Focused repairs and their negative controls have
+> been exercised, but the moving tree has no final frozen-producer full-battery result or completed
+> independent audit set. The final battery and audits remain pending before any signed clean freeze
+> or next single Slice.
+>
+> Browser evidence has three separate version-tolerant authorities. The root browser authority
+> accepts a compatible Chromium-family executable only when CDP `1.3` and the capability inventory
+> derived from the root layout/boot sources pass; every run retains executable, product, revision,
+> user agent, JavaScript version and protocol version as provenance. Compendium and SceneMemory keep
+> their own separately derived capability contracts, producer bindings and fixed rulers. A browser
+> point update alone does not rebaseline any of the three or move its thresholds. No current-input
+> Slice PASS, current Glass result or recovery certificate exists, and there is no hosted,
+> integration, HUMAN, preview, release/version or deployment authority.
+>
+> Charter landfall scope is classified from the registered canonical CF1 planet address, never from
+> a globally non-unique leaf seed. Sol credit requires the exact home-galaxy seed and coordinates,
+> the exact Sol-star seed and coordinates, and the planet seed's expected source ordinal. A matching
+> seed under any other hierarchy cannot impersonate Sol, and an unregistered lookalike cannot bank
+> at all. A committed first landing may increment only scope-matching landfall goals from the current
+> chapter onward, with every goal capped at its authored target; intent, refusal or repeat landing
+> grants nothing.
+>
+> Chapter 1 mining credit is equally hierarchy-exact. A committed Mine result counts only when its
+> registered source address has the exact home-galaxy seed and coordinates, exact Sol-star seed and
+> coordinates, the authored dead-world leaf seed, and the expected source ordinal. The same leaf
+> seed under a different galaxy/star coordinate or ordinal cannot impersonate the Sol objective;
+> an intent, refusal, stale write or unrelated committed mine grants no Charter progress.
 
 > **2026-08-25 Arc 4 current-capability overlay:** finite Tame/Scavenge/Sample is now a native
 > Survey-card action over the production full roster and current epoch. It presents a source-bound

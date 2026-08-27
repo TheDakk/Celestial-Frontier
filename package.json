@@ -7,7 +7,7 @@
     "actionsbudget:selftest": "node tools/actions-budget-policy.js --selftest",
     "preflight": "node tools/preflight.js",
     "preflight:selftest": "node tools/preflight.js --selftest",
-    "preflight:ci": "node tools/preflight.js --assert-pin",
+    "preflight:ci": "node tools/preflight.js",
     "goldenseeds": "node tools/goldenseeds.js --check",
     "goldenseeds:capture": "node tools/goldenseeds.js --capture",
     "codefixtures": "node tools/codefixtures.js --check",

@@ -81,11 +81,11 @@ const SIGNATURE_NAMES: Readonly<Record<string, string>> = Object.freeze({
   stone: 'Stone', ocean: 'Ocean', flame: 'Flame', sky: 'Sky', life: 'Life',
   mind: 'Mind', star: 'Star', void: 'Void', prism: 'Prism',
 });
-const LIVE_GEAR_EFFECTS = new Set(['yield', 'strike', 'skim', 'skimguard']);
+const LIVE_GEAR_EFFECTS = new Set(['yield', 'strike', 'skim', 'skimguard', 'contact']);
 const MAX_GEAR_INVENTORY_REVISION = 0xffff_ffff;
 const EFFECT_NAMES: Readonly<Record<string, string>> = Object.freeze({
   yield: 'mining yield', strike: 'rich-strike chance', skim: 'stellar skim yield',
-  skimguard: 'remnant-star shielding', auto: 'Auto-Extractor accrual', contact: 'first contact',
+  skimguard: 'remnant-star shielding', auto: 'Auto-Extractor accrual', contact: 'capture chance',
   scut: 'bioscan protection', land: 'landing safety', landfam: 'biome landing safety',
   land100: 'guaranteed landing', struts: 'landing protection', heal: 'flora healing', speed: 'travel speed',
 });

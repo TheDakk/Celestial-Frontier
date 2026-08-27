@@ -2,11 +2,19 @@
 
 **STATUS:** §1 verified against code as of **2026-07-31 (v1.8.9)**. §§2–4 are design-pack content and
 are NOT derivable from source — see PROVENANCE below. The environmental-audio overlay matches the
-package-only pure hint foundation and remaining v2 contract as of **2026-08-25**. Audited and
+package-only pure hint foundation and remaining v2 contract as of **2026-08-27**. Audited and
 promoted from `tools/` to the repo root during port **Phase 0** (Gate A); the file itself dates from
 2026-07-20.
 
-> **2026-08-25 Arc 3/4 current opportunity boundary:** canonical Arc 3 world snapshots now derive
+> **2026-08-27 current v2 correction:** after owned Deep Scanners, the exact eligible scanned,
+> registered lifeless non-Earth world now renders one passive **Mineral veins** Survey row. It lists
+> canonical ordinary deposits plus the optional biome-only vein and deliberately withholds
+> cosmic/exceptional veins, grades, reserves, extraction progress and Mine controls. A committed
+> Tame-fauna result may also emit one bounded deterministic greeting when its native gesture,
+> current ownership and accessible status counterpart all agree; this is not ambience or a general
+> biome soundscape. The 2026-08-25 paragraph below is retained as a historical checkpoint.
+
+> **2026-08-25 Arc 3/4 historical opportunity boundary:** canonical Arc 3 world snapshots then derived
 > finite deposits, exceptional/cosmic veins, raw tier and player-facing rarity from the exact
 > source-proven CF1 world. The Engineering panel exposes truthful Mine/Skim actions and displays six
 > research rows, but only Deep Scanners is purchasable. Its pure orbital-reveal policy exists; the
@@ -19,7 +27,7 @@ promoted from `tools/` to the repo root during port **Phase 0** (Gate A); the fi
 > Tame/Scavenge/Sample controls. Those controls select from the complete eligible kingdom pool,
 > show truthful odds and shared Biosphere Yield, and settle through the durable writer; they do not
 > make biome/design-pack rows into targets or runtime keys. Neither package changes the 43 biome
-> definitions. Capture audio remains absent, and real next-cycle recovery plus HUMAN review remain
+> definitions. Capture audio was absent at that checkpoint, and real next-cycle recovery plus HUMAN review remain
 > open.
 
 _Originally generated 2026-07-20 from: live `BIOME_SETS` (main.js) + data-pack CSVs (01_EARTH 93 ·

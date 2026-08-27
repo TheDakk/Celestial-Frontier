@@ -92,7 +92,7 @@ function wiringErrors(main: string, owner: string): string[] {
   const statusPorts = [
     'explorerName: save.explorerName,',
     'essence: save.essence,',
-    'landedWorlds: save.landed.length,',
+    'landedWorlds: canonicalWorldLandingCount(worldIdentityState),',
     'hp: save.hp,',
     'hpMax: save.HP_MAX,',
     'primeCount: primeCount(),',
@@ -251,7 +251,7 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
     for (const [needle, replacement] of [
       ['explorerName: save.explorerName,', "explorerName: 'Explorer',"],
       ['essence: save.essence,', 'essence: 0,'],
-      ['landedWorlds: save.landed.length,', 'landedWorlds: 0,'],
+      ['landedWorlds: canonicalWorldLandingCount(worldIdentityState),', 'landedWorlds: 0,'],
       ['hp: save.hp,', 'hp: 0,'],
       ['hpMax: save.HP_MAX,', 'hpMax: 1,'],
       ['primeCount: primeCount(),', 'primeCount: 0,'],

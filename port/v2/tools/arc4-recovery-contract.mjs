@@ -507,11 +507,20 @@ export function terminalArc4RecoveryReportErrors(report, {
   expectedRunId, currentSource, replayedDomainAssessment,
   replayedObservationVerdict, replayedAuthorityBinding,
   currentBuild, currentInputs, ordinarySliceSeal, instrumentSeal,
+  expectedPredecessors, expectedArtifactPath,
 } = {}) {
   const errors = [];
   if (report?.schema !== ARC4_RECOVERY_REPORT_SCHEMA) errors.push('report schema');
   if (report?.status !== 'pass') errors.push('report status is not pass');
+  if (report?.terminal !== true) errors.push('report terminal boundary');
   if (report?.runId !== expectedRunId) errors.push('report run ID');
+  if (report?.artifact?.path !== expectedArtifactPath) errors.push('immutable report artifact binding');
+  const startedMs = Date.parse(report?.startedAt);
+  const endedMs = Date.parse(report?.endedAt);
+  if (!Number.isFinite(startedMs) || !Number.isFinite(endedMs)
+    || endedMs < startedMs || report?.durationMs !== endedMs - startedMs) {
+    errors.push('terminal timestamp/duration binding');
+  }
   if (report?.lifecycle?.schema !== ARC4_RECOVERY_LIFECYCLE_SCHEMA
     || report?.lifecycle?.status !== 'complete') errors.push('report lifecycle');
   if (!same(report?.cleanup, {
@@ -529,6 +538,17 @@ export function terminalArc4RecoveryReportErrors(report, {
     || report?.source?.end?.state !== 'committed'
     || !same(report?.source?.begin, report?.source?.end)
     || !same(report?.source?.end, currentSource)) errors.push('source authority');
+  if (!record(report?.predecessors)
+    || !record(report.predecessors.slice) || !record(report.predecessors.glass)
+    || !same(report.predecessors, expectedPredecessors)) {
+    errors.push('exact Slice/Glass predecessor chain');
+  }
+  if (report?.predecessorSelection?.sliceRunId !== report?.predecessors?.slice?.runId
+    || report?.predecessorSelection?.glassRunId !== report?.predecessors?.glass?.runId) {
+    errors.push('requested-to-resolved predecessor binding');
+  }
+  if (!same(report?.predecessors?.glass?.slicePredecessor,
+    report?.predecessors?.slice)) errors.push('Glass-to-Slice nested predecessor binding');
   if (!same(report?.build, currentBuild)) errors.push('build byte authority');
   if (!same(report?.inputs, currentInputs)) errors.push('input byte authority');
   if (!same(report?.domainAssessment, replayedDomainAssessment)

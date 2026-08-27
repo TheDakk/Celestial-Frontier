@@ -114,15 +114,20 @@ jobs:
         run: |
           set -euo pipefail
           edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.101-1_amd64.deb"
+          edge_root="$RUNNER_TEMP/compendiummem-edge-151.0.4129.101"
           curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"
           printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict
-          sudo apt-get install --reinstall --yes "$edge_package"
-          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.101-1"
-          test -x /usr/bin/microsoft-edge-stable
+          test "$(dpkg-deb --field "$edge_package" Package)" = "microsoft-edge-stable"
+          test "$(dpkg-deb --field "$edge_package" Version)" = "151.0.4129.101-1"
+          test ! -e "$edge_root"
+          mkdir "$edge_root"
+          dpkg-deb --extract "$edge_package" "$edge_root"
+          edge_browser="$edge_root/opt/microsoft/msedge/microsoft-edge"
+          test -x "$edge_browser"
       - name: Compendium memory instrument selftest
         working-directory: port/v2
         env:
-          CF_BROWSER: /usr/bin/microsoft-edge-stable
+          CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: |
           node tools/compendiummem-browser-preflight.mjs --selftest
           node tools/compendiummem-browser-preflight.mjs
@@ -130,13 +135,13 @@ jobs:
       - name: one-attempt Compendium memory certification
         working-directory: port/v2
         env:
-          CF_BROWSER: /usr/bin/microsoft-edge-stable
+          CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: npm run compendiummem
       - name: verify current Compendium memory evidence
         if: always()
         working-directory: port/v2
         env:
-          CF_BROWSER: /usr/bin/microsoft-edge-stable
+          CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
       - name: upload Compendium memory evidence
         if: always()

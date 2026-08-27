@@ -2,12 +2,20 @@
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
 ownership, one-time bred-child feeding, rarity-presentation and narrow Tame-audio overlays match the
-local `port/v2` candidate as of 2026-08-26. ⚠ v1.8.9: every reader of the
+local `port/v2` candidate as of 2026-08-27. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
+
+> **2026-08-27 current-candidate correction:** the Tame greeting can truthfully retain an unmuted
+> preference even when no AudioContext exists; “contextless” means blocked/not created, not muted.
+> Descriptor parity now compares exact populated-galaxy, Earth-Moon and procedural-moon bytes from
+> the immutable v1.8.9 source rather than treating an empty historical fixture as sufficient.
+> Canonical v5 world identity is being completed so same-seed worlds cannot collide across distinct
+> galaxy/star/ordinal addresses; the final carrier/browser proof remains pending at this moving-tree
+> checkpoint.
 
 > **2026-08-26 current-candidate species boundary:** the internal-only Arc 5 bred-successor seam
 > initializes a newly admitted child with
@@ -33,7 +41,7 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > music and combat audio remain absent. Ordinary Arc 4 Slice evidence still says
 > `recoveryClaimed:false`; its dedicated uninterrupted 20-minute recovery certificate remains open.
 
-> **2026-08-25 Arc 4/5A ownership overlay — recorded boundary; Arc 4 player-live, Arc 5A infrastructure-only:** the port has a strict
+> **2026-08-25 Arc 4/5A ownership overlay — historical recorded boundary; Arc 4 player-live, Arc 5A infrastructure-only:** the port had a strict
 > identity split between immutable catalogue/discovery facts, stable owned fauna instances and
 > nonliving specimen lots. Ownership-v1 binds canonical genome identity, exact CF1 provenance,
 > biosphere progress and bounded legacy evidence. Ownership-v2 adds receipt-bound acquisitions,
@@ -67,7 +75,8 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). Both bind source commit
 > `48ce0b1662a59b21070667be339a1e59503e1f19`, status
 > `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
-> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits are CLEAR.
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
+> exact historical inputs. Current-candidate re-audits are not final.
 
 > **2026-08-11 v2 executable-contract correction:** No genome, descriptor or
 > portrait output changed. The SpeciesTraits declaration now matches its tables:

@@ -451,6 +451,14 @@ function activeBudget(fixture) {
       requiredIndependentRunsPerProfile: 3,
       selectionRule: 'Selftest only: all exact synthetic observations are explicit.',
       headroomRationaleRequired: true,
+      rulerAuthority: {
+        schema: 'cf-v2-compendium-fixed-ruler-authority/v1',
+        calibrationStatus: 'sealed-exact-input',
+        ceilingScope: 'numeric-ceilings-only',
+        measurementAuthoritySha256: measurementAuthority.sha256,
+        producerAuthoritySha256: producerAuthority.sha256,
+        currentCertification: 'fresh-exact-producer-required',
+      },
       samples: {
         phone: [sample('phone', 1), sample('phone', 2), sample('phone', 3)],
         desktop: [sample('desktop', 1), sample('desktop', 2), sample('desktop', 3)],
@@ -2618,6 +2626,35 @@ export async function runCompendiumMemSelftest() {
   );
   const budgetCheck = validateBudget(budget);
   assert(budgetCheck.ok, `synthetic active budget rejected: ${budgetCheck.errors.join('; ')}`);
+  const carriedRulerBudget = clone(budget);
+  carriedRulerBudget.calibration.rulerAuthority.measurementAuthoritySha256 = 'd'.repeat(64);
+  carriedRulerBudget.calibration.rulerAuthority.producerAuthoritySha256 = 'e'.repeat(64);
+  for (const profile of ['phone', 'desktop']) {
+    for (const sample of carriedRulerBudget.calibration.samples[profile]) {
+      sample.measurementAuthoritySha256 = 'd'.repeat(64);
+      sample.producerAuthoritySha256 = 'e'.repeat(64);
+    }
+    for (const sample of carriedRulerBudget.pairedBrokenBaseline.samples[profile]) {
+      sample.measurementAuthoritySha256 = 'd'.repeat(64);
+    }
+  }
+  const carriedRulerCheck = validateBudget(carriedRulerBudget);
+  assert(carriedRulerCheck.ok,
+    `historical ruler did not remain distinct from live authority: ${carriedRulerCheck.errors.join('; ')}`);
+  const reboundRulerSample = clone(carriedRulerBudget);
+  reboundRulerSample.calibration.samples.phone[0].producerAuthoritySha256 =
+    reboundRulerSample.producerAuthority.sha256;
+  const reboundRulerErrors = validateBudget(reboundRulerSample).errors.join('; ');
+  assert(reboundRulerErrors.includes(
+    'candidate calibration samples do not match the fixed ruler producer authority',
+  ), 'one historical sample could be rebound to the live producer');
+  const reboundRulerMeasurement = clone(carriedRulerBudget);
+  reboundRulerMeasurement.pairedBrokenBaseline.samples.desktop[0].measurementAuthoritySha256 =
+    reboundRulerMeasurement.measurementAuthority.sha256;
+  const reboundMeasurementErrors = validateBudget(reboundRulerMeasurement).errors.join('; ');
+  assert(reboundMeasurementErrors.includes(
+    'paired broken-baseline samples do not match the fixed ruler measurement authority',
+  ), 'one historical baseline sample could be rebound to the live measurement authority');
   assert(compendiumBudgetModeAllowed({ calibrate: false, budgetStatus: 'active' })
     && compendiumBudgetModeAllowed({ calibrate: true, budgetStatus: 'calibration-required' })
     && !compendiumBudgetModeAllowed({ calibrate: true, budgetStatus: 'active' })
@@ -2801,13 +2838,13 @@ export async function runCompendiumMemSelftest() {
   staleCandidateSampleAuthority.calibration.samples.phone[0]
     .measurementAuthoritySha256 = 'f'.repeat(64);
   assert(validateBudget(staleCandidateSampleAuthority).errors.some((error) =>
-    /candidate calibration samples do not match the budget measurement authority/.test(error)),
+    /candidate calibration samples do not match the fixed ruler measurement authority/.test(error)),
   'a candidate sample from a stale measurement authority entered the active ruler');
   const staleBaselineSampleAuthority = clone(budget);
   staleBaselineSampleAuthority.pairedBrokenBaseline.samples.desktop[0]
     .measurementAuthoritySha256 = 'f'.repeat(64);
   assert(validateBudget(staleBaselineSampleAuthority).errors.some((error) =>
-    /paired broken-baseline samples do not match the budget measurement authority/.test(error)),
+    /paired broken-baseline samples do not match the fixed ruler measurement authority/.test(error)),
   'a broken-baseline sample from a stale measurement authority entered the active ruler');
   const forgedMeasurementAuthorityInput = clone(budget);
   forgedMeasurementAuthorityInput.measurementAuthority.inputs.collector = 'f'.repeat(64);
@@ -2841,7 +2878,7 @@ export async function runCompendiumMemSelftest() {
   staleCandidateProducerAuthority.calibration.samples.phone[0]
     .producerAuthoritySha256 = 'f'.repeat(64);
   assert(validateBudget(staleCandidateProducerAuthority).errors.some((error) =>
-    /candidate calibration samples do not match the budget producer authority/.test(error)),
+    /candidate calibration samples do not match the fixed ruler producer authority/.test(error)),
   'a candidate sample from a stale built producer entered the active ruler');
   const forgedProducerAuthorityInput = clone(budget);
   forgedProducerAuthorityInput.producerAuthority.inputs.worker.sha256 = '0'.repeat(64);

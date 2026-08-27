@@ -65,28 +65,33 @@ and gain envelope in the creature bus. Misses, refusals, stale/protected state, 
 non-fauna results, lost route/toast/visibility/answerability, disabled Sound or Creature voices and
 reload are silent. The stable event is claimed once before playback; there is no retry or replay.
 
-Current-input Slice evidence consists of **five preserved terminal-red, one-attempt/zero-retry
-runs** on Edge `151.0.4129.107`. The fifth, run
-`20260827041238239-16243-cbf9ca66283b` from signed-clean source
-`9ce7ddde01201177dff1cacafc06c8424c4098cb`, ran for 141,336 ms and retained one finding: the exact
-committed Tame greeting voice timed out with `last null`. That generic null proves only that the old
-active-voice predicate never returned a qualifying observation; it does not distinguish product
-rejection, autoplay/environment behavior, natural completion before sampling or a collector defect.
-The same run outcome-cleared the repaired earlier path through Skim and the Engineering,
-storage-refusal, stale-authority, committed-publication and Arc 5 fixed-point stages before reaching
-this boundary.
+Current-input Slice evidence consists of **six preserved terminal-red, one-attempt/zero-retry
+runs** on Edge `151.0.4129.107`. Signed-clean source
+`1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
+`20260827085237038-27561-1f8e3c1771b7`, which ran for 397,101 ms and retained 23
+findings across 16 scopes without Arc 4 success evidence. Required was false, `ok`/ledger were
+null, and there was no success marker or ledger line; Glass and recovery correctly did not run.
 
-The current local repair separates the counters as described above and replaces that timing-fragile
-predicate with a named retained **seven-clause** result/global/ownership/claim/counterpart/runtime/
-toast collector. Exact `true` release is a fail-fast prerequisite; one voice start may be observed
-while active or after exact natural completion, with one start/peak, zero stop/steal/rejection/fault
-evidence and its accessible counterpart intact. Generic Arc 4 `ownershipRevision` and
-reload-result-null controls are included in this repair batch. Browser-free verification is
-green at 124 test files, 1,383 passing tests and one intentional skip, and the current cumulative
-v2.0 development draft has 55 bullets. Post-start audio lifecycle, the sealed nine-stage/14-burn
-Arc 4 sequence, a current Glass result and uninterrupted recovery remain unproved. There is no
-current-input Slice PASS, Glass/recovery certificate, hosted or HUMAN authority, or release/version/
-deployment claim.
+One independent root was an overstrict contextless-audio oracle: a valid enabled setting can remain
+unmuted when playback is blocked before an `AudioContext` exists. Product semantics now require
+the mute state to remain a truthful boolean while context, nodes, voices, ids and emitter all stay
+absent; they do not manufacture a mute transition. Positive selftests deliberately exercise the
+unmuted contextless case, while created-context and reload-resource mutants fail. The other four
+sixth-red roots were Guide count, ecology diagnostic comparison, committed-only epoch timing and
+Training DOM ownership, not audio-product defects.
+
+Focused changed-source checks and negative controls have exercised the audio repair, and the
+cumulative v2.0 development draft remains 55 bullets. The final frozen-producer full battery, final
+counts and independent audits remain pending before a signed clean repair freeze or another Slice.
+Browser evidence uses three independent authorities: the root authority accepts compatible
+Chromium-family executables that satisfy CDP `1.3` plus the capability inventory derived from its
+layout/boot sources and records executable, product, revision, user agent, JavaScript version and
+protocol version for every run. Compendium and SceneMemory retain separate source-derived capability
+contracts, producer bindings and fixed rulers. A compatible browser point update is provenance and
+does not itself trigger rebaselining or move thresholds. Post-start audio lifecycle, the sealed
+nine-stage/14-burn Arc 4 sequence, current Glass and uninterrupted recovery remain unproved. There is
+no current-input Slice PASS, Glass/recovery certificate, hosted or HUMAN authority, or release/
+version/deployment claim.
 
 Broader player-live creature expressions, combat or Guardian cues, ambience, music, recorded assets
 and asset loading remain absent. Battle sound (`cbx`) is still preserved by persistence rather than

@@ -9,13 +9,17 @@ import {
   BROKEN_BASELINE_EXPECTED_FAULTS, BUDGET_SCHEMA, CEILING_FIELDS,
   CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA,
   COMPENDIUM_BROWSER_AUTHORITY_SCHEMA, COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
+  COMPENDIUM_CURRENT_CERTIFICATION_REQUIREMENT,
+  COMPENDIUM_FIXED_RULER_AUTHORITY_SCHEMA,
+  COMPENDIUM_FIXED_RULER_CALIBRATION_STATUS,
+  COMPENDIUM_FIXED_RULER_CEILING_SCOPE,
   COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS,
   EXPECTED_OUTCOMES, OUTCOME_IDS, PROFILES, SAMPLE_METRIC_FIELDS,
   calibrationMetrics, candidateCalibrationEvidence,
   compendiumBrowserAuthorityMatches, compendiumBrowserCapabilityInventoryErrors,
   compendiumBudgetBrowserAuthority,
   compendiumMeasurementAuthority, evaluateProfile, reduceCalibrationEvidence,
-  validCompendiumBrowserAuthority,
+  validCompendiumBrowserAuthority, validCompendiumFixedRulerAuthority,
   validateBudgetRecord,
 } from '../tools/compendiummem-contract.mjs';
 import {
@@ -122,17 +126,21 @@ const supersededRenderStableCertificationEvidence = Object.freeze({
   gzipSha256: 'a2ff5b009a187fabdbc71143dac1b33c4f5f609fbb3c3d81c750fb5857593be1',
 });
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
-const EXPECTED_MEASUREMENT_AUTHORITY =
+const RULER_MEASUREMENT_AUTHORITY =
   'cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d';
+/* Refreshed once, after the final app build. It deliberately remains a
+   separate constant from the immutable historical ruler above. */
+const EXPECTED_MEASUREMENT_AUTHORITY =
+  '117931bf31aa6f1011f960935e5fe34839917404c8094a6141b0f324e2b94806';
 const EXPECTED_COLLECTOR_AUTHORITY =
   '18e05ddf03551e7ec5d8352280ed5ad43fa6bf684f1ebecca1242890e02c3d88';
 const HISTORICAL_MEASUREMENT_AUTHORITY =
   '6a961df806e460d6ed02600f5366485d09d0878efa0129960b683cc4037173c7';
-const EXPECTED_PRODUCER_AUTHORITY =
+const RULER_PRODUCER_AUTHORITY =
   'f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224';
-const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
+const RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v1',
-  sha256: EXPECTED_PRODUCER_AUTHORITY,
+  sha256: RULER_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
@@ -141,6 +149,32 @@ const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
     owner: Object.freeze({
       relativePath: 'assets/main-DZUgE3Xi.js',
       sha256: '8300b53a3300aeff0e2d3916830eaa247164645cbf37a0754a2a48b3c07c9fc5',
+    }),
+    worker: Object.freeze({
+      relativePath: 'assets/species-art.worker-MsuHQ8El.js',
+      sha256: '85f4fdf2e8214814466735d3b4f2abbe3b7c7bb601ebe40034dd9ab06d2d7c28',
+    }),
+    painter: Object.freeze({
+      relativePath: 'assets/speciespainter-Bt9w5VDj.js',
+      sha256: '85b8e2eae90b245e3d4f03bab6d9cbbe8d1a1baaaf05ba51a719a2ec06807b04',
+    }),
+  }),
+});
+/* Refreshed once, after the final app build. Historical samples continue to
+   bind RULER_PRODUCER_AUTHORITY rather than these live authorities. */
+const EXPECTED_PRODUCER_AUTHORITY =
+  'c273d7927cf97327c6b0dc1255b54fe5c93ca9de4c4db75d613ddc16161d8587';
+const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
+  schema: 'cf-v2-compendium-producer-authority/v1',
+  sha256: EXPECTED_PRODUCER_AUTHORITY,
+  inputs: Object.freeze({
+    index: Object.freeze({
+      relativePath: 'index.html',
+      sha256: '5260839362721d2ed69be00697fea18a6b715c80753f27dbc90a304141e2bf23',
+    }),
+    owner: Object.freeze({
+      relativePath: 'assets/main-BSeGmYgJ.js',
+      sha256: 'c6e528389a53b458d8492079d208c94b407f237c0ac9ea4d78b8e63a9aff2f98',
     }),
     worker: Object.freeze({
       relativePath: 'assets/species-art.worker-MsuHQ8El.js',
@@ -298,6 +332,14 @@ type ActiveBudgetRecord = {
   calibration: {
     requiredIndependentRunsPerProfile: number;
     selectionRule: string;
+    rulerAuthority: {
+      schema: string;
+      calibrationStatus: string;
+      ceilingScope: string;
+      measurementAuthoritySha256: string;
+      producerAuthoritySha256: string;
+      currentCertification: string;
+    };
     samples: Record<ProfileName, CalibrationSample[]>;
   };
   pairedBrokenBaseline: {
@@ -636,6 +678,7 @@ describe('Arc 1A Compendium budget authority', () => {
     };
     const definitions = schema.$defs as {
       browserAuthority: StrictObjectDefinition;
+      fixedRulerAuthority: StrictObjectDefinition;
       metrics: StrictObjectDefinition; ceiling: StrictObjectDefinition;
       candidateSample: StrictObjectDefinition; baselineSample: StrictObjectDefinition;
     };
@@ -655,6 +698,15 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(Object.keys(definitions.browserAuthority.properties).sort()).toEqual([
       'schema', 'scope', 'family', 'protocolVersion', 'capabilityContract',
       'capabilityContractSha256',
+    ].sort());
+    expect(definitions.fixedRulerAuthority.additionalProperties).toBe(false);
+    expect([...definitions.fixedRulerAuthority.required].sort()).toEqual([
+      'schema', 'calibrationStatus', 'ceilingScope', 'measurementAuthoritySha256',
+      'producerAuthoritySha256', 'currentCertification',
+    ].sort());
+    expect(Object.keys(definitions.fixedRulerAuthority.properties).sort()).toEqual([
+      'schema', 'calibrationStatus', 'ceilingScope', 'measurementAuthoritySha256',
+      'producerAuthoritySha256', 'currentCertification',
     ].sort());
     expect(definitions.metrics.additionalProperties).toBe(false);
     expect([...definitions.metrics.required].sort()).toEqual([...SAMPLE_METRIC_FIELDS].sort());
@@ -710,6 +762,16 @@ describe('Arc 1A Compendium budget authority', () => {
 
   it('activates the current producer without rebinding the historical ruler', () => {
     expect(activeBudget.status).toBe('active');
+    expect(validCompendiumFixedRulerAuthority(activeBudget.calibration.rulerAuthority))
+      .toBe(true);
+    expect(activeBudget.calibration.rulerAuthority).toEqual({
+      schema: COMPENDIUM_FIXED_RULER_AUTHORITY_SCHEMA,
+      calibrationStatus: COMPENDIUM_FIXED_RULER_CALIBRATION_STATUS,
+      ceilingScope: COMPENDIUM_FIXED_RULER_CEILING_SCOPE,
+      measurementAuthoritySha256: RULER_MEASUREMENT_AUTHORITY,
+      producerAuthoritySha256: RULER_PRODUCER_AUTHORITY,
+      currentCertification: COMPENDIUM_CURRENT_CERTIFICATION_REQUIREMENT,
+    });
     if (activeBudget.status === 'calibration-required') {
       expect(activeBudget.browserAuthority).toEqual(EXPECTED_BROWSER_AUTHORITY);
       expect(activeBudget.measurementAuthority.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
@@ -797,11 +859,11 @@ describe('Arc 1A Compendium budget authority', () => {
         .map((sample) => sample.inputDigest)).size).toBe(1);
       expect(new Set(activeBudget.calibration.samples[profile]
         .map((sample) => sample.measurementAuthoritySha256))).toEqual(new Set([
-        (budget.measurementAuthority as { sha256: string }).sha256,
+        RULER_MEASUREMENT_AUTHORITY,
       ]));
       expect(new Set(activeBudget.calibration.samples[profile]
         .map((sample) => sample.producerAuthoritySha256))).toEqual(new Set([
-        activeBudget.producerAuthority.sha256,
+        RULER_PRODUCER_AUTHORITY,
       ]));
       expect(new Set(activeBudget.calibration.samples[profile]
         .map((sample) => sample.evidence.schema))).toEqual(new Set([
@@ -810,7 +872,7 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(activeBudget.pairedBrokenBaseline.samples[profile]).toHaveLength(1);
       expect(activeBudget.pairedBrokenBaseline.samples[profile][0]
         ?.measurementAuthoritySha256)
-        .toBe((budget.measurementAuthority as { sha256: string }).sha256);
+        .toBe(RULER_MEASUREMENT_AUTHORITY);
       expect(activeBudget.pairedBrokenBaseline.samples[profile][0]?.evidence.schema)
         .toBe(BASELINE_CALIBRATION_EVIDENCE_SCHEMA);
     }
@@ -848,8 +910,49 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(activeBudget.calibration.selectionRule).toContain('strictly above');
     expect(activeBudget.calibration.selectionRule).toContain('rational headroom');
     expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_PRODUCER_AUTHORITY);
+    expect(activeBudget.calibration.selectionRule).toContain(RULER_PRODUCER_AUTHORITY);
+    expect(activeBudget.calibration.selectionRule).toContain('numeric ceilings carry forward');
+    expect(activeBudget.calibration.selectionRule).toContain('fresh exact certificate');
     expect(activeBudget.calibration.selectionRule)
       .toContain('does not re-pin the Gate-A/global browser');
+  });
+
+  it('carries only numeric ceilings across live authority drift and rejects sample rebinding', () => {
+    const carried = structuredClone(activeBudget);
+    carried.producerAuthority = HISTORICAL_PHASE4_PRODUCER_AUTHORITY;
+    const changedMeasurementInputs = {
+      ...(budget.measurementAuthority as { inputs: Record<string, string> }).inputs,
+      packageLock: '0'.repeat(64),
+    };
+    const changedMeasurement = compendiumMeasurementAuthority(changedMeasurementInputs);
+    expect(changedMeasurement).not.toBeNull();
+    carried.measurementAuthority = changedMeasurement!;
+    expect(carried.measurementAuthority.sha256).not.toBe(RULER_MEASUREMENT_AUTHORITY);
+    expect(carried.producerAuthority.sha256).not.toBe(RULER_PRODUCER_AUTHORITY);
+    expect(validateBudgetRecord(
+      carried, fixture.rowsSha256, baselineProjection.rowsSha256,
+      changedMeasurement, HISTORICAL_PHASE4_PRODUCER_AUTHORITY,
+    )).toEqual({ ok: true, errors: [] });
+
+    const reboundProducer = structuredClone(carried);
+    reboundProducer.calibration.samples.phone[0]!.producerAuthoritySha256 =
+      carried.producerAuthority.sha256;
+    expect(validateBudgetRecord(
+      reboundProducer, fixture.rowsSha256, baselineProjection.rowsSha256,
+      changedMeasurement, HISTORICAL_PHASE4_PRODUCER_AUTHORITY,
+    ).errors).toContain(
+      'candidate calibration samples do not match the fixed ruler producer authority',
+    );
+
+    const reboundMeasurement = structuredClone(carried);
+    reboundMeasurement.pairedBrokenBaseline.samples.desktop[0]!.measurementAuthoritySha256 =
+      changedMeasurement!.sha256;
+    expect(validateBudgetRecord(
+      reboundMeasurement, fixture.rowsSha256, baselineProjection.rowsSha256,
+      changedMeasurement, HISTORICAL_PHASE4_PRODUCER_AUTHORITY,
+    ).errors).toContain(
+      'paired broken-baseline samples do not match the fixed ruler measurement authority',
+    );
   });
 
   it('pins the exact sealed raw sample objects selected from all four local runs', () => {
@@ -908,11 +1011,11 @@ describe('Arc 1A Compendium budget authority', () => {
         status: 'calibration-required',
         browserAuthorityMatch: true,
         producerAuthorityMatch: true,
-        producerAuthority: { sha256: EXPECTED_PRODUCER_AUTHORITY },
+        producerAuthority: { sha256: RULER_PRODUCER_AUTHORITY },
       });
       expect(report.budget.observedProducerAuthority).toEqual(report.budget.producerAuthority);
       expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
-        .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+        .toBe(RULER_MEASUREMENT_AUTHORITY);
       expect(report.outcomes).toHaveLength(78);
       expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
 
@@ -972,7 +1075,7 @@ describe('Arc 1A Compendium budget authority', () => {
       status: 'paired-broken-baseline-observation-not-a-budget',
       budgetAuthority: {
         collectorCommit: '8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527',
-        measurementAuthoritySha256: EXPECTED_MEASUREMENT_AUTHORITY,
+        measurementAuthoritySha256: RULER_MEASUREMENT_AUTHORITY,
       },
     });
     expect(baselineCarrier.baselineSource.begin.commit)
@@ -1021,7 +1124,7 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(report.budget.producerAuthority).not.toEqual(budget.producerAuthority);
       expect(report.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
       expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
-        .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+        .toBe(RULER_MEASUREMENT_AUTHORITY);
       expect(report.outcomes).toHaveLength(78);
       expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
       for (const profile of PROFILE_NAMES) {
@@ -1051,7 +1154,7 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(baselineCarrier.runId).toBe(historicalPhase4BaselineEvidence.runId);
     expect(baselineCarrier.status).toBe('paired-broken-baseline-observation-not-a-budget');
     expect(baselineCarrier.budgetAuthority.measurementAuthoritySha256)
-      .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+      .toBe(RULER_MEASUREMENT_AUTHORITY);
     expect(baselineCarrier.baselineSource.begin.commit)
       .toBe(activeBudget.pairedBrokenBaseline.commit);
     expect(baselineCarrier.baselineSource.end).toEqual(baselineCarrier.baselineSource.begin);
@@ -1152,30 +1255,26 @@ describe('Arc 1A Compendium budget authority', () => {
       workingTreeSha256: currentSliceRepairCertificationEvidence.sourceWorkingTreeSha256,
     });
 
-    expect(fileSha256(budgetPath)).toBe(currentSliceRepairCertificationEvidence.budgetSha256);
-    expect(report.inputs).toEqual({
-      ...(liveMeasurementAuthority?.inputs ?? {}),
-      budget: currentSliceRepairCertificationEvidence.budgetSha256,
-    });
-    expect(compendiumMeasurementAuthority(report.inputs)).toEqual(liveMeasurementAuthority);
+    expect(fileSha256(budgetPath)).not.toBe(currentSliceRepairCertificationEvidence.budgetSha256);
     expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
       .toBe(currentSliceRepairCertificationEvidence.measurementAuthoritySha256);
     expect(currentSliceRepairCertificationEvidence.measurementAuthoritySha256)
-      .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+      .toBe(RULER_MEASUREMENT_AUTHORITY);
     expect(report.budget).toEqual({
       status: 'active',
       path: 'budgets/compendium-memory-v1.json',
       sha256: currentSliceRepairCertificationEvidence.budgetSha256,
       browserAuthority: activeBudget.browserAuthority,
       browserAuthorityMatch: true,
-      producerAuthority: activeBudget.producerAuthority,
-      observedProducerAuthority: activeBudget.producerAuthority,
+      producerAuthority: RULER_PRODUCER_AUTHORITY_RECORD,
+      observedProducerAuthority: RULER_PRODUCER_AUTHORITY_RECORD,
       producerAuthorityMatch: true,
     });
-    expect(report.budget.producerAuthority).toEqual(EXPECTED_PRODUCER_AUTHORITY_RECORD);
+    expect(report.budget.producerAuthority.sha256).toBe(RULER_PRODUCER_AUTHORITY);
+    expect(report.budget.producerAuthority).not.toEqual(activeBudget.producerAuthority);
     expect(report.budget.producerAuthority).not.toEqual(HISTORICAL_PHASE4_PRODUCER_AUTHORITY);
     expect(currentSliceRepairCertificationEvidence.producerAuthoritySha256)
-      .toBe(EXPECTED_PRODUCER_AUTHORITY);
+      .toBe(RULER_PRODUCER_AUTHORITY);
     expect(report.browser).toEqual(currentSliceRepairCertificationEvidence.browser);
     expect(compendiumBrowserAuthorityMatches(
       report.browser, report.budget.browserAuthority,
@@ -1188,15 +1287,29 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(report.reviewPacket).toEqual(PROFILE_NAMES.flatMap(
       (profile) => certificateProfiles[profile].reviewPacket,
     ));
+    const rulerReplayBudget = {
+      ...activeBudget,
+      measurementAuthority: { sha256: RULER_MEASUREMENT_AUTHORITY },
+      producerAuthority: RULER_PRODUCER_AUTHORITY_RECORD,
+    } as unknown as ActiveBudgetRecord;
     const replayedOutcomes = PROFILE_NAMES.flatMap((profile) =>
-      evaluateProfile(certificateProfiles[profile], activeBudget, fixture));
+      evaluateProfile(certificateProfiles[profile], rulerReplayBudget, fixture));
     expect(replayedOutcomes).toEqual(report.outcomes);
+
+    const liveProducerReplayFailures = PROFILE_NAMES.flatMap((profile) =>
+      evaluateProfile(certificateProfiles[profile], activeBudget, fixture))
+      .filter((outcome) => outcome.status === 'fail')
+      .map((outcome) => outcome.id);
+    expect(liveProducerReplayFailures).toEqual([
+      'phone/lazy-art-not-eager',
+      'desktop/lazy-art-not-eager',
+    ]);
 
     for (const profile of PROFILE_NAMES) {
       const overCeiling = structuredClone(certificateProfiles[profile]);
       overCeiling.points.first.raw.mountedRowCount =
-        Number(activeBudget.ceilings?.[profile].mountedRowsMax) + 1;
-      const mutatedFailures = evaluateProfile(overCeiling, activeBudget, fixture)
+        Number(rulerReplayBudget.ceilings?.[profile].mountedRowsMax) + 1;
+      const mutatedFailures = evaluateProfile(overCeiling, rulerReplayBudget, fixture)
         .filter((outcome) => outcome.status === 'fail')
         .map((outcome) => outcome.id);
       expect(mutatedFailures).toEqual([
@@ -1251,11 +1364,10 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(fileSha256(budgetPath)).not.toBe(historicalPhase4CertificationEvidence.budgetSha256);
     expect(report.inputs.budget).toBe(historicalPhase4CertificationEvidence.budgetSha256);
     expect(report.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
-    expect(compendiumMeasurementAuthority(report.inputs)).toEqual(liveMeasurementAuthority);
     expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
       .toBe(historicalPhase4CertificationEvidence.measurementAuthoritySha256);
     expect(historicalPhase4CertificationEvidence.measurementAuthoritySha256)
-      .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+      .toBe(RULER_MEASUREMENT_AUTHORITY);
     expect(report.budget).toMatchObject({
       status: 'active',
       path: 'budgets/compendium-memory-v1.json',

@@ -11,6 +11,16 @@ import {
   type SceneMemoryProfileMeasurement,
   type SceneMemoryVerdict,
 } from '../tools/scenemem-contract.mjs';
+import {
+  SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA,
+  SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE,
+  SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT,
+  SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT_SHA256,
+  SCENE_MEMORY_BROWSER_PROFILE_CONTRACT,
+  SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256,
+  sceneMemoryBrowserAuthorityMatches,
+  validateSceneMemoryBudget,
+} from '../tools/scenemem.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -116,13 +126,24 @@ type CalibrationReport = {
 };
 
 const EXPECTED_BROWSER_AUTHORITY = Object.freeze({
+  schema: SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA,
+  scope: SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE,
+  family: 'microsoft-edge',
+  protocolVersion: '1.3',
+  capabilityContract: SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT,
+  capabilityContractSha256: SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT_SHA256,
+  profileContract: SCENE_MEMORY_BROWSER_PROFILE_CONTRACT,
+  profileContractSha256: SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256,
+});
+
+const HISTORICAL_EDGE_101_VERSION = Object.freeze({
   product: 'Edg/151.0.4129.101',
   revision: '@cc1d9f4080fd9140611a9600b8d1615db310105d',
   jsVersion: '15.1.23.9',
   protocolVersion: '1.3',
 });
 
-const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
+const HISTORICAL_PRODUCER_AUTHORITY = Object.freeze({
   collector: 'c0c626d1b8a4bc577161debf477f97cfa9c8be4d735fecaaa16124afcae2e957',
   browserCdp: '6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce',
   browserPath: '733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0',
@@ -141,6 +162,31 @@ const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
   shipVisualState: '9bfd27d3d6a75779d3372dfb6386e8e98ef22d92a33b0346819225024c70d762',
   shipyardPreview: 'a3aac0c541a8f824a3625778e89468b5b03653dd29820c3b024fa45a7c753e85',
   planetTextureAttachment: '00e4b63f28cf6fc01c3285eaa6f6e840154eda669e4bf7334aec660d2822857a',
+  planetTextureDemand: 'a537aacde361e88b692887e6d2fa67674296d828aa0d297673dc34b147322055',
+  sceneTextureOwner: 'db7af3f23c3b7d652df37cb54f1082eea177380aefd4f86bc16365a6adbed709',
+  pixiManagedResourceOwner: '2d9eaeb667f5a4a763e25bd8e168b721494dda49c252e2411031a258d2653708',
+  pixiBatchTextureArray: '95ea401f9f05a933f17c9a327b94109bfcc46b0a21cc59789a66537a5b62deb3',
+  sceneText: '7ea78c599fed72ab1ba65991270b72d642f6ec2f9768f63ad64d280ce9147731',
+});
+const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
+  collector: '41ab59cc9db609854ce20847dce3be9efbf9138f651e38ead9d7774faeff6343',
+  browserCdp: '6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce',
+  browserPath: '733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0',
+  workspaceLock: 'e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606',
+  fixtureGenerator: 'a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece',
+  verdictContract: '8019a0f0bf938aa59f45bb6dfaaf56adb77b08073f9d4fa24c2d0592f5bf623d',
+  fixtureSpec: 'c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3',
+  fixtureRows: 'daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706',
+  baselineSaveFixtures: 'a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7',
+  package: '87551923ad5af540270ecbbeef73b97bcf90d82ae66867e59a844f1815a98106',
+  packageLock: 'a1f1dc3335714fe40c06a99684a5da9d66ea1a24d9db73594efe5b15c11fcd6e',
+  appPackage: '69e7a046ca620dafabb38d0471b59f682fdc5b15433c2207bcf18a218f38c7de',
+  buildDist: '3899f39f8cc45927d40ef8f80923420ce123f4aa0f61d2d505bba6dd89b08ecd',
+  gameHtml: '88074f1c1f360a35f0718386c9619c1801aac1f5abc7b259b606b94cc9d00c30',
+  gameMain: '87cc6f2f2c2d43eb53f5a3682edcb51d8dcca95c227c2a0a6c149f803145024b',
+  shipVisualState: '9bfd27d3d6a75779d3372dfb6386e8e98ef22d92a33b0346819225024c70d762',
+  shipyardPreview: 'a3aac0c541a8f824a3625778e89468b5b03653dd29820c3b024fa45a7c753e85',
+  planetTextureAttachment: '751cb34df8ead64fc5ad274a0fd55dfe1af7bb183949ffebcea2ada5de5903e0',
   planetTextureDemand: 'a537aacde361e88b692887e6d2fa67674296d828aa0d297673dc34b147322055',
   sceneTextureOwner: 'db7af3f23c3b7d652df37cb54f1082eea177380aefd4f86bc16365a6adbed709',
   pixiManagedResourceOwner: '2d9eaeb667f5a4a763e25bd8e168b721494dda49c252e2411031a258d2653708',
@@ -320,9 +366,9 @@ const metricSummary = (
 };
 
 describe('Arc 1C scene-memory active budget', () => {
-  it('locks the selected v2 budget to one exact browser, producer, and ceiling tuple', () => {
+  it('locks unchanged ceilings to one Edge-family capability/profile authority and producer', () => {
     expect(budget).toEqual({
-      schema: 'cf-v2-scene-memory-budget/v2',
+      schema: 'cf-v2-scene-memory-budget/v3',
       authority: {
         browser: EXPECTED_BROWSER_AUTHORITY,
         producer: EXPECTED_PRODUCER_AUTHORITY,
@@ -331,6 +377,33 @@ describe('Arc 1C scene-memory active budget', () => {
     });
     expect(Object.keys(budget.profiles.phone)).toEqual(BUDGET_FIELDS);
     expect(Object.keys(budget.profiles.desktop)).toEqual(BUDGET_FIELDS);
+    expect(validateSceneMemoryBudget(budget)).toEqual({ ok: true, errors: [] });
+  });
+
+  it('negative controls: browser capability and profile authority drift cannot validate', () => {
+    for (const field of Object.keys(EXPECTED_BROWSER_AUTHORITY)) {
+      const missing = structuredClone(budget) as BudgetRecord;
+      delete missing.authority.browser[field];
+      expect(validateSceneMemoryBudget(missing).ok, `missing ${field}`).toBe(false);
+    }
+    for (const [field, value] of [
+      ['family', 'google-chrome'],
+      ['protocolVersion', '1.2'],
+      ['capabilityContractSha256', '0'.repeat(64)],
+      ['profileContractSha256', '0'.repeat(64)],
+    ] as const) {
+      const drifted = structuredClone(budget) as BudgetRecord;
+      drifted.authority.browser[field] = value;
+      expect(validateSceneMemoryBudget(drifted).ok, `${field} drift`).toBe(false);
+    }
+    const profileMismatch = structuredClone(budget) as BudgetRecord & {
+      profiles: BudgetRecord['profiles'] & { tablet?: SceneMemoryBudget };
+    };
+    profileMismatch.profiles.tablet = profileMismatch.profiles.phone;
+    delete (profileMismatch.profiles as Partial<BudgetRecord['profiles']>).phone;
+    expect(validateSceneMemoryBudget(profileMismatch).errors).toContain(
+      'budget profiles must be exactly phone and desktop',
+    );
   });
 
   it('binds and independently recomputes all three retained clean candidates', () => {
@@ -380,11 +453,11 @@ describe('Arc 1C scene-memory active budget', () => {
       expect(Object.keys(report.inputs).sort()).toEqual(
         [...Object.keys(EXPECTED_PRODUCER_AUTHORITY), 'budget'].sort(),
       );
-      expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
-        EXPECTED_PRODUCER_AUTHORITY,
+      expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
+        HISTORICAL_PRODUCER_AUTHORITY,
       );
-      expect(authorityProjection(report.browser, EXPECTED_BROWSER_AUTHORITY)).toEqual(
-        EXPECTED_BROWSER_AUTHORITY,
+      expect(authorityProjection(report.browser, HISTORICAL_EDGE_101_VERSION)).toEqual(
+        HISTORICAL_EDGE_101_VERSION,
       );
       expect(report.outcomes).toHaveLength(42);
       expect(report.outcomes.every((outcome) => outcome.pass)).toBe(true);
@@ -455,11 +528,11 @@ describe('Arc 1C scene-memory active budget', () => {
       rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
     });
     expectExactBuildInventory(report);
-    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
-      EXPECTED_PRODUCER_AUTHORITY,
+    expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
+      HISTORICAL_PRODUCER_AUTHORITY,
     );
-    expect(authorityProjection(report.browser, EXPECTED_BROWSER_AUTHORITY)).toEqual(
-      EXPECTED_BROWSER_AUTHORITY,
+    expect(authorityProjection(report.browser, HISTORICAL_EDGE_101_VERSION)).toEqual(
+      HISTORICAL_EDGE_101_VERSION,
     );
     expect(report.budget).toEqual({
       schema: 'cf-v2-scene-memory-budget/v2',
@@ -492,7 +565,7 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(currentBudgetReplay.failures).toEqual([]);
   });
 
-  it('durably replays the exact clean current-budget certification', () => {
+  it('preserves the exact clean Edge .101 certificate as historical evidence', () => {
     const compressed = fs.readFileSync(path.join(auditRoot, CURRENT_LOCAL_CERTIFICATION.file));
     expect(sha256(compressed)).toBe(CURRENT_LOCAL_CERTIFICATION.gzipSha256);
     const raw = gunzipSync(compressed);
@@ -535,11 +608,11 @@ describe('Arc 1C scene-memory active budget', () => {
       rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
     });
     expectExactBuildInventory(report);
-    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
-      EXPECTED_PRODUCER_AUTHORITY,
+    expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
+      HISTORICAL_PRODUCER_AUTHORITY,
     );
-    expect(authorityProjection(report.browser, EXPECTED_BROWSER_AUTHORITY)).toEqual(
-      EXPECTED_BROWSER_AUTHORITY,
+    expect(authorityProjection(report.browser, HISTORICAL_EDGE_101_VERSION)).toEqual(
+      HISTORICAL_EDGE_101_VERSION,
     );
     expect(report.budget).toEqual({
       schema: 'cf-v2-scene-memory-budget/v2',
@@ -547,7 +620,7 @@ describe('Arc 1C scene-memory active budget', () => {
       sha256: CURRENT_LOCAL_CERTIFICATION.budgetSha256,
     });
     expect(report.inputs.budget).toBe(CURRENT_LOCAL_CERTIFICATION.budgetSha256);
-    expect(sha256(fs.readFileSync(budgetPath))).toBe(CURRENT_LOCAL_CERTIFICATION.budgetSha256);
+    expect(sha256(fs.readFileSync(budgetPath))).not.toBe(CURRENT_LOCAL_CERTIFICATION.budgetSha256);
     expect(report.contractInput.budgets).toEqual(budget.profiles);
     expect(report.contractInput.profiles).toEqual(collectedProfileProjection(report));
     expect(report.outcomes).toHaveLength(42);
@@ -562,6 +635,13 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(recomputed.status).toBe('pass');
     expect(recomputed.outcomes).toEqual(report.outcomes);
     expect(recomputed.failures).toEqual([]);
+    const currentBudgetReplay = evaluateSceneMemory({
+      ...report.contractInput,
+      budgets: budget.profiles,
+    });
+    expect(currentBudgetReplay.status).toBe('pass');
+    expect(currentBudgetReplay.outcomes).toHaveLength(42);
+    expect(currentBudgetReplay.failures).toEqual([]);
   });
 
   it('retains the exact hosted Linux red and replays only its elapsed ruler green', () => {
@@ -609,11 +689,11 @@ describe('Arc 1C scene-memory active budget', () => {
       rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
     });
     expectExactBuildInventory(report);
-    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
-      EXPECTED_PRODUCER_AUTHORITY,
+    expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
+      HISTORICAL_PRODUCER_AUTHORITY,
     );
-    expect(authorityProjection(report.browser, EXPECTED_BROWSER_AUTHORITY)).toEqual(
-      EXPECTED_BROWSER_AUTHORITY,
+    expect(authorityProjection(report.browser, HISTORICAL_EDGE_101_VERSION)).toEqual(
+      HISTORICAL_EDGE_101_VERSION,
     );
     expect(report.browser).toMatchObject({
       executable: '/opt/microsoft/msedge/microsoft-edge',
@@ -825,21 +905,23 @@ describe('Arc 1C scene-memory active budget', () => {
     }
   });
 
-  it('negative control: stale browser or producer authority cannot masquerade as calibration', () => {
+  it('negative control: producer drift stays red while Edge revision drift stays compatible', () => {
     const report = reports[0]!;
     const staleProducer = { ...report.inputs, shipyardPreview: '0'.repeat(64) };
     const staleBrowser = { ...report.browser, revision: '@stale' };
-    expect(authorityProjection(staleProducer, EXPECTED_PRODUCER_AUTHORITY)).not.toEqual(
-      EXPECTED_PRODUCER_AUTHORITY,
+    expect(authorityProjection(staleProducer, HISTORICAL_PRODUCER_AUTHORITY)).not.toEqual(
+      HISTORICAL_PRODUCER_AUTHORITY,
     );
-    expect(authorityProjection(staleBrowser, EXPECTED_BROWSER_AUTHORITY)).not.toEqual(
-      EXPECTED_BROWSER_AUTHORITY,
+    expect(sceneMemoryBrowserAuthorityMatches(staleBrowser, EXPECTED_BROWSER_AUTHORITY)).toBe(true);
+    expect(sceneMemoryBrowserAuthorityMatches({
+      ...report.browser, product: 'Chrome/151.0.4129.101',
+    }, EXPECTED_BROWSER_AUTHORITY)).toBe(false);
+    expect(sceneMemoryBrowserAuthorityMatches({
+      ...report.browser, protocolVersion: '1.2',
+    }, EXPECTED_BROWSER_AUTHORITY)).toBe(false);
+    expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
+      HISTORICAL_PRODUCER_AUTHORITY,
     );
-    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
-      EXPECTED_PRODUCER_AUTHORITY,
-    );
-    expect(authorityProjection(report.browser, EXPECTED_BROWSER_AUTHORITY)).toEqual(
-      EXPECTED_BROWSER_AUTHORITY,
-    );
+    expect(sceneMemoryBrowserAuthorityMatches(report.browser, EXPECTED_BROWSER_AUTHORITY)).toBe(true);
   });
 });

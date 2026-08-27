@@ -42,6 +42,14 @@ projection refresh; persistence now fixed-points injected-clock notification sta
 `conq[].e`, and preserves more than 4,000 legacy XP-first keys through a paired v4 binding plus
 v5 overflow authority.
 
+Current world history no longer treats a planet's leaf seed as global identity. A strict v5
+manifest plus four byte-balanced shards bind landings and custom names to the complete
+source-reproved CF1 galaxy/star/planet address, while v4 `land`/`names` remain compatibility
+mirrors. Ambiguous imported seed facts retain their aggregate count without labeling either
+collision world and are consumed by the first exact encounter without awarding a duplicate first
+landing. Every name, Land, and Atlas mutation preflights the real combined extension limits and
+refuses atomically before navigation, progression, or presentation changes.
+
 Deep Scanners now add one honest **Mineral veins** row to orbital Survey for an exact proven
 lifeless non-Earth world, without exposing cosmic/exceptional veins, grade, reserves, progress, or
 the grounded Mine action. One strict rarity projector maps raw deterministic tiers 0–14 to the
@@ -63,20 +71,24 @@ ambience, music, combat/Guardian audio, recorded assets, full audio accessibilit
 and HUMAN listening remain open.
 
 The dedicated no-forged-time Arc 4 recovery collector and its mutation-sensitive selftest are
-ready, but the uninterrupted real 20-minute certificate has not run. The former Compendium ruler
+ready, but the collector is not standalone: it may run only after the same unchanged clean commit
+has produced a terminal-green Slice report that passes named verification and a full Glass report
+bound to that exact Slice ID that also passes named verification. Recovery receives both exact
+predecessor IDs and its own exact report must pass named verification; stop after any failure and
+never retry automatically. The uninterrupted real 20-minute certificate has not run. The former Compendium ruler
 and exact-budget certificate `20260826-phase4-certification` remain truthful historical evidence for producer
 `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`; they are not rebound to the
-current product. Fresh current-product calibration from signed source
+current product. Historical current-product calibration from signed source
 `8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527` selected independent candidates
 `20260826-slice-repair-candidate1`, `20260826-slice-repair-candidate2` and
 `20260826-slice-repair-candidate3` plus paired legacy baseline
-`20260826-slice-repair-baseline1`, each in one attempt with zero retries. The active ruler binds
-measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, current producer
+`20260826-slice-repair-baseline1`, each in one attempt with zero retries. That historical ruler bound
+measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, former producer
 `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, and budget-file SHA-256
 `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. It retains all four sealed
 baseline faults and the exact 14-phone/13-desktop breach inventory; only the phone warm ceiling
 changed, to `524288`, while every other numeric ceiling remains unchanged. Clean signed activation
-source `91f4e04410b893c43ee5d261ebfc1fa3be127c29` then supplied one exact-budget, no-retry run,
+source `91f4e04410b893c43ee5d261ebfc1fa3be127c29` then supplied one historical exact-budget, no-retry run,
 `20260826-slice-repair-certification`: terminal PASS, 78/78 outcomes, complete lifecycle and named
 verifier PASS in 44,847 ms (`2026-08-26T23:42:19.150Z`–`23:43:03.997Z`). Its raw/gzip report
 SHA-256 values are `81c27ed5caa12e0c114a788041dfc5d109742bb9d86a256b548a8e9443d46108` /
@@ -87,48 +99,31 @@ contract `cf-v2-compendium-cdp-capabilities/v1` (SHA-256
 revision, JavaScript version, executable path and user agent remain mandatory per-run provenance;
 phone and desktop samples with one run ID must bind that exact tuple. An Edge auto-update neither
 forces calibration nor changes a numeric ceiling, while a real observed budget breach remains red.
-This change is Compendium-only: SceneMemory and the root Gate-A browser contract are unchanged.
+Those `f7c87f22…` / `91f4e044…` bytes remain historical evidence for their exact producer. Compendium
+and SceneMemory now own separate sealed Edge-family + CDP `1.3` capability/profile authorities;
+the version-tolerance change altered no numeric budget in either ruler. Their changed final frozen
+producers require new bound certificates. Root Gate-A remains a separate contract.
 
-Browser-free verification of these local bytes is green: 124 test files / 1,383 passed / one
-intentional skip / zero failures; root, app, worker, and `noUnused` TypeScript; an 884-module Vite
-build; root validation with the unchanged 50-probe fingerprint; legacy jsdom smoke; and the
-applicable contract/reporter/Glass/recovery/Compendium selftests. These are local working-tree
-results only. Current-input Slice has five preserved one-attempt/zero-retry reds on Edge
-`151.0.4129.107`. Run `20260826214541492-83064-b252b137f7a3` at signed source `8553bd7…` failed
-after 92,772 ms with three findings: two instrument false reds—Settings' 14-versus-15 inventory and
-an unreachable Arc 3 target—plus the retained-Survey focus product regression. Changed clean signed
-source `9d4b2b0…` supplied run `20260827000034983-98202-869d966f2f88`, which failed after 92,566
-ms with only the Arc 3 harness finding. Settings and Survey focus are therefore outcome-cleared.
-The reachable target exposed a second instrument defect: its oracle required system navigation and
-nav-owned planet identity simultaneously, although the selected world belongs to the Survey card.
-Clean signed source `8a23e22…` then supplied run `20260827025804458-2742-c0c871ee52b6`, which
-failed after 93,582 ms with three findings from one new instrument cascade: the retained Survey card
-intentionally hid `#railrgt`, so Slice tried to activate zero-rect `railshipyard` before yielding the
-card. That run outcome-clears the card-context repair. Clean signed source `bd6b06b…` then supplied
-run `20260827032748771-8092-d2a0130882c1`, which failed after 119,502 ms with six finding scopes
-from two harness roots: stale Mars-source plus obsolete five-key rendered-receipt expectations
-rejected valid Search/remnant evidence and skipped Skim, then post-reload retained Survey correctly
-hid the rail before another Engineering attempt, cascading into the storage/stale findings. Product
-Search, remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and the
-repaired lifecycle are outcome-cleared. Clean/stable signed source
-`9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied run
-`20260827041238239-16243-cbf9ca66283b`, which failed after 141,336 ms with one independent
-`harness` finding: the exact committed Tame greeting did not reach its browser outcome within ten
-seconds, retaining only `last null`. That carrier preserved neither a terminal observation nor a
-browser product/instrument disposition. Its straight-line progress outcome-clears native Skim,
-four-action Engineering reload, Mineral/Survey rail, storage refusal, stale and publication
-convergence, and the Arc 5 v1-to-compact-v2 fixed point. Static source diagnosis found the crossed
-global/ownership revision fence above plus a transient-active instrument predicate that could miss
-a naturally completed one-start voice. The local, unrerun repair adds the distinct
-`ownershipRevision`; the named `collectArc4TameGreetingStart()` collector retaining exact result,
-global, ownership, claim, counterpart, runtime, and toast clauses; release-`true` fail-fast;
-active-or-naturally-completed
-one-start proof; and generic Arc 4 ownership-revision plus reload-result-null controls. Post-start
-audio lifecycle and
-the later exact nine-stage/14-burn ledger remain unproved. No current-input Slice PASS, Glass result
-or real recovery certificate exists. Hosted
-execution, HUMAN review, whole-Gate closure, release, version
-bump, preview/publication, and deployment remain unclaimed.
+The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,446 passed /
+one intentional skip / zero failures, plus root/app/worker/noUnused TypeScript, `artunused`,
+syntax/import selftests and the 886-module Vite build. The implementation/code and release-note
+audits are CLEAR. The final whole-diff audit is complete; its two evidence-integrity findings are
+repaired and their focused controls pass. The signed clean freeze remains.
+Tracked Compendium and SceneMemory bindings match the rebuilt candidate, while their older
+certificates remain historical until those exact signed producers are measured.
+
+Current-input Slice retains six one-attempt/zero-retry reds. Signed-clean source
+`1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
+`20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`. It failed after
+397,101 ms with 23 findings across 16 scopes and no Arc 4 success evidence: required was false,
+`ok`/ledger were null, and no success marker or ledger line exists. Glass and recovery correctly
+did not run. Its first five independent roots—55-bullet Guide/Glass contract, paired ecology diagnostic
+clocks, contextless blocked audio state, committed-only epoch timing and Survey/Training DOM
+ownership—are locally repaired with negative controls. Exact Edge version is provenance only;
+Slice and Glass judge fresh behavior/geometry rather than a version pin, so a browser update alone
+does not trigger calibration, rebaselining, repinning or a ceiling change. Compendium and
+SceneMemory own separate sealed Edge-family + CDP `1.3` capability/profile authorities. No current-input Slice PASS, Glass
+result, recovery certificate, hosted/HUMAN whole-Gate or release authority exists.
 
 The retained Arc 4/5A checkpoint remains useful historical foundation. Its source-addressed Guide
 kept all 9 categories /43 authored IDs /41 player topics searchable and cross-linked; 24 topics
@@ -141,8 +136,11 @@ bullets. The bulletin stayed `draft` / `Unreleased`, `V2_CURRENT_RELEASE_VERSION
 reading it could not trigger an update popup or mutate the seen-release marker. Field Training had
 six chart/travel/landing lessons plus an honest graduation and no Capture lesson; tooltip links,
 Advanced Briefings and the rest of the 21-step arc remained open. From `port/v2`, run
-`npm install`, `npm test`, `npm run typecheck`,
-and `npm run smoke`; see its README for the full current battery and open gates.
+`npm install`, `npm test`, and `npm run typecheck`; browser evidence then follows the README's
+copy-ready immutable Slice → Glass → recovery chain, beginning with `npm run smoke:ci` and named
+verification of the exact Slice run rather than a bare smoke command. Every successor receives the
+exact predecessor ID(s), all stages use the same unchanged clean commit, and any failure stops the
+chain without retry. See the v2 README for the full current battery and open gates.
 Both root and v2 install surfaces declare the pinned raw-CDP `ws` transport and
 support Node `^20.19.0 || ^22.13.0 || >=24.0.0`.
 

@@ -85,12 +85,17 @@ const affixDefinition = (affixId: string) => LEGACY_AFFIX_DEFINITIONS.find(
   (candidate) => candidate.key === affixId,
 );
 
+const effectLabel = (key: string, fallback: string): string => (
+  key === 'contact' ? 'capture chance' : fallback
+);
+
 const effectRows = (instance: GearInstance): readonly GearEffectReadModel[] => {
   const base: GearEffectReadModel[] = [];
   for (const [key, value] of Object.entries(instance.baseEffects)) {
     if (typeof value === 'number') {
       base.push({
-        key, value, source: 'base', percent: PERCENT_EFFECTS.has(key), label: key, condition: null,
+        key, value, source: 'base', percent: PERCENT_EFFECTS.has(key),
+        label: effectLabel(key, key), condition: null,
       });
     } else if (key === 'landfam' && value && typeof value === 'object') {
       for (const [family, amount] of Object.entries(value)) {
@@ -110,7 +115,7 @@ const effectRows = (instance: GearInstance): readonly GearEffectReadModel[] => {
       value: affix.value,
       source: affix.role,
       percent: definition.percent,
-      label: definition.label,
+      label: effectLabel(affix.affixId, definition.label),
       condition: null,
     };
     }),
@@ -121,7 +126,7 @@ const effectRows = (instance: GearInstance): readonly GearEffectReadModel[] => {
       value: instance.legacyAffix.value,
       source: 'legacy' as const,
       percent: definition.percent,
-      label: definition.label,
+      label: effectLabel(instance.legacyAffix.affixId, definition.label),
       condition: null,
     }];
     })() : []),
@@ -229,9 +234,15 @@ export function filterGearEntries(
     if (query) {
       const searchable = [instance.baseId, instance.baseName, instance.slot, instance.rarity,
         ...instance.tags,
-        ...instance.naturalAffixes.map((affix) => affixDefinition(affix.affixId)?.label ?? affix.affixId),
+        ...instance.naturalAffixes.map((affix) => effectLabel(
+          affix.affixId,
+          affixDefinition(affix.affixId)?.label ?? affix.affixId,
+        )),
         ...(instance.legacyAffix
-          ? [affixDefinition(instance.legacyAffix.affixId)?.label ?? instance.legacyAffix.affixId]
+          ? [effectLabel(
+            instance.legacyAffix.affixId,
+            affixDefinition(instance.legacyAffix.affixId)?.label ?? instance.legacyAffix.affixId,
+          )]
           : [])]
         .join('\n').toLocaleLowerCase('en-US');
       if (!searchable.includes(query)) return false;

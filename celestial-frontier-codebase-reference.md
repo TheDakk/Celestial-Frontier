@@ -6,8 +6,8 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-27.**
 >
-> **2026-08-27 local candidate overlay — implemented source lanes; five preserved Slice reds and a
-> certified active Compendium ruler:** Gate B's
+> **2026-08-27 local candidate overlay — implemented source lanes; six preserved Slice reds and
+> historical browser certificates pending final-producer renewal:** Gate B's
 > recursive scanner now seals an exact 62-domain-source inventory against DOM, storage,
 > `navigator`, network, wall/monotonic clock and uncontrolled randomness. Its only two reasoned
 > waivers are the exact `document.createElement('')` expressions used by CombatCore's legacy
@@ -26,6 +26,53 @@
 > exactly one legacy-ready cycle and all values clamp to `[0, EPOCH_BASE]`, and more than 4,000
 > legacy XP-first keys survive through the paired v4 `xpa` binding plus v5
 > `progression.xp-firsts` overflow authority without rearming an award.
+>
+> `packages/persistence/src/world-identity.ts` now owns current landing/name identity in
+> `catalog/world.identity.manifest` plus exactly four `catalog/world.identity.shard.N` carriers.
+> Rows bind a complete registered CF1 galaxy/star/planet address, landing flag and optional name;
+> the v4 leaf-seed arrays remain compatibility mirrors only. Reads require the exact manifest,
+> source-reproof and canonical re-encode. Explicit code-unit ordering and deterministic greedy
+> byte-load balancing keep up to 9,000 records /5,000 names within the real carrier limits, and
+> every mutation applies candidate writes against all current extensions before publication.
+> Ambiguous v4 collisions retain one unresolved count/name without presenting either world; the
+> first exact encounter consumes that fact without a duplicate first-landing reward. Main wires
+> the owner through Search naming, Land, Atlas, share copy, rarity, Records, boot and Training.
+>
+> Legacy last-known-good promotion and backup recovery are single atomic
+> `compareAndApply` operations, not read-then-write repairs. Promotion requires the exact primary
+> bytes and absence of both `f3:revision` and `f3:lease:active-play`. Recovery first validates the
+> exact backup, then its one CAS requires the same invalid primary bytes, the same backup bytes and
+> absence of those two v5 authority keys. A changed primary, changed backup, revision, or lease wins
+> the race without a legacy write; once v5 authority exists, legacy promotion/recovery is retired
+> and cannot roll the save backward.
+>
+> F4 lease failure is fail-closed. An acquire storage failure grants no lease and accrues no active
+> time; a renew storage failure settles only the already-earned interval, revokes the local grant and
+> stops further accrual. After acquisition, either a revision mismatch or a revision-read failure
+> enters transient protection and schedules one read-only convergence reload: answerability,
+> heartbeat, mutations and audio stop, release/disposal failures are aggregated into diagnostics,
+> and the same document never automatically reacquires. While protected, all nine Settings controls
+> (Sound, Volume, Creature voices, Text size, Text tone, Font, Star charts, Motion and Panel tint)
+> plus Restart Training and lesson actions are read-only. The event guard deliberately excludes
+> **Bring expedition** so the protected replacement route remains reachable; import still validates
+> the complete candidate and must claim versioned persistence authority, refuses with zero writes if
+> that authority is unavailable, and on success performs one exclusive whole-save replacement
+> followed by reload. This exception grants no authority for ordinary protected-state mutations.
+>
+> Charter mining consumes exact registered world identity. Chapter 1's `c1-mine` credit requires a
+> successful Mine on a canonical landfall whose complete CF1 hierarchy matches Home galaxy
+> seed/coordinates, Sol star seed/coordinates, the expected planet ordinal and a Sol dead-world
+> seed; an equal seed or ordinal under substituted galaxy/star coordinates is rejected. Chapter 3
+> intentionally accepts a successful Mine from any canonical registered world rather than applying
+> the Sol filter. Both bank one successful action tick, never a page load, and retain goal caps.
+>
+> Resize and `visualViewport` bursts share one frame-coalescer owner: the newest sample wins and at
+> most one non-persisting scene rebuild runs per animation frame. A surface-HD successor is not
+> published until its identity, lease, backing and attachment all succeed; a failed build preserves
+> the predecessor and an explicit retry path. After publication the successor stays live even if
+> predecessor release fails; failed retired leases remain owned for later cleanup, and release,
+> rollback and final-disposal failures are aggregated while every current/retired owner is attempted.
+> The fine-scene successor follows the same publish-complete-before-release and aggregate-cleanup law.
 >
 > Deep Scanners now has a live, source-addressed Survey consumer. On the exact eligible scanned,
 > registered lifeless non-Earth world it adds one **Mineral veins** row in deterministic ordinary
@@ -52,7 +99,12 @@
 > plateaus and HUMAN listening remain open.
 >
 > The dedicated real-time Arc 4 recovery collector and mutation-sensitive selftest are ready, but
-> the uninterrupted real 20-minute certificate has not run. The former Compendium ruler under
+> recovery is non-standalone. On one unchanged clean committed source, the exact Slice report must
+> be terminal-green and pass named verification; full Glass must consume that exact Slice ID and its
+> exact report must pass named verification with the same ID; only then may recovery consume both
+> exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
+> nonzero, red or instrument result and do not start a successor or automatically retry. The
+> uninterrupted real 20-minute certificate has not run. The former Compendium ruler under
 > measurement authority `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`
 > and producer authority `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`
 > remains truthful historical evidence.
@@ -68,62 +120,57 @@
 > `151.0.4129.107`, whose full build tuple is provenance only. Report raw/gzip SHA-256 are
 > `3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd` /
 > `5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. A real
-> product-owner/built-producer change—not Edge `.107`—required current-product calibration.
+> product-owner/built-producer change—not Edge `.107`—required the then-current calibration.
 > Signed source `8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527` supplied independent
 > `20260826-slice-repair-candidate1`, `20260826-slice-repair-candidate2` and
 > `20260826-slice-repair-candidate3` plus paired `20260826-slice-repair-baseline1`, each one attempt
-> and zero retries. The active ruler binds the same measurement authority, current producer
+> and zero retries. That historical ruler bound the same measurement authority, former producer
 > `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, and budget-file SHA-256
 > `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. It retains all four sealed
 > baseline faults and exact 14-phone/13-desktop breach discrimination; only the phone warm ceiling
-> changed to `524288`, with every other numeric ceiling unchanged. Exact-budget run
+> changed to `524288`, with every other numeric ceiling unchanged. Historical exact-budget run
 > `20260826-slice-repair-certification` passed 78/78 from clean signed activation source
 > `91f4e04410b893c43ee5d261ebfc1fa3be127c29`, with complete lifecycle and named verification in one
 > attempt/zero retries. It ran `2026-08-26T23:42:19.150Z`–`23:43:03.997Z` (44,847 ms) on Edge
 > `151.0.4129.107`, revision `@419e77616b4ed7d0a544b85cb53ccd5b74d5f135`, JavaScript
 > `15.1.23.12`, CDP `1.3`; that build tuple is provenance only. Raw/gzip report SHA-256 are
 > `81c27ed5caa12e0c114a788041dfc5d109742bb9d86a256b548a8e9443d46108` /
-> `6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. This Compendium-only activation does not alter SceneMemory or the
-> root Gate-A browser contract.
+> `6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. That Compendium-only
+> activation did not alter SceneMemory or the root Gate-A browser contract. Its exact bytes remain
+> historical for that producer.
 >
-> Browser-free verification for these local bytes is green: 124 test files, 1,383
-> passed, one intentional skip and zero failures; `root/app/worker/noUnused` TypeScript; an
-> 884-module Vite build; root validation with the unchanged 50-probe fingerprint; legacy jsdom
-> smoke; and the applicable contract, reporter, Glass, recovery and Compendium selftests. Current-
-> input Slice has five preserved one-attempt/zero-retry reds on Edge `151.0.4129.107`. Run
-> `20260826214541492-83064-b252b137f7a3` at signed source `8553bd7…` failed after 92,772 ms with
-> Settings and unreachable-target instrument false reds plus the retained-Survey focus product
-> regression. Changed clean signed source `9d4b2b0…` supplied run
-> `20260827000034983-98202-869d966f2f88`, which failed after 92,566 ms with only the Arc 3 harness
-> finding. Settings and Survey focus are outcome-cleared; the reachable target exposed a second
-> instrument defect whose oracle combined system navigation with nav-owned planet identity even
-> though the selected world is card-owned. Clean signed source `8a23e22…` then supplied run
-> `20260827025804458-2742-c0c871ee52b6`, which failed after 93,582 ms with three findings from one
-> instrument lifecycle cascade: the retained Survey card intentionally hid the right rail, but
-> Slice attempted zero-rect `railshipyard` before yielding it. The third run outcome-clears the
-> card-context repair. Clean signed source `bd6b06b…` then supplied run
-> `20260827032748771-8092-d2a0130882c1`, which failed after 119,502 ms with six scopes from two
-> harness roots. Stale Mars-source and obsolete five-key rendered-receipt expectations rejected valid
-> Search/remnant evidence and skipped Skim; after reload, retained Survey correctly hid the rail
-> before another Engineering attempt, cascading through storage/stale findings. Product Search,
-> remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and the repaired
-> lifecycle are outcome-cleared. Clean/stable signed source
-> `9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied run
-> `20260827041238239-16243-cbf9ca66283b`, which failed after 141,336 ms with one independent
-> `harness` finding: the exact committed Tame greeting did not reach its browser outcome within ten
-> seconds, retaining only `last null`. The carrier preserved neither a terminal observation nor a
-> browser product/instrument disposition. Its straight-line progress outcome-clears native Skim,
-> four-action Engineering reload, Mineral/Survey rail, storage refusal, stale and publication
-> convergence, and the Arc 5 v1-to-compact-v2 fixed point. Static source diagnosis found a crossed
-> global/ownership revision fence plus a transient-active instrument predicate that could miss a
-> naturally completed one-start voice. The local, unrerun repair adds distinct
-> `ownershipRevision`; the named `collectArc4TameGreetingStart()` collector retaining exact result,
-> global, ownership, claim, counterpart, runtime and toast clauses; release-`true` fail-fast;
-> active-or-naturally-completed
-> one-start proof; and generic Arc 4 ownership-revision plus reload-result-null controls. Post-start
-> audio lifecycle and the later exact nine-stage/14-burn ledger remain unproved. No current-input
-> Slice PASS, Glass result or recovery certificate exists. There is no hosted, HUMAN, whole-Gate,
-> release, version, preview/publication or deployment claim.
+> The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,446 passed /
+> one intentional skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused`,
+> syntax/import selftests and an 886-module Vite build. Implementation/code and release-note audits
+> are CLEAR. The final whole-diff audit is complete; its two evidence-integrity findings are repaired
+> and their focused controls pass. The signed clean freeze remains. Current-input Slice
+> remains RED; Glass, recovery and whole-Gate evidence remain open.
+>
+> Current-input Slice retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
+> The first five remain preserved historical diagnosis. Signed-clean source
+> `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied run
+> `20260827085237038-27561-1f8e3c1771b7`, which failed after 397,101 ms with 23 findings
+> across 16 scopes and no Arc 4 success evidence: required was false, `ok`/ledger were null, and
+> there was no success marker or ledger line. Source stayed clean/stable; Glass and recovery
+> correctly did not run.
+>
+> Five independent roots are repaired in the current worktree. Guide/Glass bind the exact
+> 55-bullet draft and 54-bullet removal with count, uniqueness, section, raw-nonempty and raw-trim
+> controls. Stable fixture comparison excludes both legitimate ecology diagnostic clocks while
+> independently bounding, monotonicity-checking and mutating the ecology value. A blocked
+> contextless audio runtime accepts either boolean mute state but must create no context, node,
+> voice, id or emitter. Epoch evidence observes the private precommit candidate, invokes the real
+> persistence seam, then proves committed published/raw/reloaded equality. Survey calls
+> `refreshTrainingScope()` after its replacement card is visible, rebinding current lesson locks,
+> spotlight and focus ownership. Exact Edge version remains Slice provenance only; Slice and Glass
+> judge fresh behavior/geometry rather than a version pin, so a browser update alone never
+> rebaselines or moves ceilings. Compendium and SceneMemory own separate sealed Edge-family + CDP
+> `1.3` capability/profile authorities; version tolerance changed no numeric budget in either ruler,
+> and both changed final frozen producers require new bound certificates. Root Gate A separately
+> accepts compatible Chromium family + CDP `1.3` only after exercising the exact CDP inventory
+> derived from `tools/uilayout.js` + `tools/bootperf.js` and recording complete per-run provenance;
+> point version alone never repins, rebaselines or moves a root threshold. No repaired Slice PASS, Glass result, recovery certificate,
+> hosted/HUMAN, whole-Gate, release, version, preview/publication or deployment claim exists.
 >
 > **2026-08-25 Arc 3–5 + Arc 7 historical checkpoint — retained as foundation where the
 > 2026-08-27 overlay does not supersede it:** `@cf/domain-opportunity`,
@@ -185,8 +232,8 @@
 > reload without reroll or second write. `capture-card.ts` presents a source-bound uniform random
 > eligible pool—not targeted species selection—with preview/full counts, aggregate and individual
 > odds, one shared hit-or-miss Biosphere Yield, active-play recovery, pending non-optimism and
-> native Close/reopen/focus behavior. Guide Capture/Discover copy is live/partial within the current
-> 24-partial/17-unavailable inventory; **A New Foundation** contains 54 draft bullets. Training
+> native Close/reopen/focus behavior. At that historical checkpoint, Guide Capture/Discover copy was
+> live/partial within the 24-partial/17-unavailable inventory; **A New Foundation** contained 54 draft bullets. Training
 > remained six lessons plus graduation with no Capture lesson. The historical exact-input Slice passed the exact
 > nine-stage capture ledger in 336,913 ms (report
 > `4cc6fe02fb6965e4b67baef1d6b90d0a5ac64dff836cdc6416f49d5ad5bbbdde`, 14 burn steps,
@@ -320,7 +367,7 @@
 > Its one-attempt/no-retry local run `20260822-arc1-local-certification` passed all 42/42 outcomes
 > and its named verifier under Edge `151.0.4129.101`; that certificate remains historical and is
 > not rewritten or promoted. Clean cross-host SLA repair
-> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds the active 1,000 ms budget SHA-256
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` bound the 1,000 ms budget SHA-256
 > `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`.
 > Its one-attempt/no-retry local run `20260823-pr33-cross-host-sla-certification` passed exact 42/42,
 > complete lifecycle/cleanup, empty findings/fatals, and its named verifier under the same exact Edge
@@ -714,8 +761,9 @@
 > budget/test `546d3a81…` / `ef06252a…` at `b3957e1…`; exact-head certification remained open at this
 > historical Arc 1A boundary. PR #32 later merged, and the current overlay above records the bounded
 > Arc 1B lifecycle result.
-> The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
-> pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
+> At that historical Arc 1A boundary, the authority remained Arc-local Edge 151 and did not change
+> the then-active v1.8.9 Gate-A point-version authority. The current root compatibility contract is
+> recorded in the 2026-08-27 overlay above. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.
 > This repair owns the current surface globe's fitted start and live tier swap only. The current Arc
 > 1B overlay now owns broader existing-scene resource lifetime; Shipyard and named HD planet
@@ -980,7 +1028,8 @@
 > galaxy/star-only CF1 routes, generated descents and all future ownership/receipt writers
 > still need their own canonical boundary integration.
 >
-> **Historical 2026-08-21 GitHub Actions budget overlay, followed by the current Arc 1C authority:**
+> **Historical 2026-08-21 GitHub Actions budget overlay and later workflow chronology; current
+> browser authority is summarized in the 2026-08-27 overlay above:**
 > the repository is public, so standard hosted runners
 > are free while visibility remains public; 3,000 is the fail-closed private/ambiguous cap and mode
 > is `UNFROZEN` in `GITHUB_ACTIONS_BUDGET.md`, with no Arc 1B hosted attempt currently authorized.
@@ -999,10 +1048,14 @@
 > negative-controls every trigger/input/job/publisher/concurrency direction plus unknown workflows;
 > root `validate.js` runs its real policy first. At that historical Arc 1B boundary the local branch
 > added the exact Edge `.93` scene-memory-v1 phase after the terminal verified `.86` Compendium
-> phase; it was not yet pushed or hosted. Current Arc 1C workflow authority instead installs exact
-> Edge `.101` and runs `scene-memory-v2.json` / 42 outcomes. The historical 250 ms activation
-> `59530da3bf40965adf9c54f169b310e11ccdd0f8` and the active cross-host repair
-> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` are distinguished in the current overlay above.
+> phase; it was not yet pushed or hosted. The later Arc 1C workflow installed exact Edge `.101`
+> before `scene-memory-v2.json` / 42 outcomes. Current CI instead gives SceneMemory its own freshly
+> resolved stable Edge-family process and preserves the separately sealed exact-`.101`
+> install → preflight → certificate adjacency only for the Compendium leg. Those workflow choices
+> are environment normalization and exact-run provenance, not browser-version budget identity.
+> The historical 250 ms activation `59530da3bf40965adf9c54f169b310e11ccdd0f8` and historical
+> cross-host repair `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` are distinguished in the current overlay above;
+> the changed final frozen SceneMemory and Compendium producers each require a new bound certificate.
 > Hosted run `32618995487` remains terminal-red at 40/42 and provides no hosted authority. The old parallel structure and automatic publishers
 > remain truthful history only. Development/production target isolation, manifests, origin refusal,
 > noindex/robots, target-specific credentials, and the rule that previews are not human/release
@@ -1024,7 +1077,8 @@
 > then living organism rigs and biome scenes. Platinum-approved static portraits
 > remain frozen; optional polish is not a mandate to repaint them.
 >
-> **2026-08-12 root browser-harness overlay; 2026-08-15 selftest update:** legacy `tools/uilayout.js` now
+> **2026-08-12 root browser-harness overlay; 2026-08-15 selftest update; 2026-08-27
+> compatibility-authority update:** legacy `tools/uilayout.js` now
 > consumes the v2-owned browser resolver and raw-CDP launcher instead of owning a
 > second candidate list, guessed port, WebSocket loop and cleanup path. The shared
 > lifecycle uses browser-assigned port 0 plus `DevToolsActivePort`, records exact
@@ -1040,8 +1094,14 @@
 > `--verify-run=ID` rejects the wrong attempt. CI runs both before separately
 > uploading the required report. Root and v2 manifests/locks both declare the
 > pinned `ws` transport and Node `^20.19.0 || ^22.13.0 || >=24.0.0`. Root preflight
-> launches the selected executable through `browsercdp`; its selftest rejects
-> executable non-browsers and excluded Node lines. `bootperf` shares the executable
+> launches the selected executable through the shared owner, then the root capability probe
+> exercises every CDP method source-derived from `uilayout` + `bootperf` with response sentinels
+> and publishes only after target/process cleanup. It requires canonical Chromium-family product,
+> CDP `1.3`, the exact capability inventory and complete executable/product/version/revision/UA/JS/
+> protocol provenance. Older/current/synthetic-future Edge and Chrome/Chromium controls pass;
+> family, malformed-product, protocol, provenance, capability and executable-non-browser mutants
+> fail. Point version is provenance only and a compatible update never rebaselines or moves root
+> thresholds. Exact Edge 150 remains historical v1.8.9 capture evidence. `bootperf` shares the executable
 > resolver and `ws` transport but retains its legacy CDP lifecycle. Two evidence
 > callers continue to deviate from the 15-second CDP-start default. The final
 > development-preview package check keeps its fixed 30-second allowance. Root layout
@@ -1125,7 +1185,9 @@
 > same-aspect logical resize retains the same integer backing dimensions. Both
 > downshift and restore require a strict exact-target/`Browser.getVersion` pair,
 > an advancing later post-render ticker turn, and stopped/stale-ticker negative
-> controls. The transition still uses the existing full scene rerender; this is an
+> controls. The transition still rebuilds the full scene, but resize and
+> visual-viewport bursts share one animation-frame owner, sample the latest viewport
+> in-frame, and perform at most one non-persisting rebuild per frame. This is an
 > allocation tier, not a newly implemented scene-art quality tier. Survey
 > cards expose minimum-44px **Enter galaxy / Enter system** actions, and touch
 > Planetside has a minimum-44px **Leave world** action. The eighth dock slot opens
@@ -2126,21 +2188,23 @@ Edge auto-updates without rebaselining or threshold changes; an actual threshold
 fails. Exact-budget run `20260826-phase4-certification` passed 78/78 plus its named verifier from
 clean committed activation `d33e540…`; exact Edge `151.0.4129.107` is provenance only. Report
 raw/gzip SHA-256 are `3afe41034c78c11e1e59eeeff542e00f21a155f99bfc752afea8736a0eddffcd` /
-`5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. For current producer
+`5677d9ed26cef8be087a87b61fca49aa0ef22d1dd273ed1993a5880079173d70`. For former producer
 `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, signed source
 `8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527` supplied
 `20260826-slice-repair-candidate1/2/3` plus `20260826-slice-repair-baseline1`, each one attempt and
-zero retries. Active budget SHA-256 `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`
+zero retries. Historical budget SHA-256 `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`
 retains the same measurement authority, all four sealed baseline faults and exact
 14-phone/13-desktop discrimination. Only the phone warm ceiling changed to `524288`; every other
-numeric ceiling is unchanged. Clean signed activation source
+numeric ceiling is unchanged. Historical clean signed activation source
 `91f4e04410b893c43ee5d261ebfc1fa3be127c29` then passed exact-budget run
 `20260826-slice-repair-certification` 78/78 with complete lifecycle and its named verifier in one
 attempt/zero retries. It ran `2026-08-26T23:42:19.150Z`–`23:43:03.997Z` (44,847 ms); report
 raw/gzip SHA-256 are `81c27ed5caa12e0c114a788041dfc5d109742bb9d86a256b548a8e9443d46108` /
 `6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. This was real producer
-drift, not an Edge-version trigger; exact Edge `.107` is provenance only.
-SceneMemory and the root Gate-A browser authority are outside this change.
+drift, not an Edge-version trigger; exact Edge `.107` is provenance only. Those exact bytes are
+historical. Compendium and SceneMemory now own separate Edge-family + CDP `1.3` capability/profile
+authorities with unchanged numeric budgets, and both changed final frozen producers require new
+bound certificates. Root Gate-A remains separate.
 
 ### Star Atlas (bookmarks)
 The `logMap` Map. `addToLog`, `renderLog`. Every survey card (galaxy/star/planet/moon/etc.)
@@ -2575,43 +2639,32 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-27):** browser-free verification is green at 124 test
-files / 1,383 passed / one intentional skip / zero failures, with root, app, worker and no-unused
-TypeScript, the 884-module Vite build, root validation/fingerprint, legacy jsdom smoke, and the
-applicable contract/reporter/Glass/recovery/Compendium selftests green. Compendium run
-`20260826-phase4-certification` remains historical 78/78 named-verifier proof for former producer
-`587d3bdf…`. Signed source `8ffd2e2…` supplied the active `f7c87f22…` ruler's fresh candidate1/2/3
-and paired baseline1, each one attempt/zero retries; budget `6284a394…` preserves all four faults
-and exact 14-phone/13-desktop discrimination, changing only the phone warm ceiling to `524288`.
-Clean signed activation `91f4e044…` passed current exact-budget run
-`20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
-attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Current-input Slice
-retains five one-attempt/zero-retry reds on Edge `151.0.4129.107`:
-`20260826214541492-83064-b252b137f7a3` failed after 92,772
-ms with two instrument defects plus one retained-Survey focus product regression, while changed
-clean signed source `9d4b2b0…` supplied `20260827000034983-98202-869d966f2f88`, which failed after
-92,566 ms with only the newly exposed impossible card-context oracle. Settings and focus are
-outcome-cleared. Clean signed `8a23e22…` then supplied `20260827025804458-2742-c0c871ee52b6`,
-which failed after 93,582 ms with three cascading findings because the open Survey card correctly
-hid `#railrgt` before Slice tried zero-rect `railshipyard`. That outcome clears the card-context
-repair. Clean signed `bd6b06b…` then supplied `20260827032748771-8092-d2a0130882c1`, whose six
-scopes reduce to stale Mars-source/rendered-receipt expectations and a post-reload retained-card
-lifecycle error. Product Search/remnant routing/rail hiding were correct. Deep Scanners, fixed
-Fabrication and the repaired lifecycle are outcome-cleared. Clean/stable signed source
-`9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied
-`20260827041238239-16243-cbf9ca66283b`, which failed after 141,336 ms with one independent harness
-finding: the committed Tame greeting timed out after ten seconds with only `last null` retained, so
-the carrier proves neither a terminal observation nor a browser product/instrument disposition.
-Straight-line progress outcome-clears native Skim, four-action Engineering reload, Mineral/Survey
-rail, storage refusal, stale/publication convergence, and the Arc 5 v1-to-compact-v2 fixed point.
-Static diagnosis identified crossed global/ownership revision evidence and a transient-active
-predicate. The local, unrerun repair separates global `revision` from `ownershipRevision`, adds the
-named seven-clause `collectArc4TameGreetingStart()` collector, release-`true` fail-fast and
-active-or-naturally-completed one-start proof, and adds generic Arc 4 ownership-revision plus
-reload-result-null controls. Post-start audio
-lifecycle and the exact nine-stage/14-burn ledger remain unproved. No current-input Slice PASS,
-Glass result or 20-minute recovery certificate exists. Hosted execution, HUMAN review, whole-Gate
-closure and release remain open.
+**Current local candidate snapshot (2026-08-27):** the complete browserless checkpoint is green at
+134 Vitest files / 1,446 passed / one intentional skip / zero failures, plus root, app, worker and
+no-unused TypeScript, `artunused`, syntax/import selftests and the 886-module Vite build.
+Implementation/code and release-note audits are CLEAR. The final whole-diff audit is complete; its
+two evidence-integrity findings are repaired and their focused controls pass. The signed clean
+freeze remains. Tracked Compendium and SceneMemory producer bindings match the
+rebuilt candidate, while earlier certificates stay historical until the exact signed producers are
+measured. Each ruler uses its own Edge-family + CDP `1.3` capability/profile contract; exact browser
+point version is per-run provenance.
+
+Current-input Slice retains six one-attempt/zero-retry reds. Clean signed source
+`1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
+`20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`. It failed after
+397,101 ms with 23 findings across 16 scopes, required false, null `ok`/ledger, no Arc 4 success
+marker/line and no following Glass or recovery run. All five independent roots are locally repaired:
+Guide/Glass bind 55 bullets and the 54-bullet removal mutant; stable comparison excludes both
+legitimate ecology diagnostic clocks while separately bounding/mutating ecology movement;
+contextless blocked audio accepts either boolean mute state but no runtime resources; epoch proof
+separates the private candidate from the real persist/committed stored and reloaded value; and
+Survey rebinds Training locks/focus after DOM replacement through `refreshTrainingScope()`.
+Exact Edge version is Slice provenance only; Slice and Glass judge fresh behavior/geometry, so a
+browser update alone never rebaselines or moves ceilings. Compendium and SceneMemory own separate
+sealed Edge-family + CDP `1.3` capability/profile authorities with unchanged numeric budgets; both
+changed final frozen producers require new bound certificates. Post-start audio, the exact nine-stage/14-burn
+ledger, current Glass and 20-minute recovery remain unproved. No hosted, HUMAN, whole-Gate,
+release, version, preview/publication or deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost
 with the previous working environment. They are superseded by `tools/validate.js`

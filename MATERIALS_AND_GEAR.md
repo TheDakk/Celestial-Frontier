@@ -14,15 +14,21 @@ band restored via the balance sim, two dead relics retuned as sidegrades, sim jo
 **Build phase:** the legacy Forge economy and additive ship image are bundled in v1.8.9;
 the current v2 exact-instance Inventory and Arc 3 Engineering actions are recorded below.
 Authored variable crafting, new loot-occurrence tables, upgrades/sockets and later economy depth remain open.
-**Current v2 overlay matches code as of:** 2026-08-24.
+**Current v2 overlay matches code as of:** 2026-08-27.
 **Related:** `RARITY_UNIVERSAL.md`, `FORGE_AND_DISCOVERY.md`, `ECONOMY_LOOT_CRAFTING.md`.
 
-> **2026-08-24 Arc 3 Engineering boundary — current local implementation:** the former read-only
+> **2026-08-27 current Deep-Scanner correction:** the exact eligible scanned, registered lifeless
+> non-Earth world now exposes one passive **Mineral veins** Survey row after owned `scan1`. It lists
+> ordinary deposits in canonical order plus the optional biome-only vein, grants nothing and
+> withholds cosmic/exceptional veins, grade, reserves, progress and Mine controls. The Arc 3
+> paragraph below remains the historical implementation boundary before that consumer landed.
+
+> **2026-08-24 Arc 3 Engineering boundary — historical local implementation:** the former read-only
 > Shipyard is now the **Engineering & Shipyard** panel. It preserves the four-stage static ship
 > projection and adds truthful current-world mining, current-star skimming, six research rows and
 > all 62 fixed recipes grouped by output family. Only Deep Scanners is purchasable among the six
-> research rows. Its pure orbital-reveal policy exists, but the current Survey surface does not
-> render orbital mineral rows. Only recipe outputs with a connected live effect, exact costs/
+> research rows. Its pure orbital-reveal policy existed, but that checkpoint's Survey surface did
+> not render orbital mineral rows. Only recipe outputs with a connected live effect, exact costs/
 > preconditions and capacity/revision headroom are actionable; fully exceptional slotted outputs
 > and disconnected-effect rows remain unavailable. Mine, Skim, the eligible Deep-Scanner purchase
 > and eligible fixed Fabrication are durable F3/F4 actions; the same transaction updates Cargo/

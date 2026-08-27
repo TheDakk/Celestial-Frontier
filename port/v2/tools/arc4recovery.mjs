@@ -8,7 +8,8 @@
    policy, product clock, RNG or durable authority is advanced by the tool.
 
    Usage:
-     node tools/arc4recovery.mjs
+     node tools/arc4recovery.mjs --slice-run=<id> --glass-run=<id>
+     node tools/arc4recovery.mjs --verify-run=<id> --slice-run=<id> --glass-run=<id>
      node tools/arc4recovery.mjs --selftest
 */
 import crypto from 'node:crypto';
@@ -20,6 +21,15 @@ import { fileURLToPath } from 'node:url';
 import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { verifySliceRunEvidence } from './smokereport.mjs';
+import {
+  GLASS_ARC4_CAPTURE_CHECK_KEYS,
+  GLASS_ARC4_CAPTURE_OUTCOME_CODES,
+  GLASS_MATRIX_VIEWPORTS,
+  GLASS_NEGATIVE_CONTROLS,
+  glassTerminalEvidenceErrors,
+  glassViewportInventory,
+} from './glassmatrix-evidence-contract.mjs';
 import {
   ARC4_ACTIVE_PLAY_CYCLE_MS,
   ARC4_CAPTURE_UI_EXPRESSION,
@@ -61,13 +71,14 @@ const repoRoot = path.resolve(v2Root, '..', '..');
 const appDir = path.join(v2Root, 'apps', 'game');
 const distDir = path.join(appDir, 'dist');
 const outputRoot = path.join(appDir, 'smoke');
-const reportPath = path.join(outputRoot, 'arc4-recovery-report.json');
+const currentReportPath = path.join(outputRoot, 'arc4-recovery-report.json');
 const baselineSavePath = path.join(
   v2Root, '..', 'baseline-v1.8.9', 'save-fixtures.json',
 );
 const collectorPath = fileURLToPath(import.meta.url);
 const ordinarySlicePath = path.join(here, 'slicesmoke.mjs');
 const contractPath = path.join(here, 'arc4-recovery-contract.mjs');
+const glassEvidenceContractPath = path.join(here, 'glassmatrix-evidence-contract.mjs');
 const browserCdpPath = path.join(here, 'browsercdp.mjs');
 const browserPathPath = path.join(here, 'browserpath.mjs');
 const workspaceLockPath = path.join(here, 'workspacelock.mjs');
@@ -83,6 +94,10 @@ const REGULAR_SAMPLE_MS = 5_000;
 const BOUNDARY_SAMPLE_MS = 250;
 const BOUNDARY_NEAR_MS = 20_000;
 const ACTIVE_OBSERVATION_MS = ARC4_RECOVERY_ACTIVE_OBSERVATION_MS;
+const codeUnitCompare = (left, right) => left < right ? -1 : left > right ? 1 : 0;
+const glassSelftestChecks = (code) => Object.fromEntries(
+  (GLASS_ARC4_CAPTURE_CHECK_KEYS[code] || []).map((key) => [key, true]),
+);
 
 const POLICY = Object.freeze({
   attemptCount: 1,
@@ -191,6 +206,89 @@ function atomicWriteJson(file, value) {
   fs.writeFileSync(temporary, `${JSON.stringify(value, null, 2)}\n`, { flag: 'wx' });
   fs.renameSync(temporary, file);
 }
+function atomicCreateJson(file, value) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const temporary = `${file}.${process.pid}.${crypto.randomBytes(5).toString('hex')}.tmp`;
+  try {
+    fs.writeFileSync(temporary, `${JSON.stringify(value, null, 2)}\n`, { flag: 'wx' });
+    fs.linkSync(temporary, file);
+  } finally {
+    try { fs.unlinkSync(temporary); } catch { /* link/create failure cleanup */ }
+  }
+}
+function evidenceRunId(value, kind) {
+  assert(/^[a-z0-9][a-z0-9-]{0,95}$/i.test(value || ''),
+    `${kind} run ID is invalid`);
+  return value;
+}
+function recoveryArtifactPaths(id, directory = outputRoot) {
+  evidenceRunId(id, 'Arc 4 recovery');
+  return {
+    report: path.join(directory, `arc4-recovery-${id}.json`),
+    reportRelative: `apps/game/smoke/arc4-recovery-${id}.json`,
+  };
+}
+function slicePredecessorDescriptor(verification) {
+  return Object.freeze({
+    schema: verification.report.schema,
+    runId: verification.report.run.id,
+    reportPath: verification.artifacts.reportRelative,
+    reportSha256: verification.reportSha256,
+    rawLogPath: verification.report.rawLog.path,
+    rawLogSha256: verification.report.rawLog.sha256,
+    source: Object.freeze({ ...verification.report.source }),
+  });
+}
+
+function verifyGlassPredecessor(runIdValue, { currentSource, slice, directory = outputRoot }) {
+  const glassRunId = evidenceRunId(runIdValue, 'Glass');
+  const reportRelative = `apps/game/smoke/glassmatrix-${glassRunId}.json`;
+  const reportFile = path.join(directory, `glassmatrix-${glassRunId}.json`);
+  if (!fs.existsSync(reportFile)) return Object.freeze({
+    ok: false, errors: [`immutable Glass report is missing: ${reportRelative}`],
+    report: null, reportSha256: null, descriptor: null,
+  });
+  const bytes = fs.readFileSync(reportFile);
+  let report;
+  try { report = JSON.parse(bytes.toString('utf8')); }
+  catch (error) {
+    return Object.freeze({ ok: false, errors: [`immutable Glass report is invalid JSON: ${error.message}`],
+      report: null, reportSha256: sha256(bytes), descriptor: null });
+  }
+  const errors = glassTerminalEvidenceErrors(report, {
+    runId: glassRunId,
+    reportPath: reportRelative,
+    expectedSource: currentSource,
+    expectedSlice: slice,
+    requirePass: true,
+  });
+  const descriptor = Object.freeze({
+    schema: report?.schema ?? null,
+    runId: glassRunId,
+    reportPath: reportRelative,
+    reportSha256: sha256(bytes),
+    source: report?.source ? Object.freeze({ ...report.source }) : null,
+    slicePredecessor: report?.predecessors?.slice
+      ? Object.freeze({ ...report.predecessors.slice,
+        source: Object.freeze({ ...report.predecessors.slice.source }) }) : null,
+  });
+  return Object.freeze({ ok: errors.length === 0, errors, report,
+    reportSha256: descriptor.reportSha256, descriptor });
+}
+
+function resolvePredecessors({ sliceRunId, glassRunId }, currentSource) {
+  evidenceRunId(sliceRunId, 'Slice');
+  const sliceVerification = verifySliceRunEvidence(sliceRunId, {
+    expectedSource: currentSource, requirePass: true, requireCommitted: true,
+  });
+  assert(sliceVerification.ok,
+    `selected Slice predecessor failed verification: ${sliceVerification.errors.join('; ')}`);
+  const slice = slicePredecessorDescriptor(sliceVerification);
+  const glassVerification = verifyGlassPredecessor(glassRunId, { currentSource, slice });
+  assert(glassVerification.ok,
+    `selected Glass predecessor failed verification: ${glassVerification.errors.join('; ')}`);
+  return Object.freeze({ slice, glass: glassVerification.descriptor });
+}
 
 function git(args, { raw = false } = {}) {
   try {
@@ -258,10 +356,11 @@ function distIdentity() {
   });
 }
 
-function inputIdentity(buildSha256 = null) {
+function inputIdentity(buildSha256 = null, predecessors = null) {
   return Object.freeze({
     collector: hashFile(collectorPath),
     recoveryContract: hashFile(contractPath),
+    glassEvidenceContract: hashFile(glassEvidenceContractPath),
     arc4Contract: hashFile(path.join(here, 'arc4-browser-contract.mjs')),
     ordinarySlice: hashFile(ordinarySlicePath),
     browserCdp: hashFile(browserCdpPath),
@@ -271,6 +370,7 @@ function inputIdentity(buildSha256 = null) {
     package: hashFile(packagePath), packageLock: hashFile(packageLockPath),
     appPackage: hashFile(appPackagePath), gameMain: hashFile(gameMainPath),
     buildDist: buildSha256,
+    predecessorChain: predecessors ? sha256(stableJson(predecessors)) : null,
   });
 }
 
@@ -616,10 +716,14 @@ function unavailableSource(reason) {
     statusSha256: digest, workingTreeSha256: digest,
   });
 }
-function runningReport(id, startedAt) {
+function runningReport(id, startedAt, predecessorSelection) {
   const source = unavailableSource('source not captured');
+  const artifacts = recoveryArtifactPaths(id);
   return {
     schema: ARC4_RECOVERY_REPORT_SCHEMA, status: 'running', runId: id,
+    terminal: false,
+    artifact: { path: artifacts.reportRelative,
+      provenance: 'The unique run artifact is authority; the fixed-name report is a mutable current pointer only.' },
     lifecycle: { schema: ARC4_RECOVERY_LIFECYCLE_SCHEMA, status: 'pending' },
     startedAt: startedAt.toISOString(), endedAt: null, durationMs: null,
     policy: POLICY, source: { begin: source, end: source }, inputs: {},
@@ -628,16 +732,19 @@ function runningReport(id, startedAt) {
     recoveryBundle: null, observationInput: null,
     domainAssessment: null, observationVerdict: null,
     ordinarySliceSeal: null, instrumentSeal: null,
+    predecessorSelection: { ...predecessorSelection }, predecessors: null,
     fatalEvents: [], findings: [],
     cleanup: { browser: false, server: false, browserContext: false, workspaceLock: false },
   };
 }
 
-async function runCertificate() {
+async function runCertificate(options) {
   const id = runId();
   const startedAt = new Date();
-  let report = runningReport(id, startedAt);
-  atomicWriteJson(reportPath, report);
+  const artifacts = recoveryArtifactPaths(id);
+  let report = runningReport(id, startedAt, options);
+  atomicWriteJson(currentReportPath, report);
+  atomicCreateJson(artifacts.report, report);
   let releaseLock = null;
   let server = null;
   let browser = null;
@@ -649,6 +756,7 @@ async function runCertificate() {
   let build = null;
   let ordinarySliceSeal = null;
   let instrumentSeal = null;
+  let predecessors = null;
   let recoveryBundle = null;
   let observationInput = null;
   let domainAssessment = null;
@@ -666,9 +774,11 @@ async function runCertificate() {
       build, browser: report.browser, stages: report.stages,
       recoveryBundle, observationInput, domainAssessment, observationVerdict,
       ordinarySliceSeal, instrumentSeal, fatalEvents: [...fatalEvents], findings: [...findings],
+      predecessors,
       cleanup: { ...cleanup },
     };
-    atomicWriteJson(reportPath, report);
+    atomicWriteJson(artifacts.report, report);
+    atomicWriteJson(currentReportPath, report);
   };
   const markStage = (idValue, status, evidence = null) => {
     const index = ARC4_RECOVERY_STAGE_ORDER.indexOf(idValue);
@@ -684,6 +794,9 @@ async function runCertificate() {
   try {
     releaseLock = acquireWorkspaceLock('v2 Arc 4 real-time recovery certificate');
     sourceBegin = sourceIdentity(); sourceEnd = sourceBegin;
+    assert(sourceBegin.state === 'committed',
+      'Arc 4 recovery certification requires committed clean source');
+    predecessors = resolvePredecessors(options, sourceBegin);
     ordinarySliceSeal = assessOrdinarySliceRecoverySeal(
       fs.readFileSync(ordinarySlicePath, 'utf8'),
     );
@@ -692,17 +805,16 @@ async function runCertificate() {
     );
     report = {
       ...report, source: { begin: sourceBegin, end: sourceBegin },
-      inputs: inputIdentity(), ordinarySliceSeal, instrumentSeal,
+      inputs: inputIdentity(null, predecessors), ordinarySliceSeal, instrumentSeal,
+      predecessors,
     };
     persistRunning();
-    assert(sourceBegin.state === 'committed',
-      'Arc 4 recovery certification requires committed clean source');
     assert(ordinarySliceSeal.ok, 'ordinary Slice recovery non-claim seal is red');
     assert(instrumentSeal.ok, 'Arc 4 recovery no-forged-time instrument seal is red');
     const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
     execFileSync(npm, ['run', 'build'], { cwd: appDir, stdio: 'inherit' });
     build = distIdentity();
-    report = { ...report, build, inputs: inputIdentity(build.sha256) };
+    report = { ...report, build, inputs: inputIdentity(build.sha256, predecessors) };
     persistRunning();
     server = await serveDist();
     report = { ...report, origin: server.origin };
@@ -895,7 +1007,7 @@ async function runCertificate() {
             targetId: entry.targetId, type: entry.type ?? null,
             url: entry.url ?? null, attached: entry.attached ?? null,
             browserContextId: entry.browserContextId ?? null,
-          })).sort((left, right) => left.targetId.localeCompare(right.targetId)),
+          })).sort((left, right) => codeUnitCompare(left.targetId, right.targetId)),
         } : null;
     }, 'closed target destruction', 5_000);
     passStage('offline-closed', {
@@ -1231,6 +1343,7 @@ async function runCertificate() {
   const endedAt = new Date();
   let terminal = {
     ...report, status: provisionalStatus,
+    terminal: true,
     lifecycle: {
       schema: ARC4_RECOVERY_LIFECYCLE_SCHEMA,
       status: cleanupFailures.length ? 'failed' : 'complete',
@@ -1240,6 +1353,7 @@ async function runCertificate() {
     source: { begin: sourceBegin, end: sourceEnd }, build,
     recoveryBundle, observationInput, domainAssessment, observationVerdict,
     ordinarySliceSeal, instrumentSeal,
+    predecessors,
     fatalEvents: [...fatalEvents], findings: [...findings], cleanup: { ...cleanup },
   };
   if (provisionalStatus === 'pass') {
@@ -1259,14 +1373,18 @@ async function runCertificate() {
       const replayedInstrumentSeal = assessArc4RecoveryInstrumentSeal(
         fs.readFileSync(collectorPath, 'utf8'), PAGE_EVIDENCE_SOURCES,
       );
+      const currentSource = sourceIdentity();
+      const currentPredecessors = resolvePredecessors(options, currentSource);
       const currentBuild = distIdentity();
-      const currentInputs = inputIdentity(currentBuild.sha256);
+      const currentInputs = inputIdentity(currentBuild.sha256, currentPredecessors);
       const verificationErrors = terminalArc4RecoveryReportErrors(terminal, {
-        expectedRunId: id, currentSource: sourceIdentity(),
+        expectedRunId: id, currentSource,
         replayedDomainAssessment, replayedObservationVerdict,
         replayedAuthorityBinding, currentBuild, currentInputs,
         ordinarySliceSeal: replayedOrdinarySeal,
         instrumentSeal: replayedInstrumentSeal,
+        expectedPredecessors: currentPredecessors,
+        expectedArtifactPath: artifacts.reportRelative,
       });
       if (verificationErrors.length) {
         provisionalStatus = 'instrument-fail'; provisionalExitCode = 2;
@@ -1286,16 +1404,18 @@ async function runCertificate() {
       };
     }
   }
-  atomicWriteJson(reportPath, terminal);
+  atomicWriteJson(artifacts.report, terminal);
+  atomicWriteJson(currentReportPath, terminal);
   if (terminal.status === 'pass') {
     console.log(`ARC 4 RECOVERY: PASS — ${id}`);
     console.log(`  real active observation: ${terminal.observationVerdict.metrics.browserElapsedMs}ms`);
-    console.log(`  report: ${reportPath}`);
+    console.log(`  immutable report: ${artifacts.reportRelative}`);
+    console.log('  current report pointer: apps/game/smoke/arc4-recovery-report.json');
   } else {
     console.error(`ARC 4 RECOVERY: ${terminal.status.toUpperCase()} — ${id}`);
     console.error(`  first failure: ${JSON.stringify(terminal.firstFailure)}`);
     for (const finding of terminal.findings) console.error(`  ${finding}`);
-    console.error(`  report: ${reportPath}`);
+    console.error(`  immutable report: ${artifacts.reportRelative}`);
   }
   return provisionalExitCode;
 }
@@ -1733,6 +1853,22 @@ export function runSelftest() {
   const currentInputs = {
     collector: 'f'.repeat(64), buildDist: currentBuild.sha256,
   };
+  const slicePredecessor = {
+    schema: 'cf-v2-slice-smoke-ci/v1', runId: 'slice-selftest',
+    reportPath: 'apps/game/smoke/slice-smoke-slice-selftest.json',
+    reportSha256: '1'.repeat(64),
+    rawLogPath: 'apps/game/smoke/slice-smoke-slice-selftest.log',
+    rawLogSha256: '2'.repeat(64), source: { ...source },
+  };
+  const predecessors = {
+    slice: slicePredecessor,
+    glass: {
+      schema: 'cf-v2-glassmatrix/v1', runId: 'glass-selftest',
+      reportPath: 'apps/game/smoke/glassmatrix-glass-selftest.json',
+      reportSha256: '3'.repeat(64), source: { ...source },
+      slicePredecessor: structuredClone(slicePredecessor),
+    },
+  };
   const domainAssessment = { ok: true, checks: { synthetic: true }, reasons: [] };
   const replayedAuthorityBinding = projectArc4RecoveryObservationAuthority(
     recoveryBundle,
@@ -1742,21 +1878,27 @@ export function runSelftest() {
   }));
   const terminal = {
     schema: ARC4_RECOVERY_REPORT_SCHEMA, status: 'pass', runId: 'selftest-run',
+    terminal: true,
+    artifact: { path: 'apps/game/smoke/arc4-recovery-selftest-run.json' },
+    startedAt: '2026-08-27T00:00:00.000Z', endedAt: '2026-08-27T00:00:01.000Z', durationMs: 1000,
     lifecycle: { schema: ARC4_RECOVERY_LIFECYCLE_SCHEMA, status: 'complete' },
     policy: POLICY, cleanup: {
       browser: true, server: true, browserContext: true, workspaceLock: true,
     },
     source: { begin: source, end: source }, build: currentBuild,
     inputs: currentInputs, browser: input.browser,
+    predecessorSelection: { sliceRunId: 'slice-selftest', glassRunId: 'glass-selftest' },
     recoveryBundle, observationInput: input, domainAssessment,
     observationVerdict: baseline, ordinarySliceSeal: ordinarySeal,
-    instrumentSeal, stages, firstFailure: null, fatalEvents: [], findings: [],
+    instrumentSeal, predecessors, stages, firstFailure: null, fatalEvents: [], findings: [],
   };
   const terminalReplay = {
     expectedRunId: 'selftest-run', currentSource: source,
     replayedDomainAssessment: domainAssessment,
     replayedObservationVerdict: baseline, replayedAuthorityBinding,
     currentBuild, currentInputs, ordinarySliceSeal: ordinarySeal, instrumentSeal,
+    expectedPredecessors: predecessors,
+    expectedArtifactPath: 'apps/game/smoke/arc4-recovery-selftest-run.json',
   };
   const reportErrors = terminalArc4RecoveryReportErrors(
     terminal, terminalReplay,
@@ -1818,11 +1960,165 @@ export function runSelftest() {
   assert(terminalArc4RecoveryReportErrors(
     staleInputs, terminalReplay,
   ).includes('input byte authority'), 'stale input mutation stayed green');
+  const missingPredecessors = structuredClone(terminal);
+  missingPredecessors.predecessors = null;
+  assert(terminalArc4RecoveryReportErrors(
+    missingPredecessors, terminalReplay,
+  ).includes('exact Slice/Glass predecessor chain'),
+  'missing Slice/Glass predecessors stayed green');
+  const wrongPredecessor = structuredClone(terminal);
+  wrongPredecessor.predecessors.slice.reportSha256 = '4'.repeat(64);
+  assert(terminalArc4RecoveryReportErrors(
+    wrongPredecessor, terminalReplay,
+  ).includes('exact Slice/Glass predecessor chain'),
+  'wrong Slice predecessor hash stayed green');
+  const mismatchedNestedPredecessor = structuredClone(terminal);
+  mismatchedNestedPredecessor.predecessors.glass.slicePredecessor.reportSha256 = '5'.repeat(64);
+  const nestedErrors = terminalArc4RecoveryReportErrors(
+    mismatchedNestedPredecessor, terminalReplay,
+  );
+  assert(nestedErrors.includes('exact Slice/Glass predecessor chain')
+    && nestedErrors.includes('Glass-to-Slice nested predecessor binding'),
+  'mismatched Glass→Slice nested binding stayed green');
+  const wrongSelection = structuredClone(terminal);
+  wrongSelection.predecessorSelection.glassRunId = 'targeted-or-foreign-glass';
+  assert(terminalArc4RecoveryReportErrors(
+    wrongSelection, terminalReplay,
+  ).includes('requested-to-resolved predecessor binding'),
+  'wrong requested Glass predecessor stayed green');
 
   const temporaryRoot = fs.mkdtempSync(path.join(
     fs.realpathSync(process.env.TMPDIR || '/tmp'), `cf-arc4-recovery-selftest-${process.pid}-`,
   ));
   try {
+    const immutableRecovery = path.join(temporaryRoot, 'arc4-recovery-immutable-selftest.json');
+    atomicCreateJson(immutableRecovery, { status: 'running', runId: 'immutable-selftest' });
+    const immutableBefore = fs.readFileSync(immutableRecovery);
+    let immutableRefused = false;
+    try { atomicCreateJson(immutableRecovery, { status: 'pass', runId: 'immutable-selftest' }); }
+    catch { immutableRefused = true; }
+    assert(immutableRefused && fs.readFileSync(immutableRecovery).equals(immutableBefore),
+      'reused recovery run ID overwrote its immutable artifact');
+
+    const glassRunId = 'glass-chain-selftest';
+    const glassFile = path.join(temporaryRoot, `glassmatrix-${glassRunId}.json`);
+    const glassOutcomes = GLASS_MATRIX_VIEWPORTS.flatMap(({ label }) => (
+      GLASS_ARC4_CAPTURE_OUTCOME_CODES.map((code) => ({
+        viewport: label, surface: 'survey-capture', code, ok: true,
+        checks: glassSelftestChecks(code), reasons: [], diagnostics: null,
+      }))
+    ));
+    const glassBaseline = {
+      schema: 'cf-v2-glassmatrix/v1', status: 'pass', terminal: true,
+      scope: 'full-certifying', certifying: true,
+      startedAt: '2026-08-27T00:00:00.000Z', endedAt: '2026-08-27T00:00:01.000Z', durationMs: 1000,
+      run: { id: glassRunId, artifactPath: `apps/game/smoke/glassmatrix-${glassRunId}.json` },
+      exit: { code: 0 }, source, sourceEnd: { ...source },
+      sourceChange: { detected: false, ending: null },
+      predecessors: { slice: slicePredecessor },
+      browser: {
+        executable: '/selftest/chrome', product: 'Edg/999.0.0.1',
+        revision: '@selftest-chromium-revision',
+        user_agent: 'Mozilla/5.0 HeadlessChrome/999.0.0.0 Edg/999.0.0.0',
+        js_version: '99.0.0.1', protocol_version: '1.3',
+        consistentAcrossViewports: true,
+      },
+      viewportInventory: glassViewportInventory(),
+      viewportTimings: GLASS_MATRIX_VIEWPORTS.map(({ label }) => ({ label, durationMs: 1 })),
+      summary: { viewportCount: GLASS_MATRIX_VIEWPORTS.length,
+        findingCount: 0, instrumentFailureCount: 0, counts: {} },
+      findings: [], instrumentFailures: [],
+      arc4CaptureOutcomeInventory: {
+        plannedOutcomeCodes: [...GLASS_ARC4_CAPTURE_OUTCOME_CODES], complete: true,
+        expectedCount: glassOutcomes.length, observedCount: glassOutcomes.length,
+        omitted: [], outcomes: glassOutcomes,
+      },
+      controlSummary: {
+        selftestRan: true,
+        negativeControls: [...GLASS_NEGATIVE_CONTROLS].sort(codeUnitCompare),
+        plannedNegativeControls: [...GLASS_NEGATIVE_CONTROLS],
+        automaticRetries: 0, omittedNegativeControls: [], blockedNegativeControls: [],
+      },
+    };
+    const assessGlass = (value) => {
+      atomicWriteJson(glassFile, value);
+      return verifyGlassPredecessor(glassRunId, {
+        currentSource: source, slice: slicePredecessor, directory: temporaryRoot,
+      });
+    };
+    assert(assessGlass(glassBaseline).ok, 'exact full Glass predecessor baseline is red');
+    const glassControls = [
+      ['stale-pass', { ...glassBaseline, run: { ...glassBaseline.run, id: 'stale-pass' } }, 'run ID mismatch'],
+      ['targeted', { ...glassBaseline, scope: 'targeted-diagnostic', certifying: false }, 'targeted/non-full'],
+      ['dirty-source', { ...glassBaseline, source: { ...source, state: 'dirty-diagnostic' },
+        sourceEnd: { ...source, state: 'dirty-diagnostic' } }, 'not clean committed'],
+      ['missing-slice', { ...glassBaseline, predecessors: null }, 'Slice predecessor'],
+      ['mismatched-slice', { ...glassBaseline,
+        predecessors: { slice: { ...slicePredecessor, reportSha256: '9'.repeat(64) } } }, 'Slice predecessor'],
+      ['fake-viewport', { ...glassBaseline,
+        viewportInventory: glassBaseline.viewportInventory.map((row, index) => index === 0
+          ? { ...row, label: 'fake-phone' } : row) }, 'exact ordered 12-row matrix'],
+      ['malformed-timing', { ...glassBaseline,
+        viewportTimings: glassBaseline.viewportTimings.map((row, index) => index === 0
+          ? { ...row, durationMs: 0 } : row) }, 'timing inventory is malformed'],
+      ['empty-outcomes', { ...glassBaseline,
+        arc4CaptureOutcomeInventory: { ...glassBaseline.arc4CaptureOutcomeInventory, outcomes: [] } },
+      'outcome inventory is empty'],
+      ['vacuous-outcome', { ...glassBaseline,
+        arc4CaptureOutcomeInventory: { ...glassBaseline.arc4CaptureOutcomeInventory,
+          outcomes: glassBaseline.arc4CaptureOutcomeInventory.outcomes.map((row, index) => index === 0
+            ? { ...row, checks: {} } : row) } }, 'outcome inventory is empty'],
+      ['wrong-outcome-check-key', { ...glassBaseline,
+        arc4CaptureOutcomeInventory: { ...glassBaseline.arc4CaptureOutcomeInventory,
+          outcomes: glassBaseline.arc4CaptureOutcomeInventory.outcomes.map((row, index) => {
+            if (index !== 0) return row;
+            const checks = { ...row.checks, captureObserved: true };
+            delete checks.captured;
+            return { ...row, checks };
+          }) } },
+      'outcome inventory is empty'],
+      ['missing-outcome-check-key', { ...glassBaseline,
+        arc4CaptureOutcomeInventory: { ...glassBaseline.arc4CaptureOutcomeInventory,
+          outcomes: glassBaseline.arc4CaptureOutcomeInventory.outcomes.map((row, index) => {
+            if (index !== 0) return row;
+            const checks = { ...row.checks };
+            delete checks.captured;
+            return { ...row, checks };
+          }) } }, 'outcome inventory is empty'],
+      ['extra-outcome-check-key', { ...glassBaseline,
+        arc4CaptureOutcomeInventory: { ...glassBaseline.arc4CaptureOutcomeInventory,
+          outcomes: glassBaseline.arc4CaptureOutcomeInventory.outcomes.map((row, index) => index === 0
+            ? { ...row, checks: { ...row.checks, independentReplay: true } } : row) } },
+      'outcome inventory is empty'],
+      ['wrong-browser-family', { ...glassBaseline,
+        browser: { ...glassBaseline.browser, product: 'Firefox/999.0.0.1' } },
+      'version-tolerant Chrome/Edge'],
+      ['wrong-browser-protocol', { ...glassBaseline,
+        browser: { ...glassBaseline.browser, protocol_version: '1.2' } },
+      'version-tolerant Chrome/Edge'],
+      ['missing-browser-provenance', { ...glassBaseline,
+        browser: Object.fromEntries(Object.entries(glassBaseline.browser)
+          .filter(([key]) => key !== 'revision')) },
+      'version-tolerant Chrome/Edge'],
+      ['omitted-control', { ...glassBaseline,
+        controlSummary: { ...glassBaseline.controlSummary,
+          negativeControls: glassBaseline.controlSummary.negativeControls.slice(1) } },
+      'planned-vs-executed negative-control ledger'],
+      ['summary-contradiction', { ...glassBaseline,
+        findings: [{ viewport: 'small-phone', surface: 'selftest', code: 'INJECTED' }] },
+      'summary/findings/instrument-failures'],
+    ];
+    for (const [name, mutant, diagnosis] of glassControls) {
+      const outcome = assessGlass(mutant);
+      assert(!outcome.ok && outcome.errors.some((error) => error.includes(diagnosis)),
+        `${name} Glass predecessor mutation stayed green: ${outcome.errors.join(', ')}`);
+    }
+    const missingGlass = verifyGlassPredecessor('glass-missing-selftest', {
+      currentSource: source, slice: slicePredecessor, directory: temporaryRoot,
+    });
+    assert(!missingGlass.ok && missingGlass.errors.some((error) => error.includes('missing')),
+      'missing Glass predecessor stayed green');
+
     const file = path.join(temporaryRoot, 'report.json');
     atomicWriteJson(file, { ...terminal, runId: 'stale-pass' });
     atomicWriteJson(file, {
@@ -1842,12 +2138,71 @@ export function runSelftest() {
   console.log('ARC 4 RECOVERY SELFTEST: PASS — fixed real 20-minute duration, target service, focus/visibility, boundary, stale PASS, zero retry, and no-forged-time controls are mutation-sensitive');
 }
 
+function verifyRecoveryRun(options) {
+  const id = evidenceRunId(options.verifyRunId, 'Arc 4 recovery');
+  const artifacts = recoveryArtifactPaths(id);
+  assert(fs.existsSync(artifacts.report),
+    `immutable Arc 4 recovery report is missing: ${artifacts.reportRelative}`);
+  const bytes = fs.readFileSync(artifacts.report);
+  let report;
+  try { report = JSON.parse(bytes.toString('utf8')); }
+  catch (error) { fail(`immutable Arc 4 recovery report is invalid JSON: ${error.message}`); }
+  const currentSource = sourceIdentity();
+  assert(currentSource.state === 'committed',
+    'Arc 4 recovery verification requires committed clean source');
+  const predecessors = resolvePredecessors(options, currentSource);
+  const replayedDomainAssessment = assessArc4ExhaustionRecovery(
+    report.recoveryBundle,
+  );
+  const replayedObservationVerdict = evaluateArc4RecoveryObservation(
+    report.observationInput,
+  );
+  const replayedAuthorityBinding = projectArc4RecoveryObservationAuthority(
+    report.recoveryBundle,
+  );
+  const ordinarySliceSeal = assessOrdinarySliceRecoverySeal(
+    fs.readFileSync(ordinarySlicePath, 'utf8'),
+  );
+  const instrumentSeal = assessArc4RecoveryInstrumentSeal(
+    fs.readFileSync(collectorPath, 'utf8'), PAGE_EVIDENCE_SOURCES,
+  );
+  const currentBuild = distIdentity();
+  const currentInputs = inputIdentity(currentBuild.sha256, predecessors);
+  const errors = terminalArc4RecoveryReportErrors(report, {
+    expectedRunId: id, currentSource,
+    replayedDomainAssessment, replayedObservationVerdict,
+    replayedAuthorityBinding, currentBuild, currentInputs,
+    ordinarySliceSeal, instrumentSeal,
+    expectedPredecessors: predecessors,
+    expectedArtifactPath: artifacts.reportRelative,
+  });
+  if (errors.length) fail(`Arc 4 recovery verification failed: ${errors.join('; ')}`);
+  console.log(`ARC 4 RECOVERY VERIFY: PASS — ${id}`);
+  console.log(`  report sha256: ${sha256(bytes)}`);
+  console.log(`  Slice predecessor: ${predecessors.slice.runId} ${predecessors.slice.reportSha256}`);
+  console.log(`  Glass predecessor: ${predecessors.glass.runId} ${predecessors.glass.reportSha256}`);
+}
+
 function parseArgs(argv) {
-  if (argv.length === 0) return Object.freeze({ selftest: false });
   if (argv.length === 1 && argv[0] === '--selftest') {
     return Object.freeze({ selftest: true });
   }
-  fail('usage: node tools/arc4recovery.mjs [--selftest]');
+  const sliceArgs = argv.filter((arg) => arg.startsWith('--slice-run='));
+  const glassArgs = argv.filter((arg) => arg.startsWith('--glass-run='));
+  const verifyArgs = argv.filter((arg) => arg.startsWith('--verify-run='));
+  const recognized = argv.every((arg) => arg.startsWith('--slice-run=')
+    || arg.startsWith('--glass-run=') || arg.startsWith('--verify-run='));
+  if (recognized && sliceArgs.length === 1 && glassArgs.length === 1
+    && verifyArgs.length <= 1 && argv.length === 2 + verifyArgs.length) {
+    return Object.freeze({
+      selftest: false,
+      sliceRunId: evidenceRunId(sliceArgs[0].slice('--slice-run='.length), 'Slice'),
+      glassRunId: evidenceRunId(glassArgs[0].slice('--glass-run='.length), 'Glass'),
+      verifyRunId: verifyArgs.length
+        ? evidenceRunId(verifyArgs[0].slice('--verify-run='.length), 'Arc 4 recovery') : null,
+    });
+  }
+  fail('usage: node tools/arc4recovery.mjs [--selftest | --slice-run=<Slice-run-id> --glass-run=<Glass-run-id> [--verify-run=<Recovery-run-id>]]');
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === collectorPath) {
@@ -1858,8 +2213,11 @@ if (process.argv[1] && path.resolve(process.argv[1]) === collectorPath) {
     if (options.selftest) {
       try { runSelftest(); }
       catch (error) { console.error(`ARC 4 RECOVERY SELFTEST: FAIL — ${error.message}`); process.exitCode = 1; }
+    } else if (options.verifyRunId) {
+      try { verifyRecoveryRun(options); }
+      catch (error) { console.error(`ARC 4 RECOVERY VERIFY: FAIL — ${error.message}`); process.exitCode = 2; }
     } else {
-      const exitCode = await runCertificate();
+      const exitCode = await runCertificate(options);
       process.exitCode = exitCode;
     }
   }

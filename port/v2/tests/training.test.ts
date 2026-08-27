@@ -10,6 +10,7 @@ interface TestWindow extends Window {
   close: () => void;
   HTMLElement: typeof HTMLElement;
   MouseEvent: typeof MouseEvent;
+  KeyboardEvent: typeof KeyboardEvent;
 }
 interface TestDom { window: TestWindow }
 
@@ -198,6 +199,128 @@ describe('Field Training completion transaction UI', () => {
     resolve({ kind: 'completed' });
     await turn();
     expect(training.trainingActive()).toBe(false);
+  });
+
+  it('rebinds lesson locks and focus when Survey replaces its action nodes', async () => {
+    const complete = vi.fn<(intent: TrainingEndIntent) => Promise<TrainingEndResult>>(
+      async () => ({ kind: 'completed' }),
+    );
+    const { training } = await boot(complete);
+    const survey = document.querySelector<HTMLElement>('#survey')!;
+    const replaceSurvey = () => {
+      survey.innerHTML = `
+        <h2 data-sel="title">Earth</h2>
+        <button data-act="add">Chart</button>
+        <button data-act="landcta">Land</button>`;
+    };
+
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    training.gameEvent('survey', { planetSeed: 133 });
+    await turn();
+    expect(training.trainingStepId()).toBe('survey-tour');
+    const gotIt = document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!;
+    const skip = document.querySelector<HTMLButtonElement>('[data-sel="tutskip"]')!;
+    skip.focus();
+    replaceSurvey();
+    const tourLand = survey.querySelector<HTMLButtonElement>('[data-act="landcta"]')!;
+    expect(tourLand.closest('[inert]')).toBeNull();
+    expect(training.refreshTrainingScope()).toBe(true);
+    expect(tourLand.closest('[inert]')).toBe(tourLand);
+    expect(tourLand.style.pointerEvents).toBe('none');
+    expect(survey.querySelector('[data-sel="title"]')?.closest('[inert]')).toBeNull();
+    await turn();
+    expect(document.activeElement).toBe(skip);
+
+    gotIt.click();
+    await turn();
+    expect(training.trainingStepId()).toBe('atlas-add');
+    replaceSurvey();
+    const atlasAdd = survey.querySelector<HTMLButtonElement>('[data-act="add"]')!;
+    const atlasLand = survey.querySelector<HTMLButtonElement>('[data-act="landcta"]')!;
+    expect(atlasLand.closest('[inert]')).toBeNull();
+    expect(training.refreshTrainingScope()).toBe(true);
+    await turn();
+    expect(atlasAdd.closest('[inert]')).toBeNull();
+    expect(atlasLand.closest('[inert]')).toBe(atlasLand);
+    expect(document.activeElement).toBe(atlasAdd);
+
+    training.gameEvent('atlas-add', { id: 'p133' });
+    training.gameEvent('atlas-open', { open: true });
+    await turn();
+    expect(training.trainingStepId()).toBe('land');
+    replaceSurvey();
+    const landingAdd = survey.querySelector<HTMLButtonElement>('[data-act="add"]')!;
+    const landingLand = survey.querySelector<HTMLButtonElement>('[data-act="landcta"]')!;
+    expect(landingLand.closest('[inert]')).toBeNull();
+    expect(training.refreshTrainingScope()).toBe(true);
+    await turn();
+    expect(landingLand.closest('[inert]')).toBeNull();
+    expect(landingAdd.closest('[inert]')).toBe(landingAdd);
+    expect(document.activeElement).toBe(landingLand);
+  });
+
+  it('keeps a wrong-world find-earth Survey closable without exposing its actions', async () => {
+    const complete = vi.fn<(intent: TrainingEndIntent) => Promise<TrainingEndResult>>(
+      async () => ({ kind: 'completed' }),
+    );
+    const { training } = await boot(complete);
+    const canvas = document.querySelector<HTMLCanvasElement>('canvas')!;
+    const survey = document.querySelector<HTMLElement>('#survey')!;
+    const hideWrongSurvey = vi.fn(() => {
+      survey.style.display = 'none';
+      survey.setAttribute('aria-hidden', 'true');
+      canvas.focus();
+    });
+    survey.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('[data-survey-close]')) hideWrongSurvey();
+    });
+    const showWrongSurvey = () => {
+      survey.innerHTML = `
+        <h2 data-sel="title">Mercury</h2>
+        <button data-survey-close>Close Survey</button>
+        <button data-act="add">Chart</button>
+        <button data-act="landcta">Land</button>
+        <button data-act="share">Share</button>`;
+      survey.style.display = 'block';
+      survey.setAttribute('aria-hidden', 'false');
+      expect(training.refreshTrainingScope()).toBe(true);
+    };
+
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    await turn();
+    expect(training.trainingStepId()).toBe('find-earth');
+    showWrongSurvey();
+    const close = survey.querySelector<HTMLButtonElement>('[data-survey-close]')!;
+    const actions = [...survey.querySelectorAll<HTMLButtonElement>('[data-act]')];
+    expect(close.closest('[inert]')).toBeNull();
+    expect(close.style.pointerEvents).not.toBe('none');
+    expect(actions).toHaveLength(3);
+    expect(actions.every((action) => action.closest('[inert]') === action)).toBe(true);
+    expect(actions.every((action) => action.style.pointerEvents === 'none')).toBe(true);
+
+    close.focus();
+    expect(document.activeElement).toBe(close);
+    close.dispatchEvent(new dom.window.MouseEvent('click', { bubbles: true }));
+    expect(hideWrongSurvey).toHaveBeenCalledTimes(1);
+    expect(survey.getAttribute('aria-hidden')).toBe('true');
+    expect(document.activeElement).toBe(canvas);
+    expect(training.trainingStepId()).toBe('find-earth');
+
+    showWrongSurvey();
+    const escape = new dom.window.KeyboardEvent('keydown', {
+      key: 'Escape', code: 'Escape', bubbles: true, cancelable: true,
+    });
+    const dispatched = document.dispatchEvent(escape);
+    await turn();
+    expect(dispatched).toBe(false);
+    expect(escape.defaultPrevented).toBe(true);
+    expect(hideWrongSurvey).toHaveBeenCalledTimes(2);
+    expect(survey.getAttribute('aria-hidden')).toBe('true');
+    expect(document.activeElement).toBe(canvas);
+    expect(training.trainingStepId()).toBe('find-earth');
+
+    training.gameEvent('survey', { planetSeed: 133 });
+    expect(training.trainingStepId()).toBe('survey-tour');
   });
 
   it('disables the card, removes a lesson canvas allowance, and ignores events while awaiting', async () => {

@@ -66,8 +66,11 @@ merges, and successful batteries now start **zero hosted runners by default**:
   successful dependency may emit the required `battery` check name; rejected/skipped events use
   `budget-not-authorized`. Static/root checks run before Edge/Chrome work, each dependency tree
   installs once, and the first red stops later work. The shorter 10-minute SceneMemory ruler now
-  owns the first exact-Edge install and runs before the 40-minute Compendium chain; both separately
-  sealed owners use exact-package `--reinstall`. The separate authorization job preserves the
+  owns the first version-tolerant isolated Edge extraction and runs before the 40-minute Compendium
+  chain. Compendium separately SHA-verifies its sealed `.101` package, validates package/version
+  metadata, and extracts it under `RUNNER_TEMP`; its preflight, certificate and named verifier each
+  pin that extracted executable directly, so neither ruler installs, downgrades or inherits the
+  runner's system Edge. The separate authorization job preserves the
   Compendium owner's no-`if` contract; SceneMemory's direct order and no-soft-fail behavior are
   independently controlled.
 - `branch-flow-guard.yml`, `sync-agent-branches.yml`, and `dev-preview-package.yml` are manual-only
@@ -193,8 +196,8 @@ or future hosted attempt was authorized.
 Local repair commit `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` preserves collector and contract
 bytes, activates budget SHA-256
 `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`, and replaces the sampled
-ceiling with a fixed strict `< 1,000 ms` product SLA. SceneMemory now runs first and its first-owner
-Edge install uses `--reinstall`. Fresh one-attempt local run
+ceiling with a fixed strict `< 1,000 ms` product SLA. At that historical checkpoint SceneMemory ran
+first and its first-owner Edge install used `--reinstall`. Fresh one-attempt local run
 `20260823-pr33-cross-host-sla-certification` passed 42/42 and its named verifier at `7d8dc380…`;
 report raw/gzip SHA-256 are
 `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /

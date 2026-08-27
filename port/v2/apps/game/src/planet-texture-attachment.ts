@@ -267,13 +267,26 @@ export class SurfacePlanetTextureAttachment<
     if (!this.isCurrent()) return;
 
     const successor = this.acquireLease(resource);
-    if (!this.isCurrent()) {
-      this.releaseUncommitted(successor);
-      return;
+    let stillCurrent: boolean;
+    let backing: Readonly<{ width: number; height: number }> | null = null;
+    let actualTierPx: PlanetTextureTierPx | 0 = 0;
+    try {
+      stillCurrent = this.isCurrent();
+      if (stillCurrent) {
+        backing = this.readBacking(successor.texture);
+        actualTierPx = planetTextureTierForBackingPx(backing.width, backing.height);
+      }
+    } catch (error) {
+      const cleanup: unknown[] = [];
+      try { this.releaseUncommitted(successor); }
+      catch (releaseError) { cleanup.push(releaseError); }
+      throw combinedError(
+        error,
+        cleanup,
+        'surface planet texture successor validation failed',
+      );
     }
-    const backing = this.readBacking(successor.texture);
-    const actualTierPx = planetTextureTierForBackingPx(backing.width, backing.height);
-    if (actualTierPx === 0 || actualTierPx < pending.tierPx) {
+    if (!stillCurrent || backing === null || actualTierPx === 0 || actualTierPx < pending.tierPx) {
       this.releaseUncommitted(successor);
       return;
     }

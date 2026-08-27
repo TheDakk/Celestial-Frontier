@@ -93,6 +93,7 @@ const CAPTURE_COPY_CONTRADICTIONS = Object.freeze([
   /(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)/i,
   /(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,96}\bnever\b)[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan)/i,
   /(?:Scavenge|Sample)(?![^.!?]*\bnever\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)/i,
+  /(?:first contact|civilization contact)[^.!?]{0,96}(?:is|are) (?:now )?(?:live|playable|available)/i,
 ]);
 
 const DORMANT_CRAFTING_COPY_CONTRADICTIONS = Object.freeze([
@@ -168,6 +169,8 @@ function engineeringGuideCopyIsTruthful(body: string): boolean {
     && /exposes an action only when its output has a connected gameplay effect/i.test(copy)
     && /exact materials, parts, Stardust, Signature, prerequisite, revision, and capacity checks pass/i.test(copy)
     && /built drive or Array changes the actual ship and reach/i.test(copy)
+    && /Equipped contact gear changes Tame, Scavenge, and Sample capture chance/i.test(copy)
+    && /first contact remains unavailable/i.test(copy)
     && /Outputs with dormant effects, fully exceptional slotted crafting, authored affixes\/drawbacks, item upgrades, sockets, and vendors remain unavailable/i.test(copy)
     && /Only one Engineering action can be pending/i.test(copy)
     && /no reward, HP change, Charter tick, ownership change, or cost is published before the receipt-bearing transaction commits/i.test(copy)
@@ -180,6 +183,9 @@ function inventoryGuideCopyIsTruthful(body: string): boolean {
     && /stable item instance/i.test(copy)
     && /compare every effect/i.test(copy)
     && /conditional effects are labelled/i.test(copy)
+    && /legacy contact effect is labelled capture chance/i.test(copy)
+    && /only equipped copies change Tame, Scavenge, and Sample odds/i.test(copy)
+    && /first contact remains unavailable/i.test(copy)
     && /Equip[^.!?]{0,24}Unequip[^.!?]{0,24}Salvage[^.!?]{0,40}pending-reward claim[^.!?]{0,96}revision-checked/i.test(copy)
     && /reload cannot reroll/i.test(copy)
     && /half of each direct material cost, rounded down/i.test(copy)
@@ -276,6 +282,9 @@ function captureGuideCopyIsTruthful(body: string): boolean {
     && /Scavenge chooses flora or fungi[^.!?]{0,96}Sample chooses microbes/i.test(copy)
     && /either hit adds one specimen lot, never a living companion/i.test(copy)
     && /selected species and its exact chance are shown with the result/i.test(copy)
+    && /Equipped gear labelled capture chance is already included in those shown odds/i.test(copy)
+    && /each capture-chance point contributes 1.5 percentage points before the 95% overall chance ceiling, with the gear contribution capped at \+25 percentage points/i.test(copy)
+    && /First contact remains unavailable/i.test(copy)
     && /three actions share one finite Biosphere Yield/i.test(copy)
     && /Every attempt spends 1 Yield on a hit or miss/i.test(copy)
     && /successful species leaves that action’s eligible pool[^.!?]{0,96}rest of the world’s current cycle/i.test(copy)
@@ -343,6 +352,9 @@ function captureReleaseCopyIsTruthful(body: string): boolean {
     && /Scavenge from eligible flora and fungi/i.test(body)
     && /Sample from eligible microbes/i.test(body)
     && /not only the at-most-eight-row Planetside preview/i.test(body)
+    && /Equipped capture-chance gear is included in the shown odds/i.test(body)
+    && /\+1.5 percentage points per point before the 95% overall chance ceiling, with its contribution capped at \+25 percentage points/i.test(body)
+    && /first contact remains unavailable/i.test(body)
     && /All three share one finite Biosphere Yield/i.test(body)
     && /every attempt spends 1 on a hit or miss/i.test(body)
     && /next 20-minute active-play cycle/i.test(body)
@@ -518,6 +530,18 @@ describe('v2 Guide capability filter', () => {
     expect(getGuideTopic('settings')?.body).toContain('Star charts');
     expect(getGuideTopic('settings')?.body).toContain('Creature voices');
     expect(getGuideTopic('settings')?.body).toContain('only the one synthesized greeting');
+    expect(getGuideTopic('settings')?.body).toContain(
+      'every ordinary save-mutating preference and Training control—including Creature voices and both sliders—remains inspection-only',
+    );
+    expect(getGuideTopic('settings')?.body).toContain(
+      'Bring expedition</b> remains available for recovery',
+    );
+    expect(getGuideTopic('settings')?.body).toContain(
+      'stops active-play eligibility and accrual immediately, then converges through a protected reload instead of silently reacquiring',
+    );
+    expect(getGuideTopic('determinism')?.body).toContain(
+      'two different worlds that happen to share a planet seed remain separate',
+    );
     expect(getGuideTopic('atlas')?.body).toContain('saved galaxies, stars, and worlds');
     expect(getGuideTopic('atlas')?.body).toContain('A world entry reopens its system survey');
     expect(getGuideTopic('atlas')?.body).toContain('source-verified destination');
@@ -525,6 +549,12 @@ describe('v2 Guide capability filter', () => {
     expect(getGuideTopic('atlas')?.body).toContain('visible but disabled');
     expect(getGuideTopic('atlas')?.body).toContain('out-of-reach entry leaves you in place');
     expect(getGuideTopic('landing')?.body).toContain('out-of-reach route leaves you in place');
+    expect(getGuideTopic('landing')?.body).toContain(
+      'complete verified hierarchy and planet ordinal rather than the planet seed alone',
+    );
+    expect(getGuideTopic('charters')?.body).toContain(
+      'complete verified galaxy, star, planet, and source ordinal, never a planet seed by itself',
+    );
     expect(getGuideTopic('search')?.body).toContain('out-of-reach address leaves the current view unchanged');
     expect(getGuideTopic('search')?.body).toContain('keeps the exact query in Search');
     expect(getGuideTopic('codes')?.body).toContain('explorer stays put');
@@ -650,6 +680,12 @@ describe('v2 Guide capability filter', () => {
     expect(inventoryGuideCopyIsTruthful(
       crafting!.body.replace('half of each direct material cost, rounded down', 'invented scrap and Stardust'),
     )).toBe(false);
+    expect(engineeringGuideCopyIsTruthful(
+      research!.body.replace('first contact remains unavailable', 'first contact is now available'),
+    )).toBe(false);
+    expect(inventoryGuideCopyIsTruthful(
+      crafting!.body.replace('only equipped copies change', 'held copies also change'),
+    )).toBe(false);
     const dormantCraftingClaims = [
       'Fully exceptional slotted crafting is now available.',
       'Fully-exceptional slotted craft is now available.',
@@ -748,6 +784,15 @@ describe('v2 Guide capability filter', () => {
     expect(captureGuideCopyIsTruthful(
       capture + ' Capture advances the Charter bioscan milestone.',
     )).toBe(false);
+    expect(captureGuideCopyIsTruthful(
+      capture.replace(
+        'each capture-chance point contributes <b>1.5 percentage points</b> before the <b>95% overall chance ceiling</b>, with the gear contribution capped at <b>+25 percentage points</b>',
+        'capture-chance gear changes the odds',
+      ),
+    )).toBe(false);
+    expect(captureGuideCopyIsTruthful(
+      capture + ' First contact is now available.',
+    )).toBe(false);
     expect(captureReleaseCopyIsTruthful(
       captureBullet!.replace(
         'Tame chooses uniformly from every eligible fauna in the full biosphere',
@@ -771,6 +816,15 @@ describe('v2 Guide capability filter', () => {
     )).toBe(false);
     expect(captureReleaseCopyIsTruthful(
       captureBullet! + ' Capture counts for the Charter bioscan milestone.',
+    )).toBe(false);
+    expect(captureReleaseCopyIsTruthful(
+      captureBullet!.replace(
+        '+1.5 percentage points per point before the 95% overall chance ceiling, with its contribution capped at +25 percentage points',
+        'an unspecified bonus',
+      ),
+    )).toBe(false);
+    expect(captureReleaseCopyIsTruthful(
+      captureBullet! + ' First contact is now available.',
     )).toBe(false);
     expect(rarityCaptureCopyIsTruthful(
       rarity.replace('result shows the exact amount', 'rare reward amount omitted'),
@@ -1161,11 +1215,16 @@ describe('legacy and v2 release channels', () => {
       /tab lease, save revision, exact item identity, and one immutable receipt/,
       /ONE DURABLE AUTHORITY AT A TIME/,
       /Versioned split-store saves, a per-document tab lease, revision fences, immutable receipts/,
+      /A lease-storage failure or rejected repository-revision read immediately stops eligibility and accrual and converges through protected reload instead of silently reacquiring/,
+      /Promotion and recovery now recheck the exact primary, backup, revision, and lease evidence immediately before writing/,
+      /every ordinary save-mutating preference and Training control—including Creature Voices—remains inspection-only; Bring expedition remains available for recovery/,
       /exactly one 44-pixel top-right Close action/,
       /Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/,
       /a genuine empty-sky press still dismisses it/,
       /bottom-right dock edge/,
+      /Resize bursts settle at most once per animation frame and density-only work never creates a save write/,
       /CF1 addresses preserve galaxy, star, planet, coordinates/,
+      /different worlds that happen to share a planet seed remain independent/,
       /Every accepted galaxy, star, or planet route is regenerated from the seeded universe and source-verified/,
       /Stale, forged, or incomplete rows remain visible but disabled/,
       /Six real lessons/,
@@ -1177,11 +1236,18 @@ describe('legacy and v2 release channels', () => {
       /An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen and leaves the stored expedition unchanged/,
       /reload after updating, or import a trusted complete expedition/,
       /Only a world’s first landing banks the live landfall objective/,
+      /a matching planet seed elsewhere cannot impersonate Sol/,
+      /Chapter 1 Mine credit likewise requires the exact home-galaxy, Sol-star, dead-world, coordinate, and source-ordinal hierarchy/,
+      /same dead-world seed elsewhere cannot advance it/,
       /no longer show a player-facing Spectral class row/,
       /primary chip and Charter board show only landfall, mining, and fixed-fabrication goals with real outcome writers/,
       /Saturated veteran Charter records no longer wedge/,
+      /If Survey is rebuilt while a lesson owns it, the new Land and Atlas actions inherit the same keyboard, focus, and pointer scope before they can answer/,
+      /A wrong-world detour keeps only its real Close available, and Escape dismisses it without abandoning Sol or the lesson/,
       /All 56 v1 releases and 398 legacy bullets/,
-      /successful develop push battery/,
+      /owner-authorized, labelled PR battery can build, browser-check, and archive/,
+      /it does not publish/,
+      /separate branch-site workflow remains manually parked/,
       /mechanics that are not yet playable are labelled instead of promised/,
       /up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side \(about two viewports total\), plus at most the focused pinned row/,
       /neutral placeholder to an exact 132px thumbnail keyed by the complete genome/,
@@ -1207,6 +1273,7 @@ describe('legacy and v2 release channels', () => {
       /Tame chooses uniformly from every eligible fauna in the full biosphere/,
       /Scavenge from eligible flora and fungi/,
       /Sample from eligible microbes[^.!?]{0,96}not only the at-most-eight-row Planetside preview/,
+      /Equipped capture-chance gear is included in the shown odds at \+1.5 percentage points per point before the 95% overall chance ceiling, with its contribution capped at \+25 percentage points; first contact remains unavailable/,
       /All three share one finite Biosphere Yield[^.!?]{0,96}every attempt spends 1 on a hit or miss/,
       /next 20-minute active-play cycle[^.!?]{0,96}never from closing the game or moving the wall clock/,
       /successful species leaves that action’s pool for the rest of the cycle[^.!?]{0,96}miss stays eligible/,
@@ -1299,6 +1366,63 @@ describe('legacy and v2 release channels', () => {
       )),
     }));
     expect(bulletinOutcome(missingEmptySky).required).toBe(false);
+    const lateSurveyTrainingScope = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'before they can answer',
+        'after they answer',
+      )),
+    }));
+    expect(bulletinOutcome(lateSurveyTrainingScope).required).toBe(false);
+    const trappedWrongWorld = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'without abandoning Sol or the lesson',
+        'after abandoning Sol and the lesson',
+      )),
+    }));
+    expect(bulletinOutcome(trappedWrongWorld).required).toBe(false);
+    const staleRecoveryRace = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'recheck the exact primary, backup, revision, and lease evidence immediately before writing',
+        'reuse the recovery snapshot before writing',
+      )),
+    }));
+    expect(bulletinOutcome(staleRecoveryRace).required).toBe(false);
+    const writableVoiceWhileProtected = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'every ordinary save-mutating preference and Training control—including Creature Voices—remains inspection-only; Bring expedition remains available for recovery',
+        'most Settings controls remain inspection-only',
+      )),
+    }));
+    expect(bulletinOutcome(writableVoiceWhileProtected).required).toBe(false);
+    const autoReacquireAfterStorageError = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'immediately stops eligibility and accrual and converges through protected reload instead of silently reacquiring',
+        'continues accrual and silently reacquires',
+      )),
+    }));
+    expect(bulletinOutcome(autoReacquireAfterStorageError).required).toBe(false);
+    const staleContactBoundary = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'Equipped capture-chance gear is included in the shown odds at +1.5 percentage points per point before the 95% overall chance ceiling, with its contribution capped at +25 percentage points; first contact remains unavailable',
+        'Capture gear has an unspecified effect',
+      )),
+    }));
+    expect(bulletinOutcome(staleContactBoundary).required).toBe(false);
+    const contradictoryContactBoundary = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.includes('BIOSPHERE CAPTURE HAS HONEST LIMITS')
+        ? `${bullet} First contact is now available.`
+        : bullet),
+    }));
+    expect(bulletinOutcome(contradictoryContactBoundary)).toMatchObject({
+      required: true, honest: false,
+    });
     const missingLandscapeWorkspace = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
       bullets: section.bullets.map((bullet) => bullet.replace(

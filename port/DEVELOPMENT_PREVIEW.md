@@ -1,15 +1,21 @@
 # Development Preview — Separate-Origin Human Playtesting
 
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
-as of 2026-08-24. This is not a release record.
+as of 2026-08-27. This is not a release record.
 
-**Current campaign boundary (2026-08-24):** the local Arc 2 Inventory/F3/F4 work has passing
-dirty-input Slice Smoke and 12-viewport Glass Matrix evidence, but it has not been packaged,
-published, pushed, hosted-tested, merged, versioned or released. The dependency graph also changes
-the sealed Compendium measurement input; that authority will be recalibrated once only after the
-final multi-Arc source set freezes. Until a clean exact final head passes the complete local battery
-and receives separate exact-SHA publication authority, no Arc 2 development-preview candidate
-exists. `--allow-dirty` remains local diagnosis only and can never become a promotion artifact.
+**Current campaign boundary (2026-08-27):** the playable implementation now extends through the
+local Arc 4.5 Survey → Gather → Build → Tame → ship improvement → farther reach → Return slice, but
+it is still a review candidate rather than a preview candidate. Six exact-input Slice attempts are
+preserved red; the latest current-input run is
+`20260827085237038-27561-1f8e3c1771b7` (23 findings / 16 scopes), and no current-input Slice PASS or
+success ledger exists. Its repaired roots and the subsequent campaign-wide review remain subject to
+the complete browserless battery and a new clean, source-bound browser campaign. Changes to the app
+producer also make the earlier exact-input Scene Memory and Compendium certificates historical for
+their recorded inputs, not proof for this candidate; both must certify the eventual frozen head.
+Nothing in this campaign has been packaged, published, pushed, hosted-tested, merged, versioned or
+released. Until one clean exact final head passes every required local gate and receives separate
+exact-SHA publication authority, no development-preview candidate exists. `--allow-dirty` remains
+local diagnosis only and can never become a promotion artifact.
 
 ## Separate-origin requirement; approved branch site
 
@@ -285,9 +291,11 @@ four faults and 14 phone / 13 desktop breaches. Activation `b3957e1…` makes bu
 `546d3a81…` / `ef06252a…` active under collector/selftest/measurement `0c7ec3ba…` / `0bbb3541…` /
 `23aacc2c…` and unchanged producer `d3223177…`; prior ceilings remain strict. The manual preview
 workflow still cannot certify the ruler, and publication remains separately authorized.
-This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
-Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
-timing, product bytes, or the one-attempt/zero-retry policy.
+This historical Compendium activation did not redefine root Gate A. Root preflight now owns a
+version-tolerant Chromium-family + CDP `1.3` + source-derived capability/provenance authority; exact
+point version is run evidence only and a compatible update triggers no rebaseline. The exact
+Compendium package remains isolated workflow provisioning, not global browser identity. No timing,
+product bytes, numeric budget, or one-attempt/zero-retry policy changed.
 
 ## Arc 1 scene-memory boundary (2026-08-23)
 

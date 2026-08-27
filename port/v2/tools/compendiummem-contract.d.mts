@@ -23,6 +23,12 @@ export const COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS: readonly string[];
 export const COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA:
   'cf-v2-compendium-producer-authority/v1';
 export const COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS: readonly string[];
+export const COMPENDIUM_FIXED_RULER_AUTHORITY_SCHEMA:
+  'cf-v2-compendium-fixed-ruler-authority/v1';
+export const COMPENDIUM_FIXED_RULER_CALIBRATION_STATUS: 'sealed-exact-input';
+export const COMPENDIUM_FIXED_RULER_CEILING_SCOPE: 'numeric-ceilings-only';
+export const COMPENDIUM_CURRENT_CERTIFICATION_REQUIREMENT:
+  'fresh-exact-producer-required';
 export const CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA:
   'cf-v2-compendium-candidate-calibration-evidence/v1';
 export const BASELINE_CALIBRATION_EVIDENCE_SCHEMA:
@@ -73,11 +79,21 @@ export type CompendiumProducerAuthority = Readonly<{
     relativePath: string; sha256: string;
   }>>>;
 }>;
+export type CompendiumFixedRulerAuthority = Readonly<{
+  schema: 'cf-v2-compendium-fixed-ruler-authority/v1';
+  calibrationStatus: 'sealed-exact-input';
+  ceilingScope: 'numeric-ceilings-only';
+  measurementAuthoritySha256: string;
+  producerAuthoritySha256: string;
+  currentCertification: 'fresh-exact-producer-required';
+}>;
 export function sha256(value: string | NodeJS.ArrayBufferView): string;
 export function compendiumMeasurementAuthority(inputs: unknown):
   CompendiumMeasurementAuthority | null;
 export function compendiumProducerAuthority(inputs: unknown):
   CompendiumProducerAuthority | null;
+export function validCompendiumFixedRulerAuthority(authority: unknown):
+  authority is CompendiumFixedRulerAuthority;
 export function compendiumCalibrationEvaluatorBudget(
   producerAuthority: CompendiumProducerAuthority,
 ): Readonly<Record<string, unknown>> | null;

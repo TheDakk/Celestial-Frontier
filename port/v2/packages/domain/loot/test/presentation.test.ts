@@ -139,4 +139,26 @@ describe('@cf/domain-loot — honest inspect, comparison, filters, and build tag
       .toEqual([migrated.instanceId]);
     expect(filterGearEntries(held, { query: 'flora healing' })).toEqual([]);
   });
+
+  it('presents base and inherited contact effects as capture chance, not first contact', () => {
+    const migrationSource = makeGearSourceActionId({
+      kind: 'legacy-migration', ownerId: 'v4-contact-save', actionKey: 'gear',
+      receiptId: 'migration:v4-v5',
+    });
+    const migrated = migrateLegacyGear({
+      sourceActionId: migrationSource,
+      itemCounts: [['earpiece', 1]],
+      equipped: { ears: 'earpiece' },
+      equippedAffixes: { ears: { k: 'contact', v: 7, forId: 'earpiece' } },
+    }).instances[0]!;
+    const effects = inspectGear(migrated).effects.filter(({ key }) => key === 'contact');
+    expect(effects).toEqual([
+      { key: 'contact', value: 10, source: 'base', percent: false, label: 'capture chance', condition: null },
+      { key: 'contact', value: 7, source: 'legacy', percent: false, label: 'capture chance', condition: null },
+    ]);
+    const held = committed(grantGear(createGearInventory(1), 0, migrated));
+    expect(filterGearEntries(held, { query: 'capture chance' }).map((entry) => entry.instance.instanceId))
+      .toEqual([migrated.instanceId]);
+    expect(filterGearEntries(held, { query: 'first contact' })).toEqual([]);
+  });
 });
