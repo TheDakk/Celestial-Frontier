@@ -34,8 +34,14 @@ const CALIBRATION_BUILD_FILES_SHA256 = '3d91bfb1fc1457bbac3309e84b998898591cb762
 const HISTORICAL_BUILD_SHA256 = '44eb670cc2160c39ff5c159f5f1aec1e68e5d6bae5d02e75bf0e2eec026ff81e';
 const HISTORICAL_BUILD_FILE_COUNT = 38;
 const HISTORICAL_BUILD_FILES_SHA256 = 'ffd2616047932577db169f05d891ea96054bd2dcc5cb65c1d02a2a3df7f1ca03';
-const PRE_ACTIVATION_BUDGET_SHA256 = '110211c3f53e623f3eff1d6df7b01606225baef6cde9a0682b5460abb04dffe5';
-const ACTIVATED_BUDGET_SHA256 = 'e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375';
+const HISTORICAL_PRE_ACTIVATION_BUDGET_SHA256 =
+  '110211c3f53e623f3eff1d6df7b01606225baef6cde9a0682b5460abb04dffe5';
+const HISTORICAL_ACTIVATED_BUDGET_SHA256 =
+  'e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375';
+const CURRENT_PRE_ACTIVATION_BUDGET_SHA256 =
+  '8ef891e19c1d9c74353cc8266b93ee58e86a52d523c8a86ed29eee413b4ed37d';
+const CURRENT_ACTIVATED_BUDGET_SHA256 =
+  '47d24080df86f1fd207a2d1674eabbf62260b2d2269698ef052691d6a2d8775b';
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const CANDIDATES = [
   {
@@ -214,7 +220,7 @@ const HISTORICAL_PRODUCER_AUTHORITY = Object.freeze({
   pixiBatchTextureArray: '95ea401f9f05a933f17c9a327b94109bfcc46b0a21cc59789a66537a5b62deb3',
   sceneText: '7ea78c599fed72ab1ba65991270b72d642f6ec2f9768f63ad64d280ce9147731',
 });
-const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
+const CALIBRATION_PRODUCER_AUTHORITY = Object.freeze({
   collector: 'dd41b2901185e225197a3e3991dbfca42766154889bffb756900ade3cd22a6a8',
   browserCdp: '6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce',
   browserPath: '733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0',
@@ -238,6 +244,11 @@ const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
   pixiManagedResourceOwner: '2d9eaeb667f5a4a763e25bd8e168b721494dda49c252e2411031a258d2653708',
   pixiBatchTextureArray: '95ea401f9f05a933f17c9a327b94109bfcc46b0a21cc59789a66537a5b62deb3',
   sceneText: '7ea78c599fed72ab1ba65991270b72d642f6ec2f9768f63ad64d280ce9147731',
+});
+const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
+  ...CALIBRATION_PRODUCER_AUTHORITY,
+  buildDist: '6575498b8708e41ee2175a5f3c3a53059a30b99271a13b5fa5876adc8839abe8',
+  gameMain: '02b85f7430506b5caeb7edf08c002743d7e9a54e45aa03be08ea35a22255db33',
 });
 
 const SELECTED_PROFILES = Object.freeze({
@@ -495,10 +506,15 @@ describe('Arc 1C scene-memory active budget', () => {
         after: 18874368,
       },
     ]);
-    expect(sha256(fs.readFileSync(budgetPath))).toBe(ACTIVATED_BUDGET_SHA256);
+    const currentBudgetSha256 = sha256(fs.readFileSync(budgetPath));
+    expect(currentBudgetSha256).toBe(CURRENT_ACTIVATED_BUDGET_SHA256);
+    expect(currentBudgetSha256).not.toBe(HISTORICAL_ACTIVATED_BUDGET_SHA256);
     const preActivationBudget = { ...budget, profiles: PRE_ACTIVATION_PROFILES };
-    expect(sha256(Buffer.from(`${JSON.stringify(preActivationBudget, null, 2)}\n`)))
-      .toBe(PRE_ACTIVATION_BUDGET_SHA256);
+    const currentPreActivationSha256 = sha256(Buffer.from(
+      `${JSON.stringify(preActivationBudget, null, 2)}\n`,
+    ));
+    expect(currentPreActivationSha256).toBe(CURRENT_PRE_ACTIVATION_BUDGET_SHA256);
+    expect(currentPreActivationSha256).not.toBe(HISTORICAL_PRE_ACTIVATION_BUDGET_SHA256);
   });
 
   it('negative controls: browser capability and profile authority drift cannot validate', () => {
@@ -567,16 +583,16 @@ describe('Arc 1C scene-memory active budget', () => {
       });
       expect(report.fixture).toEqual({
         count: 1500,
-        rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
+        rowsSha256: CALIBRATION_PRODUCER_AUTHORITY.fixtureRows,
       });
       expectExactBuildInventory(report, CALIBRATION_BUILD);
       expect(report.inputs.budget).toBeNull();
       expect(report.budget).toEqual({ schema: null, path: null, sha256: null });
       expect(Object.keys(report.inputs).sort()).toEqual(
-        [...Object.keys(EXPECTED_PRODUCER_AUTHORITY), 'budget'].sort(),
+        [...Object.keys(CALIBRATION_PRODUCER_AUTHORITY), 'budget'].sort(),
       );
-      expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
-        EXPECTED_PRODUCER_AUTHORITY,
+      expect(authorityProjection(report.inputs, CALIBRATION_PRODUCER_AUTHORITY)).toEqual(
+        CALIBRATION_PRODUCER_AUTHORITY,
       );
       expect(authorityProjection(report.browser, CALIBRATION_EDGE_107_PROVENANCE)).toEqual(
         CALIBRATION_EDGE_107_PROVENANCE,
@@ -730,7 +746,7 @@ describe('Arc 1C scene-memory active budget', () => {
     });
     expect(report.fixture).toEqual({
       count: 1500,
-      rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
+      rowsSha256: HISTORICAL_PRODUCER_AUTHORITY.fixtureRows,
     });
     expectExactBuildInventory(report, HISTORICAL_BUILD);
     expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
@@ -810,7 +826,7 @@ describe('Arc 1C scene-memory active budget', () => {
     });
     expect(report.fixture).toEqual({
       count: 1500,
-      rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
+      rowsSha256: HISTORICAL_PRODUCER_AUTHORITY.fixtureRows,
     });
     expectExactBuildInventory(report, HISTORICAL_BUILD);
     expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
@@ -995,7 +1011,7 @@ describe('Arc 1C scene-memory active budget', () => {
     });
     expect(report.fixture).toEqual({
       count: 1500,
-      rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
+      rowsSha256: HISTORICAL_PRODUCER_AUTHORITY.fixtureRows,
     });
     expectExactBuildInventory(report, HISTORICAL_BUILD);
     expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
@@ -1255,8 +1271,8 @@ describe('Arc 1C scene-memory active budget', () => {
     const report = reports[0]!;
     const staleProducer = { ...report.inputs, shipyardPreview: '0'.repeat(64) };
     const staleBrowser = { ...report.browser, revision: '@stale' };
-    expect(authorityProjection(staleProducer, EXPECTED_PRODUCER_AUTHORITY)).not.toEqual(
-      EXPECTED_PRODUCER_AUTHORITY,
+    expect(authorityProjection(staleProducer, CALIBRATION_PRODUCER_AUTHORITY)).not.toEqual(
+      CALIBRATION_PRODUCER_AUTHORITY,
     );
     expect(sceneMemoryBrowserAuthorityMatches(staleBrowser, EXPECTED_BROWSER_AUTHORITY)).toBe(true);
     expect(sceneMemoryBrowserAuthorityMatches({
@@ -1271,8 +1287,8 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(sceneMemoryBrowserAuthorityMatches({
       ...report.browser, protocolVersion: '1.2',
     }, EXPECTED_BROWSER_AUTHORITY)).toBe(false);
-    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
-      EXPECTED_PRODUCER_AUTHORITY,
+    expect(authorityProjection(report.inputs, CALIBRATION_PRODUCER_AUTHORITY)).toEqual(
+      CALIBRATION_PRODUCER_AUTHORITY,
     );
     expect(sceneMemoryBrowserAuthorityMatches(report.browser, EXPECTED_BROWSER_AUTHORITY)).toBe(true);
   });

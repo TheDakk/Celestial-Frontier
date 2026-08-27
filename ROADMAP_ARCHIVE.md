@@ -1,3 +1,103 @@
+## ARCHIVED 2026-08-27 — aged final/heap-calibration evidence from live handoff
+
+> Moved byte-verbatim from `ROADMAP.md` after final3 established a newer signed campaign boundary.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: EARLIER FINAL / HEAP CALIBRATION -->
+- Signed source `7362a0e…` first passed source-bound standalone SceneMemory
+  `20260827-phase4-activation-scenemem` at 42/42. Its first serial chronology retained Layout
+  `20260827-phase4-final-layout` at 787/787 in 76,155 ms; that carrier passed its named verifier but
+  cannot independently bind the source for the reason above. Source-bound SceneMemory
+  `20260827-phase4-final-scenemem` at 42/42 in 10,216 ms and Compendium
+  `20260827-phase4-final-compendium` at 78/78 in 44,852 ms. Every stage ran once with zero automatic
+  retries on Edge `.107` / CDP `1.3`, retained required cleanup and passed its named verifier.
+- Slice `20260827-phase4-final-slice` then ran once for 414,213 ms, ended terminal red with 12
+  findings across 11 scopes and was not retried. Glass and recovery correctly did not start. Exact
+  report/log carriers are preserved under
+  `audits/ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_181317782.*.gz`.
+- This seventh Slice red diagnosed stale harness assumptions after product hardening, not an Edge
+  or product regression. The truthful 55-bullet Guide was canonical/populated/honest, but Slice and
+  Glass still required `DEVELOPMENT PUBLISHING IS ISOLATED` instead of the live
+  `DEVELOPMENT PUBLISHING STAYS PARKED` contract. Settings correctly mapped imported raw tint
+  `0.55` back to the live slider floor `0.82`; Arc 4 correctly released runtime/audio before
+  pagehide; restored Training correctly emitted canonical full-address Earth identity; and rejected
+  Arc 2 bootstrap correctly left Inventory lazy, closed and empty. The repaired oracles now prove
+  each outcome independently, including blank/open Inventory shells, target/restore domains,
+  exact convergence detail/read counts/full audio disposal, canonical-vs-legacy Earth identity and
+  Guide publishing mutate/restore controls.
+
+- Signed clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied the sixth
+  current-input Slice run `20260827085237038-27561-1f8e3c1771b7` on Edge
+  `151.0.4129.107`. It ran once for 397,101 ms with zero automatic retries and retained 23
+  findings across 16 scopes. Required was false, `ok`/ledger were null, no success marker or
+  ledger line exists, and Glass/recovery correctly did not run.
+- Exact report/log carriers are preserved under `audits/ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_085237038.*.gz`;
+  their raw/gzip hashes and integrity inventory remain in `audits/README.md`.
+- Signed predecessor `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` then completed named full layout
+  `20260827-phase4-final-layout` at 787/787 across all 10 viewports and passed exact-run
+  verification. Named SceneMemory `20260827-phase4-final-scenemem` ran once with zero automatic
+  retries on Edge `151.0.4129.107`, retained complete cleanup, and honestly failed after 33,181 ms
+  during phone Shipyard settlement. Compendium, Slice, Glass and recovery were not run.
+- Its deterministic carrier is
+  `audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_132723548.json.gz`; raw/gzip SHA-256 are
+  `452d076d…b46` / `9204f183…dbb3`. The PASS-only named verifier exited `1` as expected. The
+  immutable veteran baseline contains orphan legacy Mine facts for leaf seed `201` with no
+  source-proved full address, so Arc 3 correctly protected rather than invented identity.
+  SceneMemory then collapsed 577 responsive partial observations to `last:null`. The red exposed a
+  product coupling defect: protection correctly removes Engineering details/actions but must retain
+  the independently owned read-only capability-derived ship preview. The bounded repair leaves the
+  immutable veteran carrier unchanged; SceneMemory's derived input changes only the carrier's
+  existing `view` field to `null` and preserves every other field. It separates the preview from
+  Arc 3 authority and reports field-level settlement reasons. Glass retains its separately named
+  source-checked both-cleared fixture because Glass intentionally exercises full loaded Engineering;
+  that fixture and loaded-authority predicate do not migrate into the older Arc 1C resource ruler.
+  The timeout was not a performance/deadline defect and is no reason to lengthen the allowance;
+  no deadline, numeric ruler or browser authority changes.
+- Browser evidence now has three deliberately separate version-tolerant authorities. Root
+  layout/boot accepts a compatible Chromium-family executable only with CDP `1.3` and the exact
+  17-method inventory derived from its source. Compendium and SceneMemory keep their own
+  Edge-family/CDP capability contracts, producer bindings and fixed rulers. Exact executable,
+  product, revision, JavaScript version, path and user agent remain per-run provenance. A browser
+  point update alone never triggers rebaselining, repinning or threshold movement.
+- Signed source `862a75b316142348636abea442dab15e87393642` completed named Layout
+  `20260827-phase4-successor-layout` at 787/787 across ten viewports with exact-run verification.
+  Named SceneMemory `20260827-phase4-successor-scenemem` then ran once with zero automatic retries
+  on the same Edge `.107` / CDP `1.3`, completed cleanup and failed only
+  `phone/heap-dom-budget` and `desktop/heap-dom-budget`: 40/42 outcomes passed. Phone maxima were
+  11,580,536 V8 heap / 17,758,550 aggregate heap bytes / 898 nodes / 90 listeners; desktop maxima
+  were 11,635,116 / 17,687,678 / 895 / 89. Warm range, slope, resource ownership, answerability and
+  cleanup were green. Compendium, Slice, Glass and recovery did not run.
+- The exact carrier is
+  `audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz`; raw/gzip SHA-256 are
+  `3197ca65…fd7` / `dc6c1493…cb47`. It is the paired broken baseline: even if both heap ceilings are
+  removed, its unchanged nodes/listeners still fail against 704/80. The repaired evaluator replays
+  the raw contract input and names each exact field, value and ceiling instead of one generic reason.
+- Diagnosis separated avoidable closed-shell ownership from fixed product growth. Production
+  Inventory now retains inventory/filter/page state while closed without retaining hidden rows or
+  six dormant subscriptions; every registered panel opener shares one delegated capture owner.
+  A deliberately dirty, non-certifying diagnostic reduced maxima to 676/673 nodes and 71/70
+  listeners, below unchanged 704/80, while heap remained at 11,542,076–11,619,464 V8 bytes and
+  17,584,902–17,681,146 aggregate bytes. The remaining constant heap belongs to the synchronously
+  loaded Arc 2–5/F4 graph, not a leak or Edge update. That made only the two heap ceilings eligible
+  for clean calibration; the dirty run did not itself justify a threshold change.
+- Signed clean source `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+  `a389646081f9fb5246825d1ac187eeb06504a8e4`) supplied exactly
+  `20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2`, and
+  `20260827-phase4-repair-candidate3`. Each ran once with zero automatic retries on Edge
+  `151.0.4129.107` / CDP `1.3`, retained complete browser/server/workspace-lock cleanup, and bound
+  the same clean source at beginning and end. Each retained `calibration` status, 42/42 verdict
+  outcomes and zero findings. Across the three, V8 maxima were 11,566,152 phone and
+  11,630,936 desktop bytes; aggregate maxima were 17,681,258 and 17,636,682. Nodes/listeners were
+  invariant at 676/71 phone and 673/70 desktop.
+- Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` changes only
+  `heapUsedBytesMax` to 12 MiB (`12,582,912`) and
+  `heapAggregateBytesMax` to 18 MiB (`18,874,368`). Exact headroom above the phone/desktop maxima is
+  1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes. Every DOM/listener,
+  slope/range, resource, timing and lifecycle ceiling remains unchanged. The preserved `862a75b…`
+  paired red still fails nodes/listeners with heap ceilings removed. These samples were triggered by
+  changed product ownership, never by the Edge point version; compatible updates remain provenance
+  only and never trigger calibration or threshold movement.
+<!-- END VERBATIM ROADMAP BLOCK: EARLIER FINAL / HEAP CALIBRATION -->
+
 ## ARCHIVED 2026-08-27 — superseded sixth-red/five-root session handoff
 
 > Moved byte-verbatim from `ROADMAP.md` after the current candidate added plan-wide collision,

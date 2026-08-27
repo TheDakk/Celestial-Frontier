@@ -26,6 +26,31 @@ const hashFile = (file) => sha256(fs.readFileSync(file));
 const portable = (value) => value.split(path.sep).join('/');
 const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 
+const isPlainObject = (value) => value !== null
+  && typeof value === 'object'
+  && !Array.isArray(value);
+
+/** Return every leaf whose tracked authority differs from independently observed bytes. */
+export function authorityMismatchPaths(expected, observed, prefix = '') {
+  if (!isPlainObject(expected) || !isPlainObject(observed)) {
+    return stableJson(expected) === stableJson(observed) ? [] : [prefix || '<root>'];
+  }
+  const keys = [...new Set([...Object.keys(expected), ...Object.keys(observed)])].sort();
+  return Object.freeze(keys.flatMap((key) => {
+    const child = prefix === '' ? key : `${prefix}.${key}`;
+    return authorityMismatchPaths(expected[key], observed[key], child);
+  }));
+}
+
+/** Keep the CLI fail-closed unless every independently derived live authority matches. */
+export function producerAuthorityExitCode(report) {
+  return report?.sceneMemory?.budgetMatches === true
+    && report?.compendium?.measurementBudgetMatches === true
+    && report?.compendium?.producerBudgetMatches === true
+    ? 0
+    : 2;
+}
+
 function distIdentity() {
   const files = [];
   const visit = (directory) => {
@@ -138,6 +163,15 @@ export function collectCurrentProducerAuthorities() {
     const compendiumBudget = readJson(path.join(
       v2Root, 'budgets', 'compendium-memory-v1.json',
     ));
+    const sceneMemoryBudgetMismatches = authorityMismatchPaths(
+      sceneBudget.authority?.producer, sceneMemory,
+    );
+    const compendiumMeasurementBudgetMismatches = authorityMismatchPaths(
+      compendiumBudget.measurementAuthority, compendium.measurement,
+    );
+    const compendiumProducerBudgetMismatches = authorityMismatchPaths(
+      compendiumBudget.producerAuthority, compendium.producer,
+    );
     return Object.freeze({
       schema: 'cf-v2-current-producer-authorities/v1',
       build: Object.freeze({
@@ -147,15 +181,16 @@ export function collectCurrentProducerAuthorities() {
       }),
       sceneMemory: Object.freeze({
         producer: sceneMemory,
-        budgetMatches: stableJson(sceneBudget.authority?.producer) === stableJson(sceneMemory),
+        budgetMatches: sceneMemoryBudgetMismatches.length === 0,
+        budgetMismatches: sceneMemoryBudgetMismatches,
       }),
       compendium: Object.freeze({
         measurement: compendium.measurement,
         producer: compendium.producer,
-        measurementBudgetMatches:
-          stableJson(compendiumBudget.measurementAuthority) === stableJson(compendium.measurement),
-        producerBudgetMatches:
-          stableJson(compendiumBudget.producerAuthority) === stableJson(compendium.producer),
+        measurementBudgetMatches: compendiumMeasurementBudgetMismatches.length === 0,
+        measurementBudgetMismatches: compendiumMeasurementBudgetMismatches,
+        producerBudgetMatches: compendiumProducerBudgetMismatches.length === 0,
+        producerBudgetMismatches: compendiumProducerBudgetMismatches,
         fixedRulerAuthority: compendiumBudget.calibration?.rulerAuthority ?? null,
         numericCeilingsSha256: sha256(stableJson(compendiumBudget.ceilings)),
       }),
@@ -166,5 +201,7 @@ export function collectCurrentProducerAuthorities() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  process.stdout.write(`${JSON.stringify(collectCurrentProducerAuthorities(), null, 2)}\n`);
+  const report = collectCurrentProducerAuthorities();
+  process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
+  process.exitCode = producerAuthorityExitCode(report);
 }

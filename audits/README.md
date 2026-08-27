@@ -10,6 +10,47 @@ summary of it.
 
 ## Contents
 
+### Signed `5ddddbf…` final3 campaign — Layout green, then SceneMemory instrument stop
+
+Signed source `5ddddbfb79ea984d44c86e2107e5e4013f84f1b3` (tree
+`fb62bce43ec3ef4230fec8939f54286292503a8d`, parent `b206cf0…`) began clean on
+`openai/mac` and stayed byte-stable. Layout run `20260827-phase4-final3-layout` passed its
+787/787 sealed outcomes across all ten viewports in 76,133 ms, then its named verifier passed.
+SceneMemory run `20260827-phase4-final3-scenemem` ran once, stopped `instrument-fail` after
+1,662 ms, retained zero product outcomes and complete browser/server/workspace-lock cleanup, and
+was not retried. Compendium, Slice, Glass and recovery correctly did not start.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_223504110.json.gz` preserves the Layout result.
+  The gzip is 4,655 bytes with SHA-256
+  `bff57442cfdb7f85b9f2fc48951e163ecbb46f4ab4c9e86df2e19e706a527a12`; decompressed JSON is
+  106,048 bytes with SHA-256
+  `49f9ce820481859f529ce7237fd6abaf7987285934a78673467f2cf11cbb0272`. Layout schema v2 still
+  lacks Git/source identity, so this is chronology-associated result provenance, not a reusable
+  exact-source predecessor.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_INSTRUMENT_FAILURE_20260827_223521179.json.gz` preserves the
+  SceneMemory JSON report; the instrument emitted no separate stdout log. The gzip is 4,832 bytes
+  with SHA-256 `ff83663c498ddf09d661b9523ffe2ede7f23d2258b6829df3edcb72e327ef417`;
+  decompressed JSON is 12,463 bytes with SHA-256
+  `a2d9da733a0fa6fffc5ddcb62f7d04c75e768f4a7c18d9b89fc30e677d3e7d38`.
+
+The failure happened before either phone or desktop measurement. Twenty-one of the 23 SceneMemory
+producer fields matched; only `buildDist` (`46e47365…` tracked versus `6575498b…` observed) and
+`gameMain` (`7ff00481…` versus `02b85f74…`) were stale. The same browser-free audit found the
+Compendium measurement authority still current while its live producer was stale (`4bdd3e36…`
+tracked versus `4b5aa3a3…` observed) because the built index/owner chunk changed. This is producer
+binding drift from the intentional final2 repair, not a product, numeric-ruler, deadline, cleanup,
+or Edge-version regression. Edge `151.0.4129.107` / CDP `1.3` remains run provenance only.
+
+The bounded repair changes only the two live producer records and adds a source-derived,
+browser-free current-authority test with stale-source, stale-build, duplicate-constant and
+recomputed-owner mutants. SceneMemory's repaired active budget is
+`47d24080df86f1fd207a2d1674eabbf62260b2d2269698ef052691d6a2d8775b`; historical activation
+budget `e6c4aeea…`, all calibration samples and every numeric ceiling remain historical and
+unchanged. Compendium's repaired active budget is `f0bedb67…3c64`, with live producer
+`4b5aa3a3…`; its fixed ruler and samples remain historical and unchanged. Both carriers pass gzip
+integrity. This stopped campaign grants no SceneMemory product verdict or later-stage authority.
+After the repair is signed clean, the chain must restart at Layout with entirely fresh IDs.
+
 ### Signed `b206cf0…` final2 campaign — three green predecessors, then one terminal Slice red
 
 Signed source `b206cf0986cf21747967e72700222ea9fa9d10f0` (tree
