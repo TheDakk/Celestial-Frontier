@@ -40,7 +40,10 @@ Search/CF1 travel and topbar/dock/context/hint/viewport lifecycle respectively, 
 as their renderer/persistence adapter. F4 owns the active-play ecology-epoch edge and committed-only
 projection refresh; persistence now fixed-points injected-clock notification stamps and
 `conq[].e`, and preserves more than 4,000 legacy XP-first keys through a paired v4 binding plus
-v5 overflow authority.
+v5 overflow authority. F4 authority loss latches one replacement before fallible repaint; if full
+Shipyard is already open, it immediately becomes one read-only preview with zero Engineering
+actions and exact app/DOM/diagnostic identity, while repaint failure is retained without cancelling
+reload.
 
 Current world history no longer treats a planet's leaf seed as global identity. A strict v5
 manifest plus four byte-balanced shards bind landings and custom names to the complete
@@ -104,11 +107,12 @@ and SceneMemory now own separate sealed Edge-family + CDP `1.3` capability/profi
 the version-tolerance change altered no numeric budget in either ruler. Their changed final frozen
 producers require new bound certificates. Root Gate-A remains a separate contract.
 
-The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,446 passed /
+The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,458 passed /
 one intentional skip / zero failures, plus root/app/worker/noUnused TypeScript, `artunused`,
-syntax/import selftests and the 886-module Vite build. The implementation/code and release-note
-audits are CLEAR. The final whole-diff audit is complete; its two evidence-integrity findings are
-repaired and their focused controls pass. The signed clean freeze remains.
+syntax/import selftests and the 887-module Vite build. Prior implementation/code and release-note
+audits are CLEAR for their reviewed input. Their findings plus the later convergence-latch and
+per-field F4 controls are repaired, and the independent final post-repair whole-diff review is
+CLEAR. The new signed clean freeze and exact-head browser campaign remain pending.
 Tracked Compendium and SceneMemory bindings match the rebuilt candidate, while their older
 certificates remain historical until those exact signed producers are measured.
 

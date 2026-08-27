@@ -254,6 +254,10 @@ import {
   createF4RuntimeAuthority,
   type F4RuntimeAuthority,
 } from './f4-runtime-authority.js';
+import {
+  f4AuthorityConvergenceWitnessErrors,
+  latchF4AuthorityConvergenceReload,
+} from './f4-convergence-latch.js';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
 installBatchTextureArrayUidCompaction(BatchTextureArray);
@@ -356,6 +360,7 @@ let lastSmokeArc4ActionFaultWitness: Readonly<{
   outcome: string | null;
 }> | null = null;
 let f4AuthorityReloadScheduled = false;
+let f4AuthorityProtectionRenderError: string | null = null;
 let smokeRejectNextF4HideCheckpoint = false;
 let smokeRejectNextF4HeartbeatStorage = false;
 let smokeRejectNextF4RevisionVerification = false;
@@ -385,10 +390,8 @@ function scheduleF4AuthorityConvergenceReload(runtime: F4RuntimeAuthority, detai
   runtime.setAnswerable(false);
   tameGreetingAudioOwner?.setAnswerable(false);
   stopF4Heartbeat();
-  if (f4AuthorityReloadScheduled) return;
-  f4AuthorityReloadScheduled = true;
-  setTimeout(() => {
-    void (async () => {
+  const scheduleReload = (): void => {
+    setTimeout(() => { void (async () => {
       await smokeF4ConvergenceReloadHold.holdIfArmed('f4-authority-convergence');
       const before = Object.freeze({
         hold: persistHold || null,
@@ -399,7 +402,9 @@ function scheduleF4AuthorityConvergenceReload(runtime: F4RuntimeAuthority, detai
         runtime: runtime.diagnostics(),
         audio: tameGreetingAudioOwner?.diagnostics() ?? null,
       });
-      const errors: string[] = [];
+      const errors = f4AuthorityConvergenceWitnessErrors(
+        f4AuthorityProtectionRenderError,
+      );
       const audioOwner = tameGreetingAudioOwner;
       try { await audioOwner?.dispose(); }
       catch (error) { errors.push(error instanceof Error ? error.message : String(error)); }
@@ -430,8 +435,23 @@ function scheduleF4AuthorityConvergenceReload(runtime: F4RuntimeAuthority, detai
         }
       } catch { /* optional diagnostics must never strand convergence */ }
       location.reload();
-    })();
-  }, 0);
+    })(); }, 0);
+  };
+  latchF4AuthorityConvergenceReload({
+    alreadyScheduled: f4AuthorityReloadScheduled,
+    latch: () => { f4AuthorityReloadScheduled = true; },
+    schedule: scheduleReload,
+    /* Authority protection is a presentation transition too. An already-open
+       Shipyard must discard its verified Engineering model immediately instead
+       of leaving stale action controls painted until the convergence reload. */
+    repaint: () => {
+      if (openPanelId() === 'shipyard') refreshEngineeringPanelState();
+    },
+    onRepaintError: (error) => {
+      f4AuthorityProtectionRenderError ??=
+        error instanceof Error ? error.message : String(error);
+    },
+  });
 }
 type F4HeartbeatStorageError = Extract<
   Awaited<ReturnType<F4RuntimeAuthority['heartbeat']>>,
@@ -2425,7 +2445,7 @@ function shipyardDiagnostics(): unknown {
   return Object.freeze({
     schema: 'cf-v2-shipyard-diagnostics/v1',
     status: panelOpen ? 'open' : 'closed',
-    stateKey: panelOpen ? currentShipVisualState().stateKey : null,
+    stateKey: panelOpen ? diagnostics.previewStateKey : null,
     activePreviewCount: diagnostics.activePreviewCount,
     retainedPreviewCount: diagnostics.retainedPreviewCount,
     pendingPreviewWork: diagnostics.pendingWork,
@@ -2790,8 +2810,20 @@ const ascStage = (): 0 | 1 | 2 | 3 => currentShipVisualState().chassisStage;
 function refreshEngineeringPanelState(): void {
   if (engineeringPanelReleased) return;
   const runtime = f4Runtime;
-  if (arc3EngineeringProtection !== null || !f4RuntimeMayMutate(runtime)) {
-    engineeringPanelController.setState(null);
+  const ship = currentShipVisualState();
+  const publishUnavailable = (reason: string): void => engineeringPanelController.setView(
+    Object.freeze({ ship, engineering: null, reason }),
+  );
+  if (arc3EngineeringProtection !== null) {
+    publishUnavailable(
+      'Engineering details and actions are unavailable while this expedition’s Engineering record is protected.',
+    );
+    return;
+  }
+  if (!f4RuntimeMayMutate(runtime)) {
+    publishUnavailable(
+      'Engineering details and actions are unavailable while expedition storage is read-only.',
+    );
     return;
   }
   try {
@@ -2809,7 +2841,9 @@ function refreshEngineeringPanelState(): void {
       || arc2.state.kind !== 'inventory'
       || loadout.kind !== 'loaded'
       || !arc2LootLegacyMirrorMatches(arc2.state, save)) {
-      engineeringPanelController.setState(null);
+      publishUnavailable(
+        'Engineering details and actions are unavailable because their saved authority could not be verified.',
+      );
       return;
     }
     const verified = verifyArc3CommittedAction({
@@ -2820,17 +2854,14 @@ function refreshEngineeringPanelState(): void {
       minedTimestampIntent: { kind: 'preserve' },
     });
     if (verified.kind !== 'verified') {
-      engineeringPanelController.setState(null);
+      publishUnavailable(
+        'Engineering details and actions are unavailable because their saved authority could not be verified.',
+      );
       return;
     }
-    const ship = shipVisualStateOf({
-      items: save.items,
-      ascCh: save.ascCh,
-      liverySeed: SHIP_LIVERY_SEED,
-    });
     arc3EngineeringState = verified.state;
     lastArc3ProjectionDiagnostics = verified.projection.diagnostics;
-    engineeringPanelController.setState(projectEngineeringPanelReadModel({
+    const panelModel = projectEngineeringPanelReadModel({
       ship,
       nav,
       engineering: verified.state,
@@ -2843,11 +2874,18 @@ function refreshEngineeringPanelState(): void {
         hp: save.hp,
       },
       activePlayMs: runtime.diagnostics().activePlayMs,
+    });
+    engineeringPanelController.setView(Object.freeze({
+      ship,
+      engineering: panelModel,
+      reason: null,
     }));
   } catch {
     /* A presentation projection never repairs or launders authority. The
        durable action seam will independently report the exact refusal. */
-    engineeringPanelController.setState(null);
+    publishUnavailable(
+      'Engineering details and actions are unavailable because their saved authority could not be verified.',
+    );
   }
 }
 

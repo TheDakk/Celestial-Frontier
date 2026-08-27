@@ -87,6 +87,10 @@ export const SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT =
   'cf-v2-scene-memory-cdp-capabilities/v1';
 export const SCENE_MEMORY_BROWSER_PROFILE_CONTRACT =
   'cf-v2-scene-memory-browser-profiles/v1';
+export const SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA =
+  'cf-v2-scene-memory-shipyard-open-observation/v1';
+const SCENE_MEMORY_PROTECTED_ARC3_REASON =
+  'Engineering details and actions are unavailable while this expedition’s Engineering record is protected.';
 const WARMUP_CYCLES = 4;
 const WARM_CYCLES = SCENE_MEMORY_CYCLE_COUNT;
 const OUTCOME_COUNT = 42;
@@ -194,6 +198,12 @@ const EXPECTED_BROWSER_AUTHORITY = Object.freeze({
   profileContract: SCENE_MEMORY_BROWSER_PROFILE_CONTRACT,
   profileContractSha256: SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256,
 });
+
+export function sceneMemoryVeteranRaw() {
+  const saveFixture = structuredClone(readJson(baselineSavePath).inputs.veteran_rich);
+  saveFixture.view = null;
+  return JSON.stringify(saveFixture);
+}
 
 export function terminalOutcomeInventoryErrors(outcomes, canonicalOutcomes = null) {
   const errors = [];
@@ -625,6 +635,7 @@ function makeCollector(send, profile) {
   };
   const waitValue = async (
     sessionId, label, expression, accept = Boolean, timeoutMs = ROUTE_TIMEOUT_MS,
+    diagnose = null,
   ) => {
     const deadline = performance.now() + timeoutMs;
     let last = null;
@@ -638,10 +649,60 @@ function makeCollector(send, profile) {
     }
     throw new ProductFailure(
       `${profile} ${label}: product did not settle inside ${timeoutMs}ms`,
-      { observations, last },
+      {
+        observations,
+        last,
+        ...(typeof diagnose === 'function' ? { reasons: diagnose(last) } : {}),
+      },
     );
   };
   return Object.freeze({ evaluate, waitValue });
+}
+
+export function sceneMemoryShipyardOpenSettlementReasons(value) {
+  const diagnostics = value?.diagnostics;
+  const panelDiagnostics = diagnostics?.engineering;
+  const arc3 = value?.arc3;
+  const presentation = value?.presentation;
+  const stateKeyReady = typeof value?.shipVisualStateKey === 'string'
+    && value.shipVisualStateKey.length > 0;
+  const checks = Object.freeze({
+    observationSchema: value?.schema === SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA,
+    panelOpen: value?.panelOpen === 'shipyard',
+    arc3StateKind: arc3?.stateKind === 'unavailable',
+    arc3Protection: arc3?.protection === 'legacy-refused:legacy-seed-missing',
+    arc3BootstrapPending: arc3?.bootstrapPending === false,
+    arc3BootstrapCandidateReady: arc3?.bootstrapCandidateReady === false,
+    presentationState: presentation?.state === 'unavailable',
+    presentationUnavailableReason:
+      presentation?.unavailableReason === SCENE_MEMORY_PROTECTED_ARC3_REASON,
+    presentationActionControlCount: presentation?.actionControlCount === 0,
+    presentationDiagnosticsActionControlCount:
+      presentation?.diagnosticsActionControlCount === 0,
+    shipVisualStateKey: stateKeyReady,
+    domPreviewCount: value?.domPreviewCount === 1,
+    stateKeyAgreement: !stateKeyReady
+      || (value?.domStateKey === value.shipVisualStateKey
+        && diagnostics?.stateKey === value.shipVisualStateKey),
+    diagnosticsSchema: diagnostics?.schema === 'cf-v2-shipyard-diagnostics/v1',
+    diagnosticsStatus: diagnostics?.status === 'open',
+    diagnosticsActivePreviewCount: diagnostics?.activePreviewCount === 1,
+    diagnosticsRetainedPreviewCount: diagnostics?.retainedPreviewCount === 0,
+    diagnosticsPendingPreviewWork: diagnostics?.pendingPreviewWork === 0,
+    panelDiagnosticsSchema:
+      panelDiagnostics?.schema === 'cf-v2-engineering-panel-diagnostics/v1',
+    panelDiagnosticsActiveCount: panelDiagnostics?.activeCount === 1,
+    panelDiagnosticsPendingWork: panelDiagnostics?.pendingWork === 0,
+    panelDiagnosticsActionControlCount: panelDiagnostics?.actionControlCount === 0,
+    panelDiagnosticsActivePreviewCount: panelDiagnostics?.activePreviewCount === 1,
+    panelDiagnosticsPreviewStateKey: !stateKeyReady
+      || panelDiagnostics?.previewStateKey === value.shipVisualStateKey,
+    panelDiagnosticsRetainedPreviewCount: panelDiagnostics?.retainedPreviewCount === 0,
+    panelDiagnosticsFaultCount: panelDiagnostics?.faultCount === 0,
+  });
+  return Object.freeze(
+    Object.entries(checks).filter(([, ok]) => !ok).map(([reason]) => reason),
+  );
 }
 
 function routeStateExpression() {
@@ -964,21 +1025,36 @@ async function driveCycle({ collector, sessionId, profile }) {
     sessionId,
     'Shipyard open settlement',
     `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),d=S.api.shipyardDiagnostics(),v=s.shipVisual,
+      e=s.engineering,de=d?.engineering,
       nodes=[...document.querySelectorAll('#shipyardpanel [data-cf-shipyard-preview="v1"]')],
+      unavailable=document.querySelector('#shipyardpanel [data-engineering-state]'),
+      actionControlCount=document.querySelectorAll('#shipyardpanel [data-engineering-action]').length,
       domStateKey=nodes[0]?.getAttribute('data-state-key')??null;
-      return s.panelOpen==='shipyard'&&d.schema==='cf-v2-shipyard-diagnostics/v1'
-        &&d.status==='open'&&typeof v?.stateKey==='string'&&v.stateKey.length>0
-        &&nodes.length===1&&domStateKey===v.stateKey&&d.stateKey===v.stateKey
-        &&d.activePreviewCount===1&&d.retainedPreviewCount===0
-        &&d.pendingPreviewWork===0?{stateKey:d.stateKey,canonicalStateKey:v.stateKey,
-          domStateKey,activePreviewCount:nodes.length,
-          retainedPreviewCount:d.retainedPreviewCount,
-          pendingPreviewWork:d.pendingPreviewWork}:null})()`,
-    Boolean,
+      return {schema:${JSON.stringify(SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA)},
+        panelOpen:s.panelOpen??null,
+        shipVisualStateKey:v?.stateKey??null,domPreviewCount:nodes.length,domStateKey,
+        arc3:{stateKind:e?.stateKind??null,protection:e?.protection??null,
+          bootstrapPending:e?.bootstrapPending??null,
+          bootstrapCandidateReady:e?.bootstrapCandidateReady??null},
+        presentation:{state:unavailable?.getAttribute('data-engineering-state')??null,
+          unavailableReason:unavailable?.getAttribute('data-engineering-unavailable')??null,
+          actionControlCount,diagnosticsActionControlCount:de?.actionControlCount??null},
+        diagnostics:d?{schema:d.schema??null,status:d.status??null,stateKey:d.stateKey??null,
+          activePreviewCount:d.activePreviewCount??null,
+          retainedPreviewCount:d.retainedPreviewCount??null,
+          pendingPreviewWork:d.pendingPreviewWork??null,
+          engineering:de?{schema:de.schema??null,activeCount:de.activeCount??null,
+            pendingWork:de.pendingWork??null,actionControlCount:de.actionControlCount??null,
+            activePreviewCount:de.activePreviewCount??null,
+            previewStateKey:de.previewStateKey??null,
+            retainedPreviewCount:de.retainedPreviewCount??null,
+            faultCount:de.faultCount??null}:null}:null};})()`,
+    (value) => sceneMemoryShipyardOpenSettlementReasons(value).length === 0,
     ART_TIMEOUT_MS,
+    sceneMemoryShipyardOpenSettlementReasons,
   );
   stages.push({ label: 'shipyard:open', state: shipyardOpen });
-  sceneObjectsByRoute.shipyard = shipyardOpen.activePreviewCount;
+  sceneObjectsByRoute.shipyard = shipyardOpen.domPreviewCount;
   visitedRoutes.push('shipyard');
 
   const closeDriven = await clickVisible(
@@ -1001,12 +1077,12 @@ async function driveCycle({ collector, sessionId, profile }) {
   stages.push({ label: 'shipyard:closed', state: shipyardClosed });
   inventory.shipyard = Object.freeze({
     status: 'implemented-static', openerDriven, closeDriven,
-    stateKey: shipyardOpen.stateKey,
-    stateMatch: shipyardOpen.stateKey === shipyardOpen.canonicalStateKey
-      && shipyardOpen.domStateKey === shipyardOpen.canonicalStateKey,
-    openPreviewCount: shipyardOpen.activePreviewCount,
-    openRetainedPreviewCount: shipyardOpen.retainedPreviewCount,
-    openPendingPreviewWork: shipyardOpen.pendingPreviewWork,
+    stateKey: shipyardOpen.diagnostics.stateKey,
+    stateMatch: shipyardOpen.diagnostics.stateKey === shipyardOpen.shipVisualStateKey
+      && shipyardOpen.domStateKey === shipyardOpen.shipVisualStateKey,
+    openPreviewCount: shipyardOpen.domPreviewCount,
+    openRetainedPreviewCount: shipyardOpen.diagnostics.retainedPreviewCount,
+    openPendingPreviewWork: shipyardOpen.diagnostics.pendingPreviewWork,
     closedPreviewCount: shipyardClosed.activePreviewCount,
     closedRetainedPreviewCount: shipyardClosed.retainedPreviewCount,
     closedPendingPreviewWork: shipyardClosed.pendingPreviewWork,
@@ -1446,9 +1522,7 @@ async function runGate(options) {
     atomicWriteJson(reportPath, running);
     if (budget) assertBudgetBinding(budget, inputs, launchedBrowser);
 
-    const saveFixture = structuredClone(readJson(baselineSavePath).inputs.veteran_rich);
-    saveFixture.view = null;
-    const veteranRaw = JSON.stringify(saveFixture);
+    const veteranRaw = sceneMemoryVeteranRaw();
     for (const [profile, viewport] of Object.entries(PROFILES)) {
       const measurement = await collectProfile({
         send: browser.send, origin: server.origin,

@@ -8,10 +8,12 @@ local Arc 4.5 Survey → Gather → Build → Tame → ship improvement → fart
 it is still a review candidate rather than a preview candidate. Six exact-input Slice attempts are
 preserved red; the latest current-input run is
 `20260827085237038-27561-1f8e3c1771b7` (23 findings / 16 scopes), and no current-input Slice PASS or
-success ledger exists. Its repaired roots and the subsequent campaign-wide review remain subject to
-the complete browserless battery and a new clean, source-bound browser campaign. Changes to the app
-producer also make the earlier exact-input Scene Memory and Compendium certificates historical for
-their recorded inputs, not proof for this candidate; both must certify the eventual frozen head.
+success ledger exists. Its repaired roots completed a pre-certificate browserless checkpoint and
+independent audits for the reviewed repair input, and the independent final whole-diff review is
+CLEAR. Any subsequent source change must rerun its affected checks. A new clean, source-bound browser campaign is
+still required. Changes to the app producer also make the earlier exact-input Scene Memory and
+Compendium certificates historical for their recorded inputs, not proof for this candidate; both
+must certify the eventual frozen head.
 Nothing in this campaign has been packaged, published, pushed, hosted-tested, merged, versioned or
 released. Until one clean exact final head passes every required local gate and receives separate
 exact-SHA publication authority, no development-preview candidate exists. `--allow-dirty` remains
@@ -331,14 +333,18 @@ The current gate uses one browser process for 390×844 phone and 1280×800 deskt
 unmeasured warmups and four measured cycles through Universe, Galaxy/fine, Sol/System,
 Earth/Surface, the 1,500-row Compendium, the real Shipyard, and settled Universe. Forty-two outcomes
 include the visible Shipyard opener, exact canonical visual/DOM state, one open preview, owned Close,
-and zero retained/pending preview work after Close. The Fabricator, Research Bench, Cargo/material
-spending, fabrication, research and upgrades remain unavailable.
+and zero retained/pending preview work after Close. The exact veteran input is intentionally Arc 3
+protected: the independent current-ship preview remains inspectable while authority-dependent
+Engineering details/actions are unavailable. SceneMemory certifies that Arc 1C resource lifecycle;
+it does not certify or require loaded Mine, Skim, Research or Fabricator authority.
 
-The guarded ordinary `test-battery` installs exact Edge `.101` with same-package `--reinstall`, then
-runs scene-memory-v2 first and Compendium second before the Chrome smoke/Glass/persona/preview
-steps. It runs the browser-free instrument and calibration controls, performs one no-retry
-active-budget certification, always verifies the named terminal report, and uploads whatever that
-attempt produced as `v2-scene-memory-evidence`. This is part of the single fail-fast
+The guarded ordinary `test-battery` runs version-tolerant Edge-family/CDP SceneMemory first, then
+the independently sealed exact-package Compendium ruler before the Chrome smoke/Glass/persona/
+preview steps. SceneMemory records the full executable/version/revision/JavaScript/user-agent/CDP
+tuple as provenance but does not use the point version as a rebaseline key. It runs the browser-
+free instrument controls, performs one no-retry active-budget certification, always verifies the
+named terminal report, and uploads whatever that attempt produced as `v2-scene-memory-evidence`.
+This is part of the single fail-fast
 owner-label-authorized battery, not a new parallel job or automatic retry. Hosted attempt 4 is
 consumed and terminal-red. A later authorized PR #33 battery, `32646110946`, passed terminal-green
 and merged `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`; its label was removed. No new hosted attempt

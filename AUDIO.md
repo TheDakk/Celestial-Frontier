@@ -81,8 +81,10 @@ sixth-red roots were Guide count, ecology diagnostic comparison, committed-only 
 Training DOM ownership, not audio-product defects.
 
 Focused changed-source checks and negative controls have exercised the audio repair, and the
-cumulative v2.0 development draft remains 55 bullets. The final frozen-producer full battery, final
-counts and independent audits remain pending before a signed clean repair freeze or another Slice.
+cumulative v2.0 development draft remains 55 bullets. The last complete pre-certificate browserless
+checkpoint and independent audits completed for the reviewed repair input; any subsequent source
+change must rerun its affected checks before a new signed clean successor. That successor and its
+exact-head SceneMemory, Compendium and Slice → Glass → recovery certificates remain pending.
 Browser evidence uses three independent authorities: the root authority accepts compatible
 Chromium-family executables that satisfy CDP `1.3` plus the capability inventory derived from its
 layout/boot sources and records executable, product, revision, user agent, JavaScript version and

@@ -12,6 +12,7 @@ import {
   type EngineeringPanelCosts,
   type EngineeringPanelReadModelV1,
   type EngineeringRowStatus,
+  type EngineeringPanelView,
 } from '../apps/game/src/engineering-panel.js';
 
 interface TestWindow extends Window {
@@ -204,6 +205,22 @@ function readModel(options: Readonly<{
       },
     ],
   } satisfies EngineeringPanelReadModelV1);
+}
+
+function fullView(model: EngineeringPanelReadModelV1): EngineeringPanelView {
+  return Object.freeze({ ship: model.ship, engineering: model, reason: null });
+}
+
+function protectedView(
+  stage: ShipVisualState['chassisStage'] = 2,
+  reason = 'Engineering details and actions are unavailable while this expedition is protected.',
+): EngineeringPanelView {
+  const standaloneShip = deepFreeze(ship(stage));
+  return Object.freeze({ ship: standaloneShip, engineering: null, reason });
+}
+
+function setFullView(model: EngineeringPanelReadModelV1): void {
+  controller!.setView(fullView(model));
 }
 
 function open(view: ReturnType<typeof shell>): void {
@@ -410,7 +427,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
   it('renders all native groups in model order with exact costs, reasons, and dormant-effect refusal', () => {
     const view = shell();
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction: vi.fn() });
-    controller.setState(readModel());
+    setFullView(readModel());
     open(view);
 
     expect([...view.body.querySelectorAll('details > summary')].map((summary) => summary.textContent))
@@ -452,7 +469,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
   it('preserves conditional zero/null facts and escapes hostile model text through DOM construction', () => {
     const view = shell();
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction: vi.fn() });
-    controller.setState(readModel({
+    setFullView(readModel({
       miningStatus: 'waiting',
       miningDetail: 'Next active-play cadence has not settled.',
       miningLocation: '<img id="hostile-location" src=x onerror=alert(1)>',
@@ -481,7 +498,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     const onAction = vi.fn((request: EngineeringPanelActionRequest) => requests.push(request));
     const view = shell();
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction });
-    controller.setState(readModel());
+    setFullView(readModel());
     open(view);
     const scan = view.body.querySelector<HTMLButtonElement>(
       '[data-research-id="scan1"] [data-engineering-action="research"]',
@@ -508,7 +525,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     const view = shell();
     const model = readModel();
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction });
-    controller.setState(model);
+    setFullView(model);
     open(view);
     const beforeModel = JSON.stringify(model);
     const preview = view.body.querySelector('[data-cf-shipyard-preview="v1"]');
@@ -526,6 +543,201 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     expect(Object.isFrozen(model)).toBe(true);
   });
 
+  it('keeps one capability-derived preview while protected across full, close, reopen, and full restoration', () => {
+    const onAction = vi.fn();
+    const view = shell();
+    controller = new EngineeringPanelController({
+      panel: view.panel,
+      body: view.body,
+      openers: [view.opener],
+      onAction,
+    });
+    setFullView(readModel({ stage: 2 }));
+    open(view);
+    const fullPreview = view.body.querySelector<SVGSVGElement>('[data-cf-shipyard-preview="v1"]')!;
+    const stateKey = fullPreview.dataset.stateKey!;
+    expect(view.body.querySelectorAll('[data-engineering-section]')).toHaveLength(4);
+    expect(view.body.querySelectorAll('[data-engineering-action]').length).toBeGreaterThan(0);
+    expect(controller.diagnostics()).toMatchObject({
+      activePreviewCount: 1,
+      previewStateKey: stateKey,
+      retainedPreviewCount: 0,
+      faultCount: 0,
+    });
+
+    const protectedReason = 'Engineering details and actions are unavailable while this expedition is protected.';
+    controller.setView(protectedView(2, protectedReason));
+    const protectedPreview = view.body.querySelector<SVGSVGElement>('[data-cf-shipyard-preview="v1"]')!;
+    expect(protectedPreview).not.toBe(fullPreview);
+    expect(fullPreview.isConnected).toBe(false);
+    expect(protectedPreview.dataset.stateKey).toBe(stateKey);
+    expect(view.body.querySelectorAll('[data-cf-shipyard-preview="v1"]')).toHaveLength(1);
+    expect(view.body.querySelectorAll('[data-engineering-section]')).toHaveLength(0);
+    expect(view.body.querySelectorAll('[data-engineering-action]')).toHaveLength(0);
+    expect(view.body.querySelector('[data-engineering-state="unavailable"]')?.textContent)
+      .toBe(protectedReason);
+    expect(view.body.querySelector('[data-engineering-unavailable]')?.getAttribute('data-engineering-unavailable'))
+      .toBe(protectedReason);
+    expect(controller.diagnostics()).toMatchObject({
+      activeCount: 1,
+      actionControlCount: 0,
+      activePreviewCount: 1,
+      previewStateKey: stateKey,
+      retainedPreviewCount: 0,
+      faultCount: 0,
+    });
+    expect(onAction).not.toHaveBeenCalled();
+
+    controller.registration().onClose();
+    expect(protectedPreview.isConnected).toBe(false);
+    expect(view.panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')).toHaveLength(0);
+    expect(controller.diagnostics()).toMatchObject({
+      activeCount: 0,
+      activePreviewCount: 0,
+      previewStateKey: null,
+      retainedPreviewCount: 0,
+      faultCount: 0,
+    });
+
+    open(view);
+    const reopenedPreview = view.body.querySelector<SVGSVGElement>('[data-cf-shipyard-preview="v1"]')!;
+    expect(reopenedPreview.dataset.stateKey).toBe(stateKey);
+    expect(view.body.querySelectorAll('[data-cf-shipyard-preview="v1"]')).toHaveLength(1);
+    expect(view.body.querySelectorAll('[data-engineering-action]')).toHaveLength(0);
+    expect(controller.diagnostics().previewStateKey).toBe(stateKey);
+
+    setFullView(readModel({ stage: 2 }));
+    expect(reopenedPreview.isConnected).toBe(false);
+    expect(view.body.querySelectorAll('[data-cf-shipyard-preview="v1"]')).toHaveLength(1);
+    expect(view.body.querySelectorAll('[data-engineering-section]')).toHaveLength(4);
+    expect(view.body.querySelectorAll('[data-engineering-action]').length).toBeGreaterThan(0);
+    expect(view.body.querySelector('[data-engineering-state="unavailable"]')).toBeNull();
+    expect(controller.diagnostics()).toMatchObject({
+      activePreviewCount: 1,
+      previewStateKey: stateKey,
+      retainedPreviewCount: 0,
+      faultCount: 0,
+    });
+  });
+
+  it('rejects mismatched or internally contradictory atomic views before replacing protected paint', () => {
+    const view = shell();
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction: vi.fn() });
+    controller.setView(protectedView(1));
+    open(view);
+    const protectedPreview = view.body.querySelector<SVGSVGElement>('[data-cf-shipyard-preview="v1"]')!;
+    const protectedKey = protectedPreview.dataset.stateKey!;
+    const engineering = readModel({ stage: 2 });
+    const mismatched = Object.freeze({
+      ship: deepFreeze(ship(3)),
+      engineering,
+      reason: null,
+    } satisfies EngineeringPanelView);
+
+    expect(() => controller!.setView(mismatched))
+      .toThrow('engineering model ship must match the standalone capability-derived ship');
+    expect(view.body.querySelector('[data-cf-shipyard-preview="v1"]')).toBe(protectedPreview);
+    expect(controller.diagnostics().previewStateKey).toBe(protectedKey);
+    expect(view.body.querySelectorAll('[data-engineering-action]')).toHaveLength(0);
+
+    expect(() => controller!.setView(Object.freeze({
+      ship: deepFreeze(ship(1)),
+      engineering: null,
+      reason: null,
+    } as unknown as EngineeringPanelView))).toThrow('requires a precise unavailable reason');
+    expect(() => controller!.setView(Object.freeze({
+      ship: engineering.ship,
+      engineering,
+      reason: 'contradictory protected reason',
+    }))).toThrow('must have a null unavailable reason');
+    expect(view.body.querySelector('[data-cf-shipyard-preview="v1"]')).toBe(protectedPreview);
+    expect(controller.diagnostics()).toMatchObject({
+      previewStateKey: protectedKey,
+      activePreviewCount: 1,
+      retainedPreviewCount: 0,
+      faultCount: 0,
+    });
+  });
+
+  it('reports only an agreeing live preview-owner/DOM key and exposes tamper or duplicate controls', () => {
+    const view = shell();
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction: vi.fn() });
+    controller.setView(protectedView(2));
+    open(view);
+    const preview = view.body.querySelector<SVGSVGElement>('[data-cf-shipyard-preview="v1"]')!;
+    const stateKey = preview.dataset.stateKey!;
+    expect(controller.diagnostics()).toMatchObject({
+      previewStateKey: stateKey,
+      activePreviewCount: 1,
+      retainedPreviewCount: 0,
+      faultCount: 0,
+    });
+
+    preview.dataset.stateKey = 'forged-preview-key';
+    expect(controller.diagnostics()).toMatchObject({
+      previewStateKey: null,
+      activePreviewCount: 1,
+      retainedPreviewCount: 0,
+      faultCount: 1,
+    });
+    preview.dataset.stateKey = stateKey;
+    expect(controller.diagnostics()).toMatchObject({ previewStateKey: stateKey, faultCount: 0 });
+
+    const duplicate = preview.cloneNode(true) as SVGSVGElement;
+    preview.parentElement!.append(duplicate);
+    const duplicated = controller.diagnostics();
+    expect(duplicated.previewStateKey).toBeNull();
+    expect(duplicated.activePreviewCount).toBe(1);
+    expect(duplicated.retainedPreviewCount).toBe(1);
+    expect(duplicated.faultCount).toBeGreaterThan(0);
+
+    controller.setView(protectedView(2));
+    expect(view.body.querySelectorAll('[data-cf-shipyard-preview="v1"]')).toHaveLength(1);
+    expect(controller.diagnostics()).toMatchObject({
+      previewStateKey: stateKey,
+      activePreviewCount: 1,
+      retainedPreviewCount: 0,
+      faultCount: 0,
+    });
+  });
+
+  it('rejects a same-key clone substituted for the exact owned preview and cleans both on Close', () => {
+    const view = shell();
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction: vi.fn() });
+    controller.setView(protectedView(2));
+    open(view);
+    const preview = view.body.querySelector<SVGSVGElement>('[data-cf-shipyard-preview="v1"]')!;
+    const mount = preview.parentElement!;
+    const substitute = preview.cloneNode(true) as SVGSVGElement;
+
+    mount.remove();
+    view.body.append(substitute);
+    expect(preview.parentElement).toBe(mount);
+    expect(preview.isConnected).toBe(false);
+    expect(substitute.isConnected).toBe(true);
+    expect(substitute.dataset.stateKey).toBe(preview.dataset.stateKey);
+    expect(view.panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')).toHaveLength(1);
+    expect(controller.diagnostics()).toMatchObject({
+      previewStateKey: null,
+      activePreviewCount: 0,
+      retainedPreviewCount: 1,
+    });
+    expect(controller.diagnostics().faultCount).toBeGreaterThan(0);
+
+    controller.registration().onClose();
+    expect(preview.isConnected).toBe(false);
+    expect(preview.parentElement).toBeNull();
+    expect(substitute.isConnected).toBe(false);
+    expect(view.panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')).toHaveLength(0);
+    expect(controller.diagnostics()).toMatchObject({
+      activeCount: 0,
+      previewStateKey: null,
+      activePreviewCount: 0,
+      retainedPreviewCount: 0,
+      faultCount: 0,
+    });
+  });
+
   it.each([
     ['pointer click', 1],
     ['Enter-native click', 0],
@@ -537,7 +749,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     emulateBrowserFocusLossWhenDisabled(view.document);
     const onAction = vi.fn((request: EngineeringPanelActionRequest) => controller!.setPending(request));
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction });
-    controller.setState(readModel());
+    setFullView(readModel());
     open(view);
     view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!.open = true;
     const plate = view.body.querySelector<HTMLButtonElement>(
@@ -562,7 +774,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     const view = shell();
     const onAction = vi.fn((request: EngineeringPanelActionRequest) => controller!.setPending(request));
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction });
-    controller.setState(readModel());
+    setFullView(readModel());
     open(view);
     view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!.open = true;
     const plate = view.body.querySelector<HTMLButtonElement>(
@@ -599,7 +811,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
       openers: [view.opener],
       onAction,
     });
-    controller.setState(readModel());
+    setFullView(readModel());
     open(view);
     const firstMine = view.body.querySelector<HTMLButtonElement>('[data-engineering-action="mine"]')!;
     firstMine.focus();
@@ -619,6 +831,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
       pendingWork: 1,
       actionControlCount: 0,
       activePreviewCount: 0,
+      previewStateKey: null,
       retainedPreviewCount: 0,
       faultCount: 0,
     });
@@ -666,7 +879,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
       openers: [view.opener],
       onAction: vi.fn(),
     });
-    controller.setState(readModel());
+    setFullView(readModel());
     open(view);
     const mining = view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="mining"]')!;
     const research = view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="research"]')!;
@@ -684,7 +897,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     expect(browserFocusEligible(firstScan)).toBe(true);
     firstScan.focus();
     expect(view.document.activeElement).toBe(firstScan);
-    controller.setState(readModel({ miningDue: 3 }));
+    setFullView(readModel({ miningDue: 3 }));
     const secondScan = view.body.querySelector<HTMLButtonElement>(
       '[data-research-id="scan1"] [data-engineering-action="research"]',
     )!;
@@ -695,7 +908,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     expect(secondScan).not.toBe(firstScan);
     expect(view.document.activeElement).toBe(secondScan);
 
-    controller.setState(readModel({ scanStatus: 'owned', scanReason: 'Already researched.' }));
+    setFullView(readModel({ scanStatus: 'owned', scanReason: 'Already researched.' }));
     const semanticRow = view.body.querySelector<HTMLElement>('[data-semantic-key="research:scan1"]')!;
     expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="research"]')?.open).toBe(true);
     expect(browserFocusEligible(semanticRow)).toBe(true);
@@ -716,7 +929,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
       openers: [view.opener],
       onAction,
     });
-    controller.setState(readModel());
+    setFullView(readModel());
     open(view);
     view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!.open = true;
     const firstPlate = view.body.querySelector<HTMLButtonElement>(
@@ -729,7 +942,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     let priorPlate = firstPlate;
     let settledPlate: HTMLButtonElement | null = null;
     for (const miningDue of [3, 4, 5]) {
-      controller.setState(readModel({ miningDue }));
+      setFullView(readModel({ miningDue }));
       const plateRow = view.body.querySelector<HTMLElement>('[data-semantic-key="recipe:plate"]')!;
       settledPlate = plateRow.querySelector<HTMLButtonElement>('[data-engineering-action="fabricate"]')!;
       expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')?.open).toBe(true);
@@ -763,7 +976,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     expect(view.document.activeElement === view.document.body).toBe(true);
     let settledScan: HTMLButtonElement | null = null;
     for (const miningDue of [6, 7, 8]) {
-      controller.setState(readModel({
+      setFullView(readModel({
         miningDue,
         scanStatus: 'owned',
         scanReason: 'Already researched.',
@@ -790,7 +1003,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
       openers: [view.opener],
       onAction,
     });
-    controller.setState(readModel());
+    setFullView(readModel());
     open(view);
     view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!.open = true;
 
@@ -801,13 +1014,13 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
       action.focus();
       action.click();
       expect(view.document.activeElement === view.document.body).toBe(true);
-      controller!.setState(readModel({ miningDue }));
+      setFullView(readModel({ miningDue }));
       expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
     };
 
     startPlate(10);
     view.body.querySelector<HTMLElement>('[data-semantic-key="recipe:wire"]')!.focus();
-    controller.setState(readModel({ miningDue: 11 }));
+    setFullView(readModel({ miningDue: 11 }));
     const replacementWire = view.body.querySelector<HTMLElement>('[data-semantic-key="recipe:wire"]')!;
     expect(view.document.activeElement === replacementWire).toBe(true);
     controller.setPending(null);
@@ -821,7 +1034,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     preRenderPlate.click();
     expect(view.document.activeElement === view.document.body).toBe(true);
     view.body.querySelector<HTMLElement>('[data-engineering-section="fabricator"] > summary')!.focus();
-    controller.setState(readModel({ miningDue: 13 }));
+    setFullView(readModel({ miningDue: 13 }));
     const replacementSummary = view.body.querySelector<HTMLElement>(
       '[data-engineering-section="fabricator"] > summary',
     )!;
@@ -832,7 +1045,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
 
     startPlate(14);
     view.opener.focus();
-    controller.setState(readModel({ miningDue: 15 }));
+    setFullView(readModel({ miningDue: 15 }));
     expect(view.document.activeElement === view.opener).toBe(true);
     controller.setPending(null);
     expect(view.document.activeElement === view.opener).toBe(true);
@@ -845,7 +1058,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     emulateBrowserFocusLossWhenDisabled(view.document);
     const onAction = vi.fn((request: EngineeringPanelActionRequest) => controller!.setPending(request));
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction });
-    controller.setState(readModel());
+    setFullView(readModel());
     open(view);
     const fabricator = view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!;
     fabricator.open = true;
@@ -857,7 +1070,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     expect(view.document.activeElement === view.document.body).toBe(true);
     fabricator.open = false;
 
-    controller.setState(readModel({ miningDue: 20 }));
+    setFullView(readModel({ miningDue: 20 }));
     expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')?.open).toBe(false);
     expect(view.document.activeElement === view.document.body).toBe(true);
     const closedSummary = view.body.querySelector<HTMLElement>(
@@ -865,7 +1078,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     )!;
     expect(browserFocusEligible(closedSummary)).toBe(true);
     closedSummary.focus();
-    controller.setState(readModel({ miningDue: 21 }));
+    setFullView(readModel({ miningDue: 21 }));
     expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')?.open).toBe(false);
     const replacementSummary = view.body.querySelector<HTMLElement>(
       '[data-engineering-section="fabricator"] > summary',
@@ -886,10 +1099,10 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     const view = shell();
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction: vi.fn() });
     const expected = ['scout-chemical', 'jump-interstellar', 'survey-cruiser-array', 'frontier-intergalactic'];
-    controller.setState(readModel({ stage: 0 }));
+    setFullView(readModel({ stage: 0 }));
     open(view);
     for (let stage = 0; stage < 4; stage++) {
-      controller.setState(readModel({ stage: stage as ShipVisualState['chassisStage'] }));
+      setFullView(readModel({ stage: stage as ShipVisualState['chassisStage'] }));
       expect(view.panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')).toHaveLength(1);
       expect(view.panel.querySelector('[data-layer="chassis"]')?.getAttribute('data-silhouette')).toBe(expected[stage]);
       expect(controller.diagnostics()).toMatchObject({
@@ -909,6 +1122,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
       pendingWork: 0,
       actionControlCount: 0,
       activePreviewCount: 0,
+      previewStateKey: null,
       retainedPreviewCount: 0,
       delegatedListenerCount: 0,
       faultCount: 0,
@@ -920,7 +1134,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     const view = shell();
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction: vi.fn() });
     const mutable = JSON.parse(JSON.stringify(readModel())) as EngineeringPanelReadModelV1;
-    expect(() => controller!.setState(mutable)).toThrow('must be deeply frozen');
+    expect(() => setFullView(mutable)).toThrow('must be deeply frozen');
 
     const base = readModel();
     const mutableNestedStardust = {
@@ -942,19 +1156,19 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     }) as EngineeringPanelReadModelV1;
     expect(Object.isFrozen(deepMutable)).toBe(true);
     expect(Object.isFrozen(mutableNestedStardust)).toBe(false);
-    expect(() => controller!.setState(deepMutable)).toThrow('must be deeply frozen');
+    expect(() => setFullView(deepMutable)).toThrow('must be deeply frozen');
 
     const missingResearch = deepFreeze({
       ...JSON.parse(JSON.stringify(readModel())),
       research: JSON.parse(JSON.stringify(readModel().research.slice(0, 5))),
     }) as EngineeringPanelReadModelV1;
-    expect(() => controller!.setState(missingResearch)).toThrow('all six ids in canonical order');
+    expect(() => setFullView(missingResearch)).toThrow('all six ids in canonical order');
 
     const reordered = JSON.parse(JSON.stringify(readModel())) as EngineeringPanelReadModelV1;
     const first = reordered.research[0]!;
     (reordered.research as EngineeringPanelReadModelV1['research'][number][])[0] = reordered.research[1]!;
     (reordered.research as EngineeringPanelReadModelV1['research'][number][])[1] = first;
-    expect(() => controller!.setState(deepFreeze(reordered))).toThrow('all six ids in canonical order');
+    expect(() => setFullView(deepFreeze(reordered))).toThrow('all six ids in canonical order');
     expect(view.body.childElementCount).toBe(0);
   });
 });

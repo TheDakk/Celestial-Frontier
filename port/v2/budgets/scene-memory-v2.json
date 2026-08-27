@@ -12,7 +12,7 @@
       "profileContractSha256": "f565ba2a38577f80c16c41762a5fb4e2214f3b320c50e017f1262c0784a6a0ef"
     },
     "producer": {
-      "collector": "41ab59cc9db609854ce20847dce3be9efbf9138f651e38ead9d7774faeff6343",
+      "collector": "dd41b2901185e225197a3e3991dbfca42766154889bffb756900ade3cd22a6a8",
       "browserCdp": "6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce",
       "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
       "workspaceLock": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606",
@@ -24,9 +24,9 @@
       "package": "87551923ad5af540270ecbbeef73b97bcf90d82ae66867e59a844f1815a98106",
       "packageLock": "a1f1dc3335714fe40c06a99684a5da9d66ea1a24d9db73594efe5b15c11fcd6e",
       "appPackage": "69e7a046ca620dafabb38d0471b59f682fdc5b15433c2207bcf18a218f38c7de",
-      "buildDist": "3899f39f8cc45927d40ef8f80923420ce123f4aa0f61d2d505bba6dd89b08ecd",
+      "buildDist": "726ad8ef4db167a18964763934aa5f8f207600ab3f3ba49c9e81e54b58104074",
       "gameHtml": "88074f1c1f360a35f0718386c9619c1801aac1f5abc7b259b606b94cc9d00c30",
-      "gameMain": "87cc6f2f2c2d43eb53f5a3682edcb51d8dcca95c227c2a0a6c149f803145024b",
+      "gameMain": "be06066065424badeb2ef4ca3a9e2d767d628a04720589cafa8581252b33b77c",
       "shipVisualState": "9bfd27d3d6a75779d3372dfb6386e8e98ef22d92a33b0346819225024c70d762",
       "shipyardPreview": "a3aac0c541a8f824a3625778e89468b5b03653dd29820c3b024fa45a7c753e85",
       "planetTextureAttachment": "751cb34df8ead64fc5ad274a0fd55dfe1af7bb183949ffebcea2ada5de5903e0",

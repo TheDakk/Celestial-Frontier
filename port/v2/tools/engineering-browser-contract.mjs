@@ -765,6 +765,7 @@ export const assessArc3RemnantSkimRoutePrecondition = (evidence = {}) => {
   const model = surface?.model;
   const diagnostics = surface?.diagnostics;
   const engineering = diagnostics?.engineering;
+  const previewStateKey = current?.shipVisual?.stateKey;
   const expected = ENGINEERING_REMNANT_ROUTE_TARGET;
   const decoded = decodeMarkedCf1Payload(target?.code);
   const sourceWitness = evidence?.sourceWitness;
@@ -822,11 +823,18 @@ export const assessArc3RemnantSkimRoutePrecondition = (evidence = {}) => {
       && button?.operation === 'skim' && button?.id === null,
     model: model?.status === 'ready' && model?.modelEnabled === 'true'
       && model?.disabled === false && model?.ariaDisabled === 'false',
-    diagnostics: diagnostics?.schema === 'cf-v2-shipyard-diagnostics/v1'
+    diagnostics: typeof previewStateKey === 'string' && previewStateKey.length > 0
+      && canonicalToolJson(surface?.previewStateKeys) === canonicalToolJson([previewStateKey])
+      && diagnostics?.schema === 'cf-v2-shipyard-diagnostics/v1'
       && diagnostics?.status === 'open' && diagnostics?.pendingPreviewWork === 0
+      && diagnostics?.stateKey === previewStateKey
+      && diagnostics?.activePreviewCount === 1 && diagnostics?.retainedPreviewCount === 0
       && engineering?.schema === 'cf-v2-engineering-panel-diagnostics/v1'
       && engineering?.activeCount === 1 && engineering?.pendingWork === 0
-      && engineering?.actionControlCount === ENGINEERING_ACTION_CONTROL_COUNT,
+      && engineering?.actionControlCount === ENGINEERING_ACTION_CONTROL_COUNT
+      && engineering?.activePreviewCount === 1
+      && engineering?.previewStateKey === previewStateKey
+      && engineering?.retainedPreviewCount === 0 && engineering?.faultCount === 0,
   });
   const reasons = Object.entries(checks)
     .filter(([, value]) => value !== true)
@@ -930,17 +938,19 @@ const storageReceiptProjection = (evidence) => ({
    optimistic, or retained owner surface rather than collapsing to one boolean. */
 export const assessArc3StorageRefusal = ({
   before, after, beforeState, afterState, beforeUi, afterUi, afterDiagnostics,
-  armed, interaction, waitError = null, captureErrors = [],
+  afterPreviewStateKeys, armed, interaction, waitError = null, captureErrors = [],
 } = {}) => {
   const coordinatorBefore = beforeState?.engineering?.actionCoordinator;
   const coordinator = afterState?.engineering?.actionCoordinator;
   const fault = coordinator?.lastFault;
   const owner = coordinator?.owner;
   const click = interaction?.clicks?.[0], key = interaction?.keys?.[0];
+  const previewStateKey = afterState?.shipVisual?.stateKey;
   const ui = assessEngineeringNoOptimismUi({ before: beforeUi, during: afterUi, pending: false });
   const checks = Object.freeze({
     captured: Array.isArray(captureErrors) && captureErrors.length === 0
-      && !!after && !!afterState && !!afterUi && !!afterDiagnostics && !!interaction,
+      && !!after && !!afterState && !!afterUi && !!afterDiagnostics
+      && Array.isArray(afterPreviewStateKeys) && !!interaction,
     waitSettled: waitError === null,
     armedCleared: armed === true && coordinator?.faultArmed?.storageFailure === false,
     durableEvidenceComplete: arc3DurableEvidenceComplete(before)
@@ -965,11 +975,22 @@ export const assessArc3StorageRefusal = ({
     faultSettlement: fault?.phase === 'settled' && fault?.beforeRevision === before?.revision
       && fault?.injectedRevision === null,
     faultOutcome: fault?.outcome === 'storage-error',
-    diagnosticsSettled: afterDiagnostics?.schema === 'cf-v2-shipyard-diagnostics/v1'
+    diagnosticsSettled: typeof previewStateKey === 'string' && previewStateKey.length > 0
+      && canonicalToolJson(afterPreviewStateKeys) === canonicalToolJson([previewStateKey])
+      && afterDiagnostics?.schema === 'cf-v2-shipyard-diagnostics/v1'
       && afterDiagnostics?.status === 'open'
+      && afterDiagnostics?.pendingPreviewWork === 0
+      && afterDiagnostics?.stateKey === previewStateKey
+      && afterDiagnostics?.activePreviewCount === 1
+      && afterDiagnostics?.retainedPreviewCount === 0
       && afterDiagnostics?.engineering?.schema === 'cf-v2-engineering-panel-diagnostics/v1'
       && afterDiagnostics?.engineering?.activeCount === 1
-      && afterDiagnostics?.engineering?.pendingWork === 0,
+      && afterDiagnostics?.engineering?.pendingWork === 0
+      && afterDiagnostics?.engineering?.actionControlCount === ENGINEERING_ACTION_CONTROL_COUNT
+      && afterDiagnostics?.engineering?.activePreviewCount === 1
+      && afterDiagnostics?.engineering?.previewStateKey === previewStateKey
+      && afterDiagnostics?.engineering?.retainedPreviewCount === 0
+      && afterDiagnostics?.engineering?.faultCount === 0,
     interaction: interaction?.modality === 'keyboard' && interaction?.uiOperation === 'fabricate'
       && interaction?.clicks?.length === 1 && interaction?.keys?.length === 1,
     trustedClick: click?.trusted === true && click?.operation === 'fabricate' && click?.id === 'plate',
@@ -1475,6 +1496,7 @@ const storageSelftestOwner = {
 };
 const storageSelftestBeforeState = {
   save: { essence: 40, cargo: [['Fe', 20]] },
+  shipVisual: { stateKey: 'ship:v1:storage-selftest' },
   engineering: {
     revision: 12,
     actionCoordinator: {
@@ -1502,10 +1524,15 @@ const storageSelftestBundle = {
   afterState: storageSelftestAfterState,
   beforeUi: engineeringUiSelftestBefore,
   afterUi: engineeringUiSelftestIdle,
+  afterPreviewStateKeys: ['ship:v1:storage-selftest'],
   afterDiagnostics: {
     schema: 'cf-v2-shipyard-diagnostics/v1', status: 'open',
+    stateKey: 'ship:v1:storage-selftest', activePreviewCount: 1,
+    retainedPreviewCount: 0, pendingPreviewWork: 0,
     engineering: {
       schema: 'cf-v2-engineering-panel-diagnostics/v1', activeCount: 1, pendingWork: 0,
+      actionControlCount: ENGINEERING_ACTION_CONTROL_COUNT, activePreviewCount: 1,
+      previewStateKey: 'ship:v1:storage-selftest', retainedPreviewCount: 0, faultCount: 0,
     },
   },
   armed: true,
@@ -1521,6 +1548,14 @@ const storageSelftestCoordinator = storageSelftestAfterState.engineering.actionC
 const storageSelftestFaultState = (fault) => storageSelftestCoordinatorState({
   ...storageSelftestCoordinator, lastFault: fault,
 });
+const storageSelftestMissingFourWayPreviewIdentity = (() => {
+  const afterState = structuredClone(storageSelftestAfterState);
+  const afterDiagnostics = structuredClone(storageSelftestBundle.afterDiagnostics);
+  delete afterState.shipVisual.stateKey;
+  delete afterDiagnostics.stateKey;
+  delete afterDiagnostics.engineering.previewStateKey;
+  return { afterState, afterDiagnostics, afterPreviewStateKeys: [] };
+})();
 const storageSelftestDeleteEvidence = (path) => {
   const remove = (value) => {
     const copy = structuredClone(value);
@@ -1570,6 +1605,22 @@ const storageSelftestCases = [
     afterState: storageSelftestCoordinatorState({
       ...storageSelftestCoordinator, inFlight: true,
     }) })],
+  ['diagnosticsSettled', assessArc3StorageRefusal({ ...storageSelftestBundle,
+    afterState: { ...storageSelftestAfterState,
+      shipVisual: { ...storageSelftestAfterState.shipVisual,
+        stateKey: 'ship:v1:storage-app-control-mismatch' } } })],
+  ['diagnosticsSettled', assessArc3StorageRefusal({ ...storageSelftestBundle,
+    afterDiagnostics: { ...storageSelftestBundle.afterDiagnostics,
+      stateKey: 'ship:v1:storage-outer-control-mismatch' } })],
+  ['diagnosticsSettled', assessArc3StorageRefusal({ ...storageSelftestBundle,
+    afterDiagnostics: { ...storageSelftestBundle.afterDiagnostics, engineering: {
+      ...storageSelftestBundle.afterDiagnostics.engineering,
+      previewStateKey: 'ship:v1:storage-inner-control-mismatch',
+    } } })],
+  ['diagnosticsSettled', assessArc3StorageRefusal({ ...storageSelftestBundle,
+    afterPreviewStateKeys: ['ship:v1:storage-dom-control-mismatch'] })],
+  ['diagnosticsSettled', assessArc3StorageRefusal({ ...storageSelftestBundle,
+    ...storageSelftestMissingFourWayPreviewIdentity })],
   ['trustedKey', assessArc3StorageRefusal({ ...storageSelftestBundle,
     interaction: { ...storageSelftestInteraction,
       keys: [{ ...storageSelftestInteraction.keys[0], id: 'wire' }] } })],
@@ -1675,6 +1726,7 @@ const remnantRouteSelftestEvidence = {
     navStarKey: ENGINEERING_REMNANT_ROUTE_TARGET.navStarKey,
     epoch: 12, stage: 1,
     shipVisual: {
+      stateKey: 'ship:v1:remnant-selftest',
       chassisStage: 1, hardpoints: { array: false, autoext: false, cscoop: false },
       installedSystemIds: ['jumpdrive'], provenance: 'owned-items',
     },
@@ -1686,13 +1738,18 @@ const remnantRouteSelftestEvidence = {
   },
   surface: {
     panelOpen: 'shipyard',
+    previewStateKeys: ['ship:v1:remnant-selftest'],
     button: { exists: true, connected: true, tag: 'BUTTON', operation: 'skim', id: null },
     model: { status: 'ready', modelEnabled: 'true', disabled: false, ariaDisabled: 'false' },
     diagnostics: {
-      schema: 'cf-v2-shipyard-diagnostics/v1', status: 'open', pendingPreviewWork: 0,
+      schema: 'cf-v2-shipyard-diagnostics/v1', status: 'open',
+      stateKey: 'ship:v1:remnant-selftest', activePreviewCount: 1,
+      retainedPreviewCount: 0, pendingPreviewWork: 0,
       engineering: {
         schema: 'cf-v2-engineering-panel-diagnostics/v1', activeCount: 1,
         pendingWork: 0, actionControlCount: ENGINEERING_ACTION_CONTROL_COUNT,
+        activePreviewCount: 1, previewStateKey: 'ship:v1:remnant-selftest',
+        retainedPreviewCount: 0, faultCount: 0,
       },
     },
   },
@@ -1727,6 +1784,14 @@ const remnantRouteWithoutReceiptEpoch = structuredClone(remnantRouteSelftestPreR
 delete remnantRouteWithoutReceiptEpoch.renderedScene.ecologyEpoch;
 const remnantCurrentWithoutReceiptEpoch = structuredClone(remnantRouteSelftestEvidence.current);
 delete remnantCurrentWithoutReceiptEpoch.renderedScene.ecologyEpoch;
+const remnantRouteMissingFourWayPreviewIdentity = (() => {
+  const evidence = structuredClone(remnantRouteSelftestEvidence);
+  delete evidence.current.shipVisual.stateKey;
+  delete evidence.surface.diagnostics.stateKey;
+  delete evidence.surface.diagnostics.engineering.previewStateKey;
+  evidence.surface.previewStateKeys = [];
+  return evidence;
+})();
 const remnantRouteClauseControls = [
   ['sourceOracle', assessArc3RemnantSkimRoutePrecondition({
     ...remnantRouteSelftestEvidence,
@@ -1782,6 +1847,33 @@ const remnantRouteClauseControls = [
         chassisStage: 2, installedSystemIds: ['jumpdrive', 'array'],
         hardpoints: { ...remnantRouteSelftestEvidence.current.shipVisual.hardpoints, array: true } } },
   })],
+  ['diagnostics', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence,
+    current: { ...remnantRouteSelftestEvidence.current,
+      shipVisual: { ...remnantRouteSelftestEvidence.current.shipVisual,
+        stateKey: 'ship:v1:remnant-app-control-mismatch' } },
+  })],
+  ['diagnostics', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence,
+    surface: { ...remnantRouteSelftestEvidence.surface,
+      diagnostics: { ...remnantRouteSelftestEvidence.surface.diagnostics,
+        stateKey: 'ship:v1:remnant-outer-control-mismatch' } },
+  })],
+  ['diagnostics', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence,
+    surface: { ...remnantRouteSelftestEvidence.surface,
+      diagnostics: { ...remnantRouteSelftestEvidence.surface.diagnostics,
+        engineering: { ...remnantRouteSelftestEvidence.surface.diagnostics.engineering,
+          previewStateKey: 'ship:v1:remnant-inner-control-mismatch' } } },
+  })],
+  ['diagnostics', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence,
+    surface: { ...remnantRouteSelftestEvidence.surface,
+      previewStateKeys: ['ship:v1:remnant-dom-control-mismatch'] },
+  })],
+  ['diagnostics', assessArc3RemnantSkimRoutePrecondition(
+    remnantRouteMissingFourWayPreviewIdentity,
+  )],
 ];
 const rejectedRouteSelftestBase = {
   before: {

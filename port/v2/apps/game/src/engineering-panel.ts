@@ -5,7 +5,7 @@
    and waits for Main to publish pending/settled state. It never plans, spends,
    awaits, retries, or optimistically changes an expedition fact. */
 import type { ShipInstalledSystemId, ShipVisualState } from '@cf/scene';
-import { ShipyardPreviewOwner } from './shipyard-preview.js';
+import { ShipyardPreviewOwner, shipVisualStateKey } from './shipyard-preview.js';
 
 export const ENGINEERING_PANEL_READ_MODEL_SCHEMA = 'cf-v2-engineering-panel-read-model/v1' as const;
 export const ENGINEERING_PANEL_DIAGNOSTICS_SCHEMA = 'cf-v2-engineering-panel-diagnostics/v1' as const;
@@ -122,6 +122,16 @@ export interface EngineeringPanelReadModelV1 {
   readonly fabricationGroups: readonly EngineeringFabricationGroupReadModel[];
 }
 
+/** One atomic presentation publication. The ship is independently derived
+ * from owned capability and remains inspectable when Engineering authority is
+ * protected. A verified Engineering model must carry that exact same ship. */
+export interface EngineeringPanelView {
+  readonly ship: ShipVisualState;
+  readonly engineering: EngineeringPanelReadModelV1 | null;
+  /** Required only while Engineering details and actions are unavailable. */
+  readonly reason: string | null;
+}
+
 export interface EngineeringPanelRegistration {
   readonly id: 'shipyard';
   readonly el: HTMLElement;
@@ -137,6 +147,8 @@ export interface EngineeringPanelDiagnostics {
   readonly pendingWork: 0 | 1;
   readonly actionControlCount: number;
   readonly activePreviewCount: 0 | 1;
+  /** Exact key read from the one live owner/DOM pair; null on any mismatch. */
+  readonly previewStateKey: string | null;
   readonly retainedPreviewCount: number;
   readonly delegatedListenerCount: 0 | 1;
   readonly faultCount: number;
@@ -308,6 +320,24 @@ function assertReadModel(model: EngineeringPanelReadModelV1): void {
   }
 }
 
+function assertView(view: EngineeringPanelView): void {
+  assertFrozenData(view, 'engineering panel view');
+  assertShip(view.ship);
+  if (view.engineering === null) {
+    if (typeof view.reason !== 'string' || view.reason.trim().length === 0) {
+      throw new TypeError('protected engineering panel view requires a precise unavailable reason');
+    }
+    return;
+  }
+  if (view.reason !== null) {
+    throw new TypeError('verified engineering panel view must have a null unavailable reason');
+  }
+  assertReadModel(view.engineering);
+  if (shipVisualStateKey(view.ship) !== shipVisualStateKey(view.engineering.ship)) {
+    throw new TypeError('engineering model ship must match the standalone capability-derived ship');
+  }
+}
+
 function sameRequest(left: EngineeringPanelActionRequest, right: EngineeringPanelActionRequest): boolean {
   return left.operation === right.operation && left.id === right.id;
 }
@@ -334,7 +364,7 @@ export class EngineeringPanelController {
   readonly #document: Document;
   readonly #openers: readonly (HTMLElement | null)[];
   readonly #onAction: EngineeringPanelControllerOptions['onAction'] | null;
-  #state: EngineeringPanelReadModelV1 | null = null;
+  #view: EngineeringPanelView | null = null;
   #pending: EngineeringPanelActionRequest | null = null;
   #lastRequest: EngineeringPanelActionRequest | null = null;
   #emissionLocked = false;
@@ -345,6 +375,7 @@ export class EngineeringPanelController {
   #settlementFocus: SettlementFocusReceipt | null = null;
   #pendingDisabledBodyFocus = false;
   #previewOwner: ShipyardPreviewOwner | null = null;
+  #previewElement: SVGSVGElement | null = null;
 
   constructor(options: EngineeringPanelControllerOptions) {
     this.#panel = options.panel;
@@ -368,10 +399,10 @@ export class EngineeringPanelController {
     this.#listenerInstalled = true;
   }
 
-  setState(state: EngineeringPanelReadModelV1 | null): void {
+  setView(view: EngineeringPanelView): void {
     this.#assertLive();
-    if (state !== null) assertReadModel(state);
-    this.#state = state;
+    assertView(view);
+    this.#view = view;
     if (this.#active) this.#render();
   }
 
@@ -415,9 +446,24 @@ export class EngineeringPanelController {
   }
 
   diagnostics(): EngineeringPanelDiagnostics {
-    const previews = [...this.#panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')];
+    const previews = [...this.#panel.querySelectorAll<SVGSVGElement>('[data-cf-shipyard-preview="v1"]')];
     const owner = this.#previewOwner?.diagnostics() ?? null;
-    const activePreviewCount: 0 | 1 = this.#active && owner?.activePreviewCount === 1 ? 1 : 0;
+    const ownerClaimsActive = owner?.activePreviewCount === 1;
+    const ownedPreviewInPanel = this.#previewElement !== null
+      && previews.includes(this.#previewElement)
+      && this.#previewElement.isConnected;
+    const activePreviewCount: 0 | 1 = this.#active && ownerClaimsActive && ownedPreviewInPanel ? 1 : 0;
+    const domStateKey = previews.length === 1
+      ? previews[0]!.getAttribute('data-state-key')
+      : null;
+    const previewStateKey = activePreviewCount === 1
+      && typeof domStateKey === 'string'
+      && domStateKey.length > 0
+      && owner?.stateKey === domStateKey
+      ? domStateKey
+      : null;
+    const previewKeyFault = activePreviewCount === 1 && previewStateKey === null ? 1 : 0;
+    const ownerDomPairFault = ownerClaimsActive && !ownedPreviewInPanel ? 1 : 0;
     const retainedPreviewCount = Math.max(
       Math.max(0, previews.length - activePreviewCount),
       owner?.retainedPreviewCount ?? 0,
@@ -429,9 +475,10 @@ export class EngineeringPanelController {
       pendingWork: this.#isBusy() ? 1 : 0,
       actionControlCount: this.#body.querySelectorAll('[data-engineering-action]').length,
       activePreviewCount,
+      previewStateKey,
       retainedPreviewCount,
       delegatedListenerCount: this.#listenerInstalled ? 1 : 0,
-      faultCount: owner?.faultCount ?? retainedPreviewCount,
+      faultCount: (owner?.faultCount ?? retainedPreviewCount) + previewKeyFault + ownerDomPairFault,
       lastRequest: this.#lastRequest,
     });
   }
@@ -445,7 +492,7 @@ export class EngineeringPanelController {
       this.#body.removeEventListener('click', this.#onClick);
       this.#listenerInstalled = false;
     }
-    this.#state = null;
+    this.#view = null;
     this.#pending = null;
     this.#lastRequest = null;
     this.#emissionLocked = false;
@@ -520,9 +567,9 @@ export class EngineeringPanelController {
     this.#disposePreview();
     const fragment = this.#document.createDocumentFragment();
     fragment.append(this.#node('h3', 'engineering-panel-title', 'Engineering & Shipyard'));
-    if (this.#state === null) {
-      const empty = this.#node('p', 'engineering-empty', 'Engineering facts are unavailable for this expedition.');
-      empty.dataset.engineeringState = 'absent';
+    if (this.#view === null) {
+      const empty = this.#node('p', 'engineering-empty', 'Engineering presentation is not initialized.');
+      empty.dataset.engineeringState = 'uninitialized';
       fragment.append(empty, this.#pendingStatus());
       this.#body.replaceChildren(fragment);
       this.#applyActionAvailability();
@@ -531,18 +578,25 @@ export class EngineeringPanelController {
       return;
     }
 
-    const previewMount = this.#shipOverview(this.#state.ship);
-    fragment.append(
-      previewMount.section,
-      this.#miningDetails(this.#state.mining),
-      this.#skimmingDetails(this.#state.skimming),
-      this.#researchDetails(this.#state.research),
-      this.#fabricatorDetails(this.#state.fabricationGroups),
-      this.#pendingStatus(),
-    );
+    const previewMount = this.#shipOverview(this.#view.ship);
+    fragment.append(previewMount.section);
+    if (this.#view.engineering === null) {
+      const unavailable = this.#node('p', 'engineering-empty', this.#view.reason!);
+      unavailable.dataset.engineeringState = 'unavailable';
+      unavailable.dataset.engineeringUnavailable = this.#view.reason!;
+      fragment.append(unavailable);
+    } else {
+      fragment.append(
+        this.#miningDetails(this.#view.engineering.mining),
+        this.#skimmingDetails(this.#view.engineering.skimming),
+        this.#researchDetails(this.#view.engineering.research),
+        this.#fabricatorDetails(this.#view.engineering.fabricationGroups),
+      );
+    }
+    fragment.append(this.#pendingStatus());
     this.#body.replaceChildren(fragment);
     this.#previewOwner = new ShipyardPreviewOwner(previewMount.mount);
-    this.#previewOwner.open(this.#state.ship);
+    this.#previewElement = this.#previewOwner.open(this.#view.ship);
     this.#applyActionAvailability();
     this.#restoreView(view);
     this.#pendingDisabledBodyFocus = false;
@@ -1013,6 +1067,7 @@ export class EngineeringPanelController {
   #disposePreview(): void {
     this.#previewOwner?.dispose();
     this.#previewOwner = null;
+    this.#previewElement = null;
   }
 
   #disposeView(): void {

@@ -3195,6 +3195,10 @@ function shipyardPanelSettlementOutcome(value, expectedCardOpen) {
       && runtime?.leaseOwned === true && runtime?.staleBlocked === false,
     persistenceQuiescent: resources?.schema === 'cf-v2-scene-resources/v2'
       && resources?.pendingPersistenceWrites === 0,
+    previewIdentity: typeof value?.appStateKey === 'string' && value.appStateKey.length > 0
+      && JSON.stringify(value?.previewStateKeys) === JSON.stringify([value.appStateKey])
+      && diagnostics?.stateKey === value.appStateKey
+      && panelDiagnostics?.previewStateKey === value.appStateKey,
     panelDiagnostics: diagnostics?.schema === 'cf-v2-shipyard-diagnostics/v1'
       && diagnostics?.status === 'open' && diagnostics?.activePreviewCount === 1
       && diagnostics?.retainedPreviewCount === 0 && diagnostics?.pendingPreviewWork === 0
@@ -3226,6 +3230,8 @@ function glassShipyardSettlementSelftest() {
   const baseline = {
     schema: GLASS_SHIPYARD_SETTLEMENT_SCHEMA,
     panelOpen: 'shipyard', cardOpen: true, previewCount: 1,
+    appStateKey: 'ship:v1:glass-settlement',
+    previewStateKeys: ['ship:v1:glass-settlement'],
     engineering: {
       schema: 'cf-v2-arc3-app-state/v1', stateKind: 'loaded', protection: null,
       bootstrapPending: false, bootstrapCandidateReady: false,
@@ -3239,10 +3245,10 @@ function glassShipyardSettlementSelftest() {
     sceneResources: { schema: 'cf-v2-scene-resources/v2', pendingPersistenceWrites: 0 },
     diagnostics: {
       schema: 'cf-v2-shipyard-diagnostics/v1', status: 'open', activePreviewCount: 1,
-      retainedPreviewCount: 0, pendingPreviewWork: 0,
+      stateKey: 'ship:v1:glass-settlement', retainedPreviewCount: 0, pendingPreviewWork: 0,
       engineering: {
         schema: 'cf-v2-engineering-panel-diagnostics/v1', activeCount: 1,
-        pendingWork: 0, activePreviewCount: 1,
+        pendingWork: 0, activePreviewCount: 1, previewStateKey: 'ship:v1:glass-settlement',
       },
     },
   };
@@ -3259,6 +3265,23 @@ function glassShipyardSettlementSelftest() {
     protectedEngineering: shipyardPanelSettlementOutcome({
       ...baseline,
       engineering: { ...baseline.engineering, stateKind: 'unavailable', protection: 'legacy-refused:legacy-seed-missing' },
+    }, true),
+    previewAppIdentityMismatch: shipyardPanelSettlementOutcome({
+      ...baseline, appStateKey: 'ship:v1:app-substitute',
+    }, true),
+    previewDomIdentityMismatch: shipyardPanelSettlementOutcome({
+      ...baseline, previewStateKeys: ['ship:v1:dom-substitute'],
+    }, true),
+    previewOuterIdentityMismatch: shipyardPanelSettlementOutcome({
+      ...baseline,
+      diagnostics: { ...baseline.diagnostics, stateKey: 'ship:v1:outer-substitute' },
+    }, true),
+    previewInnerIdentityMismatch: shipyardPanelSettlementOutcome({
+      ...baseline,
+      diagnostics: {
+        ...baseline.diagnostics,
+        engineering: { ...baseline.diagnostics.engineering, previewStateKey: 'ship:v1:inner-substitute' },
+      },
     }, true),
     panelClosed: shipyardPanelSettlementOutcome({ ...baseline, panelOpen: null }, true),
     surveyMismatch: shipyardPanelSettlementOutcome({ ...baseline, cardOpen: false }, true),
@@ -3284,6 +3307,10 @@ function glassShipyardSettlementSelftest() {
         === JSON.stringify(['previewReady', 'engineeringAuthority', 'panelDiagnostics'])
       && isolated(controls.missingPreview, 'previewReady')
       && isolated(controls.protectedEngineering, 'engineeringAuthority')
+      && isolated(controls.previewAppIdentityMismatch, 'previewIdentity')
+      && isolated(controls.previewDomIdentityMismatch, 'previewIdentity')
+      && isolated(controls.previewOuterIdentityMismatch, 'previewIdentity')
+      && isolated(controls.previewInnerIdentityMismatch, 'previewIdentity')
       && isolated(controls.panelClosed, 'panelOpen')
       && isolated(controls.surveyMismatch, 'surveyComposition')
       && isolated(controls.pendingPersistence, 'persistenceQuiescent'),
@@ -7635,8 +7662,11 @@ async function main() {
           if (item.shipyard) {
             const shipyardSettlementExpression = `(()=>{const S=window.__CF_SLICE__,s=S?.api?.state?.(),p=s?.persistence||null,
               r=p?.runtime||null,e=s?.engineering||null,x=s?.sceneResources||null,d=S?.api?.shipyardDiagnostics?.()||null;
+              const previews=[...document.querySelectorAll('[data-cf-shipyard-preview="v1"]')];
               return {schema:${JSON.stringify(GLASS_SHIPYARD_SETTLEMENT_SCHEMA)},panelOpen:s?.panelOpen??null,
-                cardOpen:s?.cardOpen??null,previewCount:document.querySelectorAll('[data-cf-shipyard-preview="v1"]').length,
+                cardOpen:s?.cardOpen??null,previewCount:previews.length,
+                appStateKey:s?.shipVisual?.stateKey??null,
+                previewStateKeys:previews.map((preview)=>preview.getAttribute('data-state-key')),
                 engineering:e?{schema:e.schema??null,stateKind:e.stateKind??null,protection:e.protection??null,
                   bootstrapPending:e.bootstrapPending??null,bootstrapCandidateReady:e.bootstrapCandidateReady??null}:null,
                 persistence:p?{schema:p.schema??null,hold:p.hold??null,mutationBlocked:p.mutationBlocked??null,
@@ -7694,7 +7724,7 @@ async function main() {
             pr=panel?.getBoundingClientRect(),br=body?.getBoundingClientRect(),cr=close?.getBoundingClientRect(),
             hit=cr?document.elementFromPoint((cr.left+cr.right)/2,(cr.top+cr.bottom)/2):null,
             diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
-            engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','retainedDomCount','retainedPreviewCount','schema'].sort(),
+            engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','previewStateKey','retainedDomCount','retainedPreviewCount','schema'].sort(),
             stateKey=typeof ship?.stateKey==='string'&&ship.stateKey?ship.stateKey:null,
             canonicalIds=JSON.stringify(hardpointKeys)===JSON.stringify(canonicalHardpointIds)
               &&JSON.stringify(expectedSystems)===JSON.stringify(canonicalSystemIds.filter((id)=>expectedSystems.includes(id)))
@@ -7725,7 +7755,8 @@ async function main() {
               &&diag?.activePreviewCount===1&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
               &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys)
               &&eng?.schema==='cf-v2-engineering-panel-diagnostics/v1'&&eng?.activeCount===1
-              &&eng?.pendingWork===0&&eng?.activePreviewCount===1&&eng?.retainedPreviewCount===0
+              &&eng?.pendingWork===0&&eng?.activePreviewCount===1&&eng?.previewStateKey===stateKey
+              &&diag?.stateKey===eng?.previewStateKey&&eng?.retainedPreviewCount===0
               &&eng?.delegatedListenerCount===1&&eng?.faultCount===0&&eng?.lastRequest===null
               &&eng?.retainedDomCount>${ENGINEERING_ACTION_CONTROL_COUNT}
               &&JSON.stringify(engKeys)===JSON.stringify(expectedEngKeys),
@@ -7792,7 +7823,8 @@ async function main() {
               recordControls('shipyard-preview-uniqueness');
 
               const parityControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
-                preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),priorKey=preview?.getAttribute('data-state-key'),
+                preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),substitute=preview?.cloneNode(true),
+                priorKey=preview?.getAttribute('data-state-key'),
                 fakeHardpoint=document.createElementNS('http://www.w3.org/2000/svg','g'),fakeSystem=document.createElement('div'),
                 researchList=panel?.querySelector('[data-engineering-research-rows]'),firstResearch=researchList?.firstElementChild,
                 secondResearch=firstResearch?.nextElementSibling,recipe=panel?.querySelector('[data-recipe-id]'),duplicateRecipe=recipe?.cloneNode(true),
@@ -7817,6 +7849,8 @@ async function main() {
                   unavailable:coherentStatusNode.getAttribute('data-engineering-unavailable'),kind:coherentStatusNode.getAttribute('data-unavailable-kind')}:null,
                 action=panel?.querySelector('button[data-engineering-action]'),priorDisabled=action?.disabled??null,
                 priorAriaDisabled=action?.getAttribute('aria-disabled')??null;
+                if(preview&&substitute)preview.replaceWith(substitute);const substituted=${shipyardOpenCheck};
+                if(substitute?.isConnected)substitute.replaceWith(preview);const substitutionRestored=${shipyardOpenCheck};
                 preview?.setAttribute('data-state-key','ship-v1:tampered');const key=${shipyardOpenCheck};
                 if(priorKey===null)preview?.removeAttribute('data-state-key');else preview?.setAttribute('data-state-key',priorKey);
                 fakeHardpoint.setAttribute('data-hardpoint','autoext');preview?.appendChild(fakeHardpoint);const hardpoint=${shipyardOpenCheck};fakeHardpoint.remove();
@@ -7871,7 +7905,13 @@ async function main() {
                 if(action){action.disabled=!action.disabled;action.setAttribute('aria-disabled',String(action.disabled));}
                 const actionParity=${shipyardOpenCheck};if(action&&priorDisabled!==null){action.disabled=priorDisabled;
                   if(priorAriaDisabled===null)action.removeAttribute('aria-disabled');else action.setAttribute('aria-disabled',priorAriaDisabled);}
-                return {ok:key.ok===false&&hardpoint.ok===false&&system.ok===false
+                return {ok:substituted.ok===false&&substituted.previewCount===1&&substituted.stateMatch===false
+                    &&substituted.diagnostics===false&&substituted.diag?.stateKey===null
+                    &&substituted.diag?.engineering?.previewStateKey===null
+                    &&substituted.diag?.engineering?.activePreviewCount===0
+                    &&substituted.diag?.engineering?.retainedPreviewCount>0
+                    &&substituted.diag?.engineering?.faultCount>0&&substitutionRestored.ok===true
+                    &&key.ok===false&&hardpoint.ok===false&&system.ok===false
                     &&researchOrder.ok===false&&researchOrder.researchMatch===false
                     &&coherentResearchApplied&&coherentResearchRestored
                     &&coherentResearchStatus.ok===false&&coherentResearchStatus.researchMatch===false
@@ -7881,7 +7921,7 @@ async function main() {
                     &&coherentStatus.ok===false&&coherentStatus.recipeMatch===false
                     &&coherentStatus.recipeTruth===false&&coherentStatus.actionInventory===true
                     &&actionParity.ok===false&&actionParity.actionInventory===false&&${shipyardOpenCheck}.ok,
-                  key,hardpoint,system,researchOrder,coherentResearchApplied,coherentResearchStatus,coherentResearchRestored,
+                  substituted,substitutionRestored,key,hardpoint,system,researchOrder,coherentResearchApplied,coherentResearchStatus,coherentResearchRestored,
                   recipeDuplication,groupIdentity,coherentStatus,actionParity};})()`);
               if (!parityControl.ok) {
                 instrumentFailures.push(`${vp.label}: Engineering state/research/group/recipe parity controls stayed green or failed to restore (${JSON.stringify(parityControl)})`);
@@ -8689,7 +8729,7 @@ async function main() {
             panelStyle=panel?getComputedStyle(panel):null,
             preservedStyle=preserved?getComputedStyle(preserved):null,diagKeys=diag?Object.keys(diag).sort():[],
             expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
-            engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','retainedDomCount','retainedPreviewCount','schema'].sort(),
+            engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','previewStateKey','retainedDomCount','retainedPreviewCount','schema'].sort(),
             previews=panel?.querySelectorAll('[data-cf-shipyard-preview="v1"]').length??-1;
             return {ok:S?.api?.state?.().panelOpen===null&&panelStyle?.display==='none'&&previews===0
               &&diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='closed'&&diag?.stateKey===null
@@ -8697,7 +8737,8 @@ async function main() {
               &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys)
               &&eng?.schema==='cf-v2-engineering-panel-diagnostics/v1'&&eng?.activeCount===0
               &&eng?.retainedDomCount===0&&eng?.pendingWork===0&&eng?.actionControlCount===0
-              &&eng?.activePreviewCount===0&&eng?.retainedPreviewCount===0&&eng?.delegatedListenerCount===1
+              &&eng?.activePreviewCount===0&&eng?.previewStateKey===null&&eng?.retainedPreviewCount===0
+              &&eng?.delegatedListenerCount===1
               &&eng?.faultCount===0&&JSON.stringify(engKeys)===JSON.stringify(expectedEngKeys)
               &&body?.childElementCount===0
               &&opener?.getAttribute('aria-expanded')==='false'&&document.activeElement===opener

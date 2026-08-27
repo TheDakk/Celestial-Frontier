@@ -8,14 +8,16 @@
 A **description** says how the system works. A **rubric** says how you know the port got it
 right. This file converts the former into the latter, gate by gate.
 
-**Current local candidate boundary (2026-08-27):** the complete browserless checkpoint is green at
-134 Vitest files / 1,446 passed / one intentional skip / zero failures, plus
-`root/app/worker/noUnused` TypeScript, `artunused`, syntax/import selftests and the 886-module
-build. Implementation/code and release-note audits are CLEAR. The final whole-diff audit is
-complete; its two evidence-integrity findings are repaired and their focused controls pass. The
-signed clean freeze remains. Tracked Compendium and SceneMemory producer bindings
-match the rebuilt candidate, while older exact-input certificates are **historical** until those
-exact signed producers are measured. Both rulers accept compatible
+**Current local candidate boundary (2026-08-27):** the last complete pre-certificate browserless
+checkpoint is green across 134 Vitest files / 1,458 passed / one intentional skip, all
+`root/app/worker/noUnused` TypeScript, `artunused`, syntax/import selftests and the 887-module build.
+Independent implementation/code, SceneMemory and release-note audits completed for their reviewed
+input, and their findings plus the later convergence-latch and per-field F4 evidence gaps now have
+focused controls. The affected gates are green and the independent final post-repair whole-diff
+review is CLEAR. No successor freeze or
+exact-head browser certificate exists yet. Tracked Compendium and SceneMemory producer bindings
+must match the rebuilt final candidate; older exact-input certificates remain **historical** until
+those exact signed producers are measured. Both rulers accept compatible
 Microsoft Edge-family + CDP `1.3` capability evidence; exact Edge build is provenance and a
 compatible browser update neither rebaselines nor moves numeric ceilings.
 
@@ -148,7 +150,7 @@ ever substitute for a person, and it is deliberately expensive.
 | `[EXEC]` | `conq[].e` migration correct (absent ⇒ ready, clamped to `[0, EPOCH_BASE]`) | Import-v2 tests exercise the app-compatible codec: absent epoch grants exactly one legacy-ready cycle, hostile bounds clamp, and the result round-trips to its fixed point |
 | `[EXEC]` | Legacy last-known-good promotion/recovery cannot race newer bytes or v5 authority | `@cf/persistence` repository/import controls require one atomic `compareAndApply`: promotion binds the exact primary plus absence of `f3:revision` and `f3:lease:active-play`; recovery validates and binds the exact invalid primary and exact backup plus the same two absences. Primary/backup drift or either v5 key wins with zero legacy writes, and established v5 authority retires legacy recovery rather than rolling it back |
 | `[EXEC]` | Landing/name history uses exact complete world identity and atomic five-carrier publication | `catalog/world.identity.manifest` plus exactly four shards bind registered canonical CF1 galaxy/star/planet addresses. Seed/ordinal collisions remain unresolved until the exact encounter consumes them without duplicate first-land reward; every mutation preflights manifest plus four shard replacements together before publication |
-| `[EXEC]` | F4 acquire/renew/revision-read failures converge without hidden continued authority | Acquire storage failure grants no lease/time; renew failure settles only earned active time, revokes and stops accrual. Post-acquire revision mismatch or read failure enters transient protection and schedules one read-only reload that stops answerability, heartbeat, mutation and audio, aggregates release/disposal faults, and never reacquires in the same document |
+| `[EXEC]` | F4 acquire/renew/revision-read failures converge without hidden continued authority | Acquire storage failure grants no lease/time; renew failure settles only earned active time, revokes and stops accrual. Post-acquire revision mismatch or read failure enters transient protection, latches and schedules exactly one reload before fallible repaint, stops answerability/heartbeat/mutation/audio, and never reacquires in the same document. Static controls prove latch → schedule → repaint and exact-one scheduling even if repaint throws. Both real Slice scenarios begin with the 70-control Shipyard and require immediate one-preview/zero-action protection, exact app/DOM/outer/inner key parity and byte stability before release/new-document convergence; isolated field/action/key/byte mutants stay red. Fresh exact-head browser evidence remains pending |
 | `[EXEC]` | Transient/read-only mode covers every Settings and Training mutation while retaining only the guarded import route | Sound, Volume, Creature voices, Text size, Text tone, Font, Star charts, Motion, Panel tint, Restart Training and lesson actions are disabled. The event guard excludes **Bring expedition** so replacement remains reachable, but import still requires complete validation and versioned authority, refuses unavailable authority with zero writes, and commits only as an exclusive whole-save replacement followed by reload; it is not general mutation authority. Focused selector, storage-fault and import/reload controls must prove both halves |
 | `[EXEC]` | Notification timestamps and legacy XP-first awards preserve durable fixed-point authority | Notification stamps normalize only against the injected clock and are stable through later v5 reads. XP-firsts stores the newest exact 4,000 legacy keys in v4 `xpf`; v4 `xpa` strictly binds that legacy window to the full v5 `progression.xp-firsts` overflow authority. Mismatch/future/corrupt/protected evidence rejects, portable fixed points hold, and no award rearms |
 | `[EXEC-TODO]` | Remaining map-shaped progress records reject arrays | Inject array-shaped `ascProg` / `chProg` / `prime` through each still-unmigrated owner and prove rejection. The completed notification/conquest/XP-first seams do not certify these remaining records |

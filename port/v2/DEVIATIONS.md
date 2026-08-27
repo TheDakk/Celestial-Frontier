@@ -12,13 +12,17 @@ as any change that touches an entry.
 
 ## Current-state boundary — completed local candidate lanes (2026-08-27)
 
-The completed source lanes and six preserved Slice reds remain local on `openai/mac`.
-The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,446 passed /
+The completed source lanes, six preserved Slice reds and one preserved protected-preview SceneMemory red
+remain local on `openai/mac`.
+The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,458 passed /
 one intentional skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused`,
-syntax/import selftests and the 886-module build. Implementation/code and release-note audits are
-CLEAR. The final whole-diff audit is complete; its two evidence-integrity findings are repaired and
-their focused controls pass. The signed clean freeze remains. Tracked
-Compendium and SceneMemory producer bindings match the rebuilt candidate, while their former
+syntax/import selftests and the 887-module build. Prior implementation/code and release-note audits
+are CLEAR for their reviewed input. Their findings plus the later convergence-latch and per-field
+F4 control gaps are repaired. The independent final post-repair whole-diff review is CLEAR;
+the signed successor freeze remains pending.
+`bb5dc7c7f4372f712778af67ace2b5f81b71b99d` remains the signed
+predecessor that produced terminal-red SceneMemory; a new signed successor and fresh certificate
+IDs remain pending. Tracked Compendium and SceneMemory producer bindings match the rebuilt worktree, while their former
 exact-input certificates stay historical until the exact signed producers are measured under the
 version-tolerant Edge-family/CDP capability contracts.
 
@@ -32,8 +36,23 @@ contextless blocked audio; private-candidate then committed epoch proof; and Sur
 Training ownership refresh. Exact Edge build is Slice provenance only; Slice and Glass judge fresh
 behavior/geometry rather than a version pin, so a browser update alone never triggers rebaselining
 or moves thresholds. Compendium and SceneMemory own separate sealed Edge-family/CDP
-capability/profile authorities; neither treats the exact point version as baseline identity. No Slice
-PASS, Glass result, recovery certificate, hosted/HUMAN whole-Gate or release authority exists.
+capability/profile authorities; neither treats the exact point version as baseline identity. Signed
+predecessor `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` passed named layout 787/787, then
+SceneMemory `20260827-phase4-final-scenemem` ran once with zero retries and complete cleanup on
+Edge `.107` before honestly failing phone Shipyard settlement. No later browser stage ran.
+
+The immutable veteran carrier's orphan Mine seed 201 has no source-proved full address, so Arc 3
+correctly protects its authority-dependent Engineering details/actions. SceneMemory owns the older
+Arc 1C preview/resource contract, and the red exposed a product coupling defect: protection also
+erased the independently capability-derived read-only ship preview. The bounded successor leaves
+that carrier unchanged; SceneMemory derives its input by changing only the existing `view` field to
+`null` and preserving every other field. It separates that preview and reports field-level
+settlement reasons instead of `last:null`. Glass retains its distinct source-checked both-cleared
+fixture for full loaded Engineering; SceneMemory does not inherit that fixture or an Arc 3-loaded
+PASS clause. The timeout was not a performance/deadline defect and is no reason to lengthen the
+allowance; deadline, numeric ruler and browser authority remain unchanged. No SceneMemory/
+Compendium certificate, Slice PASS, Glass
+result, recovery certificate, hosted/HUMAN whole-Gate or release authority exists for the successor.
 
 - ★ **D-PORT-TOOLCHAIN — the master plan's generic quality roles use the repository's executable
   equivalents.** The supplied immutable plan names Playwright, Zod/JSON Schema, ESLint and Prettier.

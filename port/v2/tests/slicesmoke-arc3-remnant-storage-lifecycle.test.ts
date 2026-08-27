@@ -191,6 +191,21 @@ function enrichedRemnantEvidence(
   return { evidence, route: { original: preRoute, enriched: enrichedPreRoute } };
 }
 
+function withCurrentShipyardPreviewIdentity(
+  originalEvidence: Record<string, unknown>,
+): Record<string, unknown> {
+  const evidence = structuredClone(originalEvidence);
+  const current = record(evidence.current, 'remnant current route');
+  const shipVisual = record(current.shipVisual, 'remnant ship visual');
+  const surface = record(evidence.surface, 'remnant Shipyard surface');
+  const diagnostics = record(surface.diagnostics, 'remnant Shipyard diagnostics');
+  const engineering = record(diagnostics.engineering, 'remnant Engineering diagnostics');
+  surface.previewStateKeys = [shipVisual.stateKey];
+  diagnostics.stateKey = shipVisual.stateKey;
+  engineering.previewStateKey = shipVisual.stateKey;
+  return evidence;
+}
+
 function expectOnlyNamedCheckRed(assessment: Assessment, expected: string): void {
   expect(assessment.ok).toBe(false);
   expect(assessment.checks[expected]).toBe(false);
@@ -230,6 +245,11 @@ const storageOwner = section(
   '  const biomeReloadObservation = await waitDesktopValue(',
   '  const staleBeforeToken = await sliceToken(sess);',
 );
+const f4OutcomeOwner = section(
+  sliceSource,
+  '  /* F4 app-level storage failure. Hold only the already-scheduled convergence',
+  '  /* 5. zero console errors / exceptions across the whole run */',
+);
 
 const CONTRACT_FIELDS = [
   ['exact biome-system identity',
@@ -249,6 +269,14 @@ const CONTRACT_FIELDS = [
   ['rejected source oracle', 'source: exactPostLifecycleBiomeSystemSource(before?.route)'],
   ['Skim preRoute oracle', 'preRoute: exactPostLifecycleBiomeSystemSource(preRoute)'],
   ['current receipt epoch', 'mode: \'system\', ecologyEpoch: current?.epoch,'],
+  ['nonempty Shipyard app preview identity',
+    "typeof previewStateKey === 'string' && previewStateKey.length > 0"],
+  ['exact Shipyard DOM preview identity',
+    'canonicalToolJson(surface?.previewStateKeys) === canonicalToolJson([previewStateKey])'],
+  ['exact Shipyard outer preview identity',
+    'diagnostics?.stateKey === previewStateKey'],
+  ['exact Shipyard preview identity',
+    'engineering?.previewStateKey === previewStateKey'],
 ] as const satisfies readonly Field[];
 
 const SELFTEST_FIELDS = [
@@ -268,6 +296,16 @@ const SELFTEST_FIELDS = [
     'current: { ...remnantRouteSelftestEvidence.current, epoch: 13 }'],
   ['real rejected-route drift',
     'starX: rejectedRouteFullPrecisionEvidence.after.route.starX + 1'],
+  ['Shipyard app identity negative control',
+    "stateKey: 'ship:v1:remnant-app-control-mismatch'"],
+  ['Shipyard outer identity negative control',
+    "stateKey: 'ship:v1:remnant-outer-control-mismatch'"],
+  ['Shipyard inner identity negative control',
+    "previewStateKey: 'ship:v1:remnant-inner-control-mismatch'"],
+  ['Shipyard DOM identity negative control',
+    "previewStateKeys: ['ship:v1:remnant-dom-control-mismatch']"],
+  ['Shipyard four-way missing-identity negative control',
+    'evidence.surface.previewStateKeys = [];'],
 ] as const satisfies readonly Field[];
 
 const SLICE_GLOBAL_FIELDS = [
@@ -289,6 +327,16 @@ const REMNANT_FIELDS = [
     'missingCurrentReceiptEpoch: assessArc3RemnantSkimRoutePrecondition'],
   ['wrong receipt epoch live control',
     'wrongCurrentReceiptEpoch: assessArc3RemnantSkimRoutePrecondition'],
+  ['Shipyard app diagnostics live control',
+    'diagnosticsAppKeyDrift: assessArc3RemnantSkimRoutePrecondition'],
+  ['Shipyard outer diagnostics live control',
+    'diagnosticsOuterKeyDrift: assessArc3RemnantSkimRoutePrecondition'],
+  ['Shipyard inner diagnostics live control',
+    'diagnosticsInnerKeyDrift: assessArc3RemnantSkimRoutePrecondition'],
+  ['Shipyard DOM diagnostics live control',
+    'diagnosticsDomKeyDrift: assessArc3RemnantSkimRoutePrecondition'],
+  ['Shipyard four-way missing diagnostics live control',
+    'diagnosticsFourWayIdentityMissing: assessArc3RemnantSkimRoutePrecondition'],
   ['pre-Skim fail-fast',
     "failSliceWithoutCascade('ARC 3 REMNANT ROUTE/PRECONDITION CONTROL FAILED"],
 ] as const satisfies readonly Field[];
@@ -331,6 +379,20 @@ const STORAGE_FIELDS = [
     "const storageTarget = await pressEngineeringKeyboard('fabricate', 'plate');"],
   ['terminal fail-fast', STORAGE_TERMINAL_FAIL_CALL],
   ['control fail-fast', STORAGE_CONTROL_FAIL_CALL],
+  ['Storage live DOM preview capture',
+    'const storageAfterPreviewStateKeys = await captureStorageTerminal('],
+  ['Storage live DOM preview evidence',
+    'afterPreviewStateKeys: storageAfterPreviewStateKeys'],
+  ['Storage app preview identity control',
+    'previewAppIdentity: assessArc3StorageRefusal'],
+  ['Storage outer preview identity control',
+    'previewOuterIdentity: assessArc3StorageRefusal'],
+  ['Storage inner preview identity control',
+    'previewInnerIdentity: assessArc3StorageRefusal'],
+  ['Storage DOM preview identity control',
+    'previewDomIdentity: assessArc3StorageRefusal'],
+  ['Storage four-way missing preview identity control',
+    'previewFourWayIdentityMissing: assessArc3StorageRefusal'],
 ] as const satisfies readonly Field[];
 
 const REMNANT_ORDER = [
@@ -461,13 +523,14 @@ describe('Slice Arc 3 remnant and Storage lifecycle harness', () => {
         'source',
       );
     }
-    const preRoute = projectedRoute(evidence.remnant.preRoute, 'remnant preRoute');
+    const currentRemnant = withCurrentShipyardPreviewIdentity(evidence.remnant);
+    const preRoute = projectedRoute(currentRemnant.preRoute, 'remnant preRoute');
     expect(record(preRoute.renderedScene, 'remnant preRoute receipt').ecologyEpoch).toBe(12);
     const current = record(evidence.remnant.current, 'remnant current route');
     expect(current.epoch).toBe(12);
     expect(record(current.renderedScene, 'remnant current receipt').ecologyEpoch).toBe(12);
     expectOnlyNamedCheckRed(
-      contractClassifiers.assessArc3RemnantSkimRoutePrecondition(evidence.remnant),
+      contractClassifiers.assessArc3RemnantSkimRoutePrecondition(currentRemnant),
       'preRoute',
     );
   });
@@ -476,7 +539,7 @@ describe('Slice Arc 3 remnant and Storage lifecycle harness', () => {
     const original = fourthRedEvidence();
     const fullPrecision = enrichedRejectedEvidence(original.fullPrecision);
     const rounded = enrichedRejectedEvidence(original.rounded);
-    const remnant = enrichedRemnantEvidence(original.remnant);
+    const remnant = enrichedRemnantEvidence(withCurrentShipyardPreviewIdentity(original.remnant));
     for (const { original: route, enriched } of [
       ...fullPrecision.routes, ...rounded.routes, remnant.route,
     ]) expectOnlyAddedReceiptEpoch(route, enriched);
@@ -488,6 +551,47 @@ describe('Slice Arc 3 remnant and Storage lifecycle harness', () => {
     );
     expectAllChecksGreen(
       contractClassifiers.assessArc3RemnantSkimRoutePrecondition(remnant.evidence),
+    );
+    const previewMismatch = structuredClone(remnant.evidence);
+    const previewSurface = record(previewMismatch.surface, 'preview mismatch surface');
+    const previewDiagnostics = record(previewSurface.diagnostics, 'preview mismatch diagnostics');
+    record(previewDiagnostics.engineering, 'preview mismatch engineering').previewStateKey =
+      'ship:v1:remnant-control-mismatch';
+    expectOnlyNamedCheckRed(
+      contractClassifiers.assessArc3RemnantSkimRoutePrecondition(previewMismatch),
+      'diagnostics',
+    );
+    const domMismatch = structuredClone(remnant.evidence);
+    record(domMismatch.surface, 'DOM mismatch surface').previewStateKeys = [
+      'ship:v1:remnant-dom-control-mismatch',
+    ];
+    expectOnlyNamedCheckRed(
+      contractClassifiers.assessArc3RemnantSkimRoutePrecondition(domMismatch),
+      'diagnostics',
+    );
+    const missingFourWayPreviewIdentity = structuredClone(remnant.evidence);
+    const missingCurrent = record(
+      missingFourWayPreviewIdentity.current,
+      'missing-identity current',
+    );
+    delete record(missingCurrent.shipVisual, 'missing-identity ship visual').stateKey;
+    const missingSurface = record(
+      missingFourWayPreviewIdentity.surface,
+      'missing-identity surface',
+    );
+    missingSurface.previewStateKeys = [];
+    const missingDiagnostics = record(
+      missingSurface.diagnostics,
+      'missing-identity diagnostics',
+    );
+    delete missingDiagnostics.stateKey;
+    delete record(
+      missingDiagnostics.engineering,
+      'missing-identity Engineering diagnostics',
+    ).previewStateKey;
+    expectOnlyNamedCheckRed(
+      contractClassifiers.assessArc3RemnantSkimRoutePrecondition(missingFourWayPreviewIdentity),
+      'diagnostics',
     );
     expect(Object.hasOwn(
       record(record(original.fullPrecision.before, 'original full before').route,
@@ -501,6 +605,8 @@ describe('Slice Arc 3 remnant and Storage lifecycle harness', () => {
   it('owns one exact current source/receipt contract without binding the hidden title', () => {
     expect(fieldErrors(contractOwner, CONTRACT_FIELDS)).toEqual([]);
     expect(contractOwner).not.toContain('route.cardTitle');
+    expect(occurrences(f4OutcomeOwner, 'JSON.stringify(ENGINEERING_VETERAN_RAW)')).toBe(2);
+    expect(f4OutcomeOwner).not.toContain('JSON.stringify(VETERAN_RAW)');
   });
 
   it('keeps every source and epoch selftest control present and non-vacuous', () => {
