@@ -149,25 +149,43 @@
 > `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
 > attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Those exact bytes
 > remain historical for that producer; Edge `.107` is provenance only.
-> The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,458 passed /
-> one intentional skip / zero failures, plus all TypeScript programs, `artunused`, syntax/import
-> selftests and the 887-module Vite build. Prior implementation/code and release-note audits are
-> CLEAR for their reviewed input. Their findings plus the later convergence-latch and per-field F4
-> evidence gaps are repaired and focused; the independent final post-repair whole-diff review is CLEAR. Signed
-> `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` is the preserved
-> predecessor whose named SceneMemory run ended terminal-red; a new signed successor and fresh
-> certificate IDs remain pending. The protected-preview product/diagnostic repair leaves the
-> immutable veteran carrier unchanged and derives SceneMemory input by changing only its existing
-> `view` field to `null`, preserving every other field. Tracked Compendium and SceneMemory bindings
-> match the rebuilt worktree, while previous certificates are historical until the exact new signed
-> producers are measured. Current-input Slice retains
+> The complete current repair battery is green at 134 Vitest files / 1,466 passed / one intentional
+> skip / zero failures, plus all TypeScript programs, `artunused` and the 887-module Vite build. The
+> explicitly historical signed-red browserless checkpoint was green at the same 134 files / 1,458
+> passed / one intentional skip / zero failures, with syntax/import selftests. Prior implementation/
+> code and release-note audits are CLEAR for their reviewed input, and focused checks cover the current closed-surface and
+> diagnostic repair. Signed `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` remains the preserved
+> protected-preview red predecessor. Signed successor
+> `862a75b316142348636abea442dab15e87393642` passed named Layout
+> `20260827-phase4-successor-layout` 787/787, then named SceneMemory
+> `20260827-phase4-successor-scenemem` ran once with zero retries and complete cleanup on Edge
+> `.107` / CDP `1.3` before stopping the chain at 40/42. Only phone/desktop `heap-dom-budget`
+> failed: phone maxima were 11,580,536 V8 / 17,758,550 aggregate heap bytes / 898 nodes / 90
+> listeners; desktop maxima were 11,635,116 / 17,687,678 / 895 / 89. Exact raw/gzip carrier
+> hashes are `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7` /
+> `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`.
+>
+> The bounded repair retains Inventory data/filter/page state while closed but unmounts its hidden
+> row tree and six open-lifetime subscriptions; late action settlement cannot remount closed DOM,
+> and disposal cannot reacquire. One delegated focus-capture owner replaces per-opener closures and
+> restores the exact registered opener even for nested clicks. SceneMemory now reports every failed
+> field, value and ceiling instead of one generic heap/DOM reason. Dirty non-certifying diagnostic
+> `20260827165427809-91398-352d7132df` reduced nodes to 676/673 and listeners to 71/70, green
+> under unchanged 704/80 ceilings, while fixed V8/aggregate growth remained. That diagnostic is not
+> a candidate or certificate. The preserved `862a75b…` report is the paired broken baseline and must
+> remain red on nodes/listeners after any heap-only activation. Exactly three independent clean,
+> no-retry candidates on one unchanged signed producer, raw replay and strict headroom are required
+> before only the V8-used and aggregate ceilings may move. A compatible Edge point update is
+> provenance only and never triggers this calibration or any threshold change. A new signed clean
+> calibration source and fresh certificate IDs remain pending. Tracked Compendium and SceneMemory
+> bindings must match that clean source; previous certificates remain historical. Current-input Slice retains
 > six one-attempt/zero-retry reds. Signed-clean
 > `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7` on Edge `.107`: 397,101 ms, 23 findings /
 > 16 scopes, required false, null `ok`/ledger and no Arc 4 success marker/line. Glass and recovery
 > correctly did not run.
 >
-> All five independent roots are locally repaired with negative controls: Guide/Glass bind the exact
+> All five independent Slice roots are locally repaired with negative controls: Guide/Glass bind the exact
 > 55-bullet draft and 54-bullet removal; stable comparison excludes both ecology diagnostic clocks
 > while independently bounding and mutating ecology movement; blocked contextless audio accepts
 > either boolean mute state but no created runtime resources; epoch proof distinguishes the private
@@ -175,8 +193,10 @@
 > locks/focus after DOM replacement. Exact Edge build is Slice provenance only; Slice and Glass
 > judge fresh behavior/geometry rather than a version pin, so a browser update alone never
 > rebaselines or moves ceilings. Compendium and SceneMemory own separate sealed Edge-family + CDP
-> `1.3` capability/profile authorities; version tolerance changed no numeric budget in either ruler,
-> and both final frozen producers require new bound certificates. Root Gate A separately accepts
+> `1.3` capability/profile authorities; version tolerance changed no numeric budget in either ruler.
+> The current worktree is not a final frozen producer: SceneMemory must finish its three-candidate and
+> paired-red calibration, then any supported heap-only activation, while both eventual exact-producer
+> certificates remain open. Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
 > never repins, rebaselines or moves a root threshold. Post-start audio, the exact nine-stage/14-burn ledger, current Glass and
@@ -1189,8 +1209,8 @@ Engineering action controls. Full Engineering must carry the same ship key. The 
 carrier remains unchanged; SceneMemory derives its input by changing only the existing `view` field
 to `null` and preserving every other field, then certifies only the Arc 1C preview/resource
 lifecycle. It does not inherit a loaded-Arc-3 requirement. Signed predecessor `bb5dc7c…` exposed
-this coupling and remains preserved terminal-red; a new signed successor and fresh certificate IDs
-remain open.
+this coupling and remains preserved terminal-red. Signed successor `862a75b…` reached the separate
+40/42 heap/DOM red; a new signed clean calibration source and fresh certificate IDs remain open.
 
 ### 4.8 F3 — persistence authority, split stores, and receipts
 
@@ -1304,6 +1324,8 @@ comparison, and visible ways to earn, improve, salvage, or target it.
   expected time-to-upgrade, recovery from a bad allocation, and no dominant farm.
 - Apply the panel coexistence, focus, Escape, and Close law before dense Inventory/compare/vendor
   UI expands. Static DOM thumbnails remain bounded; do not build a grid of unowned Pixi scenes.
+  A closed Inventory retains semantic data/filter/page state, not its bounded row DOM or open-only
+  subscriptions; asynchronous durable settlement while closed must not remount hidden content.
 
 **Dependencies:** F2 canonical targeting, F3 transactions/receipts, F4 RNG/clock, and Arc 1
 portrait/Shipyard foundations.
@@ -1321,6 +1343,10 @@ misrepresented as authored natural prefix/suffix policy. Training replacement ke
 legacy projection coherent under the same checked transaction. Slice Smoke and 12-viewport Glass
 exercise the real opener, exact carrier/raw/runtime/DOM parity, real action publication, reload,
 modal/focus/Close, conditional wording, controls, and fail-safe mutations.
+Production now mounts the Inventory row tree and six panel/detail subscriptions only while open,
+accepts authoritative state while closed without repaint, and cannot reacquire through a stale
+registration after disposal. All registered panel openers share one delegated focus-capture owner
+and restore the exact nested-click opener rather than retaining one closure per control.
 
 Arc 2 is not marked program-complete: its source-neutral economy ledger deliberately reports
 `arc3-deferred` instead of inventing world faucets or ETAs. Arc 3 now owns the separate live
@@ -1901,13 +1927,20 @@ Outside-dismiss behavior also belongs to this law: panel content/openers use man
 stable non-dismiss chrome declares one root boundary, both desktop rail gaps receive browser-mouse
 hit-test/removal controls, and genuine unmarked canvas still closes. Do not infer preservation from
 `.glass`, ARIA role, or broad top chrome—Search intentionally remains an outside action until the
-later coexistence/Escape decision.
+later coexistence/Escape decision. Registered openers share one delegated capture owner; exact-one
+controls must treat `true` and `{capture:true}` as the same capture mode and prove nested-click focus
+restoration without allocating per-opener closures.
 
 ### 9.3 Performance, lifecycle, and evidence discipline
 
 - New UI: type checks, smoke, real-browser layout/reachability, and applicable phone checks.
 - New memory/resource work: populated surfaces, warm plateau, raw counters where available, and
   deliberate unbounded/no-disposal controls.
+- A heap/DOM red names every exact field, observed value and ceiling. Remove avoidable owners before
+  considering calibration; a dirty diagnostic is never a sample. Any fixed-growth activation uses
+  exactly three independent clean candidates from one unchanged signed producer, raw replay, strict
+  headroom and a paired broken baseline, and changes only fields those samples justify. Compatible
+  Edge point updates are provenance only and never trigger calibration or threshold movement.
 - New declarations: compile-time probes plus runtime consumer shapes.
 - New persistence: exporter/importer/migration/readback/failure/two-tab outcomes.
 - New art/audio: fixed-seed proof, phone/desktop review, and required [HUMAN] acceptance.

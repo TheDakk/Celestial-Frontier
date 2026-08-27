@@ -164,6 +164,10 @@ export interface InventoryPanelControllerOptions {
   readonly openers?: readonly (HTMLElement | null)[];
   readonly onAction?: (request: InventoryPanelActionRequest) => Promise<InventoryPanelActionOutcome>;
   readonly requiresSalvageConfirmation?: (request: InventoryPanelActionRequest) => boolean;
+  /** Production panels retain state while closed, but not a hidden row tree
+   * or six dormant event subscriptions. Tests and standalone consumers keep
+   * the historical eager behavior unless they opt into this lifecycle. */
+  readonly deferWhileClosed?: boolean;
 }
 
 type InventoryStatusFilter = 'all' | 'equipped' | 'protected';
@@ -242,6 +246,7 @@ export class InventoryPanelController {
   readonly #openers: readonly (HTMLElement | null)[];
   readonly #actionAdapter: InventoryPanelControllerOptions['onAction'] | null;
   readonly #requiresSalvageConfirmation: NonNullable<InventoryPanelControllerOptions['requiresSalvageConfirmation']>;
+  readonly #deferWhileClosed: boolean;
   readonly #background = new Map<HTMLElement, Readonly<{ inert: boolean; ariaHidden: string | null }>>();
   #state: Arc2LootStateV1 | null = null;
   #query = '';
@@ -256,6 +261,8 @@ export class InventoryPanelController {
   #convergencePending = false;
   #lastAction: InventoryPanelLastAction | null = null;
   #salvageConfirmationFor: string | null = null;
+  #panelOpen = false;
+  #listenersInstalled = false;
   #disposed = false;
 
   constructor(options: InventoryPanelControllerOptions) {
@@ -265,6 +272,7 @@ export class InventoryPanelController {
     this.#openers = Object.freeze([...(options.openers ?? [])]);
     this.#actionAdapter = options.onAction ?? null;
     this.#requiresSalvageConfirmation = options.requiresSalvageConfirmation ?? (() => false);
+    this.#deferWhileClosed = options.deferWhileClosed ?? false;
     if (options.sheet.ownerDocument !== this.#document) {
       throw new Error('Inventory panel and sheet must belong to one document');
     }
@@ -293,14 +301,10 @@ export class InventoryPanelController {
     this.#sheet.hidden = true;
     this.#sheet.setAttribute('aria-hidden', 'true');
     this.#sheet.setAttribute('aria-busy', 'false');
-
-    this.#panelBody.addEventListener('click', this.#onPanelClick);
-    this.#panelBody.addEventListener('input', this.#onPanelInput);
-    this.#panelBody.addEventListener('change', this.#onPanelChange);
-    this.#sheet.addEventListener('click', this.#onSheetClick);
-    this.#document.addEventListener('keydown', this.#onKeyDown, true);
-    this.#document.addEventListener('focusin', this.#onFocusIn, true);
-    this.render();
+    if (!this.#deferWhileClosed) {
+      this.#installListeners();
+      this.render();
+    }
   }
 
   setState(state: Arc2LootStateV1 | null): void {
@@ -310,7 +314,7 @@ export class InventoryPanelController {
     this.#convergencePending = false;
     this.#page = 0;
     this.#salvageConfirmationFor = null;
-    this.render();
+    if (!this.#deferWhileClosed || this.#panelOpen) this.render();
   }
 
   registration(): InventoryPanelRegistration {
@@ -319,8 +323,21 @@ export class InventoryPanelController {
       id: 'inventory',
       el: this.#panel,
       btns: [...this.#openers],
-      onOpen: () => this.render(),
-      onClose: () => this.closeDetail(false),
+      onOpen: () => {
+        this.#assertLive();
+        this.#panelOpen = true;
+        this.#installListeners();
+        this.render();
+      },
+      onClose: () => {
+        if (this.#disposed) return;
+        this.#panelOpen = false;
+        this.closeDetail(false);
+        if (this.#deferWhileClosed) {
+          this.#panelBody.replaceChildren();
+          this.#removeListeners();
+        }
+      },
     });
   }
 
@@ -479,14 +496,33 @@ export class InventoryPanelController {
 
   dispose(): void {
     if (this.#disposed) return;
+    this.#panelOpen = false;
     this.closeDetail(false);
+    if (this.#deferWhileClosed) this.#panelBody.replaceChildren();
+    this.#removeListeners();
+    this.#disposed = true;
+  }
+
+  #installListeners(): void {
+    if (this.#listenersInstalled) return;
+    this.#panelBody.addEventListener('click', this.#onPanelClick);
+    this.#panelBody.addEventListener('input', this.#onPanelInput);
+    this.#panelBody.addEventListener('change', this.#onPanelChange);
+    this.#sheet.addEventListener('click', this.#onSheetClick);
+    this.#document.addEventListener('keydown', this.#onKeyDown, true);
+    this.#document.addEventListener('focusin', this.#onFocusIn, true);
+    this.#listenersInstalled = true;
+  }
+
+  #removeListeners(): void {
+    if (!this.#listenersInstalled) return;
     this.#panelBody.removeEventListener('click', this.#onPanelClick);
     this.#panelBody.removeEventListener('input', this.#onPanelInput);
     this.#panelBody.removeEventListener('change', this.#onPanelChange);
     this.#sheet.removeEventListener('click', this.#onSheetClick);
     this.#document.removeEventListener('keydown', this.#onKeyDown, true);
     this.#document.removeEventListener('focusin', this.#onFocusIn, true);
-    this.#disposed = true;
+    this.#listenersInstalled = false;
   }
 
   #assertLive(): void {
@@ -980,7 +1016,7 @@ export class InventoryPanelController {
     /* The adapter is the durable authority. Only its committed carrier is
        published; no local projection is applied while the promise is open. */
     this.#state = outcome.state;
-    this.render();
+    if (!this.#deferWhileClosed || this.#panelOpen) this.render();
     if (selectedAtSettlement === null) return;
     if (operation === 'salvage' && selectedAtSettlement === instanceId) {
       this.#focusReturn = this.#panelFocusTarget();

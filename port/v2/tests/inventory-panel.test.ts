@@ -147,6 +147,7 @@ afterEach(() => {
 describe('Arc 2 Inventory presentation', () => {
   it('seats ten exact phone-dock controls in two 5×44px rows and one accessible dialog shell', () => {
     const index = fs.readFileSync(path.join(here, '../apps/game/index.html'), 'utf8');
+    const main = fs.readFileSync(path.join(here, '../apps/game/src/main.ts'), 'utf8');
     const parsed = new JSDOM(index);
     const document = parsed.window.document;
     expect(document.querySelectorAll('#dock > button')).toHaveLength(10);
@@ -166,6 +167,7 @@ describe('Arc 2 Inventory presentation', () => {
     expect(sheet?.getAttribute('aria-modal')).toBe('true');
     expect(sheet?.getAttribute('aria-labelledby')).toBe('inventorysheettitle');
     expect(sheet?.querySelectorAll('[data-inventory-sheet-close]')).toHaveLength(1);
+    expect(main).toMatch(/new InventoryPanelController\(\{[\s\S]*?deferWhileClosed:\s*true,[\s\S]*?\}\);/);
     parsed.window.close();
   });
 
@@ -710,6 +712,118 @@ describe('Arc 2 Inventory presentation', () => {
     expect(controller.showDetail('gear1|not-real')).toBe(false);
     expect(onAction).not.toHaveBeenCalled();
     expect(view.sheet.hidden).toBe(true);
+  });
+
+  it('retains state but releases hidden production rows and listeners between panel opens', () => {
+    const item = gear(91, 'rig1');
+    const view = shell();
+    const panelBody = view.panel.querySelector<HTMLElement>('[data-inventory-panel-body]')!;
+    const panelAdd = vi.spyOn(panelBody, 'addEventListener');
+    const panelRemove = vi.spyOn(panelBody, 'removeEventListener');
+    const sheetAdd = vi.spyOn(view.sheet, 'addEventListener');
+    const sheetRemove = vi.spyOn(view.sheet, 'removeEventListener');
+    const documentAdd = vi.spyOn(view.document, 'addEventListener');
+    const documentRemove = vi.spyOn(view.document, 'removeEventListener');
+    controller = new InventoryPanelController({
+      panel: view.panel,
+      sheet: view.sheet,
+      openers: [view.opener],
+      deferWhileClosed: true,
+    });
+    controller.setState(loaded(inventoryOf([item])));
+
+    expect(panelBody.childElementCount).toBe(0);
+    expect(panelAdd).not.toHaveBeenCalled();
+    expect(sheetAdd).not.toHaveBeenCalled();
+    expect(documentAdd).not.toHaveBeenCalled();
+
+    const registration = controller.registration();
+    registration.onOpen();
+    registration.onOpen();
+    expect(panelBody.querySelector(`[data-instance-id="${item.instanceId}"]`)).not.toBeNull();
+    expect(panelAdd).toHaveBeenCalledTimes(3);
+    expect(sheetAdd).toHaveBeenCalledTimes(1);
+    expect(documentAdd).toHaveBeenCalledTimes(2);
+
+    registration.onClose();
+    registration.onClose();
+    expect(panelBody.childElementCount).toBe(0);
+    expect(panelRemove).toHaveBeenCalledTimes(3);
+    expect(sheetRemove).toHaveBeenCalledTimes(1);
+    expect(documentRemove).toHaveBeenCalledTimes(2);
+
+    controller.setState(loaded(createGearInventory(4)));
+    expect(panelBody.childElementCount).toBe(0);
+    registration.onOpen();
+    expect(panelBody.textContent).toContain('No exact item instance matches');
+    expect(panelAdd).toHaveBeenCalledTimes(6);
+    controller.dispose();
+    expect(panelBody.childElementCount).toBe(0);
+    expect(panelRemove).toHaveBeenCalledTimes(6);
+    expect(sheetRemove).toHaveBeenCalledTimes(2);
+    expect(documentRemove).toHaveBeenCalledTimes(4);
+  });
+
+  it('keeps a deferred action result authoritative without rebuilding rows after Close', async () => {
+    const item = gear(92, 'rig1');
+    const initialInventory = inventoryOf([item]);
+    const equippedInventory = committed(equipGear(
+      initialInventory, initialInventory.revision, item.instanceId,
+    ));
+    const gate = deferred<InventoryPanelActionOutcome>();
+    const view = shell();
+    controller = new InventoryPanelController({
+      panel: view.panel,
+      sheet: view.sheet,
+      openers: [view.opener],
+      onAction: () => gate.promise,
+      deferWhileClosed: true,
+    });
+    controller.setState(loaded(initialInventory));
+    const registration = controller.registration();
+    registration.onOpen();
+    view.panel.querySelector<HTMLButtonElement>(`[data-instance-id="${item.instanceId}"]`)!.click();
+    view.sheet.querySelector<HTMLButtonElement>('[data-inventory-action="equip"]')!.click();
+    expect(controller.diagnostics().pendingWork).toBe(1);
+
+    registration.onClose();
+    expect(view.panel.querySelector<HTMLElement>('[data-inventory-panel-body]')!.childElementCount).toBe(0);
+    gate.resolve({ kind: 'committed', detail: 'equipped after Close', state: loaded(equippedInventory) });
+    await settleAction();
+    expect(view.panel.querySelector<HTMLElement>('[data-inventory-panel-body]')!.childElementCount).toBe(0);
+    expect(controller.diagnostics()).toMatchObject({
+      pendingWork: 0,
+      selectedInstanceId: null,
+      lastAction: { kind: 'committed', detail: 'equipped after Close' },
+    });
+
+    registration.onOpen();
+    expect(view.panel.querySelector<HTMLElement>(`[data-instance-id="${item.instanceId}"]`)?.dataset.equipped)
+      .toBe('true');
+  });
+
+  it('cannot reacquire deferred listeners through a registration captured before disposal', () => {
+    const view = shell();
+    const panelBody = view.panel.querySelector<HTMLElement>('[data-inventory-panel-body]')!;
+    const panelAdd = vi.spyOn(panelBody, 'addEventListener');
+    const sheetAdd = vi.spyOn(view.sheet, 'addEventListener');
+    const documentAdd = vi.spyOn(view.document, 'addEventListener');
+    controller = new InventoryPanelController({
+      panel: view.panel,
+      sheet: view.sheet,
+      deferWhileClosed: true,
+    });
+    const registration = controller.registration();
+    registration.onOpen();
+    expect(panelBody.childElementCount).toBeGreaterThan(0);
+    controller.dispose();
+
+    expect(() => registration.onOpen()).toThrow(/disposed/);
+    expect(() => registration.onClose()).not.toThrow();
+    expect(panelBody.childElementCount).toBe(0);
+    expect(panelAdd).toHaveBeenCalledTimes(3);
+    expect(sheetAdd).toHaveBeenCalledTimes(1);
+    expect(documentAdd).toHaveBeenCalledTimes(2);
   });
 
   it('renders absent and empty states without inventing an item or action', () => {

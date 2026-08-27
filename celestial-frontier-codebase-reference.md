@@ -85,7 +85,36 @@
 > 3 loaded authority to PASS or changing its timeout, ruler or version-tolerant browser authority.
 > The timeout was not a performance/deadline defect and is no reason to lengthen the allowance.
 > The preserved carrier and exact raw/gzip hashes are inventoried in `audits/README.md`. Compendium,
-> Slice, Glass and recovery did not run after this red; a new signed successor campaign is required.
+> Slice, Glass and recovery did not run after this red; at that boundary a new signed successor
+> campaign was required.
+>
+> Signed successor `862a75b316142348636abea442dab15e87393642` passed named Layout
+> `20260827-phase4-successor-layout` 787/787 across all ten viewports and exact-run verification.
+> Its next one-attempt/zero-retry SceneMemory stage,
+> `20260827-phase4-successor-scenemem`, completed cleanup on Edge `151.0.4129.107` / CDP `1.3`
+> and stopped the serial chain at 40/42. Only phone/desktop `heap-dom-budget` failed: phone maxima
+> were 11,580,536 V8 heap bytes, 17,758,550 aggregate heap bytes, 898 nodes and 90 JavaScript
+> listeners; desktop maxima were 11,635,116, 17,687,678, 895 and 89. Warm range/slope,
+> answerability, resource ownership, registry, same-document and cleanup outcomes were green.
+> The exact carrier is
+> `audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz`; raw/gzip SHA-256 are
+> `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7` /
+> `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`. It remains the paired
+> broken baseline, not a green result or calibration sample.
+>
+> Static ownership separated the avoidable closed shell from fixed product growth. Production
+> Inventory now retains inventory/filter/page state while closed but unmounts its row tree and six
+> open-lifetime subscriptions; a late committed action updates authoritative state without rebuilding
+> hidden rows, and disposal cannot reacquire through a stale registration. All registered panel
+> openers share one delegated focus-capture owner that preserves the exact nested-click opener.
+> SceneMemory now diagnoses each breached field with its observed value and ceiling while retaining
+> the prior acceptance of valid zero-valued heap components. Dirty, deliberately non-certifying
+> diagnostic `20260827165427809-91398-352d7132df` reduced nodes to 676/673 and listeners to 71/70,
+> below the unchanged 704/80 ceilings; it is diagnosis only, never a candidate or certificate. V8
+> and aggregate heap remained at the larger fixed Arc 2–5/F4 product level. Only those two heap
+> ceilings may be considered after three independent clean, no-retry candidates on one unchanged
+> signed producer, strict headroom and raw replay. Edge `.107` is provenance only: a compatible
+> point update never starts calibration, rebaselines a ruler or moves a threshold.
 >
 > Charter mining consumes exact registered world identity. Chapter 1's `c1-mine` credit requires a
 > successful Mine on a canonical landfall whose complete CF1 hierarchy matches Home galaxy
@@ -167,16 +196,16 @@
 > activation did not alter SceneMemory or the root Gate-A browser contract. Its exact bytes remain
 > historical for that producer.
 >
-> The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,458 passed /
-> one intentional skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused`,
-> syntax/import selftests and an 887-module Vite build. Prior implementation/code and release-note
-> audits are CLEAR for their reviewed input. Their findings plus the later convergence-latch and
-> per-field F4 control findings are repaired; the affected checks pass and the independent final
-> post-repair whole-diff review is CLEAR. The signed successor freeze remains pending.
-> `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` remains the signed
-> predecessor that produced terminal-red SceneMemory; a new signed successor and fresh certificate
-> IDs remain pending. Current-input Slice
-> remains RED; Glass, recovery and whole-Gate evidence remain open.
+> The complete current repair battery is green at 134 Vitest files / 1,466 passed / one intentional
+> skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused` and an 887-module
+> Vite build. The explicitly historical signed-red browserless checkpoint was green at the same 134
+> files / 1,458 passed / one intentional skip / zero failures, with syntax/import selftests. Prior
+> implementation/code and release-note audits are CLEAR for their reviewed inputs, and the focused closed-surface/diagnostic
+> repairs are negative-controlled. `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` remains the earlier
+> protected-preview red source; signed `862a75b316142348636abea442dab15e87393642` is the current
+> 40/42 heap/DOM red source. A new signed clean calibration source, three clean current-product
+> candidates, any justified heap-only activation and fresh certificate IDs remain pending.
+> Current-input Slice remains RED; Glass, recovery and whole-Gate evidence remain open.
 >
 > Current-input Slice retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > The first five remain preserved historical diagnosis. Signed-clean source
@@ -197,8 +226,10 @@
 > spotlight and focus ownership. Exact Edge version remains Slice provenance only; Slice and Glass
 > judge fresh behavior/geometry rather than a version pin, so a browser update alone never
 > rebaselines or moves ceilings. Compendium and SceneMemory own separate sealed Edge-family + CDP
-> `1.3` capability/profile authorities; version tolerance changed no numeric budget in either ruler,
-> and both changed final frozen producers require new bound certificates. Root Gate A separately
+> `1.3` capability/profile authorities; version tolerance changed no numeric budget in either ruler.
+> The current worktree is not a final frozen producer: SceneMemory must finish its three-candidate and
+> paired-red calibration, then any supported heap-only activation, while both eventual exact-producer
+> certificates remain open. Root Gate A separately
 > accepts compatible Chromium family + CDP `1.3` only after exercising the exact CDP inventory
 > derived from `tools/uilayout.js` + `tools/bootperf.js` and recording complete per-run provenance;
 > point version alone never repins, rebaselines or moves a root threshold. No repaired Slice PASS, Glass result, recovery certificate,
@@ -330,7 +361,11 @@
 > domain action. `main.ts` registers Inventory in the desktop rail and exact 260px 5×2 ten-control
 > phone dock, supplies one durable action adapter, and publishes no optimistic state. The detail
 > sheet owns inert background, bidirectional focus wrap/return, exact conditional comparison,
-> salvage confirmation, pending action and convergence diagnostics. Genuine legacy Training gear
+> salvage confirmation, pending action and convergence diagnostics. Production opts into the closed-
+> surface lifecycle: data, filters and page survive Close, but the 48-row projection and its six
+> panel/detail event subscriptions exist only while open. A durable promise settling after Close
+> updates state without remounting hidden DOM; stale registration callbacks cannot reacquire after
+> disposal. Genuine legacy Training gear
 > replacement derives the Arc 2 carrier and, for absent Arc 4/5 targets, all 18 Arc 4 ownership
 > writes plus all five Arc 5 carriers inside the same checked state/extension/F4 transaction.
 > Current-view preserves aligned authority; source-deferred restore may retain an aligned Arc 5
@@ -1087,7 +1122,9 @@
 > are environment normalization and exact-run provenance, not browser-version budget identity.
 > The historical 250 ms activation `59530da3bf40965adf9c54f169b310e11ccdd0f8` and historical
 > cross-host repair `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` are distinguished in the current overlay above;
-> the changed final frozen SceneMemory and Compendium producers each require a new bound certificate.
+> the current worktree is not a final frozen producer. SceneMemory must complete the calibration
+> sequence in the current overlay before exact certification, while Compendium needs a fresh
+> certificate bound to the eventual signed producer.
 > Hosted run `32618995487` remains terminal-red at 40/42 and provides no hosted authority. The old parallel structure and automatic publishers
 > remain truthful history only. Development/production target isolation, manifests, origin refusal,
 > noindex/robots, target-specific credentials, and the rule that previews are not human/release
@@ -1259,7 +1296,9 @@
 > Each panel and Survey card owns exactly one top-right 44px Close action. On desktop,
 > notifications plus Settings and Records share the bottom-right utility edge; balanced
 > padding, separators and borders use the same glass geometry.
-> `panels.ts` retains element-identity ownership for registered panel roots/openers and reads
+> `panels.ts` retains element-identity ownership for registered panel roots/openers, captures every
+> registered opener through one document-level delegated owner (including nested clicked content),
+> and reads
 > `data-panel-boundary` for non-dismiss chrome. The top bar, dock, Survey and both desktop rails
 > declare that metadata; Search intentionally does not. Real-CDP smoke hits the exact 8px gap in
 > each rail, requires the current panel/ARIA state to survive, removes each marker independently
@@ -2235,8 +2274,10 @@ raw/gzip SHA-256 are `81c27ed5caa12e0c114a788041dfc5d109742bb9d86a256b548a8e9443
 `6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. This was real producer
 drift, not an Edge-version trigger; exact Edge `.107` is provenance only. Those exact bytes are
 historical. Compendium and SceneMemory now own separate Edge-family + CDP `1.3` capability/profile
-authorities with unchanged numeric budgets, and both changed final frozen producers require new
-bound certificates. Root Gate-A remains separate.
+authorities; version tolerance itself changed no numeric budget. The current worktree is not a final
+frozen producer: SceneMemory must complete its three-candidate and paired-red calibration, then any
+supported heap-only activation, while both eventual exact-producer certificates remain open. Root
+Gate-A remains separate.
 
 ### Star Atlas (bookmarks)
 The `logMap` Map. `addToLog`, `renderLog`. Every survey card (galaxy/star/planet/moon/etc.)
@@ -2671,19 +2712,22 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-27):** the complete browserless checkpoint is green at
-134 Vitest files / 1,458 passed / one intentional skip / zero failures, plus root, app, worker and
-no-unused TypeScript, `artunused`, syntax/import selftests and the 887-module Vite build. Prior
-implementation/code and release-note audits are CLEAR for their reviewed input; their findings and
-the later convergence-latch/per-field F4 controls are repaired, and the independent final
-post-repair whole-diff review is CLEAR. The signed successor freeze remains pending. Signed predecessor
-`bb5dc7c7f4372f712778af67ace2b5f81b71b99d` produced terminal-red SceneMemory; the current
-protected-preview product/diagnostic repair still needs a new signed successor and fresh certificate
-IDs. Its immutable veteran carrier remains unchanged, while the derived SceneMemory input changes
-only the existing `view` field to `null` and preserves every other field. Tracked Compendium and
-SceneMemory producer bindings match the rebuilt worktree; earlier certificates stay historical
-until the exact new signed producers are measured. Each ruler uses its own Edge-family + CDP `1.3`
-capability/profile contract; exact browser point version is per-run provenance.
+**Current local candidate snapshot (2026-08-27):** the complete current repair battery is green at
+134 Vitest files / 1,466 passed / one intentional skip / zero failures, plus root, app, worker and
+no-unused TypeScript, `artunused` and the 887-module Vite build. The explicitly historical pre-repair
+checkpoint was green at the same 134 files / 1,458 passed / one intentional skip / zero failures,
+with syntax/import selftests.
+Prior implementation/code and release-note audits are CLEAR for their reviewed input; their findings
+and the later convergence-latch/per-field F4 controls are repaired. Earlier signed predecessor
+`bb5dc7c7f4372f712778af67ace2b5f81b71b99d` produced the preserved protected-preview SceneMemory
+red. Signed successor `862a75b316142348636abea442dab15e87393642` passed full named Layout,
+then produced the separately preserved 40/42 heap/DOM red. The current worktree repairs closed
+Inventory and opener ownership plus field/value/ceiling diagnosis; its focused checks are green, but
+it still requires one new signed clean calibration source, exactly three independent clean
+SceneMemory candidates, heap-only activation if those samples justify it, and fresh certificate IDs.
+Tracked producer bindings must match that clean source; earlier certificates stay historical. Each
+ruler uses its own Edge-family + CDP `1.3` capability/profile contract, and exact browser point
+version is per-run provenance rather than calibration authority.
 
 Current-input Slice retains six one-attempt/zero-retry reds. Clean signed source
 `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
@@ -2697,8 +2741,9 @@ separates the private candidate from the real persist/committed stored and reloa
 Survey rebinds Training locks/focus after DOM replacement through `refreshTrainingScope()`.
 Exact Edge version is Slice provenance only; Slice and Glass judge fresh behavior/geometry, so a
 browser update alone never rebaselines or moves ceilings. Compendium and SceneMemory own separate
-sealed Edge-family + CDP `1.3` capability/profile authorities with unchanged numeric budgets; both
-changed final frozen producers require new bound certificates. Post-start audio, the exact nine-stage/14-burn
+sealed Edge-family + CDP `1.3` capability/profile authorities; version tolerance itself changed no
+numeric budget. The current worktree is not a final frozen producer: SceneMemory calibration and
+both eventual exact-producer certificates remain open. Post-start audio, the exact nine-stage/14-burn
 ledger, current Glass and 20-minute recovery remain unproved. No hosted, HUMAN, whole-Gate,
 release, version, preview/publication or deployment claim exists.
 

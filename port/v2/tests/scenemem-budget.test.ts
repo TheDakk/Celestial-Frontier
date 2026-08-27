@@ -68,6 +68,15 @@ const CURRENT_LOCAL_CERTIFICATION = Object.freeze({
   gzipSha256: '7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a',
   budgetSha256: '5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501',
 });
+const CURRENT_INPUT_BROKEN_BASELINE = Object.freeze({
+  runId: '20260827-phase4-successor-scenemem',
+  file: 'ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz',
+  sourceCommit: '862a75b316142348636abea442dab15e87393642',
+  rawSha256: '3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7',
+  gzipSha256: 'dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47',
+  budgetSha256: '4cc797eb15277949a411131c1f19a5f72fb4c76154caed18aa274d9b718dd9ad',
+  buildSha256: '726ad8ef4db167a18964763934aa5f8f207600ab3f3ba49c9e81e54b58104074',
+});
 const HOSTED_LINUX_FAILURE = Object.freeze({
   runId: 'gha-32618995487-1-scenemem',
   file: 'PR33_LINUX_SCENEMEM_REPORT_32618995487.json.gz',
@@ -174,16 +183,16 @@ const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
   browserPath: '733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0',
   workspaceLock: 'e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606',
   fixtureGenerator: 'a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece',
-  verdictContract: '8019a0f0bf938aa59f45bb6dfaaf56adb77b08073f9d4fa24c2d0592f5bf623d',
+  verdictContract: '8b36ec211b8d3355a710408c3399d0d7157686f43734e5b47d531f783bef59e5',
   fixtureSpec: 'c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3',
   fixtureRows: 'daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706',
   baselineSaveFixtures: 'a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7',
   package: '87551923ad5af540270ecbbeef73b97bcf90d82ae66867e59a844f1815a98106',
   packageLock: 'a1f1dc3335714fe40c06a99684a5da9d66ea1a24d9db73594efe5b15c11fcd6e',
   appPackage: '69e7a046ca620dafabb38d0471b59f682fdc5b15433c2207bcf18a218f38c7de',
-  buildDist: '726ad8ef4db167a18964763934aa5f8f207600ab3f3ba49c9e81e54b58104074',
+  buildDist: '46e473657f3cda06a6e445c1588ae983f270822d3e745f9009e20bed083f9274',
   gameHtml: '88074f1c1f360a35f0718386c9619c1801aac1f5abc7b259b606b94cc9d00c30',
-  gameMain: 'be06066065424badeb2ef4ca3a9e2d767d628a04720589cafa8581252b33b77c',
+  gameMain: '7ff00481432163560c61a8dda931a9b99850b06d5a60199b3a02e2ecb48aa5cf',
   shipVisualState: '9bfd27d3d6a75779d3372dfb6386e8e98ef22d92a33b0346819225024c70d762',
   shipyardPreview: 'a3aac0c541a8f824a3625778e89468b5b03653dd29820c3b024fa45a7c753e85',
   planetTextureAttachment: '751cb34df8ead64fc5ad274a0fd55dfe1af7bb183949ffebcea2ada5de5903e0',
@@ -642,6 +651,109 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(currentBudgetReplay.status).toBe('pass');
     expect(currentBudgetReplay.outcomes).toHaveLength(42);
     expect(currentBudgetReplay.failures).toEqual([]);
+  });
+
+  it('preserves and independently replays the eager-Inventory current-input red as the paired broken baseline', () => {
+    const compressed = fs.readFileSync(path.join(auditRoot, CURRENT_INPUT_BROKEN_BASELINE.file));
+    expect(sha256(compressed)).toBe(CURRENT_INPUT_BROKEN_BASELINE.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(sha256(raw)).toBe(CURRENT_INPUT_BROKEN_BASELINE.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as CalibrationReport;
+
+    expect(report).toMatchObject({
+      schema: 'cf-v2-scene-memory-report/v2',
+      runId: CURRENT_INPUT_BROKEN_BASELINE.runId,
+      status: 'fail',
+      certification: 'contract-budget',
+      lifecycle: {
+        schema: 'cf-v2-scene-memory-report-lifecycle/v1',
+        status: 'complete',
+      },
+      policy: {
+        attemptCount: 1,
+        automaticRetries: 0,
+        warmupCycles: 4,
+        measuredWarmCycles: 4,
+      },
+      cleanup: { browser: true, server: true, workspaceLock: true },
+      source: {
+        begin: {
+          commit: CURRENT_INPUT_BROKEN_BASELINE.sourceCommit,
+          branch: 'openai/mac',
+          state: 'committed',
+          statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+          workingTreeSha256: SOURCE_WORKING_TREE,
+        },
+      },
+      browser: {
+        product: 'Edg/151.0.4129.107',
+        revision: '@419e77616b4ed7d0a544b85cb53ccd5b74d5f135',
+        jsVersion: '15.1.23.12',
+        protocolVersion: '1.3',
+      },
+      build: {
+        schema: 'cf-v2-scene-memory-build/v1',
+        sha256: CURRENT_INPUT_BROKEN_BASELINE.buildSha256,
+      },
+      budget: {
+        schema: 'cf-v2-scene-memory-budget/v3',
+        sha256: CURRENT_INPUT_BROKEN_BASELINE.budgetSha256,
+      },
+    });
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.inputs.budget).toBe(CURRENT_INPUT_BROKEN_BASELINE.budgetSha256);
+    expect(report.outcomes.filter(({ pass }) => !pass).map(({ id }) => id)).toEqual([
+      'phone/heap-dom-budget',
+      'desktop/heap-dom-budget',
+    ]);
+    expect(report.findings).toEqual([
+      'phone/heap-dom-budget: heap or DOM ceiling was exceeded',
+      'desktop/heap-dom-budget: heap or DOM ceiling was exceeded',
+    ]);
+    expect(report.fatalEvents).toEqual([]);
+    for (const profile of PROFILE_NAMES) {
+      expect(metricSummary(report.profiles[profile])).toEqual(report.profiles[profile].metrics);
+    }
+
+    const replay = evaluateSceneMemory({
+      ...report.contractInput,
+      budgets: budget.profiles,
+    });
+    expect(replay.status).toBe('fail');
+    expect(replay.failures.map(({ id }) => id)).toEqual([
+      'phone/heap-dom-budget',
+      'desktop/heap-dom-budget',
+    ]);
+    expect(replay.failures[0]?.message).toContain(
+      'nodes 898 exceeded ceiling 704',
+    );
+    expect(replay.failures[0]?.message).toContain(
+      'JS event listeners 90 exceeded ceiling 80',
+    );
+    expect(replay.failures[1]?.message).toContain(
+      'nodes 895 exceeded ceiling 704',
+    );
+    expect(replay.failures[1]?.message).toContain(
+      'JS event listeners 89 exceeded ceiling 80',
+    );
+
+    const pairedReplay = evaluateSceneMemory({
+      ...report.contractInput,
+      budgets: Object.fromEntries(PROFILE_NAMES.map((profile) => [profile, {
+        ...budget.profiles[profile],
+        heapUsedBytesMax: Number.MAX_SAFE_INTEGER,
+        heapAggregateBytesMax: Number.MAX_SAFE_INTEGER,
+      }])) as typeof budget.profiles,
+    });
+    expect(pairedReplay.failures.map(({ id }) => id)).toEqual([
+      'phone/heap-dom-budget',
+      'desktop/heap-dom-budget',
+    ]);
+    for (const failure of pairedReplay.failures) {
+      expect(failure.message).not.toMatch(/heap/i);
+      expect(failure.message).toContain('nodes');
+      expect(failure.message).toContain('JS event listeners');
+    }
   });
 
   it('retains the exact hosted Linux red and replays only its elapsed ruler green', () => {

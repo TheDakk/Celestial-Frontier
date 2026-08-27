@@ -26,14 +26,27 @@ does not silently promote planned behavior into the in-game Guide.
 > rebinds the active Training lesson after replacing its action DOM. A subsequent whole-candidate
 > review found additional work in canonical world identity, F4/storage convergence, repository
 > races, texture cleanup, complete settings/read-only coverage and bound evidence sequencing.
-> Those bounded repairs completed a pre-certificate browserless checkpoint and independent
-> re-audits for the reviewed repair input. Any subsequent source change must rerun its affected
-> checks and receive final whole-diff review. No current-input Slice PASS, Glass result, recovery
+> The complete current repair battery is green, and its final documentation/release-copy consistency
+> review and independent evidence/code whole-diff review are both CLEAR. Any later source change must
+> rerun its affected checks and both reviews. No current-input Slice PASS, Glass result, recovery
 > certificate, hosted/HUMAN whole-Gate or release authority follows.
 > F4 convergence now latches and schedules its single replacement before fallible repaint work. If
 > authority is lost with full Shipyard open, the surface immediately becomes one read-only preview
 > with zero Engineering actions and exact app/DOM/diagnostic identity; a repaint error is witnessed
 > and cannot strand reload.
+>
+> Signed clean source `862a75b316142348636abea442dab15e87393642` passed named Layout
+> `20260827-phase4-successor-layout` at 787/787, then ran named SceneMemory
+> `20260827-phase4-successor-scenemem` exactly once with zero retries and complete cleanup on Edge
+> `151.0.4129.107`. It stopped the serial campaign at 40/42; only phone/desktop heap/DOM outcomes
+> failed, so Compendium, Slice, Glass and recovery did not run. Production Inventory now keeps its
+> logical data, filters and page without a closed hidden row tree or six dormant subscriptions, and
+> all registered panel openers share one delegated focus-capture owner. A deliberately
+> non-certifying dirty diagnostic reduced phone/desktop maxima to 676/673 nodes and 71/70 listeners,
+> below unchanged 704/80 ceilings; range, slope and every other resource outcome remained green.
+> Only the fixed V8 and aggregate heap bands remain above the historical ruler. One signed clean
+> calibration source, three independent no-retry candidates, heap-only activation and a new exact
+> certificate remain pending.
 >
 > In particular, landing/name history now binds the complete source-reproved CF1 world rather than
 > a globally false leaf-seed key. A fixed v5 manifest plus four byte-balanced shards preserve exact
@@ -44,7 +57,9 @@ does not silently promote planned behavior into the in-game Guide.
 > Exact Edge build is Slice provenance only. Slice and Glass judge fresh behavior and geometry rather
 > than a version pin, so an Edge update alone never rebaselines, repins or moves thresholds. The
 > Compendium and SceneMemory own separate sealed Edge-family + CDP `1.3` capability/profile
-> authorities; neither uses the exact browser build as a perpetual baseline identity.
+> authorities; neither uses the exact browser build as a perpetual baseline identity. SceneMemory's
+> pending product-growth calibration is required by changed product ownership, never by `.107` or a
+> later compatible Edge point update.
 
 > **2026-08-26 current-candidate correction:** the ecology epoch now publishes only from F4's
 > visible-and-answerable, lease-owned `activePlayMs`. One receipt-free lease/revision CAS must commit
@@ -141,9 +156,9 @@ does not silently promote planned behavior into the in-game Guide.
 > `48ce0b1662a59b21070667be339a1e59503e1f19`, status
 > `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
 > `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
-> exact historical inputs. Independent current-candidate product/code, SceneMemory and release-note
-> re-audits later completed for the reviewed repair input; any follow-up source change remains
-> subject to final whole-diff review.
+> exact historical inputs. The current repair's final documentation/release-copy consistency review
+> and independent evidence/code whole-diff review are both CLEAR; any later source change must rerun
+> its affected checks and both reviews.
 >
 > Local commit `c4a02be` records the Arc 3 product/browser-tool repair batch. One no-retry Slice run
 > passed in 253,181 ms with 0 findings/10 screenshots; full Glass separately passed in 64,222 ms with
@@ -168,6 +183,10 @@ does not silently promote planned behavior into the in-game Guide.
 > only the receipt ordinal, never a SessionRNG domain counter. A genuine legacy Training checkpoint
 > that owns gear replaces the carrier in that same authority boundary; other checkpoint forms
 > preserve or protect it.
+>
+> Production defers row rendering and the panel's six event subscriptions until open, preserving
+> logical Inventory/filter/page state while releasing closed presentation ownership. One delegated
+> document capture owner records every registered panel opener without changing exact focus return.
 >
 > At the Arc 2 boundary the economy ledger was intentionally source-neutral. It proves fixed sinks
 > and replays externally authorized receipts but retains `arc3-deferred` as its own historical source

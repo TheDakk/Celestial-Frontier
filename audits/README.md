@@ -10,6 +10,50 @@ summary of it.
 
 ## Contents
 
+### `ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz` — fixed-growth heap/hidden-panel SceneMemory red
+
+Retains named run `20260827-phase4-successor-scenemem` from clean signed source
+`862a75b316142348636abea442dab15e87393642` on branch `openai/mac`. The source and
+working-tree digests remained unchanged. Full named Layout had already passed 787/787 across all
+ten viewports on that exact source. SceneMemory then ran exactly once with zero automatic retries
+on Microsoft Edge `151.0.4129.107`, revision
+`@419e77616b4ed7d0a544b85cb53ccd5b74d5f135`, JavaScript `15.1.23.12` and CDP `1.3`.
+Exact Edge build is run provenance, not a version pin or rebaseline trigger. The collector ran
+`2026-08-27T16:38:18.607Z`–`16:38:28.871Z` (10,264 ms), retained complete
+browser/server/workspace-lock cleanup, and stopped the serial campaign before Compendium, Slice,
+Glass or recovery.
+
+The report passed 40/42 outcomes. All answerability, warm-range/slope, resource ownership,
+registry, same-document and cleanup outcomes were green. Only the phone and desktop
+`heap-dom-budget` outcomes failed. Phone maxima were 11,580,536 V8 heap bytes, 17,758,550 aggregate
+heap bytes, 898 nodes and 90 JavaScript listeners; desktop maxima were 11,635,116,
+17,687,678, 895 and 89 respectively. The original contract collapsed those independent counters
+to the generic `heap or DOM ceiling was exceeded`; replay through the repaired evaluator now names
+every exact field, observed value and ceiling.
+
+Static ownership and one deliberately non-certifying dirty diagnostic separated two causes. The
+avoidable shell cost was fixed: production Inventory now retains state while closed without
+retaining its hidden row tree or dormant subscriptions, and panel openers share one delegated
+focus-capture owner rather than one closure per opener. The diagnostic reduced measured maxima to
+676/673 nodes and 71/70 listeners, below the unchanged 704/80 ceilings, while warm range, slope and
+all other resource outcomes stayed green. The remaining constant heap delta belongs to the much
+larger synchronously loaded Arc 2–5/F4 product graph (the generated main bundle grew by about
+527 KB), not to a lifecycle leak or Edge `.107`. It therefore requires one evidence-backed
+product-growth calibration from three independent clean current-product candidates; routine Edge
+point updates alone never move a ceiling. This preserved clean predecessor is the paired broken
+baseline: after any heap-only activation it must still fail on its unchanged node/listener excess.
+
+Carrier integrity:
+
+- Deterministic `gzip -9 -n`: 22,315 bytes, SHA-256
+  `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`.
+- Decompressed JSON: 305,891 bytes, SHA-256
+  `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7`.
+
+The carrier passes gzip integrity. It grants no SceneMemory, Compendium, Slice, Glass, recovery,
+HUMAN, hosted, integration, release, version or deployment authority. The dirty diagnostic is
+diagnosis only and is not a calibration candidate or certificate.
+
 ### `ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_132723548.json.gz` — protected-veteran fixture SceneMemory red
 
 Retains named run `20260827-phase4-final-scenemem` from clean signed source

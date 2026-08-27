@@ -11,6 +11,48 @@ roughly by how often they have bitten.
 
 ---
 
+⚠⚠ **A CLOSED SURFACE OWNS STATE, NOT ITS OPEN-LIFETIME DOM AND LISTENERS**
+(2026-08-27). SceneMemory exposed a closed Inventory that eagerly retained 224 row-tree nodes and
+six panel/detail subscriptions, while the panel manager attached another focus-capture closure to
+every registered opener. None was a leak across cycles, but all were dormant ownership charged at
+the settled closed boundary.
+
+Retain the semantic state that makes reopening continuous—Inventory data, filters, page and durable
+late action outcomes—while unmounting the row tree and removing the six open-lifetime subscriptions
+on Close. A promise settling after Close may update authoritative state but must not rebuild hidden
+rows. Disposal must prevent a stale registration from reacquiring listeners, while its Close hook
+remains idempotent and disposal-safe. Panel opener focus has one delegated capture owner for all
+registered openers; it records the exact containing opener even when a nested icon was clicked, and
+Close restores that exact element. Count capture listeners semantically (`true` and
+`{capture:true}` are the same owner), negative-control an extra owner, and prove open/open,
+close/close, late settlement and dispose/reopen boundaries independently.
+
+⚠⚠ **CLEAN UP OWNERS BEFORE CALIBRATING FIXED PRODUCT GROWTH; A BROWSER POINT UPDATE IS
+NEVER THE TRIGGER** (2026-08-27). Signed source
+`862a75b316142348636abea442dab15e87393642` passed named Layout 787/787, then one no-retry
+SceneMemory run `20260827-phase4-successor-scenemem` completed cleanup and honestly stopped at
+40/42. Only phone/desktop `heap-dom-budget` failed: phone measured 11,580,536 V8 / 17,758,550
+aggregate heap bytes / 898 nodes / 90 listeners; desktop measured 11,635,116 / 17,687,678 / 895 /
+89. Preserve that clean report as the paired broken baseline, not as a sample to average away.
+
+First separate avoidable ownership from fixed growth. After the closed-Inventory and delegated-
+opener repair, deliberately non-certifying dirty diagnostic
+`20260827165427809-91398-352d7132df` measured 676/673 nodes and 71/70 listeners—green under the
+unchanged 704/80 limits—while V8 and aggregate heap remained at the larger Arc 2–5/F4 product
+level. A dirty run diagnoses; it is never a calibration candidate or certificate. The evaluator
+must name every breached field, observed value and ceiling rather than collapse independent
+counters into “heap or DOM exceeded,” and its exact-boundary/next-unit controls must preserve valid
+zero-valued heap components.
+
+Only after product cleanup may a genuine fixed-growth ruler change be considered: collect exactly
+three independent clean, one-attempt/no-retry candidates from one unchanged signed producer, retain
+and replay their raw observations, select strict operational headroom, and change only the V8-used
+and aggregate-heap ceilings actually supported by all three. The preserved `862a75b…` baseline must
+still fail on its unchanged node/listener excess after activation. Microsoft Edge family + CDP
+`1.3` capability/profile authority is stable across compatible point updates; exact version,
+revision, JavaScript version, executable path and user agent are per-run provenance. An Edge update
+alone never starts calibration, repins a ruler or moves a threshold.
+
 ⚠⚠ **LATCH IRREVERSIBLE CONVERGENCE BEFORE FALLIBLE PRESENTATION** (2026-08-27).
 F4 authority loss originally tried to repaint an already-open full Shipyard before scheduling its
 replacement document. A presentation or diagnostics throw at that point could leave actionable

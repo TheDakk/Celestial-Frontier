@@ -415,6 +415,42 @@ function heapAggregate(point) {
   return heap.usedSize + heap.embedderHeapUsedSize + heap.backingStorageSize;
 }
 
+function heapDomBudgetReasons(pointsWithLabels, budget) {
+  const reasons = [];
+  const check = (label, name, value, ceiling, valid) => {
+    if (!valid(value)) reasons.push(`${label}: ${name} is absent or invalid`);
+    else if (value > ceiling) reasons.push(`${label}: ${name} ${value} exceeded ceiling ${ceiling}`);
+  };
+  const heapCounter = (value) => finite(value) && value >= 0;
+  const domCounter = (value) => count(value) && value > 0;
+  for (const [label, point] of pointsWithLabels) {
+    const heap = point?.heap;
+    if (!object(heap)) {
+      reasons.push(`${label}: heap counters are absent or invalid`);
+    } else {
+      check(label, 'V8 heap used bytes', heap.usedSize, budget.heapUsedBytesMax, heapCounter);
+      check(label, 'embedder heap used bytes', heap.embedderHeapUsedSize,
+        budget.embedderHeapUsedBytesMax, heapCounter);
+      check(label, 'backing storage bytes', heap.backingStorageSize,
+        budget.backingStorageBytesMax, heapCounter);
+      const aggregate = heapAggregate(point);
+      if (finite(aggregate) && aggregate > budget.heapAggregateBytesMax) {
+        reasons.push(`${label}: aggregate heap bytes ${aggregate} exceeded ceiling ${budget.heapAggregateBytesMax}`);
+      }
+    }
+    const dom = point?.dom;
+    if (!object(dom)) {
+      reasons.push(`${label}: DOM counters are absent or invalid`);
+    } else {
+      check(label, 'documents', dom.documents, budget.documentsMax, domCounter);
+      check(label, 'nodes', dom.nodes, budget.nodesMax, domCounter);
+      check(label, 'JS event listeners', dom.jsEventListeners,
+        budget.jsEventListenersMax, domCounter);
+    }
+  }
+  return reasons;
+}
+
 function leastSquaresSlope(values) {
   if (!Array.isArray(values) || values.length !== SCENE_MEMORY_CYCLE_COUNT
     || values.some((value) => !finite(value))) return Number.POSITIVE_INFINITY;
@@ -629,23 +665,11 @@ function profileOutcomes(profile, measurement, budget) {
   out.push(outcome(`${profile}/answerability`, answerable.length === 0,
     answerable.length ? answerable.join('; ') : 'target and browser heartbeat answered'));
 
-  const heaps = allPoints.map(heapAggregate);
-  const domValid = allPoints.every((point) => object(point?.dom)
-    && count(point.dom.documents) && point.dom.documents > 0
-    && count(point.dom.nodes) && point.dom.nodes > 0
-    && count(point.dom.jsEventListeners) && point.dom.jsEventListeners > 0);
-  const heapDom = heaps.every((aggregate, index) => {
-    const heap = allPoints[index]?.heap;
-    const dom = allPoints[index]?.dom;
-    return aggregate <= budget.heapAggregateBytesMax
-      && heap?.usedSize <= budget.heapUsedBytesMax
-      && heap?.embedderHeapUsedSize <= budget.embedderHeapUsedBytesMax
-      && heap?.backingStorageSize <= budget.backingStorageBytesMax
-      && dom?.documents <= budget.documentsMax && dom?.nodes <= budget.nodesMax
-      && dom?.jsEventListeners <= budget.jsEventListenersMax;
-  }) && domValid;
-  out.push(outcome(`${profile}/heap-dom-budget`, heapDom,
-    heapDom ? 'heap and DOM counters stayed within supplied ceilings' : 'heap or DOM ceiling was exceeded'));
+  const heapDomReasons = heapDomBudgetReasons(pointsWithLabels, budget);
+  out.push(outcome(`${profile}/heap-dom-budget`, heapDomReasons.length === 0,
+    heapDomReasons.length
+      ? heapDomReasons.join('; ')
+      : 'heap and DOM counters stayed within supplied ceilings'));
 
   const warmHeaps = cycles.map(heapAggregate);
   const warmHeapRange = warmHeaps.length === SCENE_MEMORY_CYCLE_COUNT

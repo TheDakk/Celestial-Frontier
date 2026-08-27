@@ -12,19 +12,18 @@ as any change that touches an entry.
 
 ## Current-state boundary — completed local candidate lanes (2026-08-27)
 
-The completed source lanes, six preserved Slice reds and one preserved protected-preview SceneMemory red
-remain local on `openai/mac`.
-The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,458 passed /
-one intentional skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused`,
-syntax/import selftests and the 887-module build. Prior implementation/code and release-note audits
-are CLEAR for their reviewed input. Their findings plus the later convergence-latch and per-field
-F4 control gaps are repaired. The independent final post-repair whole-diff review is CLEAR;
-the signed successor freeze remains pending.
-`bb5dc7c7f4372f712778af67ace2b5f81b71b99d` remains the signed
-predecessor that produced terminal-red SceneMemory; a new signed successor and fresh certificate
-IDs remain pending. Tracked Compendium and SceneMemory producer bindings match the rebuilt worktree, while their former
-exact-input certificates stay historical until the exact signed producers are measured under the
-version-tolerant Edge-family/CDP capability contracts.
+The completed source lanes, six preserved Slice reds and two preserved SceneMemory reds remain local
+on `openai/mac`. The complete current repair battery is green at 134 Vitest files / 1,466 passed /
+one intentional skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused` and the
+887-module build. The explicitly historical signed-red browserless checkpoint was green at the same
+134 files / 1,458 passed / one intentional skip / zero failures, with syntax/import selftests. Prior
+implementation/code and release-note audits are CLEAR for their reviewed inputs; focused checks cover the closed-surface and
+diagnostic repair. `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` remains the earlier protected-preview red
+source. Signed successor `862a75b316142348636abea442dab15e87393642` is the current 40/42
+heap/DOM red source. A new signed clean calibration source, exactly three clean SceneMemory
+candidates, any justified heap-only activation and fresh certificate IDs remain pending. Tracked
+producer bindings must match that clean source; former exact-input certificates remain historical
+under the version-tolerant Edge-family/CDP capability contracts.
 
 Signed-clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth Slice run
 `20260827085237038-27561-1f8e3c1771b7` once with zero retries on Edge
@@ -50,9 +49,32 @@ that carrier unchanged; SceneMemory derives its input by changing only the exist
 settlement reasons instead of `last:null`. Glass retains its distinct source-checked both-cleared
 fixture for full loaded Engineering; SceneMemory does not inherit that fixture or an Arc 3-loaded
 PASS clause. The timeout was not a performance/deadline defect and is no reason to lengthen the
-allowance; deadline, numeric ruler and browser authority remain unchanged. No SceneMemory/
-Compendium certificate, Slice PASS, Glass
-result, recovery certificate, hosted/HUMAN whole-Gate or release authority exists for the successor.
+allowance; at that repair boundary deadline, numeric ruler and browser authority remained unchanged.
+
+Signed successor `862a75b316142348636abea442dab15e87393642` passed named Layout
+`20260827-phase4-successor-layout` 787/787, then ran
+`20260827-phase4-successor-scenemem` exactly once with zero retries and complete cleanup on Edge
+`.107` / CDP `1.3`. It stopped the chain at 40/42: only phone/desktop `heap-dom-budget` failed.
+Phone maxima were 11,580,536 V8 / 17,758,550 aggregate heap bytes / 898 nodes / 90 listeners;
+desktop maxima were 11,635,116 / 17,687,678 / 895 / 89. The preserved carrier's raw/gzip
+SHA-256 are `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7` /
+`dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`.
+The repaired evaluator replays it as the paired broken baseline and reports each exact breached
+field, observed value and ceiling.
+
+Static ownership traced the avoidable closed-shell increase to eager Inventory rows/six
+subscriptions and per-opener focus-capture closures. Production now preserves Inventory data,
+filters and page while closed but owns those rows/subscriptions only while open; late durable action
+settlement cannot remount hidden rows, and disposal cannot reacquire. One delegated document capture
+owner serves all registered panel openers and restores the exact nested-click opener. Dirty,
+deliberately non-certifying diagnostic `20260827165427809-91398-352d7132df` reduced nodes to
+676/673 and listeners to 71/70, below unchanged 704/80 ceilings, while V8/aggregate heap retained
+the fixed larger Arc 2–5/F4 level. It is diagnosis only, not a calibration candidate or certificate.
+Only the V8-used and aggregate ceilings may be considered after three independent clean no-retry
+candidates from one unchanged signed source, strict headroom and raw replay; the paired red must
+still fail on its unchanged node/listener excess. A compatible Edge point update never triggers
+that calibration or any threshold change. No SceneMemory/Compendium certificate, Slice PASS, Glass
+result, recovery certificate, hosted/HUMAN whole-Gate or release authority exists for the repair.
 
 - ★ **D-PORT-TOOLCHAIN — the master plan's generic quality roles use the repository's executable
   equivalents.** The supplied immutable plan names Playwright, Zod/JSON Schema, ESLint and Prettier.
@@ -75,6 +97,27 @@ result, recovery certificate, hosted/HUMAN whole-Gate or release authority exist
   SceneMemory retains its separate version-tolerant extraction. This changes workflow isolation and
   recorded executable provenance only—not either capability authority, numeric ruler, deadline,
   retry policy or browser-update rebaseline rule.
+
+- ★ **D-CLOSED-INVENTORY-OWNERSHIP — closed state does not require closed DOM.** The historical eager
+  projection retained every bounded Inventory row and six panel/detail subscriptions at boot even
+  while its panel was closed. Production now opts into a lifecycle that retains inventory,
+  filter/page state and committed late action outcomes, but mounts rows and installs those six
+  subscriptions only while open. Close unmounts/removes them; a promise settling afterward updates
+  authority without hidden repaint; disposal blocks stale-registration reacquisition while Close
+  remains safe and idempotent. The panel manager replaces per-opener capture closures with one
+  delegated owner and restores the exact registered opener for nested clicks. Standalone consumers
+  retain the historical eager default unless they explicitly select the production lifecycle.
+
+- ◐ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — shell cleanup is complete; clean heap-only
+  evidence is pending.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
+  40/42 with exact node/listener and heap breaches, one attempt, zero retries and complete cleanup.
+  The evaluator now names field/value/ceiling and retains valid zero-valued heap components. Dirty
+  diagnostic `20260827165427809-91398-352d7132df` proves the repaired 676/673 nodes and 71/70
+  listeners fit unchanged 704/80 ceilings; it cannot become a sample. Exactly three independent
+  clean candidates on one unchanged signed producer, raw replay, strict headroom and the paired red
+  are required before only V8-used and aggregate-heap ceilings may move. The paired red must retain
+  its node/listener failures after activation. Exact Edge point version remains provenance: a
+  compatible update alone never starts calibration, repins authority or moves a threshold.
 
 - ★ **D-GATE-B-62 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 62 domain
   sources against DOM, storage, `navigator`, network, wall/monotonic clock and uncontrolled random.
@@ -164,8 +207,10 @@ result, recovery certificate, hosted/HUMAN whole-Gate or release authority exist
   require HUMAN judgment. That historical transition followed real product-owner drift, not Edge
   `.107`, and did not rebaseline SceneMemory or the then-active root Gate A. Compendium and
   SceneMemory now own separate Edge-family + CDP `1.3` capability/profile authorities. Their
-  version-tolerance changes altered no numeric budget, and both changed final frozen producers
-  require new bound certificates. Root Gate A later moved independently to compatible Chromium
+  version-tolerance changes altered no numeric budget. The current worktree is not a final frozen
+  producer: SceneMemory must finish its three-candidate and paired-red calibration, then any
+  supported heap-only activation, while both eventual exact-producer certificates remain open.
+  Root Gate A later moved independently to compatible Chromium
   family + CDP `1.3` + a source-derived `uilayout`/`bootperf` capability/provenance contract; a
   compatible point-version update likewise never repins, rebaselines or moves its thresholds.
 
@@ -348,7 +393,7 @@ ownership, bounded static-server shutdown and the repaired ruler are present. Ex
 PR #32 merged at `d4ab7e6…`. The false-greens, wrong-browser carriers, calibration history and
 no-retry reds below remain preserved because they explain that ruler. This block records the
 historical disposition of `D-COMPENDIUM-MEM` without rewriting that dated discovery record; the
-changed final frozen producer now requires a new bound certificate.
+eventual signed Compendium producer requires a fresh bound certificate.
 
 - The maximum 1,500-row Compendium now uses spacer-preserved virtual rows, pinned keyboard focus,
   native filter/clear, detail/Back and Close cleanup. Real 132px leases own one bounded producer,
@@ -2244,8 +2289,9 @@ duplicates).
   2026-08-21 historical block; Arc 1C's 2026-08-23 block once owned the locally certified real
   Shipyard extension for its exact inputs. Later terminal-green run `32646110946` merged PR #33.
   That `7d8dc380…` / Edge `.101` certificate is historical, not current authority; the
-  version-tolerant SceneMemory ruler keeps the same numeric budget and requires a new certificate
-  for the changed final frozen producer. The Arc 1A HUMAN review remains separate.
+  version-tolerant SceneMemory ruler kept the same numeric budget at that historical boundary. The
+  current repair must complete its three-candidate and paired-red calibration, then any supported
+  heap-only activation, before exact certification. The Arc 1A HUMAN review remains separate.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds
@@ -2364,8 +2410,8 @@ duplicates).
   `6284a394…`; clean signed activation `91f4e044…` passed
   `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle. It
   does not retroactively rebind any earlier measurement or supply the outstanding HUMAN judgment.
-  The changed final frozen producer requires a new certificate; version tolerance changes no
-  numeric ceiling.
+  The eventual signed Compendium producer requires a fresh certificate; version tolerance itself
+  changes no numeric ceiling.
 - ★ **D-AUTOEXTRACT-CLOCK — historical wall-time finding, repaired for the implemented Arc 3
   writer.** Auto-Extractor settlement derives capped loads from persisted F4 active-play progress,
   ignores legacy wall timestamps, preserves remainders/finite reserves and reanchors new extractors.

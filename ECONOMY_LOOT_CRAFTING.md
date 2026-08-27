@@ -55,6 +55,21 @@
 > advancing a per-domain SessionRNG counter; stale/duplicate/storage failures never publish an
 > optimistic result or reroll.
 >
+> Production now retains that logical Inventory data, query, filters and page while the panel is
+> closed without retaining its hidden row tree or six dormant event subscriptions. Opening installs
+> the subscriptions once and renders the latest state; closing removes both presentation owners
+> idempotently. All registered panel openers share one delegated focus-capture owner rather than one
+> closure per opener, while exact opener focus restoration is unchanged.
+>
+> This ownership repair follows signed clean `862a75b316142348636abea442dab15e87393642`'s named
+> SceneMemory run `20260827-phase4-successor-scenemem`: one attempt, zero retries, complete cleanup
+> and 40/42 outcomes on Edge `151.0.4129.107`. Its only reds combined fixed heap growth with the
+> avoidable hidden surface. A non-certifying dirty diagnostic reduced phone/desktop maxima to
+> 676/673 nodes and 71/70 listeners, below the unchanged 704/80 ceilings; warm range, slope and all
+> other resource outcomes remained green. Only absolute V8 and aggregate heap ceilings require a
+> three-clean-candidate, heap-only recalibration before fresh certification. Edge `.107` is
+> provenance, not a version pin or a rebaseline trigger.
+>
 > **At the Arc 2 boundary, still open and deliberately not fabricated:** its economy trace is
 > source-neutral and reports `sourceModelStatus: arc3-deferred`. Arc 3's current overlay above now
 > supplies the separate live world/star sources, eligible Deep-Scanner purchase and eligible fixed-
