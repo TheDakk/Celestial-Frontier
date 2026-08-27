@@ -23,9 +23,10 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > scope after replacing its action DOM. A subsequent whole-candidate review found additional
 > repair work in canonical world identity, F4/storage convergence, persistence races, texture
 > cleanup, settings/read-only coverage and the evidence chain. The complete browserless candidate
-> is green at 134 Vitest files / 1,446 passed / one intentional skip, and implementation/code plus
-> release-note audits are CLEAR. The final whole-diff audit is complete; its two evidence-integrity
-> findings are repaired and their focused controls pass. The signed clean freeze remains.
+> is green at 134 Vitest files / 1,458 passed / one intentional skip, and prior
+> implementation/code plus release-note audits are CLEAR for their reviewed input. Their findings
+> plus the later convergence-latch and per-field F4 controls are repaired. The independent final
+> post-repair whole-diff review is CLEAR; the new signed clean freeze remains pending.
 > No current-input Slice PASS, Glass result, recovery
 > certificate, hosted/HUMAN whole-Gate or release authority follows.
 >

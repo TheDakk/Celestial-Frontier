@@ -10,6 +10,45 @@ summary of it.
 
 ## Contents
 
+### `ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_132723548.json.gz` — protected-veteran fixture SceneMemory red
+
+Retains named run `20260827-phase4-final-scenemem` from clean signed source
+`bb5dc7c7f4372f712778af67ace2b5f81b71b99d` on branch `openai/mac`. The source and
+working-tree digests remained unchanged. It ran exactly once with zero automatic retries on
+Microsoft Edge `151.0.4129.107`, revision `@419e77616b4ed7d0a544b85cb53ccd5b74d5f135`,
+JavaScript `15.1.23.12` and CDP `1.3`; exact Edge build is run provenance, not a version pin or
+rebaseline trigger. The collector ran `2026-08-27T13:27:23.548Z`–`13:27:56.729Z`
+(33,181 ms), retained complete browser/server/workspace-lock cleanup, and stopped during the phone
+profile before desktop measurement, contract evaluation or a verdict. The PASS-only named verifier
+exited `1` as required for this terminal `fail`; no later campaign stage or retry followed it.
+
+The phone document stayed answerable, but Shipyard preview settlement never became eligible during
+577 observations inside the unchanged 30-second allowance; the old collector reduced every failed
+predicate clause to `last:null`. This is a settlement timeout, but it is not a performance/deadline
+defect, a reason to extend the unchanged 30-second allowance, or an Edge-version defect. The immutable
+`veteran_rich` baseline includes orphan legacy Mine facts for leaf seed `201` but no source-proved
+full address for that world. Arc 3 correctly enters `legacy-refused` /
+`legacy-seed-missing` protection rather than inventing an address. SceneMemory owns the older Arc 1C
+read-only preview/resource contract, not loaded Arc 3 authority. The red exposed a product coupling
+defect: protection should suppress authority-dependent Engineering details/actions, but the
+independently capability-derived ship preview must remain. The bounded repair must keep this exact
+protected baseline, separate that preview from Arc 3 state and retain field-level settlement
+diagnoses. Glass's distinct both-cleared fixture continues to serve its intentional full-Engineering
+coverage; it must not replace SceneMemory's input or broaden its PASS predicate. The repair must not
+loosen the deadline, change the numeric ruler, or repin Edge.
+
+Carrier integrity:
+
+- Deterministic `gzip -9 -n`: 6,855 bytes, SHA-256
+  `9204f183785947bce7518c925e23c0a846c29213884ff60a3c7d08e3a503dbb3`.
+- Decompressed JSON: 22,302 bytes, SHA-256
+  `452d076d8562d80986ac914cae580f3e0357c786a41391544b6c4cc523323b46`.
+
+The carrier passes gzip integrity. SceneMemory produced no log or screenshot files to preserve.
+This red grants no SceneMemory, Compendium, Slice, Glass, recovery, HUMAN, hosted, integration,
+release, version or deployment authority; a new signed clean successor and a fresh no-retry serial
+campaign are required.
+
 ### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_085237038.{json,log}.gz` — sixth exact-input Slice red
 
 Retains run `20260827085237038-27561-1f8e3c1771b7` from clean signed source

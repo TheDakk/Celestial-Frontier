@@ -17,19 +17,21 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-27 · CURRENT CANDIDATE BROWSERLESS-GREEN · EDGE OUTCOME CONTROLS GREEN · SIGNED FREEZE PENDING ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-27 · SIGNED PREDECESSOR · LAYOUT GREEN · SCENEMEMORY HONEST RED PRESERVED ◀◀◀
 
 ### Exact local ownership and authority boundary
 
 - **Owner/environment:** OpenAI/Codex desktop on macOS, exact root
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
   `origin/openai/mac`, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`.
-- **Current tree:** local and uncommitted, ahead 81 of `origin/openai/mac`. It contains the
-  complete sixth-red repair/polish batch, preserved evidence, reconciled references and refreshed
-  live producer bindings. Full browserless verification and bounded real-Edge outcome controls are
-  green. The final whole-diff audit is complete; both of its evidence-integrity findings are
-  repaired and their focused controls pass. The signed clean freeze and serial certifying browser
-  chain remain.
+- **Signed predecessor:** candidate `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` (tree
+  `9d53c149c06780ae71a9ddb2b683603d056e313d`) is ahead 82 of `origin/openai/mac`; its good
+  ED25519 SSH signature is verified for `79046704+TheDakk@users.noreply.github.com`, fingerprint
+  `SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`. That predecessor produced the preserved
+  terminal-red SceneMemory result. The worktree now contains its bounded protected-preview
+  product/diagnostic repair plus the red carrier and live documentation. The first serial campaign
+  stopped correctly at that red; no later browser stage ran. A new signed clean successor and
+  entirely fresh campaign IDs are required.
 - **No external authority:** this batch authorizes no fetch/merge, push, hosted Actions, PR
   mutation, release, version bump, deployment, preview publication or `rnSeen` mutation.
   `main`, production and both sites remain unchanged.
@@ -43,6 +45,26 @@ the archive verbatim and refresh this handoff in place.
   ledger line exists, and Glass/recovery correctly did not run.
 - Exact report/log carriers are preserved under `audits/ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_085237038.*.gz`;
   their raw/gzip hashes and integrity inventory remain in `audits/README.md`.
+- Signed predecessor `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` then completed named full layout
+  `20260827-phase4-final-layout` at 787/787 across all 10 viewports and passed exact-run
+  verification. Named SceneMemory `20260827-phase4-final-scenemem` ran once with zero automatic
+  retries on Edge `151.0.4129.107`, retained complete cleanup, and honestly failed after 33,181 ms
+  during phone Shipyard settlement. Compendium, Slice, Glass and recovery were not run.
+- Its deterministic carrier is
+  `audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_132723548.json.gz`; raw/gzip SHA-256 are
+  `452d076d…b46` / `9204f183…dbb3`. The PASS-only named verifier exited `1` as expected. The
+  immutable veteran baseline contains orphan legacy Mine facts for leaf seed `201` with no
+  source-proved full address, so Arc 3 correctly protected rather than invented identity.
+  SceneMemory then collapsed 577 responsive partial observations to `last:null`. The red exposed a
+  product coupling defect: protection correctly removes Engineering details/actions but must retain
+  the independently owned read-only capability-derived ship preview. The bounded repair leaves the
+  immutable veteran carrier unchanged; SceneMemory's derived input changes only the carrier's
+  existing `view` field to `null` and preserves every other field. It separates the preview from
+  Arc 3 authority and reports field-level settlement reasons. Glass retains its separately named
+  source-checked both-cleared fixture because Glass intentionally exercises full loaded Engineering;
+  that fixture and loaded-authority predicate do not migrate into the older Arc 1C resource ruler.
+  The timeout was not a performance/deadline defect and is no reason to lengthen the allowance;
+  no deadline, numeric ruler or browser authority changes.
 - Browser evidence now has three deliberately separate version-tolerant authorities. Root
   layout/boot accepts a compatible Chromium-family executable only with CDP `1.3` and the exact
   17-method inventory derived from its source. Compendium and SceneMemory keep their own
@@ -73,9 +95,13 @@ the archive verbatim and refresh this handoff in place.
 5. **F4 failure convergence:** lease acquire/renew storage failures and rejected revision reads
    move the document to transient protection, stop answerability/accrual/heartbeat/player mutation,
    dispose audio, release runtime authority and reload once. Periodic and `pageshow` callbacks
-   honor the hold and cannot reacquire in the same document. Cleanup faults are aggregated without
-   stranding reload. Bounded real-Edge heartbeat and revision-read scenarios prove read-only
-   Settings, stable raw state, release and a fresh writable successor token.
+   honor the hold and cannot reacquire in the same document. The convergence latch schedules that
+   single reload before fallible presentation work. An already-open full Shipyard is synchronously
+   reprojected to one capability-derived preview, an exact unavailable reason and zero Engineering
+   sections/actions; app, DOM and both diagnostic keys agree while durable bytes stay unchanged.
+   Repaint/diagnostic and cleanup faults are retained without stranding reload. Bounded real-Edge
+   heartbeat and revision-read scenarios prove the immediate demotion, read-only Settings, stable
+   raw state, release and a fresh writable successor token.
 6. **Read-only recovery:** all nine ordinary Settings outcomes and Field Training controls are
    intercepted before save-byte mutation. Inspection remains available. **Bring expedition** is
    the narrow authority-gated protected-recovery exception and still requires complete validation,
@@ -106,8 +132,8 @@ the archive verbatim and refresh this handoff in place.
 
 ### Current verification
 
-- **v2 core:** 134 Vitest files, 1,446 passed, one intentional skip, zero failures. Root/app/worker
-  TypeScript, `noUnusedLocals`, 886-module production build, art audit, 1,014 override keys /
+- **v2 core:** 134 Vitest files, 1,458 passed, one intentional skip, zero failures. Root/app/worker
+  TypeScript, `noUnusedLocals`, 887-module production build, art audit, 1,014 override keys /
   1,010 species coverage, 454-field spec check and every override mutation control pass.
 - **Evidence tools:** browser-path, Slice report, Glass, recovery, Compendium (222 controls),
   persona, preview-package/check, CDP-launcher and immutable v1.8.9 descriptor evidence/selftests
@@ -120,28 +146,28 @@ the archive verbatim and refresh this handoff in place.
 - **Real Edge diagnostics:** actual preflight passes Edge `151.0.4129.107` under the
   version-tolerant CDP authority. `slicesmoke --outcome-controls-only` passes all three positive
   scenarios plus their collision/heartbeat/revision negative controls.
-- **Frozen producer bindings:** the unconditional 886-module build binds SceneMemory dist
-  `3899f39f8cc45927d40ef8f80923420ce123f4aa0f61d2d505bba6dd89b08ecd`
-  and Compendium producer `c273d7927cf97327c6b0dc1255b54fe5c93ca9de4c4db75d613ddc16161d8587`.
+- **Successor producer bindings:** the unconditional 887-module build binds SceneMemory dist
+  `726ad8ef4db167a18964763934aa5f8f207600ab3f3ba49c9e81e54b58104074`
+  and Compendium producer `df44eab29e15beac0f2afa574d7a3ef8aed234501ec0d6ffe57572602935d60e`.
   Both tracked budgets match; no numeric ceiling or historical ruler was rewritten. Fresh exact
-  SceneMemory and Compendium browser certificates remain pending for the signed candidate.
-- Independent product/code and release-note audits are CLEAR. The final whole-diff audit found two
-  evidence-integrity gaps: hosted Compendium package isolation and incomplete Slice PASS
-  browser/screenshot validation. Both are repaired, negative-controlled and focused-green; no
-  certifying repaired Slice/Glass/recovery result exists yet.
+  SceneMemory and Compendium browser certificates remain pending for the new signed successor.
+- Prior independent product/code, SceneMemory and release-note audits are CLEAR for their reviewed
+  input. Their findings—and the later convergence-latch and per-field F4 control findings—are
+  repaired and negative-controlled. The affected checks are green, and the independent final
+  post-repair whole-diff review is CLEAR. The signed successor freeze and exact-head browser
+  campaign remain pending; no certifying successor Slice/Glass/recovery result exists yet.
 
 ### Exact remaining local sequence — serial, fail-fast, no automatic retry
 
-1. Reconfirm the exact inventory, create one signed, clean local candidate commit on `openai/mac`,
-   and verify its signature and tree.
-2. From that exact commit run root layout selftest plus one full layout certificate, then one
-   current SceneMemory certificate + named verifier and one current Compendium certificate + named
-   verifier.
-3. Run one current-input Slice and named-verify its immutable ID. Preserve any red exactly and stop.
-4. Only after terminal-green Slice, run full 12-viewport Glass with that exact Slice ID and
+1. Create and signature-verify one new clean local successor on `openai/mac`. From that exact commit
+   run layout selftest plus one new full named layout certificate, then one new SceneMemory
+   certificate + named verifier and one new Compendium certificate + named verifier.
+2. Run one new current-input Slice and named-verify its immutable ID. Preserve any red exactly and
+   stop; never reuse the failed run IDs or silently retry on the same source.
+3. Only after terminal-green Slice, run full 12-viewport Glass with that exact Slice ID and
    named-verify both. Only after both are green, run the uninterrupted 1,200,000 ms recovery
    collector with both exact predecessor IDs and named-verify the three-report chain.
-5. Record exact IDs/hashes in a signed documentation-only evidence descendant, perform the final
+4. Record exact IDs/hashes in a signed documentation-only evidence descendant, perform the final
    read-only campaign review and deliver Nick's fixed/remaining/polish release notes.
 
 ### Open product and HUMAN boundaries

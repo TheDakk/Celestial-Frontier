@@ -26,9 +26,14 @@ does not silently promote planned behavior into the in-game Guide.
 > rebinds the active Training lesson after replacing its action DOM. A subsequent whole-candidate
 > review found additional work in canonical world identity, F4/storage convergence, repository
 > races, texture cleanup, complete settings/read-only coverage and bound evidence sequencing.
-> Those bounded repairs are now implemented locally with focused negative controls; the complete
-> battery and independent re-audits remain pending. No current-input Slice PASS, Glass result,
-> recovery certificate, hosted/HUMAN whole-Gate or release authority follows.
+> Those bounded repairs completed a pre-certificate browserless checkpoint and independent
+> re-audits for the reviewed repair input. Any subsequent source change must rerun its affected
+> checks and receive final whole-diff review. No current-input Slice PASS, Glass result, recovery
+> certificate, hosted/HUMAN whole-Gate or release authority follows.
+> F4 convergence now latches and schedules its single replacement before fallible repaint work. If
+> authority is lost with full Shipyard open, the surface immediately becomes one read-only preview
+> with zero Engineering actions and exact app/DOM/diagnostic identity; a repaint error is witnessed
+> and cannot strand reload.
 >
 > In particular, landing/name history now binds the complete source-reproved CF1 world rather than
 > a globally false leaf-seed key. A fixed v5 manifest plus four byte-balanced shards preserve exact
@@ -136,7 +141,9 @@ does not silently promote planned behavior into the in-game Guide.
 > `48ce0b1662a59b21070667be339a1e59503e1f19`, status
 > `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
 > `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
-> exact historical inputs. Current-candidate re-audits are not final.
+> exact historical inputs. Independent current-candidate product/code, SceneMemory and release-note
+> re-audits later completed for the reviewed repair input; any follow-up source change remains
+> subject to final whole-diff review.
 >
 > Local commit `c4a02be` records the Arc 3 product/browser-tool repair batch. One no-retry Slice run
 > passed in 253,181 ms with 0 findings/10 screenshots; full Glass separately passed in 64,222 ms with

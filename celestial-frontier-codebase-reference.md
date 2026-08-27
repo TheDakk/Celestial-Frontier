@@ -51,13 +51,41 @@
 > stops further accrual. After acquisition, either a revision mismatch or a revision-read failure
 > enters transient protection and schedules one read-only convergence reload: answerability,
 > heartbeat, mutations and audio stop, release/disposal failures are aggregated into diagnostics,
-> and the same document never automatically reacquires. While protected, all nine Settings controls
+> and the same document never automatically reacquires. The app-owned
+> `apps/game/src/f4-convergence-latch.ts` latches the hold and schedules exactly one replacement
+> before invoking the fallible presentation repaint. If full Engineering is open, that transition
+> immediately demotes it to one capability-derived preview, an exact unavailable reason and zero
+> sections/actions with app, DOM and outer/inner diagnostic key parity and unchanged durable bytes.
+> Repaint/diagnostic failure is retained in the convergence witness and cannot cancel cleanup or
+> reload. While protected, all nine Settings controls
 > (Sound, Volume, Creature voices, Text size, Text tone, Font, Star charts, Motion and Panel tint)
 > plus Restart Training and lesson actions are read-only. The event guard deliberately excludes
 > **Bring expedition** so the protected replacement route remains reachable; import still validates
 > the complete candidate and must claim versioned persistence authority, refuses with zero writes if
 > that authority is unavailable, and on success performs one exclusive whole-save replacement
 > followed by reload. This exception grants no authority for ordinary protected-state mutations.
+>
+> Engineering presentation now publishes one atomic `{ship, engineering, reason}` view. The ship is
+> the same capability/reach projection consumed by travel and remains valid when Arc 3 is protected
+> or F4 is read-only. Those states therefore retain exactly one read-only SVG preview and installed-
+> system inspection while rendering an explicit unavailable reason and zero Mining, Skimming,
+> Research or Fabricator controls. A full Engineering view must carry the exact same ship key or is
+> rejected before paint. Diagnostics publish a preview key only when the live owner and exact-one
+> DOM carrier agree; missing, forged or duplicate carriers remain red and close/replacement disposes
+> all preview ownership.
+>
+> This split was exposed by named SceneMemory run `20260827-phase4-final-scenemem` on signed
+> predecessor `bb5dc7c7f4372f712778af67ace2b5f81b71b99d`: Edge `151.0.4129.107` ran once with zero
+> retries and complete cleanup, then stopped after 33,181 ms on the phone Shipyard preview. The
+> immutable veteran carrier remains unchanged; SceneMemory derives the Arc 1C resource input by
+> changing only its existing `view` field to `null` and preserving every other field. Its orphan
+> seed-201 Mine facts correctly protect Arc 3 but do not invalidate the independent preview. The
+> protected-preview product/diagnostic repair preserves
+> a structured last observation plus named field reasons instead of `last:null`, without adding Arc
+> 3 loaded authority to PASS or changing its timeout, ruler or version-tolerant browser authority.
+> The timeout was not a performance/deadline defect and is no reason to lengthen the allowance.
+> The preserved carrier and exact raw/gzip hashes are inventoried in `audits/README.md`. Compendium,
+> Slice, Glass and recovery did not run after this red; a new signed successor campaign is required.
 >
 > Charter mining consumes exact registered world identity. Chapter 1's `c1-mine` credit requires a
 > successful Mine on a canonical landfall whose complete CF1 hierarchy matches Home galaxy
@@ -139,11 +167,15 @@
 > activation did not alter SceneMemory or the root Gate-A browser contract. Its exact bytes remain
 > historical for that producer.
 >
-> The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,446 passed /
+> The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,458 passed /
 > one intentional skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused`,
-> syntax/import selftests and an 886-module Vite build. Implementation/code and release-note audits
-> are CLEAR. The final whole-diff audit is complete; its two evidence-integrity findings are repaired
-> and their focused controls pass. The signed clean freeze remains. Current-input Slice
+> syntax/import selftests and an 887-module Vite build. Prior implementation/code and release-note
+> audits are CLEAR for their reviewed input. Their findings plus the later convergence-latch and
+> per-field F4 control findings are repaired; the affected checks pass and the independent final
+> post-repair whole-diff review is CLEAR. The signed successor freeze remains pending.
+> `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` remains the signed
+> predecessor that produced terminal-red SceneMemory; a new signed successor and fresh certificate
+> IDs remain pending. Current-input Slice
 > remains RED; Glass, recovery and whole-Gate evidence remain open.
 >
 > Current-input Slice retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
@@ -2640,14 +2672,18 @@ for a name.
 ## 12. Test suites (all must pass)
 
 **Current local candidate snapshot (2026-08-27):** the complete browserless checkpoint is green at
-134 Vitest files / 1,446 passed / one intentional skip / zero failures, plus root, app, worker and
-no-unused TypeScript, `artunused`, syntax/import selftests and the 886-module Vite build.
-Implementation/code and release-note audits are CLEAR. The final whole-diff audit is complete; its
-two evidence-integrity findings are repaired and their focused controls pass. The signed clean
-freeze remains. Tracked Compendium and SceneMemory producer bindings match the
-rebuilt candidate, while earlier certificates stay historical until the exact signed producers are
-measured. Each ruler uses its own Edge-family + CDP `1.3` capability/profile contract; exact browser
-point version is per-run provenance.
+134 Vitest files / 1,458 passed / one intentional skip / zero failures, plus root, app, worker and
+no-unused TypeScript, `artunused`, syntax/import selftests and the 887-module Vite build. Prior
+implementation/code and release-note audits are CLEAR for their reviewed input; their findings and
+the later convergence-latch/per-field F4 controls are repaired, and the independent final
+post-repair whole-diff review is CLEAR. The signed successor freeze remains pending. Signed predecessor
+`bb5dc7c7f4372f712778af67ace2b5f81b71b99d` produced terminal-red SceneMemory; the current
+protected-preview product/diagnostic repair still needs a new signed successor and fresh certificate
+IDs. Its immutable veteran carrier remains unchanged, while the derived SceneMemory input changes
+only the existing `view` field to `null` and preserves every other field. Tracked Compendium and
+SceneMemory producer bindings match the rebuilt worktree; earlier certificates stay historical
+until the exact new signed producers are measured. Each ruler uses its own Edge-family + CDP `1.3`
+capability/profile contract; exact browser point version is per-run provenance.
 
 Current-input Slice retains six one-attempt/zero-retry reds. Clean signed source
 `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run

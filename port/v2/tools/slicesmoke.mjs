@@ -865,6 +865,21 @@ const READ_ARC3_ENGINEERING_UI_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,s
     renderedFacts:{opportunities:[opportunity('mining'),opportunity('skimming')],research,recipes},
     actionAvailability:actions,pendingVisible:!!pending&&!pending.hidden,ariaBusy:body?.getAttribute('aria-busy')??null,
     inventoryState:state?.inventory??null,inventoryController:S?.api?.inventoryDiagnostics?.()??null}})()`;
+const READ_F4_SHIPYARD_AUTHORITY_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+  panel=document.getElementById('shipyardpanel'),body=panel?.querySelector('[data-engineering-panel-body]'),
+  diagnostics=S?.api?.shipyardDiagnostics?.()??null,
+  unavailable=body?.querySelector('[data-engineering-state="unavailable"]')??null,
+  previews=[...panel?.querySelectorAll('[data-cf-shipyard-preview="v1"]')??[]];return {
+    panelOpen:state?.panelOpen??null,
+    shipVisualStateKey:state?.shipVisual?.stateKey??null,
+    sectionCount:body?.querySelectorAll('details[data-engineering-section]').length??-1,
+    actionCount:body?.querySelectorAll('button[data-engineering-action]').length??-1,
+    unavailableReason:unavailable?.getAttribute('data-engineering-unavailable')??null,
+    unavailableText:(unavailable?.textContent||'').replace(/\\s+/g,' ').trim(),
+    previewCount:previews.length,
+    previewStateKeys:previews.map((preview)=>preview.getAttribute('data-state-key')),
+    diagnostics,
+  }})()`;
 const STAGE_OLD_F4_RECEIPT_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
   const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
   try{const tx=db.transaction('receipts','readwrite'),done=new Promise((resolve,reject)=>{tx.oncomplete=()=>resolve();
@@ -2372,7 +2387,8 @@ const assessArc3PendingLifecycle = ({
     || closed?.diagnostics?.pendingPreviewWork !== 1
     || closedEng?.activeCount !== 0 || closedEng?.retainedDomCount !== 0
     || closedEng?.pendingWork !== 1 || closedEng?.actionControlCount !== 0
-    || closedEng?.activePreviewCount !== 0 || closedEng?.retainedPreviewCount !== 0) {
+    || closedEng?.activePreviewCount !== 0 || closedEng?.previewStateKey !== null
+    || closedEng?.retainedPreviewCount !== 0) {
     reasons.push('Close during pending release/focus');
   }
   const reopenedEng = reopened?.diagnostics?.engineering;
@@ -2385,7 +2401,12 @@ const assessArc3PendingLifecycle = ({
     || reopened?.diagnostics?.retainedPreviewCount !== 0 || reopened?.diagnostics?.pendingPreviewWork !== 1
     || reopenedEng?.activeCount !== 1 || reopenedEng?.retainedDomCount <= ENGINEERING_ACTION_CONTROL_COUNT
     || reopenedEng?.pendingWork !== 1 || reopenedEng?.actionControlCount !== ENGINEERING_ACTION_CONTROL_COUNT
-    || reopenedEng?.activePreviewCount !== 1 || reopenedEng?.retainedPreviewCount !== 0
+    || reopenedEng?.activePreviewCount !== 1
+    || typeof reopened?.appStateKey !== 'string' || reopened.appStateKey.length === 0
+    || canonicalJson(reopened?.previewStateKeys) !== canonicalJson([reopened.appStateKey])
+    || reopened?.diagnostics?.stateKey !== reopened.appStateKey
+    || reopenedEng?.previewStateKey !== reopened.appStateKey
+    || reopenedEng?.retainedPreviewCount !== 0
     || reopenedEng?.lastRequest?.operation !== 'mine') reasons.push('reopen remains pending without retained ownership');
   return { ok: reasons.length === 0, reasons, ui, second };
 };
@@ -3484,9 +3505,126 @@ const assessF4HideFailureRelease = ({ armed, hidden, shown }) => {
     || shown?.persistence?.runtime?.accruing !== true) reasons.push('reacquisition');
   return { ok: reasons.length === 0, reasons };
 };
+const f4WritableShipyardChecks = (surface) => {
+  const engineering = surface?.diagnostics?.engineering;
+  return Object.freeze({
+    panel: surface?.panelOpen === 'shipyard',
+    sections: surface?.sectionCount === 4,
+    actions: surface?.actionCount === ENGINEERING_ACTION_CONTROL_COUNT,
+    available: surface?.unavailableReason === null && surface?.unavailableText === '',
+    preview: surface?.previewCount === 1 && surface?.previewStateKeys?.length === 1,
+    domKey: typeof surface?.previewStateKeys?.[0] === 'string'
+      && surface.previewStateKeys[0].length > 0,
+    appKey: surface?.shipVisualStateKey === surface?.previewStateKeys?.[0],
+    outerIdentity: surface?.diagnostics?.schema === 'cf-v2-shipyard-diagnostics/v1'
+      && surface?.diagnostics?.status === 'open'
+      && surface?.diagnostics?.stateKey === surface?.previewStateKeys?.[0],
+    outerLifecycle: surface?.diagnostics?.activePreviewCount === 1
+      && surface?.diagnostics?.retainedPreviewCount === 0
+      && surface?.diagnostics?.pendingPreviewWork === 0,
+    innerIdentity: engineering?.schema === 'cf-v2-engineering-panel-diagnostics/v1'
+      && engineering?.previewStateKey === surface?.diagnostics?.stateKey,
+    innerLifecycle: engineering?.activeCount === 1 && engineering?.pendingWork === 0
+      && engineering?.actionControlCount === ENGINEERING_ACTION_CONTROL_COUNT
+      && engineering?.activePreviewCount === 1
+      && engineering?.retainedPreviewCount === 0 && engineering?.faultCount === 0,
+  });
+};
+const f4WritableShipyardReasons = (surface) => Object.entries(f4WritableShipyardChecks(surface))
+  .filter(([, value]) => value !== true).map(([name]) => name);
+const f4WritableShipyardExact = (surface) => f4WritableShipyardReasons(surface).length === 0;
+const F4_PROTECTED_SHIPYARD_REASON =
+  'Engineering details and actions are unavailable while expedition storage is read-only.';
+const f4ProtectedShipyardExact = (surface, expectedStateKey) => {
+  const engineering = surface?.diagnostics?.engineering;
+  return surface?.panelOpen === 'shipyard'
+    && surface?.sectionCount === 0
+    && surface?.actionCount === 0
+    && surface?.unavailableReason === F4_PROTECTED_SHIPYARD_REASON
+    && surface?.unavailableText === surface?.unavailableReason
+    && surface?.shipVisualStateKey === expectedStateKey
+    && surface?.previewCount === 1
+    && canonicalJson(surface?.previewStateKeys) === canonicalJson([expectedStateKey])
+    && surface?.diagnostics?.schema === 'cf-v2-shipyard-diagnostics/v1'
+    && surface?.diagnostics?.status === 'open'
+    && surface?.diagnostics?.stateKey === expectedStateKey
+    && surface?.diagnostics?.activePreviewCount === 1
+    && surface?.diagnostics?.retainedPreviewCount === 0
+    && surface?.diagnostics?.pendingPreviewWork === 0
+    && engineering?.schema === 'cf-v2-engineering-panel-diagnostics/v1'
+    && engineering?.activeCount === 1
+    && engineering?.pendingWork === 0
+    && engineering?.actionControlCount === 0
+    && engineering?.activePreviewCount === 1
+    && engineering?.previewStateKey === expectedStateKey
+    && engineering?.retainedPreviewCount === 0
+    && engineering?.faultCount === 0;
+};
+const F4_PROTECTED_SHIPYARD_CONTROL_MUTATIONS = Object.freeze({
+  shipyardPanelClosed: (surface) => { surface.panelOpen = null; },
+  shipyardSectionLeaks: (surface) => { surface.sectionCount = 1; },
+  shipyardDomActionLeaks: (surface) => { surface.actionCount = 1; },
+  shipyardReasonSuffix: (surface) => {
+    surface.unavailableReason = `${F4_PROTECTED_SHIPYARD_REASON} stale`;
+  },
+  shipyardUnavailableTextMismatch: (surface) => { surface.unavailableText = ''; },
+  shipyardAppKeyMismatch: (surface) => {
+    surface.shipVisualStateKey = 'ship:v1:control-app-mismatch';
+  },
+  shipyardPreviewCountMismatch: (surface) => { surface.previewCount = 0; },
+  shipyardDomKeyMismatch: (surface) => {
+    surface.previewStateKeys[0] = 'ship:v1:control-dom-mismatch';
+  },
+  shipyardOuterSchemaMismatch: (surface) => {
+    surface.diagnostics.schema = 'cf-v2-shipyard-diagnostics/control';
+  },
+  shipyardOuterStatusMismatch: (surface) => { surface.diagnostics.status = 'closed'; },
+  shipyardOuterKeyMismatch: (surface) => {
+    surface.diagnostics.stateKey = 'ship:v1:control-outer-mismatch';
+  },
+  shipyardOuterActiveMismatch: (surface) => {
+    surface.diagnostics.activePreviewCount = 0;
+  },
+  shipyardOuterRetainedMismatch: (surface) => {
+    surface.diagnostics.retainedPreviewCount = 1;
+  },
+  shipyardOuterPendingMismatch: (surface) => {
+    surface.diagnostics.pendingPreviewWork = 1;
+  },
+  shipyardInnerSchemaMismatch: (surface) => {
+    surface.diagnostics.engineering.schema = 'cf-v2-engineering-panel-diagnostics/control';
+  },
+  shipyardInnerActiveCountMismatch: (surface) => {
+    surface.diagnostics.engineering.activeCount = 0;
+  },
+  shipyardInnerPendingMismatch: (surface) => {
+    surface.diagnostics.engineering.pendingWork = 1;
+  },
+  shipyardDiagnosticActionLeaks: (surface) => {
+    surface.diagnostics.engineering.actionControlCount = 1;
+  },
+  shipyardInnerActivePreviewMismatch: (surface) => {
+    surface.diagnostics.engineering.activePreviewCount = 0;
+  },
+  shipyardInnerKeyMismatch: (surface) => {
+    surface.diagnostics.engineering.previewStateKey = 'ship:v1:control-inner-mismatch';
+  },
+  shipyardInnerRetainedMismatch: (surface) => {
+    surface.diagnostics.engineering.retainedPreviewCount = 1;
+  },
+  shipyardInnerFaultMismatch: (surface) => {
+    surface.diagnostics.engineering.faultCount = 1;
+  },
+});
+const f4ProtectedShipyardControls = (control) => Object.fromEntries(
+  Object.entries(F4_PROTECTED_SHIPYARD_CONTROL_MUTATIONS).map(([name, mutate]) => [
+    name,
+    control((candidate) => mutate(candidate.shipyardProtected)),
+  ]),
+);
 const assessF4HeartbeatStorageFailure = ({
-  armed, before, protectedState, settledState, mutation, callbackState,
-  releaseWitness, reloaded, rawBefore, rawReloaded,
+  armed, before, shipyardBefore, protectedState, shipyardProtected, settledState, mutation, callbackState,
+  releaseWitness, reloaded, rawBefore, rawProtected, rawReloaded, primaryBefore, primaryProtected,
 }) => {
   const reasons = [];
   const runtime = protectedState?.persistence?.runtime;
@@ -3496,7 +3634,8 @@ const assessF4HeartbeatStorageFailure = ({
     || before?.persistence?.heartbeatRunning !== true
     || before?.persistence?.runtime?.leaseOwned !== true
     || before?.persistence?.runtime?.answerable !== true
-    || before?.persistence?.runtime?.accruing !== true) reasons.push('writable precondition');
+    || before?.persistence?.runtime?.accruing !== true
+    || !f4WritableShipyardExact(shipyardBefore)) reasons.push('writable precondition');
   if (protectedState?.persistence?.bootKind !== 'transient-protected'
     || protectedState?.persistence?.hold !== 'transient-read'
     || protectedState?.persistence?.mutationBlocked !== true
@@ -3509,6 +3648,11 @@ const assessF4HeartbeatStorageFailure = ({
     || !/injected F4 heartbeat lease storage failure/.test(
       protectedState?.persistence?.heartbeatStorageFault?.message || '',
     )) reasons.push('diagnosed read-only protection');
+  if (!f4ProtectedShipyardExact(
+    shipyardProtected,
+    shipyardBefore?.diagnostics?.stateKey,
+  ) || canonicalJson(rawProtected) !== canonicalJson(rawBefore)
+    || primaryProtected !== primaryBefore) reasons.push('immediate Shipyard protection');
   if (runtime?.leaseOwned !== false || runtime?.answerable !== false || runtime?.accruing !== false
     || runtime?.leaseHeartbeat !== null || settledRuntime?.activePlayMs !== runtime?.activePlayMs) {
     reasons.push('stopped accrual/lease');
@@ -3557,8 +3701,8 @@ const assessF4HeartbeatStorageFailure = ({
   return { ok: reasons.length === 0, reasons };
 };
 const assessF4RevisionVerificationFailure = ({
-  armed, before, protectedState, settledState, mutation, callbackState,
-  releaseWitness, reloaded, rawBefore, rawReloaded,
+  armed, before, shipyardBefore, protectedState, shipyardProtected, settledState, mutation, callbackState,
+  releaseWitness, reloaded, rawBefore, rawProtected, rawReloaded, primaryBefore, primaryProtected,
 }) => {
   const reasons = [];
   const runtime = protectedState?.persistence?.runtime;
@@ -3569,7 +3713,8 @@ const assessF4RevisionVerificationFailure = ({
     || before?.persistence?.heartbeatRunning !== true
     || before?.persistence?.runtime?.leaseOwned !== true
     || before?.persistence?.runtime?.answerable !== true
-    || before?.persistence?.runtime?.accruing !== true) reasons.push('writable precondition');
+    || before?.persistence?.runtime?.accruing !== true
+    || !f4WritableShipyardExact(shipyardBefore)) reasons.push('writable precondition');
   if (protectedState?.persistence?.bootKind !== 'transient-protected'
     || protectedState?.persistence?.hold !== 'transient-read'
     || protectedState?.persistence?.mutationBlocked !== true
@@ -3582,6 +3727,11 @@ const assessF4RevisionVerificationFailure = ({
     || protectedState?.persistence?.revisionReadCount !== fault?.revisionReadCount) {
     reasons.push('diagnosed read-only protection');
   }
+  if (!f4ProtectedShipyardExact(
+    shipyardProtected,
+    shipyardBefore?.diagnostics?.stateKey,
+  ) || canonicalJson(rawProtected) !== canonicalJson(rawBefore)
+    || primaryProtected !== primaryBefore) reasons.push('immediate Shipyard protection');
   if (runtime?.leaseOwned !== true || runtime?.answerable !== false || runtime?.accruing !== false
     || settledRuntime?.activePlayMs !== runtime?.activePlayMs) reasons.push('stopped accrual/authority');
   if (audio?.lastDisposition !== 'unanswerable' || audio?.activeVoiceId !== null
@@ -4871,7 +5021,7 @@ try {
     ps=panel?getComputedStyle(panel):null,os=opener?getComputedStyle(opener):null,pr=panel?.getBoundingClientRect(),br=body?.getBoundingClientRect(),
     cr=close?.getBoundingClientRect(),hit=cr?document.elementFromPoint((cr.left+cr.right)/2,(cr.top+cr.bottom)/2):null,
     diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
-    engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','retainedDomCount','retainedPreviewCount','schema'].sort(),
+    engKeys=eng?Object.keys(eng).sort():[],expectedEngKeys=['actionControlCount','activeCount','activePreviewCount','delegatedListenerCount','faultCount','lastRequest','pendingWork','previewStateKey','retainedDomCount','retainedPreviewCount','schema'].sort(),
     stateKey=typeof ship?.stateKey==='string'&&ship.stateKey?ship.stateKey:null,
     canonicalIds=JSON.stringify(hardpointKeys)===JSON.stringify(canonicalHardpointIds)
       &&JSON.stringify(expectedSystems)===JSON.stringify(canonicalSystemIds.filter((id)=>expectedSystems.includes(id)))
@@ -4895,7 +5045,8 @@ try {
       &&diag?.activePreviewCount===1&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
       &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys)
       &&eng?.schema==='cf-v2-engineering-panel-diagnostics/v1'&&eng?.activeCount===1&&eng?.pendingWork===0
-      &&eng?.activePreviewCount===1&&eng?.retainedPreviewCount===0&&eng?.delegatedListenerCount===1
+      &&eng?.activePreviewCount===1&&eng?.previewStateKey===stateKey&&diag?.stateKey===eng?.previewStateKey
+      &&eng?.retainedPreviewCount===0&&eng?.delegatedListenerCount===1
       &&eng?.faultCount===0&&eng?.lastRequest===null&&eng?.retainedDomCount>${ENGINEERING_ACTION_CONTROL_COUNT}
       &&JSON.stringify(engKeys)===JSON.stringify(expectedEngKeys),
     geometry=!!panel&&ps?.display!=='none'&&ps?.visibility!=='hidden'&&!!pr&&!!br
@@ -4969,12 +5120,15 @@ try {
         + JSON.stringify(duplicateShipyardCtl));
     }
     const parityShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
-      preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),priorKey=preview?.getAttribute('data-state-key'),
+      preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),substitute=preview?.cloneNode(true),
+      priorKey=preview?.getAttribute('data-state-key'),
       fakeHardpoint=document.createElementNS('http://www.w3.org/2000/svg','g'),fakeSystem=document.createElement('div'),
       research=panel?.querySelector('[data-engineering-research-rows]'),first=research?.firstElementChild,second=first?.nextElementSibling,
       recipe=panel?.querySelector('[data-recipe-id]'),duplicateRecipe=recipe?.cloneNode(true),
       action=panel?.querySelector('button[data-engineering-action]'),priorDisabled=action?.disabled??null,
       priorAriaDisabled=action?.getAttribute('aria-disabled')??null;
+      if(preview&&substitute)preview.replaceWith(substitute);const substituted=${shipyardOpenCheck};
+      if(substitute?.isConnected)substitute.replaceWith(preview);const substitutionRestored=${shipyardOpenCheck};
       preview?.setAttribute('data-state-key','ship-v1:tampered');const key=${shipyardOpenCheck};
       if(priorKey===null)preview?.removeAttribute('data-state-key');else preview?.setAttribute('data-state-key',priorKey);
       fakeHardpoint.setAttribute('data-hardpoint','autoext');preview?.appendChild(fakeHardpoint);const hardpoint=${shipyardOpenCheck};fakeHardpoint.remove();
@@ -4985,11 +5139,17 @@ try {
         action.setAttribute('aria-disabled',String(action.disabled));}const actionParity=${shipyardOpenCheck};
       if(action&&priorDisabled!==null){action.disabled=priorDisabled;if(priorAriaDisabled===null)action.removeAttribute('aria-disabled');
         else action.setAttribute('aria-disabled',priorAriaDisabled);}
-      return {ok:key.ok===false&&hardpoint.ok===false&&system.ok===false
+      return {ok:substituted.ok===false&&substituted.previewCount===1&&substituted.truth===false
+        &&substituted.diagnostics===false&&substituted.diag?.stateKey===null
+        &&substituted.diag?.engineering?.previewStateKey===null
+        &&substituted.diag?.engineering?.activePreviewCount===0
+        &&substituted.diag?.engineering?.retainedPreviewCount>0
+        &&substituted.diag?.engineering?.faultCount>0&&substitutionRestored.ok===true
+        &&key.ok===false&&hardpoint.ok===false&&system.ok===false
         &&researchOrder.ok===false&&researchOrder.researchMatch===false
         &&recipeDuplication.ok===false&&recipeDuplication.recipeMatch===false
         &&actionParity.ok===false&&actionParity.actionInventory===false&&${shipyardOpenCheck}.ok,
-        key,hardpoint,system,researchOrder,recipeDuplication,actionParity};})()`);
+        substituted,substitutionRestored,key,hardpoint,system,researchOrder,recipeDuplication,actionParity};})()`);
     if (!parityShipyardCtl.ok) {
       fails.push('ENGINEERING STATE CONTROL FAILED — state/research/recipe mismatch stayed green or failed to restore: '
         + JSON.stringify(parityShipyardCtl));
@@ -5042,7 +5202,8 @@ try {
         &&diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='closed'&&diag?.stateKey===null
         &&diag?.activePreviewCount===0&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
         &&eng?.schema==='cf-v2-engineering-panel-diagnostics/v1'&&eng?.activeCount===0&&eng?.retainedDomCount===0
-        &&eng?.pendingWork===0&&eng?.actionControlCount===0&&eng?.activePreviewCount===0&&eng?.retainedPreviewCount===0
+        &&eng?.pendingWork===0&&eng?.actionControlCount===0&&eng?.activePreviewCount===0
+        &&eng?.previewStateKey===null&&eng?.retainedPreviewCount===0
         &&eng?.delegatedListenerCount===1&&eng?.faultCount===0&&body?.childElementCount===0
         &&JSON.stringify(keys)===JSON.stringify(expected)&&opener?.getAttribute('aria-expanded')==='false'
         &&document.activeElement===opener,panelOpen:S?.api?.state?.().panelOpen??null,panelDisplay:style?.display||null,
@@ -8178,7 +8339,10 @@ try {
       recipes:[...group.querySelectorAll('[data-recipe-id]')].map((row)=>row.getAttribute('data-recipe-id'))})),
     button=(operation,id=null)=>[...panel.querySelectorAll('button[data-engineering-action]')]
       .find((row)=>row.getAttribute('data-engineering-action')===operation&&row.getAttribute('data-action-id')===id),
-    close=panel.querySelector(':scope > [data-pnx="shipyard"]');return {panelOpen:S.api.state().panelOpen,
+    close=panel.querySelector(':scope > [data-pnx="shipyard"]'),state=S.api.state(),
+    previews=[...panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')];return {panelOpen:state.panelOpen,
+      appStateKey:state.shipVisual?.stateKey??null,
+      previewStateKeys:previews.map((preview)=>preview.getAttribute('data-state-key')),
       research,groups,actionCount:panel.querySelectorAll('button[data-engineering-action]').length,
       mine:{enabled:!button('mine')?.disabled,model:button('mine')?.getAttribute('data-model-enabled')},
       skim:{enabled:!button('skim')?.disabled,model:button('skim')?.getAttribute('data-model-enabled')},
@@ -8196,7 +8360,11 @@ try {
     && surface?.scan?.enabled === true && surface?.scan?.model === 'true'
     && surface?.plate?.enabled === true && surface?.plate?.model === 'true'
     && surface?.focus === 'close'
-    && surface?.diag?.engineering?.actionControlCount === ENGINEERING_ACTION_CONTROL_COUNT;
+    && surface?.diag?.engineering?.actionControlCount === ENGINEERING_ACTION_CONTROL_COUNT
+    && typeof surface?.appStateKey === 'string' && surface.appStateKey.length > 0
+    && canonicalJson(surface?.previewStateKeys) === canonicalJson([surface.appStateKey])
+    && surface?.diag?.stateKey === surface.appStateKey
+    && surface?.diag?.engineering?.previewStateKey === surface.appStateKey;
   const engineeringSurfaceOk = engineeringSurfacePasses(engineeringOpen, engineeringSurface);
   if (!engineeringSurfaceOk) {
     fails.push('ARC 3 ENGINEERING SURFACE: exact real panel/action availability disagreed: '
@@ -8205,8 +8373,29 @@ try {
   const engineeringSurfaceControl = engineeringSurfacePasses(engineeringOpen, {
     ...engineeringSurface, actionCount: ENGINEERING_ACTION_CONTROL_COUNT - 1,
   });
-  if (engineeringSurfaceControl) {
-    fails.push('ARC 3 ENGINEERING SURFACE CONTROL FAILED — missing action stayed green');
+  const engineeringSurfaceIdentityControls = {
+    app: engineeringSurfacePasses(engineeringOpen, {
+      ...engineeringSurface, appStateKey: 'ship:v1:surface-app-control',
+    }),
+    dom: engineeringSurfacePasses(engineeringOpen, {
+      ...engineeringSurface, previewStateKeys: ['ship:v1:surface-dom-control'],
+    }),
+    outer: engineeringSurfacePasses(engineeringOpen, {
+      ...engineeringSurface,
+      diag: { ...engineeringSurface.diag, stateKey: 'ship:v1:surface-outer-control' },
+    }),
+    inner: engineeringSurfacePasses(engineeringOpen, {
+      ...engineeringSurface,
+      diag: { ...engineeringSurface.diag, engineering: {
+        ...engineeringSurface.diag.engineering,
+        previewStateKey: 'ship:v1:surface-inner-control',
+      } },
+    }),
+  };
+  if (engineeringSurfaceControl
+    || Object.values(engineeringSurfaceIdentityControls).some((control) => control)) {
+    fails.push('ARC 3 ENGINEERING SURFACE CONTROL FAILED — missing action or app/DOM/outer/inner preview-identity drift stayed green: '
+      + JSON.stringify({ engineeringSurfaceControl, engineeringSurfaceIdentityControls }));
   }
 
   const mineBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -8231,7 +8420,10 @@ try {
   const pendingReopen = await openEngineeringPanel('ARC 3 HELD MINE REOPEN');
   const mineReopened = await evalIn(`(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
     actions=[...panel.querySelectorAll('button[data-engineering-action]')],pending=panel.querySelector('[data-engineering-pending]'),
-    close=panel.querySelector(':scope > [data-pnx="shipyard"]');return {panelOpen:S.api.state().panelOpen,
+    close=panel.querySelector(':scope > [data-pnx="shipyard"]'),state=S.api.state(),
+    previews=[...panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')];return {panelOpen:state.panelOpen,
+      appStateKey:state.shipVisual?.stateKey??null,
+      previewStateKeys:previews.map((preview)=>preview.getAttribute('data-state-key')),
       focus:document.activeElement===close?'close':null,pendingVisible:!!pending&&!pending.hidden,
       ariaBusy:panel.querySelector('[data-engineering-panel-body]')?.getAttribute('aria-busy'),actionCount:actions.length,
       disabledCount:actions.filter((button)=>button.disabled).length,diagnostics:S.api.shipyardDiagnostics()}})()`);
@@ -8260,6 +8452,19 @@ try {
     inventoryController: assessArc3PendingLifecycle({ ...minePendingBundle,
       pendingUi: withEngineeringUiInventoryController(minePendingUi) }),
   };
+  const minePendingIdentityControls = {
+    app: assessArc3PendingLifecycle({ ...minePendingBundle,
+      reopened: { ...mineReopened, appStateKey: 'ship:v1:pending-app-control' } }),
+    dom: assessArc3PendingLifecycle({ ...minePendingBundle,
+      reopened: { ...mineReopened, previewStateKeys: ['ship:v1:pending-dom-control'] } }),
+    outer: assessArc3PendingLifecycle({ ...minePendingBundle,
+      reopened: { ...mineReopened, diagnostics: { ...mineReopened.diagnostics,
+        stateKey: 'ship:v1:pending-outer-control' } } }),
+    inner: assessArc3PendingLifecycle({ ...minePendingBundle,
+      reopened: { ...mineReopened, diagnostics: { ...mineReopened.diagnostics,
+        engineering: { ...mineReopened.diagnostics.engineering,
+          previewStateKey: 'ship:v1:pending-inner-control' } } } }),
+  };
   const minePendingControls = [
     assessArc3PendingLifecycle({ ...minePendingBundle, pendingRaw: { ...minePendingRaw,
       revision: Number.isSafeInteger(minePendingRaw?.revision) ? minePendingRaw.revision + 1 : 'control-revision' } }),
@@ -8268,6 +8473,7 @@ try {
         essence: Number.isFinite(minePendingBundle.pendingState?.save?.essence)
           ? minePendingBundle.pendingState.save.essence + 1 : 'control-essence' } } }),
     ...Object.values(minePendingUiControls),
+    ...Object.values(minePendingIdentityControls),
     assessArc3PendingLifecycle({ ...minePendingBundle, competitor: { ...mineCompetitor, kind: 'committed' } }),
     assessArc3PendingLifecycle({ ...minePendingBundle, competitor: {
       ...mineCompetitor, detail: 'product-action-pending',
@@ -8301,9 +8507,15 @@ try {
   ];
   const minePendingUiControlsIsolated = Object.entries(minePendingUiControls)
     .every(([check, assessment]) => isolatesEngineeringUiCheck(assessment, check));
-  if (minePendingControls.some((control) => control.ok) || !minePendingUiControlsIsolated) {
+  const minePendingIdentityControlsIsolated = Object.values(minePendingIdentityControls)
+    .every((assessment) => assessment.ok === false
+      && canonicalJson(assessment.reasons)
+        === canonicalJson(['reopen remains pending without retained ownership']));
+  if (minePendingControls.some((control) => control.ok) || !minePendingUiControlsIsolated
+    || !minePendingIdentityControlsIsolated) {
     fails.push('ARC 3 MINE HOLD CONTROLS FAILED — optimistic/simultaneous/retained/unlatched mutation stayed green: '
-      + JSON.stringify({ minePendingControls, minePendingUiControlsIsolated }));
+      + JSON.stringify({ minePendingControls, minePendingUiControlsIsolated,
+        minePendingIdentityControls, minePendingIdentityControlsIsolated }));
   }
   const mineReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseArc3ActionHold()`);
   await waitDesktopValue('Arc 3 Mine commit', `(()=>{const s=window.__CF_SLICE__.api.state(),d=window.__CF_SLICE__.api.shipyardDiagnostics();
@@ -9210,14 +9422,16 @@ try {
   }
   const remnantRouteSurface = await evalIn(`(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
     panel=document.getElementById('shipyardpanel'),section=panel?.querySelector('details[data-engineering-section="skimming"]'),
-    button=section?.querySelector('button[data-engineering-action="skim"]'),diagnostics=S?.api?.shipyardDiagnostics?.();
+    button=section?.querySelector('button[data-engineering-action="skim"]'),diagnostics=S?.api?.shipyardDiagnostics?.(),
+    previews=panel?[...panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')]:[];
     return {panelOpen:state?.panelOpen??null,button:{exists:!!button,connected:button?.isConnected===true,
       tag:button?.tagName??null,operation:button?.getAttribute('data-engineering-action')??null,
       id:button?.getAttribute('data-action-id')??null},model:{status:section?.getAttribute('data-status')??null,
       modelEnabled:button?.getAttribute('data-model-enabled')??null,disabled:button?.disabled??null,
       ariaDisabled:button?.getAttribute('aria-disabled')??null,disabledReason:button?.getAttribute('data-disabled-reason')??null},
+      previewStateKeys:previews.map((preview)=>preview.getAttribute('data-state-key')),
       diagnostics:diagnostics??null};})()`).catch((cause) => ({
-    panelOpen: null, button: null, model: null, diagnostics: null,
+    panelOpen: null, button: null, model: null, previewStateKeys: null, diagnostics: null,
     diagnosticError: String(cause?.message || cause),
   }));
   const remnantRouteEvidence = {
@@ -9251,6 +9465,11 @@ try {
     delete missingPreReceiptEpoch.renderedScene.ecologyEpoch;
     const missingCurrentReceiptEpoch = structuredClone(remnantState);
     delete missingCurrentReceiptEpoch.renderedScene.ecologyEpoch;
+    const missingFourWayPreviewIdentity = structuredClone(remnantRouteEvidence);
+    delete missingFourWayPreviewIdentity.current.shipVisual.stateKey;
+    delete missingFourWayPreviewIdentity.surface.diagnostics.stateKey;
+    delete missingFourWayPreviewIdentity.surface.diagnostics.engineering.previewStateKey;
+    missingFourWayPreviewIdentity.surface.previewStateKeys = [];
     remnantRouteDiagnosticControls = {
       empty: assessArc3RemnantSkimRoutePrecondition(),
       failure: assessArc3RemnantSkimRoutePrecondition({
@@ -9335,6 +9554,33 @@ try {
             installedSystemIds: ['jumpdrive', 'array'],
             hardpoints: { ...remnantState?.shipVisual?.hardpoints, array: true } } },
       }),
+      diagnosticsAppKeyDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        current: { ...remnantState,
+          shipVisual: { ...remnantState?.shipVisual,
+            stateKey: 'ship:v1:remnant-app-control-mismatch' } },
+      }),
+      diagnosticsOuterKeyDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        surface: { ...remnantRouteSurface,
+          diagnostics: { ...remnantRouteSurface.diagnostics,
+            stateKey: 'ship:v1:remnant-outer-control-mismatch' } },
+      }),
+      diagnosticsInnerKeyDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        surface: { ...remnantRouteSurface,
+          diagnostics: { ...remnantRouteSurface.diagnostics,
+            engineering: { ...remnantRouteSurface.diagnostics.engineering,
+              previewStateKey: 'ship:v1:remnant-inner-control-mismatch' } } },
+      }),
+      diagnosticsDomKeyDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        surface: { ...remnantRouteSurface,
+          previewStateKeys: ['ship:v1:remnant-dom-control-mismatch'] },
+      }),
+      diagnosticsFourWayIdentityMissing: assessArc3RemnantSkimRoutePrecondition(
+        missingFourWayPreviewIdentity,
+      ),
     };
   }
   const remnantRouteTargetControlsIsolated = remnantRouteDiagnosticControls !== null
@@ -9353,6 +9599,9 @@ try {
     wrongPreReceiptEpoch: 'preRoute', missingCurrentReceiptEpoch: 'renderedReceipt',
     wrongCurrentReceiptEpoch: 'renderedReceipt', wrongCurrentEpoch: 'renderedReceipt',
     ownershipDrift: 'charterOwnership',
+    diagnosticsAppKeyDrift: 'diagnostics', diagnosticsOuterKeyDrift: 'diagnostics',
+    diagnosticsInnerKeyDrift: 'diagnostics', diagnosticsDomKeyDrift: 'diagnostics',
+    diagnosticsFourWayIdentityMissing: 'diagnostics',
   };
   const remnantRouteClauseControlsIsolated = remnantRouteDiagnosticControls !== null
     && Object.entries(remnantRouteClauseControl)
@@ -9704,6 +9953,11 @@ try {
   const storageAfterDiagnostics = await captureStorageTerminal(
     'diagnostics', `window.__CF_SLICE__.api.shipyardDiagnostics()`,
   );
+  const storageAfterPreviewStateKeys = await captureStorageTerminal(
+    'preview state keys', `(()=>{const panel=document.getElementById('shipyardpanel');
+      return panel?[...panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')]
+        .map((preview)=>preview.getAttribute('data-state-key')):[];})()`,
+  );
   let storageInteraction = null;
   try { storageInteraction = await takeEngineeringInteraction('keyboard', 'fabricate'); }
   catch (cause) {
@@ -9712,7 +9966,8 @@ try {
   const storageBundle = { before: storageBeforeRaw, after: storageAfterRaw,
     beforeState: storageBeforeState, afterState: storageAfterState,
     beforeUi: storageBeforeUi, afterUi: storageAfterUi, armed: storageArmed,
-    afterDiagnostics: storageAfterDiagnostics, interaction: storageInteraction,
+    afterDiagnostics: storageAfterDiagnostics, afterPreviewStateKeys: storageAfterPreviewStateKeys,
+    interaction: storageInteraction,
     waitError: storageWaitError, captureErrors: storageCaptureErrors };
   const storageAssessment = assessArc3StorageRefusal(storageBundle);
   let storageTerminalFailure = null;
@@ -9745,6 +10000,11 @@ try {
       ...storageCoordinator, lastFault: fault,
     });
     const storageFault = storageCoordinator.lastFault;
+    const storageMissingFourWayPreviewIdentityState = structuredClone(storageAfterState);
+    delete storageMissingFourWayPreviewIdentityState.shipVisual.stateKey;
+    const storageMissingFourWayPreviewIdentityDiagnostics = structuredClone(storageAfterDiagnostics);
+    delete storageMissingFourWayPreviewIdentityDiagnostics.stateKey;
+    delete storageMissingFourWayPreviewIdentityDiagnostics.engineering.previewStateKey;
     const controlReceipt = Object.freeze({
       ordinal: 999999, kind: 'storage-control', witness: 'storage-control-receipt-must-stay-red',
     });
@@ -9838,6 +10098,23 @@ try {
       pendingWork: assessArc3StorageRefusal({ ...storageBundle,
         afterDiagnostics: { ...storageAfterDiagnostics, engineering: {
           ...storageAfterDiagnostics.engineering, pendingWork: 1 } } }),
+      previewAppIdentity: assessArc3StorageRefusal({ ...storageBundle,
+        afterState: { ...storageAfterState,
+          shipVisual: { ...storageAfterState.shipVisual,
+            stateKey: 'ship:v1:storage-app-control-mismatch' } } }),
+      previewOuterIdentity: assessArc3StorageRefusal({ ...storageBundle,
+        afterDiagnostics: { ...storageAfterDiagnostics,
+          stateKey: 'ship:v1:storage-outer-control-mismatch' } }),
+      previewInnerIdentity: assessArc3StorageRefusal({ ...storageBundle,
+        afterDiagnostics: { ...storageAfterDiagnostics, engineering: {
+          ...storageAfterDiagnostics.engineering,
+          previewStateKey: 'ship:v1:storage-inner-control-mismatch' } } }),
+      previewDomIdentity: assessArc3StorageRefusal({ ...storageBundle,
+        afterPreviewStateKeys: ['ship:v1:storage-dom-control-mismatch'] }),
+      previewFourWayIdentityMissing: assessArc3StorageRefusal({ ...storageBundle,
+        afterState: storageMissingFourWayPreviewIdentityState,
+        afterDiagnostics: storageMissingFourWayPreviewIdentityDiagnostics,
+        afterPreviewStateKeys: [] }),
       trustedKey: assessArc3StorageRefusal({ ...storageBundle, interaction: { ...storageInteraction,
         keys: storageInteraction.keys.map((row) => ({ ...row, id: 'wire' })) } }),
       ...storageUiControls,
@@ -9849,7 +10126,10 @@ try {
       faultInjection: 'faultInjection', revision: 'revisionStable', receipt: 'receiptsStable',
       retainedOwner: 'ownerReleased', retainedInFlight: 'ownerReleased',
       hookNotCleared: 'armedCleared', holdDrift: 'holdStable',
-      pendingWork: 'diagnosticsSettled', trustedKey: 'trustedKey',
+      pendingWork: 'diagnosticsSettled', previewAppIdentity: 'diagnosticsSettled',
+      previewOuterIdentity: 'diagnosticsSettled', previewInnerIdentity: 'diagnosticsSettled',
+      previewDomIdentity: 'diagnosticsSettled', previewFourWayIdentityMissing: 'diagnosticsSettled',
+      trustedKey: 'trustedKey',
       renderedFacts: 'ui', inventoryState: 'ui', renderedActionModels: 'ui', inventoryController: 'ui',
       ...Object.fromEntries(Object.keys(storageDurableDeletionControls)
         .map((name) => [name, 'durableEvidenceComplete'])),
@@ -18336,7 +18616,9 @@ try {
       } catch (error) { last = { context: String(error?.message || error) }; }
       await sleep(50);
     }
-    throw new Error(`${label} did not reach its isolated browser outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+    const error = new Error(`${label} did not reach its isolated browser outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+    error.last = last;
+    throw error;
   };
   const waitControlF4Writable = async (
     session, label, { previousToken = null, timeoutMs = 15000, allowFresh = false } = {},
@@ -18379,6 +18661,21 @@ try {
     const pointer = await evalF4Control(session, `(()=>{const value=window.__cfOutcomePointer||null;
       window.__cfOutcomePointerAbort?.abort();delete window.__cfOutcomePointerAbort;delete window.__cfOutcomePointer;return value;})()`);
     return { target, pointer };
+  };
+  const openF4WritableShipyard = async (session, label) => {
+    const opening = await nativeControlClick(session, '#railshipyard,#dockshipyard');
+    try {
+      const surface = await waitControlValue(
+        session, label, READ_F4_SHIPYARD_AUTHORITY_EXPRESSION, 8000,
+        (value) => f4WritableShipyardExact(value),
+      );
+      return { opening, surface };
+    } catch (error) {
+      const last = error?.last ?? null;
+      throw new Error(`${label} failed after native opener ${JSON.stringify(opening)}; `
+        + `unsettled fields ${JSON.stringify(f4WritableShipyardReasons(last))}; `
+        + `last ${JSON.stringify(last)}`);
+    }
   };
   const driveControlSearch = async (session, code) => {
     await evalF4Control(session, `(()=>{const input=document.getElementById('searchbox');if(!(input instanceof HTMLInputElement))return false;
@@ -18549,27 +18846,48 @@ try {
   const heartbeatImportToken = await sliceToken(heartbeatTarget.session);
   try {
     await evalF4Control(heartbeatTarget.session,
-      `window.__CF_SLICE__.api.importBlob(${JSON.stringify(VETERAN_RAW)})`);
+      `window.__CF_SLICE__.api.importBlob(${JSON.stringify(ENGINEERING_VETERAN_RAW)})`);
   } catch { /* successful replacement destroys this context */ }
   await waitForSlice(heartbeatTarget.session, 'F4 heartbeat storage fixture import', {
     previousToken: heartbeatImportToken,
   });
-  const heartbeatReady = await waitControlF4Writable(
+  await waitControlF4Writable(
     heartbeatTarget.session, 'F4 heartbeat storage fixture authority', { previousToken: heartbeatImportToken },
   );
-  await nativeControlClick(heartbeatTarget.session, '#railsets,#docksets');
-  const heartbeatBefore = await waitControlValue(heartbeatTarget.session, 'F4 heartbeat pre-fault Settings',
-    `(()=>{const state=window.__CF_SLICE__.api.state();return state.panelOpen==='set'?state:null;})()`);
-  const heartbeatRawBefore = heartbeatReady.raw;
+  const heartbeatShipyardOpen = await openF4WritableShipyard(
+    heartbeatTarget.session, 'F4 heartbeat pre-fault writable Shipyard',
+  );
+  const heartbeatShipyardBefore = heartbeatShipyardOpen.surface;
+  const heartbeatBefore = await evalF4Control(
+    heartbeatTarget.session, `window.__CF_SLICE__.api.state()`,
+  );
+  const heartbeatRawBefore = await evalF4Control(
+    heartbeatTarget.session, READ_F4_AUTHORITY_EXPRESSION,
+  );
+  const heartbeatPrimaryBefore = await evalF4Control(
+    heartbeatTarget.session, READ_PRIMARY_EXPRESSION,
+  );
   const heartbeatMark = events.length;
   const heartbeatArmed = await evalF4Control(heartbeatTarget.session, `(()=>{const api=window.__CF_SLICE__.api;
     return {hold:api.__smokeArmF4ConvergenceReloadHold(),storage:api.__smokeArmF4HeartbeatStorageFailure()};})()`);
   await evalF4Control(heartbeatTarget.session, `window.__CF_SLICE__.api.__smokeRunF4Heartbeat()`);
+  const heartbeatShipyardProtected = await evalF4Control(
+    heartbeatTarget.session, READ_F4_SHIPYARD_AUTHORITY_EXPRESSION,
+  );
+  const heartbeatRawProtected = await evalF4Control(
+    heartbeatTarget.session, READ_F4_AUTHORITY_EXPRESSION,
+  );
+  const heartbeatPrimaryProtected = await evalF4Control(
+    heartbeatTarget.session, READ_PRIMARY_EXPRESSION,
+  );
   const heartbeatProtected = await waitControlValue(heartbeatTarget.session, 'F4 heartbeat protected hold',
     `(()=>{const state=window.__CF_SLICE__.api.state();return state.persistence.convergenceReloadHold?.phase==='holding'
       &&state.persistence.hold==='transient-read'?state:null;})()`);
   await sleep(180);
   const heartbeatSettled = await evalF4Control(heartbeatTarget.session, `window.__CF_SLICE__.api.state()`);
+  await nativeControlClick(heartbeatTarget.session, '#railsets,#docksets');
+  await waitControlValue(heartbeatTarget.session, 'F4 heartbeat protected Settings mutation surface',
+    `(()=>{const state=window.__CF_SLICE__.api.state();return state.panelOpen==='set'?state:null;})()`);
   const heartbeatMutationBefore = await evalF4Control(heartbeatTarget.session, `window.__CF_SLICE__.api.state()`);
   const heartbeatPrimaryBeforeMutation = await evalF4Control(heartbeatTarget.session, READ_PRIMARY_EXPRESSION);
   await nativeControlClick(heartbeatTarget.session, '#setsnd');
@@ -18614,14 +18932,20 @@ try {
   const heartbeatBundle = {
     armed: heartbeatArmed,
     before: heartbeatBefore,
+    shipyardOpening: heartbeatShipyardOpen.opening,
+    shipyardBefore: heartbeatShipyardBefore,
     protectedState: heartbeatProtected,
+    shipyardProtected: heartbeatShipyardProtected,
     settledState: heartbeatSettled,
     mutation: heartbeatMutation,
     callbackState: heartbeatCallbackState,
     releaseWitness: heartbeatWitness,
     reloaded: heartbeatReloadReady.state,
     rawBefore: heartbeatRawBefore,
+    rawProtected: heartbeatRawProtected,
     rawReloaded: heartbeatReloadReady.raw,
+    primaryBefore: heartbeatPrimaryBefore,
+    primaryProtected: heartbeatPrimaryProtected,
   };
   const heartbeatAssessment = assessF4HeartbeatStorageFailure(heartbeatBundle);
   if (!heartbeatReleased || !heartbeatAssessment.ok) {
@@ -18629,6 +18953,8 @@ try {
       + JSON.stringify(OUTCOME_CONTROLS_ONLY
         ? { heartbeatReleased, assessment: heartbeatAssessment,
           protectedPersistence: heartbeatProtected.persistence,
+          shipyardBefore: heartbeatShipyardBefore,
+          shipyardProtected: heartbeatShipyardProtected,
           protectedAudio: heartbeatProtected.audio,
           settledActivePlayMs: heartbeatSettled.persistence.runtime?.activePlayMs,
           mutation: heartbeatMutation,
@@ -18656,6 +18982,13 @@ try {
     audioContinues: heartbeatControl((candidate) => {
       candidate.protectedState.audio.runtime.muted = false;
     }),
+    ...f4ProtectedShipyardControls(heartbeatControl),
+    protectedRawDrift: heartbeatControl((candidate) => {
+      candidate.rawProtected.revision += 1;
+    }),
+    protectedPrimaryDrift: heartbeatControl((candidate) => {
+      candidate.primaryProtected += ' ';
+    }),
     callbackReacquires: heartbeatControl((candidate) => {
       candidate.callbackState.persistence.leaseReadCount += 1;
       candidate.callbackState.persistence.runtime.leaseOwned = true;
@@ -18667,9 +19000,17 @@ try {
       candidate.reloaded.persistence.documentToken = candidate.before.persistence.documentToken;
     }),
   };
-  if (Object.values(heartbeatControls).some((control) => control.ok)) {
+  const heartbeatShipyardControlsIsolated = [
+    ...Object.keys(F4_PROTECTED_SHIPYARD_CONTROL_MUTATIONS),
+    'protectedRawDrift', 'protectedPrimaryDrift',
+  ]
+    .every((name) => heartbeatControls[name].ok === false
+      && canonicalJson(heartbeatControls[name].reasons)
+        === canonicalJson(['immediate Shipyard protection']));
+  if (Object.values(heartbeatControls).some((control) => control.ok)
+    || !heartbeatShipyardControlsIsolated) {
     fails.push('F4 HEARTBEAT STORAGE FAILURE CONTROLS FAILED — a writable/accruing/audible/reacquired/unreleased/same-document defect stayed green: '
-      + JSON.stringify(heartbeatControls));
+      + JSON.stringify({ heartbeatControls, heartbeatShipyardControlsIsolated }));
   }
 
   /* The heartbeat may renew its lease successfully and then lose the separate
@@ -18684,27 +19025,48 @@ try {
   const revisionImportToken = await sliceToken(revisionTarget.session);
   try {
     await evalF4Control(revisionTarget.session,
-      `window.__CF_SLICE__.api.importBlob(${JSON.stringify(VETERAN_RAW)})`);
+      `window.__CF_SLICE__.api.importBlob(${JSON.stringify(ENGINEERING_VETERAN_RAW)})`);
   } catch { /* successful replacement destroys this context */ }
   await waitForSlice(revisionTarget.session, 'F4 revision verification fixture import', {
     previousToken: revisionImportToken,
   });
-  const revisionReady = await waitControlF4Writable(
+  await waitControlF4Writable(
     revisionTarget.session, 'F4 revision verification fixture authority', { previousToken: revisionImportToken },
   );
-  await nativeControlClick(revisionTarget.session, '#railsets,#docksets');
-  const revisionBefore = await waitControlValue(revisionTarget.session, 'F4 revision pre-fault Settings',
-    `(()=>{const state=window.__CF_SLICE__.api.state();return state.panelOpen==='set'?state:null;})()`);
-  const revisionRawBefore = revisionReady.raw;
+  const revisionShipyardOpen = await openF4WritableShipyard(
+    revisionTarget.session, 'F4 revision pre-fault writable Shipyard',
+  );
+  const revisionShipyardBefore = revisionShipyardOpen.surface;
+  const revisionBefore = await evalF4Control(
+    revisionTarget.session, `window.__CF_SLICE__.api.state()`,
+  );
+  const revisionRawBefore = await evalF4Control(
+    revisionTarget.session, READ_F4_AUTHORITY_EXPRESSION,
+  );
+  const revisionPrimaryBefore = await evalF4Control(
+    revisionTarget.session, READ_PRIMARY_EXPRESSION,
+  );
   const revisionMark = events.length;
   const revisionArmed = await evalF4Control(revisionTarget.session, `(()=>{const api=window.__CF_SLICE__.api;
     return {hold:api.__smokeArmF4ConvergenceReloadHold(),revision:api.__smokeArmF4RevisionVerificationFailure()};})()`);
   await evalF4Control(revisionTarget.session, `window.__CF_SLICE__.api.__smokeRunF4Heartbeat()`);
+  const revisionShipyardProtected = await evalF4Control(
+    revisionTarget.session, READ_F4_SHIPYARD_AUTHORITY_EXPRESSION,
+  );
+  const revisionRawProtected = await evalF4Control(
+    revisionTarget.session, READ_F4_AUTHORITY_EXPRESSION,
+  );
+  const revisionPrimaryProtected = await evalF4Control(
+    revisionTarget.session, READ_PRIMARY_EXPRESSION,
+  );
   const revisionProtected = await waitControlValue(revisionTarget.session, 'F4 revision verification protected hold',
     `(()=>{const state=window.__CF_SLICE__.api.state();return state.persistence.convergenceReloadHold?.phase==='holding'
       &&state.persistence.hold==='transient-read'?state:null;})()`);
   await sleep(180);
   const revisionSettled = await evalF4Control(revisionTarget.session, `window.__CF_SLICE__.api.state()`);
+  await nativeControlClick(revisionTarget.session, '#railsets,#docksets');
+  await waitControlValue(revisionTarget.session, 'F4 revision protected Settings mutation surface',
+    `(()=>{const state=window.__CF_SLICE__.api.state();return state.panelOpen==='set'?state:null;})()`);
   const revisionMutationBefore = await evalF4Control(revisionTarget.session, `window.__CF_SLICE__.api.state()`);
   const revisionPrimaryBeforeMutation = await evalF4Control(revisionTarget.session, READ_PRIMARY_EXPRESSION);
   await nativeControlClick(revisionTarget.session, '#setsnd');
@@ -18749,14 +19111,20 @@ try {
   const revisionBundle = {
     armed: revisionArmed,
     before: revisionBefore,
+    shipyardOpening: revisionShipyardOpen.opening,
+    shipyardBefore: revisionShipyardBefore,
     protectedState: revisionProtected,
+    shipyardProtected: revisionShipyardProtected,
     settledState: revisionSettled,
     mutation: revisionMutation,
     callbackState: revisionCallbackState,
     releaseWitness: revisionWitness,
     reloaded: revisionReloadReady.state,
     rawBefore: revisionRawBefore,
+    rawProtected: revisionRawProtected,
     rawReloaded: revisionReloadReady.raw,
+    primaryBefore: revisionPrimaryBefore,
+    primaryProtected: revisionPrimaryProtected,
   };
   const revisionAssessment = assessF4RevisionVerificationFailure(revisionBundle);
   if (!revisionReleased || !revisionAssessment.ok) {
@@ -18764,6 +19132,8 @@ try {
       + JSON.stringify(OUTCOME_CONTROLS_ONLY
         ? { revisionReleased, assessment: revisionAssessment,
           protectedPersistence: revisionProtected.persistence,
+          shipyardBefore: revisionShipyardBefore,
+          shipyardProtected: revisionShipyardProtected,
           protectedAudio: revisionProtected.audio,
           settledActivePlayMs: revisionSettled.persistence.runtime?.activePlayMs,
           mutation: revisionMutation,
@@ -18791,6 +19161,13 @@ try {
     audioContinues: revisionControl((candidate) => {
       candidate.protectedState.audio.runtime.muted = false;
     }),
+    ...f4ProtectedShipyardControls(revisionControl),
+    protectedRawDrift: revisionControl((candidate) => {
+      candidate.rawProtected.revision += 1;
+    }),
+    protectedPrimaryDrift: revisionControl((candidate) => {
+      candidate.primaryProtected += ' ';
+    }),
     callbackRetriesRevision: revisionControl((candidate) => {
       candidate.callbackState.persistence.revisionReadCount += 1;
       candidate.callbackState.persistence.runtime.answerable = true;
@@ -18802,9 +19179,17 @@ try {
       candidate.reloaded.persistence.documentToken = candidate.before.persistence.documentToken;
     }),
   };
-  if (Object.values(revisionControls).some((control) => control.ok)) {
+  const revisionShipyardControlsIsolated = [
+    ...Object.keys(F4_PROTECTED_SHIPYARD_CONTROL_MUTATIONS),
+    'protectedRawDrift', 'protectedPrimaryDrift',
+  ]
+    .every((name) => revisionControls[name].ok === false
+      && canonicalJson(revisionControls[name].reasons)
+        === canonicalJson(['immediate Shipyard protection']));
+  if (Object.values(revisionControls).some((control) => control.ok)
+    || !revisionShipyardControlsIsolated) {
     fails.push('F4 REVISION VERIFICATION FAILURE CONTROLS FAILED — a writable/accruing/audible/retried/unreleased/same-document defect stayed green: '
-      + JSON.stringify(revisionControls));
+      + JSON.stringify({ revisionControls, revisionShipyardControlsIsolated }));
   }
 
   /* 5. zero console errors / exceptions across the whole run */

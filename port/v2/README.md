@@ -2,8 +2,8 @@
 
 ## Current port status — 2026-08-27
 
-> **Current local candidate — source-complete bounded lanes with six preserved Slice reds; browser
-> certificates remain historical pending the final frozen producers.** Gate B now recursively seals the exact 62-file domain-source inventory against DOM,
+> **Current local candidate — source-complete bounded lanes, six preserved Slice reds and one
+> preserved protected-preview SceneMemory red; the successor browser campaign remains open.** Gate B now recursively seals the exact 62-file domain-source inventory against DOM,
 > storage, `navigator`, network, wall/monotonic clock and uncontrolled randomness. Its only two
 > compatibility waivers are CombatCore's exact `document.createElement('')` expressions for the legacy
 > `playerAvatar` and `paperdollAvatar` canvas painters. D-HAZE is closed: `galaxyHaze` and its cache
@@ -17,7 +17,10 @@
 > fixed-points notification stamps against only the injected clock, migrates missing `conq[].e` to
 > one legacy-ready cycle and clamps it to `[0, EPOCH_BASE]`, and preserves XP-first authority beyond
 > the legacy 4,000-key window through paired v4 `xpa` binding plus the v5
-> `progression.xp-firsts` overflow carrier. Deep Scanners now has an honest live Survey consumer: an
+> `progression.xp-firsts` overflow carrier. F4 authority loss latches its one replacement before
+> fallible presentation work; an already-open full Shipyard immediately becomes one read-only
+> preview with zero Engineering actions and exact app/DOM/diagnostic identity, while repaint failure
+> is retained without cancelling reload. Deep Scanners now has an honest live Survey consumer: an
 > exact eligible scanned, registered lifeless non-Earth world shows ordinary **Mineral veins** in
 > deterministic order plus the biome marker, without cosmic/exceptional veins, grades, reserves,
 > progress or the Mine action. One strict rarity projector maps raw integer tiers 0–14 to the plain
@@ -89,11 +92,33 @@
 > accepts compatible Chromium family + CDP `1.3` only after exercising its source-derived root
 > capability inventory and retaining complete per-run provenance; point version is not a rebaseline key.
 >
-> The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,446 passed /
+> Signed predecessor `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` completed named layout
+> `20260827-phase4-final-layout` at 787/787 across 10 viewports with exact-run verification. The
+> next serial stage, `20260827-phase4-final-scenemem`, ran once with zero retries on Edge
+> `151.0.4129.107`, completed browser/server/workspace-lock cleanup, and honestly failed after
+> 33,181 ms during phone Shipyard settlement. Compendium, Slice, Glass and recovery did not run.
+> The preserved carrier and exact hashes are recorded in `audits/README.md`.
+>
+> This is not an Edge update or a performance/deadline defect, and it is no reason to lengthen the
+> allowance or move a numeric ceiling. The immutable rich-veteran carrier contains orphan legacy Mine facts for leaf
+> seed `201` without a source-proved full world address. Arc 3 correctly protects Engineering rather
+> than inventing identity. SceneMemory owns the older Arc 1C read-only preview/resource contract, not
+> loaded Arc 3 authority. The red exposed an accidental coupling: protected Engineering must suppress
+> its details/actions but retain the independently capability-derived ship preview. The bounded
+> successor leaves that carrier unchanged; SceneMemory's derived input changes only its existing
+> `view` field to `null` and preserves every other field. It separates the preview and retains
+> field-level failed-settlement reasons instead of `last:null`. Glass keeps its separately source-
+> checked both-cleared fixture because it intentionally exercises full loaded Engineering; neither
+> that fixture nor a loaded-authority predicate migrates into SceneMemory. Deadline, ruler and
+> browser authority remain unchanged.
+>
+> The latest repair-worktree browserless checkpoint is green at 134 Vitest files / 1,458 passed /
 > one intentional skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused`,
-> syntax/import selftests and an 886-module Vite build. Implementation/code and release-note audits
-> are CLEAR. The final whole-diff audit is complete; its two evidence-integrity findings are repaired
-> and their focused controls pass. The signed clean freeze remains.
+> syntax/import selftests and an 887-module Vite build. Prior implementation/code and release-note
+> audits are CLEAR for their reviewed input. Their findings plus the later convergence-latch and
+> per-field F4 control gaps are repaired and focused; the affected checks pass and the independent
+> final post-repair whole-diff review is CLEAR. A signed clean successor and fresh serial browser
+> IDs remain pending.
 > Current-input Slice remains RED; Glass, recovery and whole-Gate evidence remain open.
 >
 > Current-input Slice now retains **six** one-attempt/zero-retry reds on Edge
@@ -1839,7 +1864,7 @@ node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_
 
 | Tool | Role |
 |---|---|
-| **Current local candidate verification (2026-08-27)** | The complete browserless checkpoint is green at 134 Vitest files / 1,446 passed / one intentional skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused`, syntax/import selftests and the 886-module build. Implementation/code and release-note audits are CLEAR. The final whole-diff audit is complete; its two evidence-integrity findings are repaired and their focused controls pass. The signed clean freeze remains. Current-input Slice retains six one-attempt/zero-retry reds. Signed-clean `1e0141be…` supplied sixth run `20260827085237038-27561-1f8e3c1771b7` on Edge `.107`: 397,101 ms, 23 findings / 16 scopes, no Arc 4 success marker or ledger, and no following Glass/recovery run. All five sixth-red roots are locally repaired; the later whole-candidate review added canonical-world, storage/concurrency, texture/settings and evidence-chain work. Edge version is Slice provenance only; Slice/Glass judge fresh behavior and geometry. Compendium and SceneMemory own separate Edge-family/CDP capability/profile authorities, and their tracked producer bindings match the rebuilt candidate; earlier certificates remain historical until the exact signed producers are measured. Root Gate A separately owns compatible Chromium-family + CDP `1.3` + source-derived `uilayout`/`bootperf` capability/provenance authority. No Slice PASS, Glass result, recovery certificate, hosted/HUMAN whole-Gate or release authority exists. |
+| **Current local candidate verification (2026-08-27)** | The latest repair-worktree browserless checkpoint is green at 134 Vitest files / 1,458 passed / one intentional skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused` and the 887-module build. Signed predecessor `bb5dc7c…` passed named layout 787/787, then named SceneMemory ran once/no-retry on Edge `.107` and honestly stopped on the protected Shipyard preview coupling; its exact red is preserved and no later stage ran. The protected-preview product/diagnostic repair retains the independent read-only preview while suppressing protected Engineering actions, immediately demotes an already-open full Shipyard after F4 authority loss, and latches the single reload before fallible repaint, leaves the immutable veteran carrier unchanged, derives its SceneMemory input by changing only the existing `view` field to `null`, adds field-level settlement evidence, and rebinds both current producers without moving numeric rulers. Current-input Slice separately retains six historical one-attempt/zero-retry reds whose diagnosed roots are repaired. Edge point version is provenance only. A new signed successor and its fresh SceneMemory/Compendium certificate IDs remain pending; no successor Slice PASS, Glass result, recovery certificate, hosted/HUMAN whole-Gate or release authority exists. |
 | **Compendium authority (historically certified; current producer pending)** | Measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, former producer `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, selected c3/c5/c6 plus baseline1, signed activation `d33e540…` and certificate `20260826-phase4-certification` remain historical exact-source evidence. Signed calibration source `8ffd2e2…` supplied `20260826-slice-repair-candidate1/2/3` plus paired `20260826-slice-repair-baseline1`, each one attempt/zero retries. Historical budget `6284a394…` bound former producer `f7c87f22…`, retained all four faults and exact 14-phone/13-desktop discrimination, and changed only the phone warm ceiling to `524288`. Historical clean signed activation `91f4e044…` passed `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0…`). Browser authority v2 remains Microsoft Edge family + CDP `1.3` + sealed capability-contract SHA-256 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`; exact Edge `.107` is same-run provenance only. The changed final producer needs a new certificate. HUMAN review, Slice/Glass/recovery and whole-Gate closure remain open. |
 | `npm run arc4recovery:selftest` / `node tools/arc4recovery.mjs --slice-run=<Slice-run-id> --glass-run=<Glass-run-id>` / `node tools/arc4recovery.mjs --verify-run=<recovery-run-id> --slice-run=<Slice-run-id> --glass-run=<Glass-run-id>` | The mutation-sensitive selftest seals a dedicated real-time, one-attempt, no-forged-clock collector for the exact active-play next-cycle recovery outcome. The collector is non-standalone: it verifies both exact terminal-green predecessors, their nested Glass → Slice binding, and the same clean committed source before observing recovery; the final command independently verifies that exact three-report chain. The tool is ready; no uninterrupted real 20-minute candidate certificate exists yet. |
 | **Compendium authority status (historical 2026-08-23 evidence)** | PR #33 runs `32611053651` and `32614177932` correctly rejected two distinct stale/green-wrong states: old producer authority, then a pre-render ready observation invalidated by the snapshot's own render turn. The permanent boundary consumes that turn and re-proves exact decoded settlement; its paired selftest makes the historical order red. Clean collector source `14626a7…` completed three candidates plus paired baseline once each with zero retries under Edge `.101`; then-active budget SHA-256 `28b95867…` kept strict +1/fractional product sentinels and preserved cross-host headroom. Independent clean source `e8898bf…` passed 78/78 with complete lifecycle and named verifier; report raw/gzip SHA-256 are `d1ea225b…` / `8e09255b…`. Evidence descendant `d359d8c…` passed the complete local battery. Historical `.86` and pre-settlement `.101` evidence remains truthful but is not rebound. Both hosted workflow owners and preflight installed/checked exact `.101` at that checkpoint; later evidence/docs descendants are not retroactive certified heads. Current CI SHA-verifies the sealed `.101` deb, checks its embedded package/version metadata and extracts it into a fresh Compendium-owned `RUNNER_TEMP` root; preflight, certification and verification each explicitly select that executable, so no owner installs or inherits system Edge. The ruler's authority remains version-tolerant Edge family + CDP `1.3` + its sealed capability contract; the package choice is workflow provenance, not budget identity or an update-triggered rebaseline. |

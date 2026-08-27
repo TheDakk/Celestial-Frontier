@@ -11,6 +11,45 @@ roughly by how often they have bitten.
 
 ---
 
+⚠⚠ **LATCH IRREVERSIBLE CONVERGENCE BEFORE FALLIBLE PRESENTATION** (2026-08-27).
+F4 authority loss originally tried to repaint an already-open full Shipyard before scheduling its
+replacement document. A presentation or diagnostics throw at that point could leave actionable
+controls visible and strand the only reload that could restore a writable fixed point.
+
+Once authority loss is decided, establish the read-only hold and latch exactly one replacement
+before attempting presentation work. An open action surface must demote immediately to its honest
+protected projection, but repaint failure must be witnessed rather than allowed to cancel cleanup
+or reload. Negative-control both exact-one scheduling when repaint throws and the real full-to-
+protected surface outcome, including every action, reason, preview-identity and ownership field.
+
+⚠⚠ **A RESOURCE RULER MUST NOT INHERIT A LATER AUTHORITY PRECONDITION** (2026-08-27).
+SceneMemory reused the immutable rich-veteran save after Arc 3 began refusing orphan legacy Mine
+facts whose leaf seed had no source-proved full world address. The product correctly protected
+authority-dependent Engineering actions, but accidentally erased the independently capability-
+derived read-only ship preview that the older Arc 1C ruler owns. Clearing the orphan facts or adding
+"Engineering loaded" to the ruler would make the run green by changing its input/intent, not by
+repairing the preview contract.
+
+Keep historical baselines byte-immutable and keep a ruler scoped to the product outcome it was
+created to measure. A later authority may suppress only the details/actions it owns; separately
+source-valid inspection stays available. Here, protected Engineering renders unavailable copy and
+zero actions while Shipyard still owns exactly one current-ship preview. A different gate that
+explicitly exercises full loaded Engineering may use its separately named, source-checked derived
+fixture, but that fixture cannot silently replace SceneMemory's protected baseline or broaden its
+PASS predicate. Negative-control missing preview independently from protected Engineering so the
+two concerns cannot collapse again.
+
+⚠⚠ **A POLL MUST RETAIN THE FIELD THAT DID NOT SETTLE** (2026-08-27). The first SceneMemory
+red sampled a responsive document 577 times but returned `last:null`, collapsing panel state,
+protection reason, DOM ownership, preview key, pending work and faults into one unactionable timeout.
+A long observation count does not diagnose which clause stayed false.
+
+Return one structured observation on every poll, compute acceptance from a pure named-reason list,
+and retain both the last sample and its failed reasons at the deadline. Mutation-control each field
+independently so the diagnosis itself cannot become a decorative always-green layer. Deadlines stay
+fixed unless the measured contract changes for an independently justified reason; missing evidence
+must never be converted into a browser-version or performance conclusion.
+
 ⚠⚠ **A FIRST RENDER IS NOT PERSISTENCE INTENT** (2026-08-25). Arc 3 recovery exposed a generic
 boot `rerender()` that fire-and-forgot a receipt-free save after an otherwise complete action
 reload. A correct one-revision action therefore appeared as two revisions depending on whether the

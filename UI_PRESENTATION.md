@@ -52,8 +52,10 @@
 > clear-world cleanup errors; and retain a failed retired scope without destroying the live successor.
 >
 > Focused changed-source checks and directionally independent controls have exercised the current
-> repairs, but the final frozen-producer full battery, final counts and independent audits remain
-> pending.
+> repairs. The last complete pre-certificate browserless checkpoint and independent audits completed
+> for the reviewed repair input, and the independent final whole-diff review is CLEAR. Any subsequent
+> source change must rerun its affected checks before a new signed clean successor. Exact-head browser
+> certificates remain pending.
 > Current-input Slice retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > Signed-clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7`, which failed after 397,101 ms with 23 findings
@@ -117,8 +119,8 @@
 > remains **[PARTIAL]** for a real 20-minute next-cycle recovery observation and combined HUMAN
 > first-journey review.
 
-> **2026-08-25 Arc 3 Engineering UI overlay — historical evidence foundation; current product
-> behavior updated 2026-08-26:** the former read-only
+> **2026-08-25 Arc 3 Engineering UI overlay — historical evidence foundation through `c4a02be`;
+> current product behavior corrected locally 2026-08-27:** the former read-only
 > Shipyard panel now renders **Engineering & Shipyard** from one detached authority projection. It
 > retains the four code-native SVG chassis and exact installed-system/hardpoint facts, then adds
 > foldable Mine, Skim, Research and Fabricator sections. The model contains exact opportunity
@@ -133,12 +135,24 @@
 > are actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
 > Controls remain
 > keyboard/touch reachable, unavailable rows have no optimistic action, and Close remains available during a pending operation.
+> The current-ship preview is independently derived from saved capability/reach state. Arc 3
+> protection or an F4 read-only hold therefore keeps exactly one preview and its installed-system
+> inspection available while publishing an explicit unavailable reason and zero Engineering action
+> controls. Full verified Engineering and protected inspection are separate atomic panel views;
+> neither may synthesize the other's authority. When F4 protection begins while the full panel is
+> already open, the same transition synchronously demotes it to the protected view: zero sections,
+> zero actions, one preview and exact app/DOM/outer/inner state-key parity without changing durable
+> bytes. The one convergence reload is latched and scheduled before this fallible repaint, so a
+> repaint or diagnostic error is witnessed but cannot strand replacement.
 >
 > Every press routes through the shared ProductActionCoordinator used by Engineering and Inventory;
 > a second action is refused while one settlement owns publication. The panel reprojects only after
 > durability and exposes waiting/worked-out/unavailable states without inventing capability. The
-> existing Arc 1C paragraphs below are retained as historical pre-Engineering evidence. Updated
-> player guidance and the product/browser-tool repair batch are committed locally through `c4a02be`.
+> existing Arc 1C paragraphs below are retained as historical pre-Engineering evidence. The
+> historical Engineering implementation and browser evidence were committed through `c4a02be`.
+> The protected-preview product/diagnostic correction described above is a 2026-08-27 local
+> working-tree change: `bb5dc7c…` is its signed terminal-red predecessor, while a new signed
+> successor and fresh certificate IDs remain pending.
 > Retained no-retry Slice run `20260825013823076-822-b99fea33b17b` passed in 253,181 ms with
 > 0 findings and 10 screenshots; the full Glass Matrix separately passed in 64,222 ms across 12/12
 > viewports and 78/78 controls with none blocked/omitted and no findings, instrument failures, or

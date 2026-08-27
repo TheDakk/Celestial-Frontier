@@ -90,7 +90,10 @@
 > F4 owns the active-play ecology-epoch stage/commit/reject edge and committed-only projection
 > refresh. Persistence fixed-points injected-clock notification stamps, missing/clamped `conq[].e`,
 > and XP-first authority beyond the legacy 4,000-key window through paired v4 `xpa` plus the v5
-> overflow carrier. Deep Scanners has a live Survey consumer for the exact eligible scanned,
+> overflow carrier. Its authority-loss path latches exactly one replacement before fallible repaint;
+> an already-open full Shipyard immediately becomes one read-only preview with zero Engineering
+> actions and exact app/DOM/diagnostic identity, and repaint failure cannot cancel reload. Deep
+> Scanners has a live Survey consumer for the exact eligible scanned,
 > registered lifeless non-Earth world: one ordinary-deposit **Mineral veins** row and biome marker,
 > with cosmic/exceptional veins, grade, reserves, progress and Mine withheld. A strict projector maps
 > raw rarity integers 0–14 to player-facing 0–9 and returns null for malformed input.
@@ -146,13 +149,18 @@
 > `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
 > attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Those exact bytes
 > remain historical for that producer; Edge `.107` is provenance only.
-> The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,446 passed /
+> The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,458 passed /
 > one intentional skip / zero failures, plus all TypeScript programs, `artunused`, syntax/import
-> selftests and the 886-module Vite build. Implementation/code and release-note audits are CLEAR.
-> The final whole-diff audit is complete; its two evidence-integrity findings are repaired and their
-> focused controls pass. The signed clean freeze remains. Tracked
-> Compendium and SceneMemory bindings match the rebuilt candidate, while previous certificates are
-> historical until the exact signed producers are measured. Current-input Slice retains
+> selftests and the 887-module Vite build. Prior implementation/code and release-note audits are
+> CLEAR for their reviewed input. Their findings plus the later convergence-latch and per-field F4
+> evidence gaps are repaired and focused; the independent final post-repair whole-diff review is CLEAR. Signed
+> `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` is the preserved
+> predecessor whose named SceneMemory run ended terminal-red; a new signed successor and fresh
+> certificate IDs remain pending. The protected-preview product/diagnostic repair leaves the
+> immutable veteran carrier unchanged and derives SceneMemory input by changing only its existing
+> `view` field to `null`, preserving every other field. Tracked Compendium and SceneMemory bindings
+> match the rebuilt worktree, while previous certificates are historical until the exact new signed
+> producers are measured. Current-input Slice retains
 > six one-attempt/zero-retry reds. Signed-clean
 > `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7` on Edge `.107`: 397,101 ms, 23 findings /
@@ -1172,6 +1180,17 @@ No whole Gate, production release, version bump, deployment, or publication is c
 **2026-08-24 superseding current note:** PR #33 integrated this historical Arc 1C boundary and PR
 #34 integrated its bounded Compendium repair. Arc 3 later implemented only the fixed Engineering
 subset described in §5.2; broader upgrades, variable construction and all current open evidence remain.
+
+**2026-08-27 protected-inspection correction:** Arc 3 authority never owns the independent
+`ShipVisualState` preview. The panel now publishes the capability-derived ship atomically beside
+nullable Engineering facts: protected/read-only/unverified states retain exactly one read-only
+preview and its installed-system facts, publish a precise unavailable reason and expose zero
+Engineering action controls. Full Engineering must carry the same ship key. The immutable veteran
+carrier remains unchanged; SceneMemory derives its input by changing only the existing `view` field
+to `null` and preserving every other field, then certifies only the Arc 1C preview/resource
+lifecycle. It does not inherit a loaded-Arc-3 requirement. Signed predecessor `bb5dc7c…` exposed
+this coupling and remains preserved terminal-red; a new signed successor and fresh certificate IDs
+remain open.
 
 ### 4.8 F3 — persistence authority, split stores, and receipts
 

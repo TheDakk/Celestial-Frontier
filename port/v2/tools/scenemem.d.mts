@@ -15,6 +15,8 @@ export const SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT: string;
 export const SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT_SHA256: string;
 export const SCENE_MEMORY_BROWSER_PROFILE_CONTRACT: string;
 export const SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256: string;
+export const SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA:
+  'cf-v2-scene-memory-shipyard-open-observation/v1';
 export const SCENE_MEMORY_REQUIRED_CDP_DOMAINS: readonly string[];
 export const SCENE_MEMORY_REQUIRED_CDP_METHODS: readonly string[];
 
@@ -31,6 +33,10 @@ export function sceneMemoryBrowserCapabilityInventoryErrors(input?: Readonly<{
   collectorSource?: string;
   browserCdpSource?: string;
 }>): string[];
+
+export function sceneMemoryShipyardOpenSettlementReasons(value: unknown): readonly string[];
+
+export function sceneMemoryVeteranRaw(): string;
 
 export function validateSceneMemoryBudget(record: unknown): Readonly<{
   ok: boolean;

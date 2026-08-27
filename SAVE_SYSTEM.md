@@ -38,7 +38,13 @@
 > answerability and player mutation, and schedules one protected convergence reload. Periodic and
 > `pageshow` callbacks honor that hold and cannot reacquire before convergence.
 > Convergence attempts audio disposal and runtime release, aggregates all cleanup errors into its
-> witness, and reloads even when cleanup reports a failure.
+> witness, and reloads even when cleanup reports a failure. `f4-convergence-latch.ts` establishes
+> the hold and schedules exactly one replacement before invoking the fallible presentation repaint.
+> If full Engineering is already open, that same transition immediately replaces it with one
+> capability-derived read-only preview, an exact unavailable reason and zero sections/actions;
+> app, DOM and outer/inner diagnostic state keys must agree while both durable carriers remain
+> byte-stable. Repaint or diagnostic failure is recorded in the convergence witness and cannot
+> cancel cleanup or reload.
 >
 > Read-only authority intercepts all nine ordinary Settings outcomes—Sound, Volume, Creature voices,
 > Text size, Text tone, Font, Star charts, Motion and Panel tint—plus Field Training Restart and its
@@ -46,7 +52,14 @@
 > expedition** is the narrow protected-recovery exception to the ordinary mutation selector, not a
 > general write bypass: its payload still must pass complete import validation, coordinate queued or
 > in-flight persistence, win the exclusive replacement transaction and reload. Focused checks cover
-> these laws, but the final frozen-producer full battery and independent audits remain pending.
+> these laws. The last complete pre-certificate browserless checkpoint and independent audits
+> completed for the reviewed repair input, and the independent final whole-diff review is CLEAR.
+> Any subsequent source change must rerun its affected checks before a new signed clean successor.
+> Exact-head browser certificates remain pending.
+> Engineering protection follows the same ownership split: exact Engineering details and every
+> action remain unavailable, while the current-ship preview stays readable because it derives from
+> the separate saved capability/reach projection used by travel. The panel may not invent Arc 3
+> facts to preserve inspection, and Arc 3 protection may not erase that independent preview.
 
 > **2026-08-26 current-candidate persistence corrections (local code/test truth; no whole-gate or
 > release claim):** F4's published ecology epoch is now derived only from the authority's

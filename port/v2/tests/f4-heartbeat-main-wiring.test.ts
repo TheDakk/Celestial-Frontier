@@ -1,5 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import {
+  f4AuthorityConvergenceWitnessErrors,
+  latchF4AuthorityConvergenceReload,
+} from '../apps/game/src/f4-convergence-latch.js';
 
 const mainSource = readFileSync(
   new URL('../apps/game/src/main.ts', import.meta.url),
@@ -14,6 +18,26 @@ function section(source: string, start: string, end: string): string {
 
 function integrationErrors(source: string): string[] {
   const errors: string[] = [];
+  const convergence = section(
+    source,
+    'function scheduleF4AuthorityConvergenceReload(',
+    '\ntype F4HeartbeatStorageError',
+  );
+  const convergenceProtected = convergence.indexOf("persistHold = 'transient-read';");
+  const convergenceLatch = convergence.indexOf('latchF4AuthorityConvergenceReload({');
+  const convergenceSchedule = convergence.indexOf('schedule: scheduleReload,');
+  const convergenceRefresh = convergence.indexOf(
+    "if (openPanelId() === 'shipyard') refreshEngineeringPanelState();",
+  );
+  const repaintReporter = convergence.indexOf('f4AuthorityProtectionRenderError ??=');
+  const witnessErrors = convergence.indexOf('const errors = f4AuthorityConvergenceWitnessErrors(');
+  if (convergenceProtected < 0 || convergenceLatch < 0 || convergenceSchedule < 0
+    || convergenceRefresh < 0 || repaintReporter < 0 || witnessErrors < 0
+    || convergenceProtected >= convergenceLatch
+    || convergenceLatch >= convergenceSchedule || convergenceSchedule >= convergenceRefresh) {
+    errors.push('open-shipyard-protection');
+  }
+
   const helper = section(
     source,
     'function handleF4HeartbeatStorageError(',
@@ -75,6 +99,10 @@ describe('F4 lease-storage failure app integration', () => {
 
   it('rejects every missing fail-closed integration independently', () => {
     const required = [
+      "if (openPanelId() === 'shipyard') refreshEngineeringPanelState();",
+      'latchF4AuthorityConvergenceReload({',
+      'const errors = f4AuthorityConvergenceWitnessErrors(',
+      'f4AuthorityProtectionRenderError ??=',
       "persistenceBootKind = 'transient-protected';\n  scheduleF4AuthorityConvergenceReload(",
       "handleF4HeartbeatStorageError(runtime, outcome, 'periodic F4 heartbeat');",
       'if (!heartbeatOwned) return;',
@@ -87,5 +115,35 @@ describe('F4 lease-storage failure app integration', () => {
       const mutant = mainSource.replace(marker, `__F4_MAIN_MUTANT_${index}__`);
       expect(integrationErrors(mutant), marker).not.toEqual([]);
     }
+  });
+
+  it('schedules exactly one convergence before a throwing Shipyard repaint', () => {
+    let scheduled = false;
+    let scheduleCount = 0;
+    const events: string[] = [];
+    const invoke = () => latchF4AuthorityConvergenceReload({
+      alreadyScheduled: scheduled,
+      latch: () => { events.push('latch'); scheduled = true; },
+      schedule: () => { events.push('schedule'); scheduleCount++; },
+      repaint: () => { events.push('repaint'); throw new Error('injected repaint failure'); },
+      onRepaintError: (error) => {
+        events.push(error instanceof Error ? error.message : String(error));
+      },
+    });
+    expect(invoke).not.toThrow();
+    expect(invoke).not.toThrow();
+    expect(scheduled).toBe(true);
+    expect(scheduleCount).toBe(1);
+    expect(events).toEqual([
+      'latch', 'schedule', 'repaint', 'injected repaint failure',
+      'repaint', 'injected repaint failure',
+    ]);
+  });
+
+  it('seeds the release witness with a captured Shipyard repaint error', () => {
+    expect(f4AuthorityConvergenceWitnessErrors(null)).toEqual([]);
+    expect(f4AuthorityConvergenceWitnessErrors('injected repaint failure')).toEqual([
+      'Shipyard protection repaint: injected repaint failure',
+    ]);
   });
 });

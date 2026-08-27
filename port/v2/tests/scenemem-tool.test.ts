@@ -10,8 +10,11 @@ import {
   SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT_SHA256,
   SCENE_MEMORY_BROWSER_PROFILE_CONTRACT,
   SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256,
+  SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA,
   sceneMemoryBrowserAuthorityMatches,
   sceneMemoryBrowserCapabilityInventoryErrors,
+  sceneMemoryShipyardOpenSettlementReasons,
+  sceneMemoryVeteranRaw,
   reportBrowserAuthorityErrors,
   terminalOutcomeInventoryErrors,
   terminalPassEvidenceErrors,
@@ -28,6 +31,10 @@ const browserCdpSource = readFileSync(
   fileURLToPath(new URL('../tools/browsercdp.mjs', import.meta.url)),
   'utf8',
 );
+const baselineVeteran = JSON.parse(readFileSync(
+  fileURLToPath(new URL('../../baseline-v1.8.9/save-fixtures.json', import.meta.url)),
+  'utf8',
+)).inputs.veteran_rich as Record<string, unknown>;
 const RETAINED_REPORT_FILES = [
   '../../../audits/ARC1C_SCENEMEM_CALIBRATION_CANDIDATE1.json.gz',
   '../../../audits/ARC1C_SCENEMEM_CALIBRATION_CANDIDATE2.json.gz',
@@ -151,10 +158,18 @@ function shipyardRouteBindingErrors(source: string): string[] {
     "'#dockshipyard,#railshipyard', 'open Shipyard'",
     "'#shipyardpanel [data-pnx=\"shipyard\"]', 'close Shipyard'",
     "S.api.shipyardDiagnostics()",
-    "s.panelOpen==='shipyard'",
+    'SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA',
+    'sceneMemoryShipyardOpenSettlementReasons(value).length === 0',
+    'reasons: diagnose(last)',
     "document.querySelectorAll('#shipyardpanel [data-cf-shipyard-preview=\"v1\"]')",
+    'e=s.engineering,de=d?.engineering,',
+    "unavailable=document.querySelector('#shipyardpanel [data-engineering-state]')",
+    "actionControlCount=document.querySelectorAll('#shipyardpanel [data-engineering-action]').length",
+    'arc3:{stateKind:e?.stateKind??null,protection:e?.protection??null,',
+    "unavailableReason:unavailable?.getAttribute('data-engineering-unavailable')??null",
+    'actionControlCount,diagnosticsActionControlCount:de?.actionControlCount??null',
     "visitedRoutes.push('shipyard');",
-    'sceneObjectsByRoute.shipyard = shipyardOpen.activePreviewCount;',
+    'sceneObjectsByRoute.shipyard = shipyardOpen.domPreviewCount;',
     "shipyardStatus: 'implemented-static'",
     "const OUTCOME_COUNT = 42;",
   ];
@@ -190,6 +205,44 @@ function buildGraphAuthorityBindingErrors(source: string): string[] {
   return exactBindings.filter((binding) => !source.includes(binding));
 }
 
+const settledShipyardOpenObservation = Object.freeze({
+  schema: SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA,
+  panelOpen: 'shipyard',
+  shipVisualStateKey: 'ship:v1:fixture',
+  domPreviewCount: 1,
+  domStateKey: 'ship:v1:fixture',
+  arc3: Object.freeze({
+    stateKind: 'unavailable',
+    protection: 'legacy-refused:legacy-seed-missing',
+    bootstrapPending: false,
+    bootstrapCandidateReady: false,
+  }),
+  presentation: Object.freeze({
+    state: 'unavailable',
+    unavailableReason: 'Engineering details and actions are unavailable while this expedition’s Engineering record is protected.',
+    actionControlCount: 0,
+    diagnosticsActionControlCount: 0,
+  }),
+  diagnostics: Object.freeze({
+    schema: 'cf-v2-shipyard-diagnostics/v1',
+    status: 'open',
+    stateKey: 'ship:v1:fixture',
+    activePreviewCount: 1,
+    retainedPreviewCount: 0,
+    pendingPreviewWork: 0,
+    engineering: Object.freeze({
+      schema: 'cf-v2-engineering-panel-diagnostics/v1',
+      activeCount: 1,
+      pendingWork: 0,
+      actionControlCount: 0,
+      activePreviewCount: 1,
+      previewStateKey: 'ship:v1:fixture',
+      retainedPreviewCount: 0,
+      faultCount: 0,
+    }),
+  }),
+});
+
 describe('scene-memory terminal verifier', () => {
   const browserAuthority = Object.freeze({
     schema: SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA,
@@ -208,6 +261,108 @@ describe('scene-memory terminal verifier', () => {
     userAgent: 'Mozilla/5.0 HeadlessChrome/151.0.0.0 Edg/151.0.0.0',
     jsVersion: '15.1.23.9',
     protocolVersion: '1.3',
+  });
+
+  it('keeps the protected veteran baseline exact except for the existing null view seat', () => {
+    const expected = { ...structuredClone(baselineVeteran), view: null };
+    const raw = sceneMemoryVeteranRaw();
+    const measurement = JSON.parse(raw) as Record<string, unknown>;
+    expect(Object.keys(measurement)).toEqual(Object.keys(expected));
+    expect(measurement).toEqual(expected);
+    expect(raw).toBe(JSON.stringify(expected));
+    expect(measurement).toMatchObject({
+      view: null,
+      tut: 1,
+      mx: [[201, 4]],
+      minedw: [[201, 1_753_898_800_000]],
+      skx: [[424242, 2]],
+      tech: ['scan1', 'hull1', 'nope'],
+    });
+    expect(measurement.log).toEqual(baselineVeteran.log);
+    expect(measurement.items).toEqual(baselineVeteran.items);
+    expect(measurement.eq).toEqual(baselineVeteran.eq);
+  });
+
+  it('accepts one complete field-level Shipyard settlement observation', () => {
+    expect(sceneMemoryShipyardOpenSettlementReasons(settledShipyardOpenObservation)).toEqual([]);
+    expect(settledShipyardOpenObservation.arc3).toEqual({
+      stateKind: 'unavailable',
+      protection: 'legacy-refused:legacy-seed-missing',
+      bootstrapPending: false,
+      bootstrapCandidateReady: false,
+    });
+    expect(settledShipyardOpenObservation.presentation).toMatchObject({
+      state: 'unavailable',
+      actionControlCount: 0,
+      diagnosticsActionControlCount: 0,
+    });
+  });
+
+  it('negative controls: every single unsettled Shipyard field reports its own reason', () => {
+    const controls: Array<readonly [string, (value: any) => void]> = [
+      ['observationSchema', (value) => { value.schema = 'wrong'; }],
+      ['panelOpen', (value) => { value.panelOpen = null; }],
+      ['arc3StateKind', (value) => { value.arc3.stateKind = 'loaded'; }],
+      ['arc3Protection', (value) => { value.arc3.protection = null; }],
+      ['arc3BootstrapPending', (value) => { value.arc3.bootstrapPending = true; }],
+      ['arc3BootstrapCandidateReady', (value) => {
+        value.arc3.bootstrapCandidateReady = true;
+      }],
+      ['presentationState', (value) => { value.presentation.state = null; }],
+      ['presentationUnavailableReason', (value) => {
+        value.presentation.unavailableReason = 'wrong';
+      }],
+      ['presentationActionControlCount', (value) => {
+        value.presentation.actionControlCount = 1;
+      }],
+      ['presentationDiagnosticsActionControlCount', (value) => {
+        value.presentation.diagnosticsActionControlCount = 1;
+      }],
+      ['shipVisualStateKey', (value) => { value.shipVisualStateKey = null; }],
+      ['domPreviewCount', (value) => { value.domPreviewCount = 0; }],
+      ['stateKeyAgreement', (value) => { value.domStateKey = 'wrong'; }],
+      ['stateKeyAgreement', (value) => { value.diagnostics.stateKey = 'wrong'; }],
+      ['diagnosticsSchema', (value) => { value.diagnostics.schema = 'wrong'; }],
+      ['diagnosticsStatus', (value) => { value.diagnostics.status = 'closed'; }],
+      ['diagnosticsActivePreviewCount', (value) => {
+        value.diagnostics.activePreviewCount = 0;
+      }],
+      ['diagnosticsRetainedPreviewCount', (value) => {
+        value.diagnostics.retainedPreviewCount = 1;
+      }],
+      ['diagnosticsPendingPreviewWork', (value) => {
+        value.diagnostics.pendingPreviewWork = 1;
+      }],
+      ['panelDiagnosticsSchema', (value) => {
+        value.diagnostics.engineering.schema = 'wrong';
+      }],
+      ['panelDiagnosticsActiveCount', (value) => {
+        value.diagnostics.engineering.activeCount = 0;
+      }],
+      ['panelDiagnosticsPendingWork', (value) => {
+        value.diagnostics.engineering.pendingWork = 1;
+      }],
+      ['panelDiagnosticsActionControlCount', (value) => {
+        value.diagnostics.engineering.actionControlCount = 1;
+      }],
+      ['panelDiagnosticsActivePreviewCount', (value) => {
+        value.diagnostics.engineering.activePreviewCount = 0;
+      }],
+      ['panelDiagnosticsPreviewStateKey', (value) => {
+        value.diagnostics.engineering.previewStateKey = 'wrong';
+      }],
+      ['panelDiagnosticsRetainedPreviewCount', (value) => {
+        value.diagnostics.engineering.retainedPreviewCount = 1;
+      }],
+      ['panelDiagnosticsFaultCount', (value) => {
+        value.diagnostics.engineering.faultCount = 1;
+      }],
+    ];
+    for (const [reason, mutate] of controls) {
+      const value = structuredClone(settledShipyardOpenObservation);
+      mutate(value);
+      expect(sceneMemoryShipyardOpenSettlementReasons(value), reason).toEqual([reason]);
+    }
   });
 
   it('accepts Edge point-version drift under one capability/profile authority', () => {
@@ -439,6 +594,17 @@ describe('scene-memory terminal verifier', () => {
     expect(bypassed).not.toBe(collectorSource);
     expect(shipyardRouteBindingErrors(bypassed)).toContain(
       "'#dockshipyard,#railshipyard', 'open Shipyard'",
+    );
+  });
+
+  it('negative control: dropping protected Engineering observation context is detected', () => {
+    const missingContext = collectorSource.replace(
+      "unavailable=document.querySelector('#shipyardpanel [data-engineering-state]')",
+      "unavailable=null",
+    );
+    expect(missingContext).not.toBe(collectorSource);
+    expect(shipyardRouteBindingErrors(missingContext)).toContain(
+      "unavailable=document.querySelector('#shipyardpanel [data-engineering-state]')",
     );
   });
 

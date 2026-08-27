@@ -38,16 +38,24 @@ function shipVisualIntegrationErrors(
       'travel stage bypasses ShipVisualState',
     ],
     [
-      'const ship = shipVisualStateOf({',
+      'const ship = currentShipVisualState();',
       'Engineering read model does not derive the shared visual projection',
     ],
     [
-      'engineeringPanelController.setState(projectEngineeringPanelReadModel({',
-      'Engineering panel does not consume its verified read model',
+      'engineering: panelModel,',
+      'Engineering panel does not atomically consume its verified read model and ship',
+    ],
+    [
+      'Object.freeze({ ship, engineering: null, reason })',
+      'protected Engineering panel does not retain its capability-derived ship',
     ],
     [
       'shipVisual: currentShipVisualState(),',
       'browser diagnostics omit the shared visual projection',
+    ],
+    [
+      'stateKey: panelOpen ? diagnostics.previewStateKey : null,',
+      'browser diagnostics synthesize a ship key instead of reading the live preview owner',
     ],
     [
       'const SHIP_LIVERY_SEED = 0x5111;',
@@ -55,14 +63,18 @@ function shipVisualIntegrationErrors(
     ],
   ];
   const panelBindings: ReadonlyArray<readonly [string, string]> = [
-    ['assertShip(model.ship);', 'Engineering read-model validation bypasses ShipVisualState'],
+    ['assertShip(view.ship);', 'Engineering atomic-view validation bypasses ShipVisualState'],
     [
-      'const previewMount = this.#shipOverview(this.#state.ship);',
-      'Engineering overview does not consume the verified ShipVisualState',
+      'shipVisualStateKey(view.ship) !== shipVisualStateKey(view.engineering.ship)',
+      'Engineering atomic view does not reject standalone/model ship mismatch',
     ],
     [
-      'this.#previewOwner.open(this.#state.ship);',
-      'Shipyard preview does not consume the verified ShipVisualState',
+      'const previewMount = this.#shipOverview(this.#view.ship);',
+      'Engineering overview does not consume the atomic capability-derived ShipVisualState',
+    ],
+    [
+      'this.#previewOwner.open(this.#view.ship);',
+      'Shipyard preview does not consume the atomic capability-derived ShipVisualState',
     ],
     [
       'for (const id of ship.installedSystemIds)',
@@ -139,23 +151,45 @@ describe('ShipVisualState app integration', () => {
 
   it('negative control: bypassing the verified Engineering read model is rejected', () => {
     const broken = mainSource.replace(
-      'engineeringPanelController.setState(projectEngineeringPanelReadModel({',
-      'engineeringPanelController.setState((null as never)); void projectEngineeringPanelReadModel({',
+      'engineering: panelModel,',
+      'engineering: null,',
     );
     expect(broken).not.toBe(mainSource);
     expect(shipVisualIntegrationErrors(broken, engineeringPanelSource)).toContain(
-      'Engineering panel does not consume its verified read model',
+      'Engineering panel does not atomically consume its verified read model and ship',
+    );
+  });
+
+  it('negative control: protected Engineering cannot discard the capability-derived ship', () => {
+    const broken = mainSource.replace(
+      'Object.freeze({ ship, engineering: null, reason })',
+      'Object.freeze({ ship: null as never, engineering: null, reason })',
+    );
+    expect(broken).not.toBe(mainSource);
+    expect(shipVisualIntegrationErrors(broken, engineeringPanelSource)).toContain(
+      'protected Engineering panel does not retain its capability-derived ship',
+    );
+  });
+
+  it('negative control: diagnostics cannot synthesize the expected ship key', () => {
+    const broken = mainSource.replace(
+      'stateKey: panelOpen ? diagnostics.previewStateKey : null,',
+      'stateKey: panelOpen ? currentShipVisualState().stateKey : null,',
+    );
+    expect(broken).not.toBe(mainSource);
+    expect(shipVisualIntegrationErrors(broken, engineeringPanelSource)).toContain(
+      'browser diagnostics synthesize a ship key instead of reading the live preview owner',
     );
   });
 
   it('negative control: a preview fed by a separate projection is rejected', () => {
     const broken = engineeringPanelSource.replace(
-      'this.#previewOwner.open(this.#state.ship);',
-      'this.#previewOwner.open(structuredClone(this.#state.ship));',
+      'this.#previewOwner.open(this.#view.ship);',
+      'this.#previewOwner.open(structuredClone(this.#view.ship));',
     );
     expect(broken).not.toBe(engineeringPanelSource);
     expect(shipVisualIntegrationErrors(mainSource, broken)).toContain(
-      'Shipyard preview does not consume the verified ShipVisualState',
+      'Shipyard preview does not consume the atomic capability-derived ShipVisualState',
     );
   });
 
