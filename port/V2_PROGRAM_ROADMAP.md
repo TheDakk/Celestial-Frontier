@@ -180,13 +180,15 @@
 > `20260827-phase4-repair-candidate3`. Each ran once with zero retries and complete browser/server/
 > workspace-lock cleanup on Edge `.107` / CDP `1.3`. Across them, phone/desktop V8 maxima were
 > 11,566,152 / 11,630,936 bytes, aggregate maxima were 17,681,258 / 17,636,682 bytes, and
-> nodes/listeners stayed 676/71 and 673/70. The reviewed worktree activation changes only V8 to
+> nodes/listeners stayed 676/71 and 673/70. Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93`
+> (tree `ff11158a…`, parent `6c9ad855…`) changes only V8 to
 > 12 MiB (`12,582,912`) and aggregate heap to 18 MiB (`18,874,368`), providing exact phone/desktop
 > headroom of 1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes. Every other
 > ceiling stays unchanged, and the paired red retains its node/listener failures. A compatible Edge
 > point update is provenance only and never triggers this calibration or any threshold change.
-> The activation worktree/tests are green; a signed activation source and fresh certificate IDs remain pending.
-> Tracked Compendium and SceneMemory bindings must match that activation source; previous
+> Its budget SHA-256 is `e6c4aeea…`; the 134-file /1,469-pass /one-skip battery and tracked
+> Compendium/SceneMemory bindings are green. This documentation-only descendant leaves those
+> producer/budget bytes identical. Fresh certificate IDs remain pending; previous
 > certificates remain historical. Current-input Slice retains
 > six one-attempt/zero-retry reds. Signed-clean
 > `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
@@ -203,9 +205,8 @@
 > judge fresh behavior/geometry rather than a version pin, so a browser update alone never
 > rebaselines or moves ceilings. Compendium and SceneMemory own separate sealed Edge-family + CDP
 > `1.3` capability/profile authorities; version tolerance changed no numeric budget in either ruler.
-> The current worktree is not a final frozen producer: SceneMemory's three-candidate calibration is
-> complete, while its heap-only activation and both eventual exact-producer certificates remain
-> open. Root Gate A separately accepts
+> The current worktree is a documentation-only descendant of signed activation `4a54c0d…` with
+> identical producer/budget bytes; both eventual exact-producer certificates remain open. Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
 > never repins, rebaselines or moves a root threshold. Post-start audio, the exact nine-stage/14-burn ledger, current Glass and
@@ -1220,8 +1221,8 @@ to `null` and preserving every other field, then certifies only the Arc 1C previ
 lifecycle. It does not inherit a loaded-Arc-3 requirement. Signed predecessor `bb5dc7c…` exposed
 this coupling and remains preserved terminal-red. Signed successor `862a75b…` reached the separate
 40/42 heap/DOM red. Signed `6c9ad855…` supplied the three clean repair-calibration candidates and
-selected the pending 12 MiB V8 /18 MiB aggregate ceilings; activation and fresh certificate IDs
-remain open.
+selected the 12 MiB V8 /18 MiB aggregate ceilings; signed `4a54c0d…` activates them and fresh
+certificate IDs remain open.
 
 ### 4.8 F3 — persistence authority, split stores, and receipts
 

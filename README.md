@@ -29,7 +29,7 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-27; repair calibration complete, activation and current Slice evidence still open):** the current
+**Current local v2 candidate (2026-08-27; repair calibration and signed activation complete, current browser evidence still open):** the current
 working tree completes the bounded source lanes that followed the retained Arc 5A checkpoint.
 Gate B now recursively seals the exact 62-file domain-source inventory against DOM, storage,
 `navigator`, network, wall/monotonic clock, and uncontrolled-random access; its only two waivers are
@@ -105,8 +105,8 @@ forces calibration nor changes a numeric ceiling, while a real observed budget b
 Those `f7c87f22…` / `91f4e044…` bytes remain historical evidence for their exact producer. Compendium
 and SceneMemory now own separate sealed Edge-family + CDP `1.3` capability/profile authorities;
 the version-tolerance change itself altered no numeric budget in either ruler. SceneMemory's clean
-three-run repair calibration is complete, while its selected heap-only activation, signed exact
-certificate and the Compendium certificate remain pending. Root Gate-A remains a separate contract.
+three-run repair calibration and signed heap-only activation are complete, while its exact
+SceneMemory and Compendium certificates remain pending. Root Gate-A remains a separate contract.
 
 Signed clean source `862a75b316142348636abea442dab15e87393642` passed named Layout
 `20260827-phase4-successor-layout` at 787/787 across all ten viewports, then ran named SceneMemory
@@ -130,11 +130,16 @@ Arc 2–5/F4 product graph rather than a lifecycle leak. Signed clean calibratio
 `20260827-phase4-repair-candidate3`. Each ran once with zero retries and complete cleanup on Edge
 `.107` / CDP `1.3`. Their maxima were 11,566,152 / 11,630,936 V8 bytes and 17,681,258 /
 17,636,682 aggregate bytes for phone/desktop, with unchanged 676/71 and 673/70 nodes/listeners.
-The reviewed worktree activation changes only V8 to 12 MiB (`12,582,912`) and aggregate heap to
+Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree
+`ff11158ac2ccc214490f6f3289d4a7a3660138e6`, parent `6c9ad855…`) changes only V8 to
+12 MiB (`12,582,912`) and aggregate heap to
 18 MiB (`18,874,368`), leaving exact phone/desktop headroom of 1,016,760 / 951,976 V8 bytes and
 1,193,110 / 1,237,686 aggregate bytes. Every other ceiling remains unchanged, and the preserved
-`862a75b…` paired red remains red on nodes/listeners. A signed activation source, fresh exact-budget
-certificate and the restarted serial chain remain pending. Edge `.107`
+`862a75b…` paired red remains red on nodes/listeners. Budget SHA-256 is
+`e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375`; the signed source's
+134-file battery is green at 1,469 passed / one intentional skip and both producer bindings match.
+This documentation-only descendant leaves those producer/budget bytes identical. A fresh
+exact-budget SceneMemory certificate and the restarted serial chain are next. Edge `.107`
 is provenance only: a compatible point update never triggers recalibration, rebaselining, repinning
 or a threshold change.
 
