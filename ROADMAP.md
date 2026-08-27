@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-27 · FINAL2 THREE STAGES GREEN · SLICE RED PRESERVED · SECOND BOUNDED HARNESS REPAIR UNDER VERIFICATION ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-27 · FINAL3 LAYOUT GREEN · SCENEMEM INSTRUMENT STOP PRESERVED · PRODUCER BINDING REPAIR REVIEWED · SIGNED FINAL4 CHECKPOINT NEXT ◀◀◀
 
 ### Exact local ownership and authority boundary
 
@@ -56,7 +56,9 @@ the archive verbatim and refresh this handoff in place.
   documentation. Its complete browser-free battery passed at 134 files / 1,474 tests plus one
   intentional skip; root/app/worker TypeScript, all evidence selftests, 887-module build and root
   validation/fingerprint were green.
-- **Current second bounded repair worktree:** based on signed `b206cf0…`. Final2 exposed two more
+- **Signed second harness-repair source:** `5ddddbfb79ea984d44c86e2107e5e4013f84f1b3`
+  (tree `fb62bce43ec3ef4230fec8939f54286292503a8d`, parent `b206cf0…`) is ahead 88 with a good
+  ED25519 signature for the same allowed signer. Final2 exposed two more
   evidence defects, not an Edge or demonstrated product regression. The browser-only v4 staging
   hook now cancels an unstarted debounce, blocks new writes, joins the exact active persist, refuses
   a pending convergence reload, releases the tab lease, then atomically clears/stages the isolated
@@ -69,12 +71,39 @@ the archive verbatim and refresh this handoff in place.
   complete current-byte checkpoint also passes 134 Vitest files / 1,475 tests plus one intentional
   skip, all TypeScript/no-unused programs, the 887-module build, root validation/fingerprint,
   evidence and preview selftests, and isolated real-browser Slice outcome controls. Three
-  independent current-byte reviews are CLEAR. The signed checkpoint and fresh final3 campaign remain next.
+  independent current-byte reviews are CLEAR.
+- **Current producer-binding repair worktree:** based on signed `5ddddbf…`. Final3 Layout passed
+  787/787 with named verification, then SceneMemory stopped `instrument-fail` before measurement
+  because its tracked live producer retained only two stale fields: `buildDist` and `gameMain`.
+  A browser-free source-derived audit also found Compendium's measurement authority current but its
+  built index/owner producer stale. The stopped carriers are preserved. The repair rebinds only
+  those live producer records, keeps both historical rulers/samples and all numeric ceilings
+  unchanged, and adds an unconditional current-byte test plus stale-source/build,
+  duplicate-constant and recomputed-index/owner negative controls. The complete repair battery is
+  green at 135 Vitest files / 1,478 passed / one intentional skip, all three TypeScript programs,
+  `noUnusedLocals`, the 887-module build, fail-closed authority printer and root
+  validation/fingerprint. Three independent final binding/test, whole-diff, and
+  documentation/evidence reviews are CLEAR. The signed clean commit containing this record is the
+  final4 repair checkpoint; verify its signature and clean tree before any fresh browser chain.
 - **No external authority:** this batch authorizes no fetch/merge, push, hosted Actions, PR
   mutation, release, version bump, deployment, preview publication or `rnSeen` mutation.
   `main`, production and both sites remain unchanged.
 
 ### Preserved red evidence and browser-version law
+
+- Signed source `5ddddbf…` supplied Layout `20260827-phase4-final3-layout` at 787/787 across all ten
+  viewports in 76,133 ms and passed its named verifier. SceneMemory
+  `20260827-phase4-final3-scenemem` then ran once, stopped `instrument-fail` after 1,662 ms with
+  zero outcomes, retained exact clean begin/end source and complete browser/server/workspace-lock
+  cleanup, and was not retried. Compendium, Slice, Glass and recovery did not start.
+- Exact carriers are
+  `audits/PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_223504110.json.gz` and
+  `audits/ARC1C_SCENEMEM_CURRENT_INPUT_INSTRUMENT_FAILURE_20260827_223521179.json.gz`; raw/gzip
+  SHA-256 are `49f9ce82…272` / `bff57442…a12` and `a2d9da73…d38` / `ff83663c…417`.
+  Layout remains chronology-associated result provenance because schema v2 has no source identity.
+  SceneMemory's only mismatch was tracked-versus-observed `buildDist` `46e47365…` → `6575498b…`
+  and `gameMain` `7ff00481…` → `02b85f74…`. This is stale live producer binding from the
+  intentional repair, not product, ruler, deadline, cleanup or Edge-version evidence.
 
 - Signed source `b206cf0…` supplied serial Layout `20260827-phase4-final2-layout` at 787/787,
   source-bound SceneMemory `20260827-phase4-final2-scenemem` at 42/42 and source-bound Compendium
@@ -96,99 +125,6 @@ the archive verbatim and refresh this handoff in place.
   does not prove the intended route/Atlas outcomes, all 30 Arc 4 isolation controls or exact Slice
   cleanup, and grants no later-stage authority.
 
-- Signed source `7362a0e…` first passed source-bound standalone SceneMemory
-  `20260827-phase4-activation-scenemem` at 42/42. Its first serial chronology retained Layout
-  `20260827-phase4-final-layout` at 787/787 in 76,155 ms; that carrier passed its named verifier but
-  cannot independently bind the source for the reason above. Source-bound SceneMemory
-  `20260827-phase4-final-scenemem` at 42/42 in 10,216 ms and Compendium
-  `20260827-phase4-final-compendium` at 78/78 in 44,852 ms. Every stage ran once with zero automatic
-  retries on Edge `.107` / CDP `1.3`, retained required cleanup and passed its named verifier.
-- Slice `20260827-phase4-final-slice` then ran once for 414,213 ms, ended terminal red with 12
-  findings across 11 scopes and was not retried. Glass and recovery correctly did not start. Exact
-  report/log carriers are preserved under
-  `audits/ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_181317782.*.gz`.
-- This seventh Slice red diagnosed stale harness assumptions after product hardening, not an Edge
-  or product regression. The truthful 55-bullet Guide was canonical/populated/honest, but Slice and
-  Glass still required `DEVELOPMENT PUBLISHING IS ISOLATED` instead of the live
-  `DEVELOPMENT PUBLISHING STAYS PARKED` contract. Settings correctly mapped imported raw tint
-  `0.55` back to the live slider floor `0.82`; Arc 4 correctly released runtime/audio before
-  pagehide; restored Training correctly emitted canonical full-address Earth identity; and rejected
-  Arc 2 bootstrap correctly left Inventory lazy, closed and empty. The repaired oracles now prove
-  each outcome independently, including blank/open Inventory shells, target/restore domains,
-  exact convergence detail/read counts/full audio disposal, canonical-vs-legacy Earth identity and
-  Guide publishing mutate/restore controls.
-
-- Signed clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied the sixth
-  current-input Slice run `20260827085237038-27561-1f8e3c1771b7` on Edge
-  `151.0.4129.107`. It ran once for 397,101 ms with zero automatic retries and retained 23
-  findings across 16 scopes. Required was false, `ok`/ledger were null, no success marker or
-  ledger line exists, and Glass/recovery correctly did not run.
-- Exact report/log carriers are preserved under `audits/ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_085237038.*.gz`;
-  their raw/gzip hashes and integrity inventory remain in `audits/README.md`.
-- Signed predecessor `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` then completed named full layout
-  `20260827-phase4-final-layout` at 787/787 across all 10 viewports and passed exact-run
-  verification. Named SceneMemory `20260827-phase4-final-scenemem` ran once with zero automatic
-  retries on Edge `151.0.4129.107`, retained complete cleanup, and honestly failed after 33,181 ms
-  during phone Shipyard settlement. Compendium, Slice, Glass and recovery were not run.
-- Its deterministic carrier is
-  `audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_132723548.json.gz`; raw/gzip SHA-256 are
-  `452d076d…b46` / `9204f183…dbb3`. The PASS-only named verifier exited `1` as expected. The
-  immutable veteran baseline contains orphan legacy Mine facts for leaf seed `201` with no
-  source-proved full address, so Arc 3 correctly protected rather than invented identity.
-  SceneMemory then collapsed 577 responsive partial observations to `last:null`. The red exposed a
-  product coupling defect: protection correctly removes Engineering details/actions but must retain
-  the independently owned read-only capability-derived ship preview. The bounded repair leaves the
-  immutable veteran carrier unchanged; SceneMemory's derived input changes only the carrier's
-  existing `view` field to `null` and preserves every other field. It separates the preview from
-  Arc 3 authority and reports field-level settlement reasons. Glass retains its separately named
-  source-checked both-cleared fixture because Glass intentionally exercises full loaded Engineering;
-  that fixture and loaded-authority predicate do not migrate into the older Arc 1C resource ruler.
-  The timeout was not a performance/deadline defect and is no reason to lengthen the allowance;
-  no deadline, numeric ruler or browser authority changes.
-- Browser evidence now has three deliberately separate version-tolerant authorities. Root
-  layout/boot accepts a compatible Chromium-family executable only with CDP `1.3` and the exact
-  17-method inventory derived from its source. Compendium and SceneMemory keep their own
-  Edge-family/CDP capability contracts, producer bindings and fixed rulers. Exact executable,
-  product, revision, JavaScript version, path and user agent remain per-run provenance. A browser
-  point update alone never triggers rebaselining, repinning or threshold movement.
-- Signed source `862a75b316142348636abea442dab15e87393642` completed named Layout
-  `20260827-phase4-successor-layout` at 787/787 across ten viewports with exact-run verification.
-  Named SceneMemory `20260827-phase4-successor-scenemem` then ran once with zero automatic retries
-  on the same Edge `.107` / CDP `1.3`, completed cleanup and failed only
-  `phone/heap-dom-budget` and `desktop/heap-dom-budget`: 40/42 outcomes passed. Phone maxima were
-  11,580,536 V8 heap / 17,758,550 aggregate heap bytes / 898 nodes / 90 listeners; desktop maxima
-  were 11,635,116 / 17,687,678 / 895 / 89. Warm range, slope, resource ownership, answerability and
-  cleanup were green. Compendium, Slice, Glass and recovery did not run.
-- The exact carrier is
-  `audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz`; raw/gzip SHA-256 are
-  `3197ca65…fd7` / `dc6c1493…cb47`. It is the paired broken baseline: even if both heap ceilings are
-  removed, its unchanged nodes/listeners still fail against 704/80. The repaired evaluator replays
-  the raw contract input and names each exact field, value and ceiling instead of one generic reason.
-- Diagnosis separated avoidable closed-shell ownership from fixed product growth. Production
-  Inventory now retains inventory/filter/page state while closed without retaining hidden rows or
-  six dormant subscriptions; every registered panel opener shares one delegated capture owner.
-  A deliberately dirty, non-certifying diagnostic reduced maxima to 676/673 nodes and 71/70
-  listeners, below unchanged 704/80, while heap remained at 11,542,076–11,619,464 V8 bytes and
-  17,584,902–17,681,146 aggregate bytes. The remaining constant heap belongs to the synchronously
-  loaded Arc 2–5/F4 graph, not a leak or Edge update. That made only the two heap ceilings eligible
-  for clean calibration; the dirty run did not itself justify a threshold change.
-- Signed clean source `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
-  `a389646081f9fb5246825d1ac187eeb06504a8e4`) supplied exactly
-  `20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2`, and
-  `20260827-phase4-repair-candidate3`. Each ran once with zero automatic retries on Edge
-  `151.0.4129.107` / CDP `1.3`, retained complete browser/server/workspace-lock cleanup, and bound
-  the same clean source at beginning and end. Each retained `calibration` status, 42/42 verdict
-  outcomes and zero findings. Across the three, V8 maxima were 11,566,152 phone and
-  11,630,936 desktop bytes; aggregate maxima were 17,681,258 and 17,636,682. Nodes/listeners were
-  invariant at 676/71 phone and 673/70 desktop.
-- Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` changes only
-  `heapUsedBytesMax` to 12 MiB (`12,582,912`) and
-  `heapAggregateBytesMax` to 18 MiB (`18,874,368`). Exact headroom above the phone/desktop maxima is
-  1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes. Every DOM/listener,
-  slope/range, resource, timing and lifecycle ceiling remains unchanged. The preserved `862a75b…`
-  paired red still fails nodes/listeners with heap ceilings removed. These samples were triggered by
-  changed product ownership, never by the Edge point version; compatible updates remain provenance
-  only and never trigger calibration or threshold movement.
 
 ### Current implementation and repaired invariants
 
@@ -267,7 +203,11 @@ the archive verbatim and refresh this handoff in place.
    system Edge. The static owner contract rejects disabled verifier conditions and renamed
    certification IDs as well as broken order or browser ownership. Compendium historical
    calibration stays historical; only unchanged numeric ceilings carry forward to a newly bound
-   producer.
+   producer. Before any browser campaign, the ordinary `npm test` battery now builds the current
+   app under the workspace lock and compares both SceneMemory and Compendium budgets directly to
+   independently derived source/dist authorities. A standalone authority printer reports exact
+   mismatch paths and exits nonzero on drift; duplicated expected constants cannot satisfy its
+   source/build oracle.
 13. **Release boundary:** `V2_DRAFT_RELEASE` remains Unreleased with five populated categories
     and exactly 55 unique bullets. Its existing test-fleet bullet now records closed Inventory,
     delegated opener ownership, field-specific memory findings and the no-Edge-update rebaseline
@@ -282,12 +222,12 @@ the archive verbatim and refresh this handoff in place.
   `noUnusedLocals`, 887-module production build, art audit, evidence selftests, root validation and
   the unchanged 50-probe fingerprint. Its final2 campaign then produced the preserved three greens
   and eighth Slice red above.
-- **Current second repair:** the complete current-byte checkpoint passes 134 Vitest files / 1,475
+- **Signed second repair (`5ddddbf…`):** the complete current-byte checkpoint passed 134 Vitest files / 1,475
   tests plus one intentional skip, all TypeScript/no-unused programs, the 887-module build, root
   validation/fingerprint, evidence and preview selftests, and isolated real-browser Slice outcome
   controls after the atomic staging, exact primary/backup/absence receipts, held-writer executable
-  control and Arc 4 read-oracle corrections. Three independent current-byte reviews are CLEAR; only
-  the signed clean checkpoint remains before final3.
+  control and Arc 4 read-oracle corrections. Three independent current-byte reviews are CLEAR; its
+  signed checkpoint preceded the preserved final3 campaign stop.
 - **Prior real Edge diagnostics:** actual preflight passed Edge `151.0.4129.107` under the
   version-tolerant CDP authority. `slicesmoke --outcome-controls-only` passed all three positive
   scenarios plus collision/heartbeat/revision controls on the current worktree. That scoped mode
@@ -311,12 +251,25 @@ the archive verbatim and refresh this handoff in place.
   the seventh-red repair are CLEAR; its bounded risk audit's two P2 findings were repaired and
   browser-free green. Three independent final2 read-only audits agree on the newer roots. The
   second repair's full 134-file / 1,475-test checkpoint and supporting build/type/validator/selftest
-  battery are green, and three independent current-byte reviews are CLEAR. No current certifying
-  Slice/Glass/recovery PASS exists.
+  battery are green, and three independent current-byte reviews are CLEAR. Its final3 Layout
+  result was green; its source-bound SceneMemory stage stopped before measurement on the stale
+  two-field producer binding described above.
+- **Current producer-binding repair:** focused Vitest is green at 4 files / 48 tests. The new
+  current-authority test performs the real standard app build, compares both budget records to
+  independently derived bytes, and proves source, dist, forged duplicate-constant and recomputed
+  Compendium-owner mutants red. The fail-closed authority printer reports SceneMemory budget,
+  Compendium measurement and Compendium producer all matching; SceneMemory budget SHA-256 is
+  `47d24080…775b`, Compendium budget SHA-256 is `f0bedb67…3c64`, and no numeric ceiling changed.
+  The complete 135-file /1,478-pass /one-skip battery, all TypeScript/no-unused programs,
+  887-module build, authority printer and root validation/fingerprint are green. Three independent
+  final binding/test, whole-diff, and documentation/evidence reviews are CLEAR. The signed clean
+  commit containing this record is the final4 repair checkpoint. No current certifying
+  SceneMemory/Compendium/Slice/Glass/recovery PASS exists.
 
 ### Exact remaining local sequence — serial, fail-fast, no automatic retry
 
-1. Create and verify one signed clean repair-source commit. Do not reuse the failed run IDs.
+1. Verify this checkpoint's signature and clean tree before campaign work. Do not reuse any final3
+   run ID.
 2. From that unchanged signed source, restart the entire serial campaign with fresh IDs: Layout +
    named verifier → SceneMemory 42/42 + named verifier → Compendium 78/78 + named verifier → Slice
    terminal PASS + named verifier → full 12-viewport Glass bound to that Slice + named verifier →
@@ -355,10 +308,11 @@ the archive verbatim and refresh this handoff in place.
 ### Git / paired-agent handoff
 
 - **Current side — OpenAI/Codex macOS:** owns this local unpushed repair worktree on `openai/mac`,
-  ahead 87 at signed first-repair source `b206cf0…`. Final2's first three serial stages are green;
-  its terminal Slice red and all five exact carriers are preserved. The two root harness repairs are
-  implemented, fully browserless-green and independently reviewed CLEAR. Create and verify the signed
-  source checkpoint, then run the entire fresh final3 chain here without fetch/merge/switch or copying files.
+  based on ahead-88 signed second-repair source `5ddddbf…`. Final3 Layout is green; its SceneMemory
+  instrument stop and both exact carriers are preserved. The bounded live producer rebindings and
+  source-derived regression are fully browser-free green, and three independent final binding/test,
+  whole-diff, and documentation/evidence reviews are CLEAR. Use the signed clean commit containing
+  this handoff for the entire fresh final4 chain without fetch/merge/switch or copying files.
 - **GitHub step now:** none. `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, the repository is public,
   but zero exact hosted attempts are authorized. Do not push, label, dispatch, rerun, mark Ready,
   merge, publish or deploy.

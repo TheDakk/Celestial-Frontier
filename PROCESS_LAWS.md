@@ -135,6 +135,25 @@ an evidence oracle changes the campaign source regardless: the final fail-fast c
 Layout on one newly signed unchanged commit. A browser point update still has no role in that
 decision.
 
+⚠⚠ **DERIVE CURRENT PRODUCER AUTHORITY FROM CURRENT SOURCE AND THE STANDARD BUILD BEFORE A
+BROWSER CAMPAIGN** (2026-08-27). Final3's ordinary test battery was green while both SceneMemory's
+budget and its test repeated the same stale producer tuple. Layout passed, then SceneMemory spent a
+browser launch only to stop before measurement on stale `buildDist` and `gameMain`; the same
+browser-free derivation found Compendium's measurement current but its built index/owner producer
+stale. Comparing a budget to a duplicated expected constant proves agreement between copies, not
+agreement with the checkout.
+
+Before browser installation or the first campaign stage, run the standard application build under
+the shared workspace lock, hash the current source/dist ownership paths independently, and compare
+both live memory budgets to those observations. The check belongs in the ordinary test battery;
+its standalone reporter must emit exact mismatch paths and exit nonzero. Negative-control at least
+one source leaf, the aggregate dist identity, forged budget-plus-test copies that agree with each
+other, and recomputed Compendium index/owner authorities. A mismatch is instrument evidence: retain
+it, stop the serial chain, and do not retry. If the measurement contract, fixed ruler and product
+semantics are unchanged, rebind only the current top-level producer authority. Never rewrite old
+samples, calibration hashes or certificates, and never infer an Edge regression, recalibration or
+threshold move from producer drift alone.
+
 ⚠⚠ **LATCH IRREVERSIBLE CONVERGENCE BEFORE FALLIBLE PRESENTATION** (2026-08-27).
 F4 authority loss originally tried to repaint an already-open full Shipyard before scheduling its
 replacement document. A presentation or diagnostics throw at that point could leave actionable

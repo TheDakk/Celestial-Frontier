@@ -16,6 +16,9 @@ const ZERO_DEFAULT_CONTRACT = [
 ] as const;
 const ORDERED_CONTRACT = [
   '- name: v2 parity, type, art, and coverage gates',
+  'npm test',
+  '- name: current producer authority binding',
+  '\n        run: npx vitest run tests/current-producer-authorities.test.ts\n',
   '- name: install current Arc 1C Edge scene-memory browser',
   'EDGE_PACKAGE_URL: https://go.microsoft.com/fwlink/?linkid=2149051',
   'test "$(dpkg-deb --field "$scene_edge_package" Package)" = "microsoft-edge-stable"',
@@ -33,6 +36,7 @@ const ORDERED_CONTRACT = [
 ] as const;
 const ORDERED_STEP_NAMES = [
   'v2 parity, type, art, and coverage gates',
+  'current producer authority binding',
   'install current Arc 1C Edge scene-memory browser',
   'scene-memory instrument and calibration controls',
   'one-attempt scene-memory certification',
@@ -64,6 +68,12 @@ const satisfiesSceneWorkflow = (source: string): boolean => {
   if (JSON.stringify(directSteps) !== JSON.stringify(
     ORDERED_STEP_NAMES.map((name) => `name: ${name}`),
   )) return false;
+  const authorityHeader = '      - name: current producer authority binding';
+  const authorityStart = source.indexOf(authorityHeader);
+  const authorityEnd = source.indexOf('\n\n', authorityStart + 1);
+  if (authorityStart < 0 || authorityEnd < 0) return false;
+  const authorityBlock = source.slice(authorityStart, authorityEnd + 2);
+  if (authorityBlock !== `${authorityHeader}\n        working-directory: port/v2\n        run: npx vitest run tests/current-producer-authorities.test.ts\n\n`) return false;
   const env = 'CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem';
   if (source.split(env).length !== 2) return false;
   const sceneBrowserOwners = [
@@ -124,6 +134,16 @@ describe('scene-memory test-battery workflow contract', () => {
   it('rejects every missing or drifted owned step', () => {
     for (const token of ORDERED_CONTRACT) {
       expect(satisfiesSceneWorkflow(replaceOwnedToken(workflow, token)), token).toBe(false);
+    }
+    for (const bypass of [
+      '        run: npx vitest run tests/current-producer-authorities.test.ts -- --exclude tests/current-producer-authorities.test.ts',
+      '        run: npx vitest run tests/current-producer-authorities.test.ts || true',
+      '        run: |\n          set +e\n          npx vitest run tests/current-producer-authorities.test.ts',
+    ]) {
+      expect(satisfiesSceneWorkflow(workflow.replace(
+        '        run: npx vitest run tests/current-producer-authorities.test.ts',
+        bypass,
+      )), bypass).toBe(false);
     }
   });
 

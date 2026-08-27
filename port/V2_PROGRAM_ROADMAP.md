@@ -78,22 +78,26 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-27 local candidate boundary — final2 retained three serial greens, then one terminal
-> Slice harness red; second repair is browserless-green and pending a signed full restart:** signed evidence
-> source `b206cf0986cf21747967e72700222ea9fa9d10f0` retained Layout 787/787 plus source-bound
-> SceneMemory 42/42 and Compendium 78/78 carriers with named verification. Layout schema v2 embeds no
-> Git/source identity, so it is chronology-associated provenance rather than standalone exact-source
-> evidence. Slice then stopped terminal-red after 424,225 ms with six findings across five scopes;
-> Glass and recovery correctly did not run. The second worktree repair changes the browser-only
-> staging hook (and therefore built producer bytes), Slice/Arc 4 evidence oracles and controls,
-> Guide/release truth copy, audit carriers and documentation. It changes no numeric budget or
-> deadline. The current checkpoint passes 134 Vitest files / 1,475 tests plus one intentional skip,
-> all TypeScript/no-unused programs, the 887-module build, root validation/fingerprint, evidence and
-> preview selftests, and isolated real-browser Slice outcome controls; three independent current-byte
-> reviews are CLEAR. A signed clean commit remains required before the complete chain restarts from
-> Layout with fresh IDs. No later certifying browser result, publication, hosted attempt, release,
-> deployment, version bump or external authority exists. Compatible Edge/Chrome point updates are
-> provenance only and never trigger a rebaseline or threshold change.
+> **2026-08-27 local candidate boundary — signed second repair reached final3 Layout green, then
+> SceneMemory stopped on stale live producer binding:** signed source
+> `5ddddbfb79ea984d44c86e2107e5e4013f84f1b3` passed Layout
+> `20260827-phase4-final3-layout` 787/787 across ten viewports in 76,133 ms plus named verification.
+> SceneMemory `20260827-phase4-final3-scenemem` ran once, stopped `instrument-fail` after 1,662 ms
+> before measurement with zero outcomes, retained exact clean source and complete cleanup, and was
+> not retried. Compendium, Slice, Glass and recovery correctly did not run. Only SceneMemory's live
+> `buildDist` and `gameMain` hashes were stale; browser-free current-byte derivation also found
+> Compendium's measurement authority current but its built index/owner producer stale. This is not a
+> product, numeric-ruler, deadline, cleanup or Edge-version regression. The current repair rebinds
+> only those top-level live authorities (SceneMemory budget `47d24080…775b`, Compendium budget
+> `f0bedb67…3c64`), preserves every historical ruler/sample/ceiling, and adds an ordinary-`npm test`
+> source/build oracle with directional mutants. The complete repair battery is green at 135 Vitest
+> files /1,478 passed /one intentional skip, all TypeScript/no-unused programs, the 887-module build,
+> fail-closed authority printer and root validation/fingerprint. Three independent final binding/test,
+> whole-diff, and documentation/evidence reviews are CLEAR. The signed clean commit containing this
+> record is the final4 source; verify its signature and clean tree before restarting at Layout with
+> fresh IDs. No later certifying browser result, publication, hosted attempt,
+> release, deployment, version bump or external authority exists. Compatible Edge/Chrome point
+> updates are provenance only and never trigger a rebaseline or threshold change.
 >
 > Within that boundary, Gate
 > B recursively seals an exact 62-file domain inventory against DOM, storage, `navigator`, network,
@@ -230,12 +234,16 @@
 > judge fresh behavior/geometry rather than a version pin, so a browser update alone never
 > rebaselines or moves ceilings. Compendium and SceneMemory own separate sealed Edge-family + CDP
 > `1.3` capability/profile authorities; version tolerance changed no numeric budget in either ruler.
-> The current second repair is based on signed `b206cf0…`. It joins and exact-receipts every direct
-> v4 fixture stage (primary, backup and absent-primary variants), corrects the Arc 4 owned-release
-> read oracle, and updates player truth copy. The staging hook and copy change built producer bytes;
-> numeric budgets and deadlines remain unchanged. The final2 SceneMemory and Compendium results stay
-> bound to `b206cf0…`. The repaired source's complete browserless checkpoint and three current-byte
-> reviews are green; it must still be signed and restart the full chain from Layout. Root Gate A separately accepts
+> Signed `5ddddbf…` contains that second repair: it joins and exact-receipts every direct v4 fixture
+> stage (primary, backup and absent-primary variants), corrects the Arc 4 owned-release read oracle,
+> and updates player truth copy. Final3 Layout passed, then SceneMemory stopped before measurement
+> because the budget still named the prior build and `main.ts`; browser-free derivation also found
+> Compendium's built index/owner producer stale. The bounded current repair rebinds only live
+> producer records and makes `npm test` compare both against independently built current bytes with
+> directional mutants. Historical rulers/samples and every numeric ceiling remain unchanged. Its
+> full browser-free battery is green and three independent final binding/test, whole-diff, and
+> documentation/evidence reviews are CLEAR. The signed clean commit containing this record must
+> restart final4 from Layout. Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
 > never repins, rebaselines or moves a root threshold. Post-start audio, the exact nine-stage/14-burn ledger, current Glass and
@@ -1404,10 +1412,14 @@ to `524288`. Clean signed activation `91f4e044…` passed that historical exact-
 `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
 attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Signed
 `7362a0e…` and then `b206cf0…` each passed serial Compendium 78/78 before Slice stopped on a
-preserved harness red; no numeric ceiling changed. The second repaired source changes producer
-bytes; its complete browserless checkpoint and three current-byte reviews are green, while a signed
-checkpoint and full restart from Layout remain required. Slice, Glass and recovery evidence remain
-pending as described in the status overlay.
+preserved harness red; no numeric ceiling changed. Signed second repair `5ddddbf…` reached final3
+Layout green, but SceneMemory stopped before product measurement on stale live source/dist binding,
+so Compendium did not run. The current source-derived repair binds Compendium producer `4b5aa3a3…`
+under budget `f0bedb67…3c64` without changing its measurement authority, fixed ruler, samples or
+ceilings. That rebind is not a certificate: three independent final binding/test, whole-diff, and
+documentation/evidence reviews are CLEAR, and the signed clean commit containing this record must
+begin a fresh final4 restart from Layout. Slice, Glass and recovery evidence remain pending
+as described in the status overlay.
 
 ### 5.2 Arc 3 — engineering loop
 
@@ -1570,11 +1582,14 @@ success marker or ledger. Its five independent harness/ownership roots were repa
 Guide/Glass authority, paired ecology diagnostic clocks, contextless blocked audio, committed-only
 epoch timing and Survey's post-replacement Training refresh. The seventh `7362a0e…` Slice red led to
 the signed first repair in `b206cf0…`; its final2 eighth red exposed unchecked v4 staging plus a stale
-Arc 4 owned-release read oracle. The second repair exact-receipts primary, backup and absent-primary
-staging and owns zero stale / one publication release read. Its complete browserless checkpoint and
-three current-byte reviews are green, but it remains certifying-browser-unrun. Post-start audio, the
-sealed ledger, Glass and recovery remain unproved; a signed source and restart from Layout remain
-required before any current PASS claim.
+Arc 4 owned-release read oracle. Signed `5ddddbf…` exact-receipts primary, backup and absent-primary
+staging and owns zero stale / one publication release read. Its final3 Layout passed before
+SceneMemory stopped pre-measurement on stale live producer binding; the browser-free repair now
+rebinds SceneMemory budget `47d24080…775b` and Compendium budget `f0bedb67…3c64` and adds the
+source-derived regression. Post-start audio, the sealed ledger, Glass and recovery remain unproved;
+its full browser-free battery is green and three independent final binding/test, whole-diff, and
+documentation/evidence reviews are CLEAR. The signed clean commit containing this record and a fresh
+final4 restart from Layout remain required before any current PASS claim.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.

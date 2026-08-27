@@ -29,6 +29,16 @@
 > product, revision, user agent, JavaScript version and protocol version per run. Compendium and
 > SceneMemory own separate source-derived capability contracts, producer bindings and fixed rulers.
 > A compatible browser point update is provenance, not a reason to rebaseline or change thresholds.
+> Signed second repair `5ddddbfb79ea984d44c86e2107e5e4013f84f1b3` contains that exact staging/
+> held-writer correction and passed its complete browser-free checkpoint. Final3 Layout passed
+> 787/787 plus named verification; SceneMemory then stopped before measurement on stale live
+> `buildDist`/`gameMain` binding, so Compendium and all later stages did not run. Browser-free
+> derivation also found Compendium's measurement current but built producer stale. The current
+> repair rebinds only those live authorities and adds a standard-build pre-browser regression;
+> persistence bytes, semantics, rulers and numeric ceilings do not change. The complete
+> browser-free battery, authority printer and root validator are green; three independent final
+> binding/test, whole-diff, and documentation/evidence reviews are CLEAR. The signed clean commit
+> containing this record owns a fresh final4 restart from Layout.
 
 > **2026-08-27 persistence authority/race reconciliation (current source truth):** legacy backup
 > promotion is one atomic compare-and-apply over the exact primary bytes that were proved loadable
@@ -64,11 +74,14 @@
 > expedition** is the narrow protected-recovery exception to the ordinary mutation selector, not a
 > general write bypass: its payload still must pass complete import validation, coordinate queued or
 > in-flight persistence, win the exclusive replacement transaction and reload. Focused checks cover
-> these laws. The producer-changing second repair now passes the complete 134-file / 1,475-test
+> these laws. Signed `5ddddbf…` contains the producer-changing second harness repair after its complete 134-file / 1,475-test
 > browserless checkpoint plus one intentional skip, all TypeScript/no-unused programs, build,
 > validation/fingerprint, evidence/preview selftests and isolated real-browser outcome controls;
-> three independent current-byte reviews are CLEAR. It still requires a signed clean successor
-> before exact-head browser certification. Those certificates remain pending.
+> three independent current-byte reviews are CLEAR. Final3 then stopped pre-measurement on stale
+> memory-budget bindings. The current source-derived binding repair is fully browser-free green and
+> three independent final binding/test, whole-diff, and documentation/evidence reviews are CLEAR.
+> The signed clean commit containing this record owns final4 exact-head browser certification. Those
+> certificates remain pending.
 > Engineering protection follows the same ownership split: exact Engineering details and every
 > action remain unavailable, while the current-ship preview stays readable because it derives from
 > the separate saved capability/reach projection used by travel. The panel may not invent Arc 3

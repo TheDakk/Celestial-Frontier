@@ -6,9 +6,20 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-27.**
 >
-> **2026-08-27 local candidate overlay — implemented source lanes; signed exact SceneMemory/
-> Compendium evidence, eight preserved Slice reds, and a second bounded harness repair awaiting
-> one signed full-chain source:** Gate B's
+> **2026-08-27 local candidate overlay — signed second harness repair, final3 Layout green,
+> SceneMemory instrument stop preserved, and live producer binding repair reviewed for the signed
+> final4 checkpoint:**
+> signed source `5ddddbfb79ea984d44c86e2107e5e4013f84f1b3` passed final3 Layout 787/787
+> across ten viewports plus named verification. SceneMemory then ran once and stopped
+> `instrument-fail` before measurement because only live `buildDist` and `gameMain` bindings were
+> stale; current-byte derivation also found Compendium measurement current but its built index/owner
+> producer stale. Compendium and all later stages correctly did not run. The bounded repair rebinds
+> only those live producer records, preserves historical rulers/samples and every numeric ceiling,
+> and makes ordinary `npm test` compare both budgets to independently built current bytes with
+> directional mutants. The full repair battery is green at 135 Vitest files /1,478 passed /one
+> intentional skip, all TypeScript/no-unused programs, the 887-module build, authority printer and
+> root validator. Three independent final binding/test, whole-diff, and documentation/evidence
+> reviews are CLEAR. The signed clean commit containing this record owns final4 from Layout. Gate B's
 > recursive scanner now seals an exact 62-domain-source inventory against DOM, storage,
 > `navigator`, network, wall/monotonic clock and uncontrolled randomness. Its only two reasoned
 > waivers are the exact `document.createElement('')` expressions used by CombatCore's legacy
@@ -248,13 +259,16 @@
 > 424,225 ms with six findings across five scopes. `bb5dc7c7…` remains the protected-preview red;
 > signed `862a75b…` remains the paired 40/42 heap/DOM red; signed `6c9ad855…` supplied the three clean
 > calibration candidates; and signed `4a54c0d…` activates 12 MiB V8 /18 MiB aggregate under budget
-> SHA-256 `e6c4aeea…`. The current second repair changes the browser-only staging hook and built
-> producer, evidence controls, Guide/release copy and docs, but no numeric ruler or deadline. The
-> complete current-byte checkpoint passes 134 Vitest files / 1,475 tests plus one intentional skip,
-> all TypeScript/no-unused programs, the 887-module build, root validation/fingerprint, evidence and
-> preview selftests, and isolated real-browser Slice outcome controls; three independent current-byte
-> reviews are CLEAR. A signed clean source remains before the full serial chain restarts at Layout. Current-input Slice is
-> RED; Glass, recovery and whole-Gate evidence remain open.
+> SHA-256 `e6c4aeea…`. Signed `5ddddbf…` contains the second harness repair and its complete
+> browser-free checkpoint. Final3 Layout passed; SceneMemory then stopped pre-measurement on stale
+> live `buildDist`/`gameMain` binding, with exact evidence and no retry. Browser-free derivation also
+> found Compendium's measurement current but producer stale. The current repair binds SceneMemory
+> budget `47d24080…775b` and Compendium budget `f0bedb67…3c64`, preserves all numeric/historical
+> ruler data, and adds standard-build current-authority plus green-wrong mutants. The complete
+> browser-free battery, authority printer and root validator pass; three independent final
+> binding/test, whole-diff, and documentation/evidence reviews are CLEAR. The signed clean commit
+> containing this record owns final4 from Layout. Current-input Slice is RED; Glass, recovery and whole-Gate
+> evidence remain open.
 >
 > Current-input Slice retains eight one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > The first five remain preserved historical diagnosis. Signed-clean source
@@ -283,8 +297,9 @@
 > that necessarily performs one. The second repair exact-receipts every direct primary, backup and
 > absent-primary fixture, atomically resets/stages all stores, closes the sibling document and
 > executable-tests a held active persist; Arc 4 requires zero stale-release and one publication-
-> release read. The hook/copy source changes require both gates to repeat inside the new full chain
-> without recalibration. Root Gate A separately
+> release read. Signed `5ddddbf…` contains that repair. Its final3 SceneMemory instrument stop and
+> source-derived live-binding repair require both memory gates to repeat inside fresh final4 without
+> recalibration. Root Gate A separately
 > accepts compatible Chromium family + CDP `1.3` only after exercising the exact CDP inventory
 > derived from `tools/uilayout.js` + `tools/bootperf.js` and recording complete per-run provenance;
 > point version alone never repins, rebaselines or moves a root threshold. No repaired Slice PASS, Glass result, recovery certificate,
@@ -2768,20 +2783,22 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-27):** signed first repair `b206cf0…` passed the complete
-browserless battery at 134 Vitest files / 1,474 passed / one intentional skip / zero failures, plus
-root/app/worker/no-unused TypeScript, `artunused`, syntax/import selftests, the 887-module Vite build
-and root validation. It retained final2 Layout 787/787, source-bound SceneMemory 42/42 and
-source-bound Compendium 78/78 with named verification. Slice then stopped after 424,225 ms with six
-findings across five scopes and no retry; Glass/recovery did not run. The current second repair
-changes the browser-only staging hook and built producer, evidence controls, Guide/release truth copy
-and docs without changing numeric rulers/deadlines. Its complete current-byte checkpoint passes 134
-Vitest files / 1,475 tests plus one intentional skip, all TypeScript/no-unused programs, the
-887-module build, root validation/fingerprint, evidence and preview selftests, and isolated
-real-browser Slice outcome controls; three independent current-byte reviews are CLEAR. A signed
-clean source remains before the full chain restarts. Earlier `bb5dc7c7…` and `862a75b…` reds, calibration
-source `6c9ad855…`, activation `4a54c0d…`, and the seventh-red boundary `7362a0e…` remain truthful
-historical evidence for their exact inputs.
+**Current local candidate snapshot (2026-08-27):** signed `5ddddbf…` contains the second harness
+repair after its 134-file /1,475-test browser-free checkpoint and three clear reviews. Final3 Layout
+`20260827-phase4-final3-layout` passed 787/787 across ten viewports and named verification.
+SceneMemory `20260827-phase4-final3-scenemem` ran once, stopped `instrument-fail` after 1,662 ms
+before measurement with zero outcomes, retained exact clean source and complete cleanup, and was not
+retried; Compendium/Slice/Glass/recovery did not run. The only SceneMemory drift was live
+`buildDist`/`gameMain`; the browser-free oracle also found Compendium measurement current but its
+built producer stale. Current budgets `47d24080…775b` / `f0bedb67…3c64` now bind independently
+derived standard-build bytes without moving numeric rulers or historical samples. A new automatic
+Vitest check plus the fail-closed printer own source/build/duplicate-constant/recomputed-index/owner
+controls. The complete 135-file /1,478-pass /one-skip battery, all TypeScript/no-unused programs,
+887-module build, authority printer and root validator pass; three independent final binding/test,
+whole-diff, and documentation/evidence reviews are CLEAR. The signed clean commit containing this
+record owns final4. Earlier `bb5dc7c7…` and `862a75b…` reds, calibration source
+`6c9ad855…`, activation `4a54c0d…`, and the historical `7362a0e…` / `b206cf0…` certificates remain
+truthful for their exact inputs.
 
 Current-input Slice retains eight one-attempt/zero-retry reds. The first six remain historical
 diagnosis. Signed `7362a0e…` then retained three green predecessors before Slice

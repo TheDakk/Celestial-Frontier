@@ -122,6 +122,10 @@ jobs:
           npm run coveragegap
           node tools/speccheck.mjs
 
+      - name: current producer authority binding
+        working-directory: port/v2
+        run: npx vitest run tests/current-producer-authorities.test.ts
+
       # SceneMemory is the shorter Edge-family/capability ruler, so it fails
       # first without point-version pinning or retrying either certificate.
       - name: install current Arc 1C Edge scene-memory browser
