@@ -105,6 +105,15 @@ const screenshotPath = (stem) => path.join(
 );
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const decodeCF1Payload = (code) => {
+  if (typeof code !== 'string' || !code.startsWith('CF1-')) return null;
+  try {
+    const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
+    return payload && typeof payload === 'object' && !Array.isArray(payload) ? payload : null;
+  } catch {
+    return null;
+  }
+};
 const withCodeName = (code, name) => {
   const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
   payload.n = name;
@@ -948,7 +957,9 @@ const canonicalJson = (value) => {
   return JSON.stringify(value);
 };
 const ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
-  card=document.getElementById('survey'),text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),
+  card=document.getElementById('survey'),cardCode=S?.api?.cardShareCode?.()??null,
+  planetTarget=S?.api?.planetScreenTarget?.({seed:${ARC3_BIOME_SURVEY_TARGET.planetSeed},ordinal:${ARC3_BIOME_SURVEY_TARGET.planetOrdinal}})??null,
+  text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),
   rows=[...card?.querySelectorAll('[data-row="Mineral veins"]')??[]].map((row)=>{const label=text(row.querySelector('span')),
     value=text(row).slice(label.length).trim();return {label,value,passive:!row.matches('[tabindex]')
       &&row.querySelector('button,a,input,select,textarea,[tabindex]')===null}}),
@@ -958,17 +969,45 @@ const ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION = `(()=>{const S=window.__CF_SL
     starY:state?.starY??null,planet:state?.planet??null,planetOrdinal:state?.planetOrdinal??null,
     navGalaxyKey:state?.navGalaxyKey??null,navStarKey:state?.navStarKey??null,
     navWorldKey:state?.navWorldKey??null,cardOpen:state?.cardOpen??null,cardTitle:state?.cardTitle??null,
+    cardCode,planetTarget,renderedScene:state?.renderedScene??null,
+    pendingPersistenceWrites:state?.sceneResources?.pendingPersistenceWrites??null,
     rowCount:rows.length,rows,sensitiveCount:sensitive,mineActionCount:mine}})()`;
 const assessArc3OrbitalSurvey = ({ observation, owned }) => {
   const row = observation?.rows?.[0] ?? null;
+  const cardPayload = decodeCF1Payload(observation?.cardCode);
+  const planetTarget = observation?.planetTarget;
+  const renderedScene = observation?.renderedScene;
+  const navGalaxyKey = 'CF1|g:999@90,-60';
+  const navStarKey = 'CF1|g:999@90,-60|s:380168149@347.25,24.8';
   const checks = Object.freeze({
-    exactOrbit: observation?.mode === 'system'
+    exactSystemRoute: observation?.mode === 'system'
       && observation?.gal === ARC3_BIOME_SURVEY_TARGET.galaxySeed
       && observation?.star === ARC3_BIOME_SURVEY_TARGET.star.seed
       && observation?.starX === ARC3_BIOME_SURVEY_TARGET.star.x
       && observation?.starY === ARC3_BIOME_SURVEY_TARGET.star.y
-      && observation?.planet === ARC3_BIOME_SURVEY_TARGET.planetSeed
-      && observation?.planetOrdinal === ARC3_BIOME_SURVEY_TARGET.planetOrdinal,
+      && observation?.navGalaxyKey === navGalaxyKey
+      && observation?.navStarKey === navStarKey,
+    systemNavShape: observation?.planet === null
+      && observation?.planetOrdinal === null
+      && observation?.navWorldKey === null,
+    exactCardContext: cardPayload?.t === 'p'
+      && Array.isArray(cardPayload?.g) && cardPayload.g[0] === HOME_GALAXY.x
+      && cardPayload.g[1] === HOME_GALAXY.y && cardPayload.g[6] === ARC3_BIOME_SURVEY_TARGET.galaxySeed
+      && Array.isArray(cardPayload?.s) && cardPayload.s[0] === ARC3_BIOME_SURVEY_TARGET.star.x
+      && cardPayload.s[1] === ARC3_BIOME_SURVEY_TARGET.star.y
+      && cardPayload.s[2] === ARC3_BIOME_SURVEY_TARGET.star.seed
+      && cardPayload.p === ARC3_BIOME_SURVEY_TARGET.planetSeed,
+    exactPlanetTarget: planetTarget?.seed === ARC3_BIOME_SURVEY_TARGET.planetSeed
+      && planetTarget?.ordinal === ARC3_BIOME_SURVEY_TARGET.planetOrdinal
+      && Number.isFinite(planetTarget?.screenX) && Number.isFinite(planetTarget?.screenY)
+      && Number.isFinite(planetTarget?.width) && planetTarget.width > 0
+      && Number.isFinite(planetTarget?.height) && planetTarget.height > 0,
+    renderedReceipt: Number.isInteger(renderedScene?.serial) && renderedScene.serial > 0
+      && renderedScene?.mode === 'system'
+      && renderedScene?.galaxyKey === navGalaxyKey
+      && renderedScene?.starKey === navStarKey
+      && renderedScene?.worldKey === null,
+    settledPersistence: observation?.pendingPersistenceWrites === 0,
     currentCard: observation?.cardOpen === true && typeof observation?.cardTitle === 'string'
       && observation.cardTitle.length > 0,
     exactCardinality: observation?.rowCount === (owned ? 1 : 0),
@@ -3525,12 +3564,12 @@ try {
   const takeDesktopPointerReceipt = async () => evalIn(`(()=>{ const receipt=window.__cfPanelPointer||null;
     window.__cfPanelPointerAbort?.abort();delete window.__cfPanelPointerAbort;delete window.__cfPanelPointer;
     return receipt; })()`);
-  const waitDesktopValue = async (label, expr, timeoutMs = 6000) => {
+  const waitDesktopValue = async (label, expr, timeoutMs = 6000, accept = (value) => !!value) => {
     const deadline = Date.now() + timeoutMs;
     let last = null;
     while (Date.now() < deadline) {
       last = await evalIn(expr);
-      if (last) return last;
+      if (accept(last)) return last;
       await sleep(50);
     }
     throw new Error(`${label} did not reach its browser outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
@@ -7895,16 +7934,73 @@ try {
     await evalIn(`(()=>{const input=document.getElementById('searchbox');input.value=${JSON.stringify(biomeSurveyCode)};input.focus();return true})()`);
     await keyIn('Enter', 'Enter');
   }
-  await waitDesktopValue('Arc 3 biome Survey pre-purchase route', `(()=>{const s=window.__CF_SLICE__.api.state();
-    return s.mode==='system'&&s.gal===${ARC3_BIOME_SURVEY_TARGET.galaxySeed}
-      &&s.star===${ARC3_BIOME_SURVEY_TARGET.star.seed}
-      &&s.starX===${ARC3_BIOME_SURVEY_TARGET.star.x}&&s.starY===${ARC3_BIOME_SURVEY_TARGET.star.y}
-      &&s.planet===${ARC3_BIOME_SURVEY_TARGET.planetSeed}
-      &&s.planetOrdinal===${ARC3_BIOME_SURVEY_TARGET.planetOrdinal}&&s.cardOpen
-      &&s.sceneResources?.pendingPersistenceWrites===0?s:null})()`);
+  const biomeRouteObservation = await waitDesktopValue(
+    'Arc 3 biome Survey pre-purchase route',
+    ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION,
+    6000,
+    (observation) => observation?.mode === 'system'
+      && observation?.gal === ARC3_BIOME_SURVEY_TARGET.galaxySeed
+      && observation?.star === ARC3_BIOME_SURVEY_TARGET.star.seed
+      && observation?.starX === ARC3_BIOME_SURVEY_TARGET.star.x
+      && observation?.starY === ARC3_BIOME_SURVEY_TARGET.star.y
+      && observation?.cardOpen === true
+      && observation?.pendingPersistenceWrites === 0,
+  );
   await waitForF4Writable('Arc 3 biome Survey pre-purchase authority');
   const biomePreObservation = await evalIn(ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION);
   const biomePreAssessment = assessArc3OrbitalSurvey({ observation: biomePreObservation, owned: false });
+  const biomePreAuthorityControls = biomePreAssessment.ok ? {
+    wrongCardCode: assessArc3OrbitalSurvey({
+      observation: { ...biomePreObservation, cardCode: 'CF1-not-a-valid-card' }, owned: false,
+    }),
+    wrongCardSeed: assessArc3OrbitalSurvey({
+      observation: { ...biomePreObservation,
+        cardCode: withCodePlanetSeed(biomePreObservation.cardCode, ARC3_OTHER_WORLD_CONTROL_ADDRESS.planet.seed) },
+      owned: false,
+    }),
+    wrongPlanetTargetSeed: assessArc3OrbitalSurvey({
+      observation: { ...biomePreObservation,
+        planetTarget: { ...biomePreObservation.planetTarget,
+          seed: ARC3_OTHER_WORLD_CONTROL_ADDRESS.planet.seed } },
+      owned: false,
+    }),
+    wrongPlanetTargetOrdinal: assessArc3OrbitalSurvey({
+      observation: { ...biomePreObservation,
+        planetTarget: { ...biomePreObservation.planetTarget,
+          ordinal: ARC3_BIOME_SURVEY_TARGET.planetOrdinal - 1 } },
+      owned: false,
+    }),
+    unexpectedNavPlanet: assessArc3OrbitalSurvey({
+      observation: { ...biomePreObservation, planet: ARC3_BIOME_SURVEY_TARGET.planetSeed,
+        planetOrdinal: ARC3_BIOME_SURVEY_TARGET.planetOrdinal }, owned: false,
+    }),
+    unexpectedNavWorld: assessArc3OrbitalSurvey({
+      observation: { ...biomePreObservation,
+        navWorldKey: `CF1|g:999@90,-60|s:380168149@347.25,24.8|p:${ARC3_BIOME_SURVEY_TARGET.planetSeed}#${ARC3_BIOME_SURVEY_TARGET.planetOrdinal}` },
+      owned: false,
+    }),
+    wrongRenderedReceipt: assessArc3OrbitalSurvey({
+      observation: { ...biomePreObservation,
+        renderedScene: { ...biomePreObservation.renderedScene,
+          worldKey: `CF1|g:999@90,-60|s:380168149@347.25,24.8|p:${ARC3_BIOME_SURVEY_TARGET.planetSeed}#${ARC3_BIOME_SURVEY_TARGET.planetOrdinal}` } },
+      owned: false,
+    }),
+    pendingPersistence: assessArc3OrbitalSurvey({
+      observation: { ...biomePreObservation, pendingPersistenceWrites: 1 }, owned: false,
+    }),
+    closedCard: assessArc3OrbitalSurvey({
+      observation: { ...biomePreObservation, cardOpen: false }, owned: false,
+    }),
+  } : null;
+  const biomePreAuthorityControlsIsolated = biomePreAuthorityControls !== null
+    && Object.entries(biomePreAuthorityControls).every(([name, assessment]) => isolatesNamedCheck(
+      assessment,
+      name === 'wrongCardCode' || name === 'wrongCardSeed' ? 'exactCardContext'
+        : name === 'wrongPlanetTargetSeed' || name === 'wrongPlanetTargetOrdinal' ? 'exactPlanetTarget'
+          : name === 'unexpectedNavPlanet' || name === 'unexpectedNavWorld' ? 'systemNavShape'
+            : name === 'wrongRenderedReceipt' ? 'renderedReceipt'
+              : name === 'pendingPersistence' ? 'settledPersistence' : 'currentCard',
+    ));
   const biomePreInjected = await evalIn(`(()=>{const card=document.getElementById('survey'),row=document.createElement('div');
     row.dataset.row='Mineral veins';row.className='survey-row';row.innerHTML='<span>Mineral veins</span><br>${ARC3_BIOME_SURVEY_TARGET.expectedValue}';
     card?.append(row);const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};row.remove();return result})()`);
@@ -7929,10 +8025,12 @@ try {
     beforeRaw: biomePreOpenRaw, afterRaw: biomePreOpenRawAfter,
     beforeState: biomePreOpenState, afterState: biomePreOpenStateAfter,
   });
-  if (!biomePreAssessment.ok || biomePreInjectedControl.ok || !biomePreRestoredAssessment.ok
+  if (!biomePreAssessment.ok || !biomePreAuthorityControlsIsolated
+    || biomePreInjectedControl.ok || !biomePreRestoredAssessment.ok
     || !biomeDockFocus.focused || !biomePreReadOnly.ok) {
-    fails.push('ARC 3 BIOME SURVEY PRE-PURCHASE: absence, injected-row control, retained-card reopen, or read-only authority failed: '
-      + JSON.stringify({ biomePreObservation, biomePreAssessment, biomePreInjectedControl,
+    fails.push('ARC 3 BIOME SURVEY PRE-PURCHASE: route/card/target authority, isolated controls, absence, injected-row control, retained-card reopen, or read-only authority failed: '
+      + JSON.stringify({ biomeRouteObservation, biomePreObservation, biomePreAssessment,
+        biomePreAuthorityControls, biomePreAuthorityControlsIsolated, biomePreInjectedControl,
         biomePreRestoredAssessment, biomeDockFocus, biomePreReadOnly }));
   }
 

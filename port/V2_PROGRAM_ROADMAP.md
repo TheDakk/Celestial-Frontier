@@ -103,7 +103,12 @@
 > combat/Guardian audio, recorded assets, device plateaus and HUMAN listening remain open.
 >
 > The dedicated recovery collector and mutation-sensitive selftest are ready, but the uninterrupted
-> real 20-minute certificate has not run. The former Compendium ruler under measurement
+> real 20-minute certificate has not run. Its first clean committed attempt,
+> `20260826024124548-13172-6286d5212e` at `35a22b1…`, is preserved as a complete-lifecycle,
+> one-attempt/zero-retry `instrument-fail`: fixture and 16-step burn-down passed before a stale
+> all-`depleted` poll rejected the valid mixed Tame `empty` plus Scavenge/Sample `depleted` surface.
+> Active observation/recovery did not run and no PASS was claimed; the repaired bounded classifier
+> remains unrerun. The former Compendium ruler under measurement
 > `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
 > `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` is historical. Clean source
 > `6d8f184…` supplied selected candidate3/5/6 plus paired baseline1; signed activation
@@ -133,10 +138,14 @@
 > Current browser-free local verification is 121 files /1,358 passed /
 > one intentional skip /zero failures, all TypeScript programs including `noUnused`, an 884-module
 > Vite build, root validation/fingerprint, legacy smoke and applicable selftests. Current-input
-> Slice `20260826214541492-83064-b252b137f7a3` executed once at signed `8553bd7…` on Edge `.107`
-> and failed after 92,772 ms with three findings and zero retries: two instrument false reds and one
-> retained-Survey focus product regression. All three are repaired locally, but no rerun PASS exists.
-> A repaired current-input Slice PASS, current-input Glass, recovery, hosted, HUMAN, whole-Gate,
+> Slice retains two one-attempt/zero-retry reds on Edge `.107`. Run
+> `20260826214541492-83064-b252b137f7a3` at signed `8553bd7…` failed after 92,772 ms with two
+> instrument false reds plus one retained-Survey focus product regression. Changed clean signed
+> source `9d4b2b0…` supplied `20260827000034983-98202-869d966f2f88`, which failed after 92,566 ms
+> with only the Arc 3 harness finding. Settings and Survey focus are outcome-cleared; the reachable
+> target exposed a second instrument defect whose oracle joined system navigation to nav-owned
+> planet identity although the selected world is card-owned. Its bounded tool-only repair is local
+> and unrerun. No current-input Slice PASS, Glass result or recovery certificate exists. Hosted, HUMAN, whole-Gate,
 > release/version, preview/publication and deployment authority remain open.
 >
 > **2026-08-25 local campaign boundary — historical checkpoint, still foundational where the
@@ -741,19 +750,20 @@ does not close Gate D, any other Gate, a release, versioning, or deployment auth
 F2 is the identity seam of Arc 0, not all of it. These items remain named sub-batches:
 
 The dependency spine shows Arc 0's critical path, not a blanket serial barrier. Each row's own
-placement rule determines what it blocks: later-bound decisions such as `D-CFB-1` and
-`D-IMPORT-1` remain open and visible, but do not mechanically block unrelated Arc 1A–1C work.
+placement rule determines what it blocks. The bounded `D-CFB-1`, `D-IMPORT-1`, `PER-5` and `DOM-5`
+kernels are now implemented; their explicitly later product, evidence and premium-audio surfaces
+remain open without mechanically blocking unrelated work.
 
 | Item | Required outcome | Placement rule |
 | --- | --- | --- |
 | `D-TRAIN-1` | Imported exact eleven-key `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}` checkpoint restores only its owned surfaces before clear; current one-key `{view}` and legacy no-view route semantics stay distinct; completion, skip, and failure preserve every surrounding expedition field. | Before Training can claim full migration. |
-| `D-CFB-1` | Explicit compatibility decision and normalized parent-tuple round trip with reverse-parent/matchup controls. | Before companions, combat, or audio identity rely on it. |
-| `D-IMPORT-1` | Map/Set semantics reconstruct; malformed rows are contained; valid genome/size values do not drift. | Before import becomes a broad player promise. |
+| ★ `D-CFB-1` | Implemented `CFB2-` compatibility boundary round-trips one normalized ordered uint32 parent tuple with reverse-parent/matchup and malformed/future/mismatch controls; legacy `CFB-` stays exact. | Minimum lineage seam is satisfied. Companion/share writers and any premium parent-audio projection remain later. |
+| ★ `D-IMPORT-1` | Implemented importer rebuilds duplicate-prone Map/Set owners, contains irreparable rows, clones before the mutating genome hardener and preserves valid unwrapped `size` as a fixed point. | Named kernel is satisfied; real-save Gate C and later carrier/writer migrations remain open. |
 | Charter/opportunity truth | Every surfaced opportunity maps to a live action; stale chapters cannot claim unbuilt systems. | Before new ownership/reward writers. |
 | Guide/Training/tooltip truth | Capability sign-off, real-system-only bodies, deep links, and Advanced Briefing placement. | Before an affected capability becomes available. |
 | Remaining named deltas | The F4 ecology edge, domain-haze relocation and injected-clock notification seam now have executable owners. Locale and any residual descriptor/state seam remain explicitly named rather than hidden as generic “later.” | Never leave a known delta as unowned “later.” |
-| `PER-5` imported strings | Decide and record validation for `lastAnomKey`/`frontierEnding`; do not silently change verbatim parity. | Before either value is rendered or trusted as authority. |
-| `DOM-5` package cycle | Assign and remove the `combatcore` ⇄ `strays` dependency cycle at an owned package seam. | Before stricter bundling or dependency enforcement relies on an acyclic graph. |
+| ★ `PER-5` imported strings | Implemented bounded inert compatibility parsing: anomaly keys accept only a non-negative safe integer or 1–64-character safe token; ending strings accept only a bounded lowercase slug and require `isKnownFrontierEndingId` before authority use. | Validation seam is satisfied; unknown bounded endings remain round-trippable evidence, never authority. |
+| ★ `DOM-5` package cycle | Implemented shared `cleanName` and `STAT_KEYS` owners remove CombatCore's reverse dependency on Strays; exact lifted-byte/parity checks and an injected historical-edge control seal the acyclic workspace graph. | Named cycle is removed; later package work must preserve the one-way edge. |
 | `MAIN-3` roster boundary | Separate the full canonical world roster from the eight-row Planetside preview/paging cap. | Before Arc 4 capture consumes roster identity. |
 
 **D-TRAIN-1 implementation/evidence record (2026-08-16): [PARTIAL], local working tree only.**
@@ -1270,8 +1280,8 @@ active `f7c87f22…` ruler's candidate1/2/3 plus paired baseline1, each one atte
 budget `6284a394…` retains all four faults and the exact 14/13 inventory, changing only phone warm
 to `524288`. Clean signed activation `91f4e044…` passed current exact-budget certificate
 `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
-attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). The preserved
-current-input Slice rerun, Glass and recovery evidence remain pending as described in the status overlay.
+attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). A further repaired
+current-input Slice run, Glass and recovery evidence remain pending as described in the status overlay.
 
 ### 5.2 Arc 3 — engineering loop
 
@@ -1418,8 +1428,10 @@ certificate `20260826-phase4-certification` is historical green evidence for sig
 `6284a394…`, and clean signed activation `91f4e044…` passed current certificate
 `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
 attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`).
-The one current-input Slice is terminal red with its three findings repaired locally and no PASS
-rerun; current-input Glass and recovery evidence remain open.
+Current-input Slice retains two terminal reds: the first run's three findings and the changed-source
+second run's sole impossible card-context-oracle finding. Settings and Survey focus are
+outcome-cleared; the Arc 3 tool-only repair is local and unrerun. No current-input Slice PASS, Glass
+result or recovery certificate exists.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.

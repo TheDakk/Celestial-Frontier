@@ -1,21 +1,24 @@
 # Celestial Frontier — Quests & Chapters
 
-> **2026-08-26 current evidence overlay:** current-input Slice
-> `20260826214541492-83064-b252b137f7a3` executed once from signed `8553bd7…` on Edge
-> `151.0.4129.107` and ended terminal FAIL after 92,772 ms with three findings and zero retries.
-> The Settings 14-versus-15 control inventory and Arc 3's stage-1-unreachable target were instrument
-> false reds. Retained Survey Close returning focus to canvas instead of its dock opener was a
-> product regression. All three are repaired locally; no rerun PASS exists. The Arc 3 route fixture
-> now uses a source-proven stage-1-reachable target without widening player reach, while the pure
-> far-target refusal remains. Browser-free verification remains green at 121 test files, 1,358
+> **2026-08-26 current evidence overlay:** current-input Slice has two preserved terminal-red,
+> one-attempt/zero-retry runs on Edge `151.0.4129.107`. Run
+> `20260826214541492-83064-b252b137f7a3` executed from signed `8553bd7…` for 92,772 ms and retained
+> three findings: the Settings 14-versus-15 control inventory and stage-1-unreachable Arc 3 target
+> were instrument false reds, while retained Survey Close returning focus to canvas instead of its
+> dock opener was a product regression. Changed source `9d4b2b0…` then supplied run
+> `20260827000034983-98202-869d966f2f88`, which failed after 92,566 ms with only the Arc 3 harness
+> finding. That outcome clears Settings and Survey focus; the reachable replacement target exposed
+> a second instrument defect whose oracle simultaneously required system navigation and nav-owned
+> planet identity even though the selected world is card-owned. Its bounded tool-only repair is
+> local and has not been rerun. Browser-free verification remains green at 121 test files, 1,358
 > passing tests and one intentional skip. The former Compendium certificate is historical for producer
 > `587d3bdf…`; current producer
 > `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is active under budget
 > `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. Exact-budget run
 > `20260826-slice-repair-certification` passed 78/78 with complete lifecycle and named verification
 > from clean signed activation source `91f4e044…` in one attempt/zero retries (44,847 ms); raw/gzip
-> SHA-256 are `81c27ed5…` / `6f3deb0f…`. A repaired current-input Slice PASS, current-input Glass and
-> recovery evidence remain open.
+> SHA-256 are `81c27ed5…` / `6f3deb0f…`. No current-input Slice PASS, Glass result or recovery
+> certificate exists.
 
 > **2026-08-25 Arc 4 current-capability overlay:** finite Tame/Scavenge/Sample is now a native
 > Survey-card action over the production full roster and current epoch. It presents a source-bound

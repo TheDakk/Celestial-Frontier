@@ -1,3 +1,29 @@
+## ARCHIVED 2026-08-26 — superseded Arc 4 headless foundation paragraph
+
+> Moved byte-verbatim from ROADMAP.md after the player-facing Arc 4 boundary and current evidence
+> superseded this standalone foundation paragraph.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: ARC4 HEADLESS FOUNDATION -->
+**Arc 4 durable foundation (committed local `fd72c06`, 2026-08-25):** absent ownership-v1
+carriers now bootstrap into the shared receipt-free F4/Arc 2/Arc 3 boot CAS without granting a
+Compendium page, discovery, creature, specimen or reward. Current projectable mirrors reconcile in
+that same owned commit; future, corrupt, unrepresentable and legacy-protected states remain exact
+and fail closed. Legacy Training composes its one Arc 2 replacement with all 18 Arc 4 namespaces,
+and postcommit verification binds the exact source evidence before publishing compatibility fields.
+At that committed boundary, the diagnostics-only writer captured the real current surface, canonical address, current ecology
+epoch and full roster, certifies a miss plus every eligible hit before either F4 draw, and settles
+one finite attempt, ownership successor, legacy projection, receipt, next authority and revision in
+one lease-fenced CAS. Misses spend an attempt; first observations alone add catalogue/reward state;
+later cycles/worlds may add a new individual or lot without a second page or reward. Pre-CAS retains
+only a private pending payload binding the registered plan/settlement identities and full prepared
+fingerprint; the committed path alone creates and registers the opaque evidence token against the
+exact transaction, kind and revision. Stale/storage/protected paths publish nothing, while
+post-durable verification faults clear live authority and perform one read-only convergence reload
+without a second write or reroll. This paragraph preserves the committed headless foundation; the
+newer local product boundary follows.
+
+<!-- END VERBATIM ROADMAP BLOCK: ARC4 HEADLESS FOUNDATION -->
+
 ## ARCHIVED 2026-08-26 — Arc 5A pre-campaign continuation handoff
 
 > Moved byte-verbatim from ROADMAP.md after the 2026-08-26 multi-Arc source freeze superseded it.

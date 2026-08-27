@@ -90,12 +90,16 @@ Browser-free verification of these local bytes is green: 121 test files / 1,358 
 intentional skip / zero failures; root, app, worker, and `noUnused` TypeScript; an 884-module Vite
 build; root validation with the unchanged 50-probe fingerprint; legacy jsdom smoke; and the
 applicable contract/reporter/Glass/recovery/Compendium selftests. These are local working-tree
-results only. One clean, one-shot current-input Slice run
-`20260826214541492-83064-b252b137f7a3` at signed source `8553bd7…` on Edge
-`151.0.4129.107` ended terminal FAIL after 92,772 ms with three findings and zero retries. The
-Settings 14-versus-15 pressed-control expectation and the Arc 3 stage-1-unreachable target were
-instrument false reds; retained Survey Close focus was a product regression. All three are repaired
-locally, but no rerun PASS exists yet. Current-input Glass, the real recovery certificate, hosted
+results only. Current-input Slice has two preserved one-attempt/zero-retry reds on Edge
+`151.0.4129.107`. Run `20260826214541492-83064-b252b137f7a3` at signed source `8553bd7…` failed
+after 92,772 ms with three findings: two instrument false reds—Settings' 14-versus-15 inventory and
+an unreachable Arc 3 target—plus the retained-Survey focus product regression. Changed clean signed
+source `9d4b2b0…` supplied run `20260827000034983-98202-869d966f2f88`, which failed after 92,566
+ms with only the Arc 3 harness finding. Settings and Survey focus are therefore outcome-cleared.
+The reachable target exposed a second instrument defect: its oracle required system navigation and
+nav-owned planet identity simultaneously, although the selected world belongs to the Survey card.
+The bounded tool-only repair is local and unrerun. No current-input Slice PASS, Glass result or real
+recovery certificate exists. Hosted
 execution, HUMAN review, whole-Gate closure, release, version
 bump, preview/publication, and deployment remain unclaimed.
 

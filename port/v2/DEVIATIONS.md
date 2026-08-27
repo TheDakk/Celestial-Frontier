@@ -22,11 +22,19 @@ signed activation `d33e540…` remains historical for producer `587d3bdf…`. Th
 `6284a394…`. Clean signed activation `91f4e044…` passed exact-budget run
 `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
 attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Current-input Slice
-`20260826214541492-83064-b252b137f7a3` executed once
-from clean signed `8553bd7…` on Edge `.107` and failed after 92,772 ms with three findings and zero
-retries. The Settings count and Arc 3 reach fixture were instrument false reds; retained Survey
-focus was a product regression. All three are repaired locally, but no rerun PASS exists. Glass and
-real recovery evidence remain pending. There is no hosted run, HUMAN judgment, whole-Arc/Gate
+retains two one-attempt/zero-retry reds on Edge `.107`. Run
+`20260826214541492-83064-b252b137f7a3` from clean signed `8553bd7…` failed after 92,772 ms with
+Settings and unreachable-target instrument false reds plus the retained-Survey focus product
+regression. Changed clean signed source `9d4b2b0…` supplied
+`20260827000034983-98202-869d966f2f88`, which failed after 92,566 ms with only the Arc 3 harness
+finding. Settings and focus are outcome-cleared; the reachable target exposed a second instrument
+defect whose oracle joined system navigation to nav-owned planet identity even though the selected
+world is card-owned. Its bounded tool-only repair is local and unrerun. No current-input Slice PASS,
+Glass result or real recovery certificate exists. The earlier clean committed recovery run
+`20260826024124548-13172-6286d5212e` at `35a22b1…` is preserved separately as one-attempt/zero-retry
+`instrument-fail`: fixture and 16-step burn-down passed, then the stale all-`depleted` poll rejected
+the valid Tame `empty` plus Scavenge/Sample `depleted` exhausted surface. Its lifecycle and cleanup
+completed, but active observation and recovery never ran, so it supplies no PASS claim. There is no hosted run, HUMAN judgment, whole-Arc/Gate
 closure, release/version, preview/publication or deployment claim.
 
 - ★ **D-GATE-B-62 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 62 domain
@@ -1836,20 +1844,21 @@ duplicates).
   Those local input-bound reports do not certify this later documentation tree,
   exact-head CI, integration, Gate C, human play, or release. No new Guide capability,
   lesson, outer version, current release, or production release is claimed.
-- ☐ **D-CFB-1 — preserve the deterministic parent tuple or ratify its loss.** The retained creature
-  codec drops `parents`, while combat class/ability reads them. Honest hybrids can therefore change
-  combat identity after a CFB round trip. A normalized two-uint32 tuple is the bounded candidate, but
-  because this corrects inherited behavior it needs an explicit compatibility decision and matchup
-  controls. Hybrid audio is a second consumer: the ordered tuple can preserve lineage salt but cannot
-  reconstruct both parents' full audible traits. A premium parent-voice blend additionally needs a
-  versioned bounded parent-audio projection; representation, compatibility, malformed input and
-  reverse-order evidence remain open before either combat or audio may depend on it.
-- ☐ **D-IMPORT-1 — reconstruct Map/Set and genome semantics, not merely array shapes.** The current
-  importer contains a descriptor-crashing Compendium row, but malformed trait indices can still
-  produce NaN combat values, and duplicate conquest/bio/wave/tech/binder/charter rows do not yet
-  collapse with the original Maps/Sets' first/last-write semantics. Normalize numeric genes without
-  rewriting honest unwrapped `size`, contain irreparable rows, and rebuild keyed collections through
-  their actual abstractions.
+- ★ **D-CFB-1 — bounded ordered-lineage compatibility kernel implemented (2026-08-24).** Legacy
+  `CFB-` remains the exact v1 challenger/exhibit contract and still strips mutable and parent state.
+  The decided `CFB2-` owned-creature boundary round-trips one normalized ordered uint32 parent tuple,
+  keeps forward/reverse identity distinct, preserves deterministic battle stats/ability/matchups, and
+  rejects malformed, future or body/witness-mismatched carriers; pure creatures carry explicit
+  no-lineage state. This is the minimum compatibility bridge, not a companion/share writer or proof
+  of both parents' full audible traits. A premium parent-voice blend still requires its own versioned
+  bounded parent-audio projection and later product/evidence decision.
+- ★ **D-IMPORT-1 — bounded collection/genome reconstruction kernel implemented (2026-08-26).** The
+  importer clones before the lifted mutating genome hardener, contains irreparable Compendium rows,
+  normalizes unsafe numeric traits while retaining every valid unwrapped `size`, and proves honest and
+  large sizes as import/export fixed points. Duplicate-prone conquest, biosphere, wave, technology,
+  binder and Charter carriers rebuild through their original Map/Set semantics before DTO projection,
+  including first/last-write and insertion-order controls. This closes the named importer seam, not
+  real-save Gate C, later extension/writer migrations or the broad player-facing import promise.
 - ★ **D-CONTRACT-1 — handwritten declarations are executable contracts, not comments (updated
   2026-08-15).** The specifically audited SurveyPhrases, PlanetGen, SpeciesTraits, CombatCore and
   WorldGen surfaces match runtime. WorldGen now exposes the required own
@@ -1857,9 +1866,9 @@ duplicates).
   `supernovaSites`'s second argument as the deterministic epoch key rather than a desired count.
   Its facade documents that a first uncached ordinary generated-galaxy branch still requires
   `GAL_SPRITES` installation. That warning closes DOM-3's missing-contract finding; it does not
-  remove the free-global seam or make the package standalone. This closes only WorldGen's `.web`
-  half of DOM-11: `_sanitizeSavedGenome` mutation semantics remain open under D-STRAYS/D-IMPORT,
-  and other declaration corners remain separately listed. Contract tests exercise the real APIs,
+  remove the free-global seam or make the package standalone. The later D-IMPORT-1 kernel closes
+  DOM-11's `_sanitizeSavedGenome` clone-before-mutation/size semantics; other declaration corners
+  remain separately listed. Contract tests exercise the real APIs,
   and `npm run typecheck` includes the app configuration that first exposed the drift.
 - ★ **D-AUDIO-INIT — the exported sting seam is inert until its owner initializes it
   (2026-08-15).** The lifted sting bodies read the application-owned `ac` binding before their own
