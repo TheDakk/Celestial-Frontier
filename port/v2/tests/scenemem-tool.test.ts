@@ -4,15 +4,28 @@ import { isDeepStrictEqual } from 'node:util';
 import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import {
+  SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA,
+  SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE,
+  SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT,
+  SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT_SHA256,
+  SCENE_MEMORY_BROWSER_PROFILE_CONTRACT,
+  SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256,
+  sceneMemoryBrowserAuthorityMatches,
+  sceneMemoryBrowserCapabilityInventoryErrors,
   reportBrowserAuthorityErrors,
   terminalOutcomeInventoryErrors,
   terminalPassEvidenceErrors,
+  terminalProfileEvidenceErrors,
   terminalSourceAuthorityErrors,
   verifyReport,
 } from '../tools/scenemem.mjs';
 
 const collectorSource = readFileSync(
   fileURLToPath(new URL('../tools/scenemem.mjs', import.meta.url)),
+  'utf8',
+);
+const browserCdpSource = readFileSync(
+  fileURLToPath(new URL('../tools/browsercdp.mjs', import.meta.url)),
   'utf8',
 );
 const RETAINED_REPORT_FILES = [
@@ -179,22 +192,97 @@ function buildGraphAuthorityBindingErrors(source: string): string[] {
 
 describe('scene-memory terminal verifier', () => {
   const browserAuthority = Object.freeze({
-    product: 'Edg/151.0.0.0',
-    revision: '@revision',
-    jsVersion: '15.1',
+    schema: SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA,
+    scope: SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE,
+    family: 'microsoft-edge',
+    protocolVersion: '1.3',
+    capabilityContract: SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT,
+    capabilityContractSha256: SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT_SHA256,
+    profileContract: SCENE_MEMORY_BROWSER_PROFILE_CONTRACT,
+    profileContractSha256: SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256,
+  });
+  const browserProvenance = Object.freeze({
+    executable: '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+    product: 'Edg/151.0.4129.101',
+    revision: '@revision-101',
+    userAgent: 'Mozilla/5.0 HeadlessChrome/151.0.0.0 Edg/151.0.0.0',
+    jsVersion: '15.1.23.9',
     protocolVersion: '1.3',
   });
 
-  it('requires the terminal report to carry the exact budget browser tuple', () => {
-    expect(reportBrowserAuthorityErrors({ ...browserAuthority }, browserAuthority)).toEqual([]);
+  it('accepts Edge point-version drift under one capability/profile authority', () => {
+    for (const [product, revision, jsVersion] of [
+      ['Edg/151.0.4129.101', '@revision-101', '15.1.23.9'],
+      ['Edg/151.0.4129.107', '@revision-107', '15.1.23.12'],
+      ['Edg/999.8.7.6', '@future-revision', '99.8.7'],
+    ]) {
+      const observed = { ...browserProvenance, product, revision, jsVersion };
+      expect(sceneMemoryBrowserAuthorityMatches(observed, browserAuthority), product).toBe(true);
+      expect(reportBrowserAuthorityErrors(observed, browserAuthority), product).toEqual([]);
+    }
   });
 
-  it('negative control: deleting the report browser cannot skip budget binding', () => {
+  it('negative controls: wrong family, protocol, and incomplete provenance cannot bind', () => {
     expect(reportBrowserAuthorityErrors(null, browserAuthority)).toEqual([
       'terminal report browser authority is missing',
     ]);
-    expect(reportBrowserAuthorityErrors({ ...browserAuthority, revision: '@other' }, browserAuthority))
-      .toEqual(['terminal report browser authority does not match the budget']);
+    expect(reportBrowserAuthorityErrors({
+      ...browserProvenance, product: 'Chrome/151.0.4129.107',
+    }, browserAuthority)).toEqual([
+      'terminal report browser family is not Microsoft Edge',
+    ]);
+    expect(reportBrowserAuthorityErrors({
+      ...browserProvenance, protocolVersion: '1.2',
+    }, browserAuthority)).toEqual([
+      'terminal report browser protocol does not match the SceneMemory contract',
+    ]);
+    for (const field of ['executable', 'revision', 'userAgent', 'jsVersion'] as const) {
+      const incomplete = { ...browserProvenance, [field]: '' };
+      expect(reportBrowserAuthorityErrors(incomplete, browserAuthority), field).toEqual([
+        'terminal report browser authority is incomplete',
+      ]);
+    }
+    expect(reportBrowserAuthorityErrors({
+      ...browserProvenance, executable: 'relative/msedge',
+    }, browserAuthority)).toEqual([
+      'terminal report browser authority is incomplete',
+    ]);
+  });
+
+  it('binds every required CDP domain and capability to the collector', () => {
+    expect(sceneMemoryBrowserCapabilityInventoryErrors({
+      collectorSource, browserCdpSource,
+    })).toEqual([]);
+  });
+
+  it('negative control: a missing capability or provenance command turns the inventory red', () => {
+    const missingMemory = collectorSource.replace(
+      "send('Memory.getDOMCounters'",
+      "send('Memory.getDOMCountersMissing'",
+    );
+    expect(missingMemory).not.toBe(collectorSource);
+    expect(sceneMemoryBrowserCapabilityInventoryErrors({
+      collectorSource: missingMemory, browserCdpSource,
+    })).toContain('SceneMemory collector capability inventory is missing Memory.getDOMCounters');
+    const missingVersion = browserCdpSource.replace("send('Browser.getVersion')", "send('Browser.versionMissing')");
+    expect(missingVersion).not.toBe(browserCdpSource);
+    expect(sceneMemoryBrowserCapabilityInventoryErrors({
+      collectorSource, browserCdpSource: missingVersion,
+    })).toContain('SceneMemory browser transport lacks Browser.getVersion provenance');
+  });
+
+  it('negative control: a swapped or drifted device profile cannot verify', () => {
+    const report = structuredClone(retainedReports()[0]!);
+    expect(terminalProfileEvidenceErrors(report.profiles)).toEqual([]);
+    report.profiles.phone.viewport.dpr = 2;
+    expect(terminalProfileEvidenceErrors(report.profiles)).toContain(
+      'phone terminal profile evidence is incomplete, mismatched, or red',
+    );
+    report.profiles.phone.viewport.dpr = 3;
+    report.profiles.desktop.profile = 'phone';
+    expect(terminalProfileEvidenceErrors(report.profiles)).toContain(
+      'desktop terminal profile evidence is incomplete, mismatched, or red',
+    );
   });
 
   it('requires exact empty fatal-event and finding inventories for PASS', () => {

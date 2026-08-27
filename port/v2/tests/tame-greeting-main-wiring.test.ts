@@ -339,8 +339,10 @@ describe('Arc 7/8 Tame greeting — Main wiring', () => {
 
     const preDisposeSnapshot = replaceExact(
       mainSource,
-      '    try { await audioOwner?.dispose(); }',
-      '    try { audioRelease = audioOwner?.diagnostics() ?? null; await audioOwner?.dispose(); }',
+      `    const audioReleaseErrors: string[] = [];
+    try { await audioOwner?.dispose(); }`,
+      `    const audioReleaseErrors: string[] = [];
+    try { audioRelease = audioOwner?.diagnostics() ?? null; await audioOwner?.dispose(); }`,
     );
     expect(tameGreetingWiringErrors(preDisposeSnapshot, controllerSource))
       .toContain('replacement-release-order');

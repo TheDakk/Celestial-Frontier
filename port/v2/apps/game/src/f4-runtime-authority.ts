@@ -89,6 +89,11 @@ export interface F4RuntimeDiagnostics {
 export type F4RuntimeHeartbeatOutcome =
   | { readonly kind: 'owned'; readonly heartbeat: number }
   | { readonly kind: 'held-by-other'; readonly remainingMs: number }
+  | {
+      readonly kind: 'storage-error';
+      readonly operation: 'acquire' | 'renew';
+      readonly message: string;
+    }
   | { readonly kind: 'lost' };
 
 export type F4RuntimeCommitOutcome =
@@ -338,7 +343,22 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
     if (!visible) {
       return { kind: 'lost' };
     }
-    const outcome = grant === null ? await lease.acquire() : await lease.renew();
+    const operation = grant === null ? 'acquire' : 'renew';
+    let outcome: Awaited<ReturnType<TabLeaseClient['acquire'] | TabLeaseClient['renew']>>;
+    try {
+      outcome = operation === 'acquire' ? await lease.acquire() : await lease.renew();
+    } catch (error) {
+      /* Storage failure makes the durable lease state unknowable. Revoke the
+         local grant synchronously so neither active-play nor any caller can
+         continue under authority that was not re-proven. A later explicit
+         heartbeat may reacquire; this owner never retries by itself. */
+      clearGrant(true);
+      return Object.freeze({
+        kind: 'storage-error',
+        operation,
+        message: error instanceof Error ? error.message : String(error),
+      });
+    }
     if (outcome.kind === 'acquired' || outcome.kind === 'renewed') {
       /* A hide/release call can synchronously revoke eligibility while the
          storage request is pending. Do not publish that late grant; release

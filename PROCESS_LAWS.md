@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-25. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-27. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -1439,6 +1439,22 @@ workflows, the preflight selftest now statically requires each unique owned inst
 ordered URL/SHA/download/hash → reinstall → version/executable verification → following preflight
 chain. Its controls reject removal from either workflow and outside-step decoys. The control is green
 and proves workflow configuration only; the next one-attempt browser run still owned the outcome.
+
+**Correction earned by the 2026-08-27 whole-diff audit: an exact package must not take ownership
+of the runner's shared system browser.** Reinstalling or downgrading the sealed Compendium Edge
+package through apt can mutate the executable inherited by another ruler and makes later provenance
+depend on package-manager state. The current workflows SHA-verify the exact `.101` deb, verify its
+embedded package name and version, and extract those bytes into a fresh owner-named directory under
+`RUNNER_TEMP` with `dpkg-deb`; they never install the package. The job remains Chrome-owned, while
+Compendium preflight, certification and named verification each declare the exact extracted
+`CF_BROWSER` path directly. SceneMemory keeps its separate version-tolerant current-package
+extraction. Static controls reject apt installation, missing extraction, wrong URL/hash/package/
+version/root, missing or system-browser step pins, softened owners and broken extract → preflight →
+certificate → verifier order. They also bind the certification step's exact ID and the named
+verifier's executable condition, so renaming the producer ID or disabling the verifier cannot turn
+an unverified run green. Exact runtime version/revision/JavaScript/path/UA remain per-run
+provenance under the existing version-tolerant Edge-family/CDP authority; isolation changes no
+numeric ceiling, launch deadline, retry policy or rebaseline rule.
 
 That next exact local run was `20260820-pr32-89bfa05-compendiummem` at `89bfa05…`: it completed
 78/78 outcomes with zero findings and six PNGs, then owned shutdown exited 2. Its terminal log

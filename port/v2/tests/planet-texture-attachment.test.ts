@@ -106,6 +106,8 @@ class Fixture {
   acquireFailuresRemaining = 0;
   compactCalls = 0;
   onResource: (() => void) | null = null;
+  throwBackingTextureIdOnce: string | null = null;
+  readonly backingOverrides = new Map<string, Readonly<{ width: number; height: number }>>();
 
   addSuccessor(id: string, texture = fakeTexture(id, 768)): FakeLease {
     const lease = new FakeLease(texture);
@@ -135,7 +137,14 @@ class Fixture {
         if (!lease) throw new Error('fixture has no successor lease');
         return lease;
       },
-      textureBackingSize: (texture) => ({ width: texture.width, height: texture.height }),
+      textureBackingSize: (texture) => {
+        if (this.throwBackingTextureIdOnce === texture.id) {
+          this.throwBackingTextureIdOnce = null;
+          throw new Error(`injected backing reader failure: ${texture.id}`);
+        }
+        return this.backingOverrides.get(texture.id)
+          ?? { width: texture.width, height: texture.height };
+      },
       compact: () => { this.compactCalls++; },
       refreshDelayMs: 31,
       scheduler: this.scheduler,
@@ -226,6 +235,77 @@ describe('surface planet texture attachment', () => {
     expect(fixture.target.texture).toBe(retrySuccessor.texture);
     expect(fixture.initialLease.releaseCalls).toBe(1);
     expect(attachment.snapshot().currentTierPx).toBe(768);
+  });
+
+  it('releases a successor when its backing reader throws and retries the same tier', () => {
+    const fixture = new Fixture();
+    const failedSuccessor = fixture.addSuccessor('hd-backing-throws');
+    const retrySuccessor = fixture.addSuccessor('hd-backing-retry');
+    fixture.throwBackingTextureIdOnce = failedSuccessor.texture.id;
+    const attachment = fixture.make();
+
+    expect(attachment.requestDemand(700)).toBe(true);
+    expect(() => fixture.scheduler.runNext()).toThrow('injected backing reader failure');
+    expect(failedSuccessor.releaseCalls).toBe(1);
+    expect(fixture.initialLease.releaseCalls).toBe(0);
+    expect(fixture.target.texture).toBe(fixture.initialTexture);
+    expect(attachment.snapshot()).toMatchObject({
+      currentTierPx: 512,
+      requestedTierPx: null,
+      retiredLeaseCount: 0,
+    });
+
+    expect(attachment.requestDemand(700)).toBe(true);
+    fixture.scheduler.runNext();
+    expect(fixture.target.texture).toBe(retrySuccessor.texture);
+    expect(attachment.snapshot().currentTierPx).toBe(768);
+  });
+
+  it('releases zero/invalid backing successors and remains retryable', () => {
+    const fixture = new Fixture();
+    const invalidSuccessor = fixture.addSuccessor('hd-zero-backing');
+    const retrySuccessor = fixture.addSuccessor('hd-valid-backing');
+    fixture.backingOverrides.set(invalidSuccessor.texture.id, { width: 0, height: 768 });
+    const attachment = fixture.make();
+
+    expect(attachment.requestDemand(700)).toBe(true);
+    expect(() => fixture.scheduler.runNext()).toThrow(
+      'surface planet texture backing dimensions are invalid',
+    );
+    expect(invalidSuccessor.releaseCalls).toBe(1);
+    expect(fixture.initialLease.releaseCalls).toBe(0);
+    expect(fixture.target.texture).toBe(fixture.initialTexture);
+
+    expect(attachment.requestDemand(700)).toBe(true);
+    fixture.scheduler.runNext();
+    expect(fixture.target.texture).toBe(retrySuccessor.texture);
+    expect(attachment.snapshot().currentTierPx).toBe(768);
+  });
+
+  it('aggregates backing and cleanup failures, then retries retired cleanup explicitly', () => {
+    const fixture = new Fixture();
+    const failedSuccessor = fixture.addSuccessor('hd-backing-and-release-fail');
+    const retrySuccessor = fixture.addSuccessor('hd-after-cleanup-retry');
+    fixture.throwBackingTextureIdOnce = failedSuccessor.texture.id;
+    failedSuccessor.failuresRemaining = 1;
+    const attachment = fixture.make();
+
+    expect(attachment.requestDemand(700)).toBe(true);
+    expect(() => fixture.scheduler.runNext()).toThrow(
+      'surface planet texture successor validation failed',
+    );
+    expect(failedSuccessor.releaseCalls).toBe(1);
+    expect(attachment.snapshot()).toMatchObject({
+      currentTierPx: 512,
+      requestedTierPx: null,
+      retiredLeaseCount: 1,
+    });
+
+    expect(attachment.requestDemand(700)).toBe(true);
+    expect(failedSuccessor.releaseCalls).toBe(2);
+    fixture.scheduler.runNext();
+    expect(fixture.target.texture).toBe(retrySuccessor.texture);
+    expect(attachment.snapshot()).toMatchObject({ currentTierPx: 768, retiredLeaseCount: 0 });
   });
 
   it('does not claim an HD tier for an undersized same-texture result and remains retryable', () => {

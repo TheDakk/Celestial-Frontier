@@ -445,20 +445,50 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     const {
       ASC_CHAPTERS_DATA, ascStageOf, bankLandfall, canAdvanceV2Chapter, chapterGoalsDone,
       currentObjective, currentV2Objective, projectV2Charter,
+      isSolLandfallAddress,
     } = await import('@cf/scene');
+    const earth = homeWorldAddress();
+    const marsResult = resolveCF1WorldAddress({
+      galaxy: HOME_WORLD_CANDIDATE.galaxy,
+      star: HOME_WORLD_CANDIDATE.star,
+      planet: { seed: 134 },
+    });
+    const venusResult = resolveCF1WorldAddress({
+      galaxy: HOME_WORLD_CANDIDATE.galaxy,
+      star: HOME_WORLD_CANDIDATE.star,
+      planet: { seed: 135 },
+    });
+    const foreignResult = resolveCF1WorldAddress({
+      galaxy: { seed: 2168115821, x: -1104.3939002789557, y: -1400.6738864816725 },
+      star: { seed: 2404948836, x: 79.28673347271979, y: 172.30901278089732 },
+      planet: { seed: 2525295284 },
+    });
+    if (!marsResult.ok || !venusResult.ok || !foreignResult.ok) {
+      throw new Error('Charter landfall fixture failed source proof');
+    }
     const prog: Record<string, number> = {};
     /* a Sol landing at chapter 0 banks c1-land only */
-    expect(bankLandfall(0, prog, 133)).toBe(true);
+    expect(bankLandfall(0, prog, earth)).toBe(true);
     expect(prog['c1-land']).toBe(1);
     expect(prog['c2-land']).toBeUndefined();
     /* a NON-Sol landing at chapter 0 banks the FUTURE chapter's goal silently */
-    expect(bankLandfall(0, prog, 99999)).toBe(true);
+    expect(bankLandfall(0, prog, foreignResult.address)).toBe(true);
     expect(prog['c2-land']).toBe(1);
     expect(prog['c1-land']).toBe(1);   /* sol goal untouched */
+    /* A same-leaf lookalike outside the exact Sol hierarchy is non-Sol at
+       the pure classifier and cannot enter the banking seam without the
+       canonical-address registry. This makes the retired seed-only rule red. */
+    const foreignSameLeaf = {
+      ...foreignResult.address,
+      planet: { seed: 133, ordinal: 2 },
+    } as CanonicalCF1WorldAddress;
+    expect(isSolLandfallAddress(earth)).toBe(true);
+    expect(isSolLandfallAddress(foreignSameLeaf)).toBe(false);
+    expect(bankLandfall(0, {}, foreignSameLeaf)).toBe(false);
     /* capped at n — no overshoot */
-    bankLandfall(0, prog, 134); bankLandfall(0, prog, 135);
+    bankLandfall(0, prog, marsResult.address); bankLandfall(0, prog, venusResult.address);
     expect(prog['c1-land']).toBe(2);
-    expect(bankLandfall(0, { 'c1-land': 2, 'c2-land': 3 }, 131)).toBe(false);
+    expect(bankLandfall(0, { 'c1-land': 2, 'c2-land': 3 }, earth)).toBe(false);
     /* Canonical legacy order is preserved for imported progression/parity,
        even though the live v2 chip must not render that next legacy goal. */
     expect(ASC_CHAPTERS_DATA[0]!.goals.map((goal) => goal.id)).toEqual([
@@ -492,8 +522,8 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
 
     /* Two real Sol landfalls reveal the next exact action without forging
        canonical chapter completion or an unearned reach stage. */
-    expect(bankLandfall(0, fresh, 133)).toBe(true);
-    expect(bankLandfall(0, fresh, 134)).toBe(true);
+    expect(bankLandfall(0, fresh, earth)).toBe(true);
+    expect(bankLandfall(0, fresh, marsResult.address)).toBe(true);
     const boundary = projectV2Charter(0, fresh, ascStageOf([], 0))!;
     expect(boundary.state).toBe('actionable');
     expect(boundary.goals.map((goal) => goal.id)).toEqual([
@@ -521,7 +551,7 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(canAdvanceV2Chapter(0, importedComplete, poweredCompleteStage)).toBe(true);
     expect(projectV2Charter(0, importedComplete, poweredCompleteStage)!.state).toBe('complete');
     const saturatedSolRecord = { ...importedComplete };
-    expect(bankLandfall(0, saturatedSolRecord, 133)).toBe(false);
+    expect(bankLandfall(0, saturatedSolRecord, earth)).toBe(false);
     /* An ascCh alone is never reach. The safe default hides the Chapter 2
        non-Sol goal; actual saved Jump Drive stage makes it visible. */
     const malformedChapterTwoStage = ascStageOf([], 1);
@@ -537,7 +567,9 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     ]);
   });
   it('banks exact mined-action and fixed-fabrication filters into later chapters with caps', async () => {
-    const { bankFixedFabrication, bankMinedAction } = await import('@cf/scene');
+    const {
+      bankFixedFabrication, bankMinedAction, isSolDeadWorldAddress,
+    } = await import('@cf/scene');
     const marsResult = resolveCF1WorldAddress({
       galaxy: { seed: 999, x: 90, y: -60 },
       star: { seed: 424242, x: 560, y: 170 },
@@ -549,6 +581,28 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
       planet: { seed: 2525295284 },
     });
     if (!marsResult.ok || !foreignResult.ok) throw new Error('Charter address fixture failed');
+    expect(isSolDeadWorldAddress(marsResult.address)).toBe(true);
+    /* Directional collision controls retain every seed while changing one
+       omitted hierarchy component at a time. The old three-seed shortcut
+       accepted all three even though none is the exact Sol source. */
+    const wrongGalaxyCoordinate = {
+      ...marsResult.address,
+      galaxy: { ...marsResult.address.galaxy, x: marsResult.address.galaxy.x + 0.01 },
+    } as CanonicalCF1WorldAddress;
+    const wrongStarCoordinate = {
+      ...marsResult.address,
+      star: { ...marsResult.address.star, y: marsResult.address.star.y + 0.01 },
+    } as CanonicalCF1WorldAddress;
+    const wrongPlanetOrdinal = {
+      ...marsResult.address,
+      planet: { ...marsResult.address.planet, ordinal: marsResult.address.planet.ordinal + 1 },
+    } as CanonicalCF1WorldAddress;
+    expect(isSolDeadWorldAddress(wrongGalaxyCoordinate)).toBe(false);
+    expect(isSolDeadWorldAddress(wrongStarCoordinate)).toBe(false);
+    expect(isSolDeadWorldAddress(wrongPlanetOrdinal)).toBe(false);
+    expect(bankMinedAction(0, {}, wrongGalaxyCoordinate)).toBe(false);
+    expect(bankMinedAction(0, {}, wrongStarCoordinate)).toBe(false);
+    expect(bankMinedAction(0, {}, wrongPlanetOrdinal)).toBe(false);
     const prog: Record<string, number> = {};
     expect(bankMinedAction(0, prog, marsResult.address)).toBe(true);
     expect(prog).toMatchObject({ 'c1-mine': 1, 'c3-mine': 1 });
@@ -589,7 +643,7 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     for (const invalid of invalidChapters) {
       const prog = { ...complete };
       const before = JSON.stringify(prog);
-      expect(bankLandfall(invalid, prog, 133), `invalid ascCh ${String(invalid)}`).toBe(false);
+      expect(bankLandfall(invalid, prog, homeWorldAddress()), `invalid ascCh ${String(invalid)}`).toBe(false);
       expect(JSON.stringify(prog), `invalid ascCh ${String(invalid)} mutated progress`).toBe(before);
       if (invalid !== ASC_CHAPTER_COUNT) expect(projectV2Charter(invalid, prog, 3)).toBeNull();
     }

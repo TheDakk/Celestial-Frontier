@@ -41,6 +41,13 @@ import {
   type OwnershipStateV1,
   type OwnershipStateV2,
 } from '@cf/domain-acquisition';
+import {
+  canonicalCF1WorldAddressFromNav,
+  resolveCF1WorldAddress,
+  resolveCF1WorldAtlasId,
+  resolveViewToNav,
+} from '@cf/scene';
+import { HOME_GAL_SEED, HOME_POS, SOL_POS, SOL_SEED } from '@cf/domain-worldconfig';
 
 const DIRECT_STAT_KEYS = [
   'shares', 'jumps', 'anomalies', 'events', 'duels', 'duelwins',
@@ -59,6 +66,8 @@ export interface LegacyTrainingRestoreInput {
   readonly epoch: number;
   /** Source-proven public compatibility view for Earth; never checkpoint data. */
   readonly canonicalEarthView: Record<string, unknown>;
+  /** Composite Atlas id minted from that independently proven Earth address. */
+  readonly canonicalEarthAtlasId: string;
   /** Source-proven view to publish after Training completes. */
   readonly completionView: Record<string, unknown> | null;
 }
@@ -415,6 +424,19 @@ function checkpointEarthHistory(
 export function buildLegacyTrainingRestoreCandidate(
   input: LegacyTrainingRestoreInput,
 ): LegacyTrainingRestoreResult {
+  const canonicalEarth = resolveCF1WorldAddress({
+    galaxy: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y },
+    star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },
+    planet: { seed: 133 },
+  });
+  const idAddress = resolveCF1WorldAtlasId(input.canonicalEarthAtlasId);
+  const viewRoute = resolveViewToNav(input.canonicalEarthView);
+  const viewAddress = viewRoute.ok && viewRoute.state.mode === 'surface'
+    ? canonicalCF1WorldAddressFromNav(viewRoute.state) : null;
+  if (!canonicalEarth.ok || !idAddress.ok || !viewAddress?.ok
+    || idAddress.address.key !== canonicalEarth.address.key
+    || idAddress.address.key !== viewAddress.address.key
+  ) return { ok: false };
   const imported = importSaveV2(
     JSON.stringify(checkpointRaw(input.current, input.checkpoint, input.now)),
     input.registry,
@@ -424,14 +446,19 @@ export function buildLegacyTrainingRestoreCandidate(
 
   const sanitizedEarth = imported.state.logMap.find(([id]) => id === 'p133')?.[1];
   const history = checkpointEarthHistory(input.checkpoint, sanitizedEarth);
-  const oldEarthIndex = input.current.logMap.findIndex(([id]) => id === 'p133');
-  const liveEarth = oldEarthIndex >= 0 ? input.current.logMap[oldEarthIndex]![1] : undefined;
+  const isEarthId = (id: string): boolean => (
+    id === 'p133' || id === input.canonicalEarthAtlasId
+  );
+  const oldEarthIndex = input.current.logMap.findIndex(([id]) => isEarthId(id));
+  const exactEarth = input.current.logMap.find(([id]) => id === input.canonicalEarthAtlasId)?.[1];
+  const legacyEarth = input.current.logMap.find(([id]) => id === 'p133')?.[1];
+  const liveEarth = exactEarth ?? legacyEarth;
   const earthEntry: Record<string, unknown> = {
     ...(liveEarth || sanitizedEarth || {
-      id: 'p133', title: 'Earth', sub: 'Terran World', thumb: null,
+      id: input.canonicalEarthAtlasId, title: 'Earth', sub: 'Terran World', thumb: null,
       sq: false, badge: 'Home', fav: false, t: input.now,
     }),
-    id: 'p133',
+    id: input.canonicalEarthAtlasId,
     title: (liveEarth?.title || sanitizedEarth?.title || history.title || 'Earth'),
     sub: history.sub || liveEarth?.sub || sanitizedEarth?.sub || 'Terran World',
     badge: history.badge || liveEarth?.badge || sanitizedEarth?.badge || 'Home',
@@ -442,20 +469,21 @@ export function buildLegacyTrainingRestoreCandidate(
       : history.t,
     where: input.canonicalEarthView,
   };
-  const logMap = input.current.logMap.slice();
-  if (oldEarthIndex >= 0) logMap[oldEarthIndex] = ['p133', earthEntry];
-  else logMap.push(['p133', earthEntry]);
+  const logMap = input.current.logMap.filter(([id]) => !isEarthId(id));
+  if (oldEarthIndex >= 0) {
+    logMap.splice(Math.min(oldEarthIndex, logMap.length), 0, [input.canonicalEarthAtlasId, earthEntry]);
+  } else logMap.push([input.canonicalEarthAtlasId, earthEntry]);
   if (logMap.length > 120) {
     /* The ordinary exporter keeps the 120 newest rows. A veteran's genuine
        Earth history can be older than 120 later discoveries, yet D-TRAIN's
-       checkpoint explicitly owns that home row. Reserve one slot for p133
+       checkpoint explicitly owns that home row. Reserve one slot for Earth
        without changing its historical timestamp, then keep the newest 119. */
     const newestOtherRows = logMap
-      .filter(([id]) => id !== 'p133')
+      .filter(([id]) => id !== input.canonicalEarthAtlasId)
       .sort(([, left], [, right]) => Number(right.t || 0) - Number(left.t || 0))
       .slice(0, 119);
     logMap.length = 0;
-    logMap.push(...newestOtherRows, ['p133', earthEntry]);
+    logMap.push(...newestOtherRows, [input.canonicalEarthAtlasId, earthEntry]);
   }
 
   const state: SaveStateV2 = {
@@ -484,7 +512,7 @@ export function buildLegacyTrainingRestoreCandidate(
     equip: imported.state.equip,
     equipAff: imported.state.equipAff,
     logMap,
-    homeId: 'p133',
+    homeId: input.canonicalEarthAtlasId,
     savedView: input.completionView,
     tutDone: true,
     tutSnapPending: null,

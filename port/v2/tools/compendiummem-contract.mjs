@@ -65,6 +65,12 @@ export const COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA =
 export const COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS = Object.freeze([
   'index', 'owner', 'worker', 'painter',
 ]);
+export const COMPENDIUM_FIXED_RULER_AUTHORITY_SCHEMA =
+  'cf-v2-compendium-fixed-ruler-authority/v1';
+export const COMPENDIUM_FIXED_RULER_CALIBRATION_STATUS = 'sealed-exact-input';
+export const COMPENDIUM_FIXED_RULER_CEILING_SCOPE = 'numeric-ceilings-only';
+export const COMPENDIUM_CURRENT_CERTIFICATION_REQUIREMENT =
+  'fresh-exact-producer-required';
 export const CANDIDATE_CDP_TIMEOUT_SCHEMA = 'cf-v2-compendium-cdp-timeout/v1';
 export const CANDIDATE_COMMAND_SCHEMA = 'cf-v2-compendium-candidate-command/v1';
 export const PLAIN_EVALUATE_COMMAND_SCHEMA = 'cf-v2-compendium-plain-evaluate-command/v1';
@@ -251,6 +257,21 @@ function validProducerAuthority(value) {
     || COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS.some((key) =>
       !validProducerAuthorityPart(value.inputs[key], key))) return false;
   return value.sha256 === sha256(JSON.stringify(value.inputs));
+}
+
+export function validCompendiumFixedRulerAuthority(value) {
+  return isObject(value)
+    && exactKeys(value, [
+      'schema', 'calibrationStatus', 'ceilingScope',
+      'measurementAuthoritySha256', 'producerAuthoritySha256',
+      'currentCertification',
+    ], 'calibration.rulerAuthority', [])
+    && value.schema === COMPENDIUM_FIXED_RULER_AUTHORITY_SCHEMA
+    && value.calibrationStatus === COMPENDIUM_FIXED_RULER_CALIBRATION_STATUS
+    && value.ceilingScope === COMPENDIUM_FIXED_RULER_CEILING_SCOPE
+    && /^[a-f0-9]{64}$/.test(String(value.measurementAuthoritySha256 || ''))
+    && /^[a-f0-9]{64}$/.test(String(value.producerAuthoritySha256 || ''))
+    && value.currentCertification === COMPENDIUM_CURRENT_CERTIFICATION_REQUIREMENT;
 }
 
 const COMPENDIUM_BROWSER_AUTHORITY_FIELDS = Object.freeze([
@@ -2490,12 +2511,13 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
     || !record.calibration.selectionRule.trim()
     || typeof record.calibration.headroomRationaleRequired !== 'boolean'
     || record.calibration.headroomRationaleRequired !== true
+    || !validCompendiumFixedRulerAuthority(record.calibration.rulerAuthority)
     || !isObject(record.calibration.samples)) {
     errors.push('calibration workflow is incomplete');
   } else {
     exactKeys(record.calibration, [
       'requiredIndependentRunsPerProfile', 'selectionRule',
-      'headroomRationaleRequired', 'samples',
+      'headroomRationaleRequired', 'rulerAuthority', 'samples',
     ], 'calibration', errors);
     exactKeys(record.calibration.samples, PROFILES, 'calibration.samples', errors);
     for (const profile of PROFILES) {
@@ -2512,12 +2534,12 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
       null, record.fixture?.rowsSha256 || null);
     enforceSameRunBrowserProvenance(record.calibration.samples, 'candidate calibration', errors);
     if (allCandidateSamples.some((sample) => sample.measurementAuthoritySha256
-      !== record.measurementAuthority?.sha256)) {
-      errors.push('candidate calibration samples do not match the budget measurement authority');
+      !== record.calibration.rulerAuthority.measurementAuthoritySha256)) {
+      errors.push('candidate calibration samples do not match the fixed ruler measurement authority');
     }
     if (allCandidateSamples.some((sample) => sample.producerAuthoritySha256
-      !== record.producerAuthority?.sha256)) {
-      errors.push('candidate calibration samples do not match the budget producer authority');
+      !== record.calibration.rulerAuthority.producerAuthoritySha256)) {
+      errors.push('candidate calibration samples do not match the fixed ruler producer authority');
     }
     if (allCandidateSamples.some((sample) =>
       !compendiumBrowserAuthorityMatches(sample?.browser, browserAuthority))) {
@@ -2561,8 +2583,8 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
       record.pairedBrokenBaseline.samples, 'paired broken-baseline', errors,
     );
     if (allBaselineSamples.some((sample) => sample.measurementAuthoritySha256
-      !== record.measurementAuthority?.sha256)) {
-      errors.push('paired broken-baseline samples do not match the budget measurement authority');
+      !== record.calibration?.rulerAuthority?.measurementAuthoritySha256)) {
+      errors.push('paired broken-baseline samples do not match the fixed ruler measurement authority');
     }
     if (allBaselineSamples.some((sample) =>
       !compendiumBrowserAuthorityMatches(sample?.browser, browserAuthority))) {

@@ -55,17 +55,25 @@ export interface StorageBackend {
 
 const PRIMARY = 'save';
 export const V4_BACKUP_KEY = 'save_bak';    /* last-known-good — the SAVE_KEY_bak pattern */
+/* This legacy v4 repository must never mutate backup/primary state after any
+   v5 authority exists. Keep these storage-schema pins local rather than making
+   this base repository import its dependent revision/lease authority layers;
+   revisioned.ts also consumes STORES here and would form an init cycle. */
+const F3_REVISION_KEY = 'f3:revision';
+const F3_ACTIVE_PLAY_LEASE_KEY = 'f3:lease:active-play';
 
 export interface SaveRepository {
   /** Write the authoritative save payload (one atomic transaction). */
   write(payload: string): Promise<void>;
   /** Read the primary payload; undefined = genuinely fresh. */
   readPrimary(): Promise<string | undefined>;
-  /** Call ONLY after a payload has proven it loads — promotes it to backup. */
-  promoteLastKnownGood(payload: string): Promise<void>;
+  /** Call ONLY after a payload has proven it loads. Returns true only when
+      those bytes are still the legacy primary and no v5 authority exists. */
+  promoteLastKnownGood(payload: string): Promise<boolean>;
   /** CF-RR-002 recovery: read and classify the backup, then restore it ONCE
       only when the supplied predicate proves those exact bytes supported.
-      Returns the recovered payload, or undefined when no safe recovery exists. */
+      Returns the recovered payload, or undefined when no safe legacy recovery
+      exists or a competing/v5 authority wins. */
   recover(isSupported: (payload: string) => boolean): Promise<string | undefined>;
   /** The reset law: primary AND backup die together — a reset must not
       resurrect via the backup. Disposable caches go too. */
@@ -111,8 +119,16 @@ export function createSaveRepository(backend: StorageBackend): SaveRepository {
     async readPrimary(): Promise<string | undefined> {
       return backend.get('meta', PRIMARY);
     },
-    async promoteLastKnownGood(payload: string): Promise<void> {
-      await backend.apply([{ store: 'meta', key: V4_BACKUP_KEY, value: payload }]);
+    async promoteLastKnownGood(payload: string): Promise<boolean> {
+      /* Promotion belongs only to the legacy v4 authority. Bind the exact
+         primary bytes that proved loadable and require the revisioned v5
+         authority to be absent in the SAME transaction. A delayed legacy tab
+         therefore cannot reinsert a predecessor after v5 replacement. */
+      return backend.compareAndApply([
+        { store: 'meta', key: PRIMARY, value: payload },
+        { store: 'meta', key: F3_REVISION_KEY, value: undefined },
+        { store: 'meta', key: F3_ACTIVE_PLAY_LEASE_KEY, value: undefined },
+      ], [{ store: 'meta', key: V4_BACKUP_KEY, value: payload }]);
     },
     async recover(isSupported): Promise<string | undefined> {
       const primary = await backend.get('meta', PRIMARY);
@@ -123,8 +139,16 @@ export function createSaveRepository(backend: StorageBackend): SaveRepository {
          before any write: corrupt/future backup data must never destroy the
          invalid primary whose evidence the caller is protecting. */
       if (!isSupported(bak)) return undefined;
-      await backend.apply([{ store: 'meta', key: PRIMARY, value: bak }]);
-      return bak;
+      /* Bind every byte observed above and exclude the revisioned v5 authority
+         atomically. A newer primary, changed backup, or completed v5
+         replacement makes recovery lose cleanly instead of rolling it back. */
+      const recovered = await backend.compareAndApply([
+        { store: 'meta', key: PRIMARY, value: primary },
+        { store: 'meta', key: V4_BACKUP_KEY, value: bak },
+        { store: 'meta', key: F3_REVISION_KEY, value: undefined },
+        { store: 'meta', key: F3_ACTIVE_PLAY_LEASE_KEY, value: undefined },
+      ], [{ store: 'meta', key: PRIMARY, value: bak }]);
+      return recovered ? bak : undefined;
     },
     async reset(): Promise<void> {
       /* One canonical list owns both schema creation and wipe coverage. A

@@ -43,7 +43,7 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
       text: () => 'Welcome to <b>Sol</b>, ' + esc(deps.explorerName() || 'Explorer') + ' — humanity’s cradle and your first charter. The order asks one thing of every new Pathfinder first: <b>Field Training</b>.<br>It’s all real practice, and nothing you lose in training follows you out.',
     },
     {
-      id: 'find-earth', allow: ['#cosmos'],
+      id: 'find-earth', allow: ['#cosmos', '#survey [data-survey-close]'],
       text: () => 'First, find home. <b>Drag and zoom to Earth</b> — the blue world, third from the Sun — and <b>tap it</b> to open its survey card.',
       when: (t, d) => t === 'survey' && d.planetSeed === 133,
     },
@@ -234,6 +234,23 @@ function clearAllow(): void {
   restoreLocks();
   allowedRoots = [];
 }
+/** Rebind the current lesson after its owning surface replaces DOM nodes.
+ * Survey legitimately rebuilds its action row after reopen, chart, and Land;
+ * stale node identities must not turn those fresh controls into an escape
+ * from the lesson's pointer and keyboard scope. */
+export function refreshTrainingScope(): boolean {
+  if (!trainingActive() || finishing) return false;
+  const st = steps[stepIdx]!;
+  const active = document.activeElement instanceof HTMLElement
+    ? document.activeElement : null;
+  const activeWasOwned = active !== null && active.isConnected
+    && inTrainingScope(active);
+  applyAllow(st);
+  placeSpot();
+  if (!activeWasOwned || active === null || !active.isConnected
+    || !inTrainingScope(active)) queueLessonFocus(st);
+  return true;
+}
 function lockElement(el: HTMLElement, opacity: number): void {
   if (!locked.has(el)) {
     locked.set(el, {
@@ -326,8 +343,17 @@ function retainLessonSurface(st: TutStep): void {
      retention check. If another same-turn action hid the card, ask its
      existing dock event to reopen the last valid survey instead of mutating
      card state here and bypassing main.ts's navigation guards. */
-  if (st.id !== 'survey-tour' && st.id !== 'atlas-add' && st.id !== 'land') return;
   const survey = document.querySelector<HTMLElement>('#survey');
+  if (st.id === 'find-earth') {
+    /* A wrong-world survey is a valid exploration outcome, but it must not
+       become a modal dead end. Invoke the card's one real Close owner; its
+       delegated handler preserves Sol and returns focus to the canvas. */
+    const close = survey?.querySelector<HTMLElement>('[data-survey-close]');
+    if (survey && close && visible(survey)
+      && survey.getAttribute('aria-hidden') !== 'true' && visible(close)) close.click();
+    return;
+  }
+  if (st.id !== 'survey-tour' && st.id !== 'atlas-add' && st.id !== 'land') return;
   if (survey && visible(survey) && survey.getAttribute('aria-hidden') !== 'true') return;
   document.getElementById('docksurvey')?.dispatchEvent(new MouseEvent('click', {
     bubbles: true,

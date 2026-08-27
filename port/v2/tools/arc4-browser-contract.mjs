@@ -3620,7 +3620,7 @@ const tameGreetingAudioVirgin = (observation) => {
     && audio.claimedEvents === 0 && audio.activeVoiceId === null
     && audio.lastEventKey === null && audio.counterpart.status === 'none'
     && runtime.state === 'blocked' && runtime.contextState === null
-    && runtime.contextGeneration === 0 && runtime.muted === true
+    && runtime.contextGeneration === 0
     && runtime.nodes.active === 0 && runtime.voices.active === 0
     && runtime.voices.started === 0 && runtime.voices.ids.length === 0
     && runtime.creatureEmitters.active === 0;
@@ -3933,6 +3933,111 @@ export const assessArc4TameGreetingAudio = ({
     counterpartKey: startedAudio?.counterpart?.key ?? null,
   });
 };
+
+export const assessArc4EpochSnapshot = ({
+  before, precommit, committed, stored, reloaded,
+} = {}) => {
+  const checks = {
+    beforeEpoch: Number.isSafeInteger(before) && before >= 0,
+    precommitPrivate: record(precommit) && precommit.epoch === before,
+    precommitPublicationPrivate: precommit?.publishedEpoch === before,
+    precommitCandidateStaged: precommit?.candidateEpoch === before + 1,
+    precommitEdgeDue: precommit?.edgeDue === true,
+    committedEpoch: committed?.epoch === before + 1,
+    committedPublished: committed?.publishedEpoch === before + 1,
+    committedCandidate: committed?.candidateEpoch === before + 1,
+    committedEdgeSettled: committed?.edgeDue === false,
+    storedCommitted: stored === committed?.epoch,
+    reloadedCommitted: reloaded === committed?.epoch,
+  };
+  return assessment('Arc 4 epoch snapshot', checks);
+};
+
+const arc4EpochSnapshotSelftest = Object.freeze({
+  before: 0,
+  precommit: Object.freeze({
+    epoch: 0, publishedEpoch: 0, candidateEpoch: 1, edgeDue: true,
+  }),
+  committed: Object.freeze({
+    epoch: 1, publishedEpoch: 1, candidateEpoch: 1, edgeDue: false,
+  }),
+  stored: 1,
+  reloaded: 1,
+});
+const arc4EpochSnapshotSelftestFailures = (snapshot) => Object.entries(
+  assessArc4EpochSnapshot(snapshot).checks,
+).filter(([, value]) => value !== true).map(([name]) => name);
+const arc4EpochSnapshotSelftestVariant = (mutate) => {
+  const next = structuredClone(arc4EpochSnapshotSelftest);
+  mutate(next);
+  return arc4EpochSnapshotSelftestFailures(next);
+};
+const arc4EpochSnapshotSelftestControls = Object.freeze({
+  negativeBefore: Object.freeze({
+    expected: Object.freeze(['beforeEpoch']),
+    result: arc4EpochSnapshotSelftestVariant((next) => {
+      next.before = -1;
+      next.precommit.epoch = -1;
+      next.precommit.publishedEpoch = -1;
+      next.precommit.candidateEpoch = 0;
+      next.committed.epoch = 0;
+      next.committed.publishedEpoch = 0;
+      next.committed.candidateEpoch = 0;
+      next.stored = 0;
+      next.reloaded = 0;
+    }),
+  }),
+  optimisticPrecommit: Object.freeze({
+    expected: Object.freeze(['precommitPrivate']),
+    result: arc4EpochSnapshotSelftestVariant((next) => { next.precommit.epoch = 1; }),
+  }),
+  optimisticPublication: Object.freeze({
+    expected: Object.freeze(['precommitPublicationPrivate']),
+    result: arc4EpochSnapshotSelftestVariant((next) => { next.precommit.publishedEpoch = 1; }),
+  }),
+  missingCandidate: Object.freeze({
+    expected: Object.freeze(['precommitCandidateStaged']),
+    result: arc4EpochSnapshotSelftestVariant((next) => { next.precommit.candidateEpoch = 0; }),
+  }),
+  earlyEdgeClear: Object.freeze({
+    expected: Object.freeze(['precommitEdgeDue']),
+    result: arc4EpochSnapshotSelftestVariant((next) => { next.precommit.edgeDue = false; }),
+  }),
+  withheldCommit: Object.freeze({
+    expected: Object.freeze(['committedEpoch']),
+    result: arc4EpochSnapshotSelftestVariant((next) => {
+      next.committed.epoch = 0;
+      next.stored = 0;
+      next.reloaded = 0;
+    }),
+  }),
+  withheldPublication: Object.freeze({
+    expected: Object.freeze(['committedPublished']),
+    result: arc4EpochSnapshotSelftestVariant((next) => { next.committed.publishedEpoch = 0; }),
+  }),
+  staleCommittedCandidate: Object.freeze({
+    expected: Object.freeze(['committedCandidate']),
+    result: arc4EpochSnapshotSelftestVariant((next) => { next.committed.candidateEpoch = 0; }),
+  }),
+  unclearedCommittedEdge: Object.freeze({
+    expected: Object.freeze(['committedEdgeSettled']),
+    result: arc4EpochSnapshotSelftestVariant((next) => { next.committed.edgeDue = true; }),
+  }),
+  storedBase: Object.freeze({
+    expected: Object.freeze(['storedCommitted']),
+    result: arc4EpochSnapshotSelftestVariant((next) => { next.stored = 0; }),
+  }),
+  reloadedBase: Object.freeze({
+    expected: Object.freeze(['reloadedCommitted']),
+    result: arc4EpochSnapshotSelftestVariant((next) => { next.reloaded = 0; }),
+  }),
+});
+if (!assessArc4EpochSnapshot(arc4EpochSnapshotSelftest).ok
+  || Object.values(arc4EpochSnapshotSelftestControls).some(
+    ({ expected, result }) => !same(expected, result),
+  )) {
+  throw new Error('Arc 4 epoch snapshot contract selftest failed');
+}
 
 export const assessArc4PublicationConvergence = ({
   before, committed, beforeState, beforeUi, pendingUi, oldState, oldUi,
@@ -6095,7 +6200,7 @@ const tameGreetingBeforeObservationSelftest = {
   audio: tameGreetingAudioSelftest({
     runtime: tameGreetingRuntimeSelftest({
       state: 'blocked', contextState: null, contextGeneration: 0,
-      muted: true, nodesActive: 0, nodesPeak: 0,
+      muted: false, nodesActive: 0, nodesPeak: 0,
     }),
   }),
 };
@@ -6243,6 +6348,12 @@ const tameGreetingAudioMutationSelftests = Object.freeze({
       bundle.diagnosticRead.audio.runtime.contextGeneration = 1;
     }),
   }),
+  diagnosticReadContextState: Object.freeze({
+    expected: Object.freeze(['diagnosticReadNoContext']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.diagnosticRead.audio.runtime.contextState = 'suspended';
+    }),
+  }),
   silentArm: Object.freeze({
     expected: Object.freeze(['silentArm']),
     result: tameGreetingAudioMutationSelftest((bundle) => {
@@ -6277,6 +6388,12 @@ const tameGreetingAudioMutationSelftests = Object.freeze({
     expected: Object.freeze(['reloadNoReplay']),
     result: tameGreetingAudioMutationSelftest((bundle) => {
       bundle.reloaded.result = structuredClone(bundle.started.result);
+    }),
+  }),
+  reloadCreatedContext: Object.freeze({
+    expected: Object.freeze(['reloadNoReplay']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.reloaded.audio.runtime.contextGeneration = 1;
     }),
   }),
   freshFixtureIsolation: Object.freeze({

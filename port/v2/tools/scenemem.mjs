@@ -77,7 +77,16 @@ const sceneTextPath = path.join(appDir, 'src', 'scene-text.ts');
 
 const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v2';
 const LIFECYCLE_SCHEMA = 'cf-v2-scene-memory-report-lifecycle/v1';
-const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v2';
+const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v3';
+export const SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA =
+  'cf-v2-scene-memory-browser-authority/v2';
+export const SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE = 'arc1c-scene-memory-only';
+export const SCENE_MEMORY_BROWSER_FAMILY = 'microsoft-edge';
+export const SCENE_MEMORY_BROWSER_PROTOCOL_VERSION = '1.3';
+export const SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT =
+  'cf-v2-scene-memory-cdp-capabilities/v1';
+export const SCENE_MEMORY_BROWSER_PROFILE_CONTRACT =
+  'cf-v2-scene-memory-browser-profiles/v1';
 const WARMUP_CYCLES = 4;
 const WARM_CYCLES = SCENE_MEMORY_CYCLE_COUNT;
 const OUTCOME_COUNT = 42;
@@ -107,8 +116,37 @@ const BUDGET_FIELDS = Object.freeze([
   'ringCacheEntriesMax', 'peakRingGeometryEntriesMax',
   'targetElapsedMsMax', 'heartbeatElapsedMsMax',
 ]);
+export const SCENE_MEMORY_REQUIRED_CDP_DOMAINS = Object.freeze([
+  'Browser', 'Emulation', 'HeapProfiler', 'Log', 'Memory', 'Page', 'Runtime', 'Target',
+]);
+export const SCENE_MEMORY_REQUIRED_CDP_METHODS = Object.freeze([
+  'Browser.getVersion',
+  'Emulation.setDeviceMetricsOverride',
+  'Emulation.setTouchEmulationEnabled',
+  'HeapProfiler.collectGarbage',
+  'HeapProfiler.enable',
+  'Log.enable',
+  'Memory.getDOMCounters',
+  'Page.enable',
+  'Page.getNavigationHistory',
+  'Page.navigate',
+  'Page.navigateToHistoryEntry',
+  'Runtime.enable',
+  'Runtime.evaluate',
+  'Runtime.getHeapUsage',
+  'Target.attachToTarget',
+  'Target.closeTarget',
+  'Target.createBrowserContext',
+  'Target.createTarget',
+  'Target.disposeBrowserContext',
+]);
 const BROWSER_AUTHORITY_FIELDS = Object.freeze([
-  'product', 'revision', 'jsVersion', 'protocolVersion',
+  'schema', 'scope', 'family', 'protocolVersion',
+  'capabilityContract', 'capabilityContractSha256',
+  'profileContract', 'profileContractSha256',
+]);
+const BROWSER_PROVENANCE_FIELDS = Object.freeze([
+  'executable', 'product', 'revision', 'userAgent', 'jsVersion', 'protocolVersion',
 ]);
 const PRODUCER_AUTHORITY_FIELDS = Object.freeze([
   'collector', 'browserCdp', 'browserPath', 'workspaceLock', 'fixtureGenerator',
@@ -138,6 +176,24 @@ const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const hashFile = (file) => sha256(fs.readFileSync(file));
 const portable = (value) => value.split(path.sep).join('/');
 const same = (left, right) => stableJson(left) === stableJson(right);
+const absoluteExecutable = (value) => typeof value === 'string' && value.length > 0
+  && (value.startsWith('/') || /^[A-Za-z]:[\\/]/.test(value));
+const EDGE_PRODUCT = /^Edg\/(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/;
+export const SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT_SHA256 = sha256(stableJson({
+  requiredDomains: SCENE_MEMORY_REQUIRED_CDP_DOMAINS,
+  requiredMethods: SCENE_MEMORY_REQUIRED_CDP_METHODS,
+}));
+export const SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256 = sha256(stableJson(PROFILES));
+const EXPECTED_BROWSER_AUTHORITY = Object.freeze({
+  schema: SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA,
+  scope: SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE,
+  family: SCENE_MEMORY_BROWSER_FAMILY,
+  protocolVersion: SCENE_MEMORY_BROWSER_PROTOCOL_VERSION,
+  capabilityContract: SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT,
+  capabilityContractSha256: SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT_SHA256,
+  profileContract: SCENE_MEMORY_BROWSER_PROFILE_CONTRACT,
+  profileContractSha256: SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256,
+});
 
 export function terminalOutcomeInventoryErrors(outcomes, canonicalOutcomes = null) {
   const errors = [];
@@ -307,7 +363,72 @@ function parseArgs(argv) {
   return Object.freeze(options);
 }
 
-function validateBudget(record) {
+export function validSceneMemoryBrowserAuthority(authority) {
+  return authority !== null && typeof authority === 'object' && !Array.isArray(authority)
+    && same(Object.keys(authority).sort(), [...BROWSER_AUTHORITY_FIELDS].sort())
+    && same(authority, EXPECTED_BROWSER_AUTHORITY);
+}
+
+function validBrowserProvenance(browser) {
+  return browser !== null && typeof browser === 'object' && !Array.isArray(browser)
+    && BROWSER_PROVENANCE_FIELDS.every((field) =>
+      typeof browser[field] === 'string' && browser[field].length > 0)
+    && absoluteExecutable(browser.executable);
+}
+
+/** Version-tolerant Arc 1C browser authority. Exact executable, Edge build,
+ * revision, user agent and JavaScript version remain mandatory report
+ * provenance, while only family/protocol/capability/profile compatibility
+ * binds the reusable ruler. */
+export function sceneMemoryBrowserAuthority(browser) {
+  if (!validBrowserProvenance(browser)
+    || !EDGE_PRODUCT.test(browser.product)
+    || browser.protocolVersion !== SCENE_MEMORY_BROWSER_PROTOCOL_VERSION) return null;
+  return EXPECTED_BROWSER_AUTHORITY;
+}
+
+export function sceneMemoryBrowserAuthorityMatches(browser, authority) {
+  const observed = sceneMemoryBrowserAuthority(browser);
+  return observed !== null && validSceneMemoryBrowserAuthority(authority)
+    && same(observed, authority);
+}
+
+export function sceneMemoryBrowserCapabilityInventoryErrors({
+  collectorSource, browserCdpSource,
+} = {}) {
+  if (typeof collectorSource !== 'string' || typeof browserCdpSource !== 'string') {
+    return ['SceneMemory browser capability inventory sources are unavailable'];
+  }
+  const domains = SCENE_MEMORY_REQUIRED_CDP_DOMAINS.join('|');
+  const directMethodPattern = new RegExp(`send\\(\\s*["']((${domains})\\.[A-Za-z]+)["']`, 'g');
+  const enableBlock = /for \(const method of \[([\s\S]*?)\]\) \{/.exec(collectorSource)?.[1] ?? '';
+  const enableMethodPattern = new RegExp(`["']((${domains})\\.[A-Za-z]+)["']`, 'g');
+  const actualMethods = [...new Set(
+    [
+      ...[...collectorSource.matchAll(directMethodPattern)].map((match) => match[1]),
+      ...[...enableBlock.matchAll(enableMethodPattern)].map((match) => match[1]),
+    ],
+  )].sort();
+  const expectedMethods = [...SCENE_MEMORY_REQUIRED_CDP_METHODS].sort();
+  const errors = [];
+  if (!same(actualMethods, expectedMethods)) {
+    const missing = expectedMethods.filter((method) => !actualMethods.includes(method));
+    const extra = actualMethods.filter((method) => !expectedMethods.includes(method));
+    if (missing.length) errors.push(`SceneMemory collector capability inventory is missing ${missing.join(', ')}`);
+    if (extra.length) errors.push(`SceneMemory collector capability inventory has unsealed ${extra.join(', ')}`);
+  }
+  const actualDomains = [...new Set(actualMethods.map((method) => method.split('.')[0]))].sort();
+  const expectedDomains = [...SCENE_MEMORY_REQUIRED_CDP_DOMAINS].sort();
+  if (!same(actualDomains, expectedDomains)) {
+    errors.push('SceneMemory collector CDP domain inventory does not match its authority');
+  }
+  if (!/const version = await send\(["']Browser\.getVersion["']\);/.test(browserCdpSource)) {
+    errors.push('SceneMemory browser transport lacks Browser.getVersion provenance');
+  }
+  return errors;
+}
+
+export function validateSceneMemoryBudget(record) {
   const errors = [];
   if (!record || typeof record !== 'object' || Array.isArray(record)) {
     return { ok: false, errors: ['budget must be an object'] };
@@ -321,10 +442,8 @@ function validateBudget(record) {
   if (!same(Object.keys(record.authority || {}).sort(), ['browser', 'producer'])) {
     errors.push('budget authority must be exactly browser and producer');
   }
-  if (!same(Object.keys(browserAuthority || {}).sort(), [...BROWSER_AUTHORITY_FIELDS].sort())
-    || BROWSER_AUTHORITY_FIELDS.some((field) =>
-      typeof browserAuthority?.[field] !== 'string' || !browserAuthority[field])) {
-    errors.push('budget browser authority must contain the exact nonempty canonical tuple');
+  if (!validSceneMemoryBrowserAuthority(browserAuthority)) {
+    errors.push('budget browser authority must contain the exact Edge-family capability/profile contract');
   }
   if (!same(Object.keys(producerAuthority || {}).sort(), [...PRODUCER_AUTHORITY_FIELDS].sort())
     || PRODUCER_AUTHORITY_FIELDS.some((field) => !/^[a-f0-9]{64}$/.test(
@@ -365,15 +484,16 @@ export function reportBrowserAuthorityErrors(browser, expectedBrowserAuthority) 
   if (!browser || typeof browser !== 'object' || Array.isArray(browser)) {
     return ['terminal report browser authority is missing'];
   }
-  const actual = Object.fromEntries(
-    BROWSER_AUTHORITY_FIELDS.map((field) => [field, browser[field]]),
-  );
-  if (BROWSER_AUTHORITY_FIELDS.some((field) =>
-    typeof actual[field] !== 'string' || !actual[field])) {
+  if (!validBrowserProvenance(browser)) {
     return ['terminal report browser authority is incomplete'];
   }
-  return same(actual, expectedBrowserAuthority)
-    ? []
+  if (!EDGE_PRODUCT.test(browser.product)) {
+    return ['terminal report browser family is not Microsoft Edge'];
+  }
+  if (browser.protocolVersion !== SCENE_MEMORY_BROWSER_PROTOCOL_VERSION) {
+    return ['terminal report browser protocol does not match the SceneMemory contract'];
+  }
+  return sceneMemoryBrowserAuthorityMatches(browser, expectedBrowserAuthority) ? []
     : ['terminal report browser authority does not match the budget'];
 }
 
@@ -1274,7 +1394,7 @@ async function runGate(options) {
     if (options.budgetFile) {
       authoritativeBudgetFile = assertBudgetAuthority(options.budgetFile);
       budget = readJson(authoritativeBudgetFile);
-      const validation = validateBudget(budget);
+      const validation = validateSceneMemoryBudget(budget);
       assert(validation.ok, `scene memory budget invalid: ${validation.errors.join('; ')}`);
       /* The imported contract is also the only semantic validator for a
          budget. Empty measurements intentionally yield a red verdict but
@@ -1446,6 +1566,28 @@ async function runGate(options) {
   return provisionalExitCode;
 }
 
+export function terminalProfileEvidenceErrors(profiles) {
+  const errors = [];
+  const profileKeys = Object.keys(profiles || {}).sort();
+  if (!same(profileKeys, Object.keys(PROFILES).sort())) {
+    errors.push('phone/desktop profile inventory is incomplete');
+  }
+  for (const profile of Object.keys(PROFILES)) {
+    const measurement = profiles?.[profile];
+    if (!measurement || measurement.profile !== profile
+      || !same(measurement.viewport, PROFILES[profile])
+      || !measurement.precondition
+      || !Array.isArray(measurement.measured) || measurement.measured.length !== WARM_CYCLES
+      || !Array.isArray(measurement.cycles) || measurement.cycles.length !== WARM_CYCLES
+      || !measurement.bfcache
+      || !Array.isArray(measurement.routeInventories)
+      || measurement.routeInventories.length !== WARMUP_CYCLES + WARM_CYCLES) {
+      errors.push(`${profile} terminal profile evidence is incomplete, mismatched, or red`);
+    }
+  }
+  return errors;
+}
+
 function verifyReport(report, expectedRunId, options) {
   const errors = [];
   let authoritativeBudgetFile = null;
@@ -1462,20 +1604,7 @@ function verifyReport(report, expectedRunId, options) {
   if (!same(report?.cleanup, { browser: true, server: true, workspaceLock: true })) {
     errors.push('terminal cleanup is incomplete');
   }
-  const profileKeys = Object.keys(report?.profiles || {}).sort();
-  if (!same(profileKeys, Object.keys(PROFILES).sort())) errors.push('phone/desktop profile inventory is incomplete');
-  for (const profile of Object.keys(PROFILES)) {
-    const measurement = report?.profiles?.[profile];
-    if (!measurement || measurement.profile !== profile
-      || !measurement.precondition
-      || !Array.isArray(measurement.measured) || measurement.measured.length !== WARM_CYCLES
-      || !Array.isArray(measurement.cycles) || measurement.cycles.length !== WARM_CYCLES
-      || !measurement.bfcache
-      || !Array.isArray(measurement.routeInventories)
-      || measurement.routeInventories.length !== WARMUP_CYCLES + WARM_CYCLES) {
-      errors.push(`${profile} terminal profile evidence is incomplete or red`);
-    }
-  }
+  errors.push(...terminalProfileEvidenceErrors(report?.profiles));
   errors.push(...terminalOutcomeInventoryErrors(report?.outcomes));
   errors.push(...terminalPassEvidenceErrors(report?.fatalEvents, report?.findings));
   if (report?.certification !== 'contract-budget') {
@@ -1486,7 +1615,7 @@ function verifyReport(report, expectedRunId, options) {
     try {
       authoritativeBudgetFile = assertBudgetAuthority(options.budgetFile);
       const currentBudget = readJson(authoritativeBudgetFile);
-      const validation = validateBudget(currentBudget);
+      const validation = validateSceneMemoryBudget(currentBudget);
       if (!validation.ok) errors.push(...validation.errors);
       const expectedReportBudget = {
         schema: BUDGET_SCHEMA,

@@ -9,6 +9,7 @@ import {
   createMemoryBackend,
   createRevisionedRepository,
   createTabLeaseClient,
+  F3_ACTIVE_PLAY_LEASE_KEY,
   F4_AUTHORITY_NAMESPACE,
   migrateStoredV4ToV5,
   prepareArc2LootLegacyMigration,
@@ -195,6 +196,93 @@ describe('F4 runtime authority join', () => {
     await expect(runtime.setVisible(true)).resolves.toMatchObject({ kind: 'owned' });
     time.advance(25);
     expect(runtime.diagnostics().activePlayMs).toBe(75);
+  });
+
+  it('fails closed when initial lease acquisition storage rejects, then reacquires only on an explicit heartbeat', async () => {
+    const { backend: base, loaded } = await migrated();
+    let rejectLeaseRead = true;
+    const backend: StorageBackend = {
+      ...base,
+      async get(store, key) {
+        if (rejectLeaseRead && store === 'meta' && key === F3_ACTIVE_PLAY_LEASE_KEY) {
+          throw new Error('injected lease acquire rejection');
+        }
+        return base.get(store, key);
+      },
+    };
+    const time = controlledClock(100);
+    const runtime = createF4RuntimeAuthority({
+      backend, repository: createRevisionedRepository(backend), registry: REGISTRY,
+      initialRevision: 0, initialExtensions: loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 7, ownerId: 'tab-a', token: 'token-a', leaseTtlMs: 100,
+      now: time.now, visible: true, answerable: true,
+    });
+
+    time.advance(40);
+    await expect(runtime.heartbeat()).resolves.toEqual({
+      kind: 'storage-error',
+      operation: 'acquire',
+      message: 'injected lease acquire rejection',
+    });
+    time.advance(5_000);
+    expect(runtime.diagnostics()).toMatchObject({
+      activePlayMs: 0,
+      accruing: false,
+      leaseOwned: false,
+      leaseHeartbeat: null,
+      leaseLosses: 0,
+    });
+    await expect(runtime.commit(loaded.state, NOW)).resolves.toEqual({ kind: 'lease-unavailable' });
+
+    rejectLeaseRead = false;
+    await expect(runtime.heartbeat()).resolves.toEqual({ kind: 'owned', heartbeat: 0 });
+    time.advance(25);
+    expect(runtime.diagnostics()).toMatchObject({ activePlayMs: 25, accruing: true, leaseOwned: true });
+  });
+
+  it('revokes lease and accrual immediately when renewal storage rejects', async () => {
+    const { backend: base, loaded } = await migrated();
+    let rejectLeaseRead = false;
+    const backend: StorageBackend = {
+      ...base,
+      async get(store, key) {
+        if (rejectLeaseRead && store === 'meta' && key === F3_ACTIVE_PLAY_LEASE_KEY) {
+          throw new Error('injected lease renew rejection');
+        }
+        return base.get(store, key);
+      },
+    };
+    const time = controlledClock();
+    const runtime = createF4RuntimeAuthority({
+      backend, repository: createRevisionedRepository(backend), registry: REGISTRY,
+      initialRevision: 0, initialExtensions: loaded.extensions, restoredAuthority: null,
+      freshSessionSeed: 8, ownerId: 'tab-a', token: 'token-a', leaseTtlMs: 100,
+      now: time.now, visible: true, answerable: true,
+    });
+
+    await expect(runtime.heartbeat()).resolves.toEqual({ kind: 'owned', heartbeat: 0 });
+    time.advance(40);
+    rejectLeaseRead = true;
+    await expect(runtime.heartbeat()).resolves.toEqual({
+      kind: 'storage-error',
+      operation: 'renew',
+      message: 'injected lease renew rejection',
+    });
+    expect(runtime.diagnostics()).toMatchObject({
+      activePlayMs: 40,
+      accruing: false,
+      leaseOwned: false,
+      leaseHeartbeat: null,
+      leaseLosses: 1,
+    });
+    time.advance(5_000);
+    expect(runtime.diagnostics()).toMatchObject({ activePlayMs: 40, accruing: false, leaseOwned: false });
+    await expect(runtime.commit(loaded.state, NOW)).resolves.toEqual({ kind: 'lease-unavailable' });
+
+    rejectLeaseRead = false;
+    await expect(runtime.heartbeat()).resolves.toEqual({ kind: 'owned', heartbeat: 1 });
+    time.advance(25);
+    expect(runtime.diagnostics()).toMatchObject({ activePlayMs: 65, accruing: true, leaseOwned: true });
   });
 
   it('fails closed after a stale writer without silently rebasing or retrying', async () => {

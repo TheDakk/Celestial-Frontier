@@ -66,11 +66,12 @@
     "calibration": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["requiredIndependentRunsPerProfile", "selectionRule", "headroomRationaleRequired", "samples"],
+      "required": ["requiredIndependentRunsPerProfile", "selectionRule", "headroomRationaleRequired", "rulerAuthority", "samples"],
       "properties": {
         "requiredIndependentRunsPerProfile": { "const": 3 },
         "selectionRule": { "type": "string", "minLength": 1 },
         "headroomRationaleRequired": { "const": true },
+        "rulerAuthority": { "$ref": "#/$defs/fixedRulerAuthority" },
         "samples": {
           "type": "object",
           "additionalProperties": false,
@@ -220,6 +221,19 @@
             "painter": { "$ref": "#/$defs/producerPart" }
           }
         }
+      }
+    },
+    "fixedRulerAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "calibrationStatus", "ceilingScope", "measurementAuthoritySha256", "producerAuthoritySha256", "currentCertification"],
+      "properties": {
+        "schema": { "const": "cf-v2-compendium-fixed-ruler-authority/v1" },
+        "calibrationStatus": { "const": "sealed-exact-input" },
+        "ceilingScope": { "const": "numeric-ceilings-only" },
+        "measurementAuthoritySha256": { "$ref": "#/$defs/sha256" },
+        "producerAuthoritySha256": { "$ref": "#/$defs/sha256" },
+        "currentCertification": { "const": "fresh-exact-producer-required" }
       }
     },
     "brokenFault": {

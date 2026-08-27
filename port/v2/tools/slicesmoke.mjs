@@ -73,6 +73,7 @@ import {
   assessArc4CommittedHit,
   assessArc4CommittedMiss,
   assessArc4DurableEvidence,
+  assessArc4EpochSnapshot,
   assessArc4Exhaustion,
   assessArc4PublicationConvergence,
   assessArc4StaleConvergence,
@@ -83,6 +84,7 @@ import {
 } from './arc4-browser-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
+const OUTCOME_CONTROLS_ONLY = process.argv.includes('--outcome-controls-only');
 /* Direct runs own the checkout lock. The structured-report wrapper owns one
    longer lease through child execution, screenshot hashing and report write;
    only that direct child may inherit it, after token/PID validation. */
@@ -115,6 +117,8 @@ const decodeCF1Payload = (code) => {
     return null;
   }
 };
+const encodeCF1Payload = (payload) => 'CF1-' + Buffer.from(JSON.stringify(payload))
+  .toString('base64url').replace(/=+$/g, '');
 const withCodeName = (code, name) => {
   const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
   payload.n = name;
@@ -185,6 +189,48 @@ const HOME_GALAXY = Object.freeze({ seed: 999, x: 90, y: -60 });
 const SOL_STAR = Object.freeze({ seed: 424242, x: 560, y: 170 });
 const MERCURY = Object.freeze({ seed: 131, ordinal: 0 });
 const EARTH = Object.freeze({ seed: 133, ordinal: 2 });
+/* A source-generated, max-reach collision in universe cell (-20,-1). Both
+   coarse stars independently resolve beneath the same dwarf galaxy, but the
+   generator's star-seed collision gives them the same five planet seeds.
+   The first world therefore shares both its star and planet leaf seeds with
+   the second while retaining a distinct canonical parent coordinate/key. */
+const COLLISION_REACH_GALAXY = Object.freeze({
+  seed: 350410949, x: -7896.51, y: -370.06,
+  size: 13.58, sp: 12, tilt: 0.63, rot: 3.39, flags: 4,
+});
+const COLLISION_REACH_WORLDS = Object.freeze([
+  Object.freeze({
+    name: 'Twin Reach Alpha',
+    star: Object.freeze({ seed: 127200472, x: -119.83, y: 75.99 }),
+    planet: Object.freeze({ seed: 1349616177, ordinal: 0 }),
+    key: 'CF1|g:350410949@-7896.51,-370.06|s:127200472@-119.83,75.99|p:1349616177#0',
+  }),
+  Object.freeze({
+    name: 'Twin Reach Beta',
+    star: Object.freeze({ seed: 127200472, x: 167.56, y: -36.82 }),
+    planet: Object.freeze({ seed: 1349616177, ordinal: 0 }),
+    key: 'CF1|g:350410949@-7896.51,-370.06|s:127200472@167.56,-36.82|p:1349616177#0',
+  }),
+]);
+const collisionReachCode = (world, named) => encodeCF1Payload({
+  t: 'p',
+  g: [
+    COLLISION_REACH_GALAXY.x, COLLISION_REACH_GALAXY.y,
+    COLLISION_REACH_GALAXY.size, COLLISION_REACH_GALAXY.sp,
+    COLLISION_REACH_GALAXY.tilt, COLLISION_REACH_GALAXY.rot,
+    COLLISION_REACH_GALAXY.seed, COLLISION_REACH_GALAXY.flags,
+  ],
+  s: [world.star.x, world.star.y, world.star.seed],
+  p: world.planet.seed,
+  ...(named ? { n: world.name } : {}),
+});
+const COLLISION_REACH_CODES = Object.freeze(COLLISION_REACH_WORLDS.map((world) => Object.freeze({
+  named: collisionReachCode(world, true),
+  bare: collisionReachCode(world, false),
+})));
+const COLLISION_SIGNATURE_IDS = Object.freeze([
+  'stone', 'flame', 'sky', 'star', 'ocean', 'mind', 'life', 'void', 'prism',
+]);
 /* A source-generated galaxy in universe cell (1,-4). Its 1,297.6-unit home
    distance is beyond the zero-Signature 880-unit Solar Reach; unlike the
    former 1e7 tuple, the live resolver must prove this real destination before
@@ -216,6 +262,33 @@ const SAVE_FIXTURES = JSON.parse(fs.readFileSync(
   path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8',
 )).inputs;
 const VETERAN_RAW = JSON.stringify(SAVE_FIXTURES.veteran_rich);
+const COLLISION_REACH_RAW = (() => {
+  const save = JSON.parse(VETERAN_RAW);
+  const signature = structuredClone(save.prime?.stone);
+  if (!signature || COLLISION_SIGNATURE_IDS.length !== 9) {
+    throw new Error('collision reach fixture lost its canonical Signature source');
+  }
+  save.me = 'Collision Identity Gate';
+  save.items = [
+    ...save.items.filter(([id]) => !['jumpdrive', 'array', 'igdrive'].includes(id)),
+    ['igdrive', 1],
+  ];
+  save.prime = Object.fromEntries(COLLISION_SIGNATURE_IDS.map((id) => [id, structuredClone(signature)]));
+  save.names = [];
+  save.land = [];
+  save.log = [];
+  save.home = null;
+  save.tut = 1;
+  delete save.tsnap;
+  return JSON.stringify(save);
+})();
+if (Math.hypot(COLLISION_REACH_GALAXY.x - HOME_GALAXY.x,
+  COLLISION_REACH_GALAXY.y - HOME_GALAXY.y) > 8000
+  || COLLISION_REACH_WORLDS[0].key === COLLISION_REACH_WORLDS[1].key
+  || COLLISION_REACH_WORLDS[0].star.seed !== COLLISION_REACH_WORLDS[1].star.seed
+  || COLLISION_REACH_WORLDS[0].planet.seed !== COLLISION_REACH_WORLDS[1].planet.seed) {
+  throw new Error('collision reach fixture lost its source-proven max-reach identity');
+}
 const RARITY_COMPENDIUM_SPECS = Object.freeze([
   Object.freeze({ id: 'rarity-summit-alpha', tier: 10, expected: 'Transcendent' }),
   Object.freeze({ id: 'rarity-summit-beta', tier: 12, expected: 'Transcendent' }),
@@ -665,6 +738,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
+const V2_DRAFT_BULLET_COUNT = 55;
 const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save — nothing was stored.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -866,6 +940,15 @@ const URL7 = 'http://127.0.0.1:' + server7.address().port + '/';   /* isolated h
 const server8 = http.createServer(serveDist);
 await new Promise((r) => server8.listen(0, '127.0.0.1', r));
 const URL8 = 'http://127.0.0.1:' + server8.address().port + '/';   /* isolated Arc 2 carrier-bootstrap refusal */
+const server9 = http.createServer(serveDist);
+await new Promise((r) => server9.listen(0, '127.0.0.1', r));
+const URL9 = 'http://127.0.0.1:' + server9.address().port + '/';   /* isolated collision-world identity outcome */
+const server10 = http.createServer(serveDist);
+await new Promise((r) => server10.listen(0, '127.0.0.1', r));
+const URL10 = 'http://127.0.0.1:' + server10.address().port + '/'; /* isolated heartbeat storage-failure convergence */
+const server11 = http.createServer(serveDist);
+await new Promise((r) => server11.listen(0, '127.0.0.1', r));
+const URL11 = 'http://127.0.0.1:' + server11.address().port + '/'; /* isolated revision-read failure convergence */
 
 const events = [];
 let browser;
@@ -878,6 +961,7 @@ try {
   });
 } catch (error) {
   server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server6.close(); server7.close(); server8.close();
+  server9.close(); server10.close(); server11.close();
   throw error;
 }
 const send = browser.send;
@@ -1176,6 +1260,86 @@ const shareCharterSnapshot = (state) => ({
 const sameShareCharterSnapshot = (before, after) => (
   canonicalJson(before) === canonicalJson(after)
 );
+const collisionShareMatches = (code, world) => {
+  const payload = decodeCF1Payload(code);
+  return payload?.t === 'p'
+    && Array.isArray(payload.g)
+    && payload.g[0] === COLLISION_REACH_GALAXY.x
+    && payload.g[1] === COLLISION_REACH_GALAXY.y
+    && payload.g[6] === COLLISION_REACH_GALAXY.seed
+    && Array.isArray(payload.s)
+    && payload.s[0] === world.star.x
+    && payload.s[1] === world.star.y
+    && payload.s[2] === world.star.seed
+    && payload.p === world.planet.seed
+    && payload.n === world.name;
+};
+const assessCollisionWorldOutcome = ({
+  setup, baselineRecords, actions, reloaded, atlas, records, atlasTravel, searches,
+}) => {
+  const reasons = [];
+  if (COLLISION_REACH_WORLDS.length !== 2
+    || COLLISION_REACH_WORLDS[0].key === COLLISION_REACH_WORLDS[1].key
+    || COLLISION_REACH_WORLDS[0].star.seed !== COLLISION_REACH_WORLDS[1].star.seed
+    || COLLISION_REACH_WORLDS[0].planet.seed !== COLLISION_REACH_WORLDS[1].planet.seed) {
+    reasons.push('source collision fixture');
+  }
+  const exactReach = (state) => state?.stage === 3 && state?.reach === 8000
+    && canonicalJson(Object.keys(state?.save?.primeFill ?? {}).sort())
+      === canonicalJson([...COLLISION_SIGNATURE_IDS].sort());
+  if (!exactReach(setup) || setup?.atlasCount !== 0) reasons.push('authorized isolated setup');
+  if (!Array.isArray(actions) || actions.length !== 2) reasons.push('action cardinality');
+  else actions.forEach((action, index) => {
+    const world = COLLISION_REACH_WORLDS[index];
+    const expectedAtlasCount = index + 1;
+    if (action?.searchReceipt?.trusted !== true || action.searchReceipt.key !== 'Enter'
+      || action.search?.mode !== 'system' || action.search?.cardTitle !== world.name
+      || action.search?.star !== world.star.seed || action.search?.starX !== world.star.x
+      || action.search?.starY !== world.star.y
+      || action.search?.planet !== null || action.search?.planetOrdinal !== null
+      || action.search?.navWorldKey !== null) reasons.push(`Search/name ${index}`);
+    if (action?.sharePointer?.trusted !== true || action.sharePointer.act !== 'share'
+      || !collisionShareMatches(action.shareCode, world)) reasons.push(`Share ${index}`);
+    if (action?.addPointer?.trusted !== true || action.addPointer.act !== 'add'
+      || action.afterAdd?.atlasCount !== expectedAtlasCount) reasons.push(`Atlas Add ${index}`);
+    if (action?.landPointer?.trusted !== true || action.landPointer.act !== 'landcta'
+      || action.landed?.mode !== 'surface' || action.landed?.navWorldKey !== world.key
+      || action.landed?.planet !== world.planet.seed
+      || action.landed?.planetOrdinal !== world.planet.ordinal
+      || action.persisted !== true) reasons.push(`Land/persist ${index}`);
+  });
+  if (!exactReach(reloaded) || reloaded?.atlasCount !== 2
+    || reloaded?.save?.landed?.filter((seed) => seed === COLLISION_REACH_WORLDS[0].planet.seed).length !== 1) {
+    reasons.push('reload adoption');
+  }
+  const expectedRows = COLLISION_REACH_WORLDS.map((world) => ({
+    id: `w|${world.key}`, title: world.name, disabled: false,
+  })).sort((left, right) => left.id.localeCompare(right.id));
+  const actualRows = Array.isArray(atlas?.rows)
+    ? [...atlas.rows].sort((left, right) => left.id.localeCompare(right.id)) : null;
+  if (atlas?.count !== 2 || canonicalJson(actualRows) !== canonicalJson(expectedRows)) {
+    reasons.push('distinct Atlas rows');
+  }
+  if (!Number.isSafeInteger(baselineRecords?.worldsLanded)
+    || records?.worldsLanded !== baselineRecords.worldsLanded + 2) reasons.push('distinct landing ledger');
+  if (!Array.isArray(atlasTravel) || atlasTravel.length !== 2
+    || atlasTravel.some((entry, index) => {
+      const world = COLLISION_REACH_WORLDS[index];
+      return entry?.pointer?.trusted !== true || entry.pointer.id !== `w|${world.key}`
+        || entry.state?.mode !== 'system' || entry.state?.cardTitle !== world.name
+        || entry.state?.starX !== world.star.x || entry.state?.starY !== world.star.y;
+    })) reasons.push('Atlas route identity');
+  if (!Array.isArray(searches) || searches.length !== 2
+    || searches.some((entry, index) => {
+      const world = COLLISION_REACH_WORLDS[index];
+      return entry?.searchReceipt?.trusted !== true || entry.searchReceipt.key !== 'Enter'
+        || entry.state?.mode !== 'system' || entry.state?.cardTitle !== world.name
+        || entry.state?.starX !== world.star.x || entry.state?.starY !== world.star.y
+        || entry.sharePointer?.trusted !== true || entry.sharePointer.act !== 'share'
+        || !collisionShareMatches(entry.shareCode, world);
+    })) reasons.push('reload Search/share isolation');
+  return { ok: reasons.length === 0, reasons };
+};
 const exactCountRecord = (pairs) => {
   if (!Array.isArray(pairs)) return null;
   const counts = {};
@@ -3320,14 +3484,181 @@ const assessF4HideFailureRelease = ({ armed, hidden, shown }) => {
     || shown?.persistence?.runtime?.accruing !== true) reasons.push('reacquisition');
   return { ok: reasons.length === 0, reasons };
 };
-const assessReadOnlyBoundary = ({ forced, before, after, rawPreserved }) => {
+const assessF4HeartbeatStorageFailure = ({
+  armed, before, protectedState, settledState, mutation, callbackState,
+  releaseWitness, reloaded, rawBefore, rawReloaded,
+}) => {
   const reasons = [];
+  const runtime = protectedState?.persistence?.runtime;
+  const settledRuntime = settledState?.persistence?.runtime;
+  const audio = protectedState?.audio;
+  if (armed?.hold !== true || armed?.storage !== true
+    || before?.persistence?.heartbeatRunning !== true
+    || before?.persistence?.runtime?.leaseOwned !== true
+    || before?.persistence?.runtime?.answerable !== true
+    || before?.persistence?.runtime?.accruing !== true) reasons.push('writable precondition');
+  if (protectedState?.persistence?.bootKind !== 'transient-protected'
+    || protectedState?.persistence?.hold !== 'transient-read'
+    || protectedState?.persistence?.mutationBlocked !== true
+    || protectedState?.persistence?.convergenceReloadScheduled !== true
+    || protectedState?.persistence?.convergenceReloadHold?.phase !== 'holding'
+    || protectedState?.persistence?.heartbeatRunning !== false
+    || protectedState?.persistence?.heartbeatStorageFault?.schema !== 'cf-v2-f4-heartbeat-storage-fault/v1'
+    || protectedState?.persistence?.heartbeatStorageFault?.context !== 'periodic F4 heartbeat'
+    || protectedState?.persistence?.heartbeatStorageFault?.operation !== 'renew'
+    || !/injected F4 heartbeat lease storage failure/.test(
+      protectedState?.persistence?.heartbeatStorageFault?.message || '',
+    )) reasons.push('diagnosed read-only protection');
+  if (runtime?.leaseOwned !== false || runtime?.answerable !== false || runtime?.accruing !== false
+    || runtime?.leaseHeartbeat !== null || settledRuntime?.activePlayMs !== runtime?.activePlayMs) {
+    reasons.push('stopped accrual/lease');
+  }
+  if (audio?.lastDisposition !== 'unanswerable' || audio?.activeVoiceId !== null
+    || audio?.runtime?.muted !== true || audio?.runtime?.voices?.active !== 0) {
+    reasons.push('stopped audio');
+  }
+  if (mutation?.beforeSound !== mutation?.afterSound
+    || mutation?.countAfter !== mutation?.countBefore + 1
+    || mutation?.witness?.schema !== 'cf-v2-read-only-boundary/v1'
+    || mutation?.witness?.action !== 'click:setsnd' || mutation?.rawPreserved !== true) {
+    reasons.push('real mutation interception');
+  }
+  if (callbackState?.persistence?.leaseReadCount !== protectedState?.persistence?.leaseReadCount
+    || callbackState?.persistence?.runtime?.leaseOwned !== false
+    || callbackState?.persistence?.runtime?.answerable !== false
+    || callbackState?.persistence?.runtime?.accruing !== false
+    || callbackState?.persistence?.heartbeatRunning !== false) reasons.push('no automatic reacquisition');
+  if (releaseWitness?.schema !== 'cf-v2-f4-authority-convergence/v1'
+    || releaseWitness?.status !== 'released' || releaseWitness?.errors?.length !== 0
+    || releaseWitness?.documentToken !== before?.persistence?.documentToken
+    || !/periodic F4 heartbeat: lease renew storage failure/.test(releaseWitness?.detail || '')
+    || releaseWitness?.before?.hold !== 'transient-read'
+    || releaseWitness?.before?.mutationBlocked !== true
+    || releaseWitness?.before?.heartbeatRunning !== false
+    || releaseWitness?.before?.runtime?.leaseOwned !== false
+    || releaseWitness?.before?.runtime?.answerable !== false
+    || releaseWitness?.before?.runtime?.accruing !== false
+    || releaseWitness?.after?.heartbeatRunning !== false
+    || releaseWitness?.after?.leaseReadCount !== releaseWitness?.before?.leaseReadCount
+    || releaseWitness?.after?.runtime?.leaseOwned !== false
+    || releaseWitness?.after?.runtime?.answerable !== false
+    || releaseWitness?.after?.runtime?.accruing !== false
+    || releaseWitness?.after?.audio?.disposed !== true
+    || releaseWitness?.after?.audio?.runtime?.state !== 'disposed'
+    || releaseWitness?.after?.audio?.runtime?.voices?.active !== 0
+    || releaseWitness?.after?.audio?.runtime?.nodes?.active !== 0) reasons.push('read-only convergence release');
+  if (reloaded?.persistence?.documentToken === before?.persistence?.documentToken
+    || reloaded?.persistence?.bootKind !== 'current-v5'
+    || reloaded?.persistence?.hold !== null || reloaded?.persistence?.mutationBlocked !== false
+    || reloaded?.persistence?.runtime?.leaseOwned !== true
+    || reloaded?.persistence?.runtime?.answerable !== true
+    || reloaded?.persistence?.runtime?.accruing !== true
+    || canonicalJson(rawReloaded) !== canonicalJson(rawBefore)) reasons.push('stable successor reload');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessF4RevisionVerificationFailure = ({
+  armed, before, protectedState, settledState, mutation, callbackState,
+  releaseWitness, reloaded, rawBefore, rawReloaded,
+}) => {
+  const reasons = [];
+  const runtime = protectedState?.persistence?.runtime;
+  const settledRuntime = settledState?.persistence?.runtime;
+  const fault = protectedState?.persistence?.revisionVerificationFault;
+  const audio = protectedState?.audio;
+  if (armed?.hold !== true || armed?.revision !== true
+    || before?.persistence?.heartbeatRunning !== true
+    || before?.persistence?.runtime?.leaseOwned !== true
+    || before?.persistence?.runtime?.answerable !== true
+    || before?.persistence?.runtime?.accruing !== true) reasons.push('writable precondition');
+  if (protectedState?.persistence?.bootKind !== 'transient-protected'
+    || protectedState?.persistence?.hold !== 'transient-read'
+    || protectedState?.persistence?.mutationBlocked !== true
+    || protectedState?.persistence?.convergenceReloadScheduled !== true
+    || protectedState?.persistence?.convergenceReloadHold?.phase !== 'holding'
+    || protectedState?.persistence?.heartbeatRunning !== false
+    || fault?.schema !== 'cf-v2-f4-revision-verification-fault/v1'
+    || !/injected F4 revision verification failure/.test(fault?.message || '')
+    || fault?.revisionReadCount !== before?.persistence?.revisionReadCount + 1
+    || protectedState?.persistence?.revisionReadCount !== fault?.revisionReadCount) {
+    reasons.push('diagnosed read-only protection');
+  }
+  if (runtime?.leaseOwned !== true || runtime?.answerable !== false || runtime?.accruing !== false
+    || settledRuntime?.activePlayMs !== runtime?.activePlayMs) reasons.push('stopped accrual/authority');
+  if (audio?.lastDisposition !== 'unanswerable' || audio?.activeVoiceId !== null
+    || audio?.runtime?.muted !== true || audio?.runtime?.voices?.active !== 0) {
+    reasons.push('stopped audio');
+  }
+  if (mutation?.beforeSound !== mutation?.afterSound
+    || mutation?.countAfter !== mutation?.countBefore + 1
+    || mutation?.witness?.schema !== 'cf-v2-read-only-boundary/v1'
+    || mutation?.witness?.action !== 'click:setsnd' || mutation?.rawPreserved !== true) {
+    reasons.push('real mutation interception');
+  }
+  if (callbackState?.persistence?.revisionReadCount !== protectedState?.persistence?.revisionReadCount
+    || callbackState?.persistence?.runtime?.leaseOwned !== true
+    || callbackState?.persistence?.runtime?.answerable !== false
+    || callbackState?.persistence?.runtime?.accruing !== false
+    || callbackState?.persistence?.heartbeatRunning !== false) reasons.push('no automatic reacquisition');
+  if (releaseWitness?.schema !== 'cf-v2-f4-authority-convergence/v1'
+    || releaseWitness?.status !== 'released' || releaseWitness?.errors?.length !== 0
+    || releaseWitness?.documentToken !== before?.persistence?.documentToken
+    || !/revision verification failed \(slice-smoke injected F4 revision verification failure\)/
+      .test(releaseWitness?.detail || '')
+    || releaseWitness?.before?.hold !== 'transient-read'
+    || releaseWitness?.before?.mutationBlocked !== true
+    || releaseWitness?.before?.heartbeatRunning !== false
+    || releaseWitness?.before?.revisionReadCount !== fault?.revisionReadCount
+    || releaseWitness?.before?.runtime?.leaseOwned !== true
+    || releaseWitness?.before?.runtime?.answerable !== false
+    || releaseWitness?.before?.runtime?.accruing !== false
+    || releaseWitness?.after?.heartbeatRunning !== false
+    || releaseWitness?.after?.revisionReadCount !== releaseWitness?.before?.revisionReadCount
+    || releaseWitness?.after?.runtime?.leaseOwned !== false
+    || releaseWitness?.after?.runtime?.answerable !== false
+    || releaseWitness?.after?.runtime?.accruing !== false
+    || releaseWitness?.after?.audio?.disposed !== true
+    || releaseWitness?.after?.audio?.runtime?.state !== 'disposed'
+    || releaseWitness?.after?.audio?.runtime?.voices?.active !== 0
+    || releaseWitness?.after?.audio?.runtime?.nodes?.active !== 0) reasons.push('read-only convergence release');
+  if (reloaded?.persistence?.documentToken === before?.persistence?.documentToken
+    || reloaded?.persistence?.bootKind !== 'current-v5'
+    || reloaded?.persistence?.hold !== null || reloaded?.persistence?.mutationBlocked !== false
+    || reloaded?.persistence?.runtime?.leaseOwned !== true
+    || reloaded?.persistence?.runtime?.answerable !== true
+    || reloaded?.persistence?.runtime?.accruing !== true
+    || canonicalJson(rawReloaded) !== canonicalJson(rawBefore)) reasons.push('stable successor reload');
+  return { ok: reasons.length === 0, reasons };
+};
+const SETTINGS_MUTATION_CASES = Object.freeze([
+  ['sound', 'click:setsnd'],
+  ['volume', 'input:setvol'],
+  ['creature-voices', 'click:setvoice'],
+  ['text-size', 'click:BUTTON'],
+  ['text-tone', 'click:BUTTON'],
+  ['font', 'click:BUTTON'],
+  ['star-charts', 'click:setcharts'],
+  ['motion', 'click:BUTTON'],
+  ['panel-tint', 'input:setglass'],
+]);
+const assessReadOnlyBoundary = ({ writable, forced, before, attempts, after, rawPreserved }) => {
+  const reasons = [];
+  const expectedIds = SETTINGS_MUTATION_CASES.map(([id]) => id);
+  if (JSON.stringify(writable?.map(({ id }) => id)) !== JSON.stringify(expectedIds)
+    || writable?.some(({ before: initial, mutated, restored, persisted, restoredPersisted }) =>
+      JSON.stringify(initial) === JSON.stringify(mutated)
+      || JSON.stringify(initial) !== JSON.stringify(restored)
+      || persisted !== true || restoredPersisted !== true)) reasons.push('writable settings outcomes');
   if (forced !== true || before.persistence.mutationBlocked !== true
     || after.persistence.mutationBlocked !== true) reasons.push('read-only state');
-  if (after.save.sndOn !== before.save.sndOn || rawPreserved !== true) reasons.push('mutation blocked');
-  if (after.persistence.mutationBlockCount !== before.persistence.mutationBlockCount + 1
+  if (JSON.stringify(attempts?.map(({ id }) => id)) !== JSON.stringify(expectedIds)
+    || attempts?.some((attempt, index) => JSON.stringify(attempt.before) !== JSON.stringify(attempt.after)
+      || attempt.countAfter !== attempt.countBefore + 1
+      || attempt.witness?.schema !== 'cf-v2-read-only-boundary/v1'
+      || attempt.witness?.action !== SETTINGS_MUTATION_CASES[index]?.[1])
+    || rawPreserved !== true) reasons.push('all settings mutations blocked');
+  if (after.persistence.mutationBlockCount !== before.persistence.mutationBlockCount + SETTINGS_MUTATION_CASES.length
     || after.persistence.mutationBlockWitness?.schema !== 'cf-v2-read-only-boundary/v1'
-    || !/^click:setsnd$/.test(after.persistence.mutationBlockWitness?.action || '')) reasons.push('boundary witness');
+    || after.persistence.mutationBlockWitness?.action !== SETTINGS_MUTATION_CASES.at(-1)?.[1]) reasons.push('boundary witness');
   if (after.panelOpen !== 'codex' || after.codexCount !== before.codexCount) reasons.push('inspection availability');
   return { ok: reasons.length === 0, reasons };
 };
@@ -3613,6 +3944,7 @@ const navigateToSlice = async (session, url, label) => {
   return waitForSlice(session, label, { previousToken });
 };
 try {
+  if (!OUTCOME_CONTROLS_ONLY) {
   const t = await send('Target.createTarget', { url: 'about:blank' });
   const at = await send('Target.attachToTarget', { targetId: t.targetId, flatten: true });
   const sess = at.sessionId;
@@ -5479,7 +5811,7 @@ try {
     return {title,identity:title.includes('v2.0 · A New Foundation'),
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
       sectionBulletCounts,sectionsPopulated,uniqueBullets,
-      populated:bullets.length===54&&sectionsPopulated&&uniqueBullets
+      populated:bullets.length===${V2_DRAFT_BULLET_COUNT}&&sectionsPopulated&&uniqueBullets
         &&bulletRaw.every((bullet)=>bullet.length>0&&bullet===bullet.trim()),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
       complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
@@ -5500,7 +5832,8 @@ try {
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
   const releaseDraft = await evalIn(releaseDraftCheck);
   if (!releaseDraft.identity || releaseDraft.status !== 'draft'
-    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 54 || !releaseDraft.complete
+    || !releaseDraft.canonical || !releaseDraft.populated
+    || releaseDraft.bulletCount !== V2_DRAFT_BULLET_COUNT || !releaseDraft.complete
     || !releaseDraft.honest || !releaseDraft.authority || releaseDraft.releasePending !== releaseBaseline.releasePending
     || releaseDraft.rnSeen !== releaseBaseline.rnSeen) {
     fails.push('GUIDE v2.0 development bulletin is incomplete or changed shipped-release state: '
@@ -5516,20 +5849,22 @@ try {
     if(!row)return {removed:{populated:true},restored:{populated:false},error:'missing control row'};
     const parent=row.parentNode,next=row.nextSibling;row.remove();const removed=${releaseDraftCheck};
     parent.insertBefore(row,next);const restored=${releaseDraftCheck};return {removed,restored}; })()`);
-  if (releaseInventoryCtl.removed?.populated || releaseInventoryCtl.removed?.bulletCount !== 53
-    || releaseInventoryCtl.restored?.bulletCount !== 54 || !releaseInventoryCtl.restored?.populated
+  if (releaseInventoryCtl.removed?.populated
+    || releaseInventoryCtl.removed?.bulletCount !== V2_DRAFT_BULLET_COUNT - 1
+    || releaseInventoryCtl.restored?.bulletCount !== V2_DRAFT_BULLET_COUNT
+    || !releaseInventoryCtl.restored?.populated
     || !releaseInventoryCtl.restored?.sectionsPopulated || !releaseInventoryCtl.restored?.uniqueBullets) {
-    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet did not produce the exact 53-row incomplete inventory: '
+    fails.push(`GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet did not produce the exact ${V2_DRAFT_BULLET_COUNT - 1}-row incomplete inventory: `
       + JSON.stringify(releaseInventoryCtl));
   }
   const releaseDuplicateCtl = await evalIn(`(()=>{const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
     source=rows[0],target=rows[1];if(!source||!target||source===target)return {duplicate:{populated:true},restored:{populated:false},error:'missing distinct duplicate controls'};
     const prior=target.innerHTML;target.innerHTML=source.innerHTML;const duplicate=${releaseDraftCheck};
     target.innerHTML=prior;const restored=${releaseDraftCheck};return {duplicate,restored};})()`);
-  if (releaseDuplicateCtl.duplicate?.bulletCount !== 54
+  if (releaseDuplicateCtl.duplicate?.bulletCount !== V2_DRAFT_BULLET_COUNT
     || releaseDuplicateCtl.duplicate?.uniqueBullets !== false
     || releaseDuplicateCtl.duplicate?.populated !== false
-    || releaseDuplicateCtl.restored?.bulletCount !== 54
+    || releaseDuplicateCtl.restored?.bulletCount !== V2_DRAFT_BULLET_COUNT
     || releaseDuplicateCtl.restored?.uniqueBullets !== true
     || releaseDuplicateCtl.restored?.populated !== true) {
     fails.push('GUIDE RELEASE DUPLICATE CONTROL FAILED — a constant-count duplicate bullet stayed populated or exact restoration failed: '
@@ -5541,14 +5876,43 @@ try {
     const moved=[...source.children],anchor=target.firstChild;for(const row of moved)target.insertBefore(row,anchor);
     const empty=${releaseDraftCheck};for(const row of moved)source.appendChild(row);const restored=${releaseDraftCheck};
     return {empty,restored};})()`);
-  if (releaseEmptySectionCtl.empty?.bulletCount !== 54
+  if (releaseEmptySectionCtl.empty?.bulletCount !== V2_DRAFT_BULLET_COUNT
     || releaseEmptySectionCtl.empty?.sectionsPopulated !== false
     || releaseEmptySectionCtl.empty?.populated !== false
-    || releaseEmptySectionCtl.restored?.bulletCount !== 54
+    || releaseEmptySectionCtl.restored?.bulletCount !== V2_DRAFT_BULLET_COUNT
     || releaseEmptySectionCtl.restored?.sectionsPopulated !== true
     || releaseEmptySectionCtl.restored?.populated !== true) {
     fails.push('GUIDE RELEASE EMPTY-SECTION CONTROL FAILED — a constant-count empty release section stayed populated or exact restoration failed: '
       + JSON.stringify(releaseEmptySectionCtl));
+  }
+  const releaseEmptyBulletCtl = await evalIn(`(()=>{const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][12];
+    if(!row)return {empty:{populated:true},restored:{populated:false},changed:false,error:'missing empty-bullet control row'};
+    const prior=row.innerHTML,priorRaw=row.textContent||'';row.textContent='';const changed=priorRaw.length>0&&row.textContent==='';
+    const empty=${releaseDraftCheck};row.innerHTML=prior;const restored=${releaseDraftCheck};return {empty,restored,changed};})()`);
+  if (!releaseEmptyBulletCtl.changed
+    || releaseEmptyBulletCtl.empty?.bulletCount !== V2_DRAFT_BULLET_COUNT
+    || releaseEmptyBulletCtl.empty?.sectionsPopulated !== true
+    || releaseEmptyBulletCtl.empty?.uniqueBullets !== true
+    || releaseEmptyBulletCtl.empty?.populated !== false
+    || releaseEmptyBulletCtl.restored?.bulletCount !== V2_DRAFT_BULLET_COUNT
+    || releaseEmptyBulletCtl.restored?.populated !== true) {
+    fails.push('GUIDE RELEASE EMPTY-BULLET CONTROL FAILED — a constant-count blank row stayed populated or exact restoration failed: '
+      + JSON.stringify(releaseEmptyBulletCtl));
+  }
+  const releaseWhitespaceBulletCtl = await evalIn(`(()=>{const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][12];
+    if(!row)return {spaced:{populated:true},restored:{populated:false},changed:false,error:'missing whitespace control row'};
+    const prior=row.innerHTML,priorRaw=row.textContent||'',mutated=' '+priorRaw+' ';row.textContent=mutated;
+    const changed=priorRaw.length>0&&row.textContent===mutated;const spaced=${releaseDraftCheck};row.innerHTML=prior;
+    const restored=${releaseDraftCheck};return {spaced,restored,changed};})()`);
+  if (!releaseWhitespaceBulletCtl.changed
+    || releaseWhitespaceBulletCtl.spaced?.bulletCount !== V2_DRAFT_BULLET_COUNT
+    || releaseWhitespaceBulletCtl.spaced?.sectionsPopulated !== true
+    || releaseWhitespaceBulletCtl.spaced?.uniqueBullets !== true
+    || releaseWhitespaceBulletCtl.spaced?.populated !== false
+    || releaseWhitespaceBulletCtl.restored?.bulletCount !== V2_DRAFT_BULLET_COUNT
+    || releaseWhitespaceBulletCtl.restored?.populated !== true) {
+    fails.push('GUIDE RELEASE WHITESPACE CONTROL FAILED — an untrimmed constant-count row stayed populated or exact restoration failed: '
+      + JSON.stringify(releaseWhitespaceBulletCtl));
   }
   const releaseShipyardCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
     .find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||''));
@@ -7058,32 +7422,93 @@ try {
   }
 
   await evalIn(`document.getElementById('docksets').click()`);
+  /* Every save-mutating Settings control must work while the exact authority
+     is writable and be intercepted before its handler while read-only. This
+     table includes Creature voices, the omission that prompted the gate. */
+  const writableSettings = await evalIn(`(async()=>{const S=window.__CF_SLICE__,api=S.api;
+    const click=(selector)=>{const target=document.querySelector(selector);if(!target)return false;target.click();return true;};
+    const input=(selector,value)=>{const target=document.querySelector(selector);if(!target)return false;
+      target.value=String(value);target.dispatchEvent(new Event('input',{bubbles:true,cancelable:true}));return true;};
+    const pick=(kind,current,values)=>{const value=values.find((candidate)=>candidate!==current);
+      return click('[data-'+kind+'="'+CSS.escape(String(value))+'"]');};
+    const pref=(kind,current)=>{const values=kind==='size'?['','fs-lg','fs-xl']:kind==='tone'?['','tone-bright','tone-max']:['','font-sys','font-mono'];
+      const value=values.find((candidate)=>candidate!==current);return click('[data-pref="'+kind+'"][data-value="'+CSS.escape(String(value))+'"]');};
+    const restorePref=(kind,value)=>click('[data-pref="'+kind+'"][data-value="'+CSS.escape(String(value))+'"]');
+    const defs=[
+      {id:'sound',field:'sndOn',mutate:()=>click('#setsnd'),restore:()=>click('#setsnd')},
+      {id:'volume',field:'sfxVol',mutate:(before)=>input('#setvol',before<0.5?73:27),restore:(before)=>input('#setvol',Math.round(before*100))},
+      {id:'creature-voices',field:'voiceOn',mutate:()=>click('#setvoice'),restore:()=>click('#setvoice')},
+      {id:'text-size',field:'fsMode',mutate:(before)=>pref('size',before),restore:(before)=>restorePref('size',before)},
+      {id:'text-tone',field:'toneMode',mutate:(before)=>pref('tone',before),restore:(before)=>restorePref('tone',before)},
+      {id:'font',field:'fontMode',mutate:(before)=>pref('font',before),restore:(before)=>restorePref('font',before)},
+      {id:'star-charts',field:'chartsOn',mutate:()=>click('#setcharts'),restore:()=>click('#setcharts')},
+      {id:'motion',field:'motionMode',mutate:(before)=>pick('motion',before,[-1,0,1]),restore:(before)=>click('[data-motion="'+before+'"]')},
+      {id:'panel-tint',field:'glassTint',mutate:(before)=>input('#setglass',before<0.9?94:86),restore:(before)=>input('#setglass',Math.round(before*100))},
+    ];
+    const records=[];
+    for(const def of defs){const before=api.state()[def.field],targetFound=def.mutate(before),mutated=api.state()[def.field];
+      const persisted=await api.__smokePersistNow();const restoreFound=def.restore(before),restored=api.state()[def.field];
+      const restoredPersisted=await api.__smokePersistNow();records.push({id:def.id,before,mutated,restored,
+        targetFound,restoreFound,persisted,restoredPersisted});}
+    await new Promise((resolve)=>setTimeout(resolve,450));await api.__smokePersistNow();return records;})()`);
   const readOnlyForced = await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(true)`);
   const readOnlyBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
   const readOnlyRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
-  await evalIn(`document.getElementById('setsnd').click()`);
+  const readOnlyAttempts = await evalIn(`(()=>{const S=window.__CF_SLICE__,api=S.api;
+    const click=(selector)=>{const target=document.querySelector(selector);if(!target)return false;target.click();return true;};
+    const input=(selector,value)=>{const target=document.querySelector(selector);if(!target)return false;
+      target.value=String(value);target.dispatchEvent(new Event('input',{bubbles:true,cancelable:true}));return true;};
+    const pref=(kind,current)=>{const values=kind==='size'?['','fs-lg','fs-xl']:kind==='tone'?['','tone-bright','tone-max']:['','font-sys','font-mono'];
+      const value=values.find((candidate)=>candidate!==current);return click('[data-pref="'+kind+'"][data-value="'+CSS.escape(String(value))+'"]');};
+    const defs=[
+      {id:'sound',field:'sndOn',act:()=>click('#setsnd')},
+      {id:'volume',field:'sfxVol',act:(before)=>input('#setvol',before<0.5?73:27)},
+      {id:'creature-voices',field:'voiceOn',act:()=>click('#setvoice')},
+      {id:'text-size',field:'fsMode',act:(before)=>pref('size',before)},
+      {id:'text-tone',field:'toneMode',act:(before)=>pref('tone',before)},
+      {id:'font',field:'fontMode',act:(before)=>pref('font',before)},
+      {id:'star-charts',field:'chartsOn',act:()=>click('#setcharts')},
+      {id:'motion',field:'motionMode',act:(before)=>{const next=[-1,0,1].find((value)=>value!==before);return click('[data-motion="'+next+'"]');}},
+      {id:'panel-tint',field:'glassTint',act:(before)=>input('#setglass',before<0.9?94:86)},
+    ];
+    return defs.map((def)=>{const beforeState=api.state(),before=beforeState[def.field],countBefore=beforeState.persistence.mutationBlockCount,
+      targetFound=def.act(before),afterState=api.state();return {id:def.id,before,after:afterState[def.field],targetFound,
+        countBefore,countAfter:afterState.persistence.mutationBlockCount,witness:afterState.persistence.mutationBlockWitness};});})()`);
   await evalIn(`document.getElementById('dockcodex').click()`);
   const readOnlyAfter = await evalIn(`window.__CF_SLICE__.api.state()`);
   const readOnlyRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
   await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(false)`);
   const readOnlyBundle = {
-    forced: readOnlyForced,
+    writable: writableSettings, forced: readOnlyForced,
     before: readOnlyBefore,
+    attempts: readOnlyAttempts,
     after: readOnlyAfter,
     rawPreserved: readOnlyRawAfter === readOnlyRawBefore,
   };
   const readOnlyAssessment = assessReadOnlyBoundary(readOnlyBundle);
   if (!readOnlyAssessment.ok) {
-    fails.push('F4 READ-ONLY BOUNDARY: a real settings mutation was not blocked or Compendium inspection was unavailable: '
+    fails.push('F4 READ-ONLY BOUNDARY: writable/read-only Settings polarity or Compendium inspection failed: '
       + JSON.stringify({ assessment: readOnlyAssessment, bundle: readOnlyBundle }));
   }
+  const writableNoChange = structuredClone(writableSettings);
+  writableNoChange[0].mutated = writableNoChange[0].before;
+  const writableNotPersisted = structuredClone(writableSettings);
+  writableNotPersisted[1].persisted = false;
+  const readOnlyChanged = structuredClone(readOnlyAttempts);
+  readOnlyChanged[2].after = '__voice-mutated-read-only__';
+  const readOnlyBadWitness = structuredClone(readOnlyAttempts);
+  readOnlyBadWitness[3].witness.action = 'click:wrong-control';
   const readOnlyControls = [
-    assessReadOnlyBoundary({ ...readOnlyBundle, after: { ...readOnlyAfter, save: { ...readOnlyAfter.save, sndOn: !readOnlyBefore.save.sndOn } } }),
+    assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableNoChange }),
+    assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableNotPersisted }),
+    assessReadOnlyBoundary({ ...readOnlyBundle, attempts: readOnlyChanged }),
+    assessReadOnlyBoundary({ ...readOnlyBundle, attempts: readOnlyBadWitness }),
+    assessReadOnlyBoundary({ ...readOnlyBundle, attempts: readOnlyAttempts.slice(0, -1) }),
     assessReadOnlyBoundary({ ...readOnlyBundle, rawPreserved: false }),
     assessReadOnlyBoundary({ ...readOnlyBundle, after: { ...readOnlyAfter, panelOpen: null } }),
   ];
   if (readOnlyControls.some((control) => control.ok)) {
-    fails.push('F4 READ-ONLY BOUNDARY CONTROL FAILED — changed save/raw or unavailable inspection stayed green: '
+    fails.push('F4 READ-ONLY BOUNDARY CONTROL FAILED — missing polarity/member/witness/raw/inspection evidence stayed green: '
       + JSON.stringify(readOnlyControls));
   }
 
@@ -9895,17 +10320,26 @@ try {
     if (stable?.persistence?.runtime) {
       delete stable.persistence.runtime.activePlayMs;
     }
+    if (stable?.persistence?.ecology) {
+      delete stable.persistence.ecology.observedActivePlayMs;
+    }
     delete stable?.tickerTicks;
     return stable;
   };
   const arc4PertarAdvancingDiagnosticsValid = (before, after) => {
     const beforeActivePlayMs = before?.persistence?.runtime?.activePlayMs;
     const afterActivePlayMs = after?.persistence?.runtime?.activePlayMs;
+    const beforeEcologyActivePlayMs = before?.persistence?.ecology?.observedActivePlayMs;
+    const afterEcologyActivePlayMs = after?.persistence?.ecology?.observedActivePlayMs;
     const beforeTickerTicks = before?.tickerTicks;
     const afterTickerTicks = after?.tickerTicks;
     return Number.isSafeInteger(beforeActivePlayMs) && beforeActivePlayMs >= 0
       && Number.isSafeInteger(afterActivePlayMs) && afterActivePlayMs >= beforeActivePlayMs
       && afterActivePlayMs - beforeActivePlayMs <= 10_000
+      && Number.isSafeInteger(beforeEcologyActivePlayMs) && beforeEcologyActivePlayMs >= 0
+      && Number.isSafeInteger(afterEcologyActivePlayMs)
+      && afterEcologyActivePlayMs >= beforeEcologyActivePlayMs
+      && afterEcologyActivePlayMs - beforeEcologyActivePlayMs <= 10_000
       && Number.isSafeInteger(beforeTickerTicks) && beforeTickerTicks >= 0
       && Number.isSafeInteger(afterTickerTicks) && afterTickerTicks >= beforeTickerTicks
       && afterTickerTicks - beforeTickerTicks <= 1;
@@ -10307,9 +10741,9 @@ try {
       && audio.claimedEvents === 0 && audio.activeVoiceId === null
       && audio.lastEventKey === null && audio.counterpart?.status === 'none'
       && runtime?.state === 'blocked' && runtime?.contextState === null
-      && runtime?.contextGeneration === 0 && runtime?.muted === true
+      && runtime?.contextGeneration === 0 && typeof runtime?.muted === 'boolean'
       && runtime?.nodes?.active === 0 && runtime?.voices?.active === 0
-      && runtime?.voices?.started === 0
+      && runtime?.voices?.started === 0 && runtime?.voices?.ids?.length === 0
       && runtime?.creatureEmitters?.active === 0;
   };
   const arc4ReloadedSurfaceObservationExact = ({ state, ui } = {}, expectedUsed) => (
@@ -10616,11 +11050,14 @@ try {
     `(()=>{const observation=${ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION},
       audio=observation?.audio,runtime=audio?.runtime;
       return observation?.answerable===true&&audio?.armed===0
+        &&observation?.result===null
         &&audio?.claimedEvents===0&&audio?.activeVoiceId===null
         &&audio?.lastEventKey===null&&audio?.counterpart?.status==='none'
         &&runtime?.state==='blocked'&&runtime?.contextState===null
-        &&runtime?.contextGeneration===0&&runtime?.voices?.started===0
-        &&runtime?.voices?.active===0&&runtime?.creatureEmitters?.active===0
+        &&runtime?.contextGeneration===0&&typeof runtime?.muted==='boolean'
+        &&runtime?.nodes?.active===0&&runtime?.voices?.started===0
+        &&runtime?.voices?.active===0&&runtime?.voices?.ids?.length===0
+        &&runtime?.creatureEmitters?.active===0
         ?observation:null})()`,
   );
   const arc4TameAudioBundleBase = {
@@ -10734,6 +11171,12 @@ try {
         next.diagnosticRead.audio.runtime.contextGeneration = 1;
       }),
     },
+    diagnosticReadContextState: {
+      expected: ['diagnosticReadNoContext'],
+      result: arc4TameAudioMutation((next) => {
+        next.diagnosticRead.audio.runtime.contextState = 'suspended';
+      }),
+    },
     silentArm: {
       expected: ['silentArm'],
       result: arc4TameAudioMutation((next) => {
@@ -10770,6 +11213,12 @@ try {
         next.reloaded.result = structuredClone(next.started.result);
       }),
     },
+    reloadCreatedContext: {
+      expected: ['reloadNoReplay'],
+      result: arc4TameAudioMutation((next) => {
+        next.reloaded.audio.runtime.contextGeneration = 1;
+      }),
+    },
     freshFixtureIsolation: {
       expected: ['freshFixtureIsolation'],
       result: arc4TameAudioMutation((next) => {
@@ -10785,7 +11234,7 @@ try {
       }),
     },
   };
-  const arc4TameAudioControlsIsolated = Object.keys(arc4TameAudioControls).length === 17
+  const arc4TameAudioControlsIsolated = Object.keys(arc4TameAudioControls).length === 19
     && Object.values(arc4TameAudioControls)
       .every((control) => arc4ExactFailureSet(control.result, control.expected));
   const arc4TameAudioRehearsalChecks = {
@@ -10949,6 +11398,10 @@ try {
     next.wrongOrdinal.stateAfter.persistence.runtime.activePlayMs
       = next.wrongOrdinal.stateBefore.persistence.runtime.activePlayMs + 123_456;
   });
+  const arc4FixtureWrongOrdinalEcologyClockControl = arc4FixtureSetupVariant((next) => {
+    next.wrongOrdinal.stateAfter.persistence.ecology.observedActivePlayMs
+      = next.wrongOrdinal.stateBefore.persistence.ecology.observedActivePlayMs + 123_456;
+  });
   /* A one-sided durable route mutation necessarily breaks the registered v4
      envelope, so bootArc5FixedPoint's full-durability prerequisite must fail
      with that route clause. The coordinated raw-consistent control proves the
@@ -10972,6 +11425,9 @@ try {
     && arc4IsolatedCheck(arc4FixtureIncompleteSurfaceControl, 'exactSurface')
     && arc4IsolatedCheck(
       arc4FixtureWrongOrdinalClockControl, 'wrongOrdinalStateStable',
+    )
+    && arc4IsolatedCheck(
+      arc4FixtureWrongOrdinalEcologyClockControl, 'wrongOrdinalStateStable',
     );
   const arc4PreUi = arc4FirstFixture.surface.ui;
   const arc4PreState = arc4FirstFixture.surface.state;
@@ -11054,6 +11510,8 @@ try {
         coordinatedStarRouteControl: arc4FixtureCoordinatedStarRouteControl,
         incompleteSurfaceControl: arc4FixtureIncompleteSurfaceControl,
         wrongOrdinalClockControl: arc4FixtureWrongOrdinalClockControl,
+        wrongOrdinalEcologyClockControl:
+          arc4FixtureWrongOrdinalEcologyClockControl,
         controls: arc4PreconditionControls,
         noncanonicalArc5Control: arc4PreNoncanonicalArc5Control,
         arc5ShardDigestControl: arc4PreArc5ShardDigestControl,
@@ -13702,7 +14160,9 @@ try {
     fails.push('D-TRAIN ONE-WRITE CONTROL FAILED — a duplicated Training write-start witness stayed green');
   }
   const privateProofControlRaw = structuredClone(rescueRaw);
-  privateProofControlRaw.log.find((entry) => entry.id === 'p133').where.ordinal = 2;
+  const privateProofEarthRow = privateProofControlRaw.log.find((entry) =>
+    entry?.where?.pseed === EARTH.seed && entry?.where?.star?.seed === SOL_STAR.seed);
+  if (privateProofEarthRow?.where) privateProofEarthRow.where.ordinal = 2;
   if (dtrainRestoredRawOutcome(privateProofControlRaw, { seedRaw: DTRAIN_RESCUE_RAW })
     || dtrainRestoredRawOutcome({ ...rescueRaw, tsnap: GENUINE_TRAINING_CHECKPOINT }, { seedRaw: DTRAIN_RESCUE_RAW })) {
     fails.push('D-TRAIN RAW CONTROL FAILED — serialized ordinal or uncleared checkpoint stayed green');
@@ -13710,12 +14170,12 @@ try {
   const dtrainOutcomeMutationControls = [
     ['ever.scanhits', (raw) => { raw.ever.scanhits = 1; }],
     ['ever.arrivals', (raw) => { raw.ever.arrivals = 1; }],
-    ['Earth title', (raw) => { raw.log.find((entry) => entry.id === 'p133').title = 'Not Earth'; }],
-    ['Earth sub', (raw) => { raw.log.find((entry) => entry.id === 'p133').sub = 'Changed'; }],
-    ['Earth badge', (raw) => { raw.log.find((entry) => entry.id === 'p133').badge = 'Changed'; }],
-    ['Earth favorite', (raw) => { raw.log.find((entry) => entry.id === 'p133').fav = false; }],
-    ['Earth timestamp', (raw) => { raw.log.find((entry) => entry.id === 'p133').t += 1; }],
-    ['Earth star label', (raw) => { raw.log.find((entry) => entry.id === 'p133').star = 'Sol'; }],
+    ['Earth title', (raw) => { raw.log.find((entry) => entry?.where?.pseed === EARTH.seed).title = 'Not Earth'; }],
+    ['Earth sub', (raw) => { raw.log.find((entry) => entry?.where?.pseed === EARTH.seed).sub = 'Changed'; }],
+    ['Earth badge', (raw) => { raw.log.find((entry) => entry?.where?.pseed === EARTH.seed).badge = 'Changed'; }],
+    ['Earth favorite', (raw) => { raw.log.find((entry) => entry?.where?.pseed === EARTH.seed).fav = false; }],
+    ['Earth timestamp', (raw) => { raw.log.find((entry) => entry?.where?.pseed === EARTH.seed).t += 1; }],
+    ['Earth star label', (raw) => { raw.log.find((entry) => entry?.where?.pseed === EARTH.seed).star = 'Sol'; }],
     ['Earth home binding', (raw) => { raw.home = 'p901'; }],
     ['outer Atlas row', (raw) => { raw.log.find((entry) => entry.id === 'p900').title = 'Changed'; }],
     ['omitted outer wave-off ledger', (raw) => { delete raw.wvo; }],
@@ -13998,7 +14458,7 @@ try {
      non-null ordinal/key receipt. */
   const atlasBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
   const atlasSetup = await evalIn(`(()=>{const opener=document.getElementById('railatlas');opener?.click();
-    const row=document.querySelector('#atlaspanel [data-aid="p133"]');row?.focus();
+    const row=document.querySelector('#atlaspanel [data-aid=${JSON.stringify(`w|${ARC3_OTHER_WORLD_CONTROL_ADDRESS.key}`)}]');row?.focus();
     return {row:!!row,disabled:row?.disabled??null,focus:document.activeElement===row};})()`);
   await dispatchKeyPress(sess, 'Enter', 'Enter');
   const atlasSurvey = await waitDesktopValue('D-TRAIN canonical Earth Atlas travel', `(()=>{const s=window.__CF_SLICE__.api.state();
@@ -14987,23 +15447,26 @@ try {
      The page-local override advances the same performance.now() source the app
      already owns; navigation destroys it before the reload assertion. */
   await evalK(`new Promise((resolve)=>setTimeout(resolve,500))`);
-  const epochAdvance = await evalK(`(()=>{
-    const before=window.__CF_SLICE__.api.state().epoch;
+  const epochAdvance = await evalK(`(async()=>{
+    const beforeState=window.__CF_SLICE__.api.state(),before=beforeState.epoch;
     const realNow=performance.now.bind(performance);
     const hadOwnNow=Object.prototype.hasOwnProperty.call(performance,'now');
     const installed=Reflect.defineProperty(performance,'now',{
       configurable:true,value:()=>realNow()+1200000
     });
-    const after=window.__CF_SLICE__.api.state().epoch;
-    return {before,after,installed,hadOwnNow,own:Object.prototype.hasOwnProperty.call(performance,'now')};
+    const precommitState=window.__CF_SLICE__.api.state(),persisted=await window.__CF_SLICE__.api.__smokePersistNow(),
+      committedState=window.__CF_SLICE__.api.state(),pick=(state)=>({epoch:state.epoch,
+        publishedEpoch:state.persistence?.ecology?.publishedEpoch??null,
+        candidateEpoch:state.persistence?.ecology?.candidateEpoch??null,
+        edgeDue:state.persistence?.ecology?.edgeDue??null});
+    return {before,precommit:pick(precommitState),committed:pick(committedState),persisted,installed,hadOwnNow,
+      own:Object.prototype.hasOwnProperty.call(performance,'now')};
   })()`);
-  if (!epochAdvance.installed || !epochAdvance.own
-    || epochAdvance.after !== epochAdvance.before + 1) {
-    fails.push('EPOCH SNAPSHOT: the page-local 1200-second stimulus did not advance exactly one epoch: '
+  if (!epochAdvance.installed || !epochAdvance.own) {
+    fails.push('EPOCH SNAPSHOT: the page-local 1200-second stimulus was not installed for the exact document: '
       + JSON.stringify(epochAdvance));
   }
-  const epochPersisted = await evalK(`window.__CF_SLICE__.api.__smokePersistNow()`);
-  if (epochPersisted !== true) {
+  if (epochAdvance.persisted !== true) {
     fails.push('EPOCH SNAPSHOT: the real persistView path rejected the advancing epoch snapshot');
   }
   const epochRaw = await evalK(READ_PRIMARY_EXPRESSION);
@@ -15018,21 +15481,73 @@ try {
     own:Object.prototype.hasOwnProperty.call(performance,'now')
   }))()`);
   const epochReloaded = epochReload.epoch;
-  const epochSnapshotOutcome = (before, live, stored, reloaded) =>
-    live === before + 1 && stored === live && reloaded === live;
-  if (!epochSnapshotOutcome(epochAdvance.before, epochAdvance.after, epochStored, epochReloaded)) {
-    fails.push('EPOCH SNAPSHOT: live advance did not survive real IndexedDB persistence and reload: '
-      + JSON.stringify({ ...epochAdvance, stored: epochStored, reloaded: epochReloaded }));
+  const epochSnapshot = {
+    before: epochAdvance.before,
+    precommit: epochAdvance.precommit,
+    committed: epochAdvance.committed,
+    stored: epochStored,
+    reloaded: epochReloaded,
+  };
+  const epochSnapshotAssessment = assessArc4EpochSnapshot(epochSnapshot);
+  if (!epochSnapshotAssessment.ok) {
+    fails.push('EPOCH SNAPSHOT: committed publication did not survive real IndexedDB persistence and reload: '
+      + JSON.stringify({
+        ...epochAdvance, stored: epochStored, reloaded: epochReloaded,
+        assessment: epochSnapshotAssessment,
+      }));
   }
   if (epochReload.own !== epochAdvance.hadOwnNow) {
     fails.push('EPOCH SNAPSHOT: the page-local performance.now shadow crossed the fresh-document boundary: '
       + JSON.stringify({ write: epochAdvance, reload: epochReload }));
   }
-  if (epochSnapshotOutcome(epochAdvance.before, epochAdvance.after, epochAdvance.before, epochReloaded)) {
-    fails.push('EPOCH SNAPSHOT CONTROL FAILED — substituting the immutable base for stored current() stayed green');
-  }
-  if (epochSnapshotOutcome(epochAdvance.before, epochAdvance.after, epochStored, epochAdvance.before)) {
-    fails.push('EPOCH SNAPSHOT CONTROL FAILED — substituting the pre-advance epoch after reload stayed green');
+  const epochSnapshotControl = (label, expected, mutate) => {
+    const next = structuredClone(epochSnapshot);
+    mutate(next);
+    const result = assessArc4EpochSnapshot(next);
+    const failures = Object.entries(result.checks)
+      .filter(([, value]) => value !== true).map(([name]) => name);
+    return { label, expected, failures, ok: JSON.stringify(failures) === JSON.stringify(expected) };
+  };
+  const epochSnapshotControls = epochSnapshotAssessment.ok ? [
+    epochSnapshotControl('negative-before', ['beforeEpoch'], (next) => {
+      next.before = -1;
+      next.precommit.epoch = -1;
+      next.precommit.publishedEpoch = -1;
+      next.precommit.candidateEpoch = 0;
+      next.committed.epoch = 0;
+      next.committed.publishedEpoch = 0;
+      next.committed.candidateEpoch = 0;
+      next.stored = 0;
+      next.reloaded = 0;
+    }),
+    epochSnapshotControl('optimistic-precommit', ['precommitPrivate'],
+      (next) => { next.precommit.epoch = next.before + 1; }),
+    epochSnapshotControl('optimistic-publication', ['precommitPublicationPrivate'],
+      (next) => { next.precommit.publishedEpoch = next.before + 1; }),
+    epochSnapshotControl('missing-candidate', ['precommitCandidateStaged'],
+      (next) => { next.precommit.candidateEpoch = next.before; }),
+    epochSnapshotControl('early-edge-clear', ['precommitEdgeDue'],
+      (next) => { next.precommit.edgeDue = false; }),
+    epochSnapshotControl('withheld-commit', ['committedEpoch'], (next) => {
+      next.committed.epoch = next.before;
+      next.stored = next.before;
+      next.reloaded = next.before;
+    }),
+    epochSnapshotControl('withheld-publication', ['committedPublished'],
+      (next) => { next.committed.publishedEpoch = next.before; }),
+    epochSnapshotControl('stale-committed-candidate', ['committedCandidate'],
+      (next) => { next.committed.candidateEpoch = next.before; }),
+    epochSnapshotControl('uncleared-committed-edge', ['committedEdgeSettled'],
+      (next) => { next.committed.edgeDue = true; }),
+    epochSnapshotControl('stored-base', ['storedCommitted'],
+      (next) => { next.stored = next.before; }),
+    epochSnapshotControl('reloaded-base', ['reloadedCommitted'],
+      (next) => { next.reloaded = next.before; }),
+  ] : [];
+  if (epochSnapshotAssessment.ok
+    && epochSnapshotControls.some((control) => !control.ok)) {
+    fails.push('EPOCH SNAPSHOT CONTROLS FAILED — a private/committed diagnostic mutation was not isolated: '
+      + JSON.stringify(epochSnapshotControls));
   }
   await send('Target.closeTarget', { targetId: tk.targetId });
 
@@ -17061,6 +17576,119 @@ try {
   await evalT(`(()=>{ const S=window.__CF_SLICE__;if(S.api.state().mode==='universe')S.api.descendGalaxy(${JSON.stringify(HOME_GALAXY)});
     if(S.api.state().mode==='galaxy')S.api.descendSystem(${JSON.stringify(SOL_STAR)});return S.api.state();})()`);
   await sleep(1500);
+
+  /* A wrong-world detour used to become a modal Training trap: opening
+     Mercury made every Survey control inert, including Close, while Escape
+     was consumed by the lesson. Exercise both real input routes before the
+     happy-path Earth survey. The outcome owns route, lesson, focus and save
+     state; an inert-Close mutation and an Escape-propagation bypass are the
+     discriminating controls. */
+  const wrongWorldBaseline = await evalT(`(()=>{const s=window.__CF_SLICE__.api.state();return {
+    landed:JSON.stringify(s.save.landed),atlas:s.atlasCount,essence:s.save.essence,
+    items:JSON.stringify(s.save.items),cargo:JSON.stringify(s.save.cargo),cgx:JSON.stringify(s.save.cgx)};})()`);
+  const wrongWorldOpenCheck = `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),survey=document.getElementById('survey'),
+    close=survey?.querySelector('[data-survey-close]'),actions=[...(survey?.querySelectorAll('[data-act]')||[])],
+    style=survey?getComputedStyle(survey):null,r=survey?.getBoundingClientRect(),visible=!!survey&&s.cardOpen
+      &&survey.getAttribute('aria-hidden')==='false'&&style?.display!=='none'&&style?.visibility!=='hidden'
+      &&!!r&&r.width>0&&r.height>0,closeStyle=close?getComputedStyle(close):null;
+    const locked=actions.length>0&&actions.every((action)=>!!action.closest('[inert]')&&getComputedStyle(action).pointerEvents==='none');
+    return {ok:s.mode==='system'&&s.gal===999&&s.star===424242&&s.tutStep==='find-earth'&&visible
+      &&typeof s.cardTitle==='string'&&s.cardTitle!=='Earth'&&!!close&&!close.closest('[inert]')
+      &&closeStyle?.pointerEvents!=='none'&&locked,mode:s.mode,gal:s.gal,star:s.star,step:s.tutStep,
+      cardOpen:s.cardOpen,title:s.cardTitle,visible,close:!!close,closeInert:!!close?.closest('[inert]'),
+      closePointer:closeStyle?.pointerEvents||null,actions:actions.map((action)=>({act:action.getAttribute('data-act'),
+        inert:!!action.closest('[inert]'),pointer:getComputedStyle(action).pointerEvents}))};})()`;
+  const wrongWorldClosedCheck = `(()=>{const s=window.__CF_SLICE__.api.state(),active=document.activeElement;return {
+    ok:s.mode==='system'&&s.gal===999&&s.star===424242&&s.tutStep==='find-earth'&&!s.cardOpen
+      &&active?.tagName==='CANVAS'&&JSON.stringify(s.save.landed)===${JSON.stringify(wrongWorldBaseline.landed)}
+      &&s.atlasCount===${wrongWorldBaseline.atlas}&&s.save.essence===${wrongWorldBaseline.essence}
+      &&JSON.stringify(s.save.items)===${JSON.stringify(wrongWorldBaseline.items)}
+      &&JSON.stringify(s.save.cargo)===${JSON.stringify(wrongWorldBaseline.cargo)}
+      &&JSON.stringify(s.save.cgx)===${JSON.stringify(wrongWorldBaseline.cgx)},mode:s.mode,gal:s.gal,star:s.star,
+      step:s.tutStep,cardOpen:s.cardOpen,active:active?.id||active?.tagName||null,landed:s.save.landed,
+      atlas:s.atlasCount,essence:s.save.essence,items:s.save.items,cargo:s.save.cargo,cgx:s.save.cgx};})()`;
+  const mercuryPoint = await evalT(`(()=>{const target=window.__CF_SLICE__.api.planetScreenTarget(${JSON.stringify(MERCURY)});
+    if(!target)return null;const hit=document.elementFromPoint(target.screenX,target.screenY);return {...target,
+      hit:hit===window.__CF_SLICE__.app.canvas?'canvas':hit?.id||hit?.tagName||null};})()`);
+  if (!mercuryPoint || mercuryPoint.hit !== 'canvas') {
+    fails.push('DRILL WRONG WORLD POINTER: Mercury was not a real visible canvas target: ' + JSON.stringify(mercuryPoint));
+  } else {
+    await pointerT(mercuryPoint.screenX, mercuryPoint.screenY);
+    const wrongPointerOpen = await evalT(wrongWorldOpenCheck);
+    if (!wrongPointerOpen.ok) {
+      fails.push('DRILL WRONG WORLD POINTER: Mercury did not open with only real Close available: '
+        + JSON.stringify(wrongPointerOpen));
+    }
+    const wrongCloseAllowanceCtl = await evalT(`(()=>{const close=document.querySelector('#survey [data-survey-close]');
+      if(!close)return {controlMissing:true};const had=close.hasAttribute('inert'),pointer=close.style.pointerEvents;
+      close.setAttribute('inert','');close.style.pointerEvents='none';const result=${wrongWorldOpenCheck};
+      if(had)close.setAttribute('inert','');else close.removeAttribute('inert');close.style.pointerEvents=pointer;return result;})()`);
+    if (wrongCloseAllowanceCtl.ok || wrongCloseAllowanceCtl.closeInert !== true
+      || wrongCloseAllowanceCtl.closePointer !== 'none') {
+      fails.push('DRILL WRONG WORLD CONTROL FAILED — making the only Close inert stayed green: '
+        + JSON.stringify(wrongCloseAllowanceCtl));
+    }
+    const wrongClosePoint = await evalT(`(()=>{const close=document.querySelector('#survey [data-survey-close]'),
+      r=close?.getBoundingClientRect(),hit=r?document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2):null;
+      return r?{x:(r.left+r.right)/2,y:(r.top+r.bottom)/2,hit:hit===close}:null;})()`);
+    if (!wrongClosePoint?.hit) {
+      fails.push('DRILL WRONG WORLD POINTER: the real Close centre was not hit-testable: ' + JSON.stringify(wrongClosePoint));
+    } else {
+      await pointerT(wrongClosePoint.x, wrongClosePoint.y);
+      await sleep(40);
+      const wrongPointerClosed = await evalT(wrongWorldClosedCheck);
+      if (!wrongPointerClosed.ok) {
+        fails.push('DRILL WRONG WORLD POINTER: Close changed route/lesson/save or failed to restore canvas focus: '
+          + JSON.stringify(wrongPointerClosed));
+      }
+    }
+  }
+  await evalT(`(()=>{const S=window.__CF_SLICE__;if(S.api.state().cardOpen)
+    document.querySelector('#survey [data-survey-close]')?.click();S.app.canvas.focus();return S.api.state().cardOpen;})()`);
+  await sleep(40);
+
+  /* Closing the pointer card restores canvas focus and arms the priority-0
+     Earth target. One real ArrowRight selects a non-Earth world; Enter must
+     open it and seat focus on the only non-inert control. */
+  const keyboardEarthSeat = await evalT(`(()=>{const s=window.__CF_SLICE__.api.state();return {
+    active:document.activeElement?.tagName||null,target:s.keyboardTarget};})()`);
+  if (keyboardEarthSeat.active !== 'CANVAS' || keyboardEarthSeat.target !== 'planet:424242:133:2') {
+    fails.push('DRILL WRONG WORLD KEYBOARD: Close did not restore the canvas on priority Earth: '
+      + JSON.stringify(keyboardEarthSeat));
+  }
+  await keyT('ArrowRight', 'ArrowRight');
+  const wrongKeyboardTarget = await evalT(`window.__CF_SLICE__.api.state().keyboardTarget`);
+  if (typeof wrongKeyboardTarget !== 'string' || wrongKeyboardTarget === 'planet:424242:133:2') {
+    fails.push('DRILL WRONG WORLD KEYBOARD: ArrowRight did not select a non-Earth world: '
+      + JSON.stringify(wrongKeyboardTarget));
+  }
+  await keyT('Enter', 'Enter');
+  const wrongKeyboardOpen = await evalT(`(()=>{const outcome=${wrongWorldOpenCheck};const close=document.querySelector('#survey [data-survey-close]');
+    return {...outcome,closeFocused:document.activeElement===close,active:document.activeElement?.getAttribute('data-act')
+      ||(document.activeElement?.hasAttribute('data-survey-close')?'survey-close':document.activeElement?.id||document.activeElement?.tagName||null)};})()`);
+  if (!wrongKeyboardOpen.ok || !wrongKeyboardOpen.closeFocused) {
+    fails.push('DRILL WRONG WORLD KEYBOARD: Enter did not focus the only available Close: '
+      + JSON.stringify(wrongKeyboardOpen));
+  }
+  await evalT(`(()=>{window.__cfWrongWorldEscapeLeak=0;window.addEventListener('keydown',(event)=>{
+    if(event.key==='Escape')window.__cfWrongWorldEscapeLeak++;});return true;})()`);
+  await keyT('Escape', 'Escape');
+  await sleep(40);
+  const wrongKeyboardClosed = await evalT(`(()=>{const outcome=${wrongWorldClosedCheck};return {
+    ...outcome,escapeLeak:window.__cfWrongWorldEscapeLeak||0};})()`);
+  if (!wrongKeyboardClosed.ok || wrongKeyboardClosed.escapeLeak !== 0) {
+    fails.push('DRILL WRONG WORLD KEYBOARD: Training did not own Escape and preserve the lesson outcome: '
+      + JSON.stringify(wrongKeyboardClosed));
+  }
+  const wrongEscapeBypassCtl = await evalT(`(()=>{const S=window.__CF_SLICE__;S.api.surveyOn(${JSON.stringify(MERCURY)});
+    window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',code:'Escape',bubbles:true,cancelable:true}));
+    const leaked=window.__cfWrongWorldEscapeLeak||0,closed=!S.api.state().cardOpen;
+    document.querySelector('#survey [data-survey-close]')?.click();S.app.canvas.focus();return {leaked,closed};})()`);
+  if (wrongEscapeBypassCtl.leaked < 1 || !wrongEscapeBypassCtl.closed) {
+    fails.push('DRILL WRONG WORLD CONTROL FAILED — bypassing Training did not leak Escape to the global card close: '
+      + JSON.stringify(wrongEscapeBypassCtl));
+  }
+
   await evalT(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);   /* tap Earth = survey */
   await sleep(80);
   if (await step() !== 'survey-tour') fails.push('DRILL: surveying Earth did not advance find-earth: ' + await step());
@@ -17405,6 +18033,8 @@ try {
     fails.push('DRILL/RELEASE QUEUE: the seen fixture repeated after completion reload: ' + JSON.stringify(done4Repeat));
   }
 
+  }
+
   /* Two native documents cross the production fresh initializer together.
      Exactly one remains the fresh winner; the not-fresh loser must adopt the
      stable current-v5 winner, then become writable after the winner closes. */
@@ -17427,6 +18057,7 @@ try {
     if (result.exceptionDetails) throw new Error('F4 control eval threw: ' + JSON.stringify(result.exceptionDetails));
     return result.result.value;
   };
+  if (!OUTCOME_CONTROLS_ONLY) {
   const raceMark = events.length;
   const [freshRaceA, freshRaceB] = await Promise.all([
     attachF4ControlTarget(URL6, ['__cfF4FreshInitRaceGate']),
@@ -17691,6 +18322,491 @@ try {
       + JSON.stringify(arc2BootstrapControls));
   }
 
+  }
+
+  const waitControlValue = async (
+    session, label, expression, timeoutMs = 8000, accept = (value) => !!value,
+  ) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      try {
+        last = await evalF4Control(session, expression);
+        if (accept(last)) return last;
+      } catch (error) { last = { context: String(error?.message || error) }; }
+      await sleep(50);
+    }
+    throw new Error(`${label} did not reach its isolated browser outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  const waitControlF4Writable = async (
+    session, label, { previousToken = null, timeoutMs = 15000, allowFresh = false } = {},
+  ) => waitControlValue(session, label, `(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
+    const S=window.__CF_SLICE__,state=S?.api?.state?.();return {state,raw,token:S?.documentToken??null};})()`,
+  timeoutMs, (snapshot) => {
+    const bootKind = snapshot?.state?.persistence?.bootKind;
+    if (bootKind === 'current-v5') {
+      return assessF4ReadyAuthority({ ...snapshot, previousToken }).ok;
+    }
+    if (!allowFresh || bootKind !== 'fresh-v5') return false;
+    const state = {
+      ...snapshot.state,
+      persistence: { ...snapshot.state.persistence, bootKind: 'current-v5' },
+    };
+    return assessF4ReadyAuthority({ ...snapshot, state, previousToken }).ok;
+  });
+  const nativeControlClick = async (session, selector) => {
+    const target = await evalF4Control(session, `(()=>{window.__cfOutcomePointerAbort?.abort();
+      const control=[...document.querySelectorAll(${JSON.stringify(selector)})].find((candidate)=>candidate instanceof HTMLElement
+        &&candidate.getClientRects().length===1&&candidate.getBoundingClientRect().width>0&&candidate.getBoundingClientRect().height>0
+        &&getComputedStyle(candidate).display!=='none'&&getComputedStyle(candidate).visibility!=='hidden');
+      if(!(control instanceof HTMLElement))return null;
+      control.scrollIntoView({block:'nearest',inline:'nearest'});const rect=control.getBoundingClientRect(),x=(rect.left+rect.right)/2,
+        y=(rect.top+rect.bottom)/2,controller=new AbortController();window.__cfOutcomePointerAbort=controller;
+      window.__cfOutcomePointer=null;document.addEventListener('pointerdown',(event)=>{const element=event.target instanceof Element
+        ?event.target.closest('[data-act],[data-aid],button'):null;window.__cfOutcomePointer={trusted:event.isTrusted===true,
+          pointerType:event.pointerType||null,act:element?.getAttribute('data-act')||null,id:element?.getAttribute('data-aid')
+            ||element?.id||null};},{capture:true,once:true,signal:controller.signal});
+      return {x,y,width:rect.width,height:rect.height,hit:document.elementFromPoint(x,y)===control
+        ||control.contains(document.elementFromPoint(x,y))};})()`);
+    if (!target || target.width < 1 || target.height < 1 || !target.hit) return { target, pointer: null };
+    await send('Input.dispatchMouseEvent', {
+      type: 'mousePressed', x: target.x, y: target.y, button: 'left', clickCount: 1,
+    }, session);
+    await send('Input.dispatchMouseEvent', {
+      type: 'mouseReleased', x: target.x, y: target.y, button: 'left', clickCount: 1,
+    }, session);
+    await sleep(60);
+    const pointer = await evalF4Control(session, `(()=>{const value=window.__cfOutcomePointer||null;
+      window.__cfOutcomePointerAbort?.abort();delete window.__cfOutcomePointerAbort;delete window.__cfOutcomePointer;return value;})()`);
+    return { target, pointer };
+  };
+  const driveControlSearch = async (session, code) => {
+    await evalF4Control(session, `(()=>{const input=document.getElementById('searchbox');if(!(input instanceof HTMLInputElement))return false;
+      window.__cfOutcomeKey=null;input.addEventListener('keydown',(event)=>{window.__cfOutcomeKey={trusted:event.isTrusted===true,
+        key:event.key,code:event.code};},{capture:true,once:true});input.value=${JSON.stringify(code)};input.focus();return true;})()`);
+    await dispatchKeyPress(session, 'Enter', 'Enter');
+    return evalF4Control(session, `window.__cfOutcomeKey||null`);
+  };
+  const takeCollisionClipboard = async (session, label) => waitControlValue(
+    session, label, `sessionStorage.getItem('cf_slice_collision_clipboard')`, 3000,
+    (value) => typeof value === 'string' && value.startsWith('CF1-'),
+  );
+
+  /* Outcome-level collision proof. The setup fixture changes only reach and
+     clears prior location ledgers; every identity mutation below is a real
+     Search/Survey control. The two source-proven worlds share both leaf seeds,
+     so any surviving seed-only authority makes one of the bidirectional
+     controls fail after the reload. */
+  const collisionClipboardPreload = `(()=>{try{Object.defineProperty(navigator,'clipboard',{configurable:true,
+    value:{writeText(value){sessionStorage.setItem('cf_slice_collision_clipboard',String(value));return Promise.resolve();}}});}
+    catch(error){window.__cfCollisionClipboardInstallError=String(error&&error.message||error)}})()`;
+  const collisionTarget = await attachF4ControlTarget(URL9, [], collisionClipboardPreload);
+  await waitForSlice(collisionTarget.session, 'collision identity fresh boot');
+  await waitControlF4Writable(collisionTarget.session, 'collision identity fresh authority', { allowFresh: true });
+  const collisionImportToken = await sliceToken(collisionTarget.session);
+  try {
+    await evalF4Control(collisionTarget.session,
+      `window.__CF_SLICE__.api.importBlob(${JSON.stringify(COLLISION_REACH_RAW)})`);
+  } catch { /* successful replacement destroys this context */ }
+  await waitForSlice(collisionTarget.session, 'collision identity fixture import', {
+    previousToken: collisionImportToken,
+  });
+  const collisionFixtureReady = await waitControlF4Writable(
+    collisionTarget.session, 'collision identity fixture authority', { previousToken: collisionImportToken },
+  );
+  const collisionSetup = collisionFixtureReady.state;
+  await nativeControlClick(collisionTarget.session, '#railrecords,#dockrecords');
+  const collisionBaselineRecords = await waitControlValue(collisionTarget.session, 'collision baseline Records landing count',
+    `(()=>{const panel=document.getElementById('recpanel'),row=[...panel?.querySelectorAll('.row')??[]].find((entry)=>
+      entry.querySelector('label')?.textContent==='worlds landed');if(!row)return null;return {worldsLanded:Number(row.querySelector('span')?.textContent)};})()`);
+  await nativeControlClick(collisionTarget.session, '#railrecords,#dockrecords');
+  await waitControlValue(collisionTarget.session, 'collision baseline Records close',
+    `window.__CF_SLICE__.api.state().panelOpen===null`);
+  const collisionActions = [];
+  for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
+    const world = COLLISION_REACH_WORLDS[index];
+    const searchReceipt = await driveControlSearch(collisionTarget.session, COLLISION_REACH_CODES[index].named);
+    const search = await waitControlValue(collisionTarget.session, `collision Search/name ${index}`,
+      `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='system'&&state.cardOpen
+        &&state.cardTitle===${JSON.stringify(world.name)}&&state.starX===${world.star.x}&&state.starY===${world.star.y}?state:null;})()`);
+    await evalF4Control(collisionTarget.session,
+      `sessionStorage.removeItem('cf_slice_collision_clipboard')`);
+    const sharePress = await nativeControlClick(collisionTarget.session, '#survey [data-act="share"]');
+    const shareCode = await takeCollisionClipboard(collisionTarget.session, `collision Share ${index}`);
+    const addPress = await nativeControlClick(collisionTarget.session, '#survey [data-act="add"]');
+    const afterAdd = await waitControlValue(collisionTarget.session, `collision Atlas Add ${index}`,
+      `(()=>{const state=window.__CF_SLICE__.api.state();return state.atlasCount===${index + 1}?state:null;})()`);
+    const landPress = await nativeControlClick(collisionTarget.session, '#survey [data-act="landcta"]');
+    const landed = await waitControlValue(collisionTarget.session, `collision Land ${index}`,
+      `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='surface'
+        &&state.navWorldKey===${JSON.stringify(world.key)}?state:null;})()`);
+    const persisted = await evalF4Control(collisionTarget.session,
+      `window.__CF_SLICE__.api.__smokePersistNow()`);
+    collisionActions.push({
+      searchReceipt, search, sharePointer: sharePress.pointer, shareCode,
+      addPointer: addPress.pointer, afterAdd, landPointer: landPress.pointer, landed, persisted,
+    });
+  }
+  const collisionBeforeReloadToken = await sliceToken(collisionTarget.session);
+  await send('Page.navigate', { url: URL9 }, collisionTarget.session);
+  await waitForSlice(collisionTarget.session, 'collision identity persistence reload', {
+    previousToken: collisionBeforeReloadToken,
+  });
+  const collisionReloadReady = await waitControlF4Writable(
+    collisionTarget.session, 'collision identity reload authority', { previousToken: collisionBeforeReloadToken },
+  );
+  const collisionReloaded = collisionReloadReady.state;
+  await nativeControlClick(collisionTarget.session, '#railrecords,#dockrecords');
+  const collisionRecords = await waitControlValue(collisionTarget.session, 'collision Records landing count',
+    `(()=>{const panel=document.getElementById('recpanel'),row=[...panel?.querySelectorAll('.row')??[]].find((entry)=>
+      entry.querySelector('label')?.textContent==='worlds landed');if(!row)return null;return {worldsLanded:Number(row.querySelector('span')?.textContent)};})()`);
+  await nativeControlClick(collisionTarget.session, '#railatlas,#dockatlas');
+  const collisionAtlas = await waitControlValue(collisionTarget.session, 'collision Atlas rows',
+    `(()=>{const state=window.__CF_SLICE__.api.state(),panel=document.getElementById('atlaspanel');if(state.panelOpen!=='atlas')return null;
+      return {count:Number(panel.querySelector('[data-sel="atlas-count"]')?.textContent),rows:[...panel.querySelectorAll('[data-sel="atlas-entry"]')]
+        .map((row)=>({id:row.getAttribute('data-aid'),title:row.querySelector('b')?.textContent||'',disabled:row.disabled===true}))};})()`);
+  const collisionAtlasTravel = [];
+  for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
+    const world = COLLISION_REACH_WORLDS[index];
+    if (index > 0) await nativeControlClick(collisionTarget.session, '#railatlas,#dockatlas');
+    const press = await nativeControlClick(collisionTarget.session,
+      `[data-sel="atlas-entry"][data-aid=${JSON.stringify(`w|${world.key}`)}]`);
+    const state = await waitControlValue(collisionTarget.session, `collision Atlas travel ${index}`,
+      `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='system'&&state.cardTitle===${JSON.stringify(world.name)}
+        &&state.starX===${world.star.x}&&state.starY===${world.star.y}?state:null;})()`);
+    collisionAtlasTravel.push({ pointer: press.pointer, state });
+  }
+  const collisionReloadSearches = [];
+  for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
+    const world = COLLISION_REACH_WORLDS[index];
+    const searchReceipt = await driveControlSearch(collisionTarget.session, COLLISION_REACH_CODES[index].bare);
+    const state = await waitControlValue(collisionTarget.session, `collision reload Search ${index}`,
+      `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='system'&&state.cardTitle===${JSON.stringify(world.name)}
+        &&state.starX===${world.star.x}&&state.starY===${world.star.y}?state:null;})()`);
+    await evalF4Control(collisionTarget.session,
+      `sessionStorage.removeItem('cf_slice_collision_clipboard')`);
+    const sharePress = await nativeControlClick(collisionTarget.session, '#survey [data-act="share"]');
+    const shareCode = await takeCollisionClipboard(collisionTarget.session, `collision reload Share ${index}`);
+    collisionReloadSearches.push({ searchReceipt, state, sharePointer: sharePress.pointer, shareCode });
+  }
+  await send('Target.closeTarget', { targetId: collisionTarget.targetId });
+  const collisionBundle = {
+    setup: collisionSetup, baselineRecords: collisionBaselineRecords,
+    actions: collisionActions, reloaded: collisionReloaded,
+    atlas: collisionAtlas, records: collisionRecords,
+    atlasTravel: collisionAtlasTravel, searches: collisionReloadSearches,
+  };
+  const collisionAssessment = assessCollisionWorldOutcome(collisionBundle);
+  if (!collisionAssessment.ok) {
+    fails.push('WORLD IDENTITY COLLISION: Search/name/Atlas/Land/save-reload/share allowed cross-world bleed: '
+      + JSON.stringify(OUTCOME_CONTROLS_ONLY
+        ? { assessment: collisionAssessment, atlas: collisionAtlas, records: collisionRecords,
+          actionAtlasCounts: collisionActions.map((entry) => entry.afterAdd?.atlasCount),
+          landedKeys: collisionActions.map((entry) => entry.landed?.navWorldKey),
+          reloadedAtlasCount: collisionReloaded.atlasCount,
+          reloadedLegacyLanded: collisionReloaded.save?.landed }
+        : { assessment: collisionAssessment, bundle: collisionBundle }));
+  }
+  const collisionControl = (mutate) => {
+    const candidate = structuredClone(collisionBundle);
+    mutate(candidate);
+    return assessCollisionWorldOutcome(candidate);
+  };
+  const collisionControls = {
+    alphaNameBleedsToBeta: collisionControl((candidate) => {
+      candidate.searches[0].state.cardTitle = COLLISION_REACH_WORLDS[1].name;
+    }),
+    betaNameBleedsToAlpha: collisionControl((candidate) => {
+      candidate.searches[1].state.cardTitle = COLLISION_REACH_WORLDS[0].name;
+    }),
+    alphaAtlasMissing: collisionControl((candidate) => { candidate.atlas.rows.splice(0, 1); }),
+    betaAtlasMissing: collisionControl((candidate) => { candidate.atlas.rows.splice(1, 1); }),
+    alphaShareUsesBetaParent: collisionControl((candidate) => {
+      candidate.searches[0].shareCode = candidate.searches[1].shareCode;
+    }),
+    betaShareUsesAlphaParent: collisionControl((candidate) => {
+      candidate.searches[1].shareCode = candidate.searches[0].shareCode;
+    }),
+    landingCollapsed: collisionControl((candidate) => {
+      candidate.records.worldsLanded = candidate.baselineRecords.worldsLanded + 1;
+    }),
+  };
+  if (Object.values(collisionControls).some((control) => control.ok)) {
+    fails.push('WORLD IDENTITY COLLISION CONTROLS FAILED — one bidirectional name/Atlas/share/landing bleed stayed green: '
+      + JSON.stringify(collisionControls));
+  }
+
+  /* F4 app-level storage failure. Hold only the already-scheduled convergence
+     task so the dying document remains observable. The production heartbeat,
+     mutation capture guard, audio owner, heartbeat timer, pageshow callback,
+     release, and reload all remain the paths under test. */
+  const F4_CONVERGENCE_BINDING = '__cfF4AuthorityConvergenceWitness';
+  const heartbeatTarget = await attachF4ControlTarget(URL10, [F4_CONVERGENCE_BINDING]);
+  await waitForSlice(heartbeatTarget.session, 'F4 heartbeat storage fresh boot');
+  await waitControlF4Writable(
+    heartbeatTarget.session, 'F4 heartbeat storage writable authority', { allowFresh: true },
+  );
+  const heartbeatImportToken = await sliceToken(heartbeatTarget.session);
+  try {
+    await evalF4Control(heartbeatTarget.session,
+      `window.__CF_SLICE__.api.importBlob(${JSON.stringify(VETERAN_RAW)})`);
+  } catch { /* successful replacement destroys this context */ }
+  await waitForSlice(heartbeatTarget.session, 'F4 heartbeat storage fixture import', {
+    previousToken: heartbeatImportToken,
+  });
+  const heartbeatReady = await waitControlF4Writable(
+    heartbeatTarget.session, 'F4 heartbeat storage fixture authority', { previousToken: heartbeatImportToken },
+  );
+  await nativeControlClick(heartbeatTarget.session, '#railsets,#docksets');
+  const heartbeatBefore = await waitControlValue(heartbeatTarget.session, 'F4 heartbeat pre-fault Settings',
+    `(()=>{const state=window.__CF_SLICE__.api.state();return state.panelOpen==='set'?state:null;})()`);
+  const heartbeatRawBefore = heartbeatReady.raw;
+  const heartbeatMark = events.length;
+  const heartbeatArmed = await evalF4Control(heartbeatTarget.session, `(()=>{const api=window.__CF_SLICE__.api;
+    return {hold:api.__smokeArmF4ConvergenceReloadHold(),storage:api.__smokeArmF4HeartbeatStorageFailure()};})()`);
+  await evalF4Control(heartbeatTarget.session, `window.__CF_SLICE__.api.__smokeRunF4Heartbeat()`);
+  const heartbeatProtected = await waitControlValue(heartbeatTarget.session, 'F4 heartbeat protected hold',
+    `(()=>{const state=window.__CF_SLICE__.api.state();return state.persistence.convergenceReloadHold?.phase==='holding'
+      &&state.persistence.hold==='transient-read'?state:null;})()`);
+  await sleep(180);
+  const heartbeatSettled = await evalF4Control(heartbeatTarget.session, `window.__CF_SLICE__.api.state()`);
+  const heartbeatMutationBefore = await evalF4Control(heartbeatTarget.session, `window.__CF_SLICE__.api.state()`);
+  const heartbeatPrimaryBeforeMutation = await evalF4Control(heartbeatTarget.session, READ_PRIMARY_EXPRESSION);
+  await nativeControlClick(heartbeatTarget.session, '#setsnd');
+  const heartbeatMutationAfter = await evalF4Control(heartbeatTarget.session, `window.__CF_SLICE__.api.state()`);
+  const heartbeatPrimaryAfterMutation = await evalF4Control(heartbeatTarget.session, READ_PRIMARY_EXPRESSION);
+  const heartbeatMutation = {
+    beforeSound: heartbeatMutationBefore.sndOn,
+    afterSound: heartbeatMutationAfter.sndOn,
+    countBefore: heartbeatMutationBefore.persistence.mutationBlockCount,
+    countAfter: heartbeatMutationAfter.persistence.mutationBlockCount,
+    witness: heartbeatMutationAfter.persistence.mutationBlockWitness,
+    rawPreserved: heartbeatPrimaryAfterMutation === heartbeatPrimaryBeforeMutation,
+  };
+  await evalF4Control(heartbeatTarget.session, `window.__CF_SLICE__.api.__smokeRunF4Heartbeat()`);
+  await evalF4Control(heartbeatTarget.session, `window.__CF_SLICE__.api.__smokeShowF4()`);
+  const heartbeatCallbackState = await evalF4Control(
+    heartbeatTarget.session, `window.__CF_SLICE__.api.state()`,
+  );
+  const heartbeatOldToken = await sliceToken(heartbeatTarget.session);
+  const heartbeatReleased = await evalF4Control(
+    heartbeatTarget.session, `window.__CF_SLICE__.api.__smokeReleaseF4ConvergenceReload()`,
+  );
+  const heartbeatWitnessDeadline = Date.now() + 8000;
+  let heartbeatWitness = null;
+  while (Date.now() < heartbeatWitnessDeadline) {
+    const witnesses = bindingPayloadsSince(
+      heartbeatTarget.session, heartbeatMark, F4_CONVERGENCE_BINDING,
+    );
+    if (witnesses.length === 1) { heartbeatWitness = witnesses[0]; break; }
+    await sleep(50);
+  }
+  if (heartbeatWitness === null) {
+    throw new Error('F4 convergence release did not publish exactly one native binding witness');
+  }
+  await waitForSlice(heartbeatTarget.session, 'F4 heartbeat convergence reload', {
+    previousToken: heartbeatOldToken,
+  });
+  const heartbeatReloadReady = await waitControlF4Writable(
+    heartbeatTarget.session, 'F4 heartbeat stable successor', { previousToken: heartbeatOldToken },
+  );
+  await send('Target.closeTarget', { targetId: heartbeatTarget.targetId });
+  const heartbeatBundle = {
+    armed: heartbeatArmed,
+    before: heartbeatBefore,
+    protectedState: heartbeatProtected,
+    settledState: heartbeatSettled,
+    mutation: heartbeatMutation,
+    callbackState: heartbeatCallbackState,
+    releaseWitness: heartbeatWitness,
+    reloaded: heartbeatReloadReady.state,
+    rawBefore: heartbeatRawBefore,
+    rawReloaded: heartbeatReloadReady.raw,
+  };
+  const heartbeatAssessment = assessF4HeartbeatStorageFailure(heartbeatBundle);
+  if (!heartbeatReleased || !heartbeatAssessment.ok) {
+    fails.push('F4 HEARTBEAT STORAGE FAILURE: read-only/audio/accrual/heartbeat/reload convergence drifted: '
+      + JSON.stringify(OUTCOME_CONTROLS_ONLY
+        ? { heartbeatReleased, assessment: heartbeatAssessment,
+          protectedPersistence: heartbeatProtected.persistence,
+          protectedAudio: heartbeatProtected.audio,
+          settledActivePlayMs: heartbeatSettled.persistence.runtime?.activePlayMs,
+          mutation: heartbeatMutation,
+          callbackPersistence: heartbeatCallbackState.persistence,
+          releaseWitness: heartbeatWitness,
+          reloadedPersistence: heartbeatReloadReady.state.persistence,
+          rawStable: canonicalJson(heartbeatReloadReady.raw) === canonicalJson(heartbeatRawBefore) }
+        : { heartbeatReleased, assessment: heartbeatAssessment, bundle: heartbeatBundle }));
+  }
+  const heartbeatControl = (mutate) => {
+    const candidate = structuredClone(heartbeatBundle);
+    mutate(candidate);
+    return assessF4HeartbeatStorageFailure(candidate);
+  };
+  const heartbeatControls = {
+    mutationWritable: heartbeatControl((candidate) => {
+      candidate.protectedState.persistence.mutationBlocked = false;
+    }),
+    accrualContinues: heartbeatControl((candidate) => {
+      candidate.settledState.persistence.runtime.activePlayMs += 1;
+    }),
+    heartbeatContinues: heartbeatControl((candidate) => {
+      candidate.protectedState.persistence.heartbeatRunning = true;
+    }),
+    audioContinues: heartbeatControl((candidate) => {
+      candidate.protectedState.audio.runtime.muted = false;
+    }),
+    callbackReacquires: heartbeatControl((candidate) => {
+      candidate.callbackState.persistence.leaseReadCount += 1;
+      candidate.callbackState.persistence.runtime.leaseOwned = true;
+    }),
+    audioNotReleased: heartbeatControl((candidate) => {
+      candidate.releaseWitness.after.audio.disposed = false;
+    }),
+    sameDocument: heartbeatControl((candidate) => {
+      candidate.reloaded.persistence.documentToken = candidate.before.persistence.documentToken;
+    }),
+  };
+  if (Object.values(heartbeatControls).some((control) => control.ok)) {
+    fails.push('F4 HEARTBEAT STORAGE FAILURE CONTROLS FAILED — a writable/accruing/audible/reacquired/unreleased/same-document defect stayed green: '
+      + JSON.stringify(heartbeatControls));
+  }
+
+  /* The heartbeat may renew its lease successfully and then lose the separate
+     durable revision read. That is a distinct storage boundary: the old
+     document still owns the lease locally, but must become unanswerable and
+     converge instead of waiting forever with a stranded owned grant. */
+  const revisionTarget = await attachF4ControlTarget(URL11, [F4_CONVERGENCE_BINDING]);
+  await waitForSlice(revisionTarget.session, 'F4 revision verification fresh boot');
+  await waitControlF4Writable(
+    revisionTarget.session, 'F4 revision verification writable authority', { allowFresh: true },
+  );
+  const revisionImportToken = await sliceToken(revisionTarget.session);
+  try {
+    await evalF4Control(revisionTarget.session,
+      `window.__CF_SLICE__.api.importBlob(${JSON.stringify(VETERAN_RAW)})`);
+  } catch { /* successful replacement destroys this context */ }
+  await waitForSlice(revisionTarget.session, 'F4 revision verification fixture import', {
+    previousToken: revisionImportToken,
+  });
+  const revisionReady = await waitControlF4Writable(
+    revisionTarget.session, 'F4 revision verification fixture authority', { previousToken: revisionImportToken },
+  );
+  await nativeControlClick(revisionTarget.session, '#railsets,#docksets');
+  const revisionBefore = await waitControlValue(revisionTarget.session, 'F4 revision pre-fault Settings',
+    `(()=>{const state=window.__CF_SLICE__.api.state();return state.panelOpen==='set'?state:null;})()`);
+  const revisionRawBefore = revisionReady.raw;
+  const revisionMark = events.length;
+  const revisionArmed = await evalF4Control(revisionTarget.session, `(()=>{const api=window.__CF_SLICE__.api;
+    return {hold:api.__smokeArmF4ConvergenceReloadHold(),revision:api.__smokeArmF4RevisionVerificationFailure()};})()`);
+  await evalF4Control(revisionTarget.session, `window.__CF_SLICE__.api.__smokeRunF4Heartbeat()`);
+  const revisionProtected = await waitControlValue(revisionTarget.session, 'F4 revision verification protected hold',
+    `(()=>{const state=window.__CF_SLICE__.api.state();return state.persistence.convergenceReloadHold?.phase==='holding'
+      &&state.persistence.hold==='transient-read'?state:null;})()`);
+  await sleep(180);
+  const revisionSettled = await evalF4Control(revisionTarget.session, `window.__CF_SLICE__.api.state()`);
+  const revisionMutationBefore = await evalF4Control(revisionTarget.session, `window.__CF_SLICE__.api.state()`);
+  const revisionPrimaryBeforeMutation = await evalF4Control(revisionTarget.session, READ_PRIMARY_EXPRESSION);
+  await nativeControlClick(revisionTarget.session, '#setsnd');
+  const revisionMutationAfter = await evalF4Control(revisionTarget.session, `window.__CF_SLICE__.api.state()`);
+  const revisionPrimaryAfterMutation = await evalF4Control(revisionTarget.session, READ_PRIMARY_EXPRESSION);
+  const revisionMutation = {
+    beforeSound: revisionMutationBefore.sndOn,
+    afterSound: revisionMutationAfter.sndOn,
+    countBefore: revisionMutationBefore.persistence.mutationBlockCount,
+    countAfter: revisionMutationAfter.persistence.mutationBlockCount,
+    witness: revisionMutationAfter.persistence.mutationBlockWitness,
+    rawPreserved: revisionPrimaryAfterMutation === revisionPrimaryBeforeMutation,
+  };
+  await evalF4Control(revisionTarget.session, `window.__CF_SLICE__.api.__smokeRunF4Heartbeat()`);
+  await evalF4Control(revisionTarget.session, `window.__CF_SLICE__.api.__smokeShowF4()`);
+  const revisionCallbackState = await evalF4Control(
+    revisionTarget.session, `window.__CF_SLICE__.api.state()`,
+  );
+  const revisionOldToken = await sliceToken(revisionTarget.session);
+  const revisionReleased = await evalF4Control(
+    revisionTarget.session, `window.__CF_SLICE__.api.__smokeReleaseF4ConvergenceReload()`,
+  );
+  const revisionWitnessDeadline = Date.now() + 8000;
+  let revisionWitness = null;
+  while (Date.now() < revisionWitnessDeadline) {
+    const witnesses = bindingPayloadsSince(
+      revisionTarget.session, revisionMark, F4_CONVERGENCE_BINDING,
+    );
+    if (witnesses.length === 1) { revisionWitness = witnesses[0]; break; }
+    await sleep(50);
+  }
+  if (revisionWitness === null) {
+    throw new Error('F4 revision convergence release did not publish exactly one native binding witness');
+  }
+  await waitForSlice(revisionTarget.session, 'F4 revision verification convergence reload', {
+    previousToken: revisionOldToken,
+  });
+  const revisionReloadReady = await waitControlF4Writable(
+    revisionTarget.session, 'F4 revision verification stable successor', { previousToken: revisionOldToken },
+  );
+  await send('Target.closeTarget', { targetId: revisionTarget.targetId });
+  const revisionBundle = {
+    armed: revisionArmed,
+    before: revisionBefore,
+    protectedState: revisionProtected,
+    settledState: revisionSettled,
+    mutation: revisionMutation,
+    callbackState: revisionCallbackState,
+    releaseWitness: revisionWitness,
+    reloaded: revisionReloadReady.state,
+    rawBefore: revisionRawBefore,
+    rawReloaded: revisionReloadReady.raw,
+  };
+  const revisionAssessment = assessF4RevisionVerificationFailure(revisionBundle);
+  if (!revisionReleased || !revisionAssessment.ok) {
+    fails.push('F4 REVISION VERIFICATION FAILURE: read-only/accrual/audio/heartbeat/reload convergence drifted: '
+      + JSON.stringify(OUTCOME_CONTROLS_ONLY
+        ? { revisionReleased, assessment: revisionAssessment,
+          protectedPersistence: revisionProtected.persistence,
+          protectedAudio: revisionProtected.audio,
+          settledActivePlayMs: revisionSettled.persistence.runtime?.activePlayMs,
+          mutation: revisionMutation,
+          callbackPersistence: revisionCallbackState.persistence,
+          releaseWitness: revisionWitness,
+          reloadedPersistence: revisionReloadReady.state.persistence,
+          rawStable: canonicalJson(revisionReloadReady.raw) === canonicalJson(revisionRawBefore) }
+        : { revisionReleased, assessment: revisionAssessment, bundle: revisionBundle }));
+  }
+  const revisionControl = (mutate) => {
+    const candidate = structuredClone(revisionBundle);
+    mutate(candidate);
+    return assessF4RevisionVerificationFailure(candidate);
+  };
+  const revisionControls = {
+    mutationWritable: revisionControl((candidate) => {
+      candidate.protectedState.persistence.mutationBlocked = false;
+    }),
+    accrualContinues: revisionControl((candidate) => {
+      candidate.settledState.persistence.runtime.activePlayMs += 1;
+    }),
+    heartbeatContinues: revisionControl((candidate) => {
+      candidate.protectedState.persistence.heartbeatRunning = true;
+    }),
+    audioContinues: revisionControl((candidate) => {
+      candidate.protectedState.audio.runtime.muted = false;
+    }),
+    callbackRetriesRevision: revisionControl((candidate) => {
+      candidate.callbackState.persistence.revisionReadCount += 1;
+      candidate.callbackState.persistence.runtime.answerable = true;
+    }),
+    leaseNotReleased: revisionControl((candidate) => {
+      candidate.releaseWitness.after.runtime.leaseOwned = true;
+    }),
+    sameDocument: revisionControl((candidate) => {
+      candidate.reloaded.persistence.documentToken = candidate.before.persistence.documentToken;
+    }),
+  };
+  if (Object.values(revisionControls).some((control) => control.ok)) {
+    fails.push('F4 REVISION VERIFICATION FAILURE CONTROLS FAILED — a writable/accruing/audible/retried/unreleased/same-document defect stayed green: '
+      + JSON.stringify(revisionControls));
+  }
+
   /* 5. zero console errors / exceptions across the whole run */
   const errs = events.filter((e) =>
     (e.method === 'Runtime.exceptionThrown') ||
@@ -17708,6 +18824,7 @@ try {
   releaseSlowSpecies();
   try { await browser.close(); } catch (e) { fails.push('browser close: ' + e.message); }
   server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server6.close(); server7.close(); server8.close();
+  server9.close(); server10.close(); server11.close();
 }
 
 if (fails.length) {
@@ -17721,6 +18838,10 @@ if (fails.length) {
     + fails.map((message, index) => `  ${index + 1}. ${failureTitle(message)}`).join('\n'));
   console.error('SLICE SMOKE: FAILURE DETAILS\n  - ' + fails.join('\n  - '));
   process.exit(1);
+}
+if (OUTCOME_CONTROLS_ONLY) {
+  console.log('SLICE OUTCOME CONTROLS: PASS — two source-generated leaf-seed-colliding worlds retain distinct Search/name/Atlas/Land/save-reload/share identity, and F4 heartbeat lease-storage plus revision-read failures stop answerability/accrual/audio/heartbeat without automatic reacquisition before a read-only convergence reload.');
+  process.exit(0);
 }
 console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail/Equip, exact carrier↔legacy↔DOM parity, conditional comparison, one receipt, reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);

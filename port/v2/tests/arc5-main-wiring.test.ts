@@ -92,7 +92,9 @@ function bootErrors(source: string): string[] {
   const verify = ensure.indexOf('const loaded = committedArc5OwnershipState(', durable);
   const publish = ensure.indexOf('arc5OwnershipState = loaded.state;', verify);
   if (!ensure.includes('if (!arc5OwnershipBootstrapPending')
-    || !ensure.includes('&& !arc4OwnershipBootstrapPending) return true;')) {
+    || !ensure.includes(
+      '&& !arc4OwnershipBootstrapPending && !worldIdentityBootstrapPending) return true;',
+    )) {
     errors.push('boot-pending-entry');
   }
   for (const needle of [
@@ -231,7 +233,9 @@ function bootErrors(source: string): string[] {
     || load.indexOf('const durableArc5BootLive = captureArc5BootLiveProjection(save);') > arc4At) {
     errors.push('boot-runtime-gate-binding');
   }
-  if (!load.includes('|| arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending)')) {
+  if (!load.includes(
+    '|| arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending\n        || worldIdentityBootstrapPending)',
+  )) {
     errors.push('boot-initial-lease-gate');
   }
   if (!load.includes("arc5OwnershipProtection ||= 'bootstrap-failed';")) {
@@ -837,7 +841,7 @@ describe('Arc 5 Main authority wiring', () => {
       mainSource,
       'async function completeTraining(',
       '\nconst F4_FRESH_RACE_RELEASE_KEY',
-      "            ...(arc5Preparation.kind === 'prepared' ? arc5Preparation.writes : []),\n",
+      "          ...(arc5Preparation.kind === 'prepared' ? arc5Preparation.writes : []),\n",
       '',
     );
     expect(trainingErrors(missingWrite)).toContain('training-composition');

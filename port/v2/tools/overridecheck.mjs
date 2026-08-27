@@ -472,7 +472,7 @@ function auditRouteTableReferences(program, label, source) {
 const ART_SOURCE_ROOT = path.join(root, 'packages/art/src');
 const KNOWN_VERBATIM_JS_HASHES = new Map([
   ['artextras.verbatim.js', 'dadfd860bc21b4472efb80f91399ddb89b704bc2b0396fe848aa8628b21cc2c7'],
-  ['galaxyart.verbatim.js', '2cba375ab1f806ed2eaf394fa599e05dc1fd0e79097b25120cc0a662dca22f45'],
+  ['galaxyart.verbatim.js', '789a9f4e326896f6e8f9f142a6128ac8ec48a5388e2304afd4114a981ff14d27'],
   ['hdart.verbatim.js', '8ab222a3c63a0db04c28a7e5d51a5af4e34e7dbdfe1573eaaaa2c50bed086e49'],
   ['hdportrait.worker.verbatim.js', 'e0d4fe5173246e3fb22ac887e24eb34fda35d454d7f4741a01ecd51cdae3f009'],
   ['thumbart.verbatim.js', '8fcaf662bcedd2d2eebf75a8ad00c5bc243190d1cc5c8071a763113f76c77c48'],

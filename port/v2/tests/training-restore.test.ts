@@ -23,7 +23,12 @@ import {
   type LegacyTrainingCheckpointV1,
   type SaveStateV2,
 } from '@cf/persistence';
-import { navToView, resolveViewToNav } from '@cf/scene';
+import {
+  canonicalCF1WorldAddressFromNav,
+  canonicalCF1WorldAtlasId,
+  navToView,
+  resolveViewToNav,
+} from '@cf/scene';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -70,6 +75,10 @@ const MAIN_SOURCE = fs.readFileSync(
   fileURLToPath(new URL('../apps/game/src/main.ts', import.meta.url)),
   'utf8',
 );
+const RESTORE_SOURCE = fs.readFileSync(
+  fileURLToPath(new URL('../apps/game/src/training-restore.ts', import.meta.url)),
+  'utf8',
+);
 
 beforeAll(() => installCaptureHooks());
 
@@ -95,13 +104,24 @@ function canonicalView(value: unknown): Record<string, unknown> {
 
 function canonicalViews(): {
   earth: Record<string, unknown>;
+  earthAtlasId: string;
   completion: Record<string, unknown>;
 } {
   const earth = canonicalView(veteranRaw.view);
+  const earthRoute = resolveViewToNav(earth);
+  if (!earthRoute.ok || earthRoute.state.mode !== 'surface') {
+    throw new Error('Earth capacity route did not source-prove');
+  }
+  const earthAddress = canonicalCF1WorldAddressFromNav(earthRoute.state);
+  if (!earthAddress.ok) throw new Error('Earth address did not source-prove');
   const completionRaw = structuredClone(veteranRaw.view) as Record<string, unknown>;
   completionRaw.type = 'star';
   delete completionRaw.pseed;
-  return { earth, completion: canonicalView(completionRaw) };
+  return {
+    earth,
+    earthAtlasId: canonicalCF1WorldAtlasId(earthAddress.address),
+    completion: canonicalView(completionRaw),
+  };
 }
 
 interface TrainingCurrent {
@@ -173,6 +193,7 @@ function restore(
     now: NOW,
     epoch: COMMIT_EPOCH,
     canonicalEarthView: views.earth,
+    canonicalEarthAtlasId: views.earthAtlasId,
     completionView: views.completion,
   });
   if (!result.ok) throw new Error('legacy Training restore candidate was refused');
@@ -193,6 +214,47 @@ function allObjectKeys(value: unknown, keys = new Set<string>()): Set<string> {
 }
 
 describe('legacy Field Training checkpoint restoration candidate', () => {
+  it('preserves the exact world carrier inside Training one-write durability and verifies it afterward', () => {
+    const start = MAIN_SOURCE.indexOf('async function completeTraining(');
+    const end = MAIN_SOURCE.indexOf("const F4_FRESH_RACE_RELEASE_KEY", start);
+    const source = MAIN_SOURCE.slice(start, end);
+    const before = source.indexOf('const durableWorldIdentity = readWorldIdentity(f4Runtime!.extensions);');
+    const writes = source.indexOf('const worldIdentityWrites = encodeWorldIdentityExtensionWrites(', before);
+    const commit = source.indexOf('await f4Runtime!.commit(', writes);
+    const coupled = source.indexOf('...worldIdentityWrites,', commit);
+    const durable = source.indexOf('durablyWritten = true;', coupled);
+    const after = source.indexOf('const restoredWorldIdentity = readWorldIdentity(f4Runtime!.extensions);', durable);
+    const verification = source.indexOf('write.carrier.json !== worldIdentityWrites[index]!.carrier.json', after);
+    const publication = source.indexOf('worldIdentityState = restoredWorldIdentity.state;', verification);
+    expect([before, writes, commit, coupled, durable, after, verification, publication]
+      .every((anchor) => anchor >= 0)).toBe(true);
+    expect(before).toBeLessThan(writes);
+    expect(writes).toBeLessThan(commit);
+    expect(commit).toBeLessThan(coupled);
+    expect(coupled).toBeLessThan(durable);
+    expect(durable).toBeLessThan(after);
+    expect(after).toBeLessThan(verification);
+    expect(verification).toBeLessThan(publication);
+    expect(source.split('await f4Runtime!.commit(')).toHaveLength(2);
+
+    const weakened = source.replace(
+      'write.carrier.json !== worldIdentityWrites[index]!.carrier.json',
+      'false /* omitted exact world-carrier byte comparison */',
+    );
+    expect(weakened).not.toContain(
+      'write.carrier.json !== worldIdentityWrites[index]!.carrier.json',
+    );
+    const preservesExactlyOnce = (candidate: string): boolean => (
+      candidate.split('await f4Runtime!.commit(').length === 2
+      && candidate.includes('...worldIdentityWrites,')
+      && candidate.includes('write.carrier.json !== worldIdentityWrites[index]!.carrier.json')
+      && candidate.indexOf('write.carrier.json !== worldIdentityWrites[index]!.carrier.json')
+        > candidate.indexOf('durablyWritten = true;')
+    );
+    expect(preservesExactlyOnce(source)).toBe(true);
+    expect(preservesExactlyOnce(weakened)).toBe(false);
+  });
+
   it('keeps the Arc 2 write inside Training single-write durability and publishes it afterward', () => {
     const start = MAIN_SOURCE.indexOf('async function completeTraining(');
     const end = MAIN_SOURCE.indexOf("const F4_FRESH_RACE_RELEASE_KEY", start);
@@ -230,7 +292,7 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     expect(state.savedView).toBe(views.completion);
     expect(state.tutDone).toBe(true);
     expect(state.tutSnapPending).toBeNull();
-    expect(state.homeId).toBe('p133');
+    expect(state.homeId).toBe(views.earthAtlasId);
 
     const directStats = [
       'shares', 'jumps', 'anomalies', 'events', 'duels', 'duelwins',
@@ -267,7 +329,7 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
 
     expect(earthEntry).not.toBe(trainingEarth);
     expect(earthEntry).toMatchObject({
-      id: 'p133', title: 'Earth', sub: 'The cradle', badge: 'Home',
+      id: views.earthAtlasId, title: 'Earth', sub: 'The cradle', badge: 'Home',
       star: 'Current Sol', fav: true, t: 1_753_899_100_000,
     });
     expect(earthEntry.where).toBe(views.earth);
@@ -302,7 +364,7 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     expect(exported.conq).toEqual(current.conquered);
     expect(exported.land).not.toContain(133);
     const exportedEarth = (exported.log as Array<Record<string, unknown>>)
-      .find((entry) => entry.id === 'p133');
+      .find((entry) => entry.id === views.earthAtlasId);
     expect(exportedEarth?.where).toEqual(views.earth);
     const keys = allObjectKeys(exported);
     for (const privateKey of ['parentCell', 'ordinal', 'layer', 'format']) {
@@ -490,7 +552,7 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     const withLiveEarth = trainingCurrent(checkpoint).current;
     const retained = restore(withLiveEarth, checkpoint).earthEntry;
     expect(retained).toMatchObject({
-      id: 'p133',
+      id: canonicalViews().earthAtlasId,
       title: 'Earth',
       sub: 'Training stub',
       badge: 'Surveyed',
@@ -505,7 +567,7 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     withoutLiveEarth.homeId = null;
     const created = restore(withoutLiveEarth, checkpoint);
     expect(created.earthEntry).toMatchObject({
-      id: 'p133',
+      id: canonicalViews().earthAtlasId,
       title: 'Earth',
       sub: 'Terran World',
       badge: 'Home',
@@ -514,8 +576,64 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
       t: NOW,
     });
     expect(created.earthEntry.where).toEqual(canonicalViews().earth);
-    expect(created.state.homeId).toBe('p133');
-    expect(created.state.logMap.filter(([id]) => id === 'p133')).toHaveLength(1);
+    expect(created.state.homeId).toBe(canonicalViews().earthAtlasId);
+    expect(created.state.logMap.filter(([id]) => id === canonicalViews().earthAtlasId)).toHaveLength(1);
+  });
+
+  it('converges current-composite and legacy Earth rows to one composite home identity', () => {
+    const checkpoint = checkpointFrom();
+    const fixtureCurrent = trainingCurrent(checkpoint);
+    const views = canonicalViews();
+    const legacyEarth = fixtureCurrent.current.logMap.find(([id]) => id === 'p133')![1];
+    const exactEarth: Record<string, unknown> = {
+      ...legacyEarth,
+      id: views.earthAtlasId,
+      title: 'Exact Earth history',
+      fav: true,
+    };
+    fixtureCurrent.current.logMap = [
+      fixtureCurrent.nonEarthRow,
+      ['p133', legacyEarth],
+      [views.earthAtlasId, exactEarth],
+    ];
+    fixtureCurrent.current.homeId = views.earthAtlasId;
+
+    const restored = restore(fixtureCurrent.current, checkpoint);
+    expect(restored.state.logMap.filter(([id]) => id === 'p133')).toHaveLength(0);
+    expect(restored.state.logMap.filter(([id]) => id === views.earthAtlasId)).toHaveLength(1);
+    expect(restored.state.logMap[0]).toBe(fixtureCurrent.nonEarthRow);
+    expect(restored.earthEntry).toMatchObject({
+      id: views.earthAtlasId,
+      title: 'Exact Earth history',
+      fav: true,
+      where: views.earth,
+    });
+    expect(restored.state.homeId).toBe(views.earthAtlasId);
+
+    const rejected = buildLegacyTrainingRestoreCandidate({
+      current: fixtureCurrent.current,
+      checkpoint,
+      registry,
+      now: NOW,
+      epoch: COMMIT_EPOCH,
+      canonicalEarthView: views.earth,
+      canonicalEarthAtlasId: 'p133',
+      completionView: views.completion,
+    });
+    expect(rejected).toEqual({ ok: false });
+
+    const bindsExactEarth = (source: string): boolean => (
+      source.includes('const canonicalEarth = resolveCF1WorldAddress({')
+      && source.includes('galaxy: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y },')
+      && source.includes('star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },')
+      && source.includes('idAddress.address.key !== canonicalEarth.address.key')
+      && !source.includes('idAddress.address.planet.seed !== 133')
+    );
+    expect(bindsExactEarth(RESTORE_SOURCE)).toBe(true);
+    expect(bindsExactEarth(RESTORE_SOURCE.replace(
+      'idAddress.address.key !== canonicalEarth.address.key',
+      'idAddress.address.planet.seed !== 133',
+    ))).toBe(false);
   });
 
   it('reserves one capped Atlas slot for checkpoint-owned Earth history', () => {
@@ -532,14 +650,14 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
 
     const restored = restore(current, checkpoint).state;
     expect(restored.logMap).toHaveLength(120);
-    expect(restored.logMap.filter(([id]) => id === 'p133')).toHaveLength(1);
+    expect(restored.logMap.filter(([id]) => id === canonicalViews().earthAtlasId)).toHaveLength(1);
     expect(restored.logMap.some(([id]) => id === 'p10000')).toBe(false);
     expect(restored.logMap.some(([id]) => id === 'p10129')).toBe(true);
     const exported = JSON.parse(exportSaveV2(restored, NOW)) as {
       log: Array<Record<string, unknown>>;
     };
     expect(exported.log).toHaveLength(120);
-    expect(exported.log.some((entry) => entry.id === 'p133')).toBe(true);
+    expect(exported.log.some((entry) => entry.id === canonicalViews().earthAtlasId)).toBe(true);
   });
 
   it('couples restored checkpoint gear to one exact Arc 2 carrier and publishes only matching durable bytes', () => {

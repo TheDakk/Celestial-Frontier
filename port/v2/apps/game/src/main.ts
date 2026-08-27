@@ -46,7 +46,7 @@ import {
   type SpeciesThumbBinding,
 } from './species-art-loader.js';
 import {
-  initTraining, gameEvent, trainingActive, trainingStepId,
+  initTraining, gameEvent, trainingActive, trainingStepId, refreshTrainingScope,
   type TrainingEndIntent, type TrainingEndResult,
 } from './training.js';
 import {
@@ -105,9 +105,11 @@ import {
   navigationAuthorityFailureFor,
 } from './search-travel.js';
 import { createAppChromeController } from './app-chrome.js';
+import { createFrameCoalescer } from './frame-coalescer.js';
 import {
   NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, resolveViewToNav,
-  canonicalCF1WorldAddressFromNav,
+  canonicalCF1WorldAddressFromNav, canonicalCF1WorldAtlasId,
+  resolveCF1WorldAtlasId, CF1_WORLD_ATLAS_ID_PREFIX,
   resolveCF1Galaxy, resolveCF1Star, resolveCF1World,
   resolveCF1WorldAddress,
   isProvenPlanetFor, getProvenGalaxyKey, getProvenStarKey, getProvenPlanetKey,
@@ -117,6 +119,7 @@ import {
   shipVisualStateOf,
   GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
   type ProvenGalaxy, type ProvenStar, type ProvenPlanet,
+  type CanonicalCF1WorldAddress,
   type ShipVisualState,
 } from '@cf/scene';
 import {
@@ -149,7 +152,7 @@ import { encodeWhere } from '@cf/domain-strays';
 import { describeSpecies } from '@cf/domain-genome';
 import { battleStats, STAT_NAMES, STAT_HUES } from '@cf/domain-combatcore';
 import {
-  STORES, createSaveRepository, createIndexedDBBackend,
+  STORES, F3_ACTIVE_PLAY_LEASE_KEY, createSaveRepository, createIndexedDBBackend,
   createRevisionedRepository, initializeFreshV5, migrateStoredV4ToV5,
   prepareV5Replacement, readF4Authority, readRevisionedSaveV5WithRecovery,
   arc4OwnershipLegacyMirrorMatches, readArc4Ownership,
@@ -159,12 +162,17 @@ import {
   arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
   prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror,
   readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
+  canonicalWorldLandingCount, claimCanonicalWorldIdentity, createEmptyWorldIdentityState,
+  encodeWorldIdentityExtensionWrites, hasCanonicalWorldLanded,
+  prepareWorldIdentityBootstrap, readWorldIdentity,
+  recordCanonicalWorldLanding, setCanonicalWorldName, worldIdentityName,
   importSaveV2, exportSaveV2,
   type SaveStateV2, type ContentRegistry, type Arc2LootStateV1,
   type Arc5OwnershipMigrationEvidence,
   type PreparedArc5OwnershipMigrationV2,
   type ImportRouteIngressV2, type ImportTrainingSnapshotIngressV2,
   type StorageBackend, type V5Extensions,
+  type CanonicalWorldIdentityStateV1,
 } from '@cf/persistence';
 import {
   MAX_GEAR_CAPACITY,
@@ -330,6 +338,9 @@ let arc5OwnershipBootstrapPrepared: PreparedArc5OwnershipMigrationV2 | null = nu
 let arc5OwnershipBootstrapPending = false;
 let arc5OwnershipProtection: string | null = null;
 let lastArc5BootstrapOutcome: string | null = null;
+let worldIdentityState: CanonicalWorldIdentityStateV1 = createEmptyWorldIdentityState();
+let worldIdentityBootstrapPending = false;
+let worldIdentityProtection: string | null = null;
 let currentCapturePresentationFence: string | null = null;
 let tameGreetingAudioOwner: TameGreetingAudioOwner | null = null;
 let smokeRejectNextArc4ActionStorage = false;
@@ -346,6 +357,23 @@ let lastSmokeArc4ActionFaultWitness: Readonly<{
 }> | null = null;
 let f4AuthorityReloadScheduled = false;
 let smokeRejectNextF4HideCheckpoint = false;
+let smokeRejectNextF4HeartbeatStorage = false;
+let smokeRejectNextF4RevisionVerification = false;
+let smokeF4LeaseReadCount = 0;
+let smokeF4RevisionReadCount = 0;
+const smokeF4ConvergenceReloadHold = createProductActionDiagnosticHold();
+let lastF4HeartbeatStorageFault: Readonly<{
+  schema: 'cf-v2-f4-heartbeat-storage-fault/v1';
+  context: string;
+  operation: 'acquire' | 'renew';
+  message: string;
+  leaseReadCount: number;
+}> | null = null;
+let lastF4RevisionVerificationFault: Readonly<{
+  schema: 'cf-v2-f4-revision-verification-fault/v1';
+  message: string;
+  revisionReadCount: number;
+}> | null = null;
 let lastF4HideWitness: Readonly<{
   schema: 'cf-v2-f4-hide/v1'; checkpoint: 'committed' | 'skipped' | 'rejected';
   checkpointError: string | null; visibilityAttempted: boolean;
@@ -361,14 +389,83 @@ function scheduleF4AuthorityConvergenceReload(runtime: F4RuntimeAuthority, detai
   f4AuthorityReloadScheduled = true;
   setTimeout(() => {
     void (async () => {
-      await tameGreetingAudioOwner?.dispose().catch(() => undefined);
-      await runtime.release().catch(() => undefined);
+      await smokeF4ConvergenceReloadHold.holdIfArmed('f4-authority-convergence');
+      const before = Object.freeze({
+        hold: persistHold || null,
+        mutationBlocked: playerMutationsBlocked(),
+        heartbeatRunning: f4HeartbeatTimer !== 0,
+        leaseReadCount: smokeF4LeaseReadCount,
+        revisionReadCount: smokeF4RevisionReadCount,
+        runtime: runtime.diagnostics(),
+        audio: tameGreetingAudioOwner?.diagnostics() ?? null,
+      });
+      const errors: string[] = [];
+      const audioOwner = tameGreetingAudioOwner;
+      try { await audioOwner?.dispose(); }
+      catch (error) { errors.push(error instanceof Error ? error.message : String(error)); }
+      try { await runtime.release(); }
+      catch (error) { errors.push(error instanceof Error ? error.message : String(error)); }
+      if (f4Runtime === runtime) f4Runtime = null;
+      const afterAudio = audioOwner?.diagnostics() ?? null;
+      const witness = Object.freeze({
+        schema: 'cf-v2-f4-authority-convergence/v1' as const,
+        status: errors.length === 0 && tameGreetingAudioReleasedForReload(afterAudio)
+          ? 'released' as const : 'release-failed' as const,
+        errors: Object.freeze(errors),
+        detail,
+        documentToken: DOCUMENT_TOKEN,
+        before,
+        after: Object.freeze({
+          heartbeatRunning: f4HeartbeatTimer !== 0,
+          leaseReadCount: smokeF4LeaseReadCount,
+          revisionReadCount: smokeF4RevisionReadCount,
+          runtime: runtime.diagnostics(),
+          audio: afterAudio,
+        }),
+      });
+      try {
+        const binding = (window as unknown as Record<string, unknown>).__cfF4AuthorityConvergenceWitness;
+        if (typeof binding === 'function') {
+          (binding as (payload: string) => unknown)(JSON.stringify(witness));
+        }
+      } catch { /* optional diagnostics must never strand convergence */ }
       location.reload();
     })();
   }, 0);
 }
+type F4HeartbeatStorageError = Extract<
+  Awaited<ReturnType<F4RuntimeAuthority['heartbeat']>>,
+  { readonly kind: 'storage-error' }
+>;
+function handleF4HeartbeatStorageError(
+  runtime: F4RuntimeAuthority,
+  outcome: F4HeartbeatStorageError,
+  context: string,
+): void {
+  /* A failed acquire/renew leaves the durable lease unknowable. The runtime
+     has already revoked its local grant; the app must likewise stop every
+     answerable/player-mutation surface and converge through a reload instead
+     of letting the periodic timer silently reacquire in this document. */
+  lastF4HeartbeatStorageFault = Object.freeze({
+    schema: 'cf-v2-f4-heartbeat-storage-fault/v1',
+    context,
+    operation: outcome.operation,
+    message: outcome.message,
+    leaseReadCount: smokeF4LeaseReadCount,
+  });
+  persistenceBootKind = 'transient-protected';
+  scheduleF4AuthorityConvergenceReload(
+    runtime,
+    `${context}: lease ${outcome.operation} storage failure (${outcome.message})`,
+  );
+}
 async function ensureF4RevisionCurrent(runtime: F4RuntimeAuthority): Promise<boolean> {
   try {
+    smokeF4RevisionReadCount += 1;
+    if (smokeRejectNextF4RevisionVerification) {
+      smokeRejectNextF4RevisionVerification = false;
+      throw new Error('slice-smoke injected F4 revision verification failure');
+    }
     const durableRevision = await revisionRepo.revision();
     if (durableRevision === runtime.revision) return true;
     scheduleF4AuthorityConvergenceReload(
@@ -377,12 +474,17 @@ async function ensureF4RevisionCurrent(runtime: F4RuntimeAuthority): Promise<boo
     );
     return false;
   } catch (error) {
-    persistHold = 'protected-payload';
+    const message = error instanceof Error ? error.message : String(error);
+    lastF4RevisionVerificationFault = Object.freeze({
+      schema: 'cf-v2-f4-revision-verification-fault/v1',
+      message,
+      revisionReadCount: smokeF4RevisionReadCount,
+    });
     persistenceBootKind = 'transient-protected';
-    persistenceProtectedDetail = `revision verification failed (${error instanceof Error ? error.message : String(error)})`;
-    runtime.setAnswerable(false);
-    tameGreetingAudioOwner?.setAnswerable(false);
-    stopF4Heartbeat();
+    scheduleF4AuthorityConvergenceReload(
+      runtime,
+      `revision verification failed (${message})`,
+    );
     return false;
   }
 }
@@ -390,7 +492,7 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
   if (!arc5OwnershipBootstrapPending
     && !f4SeedBootstrapPending && !bootRouteRepairPending
     && !arc2LootBootstrapPending && !arc3EngineeringBootstrapPending
-    && !arc4OwnershipBootstrapPending) return true;
+    && !arc4OwnershipBootstrapPending && !worldIdentityBootstrapPending) return true;
   if (runtime !== f4Runtime || !runtime.diagnostics().leaseOwned) return false;
   if (bootAuthorityCommitInFlight) return bootAuthorityCommitInFlight;
   const productBootstrapWasPending = arc2LootBootstrapPending;
@@ -400,6 +502,8 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
   const ownershipV2BootstrapWasPending = arc5OwnershipBootstrapPending;
   const ownershipV2StateAtCommit = arc5OwnershipState;
   const ownershipV2PreparedAtCommit = arc5OwnershipBootstrapPrepared;
+  const worldIdentityBootstrapWasPending = worldIdentityBootstrapPending;
+  const worldIdentityStateAtCommit = worldIdentityState;
   const productCandidate = bootProductBootstrapCandidate;
   const run = (async (): Promise<boolean> => {
     let durable = false;
@@ -504,6 +608,21 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
         lastArc5BootstrapOutcome = loaded.state.mode === 'current'
           ? 'committed-published' : 'committed-protected';
       }
+      if (worldIdentityBootstrapWasPending) {
+        const loaded = readWorldIdentity(seeded.saved.extensions);
+        const expectedWrites = encodeWorldIdentityExtensionWrites(worldIdentityStateAtCommit);
+        if (loaded.kind !== 'loaded') {
+          throw new Error('canonical world identity carrier did not converge');
+        }
+        const loadedWrites = encodeWorldIdentityExtensionWrites(loaded.state);
+        if (loadedWrites.some((write, index) => (
+          write.carrier.json !== expectedWrites[index]!.carrier.json
+        ))) {
+          throw new Error('canonical world identity carrier did not converge');
+        }
+        worldIdentityState = loaded.state;
+        worldIdentityProtection = null;
+      }
       bootProductBootstrapCandidate = null;
       f4SeedBootstrapPending = false;
       bootRouteRepairPending = false;
@@ -512,6 +631,7 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
       arc4OwnershipBootstrapPending = false;
       arc5OwnershipBootstrapPending = false;
       arc5OwnershipBootstrapPrepared = null;
+      worldIdentityBootstrapPending = false;
       if (productBootstrapWasPending) {
         arc2LootProtection = null;
         inventoryPanelController.setState(arc2LootState);
@@ -531,6 +651,7 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
       arc4OwnershipBootstrapPending = false;
       arc5OwnershipBootstrapPending = false;
       arc5OwnershipBootstrapPrepared = null;
+      worldIdentityBootstrapPending = false;
       bootProductBootstrapCandidate = null;
       if (productBootstrapWasPending) {
         arc2LootState = null;
@@ -564,6 +685,11 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
           lastArc4BootstrapOutcome = 'committed-publication-reload';
         }
       }
+      if (worldIdentityBootstrapWasPending) {
+        worldIdentityState = createEmptyWorldIdentityState();
+        worldIdentityProtection = durable
+          ? 'committed-publication-reload' : 'bootstrap-failed';
+      }
       persistHold = 'protected-payload';
       persistenceBootKind = 'transient-protected';
       persistenceProtectedDetail = error instanceof Error ? error.message : String(error);
@@ -589,7 +715,8 @@ function f4RuntimeMayMutate(runtime: F4RuntimeAuthority | null = f4Runtime): run
   if (!runtime || persistHold || f4SeedBootstrapPending || bootRouteRepairPending
     || arc2LootBootstrapPending || arc3EngineeringBootstrapPending
     || arc5OwnershipBootstrapPending
-    || arc4OwnershipBootstrapPending) return false;
+    || arc4OwnershipBootstrapPending || worldIdentityBootstrapPending
+    || worldIdentityProtection !== null) return false;
   const diagnostics = runtime.diagnostics();
   return diagnostics.leaseOwned && !diagnostics.staleBlocked;
 }
@@ -602,13 +729,17 @@ const stopF4Heartbeat = (): void => {
   f4HeartbeatTimer = 0;
 };
 const heartbeatF4 = async (): Promise<void> => {
-  if (!f4Runtime || !f4PageVisible()
+  if (!f4Runtime || persistHold || !f4PageVisible()
     || activePersist || importWriteInFlight || replacementTransaction) return;
   if (f4HeartbeatInFlight) return f4HeartbeatInFlight;
   let heartbeatOwned = false;
   let checkpointDue = false;
   const runtime = f4Runtime;
   const run = runtime.heartbeat().then((outcome) => {
+    if (outcome.kind === 'storage-error') {
+      handleF4HeartbeatStorageError(runtime, outcome, 'periodic F4 heartbeat');
+      return;
+    }
     heartbeatOwned = outcome.kind === 'owned';
     checkpointDue = outcome.kind === 'owned'
       && performance.now() - f4LastCheckpointAt >= F4_CHECKPOINT_MS;
@@ -616,11 +747,13 @@ const heartbeatF4 = async (): Promise<void> => {
   f4HeartbeatInFlight = run;
   try { await run; }
   finally { if (f4HeartbeatInFlight === run) f4HeartbeatInFlight = null; }
+  if (!heartbeatOwned) return;
   if (heartbeatOwned) {
     if (!await ensureF4RevisionCurrent(runtime)) return;
     if ((f4SeedBootstrapPending || bootRouteRepairPending
       || arc2LootBootstrapPending || arc3EngineeringBootstrapPending
-      || arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending)
+      || arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending
+      || worldIdentityBootstrapPending)
       && !await ensureBootAuthorityCommit(runtime)) return;
     if (f4RuntimeMayAnswer(runtime)) {
       runtime.setAnswerable(app.ticker?.started === true);
@@ -699,13 +832,18 @@ const checkpointAndHideF4 = (): Promise<void> => {
 const showF4 = async (): Promise<void> => {
   if (f4HideInFlight) await f4HideInFlight.catch(() => undefined);
   const runtime = f4Runtime;
-  if (!runtime || !f4PageVisible()) return;
+  if (!runtime || persistHold || !f4PageVisible()) return;
   const outcome = await runtime.setVisible(true);
+  if (outcome.kind === 'storage-error') {
+    handleF4HeartbeatStorageError(runtime, outcome, 'visible F4 heartbeat');
+    return;
+  }
   if (outcome.kind === 'owned') {
     if (!await ensureF4RevisionCurrent(runtime)) return;
     if ((f4SeedBootstrapPending || bootRouteRepairPending
       || arc2LootBootstrapPending || arc3EngineeringBootstrapPending
-      || arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending)
+      || arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending
+      || worldIdentityBootstrapPending)
       && !await ensureBootAuthorityCommit(runtime)) return;
     if (persistHold || runtime !== f4Runtime) return;
     if (!ecologyEpochAuthority.projectionMayAnswer()) {
@@ -1052,7 +1190,16 @@ let smokeRejectArc4StorageBoundary = false;
    repository and exact product-action owner. Only the armed action-scoped
    compare-and-apply is rejected; ordinary play delegates byte-for-byte. */
 const persistenceBackend: StorageBackend = {
-  get: (store, key) => indexedDBPersistenceBackend.get(store, key),
+  get: (store, key) => {
+    if (store === 'meta' && key === F3_ACTIVE_PLAY_LEASE_KEY) {
+      smokeF4LeaseReadCount++;
+      if (smokeRejectNextF4HeartbeatStorage) {
+        smokeRejectNextF4HeartbeatStorage = false;
+        return Promise.reject(new Error('slice-smoke injected F4 heartbeat lease storage failure'));
+      }
+    }
+    return indexedDBPersistenceBackend.get(store, key);
+  },
   apply: (operations) => indexedDBPersistenceBackend.apply(operations),
   compareAndApply: (checks, operations, clearStores) => {
     if (smokeRejectArc3StorageBoundary) {
@@ -1357,7 +1504,10 @@ function showSurvey(
     ...supplementalRows,
   ];
   const isPlanet = typeof d.planetSeed === 'number';
-  const landedPlanet = isPlanet && !!save?.landed.includes(d.planetSeed as number);
+  const shownWorld = isPlanet ? activeCardWorldAddress() : null;
+  const landedPlanet = shownWorld !== null
+    && d.planetSeed === shownWorld.planet.seed
+    && hasCanonicalWorldLanded(worldIdentityState, shownWorld);
   const rarityView = typeof d.designation?.name === 'string'
     ? projectDisplayRarity(d.designation.tier)
     : null;
@@ -1391,6 +1541,7 @@ function showSurvey(
   syncSurfaceChromeBottom();
   surveyDockEl.classList.add('on');
   surveyDockEl.setAttribute('aria-expanded', 'true');
+  refreshTrainingScope();
 }
 function hideSurvey(restoreFocus = false): void {
   card.style.display = 'none';
@@ -2153,7 +2304,7 @@ function fillRecords(): void {
   const st = save.stats || {};
   const counts: Array<[string, number]> = [
     ['galaxies seen', save.galSeen.length], ['systems charted', save.sysSeen.length],
-    ['worlds landed', save.landed.length], ['world types met', save.ptypesSeen.length],
+    ['worlds landed', canonicalWorldLandingCount(worldIdentityState)], ['world types met', save.ptypesSeen.length],
     ['star kinds met', save.starKindsSeen.length], ['species catalogued', save.codex.length],
     ['surveys', save.surveyedSet.length],
   ];
@@ -2305,12 +2456,26 @@ const searchTravel = createSearchTravelController({
   currentNav: () => nav,
   currentSave: () => save || null,
   shipLiverySeed: () => SHIP_LIVERY_SEED,
-  currentPlanetName: (planetSeed) => customNames.get('p' + planetSeed) || null,
+  currentPlanetName: (address) => worldIdentityName(worldIdentityState, address),
   routeChangeBlocked: () => blockRouteChangeWhileProductAction(),
   mutationsBlocked: () => playerMutationsBlocked(),
   planetNodeForProof,
-  commitNavigation: ({ target, committedNav, focusPlanet, customPlanetName }) => {
-    if (focusPlanet && customPlanetName) {
+  commitNavigation: ({ target, committedNav, focusPlanet, focusAddress, customPlanetName }) => {
+    const namedWorld = focusPlanet && focusAddress && customPlanetName
+      ? focusAddress : null;
+    if (namedWorld && focusPlanet && customPlanetName) {
+      const naming = setCanonicalWorldName(
+        worldIdentityState,
+        namedWorld,
+        customPlanetName,
+        f4Runtime?.extensions ?? EMPTY_V5_EXTENSIONS,
+      );
+      if (naming.capacityProtected) {
+        toast('World record full', 'This named route was not applied; your current expedition remains unchanged.', true);
+        return false;
+      }
+      worldIdentityState = naming.state;
+      /* v4 remains an export/read compatibility mirror, never identity. */
       customNames.set('p' + focusPlanet.seed, customPlanetName);
       save.customNames = [...customNames.entries()];
     }
@@ -2324,6 +2489,7 @@ const searchTravel = createSearchTravelController({
     if (focusPlanet && target.mode === 'surface') {
       surveyPlanet(focusPlanet, target.star, target.planet);
     }
+    return true;
   },
   onPrimeReachBlocked: () => { toastPrimeReachBoundary(); },
   onCharterReachBlocked: () => { toastCharterBoundary(ascHintFor(ascStage())); },
@@ -2447,7 +2613,22 @@ async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<stri
         stopF4Heartbeat();
       }
       await runtime.release().catch(() => undefined);
-    } else await runtime.heartbeat().catch(() => ({ kind: 'lost' as const }));
+    } else {
+      try {
+        const renewal = await runtime.heartbeat();
+        if (renewal.kind === 'storage-error') {
+          handleF4HeartbeatStorageError(runtime, renewal, 'failed-import F4 heartbeat');
+        }
+      } catch (renewalError) {
+        persistHold = 'protected-payload';
+        persistenceBootKind = 'transient-protected';
+        persistenceProtectedDetail = `failed-import F4 heartbeat rejected (${renewalError instanceof Error
+          ? renewalError.message : String(renewalError)})`;
+        runtime.setAnswerable(false);
+        tameGreetingAudioOwner?.setAnswerable(false);
+        stopF4Heartbeat();
+      }
+    }
     releaseReplacementTransaction(replacement);
     return 'Storage refused the write (private mode?).';
   }
@@ -2677,7 +2858,7 @@ function updateChips(): void {
   appChrome.renderStatus({
     explorerName: save.explorerName,
     essence: save.essence,
-    landedWorlds: save.landed.length,
+    landedWorlds: canonicalWorldLandingCount(worldIdentityState),
     hp: save.hp,
     hpMax: save.HP_MAX,
     primeCount: primeCount(),
@@ -4026,17 +4207,22 @@ function presentPlanetSurvey(
     || !planetNodeForProof(star, resolved.planet)) return false;
   const sys = systemFor(star.seed);
   const d = planetDescriptor(p.P, sys, { name: p.name, orb: p.orb } as never) as Descriptor;
-  const customName = customNames.get('p' + p.seed);
-  if (customName) {
-    d.title = customName;
-    d.sub = (d.sub ? d.sub + ' · ' : '') + 'custom name';
-  }
   cardCtx = {
     p,
     gal: nav.gal,
     star: nav.star,
     planet: resolved.planet,
   };
+  const address = activeCardWorldAddress();
+  if (address === null) {
+    cardCtx = null;
+    return false;
+  }
+  const customName = worldIdentityName(worldIdentityState, address);
+  if (customName) {
+    d.title = customName;
+    d.sub = (d.sub ? d.sub + ' · ' : '') + 'custom name';
+  }
   showSurvey(
     d,
     buildCardActions(p),
@@ -4053,7 +4239,8 @@ function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet):
   return true;
 }
 function buildCardActions(p: PlanetNode): string {
-  const charted = save && save.logMap.some(([id]) => id === 'p' + p.seed);
+  const address = activeCardWorldAddress();
+  const charted = address !== null && atlasEntryForWorld(address) !== null;
   const onThisSurface = nav.mode === 'surface' && !!cardCtx
     && getProvenPlanetKey(nav.planet) === getProvenPlanetKey(cardCtx.planet)
     && nav.planet.seed === p.seed && nav.planet.ordinal === p.ordinal;
@@ -4103,11 +4290,40 @@ function activeCardPlanetWhere(): Record<string, unknown> | null {
   const state = activeCardPlanetState();
   return state ? navToView(state) : null;
 }
+function canonicalWorldAddressForNav(state: NavState): CanonicalCF1WorldAddress | null {
+  if (state.mode !== 'surface') return null;
+  const resolved = canonicalCF1WorldAddressFromNav(state);
+  return resolved.ok ? resolved.address : null;
+}
+function atlasRouteIdentityMatches(id: string, state: NavState): boolean {
+  if (!id.startsWith(CF1_WORLD_ATLAS_ID_PREFIX)) return true;
+  const idAddress = resolveCF1WorldAtlasId(id);
+  const routeAddress = canonicalWorldAddressForNav(state);
+  return idAddress.ok && routeAddress !== null
+    && idAddress.address.key === routeAddress.key;
+}
+function activeCardWorldAddress(): CanonicalCF1WorldAddress | null {
+  const state = activeCardPlanetState();
+  return state === null ? null : canonicalWorldAddressForNav(state);
+}
+function atlasEntryForWorld(
+  address: CanonicalCF1WorldAddress,
+): readonly [string, Record<string, unknown>] | null {
+  for (const row of save.logMap) {
+    const route = atlasRouteStates.get(row[1]);
+    const candidate = route === undefined ? null : canonicalWorldAddressForNav(route);
+    if (candidate?.key === address.key) return row;
+  }
+  return null;
+}
 function cardShareCode(): string | null {
   const where = activeCardPlanetWhere();
+  const address = activeCardWorldAddress();
   /* A stale planet card must never silently encode the current system. The
      visible card and copied address are one atomic context. */
-  return where ? encodeWhere(where as never, customNames.get('p' + cardCtx!.p.seed)) as string : null;
+  return where && address
+    ? encodeWhere(where as never, worldIdentityName(worldIdentityState, address) ?? undefined) as string
+    : null;
 }
 async function copyShareCode(code: string): Promise<boolean> {
   try {
@@ -4129,63 +4345,96 @@ function doLand(): boolean {
   if (!cardCtx || nav.mode !== 'system') return false;
   const surface = activeCardPlanetState();
   if (!surface) return false;
+  const address = canonicalWorldAddressForNav(surface);
+  if (address === null) return false;
   const p = cardCtx.p;
+  const landing = recordCanonicalWorldLanding(
+    worldIdentityState,
+    address,
+    f4Runtime?.extensions ?? EMPTY_V5_EXTENSIONS,
+  );
+  if (landing.capacityProtected) {
+    toast('World record full', 'Landing was not applied; your current expedition remains unchanged.', true);
+    return false;
+  }
   nav = surface;
   savedRouteWriteHeld = false;
-    const firstLand = !save.landed.includes(p.seed);
-    if (firstLand) {
-      save.landed.push(p.seed);   /* the game's `land` set */
-      /* Credit banks forward only for a genuinely new landing. */
-      bankLandfall(save.ascCh, save.ascProg, p.seed);
-    }
-    /* Reconcile separately from banking: an imported reach-backed chapter may
-       already be complete even when this landing adds no new credit. The pure
-       helper advances every consecutive canonical completion without making a
-       repeated landfall into another reward. */
-    const reconciliation = reconcileV2Chapters(save.ascCh, save.ascProg, ascStage());
-    if (reconciliation && reconciliation.nextChapter !== save.ascCh) {
-      const completed = reconciliation.completed;
-      const first = completed[0];
-      const last = completed[completed.length - 1];
-      save.ascCh = reconciliation.nextChapter;
-      toastCharterCompletion(completed.length === 1
-        ? '★ ' + (first?.name || 'Charter chapter') + ' — complete'
-        : `★ ${completed.length} Charter chapters — complete`,
-        completed.length === 1
-          ? (first?.note || 'This expedition’s established reach remains preserved.')
-          : `${first?.name || 'The first chapter'} through ${last?.name || 'the final chapter'} are now recorded. This expedition’s established reach remains preserved.`);
-    }
-    /* Panels and Survey deliberately coexist outside Training. If Charters is
-       already open, its rendered record must move with the saved ledger. */
-    if (openPanelId() === 'ch') fillCharters();
-    playWhoosh();   /* planetfall */
-    buildCurrentSceneTransaction(); hudText(); void persistView();
-    refreshPlanetSurveyCard();
-    /* A repeated landing is not new progression. The one exception is the
-       explicit veteran training replay: its lesson waits for the action,
-       but still receives no second landfall credit. */
-    if (firstLand || (p.seed === 133 && trainingActive() && trainingStepId() === 'land')) {
-      gameEvent('landfall', { planetSeed: p.seed });
-    }
-    return true;
+  worldIdentityState = landing.state;
+  const firstLand = landing.firstLanding;
+  if (firstLand) {
+    /* Credit banks forward only for a genuinely new landing. */
+      bankLandfall(save.ascCh, save.ascProg, address);
+  }
+  /* v4 leaf seeds are compatibility only and cannot decide first landing. */
+  if (!save.landed.includes(p.seed)) save.landed.push(p.seed);
+  /* Reconcile separately from banking: an imported reach-backed chapter may
+     already be complete even when this landing adds no new credit. The pure
+     helper advances every consecutive canonical completion without making a
+     repeated landfall into another reward. */
+  const reconciliation = reconcileV2Chapters(save.ascCh, save.ascProg, ascStage());
+  if (reconciliation && reconciliation.nextChapter !== save.ascCh) {
+    const completed = reconciliation.completed;
+    const first = completed[0];
+    const last = completed[completed.length - 1];
+    save.ascCh = reconciliation.nextChapter;
+    toastCharterCompletion(completed.length === 1
+      ? '★ ' + (first?.name || 'Charter chapter') + ' — complete'
+      : `★ ${completed.length} Charter chapters — complete`,
+      completed.length === 1
+        ? (first?.note || 'This expedition’s established reach remains preserved.')
+        : `${first?.name || 'The first chapter'} through ${last?.name || 'the final chapter'} are now recorded. This expedition’s established reach remains preserved.`);
+  }
+  /* Panels and Survey deliberately coexist outside Training. If Charters is
+     already open, its rendered record must move with the saved ledger. */
+  if (openPanelId() === 'ch') fillCharters();
+  playWhoosh();   /* planetfall */
+  buildCurrentSceneTransaction(); hudText(); void persistView();
+  refreshPlanetSurveyCard();
+  /* A repeated landing is not new progression. The one exception is the
+     explicit veteran training replay: its lesson waits for the action,
+     but still receives no second landfall credit. */
+  if (firstLand || (p.seed === 133 && trainingActive() && trainingStepId() === 'land')) {
+    gameEvent('landfall', { planetSeed: p.seed });
+  }
+  return true;
 }
 function addToAtlas(): void {
   if (blockPlayerMutation('atlas-add')) return;
   const where = activeCardPlanetWhere();
   if (!cardCtx || !save || !where) return;
   const p = cardCtx.p;
-  const id = 'p' + p.seed;
-  if (!save.logMap.some(([k]) => k === id)) {
-    const d = card.querySelector('[data-sel=title]')?.textContent || p.name;
+  const address = activeCardWorldAddress();
+  if (address === null) return;
+  const identityClaim = claimCanonicalWorldIdentity(
+    worldIdentityState,
+    address,
+    f4Runtime?.extensions ?? EMPTY_V5_EXTENSIONS,
+  );
+  if (identityClaim.capacityProtected) {
+    toast('World record full', 'Atlas entry was not applied; your current expedition remains unchanged.', true);
+    return;
+  }
+  worldIdentityState = identityClaim.state;
+  const id = canonicalCF1WorldAtlasId(address);
+  let checkpointNeeded = identityClaim.claimedLegacy;
+  if (atlasEntryForWorld(address) === null) {
+    /* Claim precedes publication: an unresolved v4 alias may attach to this
+       exact encounter, but a stale seed-only title can never label both
+       collision worlds. */
+    const d = worldIdentityName(worldIdentityState, address)
+      || card.querySelector('[data-sel=title]')?.textContent || p.name;
     const sub = card.querySelector('[data-sel=sub]')?.textContent || '';
     const entry = { id, title: d, sub, where, t: Date.now() };
     save.logMap.push([id, entry]);
     const route = activeCardPlanetState();
     if (route) atlasRouteStates.set(entry, route);
-    void persistView();
+    checkpointNeeded = true;
     toast('★ Charted', d + ' joined your Star Atlas.');
   }
-  gameEvent('atlas-add', { id });
+  if (checkpointNeeded) void persistView();
+  /* Training's legacy lesson contract observes the seed mirror, while the
+     actual Atlas row is keyed by the complete canonical world identity. */
+  gameEvent('atlas-add', { id: 'p' + p.seed });
   refreshPlanetSurveyCard();   /* refresh: the button becomes ★ charted */
 }
 card.addEventListener('click', (e) => {
@@ -4865,10 +5114,12 @@ function installKeyboardExploration(): void {
       /* The keyboard survey outcome lands on the card's primary action, not
          the header Close control. The Close remains the safe fallback for a
          read-only descriptor with no deeper action. */
-      (card.querySelector<HTMLElement>('[data-act="travel"]')
-        || card.querySelector<HTMLElement>('[data-act="landcta"]')
-        || card.querySelector<HTMLElement>('[data-act="leaveworld"]')
-        || card.querySelector<HTMLElement>('[data-survey-close]'))?.focus();
+      [
+        card.querySelector<HTMLElement>('[data-act="travel"]'),
+        card.querySelector<HTMLElement>('[data-act="landcta"]'),
+        card.querySelector<HTMLElement>('[data-act="leaveworld"]'),
+        card.querySelector<HTMLElement>('[data-survey-close]'),
+      ].find((target) => target !== null && !target.closest('[inert]'))?.focus();
       return;
     }
     if ((event.key === '+' || event.key === '=' || event.key === '-' || event.key === '_') && target) {
@@ -4920,7 +5171,11 @@ async function persistView(
         smokeRejectNextPersist = false;
         throw new Error('slice-smoke injected persistence rejection');
       }
-      const outcome = await runtime.commit(candidate, Date.now());
+      const outcome = await runtime.commit(
+        candidate,
+        Date.now(),
+        encodeWorldIdentityExtensionWrites(worldIdentityState),
+      );
       lastPersistenceOutcome = outcome.kind === 'committed'
         ? `committed:${outcome.revision}` : outcome.kind;
       if (outcome.kind === 'committed') {
@@ -6552,7 +6807,7 @@ let lastMutationBlockWitness: Readonly<{
   ownershipV2BootstrapPending: boolean;
 }> | null = null;
 const READ_ONLY_MUTATION_SELECTOR = [
-  '#dockcharts', '#setsnd', '#setvol', '[data-pref]', '[data-motion]',
+  '#dockcharts', '#setsnd', '#setvol', '#setvoice', '[data-pref]', '[data-motion]',
   '#setcharts', '#setglass', '#setrestart',
   '[data-act="landcta"]', '[data-act="add"]',
   '[data-capture-action]',
@@ -6626,14 +6881,15 @@ function prepareTrainingCandidate(
   /* Mirror boot's F2 boundary on the detached copy. Atlas history remains
      visible when source proof fails transiently; deterministic invalid rows
      lose only their action route. Reach is intentionally checked on click. */
-  for (const [, entry] of first.state.logMap) {
+  for (const [id, entry] of first.state.logMap) {
     const rawWhere = first.ingress.atlasWhere.get(entry);
     if (rawWhere === null || rawWhere === undefined) {
       entry.where = null;
       continue;
     }
     const route = resolveViewToNav(rawWhere);
-    if (route.ok && route.state.mode !== 'universe') entry.where = navToView(route.state);
+    if (route.ok && route.state.mode !== 'universe'
+      && atlasRouteIdentityMatches(id, route.state)) entry.where = navToView(route.state);
     else if (route.ok || route.reason !== 'source-error') entry.where = null;
   }
 
@@ -6659,9 +6915,12 @@ function prepareTrainingCandidate(
     if (rawWhere === null || rawWhere === undefined) continue;
     const route = resolveViewToNav(rawWhere);
     if (!route.ok || route.state.mode === 'universe') continue;
+    if (!atlasRouteIdentityMatches(id, route.state)) continue;
     atlasRoutes.set(entry, route.state);
-    if (id === 'p133' && route.state.mode === 'surface') {
-      earthKey = getProvenPlanetKey(route.state.planet);
+    if (route.state.mode === 'surface') {
+      const routeKey = getProvenPlanetKey(route.state.planet);
+      if ((expectedEarthKey !== null && routeKey === expectedEarthKey)
+        || (expectedEarthKey === null && id === 'p133')) earthKey = routeKey;
     }
   }
   if (expectedEarthKey !== null && earthKey !== expectedEarthKey) return null;
@@ -6777,6 +7036,10 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
         phase('source-deferred');
       } else {
         expectedEarthKey = getProvenPlanetKey(earth.state.planet);
+        const earthAddress = canonicalWorldAddressForNav(earth.state);
+        if (earthAddress === null) {
+          throw new Error('legacy Training Earth address could not be proven');
+        }
         const restored = buildLegacyTrainingRestoreCandidate({
           current: candidate,
           checkpoint: checkpoint.snapshot,
@@ -6784,6 +7047,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
           now,
           epoch,
           canonicalEarthView: navToView(earth.state)!,
+          canonicalEarthAtlasId: canonicalCF1WorldAtlasId(earthAddress),
           completionView: navToView(targetNav),
         });
         if (!restored.ok || expectedEarthKey === null) {
@@ -6852,6 +7116,11 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
       lastArc5BootstrapOutcome = 'training-protected';
       throw new Error(`Training Arc 5 authority refused: ${arc5Preparation.reason}`);
     }
+    const durableWorldIdentity = readWorldIdentity(f4Runtime!.extensions);
+    if (durableWorldIdentity.kind !== 'loaded') {
+      throw new Error(`Training canonical world identity refused: ${durableWorldIdentity.kind}`);
+    }
+    const worldIdentityWrites = encodeWorldIdentityExtensionWrites(durableWorldIdentity.state);
     phase('primary-write-started');
     writeStarted = true;
     let trainingCommittedState: SaveStateV2 | null = null;
@@ -6863,14 +7132,12 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
       const committed = await f4Runtime!.commit(
         prepared.state,
         now,
-        preparedLoot === null && preparedOwnership === null
-          && arc5Preparation.kind !== 'prepared'
-          ? undefined
-          : [
-            ...(preparedLoot === null ? [] : [preparedLoot.write]),
-            ...(preparedOwnership === null ? [] : preparedOwnership.writes),
-            ...(arc5Preparation.kind === 'prepared' ? arc5Preparation.writes : []),
-          ],
+        [
+          ...(preparedLoot === null ? [] : [preparedLoot.write]),
+          ...(preparedOwnership === null ? [] : preparedOwnership.writes),
+          ...(arc5Preparation.kind === 'prepared' ? arc5Preparation.writes : []),
+          ...worldIdentityWrites,
+        ],
       );
       lastPersistenceOutcome = committed.kind === 'committed'
         ? `training-committed:${committed.revision}` : `training-${committed.kind}`;
@@ -6956,7 +7223,23 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
         restoredOwnershipV2Evidence = loadedOwnershipV2.evidence;
       }
     }
+    const restoredWorldIdentity = readWorldIdentity(f4Runtime!.extensions);
+    if (restoredWorldIdentity.kind !== 'loaded') {
+      throw new Error('Training canonical world identity carrier did not converge');
+    }
+    const restoredWorldIdentityWrites = encodeWorldIdentityExtensionWrites(restoredWorldIdentity.state);
+    if (restoredWorldIdentityWrites.some((write, index) => (
+      write.segment !== worldIdentityWrites[index]!.segment
+      || write.namespace !== worldIdentityWrites[index]!.namespace
+      || write.carrier.version !== worldIdentityWrites[index]!.carrier.version
+      || write.carrier.json !== worldIdentityWrites[index]!.carrier.json
+    ))) {
+      throw new Error('Training canonical world identity carrier was not preserved exactly');
+    }
     save = prepared.state;
+    worldIdentityState = restoredWorldIdentity.state;
+    worldIdentityBootstrapPending = false;
+    worldIdentityProtection = null;
     if (restoredLoot) {
       arc2LootState = restoredLoot;
       arc2LootProtection = null;
@@ -7023,6 +7306,8 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
       arc5OwnershipEvidence = null;
       arc5OwnershipProtection = 'committed-publication-reload';
       lastArc5BootstrapOutcome = 'committed-publication-reload';
+      worldIdentityState = createEmptyWorldIdentityState();
+      worldIdentityProtection = 'committed-publication-reload';
       phase('reload-scheduled', message);
       setTimeout(() => scheduleReplacementReload(replacement), 0);
       return durableOutcome;
@@ -7102,6 +7387,9 @@ async function loadSave(): Promise<void> {
   arc5OwnershipBootstrapPending = false;
   arc5OwnershipProtection = null;
   lastArc5BootstrapOutcome = null;
+  worldIdentityState = createEmptyWorldIdentityState();
+  worldIdentityBootstrapPending = false;
+  worldIdentityProtection = null;
   currentCapturePresentationFence = null;
   lastArc4CaptureResult = null;
 
@@ -7277,14 +7565,15 @@ async function loadSave(): Promise<void> {
      Only a non-home proven target becomes actionable; source-derived fields
      replace tolerant display aliases without changing ids or local ledgers. */
   const provenAtlasEngineeringRoutes: NavState[] = [];
-  for (const [, entry] of save.logMap) {
+  for (const [id, entry] of save.logMap) {
     const rawWhere = bootIngress.atlasWhere.get(entry);
     if (rawWhere === null || rawWhere === undefined) {
       entry.where = null;
       continue;
     }
     const route = resolveViewToNav(rawWhere);
-    if (route.ok && route.state.mode !== 'universe') {
+    if (route.ok && route.state.mode !== 'universe'
+      && atlasRouteIdentityMatches(id, route.state)) {
       atlasRouteStates.set(entry, route.state);
       provenAtlasEngineeringRoutes.push(route.state);
       entry.where = navToView(route.state);
@@ -7293,6 +7582,37 @@ async function loadSave(): Promise<void> {
     }
   }
   trainingSnapshotIngress = bootIngress.trainingSnapshot;
+  /* Current world history is source-bound before any UI or Training seat can
+     use it. Only complete routes proven above may seed an absent carrier;
+     the old leaf-seed land/name fields remain compatibility mirrors. */
+  if (!persistHold) {
+    const knownWorlds: CanonicalCF1WorldAddress[] = [];
+    for (const route of [savedEngineeringRoute, ...provenAtlasEngineeringRoutes]) {
+      if (route === null) continue;
+      const address = canonicalWorldAddressForNav(route);
+      if (address !== null) knownWorlds.push(address);
+    }
+    const prepared = prepareWorldIdentityBootstrap({
+      extensions: initialExtensions,
+      legacy: save,
+      addresses: knownWorlds,
+    });
+    if (prepared.kind === 'prepared') {
+      worldIdentityState = prepared.state;
+      initialExtensions = prepared.extensions;
+      worldIdentityBootstrapPending = true;
+    } else if (prepared.kind === 'already-loaded') {
+      worldIdentityState = prepared.state;
+    } else {
+      worldIdentityProtection = `${prepared.reason}${prepared.version === undefined
+        ? '' : `:${prepared.version}`}`;
+      persistHold = 'protected-payload';
+      protectedReason = prepared.reason === 'target-future' ? 'future-version' : 'invalid';
+      persistenceBootKind = prepared.reason === 'target-future'
+        ? 'future-protected' : 'corrupt-protected';
+      persistenceProtectedDetail = `canonical world identity ${worldIdentityProtection}`;
+    }
+  }
   /* A pending checkpoint is the durable pre-drill authority. Ordinary
      practice autosaves stay held so only the explicit restart write and the
      atomic completion transaction may replace it. Unknown shapes are also
@@ -7562,6 +7882,11 @@ async function loadSave(): Promise<void> {
       arc4OwnershipBootstrapPending = false;
       arc5OwnershipBootstrapPending = false;
       arc5OwnershipBootstrapPrepared = null;
+      if (worldIdentityBootstrapPending) {
+        worldIdentityState = createEmptyWorldIdentityState();
+        worldIdentityProtection = 'blocked-by-arc5-protection';
+      }
+      worldIdentityBootstrapPending = false;
       bootProductBootstrapCandidate = null;
       persistHold = 'protected-payload';
       persistenceBootKind = kind;
@@ -7661,6 +7986,9 @@ async function loadSave(): Promise<void> {
     try {
       const leaseOutcome = f4PageVisible()
         ? await runtime.heartbeat() : { kind: 'lost' as const };
+      if (leaseOutcome.kind === 'storage-error') {
+        throw new Error(`boot F4 lease ${leaseOutcome.operation} storage failure (${leaseOutcome.message})`);
+      }
       /* A newly minted crypto seed becomes durable before any outcome API can
          roll from it. If this write fails, play remains protected; reload can
          never silently mint a different value after a failed player action. */
@@ -7669,7 +7997,8 @@ async function loadSave(): Promise<void> {
       }
       if ((f4SeedBootstrapPending || bootRouteRepairPending
         || arc2LootBootstrapPending || arc3EngineeringBootstrapPending
-        || arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending)
+        || arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending
+        || worldIdentityBootstrapPending)
         && leaseOutcome.kind === 'owned') {
         if (!await ensureBootAuthorityCommit(runtime)) {
           throw new Error(persistenceProtectedDetail || 'F4/product authority bootstrap failed');
@@ -7698,6 +8027,9 @@ async function loadSave(): Promise<void> {
       }
       arc5OwnershipBootstrapPending = false;
       arc5OwnershipBootstrapPrepared = null;
+      if (worldIdentityBootstrapPending) worldIdentityState = createEmptyWorldIdentityState();
+      worldIdentityBootstrapPending = false;
+      worldIdentityProtection ||= 'bootstrap-failed';
       bootProductBootstrapCandidate = null;
       arc3EngineeringProtection ||= 'bootstrap-failed';
       arc4OwnershipProtection ||= 'bootstrap-failed';
@@ -7858,40 +8190,46 @@ async function loadSave(): Promise<void> {
   backdropTransitionBudgetPixels = densityPlan.backingPixelCapPerCanvas * 2;
   rebuildBackdrop();
   emitBootPhase('backdrop-complete');
-  const syncRendererDensity = (): void => {
-    const nextDensityPlan = effectiveDensityPlan();
-    const next = nextDensityPlan.dpr;
-    const densityChanged = next !== DPR
-      || nextDensityPlan.backingPixelCapPerCanvas !== densityPlan.backingPixelCapPerCanvas
-      || nextDensityPlan.viewportWidth !== densityPlan.viewportWidth
-      || nextDensityPlan.viewportHeight !== densityPlan.viewportHeight;
-    if (densityChanged) {
-      const priorBudget = densityPlan.backingPixelCapPerCanvas * 2;
-      backdropTransitionPeakPixels = ownedBackdropPixels();
-      backdropTransitionBudgetPixels = Math.max(
-        priorBudget, nextDensityPlan.backingPixelCapPerCanvas * 2,
-      );
-      /* Drop the old full-viewport backdrop before resizing the renderer.
-         Across the ordinary/ultra threshold, resizing first would briefly
-         combine a new-tier app canvas with the larger old-tier backdrop and
-         exceed the newly selected simultaneous-owner budget. */
-      releaseBackdrop();
-      densityPlan = nextDensityPlan;
-      DPR = next;
-      applyRendererDensity(densityPlan);
-      _bgKey = '';
-      /* Texture-backed scene art was baked for the prior scale tier. Rebuild
-         the current mode so a monitor/DPR transition upgrades the scene, not
-         only the Pixi backing store and backdrop. */
-      rerender({ preserveSurvey: true });
-      /* Change both simultaneous full-viewport stores in one transaction.
-         A deferred backdrop rebuild briefly retained the ordinary-tier
-         canvas after the app had already advertised the ultra-tier cap. */
-      rebuildBackdrop();
-    } else {
-      densityPlan = nextDensityPlan;
-    }
-  };
+  const rendererDensitySync = createFrameCoalescer(
+    (callback) => requestAnimationFrame(callback),
+    (handle) => cancelAnimationFrame(handle),
+    () => {
+      const nextDensityPlan = effectiveDensityPlan();
+      const next = nextDensityPlan.dpr;
+      const densityChanged = next !== DPR
+        || nextDensityPlan.backingPixelCapPerCanvas !== densityPlan.backingPixelCapPerCanvas
+        || nextDensityPlan.viewportWidth !== densityPlan.viewportWidth
+        || nextDensityPlan.viewportHeight !== densityPlan.viewportHeight;
+      if (densityChanged) {
+        const priorBudget = densityPlan.backingPixelCapPerCanvas * 2;
+        backdropTransitionPeakPixels = ownedBackdropPixels();
+        backdropTransitionBudgetPixels = Math.max(
+          priorBudget, nextDensityPlan.backingPixelCapPerCanvas * 2,
+        );
+        /* Drop the old full-viewport backdrop before resizing the renderer.
+           Across the ordinary/ultra threshold, resizing first would briefly
+           combine a new-tier app canvas with the larger old-tier backdrop and
+           exceed the newly selected simultaneous-owner budget. */
+        releaseBackdrop();
+        densityPlan = nextDensityPlan;
+        DPR = next;
+        applyRendererDensity(densityPlan);
+        _bgKey = '';
+        /* Texture-backed scene art was baked for the prior scale tier. Rebuild
+           the current mode so a monitor/DPR transition upgrades the scene, not
+           only the Pixi backing store and backdrop. Density-only work must not
+           mint persistence intent. */
+        rerender({ preserveSurvey: true, skipPersist: true });
+        /* Change both simultaneous full-viewport stores in one transaction.
+           A deferred backdrop rebuild briefly retained the ordinary-tier
+           canvas after the app had already advertised the ultra-tier cap. */
+        rebuildBackdrop();
+      } else {
+        densityPlan = nextDensityPlan;
+      }
+    },
+  );
+  const syncRendererDensity = (): void => { rendererDensitySync.request(); };
   addEventListener('resize', syncRendererDensity);
   visualViewport?.addEventListener('resize', syncRendererDensity);
   releaseRendererForReload = (reason, audio): ReloadReleaseWitness => {
@@ -7908,6 +8246,7 @@ async function loadSave(): Promise<void> {
     let error: string | null = null;
     removeEventListener('resize', syncRendererDensity);
     visualViewport?.removeEventListener('resize', syncRendererDensity);
+    rendererDensitySync.cancel();
     closeCodexSurface();
     engineeringPanelReleased = true;
     engineeringPanelController.dispose();
@@ -8003,6 +8342,13 @@ async function loadSave(): Promise<void> {
           visibilityOverrideHidden: f4VisibilityOverrideHidden,
           lastOutcome: lastPersistenceOutcome,
           hideWitness: lastF4HideWitness,
+          heartbeatStorageFault: lastF4HeartbeatStorageFault,
+          revisionVerificationFault: lastF4RevisionVerificationFault,
+          heartbeatRunning: f4HeartbeatTimer !== 0,
+          convergenceReloadScheduled: f4AuthorityReloadScheduled,
+          convergenceReloadHold: smokeF4ConvergenceReloadHold.diagnostics(),
+          leaseReadCount: smokeF4LeaseReadCount,
+          revisionReadCount: smokeF4RevisionReadCount,
           mutationBlocked: playerMutationsBlocked(),
           mutationBlockCount,
           mutationBlockWitness: lastMutationBlockWitness,
@@ -8146,6 +8492,7 @@ async function loadSave(): Promise<void> {
         sndOn: save.sndOn, voiceOn: save.voiceOn, sfxVol: save.sfxVol,
         motionMode: save.motionMode,
         fsMode: save.fsMode, toneMode: save.toneMode, fontMode: save.fontMode,
+        glassTint: save.glassTint,
         glassA: getComputedStyle(document.documentElement).getPropertyValue('--glass-a').trim(),
         rendererDpr: app.renderer.resolution,
         eventResolution: app.renderer.events.resolution,
@@ -8264,6 +8611,24 @@ async function loadSave(): Promise<void> {
         await showF4();
         return f4Runtime?.diagnostics() ?? null;
       },
+      __smokeArmF4HeartbeatStorageFailure: () => {
+        if (smokeRejectNextF4HeartbeatStorage || f4AuthorityReloadScheduled
+          || f4HeartbeatInFlight !== null) return false;
+        smokeRejectNextF4HeartbeatStorage = true;
+        return true;
+      },
+      __smokeArmF4RevisionVerificationFailure: () => {
+        if (smokeRejectNextF4RevisionVerification || f4AuthorityReloadScheduled
+          || f4HeartbeatInFlight !== null) return false;
+        smokeRejectNextF4RevisionVerification = true;
+        return true;
+      },
+      __smokeRunF4Heartbeat: heartbeatF4,
+      __smokeArmF4ConvergenceReloadHold: () => {
+        if (f4AuthorityReloadScheduled) return false;
+        return smokeF4ConvergenceReloadHold.arm();
+      },
+      __smokeReleaseF4ConvergenceReload: () => smokeF4ConvergenceReloadHold.release(),
       __smokeRejectNextF4HideCheckpoint: () => {
         if (smokeRejectNextF4HideCheckpoint) return false;
         smokeRejectNextF4HideCheckpoint = true;

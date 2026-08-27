@@ -9,6 +9,7 @@
 import {
   ascend,
   ascAllowsStar,
+  canonicalCF1WorldAddressFromNav,
   getProvenGalaxyKey,
   getProvenPlanetKey,
   getProvenStarKey,
@@ -21,6 +22,7 @@ import {
   shipVisualStateOf,
   withinReachOf,
   type CanonicalCF1Address,
+  type CanonicalCF1WorldAddress,
   type NavState,
   type PlanetNode,
   type ProvenPlanet,
@@ -45,6 +47,7 @@ export interface SearchTravelCommitPlan {
   readonly target: NonUniverseNav;
   readonly committedNav: SearchTravelCommittedNav;
   readonly focusPlanet: PlanetNode | null;
+  readonly focusAddress: CanonicalCF1WorldAddress | null;
   readonly customPlanetName: string | null;
 }
 
@@ -53,11 +56,13 @@ export interface SearchTravelControllerPorts {
   readonly currentNav: () => NavState;
   readonly currentSave: () => SearchTravelAuthoritySave | null;
   readonly shipLiverySeed: () => number;
-  readonly currentPlanetName: (planetSeed: number) => string | null;
+  readonly currentPlanetName: (address: CanonicalCF1WorldAddress) => string | null;
   readonly routeChangeBlocked: () => boolean;
   readonly mutationsBlocked: () => boolean;
   readonly planetNodeForProof: (star: ProvenStar, planet: ProvenPlanet) => PlanetNode | null;
-  readonly commitNavigation: (plan: SearchTravelCommitPlan) => void;
+  /** Return false when a capacity-protected product mutation refuses the
+      atomic route/name commit; Search then retains the exact query. */
+  readonly commitNavigation: (plan: SearchTravelCommitPlan) => boolean;
   readonly onPrimeReachBlocked: () => void;
   readonly onCharterReachBlocked: () => void;
   readonly compendiumState: () => Readonly<{
@@ -125,11 +130,13 @@ export function createSearchTravelController(
   };
 
   const encodeHere = (): string | null => {
-    const view = navToView(ports.currentNav());
+    const current = ports.currentNav();
+    const view = navToView(current);
     if (!view) return null;
-    const name = view.type === 'planet' && view.pseed != null
-      ? ports.currentPlanetName(view.pseed as number)
-      : null;
+    const currentAddress = current.mode === 'surface'
+      ? canonicalCF1WorldAddressFromNav(current) : null;
+    const name = currentAddress?.ok
+      ? ports.currentPlanetName(currentAddress.address) : null;
     return encodeWhere(view as never, name || undefined) as string;
   };
 
@@ -203,9 +210,12 @@ export function createSearchTravelController(
     const focusPlanet = target.mode === 'surface'
       ? ports.planetNodeForProof(target.star, target.planet)
       : null;
+    const focusAddress = target.mode === 'surface'
+      ? canonicalCF1WorldAddressFromNav(target) : null;
     if (target.mode === 'surface'
       && (!focusPlanet || focusPlanet.seed !== target.planet.seed
-        || focusPlanet.ordinal !== target.planet.ordinal)) return false;
+        || focusPlanet.ordinal !== target.planet.ordinal
+        || !focusAddress?.ok)) return false;
 
     let committedNav: SearchTravelCommittedNav;
     if (target.mode === 'surface') {
@@ -217,13 +227,14 @@ export function createSearchTravelController(
     const customPlanetName = focusPlanet && incomingName && !ports.mutationsBlocked()
       ? cleanName(incomingName) || null
       : null;
-    ports.commitNavigation(Object.freeze({
+    const committed = ports.commitNavigation(Object.freeze({
       target,
       committedNav,
       focusPlanet,
+      focusAddress: focusAddress?.ok ? focusAddress.address : null,
       customPlanetName,
     }));
-    return true;
+    return committed;
   };
 
   const jumpToCanonicalAddress = (

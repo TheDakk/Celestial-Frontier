@@ -1,4 +1,8 @@
 import { describe, it, expect, beforeAll } from 'vitest';
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { loadFixture, checkGenerator, canon } from '../../../../tests/parity.js';
 import { probeRaw } from '../../../../tests/baseline.js';
 import {
@@ -201,19 +205,170 @@ describe('★ D-CAT-1 — the deduped roster, and the mask that lets it past par
   });
 });
 
-describe('real-input coverage for the two vacuous probes (no recorded truth — structural)', () => {
-  it('galaxyDescriptor on real galaxies: rows, GAL_KIND label, designation present', () => {
-    /* find a populated cell; the home cell region is guaranteed non-empty */
-    let gals: unknown[] = [];
-    outer: for (let x = -6; x <= 6; x++) for (let y = -6; y <= 6; y++) {
-      gals = galaxiesInCell(x, y) || [];
-      if (gals.length) break outer;
-    }
-    expect(gals.length).toBeGreaterThan(0);
-    const d = galaxyDescriptor(gals[0] as never);
-    expect(typeof d.title).toBe('string');
-    expect(Array.isArray(d.rows)).toBe(true);
-    expect(d.rows.length).toBeGreaterThan(3);
+/* The original v1.8.9 fingerprint values for moonDescriptor and
+   galaxyDescriptor are both [] because its recipes selected no objects. This
+   supplemental fixture is captured from the immutable shipped HTML by
+   tools/v189-descriptor-evidence.mjs. Keep baseline.json untouched: the fixture
+   closes that historical blind spot without regenerating or weakening it. */
+const DESCRIPTOR_EVIDENCE_COMMIT = '92098e91ddc2028cbab9149293b58166f483764c';
+const DESCRIPTOR_SOURCE_SHA256 = '9f90f506a7cfcf5b721d80e7b956e0ef717edf04d004edf825ddb4f0303b3c88';
+const DESCRIPTOR_CASE_IDS = [
+  'sol-earth-moon-0',
+  'system-1-planet-0-moon-0',
+  'cell--6-4-galaxy-0',
+] as const;
+
+interface DescriptorEvidenceCase {
+  id: string;
+  recipe: Record<string, unknown>;
+  raw: Record<string, unknown>;
+  canonicalJson: string;
+  canonicalJsonByteLength: number;
+  canonicalJsonSha256: string;
+}
+
+interface DescriptorEvidence {
+  _comment: string[];
+  captureSchema: string;
+  capturedAgainst: { tag: string; commit: string };
+  source: { retrieval: string; path: string; bytes: number; sha256: string };
+  capture: {
+    probeFile: string; probeSha256: string;
+    fakeCanvasFile: string; fakeCanvasSha256: string;
+    canonicalisation: string;
+  };
+  guards: Record<string, unknown>;
+  observedErrors: string[];
+  cases: DescriptorEvidenceCase[];
+  evidenceSha256: string;
+}
+
+const descriptorTestDir = path.dirname(fileURLToPath(import.meta.url));
+const descriptorEvidenceFile = path.join(
+  descriptorTestDir, '..', '..', '..', '..', '..', 'baseline-v1.8.9', 'descriptor-fixtures.json',
+);
+const descriptorEvidence = JSON.parse(fs.readFileSync(descriptorEvidenceFile, 'utf8')) as DescriptorEvidence;
+const sha256 = (value: string | Buffer): string => crypto.createHash('sha256').update(value).digest('hex');
+
+function stable(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(stable);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.keys(value).sort()
+      .map((key) => [key, stable((value as Record<string, unknown>)[key])]));
+  }
+  return value;
+}
+
+function stableJson(value: unknown): string { return JSON.stringify(stable(value)); }
+
+function aggregateEvidenceSha256(evidence: DescriptorEvidence): string {
+  const core = structuredClone(evidence) as Partial<DescriptorEvidence>;
+  delete core.evidenceSha256;
+  return sha256(stableJson(core));
+}
+
+function descriptorEvidenceErrors(evidence: DescriptorEvidence): string[] {
+  const errors: string[] = [];
+  const expectedRecipes: Record<string, Record<string, unknown>> = {
+    'sol-earth-moon-0': { descriptor: 'moonDescriptor', systemSeed: 424242, planetSeed: 133, moonIndex: 0 },
+    'system-1-planet-0-moon-0': { descriptor: 'moonDescriptor', systemSeed: 1, planetIndex: 0, moonIndex: 0 },
+    'cell--6-4-galaxy-0': { descriptor: 'galaxyDescriptor', cell: [-6, 4], galaxyIndex: 0, galaxySeed: 2024882063 },
+  };
+  if (evidence.captureSchema !== 'cf-v1.8.9-descriptor-evidence/v1') errors.push('schema');
+  if (evidence.capturedAgainst.tag !== 'v1.8.9') errors.push('tag');
+  if (evidence.capturedAgainst.commit !== DESCRIPTOR_EVIDENCE_COMMIT) errors.push('commit');
+  if (evidence.source.path !== 'celestial-frontier.html') errors.push('source path');
+  if (evidence.source.bytes !== 1963584) errors.push('source bytes');
+  if (evidence.source.sha256 !== DESCRIPTOR_SOURCE_SHA256) errors.push('source hash');
+  if (evidence.capture.probeFile !== '../v2/tools/v189-descriptor-probe.js') errors.push('probe path');
+  if (evidence.capture.fakeCanvasFile !== '../../tools/fake2d.js') errors.push('fake-canvas path');
+  if (evidence.observedErrors.length !== 0) errors.push('observed errors');
+  if (stableJson(evidence.guards) !== stableJson({
+    solSeed: 424242,
+    earthPlanetSeed: 133,
+    proceduralSystemSeed: 1,
+    proceduralPlanetSeed: 2416138383,
+    galaxyCell: [-6, 4],
+    galaxySeed: 2024882063,
+    galaxyKindCount: 16,
+  })) errors.push('guards');
+  if (stableJson(evidence.cases.map((row) => row.id)) !== stableJson(DESCRIPTOR_CASE_IDS)) errors.push('case inventory');
+
+  const fixtureDir = path.dirname(descriptorEvidenceFile);
+  const probeBytes = fs.readFileSync(path.resolve(fixtureDir, evidence.capture.probeFile));
+  const fakeCanvasBytes = fs.readFileSync(path.resolve(fixtureDir, evidence.capture.fakeCanvasFile));
+  if (sha256(probeBytes) !== evidence.capture.probeSha256) errors.push('probe hash');
+  if (sha256(fakeCanvasBytes) !== evidence.capture.fakeCanvasSha256) errors.push('fake-canvas hash');
+
+  for (const row of evidence.cases) {
+    if (stableJson(row.recipe) !== stableJson(expectedRecipes[row.id])) errors.push(`${row.id} recipe`);
+    if (stableJson(row.raw) !== row.canonicalJson) errors.push(`${row.id} raw/canonical`);
+    if (Buffer.byteLength(row.canonicalJson) !== row.canonicalJsonByteLength) errors.push(`${row.id} bytes`);
+    if (sha256(row.canonicalJson) !== row.canonicalJsonSha256) errors.push(`${row.id} hash`);
+  }
+  if (aggregateEvidenceSha256(evidence) !== evidence.evidenceSha256) errors.push('aggregate hash');
+  return errors;
+}
+
+function descriptorCase(id: typeof DESCRIPTOR_CASE_IDS[number]): DescriptorEvidenceCase {
+  const found = descriptorEvidence.cases.find((row) => row.id === id);
+  if (!found) throw new Error(`descriptor evidence missing ${id}`);
+  return found;
+}
+
+describe('independent v1.8.9 exact bytes for the two vacuous baseline probes', () => {
+  it('binds raw records to the immutable source, capture recipe and every stored hash', () => {
+    expect(descriptorEvidenceErrors(descriptorEvidence)).toEqual([]);
+  });
+
+  it('pins the real Sol moon and a generated procedural moon byte-for-byte', () => {
+    const sol = systemFor(424242);
+    const earth = planets(sol).find((planet) => planet.P.seed === 133);
+    const procedural = planets(systemFor(1))[0];
+    expect(earth).toBeDefined();
+    expect(procedural).toBeDefined();
+    expect(canon(moonDescriptor(earth as never, 0 as never)))
+      .toBe(descriptorCase('sol-earth-moon-0').canonicalJson);
+    expect(canon(moonDescriptor(procedural as never, 0 as never)))
+      .toBe(descriptorCase('system-1-planet-0-moon-0').canonicalJson);
+  });
+
+  it('pins one populated, merging galaxy byte-for-byte', () => {
+    const galaxy = galaxiesInCell(-6, 4)[0];
+    expect(galaxy).toBeDefined();
+    expect(galaxy?.seed).toBe(2024882063);
     expect(GAL_KIND.length).toBe(16);
+    expect(canon(galaxyDescriptor(galaxy as never)))
+      .toBe(descriptorCase('cell--6-4-galaxy-0').canonicalJson);
+  });
+
+  it('negative-controls stale provenance and tampered raw evidence', () => {
+    const stale = structuredClone(descriptorEvidence);
+    stale.capturedAgainst.commit = '0'.repeat(40);
+    stale.evidenceSha256 = aggregateEvidenceSha256(stale);
+    expect(descriptorEvidenceErrors(stale)).toContain('commit');
+
+    const tampered = structuredClone(descriptorEvidence);
+    tampered.cases[1]!.raw.title = 'Tampered moon';
+    expect(descriptorEvidenceErrors(tampered)).toEqual(expect.arrayContaining([
+      'system-1-planet-0-moon-0 raw/canonical',
+      'aggregate hash',
+    ]));
+  });
+
+  it('negative-controls meaningful current moon and galaxy field mutations', () => {
+    const procedural = planets(systemFor(1))[0]!;
+    const moon = structuredClone(moonDescriptor(procedural as never, 0 as never)) as {
+      title: string; rows: Array<[string, string]>;
+    };
+    moon.rows[1]![1] = 'Invented ocean beneath the surface';
+    expect(canon(moon)).not.toBe(descriptorCase('system-1-planet-0-moon-0').canonicalJson);
+
+    const galaxy = structuredClone(galaxyDescriptor(galaxiesInCell(-6, 4)[0] as never)) as unknown as {
+      designation: { tier: number }; rows: Array<[string, string, string?]>;
+    };
+    galaxy.designation.tier = 4;
+    galaxy.rows[2]![1] = '~71 billion stars';
+    expect(canon(galaxy)).not.toBe(descriptorCase('cell--6-4-galaxy-0').canonicalJson);
   });
 });

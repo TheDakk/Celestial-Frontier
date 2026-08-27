@@ -247,8 +247,8 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
       mainSource,
       'function doLand(',
       '\nfunction addToAtlas(',
-      '    refreshPlanetSurveyCard();',
-      '    updateChips();',
+      '  refreshPlanetSurveyCard();',
+      '  updateChips();',
     );
     expect(wiringErrors(retainedOnSurface)).toContain('surface-refresh-removal');
 

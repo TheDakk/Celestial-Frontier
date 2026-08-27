@@ -1,6 +1,6 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-26**.
+**STATUS:** approved product direction and implementation contract as of **2026-08-27**.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
 exact-instance Inventory, Arc 3 Engineering actions and Arc 4 player-facing capture loop described
 below. Arc 5A now activates its compact ownership-v2 five-carrier authority across boot, genuine legacy
@@ -10,6 +10,36 @@ recipe actions, new random loot sources, upgrades/sockets, companion
 expeditions, breeding, live combat and Guardians remain
 **not implemented** unless a row below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
+
+> **2026-08-27 current evidence/repair overlay:** current-input Slice has six preserved terminal-red,
+> one-attempt/zero-retry runs. Signed-clean source
+> `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
+> `20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`; it ran 397,101 ms,
+> retained 23 findings across 16 scopes and produced no Arc 4 success marker or ledger. Glass and
+> recovery correctly did not run.
+>
+> Its first five independent roots are locally repaired with negative controls: Guide/Glass now bind the
+> exact 55-bullet development draft; stable capture-fixture comparison separates both legitimate
+> active-play diagnostic clocks; a blocked contextless Tame greeting accepts either truthful boolean
+> mute state while requiring zero context/nodes/voices/emitter; epoch evidence proves private staging
+> before committed publication/raw persistence/reload with eleven isolated controls; and Survey
+> rebinds the active Training lesson after replacing its action DOM. A subsequent whole-candidate
+> review found additional work in canonical world identity, F4/storage convergence, repository
+> races, texture cleanup, complete settings/read-only coverage and bound evidence sequencing.
+> Those bounded repairs are now implemented locally with focused negative controls; the complete
+> battery and independent re-audits remain pending. No current-input Slice PASS, Glass result,
+> recovery certificate, hosted/HUMAN whole-Gate or release authority follows.
+>
+> In particular, landing/name history now binds the complete source-reproved CF1 world rather than
+> a globally false leaf-seed key. A fixed v5 manifest plus four byte-balanced shards preserve exact
+> rows and ambiguous imported counts; the first exact encounter consumes an unresolved legacy fact
+> without another first-landfall award. Search naming, Land, Atlas, Share, Records and Training use
+> that owner, and capacity is checked against all current extensions before any product mutation.
+>
+> Exact Edge build is Slice provenance only. Slice and Glass judge fresh behavior and geometry rather
+> than a version pin, so an Edge update alone never rebaselines, repins or moves thresholds. The
+> Compendium and SceneMemory own separate sealed Edge-family + CDP `1.3` capability/profile
+> authorities; neither uses the exact browser build as a perpetual baseline identity.
 
 > **2026-08-26 current-candidate correction:** the ecology epoch now publishes only from F4's
 > visible-and-answerable, lease-owned `activePlayMs`. One receipt-free lease/revision CAS must commit
@@ -37,7 +67,7 @@ does not silently promote planned behavior into the in-game Guide.
 > It is current-system feedback, not a reward or writer; Compendium audition, ambience, broader
 > companion actions, music and combat audio remain absent.
 
-> **2026-08-25 Arc 3–5 recorded boundary:** the **Engineering & Shipyard** panel now owns truthful
+> **2026-08-25 Arc 3–5 historical recorded boundary:** the **Engineering & Shipyard** panel then owned truthful
 > Mine and Skim actions around the existing static ship projection. It displays six research rows,
 > but only Deep Scanners is purchasable. Its current bounded passive Survey row is described in the
 > 2026-08-26 correction above. It lists all 62 fixed recipes, but only connected-effect
@@ -67,8 +97,9 @@ does not silently promote planned behavior into the in-game Guide.
 > presents a uniform random eligible pool, preview/full counts, aggregate/individual odds, shared
 > hit-or-miss Yield and active-play recovery. It has no targeted-species preview. Pending/storage/
 > stale/publication paths remain non-optimistic and converge without a reroll or second write.
-> Native Close/reopen/reload and 12-viewport geometry/focus are browser-proven. The Guide now has
-> 24 partial /17 unavailable topics and the draft release has 54 bullets; Training remains six
+> Native Close/reopen/reload and 12-viewport geometry/focus were browser-proven for those inputs. The Guide then had
+> 24 partial /17 unavailable topics and the draft release had 54 bullets; the current candidate has
+> 55. Training remained six
 > lessons plus graduation with no Capture lesson. Arc 5A owns a receipt-bound V2 model plus the
 > app-active compact five-carrier representation. Aligned legacy-v1 upgrades once; aligned current-v2
 > is zero-write. Genuine legacy Training composes one Arc 2, 18 Arc 4 and five Arc 5 writes; every hit
@@ -104,7 +135,8 @@ does not silently promote planned behavior into the in-game Guide.
 > `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). Both bind source commit
 > `48ce0b1662a59b21070667be339a1e59503e1f19`, status
 > `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
-> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits are CLEAR.
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
+> exact historical inputs. Current-candidate re-audits are not final.
 >
 > Local commit `c4a02be` records the Arc 3 product/browser-tool repair batch. One no-retry Slice run
 > passed in 253,181 ms with 0 findings/10 screenshots; full Glass separately passed in 64,222 ms with
@@ -168,7 +200,7 @@ does not silently promote planned behavior into the in-game Guide.
 > `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
 > `20260822-arc1-local-certification` passed 42/42 and its named verifier under Edge
 > `151.0.4129.101`, but that certificate remains historical. Clean cross-host SLA repair
-> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds active budget SHA-256
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` bound budget SHA-256
 > `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
 > run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
 > the same Edge `.101`. Raw/gzip SHA-256 are

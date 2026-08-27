@@ -1,3 +1,294 @@
+## ARCHIVED 2026-08-27 — superseded sixth-red/five-root session handoff
+
+> Moved byte-verbatim from `ROADMAP.md` after the current candidate added plan-wide collision,
+> persistence, Charter, resource-ownership and evidence-chain closure.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: SIXTH SLICE RED / FIVE ROOTS HANDOFF -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-27 · SIXTH SLICE RED PRESERVED · FIVE ROOTS REPAIRED · AUDITS CLEAR · FINAL LOCAL CERTIFICATION PENDING ◀◀◀
+
+### Exact local ownership and freeze boundary
+
+- **Owner/environment:** OpenAI/Codex desktop on macOS, exact root
+  `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
+  `origin/openai/mac`, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`.
+- **Signed sixth-run base:** clean source
+  `1e0141be418ca20a37dd82f1115c00b1a005e090` (tree
+  `9360ec502dba9d6a588b365cf2a8b9b6de513514`, parent
+  `9ce7ddde01201177dff1cacafc06c8424c4098cb`) supplied the sixth Slice run. It has a
+  good SSH signature for `79046704+TheDakk@users.noreply.github.com`, fingerprint
+  `SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`. The branch was clean and ahead
+  81 of `origin/openai/mac` at that freeze.
+- **Current worktree:** contains the five independently diagnosed sixth-red repairs, their
+  negative controls, two preserved gzip carriers and current-reference reconciliation. These
+  bytes are local and uncommitted; the full browserless battery and three independent read-only
+  audits are clear, and the exact signed repair freeze remains.
+- **No external authority:** nothing in this batch authorizes fetch/merge, push, hosted Actions,
+  PR mutation, release, version bump, deployment, preview publication or `rnSeen` mutation.
+  `main` and both sites remain unchanged.
+
+### Sixth preserved current-input Slice red
+
+- Exactly one attempt and zero automatic retries ran on Microsoft Edge `151.0.4129.107`:
+  `20260827085237038-27561-1f8e3c1771b7`, from
+  `2026-08-27T08:52:37.038Z` through `08:59:14.139Z` (397,101 ms). Parent and child
+  exited 1 with no signal or spawn error; the exact signed source remained clean and stable.
+- The report retained 23 findings across 16 scopes. It stopped before Arc 4 success evidence:
+  required was false, `ok`/ledger were null, and no success marker or ledger line exists.
+  Therefore it is not a Slice PASS and supplies no post-start audio, nine-stage/14-burn, Glass or
+  recovery authority.
+- Preserved evidence:
+  `audits/ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_085237038.json.gz` (gzip 246,615 bytes,
+  SHA-256 `80228b85524544d968ec7f288a73492e390526f0adfb41ed086a2e806dce225e`; raw
+  2,193,285 bytes, SHA-256
+  `17063c6b0978956a889ce926307bf5d021a3d330a4e4053f196540e14e260555`) and matching
+  `.log.gz` (gzip 108,363 bytes, SHA-256
+  `0446d2804248509c14772b5631ac065fed26c1e8b14565c430d911b923a8634b`; raw 918,043
+  bytes, SHA-256 `a87c5741d409e69797bf024ccdd39f8e94719b7c9efbca6ff4460433ca43ef54`).
+  Both gzip integrity checks pass. Ten run-ID PNGs match the manifest but remain ignored; only
+  their manifest provenance, not their pixels, is preserved.
+- Edge `.107` is exact Slice executable/version provenance only. Slice and Glass are
+  version-tolerant outcome gates: a browser-version update alone never triggers a rebaseline,
+  repin, threshold change or automatic rerun, while a real launch, protocol, geometry or behavior
+  failure remains red. The sealed Microsoft Edge-family + CDP `1.3` capability authority belongs
+  specifically to the Compendium performance certificate.
+
+### Five independent roots and current repairs
+
+1. **Guide draft oracle:** Slice and Glass still expected 54 player-visible bullets after the
+   cumulative v2.0 development draft reached 55. Both now share the exact 55/54 positive/removal
+   contract, with independent count, uniqueness, nonempty-section, raw-nonempty and raw-trim
+   controls. No release version or popup behavior changed.
+2. **Ecology comparison:** the fixture advanced the legitimate diagnostic
+   `persistence.ecology.observedActivePlayMs` from 5 to 6 but excluded only its runtime mirror.
+   The stable projection now excludes both diagnostic clocks while separately bounding,
+   monotonicity-checking and mutation-testing the ecology value.
+3. **Contextless audio:** the Tame oracle incorrectly required `muted:true` even when a valid
+   enabled setting remained contextless because playback was blocked. The contract now requires a
+   boolean mute state plus zero context/nodes/voices/ids/emitter; it does not invent a mute
+   transition. Context creation/reload mutants keep that path non-vacuous.
+4. **Epoch publication:** the browser fixture expected the staged epoch optimistically before
+   persistence, contradicting the product's committed-only law. It now proves the private
+   precommit candidate, calls the real persistence seam, then proves committed published/raw/
+   reloaded equality with eleven isolated controls across input/private/committed diagnostics and
+   stored/reloaded values.
+5. **Training ownership:** a negative control rebuilt Survey after bypassing the document Escape
+   path, so lesson locks were not rebound before Land. Product now exports
+   `refreshTrainingScope()`; Survey calls it once after its new card is visible and published.
+   Dynamic-replacement and wiring tests prove Survey-tour, Atlas-add and Land locks/focus. The
+   existing **A LESSON OWNS ITS ESCAPE KEY** release-note bullet was expanded; the draft remains
+   exactly 55 bullets.
+
+### Current verification and evidence boundary
+
+- Focused repair verification is green: 5 files / 52 tests. Full v2 Vitest is green at 126 files /
+  1,390 passed / one intentional skip / zero failures. Root/app/worker/noUnused TypeScript,
+  `artunused`, syntax/import selftests and the 884-module Vite build pass.
+- Root validation/fingerprint, legacy smoke, root fixture/policy gates, the owned layout-launcher
+  selftest and all applicable browserless reporter/contract/Glass/recovery/Compendium/persona
+  selftests are green. Three independent read-only product/UX, harness/control and
+  evidence/protocol audits are CLEAR after their findings were repaired and rechecked. Final
+  diff/inventory confirmation and the signed clean freeze remain; no repaired browser run has
+  occurred.
+- The current Compendium certificate remains exact-input valid under its version-tolerant
+  Edge-family/CDP capability authority. Recovery remains red/unclaimed from the earlier stale
+  all-`depleted` instrument poll; ordinary Slice's `recoveryClaimed:false` is not a substitute.
+
+### Exact remaining sequence — serial and no automatic retry
+
+1. Reconfirm the exact intended-path inventory and diff hygiene after the CLEAR independent
+   product, harness and evidence audits.
+2. Create one **signed, clean local repair commit** on `openai/mac`; verify its signature and
+   exact inventory. Do not push.
+3. From that exact signed source, run **one** current-input Slice attempt. Preserve any red exactly
+   as red and diagnose it before another source revision; do not auto-retry.
+4. Run the full 12-viewport Glass Matrix **only if Slice is terminal-green**.
+5. Run the dedicated uninterrupted **1,200,000 ms** Arc 4 recovery observation only if both Slice
+   and Glass are terminal-green.
+6. After terminal evidence, perform Nick's requested campaign-wide code, architecture, tests,
+   documentation, UX and polish review across the whole plan. Repair and reverify any actionable
+   findings before proposing the final integration milestone.
+
+### Open product and HUMAN boundaries
+
+- Current Slice/Glass/recovery, physical-device accessibility/heat/battery and applicable HUMAN
+  listening/comfort remain open until their real evidence.
+- Arc 5B breeding/care/mission public writers and parameters, broader Arc 7/8 expressions,
+  ambience/music/assets/combat/Guardian audio, Compendium audition and later campaign arcs remain
+  future scope. One current-system greeting does not close Arc 7/8 or Gate G.
+- Combined HUMAN first-journey/ownership/attachment, Compendium and ship/item readability review
+  follows automated evidence and the campaign-wide review. No whole Gate, integration or release
+  is closed by browserless checks or historical certificates.
+
+### Git / paired-agent handoff
+
+- **Current side — OpenAI/Codex macOS:** owns these local unpushed bytes on `openai/mac`.
+  Complete the exact inventory, signed freeze and serial evidence here without
+  fetch/merge/switch or copying files between worktrees.
+- **SSH/read boundary:** no fresh GitHub SSH identity or repository-read probe completed or was
+  relied on in this local/no-GitHub batch. The last recorded macOS proof (2026-08-23) returned
+  GitHub's `Hi TheDakk!` authenticated-account message with the expected no-shell exit 1,
+  `git ls-remote origin HEAD` = `d4ab7e671959ab80198bed22bb600a26fc3524cc`, and a passing
+  fetch. Re-establish both current identity and repository read immediately before the first
+  separately authorized GitHub write; do not infer them from this historical result.
+- **GitHub step now:** none. `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, but zero hosted attempts
+  are authorized. `UNFROZEN` is not permission to push, label, dispatch, rerun, mark Ready or
+  merge. The repository is public as of 2026-08-20, so standard hosted runners are currently free;
+  if visibility changes, the standing 3,000-minute cap applies fail-closed. Never infer a reset or
+  visibility change.
+- **Future PR only after evidence/review and explicit authorization:** base `develop`, source
+  `openai/mac`. Copy-ready title: `Phase 4: complete the playable-slice campaign repair`.
+  Description template: `Integrates the audited Phase 4 product and harness repairs, preserves
+  deterministic/persistence authority, updates current references, and binds the final local
+  Slice, Glass, and recovery evidence. The final body lists exact local test counts, run IDs,
+  browser provenance and report hashes; merging into develop creates the reviewed synchronization
+  point Claude will later merge into anthropic/mac. No production release, version bump, or
+  deployment.` Refresh it with the exact terminal verification before it becomes copy-ready.
+- **Other side — Anthropic/Claude Code:** does not have this local candidate. Nick does **not**
+  need to open Claude now. Only after a future reviewed merge into `develop` should Claude fetch
+  `origin` and merge `origin/develop` into a clean `anthropic/mac`; never copy files manually.
+- **Release state:** `develop` contains PR #34; `main`, production and preview sites are
+  unchanged. No release, deployment, publication or production-version authority exists.
+<!-- END VERBATIM ROADMAP BLOCK: SIXTH SLICE RED / FIVE ROOTS HANDOFF -->
+
+## ARCHIVED 2026-08-27 — superseded fifth-red session handoff
+
+> Moved byte-verbatim from `ROADMAP.md` after the sixth current-input Slice red and its five
+> independent repairs superseded this live handoff.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: FIFTH SLICE RED SESSION HANDOFF -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-27 · FIFTH SLICE RED PRESERVED · CURRENT REPAIR BROWSERLESS-GREEN · EVIDENCE RERUN PENDING ◀◀◀
+
+### Exact local ownership and freeze boundary
+
+- **Owner/environment:** OpenAI/Codex desktop on macOS, exact root
+  `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
+  `origin/openai/mac`, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`.
+- **Signed fifth-run base:** clean source
+  `9ce7ddde01201177dff1cacafc06c8424c4098cb` (tree
+  `1f30880ac20c8bfc889abf344ae7dab44dfa8d0e`) supplied the fifth Slice run. At that
+  boundary `openai/mac` was ahead 80 of `origin/openai/mac` and ahead 79 of
+  `origin/develop`. The current worktree contains the audited fifth-red product, harness,
+  generic-proof and reference repairs; the audits and reference reconciliation are complete, and
+  root must reconfirm the final inventory before creating a new signed local freeze for browser evidence.
+- **No external authority:** nothing in this batch authorizes fetch/merge, push, hosted Actions,
+  PR mutation, release, version bump, deployment, preview publication or `rnSeen` mutation.
+  `main` and both sites remain unchanged.
+
+### Five preserved current-input Slice reds
+
+All five ran exactly once with zero automatic retries on Microsoft Edge `151.0.4129.107`:
+
+1. `20260826214541492-83064-b252b137f7a3` from clean signed `8553bd7…`, 92,772 ms:
+   two instrument defects plus the retained-Survey focus product regression.
+2. `20260827000034983-98202-869d966f2f88` from clean signed `9d4b2b0…`, 92,566 ms:
+   Settings/focus cleared; the reachable target exposed the impossible card-context oracle.
+3. `20260827025804458-2742-c0c871ee52b6` from clean signed `8a23e22…`, 93,582 ms:
+   card context cleared; retained Survey correctly hid the rail before the harness tried a
+   zero-rect rail control.
+4. `20260827032748771-8092-d2a0130882c1` from clean signed `bd6b06b…`, 119,502 ms:
+   stale Mars-source/rendered-receipt expectations and a post-reload retained-card lifecycle
+   cascade; product Search, remnant routing and rail hiding were correct.
+5. **`20260827041238239-16243-cbf9ca66283b`** from signed-clean exact source
+   **`9ce7ddde01201177dff1cacafc06c8424c4098cb`**, 141,336 ms: one finding only—
+   `Arc 4 exact committed Tame greeting voice did not reach its browser outcome within 10000ms
+   (last null)`. The report/log are preserved under `audits/`; the generic `last null` records
+   only that the old active-voice predicate never returned a qualifying observation. It cannot
+   distinguish product rejection, autoplay/environment behavior, natural completion before
+   sampling or a collector defect.
+
+The fifth run outcome-clears the repaired route through **Skim**, the applicable Engineering
+actions, storage refusal, stale-authority convergence, committed-publication convergence and the
+Arc 5 V1→V2/aligned fixed point. It stopped at greeting start, so post-start audio lifecycle and
+the later sealed nine-stage/14-burn sequence did not execute on this input.
+
+### Current fifth-red repair
+
+- **Product authority:** `result.revision` remains the global F3 transaction revision.
+  `result.ownershipRevision` is written from verified Arc 5 V2 ownership. Arc 4 V1 and Arc 5 V2
+  ownership revisions must agree before publication/result. The greeting owner compares the live
+  ownership state only with `ownershipRevision`, preserving the stale fence without conflating
+  the unrelated global counter.
+- **Harness observation:** one named retained seven-clause
+  result/global/ownership/claim/counterpart/runtime/toast collector replaces the timing-fragile
+  active-only predicate. Exact `true` product-hold release is a fail-fast prerequisite. A single
+  voice start is valid while active or after exact natural completion; start/peak/completion,
+  stop/steal/rejection/fault, event, creature and accessible-toast ownership remain exact.
+- **Generic proof closure:** the same batch includes generic Arc 4 `ownershipRevision`
+  assertions/fixtures/mutants and reload-result-null controls, so the fix is not protected only by
+  the greeting-specific path. No product behavior, save format, recovery duration or browser
+  budget is weakened.
+- **Browserless verification:** 124 Vitest files, 1,383 passing tests, one intentional skip and
+  zero failures, plus root/app/worker typecheck and focused audits. The generic proof-gap repair is
+  included in those counts. No repaired Slice/Glass/recovery browser result exists yet.
+- **Player copy:** the current cumulative v2.0 development draft contains 55 bullets. Historical
+  54-bullet evidence statements remain historical and must not be rewritten.
+
+### Compendium and recovery evidence boundaries
+
+- **Current version-tolerant Compendium certificate remains valid for its exact inputs.** Active
+  budget `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52` binds producer
+  `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, retains all four
+  baseline faults and exact 14-phone/13-desktop discrimination, and changes only phone warm to
+  `524288`. Signed activation `91f4e04410b893c43ee5d261ebfc1fa3be127c29` supplied
+  `20260826-slice-repair-certification`: 78/78, complete lifecycle, named verifier, one attempt,
+  zero retries, 44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`.
+- The authority is Edge-family + CDP `1.3` + sealed capability contract
+  `cf-v2-compendium-cdp-capabilities/v1` SHA-256
+  `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Exact browser
+  build/revision/JavaScript/path/user-agent remain mandatory same-run provenance; an Edge update
+  alone does not trigger rebaselining or change ceilings.
+- **Recovery remains red/unclaimed:** clean committed run
+  `20260826024124548-13172-6286d5212e` at `35a22b1…` completed fixture and 16-step burn-down,
+  then the stale all-`depleted` poll rejected a valid mixed exhausted surface. Cleanup completed,
+  but active observation/recovery never ran. Ordinary Slice's nine-stage/14-burn ledger retains
+  `recoveryClaimed:false` and is not a substitute for uninterrupted recovery proof.
+
+### Exact next sequence — serial, no retry
+
+1. Reconfirm the independently cleared final diff, intended path inventory, carrier/archive
+   integrity and the recorded 124-file/1,383-pass browserless battery.
+2. Make
+   one **signed local freeze** on `openai/mac`. Do not push.
+3. From that exact signed clean source, run **one** current-input Slice attempt with zero automatic
+   retries. Preserve a red exactly as red and diagnose its first owned finding.
+4. Run the full 12-viewport Glass Matrix **only if Slice is terminal-green**. Preserve any red;
+   do not continue serial certification past it.
+5. Only after Slice and Glass are green, run the dedicated uninterrupted **1,200,000 ms** Arc 4
+   recovery observation once, with no retry and no substitution of the ordinary Slice ledger.
+6. If all three evidence stages are terminal-green, refresh references/handoff with exact source,
+   run IDs, browser provenance, report hashes and outcomes; then perform the requested
+   **campaign-wide full code review and polish** across the complete plan before proposing a PR.
+
+### Open product and HUMAN boundaries
+
+- Post-start Tame audio lifecycle, current Slice/Glass/recovery, physical-device accessibility/
+  heat/battery and all applicable HUMAN listening/comfort remain open until their real evidence.
+- Arc 5B breeding/care/mission product parameters and writers, broader Arc 7/8 expressions,
+  ambience/music/assets/combat/Guardian audio, Compendium audition and later campaign arcs remain
+  future work. One current-system greeting does not close Arc 7/8 or Gate G.
+- Combined HUMAN first-journey/ownership/attachment, Compendium and ship/item readability review
+  follows the automated evidence and campaign-wide review. No Gate, integration or release is
+  closed by browserless checks or a historical certificate.
+
+### Git / paired-agent handoff
+
+- **Current side — OpenAI/Codex macOS:** owns these local unpushed bytes on `openai/mac`. Reconfirm
+  the inventory, make the browserless freeze and complete the serial evidence sequence here. Stay on the exact root and
+  branch; do not fetch/merge/switch, stage another agent's work, or copy files between worktrees.
+- **GitHub step now:** none. `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, but zero hosted attempts are
+  authorized. `UNFROZEN` is not permission to push, label, dispatch, rerun, mark Ready or merge.
+- **Future PR only after evidence/review and explicit authorization:** base `develop`, source
+  `openai/mac`. Copy-ready title: `Phase 4: complete the playable-slice campaign repair`.
+  Copy-ready description: `Integrates the audited Phase 4 product and harness repairs, preserves
+  deterministic/persistence authority, updates current references, and binds the final local
+  Slice, Glass, and recovery evidence. No production release, version bump, or deployment.`
+- **Other side — Anthropic/Claude Code:** does not have this local candidate. Nick does **not**
+  need to open Claude now. Only after a future reviewed merge into `develop` should Claude fetch
+  `origin` and merge `origin/develop` into a clean `anthropic/mac`; never copy files manually.
+- **Release state:** `develop` contains PR #34; `main`, production and preview sites are unchanged.
+  No release, deployment, publication or production version authority exists.
+<!-- END VERBATIM ROADMAP BLOCK: FIFTH SLICE RED SESSION HANDOFF -->
+
 ## ARCHIVED 2026-08-27 — superseded four-red session handoff
 
 > Moved byte-verbatim from `ROADMAP.md` after the fifth current-input Slice red and its

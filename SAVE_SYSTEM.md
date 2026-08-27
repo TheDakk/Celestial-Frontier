@@ -1,5 +1,53 @@
 # Celestial Frontier — Save System
 
+> **2026-08-27 exact-evidence correction:** the browser fixture now observes the staged ecology
+> epoch as a private candidate, proves that the published value is unchanged before durability,
+> invokes the real persistence seam, then proves published, raw stored and reloaded values all equal
+> the committed candidate. Ten isolated controls reject optimistic precommit state/publication,
+> missing candidates, early edge clearing, withheld commit/publication, stale committed
+> diagnostics, wrong stored bytes and wrong reload bytes. This changes evidence, not the save
+> schema or product transaction.
+>
+> The Slice comparison also treats `runtime.activePlayMs` and
+> `persistence.ecology.observedActivePlayMs` as diagnostic clocks that may legitimately advance
+> during an input sequence. Both are excluded only from the stable whole-fixture comparison; the
+> ecology value is still independently required to be integer, monotonic and within a 10,000 ms
+> bound, and a 123,456 ms mutant fails. Sixth current-input Slice remains preserved red and supplies
+> no PASS/Glass/recovery authority. Browser evidence has three independent version-tolerant
+> authorities. The root authority accepts compatible Chromium-family executables only when CDP
+> `1.3` and its source-derived layout/boot capability inventory pass, and records executable,
+> product, revision, user agent, JavaScript version and protocol version per run. Compendium and
+> SceneMemory own separate source-derived capability contracts, producer bindings and fixed rulers.
+> A compatible browser point update is provenance, not a reason to rebaseline or change thresholds.
+
+> **2026-08-27 persistence authority/race reconciliation (current source truth):** legacy backup
+> promotion is one atomic compare-and-apply over the exact primary bytes that were proved loadable
+> plus absence of both the v5 revision and active-play lease; it writes the backup only if every check
+> still holds. Legacy recovery first classifies the exact backup bytes, then atomically binds the
+> observed invalid primary, the observed supported backup and the same two v5-absence checks before
+> replacing the primary. A newer primary, changed backup, v5 revision or v5 lease therefore wins the
+> race cleanly and cannot be rolled back. Once v5 authority exists, legacy promotion/recovery is
+> retired rather than allowed to reinsert its predecessor.
+>
+> F4 distinguishes lease-acquire from lease-renew storage failure. Failed acquire accrues zero and
+> owns no lease. Failed renew first settles the already-earned visible/answerable interval into the
+> in-memory clock, then immediately revokes lease ownership and further accrual. The domain can regain
+> authority only through a later explicit heartbeat; the app deliberately does not do that in the
+> same document. Either lease error—or a rejected repository-revision read while verifying current
+> authority—marks persistence transient-protected, publishes the operation witness, stops heartbeat,
+> answerability and player mutation, and schedules one protected convergence reload. Periodic and
+> `pageshow` callbacks honor that hold and cannot reacquire before convergence.
+> Convergence attempts audio disposal and runtime release, aggregates all cleanup errors into its
+> witness, and reloads even when cleanup reports a failure.
+>
+> Read-only authority intercepts all nine ordinary Settings outcomes—Sound, Volume, Creature voices,
+> Text size, Text tone, Font, Star charts, Motion and Panel tint—plus Field Training Restart and its
+> lesson controls before they can change save bytes. Inspection remains available. **Settings → Bring
+> expedition** is the narrow protected-recovery exception to the ordinary mutation selector, not a
+> general write bypass: its payload still must pass complete import validation, coordinate queued or
+> in-flight persistence, win the exclusive replacement transaction and reload. Focused checks cover
+> these laws, but the final frozen-producer full battery and independent audits remain pending.
+
 > **2026-08-26 current-candidate persistence corrections (local code/test truth; no whole-gate or
 > release claim):** F4's published ecology epoch is now derived only from the authority's
 > visible-and-answerable, lease-owned `activePlayMs`. An integer edge is staged privately, then one
@@ -13,6 +61,21 @@
 > runtime import remains deliberately caller-time based: malformed or zero notification timestamps
 > fall back to the caller's `now`, while an honest future timestamp remains representable. The
 > fixed-point migration clock and the runtime sanitizer clock are therefore separate authorities.
+>
+> World landing/name history now has a strict v5 owner: `catalog/world.identity.manifest` plus
+> `catalog/world.identity.shard.0` through `.3`. Each exact row packs the complete source-reproved
+> CF1 galaxy/star/planet address, landing flag and optional name; v4 `land` and `names` are lossy
+> compatibility mirrors only. The manifest fixes all four shards and row counts, canonical re-encode
+> is required on read, and deterministic greedy byte balancing keeps the supported 9,000-record /
+> 5,000-name envelope inside both per-namespace and aggregate extension limits. Mutation preparation
+> applies the five candidate writes against the current complete extension set before changing
+> navigation, first-landfall credit, name or Atlas state, so capacity refusal is atomic.
+>
+> An absent owner bootstraps only from source-proven saved/Atlas addresses. A unique legacy leaf-seed
+> fact can attach to its one proven world; a colliding fact remains unresolved, counts once in
+> Records, labels neither world, and is consumed by the first exact product encounter without
+> minting a new-landing reward. Training preserves the exact five carrier bytes in its one-write
+> replacement and converges legacy/composite Earth rows onto the one canonical Earth Atlas id.
 >
 > The legacy XP-first mirror now exports only the newest 4,000 validated keys in `xpf`; older keys
 > move into the strict v5-only `progression.xp-firsts` archive. The additive `xpa` v1 binding ties
@@ -838,7 +901,7 @@
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the current v2 overlay
-matches `port/v2` as of 2026-08-25. ⚠ Read the v1.8.7 section (a reverted
+matches `port/v2` as of 2026-08-27. ⚠ Read the v1.8.7 section (a reverted
 `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`,
 harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated

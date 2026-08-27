@@ -17,134 +17,158 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-27 · FIFTH SLICE RED PRESERVED · CURRENT REPAIR BROWSERLESS-GREEN · EVIDENCE RERUN PENDING ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-27 · CURRENT CANDIDATE BROWSERLESS-GREEN · EDGE OUTCOME CONTROLS GREEN · SIGNED FREEZE PENDING ◀◀◀
 
-### Exact local ownership and freeze boundary
+### Exact local ownership and authority boundary
 
 - **Owner/environment:** OpenAI/Codex desktop on macOS, exact root
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
   `origin/openai/mac`, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`.
-- **Signed fifth-run base:** clean source
-  `9ce7ddde01201177dff1cacafc06c8424c4098cb` (tree
-  `1f30880ac20c8bfc889abf344ae7dab44dfa8d0e`) supplied the fifth Slice run. At that
-  boundary `openai/mac` was ahead 80 of `origin/openai/mac` and ahead 79 of
-  `origin/develop`. The current worktree contains the audited fifth-red product, harness,
-  generic-proof and reference repairs; the audits and reference reconciliation are complete, and
-  root must reconfirm the final inventory before creating a new signed local freeze for browser evidence.
-- **No external authority:** nothing in this batch authorizes fetch/merge, push, hosted Actions,
-  PR mutation, release, version bump, deployment, preview publication or `rnSeen` mutation.
-  `main` and both sites remain unchanged.
+- **Current tree:** local and uncommitted, ahead 81 of `origin/openai/mac`. It contains the
+  complete sixth-red repair/polish batch, preserved evidence, reconciled references and refreshed
+  live producer bindings. Full browserless verification and bounded real-Edge outcome controls are
+  green. The final whole-diff audit is complete; both of its evidence-integrity findings are
+  repaired and their focused controls pass. The signed clean freeze and serial certifying browser
+  chain remain.
+- **No external authority:** this batch authorizes no fetch/merge, push, hosted Actions, PR
+  mutation, release, version bump, deployment, preview publication or `rnSeen` mutation.
+  `main`, production and both sites remain unchanged.
 
-### Five preserved current-input Slice reds
+### Preserved red evidence and browser-version law
 
-All five ran exactly once with zero automatic retries on Microsoft Edge `151.0.4129.107`:
+- Signed clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied the sixth
+  current-input Slice run `20260827085237038-27561-1f8e3c1771b7` on Edge
+  `151.0.4129.107`. It ran once for 397,101 ms with zero automatic retries and retained 23
+  findings across 16 scopes. Required was false, `ok`/ledger were null, no success marker or
+  ledger line exists, and Glass/recovery correctly did not run.
+- Exact report/log carriers are preserved under `audits/ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_085237038.*.gz`;
+  their raw/gzip hashes and integrity inventory remain in `audits/README.md`.
+- Browser evidence now has three deliberately separate version-tolerant authorities. Root
+  layout/boot accepts a compatible Chromium-family executable only with CDP `1.3` and the exact
+  17-method inventory derived from its source. Compendium and SceneMemory keep their own
+  Edge-family/CDP capability contracts, producer bindings and fixed rulers. Exact executable,
+  product, revision, JavaScript version, path and user agent remain per-run provenance. A browser
+  point update alone never triggers rebaselining, repinning or threshold movement.
 
-1. `20260826214541492-83064-b252b137f7a3` from clean signed `8553bd7…`, 92,772 ms:
-   two instrument defects plus the retained-Survey focus product regression.
-2. `20260827000034983-98202-869d966f2f88` from clean signed `9d4b2b0…`, 92,566 ms:
-   Settings/focus cleared; the reachable target exposed the impossible card-context oracle.
-3. `20260827025804458-2742-c0c871ee52b6` from clean signed `8a23e22…`, 93,582 ms:
-   card context cleared; retained Survey correctly hid the rail before the harness tried a
-   zero-rect rail control.
-4. `20260827032748771-8092-d2a0130882c1` from clean signed `bd6b06b…`, 119,502 ms:
-   stale Mars-source/rendered-receipt expectations and a post-reload retained-card lifecycle
-   cascade; product Search, remnant routing and rail hiding were correct.
-5. **`20260827041238239-16243-cbf9ca66283b`** from signed-clean exact source
-   **`9ce7ddde01201177dff1cacafc06c8424c4098cb`**, 141,336 ms: one finding only—
-   `Arc 4 exact committed Tame greeting voice did not reach its browser outcome within 10000ms
-   (last null)`. The report/log are preserved under `audits/`; the generic `last null` records
-   only that the old active-voice predicate never returned a qualifying observation. It cannot
-   distinguish product rejection, autoplay/environment behavior, natural completion before
-   sampling or a collector defect.
+### Current implementation and repaired invariants
 
-The fifth run outcome-clears the repaired route through **Skim**, the applicable Engineering
-actions, storage refusal, stale-authority convergence, committed-publication convergence and the
-Arc 5 V1→V2/aligned fixed point. It stopped at greeting start, so post-start audio lifecycle and
-the later sealed nine-stage/14-burn sequence did not execute on this input.
+1. **Sixth-red roots:** Guide/Glass share the exact 55-bullet draft contract; ecology comparison
+   excludes only its two bounded diagnostic clocks; contextless blocked audio no longer invents a
+   mute transition; epoch publication is proved only after the real durable seam; rebuilt Survey
+   refreshes Training ownership before Land/Atlas can answer.
+2. **Exact world identity:** v5 owns one canonical manifest plus four fixed shards for complete
+   source-reproved CF1 galaxy/star/planet addresses, landings and names. Legacy leaf-seed mirrors
+   remain compatibility-only. Ambiguous legacy facts stay unresolved until one exact product
+   encounter consumes them without inventing first-landing credit. Capacity is preflighted
+   atomically; Training, Search, Share, Atlas, Land and reload preserve the complete identity.
+3. **Collision outcome proof:** one source-generated reachable pair lives in the same galaxy; its
+   two distinct stars occupy different coordinates, while both worlds share the same planet leaf
+   seed. The bounded real-Edge scenario proves bidirectional Search, naming, Share, Atlas, Land,
+   persistence/reload,
+   Records and Atlas-travel isolation, including negative controls against collapsed names,
+   addresses and landing counts.
+4. **Legacy/v5 race safety:** backup promotion and recovery are atomic compare-and-apply operations
+   over the exact observed primary/backup bytes plus absence of both v5 revision and active lease.
+   Changed legacy bytes or any v5 authority wins; legacy recovery cannot roll a newer document back.
+5. **F4 failure convergence:** lease acquire/renew storage failures and rejected revision reads
+   move the document to transient protection, stop answerability/accrual/heartbeat/player mutation,
+   dispose audio, release runtime authority and reload once. Periodic and `pageshow` callbacks
+   honor the hold and cannot reacquire in the same document. Cleanup faults are aggregated without
+   stranding reload. Bounded real-Edge heartbeat and revision-read scenarios prove read-only
+   Settings, stable raw state, release and a fresh writable successor token.
+6. **Read-only recovery:** all nine ordinary Settings outcomes and Field Training controls are
+   intercepted before save-byte mutation. Inspection remains available. **Bring expedition** is
+   the narrow authority-gated protected-recovery exception and still requires complete validation,
+   exclusive replacement and reload.
+7. **Charter hierarchy:** Sol landfall and Chapter-1 dead-world mining require the registered exact
+   home-galaxy seed/coordinates, Sol-star seed/coordinates, planet seed and source ordinal. Same-seed
+   worlds under changed coordinates/ordinal cannot bank. Only committed matching outcomes advance
+   authored goals.
+8. **Renderer/resource ownership:** resize bursts coalesce to at most one frame while preserving
+   route/card state and avoiding persistence writes. HD/fine texture successors retain the
+   displayed predecessor until acquired publication, reject stale work and aggregate timer/lease/
+   texture cleanup. Reload paths release audio, authority, chrome and renderer before replacement.
+9. **Evidence honesty:** Slice, Glass and recovery now form one immutable predecessor-bound chain
+   on one unchanged clean commit, with named verification after each stage and no successor/retry
+   after red. Slice PASS additionally requires exact compatible-browser provenance and all ten
+   ordered current-run PNG carriers with safe paths, valid structure and exact byte/hash binding.
+   Recovery is explicitly non-standalone. Hosted Compendium owners SHA-check and metadata-check
+   the sealed `.101` package, extract it into a fresh job-local root, and pass that executable
+   explicitly through preflight, certification and verification without installing or inheriting
+   system Edge. The static owner contract rejects disabled verifier conditions and renamed
+   certification IDs as well as broken order or browser ownership. Compendium historical
+   calibration stays historical; only unchanged numeric ceilings carry forward to a newly bound
+   producer.
+10. **Release boundary:** `V2_DRAFT_RELEASE` remains Unreleased with five populated categories
+    and exactly 55 unique bullets. `V2_CURRENT_RELEASE_VERSION` remains `null`; the popup and
+    `rnSeen` cannot move. Draft copy now states that the owner-labelled PR battery archives but
+    does not publish, while branch-site publication remains parked.
 
-### Current fifth-red repair
+### Current verification
 
-- **Product authority:** `result.revision` remains the global F3 transaction revision.
-  `result.ownershipRevision` is written from verified Arc 5 V2 ownership. Arc 4 V1 and Arc 5 V2
-  ownership revisions must agree before publication/result. The greeting owner compares the live
-  ownership state only with `ownershipRevision`, preserving the stale fence without conflating
-  the unrelated global counter.
-- **Harness observation:** one named retained seven-clause
-  result/global/ownership/claim/counterpart/runtime/toast collector replaces the timing-fragile
-  active-only predicate. Exact `true` product-hold release is a fail-fast prerequisite. A single
-  voice start is valid while active or after exact natural completion; start/peak/completion,
-  stop/steal/rejection/fault, event, creature and accessible-toast ownership remain exact.
-- **Generic proof closure:** the same batch includes generic Arc 4 `ownershipRevision`
-  assertions/fixtures/mutants and reload-result-null controls, so the fix is not protected only by
-  the greeting-specific path. No product behavior, save format, recovery duration or browser
-  budget is weakened.
-- **Browserless verification:** 124 Vitest files, 1,383 passing tests, one intentional skip and
-  zero failures, plus root/app/worker typecheck and focused audits. The generic proof-gap repair is
-  included in those counts. No repaired Slice/Glass/recovery browser result exists yet.
-- **Player copy:** the current cumulative v2.0 development draft contains 55 bullets. Historical
-  54-bullet evidence statements remain historical and must not be rewritten.
+- **v2 core:** 134 Vitest files, 1,446 passed, one intentional skip, zero failures. Root/app/worker
+  TypeScript, `noUnusedLocals`, 886-module production build, art audit, 1,014 override keys /
+  1,010 species coverage, 454-field spec check and every override mutation control pass.
+- **Evidence tools:** browser-path, Slice report, Glass, recovery, Compendium (222 controls),
+  persona, preview-package/check, CDP-launcher and immutable v1.8.9 descriptor evidence/selftests
+  all pass. The descriptor fixture has three non-vacuous immutable-source cases and rejects raw,
+  resealed, source and probe tampering.
+- **Root/legacy:** Actions-budget 64-control selftest, preflight selftest, root 17-method browser
+  capability selftest, validate/build, zero-error boot, 50-probe v1.0 fingerprint, full legacy
+  gameplay smoke, Training checkpoint, 198,000 golden seeds, 108 code fixtures, 200 audio profiles
+  and 10 save fixtures all pass.
+- **Real Edge diagnostics:** actual preflight passes Edge `151.0.4129.107` under the
+  version-tolerant CDP authority. `slicesmoke --outcome-controls-only` passes all three positive
+  scenarios plus their collision/heartbeat/revision negative controls.
+- **Frozen producer bindings:** the unconditional 886-module build binds SceneMemory dist
+  `3899f39f8cc45927d40ef8f80923420ce123f4aa0f61d2d505bba6dd89b08ecd`
+  and Compendium producer `c273d7927cf97327c6b0dc1255b54fe5c93ca9de4c4db75d613ddc16161d8587`.
+  Both tracked budgets match; no numeric ceiling or historical ruler was rewritten. Fresh exact
+  SceneMemory and Compendium browser certificates remain pending for the signed candidate.
+- Independent product/code and release-note audits are CLEAR. The final whole-diff audit found two
+  evidence-integrity gaps: hosted Compendium package isolation and incomplete Slice PASS
+  browser/screenshot validation. Both are repaired, negative-controlled and focused-green; no
+  certifying repaired Slice/Glass/recovery result exists yet.
 
-### Compendium and recovery evidence boundaries
+### Exact remaining local sequence — serial, fail-fast, no automatic retry
 
-- **Current version-tolerant Compendium certificate remains valid for its exact inputs.** Active
-  budget `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52` binds producer
-  `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224`, retains all four
-  baseline faults and exact 14-phone/13-desktop discrimination, and changes only phone warm to
-  `524288`. Signed activation `91f4e04410b893c43ee5d261ebfc1fa3be127c29` supplied
-  `20260826-slice-repair-certification`: 78/78, complete lifecycle, named verifier, one attempt,
-  zero retries, 44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`.
-- The authority is Edge-family + CDP `1.3` + sealed capability contract
-  `cf-v2-compendium-cdp-capabilities/v1` SHA-256
-  `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Exact browser
-  build/revision/JavaScript/path/user-agent remain mandatory same-run provenance; an Edge update
-  alone does not trigger rebaselining or change ceilings.
-- **Recovery remains red/unclaimed:** clean committed run
-  `20260826024124548-13172-6286d5212e` at `35a22b1…` completed fixture and 16-step burn-down,
-  then the stale all-`depleted` poll rejected a valid mixed exhausted surface. Cleanup completed,
-  but active observation/recovery never ran. Ordinary Slice's nine-stage/14-burn ledger retains
-  `recoveryClaimed:false` and is not a substitute for uninterrupted recovery proof.
-
-### Exact next sequence — serial, no retry
-
-1. Reconfirm the independently cleared final diff, intended path inventory, carrier/archive
-   integrity and the recorded 124-file/1,383-pass browserless battery.
-2. Make
-   one **signed local freeze** on `openai/mac`. Do not push.
-3. From that exact signed clean source, run **one** current-input Slice attempt with zero automatic
-   retries. Preserve a red exactly as red and diagnose its first owned finding.
-4. Run the full 12-viewport Glass Matrix **only if Slice is terminal-green**. Preserve any red;
-   do not continue serial certification past it.
-5. Only after Slice and Glass are green, run the dedicated uninterrupted **1,200,000 ms** Arc 4
-   recovery observation once, with no retry and no substitution of the ordinary Slice ledger.
-6. If all three evidence stages are terminal-green, refresh references/handoff with exact source,
-   run IDs, browser provenance, report hashes and outcomes; then perform the requested
-   **campaign-wide full code review and polish** across the complete plan before proposing a PR.
+1. Reconfirm the exact inventory, create one signed, clean local candidate commit on `openai/mac`,
+   and verify its signature and tree.
+2. From that exact commit run root layout selftest plus one full layout certificate, then one
+   current SceneMemory certificate + named verifier and one current Compendium certificate + named
+   verifier.
+3. Run one current-input Slice and named-verify its immutable ID. Preserve any red exactly and stop.
+4. Only after terminal-green Slice, run full 12-viewport Glass with that exact Slice ID and
+   named-verify both. Only after both are green, run the uninterrupted 1,200,000 ms recovery
+   collector with both exact predecessor IDs and named-verify the three-report chain.
+5. Record exact IDs/hashes in a signed documentation-only evidence descendant, perform the final
+   read-only campaign review and deliver Nick's fixed/remaining/polish release notes.
 
 ### Open product and HUMAN boundaries
 
-- Post-start Tame audio lifecycle, current Slice/Glass/recovery, physical-device accessibility/
-  heat/battery and all applicable HUMAN listening/comfort remain open until their real evidence.
-- Arc 5B breeding/care/mission product parameters and writers, broader Arc 7/8 expressions,
-  ambience/music/assets/combat/Guardian audio, Compendium audition and later campaign arcs remain
-  future work. One current-system greeting does not close Arc 7/8 or Gate G.
+- Physical-device accessibility, heat/battery, and applicable HUMAN listening/comfort remain
+  human work even after automated evidence.
+- The current target is the playable Phase-4 slice, not completion of the entire v2 program.
+  Arc 5B breeding/care/mission public writers and parameters, broader Arc 7/8 expressions,
+  ambience/music/assets/combat/Guardian audio, Compendium audition and Phases 5–9 remain future
+  product scope.
 - Combined HUMAN first-journey/ownership/attachment, Compendium and ship/item readability review
-  follows the automated evidence and campaign-wide review. No Gate, integration or release is
-  closed by browserless checks or a historical certificate.
+  follows automated evidence. No whole Gate, integration or production release is closed by local
+  automation alone.
 
 ### Git / paired-agent handoff
 
-- **Current side — OpenAI/Codex macOS:** owns these local unpushed bytes on `openai/mac`. Reconfirm
-  the inventory, make the browserless freeze and complete the serial evidence sequence here. Stay on the exact root and
-  branch; do not fetch/merge/switch, stage another agent's work, or copy files between worktrees.
-- **GitHub step now:** none. `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, but zero hosted attempts are
-  authorized. `UNFROZEN` is not permission to push, label, dispatch, rerun, mark Ready or merge.
-- **Future PR only after evidence/review and explicit authorization:** base `develop`, source
-  `openai/mac`. Copy-ready title: `Phase 4: complete the playable-slice campaign repair`.
-  Copy-ready description: `Integrates the audited Phase 4 product and harness repairs, preserves
-  deterministic/persistence authority, updates current references, and binds the final local
-  Slice, Glass, and recovery evidence. No production release, version bump, or deployment.`
-- **Other side — Anthropic/Claude Code:** does not have this local candidate. Nick does **not**
-  need to open Claude now. Only after a future reviewed merge into `develop` should Claude fetch
-  `origin` and merge `origin/develop` into a clean `anthropic/mac`; never copy files manually.
-- **Release state:** `develop` contains PR #34; `main`, production and preview sites are unchanged.
-  No release, deployment, publication or production version authority exists.
+- **Current side — OpenAI/Codex macOS:** owns this local unpushed candidate on `openai/mac`.
+  Complete the signed freeze and serial evidence here without fetch/merge/switch or copying files.
+- **GitHub step now:** none. `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, the repository is public,
+  but zero exact hosted attempts are authorized. Do not push, label, dispatch, rerun, mark Ready,
+  merge, publish or deploy.
+- **Future PR only after review and explicit authorization:** base `develop`, source
+  `openai/mac`. Title: `Phase 4: complete the playable-slice campaign repair`. Final body must
+  list exact local tests, immutable run IDs, browser provenance and report hashes; no production
+  release/version/deployment claim.
+- **Other side — Anthropic/Claude Code:** Nick does not need to open Claude now. Only after a future
+  reviewed merge into `develop` should Claude fetch `origin` and merge `origin/develop` into
+  a clean `anthropic/mac`; never copy files manually.
+- **Release state:** `develop` contains PR #34; `main`, production and preview sites are
+  unchanged.

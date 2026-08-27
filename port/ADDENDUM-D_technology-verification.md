@@ -71,9 +71,16 @@ Four dependencies in the locked stack that v3.1's §25 predates:
 | **Vite** | Verify the major version and the plugin set at pin time; the build is a Gate A artefact |
 | **Zod** | Confirm the version whose `z.infer` behaviour the type layer depends on — the whole point is that the type and the runtime check cannot drift, and that is a version-coupled guarantee |
 | **Vitest** | Pin alongside Vite; the two track each other |
-| **Playwright** | Pin the browser revisions too, not just the library — the training-reachability sweep and the layout gate both compare against stored numbers, and a browser bump moves them |
+| **Playwright / owned raw CDP** | Pin the driver/transport and record the exact browser tuple for every run. Gate authority should bind compatible family, protocol and exercised capabilities; point version is provenance unless a ruler explicitly proves it owns a version-coupled numeric contract |
 
-That last row is a real gate hazard: v4.0 §22 Gate A requires "negative controls prove tests discriminate", and a layout gate whose thresholds were set on one Chromium revision will drift on the next. Pin the revision and treat a bump as an explicit re-baseline.
+That last row is a real gate hazard in both directions. v4.0 §22 Gate A requires “negative controls
+prove tests discriminate,” so neither an incompatible browser nor a green-by-version check is
+acceptable. The root layout gate seals outcome keys rather than browser-specific numeric samples:
+its current authority is canonical Chromium family + CDP `1.3` + the source-derived exercised
+method contract + complete run provenance. A compatible point-version update alone never
+rebaselines or changes thresholds. Exact Edge 150 remains historical v1.8.9 capture provenance.
+Compendium and SceneMemory own separate explicit capability/profile authorities; exact package
+installation in a workflow is reproducible provisioning, not a cross-gate version pin.
 
 ---
 
@@ -86,7 +93,7 @@ That last row is a real gate hazard: v4.0 §22 Gate A requires "negative control
 | 3 | Budget Spine **Professional** ($379) per rigger seat — not Essential | Phase 0 |
 | 4 | Model the **$500k Enterprise threshold** in the business plan | Not blocking |
 | 5 | Drop Howler unless §15.4 introduces streamed authored music | Phase 7 |
-| 6 | Pin Vite / Zod / Vitest / Playwright **including browser revisions** | Phase 0 |
+| 6 | Pin Vite / Zod / Vitest and the browser driver/transport; seal browser family/protocol/capabilities and record exact per-run revision provenance | Phase 0 |
 | 7 | Re-run this verification at each milestone gate, dated | Every gate |
 
 Item 7 is the point of restoring the section at all. A static list of vendor documentation ages into a liability; a dated check that is re-run at each gate does not.

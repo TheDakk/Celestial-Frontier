@@ -1,5 +1,19 @@
 # Celestial Frontier — Determinism Discipline
 
+> **2026-08-27 evidence-harness correction:** exact browser proof now distinguishes the private
+> staged ecology-epoch candidate from the committed published value. Before persistence, the
+> candidate may be the next epoch while publication remains unchanged; after the real persist seam,
+> published, stored and reloaded values must all equal that candidate. Independent mutants fail for
+> optimism, withheld publication, wrong storage and wrong reload.
+>
+> Runtime and ecology observed-play counters are diagnostic clocks, not deterministic product
+> outputs. Stable fixture comparison excludes both while separately enforcing integer,
+> monotonic and bounded ecology movement with an over-bound mutant. This normalization cannot hide
+> an epoch, carrier, receipt, RNG or publication change. Edge build is recorded as Slice
+> provenance; Slice and Glass judge fresh outcomes rather than a browser-version baseline. The
+> Compendium and SceneMemory own separate sealed Edge-family/CDP capability/profile authorities;
+> neither treats the exact browser point version as baseline identity.
+
 > **2026-08-26 current-candidate determinism corrections:** F4 exposes one ecology epoch only after
 > visible-and-answerable, lease-owned `activePlayMs` crosses an integer edge, one receipt-free
 > lease/revision CAS commits it, and the exact publication/reprojection refresh completes. The
@@ -26,6 +40,15 @@
 > stored envelope clock, while ordinary runtime sanitation still receives caller `now` and preserves
 > honest future timestamps.
 >
+> World history uses the same deterministic hierarchy as navigation. A current landing or custom
+> name is keyed by the complete registered CF1 address—galaxy seed/coordinates, star
+> seed/coordinates, and planet seed/source ordinal—not by the planet seed alone. The strict v5
+> manifest/four-shard codec sorts with explicit code-unit comparison, packs lossless two-decimal
+> coordinates, source-reproves every decoded row, and canonical-re-encodes the complete carrier.
+> Deterministic greedy byte balancing has an explicit lowest-index tie-break. A legacy collision
+> remains one unresolved fact until an exact encounter consumes it; it cannot nondeterministically
+> label both worlds or re-award a first landing.
+>
 > Player rarity is a strict projection boundary, not a new outcome: only integer raw tiers `0..14`
 > enter the ten-name ladder, raw `9..14` collapse to Transcendent, invalid/missing values render
 > nothing, and internal art-grade labels/raw numbers never become player copy. The current Tame
@@ -35,7 +58,7 @@
 > evidence records `recoveryClaimed:false`; the dedicated uninterrupted 20-minute recovery
 > certificate remains pending.
 
-> **2026-08-25 Arc 3–5 recorded deterministic boundary:** Arc 3 world/star opportunities are pure
+> **2026-08-25 Arc 3–5 historical recorded deterministic boundary:** Arc 3 world/star opportunities are pure
 > projections of registered full-CF1 addresses. Mine/Skim outcomes and fixed craft identities use
 > canonical source facts and explicit ordered plans; active-play cursor settlement is computed from
 > the prior carrier, never a caller timestamp. Six research rows are displayed, but only Deep
@@ -87,8 +110,8 @@
 > presentation calls. This inventory plus the live authority seam does **not** mean every legacy
 > gameplay call site has migrated: Arc 4 capture owns its semantic settlement, while later care,
 > breeding, combat and mission writers remain open; audio/FX
-> presentation never share an outcome counter. Current focused tests and real local Inventory plus
-> Arc 3 Engineering browser paths are green. Commit `c4a02be` records the product/browser-tool batch,
+> presentation never share an outcome counter. At that recorded Arc 2/3 checkpoint, focused tests and
+> real local Inventory plus Arc 3 Engineering browser paths were green. Commit `c4a02be` records the product/browser-tool batch,
 > but the no-retry Slice and Glass reports bind different dirty snapshots on base `768fb32`—Slice
 > `29d54731…`, Glass `d9b51284…`—so they remain bounded local exact-input evidence rather than
 > exact-head/full-battery, hosted, integration, HUMAN, preview, release, or deployment authority.
@@ -109,7 +132,8 @@
 > current-v2 corruption/O(1) empty-shard controls were non-vacuous. Both bind source commit
 > `48ce0b1662a59b21070667be339a1e59503e1f19`, status
 > `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
-> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits are CLEAR.
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
+> exact historical inputs. Current-candidate re-audits are not final.
 
 > **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the F4 overlay
 > does not supersede it):** Deterministic
@@ -180,7 +204,7 @@
 > Static generation remains independent of browser timing.
 
 **STATUS:** legacy sections match `main.js` + `tools/` as of 2026-08-12; the
-current dated v2 overlay matches the local `port/v2` candidate as of 2026-08-26. The 2026-07-30 pass added §6's
+current dated v2 overlay matches the local `port/v2` candidate as of 2026-08-27. The 2026-07-30 pass added §6's
 "WHEN art is drawn is not fingerprint input", corrected the layout gate to 10
 viewports, and registered `bootperf.js` + `simrun dom` in the battery.
 **Purpose:** the single law that governs the whole game — every world, genome, descriptor, portrait, duel and share code is a pure function of seeds, so the same address regenerates byte-for-byte on every device, forever, with no server.

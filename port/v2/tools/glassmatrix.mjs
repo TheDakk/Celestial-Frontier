@@ -15,6 +15,7 @@
 */
 import fs from 'node:fs';
 import http from 'node:http';
+import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { execFileSync, execSync } from 'node:child_process';
@@ -29,6 +30,14 @@ import {
   glassVeteranPreferenceRaw,
 } from './glass-engineering-fixture-contract.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { verifySliceRunEvidence } from './smokereport.mjs';
+import {
+  GLASS_ARC4_CAPTURE_CHECK_KEYS,
+  GLASS_ARC4_CAPTURE_OUTCOME_CODES,
+  GLASS_MATRIX_VIEWPORTS,
+  GLASS_NEGATIVE_CONTROLS,
+  glassTerminalEvidenceErrors,
+} from './glassmatrix-evidence-contract.mjs';
 import {
   ENGINEERING_ACTION_CONTROL_COUNT,
   ENGINEERING_GLASS_RECIPE_ORACLE,
@@ -143,6 +152,9 @@ const withCF1PlanetSeed = (code, seed) => {
 };
 const startedAt = Date.now();
 let runSource = null;
+let runEndingSource = null;
+let runPredecessors = null;
+let runArtifactReserved = false;
 let runReloadEvidence = [];
 let runViewportTimings = [];
 let runArc4CaptureOutcomes = [];
@@ -169,60 +181,125 @@ const READ_ARC2_GLASS_CARRIER_EXPRESSION = `(async()=>{const open=indexedDB.open
       carrierJson:carrier?.json??null,arc2};
   }finally{db.close()}})()`;
 
-const VIEWPORTS = Object.freeze([
-  { width: 320, height: 568, dpr: 2, mobile: true, label: 'small-phone' },
-  { width: 360, height: 640, dpr: 2, mobile: true, label: 'compact-phone' },
-  { width: 390, height: 844, dpr: 3, mobile: true, label: 'primary-phone' },
-  { width: 412, height: 915, dpr: 3, mobile: true, label: 'large-phone' },
-  { width: 844, height: 390, dpr: 2, mobile: true, label: 'phone-landscape', safe: { top: 0, right: 44, bottom: 21, left: 44 } },
-  { width: 768, height: 1024, dpr: 2, mobile: true, label: 'tablet-portrait' },
-  { width: 1024, height: 768, dpr: 2, mobile: true, label: 'tablet-landscape' },
-  { width: 1280, height: 720, dpr: 1, mobile: false, label: 'laptop-720p' },
-  { width: 1440, height: 900, dpr: 1, mobile: false, label: 'desktop' },
-  { width: 1920, height: 1080, dpr: 1, mobile: false, label: 'desktop-1080p' },
-  { width: 2560, height: 1080, dpr: 1, mobile: false, label: 'ultrawide' },
-  { width: 7680, height: 4320, dpr: 1, mobile: false, label: 'desktop-8k' },
-]);
-const viewportArg = process.argv.find((arg) => arg.startsWith('--viewport='));
+const VIEWPORTS = GLASS_MATRIX_VIEWPORTS;
+const cliArgs = process.argv.slice(2);
+const viewportArg = cliArgs.find((arg) => arg.startsWith('--viewport='));
 const viewportLabel = viewportArg ? viewportArg.slice('--viewport='.length) : null;
-const reportPath = path.join(evidenceDir, viewportLabel
+const sliceRunArg = cliArgs.find((arg) => arg.startsWith('--slice-run='));
+const selectedSliceRunId = sliceRunArg ? sliceRunArg.slice('--slice-run='.length) : null;
+const verifyRunArg = cliArgs.find((arg) => arg.startsWith('--verify-run='));
+const selectedVerifyRunId = verifyRunArg ? verifyRunArg.slice('--verify-run='.length) : null;
+const currentReportPath = path.join(evidenceDir, viewportLabel
   ? `glassmatrix-${viewportLabel}-diagnostic.json` : 'glassmatrix-report.json');
-const selftestOnly = process.argv.includes('--selftest');
-const unknownArgs = process.argv.slice(2).filter((arg) => arg !== '--selftest' && !arg.startsWith('--viewport='));
-if (unknownArgs.length || (selftestOnly && viewportArg)) {
-  throw new Error('usage: node tools/glassmatrix.mjs [--viewport=<label> | --selftest]');
+const selftestOnly = cliArgs.includes('--selftest');
+const unknownArgs = cliArgs.filter((arg) => arg !== '--selftest'
+  && !arg.startsWith('--viewport=') && !arg.startsWith('--slice-run=') && !arg.startsWith('--verify-run='));
+const duplicateSingleton = [viewportArg, sliceRunArg, verifyRunArg].some((value, index) => value
+  && cliArgs.filter((arg) => arg.startsWith(['--viewport=', '--slice-run=', '--verify-run='][index])).length !== 1);
+if (unknownArgs.length || duplicateSingleton
+  || (selftestOnly && cliArgs.length !== 1)
+  || (viewportArg && (sliceRunArg || verifyRunArg))
+  || (verifyRunArg && (!sliceRunArg || cliArgs.length !== 2))) {
+  throw new Error('usage: node tools/glassmatrix.mjs [--slice-run=<Slice-run-id> | --viewport=<label> | --selftest | --verify-run=<Glass-run-id> --slice-run=<Slice-run-id>]');
 }
 const MATRIX_VIEWPORTS = viewportLabel ? VIEWPORTS.filter((vp) => vp.label === viewportLabel) : VIEWPORTS;
 if (viewportLabel && MATRIX_VIEWPORTS.length !== 1) {
   throw new Error(`unknown --viewport=${JSON.stringify(viewportLabel)}; choose ${VIEWPORTS.map((vp) => vp.label).join(', ')}`);
 }
 
-function git(args) {
+function git(args, { raw = false } = {}) {
   try {
     return execFileSync('git', args, {
-      cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
-    }).trim();
-  } catch { return null; }
-}
-function gitRaw(args) {
-  try {
-    return execFileSync('git', args, {
-      cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
+      cwd: repoRoot, encoding: raw ? null : 'utf8', stdio: ['ignore', 'pipe', 'pipe'],
       maxBuffer: 64 * 1024 * 1024,
     });
-  } catch { return null; }
+  } catch (error) {
+    const detail = Buffer.isBuffer(error?.stderr)
+      ? error.stderr.toString('utf8').trim() : String(error?.stderr || '').trim();
+    throw new Error(`required git ${args.join(' ')} failed${detail ? `: ${detail}` : ''}`);
+  }
 }
 function sha256(value) { return crypto.createHash('sha256').update(value).digest('hex'); }
-function sourceSnapshot() {
-  const status = gitRaw(['status', '--porcelain=v1', '-z', '--untracked-files=all']) || '';
-  const diff = gitRaw(['diff', '--binary', '--no-ext-diff', 'HEAD', '--']) || '';
-  const untracked = (gitRaw(['ls-files', '--others', '--exclude-standard', '-z']) || '')
-    .split('\0').filter(Boolean).sort();
+const RUN_ID_PATTERN = /^[a-z0-9][a-z0-9-]{0,95}$/i;
+function assertEvidenceRunId(runId, kind = 'evidence') {
+  if (!RUN_ID_PATTERN.test(runId || '')) throw new Error(`invalid ${kind} run ID: ${JSON.stringify(runId)}`);
+  return runId;
+}
+function generatedGlassRunId() {
+  return [new Date(startedAt).toISOString().replace(/[^0-9]/g, '').slice(0, 17),
+    String(process.pid), crypto.randomBytes(6).toString('hex')].join('-');
+}
+const activeGlassRunId = selftestOnly || selectedVerifyRunId ? null
+  : assertEvidenceRunId(process.env.CF_V2_GLASSMATRIX_RUN_ID || generatedGlassRunId(), 'Glass');
+function glassArtifactPaths(runId, directory = evidenceDir) {
+  assertEvidenceRunId(runId, 'Glass');
+  return {
+    report: path.join(directory, `glassmatrix-${runId}.json`),
+    reportRelative: `apps/game/smoke/glassmatrix-${runId}.json`,
+  };
+}
+function atomicWriteFile(targetPath, bytes) {
+  fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+  const temporary = path.join(path.dirname(targetPath), `.${path.basename(targetPath)}.${process.pid}.${crypto.randomBytes(6).toString('hex')}.tmp`);
+  try {
+    fs.writeFileSync(temporary, bytes, { flag: 'wx' });
+    fs.renameSync(temporary, targetPath);
+  } finally {
+    try { fs.unlinkSync(temporary); } catch { /* rename or cleanup already removed it */ }
+  }
+}
+function atomicCreateFile(targetPath, bytes) {
+  fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+  const temporary = path.join(path.dirname(targetPath), `.${path.basename(targetPath)}.${process.pid}.${crypto.randomBytes(6).toString('hex')}.tmp`);
+  try {
+    fs.writeFileSync(temporary, bytes, { flag: 'wx' });
+    fs.linkSync(temporary, targetPath);
+  } finally {
+    try { fs.unlinkSync(temporary); } catch { /* link/create failure cleanup */ }
+  }
+}
+function atomicWriteJson(targetPath, value) {
+  atomicWriteFile(targetPath, JSON.stringify(value, null, 2) + '\n');
+}
+function sameEvidenceSource(left, right) {
+  return !!left && !!right && left.commit === right.commit && left.branch === right.branch
+    && left.state === right.state && left.statusSha256 === right.statusSha256
+    && left.workingTreeSha256 === right.workingTreeSha256;
+}
+function slicePredecessorDescriptor(verification) {
+  return {
+    schema: verification.report.schema,
+    runId: verification.report.run.id,
+    reportPath: verification.artifacts.reportRelative,
+    reportSha256: verification.reportSha256,
+    rawLogPath: verification.report.rawLog.path,
+    rawLogSha256: verification.report.rawLog.sha256,
+    source: { ...verification.report.source },
+  };
+}
+function sourceBytes(value, label) {
+  if (Buffer.isBuffer(value)) return value;
+  if (typeof value === 'string') return Buffer.from(value);
+  throw new Error(`required git ${label} returned non-byte output`);
+}
+function sourceSnapshot({ gitCommand = git, sourceRoot = repoRoot } = {}) {
+  const status = sourceBytes(
+    gitCommand(['status', '--porcelain=v1', '-z', '--untracked-files=all'], { raw: true }),
+    'status',
+  );
+  const diff = sourceBytes(
+    gitCommand(['diff', '--binary', '--no-ext-diff', 'HEAD', '--'], { raw: true }),
+    'diff',
+  );
+  const untracked = sourceBytes(
+    gitCommand(['ls-files', '--others', '--exclude-standard', '-z'], { raw: true }),
+    'ls-files',
+  ).toString('utf8').split('\0').filter(Boolean).sort();
   const digest = crypto.createHash('sha256');
   digest.update('tracked-diff\0').update(diff).update('\0untracked\0');
-  const rootPrefix = repoRoot.endsWith(path.sep) ? repoRoot : repoRoot + path.sep;
+  const rootPrefix = sourceRoot.endsWith(path.sep) ? sourceRoot : sourceRoot + path.sep;
   for (const relative of untracked) {
-    const absolute = path.resolve(repoRoot, relative);
+    const absolute = path.resolve(sourceRoot, relative);
     if (!absolute.startsWith(rootPrefix)) throw new Error(`unsafe untracked source path: ${relative}`);
     const stat = fs.lstatSync(absolute);
     digest.update(relative).update('\0');
@@ -233,12 +310,29 @@ function sourceSnapshot() {
   }
   return { dirty: status.length > 0, statusSha256: sha256(status), workingTreeSha256: digest.digest('hex') };
 }
-function sourceIdentity() {
-  const snapshot = sourceSnapshot();
+function sourceIdentity({
+  gitCommand = git, environment = process.env, expectedRepoRoot = repoRoot,
+} = {}) {
+  const expectedRoot = fs.realpathSync(expectedRepoRoot);
+  const observedRoot = fs.realpathSync(
+    String(gitCommand(['rev-parse', '--show-toplevel'])).trim(),
+  );
+  if (observedRoot !== expectedRoot) {
+    throw new Error(`git root mismatch: expected ${expectedRoot}, observed ${observedRoot}`);
+  }
+  const snapshot = sourceSnapshot({ gitCommand, sourceRoot: expectedRoot });
+  const commit = String(gitCommand(['rev-parse', 'HEAD'])).trim();
+  if (!/^[0-9a-f]{40}$/.test(commit)) {
+    throw new Error(`git HEAD is not one full commit: ${JSON.stringify(commit)}`);
+  }
+  if (environment.GITHUB_SHA !== undefined && environment.GITHUB_SHA !== commit) {
+    throw new Error(`GITHUB_SHA does not match git HEAD: expected ${commit}, observed ${environment.GITHUB_SHA}`);
+  }
+  const branchName = String(gitCommand(['rev-parse', '--abbrev-ref', 'HEAD'])).trim();
+  if (!branchName) throw new Error('git branch identity is empty');
   return {
-    commit: process.env.GITHUB_SHA || git(['rev-parse', 'HEAD']),
-    branch: process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME
-      || git(['branch', '--show-current']) || 'detached',
+    commit,
+    branch: branchName === 'HEAD' ? 'detached' : branchName,
     state: snapshot.dirty ? 'dirty-diagnostic' : 'committed',
     statusSha256: snapshot.statusSha256,
     workingTreeSha256: snapshot.workingTreeSha256,
@@ -250,82 +344,9 @@ function viewportInventory() {
     mobile: vp.mobile, safeArea: vp.safe || { top: 0, right: 0, bottom: 0, left: 0 },
   }));
 }
-const NEGATIVE_CONTROLS = Object.freeze([
-  'target-floor', 'visible-focus', 'accessible-name', 'keyboard-reachability',
-  'centre-hit-test', 'text-contrast', 'glass-fallback', 'populated-copy',
-  'viewport-fit', 'safe-area-override', 'viewport-metrics', 'surface-overlap',
-  'scene-transform-delta', 'canvas-css-fit', 'canvas-backing-density',
-  'non-glass-background-chain', 'preference-computed-outcome',
-  'settings-pressed-focus', 'settings-creature-voice-control',
-  'settings-audio-non-replay', 'guide-render-focus', 'motion-css-policy',
-  'ordinary-panel-centre-close', 'dpr-card-preservation',
-  'opener-expanded-controls', 'dock-toggle-pressed', 'survey-expanded-controls',
-  'pseudo-placeholder-contrast', 'cumulative-opacity-contrast', 'control-on-off-contrast',
-  'typography-no-shrink-hierarchy', 'backing-pixel-ceiling', 'forced-colors-system-mapping',
-  'panel-open-focus', 'hp-label-dual-background', 'clipped-without-scroll',
-  'training-focused-action-visibility', 'settings-horizontal-overflow',
-  'planetside-surface-ownership', 'panel-planetside-layering',
-  'mobile-chrome-yield-restore', 'mobile-landscape-surface-chrome-yield', 'planetside-top-chrome-clearance',
-  'planetside-portrait-band-viability', 'planetside-portrait-trail-fallback',
-  'mobile-surface-objective-yield',
-  'modal-background-containment-restore', 'modal-live-error', 'panel-close-accessible-name',
-  'hidden-panel-opener-focus-fallback',
-  'replacement-document-loader-token-phase',
-  'import-phase-sequence',
-  'replacement-ticker-quiescence',
-  'replacement-boot-phase-sequence',
-  'reload-resource-release',
-  'reload-audio-release',
-  'ready-confirmation-heartbeat',
-  'ready-confirmation-ticker-progress',
-  'nonmodal-dock-button-contrast',
-  'phone-dock-inventory',
-  'phone-dock-exact-membership',
-  'inventory-control-floor',
-  'inventory-missing-row',
-  'inventory-duplicate-row',
-  'inventory-raw-authority-parity',
-  'inventory-disabled-pager-contrast',
-  'inventory-condition-wording',
-  'inventory-modal-duplication',
-  'inventory-modal-retention',
-  'inventory-modal-focus',
-  'inventory-focus-wrap',
-  'inventory-protected-action',
-  'inventory-action-publication',
-  'inventory-convergence-retry',
-  'shipyard-preview-uniqueness',
-  'shipyard-dom-state-parity',
-  'shipyard-close-release',
-  'shipyard-opener-path',
-  'shipyard-geometry-focus',
-  'arc4-capture-full-pool-copy',
-  'arc4-capture-model-disabled-parity',
-  'arc4-capture-earth-title',
-  'arc4-capture-roster-counts',
-  'arc4-capture-roster-fingerprint',
-  'arc4-capture-yield',
-  'arc4-capture-tame-odds',
-  'arc4-capture-scavenge-odds',
-  'arc4-capture-sample-odds',
-  'arc4-capture-native-survey-return',
-  'arc4-capture-ownership-mutation',
-  'arc4-capture-session-rng-mutation',
-  'arc4-capture-receipt-mutation',
-  'arc4-capture-epoch-mutation',
-  'arc4-capture-v4-counter-mutation',
-  'arc4-capture-native-activation',
-  'arc4-capture-control-overlap',
-  'orbital-mineral-survey-disclosure',
-  'ultra-viewport-render-budget',
-  'ultra-same-backing-resize',
-]);
+const NEGATIVE_CONTROLS = GLASS_NEGATIVE_CONTROLS;
 
-const ARC4_CAPTURE_OUTCOME_CODES = Object.freeze([
-  'ARC4_CAPTURE_NATIVE_SURVEY_RETURN',
-  'ARC4_CAPTURE_PRESENTATION_TRUTH',
-  'ARC4_CAPTURE_GEOMETRY_FOCUS',
-]);
+const ARC4_CAPTURE_OUTCOME_CODES = GLASS_ARC4_CAPTURE_OUTCOME_CODES;
 const ARC4_CAPTURE_LABELS = Object.freeze({
   tame: Object.freeze({ label: 'Tame', pool: 'fauna', reward: 'one owned creature' }),
   scavenge: Object.freeze({ label: 'Scavenge', pool: 'flora or fungi', reward: 'one specimen lot' }),
@@ -515,6 +536,10 @@ const ARC4_LAYOUT_EXPRESSION = `(()=>{const rect=(node)=>{const r=node?.getBound
   clientWidth:document.documentElement.clientWidth};})()`;
 
 const exactJson = (left, right) => JSON.stringify(left) === JSON.stringify(right);
+const codeUnitCompare = (left, right) => left < right ? -1 : left > right ? 1 : 0;
+const arc4SelftestChecks = (code) => Object.fromEntries(
+  (GLASS_ARC4_CAPTURE_CHECK_KEYS[code] || []).map((key) => [key, true]),
+);
 const arc4Percent = (value) => `${String(Math.round(value * 10_000_000) / 100_000)}%`;
 const arc4Assessment = (name, checks) => {
   const reasons = Object.entries(checks).filter(([, value]) => value !== true)
@@ -3336,11 +3361,60 @@ function missingShipyardPanelExpressionOutcome() {
   }
 }
 
+function glassRunEvidenceErrors(report, {
+  runId, expectedSource = null, expectedSlice = null, requirePass = true,
+} = {}) {
+  const artifacts = glassArtifactPaths(runId);
+  return glassTerminalEvidenceErrors(report, {
+    runId,
+    reportPath: artifacts.reportRelative,
+    expectedSource,
+    expectedSlice,
+    requirePass,
+  });
+}
+
+function verifyGlassRunEvidence(runId, {
+  expectedSource = null, expectedSlice = null, requirePass = true,
+} = {}) {
+  let artifacts;
+  try { artifacts = glassArtifactPaths(runId); }
+  catch (error) { return { ok: false, errors: [error.message], report: null, reportSha256: null, artifacts: null }; }
+  if (!fs.existsSync(artifacts.report)) {
+    return { ok: false, errors: [`immutable Glass report is missing: ${artifacts.reportRelative}`], report: null, reportSha256: null, artifacts };
+  }
+  const bytes = fs.readFileSync(artifacts.report);
+  let report;
+  try { report = JSON.parse(bytes.toString('utf8')); }
+  catch (error) {
+    return { ok: false, errors: [`immutable Glass report is invalid JSON: ${error.message}`], report: null, reportSha256: sha256(bytes), artifacts };
+  }
+  const errors = glassRunEvidenceErrors(report, { runId, expectedSource, expectedSlice, requirePass });
+  return { ok: errors.length === 0, errors, report, reportSha256: sha256(bytes), artifacts };
+}
+
+function runningGlassReport({ runId, source, predecessor = null }) {
+  const artifacts = glassArtifactPaths(runId);
+  return {
+    schema: 'cf-v2-glassmatrix/v1', status: 'running', terminal: false, certifying: false,
+    scope: viewportLabel ? 'targeted-diagnostic' : 'full-certifying',
+    exit: null,
+    startedAt: new Date(startedAt).toISOString(), endedAt: null, durationMs: null,
+    run: { id: runId, artifactPath: artifacts.reportRelative,
+      provenance: 'The unique run artifact is reserved before build/browser work; the current report is only a mutable pointer.' },
+    source, sourceEnd: null, sourceChange: { detected: null, ending: null },
+    predecessors: predecessor ? { slice: predecessor } : null,
+    controlSummary: { automaticRetries: 0 },
+    findings: [], instrumentFailures: [],
+  };
+}
+
 function writeReport({ status, exitCode, browser, findings, instrumentFailures, controlsRun,
   executedControls = [], blockedControls = [], source = runSource || sourceIdentity() }) {
   const counts = new Map();
   for (const { row } of findings) counts.set(row.code, (counts.get(row.code) || 0) + 1);
   const endedAt = Date.now();
+  const reportEndSource = runEndingSource || sourceIdentity();
   const coverage = controlCoverageOutcome(executedControls, blockedControls);
   if (!coverage.ok) throw new Error(`invalid negative-control coverage: ${coverage.why}`);
   const timingOutcome = viewportTimingsOutcome(runViewportTimings, {
@@ -3354,10 +3428,25 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
   const report = {
     schema: 'cf-v2-glassmatrix/v1',
     status,
+    terminal: true,
     scope: viewportLabel ? 'targeted-diagnostic' : 'full-certifying',
-    certifying: !viewportLabel,
+    certifying: status === 'pass' && !viewportLabel && source.state === 'committed'
+      && !!runPredecessors?.slice,
     exit: { code: exitCode },
+    startedAt: new Date(startedAt).toISOString(),
+    endedAt: new Date(endedAt).toISOString(),
+    run: {
+      id: activeGlassRunId,
+      artifactPath: glassArtifactPaths(activeGlassRunId).reportRelative,
+      provenance: 'The unique run artifact is authority; the fixed-name report is a mutable current pointer only.',
+    },
     source,
+    sourceEnd: reportEndSource,
+    sourceChange: {
+      detected: !sameEvidenceSource(source, reportEndSource),
+      ending: sameEvidenceSource(source, reportEndSource) ? null : reportEndSource,
+    },
+    predecessors: runPredecessors ? { slice: { ...runPredecessors.slice, source: { ...runPredecessors.slice.source } } } : null,
     browser: browser || null,
     viewportInventory: viewportInventory(),
     viewportTimings: [...runViewportTimings],
@@ -3388,7 +3477,8 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
       viewportCount: MATRIX_VIEWPORTS.length,
       findingCount: findings.length,
       instrumentFailureCount: instrumentFailures.length,
-      counts: Object.fromEntries([...counts].sort(([a], [b]) => a.localeCompare(b))),
+      counts: Object.fromEntries([...counts]
+        .sort(([a], [b]) => codeUnitCompare(a, b))),
     },
     findings: findings.map(({ context, row }) => ({
       viewport: context.viewport, surface: context.surface, code: row.code,
@@ -3398,8 +3488,17 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
     instrumentFailures: [...instrumentFailures],
     durationMs: endedAt - startedAt,
   };
+  const prepublicationErrors = glassRunEvidenceErrors(report, {
+    runId: activeGlassRunId, expectedSource: reportEndSource,
+    expectedSlice: runPredecessors?.slice || null,
+    requirePass: status === 'pass' && !viewportLabel,
+  });
+  if (prepublicationErrors.length) {
+    throw new Error(`terminal Glass evidence failed before publication: ${prepublicationErrors.join('; ')}`);
+  }
   fs.mkdirSync(evidenceDir, { recursive: true });
-  fs.writeFileSync(reportPath, JSON.stringify(report, null, 2) + '\n');
+  atomicWriteJson(glassArtifactPaths(activeGlassRunId).report, report);
+  atomicWriteJson(currentReportPath, report);
   return report;
 }
 
@@ -3716,7 +3815,8 @@ function arc4GlassSelftest() {
   });
   const fixtureViewports = [{ label: 'one' }, { label: 'two' }];
   const outcomeRows = fixtureViewports.flatMap((viewport) => ARC4_CAPTURE_OUTCOME_CODES.map((code) => ({
-    viewport: viewport.label, surface: 'survey-capture', code, ok: true, checks: { selftest: true },
+    viewport: viewport.label, surface: 'survey-capture', code, ok: true,
+    checks: arc4SelftestChecks(code),
   })));
   const inventory = arc4CaptureOutcomeInventoryOutcome(outcomeRows, fixtureViewports);
   const inventoryMissing = arc4CaptureOutcomeInventoryOutcome(outcomeRows.slice(0, -1), fixtureViewports);
@@ -3894,6 +3994,66 @@ function arc4GlassSelftest() {
 }
 
 async function reportSelftest() {
+  const sourceCommit = 'a'.repeat(40);
+  const fixtureGit = (args, { raw = false } = {}) => {
+    const key = args.join(' ');
+    const outputs = new Map([
+      ['rev-parse --show-toplevel', repoRoot],
+      ['status --porcelain=v1 -z --untracked-files=all', ''],
+      ['diff --binary --no-ext-diff HEAD --', ''],
+      ['ls-files --others --exclude-standard -z', ''],
+      ['rev-parse HEAD', sourceCommit],
+      ['rev-parse --abbrev-ref HEAD', 'openai/source-selftest'],
+    ]);
+    if (!outputs.has(key)) throw new Error(`unexpected source selftest git command: ${key}`);
+    const value = outputs.get(key);
+    return raw ? Buffer.from(value) : `${value}\n`;
+  };
+  const exactIdentity = sourceIdentity({
+    gitCommand: fixtureGit, environment: { GITHUB_SHA: sourceCommit },
+  });
+  let wrongHostedShaRejected = false;
+  try {
+    sourceIdentity({ gitCommand: fixtureGit, environment: { GITHUB_SHA: 'f'.repeat(40) } });
+  } catch (error) {
+    wrongHostedShaRejected = String(error?.message || error).includes('GITHUB_SHA does not match git HEAD');
+  }
+  const invalidHostedShasRejected = ['', 'not-a-full-commit'].every((hostedSha) => {
+    try {
+      sourceIdentity({ gitCommand: fixtureGit, environment: { GITHUB_SHA: hostedSha } });
+      return false;
+    } catch (error) {
+      return String(error?.message || error).includes('GITHUB_SHA does not match git HEAD');
+    }
+  });
+  let requiredGitFailureRejected = false;
+  try {
+    sourceIdentity({
+      gitCommand: (args, options) => {
+        if (args[0] === 'status') throw new Error('injected required Git failure');
+        return fixtureGit(args, options);
+      },
+      environment: { GITHUB_SHA: sourceCommit },
+    });
+  } catch (error) {
+    requiredGitFailureRejected = String(error?.message || error).includes('injected required Git failure');
+  }
+  let strictGitHelperRejected = false;
+  try { git(['glassmatrix-selftest-unsupported-command']); }
+  catch (error) {
+    strictGitHelperRejected = String(error?.message || error)
+      .includes('required git glassmatrix-selftest-unsupported-command failed');
+  }
+  if (exactIdentity.commit !== sourceCommit
+    || exactIdentity.branch !== 'openai/source-selftest'
+    || exactIdentity.state !== 'committed'
+    || !wrongHostedShaRejected || !invalidHostedShasRejected
+    || !requiredGitFailureRejected || !strictGitHelperRejected) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: fail-closed source identity controls drifted ${JSON.stringify({
+      exactIdentity, wrongHostedShaRejected, invalidHostedShasRejected,
+      requiredGitFailureRejected, strictGitHelperRejected,
+    })}`);
+  }
   const orbitalSurvey = arc3OrbitalGlassSelftest();
   if (!orbitalSurvey.ok) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: orbital Survey authority/disclosure controls failed (${JSON.stringify(orbitalSurvey)})`);
@@ -4003,7 +4163,13 @@ async function reportSelftest() {
   }
   const fixture = {
     status: 'fail', exitCode: 1,
-    browser: { product: 'Selftest/1', protocol_version: '1' },
+    browser: {
+      executable: '/selftest/chrome', product: 'Edg/999.0.0.1',
+      revision: '@selftest-chromium-revision',
+      user_agent: 'Mozilla/5.0 HeadlessChrome/999.0.0.0 Edg/999.0.0.0',
+      js_version: '99.0.0.1', protocol_version: '1.3',
+      consistentAcrossViewports: true,
+    },
     findings: [{
       context: { viewport: 'primary-phone', surface: 'guide' },
       row: { code: 'TARGET_TOO_SMALL', element: '#fixture', actual: { height: 20 }, expected: { height: 44 } },
@@ -4127,7 +4293,7 @@ async function reportSelftest() {
   }
   const shapedArc4Outcomes = MATRIX_VIEWPORTS.flatMap((viewport) => ARC4_CAPTURE_OUTCOME_CODES.map((code) => ({
     viewport: viewport.label, surface: 'survey-capture', code, ok: true,
-    checks: { selftest: true }, reasons: [],
+    checks: arc4SelftestChecks(code), reasons: [],
   })));
   const shapedArc4Inventory = arc4CaptureOutcomeInventoryOutcome(shapedArc4Outcomes);
   const shaped = {
@@ -4228,9 +4394,142 @@ async function reportSelftest() {
   if (!timingPass.ok || timingMissingRow.ok || timingMalformed.ok || !timingPartialRed.ok) {
     throw new Error('GLASS MATRIX REPORT SELFTEST: viewport timing evidence controls failed');
   }
+  const chainRunId = 'glass-chain-selftest';
+  const chainSource = {
+    commit: 'a'.repeat(40), branch: 'openai/test', state: 'committed',
+    statusSha256: 'b'.repeat(64), workingTreeSha256: 'c'.repeat(64),
+  };
+  const chainSlice = {
+    schema: 'cf-v2-slice-smoke-ci/v1', runId: 'slice-chain-selftest',
+    reportPath: 'apps/game/smoke/slice-smoke-slice-chain-selftest.json',
+    reportSha256: 'd'.repeat(64),
+    rawLogPath: 'apps/game/smoke/slice-smoke-slice-chain-selftest.log',
+    rawLogSha256: 'e'.repeat(64), source: { ...chainSource },
+  };
+  const chainReport = {
+    schema: 'cf-v2-glassmatrix/v1', status: 'pass', terminal: true,
+    scope: 'full-certifying', certifying: true, exit: { code: 0 },
+    startedAt: '2026-08-27T00:00:00.000Z', endedAt: '2026-08-27T00:00:01.000Z', durationMs: 1000,
+    run: { id: chainRunId, artifactPath: glassArtifactPaths(chainRunId).reportRelative },
+    source: chainSource, sourceEnd: { ...chainSource }, sourceChange: { detected: false, ending: null },
+    predecessors: { slice: chainSlice },
+    browser: { ...fixture.browser },
+    viewportInventory: viewportInventory(),
+    viewportTimings: timingFixture,
+    summary: { viewportCount: VIEWPORTS.length, findingCount: 0, instrumentFailureCount: 0, counts: {} },
+    findings: [], instrumentFailures: [],
+    arc4CaptureOutcomeInventory: {
+      plannedOutcomeCodes: [...ARC4_CAPTURE_OUTCOME_CODES], complete: true,
+      expectedCount: shapedArc4Outcomes.length, observedCount: shapedArc4Outcomes.length,
+      omitted: [], outcomes: shapedArc4Outcomes,
+    },
+    controlSummary: {
+      selftestRan: true,
+      negativeControls: [...NEGATIVE_CONTROLS].sort(codeUnitCompare),
+      plannedNegativeControls: [...NEGATIVE_CONTROLS],
+      automaticRetries: 0, omittedNegativeControls: [], blockedNegativeControls: [],
+    },
+  };
+  const canonicalChain = glassRunEvidenceErrors(chainReport, {
+    runId: chainRunId, expectedSource: chainSource, expectedSlice: chainSlice,
+  });
+  const chainMutants = [
+    ['stale-pass', { ...chainReport, run: { ...chainReport.run, id: 'stale-glass-run' } }, 'run ID mismatch'],
+    ['interrupted', { ...chainReport, status: 'running', terminal: false, certifying: false, exit: null }, 'not terminal'],
+    ['dirty-source', { ...chainReport, certifying: false,
+      source: { ...chainSource, state: 'dirty-diagnostic' }, sourceEnd: { ...chainSource, state: 'dirty-diagnostic' } }, 'not clean committed'],
+    ['targeted', { ...chainReport, scope: 'targeted-diagnostic', certifying: false }, 'targeted/non-full'],
+    ['missing-predecessor', { ...chainReport, predecessors: null }, 'predecessor binding is missing'],
+    ['mismatched-predecessor', { ...chainReport, predecessors: { slice: { ...chainSlice, reportSha256: 'f'.repeat(64) } } }, 'does not exactly match'],
+    ['fake-viewport-id', { ...chainReport,
+      viewportInventory: chainReport.viewportInventory.map((row, index) => index === 0 ? { ...row, label: 'fake-phone' } : row) },
+    'exact ordered 12-row matrix'],
+    ['malformed-timing', { ...chainReport,
+      viewportTimings: chainReport.viewportTimings.map((row, index) => index === 0 ? { ...row, durationMs: 0 } : row) },
+    'timing inventory is malformed'],
+    ['empty-outcomes', { ...chainReport,
+      arc4CaptureOutcomeInventory: { ...chainReport.arc4CaptureOutcomeInventory, outcomes: [] } },
+    'outcome inventory is empty'],
+    ['vacuous-outcome-checks', { ...chainReport,
+      arc4CaptureOutcomeInventory: { ...chainReport.arc4CaptureOutcomeInventory,
+        outcomes: chainReport.arc4CaptureOutcomeInventory.outcomes.map((row, index) => index === 0
+          ? { ...row, checks: {} } : row) } },
+    'outcome inventory is empty'],
+    ['wrong-outcome-check-key', { ...chainReport,
+      arc4CaptureOutcomeInventory: { ...chainReport.arc4CaptureOutcomeInventory,
+        outcomes: chainReport.arc4CaptureOutcomeInventory.outcomes.map((row, index) => {
+          if (index !== 0) return row;
+          const checks = { ...row.checks, captureObserved: true };
+          delete checks.captured;
+          return { ...row, checks };
+        }) } },
+    'outcome inventory is empty'],
+    ['missing-outcome-check-key', { ...chainReport,
+      arc4CaptureOutcomeInventory: { ...chainReport.arc4CaptureOutcomeInventory,
+        outcomes: chainReport.arc4CaptureOutcomeInventory.outcomes.map((row, index) => {
+          if (index !== 0) return row;
+          const checks = { ...row.checks };
+          delete checks.captured;
+          return { ...row, checks };
+        }) } },
+    'outcome inventory is empty'],
+    ['extra-outcome-check-key', { ...chainReport,
+      arc4CaptureOutcomeInventory: { ...chainReport.arc4CaptureOutcomeInventory,
+        outcomes: chainReport.arc4CaptureOutcomeInventory.outcomes.map((row, index) => index === 0
+          ? { ...row, checks: { ...row.checks, independentReplay: true } } : row) } },
+    'outcome inventory is empty'],
+    ['wrong-browser-family', { ...chainReport,
+      browser: { ...chainReport.browser, product: 'Firefox/999.0.0.1' } },
+    'version-tolerant Chrome/Edge'],
+    ['wrong-browser-protocol', { ...chainReport,
+      browser: { ...chainReport.browser, protocol_version: '1.2' } },
+    'version-tolerant Chrome/Edge'],
+    ['missing-browser-provenance', { ...chainReport,
+      browser: Object.fromEntries(Object.entries(chainReport.browser)
+        .filter(([key]) => key !== 'revision')) },
+    'version-tolerant Chrome/Edge'],
+    ['omitted-control', { ...chainReport,
+      controlSummary: { ...chainReport.controlSummary,
+        negativeControls: chainReport.controlSummary.negativeControls.slice(1) } },
+    'planned-vs-executed negative-control ledger'],
+    ['planned-control-drift', { ...chainReport,
+      controlSummary: { ...chainReport.controlSummary,
+        plannedNegativeControls: chainReport.controlSummary.plannedNegativeControls.slice(1) } },
+    'planned-vs-executed negative-control ledger'],
+    ['summary-findings-contradiction', { ...chainReport,
+      findings: [{ viewport: 'small-phone', surface: 'selftest', code: 'INJECTED' }] },
+    'summary/findings/instrument-failures'],
+  ];
+  const chainDrift = chainMutants.flatMap(([name, mutant, diagnosis]) => {
+    const errors = glassRunEvidenceErrors(mutant, {
+      runId: chainRunId, expectedSource: chainSource, expectedSlice: chainSlice,
+    });
+    return errors.some((error) => error.includes(diagnosis)) ? [] : [{ name, diagnosis, errors }];
+  });
+  if (canonicalChain.length || chainDrift.length) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: evidence-chain controls drifted ${JSON.stringify({ canonicalChain, chainDrift })}`);
+  }
+  const immutableRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-glass-immutable-selftest-'));
+  try {
+    const immutableArtifact = glassArtifactPaths('glass-immutable-selftest', immutableRoot).report;
+    atomicCreateFile(immutableArtifact, 'first immutable bytes\n');
+    const before = fs.readFileSync(immutableArtifact);
+    let refused = false;
+    try { atomicCreateFile(immutableArtifact, 'replacement bytes\n'); }
+    catch { refused = true; }
+    if (!refused || !fs.readFileSync(immutableArtifact).equals(before)) {
+      throw new Error('GLASS MATRIX REPORT SELFTEST: reused run ID overwrote immutable Glass artifact');
+    }
+  } finally {
+    const prefix = os.tmpdir().endsWith(path.sep) ? os.tmpdir() : os.tmpdir() + path.sep;
+    if (!immutableRoot.startsWith(prefix)) throw new Error(`refusing unsafe Glass selftest cleanup: ${immutableRoot}`);
+    fs.rmSync(immutableRoot, { recursive: true });
+  }
   console.log('GLASS MATRIX REPORT SELFTEST: PASS');
   console.log('  injected finding retained; 12 viewport definitions and 36 exact Arc 4 capture outcomes retained; retry policy remains zero');
   console.log('  missing Shipyard generated expression returns {ok:false} without throw; import, release, exact boot subphases, twin-canvas budgets, navigation, and boot-ready deadlines fail closed');
+  console.log('  source provenance: physical repository + actual full HEAD accepted; required Git failure and empty/malformed/wrong hosted SHA rejected');
+  console.log('  evidence chain: exact clean Slice predecessor accepted; stale/interrupted/dirty/wrong/targeted/missing/mismatched bindings rejected');
 }
 
 const MIME = Object.freeze({
@@ -5470,8 +5769,10 @@ function controlCoverageOutcome(executedControls = [], blockedControls = []) {
   }
   return {
     ok: true,
-    executed: executed.filter((name) => NEGATIVE_CONTROLS.includes(name)).sort(),
-    blocked: blockedRows.slice().sort((a, b) => a.name.localeCompare(b.name)),
+    executed: executed.filter((name) => NEGATIVE_CONTROLS.includes(name))
+      .sort(codeUnitCompare),
+    blocked: blockedRows.slice()
+      .sort((a, b) => codeUnitCompare(a.name, b.name)),
     omitted: NEGATIVE_CONTROLS.filter((name) => !executed.includes(name) && !blockedNames.includes(name)),
   };
 }
@@ -5504,6 +5805,27 @@ async function main() {
     await reportSelftest();
     return;
   }
+  if (selectedVerifyRunId) {
+    assertEvidenceRunId(selectedVerifyRunId, 'Glass');
+    assertEvidenceRunId(selectedSliceRunId, 'Slice');
+    const currentSource = sourceIdentity();
+    if (currentSource.state !== 'committed') {
+      throw new Error(`Glass verification requires clean committed source, observed ${JSON.stringify(currentSource.state)}`);
+    }
+    const sliceVerification = verifySliceRunEvidence(selectedSliceRunId, {
+      expectedSource: currentSource, requirePass: true, requireCommitted: true,
+    });
+    if (!sliceVerification.ok) throw new Error(`selected Slice predecessor failed verification: ${sliceVerification.errors.join('; ')}`);
+    const sliceDescriptor = slicePredecessorDescriptor(sliceVerification);
+    const glassVerification = verifyGlassRunEvidence(selectedVerifyRunId, {
+      expectedSource: currentSource, expectedSlice: sliceDescriptor, requirePass: true,
+    });
+    if (!glassVerification.ok) throw new Error(`selected Glass run failed verification: ${glassVerification.errors.join('; ')}`);
+    console.log(`GLASS MATRIX VERIFY: PASS — ${selectedVerifyRunId}`);
+    console.log(`report sha256: ${glassVerification.reportSha256}`);
+    console.log(`Slice predecessor: ${selectedSliceRunId} ${sliceDescriptor.reportSha256}`);
+    return;
+  }
   const hostileCompendiumRows = MATRIX_VIEWPORTS.some((vp) => vp.label === 'phone-landscape')
     ? buildCompendiumFixture().rows.slice(0, 21).map(([, entry], index) => {
       const fixtureId = `glass-hostile-${String(index).padStart(2, '0')}`;
@@ -5526,11 +5848,40 @@ async function main() {
   runReloadEvidence = [];
   runViewportTimings = [];
   runArc4CaptureOutcomes = [];
+  runPredecessors = null;
+  runEndingSource = null;
+  runArtifactReserved = false;
   const releaseLock = acquireWorkspaceLock('v2 responsive glass matrix');
   try {
     runSource = sourceIdentity();
     if (!/^[0-9a-f]{40}$/.test(runSource.commit || '') || !runSource.branch) {
       throw new Error(`source identity unavailable: ${JSON.stringify(runSource)}`);
+    }
+    const artifacts = glassArtifactPaths(activeGlassRunId);
+    const sentinel = runningGlassReport({ runId: activeGlassRunId, source: runSource });
+    atomicWriteJson(currentReportPath, sentinel);
+    atomicCreateFile(artifacts.report, JSON.stringify(sentinel, null, 2) + '\n');
+    runArtifactReserved = true;
+    if (!viewportLabel) {
+      if (!selectedSliceRunId) {
+        throw new Error('full certifying Glass requires --slice-run=<immutable-Slice-run-id>');
+      }
+      assertEvidenceRunId(selectedSliceRunId, 'Slice');
+      if (runSource.state !== 'committed') {
+        throw new Error(`full certifying Glass requires clean committed source, observed ${JSON.stringify(runSource.state)}`);
+      }
+      const sliceVerification = verifySliceRunEvidence(selectedSliceRunId, {
+        expectedSource: runSource, requirePass: true, requireCommitted: true,
+      });
+      if (!sliceVerification.ok) {
+        throw new Error(`selected Slice predecessor failed verification: ${sliceVerification.errors.join('; ')}`);
+      }
+      runPredecessors = { slice: slicePredecessorDescriptor(sliceVerification) };
+      const boundSentinel = runningGlassReport({
+        runId: activeGlassRunId, source: runSource, predecessor: runPredecessors.slice,
+      });
+      atomicWriteJson(artifacts.report, boundSentinel);
+      atomicWriteJson(currentReportPath, boundSentinel);
     }
     execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
   const server = staticServer();
@@ -8796,7 +9147,7 @@ async function main() {
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
-          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'];
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=55;
           const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
@@ -8804,6 +9155,7 @@ async function main() {
             atlasRoute=bulletNodes.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
             capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
             training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
+            lesson=bulletNodes.find((item)=>/A LESSON OWNS ITS ESCAPE KEY/.test(item.textContent||'')),
             art=bulletNodes.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
             workspace=bulletNodes.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
             coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
@@ -8811,9 +9163,9 @@ async function main() {
             shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
             hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
             headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
-            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),captureHeading=headingFor(capture),trainingHeading=headingFor(training),artHeading=headingFor(art),
+            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),captureHeading=headingFor(capture),trainingHeading=headingFor(training),lessonHeading=headingFor(lesson),artHeading=headingFor(art),
             shipyardHeading=headingFor(shipyard),hdSurfaceHeading=headingFor(hdSurface),
-            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',
+            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',
             shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
             charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
             ingressPlacement=!!worldCode&&!!atlasRoute&&worldCode!==atlasRoute&&worldCodeHeading==='Gameplay'&&atlasRouteHeading==='Gameplay',
@@ -8829,11 +9181,13 @@ async function main() {
               ||/miss[^.!?]{0,80}(?:spends? no|does not spend) (?:Biosphere )?Yield/i.test(captureText)
               ||unnegated(captureText,/(?:Biosphere Yield|pool)[^.!?]{0,100}(?:recovers?|advances?)[^.!?]{0,64}(?:closed|closing|wall clock|offline)/i)
               ||/(?:repeat|later-world|later-cycle)[^.!?]{0,120}(?:adds?|awards?|earns?) (?:another|a second) (?:Compendium page|first-find reward|Rare Find Stardust)/i.test(captureText)
-              ||unnegated(captureText,/Capture[^.!?]{0,80}banks?[^.!?]{0,48}(?:Charter’s|Charter's|Charter) (?:separate )?bioscan/i),
+              ||unnegated(captureText,/Capture[^.!?]{0,80}banks?[^.!?]{0,48}(?:Charter’s|Charter's|Charter) (?:separate )?bioscan/i)
+              ||/(?:shown odds|capture chance)[^.!?]{0,96}(?:ignore|exclude|do not include)[^.!?]{0,64}(?:equipped )?(?:capture-chance )?gear/i.test(captureText),
             captureContract=captureHeading==='Gameplay'
               &&captureText.includes('Tame chooses uniformly from every eligible fauna in the full biosphere')
               &&captureText.includes('Scavenge from eligible flora and fungi')
               &&captureText.includes('Sample from eligible microbes—not only the at-most-eight-row Planetside preview')
+              &&captureText.includes('Equipped capture-chance gear is included in the shown odds at +1.5 percentage points per point before the 95% overall chance ceiling, with its contribution capped at +25 percentage points; first contact remains unavailable')
               &&captureText.includes('All three share one finite Biosphere Yield')
               &&captureText.includes('every attempt spends 1 on a hit or miss')
               &&captureText.includes('pool fully recovers at the next 20-minute active-play cycle')
@@ -8849,6 +9203,11 @@ async function main() {
               &&captureText.includes('Capture never banks the Charter’s separate bioscan milestone')
               &&captureText.includes('Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
               &&!captureContradiction,
+            lessonContradiction=/(?:wrong-world detour|Escape)[^.!?]{0,120}(?:abandons? Sol|abandons? (?:the )?lesson|keeps? the detour open)/i.test(lessonText),
+            lessonContract=lessonHeading==='Bug Fixes'
+              &&lessonText.includes('If Survey is rebuilt while a lesson owns it, the new Land and Atlas actions inherit the same keyboard, focus, and pointer scope before they can answer')
+              &&lessonText.includes('A wrong-world detour keeps only its real Close available, and Escape dismisses it without abandoning Sol or the lesson')
+              &&!lessonContradiction,
             trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
               ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
               ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
@@ -8938,11 +9297,11 @@ async function main() {
             ||/(?:biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
-          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!captureContradiction&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
+          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!captureContradiction&&!lessonContradiction&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
-            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===54&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
-            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&trainingContract&&artContract
+            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===expectedBulletCount&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
+            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&lessonContract&&trainingContract&&artContract
             &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
@@ -8955,12 +9314,12 @@ async function main() {
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
             identity,honest,overclaim,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
             charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
-            worldCodeContract,atlasRouteContract,captureHeading,captureContract,captureContradiction,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
+            worldCodeContract,atlasRouteContract,captureHeading,captureContract,captureContradiction,lessonHeading,lessonContract,lessonContradiction,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
             workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,hdSurfaceHeading,hdSurfaceContract,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 54-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 55-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -8974,20 +9333,21 @@ async function main() {
               atlasRoute=items.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
               capture=items.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
               training=items.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
+              lesson=items.find((item)=>/A LESSON OWNS ITS ESCAPE KEY/.test(item.textContent||'')),
               art=items.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
               workspace=items.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
               coldArt=items.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
               worker=items.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
               shipyard=items.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
               hdSurface=items.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
-              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
+              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
               shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
               artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
               coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
-            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,hdSurfaceChanged=false;
+            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],lessonStale=null,lessonContradictory=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,lessonStaleChanged=false,lessonContradictionChanged=false,hdSurfaceChanged=false;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!recoveryParent)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!lesson||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
@@ -9017,6 +9377,7 @@ async function main() {
               atlasRouteStale=${developmentDetailCheck};atlasRoute.textContent=atlasRouteText;
               for(const part of [
                 'Sample from eligible microbes—not only the at-most-eight-row Planetside preview',
+                'Equipped capture-chance gear is included in the shown odds at +1.5 percentage points per point before the 95% overall chance ceiling, with its contribution capped at +25 percentage points; first contact remains unavailable',
                 'every attempt spends 1 on a hit or miss',
                 'pool fully recovers at the next 20-minute active-play cycle, never from closing the game or moving the wall clock',
                 'later-world or later-cycle repeat adds another creature or lot without another page or first-find reward',
@@ -9032,10 +9393,15 @@ async function main() {
                 'Biosphere Yield recovers while the game is closed.',
                 'A later-world repeat adds a second Compendium page and first-find reward.',
                 'Capture banks the Charter’s separate bioscan milestone.',
+                'The shown odds ignore equipped capture-chance gear.',
               ]){
                 capture.textContent=captureText+' '+copy;captureContradictions.push({copy,result:${developmentDetailCheck}});
                 capture.textContent=captureText;
               }
+              lesson.textContent=lessonText.replace('A wrong-world detour keeps only its real Close available, and Escape dismisses it without abandoning Sol or the lesson','wrong-world Escape outcome omitted');lessonStaleChanged=lesson.textContent!==lessonText;
+              lessonStale=${developmentDetailCheck};lesson.textContent=lessonText;
+              lesson.textContent=lessonText+' Escape from a wrong-world detour abandons Sol and the lesson.';lessonContradictionChanged=lesson.textContent!==lessonText;
+              lessonContradictory=${developmentDetailCheck};lesson.textContent=lessonText;
               training.textContent=trainingText.replace('if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry',
                 'if verification pauses, that exact view stays saved and a reload safely restarts Field Training from proven Sol');
               trainingStale=${developmentDetailCheck};training.textContent=trainingText;
@@ -9096,7 +9462,7 @@ async function main() {
               if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;
               if(panelBoundary)panelBoundary.textContent=panelBoundaryText;
               if(first)first.textContent=firstText;if(recovery){recovery.textContent=recoveryText;if(recoveryParent&&recovery.parentNode!==recoveryParent)recoveryParent.insertBefore(recovery,recoveryNext);}
-              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(capture)capture.textContent=captureText;if(training)training.textContent=trainingText;
+              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(capture)capture.textContent=captureText;if(lesson)lesson.textContent=lessonText;if(training)training.textContent=trainingText;
               if(art){art.textContent=artText;if(artParent&&art.parentNode!==artParent)artParent.insertBefore(art,artNext);}
               if(workspace){workspace.textContent=workspaceText;if(workspaceParent&&workspace.parentNode!==workspaceParent)workspaceParent.insertBefore(workspace,workspaceNext);}
               if(coldArt){coldArt.textContent=coldArtText;if(coldArtParent&&coldArt.parentNode!==coldArtParent)coldArtParent.insertBefore(coldArt,coldArtNext);}
@@ -9106,13 +9472,13 @@ async function main() {
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
               &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
               &&panelBoundary?.textContent===panelBoundaryText&&recovery?.textContent===recoveryText
-              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&capture?.textContent===captureText&&training?.textContent===trainingText&&art?.textContent===artText
+              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&capture?.textContent===captureText&&lesson?.textContent===lessonText&&training?.textContent===trainingText&&art?.textContent===artText
               &&art?.parentNode===artParent&&art?.nextSibling===artNext
               &&workspace?.textContent===workspaceText&&workspace?.parentNode===workspaceParent&&workspace?.nextSibling===workspaceNext
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===53
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===54
               &&identity?.ok===false&&identity?.identity===false
               &&truthfulFeatureClaims.length===4
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)
@@ -9122,13 +9488,16 @@ async function main() {
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
               &&worldCodeStale?.ok===false&&worldCodeStale?.worldCodeContract===false
               &&atlasRouteStale?.ok===false&&atlasRouteStale?.atlasRouteContract===false
-              &&captureLimitControls.length===5
+              &&captureLimitControls.length===6
               &&captureLimitControls.every((row)=>row.changed&&row.result?.ok===false
                 &&row.result?.captureContract===false&&row.result?.captureContradiction===false
                 &&row.result?.honest===true&&row.result?.shipyardContract===true&&row.result?.trainingContract===true)
-              &&captureContradictions.length===5
+              &&captureContradictions.length===6
               &&captureContradictions.every((row)=>row.result?.ok===false&&row.result?.captureContract===false
                 &&row.result?.captureContradiction===true&&row.result?.honest===false)
+              &&lessonStaleChanged&&lessonStale?.ok===false&&lessonStale?.lessonContract===false&&lessonStale?.lessonContradiction===false
+              &&lessonContradictionChanged&&lessonContradictory?.ok===false&&lessonContradictory?.lessonContract===false
+                &&lessonContradictory?.lessonContradiction===true&&lessonContradictory?.honest===false
               &&trainingStale?.ok===false&&trainingStale?.trainingContract===false
               &&trainingContradictory?.ok===false&&trainingContradictory?.honest===false&&trainingContradictory?.trainingContradiction===true
               &&trainingLegacyStale?.ok===false&&trainingLegacyStale?.trainingContract===false
@@ -9159,7 +9528,7 @@ async function main() {
               &&hdSurfaceChanged&&hdSurfaceStale?.ok===false&&hdSurfaceStale?.hdSurfaceContract===false
               &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,captureLimitControls,captureContradictions,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
+              order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,captureLimitControls,captureContradictions,lessonStaleChanged,lessonStale,lessonContradictionChanged,lessonContradictory,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
               artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
               workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
               workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,
@@ -9569,10 +9938,22 @@ async function main() {
   }
 
   const endingSource = sourceIdentity();
+  runEndingSource = endingSource;
   if (endingSource.commit !== runSource.commit || endingSource.branch !== runSource.branch
     || endingSource.statusSha256 !== runSource.statusSha256
     || endingSource.workingTreeSha256 !== runSource.workingTreeSha256) {
     instrumentFailures.push(`source changed during matrix: start=${JSON.stringify(runSource)} end=${JSON.stringify(endingSource)}`);
+  }
+  if (!viewportLabel && selectedSliceRunId) {
+    const terminalSlice = verifySliceRunEvidence(selectedSliceRunId, {
+      expectedSource: endingSource, requirePass: true, requireCommitted: true,
+    });
+    if (!terminalSlice.ok) {
+      instrumentFailures.push(`Slice predecessor changed or failed terminal verification: ${terminalSlice.errors.join('; ')}`);
+    } else if (JSON.stringify(slicePredecessorDescriptor(terminalSlice))
+      !== JSON.stringify(runPredecessors?.slice)) {
+      instrumentFailures.push('Slice predecessor report/log/hash binding changed during Glass');
+    }
   }
   /* A targeted diagnostic that is itself product-blocked cannot execute the
      remainder of that one viewport. Full certification still requires all
@@ -9672,35 +10053,52 @@ async function main() {
     const counts = new Map();
     for (const { row } of findings) counts.set(row.code, (counts.get(row.code) || 0) + 1);
     console.error(`GLASS MATRIX PRODUCT FINDINGS — ${findings.length} across ${MATRIX_VIEWPORTS.length} viewport classes`);
-    console.error('COUNTS ' + JSON.stringify(Object.fromEntries([...counts].sort(([a], [b]) => a.localeCompare(b)))));
+    console.error('COUNTS ' + JSON.stringify(Object.fromEntries([...counts]
+      .sort(([a], [b]) => codeUnitCompare(a, b)))));
     for (const finding of findings) console.error('- ' + formatIssue(finding.context, finding.row));
     process.exitCode = 1;
     return;
   }
   writeReport({ status: 'pass', exitCode: 0, browser, findings, instrumentFailures, controlsRun,
     executedControls: [...executedControls], blockedControls });
+  const terminalVerification = verifyGlassRunEvidence(activeGlassRunId, {
+    expectedSource: runEndingSource, expectedSlice: runPredecessors?.slice || null,
+    requirePass: !viewportLabel,
+  });
+  if (!terminalVerification.ok) {
+    throw new Error(`terminal Glass evidence failed verification: ${terminalVerification.errors.join('; ')}`);
+  }
   if (viewportLabel) {
     console.log(`GLASS MATRIX TARGETED DIAGNOSTIC PASS — ${viewportLabel}; this does not certify the 12-viewport matrix.`);
-    console.log(`diagnostic evidence: apps/game/smoke/${path.basename(reportPath)}`);
+    console.log(`diagnostic evidence pointer: apps/game/smoke/${path.basename(currentReportPath)}`);
+    console.log(`immutable diagnostic evidence: ${glassArtifactPaths(activeGlassRunId).reportRelative}`);
   } else {
     console.log(`GLASS MATRIX PASS — ${MATRIX_VIEWPORTS.length} isolated viewport classes; populated Training, toast, Survey capture, Planetside, Inventory, Guide, Settings and import surfaces; safe-area, zoom, focus, target, contrast, reduced-motion and DPR controls all passed.`);
-    console.log('structured evidence: apps/game/smoke/glassmatrix-report.json');
+    console.log(`Glass run ID: ${activeGlassRunId}`);
+    console.log(`immutable evidence: ${glassArtifactPaths(activeGlassRunId).reportRelative}`);
+    console.log('current evidence pointer: apps/game/smoke/glassmatrix-report.json');
   }
   } finally {
     releaseLock();
   }
 }
 
-main().catch((error) => {
-  try {
-    writeReport({
-      status: 'instrument-fail', exitCode: 2, browser: null, findings: [],
-      instrumentFailures: [String(error?.stack || error)], controlsRun: false,
-    });
-  } catch (reportError) {
-    console.error('- failed to write structured evidence: ' + reportError.message);
-  }
-  console.error('GLASS MATRIX INSTRUMENT FAILURE');
-  console.error('- ' + (error?.stack || error));
-  process.exitCode = 2;
-});
+const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : null;
+if (invokedPath === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    if (activeGlassRunId && runSource && runArtifactReserved) {
+      try {
+        runEndingSource = sourceIdentity();
+        writeReport({
+          status: 'instrument-fail', exitCode: 2, browser: null, findings: [],
+          instrumentFailures: [String(error?.stack || error)], controlsRun: false,
+        });
+      } catch (reportError) {
+        console.error('- failed to write structured evidence: ' + reportError.message);
+      }
+    }
+    console.error('GLASS MATRIX INSTRUMENT FAILURE');
+    console.error('- ' + (error?.stack || error));
+    process.exitCode = 2;
+  });
+}

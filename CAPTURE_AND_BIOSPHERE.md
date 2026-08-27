@@ -2,11 +2,37 @@
 
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
 ecology/audio overlay matches the player-facing durable Arc 4 capture slice and its remaining
-evidence boundary as of **2026-08-26**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
+evidence boundary as of **2026-08-27**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
 well as biosphere recovery, so EPOCH_TICK is a shared knob.
 **Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy mechanics, while
 the current v2 authority is the TypeScript port named in the overlay below.
+
+> **2026-08-27 current evidence/repair overlay:** current-input Slice has six preserved terminal-red,
+> one-attempt/zero-retry runs. Signed-clean source
+> `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
+> `20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`; it ran 397,101 ms,
+> retained 23 findings across 16 scopes and produced no Arc 4 success marker or ledger. Glass and
+> recovery correctly did not run.
+>
+> All five sixth-red roots are locally repaired with negative controls. Guide/Glass bind the exact 55-bullet
+> development draft; the capture fixture separates both legitimate active-play diagnostic clocks;
+> a blocked contextless Tame greeting accepts either truthful boolean mute state but requires zero
+> context/nodes/voices/emitter; epoch evidence proves private staging before committed publication,
+> raw persistence and reload with eleven isolated controls; and Survey rebinds the current Training
+> scope after replacing its action DOM. A subsequent whole-candidate review found additional
+> repair work in canonical world identity, F4/storage convergence, persistence races, texture
+> cleanup, settings/read-only coverage and the evidence chain. The complete browserless candidate
+> is green at 134 Vitest files / 1,446 passed / one intentional skip, and implementation/code plus
+> release-note audits are CLEAR. The final whole-diff audit is complete; its two evidence-integrity
+> findings are repaired and their focused controls pass. The signed clean freeze remains.
+> No current-input Slice PASS, Glass result, recovery
+> certificate, hosted/HUMAN whole-Gate or release authority follows.
+>
+> Exact Edge build is Slice provenance only. Slice and Glass judge fresh behavior and geometry rather
+> than a version pin, so an Edge update alone never rebaselines, repins or moves thresholds. The
+> Compendium and SceneMemory own separate sealed Edge-family + CDP `1.3` capability/profile
+> authorities; neither uses the exact browser build as a perpetual baseline identity.
 
 > **2026-08-26 current-candidate ecology/presentation correction:** the capture epoch is the sole
 > **published** F4 ecology epoch, derived from visible-and-answerable, lease-owned `activePlayMs`.
@@ -23,7 +49,7 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > art-grade labels are never exposed. The narrow Tame-fauna greeting described in §0 is current
 > presentation only: it cannot alter the candidate, odds, attempt, ownership, reward or epoch.
 
-> **2026-08-25 Arc 4 recorded durable acquisition boundary:** `@cf/domain-acquisition` separates
+> **2026-08-25 Arc 4 historical recorded durable acquisition boundary:** `@cf/domain-acquisition` separates
 > catalogue species, discovery records, stable fauna `CreatureInstance`s, specimen lots and
 > per-world biosphere progress under 18 owner namespaces. The app now prepares an absent strict
 > ownership-v1 carrier—or reconciles a projectable stale compatibility mirror—inside the same
@@ -67,7 +93,8 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > reload reconstruction and focus return are part of the player path.
 >
 > Guide remains 41 player topics, now **24 partial / 17 unavailable**; Capture/Discover-Life copy
-> describes the live bounded actions. The cumulative **A New Foundation** draft has 54 bullets.
+> described the live bounded actions at that checkpoint. The cumulative **A New Foundation** draft
+> had 54 bullets there; the current candidate has 55.
 > Field Training deliberately remains six lessons plus graduation and adds no Capture lesson.
 > `V2_CURRENT_RELEASE_VERSION` stays `null`; reading the draft does not mutate `rnSeen`, and no
 > production version, shipped release, Charter bioscan, targeted-preview, hosted, preview/publication
@@ -101,7 +128,8 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). Both bind source commit
 > `48ce0b1662a59b21070667be339a1e59503e1f19`, status
 > `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
-> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits are CLEAR. Arc 4
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
+> exact historical inputs. Current-candidate re-audits are not final. Arc 4
 > remains `[PARTIAL]` for real 20-minute recovery plus HUMAN review, and Arc 5 remains
 > `[PARTIAL]`/infrastructure-only.
 

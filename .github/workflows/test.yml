@@ -56,9 +56,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
-      CF_BROWSER: /usr/bin/microsoft-edge-stable
+      CF_BROWSER: /usr/bin/google-chrome
       CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-compendiummem
       CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem
+      CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice
+      CF_V2_GLASSMATRIX_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -120,22 +122,25 @@ jobs:
           npm run coveragegap
           node tools/speccheck.mjs
 
-      # SceneMemory is the shorter exact-Edge ruler, so it fails first without
-      # weakening either authority or retrying either certificate.
-      - name: install exact Arc 1C Edge scene-memory browser
+      # SceneMemory is the shorter Edge-family/capability ruler, so it fails
+      # first without point-version pinning or retrying either certificate.
+      - name: install current Arc 1C Edge scene-memory browser
         shell: bash
         env:
-          EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb
-          EDGE_PACKAGE_SHA256: bd7604025424914a61c06293cb6bf269141a29d8c54cf1997110bc96d3365d60
+          EDGE_PACKAGE_URL: https://go.microsoft.com/fwlink/?linkid=2149051
         run: |
           set -euo pipefail
-          scene_edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.101-1_amd64.deb"
-          curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$scene_edge_package"
-          printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$scene_edge_package" | sha256sum --check --strict
-          sudo apt-get install --reinstall --yes "$scene_edge_package"
-          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.101-1"
-          test -x "$CF_BROWSER"
+          scene_edge_package="$RUNNER_TEMP/microsoft-edge-stable-current_amd64.deb"
+          scene_edge_root="$RUNNER_TEMP/scenemem-edge-current"
+          curl --proto '=https' --tlsv1.2 --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$scene_edge_package"
+          test "$(dpkg-deb --field "$scene_edge_package" Package)" = "microsoft-edge-stable"
+          mkdir -p "$scene_edge_root"
+          dpkg-deb --extract "$scene_edge_package" "$scene_edge_root"
+          scene_edge_browser="$scene_edge_root/opt/microsoft/msedge/microsoft-edge"
+          test -x "$scene_edge_browser"
       - name: scene-memory instrument and calibration controls
+        env:
+          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
         working-directory: port/v2
         run: |
           node tools/browserpath.mjs --selftest
@@ -145,16 +150,20 @@ jobs:
       - name: one-attempt scene-memory certification
         id: scenemem
         timeout-minutes: 10
+        env:
+          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
         working-directory: port/v2
         run: node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json
       - name: verify current scene-memory evidence
         if: >-
           always() &&
           (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')
+        env:
+          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
         working-directory: port/v2
         run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json
 
-      # Compendium retains its separately sealed install -> preflight -> live
+      # Compendium retains its separately sealed extract -> preflight -> live
       # certificate chain after the shorter SceneMemory ruler is terminal-green.
       - name: install exact Arc 1A Edge calibration browser
         shell: bash
@@ -164,13 +173,20 @@ jobs:
         run: |
           set -euo pipefail
           edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.101-1_amd64.deb"
+          edge_root="$RUNNER_TEMP/compendiummem-edge-151.0.4129.101"
           curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"
           printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict
-          sudo apt-get install --reinstall --yes "$edge_package"
-          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.101-1"
-          test -x "$CF_BROWSER"
+          test "$(dpkg-deb --field "$edge_package" Package)" = "microsoft-edge-stable"
+          test "$(dpkg-deb --field "$edge_package" Version)" = "151.0.4129.101-1"
+          test ! -e "$edge_root"
+          mkdir "$edge_root"
+          dpkg-deb --extract "$edge_package" "$edge_root"
+          edge_browser="$edge_root/opt/microsoft/msedge/microsoft-edge"
+          test -x "$edge_browser"
       - name: browser provenance and Compendium memory instrument selftests
         working-directory: port/v2
+        env:
+          CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: |
           node tools/browserpath.mjs --selftest
           node tools/compendiummem-browser-preflight.mjs --selftest
@@ -180,12 +196,16 @@ jobs:
         id: compendium
         timeout-minutes: 40
         working-directory: port/v2
+        env:
+          CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: npm run compendiummem
       - name: verify current Compendium memory evidence
         if: >-
           always() &&
           (steps.compendium.outcome == 'success' || steps.compendium.outcome == 'failure')
         working-directory: port/v2
+        env:
+          CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
 
       # Chrome gates remain one attempt each and run only after every cheaper
@@ -202,15 +222,28 @@ jobs:
           npm run persona:selftest
           npm run preview:selftest
       - name: one-attempt real-browser slice smoke
+        id: slice
         working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/google-chrome
-        run: npm run smoke:ci
+        run: |
+          npm run smoke:ci
+          slice_run_id="$(jq -er '.run.id' apps/game/smoke/slice-smoke-report.json)"
+          test "$slice_run_id" = "$CF_V2_SLICE_SMOKE_RUN_ID"
+          printf 'run_id=%s\n' "$slice_run_id" >> "$GITHUB_OUTPUT"
+          node tools/smokereport.mjs --verify-run="$slice_run_id"
       - name: one-attempt 12-viewport Glass matrix
+        id: glass
         working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/google-chrome
-        run: npm run glassmatrix
+        run: |
+          slice_run_id="${{ steps.slice.outputs.run_id }}"
+          node tools/glassmatrix.mjs --slice-run="$slice_run_id"
+          glass_run_id="$(jq -er '.run.id' apps/game/smoke/glassmatrix-report.json)"
+          test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"
+          printf 'run_id=%s\n' "$glass_run_id" >> "$GITHUB_OUTPUT"
+          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"
       - name: automated persona synthesis
         working-directory: port/v2
         env:
@@ -270,7 +303,10 @@ jobs:
             tools/current.json
             port/v2/apps/game/smoke/slice-smoke-report.json
             port/v2/apps/game/smoke/slice-smoke.log
+            port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json
+            port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log
             port/v2/apps/game/smoke/glassmatrix-report.json
+            port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json
             port/v2/apps/game/smoke/automated-persona-report.json
             port/v2/apps/game/smoke/automated-persona-report.md
           if-no-files-found: ignore

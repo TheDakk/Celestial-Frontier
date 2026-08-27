@@ -10,6 +10,59 @@ summary of it.
 
 ## Contents
 
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_085237038.{json,log}.gz` — sixth exact-input Slice red
+
+Retains run `20260827085237038-27561-1f8e3c1771b7` from clean signed source
+`1e0141be418ca20a37dd82f1115c00b1a005e090` (tree
+`9360ec502dba9d6a588b365cf2a8b9b6de513514`, parent
+`9ce7ddde01201177dff1cacafc06c8424c4098cb`) on branch `openai/mac`. The commit has a good
+ED25519 SSH signature for `79046704+TheDakk@users.noreply.github.com`, fingerprint
+`SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`. The report binds an empty status SHA-256,
+clean-tree digest `f0af1e1d…758a`, `sourceChange:false`, Microsoft Edge
+`151.0.4129.107` executable/version provenance, and exactly zero automatic retries. This Slice
+carrier does not retain protocol version, browser revision, JavaScript version or user agent.
+Edge 151 is run provenance, not a browser baseline, pin, threshold change or rebaseline requirement.
+
+The one attempt ran `2026-08-27T08:52:37.038Z`–`08:59:14.139Z` (397,101 ms), reached the
+terminal D-TRAIN audit, and ended parent/child exit `1/1` with no signal or spawn error. It records
+23 findings across 16 scopes. They reduce to four instrument-contract roots plus one Training
+scope-restoration root: the valid 55-row development bulletin met every semantic and authority
+check but Slice still expected 54; a rejected wrong-ordinal fixture advanced the legitimate
+`persistence.ecology.observedActivePlayMs` diagnostic by 1; contextless Tame-audio checks wrongly
+required the mute policy bit to remain true even though settings may synchronously unmute a still
+blocked, zero-context runtime; and the epoch probe wrongly expected private candidate time to
+publish before its real persistence commit. A Training negative control then rebuilt Survey after
+bypassing its document guard without rebinding the lesson to the new action nodes. The resulting
+early Land cascaded through the remaining drill and made the terminal transaction a valid Skip,
+not the intended Finish. Full Finish therefore remains unproved on this input.
+
+The run outcome-clears the committed native Tame, exact result and one-start voice owner,
+accessible counterpart, close/reopen/expiry lifecycle, Arc 5 compact upgrade/aligned fixed point,
+and Arc 4 publication-convergence assessment and its controls. It also stored and reloaded ecology
+epoch 1 after keeping published epoch 0 before commit. These individually green outcomes are not
+a terminal Slice PASS. Because the overall run was red,
+`arc4SuccessEvidence.required:false`, `ok:null`, `ledger:null`, zero ledger lines and zero Arc 4
+PASS markers were emitted. Glass and recovery therefore remained blocked and were not run.
+
+Carrier integrity:
+
+- JSON gzip: 246,615 bytes, SHA-256
+  `80228b85524544d968ec7f288a73492e390526f0adfb41ed086a2e806dce225e`; decompressed
+  2,193,285 bytes, SHA-256
+  `17063c6b0978956a889ce926307bf5d021a3d330a4e4053f196540e14e260555`.
+- Log gzip: 108,363 bytes, SHA-256
+  `0446d2804248509c14772b5631ac065fed26c1e8b14565c430d911b923a8634b`; decompressed
+  918,043 bytes, SHA-256
+  `a87c5741d409e69797bf024ccdd39f8e94719b7c9efbca6ff4460433ca43ef54`.
+
+Both carriers pass gzip integrity, and the report's declared raw-log size/hash match the
+decompressed log. Ten ignored run-bound PNGs existed at audit time and matched the report manifest
+for codex, Earth, galaxy, Guide, phone, Settings, Sol, Sol marker, Training and universe. Only the
+manifest is preserved here; the pixel bytes are not. This evidence grants no durable visual,
+Glass, recovery, HUMAN, hosted, integration, release, version or deployment authority. The bounded
+repair is local and must receive a new signed clean candidate plus one new no-retry Slice; this red
+is never rewritten as green.
+
 ### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_041238239.{json,log}.gz` — Tame-greeting observation Slice red
 
 Retains clean, stable signed-source run `20260827041238239-16243-cbf9ca66283b` at
@@ -118,7 +171,7 @@ regression. The JSON gzip SHA-256 is
 `1a659612b294017f59b05a9613878a3287a1ecea9fc3076ae966298791c10822`; its decompressed SHA-256 is
 `b1b245c837001f6f9817757cb178974bec626ec3e57ad3532445616f8b81d17f`.
 
-All five JSON reports retain run-bound screenshot manifests and hashes. The PNG bytes themselves remain
+The five earlier JSON reports retain run-bound screenshot manifests and hashes. The PNG bytes themselves remain
 ignored under `port/v2/apps/game/smoke/` and are not preserved by these carriers; none of these entries
 claims durable visual evidence, current-input Glass, the real recovery certificate, or a Slice PASS.
 

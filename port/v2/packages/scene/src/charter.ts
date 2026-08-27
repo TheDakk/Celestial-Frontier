@@ -77,6 +77,10 @@ export function primeReachHint(): string {
    for; it must never turn preserved legacy copy into a false player promise.
    ---- */
 export const SOL_SEEDS: ReadonlySet<number> = new Set([131, 132, 133, 134, 135, 136, 137, 138]);
+const SOL_WORLD_ORDINALS: ReadonlyMap<number, number> = new Map([
+  [131, 0], [132, 1], [133, 2], [134, 3],
+  [135, 4], [136, 5], [137, 6], [138, 7],
+]);
 /** Earth (133) is the lone living Sol world and cannot produce a successful
     mining action. Chapter 1 therefore accepts only these canonical dead-world
     sources, while Chapter 3 accepts every successfully mined canonical world. */
@@ -139,18 +143,46 @@ export const ASC_CHAPTERS_DATA: readonly AscChapter[] = freezeAscChapters([
   },
 ]);
 
+/** Classify the exact Sol hierarchy, not a globally non-unique planet seed.
+    `bankLandfall` separately requires a registered canonical address before
+    this pure scope projection can grant progress. */
+export function isSolLandfallAddress(source: CanonicalCF1WorldAddress): boolean {
+  return source.galaxy.seed === HOME_GAL_SEED
+    && source.galaxy.x === HOME_POS.x
+    && source.galaxy.y === HOME_POS.y
+    && source.star.seed === SOL_SEED
+    && source.star.x === SOL_POS.x
+    && source.star.y === SOL_POS.y
+    && SOL_WORLD_ORDINALS.get(source.planet.seed) === source.planet.ordinal;
+}
+
+/** The Chapter-1 mining scope is the exact Sol hierarchy plus one of its
+    registered dead-world sources. Keeping this projection beside the
+    landfall classifier prevents a seed-only mining shortcut from drifting
+    away from the complete galaxy/star/planet identity law. */
+export function isSolDeadWorldAddress(source: CanonicalCF1WorldAddress): boolean {
+  return isSolLandfallAddress(source)
+    && SOL_DEAD_WORLD_SEEDS.has(source.planet.seed);
+}
+
 /** ascEvent's banking rule for landfalls (main.js 22826 review catch):
     progress BANKS for every chapter from the current one on — a player who
     out-lands the current chapter must not lose the later credit. Mutates
     `prog` in place (the save's ascProg object); returns true if changed. */
-export function bankLandfall(ascCh: number, prog: Record<string, number>, planetSeed: number): boolean {
-  if (!Number.isInteger(ascCh) || ascCh < 0 || ascCh >= ASC_CHAPTERS_DATA.length) return false;
+export function bankLandfall(
+  ascCh: number,
+  prog: Record<string, number>,
+  source: CanonicalCF1WorldAddress,
+): boolean {
+  if (!Number.isInteger(ascCh) || ascCh < 0 || ascCh >= ASC_CHAPTERS_DATA.length
+    || !isCanonicalCF1Address(source) || !('planet' in source)) return false;
+  const isSol = isSolLandfallAddress(source);
   let changed = false;
   for (let ci = ascCh; ci < ASC_CHAPTERS_DATA.length; ci++) {
     for (const g of ASC_CHAPTERS_DATA[ci]!.goals) {
       if (g.ev !== 'landfall') continue;
-      if (g.scope === 'sol' && !SOL_SEEDS.has(planetSeed)) continue;
-      if (g.scope === 'nonsol' && SOL_SEEDS.has(planetSeed)) continue;
+      if (g.scope === 'sol' && !isSol) continue;
+      if (g.scope === 'nonsol' && isSol) continue;
       const have = prog[g.id] || 0;
       if (have < g.n) { prog[g.id] = have + 1; changed = true; }
     }
@@ -175,9 +207,7 @@ export function bankMinedAction(
 ): boolean {
   if (!Number.isInteger(ascCh) || ascCh < 0 || ascCh >= ASC_CHAPTERS_DATA.length
     || !isCanonicalCF1Address(source) || !('planet' in source)) return false;
-  const isSolDeadWorld = source.galaxy.seed === HOME_GAL_SEED
-    && source.star.seed === SOL_SEED
-    && SOL_DEAD_WORLD_SEEDS.has(source.planet.seed);
+  const isSolDeadWorld = isSolDeadWorldAddress(source);
   let changed = false;
   for (let ci = ascCh; ci < ASC_CHAPTERS_DATA.length; ci++) {
     for (const goal of ASC_CHAPTERS_DATA[ci]!.goals) {

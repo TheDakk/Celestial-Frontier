@@ -57,7 +57,7 @@ function wiringErrors(source: string): string[] {
 
   const stage = persist.indexOf('ecologyEpochAuthority.stage(ecologyActivePlayNow(), intent)');
   const detached = persist.indexOf('const candidate: SaveStateV2 = {');
-  const cas = persist.indexOf('const outcome = await runtime.commit(candidate, Date.now());');
+  const cas = persist.indexOf('const outcome = await runtime.commit(');
   const durable = persist.indexOf('durable = true;', cas);
   const acknowledge = persist.indexOf('ecologyEpochAuthority.commit(epochStage, outcome.revision)', durable);
   const liveEpoch = persist.indexOf('save.EPOCH_BASE = outcome.saved.canonicalState.EPOCH_BASE;', acknowledge);
@@ -159,8 +159,8 @@ describe('F4 ecology epoch app wiring', () => {
   it('negative control: optimistic publication before CAS is rejected', () => {
     const mutated = replaceOnce(
       mainSource,
-      'const outcome = await runtime.commit(candidate, Date.now());',
-      'publishCommittedEcologyEpoch({} as never);\n      const outcome = await runtime.commit(candidate, Date.now());',
+      'const outcome = await runtime.commit(',
+      'publishCommittedEcologyEpoch({} as never);\n      const outcome = await runtime.commit(',
     );
     expect(wiringErrors(mutated)).toContain('durable-before-publication');
   });
@@ -168,14 +168,14 @@ describe('F4 ecology epoch app wiring', () => {
   it('negative control: a duplicate CAS or receipt/RNG writer is rejected', () => {
     const duplicate = replaceOnce(
       mainSource,
-      'const outcome = await runtime.commit(candidate, Date.now());',
-      'await runtime.commit(candidate, Date.now());\n      const outcome = await runtime.commit(candidate, Date.now());',
+      'const outcome = await runtime.commit(',
+      'await runtime.commit(candidate, Date.now());\n      const outcome = await runtime.commit(',
     );
     expect(wiringErrors(duplicate)).toContain('receipt-free-single-cas');
     const receiptWriter = replaceOnce(
       mainSource,
-      'const outcome = await runtime.commit(candidate, Date.now());',
-      'const outcome = await runtime.commitOutcome({ state: candidate } as never);',
+      'const outcome = await runtime.commit(',
+      'const outcome = await runtime.commitOutcome(',
     );
     expect(wiringErrors(receiptWriter)).toContain('receipt-free-single-cas');
   });

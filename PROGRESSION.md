@@ -1,5 +1,36 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-27 current-candidate progression correction:** capture contact is now a real equipped
+> gear effect rather than inert copy: each effective point adds 1.5 percentage points to capture
+> chance, equipped gear contributes at most +25 points, and the final chance remains capped at 95%.
+> First contact remains unavailable. F4 now distinguishes storage failure while acquiring from
+> failure while renewing its active-play lease. Acquire failure grants no lease and accrues zero;
+> renew failure first settles the already-earned visible/answerable interval, then revokes the lease
+> and stops further accrual immediately. The domain permits reacquisition only through an explicit
+> later heartbeat, while the app makes the document read-only, stops heartbeat/answerability/player
+> mutation and converges through one protected reload instead of starting an automatic reacquire
+> loop. A rejected repository-revision read during authority verification follows the same protected
+> convergence path, and periodic/`pageshow` callbacks cannot reacquire while that hold is set. Cleanup
+> attempts audio disposal and runtime release, aggregates failures into the convergence witness, and
+> reloads regardless.
+>
+> Charter landfall classification also follows the complete registered canonical CF1 address. Sol
+> requires the exact home-galaxy seed/coordinates, Sol-star seed/coordinates and expected planet
+> source ordinal; a colliding leaf seed under another hierarchy is non-Sol, and an unregistered
+> lookalike cannot bank. A committed first landing updates only matching landfall scopes from the
+> current chapter onward and caps every goal at its authored target. These repairs still require the
+> final frozen-producer battery and bound browser campaign before they become current exact evidence.
+> Chapter 1 Mine credit uses the same hierarchy discipline: exact home-galaxy and Sol-star seeds and
+> coordinates, exact dead-world seed, and exact source ordinal. A same-seed planet under any changed
+> parent coordinate or ordinal grants no mining progress.
+>
+> Browser evidence uses three separate version-tolerant authorities: the root Chromium-family/CDP
+> `1.3` authority with source-derived layout/boot capabilities and exact per-run provenance, the
+> Compendium ruler with its own collector/transport capability and producer bindings, and the
+> SceneMemory ruler with its own capability/profile contract and producer binding. Compatible point
+> updates do not merge those rulers or move their fixed thresholds; final battery and independent
+> audits remain pending.
+
 > **2026-08-26 current-candidate progression correction:** the published ecology epoch now advances
 > only from F4's visible-and-answerable, lease-owned `activePlayMs`, through one receipt-free
 > lease/revision CAS before publication and exact scene reprojection. Until that refresh completes,
@@ -112,14 +143,17 @@
 > `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
 > `20260822-arc1-local-certification` passed 42/42 and its named verifier under Edge
 > `151.0.4129.101`, but that certificate remains historical. Clean cross-host SLA repair
-> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds active budget SHA-256
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` bound budget SHA-256
 > `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
 > run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
 > the same Edge `.101`. Raw/gzip SHA-256 are
 > `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
 > `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
 > `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
-> is unchanged. This docs descendant is not the exact certified head. Hosted terminal-green
+> is unchanged. SceneMemory now owns its separate version-tolerant Microsoft Edge-family + CDP
+> `1.3` + sealed capability/profile authority; exact `.101` remains historical provenance, the
+> numeric budget is unchanged, and the changed final frozen producer requires a new bound
+> certificate. This docs descendant is not the exact certified head. Hosted terminal-green
 > integration, HUMAN silhouette judgment, Cargo/Forge writers,
 > Fabrication/Research/upgrades, release and deployment remain open.
 
@@ -258,7 +292,7 @@
 > replay may still receive its lesson event without receiving progression credit.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlay
-matches the local `port/v2` candidate as of 2026-08-26, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
+matches the local `port/v2` candidate as of 2026-08-27, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy

@@ -29,50 +29,57 @@
 > landing. Raw mechanics, persisted grade, deterministic descriptors and art hue/designation stay
 > unchanged.
 >
-> Focused source/unit/type/build and browser-tool contract checks cover this local candidate.
-> Current-input Slice has five preserved terminal-red, one-attempt/zero-retry runs on Edge
-> `151.0.4129.107`. Run `20260826214541492-83064-b252b137f7a3` from signed `8553bd7…` failed after
-> 92,772 ms with two instrument false reds—Settings' 14-versus-15 pressed-control inventory and an
-> unreachable Arc 3 target—plus the retained-Survey focus product regression. Changed clean signed
-> source `9d4b2b0…` supplied run `20260827000034983-98202-869d966f2f88`, which failed after 92,566
-> ms with only the Arc 3 harness finding. The second outcome clears Settings and Survey opener
-> lineage. Its source-proven reachable target instead exposed an impossible instrument oracle that
-> joined system navigation to nav-owned planet identity although the selected world is card-owned;
-> clean signed source `8a23e22…` then supplied run `20260827025804458-2742-c0c871ee52b6`,
-> which failed after 93,582 ms with three findings from one new instrument lifecycle cascade. The
-> retained Survey card correctly hid the right rail, while Slice tried to activate zero-rect
-> `railshipyard` before yielding the card. The third run outcome-clears the card-context repair;
-> clean signed source `bd6b06b…` then supplied `20260827032748771-8092-d2a0130882c1`, which failed
-> after 119,502 ms with six scopes from two harness roots. Stale Mars-source and obsolete five-key
-> rendered-receipt expectations rejected valid Search/remnant evidence and skipped Skim; after
-> reload, retained Survey correctly hid the rail before another Engineering attempt, cascading
-> through storage/stale findings. Product Search, remnant routing and rail hiding were correct.
-> Deep Scanners, fixed Fabrication and the repaired lifecycle were outcome-cleared by that fourth
-> run. Signed-clean source `9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied fifth run
-> `20260827041238239-16243-cbf9ca66283b`, which ran for 141,336 ms and retained one finding: the exact
-> committed Tame greeting voice timed out with `last null`. That run outcome-clears the repaired path
-> through Skim plus the Engineering, storage-refusal, stale-authority, committed-publication and Arc
-> 5 fixed-point stages. Its generic null says only that the old active-voice predicate never returned
-> a qualifying observation; it cannot distinguish product rejection, autoplay/environment behavior,
-> natural completion before sampling or collector failure.
+> Read-only persistence authority now intercepts every ordinary save-mutating Settings outcome:
+> **Sound**, **Volume**, **Creature voices**, **Text size**, **Text tone**, **Font**, **Star charts**,
+> **Motion** and **Panel tint**, plus **Field Training Restart** and the in-lesson Training controls.
+> The underlying save bytes remain unchanged and a read-only witness is published, while inspection
+> surfaces such as Compendium remain available. **Settings → Bring expedition** is intentionally
+> outside that ordinary-mutation selector only as the protected recovery door: it must still validate
+> a complete supported replacement, coordinate pending persistence, claim the exclusive replacement
+> transaction and reload. It grants no ordinary preference or progression-write authority.
 >
-> The current repair uses a named retained seven-clause result/global/ownership/claim/counterpart/
-> runtime/toast collector. Exact `true` release is a fail-fast prerequisite, and one voice start may
-> be proved either while active or after exact natural completion, with one-start/peak and zero
-> stop/steal/rejection/fault evidence. Generic Arc 4 `ownershipRevision` and reload-result-null
-> controls are included in this repair batch. Browser-free verification is green at 124 test
-> files, 1,383 passing tests and one intentional skip; the current cumulative v2.0 development draft
-> has 55 bullets. The former Compendium certificate remains historical for
-> producer `587d3bdf…`; current producer
-> `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is active under budget
-> `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. Edge `.107` is provenance
-> only. Exact-budget run `20260826-slice-repair-certification` passed 78/78 with complete lifecycle
-> and named verification from clean signed activation source `91f4e044…` in one attempt/zero retries
-> (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Post-start audio lifecycle, the current
-> nine-stage/14-burn sequence, Glass and uninterrupted recovery remain unproved. No current-input
-> Slice PASS, current Glass result or recovery certificate exists; hosted, integration, HUMAN,
-> preview, release and deployment authority remain open. Broader Arc 7/8 soundscape/assets and
-> listening/comfort review remain partial.
+> HD surface replacement keeps the displayed predecessor attached and leased until an
+> identity-current successor is acquired, its real backing proves the claimed tier, and publication
+> succeeds. Acquisition, backing or pre-publication failure preserves the predecessor and leaves the
+> same demand explicit-retryable; there is no automatic retry. An uncommitted successor is released,
+> and a simultaneous primary/cleanup failure is reported as an aggregate while any failed release is
+> retained for a later explicit retry. After publication, predecessor-release failure leaves the
+> successor live and retains the predecessor as a retired lease. Stale publication rolls the target
+> back and releases the successor, aggregating rollback/release failures. Disposal cancels pending
+> work, attempts the current and every retired lease, aggregates all failures, and retains failed
+> owners so an idempotent later disposal can retry. Fine-scene replacement follows the same ownership
+> law: publish the complete successor before retiring its predecessor; aggregate build, rollback and
+> clear-world cleanup errors; and retain a failed retired scope without destroying the live successor.
+>
+> Focused changed-source checks and directionally independent controls have exercised the current
+> repairs, but the final frozen-producer full battery, final counts and independent audits remain
+> pending.
+> Current-input Slice retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
+> Signed-clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
+> `20260827085237038-27561-1f8e3c1771b7`, which failed after 397,101 ms with 23 findings
+> across 16 scopes and no Arc 4 success evidence. Required was false, `ok`/ledger were null, and
+> no success marker or ledger line exists; Glass and recovery correctly did not run.
+>
+> The UI-owned sixth-red root came from a negative control that rebuilt Survey while bypassing the
+> document Escape path, then attempted Land before the replacement card's Training locks were
+> rebound. `refreshTrainingScope()` now rebuilds the current allowed-root set, lock set and
+> spotlight, and restores focus only when the existing focus is no longer lesson-owned. Survey
+> invokes it once after the replacement card is visible and its aria/dock state is published.
+> Dynamic DOM tests cover Survey-tour, Atlas-add and Land; wiring controls reject a missing,
+> duplicate or pre-visibility call. Guide and Glass separately bind the exact 55-bullet draft with
+> independent content controls. The existing release-note bullet was expanded, so the count remains
+> 55.
+>
+> The other sixth-red roots were ecology diagnostic comparison, contextless blocked audio and a
+> fixture expectation that contradicted committed-only epoch publication; each is repaired with
+> directionally independent controls. Browser evidence uses three independent authorities. The root
+> authority accepts compatible Chromium-family executables that satisfy CDP `1.3` plus the
+> capability inventory derived from the root layout/boot sources and records executable, product,
+> revision, user agent, JavaScript version and protocol version per run. Compendium and SceneMemory
+> each retain a separate source-derived capability contract, producer binding and fixed ruler. Exact
+> browser versions are provenance, and a compatible point update alone never rebaselines or moves
+> ceilings. No current-input Slice PASS, current Glass result or recovery certificate exists;
+> hosted, integration, HUMAN, preview, release and deployment authority remain open.
 
 > **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
 > 2026-08-27 overlay does not supersede it:** the native Survey card now
@@ -679,9 +686,11 @@
 > geometry even when a same-aspect viewport change happens to retain the same
 > integer backing dimensions. Downshift and restore each require a strict exact-
 > target/`Browser.getVersion` pair plus an advancing later post-render ticker turn;
-> stopped and stale tickers fail deliberate controls. The existing scene rerender
-> still runs on the transition—this repair lowers the resource ceiling and does not
-> introduce a separate art-quality tier or scene-rerender optimization.
+> stopped and stale tickers fail deliberate controls. The transition still rebuilds
+> the full scene, but resize and visual-viewport bursts share one animation-frame
+> owner, sample the newest viewport only when that frame runs, and perform at most
+> one non-persisting rebuild per frame. This lowers the resource ceiling without
+> introducing a separate art-quality tier.
 >
 > Species art remains lazy, but live presentation now binds exact broker leases rather than a
 > shared import-Promise callback. Saved-Earth Planetside requests may queue while dormant; at most
