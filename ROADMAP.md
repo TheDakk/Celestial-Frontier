@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-27 · CURRENT RED PRESERVED · SIGNED HEAP-ONLY ACTIVATION COMPLETE · EXACT CERTIFICATE NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-27 · THREE SERIAL STAGES GREEN · SLICE HARNESS RED PRESERVED · REVIEWED REPAIR READY TO SIGN ◀◀◀
 
 ### Exact local ownership and authority boundary
 
@@ -39,15 +39,55 @@ the archive verbatim and refresh this handoff in place.
   `origin/openai/mac` with a good ED25519 signature. It activates only the four profile-specific
   V8/aggregate values under budget SHA-256
   `e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375`; all other ceilings remain
-  unchanged. The complete 134-file battery is green at 1,469 passed / one intentional skip, and
-  current SceneMemory/Compendium producer bindings match. This overlay is intended to become a
-  signed documentation-only descendant of `4a54c0d…`; it changes no product, producer or budget
-  bytes and therefore does not need to self-name its future commit hash.
+  unchanged. Its complete 134-file battery was green at 1,469 passed / one intentional skip, and
+  current SceneMemory/Compendium producer bindings matched.
+- **Signed evidence boundary:** `7362a0ea32e90b24e4988c81d566b82e20549e66` (tree
+  `711573279cbf8debbed7e67847016885e5647527`, parent `4a54c0d…`) is ahead 86 with a good
+  ED25519 signature. It supplied source-bound standalone and serial SceneMemory 42/42 certificates
+  plus serial Compendium 78/78 before the preserved Slice red stopped the chain. The associated
+  serial Layout carrier is 787/787 and verifier-green, but Layout schema v2 embeds no Git/source
+  identity and its non-commit-tagged run lacks a preserved execution record; it is result
+  provenance, not standalone exact-source evidence. Exact carrier scopes and hashes are in
+  `audits/README.md`.
+- **Current bounded repair worktree:** based on signed `7362a0e…`; changes only Slice/Glass/Arc 4
+  evidence oracles, their negative controls/tests, audit carriers and live documentation. Product,
+  producer, numeric-budget and deadline bytes are unchanged. Its consolidated browser-free battery
+  is green at 134 files / 1,474 passed / one intentional skip; root/app/worker TypeScript,
+  `noUnusedLocals`, all four evidence selftests, the 887-module build and root validation/fingerprint
+  also pass. Two earlier independent whole-diff reviews are CLEAR. A fresh risk audit then found two
+  evidence-honesty gaps: missing `panelOpen` diagnostics could collapse to valid `null`, and the old
+  Layout carrier was over-described as standalone source-bound despite its source-free schema and
+  missing execution record. Both are repaired with a missing-property control and narrowed current
+  references; the complete browser-free battery above passed on those newest bytes and the bounded
+  follow-up review is CLEAR. The worktree must receive a new signed clean commit before the full
+  serial chain restarts; no future hash or browser PASS is claimed here.
 - **No external authority:** this batch authorizes no fetch/merge, push, hosted Actions, PR
   mutation, release, version bump, deployment, preview publication or `rnSeen` mutation.
   `main`, production and both sites remain unchanged.
 
 ### Preserved red evidence and browser-version law
+
+- Signed source `7362a0e…` first passed source-bound standalone SceneMemory
+  `20260827-phase4-activation-scenemem` at 42/42. Its first serial chronology retained Layout
+  `20260827-phase4-final-layout` at 787/787 in 76,155 ms; that carrier passed its named verifier but
+  cannot independently bind the source for the reason above. Source-bound SceneMemory
+  `20260827-phase4-final-scenemem` at 42/42 in 10,216 ms and Compendium
+  `20260827-phase4-final-compendium` at 78/78 in 44,852 ms. Every stage ran once with zero automatic
+  retries on Edge `.107` / CDP `1.3`, retained required cleanup and passed its named verifier.
+- Slice `20260827-phase4-final-slice` then ran once for 414,213 ms, ended terminal red with 12
+  findings across 11 scopes and was not retried. Glass and recovery correctly did not start. Exact
+  report/log carriers are preserved under
+  `audits/ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_181317782.*.gz`.
+- This seventh Slice red diagnosed stale harness assumptions after product hardening, not an Edge
+  or product regression. The truthful 55-bullet Guide was canonical/populated/honest, but Slice and
+  Glass still required `DEVELOPMENT PUBLISHING IS ISOLATED` instead of the live
+  `DEVELOPMENT PUBLISHING STAYS PARKED` contract. Settings correctly mapped imported raw tint
+  `0.55` back to the live slider floor `0.82`; Arc 4 correctly released runtime/audio before
+  pagehide; restored Training correctly emitted canonical full-address Earth identity; and rejected
+  Arc 2 bootstrap correctly left Inventory lazy, closed and empty. The repaired oracles now prove
+  each outcome independently, including blank/open Inventory shells, target/restore domains,
+  exact convergence detail/read counts/full audio disposal, canonical-vs-legacy Earth identity and
+  Guide publishing mutate/restore controls.
 
 - Signed clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied the sixth
   current-input Slice run `20260827085237038-27561-1f8e3c1771b7` on Edge
@@ -136,21 +176,29 @@ the archive verbatim and refresh this handoff in place.
    excludes only its two bounded diagnostic clocks; contextless blocked audio no longer invents a
    mute transition; epoch publication is proved only after the real durable seam; rebuilt Survey
    refreshes Training ownership before Land/Atlas can answer.
-4. **Exact world identity:** v5 owns one canonical manifest plus four fixed shards for complete
+4. **Seventh-red harness roots:** Slice and Glass require the truthful parked-development Guide
+   contract. Settings evidence distinguishes imported raw tint from the slider's sanitized restore
+   domain. Arc 4 convergence requires exactly one operation-attributed witness with stable read
+   counts, released authority and product-exact disposed audio. Training restoration requires the
+   canonical full CF1 Earth address and forbids the legacy leaf-only output. Rejected Arc 2
+   bootstrap proves Inventory is unmounted, its `panelOpen` diagnostic field exists and is exactly
+   `null`, it is visually closed, accessibility-collapsed and empty. Each clause—including deleted
+   logical-owner evidence—has an isolated negative control; no product byte or ruler changed.
+5. **Exact world identity:** v5 owns one canonical manifest plus four fixed shards for complete
    source-reproved CF1 galaxy/star/planet addresses, landings and names. Legacy leaf-seed mirrors
    remain compatibility-only. Ambiguous legacy facts stay unresolved until one exact product
    encounter consumes them without inventing first-landing credit. Capacity is preflighted
    atomically; Training, Search, Share, Atlas, Land and reload preserve the complete identity.
-5. **Collision outcome proof:** one source-generated reachable pair lives in the same galaxy; its
+6. **Collision outcome proof:** one source-generated reachable pair lives in the same galaxy; its
    two distinct stars occupy different coordinates, while both worlds share the same planet leaf
    seed. The bounded real-Edge scenario proves bidirectional Search, naming, Share, Atlas, Land,
    persistence/reload,
    Records and Atlas-travel isolation, including negative controls against collapsed names,
    addresses and landing counts.
-6. **Legacy/v5 race safety:** backup promotion and recovery are atomic compare-and-apply operations
+7. **Legacy/v5 race safety:** backup promotion and recovery are atomic compare-and-apply operations
    over the exact observed primary/backup bytes plus absence of both v5 revision and active lease.
    Changed legacy bytes or any v5 authority wins; legacy recovery cannot roll a newer document back.
-7. **F4 failure convergence:** lease acquire/renew storage failures and rejected revision reads
+8. **F4 failure convergence:** lease acquire/renew storage failures and rejected revision reads
    move the document to transient protection, stop answerability/accrual/heartbeat/player mutation,
    dispose audio, release runtime authority and reload once. Periodic and `pageshow` callbacks
    honor the hold and cannot reacquire in the same document. The convergence latch schedules that
@@ -160,19 +208,19 @@ the archive verbatim and refresh this handoff in place.
    Repaint/diagnostic and cleanup faults are retained without stranding reload. Bounded real-Edge
    heartbeat and revision-read scenarios prove the immediate demotion, read-only Settings, stable
    raw state, release and a fresh writable successor token.
-8. **Read-only recovery:** all nine ordinary Settings outcomes and Field Training controls are
+9. **Read-only recovery:** all nine ordinary Settings outcomes and Field Training controls are
    intercepted before save-byte mutation. Inspection remains available. **Bring expedition** is
    the narrow authority-gated protected-recovery exception and still requires complete validation,
    exclusive replacement and reload.
-9. **Charter hierarchy:** Sol landfall and Chapter-1 dead-world mining require the registered exact
+10. **Charter hierarchy:** Sol landfall and Chapter-1 dead-world mining require the registered exact
    home-galaxy seed/coordinates, Sol-star seed/coordinates, planet seed and source ordinal. Same-seed
    worlds under changed coordinates/ordinal cannot bank. Only committed matching outcomes advance
    authored goals.
-10. **Renderer/resource ownership:** resize bursts coalesce to at most one frame while preserving
+11. **Renderer/resource ownership:** resize bursts coalesce to at most one frame while preserving
    route/card state and avoiding persistence writes. HD/fine texture successors retain the
    displayed predecessor until acquired publication, reject stale work and aggregate timer/lease/
    texture cleanup. Reload paths release audio, authority, chrome and renderer before replacement.
-11. **Evidence honesty:** Slice, Glass and recovery now form one immutable predecessor-bound chain
+12. **Evidence honesty:** Slice, Glass and recovery now form one immutable predecessor-bound chain
    on one unchanged clean commit, with named verification after each stage and no successor/retry
    after red. Slice PASS additionally requires exact compatible-browser provenance and all ten
    ordered current-run PNG carriers with safe paths, valid structure and exact byte/hash binding.
@@ -183,7 +231,7 @@ the archive verbatim and refresh this handoff in place.
    certification IDs as well as broken order or browser ownership. Compendium historical
    calibration stays historical; only unchanged numeric ceilings carry forward to a newly bound
    producer.
-12. **Release boundary:** `V2_DRAFT_RELEASE` remains Unreleased with five populated categories
+13. **Release boundary:** `V2_DRAFT_RELEASE` remains Unreleased with five populated categories
     and exactly 55 unique bullets. Its existing test-fleet bullet now records closed Inventory,
     delegated opener ownership, field-specific memory findings and the no-Edge-update rebaseline
     law. `V2_CURRENT_RELEASE_VERSION` remains `null`; the popup and
@@ -192,7 +240,7 @@ the archive verbatim and refresh this handoff in place.
 
 ### Current verification
 
-- **v2 core:** current activation battery: 134 Vitest files, 1,469 passed, one intentional skip, zero failures. Root/app/worker
+- **v2 core:** current repaired-source battery: 134 Vitest files, 1,474 passed, one intentional skip, zero failures. Root/app/worker
   TypeScript, `noUnusedLocals`, 887-module production build, art audit, 1,014 override keys /
   1,010 species coverage, 454-field spec check and every override mutation control pass.
 - **Evidence tools:** browser-path, Slice report, Glass, recovery, Compendium (222 controls),
@@ -212,43 +260,62 @@ the archive verbatim and refresh this handoff in place.
   12 MiB V8 /18 MiB aggregate activation is signed at `4a54c0d…` under budget SHA-256
   `e6c4aeea…`; all three candidates, both paired-red forms and exact-ceiling/next-byte controls pass
   the full browserless replay, and the current SceneMemory/Compendium producer bindings match.
-  Compendium's numeric ruler is unchanged and needs one fresh
-  exact-producer certificate after activation.
+  Compendium's numeric ruler is unchanged. Signed `7362a0e…` then supplied exact PASS certificates
+  for SceneMemory (42/42) and Compendium (78/78) before the later Slice harness red stopped the
+  serial chain.
 - Prior independent product/code, SceneMemory and release-note audits are CLEAR for their reviewed
   input. Their findings—and the later convergence-latch and per-field F4 control findings—are
   repaired and negative-controlled. The complete current browserless repair battery is green. The
   final documentation/release-copy consistency review and independent evidence/code whole-diff
-  review for the newer closed-surface/diagnostic repair are both CLEAR. No certifying successor
-  Slice/Glass/recovery result exists yet.
+  review for the newer closed-surface/diagnostic repair are both CLEAR. Two whole-diff reviews of
+  the seventh-red repair are CLEAR; the newest bounded risk audit's two P2 findings are repaired and
+  browser-free green, and its focused follow-up is CLEAR. No current certifying
+  Slice/Glass/recovery PASS exists.
 
 ### Exact remaining local sequence — serial, fail-fast, no automatic retry
 
-1. From signed activation source `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93`, run one exact-budget
-   SceneMemory certificate and named verifier. The signed documentation-only descendant may be the
-   clean campaign source because it changes no product, producer or budget bytes.
-2. If SceneMemory is green, restart the full serial campaign with fresh IDs: Layout → SceneMemory →
-   Compendium → Slice → Glass → uninterrupted 1,200,000 ms recovery. Any nonzero/red/instrument
-   result stops the chain and is never retried automatically.
-3. Record exact IDs/hashes in a later signed documentation-only evidence descendant, perform the final
-   whole-plan code/evidence/polish review and deliver Nick's fixed/remaining release notes.
+1. Create and verify one signed clean repair-source commit. Do not reuse the failed run IDs.
+2. From that unchanged signed source, restart the entire serial campaign with fresh IDs: Layout +
+   named verifier → SceneMemory 42/42 + named verifier → Compendium 78/78 + named verifier → Slice
+   terminal PASS + named verifier → full 12-viewport Glass bound to that Slice + named verifier →
+   uninterrupted 1,200,000 ms recovery bound to both predecessors + named verifier. Any
+   nonzero/red/instrument result stops the chain and is never retried automatically.
+3. Archive exact reports/logs/PNGs and hashes in a signed documentation-only descendant, perform the final
+   Phase-4 checkpoint code/evidence/polish review and deliver Nick's fixed/remaining release notes.
+4. Continue the still-authorized broader local campaign in bounded product batches: remaining
+   in-scope Arc 0 plus current-writer F3/F4 closures; the Arc 2/3 economy/Engineering boundary; Arc
+   5B public companion writers/UI; then the current-system Arc 7/8 content subset. Each batch keeps
+   its own real-outcome, migration, resource and truth-copy evidence and updates current references.
+5. Finish with an all-scope reader/writer/dead-route/orphan-asset audit, full local verification,
+   combined code/evidence/polish review and a repository-only handoff. Do not convert missing HUMAN
+   or real-device evidence into an automated claim.
 
-### Open product and HUMAN boundaries
+### Active objective beyond the Phase-4 checkpoint and HUMAN boundaries
 
 - Physical-device accessibility, heat/battery, and applicable HUMAN listening/comfort remain
   human work even after automated evidence.
-- The current target is the playable Phase-4 slice, not completion of the entire v2 program.
-  Arc 5B breeding/care/mission public writers and parameters, broader Arc 7/8 expressions,
-  ambience/music/assets/combat/Guardian audio, Compendium audition and Phases 5–9 remain future
-  product scope.
+- The immediate target is the clean playable Phase-4 evidence checkpoint, but the active authorized
+  campaign does **not** stop there. `port/V2_PROGRAM_ROADMAP.md` §§4.4/4.8–4.10/5.1–5.5/5.8–5.9
+  remains authoritative for the subsequent in-scope Arc 0, F3/F4, Arc 2/3, Arc 5B and current-system
+  Arc 7/8 batches.
+- The largest still-missing product groups are authored Arc 2 loot/affix/upgrade/socket and pacing;
+  Arc 3's remaining research/effect consumers and economy simulation; Arc 5 breeding, care,
+  Recovery, Chronicle/UI and active-play missions; and Arc 7/8 Compendium audition, distant ecology,
+  noncombat expressions, current-world ambience/music, rights-bound assets, accessibility and
+  browser/device plateaus. These are work to implement, not scope to relabel complete.
+- Arc 6 combat/Guardian/conquest/post-combat audio, later Phases 5–9 and production release remain
+  outside this campaign unless separately authorized. Current-system Arc 7/8 must leave those
+  dependencies explicitly absent rather than fabricating coverage.
 - Combined HUMAN first-journey/ownership/attachment, Compendium and ship/item readability review
   follows automated evidence. No whole Gate, integration or production release is closed by local
   automation alone.
 
 ### Git / paired-agent handoff
 
-- **Current side — OpenAI/Codex macOS:** owns this local unpushed documentation-only descendant
-  worktree on `openai/mac`, ahead 85 at signed activation `4a54c0d…`. Calibration and activation are
-  complete; run the exact certificate and serial evidence here without fetch/merge/switch or
+- **Current side — OpenAI/Codex macOS:** owns this local unpushed repair worktree on `openai/mac`,
+  ahead 86 at signed evidence boundary `7362a0e…`. Calibration, activation and the first three
+  serial greens are complete; the preserved Slice harness red is repaired browser-free. Finish the
+  signed source checkpoint, then run the entire fresh chain here without fetch/merge/switch or
   copying files.
 - **GitHub step now:** none. `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, the repository is public,
   but zero exact hosted attempts are authorized. Do not push, label, dispatch, rerun, mark Ready,

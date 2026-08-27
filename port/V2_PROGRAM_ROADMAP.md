@@ -78,8 +78,21 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-27 local candidate boundary — bounded source lanes; six preserved Slice reds and
-> historical browser certificates pending final frozen producers:** Gate
+> **2026-08-27 local candidate boundary — three serial stages green, preserved Slice harness red,
+> repaired source pending a full restart:** signed evidence source
+> `7362a0ea32e90b24e4988c81d566b82e20549e66` first passed standalone SceneMemory 42/42. It then
+> retained a serial Layout 787/787 result carrier plus source-bound SceneMemory 42/42 and Compendium
+> 78/78 carriers before its one Slice attempt stopped terminal-red on preserved stale harness
+> assumptions. Layout schema v2 embeds no Git/source identity and that non-commit-tagged run lacks a
+> preserved execution record, so it is chronology-associated provenance rather than standalone
+> exact-source evidence. Glass and recovery correctly did not run. The repaired worktree changes evidence oracles, focused tests,
+> audit/evidence carriers and documentation only; product, producer, numeric-budget and deadline bytes are unchanged. It must
+> become a new signed clean commit and restart the complete chain from Layout with fresh IDs. No
+> later browser result, publication, hosted attempt, release, deployment, version bump or external
+> authority exists. Compatible Edge/Chrome point updates are provenance only and never trigger a
+> rebaseline or threshold change.
+>
+> Within that boundary, Gate
 > B recursively seals an exact 62-file domain inventory against DOM, storage, `navigator`, network,
 > wall/monotonic clock and uncontrolled randomness. Its only two waivers are the exact CombatCore
 > `document.createElement('')` expressions for the legacy avatar painters. D-HAZE moved
@@ -149,7 +162,7 @@
 > `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
 > attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Those exact bytes
 > remain historical for that producer; Edge `.107` is provenance only.
-> The complete current activation battery is green at 134 Vitest files / 1,469 passed / one intentional
+> The historical activation battery was green at 134 Vitest files / 1,469 passed / one intentional
 > skip / zero failures, plus all TypeScript programs, `artunused` and the 887-module Vite build. The
 > explicitly historical signed-red browserless checkpoint was green at the same 134 files / 1,458
 > passed / one intentional skip / zero failures, with syntax/import selftests. Prior implementation/
@@ -163,7 +176,11 @@
 > failed: phone maxima were 11,580,536 V8 / 17,758,550 aggregate heap bytes / 898 nodes / 90
 > listeners; desktop maxima were 11,635,116 / 17,687,678 / 895 / 89. Exact raw/gzip carrier
 > hashes are `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7` /
-> `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`.
+> `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`. Signed evidence source
+> `7362a0e…` subsequently passed source-bound standalone and serial SceneMemory 42/42 plus
+> Compendium 78/78 before its preserved Slice harness red stopped the chain. The associated Layout
+> carrier is 787/787 and verifier-green but lacks standalone source binding, as the current boundary
+> above records.
 >
 > The bounded repair retains Inventory data/filter/page state while closed but unmounts its hidden
 > row tree and six open-lifetime subscriptions; late action settlement cannot remount closed DOM,
@@ -186,31 +203,37 @@
 > headroom of 1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes. Every other
 > ceiling stays unchanged, and the paired red retains its node/listener failures. A compatible Edge
 > point update is provenance only and never triggers this calibration or any threshold change.
-> Its budget SHA-256 is `e6c4aeea…`; the 134-file /1,469-pass /one-skip battery and tracked
-> Compendium/SceneMemory bindings are green. This documentation-only descendant leaves those
-> producer/budget bytes identical. Fresh certificate IDs remain pending; previous
-> certificates remain historical. Current-input Slice retains
-> six one-attempt/zero-retry reds. Signed-clean
+> Its budget SHA-256 is `e6c4aeea…`; the 134-file /1,469-pass /one-skip activation battery and
+> tracked Compendium/SceneMemory bindings were green. At that checkpoint fresh certificate IDs were
+> still pending; signed `7362a0e…` later supplied both SceneMemory 42/42 results and serial
+> Compendium 78/78. Previous exact-input certificates remain historical. The historical sixth Slice
+> red came from signed-clean
 > `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7` on Edge `.107`: 397,101 ms, 23 findings /
 > 16 scopes, required false, null `ok`/ledger and no Arc 4 success marker/line. Glass and recovery
 > correctly did not run.
 >
-> All five independent Slice roots are locally repaired with negative controls: Guide/Glass bind the exact
+> Those five independent Slice roots were repaired with negative controls: Guide/Glass bind the exact
 > 55-bullet draft and 54-bullet removal; stable comparison excludes both ecology diagnostic clocks
 > while independently bounding and mutating ecology movement; blocked contextless audio accepts
 > either boolean mute state but no created runtime resources; epoch proof distinguishes the private
 > candidate from real persistence and committed stored/reloaded values; and Survey rebinds Training
-> locks/focus after DOM replacement. Exact Edge build is Slice provenance only; Slice and Glass
+> locks/focus after DOM replacement. Signed `7362a0e…` then exposed a seventh, preserved harness red
+> after the three serial green stages: parked-development Guide wording, imported-tint restore
+> domains, Arc 4 lifecycle/audio evidence, canonical Training Earth identity and rejected-bootstrap
+> lazy Inventory were product-correct but measured by stale assumptions. Their repaired oracles and
+> focused controls have not yet supplied a browser result. Exact Edge build is Slice provenance only; Slice and Glass
 > judge fresh behavior/geometry rather than a version pin, so a browser update alone never
 > rebaselines or moves ceilings. Compendium and SceneMemory own separate sealed Edge-family + CDP
 > `1.3` capability/profile authorities; version tolerance changed no numeric budget in either ruler.
-> The current worktree is a documentation-only descendant of signed activation `4a54c0d…` with
-> identical producer/budget bytes; both eventual exact-producer certificates remain open. Root Gate A separately accepts
+> The current worktree is based on signed `7362a0e…` and changes evidence oracles, focused tests,
+> audit/evidence carriers and documentation only, with identical product/producer/budget/deadline bytes. Its standalone and
+> serial SceneMemory and Compendium results remain bound to `7362a0e…`; the repaired source must be
+> signed and restart the full chain from Layout. Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
 > never repins, rebaselines or moves a root threshold. Post-start audio, the exact nine-stage/14-burn ledger, current Glass and
-> recovery remain unproved. No current-input Slice PASS, hosted/HUMAN whole-Gate,
+> recovery remain unproved. No repaired-source Slice PASS, hosted/HUMAN whole-Gate,
 > release/version, preview/publication or deployment authority exists.
 >
 > **2026-08-25 local campaign boundary — historical checkpoint, still foundational where the
@@ -1372,9 +1395,11 @@ former `f7c87f22…` ruler's candidate1/2/3 plus paired baseline1, each one atte
 budget `6284a394…` retains all four faults and the exact 14/13 inventory, changing only phone warm
 to `524288`. Clean signed activation `91f4e044…` passed that historical exact-budget certificate
 `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
-attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). The changed final
-frozen Compendium producer requires a new bound certificate; no numeric ceiling changed. A lifecycle-repaired
-current-input Slice run, Glass and recovery evidence remain pending as described in the status overlay.
+attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Signed
+`7362a0e…` later passed serial Compendium 78/78 before Slice stopped on its preserved harness red;
+no numeric ceiling changed. The evidence-oracle-only repaired source still requires a signed full
+restart from Layout, and its Slice, Glass and recovery evidence remain pending as described in the
+status overlay.
 
 ### 5.2 Arc 3 — engineering loop
 
@@ -1524,15 +1549,19 @@ certificate `20260826-phase4-certification` is historical green evidence for sig
 `d33e540…` and former producer `587d3bdf…`; former producer `f7c87f22…` was certified under budget
 `6284a394…`, and clean signed activation `91f4e044…` passed its historical certificate
 `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
-attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). The changed final
-frozen Compendium producer requires a new bound certificate; version tolerance changed no numeric ceiling.
-Current-input Slice retains six terminal reds. The first five remain preserved diagnosis and
-bounded outcome evidence. Signed-clean sixth source `1e0141be…` supplied
+attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Signed
+`7362a0e…` later supplied source-bound standalone/serial SceneMemory and Compendium greens plus an
+associated verifier-green Layout result carrier without standalone source binding before its one
+Slice attempt stopped on preserved stale harness assumptions; version tolerance changed no numeric
+ceiling. The first five Slice reds remain preserved diagnosis and bounded outcome evidence.
+Signed-clean sixth source `1e0141be…` supplied
 `20260827085237038-27561-1f8e3c1771b7`, which retained 23 findings / 16 scopes with no Arc 4
-success marker or ledger. Its five independent harness/ownership roots are repaired: 55-bullet
+success marker or ledger. Its five independent harness/ownership roots were repaired: 55-bullet
 Guide/Glass authority, paired ecology diagnostic clocks, contextless blocked audio, committed-only
-epoch timing and Survey's post-replacement Training refresh. Post-start audio, the sealed ledger,
-Glass and recovery remain unproved; no current-input PASS exists.
+epoch timing and Survey's post-replacement Training refresh. The seventh `7362a0e…` Slice red is the
+latest committed boundary; its Guide, Settings, Arc 4, canonical-Training and lazy-Inventory oracle
+repairs are browser-unrun. Post-start audio, the sealed ledger, Glass and recovery remain unproved;
+the repaired source must be signed and restart from Layout before any current PASS claim.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.

@@ -1742,9 +1742,18 @@ const assessArc2BootstrapRefusal = ({ failed, failedRaw, hook, succeeded, succee
     || failedRaw?.receiptKeys?.length !== 0 || failedRaw?.receiptRawRows?.length !== 0
     || failedRaw?.receiptRows?.length !== 0
     || failedRaw?.inventoryRow?.extensions?.['arc2.loot'] !== undefined
-    || hook?.panelState !== 'absent' || hook?.panelRows !== 0 || hook?.panelActions !== 0) {
+    || hook?.panelStateMarkerPresent !== false || hook?.panelState !== null) {
     reasons.push('failed bootstrap remained protected and byte-stable');
   }
+  if (hook?.panelOpenPresent !== true || hook?.panelOpen !== null) {
+    reasons.push('failed bootstrap logical Inventory owner');
+  }
+  if (hook?.panelDisplay !== 'none') reasons.push('failed bootstrap Inventory display');
+  if (hook?.panelAriaHidden !== 'true') reasons.push('failed bootstrap Inventory aria-hidden');
+  if (hook?.dockExpanded !== 'false') reasons.push('failed bootstrap dock opener collapsed');
+  if (hook?.railExpanded !== 'false') reasons.push('failed bootstrap rail opener collapsed');
+  if (hook?.panelRows !== 0) reasons.push('failed bootstrap Inventory rows empty');
+  if (hook?.panelActions !== 0) reasons.push('failed bootstrap Inventory actions empty');
   const succeededAuthority = succeededRaw?.authority?.sessionRng;
   const succeededRuntime = succeeded?.persistence?.runtime;
   const legacyRewrite = assessStampedCanonicalRewrite(failedRaw?.legacyRaw, succeededRaw?.legacyRaw);
@@ -3794,10 +3803,16 @@ const assessReadOnlyBoundary = ({ writable, forced, before, attempts, after, raw
   const reasons = [];
   const expectedIds = SETTINGS_MUTATION_CASES.map(([id]) => id);
   if (JSON.stringify(writable?.map(({ id }) => id)) !== JSON.stringify(expectedIds)
-    || writable?.some(({ before: initial, mutated, restored, persisted, restoredPersisted }) =>
-      JSON.stringify(initial) === JSON.stringify(mutated)
-      || JSON.stringify(initial) !== JSON.stringify(restored)
+    || writable?.some(({ restoreExpected, mutated, restored, targetFound, restoreFound, persisted, restoredPersisted }) =>
+      targetFound !== true || restoreFound !== true
+      || JSON.stringify(restoreExpected) === JSON.stringify(mutated)
+      || JSON.stringify(restoreExpected) !== JSON.stringify(restored)
       || persisted !== true || restoredPersisted !== true)) reasons.push('writable settings outcomes');
+  if (writable?.some(({ id, before: initial, restoreExpected }) => id === 'panel-tint'
+    ? initial !== 0.55 || restoreExpected !== 0.82
+    : JSON.stringify(initial) !== JSON.stringify(restoreExpected))) {
+    reasons.push('writable settings control domains');
+  }
   if (forced !== true || before.persistence.mutationBlocked !== true
     || after.persistence.mutationBlocked !== true) reasons.push('read-only state');
   if (JSON.stringify(attempts?.map(({ id }) => id)) !== JSON.stringify(expectedIds)
@@ -3877,6 +3892,7 @@ const F3_PERSISTENCE_BROWSER_STAGES = Object.freeze([
 ]);
 const DTRAIN_NATIVE_WRITE_BINDING = '__cfDtrainNativeWriteWitness';
 const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
+const F4_CONVERGENCE_BINDING = '__cfF4AuthorityConvergenceWitness';
 const bindingPayloadsSince = (sessionId, mark, name) => events.slice(mark)
   .map((event, offset) => ({ event, eventIndex: mark + offset }))
   .filter(({ event }) => event.sessionId === sessionId
@@ -3891,6 +3907,8 @@ const dtrainNativeWritesSince = (sessionId, mark) =>
   bindingPayloadsSince(sessionId, mark, DTRAIN_NATIVE_WRITE_BINDING);
 const reloadReleaseWitnessesSince = (sessionId, mark) =>
   bindingPayloadsSince(sessionId, mark, RELOAD_RELEASE_BINDING);
+const f4ConvergenceWitnessesSince = (sessionId, mark) =>
+  bindingPayloadsSince(sessionId, mark, F4_CONVERGENCE_BINDING);
 const dtrainNativeWriteArmExpression = (label) => `(()=>{
   const binding=window[${JSON.stringify(DTRAIN_NATIVE_WRITE_BINDING)}],proto=IDBObjectStore.prototype;
   if(typeof binding!=='function'||window.__cfDtrainNativeWritePatch)return false;
@@ -4102,6 +4120,7 @@ try {
   await send('Runtime.addBinding', { name: '__cfTrainingRestoreWitness' }, sess);
   await send('Runtime.addBinding', { name: DTRAIN_NATIVE_WRITE_BINDING }, sess);
   await send('Runtime.addBinding', { name: RELOAD_RELEASE_BINDING }, sess);
+  await send('Runtime.addBinding', { name: F4_CONVERGENCE_BINDING }, sess);
   await send('Page.enable', {}, sess);
   await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, sess);
   let readinessControlRejected = false;
@@ -5848,11 +5867,12 @@ try {
       shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
       capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
       hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
+      publishing=bulletNodes.find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||'')),
       headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
       firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),artHeading=headingFor(art),
-      shipyardHeading=headingFor(shipyard),captureHeading=headingFor(capture),hdSurfaceHeading=headingFor(hdSurface),
+      shipyardHeading=headingFor(shipyard),captureHeading=headingFor(capture),hdSurfaceHeading=headingFor(hdSurface),publishingHeading=headingFor(publishing),
       charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
-      trainingText=training?.textContent||'',artText=art?.textContent||'',shipyardText=shipyard?.textContent||'',captureText=capture?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
+      trainingText=training?.textContent||'',artText=art?.textContent||'',shipyardText=shipyard?.textContent||'',captureText=capture?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',publishingText=publishing?.textContent||'',
       trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
@@ -5957,7 +5977,15 @@ try {
         &&hdSurfaceText.includes('exact surface generation and planet identity')
         &&hdSurfaceText.includes('retains the displayed predecessor until an acquired successor publishes')
         &&hdSurfaceText.includes('rejects stale work')&&hdSurfaceText.includes('suppresses same-texture swaps')
-        &&hdSurfaceText.includes('cancels and releases its timer and leases at the owning scene boundary');
+        &&hdSurfaceText.includes('cancels and releases its timer and leases at the owning scene boundary'),
+      publishingClaim=/(?:(?:(?:v2(?:[.]0)?[ \t]+)?preview(?:[ \t]+package)?|PR battery|branch-site workflow|development site|production)[^.!?;]{0,120}(?<![A-Za-z])(?:publish(?:es)?|deploys?|ships|(?:is|are|was|were|be|been|being|has|have|had)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had)){0,3}[ \t]+(?:published|deployed|shipped)|(?:is|are|was|were|be|been|being|has|have|had|goes|went|going|gone)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had|gone)){0,3}[ \t]+live)(?![A-Za-z])|(?<![A-Za-z])(?:publish(?:es)?|deploys?|ships|(?:is|are|was|were|be|been|being|has|have|had)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had)){0,3}[ \t]+(?:published|deployed|shipped)|(?:is|are|was|were|be|been|being|has|have|had|goes|went|going|gone)(?:[ \t]+(?:now|just|already|currently|being|been|has|have|had|gone)){0,3}[ \t]+live)(?![A-Za-z])[^.!?;]{0,120}(?:(?:v2(?:[.]0)?[ \t]+)?preview(?:[ \t]+package)?|PR battery|branch-site workflow|development site|production))/i,
+      publishingContradiction=bulletRaw.some((copy)=>unnegated(copy,publishingClaim)),
+      publishingContract=publishingHeading==='Under the Hood'
+        &&publishingText.includes('DEVELOPMENT PUBLISHING STAYS PARKED')
+        &&publishingText.includes('it does not publish')
+        &&publishingText.includes('The separate branch-site workflow remains manually parked')
+        &&publishingText.includes('production remains the v1.8.9 main-branch site')
+        &&!publishingContradiction;
     const overclaim=/all six Research rows[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:bought|purchased|playable|available|live)/i.test(text)
       ||/all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:actionable|playable|available|live)/i.test(text)
       ||/(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
@@ -5976,18 +6004,19 @@ try {
         &&bulletRaw.every((bullet)=>bullet.length>0&&bullet===bullet.trim()),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
       complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
-        &&shipyardContract&&captureContract&&hdSurfaceContract
+        &&shipyardContract&&captureContract&&hdSurfaceContract&&publishingContract
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
         &&/a genuine empty-sky press still dismisses it/.test(text)
         &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
-        &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
+        &&/RARITY IS NOT A SPECTRAL CLASS/.test(text),
       charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
       workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,
-      captureHeading,captureContract,captureContradiction,hdSurfaceHeading,hdSurfaceContract,overclaim,
-      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!captureContradiction
+      captureHeading,captureContract,captureContradiction,hdSurfaceHeading,hdSurfaceContract,
+      publishingHeading,publishingContract,publishingContradiction,overclaim,
+      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!captureContradiction&&!publishingContradiction
         &&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
@@ -6286,6 +6315,110 @@ try {
     const result=${releaseDraftCheck};heading.textContent=prior;return result; })()`);
   if (releaseVersionCtl.identity) {
     fails.push('GUIDE RELEASE CONTROL FAILED — mutating the v2.0 punctuation preserved exact identity: ' + JSON.stringify(releaseVersionCtl));
+  }
+  const releasePublishingCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+      .find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||''));
+    if(!row)return {changed:false,stale:{complete:true,publishingContract:true},restored:{complete:false},error:'missing publishing row'};
+    const prior=row.textContent;row.textContent=prior.replace('DEVELOPMENT PUBLISHING STAYS PARKED','DEVELOPMENT PUBLISHING CONTRACT REMOVED');
+    const changed=row.textContent!==prior,stale=${releaseDraftCheck};row.textContent=prior;const restored=${releaseDraftCheck};
+    return {changed,stale,restored}; })()`);
+  if (!releasePublishingCtl.changed || releasePublishingCtl.stale?.complete
+    || releasePublishingCtl.stale?.publishingContract !== false
+    || !releasePublishingCtl.restored?.complete || !releasePublishingCtl.restored?.publishingContract) {
+    fails.push('GUIDE RELEASE PUBLISHING CONTROL FAILED — the parked-development contract was not independently required and restored: '
+      + JSON.stringify(releasePublishingCtl));
+  }
+  const releasePublishingContradictionCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+      .find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||''));
+    if(!row)return {changed:false,contradictory:{complete:true,honest:true,publishingContract:true,publishingContradiction:false},restored:{complete:false},error:'missing publishing row'};
+    const prior=row.textContent;row.textContent=prior+' The development site now deploys the v2.0 preview package.';
+    const changed=row.textContent!==prior,contradictory=${releaseDraftCheck};row.textContent=prior;const restored=${releaseDraftCheck};
+    return {changed,contradictory,restored}; })()`);
+  if (!releasePublishingContradictionCtl.changed
+    || releasePublishingContradictionCtl.contradictory?.complete
+    || releasePublishingContradictionCtl.contradictory?.publishingContract !== false
+    || releasePublishingContradictionCtl.contradictory?.publishingContradiction !== true
+    || releasePublishingContradictionCtl.contradictory?.honest !== false
+    || !releasePublishingContradictionCtl.restored?.complete
+    || !releasePublishingContradictionCtl.restored?.publishingContract
+    || releasePublishingContradictionCtl.restored?.publishingContradiction !== false
+    || !releasePublishingContradictionCtl.restored?.honest) {
+    fails.push('GUIDE RELEASE PUBLISHING CONTRADICTION CONTROL FAILED — an additive publish/deploy claim did not fail closed and restore cleanly: '
+      + JSON.stringify(releasePublishingContradictionCtl));
+  }
+  const releasePublishingLiveProductionCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+      .find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||''));
+    if(!row)return {changed:false,contradictory:{complete:true,honest:true,publishingContract:true,publishingContradiction:false},restored:{complete:false},error:'missing publishing row'};
+    const prior=row.textContent;row.textContent=prior+' The v2.0 preview is live in production.';
+    const changed=row.textContent!==prior,contradictory=${releaseDraftCheck};row.textContent=prior;const restored=${releaseDraftCheck};
+    return {changed,contradictory,restored}; })()`);
+  if (!releasePublishingLiveProductionCtl.changed
+    || releasePublishingLiveProductionCtl.contradictory?.complete
+    || releasePublishingLiveProductionCtl.contradictory?.publishingContract !== false
+    || releasePublishingLiveProductionCtl.contradictory?.publishingContradiction !== true
+    || releasePublishingLiveProductionCtl.contradictory?.honest !== false
+    || !releasePublishingLiveProductionCtl.restored?.complete
+    || !releasePublishingLiveProductionCtl.restored?.publishingContract
+    || releasePublishingLiveProductionCtl.restored?.publishingContradiction !== false
+    || !releasePublishingLiveProductionCtl.restored?.honest) {
+    fails.push('GUIDE RELEASE LIVE-PRODUCTION CONTROL FAILED — an inverted production-live claim did not fail closed and restore cleanly: '
+      + JSON.stringify(releasePublishingLiveProductionCtl));
+  }
+  const releasePublishingPassiveCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+      .find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||''));
+    if(!row)return {changed:false,contradictory:{complete:true,honest:true,publishingContract:true,publishingContradiction:false},restored:{complete:false},error:'missing publishing row'};
+    const prior=row.textContent;row.textContent=prior+' The preview package is published to the development site.';
+    const changed=row.textContent!==prior,contradictory=${releaseDraftCheck};row.textContent=prior;const restored=${releaseDraftCheck};
+    return {changed,contradictory,restored}; })()`);
+  if (!releasePublishingPassiveCtl.changed
+    || releasePublishingPassiveCtl.contradictory?.complete
+    || releasePublishingPassiveCtl.contradictory?.publishingContract !== false
+    || releasePublishingPassiveCtl.contradictory?.publishingContradiction !== true
+    || releasePublishingPassiveCtl.contradictory?.honest !== false
+    || !releasePublishingPassiveCtl.restored?.complete
+    || !releasePublishingPassiveCtl.restored?.publishingContract
+    || releasePublishingPassiveCtl.restored?.publishingContradiction !== false
+    || !releasePublishingPassiveCtl.restored?.honest) {
+    fails.push('GUIDE RELEASE PASSIVE-PUBLISHING CONTROL FAILED — a passive publication claim did not fail closed and restore cleanly: '
+      + JSON.stringify(releasePublishingPassiveCtl));
+  }
+  const releasePublishingVariantsCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+      .find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||''));
+    if(!row)return {variants:[],restored:{complete:false},error:'missing publishing row'};
+    const prior=row.textContent,copies=['The preview package is being published to the development site.',
+      'The development site was just published.','The development site is now deployed.',
+      'The preview package has gone live.'],variants=[];
+    for(const copy of copies){row.textContent=prior+' '+copy;variants.push({copy,changed:row.textContent!==prior,result:${releaseDraftCheck}});}
+    row.textContent=prior;const restored=${releaseDraftCheck};return {variants,restored}; })()`);
+  if (releasePublishingVariantsCtl.variants?.length !== 4
+    || releasePublishingVariantsCtl.variants.some((row) => !row.changed
+      || row.result?.complete || row.result?.publishingContract !== false
+      || row.result?.publishingContradiction !== true || row.result?.honest !== false)
+    || !releasePublishingVariantsCtl.restored?.complete
+    || !releasePublishingVariantsCtl.restored?.publishingContract
+    || releasePublishingVariantsCtl.restored?.publishingContradiction !== false
+    || !releasePublishingVariantsCtl.restored?.honest) {
+    fails.push('GUIDE RELEASE PUBLISHING VARIANT CONTROLS FAILED — continuous/adverb/gone-live claims did not each fail closed and restore cleanly: '
+      + JSON.stringify(releasePublishingVariantsCtl));
+  }
+  const releasePublishingCrossRowCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+      publishing=rows.find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||'')),
+      row=rows.find((item)=>item!==publishing);
+    if(!row||!publishing)return {changed:false,contradictory:{complete:true,honest:true,publishingContract:true,publishingContradiction:false},restored:{complete:false},error:'missing cross-row fixture'};
+    const prior=row.textContent;row.textContent=prior+' The preview package now publishes and deploys the v2.0 development site.';
+    const changed=row.textContent!==prior,contradictory=${releaseDraftCheck};row.textContent=prior;const restored=${releaseDraftCheck};
+    return {changed,contradictory,restored}; })()`);
+  if (!releasePublishingCrossRowCtl.changed
+    || releasePublishingCrossRowCtl.contradictory?.complete
+    || releasePublishingCrossRowCtl.contradictory?.publishingContract !== false
+    || releasePublishingCrossRowCtl.contradictory?.publishingContradiction !== true
+    || releasePublishingCrossRowCtl.contradictory?.honest !== false
+    || !releasePublishingCrossRowCtl.restored?.complete
+    || !releasePublishingCrossRowCtl.restored?.publishingContract
+    || releasePublishingCrossRowCtl.restored?.publishingContradiction !== false
+    || !releasePublishingCrossRowCtl.restored?.honest) {
+    fails.push('GUIDE RELEASE CROSS-ROW PUBLISHING CONTROL FAILED — a contradiction outside the publishing row did not fail closed and restore cleanly: '
+      + JSON.stringify(releasePublishingCrossRowCtl));
   }
   const releaseOverclaimCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][1];
     if(!row)return {truthful:[],unavailable:[],restored:false,error:'missing overclaim control row'};const prior=row.textContent,
@@ -7604,12 +7737,14 @@ try {
       {id:'font',field:'fontMode',mutate:(before)=>pref('font',before),restore:(before)=>restorePref('font',before)},
       {id:'star-charts',field:'chartsOn',mutate:()=>click('#setcharts'),restore:()=>click('#setcharts')},
       {id:'motion',field:'motionMode',mutate:(before)=>pick('motion',before,[-1,0,1]),restore:(before)=>click('[data-motion="'+before+'"]')},
-      {id:'panel-tint',field:'glassTint',mutate:(before)=>input('#setglass',before<0.9?94:86),restore:(before)=>input('#setglass',Math.round(before*100))},
+      {id:'panel-tint',field:'glassTint',mutate:(before)=>input('#setglass',before<0.9?94:86),restore:(before)=>input('#setglass',Math.round(before*100)),
+        restoreExpected:(before)=>Math.min(0.98,Math.max(0.82,before))},
     ];
     const records=[];
-    for(const def of defs){const before=api.state()[def.field],targetFound=def.mutate(before),mutated=api.state()[def.field];
+    for(const def of defs){const before=api.state()[def.field],restoreExpected=def.restoreExpected?def.restoreExpected(before):before,
+      targetFound=def.mutate(before),mutated=api.state()[def.field];
       const persisted=await api.__smokePersistNow();const restoreFound=def.restore(before),restored=api.state()[def.field];
-      const restoredPersisted=await api.__smokePersistNow();records.push({id:def.id,before,mutated,restored,
+      const restoredPersisted=await api.__smokePersistNow();records.push({id:def.id,before,restoreExpected,mutated,restored,
         targetFound,restoreFound,persisted,restoredPersisted});}
     await new Promise((resolve)=>setTimeout(resolve,450));await api.__smokePersistNow();return records;})()`);
   const readOnlyForced = await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(true)`);
@@ -7652,16 +7787,35 @@ try {
       + JSON.stringify({ assessment: readOnlyAssessment, bundle: readOnlyBundle }));
   }
   const writableNoChange = structuredClone(writableSettings);
-  writableNoChange[0].mutated = writableNoChange[0].before;
+  writableNoChange[0].mutated = writableNoChange[0].restoreExpected;
   const writableNotPersisted = structuredClone(writableSettings);
   writableNotPersisted[1].persisted = false;
+  const writableWrongRestore = structuredClone(writableSettings);
+  writableWrongRestore[8].restored = writableWrongRestore[8].before;
+  const writableWrongLegacyTint = structuredClone(writableSettings);
+  writableWrongLegacyTint[8].before = writableWrongLegacyTint[8].restoreExpected;
+  const writableWrongTintDomain = structuredClone(writableSettings);
+  writableWrongTintDomain[8].restoreExpected = writableWrongTintDomain[8].before;
+  writableWrongTintDomain[8].restored = writableWrongTintDomain[8].before;
+  const writableMissingTarget = structuredClone(writableSettings);
+  writableMissingTarget[3].targetFound = false;
+  const writableMissingRestore = structuredClone(writableSettings);
+  writableMissingRestore[4].restoreFound = false;
   const readOnlyChanged = structuredClone(readOnlyAttempts);
   readOnlyChanged[2].after = '__voice-mutated-read-only__';
   const readOnlyBadWitness = structuredClone(readOnlyAttempts);
   readOnlyBadWitness[3].witness.action = 'click:wrong-control';
+  const writableWrongRestoreControl = assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableWrongRestore });
+  const writableWrongLegacyTintControl = assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableWrongLegacyTint });
+  const writableWrongTintDomainControl = assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableWrongTintDomain });
   const readOnlyControls = [
     assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableNoChange }),
     assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableNotPersisted }),
+    writableWrongRestoreControl,
+    writableWrongLegacyTintControl,
+    writableWrongTintDomainControl,
+    assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableMissingTarget }),
+    assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableMissingRestore }),
     assessReadOnlyBoundary({ ...readOnlyBundle, attempts: readOnlyChanged }),
     assessReadOnlyBoundary({ ...readOnlyBundle, attempts: readOnlyBadWitness }),
     assessReadOnlyBoundary({ ...readOnlyBundle, attempts: readOnlyAttempts.slice(0, -1) }),
@@ -7671,6 +7825,16 @@ try {
   if (readOnlyControls.some((control) => control.ok)) {
     fails.push('F4 READ-ONLY BOUNDARY CONTROL FAILED — missing polarity/member/witness/raw/inspection evidence stayed green: '
       + JSON.stringify(readOnlyControls));
+  }
+  const isolatedWritableControls = [
+    { id: 'panel-tint restore', control: writableWrongRestoreControl, reason: 'writable settings outcomes' },
+    { id: 'panel-tint legacy domain', control: writableWrongLegacyTintControl, reason: 'writable settings control domains' },
+    { id: 'panel-tint target domain', control: writableWrongTintDomainControl, reason: 'writable settings control domains' },
+  ];
+  if (isolatedWritableControls.some(({ control, reason }) => control.ok !== false
+    || JSON.stringify(control.reasons) !== JSON.stringify([reason]))) {
+    fails.push('F4 READ-ONLY BOUNDARY ISOLATION CONTROL FAILED — a panel-tint mutant did not produce its exact single reason: '
+      + JSON.stringify(isolatedWritableControls));
   }
 
   /* Real same-tab ordering outcome. The diagnostic arm installs one stale
@@ -10772,6 +10936,10 @@ try {
     && Object.entries(result?.checks ?? {}).every(([name, value]) => (
       name === expected ? value === false : value === true
     ));
+  const arc4ConvergenceReleaseIsolatedCheck = (result, expected) => (
+    arc4IsolatedCheck(result, 'convergenceRelease')
+    && arc4IsolatedCheck(result?.convergenceReleaseDiagnostics, expected)
+  );
   const arc4ExactFailureSet = (result, expected) => result?.ok === false
     && JSON.stringify(Object.entries(result?.checks ?? {})
       .filter(([, value]) => value !== true)
@@ -12051,6 +12219,7 @@ try {
   const arc4StaleBeforeToken = await sliceToken(sess);
   const arc4StaleBeforeState = arc4StorageState;
   const arc4StaleBeforeRaw = arc4StorageRaw;
+  const arc4StaleMark = events.length;
   const arc4StaleCaptureArmed = await evalIn(`(()=>{const faultKey=${JSON.stringify(arc4StaleFaultKey)},
     schema=${JSON.stringify(ARC4_STALE_FAULT_CAPTURE_SCHEMA)},S=window.__CF_SLICE__;
     sessionStorage.removeItem(faultKey);const handler=()=>{const ui=${ARC4_CAPTURE_UI_EXPRESSION},live=S?.api?.state?.(),
@@ -12072,6 +12241,9 @@ try {
     raw=sessionStorage.getItem(faultKey);let parsed=null;try{parsed=raw===null?null:JSON.parse(raw)}catch{}
     sessionStorage.removeItem(faultKey);return {fault:{raw,parsed,
       cleared:sessionStorage.getItem(faultKey)===null}}})()`);
+  const arc4StaleConvergenceWitnesses = f4ConvergenceWitnessesSince(
+    sess, arc4StaleMark,
+  );
   const arc4StaleCommittedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
   const arc4StaleReloadedStateBeforeDock = await evalIn(
     `window.__CF_SLICE__.api.state()`,
@@ -12100,9 +12272,107 @@ try {
     faultCapture: arc4StaleCaptured.fault,
     interaction: arc4StaleInteraction,
     priorToken: arc4StaleBeforeToken, token: arc4StaleReady.token,
+    convergenceWitness: arc4StaleConvergenceWitnesses.length === 1
+      ? arc4StaleConvergenceWitnesses[0] : null,
+    convergenceWitnessCount: arc4StaleConvergenceWitnesses.length,
     waitError: null,
   };
   const arc4Stale = assessArc4StaleConvergence(arc4StaleBundle);
+  const assessArc4StaleWitnessControl = (mutate) => {
+    const witness = structuredClone(arc4StaleBundle.convergenceWitness);
+    if (witness) mutate(witness);
+    return assessArc4StaleConvergence({
+      ...arc4StaleBundle, convergenceWitness: witness,
+      convergenceWitnessCount: 1,
+    });
+  };
+  const assessArc4StaleOldSurfaceControl = (mutate) => {
+    const bundle = structuredClone(arc4StaleBundle);
+    if (bundle.oldState && bundle.oldUi) {
+      mutate(bundle.oldState, bundle.oldUi, bundle.convergenceWitness);
+      bundle.oldUi.captureState = structuredClone(bundle.oldState.capture);
+      bundle.oldUi.ownershipV2 = structuredClone(bundle.oldState.ownershipV2);
+      bundle.oldUi.persistence = structuredClone(bundle.oldState.persistence);
+    }
+    const parsed = structuredClone(bundle.faultCapture?.parsed);
+    if (parsed) {
+      parsed.state = structuredClone(bundle.oldState);
+      parsed.ui = structuredClone(bundle.oldUi);
+    }
+    bundle.faultCapture = {
+      raw: parsed === undefined ? null : JSON.stringify(parsed),
+      parsed: parsed ?? null,
+      cleared: true,
+    };
+    return assessArc4StaleConvergence(bundle);
+  };
+  const arc4StaleMissingWitnessControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle, convergenceWitnessCount: 0,
+  });
+  const arc4StaleDuplicateWitnessControl = assessArc4StaleConvergence({
+    ...arc4StaleBundle, convergenceWitnessCount: 2,
+  });
+  const arc4StaleWitnessTokenControl = assessArc4StaleWitnessControl((witness) => {
+    witness.documentToken = `${witness.documentToken || ''}:wrong`;
+  });
+  const arc4StaleWitnessAuthorityControl = assessArc4StaleWitnessControl((witness) => {
+    witness.before.runtime.sessionOrdinal += 1;
+    witness.after.runtime.sessionOrdinal += 1;
+  });
+  const arc4StaleWitnessTupleControl = assessArc4StaleWitnessControl((witness) => {
+    witness.after.runtime.sessionOrdinal += 1;
+  });
+  const arc4StaleWitnessLifecycleControl = assessArc4StaleWitnessControl((witness) => {
+    witness.before.runtime.leaseOwned = true;
+    witness.before.runtime.staleBlocked = false;
+    witness.before.runtime.leaseHeartbeat = 1;
+    witness.before.runtime.staleWrites = 0;
+    witness.after.runtime.staleBlocked = false;
+    witness.after.runtime.staleWrites = 0;
+  });
+  const arc4StaleWitnessReleaseControl = assessArc4StaleWitnessControl((witness) => {
+    witness.after.runtime.leaseOwned = true;
+  });
+  const arc4StaleWitnessVisibleControl = assessArc4StaleWitnessControl((witness) => {
+    witness.after.runtime.visible = true;
+  });
+  const arc4StaleWitnessHeartbeatControl = assessArc4StaleWitnessControl((witness) => {
+    witness.after.runtime.leaseHeartbeat = 1;
+  });
+  const arc4StalePagehideRuntimeControl = assessArc4StaleOldSurfaceControl(
+    (oldState, oldUi, witness) => {
+      if (!witness?.before?.runtime) return;
+      oldState.persistence.runtime = structuredClone(witness.before.runtime);
+      oldUi.persistence.runtime = structuredClone(witness.before.runtime);
+    },
+  );
+  const arc4StaleRenderedFutureControl = assessArc4StaleOldSurfaceControl(
+    (_oldState, oldUi, witness) => {
+      const runtime = witness?.before?.runtime;
+      const budget = oldUi?.budget;
+      if (!Number.isSafeInteger(runtime?.activePlayMs)
+        || !Number.isSafeInteger(budget?.cycle)) return;
+      budget.recoveryRemainingActivePlayMs
+        = (budget.cycle + 1) * ARC4_ACTIVE_PLAY_CYCLE_MS - runtime.activePlayMs - 1;
+      budget.text = budget.text.replace(
+        arc4CountdownPattern,
+        arc4CountdownText(budget.recoveryRemainingActivePlayMs),
+      );
+    },
+  );
+  const arc4StaleExcessiveUiLagControl = assessArc4StaleWitnessControl((witness) => {
+    const budget = arc4StaleBundle.oldUi?.budget;
+    if (!Number.isSafeInteger(budget?.cycle)
+      || !Number.isSafeInteger(budget?.recoveryRemainingActivePlayMs)
+      || !witness?.before?.runtime || !witness?.after?.runtime) return;
+    const renderedActivePlayMs = (budget.cycle + 1)
+      * ARC4_ACTIVE_PLAY_CYCLE_MS - budget.recoveryRemainingActivePlayMs;
+    const excessiveActivePlayMs = Math.max(
+      witness.before.runtime.activePlayMs, renderedActivePlayMs + 10_001,
+    );
+    witness.before.runtime.activePlayMs = excessiveActivePlayMs;
+    witness.after.runtime.activePlayMs = excessiveActivePlayMs;
+  });
   const arc4StaleTokenControl = assessArc4StaleConvergence({
     ...arc4StaleBundle, token: arc4StaleBeforeToken,
   });
@@ -12220,6 +12490,27 @@ try {
   if (!arc4StalePress.armed || !arc4StalePress.target.ok
     || !arc4StaleCaptured.fault?.cleared || !arc4Stale.ok
     || !arc4PertarSurfaceRouteExact(arc4StaleReloadedStateBeforeDock)
+    || !arc4ConvergenceReleaseIsolatedCheck(
+      arc4StaleMissingWitnessControl, 'witnessCount')
+    || !arc4ConvergenceReleaseIsolatedCheck(
+      arc4StaleDuplicateWitnessControl, 'witnessCount')
+    || !arc4ConvergenceReleaseIsolatedCheck(
+      arc4StaleWitnessTokenControl, 'documentToken')
+    || !arc4ConvergenceReleaseIsolatedCheck(
+      arc4StaleWitnessAuthorityControl, 'beforeAuthority')
+    || !arc4ConvergenceReleaseIsolatedCheck(
+      arc4StaleWitnessTupleControl, 'tuplePreserved')
+    || !arc4ConvergenceReleaseIsolatedCheck(
+      arc4StaleWitnessLifecycleControl, 'beforeLifecycle')
+    || !arc4ConvergenceReleaseIsolatedCheck(
+      arc4StaleWitnessReleaseControl, 'afterReleased')
+    || !arc4ConvergenceReleaseIsolatedCheck(
+      arc4StaleWitnessVisibleControl, 'afterReleased')
+    || !arc4ConvergenceReleaseIsolatedCheck(
+      arc4StaleWitnessHeartbeatControl, 'afterReleased')
+    || !arc4IsolatedCheck(arc4StalePagehideRuntimeControl, 'pagehideRuntime')
+    || !arc4IsolatedCheck(arc4StaleRenderedFutureControl, 'oldUiConvergence')
+    || !arc4IsolatedCheck(arc4StaleExcessiveUiLagControl, 'oldUiConvergence')
     || !arc4IsolatedCheck(arc4StaleTokenControl, 'readOnlyReload')
     || !arc4IsolatedCheck(arc4StaleReloadUiControl, 'readOnlyReload')
     || !arc4IsolatedCheck(arc4StaleReloadArc5Control, 'readOnlyReload')
@@ -12238,6 +12529,18 @@ try {
       + JSON.stringify({ armed: arc4StaleArmed, captureArmed: arc4StaleCaptureArmed,
         press: arc4StalePress, captured: arc4StaleCaptured,
         assessment: arc4Stale, tokenControl: arc4StaleTokenControl,
+        missingWitnessControl: arc4StaleMissingWitnessControl,
+        duplicateWitnessControl: arc4StaleDuplicateWitnessControl,
+        witnessTokenControl: arc4StaleWitnessTokenControl,
+        witnessAuthorityControl: arc4StaleWitnessAuthorityControl,
+        witnessTupleControl: arc4StaleWitnessTupleControl,
+        witnessLifecycleControl: arc4StaleWitnessLifecycleControl,
+        witnessReleaseControl: arc4StaleWitnessReleaseControl,
+        witnessVisibleControl: arc4StaleWitnessVisibleControl,
+        witnessHeartbeatControl: arc4StaleWitnessHeartbeatControl,
+        pagehideRuntimeControl: arc4StalePagehideRuntimeControl,
+        renderedFutureControl: arc4StaleRenderedFutureControl,
+        excessiveUiLagControl: arc4StaleExcessiveUiLagControl,
         reloadUiControl: arc4StaleReloadUiControl,
         reloadArc5Control: arc4StaleReloadArc5Control,
         reloadActivation: arc4StaleReloadActivation,
@@ -12616,6 +12919,7 @@ try {
   });
   const arc4PublicationFaultKey = 'cf_slice_arc4_publication_fault_capture_v1';
   const arc4PublicationBeforeToken = await sliceToken(sess);
+  const arc4PublicationMark = events.length;
   const arc4PublicationCaptureArmed = await evalIn(`(()=>{const faultKey=${JSON.stringify(arc4PublicationFaultKey)},
     schema=${JSON.stringify(ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA)},S=window.__CF_SLICE__;
     sessionStorage.removeItem(faultKey);const handler=()=>{const ui=${ARC4_CAPTURE_UI_EXPRESSION},live=S?.api?.state?.(),
@@ -12670,6 +12974,9 @@ try {
     raw=sessionStorage.getItem(faultKey);let parsed=null;try{parsed=raw===null?null:JSON.parse(raw)}catch{}
     sessionStorage.removeItem(faultKey);return {fault:{raw,parsed,
       cleared:sessionStorage.getItem(faultKey)===null}}})()`);
+  const arc4PublicationConvergenceWitnesses = f4ConvergenceWitnessesSince(
+    sess, arc4PublicationMark,
+  );
   const arc4PublicationCommittedRaw = await evalIn(
     ARC4_DURABLE_READ_EXPRESSION,
   );
@@ -12706,13 +13013,16 @@ try {
     interaction: arc4PublicationInteraction,
     priorToken: arc4PublicationBeforeToken,
     token: arc4PublicationReady.token,
+    convergenceWitness: arc4PublicationConvergenceWitnesses.length === 1
+      ? arc4PublicationConvergenceWitnesses[0] : null,
+    convergenceWitnessCount: arc4PublicationConvergenceWitnesses.length,
     waitError: null,
   };
   const arc4Publication = assessArc4PublicationConvergence(arc4PublicationBundle);
   const assessArc4PublicationOldSurfaceControl = (mutate) => {
     const bundle = structuredClone(arc4PublicationBundle);
     if (bundle.oldState && bundle.oldUi) {
-      mutate(bundle.oldState, bundle.oldUi);
+      mutate(bundle.oldState, bundle.oldUi, bundle.convergenceWitness);
       bundle.oldUi.captureState = structuredClone(bundle.oldState.capture);
       bundle.oldUi.ownershipV2 = structuredClone(bundle.oldState.ownershipV2);
       bundle.oldUi.persistence = structuredClone(bundle.oldState.persistence);
@@ -12729,6 +13039,48 @@ try {
     };
     return assessArc4PublicationConvergence(bundle);
   };
+  const assessArc4PublicationWitnessControl = (mutate) => {
+    const bundle = structuredClone(arc4PublicationBundle);
+    if (bundle.convergenceWitness) mutate(bundle.convergenceWitness, bundle.oldUi);
+    return assessArc4PublicationConvergence(bundle);
+  };
+  const arc4PublicationMissingWitnessControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle, convergenceWitnessCount: 0,
+  });
+  const arc4PublicationDuplicateWitnessControl = assessArc4PublicationConvergence({
+    ...arc4PublicationBundle, convergenceWitnessCount: 2,
+  });
+  const arc4PublicationWitnessTokenControl = assessArc4PublicationWitnessControl((witness) => {
+    witness.documentToken = `${witness.documentToken || ''}:wrong`;
+  });
+  const arc4PublicationWitnessAuthorityControl
+    = assessArc4PublicationWitnessControl((witness) => {
+      witness.before.runtime.sessionOrdinal += 1;
+      witness.after.runtime.sessionOrdinal += 1;
+    });
+  const arc4PublicationWitnessTupleControl = assessArc4PublicationWitnessControl((witness) => {
+    witness.after.runtime.sessionOrdinal += 1;
+  });
+  const arc4PublicationWitnessLifecycleControl
+    = assessArc4PublicationWitnessControl((witness) => {
+      witness.before.runtime.leaseOwned = false;
+      witness.before.runtime.staleBlocked = true;
+      witness.before.runtime.leaseHeartbeat = null;
+      witness.before.runtime.staleWrites = 1;
+      witness.after.runtime.staleBlocked = true;
+      witness.after.runtime.staleWrites = 1;
+    });
+  const arc4PublicationWitnessReleaseControl = assessArc4PublicationWitnessControl((witness) => {
+    witness.after.runtime.leaseOwned = true;
+  });
+  const arc4PublicationWitnessVisibleControl
+    = assessArc4PublicationWitnessControl((witness) => {
+      witness.after.runtime.visible = true;
+    });
+  const arc4PublicationWitnessHeartbeatControl
+    = assessArc4PublicationWitnessControl((witness) => {
+      witness.after.runtime.leaseHeartbeat = 1;
+    });
   const arc4PublicationWaitControl = assessArc4PublicationConvergence({
     ...arc4PublicationBundle, waitError: 'negative convergence wait',
   });
@@ -12895,14 +13247,27 @@ try {
         .replace(`${priorUsed} spent this active-play cycle`,
           `${budget.used} spent this active-play cycle`);
     });
+  const arc4PublicationPagehideRuntimeControl
+    = assessArc4PublicationOldSurfaceControl((oldState, oldUi, witness) => {
+      if (!witness?.before?.runtime) return;
+      oldState.persistence.runtime = structuredClone(witness.before.runtime);
+      oldUi.persistence.runtime = structuredClone(witness.before.runtime);
+    });
   const arc4PublicationOldRuntimeControl
-    = assessArc4PublicationOldSurfaceControl((oldState) => {
-      const runtime = oldState?.persistence?.runtime;
-      if (Number.isSafeInteger(runtime?.sessionOrdinal)) runtime.sessionOrdinal += 1;
+    = assessArc4PublicationWitnessControl((witness) => {
+      const raw = arc4PublicationBundle.before;
+      const sessionRng = raw?.authority?.sessionRng;
+      if (!Number.isSafeInteger(raw?.revision) || !sessionRng) return;
+      for (const runtime of [witness.before.runtime, witness.after.runtime]) {
+        runtime.revision = raw.revision;
+        runtime.sessionSeed = sessionRng.seed;
+        runtime.sessionOrdinal = sessionRng.ordinal;
+        runtime.sessionDraws = structuredClone(sessionRng.draws);
+      }
     });
   const arc4PublicationRenderedFutureControl
     = assessArc4PublicationOldSurfaceControl((_oldState, oldUi) => {
-      const runtime = oldUi?.persistence?.runtime;
+      const runtime = arc4PublicationBundle.convergenceWitness?.before?.runtime;
       const budget = oldUi?.budget;
       if (!Number.isSafeInteger(runtime?.activePlayMs)
         || !Number.isSafeInteger(budget?.cycle)) return;
@@ -12915,19 +13280,20 @@ try {
       );
     });
   const arc4PublicationExcessiveUiLagControl
-    = assessArc4PublicationOldSurfaceControl((oldState, oldUi) => {
+    = assessArc4PublicationWitnessControl((witness, oldUi) => {
       const budget = oldUi?.budget;
-      const runtime = oldState?.persistence?.runtime;
-      const committedActivePlayMs
-        = arc4PublicationCommittedRaw?.authority?.activePlayMs;
+      const runtime = witness?.before?.runtime;
       if (!Number.isSafeInteger(budget?.cycle)
         || !Number.isSafeInteger(budget?.recoveryRemainingActivePlayMs)
-        || !Number.isSafeInteger(committedActivePlayMs) || !runtime) return;
+        || !Number.isSafeInteger(runtime?.activePlayMs)
+        || !witness?.after?.runtime) return;
       const renderedActivePlayMs = (budget.cycle + 1)
         * ARC4_ACTIVE_PLAY_CYCLE_MS - budget.recoveryRemainingActivePlayMs;
-      runtime.activePlayMs = Math.max(
-        committedActivePlayMs, renderedActivePlayMs,
-      ) + 10_001;
+      const excessiveActivePlayMs = Math.max(
+        runtime.activePlayMs, renderedActivePlayMs + 10_001,
+      );
+      witness.before.runtime.activePlayMs = excessiveActivePlayMs;
+      witness.after.runtime.activePlayMs = excessiveActivePlayMs;
     });
   const arc4PublicationPendingBaselineChecks = Object.values(
     arc4PublicationPending?.checks ?? {},
@@ -12943,6 +13309,35 @@ try {
       );
   const arc4PublicationControlBundles = {
     wait: { expected: 'waitSettled', result: arc4PublicationWaitControl },
+    missingWitness: {
+      convergenceExpected: 'witnessCount', result: arc4PublicationMissingWitnessControl,
+    },
+    duplicateWitness: {
+      convergenceExpected: 'witnessCount', result: arc4PublicationDuplicateWitnessControl,
+    },
+    witnessToken: {
+      convergenceExpected: 'documentToken', result: arc4PublicationWitnessTokenControl,
+    },
+    witnessAuthority: {
+      convergenceExpected: 'beforeAuthority',
+      result: arc4PublicationWitnessAuthorityControl,
+    },
+    witnessTuple: {
+      convergenceExpected: 'tuplePreserved', result: arc4PublicationWitnessTupleControl,
+    },
+    witnessLifecycle: {
+      convergenceExpected: 'beforeLifecycle',
+      result: arc4PublicationWitnessLifecycleControl,
+    },
+    witnessRelease: {
+      convergenceExpected: 'afterReleased', result: arc4PublicationWitnessReleaseControl,
+    },
+    witnessVisible: {
+      convergenceExpected: 'afterReleased', result: arc4PublicationWitnessVisibleControl,
+    },
+    witnessHeartbeat: {
+      convergenceExpected: 'afterReleased', result: arc4PublicationWitnessHeartbeatControl,
+    },
     reloadUi: { expected: 'readOnlyReload', result: arc4PublicationReloadUiControl },
     reloadArc5: {
       expected: 'readOnlyReload', result: arc4PublicationReloadArc5Control,
@@ -12982,8 +13377,11 @@ try {
     preservedBudget: {
       expected: 'preservedUiFacts', result: arc4PublicationPreservedBudgetControl,
     },
+    pagehideRuntime: {
+      expected: 'pagehideRuntime', result: arc4PublicationPagehideRuntimeControl,
+    },
     oldRuntime: {
-      expected: 'pagehideRuntime', result: arc4PublicationOldRuntimeControl,
+      convergenceExpected: 'beforeAuthority', result: arc4PublicationOldRuntimeControl,
     },
     renderedFuture: {
       expected: 'oldUiTimeDirection', result: arc4PublicationRenderedFutureControl,
@@ -13001,9 +13399,13 @@ try {
   const arc4PublicationControlsIsolated = Object.fromEntries(
     Object.entries(arc4PublicationControlBundles).map(([name, control]) => [
       name,
-      arc4PublicationBaselineGreen && (Array.isArray(control.expected)
-        ? arc4ExactFailureSet(control.result, control.expected)
-        : arc4IsolatedCheck(control.result, control.expected)),
+      arc4PublicationBaselineGreen && (control.convergenceExpected
+        ? arc4ConvergenceReleaseIsolatedCheck(
+          control.result, control.convergenceExpected,
+        )
+        : Array.isArray(control.expected)
+          ? arc4ExactFailureSet(control.result, control.expected)
+          : arc4IsolatedCheck(control.result, control.expected)),
     ]),
   );
   const arc4PublicationControlIsolated = arc4PublicationBaselineGreen
@@ -13036,6 +13438,15 @@ try {
         controlsIsolated: arc4PublicationControlsIsolated,
         controlIsolated: arc4PublicationControlIsolated,
         waitControl: arc4PublicationWaitControl,
+        missingWitnessControl: arc4PublicationMissingWitnessControl,
+        duplicateWitnessControl: arc4PublicationDuplicateWitnessControl,
+        witnessTokenControl: arc4PublicationWitnessTokenControl,
+        witnessAuthorityControl: arc4PublicationWitnessAuthorityControl,
+        witnessTupleControl: arc4PublicationWitnessTupleControl,
+        witnessLifecycleControl: arc4PublicationWitnessLifecycleControl,
+        witnessReleaseControl: arc4PublicationWitnessReleaseControl,
+        witnessVisibleControl: arc4PublicationWitnessVisibleControl,
+        witnessHeartbeatControl: arc4PublicationWitnessHeartbeatControl,
         reloadUiControl: arc4PublicationReloadUiControl,
         reloadArc5Control: arc4PublicationReloadArc5Control,
         oldArc5OptimismControl: arc4PublicationOldArc5OptimismControl,
@@ -13054,6 +13465,7 @@ try {
         reloadDownwardRuntimeControl: arc4PublicationReloadDownwardRuntimeControl,
         reloadUpwardRuntimeControl: arc4PublicationReloadUpwardRuntimeControl,
         preservedBudgetControl: arc4PublicationPreservedBudgetControl,
+        pagehideRuntimeControl: arc4PublicationPagehideRuntimeControl,
         oldRuntimeControl: arc4PublicationOldRuntimeControl,
         renderedFutureControl: arc4PublicationRenderedFutureControl,
         excessiveUiLagControl: arc4PublicationExcessiveUiLagControl,
@@ -13777,6 +14189,21 @@ try {
   const DTRAIN_CANONICAL_STAR_VIEW = Object.freeze({
     x: SOL_STAR.x, y: SOL_STAR.y, seed: SOL_STAR.seed,
   });
+  const DTRAIN_CANONICAL_EARTH_KEY = ARC3_OTHER_WORLD_CONTROL_ADDRESS.key;
+  const DTRAIN_CANONICAL_EARTH_ID = `w|${DTRAIN_CANONICAL_EARTH_KEY}`;
+  const dtrainPhysicalEarthAtlasRow = (entry) => entry?.where?.type === 'planet'
+    && entry.where.gal?.seed === DTRAIN_CANONICAL_GALAXY_VIEW.seed
+    && entry.where.gal?.x === DTRAIN_CANONICAL_GALAXY_VIEW.x
+    && entry.where.gal?.y === DTRAIN_CANONICAL_GALAXY_VIEW.y
+    && entry.where.gal?.size === DTRAIN_CANONICAL_GALAXY_VIEW.size
+    && entry.where.gal?.sp === DTRAIN_CANONICAL_GALAXY_VIEW.sp
+    && entry.where.gal?.tilt === DTRAIN_CANONICAL_GALAXY_VIEW.tilt
+    && entry.where.gal?.rot === DTRAIN_CANONICAL_GALAXY_VIEW.rot
+    && entry.where.gal?.home === DTRAIN_CANONICAL_GALAXY_VIEW.home
+    && entry.where.star?.seed === DTRAIN_CANONICAL_STAR_VIEW.seed
+    && entry.where.star?.x === DTRAIN_CANONICAL_STAR_VIEW.x
+    && entry.where.star?.y === DTRAIN_CANONICAL_STAR_VIEW.y
+    && entry.where.pseed === EARTH.seed;
   const dtrainExpectedRoute = (kind) => kind === 'earth'
     ? { type: 'planet', gal: { ...DTRAIN_CANONICAL_GALAXY_VIEW }, star: { ...DTRAIN_CANONICAL_STAR_VIEW }, pseed: EARTH.seed }
     : { type: 'star', gal: { ...DTRAIN_CANONICAL_GALAXY_VIEW }, star: { ...DTRAIN_CANONICAL_STAR_VIEW } };
@@ -13833,7 +14260,9 @@ try {
     if (copy.ever && typeof copy.ever === 'object') {
       copy.ever = { v: copy.ever.v, arrivals: copy.ever.arrivals };
     }
-    copy.log = Array.isArray(copy.log) ? copy.log.filter((entry) => entry?.id !== 'p133') : [];
+    const rows = Array.isArray(copy.log) ? copy.log : [];
+    const checkpointRowIndex = rows.findIndex(dtrainPhysicalEarthAtlasRow);
+    copy.log = rows.filter((_, index) => index !== checkpointRowIndex);
     return copy;
   };
   const dtrainExpectedOuterRawProjection = (seedRaw, expectedLand, expectOuterAtlas, expectedRn) => {
@@ -13892,13 +14321,19 @@ try {
   } = {}) => {
     const reasons = [];
     const require = (condition, reason) => { if (!condition) reasons.push(reason); };
-    const earthRows = Array.isArray(raw?.log) ? raw.log.filter((entry) => entry?.id === 'p133') : [];
-    const earth = earthRows[0] || null;
+    const earthRows = Array.isArray(raw?.log)
+      ? raw.log.filter(dtrainPhysicalEarthAtlasRow) : [];
+    const legacyEarthRows = Array.isArray(raw?.log) ? raw.log.filter((entry) => entry?.id === 'p133') : [];
+    const earth = earthRows.find((entry) => entry?.id === DTRAIN_CANONICAL_EARTH_ID)
+      || earthRows[0] || null;
+    const earthIdentity = typeof earth?.id === 'string'
+      ? earth.id.match(/^(.*)#([^#|]+)$/) : null;
+    const canonicalEarthIdentity = DTRAIN_CANONICAL_EARTH_ID.match(/^(.*)#([^#|]+)$/);
     /* Every revisioned write traverses the canonical compatibility codec, so
        false q/d Atlas defaults are omitted at the first durable boundary too.
        Atlas history is display data; its actionable route is re-proven. */
     const expectedEarth = {
-      id: 'p133', title: GENUINE_TRAINING_CHECKPOINT.e.title,
+      title: GENUINE_TRAINING_CHECKPOINT.e.title,
       sub: GENUINE_TRAINING_CHECKPOINT.e.sub, thumb: null, sq: false,
       badge: GENUINE_TRAINING_CHECKPOINT.e.badge,
       where: {
@@ -13939,8 +14374,13 @@ try {
     require(JSON.stringify((raw?.codex || []).map((entry) => [entry?.g?.seed, entry?.g?.gen, entry?.g?.parents || null]))
       === JSON.stringify(GENUINE_TRAINING_CHECKPOINT.c.map((entry) => [entry?.g?.seed, entry?.g?.gen, entry?.g?.parents || null])),
     'checkpoint bloodline identity');
-    require(raw?.home === 'p133', 'checkpoint Earth home binding');
-    require(earthRows.length === 1 && canonicalJson(earth) === canonicalJson(expectedEarth), 'checkpoint Earth Atlas row');
+    require(raw?.home === DTRAIN_CANONICAL_EARTH_ID, 'checkpoint Earth home binding');
+    require(legacyEarthRows.length === 0 && earthRows.length === 1, 'checkpoint Earth row inventory');
+    require(earthIdentity?.[1] === canonicalEarthIdentity?.[1], 'checkpoint Earth parent identity');
+    require(earthIdentity?.[2] === canonicalEarthIdentity?.[2], 'checkpoint Earth ordinal identity');
+    const earthWithoutId = earth && typeof earth === 'object' ? { ...earth } : null;
+    if (earthWithoutId) delete earthWithoutId.id;
+    require(canonicalJson(earthWithoutId) === canonicalJson(expectedEarth), 'checkpoint Earth Atlas row');
     require(Array.isArray(raw?.log) && raw.log.length === (expectOuterAtlas ? 2 : 1), 'Atlas row inventory');
     require(canonicalJson(raw?.view) === canonicalJson(dtrainExpectedRoute(route)), `exact ${route} saved route`);
     require(routeOwnsNoPrivateProof(raw?.view) && routeOwnsNoPrivateProof(earth?.where), 'no serialized route provenance');
@@ -14447,6 +14887,30 @@ try {
     || dtrainRestoredRawOutcome({ ...rescueRaw, tsnap: GENUINE_TRAINING_CHECKPOINT }, { seedRaw: DTRAIN_RESCUE_RAW })) {
     fails.push('D-TRAIN RAW CONTROL FAILED — serialized ordinal or uncleared checkpoint stayed green');
   }
+  const dtrainIdentityMutationControls = [
+    ['Earth parent identity', 'checkpoint Earth parent identity', (raw) => {
+      raw.log.find((entry) => entry?.id === DTRAIN_CANONICAL_EARTH_ID).id
+        = DTRAIN_CANONICAL_EARTH_ID.replace('g:999@90,-60', 'g:998@90,-60');
+    }],
+    ['Earth ordinal identity', 'checkpoint Earth ordinal identity', (raw) => {
+      raw.log.find((entry) => entry?.id === DTRAIN_CANONICAL_EARTH_ID).id
+        = DTRAIN_CANONICAL_EARTH_ID.replace('#2', '#3');
+    }],
+  ];
+  const dtrainIdentityControlFailures = [];
+  for (const [label, expectedReason, mutate] of dtrainIdentityMutationControls) {
+    const control = structuredClone(rescueRaw);
+    mutate(control);
+    const assessment = dtrainRestoredRawAssessment(control, { seedRaw: DTRAIN_RESCUE_RAW });
+    const restored = dtrainRestoredRawAssessment(rescueRaw, { seedRaw: DTRAIN_RESCUE_RAW });
+    if (JSON.stringify(assessment.reasons) !== JSON.stringify([expectedReason]) || !restored.ok) {
+      dtrainIdentityControlFailures.push({ label, expectedReason, assessment, restored });
+    }
+  }
+  if (dtrainIdentityControlFailures.length) {
+    fails.push('D-TRAIN IDENTITY CONTROLS FAILED — parent/ordinal mutations were not isolated or restoration stayed red: '
+      + JSON.stringify(dtrainIdentityControlFailures));
+  }
   const dtrainOutcomeMutationControls = [
     ['ever.scanhits', (raw) => { raw.ever.scanhits = 1; }],
     ['ever.arrivals', (raw) => { raw.ever.arrivals = 1; }],
@@ -14457,6 +14921,16 @@ try {
     ['Earth timestamp', (raw) => { raw.log.find((entry) => entry?.where?.pseed === EARTH.seed).t += 1; }],
     ['Earth star label', (raw) => { raw.log.find((entry) => entry?.where?.pseed === EARTH.seed).star = 'Sol'; }],
     ['Earth home binding', (raw) => { raw.home = 'p901'; }],
+    ['legacy Earth output id', (raw) => {
+      raw.log.find((entry) => entry?.id === DTRAIN_CANONICAL_EARTH_ID).id = 'p133';
+    }],
+    ['duplicate legacy and canonical Earth rows', (raw) => {
+      const duplicate = structuredClone(raw.log.find((entry) => entry?.id === DTRAIN_CANONICAL_EARTH_ID));
+      duplicate.id = 'p133';raw.log.push(duplicate);
+    }],
+    ['Earth route identity', (raw) => {
+      raw.log.find((entry) => entry?.id === DTRAIN_CANONICAL_EARTH_ID).where.star.seed += 1;
+    }],
     ['outer Atlas row', (raw) => { raw.log.find((entry) => entry.id === 'p900').title = 'Changed'; }],
     ['omitted outer wave-off ledger', (raw) => { delete raw.wvo; }],
   ];
@@ -18482,13 +18956,22 @@ try {
   const arc2BootstrapHookFailure = await evalF4Control(arc2BootstrapTarget.session, `(()=>{let payloads=[],decisions=[];
     try{payloads=JSON.parse(sessionStorage.getItem('cf_slice_arc2_hook_payloads')||'[]')}catch{}
     try{decisions=JSON.parse(sessionStorage.getItem('cf_slice_arc2_hook_decisions')||'[]')}catch{}
-    const panel=document.getElementById('inventorypanel');return {
+    const S=window.__CF_SLICE__,apiState=S?.api?.state?.()??null,panel=document.getElementById('inventorypanel'),
+      marker=panel?.querySelector('[data-inventory-state]')??null,
+      dock=document.getElementById('dockinventory'),rail=document.getElementById('railinventory');return {
       callsAfterFailure:Number(sessionStorage.getItem('cf_slice_arc2_hook_calls')||'0'),
       rejected:sessionStorage.getItem('cf_slice_arc2_hook_rejected')==='1',firstPayload:payloads[0]||null,
       decisionsAfterFailure:decisions.length,firstRejected:decisions[0]===true,
       primaryBeforeHook:sessionStorage.getItem('cf_slice_arc2_primary_before_hook'),
       inventoryBeforeHook:sessionStorage.getItem('cf_slice_arc2_inventory_before_hook'),
-      panelState:panel?.querySelector('[data-inventory-state]')?.getAttribute('data-inventory-state')||null,
+      panelStateMarkerPresent:marker!==null,
+      panelState:marker===null?null:marker.getAttribute('data-inventory-state'),
+      panelOpenPresent:apiState!==null&&typeof apiState==='object'
+        &&Object.prototype.hasOwnProperty.call(apiState,'panelOpen'),
+      panelOpen:apiState?.panelOpen,panelDisplay:panel?getComputedStyle(panel).display:null,
+      panelAriaHidden:panel?.getAttribute('aria-hidden')??null,
+      dockExpanded:dock?.getAttribute('aria-expanded')??null,
+      railExpanded:rail?.getAttribute('aria-expanded')??null,
       panelRows:panel?.querySelectorAll('[data-inventory-row]').length??-1,
       panelActions:panel?.querySelectorAll('[data-inventory-action]').length??-1};})()`);
   const arc2BootstrapFailedToken = await sliceToken(arc2BootstrapTarget.session);
@@ -18570,6 +19053,9 @@ try {
   };
   const arc2FailedReceiptLeakRaw = withArc2BootstrapReceiptLeak(arc2BootstrapFailedRaw, 'failed');
   const arc2SucceededReceiptLeakRaw = withArc2BootstrapReceiptLeak(arc2BootstrapSucceededRaw, 'succeeded');
+  const arc2MissingPanelOpenHook = structuredClone(arc2BootstrapBundle.hook);
+  delete arc2MissingPanelOpenHook.panelOpen;
+  arc2MissingPanelOpenHook.panelOpenPresent = false;
   const arc2BootstrapControls = {
     leakedCarrier: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, failedRaw: arc2FalseDurableRaw }),
     partialAuthority: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, failedRaw: arc2PartialAuthorityRaw }),
@@ -18593,13 +19079,66 @@ try {
       persistence: { ...arc2BootstrapFailed.persistence, mutationBlocked: false },
       inventory: { ...arc2BootstrapFailed.inventory, stateKind: 'inventory' },
     } }),
+    mountedPanelState: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook,
+      panelStateMarkerPresent: true, panelState: 'inventory',
+    } }),
+    blankPanelStateMarker: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook,
+      panelStateMarkerPresent: true, panelState: '',
+    } }),
+    logicalPanelOwner: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook, panelOpen: 'inventory',
+    } }),
+    missingPanelOpenProperty: assessArc2BootstrapRefusal({
+      ...arc2BootstrapBundle, hook: arc2MissingPanelOpenHook,
+    }),
+    visiblePanelDisplay: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook, panelDisplay: 'block',
+    } }),
+    visiblePanelAria: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook, panelAriaHidden: 'false',
+    } }),
+    expandedDockOpener: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook, dockExpanded: 'true',
+    } }),
+    expandedRailOpener: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook, railExpanded: 'true',
+    } }),
+    leakedPanelRow: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook, panelRows: 1,
+    } }),
+    leakedPanelAction: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook, panelActions: 1,
+    } }),
     reusedLocalCarrier: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
       ...arc2BootstrapBundle.hook, callsAfterSuccess: 1, secondPayload: arc2BootstrapBundle.hook.firstPayload,
     } }),
   };
   if (Object.values(arc2BootstrapControls).some((control) => control.ok)) {
-    fails.push('ARC 2 BOOTSTRAP REFUSAL CONTROLS FAILED — leaked carrier/authority/receipt, revision/product drift, changed/editable state, or reused local carrier stayed green: '
+    fails.push('ARC 2 BOOTSTRAP REFUSAL CONTROLS FAILED — leaked carrier/authority/receipt/UI, revision/product drift, changed/editable state, or reused local carrier stayed green: '
       + JSON.stringify(arc2BootstrapControls));
+  }
+  const arc2BootstrapClosureReasons = Object.freeze({
+    logicalPanelOwner: 'failed bootstrap logical Inventory owner',
+    missingPanelOpenProperty: 'failed bootstrap logical Inventory owner',
+    visiblePanelDisplay: 'failed bootstrap Inventory display',
+    visiblePanelAria: 'failed bootstrap Inventory aria-hidden',
+    expandedDockOpener: 'failed bootstrap dock opener collapsed',
+    expandedRailOpener: 'failed bootstrap rail opener collapsed',
+  });
+  const arc2BootstrapClosureFailures = [];
+  for (const [name, expectedReason] of Object.entries(arc2BootstrapClosureReasons)) {
+    const control = arc2BootstrapControls[name];
+    if (JSON.stringify(control?.reasons) !== JSON.stringify([expectedReason])
+      || !arc2BootstrapAssessment.ok) {
+      arc2BootstrapClosureFailures.push({ name, expectedReason, control,
+        restored: arc2BootstrapAssessment });
+    }
+  }
+  if (arc2BootstrapClosureFailures.length) {
+    fails.push('ARC 2 BOOTSTRAP UI CONTROLS FAILED — closure mutations were not isolated or restoration stayed red: '
+      + JSON.stringify(arc2BootstrapClosureFailures));
   }
 
   }
@@ -18837,7 +19376,6 @@ try {
      task so the dying document remains observable. The production heartbeat,
      mutation capture guard, audio owner, heartbeat timer, pageshow callback,
      release, and reload all remain the paths under test. */
-  const F4_CONVERGENCE_BINDING = '__cfF4AuthorityConvergenceWitness';
   const heartbeatTarget = await attachF4ControlTarget(URL10, [F4_CONVERGENCE_BINDING]);
   await waitForSlice(heartbeatTarget.session, 'F4 heartbeat storage fresh boot');
   await waitControlF4Writable(

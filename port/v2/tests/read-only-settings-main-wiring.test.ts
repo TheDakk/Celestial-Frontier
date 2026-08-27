@@ -14,6 +14,22 @@ const CASE_IDS = [
   'sound', 'volume', 'creature-voices', 'text-size', 'text-tone',
   'font', 'star-charts', 'motion', 'panel-tint',
 ] as const;
+const WRITABLE_EVIDENCE_MARKERS = [
+  'targetFound !== true || restoreFound !== true',
+  'JSON.stringify(restoreExpected) === JSON.stringify(mutated)',
+  'JSON.stringify(restoreExpected) !== JSON.stringify(restored)',
+  "id === 'panel-tint'\n    ? initial !== 0.55 || restoreExpected !== 0.82",
+  'restoreExpected:(before)=>Math.min(0.98,Math.max(0.82,before))',
+  'writableWrongRestore[8].restored = writableWrongRestore[8].before',
+  'writableWrongLegacyTint[8].before = writableWrongLegacyTint[8].restoreExpected',
+  'writableWrongTintDomain[8].restoreExpected = writableWrongTintDomain[8].before',
+  'writableWrongTintDomain[8].restored = writableWrongTintDomain[8].before',
+  'const writableWrongTintDomainControl = assessReadOnlyBoundary(',
+  "{ id: 'panel-tint target domain', control: writableWrongTintDomainControl, reason: 'writable settings control domains' }",
+  'JSON.stringify(control.reasons) !== JSON.stringify([reason])',
+  'writableMissingTarget[3].targetFound = false',
+  'writableMissingRestore[4].restoreFound = false',
+] as const;
 
 function contractErrors(main: string, slice: string): string[] {
   const errors: string[] = [];
@@ -51,6 +67,9 @@ function contractErrors(main: string, slice: string): string[] {
     || !owner.includes("readOnlyChanged[2].after = '__voice-mutated-read-only__'")) {
     errors.push('polarity-and-controls');
   }
+  for (const marker of WRITABLE_EVIDENCE_MARKERS) {
+    if (!assessment.includes(marker) && !owner.includes(marker)) errors.push(`writable-evidence:${marker}`);
+  }
   return errors;
 }
 
@@ -80,6 +99,11 @@ describe('ordinary Settings mutations share the read-only boundary', () => {
       expect(sliceSource.split(marker).length - 1, id).toBe(2);
       const mutant = sliceSource.replace(marker, `id:'__SETTINGS_MUTANT_${index}__'`);
       expect(contractErrors(mainSource, mutant).some((error) => error.startsWith(`case:${id}:`)), id).toBe(true);
+    }
+
+    for (const marker of WRITABLE_EVIDENCE_MARKERS) {
+      const mutant = sliceSource.replace(marker, `__WRITABLE_EVIDENCE_MUTANT_${marker.length}__`);
+      expect(contractErrors(mainSource, mutant)).toContain(`writable-evidence:${marker}`);
     }
   });
 });

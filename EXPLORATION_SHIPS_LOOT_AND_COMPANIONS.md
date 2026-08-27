@@ -11,25 +11,39 @@ expeditions, breeding, live combat and Guardians remain
 **not implemented** unless a row below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
 
-> **2026-08-27 current evidence/repair overlay:** current-input Slice has six preserved terminal-red,
-> one-attempt/zero-retry runs. Signed-clean source
+> **2026-08-27 current evidence/repair overlay:** signed evidence source
+> `7362a0ea32e90b24e4988c81d566b82e20549e66` passed standalone SceneMemory 42/42 and its named
+> verifier. Its serial chronology retained a Layout 787/787 result carrier plus source-bound
+> SceneMemory 42/42 and Compendium 78/78 carriers, each once with named verification. Layout schema
+> v2 embeds no Git/source identity and that non-commit-tagged run lacks a preserved execution record,
+> so it is chronology-associated provenance rather than exact-source evidence. Slice ran once and
+> stopped terminal-red on preserved stale harness assumptions after product hardening; it was not
+> retried, and Glass and recovery did not run.
+>
+> The current repaired working tree changes only evidence oracles, their focused tests and
+> evidence/documentation carriers. Its complete browser-free battery is green at 134 files / 1,474
+> passed / one intentional skip. It must become a new signed clean commit, then restart the complete
+> fail-fast chain from Layout with fresh run IDs on one unchanged source. There is no later browser
+> result, publication, hosted attempt, release, deployment, version bump or external authority.
+>
+> Earlier current-input history has six preserved terminal-red, one-attempt/zero-retry runs.
+> Signed-clean source
 > `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`; it ran 397,101 ms,
 > retained 23 findings across 16 scopes and produced no Arc 4 success marker or ledger. Glass and
 > recovery correctly did not run.
 >
-> Its first five independent roots are locally repaired with negative controls: Guide/Glass now bind the
-> exact 55-bullet development draft; stable capture-fixture comparison separates both legitimate
+> That sixth run's first five independent roots were locally repaired with negative controls:
+> Guide/Glass now bind the exact 55-bullet development draft; stable capture-fixture comparison
+> separates both legitimate
 > active-play diagnostic clocks; a blocked contextless Tame greeting accepts either truthful boolean
 > mute state while requiring zero context/nodes/voices/emitter; epoch evidence proves private staging
 > before committed publication/raw persistence/reload with eleven isolated controls; and Survey
 > rebinds the active Training lesson after replacing its action DOM. A subsequent whole-candidate
 > review found additional work in canonical world identity, F4/storage convergence, repository
 > races, texture cleanup, complete settings/read-only coverage and bound evidence sequencing.
-> The complete current repair battery is green, and its final documentation/release-copy consistency
-> review and independent evidence/code whole-diff review are both CLEAR. Any later source change must
-> rerun its affected checks and both reviews. No current-input Slice PASS, Glass result, recovery
-> certificate, hosted/HUMAN whole-Gate or release authority follows.
+> Those repairs remain part of the current source. No current certifying Slice PASS, Glass result or
+> recovery certificate exists.
 > F4 convergence now latches and schedules its single replacement before fallible repaint work. If
 > authority is lost with full Shipyard open, the surface immediately becomes one read-only preview
 > with zero Engineering actions and exact app/DOM/diagnostic identity; a repaint error is witnessed
@@ -56,9 +70,9 @@ does not silently promote planned behavior into the in-game Guide.
 > 12 MiB (`12,582,912`) and aggregate to 18 MiB
 > (`18,874,368`): exact phone/desktop headroom is 1,016,760 / 951,976 V8 bytes and 1,193,110 /
 > 1,237,686 aggregate bytes. Every other ceiling stays unchanged and paired red `862a75b…` still
-> fails nodes/listeners. Budget SHA-256 is `e6c4aeea…`; the full 134-file battery is green at
-> 1,469 passed /one skip and producer bindings match. The documentation-only signed descendant keeps
-> producer/budget bytes identical; a new exact certificate is next.
+> fails nodes/listeners. Budget SHA-256 is `e6c4aeea…`; the activation's full 134-file battery was
+> green at 1,469 passed /one skip and producer bindings match. Signed `7362a0e…` later supplied the
+> exact standalone and serial certificates summarized above without changing producer/budget bytes.
 >
 > In particular, landing/name history now binds the complete source-reproved CF1 world rather than
 > a globally false leaf-seed key. A fixed v5 manifest plus four byte-balanced shards preserve exact
@@ -66,9 +80,10 @@ does not silently promote planned behavior into the in-game Guide.
 > without another first-landfall award. Search naming, Land, Atlas, Share, Records and Training use
 > that owner, and capacity is checked against all current extensions before any product mutation.
 >
-> Exact Edge build is Slice provenance only. Slice and Glass judge fresh behavior and geometry rather
-> than a version pin, so an Edge update alone never rebaselines, repins or moves thresholds. The
-> Compendium and SceneMemory own separate sealed Edge-family + CDP `1.3` capability/profile
+> Exact compatible Edge or Chrome point versions are run provenance only. Slice and Glass judge fresh
+> behavior and geometry rather than a version pin, so a browser point update alone never rebaselines,
+> repins or moves thresholds. Compendium and SceneMemory own separate sealed Edge-family + CDP `1.3`
+> capability/profile
 > authorities; neither uses the exact browser build as a perpetual baseline identity. SceneMemory's
 > product-growth calibration was required by changed product ownership, never by `.107` or a later
 > compatible Edge point update; its completion does not make browser point versions baseline keys.
@@ -168,7 +183,7 @@ does not silently promote planned behavior into the in-game Guide.
 > `48ce0b1662a59b21070667be339a1e59503e1f19`, status
 > `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
 > `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
-> exact historical inputs. The current repair's final documentation/release-copy consistency review
+> exact historical inputs. That recorded repair's final documentation/release-copy consistency review
 > and independent evidence/code whole-diff review are both CLEAR; any later source change must rerun
 > its affected checks and both reviews.
 >
