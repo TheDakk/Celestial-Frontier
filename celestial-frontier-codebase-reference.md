@@ -6,7 +6,7 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-26.**
 >
-> **2026-08-26 local candidate overlay — implemented source lanes; one preserved Slice red and a
+> **2026-08-26 local candidate overlay — implemented source lanes; two preserved Slice reds and a
 > certified active Compendium ruler:** Gate B's
 > recursive scanner now seals an exact 62-domain-source inventory against DOM, storage,
 > `navigator`, network, wall/monotonic clock and uncontrolled randomness. Its only two reasoned
@@ -87,12 +87,16 @@
 > passed, one intentional skip and zero failures; `root/app/worker/noUnused` TypeScript; an
 > 884-module Vite build; root validation with the unchanged 50-probe fingerprint; legacy jsdom
 > smoke; and the applicable contract, reporter, Glass, recovery and Compendium selftests. Current-
-> input Slice run `20260826214541492-83064-b252b137f7a3` executed once at signed source
-> `8553bd7…` on Edge `151.0.4129.107` and ended terminal FAIL after 92,772 ms with three findings and
-> zero retries. Settings' 14-versus-15 control count and the stage-1-unreachable Arc 3 target were
-> instrument false reds; retained Survey focus was a product regression. All three are repaired
-> locally, but no rerun PASS exists. A repaired current-input Slice PASS, current-input Glass and recovery evidence remain
-> open. There is no hosted, HUMAN, whole-Gate, release, version,
+> input Slice has two preserved one-attempt/zero-retry reds on Edge `151.0.4129.107`. Run
+> `20260826214541492-83064-b252b137f7a3` at signed source `8553bd7…` failed after 92,772 ms with
+> Settings and unreachable-target instrument false reds plus the retained-Survey focus product
+> regression. Changed clean signed source `9d4b2b0…` supplied run
+> `20260827000034983-98202-869d966f2f88`, which failed after 92,566 ms with only the Arc 3 harness
+> finding. Settings and Survey focus are outcome-cleared; the reachable target exposed a second
+> instrument defect whose oracle combined system navigation with nav-owned planet identity even
+> though the selected world is card-owned. Its bounded tool-only repair is local and unrerun. No
+> current-input Slice PASS, Glass result or recovery certificate exists. There is no hosted, HUMAN,
+> whole-Gate, release, version,
 > preview/publication or deployment claim.
 >
 > **2026-08-25 Arc 3–5 + Arc 7 historical checkpoint — retained as foundation where the
@@ -2549,9 +2553,12 @@ and exact 14-phone/13-desktop discrimination, changing only the phone warm ceili
 Clean signed activation `91f4e044…` passed current exact-budget run
 `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
 attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Current-input Slice
-`20260826214541492-83064-b252b137f7a3` is a preserved one-attempt/zero-retry FAIL after 92,772 ms:
-two instrument defects and one retained-Survey focus product regression, all repaired locally with
-no PASS rerun. Current-input Glass, the 20-minute recovery certificate, hosted execution, HUMAN
+retains two one-attempt/zero-retry reds: `20260826214541492-83064-b252b137f7a3` failed after 92,772
+ms with two instrument defects plus one retained-Survey focus product regression, while changed
+clean signed source `9d4b2b0…` supplied `20260827000034983-98202-869d966f2f88`, which failed after
+92,566 ms with only the newly exposed impossible card-context oracle. Settings and focus are
+outcome-cleared; the bounded tool-only Arc 3 repair is local and unrerun. No current-input Slice
+PASS, Glass result or 20-minute recovery certificate exists. Hosted execution, HUMAN
 review, whole-Gate closure and release remain open.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost

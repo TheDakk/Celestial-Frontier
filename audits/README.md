@@ -10,6 +10,51 @@ summary of it.
 
 ## Contents
 
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827.{json,log}.gz` — changed-source one-finding Slice red
+
+Retains clean signed-source run `20260827000034983-98202-869d966f2f88` at
+`9d4b2b01a7f89ae15b7c7b175867993af649e9f1` on Edge `151.0.4129.107`. It executed once with zero
+retries, kept source stable and ended terminal red after 92,566 ms with only the Arc 3 harness finding. The JSON gzip
+SHA-256 is `42a1b3caa0a0b5a8b1d1932d3d87c1137ec63d6c05c5af3d80bf6ec0318ffaac`; its decompressed
+SHA-256 is `e23fcac2931755bb12c46e90f9bd3c0ae2dac0292484dc9b9003bc5d158ecbe9`. The log gzip SHA-256 is
+`9388d14422bf5998b0c90527d644f19e1af3f6e37ee489cf1e30c965268b8ce7`; its decompressed SHA-256
+is `ca0b2b40fdab8b933f95f75553d4942e7576961b6285c226d80d4f46cba6b0a7`. Settings and retained-
+Survey focus are outcome-cleared relative to the earlier red. The remaining failure is instrument
+evidence for an impossible card-context oracle, not a product verdict or Slice PASS. Its tool-only
+repair is local and unrerun.
+
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260826.{json,log}.gz` — original three-finding Slice red
+
+Retains clean signed-source run `20260826214541492-83064-b252b137f7a3` at
+`8553bd78a2b097dcf65c71f4d47f6815af8ee8c8` on Edge `151.0.4129.107`. It executed once with zero
+retries and ended terminal red after 92,772 ms with two instrument false reds—Settings' stale
+14-control inventory and an unreachable Arc 3 target—plus the retained-Survey focus product
+regression. The JSON gzip SHA-256 is
+`8c2e6cd06cbebfab9cb7122303f3ef8d89ace065e5175e1b02713a6316fc90f8`; its decompressed SHA-256 is
+`afb2b3c20f555c29afe3c32b3948512bcd95c83793ff3aef68c880bf979c5f11`. The log gzip SHA-256 is
+`1a659612b294017f59b05a9613878a3287a1ecea9fc3076ae966298791c10822`; its decompressed SHA-256 is
+`b1b245c837001f6f9817757cb178974bec626ec3e57ad3532445616f8b81d17f`.
+
+Both JSON reports retain run-bound screenshot manifests and hashes. The PNG bytes themselves remain
+ignored under `port/v2/apps/game/smoke/` and are not preserved by these carriers; neither entry
+claims durable visual evidence, current-input Glass, the real recovery certificate, or a Slice PASS.
+
+### `ARC4_RECOVERY_REALTIME_INSTRUMENT_FAILURE_20260826.json.gz` — first real-time recovery instrument red
+
+Retains clean committed-source run `20260826024124548-13172-6286d5212e` at
+`35a22b130a65f936769dfcfe88b150f44b4295d9` on Edge `151.0.4129.107`. It executed once with zero
+automatic retries, kept the exact clean source tuple stable, completed its lifecycle and released
+the browser, server, browser context and workspace lock. After fixture and 16-step burn-down passed,
+the `exhausted` stage was the exact first and only failure:
+`exhausted Pertar surface timed out; last=null`; active observation, boundary crossing and recovery
+therefore did not run. The then-current poll required all three exhausted rows to say `depleted`,
+while the valid product surface was Tame `empty` plus Scavenge/Sample `depleted`, all disabled. The
+repaired collector accepts only that bounded `empty|depleted` family with at least one depleted row.
+The gzip SHA-256 is `1dba5bba9c88a8dac085af2c3021cd2da869b9a617f350c62d07a2bba4974d11`;
+its decompressed SHA-256 is `a153a339e12ef36654a3c5b11786cfb5576aa66cb434b056a06b01753cf6b4af`.
+Overall status remains `instrument-fail`; this artifact contains no `recoveryClaimed` field and does
+not claim a recovery PASS or certificate.
+
 ### `PR33_BATTERY_FAILURE_DIAGNOSIS_2026-08-23.md` — four-run diagnosis and bounded repair
 
 Classifies all four consumed PR #33 battery failures, binds the exact fourth-run Linux SceneMemory

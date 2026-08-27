@@ -27,20 +27,23 @@
 > unchanged.
 >
 > Focused source/unit/type/build and browser-tool contract checks cover this local candidate.
-> Current-input Slice `20260826214541492-83064-b252b137f7a3` executed once from signed `8553bd7…`
-> on Edge `151.0.4129.107` and ended terminal FAIL after 92,772 ms with three findings and zero
-> retries. The Settings 14-versus-15 pressed-control expectation and Arc 3's stage-1-unreachable
-> target were instrument false reds. Retained Survey Close focus returning to canvas instead of the
-> dock opener was a product regression; its opener lineage and both instrument fixtures are repaired
-> locally, but no rerun PASS exists. Browser-free verification remains green at 121 test files,
+> Current-input Slice has two preserved terminal-red, one-attempt/zero-retry runs on Edge
+> `151.0.4129.107`. Run `20260826214541492-83064-b252b137f7a3` from signed `8553bd7…` failed after
+> 92,772 ms with two instrument false reds—Settings' 14-versus-15 pressed-control inventory and an
+> unreachable Arc 3 target—plus the retained-Survey focus product regression. Changed clean signed
+> source `9d4b2b0…` supplied run `20260827000034983-98202-869d966f2f88`, which failed after 92,566
+> ms with only the Arc 3 harness finding. The second outcome clears Settings and Survey opener
+> lineage. Its source-proven reachable target instead exposed an impossible instrument oracle that
+> joined system navigation to nav-owned planet identity although the selected world is card-owned;
+> the bounded tool-only repair is local and unrerun. Browser-free verification remains green at 121 test files,
 > 1,358 passing tests and one intentional skip. The former Compendium certificate remains historical for
 > producer `587d3bdf…`; current producer
 > `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is active under budget
 > `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. Edge `.107` is provenance
 > only. Exact-budget run `20260826-slice-repair-certification` passed 78/78 with complete lifecycle
 > and named verification from clean signed activation source `91f4e044…` in one attempt/zero retries
-> (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). A repaired current-input Slice PASS,
-> current-input Glass/recovery, hosted, integration, HUMAN, preview, release and deployment
+> (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). No current-input Slice PASS, Glass result
+> or recovery certificate exists; hosted, integration, HUMAN, preview, release and deployment
 > authority remain open. Broader Arc 7/8 soundscape/assets and listening/comfort review remain
 > partial.
 

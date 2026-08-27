@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-26 · SLICE RED PRESERVED/REPAIRED · CURRENT COMPENDIUM CERTIFIED ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-26 · TWO SLICE REDS PRESERVED · ARC 3 TOOL REPAIR UNRERUN · CURRENT COMPENDIUM CERTIFIED ◀◀◀
 
 ### Current integration state
 
@@ -39,7 +39,9 @@ the archive verbatim and refresh this handoff in place.
   `d33e540f0d620eac34bdc259b7814db0f11a9006` installs the now-historical Compendium ruler and its
   four retained calibration capsules, and signed evidence descendant
   `8553bd78a2b097dcf65c71f4d47f6815af8ee8c8` preserves its exact certificate. Signed repair/calibration
-  source `8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527`; signed current-ruler activation `91f4e04410b893c43ee5d261ebfc1fa3be127c29` and its local certificate remain unpushed.
+  source `8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527`; signed current-ruler activation
+  `91f4e04410b893c43ee5d261ebfc1fa3be127c29`, its local certificate and clean signed Slice evidence
+  descendant `9d4b2b01a7f89ae15b7c7b175867993af649e9f1` remain unpushed.
 - **Integrated non-browser freeze:** all 121 Vitest files are green with 1,358 passing tests, one
   intentional skip and zero failures. Root/app/worker TypeScript, no-unused, the 884-module Vite
   build, all changed-tool syntax/import/selftests, root `validate.js`, its unchanged 50-probe
@@ -86,22 +88,25 @@ the archive verbatim and refresh this handoff in place.
 
 ### Remaining evidence and decisions
 
-- **Source signing and both Compendium certificates are resolved proof:** the source
-  freeze, handoff descendant, activation and certificate-evidence descendant are signed; no unsigned
-  substitute was used. Signed repair source `8ffd2e2…` supplied the current ruler; signed activation
-  `91f4e044…` passed its exact certificate and named verifier. Edge `.101`/`.107` is provenance.
-- **Current-input Slice chronology is terminal red and preserved:** one clean one-shot run
-  `20260826214541492-83064-b252b137f7a3` against signed source `8553bd7…` on exact Edge
-  `151.0.4129.107` ended FAIL after 92,772 ms with three findings and zero retries. Settings expected
-  14 instead of the actual 15 pressed controls after Creature Voices, and Arc 3 selected a target
-  unreachable at stage 1; both were instrument false reds. Retained Survey Close returned focus to
-  canvas instead of its dock opener; that was a product regression. All three are repaired locally,
-  but no rerun PASS exists yet.
-- **Next evidence, serial/no-retry:** retain and test-bind the certificate, then run repaired Slice,
-  full 12-viewport Glass and uninterrupted 1,200,000 ms Arc 4 recovery. Ordinary Slice remains a nonclaim with `recoveryClaimed:false`.
+- **Source signing and both Compendium certificates are resolved proof:** the freeze, handoff, activation and
+  evidence descendants are signed. Repair `8ffd2e2…` supplied the current ruler; signed `91f4e044…` passed its certificate/verifier. Edge `.101`/`.107` is provenance.
+- **Current-input Slice chronology is two terminal reds, both preserved:** run
+  `20260826214541492-83064-b252b137f7a3` executed once from clean signed source `8553bd7…` on exact
+  Edge `151.0.4129.107` and ended FAIL after 92,772 ms with three findings and zero retries: stale
+  14-versus-15 Settings accounting and an unreachable Arc 3 target were instrument defects, while
+  Survey Close focus was a product regression. Run `20260827000034983-98202-869d966f2f88` then
+  executed once from clean signed source `9d4b2b0…` on the same Edge and ended FAIL after 92,566 ms
+  with one finding and zero retries, with source stable. That second run outcome-cleared Settings and
+  Survey focus, then exposed a new Arc 3 instrument defect: an impossible card-context oracle required
+  system navigation together with planet identity derived from `nav.planet`, although the selected
+  world belongs to the Survey card and `nav.planet` is null in system navigation. Its tool-only
+  repair is local and unrerun. No current-input Slice PASS, Glass run or recovery claim exists.
+- **First real recovery attempt is a preserved instrument red:** clean committed run
+  `20260826024124548-13172-6286d5212e` at `35a22b1…` ran once/zero retries; fixture and 16-step burn-down passed, then the stale all-`depleted` poll rejected the valid mixed exhausted surface. Lifecycle/cleanup completed, but active observation/recovery did not run and no PASS was claimed.
+- **Next evidence, serial/no-retry:** run the repaired Slice, full 12-viewport Glass and uninterrupted 1,200,000 ms Arc 4 recovery. Ordinary Slice remains a nonclaim with `recoveryClaimed:false`.
 - HUMAN review remains required for Compendium list/detail/focus, ship readability, the combined Arc
-  4 first-journey/ownership experience, Arc 5 attachment, and applicable Arc 7/8 listening/comfort.
-  Real-device accessibility, heat and battery evidence remain open. No whole Gate or release is closed.
+  4/5 journey/attachment and applicable Arc 7/8 listening/comfort. Real-device accessibility, heat
+  and battery evidence remain open. No whole Gate or release is closed.
 
 ### Approved full-session campaign
 
@@ -211,24 +216,6 @@ reports the hidden count. Thirteen-row, short, empty, snapshot, and mutation con
 capture/audio targeting must consume the full side, never infer authority from the preview. Arc 4
 capture now does so; the rule remains open for audio and later selectors.
 
-**Arc 4 durable foundation (committed local `fd72c06`, 2026-08-25):** absent ownership-v1
-carriers now bootstrap into the shared receipt-free F4/Arc 2/Arc 3 boot CAS without granting a
-Compendium page, discovery, creature, specimen or reward. Current projectable mirrors reconcile in
-that same owned commit; future, corrupt, unrepresentable and legacy-protected states remain exact
-and fail closed. Legacy Training composes its one Arc 2 replacement with all 18 Arc 4 namespaces,
-and postcommit verification binds the exact source evidence before publishing compatibility fields.
-At that committed boundary, the diagnostics-only writer captured the real current surface, canonical address, current ecology
-epoch and full roster, certifies a miss plus every eligible hit before either F4 draw, and settles
-one finite attempt, ownership successor, legacy projection, receipt, next authority and revision in
-one lease-fenced CAS. Misses spend an attempt; first observations alone add catalogue/reward state;
-later cycles/worlds may add a new individual or lot without a second page or reward. Pre-CAS retains
-only a private pending payload binding the registered plan/settlement identities and full prepared
-fingerprint; the committed path alone creates and registers the opaque evidence token against the
-exact transaction, kind and revision. Stale/storage/protected paths publish nothing, while
-post-durable verification faults clear live authority and perform one read-only convergence reload
-without a second write or reroll. This paragraph preserves the committed headless foundation; the
-newer local product boundary follows.
-
 **Arc 4 player-facing current local candidate (2026-08-25):** Survey now exposes native
 Tame/Scavenge/Sample controls over the exact production writer. The presentation-semantics fence
 owns a source-bound uniform random eligible pool—not targeted species selection—and reports the
@@ -247,10 +234,13 @@ ordinary Slice ledger. It requires a genuinely destroyed target, a distinct reop
 zero closed-time credit, 1,200,000 ms of continuously visible/focused/answerable service, exact
 pre-boundary exhausted presentation, all-three-row recovery within one honest heartbeat, fixed RNG
 and ownership/receipt evidence, one attempt/zero retry, cleanup before PASS, and terminal source/
-build/input replay. Its earlier instrument-only run exposed a valid mixed exhausted surface—Tame
-`empty`, Scavenge/Sample `depleted`, all disabled—and the repaired classifier now accepts only the
-exact stable `empty|depleted` exhausted shape with at least one depleted. **No real repaired recovery
-PASS exists yet**; the clean committed 20-minute run remains mandatory.
+build/input replay. Clean committed run `20260826024124548-13172-6286d5212e` at `35a22b1…` executed
+once/zero retries and ended `instrument-fail` after 102,950 ms: fixture and 16-step burn-down passed,
+then the stale all-`depleted` poll rejected a valid mixed exhausted surface—Tame `empty`,
+Scavenge/Sample `depleted`, all disabled. Lifecycle and cleanup completed, but active observation,
+boundary and recovery did not run. The repaired classifier accepts only the exact stable
+`empty|depleted` shape with at least one depleted. **No repaired recovery PASS exists yet**; the clean
+committed 20-minute run remains mandatory.
 
 The active Arc 5A candidate does not change that presentation. Every Arc 4 hit and miss now requires
 aligned current-v2 Arc 5 authority before either draw, prepares the exact 18 Arc 4 plus five Arc 5
@@ -293,9 +283,12 @@ baseline1 once each with zero retries; active budget `6284a394…` retains all f
 14-phone/13-desktop discrimination, changing only phone warm to `524288`. Signed activation
 `91f4e044…` passed `20260826-slice-repair-certification` 78/78 plus named verification with complete
 lifecycle in one attempt/zero retries (44,847 ms; raw/gzip `81c27ed5…` / `6f3deb0f…`). Current-input Slice
-`20260826214541492-83064-b252b137f7a3` is the preserved one-attempt/zero-retry 92,772 ms FAIL:
-two instrument false reds and one product focus regression, all repaired locally without a PASS
-rerun. Glass and recovery results remain pending.
+run `20260826214541492-83064-b252b137f7a3` is the preserved one-attempt/zero-retry 92,772 ms FAIL
+with two instrument defects and one product focus regression. Preserved successor
+`20260827000034983-98202-869d966f2f88` is the one-attempt/zero-retry 92,566 ms FAIL from clean signed
+`9d4b2b0…`: Settings and focus outcome-cleared, while one new impossible card-context oracle failed
+inside the Arc 3 instrument. Its tool-only repair is local and unrerun. No current-input Slice PASS,
+Glass result or recovery claim exists.
 
 **Arc 7/8 current-system Tame expression (local, 2026-08-26; bounded partial):** `@cf/audio` retains
 its pure resolver-v1 identity/profile/call-plan foundation and injected bounded runtime. The app now
@@ -313,8 +306,10 @@ This is one player-live current-system greeting, **not** Arc 7/8 or Gate G compl
 audition, distant ecology, ambience/music, premium or licensed assets, mono/dynamic-range/reduced-
 intensity controls, combat/Guardian integration, physical-device byte/heat/battery plateaus and all
 HUMAN listening/comfort judgments remain open. Current Slice/Glass tool controls for the greeting
-are browserless-green and independently audited. The one current-input Slice execution is the
-preserved three-finding terminal red above; no repaired PASS or current-input Glass run exists yet.
+are browserless-green and independently audited. Both current-input Slice executions are the
+preserved terminal reds above: the second outcome-cleared Settings and focus, then exposed the new
+Arc 3 impossible card-context oracle. Its tool-only repair is local and unrerun; no current-input
+Slice PASS, Glass result or recovery claim exists.
 
 ### SSH and branch discipline
 
@@ -369,13 +364,17 @@ preserved three-finding terminal red above; no repaired PASS or current-input Gl
    named verification with complete lifecycle in one attempt/zero retries. Compatibility remains Edge family + CDP
    `1.3` + sealed capability hash; exact same-run build fields are provenance, and updates alone
    never rebaseline or change ceilings.
-4. **Slice red and repairs:** run `20260826214541492-83064-b252b137f7a3` executed exactly once from clean
-   signed `8553bd7…` on Edge `.107`, failed after 92,772 ms with three findings, and was not retried.
-   The 14-versus-15 Settings expectation and stage-1-unreachable Arc 3 target were instrument defects;
-   Survey Close focus was a product defect. All three are repaired locally, but there is no rerun PASS.
-5. Preserve/test-bind the passed current Compendium certificate, then run one repaired current-input
-   Slice, one full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms recovery
-   collector. Do not reinterpret Slice's exact nine-stage/14-burn/`recoveryClaimed:false` ledger as recovery proof.
+4. **Two Slice reds and repairs:** run `20260826214541492-83064-b252b137f7a3` executed exactly once from
+   clean signed `8553bd7…` on Edge `.107`, failed after 92,772 ms with three findings and zero retries:
+   two instrument defects and one product focus regression. Run
+   `20260827000034983-98202-869d966f2f88` then executed exactly once from clean signed `9d4b2b0…` on
+   the same Edge, failed after 92,566 ms with one finding and zero retries, and kept source stable.
+   Settings and focus outcome-cleared; the remaining finding was a new impossible card-context
+   oracle in the Arc 3 instrument. Its tool-only repair is local and unrerun. No current-input Slice
+   PASS, Glass result or recovery claim exists.
+5. Preserve the earlier complete-lifecycle recovery `instrument-fail`; run one repaired current-input
+   Slice, one full 12-viewport Glass, and the dedicated uninterrupted 1,200,000 ms recovery collector.
+   Do not reinterpret Slice's exact nine-stage/14-burn/`recoveryClaimed:false` ledger as recovery proof.
 6. After evidence, substitute exact run IDs, commits, browser/source/report hashes and findings into
    current references and this handoff; keep later documentation-only provenance explicit. Arc 5B
    breeding/care/mission rules,
@@ -385,8 +384,10 @@ preserved three-finding terminal red above; no repaired PASS or current-input Gl
    after a future reviewed merge into `develop` should Claude fetch `origin` and merge
    `origin/develop` into a clean `anthropic/mac`; never copy files manually.
 
-**Current side:** OpenAI/Codex macOS — implementation, Slice repairs and Compendium activation remain local/unpushed.
-Former certificate is historical; current cert/verifier passed. Slice rerun and Glass/recovery are outstanding. No Edge rebaseline is involved.
+**Current side:** OpenAI/Codex macOS — implementation, Compendium activation and the Arc 3 tool-only
+repair remain local/unpushed; that repair is unrerun. Former certificate is historical; current
+cert/verifier passed. Both Slice reds are preserved, Settings/focus are outcome-cleared by the second,
+and no current-input Slice PASS, Glass result or recovery claim exists. No Edge rebaseline is involved.
 **GitHub step:** none. No push or hosted attempt is authorized.
 **PR details:** not needed while the local campaign is still batching. A future PR, if authorized,
 must use base `develop`, source `openai/mac`, and a refreshed title/body covering the final exact head.

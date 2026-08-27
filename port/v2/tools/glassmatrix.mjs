@@ -125,6 +125,22 @@ const BOOT_PHASE_BINDING = '__cfBootPhaseWitness';
 const SLICE_READY_BINDING = '__cfSliceReadyWitness';
 const PHASE_PROBE_TIMEOUT_MS = 2000;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const decodeCF1Payload = (code) => {
+  if (typeof code !== 'string' || !code.startsWith('CF1-')) return null;
+  try {
+    const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
+    return payload && typeof payload === 'object' && !Array.isArray(payload) ? payload : null;
+  } catch {
+    return null;
+  }
+};
+const encodeCF1Payload = (payload) => 'CF1-'
+  + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
+const withCF1PlanetSeed = (code, seed) => {
+  const payload = decodeCF1Payload(code);
+  if (!payload) return null;
+  return encodeCF1Payload({ ...payload, p: seed });
+};
 const startedAt = Date.now();
 let runSource = null;
 let runReloadEvidence = [];
@@ -324,6 +340,8 @@ const ARC3_ORBITAL_GLASS_TARGET = Object.freeze({
   expectedValue: 'Chlorine · Silicon · Calcium',
 });
 const ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),card=document.getElementById('survey'),
+  cardCode=S?.api?.cardShareCode?.()??null,
+  planetTarget=S?.api?.planetScreenTarget?.({seed:${ARC3_ORBITAL_GLASS_TARGET.planetSeed},ordinal:${ARC3_ORBITAL_GLASS_TARGET.planetOrdinal}})??null,
   rows=card?[...card.querySelectorAll('[data-row="Mineral veins"]')]:[],row=rows[0]??null,
   label=(row?.querySelector(':scope > span')?.textContent||'').trim(),text=(row?.textContent||'').replace(/\\s+/g,' ').trim(),
   value=label&&text.startsWith(label)?text.slice(label.length).trim():text,style=row?getComputedStyle(row):null,
@@ -334,24 +352,144 @@ const ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,
   rendered=!!row&&style?.display!=='none'&&style?.visibility!=='hidden'&&!!rowRect&&rowRect.width>0&&rowRect.height>0,
   contained=!!cardRect&&!!rowRect&&rowRect.left>=cardRect.left-1&&rowRect.right<=cardRect.right+1
     &&rowRect.top>=cardRect.top-1&&rowRect.bottom<=cardRect.bottom+1,
-  horizontal=!!row&&row.scrollWidth<=row.clientWidth+1&&!!rowRect&&rowRect.left>=-1&&rowRect.right<=innerWidth+1,
-  checks={exactRoute:state?.mode==='system'&&state?.gal===${ARC3_ORBITAL_GLASS_TARGET.galaxySeed}
-      &&state?.star===${ARC3_ORBITAL_GLASS_TARGET.star.seed}&&state?.starX===${ARC3_ORBITAL_GLASS_TARGET.star.x}
-      &&state?.starY===${ARC3_ORBITAL_GLASS_TARGET.star.y}&&state?.planet===${ARC3_ORBITAL_GLASS_TARGET.planetSeed}
-      &&state?.planetOrdinal===${ARC3_ORBITAL_GLASS_TARGET.planetOrdinal},
-    currentAuthority:state?.engineering?.stateKind==='loaded'&&state?.engineering?.protection===null
-      &&state?.engineering?.research?.includes('scan1')===true,
-    cardOpen:state?.cardOpen===true&&card?.getAttribute('aria-hidden')==='false',exactCardinality:rows.length===1,
-    exactLabel:label==='Mineral veins',exactOrderedValue:value===${JSON.stringify(ARC3_ORBITAL_GLASS_TARGET.expectedValue)},
-    noBiomeMarker:!value.includes('✦'),groundedSensitiveFacts:!sensitive,noMineAction:mineActions.length===0,
-    passive,rendered,contained,noHorizontalOverflow:horizontal};return {ok:Object.values(checks).every(value=>value===true),
-      checks,rowCount:rows.length,label,value,mineActionCount:mineActions.length,sensitive,passive,rendered,contained,horizontal,
+  horizontal=!!row&&row.scrollWidth<=row.clientWidth+1&&!!rowRect&&rowRect.left>=-1&&rowRect.right<=innerWidth+1;
+  return {rowCount:rows.length,label,value,mineActionCount:mineActions.length,sensitive,passive,rendered,contained,horizontal,
+      cardOpen:state?.cardOpen===true&&card?.getAttribute('aria-hidden')==='false',cardCode,planetTarget,
       cardRect:cardRect?[cardRect.left,cardRect.top,cardRect.right,cardRect.bottom]:null,
       rowRect:rowRect?[rowRect.left,rowRect.top,rowRect.right,rowRect.bottom]:null,
       rowScrollWidth:row?.scrollWidth??null,rowClientWidth:row?.clientWidth??null,state:{mode:state?.mode??null,gal:state?.gal??null,
         star:state?.star??null,starX:state?.starX??null,starY:state?.starY??null,planet:state?.planet??null,
-        planetOrdinal:state?.planetOrdinal??null,
-        cardOpen:state?.cardOpen??null,research:state?.engineering?.research??null}};})()`;
+        planetOrdinal:state?.planetOrdinal??null,navGalaxyKey:state?.navGalaxyKey??null,
+        navStarKey:state?.navStarKey??null,navWorldKey:state?.navWorldKey??null,
+        renderedScene:state?.renderedScene??null,
+        pendingPersistenceWrites:state?.sceneResources?.pendingPersistenceWrites??null,
+        cardOpen:state?.cardOpen??null,engineeringStateKind:state?.engineering?.stateKind??null,
+        engineeringProtection:state?.engineering?.protection??null,
+        research:state?.engineering?.research??null}};})()`;
+function assessArc3OrbitalSurveyGlass(observation) {
+  const state = observation?.state;
+  const cardPayload = decodeCF1Payload(observation?.cardCode);
+  const target = observation?.planetTarget;
+  const receipt = state?.renderedScene;
+  const navGalaxyKey = 'CF1|g:999@90,-60';
+  const navStarKey = 'CF1|g:999@90,-60|s:424242@560,170';
+  const checks = Object.freeze({
+    exactRoute: state?.mode === 'system' && state?.gal === ARC3_ORBITAL_GLASS_TARGET.galaxySeed
+      && state?.star === ARC3_ORBITAL_GLASS_TARGET.star.seed
+      && state?.starX === ARC3_ORBITAL_GLASS_TARGET.star.x
+      && state?.starY === ARC3_ORBITAL_GLASS_TARGET.star.y
+      && state?.navGalaxyKey === navGalaxyKey && state?.navStarKey === navStarKey,
+    systemNavShape: state?.planet === null && state?.planetOrdinal === null
+      && state?.navWorldKey === null,
+    exactCardContext: cardPayload?.t === 'p'
+      && Array.isArray(cardPayload?.g) && cardPayload.g[0] === 90 && cardPayload.g[1] === -60
+      && cardPayload.g[6] === ARC3_ORBITAL_GLASS_TARGET.galaxySeed
+      && Array.isArray(cardPayload?.s) && cardPayload.s[0] === ARC3_ORBITAL_GLASS_TARGET.star.x
+      && cardPayload.s[1] === ARC3_ORBITAL_GLASS_TARGET.star.y
+      && cardPayload.s[2] === ARC3_ORBITAL_GLASS_TARGET.star.seed
+      && cardPayload.p === ARC3_ORBITAL_GLASS_TARGET.planetSeed,
+    exactPlanetTarget: target?.seed === ARC3_ORBITAL_GLASS_TARGET.planetSeed
+      && target?.ordinal === ARC3_ORBITAL_GLASS_TARGET.planetOrdinal
+      && Number.isFinite(target?.screenX) && Number.isFinite(target?.screenY)
+      && Number.isFinite(target?.width) && target.width > 0
+      && Number.isFinite(target?.height) && target.height > 0,
+    renderedReceipt: Number.isInteger(receipt?.serial) && receipt.serial > 0
+      && receipt?.mode === 'system' && receipt?.galaxyKey === navGalaxyKey
+      && receipt?.starKey === navStarKey && receipt?.worldKey === null,
+    settledPersistence: state?.pendingPersistenceWrites === 0,
+    currentAuthority: state?.engineeringStateKind === 'loaded'
+      && state?.engineeringProtection === null && state?.research?.includes('scan1') === true,
+    cardOpen: observation?.cardOpen === true,
+    exactCardinality: observation?.rowCount === 1,
+    exactLabel: observation?.label === 'Mineral veins',
+    exactOrderedValue: observation?.value === ARC3_ORBITAL_GLASS_TARGET.expectedValue,
+    noBiomeMarker: !observation?.value?.includes('✦'),
+    groundedSensitiveFacts: observation?.sensitive === false,
+    noMineAction: observation?.mineActionCount === 0,
+    passive: observation?.passive === true,
+    rendered: observation?.rendered === true,
+    contained: observation?.contained === true,
+    noHorizontalOverflow: observation?.horizontal === true,
+  });
+  const reasons = Object.entries(checks).filter(([, value]) => value !== true).map(([name]) => name);
+  return Object.freeze({ ...observation, ok: reasons.length === 0, checks, reasons: Object.freeze(reasons) });
+}
+const isolatesArc3OrbitalGlassChecks = (assessment, expectedRedChecks) => {
+  const expected = new Set(expectedRedChecks);
+  return assessment?.ok === false && expected.size === expectedRedChecks.length
+    && Object.entries(assessment?.checks ?? {}).every(([name, value]) => (
+      expected.has(name) ? value === false : value === true
+    )) && [...expected].every((name) => assessment?.checks?.[name] === false);
+};
+function arc3OrbitalGlassAuthorityControls(observation) {
+  const controls = Object.freeze({
+    wrongCardCode: assessArc3OrbitalSurveyGlass({ ...observation, cardCode: 'CF1-not-a-valid-card' }),
+    wrongCardSeed: assessArc3OrbitalSurveyGlass({ ...observation,
+      cardCode: withCF1PlanetSeed(observation?.cardCode, 133) }),
+    wrongPlanetTargetSeed: assessArc3OrbitalSurveyGlass({ ...observation,
+      planetTarget: { ...observation?.planetTarget, seed: 133 } }),
+    wrongPlanetTargetOrdinal: assessArc3OrbitalSurveyGlass({ ...observation,
+      planetTarget: { ...observation?.planetTarget, ordinal: 2 } }),
+    unexpectedNavPlanet: assessArc3OrbitalSurveyGlass({ ...observation,
+      state: { ...observation?.state, planet: ARC3_ORBITAL_GLASS_TARGET.planetSeed,
+        planetOrdinal: ARC3_ORBITAL_GLASS_TARGET.planetOrdinal } }),
+    unexpectedNavWorld: assessArc3OrbitalSurveyGlass({ ...observation,
+      state: { ...observation?.state,
+        navWorldKey: 'CF1|g:999@90,-60|s:424242@560,170|p:134#3' } }),
+    wrongRenderedReceipt: assessArc3OrbitalSurveyGlass({ ...observation,
+      state: { ...observation?.state, renderedScene: { ...observation?.state?.renderedScene,
+        worldKey: 'CF1|g:999@90,-60|s:424242@560,170|p:134#3' } } }),
+    pendingPersistence: assessArc3OrbitalSurveyGlass({ ...observation,
+      state: { ...observation?.state, pendingPersistenceWrites: 1 } }),
+    closedCard: assessArc3OrbitalSurveyGlass({ ...observation, cardOpen: false }),
+  });
+  const expected = Object.freeze({
+    wrongCardCode: ['exactCardContext'], wrongCardSeed: ['exactCardContext'],
+    wrongPlanetTargetSeed: ['exactPlanetTarget'], wrongPlanetTargetOrdinal: ['exactPlanetTarget'],
+    unexpectedNavPlanet: ['systemNavShape'], unexpectedNavWorld: ['systemNavShape'],
+    wrongRenderedReceipt: ['renderedReceipt'], pendingPersistence: ['settledPersistence'],
+    closedCard: ['cardOpen'],
+  });
+  return Object.freeze({
+    ok: assessArc3OrbitalSurveyGlass(observation).ok
+      && Object.entries(controls).every(([name, assessment]) => (
+        isolatesArc3OrbitalGlassChecks(assessment, expected[name])
+      )),
+    controls, expected,
+  });
+}
+function arc3OrbitalGlassSelftest() {
+  const observation = Object.freeze({
+    rowCount: 1, label: 'Mineral veins', value: ARC3_ORBITAL_GLASS_TARGET.expectedValue,
+    mineActionCount: 0, sensitive: false, passive: true, rendered: true,
+    contained: true, horizontal: true, cardOpen: true,
+    cardCode: encodeCF1Payload({
+      t: 'p', g: [90, -60, 78, 0, 0.62, 0.5, 999, 1], s: [560, 170, 424242], p: 134,
+    }),
+    planetTarget: { seed: 134, ordinal: 3, screenX: 480, screenY: 360, width: 24, height: 24 },
+    state: {
+      mode: 'system', gal: 999, star: 424242, starX: 560, starY: 170,
+      planet: null, planetOrdinal: null, navGalaxyKey: 'CF1|g:999@90,-60',
+      navStarKey: 'CF1|g:999@90,-60|s:424242@560,170', navWorldKey: null,
+      renderedScene: { serial: 7, mode: 'system', galaxyKey: 'CF1|g:999@90,-60',
+        starKey: 'CF1|g:999@90,-60|s:424242@560,170', worldKey: null },
+      pendingPersistenceWrites: 0, cardOpen: true, engineeringStateKind: 'loaded',
+      engineeringProtection: null, research: ['scan1'],
+    },
+  });
+  const baseline = assessArc3OrbitalSurveyGlass(observation);
+  const authority = arc3OrbitalGlassAuthorityControls(observation);
+  const disclosure = assessArc3OrbitalSurveyGlass({
+    ...observation,
+    value: 'Silicon · Chlorine · Calcium · Void Essence · 570 pulls remaining',
+    sensitive: true,
+  });
+  return Object.freeze({
+    ok: baseline.ok && authority.ok
+      && isolatesArc3OrbitalGlassChecks(disclosure, ['exactOrderedValue', 'groundedSensitiveFacts']),
+    baseline, authority, disclosure,
+  });
+}
 const ARC4_DURABLE_READ_EXPRESSION = buildArc4DurableReadExpression();
 const ARC4_PLANETSIDE_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),side=document.getElementById('planetside');return {
   mode:state?.mode??null,galaxySeed:state?.gal??null,starSeed:state?.star??null,
@@ -3756,6 +3894,10 @@ function arc4GlassSelftest() {
 }
 
 async function reportSelftest() {
+  const orbitalSurvey = arc3OrbitalGlassSelftest();
+  if (!orbitalSurvey.ok) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: orbital Survey authority/disclosure controls failed (${JSON.stringify(orbitalSurvey)})`);
+  }
   const arc4 = arc4GlassSelftest();
   if (!arc4.ok) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: Arc 4 presentation/geometry/return controls failed (${JSON.stringify(arc4)})`);
@@ -6779,12 +6921,18 @@ async function main() {
         let orbitalRoute = null, orbitalRouteError = null;
         if (orbitalOpened) {
           try {
-            orbitalRoute = await waitFor('Deep Scanner Mars Survey', `(()=>{const s=window.__CF_SLICE__?.api?.state?.();
-              return s?.mode==='system'&&s?.gal===${ARC3_ORBITAL_GLASS_TARGET.galaxySeed}
-                &&s?.star===${ARC3_ORBITAL_GLASS_TARGET.star.seed}&&s?.starX===${ARC3_ORBITAL_GLASS_TARGET.star.x}
-                &&s?.starY===${ARC3_ORBITAL_GLASS_TARGET.star.y}&&s?.planet===${ARC3_ORBITAL_GLASS_TARGET.planetSeed}
-                &&s?.planetOrdinal===${ARC3_ORBITAL_GLASS_TARGET.planetOrdinal}&&s?.cardOpen===true
-                &&s?.sceneResources?.pendingPersistenceWrites===0?s:null;})()`, 10000);
+            orbitalRoute = await waitFor(
+              'Deep Scanner Mars Survey',
+              ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION,
+              10000,
+              (observation) => observation?.state?.mode === 'system'
+                && observation?.state?.gal === ARC3_ORBITAL_GLASS_TARGET.galaxySeed
+                && observation?.state?.star === ARC3_ORBITAL_GLASS_TARGET.star.seed
+                && observation?.state?.starX === ARC3_ORBITAL_GLASS_TARGET.star.x
+                && observation?.state?.starY === ARC3_ORBITAL_GLASS_TARGET.star.y
+                && observation?.cardOpen === true
+                && observation?.state?.pendingPersistenceWrites === 0,
+            );
           } catch (cause) { orbitalRouteError = String(cause?.message || cause); }
         }
         if (!orbitalOpened || orbitalRoute === null) {
@@ -6792,7 +6940,8 @@ async function main() {
         }
         await evalIn(`document.querySelector('#survey [data-row="Mineral veins"]')?.scrollIntoView({block:'nearest',inline:'nearest'})`);
         await sleep(40);
-        const orbitalSurvey = await evalIn(ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION);
+        const orbitalSurveyObservation = await evalIn(ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION);
+        const orbitalSurvey = assessArc3OrbitalSurveyGlass(orbitalSurveyObservation);
         addOutcome(vp.label, 'orbital-mineral-survey', 'ORBITAL_MINERAL_SURVEY_DISCLOSURE', '#survey [data-row="Mineral veins"]',
           orbitalSurvey,
           'one contained passive Mars row preserves ordinary-deposit order without cosmic, exceptional, grade, reserve, progress, or Mine disclosure');
@@ -6806,29 +6955,66 @@ async function main() {
         }));
         if (!orbitalSurveyControlRun) {
           orbitalSurveyControlRun = true;
-          const orbitalControl = await evalIn(`(()=>{const probe=()=>${ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION},
+          const orbitalControlEvidence = await evalIn(`(()=>{const probe=()=>${ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION},
             row=document.querySelector('#survey [data-row="Mineral veins"]'),priorHtml=row?.innerHTML??null,baseline=probe();
             if(!row||priorHtml===null)return {ok:false,why:'nonempty orbital row target missing',baseline};
             row.innerHTML='<span>Mineral veins</span><br>Silicon · Chlorine · Calcium · Void Essence · 570 pulls remaining';
-            const mutated=probe();row.innerHTML=priorHtml;const restored=probe();return {ok:baseline.ok
-              &&mutated.ok===false&&mutated.checks?.exactOrderedValue===false
-              &&mutated.checks?.groundedSensitiveFacts===false&&restored.ok===true,
-              baseline,mutated,restored};})()`);
+            const mutated=probe();row.innerHTML=priorHtml;const restored=probe();return {ok:true,baseline,mutated,restored};})()`);
+          const orbitalControl = (() => {
+            const baseline = assessArc3OrbitalSurveyGlass(orbitalControlEvidence?.baseline);
+            const mutated = assessArc3OrbitalSurveyGlass(orbitalControlEvidence?.mutated);
+            const restored = assessArc3OrbitalSurveyGlass(orbitalControlEvidence?.restored);
+            const authority = arc3OrbitalGlassAuthorityControls(orbitalControlEvidence?.baseline);
+            return {
+              ok: orbitalControlEvidence?.ok === true && baseline.ok
+                && isolatesArc3OrbitalGlassChecks(
+                  mutated, ['exactOrderedValue', 'groundedSensitiveFacts'],
+                )
+                && restored.ok && authority.ok,
+              evidence: orbitalControlEvidence, baseline, mutated, restored, authority,
+            };
+          })();
           if (!orbitalControl.ok) {
-            instrumentFailures.push(`${vp.label}: orbital Mineral veins order/disclosure mutation did not turn red and restore (${JSON.stringify(orbitalControl)})`);
+            instrumentFailures.push(`${vp.label}: orbital Survey card/target/nav/receipt/persistence and Mineral veins mutations did not turn red in isolation and restore (${JSON.stringify(orbitalControl)})`);
           }
           recordControls('orbital-mineral-survey-disclosure');
         }
         const earthSurveyRestored = await evalIn('window.__CF_SLICE__?.api?.surveyOn?.({seed:133,ordinal:2})??false');
-        let earthRestoreError = null;
+        let earthRestoreObservation = null, earthRestoreError = null;
         try {
-          await waitFor('Earth survey restored after Mars disclosure', `(()=>{const s=window.__CF_SLICE__?.api?.state?.();
-            return s?.mode==='system'&&s?.gal===999&&s?.star===424242&&s?.planet===133&&s?.planetOrdinal===2
-              &&s?.cardOpen===true&&!!document.querySelector('#survey [data-act="landcta"]')
-              &&document.querySelectorAll('#survey [data-row="Mineral veins"]').length===0?s:null;})()`, 10000);
+          earthRestoreObservation = await waitFor(
+            'Earth survey restored after Mars disclosure',
+            `(()=>{const S=window.__CF_SLICE__,s=S?.api?.state?.(),target=S?.api?.planetScreenTarget?.({seed:133,ordinal:2})??null;
+              return {mode:s?.mode??null,gal:s?.gal??null,star:s?.star??null,starX:s?.starX??null,starY:s?.starY??null,
+                planet:s?.planet??null,planetOrdinal:s?.planetOrdinal??null,navGalaxyKey:s?.navGalaxyKey??null,
+                navStarKey:s?.navStarKey??null,navWorldKey:s?.navWorldKey??null,cardOpen:s?.cardOpen??null,
+                cardCode:S?.api?.cardShareCode?.()??null,planetTarget:target,renderedScene:s?.renderedScene??null,
+                pendingPersistenceWrites:s?.sceneResources?.pendingPersistenceWrites??null,
+                hasLandAction:!!document.querySelector('#survey [data-act="landcta"]'),
+                mineralRowCount:document.querySelectorAll('#survey [data-row="Mineral veins"]').length};})()`,
+            10000,
+            (observation) => {
+              const payload = decodeCF1Payload(observation?.cardCode);
+              const receipt = observation?.renderedScene;
+              return observation?.mode === 'system' && observation?.gal === 999
+                && observation?.star === 424242 && observation?.starX === 560 && observation?.starY === 170
+                && observation?.planet === null && observation?.planetOrdinal === null
+                && observation?.navGalaxyKey === 'CF1|g:999@90,-60'
+                && observation?.navStarKey === 'CF1|g:999@90,-60|s:424242@560,170'
+                && observation?.navWorldKey === null && observation?.cardOpen === true
+                && payload?.t === 'p' && payload?.p === 133
+                && observation?.planetTarget?.seed === 133 && observation?.planetTarget?.ordinal === 2
+                && observation?.planetTarget?.width > 0 && observation?.planetTarget?.height > 0
+                && receipt?.serial > 0 && receipt?.mode === 'system'
+                && receipt?.galaxyKey === observation.navGalaxyKey
+                && receipt?.starKey === observation.navStarKey && receipt?.worldKey === null
+                && observation?.pendingPersistenceWrites === 0
+                && observation?.hasLandAction === true && observation?.mineralRowCount === 0;
+            },
+          );
         } catch (cause) { earthRestoreError = String(cause?.message || cause); }
         if (!earthSurveyRestored || earthRestoreError !== null) {
-          instrumentFailures.push(`${vp.label}: Earth Survey did not restore exactly after the Mars disclosure (${JSON.stringify({ earthSurveyRestored, earthRestoreError })})`);
+          instrumentFailures.push(`${vp.label}: Earth Survey did not restore exactly after the Mars disclosure (${JSON.stringify({ earthSurveyRestored, earthRestoreObservation, earthRestoreError })})`);
         }
         await evalIn('window.__CF_SLICE__.api.landHere()');
         await waitFor('Planetside', `window.__CF_SLICE__.api.state().mode==='surface' && document.getElementById('planetside')?.textContent?.trim().length>20`, 10000);
