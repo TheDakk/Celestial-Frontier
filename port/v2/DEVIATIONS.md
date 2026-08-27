@@ -22,9 +22,11 @@ diagnostic repair. `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` remains the earlie
 source. Signed successor `862a75b316142348636abea442dab15e87393642` is the paired 40/42
 heap/DOM red source. Signed calibration source `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad`
 (tree `a389646081f9fb5246825d1ac187eeb06504a8e4`) supplied the exact three clean SceneMemory
-candidates and the justified heap-only activation. The activation worktree/tests are green; a signed activation
-source and fresh certificate IDs remain pending. Tracked producer bindings must match that
-activation source; former exact-input certificates remain historical
+candidates and the justified heap-only activation. Signed activation source
+`4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree `ff11158a…`, parent `6c9ad855…`)
+now owns those edits under budget SHA-256 `e6c4aeea…`. Its 134-file /1,469-pass /one-skip battery
+and producer bindings are green. This documentation-only descendant leaves producer/budget bytes
+identical; fresh certificate IDs remain pending. Former exact-input certificates remain historical
 under the version-tolerant Edge-family/CDP capability contracts.
 
 Signed-clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth Slice run
@@ -76,8 +78,8 @@ Signed `6c9ad855…` supplied exactly `20260827-phase4-repair-candidate1`,
 `20260827-phase4-repair-candidate2`, and `20260827-phase4-repair-candidate3`, each one attempt,
 zero retries and complete browser/server/workspace-lock cleanup on Edge `.107` / CDP `1.3`.
 Phone/desktop V8 maxima were 11,566,152 / 11,630,936 bytes; aggregate maxima were 17,681,258 /
-17,636,682 bytes; nodes/listeners remained 676/71 and 673/70. The reviewed worktree activation
-changes only V8 to 12 MiB (`12,582,912`) and aggregate heap to 18 MiB (`18,874,368`), leaving exact
+17,636,682 bytes; nodes/listeners remained 676/71 and 673/70. Signed `4a54c0d…` activates only V8
+at 12 MiB (`12,582,912`) and aggregate heap at 18 MiB (`18,874,368`), leaving exact
 phone/desktop headroom of 1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes.
 Every other ceiling stays unchanged and the paired red still fails its node/listener excess. A
 compatible Edge point update never triggers calibration or any threshold change. No activation
@@ -116,8 +118,8 @@ hosted/HUMAN whole-Gate or release authority exists for the repair.
   delegated owner and restores the exact registered opener for nested clicks. Standalone consumers
   retain the historical eager default unless they explicitly select the production lifecycle.
 
-- ◐ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — shell cleanup, clean calibration and worktree
-  activation are complete; signed activation is pending.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
+- ◐ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — shell cleanup, clean calibration and signed
+  activation are complete; certification is pending.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
   40/42 with exact node/listener and heap breaches, one attempt, zero retries and complete cleanup.
   The evaluator now names field/value/ceiling and retains valid zero-valued heap components. Dirty
   diagnostic `20260827165427809-91398-352d7132df` proves the repaired 676/673 nodes and 71/70
@@ -125,8 +127,8 @@ hosted/HUMAN whole-Gate or release authority exists for the repair.
   supplied the exact three clean, one-attempt/zero-retry candidates with complete cleanup. Their
   maxima select only 12 MiB V8 and 18 MiB aggregate ceilings, with exact phone/desktop headroom of
   1,016,760 / 951,976 and 1,193,110 / 1,237,686 bytes; every other ruler stays unchanged. The paired
-  red retains its node/listener failures. The activation worktree/tests are green; a signed activation source and
-  exact certification remain pending. Exact Edge point version remains provenance: a compatible
+  red retains its node/listener failures. Signed `4a54c0d…` owns the green activation; exact
+  certification remains pending. Exact Edge point version remains provenance: a compatible
   update alone never starts calibration, repins authority or moves a threshold.
 
 - ★ **D-GATE-B-62 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 62 domain
@@ -2300,8 +2302,9 @@ duplicates).
   Shipyard extension for its exact inputs. Later terminal-green run `32646110946` merged PR #33.
   That `7d8dc380…` / Edge `.101` certificate is historical, not current authority; the
   version-tolerant SceneMemory ruler kept the same numeric budget at that historical boundary. The
-  current repair completed its three-candidate and paired-red calibration; selected heap-only
-  activation remains before exact certification. The Arc 1A HUMAN review remains separate.
+  current repair completed its three-candidate and paired-red calibration, and signed `4a54c0d…`
+  completed the selected heap-only activation; exact certification remains open. The Arc 1A HUMAN
+  review remains separate.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds

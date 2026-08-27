@@ -73,11 +73,15 @@
 > `20260827-phase4-repair-candidate3`; each ran once with zero retries and complete cleanup on
 > Edge `.107` / CDP `1.3`. Their phone/desktop V8 maxima were 11,566,152 / 11,630,936 bytes and
 > aggregate maxima were 17,681,258 / 17,636,682 bytes; nodes/listeners stayed 676/71 and 673/70.
-> The reviewed worktree activation changes only V8 to 12 MiB (`12,582,912`) and aggregate heap to
+> Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree
+> `ff11158ac2ccc214490f6f3289d4a7a3660138e6`, parent `6c9ad855…`) changes only V8 to
+> 12 MiB (`12,582,912`) and aggregate heap to
 > 18 MiB (`18,874,368`), providing exact phone/desktop headroom of 1,016,760 / 951,976 and
 > 1,193,110 / 1,237,686 bytes respectively. Every other ceiling stays unchanged, and the preserved
-> `862a75b…` paired red still fails nodes/listeners. A signed activation source and fresh certification
-> remain pending. Edge `.107` is provenance, not a version pin or a rebaseline trigger.
+> `862a75b…` paired red still fails nodes/listeners. Budget SHA-256 is `e6c4aeea…`, the complete
+> 134-file battery is green at 1,469 passed /one skip, and producer bindings match. The forthcoming
+> documentation-only signed descendant changes neither product producer nor budget; fresh
+> certification is next. Edge `.107` is provenance, not a version pin or a rebaseline trigger.
 >
 > **At the Arc 2 boundary, still open and deliberately not fabricated:** its economy trace is
 > source-neutral and reports `sourceModelStatus: arc3-deferred`. Arc 3's current overlay above now

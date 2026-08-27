@@ -64,8 +64,13 @@ maxima were 11,566,152 phone and 11,630,936 desktop bytes; aggregate maxima were
 selects only 12 MiB (`12,582,912`) V8 and 18 MiB (`18,874,368`) aggregate ceilings: exact headroom
 is 1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes for phone/desktop. Every
 other ceiling stays unchanged, and the paired `862a75b…` red must remain red on nodes/listeners.
-Budget/test activation is not certification: a signed activation source, an exact certificate,
-and the restarted serial campaign remain separate fail-fast steps.
+Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree
+`ff11158ac2ccc214490f6f3289d4a7a3660138e6`, parent `6c9ad855…`) applied only those four
+profile-specific heap values under budget SHA-256
+`e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375`. Its good signature,
+134-file /1,469-pass /one-skip battery and matching producer bindings close activation, not
+certification: an exact SceneMemory certificate and the restarted serial campaign remain separate
+fail-fast steps. A documentation-only signed descendant changes neither producer nor budget bytes.
 
 ⚠⚠ **LATCH IRREVERSIBLE CONVERGENCE BEFORE FALLIBLE PRESENTATION** (2026-08-27).
 F4 authority loss originally tried to repaint an already-open full Shipyard before scheduling its

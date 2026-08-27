@@ -51,11 +51,14 @@ does not silently promote planned behavior into the in-game Guide.
 > `20260827-phase4-repair-candidate3`, each once with zero retries and complete cleanup on Edge
 > `.107` / CDP `1.3`. Phone/desktop V8 maxima were 11,566,152 / 11,630,936 bytes; aggregate maxima
 > were 17,681,258 / 17,636,682 bytes; nodes/listeners remained 676/71 and 673/70. The selected
-> reviewed worktree activation changes only V8 to 12 MiB (`12,582,912`) and aggregate to 18 MiB
+> signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree
+> `ff11158ac2ccc214490f6f3289d4a7a3660138e6`, parent `6c9ad855…`) changes only V8 to
+> 12 MiB (`12,582,912`) and aggregate to 18 MiB
 > (`18,874,368`): exact phone/desktop headroom is 1,016,760 / 951,976 V8 bytes and 1,193,110 /
 > 1,237,686 aggregate bytes. Every other ceiling stays unchanged and paired red `862a75b…` still
-> fails nodes/listeners. The activation worktree/tests are green; a signed activation source and a new exact
-> certificate remain pending.
+> fails nodes/listeners. Budget SHA-256 is `e6c4aeea…`; the full 134-file battery is green at
+> 1,469 passed /one skip and producer bindings match. The documentation-only signed descendant keeps
+> producer/budget bytes identical; a new exact certificate is next.
 >
 > In particular, landing/name history now binds the complete source-reproved CF1 world rather than
 > a globally false leaf-seed key. A fixed v5 manifest plus four byte-balanced shards preserve exact

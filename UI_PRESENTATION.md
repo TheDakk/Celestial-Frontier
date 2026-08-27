@@ -70,20 +70,23 @@
 > `20260827-phase4-repair-candidate3`. Each ran once with zero retries and complete cleanup on Edge
 > `.107` / CDP `1.3`. Across them, phone/desktop V8 maxima were 11,566,152 / 11,630,936 bytes,
 > aggregate maxima were 17,681,258 / 17,636,682 bytes, and nodes/listeners remained 676/71 and
-> 673/70. The reviewed worktree activation sets only 12 MiB (`12,582,912`) V8 and 18 MiB (`18,874,368`)
+> 673/70. Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree
+> `ff11158ac2ccc214490f6f3289d4a7a3660138e6`, parent `6c9ad855…`) sets only 12 MiB
+> (`12,582,912`) V8 and 18 MiB (`18,874,368`)
 > aggregate ceilings. Exact phone/desktop headroom is 1,016,760 / 951,976 V8 bytes and 1,193,110 /
 > 1,237,686 aggregate bytes; every other ceiling stays unchanged, and the `862a75b…` paired red
-> remains red on nodes/listeners. A signed activation source, a fresh
-> certificate and the restarted serial campaign remain pending. Edge `.107` is run provenance only;
+> remains red on nodes/listeners. Budget SHA-256 is `e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375`;
+> producer bindings match. A fresh certificate and the restarted serial campaign are next. Edge
+> `.107` is run provenance only;
 > a compatible point update never moves a ruler.
 >
 > Focused changed-source checks and directionally independent controls have exercised these bounded
 > repairs. The complete current browserless activation battery is green at 134 Vitest files / 1,469
 > passed / one intentional skip / zero failures, plus all TypeScript programs, `artunused`,
 > syntax/import selftests and the 887-module build. The final documentation/release-copy consistency
-> review and independent evidence/code whole-diff review are both CLEAR. The calibration source and
-> three candidates and activation controls are now exact; a signed activation source and fresh
-> certification remain next.
+> review and independent evidence/code whole-diff review are both CLEAR. The calibration source,
+> three candidates and signed activation are exact; the next signed documentation-only descendant
+> leaves producer/budget bytes identical, and fresh certification is next.
 > Current-input Slice retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > Signed-clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7`, which failed after 397,101 ms with 23 findings
@@ -180,8 +183,8 @@
 > historical Engineering implementation and browser evidence were committed through `c4a02be`.
 > The protected-preview product/diagnostic correction described above is included in signed
 > `862a75b…`; `bb5dc7c…` remains the exact earlier red that exposed it. Signed calibration source
-> `6c9ad855…` now owns the three clean repair candidates; heap-only activation and fresh certificate
-> IDs remain pending.
+> `6c9ad855…` owns the three clean repair candidates; signed `4a54c0d…` owns the heap-only activation,
+> and fresh certificate IDs remain pending.
 > Retained no-retry Slice run `20260825013823076-822-b99fea33b17b` passed in 253,181 ms with
 > 0 findings and 10 screenshots; the full Glass Matrix separately passed in 64,222 ms across 12/12
 > viewports and 78/78 controls with none blocked/omitted and no findings, instrument failures, or

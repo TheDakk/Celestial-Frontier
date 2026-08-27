@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-27 · CURRENT RED PRESERVED · HEAP-ONLY ACTIVATION GREEN · SIGNED ACTIVATION NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-27 · CURRENT RED PRESERVED · SIGNED HEAP-ONLY ACTIVATION COMPLETE · EXACT CERTIFICATE NEXT ◀◀◀
 
 ### Exact local ownership and authority boundary
 
@@ -33,8 +33,16 @@ the archive verbatim and refresh this handoff in place.
   `a389646081f9fb5246825d1ac187eeb06504a8e4`) is ahead 84 of `origin/openai/mac` and contains the
   bounded closed-surface ownership repair, actionable SceneMemory diagnoses, paired broken-baseline
   replay, producer rebindings and live documentation. Exactly three clean calibration candidates
-  now bind that unchanged source. The worktree contains their preserved audit carriers plus the
-  reviewed activation/evidence worktree. The four numeric edits are not yet a signed activation source.
+  bind that unchanged source.
+- **Signed activation source:** `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree
+  `ff11158ac2ccc214490f6f3289d4a7a3660138e6`, parent `6c9ad855…`) is ahead 85 of
+  `origin/openai/mac` with a good ED25519 signature. It activates only the four profile-specific
+  V8/aggregate values under budget SHA-256
+  `e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375`; all other ceilings remain
+  unchanged. The complete 134-file battery is green at 1,469 passed / one intentional skip, and
+  current SceneMemory/Compendium producer bindings match. This overlay is intended to become a
+  signed documentation-only descendant of `4a54c0d…`; it changes no product, producer or budget
+  bytes and therefore does not need to self-name its future commit hash.
 - **No external authority:** this batch authorizes no fetch/merge, push, hosted Actions, PR
   mutation, release, version bump, deployment, preview publication or `rnSeen` mutation.
   `main`, production and both sites remain unchanged.
@@ -104,7 +112,8 @@ the archive verbatim and refresh this handoff in place.
   outcomes and zero findings. Across the three, V8 maxima were 11,566,152 phone and
   11,630,936 desktop bytes; aggregate maxima were 17,681,258 and 17,636,682. Nodes/listeners were
   invariant at 676/71 phone and 673/70 desktop.
-- The reviewed worktree activation changes only `heapUsedBytesMax` to 12 MiB (`12,582,912`) and
+- Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` changes only
+  `heapUsedBytesMax` to 12 MiB (`12,582,912`) and
   `heapAggregateBytesMax` to 18 MiB (`18,874,368`). Exact headroom above the phone/desktop maxima is
   1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes. Every DOM/listener,
   slope/range, resource, timing and lifecycle ceiling remains unchanged. The preserved `862a75b…`
@@ -119,10 +128,10 @@ the archive verbatim and refresh this handoff in place.
    hidden rows after late action settlement or reacquire after disposal. Panel opener focus uses one
    delegated capture owner and restores the exact nested clicked opener. SceneMemory reports the
    breached field/value/ceiling and preserves zero-valued heap components allowed by the old contract.
-2. **Repair calibration:** one unchanged signed source supplied exactly three independent clean,
+2. **Repair calibration and activation:** one unchanged signed source supplied exactly three independent clean,
    one-attempt/zero-retry candidates with complete cleanup. Only 12 MiB V8 and 18 MiB aggregate
-   heap ceilings are selected, with strict byte headroom; all other ceilings and paired-red
-   discrimination stay fixed. This is calibration evidence, not active-budget certification.
+   heap ceilings were activated in signed `4a54c0d…`, with strict byte headroom; all other ceilings
+   and paired-red discrimination stay fixed. The activation is not an exact browser certificate.
 3. **Sixth-red roots:** Guide/Glass share the exact 55-bullet draft contract; ecology comparison
    excludes only its two bounded diagnostic clocks; contextless blocked audio no longer invents a
    mute transition; epoch publication is proved only after the real durable seam; rebuilt Survey
@@ -197,11 +206,12 @@ the archive verbatim and refresh this handoff in place.
 - **Real Edge diagnostics:** actual preflight passes Edge `151.0.4129.107` under the
   version-tolerant CDP authority. `slicesmoke --outcome-controls-only` passes all three positive
   scenarios plus their collision/heartbeat/revision negative controls.
-- **Current producer bindings and calibration:** signed source `6c9ad855…` bound the final
+- **Current producer bindings and activation:** signed calibration source `6c9ad855…` bound the final
   browserless build and tracked SceneMemory/Compendium producer records, then supplied the exact
   three clean SceneMemory candidates once each with zero retries and complete cleanup. The selected
-  12 MiB V8 /18 MiB aggregate activation is complete in the reviewed worktree; all three candidates,
-  both paired-red forms and exact-ceiling/next-byte controls pass the full browserless replay.
+  12 MiB V8 /18 MiB aggregate activation is signed at `4a54c0d…` under budget SHA-256
+  `e6c4aeea…`; all three candidates, both paired-red forms and exact-ceiling/next-byte controls pass
+  the full browserless replay, and the current SceneMemory/Compendium producer bindings match.
   Compendium's numeric ruler is unchanged and needs one fresh
   exact-producer certificate after activation.
 - Prior independent product/code, SceneMemory and release-note audits are CLEAR for their reviewed
@@ -213,13 +223,13 @@ the archive verbatim and refresh this handoff in place.
 
 ### Exact remaining local sequence — serial, fail-fast, no automatic retry
 
-1. Create and signature-verify one clean local **activation-source** commit on `openai/mac`, with
-   final SceneMemory/Compendium producer bindings matching its exact build.
-2. Run one exact-budget SceneMemory certificate and named verifier from that unchanged source. If
-   green, restart the full serial campaign with fresh IDs: Layout → SceneMemory → Compendium →
-   Slice → Glass → uninterrupted 1,200,000 ms recovery. Any nonzero/red/instrument result stops
-   the chain and is never retried automatically.
-3. Record exact IDs/hashes in a signed documentation-only evidence descendant, perform the final
+1. From signed activation source `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93`, run one exact-budget
+   SceneMemory certificate and named verifier. The signed documentation-only descendant may be the
+   clean campaign source because it changes no product, producer or budget bytes.
+2. If SceneMemory is green, restart the full serial campaign with fresh IDs: Layout → SceneMemory →
+   Compendium → Slice → Glass → uninterrupted 1,200,000 ms recovery. Any nonzero/red/instrument
+   result stops the chain and is never retried automatically.
+3. Record exact IDs/hashes in a later signed documentation-only evidence descendant, perform the final
    whole-plan code/evidence/polish review and deliver Nick's fixed/remaining release notes.
 
 ### Open product and HUMAN boundaries
@@ -236,9 +246,9 @@ the archive verbatim and refresh this handoff in place.
 
 ### Git / paired-agent handoff
 
-- **Current side — OpenAI/Codex macOS:** owns this local unpushed activation worktree on
-  `openai/mac`, ahead 84 at signed calibration source `6c9ad855…`. The exact three-run calibration
-  is complete; finish local activation and serial evidence here without fetch/merge/switch or
+- **Current side — OpenAI/Codex macOS:** owns this local unpushed documentation-only descendant
+  worktree on `openai/mac`, ahead 85 at signed activation `4a54c0d…`. Calibration and activation are
+  complete; run the exact certificate and serial evidence here without fetch/merge/switch or
   copying files.
 - **GitHub step now:** none. `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, the repository is public,
   but zero exact hosted attempts are authorized. Do not push, label, dispatch, rerun, mark Ready,
