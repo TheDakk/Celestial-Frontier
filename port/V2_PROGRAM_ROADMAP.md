@@ -135,10 +135,10 @@
 > `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
 > attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). This change is scoped to Compendium; Edge `.107` is provenance only,
 > and SceneMemory/root Gate A are unchanged.
-> Current browser-free local verification is 122 files /1,362 passed /
+> Current browser-free local verification is 123 files /1,372 passed /
 > one intentional skip /zero failures, all TypeScript programs including `noUnused`, an 884-module
 > Vite build, root validation/fingerprint, legacy smoke and applicable selftests. Current-input
-> Slice retains three one-attempt/zero-retry reds on Edge `.107`. Run
+> Slice retains four one-attempt/zero-retry reds on Edge `.107`. Run
 > `20260826214541492-83064-b252b137f7a3` at signed `8553bd7…` failed after 92,772 ms with two
 > instrument false reds plus one retained-Survey focus product regression. Changed clean signed
 > source `9d4b2b0…` supplied `20260827000034983-98202-869d966f2f88`, which failed after 92,566 ms
@@ -148,7 +148,13 @@
 > then supplied `20260827025804458-2742-c0c871ee52b6`, which failed after 93,582 ms with three
 > findings from one instrument cascade: the retained Survey card correctly hid the right rail, but
 > Slice attempted zero-rect `railshipyard` before yielding it. That outcome clears the card-context
-> repair; Deep Scanners and every later stage did not run, and the lifecycle repair is unrerun. No current-input Slice PASS, Glass result or recovery certificate exists. Hosted, HUMAN, whole-Gate,
+> repair. Clean signed source `bd6b06b…` then supplied `20260827032748771-8092-d2a0130882c1`,
+> which failed after 119,502 ms with six scopes from two harness roots. Stale Mars-source and obsolete
+> five-key rendered-receipt expectations rejected valid Search/remnant evidence and skipped Skim;
+> after reload, retained Survey correctly hid the rail before another Engineering attempt, cascading
+> through storage/stale findings. Product Search, remnant routing and rail hiding were correct. Deep
+> Scanners, fixed Fabrication and the repaired lifecycle are outcome-cleared; Skim settlement and
+> later stages remain unproved, and both new harness repairs are unrerun. No current-input Slice PASS, Glass result or recovery certificate exists. Hosted, HUMAN, whole-Gate,
 > release/version, preview/publication and deployment authority remain open.
 >
 > **2026-08-25 local campaign boundary — historical checkpoint, still foundational where the
@@ -1431,11 +1437,13 @@ certificate `20260826-phase4-certification` is historical green evidence for sig
 `6284a394…`, and clean signed activation `91f4e044…` passed current certificate
 `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
 attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`).
-Current-input Slice retains three terminal reds: the first run's three findings, the changed-source
-second run's sole impossible card-context-oracle finding, and the third run's three findings from
-attempting the intentionally hidden right rail while retained Survey remained open. Settings and
-Survey focus, then card context, are outcome-cleared. Deep Scanners and every later stage did not
-run; the lifecycle repair is unrerun. No current-input Slice PASS, Glass
+Current-input Slice retains four terminal reds: the first run's three findings, the changed-source
+second run's sole impossible card-context-oracle finding, the third run's retained-card rail
+cascade, and `20260827032748771-8092-d2a0130882c1` at clean signed `bd6b06b…`, whose six scopes
+reduce to stale Mars-source/rendered-receipt expectations and a post-reload retained-card lifecycle
+error. Settings/focus, card context, Deep Scanners, fixed Fabrication and the repaired lifecycle are
+outcome-cleared. Product Search/remnant routing/rail hiding were correct. Skim settlement and later
+stages remain unproved; both new harness repairs are unrerun. No current-input Slice PASS, Glass
 result or recovery certificate exists.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not

@@ -614,35 +614,40 @@ const decodeMarkedCf1Payload = (code) => {
   } catch { return null; }
 };
 
-const ENGINEERING_MARS_ROUTE_ORACLE = Object.freeze({
+const ENGINEERING_POST_LIFECYCLE_SOURCE_ORACLE = Object.freeze({
   galaxyKey: 'CF1|g:999@90,-60',
-  starKey: 'CF1|g:999@90,-60|s:424242@560,170',
-  worldKey: 'CF1|g:999@90,-60|s:424242@560,170|p:134#3',
+  starKey: 'CF1|g:999@90,-60|s:380168149@347.25,24.8',
   reach: 880.0000000000001,
 });
-const exactRenderedReceipt = (receipt, { mode, galaxyKey, starKey, worldKey }) => (
+const exactRenderedReceipt = (receipt, {
+  mode, ecologyEpoch, galaxyKey, starKey, worldKey,
+}) => (
   isToolRecord(receipt) && Number.isInteger(receipt.serial) && receipt.serial > 0
-  && Object.keys(receipt).sort().join(',') === 'galaxyKey,mode,serial,starKey,worldKey'
-  && receipt.mode === mode && receipt.galaxyKey === galaxyKey
+  && Object.keys(receipt).sort().join(',')
+    === 'ecologyEpoch,galaxyKey,mode,serial,starKey,worldKey'
+  && Number.isSafeInteger(ecologyEpoch) && ecologyEpoch >= 0
+  && receipt.mode === mode && receipt.ecologyEpoch === ecologyEpoch
+  && receipt.galaxyKey === galaxyKey
   && receipt.starKey === starKey && receipt.worldKey === worldKey
 );
-const exactMarsRouteSource = (route) => {
-  const expected = ENGINEERING_MARS_ROUTE_ORACLE;
-  return isToolRecord(route) && route.mode === 'surface'
+const exactPostLifecycleBiomeSystemSource = (route) => {
+  const expected = ENGINEERING_POST_LIFECYCLE_SOURCE_ORACLE;
+  return isToolRecord(route) && route.mode === 'system'
     && route.gal === 999 && route.galX === 90 && route.galY === -60 && route.galSize === 78
-    && route.star === 424242 && route.starX === 560 && route.starY === 170
-    && route.planet === 134 && route.planetOrdinal === 3
+    && route.star === 380168149 && route.starX === 347.25 && route.starY === 24.8
+    && route.planet === null && route.planetOrdinal === null
     && route.navGalaxyKey === expected.galaxyKey && route.navStarKey === expected.starKey
-    && route.navWorldKey === expected.worldKey && route.stage === 1 && route.reach === expected.reach
-    && route.panelOpen === null && route.cardOpen === false && route.cardTitle === null
+    && route.navWorldKey === null && route.stage === 1 && route.reach === expected.reach
+    && Number.isSafeInteger(route.epoch) && route.epoch >= 0
+    && route.panelOpen === null && route.cardOpen === false
     && route.shipVisual?.chassisStage === 1
     && canonicalToolJson(route.shipVisual?.installedSystemIds) === canonicalToolJson(['jumpdrive'])
     && canonicalToolJson(route.shipVisual?.hardpoints)
       === canonicalToolJson({ array: false, autoext: false, cscoop: false })
     && route.shipVisual?.provenance === 'owned-items'
     && exactRenderedReceipt(route.renderedScene, {
-      mode: 'surface', galaxyKey: expected.galaxyKey,
-      starKey: expected.starKey, worldKey: expected.worldKey,
+      mode: 'system', ecologyEpoch: route.epoch, galaxyKey: expected.galaxyKey,
+      starKey: expected.starKey, worldKey: null,
     });
 };
 
@@ -676,7 +681,7 @@ export const assessArc3RemnantRejectedSearchControl = (evidence = {}) => {
         === canonicalToolJson([90, -60, 78, 0, 0.62, 0.5, 999, 1])
       && canonicalToolJson(decodedTarget?.star)
         === canonicalToolJson([expectedTarget?.x, expectedTarget?.y, expectedTarget?.seed]),
-    source: exactMarsRouteSource(before?.route),
+    source: exactPostLifecycleBiomeSystemSource(before?.route),
     durableEvidence: arc3DurableEvidenceComplete(before?.raw)
       && arc3DurableEvidenceComplete(after?.raw),
     exactRoute: canonicalToolJson(after?.route) === canonicalToolJson(before?.route),
@@ -792,7 +797,7 @@ export const assessArc3RemnantSkimRoutePrecondition = (evidence = {}) => {
       target?.canonicalStar?.x - 560,
       target?.canonicalStar?.y - 170,
       ) <= neighborhoodRadius,
-    preRoute: exactMarsRouteSource(preRoute),
+    preRoute: exactPostLifecycleBiomeSystemSource(preRoute),
     charterOwnership: current?.stage === 1 && current?.shipVisual?.chassisStage === 1
       && canonicalToolJson(current?.shipVisual?.installedSystemIds)
         === canonicalToolJson(['jumpdrive'])
@@ -805,7 +810,8 @@ export const assessArc3RemnantSkimRoutePrecondition = (evidence = {}) => {
       && current?.starX === expected.canonicalStar.x && current?.starY === expected.canonicalStar.y
       && current?.planet === null && current?.navStarKey === expected.navStarKey,
     renderedReceipt: exactRenderedReceipt(current?.renderedScene, {
-      mode: 'system', galaxyKey: ENGINEERING_MARS_ROUTE_ORACLE.galaxyKey,
+      mode: 'system', ecologyEpoch: current?.epoch,
+      galaxyKey: ENGINEERING_POST_LIFECYCLE_SOURCE_ORACLE.galaxyKey,
       starKey: expected.navStarKey, worldKey: null,
     }) && Number.isInteger(preRoute?.renderedScene?.serial)
       && current.renderedScene.serial > preRoute.renderedScene.serial,
@@ -1628,21 +1634,34 @@ const encodeRouteSelftestCode = (target) => 'CF1-' + Buffer.from(JSON.stringify(
   s: [target.x, target.y, target.seed],
 })).toString('base64url');
 const remnantRouteSelftestPreRoute = {
-  mode: 'surface', gal: 999, galX: 90, galY: -60, galSize: 78,
-  star: 424242, starX: 560, starY: 170, planet: 134, planetOrdinal: 3,
-  navGalaxyKey: ENGINEERING_MARS_ROUTE_ORACLE.galaxyKey,
-  navStarKey: ENGINEERING_MARS_ROUTE_ORACLE.starKey,
-  navWorldKey: ENGINEERING_MARS_ROUTE_ORACLE.worldKey,
+  mode: 'system', gal: 999, galX: 90, galY: -60, galSize: 78,
+  star: 380168149, starX: 347.25, starY: 24.8, planet: null, planetOrdinal: null,
+  navGalaxyKey: ENGINEERING_POST_LIFECYCLE_SOURCE_ORACLE.galaxyKey,
+  navStarKey: ENGINEERING_POST_LIFECYCLE_SOURCE_ORACLE.starKey,
+  navWorldKey: null,
   renderedScene: {
-    serial: 7, mode: 'surface', galaxyKey: ENGINEERING_MARS_ROUTE_ORACLE.galaxyKey,
-    starKey: ENGINEERING_MARS_ROUTE_ORACLE.starKey, worldKey: ENGINEERING_MARS_ROUTE_ORACLE.worldKey,
+    serial: 7, mode: 'system', ecologyEpoch: 12,
+    galaxyKey: ENGINEERING_POST_LIFECYCLE_SOURCE_ORACLE.galaxyKey,
+    starKey: ENGINEERING_POST_LIFECYCLE_SOURCE_ORACLE.starKey, worldKey: null,
   },
-  stage: 1, reach: ENGINEERING_MARS_ROUTE_ORACLE.reach,
+  epoch: 12, stage: 1, reach: ENGINEERING_POST_LIFECYCLE_SOURCE_ORACLE.reach,
   shipVisual: {
     chassisStage: 1, hardpoints: { array: false, autoext: false, cscoop: false },
     installedSystemIds: ['jumpdrive'], provenance: 'owned-items',
   },
-  panelOpen: null, cardOpen: false, cardTitle: null, save: {},
+  panelOpen: null, cardOpen: false, cardTitle: 'Oska', save: {},
+};
+const remnantRouteSelftestOldMarsRoute = {
+  ...structuredClone(remnantRouteSelftestPreRoute),
+  mode: 'surface', star: 424242, starX: 560, starY: 170,
+  planet: 134, planetOrdinal: 3,
+  navStarKey: 'CF1|g:999@90,-60|s:424242@560,170',
+  navWorldKey: 'CF1|g:999@90,-60|s:424242@560,170|p:134#3',
+  renderedScene: {
+    ...remnantRouteSelftestPreRoute.renderedScene, mode: 'surface',
+    starKey: 'CF1|g:999@90,-60|s:424242@560,170',
+    worldKey: 'CF1|g:999@90,-60|s:424242@560,170|p:134#3',
+  },
 };
 const remnantRouteSelftestEvidence = {
   target: { ...ENGINEERING_REMNANT_ROUTE_TARGET,
@@ -1654,13 +1673,14 @@ const remnantRouteSelftestEvidence = {
     mode: 'system', gal: 999, galX: 90, galY: -60,
     star: 449521432, starX: 734.58, starY: -10.77, planet: null,
     navStarKey: ENGINEERING_REMNANT_ROUTE_TARGET.navStarKey,
-    stage: 1,
+    epoch: 12, stage: 1,
     shipVisual: {
       chassisStage: 1, hardpoints: { array: false, autoext: false, cscoop: false },
       installedSystemIds: ['jumpdrive'], provenance: 'owned-items',
     },
     renderedScene: {
-      serial: 8, mode: 'system', galaxyKey: ENGINEERING_MARS_ROUTE_ORACLE.galaxyKey,
+      serial: 8, mode: 'system', ecologyEpoch: 12,
+      galaxyKey: ENGINEERING_POST_LIFECYCLE_SOURCE_ORACLE.galaxyKey,
       starKey: ENGINEERING_REMNANT_ROUTE_TARGET.navStarKey, worldKey: null,
     },
   },
@@ -1701,6 +1721,12 @@ const remnantRouteTargetControls = [
   ...remnantRouteSelftestEvidence,
   target: { ...remnantRouteSelftestEvidence.target, ...drift },
 }));
+const remnantRouteWithoutEpoch = structuredClone(remnantRouteSelftestPreRoute);
+delete remnantRouteWithoutEpoch.epoch;
+const remnantRouteWithoutReceiptEpoch = structuredClone(remnantRouteSelftestPreRoute);
+delete remnantRouteWithoutReceiptEpoch.renderedScene.ecologyEpoch;
+const remnantCurrentWithoutReceiptEpoch = structuredClone(remnantRouteSelftestEvidence.current);
+delete remnantCurrentWithoutReceiptEpoch.renderedScene.ecologyEpoch;
 const remnantRouteClauseControls = [
   ['sourceOracle', assessArc3RemnantSkimRoutePrecondition({
     ...remnantRouteSelftestEvidence,
@@ -1709,10 +1735,45 @@ const remnantRouteClauseControls = [
   ['reachable', assessArc3RemnantSkimRoutePrecondition({
     ...remnantRouteSelftestEvidence, neighborhoodRadius: 250,
   })],
+  ['preRoute', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence, preRoute: remnantRouteSelftestOldMarsRoute,
+  })],
+  ['preRoute', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence,
+    preRoute: { ...remnantRouteSelftestPreRoute, star: 380168150 },
+  })],
+  ['preRoute', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence,
+    preRoute: { ...remnantRouteSelftestPreRoute,
+      navStarKey: 'CF1|g:999@90,-60|s:380168149@347.25,24.81' },
+  })],
+  ['preRoute', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence, preRoute: remnantRouteWithoutEpoch,
+  })],
+  ['preRoute', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence, preRoute: remnantRouteWithoutReceiptEpoch,
+  })],
+  ['preRoute', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence,
+    preRoute: { ...remnantRouteSelftestPreRoute,
+      renderedScene: { ...remnantRouteSelftestPreRoute.renderedScene, ecologyEpoch: 13 } },
+  })],
   ['renderedReceipt', assessArc3RemnantSkimRoutePrecondition({
     ...remnantRouteSelftestEvidence,
     current: { ...remnantRouteSelftestEvidence.current,
       renderedScene: { ...remnantRouteSelftestEvidence.current.renderedScene, serial: 7 } },
+  })],
+  ['renderedReceipt', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence, current: remnantCurrentWithoutReceiptEpoch,
+  })],
+  ['renderedReceipt', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence,
+    current: { ...remnantRouteSelftestEvidence.current,
+      renderedScene: { ...remnantRouteSelftestEvidence.current.renderedScene, ecologyEpoch: 13 } },
+  })],
+  ['renderedReceipt', assessArc3RemnantSkimRoutePrecondition({
+    ...remnantRouteSelftestEvidence,
+    current: { ...remnantRouteSelftestEvidence.current, epoch: 13 },
   })],
   ['charterOwnership', assessArc3RemnantSkimRoutePrecondition({
     ...remnantRouteSelftestEvidence,
@@ -1759,9 +1820,10 @@ const rejectedRouteRawDeleted = (evidence, key) => {
   return { ...evidence, before, after };
 };
 const rejectedRouteSourceDrift = (() => {
-  const before = structuredClone(rejectedRouteFullPrecisionEvidence.before);
-  const after = structuredClone(rejectedRouteFullPrecisionEvidence.after);
-  before.route.planet = 133; after.route.planet = 133;
+  const before = { ...structuredClone(rejectedRouteFullPrecisionEvidence.before),
+    route: structuredClone(remnantRouteSelftestOldMarsRoute) };
+  const after = { ...structuredClone(rejectedRouteFullPrecisionEvidence.after),
+    route: structuredClone(remnantRouteSelftestOldMarsRoute) };
   return { ...rejectedRouteFullPrecisionEvidence, before, after };
 })();
 const rejectedRouteMarkedDrift = (() => {
@@ -1773,7 +1835,8 @@ const rejectedRouteMutationSelftests = [
   ['exactRoute', assessArc3RemnantRejectedSearchControl({
     ...rejectedRouteFullPrecisionEvidence,
     after: { ...rejectedRouteFullPrecisionEvidence.after,
-      route: { ...rejectedRouteFullPrecisionEvidence.after.route, planet: null } },
+      route: { ...rejectedRouteFullPrecisionEvidence.after.route,
+        starX: rejectedRouteFullPrecisionEvidence.after.route.starX + 1 } },
   })],
   ['classification', assessArc3RemnantRejectedSearchControl({
     ...rejectedRouteRoundedEvidence,

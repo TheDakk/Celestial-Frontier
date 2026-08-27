@@ -10,6 +10,30 @@ summary of it.
 
 ## Contents
 
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_032748771.{json,log}.gz` — remnant-oracle and post-reload lifecycle Slice red
+
+Retains clean, stable signed-source run `20260827032748771-8092-d2a0130882c1` at
+`bd6b06baa2511c859a4bc227b1a8736b2097fc9d` on Edge `151.0.4129.107`. It ran exactly once with
+zero automatic retries and ended terminal red with parent/child exit `1` after 119,502 ms
+(`2026-08-27T03:27:48.771Z`–`03:29:48.273Z`). The six finding scopes reduce to two independent
+harness roots. First, stale Mars-source expectations plus an obsolete five-key rendered-scene
+receipt rejected the valid Search/remnant correction and current receipt; findings 2–3 cascaded
+and Skim was deliberately skipped. Product Search and the remnant route were correct. Second,
+after reload Slice reopened and retained Survey, then attempted Engineering without yielding the
+card. The product correctly hid the right rail while the card owned the silhouette; finding 4 is
+that lifecycle defect, while the absent storage input and still-armed/stale-authority findings 5–6
+cascade from it. Deep Scanners, fixed Fabrication and the repaired close/reopen lifecycle are
+outcome-cleared. Skim settlement and every later Slice stage remain unproved.
+
+The JSON gzip SHA-256 is
+`c34bd6fa26f417d664291c206facc8cfe604123166986553a1638570bd652ac2`; its decompressed SHA-256 is
+`e75d57e9dc6205e4ffbb8876a6f5d881a34f4edabc88610f943da71cc6b2a5fd`. The log gzip SHA-256 is
+`e9d642acda78cc232ca97b02dc9ff4345dae0a11c67c8b864f27dc0e56526672`; its decompressed SHA-256 is
+`504060415fab5800acc110b5833956aa0acac0cdfe43f3617b99432584d9c05e`. The JSON binds seven
+run-specific 1280×800 PNG manifest rows and hashes, but their ignored bytes are not preserved.
+Arc 4 evidence is explicitly non-required with zero ledger lines and zero PASS markers. This
+carrier therefore supplies no durable visual, Glass, recovery, HUMAN, hosted or release evidence.
+
 ### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_025804458.{json,log}.gz` — retained-card lifecycle Slice red
 
 Retains clean signed-source run `20260827025804458-2742-c0c871ee52b6` at
@@ -57,8 +81,8 @@ regression. The JSON gzip SHA-256 is
 `1a659612b294017f59b05a9613878a3287a1ecea9fc3076ae966298791c10822`; its decompressed SHA-256 is
 `b1b245c837001f6f9817757cb178974bec626ec3e57ad3532445616f8b81d17f`.
 
-All three JSON reports retain run-bound screenshot manifests and hashes. The PNG bytes themselves remain
-ignored under `port/v2/apps/game/smoke/` and are not preserved by these carriers; neither entry
+All four JSON reports retain run-bound screenshot manifests and hashes. The PNG bytes themselves remain
+ignored under `port/v2/apps/game/smoke/` and are not preserved by these carriers; none of these entries
 claims durable visual evidence, current-input Glass, the real recovery certificate, or a Slice PASS.
 
 ### `ARC4_RECOVERY_REALTIME_INSTRUMENT_FAILURE_20260826.json.gz` — first real-time recovery instrument red

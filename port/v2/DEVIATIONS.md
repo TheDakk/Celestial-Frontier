@@ -10,11 +10,11 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — completed local candidate lanes (2026-08-26)
+## Current-state boundary — completed local candidate lanes (2026-08-27)
 
 The completed pre-Slice source lanes and three diagnosed repairs are locally committed at signed
-source `8ffd2e2…`. Browser-free evidence is green at 122 test files /
-1,362 passed /one intentional skip /zero failures; root, app, worker and `noUnused` TypeScript; the
+source `8ffd2e2…`. Browser-free evidence is green at 123 test files /
+1,372 passed /one intentional skip /zero failures; root, app, worker and `noUnused` TypeScript; the
 884-module Vite build; root validation/fingerprint; legacy jsdom smoke; and applicable contract/
 reporter/Glass/recovery/Compendium selftests. The former Compendium calibration/certificate on
 signed activation `d33e540…` remains historical for producer `587d3bdf…`. The current
@@ -22,7 +22,7 @@ signed activation `d33e540…` remains historical for producer `587d3bdf…`. Th
 `6284a394…`. Clean signed activation `91f4e044…` passed exact-budget run
 `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
 attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Current-input Slice
-retains three one-attempt/zero-retry reds on Edge `.107`. Run
+retains four one-attempt/zero-retry reds on Edge `.107`. Run
 `20260826214541492-83064-b252b137f7a3` from clean signed `8553bd7…` failed after 92,772 ms with
 Settings and unreachable-target instrument false reds plus the retained-Survey focus product
 regression. Changed clean signed source `9d4b2b0…` supplied
@@ -33,7 +33,14 @@ world is card-owned. Clean signed source `8a23e22…` then supplied
 `20260827025804458-2742-c0c871ee52b6`, which failed after 93,582 ms with three findings from one
 instrument cascade: retained Survey correctly hid the right rail, while Slice attempted zero-rect
 `railshipyard` before yielding it. That run outcome-clears the card-context repair; Deep Scanners
-and every later stage did not run, and the lifecycle repair is unrerun. No current-input Slice PASS,
+and later stages did not run. Clean signed source `bd6b06b…` then supplied
+`20260827032748771-8092-d2a0130882c1`, which failed after 119,502 ms with six scopes from two
+harness roots. Stale Mars-source and obsolete five-key rendered-receipt expectations rejected valid
+Search/remnant evidence, cascading and skipping Skim. After reload, retained Survey correctly hid
+the rail before another Engineering attempt, cascading through storage/stale findings. Product
+Search, remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and the
+repaired lifecycle are outcome-cleared; Skim settlement and later stages remain unproved, and both
+new harness repairs are unrerun. No current-input Slice PASS,
 Glass result or real recovery certificate exists. The earlier clean committed recovery run
 `20260826024124548-13172-6286d5212e` at `35a22b1…` is preserved separately as one-attempt/zero-retry
 `instrument-fail`: fixture and 16-step burn-down passed, then the stale all-`depleted` poll rejected

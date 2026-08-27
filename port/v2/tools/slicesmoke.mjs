@@ -533,6 +533,7 @@ const arc3RemnantRouteProjection = (state) => ({
   navStarKey: state?.navStarKey ?? null,
   navWorldKey: state?.navWorldKey ?? null,
   renderedScene: state?.renderedScene ?? null,
+  epoch: state?.epoch ?? null,
   stage: state?.stage ?? null,
   reach: state?.reach ?? null,
   shipVisual: state?.shipVisual ?? null,
@@ -7626,13 +7627,16 @@ try {
     const raw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
     return { point, interaction, state, raw };
   };
-  const pressEngineeringKeyboard = async (operation, id = null) => {
-    await armEngineeringInteraction();
-    const target = await evalIn(`(()=>{const point=${engineeringActionPoint(operation, id)},
+  const readEngineeringKeyboardTarget = async (operation, id = null) => (
+    evalIn(`(()=>{const point=${engineeringActionPoint(operation, id)},
       button=[...document.querySelectorAll('#shipyardpanel button[data-engineering-action]')]
         .find((row)=>row.getAttribute('data-engineering-action')===${JSON.stringify(operation)}
           &&row.getAttribute('data-action-id')===${JSON.stringify(id)});button?.focus();
-      return {...point,focused:document.activeElement===button,tag:button?.tagName||null}})()`);
+      return {...point,focused:document.activeElement===button,tag:button?.tagName||null}})()`)
+  );
+  const pressEngineeringKeyboard = async (operation, id = null) => {
+    await armEngineeringInteraction();
+    const target = await readEngineeringKeyboardTarget(operation, id);
     if (target.ok && target.focused) await keyIn('Enter', 'Enter');
     return target;
   };
@@ -8625,7 +8629,8 @@ try {
     const assessment = assessArc3RemnantRejectedSearchControl(evidence);
     const routeDrift = assessArc3RemnantRejectedSearchControl({
       ...evidence,
-      after: { ...evidence.after, route: { ...evidence.after.route, planet: null } },
+      after: { ...evidence.after, route: { ...evidence.after.route,
+        starX: evidence.after.route.starX + 1 } },
     });
     const classificationDrift = assessArc3RemnantRejectedSearchControl({
       ...evidence,
@@ -8687,7 +8692,7 @@ try {
   );
   if (!legacyRemnantFullPrecision.assessment.ok || !legacyRemnantFullPrecision.controlsIsolated
     || !legacyRemnantRoundedBlocked.assessment.ok || !legacyRemnantRoundedBlocked.controlsIsolated) {
-    fails.push('ARC 3 REMNANT SEARCH CONTROLS FAILED — the old noncanonical code or rounded out-of-reach route did not remain exact correction outcomes: '
+    failSliceWithoutCascade('ARC 3 REMNANT SEARCH CONTROLS FAILED — the old noncanonical code or rounded out-of-reach route did not remain exact correction outcomes: '
       + JSON.stringify({ legacyRemnantFullPrecision, legacyRemnantRoundedBlocked }));
   }
   const remnantPreRouteState = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -8723,6 +8728,7 @@ try {
         &&s.stage===1&&s.shipVisual?.chassisStage===1
         &&JSON.stringify(s.shipVisual?.installedSystemIds)===${JSON.stringify(JSON.stringify(['jumpdrive']))}
         &&s.renderedScene?.serial>${remnantPreRouteSerial}&&s.renderedScene?.mode==='system'
+        &&s.renderedScene?.ecologyEpoch===s.epoch
         &&s.renderedScene?.galaxyKey==='CF1|g:999@90,-60'
         &&s.renderedScene?.starKey===${JSON.stringify(ENGINEERING_REMNANT_ROUTE_TARGET.navStarKey)}
         &&s.renderedScene?.worldKey===null?s:null})()`);
@@ -8774,58 +8780,111 @@ try {
     opening: skimOpen,
   };
   const remnantRouteAssessment = assessArc3RemnantSkimRoutePrecondition(remnantRouteEvidence);
-  const remnantRouteDiagnosticControls = {
-    empty: assessArc3RemnantSkimRoutePrecondition(),
-    failure: assessArc3RemnantSkimRoutePrecondition({
-      ...remnantRouteEvidence,
-      current: null,
-      surface: { panelOpen: null, button: null, model: null, diagnostics: null },
-      routeError: 'control route failure',
-      authorityReady: false,
-      openError: 'control panel failure',
-    }),
-    seedDrift: assessArc3RemnantSkimRoutePrecondition({
-      ...remnantRouteEvidence,
-      target: { ...remnantRouteTarget,
-        requestedStar: { ...remnantRouteTarget.requestedStar, seed: 449521433 } },
-    }),
-    coordinateDrift: assessArc3RemnantSkimRoutePrecondition({
-      ...remnantRouteEvidence,
-      target: { ...remnantRouteTarget,
-        canonicalStar: { ...remnantRouteTarget.canonicalStar, x: 734.59 } },
-    }),
-    parentDrift: assessArc3RemnantSkimRoutePrecondition({
-      ...remnantRouteEvidence,
-      target: { ...remnantRouteTarget,
-        canonicalStar: { ...remnantRouteTarget.canonicalStar,
-          parentCell: { ...remnantRouteTarget.canonicalStar.parentCell, x: 18 } } },
-    }),
-    layerDrift: assessArc3RemnantSkimRoutePrecondition({
-      ...remnantRouteEvidence,
-      target: { ...remnantRouteTarget,
-        canonicalStar: { ...remnantRouteTarget.canonicalStar, layer: 'fine' } },
-    }),
-    kindDrift: assessArc3RemnantSkimRoutePrecondition({
-      ...remnantRouteEvidence,
-      sourceWitness: { ...remnantRouteEvidence.sourceWitness, kind: 'STAR' },
-    }),
-    reachDrift: assessArc3RemnantSkimRoutePrecondition({
-      ...remnantRouteEvidence, neighborhoodRadius: 250,
-    }),
-    receiptDrift: assessArc3RemnantSkimRoutePrecondition({
-      ...remnantRouteEvidence,
-      current: { ...remnantState, renderedScene: { ...remnantState?.renderedScene,
-        serial: remnantPreRouteSerial } },
-    }),
-    ownershipDrift: assessArc3RemnantSkimRoutePrecondition({
-      ...remnantRouteEvidence,
-      current: { ...remnantState, stage: 2,
-        shipVisual: { ...remnantState?.shipVisual, chassisStage: 2,
-          installedSystemIds: ['jumpdrive', 'array'],
-          hardpoints: { ...remnantState?.shipVisual?.hardpoints, array: true } } },
-    }),
-  };
-  const remnantRouteTargetControlsIsolated = ['seedDrift', 'coordinateDrift', 'parentDrift', 'layerDrift']
+  let remnantRouteDiagnosticControls = null;
+  if (remnantRouteAssessment.ok) {
+    const oldMarsPreRoute = {
+      ...structuredClone(remnantPreRoute), mode: 'surface',
+      star: 424242, starX: 560, starY: 170, planet: 134, planetOrdinal: 3,
+      navStarKey: 'CF1|g:999@90,-60|s:424242@560,170',
+      navWorldKey: 'CF1|g:999@90,-60|s:424242@560,170|p:134#3',
+      renderedScene: { ...structuredClone(remnantPreRoute.renderedScene), mode: 'surface',
+        starKey: 'CF1|g:999@90,-60|s:424242@560,170',
+        worldKey: 'CF1|g:999@90,-60|s:424242@560,170|p:134#3' },
+    };
+    const missingPreEpoch = structuredClone(remnantPreRoute);
+    delete missingPreEpoch.epoch;
+    const missingPreReceiptEpoch = structuredClone(remnantPreRoute);
+    delete missingPreReceiptEpoch.renderedScene.ecologyEpoch;
+    const missingCurrentReceiptEpoch = structuredClone(remnantState);
+    delete missingCurrentReceiptEpoch.renderedScene.ecologyEpoch;
+    remnantRouteDiagnosticControls = {
+      empty: assessArc3RemnantSkimRoutePrecondition(),
+      failure: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        current: null,
+        surface: { panelOpen: null, button: null, model: null, diagnostics: null },
+        routeError: 'control route failure',
+        authorityReady: false,
+        openError: 'control panel failure',
+      }),
+      seedDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        target: { ...remnantRouteTarget,
+          requestedStar: { ...remnantRouteTarget.requestedStar, seed: 449521433 } },
+      }),
+      coordinateDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        target: { ...remnantRouteTarget,
+          canonicalStar: { ...remnantRouteTarget.canonicalStar, x: 734.59 } },
+      }),
+      parentDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        target: { ...remnantRouteTarget,
+          canonicalStar: { ...remnantRouteTarget.canonicalStar,
+            parentCell: { ...remnantRouteTarget.canonicalStar.parentCell, x: 18 } } },
+      }),
+      layerDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        target: { ...remnantRouteTarget,
+          canonicalStar: { ...remnantRouteTarget.canonicalStar, layer: 'fine' } },
+      }),
+      kindDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        sourceWitness: { ...remnantRouteEvidence.sourceWitness, kind: 'STAR' },
+      }),
+      reachDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence, neighborhoodRadius: 250,
+      }),
+      oldMarsPreRoute: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence, preRoute: oldMarsPreRoute,
+      }),
+      biomeIdentityDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        preRoute: { ...remnantPreRoute, star: ARC3_BIOME_SURVEY_TARGET.star.seed + 1 },
+      }),
+      biomeKeyDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        preRoute: { ...remnantPreRoute,
+          navStarKey: 'CF1|g:999@90,-60|s:380168149@347.25,24.81' },
+      }),
+      missingPreEpoch: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence, preRoute: missingPreEpoch,
+      }),
+      missingPreReceiptEpoch: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence, preRoute: missingPreReceiptEpoch,
+      }),
+      wrongPreReceiptEpoch: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        preRoute: { ...remnantPreRoute, renderedScene: { ...remnantPreRoute.renderedScene,
+          ecologyEpoch: remnantPreRoute.epoch + 1 } },
+      }),
+      receiptDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        current: { ...remnantState, renderedScene: { ...remnantState?.renderedScene,
+          serial: remnantPreRouteSerial } },
+      }),
+      missingCurrentReceiptEpoch: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence, current: missingCurrentReceiptEpoch,
+      }),
+      wrongCurrentReceiptEpoch: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        current: { ...remnantState, renderedScene: { ...remnantState.renderedScene,
+          ecologyEpoch: remnantState.epoch + 1 } },
+      }),
+      wrongCurrentEpoch: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence, current: { ...remnantState, epoch: remnantState.epoch + 1 },
+      }),
+      ownershipDrift: assessArc3RemnantSkimRoutePrecondition({
+        ...remnantRouteEvidence,
+        current: { ...remnantState, stage: 2,
+          shipVisual: { ...remnantState?.shipVisual, chassisStage: 2,
+            installedSystemIds: ['jumpdrive', 'array'],
+            hardpoints: { ...remnantState?.shipVisual?.hardpoints, array: true } } },
+      }),
+    };
+  }
+  const remnantRouteTargetControlsIsolated = remnantRouteDiagnosticControls !== null
+    && ['seedDrift', 'coordinateDrift', 'parentDrift', 'layerDrift']
     .every((name) => {
       const control = remnantRouteDiagnosticControls[name];
       return control.ok === false && control.checks?.target === false
@@ -8835,9 +8894,14 @@ try {
     });
   const remnantRouteClauseControl = {
     kindDrift: 'sourceOracle', reachDrift: 'reachable', receiptDrift: 'renderedReceipt',
+    oldMarsPreRoute: 'preRoute', biomeIdentityDrift: 'preRoute', biomeKeyDrift: 'preRoute',
+    missingPreEpoch: 'preRoute', missingPreReceiptEpoch: 'preRoute',
+    wrongPreReceiptEpoch: 'preRoute', missingCurrentReceiptEpoch: 'renderedReceipt',
+    wrongCurrentReceiptEpoch: 'renderedReceipt', wrongCurrentEpoch: 'renderedReceipt',
     ownershipDrift: 'charterOwnership',
   };
-  const remnantRouteClauseControlsIsolated = Object.entries(remnantRouteClauseControl)
+  const remnantRouteClauseControlsIsolated = remnantRouteDiagnosticControls !== null
+    && Object.entries(remnantRouteClauseControl)
     .every(([name, expected]) => {
       const control = remnantRouteDiagnosticControls[name];
       return control.ok === false && control.checks?.[expected] === false
@@ -8845,13 +8909,15 @@ try {
           check === expected ? value === false : value === true
         ));
     });
-  if (remnantRouteDiagnosticControls.empty.ok || remnantRouteDiagnosticControls.failure.ok
+  if (!remnantRouteAssessment.ok || remnantRouteDiagnosticControls === null
+    || remnantRouteDiagnosticControls.empty.ok || remnantRouteDiagnosticControls.failure.ok
     || remnantRouteDiagnosticControls.empty.checks?.complete !== false
     || remnantRouteDiagnosticControls.failure.checks?.routeSettled !== false
     || remnantRouteDiagnosticControls.failure.checks?.button !== false
     || !remnantRouteTargetControlsIsolated || !remnantRouteClauseControlsIsolated) {
-    fails.push('ARC 3 REMNANT ROUTE DIAGNOSTIC CONTROL FAILED — empty/failed or exact address/BH-kind/Neighborhood/receipt drift evidence threw or stayed green: '
-      + JSON.stringify({ remnantRouteDiagnosticControls, remnantRouteTargetControlsIsolated,
+    failSliceWithoutCascade('ARC 3 REMNANT ROUTE/PRECONDITION CONTROL FAILED — current biome-system source, exact epoch receipt, remnant target, or isolated controls were red before Skim: '
+      + JSON.stringify({ remnantRouteEvidence, remnantRouteAssessment,
+        remnantRouteDiagnosticControls, remnantRouteTargetControlsIsolated,
         remnantRouteClauseControlsIsolated }));
   }
   let skimBeforeState = remnantState && typeof remnantState === 'object'
@@ -9039,17 +9105,118 @@ try {
     observation: biomeReloadObservation, owned: true,
   });
   if (!biomeReloadAssessment.ok) {
-    fails.push('ARC 3 BIOME SURVEY RELOAD: durable Deep Scanners ownership did not restore the exact marker/order row: '
+    failSliceWithoutCascade('ARC 3 BIOME SURVEY RELOAD: durable Deep Scanners ownership did not restore the exact marker/order row: '
       + JSON.stringify({ biomeReloadObservation, biomeReloadAssessment }));
   }
 
+  /* Storage is reachable only after the reloaded Survey card releases the
+     right-hand glass. Keep reload -> trusted Close -> exact lifecycle verdict
+     -> Storage opener as one guarded, mutation-controlled player sequence. */
+  const biomeReloadStorageCloseBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const biomeReloadStorageCloseBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const biomeReloadStorageClose = await pressArc3SurveyLifecyclePointer('close');
+  if (biomeReloadStorageClose.target?.ok && biomeReloadStorageClose.interaction?.trusted) {
+    await waitDesktopValue('Arc 3 reloaded Survey real Close before storage',
+      `window.__CF_SLICE__.api.state().cardOpen===false`).catch(() => false);
+  }
+  await waitForF4Writable('Arc 3 reloaded Survey Close before storage authority');
+  const biomeReloadStorageCloseAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const biomeReloadStorageCloseAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const biomeReloadStorageCloseSurface = await arc3SurveyLifecycleSurface();
+  const biomeReloadStorageCloseBundle = {
+    beforeRaw: biomeReloadStorageCloseBeforeRaw, afterRaw: biomeReloadStorageCloseAfterRaw,
+    beforeState: biomeReloadStorageCloseBeforeState, afterState: biomeReloadStorageCloseAfterState,
+    close: biomeReloadStorageClose, surface: biomeReloadStorageCloseSurface,
+  };
+  const biomeReloadStorageCloseAssessment = assessArc3SurveyClosedRailLifecycle(
+    biomeReloadStorageCloseBundle,
+  );
+  const biomeReloadStorageCloseControls = biomeReloadStorageCloseAssessment.ok ? {
+    omittedClose: assessArc3SurveyClosedRailLifecycle({
+      ...biomeReloadStorageCloseBundle, close: null,
+    }),
+    staleCard: assessArc3SurveyClosedRailLifecycle({
+      ...biomeReloadStorageCloseBundle,
+      afterState: { ...biomeReloadStorageCloseAfterState, cardOpen: true },
+      surface: { ...biomeReloadStorageCloseSurface,
+        state: { ...biomeReloadStorageCloseSurface.state, cardOpen: true } },
+    }),
+    staleBody: assessArc3SurveyClosedRailLifecycle({
+      ...biomeReloadStorageCloseBundle,
+      surface: { ...biomeReloadStorageCloseSurface, bodyCardOpen: true },
+    }),
+    staleSurvey: assessArc3SurveyClosedRailLifecycle({
+      ...biomeReloadStorageCloseBundle,
+      surface: { ...biomeReloadStorageCloseSurface,
+        survey: { ...biomeReloadStorageCloseSurface.survey,
+          inlineDisplay: 'block', computedDisplay: 'block', ariaHidden: 'false', clientRectCount: 1 } },
+    }),
+    expandedDock: assessArc3SurveyClosedRailLifecycle({
+      ...biomeReloadStorageCloseBundle,
+      surface: { ...biomeReloadStorageCloseSurface,
+        dock: { ...biomeReloadStorageCloseSurface.dock, ariaExpanded: 'true', on: true } },
+    }),
+    hiddenRail: assessArc3SurveyClosedRailLifecycle({
+      ...biomeReloadStorageCloseBundle,
+      surface: { ...biomeReloadStorageCloseSurface,
+        rightRail: { ...biomeReloadStorageCloseSurface.rightRail,
+          display: 'none', rectCount: 0, width: 0, height: 0 },
+        shipyard: { ...biomeReloadStorageCloseSurface.shipyard,
+          display: 'none', rectCount: 0, width: 0, height: 0, hit: null } },
+    }),
+    routeDrift: assessArc3SurveyClosedRailLifecycle({
+      ...biomeReloadStorageCloseBundle,
+      afterState: { ...biomeReloadStorageCloseAfterState,
+        starX: biomeReloadStorageCloseAfterState.starX + 1 },
+    }),
+    durableDrift: assessArc3SurveyClosedRailLifecycle({
+      ...biomeReloadStorageCloseBundle,
+      afterRaw: { ...biomeReloadStorageCloseAfterRaw,
+        revisionRaw: `${biomeReloadStorageCloseAfterRaw.revisionRaw}-control` },
+    }),
+  } : null;
+  const biomeReloadStorageCloseExpectedCheck = {
+    omittedClose: 'trustedClose', staleCard: 'cardClosed', staleBody: 'bodyReleased',
+    staleSurvey: 'surveyHidden', expandedDock: 'dockCollapsed', hiddenRail: 'rightRailReady',
+    routeDrift: 'exactRoute', durableDrift: 'durableReadOnly',
+  };
+  const biomeReloadStorageCloseControlsIsolated = biomeReloadStorageCloseControls !== null
+    && Object.entries(biomeReloadStorageCloseControls).every(([name, assessment]) => (
+      isolatesNamedCheck(assessment, biomeReloadStorageCloseExpectedCheck[name])
+    ));
+  if (!biomeReloadStorageCloseAssessment.ok || !biomeReloadStorageCloseControlsIsolated) {
+    failSliceWithoutCascade('ARC 3 RELOADED SURVEY/STORAGE LIFECYCLE: real trusted 44px Close did not release exact body/ARIA/dock/right-rail chrome with read-only route and durable authority: '
+      + JSON.stringify({ biomeReloadStorageClose, biomeReloadStorageCloseAssessment,
+        biomeReloadStorageCloseControls, biomeReloadStorageCloseControlsIsolated,
+        biomeReloadStorageCloseSurface }));
+  }
+
+  const storageOpenFailureCount = fails.length;
   const storageOpen = await openEngineeringPanel('ARC 3 STORAGE CONTROL');
+  if (!storageOpen.opened || storageOpen.pointer?.trusted !== true
+    || storageOpen.pointer?.pointerType !== 'mouse') {
+    failSliceWithoutCascade('ARC 3 STORAGE OPEN: native Engineering opener failed after the proven reloaded Survey Close: '
+      + JSON.stringify(storageOpen), { alreadyReported: fails.length > storageOpenFailureCount });
+  }
   await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="fabricator"]')?.setAttribute('open','')`);
+  const storageTargetReady = await readEngineeringKeyboardTarget('fabricate', 'plate');
+  if (!storageTargetReady.ok || !storageTargetReady.focused) {
+    failSliceWithoutCascade('ARC 3 STORAGE PRECONDITION: native Plate target was not ready before the storage-failure hook was armed: '
+      + JSON.stringify(storageTargetReady));
+  }
   const storageBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
   const storageBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
   const storageBeforeUi = await evalIn(READ_ARC3_ENGINEERING_UI_EXPRESSION);
   const storageArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextArc3ActionStorage()`);
+  if (storageArmed !== true) {
+    failSliceWithoutCascade('ARC 3 STORAGE PRECONDITION: storage-failure hook did not arm after the native opener and target readiness proof: '
+      + JSON.stringify({ storageOpen, storageTargetReady, storageArmed }));
+  }
   const storageTarget = await pressEngineeringKeyboard('fabricate', 'plate');
+  if (!storageTarget.ok || !storageTarget.focused) {
+    failSliceWithoutCascade('ARC 3 STORAGE ACTION: native Plate target lost readiness after the storage-failure hook was armed: '
+      + JSON.stringify({ storageTargetReady, storageTarget }));
+  }
   let storageWaitError = null;
   try {
     await waitDesktopValue('Arc 3 storage refusal release', `(()=>{const s=window.__CF_SLICE__.api.state(),c=s.engineering?.actionCoordinator,
@@ -9094,16 +9261,24 @@ try {
     afterDiagnostics: storageAfterDiagnostics, interaction: storageInteraction,
     waitError: storageWaitError, captureErrors: storageCaptureErrors };
   const storageAssessment = assessArc3StorageRefusal(storageBundle);
+  let storageTerminalFailure = null;
   if (storageWaitError !== null) {
-    fails.push('ARC 3 STORAGE SETTLEMENT TIMEOUT — retained terminal state/raw/UI/interaction/fault/owner evidence: '
-      + JSON.stringify({ storageOpen, storageTarget, assessment: storageAssessment, bundle: storageBundle }));
+    storageTerminalFailure = 'ARC 3 STORAGE SETTLEMENT TIMEOUT — retained terminal state/raw/UI/interaction/fault/owner evidence: '
+      + JSON.stringify({ storageOpen, storageTargetReady, storageTarget,
+        assessment: storageAssessment, bundle: storageBundle });
   } else if (storageCaptureErrors.length > 0) {
-    fails.push('ARC 3 STORAGE TERMINAL CAPTURE FAILED — settlement completed but final evidence was incomplete: '
-      + JSON.stringify({ storageOpen, storageTarget, assessment: storageAssessment, bundle: storageBundle }));
+    storageTerminalFailure = 'ARC 3 STORAGE TERMINAL CAPTURE FAILED — settlement completed but final evidence was incomplete: '
+      + JSON.stringify({ storageOpen, storageTargetReady, storageTarget,
+        assessment: storageAssessment, bundle: storageBundle });
   } else if (!storageOpen.opened || storageOpen.pointer?.trusted !== true
-    || storageOpen.pointer?.pointerType !== 'mouse' || !storageTarget.ok || !storageAssessment.ok) {
-    fails.push('ARC 3 STORAGE CONVERGENCE: injected backend rejection mutated truth or retained the coordinator: '
-      + JSON.stringify({ storageOpen, storageTarget, assessment: storageAssessment, bundle: storageBundle }));
+    || storageOpen.pointer?.pointerType !== 'mouse' || !storageTargetReady.ok
+    || !storageTarget.ok || !storageTarget.focused || !storageAssessment.ok) {
+    storageTerminalFailure = 'ARC 3 STORAGE CONVERGENCE: injected backend rejection mutated truth or retained the coordinator: '
+      + JSON.stringify({ storageOpen, storageTargetReady, storageTarget,
+        assessment: storageAssessment, bundle: storageBundle });
+  }
+  if (storageTerminalFailure !== null) {
+    failSliceWithoutCascade(storageTerminalFailure);
   }
   let storageControls = null;
   if (storageAssessment.ok) {
@@ -9237,7 +9412,7 @@ try {
     const storageUiControlsIsolated = Object.entries(storageUiControls)
       .every(([check, assessment]) => isolatesEngineeringUiCheck(assessment, check));
     if (!storageControlsIsolated || !storageUiControlsIsolated) {
-      fails.push('ARC 3 STORAGE CONTROLS FAILED — named outcome/fault/revision/receipt/durable-carrier/owner/UI/native-input drift was not isolated red: '
+      failSliceWithoutCascade('ARC 3 STORAGE CONTROLS FAILED — named outcome/fault/revision/receipt/durable-carrier/owner/UI/native-input drift was not isolated red: '
         + JSON.stringify({ storageControls, storageControlsIsolated, storageUiControlsIsolated }));
     }
   }
