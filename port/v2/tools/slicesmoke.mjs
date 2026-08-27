@@ -743,6 +743,16 @@ const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save �
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
     g.onsuccess=()=>{db.close();resolve(String(g.result||''))}; g.onerror=()=>reject(g.error); }; })`;
+const READ_STORED_V4_STAGE_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
+  const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
+  try{const tx=db.transaction('meta','readonly'),done=new Promise((resolve,reject)=>{
+    tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('fixture receipt read aborted'))});
+    const get=(key)=>new Promise((resolve,reject)=>{const q=tx.objectStore('meta').get(key);
+      q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
+    const [primary,backup]=await Promise.all([get('save'),get('save_bak')]);await done;
+    const stored=(value)=>value===undefined?{present:false,value:null}:{present:true,value:String(value)};
+    return {primary:stored(primary),backup:stored(backup)};
+  }finally{db.close()}})()`;
 const READ_V5_MIGRATION_EVIDENCE_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
   const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
   try{const tx=db.transaction('journal','readonly'),done=new Promise((resolve,reject)=>{
@@ -4155,6 +4165,121 @@ try {
     }
     return r.result.value;
   };
+  const exactStoredV4Stage = ({ accepted, observed, expected, backup }) => {
+    if (expected === null && backup !== undefined) return false;
+    const expectedPrimaryPresent = expected !== null;
+    const expectedBackupPresent = expectedPrimaryPresent && backup !== undefined;
+    return accepted === true
+      && observed?.primary?.present === expectedPrimaryPresent
+      && observed?.primary?.value === (expectedPrimaryPresent ? expected : null)
+      && observed?.backup?.present === expectedBackupPresent
+      && observed?.backup?.value === (expectedBackupPresent ? backup : null);
+  };
+  const exactPrimary = { primary: { present: true, value: '{}' }, backup: { present: false, value: null } };
+  const exactBackup = { primary: { present: true, value: '{}' }, backup: { present: true, value: '{"v":4}' } };
+  if (!exactStoredV4Stage({ accepted: true, observed: exactPrimary, expected: '{}' })
+    || !exactStoredV4Stage({ accepted: true, observed: exactBackup, expected: '{}', backup: '{"v":4}' })
+    || exactStoredV4Stage({ accepted: false, observed: exactPrimary, expected: '{}' })
+    || exactStoredV4Stage({ accepted: true, observed: exactPrimary, expected: '{"v":5}' })
+    || exactStoredV4Stage({ accepted: true, observed: exactPrimary, expected: '{}', backup: '{"v":4}' })
+    || exactStoredV4Stage({ accepted: true, observed: exactBackup, expected: '{}', backup: '{"v":5}' })
+    || exactStoredV4Stage({ accepted: true, observed: exactBackup, expected: '{}' })
+    || exactStoredV4Stage({ accepted: true, observed: exactPrimary, expected: null })
+    || exactStoredV4Stage({ accepted: true, observed: {
+      primary: { present: false, value: null }, backup: { present: false, value: null },
+    }, expected: null, backup: '{"v":4}' })
+    || !exactStoredV4Stage({ accepted: true, observed: {
+      primary: { present: false, value: null }, backup: { present: false, value: null },
+    }, expected: null })) {
+    throw new Error('stored-v4 fixture stage assessment selftest failed');
+  }
+  const heldStoredV4StageOutcome = (value) => value?.armed === true
+    && value.stageWaitObserved === true
+    && value.stageSettledBeforeRelease === false
+    && value.mutationSettledBeforeRelease === true
+    && value.mutationResult === false
+    && value.sameBytesBeforeRelease === true
+    && value.released === true
+    && value.writerWitness?.outcome === 'committed'
+    && Number.isSafeInteger(value.writerWitness.beforeRevision)
+    && value.writerWitness.beforeRevision >= 0
+    && value.writerWitness.beforeRevision < Number.MAX_SAFE_INTEGER
+    && Number.isSafeInteger(value.writerWitness.afterRevision)
+    && value.writerWitness.afterRevision >= 0
+    && value.writerWitness.afterRevision === value.writerWitness.beforeRevision + 1
+    && exactStoredV4Stage(value);
+  const heldStagePositive = {
+    armed: true, stageWaitObserved: true, stageSettledBeforeRelease: false,
+    mutationSettledBeforeRelease: true, mutationResult: false,
+    sameBytesBeforeRelease: true, released: true, accepted: true,
+    writerWitness: { beforeRevision: 4, afterRevision: 5, outcome: 'committed' },
+    observed: exactBackup, expected: '{}', backup: '{"v":4}',
+  };
+  if (!heldStoredV4StageOutcome(heldStagePositive)
+    || [
+      { ...heldStagePositive, armed: false },
+      { ...heldStagePositive, stageWaitObserved: false },
+      { ...heldStagePositive, stageSettledBeforeRelease: true },
+      { ...heldStagePositive, mutationSettledBeforeRelease: false },
+      { ...heldStagePositive, mutationResult: true },
+      { ...heldStagePositive, sameBytesBeforeRelease: false },
+      { ...heldStagePositive, released: false },
+      { ...heldStagePositive, writerWitness: null },
+      { ...heldStagePositive, writerWitness: { beforeRevision: 4, afterRevision: 5, outcome: 'stale' } },
+      { ...heldStagePositive, writerWitness: { beforeRevision: 4, afterRevision: 4, outcome: 'committed' } },
+      { ...heldStagePositive, writerWitness: { beforeRevision: 4, afterRevision: 6, outcome: 'committed' } },
+      { ...heldStagePositive, writerWitness: { beforeRevision: -1, afterRevision: 0, outcome: 'committed' } },
+      { ...heldStagePositive, writerWitness: {
+        beforeRevision: Number.MAX_SAFE_INTEGER,
+        afterRevision: Number.MAX_SAFE_INTEGER + 1,
+        outcome: 'committed',
+      } },
+      { ...heldStagePositive, accepted: false },
+      { ...heldStagePositive, observed: exactPrimary },
+    ].some(heldStoredV4StageOutcome)) {
+    throw new Error('held-persist v4 fixture stage assessment selftest failed');
+  }
+  const describeStoredValue = (entry) => {
+    const present = entry?.present === true;
+    const value = present && typeof entry?.value === 'string' ? entry.value : null;
+    return {
+      present, bytes: value === null ? null : Buffer.byteLength(value),
+      sha256: value === null ? null : createHash('sha256').update(value).digest('hex'),
+    };
+  };
+  const requireStoredV4Stage = async (evaluate, raw, label, backup = undefined) => {
+    let accepted = false;
+    let stageError = null;
+    try {
+      accepted = await evaluate(
+        `window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(raw)},${backup === undefined ? 'undefined' : JSON.stringify(backup)})`,
+      );
+    } catch (error) {
+      stageError = String(error instanceof Error ? error.message : error);
+    }
+    let observed = null;
+    let readError = null;
+    try { observed = await evaluate(READ_STORED_V4_STAGE_EXPRESSION); }
+    catch (error) { readError = String(error instanceof Error ? error.message : error); }
+    if (!exactStoredV4Stage({ accepted, observed, expected: raw, backup })) {
+      throw new Error(`${label} setup did not stage the exact v4 fixture: ${JSON.stringify({
+        accepted, stageError, readError,
+        expectedPrimary: describeStoredValue({ present: raw !== null, value: raw }),
+        observedPrimary: describeStoredValue(observed?.primary),
+        expectedBackup: describeStoredValue({ present: raw !== null && backup !== undefined, value: backup }),
+        observedBackup: describeStoredValue(observed?.backup),
+      })}`);
+    }
+    return Object.freeze({
+      accepted: true,
+      primary: raw === null ? null : Object.freeze({
+        bytes: Buffer.byteLength(raw), sha256: createHash('sha256').update(raw).digest('hex'),
+      }),
+      backup: raw === null || backup === undefined ? null : Object.freeze({
+        bytes: Buffer.byteLength(backup), sha256: createHash('sha256').update(backup).digest('hex'),
+      }),
+    });
+  };
   const keyIn = async (key, code = key, modifiers = 0) => {
     await dispatchKeyPress(sess, key, code, modifiers);
     await sleep(40);
@@ -6970,8 +7095,7 @@ try {
     fails.push('V5 CORRUPT MIRROR: current split rows were accepted/re-written instead of protected: '
       + JSON.stringify(corruptV5));
   }
-  const stagedOneBad = await evalIn(`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(ONE_BAD_FIELD_V4_RAW)})`);
-  if (!stagedOneBad) fails.push('ONE BAD FIELD: pre-migration v4 fixture could not be staged from a quiescent protected page');
+  await requireStoredV4Stage(evalIn, ONE_BAD_FIELD_V4_RAW, 'ONE BAD FIELD');
   await navigateToSlice(sess, URL0, 'desktop complete-v4 one-bad-field boot');
   await sleep(2500);
   const oneBadFieldBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -7368,7 +7492,117 @@ try {
      to Cosmos; its identity/progress/history remain the same. The same raw
      outer route in Atlas stays proven/enabled, yet its real pointer action
      must run the common authorization boundary without closing or moving. */
-  await evalIn(`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(OUTER_AUTH_SAVED_ROUTE_RAW)})`);
+  const heldStageDrain = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api;
+    const committed=await api.__smokeDrainFixturePersist(),state=api.state();
+    return {committed,pending:state.sceneResources.pendingPersistenceWrites};})()`);
+  if (heldStageDrain.committed !== true || heldStageDrain.pending !== 0) {
+    throw new Error('SAVED ROUTE STAGING CONTROL could not drain the navigation persist tail: '
+      + JSON.stringify(heldStageDrain));
+  }
+  const heldFixtureBefore = await evalIn(READ_STORED_V4_STAGE_EXPRESSION);
+  const heldStageArmed = await evalIn(
+    `window.__CF_SLICE__.api.__smokeArmImportRace(${JSON.stringify(STALE_AUTOSAVE_RAW)})`,
+  );
+  if (heldStageArmed !== true) {
+    throw new Error('SAVED ROUTE STAGING CONTROL could not arm the held active persist');
+  }
+  let heldStageSettled = false;
+  let heldStageError = null;
+  const heldStagePromise = evalIn(
+    `window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(ONE_BAD_FIELD_V4_RAW)},${JSON.stringify(STALE_AUTOSAVE_RAW)})`,
+  ).then(
+    (value) => { heldStageSettled = true; return value; },
+    (error) => {
+      heldStageSettled = true;
+      heldStageError = String(error instanceof Error ? error.message : error);
+      return false;
+    },
+  );
+  let heldMutationSettled = false;
+  let heldMutationError = null;
+  let heldMutationPromise = Promise.resolve(null);
+  let heldStageWaitObserved = false;
+  let heldStageProbeError = null;
+  let stageSettledBeforeRelease = true;
+  let mutationSettledBeforeRelease = false;
+  let heldStageDuring = null;
+  let heldStageReadError = null;
+  let heldStageReleased = false;
+  try {
+    const heldStageWaitDeadline = performance.now() + 10_000;
+    while (!heldStageSettled && performance.now() < heldStageWaitDeadline) {
+      const hold = await evalIn('window.__CF_SLICE__.api.state().persistence.hold');
+      if (hold === 'protected-payload') {
+        heldStageWaitObserved = true;
+        break;
+      }
+      await sleep(25);
+    }
+    heldMutationPromise = evalIn('window.__CF_SLICE__.api.__smokePersistNow()').then(
+      (value) => { heldMutationSettled = true; return value; },
+      (error) => {
+        heldMutationSettled = true;
+        heldMutationError = String(error instanceof Error ? error.message : error);
+        return null;
+      },
+    );
+    const heldMutationDeadline = performance.now() + 10_000;
+    while (!heldMutationSettled && !heldStageSettled
+      && performance.now() < heldMutationDeadline) await sleep(25);
+    heldStageDuring = await evalIn(READ_STORED_V4_STAGE_EXPRESSION);
+    stageSettledBeforeRelease = heldStageSettled;
+    mutationSettledBeforeRelease = heldMutationSettled;
+  } catch (error) {
+    heldStageProbeError = String(error instanceof Error ? error.message : error);
+    heldStageReadError = heldStageDuring === null ? heldStageProbeError : null;
+  }
+  finally {
+    heldStageReleased = await evalIn('window.__CF_SLICE__.api.__smokeReleaseImportRace()') === true;
+  }
+  const [heldStageAccepted, heldMutationResult] = await Promise.all([
+    heldStagePromise, heldMutationPromise,
+  ]);
+  const heldWriterWitness = await evalIn(
+    'window.__CF_SLICE__.api.state().persistence.importRace',
+  );
+  const heldStageObserved = await evalIn(READ_STORED_V4_STAGE_EXPRESSION);
+  const heldStageControl = {
+    armed: heldStageArmed,
+    stageWaitObserved: heldStageWaitObserved,
+    stageSettledBeforeRelease,
+    mutationSettledBeforeRelease,
+    mutationResult: heldMutationResult,
+    sameBytesBeforeRelease: JSON.stringify(heldStageDuring) === JSON.stringify(heldFixtureBefore),
+    released: heldStageReleased,
+    writerWitness: heldWriterWitness,
+    accepted: heldStageAccepted,
+    observed: heldStageObserved,
+    expected: ONE_BAD_FIELD_V4_RAW,
+    backup: STALE_AUTOSAVE_RAW,
+  };
+  if (!heldStoredV4StageOutcome(heldStageControl)) {
+    throw new Error('SAVED ROUTE STAGING CONTROL did not join/block/atomically stage across the held persist: '
+      + JSON.stringify({
+        ...heldStageControl,
+        heldStageProbeError,
+        observed: {
+          primary: describeStoredValue(heldStageObserved?.primary),
+          backup: describeStoredValue(heldStageObserved?.backup),
+        },
+        before: {
+          primary: describeStoredValue(heldFixtureBefore?.primary),
+          backup: describeStoredValue(heldFixtureBefore?.backup),
+        },
+        during: {
+          primary: describeStoredValue(heldStageDuring?.primary),
+          backup: describeStoredValue(heldStageDuring?.backup),
+        },
+        heldStageError, heldMutationError, heldStageReadError,
+      }));
+  }
+  await requireStoredV4Stage(
+    evalIn, OUTER_AUTH_SAVED_ROUTE_RAW, 'SAVED ROUTE AUTHORIZATION',
+  );
   await navigateToSlice(sess, URL0, 'source-valid saved route beyond saved reach');
   await sleep(2200);
   const outerAuthBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -7381,7 +7615,7 @@ try {
     && state.save.ascCh === 2 && Object.keys(state.save.primeFill).length === 0
     && state.codexCount === 3 && state.atlasCount === 4 && state.atlasTravelable === 2;
   if (!outerAuthBootOutcome(outerAuthBoot)) {
-    fails.push('SAVED ROUTE AUTHORIZATION: source-valid outer location did not fall back home with unrelated ledger intact: '
+    fails.push('SAVED ROUTE AUTHORIZATION: source-valid outer location did not fall back to Cosmos/NAV_HOME with unrelated ledger intact: '
       + JSON.stringify(outerAuthBoot));
   }
   requireRenderedSceneMatch('SAVED ROUTE AUTHORIZATION FALLBACK', outerAuthBoot);
@@ -7451,7 +7685,7 @@ try {
      `view`, and preserve identity, progress, Atlas history, Charter, rewards,
      and names. This drives the raw IndexedDB ingress rather than an in-memory
      resolver probe. */
-  await evalIn(`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(STALE_SAVED_ROUTE_RAW)})`);
+  await requireStoredV4Stage(evalIn, STALE_SAVED_ROUTE_RAW, 'SAVED ROUTE FIELD REPAIR');
   await navigateToSlice(sess, URL0, 'stale saved-route field-local fallback');
   await sleep(2200);
   const staleSavedBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -14064,7 +14298,7 @@ try {
   ];
   const dtrainSeedPrimary = async (raw, label) => {
     const beforeToken = await sliceToken(sess);
-    await evalIn(`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(raw)})`);
+    await requireStoredV4Stage(evalIn, raw, label);
     await navigateToSlice(sess, URL0, label);
     await sleep(900);
     const token = await sliceToken(sess);
@@ -17647,20 +17881,16 @@ try {
     await send('Target.closeTarget', { targetId: tR.targetId });
   }
 
+  /* Every remaining fixture in this section belongs to the phone document.
+     Close the original desktop document before any reset so no same-origin
+     page can observe or overwrite fixture authority after the atomic stage. */
+  await send('Target.closeTarget', { targetId: t.targetId });
+
   /* Protected-save notices are CRITICAL boot outcomes and must bypass the
      ordinary 1.8s toast de-bounce. Exercise them before that window closes,
      and prove neither future nor corrupt bytes are rewritten. */
   const setProtectedPrimary = async (raw, backup) => {
-    const staged = await evalPh(`(async()=>{const stage=window.__CF_SLICE__?.api?.__smokeStageStoredV4;
-      return typeof stage==='function'?stage(${JSON.stringify(raw)},${JSON.stringify(backup)}):false;})()`)
-      .catch(() => false);
-    if (staged) return true;
-    const backupWrite = backup === undefined
-      ? "os.delete('save_bak');"
-      : `os.put(${JSON.stringify(backup)},'save_bak');`;
-    return evalPh(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
-      q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite'),os=tx.objectStore('meta');
-        os.put(${JSON.stringify(raw)},'save'); ${backupWrite} tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
+    return requireStoredV4Stage(evalPh, raw, 'PROTECTED SAVE', backup);
   };
   const waitProtectedNotice = async (expectedTitle, timeoutMs = 3000) => {
     const deadline = Date.now() + timeoutMs;
@@ -17839,10 +18069,7 @@ try {
      targets can otherwise adopt its deliberately staged v4 source and make
      the retry page's write count describe a different document. Everything
      below runs in fresh, short-lived targets. */
-  await Promise.all([
-    send('Target.closeTarget', { targetId: t.targetId }),
-    send('Target.closeTarget', { targetId: t2.targetId }),
-  ]);
+  await send('Target.closeTarget', { targetId: t2.targetId });
 
   /* A transient first read is UNKNOWN—not permission to recover a stale
      backup or overwrite a primary that appears on retry. Inject the failure
@@ -17865,16 +18092,24 @@ try {
     await send('Runtime.enable', {}, retrySession);
     await send('Page.enable', {}, retrySession);
     await navigateToSlice(retrySession, URL0, 'transient-read fixture staging boot');
-    const staged = await send('Runtime.evaluate', {
-      expression: `(async()=>{const stage=window.__CF_SLICE__?.api?.__smokeStageStoredV4;
-        if(typeof stage!=='function')return false;const deadline=performance.now()+6000;
-        do{if(await stage(${seedRaw === undefined ? 'null' : JSON.stringify(seedRaw)}))return true;
-          await new Promise((resolve)=>setTimeout(resolve,50));}while(performance.now()<deadline);return false;})()`,
-      returnByValue: true, awaitPromise: true,
-    }, retrySession);
-    if (staged.exceptionDetails || staged.result.value !== true) {
+    const evalRetry = async (expression) => {
+      const result = await send('Runtime.evaluate', {
+        expression, returnByValue: true, awaitPromise: true,
+      }, retrySession);
+      if (result.exceptionDetails) {
+        throw new Error(JSON.stringify(result.exceptionDetails.exception?.description || result.exceptionDetails.text));
+      }
+      return result.result.value;
+    };
+    try {
+      await requireStoredV4Stage(
+        evalRetry,
+        seedRaw === undefined ? null : seedRaw,
+        'TRANSIENT READ',
+      );
+    } catch (error) {
       await send('Target.closeTarget', { targetId: target.targetId });
-      throw new Error('transient-read fixture staging did not quiesce and clear the isolated database');
+      throw error;
     }
     await send('Page.addScriptToEvaluateOnNewDocument', { source: `(() => {
       const first = sessionStorage.getItem('__cf_transient_injected') !== '1';
@@ -18120,10 +18355,7 @@ try {
      staging page for the full D-TRAIN Finish journey below. Closing it after
      transaction completion prevents its live lesson/autosave from racing the
      next document. */
-  const dtrainFullFixtureSeeded = await evalTp(
-    `window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(DTRAIN_FULL_FINISH_RAW)})`,
-  );
-  if (!dtrainFullFixtureSeeded) fails.push('D-TRAIN FULL FINISH: genuine fixture was not staged on the phone origin');
+  await requireStoredV4Stage(evalTp, DTRAIN_FULL_FINISH_RAW, 'D-TRAIN FULL FINISH');
   await send('Target.closeTarget', { targetId: t3p.targetId });
 
   /* 4e. THE TRAINING DRILL — the six live lessons end-to-end at the primary

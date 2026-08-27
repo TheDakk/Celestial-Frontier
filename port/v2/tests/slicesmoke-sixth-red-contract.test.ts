@@ -348,6 +348,222 @@ describe('sixth Slice red contract repairs', () => {
     ]);
   });
 
+  it('quiesces and certifies exact v4 fixture staging before route verdicts', () => {
+    const drainHook = section(
+      mainSource,
+      'async function smokeDrainFixturePersist(',
+      '\nasync function smokeStageStoredV4(',
+    );
+    proveEachMarkerRequired(drainHook, [
+      ['drain cancels unstarted debounce', 'clearTimeout(_persistT); _persistT = 0;'],
+      ['drain captures exact tail', 'const pendingPersist = activePersist;'],
+      ['drain joins exact tail', 'try { await pendingPersist; }'],
+      ['drain refuses concurrent authority',
+        'if (activePersist || importWriteInFlight || replacementTransaction'],
+      ['drain commits one current checkpoint', 'const committed = await persistView();'],
+      ['drain requires quiescent completion',
+        'return committed && activePersist === null && _persistT === 0;'],
+    ]);
+    expect(mainSource).toContain(
+      '__smokeDrainFixturePersist: smokeDrainFixturePersist,',
+    );
+    const productHook = section(
+      mainSource,
+      'async function smokeStageStoredV4(',
+      '\nfunction persistSoon(): void {',
+    );
+    proveEachMarkerRequired(productHook, [
+      ['cancel unstarted debounce', 'clearTimeout(_persistT); _persistT = 0;'],
+      ['block new persistence', "persistHold = 'protected-payload';"],
+      ['capture exact active write', 'const pendingPersist = activePersist;'],
+      ['join exact active write', 'try { await pendingPersist; }'],
+      ['post-join concurrency guard',
+        'if (activePersist || importWriteInFlight || replacementTransaction'],
+      ['dynamic backup type guard', "backup !== undefined && typeof backup !== 'string'"],
+      ['absent-primary backup rejection', 'raw === null && backup !== undefined'],
+      ['pending convergence guard',
+        '|| replacementReloadPending || f4AuthorityReloadScheduled) return false;'],
+      ['release tab authority', 'await f4Runtime?.release();'],
+      ['atomic reset and stage', 'const staged = await persistenceBackend.compareAndApply('],
+      ['absent-primary atomic reset', 'raw === null ? [] : ['],
+      ['clear every authoritative store in that transaction', '    STORES,'],
+      ['return atomic transaction receipt', 'return staged;'],
+    ]);
+    expect(productHook).not.toContain('persistenceBackend.clear(STORES)');
+    const quiescenceOrder = [
+      'clearTimeout(_persistT); _persistT = 0;',
+      'stopF4Heartbeat();',
+      'f4Runtime?.setAnswerable(false);',
+      "persistHold = 'protected-payload';",
+      'await settleF4Heartbeat();',
+      'const pendingPersist = activePersist;',
+      'try { await pendingPersist; }',
+      'if (activePersist || importWriteInFlight || replacementTransaction',
+      'await f4Runtime?.release();',
+      'f4Runtime = null;',
+      'const staged = await persistenceBackend.compareAndApply(',
+      'return staged;',
+    ];
+    const orderErrors = (owner: string) => quiescenceOrder.flatMap((marker, index) => {
+      const at = owner.indexOf(marker);
+      const prior = index === 0 ? -1 : owner.indexOf(quiescenceOrder[index - 1]!);
+      return at >= 0 && at > prior ? [] : [marker];
+    });
+    expect(orderErrors(productHook)).toEqual([]);
+    quiescenceOrder.slice(1).forEach((marker, index) => {
+      const prior = quiescenceOrder[index]!;
+      const mutant = productHook
+        .replace(prior, '__STAGE_ORDER_SWAP__')
+        .replace(marker, prior)
+        .replace('__STAGE_ORDER_SWAP__', marker);
+      expect(orderErrors(mutant), `${prior} before ${marker}`).not.toEqual([]);
+    });
+
+    const sliceHandshake = section(
+      sliceSource,
+      '  const exactStoredV4Stage = ({ accepted, observed, expected, backup }) =>',
+      '  const keyIn = async (key, code = key, modifiers = 0) => {',
+    );
+    proveEachMarkerRequired(sliceHandshake, [
+      ['exact primary presence', 'observed?.primary?.present === expectedPrimaryPresent'],
+      ['exact primary equality', 'observed?.primary?.value === (expectedPrimaryPresent ? expected : null)'],
+      ['exact backup presence', 'observed?.backup?.present === expectedBackupPresent'],
+      ['exact backup equality', 'observed?.backup?.value === (expectedBackupPresent ? backup : null)'],
+      ['positive selftest',
+        "exactStoredV4Stage({ accepted: true, observed: exactPrimary, expected: '{}' })"],
+      ['positive backup selftest',
+        "exactStoredV4Stage({ accepted: true, observed: exactBackup, expected: '{}', backup: '{\"v\":4}' })"],
+      ['rejected-stage control',
+        "exactStoredV4Stage({ accepted: false, observed: exactPrimary, expected: '{}' })"],
+      ['wrong-byte control',
+        "exactStoredV4Stage({ accepted: true, observed: exactPrimary, expected: '{\"v\":5}' })"],
+      ['missing-backup control',
+        "exactStoredV4Stage({ accepted: true, observed: exactPrimary, expected: '{}', backup: '{\"v\":4}' })"],
+      ['wrong-backup control',
+        "exactStoredV4Stage({ accepted: true, observed: exactBackup, expected: '{}', backup: '{\"v\":5}' })"],
+      ['unexpected-backup control',
+        "exactStoredV4Stage({ accepted: true, observed: exactBackup, expected: '{}' })"],
+      ['unexpected-primary on null-clear control',
+        'exactStoredV4Stage({ accepted: true, observed: exactPrimary, expected: null })'],
+      ['backup-with-null-primary control',
+        '}, expected: null, backup: \'{"v":4}\' })'],
+      ['absent-primary control', '}, expected: null }))'],
+      ['stage acceptance',
+        '`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(raw)},${backup === undefined ? \'undefined\' : JSON.stringify(backup)})`'],
+      ['unconditional primary/backup receipt read',
+        'try { observed = await evaluate(READ_STORED_V4_STAGE_EXPRESSION); }'],
+      ['fail-fast setup diagnosis',
+        'setup did not stage the exact v4 fixture: ${JSON.stringify({'],
+      ['rejected-stage error receipt', 'accepted, stageError, readError,'],
+      ['expected primary byte/hash receipt',
+        'expectedPrimary: describeStoredValue({ present: raw !== null, value: raw })'],
+      ['observed winning primary byte/hash receipt',
+        'observedPrimary: describeStoredValue(observed?.primary)'],
+      ['expected backup byte/hash receipt',
+        'expectedBackup: describeStoredValue({ present: raw !== null && backup !== undefined, value: backup })'],
+      ['observed winning backup byte/hash receipt',
+        'observedBackup: describeStoredValue(observed?.backup)'],
+      ['held-persist outcome owner',
+        'const heldStoredV4StageOutcome = (value) => value?.armed === true'],
+      ['held stage wait observed', 'value.stageWaitObserved === true'],
+      ['held stage stays pending', 'value.stageSettledBeforeRelease === false'],
+      ['new persistence settles blocked', 'value.mutationSettledBeforeRelease === true'],
+      ['new persistence returns false', 'value.mutationResult === false'],
+      ['pre-release bytes remain exact', 'value.sameBytesBeforeRelease === true'],
+      ['held writer release required', 'value.released === true'],
+      ['held writer committed outcome', "value.writerWitness?.outcome === 'committed'"],
+      ['held writer revision source', 'Number.isSafeInteger(value.writerWitness.beforeRevision)'],
+      ['held writer nonnegative revision', 'value.writerWitness.beforeRevision >= 0'],
+      ['held writer overflow guard',
+        'value.writerWitness.beforeRevision < Number.MAX_SAFE_INTEGER'],
+      ['held writer result revision source',
+        'Number.isSafeInteger(value.writerWitness.afterRevision)'],
+      ['held writer exact revision advance',
+        'value.writerWitness.afterRevision === value.writerWitness.beforeRevision + 1'],
+      ['held outcome exact stage receipt', '&& exactStoredV4Stage(value);'],
+      ['held assessment positive', 'if (!heldStoredV4StageOutcome(heldStagePositive)'],
+      ['held wait-observation control',
+        '{ ...heldStagePositive, stageWaitObserved: false }'],
+      ['held assessment directional controls', '].some(heldStoredV4StageOutcome))'],
+      ['held negative-revision control',
+        'writerWitness: { beforeRevision: -1, afterRevision: 0, outcome: \'committed\' }'],
+      ['held unsafe-revision control',
+        'beforeRevision: Number.MAX_SAFE_INTEGER,'],
+    ]);
+    expect(sliceSource.split('__smokeStageStoredV4').length - 1).toBe(2);
+    expect(sliceSource).toContain(
+      "evalIn, OUTER_AUTH_SAVED_ROUTE_RAW, 'SAVED ROUTE AUTHORIZATION'",
+    );
+    expect(sliceSource).toContain(
+      "requireStoredV4Stage(evalIn, STALE_SAVED_ROUTE_RAW, 'SAVED ROUTE FIELD REPAIR')",
+    );
+    expect(sliceSource).toContain(
+      "requireStoredV4Stage(evalTp, DTRAIN_FULL_FINISH_RAW, 'D-TRAIN FULL FINISH')",
+    );
+    expect(sliceSource).toContain(
+      "requireStoredV4Stage(evalPh, raw, 'PROTECTED SAVE', backup)",
+    );
+    expect(sliceSource).toContain(
+      "seedRaw === undefined ? null : seedRaw,\n        'TRANSIENT READ',",
+    );
+    expect(sliceSource).not.toContain("typeof stage==='function'");
+    const heldControl = section(
+      sliceSource,
+      '  const heldStageDrain = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api;',
+      '  await requireStoredV4Stage(\n    evalIn, OUTER_AUTH_SAVED_ROUTE_RAW',
+    );
+    proveEachMarkerRequired(heldControl, [
+      ['drain the uncontrolled navigation tail',
+        'const committed=await api.__smokeDrainFixturePersist(),state=api.state();'],
+      ['require zero pending persistence',
+        'if (heldStageDrain.committed !== true || heldStageDrain.pending !== 0)'],
+      ['arm deterministic active persist',
+        '`window.__CF_SLICE__.api.__smokeArmImportRace(${JSON.stringify(STALE_AUTOSAVE_RAW)})`'],
+      ['start exact primary/backup stage while held',
+        '`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(ONE_BAD_FIELD_V4_RAW)},${JSON.stringify(STALE_AUTOSAVE_RAW)})`'],
+      ['bounded stage-entry poll',
+        'const heldStageWaitDeadline = performance.now() + 10_000;'],
+      ['observe protected stage wait', "if (hold === 'protected-payload') {"],
+      ['probe new persist while hold is active',
+        "evalIn('window.__CF_SLICE__.api.__smokePersistNow()')"],
+      ['bounded competing-persist poll',
+        'const heldMutationDeadline = performance.now() + 10_000;'],
+      ['continuously reject early stage settlement',
+        'while (!heldMutationSettled && !heldStageSettled'],
+      ['capture pending polarity before release',
+        'stageSettledBeforeRelease = heldStageSettled;'],
+      ['capture mutation polarity before release',
+        'mutationSettledBeforeRelease = heldMutationSettled;'],
+      ['read exact bytes before release',
+        'heldStageDuring = await evalIn(READ_STORED_V4_STAGE_EXPRESSION);'],
+      ['release in finally',
+        "heldStageReleased = await evalIn('window.__CF_SLICE__.api.__smokeReleaseImportRace()') === true;"],
+      ['join both diagnostic operations',
+        'const [heldStageAccepted, heldMutationResult] = await Promise.all(['],
+      ['read committed writer witness',
+        "'window.__CF_SLICE__.api.state().persistence.importRace'"],
+      ['bind writer witness into outcome', 'writerWitness: heldWriterWitness,'],
+      ['bind observed stage wait', 'stageWaitObserved: heldStageWaitObserved,'],
+      ['read exact post-stage receipt',
+        'const heldStageObserved = await evalIn(READ_STORED_V4_STAGE_EXPRESSION);'],
+      ['compare pre-release bytes',
+        'sameBytesBeforeRelease: JSON.stringify(heldStageDuring) === JSON.stringify(heldFixtureBefore)'],
+      ['judge executable outcome',
+        'if (!heldStoredV4StageOutcome(heldStageControl))'],
+      ['retain byte/hash diagnosis',
+        'primary: describeStoredValue(heldStageObserved?.primary)'],
+    ]);
+    const protectedStageAt = sliceSource.indexOf(
+      "return requireStoredV4Stage(evalPh, raw, 'PROTECTED SAVE', backup);",
+    );
+    const siblingCloseAt = sliceSource.lastIndexOf(
+      "await send('Target.closeTarget', { targetId: t.targetId });",
+      protectedStageAt,
+    );
+    expect(siblingCloseAt).toBeGreaterThanOrEqual(0);
+    expect(siblingCloseAt).toBeLessThan(protectedStageAt);
+  });
+
   it('collects one exact convergence-release witness for both Arc 4 reload paths', () => {
     expect(sliceSource.split(
       "const F4_CONVERGENCE_BINDING = '__cfF4AuthorityConvergenceWitness';",
@@ -571,7 +787,13 @@ describe('sixth Slice red contract repairs', () => {
     );
     proveEachMarkerRequired(assessment, [
       ['detail attribution', 'detailAttribution: boundedText(expectedDetail, 512)'],
-      ['lease read stability', 'leaseReadsStable: counter(before?.leaseReadCount)'],
+      ['exact release read count',
+        'leaseReleaseReadsExact: counter(before?.leaseReadCount)'],
+      ['release result read counter', 'counter(after?.leaseReadCount)'],
+      ['publication release read overflow guard',
+        "scenario !== 'publication' || before.leaseReadCount < Number.MAX_SAFE_INTEGER"],
+      ['publication release read delta',
+        "+ (scenario === 'publication' ? 1 : 0)"],
       ['revision read stability',
         'revisionReadsStable: counter(before?.revisionReadCount)'],
       ['scenario-specific before lifecycle',
@@ -604,7 +826,15 @@ describe('sixth Slice red contract repairs', () => {
     );
     proveEachMarkerRequired(controls, [
       ['detail mutant', 'detailAttribution: Object.freeze({'],
-      ['lease read mutant', 'leaseReadsStable: Object.freeze({'],
+      ['stale release-read mutant', 'staleLeaseReleaseRead: Object.freeze({'],
+      ['publication missing release-read mutant',
+        'publicationLeaseReleaseReadMissing: Object.freeze({'],
+      ['publication extra release-read mutant',
+        'publicationLeaseReleaseReadExtra: Object.freeze({'],
+      ['publication negative release-read mutant',
+        'publicationLeaseReleaseReadNegative: Object.freeze({'],
+      ['publication overflow release-read mutant',
+        'publicationLeaseReleaseReadOverflow: Object.freeze({'],
       ['revision read mutant', 'revisionReadsStable: Object.freeze({'],
       ['before visible mutant', 'beforeVisible: Object.freeze({'],
       ['stale lifecycle swap mutant', 'staleLifecycleSwap: Object.freeze({'],
@@ -634,6 +864,9 @@ describe('sixth Slice red contract repairs', () => {
       ['voice reservation mutant', 'audioVoiceReservation: Object.freeze({'],
       ['node reservation mutant', 'audioNodeReservation: Object.freeze({'],
     ]);
+    expect(arc4ContractSource).toContain(
+      'leaseReadCount: beforeLeaseOwned ? 2 : 1,',
+    );
     expect(arc4ContractSource).toContain(
       "throw new Error('Arc 4 convergence release rejected a released lost counterpart')",
     );
