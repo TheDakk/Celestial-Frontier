@@ -86,11 +86,11 @@ phone and desktop samples with one run ID must bind that exact tuple. An Edge au
 forces calibration nor changes a numeric ceiling, while a real observed budget breach remains red.
 This change is Compendium-only: SceneMemory and the root Gate-A browser contract are unchanged.
 
-Browser-free verification of these local bytes is green: 121 test files / 1,358 passed / one
+Browser-free verification of these local bytes is green: 122 test files / 1,362 passed / one
 intentional skip / zero failures; root, app, worker, and `noUnused` TypeScript; an 884-module Vite
 build; root validation with the unchanged 50-probe fingerprint; legacy jsdom smoke; and the
 applicable contract/reporter/Glass/recovery/Compendium selftests. These are local working-tree
-results only. Current-input Slice has two preserved one-attempt/zero-retry reds on Edge
+results only. Current-input Slice has three preserved one-attempt/zero-retry reds on Edge
 `151.0.4129.107`. Run `20260826214541492-83064-b252b137f7a3` at signed source `8553bd7…` failed
 after 92,772 ms with three findings: two instrument false reds—Settings' 14-versus-15 inventory and
 an unreachable Arc 3 target—plus the retained-Survey focus product regression. Changed clean signed
@@ -98,7 +98,11 @@ source `9d4b2b0…` supplied run `20260827000034983-98202-869d966f2f88`, which f
 ms with only the Arc 3 harness finding. Settings and Survey focus are therefore outcome-cleared.
 The reachable target exposed a second instrument defect: its oracle required system navigation and
 nav-owned planet identity simultaneously, although the selected world belongs to the Survey card.
-The bounded tool-only repair is local and unrerun. No current-input Slice PASS, Glass result or real
+Clean signed source `8a23e22…` then supplied run `20260827025804458-2742-c0c871ee52b6`, which
+failed after 93,582 ms with three findings from one new instrument cascade: the retained Survey card
+intentionally hid `#railrgt`, so Slice tried to activate zero-rect `railshipyard` before yielding the
+card. That run outcome-clears the card-context repair, but Deep Scanners and every later stage did
+not run. The bounded lifecycle repair is unrerun. No current-input Slice PASS, Glass result or real
 recovery certificate exists. Hosted
 execution, HUMAN review, whole-Gate closure, release, version
 bump, preview/publication, and deployment remain unclaimed.
