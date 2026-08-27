@@ -1,6 +1,6 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-26 audio/rarity presentation overlay — current local candidate:** Settings now renders
+> **2026-08-27 audio/rarity presentation overlay — current local candidate:** Settings now renders
 > persistent **Sound**, **Volume** and **Creature voices** controls from the actual saved values.
 > Sound Off immediately retapers the existing sting bus to effective zero, refuses new sources and
 > asks an existing context to suspend; it does not destroy the saved Volume choice. Live Volume
@@ -11,8 +11,11 @@
 >
 > One trusted native Tame activation may arm silent audio before the capture result is known. The
 > app plays exactly one deterministic synthesized fauna greeting only after the exact capture writer
-> reports a durable committed hit with no convergence, and after the result species, world, revision,
-> wild-Tame acquisition and live Arc 5 individual all agree. Playback additionally requires the
+> reports a durable committed hit with no convergence, and after the result species and world agree.
+> Its global F3 transaction `revision` remains distinct from the explicit Arc 4/5
+> `ownershipRevision`; Arc 4 V1 and Arc 5 V2 revisions must agree before publication, and the audio
+> owner fences the live Arc 5 individual only against `ownershipRevision`. Playback additionally
+> requires the
 > exact visible capture toast to remain registered as its accessible counterpart: `role=status`,
 > `aria-live=assertive`, `aria-atomic=true`, and matching title/detail/generation. A miss, refusal,
 > programmatic click, stale or protected authority, non-fauna result, lost toast/route/visibility/
@@ -27,7 +30,7 @@
 > unchanged.
 >
 > Focused source/unit/type/build and browser-tool contract checks cover this local candidate.
-> Current-input Slice has four preserved terminal-red, one-attempt/zero-retry runs on Edge
+> Current-input Slice has five preserved terminal-red, one-attempt/zero-retry runs on Edge
 > `151.0.4129.107`. Run `20260826214541492-83064-b252b137f7a3` from signed `8553bd7…` failed after
 > 92,772 ms with two instrument false reds—Settings' 14-versus-15 pressed-control inventory and an
 > unreachable Arc 3 target—plus the retained-Survey focus product regression. Changed clean signed
@@ -44,21 +47,35 @@
 > rendered-receipt expectations rejected valid Search/remnant evidence and skipped Skim; after
 > reload, retained Survey correctly hid the rail before another Engineering attempt, cascading
 > through storage/stale findings. Product Search, remnant routing and rail hiding were correct.
-> Deep Scanners, fixed Fabrication and the repaired lifecycle are outcome-cleared; Skim settlement
-> and later stages remain unproved, and both new harness repairs are unrerun. Browser-free verification remains green at 123 test files,
-> 1,372 passing tests and one intentional skip. The former Compendium certificate remains historical for
+> Deep Scanners, fixed Fabrication and the repaired lifecycle were outcome-cleared by that fourth
+> run. Signed-clean source `9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied fifth run
+> `20260827041238239-16243-cbf9ca66283b`, which ran for 141,336 ms and retained one finding: the exact
+> committed Tame greeting voice timed out with `last null`. That run outcome-clears the repaired path
+> through Skim plus the Engineering, storage-refusal, stale-authority, committed-publication and Arc
+> 5 fixed-point stages. Its generic null says only that the old active-voice predicate never returned
+> a qualifying observation; it cannot distinguish product rejection, autoplay/environment behavior,
+> natural completion before sampling or collector failure.
+>
+> The current repair uses a named retained seven-clause result/global/ownership/claim/counterpart/
+> runtime/toast collector. Exact `true` release is a fail-fast prerequisite, and one voice start may
+> be proved either while active or after exact natural completion, with one-start/peak and zero
+> stop/steal/rejection/fault evidence. Generic Arc 4 `ownershipRevision` and reload-result-null
+> controls are included in this repair batch. Browser-free verification is green at 124 test
+> files, 1,383 passing tests and one intentional skip; the current cumulative v2.0 development draft
+> has 55 bullets. The former Compendium certificate remains historical for
 > producer `587d3bdf…`; current producer
 > `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is active under budget
 > `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. Edge `.107` is provenance
 > only. Exact-budget run `20260826-slice-repair-certification` passed 78/78 with complete lifecycle
 > and named verification from clean signed activation source `91f4e044…` in one attempt/zero retries
-> (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). No current-input Slice PASS, Glass result
-> or recovery certificate exists; hosted, integration, HUMAN, preview, release and deployment
-> authority remain open. Broader Arc 7/8 soundscape/assets and listening/comfort review remain
-> partial.
+> (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Post-start audio lifecycle, the current
+> nine-stage/14-burn sequence, Glass and uninterrupted recovery remain unproved. No current-input
+> Slice PASS, current Glass result or recovery certificate exists; hosted, integration, HUMAN,
+> preview, release and deployment authority remain open. Broader Arc 7/8 soundscape/assets and
+> listening/comfort review remain partial.
 
 > **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
-> 2026-08-26 overlay does not supersede it:** the native Survey card now
+> 2026-08-27 overlay does not supersede it:** the native Survey card now
 > renders one source-bound capture surface with exactly three player actions: **Tame**, **Scavenge**
 > and **Sample**. Its model binds the exact canonical world, ecology epoch and full-roster
 > fingerprint. It states the eight-row preview/full-roster counts, makes the random eligible-pool
@@ -1109,7 +1126,7 @@
 > merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
-current v2 overlays match the local `port/v2` candidate as of 2026-08-26. The addenda at the end preserve
+current v2 overlays match the local `port/v2` candidate as of 2026-08-27. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson

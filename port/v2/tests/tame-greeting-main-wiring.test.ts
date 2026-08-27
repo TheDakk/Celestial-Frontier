@@ -9,6 +9,10 @@ const controllerSource = fs.readFileSync(
   path.join(here, '..', 'apps', 'game', 'src', 'capture-card.ts'),
   'utf8',
 );
+const audioOwnerSource = fs.readFileSync(
+  path.join(here, '..', 'apps', 'game', 'src', 'tame-greeting-audio.ts'),
+  'utf8',
+);
 
 function section(source: string, startText: string, endText: string): string {
   const start = source.indexOf(startText);
@@ -16,7 +20,11 @@ function section(source: string, startText: string, endText: string): string {
   return start >= 0 && end > start ? source.slice(start, end) : '';
 }
 
-function tameGreetingWiringErrors(main: string, controller: string): string[] {
+function tameGreetingWiringErrors(
+  main: string,
+  controller: string,
+  audioSource: string = audioOwnerSource,
+): string[] {
   const errors: string[] = [];
   const click = section(controller, 'readonly #onClick =', '\n\n  #render(): void');
   const trusted = click.indexOf("if (verb === 'tame' && event.isTrusted) this.#onNativeTameGesture?.();");
@@ -49,6 +57,45 @@ function tameGreetingWiringErrors(main: string, controller: string): string[] {
   }
   if (!main.includes('__smokeCaptureCurrentSurface: commitArc4CaptureAction,')) {
     errors.push('diagnostic-writer-boundary');
+  }
+  const outcomeShape = section(
+    main,
+    'type Arc4CaptureActionOutcome =',
+    '\nlet lastArc4CaptureResult:',
+  );
+  const coherence = writer.indexOf(
+    'if (verified.ownership.revision !== verified.ownershipV2.revision) {',
+  );
+  const publication = writer.indexOf('publishArc4CaptureFields(save, transaction.state);');
+  const globalRevision = writer.indexOf('revision: transaction.revision,');
+  const ownershipRevision = writer.indexOf(
+    'ownershipRevision: verified.ownershipV2.revision,',
+  );
+  const audioResultShape = section(
+    audioSource,
+    'export interface TameGreetingCaptureResult {',
+    '\n}',
+  );
+  const audioOwnerClass = section(
+    audioSource,
+    'class BrowserTameGreetingAudioOwner',
+    '\nexport function createTameGreetingAudioOwner(',
+  );
+  const audioClaim = section(
+    audioOwnerClass,
+    'claimCommittedTameGreeting(',
+    '\n  async playClaimedTameGreeting(',
+  );
+  if ((outcomeShape.match(/ownershipRevision: number;/g) ?? []).length !== 1
+    || (audioResultShape.match(/readonly ownershipRevision: number;/g) ?? []).length !== 1
+    || coherence < 0 || publication <= coherence
+    || globalRevision <= publication || ownershipRevision <= globalRevision
+    || (writer.match(/revision: transaction\.revision,/g) ?? []).length !== 1
+    || (writer.match(/ownershipRevision: verified\.ownershipV2\.revision,/g) ?? []).length !== 1
+    || !writer.includes("throw new Error('arc4-arc5-ownership-revision-mismatch');")
+    || !audioClaim.includes('state.revision !== outcome.result.ownershipRevision')
+    || audioClaim.includes('state.revision !== outcome.result.revision')) {
+    errors.push('ownership-revision-authority');
   }
 
   const presentation = section(
@@ -213,6 +260,40 @@ describe('Arc 7/8 Tame greeting — Main wiring', () => {
     );
     expect(tameGreetingWiringErrors(staleGeneration, controllerSource))
       .toContain('exact-toast-counterpart');
+  });
+
+  it('keeps global transaction and ownership revisions distinct through publication and claim', () => {
+    const oldCrossCounter = replaceExact(
+      audioOwnerSource,
+      'state.revision !== outcome.result.ownershipRevision',
+      'state.revision !== outcome.result.revision',
+    );
+    expect(tameGreetingWiringErrors(mainSource, controllerSource, oldCrossCounter))
+      .toContain('ownership-revision-authority');
+
+    const globalFromOwnership = replaceExact(
+      mainSource,
+      '        revision: transaction.revision,',
+      '        revision: verified.ownershipV2.revision,',
+    );
+    expect(tameGreetingWiringErrors(globalFromOwnership, controllerSource))
+      .toContain('ownership-revision-authority');
+
+    const ownershipFromGlobal = replaceExact(
+      mainSource,
+      '        ownershipRevision: verified.ownershipV2.revision,',
+      '        ownershipRevision: transaction.revision,',
+    );
+    expect(tameGreetingWiringErrors(ownershipFromGlobal, controllerSource))
+      .toContain('ownership-revision-authority');
+
+    const incoherentPublication = replaceExact(
+      mainSource,
+      'if (verified.ownership.revision !== verified.ownershipV2.revision) {',
+      'if (false) {',
+    );
+    expect(tameGreetingWiringErrors(incoherentPublication, controllerSource))
+      .toContain('ownership-revision-authority');
   });
 
   it('negative-controls every reload audio field, witness publication, and disposal order', () => {

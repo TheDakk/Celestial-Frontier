@@ -2,7 +2,7 @@
 
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
 2026-07-30. The dated v2 overlay below matches the current local development candidate and approved
-direction as of **2026-08-26**. It distinguishes the player-live compatibility stings and one
+direction as of **2026-08-27**. It distinguishes the player-live compatibility stings and one
 bounded synthesized Tame greeting from the broader Arc 7/8 content, integration and HUMAN work
 that remain open.
 **Shipped (production v1):** v1.8.0 "The Connection" · corrected and widened in v1.8.4
@@ -13,7 +13,7 @@ whole layer undocumented despite being the largest single feature of v1.8.
 
 ---
 
-## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-26)
+## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-27)
 
 ### 0.1 Truth boundary
 
@@ -54,12 +54,39 @@ pipeline without writing a save, consuming gameplay RNG or admitting a tombstone
 Only immutable audio phenotype, canonical owner and surviving lineage enter the signature; mutable
 progression, condition, assignment and relationship fields remain excluded. A trusted native Tame
 press may arm one silent context. Playback is admitted only after the exact durable, non-converging
-fauna hit, result species/world/revision, wild-Tame acquisition and current ownership all agree,
+fauna hit, result species/world, global F3 transaction revision, explicit Arc 4/5
+`ownershipRevision`, wild-Tame acquisition and current ownership all agree. The capture result keeps
+the global and ownership counters distinct; the audio owner fences only the current Arc 5 ownership
+revision against `ownershipRevision`, so an unrelated global save count cannot impersonate stale
+ownership. Arc 4 V1 and Arc 5 V2 ownership revisions must agree before live publication or result,
 and only while the exact visible `role=status`, assertive/atomic toast title and detail remain the
 registered accessibility counterpart. The resulting request is one bounded synthesized oscillator
 and gain envelope in the creature bus. Misses, refusals, stale/protected state, programmatic clicks,
 non-fauna results, lost route/toast/visibility/answerability, disabled Sound or Creature voices and
 reload are silent. The stable event is claimed once before playback; there is no retry or replay.
+
+Current-input Slice evidence consists of **five preserved terminal-red, one-attempt/zero-retry
+runs** on Edge `151.0.4129.107`. The fifth, run
+`20260827041238239-16243-cbf9ca66283b` from signed-clean source
+`9ce7ddde01201177dff1cacafc06c8424c4098cb`, ran for 141,336 ms and retained one finding: the exact
+committed Tame greeting voice timed out with `last null`. That generic null proves only that the old
+active-voice predicate never returned a qualifying observation; it does not distinguish product
+rejection, autoplay/environment behavior, natural completion before sampling or a collector defect.
+The same run outcome-cleared the repaired earlier path through Skim and the Engineering,
+storage-refusal, stale-authority, committed-publication and Arc 5 fixed-point stages before reaching
+this boundary.
+
+The current local repair separates the counters as described above and replaces that timing-fragile
+predicate with a named retained **seven-clause** result/global/ownership/claim/counterpart/runtime/
+toast collector. Exact `true` release is a fail-fast prerequisite; one voice start may be observed
+while active or after exact natural completion, with one start/peak, zero stop/steal/rejection/fault
+evidence and its accessible counterpart intact. Generic Arc 4 `ownershipRevision` and
+reload-result-null controls are included in this repair batch. Browser-free verification is
+green at 124 test files, 1,383 passing tests and one intentional skip, and the current cumulative
+v2.0 development draft has 55 bullets. Post-start audio lifecycle, the sealed nine-stage/14-burn
+Arc 4 sequence, a current Glass result and uninterrupted recovery remain unproved. There is no
+current-input Slice PASS, Glass/recovery certificate, hosted or HUMAN authority, or release/version/
+deployment claim.
 
 Broader player-live creature expressions, combat or Guardian cues, ambience, music, recorded assets
 and asset loading remain absent. Battle sound (`cbx`) is still preserved by persistence rather than

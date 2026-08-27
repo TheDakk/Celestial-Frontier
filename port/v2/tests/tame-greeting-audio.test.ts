@@ -159,7 +159,8 @@ function fixture() {
       kingdom: 'fauna',
       worldKey: resolved.address.key,
       ownedRowId: creatureId,
-      revision: state.revision,
+      revision: state.revision + 37,
+      ownershipRevision: state.revision,
     }),
   });
   return { state, outcome, discovery, worldKey: resolved.address.key };
@@ -208,6 +209,11 @@ describe('Arc 7/8 player-live Tame greeting owner', () => {
     const h = harness();
     const beforeState = JSON.stringify(h.state);
     const beforeOutcome = JSON.stringify(h.outcome);
+    expect(h.outcome.result).toMatchObject({
+      revision: h.state.revision + 37,
+      ownershipRevision: h.state.revision,
+    });
+    expect(h.outcome.result!.revision).not.toBe(h.outcome.result!.ownershipRevision);
     expect(h.owner.armNativeTameGesture()).toBe(true);
     expect(h.contexts).toHaveLength(1);
     const claim = h.owner.claimCommittedTameGreeting(h.outcome, h.state);
@@ -236,6 +242,42 @@ describe('Arc 7/8 player-live Tame greeting owner', () => {
     expect(JSON.stringify(h.outcome)).toBe(beforeOutcome);
   });
 
+  it('fences the ownership revision without conflating the independent global revision', async () => {
+    const stale = harness();
+    expect(stale.owner.armNativeTameGesture()).toBe(true);
+    const staleOwnership = Object.freeze({
+      ...stale.outcome,
+      result: Object.freeze({
+        ...stale.outcome.result!,
+        ownershipRevision: stale.state.revision + 1,
+      }),
+    });
+    expect(stale.owner.claimCommittedTameGreeting(staleOwnership, stale.state)).toBeNull();
+    expect(stale.owner.diagnostics().lastDisposition).toBe('ownership-stale');
+    await Promise.resolve();
+    expect(stale.contexts[0]!.closeCalls).toBe(1);
+
+    const independentGlobal = harness();
+    expect(independentGlobal.owner.armNativeTameGesture()).toBe(true);
+    const differentGlobal = Object.freeze({
+      ...independentGlobal.outcome,
+      result: Object.freeze({
+        ...independentGlobal.outcome.result!,
+        revision: independentGlobal.outcome.result!.revision + 1_000,
+      }),
+    });
+    const claim = independentGlobal.owner.claimCommittedTameGreeting(
+      differentGlobal,
+      independentGlobal.state,
+    );
+    expect(claim).not.toBeNull();
+    expect(independentGlobal.owner.diagnostics().lastDisposition).toBe('event-claimed');
+    await expect(independentGlobal.owner.playClaimedTameGreeting(
+      claim!,
+      counterpart(claim!.eventKey),
+    )).resolves.toMatchObject({ kind: 'started' });
+  });
+
   it.each([
     ['Sound off', { soundOn: false }],
     ['Creature voices off', { creatureVoicesOn: false }],
@@ -259,9 +301,6 @@ describe('Arc 7/8 player-live Tame greeting owner', () => {
     })],
     ['convergence', (outcome: TameGreetingCaptureOutcome) => ({
       ...outcome, convergence: 'read-only-reload' as const,
-    })],
-    ['stale revision', (outcome: TameGreetingCaptureOutcome) => ({
-      ...outcome, result: { ...outcome.result!, revision: 99 },
     })],
     ['result species mismatch', (outcome: TameGreetingCaptureOutcome) => ({
       ...outcome,

@@ -586,10 +586,15 @@ describe('v2 Guide capability filter', () => {
     const audioBullet = V2_DRAFT_RELEASE.sections
       .flatMap((section) => section.bullets)
       .find((bullet) => bullet.includes('THE FRONTIER SPEAKS'));
+    const tameGreetingFixBullet = V2_DRAFT_RELEASE.sections
+      .find((section) => section.category === 'Bug Fixes')
+      ?.bullets.find((bullet) => bullet.includes('A NEWLY TAMED CREATURE CAN GREET YOU'));
     expect(audioBullet).toContain('verified durable wild-fauna Tame');
     expect(audioBullet).toContain('visible status alert settles');
     expect(audioBullet).toContain('without retry or replay');
     expect(audioBullet).toContain('ambience, music, and combat sound remain future work');
+    expect(tameGreetingFixBullet).toContain('two different save revisions');
+    expect(tameGreetingFixBullet).toContain('keeping stale results silent');
   });
 
   it('describes the exact live Engineering and Inventory actions without promoting dormant rows', () => {
@@ -1241,7 +1246,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 54,
+        inventory: bullets.length === 55,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,

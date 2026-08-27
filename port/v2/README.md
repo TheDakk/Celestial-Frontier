@@ -1,8 +1,8 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Current port status — 2026-08-26
+## Current port status — 2026-08-27
 
-> **Current local candidate — source-complete bounded lanes with three preserved Slice reds and a
+> **Current local candidate — source-complete bounded lanes with five preserved Slice reds and a
 > certified current-product Compendium ruler.** Gate B now recursively seals the exact 62-file domain-source inventory against DOM,
 > storage, `navigator`, network, wall/monotonic clock and uncontrolled randomness. Its only two
 > compatibility waivers are CombatCore's exact `document.createElement('')` expressions for the legacy
@@ -30,7 +30,9 @@
 > owned creature is projected into deterministic audio identity; the app owns the fail-closed
 > five-bus runtime and persisted **Creature Voices** setting; and a native Tame gesture plus the
 > exact committed durable nonconverging fauna result and accessible status counterpart may emit one
-> bounded asset-free greeting. Mute, voices-off, hidden/unanswerable play, miss/refusal,
+> bounded asset-free greeting. The result keeps its global F3 transaction `revision` distinct from
+> the Arc 4/5 `ownershipRevision`; the owner fences current ownership only against the latter after
+> the two ownership successors agree. Mute, voices-off, hidden/unanswerable play, miss/refusal,
 > stale/reload convergence, route/counterpart loss, replacement and disposal are silent. Other
 > expressions, distant ecology, ambience, music, combat/Guardian audio, recorded assets, full
 > accessibility/device plateaus and HUMAN listening remain open.
@@ -69,10 +71,10 @@
 > `6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. This policy remains Compendium-only; Edge `.107` is provenance
 > only, and SceneMemory/root Gate A are unchanged.
 >
-> Browser-free verification of these local bytes is green: 123 files / 1,372 passed / one
+> Browser-free verification of these local bytes is green: 124 files / 1,383 passed / one
 > intentional skip / zero failures; `root/app/worker/noUnused` TypeScript; an 884-module Vite build;
 > root validation with unchanged fingerprint; legacy jsdom smoke; and the applicable contract,
-> reporter, Glass, recovery and Compendium selftests. Current-input Slice retains four
+> reporter, Glass, recovery and Compendium selftests. Current-input Slice retains five
 > one-attempt/zero-retry reds on Edge `.107`. Run `20260826214541492-83064-b252b137f7a3` from signed
 > `8553bd7…` failed after 92,772 ms with Settings and unreachable-target instrument false reds plus
 > the retained-Survey focus product regression. Changed clean signed source `9d4b2b0…` supplied run
@@ -89,10 +91,22 @@
 > valid Search/remnant evidence and skipped Skim. After reload, retained Survey correctly hid the
 > rail before another Engineering attempt, cascading through storage/stale findings. Product
 > Search, remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and the
-> repaired lifecycle are outcome-cleared; Skim settlement and later stages remain unproved, and
-> both new harness repairs are unrerun. The fresh
-> Compendium certificate is green; no current-input Slice PASS, Glass result or real recovery
-> certificate exists. Hosted execution,
+> repaired lifecycle are outcome-cleared. Clean/stable signed source
+> `9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied run
+> `20260827041238239-16243-cbf9ca66283b`, which failed after 141,336 ms with one independent
+> `harness` finding: the exact committed Tame greeting did not reach its browser outcome within ten
+> seconds, retaining only `last null`. The carrier preserved neither a terminal observation nor a
+> browser product/instrument disposition. Its straight-line progress outcome-clears native Skim,
+> four-action Engineering reload, Mineral/Survey rail, storage refusal, stale and publication
+> convergence, and the Arc 5 v1-to-compact-v2 fixed point. Static source diagnosis found a crossed
+> global/ownership revision fence plus a transient-active predicate that could miss a naturally
+> completed one-start voice. The local, unrerun repair adds distinct `ownershipRevision`; the named
+> `collectArc4TameGreetingStart()` collector retaining exact result, global, ownership, claim,
+> counterpart, runtime and toast clauses; release-`true` fail-fast; active-or-naturally-completed
+> one-start proof; and generic Arc 4
+> ownership-revision plus reload-result-null controls. The fresh Compendium certificate is green;
+> post-start audio lifecycle and the later exact nine-stage/14-burn ledger remain unproved. No
+> current-input Slice PASS, Glass result or real recovery certificate exists. Hosted execution,
 > HUMAN review, whole-Gate closure, release/version, preview/publication and deployment remain
 > unclaimed.
 
@@ -911,9 +925,17 @@ contexts fail closed, resume/teardown cancellation-aware and hostile close/re-en
 resurrect a stale owner. `creature-expression-voice.ts` renders one deterministic asset-free fauna
 greeting with one oscillator plus one gain node and one expression concurrency group.
 `tame-greeting-audio.ts` arms only inside the native Tame gesture, then requires the exact committed
-durable nonconverging fauna result, matching world/species/revision/current ownership and
-acquisition record, the identity projector, and the exact accessible status counterpart. It emits
-at most one event key, `arc4:taming-succeeded:${recordId}`. Sound or Creature Voices off,
+durable nonconverging fauna result, matching world/species, global F3 transaction `revision`, Arc
+4/5 `ownershipRevision`, current ownership and acquisition record, the identity projector, and the
+exact accessible status counterpart. Main preserves the two revisions separately and publishes
+only after the Arc 4 and Arc 5 ownership successors agree; the audio owner fences current
+ownership against `ownershipRevision`, not the global revision. It emits at most one event key,
+`arc4:taming-succeeded:${recordId}`. The current repair requires release to return `true` before a
+named `collectArc4TameGreetingStart()` collector retains exact result, global, ownership, claim,
+counterpart, runtime and toast clauses, and accepts one start that is either still active or has
+naturally completed before its
+first read. Generic Arc 4 ownership-revision and reload-result-null controls are included in this
+repair batch; the repair has not been rerun in a browser. Sound or Creature Voices off,
 hidden/unanswerable play, miss/refusal, stale/reload convergence, route/counterpart loss,
 replacement and disposal remain silent and release the owner; reload begins disposed and unarmed
 with no context, counterpart, voice or nodes.
@@ -946,7 +968,7 @@ Intentionally dormant topics remain source-recorded and player-hidden. No legacy
 presented as current behavior.
 Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
-categorized v2.0 development bulletin, now 54 bullets. The draft summarizes the implemented playtest
+categorized v2.0 development bulletin, now 55 bullets. The draft summarizes the implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
 nonempty bullets, the key player-facing outcomes, and a scroll-reachable final item.
 That playtest identity cannot trigger the one-time update popup, update `rnSeen`,
@@ -1774,7 +1796,7 @@ retry, fallback, product, launch-argument, or producer drift occurred in that hi
 
 | Tool | Role |
 |---|---|
-| **Current local candidate verification (2026-08-27)** | Browser-free source gates are green: 123 Vitest files / 1,372 passed / one intentional skip / zero failures; `root/app/worker/noUnused` TypeScript; 884-module Vite build; root validate/fingerprint and legacy jsdom smoke; contract/reporter/Glass/recovery/Compendium selftests. Current-input Slice retains four one-attempt/zero-retry reds on Edge `.107`: `20260826214541492-83064-b252b137f7a3` found two instrument defects and one Survey-focus regression; `20260827000034983-98202-869d966f2f88` outcome-cleared Settings/focus and found the card-context oracle; `20260827025804458-2742-c0c871ee52b6` outcome-cleared that oracle and found the retained-card rail sequence; clean signed-source `bd6b06b…` supplied `20260827032748771-8092-d2a0130882c1`, whose six scopes reduce to stale Mars-source/rendered-receipt expectations and a post-reload retained-card lifecycle error. Product Search/remnant routing/rail hiding were correct. Deep Scanners, fixed Fabrication and the repaired lifecycle are outcome-cleared; Skim settlement and later stages remain unproved, and both new harness repairs are unrerun. Current Compendium certification/named verification is green. No current-input Slice PASS, Glass result or recovery certificate exists; hosted, HUMAN, whole-Gate and release evidence remain outstanding and unclaimed. |
+| **Current local candidate verification (2026-08-27)** | Browser-free source gates are green: 124 Vitest files / 1,383 passed / one intentional skip / zero failures; `root/app/worker/noUnused` TypeScript; 884-module Vite build; root validate/fingerprint and legacy jsdom smoke; contract/reporter/Glass/recovery/Compendium selftests. Current-input Slice retains five one-attempt/zero-retry reds on Edge `151.0.4129.107`: `20260826214541492-83064-b252b137f7a3` found two instrument defects and one Survey-focus regression; `20260827000034983-98202-869d966f2f88` outcome-cleared Settings/focus and found the card-context oracle; `20260827025804458-2742-c0c871ee52b6` outcome-cleared that oracle and found the retained-card rail sequence; clean signed source `bd6b06b…` supplied `20260827032748771-8092-d2a0130882c1`, whose six scopes reduce to stale Mars-source/rendered-receipt expectations and a post-reload retained-card lifecycle error. Product Search/remnant routing/rail hiding were correct; Deep Scanners, fixed Fabrication and the repaired lifecycle are outcome-cleared. Clean/stable signed source `9ce7ddde01201177dff1cacafc06c8424c4098cb` supplied `20260827041238239-16243-cbf9ca66283b`, which failed after 141,336 ms with one independent harness finding and retained only `last null`, so it preserved neither a terminal observation nor a browser product/instrument disposition. Straight-line progress outcome-clears native Skim, four-action Engineering reload, Mineral/Survey rail, storage refusal, stale/publication convergence and the Arc 5 v1-to-compact-v2 fixed point. Static diagnosis identified distinct global/ownership revisions and a transient-active predicate. The local unrerun repair adds the `ownershipRevision` owner fence, the named seven-clause `collectArc4TameGreetingStart()` collector, release-`true` fail-fast, active-or-naturally-completed one-start proof, and generic Arc 4 ownership-revision plus reload-result-null controls. Post-start audio lifecycle and the exact nine-stage/14-burn ledger remain unproved. Current Compendium certification/named verification is green. No current-input Slice PASS, Glass result or recovery certificate exists; hosted, HUMAN, whole-Gate and release evidence remain outstanding and unclaimed. |
 | **Current Compendium authority (active; locally certified)** | Measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`, former producer `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`, selected c3/c5/c6 plus baseline1, signed activation `d33e540…` and certificate `20260826-phase4-certification` remain historical exact-source evidence. Signed current calibration source `8ffd2e2…` supplied `20260826-slice-repair-candidate1/2/3` plus paired `20260826-slice-repair-baseline1`, each one attempt/zero retries. Active budget `6284a394…` binds current producer `f7c87f22…`, retains all four faults and exact 14-phone/13-desktop discrimination, and changes only the phone warm ceiling to `524288`. Clean signed activation `91f4e044…` passed `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Browser authority v2 remains Microsoft Edge family + CDP `1.3` + sealed capability-contract SHA-256 `6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`; exact Edge `.107` is same-run provenance only. HUMAN review, Slice/Glass/recovery and whole-Gate closure remain open; SceneMemory and root Gate A are unchanged. |
 | `node tools/arc4recovery.mjs --selftest` / real collector | The mutation-sensitive selftest seals a dedicated real-time, one-attempt, no-forged-clock collector for the exact active-play next-cycle recovery outcome. The tool is ready; no uninterrupted real 20-minute candidate certificate exists yet. |
 | **Compendium authority status (2026-08-23)** | PR #33 runs `32611053651` and `32614177932` correctly rejected two distinct stale/green-wrong states: old producer authority, then a pre-render ready observation invalidated by the snapshot's own render turn. The permanent boundary consumes that turn and re-proves exact decoded settlement; its paired selftest makes the historical order red. Clean collector source `14626a7…` completed three candidates plus paired baseline once each with zero retries under Edge `.101`; active budget SHA-256 `28b95867…` keeps strict +1/fractional product sentinels and preserved cross-host headroom. Independent clean source `e8898bf…` passed 78/78 with complete lifecycle and named verifier; report raw/gzip SHA-256 are `d1ea225b…` / `8e09255b…`. Evidence descendant `d359d8c…` passed the complete local battery. Historical `.86` and pre-settlement `.101` evidence remains truthful but is not rebound. Both hosted workflow owners and preflight install/check exact `.101`; later evidence/docs descendants are not retroactive certified heads. |

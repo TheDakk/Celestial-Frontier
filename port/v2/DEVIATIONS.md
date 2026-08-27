@@ -12,9 +12,9 @@ as any change that touches an entry.
 
 ## Current-state boundary — completed local candidate lanes (2026-08-27)
 
-The completed pre-Slice source lanes and three diagnosed repairs are locally committed at signed
-source `8ffd2e2…`. Browser-free evidence is green at 123 test files /
-1,372 passed /one intentional skip /zero failures; root, app, worker and `noUnused` TypeScript; the
+The completed pre-Slice source lanes and five preserved Slice reds are based on the signed local
+line through `9ce7ddde01201177dff1cacafc06c8424c4098cb`. Browser-free evidence is green at 124 test files /
+1,383 passed /one intentional skip /zero failures; root, app, worker and `noUnused` TypeScript; the
 884-module Vite build; root validation/fingerprint; legacy jsdom smoke; and applicable contract/
 reporter/Glass/recovery/Compendium selftests. The former Compendium calibration/certificate on
 signed activation `d33e540…` remains historical for producer `587d3bdf…`. The current
@@ -22,7 +22,7 @@ signed activation `d33e540…` remains historical for producer `587d3bdf…`. Th
 `6284a394…`. Clean signed activation `91f4e044…` passed exact-budget run
 `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
 attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Current-input Slice
-retains four one-attempt/zero-retry reds on Edge `.107`. Run
+retains five one-attempt/zero-retry reds on Edge `.107`. Run
 `20260826214541492-83064-b252b137f7a3` from clean signed `8553bd7…` failed after 92,772 ms with
 Settings and unreachable-target instrument false reds plus the retained-Survey focus product
 regression. Changed clean signed source `9d4b2b0…` supplied
@@ -39,8 +39,17 @@ harness roots. Stale Mars-source and obsolete five-key rendered-receipt expectat
 Search/remnant evidence, cascading and skipping Skim. After reload, retained Survey correctly hid
 the rail before another Engineering attempt, cascading through storage/stale findings. Product
 Search, remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and the
-repaired lifecycle are outcome-cleared; Skim settlement and later stages remain unproved, and both
-new harness repairs are unrerun. No current-input Slice PASS,
+repaired lifecycle are outcome-cleared. Clean/stable signed source `9ce7ddd…` then supplied
+`20260827041238239-16243-cbf9ca66283b` once with zero retries on Edge `.107`; it failed after
+141,336 ms at the Tame-greeting observation with one first-root harness finding and retained only
+`last null`, so the report supplies no browser product/instrument disposition. The straight-line
+run outcome-clears native Skim, four-action Engineering reload, Mineral/Survey rail, storage
+refusal, stale/publication convergence and the Arc 5 v1-to-compact-v2 fixed point. The local
+unrerun repair preserves global `revision`, adds distinct `ownershipRevision` plus a V1/V2
+coherence guard, fences audio only on ownership, retains seven named start clauses, fails fast on a
+non-true release, and accepts exact active or naturally completed one-start evidence. Generic Arc 4
+hit/miss/burn ownership-revision and reload-result-null controls close the non-greeting proof gaps.
+Post-start audio lifecycle and the exact nine-stage/14-burn ledger remain unproved. No current-input Slice PASS,
 Glass result or real recovery certificate exists. The earlier clean committed recovery run
 `20260826024124548-13172-6286d5212e` at `35a22b1…` is preserved separately as one-attempt/zero-retry
 `instrument-fail`: fixture and 16-step burn-down passed, then the stale all-`depleted` poll rejected
@@ -79,8 +88,11 @@ closure, release/version, preview/publication or deployment claim.
 - ★ **D-AUDIO-LIVE-TAME — one narrow, accessible app-owned expression.** A strict projector for the
   current owned creature supplies deterministic immutable identity to the five-bus fail-closed
   runtime; Settings persist Creature Voices. Only a native Tame gesture followed by the exact committed
-  durable nonconverging fauna result and its exact accessible status counterpart can synthesize one
-  bounded greeting keyed `arc4:taming-succeeded:${recordId}`. Mute/voices-off, hidden/unanswerable,
+  durable nonconverging fauna result, its independent global transaction and ownership successor
+  revisions, and its exact accessible status counterpart can synthesize one
+  bounded greeting keyed `arc4:taming-succeeded:${recordId}`. Arc 4 and Arc 5 ownership revisions
+  must agree before publication; the runtime compares live ownership only with
+  `ownershipRevision`, never the unrelated global revision. Mute/voices-off, hidden/unanswerable,
   miss/refusal, stale/reload/replay, route/counterpart loss, replacement and disposal are silent.
   Other expressions, distant ecology, ambience/music/combat, assets, device plateau and HUMAN
   listening remain open.
@@ -1944,9 +1956,9 @@ duplicates).
   restoration. Guide uses z24 above the z23 survey card. Tooltip deep-links and Advanced Briefings
   remain OPEN; the Guide model existing does not claim those interaction layers are ported.
 - ★ **D-RELEASE-1 — legacy history, v2 development identity and a shipped version are three different states
-  (updated 2026-08-25).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
+  (updated 2026-08-27).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
   398 bullets, v1.8.9 first and v1.0 last. **A New Foundation** is the separate cumulative v2.0
-  development bulletin: a 54-bullet categorized, implemented-outcome technical outline whose explicit
+  development bulletin: a 55-bullet categorized, implemented-outcome technical outline whose explicit
   `draft`, `version:"2.0"` and `Unreleased` state does not turn open roadmap work into a promise.
   `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2 list is empty. Therefore draft copy
   can appear in the cumulative Guide history but can never fire the mature one-time update rule,

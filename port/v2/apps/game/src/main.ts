@@ -5560,6 +5560,7 @@ type Arc4CaptureActionOutcome = Readonly<{
     ownedRowId: string | null;
     stardustReward: number;
     revision: number;
+    ownershipRevision: number;
   }> | null;
 }>;
 let lastArc4CaptureResult: Arc4CaptureActionOutcome['result'] = null;
@@ -5775,6 +5776,9 @@ async function commitArc4CaptureAction(
         committed: attempt,
       });
       if (verified.kind !== 'verified') throw new Error(verified.detail);
+      if (verified.ownership.revision !== verified.ownershipV2.revision) {
+        throw new Error('arc4-arc5-ownership-revision-mismatch');
+      }
       publishArc4CaptureFields(save, transaction.state);
       arc4OwnershipState = verified.ownership;
       arc4OwnershipProtection = null;
@@ -5802,6 +5806,7 @@ async function commitArc4CaptureAction(
         ownedRowId: verified.plan.ownedRowId,
         stardustReward: verified.stardustReward,
         revision: transaction.revision,
+        ownershipRevision: verified.ownershipV2.revision,
       });
       lastArc4CaptureResult = result;
       lastArc4CaptureOutcome = `${verb}-committed:${transaction.revision}`;
