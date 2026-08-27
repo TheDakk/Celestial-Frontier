@@ -51,11 +51,29 @@
 > law: publish the complete successor before retiring its predecessor; aggregate build, rollback and
 > clear-world cleanup errors; and retain a failed retired scope without destroying the live successor.
 >
-> Focused changed-source checks and directionally independent controls have exercised the current
-> repairs. The last complete pre-certificate browserless checkpoint and independent audits completed
-> for the reviewed repair input, and the independent final whole-diff review is CLEAR. Any subsequent
-> source change must rerun its affected checks before a new signed clean successor. Exact-head browser
-> certificates remain pending.
+> Signed clean source `862a75b316142348636abea442dab15e87393642` passed named Layout
+> `20260827-phase4-successor-layout` at 787/787 across all ten viewports. Named SceneMemory
+> `20260827-phase4-successor-scenemem` then ran exactly once with zero automatic retries on Edge
+> `151.0.4129.107`, completed cleanup and stopped the serial campaign at 40/42. Only the phone and
+> desktop heap/DOM outcomes failed; Compendium, Slice, Glass and recovery did not run.
+>
+> The current worktree releases the avoidable closed-surface ownership. Production Inventory keeps
+> its logical data, query, filters and page while closed, but mounts neither its hidden item-row tree
+> nor its six event subscriptions until open; Close removes both idempotently. The panel manager now
+> uses one delegated document capture owner for every registered opener and still restores focus to
+> the exact registered button whose nested element was clicked. A deliberately non-certifying dirty diagnostic
+> reduced phone/desktop maxima to 676/673 nodes and 71/70 listeners, below the unchanged 704/80
+> ceilings. Warm range, slope and every other resource outcome remained green. Only the fixed V8 and
+> aggregate heap bands remain above their historical ceilings, so one signed calibration source,
+> three independent clean no-retry candidates, a heap-only activation and a fresh certificate remain
+> pending. Edge `.107` is run provenance only; a compatible point update never moves a ruler.
+>
+> Focused changed-source checks and directionally independent controls have exercised these bounded
+> repairs. The complete current browserless repair battery is green at 134 Vitest files / 1,466
+> passed / one intentional skip / zero failures, plus all TypeScript programs, `artunused`,
+> syntax/import selftests and the 887-module build. The final documentation/release-copy consistency
+> review and independent evidence/code whole-diff review are both CLEAR. Final producer/hash
+> confirmation and a new signed clean calibration source are next.
 > Current-input Slice retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > Signed-clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7`, which failed after 397,101 ms with 23 findings
@@ -150,9 +168,9 @@
 > durability and exposes waiting/worked-out/unavailable states without inventing capability. The
 > existing Arc 1C paragraphs below are retained as historical pre-Engineering evidence. The
 > historical Engineering implementation and browser evidence were committed through `c4a02be`.
-> The protected-preview product/diagnostic correction described above is a 2026-08-27 local
-> working-tree change: `bb5dc7c…` is its signed terminal-red predecessor, while a new signed
-> successor and fresh certificate IDs remain pending.
+> The protected-preview product/diagnostic correction described above is included in signed
+> `862a75b…`; `bb5dc7c…` remains the exact earlier red that exposed it. The current hidden-panel
+> repair still needs its own signed calibration source and fresh certificate IDs.
 > Retained no-retry Slice run `20260825013823076-822-b99fea33b17b` passed in 253,181 ms with
 > 0 findings and 10 screenshots; the full Glass Matrix separately passed in 64,222 ms across 12/12
 > viewports and 78/78 controls with none blocked/omitted and no findings, instrument failures, or
@@ -168,6 +186,14 @@
 > unsettled reward. Query, slot, rarity and equipped/protected status are bounded read filters.
 > Duplicate base items retain distinct `instanceId` rows. A `legacy-protected` hold is readable but
 > has no destructive or equip action.
+>
+> Production uses the panel's deferred closed lifecycle. Carrier data, query, slot/rarity/status
+> filters and page remain owned while closed, including state changes received before the next open,
+> but the panel body retains no hidden row DOM and its six subscriptions are removed. Opening installs
+> those subscriptions once and renders the latest projection; repeated Open/Close transitions do not
+> duplicate either owner. Registered panel buttons likewise share one delegated document-level
+> focus-capture owner instead of adding a closure per opener, while a click on an opener's nested
+> glyph still restores focus to that exact button after Close.
 >
 > Selecting an exact item opens one focus-owned detail sheet with base/construction axes, provenance,
 > equipped state, exact candidate-versus-equipped effect deltas and explicit conditional wording.
@@ -614,7 +640,7 @@
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
-> Foundation**, the cumulative categorized 54-bullet v2.0 development bulletin. It summarizes
+> Foundation**, the cumulative categorized 55-bullet v2.0 development bulletin. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
 > promises. The long draft is browser-checked for canonical section order and a
 > reachable final bullet; opening and reloading it cannot change `rnSeen` or create

@@ -922,6 +922,115 @@ describe('Arc 1C scene-memory contract', () => {
       .toMatchObject({ pass: false });
   });
 
+  it('diagnoses each heap and DOM ceiling with exact field, value, and limit', () => {
+    const controls = [
+      {
+        name: 'V8 heap used bytes',
+        values: (fixture: SceneMemoryInput) => ({
+          ceiling: fixture.budgets.phone.heapUsedBytesMax,
+          set: (value: number) => { fixture.profiles.phone.precondition.heap.usedSize = value; },
+        }),
+      },
+      {
+        name: 'embedder heap used bytes',
+        values: (fixture: SceneMemoryInput) => ({
+          ceiling: fixture.budgets.phone.embedderHeapUsedBytesMax,
+          set: (value: number) => { fixture.profiles.phone.precondition.heap.embedderHeapUsedSize = value; },
+        }),
+      },
+      {
+        name: 'backing storage bytes',
+        values: (fixture: SceneMemoryInput) => ({
+          ceiling: fixture.budgets.phone.backingStorageBytesMax,
+          set: (value: number) => { fixture.profiles.phone.precondition.heap.backingStorageSize = value; },
+        }),
+      },
+      {
+        name: 'aggregate heap bytes',
+        values: (fixture: SceneMemoryInput) => {
+          fixture.budgets.phone.heapUsedBytesMax = 20_000;
+          const heap = fixture.profiles.phone.precondition.heap;
+          return {
+            ceiling: fixture.budgets.phone.heapAggregateBytesMax,
+            set: (value: number) => {
+              heap.usedSize = value - heap.embedderHeapUsedSize - heap.backingStorageSize;
+            },
+          };
+        },
+      },
+      {
+        name: 'documents',
+        values: (fixture: SceneMemoryInput) => ({
+          ceiling: fixture.budgets.phone.documentsMax,
+          set: (value: number) => { fixture.profiles.phone.precondition.dom.documents = value; },
+        }),
+      },
+      {
+        name: 'nodes',
+        values: (fixture: SceneMemoryInput) => ({
+          ceiling: fixture.budgets.phone.nodesMax,
+          set: (value: number) => { fixture.profiles.phone.precondition.dom.nodes = value; },
+        }),
+      },
+      {
+        name: 'JS event listeners',
+        values: (fixture: SceneMemoryInput) => ({
+          ceiling: fixture.budgets.phone.jsEventListenersMax,
+          set: (value: number) => {
+            fixture.profiles.phone.precondition.dom.jsEventListeners = value;
+          },
+        }),
+      },
+    ] as const;
+
+    for (const control of controls) {
+      const exact = input();
+      const exactValues = control.values(exact);
+      exactValues.set(Math.floor(exactValues.ceiling));
+      expect(resultFor(evaluateSceneMemory(exact), 'phone/heap-dom-budget').pass,
+        `${control.name} exact ceiling`).toBe(true);
+
+      const next = input();
+      const nextValues = control.values(next);
+      const actual = Math.floor(nextValues.ceiling) + 1;
+      nextValues.set(actual);
+      const finding = resultFor(evaluateSceneMemory(next), 'phone/heap-dom-budget');
+      expect(finding.pass, `${control.name} next unit`).toBe(false);
+      expect(finding.message).toContain(
+        `precondition: ${control.name} ${actual} exceeded ceiling ${nextValues.ceiling}`,
+      );
+    }
+  });
+
+  it('diagnoses absent heap and DOM counters instead of collapsing them into one generic red', () => {
+    const broken = input() as unknown as {
+      profiles: { phone: { precondition: { heap?: unknown; dom?: unknown } } };
+    };
+    delete broken.profiles.phone.precondition.heap;
+    delete broken.profiles.phone.precondition.dom;
+    const finding = resultFor(
+      evaluateSceneMemory(broken as unknown as SceneMemoryInput),
+      'phone/heap-dom-budget',
+    );
+    expect(finding.message).toContain('precondition: heap counters are absent or invalid');
+    expect(finding.message).toContain('precondition: DOM counters are absent or invalid');
+  });
+
+  it('retains the prior contract acceptance of valid zero-valued heap components', () => {
+    const fixture = input();
+    for (const point of [fixture.profiles.phone.precondition, ...fixture.profiles.phone.cycles]) {
+      point.heap.usedSize = 0;
+      point.heap.embedderHeapUsedSize = 0;
+      point.heap.backingStorageSize = 0;
+    }
+    const finding = resultFor(evaluateSceneMemory(fixture), 'phone/heap-dom-budget');
+    expect(finding).toEqual({
+      id: 'phone/heap-dom-budget',
+      pass: true,
+      message: 'heap and DOM counters stayed within supplied ceilings',
+    });
+  });
+
   it('rejects an incomplete budget instead of silently dropping a ceiling', () => {
     const broken = input() as unknown as { budgets: { phone: Record<string, number> } };
     delete broken.budgets.phone.nodesMax;

@@ -1285,6 +1285,9 @@ describe('legacy and v2 release channels', () => {
       /Finish for now that points to live Engineering & Shipyard and Planetside capture/,
       /named HD surface-planet texture attachment/,
       /retains the displayed predecessor until an acquired successor publishes/,
+      /Closed Inventory panels retain their inventory, filter, and page state without keeping hidden item rows or dormant event subscriptions/,
+      /every registered panel opener shares one focus-capture owner/,
+      /memory ruler names the exact exceeded counter and cannot move merely because the browser received a compatible point update/,
       /Automated lenses still do not replace human play/,
       /production remains the v1\.8\.9 main-branch site/,
     ];
@@ -1342,6 +1345,30 @@ describe('legacy and v2 release channels', () => {
       )),
     }));
     expect(bulletinOutcome(missingRequired).required).toBe(false);
+    const staleClosedPanelOwnership = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'Closed Inventory panels retain their inventory, filter, and page state without keeping hidden item rows or dormant event subscriptions',
+        'Closed Inventory panels keep their hidden item rows and dormant event subscriptions',
+      )),
+    }));
+    expect(bulletinOutcome(staleClosedPanelOwnership).required).toBe(false);
+    const staleOpenerOwnership = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'every registered panel opener shares one focus-capture owner',
+        'every registered panel opener owns another focus-capture listener',
+      )),
+    }));
+    expect(bulletinOutcome(staleOpenerOwnership).required).toBe(false);
+    const browserVersionRuler = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'cannot move merely because the browser received a compatible point update',
+        'moves whenever the browser receives a compatible point update',
+      )),
+    }));
+    expect(bulletinOutcome(browserVersionRuler).required).toBe(false);
     const missingCloseContract = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
       bullets: section.bullets.map((bullet) => bullet.replace(

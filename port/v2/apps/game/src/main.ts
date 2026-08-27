@@ -2420,6 +2420,7 @@ const inventoryPanelController = new InventoryPanelController({
   openers: [document.getElementById('dockinventory'), document.getElementById('railinventory')],
   onAction: ({ operation, instanceId }) => commitArc2InventoryAction(operation, instanceId),
   requiresSalvageConfirmation: () => save.salvageConfirm,
+  deferWhileClosed: true,
 });
 registerPanel(inventoryPanelController.registration());
 const engineeringPanelController = new EngineeringPanelController({

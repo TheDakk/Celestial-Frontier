@@ -8,18 +8,36 @@
 A **description** says how the system works. A **rubric** says how you know the port got it
 right. This file converts the former into the latter, gate by gate.
 
-**Current local candidate boundary (2026-08-27):** the last complete pre-certificate browserless
-checkpoint is green across 134 Vitest files / 1,458 passed / one intentional skip, all
+**Current local candidate boundary (2026-08-27):** the current pre-calibration browserless
+checkpoint is green across 134 Vitest files / 1,466 passed / one intentional skip, all
 `root/app/worker/noUnused` TypeScript, `artunused`, syntax/import selftests and the 887-module build.
 Independent implementation/code, SceneMemory and release-note audits completed for their reviewed
 input, and their findings plus the later convergence-latch and per-field F4 evidence gaps now have
-focused controls. The affected gates are green and the independent final post-repair whole-diff
-review is CLEAR. No successor freeze or
-exact-head browser certificate exists yet. Tracked Compendium and SceneMemory producer bindings
-must match the rebuilt final candidate; older exact-input certificates remain **historical** until
-those exact signed producers are measured. Both rulers accept compatible
-Microsoft Edge-family + CDP `1.3` capability evidence; exact Edge build is provenance and a
-compatible browser update neither rebaselines nor moves numeric ceilings.
+focused controls. The affected gates were green and the independent final whole-diff review was
+CLEAR for that earlier checkpoint. The newer bounded SceneMemory repair now has its full
+browserless battery, and its final documentation/release-copy consistency review and independent
+evidence/code whole-diff review are both CLEAR. Producer/hash confirmation plus a signed clean
+calibration source remain next.
+
+Signed source `862a75b316142348636abea442dab15e87393642` is the current attempted browser
+boundary. Named Layout `20260827-phase4-successor-layout` passed 787/787 across 10 viewports and
+exact-run verification. SceneMemory then ran once with zero retries on Edge `151.0.4129.107` / CDP
+`1.3`, completed cleanup, and stopped the serial chain at 40/42: only the phone and desktop
+`heap-dom-budget` outcomes failed. The preserved carrier is
+`audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz`; no Compendium, Slice,
+Glass or recovery stage followed it. Product ownership traced the fixed DOM/listener cost to an
+eagerly rendered closed Inventory plus per-opener focus-capture closures. The local bounded repair
+defers the closed Inventory row tree and six dormant subscriptions, delegates opener capture once,
+and reports exact failed fields, values and ceilings. One deliberately dirty diagnostic reduced
+nodes/listeners to 676/71 phone and 673/70 desktop under the unchanged 704/80 limits; it is
+diagnosis only, never candidate or certificate evidence. Remaining fixed-growth V8-used and
+aggregate heap require three independent clean no-retry candidates on one signed repair source and
+the preserved paired red before any heap-only activation. That paired red still fails the unchanged
+node/listener ruler with heap ceilings removed. No signed repaired source or current exact-head
+SceneMemory certificate exists yet. Tracked Compendium and SceneMemory producer bindings must
+match the rebuilt final candidate; older exact-input certificates remain **historical**. Both
+rulers accept compatible Microsoft Edge-family + CDP `1.3` capability evidence; exact Edge build
+is provenance and a compatible browser update neither triggers calibration nor moves a ceiling.
 
 Current-input Slice retains six one-attempt/zero-retry reds. Signed-clean
 `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
@@ -166,7 +184,7 @@ ever substitute for a person, and it is deliberately expensive.
 |---|---|---|
 | `[HUMAN]` | Universe → system → Earth → landing → return works on phone and desktop | Played, not asserted |
 | `[EXEC-TODO]` | First interaction within budget | `budgets.json`: **answerable ≤ 1000 ms at 4× CPU**. Today's build is 1944 ms — the port must *improve* it |
-| `[EXEC]` | No leaks across repeated travel, Compendium and real Shipyard cycles | `[HISTORICAL]` Arc 1A's maximum-Compendium ruler passed exact hosted run `32462323775` and merged in PR #32 at `d4ab7e6…`. Arc 1B's `79c605f…` / `e244c9e…` 40/40 scene-memory-v1 certificate remains historical pre-Shipyard authority. Arc 1C product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds normalized ship state, one SVG/DOM Shipyard preview owner and the named HD-surface attachment. `59530da…` / budget `3b71d14c…` / run `20260822-arc1-local-certification` remain historical 42/42 authority for the former Mac-derived 250 ms ruler. Repair `7d8dc380cd89ef53aac5a11c3850316e19e1aae9`, budget `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`, and local no-retry run `20260823-pr33-cross-host-sla-certification` passed 42/42 plus named verification under Edge `151.0.4129.101`; exact browser build is historical provenance, not a perpetual version pin. Hosted run `32618995487` remains terminal-red 40/42 under the retired 250 ms ruler. Run `32646110946` later passed and merged PR #33 as `8998ffb…`. The changed current producer requires a new certificate before this row is `[CURRENT-EXACT]`. |
+| `[EXEC]` | No leaks across repeated travel, Compendium and real Shipyard cycles | `[RED]` for the current attempted producer; earlier certificates remain `[HISTORICAL]`. Arc 1A's maximum-Compendium ruler passed exact hosted run `32462323775` and merged in PR #32 at `d4ab7e6…`. Arc 1B's `79c605f…` / `e244c9e…` 40/40 scene-memory-v1 certificate remains historical pre-Shipyard authority. Arc 1C product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds normalized ship state, one SVG/DOM Shipyard preview owner and the named HD-surface attachment. `59530da…` / budget `3b71d14c…` / run `20260822-arc1-local-certification` remain historical 42/42 authority for the former Mac-derived 250 ms ruler. Repair `7d8dc380…`, budget `5c8a6e75…`, and no-retry run `20260823-pr33-cross-host-sla-certification` passed historical 42/42 plus named verification under Edge `.101`; run `32646110946` later passed and merged PR #33 as `8998ffb…`. Signed current source `862a75b…` passed named Layout 787/787, then no-retry SceneMemory `20260827-phase4-successor-scenemem` stopped the chain at 40/42 on only phone/desktop `heap-dom-budget`; the carrier is preserved in `audits/`. The repair defers closed Inventory DOM/subscriptions, delegates opener capture once and emits exact field/value/ceiling diagnoses. A `[DIRTY-DIAGNOSTIC]` measured 676/71 phone and 673/70 desktop nodes/listeners below unchanged 704/80 ceilings, but cannot certify. Three independent clean candidates plus the paired red must justify any heap-only activation; a compatible Edge update alone never does. A signed repaired activation and fresh 42/42 named certificate are required before this row becomes `[CURRENT-EXACT]`. |
 | `[EXEC]` | Charter mining banks only exact successful canonical actions | Chapter 1 `c1-mine` requires a registered complete CF1 hierarchy matching Home galaxy seed/coordinates, Sol star seed/coordinates, expected planet ordinal and a Sol dead-world seed; equal seed/ordinal under substituted parent coordinates rejects. Chapter 3 intentionally accepts any registered canonical successful Mine. Both bank one action tick, never a page load, and cap at the goal |
 | `[EXEC]` | Resize/frame and HD/fine-scene successor ownership cannot leak or erase the live predecessor | Resize and `visualViewport` bursts share one RAF coalescer, newest sample and at most one non-persisting rebuild per frame. HD and fine-scene successors publish only after complete acquisition/backing/attachment; failures preserve the predecessor and explicit retry. A published successor remains live if predecessor release fails; retired failed owners remain tracked, all cleanup is attempted, and rollback/release/dispose faults aggregate rather than short-circuit |
 | `[HUMAN]` | Rings and planet composition read correctly | Art judgment |
@@ -187,7 +205,7 @@ ever substitute for a person, and it is deliberately expensive.
 | `[HUMAN]` | Fixed-seed screens pass the art rubric | `port/baseline-v1.8.9/screens/` + `ART_DIRECTION.md`. **Approved by eye** |
 | `[HUMAN]` | LOD transitions reveal no blotches, seams or procedural repetition | Explicitly a looking task |
 | `[EXEC]` | All 43 biomes remain covered and correctly keyed | `validate.js` biome-profile check; `BIOME_ATLAS.md` §1.1 is the content contract |
-| `[EXEC-TODO]` | GPU/resource budget | Exact viewport backing-store caps remain. Arc 1B budgets scene Canvas leases/bytes, live TextureSources, Pixi managed-texture pixels and per-hash inventories, render-target/cache proxies, DOM, heap/backing storage, slope/range, BFCache and answerability. Arc 1C's historical `7d8dc380…` / `5c8a6e75…` local Edge `.101` 42/42 certificate extended those proxies through the real Shipyard, its one SVG/DOM preview owner, and the named HD-surface attachment; the former `59530da…` / `3b71d14c…` 250 ms certificate is also historical. PR #33's later terminal-green run `32646110946` supplied hosted integration for that exact input. Chromium still exposes no portable true GPU-byte counter; later filters/particles, a new certificate for the final frozen SceneMemory producer, and physical-device GPU/heat evidence remain open. |
+| `[EXEC-TODO]` | GPU/resource budget | Exact viewport backing-store caps remain. Arc 1B budgets scene Canvas leases/bytes, live TextureSources, Pixi managed-texture pixels and per-hash inventories, render-target/cache proxies, DOM, heap/backing storage, slope/range, BFCache and answerability. Arc 1C's historical `7d8dc380…` / `5c8a6e75…` local Edge `.101` 42/42 certificate extended those proxies through the real Shipyard, its one SVG/DOM preview owner and the named HD-surface attachment; the former `59530da…` / `3b71d14c…` certificate and PR #33 integration remain historical. Current signed `862a75b…` is `[RED]` at 40/42: resource ownership, plateau, slope, answerability and cleanup passed, while the combined heap/DOM outcomes exposed both avoidable closed-panel DOM/listener ownership and fixed product-growth heap. The local owner repair is green only as `[DIRTY-DIAGNOSTIC]` at 676/71 phone and 673/70 desktop versus unchanged 704/80 ceilings. Heap-only calibration still requires three clean candidates and the paired red before exact certification. Edge updates are provenance, never calibration triggers. Chromium still exposes no portable true GPU-byte counter; later filters/particles and physical-device GPU/heat evidence remain open. |
 
 ## Gate G — audio quality
 
@@ -261,7 +279,7 @@ or engagement pressure.
 |---|---|---|
 | **`[HUMAN]`** | Physical iOS / iPadOS / Android / desktop matrix | ⛔ Outstanding for **four rounds**. No harness has ever seen this game on real iOS |
 | `[EXEC-TODO]` | Accessibility audit | Partially covered by `uilayout` (44px touch floors, focus order) |
-| `[EXEC-TODO]` | Performance and heat budgets | `budgets.json` sets bundle + answerability; Arc 1A's Compendium ruler passed exact run `32462323775` and merged in PR #32. Arc 1B's exact Edge `.93` 40/40 certificate remains historical. Arc 1C's former `59530da…` / `3b71d14c…` 250 ms local certificate is historical; `7d8dc380…` / `5c8a6e75…` and Edge `.101` run `20260823-pr33-cross-host-sla-certification` remain historical 42/42 plus named-verifier evidence for the fixed strict `<1000 ms` SLA. Hosted run `32618995487` is historical terminal-red 40/42 under the superseded 250 ms ruler; repaired run `32646110946` then passed terminal-green and merged PR #33. Compendium and SceneMemory now own separate Edge-family + CDP `1.3` capability/profile authorities with unchanged numeric budgets; both changed final frozen producers require new bound certificates. True GPU bytes and physical-device heat/battery remain open, so this row and Gate I stay open. |
+| `[EXEC-TODO]` | Performance and heat budgets | `budgets.json` sets bundle + answerability; Arc 1A's Compendium ruler passed exact run `32462323775` and merged in PR #32. Arc 1B's Edge `.93` 40/40 and Arc 1C's `59530da…` / `3b71d14c…` plus `7d8dc380…` / `5c8a6e75…` Edge `.101` certificates remain historical; repaired hosted run `32646110946` passed and merged PR #33. Current signed `862a75b…` passed named Layout 787/787 but is `[RED]` at SceneMemory 40/42. The repaired closed Inventory/delegated opener result is only `[DIRTY-DIAGNOSTIC]`; three independent clean candidates, paired-red discrimination and heap-only activation must precede a new exact certificate. Compendium and SceneMemory retain separate version-tolerant Edge-family + CDP `1.3` authorities; compatible point updates neither rebaseline nor move thresholds. True GPU bytes and physical-device heat/battery remain open, so this row and Gate I stay open. |
 | `[EXEC-TODO]` | PWA offline / update rollback | Nothing exists today |
 | `[HUMAN]` | Save export and recovery path works for a real player | Same blocker as Gate C |
 

@@ -104,17 +104,30 @@ phone and desktop samples with one run ID must bind that exact tuple. An Edge au
 forces calibration nor changes a numeric ceiling, while a real observed budget breach remains red.
 Those `f7c87f22…` / `91f4e044…` bytes remain historical evidence for their exact producer. Compendium
 and SceneMemory now own separate sealed Edge-family + CDP `1.3` capability/profile authorities;
-the version-tolerance change altered no numeric budget in either ruler. Their changed final frozen
-producers require new bound certificates. Root Gate-A remains a separate contract.
+the version-tolerance change itself altered no numeric budget in either ruler. The current worktree
+is not a final frozen producer: SceneMemory must complete its three-candidate and paired-red
+calibration, then any supported heap-only activation, before exact certification; Compendium needs
+a fresh certificate bound to the eventual signed producer. Root Gate-A remains a separate contract.
 
-The complete current-candidate browserless checkpoint is green at 134 Vitest files / 1,458 passed /
-one intentional skip / zero failures, plus root/app/worker/noUnused TypeScript, `artunused`,
-syntax/import selftests and the 887-module Vite build. Prior implementation/code and release-note
-audits are CLEAR for their reviewed input. Their findings plus the later convergence-latch and
-per-field F4 controls are repaired, and the independent final post-repair whole-diff review is
-CLEAR. The new signed clean freeze and exact-head browser campaign remain pending.
-Tracked Compendium and SceneMemory bindings match the rebuilt candidate, while their older
-certificates remain historical until those exact signed producers are measured.
+Signed clean source `862a75b316142348636abea442dab15e87393642` passed named Layout
+`20260827-phase4-successor-layout` at 787/787 across all ten viewports, then ran named SceneMemory
+`20260827-phase4-successor-scenemem` exactly once with zero automatic retries on Edge
+`151.0.4129.107`. It completed cleanup and honestly stopped the serial campaign at 40/42: only the
+phone and desktop heap/DOM budget outcomes were red. Compendium, Slice, Glass and recovery did not
+run. The exact report is preserved under
+`audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz`.
+
+The avoidable shell ownership is repaired in the current worktree. Production Inventory retains
+its logical data, filters and page while closed, but no hidden item-row tree or six dormant event
+subscriptions; registered panel openers now share one delegated focus-capture owner instead of one
+closure per opener. A deliberately non-certifying dirty diagnostic reduced phone/desktop maxima to
+676/673 nodes and 71/70 listeners, below the unchanged 704/80 ceilings. Warm ranges, slopes and
+every other resource outcome remained green. Only the fixed absolute V8 and aggregate heap bands
+remain above their historical ceilings, consistent with the materially larger synchronously loaded
+Arc 2–5/F4 product graph rather than a lifecycle leak. A signed clean calibration source, three
+independent no-retry candidates, a heap-only ruler activation and one fresh exact-budget certificate
+remain pending. Edge `.107` is provenance only: a compatible point update never triggers
+recalibration, rebaselining, repinning or a threshold change.
 
 Current-input Slice retains six one-attempt/zero-retry reds. Signed-clean source
 `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
