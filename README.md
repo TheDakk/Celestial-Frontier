@@ -86,11 +86,11 @@ phone and desktop samples with one run ID must bind that exact tuple. An Edge au
 forces calibration nor changes a numeric ceiling, while a real observed budget breach remains red.
 This change is Compendium-only: SceneMemory and the root Gate-A browser contract are unchanged.
 
-Browser-free verification of these local bytes is green: 122 test files / 1,362 passed / one
+Browser-free verification of these local bytes is green: 123 test files / 1,372 passed / one
 intentional skip / zero failures; root, app, worker, and `noUnused` TypeScript; an 884-module Vite
 build; root validation with the unchanged 50-probe fingerprint; legacy jsdom smoke; and the
 applicable contract/reporter/Glass/recovery/Compendium selftests. These are local working-tree
-results only. Current-input Slice has three preserved one-attempt/zero-retry reds on Edge
+results only. Current-input Slice has four preserved one-attempt/zero-retry reds on Edge
 `151.0.4129.107`. Run `20260826214541492-83064-b252b137f7a3` at signed source `8553bd7…` failed
 after 92,772 ms with three findings: two instrument false reds—Settings' 14-versus-15 inventory and
 an unreachable Arc 3 target—plus the retained-Survey focus product regression. Changed clean signed
@@ -101,8 +101,14 @@ nav-owned planet identity simultaneously, although the selected world belongs to
 Clean signed source `8a23e22…` then supplied run `20260827025804458-2742-c0c871ee52b6`, which
 failed after 93,582 ms with three findings from one new instrument cascade: the retained Survey card
 intentionally hid `#railrgt`, so Slice tried to activate zero-rect `railshipyard` before yielding the
-card. That run outcome-clears the card-context repair, but Deep Scanners and every later stage did
-not run. The bounded lifecycle repair is unrerun. No current-input Slice PASS, Glass result or real
+card. That run outcome-clears the card-context repair. Clean signed source `bd6b06b…` then supplied
+run `20260827032748771-8092-d2a0130882c1`, which failed after 119,502 ms with six finding scopes
+from two harness roots: stale Mars-source plus obsolete five-key rendered-receipt expectations
+rejected valid Search/remnant evidence and skipped Skim, then post-reload retained Survey correctly
+hid the rail before another Engineering attempt, cascading into the storage/stale findings. Product
+Search, remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and the
+repaired lifecycle are outcome-cleared; Skim settlement and later stages remain unproved. Both
+bounded harness repairs are unrerun. No current-input Slice PASS, Glass result or real
 recovery certificate exists. Hosted
 execution, HUMAN review, whole-Gate closure, release, version
 bump, preview/publication, and deployment remain unclaimed.

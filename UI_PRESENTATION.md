@@ -27,7 +27,7 @@
 > unchanged.
 >
 > Focused source/unit/type/build and browser-tool contract checks cover this local candidate.
-> Current-input Slice has three preserved terminal-red, one-attempt/zero-retry runs on Edge
+> Current-input Slice has four preserved terminal-red, one-attempt/zero-retry runs on Edge
 > `151.0.4129.107`. Run `20260826214541492-83064-b252b137f7a3` from signed `8553bd7…` failed after
 > 92,772 ms with two instrument false reds—Settings' 14-versus-15 pressed-control inventory and an
 > unreachable Arc 3 target—plus the retained-Survey focus product regression. Changed clean signed
@@ -39,8 +39,14 @@
 > which failed after 93,582 ms with three findings from one new instrument lifecycle cascade. The
 > retained Survey card correctly hid the right rail, while Slice tried to activate zero-rect
 > `railshipyard` before yielding the card. The third run outcome-clears the card-context repair;
-> Deep Scanners and every later stage did not run, and the lifecycle repair is unrerun. Browser-free verification remains green at 122 test files,
-> 1,362 passing tests and one intentional skip. The former Compendium certificate remains historical for
+> clean signed source `bd6b06b…` then supplied `20260827032748771-8092-d2a0130882c1`, which failed
+> after 119,502 ms with six scopes from two harness roots. Stale Mars-source and obsolete five-key
+> rendered-receipt expectations rejected valid Search/remnant evidence and skipped Skim; after
+> reload, retained Survey correctly hid the rail before another Engineering attempt, cascading
+> through storage/stale findings. Product Search, remnant routing and rail hiding were correct.
+> Deep Scanners, fixed Fabrication and the repaired lifecycle are outcome-cleared; Skim settlement
+> and later stages remain unproved, and both new harness repairs are unrerun. Browser-free verification remains green at 123 test files,
+> 1,372 passing tests and one intentional skip. The former Compendium certificate remains historical for
 > producer `587d3bdf…`; current producer
 > `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is active under budget
 > `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. Edge `.107` is provenance

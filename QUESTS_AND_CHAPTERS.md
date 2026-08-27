@@ -1,6 +1,6 @@
 # Celestial Frontier — Quests & Chapters
 
-> **2026-08-26 current evidence overlay:** current-input Slice has three preserved terminal-red,
+> **2026-08-27 current evidence overlay:** current-input Slice has four preserved terminal-red,
 > one-attempt/zero-retry runs on Edge `151.0.4129.107`. Run
 > `20260826214541492-83064-b252b137f7a3` executed from signed `8553bd7…` for 92,772 ms and retained
 > three findings: the Settings 14-versus-15 control inventory and stage-1-unreachable Arc 3 target
@@ -13,8 +13,15 @@
 > then supplied run `20260827025804458-2742-c0c871ee52b6`, which ran once/zero retries and failed
 > after 93,582 ms with three findings from one instrument lifecycle cascade. The retained Survey card
 > correctly hid the right rail, but Slice attempted zero-rect `railshipyard` before yielding the card.
-> This outcome clears the prior card-context repair; Deep Scanners and every later stage did not run,
-> and the lifecycle repair is unrerun. Browser-free verification remains green at 122 test files, 1,362
+> This outcome clears the prior card-context repair. Clean signed source `bd6b06b…` then supplied run
+> `20260827032748771-8092-d2a0130882c1`, which ran once/zero retries and failed after 119,502 ms
+> with six finding scopes from two harness roots. Stale Mars-source expectations plus an obsolete
+> five-key rendered receipt rejected valid Search/remnant evidence, cascading through two findings
+> and skipping Skim. After reload, retained Survey again correctly hid the rail before Slice tried
+> Engineering; the storage and stale-authority findings cascaded from that second lifecycle error.
+> Product Search, remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and
+> the repaired lifecycle are outcome-cleared; Skim settlement and every later stage remain unproved,
+> and both new harness repairs are unrerun. Browser-free verification remains green at 123 test files, 1,372
 > passing tests and one intentional skip. The former Compendium certificate is historical for producer
 > `587d3bdf…`; current producer
 > `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is active under budget
