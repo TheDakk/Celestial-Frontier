@@ -29,7 +29,7 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-26; repaired locally, current Slice evidence still red):** the current
+**Current local v2 candidate (2026-08-27; repaired locally, current Slice evidence still red):** the current
 working tree completes the bounded source lanes that followed the retained Arc 5A checkpoint.
 Gate B now recursively seals the exact 62-file domain-source inventory against DOM, storage,
 `navigator`, network, wall/monotonic clock, and uncontrolled-random access; its only two waivers are
@@ -54,10 +54,13 @@ Audio is no longer package-only, but remains deliberately narrow. The app projec
 owned creature into the deterministic signature/profile/call-plan pipeline, owns a fail-closed
 five-bus runtime lifecycle, persists **Creature Voices**, and may synthesize one bounded fauna
 greeting only after a native Tame gesture, an exact durable wild-fauna result, and its accessible
-status counterpart all agree. Sound or Creature Voices off, hidden/unanswerable play, a miss,
-refusal, stale/reload convergence, route/counterpart loss, or replay stays silent and releases its
-audio/runtime owner. Other creature actions, ambience, music, combat/Guardian audio, recorded
-assets, full audio accessibility, device plateaus, and HUMAN listening remain open.
+status counterpart all agree. The result retains the global F3 transaction `revision` separately
+from its Arc 4/5 `ownershipRevision`; the audio owner fences current ownership only against the
+latter after the Arc 4 and Arc 5 ownership successors have been proven coherent. Sound or Creature
+Voices off, hidden/unanswerable play, a miss, refusal, stale/reload convergence, route/counterpart
+loss, or replay stays silent and releases its audio/runtime owner. Other creature actions,
+ambience, music, combat/Guardian audio, recorded assets, full audio accessibility, device plateaus,
+and HUMAN listening remain open.
 
 The dedicated no-forged-time Arc 4 recovery collector and its mutation-sensitive selftest are
 ready, but the uninterrupted real 20-minute certificate has not run. The former Compendium ruler
@@ -86,11 +89,11 @@ phone and desktop samples with one run ID must bind that exact tuple. An Edge au
 forces calibration nor changes a numeric ceiling, while a real observed budget breach remains red.
 This change is Compendium-only: SceneMemory and the root Gate-A browser contract are unchanged.
 
-Browser-free verification of these local bytes is green: 123 test files / 1,372 passed / one
+Browser-free verification of these local bytes is green: 124 test files / 1,383 passed / one
 intentional skip / zero failures; root, app, worker, and `noUnused` TypeScript; an 884-module Vite
 build; root validation with the unchanged 50-probe fingerprint; legacy jsdom smoke; and the
 applicable contract/reporter/Glass/recovery/Compendium selftests. These are local working-tree
-results only. Current-input Slice has four preserved one-attempt/zero-retry reds on Edge
+results only. Current-input Slice has five preserved one-attempt/zero-retry reds on Edge
 `151.0.4129.107`. Run `20260826214541492-83064-b252b137f7a3` at signed source `8553bd7…` failed
 after 92,772 ms with three findings: two instrument false reds—Settings' 14-versus-15 inventory and
 an unreachable Arc 3 target—plus the retained-Survey focus product regression. Changed clean signed
@@ -107,9 +110,23 @@ from two harness roots: stale Mars-source plus obsolete five-key rendered-receip
 rejected valid Search/remnant evidence and skipped Skim, then post-reload retained Survey correctly
 hid the rail before another Engineering attempt, cascading into the storage/stale findings. Product
 Search, remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and the
-repaired lifecycle are outcome-cleared; Skim settlement and later stages remain unproved. Both
-bounded harness repairs are unrerun. No current-input Slice PASS, Glass result or real
-recovery certificate exists. Hosted
+repaired lifecycle are outcome-cleared. Clean/stable signed source
+`9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied run
+`20260827041238239-16243-cbf9ca66283b`, which failed after 141,336 ms with one independent
+`harness` finding: the exact committed Tame greeting did not reach its browser outcome within ten
+seconds, retaining only `last null`. That carrier preserved neither a terminal observation nor a
+browser product/instrument disposition. Its straight-line progress outcome-clears native Skim,
+four-action Engineering reload, Mineral/Survey rail, storage refusal, stale and publication
+convergence, and the Arc 5 v1-to-compact-v2 fixed point. Static source diagnosis found the crossed
+global/ownership revision fence above plus a transient-active instrument predicate that could miss
+a naturally completed one-start voice. The local, unrerun repair adds the distinct
+`ownershipRevision`; the named `collectArc4TameGreetingStart()` collector retaining exact result,
+global, ownership, claim, counterpart, runtime, and toast clauses; release-`true` fail-fast;
+active-or-naturally-completed
+one-start proof; and generic Arc 4 ownership-revision plus reload-result-null controls. Post-start
+audio lifecycle and
+the later exact nine-stage/14-burn ledger remain unproved. No current-input Slice PASS, Glass result
+or real recovery certificate exists. Hosted
 execution, HUMAN review, whole-Gate closure, release, version
 bump, preview/publication, and deployment remain unclaimed.
 
@@ -128,6 +145,9 @@ Advanced Briefings and the rest of the 21-step arc remained open. From `port/v2`
 and `npm run smoke`; see its README for the full current battery and open gates.
 Both root and v2 install surfaces declare the pinned raw-CDP `ws` transport and
 support Node `^20.19.0 || ^22.13.0 || >=24.0.0`.
+
+The current 2026-08-27 draft adds the bounded Tame revision fix note and therefore contains 55
+bullets. It remains development-only and changes no production version, update popup or `rnSeen`.
 
 The approved next-stage product contract is
 [`EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`](EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md).

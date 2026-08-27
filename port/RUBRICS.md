@@ -1,6 +1,6 @@
 # Acceptance rubrics — what "done" means, per gate
 
-**Current implementation evidence refreshed:** 2026-08-26.
+**Current implementation evidence refreshed:** 2026-08-27.
 
 **Port Phase 0 / Gate A deliverable:** *"elevate `ART_DIRECTION.md`, `AUDIO.md`,
 `PROCESS_LAWS.md` and the system docs into acceptance rubrics."*
@@ -8,13 +8,16 @@
 A **description** says how the system works. A **rubric** says how you know the port got it
 right. This file converts the former into the latter, gate by gate.
 
-**Current local candidate boundary (2026-08-26):** the bounded source lanes now include the exact
+**Current local candidate boundary (2026-08-27):** the bounded source lanes now include the exact
 62-file Gate-B scanner with only two CombatCore canvas-painter waivers; byte-verbatim D-HAZE
 relocation to app-owned `GalaxyArt`; focused `search-travel.ts` and `app-chrome.ts` owners; the F4
 active-play ecology edge; fixed-point notification, conquest-epoch and XP-first persistence seams;
 Deep Scanners' honest live Survey row; the strict raw-0–14/display-0–9 rarity projector; Arc 5's
 lower-parent half-fed child invariant; and one narrow app-owned Tame greeting through deterministic
-audio identity, runtime lifecycle, persisted Creature Voices and an accessible counterpart.
+audio identity, runtime lifecycle, persisted Creature Voices and an accessible counterpart. Its
+capture result preserves the global F3 transaction `revision` separately from the Arc 4/5
+`ownershipRevision`; V1/V2 ownership revisions must agree before publication, and audio stale
+fencing consumes only the ownership revision.
 
 The dedicated recovery collector/selftest is ready but the uninterrupted real 20-minute
 certificate has not run. The former Compendium ruler under measurement
@@ -44,9 +47,9 @@ faults and exact 14-phone/13-desktop discrimination remain; only the phone warm 
 attempt/zero retries (`2026-08-26T23:42:19.150Z`–`23:43:03.997Z`, 44,847 ms). Report raw/gzip
 SHA-256 are `81c27ed5caa12e0c114a788041dfc5d109742bb9d86a256b548a8e9443d46108` /
 `6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. This is Compendium-only; exact Edge `.107` is provenance only, and
-SceneMemory/root Gate A are unchanged. Browser-free verification is green at 123 files /1,372 passed /one intentional skip /zero failures,
+SceneMemory/root Gate A are unchanged. Browser-free verification is green at 124 files /1,383 passed /one intentional skip /zero failures,
 `root/app/worker/noUnused` TypeScript, 884-module Vite, root validation/fingerprint, legacy smoke
-and applicable selftests. Current-input Slice retains four one-attempt/zero-retry reds on Edge `.107`.
+and applicable selftests. Current-input Slice retains five one-attempt/zero-retry reds on Edge `.107`.
 Run `20260826214541492-83064-b252b137f7a3` from signed `8553bd7…` failed after 92,772 ms with two
 instrument false reds and the retained-Survey focus product regression. Changed clean signed source
 `9d4b2b0…` supplied `20260827000034983-98202-869d966f2f88`, which failed after 92,566 ms with only
@@ -61,9 +64,20 @@ which failed after 119,502 ms with six scopes from two harness roots: stale Mars
 five-key rendered-receipt expectations rejected valid Search/remnant evidence and skipped Skim;
 post-reload retained Survey then correctly hid the rail before another Engineering attempt,
 cascading through storage/stale findings. Product Search, remnant routing and rail hiding were
-correct. Deep Scanners, fixed Fabrication and the repaired lifecycle are outcome-cleared; Skim
-settlement and later stages remain unproved, and both new harness repairs are unrerun. No
-current-input Slice PASS, Glass result or recovery certificate exists; there is no hosted, HUMAN,
+correct. Deep Scanners, fixed Fabrication and the repaired lifecycle are outcome-cleared. Clean,
+stable signed source `9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied run
+`20260827041238239-16243-cbf9ca66283b` once with zero retries on Edge `.107`. It failed after
+141,336 ms with one first-root harness finding: the exact Tame greeting did not reach its old
+transient-active predicate, whose report retained only `last null`. That evidence supplies no
+browser product/instrument disposition, but the straight-line run outcome-clears native Skim,
+four-action Engineering reload, Mineral/Survey rail, storage refusal, stale/publication convergence
+and the Arc 5 v1-to-compact-v2 fixed point. Static diagnosis found the cross-counter product defect
+and a separate null-collapsing/transient-active instrument defect. The local unrerun repair adds
+the explicit ownership revision, V1/V2 coherence guard, named seven-clause retained start
+assessment, release-true fail-fast, active-or-naturally-completed one-start evidence, generic Arc 4
+ownership-revision controls and reload-result-null controls. Post-start audio lifecycle and the
+exact nine-stage/14-burn ledger remain unproved. No current-input Slice PASS, Glass result or
+recovery certificate exists; there is no hosted, HUMAN,
 whole-Arc/Gate, preview, version, release or deployment claim.
 
 **Recorded historical pre-current-WIP local evidence boundary (2026-08-24):** Arc 2's focused domain/
@@ -214,7 +228,7 @@ ever substitute for a person, and it is deliberately expensive.
 | `[EXEC]` | Every current `kingdom\|name` Earth identity resolves to a declared audio mapping and non-fauna cannot fall through to animal calls | The source-pinned package manifest/witness covers all 1,010 identities/1,014 routes, rejects missing/duplicate/drift/legacy/mammal fallbacks and keeps non-fauna on explicit kingdom policies. It remains deliberately coarse; authored family distinction and HUMAN listening are separate open work |
 | `[EXEC]` | A canonical genome + exact owner + resolver version produces one finite profile/cue plan without consuming gameplay RNG | The pure resolver's deterministic vectors join the app's strict current-owned-creature projector. Selected immutable phenotype/owner/ordered-lineage positives, mutable-field exclusions and mismatched/stale-owner controls prove the Tame path does not poll gameplay RNG or accept another creature |
 | `[EXEC-TODO]` | Distant ecology hints derive only from canonical world + already surfaced approach/survey lead or roster + resolver version and cannot reveal hidden species or grant state | The pure plan seam covers canonical-world/surfaced-evidence determinism, different-world, wrong/hidden-owner and silent/non-fauna controls without a state writer. No canonical approach/Survey audio adapter, app audio event, same-granularity counterpart, UI/combat ducking, reduced-intensity behavior or lifecycle playback is wired |
-| `[EXEC]` | The implemented Tame greeting is selected from a stable call plan only by its completed event | `tame-greeting-audio.ts` arms from the native gesture, then requires the exact committed durable nonconverging fauna result, matching species/world/revision/current ownership/acquisition/projector and accessible status counterpart. One `arc4:taming-succeeded:${recordId}` event may synthesize one bounded greeting. Miss, refusal, stale/reload convergence, replay, route/counterpart loss and settings/lifecycle suppression stay silent |
+| `[EXEC]` | The implemented Tame greeting is selected from a stable call plan only by its completed event | `tame-greeting-audio.ts` arms from the native gesture, then requires the exact committed durable nonconverging fauna result, matching species/world, the distinct global transaction revision and ownership successor revision, current ownership/acquisition/projector, and accessible status counterpart. The live ownership state is fenced only against `ownershipRevision`; changing the unrelated global revision cannot silence a valid creature, while a stale ownership revision must. One `arc4:taming-succeeded:${recordId}` event may synthesize one bounded greeting. Miss, refusal, stale/reload convergence, replay, route/counterpart loss and settings/lifecycle suppression stay silent |
 | `[EXEC-TODO]` | Other companion expressions remain settled-event-owned and identity-stable | Hurt, fed, care, bond and later companion actions need their real event owners, same-granularity accessible counterparts and playback/outcome controls. The Tame greeting does not imply this broader coverage |
 | `[EXEC-TODO]` | One versioned biome profile binds every visual, ecology and audio consumer across all 43 keys | complete cross-modal join, inventory of every biome-presenting runtime route, deliberately mismatched-profile control, and injected alternate-classifier/bypass control; current biome-key coverage alone does not prove consumer binding |
 | `[EXEC-TODO]` | Audio assets are locally owned/licensed, hash-bound and orphan-free | The package pins an authoritative empty manifest and pure validator with missing-row, incompatible-license, hash-drift and orphan controls. No audio asset exists; a nonempty ledger, proof archive, real filesystem/media observation and byte policy remain open |
@@ -244,7 +258,7 @@ ever substitute for a person, and it is deliberately expensive.
 | `[EXEC-TODO]` | New loot is source-deterministic, authored-compatible and impossible to reload-reroll or double-claim | Stable instance/receipt construction and legacy vectors exist, but production occurrence pools/rates, natural-affix compatibility, crafted modifier/drawback, upgrade/socket tables and dispatch/Guardian receipts remain open. Injected claim-time roll, duplicate apply and incompatible-affix controls belong with those writers |
 | `[EXEC-TODO]` | Catalogue species and owned creatures are separate; every mutation targets a stable creature ID | Ownership-v1/v2 codecs model stable catalogue/specimen/fauna identities, receipt provenance, ordered lineage and tombstones. Arc 5A reconstructs exact V2 from its implemented manifest/four fixed shards after boot/Training/capture, refuses split source/delta/target/shard evidence and exposes only an internal exact-five V2-only successor. The player-live Arc 4 writer creates first-only catalogue facts and stable-ID fauna individuals or specimen lots. Duplicate-species migration and public breed/feed/combat/delete/assignment outcomes remain required; no visible companion capability follows from the carrier |
 | `[EXEC]` | A newly bred child inherits the approved bounded care state exactly once | `model-v2.ts` assigns `0.5 * min(clampedLeftFed, clampedRightFed)` over the supported 0–200 parent range. Tests prove parent-order symmetry, hostile bound handling, one-time construction and later independent mutability. No public breed/care writer or companion UI is implied |
-| `[EXEC]` | Tame/Scavenge/Sample are the finite acquisition writers for catalogue pages, specimens and owned fauna | Native Survey controls bind exact nav/address, the production full roster/current epoch and all-scenario capacity before two F4 draws; they spend on hit or miss and commit first-only reward, repeat individual/lot, one receipt/CAS, exact committed verification and targeted publication. Source-bound random-pool odds/budget, presentation-semantics fencing, native Close/reopen and historical exact-input browser outcomes remain. The current source also joins only the exact durable fauna Tame outcome to one accessible, asset-free greeting through the strict identity/runtime lifecycle. Current-input Slice `20260826214541492-83064-b252b137f7a3` exposed one real dock-focus regression plus two instrument false reds. Changed-source run `20260827000034983-98202-869d966f2f88` outcome-cleared focus and Settings but retained one card-context-oracle red. Run `20260827025804458-2742-c0c871ee52b6` outcome-cleared that repair and exposed the retained-card rail sequence. Clean signed `bd6b06b…` run `20260827032748771-8092-d2a0130882c1` outcome-cleared Deep Scanners, fixed Fabrication and the repaired lifecycle; its six scopes reduce to stale Mars-source/rendered-receipt expectations plus a post-reload retained-card lifecycle error. Product Search/remnant routing/rail hiding were correct. Skim settlement and later stages remain unproved; both new harness repairs are unrerun. No current-input Slice PASS or recovery proof exists. Separate HUMAN journey/listening review, Charter bioscan, targeted preview, hosted and release authority remain open |
+| `[EXEC]` | Tame/Scavenge/Sample are the finite acquisition writers for catalogue pages, specimens and owned fauna | Native Survey controls bind exact nav/address, the production full roster/current epoch and all-scenario capacity before two F4 draws; they spend on hit or miss and commit first-only reward, repeat individual/lot, one receipt/CAS, exact committed verification and targeted publication. Source-bound random-pool odds/budget, presentation-semantics fencing, native Close/reopen and historical exact-input browser outcomes remain. The current source also joins only the exact durable fauna Tame outcome to one accessible, asset-free greeting through the strict identity/runtime lifecycle. Four earlier current-input reds successively outcome-cleared Settings/focus, card context, Deep Scanners, fixed Fabrication and the repaired lifecycle. Clean signed `9ce7ddd…` run `20260827041238239-16243-cbf9ca66283b` then outcome-cleared native Skim, Engineering reload, Mineral/Survey rail, storage/stale/publication convergence and the Arc 5 v1-to-compact-v2 fixed point before failing once at the Tame-greeting observation. Its retained `last null` supplies no product/instrument disposition. The local unrerun repair separates global and ownership revisions, retains seven named start clauses, accepts an exact active or naturally completed one-start lifecycle, and independently controls generic hit/miss/burn ownership revisions plus reload result eviction. Post-start audio lifecycle, the exact nine-stage/14-burn ledger and real recovery remain unproved. No current-input Slice PASS exists. Separate HUMAN journey/listening review, Charter bioscan, targeted preview, hosted and release authority remain open |
 | `[EXEC-TODO]` | Companion missions use active play and exact-once transactional receipts | clock-wind, reload, double-click, write failure, inventory-full, wrong assignment and stale-tab/CAS controls |
 | `[EXEC]` | Auto-Extractor cannot accrue from wall-clock wind or repeat its bounded batch after reload | Arc 3 computes capped matured loads from the prior F4 active-play cursor inside the plan, preserves remainders, discards loads beyond finite reserves, ignores legacy wall timestamps, and reanchors newly fabricated extractors. Planner/app tests cover forged time, reload-shaped migration and cursor publication; the bounded local Arc 3 Slice/Glass pair is green, while exact-head/full-battery and HUMAN evidence remain separate |
 | `[EXEC-TODO]` | Conquest loss pays the advertised +3 base and at most +2 near-brink delta in either encounter order | both non-brink→brink and brink→non-brink real-action sequences; repeated settlement and stale-tab controls |

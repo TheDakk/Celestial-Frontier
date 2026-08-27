@@ -2851,13 +2851,22 @@ const expectedProgressTransition = (beforeMirror, afterMirror, expected, hit) =>
   return same(after.successful, priorSuccessful);
 };
 
-const exactAppCaptureResult = (state, expected, committedRevision) => {
+const exactAppCaptureResult = (
+  state, expected, committedRevision, committedOwnershipRevision,
+) => {
   const capture = captureStateOf(state);
+  const ownershipV2 = ownershipV2StateOf(state);
   const result = capture?.lastResult;
   return capture?.schema === 'cf-v2-arc4-app-state/v1'
     && capture?.stateKind === 'loaded' && capture?.mode === 'current'
     && capture?.protection === null
-    && result?.hit === expected.hit
+    && exactKeys(result, [
+      'hit', 'speciesId', 'speciesName', 'kingdom', 'sourceOrdinal', 'tier',
+      'chance', 'worldKey', 'ecologyEpoch', 'fullRosterFingerprint',
+      'firstForSpecies', 'spent', 'remainingAfter', 'ownedRowId',
+      'stardustReward', 'revision', 'ownershipRevision',
+    ])
+    && result.hit === expected.hit
     && (!expected.speciesId || result?.speciesId === expected.speciesId)
     && boundedText(result?.speciesId, 160)
     && boundedText(result?.speciesName, 256)
@@ -2871,7 +2880,11 @@ const exactAppCaptureResult = (state, expected, committedRevision) => {
     && result?.firstForSpecies === expected.firstForSpecies
     && result?.spent === 1 && result?.remainingAfter === expected.remainingAfter
     && result?.stardustReward === expected.stardustReward
-    && result?.revision === committedRevision;
+    && counter(committedRevision) && result?.revision === committedRevision
+    && counter(committedOwnershipRevision)
+    && result?.ownershipRevision === committedOwnershipRevision
+    && capture?.revision === committedOwnershipRevision
+    && ownershipV2?.revision === committedOwnershipRevision;
 };
 
 const settledUiOutcome = (ui, expectedKind, verb) => (
@@ -2938,7 +2951,9 @@ const captureCore = ({ before, after, beforeState, afterState, afterUi, interact
         unrelatedDurableProjection(after, afterAssessment, { omitCompatibility: true }),
       ),
       interaction: actionInteraction(interaction, expected),
-      appResult: exactAppCaptureResult(afterState, expected, after?.revision),
+      appResult: exactAppCaptureResult(
+        afterState, expected, after?.revision, after?.captureRevision,
+      ),
       activePlayProjection: exactActivePlayProjection(after, afterUi),
       runtimeCaptureOrder: exactRuntimeAtOrAfterRaw(before, beforeState)
         && exactRuntimeCaptureOrder(after, afterState, afterUi, 'state-ui'),
@@ -3187,7 +3202,9 @@ export const assessArc4BurnStep = ({
       && outcome?.kind === 'committed' && outcome?.durability === 'committed'
       && outcome?.convergence === 'none' && outcome?.verb === verb
       && same(outcome?.result, captureStateOf(afterState)?.lastResult)
-      && exactAppCaptureResult(afterState, expected, after?.revision),
+      && exactAppCaptureResult(
+        afterState, expected, after?.revision, after?.captureRevision,
+      ),
     oneRevision: after?.revision === before?.revision + 1
       && after?.captureRevision === before?.captureRevision + 1
       && outcome?.result?.revision === after?.revision,
@@ -3586,10 +3603,14 @@ const tameGreetingAudioShape = (observation) => {
     && counter(runtime.nodes.active) && counter(runtime.nodes.peak)
     && record(runtime.voices) && counter(runtime.voices.active)
     && counter(runtime.voices.peak) && counter(runtime.voices.started)
+    && counter(runtime.voices.completed) && counter(runtime.voices.stopped)
+    && counter(runtime.voices.stolen) && counter(runtime.voices.cooldownRejects)
+    && counter(runtime.voices.concurrencyRejects)
     && Array.isArray(runtime.voices.ids)
     && record(runtime.creatureEmitters)
     && counter(runtime.creatureEmitters.active)
-    && counter(runtime.creatureEmitters.peak);
+    && counter(runtime.creatureEmitters.peak)
+    && record(runtime.faults) && counter(runtime.faults.total);
 };
 
 const tameGreetingAudioVirgin = (observation) => {
@@ -3609,15 +3630,40 @@ const tameGreetingVoiceOwnerExact = (observation, eventKey, creatureId) => {
   const audio = tameGreetingAudioOf(observation), runtime = tameGreetingRuntimeOf(observation);
   if (!tameGreetingAudioShape(observation)
     || !boundedText(eventKey, 512) || !boundedText(creatureId, 192)
+    || audio.lastEventKey !== eventKey
+    || observation?.result?.ownedRowId !== creatureId
     || runtime.voices.active !== runtime.voices.ids.length
     || runtime.creatureEmitters.active !== runtime.voices.active) return false;
   if (runtime.voices.active === 0) {
-    return audio.activeVoiceId === null && runtime.voices.ids.length === 0;
+    return audio.activeVoiceId === null && runtime.voices.ids.length === 0
+      && runtime.voices.completed === 1 && runtime.voices.stopped === 0;
   }
   return runtime.voices.active === 1 && runtime.voices.ids.length === 1
     && audio.activeVoiceId === runtime.voices.ids[0]
-    && audio.lastEventKey === eventKey
-    && observation?.result?.ownedRowId === creatureId;
+    && runtime.voices.completed === 0 && runtime.voices.stopped === 0;
+};
+
+const tameGreetingRuntimeStartExact = (observation) => {
+  const runtime = tameGreetingRuntimeOf(observation);
+  if (!tameGreetingAudioShape(observation)
+    || runtime.state !== 'running' || runtime.contextState !== 'running'
+    || runtime.contextGeneration !== 1 || runtime.muted !== false
+    || runtime.voices.started !== 1 || runtime.voices.peak !== 1
+    || runtime.voices.stopped !== 0 || runtime.voices.stolen !== 0
+    || runtime.voices.cooldownRejects !== 0
+    || runtime.voices.concurrencyRejects !== 0
+    || runtime.creatureEmitters.peak !== 1 || runtime.faults.total !== 0) return false;
+  const active = runtime.voices.active === 1
+    && runtime.voices.ids.length === 1
+    && runtime.voices.completed === 0
+    && runtime.creatureEmitters.active === 1
+    && tameGreetingAudioOf(observation).activeVoiceId === runtime.voices.ids[0];
+  const naturallyCompleted = runtime.voices.active === 0
+    && runtime.voices.ids.length === 0
+    && runtime.voices.completed === 1
+    && runtime.creatureEmitters.active === 0
+    && tameGreetingAudioOf(observation).activeVoiceId === null;
+  return active || naturallyCompleted;
 };
 
 const tameGreetingStartCountStable = (
@@ -3628,8 +3674,7 @@ const tameGreetingStartCountStable = (
     && audio.disposed === false && audio.armed === 0 && audio.claimedEvents === 1
     && audio.lastEventKey === eventKey
     && runtime.contextGeneration === contextGeneration
-    && runtime.voices.started === 1 && runtime.voices.active <= 1
-    && runtime.creatureEmitters.active <= 1
+    && tameGreetingRuntimeStartExact(observation)
     && tameGreetingVoiceOwnerExact(observation, eventKey, creatureId);
 };
 
@@ -3648,7 +3693,72 @@ const tameGreetingResultProjection = (result) => ({
   ownedRowId: result?.ownedRowId ?? null,
   stardustReward: result?.stardustReward ?? null,
   revision: result?.revision ?? null,
+  ownershipRevision: result?.ownershipRevision ?? null,
 });
+
+/** Bounded post-release observation verdict. This is deliberately independent
+ * of the later durable carrier classifier so the collector retains a named
+ * diagnosis even when the first browser read occurs after natural completion. */
+export const assessArc4TameGreetingStartObservation = (observation) => {
+  const result = observation?.result ?? null;
+  const audio = tameGreetingAudioOf(observation);
+  const runtime = tameGreetingRuntimeOf(observation);
+  const expected = ARC4_PERTAR_FIXTURE.actions.tameGreetingHit;
+  const expectedTitle = `Tamed ${expected.speciesName}.`;
+  const expectedDetail = `${expected.chance * 100}% odds. New Compendium page; one owned creature. 1 Biosphere Yield spent; ${expected.remainingAfter} remain.`;
+  const checks = {
+    result: exactKeys(result, [
+      'hit', 'speciesId', 'speciesName', 'kingdom', 'sourceOrdinal', 'tier',
+      'chance', 'worldKey', 'ecologyEpoch', 'fullRosterFingerprint',
+      'firstForSpecies', 'spent', 'remainingAfter', 'ownedRowId',
+      'stardustReward', 'revision', 'ownershipRevision',
+    ]) && result.hit === true && result.speciesId === expected.speciesId
+      && result.speciesName === expected.speciesName && result.kingdom === 'fauna'
+      && result.sourceOrdinal === expected.sourceOrdinal && result.tier === expected.tier
+      && sameNumber(result.chance, expected.chance)
+      && result.worldKey === ARC4_PERTAR_FIXTURE.worldKey
+      && result.ecologyEpoch === ARC4_PERTAR_FIXTURE.ecologyEpoch
+      && result.fullRosterFingerprint === ARC4_PERTAR_FIXTURE.fullRosterFingerprint
+      && result.firstForSpecies === true && result.spent === expected.spent
+      && result.remainingAfter === expected.remainingAfter
+      && boundedText(result.ownedRowId, 192)
+      && result.stardustReward === expected.stardustReward
+      && Number.isSafeInteger(result.revision) && result.revision >= 0
+      && Number.isSafeInteger(result.ownershipRevision)
+      && result.ownershipRevision >= 0,
+    global: Number.isSafeInteger(observation?.globalRevision)
+      && observation.globalRevision >= 0
+      && result?.revision === observation.globalRevision,
+    ownership: Number.isSafeInteger(observation?.captureRevision)
+      && observation.captureRevision >= 0
+      && Number.isSafeInteger(observation?.ownershipRevision)
+      && observation.ownershipRevision >= 0
+      && result?.ownershipRevision === observation.captureRevision
+      && result?.ownershipRevision === observation.ownershipRevision,
+    claim: tameGreetingAudioShape(observation)
+      && audio.disposed === false && audio.armed === 0 && audio.claimedEvents === 1
+      && boundedText(audio.lastEventKey, 512)
+      && audio.lastEventKey.startsWith('arc4:taming-succeeded:discovery-v1:')
+      && audio.lastDisposition === 'voice-started',
+    counterpart: counter(observation?.toast?.serial)
+      && audio?.counterpart?.key === `capture-toast:${observation.toast.serial}`
+      && audio?.counterpart?.generation === observation.toast.serial
+      && audio?.counterpart?.status === 'live',
+    runtime: tameGreetingRuntimeStartExact(observation),
+    toast: observation?.answerable === true && observation?.cardOpen === true
+      && observation?.toast?.visible === true
+      && observation.toast.role === 'status' && observation.toast.live === 'assertive'
+      && observation.toast.atomic === 'true'
+      && observation.toast.title === expectedTitle
+      && observation.toast.detail === expectedDetail,
+  };
+  return assessment('Arc 4 Tame greeting start observation', checks, {
+    disposition: audio?.lastDisposition ?? null,
+    activeVoiceId: audio?.activeVoiceId ?? null,
+    voicesStarted: runtime?.voices?.started ?? null,
+    voicesCompleted: runtime?.voices?.completed ?? null,
+  });
+};
 
 const tameGreetingFreshFixtureIsolated = (freshFixture, reloaded) => {
   const raw = freshFixture?.raw;
@@ -3661,6 +3771,7 @@ const tameGreetingFreshFixtureIsolated = (freshFixture, reloaded) => {
     && freshFixture.token !== freshFixture.priorToken
     && freshFixture.observation?.documentToken === freshFixture.token
     && freshFixture.observation?.answerable === true
+    && freshFixture.observation?.result === null
     && tameGreetingAudioVirgin(freshFixture.observation)
     && durable.ok === true && raw?.captureRevision === 0
     && mirror?.revision === 0
@@ -3719,7 +3830,8 @@ export const assessArc4TameGreetingAudio = ({
     remainingAfter: expected?.remainingAfter,
     ownedRowId: creature?.creatureId,
     stardustReward: expected?.stardustReward,
-    revision: afterRaw?.captureRevision,
+    revision: afterRaw?.revision,
+    ownershipRevision: afterRaw?.captureRevision,
   });
   const expectedTitle = boundedText(expected?.speciesName, 160)
     ? `Tamed ${expected.speciesName}.` : null;
@@ -3750,6 +3862,9 @@ export const assessArc4TameGreetingAudio = ({
       && creature?.origin === 'wild'
       && creature?.acquisitionRecordId === discovery?.recordId
       && result?.hit === true && result?.kingdom === 'fauna'
+      && started?.globalRevision === afterRaw?.revision
+      && started?.captureRevision === afterRaw?.captureRevision
+      && started?.ownershipRevision === afterRaw?.captureRevision
       && same(tameGreetingResultProjection(result), expectedResult),
     oneAnswerableDocument: sameDocument
       && [before, diagnosticRead, pending, started, closed, reopened, refreshed, waited]
@@ -3779,12 +3894,7 @@ export const assessArc4TameGreetingAudio = ({
       && startedAudio?.disposed === false && startedAudio?.armed === 0
       && startedAudio?.lastDisposition === 'voice-started'
       && startedRuntime?.contextGeneration === 1
-      && startedRuntime?.voices?.started === 1
-      && startedRuntime?.voices?.peak === 1
-      && startedRuntime?.voices?.active === 1
-      && startedRuntime?.voices?.ids?.length === 1
-      && startedRuntime?.creatureEmitters?.active === 1
-      && startedRuntime?.creatureEmitters?.peak === 1
+      && tameGreetingRuntimeStartExact(started)
       && tameGreetingVoiceOwnerExact(started, eventKey, creature?.creatureId),
     accessibleCounterpart: started?.toast?.visible === true
       && counter(started.toast.serial)
@@ -3803,6 +3913,8 @@ export const assessArc4TameGreetingAudio = ({
         row, eventKey, creature?.creatureId, contextGeneration,
       ))
       && tameGreetingRuntimeOf(waited)?.voices?.active === 0
+      && tameGreetingRuntimeOf(waited)?.voices?.completed === 1
+      && tameGreetingRuntimeOf(waited)?.voices?.stopped === 0
       && tameGreetingRuntimeOf(waited)?.voices?.ids?.length === 0
       && tameGreetingRuntimeOf(waited)?.creatureEmitters?.active === 0
       && tameGreetingAudioOf(waited)?.activeVoiceId === null
@@ -3810,6 +3922,7 @@ export const assessArc4TameGreetingAudio = ({
     reloadNoReplay: boundedText(reloaded?.documentToken, 256)
       && reloaded.documentToken !== before?.documentToken
       && reloaded?.answerable === true
+      && reloaded?.result === null
       && tameGreetingAudioVirgin(reloaded),
     freshFixtureIsolation: tameGreetingFreshFixtureIsolated(freshFixture, reloaded),
   };
@@ -5420,6 +5533,7 @@ const hitResultSelftest = {
   fullRosterFingerprint: ARC4_PERTAR_FIXTURE.fullRosterFingerprint,
   firstForSpecies: true, spent: 1, remainingAfter: 15,
   ownedRowId: SELFTEST_IDS.lot, stardustReward: 2, revision: 1,
+  ownershipRevision: hitRawSelftest.captureRevision,
 };
 const hitOutcomeSelftest = {
   schema: 'cf-v2-capture-card-outcome/v1', kind: 'committed-hit', verb: 'sample',
@@ -5440,6 +5554,7 @@ const missResultSelftest = {
   fullRosterFingerprint: ARC4_PERTAR_FIXTURE.fullRosterFingerprint,
   firstForSpecies: false, spent: 1, remainingAfter: 14,
   ownedRowId: null, stardustReward: 0, revision: 2,
+  ownershipRevision: missRawSelftest.captureRevision,
 };
 const missOutcomeSelftest = {
   schema: 'cf-v2-capture-card-outcome/v1', kind: 'committed-miss', verb: 'tame',
@@ -5814,8 +5929,11 @@ const publicationBundleSelftest = {
    does not reuse the historical Sample-first result or trust app diagnostics
    for candidate, event, acquisition, creature, or revision authority. */
 const tameGreetingExpectedSelftest = ARC4_PERTAR_FIXTURE.actions.tameGreetingHit;
+const tameGreetingBeforeRawSelftest = structuredClone(beforeRawSelftest);
+tameGreetingBeforeRawSelftest.revision = 23;
+tameGreetingBeforeRawSelftest.revisionRaw = '23';
 const tameGreetingAttemptOracleSelftest = captureAttemptOracle(
-  beforeRawSelftest, 'tame',
+  tameGreetingBeforeRawSelftest, 'tame',
 );
 if (tameGreetingAttemptOracleSelftest?.event === null
   || tameGreetingAttemptOracleSelftest?.candidate?.speciesId
@@ -5874,7 +5992,7 @@ const tameGreetingMirrorSelftest = {
   }],
 };
 const tameGreetingAfterOptionsSelftest = {
-  revision: 1, ordinal: 1,
+  revision: 24, ordinal: 1,
   draws: { 'capture.candidate': 1, 'capture.success': 1 },
   ownedCounters: ARC4_PERTAR_FIXTURE.v4OwnedCounters.afterTameGreetingHit,
 };
@@ -5887,7 +6005,7 @@ if (!hexDigest(tameGreetingManifestDigestSelftest)) {
 const tameGreetingAfterRawSelftest = makeDurable(tameGreetingMirrorSelftest, {
   ...tameGreetingAfterOptionsSelftest,
   receipts: [captureReceipt(
-    beforeRawSelftest, tameGreetingExpectedSelftest,
+    tameGreetingBeforeRawSelftest, tameGreetingExpectedSelftest,
     tameGreetingManifestDigestSelftest,
   )],
 });
@@ -5905,14 +6023,18 @@ const tameGreetingResultSelftest = Object.freeze({
   remainingAfter: tameGreetingExpectedSelftest.remainingAfter,
   ownedRowId: tameGreetingCreatureIdSelftest,
   stardustReward: 0,
-  revision: tameGreetingAfterRawSelftest.captureRevision,
+  revision: tameGreetingAfterRawSelftest.revision,
+  ownershipRevision: tameGreetingAfterRawSelftest.captureRevision,
 });
 
 const tameGreetingRuntimeSelftest = ({
   state = 'running', contextState = 'running', contextGeneration = 1,
   muted = false, nodesActive = 13, nodesPeak = nodesActive,
   voicesActive = 0, voicesPeak = voicesActive, voicesStarted = 0,
+  voicesCompleted = 0, voicesStopped = 0, voicesStolen = 0,
+  cooldownRejects = 0, concurrencyRejects = 0,
   voiceIds = [], creatureActive = 0, creaturePeak = creatureActive,
+  faultsTotal = 0,
 } = {}) => ({
   state, contextState, contextGeneration, muted, hidden: false,
   gains: {
@@ -5923,8 +6045,9 @@ const tameGreetingRuntimeSelftest = ({
   cache: { active: 0, peak: 0, budget: 32, evictions: 0 },
   voices: {
     active: voicesActive, peak: voicesPeak, budget: 24,
-    ids: voiceIds, started: voicesStarted, completed: 0, stopped: 0,
-    stolen: 0, cooldownRejects: 0, concurrencyRejects: 0,
+    ids: voiceIds, started: voicesStarted, completed: voicesCompleted,
+    stopped: voicesStopped, stolen: voicesStolen, cooldownRejects,
+    concurrencyRejects,
   },
   creatureEmitters: { active: creatureActive, peak: creaturePeak, budget: 8 },
   cooldowns: { active: 0, budget: 128 },
@@ -5936,7 +6059,7 @@ const tameGreetingRuntimeSelftest = ({
     sourceStopFailures: 0, nodeDisconnectFailures: 0, cacheReleaseFailures: 0,
   },
   peaks: { master: 0, music: 0, ambience: 0, sfx: 0, ui: 0, creature: 0 },
-  faults: { total: 0, retained: [], budget: 20 },
+  faults: { total: faultsTotal, retained: [], budget: 20 },
 });
 const tameGreetingAudioSelftest = ({
   armed = 0, claimedEvents = 0, activeVoiceId = null,
@@ -5965,6 +6088,9 @@ const tameGreetingToastSelftest = Object.freeze({
 });
 const tameGreetingBeforeObservationSelftest = {
   documentToken: tameGreetingDocumentSelftest,
+  globalRevision: tameGreetingBeforeRawSelftest.revision,
+  captureRevision: tameGreetingBeforeRawSelftest.captureRevision,
+  ownershipRevision: tameGreetingBeforeRawSelftest.captureRevision,
   answerable: true, cardOpen: true, result: null,
   audio: tameGreetingAudioSelftest({
     runtime: tameGreetingRuntimeSelftest({
@@ -5975,6 +6101,9 @@ const tameGreetingBeforeObservationSelftest = {
 };
 const tameGreetingPendingObservationSelftest = {
   documentToken: tameGreetingDocumentSelftest,
+  globalRevision: tameGreetingBeforeRawSelftest.revision,
+  captureRevision: tameGreetingBeforeRawSelftest.captureRevision,
+  ownershipRevision: tameGreetingBeforeRawSelftest.captureRevision,
   answerable: true, cardOpen: true, result: null,
   audio: tameGreetingAudioSelftest({
     armed: 1, lastDisposition: 'armed',
@@ -5983,6 +6112,9 @@ const tameGreetingPendingObservationSelftest = {
 };
 const tameGreetingStartedObservationSelftest = {
   documentToken: tameGreetingDocumentSelftest,
+  globalRevision: tameGreetingAfterRawSelftest.revision,
+  captureRevision: tameGreetingAfterRawSelftest.captureRevision,
+  ownershipRevision: tameGreetingAfterRawSelftest.captureRevision,
   answerable: true, cardOpen: true, result: tameGreetingResultSelftest,
   toast: tameGreetingToastSelftest,
   audio: tameGreetingAudioSelftest({
@@ -6013,7 +6145,7 @@ const tameGreetingWaitedObservationSelftest = {
     counterpartStatus: 'lost',
     runtime: tameGreetingRuntimeSelftest({
       nodesActive: 13, nodesPeak: 15,
-      voicesPeak: 1, voicesStarted: 1,
+      voicesPeak: 1, voicesStarted: 1, voicesCompleted: 1,
       creaturePeak: 1,
     }),
   }),
@@ -6030,7 +6162,7 @@ const tameGreetingFreshObservationSelftest = {
 };
 const tameGreetingAudioBundleSelftest = {
   schema: ARC4_TAME_GREETING_AUDIO_EVIDENCE_SCHEMA,
-  beforeRaw: beforeRawSelftest, afterRaw: tameGreetingAfterRawSelftest,
+  beforeRaw: tameGreetingBeforeRawSelftest, afterRaw: tameGreetingAfterRawSelftest,
   before: tameGreetingBeforeObservationSelftest,
   diagnosticRead: structuredClone(tameGreetingBeforeObservationSelftest),
   pending: tameGreetingPendingObservationSelftest,
@@ -6063,14 +6195,40 @@ const tameGreetingAudioMutationSelftests = Object.freeze({
   committedTame: Object.freeze({
     expected: Object.freeze(['committedTame']),
     result: tameGreetingAudioMutationSelftest((bundle) => {
-      bundle.afterRaw.revision += 1;
-      bundle.afterRaw.revisionRaw = String(bundle.afterRaw.revision);
+      bundle.beforeRaw.revision -= 1;
+      bundle.beforeRaw.revisionRaw = String(bundle.beforeRaw.revision);
     }),
   }),
   exactResult: Object.freeze({
     expected: Object.freeze(['exactResult']),
     result: tameGreetingAudioMutationSelftest((bundle) => {
       bundle.started.result.tier += 1;
+    }),
+  }),
+  wrongGlobalRevision: Object.freeze({
+    expected: Object.freeze(['exactResult']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.started.result.revision += 1;
+    }),
+  }),
+  wrongOwnershipRevision: Object.freeze({
+    expected: Object.freeze(['exactResult']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.started.result.ownershipRevision += 1;
+    }),
+  }),
+  swappedRevisions: Object.freeze({
+    expected: Object.freeze(['exactResult']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      const global = bundle.started.result.revision;
+      bundle.started.result.revision = bundle.started.result.ownershipRevision;
+      bundle.started.result.ownershipRevision = global;
+    }),
+  }),
+  equalizedRevisions: Object.freeze({
+    expected: Object.freeze(['exactResult']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.started.result.ownershipRevision = bundle.started.result.revision;
     }),
   }),
   oneAnswerableDocument: Object.freeze({
@@ -6115,10 +6273,96 @@ const tameGreetingAudioMutationSelftests = Object.freeze({
       bundle.reloaded.audio.claimedEvents = 1;
     }),
   }),
+  reloadRetainedResult: Object.freeze({
+    expected: Object.freeze(['reloadNoReplay']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.reloaded.result = structuredClone(bundle.started.result);
+    }),
+  }),
   freshFixtureIsolation: Object.freeze({
     expected: Object.freeze(['freshFixtureIsolation']),
     result: tameGreetingAudioMutationSelftest((bundle) => {
       bundle.freshFixture.observation.audio.claimedEvents = 1;
+    }),
+  }),
+  freshFixtureRetainedResult: Object.freeze({
+    expected: Object.freeze(['freshFixtureIsolation']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.freshFixture.observation.result = structuredClone(
+        bundle.started.result,
+      );
+    }),
+  }),
+});
+const tameGreetingCompletedBeforeFirstReadSelftest = structuredClone(
+  tameGreetingStartedObservationSelftest,
+);
+tameGreetingCompletedBeforeFirstReadSelftest.audio.activeVoiceId = null;
+tameGreetingCompletedBeforeFirstReadSelftest.audio.runtime.voices.active = 0;
+tameGreetingCompletedBeforeFirstReadSelftest.audio.runtime.voices.ids = [];
+tameGreetingCompletedBeforeFirstReadSelftest.audio.runtime.voices.completed = 1;
+tameGreetingCompletedBeforeFirstReadSelftest.audio.runtime.creatureEmitters.active = 0;
+
+const tameGreetingStartMutationSelftest = (mutate) => {
+  const observation = structuredClone(tameGreetingStartedObservationSelftest);
+  mutate(observation);
+  return assessArc4TameGreetingStartObservation(observation);
+};
+const tameGreetingStartMutationSelftests = Object.freeze({
+  resultMismatch: Object.freeze({
+    expected: Object.freeze(['result']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      observation.result.tier += 1;
+    }),
+  }),
+  wrongGlobalRevision: Object.freeze({
+    expected: Object.freeze(['global']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      observation.result.revision += 1;
+    }),
+  }),
+  ownershipStale: Object.freeze({
+    expected: Object.freeze(['ownership']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      observation.result.ownershipRevision += 1;
+    }),
+  }),
+  swappedRevisions: Object.freeze({
+    expected: Object.freeze(['global', 'ownership']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      const global = observation.result.revision;
+      observation.result.revision = observation.result.ownershipRevision;
+      observation.result.ownershipRevision = global;
+    }),
+  }),
+  equalizedRevisions: Object.freeze({
+    expected: Object.freeze(['ownership']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      observation.result.ownershipRevision = observation.result.revision;
+    }),
+  }),
+  claim: Object.freeze({
+    expected: Object.freeze(['claim']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      observation.audio.lastDisposition = 'runtime-rejected:mutated';
+    }),
+  }),
+  counterpart: Object.freeze({
+    expected: Object.freeze(['counterpart']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      observation.audio.counterpart.key = 'capture-toast:mutated';
+    }),
+  }),
+  runtimeRejection: Object.freeze({
+    expected: Object.freeze(['runtime']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      observation.audio.runtime.voices.cooldownRejects = 1;
+    }),
+  }),
+  toast: Object.freeze({
+    expected: Object.freeze(['toast']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      observation.toast.live = 'polite';
     }),
   }),
 });
@@ -6259,6 +6503,13 @@ const positiveSelftestAssessments = Object.freeze({
   tameGreetingAudio: assessArc4TameGreetingAudio(
     tameGreetingAudioBundleSelftest,
   ),
+  tameGreetingStartActive: assessArc4TameGreetingStartObservation(
+    tameGreetingStartedObservationSelftest,
+  ),
+  tameGreetingStartCompletedBeforeFirstRead:
+    assessArc4TameGreetingStartObservation(
+      tameGreetingCompletedBeforeFirstReadSelftest,
+    ),
   exhaustionOnly: assessArc4Exhaustion(exhaustionBundleSelftest),
   exhaustion: assessArc4ExhaustionRecovery(exhaustionBundleSelftest),
   geometry: assessArc4CaptureCardGeometryFocus(geometryBundleSelftest),
@@ -6276,6 +6527,15 @@ for (const [name, control] of Object.entries(tameGreetingAudioMutationSelftests)
     .map(([check]) => check);
   if (control.result.ok !== false || !same(failed, control.expected)) {
     throw new Error(`Arc 4 Tame greeting audio mutation control drifted (${name}): ${failed.join(', ')}`);
+  }
+}
+
+for (const [name, control] of Object.entries(tameGreetingStartMutationSelftests)) {
+  const failed = Object.entries(control.result.checks)
+    .filter(([, value]) => value !== true)
+    .map(([check]) => check);
+  if (control.result.ok !== false || !same(failed, control.expected)) {
+    throw new Error(`Arc 4 Tame greeting start mutation control drifted (${name}): ${failed.join(', ')}`);
   }
 }
 
@@ -6418,11 +6678,21 @@ const negativeHitStateRuntimeSelftest = structuredClone(hitBundleSelftest);
 negativeHitStateRuntimeSelftest.afterState.persistence.runtime.activePlayMs += 123_456;
 const negativeHitDownwardRuntimeSelftest = structuredClone(nonzeroHitBundleSelftest);
 negativeHitDownwardRuntimeSelftest.afterState.persistence.runtime.activePlayMs = 0;
-const negativeHitOwnershipRevisionResultSelftest = structuredClone(
+const negativeHitGlobalRevisionResultSelftest = structuredClone(
   outerRevisionHitBundleSelftest,
 );
-negativeHitOwnershipRevisionResultSelftest.afterState.capture.lastResult.revision
-  = negativeHitOwnershipRevisionResultSelftest.afterState.capture.revision;
+negativeHitGlobalRevisionResultSelftest.afterState.capture.lastResult.revision
+  = negativeHitGlobalRevisionResultSelftest.afterState.capture.revision;
+const negativeHitMissingOwnershipRevisionResultSelftest = structuredClone(
+  outerRevisionHitBundleSelftest,
+);
+delete negativeHitMissingOwnershipRevisionResultSelftest
+  .afterState.capture.lastResult.ownershipRevision;
+const negativeHitWrongOwnershipRevisionResultSelftest = structuredClone(
+  outerRevisionHitBundleSelftest,
+);
+negativeHitWrongOwnershipRevisionResultSelftest
+  .afterState.capture.lastResult.ownershipRevision += 1;
 const hitAddressMutationSelftest = (mutate, target = 'progress') => {
   const mirror = structuredClone(hitMirror());
   const address = structuredClone(target === 'discovery'
@@ -6958,9 +7228,21 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'runtimeCaptureOrder',
     result: assessArc4CommittedHit(negativeHitDownwardRuntimeSelftest),
   }),
-  hitOwnershipRevisionResult: Object.freeze({
+  hitGlobalRevisionResult: Object.freeze({
     expected: 'appResult',
-    result: assessArc4CommittedHit(negativeHitOwnershipRevisionResultSelftest),
+    result: assessArc4CommittedHit(negativeHitGlobalRevisionResultSelftest),
+  }),
+  hitMissingOwnershipRevisionResult: Object.freeze({
+    expected: 'appResult',
+    result: assessArc4CommittedHit(
+      negativeHitMissingOwnershipRevisionResultSelftest,
+    ),
+  }),
+  hitWrongOwnershipRevisionResult: Object.freeze({
+    expected: 'appResult',
+    result: assessArc4CommittedHit(
+      negativeHitWrongOwnershipRevisionResultSelftest,
+    ),
   }),
   progressCoordinate: Object.freeze({
     expected: Object.freeze(['ownershipV2Live', 'progress']),

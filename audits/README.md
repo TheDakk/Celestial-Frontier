@@ -10,6 +10,43 @@ summary of it.
 
 ## Contents
 
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_041238239.{json,log}.gz` — Tame-greeting observation Slice red
+
+Retains clean, stable signed-source run `20260827041238239-16243-cbf9ca66283b` at
+`9ce7ddde01201177dff1cacafc06c8424c4098cb` on branch `openai/mac` and Edge
+`151.0.4129.107`. It ran exactly once with zero automatic retries and ended terminal red with
+parent/child exit `1` after 141,336 ms
+(`2026-08-27T04:12:38.239Z`–`04:14:59.575Z`). Its only finding and scope are the first independent
+root, not a cascade: `harness: Arc 4 exact committed Tame greeting voice did not reach its browser
+outcome within 10000ms (last null)`. The retained `last null` contains no terminal observation and
+identifies none of the predicate's individual clauses, so the outer `harness` scope is not a
+product/instrument disposition. The immediately preceding silent-gesture-arm observation did pass.
+The straight-line collector therefore outcome-clears the prior Deep Scanners/Fabrication,
+Survey/Search/remnant, native Skim, four-action Engineering reload, Mineral/Survey-to-rail,
+storage/stale/publication convergence and Arc 5 v1-to-compact-v2 upgrade/fixed-point stages. The
+post-start audio lifecycle and the later exact nine-stage/14-burn Arc 4 ledger were not reached.
+
+Static source analysis—not a retained browser disposition—identifies a product cross-counter defect:
+the global F3 durable `result.revision` is compared with the independent Arc 4/5 ownership
+`OwnershipStateV2.revision`, so the current owner is expected to reject this first Pertar successor
+as `ownership-stale` even though the two counters legitimately differ. The harness also has an
+independent diagnostic flaw: its success predicate requires the transient active voice and creature
+emitter to be observed simultaneously, so it can miss an otherwise correct short voice, then
+collapses every failed clause to `null`. A repair and rerun must preserve the terminal observation,
+separate durable voice-start evidence from transient-active evidence, and compare the ownership
+state only with an explicit ownership revision; this carrier does not claim those repairs have
+landed or passed.
+
+The JSON gzip SHA-256 is
+`fafac2c12d5223b9488588bdceb7f1524d826cfbc1109d9677df0d324b28810e`; its decompressed SHA-256 is
+`b777b6a5fc4a9188053006743aeae8a7ab43fc81a7415915d7a7a1f1f6c79f8e`. The log gzip SHA-256 is
+`b4a62c25d6603576d07631453e5962eb0cf5f7a08a8087f8eae2ecbc1862cbb4`; its decompressed SHA-256 is
+`99af93e2e9478033be9ba15f7233bd19512a810a1783ff71f4cce80298f26938`. The JSON binds seven
+run-specific 1280×800 PNG manifest rows whose byte counts and hashes matched the ignored files at
+audit time, but those PNG bytes are not preserved. Arc 4 evidence is explicitly non-required with
+zero ledger lines and zero PASS markers. This carrier therefore supplies no durable visual, Slice,
+Glass, recovery, HUMAN, hosted or release evidence.
+
 ### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_032748771.{json,log}.gz` — remnant-oracle and post-reload lifecycle Slice red
 
 Retains clean, stable signed-source run `20260827032748771-8092-d2a0130882c1` at
@@ -81,7 +118,7 @@ regression. The JSON gzip SHA-256 is
 `1a659612b294017f59b05a9613878a3287a1ecea9fc3076ae966298791c10822`; its decompressed SHA-256 is
 `b1b245c837001f6f9817757cb178974bec626ec3e57ad3532445616f8b81d17f`.
 
-All four JSON reports retain run-bound screenshot manifests and hashes. The PNG bytes themselves remain
+All five JSON reports retain run-bound screenshot manifests and hashes. The PNG bytes themselves remain
 ignored under `port/v2/apps/game/smoke/` and are not preserved by these carriers; none of these entries
 claims durable visual evidence, current-input Glass, the real recovery certificate, or a Slice PASS.
 

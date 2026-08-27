@@ -4,9 +4,9 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches the local working tree as of 2026-08-26.**
+> **Current port/v2 source overlay matches the local working tree as of 2026-08-27.**
 >
-> **2026-08-26 local candidate overlay — implemented source lanes; three preserved Slice reds and a
+> **2026-08-27 local candidate overlay — implemented source lanes; five preserved Slice reds and a
 > certified active Compendium ruler:** Gate B's
 > recursive scanner now seals an exact 62-domain-source inventory against DOM, storage,
 > `navigator`, network, wall/monotonic clock and uncontrolled randomness. Its only two reasoned
@@ -42,9 +42,12 @@
 > plan, excluding mutable XP/hurt/fed/brood state. The app owns the five-bus fail-closed runtime,
 > persisted **Creature Voices** setting and an asset-free bounded fauna renderer. Only a native
 > Tame gesture followed by the exact durable, nonconverging fauna acquisition and its accessible
-> status counterpart may emit one greeting, keyed once to the acquisition record. Mute, Creature
-> Voices off, hidden/unanswerable play, miss/refusal, stale or reload convergence, route/counterpart
-> loss, replacement and disposal remain silent and synchronously release the audio/runtime owner. Other creature
+> status counterpart may emit one greeting, keyed once to the acquisition record. The committed
+> result preserves its global F3 transaction `revision` separately from the Arc 4/5
+> `ownershipRevision`; the owner fences only the latter after the Arc 4 and Arc 5 ownership
+> successors agree. Mute, Creature Voices off, hidden/unanswerable play, miss/refusal, stale or
+> reload convergence, route/counterpart loss, replacement and disposal remain silent and
+> synchronously release the audio/runtime owner. Other creature
 > actions, ambience, music, combat/Guardian audio, recorded assets, full accessibility/device
 > plateaus and HUMAN listening remain open.
 >
@@ -83,11 +86,11 @@
 > `6f3deb0ff3d748c7477c98c094684a3f1a04eb2ac3ffc89a055ec1c372710571`. This Compendium-only activation does not alter SceneMemory or the
 > root Gate-A browser contract.
 >
-> Browser-free verification for these local bytes is green: 123 test files, 1,372
+> Browser-free verification for these local bytes is green: 124 test files, 1,383
 > passed, one intentional skip and zero failures; `root/app/worker/noUnused` TypeScript; an
 > 884-module Vite build; root validation with the unchanged 50-probe fingerprint; legacy jsdom
 > smoke; and the applicable contract, reporter, Glass, recovery and Compendium selftests. Current-
-> input Slice has four preserved one-attempt/zero-retry reds on Edge `151.0.4129.107`. Run
+> input Slice has five preserved one-attempt/zero-retry reds on Edge `151.0.4129.107`. Run
 > `20260826214541492-83064-b252b137f7a3` at signed source `8553bd7…` failed after 92,772 ms with
 > Settings and unreachable-target instrument false reds plus the retained-Survey focus product
 > regression. Changed clean signed source `9d4b2b0…` supplied run
@@ -104,14 +107,26 @@
 > Search/remnant evidence and skipped Skim; after reload, retained Survey correctly hid the rail
 > before another Engineering attempt, cascading through storage/stale findings. Product Search,
 > remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and the repaired
-> lifecycle are outcome-cleared; Skim settlement and later stages remain unproved, and both new
-> harness repairs are unrerun. No
-> current-input Slice PASS, Glass result or recovery certificate exists. There is no hosted, HUMAN,
-> whole-Gate, release, version,
-> preview/publication or deployment claim.
+> lifecycle are outcome-cleared. Clean/stable signed source
+> `9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied run
+> `20260827041238239-16243-cbf9ca66283b`, which failed after 141,336 ms with one independent
+> `harness` finding: the exact committed Tame greeting did not reach its browser outcome within ten
+> seconds, retaining only `last null`. The carrier preserved neither a terminal observation nor a
+> browser product/instrument disposition. Its straight-line progress outcome-clears native Skim,
+> four-action Engineering reload, Mineral/Survey rail, storage refusal, stale and publication
+> convergence, and the Arc 5 v1-to-compact-v2 fixed point. Static source diagnosis found a crossed
+> global/ownership revision fence plus a transient-active instrument predicate that could miss a
+> naturally completed one-start voice. The local, unrerun repair adds distinct
+> `ownershipRevision`; the named `collectArc4TameGreetingStart()` collector retaining exact result,
+> global, ownership, claim, counterpart, runtime and toast clauses; release-`true` fail-fast;
+> active-or-naturally-completed
+> one-start proof; and generic Arc 4 ownership-revision plus reload-result-null controls. Post-start
+> audio lifecycle and the later exact nine-stage/14-burn ledger remain unproved. No current-input
+> Slice PASS, Glass result or recovery certificate exists. There is no hosted, HUMAN, whole-Gate,
+> release, version, preview/publication or deployment claim.
 >
 > **2026-08-25 Arc 3–5 + Arc 7 historical checkpoint — retained as foundation where the
-> 2026-08-26 overlay does not supersede it:** `@cf/domain-opportunity`,
+> 2026-08-27 overlay does not supersede it:** `@cf/domain-opportunity`,
 > `arc3-engineering-actions.ts`, `engineering-panel-model.ts`, `engineering-panel.ts`, and
 > `product-action-coordinator.ts` now own full-CF1 finite world/star opportunities and the live
 > Mine/Skim and eligible fixed-Engineering path. The panel displays six research rows but only Deep
@@ -1122,7 +1137,7 @@
 > unavailable copy for unported mechanics; dormant `beacon` / `events` remain
 > retained but hidden. `release-content.ts` similarly preserves all 56 legacy
 > releases /398 bullets and keeps **A New Foundation**, the cumulative categorized
-> v2.0 development bulletin, separate. Its 54-bullet implemented-outcome outline is explicitly
+> v2.0 development bulletin, separate. Its 55-bullet implemented-outcome outline is explicitly
 > `draft` / `Unreleased`; structural and rendered controls require canonical section
 > order, unique nonempty bullets, scroll-reachable tail copy, and unchanged `rnSeen` /
 > `releasePending` across open and reload. `V2_CURRENT_RELEASE_VERSION` is `null`,
@@ -2297,7 +2312,7 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
-  by the 56 legacy releases. Its exact 54-bullet implemented-outcome
+  by the 56 legacy releases. Its exact 55-bullet implemented-outcome
   inventory is checked structurally and in the rendered Guide, including real-scroll
   tail reach and unchanged shipped-release state. That version is development identity
   only. `getCurrentV2Release()` returns nothing while
@@ -2386,12 +2401,19 @@ owner. The absolute eight-creature-emitter/120-node policy remains intact.
 `creature-expression-voice.ts` supplies a deterministic asset-free fauna graph bounded to one
 oscillator and one gain node in a single expression concurrency group. `tame-greeting-audio.ts`
 arms only from the native Tame gesture and admits only the exact committed durable nonconverging
-fauna Tame result whose species/world/revision, current ownership, acquisition record and projector
-all match. It pairs that sound with the exact accessible status event and keys the one allowed
-greeting as `arc4:taming-succeeded:${recordId}`. Sound off, persisted **Creature Voices** off,
-hidden/unanswerable play, miss/refusal, stale/reload convergence, route or counterpart loss,
-replacement and disposal stay silent and stop/release the audio/runtime owner. Reload begins disposed, unarmed
-and without context, counterpart, voice or nodes.
+fauna Tame result whose species/world, global F3 transaction `revision`, Arc 4/5
+`ownershipRevision`, current ownership, acquisition record and projector all match. Main preserves
+the two revisions as distinct evidence and publishes only after the Arc 4 and Arc 5 ownership
+successors agree; the audio owner fences current ownership against `ownershipRevision`, never the
+global revision. It pairs that sound with the exact accessible status event and keys the one allowed
+greeting as `arc4:taming-succeeded:${recordId}`. The current repair requires release to return
+`true` before `collectArc4TameGreetingStart()` retains its exact result, global, ownership, claim,
+counterpart, runtime and toast clauses, and accepts one start that is either still active or has naturally
+completed before its first read. Generic Arc 4 ownership-revision and reload-result-null controls
+are included in this repair batch; this repair has not been rerun in a browser. Sound off,
+persisted **Creature Voices** off, hidden/unanswerable play, miss/refusal, stale/reload convergence,
+route or counterpart loss, replacement and disposal stay silent and stop/release the audio/runtime
+owner. Reload begins disposed, unarmed and without context, counterpart, voice or nodes.
 
 Compatibility survey/navigation stings remain separate. No other creature expression, distant
 ecology, ambience, music, combat/Guardian cue or recorded asset is player-live. Compendium audition,
@@ -2427,7 +2449,7 @@ presentation, the determinism ban covers domain modules only.
 
 ## 10. Save format (`localStorage['cfcc_save_v2']`)
 
-**Current v2 topology (2026-08-26):** v4 remains the imported/exported compatibility codec, while
+**Current v2 topology (2026-08-27):** v4 remains the imported/exported compatibility codec, while
 repository schema v5 stores owner-partitioned rows, pre-migration source snapshot/journal, revision,
 receipts and independently versioned extension namespaces. Current product authorities include
 `player/f4.authority` v1 (active-play + SessionRNG), `inventory/arc2.loot` v1 (exact gear +
@@ -2553,8 +2575,8 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-26):** browser-free verification is green at 123 test
-files / 1,372 passed / one intentional skip / zero failures, with root, app, worker and no-unused
+**Current local candidate snapshot (2026-08-27):** browser-free verification is green at 124 test
+files / 1,383 passed / one intentional skip / zero failures, with root, app, worker and no-unused
 TypeScript, the 884-module Vite build, root validation/fingerprint, legacy jsdom smoke, and the
 applicable contract/reporter/Glass/recovery/Compendium selftests green. Compendium run
 `20260826-phase4-certification` remains historical 78/78 named-verifier proof for former producer
@@ -2564,7 +2586,8 @@ and exact 14-phone/13-desktop discrimination, changing only the phone warm ceili
 Clean signed activation `91f4e044…` passed current exact-budget run
 `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
 attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Current-input Slice
-retains four one-attempt/zero-retry reds: `20260826214541492-83064-b252b137f7a3` failed after 92,772
+retains five one-attempt/zero-retry reds on Edge `151.0.4129.107`:
+`20260826214541492-83064-b252b137f7a3` failed after 92,772
 ms with two instrument defects plus one retained-Survey focus product regression, while changed
 clean signed source `9d4b2b0…` supplied `20260827000034983-98202-869d966f2f88`, which failed after
 92,566 ms with only the newly exposed impossible card-context oracle. Settings and focus are
@@ -2574,10 +2597,21 @@ hid `#railrgt` before Slice tried zero-rect `railshipyard`. That outcome clears 
 repair. Clean signed `bd6b06b…` then supplied `20260827032748771-8092-d2a0130882c1`, whose six
 scopes reduce to stale Mars-source/rendered-receipt expectations and a post-reload retained-card
 lifecycle error. Product Search/remnant routing/rail hiding were correct. Deep Scanners, fixed
-Fabrication and the repaired lifecycle are outcome-cleared; Skim settlement and later stages remain
-unproved, and both new harness repairs are unrerun. No current-input Slice
-PASS, Glass result or 20-minute recovery certificate exists. Hosted execution, HUMAN
-review, whole-Gate closure and release remain open.
+Fabrication and the repaired lifecycle are outcome-cleared. Clean/stable signed source
+`9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied
+`20260827041238239-16243-cbf9ca66283b`, which failed after 141,336 ms with one independent harness
+finding: the committed Tame greeting timed out after ten seconds with only `last null` retained, so
+the carrier proves neither a terminal observation nor a browser product/instrument disposition.
+Straight-line progress outcome-clears native Skim, four-action Engineering reload, Mineral/Survey
+rail, storage refusal, stale/publication convergence, and the Arc 5 v1-to-compact-v2 fixed point.
+Static diagnosis identified crossed global/ownership revision evidence and a transient-active
+predicate. The local, unrerun repair separates global `revision` from `ownershipRevision`, adds the
+named seven-clause `collectArc4TameGreetingStart()` collector, release-`true` fail-fast and
+active-or-naturally-completed one-start proof, and adds generic Arc 4 ownership-revision plus
+reload-result-null controls. Post-start audio
+lifecycle and the exact nine-stage/14-burn ledger remain unproved. No current-input Slice PASS,
+Glass result or 20-minute recovery certificate exists. Hosted execution, HUMAN review, whole-Gate
+closure and release remain open.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost
 with the previous working environment. They are superseded by `tools/validate.js`

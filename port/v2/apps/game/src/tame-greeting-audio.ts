@@ -43,7 +43,10 @@ export interface TameGreetingCaptureResult {
   readonly kingdom: 'microbe' | 'flora' | 'fungi' | 'fauna';
   readonly worldKey: string;
   readonly ownedRowId: string | null;
+  /** Global F3 transaction revision for the durable capture result. */
   readonly revision: number;
+  /** Arc 4/5 ownership successor revision that owns `ownedRowId`. */
+  readonly ownershipRevision: number;
 }
 
 export interface TameGreetingCaptureOutcome {
@@ -263,7 +266,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     }
     const state = ownership;
     if (state === null || !isOwnershipStateV2(state) || state.mode !== 'current'
-      || state.revision !== outcome.result.revision) return silent('ownership-stale');
+      || state.revision !== outcome.result.ownershipRevision) return silent('ownership-stale');
     const creature = state.creatures.find((row) => row.creatureId === outcome.result!.ownedRowId);
     if (!creature) return silent('owned-row-missing');
     if (creature.speciesId !== outcome.result.speciesId) return silent('result-species-mismatch');

@@ -903,6 +903,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
         '🖥 RELOADS RELEASE THE OLD SKY: Training restart, expedition import, and storage recovery stop and release the outgoing renderer and full-size canvases before the replacement page starts, preventing overlapping scenes and very-large-display starvation.',
         '↔ RESIZING KEEPS YOUR PLACE: Density and viewport changes refresh canvas, pointer, Survey, and backdrop geometry while preserving the current location and open card, including same-backing 8K-to-5K transitions.',
         '🦋 COLD PLANETSIDE ART NO LONGER FREEZES THE DECK: Loading and painting the first specimen thumbnails now happens away from the renderer thread, so Search, navigation, and browser controls stay answerable while neutral tiles fill in; the globe starts at the resolution its fitted size needs and upgrades only when real zoom or display density asks for a sharper tier.',
+        '🔊 A NEWLY TAMED CREATURE CAN GREET YOU: The greeting compared two different save revisions and treated a valid capture as stale. It now follows the committed creature record while keeping stale results silent.',
       ]),
     }),
     Object.freeze({

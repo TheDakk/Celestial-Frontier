@@ -77,6 +77,7 @@ import {
   assessArc4PublicationConvergence,
   assessArc4StaleConvergence,
   assessArc4StorageRefusal,
+  assessArc4TameGreetingStartObservation,
   assessArc4TameGreetingAudio as classifyTameGreetingAudioEvidence,
   projectArc5OwnershipMigrationEvidence,
 } from './arc4-browser-contract.mjs';
@@ -946,6 +947,9 @@ const ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION = `(()=>{const S=window.__
     answerable:state?.persistence?.ready===true
       &&state?.persistence?.runtime?.answerable===true
       &&document.visibilityState==='visible',
+    globalRevision:state?.persistence?.runtime?.revision??null,
+    captureRevision:state?.capture?.revision??null,
+    ownershipRevision:state?.ownershipV2?.revision??null,
     cardOpen:state?.cardOpen===true,result:state?.capture?.lastResult??null,
     audio:state?.audio??null,toast:{visible:toast?.style?.opacity==='1'
       &&style?.display!=='none'&&style?.visibility==='visible'
@@ -3684,6 +3688,31 @@ try {
       await sleep(50);
     }
     throw new Error(`${label} did not reach its browser outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  const collectArc4TameGreetingStart = async (timeoutMs = 10_000) => {
+    const deadline = Date.now() + timeoutMs;
+    let retained = {
+      ok: false,
+      checks: {
+        result: false, global: false, ownership: false, claim: false,
+        counterpart: false, runtime: false, toast: false,
+      },
+      observation: null,
+    };
+    while (Date.now() < deadline) {
+      const observation = await evalIn(
+        ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION,
+      );
+      const assessment = assessArc4TameGreetingStartObservation(observation);
+      retained = {
+        ok: assessment.ok === true,
+        checks: assessment.checks,
+        observation,
+      };
+      if (retained.ok) return retained;
+      await sleep(50);
+    }
+    return retained;
   };
   /* One abandoned pagehide release may retain its fenced lease until the
      10-second TTL; allow that expiry plus one intentional convergence boot. */
@@ -10481,35 +10510,57 @@ try {
   const arc4TameAudioReleased = await evalIn(
     `window.__CF_SLICE__.api.__smokeReleaseProductActionHold()`,
   );
-  const arc4TameAudioStarted = await waitDesktopValue(
-    'Arc 4 exact committed Tame greeting voice',
-    `(()=>{const observation=${ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION},
-      audio=observation?.audio,runtime=audio?.runtime;
-      return observation?.result?.hit===true
-        &&observation?.result?.speciesId===${JSON.stringify(ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.speciesId)}
-        &&observation?.result?.speciesName===${JSON.stringify(ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.speciesName)}
-        &&observation?.result?.sourceOrdinal===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.sourceOrdinal}
-        &&observation?.result?.tier===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.tier}
-        &&observation?.result?.chance===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.chance}
-        &&observation?.result?.worldKey===${JSON.stringify(ARC4_PERTAR_FIXTURE.worldKey)}
-        &&observation?.result?.ecologyEpoch===${ARC4_PERTAR_FIXTURE.ecologyEpoch}
-        &&observation?.result?.fullRosterFingerprint===${JSON.stringify(ARC4_PERTAR_FIXTURE.fullRosterFingerprint)}
-        &&observation?.result?.firstForSpecies===true
-        &&observation?.result?.spent===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.spent}
-        &&observation?.result?.remainingAfter===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.remainingAfter}
-        &&typeof observation?.result?.ownedRowId==='string'&&observation.result.ownedRowId.length>0
-        &&observation?.result?.stardustReward===${ARC4_PERTAR_FIXTURE.actions.tameGreetingHit.stardustReward}
-        &&Number.isSafeInteger(observation?.result?.revision)
-        &&audio?.claimedEvents===1&&audio?.armed===0
-        &&audio?.activeVoiceId!==null&&audio?.activeVoiceId===runtime?.voices?.ids?.[0]
-        &&audio?.lastDisposition==='voice-started'
-        &&audio?.counterpart?.status==='live'
-        &&runtime?.contextGeneration===1&&runtime?.voices?.started===1
-        &&runtime?.voices?.active===1&&runtime?.creatureEmitters?.active===1
-        &&observation?.toast?.visible===true&&observation?.toast?.live==='assertive'
-        ?observation:null})()`,
-    10_000,
+  if (arc4TameAudioReleased !== true) {
+    failSliceWithoutCascade('ARC 4 TAME GREETING AUDIO RELEASE: the exact held product action did not release true before the post-release collector');
+  }
+  const arc4TameAudioStartedCollection = await collectArc4TameGreetingStart(10_000);
+  if (arc4TameAudioStartedCollection.ok !== true) {
+    failSliceWithoutCascade('ARC 4 TAME GREETING AUDIO START: bounded post-release observation did not prove the exact result/global/ownership/claim/counterpart/runtime/toast clauses: '
+      + JSON.stringify(arc4TameAudioStartedCollection));
+  }
+  const arc4TameAudioStarted = arc4TameAudioStartedCollection.observation;
+  const arc4TameAudioStartMutation = (mutate) => {
+    const observation = structuredClone(arc4TameAudioStarted);
+    mutate(observation);
+    return assessArc4TameGreetingStartObservation(observation);
+  };
+  const arc4TameAudioCompletedBeforeFirstRead = structuredClone(
+    arc4TameAudioStarted,
   );
+  arc4TameAudioCompletedBeforeFirstRead.audio.activeVoiceId = null;
+  arc4TameAudioCompletedBeforeFirstRead.audio.runtime.voices.active = 0;
+  arc4TameAudioCompletedBeforeFirstRead.audio.runtime.voices.ids = [];
+  arc4TameAudioCompletedBeforeFirstRead.audio.runtime.voices.completed = 1;
+  arc4TameAudioCompletedBeforeFirstRead.audio.runtime.creatureEmitters.active = 0;
+  const arc4TameAudioStartControls = {
+    positive: assessArc4TameGreetingStartObservation(arc4TameAudioStarted),
+    resultMismatch: arc4TameAudioStartMutation((observation) => {
+      observation.result.tier += 1;
+    }),
+    globalMismatch: arc4TameAudioStartMutation((observation) => {
+      observation.result.revision += 1;
+    }),
+    ownershipStale: arc4TameAudioStartMutation((observation) => {
+      observation.result.ownershipRevision += 1;
+    }),
+    runtimeRejection: arc4TameAudioStartMutation((observation) => {
+      observation.audio.runtime.voices.cooldownRejects += 1;
+    }),
+    completedBeforeFirstRead: assessArc4TameGreetingStartObservation(
+      arc4TameAudioCompletedBeforeFirstRead,
+    ),
+  };
+  const arc4TameAudioStartControlsIsolated =
+    arc4TameAudioStartControls.positive.ok === true
+    && arc4ExactFailureSet(arc4TameAudioStartControls.resultMismatch, ['result'])
+    && arc4ExactFailureSet(arc4TameAudioStartControls.globalMismatch, ['global'])
+    && arc4ExactFailureSet(arc4TameAudioStartControls.ownershipStale, ['ownership'])
+    && arc4ExactFailureSet(arc4TameAudioStartControls.runtimeRejection, ['runtime'])
+    && arc4TameAudioStartControls.completedBeforeFirstRead.ok === true;
+  if (!arc4TameAudioStartControlsIsolated) {
+    failSliceWithoutCascade('ARC 4 TAME GREETING AUDIO START CONTROLS: live result/global/ownership/runtime mutants or the natural-completion-before-first-read positive did not isolate: '
+      + JSON.stringify(arc4TameAudioStartControls));
+  }
   const arc4TameAudioAfterRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
   const arc4TameAudioInteraction = arc4InteractionFromTrace(
     await readArc4InteractionTrace(true), 'tame', 'keyboard',
@@ -10635,14 +10686,40 @@ try {
     committedTame: {
       expected: ['committedTame'],
       result: arc4TameAudioMutation((next) => {
-        next.afterRaw.revision += 1;
-        next.afterRaw.revisionRaw = String(next.afterRaw.revision);
+        next.beforeRaw.revision -= 1;
+        next.beforeRaw.revisionRaw = String(next.beforeRaw.revision);
       }),
     },
     exactResult: {
       expected: ['exactResult'],
       result: arc4TameAudioMutation((next) => {
         next.started.result.tier += 1;
+      }),
+    },
+    wrongGlobalRevision: {
+      expected: ['exactResult'],
+      result: arc4TameAudioMutation((next) => {
+        next.started.result.revision += 1;
+      }),
+    },
+    wrongOwnershipRevision: {
+      expected: ['exactResult'],
+      result: arc4TameAudioMutation((next) => {
+        next.started.result.ownershipRevision += 1;
+      }),
+    },
+    swappedRevisions: {
+      expected: ['exactResult'],
+      result: arc4TameAudioMutation((next) => {
+        const global = next.started.result.revision;
+        next.started.result.revision = next.started.result.ownershipRevision;
+        next.started.result.ownershipRevision = global;
+      }),
+    },
+    equalizedRevisions: {
+      expected: ['exactResult'],
+      result: arc4TameAudioMutation((next) => {
+        next.started.result.ownershipRevision = next.started.result.revision;
       }),
     },
     oneAnswerableDocument: {
@@ -10687,14 +10764,28 @@ try {
         next.reloaded.audio.claimedEvents = 1;
       }),
     },
+    reloadRetainedResult: {
+      expected: ['reloadNoReplay'],
+      result: arc4TameAudioMutation((next) => {
+        next.reloaded.result = structuredClone(next.started.result);
+      }),
+    },
     freshFixtureIsolation: {
       expected: ['freshFixtureIsolation'],
       result: arc4TameAudioMutation((next) => {
         next.freshFixture.observation.audio.claimedEvents = 1;
       }),
     },
+    freshFixtureRetainedResult: {
+      expected: ['freshFixtureIsolation'],
+      result: arc4TameAudioMutation((next) => {
+        next.freshFixture.observation.result = structuredClone(
+          next.started.result,
+        );
+      }),
+    },
   };
-  const arc4TameAudioControlsIsolated = Object.keys(arc4TameAudioControls).length === 11
+  const arc4TameAudioControlsIsolated = Object.keys(arc4TameAudioControls).length === 17
     && Object.values(arc4TameAudioControls)
       .every((control) => arc4ExactFailureSet(control.result, control.expected));
   const arc4TameAudioRehearsalChecks = {
@@ -10718,6 +10809,11 @@ try {
       && arc4TameAudioInteraction.verb === 'tame'
       && arc4TameAudioInteraction.trusted === true,
     released: arc4TameAudioReleased === true,
+    retainedStartCollection: arc4TameAudioStartedCollection.ok === true
+      && canonicalJson(Object.keys(arc4TameAudioStartedCollection).sort())
+        === canonicalJson(['checks', 'observation', 'ok'])
+      && arc4TameAudioStartedCollection.observation === arc4TameAudioStarted,
+    startControls: arc4TameAudioStartControlsIsolated,
     nativeClose: arc4TameAudioClose.armed === true
       && arc4TameAudioClose.target.ok === true
       && arc4TameAudioClose.interaction.trusted === true,
@@ -11039,6 +11135,22 @@ try {
   const arc4HitOuterRevisionControl = assessArc4CommittedHit({
     ...arc4HitBundle, afterState: arc4HitOuterRevisionControlState,
   });
+  const arc4HitMissingOwnershipRevisionControlState = structuredClone(
+    arc4HitState,
+  );
+  delete arc4HitMissingOwnershipRevisionControlState
+    .capture.lastResult.ownershipRevision;
+  const arc4HitMissingOwnershipRevisionControl = assessArc4CommittedHit({
+    ...arc4HitBundle, afterState: arc4HitMissingOwnershipRevisionControlState,
+  });
+  const arc4HitWrongOwnershipRevisionControlState = structuredClone(
+    arc4HitState,
+  );
+  arc4HitWrongOwnershipRevisionControlState
+    .capture.lastResult.ownershipRevision += 1;
+  const arc4HitWrongOwnershipRevisionControl = assessArc4CommittedHit({
+    ...arc4HitBundle, afterState: arc4HitWrongOwnershipRevisionControlState,
+  });
   const arc4HitV4MaxGenControl = assessArc4CommittedHit({
     ...arc4HitBundle,
     before: arc4MutateV4Ever(arc4PreRaw, (ever) => { ever.maxGen += 1; }),
@@ -11066,6 +11178,12 @@ try {
     || !arc4ExactFailureSet(arc4HitV4ArrivalsControl,
       ['v4OwnedCompatibility', 'v4OwnedCounters'])
     || !arc4IsolatedCheck(arc4HitOuterRevisionControl, 'appResult')
+    || !arc4IsolatedCheck(
+      arc4HitMissingOwnershipRevisionControl, 'appResult',
+    )
+    || !arc4IsolatedCheck(
+      arc4HitWrongOwnershipRevisionControl, 'appResult',
+    )
     || !arc4ExactFailureSet(arc4HitV4MaxGenControl,
       ['v4OwnedCompatibility', 'v4OwnedCounters'])
     || !arc4ExactFailureSet(arc4HitRetainedArc5Control,
@@ -11088,6 +11206,9 @@ try {
         hitV4ScanhitsControl: arc4HitV4ScanhitsControl,
         hitV4ArrivalsControl: arc4HitV4ArrivalsControl,
         hitOuterRevisionControl: arc4HitOuterRevisionControl,
+        hitMissingOwnershipRevisionControl:
+          arc4HitMissingOwnershipRevisionControl,
+        hitWrongOwnershipRevisionControl: arc4HitWrongOwnershipRevisionControl,
         hitV4MaxGenControl: arc4HitV4MaxGenControl,
         hitRetainedArc5Control: arc4HitRetainedArc5Control,
         hitTargetDigestControl: arc4HitTargetDigestControl,
@@ -11420,6 +11541,24 @@ try {
     ...arc4MissBundle,
     afterState: arc4MutateStateActivePlay(arc4MissState),
   });
+  const arc4MissMissingOwnershipRevisionControlState = structuredClone(
+    arc4MissState,
+  );
+  delete arc4MissMissingOwnershipRevisionControlState
+    .capture.lastResult.ownershipRevision;
+  const arc4MissMissingOwnershipRevisionControl = assessArc4CommittedMiss({
+    ...arc4MissBundle,
+    afterState: arc4MissMissingOwnershipRevisionControlState,
+  });
+  const arc4MissWrongOwnershipRevisionControlState = structuredClone(
+    arc4MissState,
+  );
+  arc4MissWrongOwnershipRevisionControlState
+    .capture.lastResult.ownershipRevision += 1;
+  const arc4MissWrongOwnershipRevisionControl = assessArc4CommittedMiss({
+    ...arc4MissBundle,
+    afterState: arc4MissWrongOwnershipRevisionControlState,
+  });
   const arc4MissV4ScanhitsControl = assessArc4CommittedMiss({
     ...arc4MissBundle,
     before: arc4MutateV4Ever(arc4MissBeforeRaw, (ever) => { ever.scanhits += 1; }),
@@ -11432,6 +11571,12 @@ try {
   if (!arc4MissPress.armed || !arc4MissPress.target.ok || !arc4Miss.ok
     || !arc4IsolatedCheck(arc4MissControl, 'interaction')
     || !arc4IsolatedCheck(arc4MissRuntimeControl, 'runtimeCaptureOrder')
+    || !arc4IsolatedCheck(
+      arc4MissMissingOwnershipRevisionControl, 'appResult',
+    )
+    || !arc4IsolatedCheck(
+      arc4MissWrongOwnershipRevisionControl, 'appResult',
+    )
     || !arc4ExactFailureSet(arc4MissV4ScanhitsControl,
       ['v4OwnedCompatibility', 'v4OwnedCounters'])
     || !arc4ExactFailureSet(arc4MissRetainedArc5Control,
@@ -11442,6 +11587,9 @@ try {
     fails.push('ARC 4 TAME MISS: counter-1 native Tame did not spend exactly one with no ownership/reward grant: '
       + JSON.stringify({ press: arc4MissPress, assessment: arc4Miss,
         control: arc4MissControl, runtimeControl: arc4MissRuntimeControl,
+        missingOwnershipRevisionControl:
+          arc4MissMissingOwnershipRevisionControl,
+        wrongOwnershipRevisionControl: arc4MissWrongOwnershipRevisionControl,
         v4ScanhitsControl: arc4MissV4ScanhitsControl,
         retainedArc5Control: arc4MissRetainedArc5Control,
         interaction: arc4MissInteraction }));
@@ -11499,6 +11647,26 @@ try {
       outcomeRevisionControl.result.revision = after.captureRevision === after.revision
         ? after.captureRevision + 1 : after.captureRevision;
     }
+    const outcomeMissingOwnershipRevisionControl = structuredClone(outcome);
+    const outcomeMissingOwnershipRevisionControlState = structuredClone(
+      afterState,
+    );
+    if (outcomeMissingOwnershipRevisionControl?.result
+      && outcomeMissingOwnershipRevisionControlState?.capture?.lastResult) {
+      delete outcomeMissingOwnershipRevisionControl.result.ownershipRevision;
+      delete outcomeMissingOwnershipRevisionControlState
+        .capture.lastResult.ownershipRevision;
+    }
+    const outcomeWrongOwnershipRevisionControl = structuredClone(outcome);
+    const outcomeWrongOwnershipRevisionControlState = structuredClone(
+      afterState,
+    );
+    if (outcomeWrongOwnershipRevisionControl?.result
+      && outcomeWrongOwnershipRevisionControlState?.capture?.lastResult) {
+      outcomeWrongOwnershipRevisionControl.result.ownershipRevision += 1;
+      outcomeWrongOwnershipRevisionControlState
+        .capture.lastResult.ownershipRevision += 1;
+    }
     const ordinal = before?.authority?.sessionRng?.ordinal;
     const kindControlAfter = arc4MutateNewReceipt(after, ordinal, (row) => {
       row.kind = 'not-capture-attempt';
@@ -11537,6 +11705,22 @@ try {
         expected: ['outcome', 'oneRevision'], result: assessArc4BurnStep({
           before, after, beforeUi, outcome: outcomeRevisionControl,
           verb: readyRow.verb, expectedUsed, afterState,
+        }),
+      },
+      outcomeMissingOwnershipRevision: {
+        expected: 'outcome', result: assessArc4BurnStep({
+          before, after, beforeUi,
+          outcome: outcomeMissingOwnershipRevisionControl,
+          verb: readyRow.verb, expectedUsed,
+          afterState: outcomeMissingOwnershipRevisionControlState,
+        }),
+      },
+      outcomeWrongOwnershipRevision: {
+        expected: 'outcome', result: assessArc4BurnStep({
+          before, after, beforeUi,
+          outcome: outcomeWrongOwnershipRevisionControl,
+          verb: readyRow.verb, expectedUsed,
+          afterState: outcomeWrongOwnershipRevisionControlState,
         }),
       },
       receiptKind: {

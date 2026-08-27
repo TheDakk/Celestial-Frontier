@@ -1,6 +1,6 @@
 # Celestial Frontier — Quests & Chapters
 
-> **2026-08-27 current evidence overlay:** current-input Slice has four preserved terminal-red,
+> **2026-08-27 current evidence overlay:** current-input Slice has five preserved terminal-red,
 > one-attempt/zero-retry runs on Edge `151.0.4129.107`. Run
 > `20260826214541492-83064-b252b137f7a3` executed from signed `8553bd7…` for 92,772 ms and retained
 > three findings: the Settings 14-versus-15 control inventory and stage-1-unreachable Arc 3 target
@@ -20,16 +20,33 @@
 > and skipping Skim. After reload, retained Survey again correctly hid the rail before Slice tried
 > Engineering; the storage and stale-authority findings cascaded from that second lifecycle error.
 > Product Search, remnant routing and rail hiding were correct. Deep Scanners, fixed Fabrication and
-> the repaired lifecycle are outcome-cleared; Skim settlement and every later stage remain unproved,
-> and both new harness repairs are unrerun. Browser-free verification remains green at 123 test files, 1,372
-> passing tests and one intentional skip. The former Compendium certificate is historical for producer
+> the repaired lifecycle were outcome-cleared by that fourth run. Signed-clean source
+> `9ce7ddde01201177dff1cacafc06c8424c4098cb` then supplied fifth run
+> `20260827041238239-16243-cbf9ca66283b` on the same Edge `.107`; it ran for 141,336 ms and retained
+> one finding: the exact committed Tame greeting voice timed out with `last null`. The fifth outcome
+> clears the repaired path through Skim and the Engineering, storage-refusal, stale-authority,
+> committed-publication and Arc 5 fixed-point stages. The generic null is only the old active-voice
+> predicate's evidence limit: it cannot distinguish product rejection, autoplay/environment behavior,
+> natural completion before sampling or collector failure.
+>
+> The current local repair preserves global F3 transaction `revision` as a counter distinct from the
+> explicit Arc 4/5 `ownershipRevision`, requires V1/V2 ownership revisions to agree before publish,
+> and makes the greeting owner fence only the latter. Its named retained seven-clause
+> result/global/ownership/claim/counterpart/runtime/toast collector requires exact `true` release
+> before collection and fails fast without cascading; it accepts one exact start while active or
+> after natural completion. Generic Arc 4 `ownershipRevision` and reload-result-null controls are
+> added in the same repair batch. Browser-free verification is green at 124 test files, 1,383
+> passing tests and one intentional skip, and the current **A New Foundation** draft has 55 bullets.
+> Post-start audio lifecycle, the current nine-stage/14-burn sequence, Glass and uninterrupted
+> recovery remain unproved. The former Compendium certificate is historical for producer
 > `587d3bdf…`; current producer
 > `f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224` is active under budget
 > `6284a394664c1039c9aca3f3c6d6dc5caf55295a58f4ac1e361974d3b519de52`. Exact-budget run
 > `20260826-slice-repair-certification` passed 78/78 with complete lifecycle and named verification
 > from clean signed activation source `91f4e044…` in one attempt/zero retries (44,847 ms); raw/gzip
-> SHA-256 are `81c27ed5…` / `6f3deb0f…`. No current-input Slice PASS, Glass result or recovery
-> certificate exists.
+> SHA-256 are `81c27ed5…` / `6f3deb0f…`. No current-input Slice PASS, current Glass result or
+> recovery certificate exists, and there is no hosted, integration, HUMAN, preview, release/version
+> or deployment authority.
 
 > **2026-08-25 Arc 4 current-capability overlay:** finite Tame/Scavenge/Sample is now a native
 > Survey-card action over the production full roster and current epoch. It presents a source-bound
@@ -142,7 +159,7 @@
 > verified outcomes.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the newest v2 overlay
-above matches the current local `port/v2` boundary as of 2026-08-26. Carries v1.8.6 and v1.8.7
+above matches the current local `port/v2` boundary as of 2026-08-27. Carries v1.8.6 and v1.8.7
 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and Field Training. The **21-step** curriculum described below is the legacy game; the current v2 boundary is explicit here.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
