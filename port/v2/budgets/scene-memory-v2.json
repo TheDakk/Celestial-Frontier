@@ -39,10 +39,10 @@
   },
   "profiles": {
     "phone": {
-      "heapUsedBytesMax": 10485760,
+      "heapUsedBytesMax": 12582912,
       "embedderHeapUsedBytesMax": 4194304,
       "backingStorageBytesMax": 3145728,
-      "heapAggregateBytesMax": 16777216,
+      "heapAggregateBytesMax": 18874368,
       "warmHeapAggregateRangeBytesMax": 524288,
       "warmHeapSlopeBytesPerCycleMax": 131072,
       "documentsMax": 3.5,
@@ -62,10 +62,10 @@
       "heartbeatElapsedMsMax": 100
     },
     "desktop": {
-      "heapUsedBytesMax": 10485760,
+      "heapUsedBytesMax": 12582912,
       "embedderHeapUsedBytesMax": 4194304,
       "backingStorageBytesMax": 3145728,
-      "heapAggregateBytesMax": 16777216,
+      "heapAggregateBytesMax": 18874368,
       "warmHeapAggregateRangeBytesMax": 524288,
       "warmHeapSlopeBytesPerCycleMax": 131072,
       "documentsMax": 3.5,

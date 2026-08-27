@@ -53,6 +53,20 @@ still fail on its unchanged node/listener excess after activation. Microsoft Edg
 revision, JavaScript version, executable path and user agent are per-run provenance. An Edge update
 alone never starts calibration, repins a ruler or moves a threshold.
 
+The completed application of that law used signed source
+`6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+`a389646081f9fb5246825d1ac187eeb06504a8e4`) for exactly three clean runs:
+`20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2`, and
+`20260827-phase4-repair-candidate3`. Each ran once with zero retries, retained complete browser,
+server, and workspace-lock cleanup, and used Edge `151.0.4129.107` / CDP `1.3`. Across them, V8
+maxima were 11,566,152 phone and 11,630,936 desktop bytes; aggregate maxima were 17,681,258 and
+17,636,682. Nodes/listeners stayed fixed at 676/71 phone and 673/70 desktop. The evidence therefore
+selects only 12 MiB (`12,582,912`) V8 and 18 MiB (`18,874,368`) aggregate ceilings: exact headroom
+is 1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes for phone/desktop. Every
+other ceiling stays unchanged, and the paired `862a75b…` red must remain red on nodes/listeners.
+Budget/test activation is not certification: a signed activation source, an exact certificate,
+and the restarted serial campaign remain separate fail-fast steps.
+
 ⚠⚠ **LATCH IRREVERSIBLE CONVERGENCE BEFORE FALLIBLE PRESENTATION** (2026-08-27).
 F4 authority loss originally tried to repaint an already-open full Shipyard before scheduling its
 replacement document. A presentation or diagnostics throw at that point could leave actionable

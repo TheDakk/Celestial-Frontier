@@ -44,8 +44,17 @@ does not silently promote planned behavior into the in-game Guide.
 > all registered panel openers share one delegated focus-capture owner. A deliberately
 > non-certifying dirty diagnostic reduced phone/desktop maxima to 676/673 nodes and 71/70 listeners,
 > below unchanged 704/80 ceilings; range, slope and every other resource outcome remained green.
-> Only the fixed V8 and aggregate heap bands remain above the historical ruler. One signed clean
-> calibration source, three independent no-retry candidates, heap-only activation and a new exact
+> Only the fixed V8 and aggregate heap bands remained above the historical ruler. Signed clean
+> source `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+> `a389646081f9fb5246825d1ac187eeb06504a8e4`) supplied exactly
+> `20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2`, and
+> `20260827-phase4-repair-candidate3`, each once with zero retries and complete cleanup on Edge
+> `.107` / CDP `1.3`. Phone/desktop V8 maxima were 11,566,152 / 11,630,936 bytes; aggregate maxima
+> were 17,681,258 / 17,636,682 bytes; nodes/listeners remained 676/71 and 673/70. The selected
+> reviewed worktree activation changes only V8 to 12 MiB (`12,582,912`) and aggregate to 18 MiB
+> (`18,874,368`): exact phone/desktop headroom is 1,016,760 / 951,976 V8 bytes and 1,193,110 /
+> 1,237,686 aggregate bytes. Every other ceiling stays unchanged and paired red `862a75b…` still
+> fails nodes/listeners. The activation worktree/tests are green; a signed activation source and a new exact
 > certificate remain pending.
 >
 > In particular, landing/name history now binds the complete source-reproved CF1 world rather than
@@ -58,8 +67,8 @@ does not silently promote planned behavior into the in-game Guide.
 > than a version pin, so an Edge update alone never rebaselines, repins or moves thresholds. The
 > Compendium and SceneMemory own separate sealed Edge-family + CDP `1.3` capability/profile
 > authorities; neither uses the exact browser build as a perpetual baseline identity. SceneMemory's
-> pending product-growth calibration is required by changed product ownership, never by `.107` or a
-> later compatible Edge point update.
+> product-growth calibration was required by changed product ownership, never by `.107` or a later
+> compatible Edge point update; its completion does not make browser point versions baseline keys.
 
 > **2026-08-26 current-candidate correction:** the ecology epoch now publishes only from F4's
 > visible-and-answerable, lease-owned `activePlayMs`. One receipt-free lease/revision CAS must commit

@@ -29,7 +29,7 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-27; repaired locally, current Slice evidence still red):** the current
+**Current local v2 candidate (2026-08-27; repair calibration complete, activation and current Slice evidence still open):** the current
 working tree completes the bounded source lanes that followed the retained Arc 5A checkpoint.
 Gate B now recursively seals the exact 62-file domain-source inventory against DOM, storage,
 `navigator`, network, wall/monotonic clock, and uncontrolled-random access; its only two waivers are
@@ -104,10 +104,9 @@ phone and desktop samples with one run ID must bind that exact tuple. An Edge au
 forces calibration nor changes a numeric ceiling, while a real observed budget breach remains red.
 Those `f7c87f22…` / `91f4e044…` bytes remain historical evidence for their exact producer. Compendium
 and SceneMemory now own separate sealed Edge-family + CDP `1.3` capability/profile authorities;
-the version-tolerance change itself altered no numeric budget in either ruler. The current worktree
-is not a final frozen producer: SceneMemory must complete its three-candidate and paired-red
-calibration, then any supported heap-only activation, before exact certification; Compendium needs
-a fresh certificate bound to the eventual signed producer. Root Gate-A remains a separate contract.
+the version-tolerance change itself altered no numeric budget in either ruler. SceneMemory's clean
+three-run repair calibration is complete, while its selected heap-only activation, signed exact
+certificate and the Compendium certificate remain pending. Root Gate-A remains a separate contract.
 
 Signed clean source `862a75b316142348636abea442dab15e87393642` passed named Layout
 `20260827-phase4-successor-layout` at 787/787 across all ten viewports, then ran named SceneMemory
@@ -117,17 +116,27 @@ phone and desktop heap/DOM budget outcomes were red. Compendium, Slice, Glass an
 run. The exact report is preserved under
 `audits/ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz`.
 
-The avoidable shell ownership is repaired in the current worktree. Production Inventory retains
+The avoidable shell ownership is repaired. Production Inventory retains
 its logical data, filters and page while closed, but no hidden item-row tree or six dormant event
 subscriptions; registered panel openers now share one delegated focus-capture owner instead of one
 closure per opener. A deliberately non-certifying dirty diagnostic reduced phone/desktop maxima to
 676/673 nodes and 71/70 listeners, below the unchanged 704/80 ceilings. Warm ranges, slopes and
 every other resource outcome remained green. Only the fixed absolute V8 and aggregate heap bands
 remain above their historical ceilings, consistent with the materially larger synchronously loaded
-Arc 2–5/F4 product graph rather than a lifecycle leak. A signed clean calibration source, three
-independent no-retry candidates, a heap-only ruler activation and one fresh exact-budget certificate
-remain pending. Edge `.107` is provenance only: a compatible point update never triggers
-recalibration, rebaselining, repinning or a threshold change.
+Arc 2–5/F4 product graph rather than a lifecycle leak. Signed clean calibration source
+`6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+`a389646081f9fb5246825d1ac187eeb06504a8e4`) supplied exactly
+`20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2` and
+`20260827-phase4-repair-candidate3`. Each ran once with zero retries and complete cleanup on Edge
+`.107` / CDP `1.3`. Their maxima were 11,566,152 / 11,630,936 V8 bytes and 17,681,258 /
+17,636,682 aggregate bytes for phone/desktop, with unchanged 676/71 and 673/70 nodes/listeners.
+The reviewed worktree activation changes only V8 to 12 MiB (`12,582,912`) and aggregate heap to
+18 MiB (`18,874,368`), leaving exact phone/desktop headroom of 1,016,760 / 951,976 V8 bytes and
+1,193,110 / 1,237,686 aggregate bytes. Every other ceiling remains unchanged, and the preserved
+`862a75b…` paired red remains red on nodes/listeners. A signed activation source, fresh exact-budget
+certificate and the restarted serial chain remain pending. Edge `.107`
+is provenance only: a compatible point update never triggers recalibration, rebaselining, repinning
+or a threshold change.
 
 Current-input Slice retains six one-attempt/zero-retry reds. Signed-clean source
 `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run

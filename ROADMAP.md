@@ -17,21 +17,24 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-27 · CURRENT RED PRESERVED · SHELL REPAIRED · HEAP-ONLY CALIBRATION NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-27 · CURRENT RED PRESERVED · HEAP-ONLY ACTIVATION GREEN · SIGNED ACTIVATION NEXT ◀◀◀
 
 ### Exact local ownership and authority boundary
 
 - **Owner/environment:** OpenAI/Codex desktop on macOS, exact root
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
   `origin/openai/mac`, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`.
-- **Signed current-red source:** candidate `862a75b316142348636abea442dab15e87393642` (tree
+- **Signed paired-red source:** candidate `862a75b316142348636abea442dab15e87393642` (tree
   `0d7b580e68615f0050d2a4465e2b5dc152513564`) is ahead 83 of `origin/openai/mac`; its good
   ED25519 SSH signature is verified for `79046704+TheDakk@users.noreply.github.com`, fingerprint
   `SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`. It completed full named Layout, then
-  produced the preserved 40/42 terminal-red SceneMemory result described below. The worktree now
-  contains the bounded closed-surface ownership repair, actionable SceneMemory diagnoses, paired
-  broken-baseline replay, producer rebindings and live documentation. Numeric ceilings have not
-  moved. A new signed clean calibration source is required before three independent measurements.
+  produced the preserved 40/42 terminal-red SceneMemory result described below.
+- **Signed calibration source:** `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+  `a389646081f9fb5246825d1ac187eeb06504a8e4`) is ahead 84 of `origin/openai/mac` and contains the
+  bounded closed-surface ownership repair, actionable SceneMemory diagnoses, paired broken-baseline
+  replay, producer rebindings and live documentation. Exactly three clean calibration candidates
+  now bind that unchanged source. The worktree contains their preserved audit carriers plus the
+  reviewed activation/evidence worktree. The four numeric edits are not yet a signed activation source.
 - **No external authority:** this batch authorizes no fetch/merge, push, hosted Actions, PR
   mutation, release, version bump, deployment, preview publication or `rnSeen` mutation.
   `main`, production and both sites remain unchanged.
@@ -90,8 +93,24 @@ the archive verbatim and refresh this handoff in place.
   A deliberately dirty, non-certifying diagnostic reduced maxima to 676/673 nodes and 71/70
   listeners, below unchanged 704/80, while heap remained at 11,542,076–11,619,464 V8 bytes and
   17,584,902–17,681,146 aggregate bytes. The remaining constant heap belongs to the synchronously
-  loaded Arc 2–5/F4 graph, not a leak or Edge update. Only those two heap ceilings may be considered after
-  three independent clean current-product candidates, strict headroom and the paired-red replay.
+  loaded Arc 2–5/F4 graph, not a leak or Edge update. That made only the two heap ceilings eligible
+  for clean calibration; the dirty run did not itself justify a threshold change.
+- Signed clean source `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+  `a389646081f9fb5246825d1ac187eeb06504a8e4`) supplied exactly
+  `20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2`, and
+  `20260827-phase4-repair-candidate3`. Each ran once with zero automatic retries on Edge
+  `151.0.4129.107` / CDP `1.3`, retained complete browser/server/workspace-lock cleanup, and bound
+  the same clean source at beginning and end. Each retained `calibration` status, 42/42 verdict
+  outcomes and zero findings. Across the three, V8 maxima were 11,566,152 phone and
+  11,630,936 desktop bytes; aggregate maxima were 17,681,258 and 17,636,682. Nodes/listeners were
+  invariant at 676/71 phone and 673/70 desktop.
+- The reviewed worktree activation changes only `heapUsedBytesMax` to 12 MiB (`12,582,912`) and
+  `heapAggregateBytesMax` to 18 MiB (`18,874,368`). Exact headroom above the phone/desktop maxima is
+  1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes. Every DOM/listener,
+  slope/range, resource, timing and lifecycle ceiling remains unchanged. The preserved `862a75b…`
+  paired red still fails nodes/listeners with heap ceilings removed. These samples were triggered by
+  changed product ownership, never by the Edge point version; compatible updates remain provenance
+  only and never trigger calibration or threshold movement.
 
 ### Current implementation and repaired invariants
 
@@ -100,25 +119,29 @@ the archive verbatim and refresh this handoff in place.
    hidden rows after late action settlement or reacquire after disposal. Panel opener focus uses one
    delegated capture owner and restores the exact nested clicked opener. SceneMemory reports the
    breached field/value/ceiling and preserves zero-valued heap components allowed by the old contract.
-2. **Sixth-red roots:** Guide/Glass share the exact 55-bullet draft contract; ecology comparison
+2. **Repair calibration:** one unchanged signed source supplied exactly three independent clean,
+   one-attempt/zero-retry candidates with complete cleanup. Only 12 MiB V8 and 18 MiB aggregate
+   heap ceilings are selected, with strict byte headroom; all other ceilings and paired-red
+   discrimination stay fixed. This is calibration evidence, not active-budget certification.
+3. **Sixth-red roots:** Guide/Glass share the exact 55-bullet draft contract; ecology comparison
    excludes only its two bounded diagnostic clocks; contextless blocked audio no longer invents a
    mute transition; epoch publication is proved only after the real durable seam; rebuilt Survey
    refreshes Training ownership before Land/Atlas can answer.
-3. **Exact world identity:** v5 owns one canonical manifest plus four fixed shards for complete
+4. **Exact world identity:** v5 owns one canonical manifest plus four fixed shards for complete
    source-reproved CF1 galaxy/star/planet addresses, landings and names. Legacy leaf-seed mirrors
    remain compatibility-only. Ambiguous legacy facts stay unresolved until one exact product
    encounter consumes them without inventing first-landing credit. Capacity is preflighted
    atomically; Training, Search, Share, Atlas, Land and reload preserve the complete identity.
-4. **Collision outcome proof:** one source-generated reachable pair lives in the same galaxy; its
+5. **Collision outcome proof:** one source-generated reachable pair lives in the same galaxy; its
    two distinct stars occupy different coordinates, while both worlds share the same planet leaf
    seed. The bounded real-Edge scenario proves bidirectional Search, naming, Share, Atlas, Land,
    persistence/reload,
    Records and Atlas-travel isolation, including negative controls against collapsed names,
    addresses and landing counts.
-5. **Legacy/v5 race safety:** backup promotion and recovery are atomic compare-and-apply operations
+6. **Legacy/v5 race safety:** backup promotion and recovery are atomic compare-and-apply operations
    over the exact observed primary/backup bytes plus absence of both v5 revision and active lease.
    Changed legacy bytes or any v5 authority wins; legacy recovery cannot roll a newer document back.
-6. **F4 failure convergence:** lease acquire/renew storage failures and rejected revision reads
+7. **F4 failure convergence:** lease acquire/renew storage failures and rejected revision reads
    move the document to transient protection, stop answerability/accrual/heartbeat/player mutation,
    dispose audio, release runtime authority and reload once. Periodic and `pageshow` callbacks
    honor the hold and cannot reacquire in the same document. The convergence latch schedules that
@@ -128,19 +151,19 @@ the archive verbatim and refresh this handoff in place.
    Repaint/diagnostic and cleanup faults are retained without stranding reload. Bounded real-Edge
    heartbeat and revision-read scenarios prove the immediate demotion, read-only Settings, stable
    raw state, release and a fresh writable successor token.
-7. **Read-only recovery:** all nine ordinary Settings outcomes and Field Training controls are
+8. **Read-only recovery:** all nine ordinary Settings outcomes and Field Training controls are
    intercepted before save-byte mutation. Inspection remains available. **Bring expedition** is
    the narrow authority-gated protected-recovery exception and still requires complete validation,
    exclusive replacement and reload.
-8. **Charter hierarchy:** Sol landfall and Chapter-1 dead-world mining require the registered exact
+9. **Charter hierarchy:** Sol landfall and Chapter-1 dead-world mining require the registered exact
    home-galaxy seed/coordinates, Sol-star seed/coordinates, planet seed and source ordinal. Same-seed
    worlds under changed coordinates/ordinal cannot bank. Only committed matching outcomes advance
    authored goals.
-9. **Renderer/resource ownership:** resize bursts coalesce to at most one frame while preserving
+10. **Renderer/resource ownership:** resize bursts coalesce to at most one frame while preserving
    route/card state and avoiding persistence writes. HD/fine texture successors retain the
    displayed predecessor until acquired publication, reject stale work and aggregate timer/lease/
    texture cleanup. Reload paths release audio, authority, chrome and renderer before replacement.
-10. **Evidence honesty:** Slice, Glass and recovery now form one immutable predecessor-bound chain
+11. **Evidence honesty:** Slice, Glass and recovery now form one immutable predecessor-bound chain
    on one unchanged clean commit, with named verification after each stage and no successor/retry
    after red. Slice PASS additionally requires exact compatible-browser provenance and all ten
    ordered current-run PNG carriers with safe paths, valid structure and exact byte/hash binding.
@@ -151,7 +174,7 @@ the archive verbatim and refresh this handoff in place.
    certification IDs as well as broken order or browser ownership. Compendium historical
    calibration stays historical; only unchanged numeric ceilings carry forward to a newly bound
    producer.
-11. **Release boundary:** `V2_DRAFT_RELEASE` remains Unreleased with five populated categories
+12. **Release boundary:** `V2_DRAFT_RELEASE` remains Unreleased with five populated categories
     and exactly 55 unique bullets. Its existing test-fleet bullet now records closed Inventory,
     delegated opener ownership, field-specific memory findings and the no-Edge-update rebaseline
     law. `V2_CURRENT_RELEASE_VERSION` remains `null`; the popup and
@@ -160,7 +183,7 @@ the archive verbatim and refresh this handoff in place.
 
 ### Current verification
 
-- **v2 core:** current repair battery: 134 Vitest files, 1,466 passed, one intentional skip, zero failures. Root/app/worker
+- **v2 core:** current activation battery: 134 Vitest files, 1,469 passed, one intentional skip, zero failures. Root/app/worker
   TypeScript, `noUnusedLocals`, 887-module production build, art audit, 1,014 override keys /
   1,010 species coverage, 454-field spec check and every override mutation control pass.
 - **Evidence tools:** browser-path, Slice report, Glass, recovery, Compendium (222 controls),
@@ -174,11 +197,13 @@ the archive verbatim and refresh this handoff in place.
 - **Real Edge diagnostics:** actual preflight passes Edge `151.0.4129.107` under the
   version-tolerant CDP authority. `slicesmoke --outcome-controls-only` passes all three positive
   scenarios plus their collision/heartbeat/revision negative controls.
-- **Current producer bindings:** the final browserless build and tracked SceneMemory/Compendium
-  producer records must match immediately before the clean calibration-source commit. SceneMemory's
-  numeric ruler still holds the old 10 MiB V8 / 16 MiB aggregate ceilings and therefore remains
-  intentionally calibration-required; no historical sample has been rebound. Compendium's numeric
-  ruler is unchanged and needs only one fresh exact-producer certificate after activation.
+- **Current producer bindings and calibration:** signed source `6c9ad855…` bound the final
+  browserless build and tracked SceneMemory/Compendium producer records, then supplied the exact
+  three clean SceneMemory candidates once each with zero retries and complete cleanup. The selected
+  12 MiB V8 /18 MiB aggregate activation is complete in the reviewed worktree; all three candidates,
+  both paired-red forms and exact-ceiling/next-byte controls pass the full browserless replay.
+  Compendium's numeric ruler is unchanged and needs one fresh
+  exact-producer certificate after activation.
 - Prior independent product/code, SceneMemory and release-note audits are CLEAR for their reviewed
   input. Their findings—and the later convergence-latch and per-field F4 control findings—are
   repaired and negative-controlled. The complete current browserless repair battery is green. The
@@ -188,20 +213,13 @@ the archive verbatim and refresh this handoff in place.
 
 ### Exact remaining local sequence — serial, fail-fast, no automatic retry
 
-1. Confirm the final build and tracked SceneMemory/Compendium producer hashes match the current
-   worktree, then create and signature-verify one clean local **calibration-source** commit on
-   `openai/mac`.
-2. From that unchanged clean source, collect exactly three independent SceneMemory calibration
-   candidates, each once with zero automatic retries. Preserve each raw report immediately with
-   deterministic gzip and exact raw/gzip hashes. The dirty diagnostic does not count.
-3. Derive strict headroom from the three maxima. Change only `heapUsedBytesMax` and
-   `heapAggregateBytesMax` if the evidence supports it; retain every DOM/listener/slope/range/
-   resource/timing limit. Replay all candidate inputs, the preserved paired broken baseline and
-   exact-ceiling/next-unit controls; document why routine Edge updates never trigger this activation.
-4. Create and signature-verify the clean activation source, run one exact-budget SceneMemory
-   certificate and named verifier, then restart the full serial campaign with fresh IDs: Layout →
-   SceneMemory → Compendium → Slice → Glass → uninterrupted 1,200,000 ms recovery. Any red stops it.
-5. Record exact IDs/hashes in a signed documentation-only evidence descendant, perform the final
+1. Create and signature-verify one clean local **activation-source** commit on `openai/mac`, with
+   final SceneMemory/Compendium producer bindings matching its exact build.
+2. Run one exact-budget SceneMemory certificate and named verifier from that unchanged source. If
+   green, restart the full serial campaign with fresh IDs: Layout → SceneMemory → Compendium →
+   Slice → Glass → uninterrupted 1,200,000 ms recovery. Any nonzero/red/instrument result stops
+   the chain and is never retried automatically.
+3. Record exact IDs/hashes in a signed documentation-only evidence descendant, perform the final
    whole-plan code/evidence/polish review and deliver Nick's fixed/remaining release notes.
 
 ### Open product and HUMAN boundaries
@@ -218,9 +236,10 @@ the archive verbatim and refresh this handoff in place.
 
 ### Git / paired-agent handoff
 
-- **Current side — OpenAI/Codex macOS:** owns this local unpushed calibration-source worktree on
-  `openai/mac`, ahead 83 at signed current-red source `862a75b…`. Complete local calibration,
-  activation and serial evidence here without fetch/merge/switch or copying files.
+- **Current side — OpenAI/Codex macOS:** owns this local unpushed activation worktree on
+  `openai/mac`, ahead 84 at signed calibration source `6c9ad855…`. The exact three-run calibration
+  is complete; finish local activation and serial evidence here without fetch/merge/switch or
+  copying files.
 - **GitHub step now:** none. `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, the repository is public,
   but zero exact hosted attempts are authorized. Do not push, label, dispatch, rerun, mark Ready,
   merge, publish or deploy.
