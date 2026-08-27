@@ -76,7 +76,7 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-26 local candidate boundary — bounded source lanes; preserved Slice red and a certified
+> **2026-08-26 local candidate boundary — bounded source lanes; three preserved Slice reds and a certified
 > active Compendium ruler:** Gate
 > B recursively seals an exact 62-file domain inventory against DOM, storage, `navigator`, network,
 > wall/monotonic clock and uncontrolled randomness. Its only two waivers are the exact CombatCore
@@ -135,17 +135,20 @@
 > `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
 > attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). This change is scoped to Compendium; Edge `.107` is provenance only,
 > and SceneMemory/root Gate A are unchanged.
-> Current browser-free local verification is 121 files /1,358 passed /
+> Current browser-free local verification is 122 files /1,362 passed /
 > one intentional skip /zero failures, all TypeScript programs including `noUnused`, an 884-module
 > Vite build, root validation/fingerprint, legacy smoke and applicable selftests. Current-input
-> Slice retains two one-attempt/zero-retry reds on Edge `.107`. Run
+> Slice retains three one-attempt/zero-retry reds on Edge `.107`. Run
 > `20260826214541492-83064-b252b137f7a3` at signed `8553bd7…` failed after 92,772 ms with two
 > instrument false reds plus one retained-Survey focus product regression. Changed clean signed
 > source `9d4b2b0…` supplied `20260827000034983-98202-869d966f2f88`, which failed after 92,566 ms
 > with only the Arc 3 harness finding. Settings and Survey focus are outcome-cleared; the reachable
 > target exposed a second instrument defect whose oracle joined system navigation to nav-owned
-> planet identity although the selected world is card-owned. Its bounded tool-only repair is local
-> and unrerun. No current-input Slice PASS, Glass result or recovery certificate exists. Hosted, HUMAN, whole-Gate,
+> planet identity although the selected world is card-owned. Clean signed source `8a23e22…`
+> then supplied `20260827025804458-2742-c0c871ee52b6`, which failed after 93,582 ms with three
+> findings from one instrument cascade: the retained Survey card correctly hid the right rail, but
+> Slice attempted zero-rect `railshipyard` before yielding it. That outcome clears the card-context
+> repair; Deep Scanners and every later stage did not run, and the lifecycle repair is unrerun. No current-input Slice PASS, Glass result or recovery certificate exists. Hosted, HUMAN, whole-Gate,
 > release/version, preview/publication and deployment authority remain open.
 >
 > **2026-08-25 local campaign boundary — historical checkpoint, still foundational where the
@@ -1280,7 +1283,7 @@ active `f7c87f22…` ruler's candidate1/2/3 plus paired baseline1, each one atte
 budget `6284a394…` retains all four faults and the exact 14/13 inventory, changing only phone warm
 to `524288`. Clean signed activation `91f4e044…` passed current exact-budget certificate
 `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
-attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). A further repaired
+attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). A lifecycle-repaired
 current-input Slice run, Glass and recovery evidence remain pending as described in the status overlay.
 
 ### 5.2 Arc 3 — engineering loop
@@ -1428,9 +1431,11 @@ certificate `20260826-phase4-certification` is historical green evidence for sig
 `6284a394…`, and clean signed activation `91f4e044…` passed current certificate
 `20260826-slice-repair-certification` 78/78 plus named verification with complete lifecycle in one
 attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`).
-Current-input Slice retains two terminal reds: the first run's three findings and the changed-source
-second run's sole impossible card-context-oracle finding. Settings and Survey focus are
-outcome-cleared; the Arc 3 tool-only repair is local and unrerun. No current-input Slice PASS, Glass
+Current-input Slice retains three terminal reds: the first run's three findings, the changed-source
+second run's sole impossible card-context-oracle finding, and the third run's three findings from
+attempting the intentionally hidden right rail while retained Survey remained open. Settings and
+Survey focus, then card context, are outcome-cleared. Deep Scanners and every later stage did not
+run; the lifecycle repair is unrerun. No current-input Slice PASS, Glass
 result or recovery certificate exists.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not

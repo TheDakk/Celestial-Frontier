@@ -10,6 +10,28 @@ summary of it.
 
 ## Contents
 
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_025804458.{json,log}.gz` — retained-card lifecycle Slice red
+
+Retains clean signed-source run `20260827025804458-2742-c0c871ee52b6` at
+`8a23e2243d83aca6a14430882e3570dd4fcfb8a8` on Edge `151.0.4129.107`. It ran exactly once with
+zero automatic retries, kept source stable, and ended terminal red after 93,582 ms
+(`2026-08-27T02:58:04.458Z`–`02:59:38.040Z`) with three findings. All three are one instrument
+cascade: Slice reopened and retained the Survey card, then attempted to open Engineering before
+yielding it. Intentional product CSS `body.card-open #railrgt {display:none}` therefore gave
+`railshipyard` a zero rectangle; the visible-rail check, native Engineering-open check, and
+six-second Deep Scanners outcome wait failed in sequence. The valid card-context repair from the
+preceding red is outcome-cleared. The product behaved correctly; Deep Scanners and every later
+Slice stage did not run, so this report is neither a verdict on those outcomes nor a Slice PASS.
+
+The JSON gzip SHA-256 is
+`71e70d485a4707b553b66332f743e2594ce0a7d66bad6ed2a5dd777f56b170c5`; its decompressed SHA-256 is
+`59dd8f6877ebfb7167e15a21f9fd28282f2ceed205fa2693ee6d860d7a806731`. The log gzip SHA-256 is
+`818b550e19403afcab5ebdd97d04a2e8b614b080be9a1ed7a3f604b63b63cc04`; its decompressed SHA-256 is
+`cb77de6eb910fd0580f50962b641d06202be0d3f6b8761a2fb0f88e1eaa23662`. The JSON names and hashes
+seven run-bound PNGs from the earlier completed surfaces, but their ignored bytes are not preserved;
+the manifest is provenance only and supplies no durable visual, Glass, recovery, HUMAN, hosted, or
+release evidence.
+
 ### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827.{json,log}.gz` — changed-source one-finding Slice red
 
 Retains clean signed-source run `20260827000034983-98202-869d966f2f88` at
@@ -35,7 +57,7 @@ regression. The JSON gzip SHA-256 is
 `1a659612b294017f59b05a9613878a3287a1ecea9fc3076ae966298791c10822`; its decompressed SHA-256 is
 `b1b245c837001f6f9817757cb178974bec626ec3e57ad3532445616f8b81d17f`.
 
-Both JSON reports retain run-bound screenshot manifests and hashes. The PNG bytes themselves remain
+All three JSON reports retain run-bound screenshot manifests and hashes. The PNG bytes themselves remain
 ignored under `port/v2/apps/game/smoke/` and are not preserved by these carriers; neither entry
 claims durable visual evidence, current-input Glass, the real recovery certificate, or a Slice PASS.
 

@@ -13,8 +13,8 @@ as any change that touches an entry.
 ## Current-state boundary — completed local candidate lanes (2026-08-26)
 
 The completed pre-Slice source lanes and three diagnosed repairs are locally committed at signed
-source `8ffd2e2…`. Browser-free evidence is green at 121 test files /
-1,358 passed /one intentional skip /zero failures; root, app, worker and `noUnused` TypeScript; the
+source `8ffd2e2…`. Browser-free evidence is green at 122 test files /
+1,362 passed /one intentional skip /zero failures; root, app, worker and `noUnused` TypeScript; the
 884-module Vite build; root validation/fingerprint; legacy jsdom smoke; and applicable contract/
 reporter/Glass/recovery/Compendium selftests. The former Compendium calibration/certificate on
 signed activation `d33e540…` remains historical for producer `587d3bdf…`. The current
@@ -22,14 +22,18 @@ signed activation `d33e540…` remains historical for producer `587d3bdf…`. Th
 `6284a394…`. Clean signed activation `91f4e044…` passed exact-budget run
 `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
 attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Current-input Slice
-retains two one-attempt/zero-retry reds on Edge `.107`. Run
+retains three one-attempt/zero-retry reds on Edge `.107`. Run
 `20260826214541492-83064-b252b137f7a3` from clean signed `8553bd7…` failed after 92,772 ms with
 Settings and unreachable-target instrument false reds plus the retained-Survey focus product
 regression. Changed clean signed source `9d4b2b0…` supplied
 `20260827000034983-98202-869d966f2f88`, which failed after 92,566 ms with only the Arc 3 harness
 finding. Settings and focus are outcome-cleared; the reachable target exposed a second instrument
 defect whose oracle joined system navigation to nav-owned planet identity even though the selected
-world is card-owned. Its bounded tool-only repair is local and unrerun. No current-input Slice PASS,
+world is card-owned. Clean signed source `8a23e22…` then supplied
+`20260827025804458-2742-c0c871ee52b6`, which failed after 93,582 ms with three findings from one
+instrument cascade: retained Survey correctly hid the right rail, while Slice attempted zero-rect
+`railshipyard` before yielding it. That run outcome-clears the card-context repair; Deep Scanners
+and every later stage did not run, and the lifecycle repair is unrerun. No current-input Slice PASS,
 Glass result or real recovery certificate exists. The earlier clean committed recovery run
 `20260826024124548-13172-6286d5212e` at `35a22b1…` is preserved separately as one-attempt/zero-retry
 `instrument-fail`: fixture and 16-step burn-down passed, then the stale all-`depleted` poll rejected

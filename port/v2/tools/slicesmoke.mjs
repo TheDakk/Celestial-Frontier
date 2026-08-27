@@ -917,6 +917,12 @@ const dispatchKeyPress = async (session, key, code = key, modifiers = 0) => {
 };
 
 const fails = [];
+const failSliceWithoutCascade = (message, { alreadyReported = false } = {}) => {
+  if (!alreadyReported) fails.push(message);
+  const error = new Error(message);
+  error.sliceFindingHandled = true;
+  throw error;
+};
 const ARC4_SLICE_LEDGER_STAGES = Object.freeze([
   'precondition',
   'pending-no-optimism',
@@ -1047,6 +1053,110 @@ const assessArc3SurveyReadOnly = ({ beforeRaw, afterRaw, beforeState, afterState
       && afterState?.sceneResources?.pendingPersistenceWrites === 0,
   });
   return { ok: Object.values(checks).every((value) => value === true), checks };
+};
+const arc3SurveyRouteProjection = (state) => ({
+  mode: state?.mode ?? null,
+  gal: state?.gal ?? null,
+  galX: state?.galX ?? null,
+  galY: state?.galY ?? null,
+  star: state?.star ?? null,
+  starX: state?.starX ?? null,
+  starY: state?.starY ?? null,
+  planet: state?.planet ?? null,
+  planetOrdinal: state?.planetOrdinal ?? null,
+  navGalaxyKey: state?.navGalaxyKey ?? null,
+  navStarKey: state?.navStarKey ?? null,
+  navWorldKey: state?.navWorldKey ?? null,
+  renderedScene: state?.renderedScene ?? null,
+});
+const assessArc3SurveyClosedRailLifecycle = ({
+  beforeRaw, afterRaw, beforeState, afterState, close, surface,
+}) => {
+  const readOnly = assessArc3SurveyReadOnly({ beforeRaw, afterRaw, beforeState, afterState });
+  const pointer = close?.interaction?.trace?.pointer?.[0];
+  const click = close?.interaction?.trace?.clicks?.[0];
+  const checks = Object.freeze({
+    retainedCardBefore: beforeState?.cardOpen === true,
+    trustedClose: close?.armed === true && close?.target?.ok === true
+      && close.target.tag === 'BUTTON' && close.target.label === 'Close Survey card'
+      && close.target.width >= 44 && close.target.height >= 44
+      && close?.interaction?.pressCount === 1 && close?.interaction?.trusted === true
+      && close.interaction.modality === 'pointer'
+      && close.interaction.trace.pointer.length === 1
+      && pointer?.trusted === true && pointer?.label === 'Close Survey card'
+      && pointer?.pointerType === 'mouse'
+      && close.interaction.trace.clicks.length === 1
+      && click?.trusted === true && click?.label === 'Close Survey card',
+    cardClosed: afterState?.cardOpen === false && surface?.state?.cardOpen === false
+      && surface?.state?.panelOpen === null,
+    bodyReleased: surface?.bodyCardOpen === false,
+    surveyHidden: surface?.survey?.inlineDisplay === 'none'
+      && surface?.survey?.computedDisplay === 'none'
+      && surface?.survey?.ariaHidden === 'true'
+      && surface?.survey?.clientRectCount === 0,
+    dockCollapsed: surface?.dock?.id === 'docksurvey'
+      && surface?.dock?.tag === 'BUTTON'
+      && surface?.dock?.ariaControls === 'survey'
+      && surface?.dock?.ariaExpanded === 'false'
+      && surface?.dock?.on === false,
+    exactRoute: canonicalJson(arc3SurveyRouteProjection(beforeState))
+      === canonicalJson(arc3SurveyRouteProjection(afterState)),
+    durableReadOnly: readOnly.ok === true,
+    rightRailReady: surface?.rightRail?.id === 'railrgt'
+      && surface?.rightRail?.display === 'flex'
+      && surface?.rightRail?.visibility !== 'hidden'
+      && surface?.rightRail?.rectCount === 1
+      && surface?.rightRail?.width >= 44 && surface?.rightRail?.height >= 44
+      && surface?.shipyard?.id === 'railshipyard'
+      && surface?.shipyard?.tag === 'BUTTON'
+      && surface?.shipyard?.ariaControls === 'shipyardpanel'
+      && surface?.shipyard?.ariaExpanded === 'false'
+      && surface?.shipyard?.display !== 'none'
+      && surface?.shipyard?.visibility !== 'hidden'
+      && surface?.shipyard?.rectCount === 1
+      && surface?.shipyard?.width >= 44 && surface?.shipyard?.height >= 44
+      && surface?.shipyard?.hit === 'railshipyard',
+  });
+  return { ok: Object.values(checks).every((value) => value === true), checks, readOnly };
+};
+const assessArc3SurveyDockReopenLifecycle = ({
+  beforeRaw, afterRaw, beforeState, afterState, dock, surface, observation, owned,
+}) => {
+  const readOnly = assessArc3SurveyReadOnly({ beforeRaw, afterRaw, beforeState, afterState });
+  const pointer = dock?.interaction?.trace?.pointer?.[0];
+  const click = dock?.interaction?.trace?.clicks?.[0];
+  const survey = assessArc3OrbitalSurvey({ observation, owned });
+  const checks = Object.freeze({
+    closedCardBefore: beforeState?.cardOpen === false,
+    trustedDockReopen: dock?.armed === true && dock?.target?.ok === true
+      && dock.target.id === 'docksurvey' && dock.target.tag === 'BUTTON'
+      && dock.target.ariaControls === 'survey'
+      && dock.target.width >= 44 && dock.target.height >= 44
+      && dock?.interaction?.pressCount === 1 && dock?.interaction?.trusted === true
+      && dock.interaction.modality === 'pointer'
+      && dock.interaction.trace.pointer.length === 1
+      && pointer?.trusted === true && pointer?.id === 'docksurvey'
+      && pointer?.pointerType === 'mouse'
+      && dock.interaction.trace.clicks.length === 1
+      && click?.trusted === true && click?.id === 'docksurvey',
+    cardReopened: afterState?.cardOpen === true && surface?.state?.cardOpen === true
+      && surface?.state?.panelOpen === null,
+    bodyReclaimed: surface?.bodyCardOpen === true,
+    surveyVisible: surface?.survey?.inlineDisplay === 'block'
+      && surface?.survey?.computedDisplay !== 'none'
+      && surface?.survey?.ariaHidden === 'false'
+      && surface?.survey?.clientRectCount === 1,
+    dockExpanded: surface?.dock?.id === 'docksurvey'
+      && surface?.dock?.tag === 'BUTTON'
+      && surface?.dock?.ariaControls === 'survey'
+      && surface?.dock?.ariaExpanded === 'true'
+      && surface?.dock?.on === true,
+    exactRoute: canonicalJson(arc3SurveyRouteProjection(beforeState))
+      === canonicalJson(arc3SurveyRouteProjection(afterState)),
+    durableReadOnly: readOnly.ok === true,
+    exactRetainedSurvey: survey.ok === true,
+  });
+  return { ok: Object.values(checks).every((value) => value === true), checks, readOnly, survey };
 };
 const shareCharterSnapshot = (state) => ({
   objective: state?.objective ?? null,
@@ -7543,6 +7653,65 @@ try {
     const settled = await waitDesktopValue(`${label} close`, `window.__CF_SLICE__.api.state().panelOpen===null`).catch(() => false);
     return { point, pointer, settled };
   };
+  const arc3SurveyLifecycleSurface = async () => evalIn(`(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+    survey=document.getElementById('survey'),dock=document.getElementById('docksurvey'),
+    rail=document.getElementById('railrgt'),shipyard=document.getElementById('railshipyard'),
+    surveyStyle=survey?getComputedStyle(survey):null,railStyle=rail?getComputedStyle(rail):null,
+    shipyardStyle=shipyard?getComputedStyle(shipyard):null,railRect=rail?.getBoundingClientRect(),
+    shipyardRect=shipyard?.getBoundingClientRect(),x=shipyardRect?(shipyardRect.left+shipyardRect.right)/2:NaN,
+    y=shipyardRect?(shipyardRect.top+shipyardRect.bottom)/2:NaN,
+    hit=shipyardRect?document.elementFromPoint(x,y):null;return {
+      state:{cardOpen:state?.cardOpen??null,panelOpen:state?.panelOpen??null},
+      bodyCardOpen:document.body.classList.contains('card-open'),
+      survey:{inlineDisplay:survey?.style.display??null,computedDisplay:surveyStyle?.display??null,
+        ariaHidden:survey?.getAttribute('aria-hidden')??null,clientRectCount:survey?.getClientRects().length??-1},
+      dock:{id:dock?.id??null,tag:dock?.tagName??null,ariaControls:dock?.getAttribute('aria-controls')??null,
+        ariaExpanded:dock?.getAttribute('aria-expanded')??null,on:dock?.classList.contains('on')??null},
+      rightRail:{id:rail?.id??null,display:railStyle?.display??null,visibility:railStyle?.visibility??null,
+        rectCount:rail?.getClientRects().length??-1,width:railRect?.width??0,height:railRect?.height??0},
+      shipyard:{id:shipyard?.id??null,tag:shipyard?.tagName??null,
+        ariaControls:shipyard?.getAttribute('aria-controls')??null,
+        ariaExpanded:shipyard?.getAttribute('aria-expanded')??null,display:shipyardStyle?.display??null,
+        visibility:shipyardStyle?.visibility??null,rectCount:shipyard?.getClientRects().length??-1,
+        width:shipyardRect?.width??0,height:shipyardRect?.height??0,hit:hit?.id??null,x,y}}})()`);
+  const pressArc3SurveyLifecyclePointer = async (kind) => {
+    const selector = kind === 'close' ? '#survey [data-survey-close]' : '#docksurvey';
+    const armed = await evalIn(`(()=>{window.__cfArc3SurveyLifecycleAbort?.abort();
+      const controller=new AbortController();window.__cfArc3SurveyLifecycleAbort=controller;
+      const selector=${JSON.stringify(selector)},trace={pointer:[],clicks:[]},row=(event)=>{
+        const target=event.target instanceof Element?event.target.closest(selector):null;return target?{
+          id:target.id||null,label:target.getAttribute('aria-label')||null,trusted:event.isTrusted===true}:null};
+      window.__cfArc3SurveyLifecycleTrace=trace;
+      document.addEventListener('pointerdown',(event)=>{const value=row(event);if(value)trace.pointer.push({...value,
+        pointerType:event.pointerType||null,x:event.clientX,y:event.clientY})},{capture:true,signal:controller.signal});
+      document.addEventListener('click',(event)=>{const value=row(event);if(value)trace.clicks.push(value)},
+        {capture:true,signal:controller.signal});return true})()`);
+    const target = await evalIn(`(()=>{const button=document.querySelector(${JSON.stringify(selector)});button?.focus();
+      const rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:NaN,
+      y=rect?(rect.top+rect.bottom)/2:NaN,hit=rect?document.elementFromPoint(x,y):null;return {
+        ok:button?.tagName==='BUTTON'&&!!rect&&rect.width>=44&&rect.height>=44
+          &&!!hit&&(hit===button||button.contains(hit)),id:button?.id??null,tag:button?.tagName??null,
+        label:button?.getAttribute('aria-label')??null,ariaControls:button?.getAttribute('aria-controls')??null,
+        focus:document.activeElement===button,x,y,width:rect?.width??0,height:rect?.height??0}})()`);
+    if (armed && target.ok) await clickDesktopPoint(target);
+    const trace = await evalIn(`(()=>{const trace=window.__cfArc3SurveyLifecycleTrace??null;
+      window.__cfArc3SurveyLifecycleAbort?.abort();delete window.__cfArc3SurveyLifecycleAbort;
+      delete window.__cfArc3SurveyLifecycleTrace;return trace})()`);
+    const pointer = trace?.pointer?.[0], click = trace?.clicks?.[0];
+    const expected = kind === 'close' ? { id: null, label: 'Close Survey card' }
+      : { id: 'docksurvey', label: 'survey card' };
+    return {
+      armed, target,
+      interaction: {
+        pressCount: trace?.clicks?.length ?? 0,
+        trusted: trace?.pointer?.length === 1 && pointer?.trusted === true
+          && pointer?.id === expected.id && pointer?.label === expected.label
+          && pointer?.pointerType === 'mouse' && trace?.clicks?.length === 1
+          && click?.trusted === true && click?.id === expected.id && click?.label === expected.label,
+        modality: 'pointer', trace,
+      },
+    };
+  };
 
   const engineeringOpen = await openEngineeringPanel('ARC 3 ENGINEERING');
   const engineeringSurface = await evalIn(`(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
@@ -8034,16 +8203,82 @@ try {
         biomePreRestoredAssessment, biomeDockFocus, biomePreReadOnly }));
   }
 
+  /* The retained read-only card owns the right-hand glass until its real
+     Close settles. Prove that exact release before asking the existing rail
+     mouse path to reach Engineering; a direct card-open -> rail order is not
+     a reachable player interaction and must never be treated as evidence. */
+  const biomePreRailBeforeState = biomePreOpenStateAfter;
+  const biomePreRailBeforeRaw = biomePreOpenRawAfter;
+  const biomePreRailClose = await pressArc3SurveyLifecyclePointer('close');
+  if (biomePreRailClose.target?.ok && biomePreRailClose.interaction?.trusted) {
+    await waitDesktopValue('Arc 3 pre-purchase Survey real Close',
+      `window.__CF_SLICE__.api.state().cardOpen===false`).catch(() => false);
+  }
+  await waitForF4Writable('Arc 3 pre-purchase Survey real Close authority');
+  const biomePreRailAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const biomePreRailAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const biomePreRailSurface = await arc3SurveyLifecycleSurface();
+  const biomePreRailBundle = {
+    beforeRaw: biomePreRailBeforeRaw, afterRaw: biomePreRailAfterRaw,
+    beforeState: biomePreRailBeforeState, afterState: biomePreRailAfterState,
+    close: biomePreRailClose, surface: biomePreRailSurface,
+  };
+  const biomePreRailAssessment = assessArc3SurveyClosedRailLifecycle(biomePreRailBundle);
+  const biomePreRailControls = biomePreRailAssessment.ok ? {
+    omittedClose: assessArc3SurveyClosedRailLifecycle({ ...biomePreRailBundle, close: null }),
+    untrustedClose: assessArc3SurveyClosedRailLifecycle({ ...biomePreRailBundle,
+      close: { ...biomePreRailClose, interaction: { ...biomePreRailClose.interaction, trusted: false } } }),
+    wrongClose: assessArc3SurveyClosedRailLifecycle({ ...biomePreRailBundle,
+      close: { ...biomePreRailClose, target: { ...biomePreRailClose.target, label: 'Wrong close' } } }),
+    staleCard: assessArc3SurveyClosedRailLifecycle({ ...biomePreRailBundle,
+      afterState: { ...biomePreRailAfterState, cardOpen: true },
+      surface: { ...biomePreRailSurface,
+        state: { ...biomePreRailSurface.state, cardOpen: true } } }),
+    staleBody: assessArc3SurveyClosedRailLifecycle({ ...biomePreRailBundle,
+      surface: { ...biomePreRailSurface, bodyCardOpen: true } }),
+    staleSurvey: assessArc3SurveyClosedRailLifecycle({ ...biomePreRailBundle,
+      surface: { ...biomePreRailSurface, survey: { ...biomePreRailSurface.survey,
+        inlineDisplay: 'block', computedDisplay: 'block', ariaHidden: 'false', clientRectCount: 1 } } }),
+    hiddenRail: assessArc3SurveyClosedRailLifecycle({ ...biomePreRailBundle,
+      surface: { ...biomePreRailSurface,
+        rightRail: { ...biomePreRailSurface.rightRail, display: 'none', rectCount: 0, width: 0, height: 0 },
+        shipyard: { ...biomePreRailSurface.shipyard, display: 'none', rectCount: 0, width: 0, height: 0, hit: null } } }),
+    routeDrift: assessArc3SurveyClosedRailLifecycle({ ...biomePreRailBundle,
+      afterState: { ...biomePreRailAfterState, starX: biomePreRailAfterState.starX + 1 } }),
+    durableDrift: assessArc3SurveyClosedRailLifecycle({ ...biomePreRailBundle,
+      afterRaw: { ...biomePreRailAfterRaw, revisionRaw: `${biomePreRailAfterRaw.revisionRaw}-control` } }),
+  } : null;
+  const biomePreRailControlsIsolated = biomePreRailControls !== null
+    && Object.entries(biomePreRailControls).every(([name, assessment]) => isolatesNamedCheck(
+      assessment,
+      name === 'omittedClose' || name === 'untrustedClose' || name === 'wrongClose' ? 'trustedClose'
+        : name === 'staleCard' ? 'cardClosed'
+          : name === 'staleBody' ? 'bodyReleased'
+            : name === 'staleSurvey' ? 'surveyHidden'
+              : name === 'hiddenRail' ? 'rightRailReady'
+                : name === 'routeDrift' ? 'exactRoute' : 'durableReadOnly',
+    ));
+  if (!biomePreRailAssessment.ok || !biomePreRailControlsIsolated) {
+    failSliceWithoutCascade('ARC 3 BIOME SURVEY PANEL LIFECYCLE: real trusted 44px Close did not release retained Survey chrome to the exact hittable Shipyard rail without route/durable drift: '
+      + JSON.stringify({ biomePreRailClose, biomePreRailAssessment,
+        biomePreRailControls, biomePreRailControlsIsolated, biomePreRailSurface }));
+  }
+
+  const biomeResearchOpenFailureCount = fails.length;
   const biomeResearchOpen = await openEngineeringPanel('ARC 3 DEEP SCANNERS PURCHASE');
   if (!biomeResearchOpen.opened || biomeResearchOpen.pointer?.trusted !== true
     || biomeResearchOpen.pointer?.pointerType !== 'mouse') {
-    fails.push('ARC 3 BIOME SURVEY RESEARCH OPEN: native Engineering opener failed: '
-      + JSON.stringify(biomeResearchOpen));
+    failSliceWithoutCascade('ARC 3 BIOME SURVEY RESEARCH OPEN: native Engineering opener failed after the proven Survey Close: '
+      + JSON.stringify(biomeResearchOpen), { alreadyReported: fails.length > biomeResearchOpenFailureCount });
   }
   await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="research"]')?.setAttribute('open','')`);
   const researchBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
   const researchBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
   const researchTarget = await pressEngineeringKeyboard('research', 'scan1');
+  if (!researchTarget.ok || !researchTarget.focused) {
+    failSliceWithoutCascade('ARC 3 RESEARCH ACTION: native Deep Scanners Enter target was not ready after the real rail opener: '
+      + JSON.stringify(researchTarget));
+  }
   await waitDesktopValue('Arc 3 Deep Scanners commit', `(()=>{const s=window.__CF_SLICE__.api.state(),d=window.__CF_SLICE__.api.shipyardDiagnostics();
     return s.engineering?.revision===${researchBeforeRaw.arc3.revision + 1}&&s.engineering?.research?.includes('scan1')
       &&d?.engineering?.pendingWork===0?s:null})()`);
@@ -8105,10 +8340,77 @@ try {
   }
 
   const biomePostClose = await closeEngineeringPanel('Arc 3 owned biome Survey');
+  if (!biomePostClose.point?.ok || biomePostClose.pointer?.trusted !== true
+    || biomePostClose.pointer?.pointerType !== 'mouse' || biomePostClose.settled !== true) {
+    failSliceWithoutCascade('ARC 3 OWNED BIOME SURVEY PANEL CLOSE: real Engineering Close did not restore the rail before Survey reopen: '
+      + JSON.stringify(biomePostClose));
+  }
+  await waitForF4Writable('Arc 3 owned biome Survey dock reopen authority');
+  const biomeOwnedDockBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const biomeOwnedDockBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const biomeOwnedDockReopen = await pressArc3SurveyLifecyclePointer('dock');
+  if (!biomeOwnedDockReopen.target?.ok || !biomeOwnedDockReopen.interaction?.trusted) {
+    failSliceWithoutCascade('ARC 3 OWNED BIOME SURVEY DOCK REOPEN: exact 44px Survey dock target did not receive trusted pointer input: '
+      + JSON.stringify(biomeOwnedDockReopen));
+  }
+  await waitDesktopValue('Arc 3 owned biome Survey real dock reopen',
+    `window.__CF_SLICE__.api.state().cardOpen===true`);
   const biomePostObservation = await waitDesktopValue(
     'Arc 3 owned biome Survey row',
     `(()=>{const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};return result.rowCount>0?result:null})()`,
   );
+  const biomeOwnedDockAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const biomeOwnedDockAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const biomeOwnedDockSurface = await arc3SurveyLifecycleSurface();
+  const biomeOwnedDockBundle = {
+    beforeRaw: biomeOwnedDockBeforeRaw, afterRaw: biomeOwnedDockAfterRaw,
+    beforeState: biomeOwnedDockBeforeState, afterState: biomeOwnedDockAfterState,
+    dock: biomeOwnedDockReopen, surface: biomeOwnedDockSurface,
+    observation: biomePostObservation, owned: true,
+  };
+  const biomeOwnedDockAssessment = assessArc3SurveyDockReopenLifecycle(biomeOwnedDockBundle);
+  const biomeOwnedDockControls = biomeOwnedDockAssessment.ok ? {
+    omittedDock: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle, dock: null }),
+    wrongDock: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
+      dock: { ...biomeOwnedDockReopen,
+        target: { ...biomeOwnedDockReopen.target, id: 'dockatlas' } } }),
+    staleCard: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
+      afterState: { ...biomeOwnedDockAfterState, cardOpen: false },
+      surface: { ...biomeOwnedDockSurface,
+        state: { ...biomeOwnedDockSurface.state, cardOpen: false } } }),
+    staleBody: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
+      surface: { ...biomeOwnedDockSurface, bodyCardOpen: false } }),
+    staleSurvey: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
+      surface: { ...biomeOwnedDockSurface, survey: { ...biomeOwnedDockSurface.survey,
+        inlineDisplay: 'none', computedDisplay: 'none', ariaHidden: 'true', clientRectCount: 0 } } }),
+    collapsedDock: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
+      surface: { ...biomeOwnedDockSurface, dock: { ...biomeOwnedDockSurface.dock,
+        ariaExpanded: 'false', on: false } } }),
+    routeDrift: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
+      afterState: { ...biomeOwnedDockAfterState, starY: biomeOwnedDockAfterState.starY + 1 } }),
+    durableDrift: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
+      afterRaw: { ...biomeOwnedDockAfterRaw, authorityJson: `${biomeOwnedDockAfterRaw.authorityJson} ` } }),
+    missingRow: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
+      observation: { ...biomePostObservation, rowCount: 0, rows: [] } }),
+    wrongRow: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
+      observation: { ...biomePostObservation, rows: [{ ...biomePostObservation.rows[0], value: 'Wrong order' }] } }),
+  } : null;
+  const biomeOwnedDockControlsIsolated = biomeOwnedDockControls !== null
+    && Object.entries(biomeOwnedDockControls).every(([name, assessment]) => isolatesNamedCheck(
+      assessment,
+      name === 'omittedDock' || name === 'wrongDock' ? 'trustedDockReopen'
+        : name === 'staleCard' ? 'cardReopened'
+          : name === 'staleBody' ? 'bodyReclaimed'
+            : name === 'staleSurvey' ? 'surveyVisible'
+              : name === 'collapsedDock' ? 'dockExpanded'
+                : name === 'routeDrift' ? 'exactRoute'
+                  : name === 'durableDrift' ? 'durableReadOnly' : 'exactRetainedSurvey',
+    ));
+  if (!biomeOwnedDockAssessment.ok || !biomeOwnedDockControlsIsolated) {
+    failSliceWithoutCascade('ARC 3 OWNED BIOME SURVEY DOCK LIFECYCLE: real trusted dock reopen did not restore the exact retained Mineral row without route/durable drift: '
+      + JSON.stringify({ biomeOwnedDockReopen, biomeOwnedDockAssessment,
+        biomeOwnedDockControls, biomeOwnedDockControlsIsolated, biomeOwnedDockSurface }));
+  }
   const biomePostAssessment = assessArc3OrbitalSurvey({ observation: biomePostObservation, owned: true });
   const biomeMissingObservation = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
     parent=row?.parentNode??null,next=row?.nextSibling??null;row?.remove();const result=${ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION};
@@ -8189,16 +8491,42 @@ try {
         biomeReadOnlyControls, biomeReopenedAssessment }));
   }
 
+  const biomeFixedRailBeforeState = biomePostOpenStateAfter;
+  const biomeFixedRailBeforeRaw = biomePostOpenRawAfter;
+  const biomeFixedRailClose = await pressArc3SurveyLifecyclePointer('close');
+  if (biomeFixedRailClose.target?.ok && biomeFixedRailClose.interaction?.trusted) {
+    await waitDesktopValue('Arc 3 owned Survey real Close before fixed fabrication',
+      `window.__CF_SLICE__.api.state().cardOpen===false`).catch(() => false);
+  }
+  await waitForF4Writable('Arc 3 owned Survey Close before fixed fabrication authority');
+  const biomeFixedRailAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const biomeFixedRailAfterRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
+  const biomeFixedRailSurface = await arc3SurveyLifecycleSurface();
+  const biomeFixedRailAssessment = assessArc3SurveyClosedRailLifecycle({
+    beforeRaw: biomeFixedRailBeforeRaw, afterRaw: biomeFixedRailAfterRaw,
+    beforeState: biomeFixedRailBeforeState, afterState: biomeFixedRailAfterState,
+    close: biomeFixedRailClose, surface: biomeFixedRailSurface,
+  });
+  if (!biomeFixedRailAssessment.ok) {
+    failSliceWithoutCascade('ARC 3 FIXED FABRICATION SURVEY LIFECYCLE: real trusted Survey Close did not restore the exact hittable Shipyard rail without route/durable drift: '
+      + JSON.stringify({ biomeFixedRailClose, biomeFixedRailAssessment, biomeFixedRailSurface }));
+  }
+
+  const biomeFixedOpenFailureCount = fails.length;
   const biomeFixedOpen = await openEngineeringPanel('ARC 3 FIXED FABRICATION RETURN');
   if (!biomeFixedOpen.opened || biomeFixedOpen.pointer?.trusted !== true
     || biomeFixedOpen.pointer?.pointerType !== 'mouse') {
-    fails.push('ARC 3 FIXED FABRICATION RETURN: native Engineering opener failed: '
-      + JSON.stringify(biomeFixedOpen));
+    failSliceWithoutCascade('ARC 3 FIXED FABRICATION RETURN: native Engineering opener failed after the proven Survey Close: '
+      + JSON.stringify(biomeFixedOpen), { alreadyReported: fails.length > biomeFixedOpenFailureCount });
   }
   await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="fabricator"]')?.setAttribute('open','')`);
   const fixedBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
   const fixedBeforeRaw = await evalIn(READ_ARC3_ENGINEERING_EVIDENCE_EXPRESSION);
   const fixedTarget = await pressEngineeringKeyboard('fabricate', 'plate');
+  if (!fixedTarget.ok || !fixedTarget.focused) {
+    failSliceWithoutCascade('ARC 3 FIXED FABRICATION: native Plate Enter target was not ready after the real rail opener: '
+      + JSON.stringify(fixedTarget));
+  }
   await waitDesktopValue('Arc 3 fixed Plate commit', `(()=>{const s=window.__CF_SLICE__.api.state(),d=window.__CF_SLICE__.api.shipyardDiagnostics();
     return s.engineering?.revision===${fixedBeforeRaw.arc3.revision + 1}&&d?.engineering?.pendingWork===0?s:null})()`);
   const fixedAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -17010,11 +17338,13 @@ try {
     (e.method === 'Runtime.consoleAPICalled' && e.params.type === 'error'));
   if (errs.length) fails.push(errs.length + ' console errors/exceptions, first: ' + JSON.stringify(errs[0].params).slice(0, 300));
 } catch (e) {
-  const firstPageError = events.find((event) => event.method === 'Runtime.exceptionThrown'
-    || (event.method === 'Runtime.consoleAPICalled' && event.params.type === 'error'));
-  fails.push('harness: ' + e.message + (firstPageError
-    ? ' · first page error: ' + JSON.stringify(firstPageError.params).slice(0, 500)
-    : ''));
+  if (e?.sliceFindingHandled !== true) {
+    const firstPageError = events.find((event) => event.method === 'Runtime.exceptionThrown'
+      || (event.method === 'Runtime.consoleAPICalled' && event.params.type === 'error'));
+    fails.push('harness: ' + e.message + (firstPageError
+      ? ' · first page error: ' + JSON.stringify(firstPageError.params).slice(0, 500)
+      : ''));
+  }
 } finally {
   releaseSlowSpecies();
   try { await browser.close(); } catch (e) { fails.push('browser close: ' + e.message); }
