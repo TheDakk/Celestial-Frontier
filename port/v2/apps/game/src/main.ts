@@ -6800,28 +6800,61 @@ function smokeReleaseImportRace(): boolean {
   release();
   return true;
 }
+async function smokeDrainFixturePersist(): Promise<boolean> {
+  /* Browser-gate setup only. Remove the unstarted navigation debounce, join
+     the exact already-started tail, then commit one ordinary checkpoint so a
+     deliberately held writer can be armed from a proven quiescent baseline. */
+  clearTimeout(_persistT); _persistT = 0;
+  const pendingPersist = activePersist;
+  if (pendingPersist) {
+    try { await pendingPersist; } catch { /* the follow-up commit proves authority */ }
+  }
+  if (activePersist || importWriteInFlight || replacementTransaction
+    || replacementReloadPending || f4AuthorityReloadScheduled) return false;
+  const committed = await persistView();
+  return committed && activePersist === null && _persistT === 0;
+}
 async function smokeStageStoredV4(raw: string | null, backup?: string): Promise<boolean> {
   /* Browser-gate fixture setup only. A v4 fixture must represent a genuinely
      pre-migration database; overwriting only the compatibility mirror under
      a live v5 schema is correctly classified as corruption. Quiesce this
      document, wipe every authoritative store, then stage the exact old bytes
      for the NEXT document's real migration path. */
-  if ((raw !== null && typeof raw !== 'string') || activePersist || importWriteInFlight
-    || replacementTransaction || replacementReloadPending) return false;
+  if ((raw !== null && typeof raw !== 'string')
+    || (backup !== undefined && typeof backup !== 'string')
+    || (raw === null && backup !== undefined) || importWriteInFlight
+    || replacementTransaction || replacementReloadPending
+    || f4AuthorityReloadScheduled) return false;
+  /* Navigation can leave one already-started persist in flight immediately
+     before a browser fixture transition. Cancel an unstarted debounce, make
+     new mutations impossible, and join that exact write before clearing the
+     isolated store. Returning false here made the Slice gate reload its prior
+     expedition and then misreport route/Atlas product failures. */
+  clearTimeout(_persistT); _persistT = 0;
   stopF4Heartbeat();
   f4Runtime?.setAnswerable(false);
+  persistHold = 'protected-payload';
   await settleF4Heartbeat();
+  const pendingPersist = activePersist;
+  if (pendingPersist) {
+    try { await pendingPersist; } catch { /* settlement, not success, owns this boundary */ }
+  }
+  if (activePersist || importWriteInFlight || replacementTransaction
+    || replacementReloadPending || f4AuthorityReloadScheduled) return false;
   await f4Runtime?.release();
   f4Runtime = null;
-  persistHold = 'protected-payload';
-  await persistenceBackend.clear(STORES);
-  if (raw !== null) {
-    await persistenceBackend.apply([
+  /* Clear every current authority and stage the legacy fixture in one IDB
+     transaction. A two-transaction clear-then-write exposed an empty database
+     to sibling documents and could destroy the fixture if the write failed. */
+  const staged = await persistenceBackend.compareAndApply(
+    [],
+    raw === null ? [] : [
       { store: 'meta', key: 'save', value: raw },
       ...(backup === undefined ? [] : [{ store: 'meta' as const, key: 'save_bak', value: backup }]),
-    ]);
-  }
-  return true;
+    ],
+    STORES,
+  );
+  return staged;
 }
 function persistSoon(): void {
   /* slider-friendly: one export per drag, not one per input event (audit #5) */
@@ -8591,6 +8624,7 @@ async function loadSave(): Promise<void> {
       importBlob,   /* Gate C's front door, drivable by the smoke */
       __smokeArmImportRace: smokeArmImportRace,
       __smokeReleaseImportRace: smokeReleaseImportRace,
+      __smokeDrainFixturePersist: smokeDrainFixturePersist,
       __smokeStageStoredV4: smokeStageStoredV4,
       __smokeRejectNextPersist: () => {
         if (smokeRejectNextPersist) return false;

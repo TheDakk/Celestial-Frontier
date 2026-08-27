@@ -2537,8 +2537,11 @@ const assessConvergenceRelease = ({
       && convergenceWitness?.documentToken === documentToken,
     detailAttribution: boundedText(expectedDetail, 512)
       && convergenceWitness?.detail === expectedDetail,
-    leaseReadsStable: counter(before?.leaseReadCount)
-      && after?.leaseReadCount === before.leaseReadCount,
+    leaseReleaseReadsExact: counter(before?.leaseReadCount)
+      && counter(after?.leaseReadCount)
+      && (scenario !== 'publication' || before.leaseReadCount < Number.MAX_SAFE_INTEGER)
+      && after?.leaseReadCount === before.leaseReadCount
+        + (scenario === 'publication' ? 1 : 0),
     revisionReadsStable: counter(before?.revisionReadCount)
       && after?.revisionReadCount === before.revisionReadCount,
     beforeAuthority: beforeRuntime?.schema === 'cf-v2-f4-runtime/v1'
@@ -5292,7 +5295,7 @@ const convergenceWitnessFor = (raw, documentToken, {
   },
   after: {
     heartbeatRunning: false,
-    leaseReadCount: 1,
+    leaseReadCount: beforeLeaseOwned ? 2 : 1,
     revisionReadCount: 1,
     runtime: convergenceRuntimeFor(raw, activePlayMs, false, {
       visible: false, staleBlocked,
@@ -7559,11 +7562,37 @@ const convergenceReleaseDirectionalSelftests = Object.freeze({
       witness.detail = 'Selftest wrong convergence operation.';
     }),
   }),
-  leaseReadsStable: Object.freeze({
-    expected: 'leaseReadsStable',
+  staleLeaseReleaseRead: Object.freeze({
+    expected: 'leaseReleaseReadsExact',
     result: convergenceReleaseMutationSelftest((witness) => {
       witness.after.leaseReadCount += 1;
     }),
+  }),
+  publicationLeaseReleaseReadMissing: Object.freeze({
+    expected: 'leaseReleaseReadsExact',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.leaseReadCount -= 1;
+    }, publicationConvergenceReleaseSelftestOptions),
+  }),
+  publicationLeaseReleaseReadExtra: Object.freeze({
+    expected: 'leaseReleaseReadsExact',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.after.leaseReadCount += 1;
+    }, publicationConvergenceReleaseSelftestOptions),
+  }),
+  publicationLeaseReleaseReadNegative: Object.freeze({
+    expected: 'leaseReleaseReadsExact',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.leaseReadCount = -1;
+      witness.after.leaseReadCount = 0;
+    }, publicationConvergenceReleaseSelftestOptions),
+  }),
+  publicationLeaseReleaseReadOverflow: Object.freeze({
+    expected: 'leaseReleaseReadsExact',
+    result: convergenceReleaseMutationSelftest((witness) => {
+      witness.before.leaseReadCount = Number.MAX_SAFE_INTEGER;
+      witness.after.leaseReadCount = Number.MAX_SAFE_INTEGER + 1;
+    }, publicationConvergenceReleaseSelftestOptions),
   }),
   revisionReadsStable: Object.freeze({
     expected: 'revisionReadsStable',

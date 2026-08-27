@@ -7,7 +7,7 @@
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-27.**
 >
 > **2026-08-27 local candidate overlay — implemented source lanes; signed exact SceneMemory/
-> Compendium evidence, seven preserved Slice reds, and a browser-free-green harness repair awaiting
+> Compendium evidence, eight preserved Slice reds, and a second bounded harness repair awaiting
 > one signed full-chain source:** Gate B's
 > recursive scanner now seals an exact 62-domain-source inventory against DOM, storage,
 > `navigator`, network, wall/monotonic clock and uncontrolled randomness. Its only two reasoned
@@ -52,7 +52,15 @@
 > stops further accrual. After acquisition, either a revision mismatch or a revision-read failure
 > enters transient protection and schedules one read-only convergence reload: answerability,
 > heartbeat, mutations and audio stop, release/disposal failures are aggregated into diagnostics,
-> and the same document never automatically reacquires. The app-owned
+> and the same document never automatically reacquires. The release witness requires zero lease
+> reads when stale authority already lost its grant and exactly one repository read when owned
+> publication authority releases its grant. The browser-only v4 staging hook cancels an unstarted
+> debounce, blocks new writes, joins the exact active persist, releases authority and atomically
+> clears/stages the isolated stores. Every direct primary, backup and absent-primary fixture retains
+> an exact receipt even when staging rejects. A live held-writer control observes the page-owned
+> protected hold under a bounded deadline, keeps staging pending while a competing persist settles
+> false, and then requires the released writer's safe exact +1 committed revision plus exact staged
+> bytes. This prevents predecessor state from masquerading as product evidence. The app-owned
 > `apps/game/src/f4-convergence-latch.ts` latches the hold and schedules exactly one replacement
 > before invoking the fallible presentation repaint. If full Engineering is open, that transition
 > immediately demotes it to one capability-derived preview, an exact unavailable reason and zero
@@ -232,22 +240,23 @@
 > activation did not alter SceneMemory or the root Gate-A browser contract. Its exact bytes remain
 > historical for that producer.
 >
-> The complete current harness-repair battery is green at 134 Vitest files / 1,474 passed / one intentional
-> skip / zero failures, plus `root/app/worker/noUnused` TypeScript, `artunused` and an 887-module
-> Vite build. The explicitly historical signed-red browserless checkpoint was green at the same 134
-> files / 1,458 passed / one intentional skip / zero failures, with syntax/import selftests. Prior
-> implementation/code and release-note audits are CLEAR for their reviewed inputs, and the focused closed-surface/diagnostic
-> repairs are negative-controlled. `bb5dc7c7f4372f712778af67ace2b5f81b71b99d` remains the earlier
-> protected-preview red source; signed `862a75b316142348636abea442dab15e87393642` is the paired
-> 40/42 heap/DOM red source. Signed `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` supplied the three
-> clean current-product candidates and selected the heap-only ceilings above. Signed `4a54c0d…`
-> activates them under budget SHA-256 `e6c4aeea…`; signed `7362a0e…` supplied exact SceneMemory
-> 42/42 and Compendium 78/78 certificates plus three green serial stages before the seventh Slice
-> harness red. The current bounded repair changes no product/producer/budget/deadline bytes and must
-> be signed before the full serial chain restarts at Layout.
-> Current-input Slice remains RED; Glass, recovery and whole-Gate evidence remain open.
+> Signed first repair `b206cf0986cf21747967e72700222ea9fa9d10f0` passed the complete
+> browserless battery at 134 Vitest files / 1,474 passed / one intentional skip / zero failures,
+> plus `root/app/worker/noUnused` TypeScript, `artunused`, syntax/import selftests, an 887-module Vite
+> build and root validation. It retained final2 Layout 787/787, source-bound SceneMemory 42/42 and
+> source-bound Compendium 78/78 with named verification before Slice stopped terminal-red after
+> 424,225 ms with six findings across five scopes. `bb5dc7c7…` remains the protected-preview red;
+> signed `862a75b…` remains the paired 40/42 heap/DOM red; signed `6c9ad855…` supplied the three clean
+> calibration candidates; and signed `4a54c0d…` activates 12 MiB V8 /18 MiB aggregate under budget
+> SHA-256 `e6c4aeea…`. The current second repair changes the browser-only staging hook and built
+> producer, evidence controls, Guide/release copy and docs, but no numeric ruler or deadline. The
+> complete current-byte checkpoint passes 134 Vitest files / 1,475 tests plus one intentional skip,
+> all TypeScript/no-unused programs, the 887-module build, root validation/fingerprint, evidence and
+> preview selftests, and isolated real-browser Slice outcome controls; three independent current-byte
+> reviews are CLEAR. A signed clean source remains before the full serial chain restarts at Layout. Current-input Slice is
+> RED; Glass, recovery and whole-Gate evidence remain open.
 >
-> Current-input Slice retains seven one-attempt/zero-retry reds on Edge `151.0.4129.107`.
+> Current-input Slice retains eight one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > The first five remain preserved historical diagnosis. Signed-clean source
 > `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied run
 > `20260827085237038-27561-1f8e3c1771b7`, which failed after 397,101 ms with 23 findings
@@ -267,10 +276,15 @@
 > judge fresh behavior/geometry rather than a version pin, so a browser update alone never
 > rebaselines or moves ceilings. Compendium and SceneMemory own separate sealed Edge-family + CDP
 > `1.3` capability/profile authorities; version tolerance changed no numeric budget in either ruler.
-> Signed `7362a0e…` subsequently supplied current exact SceneMemory and Compendium certificates,
-> then its preserved Slice harness red stopped the chain. The current repair has identical product,
-> producer and budget bytes but a changed evidence source, so both gates repeat inside the new full
-> chain without recalibration. Root Gate A separately
+> Signed `7362a0e…` supplied exact SceneMemory and Compendium certificates before its seventh Slice
+> red. Signed `b206cf0…` repeated the three serial green predecessors before final2's eighth red: an
+> unchecked fixture-stage rejection reloaded predecessor state and cascaded through four saved-route/
+> Atlas findings, while a stale Arc 4 publication oracle expected zero reads across an owned release
+> that necessarily performs one. The second repair exact-receipts every direct primary, backup and
+> absent-primary fixture, atomically resets/stages all stores, closes the sibling document and
+> executable-tests a held active persist; Arc 4 requires zero stale-release and one publication-
+> release read. The hook/copy source changes require both gates to repeat inside the new full chain
+> without recalibration. Root Gate A separately
 > accepts compatible Chromium family + CDP `1.3` only after exercising the exact CDP inventory
 > derived from `tools/uilayout.js` + `tools/bootperf.js` and recording complete per-run provenance;
 > point version alone never repins, rebaselines or moves a root threshold. No repaired Slice PASS, Glass result, recovery certificate,
@@ -2754,43 +2768,35 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-27):** the complete current repair battery is green at
-134 Vitest files / 1,474 passed / one intentional skip / zero failures, plus root, app, worker and
-no-unused TypeScript, `artunused` and the 887-module Vite build. The explicitly historical pre-repair
-checkpoint was green at the same 134 files / 1,458 passed / one intentional skip / zero failures,
-with syntax/import selftests.
-Prior implementation/code and release-note audits are CLEAR for their reviewed input; their findings
-and the later convergence-latch/per-field F4 controls are repaired. Earlier signed predecessor
-`bb5dc7c7f4372f712778af67ace2b5f81b71b99d` produced the preserved protected-preview SceneMemory
-red. Signed successor `862a75b316142348636abea442dab15e87393642` passed full named Layout,
-then produced the separately preserved 40/42 heap/DOM red. The current worktree repairs closed
-Inventory and opener ownership plus field/value/ceiling diagnosis; its focused checks are green, but
-signed `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` now supplies exactly three clean SceneMemory
-candidates and the justified 12 MiB V8 /18 MiB aggregate activation. The full activation battery
-is signed at `4a54c0d…`; signed `7362a0e…` supplied exact SceneMemory 42/42 and Compendium 78/78
-certificates plus three green serial stages before a preserved Slice harness red. Tracked producer
-bindings match; the changed harness source now requires a fresh full chain, not recalibration. Each
-ruler uses its own Edge-family + CDP `1.3` capability/profile contract, and exact browser point
-version is per-run provenance rather than calibration authority.
+**Current local candidate snapshot (2026-08-27):** signed first repair `b206cf0…` passed the complete
+browserless battery at 134 Vitest files / 1,474 passed / one intentional skip / zero failures, plus
+root/app/worker/no-unused TypeScript, `artunused`, syntax/import selftests, the 887-module Vite build
+and root validation. It retained final2 Layout 787/787, source-bound SceneMemory 42/42 and
+source-bound Compendium 78/78 with named verification. Slice then stopped after 424,225 ms with six
+findings across five scopes and no retry; Glass/recovery did not run. The current second repair
+changes the browser-only staging hook and built producer, evidence controls, Guide/release truth copy
+and docs without changing numeric rulers/deadlines. Its complete current-byte checkpoint passes 134
+Vitest files / 1,475 tests plus one intentional skip, all TypeScript/no-unused programs, the
+887-module build, root validation/fingerprint, evidence and preview selftests, and isolated
+real-browser Slice outcome controls; three independent current-byte reviews are CLEAR. A signed
+clean source remains before the full chain restarts. Earlier `bb5dc7c7…` and `862a75b…` reds, calibration
+source `6c9ad855…`, activation `4a54c0d…`, and the seventh-red boundary `7362a0e…` remain truthful
+historical evidence for their exact inputs.
 
-Current-input Slice retains seven one-attempt/zero-retry reds. Clean signed source
-`1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
-`20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`. It failed after
-397,101 ms with 23 findings across 16 scopes, required false, null `ok`/ledger, no Arc 4 success
-marker/line and no following Glass or recovery run. All five independent roots are locally repaired:
-Guide/Glass bind 55 bullets and the 54-bullet removal mutant; stable comparison excludes both
-legitimate ecology diagnostic clocks while separately bounding/mutating ecology movement;
-contextless blocked audio accepts either boolean mute state but no runtime resources; epoch proof
-separates the private candidate from the real persist/committed stored and reloaded value; and
-Survey rebinds Training locks/focus after DOM replacement through `refreshTrainingScope()`.
-Exact Edge version is Slice provenance only; Slice and Glass judge fresh behavior/geometry, so a
-browser update alone never rebaselines or moves ceilings. Compendium and SceneMemory own separate
-sealed Edge-family + CDP `1.3` capability/profile authorities; version tolerance itself changed no
-numeric budget. Signed `7362a0e…` later passed current exact SceneMemory and Compendium, then Slice
-`20260827-phase4-final-slice` stopped after 414,213 ms with 12 findings/11 scopes and no retry.
-Its bounded stale-oracle repair is browser-free green; post-start audio, the exact nine-stage/14-burn
-ledger, current Glass and 20-minute recovery remain unproved. No hosted, HUMAN, whole-Gate,
-release, version, preview/publication or deployment claim exists.
+Current-input Slice retains eight one-attempt/zero-retry reds. The first six remain historical
+diagnosis. Signed `7362a0e…` then retained three green predecessors before Slice
+`20260827-phase4-final-slice` stopped after 414,213 ms with 12 findings/11 scopes. Signed `b206cf0…`
+repeated the three predecessors before final2 Slice stopped with six findings/five scopes. Four
+saved-route/Atlas findings cascaded because unchecked staging reloaded the prior expedition; two Arc
+4 findings cascaded from a zero-read publication oracle even though owned release performs exactly
+one repository read. The second repair atomically clears/stages every direct primary, backup and
+absent-primary fixture after joining active persistence, closes the sibling document, retains
+byte/hash receipts even on rejection, and executable-tests a held writer plus blocked competing
+persist. Arc 4 now requires zero stale-release reads and one publication-release read with missing/
+extra controls. Exact Edge version is provenance only; compatible point updates never rebaseline or
+move ceilings. Post-start audio, the exact nine-stage/14-burn ledger, current Glass and 20-minute
+recovery remain unproved. No hosted, HUMAN, whole-Gate, release, version, preview/publication or
+deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost
 with the previous working environment. They are superseded by `tools/validate.js`

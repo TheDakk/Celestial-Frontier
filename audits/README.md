@@ -10,6 +10,72 @@ summary of it.
 
 ## Contents
 
+### Signed `b206cf0…` final2 campaign — three green predecessors, then one terminal Slice red
+
+Signed source `b206cf0986cf21747967e72700222ea9fa9d10f0` (tree
+`b993f7da15d80ad3892389b7ddaf31cfe96bacae`, parent `7362a0e…`) began clean on
+`openai/mac` and stayed byte-stable through the source-bound stages. The serial campaign used fresh
+`20260827-phase4-final2-*` IDs, one execution per stage and zero automatic retries. Layout passed
+787/787, SceneMemory passed 42/42, and Compendium passed 78/78; all three named verifiers passed.
+Slice then stopped terminal-red with six findings across five scopes, so Glass and recovery
+correctly did not start. Microsoft Edge `151.0.4129.107` is run provenance only: browser authority
+remains compatible Edge family + CDP `1.3` + each gate's capability contract, and a compatible
+point update never triggers rebaselining.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_202017303.json.gz` preserves run
+  `20260827-phase4-final2-layout`: 787/787 sealed outcomes across all ten viewports in 76,135 ms.
+  The gzip is 4,653 bytes with SHA-256
+  `9c870d4393e89d589bf06cf241932faae1dd20b1c06e8b64fb7cf910fc06fe31`; decompressed JSON is
+  106,048 bytes with SHA-256
+  `66a1a38188b0ccdcb48f9aeea03834e46795a679c8b510372e6686b65c3d1c4b`. Layout report schema v2
+  embeds browser/CDP provenance but no Git/source identity, so this is a truthful named result and
+  chronology-associated predecessor, not standalone exact-source proof.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260827_202045397.json.gz` preserves run
+  `20260827-phase4-final2-scenemem`: 42/42 outcomes in 10,177 ms with exact clean begin/end source
+  binding and complete browser/server/workspace-lock cleanup. The gzip is 22,275 bytes with
+  SHA-256 `f05b6859acd77bd6780b0b58c637f85b1a6f53fbea17602ec25300bd711d2070`;
+  decompressed JSON is 305,569 bytes with SHA-256
+  `b9e6e737fbc0a89ca0ecc6d8764a3dd2aca1dde7ded022fde6d800409ac749b9`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260827_202147686.json.gz` preserves run
+  `20260827-phase4-final2-compendium`: 78/78 outcomes in 45,728 ms, exact clean begin/end source
+  binding, complete report lifecycle, active budget SHA-256 `91b91b53…a012`, matching browser
+  authority and matching producer SHA-256 `4bdd3e36…2cb4`. The gzip is 441,302 bytes with SHA-256
+  `0ab5536b76a08c85c882f1bc33f819da14dd9a2b356fbda5ec19be6287c48616`;
+  decompressed JSON is 8,634,871 bytes with SHA-256
+  `fe70ee276ec97e9954d5299b4c00682014caa52296b9c443a255f2bc6bf67dbc`.
+- `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_202908578.{json,log}.gz` preserves terminal run
+  `20260827-phase4-final2-slice`, executed from `20:22:04.353Z` through `20:29:08.578Z`
+  (424,225 ms), with exact clean begin/end source, parent/child exit `1/1`, no source change and no
+  automatic retry. The report gzip is 91,012 bytes with SHA-256
+  `1578d5e5bd23f87dcfb68daec17d105fad93779c44d70adf4c4bca10c66aa655`; decompressed JSON is
+  820,968 bytes with SHA-256
+  `d999b6d15c6a123c3b0d2da2ddb783b7312778123a87ffc3ddd0f314b8d7ff57`. The log gzip is
+  42,579 bytes with SHA-256
+  `d9e815a903038f6c95b56348f1ddf65455e84c5af34879bb121a0803549abd7c`; decompressed log is
+  352,256 bytes with SHA-256
+  `20bfd7c607d5fbab74d5dfd943cfc660e9f32fc0cd2b030a74fd6bf1d965cffa`.
+
+The six Slice findings reduce to two harness roots. First, the saved-route setup ignored a false
+`__smokeStageStoredV4` result while a zoom-triggered persist was still active, reloaded the prior
+`Current Field Repair` expedition, and cascaded into two saved-route plus two Atlas verdicts without
+ever testing the intended outer-route fixture. Second, Arc 4 required the lease-read counter to stay
+equal across `runtime.release()`, although the owned tab-lease release necessarily performs exactly
+one repository read; its structured-ledger failure was a cascade. The preserved report independently
+proves neither the intended saved-route/Atlas product outcomes, all 30 Arc 4 negative-control
+isolations, nor exact browser/server/lock cleanup. It has browser executable/version provenance but
+does not retain the predecessor gates' full CDP/UA/capability envelope.
+
+All five carriers pass gzip integrity. The red is never rewritten as green and grants no Slice,
+Glass, recovery, HUMAN, hosted, integration, version, release or deployment authority. The bounded
+repair joins the one active persist, blocks new writes, atomically clears/stages every direct
+primary, backup and absent-primary fixture, and retains exact byte/hash receipts even on rejection.
+An executable held-writer control observes the page-owned protected hold under a bounded deadline,
+keeps staging pending while a competing persist settles false, and then requires the released
+writer's safe exact +1 committed revision plus exact staged bytes before the affected saved-route/
+Atlas verdicts. Arc 4 requires the product-exact one-read lease release with missing/
+extra-read controls; protected-save targets additionally retain post-boot byte-preservation checks. A newly signed repaired source must restart the
+immutable chain at Layout under fresh IDs.
+
 ### Three source-bound green carriers plus one Layout result carrier associated with signed `7362a0e…`
 
 Signed documentation boundary `7362a0ea32e90b24e4988c81d566b82e20549e66` (tree

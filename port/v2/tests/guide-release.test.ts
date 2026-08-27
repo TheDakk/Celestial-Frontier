@@ -932,6 +932,7 @@ describe('v2 Guide capability filter', () => {
     const staleSavedLocationIsFieldLocal = (body: string): boolean =>
       /saved galaxy, star, or planet location/i.test(body)
       && /stale, forged, or incomplete/i.test(body)
+      && /no longer authorized[^.!?]*saved reach/i.test(body)
       && /returns safely to <b>Cosmos<\/b>/i.test(body)
       && /without losing[^.!?]*expedition progress/i.test(body)
       && !rollsBackWholeSave(body);
@@ -958,10 +959,16 @@ describe('v2 Guide capability filter', () => {
     const atlasBullet = V2_DRAFT_RELEASE.sections
       .flatMap((section) => section.bullets)
       .find((bullet) => bullet.includes('THE ATLAS LEADS BACK'))!;
+    const protectedBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('PROTECTED MEANS PROTECTED'))!;
     expect(sourceVerifiesEveryLevel(worldCodeBullet)).toBe(true);
     expect(rejectedCodePreservesCorrection(worldCodeBullet)).toBe(true);
     expect(worldCodeBullet).toContain('without bypassing Land');
     expect(atlasNeedsProof(atlasBullet)).toBe(true);
+    expect(protectedBullet).toContain(
+      'A source-valid saved destination that is no longer authorized repairs only its location to Cosmos',
+    );
 
     /* Semantic negative controls: the former structural-only copy, a direct-
        landing overclaim, the old coordinate-completeness Atlas rule, and a
@@ -981,6 +988,10 @@ describe('v2 Guide capability filter', () => {
     const validSearch = getGuideTopic('search')!.body;
     const validAtlas = getGuideTopic('atlas')!.body;
     const validSaving = getGuideTopic('saving')!.body;
+    expect(staleSavedLocationIsFieldLocal(validSaving.replace(
+      ', or if its destination is no longer authorized by your saved reach',
+      '',
+    ))).toBe(false);
     expect(sourceVerifiesEveryLevel(
       validSearch + ' Caller-supplied coordinates remain authoritative.',
     )).toBe(false);

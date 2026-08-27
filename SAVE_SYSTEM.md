@@ -12,8 +12,18 @@
 > `persistence.ecology.observedActivePlayMs` as diagnostic clocks that may legitimately advance
 > during an input sequence. Both are excluded only from the stable whole-fixture comparison; the
 > ecology value is still independently required to be integer, monotonic and within a 10,000 ms
-> bound, and a 123,456 ms mutant fails. Sixth current-input Slice remains preserved red and supplies
-> no PASS/Glass/recovery authority. Browser evidence has three independent version-tolerant
+> bound, and a 123,456 ms mutant fails. Signed `b206cf0…` later passed serial Layout,
+> SceneMemory and Compendium before final2 Slice stopped terminal-red. Its saved-route fixture had
+> not staged because a zoom-triggered save was still active, so the repaired browser-only staging
+> hook now cancels an unstarted debounce, joins that exact write, blocks new persistence and
+> atomically clears/stages all authoritative stores. Every direct primary, backup and absent-primary
+> fixture retains an exact byte/hash receipt even on rejection. A held-writer browser control first
+> observes the page-owned protected hold under a bounded deadline, then requires staging to remain
+> pending while a competing persist settles false; after release it requires the writer's safe exact
+> +1 committed revision and exact primary/backup bytes before the route verdicts. Arc 4's convergence witness now
+> requires the product-exact release read count: zero when stale authority already lost its grant,
+> exactly one when owned publication authority releases its grant; missing and extra reads both
+> fail. The preserved red supplies no PASS/Glass/recovery authority. Browser evidence has three independent version-tolerant
 > authorities. The root authority accepts compatible Chromium-family executables only when CDP
 > `1.3` and its source-derived layout/boot capability inventory pass, and records executable,
 > product, revision, user agent, JavaScript version and protocol version per run. Compendium and
@@ -38,7 +48,9 @@
 > answerability and player mutation, and schedules one protected convergence reload. Periodic and
 > `pageshow` callbacks honor that hold and cannot reacquire before convergence.
 > Convergence attempts audio disposal and runtime release, aggregates all cleanup errors into its
-> witness, and reloads even when cleanup reports a failure. `f4-convergence-latch.ts` establishes
+> witness, and reloads even when cleanup reports a failure. Its release counter proves no repository
+> read after an already-lost grant and exactly one read for an owned lease release; it never treats
+> the required owned-release read as reacquisition. `f4-convergence-latch.ts` establishes
 > the hold and schedules exactly one replacement before invoking the fallible presentation repaint.
 > If full Engineering is already open, that same transition immediately replaces it with one
 > capability-derived read-only preview, an exact unavailable reason and zero sections/actions;
@@ -52,10 +64,11 @@
 > expedition** is the narrow protected-recovery exception to the ordinary mutation selector, not a
 > general write bypass: its payload still must pass complete import validation, coordinate queued or
 > in-flight persistence, win the exclusive replacement transaction and reload. Focused checks cover
-> these laws. The last complete pre-certificate browserless checkpoint and independent audits
-> completed for the reviewed repair input, and the independent final whole-diff review is CLEAR.
-> Any subsequent source change must rerun its affected checks before a new signed clean successor.
-> Exact-head browser certificates remain pending.
+> these laws. The producer-changing second repair now passes the complete 134-file / 1,475-test
+> browserless checkpoint plus one intentional skip, all TypeScript/no-unused programs, build,
+> validation/fingerprint, evidence/preview selftests and isolated real-browser outcome controls;
+> three independent current-byte reviews are CLEAR. It still requires a signed clean successor
+> before exact-head browser certification. Those certificates remain pending.
 > Engineering protection follows the same ownership split: exact Engineering details and every
 > action remain unavailable, while the current-ship preview stays readable because it derives from
 > the separate saved capability/reach projection used by travel. The panel may not invent Arc 3
