@@ -26,13 +26,38 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
 const budgetPath = path.join(v2Root, 'budgets', 'scene-memory-v2.json');
 const auditRoot = path.resolve(v2Root, '..', '..', 'audits');
-const SOURCE_COMMIT = 'a4de5007ffc9131b8bc952a0a4cb469d9139039e';
-const SOURCE_WORKING_TREE = 'f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a';
-const BUILD_SHA256 = '44eb670cc2160c39ff5c159f5f1aec1e68e5d6bae5d02e75bf0e2eec026ff81e';
-const BUILD_FILE_COUNT = 38;
-const BUILD_FILES_SHA256 = 'ffd2616047932577db169f05d891ea96054bd2dcc5cb65c1d02a2a3df7f1ca03';
+const CLEAN_WORKING_TREE_SHA256 = 'f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a';
+const CALIBRATION_SOURCE_COMMIT = '6c9ad85577bd90d6af883dd7b3f13556d24eb3ad';
+const CALIBRATION_BUILD_SHA256 = '46e473657f3cda06a6e445c1588ae983f270822d3e745f9009e20bed083f9274';
+const CALIBRATION_BUILD_FILE_COUNT = 42;
+const CALIBRATION_BUILD_FILES_SHA256 = '3d91bfb1fc1457bbac3309e84b998898591cb762c48060c1132c33190c3a2782';
+const HISTORICAL_BUILD_SHA256 = '44eb670cc2160c39ff5c159f5f1aec1e68e5d6bae5d02e75bf0e2eec026ff81e';
+const HISTORICAL_BUILD_FILE_COUNT = 38;
+const HISTORICAL_BUILD_FILES_SHA256 = 'ffd2616047932577db169f05d891ea96054bd2dcc5cb65c1d02a2a3df7f1ca03';
+const PRE_ACTIVATION_BUDGET_SHA256 = '110211c3f53e623f3eff1d6df7b01606225baef6cde9a0682b5460abb04dffe5';
+const ACTIVATED_BUDGET_SHA256 = 'e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375';
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const CANDIDATES = [
+  {
+    runId: '20260827-phase4-repair-candidate1',
+    file: 'ARC1C_SCENEMEM_REPAIR_CALIBRATION_CANDIDATE1_20260827.json.gz',
+    rawSha256: 'd447a5c76bcfbc1e9df87c51f0c35bc6e960c70f6afb31f8bdcf54765efcb39b',
+    gzipSha256: 'bd91cbbfba7daf7fd283f2f1d523a34ca0aed1b46a8d5acb6030889b80df75d1',
+  },
+  {
+    runId: '20260827-phase4-repair-candidate2',
+    file: 'ARC1C_SCENEMEM_REPAIR_CALIBRATION_CANDIDATE2_20260827.json.gz',
+    rawSha256: 'e6ec574ddd5f475158d78bdd960dbd11541e16502b6a6bfce69a5484b34ba7da',
+    gzipSha256: '6f7d0a17cc60fda9c8c07d0e41d9206c1ea7d2c63233c0cc3494e03ecfb67a14',
+  },
+  {
+    runId: '20260827-phase4-repair-candidate3',
+    file: 'ARC1C_SCENEMEM_REPAIR_CALIBRATION_CANDIDATE3_20260827.json.gz',
+    rawSha256: '52d54330efc5ca07ded8645fb1b33e029ed7da11cc18ae892c38e0a0e7ce08f7',
+    gzipSha256: '6015b3620aadf55b3abdb807cdc19bb97b85b37e21b3f3d8ba2e6a1ddd59fc82',
+  },
+] as const;
+const HISTORICAL_CALIBRATION_CANDIDATES = [
   {
     runId: 'arc1c-candidate-1',
     file: 'ARC1C_SCENEMEM_CALIBRATION_CANDIDATE1.json.gz',
@@ -52,6 +77,7 @@ const CANDIDATES = [
     gzipSha256: '385d4622e669cc0849aced533da50869b01a6b11ef5d06e3e61afe5de910a593',
   },
 ] as const;
+const HISTORICAL_CALIBRATION_SOURCE_COMMIT = 'a4de5007ffc9131b8bc952a0a4cb469d9139039e';
 const HISTORICAL_LOCAL_CERTIFICATION = Object.freeze({
   runId: '20260822-arc1-local-certification',
   file: 'ARC1C_SCENEMEM_LOCAL_CERTIFICATION.json.gz',
@@ -151,6 +177,17 @@ const HISTORICAL_EDGE_101_VERSION = Object.freeze({
   jsVersion: '15.1.23.9',
   protocolVersion: '1.3',
 });
+const HISTORICAL_LOCAL_EDGE_101_PROVENANCE = Object.freeze({
+  executable: '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+  ...HISTORICAL_EDGE_101_VERSION,
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0',
+});
+const CALIBRATION_EDGE_107_PROVENANCE = Object.freeze({
+  product: 'Edg/151.0.4129.107',
+  revision: '@419e77616b4ed7d0a544b85cb53ccd5b74d5f135',
+  jsVersion: '15.1.23.12',
+  protocolVersion: '1.3',
+});
 
 const HISTORICAL_PRODUCER_AUTHORITY = Object.freeze({
   collector: 'c0c626d1b8a4bc577161debf477f97cfa9c8be4d735fecaaa16124afcae2e957',
@@ -165,7 +202,7 @@ const HISTORICAL_PRODUCER_AUTHORITY = Object.freeze({
   package: '6bad342bf5503275608ebae5c0e730658c82d608cd58f4c1d62a4457f85d673f',
   packageLock: 'a6b7eb9f9439d7c76d7cf0ee154ef6221e9ad73226c7a5f0e893feaf4231a110',
   appPackage: 'd935051fd788aa303363adf84a51bc1b030ae05f488a0058585322465d9b7135',
-  buildDist: BUILD_SHA256,
+  buildDist: HISTORICAL_BUILD_SHA256,
   gameHtml: 'dd4b69852e309d7eab44df07dab37ee01b1d157b3948de805f6b1092b2edb538',
   gameMain: 'e493beec8251b013b19c3191a400df74c872a2b75adc9e57eb87f9c9b97062aa',
   shipVisualState: '9bfd27d3d6a75779d3372dfb6386e8e98ef22d92a33b0346819225024c70d762',
@@ -205,10 +242,10 @@ const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
 
 const SELECTED_PROFILES = Object.freeze({
   phone: Object.freeze({
-    heapUsedBytesMax: 10485760,
+    heapUsedBytesMax: 12582912,
     embedderHeapUsedBytesMax: 4194304,
     backingStorageBytesMax: 3145728,
-    heapAggregateBytesMax: 16777216,
+    heapAggregateBytesMax: 18874368,
     warmHeapAggregateRangeBytesMax: 524288,
     warmHeapSlopeBytesPerCycleMax: 131072,
     documentsMax: 3.5,
@@ -228,10 +265,10 @@ const SELECTED_PROFILES = Object.freeze({
     heartbeatElapsedMsMax: 100,
   }),
   desktop: Object.freeze({
-    heapUsedBytesMax: 10485760,
+    heapUsedBytesMax: 12582912,
     embedderHeapUsedBytesMax: 4194304,
     backingStorageBytesMax: 3145728,
-    heapAggregateBytesMax: 16777216,
+    heapAggregateBytesMax: 18874368,
     warmHeapAggregateRangeBytesMax: 524288,
     warmHeapSlopeBytesPerCycleMax: 131072,
     documentsMax: 3.5,
@@ -251,9 +288,21 @@ const SELECTED_PROFILES = Object.freeze({
     heartbeatElapsedMsMax: 100,
   }),
 }) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
+const PRE_ACTIVATION_PROFILES = Object.freeze({
+  phone: Object.freeze({
+    ...SELECTED_PROFILES.phone,
+    heapUsedBytesMax: 10485760,
+    heapAggregateBytesMax: 16777216,
+  }),
+  desktop: Object.freeze({
+    ...SELECTED_PROFILES.desktop,
+    heapUsedBytesMax: 10485760,
+    heapAggregateBytesMax: 16777216,
+  }),
+}) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
 const ORIGINAL_250_PROFILES = Object.freeze({
-  phone: Object.freeze({ ...SELECTED_PROFILES.phone, targetElapsedMsMax: 250 }),
-  desktop: Object.freeze({ ...SELECTED_PROFILES.desktop, targetElapsedMsMax: 250 }),
+  phone: Object.freeze({ ...PRE_ACTIVATION_PROFILES.phone, targetElapsedMsMax: 250 }),
+  desktop: Object.freeze({ ...PRE_ACTIVATION_PROFILES.desktop, targetElapsedMsMax: 250 }),
 }) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
 
 const BUDGET_FIELDS = Object.keys(SELECTED_PROFILES.phone) as Array<keyof SceneMemoryBudget>;
@@ -267,7 +316,12 @@ const sha256 = (value: Uint8Array): string =>
   createHash('sha256').update(value).digest('hex');
 
 const budget = JSON.parse(fs.readFileSync(budgetPath, 'utf8')) as BudgetRecord;
-const evidence = CANDIDATES.map((candidate) => {
+const loadEvidence = (candidates: ReadonlyArray<{
+  runId: string;
+  file: string;
+  rawSha256: string;
+  gzipSha256: string;
+}>) => candidates.map((candidate) => {
   const compressed = fs.readFileSync(path.join(auditRoot, candidate.file));
   const raw = gunzipSync(compressed);
   return {
@@ -277,7 +331,9 @@ const evidence = CANDIDATES.map((candidate) => {
     report: JSON.parse(raw.toString('utf8')) as CalibrationReport,
   };
 });
+const evidence = loadEvidence(CANDIDATES);
 const reports = evidence.map(({ report }) => report);
+const historicalCalibrationEvidence = loadEvidence(HISTORICAL_CALIBRATION_CANDIDATES);
 
 const profilePoints = (measurement: SceneMemoryProfileMeasurement) => [
   measurement.precondition,
@@ -302,14 +358,28 @@ const collectedProfileProjection = (
   }]),
 ) as SceneMemoryInput['profiles'];
 
-const expectExactBuildInventory = (report: CalibrationReport): void => {
+const expectExactBuildInventory = (
+  report: CalibrationReport,
+  expected: { sha256: string; fileCount: number; filesSha256: string },
+): void => {
   expect(report.build).toMatchObject({
     schema: 'cf-v2-scene-memory-build/v1',
-    sha256: BUILD_SHA256,
+    sha256: expected.sha256,
   });
-  expect(report.build.files).toHaveLength(BUILD_FILE_COUNT);
-  expect(sha256(Buffer.from(JSON.stringify(report.build.files)))).toBe(BUILD_FILES_SHA256);
+  expect(report.build.files).toHaveLength(expected.fileCount);
+  expect(sha256(Buffer.from(JSON.stringify(report.build.files)))).toBe(expected.filesSha256);
 };
+
+const CALIBRATION_BUILD = Object.freeze({
+  sha256: CALIBRATION_BUILD_SHA256,
+  fileCount: CALIBRATION_BUILD_FILE_COUNT,
+  filesSha256: CALIBRATION_BUILD_FILES_SHA256,
+});
+const HISTORICAL_BUILD = Object.freeze({
+  sha256: HISTORICAL_BUILD_SHA256,
+  fileCount: HISTORICAL_BUILD_FILE_COUNT,
+  filesSha256: HISTORICAL_BUILD_FILES_SHA256,
+});
 
 const metric = (
   report: CalibrationReport,
@@ -375,7 +445,7 @@ const metricSummary = (
 };
 
 describe('Arc 1C scene-memory active budget', () => {
-  it('locks unchanged ceilings to one Edge-family capability/profile authority and producer', () => {
+  it('locks the heap-only activation to one Edge-family capability/profile authority and producer', () => {
     expect(budget).toEqual({
       schema: 'cf-v2-scene-memory-budget/v3',
       authority: {
@@ -387,6 +457,48 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(Object.keys(budget.profiles.phone)).toEqual(BUDGET_FIELDS);
     expect(Object.keys(budget.profiles.desktop)).toEqual(BUDGET_FIELDS);
     expect(validateSceneMemoryBudget(budget)).toEqual({ ok: true, errors: [] });
+  });
+
+  it('changes only the two selected heap ceilings in each profile', () => {
+    const changes = PROFILE_NAMES.flatMap((profile) => BUDGET_FIELDS
+      .filter((field) => PRE_ACTIVATION_PROFILES[profile][field]
+        !== SELECTED_PROFILES[profile][field])
+      .map((field) => ({
+        profile,
+        field,
+        before: PRE_ACTIVATION_PROFILES[profile][field],
+        after: SELECTED_PROFILES[profile][field],
+      })));
+    expect(changes).toEqual([
+      {
+        profile: 'phone',
+        field: 'heapUsedBytesMax',
+        before: 10485760,
+        after: 12582912,
+      },
+      {
+        profile: 'phone',
+        field: 'heapAggregateBytesMax',
+        before: 16777216,
+        after: 18874368,
+      },
+      {
+        profile: 'desktop',
+        field: 'heapUsedBytesMax',
+        before: 10485760,
+        after: 12582912,
+      },
+      {
+        profile: 'desktop',
+        field: 'heapAggregateBytesMax',
+        before: 16777216,
+        after: 18874368,
+      },
+    ]);
+    expect(sha256(fs.readFileSync(budgetPath))).toBe(ACTIVATED_BUDGET_SHA256);
+    const preActivationBudget = { ...budget, profiles: PRE_ACTIVATION_PROFILES };
+    expect(sha256(Buffer.from(`${JSON.stringify(preActivationBudget, null, 2)}\n`)))
+      .toBe(PRE_ACTIVATION_BUDGET_SHA256);
   });
 
   it('negative controls: browser capability and profile authority drift cannot validate', () => {
@@ -447,26 +559,27 @@ describe('Arc 1C scene-memory active budget', () => {
       expect(report.cleanup).toEqual({ browser: true, server: true, workspaceLock: true });
       expect(report.source.begin).toEqual(report.source.end);
       expect(report.source.begin).toMatchObject({
-        commit: SOURCE_COMMIT,
+        commit: CALIBRATION_SOURCE_COMMIT,
         branch: 'openai/mac',
         state: 'committed',
         statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-        workingTreeSha256: SOURCE_WORKING_TREE,
+        workingTreeSha256: CLEAN_WORKING_TREE_SHA256,
       });
       expect(report.fixture).toEqual({
         count: 1500,
         rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
       });
-      expectExactBuildInventory(report);
+      expectExactBuildInventory(report, CALIBRATION_BUILD);
       expect(report.inputs.budget).toBeNull();
+      expect(report.budget).toEqual({ schema: null, path: null, sha256: null });
       expect(Object.keys(report.inputs).sort()).toEqual(
         [...Object.keys(EXPECTED_PRODUCER_AUTHORITY), 'budget'].sort(),
       );
-      expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
-        HISTORICAL_PRODUCER_AUTHORITY,
+      expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
+        EXPECTED_PRODUCER_AUTHORITY,
       );
-      expect(authorityProjection(report.browser, HISTORICAL_EDGE_101_VERSION)).toEqual(
-        HISTORICAL_EDGE_101_VERSION,
+      expect(authorityProjection(report.browser, CALIBRATION_EDGE_107_PROVENANCE)).toEqual(
+        CALIBRATION_EDGE_107_PROVENANCE,
       );
       expect(report.outcomes).toHaveLength(42);
       expect(report.outcomes.every((outcome) => outcome.pass)).toBe(true);
@@ -485,12 +598,95 @@ describe('Arc 1C scene-memory active budget', () => {
 
     expect(new Set(reports.map((report) => report.startedAt)).size).toBe(3);
     expect(new Set(reports.map((report) => report.source.begin.workingTreeSha256))).toEqual(
-      new Set([SOURCE_WORKING_TREE]),
+      new Set([CLEAN_WORKING_TREE_SHA256]),
     );
-    expect(new Set(reports.map((report) => report.build.sha256))).toEqual(new Set([BUILD_SHA256]));
+    expect(new Set(reports.map((report) => report.build.sha256)))
+      .toEqual(new Set([CALIBRATION_BUILD_SHA256]));
     for (const profile of PROFILE_NAMES) {
       expect(new Set(reports.map((report) => report.profiles[profile].targetId)).size).toBe(3);
       expect(new Set(reports.map((report) => report.profiles[profile].documentToken)).size).toBe(3);
+    }
+  });
+
+  it('preserves the original three calibration carriers as immutable historical evidence', () => {
+    const historicalReports = historicalCalibrationEvidence.map(({ report }) => report);
+    expect(historicalReports.map((report) => report.runId)).toEqual(
+      HISTORICAL_CALIBRATION_CANDIDATES.map(({ runId }) => runId),
+    );
+
+    for (const { candidate, compressed, raw, report } of historicalCalibrationEvidence) {
+      expect(sha256(compressed), `${candidate.runId} historical gzip`)
+        .toBe(candidate.gzipSha256);
+      expect(sha256(raw), `${candidate.runId} historical raw`).toBe(candidate.rawSha256);
+      expect(report.schema).toBe('cf-v2-scene-memory-report/v2');
+      expect(report.status).toBe('calibration');
+      expect(report.certification).toBe('calibration-only-not-certified');
+      expect(report.lifecycle).toEqual({
+        schema: 'cf-v2-scene-memory-report-lifecycle/v1',
+        status: 'complete',
+      });
+      expect(report.policy).toEqual({
+        attemptCount: 1,
+        automaticRetries: 0,
+        warmupCycles: 4,
+        measuredWarmCycles: 4,
+        commandTimeoutMs: 5000,
+        targetTimeoutMs: 2000,
+        heartbeatTimeoutMs: 2000,
+      });
+      expect(report.cleanup).toEqual({ browser: true, server: true, workspaceLock: true });
+      expect(report.source.begin).toEqual(report.source.end);
+      expect(report.source.begin).toEqual({
+        commit: HISTORICAL_CALIBRATION_SOURCE_COMMIT,
+        branch: 'openai/mac',
+        state: 'committed',
+        statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+        workingTreeSha256: CLEAN_WORKING_TREE_SHA256,
+      });
+      expect(report.scope).toEqual({
+        covered: ['universe', 'galaxy', 'galaxy-fine', 'system', 'surface', 'compendium', 'shipyard'],
+        shipyardStatus: 'implemented-static',
+        excluded: ['Shipyard build writers', 'audio lifecycle', 'true GPU bytes'],
+      });
+      expect(report.fixture).toEqual({
+        count: 1500,
+        rowsSha256: HISTORICAL_PRODUCER_AUTHORITY.fixtureRows,
+      });
+      expectExactBuildInventory(report, HISTORICAL_BUILD);
+      expect(report.inputs.budget).toBeNull();
+      expect(report.budget).toEqual({ schema: null, path: null, sha256: null });
+      expect(Object.keys(report.inputs).sort()).toEqual(
+        [...Object.keys(HISTORICAL_PRODUCER_AUTHORITY), 'budget'].sort(),
+      );
+      expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
+        HISTORICAL_PRODUCER_AUTHORITY,
+      );
+      expect(report.browser).toEqual(HISTORICAL_LOCAL_EDGE_101_PROVENANCE);
+      expect(report.contractInput.schema).toBe('cf-v2-scene-memory-input/v3');
+      expect(report.contractInput.profiles).toEqual(collectedProfileProjection(report));
+      expect(report.outcomes).toHaveLength(42);
+      expect(report.outcomes.every((outcome) => outcome.pass)).toBe(true);
+      expect(report.findings).toEqual([]);
+      expect(report.fatalEvents).toEqual([]);
+      for (const profile of PROFILE_NAMES) {
+        expect(metricSummary(report.profiles[profile])).toEqual(report.profiles[profile].metrics);
+      }
+      const replay = evaluateSceneMemory(report.contractInput);
+      expect(replay).toEqual(report.verdict);
+      expect(replay.status).toBe('pass');
+      expect(replay.outcomes).toEqual(report.outcomes);
+      expect(replay.failures).toEqual([]);
+    }
+
+    expect(new Set(historicalReports.map((report) => report.startedAt)).size).toBe(3);
+    expect(new Set(historicalReports.map((report) => report.build.sha256)))
+      .toEqual(new Set([HISTORICAL_BUILD_SHA256]));
+    for (const profile of PROFILE_NAMES) {
+      expect(new Set(historicalReports.map((report) => report.profiles[profile].targetId)).size)
+        .toBe(3);
+      expect(new Set(
+        historicalReports.map((report) => report.profiles[profile].documentToken),
+      ).size).toBe(3);
     }
   });
 
@@ -525,7 +721,7 @@ describe('Arc 1C scene-memory active budget', () => {
       branch: 'openai/mac',
       state: 'committed',
       statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-      workingTreeSha256: SOURCE_WORKING_TREE,
+      workingTreeSha256: CLEAN_WORKING_TREE_SHA256,
     });
     expect(report.scope).toEqual({
       covered: ['universe', 'galaxy', 'galaxy-fine', 'system', 'surface', 'compendium', 'shipyard'],
@@ -536,7 +732,7 @@ describe('Arc 1C scene-memory active budget', () => {
       count: 1500,
       rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
     });
-    expectExactBuildInventory(report);
+    expectExactBuildInventory(report, HISTORICAL_BUILD);
     expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
       HISTORICAL_PRODUCER_AUTHORITY,
     );
@@ -605,7 +801,7 @@ describe('Arc 1C scene-memory active budget', () => {
       branch: 'openai/mac',
       state: 'committed',
       statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-      workingTreeSha256: SOURCE_WORKING_TREE,
+      workingTreeSha256: CLEAN_WORKING_TREE_SHA256,
     });
     expect(report.scope).toEqual({
       covered: ['universe', 'galaxy', 'galaxy-fine', 'system', 'surface', 'compendium', 'shipyard'],
@@ -616,7 +812,7 @@ describe('Arc 1C scene-memory active budget', () => {
       count: 1500,
       rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
     });
-    expectExactBuildInventory(report);
+    expectExactBuildInventory(report, HISTORICAL_BUILD);
     expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
       HISTORICAL_PRODUCER_AUTHORITY,
     );
@@ -630,7 +826,7 @@ describe('Arc 1C scene-memory active budget', () => {
     });
     expect(report.inputs.budget).toBe(CURRENT_LOCAL_CERTIFICATION.budgetSha256);
     expect(sha256(fs.readFileSync(budgetPath))).not.toBe(CURRENT_LOCAL_CERTIFICATION.budgetSha256);
-    expect(report.contractInput.budgets).toEqual(budget.profiles);
+    expect(report.contractInput.budgets).toEqual(PRE_ACTIVATION_PROFILES);
     expect(report.contractInput.profiles).toEqual(collectedProfileProjection(report));
     expect(report.outcomes).toHaveLength(42);
     expect(report.outcomes.every((outcome) => outcome.pass)).toBe(true);
@@ -682,7 +878,7 @@ describe('Arc 1C scene-memory active budget', () => {
           branch: 'openai/mac',
           state: 'committed',
           statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-          workingTreeSha256: SOURCE_WORKING_TREE,
+          workingTreeSha256: CLEAN_WORKING_TREE_SHA256,
         },
       },
       browser: {
@@ -736,6 +932,7 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(replay.failures[1]?.message).toContain(
       'JS event listeners 89 exceeded ceiling 80',
     );
+    for (const failure of replay.failures) expect(failure.message).not.toMatch(/heap/i);
 
     const pairedReplay = evaluateSceneMemory({
       ...report.contractInput,
@@ -789,7 +986,7 @@ describe('Arc 1C scene-memory active budget', () => {
       branch: 'detached',
       state: 'committed',
       statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-      workingTreeSha256: SOURCE_WORKING_TREE,
+      workingTreeSha256: CLEAN_WORKING_TREE_SHA256,
     });
     expect(report.scope).toEqual({
       covered: ['universe', 'galaxy', 'galaxy-fine', 'system', 'surface', 'compendium', 'shipyard'],
@@ -800,7 +997,7 @@ describe('Arc 1C scene-memory active budget', () => {
       count: 1500,
       rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
     });
-    expectExactBuildInventory(report);
+    expectExactBuildInventory(report, HISTORICAL_BUILD);
     expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
       HISTORICAL_PRODUCER_AUTHORITY,
     );
@@ -975,6 +1172,43 @@ describe('Arc 1C scene-memory active budget', () => {
     }
   });
 
+  it('accepts each activated heap ceiling exactly and rejects the next byte', () => {
+    for (const profile of PROFILE_NAMES) {
+      const heapUsedExact = structuredClone(reports[0]!.contractInput);
+      heapUsedExact.budgets = structuredClone(budget.profiles);
+      heapUsedExact.profiles[profile].precondition.heap.usedSize = 12582912;
+      heapUsedExact.profiles[profile].precondition.heap.embedderHeapUsedSize = 0;
+      heapUsedExact.profiles[profile].precondition.heap.backingStorageSize = 0;
+      expect(evaluateSceneMemory(heapUsedExact).status, `${profile} exact V8 heap`).toBe('pass');
+
+      const heapUsedNext = structuredClone(heapUsedExact);
+      heapUsedNext.profiles[profile].precondition.heap.usedSize = 12582913;
+      const heapUsedVerdict = evaluateSceneMemory(heapUsedNext);
+      expect(heapUsedVerdict.failures, `${profile} next V8 heap byte`).toEqual([{
+        id: `${profile}/heap-dom-budget`,
+        pass: false,
+        message: 'precondition: V8 heap used bytes 12582913 exceeded ceiling 12582912',
+      }]);
+
+      const aggregateExact = structuredClone(reports[0]!.contractInput);
+      aggregateExact.budgets = structuredClone(budget.profiles);
+      aggregateExact.profiles[profile].precondition.heap.usedSize = 11534336;
+      aggregateExact.profiles[profile].precondition.heap.embedderHeapUsedSize = 4194304;
+      aggregateExact.profiles[profile].precondition.heap.backingStorageSize = 3145728;
+      expect(evaluateSceneMemory(aggregateExact).status, `${profile} exact aggregate heap`)
+        .toBe('pass');
+
+      const aggregateNext = structuredClone(aggregateExact);
+      aggregateNext.profiles[profile].precondition.heap.usedSize = 11534337;
+      const aggregateVerdict = evaluateSceneMemory(aggregateNext);
+      expect(aggregateVerdict.failures, `${profile} next aggregate heap byte`).toEqual([{
+        id: `${profile}/heap-dom-budget`,
+        pass: false,
+        message: 'precondition: aggregate heap bytes 18874369 exceeded ceiling 18874368',
+      }]);
+    }
+  });
+
   it('negative control: rejects every just-below positive observed ceiling independently', () => {
     for (const profile of PROFILE_NAMES) {
       for (const field of BUDGET_FIELDS) {
@@ -1017,22 +1251,28 @@ describe('Arc 1C scene-memory active budget', () => {
     }
   });
 
-  it('negative control: producer drift stays red while Edge revision drift stays compatible', () => {
+  it('negative control: producer drift stays red while compatible Edge versions remain portable', () => {
     const report = reports[0]!;
     const staleProducer = { ...report.inputs, shipyardPreview: '0'.repeat(64) };
     const staleBrowser = { ...report.browser, revision: '@stale' };
-    expect(authorityProjection(staleProducer, HISTORICAL_PRODUCER_AUTHORITY)).not.toEqual(
-      HISTORICAL_PRODUCER_AUTHORITY,
+    expect(authorityProjection(staleProducer, EXPECTED_PRODUCER_AUTHORITY)).not.toEqual(
+      EXPECTED_PRODUCER_AUTHORITY,
     );
     expect(sceneMemoryBrowserAuthorityMatches(staleBrowser, EXPECTED_BROWSER_AUTHORITY)).toBe(true);
+    expect(sceneMemoryBrowserAuthorityMatches({
+      ...report.browser,
+      product: 'Edg/999.123.4567.89',
+      revision: '@synthetic-future',
+      jsVersion: '99.1.2.3',
+    }, EXPECTED_BROWSER_AUTHORITY)).toBe(true);
     expect(sceneMemoryBrowserAuthorityMatches({
       ...report.browser, product: 'Chrome/151.0.4129.101',
     }, EXPECTED_BROWSER_AUTHORITY)).toBe(false);
     expect(sceneMemoryBrowserAuthorityMatches({
       ...report.browser, protocolVersion: '1.2',
     }, EXPECTED_BROWSER_AUTHORITY)).toBe(false);
-    expect(authorityProjection(report.inputs, HISTORICAL_PRODUCER_AUTHORITY)).toEqual(
-      HISTORICAL_PRODUCER_AUTHORITY,
+    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
+      EXPECTED_PRODUCER_AUTHORITY,
     );
     expect(sceneMemoryBrowserAuthorityMatches(report.browser, EXPECTED_BROWSER_AUTHORITY)).toBe(true);
   });

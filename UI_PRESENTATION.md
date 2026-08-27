@@ -57,23 +57,33 @@
 > `151.0.4129.107`, completed cleanup and stopped the serial campaign at 40/42. Only the phone and
 > desktop heap/DOM outcomes failed; Compendium, Slice, Glass and recovery did not run.
 >
-> The current worktree releases the avoidable closed-surface ownership. Production Inventory keeps
+> The repair releases the avoidable closed-surface ownership. Production Inventory keeps
 > its logical data, query, filters and page while closed, but mounts neither its hidden item-row tree
 > nor its six event subscriptions until open; Close removes both idempotently. The panel manager now
 > uses one delegated document capture owner for every registered opener and still restores focus to
 > the exact registered button whose nested element was clicked. A deliberately non-certifying dirty diagnostic
 > reduced phone/desktop maxima to 676/673 nodes and 71/70 listeners, below the unchanged 704/80
-> ceilings. Warm range, slope and every other resource outcome remained green. Only the fixed V8 and
-> aggregate heap bands remain above their historical ceilings, so one signed calibration source,
-> three independent clean no-retry candidates, a heap-only activation and a fresh certificate remain
-> pending. Edge `.107` is run provenance only; a compatible point update never moves a ruler.
+> ceilings. Warm range, slope and every other resource outcome remained green. Signed clean source
+> `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+> `a389646081f9fb5246825d1ac187eeb06504a8e4`) then supplied exactly
+> `20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2`, and
+> `20260827-phase4-repair-candidate3`. Each ran once with zero retries and complete cleanup on Edge
+> `.107` / CDP `1.3`. Across them, phone/desktop V8 maxima were 11,566,152 / 11,630,936 bytes,
+> aggregate maxima were 17,681,258 / 17,636,682 bytes, and nodes/listeners remained 676/71 and
+> 673/70. The reviewed worktree activation sets only 12 MiB (`12,582,912`) V8 and 18 MiB (`18,874,368`)
+> aggregate ceilings. Exact phone/desktop headroom is 1,016,760 / 951,976 V8 bytes and 1,193,110 /
+> 1,237,686 aggregate bytes; every other ceiling stays unchanged, and the `862a75b…` paired red
+> remains red on nodes/listeners. A signed activation source, a fresh
+> certificate and the restarted serial campaign remain pending. Edge `.107` is run provenance only;
+> a compatible point update never moves a ruler.
 >
 > Focused changed-source checks and directionally independent controls have exercised these bounded
-> repairs. The complete current browserless repair battery is green at 134 Vitest files / 1,466
+> repairs. The complete current browserless activation battery is green at 134 Vitest files / 1,469
 > passed / one intentional skip / zero failures, plus all TypeScript programs, `artunused`,
 > syntax/import selftests and the 887-module build. The final documentation/release-copy consistency
-> review and independent evidence/code whole-diff review are both CLEAR. Final producer/hash
-> confirmation and a new signed clean calibration source are next.
+> review and independent evidence/code whole-diff review are both CLEAR. The calibration source and
+> three candidates and activation controls are now exact; a signed activation source and fresh
+> certification remain next.
 > Current-input Slice retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > Signed-clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7`, which failed after 397,101 ms with 23 findings
@@ -169,8 +179,9 @@
 > existing Arc 1C paragraphs below are retained as historical pre-Engineering evidence. The
 > historical Engineering implementation and browser evidence were committed through `c4a02be`.
 > The protected-preview product/diagnostic correction described above is included in signed
-> `862a75b…`; `bb5dc7c…` remains the exact earlier red that exposed it. The current hidden-panel
-> repair still needs its own signed calibration source and fresh certificate IDs.
+> `862a75b…`; `bb5dc7c…` remains the exact earlier red that exposed it. Signed calibration source
+> `6c9ad855…` now owns the three clean repair candidates; heap-only activation and fresh certificate
+> IDs remain pending.
 > Retained no-retry Slice run `20260825013823076-822-b99fea33b17b` passed in 253,181 ms with
 > 0 findings and 10 screenshots; the full Glass Matrix separately passed in 64,222 ms across 12/12
 > viewports and 78/78 controls with none blocked/omitted and no findings, instrument failures, or

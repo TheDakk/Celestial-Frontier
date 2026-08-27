@@ -10,6 +10,42 @@ summary of it.
 
 ## Contents
 
+### `ARC1C_SCENEMEM_REPAIR_CALIBRATION_2026-08-27.md` and three calibration carriers — heap-only activation evidence
+
+Retains three independent clean current-product SceneMemory calibrations from commit
+`6c9ad85577bd90d6af883dd7b3f13556d24eb3ad`. Named runs
+`20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2` and
+`20260827-phase4-repair-candidate3` each ran once with zero automatic retries, completed 42/42
+calibration outcomes, kept source/build/producer authority stable, used unique browser targets and
+documents, and released browser/server/workspace-lock ownership. Their deterministic carriers are:
+
+- `ARC1C_SCENEMEM_REPAIR_CALIBRATION_CANDIDATE1_20260827.json.gz`: 22,278 compressed bytes,
+  SHA-256 `bd91cbbfba7daf7fd283f2f1d523a34ca0aed1b46a8d5acb6030889b80df75d1`; 305,457
+  decompressed bytes, SHA-256
+  `d447a5c76bcfbc1e9df87c51f0c35bc6e960c70f6afb31f8bdcf54765efcb39b`.
+- `ARC1C_SCENEMEM_REPAIR_CALIBRATION_CANDIDATE2_20260827.json.gz`: 22,268 compressed bytes,
+  SHA-256 `6f7d0a17cc60fda9c8c07d0e41d9206c1ea7d2c63233c0cc3494e03ecfb67a14`; 305,452
+  decompressed bytes, SHA-256
+  `e6ec574ddd5f475158d78bdd960dbd11541e16502b6a6bfce69a5484b34ba7da`.
+- `ARC1C_SCENEMEM_REPAIR_CALIBRATION_CANDIDATE3_20260827.json.gz`: 22,214 compressed bytes,
+  SHA-256 `6015b3620aadf55b3abdb807cdc19bb97b85b37e21b3f3d8ba2e6a1ddd59fc82`; 305,301
+  decompressed bytes, SHA-256
+  `52d54330efc5ca07ded8645fb1b33e029ed7da11cc18ae892c38e0a0e7ce08f7`.
+
+All three pass gzip integrity and deterministic `gzip -9 -n` reproduction. Independent raw-point
+recomputation found maxima of 11,566,152 V8 / 17,681,258 aggregate heap bytes on phone and
+11,630,936 / 17,636,682 on desktop. The activation therefore changes only the two heap fields per
+profile to 12 MiB / 18 MiB, with 951,976–1,237,686 bytes of strict headroom; every other ruler is
+unchanged. The exact metrics, source/producer/build/browser bindings, headroom, paired-red replay,
+boundary controls and claim limits are recorded in
+`ARC1C_SCENEMEM_REPAIR_CALIBRATION_2026-08-27.md`.
+
+All candidates used Microsoft Edge `151.0.4129.107` / CDP `1.3`. The exact build is provenance
+only: the reusable authority remains compatible Edge-family + CDP/capability/profile contracts,
+so routine Edge point updates never require this calibration to be repeated. These carriers are
+calibration-only and grant no exact-budget certificate, later campaign, HUMAN, hosted, integration,
+release, version or deployment authority.
+
 ### `ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz` — fixed-growth heap/hidden-panel SceneMemory red
 
 Retains named run `20260827-phase4-successor-scenemem` from clean signed source

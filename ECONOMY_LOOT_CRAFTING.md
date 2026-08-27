@@ -66,9 +66,18 @@
 > and 40/42 outcomes on Edge `151.0.4129.107`. Its only reds combined fixed heap growth with the
 > avoidable hidden surface. A non-certifying dirty diagnostic reduced phone/desktop maxima to
 > 676/673 nodes and 71/70 listeners, below the unchanged 704/80 ceilings; warm range, slope and all
-> other resource outcomes remained green. Only absolute V8 and aggregate heap ceilings require a
-> three-clean-candidate, heap-only recalibration before fresh certification. Edge `.107` is
-> provenance, not a version pin or a rebaseline trigger.
+> other resource outcomes remained green. Signed source
+> `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+> `a389646081f9fb5246825d1ac187eeb06504a8e4`) supplied exactly
+> `20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2`, and
+> `20260827-phase4-repair-candidate3`; each ran once with zero retries and complete cleanup on
+> Edge `.107` / CDP `1.3`. Their phone/desktop V8 maxima were 11,566,152 / 11,630,936 bytes and
+> aggregate maxima were 17,681,258 / 17,636,682 bytes; nodes/listeners stayed 676/71 and 673/70.
+> The reviewed worktree activation changes only V8 to 12 MiB (`12,582,912`) and aggregate heap to
+> 18 MiB (`18,874,368`), providing exact phone/desktop headroom of 1,016,760 / 951,976 and
+> 1,193,110 / 1,237,686 bytes respectively. Every other ceiling stays unchanged, and the preserved
+> `862a75b…` paired red still fails nodes/listeners. A signed activation source and fresh certification
+> remain pending. Edge `.107` is provenance, not a version pin or a rebaseline trigger.
 >
 > **At the Arc 2 boundary, still open and deliberately not fabricated:** its economy trace is
 > source-neutral and reports `sourceModelStatus: arc3-deferred`. Arc 3's current overlay above now

@@ -149,7 +149,7 @@
 > `20260826-slice-repair-certification` 78/78 with complete lifecycle and named verification in one
 > attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`). Those exact bytes
 > remain historical for that producer; Edge `.107` is provenance only.
-> The complete current repair battery is green at 134 Vitest files / 1,466 passed / one intentional
+> The complete current activation battery is green at 134 Vitest files / 1,469 passed / one intentional
 > skip / zero failures, plus all TypeScript programs, `artunused` and the 887-module Vite build. The
 > explicitly historical signed-red browserless checkpoint was green at the same 134 files / 1,458
 > passed / one intentional skip / zero failures, with syntax/import selftests. Prior implementation/
@@ -173,12 +173,21 @@
 > `20260827165427809-91398-352d7132df` reduced nodes to 676/673 and listeners to 71/70, green
 > under unchanged 704/80 ceilings, while fixed V8/aggregate growth remained. That diagnostic is not
 > a candidate or certificate. The preserved `862a75b…` report is the paired broken baseline and must
-> remain red on nodes/listeners after any heap-only activation. Exactly three independent clean,
-> no-retry candidates on one unchanged signed producer, raw replay and strict headroom are required
-> before only the V8-used and aggregate ceilings may move. A compatible Edge point update is
-> provenance only and never triggers this calibration or any threshold change. A new signed clean
-> calibration source and fresh certificate IDs remain pending. Tracked Compendium and SceneMemory
-> bindings must match that clean source; previous certificates remain historical. Current-input Slice retains
+> remain red on nodes/listeners after any heap-only activation. Signed calibration source
+> `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+> `a389646081f9fb5246825d1ac187eeb06504a8e4`) supplied exactly
+> `20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2`, and
+> `20260827-phase4-repair-candidate3`. Each ran once with zero retries and complete browser/server/
+> workspace-lock cleanup on Edge `.107` / CDP `1.3`. Across them, phone/desktop V8 maxima were
+> 11,566,152 / 11,630,936 bytes, aggregate maxima were 17,681,258 / 17,636,682 bytes, and
+> nodes/listeners stayed 676/71 and 673/70. The reviewed worktree activation changes only V8 to
+> 12 MiB (`12,582,912`) and aggregate heap to 18 MiB (`18,874,368`), providing exact phone/desktop
+> headroom of 1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes. Every other
+> ceiling stays unchanged, and the paired red retains its node/listener failures. A compatible Edge
+> point update is provenance only and never triggers this calibration or any threshold change.
+> The activation worktree/tests are green; a signed activation source and fresh certificate IDs remain pending.
+> Tracked Compendium and SceneMemory bindings must match that activation source; previous
+> certificates remain historical. Current-input Slice retains
 > six one-attempt/zero-retry reds. Signed-clean
 > `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7` on Edge `.107`: 397,101 ms, 23 findings /
@@ -194,9 +203,9 @@
 > judge fresh behavior/geometry rather than a version pin, so a browser update alone never
 > rebaselines or moves ceilings. Compendium and SceneMemory own separate sealed Edge-family + CDP
 > `1.3` capability/profile authorities; version tolerance changed no numeric budget in either ruler.
-> The current worktree is not a final frozen producer: SceneMemory must finish its three-candidate and
-> paired-red calibration, then any supported heap-only activation, while both eventual exact-producer
-> certificates remain open. Root Gate A separately accepts
+> The current worktree is not a final frozen producer: SceneMemory's three-candidate calibration is
+> complete, while its heap-only activation and both eventual exact-producer certificates remain
+> open. Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
 > never repins, rebaselines or moves a root threshold. Post-start audio, the exact nine-stage/14-burn ledger, current Glass and
@@ -1210,7 +1219,9 @@ carrier remains unchanged; SceneMemory derives its input by changing only the ex
 to `null` and preserving every other field, then certifies only the Arc 1C preview/resource
 lifecycle. It does not inherit a loaded-Arc-3 requirement. Signed predecessor `bb5dc7c…` exposed
 this coupling and remains preserved terminal-red. Signed successor `862a75b…` reached the separate
-40/42 heap/DOM red; a new signed clean calibration source and fresh certificate IDs remain open.
+40/42 heap/DOM red. Signed `6c9ad855…` supplied the three clean repair-calibration candidates and
+selected the pending 12 MiB V8 /18 MiB aggregate ceilings; activation and fresh certificate IDs
+remain open.
 
 ### 4.8 F3 — persistence authority, split stores, and receipts
 
