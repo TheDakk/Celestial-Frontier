@@ -1,11 +1,20 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-> **2026-08-27 Final4 Glass recipe-oracle correction — current repair:** `earpiece`,
+> **2026-08-27 Final4 Glass recipe-oracle correction — implemented in signed Final5 source:** `earpiece`,
 > `diplobeacon` and `rl-mind` already carry `contact` effects consumed by the live
 > contact/capture-support capability and odds projection. Final4 Glass was wrong because its
 > independent recipe oracle still classified those three effects as unavailable. The repair marks
 > their oracle effect support live; it changes no product behavior, recipe availability, cost,
 > prerequisite, capacity/headroom rule, item definition or progression.
+
+> Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` then supplied Final5
+> Layout 787/787 and source-bound SceneMemory 42/42. Compendium ran once and stopped
+> `instrument-fail` with 0/78 retained product outcomes because its cold-key oracle compared the
+> cardinality of two eight-key sets instead of the errored row's exact membership. It was not
+> retried; Slice, Glass and recovery did not start, and no Compendium product behavior was judged.
+> The bounded membership-oracle repair leaves all economy/product behavior, producer authority and
+> numeric ceilings unchanged. It now requires a newly signed clean Final6 restart from Layout;
+> Final5 cannot resume. Edge `.107` / CDP `1.3` remains provenance only.
 
 > **2026-08-26 locale-independent economy ordering — current local candidate:** the source-neutral
 > Arc 2 ledger no longer calls ambient `String.prototype.localeCompare()` when it canonicalizes
@@ -96,9 +105,11 @@
 > post-`7362a0e…`, pre-Final2 boundary, the repaired working tree changed only evidence oracles,
 > focused tests and evidence/documentation carriers and still required a signed clean restart from
 > Layout. Signed `041d1cf…` later supplied Final4 Layout 787/787, SceneMemory 42/42, Compendium
-> 78/78 and Slice PASS before Glass stopped on preserved instrument evidence. The current bounded
-> Glass/product repair remains uncertified and requires a fresh signed Final5 chain from Layout;
-> current Glass, recovery, whole-Gate, hosted, HUMAN and release authority remain open. Compatible
+> 78/78 and Slice PASS before Glass stopped on preserved instrument evidence. Its bounded repair
+> became signed `39e4f20…`; Final5 then passed Layout and SceneMemory before Compendium stopped on
+> the membership-oracle instrument defect described above. A fresh signed Final6 chain from Layout
+> is required; current Compendium product, Slice, Glass, recovery, whole-Gate, hosted, HUMAN and
+> release authority remain open. Compatible
 > Edge or Chrome point updates remain provenance only and never trigger calibration, rebaselining,
 > repinning or a threshold change.
 >

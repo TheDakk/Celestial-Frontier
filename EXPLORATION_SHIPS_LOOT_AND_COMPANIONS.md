@@ -11,19 +11,23 @@ expeditions, breeding, live combat and Guardians remain
 **not implemented** unless a row below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
 
-> **2026-08-27 Final4 Glass recipe-oracle correction — current repair:** `earpiece`,
+> **2026-08-27 Final4 Glass recipe-oracle correction — implemented in signed Final5 source:** `earpiece`,
 > `diplobeacon` and `rl-mind` already carry `contact` effects consumed by the live
 > contact/capture-support capability and odds projection. Final4 Glass was wrong because its
 > independent Engineering recipe oracle still classified those three effects as unavailable. The
 > repair marks their oracle effect support live; it changes no product behavior, recipe availability,
 > cost, prerequisite, capacity/headroom rule, item definition or progression.
 >
-> Signed clean source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied Final4 Layout
-> 787/787, SceneMemory 42/42, Compendium 78/78 and Slice PASS with ten screenshots and zero findings;
-> every named verifier passed. Glass then ran once across all 12 viewports, retained 46 findings and
-> five instrument failures, and stopped without retry before recovery. The bounded oracle/product
-> repair remains uncertified until one new signed clean source completes a fresh Final5 chain from
-> Layout. No current-source Glass, recovery, whole-Gate, hosted, HUMAN or release claim exists.
+> Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` contains that repair. Its
+> Final5 Layout report passed 787/787 and its source-bound SceneMemory report passed 42/42.
+> Compendium then ran once and stopped `instrument-fail` with 0/78 retained product outcomes because
+> its cold-key oracle compared two eight-key counts instead of the errored row's exact cache
+> membership. It was not retried; Slice, Glass and recovery did not start, and the run made no
+> Compendium product judgment. The bounded membership repair changes only the Compendium collector,
+> outcome contract, measurement authority and budget-file hash; producer authority and numeric
+> ceilings remain unchanged. A newly signed clean Final6 chain must restart at Layout; Final5 cannot
+> resume. No current Compendium product PASS, Slice, Glass, recovery, whole-Gate, hosted, HUMAN or
+> release claim exists. Edge `.107` / CDP `1.3` remains provenance only.
 
 > **Historical post-`7362a0e…`, pre-Final2 evidence/repair boundary:** signed evidence source
 > `7362a0ea32e90b24e4988c81d566b82e20549e66` passed standalone SceneMemory 42/42 and its named
@@ -58,8 +62,8 @@ does not silently promote planned behavior into the in-game Guide.
 > review found additional work in canonical world identity, F4/storage convergence, repository
 > races, texture cleanup, complete settings/read-only coverage and bound evidence sequencing.
 > Those repairs remain part of the current source. At that sixth-red boundary, no certifying Slice
-> PASS, Glass result or recovery certificate existed; the Final4 successor and pending Final5 state
-> are recorded in the current overlay above.
+> PASS, Glass result or recovery certificate existed; the later Final4 and Final5 history plus the
+> required Final6 restart are recorded in the current overlay above.
 > F4 convergence now latches and schedules its single replacement before fallible repaint work. If
 > authority is lost with full Shipyard open, the surface immediately becomes one read-only preview
 > with zero Engineering actions and exact app/DOM/diagnostic identity; a repaint error is witnessed

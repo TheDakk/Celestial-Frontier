@@ -10,6 +10,61 @@ summary of it.
 
 ## Contents
 
+### Signed `39e4f20…` Final5 campaign — Layout and SceneMemory green, then Compendium instrument stop
+
+Signed source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` (tree
+`506127c7c3c6694e9b8befe71cc3c06db56b6028`, parent `041d1cf…`) began clean on
+`openai/mac` and remained byte-stable through the source-bound stages. Layout report
+`20260827-phase4-final5-39e4f20fb35e-layout` passed 787/787 sealed outcomes across all ten
+viewports in 76,129 ms. SceneMemory report
+`20260827-phase4-final5-39e4f20fb35e-scenemem` passed 42/42 with zero findings in 9,980 ms,
+complete browser/server/workspace-lock cleanup and exact clean begin/end source identity. The
+associated Layout schema still embeds no Git/source identity, so its carrier is
+chronology-associated result provenance rather than a reusable standalone exact-source
+predecessor.
+
+Compendium report `20260827-phase4-final5-39e4f20fb35e-compendium` then ran once and stopped
+`instrument-fail` after 3,237 ms. It retained zero product outcomes out of 78 expected, one
+instrument finding—`phone: stable first open did not prove a mounted cold fixture key`—a partial
+non-certifying phone profile, no desktop profile, an empty review packet and zero PNGs. Its last
+completed stage was `producer error publication`; it failed at `producer error cold-key proof`.
+The report binds complete lifecycle cleanup, exact unchanged clean source at begin/end and the
+then-current budget `858c2503ed94770e5cf0595a9e3ad676f87be83806fd58cbf924f1ea2158b8f6`
+with matching producer `bf9ad0b6623913bfff5b5e79a8ed9ac7dbe49424b608bc9fee8621e5c4874dcb`.
+It emitted no separate stdout log. There was no automatic retry, and Slice, Glass and recovery
+correctly did not start. This carrier makes no Compendium product-behavior judgment.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_010734681.json.gz` preserves the Final5 Layout
+  report. The gzip is 4,666 bytes with SHA-256
+  `25ae18625393a546b655fb63b61acf2ddf05ad0fdc204b9b412aea5fae67bd84`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `59caff9589373d1ae739013feff9a92859d8ee2d579aca3418550e3d485be78e`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_010821484.json.gz` preserves the Final5
+  SceneMemory report. The gzip is 22,290 bytes with SHA-256
+  `d7725f545251ffd985c6ab84cb1990289c01041e6ecfe907fef74c42d94d8c97`; decompressed JSON is
+  305,566 bytes with SHA-256
+  `2fb765c87ca6c85fec9d4a949abb5971e6cb4ee3bea2c44d44e7969fd23c6b33`.
+- `COMPENDIUMMEM_CURRENT_INPUT_INSTRUMENT_FAILURE_20260828_010936591.json.gz` preserves the
+  Final5 Compendium report. The gzip is 9,117 bytes with SHA-256
+  `555fcb6682b6995df23b511f2f675886226306efe9552ddfd4965d76688c34b2`; decompressed JSON is
+  106,942 bytes with SHA-256
+  `2fa2957d0fd557512ea9cbee1483ba560ac72740d8566332614ca73f406e03be`.
+
+The failed oracle compared cardinalities: it required the eight mounted distinct fixture keys to
+outnumber the eight pre-arm cached Planetside keys. Equal counts cannot prove equal membership.
+The report's direct evidence already showed that the first errored row's exact visual key was absent
+from the pre-arm cached-key set, while publication contained exactly one errored row and one
+`jobError`. The bounded repair therefore proves exact set membership rather than `8 > 8`, and its
+paired controls reject a cached/wrong key. It changes the current collector authority to
+`c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab`, outcome contract to
+`ac7eea3939c32f893620e28fde58a8c12bb21d788d029cb7db60bc2eda216d17`, measurement authority
+to `28b06f3cb26cd5570fa7bbe7565c410e30db3dd11bb0960919bb2e34cda5276c`, and live budget-file
+SHA-256 to `3e6607420342b878bf3f1bc0be562eed72bcbd5206534eda3c85d3ff1c652ae5`.
+Producer authority and every numeric ceiling remain unchanged. Because those evidence bytes now
+differ from signed Final5, the next campaign is a newly signed clean Final6 checkpoint and a
+complete fresh chain from Layout; Final5 cannot resume. Microsoft Edge `151.0.4129.107` / CDP
+`1.3` remains per-run provenance only, not a pin, calibration event or rebaseline trigger.
+
 ### Signed `041d1cf…` final4 campaign — four green predecessors, then Glass instrument stop
 
 Signed source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` (tree

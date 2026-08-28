@@ -11,6 +11,19 @@ roughly by how often they have bitten.
 
 ---
 
+⚠⚠ **PROVE IDENTITY WITH EXACT SET MEMBERSHIP, NOT CARDINALITY** (2026-08-27). Final5's
+Compendium instrument saw eight mounted fixture keys and eight cached Planetside keys, so its
+`mountedDistinctVisualKeys > cachedKeyCount` heuristic failed even though the errored row's exact
+visual key was absent from the pre-arm cache. Two sets can have the same size and different members;
+a count inequality is neither necessary nor sufficient to prove that one particular identity is
+cold or new.
+
+Retain and compare the actual keys. A cold-key proof must name the exact row/key, require that key
+to be absent from the pre-arm set, and bind the corresponding publication, producer error and job
+error. Negative-control cached/wrong-key membership directly, preserve the row/key/error/job
+evidence, and require restoration to pass. Aggregate counts remain useful resource facts, but they
+cannot substitute for identity.
+
 ⚠⚠ **SETTLE BEFORE GEOMETRY; EACH CONTROL OWNS ITS HIT AND RESTORES THE VIEW IT MOVED**
 (2026-08-27). Final4 Glass showed that a generic audit can leave a card or panel scroller displaced,
 then make a later scoped control judge geometry produced by the earlier check rather than the

@@ -3029,6 +3029,123 @@ export async function runCompendiumMemSelftest() {
       && producerErrorRecoverable(witness, measurement.profile),
     `${measurement.profile} synthetic stable-open producer witness was not fully green`);
   }
+  const producerObservations = (group) => [
+    ...group.falsyObservations, group.accepted,
+  ].filter(Boolean);
+  const offsetProducerArtHistory = (observation, added) => {
+    observation.art.cachedKeyCount += added;
+    observation.art.live.cacheEntries += added;
+    observation.art.totals.jobStarts += added;
+    observation.art.totals.jobCompletes += added;
+  };
+  const offsetProducerLeaseHistory = (observation, added) => {
+    observation.art.totals.leaseAcquires += added;
+    observation.art.totals.releases += added;
+  };
+  const addPreArmCachedKeys = (witness, keys) => {
+    const acceptedPre = witness.preArm.accepted;
+    const before = new Set(acceptedPre.cachedKeys);
+    for (const key of keys) before.add(key);
+    const added = before.size - acceptedPre.cachedKeys.length;
+    for (const observation of producerObservations(witness.preArm)) {
+      const observationKeys = new Set(observation.cachedKeys);
+      for (const key of keys) observationKeys.add(key);
+      observation.cachedKeys = [...observationKeys].sort();
+      offsetProducerArtHistory(observation, added);
+      offsetProducerLeaseHistory(observation, added);
+    }
+    return added;
+  };
+  const cacheProducerKeysBeforeArm = (witness, keys) => {
+    const added = addPreArmCachedKeys(witness, keys);
+    for (const observation of witness.publication.falsyObservations) {
+      offsetProducerArtHistory(observation, added);
+    }
+    for (const observation of [
+      ...producerObservations(witness.publication),
+      ...producerObservations(witness.recovery),
+    ]) {
+      offsetProducerLeaseHistory(observation, added);
+    }
+  };
+  const carryProducerCacheHistory = (witness, keys) => {
+    const added = addPreArmCachedKeys(witness, keys);
+    for (const observation of [
+      ...producerObservations(witness.publication),
+      ...producerObservations(witness.recovery),
+    ]) {
+      offsetProducerArtHistory(observation, added);
+      offsetProducerLeaseHistory(observation, added);
+    }
+  };
+  const producerHistoryChronological = (witness) => {
+    const observations = [
+      ...producerObservations(witness.preArm),
+      ...producerObservations(witness.publication),
+      ...producerObservations(witness.recovery),
+    ];
+    return observations.every((observation, index) => {
+      if (index === 0) return true;
+      const prior = observations[index - 1].art;
+      return observation.art.cachedKeyCount >= prior.cachedKeyCount
+        && observation.art.live.cacheEntries >= prior.live.cacheEntries
+        && Object.keys(prior.totals).every((key) =>
+          observation.art.totals[key] >= prior.totals[key]);
+    });
+  };
+  const equalCardinalityCold = clone(phone.phases.producerErrorWitness);
+  carryProducerCacheHistory(equalCardinalityCold, Array.from(
+    { length: equalCardinalityCold.publication.accepted.mountedRowCount
+      - equalCardinalityCold.preArm.accepted.cachedKeys.length },
+    (_, index) => `unrelated-prearm-key-${index}`,
+  ));
+  const largerPreCacheCold = clone(equalCardinalityCold);
+  carryProducerCacheHistory(largerPreCacheCold, ['one-more-unrelated-prearm-key']);
+  const allMountedWarm = clone(phone.phases.producerErrorWitness);
+  cacheProducerKeysBeforeArm(
+    allMountedWarm, allMountedWarm.publication.accepted.rows.map((row) => row.visualKey),
+  );
+  const rowZeroWarm = clone(phone.phases.producerErrorWitness);
+  cacheProducerKeysBeforeArm(rowZeroWarm, [rowZeroWarm.publication.accepted.rows[0].visualKey]);
+  assert(producerErrorColdProof(equalCardinalityCold, 'phone')
+    && producerErrorContained(equalCardinalityCold, 'phone')
+    && producerErrorRecoverable(equalCardinalityCold, 'phone')
+    && producerHistoryChronological(equalCardinalityCold)
+    && producerErrorColdProof(largerPreCacheCold, 'phone')
+    && producerErrorContained(largerPreCacheCold, 'phone')
+    && producerErrorRecoverable(largerPreCacheCold, 'phone')
+    && producerHistoryChronological(largerPreCacheCold)
+    && !producerErrorColdProof(allMountedWarm, 'phone')
+    && !producerErrorColdProof(rowZeroWarm, 'phone')
+    && producerHistoryChronological(rowZeroWarm),
+  'exact cold-key lifecycle depended on unrelated cache cardinality or lost stable row-zero ownership');
+  const mixedWarmCold = clone(phone.phases.producerErrorWitness);
+  cacheProducerKeysBeforeArm(
+    mixedWarmCold, mixedWarmCold.publication.accepted.rows.slice(-5).map((row) => row.visualKey),
+  );
+  const insufficientColdStarts = clone(mixedWarmCold);
+  const insufficientArt = insufficientColdStarts.publication.accepted.art;
+  insufficientArt.totals.jobStarts--;
+  insufficientArt.totals.jobCompletes--;
+  insufficientArt.cachedKeyCount--;
+  insufficientArt.live.cacheEntries--;
+  const insufficientPreArt = insufficientColdStarts.preArm.accepted.art;
+  const insufficientColdKeyCount = new Set(insufficientColdStarts.publication.accepted.rows
+    .map((row) => row.visualKey)
+    .filter((key) => !insufficientColdStarts.preArm.accepted.cachedKeys.includes(key))).size;
+  const insufficientStartDelta = insufficientArt.totals.jobStarts
+    - insufficientPreArt.totals.jobStarts;
+  const insufficientCompleteDelta = insufficientArt.totals.jobCompletes
+    - insufficientPreArt.totals.jobCompletes;
+  const insufficientErrorDelta = insufficientArt.totals.jobErrors
+    - insufficientPreArt.totals.jobErrors;
+  assert(producerErrorContained(mixedWarmCold, 'phone')
+    && producerHistoryChronological(mixedWarmCold)
+    && producerHistoryChronological(insufficientColdStarts)
+    && insufficientStartDelta === insufficientColdKeyCount - 1
+    && insufficientStartDelta === insufficientCompleteDelta + insufficientErrorDelta
+    && !producerErrorContained(insufficientColdStarts, 'phone'),
+  'mixed warm/cold publication did not bind job starts to the exact cold mounted-key count');
   const nonzeroSettledPreArmSubscriber = clone(
     phone.phases.producerErrorWitness.preArm.accepted,
   );
@@ -3482,19 +3599,14 @@ export async function runCompendiumMemSelftest() {
       ));
       w.preArm.accepted.cachedKeys.sort();
     }, 'error-contained'],
-    ['producer error cold-key proof missing', (m) => {
+    ['producer error all mounted keys were already warm', (m) => {
       const w = m.phases.producerErrorWitness;
-      w.publication.accepted.rows.forEach((row, index) => {
-        row.visualKey = `prearm-key-${index % w.preArm.accepted.art.cachedKeyCount}`;
-      });
-      w.publication.accepted.mountedDistinctVisualKeys = w.preArm.accepted.art.cachedKeyCount;
+      cacheProducerKeysBeforeArm(
+        w, w.publication.accepted.rows.map((row) => row.visualKey),
+      );
     }, 'error-contained'],
     ['producer error invariant row zero was already warm', (m) => {
-      const pre = m.phases.producerErrorWitness.preArm.accepted;
-      pre.cachedKeys.push('producer-key-0');
-      pre.cachedKeys.sort();
-      pre.art.cachedKeyCount++;
-      pre.art.live.cacheEntries++;
+      cacheProducerKeysBeforeArm(m.phases.producerErrorWitness, ['producer-key-0']);
     }, 'error-contained'],
     ['producer error landed on a churnable nonzero row', (m) => {
       const publication = m.phases.producerErrorWitness.publication.accepted;
@@ -4234,10 +4346,12 @@ export async function runCompendiumMemSelftest() {
   assert(!verifyTerminalReport(staleRecoveryPass, 'selftest-current').ok,
     'a stale PASS ignored recovery without a new producer completion');
   const noColdProofReport = completeProductFailureReport(clone(phone));
-  const noColdPublication = noColdProofReport.profiles.phone.phases
-    .producerErrorWitness.publication.accepted;
-  noColdPublication.rows.forEach((row, index) => { row.visualKey = `prearm-key-${index % 4}`; });
-  noColdPublication.mountedDistinctVisualKeys = 4;
+  const noColdProofWitness = noColdProofReport.profiles.phone.phases
+    .producerErrorWitness;
+  cacheProducerKeysBeforeArm(
+    noColdProofWitness,
+    noColdProofWitness.publication.accepted.rows.map((row) => row.visualKey),
+  );
   noColdProofReport.outcomes = [
     ...evaluateProfile(noColdProofReport.profiles.phone, budget, fixture),
     ...evaluateProfile(desktop, budget, fixture),
@@ -4245,14 +4359,11 @@ export async function runCompendiumMemSelftest() {
   noColdProofReport.findings = noColdProofReport.outcomes
     .filter((outcome) => outcome.status === 'fail').map((outcome) => outcome.diagnosis);
   assert(!verifyTerminalReport(noColdProofReport, 'selftest-current').ok,
-    'a complete report certified product semantics without a stable mounted cold-key proof');
+    'a stale complete report certified an exact distinct all-warm mounted set');
   const warmInvariantRowPass = clone(report);
-  const warmInvariantPre = warmInvariantRowPass.profiles.phone.phases
-    .producerErrorWitness.preArm.accepted;
-  warmInvariantPre.cachedKeys.push('producer-key-0');
-  warmInvariantPre.cachedKeys.sort();
-  warmInvariantPre.art.cachedKeyCount++;
-  warmInvariantPre.art.live.cacheEntries++;
+  const warmInvariantWitness = warmInvariantRowPass.profiles.phone.phases
+    .producerErrorWitness;
+  cacheProducerKeysBeforeArm(warmInvariantWitness, ['producer-key-0']);
   assert(!verifyTerminalReport(warmInvariantRowPass, 'selftest-current').ok,
     'a stale PASS armed the one-shot producer failure with invariant row zero already warm');
   const wrongErrorRowPhone = clone(phone);
@@ -4616,6 +4727,61 @@ export async function runCompendiumMemSelftest() {
   };
   assert(verifyTerminalReport(publicationPartial, 'selftest-current').ok,
     'a stable-open pending publication lost its progressive falsies/stage/command evidence');
+  const healthyColdProofFailure = clone(publicationPartial);
+  const healthyColdProofWitness = clone(fullPhoneProducerWitness);
+  healthyColdProofWitness.answerability = null;
+  healthyColdProofWitness.closeTarget = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  healthyColdProofWitness.recoveryOpenTarget = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  healthyColdProofWitness.recovery = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  healthyColdProofWitness.commands = fullPhoneProducerWitness.commands.filter((command) =>
+    [producerPartialStages.preArm, producerPartialStages.openTarget,
+      producerPartialStages.publication].includes(command.label)).map(clone);
+  const healthyColdProofCompleted = [
+    ...bootSnapshotStages, ...fixtureSetupStages,
+    ...producerPartialStages.sequence.slice(
+      0, producerPartialStages.sequence.indexOf(producerPartialStages.coldProof),
+    ),
+  ];
+  healthyColdProofFailure.findings = [
+    'instrument: phone producer error cold-key proof: local validation failed',
+  ];
+  healthyColdProofFailure.partialFailure = {
+    schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: 'phone',
+    lastCompletedStage: producerPartialStages.publication,
+    failingStage: producerPartialStages.coldProof,
+    command: null,
+  };
+  healthyColdProofFailure.profiles.phone = {
+    schema: PARTIAL_PROFILE_SCHEMA, profile: 'phone', viewport: { ...phoneViewport },
+    evidenceStatus: 'partial-non-certifying',
+    lastCompletedStage: producerPartialStages.publication,
+    failingStage: producerPartialStages.coldProof,
+    completedStages: healthyColdProofCompleted,
+    commandLedger: clone(healthyColdProofWitness.commands),
+    producerErrorWitness: healthyColdProofWitness,
+    filterTransitions: [], reviewPacket: [],
+  };
+  const honestColdProofFailure = clone(healthyColdProofFailure);
+  const honestColdProofWitness = honestColdProofFailure.profiles.phone
+    .producerErrorWitness;
+  cacheProducerKeysBeforeArm(
+    honestColdProofWitness,
+    [honestColdProofWitness.publication.accepted.rows[0].visualKey],
+  );
+  const honestColdProofCheck = verifyTerminalReport(
+    honestColdProofFailure, 'selftest-current',
+  );
+  assert(producerHistoryChronological(honestColdProofWitness)
+    && honestColdProofCheck.ok,
+    `a truthful coldProof-stage failure was rejected: ${honestColdProofCheck.errors.join('; ')}`);
+  assert(!verifyTerminalReport(healthyColdProofFailure, 'selftest-current').ok,
+    'a partial report labeled coldProof as failed while its retained predicate was healthy');
   const oldMultiScrollAmbiguity = clone(publicationPartial);
   oldMultiScrollAmbiguity.profiles.phone.completedStages.push('scroll toward row 1000');
   oldMultiScrollAmbiguity.profiles.phone.lastCompletedStage = 'scroll toward row 1000';

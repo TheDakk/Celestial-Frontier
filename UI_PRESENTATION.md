@@ -32,13 +32,17 @@
 > least 4.5:1 even over the brightest supported glass rather than depending on the translucent panel
 > behind it.
 >
-> Signed clean source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` later passed Final4 Layout
-> 787/787, SceneMemory 42/42, Compendium 78/78 and Slice with ten screenshots and zero findings;
-> every named verifier passed. Glass then ran once across all 12 viewports, retained 46 findings
-> and five instrument failures, and stopped without retry before recovery. The bounded presentation
-> and harness repair described here remains uncertified until one new signed clean source completes
-> a fresh Final5 chain from Layout. Edge `.107` / CDP `1.3` is provenance only, not a rebaseline or
-> threshold key, and no current-source Glass, recovery, whole-Gate, HUMAN or release claim exists.
+> Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` contains that bounded
+> Final4 presentation/harness repair. Its Final5 Layout report passed 787/787 and its source-bound
+> SceneMemory report passed 42/42. Compendium then ran once, stopped `instrument-fail` at 0/78
+> retained product outcomes, and was not retried; Slice, Glass and recovery did not start. The
+> instrument compared eight mounted keys with eight cached keys even though the errored row's exact
+> visual key was absent from the cache. The bounded exact-membership repair changes Compendium
+> collector/outcome-contract/measurement authorities and budget-file SHA only; producer
+> `bf9ad0b6…4dcb` and all numeric ceilings stay fixed. It requires a newly signed clean Final6
+> restart from Layout; Final5 cannot resume and made no Compendium product judgment. Edge `.107` /
+> CDP `1.3` is provenance only, not a rebaseline or threshold key, and no current-source
+> Compendium PASS, Slice, Glass, recovery, whole-Gate, HUMAN or release claim exists.
 >
 > Read-only persistence authority now intercepts every ordinary save-mutating Settings outcome:
 > **Sound**, **Volume**, **Creature voices**, **Text size**, **Text tone**, **Font**, **Star charts**,
@@ -130,8 +134,8 @@
 > each retain a separate source-derived capability contract, producer binding and fixed ruler. Exact
 > browser versions are provenance, and a compatible Edge or Chrome point update alone never
 > rebaselines, repins or moves ceilings. At that sixth-red boundary, no certifying Slice PASS, Glass
-> result or recovery certificate existed; the Final4 successor history and pending Final5 authority
-> are stated in the current overlay above.
+> result or recovery certificate existed; the later Final4 and Final5 history plus current Final6
+> restart boundary are stated in the overlay above.
 
 > **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
 > 2026-08-27 overlay does not supersede it:** the native Survey card now
@@ -204,8 +208,8 @@
 > `862a75b…`; `bb5dc7c…` remains the exact earlier red that exposed it. Signed calibration source
 > `6c9ad855…` owns the three clean repair candidates; signed `4a54c0d…` owns the heap-only activation.
 > Signed `7362a0e…` later supplied the exact standalone and serial certificates, followed by the
-> preserved Slice harness red summarized above; the repaired-source full restart remains the current
-> evidence requirement.
+> preserved Slice harness red summarized above. Later Final4/Final5 history supersedes that boundary;
+> the current evidence requirement is fresh Final6 from Layout after the exact-membership repair.
 > Retained no-retry Slice run `20260825013823076-822-b99fea33b17b` passed in 253,181 ms with
 > 0 findings and 10 screenshots; the full Glass Matrix separately passed in 64,222 ms across 12/12
 > viewports and 78/78 controls with none blocked/omitted and no findings, instrument failures, or
