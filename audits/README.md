@@ -10,11 +10,58 @@ summary of it.
 
 ## Contents
 
-### Current Final11 assessor-repair follow-up — immutable failure retained, current replay green
+### Signed `5097345…` Final12 campaign — three green predecessors, then Slice mutation-control stop
+
+Signed clean source `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+`609e92c6278f43ac3983b97ffe121493bfedaf68`, parent `12d826a…`) remained clean and unchanged
+through every completed Final12 stage. Layout
+`20260828-phase4-final12-509734533dd4-layout` passed 787/787 sealed outcomes across ten viewports
+in 76,474 ms. Source-bound SceneMemory
+`20260828-phase4-final12-509734533dd4-scenemem` passed 42/42 in 9,974 ms. Source-bound Compendium
+`20260828-phase4-final12-509734533dd4-compendium` passed 78/78 in 43,804 ms, with zero findings
+or blocked outcomes and six exact review-PNG bindings.
+
+Slice `20260828-phase4-final12-509734533dd4-slice` then ran once for 414,198 ms and ended stored
+`fail`, parent/child exit `1/1`, with one finding in the single `arc-4-stale-convergence` scope.
+The real-path assessment itself was wholly green: `assessment.ok` was true and every main
+acquisition, empty-CAS, no-mutation, exact-authority, convergence-release, read-only reload,
+Arc-5 preservation and one-native-action check passed. The stop came from the
+`witnessAuthorityControl` negative control: coordinating the before/after `sessionOrdinal` mutation
+correctly made `convergenceRelease` false, but also made the top-level `oldUiConvergence` false. The
+control was therefore double-red instead of isolating only `convergenceRelease`, and the fail-closed
+isolation
+check stopped the campaign. This is an instrument mutation-control coupling, not a demonstrated
+product failure. There was no automatic retry; Glass and Recovery correctly did not start, so
+Final12 grants no Glass, Recovery, HUMAN, hosted, integration, version, release or deployment
+authority.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_140426642.json.gz`: 4,668 compressed bytes,
+  SHA-256 `daebe2ef62e3e318b3b13e74e4324b67e14255dc07b07f3a5f5ae23080c55e78`; 106,062 decompressed
+  bytes, SHA-256 `309c591414980ca4d839478c4963ad9fe68478ce9d98d8d3fb7d9bd2d6a9fdc4`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_140504682.json.gz`: 22,288 compressed bytes,
+  SHA-256 `3834ab2603a8c3b781d58542009f89e9fc5b2c9617c25bb7bebaa82e075b74fa`; 305,506 decompressed
+  bytes, SHA-256 `b22e90bc2e443e42b6790591c58292f16249cbeb8b8da464e7c7d1534e4cf7ac`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_140612082.json.gz`: 443,335 compressed bytes,
+  SHA-256 `a2c235cc33b1de1f3b07f461cd986febcf4e6c95f113338588049021fd0a3a7a`; 8,562,987
+  decompressed bytes, SHA-256 `1d4e5e59af3d7b07d14bc63a25a8f5ff58a6fae99b5481e9e28d7334a8ea9c7c`.
+- `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260828_141326745.json.gz`: 28,329 compressed bytes,
+  SHA-256 `f90f47a50730fc25267e59f3aab8075265b1a3c7296d614e71d2e7cb00863999`; 198,289 decompressed
+  bytes, SHA-256 `2df7f476cfb367385d7e86ffbd06dda3807044cad7feb49d3026e8ddcf4dec8b`.
+- `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260828_141326745.log.gz`: 14,853 compressed bytes,
+  SHA-256 `9fa7af5c0731399148328c5127ac7f9df0357b13118903682c6ad6bfdd195f32`; 88,365 decompressed
+  bytes, SHA-256 `83ae1dc7341c97890618918a42c38b5cc377b0a3eb4cd8aa0b76e5c9a21ad7b2`.
+
+All five Final12 carriers pass gzip integrity and exact decompression size/hash checks. The six
+Compendium and ten Slice run-ID PNGs remain in the ignored smoke workspace; their byte sizes and
+SHA-256 bindings are retained inside the two reports, matching the established policy of committing
+the compressed result/log carriers rather than duplicate screenshots. Edge `151.0.4129.107` / CDP
+`1.3` is provenance only and never a baseline, rebaseline or numeric-threshold key.
+
+### Historical Final11 assessor-repair follow-up — immutable failure retained, repaired replay green
 
 The Final11 carriers and hashes below are unchanged. Recovery remains stored `fail`, with one
 attempt, zero retries and exactly `activePlayProjection` and `closeCheckpoint` false in its stored
-domain assessment. The repaired current assessor independently replays that same immutable
+domain assessment. The repaired assessor independently replayed that same immutable
 `recoveryBundle` wholly green; it does not rewrite the carrier or retroactively turn Final11 into a
 Recovery certificate.
 
@@ -24,8 +71,8 @@ Close binds the latest exhausted live state/UI time, exact six-key committed/los
 committed revision outcome. Controls retain Final11's reported 20 ms render lag and 322 ms live-
 close gap, accept the exact close boundary, reject +1 ms, future/excessive lag and each independently
 mutated witness field. This is assessor/tests/docs only: product, save, deterministic content,
-numeric rulers, version identity and browser point-version policy are unchanged. A fresh signed clean
-Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain is still required.
+numeric rulers, version identity and browser point-version policy are unchanged. That repair led to
+Final12, whose distinct immutable Slice stop is recorded above.
 
 ### Signed `1ca6715…` Final11 campaign — full observation green, then Recovery temporal-oracle stop
 

@@ -1,18 +1,18 @@
 # Celestial-Frontier
 
-> **Current Final11 assessor-repair boundary (2026-08-28):** signed clean source
-> `1ca67156e27d6bd58a324e33b0e6b752adf568bc` and its Recovery carrier remain immutable: stored
-> `fail`, one attempt, zero retries, unchanged hashes, and exactly two stored false checks
-> (`activePlayProjection` and `closeCheckpoint`). The current repaired assessor independently
-> replays that carrier's unchanged `recoveryBundle` wholly green. Durable raw may lead rendered UI,
-> while rendered time remains at or before runtime and within the existing 10-second lag bound and
-> the exact raw/runtime authority tuple stays bound. Close now uses the latest exhausted live
-> state/UI time, the exact six-key committed/lost hide witness and the committed revision outcome.
-> Controls cover Final11's reported 20 ms/322 ms geometry, the exact close boundary and +1 ms,
-> future/excessive render lag and every witness field. This is assessor/tests/docs only: no product,
-> save, version, ruler or browser-policy change. Final11 is still not a Recovery certificate; a
-> fresh signed clean **Layout → SceneMemory → Compendium → Slice → Glass → Recovery** chain remains
-> required. Final10 “current” wording below is historical where superseded.
+> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
+> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
+> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
+> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. Its main
+> stale-convergence product assessment is wholly green. The sole stop is the deliberate
+> `witnessAuthorityControl`: strengthened raw/runtime revision/seed/ordinal/draw binding correctly
+> produces exact double-red [`convergenceRelease`, `oldUiConvergence`], while the unchanged Slice
+> wrapper still expects only `convergenceRelease`. Product and `slicesmoke.mjs` blobs are unchanged
+> from Final11. Next is a bounded test-harness expectation repair, then a new signed clean
+> **Layout → SceneMemory → Compendium → Slice → Glass → Recovery** chain. No product, save,
+> version, ruler or browser-policy change occurred; compatible Edge updates never trigger a
+> rebaseline. Final11/Final10 “current” wording below is historical where superseded.
 Master the infinite
 
 **Celestial Frontier: Cosmic Codex** — a single-file, offline-capable HTML/Canvas
@@ -96,15 +96,16 @@ determinism probes, and an independent review marked CLEAR.
 The implementation/evidence checkpoint is locally signed commit
 `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (parent Final10 `4405fb2…`), and its embedded SSH
 signature verified against the configured public key. The synchronized signed clean docs-only
-descendant—not `3fbfcd5…`—was the Final11 campaign source; Final11 is the successor browser attempt
-described above, but it is not a Recovery certificate. The current assessor/tests/docs-only repair
-replays Final11's unchanged `recoveryBundle` wholly green while preserving its stored failure. That
-repaired source must run fresh, once and fail-fast through **Layout → SceneMemory → Compendium →
-Slice → Glass → Recovery**, with every named verifier and no automatic retry. Edge
-`151.0.4129.107` / CDP
-`1.3` is Final11 provenance only; compatible point updates never trigger a rebaseline,
-recalibration or threshold change. No Recovery certificate, whole-Gate, hosted, HUMAN or release
-authority exists.
+descendant—not `3fbfcd5…`—was the Final11 campaign source; Final11 is immutable and is not a Recovery
+certificate. Its repaired bundle replay is green. Signed clean Final12 `509734533dd4…` passed
+Layout, SceneMemory and Compendium, then Slice stopped once/no retry because the strengthened
+authority mutant correctly produced two red clauses while the unchanged wrapper expected one; the
+real product assessment was wholly green. Glass/Recovery did not run. Repair that bounded harness
+expectation, then run once and fail-fast through **Layout → SceneMemory → Compendium → Slice →
+Glass → Recovery**, with every named verifier and no automatic retry. Edge
+`151.0.4129.107` / CDP `1.3` is provenance only; compatible point updates never trigger a
+rebaseline, recalibration or threshold change. No Recovery certificate, whole-Gate, hosted, HUMAN
+or release authority exists.
 
 After the stable Phase-4 checkpoint, the queued visual pass applies the TikTok-inspired polish
 language across the entire deterministic universe—galaxies, systems, planets, every biome,
@@ -161,8 +162,10 @@ has produced a terminal-green Slice report that passes named verification and a 
 bound to that exact Slice ID that also passes named verification. Recovery receives both exact
 predecessor IDs and its own exact report must pass named verification; stop after any failure and
 never retry automatically. Final11 completed the uninterrupted real 20-minute observation and
-recovered UI, but remains stored assessor-red and non-certifying. Its unchanged bundle now replays
-green under the repaired assessor; only a fresh full chain can earn the Recovery certificate. The former Compendium ruler
+recovered UI, but remains stored assessor-red and non-certifying; its unchanged bundle replays
+green under the repaired assessor. Final12 stopped earlier at Slice's stale negative-control
+expectation, with the main assessment green, so only a repaired fresh full chain can earn the
+Recovery certificate. The former Compendium ruler
 and exact-budget certificate `20260826-phase4-certification` remain truthful historical evidence for producer
 `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`; they are not rebound to the
 current product. Historical current-product calibration from signed source

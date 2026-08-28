@@ -1,18 +1,18 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **Current Final11 assessor-repair boundary (2026-08-28):** signed clean source
-> `1ca67156e27d6bd58a324e33b0e6b752adf568bc` and its Recovery carrier remain immutable: stored
-> `fail`, one attempt, zero retries, unchanged hashes, and exactly two stored false checks
-> (`activePlayProjection` and `closeCheckpoint`). The current repaired assessor independently
-> replays that carrier's unchanged `recoveryBundle` wholly green. Durable raw may lead rendered UI,
-> while rendered time remains at or before runtime and within the existing 10-second lag bound and
-> the exact raw/runtime authority tuple stays bound. Close now uses the latest exhausted live
-> state/UI time, the exact six-key committed/lost hide witness and the committed revision outcome.
-> Controls cover Final11's reported 20 ms/322 ms geometry, the exact close boundary and +1 ms,
-> future/excessive render lag and every witness field. This is assessor/tests/docs only: no product,
-> save, version, ruler or browser-policy change. Final11 is still not a Recovery certificate; a
-> fresh signed clean full chain remains required. Final10 “current” wording below is historical
-> where superseded.
+> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
+> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
+> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
+> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. Its main
+> stale-convergence product assessment is wholly green. The sole stop is the deliberate
+> `witnessAuthorityControl`: strengthened raw/runtime revision/seed/ordinal/draw binding correctly
+> produces exact double-red [`convergenceRelease`, `oldUiConvergence`], while the unchanged Slice
+> wrapper still expects only `convergenceRelease`. Product and `slicesmoke.mjs` blobs are unchanged
+> from Final11. Next is a bounded test-harness expectation repair, then a new signed clean full
+> chain. No product, save, version, ruler or browser-policy change occurred; compatible Edge updates
+> never trigger a rebaseline. Final11/Final10 “current” wording below is historical where
+> superseded.
 
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the source. When in doubt, source wins. The long-form
@@ -104,13 +104,14 @@
 > `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 > Those documentation bytes changed source identity; their signed clean docs-only descendant
-> supplied Final11, whose temporal-oracle stop is described above. Final11 is not a Recovery
-> certificate. Its unchanged bundle now replays green under the current repaired assessor while the
-> stored failure remains intact. Final10 is immutable and cannot resume; the repaired signed clean
-> source must restart the full chain at Layout
-> with fresh IDs and every named verifier. Edge `151.0.4129.107` / CDP `1.3` is Final11 run
-> provenance only: a compatible point update never triggers a rebaseline, recalibration or threshold
-> change. No Recovery certificate, whole-Gate, hosted, HUMAN or release authority exists.
+> supplied immutable Final11. Its stored failure remains intact and its repaired bundle replay is
+> green. Signed clean Final12 `509734533dd4…` then passed Layout, SceneMemory and Compendium before
+> Slice stopped once/no retry: the real stale-convergence product assessment was wholly green, but
+> the strengthened authority mutant correctly returned two red clauses while the unchanged wrapper
+> expected one. Glass/Recovery did not run. Repair that bounded harness expectation, then restart the
+> full chain at Layout with fresh IDs and every named verifier. Edge `151.0.4129.107` / CDP `1.3`
+> is provenance only: a compatible point update never triggers a rebaseline, recalibration or
+> threshold change. No Recovery certificate, whole-Gate, hosted, HUMAN or release authority exists.
 >
 > **Queued visual boundary:** after the stable Phase-4 checkpoint, carry the TikTok-inspired polish
 > language across the entire universe—galaxies, systems, planets, every biome, creatures, plants,
@@ -387,8 +388,9 @@
 > exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
 > nonzero, red or instrument result and do not start a successor or automatically retry.
 > Final11 completed the uninterrupted real 20-minute observation and recovered UI and remains stored
-> final-assessor red. Its unchanged bundle replays green under the repaired assessor; only a fresh
-> full chain can earn the Recovery certificate. The former Compendium ruler under
+> final-assessor red; its unchanged bundle replays green under the repaired assessor. Final12
+> stopped earlier at Slice's stale negative-control expectation, with the main assessment green and
+> Glass/Recovery not run. Only a repaired fresh full chain can earn the Recovery certificate. The former Compendium ruler under
 > measurement authority `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`
 > and producer authority `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`
 > remains truthful historical evidence.
@@ -566,7 +568,8 @@
 > `8633bb48fc89c7ae658fa9ed4a7f47b683be102d`, status `61fc362e…` and exact-input dirty tree
 > `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. The uninterrupted
 > Final11's 20-minute observation passed and its unchanged bundle replays green under the repaired
-> assessor; a fresh-chain Recovery certificate and HUMAN review remain open. No Charter bioscan, targeted
+> assessor. Final12 stopped at Slice's stale negative-control expectation before Glass/Recovery; a
+> repaired fresh-chain Recovery certificate and HUMAN review remain open. No Charter bioscan, targeted
 > preview, hosted, release/version, `rnSeen` or preview/publication authority is claimed. Arc 5A now
 > activates the receipt-bound compact ownership-v2 representation across boot, Training and capture.
 > The manifest binds the exact Arc 4 source, canonical delta and reconstructed target while the four
@@ -2988,7 +2991,7 @@ for a name.
 ## 12. Test suites (all must pass)
 
 **Current evidence snapshot (2026-08-28):** signed clean source `1ca67156…` supplied immutable
-Final11. Layout passed 787/787, SceneMemory 42/42, Compendium 78/78 with six PNG bindings, Slice
+historical Final11. Layout passed 787/787, SceneMemory 42/42, Compendium 78/78 with six PNG bindings, Slice
 passed with zero findings/ten screenshots, and full 12-viewport Glass passed with zero findings or
 instrument failures. Every predecessor ran once and passed named verification. Recovery then ran
 once for 1,291,034 ms and passed all 15 observation outcomes across 309 samples, the uninterrupted
@@ -2999,15 +3002,21 @@ capture instead of the latest exhausted live runtime. Cleanup passed and no retr
 Final11 remains immutable stored `fail`, with unchanged hashes, one attempt, zero retries and those
 two stored false checks; it is not a Recovery certificate or product failure.
 
-The repaired current assessor independently replays Final11's unchanged `recoveryBundle` wholly
+The repaired assessor independently replays Final11's unchanged `recoveryBundle` wholly
 green. It permits durable raw to lead rendered UI while rendered remains at or before runtime and
 within the existing 10-second bound, retaining the exact raw/runtime authority tuple. Close binds
 the latest exhausted live state/UI time, exact six-key committed/lost hide witness and committed
 revision outcome. Isolated controls cover the reported 20 ms/322 ms geometry, exact boundary/+1,
-future/excessive lag and every witness field. The assessor/tests/docs-only repaired source must
-restart the complete chain from Layout with fresh IDs and every named verifier. Numeric rulers,
+future/excessive lag and every witness field. Signed clean Final12 `509734533dd4…` (tree
+`609e92c6278…`) passed Layout 787/787, SceneMemory 42/42 and Compendium 78/78, then Slice ran once/
+no retry and stopped stored `fail` at `arc-4-stale-convergence`. Its real assessment was wholly
+green. Only `witnessAuthorityControl` correctly double-redlined `convergenceRelease` and
+`oldUiConvergence` after the strengthened authority binding while the unchanged wrapper still
+required the first alone. Product and `slicesmoke.mjs` blobs were unchanged from Final11;
+Glass/Recovery did not run. Repair that bounded harness expectation, then restart the complete
+chain from Layout with fresh IDs and every named verifier. Numeric rulers,
 historical samples, product/save bytes, browser authority and retry/release policy remain unchanged.
-Edge `151.0.4129.107` / CDP `1.3` is Final11 provenance only; a compatible point update never causes
+Edge `151.0.4129.107` / CDP `1.3` is provenance only; a compatible point update never causes
 a rebaseline, recalibration or threshold move. No Recovery certificate, hosted/HUMAN whole-Gate or
 release authority exists.
 
@@ -3043,8 +3052,10 @@ and the 16-attempt burn-down. Final10 preserves another five-green-predecessor c
 Recovery through closed/offline proof before its `offline-reopened` instrument stop. At that
 historical Final10 boundary, signed implementation/evidence repair `3fbfcd5…` had no successor
 browser result, and the synchronized
-signed clean docs-only descendant supplied immutable Final11. The current repaired assessor replays
-its unchanged bundle green, but the repaired source must run a fresh chain. No hosted, HUMAN,
+signed clean docs-only descendant supplied immutable Final11. Its repaired replay is green. Signed
+clean Final12 passed Layout, SceneMemory and Compendium before Slice's stale negative-control
+expectation stopped the chain; Glass/Recovery did not run. Repair that bounded expectation and run
+a fresh full chain. No hosted, HUMAN,
 whole-Gate, release, version, preview/publication or deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost

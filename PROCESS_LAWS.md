@@ -1,15 +1,19 @@
 # Celestial Frontier — PROCESS LAWS
 
-> **2026-08-28 Final11 temporal-oracle law:** compare causally adjacent live evidence, not merely
-> like-named captures. Durable raw may legitimately lead rendered/UI projection while rendered time
-> remains at or before runtime and within the existing 10-second bound; the exact raw/runtime
-> authority tuple remains mandatory. Closure binds to the latest exhausted live state/UI time, the
-> exact six-key committed/lost hide witness and the committed revision outcome. Negative-control
-> the reported geometry, exact boundary and +1, future/excessive lag, every witness field, and the
-> false red caused by selecting older raw. Final11 remains immutable stored `fail` with one attempt,
-> zero retries and two stored false checks; the repaired assessor independently replays its unchanged
-> `recoveryBundle` wholly green. That replay is not a Recovery certificate: a fresh signed clean
-> full chain remains required.
+> **2026-08-28 Final12 exact-failure-set law:** when a shared semantic predicate is strengthened, one
+> intentional mutant may correctly violate more than one top-level clause. Require its exact full
+> failure set and independently require the nested named diagnosis; do not preserve an obsolete
+> one-red wrapper expectation. Signed clean source
+> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
+> 42/42 and Compendium 78/78. Slice then ran once with no retry and stopped immutable stored `fail`
+> at `arc-4-stale-convergence`; Glass and Recovery did not run. The real product assessment is
+> wholly green. Only `witnessAuthorityControl` now correctly returns exact double-red
+> [`convergenceRelease`, `oldUiConvergence`] after raw/runtime revision/seed/ordinal/draw binding was
+> strengthened, while the unchanged Slice wrapper expects `convergenceRelease` alone. Product and
+> `slicesmoke.mjs` blobs are unchanged from Final11. Repair that bounded test-harness expectation,
+> then start a new signed clean full chain. No save/version/ruler/browser-policy change or Edge
+> rebaseline follows.
 
 **STATUS:** current as of 2026-08-28. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
@@ -147,11 +151,15 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 The synchronized signed clean docs-only descendant supplied immutable Final11. Final11 completed
 the uninterrupted observation, exact next cycle and recovered UI, then exposed two temporal-oracle
 defects in the final assessor. Its stored report remains `fail`, with unchanged hashes, one attempt,
-zero retries and only `activePlayProjection` / `closeCheckpoint` false. The current repaired
-assessor independently replays the unchanged `recoveryBundle` wholly green and controls the reported
-20 ms/322 ms geometry, exact boundary/+1, future/excessive lag and every committed/lost witness
-field. The assessor/tests/docs-only source remains browser-uncertified until it completes a fresh
-full chain. None of this grants a Recovery certificate, HUMAN/Gate closure or release authority.
+zero retries and only `activePlayProjection` / `closeCheckpoint` false. The repaired assessor
+independently replays the unchanged `recoveryBundle` wholly green and controls the reported 20 ms/
+322 ms geometry, exact boundary/+1, future/excessive lag and every committed/lost witness field.
+Signed clean Final12 then passed Layout 787/787, SceneMemory 42/42 and Compendium 78/78 before Slice
+stopped once/no retry: the real stale-convergence assessment was wholly green, but the strengthened
+authority mutant correctly failed both `convergenceRelease` and `oldUiConvergence` while the
+unchanged wrapper required only the first. Glass/Recovery did not run. Repair that exact bounded
+harness expectation and start a new signed clean full chain. None of this grants a Recovery
+certificate, HUMAN/Gate closure or release authority.
 
 ⚠⚠ **CONTRAST IS THE COMPOSITED READING SURFACE; A CLOSE OWNER NEEDS EXCLUSIVE HEADER
 GEOMETRY** (2026-08-27). A canonical rarity color can be correct and still become unreadable when
