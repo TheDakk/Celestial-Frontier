@@ -91,6 +91,52 @@ bad producer, but update their audited inventory whenever a live consumer is con
 Negative-control the semantic absence itself (for example, an empty title) and one currently live
 consumer mapping; a stale oracle is instrument failure, not permission to change the product.
 
+⚠⚠ **A DURABLE FACT DOES NOT DEFINE EVERY PHASE'S PRESENTATION VOCABULARY** (2026-08-28).
+Final10 Recovery observed a coherent reopened same-document UI → state sample with the same
+exhausted 16/16/0 Pertar budget, while the reopened document was deliberately read-only/ineligible.
+That surface rendered all three actions as `unavailable`; the phase-blind oracle demanded the
+eligible active surface's `empty`/`depleted` reasons and stopped before the later raw/state/UI
+durable-parity assertion or recovery outcome. No reopened product verdict followed.
+
+Bind every status predicate to the authority and lifecycle phase it describes. An active,
+eligible exhausted surface uses `empty` or `depleted`; an offline/reopened or otherwise read-only
+ineligible surface uses `unavailable`. Durable exhaustion evidence is necessary in both phases, but
+it is never permission to import one phase's UI vocabulary into the other. Retain phase, document,
+authority, budget, row and disabled-semantics evidence together; negative-control both swaps so
+neither vocabulary can satisfy the opposite phase. If a poll times out, preserve the last coherent
+observation separately from the unmatched terminal poll. A malformed or phase-unbound observation
+is instrument-red; a coherent phase-bound surface that fails its actual contract is product-red.
+
+A candidate terminal PASS must retain schema-bound full surface receipts for the original active-
+exhausted, offline-reopened and reactivated active-exhausted phases. Terminal finalization and the
+named verifier must independently replay and cross-bind their phase, document, cycle, facts,
+SessionRNG, state/UI and first-active-sample evidence. Before observation,
+`active-observation:running` must be persisted and survive later failure. Each wait receipts the
+strict remaining share of one absolute 20-second deadline; clipping or exceeding it is red. The
+exhausted raw/live-state chain and reactivated→first-service binding require at most 20 seconds,
+the same cycle/RNG and revision delta at most one. Missing, swapped, coherently retokened, reversed-
+chronology or coherently recomputed route/card/runtime/pending receipts are instrument-red, as are
+internally assessment-green retiming, +2-revision and next-cycle mutants.
+
+The current local Recovery repair's exact six-region SHA-256/UTF-8-byte inventory is: full collector
+source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+(10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+(6,184 B); offline-reopened→reactivated phase span
+`b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+suppression preparation/collector
+`22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+Browser-free current-byte checks at locally signed implementation/evidence commit
+`3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+`4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+The synchronized signed clean docs-only descendant is the fresh campaign source; browser
+certification remains pending. These controls do not claim a successor browser run, Recovery PASS,
+HUMAN/Gate closure or release authority.
+
 ⚠⚠ **CONTRAST IS THE COMPOSITED READING SURFACE; A CLOSE OWNER NEEDS EXCLUSIVE HEADER
 GEOMETRY** (2026-08-27). A canonical rarity color can be correct and still become unreadable when
 drawn directly over bright translucent glass, and a single valid Close action can still cover a

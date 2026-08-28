@@ -20,6 +20,51 @@ does not silently promote planned behavior into the in-game Guide.
 > include reduced-motion, contrast, mobile heat/frame-budget fallbacks and before/after identity
 > comparisons. No part of this visual pass is implemented or certified yet.
 
+> **2026-08-28 Final10 evidence and current repair boundary:** signed clean source
+> `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
+> Compendium 78/78 with six PNG bindings, Slice with zero findings and ten screenshots, and full
+> 12-viewport Glass with zero findings or instrument failures, each once with named verification.
+> Recovery ran once and stopped instrument-only at `offline-reopened` after the fixture, complete
+> 16-attempt burn-down, exhausted suppression, close/checkpoint and true closed-target proof passed.
+> The deliberately read-only reopened Pertar card correctly rendered Tame, Scavenge and Sample as
+> `unavailable`; the phase-blind oracle incorrectly required the active/exhausted
+> `empty`/`depleted` vocabulary. The 20-minute active observation, boundary crossing and recovered-
+> state judgment did not run, so Final10 makes no Recovery, companion, audio, HUMAN or Gate claim.
+>
+> The local successor repair changes only phase-bound evidence and its negative controls; it changes
+> no exploration, ship, loot, capture, ownership, creature, save or deterministic behavior. A
+> candidate PASS retains the original active-exhausted, offline-reopened and reactivated active-
+> exhausted Pertar receipts; terminal finalization and named verification independently replay and
+> cross-bind their phase, document, cycle, facts, SessionRNG, state/UI and first-active-sample
+> evidence. Missing, swapped, coherently retokened, reversed or coherently recomputed route/card/
+> runtime/pending receipts are red.
+>
+> Before observation, `active-observation:running` must be persisted and survive any later
+> failure. Each Pertar wait receipts the strict remaining share of one absolute 20-second deadline;
+> clipping or exceeding it is red. The exhausted raw/live-state chain and reactivated→first-service
+> binding require at most 20 seconds, the same cycle/RNG and revision delta at most one. Internally
+> assessment-green retiming, +2-revision and next-cycle mutants remain terminal-red.
+>
+> The exact six-region Recovery SHA-256/UTF-8-byte inventory is: full collector
+> source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+> boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+> helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+> (10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+> (6,184 B); offline-reopened→reactivated phase span
+> `b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+> suppression preparation/collector
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+> seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+> helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+> Browser-free current-byte checks at locally signed implementation/evidence commit
+> `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+> `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+> 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+> This documentation changes source identity; its signed clean docs-only descendant is the fresh
+> campaign source. No successor browser certificate exists. That descendant must restart Layout →
+> SceneMemory → Compendium → Slice → Glass → recovery. Edge
+> `151.0.4129.107` / CDP `1.3` is provenance only and never a rebaseline trigger.
+
 > **2026-08-27 Final4 Glass recipe-oracle correction — implemented in signed Final5 source:** `earpiece`,
 > `diplobeacon` and `rl-mind` already carry `contact` effects consumed by the live
 > contact/capture-support capability and odds projection. Final4 Glass was wrong because its
@@ -32,7 +77,7 @@ does not silently promote planned behavior into the in-game Guide.
 > signed Final6 `ea845d7…` later passed Layout, SceneMemory and Compendium before its preserved
 > Inventory harness stop.
 >
-> **2026-08-28 Final7 Glass stop and bounded presentation repair — current local candidate:** signed
+> **Historical Final7 Glass stop and bounded presentation repair:** signed
 > clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` passed Layout 787/787,
 > SceneMemory 42/42, Compendium 78/78 and Slice with zero findings/scopes, each once with its named
 > verifier. Full Glass then ran once across 12 viewports and stopped terminal-red with 25 findings,
@@ -50,9 +95,9 @@ does not silently promote planned behavior into the in-game Guide.
 > These bounded presentation/evidence repairs change no world, resource, item, creature, ship,
 > capture, persistence, deterministic authority, action or content structure.
 >
-> Final7 is immutable and cannot resume. Bounded dirty-tree diagnostics are repair evidence only;
-> they are not a post-repair full Glass PASS. A newly signed clean successor must restart the complete
-> Layout → SceneMemory → Compendium → Slice → Glass → recovery chain with fresh IDs.
+> Final7 is immutable and cannot resume. At that historical boundary, bounded dirty-tree diagnostics
+> were repair evidence only and the next signed source had to restart the complete chain. Final10
+> supersedes that browser chronology as recorded above.
 > Edge `.107` / CDP `1.3` remains provenance only.
 
 > **Historical post-`7362a0e…`, pre-Final2 evidence/repair boundary:** signed evidence source
@@ -433,7 +478,7 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
 | Charters / reach language | Stage-aware landfall projection plus committed-only Arc 3 mining/fixed-fabrication goal banking; imported drive/chapter facts still gate reach | Port remaining outcome writers and expose goals/transitions/rewards only with them |
 | Compendium | Virtualized 1,500-row browsing surface with bounded asynchronous thumbnails and selected static detail; list-mode heading and sticky Close share the reserved first header row; native Arc 4 acquisition may add durable rows through Survey, not through the Compendium panel itself | HUMAN Arc 1 art review, then any separately bounded living selected preview |
-| Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current published epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Retained 2026-08-25 Slice `20260825213041239-98104-c96d3b2d0652` and 95/95-control Glass evidence passed their exact recorded inputs with CLEAR audits; the hashes/provenance above do not certify the later current candidate | Run the dedicated real uninterrupted 20-minute next-cycle recovery certificate and complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
+| Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current published epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Signed Final10 passed its five serial predecessors and `offline-closed`, then observed a coherent reopened UI → state exhausted sample before the phase-blind Recovery instrument stopped; no offline durable-parity verdict followed, and the active 20-minute/recovered stages did not run | Finish the source-sealed repair, run the full signed successor chain including uninterrupted next-cycle recovery, then complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
 | Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; `<=360px` rows stack full visible identity copy above all status badges without changing semantics; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
 | Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, the sole purchasable Deep-Scanner row, eligible fixed-Fabrication actions and the passive ordered ordinary-plus-biome-only orbital **Mineral veins** Survey row after owned `scan1`; connected exact system outputs can update reach | Other five research purchases, fully exceptional slotted/disconnected recipe outputs, HUMAN silhouette and Engineering comprehension, and later authored upgrades/variable construction; the Survey row remains informational and never becomes Mine/reserve/grade/cosmic authority |
 | Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six displayed Research rows and all 62 listed fixed recipes are present; only Deep Scanners and connected-effect recipes with exact costs/preconditions and capacity/revision headroom are actionable and receipt-backed | Fully exceptional slotted/disconnected outputs, authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing |
@@ -956,7 +1001,7 @@ batch. Planned systems live here and in their system docs, not in player-visible
 | 1 — portrait/ship foundation | virtualized thumbnails, character portrait service, pure `ShipVisualState`, static Shipyard proof | Automated foundation and 42/42 memory route are complete; phone/desktop HUMAN portrait and four-silhouette judgment remain open |
 | 2 — item instances and readable economy **[PARTIAL; recorded local candidate green]** | Schema/migration, strict carrier, Inventory, equip/unequip/salvage/pending-claim, canonical fixed tables and exact inspect/conditional compare are implemented; production source/craft policy is not | The recorded pre-current-WIP Arc 2 candidate's fixed-point/exact-instance/browser outcomes were green; this does not certify the current moving tree. Authored source/range/targeted-craft/pacing policy and HUMAN phone/desktop review remain before program closure |
 | 3 — engineering loop **[PARTIAL locally implemented; bounded browser pair green]** | Mine/Skim, sole purchasable Deep-Scanner row, its passive ordered ordinary-plus-biome-only orbital Survey projection, six-row Research presentation, all-62 fixed-recipe listing, eligible connected-effect/exact-cost/headroom fabrication actions, and truthful Guide/release/Training guidance are implemented; the other five research purchases, fully exceptional slotted/disconnected outputs and wider engineering depth remain open | Local Slice/Glass exact-input proof covers the earlier real actions, finite active-play sources, durable receipt/reload parity, and storage/stale/publication convergence. The new Survey projection is code/test truth only here; exact-head/full-battery evidence, economy simulation, reach/visual/Guide agreement, and HUMAN comprehension remain open |
-| 4 — capture/ownership **[PARTIAL player-live locally]** | Strict 18-namespace bootstrap/Training coupling and native Tame/Scavenge/Sample now provide source-bound full-roster random-pool odds/Yield, all-scenario-before-draw, one-receipt/CAS hit/miss ownership outcomes, no optimism, reload and storage/stale/publication convergence. Arc 5A additionally advances the exact compact five-carrier V2 authority in the same boot/Training/capture transactions. The retained 2026-08-25 Slice/Glass pair passed its exact recorded inputs but does not certify this later candidate | run the dedicated real uninterrupted 20-minute recovery certificate and complete the combined HUMAN first-journey/ownership review; do not infer Charter bioscan, targeted selection, whole-gate or release authority |
+| 4 — capture/ownership **[PARTIAL player-live locally]** | Strict 18-namespace bootstrap/Training coupling and native Tame/Scavenge/Sample now provide source-bound full-roster random-pool odds/Yield, all-scenario-before-draw, one-receipt/CAS hit/miss ownership outcomes, no optimism, reload and storage/stale/publication convergence. Arc 5A additionally advances the exact compact five-carrier V2 authority in the same boot/Training/capture transactions. Signed Final10 passed `offline-closed`, then reopened and stopped instrument-only at `offline-reopened` before active observation or recovered-state judgment | complete the hardened signed full-chain Recovery certificate and combined HUMAN first-journey/ownership review; do not infer Charter bioscan, targeted selection, whole-gate or release authority |
 | 4.5 — first complete journey | Fresh-start Survey → opportunity → Gather → Build → Tame → ship upgrade → farther reach → meaningful Return | first-time 30–60-minute human path proves comprehension, agency and satisfying pacing without idle waits or a scripted fake reward |
 | 5 — companions **[PARTIAL infrastructure-only]** | Implemented source-bound compact V2 manifest/four-shard authority across boot, genuine legacy Training and every Arc 4 hit/miss; exact-five internal V2-only successor applies one-time half-lower-clamped-parent child `fed`, but no player capability invokes it. Arc 5B action/UI rules, nonlethal parent Recovery, care/bond/Chronicle and active-play missions remain open | Decide and wire odds, duration/locks/capacity/timing/confirmation, recovery/away locks, exact-once return and save-failure/two-tab controls |
 | 5.5 — combat decision model | role, preparation, telegraphing, counterplay, retreat and settlement rules are specified and scenario-proven before battle UI expands | humans can choose and explain a viable response; no opaque hard-counter or stat-only outcome passes as strategy |
