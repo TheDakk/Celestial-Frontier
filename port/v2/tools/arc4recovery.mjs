@@ -37,12 +37,15 @@ import {
   ARC4_PERTAR_FIXTURE,
   ARC4_RECOVERY_CLOSED_INTERVAL_MIN_MS,
   ARC4_RECOVERY_CLOSURE_EVIDENCE_SCHEMA,
+  arc4ExhaustedCaptureRows,
+  arc4IneligibleExhaustedCaptureRows,
   assessArc4DisabledSuppressionEvidence,
   assessArc4DisabledTargetEvidence,
   assessArc4BurnStep,
   assessArc4CapturePrecondition,
   assessArc4Exhaustion,
   assessArc4ExhaustionRecovery,
+  projectArc4CaptureUiFacts,
 } from './arc4-browser-contract.mjs';
 import {
   ARC4_RECOVERY_ACTIVE_OBSERVATION_MS,
@@ -53,6 +56,9 @@ import {
   ARC4_RECOVERY_MIN_BOUNDARY_WAIT_MS,
   ARC4_RECOVERY_OBSERVATION_SCHEMA,
   ARC4_RECOVERY_OBSERVER_SCHEMA,
+  ARC4_RECOVERY_PERTAR_POLL_TIMING_SCHEMA,
+  ARC4_RECOVERY_PERTAR_SURFACE_EVIDENCE_SCHEMA,
+  ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS,
   ARC4_RECOVERY_PRECONDITION_CHECK_KEYS,
   ARC4_RECOVERY_REGULAR_SERVICE_GAP_MAX_MS,
   ARC4_RECOVERY_REPORT_SCHEMA,
@@ -62,6 +68,7 @@ import {
   ARC4_RECOVERY_STAGE_ORDER,
   ARC4_RECOVERY_TOTAL_CLOCK_PARITY_MAX_MS,
   ARC4_RECOVERY_UI_TRANSITION_LATENCY_MAX_MS,
+  assessArc4RecoveryPertarPollTiming,
   assessArc4RecoveryRuntimeCaptureWitness,
   assessArc4RecoveryInstrumentSeal,
   assessOrdinarySliceRecoverySeal,
@@ -586,22 +593,169 @@ async function waitForIneligibleAligned(send, sessionId, expectedToken) {
   'ineligible aligned Slice authority');
 }
 
-function arc4ExhaustedUiRows(rows) {
-  return Array.isArray(rows) && rows.length === 3
-    && new Set(rows.map((row) => row?.verb)).size === 3
-    && rows.every((row) => ['tame', 'scavenge', 'sample'].includes(row?.verb))
-    && rows.some((row) => row?.status === 'depleted')
-    && rows.every((row) => ['empty', 'depleted'].includes(row?.status)
-      && row?.button?.modelEnabled === 'false' && row?.button?.disabled === true
-      && row?.button?.ariaDisabled === 'true');
+function pertarRuntimeCaptureEvidence(surface, expectedDocumentToken) {
+  const receipt = assessArc4RecoveryRuntimeCaptureWitness({
+    witness: surface?.runtimeCaptureWitness,
+    state: surface?.state,
+    ui: surface?.ui,
+    expectedDocumentToken,
+  });
+  return Object.freeze({
+    witness: surface?.runtimeCaptureWitness ?? null,
+    snapshots: Object.freeze({
+      ui: projectArc4RecoveryRuntimeCaptureSnapshot(surface?.ui),
+      state: projectArc4RecoveryRuntimeCaptureSnapshot(surface?.state),
+    }),
+    receipt,
+  });
 }
 
-async function waitForPertarSurface(send, sessionId, { exhausted = false } = {}) {
-  const label = exhausted ? 'exhausted Pertar surface' : 'ready Pertar surface';
-  let lastDiagnostic = null;
-  try {
-    return await waitForValue(async () => {
-      const observed = await evaluate(send, sessionId,
+function assessPertarSurfaceObservation(surface, {
+  phase, expectedDocumentToken,
+} = {}) {
+  const state = surface?.state;
+  const ui = surface?.ui;
+  const runtime = state?.persistence?.runtime;
+  const uiRuntime = ui?.persistence?.runtime;
+  const rows = Array.isArray(ui?.rows) ? ui.rows : [];
+  const facts = projectArc4CaptureUiFacts(ui);
+  const runtimeCapture = pertarRuntimeCaptureEvidence(
+    surface, expectedDocumentToken,
+  );
+  const instrumentReasons = runtimeCapture.receipt.ok ? []
+    : Object.entries(runtimeCapture.receipt.checks)
+      .filter(([, value]) => value !== true).map(([name]) => name);
+  const productChecks = {
+    route: state?.mode === 'surface'
+      && state?.gal === ARC4_PERTAR_FIXTURE.galaxy.seed
+      && state?.star === ARC4_PERTAR_FIXTURE.publicStar.seed
+      && state?.planet === ARC4_PERTAR_FIXTURE.planet.seed
+      && state?.planetOrdinal === ARC4_PERTAR_FIXTURE.planet.ordinal
+      && state?.navWorldKey === ARC4_PERTAR_FIXTURE.worldKey,
+    card: ui?.cardOpen === true && ui?.cardTitle === 'Pertar',
+    settled: state?.sceneResources?.pendingPersistenceWrites === 0
+      && ui?.diagnostics?.pendingWork === 0,
+    runtimeOrder: runtimeCapture.receipt.observed.runtimeNondecreasing === true,
+    runtimeTuple: Number.isSafeInteger(runtime?.revision) && runtime.revision >= 0
+      && Number.isSafeInteger(uiRuntime?.revision) && uiRuntime.revision >= 0
+      && Number.isSafeInteger(runtime.sessionSeed) && runtime.sessionSeed >= 0
+      && Number.isSafeInteger(uiRuntime.sessionSeed) && uiRuntime.sessionSeed >= 0
+      && Number.isSafeInteger(runtime.sessionOrdinal) && runtime.sessionOrdinal >= 0
+      && Number.isSafeInteger(uiRuntime.sessionOrdinal) && uiRuntime.sessionOrdinal >= 0
+      && runtime.sessionDraws !== null && typeof runtime.sessionDraws === 'object'
+      && !Array.isArray(runtime.sessionDraws)
+      && uiRuntime.sessionDraws !== null && typeof uiRuntime.sessionDraws === 'object'
+      && !Array.isArray(uiRuntime.sessionDraws)
+      && Object.values(runtime.sessionDraws).every((value) =>
+        Number.isSafeInteger(value) && value >= 0)
+      && Object.values(uiRuntime.sessionDraws).every((value) =>
+        Number.isSafeInteger(value) && value >= 0)
+      && runtime.revision === uiRuntime.revision
+      && runtime.sessionSeed === uiRuntime.sessionSeed
+      && runtime.sessionOrdinal === uiRuntime.sessionOrdinal
+      && same(runtime.sessionDraws, uiRuntime?.sessionDraws),
+    presentation: phase === 'ready-visible'
+      ? facts.budget.yield === ARC4_PERTAR_FIXTURE.biosphereYield
+        && facts.budget.used === 0
+        && facts.budget.remaining === ARC4_PERTAR_FIXTURE.biosphereYield
+        && facts.budget.cycle === 0
+        && rows.length === 3
+        && new Set(rows.map((row) => row?.verb)).size === 3
+        && rows.every((row) => ['tame', 'scavenge', 'sample'].includes(row?.verb)
+          && row?.status === 'ready'
+          && row?.button?.modelEnabled === 'true'
+          && row?.button?.disabled === false
+          && row?.button?.ariaDisabled === 'false')
+      : facts.budget.yield === ARC4_PERTAR_FIXTURE.biosphereYield
+        && facts.budget.used === ARC4_PERTAR_FIXTURE.biosphereYield
+        && facts.budget.remaining === 0
+        && facts.budget.cycle === 0
+        && (phase === 'exhausted-visible'
+          ? arc4ExhaustedCaptureRows(rows)
+          : phase === 'exhausted-offline'
+            && arc4IneligibleExhaustedCaptureRows(rows)
+            && rows.every((row) => /save authority is read-only/i.test(row?.detail ?? ''))),
+    runtime: phase === 'exhausted-offline'
+      ? runtime?.visible === false && runtime?.answerable === false
+        && runtime?.leaseOwned === false && runtime?.accruing === false
+        && uiRuntime?.visible === false && uiRuntime?.answerable === false
+        && uiRuntime?.leaseOwned === false && uiRuntime?.accruing === false
+      : runtime?.visible === true && runtime?.answerable === true
+        && runtime?.leaseOwned === true && runtime?.accruing === true
+        && uiRuntime?.visible === true && uiRuntime?.answerable === true
+        && uiRuntime?.leaseOwned === true && uiRuntime?.accruing === true,
+  };
+  const productReasons = Object.entries(productChecks)
+    .filter(([, value]) => value !== true).map(([name]) => name);
+  return Object.freeze({
+    instrumentOk: instrumentReasons.length === 0,
+    productOk: productReasons.length === 0,
+    instrumentReasons: Object.freeze(instrumentReasons),
+    productReasons: Object.freeze(productReasons),
+    facts, runtimeCapture,
+    diagnostic: Object.freeze({
+      phase, expectedDocumentToken,
+      documentToken: surface?.runtimeCaptureWitness?.documentToken ?? null,
+      route: Object.freeze({
+        mode: state?.mode ?? null, gal: state?.gal ?? null,
+        star: state?.star ?? null, planet: state?.planet ?? null,
+        planetOrdinal: state?.planetOrdinal ?? null,
+        worldKey: state?.navWorldKey ?? null,
+      }),
+      cardOpen: ui?.cardOpen ?? null,
+      cardTitle: ui?.cardTitle ?? null,
+      facts,
+      rowDetails: Object.freeze(rows.map((row) => Object.freeze({
+        verb: row?.verb ?? null, detail: row?.detail ?? null,
+      }))),
+      runtime: Object.freeze({
+        state: runtime ? Object.freeze({
+          visible: runtime.visible ?? null,
+          answerable: runtime.answerable ?? null,
+          leaseOwned: runtime.leaseOwned ?? null,
+          accruing: runtime.accruing ?? null,
+          activePlayMs: runtime.activePlayMs ?? null,
+          revision: runtime.revision ?? null,
+        }) : null,
+        ui: uiRuntime ? Object.freeze({
+          visible: uiRuntime.visible ?? null,
+          answerable: uiRuntime.answerable ?? null,
+          leaseOwned: uiRuntime.leaseOwned ?? null,
+          accruing: uiRuntime.accruing ?? null,
+          activePlayMs: uiRuntime.activePlayMs ?? null,
+          revision: uiRuntime.revision ?? null,
+        }) : null,
+      }),
+      pendingWork: ui?.diagnostics?.pendingWork ?? null,
+      pendingPersistenceWrites:
+        state?.sceneResources?.pendingPersistenceWrites ?? null,
+      heartbeatRunning: state?.persistence?.heartbeatRunning ?? null,
+    }),
+  });
+}
+
+async function waitForPertarSurface(send, sessionId, {
+  phase = 'ready-visible', expectedDocumentToken,
+} = {}) {
+  const validPhases = ['ready-visible', 'exhausted-visible', 'exhausted-offline'];
+  if (!validPhases.includes(phase) || typeof expectedDocumentToken !== 'string'
+    || expectedDocumentToken.length === 0) {
+    throw new InstrumentFailure('invalid Pertar surface observation request', {
+      phase, expectedDocumentToken,
+    });
+  }
+  const label = `${phase} Pertar surface`;
+  const windowStartedAtMonotonicMs = nowMonotonicMs();
+  const deadline = windowStartedAtMonotonicMs
+    + ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS;
+  let last = null;
+  let lastError = null;
+  while (nowMonotonicMs() < deadline) {
+    try {
+      const requestedAtMonotonicMs = nowMonotonicMs();
+      const remainingMs = deadline - requestedAtMonotonicMs;
+      if (remainingMs <= 0) break;
+      const surface = await evaluate(send, sessionId,
         `(()=>{const S=window.__CF_SLICE__,captures=[],capture=(kind,read)=>{
           const ordinal=captures.length,documentTokenBefore=S?.documentToken??null,
             startedAtPerformanceMs=globalThis.performance.now(),value=read(),
@@ -618,36 +772,43 @@ async function waitForPertarSurface(send, sessionId, { exhausted = false } = {})
           ui=uiCapture.value,state=stateCapture.value,
           runtimeCaptureWitness={schema:${JSON.stringify(ARC4_RECOVERY_RUNTIME_CAPTURE_WITNESS_SCHEMA)},
             documentToken:S?.documentToken??null,captures};
-          const route=state?.mode==='surface'&&state?.gal===${ARC4_PERTAR_FIXTURE.galaxy.seed}
-            &&state?.star===${ARC4_PERTAR_FIXTURE.publicStar.seed}
-            &&state?.planet===${ARC4_PERTAR_FIXTURE.planet.seed}
-            &&state?.planetOrdinal===${ARC4_PERTAR_FIXTURE.planet.ordinal}
-            &&state?.navWorldKey===${JSON.stringify(ARC4_PERTAR_FIXTURE.worldKey)};
-          const budget=ui?.budget,rows=ui?.rows??[],presentation=${exhausted
-            ? `budget?.used===${ARC4_PERTAR_FIXTURE.biosphereYield}&&budget?.remaining===0
-              &&(${arc4ExhaustedUiRows.toString()})(rows)`
-            : `budget?.used===0&&budget?.remaining===${ARC4_PERTAR_FIXTURE.biosphereYield}
-              &&rows.length===3&&rows.every((row)=>row.status==='ready'&&row.button?.disabled===false)`};
-          const matched=route&&ui?.cardOpen===true&&ui?.cardTitle==='Pertar'&&presentation;
-          const diagnostic={route,cardOpen:ui?.cardOpen??null,cardTitle:ui?.cardTitle??null,
-            budget:budget?{yield:budget.yield,used:budget.used,remaining:budget.remaining,
-              cycle:budget.cycle}:null,
-            rows:rows.map((row)=>({verb:row?.verb??null,status:row?.status??null,
-              modelEnabled:row?.button?.modelEnabled??null,disabled:row?.button?.disabled??null,
-              ariaDisabled:row?.button?.ariaDisabled??null})),runtimeCaptureWitness};
-          return {matched,state:matched?state:null,ui:matched?ui:null,
-            runtimeCaptureWitness,diagnostic}})()`,
-      'read Pertar capture surface');
-      lastDiagnostic = observed?.diagnostic ?? null;
-      return observed?.matched === true ? {
-        state: observed.state, ui: observed.ui,
-        runtimeCaptureWitness: observed.runtimeCaptureWitness,
-      } : null;
-    }, label);
-  } catch (error) {
-    const detail = error instanceof Error ? error.message : String(error);
-    throw new Error(`${detail}; observed=${JSON.stringify(lastDiagnostic)}`);
+          return {state,ui,runtimeCaptureWitness}})()`,
+      'read Pertar capture surface', remainingMs);
+      const completedAtMonotonicMs = nowMonotonicMs();
+      const pollTiming = Object.freeze({
+        schema: ARC4_RECOVERY_PERTAR_POLL_TIMING_SCHEMA,
+        windowStartedAtMonotonicMs, deadlineAtMonotonicMs: deadline,
+        requestedAtMonotonicMs, completedAtMonotonicMs, remainingMs,
+      });
+      const timingAssessment = assessArc4RecoveryPertarPollTiming(pollTiming);
+      if (!timingAssessment.ok) {
+        throw new InstrumentFailure(`${label} completed outside its absolute deadline`, {
+          pollTiming, timingAssessment,
+        });
+      }
+      const assessment = assessPertarSurfaceObservation(surface, {
+        phase, expectedDocumentToken,
+      });
+      last = Object.freeze({ surface, assessment });
+      lastError = null;
+      if (assessment.instrumentOk && assessment.productOk) {
+        return Object.freeze({
+          ...surface,
+          pollTiming,
+          runtimeCapture: assessment.runtimeCapture,
+          surfaceAssessment: assessment,
+        });
+      }
+    } catch (error) { lastError = error; }
+    await sleep(50);
   }
+  if (last === null || lastError !== null || !last.assessment.instrumentOk) {
+    throw new InstrumentFailure(`${label} instrument evidence timed out`, {
+      lastError: lastError instanceof Error ? lastError.message : lastError,
+      assessment: last?.assessment ?? null,
+    });
+  }
+  throw new ProductFailure(`${label} product state timed out`, last.assessment);
 }
 
 async function activateSurveyDock(send, sessionId) {
@@ -664,6 +825,56 @@ async function activateSurveyDock(send, sessionId) {
   await send('Input.dispatchMouseEvent', {
     type: 'mouseReleased', x: target.x, y: target.y, button: 'left', clickCount: 1,
   }, sessionId);
+}
+
+function retainPertarSurfaceEvidence(surface, phase, expectedDocumentToken) {
+  const assessment = surface?.surfaceAssessment
+    ?? assessPertarSurfaceObservation(surface, { phase, expectedDocumentToken });
+  const runtimeCapture = surface?.runtimeCapture
+    ?? pertarRuntimeCaptureEvidence(surface, expectedDocumentToken);
+  return Object.freeze({
+    schema: ARC4_RECOVERY_PERTAR_SURFACE_EVIDENCE_SCHEMA,
+    phase, expectedDocumentToken,
+    state: surface?.state ?? null,
+    ui: surface?.ui ?? null,
+    pollTiming: surface?.pollTiming ?? null,
+    runtimeCaptureWitness: surface?.runtimeCaptureWitness ?? null,
+    runtimeCapture,
+    assessment,
+  });
+}
+
+function replayPertarSurfaceEvidence(evidence) {
+  const surface = Object.freeze({
+    state: evidence?.state ?? null,
+    ui: evidence?.ui ?? null,
+    runtimeCaptureWitness: evidence?.runtimeCaptureWitness ?? null,
+  });
+  const phase = evidence?.phase;
+  const expectedDocumentToken = evidence?.expectedDocumentToken;
+  return Object.freeze({
+    runtimeCapture: pertarRuntimeCaptureEvidence(surface, expectedDocumentToken),
+    assessment: assessPertarSurfaceObservation(surface, {
+      phase, expectedDocumentToken,
+    }),
+  });
+}
+
+function replayPertarStageSurfaces(stages) {
+  const evidenceFor = (id, key) => stages.find(
+    (stage) => stage?.id === id,
+  )?.evidence?.[key];
+  return Object.freeze({
+    exhausted: replayPertarSurfaceEvidence(
+      evidenceFor('exhausted', 'pertarSurface'),
+    ),
+    offlineReopened: replayPertarSurfaceEvidence(
+      evidenceFor('offline-reopened', 'pertarSurface'),
+    ),
+    reactivated: replayPertarSurfaceEvidence(
+      evidenceFor('active-observation', 'reactivatedPertarSurface'),
+    ),
+  });
 }
 
 function browserSample(browser) {
@@ -941,6 +1152,21 @@ function assertDisabledSuppressionVerdicts({
 function initialStages() {
   return ARC4_RECOVERY_STAGE_ORDER.map((id) => ({ id, status: 'not-run', evidence: null }));
 }
+function mergeRecoveryStageEvidence(prior, next) {
+  if (prior && typeof prior === 'object' && !Array.isArray(prior)
+    && next && typeof next === 'object' && !Array.isArray(next)) {
+    return Object.freeze({ ...prior, ...next });
+  }
+  return next ?? prior ?? null;
+}
+function updateRecoveryStage(stages, id, status, evidence) {
+  const index = ARC4_RECOVERY_STAGE_ORDER.indexOf(id);
+  assert(index >= 0, `unknown Arc 4 recovery stage ${id}`);
+  return stages.map((stage, stageIndex) => stageIndex === index ? {
+    id, status: status ?? stage.status,
+    evidence: mergeRecoveryStageEvidence(stage.evidence, evidence),
+  } : stage);
+}
 function unavailableSource(reason) {
   const digest = sha256(String(reason));
   return Object.freeze({
@@ -1013,16 +1239,17 @@ async function runCertificate(options) {
     atomicWriteJson(currentReportPath, report);
   };
   const markStage = (idValue, status, evidence = null) => {
-    const index = ARC4_RECOVERY_STAGE_ORDER.indexOf(idValue);
-    assert(index >= 0, `unknown Arc 4 recovery stage ${idValue}`);
-    report.stages = report.stages.map((stage, stageIndex) => stageIndex === index
-      ? { id: idValue, status, evidence } : stage);
+    report.stages = updateRecoveryStage(report.stages, idValue, status, evidence);
     if (status === 'fail' && report.firstFailure === null) {
       report.firstFailure = { stage: idValue, message: String(evidence?.message || evidence) };
     }
     persistRunning();
   };
   const passStage = (idValue, evidence = null) => markStage(idValue, 'pass', evidence);
+  const retainStageEvidence = (idValue, evidence) => {
+    report.stages = updateRecoveryStage(report.stages, idValue, 'running', evidence);
+    persistRunning();
+  };
   try {
     releaseLock = acquireWorkspaceLock('v2 Arc 4 real-time recovery certificate');
     sourceBegin = sourceIdentity(); sourceEnd = sourceBegin;
@@ -1120,24 +1347,13 @@ async function runCertificate(options) {
       'land on Pertar');
     productAssert(landing === true, 'Pertar recovery fixture landing was rejected', landing);
     await waitForWritable(send, sessionId, fixtureToken);
-    const surface = await waitForPertarSurface(send, sessionId);
     const preRaw = await evaluate(send, sessionId, ARC4_DURABLE_READ_EXPRESSION,
       'read Pertar precondition authority');
-    const runtimeCaptureReceipt = assessArc4RecoveryRuntimeCaptureWitness({
-      witness: surface.runtimeCaptureWitness,
-      state: surface.state,
-      ui: surface.ui,
-      expectedDocumentToken: fixtureToken,
+    const surface = await waitForPertarSurface(send, sessionId, {
+      phase: 'ready-visible', expectedDocumentToken: fixtureToken,
     });
-    const runtimeCaptureEvidence = Object.freeze({
-      witness: surface.runtimeCaptureWitness,
-      snapshots: Object.freeze({
-        ui: projectArc4RecoveryRuntimeCaptureSnapshot(surface.ui),
-        state: projectArc4RecoveryRuntimeCaptureSnapshot(surface.state),
-      }),
-      receipt: runtimeCaptureReceipt,
-    });
-    instrumentAssert(runtimeCaptureReceipt.ok,
+    const runtimeCaptureEvidence = surface.runtimeCapture;
+    instrumentAssert(runtimeCaptureEvidence.receipt.ok,
       'Pertar recovery runtime capture receipt is red', runtimeCaptureEvidence);
     const preconditionInput = Object.freeze({
       raw: preRaw, state: surface.state, ui: surface.ui,
@@ -1198,7 +1414,9 @@ async function runCertificate(options) {
     });
 
     currentStage = 'exhausted';
-    const exhaustedSurface = await waitForPertarSurface(send, sessionId, { exhausted: true });
+    const exhaustedSurface = await waitForPertarSurface(send, sessionId, {
+      phase: 'exhausted-visible', expectedDocumentToken: fixtureToken,
+    });
     const synchronizedExhaustion = await collectSuppression(send, sessionId);
     const {
       suppressed, exhaustedRaw, exhaustedState, exhaustedUi,
@@ -1206,8 +1424,19 @@ async function runCertificate(options) {
     const exhaustion = assessArc4Exhaustion({
       exhaustedRaw, exhaustedState, exhaustedUi, suppressed,
     });
+    productAssert(same(exhaustedSurface.surfaceAssessment.facts,
+      projectArc4CaptureUiFacts(exhaustedUi)),
+    'synchronized exhausted UI disagreed with the settled visible surface', {
+      settledSurface: exhaustedSurface.surfaceAssessment,
+      synchronizedFacts: projectArc4CaptureUiFacts(exhaustedUi),
+    });
     productAssert(exhaustion.ok, 'Arc 4 exhaustion presentation is red', exhaustion);
-    passStage('exhausted', { assessment: exhaustion, suppressed });
+    passStage('exhausted', {
+      assessment: exhaustion, suppressed,
+      pertarSurface: retainPertarSurfaceEvidence(
+        exhaustedSurface, 'exhausted-visible', fixtureToken,
+      ),
+    });
 
     currentStage = 'close-checkpoint';
     const checkpointStartedAtMonotonicMs = nowMonotonicMs();
@@ -1293,15 +1522,15 @@ async function runCertificate(options) {
     productAssert(reopenedDocumentToken !== closedDocumentToken,
       'offline reopen reused the closed document token', {
         closedDocumentToken, reopenedDocumentToken,
-      });
+    });
     await activateSurveyDock(send, sessionId);
-    await waitForPertarSurface(send, sessionId, { exhausted: true });
     const offlineRaw = await evaluate(send, sessionId, ARC4_DURABLE_READ_EXPRESSION,
       'read offline-reopened authority');
-    const offlineState = await evaluate(send, sessionId,
-      'window.__CF_SLICE__.api.state()', 'read offline-reopened state');
-    const offlineUi = await evaluate(send, sessionId, ARC4_CAPTURE_UI_EXPRESSION,
-      'read offline-reopened UI');
+    const offlineSurface = await waitForPertarSurface(send, sessionId, {
+      phase: 'exhausted-offline', expectedDocumentToken: reopenedDocumentToken,
+    });
+    const offlineState = offlineSurface.state;
+    const offlineUi = offlineSurface.ui;
     const offlineDocumentClock = await evaluate(send, sessionId,
       `(()=>{const clock=globalThis.__cfArc4RecoveryDocumentClock;return {
         schema:clock?.schema??null,
@@ -1352,6 +1581,7 @@ async function runCertificate(options) {
       && offlineUi?.persistence?.runtime?.accruing === false
       && offlineUi?.budget?.used === ARC4_PERTAR_FIXTURE.biosphereYield
       && offlineUi?.budget?.remaining === 0
+      && arc4IneligibleExhaustedCaptureRows(offlineUi?.rows)
       && offlineState?.ownershipV2?.bootstrapOutcome === 'already-aligned',
     'true offline closure advanced or rewrote exhausted authority', {
       closure, offlineElapsedMs, closedActivePlayMs: closedRaw?.authority?.activePlayMs,
@@ -1367,6 +1597,9 @@ async function runCertificate(options) {
         eligibleDuringProof: false,
       },
       budget: offlineUi?.budget,
+      pertarSurface: retainPertarSurfaceEvidence(
+        offlineSurface, 'exhausted-offline', reopenedDocumentToken,
+      ),
     });
 
     currentStage = 'active-observation';
@@ -1381,6 +1614,22 @@ async function runCertificate(options) {
     await waitForWritable(send, sessionId, reopenedDocumentToken);
     await send('Target.activateTarget', { targetId });
     await send('Emulation.setFocusEmulationEnabled', { enabled: true }, sessionId);
+    await evaluate(send, sessionId,
+      'window.__CF_SLICE__.api.__smokeRunF4Heartbeat()',
+      'refresh reactivated exhausted presentation');
+    const reactivatedSurface = await waitForPertarSurface(send, sessionId, {
+      phase: 'exhausted-visible', expectedDocumentToken: reopenedDocumentToken,
+    });
+    productAssert(same(reactivatedSurface.surfaceAssessment.facts,
+      projectArc4CaptureUiFacts(exhaustedUi)),
+    'reactivated exhausted surface did not restore its active presentation', {
+      reactivatedSurface: reactivatedSurface.surfaceAssessment,
+      exhaustedFacts: projectArc4CaptureUiFacts(exhaustedUi),
+    });
+    const reactivatedPertarSurface = retainPertarSurfaceEvidence(
+      reactivatedSurface, 'exhausted-visible', reopenedDocumentToken,
+    );
+    retainStageEvidence('active-observation', { reactivatedPertarSurface });
     const armedObserver = await evaluate(
       send, sessionId, LIFECYCLE_OBSERVER_SOURCE, 'arm lifecycle observer',
     );
@@ -1504,6 +1753,7 @@ async function runCertificate(options) {
     passStage('active-observation', {
       metrics: observationVerdict.metrics,
       serviceOutcomeIds: observationVerdict.outcomes.map(({ id: outcomeId }) => outcomeId),
+      reactivatedPertarSurface,
     });
     currentStage = 'boundary-crossed';
     const boundaryOutcome = observationVerdict.outcomes.find(
@@ -1534,7 +1784,9 @@ async function runCertificate(options) {
     const evidence = classification.evidence;
     findings.push(error.message);
     if (evidence !== null) findings.push(`evidence: ${JSON.stringify(evidence)}`);
-    if (report.stages.find((stage) => stage.id === currentStage)?.status === 'not-run') {
+    if (['not-run', 'running'].includes(
+      report.stages.find((stage) => stage.id === currentStage)?.status,
+    )) {
       markStage(currentStage, 'fail', { message: error.message, evidence });
     }
     provisionalStatus = classification.status;
@@ -1621,6 +1873,7 @@ async function runCertificate(options) {
       const replayedFixturePrecondition = assessArc4CapturePrecondition(
         fixtureEvidence?.preconditionInput,
       );
+      const replayedPertarSurfaces = replayPertarStageSurfaces(terminal.stages);
       const replayedOrdinarySeal = assessOrdinarySliceRecoverySeal(
         fs.readFileSync(ordinarySlicePath, 'utf8'),
       );
@@ -1635,6 +1888,7 @@ async function runCertificate(options) {
         expectedRunId: id, currentSource,
         replayedDomainAssessment, replayedObservationVerdict,
         replayedAuthorityBinding, replayedFixturePrecondition,
+        replayedPertarSurfaces,
         currentBuild, currentInputs,
         ordinarySliceSeal: replayedOrdinarySeal,
         instrumentSeal: replayedInstrumentSeal,
@@ -1682,9 +1936,9 @@ function syntheticBrowser() {
     protocolVersion: '1.3',
   });
 }
-function syntheticRuntime(activePlayMs, revision) {
+function syntheticRuntime(activePlayMs, revision, { eligible = true } = {}) {
   return {
-    visible: true, answerable: true, leaseOwned: true, accruing: true,
+    visible: eligible, answerable: eligible, leaseOwned: eligible, accruing: eligible,
     activePlayMs, revision, sessionSeed: 68, sessionOrdinal: 16,
     sessionDraws: { 'capture.candidate': 16, 'capture.success': 16 },
   };
@@ -1696,6 +1950,16 @@ function syntheticRuntimeCaptureProjection(runtime) {
     sessionSeed: runtime.sessionSeed,
     sessionOrdinal: runtime.sessionOrdinal,
     sessionDraws: runtime.sessionDraws,
+  };
+}
+function syntheticPertarPollTiming(completedAtMonotonicMs = 19_999) {
+  return {
+    schema: ARC4_RECOVERY_PERTAR_POLL_TIMING_SCHEMA,
+    windowStartedAtMonotonicMs: 0,
+    deadlineAtMonotonicMs: ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS,
+    requestedAtMonotonicMs: 1_000,
+    completedAtMonotonicMs,
+    remainingMs: ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS - 1_000,
   };
 }
 function syntheticRuntimeCaptureWitness({
@@ -1716,7 +1980,7 @@ function syntheticRuntimeCaptureWitness({
     })),
   };
 }
-function syntheticCaptureFacts(recovered = false) {
+function syntheticCaptureFacts(recovered = false, { ineligible = false } = {}) {
   return {
     budget: {
       yield: ARC4_PERTAR_FIXTURE.biosphereYield,
@@ -1725,7 +1989,8 @@ function syntheticCaptureFacts(recovered = false) {
       cycle: recovered ? 1 : 0,
     },
     rows: ['tame', 'scavenge', 'sample'].map((verb) => ({
-      verb, status: recovered ? 'ready' : verb === 'tame' ? 'empty' : 'depleted',
+      verb, status: recovered ? 'ready'
+        : ineligible ? 'unavailable' : verb === 'tame' ? 'empty' : 'depleted',
       modelEnabled: recovered ? 'true' : 'false',
       disabled: !recovered, ariaDisabled: recovered ? 'false' : 'true',
     })),
@@ -1810,19 +2075,34 @@ function syntheticRecoveryFixture() {
     seed: 68, ordinal: 16,
     draws: { 'capture.candidate': 16, 'capture.success': 16 },
   };
-  const state = (documentToken, activePlayMs) => ({
+  const state = (documentToken, activePlayMs, eligible = true) => ({
+    mode: 'surface', gal: ARC4_PERTAR_FIXTURE.galaxy.seed,
+    star: ARC4_PERTAR_FIXTURE.publicStar.seed,
+    planet: ARC4_PERTAR_FIXTURE.planet.seed,
+    planetOrdinal: ARC4_PERTAR_FIXTURE.planet.ordinal,
+    navWorldKey: ARC4_PERTAR_FIXTURE.worldKey,
+    sceneResources: { pendingPersistenceWrites: 0 },
     persistence: {
-      documentToken, runtime: syntheticRuntime(activePlayMs, 56),
+      documentToken, runtime: syntheticRuntime(activePlayMs, 56, { eligible }),
     },
   });
-  const ui = (recovered, activePlayMs) => {
-    const facts = syntheticCaptureFacts(recovered);
+  const ui = (documentToken, recovered, activePlayMs, {
+    eligible = true, ineligible = false,
+  } = {}) => {
+    const facts = syntheticCaptureFacts(recovered, { ineligible });
     return {
       budget: facts.budget,
       rows: facts.rows.map(({ verb, status, ...button }) => ({
-        verb, status, button,
+        verb, status,
+        detail: ineligible ? 'Capture unavailable while save authority is read-only.'
+          : status === 'depleted' ? 'Worked Out — no Biosphere Yield remains this cycle.'
+            : status === 'empty' ? 'No eligible candidate.' : 'Ready to capture.',
+        button,
       })),
-      persistence: { runtime: syntheticRuntime(activePlayMs, 56) },
+      cardOpen: true, cardTitle: 'Pertar', diagnostics: { pendingWork: 0 },
+      persistence: {
+        documentToken, runtime: syntheticRuntime(activePlayMs, 56, { eligible }),
+      },
     };
   };
   const raw = (activePlayMs) => ({
@@ -1830,19 +2110,19 @@ function syntheticRecoveryFixture() {
   });
   const recoveryBundle = {
     exhaustedRaw: raw(10_000),
-    exhaustedState: state(closedToken, 10_000),
-    exhaustedUi: ui(false, 10_000),
+    exhaustedState: state(closedToken, 10_005),
+    exhaustedUi: ui(closedToken, false, 10_010),
     closedRaw: raw(10_020),
     closedState: state(closedToken, 10_020),
     closure: {
       closedDocumentToken: closedToken, reopenedDocumentToken: token,
     },
     offlineRaw: raw(10_020),
-    offlineState: state(token, startActive),
-    offlineUi: ui(false, startActive),
+    offlineState: state(token, startActive, false),
+    offlineUi: ui(token, false, startActive, { eligible: false, ineligible: true }),
     recoveredRaw: raw(lastActive),
     recoveredState: state(token, lastActive),
-    recoveredUi: ui(true, lastActive),
+    recoveredUi: ui(token, true, lastActive),
   };
   const input = {
     schema: ARC4_RECOVERY_INPUT_SCHEMA, policy: POLICY, browser,
@@ -1874,6 +2154,23 @@ function syntheticRecoveryFixture() {
 }
 
 export function runSelftest() {
+  const justBeforeDeadline = assessArc4RecoveryPertarPollTiming(
+    syntheticPertarPollTiming(ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS - 1),
+  );
+  const exactDeadline = assessArc4RecoveryPertarPollTiming(
+    syntheticPertarPollTiming(ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS),
+  );
+  const lateDeadline = assessArc4RecoveryPertarPollTiming(
+    syntheticPertarPollTiming(ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS + 1),
+  );
+  assert(justBeforeDeadline.ok === true,
+    'just-before-deadline Pertar completion was rejected');
+  assert(exactDeadline.ok === false
+    && exactDeadline.checks.completionBeforeDeadline === false,
+  'exact-deadline Pertar completion stayed timing-green');
+  assert(lateDeadline.ok === false
+    && lateDeadline.checks.completionBeforeDeadline === false,
+  'late Pertar completion stayed timing-green');
   const failureEvidence = Object.freeze({ selftest: 'failure-evidence' });
   instrumentAssert(true, 'true instrument assertion threw');
   productAssert(true, 'true product assertion threw');
@@ -2051,6 +2348,134 @@ export function runSelftest() {
     && trustedRuntimeReceipt.observed.runtimeNondecreasing === true,
   `trusted UI→state runtime receipt is red: ${JSON.stringify(trustedRuntimeReceipt)}`);
 
+  const phaseSurface = ({ eligible, unavailable }) => {
+    const stateRuntime = syntheticRuntime(20_001, 7, { eligible });
+    const uiRuntime = syntheticRuntime(20_000, 7, { eligible });
+    const flatFacts = syntheticCaptureFacts(false, { ineligible: unavailable });
+    const rows = flatFacts.rows.map(({ verb, status, ...button }) => ({
+      verb, status,
+      detail: unavailable ? 'Capture unavailable while save authority is read-only.'
+        : status === 'depleted' ? 'No biosphere yield remains.' : 'No candidate found.',
+      button,
+    }));
+    const state = {
+      mode: 'surface', gal: ARC4_PERTAR_FIXTURE.galaxy.seed,
+      star: ARC4_PERTAR_FIXTURE.publicStar.seed,
+      planet: ARC4_PERTAR_FIXTURE.planet.seed,
+      planetOrdinal: ARC4_PERTAR_FIXTURE.planet.ordinal,
+      navWorldKey: ARC4_PERTAR_FIXTURE.worldKey,
+      sceneResources: { pendingPersistenceWrites: 0 },
+      persistence: { documentToken: runtimeCaptureToken, runtime: stateRuntime },
+    };
+    const ui = {
+      cardOpen: true, cardTitle: 'Pertar', budget: flatFacts.budget, rows,
+      diagnostics: { pendingWork: 0 },
+      persistence: { documentToken: runtimeCaptureToken, runtime: uiRuntime },
+    };
+    return {
+      state, ui,
+      runtimeCaptureWitness: syntheticRuntimeCaptureWitness({
+        documentToken: runtimeCaptureToken,
+        uiRuntime, stateRuntime,
+      }),
+    };
+  };
+  const activePhaseSurface = phaseSurface({ eligible: true, unavailable: false });
+  const offlinePhaseSurface = phaseSurface({ eligible: false, unavailable: true });
+  assert(assessPertarSurfaceObservation(activePhaseSurface, {
+    phase: 'exhausted-visible', expectedDocumentToken: runtimeCaptureToken,
+  }).productOk,
+  'active exhausted Pertar phase baseline is red');
+  assert(assessPertarSurfaceObservation(offlinePhaseSurface, {
+    phase: 'exhausted-offline', expectedDocumentToken: runtimeCaptureToken,
+  }).productOk,
+  'offline unavailable Pertar phase baseline is red');
+  const backwardPhaseSurface = structuredClone(activePhaseSurface);
+  backwardPhaseSurface.state.persistence.runtime.activePlayMs = 19_999;
+  backwardPhaseSurface.runtimeCaptureWitness.captures[1].runtime.activePlayMs = 19_999;
+  const backwardPhaseAssessment = assessPertarSurfaceObservation(
+    backwardPhaseSurface, {
+      phase: 'exhausted-visible', expectedDocumentToken: runtimeCaptureToken,
+    },
+  );
+  assert(backwardPhaseAssessment.instrumentOk
+    && !backwardPhaseAssessment.productOk
+    && same(backwardPhaseAssessment.productReasons, ['runtimeOrder']),
+  'trusted backward Pertar runtime did not fail only the product order check');
+  const divergentRevisionSurface = structuredClone(activePhaseSurface);
+  divergentRevisionSurface.ui.persistence.runtime.revision += 1;
+  divergentRevisionSurface.runtimeCaptureWitness.captures[0].runtime.revision += 1;
+  const divergentRevisionAssessment = assessPertarSurfaceObservation(
+    divergentRevisionSurface, {
+      phase: 'exhausted-visible', expectedDocumentToken: runtimeCaptureToken,
+    },
+  );
+  assert(divergentRevisionAssessment.instrumentOk
+    && !divergentRevisionAssessment.productOk
+    && same(divergentRevisionAssessment.productReasons, ['runtimeTuple']),
+  'trusted divergent Pertar revision did not fail only the product tuple check');
+  const divergentRngSurface = structuredClone(activePhaseSurface);
+  divergentRngSurface.ui.persistence.runtime.sessionOrdinal += 1;
+  divergentRngSurface.runtimeCaptureWitness.captures[0].runtime.sessionOrdinal += 1;
+  const divergentRngAssessment = assessPertarSurfaceObservation(
+    divergentRngSurface, {
+      phase: 'exhausted-visible', expectedDocumentToken: runtimeCaptureToken,
+    },
+  );
+  assert(divergentRngAssessment.instrumentOk
+    && !divergentRngAssessment.productOk
+    && same(divergentRngAssessment.productReasons, ['runtimeTuple']),
+  'trusted divergent Pertar RNG did not fail only the product tuple check');
+  const missingRngSurface = structuredClone(activePhaseSurface);
+  for (const runtimeValue of [
+    missingRngSurface.state.persistence.runtime,
+    missingRngSurface.ui.persistence.runtime,
+  ]) {
+    delete runtimeValue.sessionSeed;
+    delete runtimeValue.sessionOrdinal;
+    delete runtimeValue.sessionDraws;
+  }
+  for (const capture of missingRngSurface.runtimeCaptureWitness.captures) {
+    capture.runtime.sessionSeed = null;
+    capture.runtime.sessionOrdinal = null;
+    capture.runtime.sessionDraws = null;
+  }
+  const missingRngAssessment = assessPertarSurfaceObservation(
+    missingRngSurface, {
+      phase: 'exhausted-visible', expectedDocumentToken: runtimeCaptureToken,
+    },
+  );
+  assert(missingRngAssessment.instrumentOk
+    && !missingRngAssessment.productOk
+    && same(missingRngAssessment.productReasons, ['runtimeTuple']),
+  'trusted missing Pertar RNG did not fail only the product tuple check');
+  const offlineRowMutation = structuredClone(offlinePhaseSurface);
+  Object.assign(offlineRowMutation.ui.rows[0], {
+    status: 'ready', button: {
+      modelEnabled: 'true', disabled: false, ariaDisabled: 'false',
+    },
+  });
+  assert(!assessPertarSurfaceObservation(offlineRowMutation, {
+    phase: 'exhausted-offline', expectedDocumentToken: runtimeCaptureToken,
+  }).productOk,
+  'ready offline capture-row mutation stayed green');
+  const offlineStateRuntimeMutation = structuredClone(offlinePhaseSurface);
+  offlineStateRuntimeMutation.state.persistence.runtime.visible = true;
+  assert(!assessPertarSurfaceObservation(offlineStateRuntimeMutation, {
+    phase: 'exhausted-offline', expectedDocumentToken: runtimeCaptureToken,
+  }).productOk,
+  'eligible offline state-runtime mutation stayed green');
+  const offlineUiRuntimeMutation = structuredClone(offlinePhaseSurface);
+  offlineUiRuntimeMutation.ui.persistence.runtime.answerable = true;
+  assert(!assessPertarSurfaceObservation(offlineUiRuntimeMutation, {
+    phase: 'exhausted-offline', expectedDocumentToken: runtimeCaptureToken,
+  }).productOk,
+  'eligible offline UI-runtime mutation stayed green');
+  assert(!assessPertarSurfaceObservation(offlinePhaseSurface, {
+    phase: 'exhausted-visible', expectedDocumentToken: runtimeCaptureToken,
+  }).productOk,
+  'unavailable offline presentation was accepted as active exhaustion');
+
   const swappedRuntimeCapture = syntheticRuntimeCaptureWitness({
     documentToken: runtimeCaptureToken, uiRuntime, stateRuntime,
     order: ['state', 'ui'],
@@ -2191,19 +2616,40 @@ export function runSelftest() {
   const mixedExhaustedUiRows = mixedExhaustedFacts.rows.map(({
     verb, status, modelEnabled, disabled, ariaDisabled,
   }) => ({ verb, status, button: { modelEnabled, disabled, ariaDisabled } }));
-  assert(arc4ExhaustedUiRows(mixedExhaustedUiRows),
+  assert(arc4ExhaustedCaptureRows(mixedExhaustedUiRows),
     'real mixed empty/depleted exhausted surface was rejected by the browser poll');
   const noDepletedUiRows = structuredClone(mixedExhaustedUiRows);
   for (const row of noDepletedUiRows) row.status = 'empty';
-  assert(!arc4ExhaustedUiRows(noDepletedUiRows),
+  assert(!arc4ExhaustedCaptureRows(noDepletedUiRows),
     'all-empty exhausted surface mutation stayed green');
   const earlyReadyUiRows = structuredClone(mixedExhaustedUiRows);
   Object.assign(earlyReadyUiRows[2], {
     status: 'ready',
     button: { modelEnabled: 'true', disabled: false, ariaDisabled: 'false' },
   });
-  assert(!arc4ExhaustedUiRows(earlyReadyUiRows),
+  assert(!arc4ExhaustedCaptureRows(earlyReadyUiRows),
     'partially ready exhausted surface mutation stayed green');
+  const offlineUnavailableFacts = input.authorityBinding.offlineCaptureFacts;
+  assert(arc4IneligibleExhaustedCaptureRows(offlineUnavailableFacts.rows)
+    && !arc4ExhaustedCaptureRows(offlineUnavailableFacts.rows),
+  'offline unavailable presentation was not isolated from active exhaustion');
+  assert(!arc4IneligibleExhaustedCaptureRows(mixedExhaustedFacts.rows),
+    'active exhausted presentation was accepted as read-only unavailable');
+  const hybridExhaustedRows = structuredClone(mixedExhaustedUiRows);
+  Object.assign(hybridExhaustedRows[0], {
+    modelEnabled: 'false', disabled: true, ariaDisabled: 'true',
+  });
+  Object.assign(hybridExhaustedRows[0].button, {
+    modelEnabled: 'true', disabled: false, ariaDisabled: 'false',
+  });
+  assert(!arc4ExhaustedCaptureRows(hybridExhaustedRows),
+    'forged flat exhaustion fields overrode a live enabled button');
+  const hybridUnavailableRows = structuredClone(offlineUnavailableFacts.rows);
+  hybridUnavailableRows[0].button = {
+    modelEnabled: 'true', disabled: false, ariaDisabled: 'false',
+  };
+  assert(!arc4IneligibleExhaustedCaptureRows(hybridUnavailableRows),
+    'forged flat unavailable fields overrode a live enabled button');
   const baseline = evaluateArc4RecoveryObservation(input);
   assert(baseline.status === 'pass',
     `recovery observation baseline is red: ${JSON.stringify(baseline.failures)}`);
@@ -2289,6 +2735,16 @@ export function runSelftest() {
     unrelatedToken: (next) => {
       next.authorityBinding.reopenedDocumentToken = 'unrelated-document-token';
     },
+    offlineUsesActivePresentation: (next) => {
+      next.authorityBinding.offlineCaptureFacts = structuredClone(
+        next.authorityBinding.exhaustedCaptureFacts,
+      );
+    },
+    activeStartsUnavailable: (next) => {
+      next.observation.samples[0].target.before.capture = structuredClone(
+        next.authorityBinding.offlineCaptureFacts,
+      );
+    },
     earlyUiRecovery: (next) => {
       next.observation.samples[5].target.after.capture = syntheticCaptureFacts(true);
     },
@@ -2363,6 +2819,8 @@ export function runSelftest() {
       'domain-observation-binding', 'recovery-window',
       'capture-recovery-transition', 'session-rng-fixed-point',
     ],
+    offlineUsesActivePresentation: ['offline-ineligible-presentation'],
+    activeStartsUnavailable: ['capture-recovery-transition'],
     earlyUiRecovery: ['capture-recovery-transition'],
     delayedUiRecovery: ['capture-recovery-transition'],
     noUiRecovery: ['capture-recovery-transition'],
@@ -2407,7 +2865,14 @@ export function runSelftest() {
     assert(outcome.ok === false
       && expectedChecks.every((name) => outcome.checks[name] === false)
       && Object.entries(outcome.checks).every(([name, value]) => (
-        name === 'suppressionSourceDigest'
+        [
+          'suppressionSourceDigest',
+          'pertarAssessmentSourceDigest',
+          'pertarDedicatedSourceDigest',
+          'pertarPhaseSourceDigest',
+          'collectorProductionSourceDigest',
+          'collectorSourceDigest',
+        ].includes(name)
           ? true : expectedChecks.includes(name) ? value === false : value === true
       )), `${label} did not fail only ${expectedChecks.join('/')}: ${JSON.stringify(outcome)}`);
   };
@@ -2915,16 +3380,219 @@ export function runSelftest() {
   const reversedPertarCapture = collectorSource.replace(
     pertarUiThenState, pertarStateThenUi,
   );
-  assert(reversedPertarCapture !== collectorSource,
-    'Pertar capture-order mutation did not bind the production sampler');
-  const reversedPertarSeal = assessArc4RecoveryInstrumentSeal(
-    reversedPertarCapture, PAGE_EVIDENCE_SOURCES,
+  assertInstrumentSealOnly(
+    reversedPertarCapture, 'pertarReadyUiThenState',
+    'reversed Pertar UI/state capture order',
   );
-  assert(reversedPertarSeal.ok === false
-    && reversedPertarSeal.checks.pertarReadyUiThenState === false
-    && Object.entries(reversedPertarSeal.checks).every(([name, value]) => (
-      name === 'pertarReadyUiThenState' ? value === false : value === true
-    )), 'reversed Pertar UI/state capture order did not fail only its instrument seal');
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "'read Pertar capture surface', remainingMs);",
+      "'read Pertar capture surface', COMMAND_TIMEOUT_MS);",
+    ),
+    'pertarAbsoluteDeadline', 'unclipped Pertar Runtime.evaluate deadline',
+  );
+  const offlinePhaseCall = "const offlineSurface = await waitForPertarSurface(send, sessionId, {\n      phase: 'exhausted-offline', expectedDocumentToken: reopenedDocumentToken,\n    });";
+  const activePhaseCall = "const reactivatedSurface = await waitForPertarSurface(send, sessionId, {\n      phase: 'exhausted-visible', expectedDocumentToken: reopenedDocumentToken,\n    });";
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      offlinePhaseCall,
+      offlinePhaseCall.replace("phase: 'exhausted-offline'", "phase: 'exhausted-visible'"),
+    ),
+    'pertarOfflineUnavailablePhaseBound', 'conflated offline unavailable phase',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      activePhaseCall,
+      activePhaseCall.replace("phase: 'exhausted-visible'", "phase: 'exhausted-offline'"),
+    ),
+    'pertarActiveExhaustedPhaseBound', 'conflated reactivated exhausted phase',
+  );
+  const commentShadowedOfflinePhase = collectorSource.replace(
+    offlinePhaseCall,
+    `/* ${offlinePhaseCall} */\n    ${offlinePhaseCall.replace(
+      "phase: 'exhausted-offline'", "phase: 'exhausted-visible'",
+    )}`,
+  );
+  assertInstrumentSealOnly(
+    commentShadowedOfflinePhase, 'pertarPhaseSourceDigest',
+    'comment-shadowed offline unavailable phase',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "    await evaluate(send, sessionId,\n      'window.__CF_SLICE__.api.__smokeRunF4Heartbeat()',\n      'refresh reactivated exhausted presentation');\n",
+      '',
+    ),
+    'pertarActiveExhaustedPhaseBound', 'removed reactivated presentation refresh',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'const offlineState = offlineSurface.state;\n    const offlineUi = offlineSurface.ui;',
+      'const offlineState = offlineSurface.ui;\n    const offlineUi = offlineSurface.ui;',
+    ),
+    'pertarOfflineUnavailablePhaseBound', 'unbound offline state surface',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'arc4IneligibleExhaustedCaptureRows(rows)',
+      'arc4ExhaustedCaptureRows(rows)',
+    ),
+    'pertarPhasePredicates', 'conflated offline and active predicates',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "phase === 'exhausted-visible'\n          ? arc4ExhaustedCaptureRows(rows)\n          : phase === 'exhausted-offline'",
+      "phase === 'exhausted-offline'\n          ? arc4ExhaustedCaptureRows(rows)\n          : phase === 'exhausted-visible'",
+    ),
+    'pertarPhasePredicates', 'swapped Pertar phase predicate labels',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'last === null || lastError !== null || !last.assessment.instrumentOk',
+      'last === null || !last.assessment.instrumentOk',
+    ),
+    'pertarPhaseFailureClassified', 'ignored terminal Pertar sampler error',
+  );
+  const pertarTerminalCondition =
+    'if (last === null || lastError !== null || !last.assessment.instrumentOk) {';
+  const commentShadowedPertarWait = collectorSource.replace(
+    pertarTerminalCondition,
+    `// ${pertarTerminalCondition}\n  ${pertarTerminalCondition.replace(
+      ' || lastError !== null', '',
+    )}`,
+  );
+  assertInstrumentSealOnly(
+    commentShadowedPertarWait, 'pertarDedicatedSourceDigest',
+    'comment-shadowed terminal Pertar sampler error',
+  );
+  const pertarDedicatedStartNeedle =
+    'function pertarRuntimeCaptureEvidence(surface, expectedDocumentToken) {';
+  const pertarDedicatedEndNeedle =
+    '\n\nasync function activateSurveyDock(send, sessionId) {';
+  const pertarDedicatedStart = collectorSource.indexOf(pertarDedicatedStartNeedle);
+  const pertarDedicatedEnd = collectorSource.indexOf(
+    pertarDedicatedEndNeedle, pertarDedicatedStart,
+  );
+  assert(pertarDedicatedStart >= 0 && pertarDedicatedEnd > pertarDedicatedStart,
+    'Pertar dedicated source section is empty');
+  const pertarDedicatedSource = collectorSource.slice(
+    pertarDedicatedStart, pertarDedicatedEnd,
+  );
+  const deadPertarDedicatedCopy = `if (false) {\n${pertarDedicatedSource}\n\n`
+    + 'async function activateSurveyDock(send, sessionId) {}\n}\n\n';
+  let duplicatePertarDedicatedSource = collectorSource.slice(0, pertarDedicatedStart)
+    + deadPertarDedicatedCopy + collectorSource.slice(pertarDedicatedStart);
+  const operativePertarConditionIndex = duplicatePertarDedicatedSource.lastIndexOf(
+    pertarTerminalCondition,
+  );
+  assert(operativePertarConditionIndex > pertarDedicatedStart,
+    'operative Pertar terminal condition is not uniquely addressable');
+  duplicatePertarDedicatedSource = duplicatePertarDedicatedSource.slice(
+    0, operativePertarConditionIndex,
+  ) + pertarTerminalCondition.replace(' || lastError !== null', '')
+    + duplicatePertarDedicatedSource.slice(
+      operativePertarConditionIndex + pertarTerminalCondition.length,
+    );
+  const duplicatePertarDedicatedSeal = assessArc4RecoveryInstrumentSeal(
+    duplicatePertarDedicatedSource, PAGE_EVIDENCE_SOURCES,
+  );
+  assert(duplicatePertarDedicatedSeal.ok === false
+    && duplicatePertarDedicatedSeal.checks.collectorSourceDigest === false
+    && duplicatePertarDedicatedSeal.checks.collectorProductionSourceDigest === false
+    && duplicatePertarDedicatedSeal.checks.pertarDedicatedCollectors === false
+    && duplicatePertarDedicatedSeal.checks.pertarDedicatedSourceDigest === true
+    && duplicatePertarDedicatedSeal.checks.pertarPhaseFailureClassified === true
+    && Object.entries(duplicatePertarDedicatedSeal.checks).every(([name, value]) => (
+      [
+        'collectorSourceDigest', 'collectorProductionSourceDigest',
+        'pertarDedicatedCollectors',
+      ].includes(name)
+        ? value === false : value === true
+    )), 'dead-copy Pertar extraction boundary did not fail only source digests/unique ownership');
+  const pertarDedicatedOwnerEndNeedle = '\nfunction browserSample(browser) {';
+  const pertarDedicatedOwnerEnd = collectorSource.indexOf(
+    pertarDedicatedOwnerEndNeedle, pertarDedicatedEnd,
+  );
+  assert(pertarDedicatedOwnerEnd > pertarDedicatedEnd,
+    'Pertar dedicated owner boundary is empty');
+  assertInstrumentSealOnly(
+    collectorSource.slice(0, pertarDedicatedStart)
+      + 'if (false) {\n'
+      + collectorSource.slice(pertarDedicatedStart, pertarDedicatedOwnerEnd)
+      + '\n}\n'
+      + collectorSource.slice(pertarDedicatedOwnerEnd),
+    'collectorProductionSourceDigest',
+    'dead-branched sole Pertar dedicated collector',
+  );
+  const pertarPhaseStartNeedle = "    currentStage = 'offline-reopened';";
+  const pertarPhaseAfterNeedle = '    const samples = [];';
+  const pertarPhaseStart = collectorSource.indexOf(pertarPhaseStartNeedle);
+  const pertarPhaseAfter = collectorSource.indexOf(
+    pertarPhaseAfterNeedle, pertarPhaseStart,
+  );
+  assert(pertarPhaseStart >= 0 && pertarPhaseAfter > pertarPhaseStart,
+    'Pertar phase owner boundary is empty');
+  assertInstrumentSealOnly(
+    collectorSource.slice(0, pertarPhaseStart)
+      + '    /*\n'
+      + collectorSource.slice(pertarPhaseStart, pertarPhaseAfter)
+      + '    */\n'
+      + collectorSource.slice(pertarPhaseAfter),
+    'collectorProductionSourceDigest',
+    'comment-shadowed sole Pertar phase collector',
+  );
+  const verificationOwnerNeedle = '\nfunction verifyRecoveryRun(options) {';
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      verificationOwnerNeedle,
+      "\nassessPertarSurfaceObservation = () => ({ instrumentOk: true, productOk: true });"
+        + "\nwaitForPertarSurface = async () => ({ state: {}, ui: {} });"
+        + verificationOwnerNeedle,
+    ),
+    'collectorSourceDigest',
+    'post-boundary rebound Pertar dedicated collector',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      '} catch (error) { lastError = error; }\n    await sleep(50);\n  }\n  if (last === null || lastError !== null',
+      '} catch (error) { lastError = null; }\n    await sleep(50);\n  }\n  if (last === null || lastError !== null',
+    ),
+    'pertarPhaseFailureClassified', 'discarded Pertar sampler error',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'last = Object.freeze({ surface, assessment });\n      lastError = null;',
+      'last = Object.freeze({ surface, assessment });',
+    ),
+    'pertarPhaseFailureClassified', 'kept stale Pertar sampler error sticky',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'throw new ProductFailure(`${label} product state timed out`, last.assessment);',
+      'throw new InstrumentFailure(`${label} product state timed out`, last.assessment);',
+    ),
+    'pertarPhaseFailureClassified', 'instrument-classified Pertar product timeout',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'runtimeOrder: runtimeCapture.receipt.observed.runtimeNondecreasing === true,',
+      'runtimeOrder: true,',
+    ),
+    'pertarPhaseRuntimeOrder', 'bypassed Pertar runtime-order verdict',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'runtimeTuple: Number.isSafeInteger(runtime?.revision) && runtime.revision >= 0',
+      'runtimeTuple: true || Number.isSafeInteger(runtime?.revision) && runtime.revision >= 0',
+    ),
+    'pertarPhaseRuntimeTuple', 'bypassed Pertar runtime-tuple verdict',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'runtime.revision === uiRuntime.revision',
+      'true',
+    ),
+    'pertarAssessmentSourceDigest', 'removed Pertar runtime revision equality',
+  );
   assertInstrumentSealOnly(
     collectorSource.replace('const ordinal=captures.length', 'const ordinal=0'),
     'pertarCaptureWitnessDerived', 'constant Pertar capture ordinal',
@@ -2933,16 +3601,11 @@ export function runSelftest() {
     'startedAtPerformanceMs=globalThis.performance.now(),value=read(),\n            endedAtPerformanceMs=globalThis.performance.now(),',
     'startedAtPerformanceMs=0,value=read(),\n            endedAtPerformanceMs=0,',
   );
-  assert(forgedPertarTimestamps !== collectorSource,
-    'forged Pertar capture timestamp mutation did not bind production');
-  const forgedPertarTimestampSeal = assessArc4RecoveryInstrumentSeal(
-    forgedPertarTimestamps, PAGE_EVIDENCE_SOURCES,
+  assertInstrumentSealOnly(
+    forgedPertarTimestamps,
+    ['pertarCaptureTimestampDerived', 'noPertarClockShadow'],
+    'forged Pertar timestamps',
   );
-  assert(forgedPertarTimestampSeal.ok === false
-    && Object.entries(forgedPertarTimestampSeal.checks).every(([name, value]) => (
-      ['pertarCaptureTimestampDerived', 'noPertarClockShadow'].includes(name)
-        ? value === false : value === true
-    )), 'forged Pertar timestamps did not fail only timestamp/clock seals');
   assertInstrumentSealOnly(
     collectorSource.replace(
       'startedAtPerformanceMs=globalThis.performance.now(),value=read(),\n            endedAtPerformanceMs=globalThis.performance.now(),',
@@ -2954,16 +3617,11 @@ export function runSelftest() {
     '`(()=>{const S=window.__CF_SLICE__,captures=[]',
     '`(()=>{const S=window.__CF_SLICE__;const performance={now:()=>0};const captures=[]',
   );
-  assert(shadowedPertarPerformance !== collectorSource,
-    'shadowed Pertar performance clock mutation did not bind production');
-  const shadowedPertarPerformanceSeal = assessArc4RecoveryInstrumentSeal(
-    shadowedPertarPerformance, PAGE_EVIDENCE_SOURCES,
+  assertInstrumentSealOnly(
+    shadowedPertarPerformance,
+    ['noProductionClockOverride', 'noPertarClockShadow'],
+    'shadowed Pertar performance clock',
   );
-  assert(shadowedPertarPerformanceSeal.ok === false
-    && Object.entries(shadowedPertarPerformanceSeal.checks).every(([name, value]) => (
-      ['noProductionClockOverride', 'noPertarClockShadow'].includes(name)
-        ? value === false : value === true
-    )), 'shadowed Pertar performance clock did not fail only production/shadow seals');
   assertInstrumentSealOnly(
     collectorSource.replace(
       '`(()=>{const S=window.__CF_SLICE__,captures=[]',
@@ -2992,19 +3650,14 @@ export function runSelftest() {
     '`(()=>{const S=window.__CF_SLICE__,captures=[]',
     '`((globalThis)=>{const S=window.__CF_SLICE__,captures=[]',
   ).replace(
-    'runtimeCaptureWitness,diagnostic}})()`',
-    'runtimeCaptureWitness,diagnostic}})({performance:{now:()=>0}})`',
+    'return {state,ui,runtimeCaptureWitness}})()`',
+    'return {state,ui,runtimeCaptureWitness}})({performance:{now:()=>0}})`',
   );
-  assert(parameterShadowedPertarClock !== collectorSource,
-    'parameter-shadowed Pertar global clock mutation did not bind production');
-  const parameterShadowedPertarSeal = assessArc4RecoveryInstrumentSeal(
-    parameterShadowedPertarClock, PAGE_EVIDENCE_SOURCES,
+  assertInstrumentSealOnly(
+    parameterShadowedPertarClock,
+    ['pertarSamplerBoundary', 'noPertarClockShadow'],
+    'parameter-shadowed Pertar global clock',
   );
-  assert(parameterShadowedPertarSeal.ok === false
-    && Object.entries(parameterShadowedPertarSeal.checks).every(([name, value]) => (
-      ['pertarSamplerBoundary', 'noPertarClockShadow'].includes(name)
-        ? value === false : value === true
-    )), 'parameter-shadowed Pertar clock did not fail only boundary/shadow seals');
   assertInstrumentSealOnly(
     collectorSource.replace(
       'documentTokenAfter=S?.documentToken??null,p=value?.persistence??null,\n            r=p?.runtime??null,receipt={kind,ordinal,documentTokenBefore,documentTokenAfter,\n              snapshotDocumentToken:p?.documentToken??null,startedAtPerformanceMs,',
@@ -3025,45 +3678,61 @@ export function runSelftest() {
   );
   assertInstrumentSealOnly(
     collectorSource.replace(
-      'state: projectArc4RecoveryRuntimeCaptureSnapshot(surface.state),',
-      'state: projectArc4RecoveryRuntimeCaptureSnapshot(surface.ui),',
+      'state: projectArc4RecoveryRuntimeCaptureSnapshot(surface?.state),',
+      'state: projectArc4RecoveryRuntimeCaptureSnapshot(surface?.ui),',
     ),
     'pertarCaptureEvidenceBound', 'unbound Pertar state evidence',
   );
   assertInstrumentSealOnly(
     collectorSource.replace(
-      'const runtimeCaptureReceipt = assessArc4RecoveryRuntimeCaptureWitness({\n      witness: surface.runtimeCaptureWitness,',
-      'const runtimeCaptureReceipt = assessArc4RecoveryRuntimeCaptureWitness({\n      witness: { bogus: true },',
+      'const receipt = assessArc4RecoveryRuntimeCaptureWitness({\n    witness: surface?.runtimeCaptureWitness,',
+      'const receipt = assessArc4RecoveryRuntimeCaptureWitness({\n    witness: { bogus: true },',
     ),
     'pertarCaptureWitnessEnforced', 'unbound Pertar witness assessor input',
   );
   assertInstrumentSealOnly(
     collectorSource.replace(
-      'const runtimeCaptureEvidence = Object.freeze({\n      witness: surface.runtimeCaptureWitness,',
-      'const runtimeCaptureEvidence = Object.freeze({\n      witness: { bogus: true },',
+      'return Object.freeze({\n    witness: surface?.runtimeCaptureWitness ?? null,',
+      'return Object.freeze({\n    witness: { bogus: true },',
     ),
     'pertarCaptureEvidenceBound', 'unbound Pertar capture witness evidence',
   );
   assertInstrumentSealOnly(
     collectorSource.replace(
-      'receipt: runtimeCaptureReceipt,',
-      'receipt: { ok: true },',
+      '    receipt,\n  });\n}',
+      '    receipt: { ok: true },\n  });\n}',
     ),
     'pertarCaptureEvidenceBound', 'unbound Pertar capture receipt evidence',
   );
   const bypassedPertarWitness = collectorSource.replace(
-    'instrumentAssert(runtimeCaptureReceipt.ok,',
+    'instrumentAssert(runtimeCaptureEvidence.receipt.ok,',
     'instrumentAssert(true,',
   );
-  assert(bypassedPertarWitness !== collectorSource,
-    'Pertar witness-enforcement mutation did not bind production');
-  const bypassedPertarSeal = assessArc4RecoveryInstrumentSeal(
-    bypassedPertarWitness, PAGE_EVIDENCE_SOURCES,
+  assertInstrumentSealOnly(
+    bypassedPertarWitness, 'pertarCaptureWitnessEnforced',
+    'bypassed Pertar witness enforcement',
   );
-  assert(bypassedPertarSeal.ok === false
-    && Object.entries(bypassedPertarSeal.checks).every(([name, value]) => (
-      name === 'pertarCaptureWitnessEnforced' ? value === false : value === true
-    )), 'bypassed Pertar witness enforcement did not fail only its instrument seal');
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "    retainStageEvidence('active-observation', { reactivatedPertarSurface });\n",
+      '',
+    ),
+    'pertarPhaseReceiptsRetained', 'unpersisted pre-observation reactivated receipt',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "updateRecoveryStage(report.stages, idValue, 'running', evidence);",
+      'updateRecoveryStage(report.stages, idValue, null, evidence);',
+    ),
+    'pertarFailureEvidenceMerged', 'reactivated receipt left not-run while observing',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "if (['not-run', 'running'].includes(\n      report.stages.find((stage) => stage.id === currentStage)?.status,\n    )) {",
+      "if (report.stages.find((stage) => stage.id === currentStage)?.status === 'not-run') {",
+    ),
+    'pertarFailureEvidenceMerged', 'running-stage failure skipped terminal red merge',
+  );
   assertInstrumentSealOnly(
     collectorSource.replace(
       'raw: preRaw, state: surface.state, ui: surface.ui,\n      routeError: null, authorityReady: true,',
@@ -3163,6 +3832,75 @@ export function runSelftest() {
     ),
     reasons: [],
   };
+  const retainedSyntheticSurface = ({ state, ui, phase, documentToken }) => {
+    const surface = {
+      state, ui, pollTiming: syntheticPertarPollTiming(),
+      runtimeCaptureWitness: syntheticRuntimeCaptureWitness({
+        documentToken,
+        uiRuntime: ui.persistence.runtime,
+        stateRuntime: state.persistence.runtime,
+      }),
+    };
+    const assessment = assessPertarSurfaceObservation(surface, {
+      phase, expectedDocumentToken: documentToken,
+    });
+    assert(assessment.instrumentOk && assessment.productOk,
+      `synthetic retained ${phase} surface is red: ${JSON.stringify(assessment)}`);
+    return retainPertarSurfaceEvidence({
+      ...surface, runtimeCapture: assessment.runtimeCapture,
+      surfaceAssessment: assessment,
+    }, phase, documentToken);
+  };
+  const exhaustedRetainedState = structuredClone(recoveryBundle.exhaustedState);
+  exhaustedRetainedState.persistence.runtime = syntheticRuntime(10_003, 55);
+  const exhaustedRetainedUi = structuredClone(recoveryBundle.exhaustedUi);
+  exhaustedRetainedUi.persistence.runtime = syntheticRuntime(10_002, 55);
+  const exhaustedPertarSurface = retainedSyntheticSurface({
+    state: exhaustedRetainedState,
+    ui: exhaustedRetainedUi,
+    phase: 'exhausted-visible', documentToken: runtimeCaptureToken,
+  });
+  const offlinePertarSurface = retainedSyntheticSurface({
+    state: recoveryBundle.offlineState,
+    ui: recoveryBundle.offlineUi,
+    phase: 'exhausted-offline',
+    documentToken: recoveryBundle.closure.reopenedDocumentToken,
+  });
+  const reactivatedState = structuredClone(recoveryBundle.offlineState);
+  reactivatedState.persistence.runtime = syntheticRuntime(20_000, 16);
+  const reactivatedUi = structuredClone(recoveryBundle.exhaustedUi);
+  reactivatedUi.persistence.documentToken = recoveryBundle.closure.reopenedDocumentToken;
+  reactivatedUi.persistence.runtime = syntheticRuntime(19_999, 16);
+  const reactivatedPertarSurface = retainedSyntheticSurface({
+    state: reactivatedState, ui: reactivatedUi,
+    phase: 'exhausted-visible',
+    documentToken: recoveryBundle.closure.reopenedDocumentToken,
+  });
+  const retainedRunningStages = updateRecoveryStage(
+    initialStages(), 'active-observation', 'running', { reactivatedPertarSurface },
+  );
+  const retainedRunningActiveStage = retainedRunningStages.find(
+    (stage) => stage.id === 'active-observation',
+  );
+  assert(retainedRunningActiveStage.status === 'running'
+    && same(retainedRunningActiveStage.evidence.reactivatedPertarSurface,
+      reactivatedPertarSurface),
+  'pre-observation running stage did not durably retain reactivated Pertar evidence');
+  const retainedFailedStages = updateRecoveryStage(
+    retainedRunningStages, 'active-observation', 'fail', {
+      message: 'selftest post-reactivation failure',
+      evidence: { selftest: true },
+    },
+  );
+  const retainedFailedActiveStage = retainedFailedStages.find(
+    (stage) => stage.id === 'active-observation',
+  );
+  assert(retainedFailedActiveStage.status === 'fail'
+    && same(retainedFailedActiveStage.evidence.reactivatedPertarSurface,
+      reactivatedPertarSurface)
+    && retainedFailedActiveStage.evidence.message
+      === 'selftest post-reactivation failure',
+  'post-reactivation failure discarded retained Pertar evidence or stayed non-red');
   const stages = ARC4_RECOVERY_STAGE_ORDER.map((idValue) => ({
     id: idValue, status: 'pass', evidence: idValue === 'fixture' ? {
       documentToken: runtimeCaptureToken,
@@ -3175,6 +3913,12 @@ export function runSelftest() {
         authorityReady: true,
       },
       precondition: terminalFixturePrecondition,
+    } : idValue === 'exhausted' ? {
+      pertarSurface: exhaustedPertarSurface,
+    } : idValue === 'offline-reopened' ? {
+      pertarSurface: offlinePertarSurface,
+    } : idValue === 'active-observation' ? {
+      reactivatedPertarSurface,
     } : null,
   }));
   const terminal = {
@@ -3198,6 +3942,7 @@ export function runSelftest() {
     replayedDomainAssessment: domainAssessment,
     replayedObservationVerdict: baseline, replayedAuthorityBinding,
     replayedFixturePrecondition: terminalFixturePrecondition,
+    replayedPertarSurfaces: replayPertarStageSurfaces(stages),
     currentBuild, currentInputs, ordinarySliceSeal: ordinarySeal, instrumentSeal,
     expectedPredecessors: predecessors,
     expectedArtifactPath: 'apps/game/smoke/arc4-recovery-selftest-run.json',
@@ -3207,6 +3952,129 @@ export function runSelftest() {
   );
   assert(same(reportErrors, []),
     `terminal recovery report baseline is red: ${reportErrors.join(', ')}`);
+  const errorsWithFreshPertarReplay = (candidate) => (
+    terminalArc4RecoveryReportErrors(candidate, {
+      ...terminalReplay,
+      replayedPertarSurfaces: replayPertarStageSurfaces(candidate.stages),
+    })
+  );
+  const missingExhaustedPertarReceipt = structuredClone(terminal);
+  delete missingExhaustedPertarReceipt.stages.find(
+    (stage) => stage.id === 'exhausted',
+  ).evidence.pertarSurface;
+  assert(errorsWithFreshPertarReplay(missingExhaustedPertarReceipt).includes(
+    'exhausted Pertar surface receipt replay',
+  ), 'missing exhausted Pertar receipt stayed terminal-verifier green');
+  const swappedPertarPhaseReceipts = structuredClone(terminal);
+  const swappedOfflineStage = swappedPertarPhaseReceipts.stages.find(
+    (stage) => stage.id === 'offline-reopened',
+  );
+  const swappedActiveStage = swappedPertarPhaseReceipts.stages.find(
+    (stage) => stage.id === 'active-observation',
+  );
+  const originalOfflinePertarSurface = swappedOfflineStage.evidence.pertarSurface;
+  swappedOfflineStage.evidence.pertarSurface =
+    swappedActiveStage.evidence.reactivatedPertarSurface;
+  swappedActiveStage.evidence.reactivatedPertarSurface = originalOfflinePertarSurface;
+  const swappedPertarErrors = errorsWithFreshPertarReplay(swappedPertarPhaseReceipts);
+  assert(swappedPertarErrors.includes('offline-reopened Pertar surface receipt replay')
+    && swappedPertarErrors.includes('reactivated Pertar surface receipt replay'),
+  'swapped offline/reactivated Pertar receipts stayed terminal-verifier green');
+  const retokenedOfflinePertarReceipt = structuredClone(terminal);
+  const retokenedOfflineEvidence = retokenedOfflinePertarReceipt.stages.find(
+    (stage) => stage.id === 'offline-reopened',
+  ).evidence.pertarSurface;
+  const unrelatedOfflineToken = 'selftest-unrelated-offline-document';
+  retokenedOfflineEvidence.expectedDocumentToken = unrelatedOfflineToken;
+  retokenedOfflineEvidence.state.persistence.documentToken = unrelatedOfflineToken;
+  retokenedOfflineEvidence.ui.persistence.documentToken = unrelatedOfflineToken;
+  retokenedOfflineEvidence.runtimeCaptureWitness.documentToken = unrelatedOfflineToken;
+  retokenedOfflineEvidence.runtimeCaptureWitness.captures.forEach((capture) => {
+    capture.documentTokenBefore = unrelatedOfflineToken;
+    capture.documentTokenAfter = unrelatedOfflineToken;
+    capture.snapshotDocumentToken = unrelatedOfflineToken;
+  });
+  const retokenedOfflineReplay = replayPertarSurfaceEvidence(
+    retokenedOfflineEvidence,
+  );
+  retokenedOfflineEvidence.runtimeCapture = retokenedOfflineReplay.runtimeCapture;
+  retokenedOfflineEvidence.assessment = retokenedOfflineReplay.assessment;
+  assert(retokenedOfflineReplay.assessment.instrumentOk
+    && retokenedOfflineReplay.assessment.productOk,
+  'coherently retokened offline Pertar receipt did not remain internally green');
+  assert(errorsWithFreshPertarReplay(retokenedOfflinePertarReceipt).includes(
+    'offline-reopened Pertar surface receipt replay',
+  ), 'coherently retokened offline Pertar receipt escaped cross-stage binding');
+  const forgedPertarReceipt = structuredClone(terminal);
+  forgedPertarReceipt.stages.find(
+    (stage) => stage.id === 'offline-reopened',
+  ).evidence.pertarSurface.runtimeCaptureWitness.captures.reverse();
+  assert(errorsWithFreshPertarReplay(forgedPertarReceipt).includes(
+    'offline-reopened Pertar surface receipt replay',
+  ), 'forged offline Pertar chronology stayed terminal-verifier green');
+  const independentPertarMutations = {
+    route: (next) => {
+      next.state.planet += 1;
+    },
+    card: (next) => {
+      next.ui.cardTitle = 'Forged Pertar';
+    },
+    runtime: (next) => {
+      next.state.persistence.runtime.visible = false;
+      next.ui.persistence.runtime.visible = false;
+    },
+    pending: (next) => {
+      next.state.sceneResources.pendingPersistenceWrites = 1;
+      next.ui.diagnostics.pendingWork = 1;
+    },
+  };
+  for (const [name, mutate] of Object.entries(independentPertarMutations)) {
+    const mutant = structuredClone(terminal);
+    const mutantEvidence = mutant.stages.find(
+      (stage) => stage.id === 'exhausted',
+    ).evidence.pertarSurface;
+    mutate(mutantEvidence);
+    const freshReplay = replayPertarSurfaceEvidence(mutantEvidence);
+    mutantEvidence.runtimeCapture = freshReplay.runtimeCapture;
+    mutantEvidence.assessment = freshReplay.assessment;
+    assert(errorsWithFreshPertarReplay(mutant).includes(
+      'exhausted Pertar surface receipt replay',
+    ), `coherently replayed retained Pertar ${name} stayed verifier-green`);
+  }
+  const coherentReactivatedRuntimeMutation = (name, mutate) => {
+    const mutant = structuredClone(terminal);
+    const mutantEvidence = mutant.stages.find(
+      (stage) => stage.id === 'active-observation',
+    ).evidence.reactivatedPertarSurface;
+    mutate(mutantEvidence.state.persistence.runtime,
+      mutantEvidence.ui.persistence.runtime);
+    mutantEvidence.runtimeCaptureWitness = syntheticRuntimeCaptureWitness({
+      documentToken: mutantEvidence.expectedDocumentToken,
+      uiRuntime: mutantEvidence.ui.persistence.runtime,
+      stateRuntime: mutantEvidence.state.persistence.runtime,
+    });
+    const freshReplay = replayPertarSurfaceEvidence(mutantEvidence);
+    mutantEvidence.runtimeCapture = freshReplay.runtimeCapture;
+    mutantEvidence.assessment = freshReplay.assessment;
+    assert(freshReplay.assessment.instrumentOk
+      && freshReplay.assessment.productOk,
+    `coherent reactivated Pertar ${name} mutant was internally assessment-red`);
+    assert(errorsWithFreshPertarReplay(mutant).includes(
+      'reactivated Pertar surface receipt replay',
+    ), `internally green reactivated Pertar ${name} mutant escaped causal binding`);
+  };
+  coherentReactivatedRuntimeMutation('retiming', (stateRuntime, uiRuntime) => {
+    stateRuntime.activePlayMs = 20_001;
+    uiRuntime.activePlayMs = 20_001;
+  });
+  coherentReactivatedRuntimeMutation('revision', (stateRuntime, uiRuntime) => {
+    stateRuntime.revision = 18;
+    uiRuntime.revision = 18;
+  });
+  coherentReactivatedRuntimeMutation('cycle', (stateRuntime, uiRuntime) => {
+    stateRuntime.activePlayMs = ARC4_ACTIVE_PLAY_CYCLE_MS;
+    uiRuntime.activePlayMs = ARC4_ACTIVE_PLAY_CYCLE_MS;
+  });
   const earlyPass = structuredClone(terminal);
   earlyPass.cleanup.browser = false;
   earlyPass.lifecycle.status = 'pending';
@@ -3607,6 +4475,7 @@ function verifyRecoveryRun(options) {
   const replayedFixturePrecondition = assessArc4CapturePrecondition(
     fixtureEvidence?.preconditionInput,
   );
+  const replayedPertarSurfaces = replayPertarStageSurfaces(report.stages);
   const ordinarySliceSeal = assessOrdinarySliceRecoverySeal(
     fs.readFileSync(ordinarySlicePath, 'utf8'),
   );
@@ -3619,6 +4488,7 @@ function verifyRecoveryRun(options) {
     expectedRunId: id, currentSource,
     replayedDomainAssessment, replayedObservationVerdict,
     replayedAuthorityBinding, replayedFixturePrecondition,
+    replayedPertarSurfaces,
     currentBuild, currentInputs,
     ordinarySliceSeal, instrumentSeal,
     expectedPredecessors: predecessors,

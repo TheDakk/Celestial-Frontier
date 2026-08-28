@@ -4861,6 +4861,51 @@ const exhaustedPresentationChecks = ({
   };
 };
 
+/* The same exhausted authority has two honest presentation vocabularies.
+   An eligible surface exposes the natural empty/depleted reasons. A reopened
+   document deliberately held read-only exposes every action as unavailable.
+   These predicates accept both the live nested-button rows and the flattened
+   evidence rows used by the recovery certificate. */
+export function arc4ExhaustedCaptureRows(rows) {
+  return Array.isArray(rows) && rows.length === 3
+    && new Set(rows.map((row) => row?.verb)).size === 3
+    && rows.every((row) => ['tame', 'scavenge', 'sample'].includes(row?.verb))
+    && rows.some((row) => row?.status === 'depleted')
+    && rows.every((row) => ['empty', 'depleted'].includes(row?.status)
+      && (row?.button ? row.button.modelEnabled : row?.modelEnabled) === 'false'
+      && (row?.button ? row.button.disabled : row?.disabled) === true
+      && (row?.button ? row.button.ariaDisabled : row?.ariaDisabled) === 'true');
+}
+
+export function arc4IneligibleExhaustedCaptureRows(rows) {
+  return Array.isArray(rows) && rows.length === 3
+    && new Set(rows.map((row) => row?.verb)).size === 3
+    && rows.every((row) => ['tame', 'scavenge', 'sample'].includes(row?.verb)
+      && row?.status === 'unavailable'
+      && (row?.button ? row.button.modelEnabled : row?.modelEnabled) === 'false'
+      && (row?.button ? row.button.disabled : row?.disabled) === true
+      && (row?.button ? row.button.ariaDisabled : row?.ariaDisabled) === 'true');
+}
+
+export function projectArc4CaptureUiFacts(ui) {
+  return Object.freeze({
+    budget: Object.freeze({
+      yield: ui?.budget?.yield ?? null,
+      used: ui?.budget?.used ?? null,
+      remaining: ui?.budget?.remaining ?? null,
+      cycle: ui?.budget?.cycle ?? null,
+    }),
+    rows: Object.freeze((Array.isArray(ui?.rows) ? ui.rows : []).map((row) =>
+      Object.freeze({
+        verb: row?.verb ?? null,
+        status: row?.status ?? null,
+        modelEnabled: row?.button?.modelEnabled ?? null,
+        disabled: row?.button?.disabled ?? null,
+        ariaDisabled: row?.button?.ariaDisabled ?? null,
+      }))),
+  });
+}
+
 /** Finite-yield verdict. This intentionally makes no recovery claim: a
  * browser gate must not forge or wait through the 20-minute active-play
  * boundary merely to reuse the separate recovery classifier below. */
@@ -4959,7 +5004,7 @@ export const assessArc4ExhaustionRecovery = ({
     runtimeCaptureOrder: exactRuntimeCaptureOrder(
       exhaustedRaw, exhaustedState, exhaustedUi, 'state-ui',
     ) && exactRuntimeCaptureOrder(
-      offlineRaw, offlineState, offlineUi, 'state-ui',
+      offlineRaw, offlineState, offlineUi, 'ui-state',
     ) && exactRuntimeCaptureOrder(
       recoveredRaw, recoveredState, recoveredUi, 'state-ui',
     ),
@@ -5030,6 +5075,14 @@ export const assessArc4ExhaustionRecovery = ({
       && sameCaptureAuthority(closedRaw, offlineRaw)
       && same(receiptBytes(closedRaw), receiptBytes(offlineRaw))
       && same(closedProgress, offlineProgress),
+    offlineUnavailablePresentation:
+      arc4IneligibleExhaustedCaptureRows(offlineUi?.rows)
+      && offlineUi?.rows?.every((row) =>
+        /save authority is read-only/i.test(row?.detail ?? ''))
+      && offlineUi?.budget?.yield === ARC4_PERTAR_FIXTURE.biosphereYield
+      && offlineUi?.budget?.used === ARC4_PERTAR_FIXTURE.biosphereYield
+      && offlineUi?.budget?.remaining === 0
+      && offlineUi?.budget?.cycle === exhaustedCycle,
     offlineLiveNoWallTimeCredit: counter(reopenedDocumentElapsedMs)
       && counter(offlineStateRuntime?.activePlayMs)
       && counter(offlineUiRuntime?.activePlayMs)
@@ -5842,6 +5895,8 @@ const uiRow = (verb, {
       ? `Randomly attempts one of ${eligible} eligible ${pool} from the full biosphere.`
       : status === 'depleted'
         ? 'Worked Out — no Biosphere Yield remains this cycle. No roll or attempt was spent.'
+        : status === 'unavailable'
+          ? 'Capture unavailable while save authority is read-only.'
         : `No eligible ${pool}.`,
     odds: ready ? {
       text: `One of ${eligible} eligible ${pool} is selected at random. Overall success chance 44.5%; individual odds range 44%–45%.`,
@@ -6565,6 +6620,9 @@ exhaustedStateSelftest.persistence.documentToken = exhaustedDocumentTokenSelftes
 const depletedStatusesSelftest = {
   tame: 'depleted', scavenge: 'depleted', sample: 'depleted',
 };
+const ineligibleStatusesSelftest = {
+  tame: 'unavailable', scavenge: 'unavailable', sample: 'unavailable',
+};
 const exhaustedUiSelftest = uiSnapshot(exhaustedCaptureSelftest, {
   used: 16, statuses: depletedStatusesSelftest, raw: exhaustedRawSelftest,
 });
@@ -6586,7 +6644,7 @@ Object.assign(offlineStateSelftest.persistence.runtime, {
   visible: false, answerable: false, leaseOwned: false, accruing: false,
 });
 const offlineUiSelftest = uiSnapshot(offlineCaptureSelftest, {
-  used: 16, statuses: depletedStatusesSelftest, raw: offlineRawSelftest, boot: true,
+  used: 16, statuses: ineligibleStatusesSelftest, raw: offlineRawSelftest, boot: true,
 });
 offlineUiSelftest.persistence.documentToken = reopenedDocumentTokenSelftest;
 Object.assign(offlineUiSelftest.persistence.runtime, {
@@ -8590,6 +8648,23 @@ negativeExhaustionOfflineCreditSelftest.offlineUi = withUiActivePlaySelftest(
   offlineUiSelftest,
   offlineRawSelftest.authority.activePlayMs + 5_000,
 );
+const negativeExhaustionOfflineStatusSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionOfflineStatusSelftest.offlineUi.rows[0].status = 'depleted';
+const negativeExhaustionOfflineDetailSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionOfflineDetailSelftest.offlineUi.rows[0].detail
+  = 'Capture unavailable.';
+const negativeExhaustionOfflineStateVisibleSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionOfflineStateVisibleSelftest.offlineState.persistence.runtime.visible = true;
+const negativeExhaustionOfflineUiVisibleSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionOfflineUiVisibleSelftest.offlineUi.persistence.runtime.visible = true;
 const negativeExhaustionSuppressionSelftest = structuredClone(exhaustionBundleSelftest);
 negativeExhaustionSuppressionSelftest.suppressed.trace.clicks.push({
   verb: 'tame', trusted: true, pointerType: null,
@@ -9533,6 +9608,30 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'offlineLiveNoWallTimeCredit',
     result: assessArc4ExhaustionRecovery(
       negativeExhaustionOfflineCreditSelftest,
+    ),
+  }),
+  exhaustionOfflineStatus: Object.freeze({
+    expected: 'offlineUnavailablePresentation',
+    result: assessArc4ExhaustionRecovery(
+      negativeExhaustionOfflineStatusSelftest,
+    ),
+  }),
+  exhaustionOfflineDetail: Object.freeze({
+    expected: 'offlineUnavailablePresentation',
+    result: assessArc4ExhaustionRecovery(
+      negativeExhaustionOfflineDetailSelftest,
+    ),
+  }),
+  exhaustionOfflineStateVisible: Object.freeze({
+    expected: 'offlineLiveNoWallTimeCredit',
+    result: assessArc4ExhaustionRecovery(
+      negativeExhaustionOfflineStateVisibleSelftest,
+    ),
+  }),
+  exhaustionOfflineUiVisible: Object.freeze({
+    expected: 'offlineLiveNoWallTimeCredit',
+    result: assessArc4ExhaustionRecovery(
+      negativeExhaustionOfflineUiVisibleSelftest,
     ),
   }),
   exhaustionSuppression: Object.freeze({

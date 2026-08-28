@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
-import { assessArc4RecoveryInstrumentSeal } from '../tools/arc4-recovery-contract.mjs';
+import { ARC4_RECOVERY_PERTAR_POLL_TIMING_SCHEMA, ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS, assessArc4RecoveryInstrumentSeal, assessArc4RecoveryPertarPollTiming } from '../tools/arc4-recovery-contract.mjs';
 
 const collectorPath = fileURLToPath(
   new URL('../tools/arc4recovery.mjs', import.meta.url),
@@ -17,11 +17,35 @@ const firstRealRunEvidencePath = fileURLToPath(new URL(
   '../../../audits/ARC4_RECOVERY_REALTIME_INSTRUMENT_FAILURE_20260826.json.gz',
   import.meta.url,
 ));
+const final10OfflineOracleEvidencePath = fileURLToPath(new URL(
+  '../../../audits/ARC4_RECOVERY_CURRENT_INPUT_INSTRUMENT_FAILURE_20260828_091420389.json.gz',
+  import.meta.url,
+));
 
 const sha256 = (value: Uint8Array): string =>
   createHash('sha256').update(value).digest('hex');
 
 describe('Arc 4 real-time recovery certificate instrument', () => {
+  it('rejects exact-deadline and late Pertar poll completions', () => {
+    const timing = (completedAtMonotonicMs: number) => ({
+      schema: ARC4_RECOVERY_PERTAR_POLL_TIMING_SCHEMA,
+      windowStartedAtMonotonicMs: 0,
+      deadlineAtMonotonicMs: ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS,
+      requestedAtMonotonicMs: 1_000,
+      completedAtMonotonicMs,
+      remainingMs: ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS - 1_000,
+    });
+    expect(assessArc4RecoveryPertarPollTiming(timing(
+      ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS - 1,
+    )).ok).toBe(true);
+    expect(assessArc4RecoveryPertarPollTiming(timing(
+      ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS,
+    )).checks.completionBeforeDeadline).toBe(false);
+    expect(assessArc4RecoveryPertarPollTiming(timing(
+      ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS + 1,
+    )).checks.completionBeforeDeadline).toBe(false);
+  });
+
   it('runs the sealed Slice disabled-suppression producer selftest', () => {
     const output = execFileSync(process.execPath, [
       sliceCollectorPath, '--disabled-suppression-selftest',
@@ -29,7 +53,7 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
     expect(output).toContain('SLICE DISABLED SUPPRESSION SELFTEST: PASS');
   });
 
-  it('pins the ready-surface runtime snapshots to UI then state chronology', () => {
+  it('pins phase-specific Pertar surfaces and UI-then-state chronology', () => {
     const collector = readFileSync(collectorPath, 'utf8');
     const uiThenState = "uiCapture=capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION}),\n          stateCapture=capture('state',()=>S?.api?.state?.()??null),";
     const stateThenUi = "stateCapture=capture('state',()=>S?.api?.state?.()??null),\n          uiCapture=capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION}),";
@@ -38,13 +62,229 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
     expect(baseline.checks.pertarReadyUiThenState).toBe(true);
     expect(baseline.checks.pertarCaptureWitnessDerived).toBe(true);
     expect(baseline.checks.pertarCaptureWitnessEnforced).toBe(true);
+    expect(baseline.checks.pertarPhaseReceiptsRetained).toBe(true);
+    expect(baseline.checks.pertarFailureEvidenceMerged).toBe(true);
+    expect(baseline.checks.pertarPhaseReceiptsReplayed).toBe(true);
+    expect(baseline.checks.pertarDedicatedCollectors).toBe(true);
+    expect(baseline.checks.pertarDedicatedSourceDigest).toBe(true);
+    expect(baseline.checks.pertarAbsoluteDeadline).toBe(true);
+    expect(baseline.checks.pertarPhasePredicates).toBe(true);
+    expect(baseline.checks.pertarAssessmentSourceDigest).toBe(true);
+    expect(baseline.checks.pertarPhaseFailureClassified).toBe(true);
+    expect(baseline.checks.pertarPhaseRuntimeOrder).toBe(true);
+    expect(baseline.checks.pertarPhaseRuntimeTuple).toBe(true);
+    expect(baseline.checks.pertarOfflineUnavailablePhaseBound).toBe(true);
+    expect(baseline.checks.pertarActiveExhaustedPhaseBound).toBe(true);
+    expect(baseline.checks.pertarPhaseSourceBoundaries).toBe(true);
+    expect(baseline.checks.pertarPhaseSourceDigest).toBe(true);
+    expect(baseline.checks.collectorProductionSourceDigest).toBe(true);
+    expect(baseline.checks.collectorSourceDigest).toBe(true);
+
+    const expectOnlySealRed = (mutant: string, expected: string): void => {
+      expect(mutant).not.toBe(collector);
+      const result = assessArc4RecoveryInstrumentSeal(mutant, []);
+      expect(result.ok).toBe(false);
+      expect(Object.entries(result.checks).filter(([name, value]) =>
+        value !== true && (name === expected || ![
+          'pertarAssessmentSourceDigest',
+          'pertarDedicatedSourceDigest',
+          'pertarPhaseSourceDigest',
+          'collectorProductionSourceDigest',
+          'collectorSourceDigest',
+        ].includes(name))))
+        .toEqual([[expected, false]]);
+    };
 
     const reversed = collector.replace(uiThenState, stateThenUi);
-    expect(reversed).not.toBe(collector);
-    const mutation = assessArc4RecoveryInstrumentSeal(reversed, []);
-    expect(mutation.ok).toBe(false);
-    expect(Object.entries(mutation.checks).filter(([, value]) => value !== true))
-      .toEqual([['pertarReadyUiThenState', false]]);
+    expectOnlySealRed(reversed, 'pertarReadyUiThenState');
+    expectOnlySealRed(collector.replace(
+      "'read Pertar capture surface', remainingMs);",
+      "'read Pertar capture surface', COMMAND_TIMEOUT_MS);",
+    ), 'pertarAbsoluteDeadline');
+
+    const offlinePhaseCall = "const offlineSurface = await waitForPertarSurface(send, sessionId, {\n      phase: 'exhausted-offline', expectedDocumentToken: reopenedDocumentToken,\n    });";
+    const activePhaseCall = "const reactivatedSurface = await waitForPertarSurface(send, sessionId, {\n      phase: 'exhausted-visible', expectedDocumentToken: reopenedDocumentToken,\n    });";
+    expectOnlySealRed(collector.replace(
+      offlinePhaseCall,
+      offlinePhaseCall.replace("phase: 'exhausted-offline'", "phase: 'exhausted-visible'"),
+    ), 'pertarOfflineUnavailablePhaseBound');
+    expectOnlySealRed(collector.replace(
+      activePhaseCall,
+      activePhaseCall.replace("phase: 'exhausted-visible'", "phase: 'exhausted-offline'"),
+    ), 'pertarActiveExhaustedPhaseBound');
+    expectOnlySealRed(collector.replace(
+      offlinePhaseCall,
+      `/* ${offlinePhaseCall} */\n    ${offlinePhaseCall.replace(
+        "phase: 'exhausted-offline'", "phase: 'exhausted-visible'",
+      )}`,
+    ), 'pertarPhaseSourceDigest');
+    expectOnlySealRed(collector.replace(
+      "    await evaluate(send, sessionId,\n      'window.__CF_SLICE__.api.__smokeRunF4Heartbeat()',\n      'refresh reactivated exhausted presentation');\n",
+      '',
+    ), 'pertarActiveExhaustedPhaseBound');
+    expectOnlySealRed(collector.replace(
+      'const offlineState = offlineSurface.state;\n    const offlineUi = offlineSurface.ui;',
+      'const offlineState = offlineSurface.ui;\n    const offlineUi = offlineSurface.ui;',
+    ), 'pertarOfflineUnavailablePhaseBound');
+    expectOnlySealRed(collector.replace(
+      'arc4IneligibleExhaustedCaptureRows(rows)',
+      'arc4ExhaustedCaptureRows(rows)',
+    ), 'pertarPhasePredicates');
+    expectOnlySealRed(collector.replace(
+      "phase === 'exhausted-visible'\n          ? arc4ExhaustedCaptureRows(rows)\n          : phase === 'exhausted-offline'",
+      "phase === 'exhausted-offline'\n          ? arc4ExhaustedCaptureRows(rows)\n          : phase === 'exhausted-visible'",
+    ), 'pertarPhasePredicates');
+    expectOnlySealRed(collector.replace(
+      'last === null || lastError !== null || !last.assessment.instrumentOk',
+      'last === null || !last.assessment.instrumentOk',
+    ), 'pertarPhaseFailureClassified');
+    const pertarTerminalCondition =
+      'if (last === null || lastError !== null || !last.assessment.instrumentOk) {';
+    expectOnlySealRed(collector.replace(
+      pertarTerminalCondition,
+      `// ${pertarTerminalCondition}\n  ${pertarTerminalCondition.replace(
+        ' || lastError !== null', '',
+      )}`,
+    ), 'pertarDedicatedSourceDigest');
+    const pertarDedicatedStartNeedle =
+      'function pertarRuntimeCaptureEvidence(surface, expectedDocumentToken) {';
+    const pertarDedicatedEndNeedle =
+      '\n\nasync function activateSurveyDock(send, sessionId) {';
+    const pertarDedicatedStart = collector.indexOf(pertarDedicatedStartNeedle);
+    const pertarDedicatedEnd = collector.indexOf(
+      pertarDedicatedEndNeedle, pertarDedicatedStart,
+    );
+    expect(pertarDedicatedStart).toBeGreaterThanOrEqual(0);
+    expect(pertarDedicatedEnd).toBeGreaterThan(pertarDedicatedStart);
+    const pertarDedicatedSource = collector.slice(
+      pertarDedicatedStart, pertarDedicatedEnd,
+    );
+    const deadPertarDedicatedCopy = `if (false) {\n${pertarDedicatedSource}\n\n`
+      + 'async function activateSurveyDock(send, sessionId) {}\n}\n\n';
+    let duplicatePertarDedicatedSource = collector.slice(0, pertarDedicatedStart)
+      + deadPertarDedicatedCopy + collector.slice(pertarDedicatedStart);
+    const operativePertarConditionIndex = duplicatePertarDedicatedSource.lastIndexOf(
+      pertarTerminalCondition,
+    );
+    expect(operativePertarConditionIndex).toBeGreaterThan(pertarDedicatedStart);
+    duplicatePertarDedicatedSource = duplicatePertarDedicatedSource.slice(
+      0, operativePertarConditionIndex,
+    ) + pertarTerminalCondition.replace(' || lastError !== null', '')
+      + duplicatePertarDedicatedSource.slice(
+        operativePertarConditionIndex + pertarTerminalCondition.length,
+      );
+    const duplicatePertarDedicatedSeal = assessArc4RecoveryInstrumentSeal(
+      duplicatePertarDedicatedSource, [],
+    );
+    expect(duplicatePertarDedicatedSeal.ok).toBe(false);
+    expect(duplicatePertarDedicatedSeal.checks.collectorSourceDigest).toBe(false);
+    expect(duplicatePertarDedicatedSeal.checks.collectorProductionSourceDigest).toBe(false);
+    expect(duplicatePertarDedicatedSeal.checks.pertarDedicatedCollectors).toBe(false);
+    expect(duplicatePertarDedicatedSeal.checks.pertarDedicatedSourceDigest).toBe(true);
+    expect(duplicatePertarDedicatedSeal.checks.pertarPhaseFailureClassified).toBe(true);
+    expect(Object.entries(duplicatePertarDedicatedSeal.checks)
+      .filter(([, value]) => value !== true).map(([name]) => name).sort())
+      .toEqual([
+        'collectorSourceDigest', 'collectorProductionSourceDigest',
+        'pertarDedicatedCollectors',
+      ].sort());
+    const pertarDedicatedOwnerEndNeedle = '\nfunction browserSample(browser) {';
+    const pertarDedicatedOwnerEnd = collector.indexOf(
+      pertarDedicatedOwnerEndNeedle, pertarDedicatedEnd,
+    );
+    expect(pertarDedicatedOwnerEnd).toBeGreaterThan(pertarDedicatedEnd);
+    const deadWrappedPertarDedicated = collector.slice(0, pertarDedicatedStart)
+      + 'if (false) {\n'
+      + collector.slice(pertarDedicatedStart, pertarDedicatedOwnerEnd)
+      + '\n}\n'
+      + collector.slice(pertarDedicatedOwnerEnd);
+    expectOnlySealRed(
+      deadWrappedPertarDedicated, 'collectorProductionSourceDigest',
+    );
+    const pertarPhaseStartNeedle = "    currentStage = 'offline-reopened';";
+    const pertarPhaseAfterNeedle = '    const samples = [];';
+    const pertarPhaseStart = collector.indexOf(pertarPhaseStartNeedle);
+    const pertarPhaseAfter = collector.indexOf(
+      pertarPhaseAfterNeedle, pertarPhaseStart,
+    );
+    expect(pertarPhaseStart).toBeGreaterThanOrEqual(0);
+    expect(pertarPhaseAfter).toBeGreaterThan(pertarPhaseStart);
+    const commentShadowedPertarPhase = collector.slice(0, pertarPhaseStart)
+      + '    /*\n'
+      + collector.slice(pertarPhaseStart, pertarPhaseAfter)
+      + '    */\n'
+      + collector.slice(pertarPhaseAfter);
+    expectOnlySealRed(
+      commentShadowedPertarPhase, 'collectorProductionSourceDigest',
+    );
+    const verificationOwnerNeedle = '\nfunction verifyRecoveryRun(options) {';
+    const reboundPertarDedicated = collector.replace(
+      verificationOwnerNeedle,
+      "\nassessPertarSurfaceObservation = () => ({ instrumentOk: true, productOk: true });"
+        + "\nwaitForPertarSurface = async () => ({ state: {}, ui: {} });"
+        + verificationOwnerNeedle,
+    );
+    expectOnlySealRed(
+      reboundPertarDedicated, 'collectorSourceDigest',
+    );
+    expectOnlySealRed(collector.replace(
+      '} catch (error) { lastError = error; }\n    await sleep(50);\n  }\n  if (last === null || lastError !== null',
+      '} catch (error) { lastError = null; }\n    await sleep(50);\n  }\n  if (last === null || lastError !== null',
+    ), 'pertarPhaseFailureClassified');
+    expectOnlySealRed(collector.replace(
+      'last = Object.freeze({ surface, assessment });\n      lastError = null;',
+      'last = Object.freeze({ surface, assessment });',
+    ), 'pertarPhaseFailureClassified');
+    expectOnlySealRed(collector.replace(
+      'throw new ProductFailure(`${label} product state timed out`, last.assessment);',
+      'throw new InstrumentFailure(`${label} product state timed out`, last.assessment);',
+    ), 'pertarPhaseFailureClassified');
+    expectOnlySealRed(collector.replace(
+      'runtimeOrder: runtimeCapture.receipt.observed.runtimeNondecreasing === true,',
+      'runtimeOrder: true,',
+    ), 'pertarPhaseRuntimeOrder');
+    expectOnlySealRed(collector.replace(
+      'runtimeTuple: Number.isSafeInteger(runtime?.revision) && runtime.revision >= 0',
+      'runtimeTuple: true || Number.isSafeInteger(runtime?.revision) && runtime.revision >= 0',
+    ), 'pertarPhaseRuntimeTuple');
+    expectOnlySealRed(collector.replace(
+      'runtime.revision === uiRuntime.revision',
+      'true',
+    ), 'pertarAssessmentSourceDigest');
+    const exhaustedRetainedReceipt =
+      "pertarSurface: retainPertarSurfaceEvidence(\n        exhaustedSurface, 'exhausted-visible', fixtureToken,";
+    const offlineRetainedReceipt =
+      "pertarSurface: retainPertarSurfaceEvidence(\n        offlineSurface, 'exhausted-offline', reopenedDocumentToken,";
+    expectOnlySealRed(
+      collector.replace(exhaustedRetainedReceipt, 'pertarSurface: null,'),
+      'pertarPhaseReceiptsRetained',
+    );
+    expectOnlySealRed(collector.replace(
+      offlineRetainedReceipt,
+      offlineRetainedReceipt.replace(
+        "'exhausted-offline'", "'exhausted-visible'",
+      ),
+    ), 'pertarPhaseReceiptsRetained');
+    expectOnlySealRed(collector.replace(
+      offlineRetainedReceipt,
+      offlineRetainedReceipt.replace('reopenedDocumentToken', 'fixtureToken'),
+    ), 'pertarPhaseReceiptsRetained');
+    expectOnlySealRed(collector.replace(
+      '        replayedPertarSurfaces,',
+      '        replayedPertarSurfaces: {},',
+    ), 'pertarPhaseReceiptsReplayed');
+    expectOnlySealRed(collector.replace(
+      "    retainStageEvidence('active-observation', { reactivatedPertarSurface });\n",
+      '',
+    ), 'pertarPhaseReceiptsRetained');
+    expectOnlySealRed(collector.replace(
+      "updateRecoveryStage(report.stages, idValue, 'running', evidence);",
+      'updateRecoveryStage(report.stages, idValue, null, evidence);',
+    ), 'pertarFailureEvidenceMerged');
+    expectOnlySealRed(collector.replace(
+      "if (['not-run', 'running'].includes(\n      report.stages.find((stage) => stage.id === currentStage)?.status,\n    )) {",
+      "if (report.stages.find((stage) => stage.id === currentStage)?.status === 'not-run') {",
+    ), 'pertarFailureEvidenceMerged');
   });
 
   it('keeps its real-time, closure, authority, transition and report controls mutation-sensitive', () => {
@@ -126,5 +366,51 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
       evidence: { allOwnedResourcesReleased: true },
     });
     expect(report).not.toHaveProperty('recoveryClaimed');
+  });
+
+  it('pins the exact Final10 offline-unavailable oracle diagnosis', () => {
+    const compressed = readFileSync(final10OfflineOracleEvidencePath);
+    expect(sha256(compressed)).toBe(
+      'c038e5dc37bbedd230afb954e7b576b85a65970bdafbc0ee158f185b07244358',
+    );
+    const raw = gunzipSync(compressed);
+    expect(sha256(raw)).toBe(
+      '9642a7dfad56df1695693ef2f2cafaf0c0fb4628d8401cc8bcdf839f31a429ce',
+    );
+    const report = JSON.parse(raw.toString('utf8')) as {
+      status: string;
+      policy: { attemptCount: number; automaticRetries: number };
+      source: { begin: { commit: string }; end: { commit: string } };
+      stages: Array<{ id: string; status: string; evidence: unknown }>;
+      firstFailure: { stage: string; message: string };
+      cleanup: Record<string, boolean>;
+    };
+    expect(report).toMatchObject({
+      status: 'instrument-fail',
+      policy: { attemptCount: 1, automaticRetries: 0 },
+      source: {
+        begin: { commit: '4405fb2b4ba7ef6898eb334330d7ef4300b5266c' },
+        end: { commit: '4405fb2b4ba7ef6898eb334330d7ef4300b5266c' },
+      },
+      firstFailure: { stage: 'offline-reopened' },
+      cleanup: {
+        browser: true, server: true,
+        browserContext: true, workspaceLock: true,
+      },
+    });
+    for (const id of [
+      'fixture', 'burn-down', 'exhausted', 'close-checkpoint', 'offline-closed',
+    ]) {
+      expect(report.stages.find((stage) => stage.id === id)?.status).toBe('pass');
+    }
+    expect(report.stages.find((stage) => stage.id === 'offline-reopened')?.status)
+      .toBe('fail');
+    for (const id of ['active-observation', 'boundary-crossed', 'recovered']) {
+      expect(report.stages.find((stage) => stage.id === id)?.status).toBe('not-run');
+    }
+    expect(report.firstFailure.message).toContain('"status":"unavailable"');
+    expect(report.firstFailure.message).toContain(
+      'cf-v2-arc4-recovery-runtime-capture-witness/v1',
+    );
   });
 });
