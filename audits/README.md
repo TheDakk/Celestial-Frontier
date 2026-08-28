@@ -10,6 +10,79 @@ summary of it.
 
 ## Contents
 
+### Signed `c133c89…` Final8 campaign — five green predecessors, then Recovery precondition stop
+
+Signed clean source `c133c89ead736c9c7414af1e6242acd411339853` (tree
+`e93b6808e9442e2bbf48ef5aa158d9c0ee8a78af`, parent `53d030b…`) remained clean and unchanged
+through every completed Final8 stage. Layout `20260828-phase4-final8-c133c89ead73-layout` passed
+787/787 sealed outcomes across ten viewports in 76,318 ms. Source-bound SceneMemory
+`20260828-phase4-final8-c133c89ead73-scenemem` passed 42/42 in 10,168 ms. Source-bound Compendium
+`20260828-phase4-final8-c133c89ead73-compendium` passed 78/78 in 46,530 ms and bound all six
+review PNGs. Slice `20260828-phase4-final8-c133c89ead73-slice` passed with zero findings/scopes
+and ten PNG bindings in 415,546 ms. Glass `20260828-phase4-final8-c133c89ead73-glass` passed all
+12 viewports with zero findings or instrument failures in 87,045 ms. Every green stage ran once and
+passed its named verifier.
+
+Recovery `20260828-phase4-final8-c133c89ead73-recovery` then ran once and stopped terminal `fail`
+at its fixture precondition after 7,633 ms. The sole failed clause was `runtimeCaptureOrder`; every
+other route, durability, authority, rendered UI, ownership, finite-yield, random-pool and action-idle
+clause passed. Burn-down, exhaustion, closure/reopen, the real 20-minute active observation,
+boundary crossing and recovered stages did not run. Cleanup passed, with every owned resource
+released and zero automatic retries. This immutable report therefore makes no Recovery product
+verdict and claims no recovery.
+
+Post-run source review proved the red was an instrument/oracle chronology mismatch. Recovery's old
+ready-surface collector sampled outer state first, then its nested UI expression obtained a second,
+later state snapshot, while the shared precondition correctly expected canonical UI → state order.
+The app's monotonic active-play clock can advance between those calls; equal millisecond values could
+also let the reversed collector false-pass. The bounded local repair captures UI then state, emits
+a browser-derived document/order/timestamp/runtime witness, classifies malformed receipts as
+instrument evidence and preserves a trusted backward runtime as product-red. It does not loosen the
+10-second shared chronology/lag contract or change product code. Because the collector and evidence
+bytes changed, Final8 is immutable and cannot resume; a newly signed clean successor must restart
+Layout → SceneMemory → Compendium → Slice → Glass → Recovery.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_045804245.json.gz` preserves Final8 Layout. The gzip
+  is 4,784 bytes with SHA-256
+  `cf3611f023f92657e53b632e6760ac866bce449849ec5f5f7b104a128f268001`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `ae0c486c2b0bebf2047e55ffec131691dc457bc8f67af60b9b48efa57e70f5b8`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_045839643.json.gz` preserves Final8 SceneMemory.
+  The gzip is 24,057 bytes with SHA-256
+  `a4ac0eeb323cd6558c690d5b1d57d1e5a0a36ec69997db22010e0d520bbef649`; decompressed JSON is
+  305,712 bytes with SHA-256
+  `5bbac8b3c71a396e0ace5ce04e2124c15695f0af92580cca47d85b3057cb2e2a`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_045959479.json.gz` preserves Final8 Compendium. The
+  gzip is 543,085 bytes with SHA-256
+  `f7dcc09f8a7ce419488a63e4c446ea384aea167caeb007ea321cc6f128de71ec`; decompressed JSON is
+  8,579,794 bytes with SHA-256
+  `cfb11b3ba5c735c02c3e4ad0e3a6ba0ed6748a3edbac5157d47e3f9aaad723e8`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_050821691.json.gz` preserves Final8 Slice. The gzip is
+  1,922 bytes with SHA-256
+  `a3872de9538fb71803384e24c8e4116df912e757eb77051fa67517cad780818e`; decompressed JSON is
+  6,145 bytes with SHA-256
+  `39fde2d9ec8bc1bcab19bd4f80998e9db87e77d972ac196ce5a3b1a92c5e9f3f`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_050821691.log.gz` preserves Final8 Slice stdout/stderr.
+  The gzip is 2,913 bytes with SHA-256
+  `39f5e03f7a19449b86499f035d95420b756d55fdd3125b30a27f5e413b046aab`; decompressed log is
+  5,904 bytes with SHA-256
+  `17413ee4af51df0b4642b8280becd2288ca47844b2dede5dbed826f86ca1d486`.
+- `PHASE4_GLASS_CURRENT_INPUT_PASS_20260828_051003109.json.gz` preserves Final8 Glass. The gzip
+  is 74,618 bytes with SHA-256
+  `efe451efaa707d400f70e6a0e5bbbc808d76fc7d7bd2573f4817494f46f90c75`; decompressed JSON is
+  845,064 bytes with SHA-256
+  `0ca296cd4820ba0259facd6cfe0c4fa1eaab096cdd3925f759c0e4f2163b0728`.
+- `ARC4_RECOVERY_CURRENT_INPUT_FAILURE_20260828_051049287.json.gz` preserves the immutable Final8
+  Recovery precondition failure. The gzip is 5,481 bytes with SHA-256
+  `8548618e21b0072db322f6f2b79e56ee61934a7c24cf7d98fe9342f02a79523a`; decompressed JSON is
+  17,028 bytes with SHA-256
+  `986b48734762a20abb78009a3016b337446f06d2ce1ab440c582db391a7c3517`.
+
+All seven gzip carriers pass integrity checks and decompress byte-for-byte to their exact source
+report or log. The Compendium and Slice reports retain their PNG manifests and hashes; the PNGs
+remain run-bound ignored review evidence rather than additional tracked audit carriers. Edge
+`151.0.4129.107` / CDP `1.3` is run provenance only, never a baseline pin or rebaseline trigger.
+
 ### Signed `53d030b…` Final7 campaign — four green predecessors, then terminal Glass red
 
 Signed clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` (tree

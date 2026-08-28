@@ -21,6 +21,15 @@ export const ARC4_RECOVERY_REPORT_SCHEMA =
   'cf-v2-arc4-recovery-report/v1';
 export const ARC4_RECOVERY_LIFECYCLE_SCHEMA =
   'cf-v2-arc4-recovery-report-lifecycle/v1';
+export const ARC4_RECOVERY_RUNTIME_CAPTURE_WITNESS_SCHEMA =
+  'cf-v2-arc4-recovery-runtime-capture-witness/v1';
+export const ARC4_RECOVERY_PRECONDITION_CHECK_KEYS = Object.freeze([
+  'captured', 'routeSettled', 'durableEvidence', 'fixtureIdentity', 'route',
+  'renderedReceipt', 'authorityReady', 'activePlayProjection',
+  'runtimeCaptureOrder', 'acquisitionSource', 'ownershipReady',
+  'ownershipV2Ready', 'uiComplete', 'surfaceCopy', 'finiteYield',
+  'randomFullPool', 'actionsIdle',
+]);
 
 export const ARC4_RECOVERY_ACTIVE_OBSERVATION_MS = ARC4_ACTIVE_PLAY_CYCLE_MS;
 export const ARC4_RECOVERY_REGULAR_SERVICE_GAP_MAX_MS = 6_500;
@@ -49,6 +58,8 @@ export const ARC4_RECOVERY_STAGE_ORDER = Object.freeze([
 
 const record = (value) => value !== null && typeof value === 'object'
   && !Array.isArray(value);
+const exactKeys = (value, expected) => record(value)
+  && same(Object.keys(value).sort(), [...expected].sort());
 const integer = (value) => Number.isSafeInteger(value) && value >= 0;
 const finite = (value) => typeof value === 'number' && Number.isFinite(value)
   && value >= 0;
@@ -447,6 +458,91 @@ export function evaluateArc4RecoveryObservation(input) {
       activeElapsedMs, expectedBoundary,
       beforeBoundaryIndex, afterBoundaryIndex: firstAtOrAfterBoundary,
       firstRecoveredPointIndex,
+  }),
+});
+}
+
+const runtimeCaptureProjection = (runtime) => record(runtime) ? Object.freeze({
+  activePlayMs: runtime.activePlayMs ?? null,
+  revision: runtime.revision ?? null,
+  sessionSeed: runtime.sessionSeed ?? null,
+  sessionOrdinal: runtime.sessionOrdinal ?? null,
+  sessionDraws: runtime.sessionDraws ?? null,
+}) : null;
+
+export function projectArc4RecoveryRuntimeCaptureSnapshot(value) {
+  return Object.freeze({
+    persistence: Object.freeze({
+      documentToken: documentTokenOf(value),
+      runtime: runtimeCaptureProjection(runtimeOf(value)),
+    }),
+  });
+}
+
+/** Validates how the recovery collector obtained its two live snapshots.
+ * Runtime direction is deliberately diagnostic rather than part of `ok`:
+ * malformed/swapped receipts are instrument evidence, while a backward
+ * runtime under a trusted UI→state receipt remains a product verdict owned by
+ * the shared Arc 4 precondition. */
+export function assessArc4RecoveryRuntimeCaptureWitness({
+  witness, state, ui, expectedDocumentToken,
+} = {}) {
+  const captures = Array.isArray(witness?.captures) ? witness.captures : [];
+  const uiCapture = captures[0];
+  const stateCapture = captures[1];
+  const captureKeys = [
+    'kind', 'ordinal', 'documentTokenBefore', 'documentTokenAfter',
+    'snapshotDocumentToken', 'startedAtPerformanceMs',
+    'endedAtPerformanceMs', 'runtime',
+  ];
+  const runtimeKeys = [
+    'activePlayMs', 'revision', 'sessionSeed', 'sessionOrdinal', 'sessionDraws',
+  ];
+  const receiptShape = (capture) => exactKeys(capture, captureKeys)
+    && exactKeys(capture.runtime, runtimeKeys);
+  const uiRuntime = runtimeOf(ui);
+  const stateRuntime = runtimeOf(state);
+  const checks = Object.freeze({
+    captured: record(witness) && record(state) && record(ui),
+    envelope: exactKeys(witness, ['schema', 'documentToken', 'captures'])
+      && witness.schema === ARC4_RECOVERY_RUNTIME_CAPTURE_WITNESS_SCHEMA
+      && captures.length === 2,
+    receiptShape: captures.length === 2 && captures.every(receiptShape),
+    uiThenState: uiCapture?.kind === 'ui' && uiCapture?.ordinal === 0
+      && stateCapture?.kind === 'state' && stateCapture?.ordinal === 1,
+    documentToken: typeof expectedDocumentToken === 'string'
+      && expectedDocumentToken.length > 0
+      && witness?.documentToken === expectedDocumentToken
+      && documentTokenOf(ui) === expectedDocumentToken
+      && documentTokenOf(state) === expectedDocumentToken
+      && captures.length === 2 && captures.every((capture) => (
+        capture.documentTokenBefore === expectedDocumentToken
+        && capture.documentTokenAfter === expectedDocumentToken
+        && capture.snapshotDocumentToken === expectedDocumentToken
+      )),
+    monotonicReceipt: finite(uiCapture?.startedAtPerformanceMs)
+      && finite(uiCapture?.endedAtPerformanceMs)
+      && finite(stateCapture?.startedAtPerformanceMs)
+      && finite(stateCapture?.endedAtPerformanceMs)
+      && uiCapture.startedAtPerformanceMs <= uiCapture.endedAtPerformanceMs
+      && uiCapture.endedAtPerformanceMs <= stateCapture.startedAtPerformanceMs
+      && stateCapture.startedAtPerformanceMs <= stateCapture.endedAtPerformanceMs,
+    exactProjection: same(
+      uiCapture?.runtime, runtimeCaptureProjection(uiRuntime),
+    ) && same(
+      stateCapture?.runtime, runtimeCaptureProjection(stateRuntime),
+    ),
+  });
+  return Object.freeze({
+    ok: Object.values(checks).every(Boolean), checks,
+    observed: Object.freeze({
+      order: Object.freeze(captures.map((capture) => capture?.kind ?? null)),
+      ordinals: Object.freeze(captures.map((capture) => capture?.ordinal ?? null)),
+      uiActivePlayMs: uiCapture?.runtime?.activePlayMs ?? null,
+      stateActivePlayMs: stateCapture?.runtime?.activePlayMs ?? null,
+      runtimeNondecreasing: integer(uiCapture?.runtime?.activePlayMs)
+        && integer(stateCapture?.runtime?.activePlayMs)
+        && uiCapture.runtime.activePlayMs <= stateCapture.runtime.activePlayMs,
     }),
   });
 }
@@ -473,7 +569,40 @@ export function assessArc4RecoveryInstrumentSeal(collectorSource, pageSources) {
     ? source.slice(0, source.indexOf(productionBoundary)) : source;
   const joinedPageSources = Array.isArray(pageSources)
     ? pageSources.map(String).join('\n') : '';
+  const pageClockDirectWriter = /(?:(?:\.\s*(?:now|performance|Date|globalThis)\b|\[\s*['"\x60](?:now|performance|Date|globalThis)['"\x60]\s*\]|\b(?:performance|Date|globalThis)\b)\s*(?:=(?!=)|&&=|\|\|=|\?\?=|\*\*=|>>>=|<<=|>>=|\+=|-=|\*=|\/=|%=|&=|\^=|\|=|\+\+|--)|(?:\+\+|--)\s*(?:\.\s*(?:now|performance|Date|globalThis)\b|\[\s*['"\x60](?:now|performance|Date|globalThis)['"\x60]\s*\]|\b(?:performance|Date|globalThis)\b))/mu;
+  const pageClockDescriptorWriter = /(?:Object|Reflect)(?:\.definePropert(?:y|ies)|\[\s*['"\x60]definePropert(?:y|ies)['"\x60]\s*\])\s*\(\s*[^,\n]+,\s*(?:['"\x60](?:now|performance|Date|globalThis)['"\x60]|\{[^}\n]*\b(?:now|performance|Date|globalThis)\b\s*:)/mu;
+  const pageClockReflectWriter = /\bReflect\b/mu;
+  const pageClockAssignWriter = /Object(?:\.assign\b|\[\s*['"\x60]assign['"\x60]\s*\])/mu;
+  const pageClockPrototypeWriter = /(?:(?:Object|Reflect)(?:\.setPrototypeOf\b|\[\s*['"\x60]setPrototypeOf['"\x60]\s*\])|(?:\.__proto__\b|\[\s*['"\x60]__proto__['"\x60]\s*\])\s*(?:=(?!=)|&&=|\|\|=|\?\?=|\*\*=|>>>=|<<=|>>=|\+=|-=|\*=|\/=|%=|&=|\^=|\|=))/mu;
+  const pageClockLegacyAccessorWriter = /(?:\.__define(?:Getter|Setter)__\b|\[\s*['"\x60]__define(?:Getter|Setter)__['"\x60]\s*\])/mu;
+  const pageClockDestructuringWriter = /(?:\{[^}\n]*(?:\.\s*(?:now|performance|Date|globalThis)\b|\[\s*['"\x60](?:now|performance|Date|globalThis)['"\x60]\s*\])[^}\n]*\}|\[[^\]\n]*(?:\.\s*(?:now|performance|Date|globalThis)\b|\[\s*['"\x60](?:now|performance|Date|globalThis)['"\x60]\s*\])[^\]\n]*\])\s*=(?!=)/mu;
+  const pageClockIterationWriter = /\bfor\s*(?:await\s*)?\(\s*(?:(?:\.\s*)?[^;\n]*?)?(?:\.\s*(?:now|performance|Date|globalThis)\b|\[\s*['"\x60](?:now|performance|Date|globalThis)['"\x60]\s*\])[^;\n]*?\s+(?:of|in)\b/mu;
+  const pageDynamicComputedWriter = /\b(?!(?:const|let|var)\b)[A-Za-z_$][\w$]*\s*\[(?!\s*\d+\s*\])\s*[^\]\n]+\]\s*(?:=(?!=)|&&=|\|\|=|\?\?=|\*\*=|>>>=|<<=|>>=|\+=|-=|\*=|\/=|%=|&=|\^=|\|=|\+\+|--)/mu;
+  const pageClockBindingShadow = /(?:\b(?:const|let|var|class)\s+(?:globalThis|performance|Date)\b|\b(?:async\s+)?function\s*\*?\s*(?:globalThis|performance|Date)\b|\b(?:const|let|var)\s*(?:\{[^}\n]*\b(?:globalThis|performance|Date)\b[^}\n]*\}|\[[^\]\n]*\b(?:globalThis|performance|Date)\b[^\]\n]*\]))/mu;
+  const pageClockDeleteWriter = /\bdelete\s+(?:[^;\n]*?)(?:\.\s*(?:now|performance|Date|globalThis)\b|\[\s*['"\x60](?:now|performance|Date|globalThis)['"\x60]\s*\])/mu;
+  const seedDescriptorPrefix = "Object.defineProperty(globalThis.crypto,'getRandomValues'";
+  const descriptorInventoryTrusted = (text) => text.length === 0 || (
+    text.split('definePropert').length - 1 === 1
+      && text.split(seedDescriptorPrefix).length - 1 === 1
+  );
+  const objectInventoryTrusted = (text) => text.length === 0 || (
+    [...text.matchAll(/\bObject\b/gmu)].length === 1
+      && text.split(seedDescriptorPrefix).length - 1 === 1
+  );
   const forbiddenVirtualTime = 'Emulation.setVirtual' + 'TimePolicy';
+  const pertarSurfaceStart = source.indexOf('async function waitForPertarSurface');
+  const pertarSurfaceEnd = pertarSurfaceStart >= 0
+    ? source.indexOf('\n}\n\nasync function activateSurveyDock', pertarSurfaceStart)
+    : -1;
+  const pertarSurfaceSource = pertarSurfaceStart >= 0 && pertarSurfaceEnd > pertarSurfaceStart
+    ? source.slice(pertarSurfaceStart, pertarSurfaceEnd) : '';
+  const uiCaptureIndex = pertarSurfaceSource.indexOf(
+    "uiCapture=capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION})",
+  );
+  const stateCaptureIndex = pertarSurfaceSource.indexOf(
+    "stateCapture=capture('state',()=>S?.api?.state?.()??null)",
+  );
+  const countInPertarSurface = (needle) => pertarSurfaceSource.split(needle).length - 1;
   const checks = Object.freeze({
     fixedDuration: source.includes(
       'const ACTIVE_OBSERVATION_MS = ARC4_RECOVERY_ACTIVE_OBSERVATION_MS;',
@@ -481,9 +610,19 @@ export function assessArc4RecoveryInstrumentSeal(collectorSource, pageSources) {
     noDurationOverride: !source.includes('--duration')
       && !source.includes('RECOVERY_DURATION_MS'),
     noVirtualTime: !source.includes(forbiddenVirtualTime),
-    noPageClockOverride: !/Object\.defineProperty\s*\(\s*(?:globalThis\.)?(?:performance|Date)/.test(
-      joinedPageSources,
-    ),
+    noPageClockOverride: descriptorInventoryTrusted(joinedPageSources)
+      && objectInventoryTrusted(joinedPageSources)
+      && !pageClockDirectWriter.test(joinedPageSources)
+      && !pageClockDescriptorWriter.test(joinedPageSources)
+      && !pageClockReflectWriter.test(joinedPageSources)
+      && !pageClockAssignWriter.test(joinedPageSources)
+      && !pageClockPrototypeWriter.test(joinedPageSources)
+      && !pageClockLegacyAccessorWriter.test(joinedPageSources)
+      && !pageClockDestructuringWriter.test(joinedPageSources)
+      && !pageClockIterationWriter.test(joinedPageSources)
+      && !pageDynamicComputedWriter.test(joinedPageSources)
+      && !pageClockBindingShadow.test(joinedPageSources)
+      && !pageClockDeleteWriter.test(joinedPageSources),
     noActivePlayWriter: !/(?:^|[^=!<>])\.activePlayMs\s*(?:=(?!=)|\*\*=|>>>=|<<=|>>=|&&=|\|\|=|\?\?=|\+=|-=|\*=|\/=|%=|&=|\^=|\|=|\+\+|--)/mu.test(
       joinedPageSources,
     ),
@@ -491,14 +630,96 @@ export function assessArc4RecoveryInstrumentSeal(collectorSource, pageSources) {
     noProductionActivePlayWriter: !/(?:\.activePlayMs|\[\s*['"]activePlayMs['"]\s*\])\s*(?:=(?!=)|\*\*=|>>>=|<<=|>>=|&&=|\|\|=|\?\?=|\+=|-=|\*=|\/=|%=|&=|\^=|\|=|\+\+|--)/mu.test(
       productionSource,
     ),
-    noProductionClockOverride: !/(?:Object\.defineProperty\s*\([^\n]*(?:Date|performance)|(?:Date|performance)(?:\.now|\[\s*['"]now['"]\s*\])\s*=)/mu.test(
-      productionSource,
-    ),
+    noProductionClockOverride: descriptorInventoryTrusted(productionSource)
+      && !pageClockDirectWriter.test(productionSource)
+      && !pageClockDescriptorWriter.test(productionSource)
+      && !pageClockReflectWriter.test(productionSource)
+      && !pageClockAssignWriter.test(productionSource)
+      && !pageClockPrototypeWriter.test(productionSource)
+      && !pageClockLegacyAccessorWriter.test(productionSource)
+      && !pageClockDestructuringWriter.test(productionSource)
+      && !pageClockIterationWriter.test(productionSource)
+      && !pageClockBindingShadow.test(productionSource)
+      && !pageClockDeleteWriter.test(productionSource),
     targetDestroyedDerived: source.includes(
       "message.method === 'Target.targetDestroyed'",
     ) && source.includes('targetDestroyedEvents.push({'),
     postCloseInventoryDerived: source.includes("send('Target.getTargets')")
       && source.includes('postCloseTargetInventory:'),
+    pertarReadyUiThenState: uiCaptureIndex >= 0
+      && stateCaptureIndex > uiCaptureIndex,
+    pertarCaptureWitnessDerived: pertarSurfaceSource.includes(
+      'const ordinal=captures.length',
+    ) && pertarSurfaceSource.includes(
+      'runtimeCaptureWitness={schema:${JSON.stringify(ARC4_RECOVERY_RUNTIME_CAPTURE_WITNESS_SCHEMA)}',
+    ),
+    pertarCaptureTimestampDerived: pertarSurfaceSource.includes(
+      'startedAtPerformanceMs=globalThis.performance.now(),value=read(),',
+    ) && pertarSurfaceSource.includes(
+      'endedAtPerformanceMs=globalThis.performance.now(),',
+    ),
+    pertarSamplerBoundary: pertarSurfaceSource.includes(
+      '`(()=>{const S=window.__CF_SLICE__',
+    ) && pertarSurfaceSource.includes(
+      'runtimeCaptureWitness,diagnostic}})()`',
+    ),
+    noPertarClockShadow: countInPertarSurface('globalThis') === 2
+      && countInPertarSurface('performance') === 2
+      && !/\b(?:const|let|var)\s+(?:globalThis|performance)\b/u.test(
+        pertarSurfaceSource,
+      ) && !/\b(?:globalThis|performance)\s*(?:=(?!=)|&&=|\|\|=|\?\?=|\*\*=|>>>=|<<=|>>=|\+=|-=|\*=|\/=|%=|&=|\^=|\|=)/u.test(
+      pertarSurfaceSource,
+    ),
+    pertarCaptureTokenDerived: pertarSurfaceSource.includes(
+      'documentTokenBefore=S?.documentToken??null,',
+    ) && pertarSurfaceSource.includes(
+      'documentTokenAfter=S?.documentToken??null,p=value?.persistence??null,',
+    ) && pertarSurfaceSource.includes(
+      'snapshotDocumentToken:p?.documentToken??null,startedAtPerformanceMs,',
+    ),
+    pertarCaptureValueBound: countInPertarSurface(
+      "capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION})",
+    ) === 1 && countInPertarSurface(
+      "capture('state',()=>S?.api?.state?.()??null)",
+    ) === 1 && pertarSurfaceSource.includes(
+      'ui=uiCapture.value,state=stateCapture.value,',
+    ) && pertarSurfaceSource.includes(
+      'documentToken:S?.documentToken??null,captures};',
+    ),
+    pertarCaptureWitnessEnforced: productionSource.includes(
+      'const runtimeCaptureReceipt = assessArc4RecoveryRuntimeCaptureWitness({\n      witness: surface.runtimeCaptureWitness,\n      state: surface.state,\n      ui: surface.ui,\n      expectedDocumentToken: fixtureToken,\n    });',
+    ) && productionSource.includes(
+      "instrumentAssert(runtimeCaptureReceipt.ok,\n      'Pertar recovery runtime capture receipt is red', runtimeCaptureEvidence);",
+    ),
+    pertarCaptureEvidenceBound: productionSource.includes(
+      'const runtimeCaptureEvidence = Object.freeze({\n      witness: surface.runtimeCaptureWitness,\n      snapshots: Object.freeze({\n        ui: projectArc4RecoveryRuntimeCaptureSnapshot(surface.ui),\n        state: projectArc4RecoveryRuntimeCaptureSnapshot(surface.state),\n      }),\n      receipt: runtimeCaptureReceipt,\n    });',
+    ),
+    pertarPreconditionInputBound: productionSource.includes(
+      'const preconditionInput = Object.freeze({\n      raw: preRaw, state: surface.state, ui: surface.ui,\n      routeError: null, authorityReady: true,\n    });\n    const precondition = assessArc4CapturePrecondition(preconditionInput);',
+    ),
+    pertarPreconditionProductClassified: productionSource.includes(
+      "productAssert(precondition.ok, 'Pertar recovery precondition is red', {\n      runtimeCapture: runtimeCaptureEvidence, preconditionInput, precondition,\n    });",
+    ),
+    pertarFixtureEvidenceBound: productionSource.includes(
+      "passStage('fixture', {\n      documentToken: fixtureToken, seedWitness, preconditionInput, precondition,\n      runtimeCapture: runtimeCaptureEvidence,",
+    ),
+    typedFailureAssertions: productionSource.includes(
+      'if (!condition) throw new InstrumentFailure(message, evidence);',
+    ) && productionSource.includes(
+      'if (!condition) throw new ProductFailure(message, evidence);',
+    ),
+    failureClassificationPath: productionSource.includes(
+      'const classification = classifyRecoveryFailure(error);',
+    ) && productionSource.includes(
+      'provisionalStatus = classification.status;',
+    ) && productionSource.includes(
+      'provisionalExitCode = classification.exitCode;',
+    ),
+    fixturePreconditionVerifierBound: productionSource.includes(
+      "const fixtureEvidence = terminal.stages.find(\n        (stage) => stage?.id === 'fixture',\n      )?.evidence;\n      const replayedFixturePrecondition = assessArc4CapturePrecondition(\n        fixtureEvidence?.preconditionInput,\n      );",
+    ) && source.includes(
+      "const fixtureEvidence = report.stages.find(\n    (stage) => stage?.id === 'fixture',\n  )?.evidence;\n  const replayedFixturePrecondition = assessArc4CapturePrecondition(\n    fixtureEvidence?.preconditionInput,\n  );",
+    ),
   });
   return Object.freeze({ ok: Object.values(checks).every(Boolean), checks });
 }
@@ -506,6 +727,7 @@ export function assessArc4RecoveryInstrumentSeal(collectorSource, pageSources) {
 export function terminalArc4RecoveryReportErrors(report, {
   expectedRunId, currentSource, replayedDomainAssessment,
   replayedObservationVerdict, replayedAuthorityBinding,
+  replayedFixturePrecondition,
   currentBuild, currentInputs, ordinarySliceSeal, instrumentSeal,
   expectedPredecessors, expectedArtifactPath,
 } = {}) {
@@ -569,6 +791,54 @@ export function terminalArc4RecoveryReportErrors(report, {
   const stages = Array.isArray(report?.stages) ? report.stages : [];
   if (!same(stages.map((stage) => stage?.id), ARC4_RECOVERY_STAGE_ORDER)
     || stages.some((stage) => stage?.status !== 'pass')) errors.push('stage ledger');
+  const fixtureEvidence = stages.find((stage) => stage?.id === 'fixture')?.evidence;
+  const runtimeCapture = fixtureEvidence?.runtimeCapture;
+  if (fixtureEvidence?.documentToken !== documentTokenOf(
+    report?.recoveryBundle?.exhaustedState,
+  ) || fixtureEvidence?.documentToken !== documentTokenOf(
+    report?.recoveryBundle?.closedState,
+  ) || fixtureEvidence?.documentToken
+    !== report?.recoveryBundle?.closure?.closedDocumentToken) {
+    errors.push('fixture-to-recovery document chain');
+  }
+  const replayedRuntimeCaptureReceipt = assessArc4RecoveryRuntimeCaptureWitness({
+    witness: runtimeCapture?.witness,
+    state: runtimeCapture?.snapshots?.state,
+    ui: runtimeCapture?.snapshots?.ui,
+    expectedDocumentToken: fixtureEvidence?.documentToken,
+  });
+  if (!exactKeys(runtimeCapture, ['witness', 'snapshots', 'receipt'])
+    || !exactKeys(runtimeCapture?.snapshots, ['ui', 'state'])
+    || replayedRuntimeCaptureReceipt.ok !== true
+    || !same(runtimeCapture?.receipt, replayedRuntimeCaptureReceipt)
+    || replayedRuntimeCaptureReceipt?.observed?.runtimeNondecreasing !== true
+    || replayedRuntimeCaptureReceipt?.observed?.runtimeNondecreasing
+      !== fixtureEvidence?.precondition?.checks?.runtimeCaptureOrder
+    || !same(runtimeCapture?.snapshots?.ui,
+      projectArc4RecoveryRuntimeCaptureSnapshot(
+        fixtureEvidence?.preconditionInput?.ui,
+      ))
+    || !same(runtimeCapture?.snapshots?.state,
+      projectArc4RecoveryRuntimeCaptureSnapshot(
+        fixtureEvidence?.preconditionInput?.state,
+      ))
+    || fixtureEvidence?.precondition?.ok !== true
+    || !record(fixtureEvidence?.precondition?.checks)
+    || Object.values(fixtureEvidence.precondition.checks).some((value) => value !== true)
+    || !same(fixtureEvidence?.precondition?.reasons, [])) {
+    errors.push('fixture runtime-capture evidence replay');
+  }
+  if (!exactKeys(fixtureEvidence?.preconditionInput, [
+    'raw', 'state', 'ui', 'routeError', 'authorityReady',
+  ]) || !same(fixtureEvidence?.precondition, replayedFixturePrecondition)
+    || replayedFixturePrecondition?.ok !== true
+    || !exactKeys(replayedFixturePrecondition?.checks,
+      ARC4_RECOVERY_PRECONDITION_CHECK_KEYS)
+    || Object.values(replayedFixturePrecondition.checks).some(
+      (value) => value !== true,
+    ) || !same(replayedFixturePrecondition?.reasons, [])) {
+    errors.push('fixture product-precondition replay');
+  }
   if (report?.firstFailure !== null) errors.push('first failure must be null');
   if (!same(report?.fatalEvents, [])) errors.push('fatal-event inventory');
   if (!same(report?.findings, [])) errors.push('finding inventory');

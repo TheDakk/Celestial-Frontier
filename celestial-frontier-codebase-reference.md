@@ -6,25 +6,30 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-28.**
 >
-> **2026-08-28 Final7 Glass product/oracle-stop overlay — current local candidate:** signed clean
-> source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` supplied Layout 787/787, source-bound
-> SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings, and Slice PASS with zero
-> findings and ten screenshots. Glass then ran once for 75,032 ms and stopped terminal-red with 25
-> findings and zero report-classified instrument failures. Recovery correctly did not run.
+> **2026-08-28 Final8 Recovery precondition-stop overlay — current local candidate:** signed clean
+> source `c133c89ead736c9c7414af1e6242acd411339853` supplied Layout 787/787, source-bound
+> SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings, Slice PASS with zero
+> findings and ten screenshots, and full 12-viewport Glass PASS with zero findings or instrument
+> failures. Recovery then ran once for 7,633 ms and stopped terminal `fail` at its fixture
+> precondition with only `runtimeCaptureOrder` red, zero retry and complete cleanup. Burn-down,
+> exhaustion, close/offline checkpoints, the 20-minute observation, boundary crossing and recovered
+> judgment did not run.
 >
 > Post-run review separated one Compendium product root (a floated 44px Close plus cleared heading
 > spent an unintended header row) and two narrow-phone Inventory product defects (copy starved
 > beside the badge column) from two hostile-row Compendium oracle artifacts (overscan-only mount
 > counted as geometry) and four Settings oracle artifacts (individually reachable controls were
 > incorrectly required to remain simultaneously reachable). The bounded
-> repair removes the extra Compendium row, reflows `<=360px` Inventory rows without hiding exact
+> Final8 certifies the repair that removes the extra Compendium row, reflows `<=360px` Inventory rows without hiding exact
 > identity/state/action content, and makes each Settings control own its isolated reveal, two-sample
 > settlement, centre-hit/native-receipt proof and exact scroll restoration. Numeric rulers, browser
-> authority, retry policy and release identity are unchanged. Final7 is immutable and cannot resume;
-> repaired small-phone and phone-landscape diagnostics pass, but no post-repair full 12-viewport,
-> Recovery, whole-Gate, hosted, HUMAN or release claim exists. A newly signed clean successor must
-> restart at Layout with fresh IDs. Edge `151.0.4129.107` / CDP `1.3` is provenance only, never a pin
-> or rebaseline trigger.
+> authority, retry policy and release identity are unchanged. Post-run diagnosis found the sole
+> Recovery red in its instrument: the collector sampled outer state before its nested UI snapshot
+> while the precondition required the reverse order. Production's monotonic runtime and separate
+> rendered active-play projection passed, so no Recovery product judgment exists. The current
+> instrument-only repair is not browser-certified; Final8 is immutable and cannot resume after
+> changed bytes. A newly signed clean successor must restart the full chain at Layout with fresh
+> IDs. Edge `151.0.4129.107` / CDP `1.3` is provenance only, never a pin or rebaseline trigger.
 >
 > **Queued visual boundary:** after the stable Phase-4 checkpoint, carry the TikTok-inspired polish
 > language across the entire universe—galaxies, systems, planets, every biome, creatures, plants,
@@ -260,7 +265,20 @@
 > plateaus and HUMAN listening remain open.
 >
 > The dedicated real-time Arc 4 recovery collector and mutation-sensitive selftest are ready, but
-> recovery is non-standalone. On one unchanged clean committed source, the exact Slice report must
+> recovery is non-standalone. Its repaired precondition now captures one witnessed UI snapshot and
+> then one witnessed state snapshot, binding exact capture count/value ownership, page-monotonic
+> timestamps, document-token continuity and snapshot/runtime projections. Durable raw authority must
+> not exceed either runtime; UI → state runtime is nondecreasing within the unchanged 10-second
+> chronology/lag bound, while the rendered countdown remains a separately bounded projection.
+> Missing, copied, swapped or unbound receipts are instrument-red; a trusted backward runtime is
+> product-red. The collector and its trusted page evidence sources fail closed on ordinary clock
+> wrapper/binding shadows and direct, computed, destructuring, iteration, descriptor, alias,
+> whole-object, prototype and legacy-accessor writers; exact negative controls pin each class.
+> Immutable Final8 `c133c89…` retains the prior mismatch in which the collector sampled
+> state before nested UI but the precondition required UI before state. That run stopped before
+> burn-down or active observation and made no Recovery product judgment.
+>
+> On one unchanged clean committed source, the exact Slice report must
 > be terminal-green and pass named verification; full Glass must consume that exact Slice ID and its
 > exact report must pass named verification with the same ID; only then may recovery consume both
 > exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
@@ -2863,20 +2881,23 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-28):** signed clean source `53d030b…` supplied Final7
+**Current local candidate snapshot (2026-08-28):** signed clean source `c133c89…` supplied Final8
 Layout 787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings,
-and Slice PASS with zero findings/ten screenshots. Glass ran once for 75,032 ms and stopped with 25
-findings and zero report-classified instrument failures; Recovery did not run. Exact Final7 carriers
-and hashes are preserved in `audits/README.md`. Post-run review separated one Compendium
-header/workspace product root and two narrow-phone Inventory product defects from two hostile-row
-Compendium oracle artifacts and four Settings oracle artifacts. The bounded repair removes the
-extra Compendium header row, reflows `<=360px` Inventory
-without hiding content, and gives each Settings control isolated reveal, two-sample settlement,
-centre-hit/native-receipt proof and exact scroll restoration, with browser-free negative controls.
-Numeric rulers, historical samples, browser authority and retry/release policy are unchanged. The
-worktree needs a newly signed clean successor and the complete fresh chain from Layout; Final7
-cannot resume. Repaired small-phone/landscape diagnostics pass, but no post-repair full Glass,
-Recovery, hosted/HUMAN whole-Gate or release authority exists. Earlier
+Slice PASS with zero findings/ten screenshots and full 12-viewport Glass PASS with zero findings or
+instrument failures. Those exact-source greens certify the bounded Inventory, Compendium and
+Settings repair. Recovery ran once for 7,633 ms and stopped terminal `fail` at its fixture
+precondition with only `runtimeCaptureOrder` red, zero retry and complete cleanup. Every substantive
+Recovery stage remained not-run. Exact Final8 carriers and hashes are preserved in
+`audits/README.md`.
+
+Post-run diagnosis proved the collector sampled state before nested UI while judging the reverse
+chronology; production's monotonic runtime and rendered active-play projection were not red. The
+current bounded tool repair captures and receipts UI before state under the unchanged 10-second
+contract, but these changed bytes are not browser-certified. Final8 is immutable and cannot resume;
+the next signed clean successor must restart the complete chain from Layout. No Recovery product
+judgment, 20-minute observation, current-WIP browser PASS, hosted/HUMAN whole-Gate or release
+authority exists. Numeric rulers, historical samples, browser authority and retry/release policy
+are unchanged. Earlier
 `bb5dc7c7…` and `862a75b…` reds,
 calibration source `6c9ad855…`, activation
 `4a54c0d…`, and the historical `7362a0e…` / `b206cf0…` / `5ddddbf…` / `041d1cf…` evidence remain
