@@ -10,6 +10,23 @@ summary of it.
 
 ## Contents
 
+### Current Final11 assessor-repair follow-up — immutable failure retained, current replay green
+
+The Final11 carriers and hashes below are unchanged. Recovery remains stored `fail`, with one
+attempt, zero retries and exactly `activePlayProjection` and `closeCheckpoint` false in its stored
+domain assessment. The repaired current assessor independently replays that same immutable
+`recoveryBundle` wholly green; it does not rewrite the carrier or retroactively turn Final11 into a
+Recovery certificate.
+
+The repaired law permits durable raw to lead rendered UI only while rendered remains at or before
+runtime and within the existing 10-second bound, with the exact raw/runtime authority tuple intact.
+Close binds the latest exhausted live state/UI time, exact six-key committed/lost hide witness and
+committed revision outcome. Controls retain Final11's reported 20 ms render lag and 322 ms live-
+close gap, accept the exact close boundary, reject +1 ms, future/excessive lag and each independently
+mutated witness field. This is assessor/tests/docs only: product, save, deterministic content,
+numeric rulers, version identity and browser point-version policy are unchanged. A fresh signed clean
+Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain is still required.
+
 ### Signed `1ca6715…` Final11 campaign — full observation green, then Recovery temporal-oracle stop
 
 Signed clean docs source `1ca67156e27d6bd58a324e33b0e6b752adf568bc` remained unchanged through
@@ -30,11 +47,12 @@ reported 5,353 ms instead of binding close to the latest exhausted live runtime,
 322 ms. Final11 therefore exposes an instrument temporal-oracle defect, not a product failure. It
 is immutable and was not retried; it is not a Recovery certificate.
 
-The next repair is contract-only: permit bounded UI render lag relative to durable raw under the
-existing 10-second runtime law; bind close to the latest exhausted live runtime and the exact
-committed/lost hide witness; and mutation-test both directions. It changes no product, save,
-deterministic content, numeric ruler, browser authority, point-version policy, or release identity.
-A fresh complete chain on a newly signed clean repair source is required.
+The current repair is contract-only: it permits bounded UI render lag relative to durable raw under
+the existing 10-second runtime law, binds close to the latest exhausted live state/UI time plus the
+exact committed/lost hide witness and committed revision outcome, and mutation-tests both
+directions. It changes no product, save, deterministic content, numeric ruler, browser authority,
+point-version policy, or release identity. A fresh complete chain on the signed clean repair source
+is required.
 
 - `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_112951723.json.gz`: 4,783 compressed bytes,
   SHA-256 `aaa5b9a071d4ca905c4dfd924f56edda8a7ed589fdc65dc82902ad1ca3d85d6d`; 106,062 decompressed

@@ -1,14 +1,15 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-> **Current Final11 boundary (2026-08-28):** signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
-> passed all five predecessors and Recovery's full 20-minute observation, all 15 outcomes/309
-> samples, exact next-cycle proof and recovered UI. Only `activePlayProjection` and
-> `closeCheckpoint` failed because old logic rejected a valid 20 ms render lag and used a stale raw
-> 5,353 ms gap instead of the causal latest-live 322 ms gap. This is instrument-only, not capture/
-> biosphere product failure or a Recovery certificate. Final11 is immutable/no-retry. The next
-> repair is contract-only under the existing 10-second law, binds exact hide evidence, mutation-
-> tests both directions and requires a fresh signed clean full chain. Final10 current wording below
-> is historical where superseded.
+> **Current Final11 assessor-repair boundary (2026-08-28):** Final11 remains immutable stored
+> `fail` with unchanged hashes, one attempt, zero retries and only `activePlayProjection` /
+> `closeCheckpoint` false. The current repaired assessor independently replays its unchanged
+> `recoveryBundle` wholly green. Durable raw may lead rendered UI only under the existing rendered-
+> to-runtime 10-second bound and exact raw/runtime tuple; close binds the latest exhausted live
+> state/UI time, exact six-key committed/lost hide witness and committed revision outcome. Controls
+> cover the reported 20 ms/322 ms geometry, exact boundary/+1, excessive/future lag and every hide-
+> witness field. This is assessor/tests/docs only, with no capture/biosphere product, save, version
+> or browser-policy change. Final11 remains non-certifying; a fresh signed clean full chain is still
+> required. Final10 current wording below is historical where superseded.
 
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
 ecology/audio overlay matches the player-facing durable Arc 4 capture slice and its remaining
@@ -61,8 +62,8 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 > This documentation changes source identity; its signed clean docs-only descendant is the fresh
 > campaign source. It later supplied Final11, whose temporal-oracle stop is described above; Final11
-> is not a Recovery certificate. The next signed repair source must restart Layout →
-> SceneMemory → Compendium → Slice → Glass
+> is not a Recovery certificate. The current repaired assessor replays its unchanged bundle green,
+> but its signed clean source must restart Layout → SceneMemory → Compendium → Slice → Glass
 > → recovery. Edge `151.0.4129.107` / CDP `1.3` is Final10 provenance only; a compatible point
 > update never triggers rebaselining or a threshold change.
 
@@ -171,9 +172,8 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > passed in 71,713 ms across 12/12 viewports with all 36 Arc 4 outcomes and all planned controls,
 > none blocked/omitted, and zero findings/instrument failures/retries (report SHA-256
 > `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Arc 4 remains
-> **[PARTIAL]** until Final11's passed observation receives a green final assessor in a fresh chain,
-> plus the combined HUMAN
-> first-journey review are complete. The legacy formulas below remain parity/design input; current
+> **[PARTIAL]** until both a fresh chain passes the repaired final assessor and the combined HUMAN
+> first-journey review is complete. The legacy formulas below remain parity/design input; current
 > v2 implementation authority is the typed path described here.
 > Those retained Arc 4 reports predate compact Arc 5 V2 and do not certify it. The later exact-input
 > pair for this recorded 2026-08-25 boundary used Slice run

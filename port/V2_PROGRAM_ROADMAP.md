@@ -1,14 +1,15 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Current Final11 boundary (2026-08-28):** signed clean source `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
-> passed all five responsive predecessors and Recovery's complete 20-minute observation, all 15
-> outcomes/309 samples, exact next-cycle proof and recovered UI. Recovery then failed only two
-> timing-oracle checks: a valid 20 ms render lag and stale-raw 5,353 ms comparison instead of the
-> causal latest-live 322 ms gap. This is instrument-only, not product failure or Recovery/HUMAN/
-> Gate/release authority. Final11 is immutable/no-retry. The next repair is contract-only under the
-> existing 10-second law, binds exact hide evidence, mutation-tests both directions and requires a
-> fresh signed clean full chain. Edge point version remains provenance only. Final10 current wording
-> below is historical where superseded.
+> **Current Final11 assessor-repair boundary (2026-08-28):** Final11 remains immutable stored
+> `fail` with unchanged hashes, one attempt, zero retries and exactly two false checks. The current
+> repaired assessor independently replays its unchanged `recoveryBundle` wholly green. Durable raw
+> may lead rendered UI only under the existing rendered-to-runtime 10-second bound and exact raw/
+> runtime tuple; close binds latest exhausted live state/UI time, the exact six-key committed/lost
+> hide witness and committed revision outcome. Controls cover the reported 20 ms/322 ms geometry,
+> exact boundary/+1, future/excessive lag and every witness field. This is assessor/tests/docs only,
+> with no product, save, version or browser-policy change. Final11 remains non-certifying; a fresh
+> signed clean full chain is still required. Final10 current wording below is historical where
+> superseded.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
 > 2026-08-28.
@@ -153,9 +154,9 @@
 > `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
 > `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
-> This documentation changes source identity; its signed clean docs-only descendant is the fresh
-> campaign source. It later supplied Final11, whose temporal-oracle stop is described above; Final11
-> is not a Recovery certificate. The next signed repair source must restart **Layout →
+> This assessor/tests/docs-only repair changes source identity and is browser-uncertified. It
+> independently replays Final11's unchanged carrier green without altering Final11's stored FAIL.
+> A synchronized signed clean descendant must restart **Layout →
 > SceneMemory → Compendium → Slice → Glass → recovery**. No Recovery PASS/certificate, Gate,
 > publication, hosted, HUMAN, release, deployment, version-bump or external authority exists.
 > Edge `151.0.4129.107` / CDP `1.3` is Final11 provenance only and never triggers a rebaseline or
@@ -217,8 +218,9 @@
 > boundary crossing and recovered judgment remained not-run. Signed implementation/evidence repair
 > `3fbfcd5…` separated that offline vocabulary from active `empty`/`depleted`; its signed clean docs
 > descendant `1ca67156…` supplied immutable Final11. Final11 completed the full observation and
-> recovered UI before the final temporal assessor stopped red. The next campaign source does not
-> exist until that assessor-only repair is reviewed, tested, committed and signed. The former
+> recovered UI before the final temporal assessor stopped red. The current assessor/tests/docs-only
+> repair replays Final11's unchanged carrier green but remains browser-uncertified; Final11 stays an
+> immutable stored FAIL, and a synchronized signed clean descendant must restart the full chain. The former
 > Compendium ruler under measurement
 > `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
 > `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` is historical. Clean source
@@ -338,8 +340,10 @@
 > rejected truthful read-only `unavailable` rows. Active observation, boundary crossing and recovered
 > judgment did not run in Final10. Signed implementation/evidence repair `3fbfcd5…` and signed docs
 > descendant `1ca67156…` then supplied immutable Final11, which passed the full observation, exact
-> next cycle and recovered UI before the final temporal assessor stopped red. The next signed clean
-> contract-repair source must restart from Layout.
+> next cycle and recovered UI before the final temporal assessor stopped red. The current
+> assessor/tests/docs-only repair replays Final11's unchanged carrier green but remains
+> browser-uncertified; Final11 stays an immutable stored FAIL, and a synchronized signed clean
+> descendant must restart from Layout.
 > Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
@@ -1613,8 +1617,9 @@ stages and Recovery through closed/offline proof, then stopped instrument-only a
 recovered judgment did not run. Its
 signed implementation/evidence repair `3fbfcd5…` has the current-state overlay's retained/replayed phase
 receipts and six-region source seals browser-free green. Its signed docs descendant supplied
-Final11, which passed the uninterrupted real 20-minute observation and recovered UI; the Recovery
-certificate remains open because the final assessor was red.
+Final11, which passed the uninterrupted real 20-minute observation and recovered UI. Final11 stays
+an immutable stored FAIL; the repaired current assessor replay is green, but the Recovery
+certificate remains open because no fresh signed full chain has run.
 The retained Arc 5A Slice/Glass pair and its exact hashes/provenance are historical evidence for
 their 2026-08-25 inputs, not current-input browser proof.
 
@@ -1728,8 +1733,9 @@ and reached the complete burn-down before its exhausted-control oracle stop. Sig
 boundary crossing and recovered judgment did not run. Signed implementation/evidence repair
 `3fbfcd5…` has the current-state overlay's retained/replayed phase receipts and six-region source
 seals browser-free green; the synchronized signed clean docs-only descendant supplied immutable
-Final11. The next signed clean contract-repair commit will become the new campaign source and must
-restart the full chain from Layout before any successor PASS claim.
+Final11. The current assessor/tests/docs-only repair replays that unchanged carrier green but
+remains browser-uncertified; a synchronized signed clean descendant must restart the full chain
+from Layout before any successor PASS claim.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.
