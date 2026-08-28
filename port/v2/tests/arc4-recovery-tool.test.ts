@@ -4,6 +4,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
+// @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
+import { assessArc4RecoveryInstrumentSeal } from '../tools/arc4-recovery-contract.mjs';
 
 const collectorPath = fileURLToPath(
   new URL('../tools/arc4recovery.mjs', import.meta.url),
@@ -17,6 +19,24 @@ const sha256 = (value: Uint8Array): string =>
   createHash('sha256').update(value).digest('hex');
 
 describe('Arc 4 real-time recovery certificate instrument', () => {
+  it('pins the ready-surface runtime snapshots to UI then state chronology', () => {
+    const collector = readFileSync(collectorPath, 'utf8');
+    const uiThenState = "uiCapture=capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION}),\n          stateCapture=capture('state',()=>S?.api?.state?.()??null),";
+    const stateThenUi = "stateCapture=capture('state',()=>S?.api?.state?.()??null),\n          uiCapture=capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION}),";
+    const baseline = assessArc4RecoveryInstrumentSeal(collector, []);
+    expect(baseline.ok).toBe(true);
+    expect(baseline.checks.pertarReadyUiThenState).toBe(true);
+    expect(baseline.checks.pertarCaptureWitnessDerived).toBe(true);
+    expect(baseline.checks.pertarCaptureWitnessEnforced).toBe(true);
+
+    const reversed = collector.replace(uiThenState, stateThenUi);
+    expect(reversed).not.toBe(collector);
+    const mutation = assessArc4RecoveryInstrumentSeal(reversed, []);
+    expect(mutation.ok).toBe(false);
+    expect(Object.entries(mutation.checks).filter(([, value]) => value !== true))
+      .toEqual([['pertarReadyUiThenState', false]]);
+  });
+
   it('keeps its real-time, closure, authority, transition and report controls mutation-sensitive', () => {
     const output = execFileSync(process.execPath, [collectorPath, '--selftest'], {
       encoding: 'utf8',

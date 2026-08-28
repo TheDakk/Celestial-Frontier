@@ -78,15 +78,15 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-28 evidence boundary — signed Final7 stopped terminal-red at Glass; repaired successor
-> must restart from Layout:** signed clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2`
-> passed Layout `20260827-phase4-final7-53d030bb733b-layout` at 787/787, source-bound SceneMemory
-> `…-scenemem` at 42/42, source-bound Compendium `…-compendium` at 78/78 and Slice `…-slice`
-> with zero findings and ten screenshots. Glass `…-glass` then ran once for 75,032 ms across all
-> 12 viewports and stopped with 25 findings, zero report-classified instrument failures and zero retries:
-> 11 clipped-without-scroll, seven outside-viewport, four Settings audio-control, two hostile-row
-> geometry and one short-landscape Compendium workspace finding. Recovery correctly did not run.
-> Final7 is immutable historical evidence and cannot resume.
+> **2026-08-28 evidence boundary — signed Final8 reached Recovery, whose precondition stopped on an
+> instrument-order mismatch:** signed clean source `c133c89ead736c9c7414af1e6242acd411339853`
+> passed Layout `20260828-phase4-final8-c133c89ead73-layout` at 787/787, source-bound SceneMemory
+> `…-scenemem` at 42/42, source-bound Compendium `…-compendium` at 78/78 with all six review PNGs,
+> Slice `…-slice` with zero findings and ten screenshots, and full 12-viewport Glass `…-glass`
+> with zero findings and zero instrument failures. Recovery `…-recovery` then ran once for 7,633 ms
+> and stopped terminal `fail` at the fixture precondition with only `runtimeCaptureOrder` red, zero
+> automatic retries and complete cleanup. Burn-down, exhaustion, close/offline checkpoints, the
+> 20-minute active observation, boundary crossing and recovered-state judgment did not run.
 >
 > The bounded product repair stacks Inventory rows into one min-width-safe column only at `<=360px`
 > while preserving every field and 44px target. Compendium list mode retains the bounded virtual
@@ -103,15 +103,17 @@
 > red; incoherent absence or node replacement is instrument-red. Viewport completion is credited
 > only after four activations and restored-off settlement, separately from product-blocked coverage.
 >
-> Browser-free negative controls pass, but the repaired worktree is not a browser certificate and
-> has no post-repair full Glass PASS. Live SceneMemory and Compendium producer/budget test records
-> are rebound to the changed product/release-content bytes without changing a numeric ruler,
-> calibration sample, retry policy or
-> browser authority. A newly signed clean successor must restart **Layout → SceneMemory → Compendium
-> → Slice → Glass → recovery**. No Gate, post-repair chain, publication, hosted, release, deployment,
-> version-bump or external authority exists. Edge `151.0.4129.107` / CDP `1.3` is Final7 provenance
-> only and never triggers a rebaseline or threshold change. Exact carriers, sizes and hashes are
-> inventoried in `audits/README.md`.
+> Final8 certifies the bounded Inventory, Compendium and Settings repair for that exact signed
+> source. Post-run diagnosis found the sole Recovery red in its instrument: the collector captures
+> the outer state runtime before the nested UI runtime, while the precondition required the reverse
+> order. Production's monotonic runtime and separate rendered active-play projection passed, so
+> Final8 made no Recovery product judgment. The repair successor changes only that chronology and is
+> not yet browser-certified. Final8 is immutable and cannot resume after changed bytes. A newly signed
+> clean successor must restart **Layout → SceneMemory → Compendium → Slice → Glass → recovery**.
+> No current-WIP chain, Recovery PASS, 20-minute recovery, Gate, publication, hosted, release,
+> deployment, version-bump or external authority exists. Edge `151.0.4129.107` / CDP `1.3` is
+> Final8 provenance only and never triggers a rebaseline or threshold change. Exact carriers, sizes
+> and hashes are inventoried in `audits/README.md`.
 >
 > **Queued visual scope (Nick, 2026-08-27):** after the stable Phase-4 checkpoint, apply the
 > TikTok-inspired polish language universe-wide across galaxies, systems, planets, every biome,
@@ -270,13 +272,17 @@
 > which passed Layout, SceneMemory and Compendium before the preserved causal Inventory instrument
 > stop. Signed causal repair `53d030b…` supplied Final7 green Layout, SceneMemory, Compendium and
 > Slice predecessors before Glass stopped terminal-red with 25 findings and zero report-classified instrument
-> failures. Recovery did not run. The post-Final7 product/oracle repair requires a newly signed clean
-> successor restart from Layout.
+> failures. Recovery did not run. Signed repair `c133c89…` then supplied Final8 green Layout,
+> SceneMemory, Compendium, Slice and full Glass before Recovery stopped terminal `fail` at its sole
+> `runtimeCaptureOrder` precondition. Post-run diagnosis identified the collector's state→UI capture
+> chronology being judged as UI→state; no burn-down, 20-minute observation or Recovery product
+> judgment occurred. The current instrument-only repair requires a newly signed clean successor and
+> a full restart from Layout.
 > Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
-> never repins, rebaselines or moves a root threshold. Post-start audio, current Glass and
-> recovery remain unproved. No repaired-source Glass PASS, hosted/HUMAN whole-Gate,
+> never repins, rebaselines or moves a root threshold. Post-start audio and real Recovery remain
+> unproved. Final8 full Glass is exact-source green, but no current-WIP browser PASS, hosted/HUMAN whole-Gate,
 > release/version, preview/publication or deployment authority exists.
 >
 > **2026-08-25 local campaign boundary — historical checkpoint, still foundational where the
@@ -1455,7 +1461,10 @@ causal-prefix repair `53d030b…` then passed Final7 Slice after green predecess
 terminal-red with 25 findings and zero report-classified instrument failures; post-run review
 separated the narrow Inventory/Compendium product defects from the Settings and hostile-row oracle
 artifacts. Recovery did not run. The repaired current bytes require a fresh signed successor from
-Layout; no post-repair full Glass PASS exists.
+Layout. Signed successor `c133c89…` then passed Final8 Layout, SceneMemory, Compendium, Slice and
+full Glass before Recovery stopped at the `runtimeCaptureOrder` precondition. The diagnosed
+instrument-only repair changes current bytes, made no Recovery product judgment and again requires
+a fresh signed full-chain restart from Layout.
 
 ### 5.2 Arc 3 — engineering loop
 
@@ -1630,8 +1639,11 @@ passed Layout, SceneMemory and Compendium before Slice's ninth one-attempt red s
 Inventory pre-reveal/causal-prefix instrument defect. Signed repair `53d030b…` then passed Final7
 Slice after green Layout/SceneMemory/Compendium predecessors, before Glass stopped with 25 findings
 and zero report-classified instrument failures. Recovery did not run. The post-Final7 Settings and bounded
-layout/oracle repair must become a newly signed clean successor and restart from Layout before any
-current PASS claim.
+layout/oracle repair became signed Final8 source `c133c89…`, which passed Layout, SceneMemory,
+Compendium, Slice and full Glass. Recovery then stopped at its sole `runtimeCaptureOrder`
+precondition; post-run diagnosis proved the collector judged its actual state→UI snapshots in the
+reverse order. No Recovery behavior was judged. The current instrument-only repair must be newly
+signed and restart the full chain from Layout before any current-WIP PASS claim.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.

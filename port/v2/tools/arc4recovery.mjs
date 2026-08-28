@@ -51,16 +51,20 @@ import {
   ARC4_RECOVERY_MIN_BOUNDARY_WAIT_MS,
   ARC4_RECOVERY_OBSERVATION_SCHEMA,
   ARC4_RECOVERY_OBSERVER_SCHEMA,
+  ARC4_RECOVERY_PRECONDITION_CHECK_KEYS,
   ARC4_RECOVERY_REGULAR_SERVICE_GAP_MAX_MS,
   ARC4_RECOVERY_REPORT_SCHEMA,
+  ARC4_RECOVERY_RUNTIME_CAPTURE_WITNESS_SCHEMA,
   ARC4_RECOVERY_SERVICE_SCHEMA,
   ARC4_RECOVERY_SERVICE_TURN_MAX_MS,
   ARC4_RECOVERY_STAGE_ORDER,
   ARC4_RECOVERY_TOTAL_CLOCK_PARITY_MAX_MS,
   ARC4_RECOVERY_UI_TRANSITION_LATENCY_MAX_MS,
+  assessArc4RecoveryRuntimeCaptureWitness,
   assessArc4RecoveryInstrumentSeal,
   assessOrdinarySliceRecoverySeal,
   evaluateArc4RecoveryObservation,
+  projectArc4RecoveryRuntimeCaptureSnapshot,
   projectArc4RecoveryObservationAuthority,
   terminalArc4RecoveryReportErrors,
 } from './arc4-recovery-contract.mjs';
@@ -178,13 +182,32 @@ const PAGE_EVIDENCE_SOURCES = Object.freeze([
 
 function fail(message) { throw new Error(message); }
 function assert(condition, message) { if (!condition) fail(message); }
+function instrumentAssert(condition, message, evidence = null) {
+  if (!condition) throw new InstrumentFailure(message, evidence);
+}
 function productAssert(condition, message, evidence = null) {
   if (!condition) throw new ProductFailure(message, evidence);
+}
+class InstrumentFailure extends Error {
+  constructor(message, evidence = null) {
+    super(message); this.name = 'InstrumentFailure'; this.evidence = evidence;
+  }
 }
 class ProductFailure extends Error {
   constructor(message, evidence = null) {
     super(message); this.name = 'ProductFailure'; this.evidence = evidence;
   }
+}
+function classifyRecoveryFailure(error) {
+  if (error instanceof ProductFailure) {
+    return Object.freeze({
+      status: 'fail', exitCode: 1, evidence: error.evidence,
+    });
+  }
+  return Object.freeze({
+    status: 'instrument-fail', exitCode: 2,
+    evidence: error instanceof InstrumentFailure ? error.evidence : null,
+  });
 }
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const nowMonotonicMs = () => Math.trunc(performance.now());
@@ -577,7 +600,22 @@ async function waitForPertarSurface(send, sessionId, { exhausted = false } = {})
   try {
     return await waitForValue(async () => {
       const observed = await evaluate(send, sessionId,
-        `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),ui=${ARC4_CAPTURE_UI_EXPRESSION};
+        `(()=>{const S=window.__CF_SLICE__,captures=[],capture=(kind,read)=>{
+          const ordinal=captures.length,documentTokenBefore=S?.documentToken??null,
+            startedAtPerformanceMs=globalThis.performance.now(),value=read(),
+            endedAtPerformanceMs=globalThis.performance.now(),
+            documentTokenAfter=S?.documentToken??null,p=value?.persistence??null,
+            r=p?.runtime??null,receipt={kind,ordinal,documentTokenBefore,documentTokenAfter,
+              snapshotDocumentToken:p?.documentToken??null,startedAtPerformanceMs,
+              endedAtPerformanceMs,runtime:r?{activePlayMs:r.activePlayMs??null,
+                revision:r.revision??null,sessionSeed:r.sessionSeed??null,
+                sessionOrdinal:r.sessionOrdinal??null,sessionDraws:r.sessionDraws??null}:null};
+          captures.push(receipt);return {value,receipt}},
+          uiCapture=capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION}),
+          stateCapture=capture('state',()=>S?.api?.state?.()??null),
+          ui=uiCapture.value,state=stateCapture.value,
+          runtimeCaptureWitness={schema:${JSON.stringify(ARC4_RECOVERY_RUNTIME_CAPTURE_WITNESS_SCHEMA)},
+            documentToken:S?.documentToken??null,captures};
           const route=state?.mode==='surface'&&state?.gal===${ARC4_PERTAR_FIXTURE.galaxy.seed}
             &&state?.star===${ARC4_PERTAR_FIXTURE.publicStar.seed}
             &&state?.planet===${ARC4_PERTAR_FIXTURE.planet.seed}
@@ -594,11 +632,15 @@ async function waitForPertarSurface(send, sessionId, { exhausted = false } = {})
               cycle:budget.cycle}:null,
             rows:rows.map((row)=>({verb:row?.verb??null,status:row?.status??null,
               modelEnabled:row?.button?.modelEnabled??null,disabled:row?.button?.disabled??null,
-              ariaDisabled:row?.button?.ariaDisabled??null}))};
-          return {matched,state:matched?state:null,ui:matched?ui:null,diagnostic}})()`,
+              ariaDisabled:row?.button?.ariaDisabled??null})),runtimeCaptureWitness};
+          return {matched,state:matched?state:null,ui:matched?ui:null,
+            runtimeCaptureWitness,diagnostic}})()`,
       'read Pertar capture surface');
       lastDiagnostic = observed?.diagnostic ?? null;
-      return observed?.matched === true ? { state: observed.state, ui: observed.ui } : null;
+      return observed?.matched === true ? {
+        state: observed.state, ui: observed.ui,
+        runtimeCaptureWitness: observed.runtimeCaptureWitness,
+      } : null;
     }, label);
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
@@ -891,13 +933,33 @@ async function runCertificate(options) {
     const surface = await waitForPertarSurface(send, sessionId);
     const preRaw = await evaluate(send, sessionId, ARC4_DURABLE_READ_EXPRESSION,
       'read Pertar precondition authority');
-    const precondition = assessArc4CapturePrecondition({
+    const runtimeCaptureReceipt = assessArc4RecoveryRuntimeCaptureWitness({
+      witness: surface.runtimeCaptureWitness,
+      state: surface.state,
+      ui: surface.ui,
+      expectedDocumentToken: fixtureToken,
+    });
+    const runtimeCaptureEvidence = Object.freeze({
+      witness: surface.runtimeCaptureWitness,
+      snapshots: Object.freeze({
+        ui: projectArc4RecoveryRuntimeCaptureSnapshot(surface.ui),
+        state: projectArc4RecoveryRuntimeCaptureSnapshot(surface.state),
+      }),
+      receipt: runtimeCaptureReceipt,
+    });
+    instrumentAssert(runtimeCaptureReceipt.ok,
+      'Pertar recovery runtime capture receipt is red', runtimeCaptureEvidence);
+    const preconditionInput = Object.freeze({
       raw: preRaw, state: surface.state, ui: surface.ui,
       routeError: null, authorityReady: true,
     });
-    productAssert(precondition.ok, 'Pertar recovery precondition is red', precondition);
+    const precondition = assessArc4CapturePrecondition(preconditionInput);
+    productAssert(precondition.ok, 'Pertar recovery precondition is red', {
+      runtimeCapture: runtimeCaptureEvidence, preconditionInput, precondition,
+    });
     passStage('fixture', {
-      documentToken: fixtureToken, seedWitness, precondition,
+      documentToken: fixtureToken, seedWitness, preconditionInput, precondition,
+      runtimeCapture: runtimeCaptureEvidence,
       sourceRoute: {
         mode: sourceState.mode, star: sourceState.star,
         savedView: sourceState.save?.savedView ?? null,
@@ -1283,14 +1345,15 @@ async function runCertificate(options) {
     });
     provisionalStatus = 'pass'; provisionalExitCode = 0;
   } catch (error) {
-    const evidence = error instanceof ProductFailure ? error.evidence : null;
+    const classification = classifyRecoveryFailure(error);
+    const evidence = classification.evidence;
     findings.push(error.message);
     if (evidence !== null) findings.push(`evidence: ${JSON.stringify(evidence)}`);
     if (report.stages.find((stage) => stage.id === currentStage)?.status === 'not-run') {
       markStage(currentStage, 'fail', { message: error.message, evidence });
     }
-    provisionalStatus = error instanceof ProductFailure ? 'fail' : 'instrument-fail';
-    provisionalExitCode = error instanceof ProductFailure ? 1 : 2;
+    provisionalStatus = classification.status;
+    provisionalExitCode = classification.exitCode;
   }
 
   const cleanupFailures = [];
@@ -1367,6 +1430,12 @@ async function runCertificate(options) {
       const replayedAuthorityBinding = projectArc4RecoveryObservationAuthority(
         terminal.recoveryBundle,
       );
+      const fixtureEvidence = terminal.stages.find(
+        (stage) => stage?.id === 'fixture',
+      )?.evidence;
+      const replayedFixturePrecondition = assessArc4CapturePrecondition(
+        fixtureEvidence?.preconditionInput,
+      );
       const replayedOrdinarySeal = assessOrdinarySliceRecoverySeal(
         fs.readFileSync(ordinarySlicePath, 'utf8'),
       );
@@ -1380,7 +1449,8 @@ async function runCertificate(options) {
       const verificationErrors = terminalArc4RecoveryReportErrors(terminal, {
         expectedRunId: id, currentSource,
         replayedDomainAssessment, replayedObservationVerdict,
-        replayedAuthorityBinding, currentBuild, currentInputs,
+        replayedAuthorityBinding, replayedFixturePrecondition,
+        currentBuild, currentInputs,
         ordinarySliceSeal: replayedOrdinarySeal,
         instrumentSeal: replayedInstrumentSeal,
         expectedPredecessors: currentPredecessors,
@@ -1432,6 +1502,33 @@ function syntheticRuntime(activePlayMs, revision) {
     visible: true, answerable: true, leaseOwned: true, accruing: true,
     activePlayMs, revision, sessionSeed: 68, sessionOrdinal: 16,
     sessionDraws: { 'capture.candidate': 16, 'capture.success': 16 },
+  };
+}
+function syntheticRuntimeCaptureProjection(runtime) {
+  return {
+    activePlayMs: runtime.activePlayMs,
+    revision: runtime.revision,
+    sessionSeed: runtime.sessionSeed,
+    sessionOrdinal: runtime.sessionOrdinal,
+    sessionDraws: runtime.sessionDraws,
+  };
+}
+function syntheticRuntimeCaptureWitness({
+  documentToken, uiRuntime, stateRuntime, order = ['ui', 'state'],
+} = {}) {
+  const runtimeByKind = { ui: uiRuntime, state: stateRuntime };
+  return {
+    schema: ARC4_RECOVERY_RUNTIME_CAPTURE_WITNESS_SCHEMA,
+    documentToken,
+    captures: order.map((kind, ordinal) => ({
+      kind, ordinal,
+      documentTokenBefore: documentToken,
+      documentTokenAfter: documentToken,
+      snapshotDocumentToken: documentToken,
+      startedAtPerformanceMs: 100 + ordinal * 2,
+      endedAtPerformanceMs: 101 + ordinal * 2,
+      runtime: syntheticRuntimeCaptureProjection(runtimeByKind[kind]),
+    })),
   };
 }
 function syntheticCaptureFacts(recovered = false) {
@@ -1592,7 +1689,186 @@ function syntheticRecoveryFixture() {
 }
 
 export function runSelftest() {
+  const failureEvidence = Object.freeze({ selftest: 'failure-evidence' });
+  instrumentAssert(true, 'true instrument assertion threw');
+  productAssert(true, 'true product assertion threw');
+  let classifiedInstrument = null;
+  try {
+    instrumentAssert(false, 'synthetic instrument red', failureEvidence);
+  } catch (error) {
+    classifiedInstrument = classifyRecoveryFailure(error);
+  }
+  assert(same(classifiedInstrument, {
+    status: 'instrument-fail', exitCode: 2, evidence: failureEvidence,
+  }), 'instrument assertion/classification did not preserve instrument evidence');
+  let classifiedProduct = null;
+  try {
+    productAssert(false, 'synthetic product red', failureEvidence);
+  } catch (error) {
+    classifiedProduct = classifyRecoveryFailure(error);
+  }
+  assert(same(classifiedProduct, {
+    status: 'fail', exitCode: 1, evidence: failureEvidence,
+  }), 'product assertion/classification did not preserve product evidence');
+  assert(same(classifyRecoveryFailure(new Error('synthetic generic red')), {
+    status: 'instrument-fail', exitCode: 2, evidence: null,
+  }), 'generic failure was not classified fail-closed as instrument evidence');
+
   const { input, recoveryBundle } = syntheticRecoveryFixture();
+  const runtimeCaptureToken = recoveryBundle.closure.closedDocumentToken;
+  const uiRuntime = syntheticRuntime(20_000, 7);
+  const stateRuntime = syntheticRuntime(20_001, 7);
+  const runtimeCaptureState = {
+    persistence: { documentToken: runtimeCaptureToken, runtime: stateRuntime },
+  };
+  const runtimeCaptureUi = {
+    persistence: { documentToken: runtimeCaptureToken, runtime: uiRuntime },
+  };
+  const assessRuntimeCapture = (witness, state = runtimeCaptureState,
+    ui = runtimeCaptureUi, expectedDocumentToken = runtimeCaptureToken) => (
+    assessArc4RecoveryRuntimeCaptureWitness({
+      witness, state, ui, expectedDocumentToken,
+    })
+  );
+  const trustedRuntimeCapture = syntheticRuntimeCaptureWitness({
+    documentToken: runtimeCaptureToken, uiRuntime, stateRuntime,
+  });
+  const trustedRuntimeReceipt = assessRuntimeCapture(trustedRuntimeCapture);
+  assert(trustedRuntimeReceipt.ok
+    && trustedRuntimeReceipt.observed.runtimeNondecreasing === true,
+  `trusted UI→state runtime receipt is red: ${JSON.stringify(trustedRuntimeReceipt)}`);
+
+  const swappedRuntimeCapture = syntheticRuntimeCaptureWitness({
+    documentToken: runtimeCaptureToken, uiRuntime, stateRuntime,
+    order: ['state', 'ui'],
+  });
+  const swappedRuntimeReceipt = assessRuntimeCapture(swappedRuntimeCapture);
+  assert(swappedRuntimeReceipt.ok === false
+    && swappedRuntimeReceipt.checks.uiThenState === false,
+  'distinct-value state→UI runtime receipt stayed green');
+
+  const equalRuntime = syntheticRuntime(20_000, 7);
+  const equalState = {
+    persistence: { documentToken: runtimeCaptureToken, runtime: equalRuntime },
+  };
+  const equalUi = structuredClone(equalState);
+  const swappedEqualRuntimeReceipt = assessRuntimeCapture(
+    syntheticRuntimeCaptureWitness({
+      documentToken: runtimeCaptureToken,
+      uiRuntime: equalRuntime,
+      stateRuntime: equalRuntime,
+      order: ['state', 'ui'],
+    }), equalState, equalUi,
+  );
+  assert(swappedEqualRuntimeReceipt.ok === false
+    && swappedEqualRuntimeReceipt.checks.uiThenState === false,
+  'equal-value state→UI runtime receipt stayed green');
+
+  const missingOrdinal = structuredClone(trustedRuntimeCapture);
+  delete missingOrdinal.captures[1].ordinal;
+  assert(assessRuntimeCapture(missingOrdinal).ok === false,
+    'missing runtime-capture ordinal stayed green');
+  const duplicateOrdinal = structuredClone(trustedRuntimeCapture);
+  duplicateOrdinal.captures[1].ordinal = 0;
+  assert(assessRuntimeCapture(duplicateOrdinal).ok === false,
+    'duplicate runtime-capture ordinal stayed green');
+  const projectionMismatch = structuredClone(trustedRuntimeCapture);
+  projectionMismatch.captures[0].runtime.revision += 1;
+  const projectionMismatchReceipt = assessRuntimeCapture(projectionMismatch);
+  assert(projectionMismatchReceipt.ok === false
+    && Object.entries(projectionMismatchReceipt.checks).every(([name, value]) => (
+      name === 'exactProjection' ? value === false : value === true
+    )), 'runtime-capture projection mismatch did not fail only exactProjection');
+  const backwardReceiptClock = structuredClone(trustedRuntimeCapture);
+  backwardReceiptClock.captures[1].startedAtPerformanceMs
+    = backwardReceiptClock.captures[0].endedAtPerformanceMs - 1;
+  assert(assessRuntimeCapture(backwardReceiptClock).checks.monotonicReceipt === false,
+    'nonmonotonic runtime-capture timestamp stayed green');
+  const wrongDocument = structuredClone(trustedRuntimeCapture);
+  wrongDocument.captures[1].documentTokenAfter = 'wrong-document-token';
+  assert(assessRuntimeCapture(wrongDocument).checks.documentToken === false,
+    'wrong runtime-capture document token stayed green');
+  const wrongSnapshotDocumentState = structuredClone(runtimeCaptureState);
+  const wrongSnapshotDocumentUi = structuredClone(runtimeCaptureUi);
+  wrongSnapshotDocumentState.persistence.documentToken = 'wrong-document-token';
+  wrongSnapshotDocumentUi.persistence.documentToken = 'wrong-document-token';
+  const wrongSnapshotDocumentReceipt = assessRuntimeCapture(
+    trustedRuntimeCapture,
+    wrongSnapshotDocumentState,
+    wrongSnapshotDocumentUi,
+  );
+  assert(wrongSnapshotDocumentReceipt.ok === false
+    && Object.entries(wrongSnapshotDocumentReceipt.checks).every(([name, value]) => (
+      name === 'documentToken' ? value === false : value === true
+    )), 'coherently wrong snapshot document tokens did not fail only documentToken');
+
+  const backwardStateRuntime = syntheticRuntime(19_999, 7);
+  const trustedBackwardState = {
+    persistence: {
+      documentToken: runtimeCaptureToken, runtime: backwardStateRuntime,
+    },
+  };
+  const trustedBackwardReceipt = assessRuntimeCapture(
+    syntheticRuntimeCaptureWitness({
+      documentToken: runtimeCaptureToken,
+      uiRuntime,
+      stateRuntime: backwardStateRuntime,
+    }), trustedBackwardState, runtimeCaptureUi,
+  );
+  assert(trustedBackwardReceipt.ok
+    && trustedBackwardReceipt.observed.runtimeNondecreasing === false,
+  'trusted backward product runtime was misclassified as a malformed receipt');
+  const trustedBackwardEvidence = {
+    runtimeCapture: {
+      witness: syntheticRuntimeCaptureWitness({
+        documentToken: runtimeCaptureToken,
+        uiRuntime,
+        stateRuntime: backwardStateRuntime,
+      }),
+      snapshots: {
+        ui: projectArc4RecoveryRuntimeCaptureSnapshot(runtimeCaptureUi),
+        state: projectArc4RecoveryRuntimeCaptureSnapshot(trustedBackwardState),
+      },
+      receipt: trustedBackwardReceipt,
+    },
+    preconditionInput: {
+      raw: { synthetic: true }, state: trustedBackwardState,
+      ui: runtimeCaptureUi, routeError: null, authorityReady: true,
+    },
+    precondition: {
+      ok: false, checks: { runtimeCaptureOrder: false },
+      reasons: ['Arc 4 capture precondition runtimeCaptureOrder'],
+    },
+  };
+  let trustedBackwardClassification = null;
+  try {
+    productAssert(false, 'Pertar recovery precondition is red', trustedBackwardEvidence);
+  } catch (error) {
+    trustedBackwardClassification = classifyRecoveryFailure(error);
+  }
+  assert(trustedBackwardClassification?.status === 'fail'
+    && trustedBackwardClassification?.exitCode === 1
+    && same(trustedBackwardClassification?.evidence, trustedBackwardEvidence),
+  'trusted backward runtime did not retain product-red classification/evidence');
+  const malformedRuntimeEvidence = {
+    witness: swappedRuntimeCapture,
+    snapshots: {
+      ui: projectArc4RecoveryRuntimeCaptureSnapshot(runtimeCaptureUi),
+      state: projectArc4RecoveryRuntimeCaptureSnapshot(runtimeCaptureState),
+    },
+    receipt: swappedRuntimeReceipt,
+  };
+  let malformedRuntimeClassification = null;
+  try {
+    instrumentAssert(swappedRuntimeReceipt.ok,
+      'Pertar recovery runtime capture receipt is red', malformedRuntimeEvidence);
+  } catch (error) {
+    malformedRuntimeClassification = classifyRecoveryFailure(error);
+  }
+  assert(malformedRuntimeClassification?.status === 'instrument-fail'
+    && malformedRuntimeClassification?.exitCode === 2
+    && same(malformedRuntimeClassification?.evidence, malformedRuntimeEvidence),
+  'malformed runtime receipt did not retain instrument-red classification/evidence');
   const mixedExhaustedFacts = input.authorityBinding.exhaustedCaptureFacts;
   assert(same(mixedExhaustedFacts.rows.map(({ verb, status }) => ({ verb, status })), [
     { verb: 'tame', status: 'empty' },
@@ -1810,6 +2086,16 @@ export function runSelftest() {
   );
   assert(instrumentSeal.ok,
     `recovery instrument seal is red: ${JSON.stringify(instrumentSeal)}`);
+  const assertInstrumentSealOnly = (mutant, expectedCheck, label) => {
+    const expectedChecks = Array.isArray(expectedCheck)
+      ? expectedCheck : [expectedCheck];
+    assert(mutant !== collectorSource, `${label} mutation did not bind production`);
+    const outcome = assessArc4RecoveryInstrumentSeal(mutant, PAGE_EVIDENCE_SOURCES);
+    assert(outcome.ok === false
+      && Object.entries(outcome.checks).every(([name, value]) => (
+        expectedChecks.includes(name) ? value === false : value === true
+      )), `${label} did not fail only ${expectedChecks.join('/')}: ${JSON.stringify(outcome)}`);
+  };
   const overrideFlag = '--dur' + 'ation';
   assert(!assessArc4RecoveryInstrumentSeal(
     `${collectorSource}\n${overrideFlag}`, PAGE_EVIDENCE_SOURCES,
@@ -1821,6 +2107,140 @@ export function runSelftest() {
   assert(!assessArc4RecoveryInstrumentSeal(
     collectorSource, [...PAGE_EVIDENCE_SOURCES, 'authority.activePlayMs += 1200000'],
   ).ok, 'active-play writer mutation stayed green');
+  const assertPageClockOverrideRed = (pageSource, label) => {
+    const mutatedPageSources = [...PAGE_EVIDENCE_SOURCES];
+    mutatedPageSources[0] = `${mutatedPageSources[0]}\n${pageSource}`;
+    const outcome = assessArc4RecoveryInstrumentSeal(
+      collectorSource, mutatedPageSources,
+    );
+    assert(outcome.ok === false
+      && Object.entries(outcome.checks).every(([name, value]) => (
+        name === 'noPageClockOverride' ? value === false : value === true
+      )), `${label} did not fail only noPageClockOverride: ${JSON.stringify(outcome)}`);
+  };
+  assertPageClockOverrideRed(
+    'performance.now = () => 0', 'direct page performance clock override',
+  );
+  assertPageClockOverrideRed(
+    "globalThis.performance['now'] &&= () => 0",
+    'compound bracket page performance clock override',
+  );
+  assertPageClockOverrideRed(
+    "globalThis['performance'].now = () => 0",
+    'bracket-root page performance clock override',
+  );
+  assertPageClockOverrideRed(
+    "Reflect.defineProperty(globalThis.performance,'now',{value:()=>0})",
+    'Reflect page performance clock override',
+  );
+  assertPageClockOverrideRed(
+    "Object['defineProperty'](Date,'now',{value:()=>0})",
+    'bracketed Object page date clock override',
+  );
+  assertPageClockOverrideRed(
+    'globalThis.performance = {now:()=>0}',
+    'whole page performance clock replacement',
+  );
+  assertPageClockOverrideRed(
+    "Object.defineProperty(globalThis,'performance',{value:{now:()=>0}})",
+    'whole page performance descriptor replacement',
+  );
+  assertPageClockOverrideRed(
+    "Reflect.set(globalThis,'performance',{now:()=>0})",
+    'whole page performance Reflect replacement',
+  );
+  assertPageClockOverrideRed(
+    'const clock=globalThis.performance;clock.now=()=>0',
+    'aliased page performance clock replacement',
+  );
+  assertPageClockOverrideRed(
+    'Object.defineProperty(globalThis.performance,`now`,{value:()=>0})',
+    'template-literal page clock descriptor replacement',
+  );
+  assertPageClockOverrideRed(
+    'Reflect.set(globalThis,`performance`,{now:()=>0})',
+    'template-literal whole page clock replacement',
+  );
+  assertPageClockOverrideRed(
+    'Object.assign(globalThis.performance,{now(){return 0}})',
+    'page clock Object.assign method replacement',
+  );
+  assertPageClockOverrideRed(
+    'const now=()=>0;Object.assign(globalThis.performance,{now})',
+    'page clock Object.assign shorthand replacement',
+  );
+  assertPageClockOverrideRed(
+    "const key='now';Object.assign(globalThis.performance,{[key]:()=>0})",
+    'page clock Object.assign dynamic-computed replacement',
+  );
+  assertPageClockOverrideRed(
+    'Object.setPrototypeOf(globalThis.performance,{now(){return 0}})',
+    'page clock prototype replacement',
+  );
+  assertPageClockOverrideRed(
+    'globalThis.performance.__proto__={now(){return 0}}',
+    'page clock legacy prototype replacement',
+  );
+  assertPageClockOverrideRed(
+    "globalThis.performance.__defineGetter__('now',()=>0)",
+    'page clock legacy getter replacement',
+  );
+  assertPageClockOverrideRed(
+    "const key='now';Object.defineProperty(globalThis.performance,key,{value:()=>0})",
+    'page clock dynamic descriptor replacement',
+  );
+  assertPageClockOverrideRed(
+    "const set=Reflect.set;set(globalThis.performance,'now',()=>0)",
+    'page clock aliased Reflect replacement',
+  );
+  assertPageClockOverrideRed(
+    "const {set}=Reflect;set(globalThis.performance,'now',()=>0)",
+    'page clock destructured Reflect replacement',
+  );
+  assertPageClockOverrideRed(
+    "const {assign}=Object,key='now';assign(globalThis.performance,{[key]:()=>0})",
+    'page clock destructured Object replacement',
+  );
+  assertPageClockOverrideRed(
+    "const key='now';globalThis.performance[key]=()=>0",
+    'page clock dynamic-computed direct replacement',
+  );
+  assertPageClockOverrideRed(
+    'class globalThis{static get crypto(){return window.crypto}static get performance(){return {now(){return 0}}}}',
+    'page globalThis lexical-class shadow',
+  );
+  assertPageClockOverrideRed(
+    'function performance(){return {now(){return 0}}}',
+    'page performance function-declaration shadow',
+  );
+  assertPageClockOverrideRed(
+    'const {root:globalThis}={root:{performance:{now:()=>0}}}',
+    'page globalThis destructured-binding shadow',
+  );
+  assertPageClockOverrideRed(
+    'for(var [globalThis] of [[{crypto:window.crypto,performance:{now(){return 0}}}]]){}',
+    'page globalThis for-of destructured-binding shadow',
+  );
+  assertPageClockOverrideRed(
+    'globalThis.globalThis={performance:{now:()=>0}}',
+    'page globalThis binding replacement',
+  );
+  assertPageClockOverrideRed(
+    'window.globalThis={performance:{now:()=>0}}',
+    'page window globalThis binding replacement',
+  );
+  assertPageClockOverrideRed(
+    '({now:globalThis.performance.now}={now:()=>0})',
+    'page clock object-destructuring replacement',
+  );
+  assertPageClockOverrideRed(
+    '[globalThis.performance.now]=[()=>0]',
+    'page clock array-destructuring replacement',
+  );
+  assertPageClockOverrideRed(
+    'for(globalThis.performance.now of [()=>0])break',
+    'page clock for-of replacement',
+  );
   const productionBoundary = '\nfunction syntheticBrowser()';
   assert(!assessArc4RecoveryInstrumentSeal(
     collectorSource.replace(
@@ -1840,6 +2260,224 @@ export function runSelftest() {
       '\nperformance.now = () => 1200000;' + productionBoundary,
     ), PAGE_EVIDENCE_SOURCES,
   ).ok, 'unlisted production clock override mutation stayed green');
+  assert(!assessArc4RecoveryInstrumentSeal(
+    collectorSource.replace(
+      productionBoundary,
+      '\nglobalThis.performance = {now:()=>1200000};' + productionBoundary,
+    ), PAGE_EVIDENCE_SOURCES,
+  ).ok, 'unlisted whole production clock override mutation stayed green');
+  assert(!assessArc4RecoveryInstrumentSeal(
+    collectorSource.replace(
+      productionBoundary,
+      "\nconst clock=globalThis.performance;Reflect.set(clock,'now',()=>1200000);"
+        + productionBoundary,
+    ), PAGE_EVIDENCE_SOURCES,
+  ).ok, 'unlisted aliased production clock override mutation stayed green');
+  const pertarUiThenState = "uiCapture=capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION}),\n          stateCapture=capture('state',()=>S?.api?.state?.()??null),";
+  const pertarStateThenUi = "stateCapture=capture('state',()=>S?.api?.state?.()??null),\n          uiCapture=capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION}),";
+  const reversedPertarCapture = collectorSource.replace(
+    pertarUiThenState, pertarStateThenUi,
+  );
+  assert(reversedPertarCapture !== collectorSource,
+    'Pertar capture-order mutation did not bind the production sampler');
+  const reversedPertarSeal = assessArc4RecoveryInstrumentSeal(
+    reversedPertarCapture, PAGE_EVIDENCE_SOURCES,
+  );
+  assert(reversedPertarSeal.ok === false
+    && reversedPertarSeal.checks.pertarReadyUiThenState === false
+    && Object.entries(reversedPertarSeal.checks).every(([name, value]) => (
+      name === 'pertarReadyUiThenState' ? value === false : value === true
+    )), 'reversed Pertar UI/state capture order did not fail only its instrument seal');
+  assertInstrumentSealOnly(
+    collectorSource.replace('const ordinal=captures.length', 'const ordinal=0'),
+    'pertarCaptureWitnessDerived', 'constant Pertar capture ordinal',
+  );
+  const forgedPertarTimestamps = collectorSource.replace(
+    'startedAtPerformanceMs=globalThis.performance.now(),value=read(),\n            endedAtPerformanceMs=globalThis.performance.now(),',
+    'startedAtPerformanceMs=0,value=read(),\n            endedAtPerformanceMs=0,',
+  );
+  assert(forgedPertarTimestamps !== collectorSource,
+    'forged Pertar capture timestamp mutation did not bind production');
+  const forgedPertarTimestampSeal = assessArc4RecoveryInstrumentSeal(
+    forgedPertarTimestamps, PAGE_EVIDENCE_SOURCES,
+  );
+  assert(forgedPertarTimestampSeal.ok === false
+    && Object.entries(forgedPertarTimestampSeal.checks).every(([name, value]) => (
+      ['pertarCaptureTimestampDerived', 'noPertarClockShadow'].includes(name)
+        ? value === false : value === true
+    )), 'forged Pertar timestamps did not fail only timestamp/clock seals');
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'startedAtPerformanceMs=globalThis.performance.now(),value=read(),\n            endedAtPerformanceMs=globalThis.performance.now(),',
+      'startedAtPerformanceMs=Math.trunc(globalThis.performance.now()),value=read(),\n            endedAtPerformanceMs=Math.trunc(globalThis.performance.now()),',
+    ),
+    'pertarCaptureTimestampDerived', 'shadowable Pertar timestamp wrapper',
+  );
+  const shadowedPertarPerformance = collectorSource.replace(
+    '`(()=>{const S=window.__CF_SLICE__,captures=[]',
+    '`(()=>{const S=window.__CF_SLICE__;const performance={now:()=>0};const captures=[]',
+  );
+  assert(shadowedPertarPerformance !== collectorSource,
+    'shadowed Pertar performance clock mutation did not bind production');
+  const shadowedPertarPerformanceSeal = assessArc4RecoveryInstrumentSeal(
+    shadowedPertarPerformance, PAGE_EVIDENCE_SOURCES,
+  );
+  assert(shadowedPertarPerformanceSeal.ok === false
+    && Object.entries(shadowedPertarPerformanceSeal.checks).every(([name, value]) => (
+      ['noProductionClockOverride', 'noPertarClockShadow'].includes(name)
+        ? value === false : value === true
+    )), 'shadowed Pertar performance clock did not fail only production/shadow seals');
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      '`(()=>{const S=window.__CF_SLICE__,captures=[]',
+      '`(()=>{const S=window.__CF_SLICE__;globalThis={performance:{now:()=>0}};const captures=[]',
+    ),
+    ['noProductionClockOverride', 'noPertarClockShadow'],
+    'assigned Pertar global clock shadow',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      '`(()=>{const S=window.__CF_SLICE__,captures=[]',
+      '`(()=>{const S=window.__CF_SLICE__;globalThis&&={performance:{now:()=>0}};const captures=[]',
+    ),
+    ['noProductionClockOverride', 'noPertarClockShadow'],
+    'compound-assigned Pertar global clock shadow',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      '`(()=>{const S=window.__CF_SLICE__,captures=[],capture=(kind,read)=>{',
+      '`(()=>{const S=window.__CF_SLICE__,captures=[];const {root:globalThis}={root:{performance:{now:()=>0}}};const capture=(kind,read)=>{',
+    ),
+    ['noProductionClockOverride', 'noPertarClockShadow'],
+    'destructuring-shadowed Pertar global clock',
+  );
+  const parameterShadowedPertarClock = collectorSource.replace(
+    '`(()=>{const S=window.__CF_SLICE__,captures=[]',
+    '`((globalThis)=>{const S=window.__CF_SLICE__,captures=[]',
+  ).replace(
+    'runtimeCaptureWitness,diagnostic}})()`',
+    'runtimeCaptureWitness,diagnostic}})({performance:{now:()=>0}})`',
+  );
+  assert(parameterShadowedPertarClock !== collectorSource,
+    'parameter-shadowed Pertar global clock mutation did not bind production');
+  const parameterShadowedPertarSeal = assessArc4RecoveryInstrumentSeal(
+    parameterShadowedPertarClock, PAGE_EVIDENCE_SOURCES,
+  );
+  assert(parameterShadowedPertarSeal.ok === false
+    && Object.entries(parameterShadowedPertarSeal.checks).every(([name, value]) => (
+      ['pertarSamplerBoundary', 'noPertarClockShadow'].includes(name)
+        ? value === false : value === true
+    )), 'parameter-shadowed Pertar clock did not fail only boundary/shadow seals');
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'documentTokenAfter=S?.documentToken??null,p=value?.persistence??null,\n            r=p?.runtime??null,receipt={kind,ordinal,documentTokenBefore,documentTokenAfter,\n              snapshotDocumentToken:p?.documentToken??null,startedAtPerformanceMs,',
+      'documentTokenAfter=documentTokenBefore,p=value?.persistence??null,\n            r=p?.runtime??null,receipt={kind,ordinal,documentTokenBefore,documentTokenAfter,\n              snapshotDocumentToken:documentTokenBefore,startedAtPerformanceMs,',
+    ),
+    'pertarCaptureTokenDerived', 'copied Pertar capture document tokens',
+  );
+  const unboundPertarState = collectorSource.replace(
+    pertarUiThenState,
+    "preState=S?.api?.state?.()??null,\n          uiCapture=capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION}),\n          stateCapture=capture('state',()=>S?.api?.state?.()??null),",
+  ).replace(
+    'ui=uiCapture.value,state=stateCapture.value,',
+    'ui=uiCapture.value,state=preState,',
+  );
+  assertInstrumentSealOnly(
+    unboundPertarState, 'pertarCaptureValueBound',
+    'unreceipted pre-UI Pertar state',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'state: projectArc4RecoveryRuntimeCaptureSnapshot(surface.state),',
+      'state: projectArc4RecoveryRuntimeCaptureSnapshot(surface.ui),',
+    ),
+    'pertarCaptureEvidenceBound', 'unbound Pertar state evidence',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'const runtimeCaptureReceipt = assessArc4RecoveryRuntimeCaptureWitness({\n      witness: surface.runtimeCaptureWitness,',
+      'const runtimeCaptureReceipt = assessArc4RecoveryRuntimeCaptureWitness({\n      witness: { bogus: true },',
+    ),
+    'pertarCaptureWitnessEnforced', 'unbound Pertar witness assessor input',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'const runtimeCaptureEvidence = Object.freeze({\n      witness: surface.runtimeCaptureWitness,',
+      'const runtimeCaptureEvidence = Object.freeze({\n      witness: { bogus: true },',
+    ),
+    'pertarCaptureEvidenceBound', 'unbound Pertar capture witness evidence',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'receipt: runtimeCaptureReceipt,',
+      'receipt: { ok: true },',
+    ),
+    'pertarCaptureEvidenceBound', 'unbound Pertar capture receipt evidence',
+  );
+  const bypassedPertarWitness = collectorSource.replace(
+    'instrumentAssert(runtimeCaptureReceipt.ok,',
+    'instrumentAssert(true,',
+  );
+  assert(bypassedPertarWitness !== collectorSource,
+    'Pertar witness-enforcement mutation did not bind production');
+  const bypassedPertarSeal = assessArc4RecoveryInstrumentSeal(
+    bypassedPertarWitness, PAGE_EVIDENCE_SOURCES,
+  );
+  assert(bypassedPertarSeal.ok === false
+    && Object.entries(bypassedPertarSeal.checks).every(([name, value]) => (
+      name === 'pertarCaptureWitnessEnforced' ? value === false : value === true
+    )), 'bypassed Pertar witness enforcement did not fail only its instrument seal');
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'raw: preRaw, state: surface.state, ui: surface.ui,\n      routeError: null, authorityReady: true,',
+      'raw: preRaw, state: surface.ui, ui: surface.ui,\n      routeError: null, authorityReady: true,',
+    ),
+    'pertarPreconditionInputBound', 'unbound Pertar precondition state input',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "productAssert(precondition.ok, 'Pertar recovery precondition is red', {",
+      "instrumentAssert(precondition.ok, 'Pertar recovery precondition is red', {",
+    ),
+    'pertarPreconditionProductClassified',
+    'instrument-classified Pertar product precondition',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "productAssert(precondition.ok, 'Pertar recovery precondition is red', {\n      runtimeCapture: runtimeCaptureEvidence, preconditionInput, precondition,\n    });",
+      "productAssert(precondition.ok, 'Pertar recovery precondition is red', { bogus: true });",
+    ),
+    'pertarPreconditionProductClassified',
+    'unbound Pertar product-precondition evidence',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "documentToken: fixtureToken, seedWitness, preconditionInput, precondition,\n      runtimeCapture: runtimeCaptureEvidence,",
+      "documentToken: fixtureToken, seedWitness, preconditionInput, precondition: { ok: true },\n      runtimeCapture: runtimeCaptureEvidence,",
+    ),
+    'pertarFixtureEvidenceBound', 'forged Pertar fixture-stage precondition',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'if (!condition) throw new InstrumentFailure(message, evidence);',
+      'if (!condition) throw new Error(message);',
+    ),
+    'typedFailureAssertions', 'untyped instrument assertion',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'const classification = classifyRecoveryFailure(error);',
+      "const classification = { status: 'fail', exitCode: 1, evidence: null };",
+    ),
+    'failureClassificationPath', 'bypassed failure classifier',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'const replayedFixturePrecondition = assessArc4CapturePrecondition(\n        fixtureEvidence?.preconditionInput,',
+      'const replayedFixturePrecondition = fixtureEvidence?.preconditionInput && { ok: true, checks: {}, reasons: [] };\n      void (',
+    ),
+    'fixturePreconditionVerifierBound', 'bypassed terminal precondition replay',
+  );
 
   const source = {
     commit: 'a'.repeat(40), branch: 'openai/mac', state: 'committed',
@@ -1873,8 +2511,34 @@ export function runSelftest() {
   const replayedAuthorityBinding = projectArc4RecoveryObservationAuthority(
     recoveryBundle,
   );
+  const terminalRuntimeCaptureEvidence = {
+    witness: structuredClone(trustedRuntimeCapture),
+    snapshots: {
+      ui: projectArc4RecoveryRuntimeCaptureSnapshot(runtimeCaptureUi),
+      state: projectArc4RecoveryRuntimeCaptureSnapshot(runtimeCaptureState),
+    },
+    receipt: structuredClone(trustedRuntimeReceipt),
+  };
+  const terminalFixturePrecondition = {
+    ok: true,
+    checks: Object.fromEntries(
+      ARC4_RECOVERY_PRECONDITION_CHECK_KEYS.map((key) => [key, true]),
+    ),
+    reasons: [],
+  };
   const stages = ARC4_RECOVERY_STAGE_ORDER.map((idValue) => ({
-    id: idValue, status: 'pass', evidence: null,
+    id: idValue, status: 'pass', evidence: idValue === 'fixture' ? {
+      documentToken: runtimeCaptureToken,
+      runtimeCapture: terminalRuntimeCaptureEvidence,
+      preconditionInput: {
+        raw: { synthetic: true },
+        state: runtimeCaptureState,
+        ui: runtimeCaptureUi,
+        routeError: null,
+        authorityReady: true,
+      },
+      precondition: terminalFixturePrecondition,
+    } : null,
   }));
   const terminal = {
     schema: ARC4_RECOVERY_REPORT_SCHEMA, status: 'pass', runId: 'selftest-run',
@@ -1896,6 +2560,7 @@ export function runSelftest() {
     expectedRunId: 'selftest-run', currentSource: source,
     replayedDomainAssessment: domainAssessment,
     replayedObservationVerdict: baseline, replayedAuthorityBinding,
+    replayedFixturePrecondition: terminalFixturePrecondition,
     currentBuild, currentInputs, ordinarySliceSeal: ordinarySeal, instrumentSeal,
     expectedPredecessors: predecessors,
     expectedArtifactPath: 'apps/game/smoke/arc4-recovery-selftest-run.json',
@@ -1921,6 +2586,145 @@ export function runSelftest() {
   assert(terminalArc4RecoveryReportErrors(
     missingStage, terminalReplay,
   ).includes('stage ledger'), 'count-consistent missing stage stayed green');
+  const missingFixtureCapture = structuredClone(terminal);
+  missingFixtureCapture.stages[0].evidence = null;
+  assert(terminalArc4RecoveryReportErrors(
+    missingFixtureCapture, terminalReplay,
+  ).includes('fixture runtime-capture evidence replay'),
+  'missing fixture runtime-capture evidence stayed green');
+  const omittedFixturePreconditionCheck = structuredClone(terminal);
+  delete omittedFixturePreconditionCheck.stages[0].evidence.precondition.checks.actionsIdle;
+  assert(terminalArc4RecoveryReportErrors(
+    omittedFixturePreconditionCheck, terminalReplay,
+  ).includes('fixture product-precondition replay'),
+  'omitted fixture product-precondition check stayed green');
+  const forgedFixturePreconditionInput = structuredClone(terminal);
+  forgedFixturePreconditionInput.stages[0].evidence.preconditionInput.state = null;
+  const replayedForgedFixturePrecondition = structuredClone(
+    terminalFixturePrecondition,
+  );
+  replayedForgedFixturePrecondition.ok = false;
+  replayedForgedFixturePrecondition.checks.captured = false;
+  replayedForgedFixturePrecondition.reasons = [
+    'Arc 4 capture precondition captured',
+  ];
+  assert(terminalArc4RecoveryReportErrors(forgedFixturePreconditionInput, {
+    ...terminalReplay,
+    replayedFixturePrecondition: replayedForgedFixturePrecondition,
+  }).includes('fixture product-precondition replay'),
+  'forged fixture product-precondition input stayed green');
+  const forgedFixtureCapture = structuredClone(terminal);
+  forgedFixtureCapture.stages[0].evidence.runtimeCapture.witness.captures.reverse();
+  assert(terminalArc4RecoveryReportErrors(
+    forgedFixtureCapture, terminalReplay,
+  ).includes('fixture runtime-capture evidence replay'),
+  'forged fixture runtime-capture chronology stayed green');
+  const divergentHealthyFixtureCapture = structuredClone(terminal);
+  const divergentRuntimeCapture = divergentHealthyFixtureCapture.stages[0]
+    .evidence.runtimeCapture;
+  divergentRuntimeCapture.witness.captures.forEach((capture) => {
+    capture.runtime.activePlayMs += 100;
+  });
+  divergentRuntimeCapture.snapshots.ui.persistence.runtime.activePlayMs += 100;
+  divergentRuntimeCapture.snapshots.state.persistence.runtime.activePlayMs += 100;
+  divergentRuntimeCapture.receipt = assessArc4RecoveryRuntimeCaptureWitness({
+    witness: divergentRuntimeCapture.witness,
+    state: divergentRuntimeCapture.snapshots.state,
+    ui: divergentRuntimeCapture.snapshots.ui,
+    expectedDocumentToken: runtimeCaptureToken,
+  });
+  assert(divergentRuntimeCapture.receipt.ok === true
+    && divergentRuntimeCapture.receipt.observed.runtimeNondecreasing === true,
+  'divergent healthy runtime-capture mutant did not remain internally coherent');
+  assert(terminalArc4RecoveryReportErrors(
+    divergentHealthyFixtureCapture, terminalReplay,
+  ).includes('fixture runtime-capture evidence replay'),
+  'runtime-capture snapshots diverged from product-precondition inputs without detection');
+  const divergentDocumentFixtureCapture = structuredClone(terminal);
+  const divergentDocumentEvidence = divergentDocumentFixtureCapture.stages[0].evidence;
+  divergentDocumentEvidence.preconditionInput.ui.persistence.documentToken =
+    'unrelated-product-document';
+  divergentDocumentEvidence.preconditionInput.state.persistence.documentToken =
+    'unrelated-product-document';
+  divergentDocumentEvidence.runtimeCapture.snapshots.ui.persistence.documentToken =
+    'unrelated-product-document';
+  divergentDocumentEvidence.runtimeCapture.snapshots.state.persistence.documentToken =
+    'unrelated-product-document';
+  divergentDocumentEvidence.runtimeCapture.receipt =
+    assessArc4RecoveryRuntimeCaptureWitness({
+      witness: divergentDocumentEvidence.runtimeCapture.witness,
+      state: divergentDocumentEvidence.runtimeCapture.snapshots.state,
+      ui: divergentDocumentEvidence.runtimeCapture.snapshots.ui,
+      expectedDocumentToken: runtimeCaptureToken,
+    });
+  assert(divergentDocumentEvidence.runtimeCapture.receipt.ok === false
+    && divergentDocumentEvidence.runtimeCapture.receipt.checks.documentToken === false,
+  'cross-document product snapshots did not turn the runtime receipt red');
+  assert(terminalArc4RecoveryReportErrors(
+    divergentDocumentFixtureCapture, terminalReplay,
+  ).includes('fixture runtime-capture evidence replay'),
+  'cross-document product snapshots stayed terminal-verifier green');
+  const coherentlyRetokenedFixture = structuredClone(terminal);
+  const retokenedFixtureEvidence = coherentlyRetokenedFixture.stages[0].evidence;
+  const unrelatedFixtureToken = 'unrelated-fixture-document';
+  retokenedFixtureEvidence.documentToken = unrelatedFixtureToken;
+  retokenedFixtureEvidence.runtimeCapture.witness.documentToken =
+    unrelatedFixtureToken;
+  retokenedFixtureEvidence.runtimeCapture.witness.captures.forEach((capture) => {
+    capture.documentTokenBefore = unrelatedFixtureToken;
+    capture.documentTokenAfter = unrelatedFixtureToken;
+    capture.snapshotDocumentToken = unrelatedFixtureToken;
+  });
+  retokenedFixtureEvidence.preconditionInput.ui.persistence.documentToken =
+    unrelatedFixtureToken;
+  retokenedFixtureEvidence.preconditionInput.state.persistence.documentToken =
+    unrelatedFixtureToken;
+  retokenedFixtureEvidence.runtimeCapture.snapshots.ui.persistence.documentToken =
+    unrelatedFixtureToken;
+  retokenedFixtureEvidence.runtimeCapture.snapshots.state.persistence.documentToken =
+    unrelatedFixtureToken;
+  retokenedFixtureEvidence.runtimeCapture.receipt =
+    assessArc4RecoveryRuntimeCaptureWitness({
+      witness: retokenedFixtureEvidence.runtimeCapture.witness,
+      state: retokenedFixtureEvidence.runtimeCapture.snapshots.state,
+      ui: retokenedFixtureEvidence.runtimeCapture.snapshots.ui,
+      expectedDocumentToken: unrelatedFixtureToken,
+    });
+  assert(retokenedFixtureEvidence.runtimeCapture.receipt.ok === true,
+    'coherently retokened fixture did not remain internally green');
+  assert(terminalArc4RecoveryReportErrors(
+    coherentlyRetokenedFixture, terminalReplay,
+  ).includes('fixture-to-recovery document chain'),
+  'coherently retokened fixture detached from Recovery bundle without detection');
+  const backwardFixtureCapture = structuredClone(terminal);
+  const backwardFixtureRuntime = syntheticRuntime(19_999, 7);
+  backwardFixtureCapture.stages[0].evidence.runtimeCapture.witness =
+    syntheticRuntimeCaptureWitness({
+      documentToken: runtimeCaptureToken,
+      uiRuntime,
+      stateRuntime: backwardFixtureRuntime,
+    });
+  backwardFixtureCapture.stages[0].evidence.runtimeCapture.snapshots.state =
+    projectArc4RecoveryRuntimeCaptureSnapshot({
+      persistence: {
+        documentToken: runtimeCaptureToken, runtime: backwardFixtureRuntime,
+      },
+    });
+  backwardFixtureCapture.stages[0].evidence.runtimeCapture.receipt =
+    assessArc4RecoveryRuntimeCaptureWitness({
+      witness: backwardFixtureCapture.stages[0].evidence.runtimeCapture.witness,
+      state: backwardFixtureCapture.stages[0].evidence.runtimeCapture.snapshots.state,
+      ui: backwardFixtureCapture.stages[0].evidence.runtimeCapture.snapshots.ui,
+      expectedDocumentToken: runtimeCaptureToken,
+    });
+  assert(backwardFixtureCapture.stages[0].evidence.runtimeCapture.receipt.ok === true
+    && backwardFixtureCapture.stages[0].evidence.runtimeCapture.receipt.observed
+      .runtimeNondecreasing === false,
+  'trusted-backward terminal mutant did not retain a valid receipt');
+  assert(terminalArc4RecoveryReportErrors(
+    backwardFixtureCapture, terminalReplay,
+  ).includes('fixture runtime-capture evidence replay'),
+  'trusted-backward terminal PASS mutation stayed green');
   const policyUnbound = structuredClone(terminal);
   policyUnbound.observationInput.policy = {
     ...policyUnbound.observationInput.policy,
@@ -2135,7 +2939,7 @@ export function runSelftest() {
     assert(red.status === 'instrument-fail' && red.runId === 'current-run',
       'injected early exit left stale/running evidence');
   } finally { fs.rmSync(temporaryRoot, { recursive: true }); }
-  console.log('ARC 4 RECOVERY SELFTEST: PASS — fixed real 20-minute duration, target service, focus/visibility, boundary, stale PASS, zero retry, and no-forged-time controls are mutation-sensitive');
+  console.log('ARC 4 RECOVERY SELFTEST: PASS — fixed real 20-minute duration, trusted UI→state capture chronology, target service, focus/visibility, boundary, stale PASS, zero retry, and no-forged-time controls are mutation-sensitive');
 }
 
 function verifyRecoveryRun(options) {
@@ -2160,6 +2964,12 @@ function verifyRecoveryRun(options) {
   const replayedAuthorityBinding = projectArc4RecoveryObservationAuthority(
     report.recoveryBundle,
   );
+  const fixtureEvidence = report.stages.find(
+    (stage) => stage?.id === 'fixture',
+  )?.evidence;
+  const replayedFixturePrecondition = assessArc4CapturePrecondition(
+    fixtureEvidence?.preconditionInput,
+  );
   const ordinarySliceSeal = assessOrdinarySliceRecoverySeal(
     fs.readFileSync(ordinarySlicePath, 'utf8'),
   );
@@ -2171,7 +2981,8 @@ function verifyRecoveryRun(options) {
   const errors = terminalArc4RecoveryReportErrors(report, {
     expectedRunId: id, currentSource,
     replayedDomainAssessment, replayedObservationVerdict,
-    replayedAuthorityBinding, currentBuild, currentInputs,
+    replayedAuthorityBinding, replayedFixturePrecondition,
+    currentBuild, currentInputs,
     ordinarySliceSeal, instrumentSeal,
     expectedPredecessors: predecessors,
     expectedArtifactPath: artifacts.reportRelative,

@@ -10,15 +10,15 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — signed Final7 Glass terminal stop, bounded repair, full restart (2026-08-28)
+## Current-state boundary — signed Final8 reached Recovery, precondition-only instrument repair pending (2026-08-28)
 
-Signed clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` supplied Final7 Layout
-787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 and Slice with zero findings
-and ten screenshots. Glass then ran once for 75,032 ms across all 12 viewports and stopped
-terminal-red with 25 findings, zero report-classified instrument failures and zero retries: 11 clipped-without-scroll,
-seven outside-viewport, four Settings audio-control, two hostile-row geometry and one short-
-landscape Compendium workspace finding. Recovery correctly did not run. Final7 and its exact
-predecessor bindings remain immutable historical evidence; they cannot be resumed or rewritten.
+Signed clean source `c133c89ead736c9c7414af1e6242acd411339853` supplied Final8 Layout
+787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with all six review PNGs,
+Slice with zero findings and ten screenshots, and full Glass across all 12 viewports with zero
+findings and zero instrument failures. Recovery then ran once for 7,633 ms and stopped terminal
+`fail` at its fixture precondition with only `runtimeCaptureOrder` red, zero automatic retries and
+complete cleanup. Burn-down, exhaustion, close/offline checkpoints, the 20-minute active
+observation, boundary crossing and recovered-state judgment did not run.
 
 The product repair is narrow: only `<=360px` Inventory rows stack their complete copy and wrapping
 badges into one min-width-safe column, retaining every field/action and the 44px button; only the
@@ -36,14 +36,20 @@ focus is product failure. Stable missing Close is product-red, while incoherent 
 replacement is instrument-red. Coverage is credited only after four activations and restored-off
 settlement, with product-blocked viewports tracked as a disjoint terminal state.
 
-The two existing player-visible draft release bullets now include the narrow Inventory and
-Compendium repairs; the v2 draft remains exactly 55 bullets and no production version/release
-identity changed. Browser-free controls pass, but the repaired worktree is not browser-certified
-and has no post-repair full Glass PASS. Live producer/budget test records are rebound to the changed
-product/release bytes without changing numeric rulers, samples, browser authority or retry policy.
-A newly signed clean successor must restart Layout → SceneMemory → Compendium → Slice → Glass →
-recovery. No post-repair chain, publication, hosted, release, deployment, version-bump or external
-authority exists. Edge `151.0.4129.107` / CDP `1.3` remains Final7 provenance only.
+Final8 therefore certifies the bounded Inventory, Compendium and Settings product/oracle repair for
+that exact signed source. Post-run diagnosis found a narrower Recovery instrument mismatch: the
+collector captures the outer state snapshot before the nested UI snapshot, while its precondition
+required the reverse runtime order. Production's monotonic runtime and the separate rendered
+active-play projection were not red, so the stopped run made no Recovery product judgment.
+
+The repair successor changes only that Recovery collector/contract/test chronology and is not yet
+browser-certified. Final8 and all predecessor bindings remain immutable historical exact-source
+evidence and cannot resume after these changed bytes. After the repair is signed, a fresh successor
+must restart Layout → SceneMemory → Compendium → Slice → Glass → recovery. The v2 draft remains
+exactly 55 bullets; numeric rulers, samples, browser authority, retry policy and production
+version/release identity are unchanged. No current-WIP chain, Recovery PASS, 20-minute recovery
+claim, publication, hosted, release, deployment, version-bump or external authority exists. Edge
+`151.0.4129.107` / CDP `1.3` is Final8 provenance only.
 
 Historical calibration remains intact:
 `bb5dc7c7f4372f712778af67ace2b5f81b71b99d`
@@ -118,7 +124,9 @@ Layout and SceneMemory before the preserved Compendium instrument stop. Its repa
 Final6 source `ea845d7…`, which passed Layout, SceneMemory and Compendium before the preserved
 Inventory causal instrument stop. Signed repair `53d030b…` then passed Final7 Layout, SceneMemory,
 Compendium and Slice before Glass stopped terminal-red with 25 findings / zero report-classified instrument failures;
-Recovery did not run. The post-Final7 repair requires a newly signed successor restart.
+Recovery did not run. Signed repair `c133c89…` then passed Final8 Layout, SceneMemory, Compendium,
+Slice and full Glass before Recovery stopped at its sole `runtimeCaptureOrder` precondition. The
+post-run instrument diagnosis and current repair are recorded in the live boundary above.
 
 - ★ **D-COMPENDIUM-COLD-MEMBERSHIP — exact identity replaces a cardinality heuristic.** Final5
   mounted eight distinct fixture keys after a pre-arm cache containing eight distinct Planetside
@@ -151,8 +159,9 @@ Recovery did not run. The post-Final7 repair requires a newly signed successor r
   row, copy and badges are min-width-safe, copy may wrap anywhere and badges wrap from the left.
   Every authored field, badge and action remains present, and the row remains a 44px button. The two
   existing v2 draft release bullets were expanded to tell this and the Compendium repair without
-  adding a 56th bullet. The product CSS has bounded structural/browser-free diagnostic coverage but
-  no post-repair full Glass certificate.
+  adding a 56th bullet. Signed Final8 then passed Slice and full 12-viewport Glass with zero
+  findings for this exact product source. The later Recovery-instrument edit changes current bytes,
+  so that certificate remains exact-source history rather than authority for the current WIP.
 
 - ★ **D-COMPENDIUM-LIST-WORKSPACE — one reserved Close row, one bounded virtual scroller.**
   Final7 Glass showed the generic `.panel h3 { clear: both }` spending an extra header row beneath
@@ -165,8 +174,9 @@ Recovery did not run. The post-Final7 repair requires a newly signed successor r
   missing-reveal and bad-geometry controls remain red. Live Compendium producer is rebound to
   `e858722e6da4c20d0f618aeed23ea9e037feb09cac0887feaf27c6f5430b601f` under budget-file SHA-256
   `726881b8ffec84621a950fa481ca9bc54a0adf4092625976683a40fd6c42ea74`; collector, measurement,
-  numeric ceilings and historical samples are unchanged. No repaired-source Compendium or Glass
-  browser certificate exists.
+  numeric ceilings and historical samples are unchanged. Signed Final8 passed Compendium 78/78 and
+  later full Glass with zero findings for this exact source; the current Recovery-instrument WIP
+  requires a newly signed full-chain restart.
 
 - ★ **D-SETTINGS-NATIVE-AUDIO-ORACLE — independent reveal, trusted receipt and honest failure
   class.** Final7's four small-phone Settings findings came from sampling Sound and Creature voices
@@ -183,8 +193,9 @@ Recovery did not run. The post-Final7 repair requires a newly signed successor r
   Baseline, completed and product-blocked viewport sets are exact and disjoint, and completion is
   earned only after four native toggles plus restored-off settlement. Paired touch/mouse, missing-
   Close, coordinate, settlement, restoration, state/focus and coverage mutants seal both classes.
-  The selftest is browser-free evidence only; Final7 remains red and no post-repair full Glass PASS
-  is claimed.
+  Signed Final8 full Glass exercised this repaired oracle across all 12 viewports with zero findings
+  and zero instrument failures. That exact-source PASS does not certify the later Recovery-
+  instrument WIP.
 
 - ★ **D-PORT-TOOLCHAIN — the master plan's generic quality roles use the repository's executable
   equivalents.** The supplied immutable plan names Playwright, Zod/JSON Schema, ESLint and Prettier.
