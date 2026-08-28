@@ -1,5 +1,13 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
+> **Current Final11 boundary (2026-08-28):** signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
+> passed all five predecessors and the full 20-minute Recovery observation, exact next cycle and
+> recovered UI. Only two stale timing-oracle checks failed; this is instrument-only and changes no
+> audio/product behavior. Final11 is immutable/no-retry and not a Recovery certificate. The next
+> repair is contract-only under the existing 10-second law, binds latest-live close plus exact hide
+> evidence, mutation-tests both directions and requires a fresh full chain. Edge point version is
+> provenance only. Final10 current wording below is historical where superseded.
+
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
 2026-07-30. The dated v2 overlay below matches the current local development candidate and approved
 direction as of **2026-08-28**. It distinguishes the player-live compatibility stings and one
@@ -13,7 +21,7 @@ whole layer undocumented despite being the largest single feature of v1.8.
 
 ---
 
-> **2026-08-28 Final10 evidence and current repair boundary:** signed clean source
+> **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
 > `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
 > Compendium 78/78, Slice with zero findings, and full Glass with zero findings or instrument
 > failures. Recovery ran once and stopped instrument-only at `offline-reopened` after the fixture,
@@ -51,7 +59,8 @@ whole layer undocumented despite being the largest single feature of v1.8.
 > `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 > This documentation changes source identity; its signed clean docs-only descendant is the fresh
-> campaign source. No successor browser certificate exists. That descendant must restart the full
+> campaign source. It later supplied Final11, whose temporal-oracle stop is described above; Final11
+> is not a Recovery certificate. The next signed repair source must restart the full
 > browser chain. Edge
 > `151.0.4129.107` / CDP `1.3` is provenance only, never an audio ruler or rebaseline trigger.
 
@@ -124,16 +133,17 @@ Training DOM ownership, not audio-product defects.
 
 Those focused changed-source checks and negative controls exercised the audio repair, and the
 cumulative v2.0 development draft remains 55 bullets. Any subsequent source change must rerun its
-affected checks before a new signed clean successor. Following the Final10 boundary recorded above,
-the current Recovery-instrument successor and its exact-head Layout → SceneMemory → Compendium →
-Slice → Glass → recovery certificates remain pending.
+affected checks before a new signed clean successor. Final11 supplied exact-head Layout →
+SceneMemory → Compendium → Slice → Glass greens and completed the uninterrupted Recovery
+observation/recovered UI, but its final temporal assessor remained red; a corrected fresh-chain
+Recovery certificate is still pending.
 Browser evidence uses three independent authorities: the root authority accepts compatible
 Chromium-family executables that satisfy CDP `1.3` plus the capability inventory derived from its
 layout/boot sources and records executable, product, revision, user agent, JavaScript version and
 protocol version for every run. Compendium and SceneMemory retain separate source-derived capability
 contracts, producer bindings and fixed rulers. A compatible browser point update is provenance and
-does not itself trigger rebaselining or move thresholds. Post-start audio lifecycle and the
-uninterrupted active-observation/recovery outcome remain unproved. There is no Recovery, hosted,
+does not itself trigger rebaselining or move thresholds. Broader post-start audio lifecycle and the
+corrected assessor-bound Recovery certificate remain unproved. There is no Recovery, hosted,
 HUMAN, release, version or deployment authority.
 
 Broader player-live creature expressions, combat or Guardian cues, ambience, music, recorded assets

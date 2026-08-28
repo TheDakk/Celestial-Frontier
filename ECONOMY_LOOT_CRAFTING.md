@@ -1,6 +1,14 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-> **2026-08-28 Final10 evidence and current repair boundary:** signed clean source
+> **Current Final11 boundary (2026-08-28):** signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
+> passed all five predecessors and the full 20-minute Recovery observation, exact next cycle and
+> recovered UI. Only two stale timing-oracle checks failed; this is instrument-only and changes no
+> economy/loot/crafting behavior. Final11 is immutable/no-retry and not a Recovery certificate. The
+> next repair is contract-only under the existing 10-second law, binds latest-live close plus exact
+> hide evidence, mutation-tests both directions and requires a fresh full chain. Final10 current
+> wording below is historical where superseded.
+
+> **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
 > `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
 > Compendium 78/78 with six PNG bindings, Slice with zero findings and ten screenshots, and full
 > 12-viewport Glass with zero findings or instrument failures, each once with named verification.
@@ -40,7 +48,8 @@
 > `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 > This documentation changes source identity; its signed clean docs-only descendant is the fresh
-> campaign source. No successor browser certificate exists. That descendant must restart
+> campaign source. It later supplied Final11, whose temporal-oracle stop is described above; Final11
+> is not a Recovery certificate. The next signed repair source must restart
 > Layout → SceneMemory → Compendium → Slice → Glass → recovery. Edge `151.0.4129.107` / CDP `1.3`
 > is provenance only and never a calibration or rebaseline trigger.
 

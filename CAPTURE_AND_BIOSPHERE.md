@@ -1,5 +1,15 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
+> **Current Final11 boundary (2026-08-28):** signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
+> passed all five predecessors and Recovery's full 20-minute observation, all 15 outcomes/309
+> samples, exact next-cycle proof and recovered UI. Only `activePlayProjection` and
+> `closeCheckpoint` failed because old logic rejected a valid 20 ms render lag and used a stale raw
+> 5,353 ms gap instead of the causal latest-live 322 ms gap. This is instrument-only, not capture/
+> biosphere product failure or a Recovery certificate. Final11 is immutable/no-retry. The next
+> repair is contract-only under the existing 10-second law, binds exact hide evidence, mutation-
+> tests both directions and requires a fresh signed clean full chain. Final10 current wording below
+> is historical where superseded.
+
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
 ecology/audio overlay matches the player-facing durable Arc 4 capture slice and its remaining
 evidence boundary as of **2026-08-28**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
@@ -8,7 +18,7 @@ well as biosphere recovery, so EPOCH_TICK is a shared knob.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy mechanics, while
 the current v2 authority is the TypeScript port named in the overlay below.
 
-> **2026-08-28 Final10 evidence and current repair boundary:** signed clean source
+> **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
 > `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
 > Compendium 78/78 with six PNG bindings, Slice with zero findings and ten screenshots, and full
 > 12-viewport Glass with zero findings or instrument failures, each once with named verification.
@@ -50,7 +60,8 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 > This documentation changes source identity; its signed clean docs-only descendant is the fresh
-> campaign source. No successor browser certificate exists. That descendant must restart Layout →
+> campaign source. It later supplied Final11, whose temporal-oracle stop is described above; Final11
+> is not a Recovery certificate. The next signed repair source must restart Layout →
 > SceneMemory → Compendium → Slice → Glass
 > → recovery. Edge `151.0.4129.107` / CDP `1.3` is Final10 provenance only; a compatible point
 > update never triggers rebaselining or a threshold change.
@@ -160,7 +171,8 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > passed in 71,713 ms across 12/12 viewports with all 36 Arc 4 outcomes and all planned controls,
 > none blocked/omitted, and zero findings/instrument failures/retries (report SHA-256
 > `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Arc 4 remains
-> **[PARTIAL]** until a real uninterrupted next-cycle recovery observation and the combined HUMAN
+> **[PARTIAL]** until Final11's passed observation receives a green final assessor in a fresh chain,
+> plus the combined HUMAN
 > first-journey review are complete. The legacy formulas below remain parity/design input; current
 > v2 implementation authority is the typed path described here.
 > Those retained Arc 4 reports predate compact Arc 5 V2 and do not certify it. The later exact-input
@@ -178,7 +190,8 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
 > `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
 > exact historical inputs. Current-candidate re-audits are not final. Arc 4
-> remains `[PARTIAL]` for real 20-minute recovery plus HUMAN review, and Arc 5 remains
+> remains `[PARTIAL]`: Final11 passed the real 20-minute observation and recovered UI, but a fresh
+> chain must pass the repaired final assessor and HUMAN review; Arc 5 remains
 > `[PARTIAL]`/infrastructure-only.
 
 ## 0. v2.0 ecology/audio link (one narrow Tame greeting live; broader capture audio absent — 2026-08-26)

@@ -1,5 +1,13 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
+> **Current Final11 boundary (2026-08-28):** signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
+> passed all five predecessors and the full 20-minute Recovery observation, exact next cycle and
+> recovered UI. Only two stale timing-oracle checks failed; this is instrument-only and changes no
+> exploration/ship/loot/companion behavior. Final11 is immutable/no-retry and not a Recovery
+> certificate. The next repair is contract-only under the existing 10-second law, binds latest-live
+> close plus exact hide evidence, mutation-tests both directions and requires a fresh full chain.
+> Final10 current wording below is historical where superseded.
+
 **STATUS:** approved product direction and implementation contract as of **2026-08-28**.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
 exact-instance Inventory, Arc 3 Engineering actions and Arc 4 player-facing capture loop described
@@ -20,7 +28,7 @@ does not silently promote planned behavior into the in-game Guide.
 > include reduced-motion, contrast, mobile heat/frame-budget fallbacks and before/after identity
 > comparisons. No part of this visual pass is implemented or certified yet.
 
-> **2026-08-28 Final10 evidence and current repair boundary:** signed clean source
+> **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
 > `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
 > Compendium 78/78 with six PNG bindings, Slice with zero findings and ten screenshots, and full
 > 12-viewport Glass with zero findings or instrument failures, each once with named verification.
@@ -61,7 +69,8 @@ does not silently promote planned behavior into the in-game Guide.
 > `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 > This documentation changes source identity; its signed clean docs-only descendant is the fresh
-> campaign source. No successor browser certificate exists. That descendant must restart Layout →
+> campaign source. It later supplied Final11, whose temporal-oracle stop is described above; Final11
+> is not a Recovery certificate. The next signed repair source must restart Layout →
 > SceneMemory → Compendium → Slice → Glass → recovery. Edge
 > `151.0.4129.107` / CDP `1.3` is provenance only and never a rebaseline trigger.
 
@@ -246,7 +255,8 @@ does not silently promote planned behavior into the in-game Guide.
 > The internal V2-only successor also outputs exactly five carriers and applies the one-time child-
 > `fed` rule above, but is not public. There is still no live breed/care/Recovery/assignment,
 > Chronicle or companion expedition.
-> Arc 4 remains `[PARTIAL]` only for the genuine 20-minute recovery observation and combined HUMAN
+> Arc 4 remains `[PARTIAL]`: Final11 passed the genuine 20-minute observation and recovered UI, but
+> a fresh chain must pass the repaired final assessor and combined HUMAN
 > first-journey review; no Charter bioscan, shipped release/version or preview/publication is claimed.
 >
 > Final Arc 4 executable evidence binds base `8633bb48fc89c7ae658fa9ed4a7f47b683be102d`
@@ -478,7 +488,7 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
 | Charters / reach language | Stage-aware landfall projection plus committed-only Arc 3 mining/fixed-fabrication goal banking; imported drive/chapter facts still gate reach | Port remaining outcome writers and expose goals/transitions/rewards only with them |
 | Compendium | Virtualized 1,500-row browsing surface with bounded asynchronous thumbnails and selected static detail; list-mode heading and sticky Close share the reserved first header row; native Arc 4 acquisition may add durable rows through Survey, not through the Compendium panel itself | HUMAN Arc 1 art review, then any separately bounded living selected preview |
-| Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current published epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Signed Final10 passed its five serial predecessors and `offline-closed`, then observed a coherent reopened UI → state exhausted sample before the phase-blind Recovery instrument stopped; no offline durable-parity verdict followed, and the active 20-minute/recovered stages did not run | Finish the source-sealed repair, run the full signed successor chain including uninterrupted next-cycle recovery, then complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
+| Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current published epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Historical Final10 stopped before active observation. Final11 passed the full 20-minute observation, exact next cycle and recovered UI, then exposed the final temporal-oracle defect | Finish the contract-only temporal-oracle repair and run a fresh full signed chain, then complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
 | Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; `<=360px` rows stack full visible identity copy above all status badges without changing semantics; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
 | Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, the sole purchasable Deep-Scanner row, eligible fixed-Fabrication actions and the passive ordered ordinary-plus-biome-only orbital **Mineral veins** Survey row after owned `scan1`; connected exact system outputs can update reach | Other five research purchases, fully exceptional slotted/disconnected recipe outputs, HUMAN silhouette and Engineering comprehension, and later authored upgrades/variable construction; the Survey row remains informational and never becomes Mine/reserve/grade/cosmic authority |
 | Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six displayed Research rows and all 62 listed fixed recipes are present; only Deep Scanners and connected-effect recipes with exact costs/preconditions and capacity/revision headroom are actionable and receipt-backed | Fully exceptional slotted/disconnected outputs, authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing |

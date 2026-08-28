@@ -1,9 +1,17 @@
 # Development Preview — Separate-Origin Human Playtesting
 
+> **Current Final11 boundary (2026-08-28):** signed clean source `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
+> passed all five responsive predecessors and the full 20-minute Recovery observation, exact next
+> cycle and recovered UI. Two stale timing-oracle checks alone failed; this is instrument-only, not
+> product/HUMAN/release authority. Final11 is immutable/no-retry. A contract-only repair under the
+> existing 10-second law must bind close to latest exhausted live runtime and exact committed/lost
+> hide witness, mutation-test both directions and restart the signed clean full chain. Edge point
+> version remains provenance only. Final10 current wording below is historical where superseded.
+
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
 as of 2026-08-28. This is not a release record.
 
-**Current campaign boundary (2026-08-28):** the playable implementation extends through the local
+**Historical Final10 campaign boundary (superseded by Final11 above):** the playable implementation extends through the local
 Arc 4.5 Survey → Gather → Build → Tame → ship improvement → farther reach → Return slice, but it is
 still a review candidate rather than a preview candidate. Signed clean Final10 source
 `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, source-bound SceneMemory 42/42,
@@ -44,14 +52,15 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
 `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
-This documentation changes source identity; its signed clean docs-only descendant is the fresh
-campaign source. No successor browser certificate exists. That descendant must restart
+Those documentation bytes changed source identity; their signed clean docs-only descendant supplied
+Final11, whose temporal-oracle stop is described above. Final11 is not a Recovery certificate. The
+next signed repair source must restart
 Layout → SceneMemory → Compendium → Slice → Glass → recovery with fresh IDs. Nothing in this
 campaign has been packaged, published, pushed, hosted-tested, merged, versioned or released. Until
 one clean exact final head passes every required local gate and receives separate exact-SHA
 publication authority, no development-preview candidate exists. `--allow-dirty` remains local
 diagnosis only and can never become a promotion artifact. Edge `151.0.4129.107` / CDP `1.3` is
-Final10 provenance only; a compatible point update never triggers rebaselining or threshold changes.
+Final11 provenance only; a compatible point update never triggers rebaselining or threshold changes.
 
 ## Separate-origin requirement; approved branch site
 
