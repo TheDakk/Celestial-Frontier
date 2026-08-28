@@ -2566,18 +2566,14 @@ const assessConvergenceRelease = ({
 };
 
 const exactReleasedStaleActivePlayProjection = (raw, ui, convergenceWitness) => {
-  const renderedActivePlayMs = renderedActivePlayMsOf(ui);
-  return exactUiActivePlayRuntimeLagAgainst(ui, convergenceWitness?.before?.runtime)
-    && counter(raw?.authority?.activePlayMs)
-    && raw.authority.activePlayMs <= renderedActivePlayMs;
+  const runtime = convergenceWitness?.before?.runtime;
+  return exactRuntimeAuthorityAtOrAfterRaw(raw, runtime)
+    && exactUiActivePlayRuntimeLagAgainst(ui, runtime);
 };
 
 const exactActivePlayProjection = (raw, ui) => {
-  const renderedActivePlayMs = renderedActivePlayMsOf(ui);
   return exactRuntimeAtOrAfterRaw(raw, ui)
-    && exactUiActivePlayRuntimeLag(ui)
-    && counter(raw?.authority?.activePlayMs)
-    && raw.authority.activePlayMs <= renderedActivePlayMs;
+    && exactUiActivePlayRuntimeLag(ui);
 };
 
 const exactRuntimeCaptureOrder = (raw, state, ui, direction) => {
@@ -4839,6 +4835,22 @@ const exactStateUiDocumentBinding = (state, ui) => {
     && persistenceStateOf(ui)?.documentToken === stateToken;
 };
 
+const exactCommittedHideCheckpoint = (raw, state) => {
+  const persistence = persistenceStateOf(state);
+  const witness = persistence?.hideWitness;
+  return exactKeys(witness, [
+    'schema', 'checkpoint', 'checkpointError', 'visibilityAttempted',
+    'visibilityOutcome', 'visibilityError',
+  ])
+    && witness.schema === 'cf-v2-f4-hide/v1'
+    && witness.checkpoint === 'committed'
+    && witness.checkpointError === null
+    && witness.visibilityAttempted === true
+    && witness.visibilityOutcome === 'lost'
+    && witness.visibilityError === null
+    && persistence.lastOutcome === `committed:${raw?.revision}`;
+};
+
 const exhaustedPresentationChecks = ({
   exhaustedRaw, exhaustedState, exhaustedUi, suppressed,
 }) => {
@@ -4944,6 +4956,14 @@ export const assessArc4ExhaustionRecovery = ({
   const exhaustedCycle = exhaustedUi?.budget?.cycle;
   const recoveredReady = recoveredUi?.rows?.filter((row) => row?.status === 'ready') ?? [];
   const closedRuntime = persistenceStateOf(closedState)?.runtime;
+  const exhaustedStateActivePlayMs = persistenceStateOf(exhaustedState)
+    ?.runtime?.activePlayMs;
+  const exhaustedUiActivePlayMs = persistenceStateOf(exhaustedUi)
+    ?.runtime?.activePlayMs;
+  const latestExhaustedLiveActivePlayMs = counter(exhaustedStateActivePlayMs)
+      && counter(exhaustedUiActivePlayMs)
+    ? Math.max(exhaustedStateActivePlayMs, exhaustedUiActivePlayMs)
+    : Number.NaN;
   const exhaustedDocumentToken = persistenceStateOf(exhaustedState)?.documentToken;
   const closedDocumentToken = persistenceStateOf(closedState)?.documentToken;
   const offlineDocumentToken = persistenceStateOf(offlineState)?.documentToken;
@@ -5016,11 +5036,14 @@ export const assessArc4ExhaustionRecovery = ({
       && closedRuntime?.leaseOwned === false
       && closedRuntime?.accruing === false
       && exactRuntimeAtOrAfterRaw(closedRaw, closedState)
-      && closedRaw?.authority?.activePlayMs >= exhaustedRaw?.authority?.activePlayMs
+      && closedRuntime.activePlayMs === closedRaw?.authority?.activePlayMs
+      && counter(latestExhaustedLiveActivePlayMs)
+      && closedRaw?.authority?.activePlayMs >= latestExhaustedLiveActivePlayMs
       && closureTimesOrdered
-      && closedRaw?.authority?.activePlayMs - exhaustedRaw?.authority?.activePlayMs
+      && closedRaw?.authority?.activePlayMs - latestExhaustedLiveActivePlayMs
         <= closure.checkpointCompletedAtMonotonicMs
           - closure.checkpointStartedAtMonotonicMs + 1_000
+      && exactCommittedHideCheckpoint(closedRaw, closedState)
       && sameCaptureAuthority(exhaustedRaw, closedRaw)
       && same(receiptBytes(exhaustedRaw), receiptBytes(closedRaw))
       && same(exhaustedProgress, closedProgress),
@@ -6609,32 +6632,66 @@ const publicationReloadUiSelftest = uiSnapshot(
   publicationReloadCaptureSelftest, { used: 1, raw: hitRawSelftest, boot: true },
 );
 
+/* Mirror the Final11 capture chronology exactly. Durable evidence was read
+   first; the live State/UI captures legitimately advanced 5,029/5,031 ms;
+   the committed hide checkpoint then landed 322 ms after the latest UI. */
+const exhaustedActivePlaySelftest = 79_709;
+const exhaustedRenderedActivePlaySelftest = 84_697;
+const exhaustedStateActivePlaySelftest = 84_738;
+const exhaustedUiActivePlaySelftest = 84_740;
+const checkpointDurationSelftest = 2;
+const closedActivePlaySelftest = 85_062;
+const closeCheckpointBoundaryActivePlaySelftest
+  = exhaustedUiActivePlaySelftest + checkpointDurationSelftest + 1_000;
+const recoveredRawActivePlaySelftest = 1_285_118;
+const recoveredRenderedActivePlaySelftest = 1_285_098;
+const recoveredStateActivePlaySelftest = 1_285_402;
+const recoveredUiActivePlaySelftest = 1_285_404;
 const exhaustedRawSelftest = makeDurable(exhaustedMirror(), {
-  revision: 16, activePlayMs: ARC4_ACTIVE_PLAY_CYCLE_MS - 10_000,
+  revision: 21, activePlayMs: exhaustedActivePlaySelftest,
 });
 const exhaustedDocumentTokenSelftest = 'selftest-exhausted-document-token';
 const reopenedDocumentTokenSelftest = 'selftest-reopened-document-token';
 const exhaustedCaptureSelftest = appCaptureState(exhaustedRawSelftest);
 const exhaustedStateSelftest = appState(exhaustedRawSelftest, exhaustedCaptureSelftest);
 exhaustedStateSelftest.persistence.documentToken = exhaustedDocumentTokenSelftest;
+exhaustedStateSelftest.persistence.runtime.activePlayMs
+  = exhaustedStateActivePlaySelftest;
 const depletedStatusesSelftest = {
   tame: 'depleted', scavenge: 'depleted', sample: 'depleted',
 };
 const ineligibleStatusesSelftest = {
   tame: 'unavailable', scavenge: 'unavailable', sample: 'unavailable',
 };
-const exhaustedUiSelftest = uiSnapshot(exhaustedCaptureSelftest, {
-  used: 16, statuses: depletedStatusesSelftest, raw: exhaustedRawSelftest,
-});
+const exhaustedUiSelftest = withRuntimeActivePlaySelftest(
+  withUiActivePlaySelftest(
+    uiSnapshot(exhaustedCaptureSelftest, {
+      used: 16, statuses: depletedStatusesSelftest, raw: exhaustedRawSelftest,
+    }),
+    exhaustedRenderedActivePlaySelftest,
+  ),
+  exhaustedUiActivePlaySelftest,
+);
 exhaustedUiSelftest.persistence.documentToken = exhaustedDocumentTokenSelftest;
-const closedRawSelftest = structuredClone(exhaustedRawSelftest);
+const closedRawSelftest = makeDurable(exhaustedMirror(), {
+  revision: 22, activePlayMs: closedActivePlaySelftest,
+});
 const closedCaptureSelftest = appCaptureState(closedRawSelftest);
 const closedStateSelftest = appState(closedRawSelftest, closedCaptureSelftest);
 closedStateSelftest.persistence.documentToken = exhaustedDocumentTokenSelftest;
 Object.assign(closedStateSelftest.persistence.runtime, {
   visible: false, answerable: false, leaseOwned: false, accruing: false,
 });
-const offlineRawSelftest = structuredClone(exhaustedRawSelftest);
+Object.assign(closedStateSelftest.persistence, {
+  lastOutcome: `committed:${closedRawSelftest.revision}`,
+  hideWitness: {
+    schema: 'cf-v2-f4-hide/v1',
+    checkpoint: 'committed', checkpointError: null,
+    visibilityAttempted: true, visibilityOutcome: 'lost',
+    visibilityError: null,
+  },
+});
+const offlineRawSelftest = structuredClone(closedRawSelftest);
 const offlineCaptureSelftest = appCaptureState(offlineRawSelftest);
 const offlineStateSelftest = appState(offlineRawSelftest, offlineCaptureSelftest, {
   boot: true,
@@ -6651,7 +6708,7 @@ Object.assign(offlineUiSelftest.persistence.runtime, {
   visible: false, answerable: false, leaseOwned: false, accruing: false,
 });
 const recoveredRawSelftest = makeDurable(exhaustedMirror(), {
-  revision: 17, activePlayMs: ARC4_ACTIVE_PLAY_CYCLE_MS,
+  revision: 58, activePlayMs: recoveredRawActivePlaySelftest,
 });
 const recoveredCaptureSelftest = appCaptureState(recoveredRawSelftest, {
   lastResult: null,
@@ -6660,9 +6717,17 @@ const recoveredStateSelftest = appState(recoveredRawSelftest, recoveredCaptureSe
   boot: true,
 });
 recoveredStateSelftest.persistence.documentToken = reopenedDocumentTokenSelftest;
-const recoveredUiSelftest = uiSnapshot(recoveredCaptureSelftest, {
-  used: 0, cycle: 1, raw: recoveredRawSelftest, boot: true,
-});
+recoveredStateSelftest.persistence.runtime.activePlayMs
+  = recoveredStateActivePlaySelftest;
+const recoveredUiSelftest = withRuntimeActivePlaySelftest(
+  withUiActivePlaySelftest(
+    uiSnapshot(recoveredCaptureSelftest, {
+      used: 0, cycle: 1, raw: recoveredRawSelftest, boot: true,
+    }),
+    recoveredRenderedActivePlaySelftest,
+  ),
+  recoveredUiActivePlaySelftest,
+);
 recoveredUiSelftest.persistence.documentToken = reopenedDocumentTokenSelftest;
 const suppressionDocumentTokenSelftest = exhaustedDocumentTokenSelftest;
 const suppressionSampleSelftest = {
@@ -6693,7 +6758,8 @@ Object.assign(exhaustedStateSelftest.persistence, {
 });
 exhaustedStateSelftest.persistence.runtime.leaseHeartbeat = 1_000;
 exhaustedStateSelftest.persistence.ecology = {
-  schema: 'selftest-ecology', observedActivePlayMs: ARC4_ACTIVE_PLAY_CYCLE_MS - 10_000,
+  schema: 'selftest-ecology',
+  observedActivePlayMs: exhaustedStateActivePlaySelftest,
   checkpointInFlight: false,
 };
 const suppressionBeforeStateSelftest = structuredClone(exhaustedStateSelftest);
@@ -7882,6 +7948,37 @@ const laggedPreconditionBundleSelftest = {
   state: withRuntimeActivePlaySelftest(beforeStateSelftest, 25_000),
   ui: withUiActivePlaySelftest(beforeUiSelftest, 20_000),
 };
+const rawAheadRenderedActivePlaySelftest = 9_000;
+const rawAheadRenderedUiSelftest = withRuntimeActivePlaySelftest(
+  withUiActivePlaySelftest(
+    beforeUiSelftest, rawAheadRenderedActivePlaySelftest - 20,
+  ),
+  rawAheadRenderedActivePlaySelftest + 306,
+);
+const rawAheadRenderedPreconditionBundleSelftest = {
+  ...preconditionBundleSelftest,
+  raw: withAuthorityActivePlaySelftest(
+    beforeRawSelftest, rawAheadRenderedActivePlaySelftest,
+  ),
+  state: withRuntimeActivePlaySelftest(
+    beforeStateSelftest, rawAheadRenderedActivePlaySelftest + 308,
+  ),
+  ui: rawAheadRenderedUiSelftest,
+};
+const rawAheadReleasedConvergenceWitnessSelftest = {
+  before: {
+    runtime: convergenceRuntimeFor(
+      rawAheadRenderedPreconditionBundleSelftest.raw,
+      rawAheadRenderedActivePlaySelftest + 306,
+      true,
+    ),
+  },
+};
+const rawAheadReleasedRuntimeBelowRawSelftest = structuredClone(
+  rawAheadReleasedConvergenceWitnessSelftest,
+);
+rawAheadReleasedRuntimeBelowRawSelftest.before.runtime.activePlayMs
+  = rawAheadRenderedActivePlaySelftest - 1;
 const nonzeroHitRawSelftest = withAuthorityActivePlaySelftest(
   hitRawSelftest, nonzeroActivePlaySelftest,
 );
@@ -7961,7 +8058,7 @@ const exhaustionBundleSelftest = {
     reopenedDocumentToken: reopenedDocumentTokenSelftest,
     closeAccepted: true, targetDestroyedObserved: true, closedTargetAbsent: true,
     checkpointStartedAtMonotonicMs: 1_000,
-    checkpointCompletedAtMonotonicMs: 1_100,
+    checkpointCompletedAtMonotonicMs: 1_000 + checkpointDurationSelftest,
     closeRequestedAtMonotonicMs: 1_100,
     closeConfirmedAtMonotonicMs: 1_120,
     targetDestroyedEvent: {
@@ -7981,6 +8078,24 @@ const exhaustionBundleSelftest = {
   recoveredUi: recoveredUiSelftest,
 };
 
+const withClosedAndOfflineActivePlaySelftest = (bundle, activePlayMs) => {
+  const next = structuredClone(bundle);
+  next.closedRaw = withAuthorityActivePlaySelftest(
+    next.closedRaw, activePlayMs,
+  );
+  next.closedState.persistence.runtime.activePlayMs = activePlayMs;
+  next.offlineRaw = withAuthorityActivePlaySelftest(
+    next.offlineRaw, activePlayMs,
+  );
+  next.offlineState.persistence.runtime.activePlayMs = activePlayMs;
+  next.offlineUi = withUiActivePlaySelftest(next.offlineUi, activePlayMs);
+  return next;
+};
+const closeCheckpointBoundaryBundleSelftest
+  = withClosedAndOfflineActivePlaySelftest(
+    exhaustionBundleSelftest, closeCheckpointBoundaryActivePlaySelftest,
+  );
+
 const positiveSelftestAssessments = Object.freeze({
   durable: assessArc4DurableEvidence(beforeRawSelftest),
   arc5TypedDeltaDurable: assessArc4DurableEvidence(arc5TypedDeltaRawSelftest),
@@ -7990,6 +8105,9 @@ const positiveSelftestAssessments = Object.freeze({
   ),
   preconditionDurableLag: assessArc4CapturePrecondition(
     laggedPreconditionBundleSelftest,
+  ),
+  preconditionRawAheadRendered: assessArc4CapturePrecondition(
+    rawAheadRenderedPreconditionBundleSelftest,
   ),
   pending: assessArc4CapturePendingNoOptimism(pendingBundleSelftest),
   hit: assessArc4CommittedHit(hitBundleSelftest),
@@ -8018,6 +8136,9 @@ const positiveSelftestAssessments = Object.freeze({
     ),
   exhaustionOnly: assessArc4Exhaustion(exhaustionBundleSelftest),
   exhaustion: assessArc4ExhaustionRecovery(exhaustionBundleSelftest),
+  exhaustionCloseBoundary: assessArc4ExhaustionRecovery(
+    closeCheckpointBoundaryBundleSelftest,
+  ),
   geometry: assessArc4CaptureCardGeometryFocus(geometryBundleSelftest),
 });
 
@@ -8164,6 +8285,11 @@ const negativePreconditionDownwardRuntimeSelftest = structuredClone(
   nonzeroPreconditionBundleSelftest,
 );
 negativePreconditionDownwardRuntimeSelftest.state.persistence.runtime.activePlayMs = 0;
+const negativePreconditionUiBelowRawSelftest = structuredClone(
+  rawAheadRenderedPreconditionBundleSelftest,
+);
+negativePreconditionUiBelowRawSelftest.ui.persistence.runtime.activePlayMs
+  = rawAheadRenderedActivePlaySelftest - 1;
 const negativePreconditionHeadingSelftest = structuredClone(preconditionBundleSelftest);
 negativePreconditionHeadingSelftest.ui.planetsideHeading = 'PLANETSIDE — Wrong';
 const negativePreconditionCardSelftest = structuredClone(preconditionBundleSelftest);
@@ -8679,6 +8805,60 @@ negativeExhaustionLiveSelftest.suppressed.beforeState.capture.revision
   = negativeExhaustionLiveRevision;
 negativeExhaustionLiveSelftest.suppressed.afterState.capture.revision
   = negativeExhaustionLiveRevision;
+const closeCheckpointStateMutationSelftest = (mutate) => {
+  const next = structuredClone(exhaustionBundleSelftest);
+  mutate(next.closedState.persistence);
+  return next;
+};
+const negativeCloseBeforeLatestLiveSelftest
+  = withClosedAndOfflineActivePlaySelftest(
+    exhaustionBundleSelftest, exhaustedActivePlaySelftest + 1_000,
+  );
+const negativeCloseLatencyBoundarySelftest
+  = withClosedAndOfflineActivePlaySelftest(
+    closeCheckpointBoundaryBundleSelftest,
+    closeCheckpointBoundaryActivePlaySelftest + 1,
+  );
+const negativeCloseRuntimeMismatchSelftest
+  = closeCheckpointStateMutationSelftest((persistence) => {
+    persistence.runtime.activePlayMs += 1;
+  });
+const negativeCloseWitnessSchemaSelftest
+  = closeCheckpointStateMutationSelftest((persistence) => {
+    persistence.hideWitness.schema = 'cf-v2-f4-hide/mutated';
+  });
+const negativeCloseWitnessCheckpointSelftest
+  = closeCheckpointStateMutationSelftest((persistence) => {
+    persistence.hideWitness.checkpoint = 'skipped';
+  });
+const negativeCloseWitnessCheckpointErrorSelftest
+  = closeCheckpointStateMutationSelftest((persistence) => {
+    persistence.hideWitness.checkpointError = 'selftest-error';
+  });
+const negativeCloseWitnessAttemptedSelftest
+  = closeCheckpointStateMutationSelftest((persistence) => {
+    persistence.hideWitness.visibilityAttempted = false;
+  });
+const negativeCloseWitnessOutcomeSelftest
+  = closeCheckpointStateMutationSelftest((persistence) => {
+    persistence.hideWitness.visibilityOutcome = 'retained';
+  });
+const negativeCloseWitnessVisibilityErrorSelftest
+  = closeCheckpointStateMutationSelftest((persistence) => {
+    persistence.hideWitness.visibilityError = 'selftest-error';
+  });
+const negativeCloseWitnessExtraKeySelftest
+  = closeCheckpointStateMutationSelftest((persistence) => {
+    persistence.hideWitness.unexpected = true;
+  });
+const negativeCloseWitnessMissingKeySelftest
+  = closeCheckpointStateMutationSelftest((persistence) => {
+    delete persistence.hideWitness.visibilityError;
+  });
+const negativeCloseOutcomeSelftest
+  = closeCheckpointStateMutationSelftest((persistence) => {
+    persistence.lastOutcome = 'committed:999';
+  });
 const negativeGeometrySelftest = structuredClone(geometryBundleSelftest);
 negativeGeometrySelftest.controls[1].scrollOffset = structuredClone(
   negativeGeometrySelftest.controls[0].scrollOffset,
@@ -9560,6 +9740,76 @@ const isolatedNegativeSelftests = Object.freeze({
       negativePublicationExcessiveUiLagSelftest,
     ),
   }),
+  closeBeforeLatestLive: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseBeforeLatestLiveSelftest,
+    ),
+  }),
+  closeLatencyBoundary: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseLatencyBoundarySelftest,
+    ),
+  }),
+  closeRuntimeMismatch: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseRuntimeMismatchSelftest,
+    ),
+  }),
+  closeWitnessSchema: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseWitnessSchemaSelftest,
+    ),
+  }),
+  closeWitnessCheckpoint: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseWitnessCheckpointSelftest,
+    ),
+  }),
+  closeWitnessCheckpointError: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseWitnessCheckpointErrorSelftest,
+    ),
+  }),
+  closeWitnessAttempted: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseWitnessAttemptedSelftest,
+    ),
+  }),
+  closeWitnessOutcome: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseWitnessOutcomeSelftest,
+    ),
+  }),
+  closeWitnessVisibilityError: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseWitnessVisibilityErrorSelftest,
+    ),
+  }),
+  closeWitnessExtraKey: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseWitnessExtraKeySelftest,
+    ),
+  }),
+  closeWitnessMissingKey: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(
+      negativeCloseWitnessMissingKeySelftest,
+    ),
+  }),
+  closeOutcome: Object.freeze({
+    expected: 'closeCheckpoint',
+    result: assessArc4ExhaustionRecovery(negativeCloseOutcomeSelftest),
+  }),
   exhaustion: Object.freeze({
     expected: Object.freeze(['genuineClosureReload', 'offlineDoesNotRecover']),
     result: assessArc4ExhaustionRecovery(negativeExhaustionSelftest),
@@ -9816,6 +10066,12 @@ if (selftestSourceClosureFailures.length > 0) {
   throw new Error(`Arc 4 Pertar source-closure selftest failed: ${selftestSourceClosureFailures.join(', ')}`);
 }
 
+const exhaustedLatestLiveActivePlaySelftest = Math.max(
+  persistenceStateOf(exhaustedStateSelftest)?.runtime?.activePlayMs,
+  persistenceStateOf(exhaustedUiSelftest)?.runtime?.activePlayMs,
+);
+const closeCheckpointAllowanceSelftest = checkpointDurationSelftest + 1_000;
+
 if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
   || sha256(canonicalToolJson(ARC4_OWNERSHIP_EXTENSION_TARGETS))
     !== 'cb4bf8df5f5eaca8f57b842a2187c5c5791516dc7d4e389d58f9ab729b15b026'
@@ -9915,6 +10171,56 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
     ?.runtime?.activePlayMs !== 20_000
   || persistenceStateOf(laggedPreconditionBundleSelftest.state)
     ?.runtime?.activePlayMs !== 25_000
+  || rawAheadRenderedPreconditionBundleSelftest.raw.authority.activePlayMs
+    <= renderedActivePlayMsOf(rawAheadRenderedPreconditionBundleSelftest.ui)
+  || persistenceStateOf(rawAheadRenderedPreconditionBundleSelftest.ui)
+    ?.runtime?.activePlayMs !== rawAheadRenderedActivePlaySelftest + 306
+  || persistenceStateOf(rawAheadRenderedPreconditionBundleSelftest.state)
+    ?.runtime?.activePlayMs !== rawAheadRenderedActivePlaySelftest + 308
+  || exactReleasedStaleActivePlayProjection(
+    rawAheadRenderedPreconditionBundleSelftest.raw,
+    rawAheadRenderedPreconditionBundleSelftest.ui,
+    rawAheadReleasedConvergenceWitnessSelftest,
+  ) !== true
+  || exactUiActivePlayRuntimeLagAgainst(
+    rawAheadRenderedPreconditionBundleSelftest.ui,
+    rawAheadReleasedRuntimeBelowRawSelftest.before.runtime,
+  ) !== true
+  || exactReleasedStaleActivePlayProjection(
+    rawAheadRenderedPreconditionBundleSelftest.raw,
+    rawAheadRenderedPreconditionBundleSelftest.ui,
+    rawAheadReleasedRuntimeBelowRawSelftest,
+  ) !== false
+  || exactUiActivePlayRuntimeLag(
+    negativePreconditionUiBelowRawSelftest.ui,
+  ) !== true
+  || exactActivePlayProjection(
+    negativePreconditionUiBelowRawSelftest.raw,
+    negativePreconditionUiBelowRawSelftest.ui,
+  ) !== false
+  || renderedActivePlayMsOf(exhaustedUiSelftest)
+    !== exhaustedRenderedActivePlaySelftest
+  || exhaustedLatestLiveActivePlaySelftest !== exhaustedUiActivePlaySelftest
+  || closedActivePlaySelftest - exhaustedActivePlaySelftest !== 5_353
+  || closedActivePlaySelftest - exhaustedLatestLiveActivePlaySelftest !== 322
+  || exhaustionBundleSelftest.closure.checkpointCompletedAtMonotonicMs
+      - exhaustionBundleSelftest.closure.checkpointStartedAtMonotonicMs
+    !== checkpointDurationSelftest
+  || closedActivePlaySelftest - exhaustedActivePlaySelftest
+    <= closeCheckpointAllowanceSelftest
+  || closedActivePlaySelftest - exhaustedLatestLiveActivePlaySelftest
+    > closeCheckpointAllowanceSelftest
+  || closeCheckpointBoundaryActivePlaySelftest
+      - exhaustedLatestLiveActivePlaySelftest
+    !== closeCheckpointAllowanceSelftest
+  || negativeCloseBeforeLatestLiveSelftest.closedRaw.authority.activePlayMs
+      - exhaustedActivePlaySelftest
+    !== 1_000
+  || negativeCloseBeforeLatestLiveSelftest.closedRaw.authority.activePlayMs
+    >= exhaustedLatestLiveActivePlaySelftest
+  || negativeCloseLatencyBoundarySelftest.closedRaw.authority.activePlayMs
+      - exhaustedLatestLiveActivePlaySelftest
+    !== closeCheckpointAllowanceSelftest + 1
   || arc4CaptureUiSnapshotComplete({}) !== false
   || arc4BrowserOutcomePasses({
     released: true, assessment: positiveSelftestAssessments.geometry,

@@ -1,15 +1,18 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **Current Final11 boundary (2026-08-28):** signed clean source `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
-> passed all five responsive predecessors and Recovery's complete 20-minute observation, all 15
-> outcomes/309 samples, exact next-cycle proof and recovered UI. Recovery then failed only two
-> timing-oracle checks: a valid 20 ms render lag and a stale-raw 5,353 ms comparison instead of the
-> causal latest-live 322 ms gap. This is instrument-only, not product failure or a Recovery
-> certificate. Final11 is immutable/no-retry. The next repair is contract-only under the existing
-> 10-second runtime law, binds close to latest exhausted live runtime plus the exact committed/lost
-> hide witness, mutation-tests both directions, and requires a fresh signed clean full chain. No
-> product/version/ruler/browser change; Edge point version remains provenance only. Final10
-> “current” wording below is historical where superseded.
+> **Current Final11 assessor-repair boundary (2026-08-28):** signed clean source
+> `1ca67156e27d6bd58a324e33b0e6b752adf568bc` and its Recovery carrier remain immutable: stored
+> `fail`, one attempt, zero retries, unchanged hashes, and exactly two stored false checks
+> (`activePlayProjection` and `closeCheckpoint`). The current repaired assessor independently
+> replays that carrier's unchanged `recoveryBundle` wholly green. Durable raw may lead rendered UI,
+> while rendered time remains at or before runtime and within the existing 10-second lag bound and
+> the exact raw/runtime authority tuple stays bound. Close now uses the latest exhausted live
+> state/UI time, the exact six-key committed/lost hide witness and the committed revision outcome.
+> Controls cover Final11's reported 20 ms/322 ms geometry, the exact close boundary and +1 ms,
+> future/excessive render lag and every witness field. This is assessor/tests/docs only: no product,
+> save, version, ruler or browser-policy change. Final11 is still not a Recovery certificate; a
+> fresh signed clean full chain remains required. Final10 “current” wording below is historical
+> where superseded.
 
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the source. When in doubt, source wins. The long-form
@@ -102,8 +105,9 @@
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 > Those documentation bytes changed source identity; their signed clean docs-only descendant
 > supplied Final11, whose temporal-oracle stop is described above. Final11 is not a Recovery
-> certificate. Final10 is immutable and cannot resume;
-> the next signed clean contract-repair source must restart the full chain at Layout
+> certificate. Its unchanged bundle now replays green under the current repaired assessor while the
+> stored failure remains intact. Final10 is immutable and cannot resume; the repaired signed clean
+> source must restart the full chain at Layout
 > with fresh IDs and every named verifier. Edge `151.0.4129.107` / CDP `1.3` is Final11 run
 > provenance only: a compatible point update never triggers a rebaseline, recalibration or threshold
 > change. No Recovery certificate, whole-Gate, hosted, HUMAN or release authority exists.
@@ -382,8 +386,9 @@
 > exact report must pass named verification with the same ID; only then may recovery consume both
 > exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
 > nonzero, red or instrument result and do not start a successor or automatically retry.
-> Final11 completed the uninterrupted real 20-minute observation and recovered UI; the Recovery
-> certificate remains open because the final assessor was red. The former Compendium ruler under
+> Final11 completed the uninterrupted real 20-minute observation and recovered UI and remains stored
+> final-assessor red. Its unchanged bundle replays green under the repaired assessor; only a fresh
+> full chain can earn the Recovery certificate. The former Compendium ruler under
 > measurement authority `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`
 > and producer authority `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`
 > remains truthful historical evidence.
@@ -560,8 +565,8 @@
 > `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Both bind base
 > `8633bb48fc89c7ae658fa9ed4a7f47b683be102d`, status `61fc362e…` and exact-input dirty tree
 > `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. The uninterrupted
-> Final11's 20-minute observation passed; the repaired final-assessor certificate and HUMAN review
-> remain open. No Charter bioscan, targeted
+> Final11's 20-minute observation passed and its unchanged bundle replays green under the repaired
+> assessor; a fresh-chain Recovery certificate and HUMAN review remain open. No Charter bioscan, targeted
 > preview, hosted, release/version, `rnSeen` or preview/publication authority is claimed. Arc 5A now
 > activates the receipt-bound compact ownership-v2 representation across boot, Training and capture.
 > The manifest binds the exact Arc 4 source, canonical delta and reconstructed target while the four
@@ -2991,16 +2996,20 @@ once for 1,291,034 ms and passed all 15 observation outcomes across 309 samples,
 failed only `activePlayProjection` and `closeCheckpoint`: the former rejected a valid 20 ms render
 lag within the existing 10-second runtime law, and the latter compared close against a stale raw
 capture instead of the latest exhausted live runtime. Cleanup passed and no retry occurred.
-Final11 is immutable and is not a Recovery certificate or product failure.
+Final11 remains immutable stored `fail`, with unchanged hashes, one attempt, zero retries and those
+two stored false checks; it is not a Recovery certificate or product failure.
 
-The next change is assessor-only: accept bounded rendered lag while retaining raw/rendered ≤ live
-runtime, and bind close to the latest exhausted live runtime plus the exact committed/lost hide
-witness. Positive and isolated negative controls must cover both directions. The not-yet-created
-signed clean contract-repair source must restart the complete chain from Layout with fresh IDs and
-every named verifier. Numeric rulers, historical samples, browser authority and retry/release policy
-remain unchanged. Edge `151.0.4129.107` / CDP `1.3` is Final11 provenance only; a compatible point
-update never causes a rebaseline, recalibration or threshold move. No Recovery certificate,
-hosted/HUMAN whole-Gate or release authority exists.
+The repaired current assessor independently replays Final11's unchanged `recoveryBundle` wholly
+green. It permits durable raw to lead rendered UI while rendered remains at or before runtime and
+within the existing 10-second bound, retaining the exact raw/runtime authority tuple. Close binds
+the latest exhausted live state/UI time, exact six-key committed/lost hide witness and committed
+revision outcome. Isolated controls cover the reported 20 ms/322 ms geometry, exact boundary/+1,
+future/excessive lag and every witness field. The assessor/tests/docs-only repaired source must
+restart the complete chain from Layout with fresh IDs and every named verifier. Numeric rulers,
+historical samples, product/save bytes, browser authority and retry/release policy remain unchanged.
+Edge `151.0.4129.107` / CDP `1.3` is Final11 provenance only; a compatible point update never causes
+a rebaseline, recalibration or threshold move. No Recovery certificate, hosted/HUMAN whole-Gate or
+release authority exists.
 
 **Historical Final10 predecessor:** signed `4405fb2…` passed the same five responsive predecessors
 and Recovery through closed/offline proof before the phase-blind `offline-reopened` oracle rejected
@@ -3034,8 +3043,8 @@ and the 16-attempt burn-down. Final10 preserves another five-green-predecessor c
 Recovery through closed/offline proof before its `offline-reopened` instrument stop. At that
 historical Final10 boundary, signed implementation/evidence repair `3fbfcd5…` had no successor
 browser result, and the synchronized
-signed clean docs-only descendant supplied immutable Final11; the next signed clean contract-repair
-source must run a fresh chain. No hosted, HUMAN,
+signed clean docs-only descendant supplied immutable Final11. The current repaired assessor replays
+its unchanged bundle green, but the repaired source must run a fresh chain. No hosted, HUMAN,
 whole-Gate, release, version, preview/publication or deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost

@@ -1,14 +1,15 @@
 # Celestial Frontier — UI / Presentation System
 
-> **Current Final11 boundary (2026-08-28):** signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
-> passed all five predecessors and Recovery's full 20-minute observation, all 15 outcomes/309
-> samples, exact next-cycle proof and recovered UI. Only `activePlayProjection` and
-> `closeCheckpoint` failed because old logic rejected a valid 20 ms render lag and used stale raw
-> (5,353 ms) instead of the causal latest-live 322 ms gap. This is instrument-only, not UI/product
-> failure or a Recovery certificate. Final11 is immutable/no-retry. The next repair is contract-only
-> under the existing 10-second law, binds exact committed/lost hide evidence, mutation-tests both
-> directions and requires a fresh signed clean full chain. Edge point version remains provenance
-> only. Final10 current wording below is historical where superseded.
+> **Current Final11 assessor-repair boundary (2026-08-28):** Final11 remains immutable stored
+> `fail` with unchanged hashes, one attempt, zero retries and only `activePlayProjection` /
+> `closeCheckpoint` false. The current repaired assessor independently replays its unchanged
+> `recoveryBundle` wholly green. Durable raw may lead rendered UI only under the existing rendered-
+> to-runtime 10-second bound and exact raw/runtime tuple; close binds latest exhausted live state/UI
+> time, the exact six-key committed/lost hide witness and committed revision outcome. Controls cover
+> the reported 20 ms/322 ms geometry, exact boundary/+1, excessive/future lag and every witness
+> field. This is assessor/tests/docs only, with no UI/product, save, version or browser-policy
+> change. Final11 remains non-certifying; a fresh signed clean full chain is still required. Final10
+> current wording below is historical where superseded.
 
 > **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
 > `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
@@ -52,8 +53,9 @@
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 > This documentation changes source identity; its signed clean docs-only descendant is the fresh
 > campaign source. It later supplied Final11, whose temporal-oracle stop is described above; Final11
-> is not a Recovery certificate. The next signed repair source must restart Layout →
-> SceneMemory → Compendium → Slice → Glass → recovery. Edge `151.0.4129.107` / CDP `1.3`
+> is not a Recovery certificate. The current repaired assessor replays its unchanged bundle green,
+> but its signed clean source must restart Layout → SceneMemory → Compendium → Slice → Glass →
+> recovery. Edge `151.0.4129.107` / CDP `1.3`
 > is provenance only and never triggers rebaselining.
 
 > **Historical Final7 Glass stop and bounded presentation repair:** signed
@@ -257,8 +259,9 @@
 > `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`; this docs descendant does
 > not turn them into exact-head, hosted, integration, preview/publication or HUMAN evidence. At
 > that historical checkpoint, Arc 4 remained **[PARTIAL]** for a real 20-minute next-cycle recovery
-> observation and combined HUMAN first-journey review; Final11 later completed the observation but
-> remains uncertified because its final assessor was red.
+> observation and combined HUMAN first-journey review; Final11 later completed the observation and
+> remains stored assessor-red, while the repaired assessor's green bundle replay still requires a
+> fresh full chain before certification.
 
 > **2026-08-25 Arc 3 Engineering UI overlay — historical evidence foundation through `c4a02be`;
 > current product behavior corrected locally 2026-08-27:** the former read-only

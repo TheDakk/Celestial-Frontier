@@ -1,12 +1,15 @@
 # Celestial Frontier — PROCESS LAWS
 
 > **2026-08-28 Final11 temporal-oracle law:** compare causally adjacent live evidence, not merely
-> like-named captures. Durable raw may legitimately lead rendered/UI projection within the existing
-> 10-second runtime law. Closure binds to the latest exhausted live runtime and exact committed/lost
-> hide witness. Negative-control both an excessive lag and a false red caused by selecting older raw.
-> Final11 proved the 20-minute observation, exact next cycle and recovered UI; its two-check red is
-> instrument-only and grants no Recovery certificate. Repair is contract-only and requires a fresh
-> signed clean chain.
+> like-named captures. Durable raw may legitimately lead rendered/UI projection while rendered time
+> remains at or before runtime and within the existing 10-second bound; the exact raw/runtime
+> authority tuple remains mandatory. Closure binds to the latest exhausted live state/UI time, the
+> exact six-key committed/lost hide witness and the committed revision outcome. Negative-control
+> the reported geometry, exact boundary and +1, future/excessive lag, every witness field, and the
+> false red caused by selecting older raw. Final11 remains immutable stored `fail` with one attempt,
+> zero retries and two stored false checks; the repaired assessor independently replays its unchanged
+> `recoveryBundle` wholly green. That replay is not a Recovery certificate: a fresh signed clean
+> full chain remains required.
 
 **STATUS:** current as of 2026-08-28. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
@@ -143,9 +146,12 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 The synchronized signed clean docs-only descendant supplied immutable Final11. Final11 completed
 the uninterrupted observation, exact next cycle and recovered UI, then exposed two temporal-oracle
-defects in the final assessor. The next signed clean contract-repair source remains uncertified until
-it completes a fresh full chain. None of this grants a Recovery certificate, HUMAN/Gate closure or
-release authority.
+defects in the final assessor. Its stored report remains `fail`, with unchanged hashes, one attempt,
+zero retries and only `activePlayProjection` / `closeCheckpoint` false. The current repaired
+assessor independently replays the unchanged `recoveryBundle` wholly green and controls the reported
+20 ms/322 ms geometry, exact boundary/+1, future/excessive lag and every committed/lost witness
+field. The assessor/tests/docs-only source remains browser-uncertified until it completes a fresh
+full chain. None of this grants a Recovery certificate, HUMAN/Gate closure or release authority.
 
 ⚠⚠ **CONTRAST IS THE COMPOSITED READING SURFACE; A CLOSE OWNER NEEDS EXCLUSIVE HEADER
 GEOMETRY** (2026-08-27). A canonical rarity color can be correct and still become unreadable when

@@ -4,6 +4,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
+// @ts-expect-error The executable JavaScript domain contract intentionally has no declaration shim.
+import { assessArc4ExhaustionRecovery } from '../tools/arc4-browser-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { ARC4_RECOVERY_PERTAR_POLL_TIMING_SCHEMA, ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS, assessArc4RecoveryInstrumentSeal, assessArc4RecoveryPertarPollTiming } from '../tools/arc4-recovery-contract.mjs';
 
@@ -19,6 +21,10 @@ const firstRealRunEvidencePath = fileURLToPath(new URL(
 ));
 const final10OfflineOracleEvidencePath = fileURLToPath(new URL(
   '../../../audits/ARC4_RECOVERY_CURRENT_INPUT_INSTRUMENT_FAILURE_20260828_091420389.json.gz',
+  import.meta.url,
+));
+const final11TemporalOracleEvidencePath = fileURLToPath(new URL(
+  '../../../audits/ARC4_RECOVERY_CURRENT_INPUT_FAILURE_20260828_120206393.json.gz',
   import.meta.url,
 ));
 
@@ -412,5 +418,60 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
     expect(report.firstFailure.message).toContain(
       'cf-v2-arc4-recovery-runtime-capture-witness/v1',
     );
+  });
+
+  it('retains Final11 as a failure while its immutable bundle replays green', () => {
+    const compressed = readFileSync(final11TemporalOracleEvidencePath);
+    expect(sha256(compressed)).toBe(
+      'cb44985eb4894e34d518f521df8506c7b4aec452afcc8a2351f52eb5dd9b698a',
+    );
+    const raw = gunzipSync(compressed);
+    expect(sha256(raw)).toBe(
+      'fa035d12a50a55b7e51ebca9de565c59b0f02d5941d1a19ccd4d5f65ae8febcb',
+    );
+    const report = JSON.parse(raw.toString('utf8')) as {
+      status: string;
+      runId: string;
+      policy: { attemptCount: number; automaticRetries: number };
+      source: { begin: { commit: string }; end: { commit: string } };
+      stages: Array<{ id: string; status: string }>;
+      firstFailure: { stage: string; message: string };
+      domainAssessment: {
+        ok: boolean;
+        checks: Record<string, boolean>;
+      };
+      recoveryBundle: Parameters<typeof assessArc4ExhaustionRecovery>[0];
+      cleanup: Record<string, boolean>;
+    };
+    expect(report).toMatchObject({
+      status: 'fail',
+      runId: '20260828-phase4-final11-1ca67156e27d-recovery',
+      policy: { attemptCount: 1, automaticRetries: 0 },
+      source: {
+        begin: { commit: '1ca67156e27d6bd58a324e33b0e6b752adf568bc' },
+        end: { commit: '1ca67156e27d6bd58a324e33b0e6b752adf568bc' },
+      },
+      firstFailure: {
+        stage: 'recovered',
+        message: 'Arc 4 exhaustion/recovery domain assessment is red',
+      },
+      cleanup: {
+        browser: true, server: true,
+        browserContext: true, workspaceLock: true,
+      },
+    });
+    expect(report.domainAssessment.ok).toBe(false);
+    expect(Object.entries(report.domainAssessment.checks)
+      .filter(([, value]) => value !== true).map(([name]) => name))
+      .toEqual(['activePlayProjection', 'closeCheckpoint']);
+    expect(report.stages.find(({ id }) => id === 'recovered')?.status)
+      .toBe('fail');
+    expect(report.stages.find(({ id }) => id === 'cleanup')?.status)
+      .toBe('pass');
+
+    const replay = assessArc4ExhaustionRecovery(report.recoveryBundle);
+    expect(replay.ok).toBe(true);
+    expect(Object.values(replay.checks).every((value) => value === true))
+      .toBe(true);
   });
 });

@@ -1,12 +1,14 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **Current Final11 boundary (2026-08-28):** signed clean source `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
-> passed all five responsive predecessors and Recovery's complete 20-minute observation, exact next
-> cycle and recovered UI. Only two stale timing-oracle checks failed: valid 20 ms render lag and a
-> 5,353 ms stale-raw comparison instead of the causal 322 ms latest-live gap. This is instrument-only,
-> not product failure or a Recovery certificate. Final11 is immutable/no-retry. Repair is contract-
-> only under the existing 10-second law, binds exact hide evidence, mutation-tests both directions
-> and requires a fresh signed clean full chain. Final10 current wording below is historical where
+> **Current Final11 assessor-repair boundary (2026-08-28):** Final11 remains immutable stored
+> `fail` with unchanged hashes, one attempt, zero retries and exactly two false checks. The current
+> repaired assessor independently replays its unchanged `recoveryBundle` wholly green. Durable raw
+> may lead rendered UI only under the existing rendered-to-runtime 10-second bound and exact raw/
+> runtime tuple; close binds latest exhausted live state/UI time, the exact six-key committed/lost
+> hide witness and committed revision outcome. Controls cover the reported 20 ms/322 ms geometry,
+> exact boundary/+1, future/excessive lag and every witness field. This is assessor/tests/docs only,
+> with no product, save, version or browser-policy change. Final11 remains non-certifying; a fresh
+> signed clean full chain is still required. Final10 current wording below is historical where
 > superseded.
 
 **The rule (plan §20 Gate A): the port is BUG-FOR-BUG parity until a deviation is
@@ -87,10 +89,10 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 Those documentation bytes changed source identity; their signed clean docs-only descendant supplied
-Final11, whose temporal-oracle stop is described above. Final11 is not a Recovery certificate. The
-next signed repair source must restart Layout →
-SceneMemory → Compendium → Slice → Glass → recovery
-with fresh IDs and every named verifier.
+Final11, whose temporal-oracle stop is described above. The current assessor/tests/docs-only repair
+replays Final11's unchanged carrier green but remains browser-uncertified; Final11 stays an immutable
+stored FAIL, and a synchronized signed clean descendant must restart Layout → SceneMemory →
+Compendium → Slice → Glass → recovery with fresh IDs and every named verifier.
 The v2 draft remains exactly 55 bullets. Live memory producer records follow the changed source/build
 bytes, while numeric rulers, historical samples, browser capability authorities, retry policy and
 production version/release identity remain unchanged. No Recovery PASS/certificate, publication,
@@ -230,7 +232,8 @@ signed implementation/evidence repair `3fbfcd5…` is recorded in the live bound
   numeric ceilings and historical samples are unchanged. Signed Final8 passed Compendium 78/78 and
   later full Glass with zero findings for this exact source; Final9 and Final10 repeated both green
   outcomes on their own signed sources. The synchronized signed clean docs-only descendant supplied
-  immutable Final11; the next signed clean contract-repair source requires a full-chain restart.
+  immutable Final11. The current assessor/tests/docs-only repair replays its unchanged carrier green
+  but remains browser-uncertified; a synchronized signed clean descendant requires a full-chain restart.
 
 - ★ **D-SETTINGS-NATIVE-AUDIO-ORACLE — independent reveal, trusted receipt and honest failure
   class.** Final7's four small-phone Settings findings came from sampling Sound and Creature voices
@@ -355,7 +358,7 @@ signed implementation/evidence repair `3fbfcd5…` is recorded in the live bound
   miss/refusal, stale/reload/replay, route/counterpart loss, replacement and disposal are silent.
   Other expressions, distant ecology, ambience/music/combat, assets, device plateau and HUMAN
   listening remain open.
-- ◐ **D-ARC4-RECOVERY-CERT — Final10/Final11 instrument stops preserved; final-assessor repair open.**
+- ◐ **D-ARC4-RECOVERY-CERT — Final10/Final11 instrument stops preserved; repaired replay green, fresh certificate pending.**
   Signed `4405fb2…` supplied named-green Layout, SceneMemory, Compendium, Slice and
   Glass predecessors, then its one-attempt Recovery passed fixture, 16-attempt burn-down,
   suppression, close/checkpoint and closed/offline proof before stopping `instrument-fail` at
@@ -370,8 +373,9 @@ signed implementation/evidence repair `3fbfcd5…` is recorded in the live bound
   report must pass named verification with the same Slice ID; only then may Recovery consume both
   exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
   nonzero/red/instrument result and do not start a successor or retry automatically. Final11
-  completed the uninterrupted real 20-minute observation and recovered UI; the Recovery
-  certificate remains open because the final assessor was red.
+  completed the uninterrupted real 20-minute observation and recovered UI. Final11 stays an
+  immutable stored FAIL; the repaired current assessor replay is green, but the Recovery certificate
+  remains open because no fresh signed full chain has run.
 - ★ **D-COMPENDIUM-CALIBRATION — version-tolerant signed `7362a0e…` renewal passed; repaired-source chain restart and visual judgment remain open.** Measurement
   `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
   `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` bind clean committed

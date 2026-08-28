@@ -1,12 +1,14 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **Current Final11 boundary (2026-08-28):** signed clean source `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
-> passed all five responsive predecessors and the full 20-minute Recovery observation, exact next
-> cycle and recovered UI. Two stale timing-oracle checks alone failed; this is instrument-only, not
-> product/HUMAN/release authority. Final11 is immutable/no-retry. A contract-only repair under the
-> existing 10-second law must bind close to latest exhausted live runtime and exact committed/lost
-> hide witness, mutation-test both directions and restart the signed clean full chain. Edge point
-> version remains provenance only. Final10 current wording below is historical where superseded.
+> **Current Final11 assessor-repair boundary (2026-08-28):** Final11 remains immutable stored
+> `fail` with unchanged hashes, one attempt, zero retries and exactly two false checks. The current
+> repaired assessor independently replays its unchanged `recoveryBundle` wholly green. Bounded raw-
+> ahead/render lag retains the exact raw/runtime tuple; close binds latest exhausted live state/UI
+> time, the exact six-key committed/lost hide witness and committed revision outcome. Reported-
+> geometry, exact-boundary/+1 and witness controls are present. This is assessor/tests/docs only,
+> with no product, save, preview, version or browser-policy change. Final11 remains non-certifying;
+> a fresh signed clean full chain is still required. Final10 current wording below is historical
+> where superseded.
 
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
 as of 2026-08-28. This is not a release record.
@@ -54,8 +56,8 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 Those documentation bytes changed source identity; their signed clean docs-only descendant supplied
 Final11, whose temporal-oracle stop is described above. Final11 is not a Recovery certificate. The
-next signed repair source must restart
-Layout → SceneMemory → Compendium → Slice → Glass → recovery with fresh IDs. Nothing in this
+current repaired assessor replays its unchanged bundle green, but its signed clean source must
+restart Layout → SceneMemory → Compendium → Slice → Glass → recovery with fresh IDs. Nothing in this
 campaign has been packaged, published, pushed, hosted-tested, merged, versioned or released. Until
 one clean exact final head passes every required local gate and receives separate exact-SHA
 publication authority, no development-preview candidate exists. `--allow-dirty` remains local
