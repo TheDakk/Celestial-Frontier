@@ -37,6 +37,8 @@ import {
   ARC4_PERTAR_FIXTURE,
   ARC4_RECOVERY_CLOSED_INTERVAL_MIN_MS,
   ARC4_RECOVERY_CLOSURE_EVIDENCE_SCHEMA,
+  assessArc4DisabledSuppressionEvidence,
+  assessArc4DisabledTargetEvidence,
   assessArc4BurnStep,
   assessArc4CapturePrecondition,
   assessArc4Exhaustion,
@@ -655,13 +657,13 @@ async function activateSurveyDock(send, sessionId) {
     return {ok:button?.tagName==='BUTTON'&&!!r&&r.width>=44&&r.height>=44&&!!hit&&(hit===button||button.contains(hit)),x,y}})()`,
   'locate Survey dock');
   productAssert(target?.ok === true, 'reopened Survey dock is not a 44px owned target', target);
-  await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: target.x, y: target.y });
+  await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: target.x, y: target.y }, sessionId);
   await send('Input.dispatchMouseEvent', {
     type: 'mousePressed', x: target.x, y: target.y, button: 'left', clickCount: 1,
-  });
+  }, sessionId);
   await send('Input.dispatchMouseEvent', {
     type: 'mouseReleased', x: target.x, y: target.y, button: 'left', clickCount: 1,
-  });
+  }, sessionId);
 }
 
 function browserSample(browser) {
@@ -695,57 +697,245 @@ async function collectServiceTurn({ send, sessionId, targetId, index }) {
   });
 }
 
-async function collectSuppression(send, sessionId, exhaustedRaw, exhaustedState) {
-  await evaluate(send, sessionId, `(()=>{window.__cfArc4RecoverySuppressionAbort?.abort();
-    const controller=new AbortController();window.__cfArc4RecoverySuppressionAbort=controller;
-    const trace={pointer:[],clicks:[]},row=(event)=>{const target=event.target instanceof Element
-      ?event.target.closest('button[data-capture-action="tame"]'):null;
-      return target?{trusted:event.isTrusted===true,pointerType:event.pointerType||null}:null};
-    document.addEventListener('pointerdown',(event)=>{const value=row(event);if(value)trace.pointer.push(value)},
-      {capture:true,signal:controller.signal});
-    document.addEventListener('click',(event)=>{const value=row(event);if(value)trace.clicks.push(value)},
-      {capture:true,signal:controller.signal});window.__cfArc4RecoverySuppressionTrace=trace;return true})()`,
-  'arm disabled suppression trace');
-  const target = await evaluate(send, sessionId, `(()=>{const button=document.querySelector(
-    '#survey button[data-capture-action="tame"]'),r=button?.getBoundingClientRect(),
-    x=r?(r.left+r.right)/2:NaN,y=r?(r.top+r.bottom)/2:NaN,hit=r?document.elementFromPoint(x,y):null;
-    return {ok:button?.tagName==='BUTTON'&&!!r&&r.width>=44&&r.height>=44
-      &&!!hit&&(hit===button||button.contains(hit)),x,y,width:r?.width??0,height:r?.height??0,
-      disabled:button?.disabled??null,modelEnabled:button?.getAttribute('data-model-enabled')??null}})()`,
-  'locate disabled Tame control');
-  productAssert(target?.ok === true && target.disabled === true
-    && target.modelEnabled === 'false', 'exhausted Tame control is not truly disabled', target);
-  const beforeRaw = await evaluate(send, sessionId, ARC4_DURABLE_READ_EXPRESSION,
-    'read suppression before authority');
-  const beforeState = await evaluate(send, sessionId, 'window.__CF_SLICE__.api.state()',
-    'read suppression before state');
+async function prepareDisabledSuppressionTarget(send, sessionId) {
+  return evaluate(send, sessionId, `(async()=>{
+      window.__cfArc4RecoverySuppressionAbort?.abort();
+      delete window.__cfArc4RecoverySuppressionAbort;
+      delete window.__cfArc4RecoverySuppressionTrace;
+      delete window.__cfArc4RecoverySuppressionPreparation;
+      const requestedVerb='tame',selector='#survey button[data-capture-action="tame"]',
+        survey=document.querySelector('#survey'),matches=[...document.querySelectorAll(selector)],
+        button=matches.length===1?matches[0]:null,card=survey,
+        controller=new AbortController(),
+        documentTokenBefore=window.__CF_SLICE__?.documentToken??null,
+        priorScroll=survey?{left:survey.scrollLeft,top:survey.scrollTop}:null;
+      const record={survey,button,card,documentTokenBefore,priorScroll};
+      window.__cfArc4RecoverySuppressionAbort=controller;
+      window.__cfArc4RecoverySuppressionPreparation=record;
+      const sample=()=>{const currentSurvey=document.querySelector('#survey'),
+        currentMatches=[...document.querySelectorAll(selector)],currentButton=currentMatches.length===1
+          ?currentMatches[0]:null,S=window.__CF_SLICE__,r=button?.getBoundingClientRect()??null,
+        cr=card?.getBoundingClientRect()??null,x=r?(r.left+r.right)/2:NaN,
+        y=r?(r.top+r.bottom)/2:NaN,hit=Number.isFinite(x)&&Number.isFinite(y)
+          ?document.elementFromPoint(x,y):null;
+        return {documentToken:S?.documentToken??null,sameButton:currentButton===button,
+          sameSurvey:currentSurvey===survey,connected:button?.isConnected===true
+            &&survey?.isConnected===true,button:{tag:button?.tagName??null,
+              verb:button?.getAttribute('data-capture-action')??null,
+              disabled:button?.disabled??null,
+              modelEnabled:button?.getAttribute('data-model-enabled')??null,
+              ariaDisabled:button?.getAttribute('aria-disabled')??null,
+              rect:r?{left:r.left,top:r.top,right:r.right,bottom:r.bottom,
+                width:r.width,height:r.height}:null},
+          cardRect:cr?{left:cr.left,top:cr.top,right:cr.right,bottom:cr.bottom,
+            width:cr.width,height:cr.height}:null,
+          viewport:{width:innerWidth,height:innerHeight},scroll:survey?{left:survey.scrollLeft,
+            top:survey.scrollTop,clientWidth:survey.clientWidth,clientHeight:survey.clientHeight,
+            scrollWidth:survey.scrollWidth,scrollHeight:survey.scrollHeight}:null,
+          point:{x:Number.isFinite(x)?x:null,y:Number.isFinite(y)?y:null,
+            hitTag:hit?.tagName??null,hitVerb:hit instanceof Element
+              ?hit.closest('button[data-capture-action]')?.getAttribute('data-capture-action')??null:null,
+            owned:!!hit&&!!button&&(hit===button||button.contains(hit))}}};
+      record.sample=sample;
+      const initial=sample();
+      button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+      const settle=()=>new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(
+        ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));
+      await settle();
+      const first=sample();
+      await settle();
+      const second=sample();
+      return {schema:'cf-v2-arc4-disabled-target/v1',selectorCount:matches.length,
+        documentTokenBefore,documentTokenAfter:window.__CF_SLICE__?.documentToken??null,
+        requestedVerb,priorScroll,initial,first,second}})()`,
+  'prepare stable disabled Tame target');
+}
+
+async function collectSuppression(send, sessionId) {
+  const requestedVerb = 'tame';
+  let exhaustedRaw = null;
+  let exhaustedState = null;
+  let exhaustedUi = null;
+  let target = null;
+  let trace = null;
+  let beforeRaw = null;
+  let beforeState = null;
+  let afterRaw = null;
+  let afterState = null;
+  let targetAssessment = null;
+  let collectionError = null;
+  let heartbeat = Object.freeze({ quiesced: null, resumed: null });
+  let restoration = Object.freeze({
+    attempted: false, complete: false, documentToken: null, before: null, after: null,
+    abortSignalAborted: false,
+    globalsAbsent: Object.freeze({ abort: false, trace: false, preparation: false }),
+  });
+  const dispatch = {
+    requested: false, inputDispatched: false, documentToken: null, x: null, y: null,
+  };
+  try {
+    const quiesced = await evaluate(send, sessionId,
+      'window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()',
+      'quiesce F4 heartbeat for disabled suppression');
+    heartbeat = Object.freeze({ quiesced, resumed: null });
+    exhaustedRaw = await evaluate(send, sessionId, ARC4_DURABLE_READ_EXPRESSION,
+      'read synchronized exhausted authority');
+    exhaustedState = await evaluate(send, sessionId, 'window.__CF_SLICE__.api.state()',
+      'read synchronized exhausted state');
+    exhaustedUi = await evaluate(send, sessionId, ARC4_CAPTURE_UI_EXPRESSION,
+      'read synchronized exhausted UI');
+    target = await prepareDisabledSuppressionTarget(send, sessionId);
+    targetAssessment = assessArc4DisabledTargetEvidence(target);
+    if (targetAssessment.instrumentOk && targetAssessment.productOk) {
+      beforeRaw = await evaluate(send, sessionId, ARC4_DURABLE_READ_EXPRESSION,
+        'read suppression before authority');
+      beforeState = await evaluate(send, sessionId, 'window.__CF_SLICE__.api.state()',
+        'read suppression before state');
+    }
+    if (targetAssessment.instrumentOk && targetAssessment.productOk
+      && same(beforeRaw, exhaustedRaw)) {
+      await evaluate(send, sessionId, `(()=>{const record=window.__cfArc4RecoverySuppressionPreparation,
+      button=record?.button,controller=window.__cfArc4RecoverySuppressionAbort??null,
+      trace={pointer:[],clicks:[]},
+      row=(event)=>{const eventButton=event.target instanceof Element
+        ?event.target.closest('button[data-capture-action]'):null;
+        if(eventButton!==button)return null;return {verb:eventButton.getAttribute('data-capture-action'),
+          trusted:event.isTrusted===true,pointerType:event.pointerType||null,
+          clientX:Number.isFinite(event.clientX)?event.clientX:null,
+          clientY:Number.isFinite(event.clientY)?event.clientY:null,
+          documentToken:window.__CF_SLICE__?.documentToken??null}};
+      if(!(controller instanceof AbortController)||controller.signal.aborted)throw new Error(
+        'disabled suppression AbortController ownership is red');
+      document.addEventListener('pointerdown',(event)=>{const value=row(event);if(value)trace.pointer.push(value)},
+        {capture:true,signal:controller.signal});
+      document.addEventListener('click',(event)=>{const value=row(event);if(value)trace.clicks.push(value)},
+        {capture:true,signal:controller.signal});
+      window.__cfArc4RecoverySuppressionTrace=trace;return true})()`,
+      'arm stable disabled suppression trace');
+      const armedSample = await evaluate(send, sessionId,
+        'window.__cfArc4RecoverySuppressionPreparation?.sample?.()??null',
+        'revalidate armed disabled suppression target');
+      target = Object.freeze({ ...target, second: armedSample });
+      targetAssessment = assessArc4DisabledTargetEvidence(target);
+      if (targetAssessment.instrumentOk && targetAssessment.productOk) {
+        dispatch.requested = true;
+        dispatch.documentToken = target.documentTokenAfter;
+        dispatch.x = target.second.point.x;
+        dispatch.y = target.second.point.y;
+        await send('Input.dispatchMouseEvent', {
+          type: 'mouseMoved', x: dispatch.x, y: dispatch.y,
+        }, sessionId);
+        await send('Input.dispatchMouseEvent', {
+          type: 'mousePressed', x: dispatch.x, y: dispatch.y, button: 'left', clickCount: 1,
+        }, sessionId);
+        await send('Input.dispatchMouseEvent', {
+          type: 'mouseReleased', x: dispatch.x, y: dispatch.y, button: 'left', clickCount: 1,
+        }, sessionId);
+        dispatch.inputDispatched = true;
+        await sleep(200);
+      }
+    }
+  } catch (error) {
+    collectionError = error;
+  } finally {
+    try {
+      const cleanup = await evaluate(send, sessionId, `(async()=>{
+        const record=window.__cfArc4RecoverySuppressionPreparation??null,
+          captured=window.__cfArc4RecoverySuppressionTrace??null,
+          controller=window.__cfArc4RecoverySuppressionAbort??null,
+          survey=record?.survey??null,before=record?.priorScroll??null,
+          attempted=record!==null;
+        controller?.abort();
+        if(attempted&&survey&&before){survey.scrollLeft=before.left;survey.scrollTop=before.top}
+        await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(
+          ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));
+        const after=survey?{left:survey.scrollLeft,top:survey.scrollTop}:null,
+          documentToken=window.__CF_SLICE__?.documentToken??null,
+          scrollComplete=before===null?survey===null&&after===null:
+            survey?.isConnected===true&&after?.left===before.left&&after?.top===before.top,
+          complete=attempted&&scrollComplete;
+        delete window.__cfArc4RecoverySuppressionAbort;
+        delete window.__cfArc4RecoverySuppressionTrace;
+        delete window.__cfArc4RecoverySuppressionPreparation;
+        const abortSignalAborted=controller?.signal?.aborted===true,
+          globalsAbsent={
+            abort:!('__cfArc4RecoverySuppressionAbort' in window),
+            trace:!('__cfArc4RecoverySuppressionTrace' in window),
+            preparation:!('__cfArc4RecoverySuppressionPreparation' in window)};
+        return {trace:captured,restoration:{attempted,complete,documentToken,before,after,
+          abortSignalAborted,globalsAbsent}}})()`,
+      'restore Survey after disabled suppression');
+      trace = cleanup?.trace ?? null;
+      restoration = cleanup?.restoration ?? restoration;
+    } catch (cleanupError) {
+      if (!collectionError) collectionError = cleanupError;
+      else collectionError = new Error(`${collectionError.message}; cleanup: ${cleanupError.message}`);
+    }
+    try {
+      const resumed = await evaluate(send, sessionId,
+        'window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()',
+        'resume F4 heartbeat after disabled suppression');
+      heartbeat = Object.freeze({ ...heartbeat, resumed });
+    } catch (resumeError) {
+      if (!collectionError) collectionError = resumeError;
+      else collectionError = new Error(`${collectionError.message}; heartbeat: ${
+        resumeError instanceof Error ? resumeError.message : String(resumeError)}`);
+    }
+  }
+  if (dispatch.inputDispatched && collectionError === null) {
+    try {
+      afterRaw = await evaluate(send, sessionId, ARC4_DURABLE_READ_EXPRESSION,
+        'read suppression after cleanup authority');
+      afterState = await evaluate(send, sessionId, 'window.__CF_SLICE__.api.state()',
+        'read suppression after cleanup state');
+    } catch (outcomeError) {
+      collectionError = outcomeError;
+    }
+  }
+  const suppressed = Object.freeze({
+    schema: 'cf-v2-arc4-disabled-suppression/v1', verb: requestedVerb,
+    target, trace, dispatch: Object.freeze({ ...dispatch }), heartbeat,
+    beforeRaw, afterRaw, beforeState, afterState, restoration,
+  });
+  const finalTargetAssessment = targetAssessment ?? assessArc4DisabledTargetEvidence(target);
+  const assessment = assessArc4DisabledSuppressionEvidence(
+    suppressed, { exhaustedRaw, exhaustedState },
+  );
+  const cleanupChecks = Object.freeze({
+    restorationShape: assessment.instrumentChecks.restorationShape === true,
+    restorationComplete: assessment.instrumentChecks.restorationComplete === true,
+  });
+  const cleanupIntegrity = Object.values(cleanupChecks).every((value) => value === true);
+  assertDisabledSuppressionVerdicts({
+    collectionError, suppressed, finalTargetAssessment, assessment,
+    cleanupIntegrity, cleanupChecks, exhaustedRaw, beforeRaw,
+  });
+  return Object.freeze({ suppressed, exhaustedRaw, exhaustedState, exhaustedUi });
+}
+
+function assertDisabledSuppressionVerdicts({
+  collectionError, suppressed, finalTargetAssessment, assessment,
+  cleanupIntegrity, cleanupChecks, exhaustedRaw, beforeRaw,
+}) {
+  instrumentAssert(collectionError === null,
+    collectionError?.message || 'disabled suppression collection is red',
+    { suppressed, targetAssessment: finalTargetAssessment, assessment });
+  instrumentAssert(finalTargetAssessment.instrumentOk,
+    'disabled Tame target instrument evidence is red',
+    { suppressed, targetAssessment: finalTargetAssessment });
+  instrumentAssert(cleanupIntegrity,
+    'disabled suppression cleanup integrity is red',
+    { suppressed, cleanupChecks, assessment });
+  productAssert(finalTargetAssessment.productOk,
+    'disabled Tame target product evidence is red',
+    { suppressed, targetAssessment: finalTargetAssessment });
+  instrumentAssert(assessment.instrumentOk, 'disabled suppression instrument evidence is red',
+    { suppressed, assessment });
   productAssert(same(beforeRaw, exhaustedRaw),
-    'durable authority moved before disabled suppression', { exhaustedRaw, beforeRaw });
-  await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: target.x, y: target.y });
-  await send('Input.dispatchMouseEvent', {
-    type: 'mousePressed', x: target.x, y: target.y, button: 'left', clickCount: 1,
-  });
-  await send('Input.dispatchMouseEvent', {
-    type: 'mouseReleased', x: target.x, y: target.y, button: 'left', clickCount: 1,
-  });
-  await sleep(200);
-  const afterRaw = await evaluate(send, sessionId, ARC4_DURABLE_READ_EXPRESSION,
-    'read suppression after authority');
-  const afterState = await evaluate(send, sessionId, 'window.__CF_SLICE__.api.state()',
-    'read suppression after state');
-  const trace = await evaluate(send, sessionId, `(()=>{const trace=window.__cfArc4RecoverySuppressionTrace??null;
-    window.__cfArc4RecoverySuppressionAbort?.abort();delete window.__cfArc4RecoverySuppressionAbort;
-    delete window.__cfArc4RecoverySuppressionTrace;return trace})()`, 'read suppression trace');
-  return Object.freeze({
-    verb: 'tame',
-    point: {
-      height: target.height, width: target.width,
-      disabled: target.disabled, modelEnabled: target.modelEnabled,
-    },
-    pointer: trace?.pointer?.[0] ?? null,
-    clickCount: trace?.clicks?.length ?? -1,
-    beforeRaw, afterRaw, beforeState, afterState,
-  });
+    'durable authority moved before disabled suppression',
+    { suppressed, exhaustedRaw, beforeRaw });
+  productAssert(assessment.productOk, 'disabled suppression product evidence is red',
+    { suppressed, assessment });
 }
 
 function initialStages() {
@@ -1009,15 +1199,10 @@ async function runCertificate(options) {
 
     currentStage = 'exhausted';
     const exhaustedSurface = await waitForPertarSurface(send, sessionId, { exhausted: true });
-    const exhaustedRaw = await evaluate(send, sessionId, ARC4_DURABLE_READ_EXPRESSION,
-      'read exhausted authority');
-    const exhaustedState = await evaluate(send, sessionId,
-      'window.__CF_SLICE__.api.state()', 'read exhausted state');
-    const exhaustedUi = await evaluate(send, sessionId, ARC4_CAPTURE_UI_EXPRESSION,
-      'read exhausted UI');
-    const suppressed = await collectSuppression(
-      send, sessionId, exhaustedRaw, exhaustedState,
-    );
+    const synchronizedExhaustion = await collectSuppression(send, sessionId);
+    const {
+      suppressed, exhaustedRaw, exhaustedState, exhaustedUi,
+    } = synchronizedExhaustion;
     const exhaustion = assessArc4Exhaustion({
       exhaustedRaw, exhaustedState, exhaustedUi, suppressed,
     });
@@ -1713,6 +1898,134 @@ export function runSelftest() {
   assert(same(classifyRecoveryFailure(new Error('synthetic generic red')), {
     status: 'instrument-fail', exitCode: 2, evidence: null,
   }), 'generic failure was not classified fail-closed as instrument evidence');
+  const productRedDocumentToken = 'selftest-disabled-target-product-red';
+  const productRedMissingSample = Object.freeze({
+    documentToken: productRedDocumentToken,
+    sameButton: true, sameSurvey: true, connected: false,
+    button: {
+      tag: null, verb: null, disabled: null, modelEnabled: null,
+      ariaDisabled: null, rect: null,
+    },
+    cardRect: null,
+    viewport: { width: 390, height: 844 },
+    scroll: null,
+    point: { x: null, y: null, hitTag: null, hitVerb: null, owned: false },
+  });
+  const productRedTarget = Object.freeze({
+    schema: 'cf-v2-arc4-disabled-target/v1',
+    selectorCount: 0,
+    documentTokenBefore: productRedDocumentToken,
+    documentTokenAfter: productRedDocumentToken,
+    requestedVerb: 'tame',
+    priorScroll: null,
+    initial: structuredClone(productRedMissingSample),
+    first: structuredClone(productRedMissingSample),
+    second: structuredClone(productRedMissingSample),
+  });
+  const productRedSuppressed = Object.freeze({
+    schema: 'cf-v2-arc4-disabled-suppression/v1',
+    verb: 'tame',
+    target: productRedTarget,
+    dispatch: {
+      requested: false, inputDispatched: false,
+      documentToken: null, x: null, y: null,
+    },
+    trace: { pointer: [], clicks: [] },
+    heartbeat: { quiesced: null, resumed: null },
+    restoration: {
+      attempted: true, complete: true,
+      documentToken: productRedDocumentToken,
+      before: null, after: null, abortSignalAborted: true,
+      globalsAbsent: { abort: true, trace: true, preparation: true },
+    },
+    beforeRaw: null, afterRaw: null, beforeState: null, afterState: null,
+  });
+  const productRedTargetAssessment = assessArc4DisabledTargetEvidence(productRedTarget);
+  const productRedSuppressionAssessment = assessArc4DisabledSuppressionEvidence(
+    productRedSuppressed,
+  );
+  const productRedCleanupChecks = Object.freeze({
+    restorationShape:
+      productRedSuppressionAssessment.instrumentChecks.restorationShape === true,
+    restorationComplete:
+      productRedSuppressionAssessment.instrumentChecks.restorationComplete === true,
+  });
+  let classifiedProductRedTarget = null;
+  try {
+    assertDisabledSuppressionVerdicts({
+      collectionError: null,
+      suppressed: productRedSuppressed,
+      finalTargetAssessment: productRedTargetAssessment,
+      assessment: productRedSuppressionAssessment,
+      cleanupIntegrity: Object.values(productRedCleanupChecks).every(Boolean),
+      cleanupChecks: productRedCleanupChecks,
+      exhaustedRaw: Object.freeze({ selftest: 'exhausted-authority' }),
+      beforeRaw: null,
+    });
+  } catch (error) {
+    classifiedProductRedTarget = classifyRecoveryFailure(error);
+  }
+  assert(productRedTargetAssessment.instrumentOk === true
+    && productRedTargetAssessment.productOk === false
+    && productRedSuppressionAssessment.instrumentOk === false
+    && classifiedProductRedTarget?.status === 'fail'
+    && classifiedProductRedTarget?.exitCode === 1
+    && classifiedProductRedTarget?.evidence?.targetAssessment?.productOk === false,
+  'coherent missing disabled target did not retain end-to-end product classification');
+  const classifySuppressionVerdicts = ({
+    cleanupIntegrity = true,
+    assessmentInstrumentOk = true,
+    collectionError = null,
+    targetProductOk = false,
+  } = {}) => {
+    const suppressed = Object.freeze({ selftest: 'concurrent-suppression-reds' });
+    const finalTargetAssessment = Object.freeze({
+      instrumentOk: true, productOk: targetProductOk,
+    });
+    const assessment = Object.freeze({
+      instrumentOk: assessmentInstrumentOk, productOk: false,
+    });
+    const cleanupChecks = Object.freeze({
+      restorationShape: true, restorationComplete: cleanupIntegrity,
+    });
+    const exhaustedRaw = Object.freeze({ selftest: 'unchanged-authority' });
+    try {
+      assertDisabledSuppressionVerdicts({
+        collectionError, suppressed, finalTargetAssessment, assessment,
+        cleanupIntegrity, cleanupChecks, exhaustedRaw,
+        beforeRaw: structuredClone(exhaustedRaw),
+      });
+    } catch (error) {
+      return classifyRecoveryFailure(error);
+    }
+    return null;
+  };
+  const productOnlySuppressionRed = classifySuppressionVerdicts();
+  assert(productOnlySuppressionRed?.status === 'fail'
+    && productOnlySuppressionRed?.exitCode === 1
+    && productOnlySuppressionRed?.evidence?.targetAssessment?.productOk === false,
+  'cleanup-green disabled target red did not retain product classification');
+  const concurrentCleanupSuppressionRed = classifySuppressionVerdicts({
+    cleanupIntegrity: false,
+  });
+  assert(concurrentCleanupSuppressionRed?.status === 'instrument-fail'
+    && concurrentCleanupSuppressionRed?.exitCode === 2
+    && concurrentCleanupSuppressionRed?.evidence?.cleanupChecks?.restorationComplete === false,
+  'cleanup instrument red was hidden by the concurrent disabled-target product red');
+  const greenTargetAssessmentSuppressionRed = classifySuppressionVerdicts({
+    assessmentInstrumentOk: false, targetProductOk: true,
+  });
+  assert(greenTargetAssessmentSuppressionRed?.status === 'instrument-fail'
+    && greenTargetAssessmentSuppressionRed?.exitCode === 2
+    && greenTargetAssessmentSuppressionRed?.evidence?.assessment?.instrumentOk === false,
+  'green-target suppression assessment instrument red lost instrument classification');
+  const concurrentCollectionSuppressionRed = classifySuppressionVerdicts({
+    collectionError: new Error('synthetic suppression collection red'),
+  });
+  assert(concurrentCollectionSuppressionRed?.status === 'instrument-fail'
+    && concurrentCollectionSuppressionRed?.exitCode === 2
+    && concurrentCollectionSuppressionRed?.evidence?.assessment?.productOk === false,
+  'suppression collection instrument red was hidden by the concurrent product red');
 
   const { input, recoveryBundle } = syntheticRecoveryFixture();
   const runtimeCaptureToken = recoveryBundle.closure.closedDocumentToken;
@@ -2092,10 +2405,334 @@ export function runSelftest() {
     assert(mutant !== collectorSource, `${label} mutation did not bind production`);
     const outcome = assessArc4RecoveryInstrumentSeal(mutant, PAGE_EVIDENCE_SOURCES);
     assert(outcome.ok === false
+      && expectedChecks.every((name) => outcome.checks[name] === false)
       && Object.entries(outcome.checks).every(([name, value]) => (
-        expectedChecks.includes(name) ? value === false : value === true
+        name === 'suppressionSourceDigest'
+          ? true : expectedChecks.includes(name) ? value === false : value === true
       )), `${label} did not fail only ${expectedChecks.join('/')}: ${JSON.stringify(outcome)}`);
   };
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'target = await prepareDisabledSuppressionTarget(send, sessionId);',
+      'target = await prepareDisabledSuppressionTarget(send, sessionId, true);',
+    ),
+    'suppressionDedicatedPreparation', 'bypassed dedicated suppression preparation',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()',
+      'window.__CF_SLICE__.api.__smokeRunF4Heartbeat()',
+    ),
+    'suppressionHeartbeatQuiescence', 'bypassed suppression heartbeat quiescence',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()',
+      'window.__CF_SLICE__.api.__smokeRunF4Heartbeat()',
+    ),
+    'suppressionHeartbeatQuiescence', 'bypassed suppression heartbeat restoration',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'target, trace, dispatch: Object.freeze({ ...dispatch }), heartbeat,',
+      'target, trace, dispatch: Object.freeze({ ...dispatch }), heartbeat: null,',
+    ),
+    'suppressionHeartbeatQuiescence', 'forged suppression heartbeat evidence',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "'read synchronized exhausted UI'",
+      "'read unsynchronized exhausted UI'",
+    ),
+    'suppressionHeartbeatQuiescence', 'discarded synchronized exhaustion UI receipt',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'return Object.freeze({ suppressed, exhaustedRaw, exhaustedState, exhaustedUi });',
+      'return Object.freeze({ suppressed, exhaustedRaw, exhaustedState, exhaustedUi: null });',
+    ),
+    'suppressionHeartbeatQuiescence', 'discarded synchronized exhaustion bundle',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "selector='#survey button[data-capture-action=\"tame\"]'",
+      "selector='#survey button[data-capture-action=\"tame\"]:not([hidden])'",
+    ),
+    'suppressionExactOwner', 'broadened suppression target owner',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});",
+      "button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'auto'});",
+    ),
+    ['suppressionNativeScroll', 'suppressionPreparationOrder'],
+    'noncanonical suppression reveal',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'await settle();\n      const second=sample();',
+      'await Promise.resolve();\n      const second=sample();',
+    ),
+    ['suppressionSettledSamples', 'suppressionPreparationOrder'],
+    'unsettled second suppression sample',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});\n      const settle=()=>new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(\n        ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));\n      await settle();\n      const first=sample();\n      await settle();\n      const second=sample();",
+      "const settle=()=>new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(\n        ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));\n      await settle();\n      const first=sample();\n      await settle();\n      const second=sample();\n      button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});",
+    ),
+    'suppressionPreparationOrder', 'moved suppression reveal after settled samples',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});",
+      "if (false) {\n        button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});\n      }",
+    ),
+    'suppressionPreparationOrder', 'dead-branched suppression reveal',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});",
+      "if (Boolean(0)) {\n        button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});\n      }",
+    ),
+    'suppressionPreparationOrder', 'dynamically dead-branched suppression reveal',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});",
+      "if (!true) {\n        button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});\n      }",
+    ),
+    'suppressionSourceDigest', 'nonliteral dead-branched suppression reveal',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace('hitTag:hit?.tagName??null,', 'hitTag:null,'),
+    'suppressionEvidenceInventory', 'discarded suppression hit owner evidence',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'dispatch.x = target.second.point.x;', 'dispatch.x = 0;',
+    ),
+    'suppressionDispatchBinding', 'unbound suppression dispatch coordinate',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "await send('Input.dispatchMouseEvent', {\n          type: 'mouseMoved', x: dispatch.x, y: dispatch.y,\n        }, sessionId);",
+      "await send('Input.dispatchMouseEvent', {\n          type: 'mouseMoved', x: dispatch.x, y: dispatch.y,\n        });",
+    ),
+    'suppressionDispatchBinding', 'unbound suppression CDP session',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'target = Object.freeze({ ...target, second: armedSample });\n      targetAssessment = assessArc4DisabledTargetEvidence(target);',
+      'void armedSample;',
+    ),
+    'suppressionSettledSamples', 'discarded armed target revalidation',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'clientX:Number.isFinite(event.clientX)?event.clientX:null,',
+      'clientX:null,',
+    ),
+    'suppressionTraceInventory', 'discarded suppression pointer coordinate',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'delete window.__cfArc4RecoverySuppressionAbort;\n        delete window.__cfArc4RecoverySuppressionTrace;\n        delete window.__cfArc4RecoverySuppressionPreparation;',
+      'delete window.__cfArc4RecoverySuppressionAbort;\n        delete window.__cfArc4RecoverySuppressionTrace;',
+    ),
+    'suppressionCleanupReceipt', 'leaked suppression preparation record',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(\n          ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));\n        const after=survey?{left:survey.scrollLeft,top:survey.scrollTop}:null,',
+      'await Promise.resolve();\n        const after=survey?{left:survey.scrollLeft,top:survey.scrollTop}:null,',
+    ),
+    'suppressionCleanupOrder', 'unsettled suppression scroll restoration',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(\n          ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));\n        const after=survey?{left:survey.scrollLeft,top:survey.scrollTop}:null,',
+      'if (Boolean(0)) {\n          await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(\n            ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));\n        }\n        const after=survey?{left:survey.scrollLeft,top:survey.scrollTop}:null,',
+    ),
+    'suppressionCleanupOrder', 'dynamically dead-branched cleanup settlement',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'if(attempted&&survey&&before){survey.scrollLeft=before.left;survey.scrollTop=before.top}\n        await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(\n          ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));',
+      'await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(\n          ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));\n        if(attempted&&survey&&before){survey.scrollLeft=before.left;survey.scrollTop=before.top}',
+    ),
+    'suppressionCleanupOrder', 'moved scroll restoration after cleanup settlement',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'if(attempted&&survey&&before){survey.scrollLeft=before.left;survey.scrollTop=before.top}',
+      'if (false) {\n        if(attempted&&survey&&before){survey.scrollLeft=before.left;survey.scrollTop=before.top}\n        }',
+    ),
+    'suppressionCleanupOrder', 'dead-branched scroll restoration',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'attempted=record!==null;', 'attempted=!!survey&&!!before;',
+    ),
+    'suppressionCleanupReceipt', 'collapsed cleanup attempt into scroll availability',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'controller?.abort();',
+      'if (false) {\n          controller?.abort();\n        }',
+    ),
+    'suppressionCleanupReceipt', 'dead-branched suppression abort',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'delete window.__cfArc4RecoverySuppressionAbort;\n        delete window.__cfArc4RecoverySuppressionTrace;\n        delete window.__cfArc4RecoverySuppressionPreparation;',
+      'if (false) {\n          delete window.__cfArc4RecoverySuppressionAbort;\n          delete window.__cfArc4RecoverySuppressionTrace;\n          delete window.__cfArc4RecoverySuppressionPreparation;\n        }',
+    ),
+    'suppressionCleanupReceipt', 'dead-branched suppression global release',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'scrollComplete=before===null?survey===null&&after===null:',
+      'scrollComplete=before!==null&&survey!==null&&after!==null&&',
+    ),
+    'suppressionCleanupReceipt', 'removed coherent no-scroll cleanup outcome',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'const abortSignalAborted=controller?.signal?.aborted===true,',
+      'const abortSignalAborted=true,',
+    ),
+    'suppressionCleanupReceipt', 'forged suppression abort receipt',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "abort:!('__cfArc4RecoverySuppressionAbort' in window),",
+      'abort:true,',
+    ),
+    'suppressionCleanupReceipt', 'forged suppression global-absence receipt',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'if (dispatch.inputDispatched && collectionError === null) {',
+      'if (true) {',
+    ),
+    'suppressionFinallyCleanup', 'unbound post-cleanup outcome read',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "instrumentAssert(finalTargetAssessment.instrumentOk,\n    'disabled Tame target instrument evidence is red',\n    { suppressed, targetAssessment: finalTargetAssessment });\n  instrumentAssert(cleanupIntegrity,\n    'disabled suppression cleanup integrity is red',\n    { suppressed, cleanupChecks, assessment });\n  productAssert(finalTargetAssessment.productOk,\n    'disabled Tame target product evidence is red',\n    { suppressed, targetAssessment: finalTargetAssessment });",
+      "instrumentAssert(cleanupIntegrity,\n    'disabled suppression cleanup integrity is red',\n    { suppressed, cleanupChecks, assessment });\n  productAssert(finalTargetAssessment.productOk,\n    'disabled Tame target product evidence is red',\n    { suppressed, targetAssessment: finalTargetAssessment });\n  instrumentAssert(finalTargetAssessment.instrumentOk,\n    'disabled Tame target instrument evidence is red',\n    { suppressed, targetAssessment: finalTargetAssessment });",
+    ),
+    ['suppressionTargetVerdictOrder', 'suppressionInstrumentVerdictOrder'],
+    'moved target instrument verdict after product verdict',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'instrumentAssert(finalTargetAssessment.instrumentOk,',
+      'if (false) {\n    instrumentAssert(finalTargetAssessment.instrumentOk,',
+    ).replace(
+      "{ suppressed, targetAssessment: finalTargetAssessment });\n  instrumentAssert(cleanupIntegrity,",
+      "{ suppressed, targetAssessment: finalTargetAssessment });\n  }\n  instrumentAssert(cleanupIntegrity,",
+    ),
+    'suppressionTargetVerdictOrder', 'dead-branched target instrument verdict',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'instrumentAssert(finalTargetAssessment.instrumentOk,',
+      'if (Boolean(0)) {\n    instrumentAssert(finalTargetAssessment.instrumentOk,',
+    ).replace(
+      "{ suppressed, targetAssessment: finalTargetAssessment });\n  instrumentAssert(cleanupIntegrity,",
+      "{ suppressed, targetAssessment: finalTargetAssessment });\n  }\n  instrumentAssert(cleanupIntegrity,",
+    ),
+    'suppressionTargetVerdictOrder', 'dynamically dead-branched target instrument verdict',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'instrumentAssert(finalTargetAssessment.instrumentOk,',
+      'if (1 === 0) {\n    instrumentAssert(finalTargetAssessment.instrumentOk,',
+    ).replace(
+      "{ suppressed, targetAssessment: finalTargetAssessment });\n  instrumentAssert(cleanupIntegrity,",
+      "{ suppressed, targetAssessment: finalTargetAssessment });\n  }\n  instrumentAssert(cleanupIntegrity,",
+    ),
+    'suppressionSourceDigest', 'nonliteral dead-branched target instrument verdict',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "instrumentAssert(cleanupIntegrity,\n    'disabled suppression cleanup integrity is red',\n    { suppressed, cleanupChecks, assessment });\n  productAssert(finalTargetAssessment.productOk,\n    'disabled Tame target product evidence is red',\n    { suppressed, targetAssessment: finalTargetAssessment });",
+      "productAssert(finalTargetAssessment.productOk,\n    'disabled Tame target product evidence is red',\n    { suppressed, targetAssessment: finalTargetAssessment });\n  instrumentAssert(cleanupIntegrity,\n    'disabled suppression cleanup integrity is red',\n    { suppressed, cleanupChecks, assessment });",
+    ),
+    ['suppressionCleanupVerdictOrder', 'suppressionInstrumentVerdictOrder'],
+    'moved cleanup instrument verdict after product verdict',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'instrumentAssert(cleanupIntegrity,',
+      'if (false) {\n    instrumentAssert(cleanupIntegrity,',
+    ).replace(
+      "{ suppressed, cleanupChecks, assessment });\n  productAssert(finalTargetAssessment.productOk,",
+      "{ suppressed, cleanupChecks, assessment });\n  }\n  productAssert(finalTargetAssessment.productOk,",
+    ),
+    'suppressionCleanupVerdictOrder', 'dead-branched cleanup integrity verdict',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "productAssert(finalTargetAssessment.productOk,\n    'disabled Tame target product evidence is red',\n    { suppressed, targetAssessment: finalTargetAssessment });\n  instrumentAssert(assessment.instrumentOk, 'disabled suppression instrument evidence is red',\n    { suppressed, assessment });",
+      "instrumentAssert(assessment.instrumentOk, 'disabled suppression instrument evidence is red',\n    { suppressed, assessment });\n  productAssert(finalTargetAssessment.productOk,\n    'disabled Tame target product evidence is red',\n    { suppressed, targetAssessment: finalTargetAssessment });",
+    ),
+    'suppressionInstrumentVerdictOrder',
+    'moved full suppression instrument verdict before coherent target product verdict',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'instrumentAssert(assessment.instrumentOk, \'disabled suppression instrument evidence is red\',',
+      'instrumentAssert(true, \'disabled suppression instrument evidence is red\',',
+    ),
+    ['suppressionAssessmentEnforced', 'suppressionInstrumentVerdictOrder'],
+    'bypassed suppression assessment',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "instrumentAssert(collectionError === null,\n    collectionError?.message || 'disabled suppression collection is red',\n    { suppressed, targetAssessment: finalTargetAssessment, assessment });\n  instrumentAssert(finalTargetAssessment.instrumentOk,",
+      "instrumentAssert(finalTargetAssessment.instrumentOk,",
+    ).replace(
+      "productAssert(finalTargetAssessment.productOk,\n    'disabled Tame target product evidence is red',\n    { suppressed, targetAssessment: finalTargetAssessment });",
+      "productAssert(finalTargetAssessment.productOk,\n    'disabled Tame target product evidence is red',\n    { suppressed, targetAssessment: finalTargetAssessment });\n  instrumentAssert(collectionError === null,\n    collectionError?.message || 'disabled suppression collection is red',\n    { suppressed, targetAssessment: finalTargetAssessment, assessment });",
+    ),
+    'suppressionInstrumentVerdictOrder',
+    'moved collection-error instrument verdict after product verdict',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      "instrumentAssert(assessment.instrumentOk, 'disabled suppression instrument evidence is red',\n    { suppressed, assessment });\n  productAssert(same(beforeRaw, exhaustedRaw),",
+      "productAssert(same(beforeRaw, exhaustedRaw),",
+    ).replace(
+      "productAssert(assessment.productOk, 'disabled suppression product evidence is red',\n    { suppressed, assessment });",
+      "productAssert(assessment.productOk, 'disabled suppression product evidence is red',\n    { suppressed, assessment });\n  instrumentAssert(assessment.instrumentOk, 'disabled suppression instrument evidence is red',\n    { suppressed, assessment });",
+    ),
+    'suppressionInstrumentVerdictOrder',
+    'moved final suppression instrument verdict after product verdicts',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'async function collectSuppression(send, sessionId) {',
+      'async function collectSuppression(send, sessionId) {\n  void target?.ok;',
+    ),
+    'suppressionNoCollapsedOracle', 'restored collapsed suppression oracle',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'async function collectSuppression(send, sessionId) {',
+      'async function collectSuppression(send, sessionId) {\n  if (Boolean(1)) return null;',
+    ),
+    'suppressionNoEarlyReturn', 'inserted executable suppression early return',
+  );
+  assertInstrumentSealOnly(
+    collectorSource.replace(
+      'async function collectSuppression(send, sessionId) {',
+      'async function collectSuppression(send, sessionId) {\n  return null;',
+    ),
+    'suppressionNoEarlyReturn', 'inserted direct suppression early return',
+  );
   const overrideFlag = '--dur' + 'ation';
   assert(!assessArc4RecoveryInstrumentSeal(
     `${collectorSource}\n${overrideFlag}`, PAGE_EVIDENCE_SOURCES,

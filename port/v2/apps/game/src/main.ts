@@ -748,7 +748,10 @@ const stopF4Heartbeat = (): void => {
   if (f4HeartbeatTimer !== 0) clearInterval(f4HeartbeatTimer);
   f4HeartbeatTimer = 0;
 };
-const heartbeatF4 = async (): Promise<void> => {
+let f4HeartbeatCycleInFlight: Promise<void> | null = null;
+let f4HeartbeatSmokeQuiesced = false;
+const F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER = Symbol('f4-heartbeat-cycle-checkpoint-owner');
+const runF4HeartbeatCycle = async (): Promise<void> => {
   if (!f4Runtime || persistHold || !f4PageVisible()
     || activePersist || importWriteInFlight || replacementTransaction) return;
   if (f4HeartbeatInFlight) return f4HeartbeatInFlight;
@@ -780,11 +783,13 @@ const heartbeatF4 = async (): Promise<void> => {
       tameGreetingAudioOwner?.setAnswerable(runtime.diagnostics().answerable);
     }
   }
-  /* A receipt-bearing product action may already own activePersist while awaiting this
-     heartbeat. Queuing this heartbeat's checkpoint behind that same barrier
-     would make the action await the heartbeat while the heartbeat awaits the
-     action. A later ordinary checkpoint remains free to queue after settle. */
-  if (checkpointDue && !productActionInFlight) await persistView();
+  /* A receipt-bearing product action or ordinary checkpoint may already own
+     activePersist while awaiting this complete heartbeat cycle. Never queue
+     this cycle's checkpoint behind that barrier. The only self-owned persist
+     receives the private token which prevents it from awaiting its own tail. */
+  if (checkpointDue && !productActionInFlight && !activePersist) {
+    await persistView(null, 'ordinary', F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER);
+  }
   if (heartbeatOwned && openPanelId() === 'shipyard' && !productActionInFlight) {
     refreshEngineeringPanelState();
   }
@@ -793,12 +798,56 @@ const heartbeatF4 = async (): Promise<void> => {
     refreshCaptureCardState();
   }
 };
+const heartbeatF4 = (): Promise<void> => {
+  if (f4HeartbeatSmokeQuiesced) return Promise.resolve();
+  if (f4HeartbeatCycleInFlight) return f4HeartbeatCycleInFlight;
+  const run = runF4HeartbeatCycle();
+  const tracked = run.finally(() => {
+    if (f4HeartbeatCycleInFlight === tracked) f4HeartbeatCycleInFlight = null;
+  });
+  f4HeartbeatCycleInFlight = tracked;
+  return tracked;
+};
 const settleF4Heartbeat = async (): Promise<void> => {
-  if (f4HeartbeatInFlight) await f4HeartbeatInFlight;
+  const cycle = f4HeartbeatCycleInFlight;
+  if (cycle) await cycle;
 };
 const startF4Heartbeat = (): void => {
-  if (!f4Runtime || persistHold || !f4PageVisible() || f4HeartbeatTimer !== 0) return;
+  if (f4HeartbeatSmokeQuiesced || !f4Runtime || persistHold
+    || !f4PageVisible() || f4HeartbeatTimer !== 0) return;
   f4HeartbeatTimer = window.setInterval(() => { void heartbeatF4(); }, F4_HEARTBEAT_MS);
+};
+const quiesceF4HeartbeatForSmoke = async (): Promise<Readonly<{
+  schema: 'cf-v2-f4-heartbeat-quiescence/v1';
+  documentToken: string;
+  wasRunning: boolean;
+  stopped: boolean;
+  cycleSettled: boolean;
+}>> => {
+  const wasRunning = f4HeartbeatTimer !== 0;
+  f4HeartbeatSmokeQuiesced = true;
+  stopF4Heartbeat();
+  while (f4HeartbeatCycleInFlight) await f4HeartbeatCycleInFlight;
+  return Object.freeze({
+    schema: 'cf-v2-f4-heartbeat-quiescence/v1',
+    documentToken: DOCUMENT_TOKEN,
+    wasRunning,
+    stopped: f4HeartbeatTimer === 0,
+    cycleSettled: f4HeartbeatCycleInFlight === null,
+  });
+};
+const resumeF4HeartbeatForSmoke = (): Readonly<{
+  schema: 'cf-v2-f4-heartbeat-resume/v1';
+  documentToken: string;
+  running: boolean;
+}> => {
+  f4HeartbeatSmokeQuiesced = false;
+  startF4Heartbeat();
+  return Object.freeze({
+    schema: 'cf-v2-f4-heartbeat-resume/v1',
+    documentToken: DOCUMENT_TOKEN,
+    running: f4HeartbeatTimer !== 0,
+  });
 };
 let persistedPagehideCount = 0;
 let persistedPageshowCount = 0;
@@ -5179,6 +5228,7 @@ function installKeyboardExploration(): void {
 async function persistView(
   replacementOwner: ReplacementTransaction | null = null,
   intent: EcologyEpochCheckpointIntent = 'ordinary',
+  heartbeatCycleOwner: typeof F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER | null = null,
 ): Promise<boolean> {
   if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
     || !f4RuntimeMayMutate() || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
@@ -5186,7 +5236,9 @@ async function persistView(
     let epochStage: EcologyEpochStage | null = null;
     let durable = false;
     try {
-      await settleF4Heartbeat();
+      if (heartbeatCycleOwner !== F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER) {
+        await settleF4Heartbeat();
+      }
       const runtime = f4Runtime;
       if (!f4RuntimeMayMutate(runtime)) return false;
       const staged = ecologyEpochAuthority.stage(ecologyActivePlayNow(), intent);
@@ -8686,17 +8738,19 @@ async function loadSave(): Promise<void> {
       },
       __smokeArmF4HeartbeatStorageFailure: () => {
         if (smokeRejectNextF4HeartbeatStorage || f4AuthorityReloadScheduled
-          || f4HeartbeatInFlight !== null) return false;
+          || f4HeartbeatInFlight !== null || f4HeartbeatCycleInFlight !== null) return false;
         smokeRejectNextF4HeartbeatStorage = true;
         return true;
       },
       __smokeArmF4RevisionVerificationFailure: () => {
         if (smokeRejectNextF4RevisionVerification || f4AuthorityReloadScheduled
-          || f4HeartbeatInFlight !== null) return false;
+          || f4HeartbeatInFlight !== null || f4HeartbeatCycleInFlight !== null) return false;
         smokeRejectNextF4RevisionVerification = true;
         return true;
       },
       __smokeRunF4Heartbeat: heartbeatF4,
+      __smokeQuiesceF4Heartbeat: quiesceF4HeartbeatForSmoke,
+      __smokeResumeF4Heartbeat: resumeF4HeartbeatForSmoke,
       __smokeArmF4ConvergenceReloadHold: () => {
         if (f4AuthorityReloadScheduled) return false;
         return smokeF4ConvergenceReloadHold.arm();

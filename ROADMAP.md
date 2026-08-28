@@ -17,77 +17,90 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-28 · FINAL8 STOPPED AT RECOVERY PRECONDITION · INSTRUMENT REPAIR LOCAL ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-28 · FINAL9 STOPPED AT EXHAUSTED-CONTROL ORACLE · SUCCESSOR REPAIR LOCAL ◀◀◀
 
 ### Exact local boundary
 
 - **Owner/environment:** OpenAI/Codex desktop on macOS, root
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
   `origin/openai/mac`. Do not edit another agent's worktree or the sibling live-site repository.
-- **Signed Final8 source:** `c133c89ead736c9c7414af1e6242acd411339853` (tree
-  `e93b6808e9442e2bbf48ef5aa158d9c0ee8a78af`, parent `53d030b…`) was clean and unchanged through
-  every completed stage. It contains the bounded Final7 Inventory/Compendium/Settings repair.
-  Final8 is immutable and cannot resume after the current instrument repair.
+- **Signed Final9 source:** `a85e0edf9b7ceca0f13ecf32bb8ac3c88db6ceb1` (tree
+  `7260957697be3574626d42e12de78cb60e143969`, parent `c133c89…`) was clean and unchanged through
+  every completed stage. It contains the Final8 chronology/clock repair and its preserved evidence.
+  Final9 is immutable and cannot resume after the current instrument repair.
 - **Repair-successor boundary:** after this batch's local signed commit, the exact candidate is the
   clean signed `HEAD`; fail closed if its signature or worktree check disagrees. It contains the
-  Recovery collector/contract/tests, seven Final8 audit carriers and synchronized live references.
-  The repair changes only how ready-surface UI/state snapshots and product-precondition inputs are
-  collected, witnessed, replayed and classified. No product runtime, deterministic content, save
-  schema, numeric ruler, production version or release identity changed. This successor has no
-  browser certificate until a fresh campaign completes.
+  shared disabled-suppression contract, both Recovery and Slice collectors, Recovery source seal,
+  negative controls, seven Final9 audit carriers and synchronized live references. The repair changes
+  evidence collection/replay/classification plus smoke-only full-heartbeat quiescence and complete-
+  cycle single-flight ownership. No deterministic content, save schema, numeric ruler, production
+  version or release identity changed; the live SceneMemory/Compendium producer records were rebound
+  to the changed source/build bytes while every historical ruler/sample/ceiling stayed intact. This
+  successor has no browser certificate until a fresh campaign completes.
 - **Hosted authority:** `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN` and the repository is public, but
   **zero exact hosted attempts are authorized**. The 3,000 cap remains fail-closed whenever
   visibility is private or ambiguous. No push, PR write, label, dispatch, rerun, merge, deployment,
   publication or version bump is authorized by the mode alone.
 
-### Immutable Final8 campaign result
+### Immutable Final9 campaign result
 
-- Layout `20260828-phase4-final8-c133c89ead73-layout`: **PASS 787/787** across ten viewports in
-  76,318 ms; named verifier PASS.
-- SceneMemory `20260828-phase4-final8-c133c89ead73-scenemem`: **PASS 42/42** in 10,168 ms;
+- Layout `20260828-phase4-final9-a85e0edf9b7c-layout`: **PASS 787/787** across ten viewports in
+  76,313 ms; named verifier PASS.
+- SceneMemory `20260828-phase4-final9-a85e0edf9b7c-scenemem`: **PASS 42/42** in 10,202 ms;
   named verifier PASS.
-- Compendium `20260828-phase4-final8-c133c89ead73-compendium`: **PASS 78/78** in 46,530 ms with
+- Compendium `20260828-phase4-final9-a85e0edf9b7c-compendium`: **PASS 78/78** in 46,170 ms with
   all six PNG bindings; named verifier PASS.
-- Slice `20260828-phase4-final8-c133c89ead73-slice`: **PASS**, zero findings/scopes and ten PNGs
-  in 415,546 ms; named verifier PASS.
-- Glass `20260828-phase4-final8-c133c89ead73-glass`: **PASS** across all 12 viewports with zero
-  findings or instrument failures in 87,045 ms; named verifier PASS. This is exact-source evidence
-  that the Final7 Inventory, Compendium and Settings repairs work across the full matrix.
-- Recovery `20260828-phase4-final8-c133c89ead73-recovery` ran once and stopped terminal **FAIL** at
-  its fixture precondition after 7,633 ms with the sole failed clause `runtimeCaptureOrder`, zero
-  retries and complete cleanup. Burn-down, exhaustion, offline closure/reopen, the 20-minute active
-  observation, boundary crossing and recovered stages did not run. No Recovery product verdict or
-  recovery claim exists.
+- Slice `20260828-phase4-final9-a85e0edf9b7c-slice`: **PASS**, zero findings/scopes and ten PNGs
+  in 414,850 ms; named verifier PASS.
+- Glass `20260828-phase4-final9-a85e0edf9b7c-glass`: **PASS** across all 12 viewports with zero
+  findings or instrument failures in 86,524 ms; named verifier PASS.
+- Recovery `20260828-phase4-final9-a85e0edf9b7c-recovery` ran once and stopped terminal **FAIL** at
+  exhausted after 87,589 ms. Fixture and the complete 16-attempt burn-down passed. The old oracle
+  rejected a semantically disabled 292×44 Tame control whose unrevealed centre was below the Survey
+  scrollport. Close/checkpoint, closed/offline proof, reopen, the real 20-minute active observation,
+  boundary crossing and recovered stages did not run. Cleanup passed, no retry occurred, and Final9
+  makes no Recovery product-layout verdict or recovery claim.
 - All predecessor/source hashes were exact and serial. Edge `151.0.4129.107` / CDP `1.3` is run
   provenance only. Exact carrier hashes and sizes are in `audits/README.md`.
 
 ### Recovery diagnosis and bounded repair
 
-- Post-run source review proved the report's one red was an instrument chronology mismatch, not a
-  demonstrated game defect. Recovery sampled outer `state` first, then its nested UI expression
-  called `state()` again. The shared precondition correctly expects canonical UI → state order, so
-  the later UI clock could legitimately exceed the earlier state clock; equal millisecond values
-  could also let the reversed collector false-pass.
-- The bounded repair now captures UI then state and emits a browser-derived witness with exact
-  document token, ordinals, page-monotonic start/end times and runtime projections. Malformed,
-  swapped or cross-document receipts are instrument failures. A trusted receipt with a genuinely
-  backward product runtime remains product-red through the unchanged shared precondition. The
-  10-second chronology/lag contract is not loosened.
-- Mutation controls cover correct order, reversed distinct/equal values, missing or duplicate
-  ordinals, nonmonotonic receipt time, wrong document identity, trusted backward runtime and exact
-  evidence replay. The production collector and its trusted page sources also fail closed on clock
-  wrapper/binding shadowing plus direct, computed, destructuring, iteration, descriptor, alias,
-  whole-object, prototype and legacy-accessor clock writers.
-- Browser-free verification is terminal-green: 138 Vitest files /1,489 pass /one intentional skip,
-  all TypeScript programs, `artunused`, the Recovery selftest, six focused Recovery/evidence tests,
-  syntax and diff checks. Two independent bounded code/evidence reviews are **CLEAR** for the final
-  local checkpoint. Final8 reports remain historical exact-source evidence only.
+- Post-run geometry and source review proved the Final9 red was an instrument oracle defect, not a
+  demonstrated game defect. The old Recovery collector did not reveal Tame inside the clipped
+  `#survey` scrollport, collapsed geometry and ownership into one `ok` bit and retained no hit owner.
+  Final9 Glass independently revealed the same control class at the same phone viewport and proved
+  containment/ownership; Final9 Slice also passed its native disabled-suppression path.
+- Both Slice and Recovery now emit the same exact v1 suppression receipt: exact Survey/Tame owner,
+  initial plus two post-reveal settled samples, button/card/viewport/scroll/hit/document evidence,
+  green-prefix dispatch coordinates, one trusted pointer trace, durable/app before/after state and a
+  `finally` cleanup receipt. Scroll is restored before a two-rAF/task settlement; the owned abort
+  signal and absence of all owned globals are replayed rather than trusted as collector booleans.
+- Both collectors take a smoke-only hold, stop the timer, join the complete heartbeat through its
+  revision/checkpoint/UI tail and recapture one synchronized raw → state → UI exhausted baseline.
+  Exact quiesce/resume receipts plus stable lease-read, revision-read and lease-heartbeat counters
+  reject overlap. Visibility cannot restart the timer while held, fault injection cannot arm in the
+  post-renewal tail, and resume occurs only after cleanup. Recovery's exact source seal is
+  `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771`; Slice's is
+  `baa284a736d9243df4a61de192e553111c9c5fbc9d6aa70ffd05af5b6e31e45f`.
+- Instrument and product attribution is fail-closed. Coherent missing controls/attributes are
+  product-red; malformed shapes, node/document discontinuity, unsettled geometry, dispatch/trace
+  mismatch or incomplete cleanup are instrument-red. Cleanup integrity and target-instrument truth
+  are asserted before every product verdict. Protected capture, ownership, card/coordinator/outcome,
+  visible Survey, audio, toast and runtime state are bound to both the exhausted snapshot and the
+  post-input state.
+- Exact-shape, nullable-semantic, extra-key, document-replacement, target/product, outcome, cleanup,
+  order/reorder, dead-branch, concurrent-red and output-freezing controls are mutation-sensitive.
+  Slice has a browser-free producer→shared-exhaustion compatibility check. Browser-free verification
+  is green at 138 Vitest files /1,492 pass /one intentional skip, all TypeScript programs,
+  `artunused`, both direct selftests, current-producer authority proof, syntax and diff checks. Three
+  independent bounded contract/collector/runtime reviews are clear. Final9 reports remain historical
+  exact-source evidence only; the repaired successor is ready for its local signed checkpoint.
 
 ### Next exact execution sequence
 
-1. Commit/sign the reviewed Recovery instrument repair, synchronized references and Final8
+1. Commit/sign the reviewed Recovery/Slice instrument repair, synchronized references and Final9
    carriers. Verify the signature and clean unchanged worktree, then derive a fresh campaign
-   identity from the successor hash. Never reuse Final8 IDs or carriers.
+   identity from the successor hash. Never reuse Final9 IDs or carriers.
 2. Run once and serially on that signed source:
    **Layout → SceneMemory → Compendium → Slice → Glass → recovery**, using fresh IDs, exact producer
    authorities and every named verifier. On any red or instrument result, preserve evidence, stop
@@ -108,12 +121,12 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **Current side: OpenAI/Codex** — continue locally; finish and sign the Final8 Recovery instrument
-  repair, then start the fresh successor campaign at Layout. Nothing in this batch is pushed or merged.
+- **Current side: OpenAI/Codex** — continue locally; finish review and sign the Final9 exhausted-control
+  oracle repair, then start the fresh successor campaign at Layout. Nothing is pushed or merged.
 - **GitHub step: none.** Report the final local commit and ahead count; do not push or open/update a PR.
 - **PR details:** not needed now. If Nick later authorizes the exact GitHub write, use base `develop`,
   source `openai/mac`, title **`Phase 4: complete the playable-slice campaign repair`**, description
-  **`Preserves the immutable Final8 chain, repairs the Recovery capture instrument, completes a fresh signed verification chain, and synchronizes the Phase-4 references.`**
+  **`Preserves the immutable Final9 chain, repairs the shared disabled-suppression instrument, completes a fresh signed verification chain, and synchronizes the Phase-4 references.`**
 - **Other side: Anthropic/Claude Code** — Nick does **not** need to open Claude now. Claude does not
   have this unmerged local batch and should wait until a future PR is merged into `develop` before
   syncing; do not copy files manually or edit against this dirty campaign work.

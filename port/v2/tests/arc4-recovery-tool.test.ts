@@ -10,6 +10,9 @@ import { assessArc4RecoveryInstrumentSeal } from '../tools/arc4-recovery-contrac
 const collectorPath = fileURLToPath(
   new URL('../tools/arc4recovery.mjs', import.meta.url),
 );
+const sliceCollectorPath = fileURLToPath(
+  new URL('../tools/slicesmoke.mjs', import.meta.url),
+);
 const firstRealRunEvidencePath = fileURLToPath(new URL(
   '../../../audits/ARC4_RECOVERY_REALTIME_INSTRUMENT_FAILURE_20260826.json.gz',
   import.meta.url,
@@ -19,6 +22,13 @@ const sha256 = (value: Uint8Array): string =>
   createHash('sha256').update(value).digest('hex');
 
 describe('Arc 4 real-time recovery certificate instrument', () => {
+  it('runs the sealed Slice disabled-suppression producer selftest', () => {
+    const output = execFileSync(process.execPath, [
+      sliceCollectorPath, '--disabled-suppression-selftest',
+    ], { encoding: 'utf8' });
+    expect(output).toContain('SLICE DISABLED SUPPRESSION SELFTEST: PASS');
+  });
+
   it('pins the ready-surface runtime snapshots to UI then state chronology', () => {
     const collector = readFileSync(collectorPath, 'utf8');
     const uiThenState = "uiCapture=capture('ui',()=>${ARC4_CAPTURE_UI_EXPRESSION}),\n          stateCapture=capture('state',()=>S?.api?.state?.()??null),";

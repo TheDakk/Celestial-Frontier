@@ -10,46 +10,47 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — signed Final8 reached Recovery, precondition-only instrument repair pending (2026-08-28)
+## Current-state boundary — signed Final9 reached exhausted; shared suppression repair pending certificate (2026-08-28)
 
-Signed clean source `c133c89ead736c9c7414af1e6242acd411339853` supplied Final8 Layout
+Signed clean source `a85e0edf9b7ceca0f13ecf32bb8ac3c88db6ceb1` supplied Final9 Layout
 787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with all six review PNGs,
 Slice with zero findings and ten screenshots, and full Glass across all 12 viewports with zero
-findings and zero instrument failures. Recovery then ran once for 7,633 ms and stopped terminal
-`fail` at its fixture precondition with only `runtimeCaptureOrder` red, zero automatic retries and
-complete cleanup. Burn-down, exhaustion, close/offline checkpoints, the 20-minute active
-observation, boundary crossing and recovered-state judgment did not run.
+findings or instrument failures. Recovery ran once, passed its fixture and the complete 16-attempt
+burn-down, then stopped terminal `fail` at exhausted after 87,589 ms with complete cleanup and zero
+retry. Close/checkpoint, closed/offline proof, reopen, the real 20-minute active observation,
+boundary crossing and recovered-state judgment did not run.
 
-The product repair is narrow: only `<=360px` Inventory rows stack their complete copy and wrapping
-badges into one min-width-safe column, retaining every field/action and the 44px button; only the
-Compendium list-mode heading stops clearing the already-reserved sticky-Close row, retaining the
-58px gutter and bounded virtual scroller. The hostile-row oracle now requires the exact logical row
-both mounted and fully contained, so an overscan-only mount cannot satisfy geometry.
+The old exhausted-control oracle sampled a semantically disabled 292×44 Tame button before
+revealing it inside the clipped Survey scrollport, collapsed geometry and hit ownership into one
+bit and retained no hit owner. Unchanged-source Glass independently revealed the same control class
+and proved containment/ownership at the same phone viewport; Slice passed its native disabled-
+suppression path. Final9 therefore exposed an instrument defect and makes no Recovery product-
+layout verdict or recovery claim. It remains immutable historical exact-source evidence.
 
-The Settings oracle independently reveals and activates Sound and Creature voices. It re-queries
-current panel/control/Close nodes for two settled samples; binds control/panel/bounds/Close geometry,
-panel/document scroll, containment, overlap and centre ownership; separates requested from actually
-dispatched input; and proves preparation → dispatch-time target → trusted touch/mouse receipt →
-exact post-state/focus. Phase and outer restoration run in `finally`. Malformed, unsettled,
-transport or restoration evidence is instrument failure; stable wrong geometry/ownership/state/
-focus is product failure. Stable missing Close is product-red, while incoherent absence or node
-replacement is instrument-red. Coverage is credited only after four activations and restored-off
-settlement, with product-blocked viewports tracked as a disjoint terminal state.
+The local successor makes Slice and Recovery share one exact disabled-suppression receipt. Each
+collector takes a smoke-only hold, stops and joins the complete heartbeat cycle, captures one
+synchronized raw → state → UI exhausted baseline, reveals and settles the target twice, revalidates
+it immediately before the bound native dispatch, and retains exact target/card/viewport/scroll/hit/
+document identity plus one trusted pointer. Exact quiesce/resume receipts and stable lease-read,
+revision-read and lease-heartbeat counters reject overlap. Scroll, listeners and owned globals are
+restored before the after-state read; cleanup and target-instrument truth are asserted before product
+attribution. Recovery and Slice seal the exact source regions at the SHA-256 values recorded in the
+current codebase reference and `README.md`; their mutation controls reject source/order bypass.
 
-Final8 therefore certifies the bounded Inventory, Compendium and Settings product/oracle repair for
-that exact signed source. Post-run diagnosis found a narrower Recovery instrument mismatch: the
-collector captures the outer state snapshot before the nested UI snapshot, while its precondition
-required the reverse runtime order. Production's monotonic runtime and the separate rendered
-active-play projection were not red, so the stopped run made no Recovery product judgment.
+The inherited narrow product fixes remain unchanged: `<=360px` Inventory rows retain every field
+while stacking copy/badges; Compendium keeps its bounded scroller and one reserved sticky-Close row;
+hostile rows must be mounted and fully contained; and Settings gives each control an isolated reveal,
+two-sample settlement, native receipt and exact scroll restoration. Final9 certifies those outcomes
+through full Glass for its own signed source.
 
-The repair successor changes only that Recovery collector/contract/test chronology and is not yet
-browser-certified. Final8 and all predecessor bindings remain immutable historical exact-source
-evidence and cannot resume after these changed bytes. After the repair is signed, a fresh successor
-must restart Layout → SceneMemory → Compendium → Slice → Glass → recovery. The v2 draft remains
-exactly 55 bullets; numeric rulers, samples, browser authority, retry policy and production
-version/release identity are unchanged. No current-WIP chain, Recovery PASS, 20-minute recovery
-claim, publication, hosted, release, deployment, version-bump or external authority exists. Edge
-`151.0.4129.107` / CDP `1.3` is Final8 provenance only.
+The repaired successor is browser-uncertified; its exact campaign identity is this batch's clean
+signed `HEAD`, which must restart Layout → SceneMemory → Compendium → Slice → Glass → recovery.
+The v2 draft remains exactly 55 bullets. Live memory producer records follow the changed source/build
+bytes, while numeric rulers, historical samples, browser capability authorities, retry policy and
+production version/release identity remain unchanged. No Recovery PASS, 20-minute recovery claim,
+publication, hosted, release, deployment, version bump or external authority exists. Edge
+`151.0.4129.107` / CDP `1.3` is Final9 provenance only; compatible point updates never trigger a
+rebaseline, recalibration or threshold move.
 
 Historical calibration remains intact:
 `bb5dc7c7f4372f712778af67ace2b5f81b71b99d`
@@ -172,8 +173,8 @@ post-run instrument diagnosis and current repair are recorded in the live bounda
   the exact logical id/index must be mounted **and fully contained**, the bounded loop recentres a
   mounted off-card row, and final geometry is one combined acceptance. Mount-only, unmounted,
   missing-reveal and bad-geometry controls remain red. Live Compendium producer is rebound to
-  `e858722e6da4c20d0f618aeed23ea9e037feb09cac0887feaf27c6f5430b601f` under budget-file SHA-256
-  `726881b8ffec84621a950fa481ca9bc54a0adf4092625976683a40fd6c42ea74`; collector, measurement,
+  `ba67d4351ea9d5905c1948b7a8ecf7fe6761dd3080263cd43ebaa67d4ca8ea30` under budget-file SHA-256
+  `eba266bd5d771a214eb89a80c7e5c8e8f1bb26ed48272e7a3eccc4688768fca5`; collector, measurement,
   numeric ceilings and historical samples are unchanged. Signed Final8 passed Compendium 78/78 and
   later full Glass with zero findings for this exact source; the current Recovery-instrument WIP
   requires a newly signed full-chain restart.
@@ -245,8 +246,8 @@ post-run instrument diagnosis and current repair are recorded in the live bounda
   Final5 SceneMemory 42/42, and signed `ea845d7…` passed Final6 SceneMemory 42/42 before the later
   Slice instrument stop. Signed `53d030b…` then passed Final7 SceneMemory 42/42 before green
   Compendium/Slice and the Glass terminal stop. The post-Final7 product/release bytes rebind live
-  buildDist `9db56745f9c32c446646daff084a9e285bd6183bbca85d522f7be6dfd30cb3a6` under Scene budget-file
-  SHA-256 `7fcb7757547d7b05243a224771b66776f58ed41b3ed39438327ea3c9942e168e`; no numeric ceiling or
+  buildDist `29494595f6d3ea03838b0d2a4c7bd1bb2b618dbb4623a56de05d44de9f99efff` under Scene budget-file
+  SHA-256 `d4e45975c5678942d50ede78fec51219f1a550be80de418056e910057d2b1762`; no numeric ceiling or
   sample changed, and a fresh signed successor is required from Layout. Exact Edge point version remains provenance: a compatible
   update alone never starts calibration, repins authority or moves a threshold.
 

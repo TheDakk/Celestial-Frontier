@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-27. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-28. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -55,6 +55,30 @@ scroll owner it may move, use the native scroll path, require full containment, 
 point. Restore exact `scrollTop`/`scrollLeft` values in `finally`, await settlement again, and prove
 the restored outcome green. A positive, its deliberate negative and the restored positive must be
 isolated per control; audit order and inherited scroll state are never evidence.
+
+Disabled semantics do not waive that geometry law. Final9 Recovery sampled a correctly disabled
+292×44 Tame button before revealing it inside the Survey scrollport, collapsed geometry and hit
+ownership into one bit and retained no hit owner. Keep the initial receipt, reveal through the exact
+native scroll owner, re-query/settle twice and retain button/card/viewport/scroll/point/document
+identity before dispatch. A coherent missing control or semantic attribute is product-red;
+malformed/unsettled/replaced evidence is instrument-red. Abort listeners, restore scroll, prove
+owned globals absent, and assert cleanup integrity before emitting any product verdict—especially
+when product and cleanup are red at the same time.
+
+Snapshot-based suppression evidence must also quiesce the complete periodic mutation cycle, not
+merely clear its timer or await its inner lease renewal. Take a smoke-only hold before stopping the
+timer, join the full heartbeat through revision checks, checkpoint work and UI refresh, and prevent
+visibility from restarting it while held. Then capture one synchronized raw → state → UI baseline,
+bind the exhausted/before/after document tokens and monotonic chronology, and prove lease/revision/
+heartbeat counters did not move across the judged input. Resume on a fresh timer boundary only in
+`finally`, after target cleanup and the final state read. Exact quiesce/resume receipts and source-
+order mutations are instrument evidence; an unsuppressed model or durable-state change remains a
+product failure. Every ordinary persistence/action caller must await that complete cycle; only the
+cycle's own checkpoint may bypass itself through a private owner token, and only when no product
+action or ordinary writer already owns the persistence barrier. A coherent unusable target is
+product-red before full dispatch/outcome evidence that cannot exist for it, while collection,
+target-shape and cleanup integrity remain earlier instrument verdicts. A point browser update never
+changes this contract or asks for a rebaseline.
 
 ⚠⚠ **SEMANTIC ORACLES JUDGE THE CONTRACT, NOT A CONVENIENT HEURISTIC OR A HISTORICAL
 TABLE** (2026-08-27). A truthful Survey title such as **Mars** is four characters, so an arbitrary

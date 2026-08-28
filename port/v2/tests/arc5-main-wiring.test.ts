@@ -118,12 +118,20 @@ function bootErrors(source: string): string[] {
   }
 
   const mayMutate = section(source, 'function f4RuntimeMayMutate(', '\nfunction f4RuntimeMayAnswer(');
+  const heartbeatCycle = section(
+    source,
+    'const runF4HeartbeatCycle =',
+    '\nconst heartbeatF4 =',
+  );
   const heartbeat = section(source, 'const heartbeatF4 =', '\nconst settleF4Heartbeat =');
   const show = section(source, 'const showF4 =', "\naddEventListener('pagehide'");
-  if (mayMutate.length === 0 || heartbeat.length === 0 || show.length === 0
+  if (mayMutate.length === 0 || heartbeatCycle.length === 0
+    || heartbeat.length === 0 || show.length === 0
     || !mayMutate.includes('|| arc5OwnershipBootstrapPending')
     || !mayMutate.includes('|| arc4OwnershipBootstrapPending')
-    || !heartbeat.includes('|| arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending')
+    || !heartbeatCycle.includes('|| arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending')
+    || !heartbeat.includes('const run = runF4HeartbeatCycle();')
+    || !heartbeat.includes('if (f4HeartbeatCycleInFlight) return f4HeartbeatCycleInFlight;')
     || !show.includes('|| arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending')) {
     errors.push('boot-lifecycle-gates');
   }
@@ -760,6 +768,24 @@ describe('Arc 5 Main authority wiring', () => {
       '',
     );
     expect(bootErrors(lifecycle)).toContain('boot-lifecycle-gates');
+
+    const heartbeatLifecycle = replaceInSectionExact(
+      mainSource,
+      'const runF4HeartbeatCycle =',
+      '\nconst heartbeatF4 =',
+      '|| arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending',
+      '|| arc4OwnershipBootstrapPending',
+    );
+    expect(bootErrors(heartbeatLifecycle)).toContain('boot-lifecycle-gates');
+
+    const disconnectedHeartbeat = replaceInSectionExact(
+      mainSource,
+      'const heartbeatF4 =',
+      '\nconst settleF4Heartbeat =',
+      'const run = runF4HeartbeatCycle();',
+      'const run = Promise.resolve();',
+    );
+    expect(bootErrors(disconnectedHeartbeat)).toContain('boot-lifecycle-gates');
   });
 
   it('negative-controls Arc4-pending plus protected Arc5 as a zero-commit, zero-retry boot', () => {

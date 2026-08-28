@@ -16,6 +16,20 @@ function section(source: string, start: string, end: string): string {
   return at < 0 || stop < 0 ? '' : source.slice(at, stop);
 }
 
+function replaceInSectionExact(
+  source: string,
+  start: string,
+  end: string,
+  needle: string,
+  replacement: string,
+): string {
+  const body = section(source, start, end);
+  if (body.length === 0 || body.split(needle).length !== 2) {
+    throw new Error(`source section must contain exactly one mutation target: ${needle}`);
+  }
+  return source.replace(body, body.replace(needle, replacement));
+}
+
 function integrationErrors(source: string): string[] {
   const errors: string[] = [];
   const convergence = section(
@@ -48,14 +62,125 @@ function integrationErrors(source: string): string[] {
     errors.push('fail-closed-helper');
   }
 
-  const heartbeat = section(source, 'const heartbeatF4 =', '\nconst settleF4Heartbeat =');
-  const heartbeatFailure = heartbeat.indexOf(
+  const heartbeatCycle = section(
+    source,
+    'const runF4HeartbeatCycle =',
+    '\nconst heartbeatF4 =',
+  );
+  const heartbeatFailure = heartbeatCycle.indexOf(
     "handleF4HeartbeatStorageError(runtime, outcome, 'periodic F4 heartbeat');",
   );
-  const heartbeatOwned = heartbeat.indexOf("heartbeatOwned = outcome.kind === 'owned';");
+  const heartbeatOwned = heartbeatCycle.indexOf("heartbeatOwned = outcome.kind === 'owned';");
   if (heartbeatFailure < 0 || heartbeatOwned < 0 || heartbeatFailure >= heartbeatOwned
-    || !heartbeat.includes('if (!heartbeatOwned) return;')) {
+    || !heartbeatCycle.includes('if (!heartbeatOwned) return;')) {
     errors.push('periodic-heartbeat');
+  }
+
+  const heartbeat = section(source, 'const heartbeatF4 =', '\nconst settleF4Heartbeat =');
+  const smokeHold = heartbeat.indexOf(
+    'if (f4HeartbeatSmokeQuiesced) return Promise.resolve();',
+  );
+  const reuseCycle = heartbeat.indexOf(
+    'if (f4HeartbeatCycleInFlight) return f4HeartbeatCycleInFlight;',
+  );
+  const startCycle = heartbeat.indexOf('const run = runF4HeartbeatCycle();');
+  const trackCycle = heartbeat.indexOf('const tracked = run.finally(() => {');
+  const clearCycle = heartbeat.indexOf(
+    'if (f4HeartbeatCycleInFlight === tracked) f4HeartbeatCycleInFlight = null;',
+  );
+  const publishCycle = heartbeat.indexOf('f4HeartbeatCycleInFlight = tracked;');
+  const returnCycle = heartbeat.indexOf('return tracked;');
+  if (!source.includes('let f4HeartbeatCycleInFlight: Promise<void> | null = null;')
+    || !source.includes('let f4HeartbeatSmokeQuiesced = false;')
+    || !(smokeHold >= 0 && reuseCycle > smokeHold && startCycle > reuseCycle
+      && trackCycle > startCycle && clearCycle > trackCycle
+      && publishCycle > clearCycle && returnCycle > publishCycle)) {
+    errors.push('heartbeat-cycle-coalescing');
+  }
+
+  const settle = section(source, 'const settleF4Heartbeat =', '\nconst startF4Heartbeat =');
+  if (!settle.includes('const cycle = f4HeartbeatCycleInFlight;')
+    || !settle.includes('if (cycle) await cycle;')
+    || settle.includes('await f4HeartbeatInFlight')) {
+    errors.push('heartbeat-full-cycle-settlement');
+  }
+
+  const persist = section(source, 'async function persistView(', '\nlet _persistT');
+  const checkpointOwner = 'F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER';
+  const checkpointCall = `persistView(null, 'ordinary', ${checkpointOwner})`;
+  if (!source.includes(
+    `const ${checkpointOwner} = Symbol('f4-heartbeat-cycle-checkpoint-owner');`,
+  )
+    || !persist.includes(
+      `heartbeatCycleOwner: typeof ${checkpointOwner} | null = null,`,
+    )
+    || !persist.includes(`if (heartbeatCycleOwner !== ${checkpointOwner}) {`)
+    || !persist.includes('await settleF4Heartbeat();')
+    || !heartbeatCycle.includes(checkpointCall)
+    || (source.match(new RegExp(`\\b${checkpointOwner}\\b`, 'g')) ?? []).length !== 4
+    || (source.match(new RegExp(checkpointCall.replace(/[()]/g, '\\$&'), 'g')) ?? []).length !== 1) {
+    errors.push('heartbeat-checkpoint-owner');
+  }
+  if (!heartbeatCycle.includes(
+    'if (checkpointDue && !productActionInFlight && !activePersist) {',
+  )) {
+    errors.push('heartbeat-checkpoint-tail-guard');
+  }
+
+  const quiesce = section(
+    source,
+    'const quiesceF4HeartbeatForSmoke =',
+    '\nconst resumeF4HeartbeatForSmoke =',
+  );
+  const startHeartbeat = section(
+    source,
+    'const startF4Heartbeat =',
+    '\nconst quiesceF4HeartbeatForSmoke =',
+  );
+  const quiesceHold = quiesce.indexOf('f4HeartbeatSmokeQuiesced = true;');
+  const quiesceStop = quiesce.indexOf('stopF4Heartbeat();');
+  const quiesceDrain = quiesce.indexOf(
+    'while (f4HeartbeatCycleInFlight) await f4HeartbeatCycleInFlight;',
+  );
+  const resume = section(
+    source,
+    'const resumeF4HeartbeatForSmoke =',
+    '\nlet persistedPagehideCount',
+  );
+  const resumeRelease = resume.indexOf('f4HeartbeatSmokeQuiesced = false;');
+  const resumeStart = resume.indexOf('startF4Heartbeat();');
+  if (!startHeartbeat.includes('if (f4HeartbeatSmokeQuiesced || !f4Runtime || persistHold')
+    || !startHeartbeat.includes(
+      'f4HeartbeatTimer = window.setInterval(() => { void heartbeatF4(); }, F4_HEARTBEAT_MS);',
+    )
+    || !(quiesceHold >= 0 && quiesceStop > quiesceHold && quiesceDrain > quiesceStop)
+    || !quiesce.includes("schema: 'cf-v2-f4-heartbeat-quiescence/v1'")
+    || !quiesce.includes('documentToken: DOCUMENT_TOKEN,')
+    || !quiesce.includes('stopped: f4HeartbeatTimer === 0,')
+    || !quiesce.includes('cycleSettled: f4HeartbeatCycleInFlight === null,')
+    || !(resumeRelease >= 0 && resumeStart > resumeRelease)
+    || !resume.includes("schema: 'cf-v2-f4-heartbeat-resume/v1'")
+    || !resume.includes('documentToken: DOCUMENT_TOKEN,')
+    || !resume.includes('running: f4HeartbeatTimer !== 0,')
+    || !source.includes('__smokeQuiesceF4Heartbeat: quiesceF4HeartbeatForSmoke,')
+    || !source.includes('__smokeResumeF4Heartbeat: resumeF4HeartbeatForSmoke,')) {
+    errors.push('heartbeat-smoke-quiescence');
+  }
+
+  const storageArm = section(
+    source,
+    '__smokeArmF4HeartbeatStorageFailure: () => {',
+    '\n      __smokeArmF4RevisionVerificationFailure',
+  );
+  const revisionArm = section(
+    source,
+    '__smokeArmF4RevisionVerificationFailure: () => {',
+    '\n      __smokeRunF4Heartbeat',
+  );
+  const fullCycleArmGuard =
+    '|| f4HeartbeatInFlight !== null || f4HeartbeatCycleInFlight !== null) return false;';
+  if (!storageArm.includes(fullCycleArmGuard) || !revisionArm.includes(fullCycleArmGuard)) {
+    errors.push('heartbeat-smoke-arm-tail-window');
   }
 
   const show = section(source, 'const showF4 =', "\naddEventListener('pagehide'");
@@ -115,6 +240,140 @@ describe('F4 lease-storage failure app integration', () => {
       const mutant = mainSource.replace(marker, `__F4_MAIN_MUTANT_${index}__`);
       expect(integrationErrors(mutant), marker).not.toEqual([]);
     }
+  });
+
+  it('rejects heartbeat overlap and smoke-quiescence regressions independently', () => {
+    const wrapperMutations = [
+      [
+        'if (f4HeartbeatSmokeQuiesced) return Promise.resolve();',
+        'if (false) return Promise.resolve();',
+      ],
+      [
+        'if (f4HeartbeatCycleInFlight) return f4HeartbeatCycleInFlight;',
+        'if (false) return f4HeartbeatCycleInFlight!;',
+      ],
+      ['const run = runF4HeartbeatCycle();', 'const run = Promise.resolve();'],
+      [
+        'if (f4HeartbeatCycleInFlight === tracked) f4HeartbeatCycleInFlight = null;',
+        'f4HeartbeatCycleInFlight = null;',
+      ],
+    ] as const;
+    for (const [needle, replacement] of wrapperMutations) {
+      const mutant = replaceInSectionExact(
+        mainSource,
+        'const heartbeatF4 =',
+        '\nconst settleF4Heartbeat =',
+        needle,
+        replacement,
+      );
+      expect(integrationErrors(mutant), needle).toContain('heartbeat-cycle-coalescing');
+    }
+
+    const restartWhileHeld = replaceInSectionExact(
+      mainSource,
+      'const startF4Heartbeat =',
+      '\nconst quiesceF4HeartbeatForSmoke =',
+      'if (f4HeartbeatSmokeQuiesced || !f4Runtime || persistHold',
+      'if (!f4Runtime || persistHold',
+    );
+    expect(integrationErrors(restartWhileHeld)).toContain('heartbeat-smoke-quiescence');
+
+    const quiesceOrder = replaceInSectionExact(
+      mainSource,
+      'const quiesceF4HeartbeatForSmoke =',
+      '\nconst resumeF4HeartbeatForSmoke =',
+      'f4HeartbeatSmokeQuiesced = true;\n  stopF4Heartbeat();',
+      'stopF4Heartbeat();\n  f4HeartbeatSmokeQuiesced = true;',
+    );
+    expect(integrationErrors(quiesceOrder)).toContain('heartbeat-smoke-quiescence');
+
+    const undrained = replaceInSectionExact(
+      mainSource,
+      'const quiesceF4HeartbeatForSmoke =',
+      '\nconst resumeF4HeartbeatForSmoke =',
+      'while (f4HeartbeatCycleInFlight) await f4HeartbeatCycleInFlight;',
+      'await Promise.resolve();',
+    );
+    expect(integrationErrors(undrained)).toContain('heartbeat-smoke-quiescence');
+
+    const heldAfterResume = replaceInSectionExact(
+      mainSource,
+      'const resumeF4HeartbeatForSmoke =',
+      '\nlet persistedPagehideCount',
+      'f4HeartbeatSmokeQuiesced = false;',
+      'f4HeartbeatSmokeQuiesced = true;',
+    );
+    expect(integrationErrors(heldAfterResume)).toContain('heartbeat-smoke-quiescence');
+
+    const storageArmTailWindow = replaceInSectionExact(
+      mainSource,
+      '__smokeArmF4HeartbeatStorageFailure: () => {',
+      '\n      __smokeArmF4RevisionVerificationFailure',
+      ' || f4HeartbeatCycleInFlight !== null',
+      '',
+    );
+    expect(integrationErrors(storageArmTailWindow))
+      .toContain('heartbeat-smoke-arm-tail-window');
+
+    const revisionArmTailWindow = replaceInSectionExact(
+      mainSource,
+      '__smokeArmF4RevisionVerificationFailure: () => {',
+      '\n      __smokeRunF4Heartbeat',
+      ' || f4HeartbeatCycleInFlight !== null',
+      '',
+    );
+    expect(integrationErrors(revisionArmTailWindow))
+      .toContain('heartbeat-smoke-arm-tail-window');
+  });
+
+  it('settles the full tail while only its owning checkpoint may bypass itself', () => {
+    const innerOnlySettle = replaceInSectionExact(
+      mainSource,
+      'const settleF4Heartbeat =',
+      '\nconst startF4Heartbeat =',
+      'const cycle = f4HeartbeatCycleInFlight;\n  if (cycle) await cycle;',
+      'const cycle = f4HeartbeatInFlight;\n  if (cycle) await cycle;',
+    );
+    expect(integrationErrors(innerOnlySettle)).toContain('heartbeat-full-cycle-settlement');
+
+    const ownerlessCheckpoint = replaceInSectionExact(
+      mainSource,
+      'const runF4HeartbeatCycle =',
+      '\nconst heartbeatF4 =',
+      "persistView(null, 'ordinary', F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER)",
+      'persistView()',
+    );
+    expect(integrationErrors(ownerlessCheckpoint)).toContain('heartbeat-checkpoint-owner');
+
+    const ordinaryBypass = replaceInSectionExact(
+      mainSource,
+      "chartsDockEl.addEventListener('click', () => {",
+      '\n\n/* ---- SETTINGS',
+      'void persistView();',
+      "void persistView(null, 'ordinary', F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER);",
+    );
+    expect(integrationErrors(ordinaryBypass)).toContain('heartbeat-checkpoint-owner');
+
+    for (const removedGuard of ['!productActionInFlight && ', '&& !activePersist'] as const) {
+      const unguardedTail = replaceInSectionExact(
+        mainSource,
+        'const runF4HeartbeatCycle =',
+        '\nconst heartbeatF4 =',
+        removedGuard,
+        '',
+      );
+      expect(integrationErrors(unguardedTail), removedGuard)
+        .toContain('heartbeat-checkpoint-tail-guard');
+    }
+
+    const ordinarySettlementBypass = replaceInSectionExact(
+      mainSource,
+      'async function persistView(',
+      '\nlet _persistT',
+      'if (heartbeatCycleOwner !== F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER) {',
+      'if (false) {',
+    );
+    expect(integrationErrors(ordinarySettlementBypass)).toContain('heartbeat-checkpoint-owner');
   });
 
   it('schedules exactly one convergence before a throwing Shipyard repaint', () => {

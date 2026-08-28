@@ -91,8 +91,31 @@ function coordinatorContractErrors(source: string): string[] {
     ...actionOrderErrors(arc3, 'Arc 3'),
     ...actionOrderErrors(arc4, 'Arc 4'),
   );
-  if (!source.includes('if (checkpointDue && !productActionInFlight) await persistView();')) {
+  const heartbeatCycle = sourceSection(
+    source,
+    'const runF4HeartbeatCycle =',
+    '\nconst heartbeatF4 =',
+  );
+  const checkpoint = sourceSection(
+    heartbeatCycle,
+    'if (checkpointDue',
+    '\n  if (heartbeatOwned && openPanelId()',
+  );
+  if (!checkpoint.includes('!productActionInFlight')) {
     errors.push('Heartbeat checkpoint can wait on the product action that is waiting on that heartbeat');
+  }
+  if (!checkpoint.includes('!activePersist')) {
+    errors.push('Heartbeat checkpoint can queue behind ordinary persistence waiting on that heartbeat');
+  }
+  if (!checkpoint.includes(
+    'if (checkpointDue && !productActionInFlight && !activePersist) {',
+  )) {
+    errors.push('Heartbeat checkpoint gate does not exactly fence both persistence owners');
+  }
+  if (!checkpoint.includes(
+    "await persistView(null, 'ordinary', F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER);",
+  )) {
+    errors.push('Heartbeat checkpoint lacks its private cycle-owner persistence token');
   }
   if (!source.includes('const productActionCoordinator = createProductActionCoordinator();')) {
     errors.push('Arc 2, Arc 3 and Arc 4 do not share one main-owned product coordinator');
@@ -371,13 +394,37 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
   });
 
   it('negative-controls heartbeat, queued-persist guard, fresh carrier, and refusal refresh independently', () => {
-    const deadlocking = mainSource.replace(
-      'if (checkpointDue && !productActionInFlight) await persistView();',
-      'if (checkpointDue) await persistView();',
+    const productActionDeadlock = replaceInSourceSectionExact(
+      mainSource,
+      'const runF4HeartbeatCycle =',
+      '\nconst heartbeatF4 =',
+      'if (checkpointDue && !productActionInFlight && !activePersist) {',
+      'if (checkpointDue && !activePersist) {',
     );
-    expect(deadlocking).not.toBe(mainSource);
-    expect(coordinatorContractErrors(deadlocking)).toContain(
+    expect(coordinatorContractErrors(productActionDeadlock)).toContain(
       'Heartbeat checkpoint can wait on the product action that is waiting on that heartbeat',
+    );
+
+    const ordinaryPersistDeadlock = replaceInSourceSectionExact(
+      mainSource,
+      'const runF4HeartbeatCycle =',
+      '\nconst heartbeatF4 =',
+      'if (checkpointDue && !productActionInFlight && !activePersist) {',
+      'if (checkpointDue && !productActionInFlight) {',
+    );
+    expect(coordinatorContractErrors(ordinaryPersistDeadlock)).toContain(
+      'Heartbeat checkpoint can queue behind ordinary persistence waiting on that heartbeat',
+    );
+
+    const ownerlessHeartbeatCheckpoint = replaceInSourceSectionExact(
+      mainSource,
+      'const runF4HeartbeatCycle =',
+      '\nconst heartbeatF4 =',
+      "await persistView(null, 'ordinary', F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER);",
+      'await persistView();',
+    );
+    expect(coordinatorContractErrors(ownerlessHeartbeatCheckpoint)).toContain(
+      'Heartbeat checkpoint lacks its private cycle-owner persistence token',
     );
 
     const mistakenOwner = mainSource.replace(

@@ -1385,7 +1385,17 @@ describe('Arc 3 app bootstrap wiring contract', () => {
       source.indexOf('const startF4Heartbeat ='),
       source.indexOf('\nlet persistedPagehideCount', source.indexOf('const startF4Heartbeat =')),
     );
-    expect(heartbeatStart).toContain('if (!f4Runtime || persistHold || !f4PageVisible()');
+    const assessHeartbeatStart = (body: string): string[] => body.includes(
+      'if (f4HeartbeatSmokeQuiesced || !f4Runtime || persistHold\n'
+        + '    || !f4PageVisible() || f4HeartbeatTimer !== 0) return;',
+    ) ? [] : ['heartbeat-start-gates'];
+    expect(assessHeartbeatStart(heartbeatStart)).toEqual([]);
+    const heartbeatWithoutSmokeHold = heartbeatStart.replace(
+      'f4HeartbeatSmokeQuiesced || ',
+      '',
+    );
+    expect(heartbeatWithoutSmokeHold).not.toBe(heartbeatStart);
+    expect(assessHeartbeatStart(heartbeatWithoutSmokeHold)).toContain('heartbeat-start-gates');
     const show = source.slice(
       source.indexOf('const showF4 ='),
       source.indexOf("\naddEventListener('pagehide'", source.indexOf('const showF4 =')),

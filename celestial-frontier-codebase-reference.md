@@ -6,37 +6,59 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-28.**
 >
-> **2026-08-28 Final8 Recovery precondition-stop overlay — current local candidate:** signed clean
-> source `c133c89ead736c9c7414af1e6242acd411339853` supplied Layout 787/787, source-bound
-> SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings, Slice PASS with zero
-> findings and ten screenshots, and full 12-viewport Glass PASS with zero findings or instrument
-> failures. Recovery then ran once for 7,633 ms and stopped terminal `fail` at its fixture
-> precondition with only `runtimeCaptureOrder` red, zero retry and complete cleanup. Burn-down,
-> exhaustion, close/offline checkpoints, the 20-minute observation, boundary crossing and recovered
-> judgment did not run.
+> **2026-08-28 Final9 exhausted-control oracle stop — current evidence and uncertified local
+> successor:** signed clean source `a85e0edf9b7ceca0f13ecf32bb8ac3c88db6ceb1` supplied Layout
+> 787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings,
+> Slice PASS with zero findings and ten screenshots, and full 12-viewport Glass PASS with zero
+> findings or instrument failures. Recovery then ran once and stopped terminal `fail` at exhausted
+> after 87,589 ms. Fixture and the complete 16-attempt burn-down passed; cleanup passed with zero
+> retry. Close/checkpoint, closed/offline proof, reopen, the real 20-minute active observation,
+> boundary crossing and recovered stages did not run. Final9 therefore makes no Recovery
+> product-layout verdict and no recovery claim.
 >
 > Post-run review separated one Compendium product root (a floated 44px Close plus cleared heading
 > spent an unintended header row) and two narrow-phone Inventory product defects (copy starved
 > beside the badge column) from two hostile-row Compendium oracle artifacts (overscan-only mount
 > counted as geometry) and four Settings oracle artifacts (individually reachable controls were
-> incorrectly required to remain simultaneously reachable). The bounded
-> Final8 certifies the repair that removes the extra Compendium row, reflows `<=360px` Inventory rows without hiding exact
+> incorrectly required to remain simultaneously reachable). The bounded Final8/Final9 predecessors
+> certify the repair that removes the extra Compendium row, reflows `<=360px` Inventory rows without hiding exact
 > identity/state/action content, and makes each Settings control own its isolated reveal, two-sample
 > settlement, centre-hit/native-receipt proof and exact scroll restoration. Numeric rulers, browser
-> authority, retry policy and release identity are unchanged. Post-run diagnosis found the sole
-> Recovery red in its instrument: the collector sampled outer state before its nested UI snapshot
-> while the precondition required the reverse order. Production's monotonic runtime and separate
-> rendered active-play projection passed, so no Recovery product judgment exists. The current
-> instrument-only repair is not browser-certified; Final8 is immutable and cannot resume after
-> changed bytes. A newly signed clean successor must restart the full chain at Layout with fresh
-> IDs. Edge `151.0.4129.107` / CDP `1.3` is provenance only, never a pin or rebaseline trigger.
+> authority, retry policy and release identity are unchanged. Final9's old exhausted-control oracle
+> sampled a semantically disabled 292x44 Tame button before revealing it inside the clipped Survey
+> scrollport, collapsed geometry and hit ownership into one `ok` bit and retained no actual hit
+> owner. Unchanged-source Glass independently revealed the same control class and proved its
+> containment/ownership at the same phone viewport; Slice passed its native disabled-suppression
+> path. This diagnoses an instrument defect without granting a Recovery product verdict.
+>
+> The local successor makes Slice and Recovery emit the same exact disabled-suppression receipt.
+> It quiesces the complete in-flight heartbeat cycle, captures a synchronized raw → state → UI
+> exhausted baseline, then retains initial plus two settled post-reveal target samples, exact
+> button/card/viewport/scroll/hit/document identity, bound native dispatch and one trusted pointer,
+> full protected before/after state and replayable cleanup. Its exact quiesce/resume receipts bind
+> the document and timer states; stable lease-read, revision-read and lease-heartbeat counters prove
+> that neither the normal heartbeat nor its checkpoint overlaps the observation. Cleanup integrity
+> and target-instrument truth are judged before any product suppression verdict. Recovery seals its
+> preparation/collector/verdict source at SHA-256
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771`; Slice seals its
+> preparation/collector source at
+> `baa284a736d9243df4a61de192e553111c9c5fbc9d6aa70ffd05af5b6e31e45f`.
+>
+> These changed successor bytes are browser-uncertified; their campaign identity is the clean signed
+> `HEAD` produced by this batch. Final9 is immutable and cannot resume; that successor must restart
+> the full chain at Layout with fresh IDs. Edge `151.0.4129.107` / CDP `1.3` is run provenance only: a compatible
+> point update never triggers a rebaseline, recalibration or threshold change.
 >
 > **Queued visual boundary:** after the stable Phase-4 checkpoint, carry the TikTok-inspired polish
 > language across the entire universe—galaxies, systems, planets, every biome, creatures, plants,
 > ships and effects—while preserving deterministic seeds, identities, anatomy, silhouettes,
-> proportions, scale, authored structure, interaction geometry and gameplay readability. Deterministic per-environment palette/light/
-> material treatment, reduced motion, contrast, mobile heat/frame budgets and before/after identity
-> review are required. No graphics change is implemented in the current pre-certification repair candidate.
+> proportions, scale, authored structure, interaction geometry and gameplay readability. The live
+> Phase-4 surface is still globe-only; the preserved authored procedural vista work remains dormant
+> in `port/v2/packages/art/src/hdart.verbatim.js`. Phase 6 must port layered scenes for all 43 live biome
+> profiles without changing their composition, placement, scale or structural identity, then apply
+> the shared palette/light/material treatment across their flora, fungi, microbes and ambient actors.
+> Reduced motion, contrast, mobile heat/frame budgets and before/after identity review are required.
+> No graphics change is implemented in the current pre-certification repair candidate.
 >
 > **2026-08-27 Final4 Glass repair overlay — historical pre-Final5 source:** signed clean source
 > `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied fresh named Layout 787/787,
@@ -265,18 +287,30 @@
 > plateaus and HUMAN listening remain open.
 >
 > The dedicated real-time Arc 4 recovery collector and mutation-sensitive selftest are ready, but
-> recovery is non-standalone. Its repaired precondition now captures one witnessed UI snapshot and
-> then one witnessed state snapshot, binding exact capture count/value ownership, page-monotonic
-> timestamps, document-token continuity and snapshot/runtime projections. Durable raw authority must
-> not exceed either runtime; UI → state runtime is nondecreasing within the unchanged 10-second
-> chronology/lag bound, while the rendered countdown remains a separately bounded projection.
-> Missing, copied, swapped or unbound receipts are instrument-red; a trusted backward runtime is
-> product-red. The collector and its trusted page evidence sources fail closed on ordinary clock
-> wrapper/binding shadows and direct, computed, destructuring, iteration, descriptor, alias,
-> whole-object, prototype and legacy-accessor writers; exact negative controls pin each class.
-> Immutable Final8 `c133c89…` retains the prior mismatch in which the collector sampled
-> state before nested UI but the precondition required UI before state. That run stopped before
-> burn-down or active observation and made no Recovery product judgment.
+> recovery is non-standalone. Slice and Recovery now share the exact suppression schema and replay
+> the same target, dispatch, trusted pointer, protected state and cleanup invariants. The collector
+> first quiesces the whole heartbeat cycle, then recaptures one synchronized raw → state → UI
+> exhausted baseline before revealing and sampling the exact Tame owner. Its exact quiesce/resume
+> receipt binds one document, timer stop/restart and full-cycle settlement; stable lease-read,
+> revision-read and lease-heartbeat counters prove the heartbeat and its checkpoint did not overlap
+> collection. Only ticker/runtime projections and the deliberately stopped/restarted timer may vary;
+> every other app-state field remains suppression evidence.
+>
+> Initial and two post-reveal settled samples retain button/card/viewport/scroll/point/document
+> identity. Dispatch uses the final green centre over the bound CDP session and must produce exactly
+> one trusted pointer plus zero clicks. Scroll, listener and owned-global cleanup completes before
+> the after-state read and before any product verdict, so a concurrent cleanup red cannot be hidden
+> behind a suppression result. Recovery's exact preparation/collector/verdict source seal is
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771`; Slice's exact
+> preparation/collector digest is
+> `baa284a736d9243df4a61de192e553111c9c5fbc9d6aa70ffd05af5b6e31e45f`. Exact-shape,
+> extra-key, node/document, synchronization, heartbeat-overlap, source-drift, cleanup-order and
+> product-state mutations fail independently.
+>
+> Immutable Final9 `a85e0ed…` passed fixture plus the complete 16-attempt burn-down before its old
+> exhausted-control oracle stopped at 87,589 ms. It made no Recovery product-layout judgment and no
+> recovery claim. The local successor is browser-uncertified; use only this batch's clean signed
+> `HEAD` when the complete chain restarts at Layout.
 >
 > On one unchanged clean committed source, the exact Slice report must
 > be terminal-green and pass named verification; full Glass must consume that exact Slice ID and its
@@ -2881,30 +2915,34 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-28):** signed clean source `c133c89…` supplied Final8
-Layout 787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings,
-Slice PASS with zero findings/ten screenshots and full 12-viewport Glass PASS with zero findings or
-instrument failures. Those exact-source greens certify the bounded Inventory, Compendium and
-Settings repair. Recovery ran once for 7,633 ms and stopped terminal `fail` at its fixture
-precondition with only `runtimeCaptureOrder` red, zero retry and complete cleanup. Every substantive
-Recovery stage remained not-run. Exact Final8 carriers and hashes are preserved in
-`audits/README.md`.
+**Current evidence snapshot (2026-08-28):** signed clean source `a85e0ed…` supplied Final9 Layout
+787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings, Slice
+PASS with zero findings/ten screenshots and full 12-viewport Glass PASS with zero findings or
+instrument failures. Recovery ran once, passed fixture and its complete 16-attempt burn-down, then
+stopped terminal `fail` at the exhausted disabled-control oracle after 87,589 ms with zero retry and
+complete cleanup. Close/checkpoint, offline/reopen, the real 20-minute observation, boundary crossing
+and recovered stages remained not-run. Exact Final9 carriers and hashes are preserved in
+`audits/README.md`; no Recovery product-layout verdict or recovery claim exists.
 
-Post-run diagnosis proved the collector sampled state before nested UI while judging the reverse
-chronology; production's monotonic runtime and rendered active-play projection were not red. The
-current bounded tool repair captures and receipts UI before state under the unchanged 10-second
-contract, but these changed bytes are not browser-certified. Final8 is immutable and cannot resume;
-the next signed clean successor must restart the complete chain from Layout. No Recovery product
-judgment, 20-minute observation, current-WIP browser PASS, hosted/HUMAN whole-Gate or release
-authority exists. Numeric rulers, historical samples, browser authority and retry/release policy
-are unchanged. Earlier
+Post-run diagnosis proved the old collector judged the semantically disabled Tame owner before
+revealing it inside the clipped Survey scrollport. The local successor now shares one exact Slice/
+Recovery receipt, quiesces and joins the full heartbeat cycle, recaptures synchronized raw → state
+→ UI exhausted evidence, proves stable lease/revision-read and lease-heartbeat counters, revalidates
+the final target, restores cleanup before after-state/product attribution, and seals both producer
+source regions at the exact digests recorded above. These changed bytes are not browser-certified;
+their exact candidate identity is this batch's clean signed `HEAD`. Final9 is immutable; that
+successor must restart the complete chain from Layout. No Recovery product judgment, 20-minute observation,
+current-WIP browser PASS, hosted/HUMAN whole-Gate or release authority exists. Numeric rulers,
+historical samples, browser authority and retry/release policy are unchanged. A compatible Edge
+point update is provenance only and never causes a rebaseline, recalibration or threshold move.
+Earlier
 `bb5dc7c7…` and `862a75b…` reds,
 calibration source `6c9ad855…`, activation
 `4a54c0d…`, and the historical `7362a0e…` / `b206cf0…` / `5ddddbf…` / `041d1cf…` evidence remain
 truthful for their exact inputs.
 
-Current-input Slice retains nine one-attempt/zero-retry reds. The first six remain historical
-diagnosis. Signed `7362a0e…` then retained three green predecessors before Slice
+Historical current-input Slice chronology retains nine one-attempt/zero-retry reds. The first six
+remain historical diagnosis. Signed `7362a0e…` then retained three green predecessors before Slice
 `20260827-phase4-final-slice` stopped after 414,213 ms with 12 findings/11 scopes. Signed `b206cf0…`
 repeated the three predecessors before final2 Slice stopped with six findings/five scopes. Four
 saved-route/Atlas findings cascaded because unchecked staging reloaded the prior expedition; two Arc
@@ -2914,10 +2952,13 @@ absent-primary fixture after joining active persistence, closes the sibling docu
 byte/hash receipts even on rejection, and executable-tests a held writer plus blocked competing
 persist. Arc 4 now requires zero stale-release reads and one publication-release read with missing/
 extra controls. Exact Edge version is provenance only; compatible point updates never rebaseline or
-move ceilings. Post-start audio, the exact nine-stage/14-burn ledger, current full Glass and 20-minute
-Recovery remain unproved. The ninth red is Final6's single root Inventory reachability defect and
+move ceilings. For those historical sources, post-start audio, the exact nine-stage/14-burn ledger,
+full Glass and 20-minute Recovery remained unproved. The ninth red is Final6's single root Inventory
+reachability defect and
 four unexercised descendants; Final7 supersedes it with four green predecessors and the preserved
-Glass red described above. The current bounded repair has no full-matrix browser result. No hosted, HUMAN,
+Glass red described above. Final9 later supersedes their predecessor-chain boundary through Glass
+and the 16-attempt burn-down, while the current bounded successor repair has no full-matrix browser
+result. No hosted, HUMAN,
 whole-Gate, release, version, preview/publication or deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost

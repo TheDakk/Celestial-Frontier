@@ -10,6 +10,81 @@ summary of it.
 
 ## Contents
 
+### Signed `a85e0ed…` Final9 campaign — five green predecessors, then Recovery exhausted-control oracle stop
+
+Signed clean source `a85e0edf9b7ceca0f13ecf32bb8ac3c88db6ceb1` (tree
+`7260957697be3574626d42e12de78cb60e143969`, parent `c133c89…`) remained clean and unchanged
+through every completed Final9 stage. Layout `20260828-phase4-final9-a85e0edf9b7c-layout` passed
+787/787 sealed outcomes across ten viewports in 76,313 ms. Source-bound SceneMemory
+`20260828-phase4-final9-a85e0edf9b7c-scenemem` passed 42/42 in 10,202 ms. Source-bound Compendium
+`20260828-phase4-final9-a85e0edf9b7c-compendium` passed 78/78 in 46,170 ms and bound all six
+review PNGs. Slice `20260828-phase4-final9-a85e0edf9b7c-slice` passed with zero findings/scopes
+and ten PNG bindings in 414,850 ms. Glass `20260828-phase4-final9-a85e0edf9b7c-glass` passed all
+12 viewports with zero findings or instrument failures in 86,524 ms. Every green stage ran once and
+passed its named verifier.
+
+Recovery `20260828-phase4-final9-a85e0edf9b7c-recovery` then ran once and stopped terminal `fail`
+at the exhausted stage after 87,589 ms. Fixture and complete 16-attempt burn-down passed. The
+reported Tame control was already semantically correct—`disabled:true`,
+`data-model-enabled="false"`, 292×44—but its raw rectangle was y=812.1875…856.1875 in a
+390×844 viewport. The old collector did not scroll the button into the Survey card's clipped
+`overflow:auto` scrollport before testing its centre, collapsed geometry and hit ownership into one
+`ok` bit, and did not retain the actual hit owner. The same unchanged source's Glass certificate
+independently scrolled this exact class of Tame control to y=470.875…514.875, then proved full
+card/viewport containment and stable BUTTON ownership at the same primary-phone viewport. Slice
+also passed its real disabled-suppression path after native reveal. Final9 therefore exposed an
+instrument/oracle defect; it makes no Recovery product-layout verdict and no recovery claim.
+
+Close/checkpoint, closed/offline proof, reopen, the real 20-minute active observation, boundary
+crossing and recovered stages did not run. Cleanup passed with every owned resource released and
+zero automatic retries. Final9 remains immutable and was not retried. The bounded successor repair
+reveals and settles the exact disabled control, retains complete button/card/viewport/scroll/hit/
+document evidence, binds native dispatch to the trusted pointer receipt, restores scroll in
+`finally`, and replays instrument integrity separately from product suppression. Because those
+collector/contract bytes change, the next signed clean successor must restart Layout →
+SceneMemory → Compendium → Slice → Glass → Recovery with fresh run IDs.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_064146278.json.gz` preserves Final9 Layout. The gzip
+  is 4,839 bytes with SHA-256
+  `e9019f1cfd4339c4713f188d9c4431a360cf98cee953b286793dcc9746333286`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `7628b2be0db6ce8aca905582bb92d63eae4e688f8d7aaaa597b1417dd904ecf4`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_064212063.json.gz` preserves Final9 SceneMemory.
+  The gzip is 24,120 bytes with SHA-256
+  `a195d31731899136d699343b736fe6940d2729a50d101caa268d08b3cf063e23`; decompressed JSON is
+  305,647 bytes with SHA-256
+  `b9734acd5c6614e1c7b6f908aaf1e6a4547efef5f0d9d0451359bd96dbf8a3a4`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_064317311.json.gz` preserves Final9 Compendium. The
+  gzip is 542,224 bytes with SHA-256
+  `7612cd6e850057c6a7b5eb33154cbe71ede25e54cdb1a3c6a8ebc5714b125f07`; decompressed JSON is
+  8,563,298 bytes with SHA-256
+  `bd009387b9a3f1430135c2ab264bf9ef32429967c02e0dfdc6da79f414b60441`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_065042577.json.gz` preserves Final9 Slice. The gzip is
+  1,969 bytes with SHA-256
+  `78881cc94b0102b47f9e2973eb757412250f6142327e317d949aa0cef57864e8`; decompressed JSON is
+  6,145 bytes with SHA-256
+  `97d0d85894934d042d09ad3b57d84c9c9f5f0531195066764edf330b51c2604a`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_065042577.log.gz` preserves Final9 Slice stdout/stderr.
+  The gzip is 2,964 bytes with SHA-256
+  `4cb909a1f8a37a3666aa31589a17120e1d627764020980e363f1e7a5dce8f22e`; decompressed log is
+  5,904 bytes with SHA-256
+  `0fd08de0a6e87fb728203e460d931c17e1bb1d03eb8cfed6d67c615c2963f692`.
+- `PHASE4_GLASS_CURRENT_INPUT_PASS_20260828_065238705.json.gz` preserves Final9 Glass. The gzip
+  is 74,599 bytes with SHA-256
+  `762befbad4232993d174896c7a74a46444f554d244b743cf0dce657dd40f25cd`; decompressed JSON is
+  845,103 bytes with SHA-256
+  `a3b1b9a85ea280848e926c38e10894ee0a86000916e8aa5c6ecf7f5b2d7a4f52`.
+- `ARC4_RECOVERY_CURRENT_INPUT_FAILURE_20260828_065439072.json.gz` preserves the immutable Final9
+  Recovery exhausted-stage oracle failure. The gzip is 32,098 bytes with SHA-256
+  `f0cde9db25a3a44b6aa2c16d26df8ac4adc1fc05bbef0e9c49744af969c4a887`; decompressed JSON is
+  322,076 bytes with SHA-256
+  `21d7d4e3e22ee41a06f61f23de490b6aa9b21c686817f7d34203e3caffdfe6b7`.
+
+All seven gzip carriers pass integrity checks and decompress byte-for-byte to their exact source
+report or log. The Compendium and Slice reports retain their PNG manifests and hashes; the PNGs
+remain run-bound ignored review evidence rather than additional tracked audit carriers. Edge
+`151.0.4129.107` / CDP `1.3` is run provenance only, never a baseline pin or rebaseline trigger.
+
 ### Signed `c133c89…` Final8 campaign — five green predecessors, then Recovery precondition stop
 
 Signed clean source `c133c89ead736c9c7414af1e6242acd411339853` (tree
