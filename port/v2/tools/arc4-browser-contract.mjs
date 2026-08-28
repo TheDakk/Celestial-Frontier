@@ -8501,6 +8501,11 @@ const negativeStaleMismatchedConvergenceWitnessSelftest
   = withConvergenceWitnessMutation(staleBundleSelftest, (witness) => {
     witness.documentToken = 'selftest-wrong-document';
   });
+const negativeStaleConvergenceAuthoritySelftest
+  = withConvergenceWitnessMutation(staleBundleSelftest, (witness) => {
+    witness.before.runtime.sessionOrdinal += 1;
+    witness.after.runtime.sessionOrdinal += 1;
+  });
 const negativeStaleConvergenceTupleSelftest
   = withConvergenceWitnessMutation(staleBundleSelftest, (witness) => {
     witness.after.runtime.sessionOrdinal += 1;
@@ -9562,6 +9567,12 @@ const isolatedNegativeSelftests = Object.freeze({
       negativeStaleMismatchedConvergenceWitnessSelftest,
     ),
   }),
+  staleConvergenceAuthority: Object.freeze({
+    expected: Object.freeze(['convergenceRelease', 'oldUiConvergence']),
+    result: assessArc4StaleConvergence(
+      negativeStaleConvergenceAuthoritySelftest,
+    ),
+  }),
   staleConvergenceTuple: Object.freeze({
     expected: 'convergenceRelease',
     result: assessArc4StaleConvergence(
@@ -9911,6 +9922,16 @@ for (const [name, control] of Object.entries(isolatedNegativeSelftests)) {
   if (control.result.ok !== false || !same(failed, expected)) {
     throw new Error(`Arc 4 browser contract negative selftest was not isolated (${name}): ${failed.join(', ')}`);
   }
+}
+
+const staleConvergenceAuthoritySelftestResult
+  = isolatedNegativeSelftests.staleConvergenceAuthority.result;
+const staleConvergenceAuthorityNestedFailures = Object.entries(
+  staleConvergenceAuthoritySelftestResult.convergenceReleaseDiagnostics?.checks ?? {},
+).filter(([, value]) => value !== true).map(([check]) => check);
+if (staleConvergenceAuthoritySelftestResult.convergenceReleaseDiagnostics?.ok !== false
+  || !same(staleConvergenceAuthorityNestedFailures, ['beforeAuthority'])) {
+  throw new Error(`Arc 4 stale convergence authority selftest diagnosis drifted: ${staleConvergenceAuthorityNestedFailures.join(', ')}`);
 }
 
 const coordinatedV4CompatibilitySelftests = Object.freeze({
