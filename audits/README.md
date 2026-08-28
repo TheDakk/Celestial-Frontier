@@ -10,6 +10,68 @@ summary of it.
 
 ## Contents
 
+### Signed `53d030b…` Final7 campaign — four green predecessors, then terminal Glass red
+
+Signed clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` (tree
+`19bdbd9774ba2d1aa5c814582bfc04f5f77620dc`, parent `ea845d7…`) remained clean and unchanged
+through every completed Final7 stage. Layout `20260827-phase4-final7-53d030bb733b-layout` passed
+787/787 sealed outcomes across ten viewports in 76,145 ms. Source-bound SceneMemory
+`20260827-phase4-final7-53d030bb733b-scenemem` passed 42/42 in 10,281 ms. Source-bound Compendium
+`20260827-phase4-final7-53d030bb733b-compendium` passed 78/78 in 46,094 ms and bound all six review
+PNGs. Slice `20260827-phase4-final7-53d030bb733b-slice` passed with zero findings/scopes and ten
+PNG bindings in 415,497 ms. Each completed green stage ran once and passed its named verifier.
+
+Glass `20260827-phase4-final7-53d030bb733b-glass` then ran once across 12 viewports for 75,032 ms
+and stopped terminal `fail` with 25 findings, zero report-classified instrument failures and zero
+automatic retries. Recovery correctly did not run. Post-run review separated one Compendium
+heading/workspace product root and two narrow-phone Inventory product defects from two hostile-row
+Compendium oracle artifacts and four Settings oracle artifacts. Edge `151.0.4129.107` / CDP `1.3`
+is run provenance only.
+
+The bounded local repair lets the Compendium heading share its reserved sticky-Close row, reflows
+`<=360px` Inventory copy above left-aligned wrapping badges without hiding any visible identity or
+status, and makes each Settings control own stable samples, native hit proof, Close clearance and
+exact scroll restoration. These changes alter source and evidence bytes. Final7 is immutable and
+cannot resume. Bounded dirty-tree small-phone and phone-landscape diagnostics passed; they are
+repair evidence only, not a post-repair full/certifying browser-chain PASS. After browser-free
+review, a newly signed clean successor must restart the complete Layout → SceneMemory → Compendium
+→ Slice → Glass → recovery chain with fresh IDs.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_031651483.json.gz` preserves Final7 Layout. The gzip
+  is 4,782 bytes with SHA-256
+  `69db5b56a55b74ba4b3468cb59a2f85576757913cc9114b50da36abe062c6b77`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `85d5220ebc3e592b21c42a49c03a95d78151b02b3971a4ffc61dc0ae9331b215`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_031719888.json.gz` preserves Final7 SceneMemory. The
+  gzip is 24,049 bytes with SHA-256
+  `73997c61e60ba655a7314eed8af8bbaa18a527c8d36da7bc96bdef7db8ed8d35`; decompressed JSON is
+  305,669 bytes with SHA-256
+  `dda4da30da3a9cee3550c4c52f88f1b7ecff61a23507af548fbc863f488558cd`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_031936204.json.gz` preserves Final7 Compendium. The
+  gzip is 543,901 bytes with SHA-256
+  `adf44f5f06ba386065596d1e2578296bb3db6b633c79c2c1b50d91f88e3716f5`; decompressed JSON is
+  8,588,379 bytes with SHA-256
+  `617151d1b72529d260520171337e2977adb7e6e89a72fd7fafbac97347e0cb4d`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_032721592.json.gz` preserves Final7 Slice. The gzip is
+  1,916 bytes with SHA-256
+  `bba4a7f703648e1f1e00796ad8e08e359e809018dc2af162cfa5f88519799b05`; decompressed JSON is
+  6,145 bytes with SHA-256
+  `2a4921075b1790623d0def563b3042b3b2ce72291f0140b3d1200450f9bfb8bb`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_032721592.log.gz` preserves Final7 Slice stdout/stderr.
+  The gzip is 2,912 bytes with SHA-256
+  `7627337e23b902a161f1e18466e643c0c6ad6f893385c3346db7ca56d93790d5`; decompressed log is
+  5,904 bytes with SHA-256
+  `6b8f9c6741d4408dd525ca7436812d9d5cdc21c192cf8c608fa2a5b12d5e5d2a`.
+- `PHASE4_GLASS_CURRENT_INPUT_FAILURE_20260828_032908335.json.gz` preserves Final7 Glass. The gzip
+  is 77,621 bytes with SHA-256
+  `2b5253f05315e3e5b5d59addd509e852ed4006af9eb92ebd7587f1a82ff3fba3`; decompressed JSON is
+  884,622 bytes with SHA-256
+  `98cfa0536acf3d7b6e79f83303e3f01b0929f4e912de7772aa782a1de398ed6f`.
+
+All six gzip carriers pass integrity checks and decompress byte-for-byte to their exact source
+report or log. The Compendium and Slice reports retain their PNG manifests and hashes; the PNGs
+remain run-bound ignored review evidence rather than additional tracked audit carriers.
+
 ### Signed `ea845d7…` Final6 campaign — three green predecessors, then one causal Slice instrument stop
 
 Signed clean source `ea845d77d9783599c269f708462eb650e2c3e245` (tree

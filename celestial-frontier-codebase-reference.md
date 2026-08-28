@@ -4,34 +4,34 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches the local working tree as of 2026-08-27.**
+> **Current port/v2 source overlay matches the local working tree as of 2026-08-28.**
 >
-> **2026-08-27 Final6 Slice instrument-stop overlay — current local candidate:** signed clean source
-> `ea845d77d9783599c269f708462eb650e2c3e245` supplied Layout 787/787, source-bound
-> SceneMemory 42/42 and source-bound Compendium 78/78. Slice then ran once for 420,570 ms and
-> stopped with five findings in five scopes. The root was instrumental: the exact thermal Inventory
-> row was a valid 164px button, but its raw centre at `y=751` lay below the panel scrollport. The old
-> collector skipped its click and then judged four absent modal/Equip/Close/reload descendants.
-> Those are unexercised cascades, not independent product verdicts. Final6 was not retried; Glass
-> and recovery did not start.
+> **2026-08-28 Final7 Glass product/oracle-stop overlay — current local candidate:** signed clean
+> source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` supplied Layout 787/787, source-bound
+> SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings, and Slice PASS with zero
+> findings and ten screenshots. Glass then ran once for 75,032 ms and stopped terminal-red with 25
+> findings and zero report-classified instrument failures. Recovery correctly did not run.
 >
-> The browser-free repair performs native reveal plus rAF/later-task settlement, proves exact row
-> identity, scrollport containment and centre-hit ownership, and binds trusted row/action/detail-
-> Close/registered-panel-Close receipts to their exact points and owners. Detail Close additionally
-> proves its parent Inventory remains displayed, ARIA-visible, app-open and opener-expanded; reload
-> binds the exact receipt keys, raw bytes, parsed semantics and stable F4 RNG authority. The immutable receipt seed,
-> surface, action, both Close paths, reload opener and Atlas each gate their dependent successors on
-> a complete green causal prefix. Red mutable state proves quiescence and cleanup, then terminates
-> before later arcs. No product source, numeric ruler, browser authority or retry policy changed.
-> Final6 cannot resume; a newly signed clean successor must restart at Layout. Edge
-> `151.0.4129.107` / CDP `1.3` is provenance only, never a pin or rebaseline trigger.
+> Post-run review separated one Compendium product root (a floated 44px Close plus cleared heading
+> spent an unintended header row) and two narrow-phone Inventory product defects (copy starved
+> beside the badge column) from two hostile-row Compendium oracle artifacts (overscan-only mount
+> counted as geometry) and four Settings oracle artifacts (individually reachable controls were
+> incorrectly required to remain simultaneously reachable). The bounded
+> repair removes the extra Compendium row, reflows `<=360px` Inventory rows without hiding exact
+> identity/state/action content, and makes each Settings control own its isolated reveal, two-sample
+> settlement, centre-hit/native-receipt proof and exact scroll restoration. Numeric rulers, browser
+> authority, retry policy and release identity are unchanged. Final7 is immutable and cannot resume;
+> repaired small-phone and phone-landscape diagnostics pass, but no post-repair full 12-viewport,
+> Recovery, whole-Gate, hosted, HUMAN or release claim exists. A newly signed clean successor must
+> restart at Layout with fresh IDs. Edge `151.0.4129.107` / CDP `1.3` is provenance only, never a pin
+> or rebaseline trigger.
 >
 > **Queued visual boundary:** after the stable Phase-4 checkpoint, carry the TikTok-inspired polish
-> language across the entire universe—galaxies, systems, planets, every biome, creatures and
-> plants—while preserving deterministic seeds, identities, anatomy, silhouettes, proportions,
-> scale, authored structure and gameplay readability. Deterministic per-environment palette/light/
+> language across the entire universe—galaxies, systems, planets, every biome, creatures, plants,
+> ships and effects—while preserving deterministic seeds, identities, anatomy, silhouettes,
+> proportions, scale, authored structure, interaction geometry and gameplay readability. Deterministic per-environment palette/light/
 > material treatment, reduced motion, contrast, mobile heat/frame budgets and before/after identity
-> review are required. No graphics change is implemented in the current instrument-only candidate.
+> review are required. No graphics change is implemented in the current pre-certification repair candidate.
 >
 > **2026-08-27 Final4 Glass repair overlay — historical pre-Final5 source:** signed clean source
 > `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied fresh named Layout 787/787,
@@ -321,8 +321,13 @@
 > whose Final5 Layout and SceneMemory reports passed before Compendium stopped instrument-only at
 > 0/78. Its exact-membership repair became signed Final6 source `ea845d7…`, whose Layout,
 > SceneMemory and Compendium stages passed before Slice stopped on the preserved Inventory causal
-> instrument report. The current repair makes those predecessors historical and requires a fresh
-> signed successor from Layout; Slice, Glass, recovery and whole-Gate evidence remain open.
+> instrument report. The causal repair became signed Final7 source `53d030b…`; Layout, SceneMemory,
+> Compendium and Slice passed before Glass stopped terminal-red with 25 findings. Post-run review
+> separated one Compendium header/workspace product root and two narrow-phone Inventory product
+> defects from two hostile-row Compendium oracle artifacts and four Settings oracle artifacts. The
+> bounded repair makes all prior certificates
+> historical for their exact source and requires a fresh signed successor from Layout;
+> current-source full Glass, Recovery and whole-Gate evidence remain open.
 >
 > Current-input Slice retains nine one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > The first five remain preserved historical diagnosis. Signed-clean source
@@ -358,7 +363,9 @@
 > `39e4f20…`; Final5 passed Layout and SceneMemory before Compendium's cardinality oracle stopped the
 > chain without a product verdict. Its repair became signed `ea845d7…`; Final6 passed Layout,
 > SceneMemory and Compendium before Slice's ninth red exposed the Inventory pre-reveal/causal-prefix
-> defect. The current repair must now complete a fresh signed-successor chain from Layout. Root Gate A separately
+> defect. The causal repair became signed `53d030b…`; Final7 passed Layout, SceneMemory, Compendium
+> and Slice before Glass stopped with the preserved 25-finding report. The current bounded product/
+> oracle repair must now complete a fresh signed-successor chain from Layout. Root Gate A separately
 > accepts compatible Chromium family + CDP `1.3` only after exercising the exact CDP inventory
 > derived from `tools/uilayout.js` + `tools/bootperf.js` and recording complete per-run provenance;
 > point version alone never repins, rebaselines or moves a root threshold. No current-source Glass
@@ -491,7 +498,10 @@
 > domain action. `main.ts` registers Inventory in the desktop rail and exact 260px 5×2 ten-control
 > phone dock, supplies one durable action adapter, and publishes no optimistic state. The detail
 > sheet owns inert background, bidirectional focus wrap/return, exact conditional comparison,
-> salvage confirmation, pending action and convergence diagnostics. Production opts into the closed-
+> salvage confirmation, pending action and convergence diagnostics. At `<=360px`, each Inventory
+> row reflows to one content column with copy above a wrapping, left-aligned badge group. This changes
+> presentation only: the full exact instance id, item copy, equipped/protected/pending state and
+> native button/detail/action semantics remain visible and owned by the same row instance. Production opts into the closed-
 > surface lifecycle: data, filters and page survive Close, but the 48-row projection and its six
 > panel/detail event subscriptions exist only while open. A durable promise settling after Close
 > updates state without remounting hidden DOM; stale registration callbacks cannot reacquire after
@@ -1440,7 +1450,9 @@
 > when open remain visible, named, focusable, hit-testable, and operable at right. Panel-open
 > status already yields trail/objective, while the short-landscape rule additionally yields only
 > noninteractive top/context/hint chrome. Glass drives real hostile A++ first/middle/last and
-> focus-pinned rows plus clipped-ancestor controls. This is a bounded geometry repair, not a broad
+> focus-pinned rows plus clipped-ancestor controls. The current repair keeps the floated 44px Close
+> and Compendium heading in one header row by removing the heading's inherited clear; it changes no
+> list membership, virtualized row structure, portrait or focus ownership. This is a bounded geometry repair, not a broad
 > presentation-polish claim.
 >
 > V2 now applies imported Text size / tone / font preferences, a contrast-safe
@@ -1462,6 +1474,14 @@
 > measurement, and space restoration restores the trail. Glass-matrix controls
 > `planetside-portrait-band-viability` and
 > `planetside-portrait-trail-fallback` prove both directions.
+> Settings geometry is assessed per control rather than requiring Sound and Voice to remain visible
+> at one scroll position. Each control owns an isolated reveal, two identical settled samples,
+> exact centre `elementFromPoint` ownership, Close-presence/clearance proof, trusted native input
+> receipt and exact panel/document scroll restoration in `finally`. Missing or unsafe product
+> geometry is product-red; transport/evaluation failure remains instrument-red. Browser-free mutants
+> cover replacement nodes, stable missing Close, receipt type/coordinate drift, unsafe dispatch,
+> partial causal coverage and failed restoration. This repaired oracle has only bounded small-phone
+> and phone-landscape diagnostics so far, not a current-source full Glass certificate.
 >
 > The matrix import fixture is witnessed as event-owned phases rather than a
 > blind reload delay. One `cf-v2-import-phase/v1` stream binds the exact phase id,
@@ -2843,17 +2863,20 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-27):** signed clean source `ea845d7…` supplied Final6
-Layout 787/787, source-bound SceneMemory 42/42 and source-bound Compendium 78/78. Slice then ran
-once for 420,570 ms and stopped with five findings/five scopes at the Inventory pre-reveal
-instrument defect; four descendant outcomes were unexercised cascades. The exact Final6 carriers
-and hashes are preserved in `audits/README.md`. The browser-free repair performs native row reveal,
-settled containment/hit proof, exact trusted receipts, raw Close lifecycle plus parent-panel survival,
-full receipt key/raw-byte/parsed-semantic durability, stable F4 RNG authority and complete causal
-gating through reload/Atlas. Every terminator and negative control is deletion/mutation tested. No
-product source, numeric ruler, historical sample or ceiling changed. The worktree needs a newly
-signed clean successor and the complete fresh chain from Layout; Final6 cannot resume. No
-post-repair Slice, Glass, recovery, hosted/HUMAN whole-Gate or release authority exists. Earlier
+**Current local candidate snapshot (2026-08-28):** signed clean source `53d030b…` supplied Final7
+Layout 787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings,
+and Slice PASS with zero findings/ten screenshots. Glass ran once for 75,032 ms and stopped with 25
+findings and zero report-classified instrument failures; Recovery did not run. Exact Final7 carriers
+and hashes are preserved in `audits/README.md`. Post-run review separated one Compendium
+header/workspace product root and two narrow-phone Inventory product defects from two hostile-row
+Compendium oracle artifacts and four Settings oracle artifacts. The bounded repair removes the
+extra Compendium header row, reflows `<=360px` Inventory
+without hiding content, and gives each Settings control isolated reveal, two-sample settlement,
+centre-hit/native-receipt proof and exact scroll restoration, with browser-free negative controls.
+Numeric rulers, historical samples, browser authority and retry/release policy are unchanged. The
+worktree needs a newly signed clean successor and the complete fresh chain from Layout; Final7
+cannot resume. Repaired small-phone/landscape diagnostics pass, but no post-repair full Glass,
+Recovery, hosted/HUMAN whole-Gate or release authority exists. Earlier
 `bb5dc7c7…` and `862a75b…` reds,
 calibration source `6c9ad855…`, activation
 `4a54c0d…`, and the historical `7362a0e…` / `b206cf0…` / `5ddddbf…` / `041d1cf…` evidence remain
@@ -2870,9 +2893,10 @@ absent-primary fixture after joining active persistence, closes the sibling docu
 byte/hash receipts even on rejection, and executable-tests a held writer plus blocked competing
 persist. Arc 4 now requires zero stale-release reads and one publication-release read with missing/
 extra controls. Exact Edge version is provenance only; compatible point updates never rebaseline or
-move ceilings. Post-start audio, the exact nine-stage/14-burn ledger, current Glass and 20-minute
-recovery remain unproved. The ninth red is Final6's single root Inventory reachability defect and
-four unexercised descendants; the current causal repair has no browser result. No hosted, HUMAN,
+move ceilings. Post-start audio, the exact nine-stage/14-burn ledger, current full Glass and 20-minute
+Recovery remain unproved. The ninth red is Final6's single root Inventory reachability defect and
+four unexercised descendants; Final7 supersedes it with four green predecessors and the preserved
+Glass red described above. The current bounded repair has no full-matrix browser result. No hosted, HUMAN,
 whole-Gate, release, version, preview/publication or deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost

@@ -1,20 +1,25 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-> **2026-08-27 Final6 Arc 2 Inventory evidence boundary — current local candidate:** signed source
-> `ea845d77d9783599c269f708462eb650e2c3e245` passed Layout 787/787, SceneMemory 42/42 and
-> Compendium 78/78. Slice then ran once with zero retry and stopped after the exact thermal row's
-> valid 164px DOM rectangle placed its raw centre below the Inventory scrollport. The click was not
-> exercised; four reported modal/Equip/reload descendants were an instrument cascade, not economy,
-> item, action, persistence or Atlas product verdicts.
+> **2026-08-28 Final7 Glass stop and bounded Inventory presentation repair — current local
+> candidate:** signed clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` passed Layout
+> 787/787, SceneMemory 42/42, Compendium 78/78 and Slice with zero findings/scopes, each once with its
+> named verifier. Full Glass then ran once across 12 viewports and stopped terminal-red with 25
+> findings, zero report-classified instrument failures and zero retries; recovery correctly did not
+> run. Post-run review separated one Compendium heading/workspace product root and two genuinely
+> oversized A++/Mono 320px Inventory product defects from two hostile-row Compendium oracle
+> artifacts and four small-phone Settings oracle artifacts.
 >
-> The browser-free repair reveals the row natively, proves settled scrollport containment and exact
-> hit ownership, binds trusted row/Equip/Close receipts, proves the parent Inventory remains visibly
-> open after detail Close, and binds the exact receipt keys/bytes/semantics plus F4 RNG authority
-> across reload. A complete green causal prefix is required before each dependent outcome or
-> mutation control. Unsafe cleanup terminates before later mutable
-> arcs. No material, item, recipe, effect, quantity, cost, carrier, writer, RNG or numeric ruler
-> changed. Final6 cannot resume; a newly signed clean successor must restart at Layout, and no
-> post-repair Slice, Glass, recovery or whole-Gate claim exists.
+> The bounded product repair reflows `<=360px` Inventory rows to one column: complete wrapping copy
+> comes first and left-aligned status badges follow beneath it. Base name, rarity, slot, item level,
+> quality, full `instanceId`, Pending capacity claim, Equipped, Favorite and Locked remain visible;
+> nothing is truncated, hidden or replaced by a summary. No material, item, recipe, effect, quantity,
+> cost, carrier, schema, writer, RNG, action, ordering or numeric ruler changed. The Compendium repair
+> changes only heading/Close-row layout, and the Settings change is an isolated reveal, two-sample
+> settle/hit/native-receipt/exact-scroll-restore oracle repair.
+>
+> Final7 is immutable and cannot resume. Bounded dirty-tree diagnostics are repair evidence only;
+> they are not a post-repair full Glass PASS. A newly signed clean successor must restart the complete
+> Layout → SceneMemory → Compendium → Slice → Glass → recovery chain with fresh IDs.
 
 > **2026-08-27 Final4 Glass recipe-oracle correction — implemented in signed Final5 source:** `earpiece`,
 > `diplobeacon` and `rl-mind` already carry `contact` effects consumed by the live
@@ -25,8 +30,8 @@
 
 > Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` then supplied historical
 > Final5 Layout and SceneMemory passes before Compendium stopped instrument-only. Its bounded
-> membership-oracle repair became Final6 source `ea845d7…`, whose later Inventory stop is described
-> above. Edge `.107` / CDP `1.3` remains provenance only.
+> membership-oracle repair became Final6 source `ea845d7…`; the later signed Final7 boundary and its
+> terminal Glass stop are described above. Edge `.107` / CDP `1.3` remains provenance only.
 
 > **2026-08-26 locale-independent economy ordering — current local candidate:** the source-neutral
 > Arc 2 ledger no longer calls ambient `String.prototype.localeCompare()` when it canonicalizes
@@ -120,9 +125,10 @@
 > 78/78 and Slice PASS before Glass stopped on preserved instrument evidence. Its bounded repair
 > became signed `39e4f20…`; Final5 then passed Layout and SceneMemory before Compendium stopped on
 > the membership-oracle instrument defect described above. Final6 subsequently passed Layout,
-> SceneMemory and Compendium before the causal Inventory harness stop described above. A fresh signed
-> successor chain from Layout is required; current Slice, Glass, recovery, whole-Gate, hosted, HUMAN
-> and release authority remain open. Compatible
+> SceneMemory and Compendium before its causal Inventory harness stop; signed Final7 then passed all
+> four predecessors before the terminal Glass result summarized above. A fresh signed successor chain
+> from Layout is required; current full Glass, recovery, whole-Gate, hosted, HUMAN and release
+> authority remain open. Compatible
 > Edge or Chrome point updates remain provenance only and never trigger calibration, rebaselining,
 > repinning or a threshold change.
 >
@@ -222,6 +228,11 @@ an acceptance contract rather than current capability.
   item level, upgrade, favorite/locked state and salvage eligibility. A filter can
   narrow a list; it cannot delete, hide a pending receipt, or make a protected item
   destructible.
+- At `<=360px`, each exact-instance row uses one column so A++/Mono text cannot be
+  starved by an auto-sized badge column. Complete base name, rarity, slot, item
+  level, quality and `instanceId` copy stays visible and wrapping; Pending capacity
+  claim, Equipped, Favorite and Locked badges remain visible beneath it. This
+  reflow changes no identity, order, action, filter, page, carrier or schema.
 - Salvage is an inspect-first action against one `instanceId`, with a disclosed
   deterministic output preview, explicit protection/favorite guards and a
   revision-checked destruction receipt. There is no bulk action that silently eats

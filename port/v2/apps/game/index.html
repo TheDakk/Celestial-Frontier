@@ -495,6 +495,21 @@
     .inventory-action-status[data-kind="unavailable"] { color: #f0a4a4; }
     .inventory-delta[data-sign="positive"] { color: #9ee49d; }
     .inventory-delta[data-sign="negative"] { color: #f0a4a4; }
+    @media (max-width: 360px) {
+      /* A++/Mono plus the auto-sized badge column can starve the exact-ID
+         copy until a modest row is taller than its whole scrollport. Keep
+         every visible field, but stack badges beneath the full-width copy. */
+      .inventory-list,
+      #inventorypanel button.inventory-row,
+      .inventory-row-copy,
+      .inventory-badges { min-width: 0; max-width: 100%; box-sizing: border-box; }
+      #inventorypanel button.inventory-row {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+      }
+      .inventory-row-copy { overflow-wrap: anywhere; white-space: normal; }
+      .inventory-badges { justify-content: flex-start; }
+    }
     @media (max-width: 480px) {
       .inventory-tools { grid-template-columns: minmax(0,1fr); }
       .inventory-facts { grid-template-columns: minmax(0,1fr); }
@@ -505,6 +520,10 @@
        close action stay stable. Variable-height rows are positioned against
        measured offsets; the named spacers retain the logical scrollbar. */
     #codexpanel.codex-list-mode { overflow: hidden; }
+    /* List mode already reserves the sticky Close gutter in the panel's
+       right padding. Let its heading share that first row instead of clearing
+       the floated 44px Close and silently spending a second header row. */
+    #codexpanel.codex-list-mode > h3 { clear: none; }
     #codexpanel .codex-query { color: var(--dim); font-size: 12px; }
     .compendium-scroll { position: relative; width: 100%;
       height: min(560px, max(44px, calc(100dvh - var(--topbar-h) - var(--dock-h) - var(--safe-bottom) - 126px)));
