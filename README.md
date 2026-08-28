@@ -29,9 +29,24 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-27; standalone plus first-three serial browser stages green,
-preserved Slice harness red):** the current
-working tree completes the bounded source lanes that followed the retained Arc 5A checkpoint.
+**Current local v2 candidate (2026-08-27; Final4 reached Glass, whose instrument stop is
+preserved):** signed clean source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` passed Layout
+787/787, SceneMemory 42/42, Compendium 78/78 and Slice with all ten screenshots and zero findings;
+each stage also passed named verification. Full Glass then ran once, reported 46 findings and five
+instrument failures across all 12 viewports, and stopped the chain without a retry; recovery did
+not start. Diagnosis separated stale evidence assumptions from two real presentation defects: a
+valid four-character **Mars** title was rejected by the old minimum length, a generic audit
+displaced the Survey scroller, the later orbital control sampled the already-rendered row while
+off-card without centring it or proving exact restoration, and Shipyard's oracle still marked
+`earpiece`, `diplobeacon` and `rl-mind` contact effects unavailable. The actual
+product findings were an overlapping sticky Close target at laptop 1280×720 and Exotic rarity
+text at 2.86:1 over bright glass. Those bounded product and harness repairs are applied locally but
+remain uncertified. They require a new signed clean source and a complete fresh Final5 restart at
+Layout; no Gate, recovery, hosted, HUMAN or release claim follows from Final4. Edge
+`151.0.4129.107` / CDP `1.3` is retained provenance only and is not a rebaseline trigger.
+
+The current working tree otherwise completes the bounded source lanes that followed the retained
+Arc 5A checkpoint.
 Gate B now recursively seals the exact 62-file domain-source inventory against DOM, storage,
 `navigator`, network, wall/monotonic clock, and uncontrolled-random access; its only two waivers are
 exact `document.createElement('')` expressions for CombatCore's legacy `playerAvatar` and
@@ -147,12 +162,14 @@ stopped terminal-red on preserved stale harness assumptions after product harden
 v2 embeds no Git/source identity and that non-commit-tagged run lacks a preserved execution record,
 so it is result provenance rather than standalone exact-source evidence. Slice was not retried;
 Glass and recovery did not run.
-The current repaired working tree changes only evidence oracles, their focused tests and
-evidence/documentation carriers. It must become a new signed clean commit, then restart the complete
-fail-fast chain from Layout with fresh run IDs on that one unchanged source. There is no later browser
-result, publication, hosted attempt, release, deployment, version bump or external authority.
-Compatible Edge or Chrome point updates remain run provenance only and never trigger calibration,
-rebaselining, repinning or a threshold change.
+The later signed Final4 source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` completed all four
+green predecessors before Glass produced the preserved instrument stop described above. The current
+working tree now contains the bounded product, oracle and negative-control repair for those
+findings. It must become a new signed clean commit, then restart the complete fail-fast Final5 chain
+from Layout with fresh run IDs on that one unchanged source. There is no later browser result,
+publication, hosted attempt, release, deployment, version bump or external authority. Compatible
+Edge or Chrome point updates remain run provenance only and never trigger calibration, rebaselining,
+repinning or a threshold change.
 
 Earlier current-input history retains six one-attempt/zero-retry reds. Signed-clean source
 `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
@@ -162,8 +179,9 @@ Earlier current-input history retains six one-attempt/zero-retry reds. Signed-cl
 did not run. Its first five independent roots—55-bullet Guide/Glass contract, paired ecology diagnostic
 clocks, contextless blocked audio state, committed-only epoch timing and Survey/Training DOM
 ownership—were locally repaired with negative controls. Compendium and SceneMemory retain separate
-sealed Edge-family + CDP `1.3` capability/profile authorities. No current certifying Slice PASS,
-Glass result or recovery certificate exists.
+sealed Edge-family + CDP `1.3` capability/profile authorities. At that sixth-red boundary, no
+certifying Slice PASS, Glass result or recovery certificate existed; the signed Final4 result and
+the still-pending current-source Final5 chain are summarized above.
 
 The retained Arc 4/5A checkpoint remains useful historical foundation. Its source-addressed Guide
 kept all 9 categories /43 authored IDs /41 player topics searchable and cross-linked; 24 topics

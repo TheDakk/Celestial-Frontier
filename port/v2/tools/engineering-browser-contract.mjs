@@ -148,11 +148,11 @@ export const ENGINEERING_GLASS_RECIPE_ORACLE = Object.freeze([
   recipeFixtureRow('headlamp', 'available', 'live', 'true', false),
   recipeFixtureRow('visor', 'unavailable', 'unavailable', 'false', true),
   recipeFixtureRow('voidhelm', 'unavailable', 'live', 'false', true),
-  recipeFixtureRow('earpiece', 'unavailable', 'unavailable', 'false', true),
+  recipeFixtureRow('earpiece', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('resonator', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('meteor', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('compass', 'unavailable', 'unavailable', 'false', true),
-  recipeFixtureRow('diplobeacon', 'unavailable', 'unavailable', 'false', true),
+  recipeFixtureRow('diplobeacon', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('prismpendant', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('gripgloves', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('surgeon', 'unavailable', 'unavailable', 'false', true),
@@ -172,12 +172,12 @@ export const ENGINEERING_GLASS_RECIPE_ORACLE = Object.freeze([
   recipeFixtureRow('rl-flame', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('rl-sky', 'unavailable', 'unavailable', 'false', true),
   recipeFixtureRow('rl-life', 'unavailable', 'unavailable', 'false', true),
-  recipeFixtureRow('rl-mind', 'unavailable', 'unavailable', 'false', true),
+  recipeFixtureRow('rl-mind', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('rl-star', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('rl-void', 'unavailable', 'unavailable', 'false', true),
   recipeFixtureRow('rl-prism', 'unavailable', 'live', 'false', true),
 ]);
-const ENGINEERING_GLASS_ORACLE_SHA256 = '406bf99bb4f97b30d54e8222a35d7ccd2d03f21d92f9c10df2d6d82d42df8ba3';
+const ENGINEERING_GLASS_ORACLE_SHA256 = '97f6c8a9e093e516cf400f13433e06da43c2820916cf86d5c3dd7f53ba332a39';
 const engineeringGlassOracleSha256 = createHash('sha256').update(JSON.stringify({
   research: ENGINEERING_GLASS_RESEARCH_ORACLE,
   recipes: ENGINEERING_GLASS_RECIPE_ORACLE,

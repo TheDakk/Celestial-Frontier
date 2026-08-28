@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-27 · FINAL3 LAYOUT GREEN · SCENEMEM INSTRUMENT STOP PRESERVED · PRODUCER BINDING REPAIR REVIEWED · SIGNED FINAL4 CHECKPOINT NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-27 · FINAL4 REACHED GLASS · FOUR GREEN PREDECESSORS PRESERVED · GLASS REPAIR APPLIED · SIGNED FINAL5 CHECKPOINT NEXT ◀◀◀
 
 ### Exact local ownership and authority boundary
 
@@ -72,24 +72,43 @@ the archive verbatim and refresh this handoff in place.
   skip, all TypeScript/no-unused programs, the 887-module build, root validation/fingerprint,
   evidence and preview selftests, and isolated real-browser Slice outcome controls. Three
   independent current-byte reviews are CLEAR.
-- **Current producer-binding repair worktree:** based on signed `5ddddbf…`. Final3 Layout passed
-  787/787 with named verification, then SceneMemory stopped `instrument-fail` before measurement
-  because its tracked live producer retained only two stale fields: `buildDist` and `gameMain`.
-  A browser-free source-derived audit also found Compendium's measurement authority current but its
-  built index/owner producer stale. The stopped carriers are preserved. The repair rebinds only
-  those live producer records, keeps both historical rulers/samples and all numeric ceilings
-  unchanged, and adds an unconditional current-byte test plus stale-source/build,
-  duplicate-constant and recomputed-index/owner negative controls. The complete repair battery is
-  green at 135 Vitest files / 1,478 passed / one intentional skip, all three TypeScript programs,
-  `noUnusedLocals`, the 887-module build, fail-closed authority printer and root
-  validation/fingerprint. Three independent final binding/test, whole-diff, and
-  documentation/evidence reviews are CLEAR. The signed clean commit containing this record is the
-  final4 repair checkpoint; verify its signature and clean tree before any fresh browser chain.
+- **Signed final4 checkpoint:** `041d1cfdff28c4217d699bdb26eacd5f792f7a80` (tree
+  `796f3da97bbfe56dc64cde34598e4a59de2b6e0d`, parent `5ddddbf…`) is ahead 89 with a good
+  ED25519 signature for the same allowed signer. Its browser-free authority preflight passed 135
+  Vitest files / 1,478 tests plus one intentional skip, all TypeScript programs and the exact
+  producer checks. On this unchanged clean source, final4 Layout passed 787/787, SceneMemory 42/42,
+  Compendium 78/78 and Slice terminal PASS with ten screenshots and zero findings; every named
+  verifier passed. Glass then ran once, stopped `instrument-fail` with 46 findings and five
+  instrument failures, and was not retried. Recovery correctly did not start.
+- **Current bounded Glass-repair worktree:** based on signed `041d1cf…`. It preserves the complete
+  final4 evidence and repairs the independently diagnosed roots: semantic nonempty Survey titles;
+  settled and live off-card/centred/restored orbital-row geometry; exact restoration of every
+  audit-touched scroll owner; current `earpiece` / `diplobeacon` / `rl-mind` contact-effect oracle
+  truth; an opaque `#05070d` reading badge retaining canonical Exotic `#9A5CFF`; and the proven
+  58px panel Close gutter / 44px translation / cleared heading geometry. Each repair has an
+  isolated negative control. Only current SceneMemory/Compendium producer bindings move with the
+  changed app build; all numeric rulers and historical samples remain fixed. A reviewed signed
+  clean commit containing this record is required before final5 restarts at Layout.
 - **No external authority:** this batch authorizes no fetch/merge, push, hosted Actions, PR
   mutation, release, version bump, deployment, preview publication or `rnSeen` mutation.
   `main`, production and both sites remain unchanged.
 
 ### Preserved red evidence and browser-version law
+
+- Signed source `041d1cf…` supplied final4 Layout
+  `20260827-phase4-final4-041d1cfdff28-layout` at 787/787, SceneMemory
+  `…-scenemem` at 42/42, Compendium `…-compendium` at 78/78 and Slice `…-slice` at terminal PASS
+  with ten screenshots and zero findings. Each ran once, each named verifier passed and the source
+  stayed clean and unchanged. Glass `…-glass` then ran once across 12 viewports, stopped
+  `instrument-fail` after 74,409 ms with 46 findings and five instrument failures, and was not
+  retried; recovery did not start.
+- Six immutable final4 carriers preserve the four green stages, Slice log and Glass stop. Their
+  exact names, raw/gzip sizes and full SHA-256 inventory are the first entry in
+  `audits/README.md`. Diagnosis separates stale semantic-title, generic-scroll/off-card-control and
+  Engineering oracle assumptions from two product defects: the short-laptop Sound centre lay beneath sticky
+  Close, and Exotic text measured 2.86:1 against effective glass. Edge `151.0.4129.107` / CDP
+  `1.3` is run provenance only. No point update caused these findings and no routine compatible
+  Edge update requires a rebaseline.
 
 - Signed source `5ddddbf…` supplied Layout `20260827-phase4-final3-layout` at 787/787 across all ten
   viewports in 76,133 ms and passed its named verifier. SceneMemory
@@ -212,8 +231,17 @@ the archive verbatim and refresh this handoff in place.
     and exactly 55 unique bullets. Its existing test-fleet bullet now records closed Inventory,
     delegated opener ownership, field-specific memory findings and the no-Edge-update rebaseline
     law. `V2_CURRENT_RELEASE_VERSION` remains `null`; the popup and
-    `rnSeen` cannot move. Draft copy now states that the owner-labelled PR battery archives but
-    does not publish, while branch-site publication remains parked.
+    `rnSeen` cannot move. Existing bullets now also record the reserved Close gutter and opaque
+    rarity reading badge; no 56th bullet or version was added. Draft copy states that the
+    owner-labelled PR battery archives but does not publish, while branch-site publication remains
+    parked.
+14. **Glass outcome honesty:** geometry waits for the actual row/copy/value/rendered state before
+    measuring, and its live control proves the reported off-card row fails only containment before
+    centring and exact scroll restoration. Generic control audits restore every scroll owner they
+    touch. Semantic copy is validated for meaning/nonemptiness rather than arbitrary character
+    count. Settings evidence carries target/Close rectangles, centre owner and overlap. Independent
+    Engineering truth now agrees with all three live contact-effect consumers. Canonical rarity
+    identity is preserved, but effective composited text contrast must still clear 4.5:1.
 
 ### Current verification
 
@@ -254,23 +282,28 @@ the archive verbatim and refresh this handoff in place.
   battery are green, and three independent current-byte reviews are CLEAR. Its final3 Layout
   result was green; its source-bound SceneMemory stage stopped before measurement on the stale
   two-field producer binding described above.
-- **Current producer-binding repair:** focused Vitest is green at 4 files / 48 tests. The new
-  current-authority test performs the real standard app build, compares both budget records to
-  independently derived bytes, and proves source, dist, forged duplicate-constant and recomputed
-  Compendium-owner mutants red. The fail-closed authority printer reports SceneMemory budget,
-  Compendium measurement and Compendium producer all matching; SceneMemory budget SHA-256 is
-  `47d24080…775b`, Compendium budget SHA-256 is `f0bedb67…3c64`, and no numeric ceiling changed.
-  The complete 135-file /1,478-pass /one-skip battery, all TypeScript/no-unused programs,
-  887-module build, authority printer and root validation/fingerprint are green. Three independent
-  final binding/test, whole-diff, and documentation/evidence reviews are CLEAR. The signed clean
-  commit containing this record is the final4 repair checkpoint. No current certifying
-  SceneMemory/Compendium/Slice/Glass/recovery PASS exists.
+- **Signed final4 verification:** browser-free authority passed 135 files / 1,478 tests plus one
+  intentional skip before the campaign. Exact immutable final4 evidence then proved Layout
+  787/787, SceneMemory 42/42, Compendium 78/78 and Slice PASS on unchanged `041d1cf…`; the Glass
+  report is a preserved instrument stop, not a product verdict or reusable predecessor for changed
+  source.
+- **Current Glass repair:** focused rarity/Engineering Vitest is green at 4 files / 39 tests, the
+  complete browser-free checkpoint is green at 135 Vitest files / 1,479 passed / one intentional
+  skip, all TypeScript and `noUnusedLocals` programs, the 887-module build, fail-closed authority
+  printer, Glass/Slice/recovery selftests and root validation with the unchanged 50-probe
+  fingerprint. Current SceneMemory budget SHA-256 is `a23a3d80…8355`; current Compendium budget is
+  `858c2503…8f6` with producer `bf9ad0b6…4dcb`; no ruler, historical sample or numeric ceiling
+  changed. Independent diagnosis, documentation consistency, Glass and whole-diff reviews are
+  CLEAR with no remaining actionable blocker. Only the signed-clean checkpoint remains before any
+  final5 browser stage. No current-source certifying Layout, SceneMemory, Compendium, Slice, Glass
+  or recovery PASS exists yet.
 
 ### Exact remaining local sequence — serial, fail-fast, no automatic retry
 
-1. Verify this checkpoint's signature and clean tree before campaign work. Do not reuse any final3
-   run ID.
-2. From that unchanged signed source, restart the entire serial campaign with fresh IDs: Layout +
+1. Review and record the completed browser-free/root battery plus the whole diff and docs, then
+   create and verify one signed clean final5 checkpoint. Do not reuse any final4 run ID or
+   predecessor.
+2. From that unchanged signed source, restart the entire serial campaign with fresh final5 IDs: Layout +
    named verifier → SceneMemory 42/42 + named verifier → Compendium 78/78 + named verifier → Slice
    terminal PASS + named verifier → full 12-viewport Glass bound to that Slice + named verifier →
    uninterrupted 1,200,000 ms recovery bound to both predecessors + named verifier. Any
@@ -287,6 +320,13 @@ the archive verbatim and refresh this handoff in place.
 
 ### Active objective beyond the Phase-4 checkpoint and HUMAN boundaries
 
+- **Queued visual-polish study from Nick's TikTok reference:** after the stable Phase-4 checkpoint,
+  prototype one **Blazing Sol approach** hero moment using deeper warm/cool color separation,
+  controlled bloom, atmospheric depth, brighter focal highlights, darker framing silhouettes and
+  layered particle motion. Match the reference's emotional punch, not its exact assets or shot;
+  preserve deterministic identity, game-readable composition, reduced motion, contrast, phone heat
+  and current backing/answerability budgets. Compare the result by eye before expanding the language
+  to the rest of the universe.
 - Physical-device accessibility, heat/battery, and applicable HUMAN listening/comfort remain
   human work even after automated evidence.
 - The immediate target is the clean playable Phase-4 evidence checkpoint, but the active authorized
@@ -308,11 +348,11 @@ the archive verbatim and refresh this handoff in place.
 ### Git / paired-agent handoff
 
 - **Current side — OpenAI/Codex macOS:** owns this local unpushed repair worktree on `openai/mac`,
-  based on ahead-88 signed second-repair source `5ddddbf…`. Final3 Layout is green; its SceneMemory
-  instrument stop and both exact carriers are preserved. The bounded live producer rebindings and
-  source-derived regression are fully browser-free green, and three independent final binding/test,
-  whole-diff, and documentation/evidence reviews are CLEAR. Use the signed clean commit containing
-  this handoff for the entire fresh final4 chain without fetch/merge/switch or copying files.
+  based on ahead-89 signed final4 source `041d1cf…`. Its four green predecessors, Glass instrument
+  stop and six exact carriers are preserved. The bounded Glass/product repair is applied locally,
+  complete-browser-free green and independently review-CLEAR; sign it before using that one
+  unchanged clean checkpoint for the entire fresh final5 chain. Do not fetch, merge, switch
+  branches or copy files during that chain.
 - **GitHub step now:** none. `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, the repository is public,
   but zero exact hosted attempts are authorized. Do not push, label, dispatch, rerun, mark Ready,
   merge, publish or deploy.

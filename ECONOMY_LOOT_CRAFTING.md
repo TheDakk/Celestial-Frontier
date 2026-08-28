@@ -1,5 +1,12 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
+> **2026-08-27 Final4 Glass recipe-oracle correction — current repair:** `earpiece`,
+> `diplobeacon` and `rl-mind` already carry `contact` effects consumed by the live
+> contact/capture-support capability and odds projection. Final4 Glass was wrong because its
+> independent recipe oracle still classified those three effects as unavailable. The repair marks
+> their oracle effect support live; it changes no product behavior, recipe availability, cost,
+> prerequisite, capacity/headroom rule, item definition or progression.
+
 > **2026-08-26 locale-independent economy ordering — current local candidate:** the source-neutral
 > Arc 2 ledger no longer calls ambient `String.prototype.localeCompare()` when it canonicalizes
 > coverage identifiers or quantity maps. One explicit `<` / `>` comparator now gives JavaScript's
@@ -85,12 +92,15 @@
 > Layout schema v2 embeds no Git/source identity and that non-commit-tagged run lacks a preserved
 > execution record, so it is chronology-associated provenance rather than exact-source evidence.
 > Slice ran once and stopped terminal-red on preserved stale harness assumptions after product
-> hardening; it was not retried, and Glass and recovery did not run. The current repaired working tree changes only evidence oracles,
-> their focused tests and evidence/documentation carriers. It must become a new signed clean commit,
-> then restart the complete fail-fast chain from Layout with fresh run IDs on one unchanged source.
-> There is no later browser result, publication, hosted attempt, release, deployment, version bump or
-> external authority. Compatible Edge or Chrome point updates remain provenance only and never
-> trigger calibration, rebaselining, repinning or a threshold change.
+> hardening; it was not retried, and Glass and recovery did not run. At that historical
+> post-`7362a0e…`, pre-Final2 boundary, the repaired working tree changed only evidence oracles,
+> focused tests and evidence/documentation carriers and still required a signed clean restart from
+> Layout. Signed `041d1cf…` later supplied Final4 Layout 787/787, SceneMemory 42/42, Compendium
+> 78/78 and Slice PASS before Glass stopped on preserved instrument evidence. The current bounded
+> Glass/product repair remains uncertified and requires a fresh signed Final5 chain from Layout;
+> current Glass, recovery, whole-Gate, hosted, HUMAN and release authority remain open. Compatible
+> Edge or Chrome point updates remain provenance only and never trigger calibration, rebaselining,
+> repinning or a threshold change.
 >
 > **At the Arc 2 boundary, still open and deliberately not fabricated:** its economy trace is
 > source-neutral and reports `sourceModelStatus: arc3-deferred`. Arc 3's current overlay above now

@@ -10,6 +10,74 @@ summary of it.
 
 ## Contents
 
+### Signed `041d1cf…` final4 campaign — four green predecessors, then Glass instrument stop
+
+Signed source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` (tree
+`796f3da97bbfe56dc64cde34598e4a59de2b6e0d`, parent `5ddddbf…`) began clean on
+`openai/mac` and stayed byte-stable. Every stage ran once with a fresh
+`20260827-phase4-final4-041d1cfdff28-*` ID and zero automatic retries. Layout passed 787/787
+sealed outcomes and its 10/10 verifier in 76,058 ms; SceneMemory passed 42/42 and its named
+verifier in 10,277 ms; Compendium passed 78/78 and its named verifier in 46,414 ms; and Slice
+finished terminal PASS with ten screenshots, zero findings/scopes and a passing named verifier in
+414,797 ms. Glass then stopped fail-closed after 74,409 ms with terminal `instrument-fail`, 46
+findings and five instrument failures across all 12 viewports. It was not retried and recovery
+correctly did not start.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_234347046.json.gz` preserves run
+  `20260827-phase4-final4-041d1cfdff28-layout`. The gzip is 4,781 bytes with SHA-256
+  `66bf4a70ef6424db5bae892efd8215e15efc2af72fc77be11e422164ce332c09`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `da6cfcb8415516527e777bd5b056abe772af7e90765b7d7b261aaadba28e7930`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260827_234435396.json.gz` preserves run
+  `20260827-phase4-final4-041d1cfdff28-scenemem`. The gzip is 23,993 bytes with SHA-256
+  `544ebab6c01b59c59c45b44c5e3ead7fbc473262a0573d7f8a485486ce758a85`; decompressed JSON is
+  305,575 bytes with SHA-256
+  `1350dc76914dbd6b9cb26411896a7e92d2b04e482439b7af2aa3d35650d0f987`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260827_235229369.json.gz` preserves run
+  `20260827-phase4-final4-041d1cfdff28-compendium`. The gzip is 538,322 bytes with SHA-256
+  `b8ce7e6bcbecaff7ab6f150afc32856d68422b1d90ae250c65782e917552d1ca`; decompressed JSON is
+  8,543,685 bytes with SHA-256
+  `e7c26d37cc653da74900ca03700b175c3020e8d07a293542a7e9d9dfa9849585`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_000011550.json.gz` and
+  `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_000011550.log.gz` preserve run
+  `20260827-phase4-final4-041d1cfdff28-slice`. The report gzip/raw are 1,920 / 6,145 bytes with
+  SHA-256 `1440866886518d6ba524c5ff794293e3fbacfcf0db476f89be5cd297f673ba17` /
+  `af2eed83289730686b281cfd882eaf5893c54dbb8ff57f823ce3b5ed71db0ed0`; the log gzip/raw are
+  2,912 / 5,904 bytes with SHA-256
+  `19774e72bc5cb54d324e51206c74d2562e5fb469a4c3b5329bf95bb9705b323b` /
+  `d75ca5212a634ef2a4226b1887dee2226fef97b632bc5a147e7828be445a33dd`.
+- `PHASE4_GLASS_CURRENT_INPUT_INSTRUMENT_FAILURE_20260828_000226676.json.gz` preserves run
+  `20260827-phase4-final4-041d1cfdff28-glass`. The gzip is 102,055 bytes with SHA-256
+  `e7bb528cf804bed32d77dab01585d0097094f11f331043448ac3dbf7e612d115`; decompressed JSON is
+  1,518,127 bytes with SHA-256
+  `9ccf29c2c9c6c3315114d1adf2f886a4b1831c5d3279852669e0271285f0fec5`.
+
+The 46 findings reduce to four stale or incomplete harness assumptions plus two connected product
+presentation defects. Twelve `REQUIRED_COPY_EMPTY` rows rejected the valid four-character title
+`Mars` because the generic orbital audit demanded five characters. The generic audit displaced the
+Survey scroller; the small-phone orbital control then sampled the already-rendered, settled
+`Mineral veins` row while it was off-card, without first centring it or proving exact restoration.
+The nine `SETTINGS_CREATURE_VOICE_CONTROL` findings comprise four phone rows that inherited
+unrelated audit scroll state and five laptop rows caused by the real Close overlap; one additional
+laptop `CONTROL_NOT_HITTABLE` finding records the same product defect. The 1280×720 Sound centre
+was genuinely owned by the sticky Close target because the panel had lost its reserved Close
+gutter. Twelve `SHIPYARD_STATE_TRUTH` rows came from
+the independent recipe oracle still calling `earpiece`, `diplobeacon` and `rl-mind` effects
+unavailable after their contact/capture-support consumers became live; the four Shipyard control
+failures cascade from that stale baseline. Twelve `TEXT_CONTRAST_LOW` rows are genuine: canonical
+Exotic `#9A5CFF` measured 2.86:1 against effective bright glass, below 4.5:1.
+
+The bounded repair retains the canonical rarity hue on an opaque `#05070d` reading badge, restores
+the proven 58px panel Close gutter / 44px Close translation / cleared heading geometry, restores
+every audit-touched scroll owner exactly, waits for the real orbital row before measuring it, proves
+live off-card → centred → exact-restored containment, treats nonempty semantic titles as valid, and
+refreshes the three source-independent contact-effect oracle rows. Each repair has a positive and
+negative control. SceneMemory and Compendium bind only their current source/dist producer records;
+numeric rulers and historical samples remain unchanged. Microsoft Edge `151.0.4129.107` / CDP
+`1.3` is provenance only, not a version regression or rebaseline trigger. Because the repair changes
+source, none of the four green final4 predecessors can certify it: after a new signed clean
+checkpoint, the complete chain must restart at Layout with fresh final5 IDs.
+
 ### Signed `5ddddbf…` final3 campaign — Layout green, then SceneMemory instrument stop
 
 Signed source `5ddddbfb79ea984d44c86e2107e5e4013f84f1b3` (tree

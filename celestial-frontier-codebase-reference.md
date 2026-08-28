@@ -6,7 +6,29 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-27.**
 >
-> **2026-08-27 local candidate overlay — signed second harness repair, final3 Layout green,
+> **2026-08-27 Final4 Glass repair overlay — current local candidate:** signed clean source
+> `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied fresh named Layout 787/787,
+> SceneMemory 42/42, Compendium 78/78 and a ten-screenshot Slice PASS on one unchanged source.
+> Full Glass then ran once, stopped `instrument-fail`, preserved its report and did not start
+> recovery. Diagnosis separated stale or contaminated evidence from two product presentation
+> defects. Glass now waits for post-render settlement before geometry, gives every scoped control
+> its own native `elementFromPoint` hit-owner proof, and restores every touched scroller to its exact
+> prior position in `finally`. Survey title semantics require nonempty content, so valid four-character
+> **Mars** passes while an empty title is the negative control. The source-independent Engineering
+> oracle remains separate from production but now classifies all current live `contact` consumers
+> (`earpiece`, `diplobeacon`, `rl-mind`) as connected, with a live-mapping mutation control.
+>
+> Product presentation keeps the canonical Exotic foreground `#9A5CFF` and places written rarity
+> tokens on the shared opaque `#05070d` badge, yielding effective text contrast of at least 4.5:1
+> across supported glass. Panels reserve a 58px right gutter, translate their 44px Close owner by
+> 44px into it, and clear headings below the floated header geometry; neighboring controls and focus
+> can no longer occupy the sticky Close hit target. Removal controls independently recreate the
+> transparent-rarity contrast failure and the laptop Settings overlap. These repairs change no
+> deterministic rarity value, save shape, memory ruler, browser-version authority, release identity
+> or production boundary. A new signed clean source and a fresh fail-fast chain from Layout remain
+> required before certification.
+>
+> **2026-08-27 producer-binding checkpoint foundation — signed second harness repair, final3 Layout green,
 > SceneMemory instrument stop preserved, and live producer binding repair reviewed for the signed
 > final4 checkpoint:**
 > signed source `5ddddbfb79ea984d44c86e2107e5e4013f84f1b3` passed final3 Layout 787/787
@@ -262,13 +284,15 @@
 > SHA-256 `e6c4aeea…`. Signed `5ddddbf…` contains the second harness repair and its complete
 > browser-free checkpoint. Final3 Layout passed; SceneMemory then stopped pre-measurement on stale
 > live `buildDist`/`gameMain` binding, with exact evidence and no retry. Browser-free derivation also
-> found Compendium's measurement current but producer stale. The current repair binds SceneMemory
-> budget `47d24080…775b` and Compendium budget `f0bedb67…3c64`, preserves all numeric/historical
+> found Compendium's measurement current but producer stale. That pre-Final4 repair bound SceneMemory
+> budget `47d24080…775b` and Compendium budget `f0bedb67…3c64`, preserved all numeric/historical
 > ruler data, and adds standard-build current-authority plus green-wrong mutants. The complete
 > browser-free battery, authority printer and root validator pass; three independent final
-> binding/test, whole-diff, and documentation/evidence reviews are CLEAR. The signed clean commit
-> containing this record owns final4 from Layout. Current-input Slice is RED; Glass, recovery and whole-Gate
-> evidence remain open.
+> binding/test, whole-diff, and documentation/evidence reviews were CLEAR. The repair became signed
+> clean source `041d1cf…`, whose Final4 Layout, SceneMemory, Compendium and Slice stages passed before
+> Glass stopped on the preserved instrument report. The current bounded Glass/product repair makes
+> those predecessors historical and requires a fresh signed Final5 chain from Layout; current-source
+> Glass, recovery and whole-Gate evidence remain open.
 >
 > Current-input Slice retains eight one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > The first five remain preserved historical diagnosis. Signed-clean source
@@ -298,12 +322,15 @@
 > absent-primary fixture, atomically resets/stages all stores, closes the sibling document and
 > executable-tests a held active persist; Arc 4 requires zero stale-release and one publication-
 > release read. Signed `5ddddbf…` contains that repair. Its final3 SceneMemory instrument stop and
-> source-derived live-binding repair require both memory gates to repeat inside fresh final4 without
-> recalibration. Root Gate A separately
+> source-derived live-binding repair required both memory gates to repeat inside fresh Final4
+> without recalibration; signed `041d1cf…` then passed Final4 Layout, SceneMemory, Compendium and
+> Slice before Glass stopped with 46 findings and five instrument failures. The bounded local repair
+> must now complete fresh Final5 from Layout. Root Gate A separately
 > accepts compatible Chromium family + CDP `1.3` only after exercising the exact CDP inventory
 > derived from `tools/uilayout.js` + `tools/bootperf.js` and recording complete per-run provenance;
-> point version alone never repins, rebaselines or moves a root threshold. No repaired Slice PASS, Glass result, recovery certificate,
-> hosted/HUMAN, whole-Gate, release, version, preview/publication or deployment claim exists.
+> point version alone never repins, rebaselines or moves a root threshold. No current-source Glass
+> PASS, recovery certificate, hosted/HUMAN, whole-Gate, release, version, preview/publication or
+> deployment claim exists.
 >
 > **2026-08-25 Arc 3–5 + Arc 7 historical checkpoint — retained as foundation where the
 > 2026-08-27 overlay does not supersede it:** `@cf/domain-opportunity`,
@@ -2783,21 +2810,21 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-27):** signed `5ddddbf…` contains the second harness
-repair after its 134-file /1,475-test browser-free checkpoint and three clear reviews. Final3 Layout
-`20260827-phase4-final3-layout` passed 787/787 across ten viewports and named verification.
-SceneMemory `20260827-phase4-final3-scenemem` ran once, stopped `instrument-fail` after 1,662 ms
-before measurement with zero outcomes, retained exact clean source and complete cleanup, and was not
-retried; Compendium/Slice/Glass/recovery did not run. The only SceneMemory drift was live
-`buildDist`/`gameMain`; the browser-free oracle also found Compendium measurement current but its
-built producer stale. Current budgets `47d24080…775b` / `f0bedb67…3c64` now bind independently
-derived standard-build bytes without moving numeric rulers or historical samples. A new automatic
-Vitest check plus the fail-closed printer own source/build/duplicate-constant/recomputed-index/owner
-controls. The complete 135-file /1,478-pass /one-skip battery, all TypeScript/no-unused programs,
-887-module build, authority printer and root validator pass; three independent final binding/test,
-whole-diff, and documentation/evidence reviews are CLEAR. The signed clean commit containing this
-record owns final4. Earlier `bb5dc7c7…` and `862a75b…` reds, calibration source
-`6c9ad855…`, activation `4a54c0d…`, and the historical `7362a0e…` / `b206cf0…` certificates remain
+**Current local candidate snapshot (2026-08-27):** signed clean source `041d1cf…` supplied Final4
+Layout 787/787, SceneMemory 42/42, Compendium 78/78 and Slice PASS with ten screenshots and zero
+findings; every named verifier passed. Glass then ran once across all 12 viewports, retained 46
+findings and five instrument failures, and stopped without retry before recovery. The six exact
+Final4 carriers and hashes are preserved in `audits/README.md`. The bounded product/harness repair
+is browser-free green at 135 Vitest files / 1,479 passed / one intentional skip, all TypeScript and
+`noUnusedLocals` programs, the 887-module build, authority printer, Glass/Slice/recovery selftests
+and root validation with the unchanged determinism fingerprint. Current source-derived budgets are
+SceneMemory `a23a3d80…8355` and Compendium `858c2503…8f6`, with Compendium producer
+`bf9ad0b6…4dcb`; no numeric ruler, historical sample or ceiling changed. Independent Glass,
+whole-diff and documentation reviews are CLEAR. The worktree still needs one signed clean Final5
+checkpoint and the complete fresh chain from Layout. No current-source browser PASS, recovery,
+hosted/HUMAN whole-Gate or release authority exists. Earlier `bb5dc7c7…` and `862a75b…` reds,
+calibration source `6c9ad855…`, activation
+`4a54c0d…`, and the historical `7362a0e…` / `b206cf0…` / `5ddddbf…` / `041d1cf…` evidence remain
 truthful for their exact inputs.
 
 Current-input Slice retains eight one-attempt/zero-retry reds. The first six remain historical

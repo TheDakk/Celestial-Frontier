@@ -8,6 +8,10 @@ const mainSource = fs.readFileSync(
   path.join(here, '..', 'apps', 'game', 'src', 'main.ts'),
   'utf8',
 );
+const indexSource = fs.readFileSync(
+  path.join(here, '..', 'apps', 'game', 'index.html'),
+  'utf8',
+);
 
 function occurrences(source: string, needle: string): number {
   return source.split(needle).length - 1;
@@ -36,7 +40,7 @@ function replaceInSectionExact(
   return source.slice(0, start) + body.replace(needle, replacement) + source.slice(end);
 }
 
-function rarityWiringErrors(source: string): string[] {
+function rarityWiringErrors(source: string, index = indexSource): string[] {
   const errors: string[] = [];
   if (occurrences(
     source,
@@ -60,6 +64,7 @@ function rarityWiringErrors(source: string): string[] {
     errors.push('row-stored-tier-projector');
   }
   if (!row.includes('data-sel="codex-row-rarity"')
+    || !row.includes('class="rarity-badge"')
     || !row.includes('esc(rarityView.name)')
     || !row.includes('esc(rarityView.hex)')) errors.push('row-canonical-view');
   if (row.includes("' · tier ' + e.tier") || row.includes('e.tier != null')
@@ -73,9 +78,15 @@ function rarityWiringErrors(source: string): string[] {
     errors.push('detail-stored-tier-projector');
   }
   if (!detail.includes('data-sel="detail-grade"')
+    || !detail.includes('class="rarity-badge"')
     || !detail.includes('esc(rarityView.name)')
     || occurrences(detail, 'esc(rarityView.hex)') !== 2) errors.push('detail-canonical-view');
   if (/\bd\.grade\b/u.test(detail)) errors.push('detail-art-label-leak');
+
+  const rarityBadgeRule = index.match(/\.rarity-badge\s*\{[^}]*\}/u)?.[0] ?? '';
+  if (!/background:\s*#05070d\s*;/u.test(rarityBadgeRule)) {
+    errors.push('rarity-badge-surface');
+  }
 
   return [...new Set(errors)];
 }
@@ -117,6 +128,25 @@ describe('v2 rarity presentation — player-surface wiring', () => {
       'esc(d.grade?.label || rarityView.name)',
     );
     expect(rarityWiringErrors(artLabelLeak)).toContain('detail-art-label-leak');
+  });
+
+  it('negative-controls the shared opaque rarity reading surface', () => {
+    const badgeRule = indexSource.match(/\.rarity-badge\s*\{[^}]*\}/u)?.[0] ?? '';
+    expect(occurrences(badgeRule, 'background: #05070d;')).toBe(1);
+    const transparentBadge = indexSource.replace(badgeRule, badgeRule.replace(
+      'background: #05070d;',
+      'background: transparent;',
+    ));
+    expect(rarityWiringErrors(mainSource, transparentBadge)).toContain('rarity-badge-surface');
+
+    const missingRowBadge = replaceInSectionExact(
+      mainSource,
+      'function mountCodexRow(',
+      '\nfunction fillCodex(',
+      '<span class="rarity-badge" data-sel="codex-row-rarity"',
+      '<span data-sel="codex-row-rarity"',
+    );
+    expect(rarityWiringErrors(missingRowBadge)).toContain('row-canonical-view');
   });
 
   it('negative-controls both Survey disclosure gates', () => {

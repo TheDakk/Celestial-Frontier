@@ -10,26 +10,27 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — signed evidence, preserved Slice harness red, repaired-source restart (2026-08-27)
+## Current-state boundary — signed Final4 Glass instrument stop, local repair, fresh restart (2026-08-27)
 
-Signed evidence source `7362a0ea32e90b24e4988c81d566b82e20549e66` first passed standalone
-SceneMemory 42/42, then retained a serial Layout 787/787 result carrier plus source-bound
-SceneMemory 42/42 and Compendium 78/78 carriers. Layout schema v2 embeds no Git/source identity and
-that non-commit-tagged run lacks a preserved execution record, so it is chronology-associated
-provenance rather than standalone exact-source evidence. Its one Slice attempt then stopped
-terminal-red on preserved stale harness assumptions; Glass and recovery correctly did not run. The repaired worktree changes only evidence
-oracles, focused tests, audit/evidence carriers and live documentation. Product, producer, numeric-budget and
-deadline bytes are unchanged; it must become a new signed clean commit and restart the complete
-chain from Layout with fresh IDs. No later browser result, publication, hosted attempt, release,
-deployment, version bump or external authority exists. Compatible Edge/Chrome point updates are
-provenance only and never trigger a rebaseline or threshold change.
+Signed clean source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied Final4 Layout
+787/787, SceneMemory 42/42, Compendium 78/78 and Slice PASS with ten screenshots and zero findings;
+each exact stage passed named verification. Full Glass then ran once across all 12 viewports,
+retained 46 findings and five instrument failures, and stopped without retry. Recovery correctly
+did not start.
 
-The repaired browser-free battery is green at 134 Vitest files / 1,474 passed / one intentional
-skip, plus `root/app/worker/noUnused` TypeScript, `artunused`, syntax/import selftests and the
-887-module build. The historical activation checkpoint was green at 134 files / 1,469 passed / one
-intentional skip; its earlier signed-red browser-free checkpoint was green at 134 files / 1,458
-passed / one intentional skip. Prior implementation/code and release-note audits remain CLEAR for
-their reviewed inputs. Historical calibration remains intact:
+Diagnosis separated stale evidence assumptions from product defects. A five-character title oracle
+rejected valid **Mars**; the generic audit displaced the Survey scroller; the later orbital control
+sampled the already-rendered row while off-card without first centring it or proving exact
+restoration; and Shipyard still expected the live `earpiece`, `diplobeacon` and `rl-mind` contact
+effects to be unavailable. Separately, laptop-720p Sound content really overlapped sticky
+Close, and canonical Exotic text really reached only 2.86:1 over bright glass. The bounded harness
+and product repairs are now applied locally but are uncertified. They must become a new signed clean
+source and restart the complete Final5 chain at Layout with fresh IDs. No later browser result,
+recovery, publication, hosted attempt, release, deployment, version bump or external authority
+exists. Edge `151.0.4129.107` / CDP `1.3` is provenance only and never triggers a rebaseline or
+threshold change.
+
+Historical calibration remains intact:
 `bb5dc7c7f4372f712778af67ace2b5f81b71b99d`
 is the protected-preview red source; signed `862a75b316142348636abea442dab15e87393642` is the
 paired 40/42 heap/DOM red; signed `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` supplied the exact
@@ -95,7 +96,10 @@ Every other ceiling stays unchanged and the paired red still fails its node/list
 compatible Edge point update never triggers calibration or any threshold change. Signed `7362a0e…`
 later supplied standalone and serial SceneMemory 42/42 plus serial Compendium 78/78 before Slice
 stopped on the preserved harness red. Those results bind that exact signed source; the repaired
-source still has no Slice PASS, Glass result or recovery certificate and must restart from Layout.
+source at that historical boundary still had no Slice PASS, Glass result or recovery certificate
+and had to restart from Layout. Signed `041d1cf…` later supplied the Final4 Slice PASS before Glass
+stopped on the preserved instrument evidence; the current bounded repair now requires a fresh
+signed Final5 restart from Layout.
 
 - ★ **D-PORT-TOOLCHAIN — the master plan's generic quality roles use the repository's executable
   equivalents.** The supplied immutable plan names Playwright, Zod/JSON Schema, ESLint and Prettier.
@@ -2185,6 +2189,17 @@ duplicates).
   proves its useful strip and fixed-chrome clearance, then proves exact restoration.
   On desktop, notifications, Settings and Records share the bottom-right utility edge above the
   measured dock; none may fall back over the upper-left navigation rail.
+
+  **2026-08-27 Final4-response repair:** panel content now reserves a fixed right-side header gutter,
+  moves the owned 44px Close target into that gutter and clears headings below it, so the 1280×720
+  Settings Sound control cannot render beneath or hit through sticky Close. Glass owns a
+  laptop-specific native hit/overlap/scroll-restoration outcome and a paired no-gutter negative
+  control. Shared rarity badges keep the canonical tier foreground colours but add an opaque dark
+  backing surface, lifting Exotic above the text-contrast floor without changing rarity identity;
+  the live Glass mutation removes that backing and must reproduce the contrast red before exact
+  restoration. Final4 found these product defects together with stale title, scroll, settlement and
+  Shipyard-effect evidence assumptions. The repairs are locally implemented but do not become
+  current evidence until a new signed source completes a fresh Final5 chain from Layout.
 
   Pushed commit `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery,
   but GitHub test-battery #199, run `31571459050` / job `94034164092`, failed in the v2
