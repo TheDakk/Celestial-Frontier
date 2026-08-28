@@ -1,22 +1,21 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
-> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
-> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
-> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
-> not run. Its product assessment is wholly green. The stored carrier's deliberate
-> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
-> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
-> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
-> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
-> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
-> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests,
-> diff-check and two-review browser-free verification is green. No product, assessor predicate,
-> shared helper, persistence, art, save, version, ruler or browser-policy change occurred. The
-> repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
-> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
-> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
-> Final12/Final11/Final10 wording below is historical where superseded.
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no product, persistence, art, save, version, ruler or browser policy.
+> It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment authority;
+> physical-device heat/GPU evidence remains open. Next preserve/sign the evidence and docs, restore
+> monitors-off caffeinate, complete the full-code review/polish checkpoint, then begin authorized
+> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is provenance only
+> and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
+> below is historical where superseded.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
 > 2026-08-28.
@@ -126,10 +125,10 @@
 > Final8 remains immutable historical evidence for its green predecessor chain and fixture-order
 > stop; Final9 remains immutable historical evidence through the complete 16-attempt burn-down and
 > exhausted-control stop. Final10 historically superseded both, and Final11 historically superseded
-> Final10; Final12 is the latest immutable browser attempt and remains stored FAIL. Signed evidence
-> checkpoint `2bf99bd…` preserves it; signed harness-only repair `5ab4d3e…` is browser-free green but
-> browser-uncertified, and a signed clean docs descendant must supply the fresh once-only Final13
-> full chain. Final10's last
+> Final10; Final12 remains the latest immutable stored browser FAIL. Signed evidence checkpoint
+> `2bf99bd…` preserves it; signed harness-only repair `5ab4d3e…` corrected its stale expectation.
+> Exact signed Final13 source `7cb0969…` then completed the full once-only named-verified chain and
+> real Recovery certificate, establishing the stable local Phase-4 automated checkpoint. Final10's last
 > coherent reopened same-document UI → state sample observed the exhausted 16/16/0 cycle-0 budget
 > while all three read-only/ineligible actions rendered `unavailable`; the old phase-blind oracle
 > wrongly required the eligible active surface's `empty`/`depleted` vocabulary and stopped before
@@ -164,12 +163,12 @@
 > `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
 > `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
-> This assessor/tests/docs-only repair changes source identity and is browser-uncertified. It
-> independently replays Final11's unchanged carrier green without altering Final11's stored FAIL.
-> A synchronized signed clean descendant must restart **Layout →
-> SceneMemory → Compendium → Slice → Glass → recovery**. No Recovery PASS/certificate, Gate,
-> publication, hosted, HUMAN, release, deployment, version-bump or external authority exists.
-> Edge `151.0.4129.107` / CDP `1.3` is Final11 provenance only and never triggers a rebaseline or
+> This assessor/tests/docs-only repair changed source identity and independently replayed Final11's
+> unchanged carrier green without altering Final11's stored FAIL. Its synchronized signed clean
+> descendant `7cb0969…` then passed **Layout → SceneMemory → Compendium → Slice → Glass →
+> Recovery** once with every named verifier, establishing the exact-source local Recovery
+> certificate. No whole-Gate, publication, hosted, HUMAN, release, deployment, version-bump or
+> external authority exists. Edge `151.0.4129.107` / CDP `1.3` is Final13 provenance only and never triggers a rebaseline or
 > threshold change. Exact carriers, sizes and hashes are inventoried in `audits/README.md`.
 >
 > **Queued visual scope (Nick, 2026-08-27):** after the stable Phase-4 checkpoint, apply the
@@ -357,9 +356,10 @@
 > Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
-> never repins, rebaselines or moves a root threshold. Post-start audio and real Recovery remain
-> unproved. At that historical Final10 boundary, full Glass was exact-source green but no successor
-> browser PASS or Recovery/HUMAN
+> never repins, rebaselines or moves a root threshold. Post-start audio remains unproved; exact
+> signed Final13 source `7cb0969…` supplies the later named-verified real Recovery certificate. At
+> that historical Final10 boundary, full Glass was exact-source green but no successor browser PASS
+> or Recovery/HUMAN
 > whole-Gate, release/version, preview/publication or deployment authority exists.
 >
 > **2026-08-25 local campaign boundary — historical checkpoint, still foundational where the
@@ -394,8 +394,8 @@
 > `recoveryClaimed:false`); Glass passed 12 viewports/36 Arc 4 outcomes with all planned controls and
 > no omissions (71,713 ms,
 > report `03a14ce5…`). Both bind exact-input dirty tree `b83ccef5…`. Final11 later passed the
-> uninterrupted 20-minute recovery observation and recovered UI; the repaired final-assessor
-> certificate and HUMAN review remain open. Arc 5A has an app-active,
+> uninterrupted 20-minute recovery observation and recovered UI; exact signed Final13 source
+> `7cb0969…` completed the repaired final-assessor certificate. HUMAN review remains open. Arc 5A has an app-active,
 > receipt-bound compact V2 authority across boot, Training and every Arc 4 hit/miss. Aligned legacy-v1
 > upgrades through one receipt-free CAS; aligned current-v2 is zero-write. The manifest and shards
 > fixed-point source/delta/target and each shard, while source-only Arc 4 growth leaves all four
@@ -1372,8 +1372,8 @@ to `null` and preserving every other field, then certifies only the Arc 1C previ
 lifecycle. It does not inherit a loaded-Arc-3 requirement. Signed predecessor `bb5dc7c…` exposed
 this coupling and remains preserved terminal-red. Signed successor `862a75b…` reached the separate
 40/42 heap/DOM red. Signed `6c9ad855…` supplied the three clean repair-calibration candidates and
-selected the 12 MiB V8 /18 MiB aggregate ceilings; signed `4a54c0d…` activates them and fresh
-certificate IDs remain open.
+selected the 12 MiB V8 /18 MiB aggregate ceilings; signed `4a54c0d…` activated them. Exact signed
+Final13 source `7cb0969…` later supplied fresh current certificate IDs without changing any ruler.
 
 ### 4.8 F3 — persistence authority, split stores, and receipts
 
@@ -1563,8 +1563,8 @@ Mine action withheld. All 62 fixed recipes are listed, but only connected-effect
 with exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional
 slotted outputs and disconnected-effect rows remain unavailable. Local commit `c4a02be` records the
 product/browser-tool batch after the no-retry Slice and Glass passes described in the current-state
-overlay; their distinct dirty-snapshot provenance keeps them historical rather than evidence for the
-current signed-repair/pending-docs candidate. Current-input browser proof, exact-head/full-battery evidence, economy
+overlay; their distinct dirty-snapshot provenance keeps them historical. Exact signed Final13
+source `7cb0969…` now supplies current-input exact-head/full-chain browser evidence. Economy
 simulation, HUMAN comprehension, authored variable construction/new loot and later progression
 depth remain open; therefore the Arc and its exit evidence are not declared complete.
 
@@ -1616,8 +1616,8 @@ revisions, current ownership/acquisition/identity evidence and its
 accessible status counterpart agree. Guide Capture/Discover copy is live/partial within
 the 24-partial/17-unavailable inventory; Training remains six lessons plus graduation with no
 Capture lesson. Final11 passed the uninterrupted 20-minute recovery observation and recovered UI;
-the repaired final-assessor certificate and HUMAN review remain open, so
-the Arc remains `[PARTIAL]`. The dedicated real-time/no-forged-clock recovery collector and its
+exact signed Final13 source `7cb0969…` later passed the repaired final assessor and named verifier.
+HUMAN review and later capability remain open, so the Arc remains `[PARTIAL]`. The dedicated real-time/no-forged-clock recovery collector and its
 mutation-sensitive selftest are ready, but it is non-standalone: recovery requires the exact
 named-verified terminal-green Slice ID and the exact named-verified full Glass ID bound to that Slice,
 all from the same unchanged clean commit, and its result must pass named verification with both IDs.
@@ -1629,7 +1629,9 @@ signed implementation/evidence repair `3fbfcd5…` has the current-state overlay
 receipts and six-region source seals browser-free green. Its signed docs descendant supplied
 Final11, which passed the uninterrupted real 20-minute observation and recovered UI. Final11 stays
 an immutable stored FAIL; the repaired assessor replay was green and supplied Final12, whose
-distinct immutable Slice control stop leaves the Recovery certificate open.
+distinct immutable Slice control stop remains preserved. Exact signed Final13 source `7cb0969…`
+then completed the full once-only named-verified chain and earned the real local Recovery
+certificate.
 The retained Arc 5A Slice/Glass pair and its exact hashes/provenance are historical evidence for
 their 2026-08-25 inputs, not current-input browser proof.
 
@@ -1653,9 +1655,9 @@ F3 transactions, and F4 time/RNG.
 receipt, committed-state and publication boundaries. The retained historical Slice adds the exact nine-stage
 native-action ledger through refusal, stale and reload convergence; Glass executes 36 Arc 4 outcomes
 across 12 viewports with every planned control. No free page, reroll, double spend, duplicate
-creature or stale-tab grant was observed. Final11 completed the real uninterrupted 20-minute
-next-cycle observation; a fresh assessor-bound Recovery certificate and combined HUMAN first-
-journey/ownership review remain required. This does not claim a
+creature or stale-tab grant was observed. Final13 completed the real uninterrupted 20-minute
+next-cycle observation and earned the exact-source local Recovery certificate; the combined HUMAN
+first-journey/ownership review remains required. This does not claim a
 Charter bioscan, targeted preview, hosted run, production release or whole-Gate closure.
 
 ### 5.4 Arc 4.5 — first complete journey [HUMAN]

@@ -1,22 +1,21 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
-> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
-> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
-> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
-> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
-> not run. Its product assessment is wholly green. The stored carrier's deliberate
-> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
-> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
-> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
-> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
-> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
-> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation-selftest,
-> diff-check and two-review browser-free verification is green. No audio/product, assessor
-> predicate, shared helper, persistence, art, save, version, ruler or browser-policy change
-> occurred. The repair is browser-uncertified: after this docs-only descendant is signed clean, run
-> one fresh Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify
-> serially and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
-> Final12/Final11/Final10 wording below is historical where superseded.
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no audio/product, persistence, art, save, version, ruler or browser
+> policy. It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment
+> authority; physical-device heat/GPU evidence remains open. Next preserve/sign the evidence and
+> docs, restore monitors-off caffeinate, complete the full-code review/polish checkpoint, then begin
+> authorized current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is
+> provenance only and compatible point updates never trigger rebaseline. Earlier Final12/Final11/
+> Final10 wording below is historical where superseded.
 
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
 2026-07-30. The dated v2 overlay below matches the current local development candidate and approved
@@ -72,10 +71,10 @@ whole layer undocumented despite being the largest single feature of v1.8.
 > immutable Final11. The repaired assessor replayed that unchanged Recovery bundle green. Immutable
 > Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout, SceneMemory and
 > Compendium before Slice stopped once/no retry on the stale one-red wrapper expectation; its product
-> assessment remained wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixes
-> only that harness expectation and is browser-free green but browser-uncertified; after the docs-only
-> descendant is signed clean, restart the full once-only Final13 chain. Edge `151.0.4129.107` / CDP
-> `1.3` is provenance only, never an audio
+> assessment remained wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixed
+> only that harness expectation. Exact signed Final13 source `7cb0969…` then completed the entire
+> once-only named-verified chain green, including the real 20-minute Recovery observation and
+> certificate. Edge `151.0.4129.107` / CDP `1.3` is provenance only, never an audio
 > ruler or rebaseline trigger.
 
 ## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-28)
@@ -151,22 +150,22 @@ affected checks before a new signed clean successor. Final11 supplied exact-head
 SceneMemory → Compendium → Slice → Glass greens and completed the uninterrupted Recovery
 observation/recovered UI, then remained stored final-assessor red. Its repaired replay is green.
 Immutable Final12 passed Layout, SceneMemory and Compendium, then stopped at Slice's stale
-negative-control expectation before Glass/Recovery. Signed harness repair `5ab4d3e…` is browser-free
-green but browser-uncertified; a fresh Final13-chain Recovery certificate is still pending.
+negative-control expectation before Glass/Recovery. Exact signed Final13 source `7cb0969…` later
+completed the full named-verified chain green and earned the real local Recovery certificate.
 Browser evidence uses three independent authorities: the root authority accepts compatible
 Chromium-family executables that satisfy CDP `1.3` plus the capability inventory derived from its
 layout/boot sources and records executable, product, revision, user agent, JavaScript version and
 protocol version for every run. Compendium and SceneMemory retain separate source-derived capability
 contracts, producer bindings and fixed rulers. A compatible browser point update is provenance and
-does not itself trigger rebaselining or move thresholds. Broader post-start audio lifecycle and a
-fresh-chain assessor-bound Recovery certificate remain unproved. There is no Recovery, hosted,
-HUMAN, release, version or deployment authority.
+does not itself trigger rebaselining or move thresholds. Broader post-start audio lifecycle remains
+unproved. Final13 supplies the exact-source local Recovery certificate, but no hosted, HUMAN,
+whole-Gate, release, version or deployment authority.
 
 Broader player-live creature expressions, combat or Guardian cues, ambience, music, recorded assets
 and asset loading remain absent. Battle sound (`cbx`) is still preserved by persistence rather than
 offered as a live v2 control. Captions beyond the exact Tame toast counterpart, mono, dynamic range,
-reduced intensity, physical-device graph/heat/battery evidence, real-browser evidence for this
-current candidate and all HUMAN listening/appeal/comfort judgments remain open. Arc 7/8 and Gate G
+reduced intensity, real-browser/physical-device audio-graph/heat/battery evidence and all HUMAN
+listening/appeal/comfort judgments remain open. Arc 7/8 and Gate G
 are therefore **partial**, not closed.
 
 The sections below remain the **approved Arc 7/8 contract**. They identify which package
@@ -227,8 +226,9 @@ The injected package runtime provides the structural mixer/limiter/meter, voice 
 priority/cooldown/concurrency/stealing, mute/hidden/restart/context-loss and disposal foundation
 behind an injected `AudioContextLike`. The Tame greeting owner now constructs and drives a bounded
 instance of it for one deterministic fauna oscillator/envelope request. It still does not own the
-compatibility stings, a general current-system soundscape or an asset renderer, and current-candidate
-browser/device evidence remains pending.
+compatibility stings, a general current-system soundscape or an asset renderer. Final13 exercises
+the implemented controls and sound witness; real-browser audio-graph and physical-device evidence
+remain pending.
 
 The approved v2 settings surface retains master volume and adds category gains only as their buses
 become real. Independent Creature voices is now restored from `vce` for the bounded Tame greeting;
@@ -696,8 +696,9 @@ qualified route inventory and sound witness; static purity and distant ecology; 
 oscillator/envelope synthesis; injected runtime lifecycle/ownership/budgets and teardown races; the
 trusted Tame/postcommit/accessibility-counterpart/no-replay fences; pure lab accounting; and the
 empty rights authority plus hypothetical intake failures. They do not listen, inspect real media
-bytes, judge comfort or measure a real browser/device audio graph. Current-candidate browser
-evidence is still pending.
+bytes, judge comfort or measure a real browser/device audio graph. Final13 supplies current-source
+browser evidence for the implemented controls and sound witness; audio-graph/device/perceptual
+evidence remains pending.
 
 **What no harness here can do is judge whether any of it sounds good.** The repository has no
 audio-capture or perceptual oracle, and no external persona fleet hears an audio signal, so a flat

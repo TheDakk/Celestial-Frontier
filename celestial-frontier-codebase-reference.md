@@ -1,22 +1,21 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
-> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
-> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
-> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
-> not run. Its product assessment is wholly green. The stored carrier's deliberate
-> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
-> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
-> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
-> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
-> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
-> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests,
-> diff-check and two-review browser-free verification is green. No product, assessor predicate,
-> shared helper, persistence, art, save, version, ruler or browser-policy change occurred. The
-> repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
-> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
-> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
-> Final12/Final11/Final10 wording below is historical where superseded.
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no product, persistence, art, save, version, ruler or browser policy.
+> It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment authority;
+> physical-device heat/GPU evidence remains open. Next preserve/sign the evidence and docs, restore
+> monitors-off caffeinate, complete the full-code review/polish checkpoint, then begin authorized
+> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is provenance only
+> and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
+> below is historical where superseded.
 
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the source. When in doubt, source wins. The long-form
@@ -112,12 +111,13 @@
 > green. Immutable Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout,
 > SceneMemory and Compendium before Slice stopped once/no retry: the product assessment was wholly
 > green, but the strengthened authority mutant correctly returned two red clauses while its wrapper
-> expected one. Glass/Recovery did not run. Signed repair `5ab4d3e…` fixes only that harness
-> expectation and is browser-free green but browser-uncertified. After this docs-only descendant is
-> signed clean, restart the once-only Final13 full chain at Layout with fresh IDs and every named
-> verifier. Edge `151.0.4129.107` / CDP `1.3`
+> expected one. Glass/Recovery did not run. Signed repair `5ab4d3e…` fixed only that harness
+> expectation. Exact signed Final13 source `7cb0969…` then completed the full once-only chain from
+> Layout through Recovery with every named verifier green and no retries/findings/instrument
+> failures. Edge `151.0.4129.107` / CDP `1.3`
 > is provenance only: a compatible point update never triggers a rebaseline, recalibration or
-> threshold change. No Recovery certificate, whole-Gate, hosted, HUMAN or release authority exists.
+> threshold change. That exact-source local Recovery certificate grants no whole-Gate, hosted,
+> HUMAN or release authority.
 >
 > **Queued visual boundary:** after the stable Phase-4 checkpoint, carry the TikTok-inspired polish
 > language across the entire universe—galaxies, systems, planets, every biome, creatures, plants,
@@ -128,7 +128,8 @@
 > profiles without changing their composition, placement, scale or structural identity, then apply
 > the shared palette/light/material treatment across their flora, fungi, microbes and ambient actors.
 > Reduced motion, contrast, mobile heat/frame budgets and before/after identity review are required.
-> No graphics change is implemented in the current pre-certification repair candidate.
+> Final13 itself changed no graphics; the authorized universe-wide visual pass follows the full-code
+> review/polish checkpoint.
 >
 > **2026-08-27 Final4 Glass repair overlay — historical pre-Final5 source:** signed clean source
 > `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied fresh named Layout 787/787,
@@ -396,8 +397,8 @@
 > Final11 completed the uninterrupted real 20-minute observation and recovered UI and remains stored
 > final-assessor red; its unchanged bundle replays green under the repaired assessor. Immutable
 > Final12 stopped earlier at Slice's stale negative-control expectation, with the main assessment
-> green and Glass/Recovery not run. Signed harness repair `5ab4d3e…` is browser-free green but
-> browser-uncertified; only a fresh Final13 full chain can earn the Recovery certificate. The former Compendium ruler under
+> green and Glass/Recovery not run. Exact signed Final13 source `7cb0969…` later completed the full
+> named-verified chain green and earned the stable local Recovery certificate. The former Compendium ruler under
 > measurement authority `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`
 > and producer authority `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`
 > remains truthful historical evidence.
@@ -457,9 +458,9 @@
 > Compendium and Slice passed before Glass stopped terminal-red with 25 findings. Post-run review
 > separated one Compendium header/workspace product root and two narrow-phone Inventory product
 > defects from two hostile-row Compendium oracle artifacts and four Settings oracle artifacts. The
-> bounded repair makes all prior certificates
-> historical for their exact source and requires a fresh signed successor from Layout;
-> current-source full Glass, Recovery and whole-Gate evidence remain open.
+> bounded repair made all prior certificates historical for their exact source and required a fresh
+> signed successor from Layout. Exact signed Final13 source `7cb0969…` later passed current-source
+> full Glass and real Recovery; whole-Gate evidence remains open.
 >
 > Historical current-input Slice chronology retains nine one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > The first five remain preserved historical diagnosis. Signed-clean source
@@ -496,13 +497,14 @@
 > chain without a product verdict. Its repair became signed `ea845d7…`; Final6 passed Layout,
 > SceneMemory and Compendium before Slice's ninth red exposed the Inventory pre-reveal/causal-prefix
 > defect. The causal repair became signed `53d030b…`; Final7 passed Layout, SceneMemory, Compendium
-> and Slice before Glass stopped with the preserved 25-finding report. The current bounded product/
-> oracle repair must now complete a fresh signed-successor chain from Layout. Root Gate A separately
+> and Slice before Glass stopped with the preserved 25-finding report. That bounded product/oracle
+> repair required a fresh signed-successor chain from Layout; exact signed Final13 source
+> `7cb0969…` later completed it through named-verified Recovery. Root Gate A separately
 > accepts compatible Chromium family + CDP `1.3` only after exercising the exact CDP inventory
 > derived from `tools/uilayout.js` + `tools/bootperf.js` and recording complete per-run provenance;
-> point version alone never repins, rebaselines or moves a root threshold. No current-source Glass
-> PASS, recovery certificate, hosted/HUMAN, whole-Gate, release, version, preview/publication or
-> deployment claim exists.
+> point version alone never repins, rebaselines or moves a root threshold. Current-source Glass and
+> Recovery PASS evidence now exists for Final13; no hosted/HUMAN, whole-Gate, release, version,
+> preview/publication or deployment claim follows.
 >
 > **2026-08-25 Arc 3–5 + Arc 7 historical checkpoint — retained as foundation where the
 > 2026-08-27 overlay does not supersede it:** `@cf/domain-opportunity`,
@@ -576,8 +578,8 @@
 > `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. The uninterrupted
 > Final11's 20-minute observation passed and its unchanged bundle replays green under the repaired
 > assessor. Immutable Final12 stopped at Slice's stale negative-control expectation before
-> Glass/Recovery. Signed harness repair `5ab4d3e…` is browser-free green but browser-uncertified; a
-> fresh Final13-chain Recovery certificate and HUMAN review remain open. No Charter bioscan, targeted
+> Glass/Recovery. Exact signed Final13 source `7cb0969…` later completed the full named-verified
+> chain green and earned the stable local Recovery certificate; HUMAN review remains open. No Charter bioscan, targeted
 > preview, hosted, release/version, `rnSeen` or preview/publication authority is claimed. Arc 5A now
 > activates the receipt-bound compact ownership-v2 representation across boot, Training and capture.
 > The manifest binds the exact Arc 4 source, canonical delta and reconstructed target while the four
@@ -1615,8 +1617,8 @@
 > receipt and exact panel/document scroll restoration in `finally`. Missing or unsafe product
 > geometry is product-red; transport/evaluation failure remains instrument-red. Browser-free mutants
 > cover replacement nodes, stable missing Close, receipt type/coordinate drift, unsafe dispatch,
-> partial causal coverage and failed restoration. This repaired oracle has only bounded small-phone
-> and phone-landscape diagnostics so far, not a current-source full Glass certificate.
+> partial causal coverage and failed restoration. Exact signed Final13 source `7cb0969…` supplies
+> the current-source full 12-viewport Glass certificate for this repaired oracle.
 >
 > The matrix import fixture is witnessed as event-owned phases rather than a
 > blind reload delay. One `cf-v2-import-phase/v1` stream binds the exact phase id,
@@ -2561,8 +2563,8 @@ drift, not an Edge-version trigger; exact Edge `.107` is provenance only. Those 
 historical. Compendium and SceneMemory now own separate Edge-family + CDP `1.3` capability/profile
 authorities; version tolerance itself changed no numeric budget. SceneMemory's three-candidate
 calibration and signed heap-only activation are complete, and signed `7362a0e…` supplied exact
-SceneMemory/Compendium certificates. The current harness-source repair requires those stages again
-inside the fresh predecessor chain but does not reopen either numeric ruler. Root Gate-A remains
+SceneMemory/Compendium certificates. Exact signed Final13 source `7cb0969…` repeated both stages
+inside its fresh green predecessor chain without reopening either numeric ruler. Root Gate-A remains
 separate.
 
 ### Star Atlas (bookmarks)
@@ -3022,13 +3024,13 @@ green. Only `witnessAuthorityControl` correctly double-redlined `convergenceRele
 `oldUiConvergence` after the strengthened authority binding while its wrapper required the first
 alone. Product and `slicesmoke.mjs` blobs in the stored carrier were unchanged from Final11;
 Glass/Recovery did not run. Signed evidence checkpoint `2bf99bd…` preserves that immutable result.
-Signed repair `5ab4d3e…` changes only the exact harness/test assertion and is browser-free green but
-browser-uncertified. After the docs-only descendant is signed clean, restart the once-only Final13
-chain from Layout with fresh IDs and every named verifier. Numeric rulers,
+Signed repair `5ab4d3e…` changes only the exact harness/test assertion. Exact signed Final13 source
+`7cb0969…` then completed the once-only chain from Layout through Recovery with every named verifier
+green, no retries/findings/instrument failures and the real 20-minute observation. Numeric rulers,
 historical samples, product/save bytes, browser authority and retry/release policy remain unchanged.
 Edge `151.0.4129.107` / CDP `1.3` is provenance only; a compatible point update never causes
-a rebaseline, recalibration or threshold move. No Recovery certificate, hosted/HUMAN whole-Gate or
-release authority exists.
+a rebaseline, recalibration or threshold move. That exact-source local Recovery certificate grants
+no hosted/HUMAN whole-Gate or release authority.
 
 **Historical Final10 predecessor:** signed `4405fb2…` passed the same five responsive predecessors
 and Recovery through closed/offline proof before the phase-blind `offline-reopened` oracle rejected
@@ -3065,9 +3067,9 @@ browser result, and the synchronized
 signed clean docs-only descendant supplied immutable Final11. Its repaired replay is green.
 Immutable Final12, preserved at signed evidence checkpoint `2bf99bd…`, passed Layout, SceneMemory
 and Compendium before Slice's stale negative-control expectation stopped the chain; Glass/Recovery
-did not run. Signed repair `5ab4d3e…` fixes only that harness expectation and is browser-free green
-but browser-uncertified; after the docs-only descendant is signed clean, run a fresh once-only
-Final13 full chain. No hosted, HUMAN,
+did not run. Signed repair `5ab4d3e…` fixed only that harness expectation. Exact signed Final13
+source `7cb0969…` then completed the full once-only named-verified chain and real Recovery
+certificate. No hosted, HUMAN,
 whole-Gate, release, version, preview/publication or deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost

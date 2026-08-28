@@ -1,22 +1,21 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
-> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
-> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
-> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
-> not run. Its product assessment is wholly green. The stored carrier's deliberate
-> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
-> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
-> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
-> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
-> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
-> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests,
-> diff-check and two-review browser-free verification is green. No product, assessor predicate,
-> shared helper, persistence, art, save, version, ruler or browser-policy change occurred. The
-> repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
-> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
-> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
-> Final12/Final11/Final10 wording below is historical where superseded.
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no product, persistence, art, save, version, ruler or browser policy.
+> It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment authority;
+> physical-device heat/GPU evidence remains open. Next preserve/sign the evidence and docs, restore
+> monitors-off caffeinate, complete the full-code review/polish checkpoint, then begin authorized
+> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is provenance only
+> and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
+> below is historical where superseded.
 
 **The rule (plan §20 Gate A): the port is BUG-FOR-BUG parity until a deviation is
 approved here.** Every entry below is a place the original does something imperfect
@@ -98,14 +97,15 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 Those documentation bytes changed source identity; their signed clean docs-only descendant supplied
 Final11, whose temporal-oracle stop is described above. The historical assessor/tests/docs-only
 repair replayed Final11's unchanged carrier green and supplied Final12; Final11 stays immutable
-stored FAIL, while Final12's three green predecessors and distinct Slice control stop are described
-above.
+stored FAIL, while Final12's three green predecessors and distinct Slice control stop remain
+preserved. Exact signed Final13 source `7cb0969…` then completed the full once-only named-verified
+chain and real Recovery observation/certificate.
 The v2 draft remains exactly 55 bullets. Live memory producer records follow the changed source/build
 bytes, while numeric rulers, historical samples, browser capability authorities, retry policy and
-production version/release identity remain unchanged. No Recovery PASS/certificate, publication,
-hosted, release, deployment, version bump or external authority exists. Edge
-`151.0.4129.107` / CDP `1.3` is Final11 provenance only; compatible point updates never trigger a
-rebaseline, recalibration or threshold move.
+production version/release identity remain unchanged. The exact-source local Recovery certificate
+grants no publication, hosted, HUMAN, whole-Gate, release, deployment, version bump or external
+authority. Edge `151.0.4129.107` / CDP `1.3` is Final13 provenance only; compatible point updates
+never trigger a rebaseline, recalibration or threshold move.
 
 Historical calibration remains intact:
 `bb5dc7c7f4372f712778af67ace2b5f81b71b99d`
@@ -187,8 +187,8 @@ the complete 16-attempt burn-down before Recovery's clipped exhausted-control or
 run. Its shared suppression repair became signed Final10 `4405fb2…`, which again passed all five
 predecessors and advanced Recovery through suppression, close/checkpoint and closed/offline proof
 before the phase-blind `offline-reopened` status oracle stopped `instrument-fail`. Historical
-signed implementation/evidence repair `3fbfcd5…` led through immutable Final11 to Final12; the
-current Final12 boundary is recorded above.
+signed implementation/evidence repair `3fbfcd5…` led through immutable Final11 to Final12; that
+historical Final12 boundary and the current Final13 green boundary are recorded above.
 
 - ★ **D-COMPENDIUM-COLD-MEMBERSHIP — exact identity replaces a cardinality heuristic.** Final5
   mounted eight distinct fixture keys after a pre-arm cache containing eight distinct Planetside
@@ -298,8 +298,8 @@ current Final12 boundary is recorded above.
   delegated owner and restores the exact registered opener for nested clicks. Standalone consumers
   retain the historical eager default unless they explicitly select the production lifecycle.
 
-- ◐ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — shell cleanup, clean calibration and activation are
-  complete; signed Final10 42/42 is preserved and docs-descendant recertification is pending.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
+- ★ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — shell cleanup, clean calibration, activation and
+  signed Final13 docs-descendant recertification are complete.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
   40/42 with exact node/listener and heap breaches, one attempt, zero retries and complete cleanup.
   The evaluator now names field/value/ceiling and retains valid zero-valued heap components. Dirty
   diagnostic `20260827165427809-91398-352d7132df` proves the repaired 676/673 nodes and 71/70
@@ -312,11 +312,12 @@ current Final12 boundary is recorded above.
   Final5 SceneMemory 42/42, and signed `ea845d7…` passed Final6 SceneMemory 42/42 before the later
   Slice instrument stop. Signed `53d030b…` then passed Final7 SceneMemory 42/42 before green
   Compendium/Slice and the Glass terminal stop. Final8, Final9 and Final10 each later passed
-  SceneMemory 42/42 plus all remaining responsive predecessors on their own signed sources; Final10
-  is the latest exact report. The post-Final7 product/release bytes rebind live
+  SceneMemory 42/42 plus all remaining responsive predecessors on their own signed sources. Final13
+  is the latest exact report: source `7cb0969…`, run `20260828-phase4-final13-7cb09699726b-scenemem`,
+  42/42, one attempt, zero retries and complete cleanup. The post-Final7 product/release bytes rebind live
   buildDist `29494595f6d3ea03838b0d2a4c7bd1bb2b618dbb4623a56de05d44de9f99efff` under Scene budget-file
   SHA-256 `d4e45975c5678942d50ede78fec51219f1a550be80de418056e910057d2b1762`; no numeric ceiling or
-  sample changed, and a fresh signed successor is required from Layout. Exact Edge point version remains provenance: a compatible
+  sample changed. Final13 supplied the required fresh signed successor chain from Layout. Exact Edge point version remains provenance: a compatible
   update alone never starts calibration, repins authority or moves a threshold.
 
 - ★ **D-GATE-B-62 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 62 domain
@@ -367,7 +368,7 @@ current Final12 boundary is recorded above.
   miss/refusal, stale/reload/replay, route/counterpart loss, replacement and disposal are silent.
   Other expressions, distant ecology, ambience/music/combat, assets, device plateau and HUMAN
   listening remain open.
-- ◐ **D-ARC4-RECOVERY-CERT — Final10/Final11 instrument stops preserved; repaired replay green, fresh certificate pending.**
+- ★ **D-ARC4-RECOVERY-CERT — Final10/Final11 instrument stops preserved; repaired replay and Final13 certificate green.**
   Signed `4405fb2…` supplied named-green Layout, SceneMemory, Compendium, Slice and
   Glass predecessors, then its one-attempt Recovery passed fixture, 16-attempt burn-down,
   suppression, close/checkpoint and closed/offline proof before stopping `instrument-fail` at
@@ -377,16 +378,23 @@ current Final12 boundary is recorded above.
   active phases, follows a separate offline raw read with one UI → state surface plus document/
   runtime identity, refreshes and re-proves active exhaustion before observation, and requires the
   retained/replayed/cross-bound phase receipts and complete six-region source-seal inventory above.
-  Recovery remains non-standalone. On one newly signed unchanged clean commit, the exact Slice ID
-  must be terminal-green and pass named verification; full Glass must consume that ID and its exact
-  report must pass named verification with the same Slice ID; only then may Recovery consume both
-  exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
-  nonzero/red/instrument result and do not start a successor or retry automatically. Final11
+  Recovery remains non-standalone. The certifying protocol required one newly signed unchanged clean
+  commit: the exact Slice ID had to be terminal-green and pass named verification; full Glass had to
+  consume that ID and pass named verification with it; only then could Recovery consume both exact
+  predecessor IDs and pass named verification with both. Any nonzero/red/instrument result required
+  a stop without an automatic successor or retry. Final11
   completed the uninterrupted real 20-minute observation and recovered UI. Final11 stays an
   immutable stored FAIL; the repaired assessor replay was green and supplied Final12, whose distinct
-  immutable Slice control stop leaves the Recovery certificate open.
-- ★ **D-COMPENDIUM-CALIBRATION — version-tolerant signed `7362a0e…` renewal passed; repaired-source chain restart and visual judgment remain open.** Measurement
-  `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
+  immutable Slice control stop remains preserved. Exact signed Final13 source `7cb0969…` then
+  completed the full once-only named-verified chain and earned the real local Recovery certificate.
+- ★ **D-COMPENDIUM-CALIBRATION — version-tolerant Final13 renewal passed; visual judgment remains open.**
+  Final13 run `20260828-phase4-final13-7cb09699726b-compendium` passed 78/78 in one attempt with zero
+  retries under current producer `ba67d4351ea9d5905c1948b7a8ecf7fe6761dd3080263cd43ebaa67d4ca8ea30`
+  and budget-file SHA-256 `eba266bd5d771a214eb89a80c7e5c8e8f1bb26ed48272e7a3eccc4688768fca5`.
+  Its raw/gzip report SHA-256 are `09425b6b1a35e673c042442970c7ee67c25ba46be53e8ab46247ec3ba6c587b8` /
+  `717064782d4a0d18844d1762b684ac692c865fd012f7f183d7c7caa4853b33bb`.
+  The following inventory records the historical calibration lineage rather than current authority.
+  Measurement `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
   `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` bind clean committed
   candidate3/5/6 plus paired baseline1. Signed activation
   `d33e540f0d620eac34bdc259b7814db0f11a9006` keeps rational strictly-above ceilings and exact
@@ -442,7 +450,7 @@ current Final12 boundary is recorded above.
   instrument failures, or retries). Both reports name base `768fb32` but bind different dirty
   snapshots—Slice `29d54731…`, Glass `d9b51284…`—so this is bounded local exact-input proof, not
   exact-head/full-battery, hosted, integration, HUMAN, preview, release, or deployment authority.
-- ◐ **D-ARC4-OWNERSHIP — player-facing durable authority; recovery/HUMAN proof remains open.** The full
+- ◐ **D-ARC4-OWNERSHIP — player-facing durable authority and Final13 Recovery proof; HUMAN review remains open.** The full
   epoch-bound roster, contact capability, 18 owner namespaces, ownership-v1/import codecs,
   acquisition snapshot and pure capture planner now feed an app-wired writer. Boot prepares absent
   ownership or reconciles a projectable mirror in the shared receipt-free CAS and protects future,
@@ -462,8 +470,8 @@ current Final12 boundary is recorded above.
   every planned control and no omissions in 71,713 ms (report `03a14ce5…`). Both bind exact-input
   tree `b83ccef5…`. Guide was 24 partial/17 unavailable, the draft had 54 bullets, and Training
   remains six lessons plus graduation with no Capture lesson. Final11 passed the uninterrupted
-  20-minute observation and recovered UI; the repaired final-assessor certificate and HUMAN review
-  remain open. No Charter bioscan, targeted preview, hosted or release
+  20-minute observation and recovered UI; Final13 supplied the repaired assessor-bound certificate.
+  HUMAN review remains open. No Charter bioscan, targeted preview, hosted or release
   authority is implied.
 - ◐ **D-ARC5-OWNERSHIP-V2 — compact authority implemented; infrastructure-only.** V2 binds capture
   receipts, deterministic fauna-only children, ordered parents, dispositions and tombstones. Its
@@ -2385,8 +2393,8 @@ duplicates).
   Shipyard-effect evidence assumptions. Signed `39e4f20…` contains those repairs and supplied
   Final5 Layout/SceneMemory greens before Compendium stopped instrument-only. Signed `ea845d7…`
   then supplied Final6 Layout/SceneMemory/Compendium greens before Slice's Inventory instrument
-  stop. The subsequent causal repair requires a newly signed successor chain from Layout before
-  current browser evidence can advance.
+  stop. The subsequent causal repair required a newly signed successor chain from Layout; Final13
+  later completed that chain and advanced current local browser evidence.
 
   Pushed commit `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery,
   but GitHub test-battery #199, run `31571459050` / job `94034164092`, failed in the v2
@@ -2595,8 +2603,9 @@ duplicates).
   **Superseded current state (2026-08-25):** the native Survey controls now implement that finite
   writer and the 2026-08-25 exact-input Slice/Glass pair proves the named hit/miss, refusal, stale,
   publication, Close/reopen and reload outcomes. At that historical input, the uninterrupted real
-  20-minute recovery observation and HUMAN first-journey/ownership review remained open; Final11
-  later completed the observation while its corrected assessor-bound certificate remains open.
+  20-minute recovery observation and HUMAN first-journey/ownership review remained open. Final11
+  later completed the observation, and Final13 completed its corrected assessor-bound certificate;
+  HUMAN first-journey/ownership review remains open.
 - ◐ **D-RECEIPT — historical broad proposal; implemented action owners now use revisioned
   exact-once persistence while later writers remain open (2026-08-13).** Roll and commit a save-lifetime RNG ordinal plus immutable receipt at
   dispatch/encounter settlement, not at reveal/claim. A dedicated persisted visible-and-answerable
@@ -2646,8 +2655,8 @@ duplicates).
   signed `041d1cf…` supplied the later historical Final4 78/78 certificate. Signed `39e4f20…`
   reached Final5 Compendium after green Layout/SceneMemory but stopped instrument-only at 0/78.
   Its exact-membership repair became signed `ea845d7…`, whose Final6 Compendium stage passed 78/78
-  before the later Slice instrument stop. Current-head authority requires a fresh signed successor
-  from Layout; version tolerance itself changes no numeric ceiling.
+  before the later Slice instrument stop. Final13 subsequently supplied current-head authority through
+  a fresh signed successor from Layout; version tolerance itself changes no numeric ceiling.
 - ★ **D-AUTOEXTRACT-CLOCK — historical wall-time finding, repaired for the implemented Arc 3
   writer.** Auto-Extractor settlement derives capped loads from persisted F4 active-play progress,
   ignores legacy wall timestamps, preserves remainders/finite reserves and reanchors new extractors.

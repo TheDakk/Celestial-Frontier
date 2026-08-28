@@ -1,22 +1,21 @@
 # Celestial Frontier — UI / Presentation System
 
-> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
-> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
-> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
-> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
-> not run. Its product assessment is wholly green. The stored carrier's deliberate
-> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
-> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
-> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
-> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
-> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
-> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation-selftest,
-> diff-check and two-review browser-free verification is green. No UI/product, assessor predicate,
-> shared helper, persistence, art, save, version, ruler or browser-policy change occurred. The
-> repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
-> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
-> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
-> Final12/Final11/Final10 wording below is historical where superseded.
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no UI/product, persistence, art, save, version, ruler or browser policy.
+> It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment authority;
+> physical-device heat/GPU evidence remains open. Next preserve/sign the evidence and docs, restore
+> monitors-off caffeinate, complete the full-code review/polish checkpoint, then begin authorized
+> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is provenance only
+> and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
+> below is historical where superseded.
 
 > **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
 > `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
@@ -62,10 +61,10 @@
 > immutable Final11. The repaired assessor replayed that unchanged Recovery bundle green. Immutable
 > Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout, SceneMemory and
 > Compendium before Slice stopped once/no retry on the stale one-red wrapper expectation; its product
-> assessment remained wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixes
-> only that harness expectation and is browser-free green but browser-uncertified; after the docs-only
-> descendant is signed clean, restart the once-only Final13 Layout → SceneMemory → Compendium →
-> Slice → Glass → recovery chain. Edge
+> assessment remained wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixed
+> only that harness expectation. Exact signed Final13 source `7cb0969…` then completed the entire
+> once-only named-verified Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain green,
+> including the real 20-minute observation and certificate. Edge
 > `151.0.4129.107` / CDP `1.3` is provenance only and never triggers rebaselining.
 
 > **Historical Final7 Glass stop and bounded presentation repair:** signed
@@ -232,8 +231,8 @@
 > each retain a separate source-derived capability contract, producer binding and fixed ruler. Exact
 > browser versions are provenance, and a compatible Edge or Chrome point update alone never
 > rebaselines, repins or moves ceilings. At that sixth-red boundary, no certifying Slice PASS, Glass
-> result or recovery certificate existed; the later Final4–Final10 history and today's signed-
-> repair/pending-docs restart boundary are stated in the overlay above.
+> result or Recovery certificate existed; the later Final4–Final12 history and today's exact signed
+> Final13 green preservation boundary are stated in the overlay above.
 
 > **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
 > 2026-08-27 overlay does not supersede it:** the native Survey card now
@@ -272,8 +271,8 @@
 > observation and combined HUMAN first-journey review. Final11 later completed the observation and
 > remains stored assessor-red, while its repaired bundle replay is green. Immutable Final12 then
 > passed Layout, SceneMemory and Compendium before Slice's stale negative-control expectation stopped
-> the chain; Glass/Recovery did not run. Signed harness repair `5ab4d3e…` is browser-free green but
-> browser-uncertified, so a fresh Final13 full chain remains required before certification.
+> the chain; Glass/Recovery did not run. Exact signed Final13 source `7cb0969…` later completed the
+> full named-verified chain green and earned the stable local Recovery certificate.
 
 > **2026-08-25 Arc 3 Engineering UI overlay — historical evidence foundation through `c4a02be`;
 > current product behavior corrected locally 2026-08-27:** the former read-only
@@ -311,8 +310,8 @@
 > `6c9ad855…` owns the three clean repair candidates; signed `4a54c0d…` owns the heap-only activation.
 > Signed `7362a0e…` later supplied the exact standalone and serial certificates, followed by the
 > preserved Slice harness red summarized above. Later Final4–Final7 history supersedes that boundary;
-> the current evidence requirement is a fresh signed successor from Layout after the bounded
-> Inventory, Compendium and Settings repairs.
+> those bounded Inventory, Compendium and Settings repairs required a fresh signed successor from
+> Layout, and exact signed Final13 source `7cb0969…` later completed that chain through Recovery.
 > Retained no-retry Slice run `20260825013823076-822-b99fea33b17b` passed in 253,181 ms with
 > 0 findings and 10 screenshots; the full Glass Matrix separately passed in 64,222 ms across 12/12
 > viewports and 78/78 controls with none blocked/omitted and no findings, instrument failures, or

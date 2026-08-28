@@ -1,24 +1,19 @@
 # Celestial Frontier — PROCESS LAWS
 
-> **2026-08-28 Final12 exact-failure-set law — repaired:** when a shared semantic predicate is
-> strengthened, one intentional mutant may correctly violate more than one top-level clause.
-> Require its exact ordered full failure set **and** the exact nested named diagnosis; never preserve
-> an obsolete one-red wrapper expectation. Immutable evidence checkpoint
-> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves Final12: three predecessors passed, then
-> Slice ran once/no-retry and remains stored `fail` at `arc-4-stale-convergence`; its product
-> assessment is wholly green and Glass/Recovery did not run. The stored
-> `witnessAuthorityControl` correctly returned [`convergenceRelease`, `oldUiConvergence`] plus
-> nested `beforeAuthority`, while its wrapper expected `convergenceRelease` alone. Signed repair
-> `5ab4d3ec92a7575fc091ca3b2c358ef01927be02` (tree
-> `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three harness/test
-> files to seal the exact top-level order and nested diagnosis. Node/focused 9/9/full 138-file
-> 1,495-pass + 1-skip, validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four
-> mutation selftests, diff-check and two-review browser-free verification is green. No product,
-> assessor predicate, shared helper, persistence, art, save, version, ruler or browser-policy
-> change occurred. The repair remains browser-uncertified: sign this docs-only descendant, then run
-> one fresh once-only Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain
-> with named verification and stop/no-retry on red. Compatible Edge updates never trigger a
-> rebaseline.
+> **2026-08-28 Final13 exact-chain law — certified locally:** repair an oracle on preserved evidence,
+> then certify only a fresh unchanged-source chain; never relabel or retry the stored red. Exact
+> signed source `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged while
+> Layout 787/787, SceneMemory 42/42, Compendium 78/78, Slice, 12-viewport Glass and Recovery each
+> ran once and passed named verification. Recovery bound the exact Slice (`b001d8a1…`) and Glass
+> (`c5805492…`) predecessors, passed in 1,290,887 ms and retained a real 1,200,308.5 ms active
+> observation (`79f2bf8e…`). There were no retries, findings or instrument failures. This establishes
+> the stable local Phase-4 automated checkpoint and real Recovery certificate for that exact source;
+> Final11/Final12 remain immutable historical reds. It is not HUMAN judgment, whole-Gate,
+> hosted/merge, release/version or deployment authority, and physical-device heat/GPU evidence
+> remains open. Preserve/sign the evidence and docs, restore monitors-off caffeinate, then complete
+> the full-code review/polish checkpoint before authorized current-system Arc 7/8 universe-wide
+> visual polish. Edge `.107` / CDP `1.3` is provenance only; compatible updates never rebaseline.
 
 **STATUS:** current as of 2026-08-28. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
@@ -163,10 +158,10 @@ Immutable Final12, preserved at signed evidence checkpoint `2bf99bd…`, then pa
 SceneMemory 42/42 and Compendium 78/78 before Slice stopped once/no retry: the real stale-
 convergence assessment was wholly green, but the strengthened authority mutant correctly failed
 both `convergenceRelease` and `oldUiConvergence` while its wrapper required only the first.
-Glass/Recovery did not run. Signed harness repair `5ab4d3e…` is browser-free green but browser-
-uncertified; sign the docs-only descendant and start a fresh once-only Final13 full chain. None of
-this grants a Recovery
-certificate, HUMAN/Gate closure or release authority.
+Glass/Recovery did not run. Signed harness repair `5ab4d3e…` fixed only that expectation; exact
+signed Final13 source `7cb0969…` then completed the full once-only named-verified chain and real
+20-minute Recovery observation. None of this grants HUMAN judgment, whole-Gate closure,
+hosted/merge or release authority.
 
 ⚠⚠ **CONTRAST IS THE COMPOSITED READING SURFACE; A CLOSE OWNER NEEDS EXCLUSIVE HEADER
 GEOMETRY** (2026-08-27). A canonical rarity color can be correct and still become unreadable when

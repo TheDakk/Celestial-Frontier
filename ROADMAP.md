@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-28 · FINAL12 HARNESS REPAIR SIGNED/BROWSER-FREE GREEN · FINAL13 FULL CHAIN NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-28 · FINAL13 FULL LOCAL AUTOMATED CHAIN GREEN · PRESERVE, REVIEW, THEN POLISH ◀◀◀
 
 ### Exact current boundary
 
@@ -25,87 +25,83 @@ the archive verbatim and refresh this handoff in place.
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
   `origin/openai/mac`. Work remains local and unpushed; do not edit another agent worktree or the
   sibling live-site repository.
-- **Signed checkpoints:** immutable Final12 evidence is preserved at
-  `2bf99bd6efaf90d5d458338960ef77b297e22fa9`. The bounded three-file harness repair is signed at
-  `5ab4d3ec92a7575fc091ca3b2c358ef01927be02` (tree
-  `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd6efaf90d5d458338960ef77b297e22fa9`).
-  Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b`
-  and fully contained. This current reference synchronization is not yet the signed clean docs
-  descendant required for Final13.
+- **Exact signed Final13 source:** `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+  `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent
+  `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`) remained unchanged and clean throughout the full
+  serial campaign. Locally known `origin/develop` remains
+  `7a9f4c1370dd84292388d718c38ff34214f6203b` and fully contained. The working copy now contains
+  only the seven deterministic Final13 gzip carriers and this synchronized evidence/reference
+  update pending a signed local checkpoint.
 - **Machine continuity:** temporary `/usr/bin/caffeinate -dis` remains active so macOS and
-  1Password stay unlocked during signing and browser work. Keep it until a safe endpoint, then
-  restore the prior monitors-off configuration.
+  1Password stayed unlocked during the campaign. After the evidence/docs checkpoint is safely
+  signed, restore the monitors-off caffeinate configuration.
 
-### Immutable Final12 evidence boundary
+### Exact Final13 automated certificate
 
-- Layout `20260828-phase4-final12-509734533dd4-layout` ran once and passed **787/787** sealed
-  outcomes across ten viewports in 76,474 ms. SceneMemory
-  `20260828-phase4-final12-509734533dd4-scenemem` ran once and passed **42/42** in 9,974 ms.
-  Compendium `20260828-phase4-final12-509734533dd4-compendium` ran once and passed **78/78** in
-  43,804 ms with all six PNG bindings. Each passed its named verifier before the next began.
-- Slice `20260828-phase4-final12-509734533dd4-slice` ran exactly once for 414,198 ms and remains
-  stored **FAIL**, non-certifying, with one `arc-4-stale-convergence` finding, one scope and zero
-  automatic retries. Its ten PNGs are manifest-bound. Glass and Recovery correctly did not start.
-- The actual stale-convergence product assessment is wholly green: exact 72→73 stale fault, one
-  trusted Tame, `tame-refused:stale`, `lastResult:null`, empty-CAS topology, unchanged capture and
-  Arc-5 ownership, released old owner, closed replacement start, one native activation and exact
-  read-only reload all passed. The retained-result control still isolates only `oldOutcome`.
-- The sole stop was the deliberate `witnessAuthorityControl`. Its coordinated before/after
-  `sessionOrdinal` mutation now correctly produces exact top-level failures
-  `[convergenceRelease, oldUiConvergence]` and exact nested `beforeAuthority`; the stored wrapper
-  expected only top-level `convergenceRelease`. That harness expectation became stale when the
-  repaired assessor correctly bound witness-before runtime authority to durable raw.
-- This is not a product regression or nondeterminism: the Final11 and Final12 product source trees,
-  Slice wrapper blob and built `main-BqcJIdne.js` are byte-identical. Final12 remains immutable and
-  was not retried. Exact raw/gzip sizes and hashes are recorded in `audits/README.md`; the PNG bytes
-  remain ignored local review evidence under the established report-manifest policy.
+- Layout `20260828-phase4-final13-7cb09699726b-layout` ran once and passed **787/787** sealed
+  outcomes across ten viewports in **75,945 ms**. SceneMemory
+  `20260828-phase4-final13-7cb09699726b-scenemem` ran once and passed **42/42** in **10,235 ms**.
+  Compendium `20260828-phase4-final13-7cb09699726b-compendium` ran once and passed **78/78** in
+  **43,752 ms** with all six PNG bindings. Each passed its exact named verifier before the next
+  stage began.
+- Slice `20260828-phase4-final13-7cb09699726b-slice` ran once and passed in **423,847 ms** with
+  zero findings/scopes and ten manifest-bound PNGs. Exact report SHA-256:
+  `b001d8a1bb80ce131d9a81d660657176f078ca0317ca1cf42fafabada0a098fc`.
+- Full Glass `20260828-phase4-final13-7cb09699726b-glass` consumed that exact Slice ID, ran once
+  across all **12 viewports**, and passed in **85,944 ms** with zero findings, instrument failures,
+  blocked controls or omitted controls. Exact report SHA-256:
+  `c580549251032b9de9e5b112d312b4e3f38f2bbeb79ba6353db6bf24ee9f252a`.
+- Recovery `20260828-phase4-final13-7cb09699726b-recovery` consumed those exact Slice and Glass
+  predecessors, ran once, and passed in **1,290,887 ms**. Its uninterrupted real active browser
+  observation spanned **1,200,308.5 ms**, crossed the exact next-cycle boundary and proved the
+  recovered UI/state under the repaired final assessor. Exact report SHA-256:
+  `79f2bf8e3833b100c9fbbdbd0cbaa6a7529ee9cdaf5d4789ab9da37fc496df6b`.
+- Every stage passed named verification before its successor. The chain has zero automatic retries,
+  findings or instrument failures. Edge `151.0.4129.107` / CDP `1.3` is exact run provenance only;
+  compatible point updates never trigger rebaselining, recalibration or threshold changes.
 
-### Completed bounded repair and browser-free proof
+### What the green chain establishes—and does not
 
-- Commit `5ab4d3e…` changes only `port/v2/tools/slicesmoke.mjs`,
-  `port/v2/tools/arc4-browser-contract.mjs` and
-  `port/v2/tests/slicesmoke-sixth-red-contract.test.ts`: the wrapper now requires the exact ordered
-  double-red plus nested `beforeAuthority`, the full-assessor fixture seals the shared dependency,
-  and the static contract rejects the obsolete one-red assumption.
-- No product or assessor predicate, shared helper, collector, persistence, save, deterministic
-  content, art, numeric ruler, release/version identity or browser policy changed.
-- Browser-free final verification is green: Node syntax checks; focused **9/9**; full unit suite
-  **138 files / 1,495 passed + 1 skipped**; root validate **1,010 renders / 50 determinism
-  fingerprints**; every TypeScript config; `artunused`; Arc-4 Recovery, smoke-report, Glass and
-  Compendium mutation selftests; `git diff --check`; and two independent reviews **CLEAR**.
-- This proves the bounded harness repair only. It remains **browser-uncertified**, and immutable
-  Final12 remains stored FAIL with no retry or successor stages.
+- Final13 establishes the **stable local Phase-4 automated checkpoint** and a real Recovery
+  certificate for exact signed source `7cb0969…`, including the uninterrupted 20-minute active
+  observation and exact predecessor bindings. Immutable Final11 and Final12 failures remain honest
+  historical evidence; Final13 does not rewrite or retry them.
+- This is not HUMAN visual, listening, first-journey or assistive-technology judgment; not complete
+  Gate A–I closure; and not hosted, merged, preview/publication, release, version-bump, deployment or
+  production authority. Physical-device heat/battery and true GPU-byte evidence remain open.
+- Final13 changed no product, persistence/save, deterministic content, art, numeric ruler,
+  release/version identity or browser policy from its exact signed source.
 
-### Next exact action
+### Next exact actions
 
-- Finish this synchronized reference batch and sign a clean docs descendant of `5ab4d3e…`.
-  That exact unchanged signed source must then run one fresh **Layout → SceneMemory → Compendium →
-  Slice → Glass → Recovery** Final13 chain. Run each stage exactly once and serially, named-verify
-  it before the next begins, and stop/preserve immediately on any nonzero, red or instrument result;
-  never retry a red campaign.
-- Only a complete fresh green chain can establish Recovery and the stable Phase-4 checkpoint. HUMAN
-  judgment, hosted integration and release authority remain separate.
-- Edge `151.0.4129.107` / CDP `1.3` is run provenance only. Compatible Edge point updates never
-  trigger rebaselining or threshold changes.
+- Preserve the seven immutable Final13 carriers and synchronized current references, verify the
+  evidence inventory/diffs, and create one signed clean local evidence/docs checkpoint. Do not alter
+  the report bytes, rerun the browser chain or infer any broader authority.
+- After that safe endpoint, restore the monitors-off caffeinate configuration.
+- Conduct the planned full-code review and polish checkpoint. Then proceed to the already authorized
+  current-system Arc 7/8 universe-wide visual polish while keeping later arcs, HUMAN review,
+  physical-device heat/GPU evidence and complete Gate closure explicitly open.
 
-### Queued universe-wide visual polish — after the full green checkpoint
+### Authorized universe-wide visual polish — after the full-code review/polish checkpoint
 
 - Apply the richer treatment across the entire universe—galaxy/system space, planets, every biome,
   creature, plant, ship and effect. Sol is calibration only, never a Sol-specific branch.
 - Preserve deterministic identity, authored structure, silhouettes, proportions, interaction
-  geometry, accessibility, reduced-motion behavior and phone heat/frame/resource budgets.
+  geometry, accessibility, reduced-motion behavior and phone heat/frame/resource budgets. This is
+  polish, not a structural redesign of the heavily developed biomes, creatures or plants.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** finish and sign this docs-only descendant, verify it is clean, then run the fresh
-  serial Final13 chain from that exact unchanged source under the once-only stop/no-retry protocol.
+- **OpenAI/Codex:** preserve and sign the exact Final13 evidence/docs checkpoint, verify it is clean,
+  restore monitors-off caffeinate, then perform the full-code review/polish checkpoint before the
+  authorized current-system Arc 7/8 universe-wide visual pass.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
   dispatch, rerun, merge, deploy, publish or bump a version.
 - **PR details:** not needed now. If Nick later authorizes the exact GitHub write, use base
-  `develop`, source `openai/mac`, title **`Phase 4: complete the playable-slice campaign repair`**,
-  description **`Preserves the immutable Final10–Final12 evidence chains, repairs the Recovery and
-  Slice mutation-control oracles with negative controls, completes a fresh signed verification
-  chain, and synchronizes the Phase-4 references. No release or deployment is included.`**
+  `develop`, source `openai/mac`, title **`Phase 4: establish the stable local automated checkpoint`**,
+  description **`Preserves the immutable prior evidence, records the exact signed Final13
+  Layout-through-Recovery green chain and synchronizes the Phase-4 references. No release,
+  deployment or version bump is included.`**
 - **Anthropic/Claude Code:** Nick does not need to open Claude now. Wait for a future merged PR before
   syncing; do not copy this local campaign work manually.
 - **Release status:** no release or deployment; `develop`, `main` and the live site are unchanged.

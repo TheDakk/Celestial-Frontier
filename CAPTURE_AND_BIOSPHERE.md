@@ -1,23 +1,21 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
-> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
-> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
-> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
-> not run. Its product assessment, including old-document refusal/result semantics, is wholly green.
-> The stored carrier's deliberate `witnessAuthorityControl` correctly returns exact ordered
-> double-red [`convergenceRelease`, `oldUiConvergence`] plus nested `beforeAuthority`, while its
-> wrapper expected one red; its product and `slicesmoke.mjs` blobs match Final11. Signed repair
-> `5ab4d3ec92a7575fc091ca3b2c358ef01927be02` (tree
-> `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three harness/test
-> files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip, validate
-> 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation-selftest, diff-check and
-> two-review browser-free verification is green. No capture/biosphere product, assessor predicate,
-> shared helper, persistence, art, save, version, ruler or browser-policy change occurred. The
-> repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
-> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
-> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
-> Final12/Final11/Final10 wording below is historical where superseded.
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no capture/biosphere product, persistence, art, save, version, ruler or
+> browser policy. It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment
+> authority; physical-device heat/GPU evidence remains open. Next preserve/sign the evidence and
+> docs, restore monitors-off caffeinate, complete the full-code review/polish checkpoint, then begin
+> authorized current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is
+> provenance only and compatible point updates never trigger rebaseline. Earlier Final12/Final11/
+> Final10 wording below is historical where superseded.
 
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
 ecology/audio overlay matches the player-facing durable Arc 4 capture slice and its remaining
@@ -72,10 +70,10 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > immutable Final11. The repaired assessor replayed that unchanged Recovery bundle green. Immutable
 > Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout, SceneMemory and
 > Compendium before Slice stopped once/no retry on the stale one-red wrapper expectation; its product
-> assessment remained wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixes
-> only that harness expectation and is browser-free green but browser-uncertified; after the docs-only
-> descendant is signed clean, restart the once-only Final13 Layout → SceneMemory → Compendium →
-> Slice → Glass → recovery chain. Edge
+> assessment remained wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixed
+> only that harness expectation. Exact signed Final13 source `7cb0969…` then completed the entire
+> once-only named-verified Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain green,
+> including the real 20-minute observation and certificate. Edge
 > `151.0.4129.107` / CDP `1.3` is provenance only; compatible point updates never trigger a
 > rebaseline or threshold change.
 
@@ -111,9 +109,9 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > Crossing an integer edge stages a private candidate; exactly one receipt-free lease/revision CAS
 > must commit it before publication and exact scene/Survey/Planetside/capture reprojection. Those
 > consumers remain fenced while the projection is dirty, and hidden/unanswered time adds nothing.
-> This executable edge does not certify elapsed recovery: the ordinary Slice still records
-> `recoveryClaimed:false`, and the dedicated uninterrupted 20-minute Arc 4 recovery certificate
-> remains pending.
+> The ordinary Slice deliberately records `recoveryClaimed:false`; elapsed recovery is certified
+> separately. Exact signed Final13 source `7cb0969…` passed the dedicated uninterrupted 20-minute
+> Arc 4 Recovery run with exact boundary crossing and recovered controls.
 >
 > Capture mechanics continue to use raw deterministic grade internally, but player rarity is a
 > strict ten-name projection only. Integer tiers `0..8` map directly, raw `9..14` show as
@@ -183,9 +181,10 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > `15683111584df5f1fead034b0b28f0e1a9b9ec96c2eb5cc3978b78c5ca1436b2`). Full-certifying Glass
 > passed in 71,713 ms across 12/12 viewports with all 36 Arc 4 outcomes and all planned controls,
 > none blocked/omitted, and zero findings/instrument failures/retries (report SHA-256
-> `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Arc 4 remains
-> **[PARTIAL]** until both a fresh chain passes the repaired Slice control and final Recovery assessor and the combined HUMAN
-> first-journey review is complete. The legacy formulas below remain parity/design input; current
+> `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Those reports are
+> historical. Arc 4 remains **[PARTIAL]** because the combined HUMAN first-journey review and later
+> capabilities are open; exact signed Final13 source `7cb0969…` has now passed the repaired Slice
+> control and final Recovery assessor. The legacy formulas below remain parity/design input; current
 > v2 implementation authority is the typed path described here.
 > Those retained Arc 4 reports predate compact Arc 5 V2 and do not certify it. The later exact-input
 > pair for this recorded 2026-08-25 boundary used Slice run
@@ -201,11 +200,11 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > `48ce0b1662a59b21070667be339a1e59503e1f19`, status
 > `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
 > `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
-> exact historical inputs. Current-candidate re-audits are not final. Arc 4
-> remains `[PARTIAL]`: Final11 passed the real 20-minute observation and recovered UI; immutable
-> Final12 then stopped at Slice's stale negative-control expectation before Glass/Recovery. Signed
-> harness repair `5ab4d3e…` is browser-free green but browser-uncertified. A fresh Final13 chain must
-> pass the repaired Slice control, final Recovery assessor and HUMAN review; Arc 5 remains
+> exact historical inputs. Those audits were not current-candidate authority; Final13 now supplies
+> the exact current automated re-audit. Arc 4 remains `[PARTIAL]`: Final11 passed the real 20-minute observation and recovered UI; immutable
+> Final12 then stopped at Slice's stale negative-control expectation before Glass/Recovery. Exact
+> signed Final13 source `7cb0969…` later passed the repaired Slice control and full Recovery assessor,
+> establishing the stable local automated checkpoint. HUMAN review remains open; Arc 5 remains
 > `[PARTIAL]`/infrastructure-only.
 
 ## 0. v2.0 ecology/audio link (one narrow Tame greeting live; broader capture audio absent — 2026-08-26)
