@@ -29,26 +29,31 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-27; Final5 stopped fail-closed at Compendium):** signed clean
-source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` produced Layout report
-`20260827-phase4-final5-39e4f20fb35e-layout` at 787/787 and source-bound SceneMemory report
-`20260827-phase4-final5-39e4f20fb35e-scenemem` at 42/42. Compendium then ran once as
-`20260827-phase4-final5-39e4f20fb35e-compendium`, stopped `instrument-fail` after 3,237 ms and
-retained zero product outcomes out of 78 expected. It was not retried; Slice, Glass and recovery did
-not start. The instrument incorrectly required eight mounted fixture keys to outnumber eight
-pre-arm cached keys even though direct evidence proved the errored row's exact key was absent from
-that cache. This is a cardinality-oracle defect, not a Compendium product verdict. Exact report
-carriers, sizes and hashes are preserved in [`audits/README.md`](audits/README.md).
+**Current local v2 candidate (2026-08-27; Final6 stopped fail-closed at Slice):** signed clean source
+`ea845d77d9783599c269f708462eb650e2c3e245` passed Layout 787/787, source-bound SceneMemory
+42/42 and source-bound Compendium 78/78, each once with a fresh Final6 run ID and named verifier.
+Slice then ran once for 420,570 ms and stopped with five findings in five scopes. The root was an
+instrument defect: the exact thermal Inventory row was a valid 164px button, but its raw centre at
+`y=751` lay below the panel scrollport. The old collector skipped its click and then reported four
+necessarily absent modal, Equip, Close and reload descendants. Those were unexercised cascades,
+not independent product verdicts. Final6 was not retried; Glass and recovery did not start. Exact
+report/log carriers, sizes and hashes are preserved in [`audits/README.md`](audits/README.md).
 
-The bounded repair now proves exact set membership and rejects cached/wrong keys. Current
-Compendium authorities are collector `c13a489d…3faab`, outcome contract `ac7eea39…6d17`,
-measurement `28b06f3c…276c`, budget-file `3e660742…2ae5` and unchanged producer
-`bf9ad0b6…4dcb`; every numeric ceiling remains unchanged. The browser-free battery is green at
-135 files / 1,479 passed / one intentional skip, with TypeScript, build, evidence selftests and root
-validation/fingerprint also green. These changed evidence bytes require a newly signed clean
-checkpoint and a complete fresh Final6 chain from Layout; Final5 cannot resume. No current
-Compendium product PASS, Slice, Glass, recovery, whole-Gate, hosted, HUMAN or release claim exists.
-Edge `151.0.4129.107` / CDP `1.3` is per-run provenance only, never a rebaseline trigger.
+The browser-free repair now performs the player's native row reveal, awaits render settlement,
+proves exact scrollport containment and centre-hit ownership, binds trusted row/action/Close
+receipts, proves detail Close leaves the parent Inventory visibly open, and binds exact receipt
+keys/bytes/semantics plus their F4 RNG authority across reload. Each dependent outcome and mutation
+control requires a complete green causal prefix. A red interaction proves quiescence and cleanup,
+then terminates before later mutable arcs.
+No product source or numeric ruler changed. Because evidence bytes changed, Final6 cannot resume:
+a newly signed clean successor must restart at Layout. No post-repair Slice, Glass, recovery,
+whole-Gate, hosted, HUMAN or release claim exists. Edge `151.0.4129.107` / CDP `1.3` remains
+per-run provenance only, never a rebaseline trigger.
+
+After the stable Phase-4 checkpoint, the queued visual pass applies the TikTok-inspired polish
+language across the entire deterministic universe—galaxies, systems, planets, biomes, creatures and
+plants—while preserving their authored structures and identities. No graphics upgrade is included
+in the current instrument-only candidate.
 
 The current working tree otherwise completes the bounded source lanes that followed the retained
 Arc 5A checkpoint.
@@ -170,8 +175,10 @@ Glass and recovery did not run.
 The later signed Final4 source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` completed all four
 green predecessors before Glass produced its preserved instrument stop. Its bounded product/oracle
 repair became signed source `39e4f20…`; that source supplied the Final5 Layout and SceneMemory
-PASS reports before the one-attempt Compendium instrument stop summarized above. The current
-membership-oracle repair requires a newly signed clean Final6 restart from Layout. Compatible Edge
+PASS reports before the one-attempt Compendium instrument stop. Its membership repair became signed
+Final6 source `ea845d7…`, which passed Layout, SceneMemory and Compendium before the one-attempt
+Inventory reachability cascade summarized above. The current evidence repair requires a newly
+signed clean successor restart from Layout. Compatible Edge
 or Chrome point updates remain run provenance only and never trigger calibration, rebaselining,
 repinning or a threshold change.
 
@@ -185,7 +192,7 @@ clocks, contextless blocked audio state, committed-only epoch timing and Survey/
 ownership—were locally repaired with negative controls. Compendium and SceneMemory retain separate
 sealed Edge-family + CDP `1.3` capability/profile authorities. At that sixth-red boundary, no
 certifying Slice PASS, Glass result or recovery certificate existed; the signed Final4 result and
-later Final5 stop are summarized above.
+later Final5/Final6 stops are summarized above.
 
 The retained Arc 4/5A checkpoint remains useful historical foundation. Its source-addressed Guide
 kept all 9 categories /43 authored IDs /41 player topics searchable and cross-linked; 24 topics

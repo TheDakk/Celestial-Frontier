@@ -14,6 +14,15 @@ promoted from `tools/` to the repo root during port **Phase 0** (Gate A); the fi
 > current ownership and accessible status counterpart all agree; this is not ambience or a general
 > biome soundscape. The 2026-08-25 paragraph below is retained as a historical checkpoint.
 
+> **2026-08-27 queued universe-wide visual treatment:** the next art-polish pass is deliberately
+> systemic rather than Sol-specific. Every live biome, creature and plant may receive stronger
+> warm/cool separation, controlled bloom, atmospheric depth, edge light and bounded particles, but
+> the authored biome composition and organism structure remain fixed: no changed anatomy,
+> silhouette, proportion, scale, semantic color identity, seed identity or gameplay geometry. Sol
+> is a calibration case only. The pass remains unimplemented until the current Phase-4 evidence
+> checkpoint is stable, and must then prove representative cross-biome before/after identity,
+> determinism, contrast/reduced-motion behavior and mobile heat/frame/resource budgets.
+
 > **2026-08-25 Arc 3/4 historical opportunity boundary:** canonical Arc 3 world snapshots then derived
 > finite deposits, exceptional/cosmic veins, raw tier and player-facing rarity from the exact
 > source-proven CF1 world. The Engineering panel exposes truthful Mine/Skim actions and displays six

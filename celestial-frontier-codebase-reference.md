@@ -6,27 +6,32 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-27.**
 >
-> **2026-08-27 Final5 Compendium instrument-stop overlay — current local candidate:** signed clean
-> source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` supplied Layout report
-> `20260827-phase4-final5-39e4f20fb35e-layout` at 787/787 and source-bound SceneMemory report
-> `20260827-phase4-final5-39e4f20fb35e-scenemem` at 42/42. Compendium
-> `20260827-phase4-final5-39e4f20fb35e-compendium` ran once, stopped `instrument-fail` after
-> 3,237 ms with zero retained product outcomes out of 78 expected, and was not retried. Slice,
-> Glass and recovery did not start. The report retained a partial non-certifying phone profile, no
-> desktop profile, no review PNGs and no Compendium product verdict.
+> **2026-08-27 Final6 Slice instrument-stop overlay — current local candidate:** signed clean source
+> `ea845d77d9783599c269f708462eb650e2c3e245` supplied Layout 787/787, source-bound
+> SceneMemory 42/42 and source-bound Compendium 78/78. Slice then ran once for 420,570 ms and
+> stopped with five findings in five scopes. The root was instrumental: the exact thermal Inventory
+> row was a valid 164px button, but its raw centre at `y=751` lay below the panel scrollport. The old
+> collector skipped its click and then judged four absent modal/Equip/Close/reload descendants.
+> Those are unexercised cascades, not independent product verdicts. Final6 was not retried; Glass
+> and recovery did not start.
 >
-> The failed cold-key proof compared eight mounted fixture keys with eight pre-arm cached
-> Planetside keys. Direct evidence already showed the errored row's exact visual key absent from the
-> cached set and bound exactly one errored row plus one `jobError`; equal counts were not equal
-> membership. The repair now requires exact key absence and rejects cached/wrong keys. Current
-> collector `c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab`, outcome
-> contract `ac7eea3939c32f893620e28fde58a8c12bb21d788d029cb7db60bc2eda216d17`, measurement
-> `28b06f3cb26cd5570fa7bbe7565c410e30db3dd11bb0960919bb2e34cda5276c` and budget-file
-> SHA-256 `3e6607420342b878bf3f1bc0be562eed72bcbd5206534eda3c85d3ff1c652ae5` change; producer
-> `bf9ad0b6623913bfff5b5e79a8ed9ac7dbe49424b608bc9fee8621e5c4874dcb`, numeric ceilings and
-> historical samples stay fixed. The changed evidence bytes require a newly signed clean Final6
-> checkpoint and complete fresh chain from Layout; Final5 cannot resume. Edge
+> The browser-free repair performs native reveal plus rAF/later-task settlement, proves exact row
+> identity, scrollport containment and centre-hit ownership, and binds trusted row/action/detail-
+> Close/registered-panel-Close receipts to their exact points and owners. Detail Close additionally
+> proves its parent Inventory remains displayed, ARIA-visible, app-open and opener-expanded; reload
+> binds the exact receipt keys, raw bytes, parsed semantics and stable F4 RNG authority. The immutable receipt seed,
+> surface, action, both Close paths, reload opener and Atlas each gate their dependent successors on
+> a complete green causal prefix. Red mutable state proves quiescence and cleanup, then terminates
+> before later arcs. No product source, numeric ruler, browser authority or retry policy changed.
+> Final6 cannot resume; a newly signed clean successor must restart at Layout. Edge
 > `151.0.4129.107` / CDP `1.3` is provenance only, never a pin or rebaseline trigger.
+>
+> **Queued visual boundary:** after the stable Phase-4 checkpoint, carry the TikTok-inspired polish
+> language across the entire universe—galaxies, systems, planets, every biome, creatures and
+> plants—while preserving deterministic seeds, identities, anatomy, silhouettes, proportions,
+> scale, authored structure and gameplay readability. Deterministic per-environment palette/light/
+> material treatment, reduced motion, contrast, mobile heat/frame budgets and before/after identity
+> review are required. No graphics change is implemented in the current instrument-only candidate.
 >
 > **2026-08-27 Final4 Glass repair overlay — historical pre-Final5 source:** signed clean source
 > `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied fresh named Layout 787/787,
@@ -314,11 +319,12 @@
 > clean source `041d1cf…`, whose Final4 Layout, SceneMemory, Compendium and Slice stages passed before
 > Glass stopped on the preserved instrument report. Its bounded repair became signed `39e4f20…`,
 > whose Final5 Layout and SceneMemory reports passed before Compendium stopped instrument-only at
-> 0/78. The current exact-membership repair makes those predecessors historical and requires fresh
-> signed Final6 from Layout; current Compendium product, Slice, Glass, recovery and whole-Gate
-> evidence remain open.
+> 0/78. Its exact-membership repair became signed Final6 source `ea845d7…`, whose Layout,
+> SceneMemory and Compendium stages passed before Slice stopped on the preserved Inventory causal
+> instrument report. The current repair makes those predecessors historical and requires a fresh
+> signed successor from Layout; Slice, Glass, recovery and whole-Gate evidence remain open.
 >
-> Current-input Slice retains eight one-attempt/zero-retry reds on Edge `151.0.4129.107`.
+> Current-input Slice retains nine one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > The first five remain preserved historical diagnosis. Signed-clean source
 > `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied run
 > `20260827085237038-27561-1f8e3c1771b7`, which failed after 397,101 ms with 23 findings
@@ -350,8 +356,9 @@
 > without recalibration; signed `041d1cf…` then passed Final4 Layout, SceneMemory, Compendium and
 > Slice before Glass stopped with 46 findings and five instrument failures. Its repair became signed
 > `39e4f20…`; Final5 passed Layout and SceneMemory before Compendium's cardinality oracle stopped the
-> chain without a product verdict. The exact-membership repair must now complete fresh Final6 from
-> Layout. Root Gate A separately
+> chain without a product verdict. Its repair became signed `ea845d7…`; Final6 passed Layout,
+> SceneMemory and Compendium before Slice's ninth red exposed the Inventory pre-reveal/causal-prefix
+> defect. The current repair must now complete a fresh signed-successor chain from Layout. Root Gate A separately
 > accepts compatible Chromium family + CDP `1.3` only after exercising the exact CDP inventory
 > derived from `tools/uilayout.js` + `tools/bootperf.js` and recording complete per-run provenance;
 > point version alone never repins, rebaselines or moves a root threshold. No current-source Glass
@@ -2836,25 +2843,23 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-27):** signed clean source `39e4f20…` supplied Final5
-Layout 787/787 and source-bound SceneMemory 42/42. Compendium then ran once, stopped
-`instrument-fail` after 3,237 ms with 0/78 retained product outcomes and was not retried; Slice,
-Glass and recovery did not start. The three exact Final5 carriers and hashes are preserved in
-`audits/README.md`. The exact-membership repair is browser-free green at 135 Vitest files / 1,479
-passed / one intentional skip, all TypeScript and `noUnusedLocals` programs, the 887-module build,
-authority printer, Smoke/Glass/recovery/Compendium selftests and root validation with the unchanged
-determinism fingerprint. SceneMemory budget remains `a23a3d80…8355`; repaired Compendium
-collector/outcome-contract/measurement/budget-file are `c13a489d…3faab` / `ac7eea39…6d17` /
-`28b06f3c…276c` / `3e660742…2ae5`, with unchanged producer `bf9ad0b6…4dcb`. No numeric ruler,
-historical sample or ceiling changed. The worktree needs a newly signed clean Final6 checkpoint and
-the complete fresh chain from Layout; Final5 cannot resume. No current Compendium product PASS,
-Slice, Glass, recovery, hosted/HUMAN whole-Gate or release authority exists. Earlier `bb5dc7c7…`
-and `862a75b…` reds,
+**Current local candidate snapshot (2026-08-27):** signed clean source `ea845d7…` supplied Final6
+Layout 787/787, source-bound SceneMemory 42/42 and source-bound Compendium 78/78. Slice then ran
+once for 420,570 ms and stopped with five findings/five scopes at the Inventory pre-reveal
+instrument defect; four descendant outcomes were unexercised cascades. The exact Final6 carriers
+and hashes are preserved in `audits/README.md`. The browser-free repair performs native row reveal,
+settled containment/hit proof, exact trusted receipts, raw Close lifecycle plus parent-panel survival,
+full receipt key/raw-byte/parsed-semantic durability, stable F4 RNG authority and complete causal
+gating through reload/Atlas. Every terminator and negative control is deletion/mutation tested. No
+product source, numeric ruler, historical sample or ceiling changed. The worktree needs a newly
+signed clean successor and the complete fresh chain from Layout; Final6 cannot resume. No
+post-repair Slice, Glass, recovery, hosted/HUMAN whole-Gate or release authority exists. Earlier
+`bb5dc7c7…` and `862a75b…` reds,
 calibration source `6c9ad855…`, activation
 `4a54c0d…`, and the historical `7362a0e…` / `b206cf0…` / `5ddddbf…` / `041d1cf…` evidence remain
 truthful for their exact inputs.
 
-Current-input Slice retains eight one-attempt/zero-retry reds. The first six remain historical
+Current-input Slice retains nine one-attempt/zero-retry reds. The first six remain historical
 diagnosis. Signed `7362a0e…` then retained three green predecessors before Slice
 `20260827-phase4-final-slice` stopped after 414,213 ms with 12 findings/11 scopes. Signed `b206cf0…`
 repeated the three predecessors before final2 Slice stopped with six findings/five scopes. Four
@@ -2866,8 +2871,9 @@ byte/hash receipts even on rejection, and executable-tests a held writer plus bl
 persist. Arc 4 now requires zero stale-release reads and one publication-release read with missing/
 extra controls. Exact Edge version is provenance only; compatible point updates never rebaseline or
 move ceilings. Post-start audio, the exact nine-stage/14-burn ledger, current Glass and 20-minute
-recovery remain unproved. No hosted, HUMAN, whole-Gate, release, version, preview/publication or
-deployment claim exists.
+recovery remain unproved. The ninth red is Final6's single root Inventory reachability defect and
+four unexercised descendants; the current causal repair has no browser result. No hosted, HUMAN,
+whole-Gate, release, version, preview/publication or deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost
 with the previous working environment. They are superseded by `tools/validate.js`

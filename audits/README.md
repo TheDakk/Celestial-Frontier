@@ -10,6 +10,61 @@ summary of it.
 
 ## Contents
 
+### Signed `ea845d7…` Final6 campaign — three green predecessors, then one causal Slice instrument stop
+
+Signed clean source `ea845d77d9783599c269f708462eb650e2c3e245` (tree
+`1d041580e3977555898b9f8efaef9f3db5ab2166`, parent `39e4f20…`) remained byte-stable through
+the serial Final6 campaign. Layout `20260827-phase4-final6-ea845d77d978-layout` passed all
+787/787 sealed outcomes across ten viewports in 75,826 ms. Source-bound SceneMemory
+`20260827-phase4-final6-ea845d77d978-scenemem` passed 42/42 in 10,085 ms. Source-bound
+Compendium `20260827-phase4-final6-ea845d77d978-compendium` passed 78/78 in 45,661 ms and
+bound its six review PNGs. Every completed stage passed its named verifier, ran once with zero
+automatic retries, retained complete cleanup, and used Microsoft Edge `151.0.4129.107` / CDP
+`1.3` as per-run provenance only.
+
+Slice `20260827-phase4-final6-ea845d77d978-slice` then ran once for 420,570 ms and stopped
+terminal red with five findings in five scopes. Its first/root finding was instrumental: the exact
+thermal Inventory row was a valid 164px button, but its raw centre at `y=751` lay below the bounded
+panel scrollport. The old collector did not reveal the row, so it correctly skipped the click but
+then incorrectly judged the absent modal, Equip, Close and reload outcomes as four additional
+product failures. Those four descendants were unexercised cascades, not independent product
+verdicts. Static review found the product Inventory lifecycle coherent. Final6 was not retried;
+Glass and recovery correctly did not start.
+
+The current browser-free instrument repair uses the row's real `scrollIntoView` path, waits through
+animation-frame plus later-task settlement, proves exact scrollport containment and centre hit
+ownership, and binds trusted row, Equip and Close receipts to their exact coordinates and owners.
+Each dependent surface/action/Close/reload judgment now requires its full green causal prefix;
+controls run only from a green base; a red action proves quiescence and cleanup before terminating
+mutable successors. No product source or numeric ruler changed. No post-repair browser claim exists:
+Final6 cannot resume, and a newly signed clean successor must restart the chain at Layout.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_014710842.json.gz` preserves the Final6 Layout
+  report. The gzip is 4,781 bytes with SHA-256
+  `52e3d3535a71738fa60e9ae5910aab18d3faf7420f71f09752d8290b6315f1a6`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `7b1543b848acda57c0fc077996dd837a2b8a54dfe32a552ad8fb4a8a9e413305`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_014750410.json.gz` preserves the Final6
+  SceneMemory report. The gzip is 24,029 bytes with SHA-256
+  `541184b8affb1a637909644fc7fb88184f00fbfedf8aa60dff25af411696c720`; decompressed JSON is
+  305,655 bytes with SHA-256
+  `d23ec732491730bfcd718f0ca1ed6d758f83d5142d454ec29601c291965d4ade`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_014927668.json.gz` preserves the Final6
+  Compendium report. The gzip is 542,065 bytes with SHA-256
+  `8567a36ca0c4d9d28a5dbe4373ae60c29364843b4657a85ee54c71c8593c85fc`; decompressed JSON is
+  8,587,851 bytes with SHA-256
+  `1416d7cad1512ad4bc251d8870d2ac4681f0aef059887a41f4bcd1ba96aa41aa`.
+- `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260828_015651534.json.gz` preserves the Final6 Slice
+  report. The gzip is 88,669 bytes with SHA-256
+  `cb97ae8d190c77a4f7eec8bf3e1116f4bd7749eed9b7293e356eb8e9e1e3aecc`; decompressed JSON is
+  613,747 bytes with SHA-256
+  `462e0fd5b4187920a2f247ccb109e67e0f1013a2df124d1c39cbbd109c03985c`.
+- `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260828_015651534.log.gz` preserves the paired Slice
+  stdout/stderr record. The gzip is 39,378 bytes with SHA-256
+  `1597df9b40ea6d036007e2fea2985d06ebddd0f5f506e437cf00aeef719dee5e`; decompressed log is
+  254,569 bytes with SHA-256
+  `907a99b02b254bd643c252e7c78974576f954519b4dee30c6e17f6dd9baac808`.
+
 ### Signed `39e4f20…` Final5 campaign — Layout and SceneMemory green, then Compendium instrument stop
 
 Signed source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` (tree

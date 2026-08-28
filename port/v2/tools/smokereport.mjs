@@ -17,6 +17,13 @@ import { fileURLToPath } from 'node:url';
 import { findChromiumBrowser } from './browserpath.mjs';
 import { acquireWorkspaceLock, workspaceLockChildEnvironment } from './workspacelock.mjs';
 import {
+  assessInventoryActionActivation,
+  assessInventoryDetailClose,
+  assessInventoryPanelClose,
+  assessInventoryReloadDurability,
+  assessInventoryRowActivation,
+  assessInventoryRowReachability,
+  assessInventoryStagePrefix,
   assessTrainingBusyRefusalPrecondition,
   classifyCompendiumDetailReceipt,
   classifyCompendiumDetailSettlement,
@@ -811,6 +818,537 @@ function runSelftest() {
     || sameSource(source, { ...source, workingTreeSha256: 'd'.repeat(64) })) {
     throw new Error('SELFTEST source-identity change control drifted');
   }
+  const inventoryInstanceId = 'gear1|thermal|exact';
+  const inventoryVisibleRow = Object.freeze({
+    instanceId: inventoryInstanceId, present: true, connected: true,
+    tag: 'BUTTON', disabled: false, ariaDisabled: null,
+    panelId: 'inventorypanel', panelOwnsRow: true, scrollRequested: true,
+    before: Object.freeze({ x: 180, y: 220, scrollTop: 0, hitOwned: true }),
+    after: Object.freeze({ x: 180, y: 220, width: 240, height: 52, scrollTop: 0, hitOwned: true }),
+    clip: Object.freeze({ left: 40, top: 80, right: 320, bottom: 500 }),
+    viewport: Object.freeze({ width: 1280, height: 800 }),
+  });
+  const inventoryScrolledRow = Object.freeze({
+    ...inventoryVisibleRow,
+    before: Object.freeze({ x: 180, y: 751, scrollTop: 0, hitOwned: false }),
+    after: Object.freeze({ x: 180, y: 300, width: 240, height: 164, scrollTop: 451, hitOwned: true }),
+  });
+  const inventoryRowControls = [
+    ['already-visible', inventoryVisibleRow, true, []],
+    ['final6-offscreen-then-scrolled', inventoryScrolledRow, true, []],
+    ['absent', null, false, ['reachability observation absent']],
+    ['wrong-instance', { ...inventoryVisibleRow, instanceId: 'gear1|foreign' }, false, ['exact row identity']],
+    ['disconnected', { ...inventoryVisibleRow, connected: false }, false, ['connected row']],
+    ['non-button', { ...inventoryVisibleRow, tag: 'DIV' }, false, ['actionable row']],
+    ['disabled', { ...inventoryVisibleRow, disabled: true }, false, ['actionable row']],
+    ['aria-disabled', { ...inventoryVisibleRow, ariaDisabled: 'true' }, false, ['actionable row']],
+    ['wrong-scroll-owner', { ...inventoryVisibleRow, panelId: 'shipyardpanel' }, false, ['Inventory scroll owner']],
+    ['foreign-scroll-owner', { ...inventoryVisibleRow, panelOwnsRow: false }, false, ['Inventory scroll owner']],
+    ['no-reveal-request', { ...inventoryVisibleRow, scrollRequested: false }, false, ['real row reveal request']],
+    ['missing-before-hit', { ...inventoryVisibleRow,
+      before: { x: 180, y: 220, scrollTop: 0 } }, false, ['pre-reveal observation']],
+    ['missing-after', { ...inventoryVisibleRow, after: null }, false, ['post-reveal observation']],
+    ['zero-width-row', { ...inventoryVisibleRow,
+      after: { ...inventoryVisibleRow.after, width: 0 } }, false, ['44px row geometry']],
+    ['short-row', { ...inventoryVisibleRow,
+      after: { ...inventoryVisibleRow.after, height: 43 } }, false, ['44px row geometry']],
+    ['wrong-hit-owner', { ...inventoryVisibleRow,
+      after: { ...inventoryVisibleRow.after, hitOwned: false } }, false, ['centre hit ownership']],
+    ['right-edge-outside', { ...inventoryVisibleRow,
+      after: { ...inventoryVisibleRow.after, x: inventoryVisibleRow.clip.right } }, false,
+    ['centre inside visible scrollport']],
+    ['left-edge-outside', { ...inventoryVisibleRow,
+      after: { ...inventoryVisibleRow.after, x: inventoryVisibleRow.clip.left - 1 } }, false,
+    ['centre inside visible scrollport']],
+    ['top-edge-outside', { ...inventoryVisibleRow,
+      after: { ...inventoryVisibleRow.after, y: inventoryVisibleRow.clip.top - 1 } }, false,
+    ['centre inside visible scrollport']],
+    ['viewport-bottom-outside', { ...inventoryVisibleRow,
+      clip: { ...inventoryVisibleRow.clip, bottom: 900 },
+      after: { ...inventoryVisibleRow.after, y: 800 } }, false, ['centre inside visible scrollport']],
+    ['offscreen-no-movement', { ...inventoryScrolledRow,
+      after: { ...inventoryScrolledRow.after, scrollTop: inventoryScrolledRow.before.scrollTop } },
+    false, ['offscreen row reveal movement']],
+    ['missing-scrollport', { ...inventoryVisibleRow, clip: null }, false, ['scrollport geometry']],
+    ['malformed-viewport', { ...inventoryVisibleRow,
+      viewport: { width: 0, height: 800 } }, false, ['scrollport geometry']],
+  ];
+  const inventoryRowDrift = inventoryRowControls.flatMap(([name, observation, expectedOk, expectedReasons]) => {
+    const actual = assessInventoryRowReachability(observation, inventoryInstanceId);
+    return actual.ok === expectedOk && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, expectedOk, expectedReasons, actual }];
+  });
+  let invalidInventoryInstanceRejected = false;
+  try { assessInventoryRowReachability(inventoryVisibleRow, ''); }
+  catch (error) { invalidInventoryInstanceRejected = error instanceof TypeError; }
+  if (!invalidInventoryInstanceRejected) {
+    inventoryRowDrift.push({ name: 'missing-exact-instance', expected: 'TypeError' });
+  }
+  if (inventoryRowDrift.length) {
+    throw new Error(`SELFTEST Inventory row reachability controls drifted: ${JSON.stringify(inventoryRowDrift)}`);
+  }
+  const inventoryRowActivation = Object.freeze({
+    point: inventoryScrolledRow.after,
+    pointer: Object.freeze({
+      instanceId: inventoryInstanceId, tag: 'BUTTON', trusted: true,
+      pointerType: 'mouse', x: inventoryScrolledRow.after.x, y: inventoryScrolledRow.after.y,
+    }),
+  });
+  const inventoryRowActivationControls = [
+    ['green', inventoryRowActivation, true, []],
+    ['missing-receipt', { ...inventoryRowActivation, pointer: null }, false, ['trusted row pointer']],
+    ['wrong-instance', { ...inventoryRowActivation,
+      pointer: { ...inventoryRowActivation.pointer, instanceId: 'gear1|foreign' } }, false,
+    ['trusted row pointer']],
+    ['wrong-tag', { ...inventoryRowActivation,
+      pointer: { ...inventoryRowActivation.pointer, tag: 'SPAN' } }, false, ['trusted row pointer']],
+    ['untrusted', { ...inventoryRowActivation,
+      pointer: { ...inventoryRowActivation.pointer, trusted: false } }, false, ['trusted row pointer']],
+    ['touch', { ...inventoryRowActivation,
+      pointer: { ...inventoryRowActivation.pointer, pointerType: 'touch' } }, false, ['trusted row pointer']],
+    ['coordinate-drift', { ...inventoryRowActivation,
+      pointer: { ...inventoryRowActivation.pointer, y: inventoryRowActivation.pointer.y + 2 } }, false,
+    ['row point/receipt binding']],
+  ];
+  const inventoryRowActivationDrift = inventoryRowActivationControls.flatMap(([
+    name, observation, expectedOk, expectedReasons,
+  ]) => {
+    const actual = assessInventoryRowActivation(observation, inventoryInstanceId);
+    return actual.ok === expectedOk && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, expectedOk, expectedReasons, actual }];
+  });
+  if (inventoryRowActivationDrift.length) {
+    throw new Error(`SELFTEST Inventory row activation controls drifted: ${JSON.stringify(inventoryRowActivationDrift)}`);
+  }
+  const inventoryActionActivation = Object.freeze({
+    point: Object.freeze({ ok: true, x: 180, y: 300, height: 44 }),
+    interaction: Object.freeze({
+      pressCount: 1, operation: 'equip', instanceId: inventoryInstanceId,
+      tag: 'BUTTON', trusted: true, pointerType: 'mouse', x: 180, y: 300,
+    }),
+  });
+  const inventoryActionActivationControls = [
+    ['green', inventoryActionActivation, true, []],
+    ['point-red', { ...inventoryActionActivation,
+      point: { ...inventoryActionActivation.point, ok: false } }, false, ['action target point']],
+    ['short-target', { ...inventoryActionActivation,
+      point: { ...inventoryActionActivation.point, height: 43 } }, false, ['action target point']],
+    ['missing-receipt', { ...inventoryActionActivation, interaction: null }, false,
+    ['trusted action pointer']],
+    ['double-press', { ...inventoryActionActivation,
+      interaction: { ...inventoryActionActivation.interaction, pressCount: 2 } }, false,
+    ['trusted action pointer']],
+    ['wrong-operation', { ...inventoryActionActivation,
+      interaction: { ...inventoryActionActivation.interaction, operation: 'unequip' } }, false,
+    ['trusted action pointer']],
+    ['wrong-instance', { ...inventoryActionActivation,
+      interaction: { ...inventoryActionActivation.interaction, instanceId: 'gear1|foreign' } }, false,
+    ['trusted action pointer']],
+    ['wrong-tag', { ...inventoryActionActivation,
+      interaction: { ...inventoryActionActivation.interaction, tag: 'SPAN' } }, false,
+    ['trusted action pointer']],
+    ['untrusted', { ...inventoryActionActivation,
+      interaction: { ...inventoryActionActivation.interaction, trusted: false } }, false,
+    ['trusted action pointer']],
+    ['touch', { ...inventoryActionActivation,
+      interaction: { ...inventoryActionActivation.interaction, pointerType: 'touch' } }, false,
+    ['trusted action pointer']],
+    ['coordinate-drift', { ...inventoryActionActivation,
+      interaction: { ...inventoryActionActivation.interaction, x: 182 } }, false,
+    ['action point/receipt binding']],
+  ];
+  const inventoryActionActivationDrift = inventoryActionActivationControls.flatMap(([
+    name, observation, expectedOk, expectedReasons,
+  ]) => {
+    const actual = assessInventoryActionActivation(observation, inventoryInstanceId);
+    return actual.ok === expectedOk && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, expectedOk, expectedReasons, actual }];
+  });
+  if (inventoryActionActivationDrift.length) {
+    throw new Error(`SELFTEST Inventory action activation controls drifted: ${JSON.stringify(inventoryActionActivationDrift)}`);
+  }
+  const inventoryDetailClose = Object.freeze({
+    point: Object.freeze({
+      ok: true, x: 620, y: 90, width: 44, height: 44, tag: 'BUTTON', owner: 'inventory-sheet',
+    }),
+    pointer: Object.freeze({
+      x: 620, y: 90, tag: 'BUTTON', closeOwner: 'inventory-sheet', trusted: true, pointerType: 'mouse',
+    }),
+    closed: Object.freeze({
+      sheetPresent: true, open: false, hidden: true, ariaHidden: 'true', bodyChildren: 0,
+      focusInstanceId: inventoryInstanceId, panelPresent: true, panelDisplay: 'block',
+      panelAriaHidden: 'false', panelOpen: 'inventory', openerPresent: true,
+      inventoryExpanded: 'true', panelInert: false,
+      diagnostics: Object.freeze({
+        activeCount: 0, retainedCount: 0, pendingWork: 0, selectedInstanceId: null,
+      }),
+    }),
+  });
+  const inventoryDetailCloseControls = [
+    ['green', inventoryDetailClose, true, []],
+    ['point-red', { ...inventoryDetailClose,
+      point: { ...inventoryDetailClose.point, ok: false } }, false, ['Close target point']],
+    ['narrow-target', { ...inventoryDetailClose,
+      point: { ...inventoryDetailClose.point, width: 43 } }, false, ['Close target point']],
+    ['missing-width', { ...inventoryDetailClose,
+      point: { ...inventoryDetailClose.point, width: undefined } }, false, ['Close target point']],
+    ['short-target', { ...inventoryDetailClose,
+      point: { ...inventoryDetailClose.point, height: 43 } }, false, ['Close target point']],
+    ['wrong-point-tag', { ...inventoryDetailClose,
+      point: { ...inventoryDetailClose.point, tag: 'DIV' } }, false, ['Close target point']],
+    ['wrong-owner', { ...inventoryDetailClose,
+      point: { ...inventoryDetailClose.point, owner: 'foreign-sheet' } }, false, ['Close target point']],
+    ['missing-receipt', { ...inventoryDetailClose, pointer: null }, false, ['trusted Close pointer']],
+    ['wrong-receipt-tag', { ...inventoryDetailClose,
+      pointer: { ...inventoryDetailClose.pointer, tag: 'SPAN' } }, false, ['trusted Close pointer']],
+    ['wrong-receipt-owner', { ...inventoryDetailClose,
+      pointer: { ...inventoryDetailClose.pointer, closeOwner: 'foreign-sheet' } }, false,
+    ['trusted Close pointer']],
+    ['untrusted', { ...inventoryDetailClose,
+      pointer: { ...inventoryDetailClose.pointer, trusted: false } }, false, ['trusted Close pointer']],
+    ['touch', { ...inventoryDetailClose,
+      pointer: { ...inventoryDetailClose.pointer, pointerType: 'touch' } }, false, ['trusted Close pointer']],
+    ['coordinate-drift', { ...inventoryDetailClose,
+      pointer: { ...inventoryDetailClose.pointer, x: 622 } }, false, ['Close point/receipt binding']],
+    ['retained-open', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, open: true } }, false, ['closed focus/zero ownership']],
+    ['missing-sheet', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, sheetPresent: false } }, false,
+    ['closed focus/zero ownership']],
+    ['visible-sheet', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, hidden: false } }, false,
+    ['closed focus/zero ownership']],
+    ['aria-visible-sheet', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, ariaHidden: 'false' } }, false,
+    ['closed focus/zero ownership']],
+    ['wrong-focus', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, focusInstanceId: 'gear1|foreign' } }, false,
+    ['closed focus/zero ownership']],
+    ['retained-body', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, bodyChildren: 1 } }, false,
+    ['closed focus/zero ownership']],
+    ['missing-panel-inert', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, panelInert: undefined } }, false,
+    ['closed focus/zero ownership']],
+    ['missing-panel', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, panelPresent: false } }, false,
+    ['closed focus/zero ownership']],
+    ['hidden-panel', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, panelDisplay: 'none' } }, false,
+    ['closed focus/zero ownership']],
+    ['aria-hidden-panel', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, panelAriaHidden: 'true' } }, false,
+    ['closed focus/zero ownership']],
+    ['closed-panel-state', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, panelOpen: null } }, false,
+    ['closed focus/zero ownership']],
+    ['missing-panel-opener', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, openerPresent: false } }, false,
+    ['closed focus/zero ownership']],
+    ['collapsed-panel-opener', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, inventoryExpanded: 'false' } }, false,
+    ['closed focus/zero ownership']],
+    ['retained-panel-inert', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed, panelInert: true } }, false,
+    ['closed focus/zero ownership']],
+    ['active-owner', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed,
+        diagnostics: { ...inventoryDetailClose.closed.diagnostics, activeCount: 1 } } }, false,
+    ['closed focus/zero ownership']],
+    ['retained-owner', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed,
+        diagnostics: { ...inventoryDetailClose.closed.diagnostics, retainedCount: 1 } } }, false,
+    ['closed focus/zero ownership']],
+    ['pending-work', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed,
+        diagnostics: { ...inventoryDetailClose.closed.diagnostics, pendingWork: 1 } } }, false,
+    ['closed focus/zero ownership']],
+    ['selected-owner', { ...inventoryDetailClose,
+      closed: { ...inventoryDetailClose.closed,
+        diagnostics: { ...inventoryDetailClose.closed.diagnostics,
+          selectedInstanceId: inventoryInstanceId } } }, false,
+    ['closed focus/zero ownership']],
+  ];
+  const inventoryDetailCloseDrift = inventoryDetailCloseControls.flatMap(([
+    name, observation, expectedOk, expectedReasons,
+  ]) => {
+    const actual = assessInventoryDetailClose(observation, inventoryInstanceId);
+    return actual.ok === expectedOk && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, expectedOk, expectedReasons, actual }];
+  });
+  if (inventoryDetailCloseDrift.length) {
+    throw new Error(`SELFTEST Inventory detail Close controls drifted: ${JSON.stringify(inventoryDetailCloseDrift)}`);
+  }
+  const inventoryReloadInstanceId = 'gear1|thermal';
+  const inventoryReloadRevision = 8;
+  const predecessorReceipt = Object.freeze({
+    ordinal: 4, kind: 'f4-smoke', witness: 'f4:smoke:4:predecessor',
+  });
+  const equipReceipt = Object.freeze({
+    ordinal: 5, kind: 'arc2-equip',
+    witness: `arc2:equip:5:${inventoryReloadInstanceId}:${inventoryReloadRevision}`,
+  });
+  const receiptKeys = Object.freeze(['receipt:4', 'receipt:5']);
+  const receiptRows = Object.freeze([predecessorReceipt, equipReceipt]);
+  const receiptRawRows = Object.freeze(receiptRows.map((row) => JSON.stringify(row)));
+  const committedAuthority = Object.freeze({
+    activePlayMs: 1200,
+    sessionRng: Object.freeze({ seed: 0xC0FFEE, ordinal: 6, draws: Object.freeze({ capture: 2 }) }),
+  });
+  /* Receipt-free checkpoints may legitimately advance these non-RNG fields
+     before the new document is sampled. The green witness deliberately
+     differs so an accidental full-authority equality check is selftest-red. */
+  const reloadedAuthority = Object.freeze({
+    ...committedAuthority, activePlayMs: 1300,
+    sessionRng: Object.freeze({ seed: 0xC0FFEE, ordinal: 6, draws: Object.freeze({ capture: 2 }) }),
+  });
+  const inventoryReloadDurability = Object.freeze({
+    committed: Object.freeze({
+      authorityVersion: 1, authorityJson: JSON.stringify(committedAuthority), authority: committedAuthority,
+      receiptKeys: Object.freeze([...receiptKeys]), receiptRawRows: Object.freeze([...receiptRawRows]),
+      receiptRows: Object.freeze(receiptRows.map((row) => Object.freeze({ ...row }))),
+    }),
+    reloaded: Object.freeze({
+      authorityVersion: 1, authorityJson: JSON.stringify(reloadedAuthority), authority: reloadedAuthority,
+      receiptKeys: Object.freeze([...receiptKeys]), receiptRawRows: Object.freeze([...receiptRawRows]),
+      receiptRows: Object.freeze(receiptRows.map((row) => Object.freeze({ ...row }))),
+    }),
+    committedRuntime: Object.freeze({
+      sessionSeed: 0xC0FFEE, sessionOrdinal: 6, sessionDraws: Object.freeze({ capture: 2 }),
+      revision: 11, commits: 7, documentToken: 'runtime-committed',
+      lease: Object.freeze({ owner: 'runtime-committed-owner' }),
+    }),
+    reloadedRuntime: Object.freeze({
+      sessionSeed: 0xC0FFEE, sessionOrdinal: 6, sessionDraws: Object.freeze({ capture: 2 }),
+      revision: 12, commits: 8, documentToken: 'runtime-reloaded',
+      lease: Object.freeze({ owner: 'runtime-reloaded-owner' }),
+    }),
+  });
+  const mutateReloadDurability = (mutate) => {
+    const observation = structuredClone(inventoryReloadDurability);
+    mutate(observation);
+    return observation;
+  };
+  const mutateReloadRngCoherently = (mutate) => mutateReloadDurability((observation) => {
+    mutate(observation.reloaded.authority.sessionRng);
+    observation.reloaded.authorityJson = JSON.stringify(observation.reloaded.authority);
+    observation.reloadedRuntime.sessionSeed = observation.reloaded.authority.sessionRng.seed;
+    observation.reloadedRuntime.sessionOrdinal = observation.reloaded.authority.sessionRng.ordinal;
+    observation.reloadedRuntime.sessionDraws = structuredClone(observation.reloaded.authority.sessionRng.draws);
+  });
+  const inventoryReloadDurabilityControls = [
+    ['green-with-volatile-authority-fields', inventoryReloadDurability, true, []],
+    ['missing-predecessor', mutateReloadDurability((observation) => {
+      observation.reloaded.receiptKeys.splice(0, 1);
+      observation.reloaded.receiptRawRows.splice(0, 1);
+      observation.reloaded.receiptRows.splice(0, 1);
+    }), false, ['durable receipt/F4 authority reload']],
+    ['predecessor-key-drift', mutateReloadDurability((observation) => {
+      observation.reloaded.receiptKeys[0] = 'receipt:40';
+    }), false, ['durable receipt/F4 authority reload']],
+    ['predecessor-byte-drift', mutateReloadDurability((observation) => {
+      observation.reloaded.receiptRawRows[0] += ' ';
+    }), false, ['durable receipt/F4 authority reload']],
+    ['predecessor-semantic-drift', mutateReloadDurability((observation) => {
+      observation.reloaded.receiptRows[0].witness = 'mutated-predecessor-semantics';
+    }), false, ['durable receipt/F4 authority reload']],
+    ['null-predecessor', mutateReloadDurability((observation) => {
+      observation.reloaded.receiptRows[0] = null;
+    }), false, ['durable receipt/F4 authority reload']],
+    ['duplicate-key', mutateReloadDurability((observation) => {
+      observation.reloaded.receiptKeys[0] = observation.reloaded.receiptKeys[1];
+    }), false, ['durable receipt/F4 authority reload']],
+    ['equip-witness-drift', mutateReloadDurability((observation) => {
+      observation.reloaded.receiptRows[1].witness = 'mutated-equip-witness';
+    }), false, ['durable receipt/F4 authority reload']],
+    ['authority-raw-drift', mutateReloadDurability((observation) => {
+      observation.reloaded.authorityJson += ' ';
+    }), false, ['durable receipt/F4 authority reload']],
+    ['authority-seed-drift', mutateReloadRngCoherently((rng) => {
+      rng.seed = (rng.seed ^ 1) >>> 0;
+    }), false, ['durable receipt/F4 authority reload']],
+    ['authority-ordinal-drift', mutateReloadRngCoherently((rng) => {
+      rng.ordinal += 1;
+    }), false, ['durable receipt/F4 authority reload']],
+    ['authority-draw-drift', mutateReloadRngCoherently((rng) => {
+      rng.draws.capture += 1;
+    }), false, ['durable receipt/F4 authority reload']],
+    ['runtime-drift', mutateReloadDurability((observation) => {
+      observation.reloadedRuntime.sessionOrdinal += 1;
+    }), false, ['durable receipt/F4 authority reload']],
+    ['missing-draw-map', mutateReloadDurability((observation) => {
+      observation.reloaded.authority.sessionRng.draws = null;
+      observation.reloaded.authorityJson = JSON.stringify(observation.reloaded.authority);
+      observation.reloadedRuntime.sessionDraws = null;
+    }), false, ['durable receipt/F4 authority reload']],
+  ];
+  const inventoryReloadDurabilityDrift = inventoryReloadDurabilityControls.flatMap(([
+    name, observation, expectedOk, expectedReasons,
+  ]) => {
+    const actual = assessInventoryReloadDurability(
+      observation, inventoryReloadInstanceId, inventoryReloadRevision,
+    );
+    return actual.ok === expectedOk && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, expectedOk, expectedReasons, actual }];
+  });
+  if (inventoryReloadDurabilityDrift.length) {
+    throw new Error(`SELFTEST Inventory reload durability controls drifted: ${JSON.stringify(inventoryReloadDurabilityDrift)}`);
+  }
+  const inventoryPanelClose = Object.freeze({
+    point: Object.freeze({
+      ok: true, owner: 'inventory', tag: 'BUTTON', x: 1224, y: 61, width: 44, height: 44,
+    }),
+    pointer: Object.freeze({
+      tag: 'BUTTON', panelCloseOwner: 'inventory', trusted: true, pointerType: 'mouse', x: 1224, y: 61,
+    }),
+    settled: Object.freeze({
+      panelPresent: true, display: 'none', ariaHidden: 'true', openerPresent: true,
+      panelOpen: null, inventoryExpanded: 'false', focusId: 'railinventory',
+      diagnostics: Object.freeze({
+        activeCount: 0, retainedCount: 0, pendingWork: 0, selectedInstanceId: null,
+      }),
+    }),
+  });
+  const inventoryPanelCloseControls = [
+    ['green', inventoryPanelClose, true, []],
+    ['absent', null, false,
+      ['panel Close target point', 'trusted panel Close pointer', 'closed panel/focus/zero ownership']],
+    ['point-red', { ...inventoryPanelClose,
+      point: { ...inventoryPanelClose.point, ok: false } }, false, ['panel Close target point']],
+    ['wrong-point-owner', { ...inventoryPanelClose,
+      point: { ...inventoryPanelClose.point, owner: 'atlas' } }, false, ['panel Close target point']],
+    ['wrong-point-tag', { ...inventoryPanelClose,
+      point: { ...inventoryPanelClose.point, tag: 'DIV' } }, false, ['panel Close target point']],
+    ['narrow-point', { ...inventoryPanelClose,
+      point: { ...inventoryPanelClose.point, width: 43 } }, false, ['panel Close target point']],
+    ['short-point', { ...inventoryPanelClose,
+      point: { ...inventoryPanelClose.point, height: 43 } }, false, ['panel Close target point']],
+    ['missing-receipt', { ...inventoryPanelClose, pointer: null }, false, ['trusted panel Close pointer']],
+    ['wrong-receipt-tag', { ...inventoryPanelClose,
+      pointer: { ...inventoryPanelClose.pointer, tag: 'SPAN' } }, false, ['trusted panel Close pointer']],
+    ['wrong-receipt-owner', { ...inventoryPanelClose,
+      pointer: { ...inventoryPanelClose.pointer, panelCloseOwner: 'atlas' } }, false,
+    ['trusted panel Close pointer']],
+    ['untrusted', { ...inventoryPanelClose,
+      pointer: { ...inventoryPanelClose.pointer, trusted: false } }, false, ['trusted panel Close pointer']],
+    ['touch', { ...inventoryPanelClose,
+      pointer: { ...inventoryPanelClose.pointer, pointerType: 'touch' } }, false,
+    ['trusted panel Close pointer']],
+    ['coordinate-drift', { ...inventoryPanelClose,
+      pointer: { ...inventoryPanelClose.pointer, x: 1226 } }, false,
+    ['panel Close point/receipt binding']],
+    ['missing-panel', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled, panelPresent: false } }, false,
+    ['closed panel/focus/zero ownership']],
+    ['visible-panel', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled, display: 'block' } }, false,
+    ['closed panel/focus/zero ownership']],
+    ['aria-visible-panel', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled, ariaHidden: 'false' } }, false,
+    ['closed panel/focus/zero ownership']],
+    ['missing-opener', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled, openerPresent: false } }, false,
+    ['closed panel/focus/zero ownership']],
+    ['retained-panel-open', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled, panelOpen: 'inventory' } }, false,
+    ['closed panel/focus/zero ownership']],
+    ['retained-expanded', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled, inventoryExpanded: 'true' } }, false,
+    ['closed panel/focus/zero ownership']],
+    ['wrong-focus', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled, focusId: 'railatlas' } }, false,
+    ['closed panel/focus/zero ownership']],
+    ['active-owner', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled,
+        diagnostics: { ...inventoryPanelClose.settled.diagnostics, activeCount: 1 } } }, false,
+    ['closed panel/focus/zero ownership']],
+    ['retained-owner', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled,
+        diagnostics: { ...inventoryPanelClose.settled.diagnostics, retainedCount: 1 } } }, false,
+    ['closed panel/focus/zero ownership']],
+    ['pending-work', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled,
+        diagnostics: { ...inventoryPanelClose.settled.diagnostics, pendingWork: 1 } } }, false,
+    ['closed panel/focus/zero ownership']],
+    ['selected-owner', { ...inventoryPanelClose,
+      settled: { ...inventoryPanelClose.settled,
+        diagnostics: { ...inventoryPanelClose.settled.diagnostics,
+          selectedInstanceId: inventoryInstanceId } } }, false,
+    ['closed panel/focus/zero ownership']],
+  ];
+  const inventoryPanelCloseDrift = inventoryPanelCloseControls.flatMap(([
+    name, observation, expectedOk, expectedReasons,
+  ]) => {
+    const actual = assessInventoryPanelClose(observation);
+    return actual.ok === expectedOk && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, expectedOk, expectedReasons, actual }];
+  });
+  if (inventoryPanelCloseDrift.length) {
+    throw new Error(`SELFTEST Inventory panel Close controls drifted: ${JSON.stringify(inventoryPanelCloseDrift)}`);
+  }
+  const inventoryStageGreen = Object.freeze({
+    panelOpened: true, rowReachable: true, surfaceGreen: true,
+    actionPointGreen: true, actionSettled: true, actionGreen: true, actionClosed: true,
+  });
+  const inventoryStageRequirements = {
+    surface: [
+      ['panelOpened', 'Inventory panel open'],
+      ['rowReachable', 'exact row reachable'],
+    ],
+    action: [
+      ['panelOpened', 'Inventory panel open'],
+      ['rowReachable', 'exact row reachable'],
+      ['surfaceGreen', 'surface outcome green'],
+    ],
+    'action-controls': [
+      ['panelOpened', 'Inventory panel open'],
+      ['rowReachable', 'exact row reachable'],
+      ['surfaceGreen', 'surface outcome green'],
+      ['actionPointGreen', 'action target reachable'],
+      ['actionSettled', 'action commit settled'],
+      ['actionGreen', 'action outcome green'],
+    ],
+    reload: [
+      ['panelOpened', 'Inventory panel open'],
+      ['rowReachable', 'exact row reachable'],
+      ['surfaceGreen', 'surface outcome green'],
+      ['actionPointGreen', 'action target reachable'],
+      ['actionSettled', 'action commit settled'],
+      ['actionGreen', 'action outcome green'],
+      ['actionClosed', 'committed detail closed'],
+    ],
+  };
+  const inventoryStageControls = Object.entries(inventoryStageRequirements).flatMap(([
+    stage, requirements,
+  ]) => [
+    [`${stage}-green`, stage, inventoryStageGreen, true, []],
+    ...requirements.map(([key, diagnosis]) => [
+      `${stage}-${key}-red`, stage, { ...inventoryStageGreen, [key]: false }, false, [diagnosis],
+    ]),
+  ]);
+  inventoryStageControls.push(
+    ['reload-root-red-does-not-pass', 'reload', {
+      ...inventoryStageGreen, rowReachable: false, surfaceGreen: false,
+      actionPointGreen: false, actionSettled: false, actionGreen: false, actionClosed: false,
+    }, false, ['exact row reachable', 'surface outcome green', 'action target reachable',
+      'action commit settled', 'action outcome green', 'committed detail closed']],
+  );
+  const inventoryStageDrift = inventoryStageControls.flatMap(([
+    name, stage, evidence, expectedOk, expectedReasons,
+  ]) => {
+    const actual = assessInventoryStagePrefix(stage, evidence);
+    return actual.ok === expectedOk && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, stage, expectedOk, expectedReasons, actual }];
+  });
+  let invalidInventoryStageRejected = false;
+  try { assessInventoryStagePrefix('unknown', inventoryStageGreen); }
+  catch (error) { invalidInventoryStageRejected = error instanceof TypeError; }
+  if (!invalidInventoryStageRejected) {
+    inventoryStageDrift.push({ name: 'unknown-stage', expected: 'TypeError' });
+  }
+  if (inventoryStageDrift.length) {
+    throw new Error(`SELFTEST Inventory causal-prefix controls drifted: ${JSON.stringify(inventoryStageDrift)}`);
+  }
   const canonicalArc4Output = [ARC4_LEDGER_LINE, ARC4_PASS_MARKER].join('\n');
   const canonicalArc4 = assessArc4SuccessEvidence(canonicalArc4Output);
   if (!canonicalArc4.ok || canonicalArc4.ledgerLineCount !== 1
@@ -1342,6 +1880,7 @@ function runSelftest() {
   console.log('  immutable evidence: selected per-run report/log accepted; stale current PASS, interruption, dirty source, wrong run/source, missing artifact, and log mismatch rejected');
   console.log('  finding scopes: literal harness wins; explicit Arc 4 product prefix survives browser/CDP/timeout payload; unprefixed infrastructure falls back to harness');
   console.log('  infrastructure fatal: retained ahead of generic bundler advice');
+  console.log('  Inventory reach/action/Close/reload: visible + Final6-shaped scrolled positives accepted; identity, geometry, owner, pointer, parent-panel survival, receipt bytes/semantics, stable F4 RNG and every causal-prefix bit rejected independently');
   console.log('  foreground service: exact target/document/token, continuous visible focused rAF→later-task authority, exact/late receipt rejection');
   console.log('  D-TRAIN busy refusal: exact fixture/document/card action required; setup/parent drift and exact/late binding receipts rejected');
   console.log('  Planetside settlement: ready+132px+drained accepted; roster/image/decode/art/live-work controls rejected');
