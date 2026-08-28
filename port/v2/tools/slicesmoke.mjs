@@ -13622,8 +13622,13 @@ try {
       arc4StaleDuplicateWitnessControl, 'witnessCount')
     || !arc4ConvergenceReleaseIsolatedCheck(
       arc4StaleWitnessTokenControl, 'documentToken')
-    || !arc4ConvergenceReleaseIsolatedCheck(
-      arc4StaleWitnessAuthorityControl, 'beforeAuthority')
+    || !arc4ExactFailureSet(arc4StaleWitnessAuthorityControl, [
+      'convergenceRelease', 'oldUiConvergence',
+    ])
+    || !arc4IsolatedCheck(
+      arc4StaleWitnessAuthorityControl.convergenceReleaseDiagnostics,
+      'beforeAuthority',
+    )
     || !arc4ConvergenceReleaseIsolatedCheck(
       arc4StaleWitnessTupleControl, 'tuplePreserved')
     || !arc4ConvergenceReleaseIsolatedCheck(

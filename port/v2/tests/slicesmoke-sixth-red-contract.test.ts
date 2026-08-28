@@ -599,8 +599,10 @@ describe('sixth Slice red contract repairs', () => {
         'const arc4StaleWitnessVisibleControl = assessArc4StaleWitnessControl('],
       ['stale heartbeat-runtime control',
         'const arc4StaleWitnessHeartbeatControl = assessArc4StaleWitnessControl('],
+      ['stale authority exact shared failures',
+        "!arc4ExactFailureSet(arc4StaleWitnessAuthorityControl, [\n      'convergenceRelease', 'oldUiConvergence',\n    ])"],
       ['stale nested authority diagnosis',
-        "arc4StaleWitnessAuthorityControl, 'beforeAuthority')"],
+        "!arc4IsolatedCheck(\n      arc4StaleWitnessAuthorityControl.convergenceReleaseDiagnostics,\n      'beforeAuthority',\n    )"],
       ['stale nested tuple diagnosis',
         "arc4StaleWitnessTupleControl, 'tuplePreserved')"],
       ['stale nested lifecycle diagnosis',
@@ -611,6 +613,46 @@ describe('sixth Slice red contract repairs', () => {
         'const arc4StaleRenderedFutureControl = assessArc4StaleOldSurfaceControl('],
       ['stale excessive lag control',
         'const arc4StaleExcessiveUiLagControl = assessArc4StaleWitnessControl('],
+    ]);
+    expect(stale).not.toMatch(
+      /arc4ConvergenceReleaseIsolatedCheck\s*\(\s*arc4StaleWitnessAuthorityControl\s*,\s*['"]beforeAuthority['"]\s*\)/,
+    );
+    const staleAuthoritySelftest = section(
+      arc4ContractSource,
+      'const negativeStaleConvergenceAuthoritySelftest',
+      'const negativeStaleConvergenceTupleSelftest',
+    );
+    proveEachMarkerRequired(staleAuthoritySelftest, [
+      ['full-assessor coordinated authority fixture',
+        '= withConvergenceWitnessMutation(staleBundleSelftest, (witness) => {'],
+      ['full-assessor before ordinal mutation',
+        'witness.before.runtime.sessionOrdinal += 1;'],
+      ['full-assessor after ordinal mutation',
+        'witness.after.runtime.sessionOrdinal += 1;'],
+    ]);
+    const staleAuthoritySelftestVerdict = section(
+      arc4ContractSource,
+      '  staleConvergenceAuthority: Object.freeze({',
+      '  staleConvergenceTuple: Object.freeze({',
+    );
+    proveEachMarkerRequired(staleAuthoritySelftestVerdict, [
+      ['full-assessor exact two-red set',
+        "expected: Object.freeze(['convergenceRelease', 'oldUiConvergence']),"],
+      ['full-assessor authority fixture execution',
+        'negativeStaleConvergenceAuthoritySelftest'],
+    ]);
+    const staleAuthorityNestedSelftest = section(
+      arc4ContractSource,
+      'const staleConvergenceAuthoritySelftestResult',
+      'const coordinatedV4CompatibilitySelftests = Object.freeze({',
+    );
+    proveEachMarkerRequired(staleAuthorityNestedSelftest, [
+      ['full-assessor nested red verdict',
+        'staleConvergenceAuthoritySelftestResult.convergenceReleaseDiagnostics?.ok !== false'],
+      ['full-assessor nested diagnostics',
+        'staleConvergenceAuthoritySelftestResult.convergenceReleaseDiagnostics?.checks ?? {}'],
+      ['full-assessor exact nested authority failure',
+        "!same(staleConvergenceAuthorityNestedFailures, ['beforeAuthority'])"],
     ]);
     const publication = section(
       sliceSource,
