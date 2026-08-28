@@ -1,4 +1,15 @@
 # Celestial-Frontier
+
+> **Current Final11 boundary (2026-08-28):** signed clean source `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
+> passed all five responsive predecessors and Recovery's complete 20-minute observation, all 15
+> outcomes/309 samples, exact next-cycle proof and recovered UI. Recovery then failed only two
+> timing-oracle checks: a valid 20 ms render lag and a stale-raw 5,353 ms comparison instead of the
+> causal latest-live 322 ms gap. This is instrument-only, not product failure or a Recovery
+> certificate. Final11 is immutable/no-retry. The next repair is contract-only under the existing
+> 10-second runtime law, binds close to latest exhausted live runtime plus the exact committed/lost
+> hide witness, mutation-tests both directions, and requires a fresh signed clean full chain. No
+> product/version/ruler/browser change; Edge point version remains provenance only. Final10
+> “current” wording below is historical where superseded.
 Master the infinite
 
 **Celestial Frontier: Cosmic Codex** — a single-file, offline-capable HTML/Canvas
@@ -29,7 +40,7 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 boundary (2026-08-28; Final10 stopped fail-closed in Recovery):** signed clean
+**Historical Final10 local v2 boundary (superseded by Final11 above):** signed clean
 source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, source-bound
 SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings, Slice with zero findings
 and ten screenshots, and full Glass across all 12 viewports with zero findings or instrument
@@ -48,7 +59,7 @@ run; Final10 grants no offline durable-parity, Recovery product-layout, 20-minut
 recovered-state claim and is immutable. Final9 and earlier attempt history remains preserved in
 [`audits/README.md`](audits/README.md) and the detailed port references.
 
-The current local repair is phase-specific: read-only offline exhaustion requires exact
+The signed Final10 successor repair was phase-specific: read-only offline exhaustion requires exact
 `unavailable` rows and active exhaustion requires `empty`/`depleted`. An offline raw read followed
 by one same-document UI → state surface/runtime witness binds the document, nondecreasing active
 time and exact revision/SessionRNG tuple. Reactivation must be shown, writable and focused, run a
@@ -82,13 +93,14 @@ determinism probes, and an independent review marked CLEAR.
 The implementation/evidence checkpoint is locally signed commit
 `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (parent Final10 `4405fb2…`), and its embedded SSH
 signature verified against the configured public key. The synchronized signed clean docs-only
-descendant—not `3fbfcd5…`—is the fresh campaign source. No successor browser certification exists.
-That descendant must run fresh, once
+descendant—not `3fbfcd5…`—was the Final11 campaign source; Final11 is the successor browser attempt
+described above, but it is not a Recovery certificate.
+The next signed clean contract-repair source must run fresh, once
 and fail-fast through **Layout → SceneMemory → Compendium → Slice →
 Glass → Recovery**, with every named verifier and no automatic retry. Edge `151.0.4129.107` / CDP
-`1.3` is Final10 provenance only; compatible point updates never trigger a rebaseline,
-recalibration or threshold change. No Recovery, product, whole-Gate, hosted, HUMAN or release claim
-exists.
+`1.3` is Final11 provenance only; compatible point updates never trigger a rebaseline,
+recalibration or threshold change. No Recovery certificate, whole-Gate, hosted, HUMAN or release
+authority exists.
 
 After the stable Phase-4 checkpoint, the queued visual pass applies the TikTok-inspired polish
 language across the entire deterministic universe—galaxies, systems, planets, every biome,
@@ -144,7 +156,8 @@ ready, but the collector is not standalone: it may run only after the same uncha
 has produced a terminal-green Slice report that passes named verification and a full Glass report
 bound to that exact Slice ID that also passes named verification. Recovery receives both exact
 predecessor IDs and its own exact report must pass named verification; stop after any failure and
-never retry automatically. The uninterrupted real 20-minute certificate has not run. The former Compendium ruler
+never retry automatically. Final11 completed the uninterrupted real 20-minute observation and
+recovered UI; the Recovery certificate remains open because the final assessor was red. The former Compendium ruler
 and exact-budget certificate `20260826-phase4-certification` remain truthful historical evidence for producer
 `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`; they are not rebound to the
 current product. Historical current-product calibration from signed source

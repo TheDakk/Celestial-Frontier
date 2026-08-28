@@ -1,13 +1,24 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **Current Final11 boundary (2026-08-28):** signed clean source `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
+> passed all five responsive predecessors and Recovery's complete 20-minute observation, all 15
+> outcomes/309 samples, exact next-cycle proof and recovered UI. Recovery then failed only two
+> timing-oracle checks: a valid 20 ms render lag and a stale-raw 5,353 ms comparison instead of the
+> causal latest-live 322 ms gap. This is instrument-only, not product failure or a Recovery
+> certificate. Final11 is immutable/no-retry. The next repair is contract-only under the existing
+> 10-second runtime law, binds close to latest exhausted live runtime plus the exact committed/lost
+> hide witness, mutation-tests both directions, and requires a fresh signed clean full chain. No
+> product/version/ruler/browser change; Edge point version remains provenance only. Final10
+> “current” wording below is historical where superseded.
+
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-28.**
 >
-> **2026-08-28 Final10 offline-reopened oracle stop — current evidence, signed implementation and
-> docs-descendant boundary:** signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` supplied Layout
+> **Historical 2026-08-28 Final10 offline-reopened oracle stop (superseded by Final11 above):**
+> signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` supplied Layout
 > 787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings,
 > Slice PASS with zero findings and ten screenshots, and full 12-viewport Glass PASS with zero
 > findings or instrument failures. Every predecessor ran once and passed its named verifier.
@@ -55,7 +66,7 @@
 > preparation/collector source at
 > `baa284a736d9243df4a61de192e553111c9c5fbc9d6aa70ffd05af5b6e31e45f`.
 >
-> The current local successor repairs the later Pertar gate with disjoint `ready-visible`, active
+> The signed Final10 successor repair added disjoint `ready-visible`, active
 > `exhausted-visible` (`empty`/`depleted`) and read-only `exhausted-offline` (`unavailable` plus the
 > save-authority explanation) predicates. The offline proof reads raw then consumes UI and state
 > from one returned same-document surface, requiring UI → state chronology, nondecreasing active
@@ -89,12 +100,13 @@
 > `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
 > `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
-> This documentation changes source identity; its signed clean docs-only descendant is the fresh
-> campaign source. No successor browser certificate exists. Final10 is immutable and cannot resume;
-> that descendant must restart the full chain at Layout
-> with fresh IDs and every named verifier. Edge `151.0.4129.107` / CDP `1.3` is Final10 run
+> Those documentation bytes changed source identity; their signed clean docs-only descendant
+> supplied Final11, whose temporal-oracle stop is described above. Final11 is not a Recovery
+> certificate. Final10 is immutable and cannot resume;
+> the next signed clean contract-repair source must restart the full chain at Layout
+> with fresh IDs and every named verifier. Edge `151.0.4129.107` / CDP `1.3` is Final11 run
 > provenance only: a compatible point update never triggers a rebaseline, recalibration or threshold
-> change. No product, Recovery, whole-Gate, hosted, HUMAN or release claim exists.
+> change. No Recovery certificate, whole-Gate, hosted, HUMAN or release authority exists.
 >
 > **Queued visual boundary:** after the stable Phase-4 checkpoint, carry the TikTok-inspired polish
 > language across the entire universe—galaxies, systems, planets, every biome, creatures, plants,
@@ -369,8 +381,9 @@
 > be terminal-green and pass named verification; full Glass must consume that exact Slice ID and its
 > exact report must pass named verification with the same ID; only then may recovery consume both
 > exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
-> nonzero, red or instrument result and do not start a successor or automatically retry. The
-> uninterrupted real 20-minute certificate has not run. The former Compendium ruler under
+> nonzero, red or instrument result and do not start a successor or automatically retry.
+> Final11 completed the uninterrupted real 20-minute observation and recovered UI; the Recovery
+> certificate remains open because the final assessor was red. The former Compendium ruler under
 > measurement authority `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`
 > and producer authority `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`
 > remains truthful historical evidence.
@@ -547,7 +560,8 @@
 > `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Both bind base
 > `8633bb48fc89c7ae658fa9ed4a7f47b683be102d`, status `61fc362e…` and exact-input dirty tree
 > `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. The uninterrupted
-> 20-minute recovery observation and HUMAN review remain open; no Charter bioscan, targeted
+> Final11's 20-minute observation passed; the repaired final-assessor certificate and HUMAN review
+> remain open. No Charter bioscan, targeted
 > preview, hosted, release/version, `rnSeen` or preview/publication authority is claimed. Arc 5A now
 > activates the receipt-bound compact ownership-v2 representation across boot, Training and capture.
 > The manifest binds the exact Arc 4 source, canonical delta and reconstructed target while the four
@@ -2968,32 +2982,32 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current evidence snapshot (2026-08-28):** signed clean source `4405fb2…` supplied Final10 Layout
-787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings, Slice
-PASS with zero findings/ten screenshots and full 12-viewport Glass PASS with zero findings or
-instrument failures. Every green predecessor ran once and passed named verification. Recovery ran
-once, passed fixture, its complete 16-attempt burn-down, exhausted disabled suppression,
-close/checkpoint and closed/offline proof, then stopped terminal `instrument-fail` at
-`offline-reopened` after 110,549 ms with zero retry and complete cleanup. The real 20-minute active
-observation, boundary crossing and recovered stages remained not-run. Exact Final10 carriers and
-hashes are preserved in `audits/README.md`; no offline durable-parity, Recovery product-layout,
-20-minute recovery or recovered-state claim exists.
+**Current evidence snapshot (2026-08-28):** signed clean source `1ca67156…` supplied immutable
+Final11. Layout passed 787/787, SceneMemory 42/42, Compendium 78/78 with six PNG bindings, Slice
+passed with zero findings/ten screenshots, and full 12-viewport Glass passed with zero findings or
+instrument failures. Every predecessor ran once and passed named verification. Recovery then ran
+once for 1,291,034 ms and passed all 15 observation outcomes across 309 samples, the uninterrupted
+20-minute active-play window, exact next-cycle boundary and recovered UI. Its final domain assessor
+failed only `activePlayProjection` and `closeCheckpoint`: the former rejected a valid 20 ms render
+lag within the existing 10-second runtime law, and the latter compared close against a stale raw
+capture instead of the latest exhausted live runtime. Cleanup passed and no retry occurred.
+Final11 is immutable and is not a Recovery certificate or product failure.
 
-The retained Pertar surface truthfully used `unavailable` for all three read-only controls while
-preserving the exhausted 16/16/0 cycle-0 budget and a same-document UI → state runtime witness. The
-old phase-blind poll required the active-authority `empty`/`depleted` vocabulary. The current local
-successor separates ready-visible, active-exhausted and offline-ineligible predicates; follows an
-offline raw read with one same-document UI → state surface/runtime witness bound to exact document,
-nondecreasing active time and equal revision/SessionRNG tuple; and refreshes/re-proves active
-exhaustion before observer arming. A candidate PASS retains and independently replays all three
-phase receipts under the exact six-region source inventory recorded at the top of this overlay.
-The implementation/evidence bytes are locally signed at `3fbfcd5…`; these changed documentation
-bytes require a signed clean docs-only descendant and are not browser-certified. Final10 is
-immutable; that descendant must restart the complete chain from Layout with fresh IDs and every named
-verifier. No product judgment, Recovery PASS, current-WIP browser PASS, hosted/HUMAN whole-Gate or
-release authority exists. Numeric rulers, historical samples, browser authority and retry/release
-policy are unchanged. Edge `151.0.4129.107` / CDP `1.3` is Final10 provenance only; a compatible
-point update never causes a rebaseline, recalibration or threshold move.
+The next change is assessor-only: accept bounded rendered lag while retaining raw/rendered ≤ live
+runtime, and bind close to the latest exhausted live runtime plus the exact committed/lost hide
+witness. Positive and isolated negative controls must cover both directions. The not-yet-created
+signed clean contract-repair source must restart the complete chain from Layout with fresh IDs and
+every named verifier. Numeric rulers, historical samples, browser authority and retry/release policy
+remain unchanged. Edge `151.0.4129.107` / CDP `1.3` is Final11 provenance only; a compatible point
+update never causes a rebaseline, recalibration or threshold move. No Recovery certificate,
+hosted/HUMAN whole-Gate or release authority exists.
+
+**Historical Final10 predecessor:** signed `4405fb2…` passed the same five responsive predecessors
+and Recovery through closed/offline proof before the phase-blind `offline-reopened` oracle rejected
+truthful read-only `unavailable` controls. Signed implementation/evidence repair `3fbfcd5…`
+separated ready-visible, active-exhausted and offline-ineligible predicates; its signed docs
+descendant became Final11 source `1ca67156…`. Exact historical carriers remain in
+`audits/README.md`.
 Earlier
 `bb5dc7c7…` and `862a75b…` reds,
 calibration source `6c9ad855…`, activation
@@ -3017,9 +3031,11 @@ reachability defect and
 four unexercised descendants; Final7 supersedes it with four green predecessors and the preserved
 Glass red described above. Final9 later supersedes their predecessor-chain boundary through Glass
 and the 16-attempt burn-down. Final10 preserves another five-green-predecessor chain and advances
-Recovery through closed/offline proof before its `offline-reopened` instrument stop; signed
-implementation/evidence repair `3fbfcd5…` has no successor browser result, and the synchronized
-signed clean docs-only descendant is the fresh campaign source. No hosted, HUMAN,
+Recovery through closed/offline proof before its `offline-reopened` instrument stop. At that
+historical Final10 boundary, signed implementation/evidence repair `3fbfcd5…` had no successor
+browser result, and the synchronized
+signed clean docs-only descendant supplied immutable Final11; the next signed clean contract-repair
+source must run a fresh chain. No hosted, HUMAN,
 whole-Gate, release, version, preview/publication or deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost

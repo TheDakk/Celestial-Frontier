@@ -10,6 +10,57 @@ summary of it.
 
 ## Contents
 
+### Signed `1ca6715…` Final11 campaign — full observation green, then Recovery temporal-oracle stop
+
+Signed clean docs source `1ca67156e27d6bd58a324e33b0e6b752adf568bc` remained unchanged through
+Final11. Layout passed 787/787 in 76,403 ms; SceneMemory passed 42/42 in 10,096 ms; Compendium
+passed 78/78 in 45,982 ms; Slice passed with zero findings and ten PNGs in 416,073 ms; and Glass
+passed all 12 viewports with zero findings or instrument failures in 86,808 ms. Every predecessor
+ran once and passed its named verifier.
+
+Recovery `20260828-phase4-final11-1ca67156e27d-recovery` ran once for 1,291,034 ms. It passed
+through `boundary-crossed`, including all 15 observation outcomes, 309 samples, Node/browser/active
+elapsed times of 1,200,308/1,200,305/1,200,305 ms, the exact next-cycle proof and recovered UI.
+The `recovered` domain assessment then failed only `activePlayProjection` and `closeCheckpoint`;
+cleanup passed and no retry occurred. Recovered raw/rendered/runtime active play was
+1,285,118/1,285,098/1,285,404 ms, a valid 20 ms render lag under the existing 10-second runtime
+law. Exhausted raw/state/UI was 79,709/84,738/84,740 ms and closed raw/state was 85,062/85,062 ms
+with a 2 ms checkpoint. The old oracle compared close against the stale exhausted raw capture and
+reported 5,353 ms instead of binding close to the latest exhausted live runtime, whose gap is only
+322 ms. Final11 therefore exposes an instrument temporal-oracle defect, not a product failure. It
+is immutable and was not retried; it is not a Recovery certificate.
+
+The next repair is contract-only: permit bounded UI render lag relative to durable raw under the
+existing 10-second runtime law; bind close to the latest exhausted live runtime and the exact
+committed/lost hide witness; and mutation-test both directions. It changes no product, save,
+deterministic content, numeric ruler, browser authority, point-version policy, or release identity.
+A fresh complete chain on a newly signed clean repair source is required.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_112951723.json.gz`: 4,783 compressed bytes,
+  SHA-256 `aaa5b9a071d4ca905c4dfd924f56edda8a7ed589fdc65dc82902ad1ca3d85d6d`; 106,062 decompressed
+  bytes, SHA-256 `700f483c78b5fde4baeace9f4a6ad17fea50c0f92d151d488b1788de484afeae`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_113018245.json.gz`: 24,084 compressed bytes,
+  SHA-256 `0555f55055d2958626823bcae92b6f7c32c04185760d2dc8d2b1c2193e55185a`; 305,731 decompressed
+  bytes, SHA-256 `e7523ad4c6d0d8405997a848f18700c730c590330d797d152f79e52d36cde709`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_113116959.json.gz`: 541,274 compressed bytes,
+  SHA-256 `d78a6fee001583293645de26817be1e0a2241233f377ac558046a379396c9274`; 8,542,263 decompressed
+  bytes, SHA-256 `bc47a2d768080cd9d04257d300dcb4d009035d6611792d10f020d0beb179d5c8`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_113825782.json.gz`: 1,919 compressed bytes,
+  SHA-256 `af4cda59371aa37b73147ba72cf32556f9a9bb0abc67b0055c2f63d202797b26`; 6,169 decompressed
+  bytes, SHA-256 `f374604be62f1f4866c870a4bc3dc9e6b11ad4dcc5944bd515c71c4fae75e31f`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_113825782.log.gz`: 2,913 compressed bytes,
+  SHA-256 `149391caeeb494d45a1c21f35f28479415eac8f5c58660388f866d87b791c8a8`; 5,905 decompressed
+  bytes, SHA-256 `e0b82ad7cd4d7e443b1fb618694923710f31154d3fdaf48e42d2efa479b447de`.
+- `PHASE4_GLASS_CURRENT_INPUT_PASS_20260828_114015380.json.gz`: 74,636 compressed bytes,
+  SHA-256 `15a088d8f053fd99c3566372a7d13226587434ee1709c7ca491d929d18423571`; 845,186 decompressed
+  bytes, SHA-256 `ab83ca765e58b06f3bc559ccf076b299e2d805049777af61112755d55f01fedc`.
+- `ARC4_RECOVERY_CURRENT_INPUT_FAILURE_20260828_120206393.json.gz`: 299,902 compressed bytes,
+  SHA-256 `cb44985eb4894e34d518f521df8506c7b4aec452afcc8a2351f52eb5dd9b698a`; 3,807,719
+  decompressed bytes, SHA-256 `fa035d12a50a55b7e51ebca9de565c59b0f02d5941d1a19ccd4d5f65ae8febcb`.
+
+All seven Final11 carriers pass gzip integrity and exact decompression checks. Edge
+`151.0.4129.107` / CDP `1.3` is provenance only and never a baseline or rebaseline key.
+
 ### Signed `4405fb2…` Final10 campaign — five green predecessors, then Recovery offline-reopened status-oracle stop
 
 Signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` (tree

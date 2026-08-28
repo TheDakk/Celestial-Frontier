@@ -1,5 +1,13 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **2026-08-28 Final11 temporal-oracle law:** compare causally adjacent live evidence, not merely
+> like-named captures. Durable raw may legitimately lead rendered/UI projection within the existing
+> 10-second runtime law. Closure binds to the latest exhausted live runtime and exact committed/lost
+> hide witness. Negative-control both an excessive lag and a false red caused by selecting older raw.
+> Final11 proved the 20-minute observation, exact next cycle and recovered UI; its two-check red is
+> instrument-only and grants no Recovery certificate. Repair is contract-only and requires a fresh
+> signed clean chain.
+
 **STATUS:** current as of 2026-08-28. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
@@ -133,9 +141,11 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
 `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
-The synchronized signed clean docs-only descendant is the fresh campaign source; browser
-certification remains pending. These controls do not claim a successor browser run, Recovery PASS,
-HUMAN/Gate closure or release authority.
+The synchronized signed clean docs-only descendant supplied immutable Final11. Final11 completed
+the uninterrupted observation, exact next cycle and recovered UI, then exposed two temporal-oracle
+defects in the final assessor. The next signed clean contract-repair source remains uncertified until
+it completes a fresh full chain. None of this grants a Recovery certificate, HUMAN/Gate closure or
+release authority.
 
 ⚠⚠ **CONTRAST IS THE COMPOSITED READING SURFACE; A CLOSE OWNER NEEDS EXCLUSIVE HEADER
 GEOMETRY** (2026-08-27). A canonical rarity color can be correct and still become unreadable when

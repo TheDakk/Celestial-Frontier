@@ -1,5 +1,14 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+> **Current Final11 boundary (2026-08-28):** signed clean source `1ca67156e27d6bd58a324e33b0e6b752adf568bc`
+> passed all five responsive predecessors and Recovery's complete 20-minute observation, exact next
+> cycle and recovered UI. Only two stale timing-oracle checks failed: valid 20 ms render lag and a
+> 5,353 ms stale-raw comparison instead of the causal 322 ms latest-live gap. This is instrument-only,
+> not product failure or a Recovery certificate. Final11 is immutable/no-retry. Repair is contract-
+> only under the existing 10-second law, binds exact hide evidence, mutation-tests both directions
+> and requires a fresh signed clean full chain. Final10 current wording below is historical where
+> superseded.
+
 **The rule (plan §20 Gate A): the port is BUG-FOR-BUG parity until a deviation is
 approved here.** Every entry below is a place the original does something imperfect
 that the port can do better — found while porting, each verified against the source
@@ -10,7 +19,7 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — Final10 stop; signed repair and signed docs descendant (2026-08-28)
+## Historical Final10 boundary — superseded by Final11 above (2026-08-28)
 
 Signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` supplied Final10 Layout
 787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with all six review PNGs,
@@ -32,7 +41,7 @@ durable-parity, Recovery product-layout, 20-minute recovery or recovered-state c
 immutable exact-source evidence and was not retried; Final9 and earlier chronology remain preserved
 in `audits/README.md` and the historical ledger below.
 
-The local successor retains the exact shared Slice/Recovery disabled-suppression receipt and its
+The signed Final10 successor retained the exact shared Slice/Recovery disabled-suppression receipt and its
 full-heartbeat quiescence, synchronized raw → state → UI baseline, reveal/settlement, trusted native
 dispatch, state protection and replayable cleanup. It repairs the later Pertar surface gate with
 three phase-specific predicates: `ready-visible`, active `exhausted-visible` using exact
@@ -77,15 +86,16 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
 `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
-This documentation changes source identity; its signed clean docs-only descendant is the fresh
-campaign source. No successor browser certificate exists. That descendant must restart Layout →
+Those documentation bytes changed source identity; their signed clean docs-only descendant supplied
+Final11, whose temporal-oracle stop is described above. Final11 is not a Recovery certificate. The
+next signed repair source must restart Layout →
 SceneMemory → Compendium → Slice → Glass → recovery
 with fresh IDs and every named verifier.
 The v2 draft remains exactly 55 bullets. Live memory producer records follow the changed source/build
 bytes, while numeric rulers, historical samples, browser capability authorities, retry policy and
-production version/release identity remain unchanged. No product verdict, Recovery PASS, 20-minute recovery claim,
-publication, hosted, release, deployment, version bump or external authority exists. Edge
-`151.0.4129.107` / CDP `1.3` is Final10 provenance only; compatible point updates never trigger a
+production version/release identity remain unchanged. No Recovery PASS/certificate, publication,
+hosted, release, deployment, version bump or external authority exists. Edge
+`151.0.4129.107` / CDP `1.3` is Final11 provenance only; compatible point updates never trigger a
 rebaseline, recalibration or threshold move.
 
 Historical calibration remains intact:
@@ -219,8 +229,8 @@ signed implementation/evidence repair `3fbfcd5…` is recorded in the live bound
   `eba266bd5d771a214eb89a80c7e5c8e8f1bb26ed48272e7a3eccc4688768fca5`; collector, measurement,
   numeric ceilings and historical samples are unchanged. Signed Final8 passed Compendium 78/78 and
   later full Glass with zero findings for this exact source; Final9 and Final10 repeated both green
-  outcomes on their own signed sources. The synchronized signed clean docs-only descendant is the
-  fresh campaign source and requires a full-chain restart.
+  outcomes on their own signed sources. The synchronized signed clean docs-only descendant supplied
+  immutable Final11; the next signed clean contract-repair source requires a full-chain restart.
 
 - ★ **D-SETTINGS-NATIVE-AUDIO-ORACLE — independent reveal, trusted receipt and honest failure
   class.** Final7's four small-phone Settings findings came from sampling Sound and Creature voices
@@ -345,8 +355,8 @@ signed implementation/evidence repair `3fbfcd5…` is recorded in the live bound
   miss/refusal, stale/reload/replay, route/counterpart loss, replacement and disposal are silent.
   Other expressions, distant ecology, ambience/music/combat, assets, device plateau and HUMAN
   listening remain open.
-- ◐ **D-ARC4-RECOVERY-CERT — Final10 instrument stop preserved; repair signed, docs descendant and real
-  duration open.** Signed `4405fb2…` supplied named-green Layout, SceneMemory, Compendium, Slice and
+- ◐ **D-ARC4-RECOVERY-CERT — Final10/Final11 instrument stops preserved; final-assessor repair open.**
+  Signed `4405fb2…` supplied named-green Layout, SceneMemory, Compendium, Slice and
   Glass predecessors, then its one-attempt Recovery passed fixture, 16-attempt burn-down,
   suppression, close/checkpoint and closed/offline proof before stopping `instrument-fail` at
   `offline-reopened`. The truthful read-only `unavailable` surface was rejected by an active-only
@@ -359,8 +369,9 @@ signed implementation/evidence repair `3fbfcd5…` is recorded in the live bound
   must be terminal-green and pass named verification; full Glass must consume that ID and its exact
   report must pass named verification with the same Slice ID; only then may Recovery consume both
   exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
-  nonzero/red/instrument result and do not start a successor or retry automatically. The
-  uninterrupted real 20-minute certificate has not run.
+  nonzero/red/instrument result and do not start a successor or retry automatically. Final11
+  completed the uninterrupted real 20-minute observation and recovered UI; the Recovery
+  certificate remains open because the final assessor was red.
 - ★ **D-COMPENDIUM-CALIBRATION — version-tolerant signed `7362a0e…` renewal passed; repaired-source chain restart and visual judgment remain open.** Measurement
   `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
   `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` bind clean committed
@@ -437,8 +448,9 @@ signed implementation/evidence repair `3fbfcd5…` is recorded in the live bound
   (report `4cc6fe02…`, 14 burn steps, `recoveryClaimed:false`); Glass passed 12 viewports/36 outcomes with
   every planned control and no omissions in 71,713 ms (report `03a14ce5…`). Both bind exact-input
   tree `b83ccef5…`. Guide was 24 partial/17 unavailable, the draft had 54 bullets, and Training
-  remains six lessons plus graduation with no Capture lesson. The uninterrupted 20-minute recovery
-  observation and HUMAN review remain open; no Charter bioscan, targeted preview, hosted or release
+  remains six lessons plus graduation with no Capture lesson. Final11 passed the uninterrupted
+  20-minute observation and recovered UI; the repaired final-assessor certificate and HUMAN review
+  remain open. No Charter bioscan, targeted preview, hosted or release
   authority is implied.
 - ◐ **D-ARC5-OWNERSHIP-V2 — compact authority implemented; infrastructure-only.** V2 binds capture
   receipts, deterministic fauna-only children, ordered parents, dispositions and tombstones. Its
@@ -2569,8 +2581,9 @@ duplicates).
   creature, reroll or double spend.
   **Superseded current state (2026-08-25):** the native Survey controls now implement that finite
   writer and the 2026-08-25 exact-input Slice/Glass pair proves the named hit/miss, refusal, stale,
-  publication, Close/reopen and reload outcomes. The uninterrupted real 20-minute recovery
-  observation and HUMAN first-journey/ownership review remain open.
+  publication, Close/reopen and reload outcomes. At that historical input, the uninterrupted real
+  20-minute recovery observation and HUMAN first-journey/ownership review remained open; Final11
+  later completed the observation while its corrected assessor-bound certificate remains open.
 - ◐ **D-RECEIPT — historical broad proposal; implemented action owners now use revisioned
   exact-once persistence while later writers remain open (2026-08-13).** Roll and commit a save-lifetime RNG ordinal plus immutable receipt at
   dispatch/encounter settlement, not at reveal/claim. A dedicated persisted visible-and-answerable
