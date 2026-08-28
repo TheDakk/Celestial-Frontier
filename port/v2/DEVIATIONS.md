@@ -10,27 +10,40 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — signed Final6 Slice instrument stop, causal repair, signed-successor restart (2026-08-27)
+## Current-state boundary — signed Final7 Glass terminal stop, bounded repair, full restart (2026-08-28)
 
-Signed clean source `ea845d77d9783599c269f708462eb650e2c3e245` supplied Final6 Layout
-787/787, source-bound SceneMemory 42/42 and source-bound Compendium 78/78. Slice then ran once for
-420,570 ms and stopped with five findings in five scopes. Its first/root finding was instrumental:
-the exact thermal Inventory row was a valid 164px button whose raw centre lay below the panel
-scrollport. The old collector skipped its click, then judged four absent modal/Equip/Close/reload
-descendants. Those are unexercised cascades, not independent product verdicts. Final6 was not
-retried; Glass and recovery did not start.
+Signed clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` supplied Final7 Layout
+787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 and Slice with zero findings
+and ten screenshots. Glass then ran once for 75,032 ms across all 12 viewports and stopped
+terminal-red with 25 findings, zero report-classified instrument failures and zero retries: 11 clipped-without-scroll,
+seven outside-viewport, four Settings audio-control, two hostile-row geometry and one short-
+landscape Compendium workspace finding. Recovery correctly did not run. Final7 and its exact
+predecessor bindings remain immutable historical evidence; they cannot be resumed or rewritten.
 
-The browser-free repair performs native reveal and render settlement, proves exact scrollport
-containment and centre-hit ownership, binds trusted row/action/detail-Close/panel-Close receipts,
-proves detail Close leaves the registered Inventory visible/open/expanded, binds exact receipt
-keys/bytes/semantics and their F4 RNG authority across reload, and makes every dependent judgment
-and mutation control require its complete green causal prefix.
-The immutable receipt seed, row, action, both Close owners, reload opener and Atlas each fail-fast
-before their descendants. Red action state proves quiescence and cleanup before terminating later
-mutable arcs. No product source, numeric ruler, browser authority or retry policy changed. Final6
-cannot resume; a newly signed clean successor must restart at Layout. No post-repair Slice, Glass,
-recovery, publication, hosted, release, deployment, version-bump or external authority exists.
-Edge `151.0.4129.107` / CDP `1.3` remains provenance only.
+The product repair is narrow: only `<=360px` Inventory rows stack their complete copy and wrapping
+badges into one min-width-safe column, retaining every field/action and the 44px button; only the
+Compendium list-mode heading stops clearing the already-reserved sticky-Close row, retaining the
+58px gutter and bounded virtual scroller. The hostile-row oracle now requires the exact logical row
+both mounted and fully contained, so an overscan-only mount cannot satisfy geometry.
+
+The Settings oracle independently reveals and activates Sound and Creature voices. It re-queries
+current panel/control/Close nodes for two settled samples; binds control/panel/bounds/Close geometry,
+panel/document scroll, containment, overlap and centre ownership; separates requested from actually
+dispatched input; and proves preparation → dispatch-time target → trusted touch/mouse receipt →
+exact post-state/focus. Phase and outer restoration run in `finally`. Malformed, unsettled,
+transport or restoration evidence is instrument failure; stable wrong geometry/ownership/state/
+focus is product failure. Stable missing Close is product-red, while incoherent absence or node
+replacement is instrument-red. Coverage is credited only after four activations and restored-off
+settlement, with product-blocked viewports tracked as a disjoint terminal state.
+
+The two existing player-visible draft release bullets now include the narrow Inventory and
+Compendium repairs; the v2 draft remains exactly 55 bullets and no production version/release
+identity changed. Browser-free controls pass, but the repaired worktree is not browser-certified
+and has no post-repair full Glass PASS. Live producer/budget test records are rebound to the changed
+product/release bytes without changing numeric rulers, samples, browser authority or retry policy.
+A newly signed clean successor must restart Layout → SceneMemory → Compendium → Slice → Glass →
+recovery. No post-repair chain, publication, hosted, release, deployment, version-bump or external
+authority exists. Edge `151.0.4129.107` / CDP `1.3` remains Final7 provenance only.
 
 Historical calibration remains intact:
 `bb5dc7c7f4372f712778af67ace2b5f81b71b99d`
@@ -103,7 +116,9 @@ and had to restart from Layout. Signed `041d1cf…` later supplied the Final4 Sl
 stopped on the preserved instrument evidence. Its repair became signed `39e4f20…`; Final5 passed
 Layout and SceneMemory before the preserved Compendium instrument stop. Its repair became signed
 Final6 source `ea845d7…`, which passed Layout, SceneMemory and Compendium before the preserved
-Inventory causal instrument stop. The current repair requires a newly signed successor restart.
+Inventory causal instrument stop. Signed repair `53d030b…` then passed Final7 Layout, SceneMemory,
+Compendium and Slice before Glass stopped terminal-red with 25 findings / zero report-classified instrument failures;
+Recovery did not run. The post-Final7 repair requires a newly signed successor restart.
 
 - ★ **D-COMPENDIUM-COLD-MEMBERSHIP — exact identity replaces a cardinality heuristic.** Final5
   mounted eight distinct fixture keys after a pre-arm cache containing eight distinct Planetside
@@ -129,6 +144,47 @@ Inventory causal instrument stop. The current repair requires a newly signed suc
   state terminates before the next mutable arc. This changes only Slice evidence semantics and
   negative controls—not Inventory product behavior, carrier bytes, actions, RNG, rulers, retries or
   browser version policy. Final6 remains an immutable one-attempt instrument stop.
+
+- ★ **D-INVENTORY-NARROW-REFLOW — preserve complete rows inside the smallest phone scrollport.**
+  Final7 Glass found two exact A++/Mono Inventory rows whose two-column copy/badge layout grew taller
+  than the small-phone panel. At `<=360px` only, the row becomes one `minmax(0, 1fr)` column; list,
+  row, copy and badges are min-width-safe, copy may wrap anywhere and badges wrap from the left.
+  Every authored field, badge and action remains present, and the row remains a 44px button. The two
+  existing v2 draft release bullets were expanded to tell this and the Compendium repair without
+  adding a 56th bullet. The product CSS has bounded structural/browser-free diagnostic coverage but
+  no post-repair full Glass certificate.
+
+- ★ **D-COMPENDIUM-LIST-WORKSPACE — one reserved Close row, one bounded virtual scroller.**
+  Final7 Glass showed the generic `.panel h3 { clear: both }` spending an extra header row beneath
+  the floated Close even though every panel already reserves a 58px right gutter. Only the direct
+  list-mode Compendium heading now uses `clear: none`; outer overflow remains hidden, the existing
+  inner scroller remains authoritative and Search/Survey/dock short-landscape ownership is
+  unchanged. The hostile-row evidence path no longer accepts virtualization overscan as reachability:
+  the exact logical id/index must be mounted **and fully contained**, the bounded loop recentres a
+  mounted off-card row, and final geometry is one combined acceptance. Mount-only, unmounted,
+  missing-reveal and bad-geometry controls remain red. Live Compendium producer is rebound to
+  `e858722e6da4c20d0f618aeed23ea9e037feb09cac0887feaf27c6f5430b601f` under budget-file SHA-256
+  `726881b8ffec84621a950fa481ca9bc54a0adf4092625976683a40fd6c42ea74`; collector, measurement,
+  numeric ceilings and historical samples are unchanged. No repaired-source Compendium or Glass
+  browser certificate exists.
+
+- ★ **D-SETTINGS-NATIVE-AUDIO-ORACLE — independent reveal, trusted receipt and honest failure
+  class.** Final7's four small-phone Settings findings came from sampling Sound and Creature voices
+  at one panel offset, so whichever control was naturally off-card appeared product-broken. The
+  repaired Glass path snapshots original panel/document scroll, independently reveals each control,
+  and re-queries current panel/control/Close node tokens for two settled samples covering semantics,
+  rectangles, bounds, both scroll owners, containment, hit owner and Close overlap. Native input
+  records structured dispatch-time target evidence and separates `dispatchRequested` from
+  `inputDispatched`; the target must own its rect centre and an actual dispatch must bind the same
+  coordinates/pointer type to a trusted receipt. Preparation→target drift is a product reachability
+  failure; malformed target/receipt/transport evidence is instrument failure. Exact state/focus is
+  judged after the receipt, and per-phase plus outer restoration runs unconditionally in `finally`.
+  A stable absent Close is product-red; incoherent absence or node replacement is instrument-red.
+  Baseline, completed and product-blocked viewport sets are exact and disjoint, and completion is
+  earned only after four native toggles plus restored-off settlement. Paired touch/mouse, missing-
+  Close, coordinate, settlement, restoration, state/focus and coverage mutants seal both classes.
+  The selftest is browser-free evidence only; Final7 remains red and no post-repair full Glass PASS
+  is claimed.
 
 - ★ **D-PORT-TOOLCHAIN — the master plan's generic quality roles use the repository's executable
   equivalents.** The supplied immutable plan names Playwright, Zod/JSON Schema, ESLint and Prettier.
@@ -165,7 +221,7 @@ Inventory causal instrument stop. The current repair requires a newly signed suc
   retain the historical eager default unless they explicitly select the production lifecycle.
 
 - ◐ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — shell cleanup, clean calibration and activation are
-  complete; signed Final6 42/42 is preserved and signed-successor recertification is pending.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
+  complete; signed Final7 42/42 is preserved and signed-successor recertification is pending.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
   40/42 with exact node/listener and heap breaches, one attempt, zero retries and complete cleanup.
   The evaluator now names field/value/ceiling and retains valid zero-valued heap components. Dirty
   diagnostic `20260827165427809-91398-352d7132df` proves the repaired 676/673 nodes and 71/70
@@ -176,8 +232,11 @@ Inventory causal instrument stop. The current repair requires a newly signed suc
   red retains its node/listener failures. Signed `4a54c0d…` owns the green activation; signed
   `7362a0e…` passed standalone and serial SceneMemory 42/42, signed `39e4f20…` later passed
   Final5 SceneMemory 42/42, and signed `ea845d7…` passed Final6 SceneMemory 42/42 before the later
-  Slice instrument stop. The changed Slice evidence repair requires a fresh signed successor from
-  Layout. Exact Edge point version remains provenance: a compatible
+  Slice instrument stop. Signed `53d030b…` then passed Final7 SceneMemory 42/42 before green
+  Compendium/Slice and the Glass terminal stop. The post-Final7 product/release bytes rebind live
+  buildDist `9db56745f9c32c446646daff084a9e285bd6183bbca85d522f7be6dfd30cb3a6` under Scene budget-file
+  SHA-256 `7fcb7757547d7b05243a224771b66776f58ed41b3ed39438327ea3c9942e168e`; no numeric ceiling or
+  sample changed, and a fresh signed successor is required from Layout. Exact Edge point version remains provenance: a compatible
   update alone never starts calibration, repins authority or moves a threshold.
 
 - ★ **D-GATE-B-62 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 62 domain

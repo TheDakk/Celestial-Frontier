@@ -1441,21 +1441,164 @@ function releasedTameAudioDiagnosticsOutcome(audio) {
     : { ok: true, why: null };
 }
 
+const SETTINGS_BOX_KEYS = Object.freeze(['left', 'top', 'right', 'bottom', 'width', 'height']);
+
+function settingsFiniteBox(box) {
+  return !!box && SETTINGS_BOX_KEYS.every((key) => Number.isFinite(box[key]));
+}
+
+function settingsBoxesMatch(left, right, epsilon = 0.25) {
+  return settingsFiniteBox(left) && settingsFiniteBox(right)
+    && SETTINGS_BOX_KEYS.every((key) => Math.abs(left[key] - right[key]) <= epsilon);
+}
+
+function settingsNullableBoxesMatch(left, right, epsilon = 0.25) {
+  return left == null && right == null ? true : settingsBoxesMatch(left, right, epsilon);
+}
+
+function settingsCoordinatesMatch(left, right, keys, epsilon = 0.25) {
+  return !!left && !!right && keys.every((key) => Number.isFinite(left[key])
+    && Number.isFinite(right[key]) && Math.abs(left[key] - right[key]) <= epsilon);
+}
+
+function settingsRectContained(rect, bounds) {
+  return settingsFiniteBox(rect) && settingsFiniteBox(bounds)
+    && rect.left >= bounds.left - 1 && rect.top >= bounds.top - 1
+    && rect.right <= bounds.right + 1 && rect.bottom <= bounds.bottom + 1;
+}
+
+function settingsRectsOverlap(left, right) {
+  return settingsFiniteBox(left) && settingsFiniteBox(right)
+    && left.left < right.right && left.right > right.left
+    && left.top < right.bottom && left.bottom > right.top;
+}
+
+function settingsRectCenter(rect) {
+  return settingsFiniteBox(rect)
+    ? { x: (rect.left + rect.right) / 2, y: (rect.top + rect.bottom) / 2 }
+    : null;
+}
+
+function settingsControlSettlementOutcome(control) {
+  const first = control?.first;
+  const second = control?.second;
+  if (first?.exists === false && second?.exists === false) {
+    const checks = {
+      samples: first?.observed === true && second?.observed === true,
+      identity: first?.id === second?.id,
+      panelPresence: first?.panelExists === second?.panelExists,
+      nodes: first?.panelNodeToken === second?.panelNodeToken
+        && first?.controlNodeToken === second?.controlNodeToken
+        && first?.closeNodeToken === second?.closeNodeToken,
+      panelRect: settingsNullableBoxesMatch(first?.panelRect, second?.panelRect),
+      panelScroll: settingsCoordinatesMatch(first?.panelScroll, second?.panelScroll, ['left', 'top']),
+      documentScroll: settingsCoordinatesMatch(first?.documentScroll, second?.documentScroll, ['left', 'top']),
+    };
+    return { ok: Object.values(checks).every(Boolean), checks, first, second };
+  }
+  const firstContained = settingsRectContained(first?.rect, first?.bounds);
+  const secondContained = settingsRectContained(second?.rect, second?.bounds);
+  const checks = {
+    samples: first?.exists === true && second?.exists === true,
+    identity: typeof first?.id === 'string' && first.id === second?.id,
+    nodes: Number.isInteger(first?.panelNodeToken) && Number.isInteger(first?.controlNodeToken)
+      && first?.panelNodeToken === second?.panelNodeToken
+      && first?.controlNodeToken === second?.controlNodeToken
+      && first?.closeNodeToken === second?.closeNodeToken,
+    semantics: first?.visible === second?.visible && first?.tag === second?.tag
+      && first?.role === second?.role && first?.label === second?.label
+      && first?.pressed === second?.pressed && first?.text === second?.text
+      && first?.on === second?.on,
+    rect: settingsBoxesMatch(first?.rect, second?.rect),
+    panelRect: settingsBoxesMatch(first?.panelRect, second?.panelRect),
+    bounds: settingsBoxesMatch(first?.bounds, second?.bounds),
+    closeRect: settingsNullableBoxesMatch(first?.closeRect, second?.closeRect),
+    panelScroll: settingsCoordinatesMatch(first?.panelScroll, second?.panelScroll, ['left', 'top']),
+    documentScroll: settingsCoordinatesMatch(first?.documentScroll, second?.documentScroll, ['left', 'top']),
+    containment: firstContained === secondContained,
+    hitOwner: first?.hitOwner === second?.hitOwner && first?.hitButtonId === second?.hitButtonId,
+    closeOverlap: settingsRectsOverlap(first?.rect, first?.closeRect)
+      === settingsRectsOverlap(second?.rect, second?.closeRect),
+  };
+  return { ok: Object.values(checks).every(Boolean), checks, first, second };
+}
+
+function settingsPreparedControlCanDispatch(control, expectedId) {
+  const settlement = settingsControlSettlementOutcome(control);
+  const sample = control?.second;
+  return settlement.ok && sample?.id === expectedId && sample?.visible === true
+    && settingsFiniteBox(sample?.rect) && sample.rect.width >= 44 && sample.rect.height >= 44
+    && settingsRectContained(sample.rect, sample?.bounds)
+    && sample?.hitButtonId === expectedId
+    && Number.isInteger(sample?.closeNodeToken) && settingsFiniteBox(sample?.closeRect)
+    && !settingsRectsOverlap(sample.rect, sample.closeRect);
+}
+
+function settingsScrollRestorationOutcome(expected, actual) {
+  const checks = {
+    panel: settingsCoordinatesMatch(expected, actual, ['left', 'top']),
+    document: settingsCoordinatesMatch(expected, actual, ['docLeft', 'docTop']),
+  };
+  return { ok: Object.values(checks).every(Boolean), checks, expected, actual };
+}
+
+function settingsControlProductOutcome(control, id, label, on) {
+  const sample = control?.second;
+  const rect = sample?.rect;
+  const checks = {
+    exists: sample?.exists === true && sample?.id === id,
+    visible: sample?.visible === true,
+    semantics: sample?.tag === 'BUTTON' && (sample?.role === null || sample?.role === 'button')
+      && sample?.label === label && sample?.pressed === String(on)
+      && sample?.text === (on ? 'On' : 'Off') && sample?.on === on,
+    targetSize: settingsFiniteBox(rect) && rect.width >= 44 && rect.height >= 44,
+    contained: settingsRectContained(rect, sample?.bounds),
+    centreOwned: sample?.hitButtonId === id,
+    closePresent: Number.isInteger(sample?.closeNodeToken) && settingsFiniteBox(sample?.closeRect),
+    closeClear: !settingsRectsOverlap(rect, sample?.closeRect),
+  };
+  return { ok: Object.values(checks).every(Boolean), checks, sample };
+}
+
 function settingsAudioToggleOutcome(evidence, expected) {
-  const controlOk = (control, label, on) => !!control
-    && control.exists === true && control.visible === true
-    && control.tag === 'BUTTON' && (control.role === null || control.role === 'button')
-    && control.label === label && control.pressed === String(on)
-    && control.text === (on ? 'On' : 'Off') && control.on === on
-    && Number.isFinite(control.width) && control.width >= 44
-    && Number.isFinite(control.height) && control.height >= 44
-    && control.hit === true && control.overlapsClose === false;
+  const soundSettlement = settingsControlSettlementOutcome(evidence?.sound);
+  const voiceSettlement = settingsControlSettlementOutcome(evidence?.voice);
+  const soundRestoration = settingsScrollRestorationOutcome(
+    evidence?.sound?.prior, evidence?.sound?.restoredScroll,
+  );
+  const voiceRestoration = settingsScrollRestorationOutcome(
+    evidence?.voice?.prior, evidence?.voice?.restoredScroll,
+  );
+  const outerExpected = evidence?.outerRestoration?.expected;
+  const outerActual = evidence?.outerRestoration?.actual;
+  const outerRestoration = settingsScrollRestorationOutcome(outerExpected, outerActual);
+  const betweenExpected = evidence?.betweenRestoration?.expected;
+  const betweenActual = evidence?.betweenRestoration?.actual;
+  const betweenRestoration = settingsScrollRestorationOutcome(betweenExpected, betweenActual);
+  const evidenceChecks = {
+    collection: evidence && evidence.collectionError === null,
+    sound: evidence?.sound?.error === null && evidence?.sound?.restorationError === null
+      && settingsScrollRestorationOutcome(evidence?.original, evidence?.sound?.prior).ok
+      && soundSettlement.ok && soundRestoration.ok,
+    betweenRestoration: evidence?.betweenRestoration?.error === null
+      && settingsScrollRestorationOutcome(evidence?.original, betweenExpected).ok
+      && betweenRestoration.ok,
+    voice: evidence?.voice?.error === null && evidence?.voice?.restorationError === null
+      && settingsScrollRestorationOutcome(evidence?.original, evidence?.voice?.prior).ok
+      && voiceSettlement.ok && voiceRestoration.ok,
+    outerRestoration: evidence?.outerRestoration?.error === null
+      && settingsScrollRestorationOutcome(evidence?.original, outerExpected).ok
+      && outerRestoration.ok,
+  };
+  const instrumentOk = Object.values(evidenceChecks).every(Boolean);
+  const soundProduct = settingsControlProductOutcome(evidence?.sound, 'setsnd', 'Sound', expected.soundOn);
+  const voiceProduct = settingsControlProductOutcome(
+    evidence?.voice, 'setvoice', 'Creature voices', expected.voiceOn,
+  );
   const audio = evidence?.audio;
   const runtime = audio?.runtime;
   const settingsState = evidence?.state?.sndOn === expected.soundOn
     && evidence?.state?.voiceOn === expected.voiceOn;
-  const soundControl = controlOk(evidence?.sound, 'Sound', expected.soundOn);
-  const voiceControl = controlOk(evidence?.voice, 'Creature voices', expected.voiceOn);
   const focus = evidence?.focus === expected.focus;
   const noReplay = audio?.schema === 'cf-v2-tame-greeting-audio/v1'
     && audio.disposed === false && audio.armed === 0 && audio.claimedEvents === 0
@@ -1471,22 +1614,265 @@ function settingsAudioToggleOutcome(evidence, expected) {
     && runtime?.creatureEmitters?.active === 0
     && runtime?.reservations?.voices?.active === 0
     && runtime?.reservations?.nodes?.active === 0;
-  const checks = { settingsState, soundControl, voiceControl, focus, noReplay };
-  const uiOk = settingsState && soundControl && voiceControl && focus;
+  const checks = { settingsState, soundControl: soundProduct.ok, voiceControl: voiceProduct.ok, focus, noReplay };
+  const uiOk = settingsState && soundProduct.ok && voiceProduct.ok && focus;
   const audioOk = settingsState && noReplay;
-  return { ok: uiOk && audioOk, uiOk, audioOk, checks, expected, evidence };
+  return {
+    ok: instrumentOk && uiOk && audioOk,
+    instrumentOk,
+    evidenceOk: instrumentOk,
+    evidenceChecks,
+    evidenceDetails: {
+      soundSettlement,
+      voiceSettlement,
+      soundRestoration,
+      betweenRestoration,
+      voiceRestoration,
+      outerRestoration,
+    },
+    uiOk,
+    audioOk,
+    checks,
+    productDetails: { sound: soundProduct, voice: voiceProduct },
+    expected,
+    evidence,
+  };
+}
+
+function settingsNativeActivationOutcome(evidence, expected) {
+  const prepared = evidence?.prepared;
+  const activation = evidence?.activation;
+  const receipt = activation?.receipt;
+  const restoration = evidence?.restoration;
+  const settlement = settingsControlSettlementOutcome(prepared);
+  const sample = prepared?.second;
+  const centre = settingsRectCenter(sample?.rect);
+  const target = activation?.target;
+  const targetRect = Array.isArray(target?.rect) && target.rect.length === 4
+    ? { left: target.rect[0], top: target.rect[1], right: target.rect[2], bottom: target.rect[3],
+      width: target.rect[2] - target.rect[0], height: target.rect[3] - target.rect[1] }
+    : null;
+  const targetCentre = settingsRectCenter(targetRect);
+  const restorationBinding = settingsScrollRestorationOutcome(evidence?.prior, restoration?.expected);
+  const restorationResult = settingsScrollRestorationOutcome(restoration?.expected, restoration?.actual);
+  const dispatchRequested = evidence?.dispatchRequested === true;
+  const inputDispatched = activation?.inputDispatched === true;
+  const preparedGeometry = {
+    identity: sample?.id === expected.id,
+    visible: sample?.visible === true,
+    targetSize: settingsFiniteBox(sample?.rect) && sample.rect.width >= 44 && sample.rect.height >= 44,
+    contained: settingsRectContained(sample?.rect, sample?.bounds),
+    centreOwned: sample?.hitButtonId === expected.id,
+    closePresent: Number.isInteger(sample?.closeNodeToken) && settingsFiniteBox(sample?.closeRect),
+    closeClear: !settingsRectsOverlap(sample?.rect, sample?.closeRect),
+  };
+  const preparedProductOk = Object.values(preparedGeometry).every(Boolean);
+  const within = (left, right) => Number.isFinite(left) && Number.isFinite(right)
+    && Math.abs(left - right) <= 1;
+  const coordinateEvidence = !inputDispatched || (!!targetCentre
+    && within(targetCentre.x, target?.x) && within(targetCentre.y, target?.y)
+    && within(target?.x, receipt?.x) && within(target?.y, receipt?.y));
+  const requestedTargetEvidence = !dispatchRequested || (!!target && typeof target === 'object'
+    && Object.hasOwn(activation, 'inputDispatched')
+    && typeof activation.inputDispatched === 'boolean'
+    && Object.hasOwn(target, 'id') && Object.hasOwn(target, 'rect')
+    && Object.hasOwn(target, 'x') && Object.hasOwn(target, 'y')
+    && Object.hasOwn(target, 'visible') && Object.hasOwn(target, 'opacity')
+    && Object.hasOwn(target, 'hit') && Object.hasOwn(target, 'hitButtonId'));
+  const targetCoordinateEvidence = !dispatchRequested || (settingsFiniteBox(targetRect)
+    ? !!targetCentre && within(targetCentre.x, target?.x) && within(targetCentre.y, target?.y)
+    : target?.rect === null && target?.x === null && target?.y === null);
+  const evidenceChecks = {
+    preparationTransport: evidence?.priorError === null && evidence?.preparedError === null,
+    settlement: settlement.ok,
+    dispatchDecision: dispatchRequested === preparedProductOk,
+    dispatchTransport: evidence?.activationError === null
+      && (dispatchRequested ? !!activation && typeof activation === 'object' : activation === null),
+    requestedTargetEvidence,
+    targetCoordinateEvidence,
+    dispatchReceiptCoherence: inputDispatched ? (receipt && receipt.trusted === true
+      && receipt.pointerType === expected.pointerType) : receipt == null,
+    dispatchCoordinateEvidence: coordinateEvidence,
+    dispatchFlagCoherence: !inputDispatched || dispatchRequested,
+    trustedReceipt: !inputDispatched || (receipt && receipt.trusted === true
+      && receipt.pointerType === expected.pointerType),
+    cleanup: evidence?.cleanupError === null,
+    restorationTransport: evidence?.restorationError === null,
+    restorationBinding: restorationBinding.ok,
+    restoration: restorationResult.ok,
+  };
+  const instrumentOk = Object.values(evidenceChecks).every(Boolean);
+  const productChecks = {
+    prepared: preparedProductOk,
+    dispatchRequested,
+    activationTarget: target?.id === expected.id && target?.hitButtonId === expected.id
+      && target?.visible === true && Number.isFinite(target?.opacity) && target.opacity > 0
+      && settingsFiniteBox(targetRect) && targetRect.width >= 44 && targetRect.height >= 44,
+    preparedTargetRect: settingsBoxesMatch(sample?.rect, targetRect),
+    preparedTargetCoordinates: !!centre && !!targetCentre
+      && within(centre.x, target?.x) && within(centre.y, target?.y)
+      && within(targetCentre.x, target?.x) && within(targetCentre.y, target?.y),
+    inputDispatched,
+    receiptTarget: receipt?.buttonId === expected.id,
+  };
+  const productOk = Object.values(productChecks).every(Boolean);
+  return {
+    ok: instrumentOk && productOk,
+    instrumentOk,
+    evidenceOk: instrumentOk,
+    productOk,
+    evidenceChecks,
+    productChecks,
+    details: { settlement, restorationBinding, restorationResult, preparedGeometry, centre, targetCentre },
+    expected,
+    evidence,
+  };
+}
+
+function hostileCompendiumRevealReady(evidence) {
+  return evidence?.ready === true && evidence?.targetMounted === true && evidence?.contained === true;
+}
+
+function hostileCompendiumGeometryOutcome(geometry, reveal) {
+  return {
+    ...geometry,
+    reveal,
+    ok: geometry?.ok === true && hostileCompendiumRevealReady(reveal),
+  };
+}
+
+function hostileCompendiumRevealSelftest() {
+  const failures = [];
+  if (!hostileCompendiumRevealReady({ ready: true, targetMounted: true, contained: true })) {
+    failures.push('contained mounted Compendium row was not reveal-ready');
+  }
+  for (const [label, evidence] of [
+    ['mount-only overscan', { ready: true, targetMounted: true, contained: false }],
+    ['unmounted containment', { ready: true, targetMounted: false, contained: true }],
+    ['incoherent ready state', { ready: false, targetMounted: false, contained: true }],
+    ['missing evidence', null],
+  ]) {
+    if (hostileCompendiumRevealReady(evidence)) failures.push(`${label} Compendium row was reveal-ready`);
+  }
+  const accepted = hostileCompendiumGeometryOutcome(
+    { ok: true, logicalId: 'expected-row' },
+    { ready: true, targetMounted: true, contained: true },
+  );
+  if (!accepted.ok || accepted.logicalId !== 'expected-row' || accepted.reveal?.contained !== true) {
+    failures.push('contained Compendium geometry was not accepted with its reveal evidence intact');
+  }
+  for (const [label, geometry, reveal] of [
+    ['mount-only fallback', { ok: true }, { ready: true, targetMounted: true, contained: false }],
+    ['unmounted containment fallback', { ok: true }, { ready: false, targetMounted: false, contained: true }],
+    ['bad geometry', { ok: false }, { ready: true, targetMounted: true, contained: true }],
+    ['missing reveal', { ok: true }, null],
+  ]) {
+    if (hostileCompendiumGeometryOutcome(geometry, reveal).ok) {
+      failures.push(`${label} Compendium geometry was accepted`);
+    }
+  }
+  return failures;
+}
+
+function settingsPostActivationStateOutcome(observed, expected) {
+  const checks = {
+    sound: observed?.sndOn === expected.soundOn,
+    voice: observed?.voiceOn === expected.voiceOn,
+    focus: observed?.focus === expected.focus,
+  };
+  return { ok: Object.values(checks).every(Boolean), checks, observed, expected };
+}
+
+function settingsAudioViewportCoverageOutcome(expectedLabels, baselineLabels, completedLabels, productBlockedLabels) {
+  const expected = new Set(expectedLabels);
+  const baseline = new Set(baselineLabels);
+  const completed = new Set(completedLabels);
+  const productBlocked = new Set(productBlockedLabels);
+  const unexpected = [...baseline, ...completed, ...productBlocked]
+    .filter((label) => !expected.has(label));
+  const overlap = [...completed].filter((label) => productBlocked.has(label));
+  const accounted = new Set([...completed, ...productBlocked]);
+  const checks = {
+    uniqueExpected: expected.size === expectedLabels.length,
+    noUnexpected: unexpected.length === 0,
+    disjointTerminalState: overlap.length === 0,
+    terminalRequiresBaseline: [...accounted].every((label) => baseline.has(label)),
+    allExpectedAccounted: expected.size === accounted.size
+      && [...expected].every((label) => accounted.has(label)),
+  };
+  const instrumentOk = Object.values(checks).every(Boolean);
+  const productOk = instrumentOk && productBlocked.size === 0
+    && completed.size === expected.size && [...expected].every((label) => completed.has(label));
+  return {
+    ok: instrumentOk && productOk,
+    instrumentOk,
+    productOk,
+    checks,
+    expected: [...expected],
+    baseline: [...baseline],
+    completed: [...completed],
+    productBlocked: [...productBlocked],
+    unexpected,
+    overlap,
+  };
 }
 
 function settingsAudioEvidenceSelftest() {
   const failures = [];
+  const offsets = () => ({ left: 0, top: 195, docLeft: 0, docTop: 0 });
+  const panelRect = () => ({ left: 20, top: 20, right: 300, bottom: 500, width: 280, height: 480 });
+  const bounds = () => ({ left: 20, top: 20, right: 300, bottom: 500, width: 280, height: 480 });
+  const closeRect = () => ({ left: 244, top: 30, right: 288, bottom: 74, width: 44, height: 44 });
+  const sample = (id, label, on, top) => ({
+    observed: true,
+    exists: true,
+    id,
+    panelNodeToken: 1,
+    controlNodeToken: id === 'setsnd' ? 2 : 3,
+    closeNodeToken: 4,
+    visible: true,
+    tag: 'BUTTON',
+    role: null,
+    label,
+    pressed: String(on),
+    text: on ? 'On' : 'Off',
+    on,
+    rect: { left: 80, top, right: 124, bottom: top + 44, width: 44, height: 44 },
+    bounds: bounds(),
+    panelRect: panelRect(),
+    closeRect: closeRect(),
+    panelScroll: { left: 0, top: 195 },
+    documentScroll: { left: 0, top: 0 },
+    hitOwner: `#${id}`,
+    hitButtonId: id,
+  });
+  const control = (id, label, on, top) => {
+    const first = sample(id, label, on, top);
+    const second = structuredClone(first);
+    const prior = offsets();
+    return {
+      ...second,
+      first,
+      second,
+      prior,
+      restoredScroll: structuredClone(prior),
+      error: null,
+      restorationError: null,
+    };
+  };
+  const restoration = () => {
+    const expected = offsets();
+    return { ok: true, expected, actual: structuredClone(expected), error: null };
+  };
   const fixture = (soundOn, voiceOn, focus = 'setvoice') => ({
-    state: { sndOn: soundOn, voiceOn }, focus,
-    sound: { exists: true, visible: true, tag: 'BUTTON', role: null, label: 'Sound',
-      pressed: String(soundOn), text: soundOn ? 'On' : 'Off', on: soundOn,
-      width: 44, height: 44, hit: true, overlapsClose: false },
-    voice: { exists: true, visible: true, tag: 'BUTTON', role: null, label: 'Creature voices',
-      pressed: String(voiceOn), text: voiceOn ? 'On' : 'Off', on: voiceOn,
-      width: 44, height: 44, hit: true, overlapsClose: false },
+    state: { sndOn: soundOn, voiceOn },
+    focus,
+    sound: control('setsnd', 'Sound', soundOn, 120),
+    voice: control('setvoice', 'Creature voices', voiceOn, 200),
+    original: offsets(),
+    betweenRestoration: restoration(),
+    outerRestoration: restoration(),
+    collectionError: null,
     audio: {
       schema: 'cf-v2-tame-greeting-audio/v1', disposed: false, armed: 0,
       claimedEvents: 0, activeVoiceId: null, lastEventKey: null,
@@ -1507,18 +1893,34 @@ function settingsAudioEvidenceSelftest() {
     if (!result.ok) failures.push(`valid ${soundOn}/${voiceOn} Settings audio fixture was rejected`);
   }
   const expected = { soundOn: true, voiceOn: true, focus: 'setvoice' };
-  const mutations = [
-    ['voice tag', (row) => { row.voice.tag = 'DIV'; }],
-    ['voice role', (row) => { row.voice.role = 'switch'; }],
-    ['voice label', (row) => { row.voice.label = 'Voices'; }],
-    ['voice pressed', (row) => { row.voice.pressed = 'false'; }],
-    ['voice text', (row) => { row.voice.text = 'Off'; }],
-    ['voice class', (row) => { row.voice.on = false; }],
-    ['voice visibility', (row) => { row.voice.visible = false; }],
-    ['voice width', (row) => { row.voice.width = 43; }],
-    ['voice height', (row) => { row.voice.height = 43; }],
-    ['voice hit', (row) => { row.voice.hit = false; }],
-    ['voice close overlap', (row) => { row.voice.overlapsClose = true; }],
+  const mutateVoiceSamples = (row, mutate) => {
+    mutate(row.voice.first);
+    mutate(row.voice.second);
+    Object.assign(row.voice, row.voice.second);
+  };
+  const productMutations = [
+    ['voice tag', (row) => mutateVoiceSamples(row, (value) => { value.tag = 'DIV'; })],
+    ['voice role', (row) => mutateVoiceSamples(row, (value) => { value.role = 'switch'; })],
+    ['voice label', (row) => mutateVoiceSamples(row, (value) => { value.label = 'Voices'; })],
+    ['voice pressed', (row) => mutateVoiceSamples(row, (value) => { value.pressed = 'false'; })],
+    ['voice text', (row) => mutateVoiceSamples(row, (value) => { value.text = 'Off'; })],
+    ['voice class', (row) => mutateVoiceSamples(row, (value) => { value.on = false; })],
+    ['voice visibility', (row) => mutateVoiceSamples(row, (value) => { value.visible = false; })],
+    ['voice width', (row) => mutateVoiceSamples(row, (value) => {
+      value.rect.right -= 1; value.rect.width = 43;
+    })],
+    ['voice containment', (row) => mutateVoiceSamples(row, (value) => {
+      value.rect.top = 501; value.rect.bottom = 545;
+    })],
+    ['voice centre owner', (row) => mutateVoiceSamples(row, (value) => {
+      value.hitOwner = '#dock'; value.hitButtonId = null;
+    })],
+    ['voice close overlap', (row) => mutateVoiceSamples(row, (value) => {
+      value.rect = structuredClone(value.closeRect);
+    })],
+    ['voice missing Close', (row) => mutateVoiceSamples(row, (value) => {
+      value.closeNodeToken = null; value.closeRect = null;
+    })],
     ['focus', (row) => { row.focus = 'setsnd'; }],
     ['sound state', (row) => { row.state.sndOn = false; }],
     ['voice state', (row) => { row.state.voiceOn = false; }],
@@ -1541,41 +1943,304 @@ function settingsAudioEvidenceSelftest() {
     ['voice reservation', (row) => { row.audio.runtime.reservations.voices.active = 1; }],
     ['node reservation', (row) => { row.audio.runtime.reservations.nodes.active = 1; }],
   ];
-  for (const [label, mutate] of mutations) {
+  for (const [label, mutate] of productMutations) {
     const row = structuredClone(fixture(true, true));
     mutate(row);
-    if (settingsAudioToggleOutcome(row, expected).ok) {
+    const outcome = settingsAudioToggleOutcome(row, expected);
+    if (outcome.ok || !outcome.instrumentOk) {
       failures.push(`${label} Settings audio mutation stayed green`);
     }
+  }
+  const evidenceMutations = [
+    ['voice first/second rect drift', (row) => { row.voice.first.rect.top -= 1; }],
+    ['voice panel drift', (row) => { row.voice.first.panelRect.left -= 1; }],
+    ['voice Close drift', (row) => { row.voice.first.closeRect.top -= 1; }],
+    ['voice hit-owner drift', (row) => { row.voice.first.hitOwner = '#dock'; }],
+    ['voice control replacement', (row) => { row.voice.first.controlNodeToken = 99; }],
+    ['voice panel replacement', (row) => { row.voice.first.panelNodeToken = 99; }],
+    ['voice Close replacement', (row) => { row.voice.first.closeNodeToken = 99; }],
+    ['voice missing-to-mounted transition', (row) => {
+      row.voice.first = {
+        observed: true,
+        exists: false,
+        id: 'setvoice',
+        panelExists: true,
+        panelNodeToken: 1,
+        controlNodeToken: null,
+        closeNodeToken: 4,
+        panelRect: panelRect(),
+        panelScroll: { left: 0, top: 195 },
+        documentScroll: { left: 0, top: 0 },
+      };
+    }],
+    ['voice document-scroll drift', (row) => { row.voice.first.documentScroll.top = 1; }],
+    ['voice restoration', (row) => { row.voice.restoredScroll.top += 1; }],
+    ['sound self-authorized restoration', (row) => {
+      row.sound.prior.top = 0; row.sound.restoredScroll.top = 0;
+    }],
+    ['voice self-authorized restoration', (row) => {
+      row.voice.prior.top = 0; row.voice.restoredScroll.top = 0;
+    }],
+    ['between restoration authority', (row) => { row.betweenRestoration.expected.top += 1; }],
+    ['outer restoration actual', (row) => { row.outerRestoration.actual.docTop += 1; }],
+    ['collection error', (row) => { row.collectionError = 'injected'; }],
+  ];
+  for (const [label, mutate] of evidenceMutations) {
+    const row = structuredClone(fixture(true, true));
+    mutate(row);
+    const outcome = settingsAudioToggleOutcome(row, expected);
+    if (outcome.instrumentOk || outcome.ok) failures.push(`${label} Settings evidence mutation stayed green`);
+  }
+  const activationFixture = (pointerType = 'touch') => {
+    const prepared = control('setvoice', 'Creature voices', true, 200);
+    const rect = prepared.second.rect;
+    const x = (rect.left + rect.right) / 2;
+    const y = (rect.top + rect.bottom) / 2;
+    const prior = offsets();
+    return {
+      prior,
+      prepared,
+      activation: {
+        ok: true,
+        inputDispatched: true,
+        target: {
+          id: 'setvoice', x, y, rect: [rect.left, rect.top, rect.right, rect.bottom],
+          visible: true, opacity: 1, hit: 'setvoice', hitButtonId: 'setvoice',
+        },
+        receipt: { buttonId: 'setvoice', trusted: true, pointerType, x, y },
+      },
+      restoration: { expected: structuredClone(prior), actual: structuredClone(prior) },
+      dispatchRequested: true,
+      priorError: null,
+      preparedError: null,
+      activationError: null,
+      cleanupError: null,
+      restorationError: null,
+    };
+  };
+  for (const pointerType of ['touch', 'mouse']) {
+    const result = settingsNativeActivationOutcome(
+      activationFixture(pointerType), { id: 'setvoice', pointerType },
+    );
+    if (!result.ok) failures.push(`valid ${pointerType} Settings native activation fixture was rejected`);
+  }
+  const activationInstrumentMutations = [
+    ['prepared first/second drift', (row) => { row.prepared.first.rect.top -= 1; }],
+    ['prepared panel drift', (row) => { row.prepared.first.panelRect.left -= 1; }],
+    ['prepared Close drift', (row) => { row.prepared.first.closeRect.top -= 1; }],
+    ['prepared hit-owner drift', (row) => { row.prepared.first.hitOwner = '#dock'; }],
+    ['prepared control replacement', (row) => { row.prepared.first.controlNodeToken = 99; }],
+    ['prepared panel replacement', (row) => { row.prepared.first.panelNodeToken = 99; }],
+    ['prepared Close replacement', (row) => { row.prepared.first.closeNodeToken = 99; }],
+    ['prepared missing-to-mounted transition', (row) => {
+      row.prepared.first = {
+        observed: true,
+        exists: false,
+        id: 'setvoice',
+        panelExists: true,
+        panelNodeToken: 1,
+        controlNodeToken: null,
+        closeNodeToken: 4,
+        panelRect: panelRect(),
+        panelScroll: { left: 0, top: 195 },
+        documentScroll: { left: 0, top: 0 },
+      };
+    }],
+    ['prepared document-scroll drift', (row) => { row.prepared.first.documentScroll.top += 1; }],
+    ['activation target coordinates', (row) => { row.activation.target.x += 2; }],
+    ['activation target rect coordinates', (row) => { row.activation.target.rect[0] += 4; }],
+    ['receipt coordinates', (row) => { row.activation.receipt.x += 2; }],
+    ['receipt trust', (row) => { row.activation.receipt.trusted = false; }],
+    ['pointer type', (row) => { row.activation.receipt.pointerType = 'mouse'; }],
+    ['missing receipt', (row) => { row.activation.receipt = null; }],
+    ['missing refusal target evidence', (row) => {
+      row.activation.inputDispatched = false; row.activation.target = null; row.activation.receipt = null;
+    }],
+    ['refusal target coordinate drift', (row) => {
+      row.activation.inputDispatched = false; row.activation.receipt = null; row.activation.target.x += 2;
+    }],
+    ['restoration expected binding', (row) => { row.restoration.expected.top += 1; }],
+    ['restoration actual', (row) => { row.restoration.actual.docTop += 1; }],
+    ['activation transport', (row) => { row.activationError = 'injected'; }],
+    ['cleanup transport', (row) => { row.cleanupError = 'injected'; }],
+  ];
+  for (const [label, mutate] of activationInstrumentMutations) {
+    const row = activationFixture('touch');
+    mutate(row);
+    const outcome = settingsNativeActivationOutcome(row, { id: 'setvoice', pointerType: 'touch' });
+    if (outcome.instrumentOk || outcome.ok) failures.push(`${label} Settings activation evidence mutation stayed green`);
+  }
+  const applyPreparedDispatchDecision = (row) => {
+    row.dispatchRequested = settingsPreparedControlCanDispatch(row.prepared, 'setvoice');
+    if (!row.dispatchRequested) row.activation = null;
+  };
+  const activationProductMutations = [
+    ['prepared identity', (row) => {
+      row.prepared.first.id = 'setsnd'; row.prepared.second.id = 'setsnd';
+      applyPreparedDispatchDecision(row);
+    }],
+    ['prepared centre owner', (row) => {
+      for (const value of [row.prepared.first, row.prepared.second]) {
+        value.hitOwner = '#setsnd'; value.hitButtonId = 'setsnd';
+      }
+      applyPreparedDispatchDecision(row);
+    }],
+    ['prepared invisible', (row) => {
+      row.prepared.first.visible = false; row.prepared.second.visible = false;
+      applyPreparedDispatchDecision(row);
+    }],
+    ['prepared missing Close', (row) => {
+      for (const value of [row.prepared.first, row.prepared.second]) {
+        value.closeNodeToken = null; value.closeRect = null;
+      }
+      applyPreparedDispatchDecision(row);
+    }],
+    ['activation target', (row) => { row.activation.target.id = 'setsnd'; }],
+    ['activation same-centre resize', (row) => {
+      row.activation.target.rect = [60, 180, 144, 264];
+    }],
+    ['dispatch-time target refusal', (row) => {
+      row.activation.ok = false;
+      row.activation.inputDispatched = false;
+      row.activation.target.hit = 'dock';
+      row.activation.target.hitButtonId = null;
+      row.activation.receipt = null;
+    }],
+    ['receipt target', (row) => { row.activation.receipt.buttonId = 'setsnd'; }],
+  ];
+  for (const [label, mutate] of activationProductMutations) {
+    const row = activationFixture('touch');
+    mutate(row);
+    const outcome = settingsNativeActivationOutcome(row, { id: 'setvoice', pointerType: 'touch' });
+    if (!outcome.instrumentOk || outcome.productOk || outcome.ok) {
+      failures.push(`${label} Settings activation product mutation was misclassified`);
+    }
+  }
+  for (const [label, mutate] of [
+    ['unsafe invisible dispatch', (row) => {
+      row.prepared.first.visible = false; row.prepared.second.visible = false;
+    }],
+    ['unsafe wrong-owner dispatch', (row) => {
+      for (const value of [row.prepared.first, row.prepared.second]) {
+        value.hitOwner = '#setsnd'; value.hitButtonId = 'setsnd';
+      }
+    }],
+  ]) {
+    const row = activationFixture('touch');
+    mutate(row);
+    const outcome = settingsNativeActivationOutcome(row, { id: 'setvoice', pointerType: 'touch' });
+    if (outcome.instrumentOk || outcome.ok) {
+      failures.push(`${label} Settings dispatch-decision mutation stayed instrument-green`);
+    }
+  }
+  const postExpected = { soundOn: true, voiceOn: false, focus: 'setsnd' };
+  const postObserved = { sndOn: true, voiceOn: false, focus: 'setsnd' };
+  if (!settingsPostActivationStateOutcome(postObserved, postExpected).ok) {
+    failures.push('valid Settings post-activation state was rejected');
+  }
+  for (const [label, mutate] of [
+    ['post sound state', (row) => { row.sndOn = false; }],
+    ['post voice state', (row) => { row.voiceOn = true; }],
+    ['post focus', (row) => { row.focus = 'setvoice'; }],
+  ]) {
+    const row = { ...postObserved };
+    mutate(row);
+    if (settingsPostActivationStateOutcome(row, postExpected).ok) {
+      failures.push(`${label} Settings mutation stayed green`);
+    }
+  }
+  const expectedViewports = ['phone', 'desktop'];
+  const completeCoverage = settingsAudioViewportCoverageOutcome(
+    expectedViewports, expectedViewports, expectedViewports, [],
+  );
+  const productBlockedCoverage = settingsAudioViewportCoverageOutcome(
+    expectedViewports, expectedViewports, ['phone'], ['desktop'],
+  );
+  if (!completeCoverage.ok || !completeCoverage.instrumentOk || !completeCoverage.productOk) {
+    failures.push('complete Settings viewport coverage was rejected');
+  }
+  if (!productBlockedCoverage.instrumentOk || productBlockedCoverage.productOk || productBlockedCoverage.ok) {
+    failures.push('product-blocked Settings viewport coverage was misclassified');
+  }
+  for (const [label, coverage] of [
+    ['premature baseline credit', settingsAudioViewportCoverageOutcome(
+      expectedViewports, expectedViewports, ['phone'], [],
+    )],
+    ['overlapping terminal credit', settingsAudioViewportCoverageOutcome(
+      expectedViewports, expectedViewports, expectedViewports, ['desktop'],
+    )],
+    ['unknown viewport credit', settingsAudioViewportCoverageOutcome(
+      expectedViewports, [...expectedViewports, 'tablet'], expectedViewports, [],
+    )],
+  ]) {
+    if (coverage.instrumentOk) failures.push(`${label} stayed instrument-green`);
   }
   return failures;
 }
 
-const SETTINGS_AUDIO_EVIDENCE_EXPRESSION = `(()=>{
-  const state=window.__CF_SLICE__?.api?.state?.();
-  const panel=document.getElementById('setpanel'),close=panel?.querySelector(':scope > [data-pnx="set"]')??null;
-  const closeRect=close?.getBoundingClientRect?.()??null;
-  const owner=(node)=>node?(node.id?'#'+node.id:(node.getAttribute?.('data-pnx')?'[data-pnx="'+node.getAttribute('data-pnx')+'"]':node.tagName||null)):null;
-  const control=(id)=>{
-    const element=document.getElementById(id),rect=element?.getBoundingClientRect();
-    const style=element?getComputedStyle(element):null;
-    const x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0;
-    const point=rect?document.elementFromPoint(x,y):null;
-    const overlapsClose=!!rect&&!!closeRect&&rect.left<closeRect.right&&rect.right>closeRect.left
-      &&rect.top<closeRect.bottom&&rect.bottom>closeRect.top;
-    return {exists:!!element,visible:!!element&&style?.display!=='none'
-        &&style?.visibility!=='hidden'&&Number(style?.opacity)>0
-        &&rect.width>0&&rect.height>0,
-      tag:element?.tagName||null,role:element?.getAttribute('role')??null,
-      label:element?.getAttribute('aria-label')??null,
-      pressed:element?.getAttribute('aria-pressed')??null,
-      text:(element?.textContent||'').trim(),on:element?.classList.contains('on')===true,
-      width:rect?.width??0,height:rect?.height??0,
-      rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null,center:rect?[x,y]:null,
-      hitOwner:owner(point),hit:!!element&&!!point&&(point===element||element.contains(point)),overlapsClose};
+const SETTINGS_AUDIO_EVIDENCE_EXPRESSION = `(async()=>{
+  const wait=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0))),
+    owner=(node)=>node?(node.id?'#'+node.id:(node.getAttribute?.('data-pnx')?'[data-pnx="'+node.getAttribute('data-pnx')+'"]':node.tagName||null)):null,
+    box=(rect)=>rect?{left:rect.left,top:rect.top,right:rect.right,bottom:rect.bottom,
+      width:rect.width,height:rect.height}:null,
+    tokens=new WeakMap();let nextToken=1;
+  const token=(node)=>{if(!(node instanceof Element))return null;
+      if(!tokens.has(node))tokens.set(node,nextToken++);return tokens.get(node);},
+    offsets=()=>{const panel=document.getElementById('setpanel');return {
+      left:panel?.scrollLeft??0,top:panel?.scrollTop??0,docLeft:scrollX,docTop:scrollY};},
+    sameOffsets=(left,right)=>!!left&&!!right&&['left','top','docLeft','docTop']
+      .every(key=>Number.isFinite(left[key])&&Number.isFinite(right[key])&&Math.abs(left[key]-right[key])<=.25),
+    restore=async(expected)=>{let error=null;
+      try{const panel=document.getElementById('setpanel');
+        if(panel instanceof HTMLElement){panel.scrollLeft=expected.left;panel.scrollTop=expected.top;}
+        scrollTo(expected.docLeft,expected.docTop);await wait();await wait();}
+      catch(cause){error=String(cause?.message||cause);}
+      const actual=offsets();return {ok:error===null&&sameOffsets(expected,actual),expected,actual,error};};
+  const original=offsets();
+  const control=async(id)=>{
+    const prior={...original};
+    const capture=()=>{
+      const panel=document.getElementById('setpanel'),element=document.getElementById(id),
+        close=panel?.querySelector(':scope > [data-pnx="set"]')??null,
+        nodeEvidence={panelNodeToken:token(panel),controlNodeToken:token(element),closeNodeToken:token(close)};
+      if(!(panel instanceof HTMLElement)||!(element instanceof HTMLElement))return {
+        observed:true,exists:false,id,panelExists:panel instanceof HTMLElement,...nodeEvidence,
+        panelRect:panel instanceof HTMLElement?box(panel.getBoundingClientRect()):null,
+        panelScroll:{left:panel?.scrollLeft??0,top:panel?.scrollTop??0},
+        documentScroll:{left:scrollX,top:scrollY}};
+      const rect=element.getBoundingClientRect(),panelRect=panel.getBoundingClientRect(),
+        closeRect=close?.getBoundingClientRect?.()??null,style=getComputedStyle(element),
+        boundsRect={left:Math.max(0,panelRect.left),top:Math.max(0,panelRect.top),
+          right:Math.min(innerWidth,panelRect.right),bottom:Math.min(innerHeight,panelRect.bottom)},
+        bounds={...boundsRect,width:boundsRect.right-boundsRect.left,height:boundsRect.bottom-boundsRect.top},
+        x=(rect.left+rect.right)/2,y=(rect.top+rect.bottom)/2,point=document.elementFromPoint(x,y);
+      return {observed:true,exists:true,id:element.id,...nodeEvidence,
+        visible:style.display!=='none'&&style.visibility!=='hidden'&&Number(style.opacity)>0&&rect.width>0&&rect.height>0,
+        tag:element.tagName,role:element.getAttribute('role')??null,
+        label:element.getAttribute('aria-label')??null,pressed:element.getAttribute('aria-pressed')??null,
+        text:(element.textContent||'').trim(),on:element.classList.contains('on'),
+        rect:box(rect),bounds,panelRect:box(panelRect),closeRect:box(closeRect),
+        panelScroll:{left:panel.scrollLeft,top:panel.scrollTop},documentScroll:{left:scrollX,top:scrollY},
+        hitOwner:owner(point),hitButtonId:point?.closest?.('button')?.id??null};
+    };
+    let first=null,second=null,error=null,restoration=null;
+    try{document.getElementById(id)?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+      await wait();await wait();first=capture();await wait();second=capture();}
+    catch(cause){error=String(cause?.message||cause);}
+    finally{restoration=await restore(prior);}
+    return {...(second||first||{}),first,second,prior,restoredScroll:restoration.actual,
+      error,restorationError:restoration.error};
   };
-  return {state:{sndOn:state?.sndOn,voiceOn:state?.voiceOn},
-    focus:document.activeElement?.id||null,sound:control('setsnd'),voice:control('setvoice'),
+  let sound=null,voice=null,betweenRestoration=null,collectionError=null,outerRestoration=null;
+  try{sound=await control('setsnd');betweenRestoration=await restore(original);
+    if(!betweenRestoration.ok)throw new Error('Sound sampling did not restore the phase authority before Voice sampling');
+    voice=await control('setvoice');}
+  catch(cause){collectionError=String(cause?.message||cause);}
+  finally{outerRestoration=await restore(original);}
+  const state=window.__CF_SLICE__?.api?.state?.(),panel=document.getElementById('setpanel'),
+    close=panel?.querySelector(':scope > [data-pnx="set"]')??null,closeRect=close?.getBoundingClientRect?.()??null;
+  return {state:{sndOn:state?.sndOn,voiceOn:state?.voiceOn},focus:document.activeElement?.id||null,
+    sound,voice,original,betweenRestoration,outerRestoration,collectionError,
     panel:{scrollLeft:panel?.scrollLeft??null,scrollTop:panel?.scrollTop??null,
       closeRect:closeRect?[closeRect.left,closeRect.top,closeRect.right,closeRect.bottom]:null},
     audio:state?.audio??null};
@@ -4134,6 +4799,10 @@ async function reportSelftest() {
   if (settingsAudioFailures.length) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: Settings audio controls failed (${settingsAudioFailures.join('; ')})`);
   }
+  const hostileRevealFailures = hostileCompendiumRevealSelftest();
+  if (hostileRevealFailures.length) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: Compendium reveal controls failed (${hostileRevealFailures.join('; ')})`);
+  }
   const inlineStyleRestoration = {
     absent: sameInlineStyleAttribute(null, null),
     empty: sameInlineStyleAttribute('', ''),
@@ -5974,6 +6643,9 @@ async function main() {
   for (const failure of settingsAudioEvidenceSelftest()) {
     instrumentFailures.push(`SETTINGS AUDIO SELFTEST ${failure}`);
   }
+  for (const failure of hostileCompendiumRevealSelftest()) {
+    instrumentFailures.push(`COMPENDIUM REVEAL SELFTEST ${failure}`);
+  }
   recordControls(
     'replacement-document-loader-token-phase', 'import-phase-sequence',
     'replacement-ticker-quiescence', 'replacement-boot-phase-sequence',
@@ -5994,7 +6666,9 @@ async function main() {
     releaseDetailControlRun = false, releaseTailControlRun = false, phoneDockControlRun = false,
     shipyardControlRun = false, inventoryControlRun = false, arc4CaptureControlRun = false,
     orbitalSurveyControlRun = false, orbitalContainmentControlRun = false;
-  const settingsAudioEvidenceViewports = new Set();
+  const settingsAudioBaselineViewports = new Set();
+  const settingsAudioCompletedViewports = new Set();
+  const settingsAudioProductBlockedViewports = new Set();
   const add = (viewport, surface, rows) => {
     for (const row of rows || []) findings.push({ context: { viewport, surface }, row });
   };
@@ -6266,12 +6940,16 @@ async function main() {
               window.__cfGlassShipyardReceipt={buttonId:node?.closest('button')?.id||null,
                 pointerType:event.pointerType||null,trusted:event.isTrusted===true,x:event.clientX,y:event.clientY};
               window.__cfGlassShipyardReceiptAbort=null;},{capture:true,once:true,signal:controller.signal});
-            return {ok:!!button&&style?.display!=='none'&&style?.visibility!=='hidden'
+            const opacity=Number(style?.opacity),visible=!!button&&style?.display!=='none'
+              &&style?.visibility!=='hidden'&&Number.isFinite(opacity)&&opacity>0;
+            return {ok:visible
               &&rect.width>=44&&rect.height>=44&&!!hit&&(hit===button||button.contains(hit)),
               id:button?.id||null,x,y,rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null,
-              hit:hit?.id||hit?.tagName||null};})()`);
+              visible,opacity,hit:hit?.id||hit?.tagName||null,
+              hitButtonId:hit?.closest?.('button')?.id??null};})()`);
           if (!target.ok || !Number.isFinite(target.x) || !Number.isFinite(target.y)) {
-            return { ok: false, why: `${label} is not a visible 44px centre-owned control`, target, receipt: null };
+            return { ok: false, inputDispatched: false,
+              why: `${label} is not a visible 44px centre-owned control`, target, receipt: null };
           }
           if (vp.mobile) {
             await send('Input.dispatchTouchEvent', {
@@ -6293,8 +6971,92 @@ async function main() {
           return {
             ok: receipt?.buttonId === target.id && receipt?.trusted === true
               && receipt.pointerType === (vp.mobile ? 'touch' : 'mouse'),
-            target, receipt,
+            inputDispatched: true, target, receipt,
           };
+        };
+        const activateRealSettingsControl = async (selector, label) => {
+          const expectedId = selector.startsWith('#') ? selector.slice(1) : null;
+          let prior = null, prepared = null, activation = null, restoration = null;
+          let priorError = null, preparedError = null, activationError = null;
+          let cleanupError = null, restorationError = null, dispatchRequested = false;
+          try {
+            try {
+              prior = await evalIn(`(()=>{const panel=document.getElementById('setpanel');
+                if(!(panel instanceof HTMLElement))return null;
+                return {left:panel.scrollLeft,top:panel.scrollTop,docLeft:scrollX,docTop:scrollY};})()`);
+              if (!prior) priorError = 'Settings panel/prior scroll authority missing';
+            } catch (cause) { priorError = String(cause?.message || cause); }
+            if (prior) {
+              try {
+                prepared = await evalIn(`(async()=>{const wait=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0))),
+                  owner=(node)=>node?(node.id?'#'+node.id:(node.getAttribute?.('data-pnx')?'[data-pnx="'+node.getAttribute('data-pnx')+'"]':node.tagName||null)):null,
+                  box=(rect)=>rect?{left:rect.left,top:rect.top,right:rect.right,bottom:rect.bottom,width:rect.width,height:rect.height}:null,
+                  tokens=new WeakMap();let nextToken=1;
+                  const token=(node)=>{if(!(node instanceof Element))return null;
+                    if(!tokens.has(node))tokens.set(node,nextToken++);return tokens.get(node);},
+                  snap=()=>{const panel=document.getElementById('setpanel'),button=document.querySelector(${JSON.stringify(selector)}),
+                    close=panel?.querySelector(':scope > [data-pnx="set"]')??null,
+                    nodeEvidence={panelNodeToken:token(panel),controlNodeToken:token(button),closeNodeToken:token(close)};
+                    if(!(button instanceof HTMLButtonElement)||!(panel instanceof HTMLElement))return {
+                      observed:true,exists:false,id:${JSON.stringify(expectedId)},panelExists:panel instanceof HTMLElement,...nodeEvidence,
+                      panelRect:panel instanceof HTMLElement?box(panel.getBoundingClientRect()):null,
+                      panelScroll:{left:panel?.scrollLeft??0,top:panel?.scrollTop??0},documentScroll:{left:scrollX,top:scrollY}};
+                    const rect=button.getBoundingClientRect(),panelRect=panel.getBoundingClientRect(),
+                    closeRect=close?.getBoundingClientRect?.()??null,style=getComputedStyle(button),
+                    boundsRect={left:Math.max(0,panelRect.left),top:Math.max(0,panelRect.top),
+                      right:Math.min(innerWidth,panelRect.right),bottom:Math.min(innerHeight,panelRect.bottom)},
+                    bounds={...boundsRect,width:boundsRect.right-boundsRect.left,height:boundsRect.bottom-boundsRect.top},
+                    x=(rect.left+rect.right)/2,y=(rect.top+rect.bottom)/2,hit=document.elementFromPoint(x,y);
+                    return {observed:true,exists:true,id:button.id,...nodeEvidence,
+                      visible:style.display!=='none'&&style.visibility!=='hidden'&&Number(style.opacity)>0&&rect.width>0&&rect.height>0,
+                      rect:box(rect),panelRect:box(panelRect),bounds,closeRect:box(closeRect),
+                      panelScroll:{left:panel.scrollLeft,top:panel.scrollTop},documentScroll:{left:scrollX,top:scrollY},
+                      hitOwner:owner(hit),hitButtonId:hit?.closest?.('button')?.id??null};};
+                  document.querySelector(${JSON.stringify(selector)})?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+                  await wait();await wait();
+                  const first=snap();await wait();const second=snap();return {...second,first,second};})()`);
+              } catch (cause) { preparedError = String(cause?.message || cause); }
+              const canDispatch = settingsPreparedControlCanDispatch(prepared, expectedId);
+              if (canDispatch) {
+                dispatchRequested = true;
+                try { activation = await activateRealControl(selector, label); }
+                catch (cause) { activationError = String(cause?.message || cause); }
+              }
+            }
+          } finally {
+            try {
+              await evalIn(`(()=>{window.__cfGlassShipyardReceiptAbort?.abort();
+                delete window.__cfGlassShipyardReceiptAbort;delete window.__cfGlassShipyardReceipt;return true;})()`);
+            } catch (cause) { cleanupError = String(cause?.message || cause); }
+            if (prior) {
+              try {
+                restoration = await evalIn(`(async()=>{const panel=document.getElementById('setpanel'),
+                  expected=${JSON.stringify(prior)},wait=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0)));
+                  if(!(panel instanceof HTMLElement))return {expected,actual:null};
+                  panel.scrollLeft=expected.left;panel.scrollTop=expected.top;scrollTo(expected.docLeft,expected.docTop);
+                  await wait();await wait();return {expected,
+                    actual:{left:panel.scrollLeft,top:panel.scrollTop,docLeft:scrollX,docTop:scrollY}};})()`);
+              } catch (cause) { restorationError = String(cause?.message || cause); }
+            } else {
+              restorationError = 'Settings restoration authority missing';
+            }
+          }
+          const evidence = {
+            prior,
+            prepared,
+            activation,
+            restoration,
+            dispatchRequested,
+            priorError,
+            preparedError,
+            activationError,
+            cleanupError,
+            restorationError,
+          };
+          return settingsNativeActivationOutcome(evidence, {
+            id: expectedId,
+            pointerType: vp.mobile ? 'touch' : 'mouse',
+          });
         };
         /* Geometry/state predicates are product outcomes, while target
            starvation and browser transport loss are distinct failures. Poll
@@ -8339,23 +9101,37 @@ async function main() {
               await evalIn(`document.querySelector('#codexpanel [data-pnx]')?.focus()`);
 
               const revealHostileRow = async (target) => {
-                let state = null;
+                let state = null, mountOnlyRejected = false;
                 for (let attempt = 0; attempt < 5; attempt++) {
                   state = await evalIn(`(()=>{const scroller=document.querySelector('[data-sel="codex-scroll"]'),targetIndex=${target.index},
                     targetId=${JSON.stringify(target.id)},count=${hostileCompendiumRows.length};if(!scroller)return {ready:false,why:'scroller missing'};
-                    const mounted=[...scroller.querySelectorAll('[data-ci][data-cid]')].map(row=>({index:Number(row.dataset.ci),id:row.dataset.cid}));
-                    if(mounted.some(row=>row.index===targetIndex&&row.id===targetId))return {ready:true,mounted,scrollTop:scroller.scrollTop};
+                    const rows=[...scroller.querySelectorAll('[data-ci][data-cid]')],mounted=rows.map(row=>({index:Number(row.dataset.ci),id:row.dataset.cid})),
+                      exact=rows.find(row=>Number(row.dataset.ci)===targetIndex&&row.dataset.cid===targetId),
+                      maxScroll=Math.max(0,scroller.scrollHeight-scroller.clientHeight);
+                    if(exact){const r=exact.getBoundingClientRect(),s=scroller.getBoundingClientRect(),
+                      contained=r.left>=s.left-1&&r.right<=s.right+1&&r.top>=s.top-1&&r.bottom<=s.bottom+1;
+                      if((${hostileCompendiumRevealReady.toString()})({ready:true,targetMounted:true,contained}))return {ready:true,targetMounted:true,mounted,scrollTop:scroller.scrollTop,contained,row:[r.left,r.top,r.right,r.bottom],scroller:[s.left,s.top,s.right,s.bottom]};
+                      const next=scroller.scrollTop+(r.top+r.bottom-s.top-s.bottom)/2;
+                      scroller.scrollTop=Math.max(0,Math.min(maxScroll,next));scroller.dispatchEvent(new Event('scroll'));
+                      return {ready:false,targetMounted:true,mounted,mountedButOffscreen:true,contained:false,scrollTop:scroller.scrollTop,max:maxScroll,
+                        row:[r.left,r.top,r.right,r.bottom],scroller:[s.left,s.top,s.right,s.bottom]};}
                     const mean=Math.max(44,scroller.scrollHeight/Math.max(1,count)),max=Math.max(0,scroller.scrollHeight-scroller.clientHeight),
                       nearest=mounted.slice().sort((a,b)=>Math.abs(a.index-targetIndex)-Math.abs(b.index-targetIndex))[0],
                       next=${attempt}===0?max*targetIndex/Math.max(1,count-1):scroller.scrollTop+(targetIndex-(nearest?.index??targetIndex))*mean;
                     scroller.scrollTop=Math.max(0,Math.min(max,next));scroller.dispatchEvent(new Event('scroll'));
-                    return {ready:false,mounted,scrollTop:scroller.scrollTop,mean,max};})()`);
-                  if (state?.ready) return state;
+                    return {ready:false,targetMounted:false,mounted,scrollTop:scroller.scrollTop,mean,max};})()`);
+                  if (state?.mountedButOffscreen) mountOnlyRejected = true;
+                  if (state?.ready) return { ...state, mountOnlyRejected };
                   await evalIn('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))');
                 }
                 state = await evalIn(`(()=>{const row=[...document.querySelectorAll('#codexpanel [data-ci][data-cid]')]
-                  .find(el=>Number(el.dataset.ci)===${target.index}&&el.dataset.cid===${JSON.stringify(target.id)});
-                  return {ok:!!row,ready:!!row,mounted:[...document.querySelectorAll('#codexpanel [data-ci][data-cid]')].map(el=>({index:Number(el.dataset.ci),id:el.dataset.cid}))};})()`);
+                  .find(el=>Number(el.dataset.ci)===${target.index}&&el.dataset.cid===${JSON.stringify(target.id)}),
+                  scroller=document.querySelector('[data-sel="codex-scroll"]'),r=row?.getBoundingClientRect(),s=scroller?.getBoundingClientRect(),
+                  contained=!!r&&!!s&&r.left>=s.left-1&&r.right<=s.right+1&&r.top>=s.top-1&&r.bottom<=s.bottom+1;
+                  return {ok:!!row,ready:!!row,targetMounted:!!row,contained,row:r?[r.left,r.top,r.right,r.bottom]:null,
+                    scroller:s?[s.left,s.top,s.right,s.bottom]:null,
+                    mounted:[...document.querySelectorAll('#codexpanel [data-ci][data-cid]')].map(el=>({index:Number(el.dataset.ci),id:el.dataset.cid}))};})()`);
+                state.mountOnlyRejected = mountOnlyRejected;
                 addOutcome(vp.label, `compendium-hostile-${target.state}`, 'COMPENDIUM_HOSTILE_ROW_NOT_MOUNTED', '#codexpanel [data-ci]', state,
                   `the ${target.state} logical row mounts after bounded virtual scrolling`);
                 return state;
@@ -8383,9 +9159,10 @@ async function main() {
                     scroller:[s.left,s.top,s.right,s.bottom],clientHeight:row.clientHeight,scrollHeight:row.scrollHeight,
                     copyScrollHeight:copy?.scrollHeight??null};})()`);
                 hostileHeights.push(geometry?.rect?.[3] - geometry?.rect?.[1]);
-                addOutcome(vp.label, `compendium-hostile-${target.state}`, 'COMPENDIUM_HOSTILE_ROW_GEOMETRY', rowSelector, geometry,
+                addOutcome(vp.label, `compendium-hostile-${target.state}`, 'COMPENDIUM_HOSTILE_ROW_GEOMETRY', rowSelector,
+                  hostileCompendiumGeometryOutcome(geometry, reveal),
                   `the ${target.state} A++/Mono variable-height row is fully reachable without text or row truncation`);
-                return { rowSelector, geometry };
+                return { rowSelector, geometry, reveal };
               };
               const runShortClipControl = async (target) => {
                 const rowSelector = `#codexpanel [data-cid=${JSON.stringify(target.id)}][data-ci="${target.index}"]`;
@@ -9898,9 +10675,16 @@ async function main() {
           if (settingsWidthControl.ok) instrumentFailures.push(`${vp.label}: Settings horizontal-overflow injection stayed green (${JSON.stringify(settingsWidthControl)})`);
           recordControls('settings-horizontal-overflow');
         }
-        const recordSettingsAudioPhase = async (surface, expected) => {
+        const recordSettingsAudioPhase = async (surface, expected, activation = null) => {
           const evidence = await evalIn(SETTINGS_AUDIO_EVIDENCE_EXPRESSION);
+          evidence.activation = activation;
           const outcome = settingsAudioToggleOutcome(evidence, expected);
+          if (!outcome.instrumentOk) {
+            throw new Error(`${vp.label}/${surface}: Settings audio evidence was malformed, unsettled, or not restored (${JSON.stringify({
+              evidenceChecks: outcome.evidenceChecks,
+              evidenceDetails: outcome.evidenceDetails,
+            })})`);
+          }
           addOutcome(vp.label, surface, 'SETTINGS_CREATURE_VOICE_CONTROL', '#setsnd, #setvoice',
             { ...outcome, ok: outcome.uiOk },
             'native Sound and Creature voices buttons expose exact names, roles, pressed/text/class state, retained focus, centre hit, and 44px geometry');
@@ -9908,32 +10692,79 @@ async function main() {
             { ...outcome, ok: outcome.audioOk },
             'Settings changes alone create no context, claim, counterpart, voice, node, creature emitter, or reservation and replay nothing');
         };
+        const requireSettingsActivation = async (surface, selector, label) => {
+          const activation = await activateRealSettingsControl(selector, label);
+          if (!activation.instrumentOk) {
+            throw new Error(`${vp.label}/${surface}: ${label} activation evidence was malformed, unsettled, untrusted, or not restored (${JSON.stringify(activation)})`);
+          }
+          if (!activation.productOk) {
+            settingsAudioProductBlockedViewports.add(vp.label);
+            throw new ProductAnswerabilityFinding(
+              `${vp.label}: ${label} did not receive one settled coordinate-bound trusted activation`,
+              activation,
+              { code: 'SETTINGS_AUDIO_NATIVE_ACTIVATION', surface, element: selector,
+                expected: 'independently revealed 44px native button owns the trusted touch/mouse receipt and restores every moved scroll owner' },
+            );
+          }
+          return activation;
+        };
+        const waitForSettingsPostActivation = async (surface, label, expected, activation) => {
+          const until = Date.now() + 2000;
+          let observed = null, outcome = null;
+          while (Date.now() < until) {
+            observed = await evalIn(`(()=>{const state=window.__CF_SLICE__?.api?.state?.();return {
+              sndOn:state?.sndOn,voiceOn:state?.voiceOn,focus:document.activeElement?.id||null};})()`);
+            outcome = settingsPostActivationStateOutcome(observed, expected);
+            if (outcome.ok) return outcome;
+            await sleep(50);
+          }
+          settingsAudioProductBlockedViewports.add(vp.label);
+          throw new ProductAnswerabilityFinding(
+            `${vp.label}: trusted ${label} receipt did not produce the exact Settings state and focus within 2000ms`,
+            { activation, outcome, observed },
+            { code: 'SETTINGS_AUDIO_POST_ACTIVATION_STATE', surface, element: '#setsnd, #setvoice',
+              expected: 'a coordinate-bound trusted receipt produces the exact Sound/Creature voices state and logical focus' },
+          );
+        };
         await evalIn(`document.getElementById('setvoice')?.focus()`);
         await waitFor('Settings audio baseline', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sndOn===false&&s.voiceOn===false&&document.activeElement?.id==='setvoice'})()`);
         await recordSettingsAudioPhase('settings-audio-off', {
           soundOn: false, voiceOn: false, focus: 'setvoice',
         });
-        await evalIn(`(()=>{const b=document.getElementById('setsnd');b?.focus();b?.click();return true})()`);
-        await waitFor('Sound on with Creature voices off', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sndOn===true&&s.voiceOn===false&&document.activeElement?.id==='setsnd'})()`);
+        settingsAudioBaselineViewports.add(vp.label);
+        const soundOnActivation = await requireSettingsActivation(
+          'settings-sound-on-voices-off', '#setsnd', 'Sound on control');
+        await waitForSettingsPostActivation('settings-sound-on-voices-off', 'Sound on', {
+          soundOn: true, voiceOn: false, focus: 'setsnd',
+        }, soundOnActivation);
         await recordSettingsAudioPhase('settings-sound-on-voices-off', {
           soundOn: true, voiceOn: false, focus: 'setsnd',
-        });
-        await evalIn(`(()=>{const b=document.getElementById('setvoice');b?.focus();b?.click();return true})()`);
-        await waitFor('Creature voices on', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sndOn===true&&s.voiceOn===true&&document.activeElement?.id==='setvoice'})()`);
+        }, soundOnActivation);
+        const voiceOnActivation = await requireSettingsActivation(
+          'settings-sound-and-voices-on', '#setvoice', 'Creature voices on control');
+        await waitForSettingsPostActivation('settings-sound-and-voices-on', 'Creature voices on', {
+          soundOn: true, voiceOn: true, focus: 'setvoice',
+        }, voiceOnActivation);
         await recordSettingsAudioPhase('settings-sound-and-voices-on', {
           soundOn: true, voiceOn: true, focus: 'setvoice',
-        });
-        await evalIn(`(()=>{const b=document.getElementById('setvoice');b?.focus();b?.click();return true})()`);
-        await waitFor('Creature voices off', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sndOn===true&&s.voiceOn===false&&document.activeElement?.id==='setvoice'})()`);
+        }, voiceOnActivation);
+        const voiceOffActivation = await requireSettingsActivation(
+          'settings-voices-off-restored', '#setvoice', 'Creature voices off control');
+        await waitForSettingsPostActivation('settings-voices-off-restored', 'Creature voices off', {
+          soundOn: true, voiceOn: false, focus: 'setvoice',
+        }, voiceOffActivation);
         await recordSettingsAudioPhase('settings-voices-off-restored', {
           soundOn: true, voiceOn: false, focus: 'setvoice',
-        });
-        await evalIn(`(()=>{const b=document.getElementById('setsnd');b?.focus();b?.click();return true})()`);
-        await waitFor('Sound off restored', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sndOn===false&&s.voiceOn===false&&document.activeElement?.id==='setsnd'})()`);
+        }, voiceOffActivation);
+        const soundOffActivation = await requireSettingsActivation(
+          'settings-audio-off-restored', '#setsnd', 'Sound off control');
+        await waitForSettingsPostActivation('settings-audio-off-restored', 'Sound off', {
+          soundOn: false, voiceOn: false, focus: 'setsnd',
+        }, soundOffActivation);
         await recordSettingsAudioPhase('settings-audio-off-restored', {
           soundOn: false, voiceOn: false, focus: 'setsnd',
-        });
-        settingsAudioEvidenceViewports.add(vp.label);
+        }, soundOffActivation);
+        settingsAudioCompletedViewports.add(vp.label);
         for (const [pref, value] of [['size', 'fs-xl'], ['tone', 'tone-max'], ['font', 'font-mono']]) {
           addOutcome(vp.label, 'settings', 'SETTINGS_CHOICE_STATE', `[data-pref="${pref}"][data-value="${value}"]`,
             await evalIn(`window.__CF_GLASS_AUDIT__.choiceOutcome('#setpanel','[data-pref=${JSON.stringify(pref)}]','[data-pref=${JSON.stringify(pref)}][data-value=${JSON.stringify(value)}]',false)`),
@@ -10232,10 +11063,14 @@ async function main() {
      global sentinels; only the explicit reachable suffix in the control
      ledger may be product-blocked there. */
   const targetedProductBlocked = targetedProductRemainderBlocked(viewportLabel, targetedProductFailure);
-  if (!targetedProductBlocked && !exactJson(
-    [...settingsAudioEvidenceViewports], MATRIX_VIEWPORTS.map((viewport) => viewport.label),
-  )) {
-    instrumentFailures.push(`Settings audio evidence did not run once across every selected viewport (${JSON.stringify([...settingsAudioEvidenceViewports])})`);
+  const settingsAudioCoverage = settingsAudioViewportCoverageOutcome(
+    MATRIX_VIEWPORTS.map((viewport) => viewport.label),
+    [...settingsAudioBaselineViewports],
+    [...settingsAudioCompletedViewports],
+    [...settingsAudioProductBlockedViewports],
+  );
+  if (!targetedProductBlocked && !settingsAudioCoverage.instrumentOk) {
+    instrumentFailures.push(`Settings audio causal coverage was incomplete or incoherent (${JSON.stringify(settingsAudioCoverage)})`);
   }
   if (!controlsRun && !targetedProductBlocked) instrumentFailures.push('injected matrix controls never ran');
   if (!hpControlRun && !targetedProductBlocked) instrumentFailures.push('HP dual-background contrast control never ran');

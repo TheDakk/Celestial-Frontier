@@ -29,31 +29,31 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-27; Final6 stopped fail-closed at Slice):** signed clean source
-`ea845d77d9783599c269f708462eb650e2c3e245` passed Layout 787/787, source-bound SceneMemory
-42/42 and source-bound Compendium 78/78, each once with a fresh Final6 run ID and named verifier.
-Slice then ran once for 420,570 ms and stopped with five findings in five scopes. The root was an
-instrument defect: the exact thermal Inventory row was a valid 164px button, but its raw centre at
-`y=751` lay below the panel scrollport. The old collector skipped its click and then reported four
-necessarily absent modal, Equip, Close and reload descendants. Those were unexercised cascades,
-not independent product verdicts. Final6 was not retried; Glass and recovery did not start. Exact
-report/log carriers, sizes and hashes are preserved in [`audits/README.md`](audits/README.md).
+**Current local v2 candidate (2026-08-28; Final7 stopped fail-closed at Glass):** signed clean source
+`53d030bb733beca1a68fd8e42358dfa4b10ed0e2` passed Layout 787/787, source-bound SceneMemory
+42/42, source-bound Compendium 78/78 with six PNG bindings, and Slice with zero findings and ten
+screenshots. Glass then ran once for 75,032 ms and stopped terminal-red with 25 findings and zero
+report-classified instrument failures; Recovery correctly did not run. Exact report/log carriers,
+sizes and hashes are preserved in [`audits/README.md`](audits/README.md).
 
-The browser-free repair now performs the player's native row reveal, awaits render settlement,
-proves exact scrollport containment and centre-hit ownership, binds trusted row/action/Close
-receipts, proves detail Close leaves the parent Inventory visibly open, and binds exact receipt
-keys/bytes/semantics plus their F4 RNG authority across reload. Each dependent outcome and mutation
-control requires a complete green causal prefix. A red interaction proves quiescence and cleanup,
-then terminates before later mutable arcs.
-No product source or numeric ruler changed. Because evidence bytes changed, Final6 cannot resume:
-a newly signed clean successor must restart at Layout. No post-repair Slice, Glass, recovery,
-whole-Gate, hosted, HUMAN or release claim exists. Edge `151.0.4129.107` / CDP `1.3` remains
-per-run provenance only, never a rebaseline trigger.
+Post-run review separated one Compendium header/workspace product root and two narrow-phone
+Inventory product defects from two hostile-row Compendium oracle artifacts and four Settings oracle
+artifacts. The floated Compendium Close plus a cleared heading spent an unintended header row; the
+Inventory rows starved their copy beside the badge column; hostile rows could pass on overscan-only
+mount; and Settings incorrectly required Sound and Voice to remain simultaneously reachable. The
+bounded repair removes the extra Compendium header row, reflows narrow-phone
+Inventory rows without hiding identity or state, and gives every Settings control its own native
+reveal, two-sample settlement, centre-hit/receipt proof and exact scroll restoration. Numeric rulers,
+browser authority, retry policy and release identity are unchanged. Final7 is immutable and cannot
+resume; repaired small-phone and landscape diagnostics pass, but no post-repair full 12-viewport,
+Recovery, whole-Gate, hosted, HUMAN or release claim exists. A newly signed clean successor must
+restart at Layout with fresh IDs. Edge `151.0.4129.107` / CDP `1.3` is run provenance only, never a
+rebaseline trigger.
 
 After the stable Phase-4 checkpoint, the queued visual pass applies the TikTok-inspired polish
-language across the entire deterministic universe—galaxies, systems, planets, biomes, creatures and
-plants—while preserving their authored structures and identities. No graphics upgrade is included
-in the current instrument-only candidate.
+language across the entire deterministic universe—galaxies, systems, planets, every biome,
+creatures, plants, ships and effects—while preserving authored structure, identity and interaction
+geometry. No graphics upgrade is included in the current bounded product/oracle repair candidate.
 
 The current working tree otherwise completes the bounded source lanes that followed the retained
 Arc 5A checkpoint.

@@ -1,24 +1,35 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-27 Final6 Inventory-evidence and visual-polish boundary — current local candidate:**
-> signed source `ea845d77d9783599c269f708462eb650e2c3e245` passed Layout 787/787,
-> SceneMemory 42/42 and Compendium 78/78 before one no-retry Slice run stopped at the Arc 2
-> Inventory chain. The exact 164px thermal row was structurally valid but its raw centre at `y=751`
-> was clipped below the panel scrollport, so the old harness skipped the click and manufactured four
-> absent descendant outcomes. This was an instrument cascade, not evidence of an Inventory modal,
-> focus, Equip, persistence or Atlas product defect. The browser-free repair now reveals the exact
-> row through native scrolling, proves settled containment plus centre-hit ownership, binds trusted
-> row/action/Close receipts, proves detail Close leaves the exact parent Inventory visible/open/
-> expanded, and binds receipt bytes/semantics plus F4 RNG authority across reload. Every dependent
-> judgment is gated on a complete green causal prefix.
-> Final6 cannot resume; no post-repair browser, Glass, recovery or whole-Gate claim exists.
+> **2026-08-28 Final7 Glass stop and bounded presentation repair — current local candidate:** signed
+> clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` passed Layout 787/787,
+> SceneMemory 42/42, Compendium 78/78 and Slice with zero findings/scopes, each once with its named
+> verifier. Full Glass then ran once across 12 viewports and stopped terminal-red with 25 findings,
+> zero report-classified instrument failures and zero retries; recovery correctly did not run.
+> Post-run review separated one Compendium heading/workspace product root and two genuinely
+> oversized A++/Mono 320px Inventory product defects from two hostile-row Compendium oracle
+> artifacts and four small-phone Settings oracle artifacts caused by sampling both controls without
+> an isolated reveal and restoration.
+>
+> The bounded product repair makes each `<=360px` Inventory row one column, with its complete copy
+> above left-aligned wrapping badges, and lets the Compendium list heading share the first row already
+> reserved for its sticky Close control. It removes or renames no field, status, action or identity
+> and changes no gameplay, persistence, deterministic data, virtualization or DOM/control structure. The
+> Settings repair is evidence-only: Sound and Creature voices are independently revealed, current
+> panel/control/Close nodes are rebound, two stable samples prove full containment and exact native
+> centre-hit ownership, the coordinate-bound native receipt gates focus/state causality, and an
+> unconditional settled cleanup restores the exact raw panel and document scroll positions.
+>
+> Final7 is immutable and cannot resume. Bounded dirty-tree diagnostics are repair evidence only;
+> they are not a post-repair full Glass PASS. A newly signed clean successor must restart the complete
+> Layout → SceneMemory → Compendium → Slice → Glass → recovery chain with fresh IDs.
 >
 > Nick has separately authorized a **universe-wide visual polish pass** after the stable Phase-4
 > checkpoint. The TikTok reference defines the desired emotional punch—stronger warm/cool
 > separation, controlled bloom, atmospheric depth, focal highlights, framing silhouettes and
 > layered particles—but not a Sol-only effect or an asset redesign. The language must extend across
-> galaxies, star systems, planets, biomes, creatures and plants while preserving every deterministic
-> seed, biome/species identity, structure, anatomy, silhouette, scale and gameplay/readability rule.
+> galaxies, star systems, planets, every biome, creatures, plants, ships and effects while preserving
+> every deterministic seed, biome/species identity, authored structure, anatomy, silhouette, scale,
+> interaction geometry and gameplay/readability rule.
 > Variation remains deterministic per environment; reduced motion, contrast, mobile heat, frame
 > budgets and before/after identity review are acceptance criteria. This paragraph records queued
 > scope only; no visual product change has been implemented yet.
@@ -58,8 +69,9 @@
 > Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` contains that bounded
 > Final4 presentation/harness repair. Its historical Final5 Layout and SceneMemory reports passed
 > before Compendium stopped instrument-only. The exact-membership repair then became signed Final6
-> source `ea845d7…`; Final6 passed Layout, SceneMemory and Compendium before the later Inventory
-> reachability cascade summarized in the current overlay above. Edge `.107` / CDP `1.3` remains
+> source `ea845d7…`; Final6 passed Layout, SceneMemory and Compendium before its later Inventory
+> reachability cascade. Signed Final7 and its terminal Glass stop are summarized in the current
+> overlay above. Edge `.107` / CDP `1.3` remains
 > provenance only, not a rebaseline or threshold key.
 >
 > Read-only persistence authority now intercepts every ordinary save-mutating Settings outcome:
@@ -152,7 +164,7 @@
 > each retain a separate source-derived capability contract, producer binding and fixed ruler. Exact
 > browser versions are provenance, and a compatible Edge or Chrome point update alone never
 > rebaselines, repins or moves ceilings. At that sixth-red boundary, no certifying Slice PASS, Glass
-> result or recovery certificate existed; the later Final4–Final6 history and current signed-
+> result or recovery certificate existed; the later Final4–Final7 history and current signed-
 > successor restart boundary are stated in the overlay above.
 
 > **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
@@ -226,9 +238,9 @@
 > `862a75b…`; `bb5dc7c…` remains the exact earlier red that exposed it. Signed calibration source
 > `6c9ad855…` owns the three clean repair candidates; signed `4a54c0d…` owns the heap-only activation.
 > Signed `7362a0e…` later supplied the exact standalone and serial certificates, followed by the
-> preserved Slice harness red summarized above. Later Final4–Final6 history supersedes that boundary;
-> the current evidence requirement is a fresh signed successor from Layout after the Inventory
-> reachability/causal-prefix repair.
+> preserved Slice harness red summarized above. Later Final4–Final7 history supersedes that boundary;
+> the current evidence requirement is a fresh signed successor from Layout after the bounded
+> Inventory, Compendium and Settings repairs.
 > Retained no-retry Slice run `20260825013823076-822-b99fea33b17b` passed in 253,181 ms with
 > 0 findings and 10 screenshots; the full Glass Matrix separately passed in 64,222 ms across 12/12
 > viewports and 78/78 controls with none blocked/omitted and no findings, instrument failures, or
@@ -244,6 +256,12 @@
 > unsettled reward. Query, slot, rarity and equipped/protected status are bounded read filters.
 > Duplicate base items retain distinct `instanceId` rows. A `legacy-protected` hold is readable but
 > has no destructive or equip action.
+>
+> At `<=360px`, an exact row reflows to one column rather than allowing its auto-sized badge column
+> to starve the copy. Base name, rarity, slot, item level, quality and full `instanceId` remain visible
+> and wrapping; Pending capacity claim, Equipped, Favorite and Locked badges remain visible and stack
+> beneath the copy. This is presentation-only: exact row/action identity, order, filters, pagination,
+> carrier/schema and gameplay semantics are unchanged.
 >
 > Production uses the panel's deferred closed lifecycle. Carrier data, query, slot/rarity/status
 > filters and page remain owned while closed, including state changes received before the next open,
@@ -472,7 +490,9 @@
 > Short-landscape Compendium is a nonmodal safe-workspace layout, not a global restyle. The panel
 > uses the left safe-height workspace and recomputes its variable-row scroller from the safe
 > viewport; Search, the dock, and Survey when open remain visible, named, focusable, hit-testable,
-> and usable in the right column. Panel-open status
+> and usable in the right column. In list mode the heading explicitly does not clear the floated
+> Close control: the panel's reserved sticky-Close gutter lets both share the first header row, so a
+> phantom second header row cannot consume the bounded scroll workspace. Panel-open status
 > already yields the trail and objective; short landscape additionally hides only the noninteractive
 > top/context/hint chrome while retaining its measured boxes for restoration. Glass exercises real
 > first/middle/last and focus-pinned A++/monospace
@@ -731,9 +751,11 @@
 > injected low-layer controls prove these surfaces are not merely present
 > underneath the card.
 > Every panel now seats exactly one 44px top-right Close control in its own header
-> geometry. The panel reserves a 58px right gutter, translates Close 44px into that reservation, and
-> clears the heading below floated header geometry, so scrolling content cannot render, receive focus
-> or own a native hit beneath that target and refill cannot duplicate it. Glass evidence waits for
+> geometry. The panel reserves a 58px right gutter and translates Close 44px into that reservation.
+> Ordinary headings clear floated header geometry; Compendium list mode instead uses the already
+> reserved gutter to place its heading and sticky Close on the same first row. In either form,
+> scrolling content cannot render, receive focus or own a native hit beneath that target and refill
+> cannot duplicate it. Glass evidence waits for
 > post-render settlement, proves exact `elementFromPoint` ownership for both the neighboring control
 > and Close, then restores the panel's exact scroll position; removing the gutter must reproduce the
 > overlap before restoration passes. Closing still prefers the exact opener; if a desktop rail opener has
@@ -1244,7 +1266,7 @@
 > merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
-current v2 overlays match the local `port/v2` candidate as of 2026-08-27. The addenda at the end preserve
+current v2 overlays match the local `port/v2` candidate as of 2026-08-28. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson

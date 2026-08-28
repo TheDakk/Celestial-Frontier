@@ -1,6 +1,6 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-27**.
+**STATUS:** approved product direction and implementation contract as of **2026-08-28**.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
 exact-instance Inventory, Arc 3 Engineering actions and Arc 4 player-facing capture loop described
 below. Arc 5A now activates its compact ownership-v2 five-carrier authority across boot, genuine legacy
@@ -14,9 +14,9 @@ does not silently promote planned behavior into the in-game Guide.
 > **Queued universe-wide art polish (Nick, 2026-08-27):** after the stable Phase-4 checkpoint,
 > carry the TikTok reference's richer color separation, controlled bloom, atmospheric depth,
 > highlights, silhouettes and layered particles across galaxies, systems, worlds, every biome,
-> creatures and plants. This is presentation polish, not content regeneration: preserve exact seeds,
-> species/biome identities, anatomy, silhouettes, proportions, scale, authored structure and
-> gameplay readability. Derive palette/light/material variation deterministically per environment;
+> creatures, plants, ships and effects. This is presentation polish, not content regeneration:
+> preserve exact seeds, species/biome identities, anatomy, silhouettes, proportions, scale, authored
+> structure, interaction geometry and gameplay readability. Derive palette/light/material variation deterministically per environment;
 > include reduced-motion, contrast, mobile heat/frame-budget fallbacks and before/after identity
 > comparisons. No part of this visual pass is implemented or certified yet.
 
@@ -28,17 +28,32 @@ does not silently promote planned behavior into the in-game Guide.
 > cost, prerequisite, capacity/headroom rule, item definition or progression.
 >
 > Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` contains that repair. Its
-> historical Final5 Layout and SceneMemory reports passed before Compendium stopped instrument-only.
-> The membership repair became signed Final6 source
-> `ea845d77d9783599c269f708462eb650e2c3e245`, which passed Layout 787/787, SceneMemory
-> 42/42 and Compendium 78/78. Slice then ran once and stopped when its old collector sampled the
-> exact 164px thermal row before revealing it inside the Inventory scrollport. Four later
-> modal/Equip/reload findings were unexercised cascades, not product verdicts. The current
-> instrument-only repair performs native reveal and settled hit proof, binds exact trusted receipts,
-> proves parent-panel survival and exact receipt/F4 RNG durability across reload, and gates
-> dependents on a green causal prefix. Final6 cannot resume; a fresh signed successor must
-> restart at Layout. No post-repair Slice, Glass, recovery, whole-Gate, hosted, HUMAN or release
-> claim exists. Edge `.107` / CDP `1.3` remains provenance only.
+> historical Final5 Layout and SceneMemory reports passed before Compendium stopped instrument-only;
+> signed Final6 `ea845d7…` later passed Layout, SceneMemory and Compendium before its preserved
+> Inventory harness stop.
+>
+> **2026-08-28 Final7 Glass stop and bounded presentation repair — current local candidate:** signed
+> clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` passed Layout 787/787,
+> SceneMemory 42/42, Compendium 78/78 and Slice with zero findings/scopes, each once with its named
+> verifier. Full Glass then ran once across 12 viewports and stopped terminal-red with 25 findings,
+> zero report-classified instrument failures and zero retries; recovery correctly did not run.
+> Review separated one Compendium heading/workspace product root and two genuinely oversized
+> A++/Mono 320px Inventory product defects from two hostile-row Compendium oracle artifacts and four
+> small-phone Settings oracle artifacts.
+>
+> At `<=360px`, Inventory now stacks complete wrapping identity copy above left-aligned status badges;
+> base name, rarity, slot, item level, quality, full `instanceId` and every pending/protected status
+> remain visible. Compendium list mode now lets its heading and sticky Close share the already reserved
+> first row. The Settings oracle independently reveals Sound and Creature voices, binds current
+> panel/control/Close nodes through two stable samples, proves full containment and exact native hit/
+> coordinate receipt, then unconditionally restores and verifies the exact raw panel/document scroll.
+> These bounded presentation/evidence repairs change no world, resource, item, creature, ship,
+> capture, persistence, deterministic authority, action or content structure.
+>
+> Final7 is immutable and cannot resume. Bounded dirty-tree diagnostics are repair evidence only;
+> they are not a post-repair full Glass PASS. A newly signed clean successor must restart the complete
+> Layout → SceneMemory → Compendium → Slice → Glass → recovery chain with fresh IDs.
+> Edge `.107` / CDP `1.3` remains provenance only.
 
 > **Historical post-`7362a0e…`, pre-Final2 evidence/repair boundary:** signed evidence source
 > `7362a0ea32e90b24e4988c81d566b82e20549e66` passed standalone SceneMemory 42/42 and its named
@@ -73,7 +88,7 @@ does not silently promote planned behavior into the in-game Guide.
 > review found additional work in canonical world identity, F4/storage convergence, repository
 > races, texture cleanup, complete settings/read-only coverage and bound evidence sequencing.
 > Those repairs remain part of the current source. At that sixth-red boundary, no certifying Slice
-> PASS, Glass result or recovery certificate existed; the later Final4–Final6 history plus the
+> PASS, Glass result or recovery certificate existed; the later Final4–Final7 history plus the
 > required signed-successor restart are recorded in the current overlay above.
 > F4 convergence now latches and schedules its single replacement before fallible repaint work. If
 > authority is lost with full Shipyard open, the surface immediately becomes one read-only preview
@@ -241,6 +256,11 @@ does not silently promote planned behavior into the in-game Guide.
 > only the receipt ordinal, never a SessionRNG domain counter. A genuine legacy Training checkpoint
 > that owns gear replaces the carrier in that same authority boundary; other checkpoint forms
 > preserve or protect it.
+>
+> At `<=360px`, exact Inventory rows use one presentation column: complete wrapping base/rarity/slot/
+> item-level/quality/`instanceId` copy remains visible, with Pending capacity claim, Equipped,
+> Favorite and Locked badges stacked beneath it. No field, instance identity, row order, action,
+> filter, pagination rule, carrier or schema is removed or changed.
 >
 > Production defers row rendering and the panel's six event subscriptions until open, preserving
 > logical Inventory/filter/page state while releasing closed presentation ownership. One delegated
@@ -412,9 +432,9 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 |---|---|---|
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
 | Charters / reach language | Stage-aware landfall projection plus committed-only Arc 3 mining/fixed-fabrication goal banking; imported drive/chapter facts still gate reach | Port remaining outcome writers and expose goals/transitions/rewards only with them |
-| Compendium | Virtualized 1,500-row browsing surface with bounded asynchronous thumbnails and selected static detail; native Arc 4 acquisition may add durable rows through Survey, not through the Compendium panel itself | HUMAN Arc 1 art review, then any separately bounded living selected preview |
+| Compendium | Virtualized 1,500-row browsing surface with bounded asynchronous thumbnails and selected static detail; list-mode heading and sticky Close share the reserved first header row; native Arc 4 acquisition may add durable rows through Survey, not through the Compendium panel itself | HUMAN Arc 1 art review, then any separately bounded living selected preview |
 | Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current published epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Retained 2026-08-25 Slice `20260825213041239-98104-c96d3b2d0652` and 95/95-control Glass evidence passed their exact recorded inputs with CLEAR audits; the hashes/provenance above do not certify the later current candidate | Run the dedicated real uninterrupted 20-minute next-cycle recovery certificate and complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
-| Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
+| Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; `<=360px` rows stack full visible identity copy above all status badges without changing semantics; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
 | Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, the sole purchasable Deep-Scanner row, eligible fixed-Fabrication actions and the passive ordered ordinary-plus-biome-only orbital **Mineral veins** Survey row after owned `scan1`; connected exact system outputs can update reach | Other five research purchases, fully exceptional slotted/disconnected recipe outputs, HUMAN silhouette and Engineering comprehension, and later authored upgrades/variable construction; the Survey row remains informational and never becomes Mine/reserve/grade/cosmic authority |
 | Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six displayed Research rows and all 62 listed fixed recipes are present; only Deep Scanners and connected-effect recipes with exact costs/preconditions and capacity/revision headroom are actionable and receipt-backed | Fully exceptional slotted/disconnected outputs, authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing |
 | Breeding / care | Domain genetics and the activated compact five-carrier V2 ownership authority exist; its internal successor initializes a newly admitted child's `fed` to half the lower clamped parent value once, but no V2-only player action writer exists | Decide and implement Arc 5B odds, bounded parent Recovery duration/locks, capacity/timing, confirmation, lineage, care and bond outcomes |

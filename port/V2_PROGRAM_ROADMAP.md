@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-27.
+> 2026-08-28.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -78,31 +78,45 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-27 local candidate boundary — signed Final6 stopped at Slice; repaired signed successor
-> next:** signed clean source `ea845d77d9783599c269f708462eb650e2c3e245` passed Layout
-> `20260827-phase4-final6-ea845d77d978-layout` at 787/787, source-bound SceneMemory
-> `…-scenemem` at 42/42 and source-bound Compendium `…-compendium` at 78/78. Slice `…-slice`
-> then ran once for 420,570 ms and stopped with five findings in five scopes. The exact 164px
-> thermal Inventory row's raw centre was below the panel scrollport, so the old harness skipped its
-> click and manufactured four absent modal/Equip/Close/reload descendants. Those are unexercised
-> cascades, not independent product verdicts. Final6 was not retried; Glass and recovery did not run.
+> **2026-08-28 evidence boundary — signed Final7 stopped terminal-red at Glass; repaired successor
+> must restart from Layout:** signed clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2`
+> passed Layout `20260827-phase4-final7-53d030bb733b-layout` at 787/787, source-bound SceneMemory
+> `…-scenemem` at 42/42, source-bound Compendium `…-compendium` at 78/78 and Slice `…-slice`
+> with zero findings and ten screenshots. Glass `…-glass` then ran once for 75,032 ms across all
+> 12 viewports and stopped with 25 findings, zero report-classified instrument failures and zero retries:
+> 11 clipped-without-scroll, seven outside-viewport, four Settings audio-control, two hostile-row
+> geometry and one short-landscape Compendium workspace finding. Recovery correctly did not run.
+> Final7 is immutable historical evidence and cannot resume.
 >
-> The browser-free repair reveals the exact row through native scrolling, awaits render settlement,
-> proves visible scrollport containment and centre-hit ownership, binds trusted row/action/Close
-> receipts, proves detail Close leaves the parent Inventory visible/open/expanded, and binds exact
-> receipt bytes/semantics plus F4 RNG authority across reload. It gates every dependent judgment and
-> mutation control on its full green causal prefix.
-> Red actions prove quiescence and exact cleanup, then terminate before later mutable arcs. No
-> product source or numeric ruler changed. Final6 cannot resume; a newly signed clean successor must
-> restart the full chain at Layout. No Gate, post-repair Slice, Glass, recovery, publication,
-> hosted, release, deployment, version-bump or external authority exists. Edge
-> `151.0.4129.107` / CDP `1.3` is provenance only and never triggers a rebaseline or threshold
-> change. Exact carriers, sizes and hashes are inventoried in `audits/README.md`.
+> The bounded product repair stacks Inventory rows into one min-width-safe column only at `<=360px`
+> while preserving every field and 44px target. Compendium list mode retains the bounded virtual
+> scroller and 58px sticky-Close gutter, but its heading no longer clears that already-reserved Close
+> float. Its hostile-row oracle requires the exact logical row to be mounted and fully contained;
+> overscan-only mounting stays red, and geometry is accepted only with that same reveal witness.
+>
+> Settings Sound and Creature voices are now independently revealed and natively activated. Two
+> fresh node/geometry samples bind control, panel, bounds, Close, both scroll owners, containment,
+> overlap and centre owner. Preparation, dispatch-time target and trusted touch/mouse receipt form
+> one coordinate chain; exact state/focus follows the receipt; phase and outer restoration run in
+> `finally`. Malformed, unsettled, transport or restoration evidence is instrument failure, while
+> stable wrong geometry/ownership/state/focus is product failure. Stable missing Close is product-
+> red; incoherent absence or node replacement is instrument-red. Viewport completion is credited
+> only after four activations and restored-off settlement, separately from product-blocked coverage.
+>
+> Browser-free negative controls pass, but the repaired worktree is not a browser certificate and
+> has no post-repair full Glass PASS. Live SceneMemory and Compendium producer/budget test records
+> are rebound to the changed product/release-content bytes without changing a numeric ruler,
+> calibration sample, retry policy or
+> browser authority. A newly signed clean successor must restart **Layout → SceneMemory → Compendium
+> → Slice → Glass → recovery**. No Gate, post-repair chain, publication, hosted, release, deployment,
+> version-bump or external authority exists. Edge `151.0.4129.107` / CDP `1.3` is Final7 provenance
+> only and never triggers a rebaseline or threshold change. Exact carriers, sizes and hashes are
+> inventoried in `audits/README.md`.
 >
 > **Queued visual scope (Nick, 2026-08-27):** after the stable Phase-4 checkpoint, apply the
 > TikTok-inspired polish language universe-wide across galaxies, systems, planets, every biome,
-> creatures and plants. Preserve deterministic seeds, identities, anatomy, silhouettes, proportions,
-> scale, authored structure and gameplay readability; vary palette/light/material treatment
+> creatures, plants, ships and effects. Preserve deterministic seeds, identities, anatomy,
+> silhouettes, proportions, scale, authored structure, interaction geometry and gameplay readability; vary palette/light/material treatment
 > deterministically per environment. Reduced motion, contrast, mobile heat/frame budgets and
 > before/after identity checks are required. This is queued scope, not implemented evidence.
 >
@@ -254,7 +268,10 @@
 > bounded repair became signed `39e4f20…`; Final5 passed Layout and SceneMemory before the preserved
 > Compendium membership-oracle instrument stop. Its repair became signed Final6 source `ea845d7…`,
 > which passed Layout, SceneMemory and Compendium before the preserved causal Inventory instrument
-> stop. The current evidence repair requires a newly signed clean successor restart from Layout.
+> stop. Signed causal repair `53d030b…` supplied Final7 green Layout, SceneMemory, Compendium and
+> Slice predecessors before Glass stopped terminal-red with 25 findings and zero report-classified instrument
+> failures. Recovery did not run. The post-Final7 product/oracle repair requires a newly signed clean
+> successor restart from Layout.
 > Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
@@ -1426,16 +1443,19 @@ attempt/zero retries (44,847 ms; raw/gzip SHA-256 `81c27ed5…` / `6f3deb0f…`)
 `7362a0e…` and then `b206cf0…` each passed serial Compendium 78/78 before Slice stopped on a
 preserved harness red; no numeric ceiling changed. Signed second repair `5ddddbf…` reached final3
 Layout green, but SceneMemory stopped before product measurement on stale live source/dist binding,
-so Compendium did not run. The current source-derived repair binds Compendium producer `4b5aa3a3…`
+so Compendium did not run. The then-current source-derived repair bound Compendium producer `4b5aa3a3…`
 under budget `f0bedb67…3c64` without changing its measurement authority, fixed ruler, samples or
 ceilings. That rebind became signed source `041d1cf…`, whose Final4 Compendium stage passed 78/78
 after green Layout and SceneMemory predecessors. Slice then passed; Glass stopped on preserved
 instrument evidence. Signed repair source `39e4f20…` supplied Final5 Layout 787/787 and SceneMemory
 42/42 before Compendium stopped at 0/78 on the cardinality oracle, without a product verdict. The
 exact-membership repair became signed Final6 source `ea845d7…`; Final6 passed Layout, SceneMemory
-and Compendium before Slice stopped on the pre-reveal Inventory row oracle. The current
-reachability/causal-prefix repair changes only instrument bytes and requires a fresh signed successor
-from Layout; Slice, Glass and recovery evidence remain pending.
+and Compendium before Slice stopped on the pre-reveal Inventory row oracle. Signed reachability/
+causal-prefix repair `53d030b…` then passed Final7 Slice after green predecessors. Glass stopped
+terminal-red with 25 findings and zero report-classified instrument failures; post-run review
+separated the narrow Inventory/Compendium product defects from the Settings and hostile-row oracle
+artifacts. Recovery did not run. The repaired current bytes require a fresh signed successor from
+Layout; no post-repair full Glass PASS exists.
 
 ### 5.2 Arc 3 — engineering loop
 
@@ -1607,9 +1627,11 @@ Slice before Glass stopped once with 46 findings and five instrument failures. I
 signed `39e4f20…`, whose Final5 Layout and SceneMemory reports passed before Compendium stopped on
 the cardinality-oracle instrument defect. Its repair became signed Final6 source `ea845d7…`, which
 passed Layout, SceneMemory and Compendium before Slice's ninth one-attempt red stopped at the
-Inventory pre-reveal/causal-prefix instrument defect. Post-start audio, current Slice, Glass and
-recovery remain unproved. The reachability repair must become a newly signed clean successor and
-restart from Layout before any current PASS claim.
+Inventory pre-reveal/causal-prefix instrument defect. Signed repair `53d030b…` then passed Final7
+Slice after green Layout/SceneMemory/Compendium predecessors, before Glass stopped with 25 findings
+and zero report-classified instrument failures. Recovery did not run. The post-Final7 Settings and bounded
+layout/oracle repair must become a newly signed clean successor and restart from Layout before any
+current PASS claim.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.
