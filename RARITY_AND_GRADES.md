@@ -1,7 +1,7 @@
 # Celestial Frontier — Rarity & Grades System
 
 **STATUS:** legacy values match code as of **2026-07-31 (v1.8.9)**; the v2
-type and presentation overlays below match the local `port/v2` candidate as of 2026-08-26. Every value,
+type and presentation overlays below match the local `port/v2` candidate as of 2026-08-27. Every value,
 threshold and line anchor below was re-extracted from `main.js` during port
 Phase 0 and verified, not carried forward.
 
@@ -14,12 +14,17 @@ how one collapses into the other, the merit boosts, ring caps, guardians and par
 source and this doc disagree, **source wins and this doc gets fixed**. The ladder
 feeds the 50-probe determinism fingerprint — a mismatch means observable behavior changed.
 
-> **2026-08-26 strict v2 app presentation boundary — current local candidate:**
+> **2026-08-27 strict v2 app presentation boundary — current local candidate:**
 > `projectDisplayRarity(value)` accepts only a primitive integer raw grade in the closed range
 > 0–14. Raw 0–9 selects the corresponding canonical ten-name row; raw 10–14 selects display tier 9,
 > **Transcendent** / `#F7F1FF`. Missing, string-coercible, boxed, fractional, non-finite, negative
 > and out-of-range values return `null`, so the player surface omits rarity rather than inventing
 > Common or exposing an internal raw label.
+>
+> Presentation preserves every canonical foreground token. Compendium list/detail wrap the written
+> rarity in one shared opaque `#05070d` reading badge, so Exotic remains exactly `#9A5CFF` while its
+> effective foreground/background contrast is at least 4.5:1 over supported glass. The badge changes
+> neither raw/display tier identity, persistence, sorting/balance authority nor seeded art color.
 >
 > Survey and both Compendium list/detail paths consume this app projector. Planet Survey still
 > requires landing before rarity is visible, and Survey refuses to disclose a projected tier when

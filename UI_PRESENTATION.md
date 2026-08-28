@@ -27,7 +27,18 @@
 > while 10–14 display as Transcendent. Missing, fractional, coercible or out-of-range data renders no
 > rarity instead of inventing Common or leaking a raw/art label. Planet rarity remains absent before
 > landing. Raw mechanics, persisted grade, deterministic descriptors and art hue/designation stay
-> unchanged.
+> unchanged. The written rarity token now sits on one shared opaque `#05070d` reading badge while
+> retaining its canonical foreground, including Exotic `#9A5CFF`; effective text contrast is at
+> least 4.5:1 even over the brightest supported glass rather than depending on the translucent panel
+> behind it.
+>
+> Signed clean source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` later passed Final4 Layout
+> 787/787, SceneMemory 42/42, Compendium 78/78 and Slice with ten screenshots and zero findings;
+> every named verifier passed. Glass then ran once across all 12 viewports, retained 46 findings
+> and five instrument failures, and stopped without retry before recovery. The bounded presentation
+> and harness repair described here remains uncertified until one new signed clean source completes
+> a fresh Final5 chain from Layout. Edge `.107` / CDP `1.3` is provenance only, not a rebaseline or
+> threshold key, and no current-source Glass, recovery, whole-Gate, HUMAN or release claim exists.
 >
 > Read-only persistence authority now intercepts every ordinary save-mutating Settings outcome:
 > **Sound**, **Volume**, **Creature voices**, **Text size**, **Text tone**, **Font**, **Star charts**,
@@ -85,13 +96,14 @@
 > terminal-red on preserved stale harness assumptions after product hardening; it was not retried,
 > and Glass and recovery did not run.
 >
-> The current repaired working tree changes only evidence oracles, their focused tests and
-> evidence/documentation carriers. Its browser-free battery is green at 134 Vitest files / 1,474
+> **Historical post-`7362a0e…`, pre-Final2 repair boundary:** the then-current repaired working tree
+> changed only evidence oracles, their focused tests and evidence/documentation carriers. Its
+> browser-free battery was green at 134 Vitest files / 1,474
 > passed / one intentional skip / zero failures, plus all TypeScript programs, `artunused`,
-> syntax/import selftests and the 887-module build. It must become a new signed clean commit, then
-> restart the complete fail-fast chain from Layout with fresh run IDs on one unchanged source. There
-> is no later browser result, publication, hosted attempt, release, deployment, version bump or
-> external authority.
+> syntax/import selftests and the 887-module build. It still had to become a new signed clean commit
+> and restart the complete fail-fast chain from Layout with fresh run IDs on one unchanged source.
+> At that boundary there was no later browser result, publication, hosted attempt, release,
+> deployment, version bump or external authority.
 >
 > Earlier current-input history retains six one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > Signed-clean source `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
@@ -117,8 +129,9 @@
 > revision, user agent, JavaScript version and protocol version per run. Compendium and SceneMemory
 > each retain a separate source-derived capability contract, producer binding and fixed ruler. Exact
 > browser versions are provenance, and a compatible Edge or Chrome point update alone never
-> rebaselines, repins or moves ceilings. No current certifying Slice PASS, Glass result or recovery
-> certificate exists.
+> rebaselines, repins or moves ceilings. At that sixth-red boundary, no certifying Slice PASS, Glass
+> result or recovery certificate existed; the Final4 successor history and pending Final5 authority
+> are stated in the current overlay above.
 
 > **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
 > 2026-08-27 overlay does not supersede it:** the native Survey card now
@@ -688,8 +701,12 @@
 > injected low-layer controls prove these surfaces are not merely present
 > underneath the card.
 > Every panel now seats exactly one 44px top-right Close control in its own header
-> geometry, so scrolling content cannot render or receive focus beneath that
-> target and refill cannot duplicate it. Closing still prefers the exact opener; if a desktop rail opener has
+> geometry. The panel reserves a 58px right gutter, translates Close 44px into that reservation, and
+> clears the heading below floated header geometry, so scrolling content cannot render, receive focus
+> or own a native hit beneath that target and refill cannot duplicate it. Glass evidence waits for
+> post-render settlement, proves exact `elementFromPoint` ownership for both the neighboring control
+> and Close, then restores the panel's exact scroll position; removing the gutter must reproduce the
+> overlap before restoration passes. Closing still prefers the exact opener; if a desktop rail opener has
 > become hidden because Survey reopened, focus falls back to Survey and then to
 > the exploration canvas instead of remaining on a hidden close control.
 > On every ≤900px landed layout, populated Planetside owns the limited

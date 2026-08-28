@@ -11,6 +11,42 @@ roughly by how often they have bitten.
 
 ---
 
+⚠⚠ **SETTLE BEFORE GEOMETRY; EACH CONTROL OWNS ITS HIT AND RESTORES THE VIEW IT MOVED**
+(2026-08-27). Final4 Glass showed that a generic audit can leave a card or panel scroller displaced,
+then make a later scoped control judge geometry produced by the earlier check rather than the
+product's settled baseline.
+
+Await the post-render settlement boundary before reading geometry. For every control, snapshot each
+scroll owner it may move, use the native scroll path, require full containment, and prove
+`elementFromPoint(...).closest(...)` owns that exact logical control at the intended native hit
+point. Restore exact `scrollTop`/`scrollLeft` values in `finally`, await settlement again, and prove
+the restored outcome green. A positive, its deliberate negative and the restored positive must be
+isolated per control; audit order and inherited scroll state are never evidence.
+
+⚠⚠ **SEMANTIC ORACLES JUDGE THE CONTRACT, NOT A CONVENIENT HEURISTIC OR A HISTORICAL
+TABLE** (2026-08-27). A truthful Survey title such as **Mars** is four characters, so an arbitrary
+five-character minimum rejected valid content. Separately, Engineering connected three live
+`contact` consumers while the independent Glass oracle still classified them unavailable.
+
+Require the actual semantic boundary: a required label is nonempty unless its product contract
+defines a stronger rule. Keep source-independent expected tables independent so they can catch a
+bad producer, but update their audited inventory whenever a live consumer is connected or removed.
+Negative-control the semantic absence itself (for example, an empty title) and one currently live
+consumer mapping; a stale oracle is instrument failure, not permission to change the product.
+
+⚠⚠ **CONTRAST IS THE COMPOSITED READING SURFACE; A CLOSE OWNER NEEDS EXCLUSIVE HEADER
+GEOMETRY** (2026-08-27). A canonical rarity color can be correct and still become unreadable when
+drawn directly over bright translucent glass, and a single valid Close action can still cover a
+neighboring control when its panel reserves no hit gutter.
+
+Preserve canonical rarity foreground tokens and provide a stable opaque reading surface; the
+current Exotic token remains `#9A5CFF` on shared badge background `#05070d`, producing effective
+text contrast of at least 4.5:1 without changing rarity data or art. Every panel reserves a 58px
+right header gutter, translates its 44px Close owner by 44px into that gutter, and clears the
+heading below floated header geometry so content and focus cannot sit beneath the sticky target.
+Measure the composed foreground/background and native hit ownership, and negative-control removal
+of the badge background and the reserved gutter separately.
+
 ⚠⚠ **A CLOSED SURFACE OWNS STATE, NOT ITS OPEN-LIFETIME DOM AND LISTENERS**
 (2026-08-27). SceneMemory exposed a closed Inventory that eagerly retained 224 row-tree nodes and
 six panel/detail subscriptions, while the panel manager attached another focus-capture closure to

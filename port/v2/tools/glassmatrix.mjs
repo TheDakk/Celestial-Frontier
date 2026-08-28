@@ -505,10 +505,12 @@ function arc3OrbitalGlassSelftest() {
     value: 'Silicon · Chlorine · Calcium · Void Essence · 570 pulls remaining',
     sensitive: true,
   });
+  const offCard = assessArc3OrbitalSurveyGlass({ ...observation, contained: false });
   return Object.freeze({
     ok: baseline.ok && authority.ok
-      && isolatesArc3OrbitalGlassChecks(disclosure, ['exactOrderedValue', 'groundedSensitiveFacts']),
-    baseline, authority, disclosure,
+      && isolatesArc3OrbitalGlassChecks(disclosure, ['exactOrderedValue', 'groundedSensitiveFacts'])
+      && isolatesArc3OrbitalGlassChecks(offCard, ['contained']),
+    baseline, authority, disclosure, offCard,
   });
 }
 const ARC4_DURABLE_READ_EXPRESSION = buildArc4DurableReadExpression();
@@ -1447,7 +1449,7 @@ function settingsAudioToggleOutcome(evidence, expected) {
     && control.text === (on ? 'On' : 'Off') && control.on === on
     && Number.isFinite(control.width) && control.width >= 44
     && Number.isFinite(control.height) && control.height >= 44
-    && control.hit === true;
+    && control.hit === true && control.overlapsClose === false;
   const audio = evidence?.audio;
   const runtime = audio?.runtime;
   const settingsState = evidence?.state?.sndOn === expected.soundOn
@@ -1481,10 +1483,10 @@ function settingsAudioEvidenceSelftest() {
     state: { sndOn: soundOn, voiceOn }, focus,
     sound: { exists: true, visible: true, tag: 'BUTTON', role: null, label: 'Sound',
       pressed: String(soundOn), text: soundOn ? 'On' : 'Off', on: soundOn,
-      width: 44, height: 44, hit: true },
+      width: 44, height: 44, hit: true, overlapsClose: false },
     voice: { exists: true, visible: true, tag: 'BUTTON', role: null, label: 'Creature voices',
       pressed: String(voiceOn), text: voiceOn ? 'On' : 'Off', on: voiceOn,
-      width: 44, height: 44, hit: true },
+      width: 44, height: 44, hit: true, overlapsClose: false },
     audio: {
       schema: 'cf-v2-tame-greeting-audio/v1', disposed: false, armed: 0,
       claimedEvents: 0, activeVoiceId: null, lastEventKey: null,
@@ -1516,6 +1518,7 @@ function settingsAudioEvidenceSelftest() {
     ['voice width', (row) => { row.voice.width = 43; }],
     ['voice height', (row) => { row.voice.height = 43; }],
     ['voice hit', (row) => { row.voice.hit = false; }],
+    ['voice close overlap', (row) => { row.voice.overlapsClose = true; }],
     ['focus', (row) => { row.focus = 'setsnd'; }],
     ['sound state', (row) => { row.state.sndOn = false; }],
     ['voice state', (row) => { row.state.voiceOn = false; }],
@@ -1550,11 +1553,16 @@ function settingsAudioEvidenceSelftest() {
 
 const SETTINGS_AUDIO_EVIDENCE_EXPRESSION = `(()=>{
   const state=window.__CF_SLICE__?.api?.state?.();
+  const panel=document.getElementById('setpanel'),close=panel?.querySelector(':scope > [data-pnx="set"]')??null;
+  const closeRect=close?.getBoundingClientRect?.()??null;
+  const owner=(node)=>node?(node.id?'#'+node.id:(node.getAttribute?.('data-pnx')?'[data-pnx="'+node.getAttribute('data-pnx')+'"]':node.tagName||null)):null;
   const control=(id)=>{
     const element=document.getElementById(id),rect=element?.getBoundingClientRect();
     const style=element?getComputedStyle(element):null;
     const x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0;
     const point=rect?document.elementFromPoint(x,y):null;
+    const overlapsClose=!!rect&&!!closeRect&&rect.left<closeRect.right&&rect.right>closeRect.left
+      &&rect.top<closeRect.bottom&&rect.bottom>closeRect.top;
     return {exists:!!element,visible:!!element&&style?.display!=='none'
         &&style?.visibility!=='hidden'&&Number(style?.opacity)>0
         &&rect.width>0&&rect.height>0,
@@ -1563,12 +1571,31 @@ const SETTINGS_AUDIO_EVIDENCE_EXPRESSION = `(()=>{
       pressed:element?.getAttribute('aria-pressed')??null,
       text:(element?.textContent||'').trim(),on:element?.classList.contains('on')===true,
       width:rect?.width??0,height:rect?.height??0,
-      hit:!!element&&!!point&&(point===element||element.contains(point))};
+      rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null,center:rect?[x,y]:null,
+      hitOwner:owner(point),hit:!!element&&!!point&&(point===element||element.contains(point)),overlapsClose};
   };
   return {state:{sndOn:state?.sndOn,voiceOn:state?.voiceOn},
     focus:document.activeElement?.id||null,sound:control('setsnd'),voice:control('setvoice'),
+    panel:{scrollLeft:panel?.scrollLeft??null,scrollTop:panel?.scrollTop??null,
+      closeRect:closeRect?[closeRect.left,closeRect.top,closeRect.right,closeRect.bottom]:null},
     audio:state?.audio??null};
 })()`;
+
+const SETTINGS_CLOSE_CLEARANCE_EXPRESSION = `(()=>{const panel=document.getElementById('setpanel'),
+  close=panel?.querySelector(':scope > [data-pnx="set"]')??null,sound=document.getElementById('setsnd');
+  if(!panel||!close||!sound)return {ok:false,why:'Settings panel, Close, or Sound control missing'};
+  const before={left:panel.scrollLeft,top:panel.scrollTop},cr0=close.getBoundingClientRect(),sr0=sound.getBoundingClientRect();
+  panel.scrollTop=Math.max(0,Math.min(panel.scrollHeight-panel.clientHeight,
+    panel.scrollTop+((sr0.top+sr0.bottom)-(cr0.top+cr0.bottom))/2));
+  const cr=close.getBoundingClientRect(),sr=sound.getBoundingClientRect(),x=(sr.left+sr.right)/2,y=(sr.top+sr.bottom)/2,
+    hit=document.elementFromPoint(x,y),overlap=sr.left<cr.right&&sr.right>cr.left&&sr.top<cr.bottom&&sr.bottom>cr.top,
+    centreOwned=hit===sound||sound.contains(hit),verticalAligned=Math.abs((sr.top+sr.bottom)-(cr.top+cr.bottom))<=2,
+    clearance=cr.left-sr.right;
+  panel.scrollLeft=before.left;panel.scrollTop=before.top;
+  const restoration={left:panel.scrollLeft,top:panel.scrollTop,ok:panel.scrollLeft===before.left&&panel.scrollTop===before.top};
+  return {ok:verticalAligned&&!overlap&&centreOwned&&clearance>=0&&restoration.ok,verticalAligned,overlap,centreOwned,
+    clearance,hit:hit?(hit.id?'#'+hit.id:(hit.getAttribute?.('data-pnx')?'[data-pnx="'+hit.getAttribute('data-pnx')+'"]':hit.tagName||null)):null,
+    sound:[sr.left,sr.top,sr.right,sr.bottom],close:[cr.left,cr.top,cr.right,cr.bottom],before,restoration};})()`;
 
 function validateReloadReleaseWitness(payload, viewport) {
   let witness = payload;
@@ -5179,13 +5206,14 @@ function installAuditHarness() {
     bounds.height = round(Math.max(0, bounds.bottom - bounds.top));
     return { bounds, ancestors };
   };
-  const scrollControlIntoView = (el, root, viewport) => {
+  const scrollControlIntoView = (el, root, viewport, rememberScroll = null) => {
     let r = box(el), clipped = clippedBounds(el, root, viewport);
     if (inside(r, clipped.bounds)) return { rect: r, ...clipped };
     for (let n = el.parentElement; n; n = n.parentElement) {
       const s = getComputedStyle(n);
       if ((n.scrollHeight > n.clientHeight + 1 && /(auto|scroll)/.test(s.overflowY))
         || (n.scrollWidth > n.clientWidth + 1 && /(auto|scroll)/.test(s.overflowX))) {
+        rememberScroll?.(n);
         const nr = n.getBoundingClientRect(), er = el.getBoundingClientRect();
         if (n.scrollHeight > n.clientHeight + 1) n.scrollTop += (er.top + er.bottom - nr.top - nr.bottom) / 2;
         if (n.scrollWidth > n.clientWidth + 1) n.scrollLeft += (er.left + er.right - nr.left - nr.right) / 2;
@@ -5316,7 +5344,10 @@ function installAuditHarness() {
       if (n < controlLimit) { out.push(row); controlReported.set(row.code, n + 1); }
     };
     for (const el of controls) {
-      const scrolled = scrollControlIntoView(el, root, bounds), r = scrolled.rect, controlBounds = scrolled.bounds;
+      const scrollState = new Map();
+      const scrolled = scrollControlIntoView(el, root, bounds, (owner) => {
+        if (!scrollState.has(owner)) scrollState.set(owner, [owner.scrollLeft, owner.scrollTop]);
+      }), r = scrolled.rect, controlBounds = scrolled.bounds;
       const name = selectorName(el), h = hit(el);
       const sourceIndexRaw = el.getAttribute('data-ci');
       const identity = {
@@ -5336,6 +5367,9 @@ function installAuditHarness() {
       const nativeKeyboard = /^(BUTTON|INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || (el.tagName === 'A' && el.hasAttribute('href'));
       if (!nativeKeyboard && el.tabIndex < 0) {
         controlIssue(issue('KEYBOARD_UNREACHABLE', surface, name, { tag: el.tagName.toLowerCase(), tabIndex: el.tabIndex }, 'native keyboard control or tabIndex >= 0'));
+      }
+      for (const [owner, [left, top]] of scrollState) {
+        owner.scrollLeft = left; owner.scrollTop = top;
       }
     }
     for (const [code, count] of controlCounts) {
@@ -5557,10 +5591,13 @@ function installAuditHarness() {
     const reachableClip = document.createElement('section');
     reachableClip.id = 'cf-control-reachable-clip';
     reachableClip.style.cssText = 'position:fixed;left:8px;top:280px;width:240px;height:100px;z-index:1003';
-    reachableClip.innerHTML = '<div style="width:210px;height:70px;overflow-y:auto"><div style="height:96px"></div><button data-cid="reachable-middle" data-ci="4" style="display:block;width:180px;height:44px">reachable middle row</button><div style="height:96px"></div></div>';
+    reachableClip.innerHTML = '<div id="cf-control-reachable-scroller" style="width:210px;height:70px;overflow-y:auto"><div style="height:96px"></div><button data-cid="reachable-middle" data-ci="4" style="display:block;width:180px;height:44px">reachable middle row</button><div style="height:96px"></div></div>';
     document.body.appendChild(reachableClip);
+    const reachableScroller = reachableClip.querySelector('#cf-control-reachable-scroller');
+    reachableScroller.scrollTop = 7;
     list = audit(geometryBase(reachableClip));
     reject('scrollable row positive geometry', list, 'CONTROL_OUTSIDE_VIEWPORT', 'reachable-middle');
+    if (reachableScroller.scrollTop !== 7) failures.push('scrollable row audit did not restore its exact prior scroll offset');
     reachableClip.remove();
     const ancestorClip = document.createElement('section');
     ancestorClip.id = 'cf-control-ancestor-root';
@@ -5948,6 +5985,7 @@ async function main() {
     planetsideControlRun = false, panelPlanetsideControlRun = false,
     closeIntegrityControlRun = false, toastAnchorControlRun = false,
     settingsAnchorControlRun = false, recordsAnchorObserved = false,
+    settingsCloseClearanceControlRun = false, rarityContrastControlRun = false,
     chromeYieldControlRun = false, chromeRestoreControlRun = false, chromeLandscapeControlRun = false,
     objectiveYieldControlRun = false, topChromeControlRun = false, portraitBandControlRun = false,
     portraitFallbackControlRun = false,
@@ -5955,7 +5993,7 @@ async function main() {
     hiddenOpenerControlRun = false, reloadBindingControlRun = false,
     releaseDetailControlRun = false, releaseTailControlRun = false, phoneDockControlRun = false,
     shipyardControlRun = false, inventoryControlRun = false, arc4CaptureControlRun = false,
-    orbitalSurveyControlRun = false;
+    orbitalSurveyControlRun = false, orbitalContainmentControlRun = false;
   const settingsAudioEvidenceViewports = new Set();
   const add = (viewport, surface, rows) => {
     for (const row of rows || []) findings.push({ context: { viewport, surface }, row });
@@ -7309,12 +7347,49 @@ async function main() {
                 && observation?.state?.starX === ARC3_ORBITAL_GLASS_TARGET.star.x
                 && observation?.state?.starY === ARC3_ORBITAL_GLASS_TARGET.star.y
                 && observation?.cardOpen === true
+                && observation?.rowCount === 1
+                && observation?.label === 'Mineral veins'
+                && observation?.value === ARC3_ORBITAL_GLASS_TARGET.expectedValue
+                && observation?.rendered === true
                 && observation?.state?.pendingPersistenceWrites === 0,
             );
           } catch (cause) { orbitalRouteError = String(cause?.message || cause); }
         }
         if (!orbitalOpened || orbitalRoute === null) {
           instrumentFailures.push(`${vp.label}: sealed veteran could not open the reachable Mars Deep Scanner Survey (${JSON.stringify({ orbitalOpened, orbitalRoute, orbitalRouteError })})`);
+        }
+        const orbitalContainmentRequired = MATRIX_VIEWPORTS.some((viewport) => viewport.label === 'small-phone');
+        let orbitalContainmentControl = null;
+        if (!orbitalContainmentControlRun && vp.label === 'small-phone') {
+          orbitalContainmentControlRun = true;
+          const containmentEvidence = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
+            card=document.getElementById('survey'),prior={left:card?.scrollLeft??null,top:card?.scrollTop??null};
+            if(!row||!card)return {ok:false,why:'orbital containment targets missing',prior};
+            let offCard=null,centred=null,restored=null,error=null;
+            try{offCard=${ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION};
+              row.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});
+              centred=${ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION};}
+            catch(cause){error=String(cause?.message||cause);}
+            finally{card.scrollLeft=prior.left;card.scrollTop=prior.top;}
+            try{restored=${ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION};}
+            catch(cause){error=error||String(cause?.message||cause);}
+            const after={left:card.scrollLeft,top:card.scrollTop};
+            return {ok:error===null&&after.left===prior.left&&after.top===prior.top,
+              prior,after,offCard,centred,restored,error};})()`);
+          const offCard = assessArc3OrbitalSurveyGlass(containmentEvidence?.offCard);
+          const centred = assessArc3OrbitalSurveyGlass(containmentEvidence?.centred);
+          const restored = assessArc3OrbitalSurveyGlass(containmentEvidence?.restored);
+          orbitalContainmentControl = {
+            ok: containmentEvidence?.ok === true
+              && isolatesArc3OrbitalGlassChecks(offCard, ['contained'])
+              && centred.ok
+              && isolatesArc3OrbitalGlassChecks(restored, ['contained']),
+            evidence: containmentEvidence, offCard, centred, restored,
+          };
+          if (!orbitalContainmentControl.ok) {
+            instrumentFailures.push(`${vp.label}: live off-card orbital row did not turn only containment red, centre green, and restore exact scroll (${JSON.stringify(orbitalContainmentControl)})`);
+          }
+          recordControls('orbital-row-containment-restore');
         }
         await evalIn(`document.querySelector('#survey [data-row="Mineral veins"]')?.scrollIntoView({block:'nearest',inline:'nearest'})`);
         await sleep(40);
@@ -7323,39 +7398,67 @@ async function main() {
         addOutcome(vp.label, 'orbital-mineral-survey', 'ORBITAL_MINERAL_SURVEY_DISCLOSURE', '#survey [data-row="Mineral veins"]',
           orbitalSurvey,
           'one contained passive Mars row preserves ordinary-deposit order without cosmic, exceptional, grade, reserve, progress, or Mine disclosure');
-        add(vp.label, 'orbital-mineral-survey', await audit({
+        const orbitalAuditOptions = {
           ...common, surface: 'orbital-mineral-survey', root: '#survey', textMin: 80,
-          required: [{ selector: '[data-sel=title]', min: 1, textMin: 5 },
+          required: [{ selector: '[data-sel=title]', min: 1, textMin: 1 },
             { selector: '[data-row="Mineral veins"]', min: 1, max: 1, textMin: 25 },
             { selector: '[data-survey-close]', min: 1 }],
           interactiveRoots: ['#survey'], contrastSelectors: ['#survey', '#survey [data-row="Mineral veins"]'],
           overlapPairs: [['#survey', '#dock']],
-        }));
+        };
+        add(vp.label, 'orbital-mineral-survey', await audit(orbitalAuditOptions));
         if (!orbitalSurveyControlRun) {
           orbitalSurveyControlRun = true;
-          const orbitalControlEvidence = await evalIn(`(()=>{const probe=()=>${ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION},
-            row=document.querySelector('#survey [data-row="Mineral veins"]'),priorHtml=row?.innerHTML??null,baseline=probe();
-            if(!row||priorHtml===null)return {ok:false,why:'nonempty orbital row target missing',baseline};
-            row.innerHTML='<span>Mineral veins</span><br>Silicon · Chlorine · Calcium · Void Essence · 570 pulls remaining';
-            const mutated=probe();row.innerHTML=priorHtml;const restored=probe();return {ok:true,baseline,mutated,restored};})()`);
+          const orbitalCopyControl = await evalIn(`(()=>{const title=document.querySelector('#survey [data-sel="title"]'),
+            prior=title?.textContent??null,relevant=(rows)=>rows.filter(row=>row.code==='REQUIRED_COPY_EMPTY'&&row.element==='[data-sel=title]');
+            if(!title||prior===null)return {ok:false,why:'orbital title missing'};
+            let baseline=[],broken=[],restored=[],error=null;
+            try{baseline=relevant(window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(orbitalAuditOptions)}));
+              title.textContent='';broken=relevant(window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(orbitalAuditOptions)}));}
+            catch(cause){error=String(cause?.message||cause);}
+            finally{title.textContent=prior;}
+            try{restored=relevant(window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(orbitalAuditOptions)}));}
+            catch(cause){error=error||String(cause?.message||cause);}
+            return {ok:error===null&&prior.trim()==='Mars'&&prior.trim().length===4&&baseline.length===0&&broken.length===1
+              &&broken[0]?.actual?.textLength===0&&restored.length===0&&title.textContent===prior,
+              prior,baseline,broken,restored,after:title.textContent,error};})()`);
+          if (!orbitalCopyControl?.ok) {
+            instrumentFailures.push(`${vp.label}: four-letter Mars/empty-title audit control did not reject and restore (${JSON.stringify(orbitalCopyControl)})`);
+          }
+          const orbitalControlEvidence = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
+            card=document.getElementById('survey'),prior={html:row?.innerHTML??null,left:card?.scrollLeft??null,top:card?.scrollTop??null};
+            if(!row||!card||prior.html===null)return {ok:false,why:'nonempty orbital row target missing',prior};
+            const probe=()=>{row.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});return ${ARC3_ORBITAL_SURVEY_GLASS_EXPRESSION}};
+            let baseline=null,mutated=null,restored=null,error=null;
+            try{baseline=probe();row.innerHTML='<span>Mineral veins</span><br>Silicon · Chlorine · Calcium · Void Essence · 570 pulls remaining';
+              mutated=probe();row.innerHTML=prior.html;restored=probe();}
+            catch(cause){error=String(cause?.message||cause);}
+            finally{row.innerHTML=prior.html;card.scrollLeft=prior.left;card.scrollTop=prior.top;}
+            const after={html:row.innerHTML,left:card.scrollLeft,top:card.scrollTop};
+            return {ok:error===null&&after.html===prior.html&&after.left===prior.left&&after.top===prior.top,
+              prior,after,baseline,mutated,restored,error};})()`);
           const orbitalControl = (() => {
             const baseline = assessArc3OrbitalSurveyGlass(orbitalControlEvidence?.baseline);
             const mutated = assessArc3OrbitalSurveyGlass(orbitalControlEvidence?.mutated);
             const restored = assessArc3OrbitalSurveyGlass(orbitalControlEvidence?.restored);
             const authority = arc3OrbitalGlassAuthorityControls(orbitalControlEvidence?.baseline);
             return {
-              ok: orbitalControlEvidence?.ok === true && baseline.ok
+              ok: orbitalControlEvidence?.ok === true && orbitalCopyControl?.ok === true
+                && (!orbitalContainmentRequired || orbitalContainmentControl?.ok === true)
+                && baseline.ok
                 && isolatesArc3OrbitalGlassChecks(
                   mutated, ['exactOrderedValue', 'groundedSensitiveFacts'],
                 )
                 && restored.ok && authority.ok,
-              evidence: orbitalControlEvidence, baseline, mutated, restored, authority,
+              evidence: orbitalControlEvidence, copy: orbitalCopyControl,
+              containment: orbitalContainmentControl,
+              baseline, mutated, restored, authority,
             };
           })();
           if (!orbitalControl.ok) {
             instrumentFailures.push(`${vp.label}: orbital Survey card/target/nav/receipt/persistence and Mineral veins mutations did not turn red in isolation and restore (${JSON.stringify(orbitalControl)})`);
           }
-          recordControls('orbital-mineral-survey-disclosure');
+          recordControls('orbital-mineral-survey-disclosure', 'orbital-title-semantic-copy');
         }
         const earthSurveyRestored = await evalIn('window.__CF_SLICE__?.api?.surveyOn?.({seed:133,ordinal:2})??false');
         let earthRestoreObservation = null, earthRestoreError = null;
@@ -7813,6 +7916,23 @@ async function main() {
             addOutcome(vp.label, composition, 'SHIPYARD_STATE_TRUTH', item.panel, shipyardOpen,
               'native keyboard disclosures expose exactly six research rows and 62 grouped fixed recipes; one preview, 70 honest 44px actions, diagnostics, and canonical ShipVisualState all agree');
             if (!shipyardControlRun) {
+              const effectSupportControl = await evalIn(`(()=>{const row=document.querySelector('#shipyardpanel [data-recipe-id="earpiece"]'),
+                prior=row?.getAttribute('data-effect-support')??null;if(!row||prior===null)return {ok:false,why:'earpiece recipe/effect-support missing'};
+                let baseline=null,broken=null,restored=null,error=null;
+                try{baseline=${shipyardOpenCheck};row.setAttribute('data-effect-support','unavailable');broken=${shipyardOpenCheck};}
+                catch(cause){error=String(cause?.message||cause);}
+                finally{row.setAttribute('data-effect-support',prior);}
+                try{restored=${shipyardOpenCheck};}catch(cause){error=error||String(cause?.message||cause);}
+                return {ok:error===null&&prior==='live'&&baseline?.ok===true&&broken?.ok===false&&broken?.recipeTruth===false
+                  &&broken.recipeMatch===false&&broken.stateMatch===true&&broken.researchMatch===true
+                  &&broken.groupsMatch===true&&broken.actionInventory===true&&broken.diagnostics===true
+                  &&broken.geometry===true&&broken.openerReady===true&&broken.previewA11y===true
+                  &&restored?.ok===true&&row.getAttribute('data-effect-support')===prior,
+                  prior,after:row.getAttribute('data-effect-support'),baseline,broken,restored,error};})()`);
+              if (!effectSupportControl?.ok) {
+                instrumentFailures.push(`${vp.label}: contact-effect Shipyard oracle mutation did not turn recipe truth red in isolation and restore (${JSON.stringify(effectSupportControl)})`);
+              }
+              recordControls('shipyard-contact-effect-oracle');
               const duplicateControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
                 preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),duplicate=preview?.cloneNode(true);
                 if(duplicate)panel.appendChild(duplicate);const result=${shipyardOpenCheck};duplicate?.remove();
@@ -8062,12 +8182,38 @@ async function main() {
               await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome(${JSON.stringify(item.panel)})`),
               'desktop Records shares the measured bottom-right utility edge above the dock');
           }
-          add(vp.label, composition, await audit({
+          const ordinaryPanelAuditOptions = {
             ...common, surface: composition, root: item.panel, textMin: item.textMin,
             required: [{ selector: '[data-pnx]', min: 1 }, { selector: item.required, min: item.min }],
             fitSelectors: [item.panel], interactiveRoots: [item.panel], contrastSelectors: [item.panel, opener],
             maxContrastReports: 16, overlapPairs: item.inventory ? [[item.panel, '#dock']] : [],
-          }));
+          };
+          add(vp.label, composition, await audit(ordinaryPanelAuditOptions));
+          if (item.id === 'codex' && !rarityContrastControlRun) {
+            rarityContrastControlRun = true;
+            const rarityContrastControl = await evalIn(`(()=>{const target=[...document.querySelectorAll('#codexpanel [data-sel="codex-row-rarity"]')]
+              .find(node=>(node.textContent||'').trim()==='Exotic'),prior=target?.getAttribute('style')??null,
+              options={surface:'compendium-rarity-contrast-control',root:'#codexpanel',textMin:1,interactiveRoots:[],
+                contrastSelectors:['#codexpanel [data-sel="codex-row-rarity"]'],maxContrastReports:16},
+              exotic=(rows)=>rows.filter(row=>row.code==='TEXT_CONTRAST_LOW'&&row.actual?.sample==='Exotic');
+              if(!target||prior===null)return {ok:false,why:'visible Exotic rarity target missing',count:document.querySelectorAll('#codexpanel [data-sel="codex-row-rarity"]').length};
+              let baseline=[],broken=[],restored=[],error=null;
+              try{baseline=exotic(window.__CF_GLASS_AUDIT__.audit(options));
+                target.style.setProperty('background-color','transparent','important');
+                broken=exotic(window.__CF_GLASS_AUDIT__.audit(options));}
+              catch(cause){error=String(cause?.message||cause);}
+              finally{target.setAttribute('style',prior);}
+              try{restored=exotic(window.__CF_GLASS_AUDIT__.audit(options));}
+              catch(cause){error=error||String(cause?.message||cause);}
+              const after=target.getAttribute('style');
+              return {ok:error===null&&baseline.length===0&&broken.length===1&&broken[0]?.actual?.ratio<4.5
+                &&restored.length===0&&(${sameInlineStyleAttribute.toString()})(prior,after),
+                prior,after,baseline,broken,restored,error};})()`);
+            if (!rarityContrastControl?.ok) {
+              instrumentFailures.push(`${vp.label}: opaque Exotic rarity contrast control stayed green or failed exact restoration (${JSON.stringify(rarityContrastControl)})`);
+            }
+            recordControls('rarity-opaque-contrast');
+          }
           if (vp.label === 'phone-landscape' && item.id === 'codex') {
             /* Exercise the repaired short-landscape workspace against real
                virtual rows, not a convenient fixed-height surrogate. The
@@ -9707,6 +9853,40 @@ async function main() {
             ? ['#setpanel [data-pnx]', '#setvol', '#setglass', '#setimport'] : [])],
           overlapPairs: [['#setpanel', '#dock']],
         }));
+        if (vp.label === 'laptop-720p') {
+          const settingsCloseClearance = await evalIn(SETTINGS_CLOSE_CLEARANCE_EXPRESSION);
+          addOutcome(vp.label, 'settings-close-clearance', 'SETTINGS_CLOSE_GUTTER_CLEARANCE', '#setsnd, #setpanel [data-pnx]',
+            settingsCloseClearance,
+            'the short-laptop Sound control remains horizontally outside the sticky Close target even when their vertical centres align');
+          if (!settingsCloseClearanceControlRun) {
+            settingsCloseClearanceControlRun = true;
+            const settingsCloseClearanceControl = await evalIn(`(()=>{const panel=document.getElementById('setpanel'),
+              close=panel?.querySelector(':scope > [data-pnx="set"]')??null,heading=panel?.querySelector(':scope > h3')??null;
+              if(!panel||!close||!heading)return {ok:false,why:'Settings clearance control targets missing'};
+              const prior={panel:panel.getAttribute('style'),close:close.getAttribute('style'),heading:heading.getAttribute('style'),
+                left:panel.scrollLeft,top:panel.scrollTop};let injected=null,error=null;
+              try{panel.style.setProperty('padding-right','14px','important');close.style.setProperty('transform','none','important');
+                heading.style.setProperty('clear','none','important');injected=${SETTINGS_CLOSE_CLEARANCE_EXPRESSION};}
+              catch(cause){error=String(cause?.message||cause);}
+              finally{if(prior.panel===null)panel.removeAttribute('style');else panel.setAttribute('style',prior.panel);
+                if(prior.close===null)close.removeAttribute('style');else close.setAttribute('style',prior.close);
+                if(prior.heading===null)heading.removeAttribute('style');else heading.setAttribute('style',prior.heading);
+                panel.scrollLeft=prior.left;panel.scrollTop=prior.top;}
+              const after={panel:panel.getAttribute('style'),close:close.getAttribute('style'),heading:heading.getAttribute('style'),
+                left:panel.scrollLeft,top:panel.scrollTop},restored=${SETTINGS_CLOSE_CLEARANCE_EXPRESSION};
+              return {ok:error===null&&injected?.ok===false&&injected?.overlap===true
+                &&injected?.hit==='[data-pnx="set"]'&&restored?.ok===true
+                &&(${sameInlineStyleAttribute.toString()})(prior.panel,after.panel)
+                &&(${sameInlineStyleAttribute.toString()})(prior.close,after.close)
+                &&(${sameInlineStyleAttribute.toString()})(prior.heading,after.heading)
+                &&prior.left===after.left&&prior.top===after.top,
+                prior,after,injected,restored,error};})()`);
+            if (!settingsCloseClearanceControl?.ok) {
+              instrumentFailures.push(`${vp.label}: removed Settings Close gutter did not recreate overlap and restore exactly (${JSON.stringify(settingsCloseClearanceControl)})`);
+            }
+            recordControls('settings-close-gutter-clearance');
+          }
+        }
         const settingsWidthCheck = `(()=>{ const panel=document.getElementById('setpanel');
           return panel?{ok:panel.scrollWidth<=panel.clientWidth+1,scrollWidth:panel.scrollWidth,clientWidth:panel.clientWidth}: {ok:false,why:'missing'}; })()`;
         addOutcome(vp.label, 'settings', 'SETTINGS_HORIZONTAL_OVERFLOW', '#setpanel', await evalIn(settingsWidthCheck),
@@ -10060,6 +10240,15 @@ async function main() {
   if (!controlsRun && !targetedProductBlocked) instrumentFailures.push('injected matrix controls never ran');
   if (!hpControlRun && !targetedProductBlocked) instrumentFailures.push('HP dual-background contrast control never ran');
   if (!settingsWidthControlRun && !targetedProductBlocked) instrumentFailures.push('Settings horizontal-overflow control never ran');
+  if (!rarityContrastControlRun && !targetedProductBlocked) instrumentFailures.push('opaque rarity contrast control never ran');
+  if (!orbitalContainmentControlRun && !targetedProductBlocked
+    && MATRIX_VIEWPORTS.some((vp) => vp.label === 'small-phone')) {
+    instrumentFailures.push('small-phone live orbital containment/scroll control never ran');
+  }
+  if (!settingsCloseClearanceControlRun && !targetedProductBlocked
+    && MATRIX_VIEWPORTS.some((vp) => vp.label === 'laptop-720p')) {
+    instrumentFailures.push('short-laptop Settings Close-gutter control never ran');
+  }
   if (!planetsideControlRun && !targetedProductBlocked) instrumentFailures.push('Planetside surface-ownership controls never ran');
   if (!panelPlanetsideControlRun && !targetedProductBlocked) instrumentFailures.push('panel/Planetside synthesized layering control never ran');
   if (!chromeYieldControlRun && !targetedProductBlocked) instrumentFailures.push('mobile chrome yield control never ran');

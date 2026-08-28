@@ -11,7 +11,21 @@ expeditions, breeding, live combat and Guardians remain
 **not implemented** unless a row below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
 
-> **2026-08-27 current evidence/repair overlay:** signed evidence source
+> **2026-08-27 Final4 Glass recipe-oracle correction — current repair:** `earpiece`,
+> `diplobeacon` and `rl-mind` already carry `contact` effects consumed by the live
+> contact/capture-support capability and odds projection. Final4 Glass was wrong because its
+> independent Engineering recipe oracle still classified those three effects as unavailable. The
+> repair marks their oracle effect support live; it changes no product behavior, recipe availability,
+> cost, prerequisite, capacity/headroom rule, item definition or progression.
+>
+> Signed clean source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied Final4 Layout
+> 787/787, SceneMemory 42/42, Compendium 78/78 and Slice PASS with ten screenshots and zero findings;
+> every named verifier passed. Glass then ran once across all 12 viewports, retained 46 findings and
+> five instrument failures, and stopped without retry before recovery. The bounded oracle/product
+> repair remains uncertified until one new signed clean source completes a fresh Final5 chain from
+> Layout. No current-source Glass, recovery, whole-Gate, hosted, HUMAN or release claim exists.
+
+> **Historical post-`7362a0e…`, pre-Final2 evidence/repair boundary:** signed evidence source
 > `7362a0ea32e90b24e4988c81d566b82e20549e66` passed standalone SceneMemory 42/42 and its named
 > verifier. Its serial chronology retained a Layout 787/787 result carrier plus source-bound
 > SceneMemory 42/42 and Compendium 78/78 carriers, each once with named verification. Layout schema
@@ -20,11 +34,12 @@ does not silently promote planned behavior into the in-game Guide.
 > stopped terminal-red on preserved stale harness assumptions after product hardening; it was not
 > retried, and Glass and recovery did not run.
 >
-> The current repaired working tree changes only evidence oracles, their focused tests and
-> evidence/documentation carriers. Its complete browser-free battery is green at 134 files / 1,474
-> passed / one intentional skip. It must become a new signed clean commit, then restart the complete
-> fail-fast chain from Layout with fresh run IDs on one unchanged source. There is no later browser
-> result, publication, hosted attempt, release, deployment, version bump or external authority.
+> The then-current repaired working tree changed only evidence oracles, their focused tests and
+> evidence/documentation carriers. Its complete browser-free battery was green at 134 files / 1,474
+> passed / one intentional skip. It still had to become a new signed clean commit and restart the
+> complete fail-fast chain from Layout with fresh run IDs on one unchanged source. At that boundary
+> there was no later browser result, publication, hosted attempt, release, deployment, version bump
+> or external authority.
 >
 > Earlier current-input history has six preserved terminal-red, one-attempt/zero-retry runs.
 > Signed-clean source
@@ -42,8 +57,9 @@ does not silently promote planned behavior into the in-game Guide.
 > rebinds the active Training lesson after replacing its action DOM. A subsequent whole-candidate
 > review found additional work in canonical world identity, F4/storage convergence, repository
 > races, texture cleanup, complete settings/read-only coverage and bound evidence sequencing.
-> Those repairs remain part of the current source. No current certifying Slice PASS, Glass result or
-> recovery certificate exists.
+> Those repairs remain part of the current source. At that sixth-red boundary, no certifying Slice
+> PASS, Glass result or recovery certificate existed; the Final4 successor and pending Final5 state
+> are recorded in the current overlay above.
 > F4 convergence now latches and schedules its single replacement before fallible repaint work. If
 > authority is lost with full Shipyard open, the surface immediately becomes one read-only preview
 > with zero Engineering actions and exact app/DOM/diagnostic identity; a repaint error is witnessed

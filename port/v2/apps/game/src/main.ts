@@ -2161,7 +2161,7 @@ function mountCodexRow(row: CodexVirtualRow, generation: number): {
   image.height = 132;
   const copy = document.createElement('span');
   copy.className = 'compendium-row-copy';
-  copy.innerHTML = `<b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${rarityView ? ` · <span data-sel="codex-row-rarity" style="color:${esc(rarityView.hex)}">${esc(rarityView.name)}</span>` : ''}${e.hybrid ? ' · hybrid' : ''}</span>` +
+  copy.innerHTML = `<b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${rarityView ? ` · <span class="rarity-badge" data-sel="codex-row-rarity" style="color:${esc(rarityView.hex)}">${esc(rarityView.name)}</span>` : ''}${e.hybrid ? ' · hybrid' : ''}</span>` +
     `<span class="sub compendium-row-origin">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</span>`;
   button.append(image, copy);
   let binding: SpeciesThumbBinding | null = null;
@@ -2274,7 +2274,7 @@ function fillCodexDetail(idx: number): void {
       '<img data-sel="detail-portrait" data-art-state="placeholder" alt="" width="440" height="440" ' +
       'style="width:100%;height:auto;border-radius:10px;border:1px solid #22304a;margin:2px 0 8px;background:#0b1220">' +
       `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
-      (rarityView ? ` <span data-sel="detail-grade" style="border:1px solid ${esc(rarityView.hex)};color:${esc(rarityView.hex)};border-radius:999px;padding:1px 9px;font-size:11px">${esc(rarityView.name)}</span>` : '') +
+      (rarityView ? ` <span class="rarity-badge" data-sel="detail-grade" style="border:1px solid ${esc(rarityView.hex)};color:${esc(rarityView.hex)};border-radius:999px;padding:1px 9px;font-size:11px">${esc(rarityView.name)}</span>` : '') +
       `<div class="sub">${esc(e.kind)} · ${esc(e.realm)}${e.hybrid ? ' · hybrid' : ''}${e.from ? ' · ' + esc(e.from) : ''}</div></div>` +
       `<div style="color:#b7c8e4;margin-bottom:8px" data-sel="detail-desc">${esc(d.desc || '')} ${esc(d.detail || '')}</div>` +
       KEYS.map((k, i) => {
