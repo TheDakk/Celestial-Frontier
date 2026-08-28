@@ -78,20 +78,27 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-27 local candidate boundary — signed Final4 reached Glass, then stopped on five
-> instrument failures:** signed clean source `041d1cfdff28c4217d699bdb26eacd5f792f7a80`
-> passed Layout `20260827-phase4-final4-041d1cfdff28-layout` 787/787, SceneMemory
-> `20260827-phase4-final4-041d1cfdff28-scenemem` 42/42, Compendium
-> `20260827-phase4-final4-041d1cfdff28-compendium` 78/78, and Slice
-> `20260827-phase4-final4-041d1cfdff28-slice` with ten screenshots and zero findings. Every stage
-> passed named verification. Glass `20260827-phase4-final4-041d1cfdff28-glass` then ran once across
-> all 12 viewports, retained 46 findings and five instrument failures, and stopped without retry;
-> recovery did not start. Diagnosis found stale title-length, generic-scroll-restoration, off-card
-> orbital-control and Shipyard contact-effect oracles plus real laptop sticky-Close overlap and 2.86:1 Exotic text
-> contrast. The bounded product and harness repairs are now applied locally but uncertified. A new
-> signed clean source must restart a complete fresh Final5 campaign at Layout. No Gate, recovery,
-> publication, hosted, release, deployment, version-bump or external authority exists. Edge
-> `151.0.4129.107` / CDP `1.3` is provenance only and never triggers a rebaseline or threshold change.
+> **2026-08-27 local candidate boundary — signed Final5 stopped at Compendium, repaired Final6
+> checkpoint next:** signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` produced
+> Layout report `20260827-phase4-final5-39e4f20fb35e-layout` at 787/787 and source-bound
+> SceneMemory report `20260827-phase4-final5-39e4f20fb35e-scenemem` at 42/42. Compendium
+> `20260827-phase4-final5-39e4f20fb35e-compendium` then ran once, stopped `instrument-fail`
+> after 3,237 ms and retained zero product outcomes out of 78 expected. It was not retried; Slice,
+> Glass and recovery did not start. The cold-key oracle incorrectly required eight mounted fixture
+> keys to outnumber eight pre-arm cached keys even though direct evidence proved the errored row's
+> exact visual key absent from the cached set. This is an instrument/cardinality defect, not a
+> Compendium product verdict.
+>
+> The bounded exact-membership repair changes the current Compendium collector to `c13a489d…3faab`,
+> outcome contract to `ac7eea39…6d17`, measurement authority to `28b06f3c…276c` and budget-file
+> SHA-256 to `3e660742…2ae5`. Producer `bf9ad0b6…4dcb`, all numeric ceilings and historical
+> calibration samples remain unchanged. The browser-free battery is green at 135 files / 1,479
+> passed / one intentional skip with TypeScript, build, evidence selftests and root validation also
+> green. These changed evidence bytes require a newly signed clean Final6 checkpoint and a complete
+> fresh chain from Layout; Final5 cannot resume. No Gate, Compendium product PASS, Slice, Glass,
+> recovery, publication, hosted, release, deployment, version-bump or external authority exists.
+> Edge `151.0.4129.107` / CDP `1.3` is provenance only and never triggers a rebaseline or threshold
+> change. Exact carriers, sizes and hashes are inventoried in `audits/README.md`.
 >
 > Within that boundary, Gate
 > B recursively seals an exact 62-file domain inventory against DOM, storage, `navigator`, network,
@@ -232,14 +239,15 @@
 > stage (primary, backup and absent-primary variants), corrects the Arc 4 owned-release read oracle,
 > and updates player truth copy. Final3 Layout passed, then SceneMemory stopped before measurement
 > because the budget still named the prior build and `main.ts`; browser-free derivation also found
-> Compendium's built index/owner producer stale. The bounded current repair rebinds only live
+> Compendium's built index/owner producer stale. The bounded then-current pre-Final4 repair rebinds only live
 > producer records and makes `npm test` compare both against independently built current bytes with
 > directional mutants. Historical rulers/samples and every numeric ceiling remain unchanged. Its
 > full browser-free battery is green and three independent final binding/test, whole-diff, and
 > documentation/evidence reviews are CLEAR. That repair became signed clean `041d1cf…`; Final4 then
-> passed Layout, SceneMemory, Compendium and Slice before the preserved Glass instrument stop in the
-> status overlay. The bounded Glass/product repairs now require a new signed source and fresh
-> Final5 restart from Layout. Root Gate A separately accepts
+> passed Layout, SceneMemory, Compendium and Slice before the preserved Glass instrument stop. Its
+> bounded repair became signed `39e4f20…`; Final5 passed Layout and SceneMemory before the preserved
+> Compendium membership-oracle instrument stop. The current evidence repair requires a newly signed
+> clean Final6 restart from Layout. Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
 > never repins, rebaselines or moves a root threshold. Post-start audio, current Glass and
@@ -1413,9 +1421,12 @@ Layout green, but SceneMemory stopped before product measurement on stale live s
 so Compendium did not run. The current source-derived repair binds Compendium producer `4b5aa3a3…`
 under budget `f0bedb67…3c64` without changing its measurement authority, fixed ruler, samples or
 ceilings. That rebind became signed source `041d1cf…`, whose Final4 Compendium stage passed 78/78
-after green Layout and SceneMemory predecessors. Slice then passed; Glass stopped on the preserved
-instrument evidence described in the status overlay. The local repair requires a new signed source
-and fresh Final5 restart from Layout; current Glass and recovery evidence remain pending.
+after green Layout and SceneMemory predecessors. Slice then passed; Glass stopped on preserved
+instrument evidence. Signed repair source `39e4f20…` supplied Final5 Layout 787/787 and SceneMemory
+42/42 before Compendium stopped at 0/78 on the cardinality oracle, without a product verdict. The
+exact-membership repair changes collector/outcome-contract/measurement and live budget-file hashes,
+not the producer or numeric ruler, and requires fresh Final6 from Layout; current Compendium product,
+Slice, Glass and recovery evidence remain pending.
 
 ### 5.2 Arc 3 — engineering loop
 
@@ -1583,9 +1594,11 @@ staging and owns zero stale / one publication release read. Its final3 Layout pa
 SceneMemory stopped pre-measurement on stale live producer binding; the browser-free repair now
 rebinds SceneMemory budget `47d24080…775b` and Compendium budget `f0bedb67…3c64` and adds the
 source-derived regression. Signed `041d1cf…` then passed Final4 Layout, SceneMemory, Compendium and
-Slice before Glass stopped once with 46 findings and five instrument failures. Post-start audio,
-current Glass and recovery remain unproved. The bounded local repair must become a new signed clean
-source and complete a fresh Final5 restart from Layout before any current PASS claim.
+Slice before Glass stopped once with 46 findings and five instrument failures. Its repair became
+signed `39e4f20…`, whose Final5 Layout and SceneMemory reports passed before Compendium stopped on
+the cardinality-oracle instrument defect. Post-start audio, current Compendium product, Slice,
+Glass and recovery remain unproved. The exact-membership repair must become a newly signed clean
+source and complete a fresh Final6 restart from Layout before any current PASS claim.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.

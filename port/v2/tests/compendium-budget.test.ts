@@ -131,8 +131,10 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '117931bf31aa6f1011f960935e5fe34839917404c8094a6141b0f324e2b94806';
+  '28b06f3cb26cd5570fa7bbe7565c410e30db3dd11bb0960919bb2e34cda5276c';
 const EXPECTED_COLLECTOR_AUTHORITY =
+  'c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab';
+const RULER_COLLECTOR_AUTHORITY =
   '18e05ddf03551e7ec5d8352280ed5ad43fa6bf684f1ebecca1242890e02c3d88';
 const HISTORICAL_MEASUREMENT_AUTHORITY =
   '6a961df806e460d6ed02600f5366485d09d0878efa0129960b683cc4037173c7';
@@ -1122,7 +1124,7 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(report.budget.observedProducerAuthority)
         .toEqual(HISTORICAL_PHASE4_PRODUCER_AUTHORITY);
       expect(report.budget.producerAuthority).not.toEqual(budget.producerAuthority);
-      expect(report.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
+      expect(report.inputs.collector).toBe(RULER_COLLECTOR_AUTHORITY);
       expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
         .toBe(RULER_MEASUREMENT_AUTHORITY);
       expect(report.outcomes).toHaveLength(78);
@@ -1363,7 +1365,7 @@ describe('Arc 1A Compendium budget authority', () => {
 
     expect(fileSha256(budgetPath)).not.toBe(historicalPhase4CertificationEvidence.budgetSha256);
     expect(report.inputs.budget).toBe(historicalPhase4CertificationEvidence.budgetSha256);
-    expect(report.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
+    expect(report.inputs.collector).toBe(RULER_COLLECTOR_AUTHORITY);
     expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
       .toBe(historicalPhase4CertificationEvidence.measurementAuthoritySha256);
     expect(historicalPhase4CertificationEvidence.measurementAuthoritySha256)

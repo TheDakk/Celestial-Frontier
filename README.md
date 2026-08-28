@@ -29,21 +29,26 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-27; Final4 reached Glass, whose instrument stop is
-preserved):** signed clean source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` passed Layout
-787/787, SceneMemory 42/42, Compendium 78/78 and Slice with all ten screenshots and zero findings;
-each stage also passed named verification. Full Glass then ran once, reported 46 findings and five
-instrument failures across all 12 viewports, and stopped the chain without a retry; recovery did
-not start. Diagnosis separated stale evidence assumptions from two real presentation defects: a
-valid four-character **Mars** title was rejected by the old minimum length, a generic audit
-displaced the Survey scroller, the later orbital control sampled the already-rendered row while
-off-card without centring it or proving exact restoration, and Shipyard's oracle still marked
-`earpiece`, `diplobeacon` and `rl-mind` contact effects unavailable. The actual
-product findings were an overlapping sticky Close target at laptop 1280×720 and Exotic rarity
-text at 2.86:1 over bright glass. Those bounded product and harness repairs are applied locally but
-remain uncertified. They require a new signed clean source and a complete fresh Final5 restart at
-Layout; no Gate, recovery, hosted, HUMAN or release claim follows from Final4. Edge
-`151.0.4129.107` / CDP `1.3` is retained provenance only and is not a rebaseline trigger.
+**Current local v2 candidate (2026-08-27; Final5 stopped fail-closed at Compendium):** signed clean
+source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` produced Layout report
+`20260827-phase4-final5-39e4f20fb35e-layout` at 787/787 and source-bound SceneMemory report
+`20260827-phase4-final5-39e4f20fb35e-scenemem` at 42/42. Compendium then ran once as
+`20260827-phase4-final5-39e4f20fb35e-compendium`, stopped `instrument-fail` after 3,237 ms and
+retained zero product outcomes out of 78 expected. It was not retried; Slice, Glass and recovery did
+not start. The instrument incorrectly required eight mounted fixture keys to outnumber eight
+pre-arm cached keys even though direct evidence proved the errored row's exact key was absent from
+that cache. This is a cardinality-oracle defect, not a Compendium product verdict. Exact report
+carriers, sizes and hashes are preserved in [`audits/README.md`](audits/README.md).
+
+The bounded repair now proves exact set membership and rejects cached/wrong keys. Current
+Compendium authorities are collector `c13a489d…3faab`, outcome contract `ac7eea39…6d17`,
+measurement `28b06f3c…276c`, budget-file `3e660742…2ae5` and unchanged producer
+`bf9ad0b6…4dcb`; every numeric ceiling remains unchanged. The browser-free battery is green at
+135 files / 1,479 passed / one intentional skip, with TypeScript, build, evidence selftests and root
+validation/fingerprint also green. These changed evidence bytes require a newly signed clean
+checkpoint and a complete fresh Final6 chain from Layout; Final5 cannot resume. No current
+Compendium product PASS, Slice, Glass, recovery, whole-Gate, hosted, HUMAN or release claim exists.
+Edge `151.0.4129.107` / CDP `1.3` is per-run provenance only, never a rebaseline trigger.
 
 The current working tree otherwise completes the bounded source lanes that followed the retained
 Arc 5A checkpoint.
@@ -163,12 +168,11 @@ v2 embeds no Git/source identity and that non-commit-tagged run lacks a preserve
 so it is result provenance rather than standalone exact-source evidence. Slice was not retried;
 Glass and recovery did not run.
 The later signed Final4 source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` completed all four
-green predecessors before Glass produced the preserved instrument stop described above. The current
-working tree now contains the bounded product, oracle and negative-control repair for those
-findings. It must become a new signed clean commit, then restart the complete fail-fast Final5 chain
-from Layout with fresh run IDs on that one unchanged source. There is no later browser result,
-publication, hosted attempt, release, deployment, version bump or external authority. Compatible
-Edge or Chrome point updates remain run provenance only and never trigger calibration, rebaselining,
+green predecessors before Glass produced its preserved instrument stop. Its bounded product/oracle
+repair became signed source `39e4f20…`; that source supplied the Final5 Layout and SceneMemory
+PASS reports before the one-attempt Compendium instrument stop summarized above. The current
+membership-oracle repair requires a newly signed clean Final6 restart from Layout. Compatible Edge
+or Chrome point updates remain run provenance only and never trigger calibration, rebaselining,
 repinning or a threshold change.
 
 Earlier current-input history retains six one-attempt/zero-retry reds. Signed-clean source
@@ -181,7 +185,7 @@ clocks, contextless blocked audio state, committed-only epoch timing and Survey/
 ownership—were locally repaired with negative controls. Compendium and SceneMemory retain separate
 sealed Edge-family + CDP `1.3` capability/profile authorities. At that sixth-red boundary, no
 certifying Slice PASS, Glass result or recovery certificate existed; the signed Final4 result and
-the still-pending current-source Final5 chain are summarized above.
+later Final5 stop are summarized above.
 
 The retained Arc 4/5A checkpoint remains useful historical foundation. Its source-addressed Guide
 kept all 9 categories /43 authored IDs /41 player topics searchable and cross-linked; 24 topics

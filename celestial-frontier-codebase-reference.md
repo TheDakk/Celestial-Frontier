@@ -6,7 +6,29 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-27.**
 >
-> **2026-08-27 Final4 Glass repair overlay — current local candidate:** signed clean source
+> **2026-08-27 Final5 Compendium instrument-stop overlay — current local candidate:** signed clean
+> source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` supplied Layout report
+> `20260827-phase4-final5-39e4f20fb35e-layout` at 787/787 and source-bound SceneMemory report
+> `20260827-phase4-final5-39e4f20fb35e-scenemem` at 42/42. Compendium
+> `20260827-phase4-final5-39e4f20fb35e-compendium` ran once, stopped `instrument-fail` after
+> 3,237 ms with zero retained product outcomes out of 78 expected, and was not retried. Slice,
+> Glass and recovery did not start. The report retained a partial non-certifying phone profile, no
+> desktop profile, no review PNGs and no Compendium product verdict.
+>
+> The failed cold-key proof compared eight mounted fixture keys with eight pre-arm cached
+> Planetside keys. Direct evidence already showed the errored row's exact visual key absent from the
+> cached set and bound exactly one errored row plus one `jobError`; equal counts were not equal
+> membership. The repair now requires exact key absence and rejects cached/wrong keys. Current
+> collector `c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab`, outcome
+> contract `ac7eea3939c32f893620e28fde58a8c12bb21d788d029cb7db60bc2eda216d17`, measurement
+> `28b06f3cb26cd5570fa7bbe7565c410e30db3dd11bb0960919bb2e34cda5276c` and budget-file
+> SHA-256 `3e6607420342b878bf3f1bc0be562eed72bcbd5206534eda3c85d3ff1c652ae5` change; producer
+> `bf9ad0b6623913bfff5b5e79a8ed9ac7dbe49424b608bc9fee8621e5c4874dcb`, numeric ceilings and
+> historical samples stay fixed. The changed evidence bytes require a newly signed clean Final6
+> checkpoint and complete fresh chain from Layout; Final5 cannot resume. Edge
+> `151.0.4129.107` / CDP `1.3` is provenance only, never a pin or rebaseline trigger.
+>
+> **2026-08-27 Final4 Glass repair overlay — historical pre-Final5 source:** signed clean source
 > `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied fresh named Layout 787/787,
 > SceneMemory 42/42, Compendium 78/78 and a ten-screenshot Slice PASS on one unchanged source.
 > Full Glass then ran once, stopped `instrument-fail`, preserved its report and did not start
@@ -290,9 +312,11 @@
 > browser-free battery, authority printer and root validator pass; three independent final
 > binding/test, whole-diff, and documentation/evidence reviews were CLEAR. The repair became signed
 > clean source `041d1cf…`, whose Final4 Layout, SceneMemory, Compendium and Slice stages passed before
-> Glass stopped on the preserved instrument report. The current bounded Glass/product repair makes
-> those predecessors historical and requires a fresh signed Final5 chain from Layout; current-source
-> Glass, recovery and whole-Gate evidence remain open.
+> Glass stopped on the preserved instrument report. Its bounded repair became signed `39e4f20…`,
+> whose Final5 Layout and SceneMemory reports passed before Compendium stopped instrument-only at
+> 0/78. The current exact-membership repair makes those predecessors historical and requires fresh
+> signed Final6 from Layout; current Compendium product, Slice, Glass, recovery and whole-Gate
+> evidence remain open.
 >
 > Current-input Slice retains eight one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > The first five remain preserved historical diagnosis. Signed-clean source
@@ -324,8 +348,10 @@
 > release read. Signed `5ddddbf…` contains that repair. Its final3 SceneMemory instrument stop and
 > source-derived live-binding repair required both memory gates to repeat inside fresh Final4
 > without recalibration; signed `041d1cf…` then passed Final4 Layout, SceneMemory, Compendium and
-> Slice before Glass stopped with 46 findings and five instrument failures. The bounded local repair
-> must now complete fresh Final5 from Layout. Root Gate A separately
+> Slice before Glass stopped with 46 findings and five instrument failures. Its repair became signed
+> `39e4f20…`; Final5 passed Layout and SceneMemory before Compendium's cardinality oracle stopped the
+> chain without a product verdict. The exact-membership repair must now complete fresh Final6 from
+> Layout. Root Gate A separately
 > accepts compatible Chromium family + CDP `1.3` only after exercising the exact CDP inventory
 > derived from `tools/uilayout.js` + `tools/bootperf.js` and recording complete per-run provenance;
 > point version alone never repins, rebaselines or moves a root threshold. No current-source Glass
@@ -2810,19 +2836,20 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current local candidate snapshot (2026-08-27):** signed clean source `041d1cf…` supplied Final4
-Layout 787/787, SceneMemory 42/42, Compendium 78/78 and Slice PASS with ten screenshots and zero
-findings; every named verifier passed. Glass then ran once across all 12 viewports, retained 46
-findings and five instrument failures, and stopped without retry before recovery. The six exact
-Final4 carriers and hashes are preserved in `audits/README.md`. The bounded product/harness repair
-is browser-free green at 135 Vitest files / 1,479 passed / one intentional skip, all TypeScript and
-`noUnusedLocals` programs, the 887-module build, authority printer, Glass/Slice/recovery selftests
-and root validation with the unchanged determinism fingerprint. Current source-derived budgets are
-SceneMemory `a23a3d80…8355` and Compendium `858c2503…8f6`, with Compendium producer
-`bf9ad0b6…4dcb`; no numeric ruler, historical sample or ceiling changed. Independent Glass,
-whole-diff and documentation reviews are CLEAR. The worktree still needs one signed clean Final5
-checkpoint and the complete fresh chain from Layout. No current-source browser PASS, recovery,
-hosted/HUMAN whole-Gate or release authority exists. Earlier `bb5dc7c7…` and `862a75b…` reds,
+**Current local candidate snapshot (2026-08-27):** signed clean source `39e4f20…` supplied Final5
+Layout 787/787 and source-bound SceneMemory 42/42. Compendium then ran once, stopped
+`instrument-fail` after 3,237 ms with 0/78 retained product outcomes and was not retried; Slice,
+Glass and recovery did not start. The three exact Final5 carriers and hashes are preserved in
+`audits/README.md`. The exact-membership repair is browser-free green at 135 Vitest files / 1,479
+passed / one intentional skip, all TypeScript and `noUnusedLocals` programs, the 887-module build,
+authority printer, Smoke/Glass/recovery/Compendium selftests and root validation with the unchanged
+determinism fingerprint. SceneMemory budget remains `a23a3d80…8355`; repaired Compendium
+collector/outcome-contract/measurement/budget-file are `c13a489d…3faab` / `ac7eea39…6d17` /
+`28b06f3c…276c` / `3e660742…2ae5`, with unchanged producer `bf9ad0b6…4dcb`. No numeric ruler,
+historical sample or ceiling changed. The worktree needs a newly signed clean Final6 checkpoint and
+the complete fresh chain from Layout; Final5 cannot resume. No current Compendium product PASS,
+Slice, Glass, recovery, hosted/HUMAN whole-Gate or release authority exists. Earlier `bb5dc7c7…`
+and `862a75b…` reds,
 calibration source `6c9ad855…`, activation
 `4a54c0d…`, and the historical `7362a0e…` / `b206cf0…` / `5ddddbf…` / `041d1cf…` evidence remain
 truthful for their exact inputs.

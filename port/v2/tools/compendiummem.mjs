@@ -1503,9 +1503,10 @@ async function collectProfile({
 
     /* The one-shot producer failure is exercised before any Compendium owner
        exists. Planetside is the only art owner, so a stable first open whose
-       distinct mounted keys exceed the pre-arm cache cardinality must queue a
-       cold job. Holding that window fixed keeps the exact failed identity in
-       the DOM; close/reopen then retries that same identity without scrolling. */
+       exact mounted key set contains keys absent from the pre-arm cache must
+       queue those cold jobs. Holding that window fixed keeps the exact failed
+       identity in the DOM; close/reopen then retries that same identity without
+       scrolling. */
     producerErrorWitness = {
       schema: PRODUCER_ERROR_WITNESS_SCHEMA,
       preArm: emptyObservationGroup(),

@@ -611,6 +611,15 @@ function producerErrorRowsDistinct(observation) {
     && rows.every((row, index) => row.logicalId && row.visualKey && row.index === index);
 }
 
+function producerErrorColdMountedKeyCount(witness) {
+  const cachedKeys = witness?.preArm?.accepted?.cachedKeys;
+  const rows = witness?.publication?.accepted?.rows;
+  if (!Array.isArray(cachedKeys) || !Array.isArray(rows)) return -1;
+  const cached = new Set(cachedKeys);
+  return new Set(rows.map((row) => row?.visualKey)
+    .filter((key) => typeof key === 'string' && key.length > 0 && !cached.has(key))).size;
+}
+
 export function producerErrorColdProof(witness, profile) {
   return PROFILES.includes(profile) && producerErrorWitnessShape(witness, profile)
     && producerErrorColdProofObservations(witness);
@@ -648,8 +657,7 @@ function producerErrorPublicationWorkBound(witness) {
     - pre.art.totals.jobCompletes;
   const jobErrorDelta = publication.art.totals.jobErrors - pre.art.totals.jobErrors;
   const disposalDelta = publication.art.totals.disposals - pre.art.totals.disposals;
-  const minimumColdStarts = publication.mountedDistinctVisualKeys
-    - pre.art.cachedKeyCount;
+  const minimumColdStarts = producerErrorColdMountedKeyCount(witness);
   const cachedMountedKeys = new Set(publication.rows
     .filter((row) => row.cached).map((row) => row.visualKey)).size;
   return publication.art.cacheLimit === pre.art.cacheLimit
@@ -657,6 +665,7 @@ function producerErrorPublicationWorkBound(witness) {
     && publication.art.live.subscribers === 0
     && leaseAcquireDelta - releaseDelta === publication.mountedRowCount
     && jobStartDelta <= leaseAcquireDelta
+    && minimumColdStarts > 0
     && jobStartDelta >= minimumColdStarts
     && jobStartDelta === jobCompleteDelta + jobErrorDelta
     && jobErrorDelta === 1
@@ -1202,7 +1211,7 @@ function producerErrorColdProofObservations(witness) {
     && publication.sourceCount === 1500 && producerErrorRowsDistinct(publication)
     && publication.mountedDistinctLogicalIds === publication.mountedRowCount
     && publication.mountedDistinctVisualKeys === publication.mountedRowCount
-    && publication.mountedDistinctVisualKeys > pre.art.cachedKeyCount
+    && producerErrorColdMountedKeyCount(witness) > 0
     && publication.rows[0]?.index === 0
     && !pre.cachedKeys.includes(publication.rows[0]?.visualKey);
 }
@@ -1266,7 +1275,9 @@ function validPartialProducerErrorPrefix(measurement, failure) {
     || !groupProgressValid(
       witness.recovery, stages.recovery, completed, measurement.failingStage,
     )) return false;
-  if (completed.has(stages.coldProof) && !producerErrorColdProofObservations(witness)) return false;
+  const coldProofHealthy = producerErrorColdProofObservations(witness);
+  if ((completed.has(stages.coldProof) && !coldProofHealthy)
+    || (measurement.failingStage === stages.coldProof && coldProofHealthy)) return false;
   if (failingIndex < 0) return validProducerErrorWitness(witness, measurement.profile)
     && producerErrorColdProofObservations(witness);
   return true;
