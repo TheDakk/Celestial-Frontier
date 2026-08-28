@@ -1,19 +1,24 @@
 # Celestial Frontier — PROCESS LAWS
 
-> **2026-08-28 Final12 exact-failure-set law:** when a shared semantic predicate is strengthened, one
-> intentional mutant may correctly violate more than one top-level clause. Require its exact full
-> failure set and independently require the nested named diagnosis; do not preserve an obsolete
-> one-red wrapper expectation. Signed clean source
-> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
-> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
-> 42/42 and Compendium 78/78. Slice then ran once with no retry and stopped immutable stored `fail`
-> at `arc-4-stale-convergence`; Glass and Recovery did not run. The real product assessment is
-> wholly green. Only `witnessAuthorityControl` now correctly returns exact double-red
-> [`convergenceRelease`, `oldUiConvergence`] after raw/runtime revision/seed/ordinal/draw binding was
-> strengthened, while the unchanged Slice wrapper expects `convergenceRelease` alone. Product and
-> `slicesmoke.mjs` blobs are unchanged from Final11. Repair that bounded test-harness expectation,
-> then start a new signed clean full chain. No save/version/ruler/browser-policy change or Edge
-> rebaseline follows.
+> **2026-08-28 Final12 exact-failure-set law — repaired:** when a shared semantic predicate is
+> strengthened, one intentional mutant may correctly violate more than one top-level clause.
+> Require its exact ordered full failure set **and** the exact nested named diagnosis; never preserve
+> an obsolete one-red wrapper expectation. Immutable evidence checkpoint
+> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves Final12: three predecessors passed, then
+> Slice ran once/no-retry and remains stored `fail` at `arc-4-stale-convergence`; its product
+> assessment is wholly green and Glass/Recovery did not run. The stored
+> `witnessAuthorityControl` correctly returned [`convergenceRelease`, `oldUiConvergence`] plus
+> nested `beforeAuthority`, while its wrapper expected `convergenceRelease` alone. Signed repair
+> `5ab4d3ec92a7575fc091ca3b2c358ef01927be02` (tree
+> `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three harness/test
+> files to seal the exact top-level order and nested diagnosis. Node/focused 9/9/full 138-file
+> 1,495-pass + 1-skip, validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four
+> mutation selftests, diff-check and two-review browser-free verification is green. No product,
+> assessor predicate, shared helper, persistence, art, save, version, ruler or browser-policy
+> change occurred. The repair remains browser-uncertified: sign this docs-only descendant, then run
+> one fresh once-only Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain
+> with named verification and stop/no-retry on red. Compatible Edge updates never trigger a
+> rebaseline.
 
 **STATUS:** current as of 2026-08-28. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
@@ -154,11 +159,13 @@ defects in the final assessor. Its stored report remains `fail`, with unchanged 
 zero retries and only `activePlayProjection` / `closeCheckpoint` false. The repaired assessor
 independently replays the unchanged `recoveryBundle` wholly green and controls the reported 20 ms/
 322 ms geometry, exact boundary/+1, future/excessive lag and every committed/lost witness field.
-Signed clean Final12 then passed Layout 787/787, SceneMemory 42/42 and Compendium 78/78 before Slice
-stopped once/no retry: the real stale-convergence assessment was wholly green, but the strengthened
-authority mutant correctly failed both `convergenceRelease` and `oldUiConvergence` while the
-unchanged wrapper required only the first. Glass/Recovery did not run. Repair that exact bounded
-harness expectation and start a new signed clean full chain. None of this grants a Recovery
+Immutable Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout 787/787,
+SceneMemory 42/42 and Compendium 78/78 before Slice stopped once/no retry: the real stale-
+convergence assessment was wholly green, but the strengthened authority mutant correctly failed
+both `convergenceRelease` and `oldUiConvergence` while its wrapper required only the first.
+Glass/Recovery did not run. Signed harness repair `5ab4d3e…` is browser-free green but browser-
+uncertified; sign the docs-only descendant and start a fresh once-only Final13 full chain. None of
+this grants a Recovery
 certificate, HUMAN/Gate closure or release authority.
 
 ⚠⚠ **CONTRAST IS THE COMPOSITED READING SURFACE; A CLOSE OWNER NEEDS EXCLUSIVE HEADER

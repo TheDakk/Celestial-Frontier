@@ -1,17 +1,22 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
-> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
-> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
-> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
-> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. The main
-> stale-convergence product assessment is wholly green. Only `witnessAuthorityControl` now correctly
-> returns exact double-red [`convergenceRelease`, `oldUiConvergence`] after strengthened raw/runtime
-> revision/seed/ordinal/draw binding, while the unchanged Slice wrapper expects
-> `convergenceRelease` alone. Product and `slicesmoke.mjs` blobs are unchanged from Final11. Next is
-> a bounded test-harness expectation repair, then a new signed clean full chain. No product, save,
-> preview, version, ruler or browser-policy change occurred; compatible Edge updates never trigger
-> a rebaseline. Final11/Final10 current wording below is historical where superseded.
+> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
+> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
+> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
+> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
+> not run. Its product assessment is wholly green. The stored carrier's deliberate
+> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
+> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
+> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
+> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
+> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
+> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests,
+> diff-check and two-review browser-free verification is green. No product, assessor predicate,
+> shared helper, persistence, art, save, preview, version, ruler or browser-policy change occurred.
+> The repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
+> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
+> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
+> Final12/Final11/Final10 wording below is historical where superseded.
 
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
 as of 2026-08-28. This is not a release record.
@@ -58,11 +63,13 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 Those documentation bytes changed source identity; their signed clean docs-only descendant supplied
-immutable Final11, whose repaired Recovery bundle replay is green. Signed clean Final12
-`509734533dd4…` passed Layout, SceneMemory and Compendium before Slice stopped once/no retry on the
-stale one-red wrapper expectation; its main product assessment remained wholly green, and
-Glass/Recovery did not run. Repair that bounded harness expectation, then restart Layout →
-SceneMemory → Compendium → Slice → Glass → recovery with fresh IDs. Nothing in this
+immutable Final11, whose repaired Recovery bundle replay is green. Immutable Final12, preserved at
+signed evidence checkpoint `2bf99bd…`, passed Layout, SceneMemory and Compendium before Slice
+stopped once/no retry on the stale one-red wrapper expectation; its product assessment remained
+wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixes only that harness
+expectation and is browser-free green but browser-uncertified. After this docs-only descendant is
+signed clean, restart the once-only Final13 Layout → SceneMemory → Compendium → Slice → Glass →
+recovery chain with fresh IDs. Nothing in this
 campaign has been packaged, published, pushed, hosted-tested, merged, versioned or released. Until
 one clean exact final head passes every required local gate and receives separate exact-SHA
 publication authority, no development-preview candidate exists. `--allow-dirty` remains local

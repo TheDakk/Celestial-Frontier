@@ -1,17 +1,22 @@
 # Acceptance rubrics — what "done" means, per gate
 
-> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
-> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
-> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
-> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
-> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. The main
-> stale-convergence product assessment is wholly green. Only `witnessAuthorityControl` now correctly
-> returns exact double-red [`convergenceRelease`, `oldUiConvergence`] after strengthened raw/runtime
-> revision/seed/ordinal/draw binding, while the unchanged Slice wrapper expects
-> `convergenceRelease` alone. Product and `slicesmoke.mjs` blobs are unchanged from Final11. Next is
-> a bounded test-harness expectation repair, then a new signed clean full chain. No product, save,
-> Gate, version, ruler or browser-policy change occurred; compatible Edge updates never trigger a
-> rebaseline. Final11/Final10 current wording below is historical where superseded.
+> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
+> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
+> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
+> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
+> not run. Its product assessment is wholly green. The stored carrier's deliberate
+> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
+> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
+> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
+> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
+> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
+> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests,
+> diff-check and two-review browser-free verification is green. No product, assessor predicate,
+> shared helper, persistence, art, save, Gate, version, ruler or browser-policy change occurred.
+> The repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
+> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
+> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
+> Final12/Final11/Final10 wording below is historical where superseded.
 
 **Current implementation evidence refreshed:** 2026-08-28.
 
@@ -69,11 +74,13 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 This documentation changed source identity; its signed clean docs-only descendant supplied
-immutable Final11, whose repaired Recovery bundle replay is green. Signed clean Final12
-`509734533dd4…` passed Layout, SceneMemory and Compendium before Slice stopped once/no retry on the
-stale one-red wrapper expectation; its main product assessment remained wholly green, and
-Glass/Recovery did not run. Repair that bounded harness expectation, then restart Layout →
-SceneMemory → Compendium → Slice → Glass → recovery. No Recovery PASS/certificate,
+immutable Final11, whose repaired Recovery bundle replay is green. Immutable Final12, preserved at
+signed evidence checkpoint `2bf99bd…`, passed Layout, SceneMemory and Compendium before Slice
+stopped once/no retry on the stale one-red wrapper expectation; its product assessment remained
+wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixes only that harness
+expectation and is browser-free green but browser-uncertified. After this docs-only descendant is
+signed clean, restart the once-only Final13 Layout → SceneMemory → Compendium → Slice → Glass →
+recovery chain. No Recovery PASS/certificate,
 whole-Gate, HUMAN, publication, hosted attempt, release, deployment, version bump or external
 authority exists. Edge `151.0.4129.107` / CDP `1.3` is provenance only; compatible point
 updates never trigger a rebaseline or threshold change.
@@ -234,7 +241,7 @@ ever substitute for a person, and it is deliberately expensive.
 | `[EXEC]` | Multi-generation genome parity | `goldenseeds` covers `crossGenome` at 10,000 seeds |
 | `[EXEC]` | Combat-stat parity | `goldenseeds` covers `battleStats` |
 | `[EXEC]` | Legacy economy manifest/fixed-conversion facts are executable | `@cf/domain-loot` validates all 47 material ids, 62 definitions (20 stackable /42 slotted), 9 slots, 6 literal affixes and magnitude vectors, fixed recipe/prerequisite/Signature graph, recursive bills and salvage-cycle bounds. Focused Arc 2 tests are green. This is conversion/sink truth, not faucet or pacing truth |
-| `[EXEC-TODO]` | Complete economy source/formula/faucet parity | Arc 3 supplies canonical finite mining/skimming sources and receipt-backed settlement. Purchased Deep Scanners now projects one honest ordinary-deposit **Mineral veins** Survey row for the exact eligible scanned registered lifeless non-Earth world, without cosmic/exceptional veins, grade, reserves, progress or Mine. Arc 4's live Survey action settles one genuinely-new capture Stardust award with first-only catalogue facts while repeats create only the eligible individual/lot; its source-bound random-pool odds, shared hit-or-miss Biosphere Yield and burn-down are visible. Final11 completed the uninterrupted next-cycle observation; Final12 stopped at Slice's stale negative-control expectation before Glass/Recovery, so the corrected full-chain Recovery certificate and broader pacing remain open. The Arc 2 source-neutral ledger correctly retains its historical `arc3-deferred` field; combat/mission/new-random-loot faucets, broader pacing, five non-Deep-Scanner research purchases and unavailable fixed outputs remain open |
+| `[EXEC-TODO]` | Complete economy source/formula/faucet parity | Arc 3 supplies canonical finite mining/skimming sources and receipt-backed settlement. Purchased Deep Scanners now projects one honest ordinary-deposit **Mineral veins** Survey row for the exact eligible scanned registered lifeless non-Earth world, without cosmic/exceptional veins, grade, reserves, progress or Mine. Arc 4's live Survey action settles one genuinely-new capture Stardust award with first-only catalogue facts while repeats create only the eligible individual/lot; its source-bound random-pool odds, shared hit-or-miss Biosphere Yield and burn-down are visible. Final11 completed the uninterrupted next-cycle observation; immutable Final12 stopped at Slice's stale negative-control expectation before Glass/Recovery. Signed harness repair `5ab4d3e…` is browser-free green but browser-uncertified, so the fresh Final13 full-chain Recovery certificate and broader pacing remain open. The Arc 2 source-neutral ledger correctly retains its historical `arc3-deferred` field; combat/mission/new-random-loot faucets, broader pacing, five non-Deep-Scanner research purchases and unavailable fixed outputs remain open |
 | `[EXEC]` | **Raw/display rarity separation is an explicit conversion** | `rarity-presentation.ts` is the strict projection boundary: only integer raw tiers 0–14 are accepted, canonical `displayRarity` maps them to the plain 0–9 player vocabulary, and malformed input returns null/no disclosure. Focused tests bind all values and Main's Survey/Compendium consumers to the projector |
 | `[EXEC]` | SessionRNG plans and exact-once product authority are persisted atomically | `player/f4.authority` carries the save-lifetime seed, isolated domain counters and global ordinal; the F3/F4 transaction commits product + next authority + receipt + revision or leaves the same plan replayable. Arc 2 no-RNG actions prove domain counters remain byte-equal while the ordinal advances |
 | `[EXEC-TODO]` | Every legacy outcome roll uses that authority through its real action | The exact 24-site audit classifies 14 outcome and 10 presentation calls. Arc 4's player-live real action consumes isolated persisted `captureCandidate` then `captureSuccess` domains after pre-draw certification and proves counter/value binding through hit/miss, refusal, stale and reload browser outcomes; care, combat, training and the other audited outcome writers remain open |
