@@ -11,8 +11,10 @@
 > This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
 > exact source. It changes no product, persistence, art, save, version, ruler or browser policy.
 > It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment authority;
-> physical-device heat/GPU evidence remains open. Next preserve/sign the evidence and docs, restore
-> monitors-off caffeinate, complete the full-code review/polish checkpoint, then begin authorized
+> physical-device heat/GPU evidence remains open. The seven evidence carriers and synchronized
+> references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
+> Keep temporary full caffeinate active while authorized local work continues, then restore it when
+> that work is complete. Next complete the full-code review/polish checkpoint, then begin authorized
 > current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is provenance only
 > and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
 > below is historical where superseded.

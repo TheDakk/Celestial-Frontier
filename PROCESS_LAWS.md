@@ -11,8 +11,10 @@
 > the stable local Phase-4 automated checkpoint and real Recovery certificate for that exact source;
 > Final11/Final12 remain immutable historical reds. It is not HUMAN judgment, whole-Gate,
 > hosted/merge, release/version or deployment authority, and physical-device heat/GPU evidence
-> remains open. Preserve/sign the evidence and docs, restore monitors-off caffeinate, then complete
-> the full-code review/polish checkpoint before authorized current-system Arc 7/8 universe-wide
+> remains open. The seven evidence carriers and synchronized references are preserved in signed local
+> commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`. Keep temporary full caffeinate active while
+> authorized local work continues, then restore it when that work is complete. Complete the full-code
+> review/polish checkpoint before authorized current-system Arc 7/8 universe-wide
 > visual polish. Edge `.107` / CDP `1.3` is provenance only; compatible updates never rebaseline.
 
 **STATUS:** current as of 2026-08-28. **This is a REFERENCE, not a log** — per CLAUDE.md’s

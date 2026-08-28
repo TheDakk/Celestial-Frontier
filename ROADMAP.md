@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-28 · FINAL13 FULL LOCAL AUTOMATED CHAIN GREEN · PRESERVE, REVIEW, THEN POLISH ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-28 · FINAL13 GREEN CHECKPOINT SIGNED · FULL REVIEW/POLISH NEXT ◀◀◀
 
 ### Exact current boundary
 
@@ -29,12 +29,14 @@ the archive verbatim and refresh this handoff in place.
   `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent
   `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`) remained unchanged and clean throughout the full
   serial campaign. Locally known `origin/develop` remains
-  `7a9f4c1370dd84292388d718c38ff34214f6203b` and fully contained. The working copy now contains
-  only the seven deterministic Final13 gzip carriers and this synchronized evidence/reference
-  update pending a signed local checkpoint.
+  `7a9f4c1370dd84292388d718c38ff34214f6203b` and fully contained. Signed local checkpoint
+  `ff00d166fe66b0e0e16ca227fb389662b12565e4` (tree
+  `7b30f60fe2b686fd4a130ac05e40bdbc234f6ac5`, parent `7cb09699726b…`) preserves the seven
+  deterministic Final13 gzip carriers and synchronized evidence/current references. No product,
+  harness, release or version bytes changed in that checkpoint.
 - **Machine continuity:** temporary `/usr/bin/caffeinate -dis` remains active so macOS and
-  1Password stayed unlocked during the campaign. After the evidence/docs checkpoint is safely
-  signed, restore the monitors-off caffeinate configuration.
+  1Password remain unlocked while the authorized local review and implementation work continues.
+  Restore the monitors-off caffeinate configuration when that work is complete.
 
 ### Exact Final13 automated certificate
 
@@ -74,11 +76,13 @@ the archive verbatim and refresh this handoff in place.
 
 ### Next exact actions
 
-- Preserve the seven immutable Final13 carriers and synchronized current references, verify the
-  evidence inventory/diffs, and create one signed clean local evidence/docs checkpoint. Do not alter
-  the report bytes, rerun the browser chain or infer any broader authority.
-- After that safe endpoint, restore the monitors-off caffeinate configuration.
-- Conduct the planned full-code review and polish checkpoint. Then proceed to the already authorized
+- **Completed:** preserved the seven immutable Final13 carriers and synchronized current references
+  in signed local checkpoint `ff00d16…`; carrier integrity, hashes, archive placement, diff scope and
+  current-status wording passed independent review. Do not alter the report bytes, rerun the browser
+  chain or infer any broader authority.
+- Conduct the planned full-code review and polish checkpoint. Include the nonblocking legacy Slice
+  stdout inventory mismatch (the report/verifier binds ten PNGs while one display line names nine).
+  Then proceed to the already authorized
   current-system Arc 7/8 universe-wide visual polish while keeping later arcs, HUMAN review,
   physical-device heat/GPU evidence and complete Gate closure explicitly open.
 
@@ -92,9 +96,9 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** preserve and sign the exact Final13 evidence/docs checkpoint, verify it is clean,
-  restore monitors-off caffeinate, then perform the full-code review/polish checkpoint before the
-  authorized current-system Arc 7/8 universe-wide visual pass.
+- **OpenAI/Codex:** begin the full-code review/polish checkpoint from signed local evidence checkpoint
+  `ff00d16…`, then perform the authorized current-system Arc 7/8 universe-wide visual pass. Keep full
+  caffeinate active while this authorized local work continues; restore monitors-off when complete.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
   dispatch, rerun, merge, deploy, publish or bump a version.
 - **PR details:** not needed now. If Nick later authorizes the exact GitHub write, use base
