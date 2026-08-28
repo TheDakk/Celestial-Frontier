@@ -1,15 +1,17 @@
 # Celestial Frontier — UI / Presentation System
 
-> **Current Final11 assessor-repair boundary (2026-08-28):** Final11 remains immutable stored
-> `fail` with unchanged hashes, one attempt, zero retries and only `activePlayProjection` /
-> `closeCheckpoint` false. The current repaired assessor independently replays its unchanged
-> `recoveryBundle` wholly green. Durable raw may lead rendered UI only under the existing rendered-
-> to-runtime 10-second bound and exact raw/runtime tuple; close binds latest exhausted live state/UI
-> time, the exact six-key committed/lost hide witness and committed revision outcome. Controls cover
-> the reported 20 ms/322 ms geometry, exact boundary/+1, excessive/future lag and every witness
-> field. This is assessor/tests/docs only, with no UI/product, save, version or browser-policy
-> change. Final11 remains non-certifying; a fresh signed clean full chain is still required. Final10
-> current wording below is historical where superseded.
+> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
+> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
+> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
+> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. The main
+> stale-convergence product assessment is wholly green. The sole stop is its deliberate
+> `witnessAuthorityControl`: strengthened raw/runtime revision/seed/ordinal/draw binding correctly
+> produces exact double-red [`convergenceRelease`, `oldUiConvergence`], while the unchanged Slice
+> wrapper expects only `convergenceRelease`. Product and `slicesmoke.mjs` blobs are unchanged from
+> Final11. Next is a bounded test-harness expectation repair, then a new signed clean full chain.
+> This changes no UI/product, save, version, ruler or browser policy; compatible Edge updates never
+> trigger a rebaseline. Final11/Final10 current wording below is historical where superseded.
 
 > **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
 > `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
@@ -51,12 +53,13 @@
 > `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
 > `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
-> This documentation changes source identity; its signed clean docs-only descendant is the fresh
-> campaign source. It later supplied Final11, whose temporal-oracle stop is described above; Final11
-> is not a Recovery certificate. The current repaired assessor replays its unchanged bundle green,
-> but its signed clean source must restart Layout → SceneMemory → Compendium → Slice → Glass →
-> recovery. Edge `151.0.4129.107` / CDP `1.3`
-> is provenance only and never triggers rebaselining.
+> This documentation changed source identity; its signed clean docs-only descendant later supplied
+> immutable Final11. The repaired assessor replayed that unchanged Recovery bundle green. Signed
+> clean Final12 `509734533dd4…` then passed Layout, SceneMemory and Compendium before Slice stopped
+> once/no retry on the stale one-red wrapper expectation described above; its main product assessment
+> remained wholly green, and Glass/Recovery did not run. Repair only that bounded harness expectation,
+> then restart Layout → SceneMemory → Compendium → Slice → Glass → recovery. Edge
+> `151.0.4129.107` / CDP `1.3` is provenance only and never triggers rebaselining.
 
 > **Historical Final7 Glass stop and bounded presentation repair:** signed
 > clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` passed Layout 787/787,
@@ -259,9 +262,10 @@
 > `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`; this docs descendant does
 > not turn them into exact-head, hosted, integration, preview/publication or HUMAN evidence. At
 > that historical checkpoint, Arc 4 remained **[PARTIAL]** for a real 20-minute next-cycle recovery
-> observation and combined HUMAN first-journey review; Final11 later completed the observation and
-> remains stored assessor-red, while the repaired assessor's green bundle replay still requires a
-> fresh full chain before certification.
+> observation and combined HUMAN first-journey review. Final11 later completed the observation and
+> remains stored assessor-red, while its repaired bundle replay is green. Final12 then passed Layout,
+> SceneMemory and Compendium before Slice's stale negative-control expectation stopped the chain;
+> Glass/Recovery did not run, so a repaired fresh full chain remains required before certification.
 
 > **2026-08-25 Arc 3 Engineering UI overlay — historical evidence foundation through `c4a02be`;
 > current product behavior corrected locally 2026-08-27:** the former read-only

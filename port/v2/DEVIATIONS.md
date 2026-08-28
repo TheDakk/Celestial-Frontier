@@ -1,15 +1,17 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **Current Final11 assessor-repair boundary (2026-08-28):** Final11 remains immutable stored
-> `fail` with unchanged hashes, one attempt, zero retries and exactly two false checks. The current
-> repaired assessor independently replays its unchanged `recoveryBundle` wholly green. Durable raw
-> may lead rendered UI only under the existing rendered-to-runtime 10-second bound and exact raw/
-> runtime tuple; close binds latest exhausted live state/UI time, the exact six-key committed/lost
-> hide witness and committed revision outcome. Controls cover the reported 20 ms/322 ms geometry,
-> exact boundary/+1, future/excessive lag and every witness field. This is assessor/tests/docs only,
-> with no product, save, version or browser-policy change. Final11 remains non-certifying; a fresh
-> signed clean full chain is still required. Final10 current wording below is historical where
-> superseded.
+> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
+> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
+> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
+> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. The main
+> stale-convergence product assessment is wholly green. Only `witnessAuthorityControl` now correctly
+> returns exact double-red [`convergenceRelease`, `oldUiConvergence`] after strengthened raw/runtime
+> revision/seed/ordinal/draw binding, while the unchanged Slice wrapper expects
+> `convergenceRelease` alone. Product and `slicesmoke.mjs` blobs are unchanged from Final11. Next is
+> a bounded test-harness expectation repair, then a new signed clean full chain. No product, save,
+> version, ruler or browser-policy change occurred; compatible Edge updates never trigger a
+> rebaseline. Final11/Final10 current wording below is historical where superseded.
 
 **The rule (plan §20 Gate A): the port is BUG-FOR-BUG parity until a deviation is
 approved here.** Every entry below is a place the original does something imperfect
@@ -89,10 +91,10 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 Those documentation bytes changed source identity; their signed clean docs-only descendant supplied
-Final11, whose temporal-oracle stop is described above. The current assessor/tests/docs-only repair
-replays Final11's unchanged carrier green but remains browser-uncertified; Final11 stays an immutable
-stored FAIL, and a synchronized signed clean descendant must restart Layout → SceneMemory →
-Compendium → Slice → Glass → recovery with fresh IDs and every named verifier.
+Final11, whose temporal-oracle stop is described above. The historical assessor/tests/docs-only
+repair replayed Final11's unchanged carrier green and supplied Final12; Final11 stays immutable
+stored FAIL, while Final12's three green predecessors and distinct Slice control stop are described
+above.
 The v2 draft remains exactly 55 bullets. Live memory producer records follow the changed source/build
 bytes, while numeric rulers, historical samples, browser capability authorities, retry policy and
 production version/release identity remain unchanged. No Recovery PASS/certificate, publication,
@@ -179,8 +181,9 @@ chronology/capture repair became signed Final9 `a85e0ed…`, which passed all fi
 the complete 16-attempt burn-down before Recovery's clipped exhausted-control oracle stopped the
 run. Its shared suppression repair became signed Final10 `4405fb2…`, which again passed all five
 predecessors and advanced Recovery through suppression, close/checkpoint and closed/offline proof
-before the phase-blind `offline-reopened` status oracle stopped `instrument-fail`. The current
-signed implementation/evidence repair `3fbfcd5…` is recorded in the live boundary above.
+before the phase-blind `offline-reopened` status oracle stopped `instrument-fail`. Historical
+signed implementation/evidence repair `3fbfcd5…` led through immutable Final11 to Final12; the
+current Final12 boundary is recorded above.
 
 - ★ **D-COMPENDIUM-COLD-MEMBERSHIP — exact identity replaces a cardinality heuristic.** Final5
   mounted eight distinct fixture keys after a pre-arm cache containing eight distinct Planetside
@@ -232,8 +235,9 @@ signed implementation/evidence repair `3fbfcd5…` is recorded in the live bound
   numeric ceilings and historical samples are unchanged. Signed Final8 passed Compendium 78/78 and
   later full Glass with zero findings for this exact source; Final9 and Final10 repeated both green
   outcomes on their own signed sources. The synchronized signed clean docs-only descendant supplied
-  immutable Final11. The current assessor/tests/docs-only repair replays its unchanged carrier green
-  but remains browser-uncertified; a synchronized signed clean descendant requires a full-chain restart.
+  immutable Final11. The historical assessor/tests/docs-only repair replayed its unchanged carrier
+  green and supplied Final12, whose three green predecessors and distinct Slice control stop are
+  described above.
 
 - ★ **D-SETTINGS-NATIVE-AUDIO-ORACLE — independent reveal, trusted receipt and honest failure
   class.** Final7's four small-phone Settings findings came from sampling Sound and Creature voices
@@ -374,8 +378,8 @@ signed implementation/evidence repair `3fbfcd5…` is recorded in the live bound
   exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
   nonzero/red/instrument result and do not start a successor or retry automatically. Final11
   completed the uninterrupted real 20-minute observation and recovered UI. Final11 stays an
-  immutable stored FAIL; the repaired current assessor replay is green, but the Recovery certificate
-  remains open because no fresh signed full chain has run.
+  immutable stored FAIL; the repaired assessor replay was green and supplied Final12, whose distinct
+  immutable Slice control stop leaves the Recovery certificate open.
 - ★ **D-COMPENDIUM-CALIBRATION — version-tolerant signed `7362a0e…` renewal passed; repaired-source chain restart and visual judgment remain open.** Measurement
   `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
   `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` bind clean committed

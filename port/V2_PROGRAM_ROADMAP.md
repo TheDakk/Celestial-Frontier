@@ -1,15 +1,17 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Current Final11 assessor-repair boundary (2026-08-28):** Final11 remains immutable stored
-> `fail` with unchanged hashes, one attempt, zero retries and exactly two false checks. The current
-> repaired assessor independently replays its unchanged `recoveryBundle` wholly green. Durable raw
-> may lead rendered UI only under the existing rendered-to-runtime 10-second bound and exact raw/
-> runtime tuple; close binds latest exhausted live state/UI time, the exact six-key committed/lost
-> hide witness and committed revision outcome. Controls cover the reported 20 ms/322 ms geometry,
-> exact boundary/+1, future/excessive lag and every witness field. This is assessor/tests/docs only,
-> with no product, save, version or browser-policy change. Final11 remains non-certifying; a fresh
-> signed clean full chain is still required. Final10 current wording below is historical where
-> superseded.
+> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
+> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
+> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
+> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. The main
+> stale-convergence product assessment is wholly green. Only `witnessAuthorityControl` now correctly
+> returns exact double-red [`convergenceRelease`, `oldUiConvergence`] after strengthened raw/runtime
+> revision/seed/ordinal/draw binding, while the unchanged Slice wrapper expects
+> `convergenceRelease` alone. Product and `slicesmoke.mjs` blobs are unchanged from Final11. Next is
+> a bounded test-harness expectation repair, then a new signed clean full chain. No product, save,
+> version, ruler or browser-policy change occurred; compatible Edge updates never trigger a
+> rebaseline. Final11/Final10 current wording below is historical where superseded.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
 > 2026-08-28.
@@ -118,8 +120,8 @@
 >
 > Final8 remains immutable historical evidence for its green predecessor chain and fixture-order
 > stop; Final9 remains immutable historical evidence through the complete 16-attempt burn-down and
-> exhausted-control stop. Final10 historically superseded both; Final11 is the latest immutable
-> attempt and the current exact-source boundary. Final10's last
+> exhausted-control stop. Final10 historically superseded both, and Final11 historically superseded
+> Final10; Final12 is the latest immutable attempt and current exact-source boundary. Final10's last
 > coherent reopened same-document UI → state sample observed the exhausted 16/16/0 cycle-0 budget
 > while all three read-only/ineligible actions rendered `unavailable`; the old phase-blind oracle
 > wrongly required the eligible active surface's `empty`/`depleted` vocabulary and stopped before
@@ -218,9 +220,9 @@
 > boundary crossing and recovered judgment remained not-run. Signed implementation/evidence repair
 > `3fbfcd5…` separated that offline vocabulary from active `empty`/`depleted`; its signed clean docs
 > descendant `1ca67156…` supplied immutable Final11. Final11 completed the full observation and
-> recovered UI before the final temporal assessor stopped red. The current assessor/tests/docs-only
-> repair replays Final11's unchanged carrier green but remains browser-uncertified; Final11 stays an
-> immutable stored FAIL, and a synchronized signed clean descendant must restart the full chain. The former
+> recovered UI before the final temporal assessor stopped red. The historical assessor/tests/docs-
+> only repair replayed Final11's unchanged carrier green and supplied Final12; Final11 stays an
+> immutable stored FAIL, while Final12's distinct immutable Slice control stop is recorded above. The former
 > Compendium ruler under measurement
 > `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
 > `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` is historical. Clean source
@@ -340,10 +342,10 @@
 > rejected truthful read-only `unavailable` rows. Active observation, boundary crossing and recovered
 > judgment did not run in Final10. Signed implementation/evidence repair `3fbfcd5…` and signed docs
 > descendant `1ca67156…` then supplied immutable Final11, which passed the full observation, exact
-> next cycle and recovered UI before the final temporal assessor stopped red. The current
-> assessor/tests/docs-only repair replays Final11's unchanged carrier green but remains
-> browser-uncertified; Final11 stays an immutable stored FAIL, and a synchronized signed clean
-> descendant must restart from Layout.
+> next cycle and recovered UI before the final temporal assessor stopped red. The historical
+> assessor/tests/docs-only repair replayed Final11's unchanged carrier green and supplied Final12;
+> Final11 stays immutable stored FAIL, while Final12's three green predecessors and distinct Slice
+> control stop are recorded above.
 > Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
@@ -1535,10 +1537,10 @@ passed Final8 Layout, SceneMemory, Compendium, Slice and full Glass before Recov
 before the exhausted-control oracle stopped. Its repair became signed Final10 `4405fb2…`; it
 repeated the five greens and reached closed/offline proof before the `offline-reopened` oracle
 rejected the correct read-only `unavailable` vocabulary. Final10 made no Recovery product or
-recovery judgment. Signed implementation/evidence repair `3fbfcd5…` has the current-state overlay's
-retained/replayed phase receipts, six-region source seals and adversarial controls browser-free
-green, but remains browser-uncertified and requires a fresh signed
-full-chain restart from Layout.
+recovery judgment. Historical signed implementation/evidence repair `3fbfcd5…` has the current-
+state overlay's retained/replayed phase receipts, six-region source seals and adversarial controls
+browser-free green; its descendants supplied immutable Final11 and then Final12, whose three green
+predecessors and distinct Slice control stop are recorded above.
 
 ### 5.2 Arc 3 — engineering loop
 
@@ -1618,8 +1620,8 @@ recovered judgment did not run. Its
 signed implementation/evidence repair `3fbfcd5…` has the current-state overlay's retained/replayed phase
 receipts and six-region source seals browser-free green. Its signed docs descendant supplied
 Final11, which passed the uninterrupted real 20-minute observation and recovered UI. Final11 stays
-an immutable stored FAIL; the repaired current assessor replay is green, but the Recovery
-certificate remains open because no fresh signed full chain has run.
+an immutable stored FAIL; the repaired assessor replay was green and supplied Final12, whose
+distinct immutable Slice control stop leaves the Recovery certificate open.
 The retained Arc 5A Slice/Glass pair and its exact hashes/provenance are historical evidence for
 their 2026-08-25 inputs, not current-input browser proof.
 
@@ -1733,9 +1735,9 @@ and reached the complete burn-down before its exhausted-control oracle stop. Sig
 boundary crossing and recovered judgment did not run. Signed implementation/evidence repair
 `3fbfcd5…` has the current-state overlay's retained/replayed phase receipts and six-region source
 seals browser-free green; the synchronized signed clean docs-only descendant supplied immutable
-Final11. The current assessor/tests/docs-only repair replays that unchanged carrier green but
-remains browser-uncertified; a synchronized signed clean descendant must restart the full chain
-from Layout before any successor PASS claim.
+Final11. The historical assessor/tests/docs-only repair replayed that unchanged carrier green and
+supplied Final12, which restarted from Layout, passed the three predecessors and stopped at the
+distinct immutable Slice control described in the current boundary above.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.

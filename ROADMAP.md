@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-28 · FINAL11 TEMPORAL ORACLES REPAIRED · FRESH FULL CHAIN NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-28 · FINAL12 STOPPED AT A STALE MUTATION-CONTROL EXPECTATION · BOUNDED REPAIR NEXT ◀◀◀
 
 ### Exact current boundary
 
@@ -25,61 +25,57 @@ the archive verbatim and refresh this handoff in place.
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
   `origin/openai/mac`. Work remains local and unpushed; do not edit another agent worktree or the
   sibling live-site repository.
-- **Repository relationship:** exact origin is
-  `git@github.com:TheDakk/Celestial-Frontier.git`; locally known `origin/develop` is
-  `7a9f4c1370dd84292388d718c38ff34214f6203b` and remains fully contained. Signed Final11 evidence
-  checkpoint `c0a8f9fe91fa6a2e2c77370a330e78b239012678` preserves the immutable carriers and synchronized
-  evidence references. Signed assessor/tests/docs repair
-  `12d826a8abde7af345980f5f9ce3502b946d2d6e` (tree
-  `fec8792f2e0f1eec1de381986ce2fd44c0ef4fd4`, parent `c0a8f9f…`) is the reviewed implementation
-  checkpoint; both embedded SSH signatures verified.
-- **Machine continuity:** a temporary `/usr/bin/caffeinate -dis` hold is active so macOS and
-  1Password stay unlocked through signing and the browser campaign. Keep it active until a safe
-  checkpoint, then restore the prior monitors-off behavior.
+- **Signed Final12 source:** `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+  `609e92c6278f43ac3983b97ffe121493bfedaf68`) was clean and unchanged through every completed
+  stage. Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b`
+  and fully contained. The working copy now contains only synchronized Final12 evidence/docs and
+  five deterministic gzip carriers pending the signed evidence checkpoint.
+- **Machine continuity:** temporary `/usr/bin/caffeinate -dis` remains active so macOS and
+  1Password stay unlocked during signing and browser work. Keep it until a safe endpoint, then
+  restore the prior monitors-off configuration.
 
-### Immutable Final11 and repaired assessor boundary
+### Immutable Final12 campaign stop
 
-- Signed clean docs source `1ca67156e27d6bd58a324e33b0e6b752adf568bc` supplied immutable
-  Final11. Layout passed 787/787; SceneMemory 42/42; Compendium 78/78; Slice passed with zero findings
-  and ten PNGs; Glass passed all 12 viewports with zero findings or instrument failures. Every stage
-  ran once and passed named verification.
-- Recovery `20260828-phase4-final11-1ca67156e27d-recovery` ran once for 1,291,034 ms and completed
-  the real uninterrupted 20-minute observation, exact boundary crossing and recovered UI. Its stored
-  report remains `fail`, with only `activePlayProjection` and `closeCheckpoint` false; cleanup
-  passed and no retry occurred. Gzip/raw SHA-256 remain
-  `cb44985eb4894e34d518f521df8506c7b4aec452afcc8a2351f52eb5dd9b698a` /
-  `fa035d12a50a55b7e51ebca9de565c59b0f02d5941d1a19ccd4d5f65ae8febcb`.
-- The current assessor replays that unchanged bundle wholly green; this does **not** rewrite Final11
-  or create a Recovery certificate. Projection now binds durable raw to an equal-or-later live
-  runtime while allowing the existing at-most-10-second rendered lag. Close now binds against the
-  latest exhausted State/UI live runtime, requires the closed durable/raw and hidden runtime clocks
-  to agree, permits only checkpoint duration plus 1,000 ms, and requires the exact committed/lost
-  six-key hide witness plus revision-bound `lastOutcome`.
-- Positive exact-boundary fixtures reproduce Final11's 79,709 / 84,697 / 84,738 / 84,740 ms
-  exhausted chronology, 85,062 ms close and 1,285,118 / 1,285,098 / 1,285,402 / 1,285,404 ms
-  recovery chronology. Isolated controls turn red for runtime-before-raw, future or over-lagged
-  rendering, close-before-latest-live, boundary +1 ms, hidden-runtime mismatch, each malformed
-  witness field/key set and mismatched `lastOutcome`.
-- Scope is assessor/tests/docs only: no product code, save shape, deterministic content, version,
-  numeric ruler, browser capability authority or Edge point-version policy changed.
+- Layout `20260828-phase4-final12-509734533dd4-layout` ran once and passed **787/787** sealed
+  outcomes across ten viewports in 76,474 ms. SceneMemory
+  `20260828-phase4-final12-509734533dd4-scenemem` ran once and passed **42/42** in 9,974 ms.
+  Compendium `20260828-phase4-final12-509734533dd4-compendium` ran once and passed **78/78** in
+  43,804 ms with all six PNG bindings. Each passed its named verifier before the next began.
+- Slice `20260828-phase4-final12-509734533dd4-slice` ran exactly once for 414,198 ms and remains
+  stored **FAIL**, non-certifying, with one `arc-4-stale-convergence` finding, one scope and zero
+  automatic retries. Its ten PNGs are manifest-bound. Glass and Recovery correctly did not start.
+- The actual stale-convergence product assessment is wholly green: exact 72→73 stale fault, one
+  trusted Tame, `tame-refused:stale`, `lastResult:null`, empty-CAS topology, unchanged capture and
+  Arc-5 ownership, released old owner, closed replacement start, one native activation and exact
+  read-only reload all passed. The retained-result control still isolates only `oldOutcome`.
+- The sole stop is the deliberate `witnessAuthorityControl`. Its coordinated before/after
+  `sessionOrdinal` mutation now correctly produces exact top-level failures
+  `[convergenceRelease, oldUiConvergence]` and exact nested `beforeAuthority`. The unchanged Slice
+  wrapper still requires only top-level `convergenceRelease`. That expectation became stale when
+  the repaired assessor correctly bound witness-before runtime authority to durable raw.
+- This is not a product regression or nondeterminism: the Final11 and Final12 product source trees,
+  Slice wrapper blob and built `main-BqcJIdne.js` are byte-identical. Final12 remains immutable and
+  was not retried. Exact raw/gzip sizes and hashes are recorded in `audits/README.md`; the PNG bytes
+  remain ignored local review evidence under the established report-manifest policy.
 
-### Verification and next exact action
+### Next exact action
 
-- Browser-free verification is green: `node --check`; focused Recovery 6/6; full Vitest 138 files,
-  1,495 passed /one intentional skip; root validate 1,010 renders /50-probe exact fingerprint;
-  root/app typecheck; `artunused`; Recovery, Smoke-report, Glass and Compendium instrument
-  selftests; and independent code, documentation and whole-diff reviews CLEAR.
-- Once this handoff is committed and signed, that clean docs-only checkpoint is the exact fresh
-  campaign source. Verify its signature and a clean tree, derive fresh IDs from its full hash, then
-  run exactly once and serially: **Layout → SceneMemory → Compendium → Slice → Glass → Recovery**.
-  Each stage must pass its named verifier before the next starts. Stop on any product-red or
-  instrument-red result,
-  preserve its carrier and do not retry.
+- Preserve and sign the Final12 evidence checkpoint before source repair. Then change only the
+  authority-control verdict to require the exact two top-level failures plus exact nested
+  `beforeAuthority`; do not weaken the assessor and do not change product, collector, persistence,
+  deterministic content, numeric rulers, release identity or browser policy.
+- Add a browser-free full-assessor fixture for that shared dependency and retain all neighboring
+  controls: baseline all green; result mutant only `oldOutcome`; coordinated ordinal mutant exact
+  shared two-red plus nested authority; after-only ordinal mutant only release/tuple; future and
+  excessive-lag mutants only `oldUiConvergence`.
+- Run the proportionate browser-free battery and independent review, synchronize current references,
+  commit/sign the clean repair, then start a new **Layout → SceneMemory → Compendium → Slice →
+  Glass → Recovery** chain with fresh Final13 IDs. Run each once and serially, require named
+  verification between stages, stop and preserve on any red, and never retry a red campaign.
 - Only a complete fresh green chain can establish Recovery and the stable Phase-4 checkpoint. HUMAN
   judgment, hosted integration and release authority remain separate.
-- Hosted authority remains zero exact attempts: no push, PR write, dispatch, rerun, merge,
-  deployment, publication or version bump. Edge `151.0.4129.107` / CDP `1.3` is Final11
-  provenance only; compatible point updates never trigger a rebaseline or threshold change.
+- Edge `151.0.4129.107` / CDP `1.3` is run provenance only. Compatible Edge point updates never
+  trigger rebaselining or threshold changes.
 
 ### Queued universe-wide visual polish — after the full green checkpoint
 
@@ -90,16 +86,15 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** sign and verify the clean docs-only handoff checkpoint, run the fresh serial
-  campaign without retry, preserve its evidence and synchronize references. After the stable green
-  checkpoint, continue the remaining authorized arcs and universe-wide nonstructural polish.
+- **OpenAI/Codex:** preserve/sign Final12 evidence, implement and review only the bounded mutation-
+  control expectation repair, commit/sign a clean successor, and run the fresh serial Final13 chain.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
   dispatch, rerun, merge, deploy, publish or bump a version.
 - **PR details:** not needed now. If Nick later authorizes the exact GitHub write, use base
   `develop`, source `openai/mac`, title **`Phase 4: complete the playable-slice campaign repair`**,
-  description **`Preserves the immutable Final10/Final11 evidence chains, repairs the two Recovery
-  temporal oracles with mutation controls, completes a fresh signed verification chain, and
-  synchronizes the Phase-4 references. No release or deployment is included.`**
+  description **`Preserves the immutable Final10–Final12 evidence chains, repairs the Recovery and
+  Slice mutation-control oracles with negative controls, completes a fresh signed verification
+  chain, and synchronizes the Phase-4 references. No release or deployment is included.`**
 - **Anthropic/Claude Code:** Nick does not need to open Claude now. Wait for a future merged PR before
   syncing; do not copy this local campaign work manually.
 - **Release status:** no release or deployment; `develop`, `main` and the live site are unchanged.

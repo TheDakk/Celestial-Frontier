@@ -1,14 +1,18 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
-> **Current Final11 assessor-repair boundary (2026-08-28):** Final11 remains immutable stored
-> `fail` with unchanged hashes, one attempt, zero retries and only `activePlayProjection` /
-> `closeCheckpoint` false. The current repaired assessor independently replays its unchanged
-> `recoveryBundle` wholly green: bounded raw-ahead/render lag retains the exact raw/runtime tuple,
-> while close binds latest exhausted live state/UI time, the exact six-key committed/lost hide
-> witness and committed revision outcome. Reported-geometry, exact-boundary/+1 and witness mutants
-> are controlled. This is assessor/tests/docs only and changes no audio/product, save, version or
-> browser policy. Final11 remains non-certifying; a fresh signed clean full chain is still required.
-> Final10 current wording below is historical where superseded.
+> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
+> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
+> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
+> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. The main
+> stale-convergence product assessment is wholly green. The sole stop is its deliberate
+> `witnessAuthorityControl`: strengthened raw/runtime revision/seed/ordinal/draw binding correctly
+> produces exact double-red [`convergenceRelease`, `oldUiConvergence`], while the unchanged Slice
+> wrapper still expects only `convergenceRelease`. Product and `slicesmoke.mjs` blobs are unchanged
+> from Final11. Next is a bounded test-harness expectation repair, then a new signed clean full
+> chain. This changes no audio/product, save, version, ruler or browser policy; compatible Edge
+> updates never trigger a rebaseline. Final11/Final10 current wording below is historical where
+> superseded.
 
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
 2026-07-30. The dated v2 overlay below matches the current local development candidate and approved
@@ -60,11 +64,13 @@ whole layer undocumented despite being the largest single feature of v1.8.
 > `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
 > `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
-> This documentation changes source identity; its signed clean docs-only descendant is the fresh
-> campaign source. It later supplied Final11, whose temporal-oracle stop is described above; Final11
-> is not a Recovery certificate. The current repaired assessor replays its unchanged bundle green,
-> but its signed clean source must still restart the full browser chain. Edge
-> `151.0.4129.107` / CDP `1.3` is provenance only, never an audio ruler or rebaseline trigger.
+> This documentation changed source identity; its signed clean docs-only descendant later supplied
+> immutable Final11. The repaired assessor replayed that unchanged Recovery bundle green. Signed
+> clean Final12 `509734533dd4…` then passed Layout, SceneMemory and Compendium before Slice stopped
+> once/no retry on the stale one-red wrapper expectation described above; the real product assessment
+> remained wholly green, and Glass/Recovery did not run. Repair only that bounded harness expectation,
+> then restart the full chain. Edge `151.0.4129.107` / CDP `1.3` is provenance only, never an audio
+> ruler or rebaseline trigger.
 
 ## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-28)
 
@@ -137,8 +143,9 @@ Those focused changed-source checks and negative controls exercised the audio re
 cumulative v2.0 development draft remains 55 bullets. Any subsequent source change must rerun its
 affected checks before a new signed clean successor. Final11 supplied exact-head Layout →
 SceneMemory → Compendium → Slice → Glass greens and completed the uninterrupted Recovery
-observation/recovered UI and remains stored final-assessor red. The current repaired assessor
-replays that unchanged bundle green; a fresh-chain Recovery certificate is still pending.
+observation/recovered UI, then remained stored final-assessor red. Its repaired replay is green.
+Final12 passed Layout, SceneMemory and Compendium, then stopped at Slice's stale negative-control
+expectation before Glass/Recovery; a fresh-chain Recovery certificate is still pending.
 Browser evidence uses three independent authorities: the root authority accepts compatible
 Chromium-family executables that satisfy CDP `1.3` plus the capability inventory derived from its
 layout/boot sources and records executable, product, revision, user agent, JavaScript version and

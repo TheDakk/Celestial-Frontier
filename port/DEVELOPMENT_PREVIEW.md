@@ -1,14 +1,17 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **Current Final11 assessor-repair boundary (2026-08-28):** Final11 remains immutable stored
-> `fail` with unchanged hashes, one attempt, zero retries and exactly two false checks. The current
-> repaired assessor independently replays its unchanged `recoveryBundle` wholly green. Bounded raw-
-> ahead/render lag retains the exact raw/runtime tuple; close binds latest exhausted live state/UI
-> time, the exact six-key committed/lost hide witness and committed revision outcome. Reported-
-> geometry, exact-boundary/+1 and witness controls are present. This is assessor/tests/docs only,
-> with no product, save, preview, version or browser-policy change. Final11 remains non-certifying;
-> a fresh signed clean full chain is still required. Final10 current wording below is historical
-> where superseded.
+> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
+> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
+> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
+> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. The main
+> stale-convergence product assessment is wholly green. Only `witnessAuthorityControl` now correctly
+> returns exact double-red [`convergenceRelease`, `oldUiConvergence`] after strengthened raw/runtime
+> revision/seed/ordinal/draw binding, while the unchanged Slice wrapper expects
+> `convergenceRelease` alone. Product and `slicesmoke.mjs` blobs are unchanged from Final11. Next is
+> a bounded test-harness expectation repair, then a new signed clean full chain. No product, save,
+> preview, version, ruler or browser-policy change occurred; compatible Edge updates never trigger
+> a rebaseline. Final11/Final10 current wording below is historical where superseded.
 
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
 as of 2026-08-28. This is not a release record.
@@ -55,14 +58,16 @@ Browser-free current-byte checks at locally signed implementation/evidence commi
 `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 Those documentation bytes changed source identity; their signed clean docs-only descendant supplied
-Final11, whose temporal-oracle stop is described above. Final11 is not a Recovery certificate. The
-current repaired assessor replays its unchanged bundle green, but its signed clean source must
-restart Layout → SceneMemory → Compendium → Slice → Glass → recovery with fresh IDs. Nothing in this
+immutable Final11, whose repaired Recovery bundle replay is green. Signed clean Final12
+`509734533dd4…` passed Layout, SceneMemory and Compendium before Slice stopped once/no retry on the
+stale one-red wrapper expectation; its main product assessment remained wholly green, and
+Glass/Recovery did not run. Repair that bounded harness expectation, then restart Layout →
+SceneMemory → Compendium → Slice → Glass → recovery with fresh IDs. Nothing in this
 campaign has been packaged, published, pushed, hosted-tested, merged, versioned or released. Until
 one clean exact final head passes every required local gate and receives separate exact-SHA
 publication authority, no development-preview candidate exists. `--allow-dirty` remains local
 diagnosis only and can never become a promotion artifact. Edge `151.0.4129.107` / CDP `1.3` is
-Final11 provenance only; a compatible point update never triggers rebaselining or threshold changes.
+provenance only; a compatible point update never triggers rebaselining or threshold changes.
 
 ## Separate-origin requirement; approved branch site
 
