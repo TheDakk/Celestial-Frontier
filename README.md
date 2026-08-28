@@ -1,18 +1,22 @@
 # Celestial-Frontier
 
-> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
-> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
-> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
-> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
-> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. Its main
-> stale-convergence product assessment is wholly green. The sole stop is the deliberate
-> `witnessAuthorityControl`: strengthened raw/runtime revision/seed/ordinal/draw binding correctly
-> produces exact double-red [`convergenceRelease`, `oldUiConvergence`], while the unchanged Slice
-> wrapper still expects only `convergenceRelease`. Product and `slicesmoke.mjs` blobs are unchanged
-> from Final11. Next is a bounded test-harness expectation repair, then a new signed clean
-> **Layout → SceneMemory → Compendium → Slice → Glass → Recovery** chain. No product, save,
-> version, ruler or browser-policy change occurred; compatible Edge updates never trigger a
-> rebaseline. Final11/Final10 “current” wording below is historical where superseded.
+> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
+> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
+> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
+> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
+> not run. Its product assessment is wholly green. The stored carrier's deliberate
+> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
+> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
+> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
+> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
+> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
+> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests,
+> diff-check and two-review browser-free verification is green. No product, assessor predicate,
+> shared helper, persistence, art, save, version, ruler or browser-policy change occurred. The
+> repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
+> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
+> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
+> Final12/Final11/Final10 wording below is historical where superseded.
 Master the infinite
 
 **Celestial Frontier: Cosmic Codex** — a single-file, offline-capable HTML/Canvas
@@ -97,12 +101,14 @@ The implementation/evidence checkpoint is locally signed commit
 `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (parent Final10 `4405fb2…`), and its embedded SSH
 signature verified against the configured public key. The synchronized signed clean docs-only
 descendant—not `3fbfcd5…`—was the Final11 campaign source; Final11 is immutable and is not a Recovery
-certificate. Its repaired bundle replay is green. Signed clean Final12 `509734533dd4…` passed
-Layout, SceneMemory and Compendium, then Slice stopped once/no retry because the strengthened
-authority mutant correctly produced two red clauses while the unchanged wrapper expected one; the
-real product assessment was wholly green. Glass/Recovery did not run. Repair that bounded harness
-expectation, then run once and fail-fast through **Layout → SceneMemory → Compendium → Slice →
-Glass → Recovery**, with every named verifier and no automatic retry. Edge
+certificate. Its repaired bundle replay is green. Immutable Final12, preserved at signed evidence
+checkpoint `2bf99bd…`, passed Layout, SceneMemory and Compendium, then Slice stopped once/no retry
+because the strengthened authority mutant correctly produced two red clauses while its wrapper
+expected one; the product assessment was wholly green and Glass/Recovery did not run. Signed repair
+`5ab4d3e…` fixes only that harness expectation and is browser-free green but browser-uncertified.
+After this docs-only descendant is signed clean, run the fresh Final13 chain once and fail-fast
+through **Layout → SceneMemory → Compendium → Slice → Glass → Recovery**, with every named verifier
+and no automatic retry. Edge
 `151.0.4129.107` / CDP `1.3` is provenance only; compatible point updates never trigger a
 rebaseline, recalibration or threshold change. No Recovery certificate, whole-Gate, hosted, HUMAN
 or release authority exists.
@@ -163,9 +169,10 @@ bound to that exact Slice ID that also passes named verification. Recovery recei
 predecessor IDs and its own exact report must pass named verification; stop after any failure and
 never retry automatically. Final11 completed the uninterrupted real 20-minute observation and
 recovered UI, but remains stored assessor-red and non-certifying; its unchanged bundle replays
-green under the repaired assessor. Final12 stopped earlier at Slice's stale negative-control
-expectation, with the main assessment green, so only a repaired fresh full chain can earn the
-Recovery certificate. The former Compendium ruler
+green under the repaired assessor. Immutable Final12 stopped earlier at Slice's stale
+negative-control expectation with the main assessment green. Signed harness repair `5ab4d3e…` is
+browser-free green but browser-uncertified, so only a fresh Final13 full chain can earn the Recovery
+certificate. The former Compendium ruler
 and exact-budget certificate `20260826-phase4-certification` remain truthful historical evidence for producer
 `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`; they are not rebound to the
 current product. Historical current-product calibration from signed source

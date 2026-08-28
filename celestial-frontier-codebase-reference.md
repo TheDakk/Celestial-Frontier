@@ -1,18 +1,22 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
-> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
-> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
-> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
-> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. Its main
-> stale-convergence product assessment is wholly green. The sole stop is the deliberate
-> `witnessAuthorityControl`: strengthened raw/runtime revision/seed/ordinal/draw binding correctly
-> produces exact double-red [`convergenceRelease`, `oldUiConvergence`], while the unchanged Slice
-> wrapper still expects only `convergenceRelease`. Product and `slicesmoke.mjs` blobs are unchanged
-> from Final11. Next is a bounded test-harness expectation repair, then a new signed clean full
-> chain. No product, save, version, ruler or browser-policy change occurred; compatible Edge updates
-> never trigger a rebaseline. Final11/Final10 “current” wording below is historical where
-> superseded.
+> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
+> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
+> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
+> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
+> not run. Its product assessment is wholly green. The stored carrier's deliberate
+> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
+> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
+> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
+> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
+> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
+> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests,
+> diff-check and two-review browser-free verification is green. No product, assessor predicate,
+> shared helper, persistence, art, save, version, ruler or browser-policy change occurred. The
+> repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
+> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
+> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
+> Final12/Final11/Final10 wording below is historical where superseded.
 
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the source. When in doubt, source wins. The long-form
@@ -105,11 +109,13 @@
 > 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
 > Those documentation bytes changed source identity; their signed clean docs-only descendant
 > supplied immutable Final11. Its stored failure remains intact and its repaired bundle replay is
-> green. Signed clean Final12 `509734533dd4…` then passed Layout, SceneMemory and Compendium before
-> Slice stopped once/no retry: the real stale-convergence product assessment was wholly green, but
-> the strengthened authority mutant correctly returned two red clauses while the unchanged wrapper
-> expected one. Glass/Recovery did not run. Repair that bounded harness expectation, then restart the
-> full chain at Layout with fresh IDs and every named verifier. Edge `151.0.4129.107` / CDP `1.3`
+> green. Immutable Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout,
+> SceneMemory and Compendium before Slice stopped once/no retry: the product assessment was wholly
+> green, but the strengthened authority mutant correctly returned two red clauses while its wrapper
+> expected one. Glass/Recovery did not run. Signed repair `5ab4d3e…` fixes only that harness
+> expectation and is browser-free green but browser-uncertified. After this docs-only descendant is
+> signed clean, restart the once-only Final13 full chain at Layout with fresh IDs and every named
+> verifier. Edge `151.0.4129.107` / CDP `1.3`
 > is provenance only: a compatible point update never triggers a rebaseline, recalibration or
 > threshold change. No Recovery certificate, whole-Gate, hosted, HUMAN or release authority exists.
 >
@@ -388,9 +394,10 @@
 > exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
 > nonzero, red or instrument result and do not start a successor or automatically retry.
 > Final11 completed the uninterrupted real 20-minute observation and recovered UI and remains stored
-> final-assessor red; its unchanged bundle replays green under the repaired assessor. Final12
-> stopped earlier at Slice's stale negative-control expectation, with the main assessment green and
-> Glass/Recovery not run. Only a repaired fresh full chain can earn the Recovery certificate. The former Compendium ruler under
+> final-assessor red; its unchanged bundle replays green under the repaired assessor. Immutable
+> Final12 stopped earlier at Slice's stale negative-control expectation, with the main assessment
+> green and Glass/Recovery not run. Signed harness repair `5ab4d3e…` is browser-free green but
+> browser-uncertified; only a fresh Final13 full chain can earn the Recovery certificate. The former Compendium ruler under
 > measurement authority `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`
 > and producer authority `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`
 > remains truthful historical evidence.
@@ -568,8 +575,9 @@
 > `8633bb48fc89c7ae658fa9ed4a7f47b683be102d`, status `61fc362e…` and exact-input dirty tree
 > `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f`. The uninterrupted
 > Final11's 20-minute observation passed and its unchanged bundle replays green under the repaired
-> assessor. Final12 stopped at Slice's stale negative-control expectation before Glass/Recovery; a
-> repaired fresh-chain Recovery certificate and HUMAN review remain open. No Charter bioscan, targeted
+> assessor. Immutable Final12 stopped at Slice's stale negative-control expectation before
+> Glass/Recovery. Signed harness repair `5ab4d3e…` is browser-free green but browser-uncertified; a
+> fresh Final13-chain Recovery certificate and HUMAN review remain open. No Charter bioscan, targeted
 > preview, hosted, release/version, `rnSeen` or preview/publication authority is claimed. Arc 5A now
 > activates the receipt-bound compact ownership-v2 representation across boot, Training and capture.
 > The manifest binds the exact Arc 4 source, canonical delta and reconstructed target while the four
@@ -3007,13 +3015,15 @@ green. It permits durable raw to lead rendered UI while rendered remains at or b
 within the existing 10-second bound, retaining the exact raw/runtime authority tuple. Close binds
 the latest exhausted live state/UI time, exact six-key committed/lost hide witness and committed
 revision outcome. Isolated controls cover the reported 20 ms/322 ms geometry, exact boundary/+1,
-future/excessive lag and every witness field. Signed clean Final12 `509734533dd4…` (tree
+future/excessive lag and every witness field. Immutable Final12 source `509734533dd4…` (tree
 `609e92c6278…`) passed Layout 787/787, SceneMemory 42/42 and Compendium 78/78, then Slice ran once/
 no retry and stopped stored `fail` at `arc-4-stale-convergence`. Its real assessment was wholly
 green. Only `witnessAuthorityControl` correctly double-redlined `convergenceRelease` and
-`oldUiConvergence` after the strengthened authority binding while the unchanged wrapper still
-required the first alone. Product and `slicesmoke.mjs` blobs were unchanged from Final11;
-Glass/Recovery did not run. Repair that bounded harness expectation, then restart the complete
+`oldUiConvergence` after the strengthened authority binding while its wrapper required the first
+alone. Product and `slicesmoke.mjs` blobs in the stored carrier were unchanged from Final11;
+Glass/Recovery did not run. Signed evidence checkpoint `2bf99bd…` preserves that immutable result.
+Signed repair `5ab4d3e…` changes only the exact harness/test assertion and is browser-free green but
+browser-uncertified. After the docs-only descendant is signed clean, restart the once-only Final13
 chain from Layout with fresh IDs and every named verifier. Numeric rulers,
 historical samples, product/save bytes, browser authority and retry/release policy remain unchanged.
 Edge `151.0.4129.107` / CDP `1.3` is provenance only; a compatible point update never causes
@@ -3052,10 +3062,12 @@ and the 16-attempt burn-down. Final10 preserves another five-green-predecessor c
 Recovery through closed/offline proof before its `offline-reopened` instrument stop. At that
 historical Final10 boundary, signed implementation/evidence repair `3fbfcd5…` had no successor
 browser result, and the synchronized
-signed clean docs-only descendant supplied immutable Final11. Its repaired replay is green. Signed
-clean Final12 passed Layout, SceneMemory and Compendium before Slice's stale negative-control
-expectation stopped the chain; Glass/Recovery did not run. Repair that bounded expectation and run
-a fresh full chain. No hosted, HUMAN,
+signed clean docs-only descendant supplied immutable Final11. Its repaired replay is green.
+Immutable Final12, preserved at signed evidence checkpoint `2bf99bd…`, passed Layout, SceneMemory
+and Compendium before Slice's stale negative-control expectation stopped the chain; Glass/Recovery
+did not run. Signed repair `5ab4d3e…` fixes only that harness expectation and is browser-free green
+but browser-uncertified; after the docs-only descendant is signed clean, run a fresh once-only
+Final13 full chain. No hosted, HUMAN,
 whole-Gate, release, version, preview/publication or deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost

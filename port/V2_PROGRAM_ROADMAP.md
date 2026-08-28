@@ -1,17 +1,22 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Current Final12 Slice-stop boundary (2026-08-28):** signed clean source
-> `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
-> `609e92c6278f43ac3983b97ffe121493bfedaf68`) passed Layout 787/787, SceneMemory
-> 42/42 and Compendium 78/78, each once with named verification. Slice ran once with no retry and
-> is immutable stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did not run. The main
-> stale-convergence product assessment is wholly green. Only `witnessAuthorityControl` now correctly
-> returns exact double-red [`convergenceRelease`, `oldUiConvergence`] after strengthened raw/runtime
-> revision/seed/ordinal/draw binding, while the unchanged Slice wrapper expects
-> `convergenceRelease` alone. Product and `slicesmoke.mjs` blobs are unchanged from Final11. Next is
-> a bounded test-harness expectation repair, then a new signed clean full chain. No product, save,
-> version, ruler or browser-policy change occurred; compatible Edge updates never trigger a
-> rebaseline. Final11/Final10 current wording below is historical where superseded.
+> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
+> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
+> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
+> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
+> not run. Its product assessment is wholly green. The stored carrier's deliberate
+> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
+> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
+> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
+> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
+> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
+> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests,
+> diff-check and two-review browser-free verification is green. No product, assessor predicate,
+> shared helper, persistence, art, save, version, ruler or browser-policy change occurred. The
+> repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
+> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
+> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
+> Final12/Final11/Final10 wording below is historical where superseded.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
 > 2026-08-28.
@@ -121,7 +126,10 @@
 > Final8 remains immutable historical evidence for its green predecessor chain and fixture-order
 > stop; Final9 remains immutable historical evidence through the complete 16-attempt burn-down and
 > exhausted-control stop. Final10 historically superseded both, and Final11 historically superseded
-> Final10; Final12 is the latest immutable attempt and current exact-source boundary. Final10's last
+> Final10; Final12 is the latest immutable browser attempt and remains stored FAIL. Signed evidence
+> checkpoint `2bf99bd…` preserves it; signed harness-only repair `5ab4d3e…` is browser-free green but
+> browser-uncertified, and a signed clean docs descendant must supply the fresh once-only Final13
+> full chain. Final10's last
 > coherent reopened same-document UI → state sample observed the exhausted 16/16/0 cycle-0 budget
 > while all three read-only/ineligible actions rendered `unavailable`; the old phase-blind oracle
 > wrongly required the eligible active surface's `empty`/`depleted` vocabulary and stopped before
