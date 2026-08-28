@@ -10,6 +10,61 @@ summary of it.
 
 ## Contents
 
+### Signed `7cb0969…` Final13 campaign — complete exact-source automated chain PASS
+
+Signed clean source `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+`209abfea522c837ea7e236c6e6381f0174ed5f53`, parent
+`5ab4d3ec92a7575fc091ca3b2c358ef01927be02`) remained clean and unchanged through the complete
+once-only Final13 campaign. Layout `20260828-phase4-final13-7cb09699726b-layout` passed 787/787
+sealed outcomes across ten viewports in 75,945 ms. Source-bound SceneMemory
+`20260828-phase4-final13-7cb09699726b-scenemem` passed 42/42 in 10,235 ms. Source-bound
+Compendium `20260828-phase4-final13-7cb09699726b-compendium` passed 78/78 in 43,752 ms, with
+zero findings or blocked outcomes and six exact review-PNG bindings.
+
+Slice `20260828-phase4-final13-7cb09699726b-slice` passed terminally in 423,847 ms with
+parent/child exit `0/0`, zero findings or failed scopes, ten exact review-PNG bindings and zero
+automatic retries. Glass `20260828-phase4-final13-7cb09699726b-glass` then passed all 12
+viewports in 85,944 ms with zero findings or instrument failures and the exact Slice report/log
+predecessor hashes. Recovery `20260828-phase4-final13-7cb09699726b-recovery` passed terminally
+in 1,290,887 ms with zero findings. Its observation verdict passed all 15 outcomes across 308
+samples, spanning 1,200,308.5 ms of browser observation (1,200,309 ms active-play elapsed), and
+the exact next-cycle boundary, recovered UI and complete cleanup all passed. Recovery binds the
+exact Slice report/log and Glass predecessor hashes. Every stage ran exactly once, and every
+exact-run named verifier passed before its successor began.
+
+This is the complete automated Slice → Glass → Recovery certificate for this exact signed
+source only. It grants no HUMAN, hosted, integration, whole-Gate, version, release, deployment,
+preview or publication authority.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_150805271.json.gz`: 4,669 compressed bytes,
+  SHA-256 `bcef7c40e36c900802e6e57fddba60de5b95e653cca8f3231f7731c3c3fc024c`; 106,062
+  decompressed bytes, SHA-256 `7c6a605435c785caa758edbe32841c883d171b89a1c8a5a6ba21afeaac70110e`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_150839984.json.gz`: 22,331 compressed bytes,
+  SHA-256 `ac608d605fd789a84a58ca125b0fe42157ea7218f3dbc9f41d072ef42dff38cd`; 305,665
+  decompressed bytes, SHA-256 `0fc075d677dbb37ff1a7c70d1e3c981ecc7abb746b79e3fd09a3a7b8ce574f75`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_150944210.json.gz`: 442,022 compressed bytes,
+  SHA-256 `717064782d4a0d18844d1762b684ac692c865fd012f7f183d7c7caa4853b33bb`; 8,524,870
+  decompressed bytes, SHA-256 `09425b6b1a35e673c042442970c7ee67c25ba46be53e8ab46247ec3ba6c587b8`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_151711686.json.gz`: 1,919 compressed bytes,
+  SHA-256 `ab5753c1b995e3531003e53d7dd014d6bd49f45cea300a95ee83de64c2d9ae5b`; 6,169 decompressed
+  bytes, SHA-256 `b001d8a1bb80ce131d9a81d660657176f078ca0317ca1cf42fafabada0a098fc`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_151711686.log.gz`: 2,911 compressed bytes,
+  SHA-256 `60d5838b00bf1062b993899d063e7896039c0c6e60f564d78611ee03bf963624`; 5,905 decompressed
+  bytes, SHA-256 `31d38adb81af8349ce52e62c0acce51287a57f1e0fcadeaad0ebe0dce4d3f133`.
+- `PHASE4_GLASS_CURRENT_INPUT_PASS_20260828_151857734.json.gz`: 70,640 compressed bytes,
+  SHA-256 `fdaffe75858907cec26635bb30959da2b2a850f6ef0f7640244af69336336c64`; 845,143
+  decompressed bytes, SHA-256 `c580549251032b9de9e5b112d312b4e3f38f2bbeb79ba6353db6bf24ee9f252a`.
+- `ARC4_RECOVERY_CURRENT_INPUT_PASS_20260828_154058034.json.gz`: 276,918 compressed bytes,
+  SHA-256 `d06fbb646d3eeff95da762bde6029dea80c84e04d7559a09d9e2d9bcb3002b1a`; 3,802,681
+  decompressed bytes, SHA-256 `79f2bf8e3833b100c9fbbdbd0cbaa6a7529ee9cdaf5d4789ab9da37fc496df6b`.
+
+All seven Final13 carriers were produced with deterministic `gzip -n -9`, pass gzip integrity,
+and decompress byte-for-byte to raw artifacts with the exact sizes and SHA-256 values above. The
+six Compendium and ten Slice run-ID PNGs remain in the ignored smoke workspace; their byte sizes
+and SHA-256 bindings are retained inside the reports, matching the established policy of committing
+the compressed result/log carriers rather than duplicate screenshots. Edge `151.0.4129.107` / CDP
+`1.3` is provenance only and never a baseline, rebaseline or numeric-threshold key.
+
 ### Signed `5097345…` Final12 campaign — three green predecessors, then Slice mutation-control stop
 
 Signed clean source `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree

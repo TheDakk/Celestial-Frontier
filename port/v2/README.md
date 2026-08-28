@@ -1,23 +1,21 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
-> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
-> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice
-> `20260828-phase4-final12-509734533dd4-slice` ran once with no retry and remains stored `fail` at
-> `arc-4-stale-convergence`; Glass and Recovery did not run. Its product assessment is wholly green.
-> The stored carrier's deliberate `witnessAuthorityControl` correctly returns exact ordered
-> double-red [`convergenceRelease`, `oldUiConvergence`] plus nested `beforeAuthority`, while its
-> wrapper expected one red; its product and `slicesmoke.mjs` blobs match Final11. Signed repair
-> `5ab4d3ec92a7575fc091ca3b2c358ef01927be02` (tree
-> `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three harness/test
-> files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip, validate
-> 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests, diff-check and
-> two-review browser-free verification is green. No product, assessor predicate, shared helper,
-> persistence, art, save, version, ruler or browser-policy change occurred. The repair is browser-
-> uncertified: after this docs-only descendant is signed clean, run one fresh Final13 Layout →
-> SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially and stop/no-retry
-> on red. Compatible Edge updates never trigger a rebaseline. Final12/Final11/Final10 wording below
-> is historical where superseded.
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice `20260828-phase4-final13-7cb09699726b-slice` passed in
+> 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport Glass passed in 85,944 ms (`c5805492…`);
+> Recovery passed in 1,290,887 ms with a real 1,200,308.5 ms active observation (`79f2bf8e…`)
+> bound to those exact predecessors. Every stage ran once and passed named verification; there were
+> no retries, findings or instrument failures. This is the stable local Phase-4 automated checkpoint
+> and real Recovery certificate for that exact source. It changes no product, persistence, art,
+> save, version, ruler or browser policy. It is not HUMAN judgment, whole-Gate, hosted/merge,
+> release/version or deployment authority; physical-device heat/GPU evidence remains open. Next
+> preserve/sign the evidence and docs, restore monitors-off caffeinate, complete the full-code
+> review/polish checkpoint, then begin authorized current-system Arc 7/8 universe-wide visual
+> polish. Edge `.107` / CDP `1.3` is provenance only and compatible point updates never trigger
+> rebaseline. Earlier Final12/Final11/Final10 wording below is historical where superseded.
 
 ## Current port status — 2026-08-28
 
@@ -125,9 +123,11 @@
 > campaign source. It supplied Final11, the successor attempt described above; Final11 is not
 > a Recovery certificate or product failure. Final10 is immutable and cannot resume. That historical
 > assessor/tests/docs-only repair replayed Final11's unchanged carrier green and supplied Final12,
-> whose three green predecessors and distinct immutable Slice control stop are described above. Edge
-> `151.0.4129.107` / CDP `1.3` is Final10 run provenance only, never a rebaseline or threshold-change
-> trigger. No Recovery, whole-Gate, hosted, HUMAN or release authority exists. The
+> whose three green predecessors and distinct immutable Slice control stop are described above.
+> Exact signed Final13 source `7cb0969…` later completed the full once-only named-verified chain and
+> real Recovery observation/certificate. Edge `151.0.4129.107` / CDP `1.3` is Final13 provenance
+> only, never a rebaseline or threshold-change trigger. That local Recovery certificate grants no
+> whole-Gate, hosted, HUMAN or release authority. The
 > user-authorized universe-wide visual polish across galaxies,
 > systems, planets, every biome, creatures, plants, ships and effects remains queued after this
 > stable checkpoint; it preserves deterministic authored structure, identity and interaction
@@ -190,7 +190,9 @@
 > verification, and any nonzero/red/instrument result stops the chain without automatic retry.
 > Final11 completed the uninterrupted real 20-minute observation and recovered UI. Final11 stays
 > an immutable stored FAIL; the repaired assessor replay was green and supplied Final12, whose
-> distinct immutable Slice control stop leaves the Recovery certificate open. The former Compendium ruler under
+> distinct immutable Slice control stop remains preserved. Exact signed Final13 source `7cb0969…`
+> then completed this full once-only named-verified chain and earned the real local Recovery
+> certificate. The former Compendium ruler under
 > measurement authority `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d`
 > and producer authority `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`
 > is historical.
@@ -382,8 +384,8 @@
 > audio disposal, legacy-vs-canonical Earth identity, and absent/blank/open Inventory states. It
 > changes no product or ruler bytes. At that historical `7362a0e…` boundary, no Slice PASS, Glass
 > result or real recovery certificate existed; hosted, HUMAN, whole-Gate, release/version,
-> preview/publication and deployment authority were unclaimed. The later Final4–Final7 history plus
-> current signed-successor restart boundary are recorded in the current status above.
+> preview/publication and deployment authority were unclaimed. Later Final4–Final12 history and the
+> exact signed Final13 full-chain PASS are recorded in the current status above.
 >
 > Signed `b206cf0…` then supplied final2 Layout 787/787, source-bound SceneMemory 42/42 and
 > source-bound Compendium 78/78, each once with zero automatic retries and named verification.
@@ -443,8 +445,8 @@
 > non-optimistic and converge without reroll or second write. Guide remains 41 player topics, now
 > 24 partial /17 unavailable; **A New Foundation** had 54 draft bullets at that checkpoint. Training retained six
 > lessons plus graduation with no Capture lesson. Arc 4 remains `[PARTIAL]`: Final11 passed the
-> uninterrupted 20-minute next-cycle observation and recovered UI, but the repaired final-assessor
-> certificate and combined HUMAN review remain open.
+> uninterrupted 20-minute next-cycle observation and recovered UI, and exact signed Final13 source
+> `7cb0969…` later passed the repaired final assessor; combined HUMAN review and later capability remain open.
 > No Charter bioscan, targeted preview, production release/version, `rnSeen` mutation or
 > preview/publication authority is claimed.
 > Retained Arc 4 browser reports below predate Arc 5A; the terminal-green exact-input Arc 5A
@@ -552,9 +554,10 @@
 > `add907d1e2b548ae0c1d1333517da11e960c8d03659935ba2aa38c5bfd865468`, Glass
 > `b77a4dde5884ef43b6a06c2f2e1797a5476b2ac7e976f9744de4e6b88a9637f5` and reporter
 > `aeb96bf9f51fcf7c5be3fa4298ae5548c3239e5b1c4852f2af12dc6adbce7ba4`; independent runtime/
-> browser-contract/docs audits are CLEAR. Arc 4 remains `[PARTIAL]` because Final11 stays an
-> immutable stored FAIL; its passed real 20-minute observation and green current-assessor replay
-> still need a fresh signed full chain plus HUMAN review. Arc 5 remains `[PARTIAL]`/infrastructure-only.
+> browser-contract/docs audits are CLEAR. Arc 4 remains `[PARTIAL]`: Final11 stays an immutable
+> stored FAIL, while exact signed Final13 source `7cb0969…` supplies the later fresh named-verified
+> full chain and real Recovery certificate. HUMAN review remains open. Arc 5 remains
+> `[PARTIAL]`/infrastructure-only.
 > This dirty-diagnostic package is local exact-input evidence, not an exact-head commit, hosted,
 > integration, HUMAN, preview/publication, release or deployment certificate.
 

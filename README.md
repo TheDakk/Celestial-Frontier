@@ -1,22 +1,21 @@
 # Celestial-Frontier
 
-> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
-> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
-> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
-> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
-> not run. Its product assessment is wholly green. The stored carrier's deliberate
-> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
-> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
-> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
-> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
-> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
-> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests,
-> diff-check and two-review browser-free verification is green. No product, assessor predicate,
-> shared helper, persistence, art, save, version, ruler or browser-policy change occurred. The
-> repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
-> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
-> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
-> Final12/Final11/Final10 wording below is historical where superseded.
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no product, persistence, art, save, version, ruler or browser policy.
+> It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment authority;
+> physical-device heat/GPU evidence remains open. Next preserve/sign the evidence and docs, restore
+> monitors-off caffeinate, complete the full-code review/polish checkpoint, then begin authorized
+> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is provenance only
+> and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
+> below is historical where superseded.
 Master the infinite
 
 **Celestial Frontier: Cosmic Codex** — a single-file, offline-capable HTML/Canvas
@@ -105,13 +104,13 @@ certificate. Its repaired bundle replay is green. Immutable Final12, preserved a
 checkpoint `2bf99bd…`, passed Layout, SceneMemory and Compendium, then Slice stopped once/no retry
 because the strengthened authority mutant correctly produced two red clauses while its wrapper
 expected one; the product assessment was wholly green and Glass/Recovery did not run. Signed repair
-`5ab4d3e…` fixes only that harness expectation and is browser-free green but browser-uncertified.
-After this docs-only descendant is signed clean, run the fresh Final13 chain once and fail-fast
-through **Layout → SceneMemory → Compendium → Slice → Glass → Recovery**, with every named verifier
-and no automatic retry. Edge
+`5ab4d3e…` fixed only that harness expectation. Exact signed Final13 source `7cb0969…` then completed
+**Layout → SceneMemory → Compendium → Slice → Glass → Recovery** once and fail-fast, with every named
+verifier green, no automatic retries/findings/instrument failures and a real Recovery certificate.
+Edge
 `151.0.4129.107` / CDP `1.3` is provenance only; compatible point updates never trigger a
-rebaseline, recalibration or threshold change. No Recovery certificate, whole-Gate, hosted, HUMAN
-or release authority exists.
+rebaseline, recalibration or threshold change. That exact-source local Recovery certificate grants
+no whole-Gate, hosted, HUMAN or release authority.
 
 After the stable Phase-4 checkpoint, the queued visual pass applies the TikTok-inspired polish
 language across the entire deterministic universe—galaxies, systems, planets, every biome,
@@ -170,8 +169,8 @@ predecessor IDs and its own exact report must pass named verification; stop afte
 never retry automatically. Final11 completed the uninterrupted real 20-minute observation and
 recovered UI, but remains stored assessor-red and non-certifying; its unchanged bundle replays
 green under the repaired assessor. Immutable Final12 stopped earlier at Slice's stale
-negative-control expectation with the main assessment green. Signed harness repair `5ab4d3e…` is
-browser-free green but browser-uncertified, so only a fresh Final13 full chain can earn the Recovery
+negative-control expectation with the main assessment green. Exact signed Final13 source
+`7cb0969…` later completed the full named-verified chain green and earned the stable local Recovery
 certificate. The former Compendium ruler
 and exact-budget certificate `20260826-phase4-certification` remain truthful historical evidence for producer
 `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73`; they are not rebound to the
@@ -245,8 +244,9 @@ green predecessors before Glass produced its preserved instrument stop. Its boun
 repair became signed source `39e4f20…`; that source supplied the Final5 Layout and SceneMemory
 PASS reports before the one-attempt Compendium instrument stop. Its membership repair became signed
 Final6 source `ea845d7…`, which passed Layout, SceneMemory and Compendium before the one-attempt
-Inventory reachability cascade summarized above. The current evidence repair requires a newly
-signed clean successor restart from Layout. Compatible Edge
+Inventory reachability cascade summarized above. That historical evidence repair required a newly
+signed clean successor restart from Layout; exact signed Final13 source `7cb0969…` later completed
+the full once-only named-verified chain through Recovery. Compatible Edge
 or Chrome point updates remain run provenance only and never trigger calibration, rebaselining,
 repinning or a threshold change.
 

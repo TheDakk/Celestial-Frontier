@@ -1,22 +1,21 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **Current Final12 harness-repair boundary (2026-08-28):** immutable evidence checkpoint
-> `2bf99bd6efaf90d5d458338960ef77b297e22fa9` preserves signed source `5097345…`: Layout
-> 787/787, SceneMemory 42/42 and Compendium 78/78 passed once with named verification; Slice ran
-> once with no retry and remains stored `fail` at `arc-4-stale-convergence`; Glass and Recovery did
-> not run. Its product assessment is wholly green. The stored carrier's deliberate
-> `witnessAuthorityControl` correctly returns exact ordered double-red [`convergenceRelease`,
-> `oldUiConvergence`] plus nested `beforeAuthority`, while its wrapper expected one red; its product
-> and `slicesmoke.mjs` blobs match Final11. Signed repair `5ab4d3ec92a7575fc091ca3b2c358ef01927be02`
-> (tree `fcac22860b2ade8f4a626caf9b87eb65c24a40cc`, parent `2bf99bd…`) changes only three
-> harness/test files to seal that exact outcome. Node/focused 9/9/full 138-file 1,495-pass + 1-skip,
-> validate 1,010-render/50-fingerprint, all-TypeScript, `artunused`, four mutation selftests,
-> diff-check and two-review browser-free verification is green. No product, assessor predicate,
-> shared helper, persistence, art, save, preview, version, ruler or browser-policy change occurred.
-> The repair is browser-uncertified: after this docs-only descendant is signed clean, run one fresh
-> Final13 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain, named-verify serially
-> and stop/no-retry on red. Compatible Edge updates never trigger a rebaseline.
-> Final12/Final11/Final10 wording below is historical where superseded.
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no product, persistence, art, save, preview, version, ruler or browser
+> policy. It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment
+> authority; physical-device heat/GPU evidence remains open. Next preserve/sign the evidence and
+> docs, restore monitors-off caffeinate, complete the full-code review/polish checkpoint, then begin
+> authorized current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is
+> provenance only and compatible point updates never trigger rebaseline. Earlier Final12/Final11/
+> Final10 wording below is historical where superseded.
 
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
 as of 2026-08-28. This is not a release record.
@@ -66,10 +65,10 @@ Those documentation bytes changed source identity; their signed clean docs-only 
 immutable Final11, whose repaired Recovery bundle replay is green. Immutable Final12, preserved at
 signed evidence checkpoint `2bf99bd…`, passed Layout, SceneMemory and Compendium before Slice
 stopped once/no retry on the stale one-red wrapper expectation; its product assessment remained
-wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixes only that harness
-expectation and is browser-free green but browser-uncertified. After this docs-only descendant is
-signed clean, restart the once-only Final13 Layout → SceneMemory → Compendium → Slice → Glass →
-recovery chain with fresh IDs. Nothing in this
+wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixed only that harness
+expectation. Exact signed Final13 source `7cb0969…` then completed the full once-only named-verified
+Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain and real 20-minute observation.
+Nothing in this
 campaign has been packaged, published, pushed, hosted-tested, merged, versioned or released. Until
 one clean exact final head passes every required local gate and receives separate exact-SHA
 publication authority, no development-preview candidate exists. `--allow-dirty` remains local
