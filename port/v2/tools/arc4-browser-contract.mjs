@@ -1842,7 +1842,7 @@ export const ARC4_DURABLE_READ_EXPRESSION = `(async()=>{const open=indexedDB.ope
 
 export const buildArc4DurableReadExpression = () => ARC4_DURABLE_READ_EXPRESSION;
 
-export const ARC4_CAPTURE_UI_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),card=document.getElementById('survey'),mount=card?.querySelector('[data-capture-card-body]'),text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),rect=(node)=>{const r=node?.getBoundingClientRect?.();return r?{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}:null},point=(node)=>{const r=node?.getBoundingClientRect?.();if(!r)return null;const x=(r.left+r.right)/2,y=(r.top+r.bottom)/2,hit=document.elementFromPoint(x,y);return {x,y,tag:hit?.tagName??null,verb:hit?.closest?.('[data-capture-action]')?.getAttribute('data-capture-action')??null,close:hit?.closest?.('[data-survey-close]')!==null}},rows=[...mount?.querySelectorAll?.('[data-capture-row]')??[]].map((row)=>{const verb=row.getAttribute('data-capture-row'),button=row.querySelector('button[data-capture-action]'),odds=row.querySelector('[data-capture-odds]');return {verb,status:row.getAttribute('data-status'),semanticKey:row.getAttribute('data-semantic-key'),title:text(row.querySelector('.capture-card-row-title')),detail:text(row.querySelector('[data-capture-detail]')),odds:odds?{text:text(odds),eligibleCount:Number(odds.getAttribute('data-eligible-count')),overallChance:Number(odds.getAttribute('data-overall-chance')),chanceMin:Number(odds.getAttribute('data-chance-min')),chanceMax:Number(odds.getAttribute('data-chance-max'))}:null,button:{exists:!!button,connected:button?.isConnected===true,tag:button?.tagName??null,label:text(button),verb:button?.getAttribute('data-capture-action')??null,focusKey:button?.getAttribute('data-focus-key')??null,modelEnabled:button?.getAttribute('data-model-enabled')??null,disabled:button?.disabled??null,ariaDisabled:button?.getAttribute('aria-disabled')??null,rect:rect(button),point:point(button)}}}),budget=mount?.querySelector('[data-capture-budget]'),status=mount?.querySelector('[data-capture-status]'),close=card?.querySelector('[data-survey-close]');return {schema:'cf-v2-slice-arc4-capture-ui-evidence/v1',cardOpen:card?.style.display!=='none'&&card?.getAttribute('aria-hidden')!=='true',cardTitle:text(card?.querySelector('[data-sel=title]')),planetsideHeading:text(document.querySelector('#planetside .planetside-heading')),cardRect:rect(card),mountCount:card?.querySelectorAll('[data-capture-card-body]').length??0,directCloseCount:card?.querySelectorAll(':scope > .survey-head [data-survey-close]').length??0,close:{exists:!!close,tag:close?.tagName??null,label:close?.getAttribute('aria-label')??null,rect:rect(close),point:point(close)},controller:mount?.getAttribute('data-capture-card-controller')??null,contextKey:mount?.getAttribute('data-capture-context-key')??null,ariaBusy:mount?.getAttribute('aria-busy')??null,summary:text(mount?.querySelector('.capture-card-summary')),budget:budget?{text:text(budget),yield:Number(budget.getAttribute('data-yield')),used:Number(budget.getAttribute('data-used')),remaining:Number(budget.getAttribute('data-remaining')),cycle:Number(budget.getAttribute('data-cycle')),recoveryRemainingActivePlayMs:Number(budget.getAttribute('data-recovery-remaining-active-play-ms'))}:null,rows,status:{hidden:status?.hidden??null,kind:status?.getAttribute('data-kind')??null,convergence:status?.getAttribute('data-convergence')??null,text:text(status)},diagnostics:state?.capture?.card??null,captureState:state?.capture??null,ownershipV2:state?.ownershipV2??null,persistence:state?.persistence??null,activeElement:{verb:document.activeElement?.getAttribute?.('data-capture-action')??null,semanticKey:document.activeElement?.closest?.('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,status:document.activeElement?.matches?.('[data-capture-status]')===true,close:document.activeElement?.matches?.('[data-survey-close]')===true,focusVisible:document.activeElement?.matches?.(':focus-visible')===true}}})()`;
+export const ARC4_CAPTURE_UI_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),card=document.getElementById('survey'),mount=card?.querySelector('[data-capture-card-body]'),text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),rect=(node)=>{const r=node?.getBoundingClientRect?.();return r?{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}:null},point=(node)=>{const r=node?.getBoundingClientRect?.();if(!r)return null;const x=(r.left+r.right)/2,y=(r.top+r.bottom)/2,hit=document.elementFromPoint(x,y);return {x,y,tag:hit?.tagName??null,verb:hit?.closest?.('[data-capture-action]')?.getAttribute('data-capture-action')??null,close:!!hit&&hit.closest?.('[data-survey-close]')!==null}},rows=[...mount?.querySelectorAll?.('[data-capture-row]')??[]].map((row)=>{const verb=row.getAttribute('data-capture-row'),button=row.querySelector('button[data-capture-action]'),odds=row.querySelector('[data-capture-odds]');return {verb,status:row.getAttribute('data-status'),semanticKey:row.getAttribute('data-semantic-key'),title:text(row.querySelector('.capture-card-row-title')),detail:text(row.querySelector('[data-capture-detail]')),odds:odds?{text:text(odds),eligibleCount:Number(odds.getAttribute('data-eligible-count')),overallChance:Number(odds.getAttribute('data-overall-chance')),chanceMin:Number(odds.getAttribute('data-chance-min')),chanceMax:Number(odds.getAttribute('data-chance-max'))}:null,button:{exists:!!button,connected:button?.isConnected===true,tag:button?.tagName??null,label:text(button),verb:button?.getAttribute('data-capture-action')??null,focusKey:button?.getAttribute('data-focus-key')??null,modelEnabled:button?.getAttribute('data-model-enabled')??null,disabled:button?.disabled??null,ariaDisabled:button?.getAttribute('aria-disabled')??null,rect:rect(button),point:point(button)}}}),budget=mount?.querySelector('[data-capture-budget]'),status=mount?.querySelector('[data-capture-status]'),close=card?.querySelector('[data-survey-close]');return {schema:'cf-v2-slice-arc4-capture-ui-evidence/v1',cardOpen:card?.style.display!=='none'&&card?.getAttribute('aria-hidden')!=='true',cardTitle:text(card?.querySelector('[data-sel=title]')),planetsideHeading:text(document.querySelector('#planetside .planetside-heading')),cardRect:rect(card),mountCount:card?.querySelectorAll('[data-capture-card-body]').length??0,directCloseCount:card?.querySelectorAll(':scope > .survey-head [data-survey-close]').length??0,close:{exists:!!close,tag:close?.tagName??null,label:close?.getAttribute('aria-label')??null,rect:rect(close),point:point(close)},controller:mount?.getAttribute('data-capture-card-controller')??null,contextKey:mount?.getAttribute('data-capture-context-key')??null,ariaBusy:mount?.getAttribute('aria-busy')??null,summary:text(mount?.querySelector('.capture-card-summary')),budget:budget?{text:text(budget),yield:Number(budget.getAttribute('data-yield')),used:Number(budget.getAttribute('data-used')),remaining:Number(budget.getAttribute('data-remaining')),cycle:Number(budget.getAttribute('data-cycle')),recoveryRemainingActivePlayMs:Number(budget.getAttribute('data-recovery-remaining-active-play-ms'))}:null,rows,status:{hidden:status?.hidden??null,kind:status?.getAttribute('data-kind')??null,convergence:status?.getAttribute('data-convergence')??null,text:text(status)},diagnostics:state?.capture?.card??null,captureState:state?.capture??null,ownershipV2:state?.ownershipV2??null,persistence:state?.persistence??null,activeElement:{verb:document.activeElement?.getAttribute?.('data-capture-action')??null,semanticKey:document.activeElement?.closest?.('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,status:document.activeElement?.matches?.('[data-capture-status]')===true,close:document.activeElement?.matches?.('[data-survey-close]')===true,focusVisible:document.activeElement?.matches?.(':focus-visible')===true}}})()`;
 
 export const buildArc4CaptureUiExpression = () => ARC4_CAPTURE_UI_EXPRESSION;
 
@@ -4295,6 +4295,506 @@ const receiptBytes = (evidence) => ({
   rows: evidence?.receiptRows,
 });
 
+export const ARC4_DISABLED_SUPPRESSION_EVIDENCE_SCHEMA =
+  'cf-v2-arc4-disabled-suppression/v1';
+export const ARC4_DISABLED_TARGET_RECEIPT_SCHEMA =
+  'cf-v2-arc4-disabled-target/v1';
+
+const suppressionRectShape = (value) => exactKeys(
+  value, ['left', 'top', 'right', 'bottom', 'width', 'height'],
+) && Object.values(value).every(Number.isFinite)
+  && value.width >= 0 && value.height >= 0
+  && Math.abs(value.right - value.left - value.width) <= 0.25
+  && Math.abs(value.bottom - value.top - value.height) <= 0.25;
+
+const suppressionScrollShape = (value) => exactKeys(value, [
+  'left', 'top', 'clientWidth', 'clientHeight', 'scrollWidth', 'scrollHeight',
+]) && Object.values(value).every(Number.isFinite)
+  && value.left >= 0 && value.top >= 0
+  && value.clientWidth > 0 && value.clientHeight > 0
+  && value.scrollWidth >= value.clientWidth
+  && value.scrollHeight >= value.clientHeight
+  && value.left <= value.scrollWidth - value.clientWidth + 0.25
+  && value.top <= value.scrollHeight - value.clientHeight + 0.25;
+
+const suppressionNullableRectShape = (value) => value === null || suppressionRectShape(value);
+const suppressionNullableScrollShape = (value) => value === null || suppressionScrollShape(value);
+const suppressionFiniteOrNull = (value) => value === null || Number.isFinite(value);
+const suppressionPointShape = (value) => exactKeys(value, [
+  'x', 'y', 'hitTag', 'hitVerb', 'owned',
+]) && suppressionFiniteOrNull(value.x) && suppressionFiniteOrNull(value.y)
+  && ((value.x === null) === (value.y === null))
+  && (value.hitTag === null || typeof value.hitTag === 'string')
+  && (value.hitVerb === null || typeof value.hitVerb === 'string')
+  && typeof value.owned === 'boolean';
+
+const suppressionSampleShape = (value) => exactKeys(value, [
+  'documentToken', 'sameButton', 'sameSurvey', 'connected', 'button',
+  'cardRect', 'viewport', 'scroll', 'point',
+]) && boundedText(value.documentToken, 256)
+  && typeof value.sameButton === 'boolean'
+  && typeof value.sameSurvey === 'boolean'
+  && typeof value.connected === 'boolean'
+  && exactKeys(value.button, [
+    'tag', 'verb', 'disabled', 'modelEnabled', 'ariaDisabled', 'rect',
+  ])
+  && (value.button.tag === null || typeof value.button.tag === 'string')
+  && (value.button.verb === null || typeof value.button.verb === 'string')
+  && (value.button.disabled === null || typeof value.button.disabled === 'boolean')
+  && (value.button.modelEnabled === null || typeof value.button.modelEnabled === 'string')
+  && (value.button.ariaDisabled === null || typeof value.button.ariaDisabled === 'string')
+  && suppressionNullableRectShape(value.button.rect)
+  && suppressionNullableRectShape(value.cardRect)
+  && exactKeys(value.viewport, ['width', 'height'])
+  && Number.isFinite(value.viewport.width) && value.viewport.width > 0
+  && Number.isFinite(value.viewport.height) && value.viewport.height > 0
+  && suppressionNullableScrollShape(value.scroll)
+  && suppressionPointShape(value.point);
+
+const suppressionMissingButtonSample = (value) => value?.connected === false
+  && record(value?.button) && Object.values(value.button).every((entry) => entry === null)
+  && value?.point?.x === null && value.point.y === null
+  && value.point.hitTag === null && value.point.hitVerb === null
+  && value.point.owned === false;
+
+const suppressionSurveyPresenceCoherent = (samples, priorScroll) => (
+  suppressionScrollPositionShape(priorScroll)
+    ? samples.every((value) => value?.cardRect !== null && value?.cardRect !== undefined
+      && value?.scroll !== null && value?.scroll !== undefined)
+    : priorScroll === null
+      && samples.every((value) => value?.cardRect === null && value?.scroll === null)
+);
+
+const suppressionMeasuredButtonSample = (value) => (
+  value?.button?.rect !== null && value?.button?.rect !== undefined
+  && value?.cardRect !== null && value?.cardRect !== undefined
+  && value?.scroll !== null && value?.scroll !== undefined
+  && Number.isFinite(value?.point?.x) && Number.isFinite(value?.point?.y)
+);
+
+const suppressionScrollPositionShape = (value) => exactKeys(value, ['left', 'top'])
+  && Number.isFinite(value.left) && value.left >= 0
+  && Number.isFinite(value.top) && value.top >= 0;
+const suppressionNullableScrollPositionShape = (value) => (
+  value === null || suppressionScrollPositionShape(value)
+);
+const suppressionNear = (left, right, epsilon = 0.25) => Number.isFinite(left)
+  && Number.isFinite(right) && Math.abs(left - right) <= epsilon;
+const suppressionNullableNear = (left, right, epsilon = 0.25) => (
+  left === null && right === null
+) || suppressionNear(left, right, epsilon);
+const suppressionRectNear = (left, right) => [
+  'left', 'top', 'right', 'bottom', 'width', 'height',
+].every((key) => suppressionNear(left?.[key], right?.[key]));
+const suppressionNullableRectNear = (left, right) => (
+  left === null && right === null
+) || (suppressionRectShape(left) && suppressionRectShape(right)
+  && suppressionRectNear(left, right));
+const suppressionScrollNear = (left, right) => [
+  'left', 'top', 'clientWidth', 'clientHeight', 'scrollWidth', 'scrollHeight',
+].every((key) => suppressionNear(left?.[key], right?.[key]));
+const suppressionNullableScrollNear = (left, right) => (
+  left === null && right === null
+) || (suppressionScrollShape(left) && suppressionScrollShape(right)
+  && suppressionScrollNear(left, right));
+const suppressionPointCoherentWithRect = (sample) => {
+  const rect = sample?.button?.rect;
+  const point = sample?.point;
+  if (rect === null) return point?.x === null && point?.y === null;
+  if (!suppressionRectShape(rect)) return false;
+  const coherentCenter = suppressionNear(point?.x, (rect.left + rect.right) / 2)
+    && suppressionNear(point?.y, (rect.top + rect.bottom) / 2);
+  const coherentOwner = point?.owned !== true
+    || boundedText(point?.hitTag, 64) && point?.hitVerb === sample?.button?.verb;
+  return coherentCenter && coherentOwner;
+};
+const suppressionSampleSettled = (first, second) => suppressionSampleShape(first)
+  && suppressionSampleShape(second)
+  && first.documentToken === second.documentToken
+  && first.sameButton === true && second.sameButton === true
+  && first.sameSurvey === true && second.sameSurvey === true
+  && first.connected === second.connected
+  && same(omitted(first.button, ['rect']), omitted(second.button, ['rect']))
+  && suppressionNullableRectNear(first.button.rect, second.button.rect)
+  && suppressionNullableRectNear(first.cardRect, second.cardRect)
+  && suppressionNear(first.viewport.width, second.viewport.width)
+  && suppressionNear(first.viewport.height, second.viewport.height)
+  && suppressionNullableScrollNear(first.scroll, second.scroll)
+  && first.point.hitTag === second.point.hitTag
+  && first.point.hitVerb === second.point.hitVerb
+  && first.point.owned === second.point.owned
+  && suppressionNullableNear(first.point.x, second.point.x)
+  && suppressionNullableNear(first.point.y, second.point.y);
+
+const suppressionTraceRowShape = (value) => exactKeys(value, [
+  'verb', 'trusted', 'pointerType', 'clientX', 'clientY', 'documentToken',
+]) && typeof value.verb === 'string'
+  && typeof value.trusted === 'boolean'
+  && (value.pointerType === null || typeof value.pointerType === 'string')
+  && Number.isFinite(value.clientX) && Number.isFinite(value.clientY)
+  && boundedText(value.documentToken, 256);
+
+/** Classifies the settled, current-node target before a trusted input is
+ * armed. A coherent but unusable target is product-red; malformed evidence
+ * remains instrument-red. */
+export const assessArc4DisabledTargetEvidence = (target) => {
+  const first = target?.first;
+  const second = target?.second;
+  const documentToken = target?.documentTokenBefore;
+  const rect = second?.button?.rect;
+  const cardRect = second?.cardRect;
+  const viewport = second?.viewport;
+  const center = suppressionRectShape(rect) ? {
+    x: (rect.left + rect.right) / 2,
+    y: (rect.top + rect.bottom) / 2,
+  } : null;
+  const samples = [target?.initial, first, second];
+  const targetPresenceCoherent = counter(target?.selectorCount)
+    && suppressionSurveyPresenceCoherent(samples, target?.priorScroll)
+    && (target.selectorCount === 1
+      ? suppressionScrollPositionShape(target?.priorScroll)
+        && samples.every(suppressionMeasuredButtonSample)
+      : samples.every(suppressionMissingButtonSample));
+  const instrumentChecks = Object.freeze({
+    targetShape: exactKeys(target, [
+      'schema', 'selectorCount', 'documentTokenBefore', 'documentTokenAfter',
+      'requestedVerb', 'priorScroll', 'initial', 'first', 'second',
+    ]) && target?.schema === ARC4_DISABLED_TARGET_RECEIPT_SCHEMA
+      && target?.requestedVerb === 'tame'
+      && counter(target?.selectorCount)
+      && suppressionNullableScrollPositionShape(target?.priorScroll),
+    sampleShapes: suppressionSampleShape(target?.initial)
+      && suppressionSampleShape(first) && suppressionSampleShape(second),
+    targetPresenceCoherence: targetPresenceCoherent,
+    currentIdentity: target?.initial?.sameButton === true
+      && target.initial.sameSurvey === true
+      && first?.sameButton === true && first?.sameSurvey === true
+      && second?.sameButton === true && second?.sameSurvey === true,
+    documentContinuity: boundedText(documentToken, 256)
+      && target?.documentTokenAfter === documentToken
+      && target?.initial?.documentToken === documentToken
+      && first?.documentToken === documentToken
+      && second?.documentToken === documentToken,
+    initialScrollBinding: target?.initial?.scroll === null
+      && target?.priorScroll === null
+      || suppressionScrollShape(target?.initial?.scroll)
+        && suppressionScrollPositionShape(target?.priorScroll)
+        && suppressionNear(target.initial.scroll.left, target.priorScroll.left)
+        && suppressionNear(target.initial.scroll.top, target.priorScroll.top),
+    settledReceipt: suppressionSampleSettled(first, second),
+    coherentPoint: samples.every(suppressionPointCoherentWithRect)
+      && (center === null
+        ? second?.point?.x === null && second?.point?.y === null
+        : suppressionNear(second?.point?.x, center.x)
+          && suppressionNear(second?.point?.y, center.y)),
+  });
+  const productChecks = Object.freeze({
+    uniqueTarget: target?.selectorCount === 1,
+    connectedTarget: second?.connected === true,
+    minimumTarget: rect?.width >= 44 && rect?.height >= 44,
+    cardContainment: suppressionRectShape(rect) && suppressionRectShape(cardRect)
+      && rect.left >= cardRect.left - 0.25 && rect.right <= cardRect.right + 0.25
+      && rect.top >= cardRect.top - 0.25 && rect.bottom <= cardRect.bottom + 0.25,
+    viewportContainment: suppressionRectShape(rect)
+      && Number.isFinite(viewport?.width) && Number.isFinite(viewport?.height)
+      && rect.left >= -0.25 && rect.top >= -0.25
+      && rect.right <= viewport.width + 0.25
+      && rect.bottom <= viewport.height + 0.25,
+    ownedHit: second?.point?.owned === true
+      && second?.point?.hitVerb === 'tame',
+    buttonIdentity: second?.button?.tag === 'BUTTON'
+      && second?.button?.verb === 'tame',
+    nativeDisabled: second?.button?.disabled === true,
+    modelDisabled: second?.button?.modelEnabled === 'false',
+    ariaDisabled: second?.button?.ariaDisabled === 'true',
+  });
+  const instrumentOk = Object.values(instrumentChecks).every((value) => value === true);
+  const productOk = Object.values(productChecks).every((value) => value === true);
+  return Object.freeze({
+    ok: instrumentOk && productOk,
+    instrumentOk,
+    productOk,
+    instrumentChecks,
+    productChecks,
+  });
+};
+
+const suppressionStateToast = (value) => ({
+  on: value?.toastOn,
+  text: value?.toastText,
+  serial: value?.toastSerial,
+});
+const suppressionVisibleSurvey = (value) => ({
+  cardOpen: value?.cardOpen,
+  cardTitle: value?.cardTitle,
+});
+/* These are the only app-state fields expected to move while the disabled
+   receipt is collected: the render ticker, two projections of the same
+   continuously accruing active-play clock, and the heartbeat timer flag that
+   the bounded quiesce/resume receipt deliberately changes. Every other field
+   is suppression outcome evidence, including lease/revision read counters,
+   lease heartbeat, route, pending work and runtime eligibility. */
+const ARC4_DISABLED_SUPPRESSION_VOLATILE_STATE_PATHS = Object.freeze([
+  'tickerTicks',
+  'persistence.heartbeatRunning',
+  'persistence.runtime.activePlayMs',
+  'persistence.ecology.observedActivePlayMs',
+]);
+const suppressionInvariantStateProjection = (value) => {
+  if (!record(value) || !record(value.persistence)) return null;
+  const persistence = value.persistence;
+  return {
+    ...omitted(value, ['tickerTicks']),
+    persistence: {
+      ...omitted(persistence, ['heartbeatRunning']),
+      runtime: record(persistence.runtime)
+        ? omitted(persistence.runtime, ['activePlayMs']) : persistence.runtime,
+      ecology: record(persistence.ecology)
+        ? omitted(persistence.ecology, ['observedActivePlayMs']) : persistence.ecology,
+    },
+  };
+};
+const suppressionRuntimeActivePlayMs = (value) => (
+  persistenceStateOf(value)?.runtime?.activePlayMs
+);
+const ARC4_DISABLED_SUPPRESSION_RUNTIME_LAG_MAX_MS = 10_000;
+const suppressionRuntimeChronology = ({ beforeState, afterState, exhaustedState }) => {
+  const before = suppressionRuntimeActivePlayMs(beforeState);
+  const after = suppressionRuntimeActivePlayMs(afterState);
+  if (!counter(before) || !counter(after)
+    || before > after || after - before > ARC4_DISABLED_SUPPRESSION_RUNTIME_LAG_MAX_MS) {
+    return false;
+  }
+  if (exhaustedState === undefined) return true;
+  const exhausted = suppressionRuntimeActivePlayMs(exhaustedState);
+  return counter(exhausted) && exhausted <= before
+    && before - exhausted <= ARC4_DISABLED_SUPPRESSION_RUNTIME_LAG_MAX_MS;
+};
+const suppressionHeartbeatConcurrencyProjection = (value) => {
+  const persistence = persistenceStateOf(value);
+  return {
+    leaseReadCount: persistence?.leaseReadCount,
+    revisionReadCount: persistence?.revisionReadCount,
+    leaseHeartbeat: persistence?.runtime?.leaseHeartbeat,
+  };
+};
+const suppressionHeartbeatConcurrencyShape = (value) => (
+  counter(value?.leaseReadCount)
+  && counter(value?.revisionReadCount)
+  && counter(value?.leaseHeartbeat)
+);
+const suppressionHeartbeatQuiescence = ({
+  heartbeat, documentToken, beforeState, afterState, exhaustedState,
+}) => {
+  const quiesced = heartbeat?.quiesced;
+  const resumed = heartbeat?.resumed;
+  const exhaustedConcurrency = suppressionHeartbeatConcurrencyProjection(exhaustedState);
+  const beforeConcurrency = suppressionHeartbeatConcurrencyProjection(beforeState);
+  const afterConcurrency = suppressionHeartbeatConcurrencyProjection(afterState);
+  return boundedText(documentToken, 256)
+    && exactKeys(heartbeat, ['quiesced', 'resumed'])
+    && exactKeys(quiesced, [
+      'schema', 'documentToken', 'wasRunning', 'stopped', 'cycleSettled',
+    ]) && quiesced?.schema === 'cf-v2-f4-heartbeat-quiescence/v1'
+    && quiesced?.documentToken === documentToken
+    && quiesced?.wasRunning === true
+    && quiesced?.stopped === true
+    && quiesced?.cycleSettled === true
+    && exactKeys(resumed, ['schema', 'documentToken', 'running'])
+    && resumed?.schema === 'cf-v2-f4-heartbeat-resume/v1'
+    && resumed?.documentToken === documentToken
+    && resumed?.running === true
+    && persistenceStateOf(beforeState)?.heartbeatRunning === false
+    && persistenceStateOf(afterState)?.heartbeatRunning === true
+    && (exhaustedState === undefined
+      || persistenceStateOf(exhaustedState)?.heartbeatRunning === false)
+    && suppressionHeartbeatConcurrencyShape(beforeConcurrency)
+    && suppressionHeartbeatConcurrencyShape(afterConcurrency)
+    && same(beforeConcurrency, afterConcurrency)
+    && (exhaustedState === undefined || (
+      suppressionHeartbeatConcurrencyShape(exhaustedConcurrency)
+      && same(exhaustedConcurrency, beforeConcurrency)
+    ));
+};
+const suppressionOutcomeStateShape = (value) => record(value)
+  && record(value.capture) && record(value.ownershipV2) && record(value.persistence)
+  && ['card', 'actionCoordinator', 'lastOutcome', 'lastResult'].every(
+    (key) => own(value.capture, key),
+  )
+  && own(value, 'audio')
+  && typeof value.cardOpen === 'boolean'
+  && (value.cardTitle === null || boundedText(value.cardTitle, 256))
+  && typeof value.toastOn === 'boolean'
+  && typeof value.toastText === 'string'
+  && counter(value.toastSerial);
+
+/** Replays a disabled-control receipt without trusting any collector PASS bit.
+ * Instrument integrity and product outcome remain separately attributable so
+ * malformed geometry can never be misreported as a game regression. */
+export const assessArc4DisabledSuppressionEvidence = (
+  evidence, { exhaustedRaw = undefined, exhaustedState = undefined } = {},
+) => {
+  const target = evidence?.target;
+  const first = target?.first;
+  const second = target?.second;
+  const dispatch = evidence?.dispatch;
+  const trace = evidence?.trace;
+  const heartbeat = evidence?.heartbeat;
+  const restoration = evidence?.restoration;
+  const pointer = Array.isArray(trace?.pointer) && trace.pointer.length === 1
+    ? trace.pointer[0] : null;
+  const documentToken = target?.documentTokenBefore;
+  const beforeCapture = captureStateOf(evidence?.beforeState);
+  const afterCapture = captureStateOf(evidence?.afterState);
+  const exactTopShape = exactKeys(evidence, [
+    'schema', 'verb', 'target', 'dispatch', 'trace', 'heartbeat', 'restoration',
+    'beforeRaw', 'afterRaw', 'beforeState', 'afterState',
+  ]);
+  const targetAssessment = assessArc4DisabledTargetEvidence(target);
+  const exactDispatchShape = exactKeys(dispatch, [
+    'requested', 'inputDispatched', 'documentToken', 'x', 'y',
+  ]);
+  const exactTraceShape = exactKeys(trace, ['pointer', 'clicks'])
+    && Array.isArray(trace.pointer) && Array.isArray(trace.clicks)
+    && trace.pointer.every(suppressionTraceRowShape)
+    && trace.clicks.every(suppressionTraceRowShape);
+  const exactRestorationShape = exactKeys(restoration, [
+    'attempted', 'complete', 'documentToken', 'before', 'after',
+    'abortSignalAborted', 'globalsAbsent',
+  ]) && typeof restoration?.attempted === 'boolean'
+    && typeof restoration?.complete === 'boolean'
+    && typeof restoration?.abortSignalAborted === 'boolean'
+    && exactKeys(restoration?.globalsAbsent, ['abort', 'trace', 'preparation'])
+    && Object.values(restoration.globalsAbsent).every((value) => typeof value === 'boolean')
+    && suppressionNullableScrollPositionShape(restoration?.before)
+    && suppressionNullableScrollPositionShape(restoration?.after);
+  const secondCenter = suppressionRectShape(second?.button?.rect)
+    ? {
+      x: (second.button.rect.left + second.button.rect.right) / 2,
+      y: (second.button.rect.top + second.button.rect.bottom) / 2,
+    } : null;
+  const instrumentChecks = Object.freeze({
+    evidenceShape: exactTopShape
+      && evidence?.schema === ARC4_DISABLED_SUPPRESSION_EVIDENCE_SCHEMA
+      && evidence?.verb === 'tame',
+    outcomeEvidencePresent: record(evidence?.beforeRaw) && record(evidence?.afterRaw)
+      && suppressionOutcomeStateShape(evidence?.beforeState)
+      && suppressionOutcomeStateShape(evidence?.afterState),
+    targetIntegrity: targetAssessment.instrumentOk,
+    documentBinding: boundedText(documentToken, 256)
+      && persistenceStateOf(evidence?.beforeState)?.documentToken === documentToken
+      && persistenceStateOf(evidence?.afterState)?.documentToken === documentToken
+      && (exhaustedState === undefined
+        || persistenceStateOf(exhaustedState)?.documentToken === documentToken),
+    runtimeChronology: suppressionRuntimeChronology({
+      beforeState: evidence?.beforeState,
+      afterState: evidence?.afterState,
+      exhaustedState,
+    }),
+    heartbeatQuiescence: suppressionHeartbeatQuiescence({
+      heartbeat,
+      documentToken,
+      beforeState: evidence?.beforeState,
+      afterState: evidence?.afterState,
+      exhaustedState,
+    }),
+    dispatchShape: exactDispatchShape
+      && dispatch?.requested === true && dispatch?.inputDispatched === true,
+    dispatchBinding: dispatch?.documentToken === documentToken
+      && secondCenter !== null
+      && dispatch?.x === secondCenter.x
+      && dispatch?.y === secondCenter.y,
+    traceShape: exactTraceShape,
+    oneTrustedPointer: pointer !== null && pointer.trusted === true
+      && ['mouse', 'touch'].includes(pointer.pointerType)
+      && pointer.verb === 'tame' && pointer.documentToken === documentToken
+      && suppressionNear(pointer.clientX, dispatch?.x, 0.75)
+      && suppressionNear(pointer.clientY, dispatch?.y, 0.75),
+    restorationShape: exactRestorationShape,
+    restorationComplete: restoration?.attempted === true
+      && restoration?.complete === true
+      && restoration?.abortSignalAborted === true
+      && Object.values(restoration?.globalsAbsent ?? {}).length === 3
+      && Object.values(restoration.globalsAbsent).every((value) => value === true)
+      && restoration?.documentToken === documentToken
+      && same(restoration?.before, target?.priorScroll)
+      && same(restoration?.after, target?.priorScroll),
+  });
+  const productChecks = Object.freeze({
+    targetOutcome: targetAssessment.productOk,
+    zeroClicks: Array.isArray(trace?.clicks) && trace.clicks.length === 0,
+    durableUnchanged: same(evidence?.beforeRaw, evidence?.afterRaw)
+      && (exhaustedRaw === undefined || same(evidence?.beforeRaw, exhaustedRaw)),
+    stateInvariantUnchanged: same(
+      suppressionInvariantStateProjection(evidence?.beforeState),
+      suppressionInvariantStateProjection(evidence?.afterState),
+    ) && (exhaustedState === undefined || same(
+      suppressionInvariantStateProjection(evidence?.beforeState),
+      suppressionInvariantStateProjection(exhaustedState),
+    )),
+    captureUnchanged: same(
+      stableCaptureProjection(evidence?.beforeState),
+      stableCaptureProjection(evidence?.afterState),
+    ) && (exhaustedState === undefined || same(
+      stableCaptureProjection(evidence?.beforeState),
+      stableCaptureProjection(exhaustedState),
+    )),
+    ownershipUnchanged: same(
+      stableOwnershipV2Projection(evidence?.beforeState),
+      stableOwnershipV2Projection(evidence?.afterState),
+    ) && (exhaustedState === undefined || same(
+      stableOwnershipV2Projection(evidence?.beforeState),
+      stableOwnershipV2Projection(exhaustedState),
+    )),
+    captureCardUnchanged: same(beforeCapture?.card, afterCapture?.card)
+      && (exhaustedState === undefined
+        || same(beforeCapture?.card, captureStateOf(exhaustedState)?.card)),
+    actionCoordinatorUnchanged: same(
+      beforeCapture?.actionCoordinator, afterCapture?.actionCoordinator,
+    ) && (exhaustedState === undefined || same(
+      beforeCapture?.actionCoordinator,
+      captureStateOf(exhaustedState)?.actionCoordinator,
+    )),
+    lastOutcomeUnchanged: same(beforeCapture?.lastOutcome, afterCapture?.lastOutcome)
+      && (exhaustedState === undefined || same(
+        beforeCapture?.lastOutcome, captureStateOf(exhaustedState)?.lastOutcome,
+      )),
+    lastResultUnchanged: same(beforeCapture?.lastResult, afterCapture?.lastResult)
+      && (exhaustedState === undefined || same(
+        beforeCapture?.lastResult, captureStateOf(exhaustedState)?.lastResult,
+      )),
+    audioUnchanged: same(evidence?.beforeState?.audio, evidence?.afterState?.audio)
+      && (exhaustedState === undefined
+        || same(evidence?.beforeState?.audio, exhaustedState?.audio)),
+    toastUnchanged: same(
+      suppressionStateToast(evidence?.beforeState),
+      suppressionStateToast(evidence?.afterState),
+    ) && (exhaustedState === undefined || same(
+      suppressionStateToast(evidence?.beforeState),
+      suppressionStateToast(exhaustedState),
+    )),
+    visibleSurveyUnchanged: same(
+      suppressionVisibleSurvey(evidence?.beforeState),
+      suppressionVisibleSurvey(evidence?.afterState),
+    ) && (exhaustedState === undefined || same(
+      suppressionVisibleSurvey(evidence?.beforeState),
+      suppressionVisibleSurvey(exhaustedState),
+    )),
+    runtimeValid: exactRuntimeAtOrAfterRaw(
+      evidence?.beforeRaw, evidence?.beforeState,
+    ) && exactRuntimeAtOrAfterRaw(evidence?.afterRaw, evidence?.afterState),
+  });
+  const instrumentOk = Object.values(instrumentChecks).every((value) => value === true);
+  const productOk = Object.values(productChecks).every((value) => value === true);
+  return Object.freeze({
+    ok: instrumentOk && productOk,
+    instrumentOk,
+    productOk,
+    instrumentChecks,
+    productChecks,
+  });
+};
+
 const sameCaptureAuthority = (left, right) => left?.captureRevision === right?.captureRevision
   && same(left?.captureState, right?.captureState)
   && same(
@@ -4333,12 +4833,22 @@ const exhaustedLiveParity = (exhaustedRaw, exhaustedState) => {
     && same(runtime?.sessionDraws, exhaustedRaw?.authority?.sessionRng?.draws);
 };
 
+const exactStateUiDocumentBinding = (state, ui) => {
+  const stateToken = persistenceStateOf(state)?.documentToken;
+  return boundedText(stateToken, 256)
+    && persistenceStateOf(ui)?.documentToken === stateToken;
+};
+
 const exhaustedPresentationChecks = ({
   exhaustedRaw, exhaustedState, exhaustedUi, suppressed,
 }) => {
   const exhaustedProgress = progressForFixture(exhaustedRaw);
   const naturalRows = exhaustedUi?.rows?.filter((row) => row?.status !== 'empty') ?? [];
+  const suppression = assessArc4DisabledSuppressionEvidence(suppressed, {
+    exhaustedRaw, exhaustedState,
+  });
   return {
+    exhaustedDocumentBinding: exactStateUiDocumentBinding(exhaustedState, exhaustedUi),
     exhaustedAuthority: exhaustedProgress?.used === ARC4_PERTAR_FIXTURE.biosphereYield
       && exhaustedUi?.budget?.yield === ARC4_PERTAR_FIXTURE.biosphereYield
       && exhaustedUi?.budget?.used === ARC4_PERTAR_FIXTURE.biosphereYield
@@ -4347,33 +4857,7 @@ const exhaustedPresentationChecks = ({
       && naturalRows.every((row) => row?.status === 'depleted'
         && row?.button?.disabled === true && row?.button?.ariaDisabled === 'true')
       && /no biosphere yield remains/i.test(naturalRows[0]?.detail ?? ''),
-    disabledSuppression: suppressed?.verb === 'tame'
-      && suppressed?.point?.height >= 44 && suppressed?.point?.width >= 44
-      && suppressed?.point?.disabled === true
-      && suppressed?.point?.modelEnabled === 'false'
-      && suppressed?.pointer?.trusted === true
-      && ['mouse', 'touch'].includes(suppressed?.pointer?.pointerType)
-      && suppressed?.clickCount === 0
-      && same(suppressed?.beforeRaw, exhaustedRaw)
-      && same(suppressed?.beforeRaw, suppressed?.afterRaw)
-      && same(
-        stableCaptureProjection(suppressed?.beforeState),
-        stableCaptureProjection(exhaustedState),
-      )
-      && same(
-        stableCaptureProjection(suppressed?.beforeState),
-        stableCaptureProjection(suppressed?.afterState),
-      )
-      && same(
-        stableOwnershipV2Projection(suppressed?.beforeState),
-        stableOwnershipV2Projection(exhaustedState),
-      )
-      && same(
-        stableOwnershipV2Projection(suppressed?.beforeState),
-        stableOwnershipV2Projection(suppressed?.afterState),
-      )
-      && exactRuntimeAtOrAfterRaw(suppressed?.beforeRaw, suppressed?.beforeState)
-      && exactRuntimeAtOrAfterRaw(suppressed?.afterRaw, suppressed?.afterState),
+    disabledSuppression: suppression.ok,
   };
 };
 
@@ -4479,6 +4963,8 @@ export const assessArc4ExhaustionRecovery = ({
     ) && exactRuntimeCaptureOrder(
       recoveredRaw, recoveredState, recoveredUi, 'state-ui',
     ),
+    offlineDocumentBinding: exactStateUiDocumentBinding(offlineState, offlineUi),
+    recoveredDocumentBinding: exactStateUiDocumentBinding(recoveredState, recoveredUi),
     ...exhaustion,
     closeCheckpoint: closedRuntime?.visible === false
       && closedRuntime?.answerable === false
@@ -6082,6 +6568,7 @@ const depletedStatusesSelftest = {
 const exhaustedUiSelftest = uiSnapshot(exhaustedCaptureSelftest, {
   used: 16, statuses: depletedStatusesSelftest, raw: exhaustedRawSelftest,
 });
+exhaustedUiSelftest.persistence.documentToken = exhaustedDocumentTokenSelftest;
 const closedRawSelftest = structuredClone(exhaustedRawSelftest);
 const closedCaptureSelftest = appCaptureState(closedRawSelftest);
 const closedStateSelftest = appState(closedRawSelftest, closedCaptureSelftest);
@@ -6101,6 +6588,7 @@ Object.assign(offlineStateSelftest.persistence.runtime, {
 const offlineUiSelftest = uiSnapshot(offlineCaptureSelftest, {
   used: 16, statuses: depletedStatusesSelftest, raw: offlineRawSelftest, boot: true,
 });
+offlineUiSelftest.persistence.documentToken = reopenedDocumentTokenSelftest;
 Object.assign(offlineUiSelftest.persistence.runtime, {
   visible: false, answerable: false, leaseOwned: false, accruing: false,
 });
@@ -6117,14 +6605,615 @@ recoveredStateSelftest.persistence.documentToken = reopenedDocumentTokenSelftest
 const recoveredUiSelftest = uiSnapshot(recoveredCaptureSelftest, {
   used: 0, cycle: 1, raw: recoveredRawSelftest, boot: true,
 });
-const suppressedSelftest = {
-  verb: 'tame',
-  point: { height: 44, width: 100, disabled: true, modelEnabled: 'false' },
-  pointer: { trusted: true, pointerType: 'mouse' }, clickCount: 0,
-  beforeRaw: exhaustedRawSelftest, afterRaw: structuredClone(exhaustedRawSelftest),
-  beforeState: exhaustedStateSelftest,
-  afterState: structuredClone(exhaustedStateSelftest),
+recoveredUiSelftest.persistence.documentToken = reopenedDocumentTokenSelftest;
+const suppressionDocumentTokenSelftest = exhaustedDocumentTokenSelftest;
+const suppressionSampleSelftest = {
+  documentToken: suppressionDocumentTokenSelftest,
+  sameButton: true, sameSurvey: true, connected: true,
+  button: {
+    tag: 'BUTTON', verb: 'tame', disabled: true,
+    modelEnabled: 'false', ariaDisabled: 'true',
+    rect: { left: 40, top: 300, right: 140, bottom: 344, width: 100, height: 44 },
+  },
+  cardRect: { left: 10, top: 100, right: 380, bottom: 700, width: 370, height: 600 },
+  viewport: { width: 390, height: 844 },
+  scroll: {
+    left: 0, top: 200, clientWidth: 370, clientHeight: 600,
+    scrollWidth: 370, scrollHeight: 1000,
+  },
+  point: { x: 90, y: 322, hitTag: 'BUTTON', hitVerb: 'tame', owned: true },
 };
+Object.assign(exhaustedStateSelftest, {
+  audio: { schema: 'selftest-audio', armed: 0 },
+  toastOn: false, toastText: '', toastSerial: 7,
+  tickerTicks: 100,
+});
+Object.assign(exhaustedStateSelftest.persistence, {
+  heartbeatRunning: false,
+  leaseReadCount: 7,
+  revisionReadCount: 7,
+});
+exhaustedStateSelftest.persistence.runtime.leaseHeartbeat = 1_000;
+exhaustedStateSelftest.persistence.ecology = {
+  schema: 'selftest-ecology', observedActivePlayMs: ARC4_ACTIVE_PLAY_CYCLE_MS - 10_000,
+  checkpointInFlight: false,
+};
+const suppressionBeforeStateSelftest = structuredClone(exhaustedStateSelftest);
+suppressionBeforeStateSelftest.persistence.heartbeatRunning = false;
+const suppressedSelftest = {
+  schema: ARC4_DISABLED_SUPPRESSION_EVIDENCE_SCHEMA,
+  verb: 'tame',
+  target: {
+    schema: ARC4_DISABLED_TARGET_RECEIPT_SCHEMA,
+    selectorCount: 1,
+    documentTokenBefore: suppressionDocumentTokenSelftest,
+    documentTokenAfter: suppressionDocumentTokenSelftest,
+    requestedVerb: 'tame', priorScroll: { left: 0, top: 0 },
+    initial: (() => {
+      const sample = structuredClone(suppressionSampleSelftest);
+      sample.scroll.top = 0;
+      Object.assign(sample.button.rect, {
+        top: 812, bottom: 856, height: 44,
+      });
+      Object.assign(sample.cardRect, { bottom: 800, height: 700 });
+      Object.assign(sample.point, {
+        y: 834, hitTag: null, hitVerb: null, owned: false,
+      });
+      return sample;
+    })(),
+    first: structuredClone(suppressionSampleSelftest),
+    second: structuredClone(suppressionSampleSelftest),
+  },
+  dispatch: {
+    requested: true, inputDispatched: true,
+    documentToken: suppressionDocumentTokenSelftest, x: 90, y: 322,
+  },
+  trace: {
+    pointer: [{
+      verb: 'tame', trusted: true, pointerType: 'mouse',
+      clientX: 90, clientY: 322,
+      documentToken: suppressionDocumentTokenSelftest,
+    }],
+    clicks: [],
+  },
+  heartbeat: {
+    quiesced: {
+      schema: 'cf-v2-f4-heartbeat-quiescence/v1',
+      documentToken: suppressionDocumentTokenSelftest,
+      wasRunning: true, stopped: true, cycleSettled: true,
+    },
+    resumed: {
+      schema: 'cf-v2-f4-heartbeat-resume/v1',
+      documentToken: suppressionDocumentTokenSelftest,
+      running: true,
+    },
+  },
+  restoration: {
+    attempted: true, complete: true,
+    documentToken: suppressionDocumentTokenSelftest,
+    before: { left: 0, top: 0 }, after: { left: 0, top: 0 },
+    abortSignalAborted: true,
+    globalsAbsent: { abort: true, trace: true, preparation: true },
+  },
+  beforeRaw: exhaustedRawSelftest, afterRaw: structuredClone(exhaustedRawSelftest),
+  beforeState: suppressionBeforeStateSelftest,
+  afterState: (() => {
+    const state = structuredClone(suppressionBeforeStateSelftest);
+    state.persistence.heartbeatRunning = true;
+    return state;
+  })(),
+};
+
+const disabledTargetMutationSelftest = (mutate) => {
+  const target = structuredClone(suppressedSelftest.target);
+  mutate(target);
+  return assessArc4DisabledTargetEvidence(target);
+};
+const disabledSuppressionMutationSelftest = (mutate) => {
+  const evidence = structuredClone(suppressedSelftest);
+  mutate(evidence);
+  return assessArc4DisabledSuppressionEvidence(evidence, {
+    exhaustedRaw: exhaustedRawSelftest,
+    exhaustedState: exhaustedStateSelftest,
+  });
+};
+const disabledSuppressionExhaustedMutationSelftest = (mutate) => {
+  const evidence = structuredClone(suppressedSelftest);
+  const exhaustedState = structuredClone(exhaustedStateSelftest);
+  mutate(exhaustedState);
+  return assessArc4DisabledSuppressionEvidence(evidence, {
+    exhaustedRaw: exhaustedRawSelftest,
+    exhaustedState,
+  });
+};
+const disabledTargetBaselineSelftest = assessArc4DisabledTargetEvidence(
+  suppressedSelftest.target,
+);
+const disabledSuppressionBaselineSelftest = assessArc4DisabledSuppressionEvidence(
+  suppressedSelftest, {
+    exhaustedRaw: exhaustedRawSelftest,
+    exhaustedState: exhaustedStateSelftest,
+  },
+);
+for (const [label, value] of [
+  ['target', disabledTargetBaselineSelftest],
+  ['suppression', disabledSuppressionBaselineSelftest],
+]) {
+  if (!exactKeys(value, [
+    'ok', 'instrumentOk', 'productOk', 'instrumentChecks', 'productChecks',
+  ]) || value.ok !== true || !Object.isFrozen(value)
+    || !Object.isFrozen(value.instrumentChecks) || !Object.isFrozen(value.productChecks)) {
+    throw new Error(`Arc 4 disabled ${label} baseline is not exact, green and frozen`);
+  }
+}
+const disabledSuppressionVolatileSelftest = (() => {
+  const evidence = structuredClone(suppressedSelftest);
+  evidence.afterState.tickerTicks += 1;
+  evidence.afterState.persistence.runtime.activePlayMs += 1;
+  evidence.afterState.persistence.ecology.observedActivePlayMs += 1;
+  return assessArc4DisabledSuppressionEvidence(evidence, {
+    exhaustedRaw: exhaustedRawSelftest,
+    exhaustedState: exhaustedStateSelftest,
+  });
+})();
+if (!Object.isFrozen(ARC4_DISABLED_SUPPRESSION_VOLATILE_STATE_PATHS)
+  || !same(ARC4_DISABLED_SUPPRESSION_VOLATILE_STATE_PATHS, [
+  'tickerTicks',
+  'persistence.heartbeatRunning',
+  'persistence.runtime.activePlayMs',
+  'persistence.ecology.observedActivePlayMs',
+]) || disabledSuppressionVolatileSelftest.ok !== true) {
+  throw new Error('Arc 4 disabled suppression volatile allowlist selftest failed');
+}
+const suppressionSettleSamples = (target, mutate) => {
+  mutate(target.first);
+  mutate(target.second);
+};
+const suppressionRemoveButtonFromSamples = (target) => {
+  for (const sample of [target.initial, target.first, target.second]) {
+    sample.connected = false;
+    Object.assign(sample.button, {
+      tag: null, verb: null, disabled: null, modelEnabled: null,
+      ariaDisabled: null, rect: null,
+    });
+    Object.assign(sample.point, {
+      x: null, y: null, hitTag: null, hitVerb: null, owned: false,
+    });
+  }
+};
+const disabledTargetMutationControlsSelftest = Object.freeze({
+  missingTarget: ['product', [
+    'uniqueTarget', 'connectedTarget', 'minimumTarget', 'cardContainment',
+    'viewportContainment', 'ownedHit', 'buttonIdentity', 'nativeDisabled',
+    'modelDisabled', 'ariaDisabled',
+  ], disabledTargetMutationSelftest((target) => {
+    target.selectorCount = 0;
+    suppressionRemoveButtonFromSamples(target);
+  })],
+  missingSurveyTarget: ['product', [
+    'uniqueTarget', 'connectedTarget', 'minimumTarget', 'cardContainment',
+    'viewportContainment', 'ownedHit', 'buttonIdentity', 'nativeDisabled',
+    'modelDisabled', 'ariaDisabled',
+  ], disabledTargetMutationSelftest((target) => {
+    target.selectorCount = 0;
+    target.priorScroll = null;
+    suppressionRemoveButtonFromSamples(target);
+    for (const sample of [target.initial, target.first, target.second]) {
+      sample.cardRect = null;
+      sample.scroll = null;
+    }
+  })],
+  missingTargetCarriesMeasurement: ['instrument', ['targetPresenceCoherence'],
+    disabledTargetMutationSelftest((target) => {
+      target.selectorCount = 0;
+    })],
+  missingTargetSurveyMismatch: ['instrument', ['targetPresenceCoherence'],
+    disabledTargetMutationSelftest((target) => {
+      target.selectorCount = 0;
+      suppressionRemoveButtonFromSamples(target);
+      for (const sample of [target.initial, target.first, target.second]) {
+        sample.cardRect = null;
+      }
+    })],
+  validTargetMissingScroll: ['instrument', ['targetPresenceCoherence'],
+    disabledTargetMutationSelftest((target) => {
+      target.priorScroll = null;
+      for (const sample of [target.initial, target.first, target.second]) {
+        sample.scroll = null;
+      }
+    })],
+  validTargetMissingGeometry: ['instrument', ['targetPresenceCoherence'],
+    disabledTargetMutationSelftest((target) => {
+      for (const sample of [target.initial, target.first, target.second]) {
+        sample.button.rect = null;
+        Object.assign(sample.point, {
+          x: null, y: null, hitTag: null, hitVerb: null, owned: false,
+        });
+      }
+    })],
+  validTargetMissingCard: ['instrument', ['targetPresenceCoherence'],
+    disabledTargetMutationSelftest((target) => {
+      for (const sample of [target.initial, target.first, target.second]) {
+        sample.cardRect = null;
+      }
+    })],
+  validTargetMissingPoint: ['instrument', [
+    'targetPresenceCoherence', 'coherentPoint',
+  ], disabledTargetMutationSelftest((target) => {
+    for (const sample of [target.initial, target.first, target.second]) {
+      Object.assign(sample.point, {
+        x: null, y: null, hitTag: null, hitVerb: null, owned: false,
+      });
+    }
+  })],
+  duplicateTarget: ['product', [
+    'uniqueTarget', 'connectedTarget', 'minimumTarget', 'cardContainment',
+    'viewportContainment', 'ownedHit', 'buttonIdentity', 'nativeDisabled',
+    'modelDisabled', 'ariaDisabled',
+  ], disabledTargetMutationSelftest((target) => {
+    target.selectorCount = 2;
+    suppressionRemoveButtonFromSamples(target);
+  })],
+  connectedTarget: ['product', ['connectedTarget'], disabledTargetMutationSelftest((target) => {
+    target.initial.connected = false;
+    suppressionSettleSamples(target, (sample) => { sample.connected = false; });
+  })],
+  minimumTarget: ['product', ['minimumTarget'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => {
+      sample.button.rect.top = 301;
+      sample.button.rect.bottom = 344;
+      sample.button.rect.height = 43;
+      sample.point.y = 322.5;
+    });
+  })],
+  cardContainment: ['product', ['cardContainment'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => {
+      sample.cardRect.top = 301;
+      sample.cardRect.height = 399;
+    });
+  })],
+  viewportContainment: ['product', ['viewportContainment'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => { sample.viewport.height = 343; });
+  })],
+  ownedHit: ['product', ['ownedHit'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => {
+      Object.assign(sample.point, { hitTag: 'DIV', hitVerb: null, owned: false });
+    });
+  })],
+  buttonIdentity: ['product', ['buttonIdentity'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => { sample.button.tag = 'DIV'; });
+  })],
+  nativeDisabled: ['product', ['nativeDisabled'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => { sample.button.disabled = false; });
+  })],
+  modelDisabled: ['product', ['modelDisabled'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => { sample.button.modelEnabled = 'true'; });
+  })],
+  modelDisabledMissing: ['product', ['modelDisabled'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => { sample.button.modelEnabled = null; });
+  })],
+  ariaDisabled: ['product', ['ariaDisabled'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => { sample.button.ariaDisabled = 'false'; });
+  })],
+  ariaDisabledMissing: ['product', ['ariaDisabled'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => { sample.button.ariaDisabled = null; });
+  })],
+  targetShape: ['instrument', ['targetShape'], disabledTargetMutationSelftest((target) => {
+    target.selftestExtra = true;
+  })],
+  sampleShapes: ['instrument', ['sampleShapes', 'settledReceipt'], disabledTargetMutationSelftest((target) => {
+    delete target.second.connected;
+  })],
+  sampleExtraKey: ['instrument', ['sampleShapes', 'settledReceipt'], disabledTargetMutationSelftest((target) => {
+    target.second.selftestExtra = true;
+  })],
+  buttonExtraKey: ['instrument', ['sampleShapes', 'settledReceipt'], disabledTargetMutationSelftest((target) => {
+    target.second.button.selftestExtra = true;
+  })],
+  rectExtraKey: ['instrument', ['sampleShapes', 'settledReceipt', 'coherentPoint'], disabledTargetMutationSelftest((target) => {
+    target.second.button.rect.selftestExtra = true;
+  })],
+  cardRectExtraKey: ['instrument', ['sampleShapes', 'settledReceipt'], disabledTargetMutationSelftest((target) => {
+    target.second.cardRect.selftestExtra = true;
+  })],
+  viewportExtraKey: ['instrument', ['sampleShapes', 'settledReceipt'], disabledTargetMutationSelftest((target) => {
+    target.second.viewport.selftestExtra = true;
+  })],
+  scrollExtraKey: ['instrument', ['sampleShapes', 'settledReceipt'], disabledTargetMutationSelftest((target) => {
+    target.second.scroll.selftestExtra = true;
+  })],
+  pointExtraKey: ['instrument', ['sampleShapes', 'settledReceipt'], disabledTargetMutationSelftest((target) => {
+    target.second.point.selftestExtra = true;
+  })],
+  currentIdentity: ['instrument', ['currentIdentity', 'settledReceipt'], disabledTargetMutationSelftest((target) => {
+    target.second.sameButton = false;
+  })],
+  documentContinuity: ['instrument', ['documentContinuity'], disabledTargetMutationSelftest((target) => {
+    target.documentTokenAfter = 'selftest-other-document';
+    target.initial.documentToken = 'selftest-other-document';
+    target.first.documentToken = 'selftest-other-document';
+    target.second.documentToken = 'selftest-other-document';
+  })],
+  initialScrollBinding: ['instrument', ['initialScrollBinding'], disabledTargetMutationSelftest((target) => {
+    target.initial.scroll.top = 1;
+  })],
+  settledReceipt: ['instrument', ['settledReceipt'], disabledTargetMutationSelftest((target) => {
+    target.second.button.rect.left += 0.5;
+    target.second.button.rect.right += 0.5;
+    target.second.point.x += 0.5;
+  })],
+  coherentPoint: ['instrument', ['coherentPoint'], disabledTargetMutationSelftest((target) => {
+    suppressionSettleSamples(target, (sample) => { sample.point.x += 1; });
+  })],
+});
+const disabledSuppressionMutationControlsSelftest = Object.freeze({
+  evidenceShape: ['instrument', ['evidenceShape'], disabledSuppressionMutationSelftest((value) => {
+    value.schema = 'cf-v2-arc4-disabled-suppression/mutated';
+  })],
+  evidenceExtraKey: ['instrument', ['evidenceShape'], disabledSuppressionMutationSelftest((value) => {
+    value.selftestExtra = true;
+  })],
+  targetIntegrity: ['instrument', ['targetIntegrity'], disabledSuppressionMutationSelftest((value) => {
+    value.target.selftestExtra = true;
+  })],
+  outcomeEvidencePresent: ['instrument', ['outcomeEvidencePresent'], disabledSuppressionMutationSelftest((value) => {
+    delete value.beforeState.toastText;
+  })],
+  captureCardPresence: ['instrument', ['outcomeEvidencePresent'], disabledSuppressionMutationSelftest((value) => {
+    delete value.beforeState.capture.card;
+    delete value.afterState.capture.card;
+  })],
+  actionCoordinatorPresence: ['instrument', ['outcomeEvidencePresent'], disabledSuppressionMutationSelftest((value) => {
+    delete value.beforeState.capture.actionCoordinator;
+    delete value.afterState.capture.actionCoordinator;
+  })],
+  lastOutcomePresence: ['instrument', ['outcomeEvidencePresent'], disabledSuppressionMutationSelftest((value) => {
+    delete value.beforeState.capture.lastOutcome;
+    delete value.afterState.capture.lastOutcome;
+  })],
+  lastResultPresence: ['instrument', ['outcomeEvidencePresent'], disabledSuppressionMutationSelftest((value) => {
+    delete value.beforeState.capture.lastResult;
+    delete value.afterState.capture.lastResult;
+  })],
+  documentBinding: ['instrument', ['documentBinding'], disabledSuppressionMutationSelftest((value) => {
+    value.beforeState.persistence.documentToken = 'selftest-other-document';
+    value.afterState.persistence.documentToken = 'selftest-other-document';
+  })],
+  heartbeatExtraKey: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.selftestExtra = true;
+  })],
+  heartbeatQuiescedExtraKey: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.quiesced.selftestExtra = true;
+  })],
+  heartbeatResumedExtraKey: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.resumed.selftestExtra = true;
+  })],
+  heartbeatQuiescedSchema: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.quiesced.schema = 'cf-v2-f4-heartbeat-quiescence/mutated';
+  })],
+  heartbeatResumedSchema: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.resumed.schema = 'cf-v2-f4-heartbeat-resume/mutated';
+  })],
+  heartbeatQuiescedToken: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.quiesced.documentToken = 'selftest-other-document';
+  })],
+  heartbeatResumedToken: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.resumed.documentToken = 'selftest-other-document';
+  })],
+  heartbeatWasRunning: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.quiesced.wasRunning = false;
+  })],
+  heartbeatStopped: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.quiesced.stopped = false;
+  })],
+  heartbeatCycleSettled: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.quiesced.cycleSettled = false;
+  })],
+  heartbeatResumed: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.heartbeat.resumed.running = false;
+  })],
+  heartbeatBeforeState: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.beforeState.persistence.heartbeatRunning = true;
+  })],
+  heartbeatAfterState: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.persistence.heartbeatRunning = false;
+  })],
+  heartbeatSynchronizedExhaustedState: ['instrument', ['heartbeatQuiescence'],
+    disabledSuppressionExhaustedMutationSelftest((exhaustedState) => {
+      exhaustedState.persistence.heartbeatRunning = true;
+    })],
+  heartbeatLeaseReadOverlap: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.beforeState.persistence.leaseReadCount += 1;
+    value.afterState.persistence.leaseReadCount += 1;
+  })],
+  heartbeatRevisionReadOverlap: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.beforeState.persistence.revisionReadCount += 1;
+    value.afterState.persistence.revisionReadCount += 1;
+  })],
+  heartbeatLeaseOverlap: ['instrument', ['heartbeatQuiescence'], disabledSuppressionMutationSelftest((value) => {
+    value.beforeState.persistence.runtime.leaseHeartbeat += 1;
+    value.afterState.persistence.runtime.leaseHeartbeat += 1;
+  })],
+  dispatchShape: ['instrument', ['dispatchShape', 'dispatchBinding', 'oneTrustedPointer'], disabledSuppressionMutationSelftest((value) => {
+    delete value.dispatch.y;
+  })],
+  dispatchExtraKey: ['instrument', ['dispatchShape'], disabledSuppressionMutationSelftest((value) => {
+    value.dispatch.selftestExtra = true;
+  })],
+  dispatchBinding: ['instrument', ['dispatchBinding'], disabledSuppressionMutationSelftest((value) => {
+    value.dispatch.x += 1;
+    value.trace.pointer[0].clientX += 1;
+  })],
+  traceShape: ['instrument', ['traceShape', 'oneTrustedPointer'], disabledSuppressionMutationSelftest((value) => {
+    value.trace.pointer[0] = {};
+  })],
+  traceExtraKey: ['instrument', ['traceShape'], disabledSuppressionMutationSelftest((value) => {
+    value.trace.selftestExtra = true;
+  })],
+  traceRowExtraKey: ['instrument', ['traceShape'], disabledSuppressionMutationSelftest((value) => {
+    value.trace.pointer[0].selftestExtra = true;
+  })],
+  pointerZero: ['instrument', ['oneTrustedPointer'], disabledSuppressionMutationSelftest((value) => {
+    value.trace.pointer = [];
+  })],
+  pointerTwo: ['instrument', ['oneTrustedPointer'], disabledSuppressionMutationSelftest((value) => {
+    value.trace.pointer.push(structuredClone(value.trace.pointer[0]));
+  })],
+  pointerTrusted: ['instrument', ['oneTrustedPointer'], disabledSuppressionMutationSelftest((value) => {
+    value.trace.pointer[0].trusted = false;
+  })],
+  pointerType: ['instrument', ['oneTrustedPointer'], disabledSuppressionMutationSelftest((value) => {
+    value.trace.pointer[0].pointerType = 'pen';
+  })],
+  pointerVerb: ['instrument', ['oneTrustedPointer'], disabledSuppressionMutationSelftest((value) => {
+    value.trace.pointer[0].verb = 'sample';
+  })],
+  pointerCoordinates: ['instrument', ['oneTrustedPointer'], disabledSuppressionMutationSelftest((value) => {
+    value.trace.pointer[0].clientX += 1;
+  })],
+  restorationShape: ['instrument', ['restorationShape', 'restorationComplete'], disabledSuppressionMutationSelftest((value) => {
+    delete value.restoration.complete;
+  })],
+  restorationExtraKey: ['instrument', ['restorationShape'], disabledSuppressionMutationSelftest((value) => {
+    value.restoration.selftestExtra = true;
+  })],
+  restorationComplete: ['instrument', ['restorationComplete'], disabledSuppressionMutationSelftest((value) => {
+    value.restoration.after.top = 1;
+  })],
+  restorationAbort: ['instrument', ['restorationComplete'], disabledSuppressionMutationSelftest((value) => {
+    value.restoration.abortSignalAborted = false;
+  })],
+  restorationGlobals: ['instrument', ['restorationComplete'], disabledSuppressionMutationSelftest((value) => {
+    value.restoration.globalsAbsent.trace = false;
+  })],
+  targetOutcome: ['product', ['targetOutcome'], disabledSuppressionMutationSelftest((value) => {
+    suppressionSettleSamples(value.target, (sample) => {
+      sample.button.modelEnabled = null;
+    });
+  })],
+  zeroClicks: ['product', ['zeroClicks'], disabledSuppressionMutationSelftest((value) => {
+    value.trace.clicks.push({
+      verb: 'tame', trusted: true, pointerType: null,
+      clientX: 90, clientY: 322,
+      documentToken: suppressionDocumentTokenSelftest,
+    });
+  })],
+  durableUnchanged: ['product', ['durableUnchanged'], disabledSuppressionMutationSelftest((value) => {
+    value.afterRaw.legacy.selftestMutation = true;
+  })],
+  captureUnchanged: ['product', [
+    'stateInvariantUnchanged', 'captureUnchanged',
+  ], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.capture.catalogueSpecies += 1;
+  })],
+  ownershipUnchanged: ['product', [
+    'stateInvariantUnchanged', 'ownershipUnchanged',
+  ], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.ownershipV2.acquisitions += 1;
+  })],
+  captureCardUnchanged: ['product', [
+    'stateInvariantUnchanged', 'captureCardUnchanged',
+  ], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.capture.card = { selftestMutation: true };
+  })],
+  actionCoordinatorUnchanged: ['product', [
+    'stateInvariantUnchanged', 'actionCoordinatorUnchanged',
+  ], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.capture.actionCoordinator.owner.busy = true;
+  })],
+  lastOutcomeUnchanged: ['product', [
+    'stateInvariantUnchanged', 'lastOutcomeUnchanged',
+  ], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.capture.lastOutcome = 'selftest-mutated';
+  })],
+  lastResultUnchanged: ['product', [
+    'stateInvariantUnchanged', 'captureUnchanged', 'lastResultUnchanged',
+  ], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.capture.lastResult = { selftestMutation: true };
+  })],
+  audioUnchanged: ['product', [
+    'stateInvariantUnchanged', 'audioUnchanged',
+  ], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.audio.armed = 1;
+  })],
+  toastUnchanged: ['product', [
+    'stateInvariantUnchanged', 'toastUnchanged',
+  ], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.toastSerial += 1;
+  })],
+  visibleSurveyUnchanged: ['product', [
+    'stateInvariantUnchanged', 'visibleSurveyUnchanged',
+  ], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.cardOpen = false;
+    value.afterState.cardTitle = null;
+  })],
+  captureEnvelopeInvariant: ['product', ['stateInvariantUnchanged'],
+    disabledSuppressionMutationSelftest((value) => {
+      value.afterState.capture.bootstrapPending = true;
+    })],
+  ownershipEnvelopeInvariant: ['product', ['stateInvariantUnchanged'],
+    disabledSuppressionMutationSelftest((value) => {
+      value.afterState.ownershipV2.schema = 'selftest-mutated';
+    })],
+  persistenceInvariant: ['product', ['stateInvariantUnchanged'],
+    disabledSuppressionMutationSelftest((value) => {
+      value.afterState.persistence.lastOutcome = { kind: 'selftest-mutated' };
+    })],
+  runtimeEligibilityInvariant: ['product', ['stateInvariantUnchanged'],
+    disabledSuppressionMutationSelftest((value) => {
+      value.afterState.persistence.runtime.leaseOwned = false;
+    })],
+  routeInvariant: ['product', ['stateInvariantUnchanged'],
+    disabledSuppressionMutationSelftest((value) => {
+      value.afterState.mode = 'system';
+    })],
+  pendingPersistenceInvariant: ['product', ['stateInvariantUnchanged'],
+    disabledSuppressionMutationSelftest((value) => {
+      value.afterState.sceneResources.pendingPersistenceWrites = 1;
+    })],
+  runtimeValid: ['product', [
+    'stateInvariantUnchanged', 'runtimeValid',
+  ], disabledSuppressionMutationSelftest((value) => {
+    value.afterState.persistence.runtime.revision += 1;
+  })],
+  runtimeChronologyBackward: ['instrument', ['runtimeChronology'],
+    disabledSuppressionMutationSelftest((value) => {
+      value.beforeState.persistence.runtime.activePlayMs += 2;
+      value.afterState.persistence.runtime.activePlayMs += 1;
+    })],
+  runtimeChronologyExhaustedLag: ['instrument', ['runtimeChronology'],
+    disabledSuppressionMutationSelftest((value) => {
+      value.beforeState.persistence.runtime.activePlayMs
+        += ARC4_DISABLED_SUPPRESSION_RUNTIME_LAG_MAX_MS + 1;
+      value.afterState.persistence.runtime.activePlayMs
+        += ARC4_DISABLED_SUPPRESSION_RUNTIME_LAG_MAX_MS + 1;
+    })],
+  runtimeChronologyAfterLag: ['instrument', ['runtimeChronology'],
+    disabledSuppressionMutationSelftest((value) => {
+      value.afterState.persistence.runtime.activePlayMs
+        += ARC4_DISABLED_SUPPRESSION_RUNTIME_LAG_MAX_MS + 1;
+    })],
+});
+const assertDisabledMutationControlsSelftest = (controls, kind) => {
+  for (const [name, [classification, expected, result]] of Object.entries(controls)) {
+    const checks = classification === 'instrument'
+      ? result.instrumentChecks : result.productChecks;
+    const failed = Object.entries(checks)
+      .filter(([, passed]) => passed !== true).map(([check]) => check);
+    const attributionHeld = classification === 'instrument'
+      ? result.instrumentOk === false
+      : result.instrumentOk === true && result.productOk === false;
+    if (!attributionHeld || !same(failed, expected)) {
+      throw new Error(`Arc 4 ${kind} mutation selftest failed (${name}): ${failed.join(', ')}`);
+    }
+  }
+};
+assertDisabledMutationControlsSelftest(
+  disabledTargetMutationControlsSelftest, 'disabled target',
+);
+assertDisabledMutationControlsSelftest(
+  disabledSuppressionMutationControlsSelftest, 'disabled suppression',
+);
 
 const geometryControlsSelftest = ARC4_CAPTURE_VERBS.map((verb, index) => {
   /* Each action was scrolled to the same viewport band independently. Their
@@ -7455,10 +8544,29 @@ const negativeExhaustionSameDocumentSelftest = structuredClone(
 );
 negativeExhaustionSameDocumentSelftest.offlineState.persistence.documentToken
   = exhaustedDocumentTokenSelftest;
+negativeExhaustionSameDocumentSelftest.offlineUi.persistence.documentToken
+  = exhaustedDocumentTokenSelftest;
 negativeExhaustionSameDocumentSelftest.recoveredState.persistence.documentToken
+  = exhaustedDocumentTokenSelftest;
+negativeExhaustionSameDocumentSelftest.recoveredUi.persistence.documentToken
   = exhaustedDocumentTokenSelftest;
 negativeExhaustionSameDocumentSelftest.closure.reopenedDocumentToken
   = exhaustedDocumentTokenSelftest;
+const negativeExhaustionUiDocumentSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeExhaustionUiDocumentSelftest.exhaustedUi.persistence.documentToken
+  = 'selftest-other-exhausted-ui-document';
+const negativeOfflineUiDocumentSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeOfflineUiDocumentSelftest.offlineUi.persistence.documentToken
+  = 'selftest-other-offline-ui-document';
+const negativeRecoveredUiDocumentSelftest = structuredClone(
+  exhaustionBundleSelftest,
+);
+negativeRecoveredUiDocumentSelftest.recoveredUi.persistence.documentToken
+  = 'selftest-other-recovered-ui-document';
 const negativeExhaustionInventorySelftest = structuredClone(
   exhaustionBundleSelftest,
 );
@@ -7483,7 +8591,11 @@ negativeExhaustionOfflineCreditSelftest.offlineUi = withUiActivePlaySelftest(
   offlineRawSelftest.authority.activePlayMs + 5_000,
 );
 const negativeExhaustionSuppressionSelftest = structuredClone(exhaustionBundleSelftest);
-negativeExhaustionSuppressionSelftest.suppressed.clickCount = 1;
+negativeExhaustionSuppressionSelftest.suppressed.trace.clicks.push({
+  verb: 'tame', trusted: true, pointerType: null,
+  clientX: 90, clientY: 322,
+  documentToken: suppressionDocumentTokenSelftest,
+});
 const negativeExhaustionLiveSelftest = structuredClone(exhaustionBundleSelftest);
 const negativeExhaustionLiveRevision = exhaustedRawSelftest.captureRevision + 1;
 negativeExhaustionLiveSelftest.exhaustedState.capture.revision
@@ -8391,6 +9503,22 @@ const isolatedNegativeSelftests = Object.freeze({
       negativeExhaustionSameDocumentSelftest,
     ),
   }),
+  exhaustionUiDocument: Object.freeze({
+    expected: 'exhaustedDocumentBinding',
+    result: assessArc4Exhaustion(negativeExhaustionUiDocumentSelftest),
+  }),
+  recoveryExhaustionUiDocument: Object.freeze({
+    expected: 'exhaustedDocumentBinding',
+    result: assessArc4ExhaustionRecovery(negativeExhaustionUiDocumentSelftest),
+  }),
+  recoveryOfflineUiDocument: Object.freeze({
+    expected: 'offlineDocumentBinding',
+    result: assessArc4ExhaustionRecovery(negativeOfflineUiDocumentSelftest),
+  }),
+  recoveryRecoveredUiDocument: Object.freeze({
+    expected: 'recoveredDocumentBinding',
+    result: assessArc4ExhaustionRecovery(negativeRecoveredUiDocumentSelftest),
+  }),
   exhaustionInventory: Object.freeze({
     expected: 'genuineClosureReload',
     result: assessArc4ExhaustionRecovery(negativeExhaustionInventorySelftest),
@@ -8605,6 +9733,12 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
   || !ARC4_CAPTURE_UI_EXPRESSION.includes("document.getElementById('survey')")
   || !ARC4_CAPTURE_UI_EXPRESSION.includes("#planetside .planetside-heading")
   || !ARC4_CAPTURE_UI_EXPRESSION.includes('ownershipV2:state?.ownershipV2??null')
+  || !ARC4_CAPTURE_UI_EXPRESSION.includes(
+    "close:!!hit&&hit.closest?.('[data-survey-close]')!==null",
+  )
+  || ARC4_CAPTURE_UI_EXPRESSION.includes(
+    "close:hit?.closest?.('[data-survey-close]')!==null",
+  )
   || assessArc4CaptureCardGeometryFocus({
     ...geometryBundleSelftest, settlement: undefined,
   }).ok !== true

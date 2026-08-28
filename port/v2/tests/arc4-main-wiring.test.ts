@@ -70,10 +70,17 @@ function bootErrors(source: string): string[] {
   const mayMutate = section(source, 'function f4RuntimeMayMutate(', '\nfunction f4RuntimeMayAnswer(');
   if (mayMutate.length === 0
     || !mayMutate.includes('|| arc4OwnershipBootstrapPending')) errors.push('boot-mutation-gate');
+  const heartbeatCycle = section(
+    source,
+    'const runF4HeartbeatCycle =',
+    '\nconst heartbeatF4 =',
+  );
   const heartbeat = section(source, 'const heartbeatF4 =', '\nconst settleF4Heartbeat =');
   const show = section(source, 'const showF4 =', "\naddEventListener('pagehide'");
-  if (heartbeat.length === 0 || show.length === 0
-    || !heartbeat.includes('|| arc4OwnershipBootstrapPending')
+  if (heartbeatCycle.length === 0 || heartbeat.length === 0 || show.length === 0
+    || !heartbeatCycle.includes('|| arc4OwnershipBootstrapPending')
+    || !heartbeat.includes('const run = runF4HeartbeatCycle();')
+    || !heartbeat.includes('if (f4HeartbeatCycleInFlight) return f4HeartbeatCycleInFlight;')
     || !show.includes('|| arc4OwnershipBootstrapPending')) errors.push('boot-lifecycle-gates');
 
   const load = section(source, 'async function loadSave(', '\n/* ---- boot ---- */');
@@ -1035,7 +1042,7 @@ describe('Arc 4 main authority wiring', () => {
       .toContain('surface-exit-close-control');
   });
 
-  it('negative-controls boot entry/mutation pending and parser section anchors', () => {
+  it('negative-controls boot entry, mutation/lifecycle pending and parser section anchors', () => {
     const missingBootEntryPending = replaceInSectionExact(
       mainSource,
       'async function ensureBootAuthorityCommit(',
@@ -1053,6 +1060,24 @@ describe('Arc 4 main authority wiring', () => {
       '    || worldIdentityBootstrapPending',
     );
     expect(bootErrors(ungatedBoot)).toContain('boot-mutation-gate');
+
+    const ungatedHeartbeat = replaceInSectionExact(
+      mainSource,
+      'const runF4HeartbeatCycle =',
+      '\nconst heartbeatF4 =',
+      '|| arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending',
+      '|| arc5OwnershipBootstrapPending',
+    );
+    expect(bootErrors(ungatedHeartbeat)).toContain('boot-lifecycle-gates');
+
+    const disconnectedHeartbeat = replaceInSectionExact(
+      mainSource,
+      'const heartbeatF4 =',
+      '\nconst settleF4Heartbeat =',
+      'const run = runF4HeartbeatCycle();',
+      'const run = Promise.resolve();',
+    );
+    expect(bootErrors(disconnectedHeartbeat)).toContain('boot-lifecycle-gates');
 
     const missingBootSection = mainSource.replace(
       'async function ensureBootAuthorityCommit(',

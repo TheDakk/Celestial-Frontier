@@ -63,6 +63,8 @@ import {
 import {
   ARC4_ACTIVE_PLAY_CYCLE_MS,
   ARC4_CAPTURE_UI_EXPRESSION,
+  ARC4_DISABLED_SUPPRESSION_EVIDENCE_SCHEMA,
+  ARC4_DISABLED_TARGET_RECEIPT_SCHEMA,
   ARC4_DURABLE_READ_EXPRESSION,
   ARC4_PERTAR_FIXTURE,
   ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA,
@@ -79,6 +81,8 @@ import {
   assessArc4CapturePrecondition,
   assessArc4CommittedHit,
   assessArc4CommittedMiss,
+  assessArc4DisabledSuppressionEvidence,
+  assessArc4DisabledTargetEvidence,
   assessArc4DurableEvidence,
   assessArc4EpochSnapshot,
   assessArc4Exhaustion,
@@ -89,6 +93,301 @@ import {
   assessArc4TameGreetingAudio as classifyTameGreetingAudioEvidence,
   projectArc5OwnershipMigrationEvidence,
 } from './arc4-browser-contract.mjs';
+
+const assembleArc4SliceDisabledSuppressionEvidence = ({
+  target, dispatch, heartbeat, trace, restoration,
+  beforeRaw, afterRaw, beforeState, afterState,
+}) => Object.freeze({
+  schema: ARC4_DISABLED_SUPPRESSION_EVIDENCE_SCHEMA,
+  verb: 'tame',
+  target,
+  dispatch: Object.freeze({ ...dispatch }),
+  heartbeat,
+  trace,
+  restoration,
+  beforeRaw,
+  afterRaw,
+  beforeState,
+  afterState,
+});
+
+const ARC4_SLICE_DISABLED_SUPPRESSION_SOURCE_SHA256 =
+  'baa284a736d9243df4a61de192e553111c9c5fbc9d6aa70ffd05af5b6e31e45f';
+const arc4SliceDisabledSuppressionSourceSlices = (source) => {
+  const preparationNeedle = '  const prepareArc4SliceDisabled'
+    + 'SuppressionTarget = async () => evalIn(';
+  const collectorNeedle = '  const collectArc4SliceDisabled'
+    + 'Suppression = async () => {\n';
+  const successorNeedle = '  const pressArc4'
+    + 'Keyboard = async (verb) => {';
+  const preparationStart = source.indexOf(preparationNeedle);
+  const collectorStart = source.indexOf(collectorNeedle);
+  const collectorEnd = source.indexOf(successorNeedle);
+  if (preparationStart < 0 || collectorStart <= preparationStart
+    || collectorEnd <= collectorStart
+    || source.lastIndexOf(preparationNeedle) !== preparationStart
+    || source.lastIndexOf(collectorNeedle) !== collectorStart
+    || source.lastIndexOf(successorNeedle) !== collectorEnd) {
+    throw new Error('Slice disabled-suppression source boundaries are not exact and unique');
+  }
+  return Object.freeze({
+    preparation: source.slice(preparationStart, collectorStart),
+    collector: source.slice(collectorStart, collectorEnd),
+  });
+};
+const arc4SliceDisabledSuppressionSourceDigest = (slices) => createHash('sha256')
+  .update(JSON.stringify([slices.preparation, slices.collector]))
+  .digest('hex');
+const assertArc4SliceDisabledSuppressionSourceSeal = () => {
+  const source = fs.readFileSync(fileURLToPath(import.meta.url), 'utf8');
+  const slices = arc4SliceDisabledSuppressionSourceSlices(source);
+  const digest = arc4SliceDisabledSuppressionSourceDigest(slices);
+  if (digest !== ARC4_SLICE_DISABLED_SUPPRESSION_SOURCE_SHA256) {
+    throw new Error(`Slice disabled-suppression source seal drifted: ${digest}`);
+  }
+  const nativeReveal = "button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});";
+  const mutatedPreparation = slices.preparation.replace(
+    nativeReveal,
+    "button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'auto'});",
+  );
+  const quiesceCall = '`window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()`';
+  const mutatedCollector = slices.collector.replace(
+    quiesceCall,
+    '`window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()`',
+  );
+  const synchronizedCapture = [
+    '      exhaustedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);',
+    '      exhaustedState = await evalIn(`window.__CF_SLICE__.api.state()`);',
+    '      exhaustedUi = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);',
+  ].join('\n');
+  const synchronizedReturn = [
+    '      exhaustedRaw,',
+    '      exhaustedState,',
+    '      exhaustedUi,',
+  ].join('\n');
+  const preparationCall = '      target = await prepareArc4SliceDisabledSuppressionTarget();';
+  const synchronizedCaptureIndex = slices.collector.indexOf(synchronizedCapture);
+  const preparationCallIndex = slices.collector.indexOf(preparationCall);
+  const synchronizedReturnIndex = slices.collector.indexOf(synchronizedReturn);
+  const synchronizedSourceBound = synchronizedCaptureIndex >= 0
+    && synchronizedCaptureIndex < preparationCallIndex
+    && preparationCallIndex < synchronizedReturnIndex
+    && slices.collector.lastIndexOf(synchronizedCapture) === synchronizedCaptureIndex
+    && slices.collector.lastIndexOf(preparationCall) === preparationCallIndex
+    && slices.collector.lastIndexOf(synchronizedReturn) === synchronizedReturnIndex;
+  const reorderedCollector = slices.collector.replace(
+    synchronizedCapture,
+    [
+      '      exhaustedState = await evalIn(`window.__CF_SLICE__.api.state()`);',
+      '      exhaustedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);',
+      '      exhaustedUi = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);',
+    ].join('\n'),
+  );
+  const discardedCollector = slices.collector.replace(
+    synchronizedReturn,
+    [
+      '      exhaustedRaw,',
+      '      exhaustedState,',
+      '      exhaustedUi: null,',
+    ].join('\n'),
+  );
+  if (mutatedPreparation === slices.preparation
+    || arc4SliceDisabledSuppressionSourceDigest({
+      preparation: mutatedPreparation,
+      collector: slices.collector,
+    }) === digest
+    || mutatedCollector === slices.collector
+    || arc4SliceDisabledSuppressionSourceDigest({
+      preparation: slices.preparation,
+      collector: mutatedCollector,
+    }) === digest
+    || !synchronizedSourceBound
+    || reorderedCollector === slices.collector
+    || arc4SliceDisabledSuppressionSourceDigest({
+      preparation: slices.preparation,
+      collector: reorderedCollector,
+    }) === digest
+    || discardedCollector === slices.collector
+    || arc4SliceDisabledSuppressionSourceDigest({
+      preparation: slices.preparation,
+      collector: discardedCollector,
+    }) === digest) {
+    throw new Error('Slice disabled-suppression source-seal mutation stayed green');
+  }
+};
+
+const runArc4SliceDisabledSuppressionSelftest = () => {
+  assertArc4SliceDisabledSuppressionSourceSeal();
+  const documentToken = 'slice-disabled-suppression-selftest';
+  const visibleSample = {
+    documentToken,
+    sameButton: true,
+    sameSurvey: true,
+    connected: true,
+    button: {
+      tag: 'BUTTON',
+      verb: 'tame',
+      disabled: true,
+      modelEnabled: 'false',
+      ariaDisabled: 'true',
+      rect: {
+        left: 40, top: 300, right: 140, bottom: 344,
+        width: 100, height: 44,
+      },
+    },
+    cardRect: {
+      left: 10, top: 100, right: 380, bottom: 700,
+      width: 370, height: 600,
+    },
+    viewport: { width: 390, height: 844 },
+    scroll: {
+      left: 0, top: 200, clientWidth: 370, clientHeight: 600,
+      scrollWidth: 370, scrollHeight: 1_000,
+    },
+    point: {
+      x: 90, y: 322, hitTag: 'BUTTON', hitVerb: 'tame', owned: true,
+    },
+  };
+  const initial = structuredClone(visibleSample);
+  initial.scroll.top = 0;
+  Object.assign(initial.button.rect, {
+    top: 812, bottom: 856, height: 44,
+  });
+  Object.assign(initial.cardRect, { bottom: 800, height: 700 });
+  Object.assign(initial.point, {
+    y: 834, hitTag: null, hitVerb: null, owned: false,
+  });
+  const target = {
+    schema: ARC4_DISABLED_TARGET_RECEIPT_SCHEMA,
+    selectorCount: 1,
+    documentTokenBefore: documentToken,
+    documentTokenAfter: documentToken,
+    requestedVerb: 'tame',
+    priorScroll: { left: 0, top: 0 },
+    initial,
+    first: structuredClone(visibleSample),
+    second: structuredClone(visibleSample),
+  };
+  const raw = {
+    revision: 17,
+    authority: {
+      activePlayMs: 1_250,
+      sessionRng: { seed: 68, ordinal: 16, draws: { tame: 4 } },
+    },
+  };
+  const state = {
+    cardOpen: true,
+    cardTitle: 'Pertar',
+    capture: {
+      stateKind: 'loaded', mode: 'current', protection: null, revision: 17,
+      catalogueSpecies: 4, discoveries: 4, creatures: 1, specimenLots: 3,
+      biospheres: 1, card: { pendingWork: 0 },
+      actionCoordinator: { owner: { busy: false, operation: null } },
+      lastOutcome: 'worked-out', lastResult: null,
+    },
+    ownershipV2: {
+      stateKind: 'loaded', mode: 'current', protection: null,
+      bootstrapPending: false, bootstrapOutcome: 'capture-committed-published',
+      revision: 17, sourceRevision: 17, sourceDigest: 'a'.repeat(64),
+      targetDigest: 'b'.repeat(64), representationVersion: 2,
+      deltaDigest: 'c'.repeat(64), deltaRows: 0, deltaShardCount: 4,
+      deltaShardDigests: Array(4).fill('d'.repeat(64)), acquisitions: 4,
+      bredAcquisitions: 0, creatures: 1, creatureTombstones: 0,
+      specimenLots: 3, specimenTombstones: 0, biospheres: 1,
+    },
+    persistence: {
+      documentToken,
+      heartbeatRunning: false,
+      leaseReadCount: 3,
+      revisionReadCount: 2,
+      runtime: {
+        activePlayMs: 1_250, revision: 17, sessionSeed: 68,
+        sessionOrdinal: 16, sessionDraws: { tame: 4 }, leaseHeartbeat: 1_200,
+      },
+    },
+    audio: { schema: 'selftest-audio', active: false },
+    toastOn: false,
+    toastText: '',
+    toastSerial: 7,
+  };
+  const resumedState = structuredClone(state);
+  resumedState.persistence.heartbeatRunning = true;
+  const evidence = assembleArc4SliceDisabledSuppressionEvidence({
+    target,
+    dispatch: {
+      requested: true, inputDispatched: true,
+      documentToken, x: 90, y: 322,
+    },
+    heartbeat: {
+      quiesced: {
+        schema: 'cf-v2-f4-heartbeat-quiescence/v1',
+        documentToken,
+        wasRunning: true,
+        stopped: true,
+        cycleSettled: true,
+      },
+      resumed: {
+        schema: 'cf-v2-f4-heartbeat-resume/v1',
+        documentToken,
+        running: true,
+      },
+    },
+    trace: {
+      pointer: [{
+        verb: 'tame', trusted: true, pointerType: 'mouse',
+        clientX: 90, clientY: 322, documentToken,
+      }],
+      clicks: [],
+    },
+    restoration: {
+      attempted: true,
+      complete: true,
+      documentToken,
+      before: { left: 0, top: 0 },
+      after: { left: 0, top: 0 },
+      abortSignalAborted: true,
+      globalsAbsent: { abort: true, trace: true, preparation: true },
+    },
+    beforeRaw: raw,
+    afterRaw: structuredClone(raw),
+    beforeState: state,
+    afterState: resumedState,
+  });
+  const targetAssessment = assessArc4DisabledTargetEvidence(target);
+  const positive = assessArc4DisabledSuppressionEvidence(evidence, {
+    exhaustedRaw: raw,
+    exhaustedState: state,
+  });
+  const clickMutation = structuredClone(evidence);
+  clickMutation.trace.clicks.push({
+    verb: 'tame', trusted: true, pointerType: null,
+    clientX: 90, clientY: 322, documentToken,
+  });
+  const negative = assessArc4DisabledSuppressionEvidence(clickMutation, {
+    exhaustedRaw: raw,
+    exhaustedState: state,
+  });
+  const negativeFailures = Object.entries(negative.productChecks)
+    .filter(([, passed]) => passed !== true)
+    .map(([name]) => name);
+  if (!targetAssessment.ok || !positive.ok
+    || negative.instrumentOk !== true
+    || negative.productOk !== false
+    || JSON.stringify(negativeFailures) !== JSON.stringify(['zeroClicks'])) {
+    throw new Error(`Slice disabled-suppression contract selftest failed: ${JSON.stringify({
+      targetAssessment, positive, negative, negativeFailures,
+    })}`);
+  }
+};
+
+const ARC4_DISABLED_SUPPRESSION_SELFTEST_ONLY = process.argv.includes(
+  '--disabled-suppression-selftest',
+);
+if (ARC4_DISABLED_SUPPRESSION_SELFTEST_ONLY) {
+  runArc4SliceDisabledSuppressionSelftest();
+  console.log('SLICE DISABLED SUPPRESSION SELFTEST: PASS');
+  process.exit(0);
+}
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const OUTCOME_CONTROLS_ONLY = process.argv.includes('--outcome-controls-only');
@@ -11709,6 +12008,230 @@ try {
       disabled:button?.disabled??null,ariaDisabled:button?.getAttribute('aria-disabled')??null,
       modelEnabled:button?.getAttribute('data-model-enabled')??null,
       focus:document.activeElement===button}})()`;
+  const prepareArc4SliceDisabledSuppressionTarget = async () => evalIn(`(async()=>{
+    window.__cfArc4SliceSuppressionAbort?.abort();
+    delete window.__cfArc4SliceSuppressionAbort;
+    delete window.__cfArc4SliceSuppressionTrace;
+    delete window.__cfArc4SliceSuppressionPreparation;
+    const requestedVerb='tame',selector='#survey button[data-capture-action="tame"]',
+      survey=document.querySelector('#survey'),matches=[...document.querySelectorAll(selector)],
+      button=matches.length===1?matches[0]:null,card=survey,
+      controller=new AbortController(),
+      documentTokenBefore=window.__CF_SLICE__?.documentToken??null,
+      priorScroll=survey?{left:survey.scrollLeft,top:survey.scrollTop}:null,
+      record={survey,button,card,documentTokenBefore,priorScroll};
+    window.__cfArc4SliceSuppressionAbort=controller;
+    window.__cfArc4SliceSuppressionPreparation=record;
+    const sample=()=>{const currentSurvey=document.querySelector('#survey'),
+      currentMatches=[...document.querySelectorAll(selector)],currentButton=currentMatches.length===1
+        ?currentMatches[0]:null,S=window.__CF_SLICE__,r=button?.getBoundingClientRect()??null,
+      cr=card?.getBoundingClientRect()??null,x=r?(r.left+r.right)/2:NaN,
+      y=r?(r.top+r.bottom)/2:NaN,hit=Number.isFinite(x)&&Number.isFinite(y)
+        ?document.elementFromPoint(x,y):null;
+      return {documentToken:S?.documentToken??null,sameButton:currentButton===button,
+        sameSurvey:currentSurvey===survey,connected:button?.isConnected===true
+          &&survey?.isConnected===true,button:{tag:button?.tagName??null,
+            verb:button?.getAttribute('data-capture-action')??null,
+            disabled:button?.disabled??null,
+            modelEnabled:button?.getAttribute('data-model-enabled')??null,
+            ariaDisabled:button?.getAttribute('aria-disabled')??null,
+            rect:r?{left:r.left,top:r.top,right:r.right,bottom:r.bottom,
+              width:r.width,height:r.height}:null},
+        cardRect:cr?{left:cr.left,top:cr.top,right:cr.right,bottom:cr.bottom,
+          width:cr.width,height:cr.height}:null,
+        viewport:{width:innerWidth,height:innerHeight},scroll:survey?{left:survey.scrollLeft,
+          top:survey.scrollTop,clientWidth:survey.clientWidth,clientHeight:survey.clientHeight,
+          scrollWidth:survey.scrollWidth,scrollHeight:survey.scrollHeight}:null,
+        point:{x:Number.isFinite(x)?x:null,y:Number.isFinite(y)?y:null,
+          hitTag:hit?.tagName??null,hitVerb:hit instanceof Element
+            ?hit.closest('button[data-capture-action]')?.getAttribute('data-capture-action')??null:null,
+          owned:!!hit&&!!button&&(hit===button||button.contains(hit))}}};
+    record.sample=sample;
+    const initial=sample();
+    button?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+    const settle=()=>new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(
+      ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));
+    await settle();const first=sample();await settle();const second=sample();
+    return {schema:${JSON.stringify(ARC4_DISABLED_TARGET_RECEIPT_SCHEMA)},
+      selectorCount:matches.length,documentTokenBefore,
+      documentTokenAfter:window.__CF_SLICE__?.documentToken??null,
+      requestedVerb,priorScroll,initial,first,second}})()`);
+  const collectArc4SliceDisabledSuppression = async () => {
+    let exhaustedRaw = null;
+    let exhaustedState = null;
+    let exhaustedUi = null;
+    let target = null;
+    let trace = null;
+    let beforeRaw = null;
+    let beforeState = null;
+    let afterRaw = null;
+    let afterState = null;
+    let targetAssessment = null;
+    let collectionError = null;
+    let heartbeat = Object.freeze({ quiesced: null, resumed: null });
+    let restoration = Object.freeze({
+      attempted: false,
+      complete: false,
+      documentToken: null,
+      before: null,
+      after: null,
+      abortSignalAborted: false,
+      globalsAbsent: { abort: false, trace: false, preparation: false },
+    });
+    const dispatch = {
+      requested: false,
+      inputDispatched: false,
+      documentToken: null,
+      x: null,
+      y: null,
+    };
+    try {
+      const quiesced = await evalIn(
+        `window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()`,
+      );
+      heartbeat = Object.freeze({ quiesced, resumed: null });
+      exhaustedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+      exhaustedState = await evalIn(`window.__CF_SLICE__.api.state()`);
+      exhaustedUi = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
+      target = await prepareArc4SliceDisabledSuppressionTarget();
+      targetAssessment = assessArc4DisabledTargetEvidence(target);
+      if (targetAssessment.instrumentOk && targetAssessment.productOk) {
+        beforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+        beforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+      }
+      if (targetAssessment.instrumentOk && targetAssessment.productOk
+        && canonicalJson(beforeRaw) === canonicalJson(exhaustedRaw)) {
+        const finalSample = await evalIn(`(()=>{const record=window.__cfArc4SliceSuppressionPreparation,
+          button=record?.button,controller=window.__cfArc4SliceSuppressionAbort??null,
+          trace={pointer:[],clicks:[]},
+          row=(event)=>{const eventButton=event.target instanceof Element
+            ?event.target.closest('button[data-capture-action]'):null;
+            if(eventButton!==button)return null;return {
+              verb:eventButton.getAttribute('data-capture-action'),
+              trusted:event.isTrusted===true,pointerType:event.pointerType||null,
+              clientX:Number.isFinite(event.clientX)?event.clientX:null,
+              clientY:Number.isFinite(event.clientY)?event.clientY:null,
+              documentToken:window.__CF_SLICE__?.documentToken??null}};
+          if(!(controller instanceof AbortController)||controller.signal.aborted)throw new Error(
+            'Slice disabled suppression AbortController ownership is red');
+          document.addEventListener('pointerdown',(event)=>{const value=row(event);
+            if(value)trace.pointer.push(value)},{capture:true,signal:controller.signal});
+          document.addEventListener('click',(event)=>{const value=row(event);
+            if(value)trace.clicks.push(value)},{capture:true,signal:controller.signal});
+          window.__cfArc4SliceSuppressionTrace=trace;
+          return record?.sample?.()??null})()`);
+        target = Object.freeze({ ...target, second: finalSample });
+        targetAssessment = assessArc4DisabledTargetEvidence(target);
+        if (targetAssessment.instrumentOk && targetAssessment.productOk) {
+          dispatch.requested = true;
+          dispatch.documentToken = target.documentTokenAfter;
+          dispatch.x = target.second.point.x;
+          dispatch.y = target.second.point.y;
+          await send('Input.dispatchMouseEvent', {
+            type: 'mouseMoved', x: dispatch.x, y: dispatch.y,
+          }, sess);
+          await send('Input.dispatchMouseEvent', {
+            type: 'mousePressed', x: dispatch.x, y: dispatch.y,
+            button: 'left', clickCount: 1,
+          }, sess);
+          await send('Input.dispatchMouseEvent', {
+            type: 'mouseReleased', x: dispatch.x, y: dispatch.y,
+            button: 'left', clickCount: 1,
+          }, sess);
+          dispatch.inputDispatched = true;
+        }
+      }
+    } catch (error) {
+      collectionError = String(error instanceof Error ? error.message : error);
+    } finally {
+      try {
+        const cleanup = await evalIn(`(async()=>{const
+          record=window.__cfArc4SliceSuppressionPreparation??null,
+          controller=window.__cfArc4SliceSuppressionAbort??null,
+          captured=window.__cfArc4SliceSuppressionTrace??null,
+          documentToken=window.__CF_SLICE__?.documentToken??null,
+          survey=record?.survey??null,before=record?.priorScroll??null,
+          attempted=record!==null;
+          controller?.abort();
+          const abortSignalAborted=controller?.signal?.aborted===true;
+          if(survey&&before){survey.scrollLeft=before.left;survey.scrollTop=before.top}
+          await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(
+            ()=>requestAnimationFrame(()=>setTimeout(resolve,0)),0)));
+          const after=survey?{left:survey.scrollLeft,top:survey.scrollTop}:null;
+          delete window.__cfArc4SliceSuppressionAbort;
+          delete window.__cfArc4SliceSuppressionTrace;
+          delete window.__cfArc4SliceSuppressionPreparation;
+          const globalsAbsent={
+            abort:!('__cfArc4SliceSuppressionAbort' in window),
+            trace:!('__cfArc4SliceSuppressionTrace' in window),
+            preparation:!('__cfArc4SliceSuppressionPreparation' in window)},
+            scrollRestored=before===null?survey===null&&after===null:
+              survey?.isConnected===true&&after?.left===before.left&&after?.top===before.top,
+            complete=attempted&&scrollRestored&&abortSignalAborted
+              &&Object.values(globalsAbsent).every(Boolean);
+          return {trace:captured,restoration:{attempted,complete,documentToken,
+            before,after,abortSignalAborted,globalsAbsent}}})()`);
+        trace = cleanup?.trace ?? null;
+        restoration = cleanup?.restoration ?? restoration;
+      } catch (cleanupError) {
+        const message = String(
+          cleanupError instanceof Error ? cleanupError.message : cleanupError,
+        );
+        collectionError = collectionError === null
+          ? message : `${collectionError}; cleanup: ${message}`;
+      }
+      try {
+        const resumed = await evalIn(
+          `window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()`,
+        );
+        heartbeat = Object.freeze({ ...heartbeat, resumed });
+      } catch (resumeError) {
+        const message = String(
+          resumeError instanceof Error ? resumeError.message : resumeError,
+        );
+        collectionError = collectionError === null
+          ? message : `${collectionError}; heartbeat: ${message}`;
+      }
+    }
+    if (beforeRaw !== null && beforeState !== null) {
+      try {
+        if (dispatch.inputDispatched) await sleep(200);
+        afterRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+        afterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+      } catch (afterError) {
+        const message = String(
+          afterError instanceof Error ? afterError.message : afterError,
+        );
+        collectionError = collectionError === null
+          ? message : `${collectionError}; after cleanup: ${message}`;
+      }
+    }
+    const evidence = assembleArc4SliceDisabledSuppressionEvidence({
+      target,
+      dispatch,
+      heartbeat,
+      trace,
+      restoration,
+      beforeRaw,
+      afterRaw,
+      beforeState,
+      afterState,
+    });
+    const finalTargetAssessment = targetAssessment
+      ?? assessArc4DisabledTargetEvidence(target);
+    const suppressionAssessment = assessArc4DisabledSuppressionEvidence(
+      evidence, { exhaustedRaw, exhaustedState },
+    );
+    return Object.freeze({
+      evidence,
+      targetAssessment: finalTargetAssessment,
+      suppressionAssessment,
+      collectionError,
+      exhaustedRaw,
+      exhaustedState,
+      exhaustedUi,
+    });
+  };
   const pressArc4Keyboard = async (verb) => {
     const armed = await armArc4Interaction();
     const target = await evalIn(arc4ButtonTargetExpression(verb));
@@ -13453,51 +13976,48 @@ try {
 
   let arc4Exhaustion = { ok: false, checks: {}, reasons: ['burn-down incomplete'] };
   if (arc4BurnComplete && arc4ProgressUsed(arc4BurnRaw) === ARC4_PERTAR_FIXTURE.biosphereYield) {
-    const arc4ExhaustedUi = await waitDesktopValue('Arc 4 Worked Out presentation', `(()=>{const ui=${ARC4_CAPTURE_UI_EXPRESSION};
+    await waitDesktopValue('Arc 4 Worked Out presentation', `(()=>{const ui=${ARC4_CAPTURE_UI_EXPRESSION};
       return ui?.budget?.used===${ARC4_PERTAR_FIXTURE.biosphereYield}&&ui?.budget?.remaining===0
         &&ui?.rows?.every((row)=>row.status==='depleted'&&row.button?.disabled===true)?ui:null})()`, 10_000);
-    const arc4SuppressionArmed = await armArc4Interaction();
-    const arc4SuppressionTarget = await evalIn(arc4ButtonTargetExpression('tame', false));
-    const arc4SuppressionBeforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
-    const arc4SuppressionBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
-    if (arc4SuppressionArmed && arc4SuppressionTarget.ok) {
-      await clickDesktopPoint(arc4SuppressionTarget);
-    }
-    await sleep(200);
-    const arc4SuppressionAfterRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
-    const arc4SuppressionAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
-    const arc4SuppressionTrace = await readArc4InteractionTrace(true);
-    const arc4Suppressed = {
-      verb: 'tame',
-      point: {
-        height: arc4SuppressionTarget.height, width: arc4SuppressionTarget.width,
-        disabled: arc4SuppressionTarget.disabled,
-        modelEnabled: arc4SuppressionTarget.modelEnabled,
-      },
-      pointer: arc4SuppressionTrace?.pointer?.[0] ?? null,
-      clickCount: arc4SuppressionTrace?.clicks?.length ?? -1,
-      beforeRaw: arc4SuppressionBeforeRaw, afterRaw: arc4SuppressionAfterRaw,
-      beforeState: arc4SuppressionBeforeState, afterState: arc4SuppressionAfterState,
-    };
+    const arc4SuppressionCollection = await collectArc4SliceDisabledSuppression();
+    const arc4Suppressed = arc4SuppressionCollection.evidence;
     const arc4ExhaustionBundle = {
-      exhaustedRaw: arc4BurnRaw, exhaustedState: arc4BurnState,
-      exhaustedUi: arc4ExhaustedUi, suppressed: arc4Suppressed,
+      exhaustedRaw: arc4SuppressionCollection.exhaustedRaw,
+      exhaustedState: arc4SuppressionCollection.exhaustedState,
+      exhaustedUi: arc4SuppressionCollection.exhaustedUi,
+      suppressed: arc4Suppressed,
     };
     arc4Exhaustion = assessArc4Exhaustion(arc4ExhaustionBundle);
-    const arc4ExhaustionControl = assessArc4Exhaustion({
-      ...arc4ExhaustionBundle,
-      suppressed: { ...arc4Suppressed, clickCount: 1 },
-    });
-    if (!arc4SuppressionTarget.ok || arc4SuppressionTarget.disabled !== true
-      || arc4SuppressionTrace?.pointer?.length !== 1
-      || arc4SuppressionTrace.pointer[0]?.trusted !== true
-      || arc4SuppressionTrace.pointer[0]?.pointerType !== 'mouse'
-      || arc4SuppressionTrace?.keys?.length !== 0
+    let arc4ExhaustionControl = null;
+    let arc4ExhaustionControlIsolated = false;
+    if (arc4Exhaustion.ok
+      && arc4SuppressionCollection.suppressionAssessment.ok) {
+      const clickMutation = structuredClone(arc4Suppressed);
+      clickMutation.trace.clicks.push({
+        verb: 'tame',
+        trusted: true,
+        pointerType: null,
+        clientX: clickMutation.dispatch.x,
+        clientY: clickMutation.dispatch.y,
+        documentToken: clickMutation.dispatch.documentToken,
+      });
+      arc4ExhaustionControl = assessArc4Exhaustion({
+        ...arc4ExhaustionBundle,
+        suppressed: clickMutation,
+      });
+      arc4ExhaustionControlIsolated = arc4IsolatedCheck(
+        arc4ExhaustionControl, 'disabledSuppression',
+      );
+    }
+    if (arc4SuppressionCollection.collectionError !== null
+      || !arc4SuppressionCollection.targetAssessment.ok
+      || !arc4SuppressionCollection.suppressionAssessment.ok
       || !arc4Exhaustion.ok
-      || !arc4IsolatedCheck(arc4ExhaustionControl, 'disabledSuppression')) {
+      || !arc4ExhaustionControlIsolated) {
       fails.push('ARC 4 WORKED OUT: finite yield did not disable a 44px real control or suppress its native click/durable mutation: '
-        + JSON.stringify({ target: arc4SuppressionTarget, trace: arc4SuppressionTrace,
+        + JSON.stringify({ collection: arc4SuppressionCollection,
           assessment: arc4Exhaustion, control: arc4ExhaustionControl,
+          controlIsolated: arc4ExhaustionControlIsolated,
           burnLedger: arc4BurnLedger }));
     }
   } else {
