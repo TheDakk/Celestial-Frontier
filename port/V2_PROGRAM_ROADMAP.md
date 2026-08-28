@@ -78,15 +78,17 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-28 evidence boundary — signed Final8 reached Recovery, whose precondition stopped on an
-> instrument-order mismatch:** signed clean source `c133c89ead736c9c7414af1e6242acd411339853`
-> passed Layout `20260828-phase4-final8-c133c89ead73-layout` at 787/787, source-bound SceneMemory
-> `…-scenemem` at 42/42, source-bound Compendium `…-compendium` at 78/78 with all six review PNGs,
-> Slice `…-slice` with zero findings and ten screenshots, and full 12-viewport Glass `…-glass`
-> with zero findings and zero instrument failures. Recovery `…-recovery` then ran once for 7,633 ms
-> and stopped terminal `fail` at the fixture precondition with only `runtimeCaptureOrder` red, zero
-> automatic retries and complete cleanup. Burn-down, exhaustion, close/offline checkpoints, the
-> 20-minute active observation, boundary crossing and recovered-state judgment did not run.
+> **2026-08-28 evidence boundary — signed Final10 reached offline reopen, whose phase-blind status
+> oracle stopped instrument-only:** signed clean source
+> `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout
+> `20260828-phase4-final10-4405fb2b4ba7-layout` at 787/787, source-bound SceneMemory `…-scenemem`
+> at 42/42, source-bound Compendium `…-compendium` at 78/78 with all six review PNGs, Slice
+> `…-slice` with zero findings/scopes and ten PNGs, and full 12-viewport Glass `…-glass` with zero
+> findings or instrument failures. Every green stage ran once and passed named verification.
+> Recovery `…-recovery` then ran once with zero retry. Fixture, the complete 16-attempt burn-down,
+> exhausted disabled-suppression, close/checkpoint and closed/offline proof passed before
+> `offline-reopened` stopped terminal `instrument-fail` after 110,549 ms. Active observation,
+> boundary crossing and recovered-state judgment did not run.
 >
 > The bounded product repair stacks Inventory rows into one min-width-safe column only at `<=360px`
 > while preserving every field and 44px target. Compendium list mode retains the bounded virtual
@@ -103,17 +105,49 @@
 > red; incoherent absence or node replacement is instrument-red. Viewport completion is credited
 > only after four activations and restored-off settlement, separately from product-blocked coverage.
 >
-> Final8 certifies the bounded Inventory, Compendium and Settings repair for that exact signed
-> source. Post-run diagnosis found the sole Recovery red in its instrument: the collector captures
-> the outer state runtime before the nested UI runtime, while the precondition required the reverse
-> order. Production's monotonic runtime and separate rendered active-play projection passed, so
-> Final8 made no Recovery product judgment. The repair successor changes only that chronology and is
-> not yet browser-certified. Final8 is immutable and cannot resume after changed bytes. A newly signed
-> clean successor must restart **Layout → SceneMemory → Compendium → Slice → Glass → recovery**.
-> No current-WIP chain, Recovery PASS, 20-minute recovery, Gate, publication, hosted, release,
-> deployment, version-bump or external authority exists. Edge `151.0.4129.107` / CDP `1.3` is
-> Final8 provenance only and never triggers a rebaseline or threshold change. Exact carriers, sizes
-> and hashes are inventoried in `audits/README.md`.
+> Final8 remains immutable historical evidence for its green predecessor chain and fixture-order
+> stop; Final9 remains immutable historical evidence through the complete 16-attempt burn-down and
+> exhausted-control stop. Final10 supersedes both as the current exact-source boundary. Its last
+> coherent reopened same-document UI → state sample observed the exhausted 16/16/0 cycle-0 budget
+> while all three read-only/ineligible actions rendered `unavailable`; the old phase-blind oracle
+> wrongly required the eligible active surface's `empty`/`depleted` vocabulary and stopped before
+> the later durable-parity assertion. This is an instrument status-oracle defect, not a Recovery
+> product verdict, offline durable-parity result or recovery claim.
+>
+> The local successor gives offline/ineligible and active/exhausted phases distinct predicates and
+> binds each to exact document, authority, budget, row, disabled-semantics and runtime evidence. A
+> candidate PASS retains schema-bound full Pertar receipts at the original active-exhausted,
+> offline-reopened and reactivated active-exhausted phases. Terminal finalization and named
+> verification independently replay and cross-bind their phase, document, cycle, facts, SessionRNG,
+> state/UI and first-active-sample evidence; missing, swapped, coherently retokened, reversed-
+> chronology or coherently recomputed route/card/runtime/pending receipts are red. Before
+> observation, `active-observation:running` is persisted and must survive later failure. Each Pertar
+> wait receipts the strict remaining share of one absolute 20-second deadline; clipping or exceeding
+> it is red. The exhausted raw/live-state chain and reactivated→first-service binding require at most
+> 20 seconds, the same cycle/RNG and revision delta at most one. Internally assessment-green
+> retiming, +2-revision and next-cycle mutants remain terminal-red.
+>
+> Its exact six-region SHA-256/UTF-8-byte inventory is: full collector
+> source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+> boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+> helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+> (10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+> (6,184 B); offline-reopened→reactivated phase span
+> `b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+> suppression preparation/collector
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+> seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+> helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+> Browser-free current-byte checks at locally signed implementation/evidence commit
+> `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+> `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+> 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+> This documentation changes source identity; its signed clean docs-only descendant is the fresh
+> campaign source. No successor browser certificate exists. That descendant must restart **Layout →
+> SceneMemory → Compendium → Slice → Glass → recovery**. No Recovery PASS, 20-minute recovery,
+> Gate, publication, hosted, HUMAN, release, deployment, version-bump or external authority exists.
+> Edge `151.0.4129.107` / CDP `1.3` is Final10 provenance only and never triggers a rebaseline or
+> threshold change. Exact carriers, sizes and hashes are inventoried in `audits/README.md`.
 >
 > **Queued visual scope (Nick, 2026-08-27):** after the stable Phase-4 checkpoint, apply the
 > TikTok-inspired polish language universe-wide across galaxies, systems, planets, every biome,
@@ -164,8 +198,15 @@
 > `20260826024124548-13172-6286d5212e` at `35a22b1…`, is preserved as a complete-lifecycle,
 > one-attempt/zero-retry `instrument-fail`: fixture and 16-step burn-down passed before a stale
 > all-`depleted` poll rejected the valid mixed Tame `empty` plus Scavenge/Sample `depleted` surface.
-> Active observation/recovery did not run and no PASS was claimed; the repaired bounded classifier
-> remains unrerun. The former Compendium ruler under measurement
+> Active observation/recovery did not run and no PASS was claimed; its repaired bounded classifier
+> is historical. Final10 is the current immutable attempt: fixture, 16-step burn-down, exhausted
+> suppression, close/checkpoint and closed/offline proof passed before the `offline-reopened` status
+> oracle stopped instrument-only on truthful read-only `unavailable` rows. Active observation,
+> boundary crossing and recovered judgment remained not-run. Signed implementation/evidence repair
+> `3fbfcd5…` separates
+> that offline vocabulary from active `empty`/`depleted`; its retained/replayed phase receipts and
+> complete six-region source-seal inventory described in the current-state overlay are browser-free
+> green, but it remains browser-uncertified. The former Compendium ruler under measurement
 > `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
 > `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` is historical. Clean source
 > `6d8f184…` supplied selected candidate3/5/6 plus paired baseline1; signed activation
@@ -209,8 +250,8 @@
 > `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`. Signed evidence source
 > `7362a0e…` subsequently passed source-bound standalone and serial SceneMemory 42/42 plus
 > Compendium 78/78 before its preserved Slice harness red stopped the chain. The associated Layout
-> carrier is 787/787 and verifier-green but lacks standalone source binding, as the current boundary
-> above records.
+> carrier is 787/787 and verifier-green but lacks standalone source binding, as that historical
+> boundary recorded.
 >
 > The bounded repair retains Inventory data/filter/page state while closed but unmounts its hidden
 > row tree and six open-lifetime subscriptions; late action settlement cannot remount closed DOM,
@@ -276,14 +317,22 @@
 > SceneMemory, Compendium, Slice and full Glass before Recovery stopped terminal `fail` at its sole
 > `runtimeCaptureOrder` precondition. Post-run diagnosis identified the collector's state→UI capture
 > chronology being judged as UI→state; no burn-down, 20-minute observation or Recovery product
-> judgment occurred. The current instrument-only repair requires a newly signed clean successor and
-> a full restart from Layout.
+> judgment occurred. The chronology repair became signed Final9 source `a85e0ed…`, which repeated
+> the five green predecessors and passed Recovery fixture plus the complete 16-attempt burn-down
+> before its exhausted-control geometry oracle stopped. Its shared suppression repair became signed
+> Final10 source `4405fb2…`, which again passed Layout, SceneMemory, Compendium, Slice and full Glass,
+> then passed Recovery through closed/offline proof before the phase-blind `offline-reopened` oracle
+> rejected truthful read-only `unavailable` rows. Active observation, boundary crossing and recovered
+> judgment did not run. Final10 is the current immutable browser boundary; signed implementation/
+> evidence repair `3fbfcd5…` has the overlay's retained/replayed phase receipts, six-region source
+> seals and adversarial controls browser-free green. The changed docs-only descendant still must be
+> signed clean, remains browser-uncertified and requires a fresh restart from Layout.
 > Root Gate A separately accepts
 > compatible Chromium family + CDP `1.3` only after exercising its source-derived `uilayout` +
 > `bootperf` capability inventory and retaining complete per-run provenance; point version alone
 > never repins, rebaselines or moves a root threshold. Post-start audio and real Recovery remain
-> unproved. Final8 full Glass is exact-source green, but no current-WIP browser PASS, hosted/HUMAN whole-Gate,
-> release/version, preview/publication or deployment authority exists.
+> unproved. Final10 full Glass is exact-source green, but no successor browser PASS, Recovery/HUMAN
+> whole-Gate, release/version, preview/publication or deployment authority exists.
 >
 > **2026-08-25 local campaign boundary — historical checkpoint, still foundational where the
 > 2026-08-27 candidate above does not supersede it. Product work then included Arc 3, player-facing
@@ -1460,11 +1509,17 @@ and Compendium before Slice stopped on the pre-reveal Inventory row oracle. Sign
 causal-prefix repair `53d030b…` then passed Final7 Slice after green predecessors. Glass stopped
 terminal-red with 25 findings and zero report-classified instrument failures; post-run review
 separated the narrow Inventory/Compendium product defects from the Settings and hostile-row oracle
-artifacts. Recovery did not run. The repaired current bytes require a fresh signed successor from
-Layout. Signed successor `c133c89…` then passed Final8 Layout, SceneMemory, Compendium, Slice and
-full Glass before Recovery stopped at the `runtimeCaptureOrder` precondition. The diagnosed
-instrument-only repair changes current bytes, made no Recovery product judgment and again requires
-a fresh signed full-chain restart from Layout.
+artifacts. Recovery did not run. The repaired bytes became signed successor `c133c89…`, which
+passed Final8 Layout, SceneMemory, Compendium, Slice and full Glass before Recovery stopped at the
+`runtimeCaptureOrder` precondition. The diagnosed chronology repair became signed Final9
+`a85e0ed…`; it repeated the five predecessor greens and reached the complete 16-attempt burn-down
+before the exhausted-control oracle stopped. Its repair became signed Final10 `4405fb2…`; it
+repeated the five greens and reached closed/offline proof before the `offline-reopened` oracle
+rejected the correct read-only `unavailable` vocabulary. Final10 made no Recovery product or
+recovery judgment. Signed implementation/evidence repair `3fbfcd5…` has the current-state overlay's
+retained/replayed phase receipts, six-region source seals and adversarial controls browser-free
+green, but remains browser-uncertified and requires a fresh signed
+full-chain restart from Layout.
 
 ### 5.2 Arc 3 — engineering loop
 
@@ -1480,7 +1535,7 @@ with exact costs/preconditions and capacity/revision headroom are actionable; fu
 slotted outputs and disconnected-effect rows remain unavailable. Local commit `c4a02be` records the
 product/browser-tool batch after the no-retry Slice and Glass passes described in the current-state
 overlay; their distinct dirty-snapshot provenance keeps them historical rather than evidence for the
-current uncommitted candidate. Current-input browser proof, exact-head/full-battery evidence, economy
+current signed-repair/pending-docs candidate. Current-input browser proof, exact-head/full-battery evidence, economy
 simulation, HUMAN comprehension, authored variable construction/new loot and later progression
 depth remain open; therefore the Arc and its exit evidence are not declared complete.
 
@@ -1536,7 +1591,12 @@ the Arc remains `[PARTIAL]`. The dedicated real-time/no-forged-clock recovery co
 mutation-sensitive selftest are ready, but it is non-standalone: recovery requires the exact
 named-verified terminal-green Slice ID and the exact named-verified full Glass ID bound to that Slice,
 all from the same unchanged clean commit, and its result must pass named verification with both IDs.
-Stop on any failure and do not retry automatically. No uninterrupted real 20-minute certificate exists.
+Stop on any failure and do not retry automatically. Signed Final10 satisfied the five predecessor
+stages and Recovery through closed/offline proof, then stopped instrument-only at
+`offline-reopened`; active observation, boundary crossing and recovered judgment did not run. Its
+signed implementation/evidence repair `3fbfcd5…` has the current-state overlay's retained/replayed phase
+receipts and six-region source seals browser-free green but remains browser-uncertified. No
+uninterrupted real 20-minute certificate exists.
 The retained Arc 5A Slice/Glass pair and its exact hashes/provenance are historical evidence for
 their 2026-08-25 inputs, not current-input browser proof.
 
@@ -1642,8 +1702,14 @@ and zero report-classified instrument failures. Recovery did not run. The post-F
 layout/oracle repair became signed Final8 source `c133c89…`, which passed Layout, SceneMemory,
 Compendium, Slice and full Glass. Recovery then stopped at its sole `runtimeCaptureOrder`
 precondition; post-run diagnosis proved the collector judged its actual state→UI snapshots in the
-reverse order. No Recovery behavior was judged. The current instrument-only repair must be newly
-signed and restart the full chain from Layout before any current-WIP PASS claim.
+reverse order. No Recovery behavior was judged. Signed Final9 `a85e0ed…` repeated the five greens
+and reached the complete burn-down before its exhausted-control oracle stop. Signed Final10
+`4405fb2…` again repeated the five greens and reached closed/offline proof before its phase-blind
+`offline-reopened` oracle rejected truthful read-only `unavailable` rows. Active observation,
+boundary crossing and recovered judgment did not run. Signed implementation/evidence repair
+`3fbfcd5…` has the current-state overlay's retained/replayed phase receipts and six-region source
+seals browser-free green; the synchronized signed clean docs-only descendant is the fresh campaign
+source and must restart the full chain from Layout before any successor PASS claim.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.

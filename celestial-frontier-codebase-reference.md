@@ -6,21 +6,23 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches the local working tree as of 2026-08-28.**
 >
-> **2026-08-28 Final9 exhausted-control oracle stop — current evidence and uncertified local
-> successor:** signed clean source `a85e0edf9b7ceca0f13ecf32bb8ac3c88db6ceb1` supplied Layout
+> **2026-08-28 Final10 offline-reopened oracle stop — current evidence, signed implementation and
+> docs-descendant boundary:** signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` supplied Layout
 > 787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings,
 > Slice PASS with zero findings and ten screenshots, and full 12-viewport Glass PASS with zero
-> findings or instrument failures. Recovery then ran once and stopped terminal `fail` at exhausted
-> after 87,589 ms. Fixture and the complete 16-attempt burn-down passed; cleanup passed with zero
-> retry. Close/checkpoint, closed/offline proof, reopen, the real 20-minute active observation,
-> boundary crossing and recovered stages did not run. Final9 therefore makes no Recovery
-> product-layout verdict and no recovery claim.
+> findings or instrument failures. Every predecessor ran once and passed its named verifier.
+> Recovery then ran once and stopped terminal `instrument-fail` at `offline-reopened` after
+> 110,549 ms. Fixture, the complete 16-attempt burn-down, exhausted disabled suppression,
+> close/checkpoint and closed/offline proof passed; cleanup passed with zero retry. The real
+> 20-minute active observation, boundary crossing and recovered stages did not run. Final10
+> therefore makes no offline durable-parity, Recovery product-layout, 20-minute recovery or
+> recovered-state claim.
 >
 > Post-run review separated one Compendium product root (a floated 44px Close plus cleared heading
 > spent an unintended header row) and two narrow-phone Inventory product defects (copy starved
 > beside the badge column) from two hostile-row Compendium oracle artifacts (overscan-only mount
 > counted as geometry) and four Settings oracle artifacts (individually reachable controls were
-> incorrectly required to remain simultaneously reachable). The bounded Final8/Final9 predecessors
+> incorrectly required to remain simultaneously reachable). The bounded Final8/Final9/Final10 predecessors
 > certify the repair that removes the extra Compendium row, reflows `<=360px` Inventory rows without hiding exact
 > identity/state/action content, and makes each Settings control own its isolated reveal, two-sample
 > settlement, centre-hit/native-receipt proof and exact scroll restoration. Numeric rulers, browser
@@ -29,9 +31,18 @@
 > scrollport, collapsed geometry and hit ownership into one `ok` bit and retained no actual hit
 > owner. Unchanged-source Glass independently revealed the same control class and proved its
 > containment/ownership at the same phone viewport; Slice passed its native disabled-suppression
-> path. This diagnoses an instrument defect without granting a Recovery product verdict.
+> path. This diagnoses an instrument defect without granting a Recovery product verdict and remains
+> preserved as prior chronology.
 >
-> The local successor makes Slice and Recovery emit the same exact disabled-suppression receipt.
+> Final10 signed that shared disabled-suppression successor, then exposed the next instrument seam.
+> Its reopened document was deliberately read-only/ineligible and truthfully rendered an exhausted
+> 16/16/0 cycle-0 budget with Tame, Scavenge and Sample all `unavailable`, model-disabled, natively
+> disabled and aria-disabled. The phase-blind poll accepted only active `empty`/`depleted` rows, so
+> it rejected the coherent offline surface. Its terminal `last:null` is the unmatched poll; the
+> retained non-null `observed` receipt proves the actual same-document UI → state sample. This is a
+> semantic/status-oracle defect, not demonstrated product loss.
+>
+> Slice and Recovery retain the same exact disabled-suppression receipt.
 > It quiesces the complete in-flight heartbeat cycle, captures a synchronized raw → state → UI
 > exhausted baseline, then retains initial plus two settled post-reveal target samples, exact
 > button/card/viewport/scroll/hit/document identity, bound native dispatch and one trusted pointer,
@@ -44,10 +55,46 @@
 > preparation/collector source at
 > `baa284a736d9243df4a61de192e553111c9c5fbc9d6aa70ffd05af5b6e31e45f`.
 >
-> These changed successor bytes are browser-uncertified; their campaign identity is the clean signed
-> `HEAD` produced by this batch. Final9 is immutable and cannot resume; that successor must restart
-> the full chain at Layout with fresh IDs. Edge `151.0.4129.107` / CDP `1.3` is run provenance only: a compatible
-> point update never triggers a rebaseline, recalibration or threshold change.
+> The current local successor repairs the later Pertar gate with disjoint `ready-visible`, active
+> `exhausted-visible` (`empty`/`depleted`) and read-only `exhausted-offline` (`unavailable` plus the
+> save-authority explanation) predicates. The offline proof reads raw then consumes UI and state
+> from one returned same-document surface, requiring UI → state chronology, nondecreasing active
+> time, and the same revision/SessionRNG tuple. Reactivation must show authority, become writable and
+> focused, run a full heartbeat refresh, and reproduce the original active exhausted facts before
+> the observer arms. Sampler/witness corruption is instrument-red; a coherent stable phase mismatch
+> is product-red. A candidate PASS retains schema-bound full Pertar receipts for the original active-
+> exhausted, offline-reopened and reactivated active-exhausted surfaces. Terminal finalization and
+> named verification independently replay and cross-bind phase, document, cycle, facts, SessionRNG,
+> state/UI and the first active sample. Before observation, `active-observation:running` is persisted
+> and must survive later failure. Each Pertar wait receipts the strict remaining share of one
+> absolute 20-second deadline; clipping or exceeding it is red. The exhausted raw/live-state chain
+> and reactivated→first-service binding require at most 20 seconds, the same cycle/RNG and revision
+> delta at most one. Missing, swapped, coherently retokened, reversed or coherently recomputed route/
+> card/runtime/pending evidence is red, as are internally assessment-green retiming, +2-revision and
+> next-cycle mutants.
+>
+> The final Recovery seal inventory is exactly six SHA-256/UTF-8-byte regions: full collector
+> source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+> boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+> helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+> (10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+> (6,184 B); offline-reopened→reactivated phase span
+> `b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+> suppression preparation/collector
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The whole-
+> production seal rejects a dead-wrapped or comment-shadowed sole operative span; the full-collector
+> seal rejects late reassignment of the phase helpers.
+>
+> Browser-free current-byte checks at locally signed implementation/evidence commit
+> `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+> `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+> 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+> This documentation changes source identity; its signed clean docs-only descendant is the fresh
+> campaign source. No successor browser certificate exists. Final10 is immutable and cannot resume;
+> that descendant must restart the full chain at Layout
+> with fresh IDs and every named verifier. Edge `151.0.4129.107` / CDP `1.3` is Final10 run
+> provenance only: a compatible point update never triggers a rebaseline, recalibration or threshold
+> change. No product, Recovery, whole-Gate, hosted, HUMAN or release claim exists.
 >
 > **Queued visual boundary:** after the stable Phase-4 checkpoint, carry the TikTok-inspired polish
 > language across the entire universe—galaxies, systems, planets, every biome, creatures, plants,
@@ -307,12 +354,18 @@
 > extra-key, node/document, synchronization, heartbeat-overlap, source-drift, cleanup-order and
 > product-state mutations fail independently.
 >
-> Immutable Final9 `a85e0ed…` passed fixture plus the complete 16-attempt burn-down before its old
-> exhausted-control oracle stopped at 87,589 ms. It made no Recovery product-layout judgment and no
-> recovery claim. The local successor is browser-uncertified; use only this batch's clean signed
-> `HEAD` when the complete chain restarts at Layout.
+> Immutable Final10 `4405fb2…` passed all five responsive predecessors, fixture, the complete
+> 16-attempt burn-down, exhausted suppression, close/checkpoint and closed/offline proof before its
+> phase-blind poll stopped `instrument-fail` at `offline-reopened` after 110,549 ms. The retained
+> read-only UI correctly used `unavailable`, not the eligible `empty`/`depleted` vocabulary. It made
+> no offline durable-parity, Recovery product-layout, 20-minute recovery or recovered-state claim.
+> Signed implementation/evidence repair `3fbfcd5…` gives ready, active-exhausted and offline-ineligible surfaces
+> disjoint predicates, binds a separate offline raw read followed by one UI → state surface and its
+> document/runtime tuple, and performs a full heartbeat refresh plus active-exhaustion equality check
+> before arming observation. A candidate PASS retains and independently replays the three phase
+> receipts described in the exact six-region seal inventory at the top of this overlay.
 >
-> On one unchanged clean committed source, the exact Slice report must
+> On one newly signed unchanged clean committed source, the exact Slice report must
 > be terminal-green and pass named verification; full Glass must consume that exact Slice ID and its
 > exact report must pass named verification with the same ID; only then may recovery consume both
 > exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
@@ -381,7 +434,7 @@
 > historical for their exact source and requires a fresh signed successor from Layout;
 > current-source full Glass, Recovery and whole-Gate evidence remain open.
 >
-> Current-input Slice retains nine one-attempt/zero-retry reds on Edge `151.0.4129.107`.
+> Historical current-input Slice chronology retains nine one-attempt/zero-retry reds on Edge `151.0.4129.107`.
 > The first five remain preserved historical diagnosis. Signed-clean source
 > `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied run
 > `20260827085237038-27561-1f8e3c1771b7`, which failed after 397,101 ms with 23 findings
@@ -2915,26 +2968,32 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current evidence snapshot (2026-08-28):** signed clean source `a85e0ed…` supplied Final9 Layout
+**Current evidence snapshot (2026-08-28):** signed clean source `4405fb2…` supplied Final10 Layout
 787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings, Slice
 PASS with zero findings/ten screenshots and full 12-viewport Glass PASS with zero findings or
-instrument failures. Recovery ran once, passed fixture and its complete 16-attempt burn-down, then
-stopped terminal `fail` at the exhausted disabled-control oracle after 87,589 ms with zero retry and
-complete cleanup. Close/checkpoint, offline/reopen, the real 20-minute observation, boundary crossing
-and recovered stages remained not-run. Exact Final9 carriers and hashes are preserved in
-`audits/README.md`; no Recovery product-layout verdict or recovery claim exists.
+instrument failures. Every green predecessor ran once and passed named verification. Recovery ran
+once, passed fixture, its complete 16-attempt burn-down, exhausted disabled suppression,
+close/checkpoint and closed/offline proof, then stopped terminal `instrument-fail` at
+`offline-reopened` after 110,549 ms with zero retry and complete cleanup. The real 20-minute active
+observation, boundary crossing and recovered stages remained not-run. Exact Final10 carriers and
+hashes are preserved in `audits/README.md`; no offline durable-parity, Recovery product-layout,
+20-minute recovery or recovered-state claim exists.
 
-Post-run diagnosis proved the old collector judged the semantically disabled Tame owner before
-revealing it inside the clipped Survey scrollport. The local successor now shares one exact Slice/
-Recovery receipt, quiesces and joins the full heartbeat cycle, recaptures synchronized raw → state
-→ UI exhausted evidence, proves stable lease/revision-read and lease-heartbeat counters, revalidates
-the final target, restores cleanup before after-state/product attribution, and seals both producer
-source regions at the exact digests recorded above. These changed bytes are not browser-certified;
-their exact candidate identity is this batch's clean signed `HEAD`. Final9 is immutable; that
-successor must restart the complete chain from Layout. No Recovery product judgment, 20-minute observation,
-current-WIP browser PASS, hosted/HUMAN whole-Gate or release authority exists. Numeric rulers,
-historical samples, browser authority and retry/release policy are unchanged. A compatible Edge
-point update is provenance only and never causes a rebaseline, recalibration or threshold move.
+The retained Pertar surface truthfully used `unavailable` for all three read-only controls while
+preserving the exhausted 16/16/0 cycle-0 budget and a same-document UI → state runtime witness. The
+old phase-blind poll required the active-authority `empty`/`depleted` vocabulary. The current local
+successor separates ready-visible, active-exhausted and offline-ineligible predicates; follows an
+offline raw read with one same-document UI → state surface/runtime witness bound to exact document,
+nondecreasing active time and equal revision/SessionRNG tuple; and refreshes/re-proves active
+exhaustion before observer arming. A candidate PASS retains and independently replays all three
+phase receipts under the exact six-region source inventory recorded at the top of this overlay.
+The implementation/evidence bytes are locally signed at `3fbfcd5…`; these changed documentation
+bytes require a signed clean docs-only descendant and are not browser-certified. Final10 is
+immutable; that descendant must restart the complete chain from Layout with fresh IDs and every named
+verifier. No product judgment, Recovery PASS, current-WIP browser PASS, hosted/HUMAN whole-Gate or
+release authority exists. Numeric rulers, historical samples, browser authority and retry/release
+policy are unchanged. Edge `151.0.4129.107` / CDP `1.3` is Final10 provenance only; a compatible
+point update never causes a rebaseline, recalibration or threshold move.
 Earlier
 `bb5dc7c7…` and `862a75b…` reds,
 calibration source `6c9ad855…`, activation
@@ -2957,8 +3016,10 @@ full Glass and 20-minute Recovery remained unproved. The ninth red is Final6's s
 reachability defect and
 four unexercised descendants; Final7 supersedes it with four green predecessors and the preserved
 Glass red described above. Final9 later supersedes their predecessor-chain boundary through Glass
-and the 16-attempt burn-down, while the current bounded successor repair has no full-matrix browser
-result. No hosted, HUMAN,
+and the 16-attempt burn-down. Final10 preserves another five-green-predecessor chain and advances
+Recovery through closed/offline proof before its `offline-reopened` instrument stop; signed
+implementation/evidence repair `3fbfcd5…` has no successor browser result, and the synchronized
+signed clean docs-only descendant is the fresh campaign source. No hosted, HUMAN,
 whole-Gate, release, version, preview/publication or deployment claim exists.
 
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost

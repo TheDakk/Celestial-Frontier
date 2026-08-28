@@ -10,46 +10,82 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — signed Final9 reached exhausted; shared suppression repair pending certificate (2026-08-28)
+## Current-state boundary — Final10 stop; signed repair and signed docs descendant (2026-08-28)
 
-Signed clean source `a85e0edf9b7ceca0f13ecf32bb8ac3c88db6ceb1` supplied Final9 Layout
+Signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` supplied Final10 Layout
 787/787, source-bound SceneMemory 42/42, source-bound Compendium 78/78 with all six review PNGs,
 Slice with zero findings and ten screenshots, and full Glass across all 12 viewports with zero
-findings or instrument failures. Recovery ran once, passed its fixture and the complete 16-attempt
-burn-down, then stopped terminal `fail` at exhausted after 87,589 ms with complete cleanup and zero
-retry. Close/checkpoint, closed/offline proof, reopen, the real 20-minute active observation,
-boundary crossing and recovered-state judgment did not run.
+findings or instrument failures. Every predecessor ran once and passed its named verifier. Recovery
+ran once, passed its fixture, complete 16-attempt burn-down, exhausted disabled-suppression receipt,
+close/checkpoint and closed/offline proof, then stopped terminal `instrument-fail` at
+`offline-reopened` after 110,549 ms with complete cleanup and zero retry. The real 20-minute active
+observation, boundary crossing and recovered-state judgment did not run.
 
-The old exhausted-control oracle sampled a semantically disabled 292×44 Tame button before
-revealing it inside the clipped Survey scrollport, collapsed geometry and hit ownership into one
-bit and retained no hit owner. Unchanged-source Glass independently revealed the same control class
-and proved containment/ownership at the same phone viewport; Slice passed its native disabled-
-suppression path. Final9 therefore exposed an instrument defect and makes no Recovery product-
-layout verdict or recovery claim. It remains immutable historical exact-source evidence.
+The failure retained the correct Pertar route/card, exhausted 16/16/0 cycle-0 budget and three
+model/native/ARIA-disabled controls. The reopened document was deliberately read-only/ineligible,
+so every verb truthfully rendered `unavailable`; the old phase-blind poll accepted only the active-
+authority `empty`/`depleted` vocabulary. Its terminal `last:null` is the unmatched poll, while the
+retained non-null `observed` receipt proves one same-document UI → state sample. Final10 therefore
+exposed an instrument semantic/status-oracle defect, not demonstrated product loss. Because the
+run stopped before the later offline bundle assertion and active observation, it grants no offline
+durable-parity, Recovery product-layout, 20-minute recovery or recovered-state claim. Final10 is
+immutable exact-source evidence and was not retried; Final9 and earlier chronology remain preserved
+in `audits/README.md` and the historical ledger below.
 
-The local successor makes Slice and Recovery share one exact disabled-suppression receipt. Each
-collector takes a smoke-only hold, stops and joins the complete heartbeat cycle, captures one
-synchronized raw → state → UI exhausted baseline, reveals and settles the target twice, revalidates
-it immediately before the bound native dispatch, and retains exact target/card/viewport/scroll/hit/
-document identity plus one trusted pointer. Exact quiesce/resume receipts and stable lease-read,
-revision-read and lease-heartbeat counters reject overlap. Scroll, listeners and owned globals are
-restored before the after-state read; cleanup and target-instrument truth are asserted before product
-attribution. Recovery and Slice seal the exact source regions at the SHA-256 values recorded in the
-current codebase reference and `README.md`; their mutation controls reject source/order bypass.
+The local successor retains the exact shared Slice/Recovery disabled-suppression receipt and its
+full-heartbeat quiescence, synchronized raw → state → UI baseline, reveal/settlement, trusted native
+dispatch, state protection and replayable cleanup. It repairs the later Pertar surface gate with
+three phase-specific predicates: `ready-visible`, active `exhausted-visible` using exact
+`empty`/`depleted` rows, and read-only `exhausted-offline` using exact `unavailable` rows plus the
+save-authority explanation. The offline path reads raw and then consumes state/UI from one returned
+UI → state capture surface, binding one document, nondecreasing active time and identical revision/
+SessionRNG tuple. Reactivation must show authority, become writable and focused, run a full
+heartbeat refresh, and re-prove the original active exhausted facts before the observer is armed.
+Malformed witness or sampler evidence stays instrument-red; a coherent stable phase mismatch stays
+product-red. A candidate PASS retains schema-bound full Pertar receipts at the original active-
+exhausted, offline-reopened and reactivated active-exhausted phases. Terminal finalization and named
+verification independently replay and cross-bind their phase, document, cycle, facts, SessionRNG,
+state/UI and first-active-sample evidence; missing, swapped, coherently retokened, reversed-
+chronology or coherently recomputed route/card/runtime/pending receipts are red. Before observation,
+`active-observation:running` is persisted and must survive later failure. Each Pertar wait receipts
+the strict remaining share of one absolute 20-second deadline; clipping or exceeding it is red. The
+exhausted raw/live-state chain and reactivated→first-service binding require at most 20 seconds, the
+same cycle/RNG and revision delta at most one. Internally assessment-green retiming, +2-revision and
+next-cycle mutants remain terminal-red.
+
+The exact six-region Recovery SHA-256/UTF-8-byte inventory is: full collector
+source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+(10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+(6,184 B); offline-reopened→reactivated phase span
+`b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+suppression preparation/collector
+`22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+Slice's preparation/collector digest remains
+`baa284a736d9243df4a61de192e553111c9c5fbc9d6aa70ffd05af5b6e31e45f`.
 
 The inherited narrow product fixes remain unchanged: `<=360px` Inventory rows retain every field
 while stacking copy/badges; Compendium keeps its bounded scroller and one reserved sticky-Close row;
 hostile rows must be mounted and fully contained; and Settings gives each control an isolated reveal,
-two-sample settlement, native receipt and exact scroll restoration. Final9 certifies those outcomes
-through full Glass for its own signed source.
+two-sample settlement, native receipt and exact scroll restoration. Final9 and Final10 each certify
+those outcomes through full Glass for their own signed sources.
 
-The repaired successor is browser-uncertified; its exact campaign identity is this batch's clean
-signed `HEAD`, which must restart Layout → SceneMemory → Compendium → Slice → Glass → recovery.
+Browser-free current-byte checks at locally signed implementation/evidence commit
+`3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+`4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+This documentation changes source identity; its signed clean docs-only descendant is the fresh
+campaign source. No successor browser certificate exists. That descendant must restart Layout →
+SceneMemory → Compendium → Slice → Glass → recovery
+with fresh IDs and every named verifier.
 The v2 draft remains exactly 55 bullets. Live memory producer records follow the changed source/build
 bytes, while numeric rulers, historical samples, browser capability authorities, retry policy and
-production version/release identity remain unchanged. No Recovery PASS, 20-minute recovery claim,
+production version/release identity remain unchanged. No product verdict, Recovery PASS, 20-minute recovery claim,
 publication, hosted, release, deployment, version bump or external authority exists. Edge
-`151.0.4129.107` / CDP `1.3` is Final9 provenance only; compatible point updates never trigger a
+`151.0.4129.107` / CDP `1.3` is Final10 provenance only; compatible point updates never trigger a
 rebaseline, recalibration or threshold move.
 
 Historical calibration remains intact:
@@ -127,7 +163,12 @@ Inventory causal instrument stop. Signed repair `53d030b…` then passed Final7 
 Compendium and Slice before Glass stopped terminal-red with 25 findings / zero report-classified instrument failures;
 Recovery did not run. Signed repair `c133c89…` then passed Final8 Layout, SceneMemory, Compendium,
 Slice and full Glass before Recovery stopped at its sole `runtimeCaptureOrder` precondition. The
-post-run instrument diagnosis and current repair are recorded in the live boundary above.
+chronology/capture repair became signed Final9 `a85e0ed…`, which passed all five predecessors and
+the complete 16-attempt burn-down before Recovery's clipped exhausted-control oracle stopped the
+run. Its shared suppression repair became signed Final10 `4405fb2…`, which again passed all five
+predecessors and advanced Recovery through suppression, close/checkpoint and closed/offline proof
+before the phase-blind `offline-reopened` status oracle stopped `instrument-fail`. The current
+signed implementation/evidence repair `3fbfcd5…` is recorded in the live boundary above.
 
 - ★ **D-COMPENDIUM-COLD-MEMBERSHIP — exact identity replaces a cardinality heuristic.** Final5
   mounted eight distinct fixture keys after a pre-arm cache containing eight distinct Planetside
@@ -161,8 +202,9 @@ post-run instrument diagnosis and current repair are recorded in the live bounda
   Every authored field, badge and action remains present, and the row remains a 44px button. The two
   existing v2 draft release bullets were expanded to tell this and the Compendium repair without
   adding a 56th bullet. Signed Final8 then passed Slice and full 12-viewport Glass with zero
-  findings for this exact product source. The later Recovery-instrument edit changes current bytes,
-  so that certificate remains exact-source history rather than authority for the current WIP.
+  findings for this exact product source; Final9 and Final10 repeated those green outcomes on their
+  own signed sources. Signed implementation/evidence repair `3fbfcd5…` changes current bytes, so those
+  certificates remain exact-source history rather than authority for the current WIP.
 
 - ★ **D-COMPENDIUM-LIST-WORKSPACE — one reserved Close row, one bounded virtual scroller.**
   Final7 Glass showed the generic `.panel h3 { clear: both }` spending an extra header row beneath
@@ -176,8 +218,9 @@ post-run instrument diagnosis and current repair are recorded in the live bounda
   `ba67d4351ea9d5905c1948b7a8ecf7fe6761dd3080263cd43ebaa67d4ca8ea30` under budget-file SHA-256
   `eba266bd5d771a214eb89a80c7e5c8e8f1bb26ed48272e7a3eccc4688768fca5`; collector, measurement,
   numeric ceilings and historical samples are unchanged. Signed Final8 passed Compendium 78/78 and
-  later full Glass with zero findings for this exact source; the current Recovery-instrument WIP
-  requires a newly signed full-chain restart.
+  later full Glass with zero findings for this exact source; Final9 and Final10 repeated both green
+  outcomes on their own signed sources. The synchronized signed clean docs-only descendant is the
+  fresh campaign source and requires a full-chain restart.
 
 - ★ **D-SETTINGS-NATIVE-AUDIO-ORACLE — independent reveal, trusted receipt and honest failure
   class.** Final7's four small-phone Settings findings came from sampling Sound and Creature voices
@@ -195,8 +238,9 @@ post-run instrument diagnosis and current repair are recorded in the live bounda
   earned only after four native toggles plus restored-off settlement. Paired touch/mouse, missing-
   Close, coordinate, settlement, restoration, state/focus and coverage mutants seal both classes.
   Signed Final8 full Glass exercised this repaired oracle across all 12 viewports with zero findings
-  and zero instrument failures. That exact-source PASS does not certify the later Recovery-
-  instrument WIP.
+  and zero instrument failures; Final9 and Final10 repeated that green matrix on their own signed
+  sources. Those exact-source passes do not certify signed repair `3fbfcd5…`, the synchronized signed
+  clean docs-only descendant or a successor browser run.
 
 - ★ **D-PORT-TOOLCHAIN — the master plan's generic quality roles use the repository's executable
   equivalents.** The supplied immutable plan names Playwright, Zod/JSON Schema, ESLint and Prettier.
@@ -233,7 +277,7 @@ post-run instrument diagnosis and current repair are recorded in the live bounda
   retain the historical eager default unless they explicitly select the production lifecycle.
 
 - ◐ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — shell cleanup, clean calibration and activation are
-  complete; signed Final7 42/42 is preserved and signed-successor recertification is pending.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
+  complete; signed Final10 42/42 is preserved and docs-descendant recertification is pending.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
   40/42 with exact node/listener and heap breaches, one attempt, zero retries and complete cleanup.
   The evaluator now names field/value/ceiling and retains valid zero-valued heap components. Dirty
   diagnostic `20260827165427809-91398-352d7132df` proves the repaired 676/673 nodes and 71/70
@@ -245,7 +289,9 @@ post-run instrument diagnosis and current repair are recorded in the live bounda
   `7362a0e…` passed standalone and serial SceneMemory 42/42, signed `39e4f20…` later passed
   Final5 SceneMemory 42/42, and signed `ea845d7…` passed Final6 SceneMemory 42/42 before the later
   Slice instrument stop. Signed `53d030b…` then passed Final7 SceneMemory 42/42 before green
-  Compendium/Slice and the Glass terminal stop. The post-Final7 product/release bytes rebind live
+  Compendium/Slice and the Glass terminal stop. Final8, Final9 and Final10 each later passed
+  SceneMemory 42/42 plus all remaining responsive predecessors on their own signed sources; Final10
+  is the latest exact report. The post-Final7 product/release bytes rebind live
   buildDist `29494595f6d3ea03838b0d2a4c7bd1bb2b618dbb4623a56de05d44de9f99efff` under Scene budget-file
   SHA-256 `d4e45975c5678942d50ede78fec51219f1a550be80de418056e910057d2b1762`; no numeric ceiling or
   sample changed, and a fresh signed successor is required from Layout. Exact Edge point version remains provenance: a compatible
@@ -299,14 +345,22 @@ post-run instrument diagnosis and current repair are recorded in the live bounda
   miss/refusal, stale/reload/replay, route/counterpart loss, replacement and disposal are silent.
   Other expressions, distant ecology, ambience/music/combat, assets, device plateau and HUMAN
   listening remain open.
-- ◐ **D-ARC4-RECOVERY-CERT — instrument ready, real duration open.** The dedicated real-time,
-  one-attempt/no-forged-clock collector and mutation-sensitive selftest are ready, but recovery is
-  non-standalone. On one unchanged clean commit, the exact Slice ID must be terminal-green and pass
-  named verification; full Glass must consume that ID and its exact report must pass named
-  verification with the same Slice ID; only then may recovery consume both exact predecessor IDs,
-  and its exact report must pass named verification with both. Stop on any nonzero/red/instrument
-  result and do not start a successor or retry automatically. The uninterrupted real 20-minute
-  certificate has not run.
+- ◐ **D-ARC4-RECOVERY-CERT — Final10 instrument stop preserved; repair signed, docs descendant and real
+  duration open.** Signed `4405fb2…` supplied named-green Layout, SceneMemory, Compendium, Slice and
+  Glass predecessors, then its one-attempt Recovery passed fixture, 16-attempt burn-down,
+  suppression, close/checkpoint and closed/offline proof before stopping `instrument-fail` at
+  `offline-reopened`. The truthful read-only `unavailable` surface was rejected by an active-only
+  `empty`/`depleted` predicate, so Final10 makes no offline durable-parity, product-layout,
+  20-minute recovery or recovered-state claim. Signed implementation/evidence repair `3fbfcd5…` separates offline and
+  active phases, follows a separate offline raw read with one UI → state surface plus document/
+  runtime identity, refreshes and re-proves active exhaustion before observation, and requires the
+  retained/replayed/cross-bound phase receipts and complete six-region source-seal inventory above.
+  Recovery remains non-standalone. On one newly signed unchanged clean commit, the exact Slice ID
+  must be terminal-green and pass named verification; full Glass must consume that ID and its exact
+  report must pass named verification with the same Slice ID; only then may Recovery consume both
+  exact predecessor IDs, and its exact report must pass named verification with both. Stop on any
+  nonzero/red/instrument result and do not start a successor or retry automatically. The
+  uninterrupted real 20-minute certificate has not run.
 - ★ **D-COMPENDIUM-CALIBRATION — version-tolerant signed `7362a0e…` renewal passed; repaired-source chain restart and visual judgment remain open.** Measurement
   `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer
   `587d3bdfab471370e625c71d1658e391067881fe824ce14ccfaf7200eb6e4d73` bind clean committed

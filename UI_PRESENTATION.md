@@ -1,6 +1,51 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-28 Final7 Glass stop and bounded presentation repair — current local candidate:** signed
+> **2026-08-28 Final10 evidence and current repair boundary:** signed clean source
+> `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
+> Compendium 78/78 with six PNG bindings, Slice with zero findings and ten screenshots, and full
+> 12-viewport Glass with zero findings or instrument failures, each once with named verification.
+> Recovery ran once and stopped instrument-only at `offline-reopened` after fixture, complete
+> burn-down, exhausted suppression, close/checkpoint and true closed-target proof. The deliberately
+> read-only reopened Pertar card correctly rendered its three capture verbs `unavailable`; the old
+> phase-blind poll required the active/exhausted `empty`/`depleted` vocabulary. The 20-minute active
+> observation, boundary crossing and recovered-state UI judgment did not run.
+>
+> The local successor repair separates those two presentation phases and retains exact document,
+> authority, budget, UI/state/runtime and disabled-control evidence. A candidate PASS retains the
+> original active-exhausted, offline-reopened and reactivated active-exhausted Pertar receipts;
+> terminal finalization and named verification independently replay and cross-bind their phase,
+> document, cycle, facts, SessionRNG, state/UI and first-active-sample evidence. Missing, swapped,
+> coherently retokened, reversed or coherently recomputed route/card/runtime/pending receipts are
+> red.
+>
+> Before observation, `active-observation:running` must be persisted and survive any later
+> failure. Each Pertar wait receipts the strict remaining share of one absolute 20-second deadline;
+> clipping or exceeding it is red. The exhausted raw/live-state chain and reactivated→first-service
+> binding require at most 20 seconds, the same cycle/RNG and revision delta at most one. Internally
+> assessment-green retiming, +2-revision and next-cycle mutants remain terminal-red.
+>
+> The exact six-region Recovery SHA-256/UTF-8-byte inventory is: full collector
+> source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+> boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+> helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+> (10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+> (6,184 B); offline-reopened→reactivated phase span
+> `b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+> suppression preparation/collector
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+> seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+> helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+> It changes no player UI, layout, accessibility semantics, content, save or deterministic identity.
+> Browser-free current-byte checks at locally signed implementation/evidence commit
+> `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+> `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+> 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+> This documentation changes source identity; its signed clean docs-only descendant is the fresh
+> campaign source. No successor browser certificate exists. That descendant must restart Layout →
+> SceneMemory → Compendium → Slice → Glass → recovery. Edge `151.0.4129.107` / CDP `1.3`
+> is provenance only and never triggers rebaselining.
+
+> **Historical Final7 Glass stop and bounded presentation repair:** signed
 > clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` passed Layout 787/787,
 > SceneMemory 42/42, Compendium 78/78 and Slice with zero findings/scopes, each once with its named
 > verifier. Full Glass then ran once across 12 viewports and stopped terminal-red with 25 findings,
@@ -19,9 +64,9 @@
 > centre-hit ownership, the coordinate-bound native receipt gates focus/state causality, and an
 > unconditional settled cleanup restores the exact raw panel and document scroll positions.
 >
-> Final7 is immutable and cannot resume. Bounded dirty-tree diagnostics are repair evidence only;
-> they are not a post-repair full Glass PASS. A newly signed clean successor must restart the complete
-> Layout → SceneMemory → Compendium → Slice → Glass → recovery chain with fresh IDs.
+> Final7 is immutable and cannot resume. At that historical boundary, bounded dirty-tree diagnostics
+> were repair evidence only and the next signed source had to restart the complete chain. Final10
+> supersedes that browser chronology as recorded above.
 >
 > Nick has separately authorized a **universe-wide visual polish pass** after the stable Phase-4
 > checkpoint. The TikTok reference defines the desired emotional punch—stronger warm/cool
@@ -164,8 +209,8 @@
 > each retain a separate source-derived capability contract, producer binding and fixed ruler. Exact
 > browser versions are provenance, and a compatible Edge or Chrome point update alone never
 > rebaselines, repins or moves ceilings. At that sixth-red boundary, no certifying Slice PASS, Glass
-> result or recovery certificate existed; the later Final4–Final7 history and current signed-
-> successor restart boundary are stated in the overlay above.
+> result or recovery certificate existed; the later Final4–Final10 history and today's signed-
+> repair/pending-docs restart boundary are stated in the overlay above.
 
 > **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
 > 2026-08-27 overlay does not supersede it:** the native Survey card now

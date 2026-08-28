@@ -29,26 +29,66 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
 workspace plus a playable Pixi/browser slice.
 
-**Current local v2 candidate (2026-08-28; Final7 stopped fail-closed at Glass):** signed clean source
-`53d030bb733beca1a68fd8e42358dfa4b10ed0e2` passed Layout 787/787, source-bound SceneMemory
-42/42, source-bound Compendium 78/78 with six PNG bindings, and Slice with zero findings and ten
-screenshots. Glass then ran once for 75,032 ms and stopped terminal-red with 25 findings and zero
-report-classified instrument failures; Recovery correctly did not run. Exact report/log carriers,
-sizes and hashes are preserved in [`audits/README.md`](audits/README.md).
+**Current local v2 boundary (2026-08-28; Final10 stopped fail-closed in Recovery):** signed clean
+source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, source-bound
+SceneMemory 42/42, source-bound Compendium 78/78 with six PNG bindings, Slice with zero findings
+and ten screenshots, and full Glass across all 12 viewports with zero findings or instrument
+failures. Every green predecessor ran once and passed its named verifier. Recovery then ran once,
+passed fixture, the complete 16-attempt burn-down, exhausted disabled suppression,
+close/checkpoint and closed/offline proof, and stopped terminal `instrument-fail` at
+`offline-reopened` after 110,549 ms. Cleanup passed and no retry occurred. Exact report/log
+carriers, sizes and hashes are preserved in [`audits/README.md`](audits/README.md).
 
-Post-run review separated one Compendium header/workspace product root and two narrow-phone
-Inventory product defects from two hostile-row Compendium oracle artifacts and four Settings oracle
-artifacts. The floated Compendium Close plus a cleared heading spent an unintended header row; the
-Inventory rows starved their copy beside the badge column; hostile rows could pass on overscan-only
-mount; and Settings incorrectly required Sound and Voice to remain simultaneously reachable. The
-bounded repair removes the extra Compendium header row, reflows narrow-phone
-Inventory rows without hiding identity or state, and gives every Settings control its own native
-reveal, two-sample settlement, centre-hit/receipt proof and exact scroll restoration. Numeric rulers,
-browser authority, retry policy and release identity are unchanged. Final7 is immutable and cannot
-resume; repaired small-phone and landscape diagnostics pass, but no post-repair full 12-viewport,
-Recovery, whole-Gate, hosted, HUMAN or release claim exists. A newly signed clean successor must
-restart at Layout with fresh IDs. Edge `151.0.4129.107` / CDP `1.3` is run provenance only, never a
-rebaseline trigger.
+The reopened document was deliberately read-only/ineligible and truthfully rendered Tame,
+Scavenge and Sample as `unavailable` with an exhausted 16/16/0 cycle-0 budget. The old phase-blind
+poll accepted only the active-authority `empty`/`depleted` vocabulary, so it rejected that coherent
+same-document UI → state surface. This is an instrument semantic/status-oracle defect, not
+demonstrated product loss. The active observation, boundary crossing and recovered stages did not
+run; Final10 grants no offline durable-parity, Recovery product-layout, 20-minute recovery or
+recovered-state claim and is immutable. Final9 and earlier attempt history remains preserved in
+[`audits/README.md`](audits/README.md) and the detailed port references.
+
+The current local repair is phase-specific: read-only offline exhaustion requires exact
+`unavailable` rows and active exhaustion requires `empty`/`depleted`. An offline raw read followed
+by one same-document UI → state surface/runtime witness binds the document, nondecreasing active
+time and exact revision/SessionRNG tuple. Reactivation must be shown, writable and focused, run a
+full heartbeat refresh, and re-prove active exhaustion before the observer is armed. A candidate
+PASS must retain schema-bound full Pertar surface receipts for the original active-exhausted,
+offline-reopened and reactivated active-exhausted phases. Before observation, an
+`active-observation:running` receipt must be persisted and survive any later failure. Each Pertar
+wait receipts the strict remaining share of one absolute 20-second deadline; clipping or exceeding
+that deadline is red. Terminal finalization and named verification independently replay the
+receipts and cross-bind their phase, document, cycle, facts, SessionRNG, state/UI and first active
+sample. The exhausted raw/live-state chain and reactivated→first-service binding must stay within
+20 seconds, on the same cycle and RNG, with revision delta at most one. Missing, swapped, coherently
+retokened, reversed or coherently recomputed route/card/runtime/pending evidence is red, as are
+internally assessment-green retiming, +2-revision and next-cycle mutants.
+
+The final Recovery source-seal inventory is exactly six SHA-256/UTF-8-byte regions: full collector
+source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B), production
+boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B), dedicated
+helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+(10,442 B), phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+(6,184 B), offline-reopened→reactivated phase span
+`b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B), and disabled-
+suppression preparation/collector
+`22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). Dead-wrapped or
+comment-shadowed sole production spans and late helper rebindings are explicit red controls.
+
+Browser-free current-byte verification is 138 Vitest files (1,494 passed, one intentional skip),
+typecheck, `artunused`, focused Recovery 5/5, Recovery selftest, root validation at 1,010 renders / 50
+determinism probes, and an independent review marked CLEAR.
+
+The implementation/evidence checkpoint is locally signed commit
+`3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (parent Final10 `4405fb2…`), and its embedded SSH
+signature verified against the configured public key. The synchronized signed clean docs-only
+descendant—not `3fbfcd5…`—is the fresh campaign source. No successor browser certification exists.
+That descendant must run fresh, once
+and fail-fast through **Layout → SceneMemory → Compendium → Slice →
+Glass → Recovery**, with every named verifier and no automatic retry. Edge `151.0.4129.107` / CDP
+`1.3` is Final10 provenance only; compatible point updates never trigger a rebaseline,
+recalibration or threshold change. No Recovery, product, whole-Gate, hosted, HUMAN or release claim
+exists.
 
 After the stable Phase-4 checkpoint, the queued visual pass applies the TikTok-inspired polish
 language across the entire deterministic universe—galaxies, systems, planets, every biome,

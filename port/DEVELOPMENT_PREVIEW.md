@@ -1,23 +1,57 @@
 # Development Preview — Separate-Origin Human Playtesting
 
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
-as of 2026-08-27. This is not a release record.
+as of 2026-08-28. This is not a release record.
 
-**Current campaign boundary (2026-08-27):** the playable implementation now extends through the
-local Arc 4.5 Survey → Gather → Build → Tame → ship improvement → farther reach → Return slice, but
-it is still a review candidate rather than a preview candidate. Six exact-input Slice attempts are
-preserved red; the latest current-input run is
-`20260827085237038-27561-1f8e3c1771b7` (23 findings / 16 scopes), and no current-input Slice PASS or
-success ledger exists. Its repaired roots completed a pre-certificate browserless checkpoint and
-independent audits for the reviewed repair input, and the independent final whole-diff review is
-CLEAR. Any subsequent source change must rerun its affected checks. A new clean, source-bound browser campaign is
-still required. Changes to the app producer also make the earlier exact-input Scene Memory and
-Compendium certificates historical for their recorded inputs, not proof for this candidate; both
-must certify the eventual frozen head.
-Nothing in this campaign has been packaged, published, pushed, hosted-tested, merged, versioned or
-released. Until one clean exact final head passes every required local gate and receives separate
-exact-SHA publication authority, no development-preview candidate exists. `--allow-dirty` remains
-local diagnosis only and can never become a promotion artifact.
+**Current campaign boundary (2026-08-28):** the playable implementation extends through the local
+Arc 4.5 Survey → Gather → Build → Tame → ship improvement → farther reach → Return slice, but it is
+still a review candidate rather than a preview candidate. Signed clean Final10 source
+`4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, source-bound SceneMemory 42/42,
+source-bound Compendium 78/78 with six PNG bindings, Slice with zero findings/scopes and ten PNGs,
+and full 12-viewport Glass with zero findings or instrument failures. Every green stage ran once and
+passed named verification.
+
+Recovery then ran once with zero retry. Fixture, the complete 16-attempt burn-down, exhausted
+disabled-suppression, close/checkpoint and closed/offline proof passed before `offline-reopened`
+stopped terminal `instrument-fail`. The reopened document truthfully used the read-only/ineligible
+`unavailable` vocabulary while the old phase-blind oracle required active-authority
+`empty`/`depleted`. Active observation, boundary crossing and recovered-state judgment did not run;
+Final10 therefore makes no offline durable-parity, Recovery product or recovery claim. Final8 and
+Final9 remain immutable historical exact-source evidence for their own recorded stages.
+
+The local phase-specific status-oracle repair requires schema-bound full Pertar receipts at the
+original active-exhausted, offline-reopened and reactivated active-exhausted phases. Terminal
+finalization and named verification independently replay and cross-bind their phase, document,
+cycle, facts, SessionRNG, state/UI and first-active-sample evidence; missing, swapped, coherently
+retokened, reversed-chronology or coherently recomputed route/card/runtime/pending receipts are red.
+Before observation, `active-observation:running` is persisted and must survive any later failure.
+Each Pertar wait receipts the strict remaining share of one absolute 20-second deadline; clipping or
+exceeding it is red. The exhausted raw/live-state chain and reactivated→first-service binding require
+at most 20 seconds, the same cycle/RNG and revision delta at most one. Internally assessment-green
+retiming, +2-revision and next-cycle mutants remain terminal-red.
+Its exact six-region SHA-256/UTF-8-byte inventory is: full collector
+source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+(10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+(6,184 B); offline-reopened→reactivated phase span
+`b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+suppression preparation/collector
+`22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+Browser-free current-byte checks at locally signed implementation/evidence commit
+`3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+`4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+This documentation changes source identity; its signed clean docs-only descendant is the fresh
+campaign source. No successor browser certificate exists. That descendant must restart
+Layout → SceneMemory → Compendium → Slice → Glass → recovery with fresh IDs. Nothing in this
+campaign has been packaged, published, pushed, hosted-tested, merged, versioned or released. Until
+one clean exact final head passes every required local gate and receives separate exact-SHA
+publication authority, no development-preview candidate exists. `--allow-dirty` remains local
+diagnosis only and can never become a promotion artifact. Edge `151.0.4129.107` / CDP `1.3` is
+Final10 provenance only; a compatible point update never triggers rebaselining or threshold changes.
 
 ## Separate-origin requirement; approved branch site
 

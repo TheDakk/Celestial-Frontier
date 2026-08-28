@@ -10,6 +10,80 @@ summary of it.
 
 ## Contents
 
+### Signed `4405fb2…` Final10 campaign — five green predecessors, then Recovery offline-reopened status-oracle stop
+
+Signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` (tree
+`74133f0749a42ffddcaf5e0444a6c21197ad1da3`, parent `a85e0ed…`) remained clean and unchanged
+through every completed Final10 stage. Layout `20260828-phase4-final10-4405fb2b4ba7-layout`
+passed 787/787 sealed outcomes across ten viewports in 76,517 ms. Source-bound SceneMemory
+`20260828-phase4-final10-4405fb2b4ba7-scenemem` passed 42/42 in 10,121 ms. Source-bound
+Compendium `20260828-phase4-final10-4405fb2b4ba7-compendium` passed 78/78 in 45,542 ms and
+bound all six review PNGs. Slice `20260828-phase4-final10-4405fb2b4ba7-slice` passed with zero
+findings/scopes and ten PNG bindings in 414,827 ms. Glass
+`20260828-phase4-final10-4405fb2b4ba7-glass` passed all 12 viewports with zero findings or
+instrument failures in 86,406 ms. Every green stage ran once and passed its named verifier.
+
+Recovery `20260828-phase4-final10-4405fb2b4ba7-recovery` then ran once and stopped terminal
+`instrument-fail` at `offline-reopened` after 110,549 ms. Fixture, the complete 16-attempt
+burn-down, exhausted disabled-suppression receipt, close/checkpoint and closed/offline proof all
+passed. The active observation, boundary-crossed and recovered stages did not run. Cleanup passed
+with browser, browser context, server and workspace lock released; no automatic retry occurred.
+
+The failure evidence retained the correct Pertar route/card, the exhausted 16/16/0 cycle-0 budget,
+and all three Tame/Scavenge/Sample controls as model-disabled, natively disabled and aria-disabled.
+After the true close and reopen, however, the document was deliberately read-only/ineligible and
+truthfully rendered every verb as `unavailable`. The old phase-blind poll reused an active-authority
+exhaustion predicate that accepted only `empty` or `depleted`, so it rejected this coherent offline
+surface. Its terminal `last:null` records the final unmatched poll; the appended non-null `observed`
+receipt preserves the actual same-document UI → state witness. Final10 therefore exposed an
+instrument semantic/status-oracle defect, not demonstrated product loss. Because the run stopped
+before the later offline raw/state/UI assertion and before the real active-play observation, it makes
+no offline durable-parity, Recovery product-layout, 20-minute recovery or recovered-state claim.
+Final10 is immutable and was not retried. The bounded successor must distinguish offline/ineligible
+`unavailable` from active exhausted `empty`/`depleted`, then restart Layout → SceneMemory →
+Compendium → Slice → Glass → Recovery on a newly signed clean source with fresh run IDs.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_085940581.json.gz` preserves Final10 Layout. The
+  gzip is 4,841 bytes with SHA-256
+  `4329476439bc6bbde11adeeb487e22f1d9a06c5f4b6b0f75642802c720ca9925`; decompressed JSON is
+  106,062 bytes with SHA-256
+  `2fa05df1d8964a99943f1e235936446d02c6e285e41a73f5cc1432e4b786c638`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_090028728.json.gz` preserves Final10 SceneMemory.
+  The gzip is 24,164 bytes with SHA-256
+  `99abfc6d0a084ce0ed874cf5516c833d1d73735e4ebb8c44c0d3ce870075a0e3`; decompressed JSON is
+  305,657 bytes with SHA-256
+  `00161fd6c4d8b5457776dc1768ea2022a142a73c892c8a4cdff207073e88116a`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_090149421.json.gz` preserves Final10 Compendium.
+  The gzip is 541,176 bytes with SHA-256
+  `c93be41ed90be67236b10a2b57a79e252824b00091be9da55f84604de2ade8cd`; decompressed JSON is
+  8,533,320 bytes with SHA-256
+  `6ee3aa6f2e4dd50b7e148302486a4381385df92a10828f1b8b63408c66353035`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_091016498.json.gz` preserves Final10 Slice. The gzip
+  is 1,970 bytes with SHA-256
+  `2c7bbcfc52a8805593be730ff03ebee2c00debf2a8eb82e51fd782bf1d26b12c`; decompressed JSON is
+  6,169 bytes with SHA-256
+  `ef0dcef3001a8384a080b40696480eaf0d1176da3cd30ec2ff5be9d145fb47c5`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_091016498.log.gz` preserves Final10 Slice stdout/stderr.
+  The gzip is 2,967 bytes with SHA-256
+  `80b1942ae7777d91f0015fe45c60901d4ca014839043430e7e9971168f09ebcc`; decompressed log is
+  5,905 bytes with SHA-256
+  `929c4125b322a876a4624080fa90bc78e98bc1d055e41f66bfbc507e524dd501`.
+- `PHASE4_GLASS_CURRENT_INPUT_PASS_20260828_091204762.json.gz` preserves Final10 Glass. The
+  gzip is 74,755 bytes with SHA-256
+  `a17d0e37dc567a08e9847bbf31c102e01f4e90e6859d4870acefbfa382b2d171`; decompressed JSON is
+  845,128 bytes with SHA-256
+  `ca06571c4efa3425e367edc87a1d652fc5da15eecf5a683af0688eb8c078be51`.
+- `ARC4_RECOVERY_CURRENT_INPUT_INSTRUMENT_FAILURE_20260828_091420389.json.gz` preserves the
+  immutable Final10 Recovery offline-reopened instrument failure. The gzip is 84,891 bytes with
+  SHA-256 `c038e5dc37bbedd230afb954e7b576b85a65970bdafbc0ee158f185b07244358`;
+  decompressed JSON is 822,999 bytes with SHA-256
+  `9642a7dfad56df1695693ef2f2cafaf0c0fb4628d8401cc8bcdf839f31a429ce`.
+
+All seven gzip carriers pass integrity checks and decompress byte-for-byte to their exact source
+report or log. The Compendium and Slice reports retain their PNG manifests and hashes; the PNGs
+remain run-bound ignored review evidence rather than additional tracked audit carriers. Edge
+`151.0.4129.107` / CDP `1.3` is run provenance only, never a baseline pin or rebaseline trigger.
+
 ### Signed `a85e0ed…` Final9 campaign — five green predecessors, then Recovery exhausted-control oracle stop
 
 Signed clean source `a85e0edf9b7ceca0f13ecf32bb8ac3c88db6ceb1` (tree

@@ -2,7 +2,7 @@
 
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
 2026-07-30. The dated v2 overlay below matches the current local development candidate and approved
-direction as of **2026-08-27**. It distinguishes the player-live compatibility stings and one
+direction as of **2026-08-28**. It distinguishes the player-live compatibility stings and one
 bounded synthesized Tame greeting from the broader Arc 7/8 content, integration and HUMAN work
 that remain open.
 **Shipped (production v1):** v1.8.0 "The Connection" · corrected and widened in v1.8.4
@@ -13,7 +13,49 @@ whole layer undocumented despite being the largest single feature of v1.8.
 
 ---
 
-## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-27)
+> **2026-08-28 Final10 evidence and current repair boundary:** signed clean source
+> `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
+> Compendium 78/78, Slice with zero findings, and full Glass with zero findings or instrument
+> failures. Recovery ran once and stopped instrument-only at `offline-reopened` after the fixture,
+> 16-attempt burn-down, exhausted suppression, close/checkpoint and true closed-target proof passed.
+> Its deliberately offline/read-only Pertar surface correctly showed all capture verbs unavailable;
+> the old oracle demanded active/exhausted reasons. Active observation, recovery crossing and the
+> recovered-state/post-start audio judgment did not run. No Recovery or listening claim follows.
+>
+> The local successor repair is limited to phase-specific evidence and controls; no sound, voice,
+> mixer, save or capture behavior changes. A candidate PASS retains the original active-exhausted,
+> offline-reopened and reactivated active-exhausted Pertar receipts; terminal finalization and named
+> verification independently replay and cross-bind their phase, document, cycle, facts, SessionRNG,
+> state/UI and first-active-sample evidence. Missing, swapped, coherently retokened, reversed or
+> coherently recomputed route/card/runtime/pending receipts are red.
+>
+> Before observation, `active-observation:running` must be persisted and survive any later
+> failure. Each Pertar wait receipts the strict remaining share of one absolute 20-second deadline;
+> clipping or exceeding it is red. The exhausted raw/live-state chain and reactivated→first-service
+> binding require at most 20 seconds, the same cycle/RNG and revision delta at most one. Internally
+> assessment-green retiming, +2-revision and next-cycle mutants remain terminal-red.
+>
+> The exact six-region Recovery SHA-256/UTF-8-byte inventory is: full collector
+> source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+> boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+> helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+> (10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+> (6,184 B); offline-reopened→reactivated phase span
+> `b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+> suppression preparation/collector
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+> seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+> helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+> Browser-free current-byte checks at locally signed implementation/evidence commit
+> `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+> `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+> 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+> This documentation changes source identity; its signed clean docs-only descendant is the fresh
+> campaign source. No successor browser certificate exists. That descendant must restart the full
+> browser chain. Edge
+> `151.0.4129.107` / CDP `1.3` is provenance only, never an audio ruler or rebaseline trigger.
+
+## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-28)
 
 ### 0.1 Truth boundary
 
@@ -65,8 +107,8 @@ and gain envelope in the creature bus. Misses, refusals, stale/protected state, 
 non-fauna results, lost route/toast/visibility/answerability, disabled Sound or Creature voices and
 reload are silent. The stable event is claimed once before playback; there is no retry or replay.
 
-Current-input Slice evidence consists of **six preserved terminal-red, one-attempt/zero-retry
-runs** on Edge `151.0.4129.107`. Signed-clean source
+Historical pre-Final10 Slice evidence consists of **six preserved terminal-red,
+one-attempt/zero-retry runs** on Edge `151.0.4129.107`. Signed-clean source
 `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 `20260827085237038-27561-1f8e3c1771b7`, which ran for 397,101 ms and retained 23
 findings across 16 scopes without Arc 4 success evidence. Required was false, `ok`/ledger were
@@ -80,20 +122,19 @@ unmuted contextless case, while created-context and reload-resource mutants fail
 sixth-red roots were Guide count, ecology diagnostic comparison, committed-only epoch timing and
 Training DOM ownership, not audio-product defects.
 
-Focused changed-source checks and negative controls have exercised the audio repair, and the
-cumulative v2.0 development draft remains 55 bullets. The last complete pre-certificate browserless
-checkpoint and independent audits completed for the reviewed repair input; any subsequent source
-change must rerun its affected checks before a new signed clean successor. That successor and its
-exact-head SceneMemory, Compendium and Slice → Glass → recovery certificates remain pending.
+Those focused changed-source checks and negative controls exercised the audio repair, and the
+cumulative v2.0 development draft remains 55 bullets. Any subsequent source change must rerun its
+affected checks before a new signed clean successor. Following the Final10 boundary recorded above,
+the current Recovery-instrument successor and its exact-head Layout → SceneMemory → Compendium →
+Slice → Glass → recovery certificates remain pending.
 Browser evidence uses three independent authorities: the root authority accepts compatible
 Chromium-family executables that satisfy CDP `1.3` plus the capability inventory derived from its
 layout/boot sources and records executable, product, revision, user agent, JavaScript version and
 protocol version for every run. Compendium and SceneMemory retain separate source-derived capability
 contracts, producer bindings and fixed rulers. A compatible browser point update is provenance and
-does not itself trigger rebaselining or move thresholds. Post-start audio lifecycle, the sealed
-nine-stage/14-burn Arc 4 sequence, current Glass and uninterrupted recovery remain unproved. There is
-no current-input Slice PASS, Glass/recovery certificate, hosted or HUMAN authority, or release/
-version/deployment claim.
+does not itself trigger rebaselining or move thresholds. Post-start audio lifecycle and the
+uninterrupted active-observation/recovery outcome remain unproved. There is no Recovery, hosted,
+HUMAN, release, version or deployment authority.
 
 Broader player-live creature expressions, combat or Guardian cues, ambience, music, recorded assets
 and asset loading remain absent. Battle sound (`cbx`) is still preserved by persistence rather than

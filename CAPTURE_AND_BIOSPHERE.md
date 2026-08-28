@@ -2,13 +2,60 @@
 
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
 ecology/audio overlay matches the player-facing durable Arc 4 capture slice and its remaining
-evidence boundary as of **2026-08-27**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
+evidence boundary as of **2026-08-28**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
 well as biosphere recovery, so EPOCH_TICK is a shared knob.
 **Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy mechanics, while
 the current v2 authority is the TypeScript port named in the overlay below.
 
-> **2026-08-27 current evidence/repair overlay:** current-input Slice has six preserved terminal-red,
+> **2026-08-28 Final10 evidence and current repair boundary:** signed clean source
+> `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
+> Compendium 78/78 with six PNG bindings, Slice with zero findings and ten screenshots, and full
+> 12-viewport Glass with zero findings or instrument failures, each once with named verification.
+> Recovery then ran once and stopped **instrument-only** at `offline-reopened` after the fixture,
+> complete 16-attempt burn-down, exhausted suppression receipt, close/checkpoint and true closed-
+> target proof passed. The deliberately read-only reopened Pertar surface truthfully rendered all
+> three capture verbs `unavailable`; the phase-blind oracle incorrectly required the active,
+> eligible exhausted vocabulary `empty`/`depleted`. The 20-minute active observation, boundary
+> crossing and recovered-state judgment did not run, so Final10 makes no Recovery product claim.
+>
+> The local successor repair separates offline/ineligible and active/exhausted presentation while
+> retaining exact budget, authority, document, UI/state/runtime and disabled-semantics witnesses.
+> A candidate PASS retains the original active-exhausted, offline-reopened and reactivated active-
+> exhausted Pertar receipts; terminal finalization and named verification independently replay and
+> cross-bind their phase, document, cycle, facts, SessionRNG, state/UI and first-active-sample
+> evidence. Missing, swapped, coherently retokened, reversed or coherently recomputed route/card/
+> runtime/pending receipts are red.
+>
+> Before observation, `active-observation:running` must be persisted and survive any later
+> failure. Each Pertar wait receipts the strict remaining share of one absolute 20-second deadline;
+> clipping or exceeding it is red. The exhausted raw/live-state chain and reactivated→first-service
+> binding require at most 20 seconds, the same cycle/RNG and revision delta at most one. Internally
+> assessment-green retiming, +2-revision and next-cycle mutants remain terminal-red.
+>
+> The exact six-region Recovery SHA-256/UTF-8-byte inventory is: full collector
+> source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+> boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+> helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+> (10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+> (6,184 B); offline-reopened→reactivated phase span
+> `b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+> suppression preparation/collector
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+> seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+> helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+> It changes no capture mechanic, odds, ownership, reward, epoch, save, seed or release identity.
+> Browser-free current-byte checks at locally signed implementation/evidence commit
+> `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+> `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+> 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+> This documentation changes source identity; its signed clean docs-only descendant is the fresh
+> campaign source. No successor browser certificate exists. That descendant must restart Layout →
+> SceneMemory → Compendium → Slice → Glass
+> → recovery. Edge `151.0.4129.107` / CDP `1.3` is Final10 provenance only; a compatible point
+> update never triggers rebaselining or a threshold change.
+
+> **Historical 2026-08-27 evidence/repair overlay:** current-input Slice had six preserved terminal-red,
 > one-attempt/zero-retry runs. Signed-clean source
 > `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
 > `20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`; it ran 397,101 ms,
@@ -22,13 +69,13 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > raw persistence and reload with eleven isolated controls; and Survey rebinds the current Training
 > scope after replacing its action DOM. A subsequent whole-candidate review found additional
 > repair work in canonical world identity, F4/storage convergence, persistence races, texture
-> cleanup, settings/read-only coverage and the evidence chain. The complete browserless candidate
-> is green at 134 Vitest files / 1,458 passed / one intentional skip, and prior
+> cleanup, settings/read-only coverage and the evidence chain. That historical browserless candidate
+> was green at 134 Vitest files / 1,458 passed / one intentional skip, and prior
 > implementation/code plus release-note audits are CLEAR for their reviewed input. Their findings
 > plus the later convergence-latch and per-field F4 controls are repaired. The independent final
-> post-repair whole-diff review is CLEAR; the new signed clean freeze remains pending.
-> No current-input Slice PASS, Glass result, recovery
-> certificate, hosted/HUMAN whole-Gate or release authority follows.
+> post-repair whole-diff review was CLEAR. At that boundary no Slice PASS, Glass result, recovery
+> certificate, hosted/HUMAN whole-Gate or release authority followed; Final10 supersedes only the
+> browser-evidence portion as recorded above.
 >
 > Exact Edge build is Slice provenance only. Slice and Glass judge fresh behavior and geometry rather
 > than a version pin, so an Edge update alone never rebaselines, repins or moves thresholds. The
