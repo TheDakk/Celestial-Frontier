@@ -10,27 +10,27 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state boundary — signed Final5 Compendium instrument stop, exact-membership repair, fresh Final6 restart (2026-08-27)
+## Current-state boundary — signed Final6 Slice instrument stop, causal repair, signed-successor restart (2026-08-27)
 
-Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` supplied Final5 Layout
-787/787 and source-bound SceneMemory 42/42. Compendium then ran once as
-`20260827-phase4-final5-39e4f20fb35e-compendium`, stopped `instrument-fail` after 3,237 ms with
-zero retained product outcomes out of 78 expected, and was not retried. Slice, Glass and recovery
-did not start. The report's only finding was that the phone stable first open did not prove a
-mounted cold fixture key. It retained a partial non-certifying phone profile, no desktop profile,
-no review PNGs and no Compendium product verdict.
+Signed clean source `ea845d77d9783599c269f708462eb650e2c3e245` supplied Final6 Layout
+787/787, source-bound SceneMemory 42/42 and source-bound Compendium 78/78. Slice then ran once for
+420,570 ms and stopped with five findings in five scopes. Its first/root finding was instrumental:
+the exact thermal Inventory row was a valid 164px button whose raw centre lay below the panel
+scrollport. The old collector skipped its click, then judged four absent modal/Equip/Close/reload
+descendants. Those are unexercised cascades, not independent product verdicts. Final6 was not
+retried; Glass and recovery did not start.
 
-The failed oracle required eight mounted distinct fixture keys to outnumber eight pre-arm cached
-Planetside keys. Direct evidence already proved that the errored row's exact visual key was absent
-from the cached set and bound exactly one errored row plus one `jobError`; equal cardinality did not
-mean equal membership. The bounded repair now requires exact key absence and rejects cached/wrong
-keys. Current collector `c13a489d…3faab`, outcome contract `ac7eea39…6d17`, measurement
-`28b06f3c…276c` and budget-file SHA `3e660742…2ae5` change; producer `bf9ad0b6…4dcb`, all
-numeric ceilings and historical samples remain unchanged. These changed evidence bytes require a
-newly signed clean Final6 checkpoint and complete fresh chain from Layout; Final5 cannot resume.
-No current Compendium product PASS, Slice, Glass, recovery, publication, hosted attempt, release,
-deployment, version bump or external authority exists. Edge `151.0.4129.107` / CDP `1.3` is
-provenance only and never triggers a rebaseline or threshold change.
+The browser-free repair performs native reveal and render settlement, proves exact scrollport
+containment and centre-hit ownership, binds trusted row/action/detail-Close/panel-Close receipts,
+proves detail Close leaves the registered Inventory visible/open/expanded, binds exact receipt
+keys/bytes/semantics and their F4 RNG authority across reload, and makes every dependent judgment
+and mutation control require its complete green causal prefix.
+The immutable receipt seed, row, action, both Close owners, reload opener and Atlas each fail-fast
+before their descendants. Red action state proves quiescence and cleanup before terminating later
+mutable arcs. No product source, numeric ruler, browser authority or retry policy changed. Final6
+cannot resume; a newly signed clean successor must restart at Layout. No post-repair Slice, Glass,
+recovery, publication, hosted, release, deployment, version-bump or external authority exists.
+Edge `151.0.4129.107` / CDP `1.3` remains provenance only.
 
 Historical calibration remains intact:
 `bb5dc7c7f4372f712778af67ace2b5f81b71b99d`
@@ -101,8 +101,9 @@ stopped on the preserved harness red. Those results bind that exact signed sourc
 source at that historical boundary still had no Slice PASS, Glass result or recovery certificate
 and had to restart from Layout. Signed `041d1cf…` later supplied the Final4 Slice PASS before Glass
 stopped on the preserved instrument evidence. Its repair became signed `39e4f20…`; Final5 passed
-Layout and SceneMemory before the preserved Compendium instrument stop. The current exact-membership
-repair requires a newly signed fresh Final6 restart from Layout.
+Layout and SceneMemory before the preserved Compendium instrument stop. Its repair became signed
+Final6 source `ea845d7…`, which passed Layout, SceneMemory and Compendium before the preserved
+Inventory causal instrument stop. The current repair requires a newly signed successor restart.
 
 - ★ **D-COMPENDIUM-COLD-MEMBERSHIP — exact identity replaces a cardinality heuristic.** Final5
   mounted eight distinct fixture keys after a pre-arm cache containing eight distinct Planetside
@@ -113,6 +114,22 @@ repair requires a newly signed fresh Final6 restart from Layout.
   budget-file SHA, not product behavior, producer authority, numeric ceilings, retry policy or
   browser authority. Final5 remains an immutable 0/78 instrument stop and cannot be resumed.
 
+- ★ **D-INVENTORY-CAUSAL-REACHABILITY — reveal, exact receipts and green prefixes replace
+  descendant cascades.** Final6's old Slice collector sampled the exact thermal row before revealing
+  it inside the bounded Inventory scrollport. One skipped click became four absent modal/action/
+  reload findings. The repaired collector uses native scroll, waits rAF plus a later task, proves
+  exact connected/button identity, 44px geometry, visible containment and centre hit, and binds the
+  trusted row receipt to that point. Detail Close and registered-panel Close each prove raw target
+  geometry, exact event-target ownership, raw hidden/ARIA/inert state, focus return and zero active,
+  retained, pending or selected ownership; detail Close also proves the parent registered Inventory
+  remains displayed, ARIA-visible, app-open and opener-expanded. Reload binds the exact committed
+  receipt keys, raw bytes, parsed semantics and stable F4 seed/ordinal/draw projection, including the
+  Equip receipt's authority-derived ordinal and witness. The immutable receipt seed, surface, action, Close,
+  reload opener and Atlas form explicit causal gates; controls run only on green bases, and unsafe
+  state terminates before the next mutable arc. This changes only Slice evidence semantics and
+  negative controls—not Inventory product behavior, carrier bytes, actions, RNG, rulers, retries or
+  browser version policy. Final6 remains an immutable one-attempt instrument stop.
+
 - ★ **D-PORT-TOOLCHAIN — the master plan's generic quality roles use the repository's executable
   equivalents.** The supplied immutable plan names Playwright, Zod/JSON Schema, ESLint and Prettier.
   This port keeps the same intended roles without adding parallel authorities: owned raw CDP drives
@@ -120,7 +137,9 @@ repair requires a newly signed fresh Final6 restart from Layout.
   strict hand-written versioned codecs and fixed-point/import controls perform runtime validation,
   strict TypeScript plus `noUnused`, authority scanners and `artunused` perform static policy checks,
   and review/diff checks enforce formatting. These are implementation substitutions, not waivers;
-  each must remain fail-closed and mutation-controlled.
+  each must remain fail-closed and mutation-controlled. The targeted species-strip visual tool now
+  uses that same cross-platform browser-executable resolver instead of its stale Windows-only Edge
+  path; compatible point-version changes never trigger a visual rebaseline.
 
 - ★ **D-CI-COMPENDIUM-EDGE-ISOLATION — sealed provisioning owns no system package.** Both guarded
   workflows SHA-verify the exact Arc-1A `.101` deb, verify its embedded package name and version,
@@ -146,7 +165,7 @@ repair requires a newly signed fresh Final6 restart from Layout.
   retain the historical eager default unless they explicitly select the production lifecycle.
 
 - ◐ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — shell cleanup, clean calibration and activation are
-  complete; signed Final5 42/42 is preserved and fresh Final6 recertification is pending.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
+  complete; signed Final6 42/42 is preserved and signed-successor recertification is pending.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
   40/42 with exact node/listener and heap breaches, one attempt, zero retries and complete cleanup.
   The evaluator now names field/value/ceiling and retains valid zero-valued heap components. Dirty
   diagnostic `20260827165427809-91398-352d7132df` proves the repaired 676/673 nodes and 71/70
@@ -155,9 +174,10 @@ repair requires a newly signed fresh Final6 restart from Layout.
   maxima select only 12 MiB V8 and 18 MiB aggregate ceilings, with exact phone/desktop headroom of
   1,016,760 / 951,976 and 1,193,110 / 1,237,686 bytes; every other ruler stays unchanged. The paired
   red retains its node/listener failures. Signed `4a54c0d…` owns the green activation; signed
-  `7362a0e…` passed standalone and serial SceneMemory 42/42, and signed `39e4f20…` later passed
-  Final5 SceneMemory 42/42 before Compendium stopped instrument-only. The changed Compendium
-  evidence repair requires fresh Final6 from Layout. Exact Edge point version remains provenance: a compatible
+  `7362a0e…` passed standalone and serial SceneMemory 42/42, signed `39e4f20…` later passed
+  Final5 SceneMemory 42/42, and signed `ea845d7…` passed Final6 SceneMemory 42/42 before the later
+  Slice instrument stop. The changed Slice evidence repair requires a fresh signed successor from
+  Layout. Exact Edge point version remains provenance: a compatible
   update alone never starts calibration, repins authority or moves a threshold.
 
 - ★ **D-GATE-B-62 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 62 domain
@@ -2213,9 +2233,10 @@ duplicates).
   the live Glass mutation removes that backing and must reproduce the contrast red before exact
   restoration. Final4 found these product defects together with stale title, scroll, settlement and
   Shipyard-effect evidence assumptions. Signed `39e4f20…` contains those repairs and supplied
-  Final5 Layout/SceneMemory greens before Compendium stopped instrument-only. The subsequent
-  exact-membership repair requires a newly signed fresh Final6 chain from Layout before current
-  browser evidence can advance.
+  Final5 Layout/SceneMemory greens before Compendium stopped instrument-only. Signed `ea845d7…`
+  then supplied Final6 Layout/SceneMemory/Compendium greens before Slice's Inventory instrument
+  stop. The subsequent causal repair requires a newly signed successor chain from Layout before
+  current browser evidence can advance.
 
   Pushed commit `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery,
   but GitHub test-battery #199, run `31571459050` / job `94034164092`, failed in the v2
@@ -2473,8 +2494,9 @@ duplicates).
   Signed `7362a0e…` later passed serial Compendium 78/78 before its preserved Slice harness red;
   signed `041d1cf…` supplied the later historical Final4 78/78 certificate. Signed `39e4f20…`
   reached Final5 Compendium after green Layout/SceneMemory but stopped instrument-only at 0/78.
-  Current exact-membership authority requires fresh signed Final6 from Layout; version tolerance
-  itself changes no numeric ceiling.
+  Its exact-membership repair became signed `ea845d7…`, whose Final6 Compendium stage passed 78/78
+  before the later Slice instrument stop. Current-head authority requires a fresh signed successor
+  from Layout; version tolerance itself changes no numeric ceiling.
 - ★ **D-AUTOEXTRACT-CLOCK — historical wall-time finding, repaired for the implemented Arc 3
   writer.** Auto-Extractor settlement derives capped loads from persisted F4 active-play progress,
   ignores legacy wall timestamps, preserves remainders/finite reserves and reanchors new extractors.

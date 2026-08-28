@@ -24,6 +24,26 @@ error. Negative-control cached/wrong-key membership directly, preserve the row/k
 evidence, and require restoration to pass. Aggregate counts remain useful resource facts, but they
 cannot substitute for identity.
 
+⚠⚠ **A DEPENDENT OUTCOME EXISTS ONLY AFTER ITS COMPLETE CAUSAL PREFIX IS GREEN**
+(2026-08-27). Final6 Slice sampled a valid 164px Inventory row whose raw centre was clipped below
+the panel scrollport. The harness skipped the click, then reported the necessarily absent detail,
+Equip, Close and reload as four additional product failures. One missed prerequisite became five
+findings, while mutation controls constructed on the red base could also pass vacuously.
+
+Exercise the player's real reveal path, await render settlement, prove the exact target lies inside
+its visible scrollport and owns the centre hit, and bind the trusted receipt back to that point.
+Every later judgment must name and require its full green prefix. Do not run semantic mutation
+controls on a red base. When a failed interaction may have started work or retained a modal, prove
+`pendingWork === 0` and exact ownership cleanup, then terminate before later mutable systems; do
+not let a diagnostic cascade cross an authority boundary. A prerequisite failure gets one root
+diagnosis, and unexercised descendants get no product verdict.
+
+Closing a child modal is not proof that its parent surface survived: record the parent's raw
+display/ARIA state, app registration, opener expansion and focus/ownership outcome. Likewise,
+"persisted" is not proved by the carrier alone. Bind committed to reloaded receipt keys, raw bytes
+and parsed semantics, and bind the authority seed/ordinal/draw projection that owns the receipt;
+negative-control missing keys, byte drift, semantic drift and authority drift independently.
+
 ⚠⚠ **SETTLE BEFORE GEOMETRY; EACH CONTROL OWNS ITS HIT AND RESTORES THE VIEW IT MOVED**
 (2026-08-27). Final4 Glass showed that a generic audit can leave a card or panel scroller displaced,
 then make a later scoped control judge geometry produced by the earlier check rather than the

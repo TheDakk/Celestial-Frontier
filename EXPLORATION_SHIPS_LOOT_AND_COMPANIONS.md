@@ -11,6 +11,15 @@ expeditions, breeding, live combat and Guardians remain
 **not implemented** unless a row below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
 
+> **Queued universe-wide art polish (Nick, 2026-08-27):** after the stable Phase-4 checkpoint,
+> carry the TikTok reference's richer color separation, controlled bloom, atmospheric depth,
+> highlights, silhouettes and layered particles across galaxies, systems, worlds, every biome,
+> creatures and plants. This is presentation polish, not content regeneration: preserve exact seeds,
+> species/biome identities, anatomy, silhouettes, proportions, scale, authored structure and
+> gameplay readability. Derive palette/light/material variation deterministically per environment;
+> include reduced-motion, contrast, mobile heat/frame-budget fallbacks and before/after identity
+> comparisons. No part of this visual pass is implemented or certified yet.
+
 > **2026-08-27 Final4 Glass recipe-oracle correction — implemented in signed Final5 source:** `earpiece`,
 > `diplobeacon` and `rl-mind` already carry `contact` effects consumed by the live
 > contact/capture-support capability and odds projection. Final4 Glass was wrong because its
@@ -19,15 +28,17 @@ does not silently promote planned behavior into the in-game Guide.
 > cost, prerequisite, capacity/headroom rule, item definition or progression.
 >
 > Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` contains that repair. Its
-> Final5 Layout report passed 787/787 and its source-bound SceneMemory report passed 42/42.
-> Compendium then ran once and stopped `instrument-fail` with 0/78 retained product outcomes because
-> its cold-key oracle compared two eight-key counts instead of the errored row's exact cache
-> membership. It was not retried; Slice, Glass and recovery did not start, and the run made no
-> Compendium product judgment. The bounded membership repair changes only the Compendium collector,
-> outcome contract, measurement authority and budget-file hash; producer authority and numeric
-> ceilings remain unchanged. A newly signed clean Final6 chain must restart at Layout; Final5 cannot
-> resume. No current Compendium product PASS, Slice, Glass, recovery, whole-Gate, hosted, HUMAN or
-> release claim exists. Edge `.107` / CDP `1.3` remains provenance only.
+> historical Final5 Layout and SceneMemory reports passed before Compendium stopped instrument-only.
+> The membership repair became signed Final6 source
+> `ea845d77d9783599c269f708462eb650e2c3e245`, which passed Layout 787/787, SceneMemory
+> 42/42 and Compendium 78/78. Slice then ran once and stopped when its old collector sampled the
+> exact 164px thermal row before revealing it inside the Inventory scrollport. Four later
+> modal/Equip/reload findings were unexercised cascades, not product verdicts. The current
+> instrument-only repair performs native reveal and settled hit proof, binds exact trusted receipts,
+> proves parent-panel survival and exact receipt/F4 RNG durability across reload, and gates
+> dependents on a green causal prefix. Final6 cannot resume; a fresh signed successor must
+> restart at Layout. No post-repair Slice, Glass, recovery, whole-Gate, hosted, HUMAN or release
+> claim exists. Edge `.107` / CDP `1.3` remains provenance only.
 
 > **Historical post-`7362a0e…`, pre-Final2 evidence/repair boundary:** signed evidence source
 > `7362a0ea32e90b24e4988c81d566b82e20549e66` passed standalone SceneMemory 42/42 and its named
@@ -62,8 +73,8 @@ does not silently promote planned behavior into the in-game Guide.
 > review found additional work in canonical world identity, F4/storage convergence, repository
 > races, texture cleanup, complete settings/read-only coverage and bound evidence sequencing.
 > Those repairs remain part of the current source. At that sixth-red boundary, no certifying Slice
-> PASS, Glass result or recovery certificate existed; the later Final4 and Final5 history plus the
-> required Final6 restart are recorded in the current overlay above.
+> PASS, Glass result or recovery certificate existed; the later Final4–Final6 history plus the
+> required signed-successor restart are recorded in the current overlay above.
 > F4 convergence now latches and schedules its single replacement before fallible repaint work. If
 > authority is lost with full Shipyard open, the surface immediately becomes one read-only preview
 > with zero Engineering actions and exact app/DOM/diagnostic identity; a repaint error is witnessed

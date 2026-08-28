@@ -10,11 +10,11 @@ import net from 'node:net';
 import os from 'node:os';
 import { spawn, execSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { assertBrowserLaunchAllowed, findChromiumBrowser } from './browserpath.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /* Bidirectional instrument control: a known Earth + procedural pair must
@@ -109,7 +109,9 @@ const port = await new Promise((resolve, reject) => {
     probe.close(() => resolve(pnum));
   });
 });
-const edge = spawn(EDGE, ['--headless=new', '--no-sandbox', '--no-first-run',
+assertBrowserLaunchAllowed();
+const browserFile = findChromiumBrowser();
+const edge = spawn(browserFile, ['--headless=new', '--no-sandbox', '--no-first-run',
   '--disable-component-extensions-with-background-pages', '--disable-component-update', '--disable-background-networking',
   '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });
 let ws0 = null;

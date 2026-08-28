@@ -20,6 +20,13 @@ import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import {
+  assessInventoryActionActivation,
+  assessInventoryDetailClose,
+  assessInventoryPanelClose,
+  assessInventoryReloadDurability,
+  assessInventoryRowActivation,
+  assessInventoryRowReachability,
+  assessInventoryStagePrefix,
   assessTrainingBusyRefusalPrecondition,
   classifyCompendiumDetailReceipt,
   classifyForegroundServiceTurn,
@@ -1533,15 +1540,22 @@ const assessArc2InventorySurface = ({ state, raw, surface, detail, closed, selec
     || surface?.panelFocus !== 'inventory') reasons.push('real Inventory opener/one-panel surface');
   const selectedRow = surface?.rows?.find((row) => row.instanceId === selectedInstanceId);
   if (!selectedRow || selectedRow.baseId !== 'thermal' || selectedRow.equipped) reasons.push('selected exact candidate row');
+  const rowReachability = assessInventoryRowReachability(surface?.rowReachability, selectedInstanceId);
+  if (!rowReachability.ok) reasons.push('exact row reachability');
   const expectedEffects = arc2EffectRows(candidate);
   const expectedComparison = arc2ComparisonRows(candidate, equipped);
+  const rowActivation = assessInventoryRowActivation({
+    point: surface?.rowReachability?.after,
+    pointer: detail?.pointer,
+  }, selectedInstanceId);
   if (detail?.sheetCount !== 1 || detail?.open !== true || detail?.role !== 'dialog'
     || detail?.modal !== 'true' || detail?.labelled !== true || detail?.detailId !== selectedInstanceId
     || detail?.focus !== 'sheet-close' || detail?.busy !== 'false' || detail?.panelInert !== true
     || detail?.diagnostics?.activeCount !== 1 || detail?.diagnostics?.retainedCount !== 0
     || detail?.diagnostics?.pendingWork !== 0 || detail?.diagnostics?.selectedInstanceId !== selectedInstanceId
-    || detail?.pointer?.instanceId !== selectedInstanceId || detail?.pointer?.trusted !== true
-    || detail?.pointer?.pointerType !== 'mouse') reasons.push('modal/detail/focus lifecycle');
+    || !rowActivation.ok) {
+    reasons.push('modal/detail/focus lifecycle');
+  }
   if (!detail?.factsText?.includes(candidate?.instanceId) || !detail?.factsText?.includes(candidate?.baseId)
     || !detail?.factsText?.includes(candidate?.provenance?.sourceActionId)
     || !detail?.factsText?.includes(equipped?.instanceId) || /\bscore\b/i.test(detail?.factsText || '')
@@ -1594,15 +1608,12 @@ const assessArc2InventorySurface = ({ state, raw, surface, detail, closed, selec
     || conditionalEffect?.conditionText !== 'Only when landing on lava'
     || conditionalDelta?.condition !== 'landing:lava'
     || !conditionalDelta?.text?.includes('Only when landing on lava')) reasons.push('conditional effect wording');
-  if (closed?.open !== false || closed?.bodyChildren !== 0 || closed?.focusInstanceId !== selectedInstanceId
-    || closed?.panelInert === true || closed?.diagnostics?.activeCount !== 0
-    || closed?.diagnostics?.retainedCount !== 0 || closed?.diagnostics?.pendingWork !== 0
-    || closed?.diagnostics?.selectedInstanceId !== null || closed?.closeHeight < 44
-    || closed?.pointer?.tag !== 'BUTTON' || closed?.pointer?.pointerType !== 'mouse'
-    || closed?.pointer?.trusted !== true) reasons.push('close/focus/zero ownership');
+  if (!assessInventoryDetailClose({ point: closed?.point, pointer: closed?.pointer, closed }, selectedInstanceId).ok) {
+    reasons.push('close/focus/zero ownership');
+  }
   return { ok: reasons.length === 0, reasons };
 };
-const assessArc2InventoryAction = ({ before, after, beforeState, afterState, interaction, detail, instanceId }) => {
+const assessArc2InventoryAction = ({ before, after, beforeState, afterState, point, interaction, detail, instanceId }) => {
   const reasons = [];
   const beforeInventory = before?.arc2?.inventory, afterInventory = after?.arc2?.inventory;
   const beforeAuthority = before?.authority?.sessionRng, afterAuthority = after?.authority?.sessionRng;
@@ -1658,9 +1669,9 @@ const assessArc2InventoryAction = ({ before, after, beforeState, afterState, int
     || !afterState?.inventory?.equippedBindings?.some((entry) => entry.instanceId === instanceId)) {
     reasons.push('exact equip publication');
   }
-  if (interaction?.pressCount !== 1 || interaction?.operation !== 'equip'
-    || interaction?.instanceId !== instanceId || interaction?.trusted !== true
-    || interaction?.pointerType !== 'mouse') reasons.push('one real visible action');
+  if (!assessInventoryActionActivation({ point, interaction }, instanceId).ok) {
+    reasons.push('one real visible action');
+  }
   if (detail?.detailId !== instanceId || detail?.focus !== 'sheet-close' || detail?.busy !== 'false'
     || detail?.diagnostics?.activeCount !== 1
     || detail?.diagnostics?.retainedCount !== 0 || detail?.diagnostics?.pendingWork !== 0
@@ -1682,6 +1693,15 @@ const assessArc2InventoryReload = ({ committed, reloaded, committedState, reload
   const reasons = [];
   const committedEntry = committed?.arc2?.inventory?.entries?.find((entry) => entry.instance.instanceId === instanceId);
   const reloadedEntry = reloaded?.arc2?.inventory?.entries?.find((entry) => entry.instance.instanceId === instanceId);
+  const committedInventoryRevision = committed?.arc2?.inventory?.revision;
+  const reloadDurability = Number.isSafeInteger(committedInventoryRevision) && committedInventoryRevision >= 0
+    ? assessInventoryReloadDurability({
+      committed,
+      reloaded,
+      committedRuntime: committedState?.persistence?.runtime,
+      reloadedRuntime: reloadedState?.persistence?.runtime,
+    }, instanceId, committedInventoryRevision)
+    : { ok: false, reasons: ['durable receipt/F4 authority reload'] };
   const projection = (state) => canonicalJson({
     atlasCount: state?.atlasCount, atlasTravelable: state?.atlasTravelable,
     landed: state?.save?.landed, customNames: state?.save?.customNames, savedView: state?.save?.savedView,
@@ -1693,30 +1713,14 @@ const assessArc2InventoryReload = ({ committed, reloaded, committedState, reload
     || !reloadedState?.inventory?.equippedBindings?.some((entry) => entry.instanceId === instanceId)) {
     reasons.push('current-v5 carrier reload');
   }
+  if (!reloadDurability.ok) reasons.push(...reloadDurability.reasons);
   if (projection(reloadedState) !== projection(committedState)
     || surface?.inventoryPointer?.targetId !== 'railinventory' || surface?.inventoryPointer?.trusted !== true
     || surface?.inventoryPointer?.pointerType !== 'mouse'
     || surface?.inventoryRows?.length < 1 || surface.inventoryRows.length > 48
     || canonicalJson(surface.inventoryRows) !== canonicalJson(arc2InventoryRows(reloaded.arc2))
     || !surface.inventoryRows.some((row) => row.instanceId === instanceId && row.equipped === true)
-    || surface?.inventoryClose?.point?.ok !== true
-    || surface?.inventoryClose?.point?.owner !== 'inventory'
-    || !Number.isFinite(surface?.inventoryClose?.point?.x)
-    || !Number.isFinite(surface?.inventoryClose?.point?.y)
-    || surface?.inventoryClose?.pointer?.tag !== 'BUTTON'
-    || surface?.inventoryClose?.pointer?.trusted !== true
-    || surface?.inventoryClose?.pointer?.pointerType !== 'mouse'
-    || !Number.isFinite(surface?.inventoryClose?.pointer?.x)
-    || !Number.isFinite(surface?.inventoryClose?.pointer?.y)
-    || Math.abs(surface.inventoryClose.pointer.x - surface.inventoryClose.point.x) > 0.75
-    || Math.abs(surface.inventoryClose.pointer.y - surface.inventoryClose.point.y) > 0.75
-    || surface?.inventoryClose?.settled?.panelOpen !== null
-    || surface?.inventoryClose?.settled?.inventoryHidden !== true
-    || surface?.inventoryClose?.settled?.inventoryExpanded !== 'false'
-    || surface?.inventoryClose?.settled?.focusId !== 'railinventory'
-    || surface?.inventoryClose?.settled?.diagnostics?.activeCount !== 0
-    || surface?.inventoryClose?.settled?.diagnostics?.retainedCount !== 0
-    || surface?.inventoryClose?.settled?.diagnostics?.pendingWork !== 0
+    || !assessInventoryPanelClose(surface?.inventoryClose).ok
     || surface?.atlasPreClick?.ok !== true || surface?.atlasPreClick?.targetId !== 'railatlas'
     || !Number.isFinite(surface?.atlasPreClick?.x) || !Number.isFinite(surface?.atlasPreClick?.y)
     || surface?.panelOpen !== 'atlas' || surface?.inventoryHidden !== true
@@ -4298,8 +4302,12 @@ try {
   };
   const armDesktopPointerReceipt = async () => evalIn(`(()=>{ window.__cfPanelPointerAbort?.abort();
     delete window.__cfPanelPointer;const controller=new AbortController();window.__cfPanelPointerAbort=controller;
-    document.addEventListener('pointerdown',(event)=>{ const target=event.target instanceof Element?event.target:null;
-      window.__cfPanelPointer={targetId:target?.id||null,tag:target?.tagName||null,x:event.clientX,y:event.clientY,
+    document.addEventListener('pointerdown',(event)=>{ const target=event.target instanceof Element?event.target:null,
+      close=target?.closest('#inventorysheet [data-inventory-sheet-close]'),
+      panelClose=target?.closest('.panel > [data-pnx]');
+      window.__cfPanelPointer={targetId:target?.id||null,tag:target?.tagName||null,
+        closeOwner:close?.closest('#inventorysheet')?.id==='inventorysheet'?'inventory-sheet':null,
+        panelCloseOwner:panelClose?.getAttribute('data-pnx')||null,x:event.clientX,y:event.clientY,
         pointerType:event.pointerType||null,trusted:event.isTrusted===true};window.__cfPanelPointerAbort=null; },
       {capture:true,once:true,signal:controller.signal});return true; })()`);
   const takeDesktopPointerReceipt = async () => evalIn(`(()=>{ const receipt=window.__cfPanelPointer||null;
@@ -8131,13 +8139,16 @@ try {
      the predecessor's exact bytes and its parsed semantics; an empty receipt
      store would make that preservation claim vacuous. */
   const inventoryReceiptPrefixSeed = await evalIn(`window.__CF_SLICE__.api.__smokeCommitF4Outcome()`);
-  if (inventoryReceiptPrefixSeed?.schema !== 'cf-v2-f4-smoke-outcome/v1'
-    || inventoryReceiptPrefixSeed?.kind !== 'committed'
-    || inventoryReceiptPrefixSeed?.afterRevision !== inventoryReceiptPrefixSeed?.beforeRevision + 1
-    || inventoryReceiptPrefixSeed?.afterOrdinal !== inventoryReceiptPrefixSeed?.beforeOrdinal + 1
-    || inventoryReceiptPrefixSeed?.receipt?.ordinal !== inventoryReceiptPrefixSeed?.beforeOrdinal) {
+  const inventoryReceiptPrefixGreen = inventoryReceiptPrefixSeed?.schema === 'cf-v2-f4-smoke-outcome/v1'
+    && inventoryReceiptPrefixSeed?.kind === 'committed'
+    && inventoryReceiptPrefixSeed?.afterRevision === inventoryReceiptPrefixSeed?.beforeRevision + 1
+    && inventoryReceiptPrefixSeed?.afterOrdinal === inventoryReceiptPrefixSeed?.beforeOrdinal + 1
+    && inventoryReceiptPrefixSeed?.receipt?.ordinal === inventoryReceiptPrefixSeed?.beforeOrdinal;
+  if (!inventoryReceiptPrefixGreen) {
     fails.push('ARC 2 INVENTORY RECEIPT PREFIX SETUP: one real immutable predecessor was not committed: '
       + JSON.stringify(inventoryReceiptPrefixSeed));
+    failSliceWithoutCascade('ARC 2 INVENTORY RECEIPT PREFIX SETUP: red immutable predecessor stopped all dependent Inventory and mutable successor judgments',
+      { alreadyReported: true });
   }
   const inventoryBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
   const inventoryBeforeRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
@@ -8200,12 +8211,35 @@ try {
       document.addEventListener('pointerdown',(event)=>{const target=event.target instanceof Element?event.target:null,
         row=target?.closest('[data-inventory-row="exact"][data-instance-id]');if(!row)return;
         window.__cfInventoryRowPointer={instanceId:row.getAttribute('data-instance-id'),pointerType:event.pointerType||null,
-          trusted:event.isTrusted===true};controller.abort();delete window.__cfInventoryRowPointerAbort;},
+          trusted:event.isTrusted===true,tag:row.tagName||null,x:event.clientX,y:event.clientY};
+        controller.abort();delete window.__cfInventoryRowPointerAbort;},
         {capture:true,signal:controller.signal});return true;})()`);
-    const inventoryRowPoint = async () => evalIn(`(()=>{const row=[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')]
-      .find((node)=>node.getAttribute('data-instance-id')===${JSON.stringify(inventoryInstanceId)}),r=row?.getBoundingClientRect(),
-      x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null;
-      return {ok:!!row&&!!r&&r.width>0&&r.height>=44&&!!hit&&(hit===row||row.contains(hit)),x,y,height:r?.height||0};})()`);
+    const inventoryRowPoint = async () => {
+      const observation = await evalIn(`(async()=>{const panel=document.getElementById('inventorypanel'),
+        row=[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')]
+          .find((node)=>node.getAttribute('data-instance-id')===${JSON.stringify(inventoryInstanceId)}),
+        sample=()=>{const r=row?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
+          hit=r?document.elementFromPoint(x,y):null;return {x,y,width:r?.width??0,height:r?.height??0,
+            scrollTop:panel?.scrollTop??null,hitOwned:!!row&&!!hit&&(hit===row||row.contains(hit)),
+            hitTag:hit?.tagName||null,hitId:hit?.id||null};},before=sample(),
+        scrollRequested=!!row&&!!panel;if(scrollRequested){row.scrollIntoView({block:'center',inline:'nearest'});
+          await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(resolve,0)));}
+        const after=sample(),clipRect=panel?.getBoundingClientRect();return {
+          instanceId:row?.getAttribute('data-instance-id')||null,present:!!row,connected:row?.isConnected===true,
+          tag:row?.tagName||null,disabled:!!row?.disabled,ariaDisabled:row?.getAttribute('aria-disabled')||null,
+          panelId:panel?.id||null,panelOwnsRow:!!row&&panel?.contains(row)===true,scrollRequested,before,after,
+          clip:{left:clipRect?.left??null,top:clipRect?.top??null,right:clipRect?.right??null,bottom:clipRect?.bottom??null},
+          viewport:{width:innerWidth,height:innerHeight}};})()`);
+      const assessment = assessInventoryRowReachability(observation, inventoryInstanceId);
+      return {
+        ok: assessment.ok,
+        x: observation?.after?.x ?? 0,
+        y: observation?.after?.y ?? 0,
+        height: observation?.after?.height ?? 0,
+        assessment,
+        observation,
+      };
+    };
 
     const inventoryOpenerPoint = await evalIn(railButtonPoint('railinventory'));
     await armDesktopPointerReceipt();
@@ -8229,41 +8263,65 @@ try {
     };
     let inventoryDetail = null;
     let inventoryClosed = null;
-    if (!inventoryOpened) {
-      fails.push('ARC 2 INVENTORY: real visible right-rail opener did not open the registered panel');
-    } else {
+    let inventoryRowTarget = null;
+    let inventorySurfaceAssessment = null;
+    let inventorySurfaceCloseAssessment = null;
+    if (inventoryOpened) {
       await armInventoryRowPointer();
-      const rowPoint = await inventoryRowPoint();
-      if (rowPoint.ok) await clickDesktopPoint(rowPoint);
-      inventoryDetail = await evalIn(captureInventoryDetail);
-      const closePoint = await evalIn(`(()=>{const button=document.querySelector('#inventorysheet [data-inventory-sheet-close]'),
-        r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
-        hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!!r&&r.width>=44&&r.height>=44
-          &&!!hit&&(hit===button||button.contains(hit)),x,y,height:r?.height||0};})()`);
-      await armDesktopPointerReceipt();
-      if (closePoint.ok) await clickDesktopPoint(closePoint);
-      const closePointer = await takeDesktopPointerReceipt();
-      inventoryClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
-        body=sheet?.querySelector('[data-inventory-sheet-body]'),panel=document.getElementById('inventorypanel');return {
-          open:!!sheet&&!sheet.hidden&&sheet.getAttribute('aria-hidden')==='false',bodyChildren:body?.childElementCount??-1,
-          focusInstanceId:document.activeElement?.getAttribute?.('data-instance-id')||null,panelInert:panel?.inert===true,
-          diagnostics:S?.api?.inventoryDiagnostics?.()||null};})()`);
-      inventoryClosed = { ...inventoryClosed, closeHeight: closePoint.height, pointer: closePointer };
-      if (!rowPoint.ok || !closePoint.ok) {
-        fails.push('ARC 2 INVENTORY: exact row or modal Close was not a real browser-hittable 44px target: '
-          + JSON.stringify({ rowPoint, closePoint }));
+      inventoryRowTarget = await inventoryRowPoint();
+      const surfacePrefix = assessInventoryStagePrefix('surface', {
+        panelOpened: inventoryOpened,
+        rowReachable: inventoryRowTarget.ok,
+      });
+      if (!surfacePrefix.ok) {
+        await evalIn(`(()=>{window.__cfInventoryRowPointerAbort?.abort();delete window.__cfInventoryRowPointerAbort;
+          delete window.__cfInventoryRowPointer;return true;})()`);
+        fails.push('ARC 2 INVENTORY ROW REACHABILITY: exact row could not be revealed inside its real scrollport: '
+          + JSON.stringify({ prefix: surfacePrefix, rowTarget: inventoryRowTarget }));
+      } else {
+        await clickDesktopPoint(inventoryRowTarget);
+        inventoryDetail = await evalIn(captureInventoryDetail);
+        const closePoint = await evalIn(`(()=>{const button=document.querySelector('#inventorysheet [data-inventory-sheet-close]'),
+          r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
+          hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!!r&&r.width>=44&&r.height>=44
+            &&!!hit&&(hit===button||button.contains(hit)),x,y,width:r?.width||0,height:r?.height||0,
+            tag:button?.tagName||null,owner:button?.hasAttribute('data-inventory-sheet-close')?'inventory-sheet':null};})()`);
+        await armDesktopPointerReceipt();
+        if (closePoint.ok) await clickDesktopPoint(closePoint);
+        const closePointer = await takeDesktopPointerReceipt();
+        inventoryClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
+          body=sheet?.querySelector('[data-inventory-sheet-body]'),panel=document.getElementById('inventorypanel'),
+          opener=document.getElementById('railinventory');return {
+            sheetPresent:!!sheet,open:!!sheet&&!sheet.hidden,hidden:sheet?.hidden,ariaHidden:sheet?.getAttribute('aria-hidden')??null,
+            bodyChildren:body?.childElementCount??-1,focusInstanceId:document.activeElement?.getAttribute?.('data-instance-id')||null,
+            panelPresent:!!panel,panelDisplay:panel?.style.display??null,
+            panelAriaHidden:panel?.getAttribute('aria-hidden')??null,panelOpen:S?.api?.state?.().panelOpen??null,
+            openerPresent:!!opener,inventoryExpanded:opener?.getAttribute('aria-expanded')??null,
+            panelInert:panel?panel.inert===true:null,
+            diagnostics:S?.api?.inventoryDiagnostics?.()||null};})()`);
+        inventoryClosed = { ...inventoryClosed, point: closePoint, pointer: closePointer };
+        inventorySurfaceCloseAssessment = assessInventoryDetailClose({
+          point: closePoint, pointer: closePointer, closed: inventoryClosed,
+        }, inventoryInstanceId);
       }
     }
+    inventorySurface.rowReachability = inventoryRowTarget?.observation ?? null;
     const inventorySurfaceBundle = {
       state: inventoryBeforeState, raw: inventoryBeforeRaw, surface: inventorySurface,
       detail: inventoryDetail, closed: inventoryClosed, selectedInstanceId: inventoryInstanceId,
     };
-    const inventorySurfaceAssessment = assessArc2InventorySurface(inventorySurfaceBundle);
-    if (!inventorySurfaceAssessment.ok) {
-      fails.push('ARC 2 INVENTORY SURFACE: carrier, legacy mirrors, bounded exact DOM, detail, comparison, condition, or modal lifecycle disagreed: '
-        + JSON.stringify({ assessment: inventorySurfaceAssessment, bundle: inventorySurfaceBundle }));
+    if (inventoryOpened && inventoryRowTarget?.ok === true) {
+      inventorySurfaceAssessment = assessArc2InventorySurface(inventorySurfaceBundle);
+      if (!inventorySurfaceAssessment.ok) {
+        fails.push('ARC 2 INVENTORY SURFACE: carrier, legacy mirrors, bounded exact DOM, detail, comparison, condition, or modal lifecycle disagreed: '
+          + JSON.stringify({ assessment: inventorySurfaceAssessment, bundle: inventorySurfaceBundle }));
+      }
+      if (inventorySurfaceCloseAssessment?.ok !== true) {
+        failSliceWithoutCascade('ARC 2 INVENTORY SURFACE: detail ownership was not released; mutable downstream arcs were not started',
+          { alreadyReported: true });
+      }
     }
-    if (inventoryDetail && inventoryClosed && inventorySurface.rows.length) {
+    if (inventorySurfaceAssessment?.ok === true && inventoryDetail && inventoryClosed && inventorySurface.rows.length) {
       const mirrorRaw = structuredClone(inventoryBeforeRaw);
       mirrorRaw.legacy = { ...mirrorRaw.legacy, eq: { ...(mirrorRaw.legacy?.eq || {}), suit: 'thermal' } };
       const droppedConditionDetail = structuredClone(inventoryDetail);
@@ -8277,6 +8335,24 @@ try {
           equippedText: row.equippedText.replace('%', ''), candidateText: row.candidateText.replace('%', ''),
           deltaText: row.deltaText.replace('%', '') } : row);
       const inventorySurfaceControls = {
+        rowHitOwnership: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
+          ...inventorySurface, rowReachability: {
+            ...inventorySurface.rowReachability,
+            after: { ...inventorySurface.rowReachability.after, hitOwned: false },
+          },
+        } }),
+        rowRevealMovement: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
+          ...inventorySurface, rowReachability: {
+            ...inventorySurface.rowReachability,
+            before: { ...inventorySurface.rowReachability.before, hitOwned: false },
+            after: { ...inventorySurface.rowReachability.after,
+              scrollTop: inventorySurface.rowReachability.before.scrollTop },
+          },
+        } }),
+        rowPointerCoordinate: assessArc2InventorySurface({ ...inventorySurfaceBundle, detail: {
+          ...inventoryDetail,
+          pointer: { ...inventoryDetail.pointer, x: inventoryDetail.pointer.x + 2 },
+        } }),
         openerHittability: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
           ...inventorySurface, opener: {
             ...inventorySurface.opener,
@@ -8310,26 +8386,135 @@ try {
         mirrorMismatch: assessArc2InventorySurface({ ...inventorySurfaceBundle, raw: mirrorRaw }),
         droppedCondition: assessArc2InventorySurface({ ...inventorySurfaceBundle, detail: droppedConditionDetail }),
         strippedPercent: assessArc2InventorySurface({ ...inventorySurfaceBundle, detail: strippedPercentDetail }),
+        closePointOwner: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, point: { ...inventoryClosed.point, owner: 'foreign-sheet' },
+        } }),
+        closePointWidth: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, point: { ...inventoryClosed.point, width: 43 },
+        } }),
+        closePointerOwner: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, pointer: { ...inventoryClosed.pointer, closeOwner: 'foreign-sheet' },
+        } }),
+        closePointerTrust: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, pointer: { ...inventoryClosed.pointer, trusted: false },
+        } }),
+        closePointerCoordinate: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, pointer: { ...inventoryClosed.pointer, x: inventoryClosed.pointer.x + 2 },
+        } }),
         retainedModal: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
           ...inventoryClosed, open: true, bodyChildren: 1,
           diagnostics: { ...inventoryClosed.diagnostics, activeCount: 1, retainedCount: 1 },
+        } }),
+        missingSheet: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, sheetPresent: false,
+        } }),
+        visibleSheet: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, hidden: false,
+        } }),
+        ariaVisibleSheet: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, ariaHidden: 'false',
+        } }),
+        missingPanel: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, panelPresent: false,
+        } }),
+        hiddenPanel: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, panelDisplay: 'none',
+        } }),
+        ariaHiddenPanel: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, panelAriaHidden: 'true',
+        } }),
+        closedPanelState: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, panelOpen: null,
+        } }),
+        missingPanelOpener: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, openerPresent: false,
+        } }),
+        collapsedPanelOpener: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, inventoryExpanded: 'false',
+        } }),
+        inertPanel: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, panelInert: true,
+        } }),
+        retainedBody: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, bodyChildren: 1,
+        } }),
+        activeOwner: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, diagnostics: { ...inventoryClosed.diagnostics, activeCount: 1 },
+        } }),
+        selectedOwner: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, diagnostics: {
+            ...inventoryClosed.diagnostics, selectedInstanceId: inventoryInstanceId,
+          },
         } }),
         pendingWork: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
           ...inventoryClosed, diagnostics: { ...inventoryClosed.diagnostics, pendingWork: 1 },
         } }),
       };
-      if (Object.values(inventorySurfaceControls).some((control) => control.ok)) {
-        fails.push('ARC 2 INVENTORY SURFACE CONTROLS FAILED — opener target/receipt binding, missing/duplicate row, mirror mismatch, dropped condition/percent unit, retained modal, or pending work stayed green: '
-          + JSON.stringify(inventorySurfaceControls));
+      const inventorySurfaceControlReasons = {
+        rowHitOwnership: 'exact row reachability',
+        rowRevealMovement: 'exact row reachability',
+        rowPointerCoordinate: 'modal/detail/focus lifecycle',
+        openerHittability: 'real Inventory opener/one-panel surface',
+        openerTarget: 'real Inventory opener/one-panel surface',
+        openerReceiptPoint: 'real Inventory opener/one-panel surface',
+        openerReceiptMissing: 'real Inventory opener/one-panel surface',
+        missingRow: 'exact bounded DOM rows',
+        duplicateRow: 'exact bounded DOM rows',
+        mirrorMismatch: 'raw carrier/legacy mirror parity',
+        droppedCondition: 'conditional effect wording',
+        strippedPercent: 'exact effect rows',
+        closePointOwner: 'close/focus/zero ownership',
+        closePointWidth: 'close/focus/zero ownership',
+        closePointerOwner: 'close/focus/zero ownership',
+        closePointerTrust: 'close/focus/zero ownership',
+        closePointerCoordinate: 'close/focus/zero ownership',
+        retainedModal: 'close/focus/zero ownership',
+        missingSheet: 'close/focus/zero ownership',
+        visibleSheet: 'close/focus/zero ownership',
+        ariaVisibleSheet: 'close/focus/zero ownership',
+        missingPanel: 'close/focus/zero ownership',
+        hiddenPanel: 'close/focus/zero ownership',
+        ariaHiddenPanel: 'close/focus/zero ownership',
+        closedPanelState: 'close/focus/zero ownership',
+        missingPanelOpener: 'close/focus/zero ownership',
+        collapsedPanelOpener: 'close/focus/zero ownership',
+        inertPanel: 'close/focus/zero ownership',
+        retainedBody: 'close/focus/zero ownership',
+        activeOwner: 'close/focus/zero ownership',
+        selectedOwner: 'close/focus/zero ownership',
+        pendingWork: 'close/focus/zero ownership',
+      };
+      const inventorySurfaceControlDrift = Object.entries(inventorySurfaceControls)
+        .filter(([name, control]) => control.ok
+          || !control.reasons.includes(inventorySurfaceControlReasons[name]));
+      if (inventorySurfaceControlDrift.length) {
+        fails.push('ARC 2 INVENTORY SURFACE CONTROLS FAILED — green-base row reveal/pointer, opener, DOM, mirror, detail, or ownership mutation escaped its exact diagnosis: '
+          + JSON.stringify({ drift: inventorySurfaceControlDrift, controls: inventorySurfaceControls }));
       }
     }
 
     let inventoryCommittedRaw = null;
     let inventoryCommittedState = null;
     let inventoryActionDetail = null;
-    if (inventoryOpened && inventoryClosed?.open === false) {
+    let inventoryActionPointGreen = false;
+    let inventoryActionSettled = false;
+    let inventoryActionGreen = false;
+    let inventoryActionCloseGreen = false;
+    const inventoryActionPrefix = assessInventoryStagePrefix('action', {
+      panelOpened: inventoryOpened,
+      rowReachable: inventoryRowTarget?.ok === true,
+      surfaceGreen: inventorySurfaceAssessment?.ok === true,
+    });
+    if (inventoryActionPrefix.ok) {
+      await armInventoryRowPointer();
       const actionRowPoint = await inventoryRowPoint();
-      if (actionRowPoint.ok) await clickDesktopPoint(actionRowPoint);
+      if (!actionRowPoint.ok) {
+        await evalIn(`(()=>{window.__cfInventoryRowPointerAbort?.abort();delete window.__cfInventoryRowPointerAbort;
+          delete window.__cfInventoryRowPointer;return true;})()`);
+        fails.push('ARC 2 INVENTORY ACTION REOPEN: exact committed candidate row could not be revealed: '
+          + JSON.stringify(actionRowPoint));
+      } else {
+      await clickDesktopPoint(actionRowPoint);
       const actionBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
       const actionBeforeRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
       const actionPoint = await evalIn(`(()=>{const button=[...document.querySelectorAll('#inventorysheet [data-inventory-action="equip"][data-instance-id]')]
@@ -8343,32 +8528,47 @@ try {
         document.addEventListener('pointerdown',(event)=>{const target=event.target instanceof Element?event.target:null,
           action=target?.closest('[data-inventory-action][data-instance-id]');if(!action)return;
           window.__cfInventoryActionPresses.push({operation:action.getAttribute('data-inventory-action'),
-            instanceId:action.getAttribute('data-instance-id'),pointerType:event.pointerType||null,trusted:event.isTrusted===true});},
+            instanceId:action.getAttribute('data-instance-id'),pointerType:event.pointerType||null,
+            trusted:event.isTrusted===true,tag:action.tagName||null,x:event.clientX,y:event.clientY});},
           {capture:true,signal:controller.signal});return true;})()`);
       if (actionPoint.ok) await clickDesktopPoint(actionPoint);
-      const actionSettled = await waitDesktopValue('Arc 2 exact thermal equip commit', `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
-        diag=S?.api?.inventoryDiagnostics?.();return state?.inventory?.equippedBindings?.some((row)=>row.instanceId===${JSON.stringify(inventoryInstanceId)})
-          &&diag?.pendingWork===0&&diag?.lastAction?.operation==='equip'&&diag?.lastAction?.kind==='committed';})()`).catch(() => false);
+      inventoryActionPointGreen = actionPoint.ok;
+      inventoryActionSettled = actionPoint.ok
+        ? await waitDesktopValue('Arc 2 exact thermal equip commit', `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+          diag=S?.api?.inventoryDiagnostics?.();return state?.inventory?.equippedBindings?.some((row)=>row.instanceId===${JSON.stringify(inventoryInstanceId)})
+            &&diag?.pendingWork===0&&diag?.lastAction?.operation==='equip'&&diag?.lastAction?.kind==='committed';})()`).catch(() => false)
+        : false;
       const actionPresses = await evalIn(`(()=>{window.__cfInventoryActionAbort?.abort();delete window.__cfInventoryActionAbort;
         const rows=window.__cfInventoryActionPresses||[];delete window.__cfInventoryActionPresses;return rows;})()`);
-      inventoryCommittedState = await evalIn(`window.__CF_SLICE__.api.state()`);
-      inventoryCommittedRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+      const actionAfterState = await evalIn(`window.__CF_SLICE__.api.state()`);
+      const actionAfterRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
       inventoryActionDetail = await evalIn(captureInventoryDetail);
       const interaction = { pressCount: actionPresses.length, ...(actionPresses[0] || {}) };
       const actionBundle = {
-        before: actionBeforeRaw, after: inventoryCommittedRaw,
-        beforeState: actionBeforeState, afterState: inventoryCommittedState,
-        interaction, detail: inventoryActionDetail, instanceId: inventoryInstanceId,
+        before: actionBeforeRaw, after: actionAfterRaw,
+        beforeState: actionBeforeState, afterState: actionAfterState,
+        point: actionPoint, interaction, detail: inventoryActionDetail, instanceId: inventoryInstanceId,
       };
       const actionAssessment = assessArc2InventoryAction(actionBundle);
-      if (!actionPoint.ok || !actionSettled || !actionAssessment.ok) {
+      inventoryActionGreen = actionAssessment.ok;
+      const inventoryActionControlPrefix = assessInventoryStagePrefix('action-controls', {
+        panelOpened: inventoryOpened,
+        rowReachable: inventoryRowTarget?.ok === true,
+        surfaceGreen: inventorySurfaceAssessment?.ok === true,
+        actionPointGreen: inventoryActionPointGreen,
+        actionSettled: inventoryActionSettled,
+        actionGreen: inventoryActionGreen,
+      });
+      if (!inventoryActionControlPrefix.ok) {
         fails.push('ARC 2 INVENTORY ACTION: one visible exact Equip did not commit one revision/receipt/mirror outcome: '
-          + JSON.stringify({ actionPoint, actionSettled, assessment: actionAssessment, bundle: actionBundle }));
+          + JSON.stringify({ prefix: inventoryActionControlPrefix, actionPoint,
+            actionSettled: inventoryActionSettled, assessment: actionAssessment, bundle: actionBundle }));
       }
+      if (inventoryActionControlPrefix.ok) {
       const oldReceiptKey = actionBeforeRaw.receiptKeys[0] ?? null;
-      const oldReceiptIndex = oldReceiptKey === null ? -1 : inventoryCommittedRaw.receiptKeys.indexOf(oldReceiptKey);
-      const oldReceiptByteMutation = structuredClone(inventoryCommittedRaw);
-      const oldReceiptSemanticMutation = structuredClone(inventoryCommittedRaw);
+      const oldReceiptIndex = oldReceiptKey === null ? -1 : actionAfterRaw.receiptKeys.indexOf(oldReceiptKey);
+      const oldReceiptByteMutation = structuredClone(actionAfterRaw);
+      const oldReceiptSemanticMutation = structuredClone(actionAfterRaw);
       if (oldReceiptIndex >= 0) {
         oldReceiptByteMutation.receiptRawRows[oldReceiptIndex] += ' ';
         oldReceiptSemanticMutation.receiptRows[oldReceiptIndex] = {
@@ -8376,7 +8576,7 @@ try {
         };
       }
       const mutateActionAuthority = (mutate) => {
-        const altered = structuredClone(inventoryCommittedRaw);
+        const altered = structuredClone(actionAfterRaw);
         mutate(altered);
         altered.authorityJson = JSON.stringify(altered.authority);
         altered.playerRow.extensions['f4.authority'].json = altered.authorityJson;
@@ -8389,49 +8589,129 @@ try {
       const drawDriftRaw = mutateActionAuthority((altered) => {
         altered.authority.sessionRng.draws['arc2-control'] = 1;
       });
-      const authorityVersionRaw = structuredClone(inventoryCommittedRaw);
+      const authorityVersionRaw = structuredClone(actionAfterRaw);
       authorityVersionRaw.authorityVersion = 2;
       authorityVersionRaw.playerRow.extensions['f4.authority'].version = 2;
       authorityVersionRaw.playerRaw = JSON.stringify(authorityVersionRaw.playerRow);
       const actionControls = {
         double: assessArc2InventoryAction({ ...actionBundle, interaction: { ...interaction, pressCount: 2 } }),
         bypass: assessArc2InventoryAction({ ...actionBundle, interaction: { ...interaction, pressCount: 0, trusted: false } }),
+        pointerCoordinate: assessArc2InventoryAction({ ...actionBundle,
+          interaction: { ...interaction, x: interaction.x + 2 } }),
         seedDrift: assessArc2InventoryAction({ ...actionBundle, after: seedDriftRaw }),
         drawDrift: assessArc2InventoryAction({ ...actionBundle, after: drawDriftRaw }),
         authorityVersion: assessArc2InventoryAction({ ...actionBundle, after: authorityVersionRaw }),
         oldReceiptBytes: assessArc2InventoryAction({ ...actionBundle, after: oldReceiptByteMutation }),
         oldReceiptSemantic: assessArc2InventoryAction({ ...actionBundle, after: oldReceiptSemanticMutation }),
         duplicateReceipt: assessArc2InventoryAction({ ...actionBundle, after: {
-          ...inventoryCommittedRaw,
-          receiptKeys: [...inventoryCommittedRaw.receiptKeys, inventoryCommittedRaw.receiptKeys.at(-1)],
-          receiptRawRows: [...inventoryCommittedRaw.receiptRawRows, inventoryCommittedRaw.receiptRawRows.at(-1)],
-          receiptRows: [...inventoryCommittedRaw.receiptRows, inventoryCommittedRaw.receiptRows.at(-1)],
+          ...actionAfterRaw,
+          receiptKeys: [...actionAfterRaw.receiptKeys, actionAfterRaw.receiptKeys.at(-1)],
+          receiptRawRows: [...actionAfterRaw.receiptRawRows, actionAfterRaw.receiptRawRows.at(-1)],
+          receiptRows: [...actionAfterRaw.receiptRows, actionAfterRaw.receiptRows.at(-1)],
         } }),
       };
-      if (Object.values(actionControls).some((control) => control.ok)) {
-        fails.push('ARC 2 INVENTORY ACTION CONTROLS FAILED — double/bypassed action, RNG/version drift, old-receipt mutation, or duplicate receipt stayed green: '
-          + JSON.stringify(actionControls));
+      const actionControlReasons = {
+        double: 'one real visible action', bypass: 'one real visible action',
+        pointerCoordinate: 'one real visible action',
+        seedDrift: 'single atomic revision/receipt/carrier outcome',
+        drawDrift: 'single atomic revision/receipt/carrier outcome',
+        authorityVersion: 'single atomic revision/receipt/carrier outcome',
+        oldReceiptBytes: 'single atomic revision/receipt/carrier outcome',
+        oldReceiptSemantic: 'single atomic revision/receipt/carrier outcome',
+        duplicateReceipt: 'single atomic revision/receipt/carrier outcome',
+      };
+      const actionControlDrift = Object.entries(actionControls)
+        .filter(([name, control]) => control.ok || !control.reasons.includes(actionControlReasons[name]));
+      if (actionControlDrift.length) {
+        fails.push('ARC 2 INVENTORY ACTION CONTROLS FAILED — a green-base interaction, RNG, authority, or receipt mutation escaped its exact diagnosis: '
+          + JSON.stringify({ drift: actionControlDrift, controls: actionControls }));
+      }
+      }
+
+      const inventoryActionNeedsRedCleanup = !inventoryActionControlPrefix.ok;
+      const inventoryActionMustTerminate = inventoryActionNeedsRedCleanup;
+      if (inventoryActionMustTerminate) {
+        const actionQuiescent = await waitDesktopValue('Arc 2 failed Inventory action quiescence',
+          `(()=>{const diagnostics=window.__CF_SLICE__?.api?.inventoryDiagnostics?.();
+            return diagnostics?.pendingWork===0?diagnostics:null;})()`).catch(() => null);
+        if (!actionQuiescent) {
+          failSliceWithoutCascade('ARC 2 INVENTORY ACTION: red action retained pending work; mutable downstream arcs were not started',
+            { alreadyReported: true });
+        }
       }
 
       const actionClosePoint = await evalIn(`(()=>{const button=document.querySelector('#inventorysheet [data-inventory-sheet-close]'),
         r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
         hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!!r&&r.width>=44&&r.height>=44
-          &&!!hit&&(hit===button||button.contains(hit)),x,y};})()`);
+          &&!!hit&&(hit===button||button.contains(hit)),x,y,width:r?.width||0,height:r?.height||0,
+          tag:button?.tagName||null,owner:button?.hasAttribute('data-inventory-sheet-close')?'inventory-sheet':null};})()`);
       await armDesktopPointerReceipt();
       if (actionClosePoint.ok) await clickDesktopPoint(actionClosePoint);
       const actionClosePointer = await takeDesktopPointerReceipt();
       const actionClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
-        diag=S?.api?.inventoryDiagnostics?.();return {open:!!sheet&&!sheet.hidden,bodyChildren:sheet?.querySelector('[data-inventory-sheet-body]')?.childElementCount??-1,
-          focusInstanceId:document.activeElement?.getAttribute?.('data-instance-id')||null,diag};})()`);
-      if (!actionClosePoint.ok || actionClosePointer?.trusted !== true || actionClosePointer?.pointerType !== 'mouse'
-        || actionClosed.open || actionClosed.bodyChildren !== 0 || actionClosed.focusInstanceId !== inventoryInstanceId
-        || actionClosed.diag?.activeCount !== 0 || actionClosed.diag?.retainedCount !== 0 || actionClosed.diag?.pendingWork !== 0) {
-        fails.push('ARC 2 INVENTORY ACTION CLOSE: committed detail did not close to its surviving exact row with zero ownership: '
-          + JSON.stringify({ actionClosePoint, actionClosePointer, actionClosed }));
+        panel=document.getElementById('inventorypanel'),opener=document.getElementById('railinventory'),
+        diagnostics=S?.api?.inventoryDiagnostics?.();return {
+          sheetPresent:!!sheet,open:!!sheet&&!sheet.hidden,hidden:sheet?.hidden,ariaHidden:sheet?.getAttribute('aria-hidden')??null,
+          bodyChildren:sheet?.querySelector('[data-inventory-sheet-body]')?.childElementCount??-1,
+          focusInstanceId:document.activeElement?.getAttribute?.('data-instance-id')||null,
+          panelPresent:!!panel,panelDisplay:panel?.style.display??null,
+          panelAriaHidden:panel?.getAttribute('aria-hidden')??null,panelOpen:S?.api?.state?.().panelOpen??null,
+          openerPresent:!!opener,inventoryExpanded:opener?.getAttribute('aria-expanded')??null,
+          panelInert:panel?panel.inert===true:null,diagnostics};})()`);
+      const actionCloseAssessment = assessInventoryDetailClose({
+        point: actionClosePoint, pointer: actionClosePointer, closed: actionClosed,
+      }, inventoryInstanceId);
+      if (inventoryActionControlPrefix.ok && actionCloseAssessment.ok) {
+        const assessActionCloseMutation = (mutation) => assessInventoryDetailClose({
+          point: actionClosePoint,
+          pointer: actionClosePointer,
+          closed: { ...actionClosed, ...mutation },
+        }, inventoryInstanceId);
+        const actionCloseControls = {
+          hiddenPanel: assessActionCloseMutation({ panelDisplay: 'none' }),
+          ariaHiddenPanel: assessActionCloseMutation({ panelAriaHidden: 'true' }),
+          closedPanelState: assessActionCloseMutation({ panelOpen: null }),
+          missingPanelOpener: assessActionCloseMutation({ openerPresent: false }),
+          collapsedPanelOpener: assessActionCloseMutation({ inventoryExpanded: 'false' }),
+        };
+        const actionCloseControlDrift = Object.entries(actionCloseControls)
+          .filter(([, control]) => control.ok
+            || canonicalJson(control.reasons) !== canonicalJson(['closed focus/zero ownership']));
+        if (actionCloseControlDrift.length) {
+          fails.push('ARC 2 INVENTORY ACTION CLOSE CONTROLS FAILED — a green-base surviving-panel visibility, ARIA, state, or opener mutation escaped its exact diagnosis: '
+            + JSON.stringify({ drift: actionCloseControlDrift, controls: actionCloseControls }));
+        }
+      }
+      inventoryActionCloseGreen = actionCloseAssessment.ok;
+      if (!inventoryActionCloseGreen) {
+        if (inventoryActionControlPrefix.ok === true) {
+          fails.push('ARC 2 INVENTORY ACTION CLOSE: committed detail did not close to its surviving exact row with zero ownership: '
+            + JSON.stringify({ assessment: actionCloseAssessment, actionClosePoint, actionClosePointer, actionClosed }));
+        }
+        failSliceWithoutCascade('ARC 2 INVENTORY ACTION CLOSE: modal ownership was not released; mutable downstream arcs were not started',
+          { alreadyReported: true });
+      }
+      if (inventoryActionNeedsRedCleanup) {
+        failSliceWithoutCascade('ARC 2 INVENTORY ACTION: red committed-state evidence was cleaned up; mutable downstream arcs were not started',
+          { alreadyReported: true });
+      }
+      if (inventoryActionControlPrefix.ok && inventoryActionCloseGreen) {
+        inventoryCommittedState = actionAfterState;
+        inventoryCommittedRaw = actionAfterRaw;
+      }
       }
     }
 
-    if (inventoryCommittedRaw && inventoryCommittedState) {
+    const inventoryReloadPrefix = assessInventoryStagePrefix('reload', {
+      panelOpened: inventoryOpened,
+      rowReachable: inventoryRowTarget?.ok === true,
+      surfaceGreen: inventorySurfaceAssessment?.ok === true,
+      actionPointGreen: inventoryActionPointGreen,
+      actionSettled: inventoryActionSettled,
+      actionGreen: inventoryActionGreen,
+      actionClosed: inventoryActionCloseGreen,
+    });
+    if (inventoryReloadPrefix.ok && inventoryCommittedRaw && inventoryCommittedState) {
       const inventoryCommittedToken = await sliceToken(sess);
       const inventoryReloadToken = await navigateToSlice(sess, URL0, 'Arc 2 Inventory committed reload');
       await assertBootTickerRunning('Arc 2 Inventory committed reload');
@@ -8442,6 +8722,10 @@ try {
       const inventoryReloadOpened = await openDesktopRailPanel('railinventory', 'inventory', 'ARC 2 INVENTORY RELOAD');
       const inventoryReloadPointer = await takeDesktopPointerReceipt();
       const inventoryReloadRows = await evalIn(captureInventoryRows);
+      if (!inventoryReloadOpened) {
+        failSliceWithoutCascade('ARC 2 INVENTORY RELOAD: panel opener failed; dependent Close and Atlas judgments were not started',
+          { alreadyReported: true });
+      }
 
       /* Inventory is intentionally a tall right-aligned panel. Once open it
          overlaps the rail beneath it, so switching to Atlas must first use
@@ -8449,18 +8733,33 @@ try {
       const inventoryClosePoint = await evalIn(`(()=>{const button=document.querySelector('#inventorypanel > [data-pnx="inventory"]'),
         r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
         hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!!r&&r.width>=44&&r.height>=44
-          &&!!hit&&(hit===button||button.contains(hit)),x,y,owner:button?.getAttribute('data-pnx')||null};})()`);
+          &&!!hit&&(hit===button||button.contains(hit)),x,y,width:r?.width||0,height:r?.height||0,
+          tag:button?.tagName||null,owner:button?.getAttribute('data-pnx')||null};})()`);
       await armDesktopPointerReceipt();
       if (inventoryClosePoint.ok) await clickDesktopPoint(inventoryClosePoint);
       const inventoryClosePointer = await takeDesktopPointerReceipt();
-      const inventoryCloseSettled = await waitDesktopValue('Arc 2 Inventory reload close', `(()=>{const S=window.__CF_SLICE__,
+      const inventoryPanelCloseStateExpression = `(()=>{const S=window.__CF_SLICE__,
         panel=document.getElementById('inventorypanel'),opener=document.getElementById('railinventory'),
-        diag=S?.api?.inventoryDiagnostics?.(),panelOpen=S?.api?.state?.().panelOpen??null,
-        inventoryHidden=panel?.style.display==='none'&&panel?.getAttribute('aria-hidden')==='true',
-        inventoryExpanded=opener?.getAttribute('aria-expanded')||null,focusId=document.activeElement?.id||null;
-        return panelOpen===null&&inventoryHidden&&inventoryExpanded==='false'&&focusId==='railinventory'
-          &&diag?.activeCount===0&&diag?.retainedCount===0&&diag?.pendingWork===0
-          ?{panelOpen,inventoryHidden,inventoryExpanded,focusId,diagnostics:diag}:null;})()`).catch(() => null);
+        diagnostics=S?.api?.inventoryDiagnostics?.();return {panelPresent:!!panel,display:panel?.style.display??null,
+          ariaHidden:panel?.getAttribute('aria-hidden')??null,openerPresent:!!opener,
+          panelOpen:S?.api?.state?.().panelOpen??null,inventoryExpanded:opener?.getAttribute('aria-expanded')??null,
+          focusId:document.activeElement?.id||null,diagnostics};})()`;
+      let inventoryCloseSettled = await waitDesktopValue('Arc 2 Inventory reload close',
+        inventoryPanelCloseStateExpression, 6000,
+        (settled) => assessInventoryPanelClose({
+          point: inventoryClosePoint, pointer: inventoryClosePointer, settled,
+        }).ok).catch(() => null);
+      if (!inventoryCloseSettled) inventoryCloseSettled = await evalIn(inventoryPanelCloseStateExpression);
+      const inventoryReloadCloseAssessment = assessInventoryPanelClose({
+        point: inventoryClosePoint, pointer: inventoryClosePointer, settled: inventoryCloseSettled,
+      });
+      if (!inventoryReloadCloseAssessment.ok) {
+        fails.push('ARC 2 INVENTORY RELOAD CLOSE: exact registered-panel Close did not release focus and ownership: '
+          + JSON.stringify({ assessment: inventoryReloadCloseAssessment,
+            point: inventoryClosePoint, pointer: inventoryClosePointer, settled: inventoryCloseSettled }));
+        failSliceWithoutCascade('ARC 2 INVENTORY RELOAD CLOSE: panel ownership was not released; dependent Atlas and mutable successor judgments were not started',
+          { alreadyReported: true });
+      }
 
       const atlasPreClick = await evalIn(railButtonPoint('railatlas'));
       await armDesktopPointerReceipt();
@@ -8475,6 +8774,10 @@ try {
         fails.push('ARC 2 INVENTORY ATLAS CONTINUITY: browser-mouse rail opener did not open atlas');
       }
       const atlasPointer = await takeDesktopPointerReceipt();
+      if (!atlasPreClick.ok || !atlasOpened) {
+        failSliceWithoutCascade('ARC 2 INVENTORY ATLAS CONTINUITY: Atlas prerequisite failed; dependent reload judgment was not started',
+          { alreadyReported: true });
+      }
       const reloadSurface = await evalIn(`(()=>{const S=window.__CF_SLICE__,inventory=document.getElementById('inventorypanel'),
         inventoryOpener=document.getElementById('railinventory'),row=document.querySelector('#atlaspanel [data-aid="p133"]'),
         r=row?.getBoundingClientRect();return {panelOpen:S?.api?.state?.().panelOpen??null,
@@ -8501,9 +8804,11 @@ try {
         previousToken: inventoryCommittedToken, token: inventoryReloadToken,
       };
       const reloadAssessment = assessArc2InventoryReload(reloadBundle);
-      if (!inventoryReloadOpened || !atlasOpened || !reloadAssessment.ok) {
+      if (!reloadAssessment.ok) {
         fails.push('ARC 2 INVENTORY RELOAD/ATLAS: durable exact equip or travelable Atlas continuity disagreed after reload: '
-          + JSON.stringify({ inventoryReloadOpened, atlasOpened, assessment: reloadAssessment, bundle: reloadBundle }));
+          + JSON.stringify({ assessment: reloadAssessment, bundle: reloadBundle }));
+        failSliceWithoutCascade('ARC 2 INVENTORY RELOAD/ATLAS: red durable reload state stopped mutable successor arcs',
+          { alreadyReported: true });
       }
       /* Mutation controls operate only on a complete green witness. A real
          missing receipt/row is already a product finding and must not be
@@ -8518,22 +8823,75 @@ try {
           mutate(surface);
           return assessArc2InventoryReload({ ...reloadBundle, surface });
         };
+        const reloadRawControl = (mutate) => {
+          const reloaded = structuredClone(inventoryReloadRaw);
+          mutate(reloaded);
+          return assessArc2InventoryReload({ ...reloadBundle, reloaded });
+        };
+        const mutateReloadAuthority = (mutate) => {
+          const reloaded = structuredClone(inventoryReloadRaw);
+          const reloadedState = structuredClone(inventoryReloadState);
+          mutate(reloaded.authority.sessionRng);
+          reloaded.authorityJson = JSON.stringify(reloaded.authority);
+          reloaded.playerRow.extensions['f4.authority'].json = reloaded.authorityJson;
+          reloaded.playerRaw = JSON.stringify(reloaded.playerRow);
+          reloadedState.persistence.runtime.sessionSeed = reloaded.authority.sessionRng.seed;
+          reloadedState.persistence.runtime.sessionOrdinal = reloaded.authority.sessionRng.ordinal;
+          reloadedState.persistence.runtime.sessionDraws = structuredClone(reloaded.authority.sessionRng.draws);
+          return assessArc2InventoryReload({ ...reloadBundle, reloaded, reloadedState });
+        };
+        const reloadEquipReceiptKey = `receipt:${inventoryCommittedRaw.authority.sessionRng.ordinal - 1}`;
+        const reloadPredecessorReceiptIndex = inventoryReloadRaw.receiptKeys
+          .findIndex((key) => key !== reloadEquipReceiptKey);
         const reloadControls = {
+          receiptMissingKey: reloadRawControl((reloaded) => {
+            reloaded.receiptKeys.splice(reloadPredecessorReceiptIndex, 1);
+            reloaded.receiptRawRows.splice(reloadPredecessorReceiptIndex, 1);
+            reloaded.receiptRows.splice(reloadPredecessorReceiptIndex, 1);
+          }),
+          receiptKeyDrift: reloadRawControl((reloaded) => {
+            reloaded.receiptKeys[reloadPredecessorReceiptIndex] = 'receipt:predecessor-key-control';
+          }),
+          receiptByteDrift: reloadRawControl((reloaded) => {
+            reloaded.receiptRawRows[reloadPredecessorReceiptIndex] += ' ';
+          }),
+          receiptSemanticDrift: reloadRawControl((reloaded) => {
+            reloaded.receiptRows[reloadPredecessorReceiptIndex].witness = 'mutated-predecessor-receipt-control';
+          }),
+          authoritySeedDrift: mutateReloadAuthority((sessionRng) => {
+            sessionRng.seed = (sessionRng.seed ^ 1) >>> 0;
+          }),
+          authorityOrdinalDrift: mutateReloadAuthority((sessionRng) => {
+            sessionRng.ordinal += 1;
+          }),
+          authorityDrawDrift: mutateReloadAuthority((sessionRng) => {
+            sessionRng.draws['arc2-reload-control'] = 1;
+          }),
           atlasLoss: assessArc2InventoryReload({ ...reloadBundle, reloadedState: atlasLossState }),
           closePoint: reloadSurfaceControl((surface) => { surface.inventoryClose.point.ok = false; }),
           closeOwner: reloadSurfaceControl((surface) => { surface.inventoryClose.point.owner = 'atlas'; }),
+          closePointTag: reloadSurfaceControl((surface) => { surface.inventoryClose.point.tag = 'DIV'; }),
+          closePointWidth: reloadSurfaceControl((surface) => { surface.inventoryClose.point.width = 43; }),
+          closePointHeight: reloadSurfaceControl((surface) => { surface.inventoryClose.point.height = 43; }),
           closePointCoordinate: reloadSurfaceControl((surface) => { surface.inventoryClose.point.x = null; }),
           closeTag: reloadSurfaceControl((surface) => { surface.inventoryClose.pointer.tag = 'DIV'; }),
+          closePointerOwner: reloadSurfaceControl((surface) => { surface.inventoryClose.pointer.panelCloseOwner = 'atlas'; }),
           closeTrust: reloadSurfaceControl((surface) => { surface.inventoryClose.pointer.trusted = false; }),
           closePointerType: reloadSurfaceControl((surface) => { surface.inventoryClose.pointer.pointerType = 'touch'; }),
           closePointerCoordinate: reloadSurfaceControl((surface) => { surface.inventoryClose.pointer.x += 2; }),
           closePanelState: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.panelOpen = 'inventory'; }),
-          closeVisibility: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.inventoryHidden = false; }),
+          closePanelMissing: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.panelPresent = false; }),
+          closeDisplay: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.display = 'block'; }),
+          closeAria: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.ariaHidden = 'false'; }),
+          closeOpenerMissing: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.openerPresent = false; }),
           closeExpansion: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.inventoryExpanded = 'true'; }),
           closeFocus: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.focusId = 'railatlas'; }),
           closeActiveOwner: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.diagnostics.activeCount = 1; }),
           closeRetainedOwner: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.diagnostics.retainedCount = 1; }),
           closePendingWork: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.diagnostics.pendingWork = 1; }),
+          closeSelectedOwner: reloadSurfaceControl((surface) => {
+            surface.inventoryClose.settled.diagnostics.selectedInstanceId = inventoryInstanceId;
+          }),
           atlasPreClickOk: reloadSurfaceControl((surface) => { surface.atlasPreClick.ok = false; }),
           atlasPreClickOwner: reloadSurfaceControl((surface) => { surface.atlasPreClick.targetId = 'inventorypanel'; }),
           atlasPreClickCoordinate: reloadSurfaceControl((surface) => { surface.atlasPreClick.x = null; }),
@@ -8554,9 +8912,20 @@ try {
             surface.inventoryDiagnostics.activeCount = 1; surface.inventoryDiagnostics.retainedCount = 1;
           }),
         };
-        if (Object.values(reloadControls).some((control) => control.ok)) {
-          fails.push('ARC 2 INVENTORY RELOAD CONTROLS FAILED — exact Close/Atlas ownership, geometry, lifecycle, or route loss stayed green: '
-            + JSON.stringify(reloadControls));
+        const durableReloadControls = new Set([
+          'receiptMissingKey', 'receiptKeyDrift', 'receiptByteDrift', 'receiptSemanticDrift',
+          'authoritySeedDrift', 'authorityOrdinalDrift', 'authorityDrawDrift',
+        ]);
+        const reloadControlDrift = Object.entries(reloadControls)
+          .filter(([name, control]) => control.ok
+            || canonicalJson(control.reasons) !== canonicalJson([
+              durableReloadControls.has(name)
+                ? 'durable receipt/F4 authority reload'
+                : 'Atlas travelable/one-panel continuity',
+            ]));
+        if (reloadControlDrift.length) {
+          fails.push('ARC 2 INVENTORY RELOAD CONTROLS FAILED — a green-base Close/Atlas ownership, geometry, lifecycle, or route mutation escaped its exact diagnosis: '
+            + JSON.stringify({ drift: reloadControlDrift, controls: reloadControls }));
         }
       }
     }

@@ -8,6 +8,30 @@ decisions we actually made). Content catalogs (`BIOME_ATLAS.md` at the repo root
 fauna/flora data-pack CSVs) remain the *content* source of truth; this is the *direction* source
 of truth.
 
+## 2026-08-27 queued v2 universe-wide polish — structure-preserving visual treatment
+
+Nick approved carrying the reference video's richer, more luminous presentation across the **entire
+universe**, not only Sol. This is a queued post-checkpoint treatment pass, not implemented behavior
+yet. It applies consistently to galaxy/system space, planets, all 43 live biome families, creatures,
+plants, ships, effects, and their UI presentation through shared art parameters plus deterministic
+environment-local variation.
+
+The treatment may strengthen warm/cool color separation, controlled highlight bloom, atmospheric
+depth and haze, rim/specular light, silhouette separation, and bounded particles. It must **polish,
+not redesign**: retain every authored biome composition, creature and plant anatomy, silhouette,
+proportion, scale, placement role, seed-derived identity, rarity/grade readability, and gameplay hit
+or focus geometry. Sol is only a calibration scene; no Sol-only branch or hand-authored exception is
+the target architecture.
+
+Acceptance requires paired before/after identity comparisons over representative warm, cool, dark,
+bright, inhabited, lifeless, terrestrial, ocean, gas, creature, and flora cases; deterministic
+same-seed output; high-contrast and reduced-motion variants; readable text/control contrast; and
+phone heat, frame-time, texture/cache, particle, and retained-resource budgets. Effects must degrade
+by device capability without changing content identity. The stable Phase-4 browser checkpoint comes
+first so visual changes begin from one reviewable baseline. The species-strip review tool now uses
+the repository's shared cross-platform browser-executable resolver and must complete its real CDP
+render; a compatible Edge/Chrome point update does not change art baselines or thresholds.
+
 ## 2026-08-22 v2 Arc 1C overlay — current ship and surface presentation
 
 **Current implementation:** clean product/ruler

@@ -1,5 +1,28 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-27 Final6 Inventory-evidence and visual-polish boundary — current local candidate:**
+> signed source `ea845d77d9783599c269f708462eb650e2c3e245` passed Layout 787/787,
+> SceneMemory 42/42 and Compendium 78/78 before one no-retry Slice run stopped at the Arc 2
+> Inventory chain. The exact 164px thermal row was structurally valid but its raw centre at `y=751`
+> was clipped below the panel scrollport, so the old harness skipped the click and manufactured four
+> absent descendant outcomes. This was an instrument cascade, not evidence of an Inventory modal,
+> focus, Equip, persistence or Atlas product defect. The browser-free repair now reveals the exact
+> row through native scrolling, proves settled containment plus centre-hit ownership, binds trusted
+> row/action/Close receipts, proves detail Close leaves the exact parent Inventory visible/open/
+> expanded, and binds receipt bytes/semantics plus F4 RNG authority across reload. Every dependent
+> judgment is gated on a complete green causal prefix.
+> Final6 cannot resume; no post-repair browser, Glass, recovery or whole-Gate claim exists.
+>
+> Nick has separately authorized a **universe-wide visual polish pass** after the stable Phase-4
+> checkpoint. The TikTok reference defines the desired emotional punch—stronger warm/cool
+> separation, controlled bloom, atmospheric depth, focal highlights, framing silhouettes and
+> layered particles—but not a Sol-only effect or an asset redesign. The language must extend across
+> galaxies, star systems, planets, biomes, creatures and plants while preserving every deterministic
+> seed, biome/species identity, structure, anatomy, silhouette, scale and gameplay/readability rule.
+> Variation remains deterministic per environment; reduced motion, contrast, mobile heat, frame
+> budgets and before/after identity review are acceptance criteria. This paragraph records queued
+> scope only; no visual product change has been implemented yet.
+
 > **2026-08-27 audio/rarity presentation overlay — current local candidate:** Settings now renders
 > persistent **Sound**, **Volume** and **Creature voices** controls from the actual saved values.
 > Sound Off immediately retapers the existing sting bus to effective zero, refuses new sources and
@@ -33,16 +56,11 @@
 > behind it.
 >
 > Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` contains that bounded
-> Final4 presentation/harness repair. Its Final5 Layout report passed 787/787 and its source-bound
-> SceneMemory report passed 42/42. Compendium then ran once, stopped `instrument-fail` at 0/78
-> retained product outcomes, and was not retried; Slice, Glass and recovery did not start. The
-> instrument compared eight mounted keys with eight cached keys even though the errored row's exact
-> visual key was absent from the cache. The bounded exact-membership repair changes Compendium
-> collector/outcome-contract/measurement authorities and budget-file SHA only; producer
-> `bf9ad0b6…4dcb` and all numeric ceilings stay fixed. It requires a newly signed clean Final6
-> restart from Layout; Final5 cannot resume and made no Compendium product judgment. Edge `.107` /
-> CDP `1.3` is provenance only, not a rebaseline or threshold key, and no current-source
-> Compendium PASS, Slice, Glass, recovery, whole-Gate, HUMAN or release claim exists.
+> Final4 presentation/harness repair. Its historical Final5 Layout and SceneMemory reports passed
+> before Compendium stopped instrument-only. The exact-membership repair then became signed Final6
+> source `ea845d7…`; Final6 passed Layout, SceneMemory and Compendium before the later Inventory
+> reachability cascade summarized in the current overlay above. Edge `.107` / CDP `1.3` remains
+> provenance only, not a rebaseline or threshold key.
 >
 > Read-only persistence authority now intercepts every ordinary save-mutating Settings outcome:
 > **Sound**, **Volume**, **Creature voices**, **Text size**, **Text tone**, **Font**, **Star charts**,
@@ -134,8 +152,8 @@
 > each retain a separate source-derived capability contract, producer binding and fixed ruler. Exact
 > browser versions are provenance, and a compatible Edge or Chrome point update alone never
 > rebaselines, repins or moves ceilings. At that sixth-red boundary, no certifying Slice PASS, Glass
-> result or recovery certificate existed; the later Final4 and Final5 history plus current Final6
-> restart boundary are stated in the overlay above.
+> result or recovery certificate existed; the later Final4–Final6 history and current signed-
+> successor restart boundary are stated in the overlay above.
 
 > **2026-08-25 Arc 4 capture UI overlay — historical pre-audio/rarity candidate; current where the
 > 2026-08-27 overlay does not supersede it:** the native Survey card now
@@ -208,8 +226,9 @@
 > `862a75b…`; `bb5dc7c…` remains the exact earlier red that exposed it. Signed calibration source
 > `6c9ad855…` owns the three clean repair candidates; signed `4a54c0d…` owns the heap-only activation.
 > Signed `7362a0e…` later supplied the exact standalone and serial certificates, followed by the
-> preserved Slice harness red summarized above. Later Final4/Final5 history supersedes that boundary;
-> the current evidence requirement is fresh Final6 from Layout after the exact-membership repair.
+> preserved Slice harness red summarized above. Later Final4–Final6 history supersedes that boundary;
+> the current evidence requirement is a fresh signed successor from Layout after the Inventory
+> reachability/causal-prefix repair.
 > Retained no-retry Slice run `20260825013823076-822-b99fea33b17b` passed in 253,181 ms with
 > 0 findings and 10 screenshots; the full Glass Matrix separately passed in 64,222 ms across 12/12
 > viewports and 78/78 controls with none blocked/omitted and no findings, instrument failures, or
@@ -242,6 +261,13 @@
 > F3/F4 action runs; it publishes only the committed carrier, reports stale/refused/storage outcomes
 > in its live region, and reload-converges after a post-durable publication fault without clicking or
 > writing again.
+>
+> Browser evidence must reveal an exact row through the panel's native scrollport before sampling
+> its centre, then prove containment, hit ownership and a trusted coordinate-bound row receipt.
+> Detail, action, Close and reload outcomes are judged only after their full causal prefix is green.
+> Close evidence independently requires a 44×44 target, exact event-target ownership, focus return,
+> a non-inert panel and zero body/active/retained/pending/selected ownership. Red or unsafe cleanup
+> terminates before the next mutable arc; it is not multiplied into descendant product findings.
 >
 > For the recorded pre-current-WIP Arc 2 candidate, the 2026-08-24 no-retry Slice Smoke is terminal
 > PASS on Edge `151.0.4129.101` in 239,546 ms with

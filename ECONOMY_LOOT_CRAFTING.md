@@ -1,5 +1,21 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
+> **2026-08-27 Final6 Arc 2 Inventory evidence boundary — current local candidate:** signed source
+> `ea845d77d9783599c269f708462eb650e2c3e245` passed Layout 787/787, SceneMemory 42/42 and
+> Compendium 78/78. Slice then ran once with zero retry and stopped after the exact thermal row's
+> valid 164px DOM rectangle placed its raw centre below the Inventory scrollport. The click was not
+> exercised; four reported modal/Equip/reload descendants were an instrument cascade, not economy,
+> item, action, persistence or Atlas product verdicts.
+>
+> The browser-free repair reveals the row natively, proves settled scrollport containment and exact
+> hit ownership, binds trusted row/Equip/Close receipts, proves the parent Inventory remains visibly
+> open after detail Close, and binds the exact receipt keys/bytes/semantics plus F4 RNG authority
+> across reload. A complete green causal prefix is required before each dependent outcome or
+> mutation control. Unsafe cleanup terminates before later mutable
+> arcs. No material, item, recipe, effect, quantity, cost, carrier, writer, RNG or numeric ruler
+> changed. Final6 cannot resume; a newly signed clean successor must restart at Layout, and no
+> post-repair Slice, Glass, recovery or whole-Gate claim exists.
+
 > **2026-08-27 Final4 Glass recipe-oracle correction — implemented in signed Final5 source:** `earpiece`,
 > `diplobeacon` and `rl-mind` already carry `contact` effects consumed by the live
 > contact/capture-support capability and odds projection. Final4 Glass was wrong because its
@@ -7,14 +23,10 @@
 > their oracle effect support live; it changes no product behavior, recipe availability, cost,
 > prerequisite, capacity/headroom rule, item definition or progression.
 
-> Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` then supplied Final5
-> Layout 787/787 and source-bound SceneMemory 42/42. Compendium ran once and stopped
-> `instrument-fail` with 0/78 retained product outcomes because its cold-key oracle compared the
-> cardinality of two eight-key sets instead of the errored row's exact membership. It was not
-> retried; Slice, Glass and recovery did not start, and no Compendium product behavior was judged.
-> The bounded membership-oracle repair leaves all economy/product behavior, producer authority and
-> numeric ceilings unchanged. It now requires a newly signed clean Final6 restart from Layout;
-> Final5 cannot resume. Edge `.107` / CDP `1.3` remains provenance only.
+> Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` then supplied historical
+> Final5 Layout and SceneMemory passes before Compendium stopped instrument-only. Its bounded
+> membership-oracle repair became Final6 source `ea845d7…`, whose later Inventory stop is described
+> above. Edge `.107` / CDP `1.3` remains provenance only.
 
 > **2026-08-26 locale-independent economy ordering — current local candidate:** the source-neutral
 > Arc 2 ledger no longer calls ambient `String.prototype.localeCompare()` when it canonicalizes
@@ -107,9 +119,10 @@
 > Layout. Signed `041d1cf…` later supplied Final4 Layout 787/787, SceneMemory 42/42, Compendium
 > 78/78 and Slice PASS before Glass stopped on preserved instrument evidence. Its bounded repair
 > became signed `39e4f20…`; Final5 then passed Layout and SceneMemory before Compendium stopped on
-> the membership-oracle instrument defect described above. A fresh signed Final6 chain from Layout
-> is required; current Compendium product, Slice, Glass, recovery, whole-Gate, hosted, HUMAN and
-> release authority remain open. Compatible
+> the membership-oracle instrument defect described above. Final6 subsequently passed Layout,
+> SceneMemory and Compendium before the causal Inventory harness stop described above. A fresh signed
+> successor chain from Layout is required; current Slice, Glass, recovery, whole-Gate, hosted, HUMAN
+> and release authority remain open. Compatible
 > Edge or Chrome point updates remain provenance only and never trigger calibration, rebaselining,
 > repinning or a threshold change.
 >
