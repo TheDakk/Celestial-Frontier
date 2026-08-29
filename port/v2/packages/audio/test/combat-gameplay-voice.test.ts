@@ -331,7 +331,7 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
     const firstContext = new SynthesisContext();
     const secondContext = new SynthesisContext();
     const first = create(firstContext, reservation);
-    const second = create(secondContext, reservation);
+    create(secondContext, reservation);
     expect(first).toMatchObject({ reservation });
     expect(first.nodes).toHaveLength(11);
     expect(first.sources).toHaveLength(4);

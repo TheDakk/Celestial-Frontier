@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { runInNewContext } from 'node:vm';
 import { describe, expect, it } from 'vitest';
+import { readTrackedV1Source } from '../../../../test-support/tracked-v1-source.js';
 import {
   LOOT_CATALOGUE_V1,
   SLOTTED_GEAR_BASES_V1,
@@ -91,8 +92,7 @@ interface LegacyItemLiteral {
 }
 
 function legacyItemsFromSource(): readonly LegacyItemLiteral[] {
-  const mainPath = fileURLToPath(new URL('../../../../../../main.js', import.meta.url));
-  const source = readFileSync(mainPath, 'utf8');
+  const source = readTrackedV1Source().script;
   const start = source.indexOf('const ITEMS=[');
   const end = source.indexOf('\n];\nconst ITEM_BY', start);
   expect(start).toBeGreaterThanOrEqual(0);

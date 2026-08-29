@@ -5,12 +5,10 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
+import { readTrackedV1Source } from '../test-support/tracked-v1-source.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.join(here, '..');
-const repoRoot = path.join(v2Root, '..', '..');
-const mainPath = path.join(repoRoot, 'main.js');
-const htmlPath = path.join(repoRoot, 'celestial-frontier.html');
 const liftToolPath = path.join(v2Root, 'tools/lift.mjs');
 const HAZE_BLOCK_SHA256 = '1a6aec9affe551c039bd9d6976dd841c1bb0555994f59da04d1023c4600b4280';
 const HAZE_START = 'const hazeCache=new Map();';
@@ -29,24 +27,11 @@ type Sources = Readonly<{
   packageLock: string;
 }>;
 
-function scriptFromTrackedHtml(html: string): string {
-  const open = '<script>';
-  const close = '</script>';
-  if (html.split(open).length - 1 !== 1 || html.split(close).length - 1 !== 1) {
-    throw new Error('tracked game HTML must contain exactly one script body');
-  }
-  const openIndex = html.indexOf(open);
-  const closeIndex = html.indexOf(close, openIndex + open.length);
-  return html.slice(openIndex + open.length, closeIndex);
-}
-
-const trackedHtml = fs.readFileSync(htmlPath, 'utf8');
-const trackedMain = scriptFromTrackedHtml(trackedHtml);
-const localMain = fs.existsSync(mainPath) ? fs.readFileSync(mainPath, 'utf8') : null;
+const tracked = readTrackedV1Source();
 
 const sources: Sources = Object.freeze({
-  main: trackedMain,
-  legacy: trackedHtml,
+  main: tracked.script,
+  legacy: tracked.html,
   artLift: fs.readFileSync(path.join(v2Root, 'packages/art/src/galaxyart.verbatim.js'), 'utf8'),
   worldgenLift: fs.readFileSync(path.join(v2Root, 'packages/domain/worldgen/src/worldgen.verbatim.js'), 'utf8'),
   appMain: fs.readFileSync(path.join(v2Root, 'apps/game/src/main.ts'), 'utf8'),
@@ -226,7 +211,6 @@ function fixtureModule(name: 'GalaxyArt' | 'WorldGen', banner: string): string {
 
 describe('D-HAZE — exact render-layer ownership and parity', () => {
   it('keeps the exact legacy generator/cache bytes in GalaxyArt and out of WorldGen', () => {
-    if (localMain !== null) expect(localMain).toBe(sources.main);
     expect(ownershipErrors(sources)).toEqual([]);
   });
 

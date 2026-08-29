@@ -17,26 +17,28 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-29 · LOCAL V2 ROADMAP CAMPAIGN COMPLETE · CLAUDE FABLE REVIEW CANDIDATE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · PR #35 PERMANENT CI-PARITY REPAIR · LOCAL CANDIDATE ◀◀◀
 
 ### Exact current boundary
 
 - **Scope/owner:** OpenAI/Codex desktop on macOS at
   /Users/nick/Projects/celestial-frontier-openai-mac, branch **openai/mac**, upstream
-  **origin/openai/mac**. The implementation campaign changed only `port/v2` and current reference
-  Markdown; legacy `main.js` / `celestial-frontier.html`, the other-agent worktree and the sibling
-  live-site repository remain untouched.
-- **Git state:** committed HEAD **7108e22a0c99b6cf01085e5fec3cf2e1c7657c9d**; branch remains
-  **116 commits ahead** of `origin/openai/mac`. The worktree is intentionally dirty and shared.
-  Preserve every existing user change.
-- **Separately staged Glass repair:** the staged preview/Glass evidence-chain repair remains intact.
-  `port/v2/tools/glassmatrix.mjs` is staged-and-unstaged (MM). Never reset, discard or casually
-  restage it. Bare Glass invocation fails preflight by design without the immutable Slice
-  predecessor ID.
-- **Integration boundary:** Nick authorized a local commit, push of `openai/mac` and a draft PR toward
-  `develop` on 2026-08-29. No exact `actions-budget-approved` battery attempt, PR merge, production
-  version bump, preview publication, release, deployment or legacy-game edit is authorized. Actions
-  is **UNFROZEN**, but **zero exact hosted attempts are authorized**.
+  **origin/openai/mac**. The implementation campaign changed `port/v2` and current reference
+  Markdown; this repair also adds fail-closed selftest wiring to the two guarded workflows. Legacy
+  `main.js` / `celestial-frontier.html`, the other-agent worktree and the sibling live-site
+  repository remain untouched.
+- **Git/PR boundary:** draft PR **#35** already exists from **`openai/mac` → `develop`**. Its pushed
+  candidate is head **390e8708086d413fc7d636441ec0523cf9d4b9ea** against base
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**. The current repair is a local descendant and has
+  not been pushed. Preserve every existing user change.
+- **Consumed hosted attempt:** Nick authorized exactly one `test-battery` run for that head/base with
+  `actions-budget-approved`, a 92-minute maximum and no retry. Run **33273328362** is terminal-red
+  and consumed; the label was removed, later browser stages were skipped, and PR #35 remains
+  Draft/unmerged. No replacement run, changed-head push, merge, version bump, preview publication,
+  release or deployment is authorized. Actions is **UNFROZEN**, but **zero exact hosted attempts are
+  currently authorized**.
+- **Glass boundary:** the earlier Glass evidence-chain repair is part of pushed head `390e870…`.
+  Bare Glass invocation still fails preflight by design without the immutable Slice predecessor ID.
 - **Naming:** **Pureforged** is the approved current v2 player-facing name for fully exceptional
   supported fixed crafts. Exceptional remains the material grade; stable internal
   `exceptional-v1` identifiers, receipts and save identity remain unchanged. Frozen v1.8.9
@@ -102,7 +104,9 @@ production release are complete.
 
 ### Final browser-free evidence
 
-- **Complete v2 suite:** **230 files / 2,315 passed / 1 skipped / 0 failed**.
+- **Complete v2 suite:** **233 files / 2,333 passed / 1 skipped / 0 failed** on the repaired working
+  candidate. The exact clean committed tracked-only rehearsal remains the final local acceptance
+  step; this working-tree result is not hosted or browser authority.
 - **Consolidated campaign focus:** **19 files / 207 passed**. The final semantic-hardening subset
   separately passed **15 files / 139 tests**; the repaired Arc 9 and Chronicle instruments passed
   their direct negative-controlled sets.
@@ -112,8 +116,8 @@ production release are complete.
 - **Current authority:** `node tools/print-producer-authorities.mjs` exits 0; SceneMemory,
   Compendium measurement and Compendium producer all match their budgets. The three authority/
   budget files pass **45/45** focused tests.
-- **Exact current identities:** Scene build `e556d4223a320511cf48302b3d399d369c74187138f80e44f6af7ed029c588bf`,
-  Scene budget `11a2ab04abfa3d9300a55c51a69a781c23ebdf4346b33cde3cabc5623fae9bfc`;
+- **Exact current identities:** Scene build `30ac9f97753a8b44fdd75ff0299c48ac5b9b9cced3cd465909b1a598e4f08750`,
+  Scene budget `158ed95e0936810ef25c0e21d5eceae9d1a73c7111fa087e58a38aa76c1dc308`;
   Compendium measurement `7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4`,
   producer `053f520c5149e66cbf1ee843c0873a531757b598f5830a7712a728537607890d`,
   budget `5dbb5c80caf63c789fa15fc0acc9e4683613e221a1b1edb413ef980a9d8d2eb4`.
@@ -123,6 +127,39 @@ production release are complete.
 - **No browser-owning command was run for this moving dirty source.** A fresh clean,
   committed-source immutable browser chain remains post-review work; the historical `3f69e88…`
   certificate is not evidence for these later additions.
+
+### PR #35 permanent CI-parity repair
+
+- **Tracked-input root cause:** five suites read ignored root `main.js`. It existed on Nick's Mac but
+  is absent from both the PR head and base, so the ordinary workspace could pass while a clean
+  checkout failed. All legacy-source tests now consume one fail-closed, byte-exact extraction of the
+  unique inline script in tracked `celestial-frontier.html`; there is no ignored-file fallback,
+  trimming or newline normalization.
+- **Linux timeout root cause:** two synchronous evidence selftests inherited Vitest's five-second
+  case limit while their child processes had no hard kill. The child contract now has an explicit
+  15-second hard timeout below a 20-second outer case and distinguishes timeout, spawn failure,
+  nonzero exit and missing success marker. A 24-way contention control reproduced the old failure
+  band at 5.711–6.066 seconds and passed 24/24 with zero retries/timeouts.
+- **Preauthorization prevention:** `node tools/tracked-input-preflight.mjs` runs only from a clean
+  committed candidate, exports the exact index into an owned temporary tree, installs there and
+  executes the complete hosted browser-free/static command sequence. It rejects forgotten
+  source-owned untracked/ignored tests, excludes dependency-owned `node_modules` tests, rechecks
+  HEAD and cleanliness before PASS, allows unrelated ambient and run-generated files, and has
+  bidirectional fixture/workflow/order/soft-fail controls. Both guarded
+  workflows run its selftest immediately after the v2 install.
+- **Gate self-diagnosis:** the first exact clean-commit rehearsal stopped before install because the
+  ignored-test scan classified seven `node_modules/ismobilejs` dependency tests as source-owned.
+  The classifier now excludes only paths with a literal `node_modules` segment; its synthetic
+  control carries a dependency-owned test while source-owned ignored and untracked tests remain
+  terminal-red. This was a preflight false positive, not a product-suite failure or hosted retry.
+- **Previously hidden static blockers:** `artunused` exposed four unused locals/imports before the
+  next hosted attempt. The three test-only findings were removed; the one production local was
+  reduced to its validation call. An isolated same-path HEAD/current build comparison proved all 29
+  non-map runtime files and PWA build ID byte-identical; only `main-R61RQSgI.js.map` changed by 20
+  bytes. SceneMemory's exact build provenance was rebound to that full-dist identity without moving
+  a numeric ceiling, browser contract, collector or runtime byte.
+- Run `33273328362` remains immutable terminal-red evidence. This repair is not a retry and claims
+  no hosted green, browser certificate, HUMAN acceptance, merge, release or deployment authority.
 
 ### Protected/deferred scope — do not invent
 
@@ -160,6 +197,14 @@ invariant and the smallest safe correction. Review these axes:
 4. UI/accessibility/mobile-first presentation, universe-wide visual cohesion and audio lifecycle;
 5. performance, dead/unreachable code, duplicate owners, package boundaries, tests/instruments and
    Markdown/source agreement.
+6. PR #35's hermetic CI repair specifically: verify `test-support/tracked-v1-source.ts` preserves
+   exact committed legacy bytes with no ignored fallback; every `bounded-child` caller pins the
+   15-second child / 20-second outer contract and cannot pass on timeout, nonzero or missing marker;
+   `tracked-input-preflight.mjs` executes the exact ordered hosted-static plan from only the clean
+   committed index, rechecks the candidate before PASS and cannot be softened or bypassed in either
+   guarded workflow; and the SceneMemory rebind changes only full-dist source-map provenance while
+   all 29 runtime files, the PWA build ID, numeric ceilings, browser contract and collector remain
+   unchanged.
 
 The review should distinguish a product defect from an instrument defect, preserve historical
 evidence verbatim and leave policy/HUMAN items explicitly open. OpenAI/Codex repairs accepted
@@ -167,15 +212,16 @@ findings only after that review.
 
 ### Paired handoff / Git protocol
 
-- **OpenAI/Codex:** commit the complete candidate, including the separately staged Glass repair, push
-  only `openai/mac` and create/update its draft PR to `develop`. Do not label, request a hosted
-  battery, merge, release or deploy until Nick authorizes the exact next operation.
+- **OpenAI/Codex:** finish the clean tracked-only rehearsal and commit the local PR #35 repair on
+  `openai/mac`. Do not push the changed head, label, request a hosted battery, merge, release or
+  deploy until Nick authorizes that exact next operation.
 - **Anthropic/Claude Code:** Nick does not need to open Claude inside this dirty shared worktree.
   After a safe local commit/handoff is explicitly authorized, Claude works only from an
   `anthropic/*` branch/worktree created from that exact candidate—never by copying files out of this
   worktree.
-- **GitHub step now:** push the completed `openai/mac` head and create/update a **draft** PR to
-  `develop`. No Actions label/dispatch/rerun, merge, release, deploy, publish or version bump.
+- **GitHub step now:** none. PR #35 remains Draft at pushed head `390e870…`; its repair is local.
+  A later authorization must name the new full head/base, `actions-budget-approved`, 92-minute
+  maximum, one attempt/no retry, label removal and merge-on-green decision.
 - **Future OpenAI PR, only after exact authorization:** base **develop**, source **openai/mac**.
   Recompute a copy-ready title/description from the post-review fixed scope.
 - **Release status:** `develop`, `main` and the live site are unchanged; no production release or

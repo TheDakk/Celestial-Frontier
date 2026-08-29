@@ -8,6 +8,7 @@ import { BIOME_VISUAL_KEYS_V1, BIOME_VISUAL_PROFILES_V1 } from '@cf/art/biome-vi
 import { createVisualTreatmentV1 } from '@cf/art/visual-treatment';
 import { renderBiomeVistaV1, type BiomeVistaInputV1, type GenericBiomeVistaOptionsV1 } from '@cf/art/biome-vista';
 import { installSpeciesCanvasFactory } from '../src/speciescanvas.js';
+import { readTrackedV1Source } from '../../../test-support/tracked-v1-source.js';
 import {
   renderPreservedGenericVistaV1, renderPreservedGasDeckVistaV1,
   renderPreservedAbyssVistaV1, renderPreservedReefVistaV1,
@@ -197,7 +198,7 @@ describe('portable full biome vista', () => {
   });
 
   it('seals the exact selected source slices and excludes lifecycle ownership', () => {
-    const main = readFileSync(fileURLToPath(new URL('../../../../../main.js', import.meta.url)), 'utf8');
+    const main = readTrackedV1Source().script;
     const generic = main.slice(main.indexOf('function _hdVolcano('), main.indexOf('\n/* the planetfall overlay', main.indexOf('function hdVista(')));
     const deck = main.slice(main.indexOf('function _hdDeckScene('), main.indexOf('\n/* sea-region biome keys', main.indexOf('function _hdDeckScene(')));
     const wxStart = generic.indexOf('function wxEventFor(P, wb, wxTok){');

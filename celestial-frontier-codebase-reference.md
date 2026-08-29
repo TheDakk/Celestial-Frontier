@@ -285,7 +285,7 @@
 > Life interaction for this one Chapter deed, while exact Sol exclusion makes the “alien worlds”
 > copy literal. The legacy survey/Records ledger and `stats.surveys` do not change, and the separate
 > interaction plus accepted/weekly bioscan systems remain unavailable. Focused and full
-> browser-free tests are green at 230 files / 2,315 passed + one skipped; fresh clean browser
+> browser-free tests are green at 233 files / 2,333 passed + one skipped; fresh clean browser
 > evidence and HUMAN acceptance remain open, with no hosted/release/
 > version/deployment authority.
 
@@ -298,6 +298,30 @@
 > its exact existing row back into the app's private source-proven route `WeakMap`, or latches a
 > read-only convergence reload if that sidecar cannot be restored. No action retries or optimistically
 > republishes durable state.
+
+> **PR #35 tracked-CI parity overlay (current local repair, 2026-08-29):** authorized no-retry
+> `test-battery` run `33273328362` tested pushed head `390e870…` against base `7a9f4c1…` and stopped
+> in the v2 static suite. Five suites consumed ignored root `main.js`, which was present on the Mac
+> but absent from both Git trees. Port legacy-source tests now use one fail-closed byte-exact helper
+> over the unique inline script in tracked `celestial-frontier.html`; they never fall back to the
+> ignored edit source or normalize its bytes. Two synchronous evidence selftests also crossed the
+> inherited five-second outer limit under Linux contention. Their shared helper now owns an explicit
+> 15-second child kill below a 20-second outer case and independently diagnoses timeout, spawn
+> failure, nonzero exit and missing PASS marker; 24 simultaneous controls reproduced 5.711–6.066
+> second runtimes and passed 24/24 without retry.
+>
+> `port/v2/tools/tracked-input-preflight.mjs` is the mandatory preauthorization rehearsal. From a
+> clean committed candidate it exports only the exact Git index, installs inside an owned temporary
+> snapshot and executes the exact ordered hosted browser-free/static command block. It rejects
+> forgotten source-owned untracked/ignored tests, excludes dependency-owned `node_modules` tests,
+> and rechecks HEAD plus tracked state before terminal PASS. Both
+> guarded workflows run its mutation-sensitive selftest immediately after v2 installation. The
+> repair also clears four `artunused` findings hidden behind the consumed stop. The only product
+> source cleanup changed one source map by 20 bytes; an isolated same-path comparison proved all 29
+> runtime files and PWA build ID byte-identical. SceneMemory full-dist authority is therefore
+> `30ac9f97…8750` under budget `158ed95e…c308`, with every numeric ceiling, browser contract,
+> collector and runtime byte unchanged. This is hermetic browser-free parity, not a hosted green,
+> browser certificate, HUMAN judgment, merge, release or deployment authority.
 
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the source. When in doubt, source wins. The long-form
@@ -443,7 +467,7 @@
 > `biome-vista-ecology` suites plus app `biome-vista-surface`, `biome-vista-protocol`,
 > `biome-vista-cache`, `universe-polish-main-wiring`, `visual-effect-policy`,
 > `camera-shake-policy`, `visual-policy-main-wiring`, `shipyard-preview` and
-> `art-tools-browser-resolution`. The full v2 battery is current-source green at 230 files / 2,315
+> `art-tools-browser-resolution`. The full v2 battery is current-source green at 233 files / 2,333
 > passed + one skipped with all TypeScript configurations green. Their controls cover exact-set/field/identity mismatches,
 > disconnected finishers, changed compositor routes, stale/faulted cache publication, cropped phone
 > layout, policy bypasses and hard-coded browser paths. Raw-CDP art tools share
@@ -2625,7 +2649,7 @@ catalogued species. The universe remains open and playable after winning.
 
 | File | Purpose |
 |---|---|
-| `main.js` | **The source of truth** (~24,300 lines). **Gitignored** — recoverable from the committed html, see below. |
+| `main.js` | **The local legacy edit source of truth** (~24,300 lines). **Gitignored** and recoverable from the committed html, see below. It is never a CI or port-test input. |
 | `celestial-frontier.html` | **The build artifact, and the entire shipped game.** ~26,750 lines, ~1.93 MB. **TWO** `<style>` elements (append new CSS to the **LAST**), then markup, then one `<script>` from ~line 2,420. **All CSS lives here — there is none in `main.js`.** |
 | `original/celestial-frontier-v1.0.html` | Pristine pre-refactor v1.0 build (source of the determinism baseline). |
 | `tools/` | Verification toolkit (`npm install` once; see `tools/README.md`). |
@@ -2658,6 +2682,12 @@ Edit `main.js`, never the html in place, and validate before shipping:
 > CLAUDE.md rule 4 has carried this warning for some time while this file still
 > recommended the opposite — a reminder that a correction must be applied everywhere the
 > old claim lives, not just where it was noticed.
+
+Port tests that need legacy source bytes use `port/v2/test-support/tracked-v1-source.ts`. It extracts
+the unique literal inline script from committed `celestial-frontier.html` without trimming or
+newline normalization and fails closed on missing, duplicate, reversed or empty boundaries. No test
+may read or fall back to ignored local `main.js`; a local-only dependency is not clean-checkout
+evidence.
 
 **Encoding caution:** the source mixes encodings — some unicode is stored as literal
 backslash-u escape *text* in JS strings (renders at runtime), some as real UTF-8 chars
@@ -3551,6 +3581,18 @@ for a name.
 ---
 
 ## 12. Test suites (all must pass)
+
+**Current tracked-only preauthorization gate (2026-08-29):** from `port/v2`, a clean committed
+candidate must pass `node tools/tracked-input-preflight.mjs`. It exports only the exact index into
+an isolated temporary tree, installs there and runs the ordered hosted browser-free/static sequence:
+full Vitest, all TypeScript programs, unused-local analysis, art audit, override audit plus its
+controls, coverage, spec reachability and independent current-producer authority. It rechecks HEAD,
+tracked cleanliness and forgotten source-owned untracked/ignored tests before PASS while excluding
+dependency-owned `node_modules` tests. Its selftest mutation-controls ambient-versus-tracked
+dependencies, generated artifacts, command order/execution, soft-fail and workflow adjacency.
+Synchronous Slice/Glass/Recovery selftests use explicit 15-second child and
+20-second outer limits with separate timeout/nonzero/missing-marker controls. This gate does not
+replace the strict browser evidence chain or authorize hosted work.
 
 **Current evidence snapshot (2026-08-29):** exact signed source
 `3f69e88ea8e34fdb8d9913276601b426ada783ae` completed the once-only, zero-retry

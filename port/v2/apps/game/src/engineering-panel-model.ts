@@ -252,7 +252,7 @@ function productionFabricationGroups(
   engineeringRevisionExhausted: boolean,
 ): readonly EngineeringFabricationGroupReadModel[] {
   const materials = quantityMap(economy.cargo, 'engineering cargo');
-  const exceptional = quantityMap(economy.exceptionalCargo, 'engineering exceptional cargo');
+  quantityMap(economy.exceptionalCargo, 'engineering exceptional cargo');
   const owned = itemCounts(loadout);
   const signatures = new Set(economy.signatureIds);
   const inventory = {

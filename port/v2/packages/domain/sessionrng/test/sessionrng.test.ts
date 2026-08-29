@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, it, expect } from 'vitest';
+import { readTrackedV1Source } from '../../../../test-support/tracked-v1-source.js';
 import {
   createSessionRNG,
   isPlannedSessionRNGDraws,
@@ -169,8 +170,7 @@ function auditLegacyInventory(source: string, sites: readonly LegacyRngSite[]): 
   return issues;
 }
 
-const rootMain = fileURLToPath(new URL('../../../../../../main.js', import.meta.url));
-const legacySource = readFileSync(rootMain, 'utf8');
+const legacySource = readTrackedV1Source().script;
 const sessionRngSource = readFileSync(fileURLToPath(new URL('../src/index.ts', import.meta.url)), 'utf8');
 
 function projectionValueEvaluationIssues(source: string): readonly string[] {

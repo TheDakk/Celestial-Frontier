@@ -2,7 +2,12 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** PR #34 runs `32665404776` and `32677088518` are
+**Hosted attempt state: none authorized.** PR #35 run `33273328362` tested head
+`390e8708086d413fc7d636441ec0523cf9d4b9ea` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b` once under `actions-budget-approved`, a
+92-minute maximum and no-retry rule. It is consumed terminal-red; the label was removed, PR #35
+remains Draft/unmerged, and no replacement attempt or changed-head push is authorized. PR #34 runs
+`32665404776` and `32677088518` are
 consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
 labels were removed. Its repaired third authorized changed-head attempt, run `32681394532`, passed
 terminal-green in one attempt/no retry (50m10s), had its label removed, and merged normally as
@@ -217,6 +222,22 @@ Before Nick authorizes another exact changed-head hosted attempt, the handoff mu
 4. proof that no run for that exact authorization is queued or in progress;
 5. one-attempt/no-retry stopping rule and the owner who will remove the approval label afterward.
 
+The exact candidate must first be committed, clean and pass this tracked-only rehearsal from
+`port/v2`:
+
+```text
+node tools/tracked-input-preflight.mjs
+```
+
+It rechecks HEAD/cleanliness, rejects forgotten source-owned untracked or ignored test files while
+excluding dependency-owned `node_modules` tests, exports only the
+committed index into an owned isolated tree, runs a fresh install there and executes the exact
+hosted browser-free/static sequence through current producer authority. It rechecks the source
+candidate again before PASS. Its synthetic fixture proves that an ambient dependency can make the
+ordinary workspace pass while the tracked snapshot fails, that tracking the dependency flips the
+snapshot green, and that run-generated artifacts remain allowed. This rehearsal is mandatory
+preauthorization evidence, not a hosted green or browser certificate.
+
 `test-battery` currently has a two-minute authorization runner plus one battery capped at 90 minutes,
 with SceneMemory independently capped at 10 minutes before Compendium's independent 40-minute cap.
 The old parallel form
@@ -264,6 +285,27 @@ the 14-phone/13-desktop broken-baseline breaches. Exact-budget run
 `d21ba26…`; raw/gzip hashes are `42753d5e…` / `a2ff5b00…`. The repaired exact head then passed
 hosted run `32681394532` and merged normally. That consumed run is integration evidence only and
 does not authorize a new changed-head hosted attempt.
+
+## Consumed PR #35 attempt
+
+Nick authorized exactly one `test-battery` attempt for draft PR #35 head
+`390e8708086d413fc7d636441ec0523cf9d4b9ea` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, using `actions-budget-approved`, with a
+92-minute maximum and no retry. Run `33273328362` reached the v2 browser-free suite and stopped
+terminal-red before later browser work. Five suites depended on ignored root `main.js`, which was
+present in the developer workspace but absent from both Git trees. Two synchronous evidence
+selftests also exceeded Vitest's inherited five-second case limit under Linux contention while
+their child processes had no hard termination bound. The label was removed; the run is consumed,
+PR #35 remains Draft/unmerged, and it must never be rerun or relabelled.
+
+The local changed-head repair makes tracked `celestial-frontier.html` the sole byte-exact legacy
+test carrier, gives evidence children an explicit 15-second hard timeout below a 20-second outer
+case, and adds the clean committed tracked-only rehearsal described above. Its controls also found
+and repaired four `artunused` findings that the stopped run never reached. SceneMemory build
+provenance changed only because one source map changed by 20 bytes: all 29 runtime files and the PWA
+build ID are byte-identical, and no numeric memory ceiling, browser contract or runtime asset moved.
+This is local repair evidence only. No replacement push, hosted attempt, Ready transition, merge,
+release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard
 

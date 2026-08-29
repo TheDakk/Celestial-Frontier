@@ -1,4 +1,4 @@
-import { execFileSync, spawnSync } from 'node:child_process';
+import { spawnSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
@@ -6,10 +6,12 @@ import {
   SLICE_SCREENSHOT_LOGICAL_NAMES,
   sliceScreenshotInventoryLine,
 } from '../tools/slicesmoke-contract.mjs';
+import { runBoundedNodeMarker } from '../test-support/bounded-child.js';
 
 const tool = (name: string): string => fileURLToPath(
   new URL(`../tools/${name}`, import.meta.url),
 );
+const SELFTEST_CHILD_TIMEOUT_MS = 15_000;
 const source = (name: string): string => readFileSync(tool(name), 'utf8');
 const workflow = readFileSync(
   fileURLToPath(new URL('../../../.github/workflows/test.yml', import.meta.url)),
@@ -102,9 +104,13 @@ const workflowEvidenceChainErrors = (
   if (sliceOffset < 0 || glassOffset <= sliceOffset) errors.push('ordered-chain');
   return errors;
 };
-const runSelftest = (name: string): string => execFileSync(
-  process.execPath, [tool(name), '--selftest'], { encoding: 'utf8' },
-);
+const runSelftest = (name: string, marker: string): string => {
+  const result = runBoundedNodeMarker(
+    [tool(name), '--selftest'], marker, SELFTEST_CHILD_TIMEOUT_MS,
+  );
+  expect(result.kind, result.diagnostic).toBe('pass');
+  return result.stdout;
+};
 const glassCurrentPointer = fileURLToPath(
   new URL('../apps/game/smoke/glassmatrix-report.json', import.meta.url),
 );
@@ -140,7 +146,10 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
   });
 
   it('keeps immutable Slice evidence, interruption red, and its named verifier mutation-sensitive', () => {
-    const output = runSelftest('smokereport.mjs');
+    const output = runSelftest(
+      'smokereport.mjs',
+      'immutable evidence: selected per-run report/log accepted',
+    );
     const collector = source('smokereport.mjs');
     expect(output).toContain('immutable evidence: selected per-run report/log accepted');
     expect(output).toContain('stale current PASS, interruption, dirty source, wrong run/source, missing artifact, and log mismatch rejected');
@@ -150,10 +159,10 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(collector.indexOf('atomicWriteJson(currentReportPath, sentinel)'))
       .toBeLessThan(collector.indexOf('const run = spawnSync('));
     expect(collector).toContain('automaticRetries: 0');
-  });
+  }, 20_000);
 
  it('requires an exact clean Slice predecessor for full Glass and binds the newest release semantics in both directions', () => {
-   const output = runSelftest('glassmatrix.mjs');
+   const output = runSelftest('glassmatrix.mjs', 'exact clean Slice predecessor accepted');
    const collector = source('glassmatrix.mjs');
     const slice = source('slicesmoke.mjs');
     expect(output).toContain('exact clean Slice predecessor accepted');
@@ -176,7 +185,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(slice).toContain('const V2_DRAFT_BULLET_COUNT = 73;');
     expect(collector).toContain('expectedBulletCount=73');
     expect(collector).toContain('exact five-section, 73-outcome development inventory');
- });
+ }, 20_000);
 
   it('rejects invalid full Glass invocations without changing the current evidence pointer', () => {
     const before = existsSync(glassCurrentPointer)
@@ -216,7 +225,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
   }, 15_000);
 
   it('requires the exact immutable Slice+Glass pair for recovery and preserves one-attempt verification', () => {
-    const output = runSelftest('arc4recovery.mjs');
+    const output = runSelftest('arc4recovery.mjs', 'ARC 4 RECOVERY SELFTEST: PASS');
     const collector = source('arc4recovery.mjs');
     const contract = source('arc4-recovery-contract.mjs');
     const glassContract = source('glassmatrix-evidence-contract.mjs');
@@ -232,7 +241,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(glassContract).toContain('Glass viewport inventory is not the exact ordered 12-row matrix');
     expect(collector).toContain('attemptCount: 1');
     expect(collector).toContain('automaticRetries: 0');
-  });
+  }, 20_000);
 
   it('threads the exact Slice ID through hosted Glass and retains immutable carriers', () => {
     expect(workflowEvidenceChainErrors(workflow)).toEqual([]);
