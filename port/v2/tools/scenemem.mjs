@@ -186,6 +186,11 @@ const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const hashFile = (file) => sha256(fs.readFileSync(file));
 const portable = (value) => value.split(path.sep).join('/');
 const same = (left, right) => stableJson(left) === stableJson(right);
+export function sceneMemoryCollectorCommandTimeoutMs(timeoutMs = COMMAND_TIMEOUT_MS) {
+  assert(Number.isInteger(timeoutMs) && timeoutMs > 0,
+    'SceneMemory collector command timeout must be a positive integer');
+  return Math.min(timeoutMs, COMMAND_TIMEOUT_MS);
+}
 const absoluteExecutable = (value) => typeof value === 'string' && value.length > 0
   && (value.startsWith('/') || /^[A-Za-z]:[\\/]/.test(value));
 const EDGE_PRODUCT = /^Edg\/(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/;
@@ -644,7 +649,7 @@ function makeCollector(send, profile) {
   const evaluate = async (sessionId, expression, label, timeoutMs = COMMAND_TIMEOUT_MS) => {
     const response = await send('Runtime.evaluate', {
       expression, awaitPromise: true, returnByValue: true,
-    }, sessionId, { timeoutMs });
+    }, sessionId, { timeoutMs: sceneMemoryCollectorCommandTimeoutMs(timeoutMs) });
     return evaluationValue(response, `${profile} ${label}`);
   };
   const waitValue = async (
@@ -1295,7 +1300,7 @@ async function collectReloadCleanup({
     `${profile}: surface vista reload cleanup binding did not arm`, armed);
   const importOutcome = await collector.evaluate(sessionId,
     `window.__CF_SLICE__.api.importBlob(${JSON.stringify(veteranRaw)},'scenemem-reload-cleanup')`,
-    'request intentional replacement reload', ART_TIMEOUT_MS);
+    'request intentional replacement reload');
   productAssert(importOutcome === null,
     `${profile}: intentional replacement import was rejected`, importOutcome);
 

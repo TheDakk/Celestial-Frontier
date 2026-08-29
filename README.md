@@ -114,10 +114,14 @@ Edge
 rebaseline, recalibration or threshold change. That exact-source local Recovery certificate grants
 no whole-Gate, hosted, HUMAN or release authority.
 
-After the stable Phase-4 checkpoint, the queued visual pass applies the TikTok-inspired polish
-language across the entire deterministic universe—galaxies, systems, planets, every biome,
-creatures, plants, ships and effects—while preserving authored structure, identity and interaction
-geometry. No graphics upgrade is included in the current bounded product/oracle repair candidate.
+After the stable Phase-4 checkpoint, signed implementation `c55cc63…` applied the new polish
+language across the entire deterministic universe—galaxies, systems, planets, all 43 biomes,
+creatures, plants, fungi, microbes, ships and effects—while preserving authored structure, identity
+and interaction geometry. Signed clean descendant `a9d35cc…` then passed Layout 787/787 before
+SceneMemory stopped instrument-only: its reload proof mistakenly passed a 30-second semantic phase
+budget into a CDP command capped at five seconds. That immutable stop is preserved in `audits/`;
+Compendium and later stages did not run. The bounded repair changes only collector timeout wiring
+and producer identity, not product behavior, browser policy, samples, ceilings or numeric rulers.
 
 The current working tree otherwise completes the bounded source lanes that followed the retained
 Arc 5A checkpoint.

@@ -13,6 +13,7 @@ import {
   SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA,
   sceneMemoryBrowserAuthorityMatches,
   sceneMemoryBrowserCapabilityInventoryErrors,
+  sceneMemoryCollectorCommandTimeoutMs,
   sceneMemoryProfileRawBindingErrors,
   sceneMemoryShipyardOpenSettlementReasons,
   sceneMemoryVeteranRaw,
@@ -215,6 +216,16 @@ function surfaceTierSettlementBindingErrors(source: string): string[] {
     'surfaceVistaCacheEntriesMax: max((point) => point.surfaceVistaCacheEntries)',
     'errors.push(...sceneMemoryProfileRawBindingErrors(measurement)',
     "schema: 'cf-v2-scene-memory-input/v4'",
+  ];
+  return exactBindings.filter((binding) => !source.includes(binding));
+}
+
+function collectorTimeoutBindingErrors(source: string): string[] {
+  const exactBindings = [
+    'timeoutMs: sceneMemoryCollectorCommandTimeoutMs(timeoutMs)',
+    'return Math.min(timeoutMs, COMMAND_TIMEOUT_MS);',
+    "'request intentional replacement reload');",
+    'const deadline = performance.now() + ART_TIMEOUT_MS;',
   ];
   return exactBindings.filter((binding) => !source.includes(binding));
 }
@@ -691,5 +702,38 @@ describe('scene-memory terminal verifier', () => {
       expect(missing, binding).not.toBe(collectorSource);
       expect(surfaceTierSettlementBindingErrors(missing), binding).toContain(binding);
     }
+  });
+
+  it('keeps every collector command inside the transport cap while long phases retain their own deadline', () => {
+    expect(sceneMemoryCollectorCommandTimeoutMs()).toBe(5_000);
+    expect(sceneMemoryCollectorCommandTimeoutMs(30_000)).toBe(5_000);
+    expect(sceneMemoryCollectorCommandTimeoutMs(2_000)).toBe(2_000);
+    expect(() => sceneMemoryCollectorCommandTimeoutMs(0)).toThrow(
+      'SceneMemory collector command timeout must be a positive integer',
+    );
+    expect(() => sceneMemoryCollectorCommandTimeoutMs(1.5)).toThrow(
+      'SceneMemory collector command timeout must be a positive integer',
+    );
+    expect(collectorTimeoutBindingErrors(collectorSource)).toEqual([]);
+  });
+
+  it('negative controls: a transport-cap bypass or reload command widened to the phase budget turns red', () => {
+    const bypassed = collectorSource.replace(
+      'timeoutMs: sceneMemoryCollectorCommandTimeoutMs(timeoutMs)',
+      'timeoutMs',
+    );
+    expect(bypassed).not.toBe(collectorSource);
+    expect(collectorTimeoutBindingErrors(bypassed)).toContain(
+      'timeoutMs: sceneMemoryCollectorCommandTimeoutMs(timeoutMs)',
+    );
+
+    const widenedReload = collectorSource.replace(
+      "'request intentional replacement reload');",
+      "'request intentional replacement reload', ART_TIMEOUT_MS);",
+    );
+    expect(widenedReload).not.toBe(collectorSource);
+    expect(collectorTimeoutBindingErrors(widenedReload)).toContain(
+      "'request intentional replacement reload');",
+    );
   });
 });

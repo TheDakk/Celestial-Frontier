@@ -10,6 +10,38 @@ summary of it.
 
 ## Contents
 
+### Signed `a9d35cc…` universe-polish campaign — Layout PASS, SceneMemory instrument stop
+
+Signed clean source `a9d35cc795076a8903807d02ae011288ea5a639c` (tree
+`c2374dc04488654058919d0f539f770ea9e3e467`, parent
+`c55cc63ee3a8c9b761cfccb2de2ad108f46c6b4e`) stayed clean and unchanged through both completed
+stages. Layout `20260828-universe-polish-a9d35cc79507-layout` ran once with zero retries and passed
+all 787 sealed outcomes across ten viewports in 76,183 ms; its named verifier passed.
+
+SceneMemory `20260828-universe-polish-a9d35cc79507-scenemem` then ran once with zero retries and
+stopped terminal `instrument-fail` after 6,059 ms. The phone profile completed its initial sample,
+four warmups, all four measured cycles and BFCache proof. Before reload cleanup, the collector
+passed the 30,000 ms art-phase budget directly to `Runtime.evaluate`; the owned CDP transport
+correctly rejected that request because its command cap is 5,000 ms. Desktop collection,
+contract projection and all 44 outcomes therefore did not run. Browser, server and workspace-lock
+cleanup all passed. This is an instrument timeout-wiring failure, not a product verdict. The serial
+campaign stopped there, so Compendium, Slice, Glass and Recovery correctly did not run.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260829_000555600.json.gz`: 5,028 compressed bytes,
+  SHA-256 `f872b3c4914d893671d40055c0ed8dd4c7ff4d2b1e1bff4874991250d68b355b`; 106,976
+  decompressed bytes, SHA-256 `012bf5ed8fabf6e9c6bc6058a6933861c777bbac6e45dd8c6bfcd92fb3f0b37d`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_INSTRUMENT_FAILURE_20260829_000629495.json.gz`: 15,721
+  compressed bytes, SHA-256 `e88138914aa9c5f838aa9fcb3db3f7fb27621597ea21bd7439daaa78465d2f31`;
+  169,741 decompressed bytes, SHA-256
+  `3cdfe2f6bbece91010e641451c043783227676ad9f2b59f8f706ee505b8b1b73`.
+
+Both carriers were produced with deterministic `gzip -n -9`, pass gzip integrity and decompress
+byte-for-byte to their exact raw artifacts. The repair keeps each CDP command at or below the
+existing 5,000 ms transport cap while the separate 30,000 ms semantic phase deadline remains
+unchanged; it rebinds only producer identity and does not recalibrate a numeric ruler. Any repaired
+evidence must start a new exact-source campaign from Layout with new run IDs rather than retrying
+this immutable stop. Edge `151.0.4129.107` / CDP `1.3` is provenance only.
+
 ### Signed `7cb0969…` Final13 campaign — complete exact-source automated chain PASS
 
 Signed clean source `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree

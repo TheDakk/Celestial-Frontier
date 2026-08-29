@@ -79,10 +79,18 @@ scene/resource ruler and adds one phone plus one desktop `surface-vista-lifecycl
 `surfaceVistaCachePixels` through cold zero, first mount, repeated surface/ascent, BFCache and
 reload-clear/replacement cleanup. The cache limit is semantically fixed at one entry / 412,800
 pixels. Contract, budget, tool and workflow mutation controls are browser-free green; there is no
-current-source 44/44 browser report yet.
+current-source 44/44 browser report yet. The first exact `a9d35cc…` campaign passed Layout 787/787,
+then SceneMemory stopped instrument-only after its complete phone measured/BFCache leg because the
+reload caller passed a 30-second phase budget into a CDP command capped at five seconds. The exact
+red carrier is preserved in `audits/`; desktop and downstream stages correctly did not run. The
+repair caps every command independently while retaining the separate 30-second settlement phase and
+rebinds producer identity without moving any ruler.
 
-This remains a local working-tree checkpoint. The converged full browser-free project battery, a
-fresh clean committed-source Slice → Glass → Recovery chain, fixed-seed before/after screenshots,
+The bounded instrument repair and its browser-free verification are complete locally: the full v2
+suite passed 163 files / 1,708 assertions with one intentional skip; 110 focused assertions,
+all three typechecks, `artunused`, exact current-producer derivation and independent review are
+green. A fresh clean repaired-source Layout → SceneMemory → Compendium → Slice → Glass → Recovery
+chain, fixed-seed before/after screenshots,
 HUMAN phone/desktop visual and assistive-technology review, and physical-device frame-time, heat,
 battery and true GPU/resource measurement are still required. No whole Gate, campaign completion,
 release, version bump or deployment is claimed.
