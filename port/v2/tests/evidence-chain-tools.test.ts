@@ -1,5 +1,5 @@
-import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import {
@@ -13,6 +13,14 @@ const tool = (name: string): string => fileURLToPath(
 const source = (name: string): string => readFileSync(tool(name), 'utf8');
 const workflow = readFileSync(
   fileURLToPath(new URL('../../../.github/workflows/test.yml', import.meta.url)),
+  'utf8',
+);
+const previewWorkflow = readFileSync(
+  fileURLToPath(new URL('../../../.github/workflows/dev-preview-package.yml', import.meta.url)),
+  'utf8',
+);
+const claudeInstructions = readFileSync(
+  fileURLToPath(new URL('../../../CLAUDE.md', import.meta.url)),
   'utf8',
 );
 const activeLines = (value: string): string[] => value.split(/\r?\n/)
@@ -33,13 +41,17 @@ const workflowStepLines = (value: string, stepName: string): string[] | null => 
   }
   return activeLines(lines.slice(start, end).join('\n'));
 };
-const workflowEvidenceChainErrors = (value: string): string[] => {
+const workflowEvidenceChainErrors = (
+  value: string,
+  archiveStepName = 'archive battery reports',
+): string[] => {
   const errors: string[] = [];
   const globallyRequired = [
     'CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice',
     'CF_V2_GLASSMATRIX_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass',
   ];
   const sliceCommands = [
+    'id: slice',
     'npm run smoke:ci',
     'slice_run_id="$(jq -er \'.run.id\' apps/game/smoke/slice-smoke-report.json)"',
     'test "$slice_run_id" = "$CF_V2_SLICE_SMOKE_RUN_ID"',
@@ -47,6 +59,7 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
     'node tools/smokereport.mjs --verify-run="$slice_run_id"',
   ];
   const glassCommands = [
+    'id: glass',
     'slice_run_id="${{ steps.slice.outputs.run_id }}"',
     'node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
     'glass_run_id="$(jq -er \'.run.id\' apps/game/smoke/glassmatrix-report.json)"',
@@ -67,7 +80,7 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
   }
   const slice = workflowStepLines(value, 'one-attempt real-browser slice smoke');
   const glass = workflowStepLines(value, 'one-attempt 12-viewport Glass matrix');
-  const archive = workflowStepLines(value, 'archive battery reports');
+  const archive = workflowStepLines(value, archiveStepName);
   const requireOrdered = (lines: string[] | null, required: string[]) => {
     let prior = -1;
     for (const item of required) {
@@ -92,8 +105,40 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
 const runSelftest = (name: string): string => execFileSync(
   process.execPath, [tool(name), '--selftest'], { encoding: 'utf8' },
 );
+const glassCurrentPointer = fileURLToPath(
+  new URL('../apps/game/smoke/glassmatrix-report.json', import.meta.url),
+);
 
 describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
+  it('keeps Claude on the immutable predecessor chain instead of the rejected bare Glass call', () => {
+    const callerErrors = (value: string): string[] => {
+      const errors: string[] = [];
+      if (!value.includes('Browser evidence is one immutable **Slice → Glass → recovery** chain')) {
+        errors.push('missing-chain');
+      }
+      if (!value.includes('pass its exact run ID to full Glass')) errors.push('missing-slice-id');
+      if (!value.includes('Stop after any nonzero, red, or instrument result')) {
+        errors.push('missing-stop-law');
+      }
+      for (const match of value.matchAll(
+        /(?:node tools\/glassmatrix\.mjs|npm run glassmatrix)([^\r\n]*)/g,
+      )) {
+        if (!/--(?:slice-run|verify-run|selftest)(?:=|\b)/.test(match[1] ?? '')) {
+          errors.push('bare-glass');
+        }
+      }
+      return errors;
+    };
+    expect(callerErrors(claudeInstructions)).toEqual([]);
+    expect(callerErrors(
+      `${claudeInstructions}\nRun node tools/glassmatrix.mjs before review.\n`,
+    )).toContain('bare-glass');
+    expect(callerErrors(claudeInstructions.replace(
+      'Browser evidence is one immutable **Slice → Glass → recovery** chain',
+      'Browser proof instructions removed.',
+    ))).toContain('missing-chain');
+  });
+
   it('keeps immutable Slice evidence, interruption red, and its named verifier mutation-sensitive', () => {
     const output = runSelftest('smokereport.mjs');
     const collector = source('smokereport.mjs');
@@ -107,9 +152,10 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(collector).toContain('automaticRetries: 0');
   });
 
-  it('requires an exact clean Slice predecessor for full Glass and binds the newest release semantics in both directions', () => {
-    const output = runSelftest('glassmatrix.mjs');
-    const collector = source('glassmatrix.mjs');
+ it('requires an exact clean Slice predecessor for full Glass and binds the newest release semantics in both directions', () => {
+   const output = runSelftest('glassmatrix.mjs');
+   const collector = source('glassmatrix.mjs');
+    const slice = source('slicesmoke.mjs');
     expect(output).toContain('exact clean Slice predecessor accepted');
     expect(output).toContain('stale/interrupted/dirty/wrong/targeted/missing/mismatched bindings rejected');
     expect(output).toContain('physical repository + actual full HEAD accepted; required Git failure and empty/malformed/wrong hosted SHA rejected');
@@ -118,8 +164,56 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(collector).toContain('Equipped capture-chance gear is included in the shown odds at +1.5 percentage points per point before the 95% overall chance ceiling, with its contribution capped at +25 percentage points; first contact remains unavailable');
     expect(collector).toContain('The shown odds ignore equipped capture-chance gear.');
     expect(collector).toContain('A wrong-world detour keeps only its real Close available, and Escape dismisses it without abandoning Sol or the lesson');
-    expect(collector).toContain('Escape from a wrong-world detour abandons Sol and the lesson.');
-  });
+   expect(collector).toContain('Escape from a wrong-world detour abandons Sol and the lesson.');
+    for (const contract of [slice, collector]) {
+      expect(contract).toContain('Both complete save outcomes—including exact Charter progress—are proved before the one draw');
+      expect(contract).toContain('A successful offspring banks Chapter 3’s Breed a hybrid bloodline goal in that same save');
+      expect(contract).toContain('A failed pairing also banks the Charter hybrid bloodline goal.');
+      expect(contract).toContain('an explorer-requested call from one exact owned-fauna detail');
+      expect(contract).toContain('Browsing, filtering, focusing, and returning through the Compendium never auto-play it');
+      expect(contract).toContain('The biosphere signal grants a discovery reward and changes the save.');
+    }
+    expect(slice).toContain('const V2_DRAFT_BULLET_COUNT = 73;');
+    expect(collector).toContain('expectedBulletCount=73');
+    expect(collector).toContain('exact five-section, 73-outcome development inventory');
+ });
+
+  it('rejects invalid full Glass invocations without changing the current evidence pointer', () => {
+    const before = existsSync(glassCurrentPointer)
+      ? readFileSync(glassCurrentPointer)
+      : null;
+    const cases = [
+      { args: [], message: 'full certifying Glass requires --slice-run=<immutable-Slice-run-id>' },
+      { args: ['--slice-run=not/a/run/id'], message: 'invalid Slice run ID' },
+    ];
+    for (const control of cases) {
+      const outcome = spawnSync(process.execPath, [tool('glassmatrix.mjs'), ...control.args], {
+        encoding: 'utf8',
+      });
+      const after = existsSync(glassCurrentPointer)
+        ? readFileSync(glassCurrentPointer)
+        : null;
+      expect(outcome.status, control.message ?? control.args[0]).toBe(2);
+      if (control.message) expect(outcome.stderr).toContain(control.message);
+      expect(after, control.message ?? control.args[0]).toEqual(before);
+    }
+    const collector = source('glassmatrix.mjs');
+    const runStart = collector.indexOf("const releaseLock = acquireWorkspaceLock('v2 responsive glass matrix')");
+    const predecessorPreflight = collector.indexOf(
+      'const sliceVerification = verifySliceRunEvidence(selectedSliceRunId, {',
+      runStart,
+    );
+    const immutableReservation = collector.indexOf('atomicCreateFile(artifacts.report', runStart);
+    const reservationOwned = collector.indexOf('runArtifactReserved = true;', runStart);
+    const pointerPublication = collector.indexOf(
+      'atomicWriteJson(currentReportPath, sentinel)',
+      runStart,
+    );
+    expect(predecessorPreflight).toBeGreaterThan(runStart);
+    expect(predecessorPreflight).toBeLessThan(immutableReservation);
+    expect(immutableReservation).toBeLessThan(reservationOwned);
+    expect(reservationOwned).toBeLessThan(pointerPublication);
+  }, 15_000);
 
   it('requires the exact immutable Slice+Glass pair for recovery and preserves one-attempt verification', () => {
     const output = runSelftest('arc4recovery.mjs');
@@ -142,6 +236,10 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
 
   it('threads the exact Slice ID through hosted Glass and retains immutable carriers', () => {
     expect(workflowEvidenceChainErrors(workflow)).toEqual([]);
+    expect(workflowEvidenceChainErrors(
+      previewWorkflow,
+      'upload structured browser evidence',
+    )).toEqual([]);
 
     const bareGlass = workflow.replace(
       'node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
@@ -150,6 +248,26 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(workflowEvidenceChainErrors(bareGlass)).toContain(
       'missing-or-duplicate:node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
     );
+    const previewBareGlass = previewWorkflow.replace(
+      'node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
+      'npm run glassmatrix',
+    );
+    expect(workflowEvidenceChainErrors(
+      previewBareGlass,
+      'upload structured browser evidence',
+    )).toContain(
+      'missing-or-duplicate:node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
+    );
+    const previewMissingSliceId = previewWorkflow.replace('        id: slice\n', '');
+    expect(workflowEvidenceChainErrors(
+      previewMissingSliceId,
+      'upload structured browser evidence',
+    )).toContain('missing-or-duplicate:id: slice');
+    const previewWrongGlassId = previewWorkflow.replace('        id: glass\n', '        id: stale-glass\n');
+    expect(workflowEvidenceChainErrors(
+      previewWrongGlassId,
+      'upload structured browser evidence',
+    )).toContain('missing-or-duplicate:id: glass');
     const pointerOnly = workflow
       .replace('            port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json\n', '')
       .replace('            port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log\n', '')

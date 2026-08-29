@@ -147,6 +147,42 @@ function bootErrors(source: string): string[] {
   const arc5At = load.indexOf('const prepared = prepareArc5OwnershipMigration({');
   const runtimeAt = load.indexOf('return createF4RuntimeAuthority({');
   if (!(arc4At >= 0 && arc5At > arc4At && runtimeAt > arc5At)) errors.push('boot-owner-order');
+  const arc4 = section(
+    load,
+    '  /* A legacy-v1 Training checkpoint still owns the Compendium fields',
+    "  /* Arc 5's compact source-bound manifest",
+  );
+  const arc5BeforeArc4 = arc4.indexOf('const arc5BeforeArc4 = readArc5OwnershipMigration(');
+  const arc4Prepare = arc4.indexOf('const prepared = prepareArc4AppBootstrap({', arc5BeforeArc4);
+  const loadedArc5 = arc4.indexOf("} else if (arc5BeforeArc4.kind === 'loaded') {", arc4Prepare);
+  const guardianStage = arc4.indexOf('const staged = stageGuardianLegacyCompanionSliceV1({', loadedArc5);
+  const guardianSource = arc4.indexOf('source: priorProductCandidate ?? save,', guardianStage);
+  const guardianOwnership = arc4.indexOf('ownership: arc5BeforeArc4.state,', guardianSource);
+  const guardianExtensions = arc4.indexOf('extensions: initialExtensions,', guardianOwnership);
+  const guardianChanged = arc4.indexOf('if (staged.changed) {', guardianExtensions);
+  const guardianVerification = arc4.indexOf(
+    "arc4OwnershipBootstrapVerification = 'guardian-slice';",
+    guardianChanged,
+  );
+  const fullMatcher = arc4.indexOf('} else if (arc4GuardianLegacyOwnershipMirrorMatchesV1(', loadedArc5);
+  if (!(arc5BeforeArc4 >= 0 && arc4Prepare > arc5BeforeArc4
+    && loadedArc5 > arc4Prepare && guardianStage > loadedArc5
+    && guardianSource > guardianStage && guardianOwnership > guardianSource
+    && guardianExtensions > guardianOwnership && guardianChanged > guardianExtensions
+    && guardianVerification > guardianChanged && fullMatcher > guardianVerification)
+    || (arc4.match(/arc4OwnershipBootstrapVerification = 'guardian-slice';/gu) ?? []).length !== 1
+    || (arc4.match(/arc4OwnershipBootstrapVerification = 'full-composite';/gu) ?? []).length !== 2
+    || !ensure.includes(
+      "const ownershipBootstrapVerificationAtCommit = arc4OwnershipBootstrapVerification;",
+    )
+    || !ensure.includes(
+      "ownershipBootstrapVerificationAtCommit === 'guardian-slice'\n            ? guardianLegacyCompanionSliceMatchesV1(",
+    )
+    || !ensure.includes(
+      "ownershipBootstrapVerificationAtCommit === 'full-composite'\n              && arc4GuardianLegacyOwnershipMirrorMatchesV1(",
+    )) {
+    errors.push('boot-arc5-delta-preservation');
+  }
   for (const needle of [
     'arc5OwnershipState = null;',
     'arc5OwnershipEvidence = null;',
@@ -507,6 +543,7 @@ describe('Arc 5 Main authority wiring', () => {
       const arc4Live = stageArc4BootstrapLegacyProjection({
         source: durableSave,
         state: arc4.state,
+        extensions: arc4.extensions,
         registry: REGISTRY,
         codecNow: NOW,
       });
@@ -759,6 +796,33 @@ describe('Arc 5 Main authority wiring', () => {
       'const loaded = null && committedArc5OwnershipState(',
     );
     expect(bootErrors(verify)).toContain('boot-postcommit-verification');
+
+    const deltaOwner = replaceInSectionExact(
+      mainSource,
+      'async function loadSave(',
+      '\n/* ---- boot ---- */',
+      'ownership: arc5BeforeArc4.state,',
+      'ownership: arc5OwnershipState!,',
+    );
+    expect(bootErrors(deltaOwner)).toContain('boot-arc5-delta-preservation');
+
+    const deltaGate = replaceInSectionExact(
+      mainSource,
+      'async function loadSave(',
+      '\n/* ---- boot ---- */',
+      "} else if (arc5BeforeArc4.kind === 'loaded') {",
+      "} else if (arc5BeforeArc4.kind === 'absent') {",
+    );
+    expect(bootErrors(deltaGate)).toContain('boot-arc5-delta-preservation');
+
+    const deltaVerification = replaceInSectionExact(
+      mainSource,
+      'async function ensureBootAuthorityCommit(',
+      '\nfunction f4RuntimeMayMutate(',
+      '? guardianLegacyCompanionSliceMatchesV1(',
+      '? arc4GuardianLegacyOwnershipMirrorMatchesV1(',
+    );
+    expect(bootErrors(deltaVerification)).toContain('boot-arc5-delta-preservation');
 
     const lifecycle = replaceInSectionExact(
       mainSource,

@@ -42,6 +42,7 @@ import {
 import {
   navFromCanonicalCF1Address,
   resolveCF1WorldAddress,
+  systemScene,
   type CanonicalCF1WorldAddress,
 } from '@cf/scene';
 import {
@@ -70,6 +71,8 @@ const REGISTRY = JSON.parse(fs.readFileSync(
 const NOW = 1_753_900_060_000;
 const HOME_GALAXY = Object.freeze({ seed: 999, x: 90, y: -60 });
 const SOL = Object.freeze({ seed: 424242, x: 560, y: 170 });
+const FOREIGN_GALAXY = Object.freeze({ seed: 394332036, x: -300.95, y: 175.47 });
+const FOREIGN_STAR = Object.freeze({ seed: 676840317, x: 27.3, y: -24.6 });
 
 function baseState(): SaveStateV2 {
   const imported = importSaveV2('{}', REGISTRY, NOW);
@@ -84,16 +87,29 @@ function addressOf(): CanonicalCF1WorldAddress {
   return resolved.address;
 }
 
-function captureContext(): Readonly<{
+function alienLivingAddress(): CanonicalCF1WorldAddress {
+  for (const planet of systemScene(FOREIGN_STAR.seed).planets) {
+    const resolved = resolveCF1WorldAddress({
+      galaxy: FOREIGN_GALAXY,
+      star: FOREIGN_STAR,
+      planet: { seed: planet.seed },
+    });
+    if (!resolved.ok) continue;
+    const roster = canonicalWorldRoster(resolved.address, 0);
+    if (roster.ok && roster.roster.view.total > 0) return resolved.address;
+  }
+  throw new Error('alien Charter action fixture has no living world');
+}
+
+function captureContext(address: CanonicalCF1WorldAddress = addressOf()): Readonly<{
   address: CanonicalCF1WorldAddress;
   nav: unknown;
   roster: CanonicalWorldRoster;
 }> {
-  const address = addressOf();
   const roster = canonicalWorldRoster(address, 0);
-  if (!roster.ok) throw new Error(`Earth roster fixture failed: ${roster.reason}`);
+  if (!roster.ok) throw new Error(`world roster fixture failed: ${roster.reason}`);
   const nav = navFromCanonicalCF1Address(address);
-  if (!nav.ok) throw new Error(`Earth nav fixture failed: ${nav.reason}`);
+  if (!nav.ok) throw new Error(`world nav fixture failed: ${nav.reason}`);
   return Object.freeze({ address, nav: nav.state, roster: roster.roster });
 }
 
@@ -294,7 +310,10 @@ describe('Arc 4 headless durable capture action', () => {
       }));
       expect(outcome).toMatchObject({
         durability: 'committed', convergence: 'none',
-        settlement: { plan: { verb: row.verb, hit: row.hit, spent: 1 } },
+        settlement: {
+          plan: { verb: row.verb, hit: row.hit, spent: 1 },
+          charterBioscanBanked: false,
+        },
       });
       expect(outcome.transaction.receipt).toMatchObject({
         ordinal: 0, kind: 'capture-attempt', witness: outcome.settlement.plan.witness,
@@ -321,6 +340,7 @@ describe('Arc 4 headless durable capture action', () => {
       expect(verified).toMatchObject({
         kind: 'verified', durability: 'committed', convergence: 'none',
         plan: { verb: row.verb, hit: row.hit },
+        charterBioscanBanked: false,
       });
       const loaded = readArc4Ownership(
         fixture.runtime.extensions,
@@ -349,6 +369,43 @@ describe('Arc 4 headless durable capture action', () => {
       }
       await fixture.runtime.release();
     }
+  }, 20_000);
+
+  it('commits, verifies, reloads, and publishes one first-world alien Charter bioscan', async () => {
+    const context = captureContext(alienLivingAddress());
+    const state = baseState();
+    state.ascCh = 1;
+    state.items = [['igdrive', 1]];
+    const fixture = await runtimeFixture(HIT_SEED, state);
+    const outcome = committed(await commitArc4CaptureAttemptV1({
+      runtime: fixture.runtime,
+      ownershipV2: fixture.ownershipV2,
+      state: fixture.state,
+      ...context,
+      presentationFence: presentationFence(context, fixture.runtime.extensions),
+      verb: 'tame',
+      codecNow: NOW,
+    }));
+    expect(outcome.settlement.charterBioscanBanked).toBe(true);
+    expect(outcome.transaction.state.ascProg['c2-scan']).toBe(1);
+    const verified = verifyArc4CommittedCaptureV1({
+      runtimeExtensions: fixture.runtime.extensions,
+      committed: outcome,
+    });
+    expect(verified).toMatchObject({
+      kind: 'verified', durability: 'committed', convergence: 'none',
+      charterBioscanBanked: true,
+    });
+    const reloaded = importSaveV2(outcome.transaction.saved.legacyV4Raw, REGISTRY, NOW);
+    expect(reloaded.ok).toBe(true);
+    if (reloaded.ok) expect(reloaded.state.ascProg['c2-scan']).toBe(1);
+
+    const target = baseState();
+    publishArc4CaptureFields(target, outcome.transaction.state);
+    expect(target.ascCh).toBe(outcome.transaction.state.ascCh);
+    expect(target.ascProg).toEqual({ 'c2-scan': 1 });
+    expect(target.ascProg).not.toBe(outcome.transaction.state.ascProg);
+    await fixture.runtime.release();
   }, 20_000);
 
   it('captures input once, ignores after-call mutation, and never invokes input accessors', async () => {
@@ -559,8 +616,12 @@ describe('Arc 4 headless durable capture action', () => {
   }, 20_000);
 
   it('does not expose or register evidence when storage fails after settlement', async () => {
-    const context = captureContext();
-    const fixture = await runtimeFixture(HIT_SEED, baseState(), true);
+    const context = captureContext(alienLivingAddress());
+    const state = baseState();
+    state.ascCh = 1;
+    state.items = [['igdrive', 1]];
+    state.ascProg = { sentinel: 37 };
+    const fixture = await runtimeFixture(HIT_SEED, state, true);
     const beforeArc5 = readArc5OwnershipMigration(
       fixture.runtime.extensions,
       SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -585,6 +646,7 @@ describe('Arc 4 headless durable capture action', () => {
     expect('evidence' in outcome).toBe(false);
     expect(fixture.receiptCas()).toBe(1);
     expect(await fixture.repository.readReceipt(0)).toBeUndefined();
+    expect(fixture.state.ascProg).toEqual({ sentinel: 37 });
     expect(readArc5OwnershipMigration(
       fixture.runtime.extensions,
       SCENE_OWNERSHIP_ADDRESS_RESOLVER,
@@ -880,6 +942,9 @@ describe('Arc 4 headless durable capture action', () => {
     expect(check(withCommittedState((state) => {
       state.stats.essenceEarned = (state.stats.essenceEarned ?? 0) + 1;
     }))).toMatchObject({ detail: 'stardust-earned-mismatch' });
+    expect(check(withCommittedState((state) => {
+      state.ascProg['c2-scan'] = (state.ascProg['c2-scan'] ?? 0) + 1;
+    }))).toMatchObject({ detail: 'charter-bioscan-mismatch' });
     expect(check({
       ...outcome,
       transaction: { ...outcome.transaction },
@@ -957,6 +1022,7 @@ describe('Arc 4 bootstrap staging and targeted publication', () => {
     const staged = stageArc4BootstrapLegacyProjection({
       source,
       state: prepared.state,
+      extensions: {},
       registry: REGISTRY,
       codecNow: NOW,
     });
@@ -975,8 +1041,17 @@ describe('Arc 4 bootstrap staging and targeted publication', () => {
     expect(target.logMap).toBe(atlas);
     expect(target.customNames).toContainEqual(['p133', 'Earth Prime']);
     expect(target.customNames).toContainEqual(['c-orphan', 'Keep Me']);
-    publishArc4CaptureFields(target, { ...staged.candidate, essence: 7 });
+    const committedCapture = {
+      ...staged.candidate,
+      essence: 7,
+      ascCh: 2,
+      ascProg: { 'c2-scan': 1 },
+    };
+    publishArc4CaptureFields(target, committedCapture);
     expect(target.essence).toBe(7);
+    expect(target.ascCh).toBe(2);
+    expect(target.ascProg).toEqual({ 'c2-scan': 1 });
+    expect(target.ascProg).not.toBe(committedCapture.ascProg);
   });
 
   it('keeps a legacy-protected carrier reward-free and byte-detached', () => {
@@ -993,6 +1068,7 @@ describe('Arc 4 bootstrap staging and targeted publication', () => {
     const staged = stageArc4BootstrapLegacyProjection({
       source,
       state: protectedState,
+      extensions: {},
       registry: REGISTRY,
       codecNow: NOW,
     });

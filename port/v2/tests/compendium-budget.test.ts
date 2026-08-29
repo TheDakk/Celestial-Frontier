@@ -198,7 +198,7 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  'cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78';
+  '7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4';
 const EXPECTED_COLLECTOR_AUTHORITY =
   'c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab';
 const HISTORICAL_RULER_COLLECTOR_AUTHORITY =
@@ -209,6 +209,28 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY =
   'f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224';
 const RULER_PRODUCER_AUTHORITY =
   'd97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271';
+const RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
+  schema: 'cf-v2-compendium-producer-authority/v1',
+  sha256: RULER_PRODUCER_AUTHORITY,
+  inputs: Object.freeze({
+    index: Object.freeze({
+      relativePath: 'index.html',
+      sha256: '259c4ad7beff2242c01cedb1376b5b73d3c5e8663d5f322bb05a1c3e236efaa2',
+    }),
+    owner: Object.freeze({
+      relativePath: 'assets/main-kfW1fe9k.js',
+      sha256: '5d166994ccf89218f74d56b0bd537310c18353671eb2246f614abd931d3ecffb',
+    }),
+    worker: Object.freeze({
+      relativePath: 'assets/species-art.worker-szNwNYEk.js',
+      sha256: 'cebbbb892d71828eef1b5d90e2c601f0f197ba01d080ceb9050ee1f252848cdf',
+    }),
+    painter: Object.freeze({
+      relativePath: 'assets/speciespainter-EmdmLeiA.js',
+      sha256: '570cb72699a577bda85502be46b54bcbdec9ffa41df5702bd5cb865f4bf08eba',
+    }),
+  }),
+});
 const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v1',
   sha256: HISTORICAL_RULER_PRODUCER_AUTHORITY,
@@ -234,18 +256,18 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  'd97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271';
+  '053f520c5149e66cbf1ee843c0873a531757b598f5830a7712a728537607890d';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v1',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: '259c4ad7beff2242c01cedb1376b5b73d3c5e8663d5f322bb05a1c3e236efaa2',
+      sha256: 'cd914fb628110dc0b634aa5c81d571f26ff4af0f2d5b7ef681e97c35785416fe',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/main-kfW1fe9k.js',
-      sha256: '5d166994ccf89218f74d56b0bd537310c18353671eb2246f614abd931d3ecffb',
+      relativePath: 'assets/main-R61RQSgI.js',
+      sha256: 'd0adf633523fa61e12f32967454dda479685190ff63b91033ad92c3be32217bc',
     }),
     worker: Object.freeze({
       relativePath: 'assets/species-art.worker-szNwNYEk.js',
@@ -806,8 +828,8 @@ describe('Arc 1A Compendium budget authority', () => {
       sha256: currentUniversePolishFailureEvidence.budgetSha256,
       browserAuthority: EXPECTED_BROWSER_AUTHORITY,
       browserAuthorityMatch: true,
-      producerAuthority: EXPECTED_PRODUCER_AUTHORITY_RECORD,
-      observedProducerAuthority: EXPECTED_PRODUCER_AUTHORITY_RECORD,
+      producerAuthority: RULER_PRODUCER_AUTHORITY_RECORD,
+      observedProducerAuthority: RULER_PRODUCER_AUTHORITY_RECORD,
       producerAuthorityMatch: true,
     });
     expect(report.budget.producerAuthority).toMatchObject({
@@ -1102,6 +1124,10 @@ describe('Arc 1A Compendium budget authority', () => {
     calibrationRequired.status = 'calibration-required';
     calibrationRequired.ceilings = null;
     calibrationRequired.calibration.samples = { phone: [], desktop: [] };
+    calibrationRequired.calibration.rulerAuthority.measurementAuthoritySha256 =
+      EXPECTED_MEASUREMENT_AUTHORITY;
+    calibrationRequired.calibration.rulerAuthority.producerAuthoritySha256 =
+      EXPECTED_PRODUCER_AUTHORITY;
     calibrationRequired.pairedBrokenBaseline.status = 'measurement-required';
     calibrationRequired.pairedBrokenBaseline.collectorCommit = null;
     calibrationRequired.pairedBrokenBaseline.samples = { phone: [], desktop: [] };

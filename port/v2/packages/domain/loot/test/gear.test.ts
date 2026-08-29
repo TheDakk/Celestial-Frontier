@@ -3,6 +3,9 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import {
   CORE_GEAR_BASES_V1,
+  EXCEPTIONAL_CRAFT_EFFECT_KEYS_V1,
+  EXCEPTIONAL_CRAFT_MODIFIER_DEFINITIONS_V1,
+  EXCEPTIONAL_CRAFT_MODIFIER_POLICY_VERSION,
   LEGACY_AFFIX_DEFINITIONS,
   createGearInstance,
   decodeGearInstance,
@@ -15,6 +18,7 @@ import {
   parseGearInstanceId,
   parseGearSourceActionId,
   rollLegacyAffix,
+  rollExceptionalCraftModifier,
   type GearGenerationPlan,
   type GearInstance,
   type LegacyGearMigrationInput,
@@ -175,6 +179,49 @@ describe('@cf/domain-loot — receipt identity and GearInstance authority', () =
     expect(() => rollLegacyAffix(42, 15)).toThrow('legacy affix tier');
   });
 
+  it('derives one versioned exceptional-craft modifier from its recipe source, receipt, and seed', () => {
+    const craftSource = makeGearSourceActionId({
+      kind: 'craft', ownerId: 'legacy-v1.8.9-items', actionKey: 'recipe:rig1',
+      receiptId: 'receipt:33',
+    });
+    const modifier = rollExceptionalCraftModifier('rig1', craftSource, 0x1234_5678);
+    const replay = rollExceptionalCraftModifier('rig1', craftSource, 0x1234_5678);
+    const definition = EXCEPTIONAL_CRAFT_MODIFIER_DEFINITIONS_V1.find(
+      ({ id }) => id === modifier.affixId,
+    );
+    expect(EXCEPTIONAL_CRAFT_MODIFIER_POLICY_VERSION).toBe(1);
+    expect(EXCEPTIONAL_CRAFT_EFFECT_KEYS_V1).toEqual(['yield', 'strike', 'contact']);
+    expect(EXCEPTIONAL_CRAFT_MODIFIER_DEFINITIONS_V1).toHaveLength(3);
+    expect(modifier).toEqual({ affixId: 'exceptional-v1:yield', tier: 1, value: 0.21 });
+    expect(replay).toEqual(modifier);
+    expect(definition).toBeDefined();
+    expect(modifier.tier).toBe(1);
+    expect(modifier.value).toBeGreaterThanOrEqual(definition!.min);
+    expect(modifier.value).toBeLessThanOrEqual(definition!.max);
+
+    const exceptional = createGearInstance(craftSource, 0, {
+      ...generationPlan([], 0x1234_5678), craftedModifier: modifier,
+    });
+    expect(exceptional.craftedModifier).toEqual(modifier);
+    const encoded = encodeGearInstance(exceptional);
+    expect(encodeGearInstance(decodeGearInstance(encoded))).toBe(encoded);
+    expect(encodeGearInstance(createGearInstance(source, 0, generationPlan())))
+      .not.toContain('craftedModifier');
+
+    expect(() => createGearInstance(craftSource, 0, {
+      ...generationPlan([], 0x1234_5678),
+      craftedModifier: { ...modifier, tier: modifier.tier + 1 },
+    })).toThrow('generation vector');
+    expect(() => rollExceptionalCraftModifier('rig1', source, 0x1234_5678))
+      .toThrow('recipe/receipt-bound');
+    const foreignOwner = makeGearSourceActionId({
+      kind: 'craft', ownerId: 'parallel-recipe-owner', actionKey: 'recipe:rig1',
+      receiptId: 'receipt:33',
+    });
+    expect(() => rollExceptionalCraftModifier('rig1', foreignOwner, 0x1234_5678))
+      .toThrow('recipe/receipt-bound');
+  });
+
   it('enforces compatibility, uniqueness, and the 0–2 prefix / 0–2 suffix caps', () => {
     for (const naturalAffixes of [[], fourNaturalAffixes] as const) {
       const instance = createGearInstance(source, naturalAffixes.length, generationPlan(naturalAffixes));
@@ -294,11 +341,11 @@ describe('@cf/domain-loot — receipt identity and GearInstance authority', () =
 
     const unauthorizedCrafted = JSON.parse(encoded) as Record<string, unknown>;
     unauthorizedCrafted.craftedModifier = { affixId: 'yield', tier: 1, value: 0.1 };
-    expect(() => decodeGearInstance(JSON.stringify(unauthorizedCrafted))).toThrow('unknown or missing');
+    expect(() => decodeGearInstance(JSON.stringify(unauthorizedCrafted))).toThrow('unknown or outside');
 
     const unauthorizedDrawback = JSON.parse(encoded) as Record<string, unknown>;
     unauthorizedDrawback.drawback = { affixId: 'land', tier: 1, value: -1 };
-    expect(() => decodeGearInstance(JSON.stringify(unauthorizedDrawback))).toThrow('unknown or missing');
+    expect(() => decodeGearInstance(JSON.stringify(unauthorizedDrawback))).toThrow('drawback requires');
 
     const unauthorizedUpgrade = JSON.parse(encoded) as Record<string, unknown>;
     unauthorizedUpgrade.upgrade = 1;
@@ -329,6 +376,6 @@ describe('@cf/domain-loot — receipt identity and GearInstance authority', () =
     const sourceText = readFileSync(fileURLToPath(new URL('../src/gear.ts', import.meta.url)), 'utf8');
     expect(sourceText).not.toMatch(/Math\.random\s*\(/);
     expect(sourceText).not.toMatch(/Date\.now\s*\(/);
-    expect(sourceText).toContain('Occurrence is deliberately outside this module');
+    expect(sourceText).toContain('Occurrence and fixed-recipe eligibility are deliberately outside this');
   });
 });

@@ -14,8 +14,39 @@ band restored via the balance sim, two dead relics retuned as sidegrades, sim jo
 **Build phase:** the legacy Forge economy and additive ship image are bundled in v1.8.9;
 the current v2 exact-instance Inventory and Arc 3 Engineering actions are recorded below.
 Authored variable crafting, new loot-occurrence tables, upgrades/sockets and later economy depth remain open.
-**Current v2 overlay matches code as of:** 2026-08-27.
+**Current v2 overlay matches code as of:** 2026-08-29.
 **Related:** `RARITY_UNIVERSAL.md`, `FORGE_AND_DISCOVERY.md`, `ECONOMY_LOOT_CRAFTING.md`.
+
+> **2026-08-29 current Pureforged overlay:** eligible fixed slotted recipes now remain
+> actionable when every direct material unit is paid from exceptional stock. Exceptional units are
+> spent first, and an all-exceptional direct-material bill deterministically binds one namespaced
+> `exceptional-v1` modifier to the exact fixed-recipe authority, receipt, generation seed, and
+> `GearInstance`; mixed or ordinary payment creates the unchanged ordinary item. Policy v1 rolls
+> only the three effects with current gameplay consumers—mining yield, rich-strike chance, or
+> capture-contact points—using their existing legacy magnitude ranges. Effects whose gameplay
+> systems are not connected cannot consume exceptional stock as a decorative bonus.
+> **Pureforged** is the current v2 player-facing name; the stable `exceptional-v1` identifier and
+> exceptional-material provenance remain internal compatibility facts rather than displayed gear tiers.
+> The exact-item Inventory inspector labels the axis **Pureforged modifier**, presents its friendly
+> effect and magnitude, and does not expose the internal identifier as the gear's name.
+>
+> The strict Arc 2 codec, F3/F4 transaction, exact-item comparison/search, capability projection,
+> reload, duplicate-receipt refusal, and Slice/Glass evidence oracles preserve and replay that same
+> modifier. Authored natural prefix/suffix pools, drawbacks, upgrades, sockets, vendors, random
+> drop occurrence, and broader variable-crafting policy remain open. The historical Arc 2/3
+> boundaries below describe what was unavailable at those checkpoints and are superseded only for
+> this narrow fully exceptional fixed-gear path.
+
+> **2026-08-29 Arc 6 conquest-affix decision ledger:** the exact mature oracle is implemented and
+> tested as evidence: canonical worn-slot order, 40% `0x5901` gate, `0x5902` selection,
+> planet/tier-seeded six-effect roll, and legacy `replace-slot-bound-affix`. What is **not** decided
+> is how that post-construction, role-less replacement coexists with a v2 `GearInstance`'s natural
+> prefix/suffix and optional Pureforged crafted modifier, or which axis its gameplay consumers read.
+> Legacy had only one slot/base-bound affix, so mapping it to a prefix, suffix, crafted modifier or
+> additive stack would invent semantics. Arc 6 therefore leaves a gated conquest imbue as an
+> explicit pre-CAS refusal. Closure requires one authored coexistence/effect/projection rule plus
+> replacement, duplicate, reload and natural/crafted-conflict controls; numeric gate/roll tuning is
+> not open.
 
 > **2026-08-27 current Deep-Scanner correction:** the exact eligible scanned, registered lifeless
 > non-Earth world now exposes one passive **Mineral veins** Survey row after owned `scan1`. It lists

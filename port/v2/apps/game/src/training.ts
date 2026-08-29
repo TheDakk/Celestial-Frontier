@@ -1,11 +1,12 @@
 /* training.ts — FIELD TRAINING, the framework + the first arc (main.js
-   TUT_STEPS, texts VERBATIM). The slice runs the six lessons its systems
-   support today — welcome · find-earth · survey-tour · atlas-add ·
-   atlas-open · land — then graduates with an honest handoff to the live
-   Engineering board, Planetside capture, and the real-fauna Compendium's
-   narrow exact-instance Feed handoff. Capture and Feed remain outside this
-   deliberately minimal navigation drill; taste/growth/care/breed/duel remain
-   outside the current player boundary. Carried laws: the lesson card publishes --tut-bot (CF1805-01:
+   TUT_STEPS as behavioral reference). The slice keeps its six hands-on
+   navigation lessons — welcome · find-earth · survey-tour · atlas-add ·
+   atlas-open · land — then adds bounded READ-ONLY orientation for the live
+   Planetside, Engineering, Compendium, Records, sharing, and Guardian/combat
+   surfaces. No capture, inventory spend, crafting, companion mutation, or
+   combat result may masquerade as Training progress: those lessons require a
+   separately versioned sandbox authority before they can become hands-on.
+   Carried laws: the lesson card publishes --tut-bot (CF1805-01:
    any surface that can rise above the card must clear it) and NEVER covers
    the dock (CF1806-02's family); a `spot` gets the spotlight ring; `allow`
    locks the chrome down to the lesson's own affordances (the canvas stays
@@ -20,6 +21,8 @@ export interface TutStep {
   btn?: string;
   spot?: string;
   allow?: string[];
+  /** Close the read-only board this card was touring before the next lesson. */
+  closePanelsAfter?: boolean;
   when?: (t: string, d: Record<string, unknown>) => boolean;
 }
 export type TrainingEndIntent = 'finish' | 'skip';
@@ -36,6 +39,11 @@ export interface TrainingDeps {
   complete: (intent: TrainingEndIntent) => Promise<TrainingEndResult>;
   closePanels: () => void;
 }
+
+const panelOpened = (id: 'shipyard' | 'codex' | 'rec') => (
+  type: string,
+  detail: Record<string, unknown>,
+): boolean => type === 'panel-open' && detail.id === id && detail.open === true;
 
 export function buildSteps(deps: TrainingDeps): TutStep[] {
   return [
@@ -58,7 +66,7 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
       when: (t, d) => t === 'atlas-add' && d.id === 'p133',
     },
     {
-      id: 'atlas-open', spot: '#dockatlas', allow: ['#dockatlas', '#railatlas', '#atlaspanel'],
+      id: 'atlas-open', spot: '#dockatlas,#railatlas', allow: ['#dockatlas', '#railatlas', '#atlaspanel'],
       text: () => 'Earth is charted — your Atlas’s first entry. Open the <b>Star Atlas</b> (the dock — or the right rail on desktop). Tapping a planet entry returns to its live system survey; <b>Land</b> remains your choice.',
       when: (t, d) => t === 'atlas-open' && !!d.open,
     },
@@ -68,8 +76,52 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
       when: (t, d) => t === 'landfall' && d.planetSeed === 133,
     },
     {
+      id: 'planetside-briefing', btn: 'Continue the tour',
+      text: () => 'Planetfall reveals the real <b>Planetside</b> biosphere after Training. <b>Tame</b>, <b>Scavenge</b>, and <b>Sample</b> each choose uniformly from the full eligible biosphere — never a preview row — and every hit or miss spends one shared Yield attempt. This card is orientation only: Field Training will not roll a capture or spend Yield.',
+    },
+    {
+      id: 'engineering-open', spot: '#dockshipyard,#railshipyard',
+      allow: ['#dockshipyard', '#railshipyard', '#shipyardpanel'],
+      text: () => 'Meet the ship’s other half. Open <b>Engineering &amp; Shipyard</b> from the 🛠 control. Opening and inspecting this board changes nothing.',
+      when: panelOpened('shipyard'),
+    },
+    {
+      id: 'engineering-tour', spot: '#shipyardpanel', btn: 'Engineering understood',
+      allow: ['#shipyardpanel [data-pnx]', '#shipyardpanel details > summary'],
+      closePanelsAfter: true,
+      text: () => 'Engineering shows only source-proven opportunities. A grounded lifeless world can expose <b>Mine</b>; an eligible star can expose <b>Skim</b>; Research and the fixed Fabricator enable only connected effects. An eligible slotted gear craft made entirely from exceptional direct materials may receive one deterministic <b>Pureforged</b> modifier. You may inspect the sections, but Training keeps every action button locked so no ore, Stardust, recipe, or inventory fact changes.',
+    },
+    {
+      id: 'compendium-open', spot: '#dockcodex,#railcodex',
+      allow: ['#dockcodex', '#railcodex', '#codexpanel'],
+      text: () => 'Now open the <b>Compendium</b>. It is the bounded catalogue of life you have actually recorded; an empty new expedition is honest, not a training cache.',
+      when: panelOpened('codex'),
+    },
+    {
+      id: 'compendium-tour', spot: '#codexpanel', btn: 'Companions understood',
+      allow: ['#codexpanel [data-pnx]'],
+      closePanelsAfter: true,
+      text: () => 'Captured fauna details expose the live exact-instance companion controls after Training: <b>Listen</b>; <b>Feed</b> one eligible companion with one exact flora lot; nonlethal <b>Breed</b> with active-play Recovery; identity-only <b>Rename</b>; and the role-only <b>Field Scout</b> selector. Field Scout can name, switch, or stand down one exact owned companion, but interception, Scout XP, dispatch, missions, care, bond, and friendly duels are not live yet. This tour changes none of those facts.',
+    },
+    {
+      id: 'records-open', spot: '#dockrecords,#railrecords',
+      allow: ['#dockrecords', '#railrecords', '#recpanel'],
+      text: () => 'Open <b>Expedition Records</b>. This is where durable exploration totals, achievement shelves, rank, and imported Journal history report what the universe has actually verified.',
+      when: panelOpened('rec'),
+    },
+    {
+      id: 'records-tour', spot: '#recpanel', btn: 'Records understood',
+      allow: ['#recpanel [data-pnx]'],
+      closePanelsAfter: true,
+      text: () => 'Records are evidence, not a reward fountain: aggregate milestones and the live exact-event achievements appear only after their owning transaction verifies. The remaining event joins and achievement reward claims stay unavailable instead of being guessed from counters.',
+    },
+    {
+      id: 'horizon', spot: '#primechip', btn: 'Show me the horizon',
+      text: () => 'Beyond Training, a landed world can offer a deterministic <b>Conquest</b> forecast. Its defender is the eligible Elemental Titan, otherwise the Apex Guardian, otherwise the world’s strongest fauna. A verified win can conquer the world; defeated Guardians and Titans join the Compendium and may return as champions, while losing one of those captured rulers is permanent. Titan victories claim the nine <b>Prime Signatures</b>, and the ninth opens the Frontier. The verified result then plays through the accessible <b>Combat Chronicle</b>; its battle-log Share changes no expedition fact.',
+    },
+    {
       id: 'grad', btn: 'Finish for now',
-      text: () => 'Well flown, Pathfinder. This short drill stays focused on real navigation: chart, travel, and land. Next, open <b>Engineering &amp; Shipyard</b> from the 🛠 control. A grounded lifeless world can expose <b>Mine</b>; a proven star with the right drive can expose <b>Skim</b>; Research and fixed Fabricator rows enable only actions whose effects are connected. On a living world, Planetside offers <b>Tame</b>, <b>Scavenge</b>, and <b>Sample</b>: each chooses uniformly from its eligible species across the full biosphere, not only the at-most-eight-row preview. All three share finite <b>Biosphere Yield</b>; a hit or miss spends 1 attempt, and the pool fully recovers at the next 20-minute active-play cycle, never while the game is closed. This navigation drill makes no capture attempt, so use those actions after Finish. Capture does not bank the Charter’s separate bioscan milestone; that writer remains unavailable. A real fauna Compendium detail can also <b>Feed</b> one exact unassigned companion below the 200-Meal cap with one exact flora lot through <b>Use 1</b>. This drill performs no meal; tastes, stat or Power growth, injury care, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable.',
+      text: () => 'Well flown, Pathfinder. This short drill stays focused on real navigation: chart, travel, and land; its board briefings are read-only. After Finish, a survey card’s <b>Share</b> prepares a verified CF1 world code, and pasting a valid CF1 code into Search follows its source-proven route when your ship and Prime reach allow it. On a living world, use <b>Tame</b>, <b>Scavenge</b>, and <b>Sample</b> after Finish: each chooses uniformly from its eligible species across the full biosphere, not only the at-most-eight-row preview. All three share finite <b>Biosphere Yield</b>; a hit or miss spends 1 attempt, and the pool fully recovers at the next 20-minute active-play cycle, never while the game is closed. The first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction. A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing. This is v2’s current replacement for v1.8.9’s separate Discover Life action; Survey Records and accepted or weekly bioscan Charters remain unavailable. A real fauna Compendium detail can <b>Feed</b> one exact unassigned companion below the 200-Meal cap with one exact flora lot through <b>Use 1</b>, <b>Breed</b> two distinct exact owned fauna with nonlethal active-play Recovery, <b>Rename</b> one exact owned companion without changing its creature identity, or name and stand down the role-only <b>Field Scout</b>. This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat. Tastes, stat or Power growth, injury care, healing, poison, bond, explorer eating, Scout interception or XP, dispatch, friendly duels, and missions remain unavailable.',
     },
   ];
 }
@@ -92,7 +144,8 @@ let finishing = false;
 
 const CHROME = [
   '#dock', '#raillft', '#railrgt', '#searchbox', '#setpanel', '#guidepanel',
-  '#codexpanel', '#recpanel', '#atlaspanel', '#chpanel', '#survey', '#importsheet',
+  '#codexpanel', '#recpanel', '#atlaspanel', '#chpanel', '#shipyardpanel',
+  '#inventorypanel', '#combatpanel', '#survey', '#importsheet',
 ];
 const FOCUSABLE = 'button:not([disabled]),a[href],input:not([disabled]):not([type="hidden"]),' +
   'select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
@@ -168,7 +221,7 @@ function renderStep(): void {
   if (st.id === 'land') {
     /* `atlas-open` advances from inside the panel's onOpen callback. Close on
        the next turn, after openPanel has finished displaying Atlas, so the
-       inert chart cannot survive over the Earth Land action or graduation. */
+       inert chart cannot survive over the Earth Land action or later tour. */
     window.setTimeout(() => {
       if (trainingActive() && steps[stepIdx] === st) deps0?.closePanels();
     }, 0);
@@ -179,10 +232,19 @@ function renderStep(): void {
   /* CF1805-01: publish where the card TOP sits, so raisable surfaces clear it */
   document.documentElement.style.setProperty('--tut-bot', Math.round(cardEl.getBoundingClientRect().top) + 'px');
 }
+function lessonSpotTargets(st: TutStep): HTMLElement[] {
+  if (!st.spot) return [];
+  try { return [...document.querySelectorAll<HTMLElement>(st.spot)]; }
+  catch { return []; }
+}
+function lessonSpotTarget(st: TutStep): HTMLElement | null {
+  const targets = lessonSpotTargets(st);
+  return targets.find((target) => target.offsetParent !== null) ?? targets[0] ?? null;
+}
 function placeSpot(): void {
   if (!spotEl || !trainingActive()) return;
   const st = steps[stepIdx]!;
-  const t = st.spot ? (document.querySelector(st.spot) as HTMLElement | null) : null;
+  const t = lessonSpotTarget(st);
   if (!t || t.offsetParent === null) { spotEl.style.display = 'none'; return; }
   const r = t.getBoundingClientRect();
   spotEl.style.display = 'block';
@@ -307,8 +369,7 @@ function focusWithoutScroll(el: HTMLElement | null): boolean {
 function preferredLessonFocus(st: TutStep): HTMLElement | null {
   const primary = cardEl?.querySelector<HTMLElement>('[data-sel="tutbtn"]');
   if (primary && visible(primary)) return primary;
-  if (st.spot) {
-    const spot = document.querySelector<HTMLElement>(st.spot);
+  for (const spot of lessonSpotTargets(st)) {
     if (spot) {
       const target = focusablesWithin(spot)[0];
       if (target) return target;
@@ -422,6 +483,8 @@ function advance(): void {
     void finish('finish');
     return;
   }
+  const completed = steps[stepIdx]!;
+  if (completed.closePanelsAfter) deps0?.closePanels();
   stepIdx++;
   renderStep();
 }

@@ -10,6 +10,8 @@ import {
   createGearInstance,
   createGearInventory,
   equipGear,
+  FIXED_RECIPE_AUTHORITY,
+  getFixedCraftGenerationPlan,
   grantGear,
   makeGearSourceActionId,
   salvageGear,
@@ -278,6 +280,34 @@ describe('Arc 2 Inventory presentation', () => {
     expect(speedEffect.textContent).not.toContain('%');
     expect(speedComparison.textContent).toContain('+1');
     expect(speedComparison.textContent).not.toContain('%');
+  });
+
+  it('names an all-exceptional fixed-craft outcome Pureforged in the live item inspector', () => {
+    const pureforgedSource = makeGearSourceActionId({
+      kind: 'craft',
+      ownerId: FIXED_RECIPE_AUTHORITY,
+      actionKey: 'recipe:rig1',
+      receiptId: 'receipt:91',
+    });
+    const pureforged = createGearInstance(
+      pureforgedSource,
+      0,
+      getFixedCraftGenerationPlan('rig1', 0xabc123, pureforgedSource),
+    );
+    const view = shell();
+    controller = new InventoryPanelController({ panel: view.panel, sheet: view.sheet });
+    controller.setState(loaded(inventoryOf([pureforged])));
+
+    expect(controller.showDetail(pureforged.instanceId)).toBe(true);
+    const terms = [...view.sheet.querySelectorAll('dt')];
+    const term = terms.find((candidate) => candidate.textContent === 'Pureforged modifier');
+    expect(term).toBeDefined();
+    expect(term?.nextElementSibling?.textContent)
+      .toMatch(/^(?:mining yield|rich-strike chance|capture chance) \+[0-9.]+%? · tier 1$/);
+    expect(term?.nextElementSibling?.textContent).not.toContain('exceptional-v1');
+    expect(terms.some((candidate) => candidate.textContent === 'Crafted modifier')).toBe(false);
+    expect([...view.sheet.querySelectorAll('[data-inventory-effect]')]
+      .some((row) => row.textContent?.includes('Pureforged'))).toBe(true);
   });
 
   it('waits for one durable action, ignores double-clicks, then publishes and reopens exact state', async () => {

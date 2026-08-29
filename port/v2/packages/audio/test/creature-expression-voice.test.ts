@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
   createAudioIdentityProfile,
   createAudioRuntime,
   createAudioSignature,
@@ -209,6 +210,7 @@ describe('Arc 7 creature-expression voice request owner', () => {
       concurrencyGroup: 'creature-expression',
       maxConcurrent: 1,
       nodeCount: 2,
+      mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
       meaning: { kind: 'meaningful', counterpart: input.counterpart },
     });
 
@@ -305,15 +307,23 @@ describe('Arc 7 creature-expression voice request owner', () => {
         && receipt.generation === input.counterpart.generation,
     });
     await expect(runtime.activate()).resolves.toEqual({ kind: 'running' });
+    expect(context.gains[3]!.gain.events).toEqual([{ kind: 'set', value: 1, time: 4 }]);
     expect(runtime.playVoice(request)).toEqual({ kind: 'started', voiceId: 'voice-000001' });
     expect(context.oscillators).toHaveLength(1);
     expect(context.oscillators[0]!.startWhens).toEqual([undefined]);
     expect(runtime.diagnostics()).toMatchObject({
       nodes: { active: 16 }, voices: { active: 1, started: 1 }, creatureEmitters: { active: 1 },
+      voiceMix: {
+        activeOwners: 1,
+        factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+        effectiveCategoryGains: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+      },
     });
+    expect(context.gains[3]!.gain.events).toEqual([{ kind: 'set', value: 1, time: 4 }]);
     context.oscillators[0]!.finish();
     expect(runtime.diagnostics()).toMatchObject({
       nodes: { active: 13 }, voices: { active: 0, completed: 1 }, creatureEmitters: { active: 0 },
+      voiceMix: { activeOwners: 0, factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors },
     });
 
     const rejectedContext = new SynthesisContext();

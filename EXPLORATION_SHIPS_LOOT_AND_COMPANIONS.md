@@ -21,17 +21,48 @@
 > and compatible point updates never trigger rebaseline. Earlier Final13/Final12/Final11/Final10
 > wording below is historical where superseded.
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-29**.
+> **Current local Arc 4 Charter successor (2026-08-29):** the first durable successful Tame,
+> Scavenge, or Sample on each exact source-proven world beyond Sol can now bank that world's one
+> Chapter 2 life-discovery tick in the same pre-draw-certified F3/F4 capture transaction. Ownership
+> discovery provenance deduplicates complete world identity; a miss, Sol, an unreachable or
+> past-chapter source, a later success on that world, saturated progress, stale tab or failed write
+> banks nothing. This is a documented v2 replacement for the old separate Discover Life action,
+> while the legacy Survey Records ledger and accepted/weekly bioscan Charters remain unported.
+> Capture and Search travel bind exact galaxy/star coordinates plus seeds, and only a qualifying
+> bank may reconcile an imported chapter. Focused and full browser-free product/copy evidence is
+> green at 230 files / 2,315 passed + one skipped. The signed certificate above predates this
+> change; fresh browser and HUMAN evidence remain open and no release authority follows.
+
+> **2026-08-29 Arc 0 exploration durability closure:** the player-facing Land, rename-after-proven
+> Search, and Add to Star Atlas actions now settle through their own F4 receipt transactions. An
+> ordinary route checkpoint cannot carry any of those product changes. A held Training replacement
+> allows only its explicit live lesson route/event behavior; outside active Training it blocks Land
+> and Atlas both before and after the heartbeat. If Atlas discovers that its exact durable record
+> already exists, it restores the source-proven live route sidecar or converges read-only, so a
+> durable chart is never reported as usable while remaining untravelable. This closes the current
+> implementation seam, not the later HUMAN journey review or fresh exact-source browser evidence.
+
+**STATUS:** approved product direction and implementation contract as of **2026-08-29**, except
+the explicit D-ARC4-BIOSCAN replacement remains a ◐ local candidate pending HUMAN acceptance.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
-exact-instance Inventory, Arc 3 Engineering actions and Arc 4 player-facing capture loop described
-below. Arc 5A now activates its compact ownership-v2 five-carrier authority across boot, genuine legacy
-Training and every Arc 4 capture successor; the later narrow Feed interaction is player-live, while the
-wider care/breeding/companion scope remains open. Five non-Deep-Scanner research purchases,
-disconnected-effect and fully exceptional slotted fixed-
-recipe actions, new random loot sources, upgrades/sockets, companion expeditions, breeding, live
-combat and Guardians remain **not implemented** unless a row below explicitly says otherwise. This
-document coordinates the existing system specs; it does not silently promote planned behavior into
-the in-game Guide.
+exact-instance Inventory, Arc 3 Engineering/Pureforged actions, Arc 4 player-facing capture loop,
+and Arc 5 exact-instance Feed, Breed/Recovery, Rename and Field Scout actions described below. Arc 5A's compact
+ownership-v2 five-carrier authority spans boot, genuine legacy Training, Arc 4 capture and those
+four player-live companion writers. Wider tastes/care/bond, injury healing, companion expeditions,
+friendly duels and
+missions remain open. Five non-Deep-Scanner research purchases, disconnected-effect recipes,
+authored random loot and upgrades/sockets remain **not implemented** unless a row below explicitly
+says otherwise. Player-facing landed combat/Guardian presentation is live at the bounded Arc 6
+scope recorded in `COMBAT_AND_CONQUEST.md`. This document coordinates the
+existing system specs; it does not silently promote planned behavior into the in-game Guide.
+
+> **2026-08-29 captured Guardian/Titan champion successor:** live captures now join the combat card
+> through a separate immutable `arc6.guardian-companions` XP/injury/tombstone overlay, never through
+> Arc 5 ownership. They reuse the exact forecast, settlement, Combat Chronicle, registered impact-
+> audio and loss-XP bridge. `legacyBredLineage:false` makes defeat permanent; the receipt-bound
+> tombstone survives reload, boot, Training restore and capture reconciliation while the combat
+> roster and composite Compendium omit it. The acquisition source and Prime claims remain independent.
+> No care, breeding, mission, party, tactics, retreat or Recovery field follows from champion use.
 
 > **2026-08-29 player-live bounded Arc 5 Feed scope — local automation certified:** one real fauna Compendium detail can target one
 > exact current, unassigned owned companion below the 200-Meal cap plus one exact owned flora lot and
@@ -49,9 +80,53 @@ the in-game Guide.
 > visible settled result, reload fixed point and exact audio-route assessment with zero findings,
 > then passed bound Glass and Recovery.
 > Taste/flavour discovery, stat or Power growth, injury care/healing, poison, bond, explorer eating,
-> breeding, renaming, scouting, duels and missions remain unavailable. HUMAN attachment/listening,
-> assistive-technology and physical-device evidence remain open; this narrow action does not complete
-> the wider Arc 5 companion program.
+> scouting, duels and missions remain unavailable. HUMAN attachment/listening, assistive-technology
+> and physical-device evidence remain open; this narrow action does not complete the wider Arc 5
+> companion program.
+
+> **2026-08-29 player-live Arc 5 Breed/Recovery and Rename scope — browser-free candidate:** a real
+> fauna detail can Breed two distinct exact owned fauna through bounded 24-row pages. Current-species
+> primary and universe-fauna mate candidates remain individually reachable; exhibition,
+> mission-assigned, recovering and `hurt >= 0.3` rows explain their refusal. The published legacy
+> rarity plus lifetime-earned-Stardust chance drives one persisted draw after both complete
+> successors and capacity are proved. Parents survive; success creates one deterministic child and
+> assigns eight active-play minutes of Recovery, while failure creates no child and assigns two.
+> Recovery blocks Breed, combat and dispatch and ignores closed-game/wall-clock time. Rename pages
+> exact owned companions separately, applies the shipped sanitizer and 24-character cap, and changes
+> only one stable instance's nickname. Both actions use one immutable receipt/exact-five CAS with no
+> retry or optimistic publication; stale/storage/postcommit faults converge read-only by reload.
+> The successful Breed successor also banks Chapter 3 `c3-breed` / **Breed a hybrid bloodline** in
+> that same pre-draw-certified complete save. Failure preserves Charter progress exactly, and
+> refusal, stale authority, duplicate receipt or storage failure banks nothing.
+> Focused implementation, Guide/release and evidence-contract tests are green; the final immutable
+> browser chain and HUMAN companion review remain open.
+
+> **2026-08-29 exact-instance Field Scout — player-live bounded role writer:** the legacy role-only
+> toggle is now represented at exact living-creature granularity without changing creature,
+> genome, lineage, injury, Recovery, mission assignment or bond data. One owner-minted preflight
+> can name/switch one non-exhibition owned fauna instance or stand the current Scout down; assigned,
+> recovering and injured companions remain eligible because designation alone performs no care,
+> dispatch or combat action. One receipt and one F3/F4 CAS replace only the compact V2
+> `scoutCreatureId` delta through the existing exact five carriers, with no RNG, active-play-time
+> spend, retry or optimistic publication. A bounded 24-row Compendium projection/controller keeps
+> same-species twins distinct, paints the old Scout while pending and latches unconfirmable durable
+> results to read-only reload convergence.
+>
+> Main now mounts that controller only on a verified real-fauna Compendium detail, proves the exact
+> generation/logical-id/context/surface plus ownership revision/digest and prior role, claims the
+> shared product coordinator, settles/rechecks the heartbeat and all write holds, then performs one
+> CAS. It independently verifies the exact-five successor and unchanged non-Scout state before
+> publishing ownership; Back/Close may detach the DOM while the captured transaction settles. Any
+> unconfirmable durable outcome enters one read-only convergence reload, and every durable Scout
+> action schedules the same bounded Arc 9 aggregate follow-up as other product owners. Focused
+> action/controller/Main/progression evidence passes 17/17 and all three TypeScript programs pass.
+>
+> Legacy consequences remain separate owner joins: a genuinely first catalogue species taught the
+> standing Scout +2 XP, while hostile bioscans/first contact could redirect injury. Current v2 has
+> no hostile-bioscan action, and its Arc 4 source-to-compact-V2 bridge has no approved mutable-XP
+> merge contract; designation performs neither consequence. It also dispatches no mission and
+> changes no care/bond state. Guide/release synchronization is in the same current work batch;
+> fresh immutable browser/HUMAN evidence remains open.
 
 > **Universe-wide art polish locally automated (2026-08-29; HUMAN/physical review still open):**
 > the shared deterministic treatment now crosses galaxies, systems, planets, all 43 live
@@ -246,10 +321,12 @@ the in-game Guide.
 > carrier digest; no live v2 XP-award writer exists. Executable `conq[].e` import/export/readiness
 > proof preserves absent-ready versus present-gated behavior, without closing real-veteran Gate C.
 >
-> The internal exact-five Arc 5 successor now sets a newly admitted bred child's `fed` to half the
-> lower clamped parent value exactly once and preserves later child care state. No player action
-> invokes it. Breeding odds, parent Recovery duration/locks, capacity, timing, confirmation and UI/
-> copy remain Arc 5B product-open. Player rarity is the strict ten-name projection of valid raw
+> The player-live exact-five Arc 5 Breed writer sets a newly admitted child's `fed` to half the
+> lower clamped parent value exactly once and preserves later child care state. It owns the published
+> rarity/Stardust odds, two-successor pre-draw capacity proof, distinct-parent eligibility, bounded
+> selection/confirmation and 8-minute-success/2-minute-failure active-play Recovery contract. The
+> separate player-live Rename writer changes only one sanitized exact-instance nickname. Player
+> rarity is the strict ten-name projection of valid raw
 > tiers (`9..14` display as Transcendent); invalid/missing values and internal art-grade/raw-tier
 > labels are omitted. The only creature playback now live is the deterministic Tame greeting and
 > exact accepted Feed acknowledgement after their trusted native gestures, durable outcomes,
@@ -287,16 +364,16 @@ the in-game Guide.
 > presents a uniform random eligible pool, preview/full counts, aggregate/individual odds, shared
 > hit-or-miss Yield and active-play recovery. It has no targeted-species preview. Pending/storage/
 > stale/publication paths remain non-optimistic and converge without a reroll or second write.
-> Native Close/reopen/reload and 12-viewport geometry/focus were browser-proven for those inputs. The Guide then had
-> 24 partial /17 unavailable topics and the draft release had 54 bullets; the current candidate has
-> 55. Training remained six
+> Native Close/reopen/reload and 12-viewport geometry/focus were browser-proven for those inputs. At
+> that historical boundary the Guide had 24 partial /17 unavailable topics and the draft release had
+> 54 bullets; its immediate successor had 55. Training remained six
 > lessons plus graduation with no Capture lesson. Arc 5A owns a receipt-bound V2 model plus the
 > app-active compact five-carrier representation. Aligned legacy-v1 upgrades once; aligned current-v2
 > is zero-write. Genuine legacy Training composes one Arc 2, 18 Arc 4 and five Arc 5 writes; every hit
 > or miss pre-certifies 18+5 and postcommit-publishes V1/V2 together. The delta stores only changed or
 > V2-exclusive rows, and source-only growth leaves all four canonical empty-shard bytes invariant.
 > The internal V2-only successor also outputs exactly five carriers and applies the one-time child-
-> `fed` rule above, but is not public. There is still no live breed/care/Recovery/assignment,
+> `fed` rule above, but was not public. At that boundary there was no live breed/care/Recovery/assignment,
 > Chronicle or companion expedition.
 > Arc 4 remains `[PARTIAL]`: Final11 passed the genuine 20-minute observation and recovered UI and
 > its unchanged bundle replays green under the repaired assessor. Immutable Final12 stopped at
@@ -532,16 +609,16 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 | System | Current v2 executable state | Next owned outcome |
 |---|---|---|
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
-| Charters / reach language | Stage-aware landfall projection plus committed-only Arc 3 mining/fixed-fabrication goal banking; imported drive/chapter facts still gate reach | Port remaining outcome writers and expose goals/transitions/rewards only with them |
+| Charters / reach language | The board owns the two established Starter chains, a three-active cap and one receipt/CAS Accept path. Committed-only landfall, mining, eligible fixed fabrication, Field Scout and verified conquest writers bank exact deeds and their 10–25 Stardust, supported-Gear, achievement and rank outcomes atomically; full-address Sol checks reject leaf-seed aliases. Imported drive/chapter facts still gate reach | Keep Discover life and weekly Charters fail-closed until their canonical action and wall-week/slate/acceptance/rollover authorities exist; never infer progress from projections |
 | Compendium | Virtualized 1,500-row browsing surface with bounded asynchronous thumbnails and selected static detail; list-mode heading and sticky Close share the reserved first header row; native Arc 4 acquisition may add durable rows through Survey, not through the Compendium panel itself | HUMAN Arc 1 art review, then any separately bounded living selected preview |
 | Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current published epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Historical Final10–Final13 chronology remains preserved below. Exact signed `3f69e88…` passed the current once-only named-verified chain, including the complete real 20-minute Recovery observation and exact next-cycle/recovered UI | Complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
 | Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; `<=360px` rows stack full visible identity copy above all status badges without changing semantics; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
-| Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, the sole purchasable Deep-Scanner row, eligible fixed-Fabrication actions and the passive ordered ordinary-plus-biome-only orbital **Mineral veins** Survey row after owned `scan1`; connected exact system outputs can update reach | Other five research purchases, fully exceptional slotted/disconnected recipe outputs, HUMAN silhouette and Engineering comprehension, and later authored upgrades/variable construction; the Survey row remains informational and never becomes Mine/reserve/grade/cosmic authority |
-| Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six displayed Research rows and all 62 listed fixed recipes are present; only Deep Scanners and connected-effect recipes with exact costs/preconditions and capacity/revision headroom are actionable and receipt-backed | Fully exceptional slotted/disconnected outputs, authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing |
-| Breeding / care | Domain genetics and the activated compact five-carrier V2 ownership authority exist; its internal successor initializes a newly admitted child's `fed` to half the lower clamped parent value once. A real fauna Compendium detail can Feed one exact unassigned/not-capped companion from one exact flora lot through `Use 1`; one receipt/CAS adds one bounded `fed` point and consumes or tombstones that lot with no retry/optimism. Back/Close remain available; after the settled accessible status, the exact current successor may own one deterministic contented expression with no replay. Exact `3f69e88…` supplies the native two-document/reload/audio-route automated proof for this bounded Feed scope | Complete HUMAN Feed/attachment and physical-device audio evidence; decide and implement Arc 5B odds, bounded parent Recovery duration/locks, capacity/timing, confirmation, lineage, tastes/flavours, stat/Power growth, injury care/healing, poison, bond, explorer eating and the still-unavailable breeding/rename/scout/duel/mission actions |
-| Combat / conquest / Guardians | Deterministic domain duel exists; no live v2 action | Outcome-driven combat UI, rewards, injury and Guardian encounters |
+| Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, the sole purchasable Deep-Scanner row, eligible fixed-Fabrication actions and the passive ordered ordinary-plus-biome-only orbital **Mineral veins** Survey row after owned `scan1`; connected exact system outputs can update reach | Other five research purchases, disconnected-effect recipes, HUMAN silhouette and Engineering comprehension, and later authored upgrades/variable construction; the Survey row remains informational and never becomes Mine/reserve/grade/cosmic authority |
+| Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six displayed Research rows and all 62 listed fixed recipes are present. Deep Scanners and connected-effect recipes with exact costs/preconditions/capacity/revision headroom are receipt-backed. A supported slotted craft paid wholly from exceptional direct materials receives one deterministic exact-item **Pureforged** mining-yield, rich-strike or capture-contact modifier; mixed stock remains ordinary | Connect remaining fixed effects; specify authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing without changing the Pureforged fixed-craft contract |
+| Breeding / care | A real fauna Compendium detail exposes four exact-instance writers over the compact five-carrier V2 authority. Feed spends one exact flora lot into one eligible companion. Breed pages a current-species primary and distinct universe-fauna mate, retains both parents, creates one deterministic child only on success, assigns 8-minute success/2-minute failure active-play Recovery, and banks the Chapter 3 hybrid-bloodline goal only on success inside the same pre-certified draw/CAS. Rename changes one sanitized at-most-24-character nickname. Field Scout names/switches/stands down one exact companion by changing only its role pointer. Same-species twins remain distinct; Back/Close, no optimism, stale refusal and reload convergence are shared boundaries | Join the still-separate Scout +2 fresh-species XP and injury interception only through their true owners; complete final exact-source browser/HUMAN companion evidence; implement tastes/flavours, stat/Power growth, injury care/healing, poison, bond, explorer eating, friendly duels and missions separately |
+| Combat / conquest / Guardians | A landed non-Training Surface offers explorer/eligible-fauna champion choice, deterministic Titan/Guardian/strongest-fauna defender, 160-run forecast and one receipt/CAS settlement. It persists conquest, tier-scaled Stardust/XP/injury/loss, Guardian/Titan acquisition, Prime Signature/Frontier, `c2-conq`, `settle1`, `brink`, and accepted `st-conq` +25 in the same verified outcome | Add party/retreat, Guardian champion use, Chronicle transcript/audio, authored extra Guardian rewards and the decided conquest-modifier coexistence policy; complete browser/HUMAN combat review |
 | Companion expeditions | Stable identity/assignment schema and the compact V2 ownership carrier exist, but no committed mission runtime exists | Implement active-play missions with sealed exact-once receipts |
-| Audio | Existing navigation/survey cues plus two exact owned-creature expressions: trusted native Tame or Feed gestures arm one shared owner, and only the matching durable current-system outcome, current ownership revision and visible accessible counterpart may play once. Feed's inline polite status is its sole accessible announcement; its toast is visual-only, and one latest-successful-ownership slot rejects same/superseded replays. Exact `3f69e88…` Slice binds one started oscillator through one WebAudio context to exactly one `AudioDestination` protocol node after the visible settled result. A canonical current-world Survey-roster → distant-ecology plan join remains pure and non-playing | Other companion actions, Compendium audition, Gate G live distant ecology, authored ambience/ship/biome/music, accessibility/device plateaus and HUMAN listening remain open; combat/Guardian integration waits for Arc 6 |
+| Audio | Existing navigation/survey cues plus one shared exact-life owner for verified Tame, committed Feed and explicit exact-owned-fauna Compendium Listen expressions. List/filter/focus/navigation never autoplay. Pre-landing orbital Survey and landed Planetside each expose explicit **Listen to biosphere** only from their exact visible inhabited-world lead; both render the same generic deterministic neutral ecology signal while retaining distinct approach/roster evidence. They reveal no species, spend no Yield, grant nothing and write no save. Creature Voices owns creature expressions; master Sound also owns the generic biosphere signal | Other companion expressions, authored/continuous or more-specific ecology, travel/ship/music playback, accessibility/device plateaus and HUMAN listening remain open |
 
 The in-game Guide must continue to say genuinely unavailable outcomes are unavailable. It may
 describe a new capability only after the action exists, persists, reloads, is reachable by
@@ -785,16 +862,20 @@ Legacy migration creates one deterministic content-derived `creature-v1:<digest>
 owned fauna row while retaining the catalogue discovery. Non-fauna ownership becomes a stable
 `specimen-v1:<digest>` lot rather than a living companion. The active Arc 5A manifest binds exact
 source/delta/target evidence while four fixed shards persist only changed or V2-exclusive rows. The
-internal authority can encode a bred child, tombstone or changed living row, but no public app action
-invokes it yet.
+authority encodes a bred child, tombstone or changed living row. Public Feed, Breed, Rename and
+Field Scout actions invoke only their bounded exact-instance successors. Main mounts the Scout
+controller only on verified real-fauna detail state and publishes the role only after its exact-five
+successor and unchanged non-Scout fields are independently proved.
 
-**[ARC 5A AUTHORITY IMPLEMENTED — PLAYER WRITERS NOT YET IMPLEMENTED]:** `SAVE_SYSTEM.md`
+**[ARC 5A AUTHORITY + BOUNDED PLAYER WRITERS IMPLEMENTED]:** `SAVE_SYSTEM.md`
 specifies the compact Arc 5 delta carrier now used by the app: the existing migration namespace is
 its v2 manifest and exactly four generic fixed shards store only V2-exclusive/changed rows, with
 exact source/target/delta digests. The fixed four-shard layout keeps namespace count O(1),
-independent of ownership count. Its failure, capacity and readback controls are live; breed, care,
-Recovery, assignment and mission writers remain unavailable. The representation is an engineering
-boundary, not a new product decision in `port/DECISIONS.md`.
+independent of ownership count. Its failure, capacity and readback controls are live. Feed, Breed/
+Recovery, Rename and Field Scout use it through bounded receipt/CAS writers. Field Scout replaces
+only its exact role pointer; broader care,
+dispatch and mission writers remain unavailable. The representation is an engineering boundary, not a new product
+decision in `port/DECISIONS.md`.
 
 A companion is not disposable inventory. Its identity includes its stable owned-creature ID,
 name, lineage, explicit origin, current condition and a compact Chronicle of meaningful shared firsts. Bond
@@ -836,14 +917,33 @@ cover refusal, failure, replay, stale, exact committed verification, reachabilit
 recovery presentation. Exact signed current source `3f69e88…` passed the once-only full local chain,
 including the real uninterrupted next-cycle Recovery observation; HUMAN comprehension remains open.
 
-The internal ownership successor now implements one narrow part of normal v2 breeding: at the
-newly admitted child boundary it assigns half of the lower parent's clamped `fed` value exactly
-once, and later stored child care state is not recomputed. It does not expose a player action or
-decide Arc 5B. The product contract still requires both parent instances to remain owned and enter
-a disclosed bounded active-play **Recovery** assignment that blocks breeding, dispatch and combat
-until complete; odds, duration, locks, capacity, timing, confirmation and UI/copy remain open.
-Legacy v1 parent consumption remains historical behavior; any future irreversible Fusion must be
-separately named, optional, expressly confirmed and never required for alien progression.
+The normal v2 Breed player action now invokes that successor. At the newly admitted child boundary
+it assigns half of the lower parent's clamped `fed` value exactly once, and later stored child care
+state is not recomputed. Two exact distinct eligible parents remain owned. The action shows the
+established rarity-plus-lifetime-Stardust chance, pre-certifies both full successors, draws once,
+and atomically assigns both parents a disclosed active-play **Recovery** assignment: eight minutes
+on success or two on failure. Recovery blocks Breed, dispatch and combat until exact active-play
+completion; closed-game and wall-clock time add nothing. Legacy v1 parent consumption remains
+historical behavior; any future irreversible Fusion must be separately named, optional, expressly
+confirmed and never required for alien progression.
+
+Rename is a separate identity-only writer. It pages through exact owned companions 24 at a time,
+keeps same-species twins distinct, and permits assigned/recovering/injured rows because it does not
+alter availability or condition. Exhibition, non-owned, protected and revision-exhausted rows
+refuse. The shipped sanitizer strips unsafe punctuation, trims and caps at 24 characters; empty or
+unchanged results write nothing. One exact-five receipt/CAS changes only `nickname`, keeps the old
+name visible while pending and converges read-only by reload on any unconfirmable result.
+
+Field Scout designation is also identity-only and is player-live from verified real-fauna detail. Its domain
+preflight accepts one exact non-exhibition owned fauna ID or null for stand-down, refuses unchanged
+and unowned targets before receipt planning, and permits injured, recovering or mission-assigned
+rows because this role toggle alone does not perform their blocked activity. Its app action writes
+only the compact V2 Scout override in one exact-five F3/F4 transaction, and its Compendium controller
+pages 24 exact instances at a time with the old role visible until durability is verified. Main
+binds the detail generation/context/source and ownership revision/digest, rechecks the heartbeat and
+write holds, independently verifies unchanged non-Scout state, and reload-converges on durable
+ambiguity. The +2 first-catalogue XP and hostile-harm substitution are separate consequence owners
+and remain unimplemented.
 
 ### 7.2 Dispatch/return contract
 
@@ -890,6 +990,28 @@ Missions show active-play duration, environment, role fit, possible reward famil
 before dispatch. A normal failure returns a wounded companion, partial reward or story—not
 silent permanent loss. Any optional irreversible mode must be separately named and expressly
 confirmed; it is never the default dispatch rule.
+
+**Implementation blocker ledger (2026-08-29):** the structure above is a product contract, not a
+complete content authority. Coding a mission runtime today would require inventing at least the
+mission catalogue/IDs, target eligibility, party-size/role rules, active-play durations, risk and
+success bands, deterministic reward quantities/ranges, story/memento IDs, injury outcomes, recall
+settlement and inventory-full behavior. None has a canonical table in code or current Markdown.
+Likewise, the existing `CompanionBond` shape does not decide level thresholds/caps, bounded memory
+categories, role sidegrades or exact event awards. Current v2 Feed deliberately settles only one
+`fed` point and one flora unit; legacy taste/poison/healing/care-XP formulas include RNG, a separate
+first-award ledger and possible creature death, but no v2 decision says which of those stakes survive
+the nonlethal attachment direction. Injury care therefore also lacks an approved exact settlement,
+RNG-domain and anti-farm/persistence contract. These are player decisions/content authorities, not
+safe defaults for an implementation agent.
+
+Field Scout itself is not policy-blocked: its exact role-only set/switch/stand-down transaction,
+controller and Main/Compendium publication are complete and browser-free green. Fresh exact-source
+browser/HUMAN evidence remains open. Its legacy consequences are separately
+blocked by ownership coupling: Arc 4 capture currently creates an Arc 4 source successor and then a
+compact V2 projection, but no current contract says how a mutable +2 Scout-XP delta merges with
+already-modified V2 companion state without rolling back Feed/Rename/Breed changes. Hostile harm
+also has no current v2 bioscan/first-contact action to own it. Do not attach either consequence to
+the role setter or silently restore legacy permadeath.
 
 ### 7.3 A record worth keeping
 
@@ -1016,8 +1138,12 @@ fixture-pinned helpers are not dead code merely because the current slice does n
 
 Known audit queue:
 
-- The v2 Charter board/chip now stop at the landfall-only live frontier; complete
-  Charter writers, rewards, accepted chains and weeklies remain open.
+- The v2 Charter board/chip expose committed landfall, mining, fixed-fabrication,
+  first-alien-world bioscan, successful-Breed and conquest Ascent goals. The two established
+  starter chains reveal one accepted link at a time under the cap of three; exact Landing, Mine,
+  fixed-Fabricator, Field Scout and conquest writers settle their 10–25 Stardust and supported
+  gear in the same receipt. Accepted one-time `st-conq` settles +25 current/lifetime Stardust;
+  Discover life and weekly lifecycle/rewards remain protected until they have exact owners.
 - Compendium virtualization and decoded-image plateau are release prerequisites.
 - ordinary scene textures and `_rgCache` need bounded ownership; small art caches have
   off-by-one caps;
@@ -1057,13 +1183,13 @@ batch. Planned systems live here and in their system docs, not in player-visible
 | 1 — portrait/ship foundation | virtualized thumbnails, character portrait service, pure `ShipVisualState`, static Shipyard proof | Automated foundation and 42/42 memory route are complete; phone/desktop HUMAN portrait and four-silhouette judgment remain open |
 | 2 — item instances and readable economy **[PARTIAL; recorded local candidate green]** | Schema/migration, strict carrier, Inventory, equip/unequip/salvage/pending-claim, canonical fixed tables and exact inspect/conditional compare are implemented; production source/craft policy is not | The recorded pre-current-WIP Arc 2 candidate's fixed-point/exact-instance/browser outcomes were green; this does not certify the current moving tree. Authored source/range/targeted-craft/pacing policy and HUMAN phone/desktop review remain before program closure |
 | 3 — engineering loop **[PARTIAL locally implemented; full local browser chain green]** | Mine/Skim, sole purchasable Deep-Scanner row, its passive ordered ordinary-plus-biome-only orbital Survey projection, six-row Research presentation, all-62 fixed-recipe listing, eligible connected-effect/exact-cost/headroom fabrication actions, and truthful Guide/release/Training guidance are implemented; the other five research purchases, fully exceptional slotted/disconnected outputs and wider engineering depth remain open | Earlier bounded Slice/Glass proof covers the real actions, finite active-play sources, durable receipt/reload parity, and storage/stale/publication convergence. Exact signed `3f69e88…` supplies current full-chain proof for orbital Survey disclosure, row containment/restoration and semantic title copy. Economy simulation, HUMAN reach/visual/comprehension judgment and wider engineering depth remain open |
-| 4 — capture/ownership **[PARTIAL player-live locally; full local browser chain green]** | Strict 18-namespace bootstrap/Training coupling and native Tame/Scavenge/Sample now provide source-bound full-roster random-pool odds/Yield, all-scenario-before-draw, one-receipt/CAS hit/miss ownership outcomes, no optimism, reload and storage/stale/publication convergence. Arc 5A additionally advances the exact compact five-carrier V2 authority in the same boot/Training/capture transactions. Exact signed `3f69e88…` completed the full once-only named-verified chain and real 20-minute Recovery certificate; historical stopped-chain chronology remains preserved below | Complete combined HUMAN first-journey/ownership review; do not infer Charter bioscan, targeted selection, whole-gate or release authority |
+| 4 — capture/ownership **[PARTIAL player-live locally; prior full local browser chain green]** | Strict 18-namespace bootstrap/Training coupling and native Tame/Scavenge/Sample provide source-bound full-roster random-pool odds/Yield, all-scenario-before-draw, one-receipt/CAS hit/miss ownership outcomes, no optimism, reload and storage/stale/publication convergence. The current local successor joins one first-world-beyond-Sol Chapter 2 life-discovery tick to that exact transaction while leaving legacy Survey Records unchanged. Arc 5A additionally advances the compact five-carrier V2 authority in the same boot/Training/capture transactions. Exact signed `3f69e88…` completed the full once-only named-verified chain and real 20-minute Recovery certificate before the Charter join; historical stopped-chain chronology remains preserved below | Complete fresh exact-source browser evidence and combined HUMAN first-journey/ownership review; do not infer the separate Discover Life action, Survey Records, targeted selection, whole-gate or release authority |
 | 4.5 — first complete journey | Fresh-start Survey → opportunity → Gather → Build → Tame → ship upgrade → farther reach → meaningful Return | first-time 30–60-minute human path proves comprehension, agency and satisfying pacing without idle waits or a scripted fake reward |
-| 5 — companions **[PARTIAL player-live; bounded Feed automation green]** | Implemented source-bound compact V2 manifest/four-shard authority across boot, genuine legacy Training and every Arc 4 hit/miss; exact-five internal V2-only successor applies one-time half-lower-clamped-parent child `fed`. A real fauna Compendium detail now selects one exact eligible companion and flora lot for `Use 1`; one receipt/CAS advances `fed`/ownership/F4 and consumes or tombstones the lot without retry/optimism. Its settled accessible status precedes one exact deterministic contented expression with no replay. Exact `3f69e88…` passed the native two-document, reload and audio-route browser proof | Complete HUMAN Feed/attachment, assistive-technology and physical-device evidence; decide and wire breeding odds, duration/locks/capacity/timing/confirmation, recovery/away locks, tastes/care/bond, exact-once return and save-failure controls |
+| 5 — companions **[PARTIAL player-live; Feed certificate plus browser-free Breed/Recovery/Rename/Field Scout]** | Compact V2 authority spans boot/Training/capture and four bounded real-fauna-detail writers. Feed spends one exact lot into one exact eligible companion and owns one settled expression. Breed pages two distinct exact fauna, uses the established rarity/Stardust chance, pre-certifies both results, preserves both parents, creates one deterministic child only on success, assigns 8/2 active-play Recovery and banks `c3-breed` only on success through the same receipt/CAS. Rename changes one exact sanitized nickname. Field Scout changes only one exact role pointer. No action retries or publishes optimistically; same-species twins remain distinct and unconfirmable results reload read-only | Complete final exact-source browser/HUMAN/assistive/physical-device evidence; implement Scout consequences, tastes/care/bond, injury healing, dispatch/return, mission rewards and other broader companion outcomes separately |
 | 5.5 — combat decision model | role, preparation, telegraphing, counterplay, retreat and settlement rules are specified and scenario-proven before battle UI expands | humans can choose and explain a viable response; no opaque hard-counter or stat-only outcome passes as strategy |
-| 6 — combat/Guardians | live duel/conquest party presentation and receipt rewards | transcript-driven presentation; every reward/injury/settlement outcome tested |
-| 7 — audio foundation **[PARTIAL; narrow app playback]** | Pure resolver/taxonomy/ecology/expression seams, injected mixer/lifecycle/voice owner, lab accounting and the hard ≤8-creature/≤120-node configuration cap remain; canonical current-system ownership projection now drives exact durable Tame and Feed expressions with gesture/lifecycle/live-region guards. A canonical current-world Survey-roster distant-ecology join is pure and non-playing | Other creature/Compendium/live-ecology/ambience/ship/music playback, real-browser node/voice plateau, captions/mono/dynamic-range/reduced-intensity coverage and HUMAN listening gate |
-| 8 — HD audio/content | Empty rights authority exists; one exact accepted Feed expression is asset-free platform content and the pure current-world ecology join does not play. Earth family mapping, hybrid voice and authored creature/ship/biome layers remain open, while combat/Guardian layers wait for Arc 6 | Nonempty rights/file evidence and complete authored route coverage, family distinctness, live distant-ecology lifecycle, real-device heat/listening |
+| 6 — combat/Guardians **[PARTIAL player-live]** | Bounded landed explorer/fauna/captured-Guardian-or-Titan challenge, deterministic forecast/transcript settlement, conquest/Stardust/XP/injury/loss, Guardian/Titan acquisition, separate companion XP/injury/tombstone overlay, Prime/Frontier, c2/st-conq and settlement/brink achievements share one receipt/CAS. Fatal captured-champion loss is permanent and reload-stable without Arc 5 insertion | Add party/tactics/retreat, broader Guardian care/breeding/mission/Recovery, authored extra reward and decided conquest-modifier coexistence; browser/HUMAN strategic review remains open |
+| 7 — audio foundation **[PARTIAL; bounded explicit playback]** | Pure resolver/taxonomy/ecology/expression seams, injected mixer/lifecycle/voice owner, lab accounting and hard caps remain. Canonical ownership drives exact durable Tame/Feed expressions and explicit exact-owned-fauna Compendium auditions with gesture/lifecycle/counterpart guards; Compendium navigation never autoplays. Exact visible inhabited-world evidence separately admits the same generic no-spoiler ecology signal from either the pre-landing Survey approach or landed Planetside roster, with distinct evidence keys and no gameplay write. Registered post-settlement damage impacts reuse the same Chronicle/counterpart/lifecycle path for ordinary fauna and captured Guardian/Titan champions | Broader companion expressions, authored/continuous or more-specific ambience, ship/travel/music, Guardian motifs and non-impact combat playback, real-browser node/voice plateau, captions/mono/dynamic-range/reduced-intensity coverage and HUMAN listening gate |
+| 8 — HD audio/content | Empty rights authority exists; current Tame/Feed/audition/ecology expressions and exact registered post-settlement damage impacts are asset-free synthesized platform content with strict exact-owner playback joins. Earth family mapping, hybrid voice and authored creature/ship/biome layers remain open; captured Guardian/Titan champions gain no distinct voice or motif | Nonempty rights/file evidence and complete authored route coverage, family distinctness, more-specific ecology lifecycle, Guardian motifs/non-impact cues, real-device heat/listening |
 | 9 — frontier legacy and projects | Chronicle/museum, ship/discovery/Guardian history, share cards and optional bounded frontier projects | finite visible inputs; no decay, mandatory maintenance or offline-income loop; every legacy record has a real action owner |
 | 10 — integration beta | living previews, travel reuse, balance and complete Guide/Training | full battery, save migration, long-session memory/audio plateau, multi-lens human play |
 
@@ -1102,34 +1228,41 @@ cannot understand, enjoy or comfortably use it.
   yet connected, authored upgrade writers and richer visual vessel progression beyond the live
   Engineering panel;
 - production item-instance loot sources, authored natural-affix compatibility/deeper pools,
-  crafted modifier/drawback, upgrades/sockets and Guardian drops;
+  crafted modifiers beyond the bounded Pureforged path, drawbacks, upgrades/sockets and Guardian drops;
 - broader world-opportunity presentation and economy source/rate/recovery/pacing coverage beyond
   the canonical finite Arc 3 opportunities and their currently executable source subset;
 - the combined HUMAN first-journey/ownership review over the locally automated player-facing capture
   loop;
-- player-visible Arc 5 V2 mutation actions beyond the bounded Feed scope and their complete
-  save/readback/failure controls;
-- injury care, breeding, lineage actions, creature XP/classes and Companion bond;
-- friendly duels, conquest, Apex Guardians, settlement rewards and Binder/Paragons;
+- player-visible Arc 5 V2 mutation actions beyond bounded Feed, Breed/Recovery, Rename and
+  role-only Field Scout; all still need complete HUMAN/physical-device evidence;
+- injury care, richer lineage/offspring preview, creature XP/classes and Companion bond;
+- friendly duels, broader party/tactics/retreat combat, Guardian care/breeding/mission/Recovery,
+  authored extra Guardian rewards, conquest-modifier coexistence and the Fifty Paragons;
 - Companion missions/return loot;
 - optional bounded world projects/outposts plus a personal Chronicle/museum and later private
   shareable build/ship/companion stories;
 - complete creature/biome/combat/ship/music audio and accessibility mixer;
 - live Field Training/tooltip/Advanced Briefing coverage for those systems;
-- achievement shelves, complete Charter writers/rewards, Stardust loop and endings.
+- remaining event-achievement owners/rewards, Discover-life/weekly Charter lifecycle, broader
+  Stardust pacing and later Legacy consequences for the five live Frontier endings;
 
 ### Foundation and quality work still open
 
 - canonical CF1 source proof is live for runtime galaxy/star/planet navigation,
   including saved views and Atlas; Arc 4 capture now binds the current surface to canonical address,
   full roster and current epoch; Arc 5A binds its reconstructed compact V2 authority to every Arc 4
-  successor, while public V2-only companion/combat ownership ingress remains open;
+  successor and current Feed/Breed/Rename/Field Scout writers; combat now joins its exact champion
+  successor and Guardian acquisition in one settlement; the separate captured-champion overlay now
+  persists exact XP/injury or permanent tombstone without Arc 5 insertion, while later mission
+  ownership ingress remains open;
 - D-TRAIN-1 exact-head/integration plus real-save Gate-C evidence, and CFB parent identity;
 - Compendium and Shipyard HUMAN art judgment, plus bounded living-preview/audio work;
 - physical-device long-session memory/heat judgment beyond the automated Pixi/Canvas ownership plateau;
 - broader HD planet art beyond the named transactional surface attachment, living organism rigs and biome/ecology scenes;
-- clean exact-head/browser schema-upgrade and representative later-writer two-tab evidence for the
-  implemented v5 split-store/CAS/lease/receipt authority;
+- exact signed `3f69e88…` now proves the native seven-stage browser schema-upgrade substrate for the
+  implemented v5 split-store/CAS/lease/receipt authority; representative distinct-tab evidence for
+  later mission/combat/other writers remains open, and the current dirty successor needs its own
+  eventual exact-source chain;
 - real veteran-save Gate C, human listening Gate G, physical mobile Gate I and sustained heat QA;
 - gameplay-changing D-9e biome→fauna filtering remains explicitly decision-gated; the current
   `BiomeProfileV1` projection is presentation-only and must not silently change roster generation;

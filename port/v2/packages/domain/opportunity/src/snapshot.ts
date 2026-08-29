@@ -8,7 +8,7 @@ import { hashInt, mulberry32 } from '@cf/domain-rand';
 import { biosphere } from '@cf/domain-ecology';
 import { displayRarity, rarityRoll } from '@cf/domain-speciestraits';
 import { starClass } from '@cf/domain-starcatalog';
-import { biomeFor, regionAt } from '@cf/domain-strays';
+import { biomeFor, gradeCapAt, regionAt } from '@cf/domain-strays';
 import { climateBand } from '@cf/domain-surveyphrases';
 import { systemFor } from '@cf/domain-worldgen';
 import {
@@ -20,7 +20,7 @@ import {
   type CF1WorldKey,
 } from '@cf/scene';
 
-export const WORLD_OPPORTUNITY_SCHEMA = 'cf-v2-world-opportunity/v2' as const;
+export const WORLD_OPPORTUNITY_SCHEMA = 'cf-v2-world-opportunity/v3' as const;
 export const STAR_OPPORTUNITY_SCHEMA = 'cf-v2-star-opportunity/v2' as const;
 
 export type EngineeringRawTier =
@@ -94,7 +94,9 @@ export interface WorldOpportunitySnapshot {
   readonly source: WorldOpportunitySourceFacts;
   /** Unfolded legacy designation score. Values 10..14 stay distinct. */
   readonly rawTier: EngineeringRawTier;
-  /** Player-facing rarity is a separate 0..9 projection. */
+  /** Legacy designation score after its canonical region/ring cap. */
+  readonly effectiveTier: EngineeringRawTier;
+  /** Player-facing rarity is a separate 0..9 projection of effectiveTier. */
   readonly displayRarity: EngineeringDisplayRarity;
   readonly depositProfile: DepositProfileKey;
   readonly deposits: readonly MaterialSymbol[];
@@ -248,11 +250,39 @@ function worldSourceFacts(address: CanonicalCF1WorldAddress): WorldOpportunitySo
 }
 
 function worldRawTier(address: CanonicalCF1WorldAddress, source: WorldOpportunitySourceFacts): EngineeringRawTier {
-  if (source.planetSeed === 133) return 5;
+  if (isCanonicalEarthWorldAddress(address)) return 5;
   const lifey = /Abundant|Aquatic|flora|Sparse/i.test(source.biosphereLevel);
   const lifeBoost = /Abundant/i.test(source.biosphereLevel) ? 2 : (lifey ? 1 : 0);
   const depthBoost = Math.floor(regionAt(address.galaxy.x, address.galaxy.y) / 2);
   return asRawTier(Math.min(14, rarityRoll(source.planetSeed, 3) + lifeBoost + depthBoost));
+}
+
+function worldEffectiveTier(
+  address: CanonicalCF1WorldAddress,
+  rawTier: EngineeringRawTier,
+): EngineeringRawTier {
+  const cap = gradeCapAt({ gal: address.galaxy, star: address.star });
+  if (!Number.isInteger(cap) || cap < 0 || cap > 14) {
+    throw new Error('legacy designation ring returned an invalid tier cap');
+  }
+  return asRawTier(Math.min(rawTier, cap));
+}
+
+/** Exact Earth identity. A foreign canonical world whose leaf seed happens to
+ * be 133 is not the Sol cradle and must not inherit Earth-only policy. */
+export function isCanonicalEarthWorldAddress(
+  value: unknown,
+): boolean {
+  return isCanonicalCF1Address(value)
+    && 'planet' in value
+    && value.galaxy.seed === 999
+    && value.galaxy.x === 90
+    && value.galaxy.y === -60
+    && value.star.seed === 424242
+    && value.star.x === 560
+    && value.star.y === 170
+    && value.planet.seed === 133
+    && value.planet.ordinal === 2;
 }
 
 function starRawTier(starSeed: number, kind: string): EngineeringRawTier {
@@ -268,6 +298,7 @@ export function projectWorldOpportunity(addressValue: CanonicalCF1WorldAddress):
   const address = checkedWorldAddress(addressValue);
   const source = worldSourceFacts(address);
   const rawTier = worldRawTier(address, source);
+  const effectiveTier = worldEffectiveTier(address, rawTier);
   const biomeVein = source.biomeKey !== null
     && Object.prototype.hasOwnProperty.call(BIOME_VEIN, source.biomeKey)
     ? BIOME_VEIN[source.biomeKey as keyof typeof BIOME_VEIN]
@@ -278,13 +309,14 @@ export function projectWorldOpportunity(addressValue: CanonicalCF1WorldAddress):
     address,
     source,
     rawTier,
-    displayRarity: frozenDisplayRarity(rawTier),
+    effectiveTier,
+    displayRarity: frozenDisplayRarity(effectiveTier),
     depositProfile: profileFor(source.planetType),
-    deposits: depositsFor(source.planetSeed, source.planetType, rawTier),
+    deposits: depositsFor(source.planetSeed, source.planetType, effectiveTier),
     biomeVein,
-    cosmicVein: cosmicVeinFor(source.planetSeed, rawTier),
-    exceptionalVein: exceptionalVeinFor(source.planetSeed, source.planetType, rawTier),
-    reservePulls: reserveFor(source.planetSeed, rawTier),
+    cosmicVein: cosmicVeinFor(source.planetSeed, effectiveTier),
+    exceptionalVein: exceptionalVeinFor(source.planetSeed, source.planetType, effectiveTier),
+    reservePulls: reserveFor(source.planetSeed, effectiveTier),
   });
   WORLD_SNAPSHOTS.add(snapshot);
   return snapshot;

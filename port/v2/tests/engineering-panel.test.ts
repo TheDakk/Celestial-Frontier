@@ -110,6 +110,7 @@ function readModel(options: Readonly<{
   scanStatus?: EngineeringRowStatus;
   scanReason?: string | null;
   hostileRecipeName?: string;
+  exceptionalRecipe?: boolean;
 }> = {}): EngineeringPanelReadModelV1 {
   const scanStatus = options.scanStatus ?? 'available';
   const scanReason = options.scanReason === undefined
@@ -203,6 +204,22 @@ function readModel(options: Readonly<{
           },
         ],
       },
+      ...(options.exceptionalRecipe ? [{
+        id: 'gear' as const, name: 'Gear', recipes: [{
+          baseId: 'meteor', name: 'Meteorite Pendant', category: 'gear' as const,
+          status: 'available' as const, reason: null,
+          costs: costs({
+            materials: [
+              { id: 'Ni', label: 'Nickel', required: 2, owned: 2 },
+              { id: 'C', label: 'Carbon', required: 1, owned: 1 },
+            ],
+          }),
+          effectSupport: 'live' as const,
+          effectDetail: 'Live effects: rich strike chance.',
+          outputKind: 'gear-instance' as const,
+          owned: 0, outputQuantity: 1, capacityRemaining: 24,
+        }],
+      }] : []),
     ],
   } satisfies EngineeringPanelReadModelV1);
 }
@@ -491,6 +508,22 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     const mine = view.body.querySelector<HTMLButtonElement>('[data-engineering-action="mine"]')!;
     expect(mine.disabled).toBe(true);
     expect(mine.title).toBe('Next active-play cadence has not settled.');
+  });
+
+  it('routes an available fully exceptional gear row through the native Fabricate action', () => {
+    const view = shell();
+    const onAction = vi.fn();
+    controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction });
+    setFullView(readModel({ exceptionalRecipe: true }));
+    open(view);
+    view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')!.open = true;
+    const row = view.body.querySelector<HTMLElement>('[data-recipe-id="meteor"]')!;
+    const button = row.querySelector<HTMLButtonElement>('[data-engineering-action="fabricate"]')!;
+    expect(row.dataset.status).toBe('available');
+    expect(button.disabled).toBe(false);
+    button.click();
+    expect(onAction).toHaveBeenCalledOnce();
+    expect(onAction).toHaveBeenCalledWith({ operation: 'fabricate', id: 'meteor' });
   });
 
   it('emits identical frozen requests for pointer and keyboard-native clicks and latches double activation', () => {

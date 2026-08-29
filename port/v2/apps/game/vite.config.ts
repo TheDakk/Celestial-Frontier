@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
+import { celestialFrontierPwaPlugin } from './pwa-build.js';
 
 export default defineConfig({
+  plugins: [celestialFrontierPwaPlugin()],
   /* the workspace packages ship TypeScript source (exports -> ./src/index.ts);
      Vite transpiles them in-place — no per-package build step, same as vitest */
   build: { target: 'es2022', sourcemap: true, rollupOptions: { input: { main: 'index.html', audit: 'audit.html', hybridMatrix: 'hybrid-matrix.html' } } },

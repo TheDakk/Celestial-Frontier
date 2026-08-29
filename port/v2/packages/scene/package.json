@@ -10,6 +10,7 @@
   "dependencies": {
     "@cf/domain-worldgen": "*",
     "@cf/domain-worldconfig": "*",
+    "@cf/domain-worldidentity": "*",
     "@cf/domain-descriptors": "*",
     "@cf/domain-strays": "*"
   }

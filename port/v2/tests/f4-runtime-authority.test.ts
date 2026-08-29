@@ -173,6 +173,53 @@ describe('F4 runtime authority join', () => {
     expect(runtime.diagnostics()).toMatchObject({ commits: 1, staleWrites: 0, leaseLosses: 0 });
   });
 
+  it('retains a detached last-durable checkpoint parent across product commits', async () => {
+    const { backend, loaded } = await migrated();
+    const runtime = createF4RuntimeAuthority({
+      backend,
+      repository: createRevisionedRepository(backend),
+      registry: REGISTRY,
+      initialRevision: 0,
+      initialExtensions: loaded.extensions,
+      initialState: loaded.state,
+      restoredAuthority: null,
+      freshSessionSeed: 0xA0C0A0C0,
+      ownerId: 'checkpoint-parent-tab',
+      token: 'checkpoint-parent-document',
+      leaseTtlMs: 1_000,
+      now: () => 0,
+      visible: true,
+      answerable: true,
+    });
+    const first = runtime.checkpointParent();
+    expect(first).not.toBeNull();
+    first!.essence = 999;
+    expect(runtime.checkpointParent()?.essence).toBe(loaded.state.essence);
+
+    await expect(runtime.heartbeat()).resolves.toEqual({ kind: 'owned', heartbeat: 0 });
+    const seeded = await runtime.commit(loaded.state, NOW);
+    expect(seeded.kind).toBe('committed');
+    if (seeded.kind !== 'committed') return;
+    const committed = await runtime.commitAction({
+      state: seeded.saved.canonicalState,
+      operation: 'checkpoint-parent-control',
+      receiptKind: 'checkpoint-parent-control',
+      codecNow: NOW,
+      derive: ({ draft, receiptOrdinal }) => {
+        draft.essence += 7;
+        return { state: draft, witness: `checkpoint-parent:${receiptOrdinal}` };
+      },
+    });
+    expect(committed.kind).toBe('committed');
+    if (committed.kind !== 'committed') return;
+    expect(runtime.checkpointParent()?.essence).toBe(loaded.state.essence + 7);
+    committed.state.essence += 100;
+    expect(runtime.checkpointParent()?.essence).toBe(loaded.state.essence + 7);
+
+    await expect(runtime.replace([])).resolves.toMatchObject({ kind: 'committed' });
+    expect(runtime.checkpointParent()).toBeNull();
+  });
+
   it('classifies an exhausted F3 revision as terminal without publishing product or receipt state', async () => {
     const { backend, loaded } = await migrated();
     await backend.apply([{

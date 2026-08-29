@@ -32,21 +32,44 @@ function installDom(): void {
   for (const key of GLOBAL_KEYS) originalGlobals.set(key, Object.getOwnPropertyDescriptor(globalThis, key));
   dom = new JSDOM(`<!doctype html><html><body>
     <button id="prior">Prior focus</button>
-    <div id="dock"><button id="dockatlas">Atlas dock</button></div>
-    <div id="raillft"></div><div id="railrgt"><button id="railatlas">Atlas rail</button></div>
+    <div id="dock">
+      <button id="dockatlas">Atlas dock</button>
+      <button id="dockshipyard">Shipyard dock</button>
+      <button id="dockcodex">Compendium dock</button>
+      <button id="dockrecords">Records dock</button>
+    </div>
+    <div id="raillft"><button id="railcodex">Compendium rail</button></div>
+    <div id="railrgt">
+      <button id="railatlas">Atlas rail</button>
+      <button id="railshipyard">Shipyard rail</button>
+      <button id="railrecords">Records rail</button>
+    </div>
     <div id="searchbox"><button>Search</button></div>
     <div id="setpanel"><button>Settings</button></div>
     <div id="guidepanel"><button>Guide</button></div>
-    <div id="codexpanel"><button>Codex</button></div>
-    <div id="recpanel"><button>Records</button></div>
+    <div id="codexpanel">
+      <button data-pnx="codex">Close Compendium</button>
+      <button data-arc5-feed-confirm>Feed</button>
+      <button data-arc5-breed-confirm>Breed</button>
+      <button data-arc5-rename-confirm>Rename</button>
+      <button data-arc5-scout-confirm>Field Scout</button>
+    </div>
+    <div id="recpanel"><button data-pnx="rec">Close Records</button><button>Records row</button></div>
     <div id="atlaspanel"><button>Earth row</button></div>
     <div id="chpanel"><button>Charters</button></div>
+    <div id="shipyardpanel">
+      <button data-pnx="shipyard">Close Shipyard</button>
+      <details><summary>Fabricator</summary><button class="engineering-action">Craft</button></details>
+    </div>
+    <div id="inventorypanel"><button>Inventory action</button></div>
+    <div id="combatpanel"><button>Chronicle action</button></div>
     <div id="survey">
       <button data-sel="title">Earth</button>
       <button data-act="add">Chart</button>
       <button data-act="landcta">Land</button>
     </div>
     <div id="importsheet"><button>Import</button></div>
+    <span id="primechip">Prime Codex · 0 / 9</span>
     <canvas tabindex="0"></canvas>
   </body></html>`, { url: 'https://example.test/' });
   setGlobal('window', dom.window);
@@ -93,13 +116,26 @@ async function boot(complete: TrainingDeps['complete']) {
   return { training, prior, closePanels };
 }
 
-function driveToGraduation(training: typeof import('../apps/game/src/training.js')): void {
+function driveToPlanetsideBriefing(training: typeof import('../apps/game/src/training.js')): void {
   document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
   training.gameEvent('survey', { planetSeed: 133 });
   document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
   training.gameEvent('atlas-add', { id: 'p133' });
   training.gameEvent('atlas-open', { open: true });
   training.gameEvent('landfall', { planetSeed: 133 });
+  expect(training.trainingStepId()).toBe('planetside-briefing');
+}
+
+function driveToGraduation(training: typeof import('../apps/game/src/training.js')): void {
+  driveToPlanetsideBriefing(training);
+  document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+  training.gameEvent('panel-open', { id: 'shipyard', open: true });
+  document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+  training.gameEvent('panel-open', { id: 'codex', open: true });
+  document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+  training.gameEvent('panel-open', { id: 'rec', open: true });
+  document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+  document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
   expect(training.trainingStepId()).toBe('grad');
 }
 
@@ -107,21 +143,25 @@ function graduationCopyIsTruthful(html: string): boolean {
   const copy = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
     .replace(/\s+([,.;:])/g, '$1').trim();
   return /short drill stays focused on real navigation/i.test(copy)
-    && /open Engineering &amp; Shipyard from the 🛠 control/i.test(copy)
-    && /grounded lifeless world can expose Mine/i.test(copy)
-    && /proven star with the right drive can expose Skim/i.test(copy)
-    && /Research and fixed Fabricator rows enable only actions whose effects are connected/i.test(copy)
-    && /living world, Planetside offers Tame, Scavenge, and Sample/i.test(copy)
+    && /board briefings are read-only/i.test(copy)
+    && /survey card’s Share prepares a verified CF1 world code/i.test(copy)
+    && /pasting a valid CF1 code into Search follows its source-proven route when your ship and Prime reach allow it/i.test(copy)
+    && /use Tame, Scavenge, and Sample after Finish/i.test(copy)
     && /each chooses uniformly from its eligible species across the full biosphere, not only the at-most-eight-row preview/i.test(copy)
     && /All three share finite Biosphere Yield/i.test(copy)
     && /hit or miss spends 1 attempt/i.test(copy)
     && /pool fully recovers at the next 20-minute active-play cycle/i.test(copy)
     && /never while the game is closed/i.test(copy)
-    && /navigation drill makes no capture attempt[^.!?]{0,64}use those actions after Finish/i.test(copy)
-    && /Capture does not bank the Charter’s separate bioscan milestone[^.!?]{0,64}writer remains unavailable/i.test(copy)
-    && /real fauna Compendium detail can also Feed one exact unassigned companion below the 200-Meal cap with one exact flora lot through Use 1/i.test(copy)
-    && /This drill performs no meal/i.test(copy)
-    && /tastes, stat or Power growth, injury care, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable/i.test(copy)
+    && /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i.test(copy)
+    && /A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing/i.test(copy)
+    && /v2’s current replacement for v1\.8\.9’s separate Discover Life action/i.test(copy)
+    && /Survey Records and accepted or weekly bioscan Charters remain unavailable/i.test(copy)
+    && /real fauna Compendium detail can Feed one exact unassigned companion below the 200-Meal cap with one exact flora lot through Use 1/i.test(copy)
+    && /Breed two distinct exact owned fauna with nonlethal active-play Recovery/i.test(copy)
+    && /Rename one exact owned companion without changing its creature identity/i.test(copy)
+    && /name and stand down the role-only Field Scout/i.test(copy)
+    && /This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat/i.test(copy)
+    && /Tastes, stat or Power growth, injury care, healing, poison, bond, explorer eating, Scout interception or XP, dispatch, friendly duels, and missions remain unavailable/i.test(copy)
     && !/(?:Surveying|landing)[^.!?]{0,80}(?:discovers|captures) (?:its )?life/i.test(copy)
     && !/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(copy)
     && !/miss(?:es)?[^.!?]{0,48}(?:cost|spend)s? (?:nothing|no Yield|zero)/i.test(copy)
@@ -129,9 +169,32 @@ function graduationCopyIsTruthful(html: string): boolean {
     && !/(?:drill|Training)[^.!?]{0,64}(?:makes|performs) a capture attempt/i.test(copy)
     && !/(?:drill|Training)[^.!?]{0,64}(?:makes|performs) a meal/i.test(copy)
     && !/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(copy)
+    && !/Both parents are consumed|Recovery advances while the game is closed|Breed automatically retries/i.test(copy)
+    && !/Rename changes (?:the )?(?:creature |companion )?(?:genome|species|lineage)|Rename automatically retries/i.test(copy)
+    && !/Field Scout (?:intercepts?|redirects?)[^.!?]{0,64}(?:harm|injury|damage)|Field Scout (?:earns?|gains?)[^.!?]{0,32}XP/i.test(copy)
     && !/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(copy)
-    && !/Capture (?:banks|advances|counts)[^.!?]{0,48}(?:Charter|bioscan)/i.test(copy)
+    && !/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\bsource-proven world beyond Sol\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(copy)
+    && !/(?:every|any) (?:capture|Tame|Scavenge|Sample)[^.!?]{0,64}(?:banks|advances|counts)[^.!?]{0,48}(?:Charter|bioscan|life-discovery)/i.test(copy)
+    && !/(?:miss|later success|repeat|stale tab|failed write)[^.!?]{0,96}(?:banks|advances|counts) (?:a|the|one)[^.!?]{0,48}(?:Charter|bioscan|life-discovery)/i.test(copy)
+    && !/\b(?:on|in) Sol\b[^.!?]{0,96}(?:banks|advances|counts) (?:a|the|one)[^.!?]{0,48}(?:Charter|bioscan|life-discovery)/i.test(copy)
     && !/(?:all|every) Research[^.!?]{0,80}(?:available|purchasable)/i.test(copy);
+}
+
+function curriculumCopyIsTruthful(steps: readonly { id: string; text: () => string }[]): boolean {
+  const text = (id: string): string => steps.find((step) => step.id === id)?.text() ?? '';
+  return /will not roll a capture or spend Yield/i.test(text('planetside-briefing'))
+    && /Opening and inspecting this board changes nothing/i.test(text('engineering-open'))
+    && /Training keeps every action button locked/i.test(text('engineering-tour'))
+    && /deterministic <b>Pureforged<\/b> modifier/i.test(text('engineering-tour'))
+    && /an empty new expedition is honest, not a training cache/i.test(text('compendium-open'))
+    && /role-only <b>Field Scout<\/b> selector/i.test(text('compendium-tour'))
+    && /interception, Scout XP, dispatch, missions, care, bond, and friendly duels are not live yet/i.test(text('compendium-tour'))
+    && /Records are evidence, not a reward fountain/i.test(text('records-tour'))
+    && /losing one of those captured rulers is permanent/i.test(text('horizon'))
+    && /battle-log Share changes no expedition fact/i.test(text('horizon'))
+    && !/(?:Training|tour)[^.!?]{0,80}(?:rolls?|spends?|crafts?|feeds?|breeds?|renames?|fights?)[^.!?]{0,80}(?:for you|automatically)/i.test(
+      steps.map((step) => step.text()).join(' '),
+    );
 }
 
 beforeEach(() => {
@@ -144,7 +207,7 @@ afterEach(() => {
 });
 
 describe('Field Training completion transaction UI', () => {
-  it('keeps the established six live lessons and honest graduation in order', async () => {
+  it('keeps the six hands-on lessons, bounded read-only tour, and honest graduation in order', async () => {
     const training = await import('../apps/game/src/training.js');
     const deps: TrainingDeps = {
       explorerName: () => 'Ada',
@@ -154,14 +217,18 @@ describe('Field Training completion transaction UI', () => {
     };
     const steps = training.buildSteps(deps);
     expect(steps.map((step) => step.id)).toEqual([
-      'welcome', 'find-earth', 'survey-tour', 'atlas-add', 'atlas-open', 'land', 'grad',
+      'welcome', 'find-earth', 'survey-tour', 'atlas-add', 'atlas-open', 'land',
+      'planetside-briefing', 'engineering-open', 'engineering-tour',
+      'compendium-open', 'compendium-tour', 'records-open', 'records-tour',
+      'horizon', 'grad',
     ]);
+    expect(curriculumCopyIsTruthful(steps)).toBe(true);
     const graduation = steps.find((step) => step.id === 'grad')!.text();
     expect(graduationCopyIsTruthful(graduation)).toBe(true);
     expect(graduationCopyIsTruthful(
       graduation.replace(
-        'open <b>Engineering &amp; Shipyard</b> from the 🛠 control',
-        'continue exploring after this drill',
+        'a survey card’s <b>Share</b> prepares a verified CF1 world code',
+        'Share always teleports you',
       ),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
@@ -197,6 +264,97 @@ describe('Field Training completion transaction UI', () => {
     expect(graduationCopyIsTruthful(
       graduation + ' Stats are now increased by feeding.',
     )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation.replace(
+        'two distinct exact owned fauna with nonlethal active-play Recovery',
+        'two owned creatures',
+      ),
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation + ' Both parents are consumed.',
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation.replace(
+        'one exact owned companion without changing its creature identity',
+        'a companion',
+      ),
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation + ' Rename changes the companion genome.',
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation + ' Field Scout intercepts injury and earns XP.',
+    )).toBe(false);
+
+    const forgedCurriculum = steps.map((step) => step.id === 'compendium-tour'
+      ? { ...step, text: () => step.text().replace(
+          'interception, Scout XP, dispatch, missions, care, bond, and friendly duels are not live yet',
+          'Field Scout automatically intercepts injury and earns XP',
+        ) }
+      : step);
+    expect(curriculumCopyIsTruthful(forgedCurriculum)).toBe(false);
+  });
+
+  it('advances board orientation only from exact real open lifecycles and locks every mutation', async () => {
+    const complete = vi.fn<TrainingDeps['complete']>(async () => ({ kind: 'completed' }));
+    const { training, closePanels } = await boot(complete);
+    driveToPlanetsideBriefing(training);
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    expect(training.trainingStepId()).toBe('engineering-open');
+
+    for (const [type, detail] of [
+      ['crafted', { id: 'shipyard', open: true }],
+      ['panel-open', { id: 'codex', open: true }],
+      ['panel-open', { id: 'shipyard', open: false }],
+      ['panel-open', { id: 'shipyard', open: 1 }],
+    ] as const) {
+      training.gameEvent(type, detail);
+      expect(training.trainingStepId()).toBe('engineering-open');
+    }
+    training.gameEvent('panel-open', { id: 'shipyard', open: true });
+    expect(training.trainingStepId()).toBe('engineering-tour');
+    expect(document.querySelector('[data-pnx="shipyard"]')?.closest('[inert]')).toBeNull();
+    expect(document.querySelector('#shipyardpanel summary')?.closest('[inert]')).toBeNull();
+    expect(document.querySelector('.engineering-action')?.closest('[inert]'))
+      .toBe(document.querySelector('.engineering-action'));
+
+    training.gameEvent('crafted', { id: 'iron-plate' });
+    expect(training.trainingStepId()).toBe('engineering-tour');
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    expect(closePanels).toHaveBeenCalledTimes(1);
+    expect(training.trainingStepId()).toBe('compendium-open');
+
+    training.gameEvent('panel-open', { id: 'rec', open: true });
+    training.gameEvent('panel-open', { id: 'codex', open: 'true' });
+    expect(training.trainingStepId()).toBe('compendium-open');
+    training.gameEvent('panel-open', { id: 'codex', open: true });
+    expect(training.trainingStepId()).toBe('compendium-tour');
+    expect(document.querySelector('[data-pnx="codex"]')?.closest('[inert]')).toBeNull();
+    for (const selector of [
+      '[data-arc5-feed-confirm]', '[data-arc5-breed-confirm]',
+      '[data-arc5-rename-confirm]', '[data-arc5-scout-confirm]',
+    ]) {
+      const control = document.querySelector(selector);
+      expect(control?.closest('[inert]'), selector).toBe(control);
+    }
+    for (const mutationEvent of ['fed', 'bred', 'renamed', 'scout-changed']) {
+      training.gameEvent(mutationEvent, { committed: true });
+      expect(training.trainingStepId()).toBe('compendium-tour');
+    }
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    expect(closePanels).toHaveBeenCalledTimes(2);
+    expect(training.trainingStepId()).toBe('records-open');
+
+    training.gameEvent('panel-open', { id: 'rec', open: true });
+    expect(training.trainingStepId()).toBe('records-tour');
+    expect(document.querySelector('[data-pnx="rec"]')?.closest('[inert]')).toBeNull();
+    expect(document.querySelector('#recpanel button:not([data-pnx])')?.closest('[inert]'))
+      .toBe(document.querySelector('#recpanel button:not([data-pnx])'));
+    document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
+    expect(closePanels).toHaveBeenCalledTimes(3);
+    expect(training.trainingStepId()).toBe('horizon');
+    training.gameEvent('conquest', { committed: true });
+    expect(training.trainingStepId()).toBe('horizon');
   });
 
   it('latches a mixed Finish/Skip activation to one Finish transaction and outcome', async () => {

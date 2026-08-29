@@ -16,6 +16,7 @@ const PRESENT_PLANET_SURVEY_CALL = [
   '    null,',
   '    orbitalMineralSurveyRows(star, resolved.planet),',
   '    preparedCaptureRoster,',
+  '    approachEcology,',
   '  );',
 ].join('\n');
 
@@ -123,15 +124,17 @@ function wiringErrors(source: string): string[] {
     errors.push('survey-event-single-owner');
   }
 
-  const refresh = section(source, 'function refreshPlanetSurveyCard(', '\nfunction surveyAndLand(');
+  const refresh = section(source, 'function refreshPlanetSurveyCard(', '\nasync function surveyAndLand(');
   if (!refresh.includes("card.style.display === 'none'")
-    || !refresh.includes('orbitalMineralSurveyRows(context.star, context.planet)')) {
+    || !refresh.includes('return presentPlanetSurvey(context.p, context.star, context.planet);')) {
     errors.push('visible-card-refresh');
   }
-  const land = section(source, 'function doLand(', '\nfunction addToAtlas(');
-  const atlas = section(source, 'function addToAtlas(', "\ncard.addEventListener('click'");
+  const land = section(source, 'async function doLand(', '\nlet lastArc0AtlasOutcome:');
+  const atlas = section(source, 'async function addToAtlas(', "\ncard.addEventListener('click'");
   const action = section(source, 'async function runEngineeringPanelAction(', '\nasync function smokeCommitF4Outcome(');
-  if (!land.includes('refreshPlanetSurveyCard();')) errors.push('surface-refresh-removal');
+  if (occurrences(land, 'refreshPlanetSurveyCard();') !== 2) {
+    errors.push('surface-refresh-removal');
+  }
   if (!atlas.includes('refreshPlanetSurveyCard();')) errors.push('atlas-refresh-retention');
   if (!action.includes("if (outcome.operation === 'purchase-research') refreshPlanetSurveyCard();")) {
     errors.push('postcommit-research-refresh');
@@ -245,10 +248,12 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
 
     const retainedOnSurface = replaceInSectionExact(
       mainSource,
-      'function doLand(',
-      '\nfunction addToAtlas(',
-      '  refreshPlanetSurveyCard();',
-      '  updateChips();',
+      'async function doLand(',
+      '\nlet lastArc0AtlasOutcome:',
+      '      buildCurrentSceneTransaction(); triggerCameraShake(); hudText(); updateChips();\n' +
+        '      refreshPlanetSurveyCard();',
+      '      buildCurrentSceneTransaction(); triggerCameraShake(); hudText(); updateChips();\n' +
+        '      updateChips();',
     );
     expect(wiringErrors(retainedOnSurface)).toContain('surface-refresh-removal');
 

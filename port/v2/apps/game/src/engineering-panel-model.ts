@@ -284,9 +284,6 @@ function productionFabricationGroups(
         const requiredInventoryRevisions = autoEquips ? 2 : 1;
         const inventoryRevisionExhausted = loadout.inventory.revision
           > MAX_GEAR_INVENTORY_REVISION - requiredInventoryRevisions;
-        const fullyExceptional = plan.outputKind === 'gear-instance'
-          && Object.keys(plan.materialCost).length > 0
-          && Object.entries(plan.materialCost).every(([id, required]) => (exceptional.get(id) ?? 0) >= required);
         let status: EngineeringRowStatus = 'available';
         let reason: string | null = null;
         if (quote.alreadyBuilt) {
@@ -299,8 +296,6 @@ function productionFabricationGroups(
           status = 'unavailable'; reason = 'Inventory record revision is exhausted.';
         } else if (capacityRemaining < 1) {
           status = 'unavailable'; reason = 'Output capacity is full.';
-        } else if (fullyExceptional) {
-          status = 'unavailable'; reason = 'Exceptional slotted fabrication policy is not available.';
         } else if (!quote.craftable) {
           status = 'unavailable'; reason = missingCostReasons(quote).join(' ') || 'Recipe requirements are not met.';
         }
@@ -330,6 +325,7 @@ function productionFabricationGroups(
 function productionResearchRows(
   state: EngineeringStateV2,
   economy: EngineeringPanelEconomySnapshot,
+  jumpDriveOwned: boolean,
 ): readonly EngineeringResearchRowReadModel[] {
   const materials = quantityMap(economy.cargo, 'engineering cargo');
   const researchOwned = new Map(state.research.map((id) => [id, 1]));
@@ -349,6 +345,8 @@ function productionResearchRows(
       status = 'owned'; reason = 'Already researched.';
     } else if (definition.consumerStatus === 'unavailable') {
       status = 'unavailable'; reason = 'Gameplay effect is not connected.';
+    } else if (id === 'scan1' && !jumpDriveOwned) {
+      status = 'unavailable'; reason = 'Build the Jump Drive first.';
     } else if (revisionExhausted) {
       status = 'unavailable'; reason = 'Engineering record revision is exhausted.';
     } else if (!prerequisiteOwned) {
@@ -503,15 +501,17 @@ export function projectEngineeringPanelReadModel(
     || !Number.isSafeInteger(input.economy.hp) || input.economy.hp < 0) {
     throw new RangeError('engineering panel economy is malformed');
   }
-  /* The capability projector is also the private loadout-brand check. */
-  projectEngineeringCapabilities(input.loadout);
+  /* The capability projector is also the private loadout-brand check. Its
+     exact positive system fold owns the temporary Jump-Drive-first product
+     policy; ship art and loose item mirrors are never qualification. */
+  const capabilities = projectEngineeringCapabilities(input.loadout);
   const engineeringRevisionExhausted = isEngineeringRevisionExhausted(input.engineering);
   const model: EngineeringPanelReadModelV1 = {
     schema: ENGINEERING_PANEL_READ_MODEL_SCHEMA,
     ship: input.ship,
     mining: miningModel(input),
     skimming: skimmingModel(input),
-    research: productionResearchRows(input.engineering, input.economy),
+    research: productionResearchRows(input.engineering, input.economy, capabilities.jumpDrive),
     fabricationGroups: productionFabricationGroups(
       input.loadout,
       input.economy,

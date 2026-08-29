@@ -115,6 +115,22 @@ const meteorPlan = () => fabricationPlan('meteor', {
   signatureIds: [],
 }, 33);
 
+const exceptionalMeteorPlan = () => fabricationPlan('meteor', {
+  materials: { C: 1, Ni: 2 },
+  exceptionalMaterials: { C: 1, Ni: 2 },
+  itemCounts: {},
+  stardust: 0,
+  signatureIds: [],
+}, 33);
+
+const exceptionalContactMeteorPlan = () => fabricationPlan('meteor', {
+  materials: { C: 1, Ni: 2 },
+  exceptionalMaterials: { C: 1, Ni: 2 },
+  itemCounts: {},
+  stardust: 0,
+  signatureIds: [],
+}, 4);
+
 describe('@cf/persistence — Arc 2 fixed-fabrication settlement adapter', () => {
   it('increments a stackable from 998 to the exact cap and refuses 999 atomically', () => {
     const plan = platePlan();
@@ -339,6 +355,7 @@ describe('@cf/persistence — Arc 2 fixed-fabrication settlement adapter', () =>
       ordinal: 0,
     });
     expect(instance.provenance.sourceActionId).toBe(first.sourceActionId);
+    expect(instance).not.toHaveProperty('craftedModifier');
 
     const appliedReplay = prepareArc2FixedFabrication(fabricationSource(
       {},
@@ -349,6 +366,62 @@ describe('@cf/persistence — Arc 2 fixed-fabrication settlement adapter', () =>
     });
     expect(appliedReplay).not.toHaveProperty('state');
     expect(appliedReplay).not.toHaveProperty('economyDelta');
+  });
+
+  it('persists one receipt-bound exceptional modifier with exact exceptional spend and duplicate safety', () => {
+    const plan = exceptionalMeteorPlan();
+    const first = prepareArc2FixedFabrication(fabricationSource(), plan);
+    const replay = prepareArc2FixedFabrication(fabricationSource(), plan);
+    expect(replay).toEqual(first);
+    expect(first).toMatchObject({
+      status: 'ready', outputLocation: 'equipped',
+      economyDelta: {
+        materials: [{ id: 'C', delta: -1 }, { id: 'Ni', delta: -2 }],
+        exceptionalMaterials: [{ id: 'C', delta: -1 }, { id: 'Ni', delta: -2 }],
+        ordinaryMaterials: [],
+      },
+      compatibilityDelta: {
+        cargo: [{ id: 'C', delta: -1 }, { id: 'Ni', delta: -2 }],
+        cgx: [{ id: 'C', delta: -1 }, { id: 'Ni', delta: -2 }],
+      },
+    });
+    if (first.status !== 'ready' || first.instanceId === null) return;
+    const instance = first.state.inventory.entries.find(
+      ({ instance: candidate }) => candidate.instanceId === first.instanceId,
+    )!.instance;
+    expect(instance.craftedModifier).toEqual(plan.result.arc2.gearGenerationPlan?.craftedModifier);
+    expect(instance.craftedModifier?.affixId).toMatch(/^exceptional-v1:/);
+
+    const reloaded = fabricationSource({}, first.state.inventory);
+    const reloadedInstance = reloaded.inventory.entries.find(
+      ({ instance: candidate }) => candidate.instanceId === first.instanceId,
+    )!.instance;
+    expect(reloadedInstance).toEqual(instance);
+    expect(prepareArc2FixedFabrication(reloaded, plan)).toMatchObject({
+      status: 'refused', reason: 'duplicate-instance', instanceId: first.instanceId,
+    });
+  });
+
+  it('replays an equipped exceptional contact modifier into the persisted capture capability', () => {
+    const plan = exceptionalContactMeteorPlan();
+    expect(plan.result.arc2.gearGenerationPlan?.craftedModifier).toEqual({
+      affixId: 'exceptional-v1:contact', tier: 1, value: 9,
+    });
+    const settled = prepareArc2FixedFabrication(fabricationSource(), plan);
+    expect(settled).toMatchObject({ status: 'ready', outputLocation: 'equipped' });
+    if (settled.status !== 'ready') return;
+
+    const reloadedExtensions = canonicalizeV5Extensions({
+      inventory: { [ARC2_LOOT_NAMESPACE]: encodeArc2LootCarrier(settled.state) },
+    });
+    const capability = readArc2AcquisitionCapabilities(reloadedExtensions);
+    expect(capability).toMatchObject({
+      kind: 'loaded',
+      capabilities: {
+        equippedInstanceIds: [settled.instanceId],
+        contactCaptureBonus: 9,
+      },
+    });
   });
 
   it('accepts only the exact registered plan and rejects receipt/result/directive lookalikes', () => {
@@ -427,19 +500,6 @@ describe('@cf/persistence — Arc 2 fixed-fabrication settlement adapter', () =>
       .toMatchObject({ status: 'refused', reason: 'plan-invalid' });
     expect(toJsonCalls).toBe(0);
 
-    const fullyExceptional = planFixedFabrication({
-      state: createEngineeringState(),
-      baseId: 'meteor',
-      assets: {
-        materials: { C: 1, Ni: 2 }, exceptionalMaterials: { C: 1, Ni: 2 },
-        itemCounts: {}, stardust: 0, signatureIds: [],
-      },
-      activePlay: { activePlayMs: 0 },
-      receiptOrdinal: 33,
-    });
-    expect(fullyExceptional).toMatchObject({
-      status: 'refused', reason: 'exceptional-slotted-policy-unavailable',
-    });
   });
 
   it('requires a persistence-issued source and rejects loose JSON/descriptor lookalikes unobserved', () => {

@@ -26,6 +26,8 @@
 
 export * from './readiness.js';
 export * from './auto-extractor.js';
+export * from './achievements.js';
+export * from './rank.js';
 
 /** Injected elapsed seconds per epoch — v1.7 balance: 240→1200 ("slow evolution, not
     a 4-min farm"). ⚠ SHARED knob: drives biosphere recovery AND harvest

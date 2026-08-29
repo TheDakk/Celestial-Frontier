@@ -9,7 +9,12 @@ import {
   type CatalogueQuantityMap,
   type LootCatalogueDefinition,
 } from './catalogue.js';
-import type { GearGenerationPlan } from './gear.js';
+import {
+  EXCEPTIONAL_CRAFT_OWNER_ID_V1,
+  parseGearSourceActionId,
+  rollExceptionalCraftModifier,
+  type GearGenerationPlan,
+} from './gear.js';
 import {
   UINT32_MAX,
   assertPlainRecord,
@@ -17,7 +22,7 @@ import {
   deepFreeze,
 } from './internal.js';
 
-export const FIXED_RECIPE_AUTHORITY = 'legacy-v1.8.9-items' as const;
+export const FIXED_RECIPE_AUTHORITY = EXCEPTIONAL_CRAFT_OWNER_ID_V1;
 
 export const LEGACY_MATERIAL_IDS_V1 = Object.freeze([
   'Fe', 'Si', 'Mg', 'Al', 'Ca', 'Na', 'Ni', 'Ti', 'Cu', 'Zn', 'Sn', 'Mn', 'Cr', 'Pb', 'W',
@@ -202,12 +207,29 @@ export function getFixedRecipePlan(baseId: string): FixedRecipePlan {
 
 /** Production fixed-craft callers supply only receipt entropy; every power
  * axis is derived from the canonical base rather than caller-authored. */
-export function getFixedCraftGenerationPlan(baseId: string, generationSeed: number): GearGenerationPlan {
+export function getFixedCraftGenerationPlan(
+  baseId: string,
+  generationSeed: number,
+  exceptionalSourceActionId: string | null = null,
+): GearGenerationPlan {
   const recipe = getFixedRecipePlan(baseId);
   if (!recipe.gearAxes) throw new RangeError(`${baseId} does not produce an exact GearInstance`);
+  const checkedSeed = checkedInteger(generationSeed, 0, UINT32_MAX, 'fixed craft generationSeed');
+  let craftedModifier = null;
+  if (exceptionalSourceActionId !== null) {
+    const source = parseGearSourceActionId(exceptionalSourceActionId);
+    if (source.kind !== 'craft'
+      || source.ownerId !== FIXED_RECIPE_AUTHORITY
+      || source.actionKey !== `recipe:${recipe.baseId}`
+      || source.receiptId === undefined) {
+      throw new RangeError('exceptional fixed craft source does not bind its recipe authority and receipt');
+    }
+    craftedModifier = rollExceptionalCraftModifier(recipe.baseId, exceptionalSourceActionId, checkedSeed);
+  }
   return deepFreeze({
     ...recipe.gearAxes,
-    generationSeed: checkedInteger(generationSeed, 0, UINT32_MAX, 'fixed craft generationSeed'),
+    generationSeed: checkedSeed,
+    craftedModifier,
   });
 }
 

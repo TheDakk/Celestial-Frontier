@@ -73,6 +73,8 @@ jobs:
     env:
       CF_BROWSER: /usr/bin/google-chrome
       CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-manual-compendiummem
+      CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice
+      CF_V2_GLASSMATRIX_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -153,12 +155,35 @@ jobs:
             port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
           if-no-files-found: error
           retention-days: 14
-      - name: real-browser, responsive, and automated-persona evidence
+      # This artifact workflow proves the exact Slice → Glass browser link
+      # before persona/packaging. It is not the dedicated uninterrupted
+      # 20-minute Recovery certificate and must never be described as one.
+      - name: one-attempt real-browser slice smoke
+        id: slice
         working-directory: port/v2
         run: |
           npm run smoke:ci
-          npm run glassmatrix
-          npm run persona:report
+          slice_run_id="$(jq -er '.run.id' apps/game/smoke/slice-smoke-report.json)"
+          test "$slice_run_id" = "$CF_V2_SLICE_SMOKE_RUN_ID"
+          printf 'run_id=%s\n' "$slice_run_id" >> "$GITHUB_OUTPUT"
+          node tools/smokereport.mjs --verify-run="$slice_run_id"
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+      - name: one-attempt 12-viewport Glass matrix
+        id: glass
+        working-directory: port/v2
+        run: |
+          slice_run_id="${{ steps.slice.outputs.run_id }}"
+          node tools/glassmatrix.mjs --slice-run="$slice_run_id"
+          glass_run_id="$(jq -er '.run.id' apps/game/smoke/glassmatrix-report.json)"
+          test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"
+          printf 'run_id=%s\n' "$glass_run_id" >> "$GITHUB_OUTPUT"
+          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+      - name: automated persona synthesis
+        working-directory: port/v2
+        run: npm run persona:report
         env:
           CF_BROWSER: /usr/bin/google-chrome
       - name: build commit-bound preview artifact
@@ -178,7 +203,10 @@ jobs:
           path: |
             port/v2/apps/game/smoke/slice-smoke-report.json
             port/v2/apps/game/smoke/slice-smoke.log
+            port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json
+            port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log
             port/v2/apps/game/smoke/glassmatrix-report.json
+            port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json
             port/v2/apps/game/smoke/automated-persona-report.json
             port/v2/apps/game/smoke/automated-persona-report.md
             port/v2/apps/game/smoke/slice-*.png

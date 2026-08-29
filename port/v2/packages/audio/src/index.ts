@@ -111,7 +111,40 @@ export type {
 } from './events.js';
 export { createCreatureExpressionVoiceRequest } from './creature-expression-voice.js';
 export type { CreatureExpressionVoiceRequestInput } from './creature-expression-voice.js';
-export { AUDIO_CATEGORIES, createAudioRuntime } from './runtime.js';
+export { createDistantEcologyVoiceRequest } from './distant-ecology-voice.js';
+export type { DistantEcologyVoiceRequestInput } from './distant-ecology-voice.js';
+export {
+  COMBAT_CUE_PARTICIPANTS_SCHEMA_V1,
+  COMBAT_CUE_PLAN_SCHEMA_V1,
+  combatCuePlan,
+  isCombatCueParticipantsV1,
+  isCombatCuePlanV1,
+  projectCombatCueParticipantsV1,
+} from './combat-cues.js';
+export type {
+  CombatCueAbilityFactV1,
+  CombatCueBodyMaterialFactV1,
+  CombatCueCounterpartV1,
+  CombatCueFamily,
+  CombatCueGuardianFactV1,
+  CombatCueParticipantFactV1,
+  CombatCueParticipantsV1,
+  CombatCuePlanV1,
+  CombatCueSide,
+  CombatCueStage,
+  CombatCueV1,
+  CombatGuardianMotifFactV1,
+  CombatImpactFactV1,
+} from './combat-cues.js';
+export { createCombatGameplayVoiceRequest } from './combat-gameplay-voice.js';
+export type { CombatGameplayVoiceRequestInput } from './combat-gameplay-voice.js';
+export {
+  AUDIO_CATEGORIES,
+  AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
+  AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
+  createAudioRuntime,
+  createAudioVoiceMixIntentV1,
+} from './runtime.js';
 export type {
   AudioActivationResult,
   AudioActivationState,
@@ -132,6 +165,7 @@ export type {
   AudioScheduledSourceLike,
   AudioVoiceGraph,
   AudioVoiceMeaning,
+  AudioVoiceMixIntentV1,
   AudioVoiceRequest,
   AudioVoiceReservation,
   AudioVoiceStartResult,

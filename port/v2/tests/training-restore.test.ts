@@ -8,34 +8,62 @@ import {
   ARC5_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_NAMESPACE,
   ARC5_OWNERSHIP_MIGRATION_VERSION,
+  GUARDIAN_ACQUISITION_NAMESPACE_V1,
+  GUARDIAN_COMPANION_NAMESPACE_V1,
+  applyV5ExtensionWrites,
   arc4OwnershipLegacyMirrorMatches,
   arc2LootLegacyMirrorMatches,
   canonicalizeV5Extensions,
   classifyLegacyTrainingCheckpointV1,
   exportSaveV2,
+  guardianAcquisitionCarrierWriteV1,
+  guardianCompanionCarrierWriteV1,
   importSaveV2,
   migrateLegacyOwnership,
   prepareArc4OwnershipLegacyMigration,
   prepareArc5OwnershipMigration,
   prepareArc2LootLegacyMigration,
+  projectArc4GuardianLegacyOwnershipMirrorV1,
   projectArc2LootLegacyMirror,
   type ContentRegistry,
   type LegacyTrainingCheckpointV1,
   type SaveStateV2,
 } from '@cf/persistence';
+import { makeGenome, type Genome } from '@cf/domain-genome';
+import {
+  PRIME_SIGNATURE_IDS_V1,
+  planCombatSettlementV1,
+  projectGuardianPrimeEncounterV1,
+  runDuel,
+} from '@cf/domain-combatcore';
 import {
   canonicalCF1WorldAddressFromNav,
   canonicalCF1WorldAtlasId,
   navToView,
+  resolveCF1WorldAddress,
   resolveViewToNav,
 } from '@cf/scene';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  canonicalJson,
+  createEmptyOwnershipStateV1,
+  migrateOwnershipStateV1ToV2,
   ownershipSourceStateV1,
   ownershipStateDigestV1,
   ownershipStateDigestV2,
 } from '@cf/domain-acquisition';
+import {
+  createEmptyGuardianAcquisitionStateV1,
+  prepareGuardianAcquisitionV1,
+  type GuardianAcquisitionEntryV1,
+  type GuardianAcquisitionStateV1,
+} from '@cf/domain-acquisition/guardian-acquisition-internal';
+import {
+  GUARDIAN_COMPANION_STATE_SCHEMA_V1,
+  GUARDIAN_COMPANION_STATE_VERSION_V1,
+  decodeGuardianCompanionStateV1,
+} from '@cf/domain-acquisition/guardian-companion-internal';
 import {
   buildLegacyTrainingRestoreCandidate,
   committedTrainingArc4State,
@@ -71,6 +99,11 @@ const registry = JSON.parse(fs.readFileSync(
 const veteranRaw = saves.inputs.veteran_rich!;
 const NOW = 1_753_900_060_000;
 const COMMIT_EPOCH = 8_765;
+const TRAINING_GUARDIAN_WORLD = Object.freeze({
+  galaxy: Object.freeze({ seed: 999, x: 90, y: -60 }),
+  star: Object.freeze({ seed: 3824583279, x: -820.9489546869881, y: -620.6852987115271 }),
+  planet: Object.freeze({ seed: 2456455053 }),
+});
 const MAIN_SOURCE = fs.readFileSync(
   fileURLToPath(new URL('../apps/game/src/main.ts', import.meta.url)),
   'utf8',
@@ -81,6 +114,103 @@ const RESTORE_SOURCE = fs.readFileSync(
 );
 
 beforeAll(() => installCaptureHooks());
+
+function trainingGuardianCarrier(): Readonly<{
+  state: GuardianAcquisitionStateV1;
+  entry: GuardianAcquisitionEntryV1;
+  extensions: ReturnType<typeof canonicalizeV5Extensions>;
+}> {
+  const resolved = resolveCF1WorldAddress(TRAINING_GUARDIAN_WORLD);
+  if (!resolved.ok) throw new Error(`Training Guardian world failed: ${resolved.reason}`);
+  const encounter = projectGuardianPrimeEncounterV1({
+    world: resolved.address,
+    descriptor: { worldType: 'airless' },
+    regionIndex: 0,
+    faunaRoster: [{
+      speciesId: 'training-guardian-native',
+      genome: makeGenome(999, 'fauna', 0.5),
+    }],
+    claimedSignatureIds: PRIME_SIGNATURE_IDS_V1,
+    conquered: false,
+  });
+  if (encounter === null || encounter.defender.kind !== 'guardian') {
+    throw new Error('Training Guardian encounter drifted');
+  }
+  const championGenome = makeGenome(42, 'fauna', 0.5);
+  championGenome.fed = 200;
+  championGenome.brood = 200;
+  championGenome.xp = 486;
+  const champion = Object.freeze({
+    kind: 'owned-fauna' as const,
+    creatureId: 'training-guardian-champion',
+    name: 'Training Guardian champion',
+    genome: championGenome,
+    legacyBredLineage: true,
+  });
+  const transcript = runDuel(
+    { name: champion.name, genome: championGenome },
+    { name: encounter.defender.name, genome: encounter.defender.battleGenome as Genome },
+  );
+  if (transcript.winner !== 'A') throw new Error('Training Guardian champion no longer wins');
+  const plan = planCombatSettlementV1({
+    battleId: 'training-guardian-capture',
+    receiptOrdinal: 73,
+    encounter,
+    champion,
+    transcript,
+    outcome: 'champion-win',
+    worldTier: 4,
+    authority: {
+      worldConquered: false,
+      claimedPrimeSignatureIds: PRIME_SIGNATURE_IDS_V1,
+      lossXp: { kind: 'known-target', awardedTarget: 0 },
+    },
+  });
+  if (plan.status !== 'planned') throw new Error(`Training Guardian plan refused: ${plan.reason}`);
+  const acquired = prepareGuardianAcquisitionV1({
+    parent: createEmptyGuardianAcquisitionStateV1(),
+    ownership: migrateOwnershipStateV1ToV2(createEmptyOwnershipStateV1()),
+    plan,
+  });
+  if (acquired.kind !== 'prepared') {
+    throw new Error(`Training Guardian acquisition refused: ${acquired.kind}`);
+  }
+  return Object.freeze({
+    state: acquired.successor,
+    entry: acquired.entry,
+    extensions: applyV5ExtensionWrites({}, [
+      guardianAcquisitionCarrierWriteV1(acquired.successor),
+    ]).extensions,
+  });
+}
+
+function tombstoneTrainingGuardian(
+  captured: ReturnType<typeof trainingGuardianCarrier>,
+): ReturnType<typeof canonicalizeV5Extensions> {
+  const disposition = Object.freeze({
+    ordinal: 75,
+    actionKind: 'combat-settlement',
+    witnessDigest: 'd'.repeat(64),
+  });
+  const overlay = decodeGuardianCompanionStateV1(canonicalJson({
+    schema: GUARDIAN_COMPANION_STATE_SCHEMA_V1,
+    version: GUARDIAN_COMPANION_STATE_VERSION_V1,
+    revision: 1,
+    rows: [{
+      kind: 'tombstone',
+      sourceRecordId: captured.entry.acquisition.recordId,
+      tombstone: {
+        kind: 'creature',
+        creatureId: captured.entry.creature.creatureId,
+        snapshot: captured.entry.creature,
+        disposition,
+      },
+    }],
+  }));
+  return applyV5ExtensionWrites(captured.extensions, [
+    guardianCompanionCarrierWriteV1(overlay),
+  ]).extensions;
+}
 
 function importVeteran(): SaveStateV2 {
   const imported = importSaveV2(JSON.stringify(veteranRaw), registry, NOW);
@@ -882,6 +1012,75 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     });
     expect(prepareTrainingArc4Restore('legacy-v1', true, restoredState, corrupt)).toEqual({
       kind: 'protected', reason: 'target-corrupt',
+    });
+  });
+
+  it('never erases a live Guardian and retains an exact tombstone without resurrection', () => {
+    const checkpoint = checkpointFrom();
+    const restoredState = restore(trainingCurrent(checkpoint).current, checkpoint).state;
+    const captured = trainingGuardianCarrier();
+    const legacyGuardianId = `s${captured.entry.catalogSpecies.genome.seed}`;
+    expect(restoredState.codex.some(([id]) => id === legacyGuardianId)).toBe(false);
+
+    /* A legacy checkpoint cannot silently replace the full Compendium while
+       a separately-carried living Guardian would disappear from that mirror. */
+    expect(prepareTrainingArc4Restore(
+      'legacy-v1', true, restoredState, captured.extensions,
+    )).toEqual({ kind: 'protected', reason: 'composite-mirror-mismatch' });
+
+    /* Deliberately bypass that preparation guard: the post-durable audit must
+       still reject an Arc4-only mirror when the Guardian carrier is live. */
+    const omitted = prepareTrainingArc4Restore('legacy-v1', true, restoredState, {});
+    expect(omitted?.kind).toBe('prepared');
+    if (omitted?.kind !== 'prepared') return;
+    const omittedCommittedExtensions = applyV5ExtensionWrites(
+      captured.extensions,
+      omitted.writes,
+    ).extensions;
+    expect(committedTrainingArc4State(
+      restoredState,
+      omitted,
+      omittedCommittedExtensions,
+    )).toBeNull();
+
+    /* Permanent loss is different: immutable acquisition history remains,
+       its exact tombstone remains, and the compatibility row stays absent. */
+    const tombstonedExtensions = tombstoneTrainingGuardian(captured);
+    const tombstoned = prepareTrainingArc4Restore(
+      'legacy-v1', true, restoredState, tombstonedExtensions,
+    );
+    expect(tombstoned?.kind).toBe('prepared');
+    if (tombstoned?.kind !== 'prepared') return;
+    expect(tombstoned.extensions.creatures?.[GUARDIAN_ACQUISITION_NAMESPACE_V1])
+      .toEqual(tombstonedExtensions.creatures?.[GUARDIAN_ACQUISITION_NAMESPACE_V1]);
+    expect(tombstoned.extensions.creatures?.[GUARDIAN_COMPANION_NAMESPACE_V1])
+      .toEqual(tombstonedExtensions.creatures?.[GUARDIAN_COMPANION_NAMESPACE_V1]);
+    const projection = projectArc4GuardianLegacyOwnershipMirrorV1(
+      tombstoned.state,
+      tombstoned.extensions,
+    );
+    expect(projection.kind).toBe('projected');
+    if (projection.kind !== 'projected') return;
+    expect(projection.codex.some((row) => row.legacyCodexId === legacyGuardianId)).toBe(false);
+    expect(committedTrainingArc4State(
+      restoredState,
+      tombstoned,
+      tombstoned.extensions,
+    )).toEqual(tombstoned.state);
+
+    const futureGuardian = canonicalizeV5Extensions({ creatures: {
+      [GUARDIAN_ACQUISITION_NAMESPACE_V1]: {
+        version: 2,
+        json: '{"opaque":"future"}',
+      },
+    } });
+    expect(prepareTrainingArc4Restore(
+      'legacy-v1', true, restoredState, futureGuardian,
+    )).toEqual({
+      kind: 'protected',
+      reason: 'composite-projection-protected',
+      projectionReason: 'guardian-future-version',
+      version: 2,
     });
   });
 

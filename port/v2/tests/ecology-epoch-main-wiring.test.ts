@@ -56,25 +56,56 @@ function wiringErrors(source: string): string[] {
   }
 
   const stage = persist.indexOf('ecologyEpochAuthority.stage(ecologyActivePlayNow(), intent)');
-  const detached = persist.indexOf('const candidate: SaveStateV2 = {');
-  const cas = persist.indexOf('const outcome = await runtime.commit(');
+  const parent = persist.indexOf('const checkpointParent = runtime.checkpointParent();', stage);
+  const parentGuard = persist.indexOf('if (checkpointParent === null) {', parent);
+  const projector = persist.indexOf('const projection = projectCheckpointState({', parentGuard);
+  const durableInput = persist.indexOf('durable: checkpointParent,', projector);
+  const liveInput = persist.indexOf('live: save,', durableInput);
+  const routeInput = persist.indexOf(
+    'savedView: savedRouteWriteHeld ? save.savedView : navToView(nav),',
+    liveInput,
+  );
+  const epochInput = persist.indexOf('epoch: epochStage.epoch,', routeInput);
+  const trainingInput = persist.indexOf(
+    'trainingReplacement: replacementOwner !== null,',
+    epochInput,
+  );
+  const projectionGuard = persist.indexOf("if (projection.kind !== 'projected') {", trainingInput);
+  const candidate = persist.indexOf('const candidate = projection.state;', projectionGuard);
+  const cas = persist.indexOf('const outcome = await runtime.commit(candidate, Date.now());', candidate);
   const durable = persist.indexOf('durable = true;', cas);
   const acknowledge = persist.indexOf('ecologyEpochAuthority.commit(epochStage, outcome.revision)', durable);
   const liveEpoch = persist.indexOf('save.EPOCH_BASE = outcome.saved.canonicalState.EPOCH_BASE;', acknowledge);
   const publish = persist.indexOf('publishCommittedEcologyEpoch(settled.publication)', liveEpoch);
   const firstPublish = persist.indexOf('publishCommittedEcologyEpoch(');
-  if (!(stage >= 0 && detached > stage && cas > detached && durable > cas
+  if (!(stage >= 0 && candidate > stage && cas > candidate && durable > cas
     && acknowledge > durable && liveEpoch > acknowledge && publish > liveEpoch
     && firstPublish === publish)) {
     errors.push('durable-before-publication');
+  }
+  if (!(parent > stage && parentGuard > parent && projector > parentGuard
+    && durableInput > projector && liveInput > durableInput && routeInput > liveInput
+    && epochInput > routeInput && trainingInput > epochInput
+    && projectionGuard > trainingInput && candidate > projectionGuard)
+    || !source.includes("import { projectCheckpointState } from './checkpoint-state.js';")
+    || !load.includes('initialState: save,')
+    || (persist.match(/runtime\.checkpointParent\(\)/g) ?? []).length !== 1
+    || (persist.match(/projectCheckpointState\(/g) ?? []).length !== 1) {
+    errors.push('durable-parent-projector');
   }
   if ((persist.match(/runtime\.commit\(/g) ?? []).length !== 1
     || /commitOutcome|commitOutcomes|commitAction|commitProduct|sessionRng|receiptKind|sessionOrdinal|sessionDraws/i.test(persist)) {
     errors.push('receipt-free-single-cas');
   }
-  if (!persist.includes('...save,')
-    || !persist.includes('EPOCH_BASE: epochStage.epoch,')
-    || persist.indexOf('save.EPOCH_BASE =') < cas) {
+  if (persist.includes('const candidate: SaveStateV2 = {')
+    || persist.includes('const candidate = save;')
+    || persist.includes('durable: save,')
+    || persist.includes('durable: projection.state,')
+    || persist.includes('...save,')
+    || persist.indexOf('save.savedView = outcome.saved.canonicalState.savedView;', acknowledge)
+      <= acknowledge
+    || persist.indexOf('save.EPOCH_BASE = outcome.saved.canonicalState.EPOCH_BASE;', acknowledge)
+      <= acknowledge) {
     errors.push('detached-candidate');
   }
   if (!persist.includes('ecologyEpochAuthority.reject(epochStage);')
@@ -142,7 +173,7 @@ function wiringErrors(source: string): string[] {
 }
 
 describe('F4 ecology epoch app wiring', () => {
-  it('joins active-play candidate, one receipt-free CAS and committed-only projection', () => {
+  it('joins active-play staging, the durable-parent projector, one receipt-free CAS and committed-only publication', () => {
     expect(wiringErrors(mainSource)).toEqual([]);
     expect(ownerSource).not.toMatch(/performance\.now|Date\.now|motionOK|Math\.random|SessionRNG/);
   });
@@ -163,6 +194,36 @@ describe('F4 ecology epoch app wiring', () => {
       'publishCommittedEcologyEpoch({} as never);\n      const outcome = await runtime.commit(',
     );
     expect(wiringErrors(mutated)).toContain('durable-before-publication');
+  });
+
+  it('negative control: a live parent, bypassed projector candidate, or unseeded F4 parent is rejected', () => {
+    const liveParent = replaceOnce(
+      mainSource,
+      'const checkpointParent = runtime.checkpointParent();',
+      'const checkpointParent = save;',
+    );
+    expect(wiringErrors(liveParent)).toContain('durable-parent-projector');
+
+    const liveProjectorInput = replaceOnce(
+      mainSource,
+      'durable: checkpointParent,',
+      'durable: save,',
+    );
+    expect(wiringErrors(liveProjectorInput)).toContain('detached-candidate');
+
+    const bypassedCandidate = replaceOnce(
+      mainSource,
+      'const candidate = projection.state;',
+      'const candidate = save;',
+    );
+    expect(wiringErrors(bypassedCandidate)).toContain('detached-candidate');
+
+    const unseededParent = replaceOnce(
+      mainSource,
+      'initialState: save,',
+      'initialState: undefined,',
+    );
+    expect(wiringErrors(unseededParent)).toContain('durable-parent-projector');
   });
 
   it('negative control: a duplicate CAS or receipt/RNG writer is rejected', () => {

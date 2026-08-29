@@ -36,6 +36,7 @@ function wiringErrors(main: string, owner: string): string[] {
     '\nconst esc =',
   );
   const status = section(main, 'function updateChips(): void {', '\nfunction hudText(): void {');
+  const rankAnchor = section(owner, '  const rankCeremonyAnchor =', '\n\n  const renderStatus =');
   const renderStatus = section(owner, '  const renderStatus =', '\n\n  const setContext =');
   const resizeLifecycle = section(owner, '  const resizeObservers:', '\n\n  const diagnostics =');
   const diagnostics = section(owner, '  const diagnostics =', '\n\n  const dispose =');
@@ -81,6 +82,15 @@ function wiringErrors(main: string, owner: string): string[] {
     "getElementById('topbar')",
     "getElementById('dock')",
   ]) if (main.includes(selector)) errors.push('raw-main-dom');
+  if (occurrences(main, 'appChrome.rankCeremonyAnchor();') !== 1
+    || !owner.includes('readonly rankCeremonyAnchor: () => AppChromeAnchorPoint | null;')
+    || !rankAnchor.includes('const rect = playerChip.getBoundingClientRect();')
+    || !rankAnchor.includes('rect.width <= 0 || rect.height <= 0')
+    || !rankAnchor.includes('x: rect.left + rect.width / 2,')
+    || !rankAnchor.includes('y: rect.top + rect.height / 2,')
+    || !owner.includes('    rankCeremonyAnchor,\n')) {
+    errors.push('rank-ceremony-anchor-port');
+  }
   for (const legacy of [
     'trailEl', 'playerChipEl', 'primeChipEl', 'hpFillEl', 'hpTxtEl', 'objChipEl',
     'ctxEl', 'hintEl', 'topbarEl', 'dockEl', 'surfaceTopChromeEls',
@@ -223,6 +233,14 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
     );
     expect(wiringErrors(directDom, ownerSource)).toContain('raw-main-dom');
 
+    const directRankAnchor = replaceOnce(
+      mainSource,
+      'const anchor = appChrome.rankCeremonyAnchor();',
+      "const anchor = document.getElementById('playerchip')?.getBoundingClientRect();",
+    );
+    expect(wiringErrors(directRankAnchor, ownerSource)).toContain('raw-main-dom');
+    expect(wiringErrors(directRankAnchor, ownerSource)).toContain('rank-ceremony-anchor-port');
+
     const bypass = replaceOnce(
       mainSource,
       '  appChrome.syncSurfaceChromeBottom();',
@@ -287,6 +305,12 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
     const withoutRemeasure = replaceOnce(ownerRenderStatus, '    syncTopbarH();\n', '');
     const ownerWithoutRemeasure = ownerSource.replace(ownerRenderStatus, withoutRemeasure);
     expect(wiringErrors(mainSource, ownerWithoutRemeasure)).toContain('render-contract');
+    const wrongRankAnchor = replaceOnce(
+      ownerSource,
+      'const rect = playerChip.getBoundingClientRect();',
+      'const rect = topbar.getBoundingClientRect();',
+    );
+    expect(wiringErrors(mainSource, wrongRankAnchor)).toContain('rank-ceremony-anchor-port');
   });
 
   it('negative-controls observer cardinality, mutation scope, resize order, and teardown', () => {

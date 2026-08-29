@@ -245,6 +245,38 @@ export function candidateLegacyWindowSpeciesArtSource(source) {
     && source.includes('toDataURL');
 }
 
+/* The generated offline worker records every final runtime file by path and
+   digest so it can verify/cache exact bytes. That declarative inventory is not
+   an execution edge into the worker-local painter. Admit only the generated
+   root service worker's exact one-row path+digest entry, and only when the
+   painter basename occurs nowhere outside the parsed immutable asset table.
+   Static/dynamic imports and arbitrary string references remain foreign. */
+const declarativePwaPainterInventoryReference = (record, painterRecord) => {
+  if (record.relativePath !== 'service-worker.js'
+    || !record.source.includes("self.addEventListener('install'")
+    || !record.source.includes("self.addEventListener('activate'")
+    || !record.source.includes("self.addEventListener('fetch'")) return false;
+  const match = /const ASSETS=Object\.freeze\((\[[^\r\n]*\])\);/u.exec(record.source);
+  if (!match || match.index === undefined) return false;
+  let assets;
+  try { assets = JSON.parse(match[1]); } catch { return false; }
+  if (!Array.isArray(assets)) return false;
+  const expectedPath = `/${painterRecord.relativePath}`;
+  const expectedDigest = hashBytes(painterRecord.bytes);
+  const matches = assets.filter((asset) => asset && typeof asset === 'object'
+    && !Array.isArray(asset) && asset.path === expectedPath);
+  if (matches.length !== 1
+    || Reflect.ownKeys(matches[0]).length !== 2
+    || matches[0].sha256 !== expectedDigest) return false;
+  const painterBasename = path.posix.basename(painterRecord.relativePath);
+  const outsideTable = record.source.slice(0, match.index)
+    + record.source.slice(match.index + match[0].length);
+  if (outsideTable.includes(painterBasename)) return false;
+  return [...literalStaticImports(record.source), ...literalDynamicImports(record.source)]
+    .every((specifier) =>
+      resolveBuiltReference(record.relativePath, specifier) !== painterRecord.relativePath);
+};
+
 export function findCandidateSpeciesPainterChunk(candidateDist) {
   const records = collectCandidateJavaScript(candidateDist);
   return chunkIdentity(semanticMatches(
@@ -278,8 +310,9 @@ export function findCandidateSpeciesArtBuildGraph(candidateDist, options = {}) {
   const painterBasename = path.posix.basename(painterRecord.relativePath);
   const referringChunks = records.filter(({ relativePath, source }) =>
     relativePath !== painterRecord.relativePath && source.includes(painterBasename));
-  const foreignReferrers = referringChunks.filter(({ relativePath }) =>
-    relativePath !== workerRecord.relativePath);
+  const foreignReferrers = referringChunks.filter((record) =>
+    record.relativePath !== workerRecord.relativePath
+      && !declarativePwaPainterInventoryReference(record, painterRecord));
   if (foreignReferrers.length !== 0) {
     throw new Error(
       `candidate species painter is referenced outside its dedicated worker: ${foreignReferrers.map(({ relativePath }) => relativePath).join(', ')}`,

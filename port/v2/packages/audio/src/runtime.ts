@@ -15,6 +15,15 @@ export type AudioCategory = typeof AUDIO_CATEGORIES[number];
 export type AudioActivationState = 'blocked' | 'suspended' | 'running' | 'disposed';
 export type AudioMeter = 'master' | AudioCategory;
 
+export const AUDIO_VOICE_MIX_INTENT_SCHEMA_V1 = 'cf.audio.voice-mix-intent/v1' as const;
+
+/** Exact, immutable category factors owned by one admitted voice. A factor of
+ * one is neutral; lower factors duck that bus while the owning voice is live. */
+export interface AudioVoiceMixIntentV1 {
+  readonly schema: typeof AUDIO_VOICE_MIX_INTENT_SCHEMA_V1;
+  readonly factors: Readonly<Record<AudioCategory, number>>;
+}
+
 export interface AudioParamLike {
   value: number;
   setValueAtTime(value: number, time: number): unknown;
@@ -109,6 +118,8 @@ export interface AudioVoiceRequest {
   readonly maxConcurrent: number;
   /** Exact graph node count, excluding the runtime-created per-voice gain. */
   readonly nodeCount: number;
+  /** Versioned, immutable bus policy released with this exact voice owner. */
+  readonly mixIntent: AudioVoiceMixIntentV1;
   readonly meaning: AudioVoiceMeaning;
   readonly create: (
     context: AudioContextLike,
@@ -162,6 +173,18 @@ export interface AudioRuntimeDiagnostics {
     /** Mute-adjusted master policy, reported even before a context is created. */
     effectiveMaster: number;
     categories: Readonly<Record<AudioCategory, number>>;
+  }>;
+  readonly voiceMix: Readonly<{
+    readonly schema: typeof AUDIO_VOICE_MIX_INTENT_SCHEMA_V1;
+    readonly activeOwners: number;
+    readonly owners: readonly Readonly<{
+      readonly voiceId: string;
+      readonly factors: Readonly<Record<AudioCategory, number>>;
+    }>[];
+    /** Deterministic minimum across active owners; one when none are active. */
+    readonly factors: Readonly<Record<AudioCategory, number>>;
+    /** Saved category gain multiplied by the aggregate owner factor. */
+    readonly effectiveCategoryGains: Readonly<Record<AudioCategory, number>>;
   }>;
   readonly nodes: Readonly<{ active: number; peak: number; budget: number }>;
   readonly cache: Readonly<{ active: number; peak: number; budget: number; evictions: number }>;
@@ -223,6 +246,7 @@ export interface AudioRuntime {
 
 const GRAPH_NODES = 13;
 const MAX_VOICE_GRAPH_NODES = 32;
+const MAX_CATEGORY_MIX_PASSES = 12;
 const METERS = Object.freeze(['master', ...AUDIO_CATEGORIES] as const);
 const DEFAULT_BUDGETS: AudioRuntimeBudgets = Object.freeze({
   maxVoices: 24,
@@ -253,6 +277,7 @@ interface ActiveVoice {
   readonly priority: number;
   readonly category: AudioCategory;
   readonly concurrencyGroup: string;
+  readonly mixIntent: AudioVoiceMixIntentV1;
   readonly source: AudioScheduledSourceLike;
   readonly sources: readonly AudioScheduledSourceLike[];
   readonly nodes: readonly AudioNodeLike[];
@@ -299,6 +324,11 @@ type VoiceGraphSnapshot = Readonly<{
   nodes: unknown;
   reservation: unknown;
 }>;
+
+type CategoryMixWriteResult =
+  | Readonly<{ kind: 'applied' }>
+  | Readonly<{ kind: 'reentrant' }>
+  | Readonly<{ kind: 'failed'; error: unknown }>;
 
 function boundedInteger(
   value: unknown,
@@ -348,6 +378,90 @@ function hasExactKeys(value: object, expected: readonly string[]): boolean {
   return actual.length === sorted.length
     && actual.every((key, index) => key === sorted[index]);
 }
+
+function exactDataFields(
+  value: unknown,
+  expected: readonly string[],
+  label: string,
+  requireFrozen: boolean,
+): Readonly<Record<string, unknown>> {
+  try {
+    if (value === null || typeof value !== 'object' || Array.isArray(value)
+      || Object.getPrototypeOf(value) !== Object.prototype
+      || (requireFrozen && !Object.isFrozen(value))) {
+      throw new TypeError(`${label} must be an exact${requireFrozen ? ' immutable' : ''} data object`);
+    }
+    const keys = Reflect.ownKeys(value);
+    if (keys.length !== expected.length
+      || keys.some((key) => typeof key !== 'string' || !expected.includes(key))) {
+      throw new TypeError(`${label} has unexpected fields`);
+    }
+    const output: Record<string, unknown> = {};
+    for (const key of expected) {
+      const descriptor = Object.getOwnPropertyDescriptor(value, key);
+      if (!descriptor || !Object.hasOwn(descriptor, 'value') || !descriptor.enumerable) {
+        throw new TypeError(`${label}.${key} must be an enumerable data property`);
+      }
+      output[key] = descriptor.value;
+    }
+    return output;
+  } catch (error) {
+    if (error instanceof TypeError) throw error;
+    throw new TypeError(`${label} could not be inspected`);
+  }
+}
+
+function voiceMixFactor(value: unknown, categoryName: AudioCategory): number {
+  if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 1) {
+    throw new TypeError(`${categoryName} voice mix factor is outside [0, 1]`);
+  }
+  return Object.is(value, -0) ? 0 : value;
+}
+
+function snapshotVoiceMixFactors(
+  value: unknown,
+  requireFrozen: boolean,
+): Readonly<Record<AudioCategory, number>> {
+  const input = exactDataFields(value, AUDIO_CATEGORIES, 'audio voice mix factors', requireFrozen);
+  return Object.freeze(Object.fromEntries(AUDIO_CATEGORIES.map((name) => [
+    name,
+    voiceMixFactor(input[name], name),
+  ]))) as Readonly<Record<AudioCategory, number>>;
+}
+
+function voiceMixIntent(value: unknown): AudioVoiceMixIntentV1 {
+  const input = exactDataFields(
+    value,
+    ['schema', 'factors'],
+    'audio voice mix intent',
+    true,
+  );
+  if (input.schema !== AUDIO_VOICE_MIX_INTENT_SCHEMA_V1) {
+    throw new TypeError('audio voice mix intent schema is unsupported');
+  }
+  return Object.freeze({
+    schema: AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
+    factors: snapshotVoiceMixFactors(input.factors, true),
+  });
+}
+
+/** Mint a detached immutable v1 intent from one exact full category map. */
+export function createAudioVoiceMixIntentV1(
+  factors: Readonly<Record<AudioCategory, number>>,
+): AudioVoiceMixIntentV1 {
+  return Object.freeze({
+    schema: AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
+    factors: snapshotVoiceMixFactors(factors, false),
+  });
+}
+
+export const AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1 = createAudioVoiceMixIntentV1(Object.freeze({
+  music: 1,
+  ambience: 1,
+  creature: 1,
+  'combat-gameplay': 1,
+  ui: 1,
+}));
 
 function counterpartReceipt(value: unknown): AudioCounterpartReceipt {
   if (value === null || typeof value !== 'object'
@@ -493,6 +607,9 @@ class InjectedAudioRuntime implements AudioRuntime {
   private cooldownRejects = 0;
   private concurrencyRejects = 0;
   private voiceAdmissionInProgress = false;
+  private categoryMixApplying = false;
+  private categoryMixDirty = false;
+  private categoryPolicyGeneration = 0;
   private reservedVoices = 0;
   private reservedNodes = 0;
   private peakReservedVoices = 0;
@@ -861,7 +978,8 @@ class InjectedAudioRuntime implements AudioRuntime {
     const name = category(categoryValue);
     const value = boundedGain(gain, `${name} category gain`);
     this.gains[name] = value;
-    if (this.graph && this.context) setParam(this.graph.categories[name].gain, value, this.context.currentTime);
+    this.categoryPolicyGeneration++;
+    this.reconcileCurrentCategoryMix(null, [name]);
   }
 
   async setHidden(hidden: boolean): Promise<void> {
@@ -910,6 +1028,7 @@ class InjectedAudioRuntime implements AudioRuntime {
     let concurrencyGroup: string;
     let maxConcurrent: number;
     let nodeCount: number;
+    let mixIntent: AudioVoiceMixIntentV1;
     let counterpart: AudioCounterpartReceipt | null = null;
     let create: AudioVoiceRequest['create'];
     try {
@@ -927,6 +1046,7 @@ class InjectedAudioRuntime implements AudioRuntime {
       const concurrencyGroupValue = request.concurrencyGroup;
       const maxConcurrentValue = request.maxConcurrent;
       const nodeCountValue = request.nodeCount;
+      const mixIntentValue = request.mixIntent;
       const meaningValue = request.meaning;
       const createValue = request.create;
       key = boundedAudioKey(keyValue, 'audio voice key', 192);
@@ -942,6 +1062,7 @@ class InjectedAudioRuntime implements AudioRuntime {
         this.budgets.maxVoices,
       );
       nodeCount = boundedInteger(nodeCountValue, 'audio graph node reservation', 1, MAX_VOICE_GRAPH_NODES);
+      mixIntent = voiceMixIntent(mixIntentValue);
       if (typeof createValue !== 'function' || meaningValue === null || typeof meaningValue !== 'object') {
         throw new TypeError('audio voice request is incomplete');
       }
@@ -1104,6 +1225,7 @@ class InjectedAudioRuntime implements AudioRuntime {
         priority,
         category: categoryName,
         concurrencyGroup,
+        mixIntent,
         source: validated.source,
         sources,
         nodes,
@@ -1111,23 +1233,82 @@ class InjectedAudioRuntime implements AudioRuntime {
         nodeCount: reservationNodes,
         cleaned: false,
       };
-      /* A replacement may be constructed and started behind its zero gain so
-         start failure keeps the incumbent. The incumbent is stopped before the
-         replacement becomes audible, so the admitted emitter count never has
-         a ninth audible creature at the eight-emitter boundary. */
-      if (finalAdmission.victim) this.finishVoice(finalAdmission.victim.id, 'stolen');
+      /* Establish the replacement's exact bus policy while both its own gain
+         and sources remain inaudible. A failed/unstable bus write is rolled
+         back before the incumbent can be stolen. */
+      const previousMixFactors = this.voiceMixFactors();
+      const prospectiveMixFactors = this.voiceMixFactors(
+        mixIntent,
+        finalAdmission.victim?.id ?? null,
+      );
+      const discardCandidate = (): void => {
+        this.clearSourceEndedHandlers(sources!, 'voice-handler-clear');
+        this.stopSources(sources!, 'voice-stop');
+        this.disconnectOwned([voiceGain!, ...nodes!], 'voice-disconnect');
+      };
+      if (!this.applyProspectiveCategoryMix(prospectiveMixFactors, previousMixFactors)) {
+        discardCandidate();
+        this.reconcileCurrentCategoryMix(null);
+        return Object.freeze({ kind: 'fault', reason: 'voice-start' });
+      }
+      let admittedPolicyGeneration = this.categoryPolicyGeneration;
+      if (finalAdmission.victim) {
+        this.finishVoice(finalAdmission.victim.id, 'stolen', true);
+        const expectedGeneration = admittedPolicyGeneration + 1;
+        if (this.categoryPolicyGeneration !== expectedGeneration) {
+          discardCandidate();
+          this.reconcileCurrentCategoryMix(null);
+          this.recordFault(
+            'category-mix-reentrant',
+            new Error('replacement cleanup changed category policy during admission'),
+          );
+          return Object.freeze({ kind: 'fault', reason: 'voice-start' });
+        }
+        admittedPolicyGeneration = expectedGeneration;
+      }
+      this.syncContextState();
+      const postMixUnavailable = this.voiceUnavailableResult(context, runtimeGraph);
+      if (postMixUnavailable) {
+        discardCandidate();
+        this.reconcileCurrentCategoryMix(null);
+        return postMixUnavailable;
+      }
+      if (endedDuringStart) {
+        discardCandidate();
+        this.reconcileCurrentCategoryMix(null);
+        this.recordFault('voice-start', new Error('audio completion source ended during mix admission'));
+        return Object.freeze({ kind: 'fault', reason: 'voice-start' });
+      }
       try {
         setParam(voiceGain.gain, 1, context.currentTime);
       } catch (error) {
-        this.clearSourceEndedHandlers(sources, 'voice-handler-clear');
-        this.stopSources(sources, 'voice-stop');
-        this.disconnectOwned([voiceGain, ...nodes], 'voice-disconnect');
+        discardCandidate();
+        this.reconcileCurrentCategoryMix(null);
         this.recordFault('voice-start', error);
+        return Object.freeze({ kind: 'fault', reason: 'voice-start' });
+      }
+      this.syncContextState();
+      const postGainUnavailable = this.voiceUnavailableResult(context, runtimeGraph);
+      if (postGainUnavailable) {
+        discardCandidate();
+        this.reconcileCurrentCategoryMix(null);
+        return postGainUnavailable;
+      }
+      if (endedDuringStart || this.categoryPolicyGeneration !== admittedPolicyGeneration) {
+        discardCandidate();
+        this.reconcileCurrentCategoryMix(null);
+        this.recordFault(
+          'voice-start',
+          new Error(endedDuringStart
+            ? 'audio completion source ended during gain admission'
+            : 'category policy changed during voice gain admission'),
+        );
         return Object.freeze({ kind: 'fault', reason: 'voice-start' });
       }
       this.endReservation(reservationNodes);
       reservationActive = false;
       this.active.set(id, active);
+      this.categoryPolicyGeneration++;
       installed = true;
       this.voicesStarted++;
       if (cooldownMs > 0) this.stampCooldown(cooldownGroup, now + cooldownMs);
@@ -1198,6 +1379,12 @@ class InjectedAudioRuntime implements AudioRuntime {
     this.samplePeaks();
     this.observeBudgets();
     const peaks = Object.freeze({ ...this.peakLevels });
+    const voiceIds = Object.freeze([...this.active.keys()]);
+    const mixFactors = this.voiceMixFactors();
+    const mixOwners = Object.freeze([...this.active.values()].map((voice) => Object.freeze({
+      voiceId: voice.id,
+      factors: Object.freeze({ ...voice.mixIntent.factors }),
+    })));
     return Object.freeze({
       state: this.state,
       contextState: this.context?.state ?? null,
@@ -1208,6 +1395,13 @@ class InjectedAudioRuntime implements AudioRuntime {
         master: this.masterGain,
         effectiveMaster: this.muted ? 0 : this.masterGain,
         categories: Object.freeze({ ...this.gains }),
+      }),
+      voiceMix: Object.freeze({
+        schema: AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
+        activeOwners: mixOwners.length,
+        owners: mixOwners,
+        factors: mixFactors,
+        effectiveCategoryGains: this.effectiveCategoryGains(mixFactors),
       }),
       nodes: Object.freeze({ active: this.currentNodeCount(), peak: this.peakNodes, budget: this.budgets.maxNodes }),
       cache: Object.freeze({
@@ -1220,7 +1414,7 @@ class InjectedAudioRuntime implements AudioRuntime {
         active: this.active.size,
         peak: this.peakVoices,
         budget: this.budgets.maxVoices,
-        ids: Object.freeze([...this.active.keys()]),
+        ids: voiceIds,
         started: this.voicesStarted,
         completed: this.voicesCompleted,
         stopped: this.voicesStopped,
@@ -1418,6 +1612,146 @@ class InjectedAudioRuntime implements AudioRuntime {
       this.reservedNodes = Math.max(0, this.reservedNodes);
       this.recordFault('reservation-release', new Error('audio reservation accounting underflow'));
     }
+  }
+
+  private voiceMixFactors(
+    additionalIntent: AudioVoiceMixIntentV1 | null = null,
+    excludedVoiceId: string | null = null,
+  ): Readonly<Record<AudioCategory, number>> {
+    const factors = Object.fromEntries(
+      AUDIO_CATEGORIES.map((name) => [name, 1]),
+    ) as Record<AudioCategory, number>;
+    const apply = (intent: AudioVoiceMixIntentV1): void => {
+      for (const name of AUDIO_CATEGORIES) {
+        factors[name] = Math.min(factors[name], intent.factors[name]);
+      }
+    };
+    for (const voice of this.active.values()) {
+      if (voice.id !== excludedVoiceId) apply(voice.mixIntent);
+    }
+    if (additionalIntent) apply(additionalIntent);
+    return Object.freeze(factors);
+  }
+
+  private effectiveCategoryGains(
+    factors: Readonly<Record<AudioCategory, number>>,
+  ): Readonly<Record<AudioCategory, number>> {
+    return Object.freeze(Object.fromEntries(AUDIO_CATEGORIES.map((name) => [
+      name,
+      this.gains[name] * factors[name],
+    ]))) as Readonly<Record<AudioCategory, number>>;
+  }
+
+  private writeCategoryMixTarget(
+    factors: Readonly<Record<AudioCategory, number>>,
+    previousFactors: Readonly<Record<AudioCategory, number>> | null,
+    categories: readonly AudioCategory[],
+    expectedGeneration: number,
+  ): CategoryMixWriteResult {
+    if (this.categoryMixApplying) {
+      this.categoryMixDirty = true;
+      return Object.freeze({ kind: 'reentrant' });
+    }
+    const context = this.context;
+    const graph = this.graph;
+    if (!context || !graph) return Object.freeze({ kind: 'applied' });
+    const targetGains = this.effectiveCategoryGains(factors);
+    this.categoryMixApplying = true;
+    this.categoryMixDirty = false;
+    try {
+      for (const name of categories) {
+        if (previousFactors && previousFactors[name] === factors[name]) continue;
+        if (this.categoryMixDirty || this.categoryPolicyGeneration !== expectedGeneration
+          || this.context !== context || this.graph !== graph) {
+          return Object.freeze({ kind: 'reentrant' });
+        }
+        setParam(
+          graph.categories[name].gain,
+          targetGains[name],
+          context.currentTime,
+        );
+        if (this.categoryMixDirty || this.categoryPolicyGeneration !== expectedGeneration
+          || this.context !== context || this.graph !== graph) {
+          return Object.freeze({ kind: 'reentrant' });
+        }
+      }
+      return Object.freeze({ kind: 'applied' });
+    } catch (error) {
+      return Object.freeze({ kind: 'failed', error });
+    } finally {
+      this.categoryMixApplying = false;
+    }
+  }
+
+  private reconcileCurrentCategoryMix(
+    previousFactors: Readonly<Record<AudioCategory, number>> | null,
+    categories: readonly AudioCategory[] = AUDIO_CATEGORIES,
+  ): boolean {
+    if (this.categoryMixApplying) {
+      this.categoryMixDirty = true;
+      return true;
+    }
+    let comparison = previousFactors;
+    let selected = categories;
+    let firstFailure: unknown = null;
+    for (let pass = 0; pass < MAX_CATEGORY_MIX_PASSES; pass++) {
+      const generation = this.categoryPolicyGeneration;
+      const result = this.writeCategoryMixTarget(
+        this.voiceMixFactors(),
+        comparison,
+        selected,
+        generation,
+      );
+      if (result.kind === 'applied') return true;
+      if (result.kind === 'failed' && firstFailure === null) {
+        firstFailure = result.error;
+        this.recordFault('category-mix-gain', result.error);
+      }
+      /* An earlier setter may already have published part of a stale target,
+         or may have thrown after mutating its AudioParam. The next pass writes
+         every bus from one fresh generation instead of resuming mid-snapshot. */
+      comparison = null;
+      selected = AUDIO_CATEGORIES;
+    }
+    this.quarantineCategoryMixer(firstFailure ?? new Error('category mix reentrancy did not settle'));
+    return false;
+  }
+
+  private applyProspectiveCategoryMix(
+    factors: Readonly<Record<AudioCategory, number>>,
+    previousFactors: Readonly<Record<AudioCategory, number>>,
+  ): boolean {
+    if (this.categoryMixApplying) {
+      this.categoryMixDirty = true;
+      this.recordFault('category-mix-reentrant', new Error('prospective category mix was reentrant'));
+      return false;
+    }
+    const generation = this.categoryPolicyGeneration;
+    const result = this.writeCategoryMixTarget(
+      factors,
+      previousFactors,
+      AUDIO_CATEGORIES,
+      generation,
+    );
+    if (result.kind === 'applied') return true;
+    if (result.kind === 'failed') this.recordFault('category-mix-gain', result.error);
+    else this.recordFault(
+      'category-mix-reentrant',
+      new Error('prospective category mix policy changed during admission'),
+    );
+    /* Admission never proceeds on a partial/stale write. Restore the exact
+       current owners and saved bases; a persistent setter failure quarantines
+       the whole graph through reconcileCurrentCategoryMix(). */
+    this.reconcileCurrentCategoryMix(null);
+    return false;
+  }
+
+  private quarantineCategoryMixer(error: unknown): void {
+    const context = this.context;
+    if (!context || !this.graph) return;
+    this.recordFault('category-mix-quarantine', error);
+    this.state = 'suspended';
+    void this.shutdownContext('stale-activation', context);
   }
 
   private applyMasterMute(): void {
@@ -1715,11 +2049,15 @@ class InjectedAudioRuntime implements AudioRuntime {
     id: string,
     reason: 'natural' | 'manual' | 'stolen' | 'mute' | 'hidden' | 'dispose'
       | 'context-loss' | 'stale-activation',
+    mixAlreadyApplied = false,
   ): void {
     const voice = this.active.get(id);
     if (!voice || voice.cleaned) return;
+    const previousMixFactors = mixAlreadyApplied ? null : this.voiceMixFactors();
     voice.cleaned = true;
     this.active.delete(id);
+    this.categoryPolicyGeneration++;
+    if (previousMixFactors) this.reconcileCurrentCategoryMix(previousMixFactors);
     this.clearSourceEndedHandlers(voice.sources, 'voice-handler-clear');
     this.stopSources(voice.sources, 'voice-stop');
     this.disconnectOwned([voice.voiceGain, ...voice.nodes], 'voice-disconnect');

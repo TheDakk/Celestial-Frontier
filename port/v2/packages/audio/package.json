@@ -6,5 +6,7 @@
   },
   "dependencies": {
     "@cf/domain-biome-profile": "*",
-    "@cf/domain-descriptors": "*"
+    "@cf/domain-combatcore": "*",
+    "@cf/domain-descriptors": "*",
+    "@cf/domain-genome": "*"
   } }

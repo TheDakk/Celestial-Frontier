@@ -1,4 +1,4 @@
 { "name": "@cf/domain-combatcore", "private": true, "version": "0.0.0", "type": "module",
   "description": "Module 14/14: battle stats, biome abilities, deterministic duels & creature codes. AUTO-LIFTED from main.js @module CombatCore (v1.8.9).",
   "exports": { ".": "./src/index.ts" },
-  "dependencies": { "@cf/domain-rand": "*", "@cf/domain-speciestraits": "*", "@cf/domain-genome": "*", "@cf/domain-encutil": "*", "@cf/domain-naming": "*" } }
+  "dependencies": { "@cf/domain-rand": "*", "@cf/domain-speciestraits": "*", "@cf/domain-genome": "*", "@cf/domain-encutil": "*", "@cf/domain-naming": "*", "@cf/domain-worldidentity": "*" } }

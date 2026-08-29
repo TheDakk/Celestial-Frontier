@@ -8,7 +8,7 @@
    composition adapter for those owners. */
 import {
   ascend,
-  ascAllowsStar,
+  ascAllowsCanonicalStar,
   canonicalCF1WorldAddressFromNav,
   getProvenGalaxyKey,
   getProvenPlanetKey,
@@ -49,6 +49,9 @@ export interface SearchTravelCommitPlan {
   readonly focusPlanet: PlanetNode | null;
   readonly focusAddress: CanonicalCF1WorldAddress | null;
   readonly customPlanetName: string | null;
+  /** Exact submitted CF1 text only for Search's accepted code path. Direct
+      app navigation remains null and cannot accidentally earn Follow. */
+  readonly followedCode: string | null;
 }
 
 export interface SearchTravelControllerPorts {
@@ -60,9 +63,10 @@ export interface SearchTravelControllerPorts {
   readonly routeChangeBlocked: () => boolean;
   readonly mutationsBlocked: () => boolean;
   readonly planetNodeForProof: (star: ProvenStar, planet: ProvenPlanet) => PlanetNode | null;
-  /** Return false when a capacity-protected product mutation refuses the
-      atomic route/name commit; Search then retains the exact query. */
-  readonly commitNavigation: (plan: SearchTravelCommitPlan) => boolean;
+  /** Return false when a durable name action or later route publication is
+      refused; Search then retains the exact submitted text. Name durability
+      precedes the route's separate receipt-free checkpoint. */
+  readonly commitNavigation: (plan: SearchTravelCommitPlan) => Promise<boolean>;
   readonly onPrimeReachBlocked: () => void;
   readonly onCharterReachBlocked: () => void;
   readonly compendiumState: () => Readonly<{
@@ -81,8 +85,14 @@ export interface SearchTravelController {
   readonly navigationAuthorityFailure: (target: NavState) => NavigationAuthorityFailure | null;
   readonly trainingSolSystemNav: () => Extract<NavState, { mode: 'system' }> | null;
   readonly trainingEarthSurfaceNav: () => TrainingRouteProofResult<Extract<NavState, { mode: 'surface' }>>;
-  readonly jumpToProvenNav: (target: NavState, incomingName?: string | null) => boolean;
-  readonly jumpToCanonicalAddress: (address: CanonicalCF1Address, incomingName?: string | null) => boolean;
+  readonly jumpToProvenNav: (
+    target: NavState,
+    incomingName?: string | null,
+  ) => Promise<boolean>;
+  readonly jumpToCanonicalAddress: (
+    address: CanonicalCF1Address,
+    incomingName?: string | null,
+  ) => Promise<boolean>;
   readonly selectForManualCopy: (text: string) => void;
   readonly blurIfFocused: () => boolean;
   readonly dispose: () => void;
@@ -111,7 +121,7 @@ export function navigationAuthorityFailureFor(
   }).chassisStage;
   if (!withinReachOf(candidatePrimeCount, target.gal.x, target.gal.y)) return 'prime-reach';
   if ((target.mode === 'system' || target.mode === 'surface')
-    && !ascAllowsStar(candidateStage, target.gal.seed, target.star)) return 'charter-reach';
+    && !ascAllowsCanonicalStar(candidateStage, target.gal, target.star)) return 'charter-reach';
   return null;
 }
 
@@ -194,7 +204,11 @@ export function createSearchTravelController(
     return exact ? { ok: true, state } : { ok: false, reason: 'unavailable' };
   };
 
-  const jumpToProvenNav = (target: NavState, incomingName: string | null = null): boolean => {
+  const jumpToProvenNav = async (
+    target: NavState,
+    incomingName: string | null = null,
+    followedCode: string | null = null,
+  ): Promise<boolean> => {
     if (ports.routeChangeBlocked()) return false;
     const authoritySave = ports.currentSave();
     if (authoritySave === null || target.mode === 'universe') return false;
@@ -227,30 +241,35 @@ export function createSearchTravelController(
     const customPlanetName = focusPlanet && incomingName && !ports.mutationsBlocked()
       ? cleanName(incomingName) || null
       : null;
-    const committed = ports.commitNavigation(Object.freeze({
+    const committed = await ports.commitNavigation(Object.freeze({
       target,
       committedNav,
       focusPlanet,
       focusAddress: focusAddress?.ok ? focusAddress.address : null,
       customPlanetName,
+      followedCode,
     }));
     return committed;
   };
 
-  const jumpToCanonicalAddress = (
+  const jumpToCanonicalAddress = async (
     address: CanonicalCF1Address,
     incomingName: string | null = null,
-  ): boolean => {
+    followedCode: string | null = null,
+  ): Promise<boolean> => {
     const resolved = navFromCanonicalCF1Address(address);
-    return resolved.ok ? jumpToProvenNav(resolved.state, incomingName) : false;
+    return resolved.ok
+      ? await jumpToProvenNav(resolved.state, incomingName, followedCode)
+      : false;
   };
 
   const focusSearch = (): void => { ports.search.focus(); };
-  const onSearchKeydown = (event: KeyboardEvent): void => {
+  const onSearchKeydown = async (event: KeyboardEvent): Promise<void> => {
     if (event.key !== 'Enter') return;
     event.preventDefault();
     event.stopPropagation();
-    const query = ports.search.value.trim();
+    const submittedText = ports.search.value;
+    const query = submittedText.trim();
     if (!query) {
       const compendium = ports.compendiumState();
       if (compendium.panelOpen && compendium.mode === 'list' && compendium.filter) {
@@ -267,9 +286,20 @@ export function createSearchTravelController(
     }
     if (strict.kind === 'valid') {
       const address = resolveStrictCF1Address(strict);
-      if (address && jumpToCanonicalAddress(address, strict.name)) {
-        ports.search.value = '';
-        queueMicrotask(ports.focusAfterAcceptedRoute);
+      let committed = false;
+      try {
+        committed = address !== null
+          && await jumpToCanonicalAddress(address, strict.name, query);
+      } catch { /* an injected commit port may reject; Search remains corrective */ }
+      if (disposed) return;
+      if (committed) {
+        /* Do not erase text the player entered while a durable named-route
+           transaction was settling. The committed route remains valid; the
+           newer Search intent remains available for its own Enter. */
+        if (ports.search.value === submittedText) {
+          ports.search.value = '';
+          queueMicrotask(ports.focusAfterAcceptedRoute);
+        }
       } else focusSearch();
       return;
     }

@@ -1,11 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import {
   AUDIO_CATEGORIES,
+  AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
   AUDIO_RESOURCE_MEASUREMENT_DIAGNOSTICS,
   AUDIO_SETTING_ACCESSIBILITY_DIAGNOSTICS,
+  AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
   auditAudioLabLifecycleTrace,
   captureAudioLabSample,
   createAudioRuntime,
+  createAudioVoiceMixIntentV1,
   type AudioCounterpartReceipt,
   type AudioAnalyserNodeLike,
   type AudioContextLike,
@@ -15,6 +18,7 @@ import {
   type AudioNodeLike,
   type AudioParamLike,
   type AudioScheduledSourceLike,
+  type AudioVoiceMixIntentV1,
   type AudioVoiceRequest,
   type AudioVoiceReservation,
 } from '../src/index.js';
@@ -302,6 +306,7 @@ interface RequestOptions {
   nodes?: readonly FakeNode[];
   sources?: readonly FakeSource[];
   nodeCount?: number;
+  mixIntent?: AudioVoiceMixIntentV1;
   create?: (reservation: AudioVoiceReservation) => void;
 }
 
@@ -318,6 +323,7 @@ function request(source: FakeSource, options: RequestOptions = {}): AudioVoiceRe
     concurrencyGroup: options.concurrencyGroup ?? 'default',
     maxConcurrent: options.maxConcurrent ?? 4,
     nodeCount: options.nodeCount ?? nodes.length,
+    mixIntent: options.mixIntent ?? AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
     meaning: options.meaning ?? { kind: 'decorative' },
     create: (_context, reservation) => {
       options.create?.(reservation);
@@ -365,6 +371,15 @@ function counterpart(
   return Object.freeze({ counterpartKey, eventKey, generation });
 }
 
+function mixIntent(
+  factors: Readonly<Partial<Record<(typeof AUDIO_CATEGORIES)[number], number>>>,
+): AudioVoiceMixIntentV1 {
+  return createAudioVoiceMixIntentV1({
+    ...AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+    ...factors,
+  });
+}
+
 describe('Arc 7 injected audio runtime', () => {
   it('rejects creature and node policies above the absolute Gate G caps before context creation', () => {
     let contextCalls = 0;
@@ -409,6 +424,96 @@ describe('Arc 7 injected audio runtime', () => {
       budgets: { maxCreatureEmitters: 1, maxNodes: 14 },
     })).toThrow(/node budget/u);
     expect(contextCalls).toBe(0);
+  });
+
+  it('mints an exact immutable v1 mix intent and rejects hostile or mutable policy before allocation', async () => {
+    const callerFactors = {
+      music: 0.4,
+      ambience: 0.6,
+      creature: 1,
+      'combat-gameplay': 0.8,
+      ui: 1,
+    };
+    const intent = createAudioVoiceMixIntentV1(callerFactors);
+    expect(intent).toEqual({
+      schema: AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
+      factors: callerFactors,
+    });
+    expect(Object.isFrozen(intent)).toBe(true);
+    expect(Object.isFrozen(intent.factors)).toBe(true);
+    callerFactors.music = 0.9;
+    expect(intent.factors.music).toBe(0.4);
+    expect(() => {
+      (intent.factors as Record<string, number>).music = 0.7;
+    }).toThrow(TypeError);
+
+    expect(() => createAudioVoiceMixIntentV1({
+      ...AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+      future: 1,
+    } as never)).toThrow(/unexpected fields/u);
+    expect(() => createAudioVoiceMixIntentV1({
+      music: 1,
+      ambience: 1,
+      creature: 1,
+      'combat-gameplay': 1,
+    } as never)).toThrow(/unexpected fields/u);
+    expect(() => createAudioVoiceMixIntentV1(Object.assign(
+      Object.create(null) as object,
+      AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+    ) as never)).toThrow(/exact data object/u);
+    for (const invalid of [-0.01, 1.01, Number.NaN, Number.POSITIVE_INFINITY]) {
+      expect(() => mixIntent({ music: invalid }), String(invalid)).toThrow(/outside \[0, 1\]/u);
+    }
+    let accessorReads = 0;
+    const accessorFactors = { ...AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors };
+    Object.defineProperty(accessorFactors, 'music', {
+      enumerable: true,
+      get: () => {
+        accessorReads++;
+        return 0.5;
+      },
+    });
+    expect(() => createAudioVoiceMixIntentV1(accessorFactors)).toThrow(/data property/u);
+    expect(accessorReads).toBe(0);
+
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    let factoryCalls = 0;
+    const source = new FakeSource('invalid-mix-owner');
+    const base = request(source, { create: () => { factoryCalls++; } });
+    const frozenFactors = Object.freeze({ ...AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors });
+    const invalidIntents = [
+      { schema: AUDIO_VOICE_MIX_INTENT_SCHEMA_V1, factors: frozenFactors },
+      Object.freeze({
+        schema: AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
+        factors: { ...AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors },
+      }),
+      Object.freeze({ schema: 'cf.audio.voice-mix-intent/v2', factors: frozenFactors }),
+      Object.freeze({
+        schema: AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
+        factors: frozenFactors,
+        futurePolicy: true,
+      }),
+    ];
+    for (const invalidIntent of invalidIntents) {
+      expect(runtime.playVoice({
+        ...base,
+        mixIntent: invalidIntent as AudioVoiceMixIntentV1,
+      })).toEqual({ kind: 'rejected', reason: 'invalid-request' });
+    }
+    expect(factoryCalls).toBe(0);
+    expect(runtime.diagnostics()).toMatchObject({
+      nodes: { active: 13 },
+      voices: { active: 0 },
+      voiceMix: { activeOwners: 0 },
+    });
+
+    expect(runtime.playVoice({ ...base, mixIntent: intent })).toEqual({
+      kind: 'started', voiceId: 'voice-000001',
+    });
+    expect(factoryCalls).toBe(1);
+    source.finish();
   });
 
   it('mutes before creation, builds the complete limited mixer, routes real categories, and meters peaks', async () => {
@@ -556,6 +661,279 @@ describe('Arc 7 injected audio runtime', () => {
 
     await runtime.dispose();
     expect(runtime.diagnostics().gains).toMatchObject({ master: 0.19, effectiveMaster: 0.19 });
+  });
+
+  it('multiplies saved base gains by the deterministic minimum owner factor and restores the latest base', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: () => context,
+      nowMs: () => 0,
+      categoryGains: { music: 0.8, ambience: 0.6, 'combat-gameplay': 0.75, ui: 0.5 },
+    });
+    await runtime.activate();
+    const first = new FakeSource('mix-first');
+    const second = new FakeSource('mix-second');
+    const firstIntent = mixIntent({ music: 0.5, ambience: 0.8, 'combat-gameplay': 0.5 });
+    const secondIntent = mixIntent({ music: 0.75, ambience: 0.25, 'combat-gameplay': 0.25 });
+
+    expect(runtime.playVoice(request(first, {
+      concurrencyGroup: 'mix-first',
+      mixIntent: firstIntent,
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+    expect(context.gains[1]!.gain.value).toBeCloseTo(0.4);
+    expect(context.gains[2]!.gain.value).toBeCloseTo(0.48);
+    expect(context.gains[4]!.gain.value).toBeCloseTo(0.375);
+    expect(runtime.diagnostics().gains.categories).toEqual({
+      music: 0.8,
+      ambience: 0.6,
+      creature: 1,
+      'combat-gameplay': 0.75,
+      ui: 0.5,
+    });
+
+    expect(runtime.playVoice(request(second, {
+      concurrencyGroup: 'mix-second',
+      mixIntent: secondIntent,
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000002' });
+    const mixed = runtime.diagnostics();
+    expect(mixed.nodes).toMatchObject({ active: 17, peak: 17, budget: 96 });
+    expect(mixed.voiceMix).toEqual({
+      schema: AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
+      activeOwners: 2,
+      owners: [
+        { voiceId: 'voice-000001', factors: firstIntent.factors },
+        { voiceId: 'voice-000002', factors: secondIntent.factors },
+      ],
+      factors: {
+        music: 0.5,
+        ambience: 0.25,
+        creature: 1,
+        'combat-gameplay': 0.25,
+        ui: 1,
+      },
+      effectiveCategoryGains: {
+        music: 0.4,
+        ambience: 0.15,
+        creature: 1,
+        'combat-gameplay': 0.1875,
+        ui: 0.5,
+      },
+    });
+    expect(Object.isFrozen(mixed.voiceMix)).toBe(true);
+    expect(Object.isFrozen(mixed.voiceMix.owners)).toBe(true);
+    expect(Object.isFrozen(mixed.voiceMix.owners[0]!.factors)).toBe(true);
+    expect(() => {
+      (mixed.voiceMix.factors as Record<string, number>).music = 1;
+    }).toThrow(TypeError);
+
+    runtime.setCategoryGain('music', 0.5);
+    expect(runtime.diagnostics()).toMatchObject({
+      gains: { categories: { music: 0.5 } },
+      voiceMix: { effectiveCategoryGains: { music: 0.25 } },
+    });
+    expect(context.gains[1]!.gain.value).toBeCloseTo(0.25);
+
+    expect(runtime.stopVoice('voice-000001')).toBe(true);
+    expect(runtime.diagnostics()).toMatchObject({
+      voiceMix: {
+        activeOwners: 1,
+        factors: { music: 0.75, ambience: 0.25, 'combat-gameplay': 0.25 },
+        effectiveCategoryGains: { music: 0.375, ambience: 0.15, 'combat-gameplay': 0.1875 },
+      },
+    });
+    expect(context.gains[1]!.gain.value).toBeCloseTo(0.375);
+
+    second.finish();
+    expect(runtime.diagnostics()).toMatchObject({
+      nodes: { active: 13 },
+      voices: { active: 0, completed: 1, stopped: 1 },
+      gains: { categories: { music: 0.5, ambience: 0.6, 'combat-gameplay': 0.75 } },
+      voiceMix: {
+        activeOwners: 0,
+        factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+        effectiveCategoryGains: { music: 0.5, ambience: 0.6, 'combat-gameplay': 0.75 },
+      },
+    });
+    expect(context.gains[1]!.gain.value).toBeCloseTo(0.5);
+    expect(context.gains[2]!.gain.value).toBeCloseTo(0.6);
+    expect(context.gains[4]!.gain.value).toBeCloseTo(0.75);
+  });
+
+  it('rolls back a failed prospective mix before stealing its incumbent', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const incumbent = new FakeSource('mix-write-incumbent');
+    expect(runtime.playVoice(request(incumbent, {
+      priority: 1,
+      concurrencyGroup: 'mix-write-single',
+      maxConcurrent: 1,
+      mixIntent: mixIntent({ music: 0.5, ambience: 0.6 }),
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+
+    const ambienceParam = context.gains[2]!.gain;
+    const setAmbience = ambienceParam.setValueAtTime.bind(ambienceParam);
+    let failOnce = true;
+    ambienceParam.setValueAtTime = (value: number) => {
+      setAmbience(value);
+      if (failOnce) {
+        failOnce = false;
+        throw new Error('injected prospective ambience refusal');
+      }
+    };
+    const candidate = new FakeSource('mix-write-candidate');
+    expect(runtime.playVoice(request(candidate, {
+      priority: 2,
+      concurrencyGroup: 'mix-write-single',
+      maxConcurrent: 1,
+      mixIntent: mixIntent({ music: 0.2, ambience: 0.3 }),
+    }))).toEqual({ kind: 'fault', reason: 'voice-start' });
+
+    expect(incumbent.stopCalls).toBe(0);
+    expect(candidate.startCalls).toBe(1);
+    expect(candidate.stopCalls).toBe(1);
+    expect(candidate.disconnectCalls).toBe(1);
+    expect(context.gains[1]!.gain.value).toBeCloseTo(0.5);
+    expect(context.gains[2]!.gain.value).toBeCloseTo(0.6);
+    expect(runtime.diagnostics()).toMatchObject({
+      contextState: 'running',
+      nodes: { active: 15 },
+      voices: { active: 1, stopped: 0, stolen: 0, ids: ['voice-000001'] },
+      voiceMix: {
+        activeOwners: 1,
+        factors: { music: 0.5, ambience: 0.6 },
+        effectiveCategoryGains: { music: 0.5, ambience: 0.6 },
+      },
+      faults: { total: 1 },
+    });
+    expect(runtime.diagnostics().faults.retained.at(-1)).toMatchObject({
+      kind: 'category-mix-gain',
+      message: 'injected prospective ambience refusal',
+    });
+  });
+
+  it('quarantines the mixer when a failed prospective write cannot be rolled back exactly', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const incumbent = new FakeSource('mix-quarantine-incumbent');
+    expect(runtime.playVoice(request(incumbent, {
+      priority: 1,
+      concurrencyGroup: 'mix-quarantine-single',
+      maxConcurrent: 1,
+      mixIntent: mixIntent({ music: 0.5, ambience: 0.6 }),
+    })).kind).toBe('started');
+
+    const ambienceParam = context.gains[2]!.gain;
+    const setAmbience = ambienceParam.setValueAtTime.bind(ambienceParam);
+    let refusalCount = 0;
+    ambienceParam.setValueAtTime = (value: number) => {
+      setAmbience(value);
+      refusalCount++;
+      throw new Error('injected persistent ambience refusal');
+    };
+    const candidate = new FakeSource('mix-quarantine-candidate');
+    expect(runtime.playVoice(request(candidate, {
+      priority: 2,
+      concurrencyGroup: 'mix-quarantine-single',
+      maxConcurrent: 1,
+      mixIntent: mixIntent({ music: 0.2, ambience: 0.3 }),
+    }))).toEqual({ kind: 'fault', reason: 'voice-start' });
+
+    expect(refusalCount).toBe(13); // one prospective write plus twelve bounded rollback passes
+    expect(incumbent.stopCalls).toBe(1);
+    expect(candidate.stopCalls).toBe(1);
+    expect(context.closeCalls).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'suspended',
+      contextState: null,
+      nodes: { active: 0 },
+      voices: { active: 0, stolen: 0 },
+      voiceMix: {
+        activeOwners: 0,
+        factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+      },
+    });
+    expect(runtime.diagnostics().faults.retained.some(
+      (fault) => fault.kind === 'category-mix-quarantine',
+    )).toBe(true);
+  });
+
+  it('recomputes all buses after reentrant base and owner changes without publishing a stale later bus', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const first = new FakeSource('mix-reentrant-first');
+    const second = new FakeSource('mix-reentrant-second');
+    expect(runtime.playVoice(request(first, {
+      concurrencyGroup: 'mix-reentrant-first',
+      mixIntent: mixIntent({ music: 0.2, ambience: 0.3 }),
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+    expect(runtime.playVoice(request(second, {
+      concurrencyGroup: 'mix-reentrant-second',
+      mixIntent: mixIntent({ music: 0.5, ambience: 0.6 }),
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000002' });
+
+    const musicParam = context.gains[1]!.gain;
+    const setMusic = musicParam.setValueAtTime.bind(musicParam);
+    let callbackCalls = 0;
+    musicParam.setValueAtTime = (value: number) => {
+      setMusic(value);
+      if (callbackCalls > 0) return;
+      callbackCalls++;
+      runtime.setCategoryGain('ambience', 0.5);
+      expect(runtime.stopVoice('voice-000002')).toBe(true);
+    };
+
+    expect(runtime.stopVoice('voice-000001')).toBe(true);
+    const diagnostics = runtime.diagnostics();
+    expect(callbackCalls).toBe(1);
+    expect(diagnostics).toMatchObject({
+      gains: { categories: { music: 1, ambience: 0.5 } },
+      voices: { active: 0, stopped: 2 },
+      voiceMix: {
+        activeOwners: 0,
+        factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+        effectiveCategoryGains: { music: 1, ambience: 0.5 },
+      },
+    });
+    expect(context.gains[2]!.gain.values).not.toContain(0.6);
+    for (const [index, name] of AUDIO_CATEGORIES.entries()) {
+      expect(context.gains[index + 1]!.gain.value, name)
+        .toBe(diagnostics.voiceMix.effectiveCategoryGains[name]);
+    }
+  });
+
+  it('bounds perpetual category-mix reentrancy and quarantines instead of recursing forever', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const source = new FakeSource('mix-churn-owner');
+    expect(runtime.playVoice(request(source, {
+      mixIntent: mixIntent({ music: 0.25 }),
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+
+    const musicParam = context.gains[1]!.gain;
+    const setMusic = musicParam.setValueAtTime.bind(musicParam);
+    let callbackCalls = 0;
+    musicParam.setValueAtTime = (value: number) => {
+      setMusic(value);
+      callbackCalls++;
+      runtime.setCategoryGain('ambience', callbackCalls % 2 === 0 ? 0.4 : 0.5);
+    };
+    expect(runtime.stopVoice('voice-000001')).toBe(true);
+    expect(callbackCalls).toBe(12);
+    expect(context.closeCalls).toBe(1);
+    expect(runtime.diagnostics()).toMatchObject({
+      state: 'suspended',
+      contextState: null,
+      nodes: { active: 0 },
+      voices: { active: 0 },
+      voiceMix: { activeOwners: 0 },
+    });
+    expect(runtime.diagnostics().faults.retained.some(
+      (fault) => fault.kind === 'category-mix-quarantine',
+    )).toBe(true);
   });
 
   it('keeps the original close obligation when unmute wins in the same turn', async () => {
@@ -897,7 +1275,7 @@ describe('Arc 7 injected audio runtime', () => {
     expect([...requestReads.entries()]).toEqual([
       ['key', 1], ['category', 1], ['priority', 1], ['cooldownGroup', 1],
       ['cooldownMs', 1], ['concurrencyGroup', 1], ['maxConcurrent', 1],
-      ['nodeCount', 1], ['meaning', 1], ['create', 1],
+      ['nodeCount', 1], ['mixIntent', 1], ['meaning', 1], ['create', 1],
     ]);
     expect([...meaningReads.entries()]).toEqual([['kind', 1], ['counterpart', 1]]);
     expect([...graphReads.entries()]).toEqual([
@@ -1338,9 +1716,11 @@ describe('Arc 7 injected audio runtime', () => {
     const firstResult = runtime.playVoice(request(first, {
       priority: 1, concurrencyGroup: 'creatures', maxConcurrent: 2,
       output: firstFilter, nodes: [first, firstFilter],
+      mixIntent: mixIntent({ music: 0.3 }),
     }));
     const secondResult = runtime.playVoice(request(second, {
       priority: 2, concurrencyGroup: 'creatures', maxConcurrent: 2,
+      mixIntent: mixIntent({ music: 0.6 }),
     }));
     expect(firstResult.kind).toBe('started');
     expect(secondResult.kind).toBe('started');
@@ -1356,6 +1736,7 @@ describe('Arc 7 injected audio runtime', () => {
     const winner = new FakeSource('winner');
     const winnerResult = runtime.playVoice(request(winner, {
       priority: 3, concurrencyGroup: 'creatures', maxConcurrent: 2,
+      mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
     }));
     expect(winnerResult).toEqual({ kind: 'started', voiceId: 'voice-000003' });
     expect(first.stopCalls).toBe(1);
@@ -1367,8 +1748,17 @@ describe('Arc 7 injected audio runtime', () => {
       active: 2, started: 3, stolen: 1, concurrencyRejects: 1,
       ids: ['voice-000002', 'voice-000003'],
     });
+    expect(runtime.diagnostics().voiceMix).toMatchObject({
+      activeOwners: 2,
+      factors: { music: 0.6 },
+    });
+    expect(context.gains[1]!.gain.value).toBeCloseTo(0.6);
 
     second.finish();
+    expect(runtime.diagnostics().voiceMix).toMatchObject({
+      activeOwners: 1,
+      factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+    });
     expect(second.stopCalls).toBe(1);
     expect(second.disconnectCalls).toBe(1);
     expect(context.gains[7]!.disconnectCalls).toBe(1);
@@ -1378,6 +1768,54 @@ describe('Arc 7 injected audio runtime', () => {
     expect(winner.disconnectCalls).toBe(1);
     expect(context.gains[8]!.disconnectCalls).toBe(1);
     expect(runtime.diagnostics().voices).toMatchObject({ active: 0, completed: 1, stopped: 2 });
+  });
+
+  it('publishes owner removal before cleanup callbacks so reentrant base and voice owners cannot be overwritten', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: () => context,
+      nowMs: () => 0,
+      categoryGains: { music: 0.5 },
+    });
+    await runtime.activate();
+    const ending = new FakeSource('reentrant-mix-ending');
+    const successor = new FakeSource('reentrant-mix-successor');
+    expect(runtime.playVoice(request(ending, {
+      concurrencyGroup: 'reentrant-ending',
+      mixIntent: mixIntent({ music: 0.25 }),
+    }))).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+    expect(context.gains[1]!.gain.value).toBeCloseTo(0.125);
+
+    let successorResult: ReturnType<typeof runtime.playVoice> | null = null;
+    const originalStop = ending.stop.bind(ending);
+    ending.stop = () => {
+      originalStop();
+      runtime.setCategoryGain('music', 0.8);
+      successorResult = runtime.playVoice(request(successor, {
+        concurrencyGroup: 'reentrant-successor',
+        mixIntent: mixIntent({ music: 0.5 }),
+      }));
+    };
+    expect(runtime.stopVoice('voice-000001')).toBe(true);
+    expect(successorResult).toEqual({ kind: 'started', voiceId: 'voice-000002' });
+    expect(runtime.diagnostics()).toMatchObject({
+      gains: { categories: { music: 0.8 } },
+      voices: { active: 1, stopped: 1, ids: ['voice-000002'] },
+      voiceMix: {
+        activeOwners: 1,
+        factors: { music: 0.5 },
+        effectiveCategoryGains: { music: 0.4 },
+      },
+    });
+    expect(context.gains[1]!.gain.value).toBeCloseTo(0.4);
+
+    successor.finish();
+    expect(runtime.diagnostics().voiceMix).toMatchObject({
+      activeOwners: 0,
+      factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+      effectiveCategoryGains: { music: 0.8 },
+    });
+    expect(context.gains[1]!.gain.value).toBeCloseTo(0.8);
   });
 
   it('reserves before construction, rejects reentrant admission, and reports transition peaks', async () => {
@@ -1538,7 +1976,12 @@ describe('Arc 7 injected audio runtime', () => {
       const incumbent = new FakeSource(`${transition}-incumbent`);
       expect(runtime.playVoice(request(incumbent, {
         category: 'creature', priority: 1, concurrencyGroup: 'incumbent', maxConcurrent: 24,
+        mixIntent: mixIntent({ music: 0.4, ambience: 0.6 }),
       })).kind).toBe('started');
+      expect(runtime.diagnostics().voiceMix).toMatchObject({
+        activeOwners: 1,
+        factors: { music: 0.4, ambience: 0.6 },
+      });
 
       const replacement = new FakeSource(`${transition}-replacement`);
       const originalStart = replacement.start.bind(replacement);
@@ -1552,6 +1995,7 @@ describe('Arc 7 injected audio runtime', () => {
       };
       expect(runtime.playVoice(request(replacement, {
         category: 'creature', priority: 2, concurrencyGroup: 'replacement', maxConcurrent: 24,
+        mixIntent: mixIntent({ music: 0.2, ambience: 0.3 }),
       }))).toEqual({
         kind: 'rejected',
         reason: transition === 'mute' ? 'muted'
@@ -1564,6 +2008,11 @@ describe('Arc 7 injected audio runtime', () => {
       expect(replacement.disconnectCalls, transition).toBe(1);
       expect(runtime.diagnostics(), transition).toMatchObject({
         voices: { active: 0 }, creatureEmitters: { active: 0 },
+        voiceMix: {
+          activeOwners: 0,
+          factors: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+          effectiveCategoryGains: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors,
+        },
         reservations: { voices: { active: 0 }, nodes: { active: 0 } },
       });
     }
@@ -2000,6 +2449,57 @@ describe('Arc 7 injected audio runtime', () => {
       }
       : sample);
     expect(() => auditAudioLabLifecycleTrace(hiddenCleanupFault)).toThrow(/not a clean/);
+  });
+
+  it('makes the lab reject max-aggregation and stale-owner diagnostic mutants', async () => {
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({ createContext: () => context, nowMs: () => 0 });
+    await runtime.activate();
+    const first = new FakeSource('lab-mix-minimum');
+    const second = new FakeSource('lab-mix-maximum');
+    expect(runtime.playVoice(request(first, {
+      concurrencyGroup: 'lab-mix-minimum',
+      mixIntent: mixIntent({ music: 0.25 }),
+    })).kind).toBe('started');
+    expect(runtime.playVoice(request(second, {
+      concurrencyGroup: 'lab-mix-maximum',
+      mixIntent: mixIntent({ music: 0.75 }),
+    })).kind).toBe('started');
+    const loaded = runtime.diagnostics();
+    expect(loaded.voiceMix.factors.music).toBe(0.25);
+
+    const maxAggregation = {
+      ...loaded,
+      voiceMix: {
+        ...loaded.voiceMix,
+        factors: { ...loaded.voiceMix.factors, music: 0.75 },
+        effectiveCategoryGains: {
+          ...loaded.voiceMix.effectiveCategoryGains,
+          music: 0.75,
+        },
+      },
+    };
+    expect(() => captureAudioLabSample('running-loaded', {
+      diagnostics: () => maxAggregation,
+    })).toThrow(/not the active-owner minimum/u);
+
+    first.finish();
+    second.finish();
+    const clean = runtime.diagnostics();
+    const staleOwner = {
+      ...clean,
+      voiceMix: {
+        ...clean.voiceMix,
+        activeOwners: 1,
+        owners: [{
+          voiceId: 'voice-stale',
+          factors: { ...AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1.factors },
+        }],
+      },
+    };
+    expect(() => captureAudioLabSample('running-loaded', {
+      diagnostics: () => staleOwner,
+    })).toThrow(/contradict active voices/u);
   });
 
   it('rejects accessor diagnostics without invoking them and snapshots portable proxies by descriptor', async () => {

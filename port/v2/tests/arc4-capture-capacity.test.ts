@@ -52,6 +52,7 @@ import {
 import {
   navFromCanonicalCF1Address,
   resolveCF1WorldAddress,
+  systemScene,
   type CanonicalCF1WorldAddress,
 } from '@cf/scene';
 import {
@@ -78,6 +79,8 @@ const REGISTRY = JSON.parse(fs.readFileSync(
 const NOW = 1_753_900_060_000;
 const HOME_GALAXY = Object.freeze({ seed: 999, x: 90, y: -60 });
 const SOL = Object.freeze({ seed: 424242, x: 560, y: 170 });
+const FOREIGN_GALAXY = Object.freeze({ seed: 394332036, x: -300.95, y: 175.47 });
+const FOREIGN_STAR = Object.freeze({ seed: 676840317, x: 27.3, y: -24.6 });
 
 function saveCodec(
   registry: ContentRegistry = REGISTRY,
@@ -116,6 +119,23 @@ function addressOf(): CanonicalCF1WorldAddress {
   const resolved = resolveCF1WorldAddress({ galaxy: HOME_GALAXY, star: SOL, planet: { seed: 133 } });
   if (!resolved.ok) throw new Error(`Earth address fixture failed: ${resolved.reason}`);
   return resolved.address;
+}
+
+function alienLivingAddress(index = 0): CanonicalCF1WorldAddress {
+  const living: CanonicalCF1WorldAddress[] = [];
+  for (const planet of systemScene(FOREIGN_STAR.seed).planets) {
+    const resolved = resolveCF1WorldAddress({
+      galaxy: FOREIGN_GALAXY,
+      star: FOREIGN_STAR,
+      planet: { seed: planet.seed },
+    });
+    if (!resolved.ok) continue;
+    const roster = canonicalWorldRoster(resolved.address, 0);
+    if (roster.ok && roster.roster.view.total > 0) living.push(resolved.address);
+  }
+  const address = living[index];
+  if (address !== undefined) return address;
+  throw new Error(`alien Charter fixture has no living world at index ${index}`);
 }
 
 function baseState(): SaveStateV2 {
@@ -175,12 +195,14 @@ function seedForSuccessDraw(predicate: (value: number) => boolean): number {
 const HIT_SEED = seedForSuccessDraw((value) => value < 0.001);
 const MISS_SEED = seedForSuccessDraw((value) => value > 0.99);
 
-function readyPreflight(extensions: V5Extensions) {
-  const address = addressOf();
+function readyPreflight(
+  extensions: V5Extensions,
+  address: CanonicalCF1WorldAddress = addressOf(),
+) {
   const rosterResult = canonicalWorldRoster(address, 0);
-  if (!rosterResult.ok) throw new Error(`Earth roster fixture failed: ${rosterResult.reason}`);
+  if (!rosterResult.ok) throw new Error(`world roster fixture failed: ${rosterResult.reason}`);
   const nav = navFromCanonicalCF1Address(address);
-  if (!nav.ok) throw new Error(`Earth nav fixture failed: ${nav.reason}`);
+  if (!nav.ok) throw new Error(`world nav fixture failed: ${nav.reason}`);
   const composed = composeAcquisitionSnapshotV1({
     nav: nav.state,
     address,
@@ -403,6 +425,166 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
       expect(imported.state.scoutId).toBe(prepared.canonicalState.scoutId);
       expect(imported.state.essence).toBe(prepared.canonicalState.essence);
     }
+  }, 20_000);
+
+  it('banks one Charter bioscan only for the first durable successful observation on a reachable alien world', async () => {
+    const address = alienLivingAddress();
+    const otherAddress = alienLivingAddress(1);
+    const state = baseState();
+    state.ascCh = 1;
+    state.items = [['igdrive', 1]];
+    state.ascProg = { sentinel: 37 };
+    state.surveyedSet = ['legacy-survey-sentinel'];
+    state.stats.surveys = 1;
+    const extensions = authorityExtensions(HIT_SEED);
+    const preflight = readyPreflight(extensions, address);
+    const certified = certifyArc4CaptureCapacityV1({
+      preflight,
+      parent: currentArc5Parent(extensions),
+      preDraw: valueFreeInput(state, extensions),
+    });
+    expect(certified.kind).toBe('certified');
+    if (certified.kind !== 'certified') return;
+    expect(certified.certificate.scenarios[0]?.charterBioscanBanked).toBe(false);
+    expect(certified.certificate.scenarios.slice(1).every(
+      (scenario) => scenario.charterBioscanBanked,
+    )).toBe(true);
+
+    const settled = await settleThroughGenuineOwner(preflight, state, extensions);
+    expect(settled.plan.hit).toBe(true);
+    expect(settled.charterBioscanBanked).toBe(true);
+    expect(settled.prepared.canonicalState.ascProg).toEqual({
+      sentinel: 37,
+      'c2-scan': 1,
+    });
+    expect(settled.prepared.canonicalState.surveyedSet).toEqual([
+      'legacy-survey-sentinel',
+    ]);
+    expect(settled.prepared.canonicalState.stats.surveys).toBe(1);
+
+    const repeatPreflight = readyPreflight(settled.prepared.extensions, address);
+    const repeat = certifyArc4CaptureCapacityV1({
+      preflight: repeatPreflight,
+      parent: currentArc5Parent(settled.prepared.extensions),
+      preDraw: valueFreeInput(
+        settled.prepared.canonicalState,
+        settled.prepared.extensions,
+        124,
+      ),
+    });
+    expect(repeat.kind).toBe('certified');
+    if (repeat.kind === 'certified') {
+      expect(repeat.certificate.scenarios.every(
+        (scenario) => !scenario.charterBioscanBanked,
+      )).toBe(true);
+    }
+
+    const otherWorld = certifyArc4CaptureCapacityV1({
+      preflight: readyPreflight(settled.prepared.extensions, otherAddress),
+      parent: currentArc5Parent(settled.prepared.extensions),
+      preDraw: valueFreeInput(
+        settled.prepared.canonicalState,
+        settled.prepared.extensions,
+        125,
+      ),
+    });
+    expect(otherWorld.kind).toBe('certified');
+    if (otherWorld.kind === 'certified') {
+      expect(otherWorld.certificate.scenarios[0]?.charterBioscanBanked).toBe(false);
+      expect(otherWorld.certificate.scenarios.slice(1).every(
+        (scenario) => scenario.charterBioscanBanked,
+      )).toBe(true);
+    }
+
+    const solPreflight = readyPreflight(extensions);
+    const sol = certifyArc4CaptureCapacityV1({
+      preflight: solPreflight,
+      parent: currentArc5Parent(extensions),
+      preDraw: valueFreeInput(state, extensions),
+    });
+    expect(sol.kind).toBe('certified');
+    if (sol.kind === 'certified') {
+      expect(sol.certificate.scenarios.every(
+        (scenario) => !scenario.charterBioscanBanked,
+      )).toBe(true);
+    }
+
+    const completeChapter = {
+      sentinel: 37,
+      'c2-land': 3,
+      'c2-scan': 2,
+      'c2-conq': 1,
+      'c2-array': 1,
+    };
+    const solCompleteState = baseState();
+    solCompleteState.ascCh = 1;
+    solCompleteState.items = [['igdrive', 1]];
+    solCompleteState.ascProg = { ...completeChapter };
+    const solComplete = await settleThroughGenuineOwner(
+      solPreflight,
+      solCompleteState,
+      extensions,
+    );
+    expect(solComplete.plan.hit).toBe(true);
+    expect(solComplete.charterBioscanBanked).toBe(false);
+    expect(solComplete.prepared.canonicalState.ascCh).toBe(1);
+    expect(solComplete.prepared.canonicalState.ascProg).toEqual(completeChapter);
+
+    const repeatAuthority = prepareF4AuthorityUpdate(
+      settled.prepared.extensions,
+      { activePlayMs: 123 },
+      createSessionRNG(HIT_SEED).state(),
+    );
+    const repeatCompleteState: SaveStateV2 = {
+      ...settled.prepared.canonicalState,
+      ascCh: 1,
+      ascProg: { ...completeChapter },
+    };
+    const repeatComplete = await settleThroughGenuineOwner(
+      readyPreflight(repeatAuthority.extensions, address),
+      repeatCompleteState,
+      repeatAuthority.extensions,
+    );
+    expect(repeatComplete.plan.hit).toBe(true);
+    expect(repeatComplete.charterBioscanBanked).toBe(false);
+    expect(repeatComplete.prepared.canonicalState.ascCh).toBe(1);
+    expect(repeatComplete.prepared.canonicalState.ascProg).toEqual(completeChapter);
+
+    for (const [label, protectedState] of [
+      ['unreachable', { ascCh: 1, items: [['jumpdrive', 1]], ascProg: {} }],
+      ['saturated', { ascCh: 1, items: [['igdrive', 1]], ascProg: { 'c2-scan': 2 } }],
+      ['past-chapter', { ascCh: 2, items: [['igdrive', 1]], ascProg: {} }],
+    ] as const) {
+      const candidate = baseState();
+      candidate.ascCh = protectedState.ascCh;
+      candidate.items = protectedState.items.map(([id, count]) => [id, count]);
+      candidate.ascProg = { ...protectedState.ascProg };
+      const refusal = certifyArc4CaptureCapacityV1({
+        preflight,
+        parent: currentArc5Parent(extensions),
+        preDraw: valueFreeInput(candidate, extensions),
+      });
+      expect(refusal.kind, label).toBe('certified');
+      if (refusal.kind === 'certified') {
+        expect(refusal.certificate.scenarios.every(
+          (scenario) => !scenario.charterBioscanBanked,
+        ), label).toBe(true);
+      }
+    }
+
+    const missExtensions = authorityExtensions(MISS_SEED);
+    const missed = await settleThroughGenuineOwner(
+      readyPreflight(missExtensions, address),
+      state,
+      missExtensions,
+    );
+    expect(missed.plan.hit).toBe(false);
+    expect(missed.charterBioscanBanked).toBe(false);
+    expect(missed.prepared.canonicalState.ascProg).toEqual({ sentinel: 37 });
+    expect(missed.prepared.canonicalState.surveyedSet).toEqual([
+      'legacy-survey-sentinel',
+    ]);
+    expect(missed.prepared.canonicalState.stats.surveys).toBe(1);
   }, 20_000);
 
   it('joins the real pre-draw owner and publishes the selected certified save in one CAS', async () => {

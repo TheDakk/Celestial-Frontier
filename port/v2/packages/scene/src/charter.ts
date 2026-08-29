@@ -32,6 +32,32 @@ export function ascAllowsStar(stage: number, galSeed: number, star: { x: number;
   return false;                                     /* stage 0: Sol only */
 }
 
+/** Address-aware reach gate for source-proven navigation and durable deeds.
+ * The legacy projection above accepts only a galaxy seed because its original
+ * call sites had no parent coordinates. Current v2 address owners must also
+ * bind the exact home-galaxy and Sol-star hierarchy so a colliding seed under
+ * different coordinates cannot inherit reach. */
+export function ascAllowsCanonicalStar(
+  stage: number,
+  galaxy: Readonly<{ x: number; y: number; seed: number }>,
+  star: Readonly<{ x: number; y: number; seed: number }>,
+): boolean {
+  if (stage >= 3) return true;
+  const isHomeGalaxy = galaxy.seed === HOME_GAL_SEED
+    && galaxy.x === HOME_POS.x
+    && galaxy.y === HOME_POS.y;
+  if (!isHomeGalaxy) return false;
+  if (stage >= 2) return true;
+  const isSolStar = star.seed === SOL_SEED
+    && star.x === SOL_POS.x
+    && star.y === SOL_POS.y;
+  if (isSolStar) return true;
+  if (stage === 1) {
+    return Math.hypot(star.x - SOL_POS.x, star.y - SOL_POS.y) <= (ASC_RING_R as number);
+  }
+  return false;
+}
+
 /** currentRegion (main.js 21959): reach jumps outward per prime signature. */
 export function currentRegionOf(primeCount: number): { name: string; sigs: number; r: number } {
   const rows = REGIONS as Array<{ name: string; sigs: number; r: number }>;
@@ -61,12 +87,12 @@ export function ascHintFor(stage: number): string {
         : 'Intergalactic star reach is already preserved; this destination is blocked by a different boundary.';
 }
 
-/** A galaxy can also be blocked by the imported Prime Signature radius. That
-    is a different fact from a star/drive Charter gate: preserve the radius
-    and name its unavailable expansion without implying signatures can be
-    collected, written, or otherwise earned in this slice. */
+/** A galaxy can also be blocked by the saved Prime Signature radius. That is
+    a different fact from a star/drive Charter gate: point to the live verified
+    Titan-victory owner without implying that chapter or Engineering state can
+    mint a Signature. */
 export function primeReachHint(): string {
-  return 'Your saved Prime Signature radius ends here. Prime Signature radius expansion is not available in this development slice.';
+  return 'Your saved Prime Signature radius ends here. Verified Titan victories claim Prime Signatures that expand it; open the Prime Codex to review your frontier.';
 }
 
 /* ---- the Ascent chapters as DATA (main.js 22758-22789, text verbatim).
@@ -197,6 +223,28 @@ function bankGoal(prog: Record<string, number>, goal: AscGoal): boolean {
   return true;
 }
 
+/** Bank one source-proven alien-world life discovery. The app transaction is
+    responsible for calling this only for the first durable successful
+    observation on that complete canonical world; misses, repeats and stale
+    presentation paths never reach this pure counter. Sol is excluded by its
+    exact hierarchy rather than by the globally non-unique planet seed. */
+export function bankBioscan(
+  ascCh: number,
+  prog: Record<string, number>,
+  source: CanonicalCF1WorldAddress,
+): boolean {
+  if (!Number.isInteger(ascCh) || ascCh < 0 || ascCh >= ASC_CHAPTERS_DATA.length
+    || !isCanonicalCF1Address(source) || !('planet' in source)
+    || isSolLandfallAddress(source)) return false;
+  let changed = false;
+  for (let ci = ascCh; ci < ASC_CHAPTERS_DATA.length; ci++) {
+    for (const goal of ASC_CHAPTERS_DATA[ci]!.goals) {
+      if (goal.ev === 'bioscan' && bankGoal(prog, goal)) changed = true;
+    }
+  }
+  return changed;
+}
+
 /** Bank one successful `mined` action tick, never the number of extracted
     loads. The Chapter 1 source check is the full canonical Sol address plus a
     dead-world leaf; Chapter 3 intentionally has no source filter. */
@@ -252,6 +300,46 @@ export function bankFixedFabrication(
   return changed;
 }
 
+/** Bank the mature build's exact `bred` goal filter. Legacy `breedPair`
+    emitted `{ ok: true }` only after a successful offspring result, and
+    `ascEvent` then banked that deed into every chapter from the current one
+    forward. Failure, refusal, and any non-true result must remain inert. */
+export function bankBredSuccess(
+  ascCh: number,
+  prog: Record<string, number>,
+  succeeded: boolean,
+): boolean {
+  if (succeeded !== true
+    || !Number.isInteger(ascCh) || ascCh < 0 || ascCh >= ASC_CHAPTERS_DATA.length) return false;
+  let changed = false;
+  for (let ci = ascCh; ci < ASC_CHAPTERS_DATA.length; ci++) {
+    for (const goal of ASC_CHAPTERS_DATA[ci]!.goals) {
+      if (goal.ev === 'bred' && bankGoal(prog, goal)) changed = true;
+    }
+  }
+  return changed;
+}
+
+/** Bank the mature build's exact `conquest` chapter event. The trusted
+    combat transaction calls this only after a first durable world settlement;
+    losses, draws, already-conquered worlds, Training, and precommit gestures
+    never reach this pure counter. */
+export function bankConquest(
+  ascCh: number,
+  prog: Record<string, number>,
+  settled: boolean,
+): boolean {
+  if (settled !== true
+    || !Number.isInteger(ascCh) || ascCh < 0 || ascCh >= ASC_CHAPTERS_DATA.length) return false;
+  let changed = false;
+  for (let ci = ascCh; ci < ASC_CHAPTERS_DATA.length; ci++) {
+    for (const goal of ASC_CHAPTERS_DATA[ci]!.goals) {
+      if (goal.ev === 'conquest' && bankGoal(prog, goal)) changed = true;
+    }
+  }
+  return changed;
+}
+
 /** all goals of the CURRENT chapter met? (the chapter-advance condition) */
 export function chapterGoalsDone(ascCh: number, prog: Record<string, number>): boolean {
   const ch = ASC_CHAPTERS_DATA[ascCh];
@@ -259,13 +347,14 @@ export function chapterGoalsDone(ascCh: number, prog: Record<string, number>): b
   return ch.goals.every((g) => (prog[g.id] || 0) >= g.n);
 }
 
-/* The playable Phase-4 slice has exact landfall, mining, and fixed-fabrication
-   goal writers. Imported chapter reconciliation may acknowledge already-
-   proven progress, but creates no goal credit, drive, reward, or reach. Keep
-   that capability boundary in the pure scene layer so the board, objective
-   chip and chapter-advance seam cannot each make a different promise. The
-   full legacy data above is intentionally NOT rewritten or filtered in place:
-   imported saves retain their canonical progress and can still gate reach. */
+/* The playable Phase-4 slice has exact landfall, mining, fixed-fabrication,
+   successful-breeding and first-successful-alien-world bioscan goal writers. Imported chapter
+   reconciliation may acknowledge already-proven progress, but creates no
+   goal credit, drive, reward, or reach. Keep that capability boundary in the
+   pure scene layer so the board, objective chip and chapter-advance seam
+   cannot each make a different promise. The full legacy data above is
+   intentionally NOT rewritten or filtered in place: imported saves retain
+   their canonical progress and can still gate reach. */
 export type V2CharterState = 'actionable' | 'boundary' | 'complete';
 export interface V2CharterProjection {
   readonly id: string;
@@ -281,10 +370,10 @@ const V2_CHARTER_COPY: Readonly<Record<string, { intro: string }>> = Object.free
     intro: 'Learn Sol: make planetfall, mine its dead worlds, and fabricate the Jump Drive.',
   }),
   ch2: Object.freeze({
-    intro: 'Explore beyond Sol and build the Long-Range Array; unavailable milestones remain preserved.',
+    intro: 'Explore beyond Sol, discover life, conquer a world, and build the Long-Range Array.',
   }),
   ch3: Object.freeze({
-    intro: 'Mine, gear up, and build the Intergalactic Drive; unavailable milestones remain preserved.',
+    intro: 'Breed a hybrid bloodline, mine, gear up, and build the Intergalactic Drive.',
   }),
 });
 const V2_CHARTER_BOUNDARY_NOTE =
@@ -303,7 +392,9 @@ function goalIsInV2Reach(goal: AscGoal, stage: number): boolean {
   return goal.scope !== 'nonsol' || stage >= 1;
 }
 function goalHasV2Writer(goal: AscGoal): boolean {
-  return goal.ev === 'landfall' || goal.ev === 'mined' || goal.ev === 'crafted';
+  return goal.ev === 'landfall' || goal.ev === 'mined'
+    || goal.ev === 'crafted' || goal.ev === 'bioscan' || goal.ev === 'bred'
+    || goal.ev === 'conquest';
 }
 function completionStageForChapter(ascCh: number): number {
   return Math.min(ASC_CHAPTER_COUNT, ascCh + 1);

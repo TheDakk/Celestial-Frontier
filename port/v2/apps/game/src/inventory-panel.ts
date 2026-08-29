@@ -8,6 +8,7 @@ import {
   GEAR_SLOTS,
   compareGear,
   filterGearEntries,
+  getExceptionalCraftModifierDefinition,
   getLootCatalogueDefinition,
   inspectGear,
   type GearComparison,
@@ -706,7 +707,14 @@ export class InventoryPanelController {
       ...(row.entry.favorite ? ['favorite'] : []),
       ...(row.entry.locked ? ['locked'] : []),
     ];
-    const modifierText = (modifier: typeof inspection.craftedModifier): string => modifier
+    const craftedModifierText = (modifier: typeof inspection.craftedModifier): string => {
+      if (!modifier) return 'None recorded';
+      const definition = getExceptionalCraftModifierDefinition(modifier.affixId);
+      if (!definition) return 'Unavailable in this build';
+      const label = definition.effectKey === 'contact' ? 'capture chance' : definition.label;
+      return `${label} ${textNumber(modifier.value, definition.percent)} · tier ${modifier.tier}`;
+    };
+    const drawbackText = (modifier: typeof inspection.drawback): string => modifier
       ? `${modifier.affixId} · tier ${modifier.tier} · ${textNumber(modifier.value)}` : 'None recorded';
     article.append(this.#factList([
       ['Exact instance', inspection.instanceId],
@@ -723,8 +731,8 @@ export class InventoryPanelController {
       ['Natural affixes', inspection.naturalAffixes.length
         ? inspection.naturalAffixes.map((affix) => `${affix.role} ${affix.affixId} · tier ${affix.tier} · ${textNumber(affix.value)}`).join(' · ')
         : 'None recorded'],
-      ['Crafted modifier', modifierText(inspection.craftedModifier)],
-      ['Drawback', modifierText(inspection.drawback)],
+      ['Pureforged modifier', craftedModifierText(inspection.craftedModifier)],
+      ['Drawback', drawbackText(inspection.drawback)],
       ['Upgrade state', String(inspection.upgrade)],
       ['Sockets', inspection.sockets.join(' · ') || 'None recorded'],
       ['Construction', row.entry.instance.construction],
@@ -744,7 +752,7 @@ export class InventoryPanelController {
       item.dataset.condition = conditionData(effect.condition);
       item.append(
         this.#node('span', '', effect.label),
-        this.#node('span', '', effect.source),
+        this.#node('span', '', effect.source === 'crafted' ? 'Pureforged' : effect.source),
         this.#node('span', '', conditionWording(effect.condition)),
         this.#node('b', '', textNumber(effect.value, effect.percent)),
       );

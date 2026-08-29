@@ -318,10 +318,21 @@ function capturePresentationErrors(source: string, cssSource = indexSource): str
   }
   if (compose.includes('view.preview')) errors.push('capture-full-authority-model');
 
+  const outcomeCopy = section(
+    source,
+    'function captureOutcomeCopy(',
+    '\nasync function runCaptureCardAction(',
+  );
+  if (!outcomeCopy.includes('const charter = result.charterBioscanBanked')
+    || !outcomeCopy.includes("? ' Charter: first life discovery on this alien world banked.' : '';")
+    || !outcomeCopy.includes('${discovery}${reward}${charter} 1 Biosphere Yield spent;')) {
+    errors.push('capture-charter-copy');
+  }
+
   const runner = section(
     source,
     'async function runCaptureCardAction(',
-    '\nfunction engineeringOutcomeConverges(',
+    '\nfunction arc6CombatOutcomeCopy(',
   );
   const commit = runner.indexOf('await commitArc4CaptureAction(request.verb, presentationFence);');
   const copy = runner.indexOf('const copy = captureOutcomeCopy(outcome);');
@@ -339,6 +350,16 @@ function capturePresentationErrors(source: string, cssSource = indexSource): str
     || !runner.includes("arc4OwnershipProtection = 'committed-publication-reload';")
     || !runner.includes('scheduleF4AuthorityConvergenceReload(')) {
     errors.push('capture-presentation-convergence');
+  }
+  const committedUi = runner.indexOf("if (outcome.kind === 'committed' && outcome.result !== null) {");
+  const chipRefresh = runner.indexOf('updateChips();', committedUi);
+  const charterRefresh = runner.indexOf("if (openPanelId() === 'ch') fillCharters();", committedUi);
+  const charterEvent = runner.indexOf("gameEvent('bioscan', { worldKey: outcome.result.worldKey });", committedUi);
+  const codexRefresh = runner.indexOf("if (openPanelId() === 'codex') fillCodex(codexFilter);", committedUi);
+  if (!(committedUi >= 0 && chipRefresh > committedUi && charterRefresh > chipRefresh
+      && charterEvent > charterRefresh && codexRefresh > charterEvent)
+    || !runner.includes('if (outcome.result.charterBioscanBanked) {')) {
+    errors.push('capture-charter-presentation');
   }
 
   if (!source.includes("'[data-capture-action]',")) errors.push('capture-read-only-selector');
@@ -372,6 +393,17 @@ function capturePresentationErrors(source: string, cssSource = indexSource): str
     'async function commitArc4CaptureAction(',
     '\nfunction captureActivePlayCountdown(',
   );
+  const verifiedCapture = writer.indexOf('const verified = verifyArc4CommittedCaptureV1({');
+  const publishedCapture = writer.indexOf('publishArc4CaptureFields(save, transaction.state);');
+  const resultStart = writer.indexOf('const result = Object.freeze({', publishedCapture);
+  const resultBioscan = writer.indexOf(
+    'charterBioscanBanked: verified.charterBioscanBanked,',
+    resultStart,
+  );
+  if (!(verifiedCapture >= 0 && publishedCapture > verifiedCapture
+      && resultStart > publishedCapture && resultBioscan > resultStart)) {
+    errors.push('capture-charter-publication');
+  }
   const staleFault = writer.indexOf("if (faultInjection === 'stale-authority')");
   const staleFaultEnd = writer.indexOf('    let attempt:', staleFault);
   const staleFaultBody = staleFault >= 0 && staleFaultEnd > staleFault
@@ -409,9 +441,14 @@ function capturePresentationErrors(source: string, cssSource = indexSource): str
   }
 
   const captureCss = section(cssSource, '    [data-capture-card-body] {', '\n    /* On a landed phone');
+  const captureActionCss = section(
+    captureCss,
+    '    .capture-card-action {',
+    '\n    .capture-card-action:hover:not(:disabled)',
+  );
   if (captureCss.length === 0
-    || !captureCss.includes('.capture-card-action {')
-    || !captureCss.includes('min-height: 44px;')
+    || captureActionCss.length === 0
+    || !captureActionCss.includes('min-height: 44px;')
     || !captureCss.includes('.capture-card-action:focus-visible')
     || !captureCss.includes('.capture-card-action:disabled')
     || !captureCss.includes('@media (max-width: 390px)')) {
@@ -509,9 +546,12 @@ function captureReconstructionErrors(source: string): string[] {
   }
 
   const presentCall = surveyAction.indexOf('if (!presentPlanetSurvey(p, star, supplied)) return false;');
+  const address = surveyAction.indexOf('const address = activeCardWorldAddress();');
   const audio = surveyAction.indexOf('playSurveyPing();');
   const event = surveyAction.indexOf("gameEvent('survey', { planetSeed: p.seed });");
-  if (!(presentCall >= 0 && audio > presentCall && event > audio)) {
+  const progression = surveyAction.indexOf('void settleArc9Survey(address);');
+  if (!(presentCall >= 0 && address > presentCall && audio > address
+    && event > audio && progression > event)) {
     errors.push('capture-normal-survey-effects');
   }
   return [...new Set(errors)];
@@ -542,7 +582,7 @@ function surfaceSurveyExitErrors(source: string): string[] {
   const goUp = section(
     source,
     'function goUp(): void {',
-    "\n\n/* the game's ZOOM-DRIVEN",
+    '\nfunction publishWormholeTraversal(',
   );
   const pendingFence = section(
     source,
@@ -551,7 +591,7 @@ function surfaceSurveyExitErrors(source: string): string[] {
   );
   const closeControl = section(
     source,
-    "card.addEventListener('click', (e) => {",
+    "card.addEventListener('click', async (e) => {",
     '\n  const act =',
   );
   if ([hide, closeAndAscend, contextMenu, keyboard, goUp, pendingFence, closeControl]
@@ -674,7 +714,7 @@ function runSurfaceSurveyExitFromSource(
   const goUp = section(
     source,
     'function goUp(): void {',
-    "\n\n/* the game's ZOOM-DRIVEN",
+    '\nfunction publishWormholeTraversal(',
   );
   const pendingFence = section(
     source,
@@ -724,6 +764,7 @@ function runSurfaceSurveyExitFromSource(
      let surveyFocusReturn = canvas;
      const queueMicrotask = (callback) => { trace.push('focus-queued'); microtasks.push(callback); };
      const syncSurfaceChromeBottom = () => {};
+     const releaseApproachEcology = () => {};
      let productActionInFlight = pending;
      const toast = () => { trace.push('blocked'); };
      let nav = {
@@ -882,15 +923,17 @@ function runNormalSurveyFromSource(source: string, presentationAccepted: boolean
     'function surveyPlanet(p, star, supplied) {',
   );
   if (javascript === surveyAction) throw new Error('normal Survey signature was not transformed');
-  const trace = { present: 0, audio: 0, events: [] as unknown[] };
+  const trace = { present: 0, audio: 0, events: [] as unknown[], settlements: 0 };
   const evaluator = new Function(
-    'presentPlanetSurvey', 'playSurveyPing', 'gameEvent',
+    'presentPlanetSurvey', 'activeCardWorldAddress', 'playSurveyPing', 'gameEvent', 'settleArc9Survey',
     `${javascript}; return surveyPlanet({ seed: 68 }, { key: 'star' }, { key: 'planet' });`,
   ) as (...args: unknown[]) => boolean;
   const result = evaluator(
     () => { trace.present += 1; return presentationAccepted; },
+    () => ({ key: 'world' }),
     () => { trace.audio += 1; },
     (...args: unknown[]) => { trace.events.push(args); },
+    () => { trace.settlements += 1; },
   );
   return { result, trace };
 }
@@ -980,7 +1023,7 @@ describe('Arc 4 main authority wiring', () => {
     const unfencedPendingExit = replaceInSectionExact(
       mainSource,
       'function goUp(): void {',
-      "\n\n/* the game's ZOOM-DRIVEN",
+      '\nfunction publishWormholeTraversal(',
       '  if (blockRouteChangeWhileProductAction()) return;',
       '  /* pending product-action fence omitted */',
     );
@@ -1040,7 +1083,7 @@ describe('Arc 4 main authority wiring', () => {
 
     const closeControlAscends = replaceInSectionExact(
       mainSource,
-      "card.addEventListener('click', (e) => {",
+      "card.addEventListener('click', async (e) => {",
       '\n  const act =',
       '    hideSurvey(true);',
       '    hideSurvey(true);\n    goUp();',
@@ -1251,6 +1294,40 @@ describe('Arc 4 main authority wiring', () => {
     expect(missingSettlement).not.toBe(mainSource);
     expect(capturePresentationErrors(missingSettlement)).toContain('capture-settle-before-refresh');
 
+    const missingCharterCopy = mainSource.replace(
+      "    const charter = result.charterBioscanBanked\n      ? ' Charter: first life discovery on this alien world banked.' : '';",
+      "    const charter = '';",
+    );
+    expect(missingCharterCopy).not.toBe(mainSource);
+    expect(capturePresentationErrors(missingCharterCopy)).toContain('capture-charter-copy');
+
+    const unverifiedCharterResult = mainSource.replace(
+      '        charterBioscanBanked: verified.charterBioscanBanked,',
+      '        charterBioscanBanked: false,',
+    );
+    expect(unverifiedCharterResult).not.toBe(mainSource);
+    expect(capturePresentationErrors(unverifiedCharterResult))
+      .toContain('capture-charter-publication');
+
+    const missingCharterRefresh = replaceInSectionExact(
+      mainSource,
+      'async function runCaptureCardAction(',
+      '\nfunction arc6CombatOutcomeCopy(',
+      "      if (openPanelId() === 'ch') fillCharters();",
+      '      /* open Charter panel left stale */',
+    );
+    expect(missingCharterRefresh).not.toBe(mainSource);
+    expect(capturePresentationErrors(missingCharterRefresh))
+      .toContain('capture-charter-presentation');
+
+    const unconditionalBioscanEvent = mainSource.replace(
+      '      if (outcome.result.charterBioscanBanked) {',
+      '      if (true) {',
+    );
+    expect(unconditionalBioscanEvent).not.toBe(mainSource);
+    expect(capturePresentationErrors(unconditionalBioscanEvent))
+      .toContain('capture-charter-presentation');
+
     const staleVisiblePreview = mainSource.replace(
       '  if (!planetsideMatchesFullRoster(roster)) fillPlanetside(nav, roster);',
       '  /* visible preview left on the prior ecology identity */',
@@ -1279,7 +1356,10 @@ describe('Arc 4 main authority wiring', () => {
     expect(lostBodyLineage).not.toBe(mainSource);
     expect(capturePresentationErrors(lostBodyLineage)).toContain('capture-close-focus-lineage');
 
-    const independentlyArmedFault = mainSource.replace(
+    const independentlyArmedFault = replaceInSectionExact(
+      mainSource,
+      '__smokeRejectNextArc4ActionStorage: () => {',
+      '\n      __smokeStaleNextArc4ActionAuthority',
       'if (productActionCoordinator.busy || productActionFaultInjectionArmed()) return false;',
       'if (productActionCoordinator.busy || smokeRejectNextArc4ActionStorage) return false;',
     );
@@ -1551,10 +1631,11 @@ describe('Arc 4 main authority wiring', () => {
       present: 1,
       audio: 1,
       events: [['survey', { planetSeed: 68 }]],
+      settlements: 1,
     });
     const rejected = runNormalSurveyFromSource(mainSource, false);
     expect(rejected.result).toBe(false);
-    expect(rejected.trace).toEqual({ present: 1, audio: 0, events: [] });
+    expect(rejected.trace).toEqual({ present: 1, audio: 0, events: [], settlements: 0 });
 
     const missingAudio = replaceInSectionExact(
       mainSource,

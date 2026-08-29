@@ -138,10 +138,15 @@ const ARC4_PERTAR_CANDIDATES = Object.freeze([
 const ARC4_PERTAR_SYSTEM_ITEM_IDS = Object.freeze([
   'jumpdrive', 'array', 'igdrive', 'autoext', 'cscoop',
 ]);
+const ARC4_PERTAR_CHARTER_CHAPTER = 1;
+const ARC4_PERTAR_BIOSCAN_GOAL_ID = 'c2-scan';
+const ARC4_PERTAR_BIOSCAN_GOAL_CAP = 2;
+const ARC4_PERTAR_CHARTER_COPY =
+  'Charter: first life discovery on this alien world banked.';
 const ARC4_PERTAR_SOURCE_FACTS = Object.freeze({
   arc2LoadoutFingerprint: 'el1:2644:1286ebff',
   engineeringCapabilityFingerprint: 'ec1:430:ae5789c7',
-  legacyAscChapter: 2,
+  legacyAscChapter: ARC4_PERTAR_CHARTER_CHAPTER,
   equippedInstanceIds: Object.freeze([
     'gear1|loot1|legacy-migration|save-v2-user|items-v1|||migration%3Av4-v5|11000',
     'gear1|loot1|legacy-migration|save-v2-user|items-v1|||migration%3Av4-v5|14000',
@@ -2176,6 +2181,37 @@ const fnv1a32 = (text) => {
   return hash >>> 0;
 };
 
+const ARC2_EXCEPTIONAL_CRAFT_EFFECTS_V1 = Object.freeze({
+  'exceptional-v1:yield': Object.freeze({ key: 'yield', min: 0.10, max: 0.35 }),
+  'exceptional-v1:strike': Object.freeze({ key: 'strike', min: 0.02, max: 0.06 }),
+  'exceptional-v1:contact': Object.freeze({ key: 'contact', min: 4, max: 12 }),
+});
+
+const inspectArc2ExceptionalCraftModifier = (instance) => {
+  const value = instance?.craftedModifier;
+  const receiptId = instance?.provenance?.receiptId;
+  const sourceActionId = instance?.provenance?.sourceActionId;
+  const expectedSourceActionId = typeof instance?.baseId === 'string'
+    && typeof receiptId === 'string'
+    ? `loot1|craft|legacy-v1.8.9-items|${encodeURIComponent(`recipe:${instance.baseId}`)}|||${encodeURIComponent(receiptId)}`
+    : null;
+  if (instance?.construction !== 'generated'
+    || !exactKeys(instance?.provenance, ['kind', 'sourceActionId', 'receiptId'])
+    || instance.provenance.kind !== 'craft'
+    || !/^receipt:(0|[1-9][0-9]{0,9})$/u.test(receiptId ?? '')
+    || sourceActionId !== expectedSourceActionId
+    || !exactKeys(instance?.generation, ['seed', 'ordinal'])
+    || !uint32(instance.generation.seed)
+    || !counter(instance.generation.ordinal) || instance.generation.ordinal > 65_535
+    || instance.instanceId !== `gear1|${sourceActionId}|${instance.generation.ordinal}`
+    || !exactKeys(value, ['affixId', 'tier', 'value'])
+    || !Object.prototype.hasOwnProperty.call(ARC2_EXCEPTIONAL_CRAFT_EFFECTS_V1, value.affixId)
+    || !Number.isInteger(value.tier) || value.tier !== instance.baseTier
+    || typeof value.value !== 'number' || !Number.isFinite(value.value)) return null;
+  const definition = ARC2_EXCEPTIONAL_CRAFT_EFFECTS_V1[value.affixId];
+  return value.value >= definition.min && value.value <= definition.max ? definition : null;
+};
+
 const inspectPertarArc2Capability = (evidence) => {
   const carrierValue = evidence?.inventoryRow?.extensions?.['arc2.loot'];
   const source = parseJson(carrierValue?.json);
@@ -2194,16 +2230,24 @@ const inspectPertarArc2Capability = (evidence) => {
   const entries = new Map();
   for (const entry of inventory.entries) {
     const instance = entry?.instance;
+    const hasCraftedModifier = Object.prototype.hasOwnProperty.call(instance ?? {}, 'craftedModifier');
+    const hasDrawback = Object.prototype.hasOwnProperty.call(instance ?? {}, 'drawback');
     if (!exactKeys(entry, ['instance', 'favorite', 'locked'])
       || typeof entry.favorite !== 'boolean' || typeof entry.locked !== 'boolean'
       || !exactKeys(instance, [
         'schema', 'tableVersion', 'construction', 'instanceId', 'baseId', 'baseName',
         'slot', 'baseTier', 'itemLevel', 'quality', 'rarityTier', 'rarity', 'tags',
-        'baseEffects', 'implicits', 'naturalAffixes', 'upgrade', 'sockets',
+        'baseEffects', 'implicits', 'naturalAffixes',
+        ...(hasCraftedModifier ? ['craftedModifier'] : []),
+        ...(hasDrawback ? ['drawback'] : []),
+        'upgrade', 'sockets',
         'generation', 'legacyAffix', 'provenance',
       ]) || instance.schema !== 1 || instance.tableVersion !== 1
       || !boundedText(instance.instanceId, 512) || entries.has(instance.instanceId)
-      || !record(instance.baseEffects) || !Array.isArray(instance.naturalAffixes)) return null;
+      || !record(instance.baseEffects) || !Array.isArray(instance.naturalAffixes)
+      || hasDrawback
+      || (hasCraftedModifier
+        && inspectArc2ExceptionalCraftModifier(instance) === null)) return null;
     entries.set(instance.instanceId, instance);
   }
   const sourceParts = [];
@@ -2240,6 +2284,10 @@ const inspectPertarArc2Capability = (evidence) => {
     if (instance.legacyAffix !== null
       && (!exactKeys(instance.legacyAffix, ['affixId', 'value', 'forBaseId'])
         || !addContact(instance.legacyAffix.affixId, instance.legacyAffix.value))) return null;
+    if (instance.craftedModifier !== undefined) {
+      const definition = inspectArc2ExceptionalCraftModifier(instance);
+      if (definition === null || !addContact(definition.key, instance.craftedModifier.value)) return null;
+    }
   }
   const stackableIds = new Set();
   const systemIds = [];
@@ -2677,14 +2725,23 @@ export const assessArc4CapturePrecondition = ({
 } = {}) => {
   const capture = captureStateOf(state);
   const runtime = persistenceStateOf(state)?.runtime;
+  const durableAssessment = assessArc4DurableEvidence(raw);
+  const charter = durableCharterProjection(raw, durableAssessment);
   const expectedStarKey = fixture.worldKey.slice(0, fixture.worldKey.lastIndexOf('|p:'));
   const expectedGalaxyKey = fixture.worldKey.slice(0, fixture.worldKey.indexOf('|s:'));
   const readyRows = ui?.rows?.filter((row) => row?.status === 'ready') ?? [];
   const checks = {
     captured: !!raw && !!state && !!ui,
     routeSettled: routeError === null,
-    durableEvidence: arc4DurableEvidenceComplete(raw),
+    durableEvidence: durableAssessment.ok,
     fixtureIdentity: same(fixture, ARC4_PERTAR_FIXTURE),
+    charterReady: charter?.ascCh === ARC4_PERTAR_CHARTER_CHAPTER
+      && (charter.ascProg[ARC4_PERTAR_BIOSCAN_GOAL_ID] ?? 0) === 0
+      && runtimeCharterMatches(state, charter)
+      && !durableAssessment.ownership?.mirror?.discoveries?.some((row) => (
+        row?.provenance?.kind === 'world'
+        && row.provenance.worldKey === ARC4_PERTAR_FIXTURE.worldKey
+      )),
     route: state?.mode === 'surface' && state?.gal === fixture.galaxy.seed
       && state?.galX === fixture.galaxy.x && state?.galY === fixture.galaxy.y
       && state?.star === fixture.publicStar.seed
@@ -2748,12 +2805,16 @@ export const assessArc4CapturePendingNoOptimism = ({
   const beforeCapture = captureStateOf(beforeState);
   const duringCapture = captureStateOf(duringState);
   const coordinator = duringCapture?.actionCoordinator;
+  const beforeAssessment = assessArc4DurableEvidence(beforeRaw);
+  const beforeCharter = durableCharterProjection(beforeRaw, beforeAssessment);
   const checks = {
     captured: !!beforeRaw && !!duringRaw && !!beforeState && !!duringState
       && !!beforeUi && !!duringUi && !!interaction,
     durableEvidence: arc4DurableEvidenceComplete(beforeRaw)
       && arc4DurableEvidenceComplete(duringRaw),
     durableStable: same(beforeRaw, duringRaw),
+    charterStable: runtimeCharterMatches(beforeState, beforeCharter)
+      && runtimeCharterMatches(duringState, beforeCharter),
     uiComplete: arc4CaptureUiSnapshotComplete(beforeUi)
       && arc4CaptureUiSnapshotComplete(duringUi),
     activePlayProjection: exactActivePlayProjection(beforeRaw, beforeUi)
@@ -2895,7 +2956,9 @@ const arc5CarriersValidatedBy = (evidence, durableAssessment) => {
 };
 
 const unrelatedDurableProjection = (
-  evidence, durableAssessment, { omitCompatibility = false } = {},
+  evidence, durableAssessment, {
+    omitCompatibility = false, omitCharter = false,
+  } = {},
 ) => {
   const excludeArc5Carriers = arc5CarriersValidatedBy(evidence, durableAssessment);
   return {
@@ -2903,6 +2966,7 @@ const unrelatedDurableProjection = (
       const source = evidence?.[row];
       const ownedData = segment === 'player'
         ? ['essence', 'essenceEarned', 'names', 'at', 'conq',
+          ...(omitCharter ? ['asc', 'ascp'] : []),
           ...(omitCompatibility ? ['ever', 'br'] : [])]
         : segment === 'catalog' ? ['codex', 'scout']
           : segment === 'inventory' ? ['bx', 'minedw'] : [];
@@ -2921,6 +2985,7 @@ const unrelatedDurableProjection = (
     })),
     legacy: omitted(evidence?.legacy, [
       'codex', 'names', 'bx', 'scout', 'essence', 'essenceEarned', 'at', 'conq', 'minedw',
+      ...(omitCharter ? ['asc', 'ascp'] : []),
       ...(omitCompatibility ? ['ever', 'br'] : []),
     ]),
   };
@@ -3016,6 +3081,77 @@ const priorRowsPreserved = (beforeRows, afterRows, key) => {
     && [...before].every(([identity, row]) => same(after.get(identity), row));
 };
 
+const exactCharterProgress = (value) => record(value)
+  && Object.entries(value).every(([goalId, countValue]) => (
+    goalId.length > 0 && goalId.length < 24 && counter(countValue)
+      && countValue <= 999
+  ));
+
+const durableCharterProjection = (evidence, assessment) => {
+  const legacy = evidence?.legacy;
+  const split = evidence?.playerRow?.data;
+  if (assessment?.checks?.legacyRaw !== true
+    || assessment?.checks?.playerRow !== true
+    || assessment?.checks?.v4Envelope !== true
+    || !counter(legacy?.asc) || legacy.asc > 3
+    || !exactCharterProgress(legacy?.ascp)
+    || split?.asc !== legacy.asc || !same(split?.ascp, legacy.ascp)) return null;
+  return Object.freeze({
+    ascCh: legacy.asc,
+    ascProg: Object.freeze({ ...legacy.ascp }),
+  });
+};
+
+const runtimeCharterMatches = (state, projection) => projection !== null
+  && state?.save?.ascCh === projection.ascCh
+  && same(state?.save?.ascProg, projection.ascProg);
+
+/** Source-independent oracle for the one Charter field pair Arc 4 now owns.
+ * The exact Pertar fixture starts in zero-based Chapter 2 with a real Jump
+ * Drive. Its other Chapter-2 goals remain incomplete, so a successful first
+ * observation may change only c2-scan; chapter advancement would be a second,
+ * unproved outcome. Later successes on this world and every miss are exact
+ * no-ops for Charter state. */
+const exactArc4CharterTransition = ({
+  before, after, beforeAssessment, afterAssessment, expected,
+  beforeState = null, afterState = null,
+} = {}) => {
+  const beforeCharter = durableCharterProjection(before, beforeAssessment);
+  const afterCharter = durableCharterProjection(after, afterAssessment);
+  const beforeDiscoveries = beforeAssessment?.ownership?.mirror?.discoveries;
+  const capability = exactPertarCapability(before);
+  const ship = projectArc4PertarShipSource({
+    systemIds: capability?.systemIds,
+    ascChapter: beforeCharter?.ascCh,
+  });
+  const exactEligibleSource = beforeCharter?.ascCh === ARC4_PERTAR_CHARTER_CHAPTER
+    && exactPertarWorldAddress(ARC4_PERTAR_FIXTURE.worldAddress)
+    && ARC4_PERTAR_FIXTURE.publicStar.seed !== 424_242
+    && capability !== null && arc4PertarRouteAllowedFromShip(ship);
+  const priorBioscans = beforeCharter?.ascProg?.[ARC4_PERTAR_BIOSCAN_GOAL_ID] ?? 0;
+  const priorWorldObservation = Array.isArray(beforeDiscoveries)
+    && beforeDiscoveries.some((row) => row?.provenance?.kind === 'world'
+      && row.provenance.worldKey === ARC4_PERTAR_FIXTURE.worldKey);
+  const banked = exactEligibleSource && expected?.hit === true
+    && priorWorldObservation === false && counter(priorBioscans)
+    && priorBioscans < ARC4_PERTAR_BIOSCAN_GOAL_CAP;
+  const expectedProgress = beforeCharter === null
+    ? null : { ...beforeCharter.ascProg };
+  if (expectedProgress !== null && banked) {
+    expectedProgress[ARC4_PERTAR_BIOSCAN_GOAL_ID] = priorBioscans + 1;
+  }
+  const runtimeParity = (beforeState === null
+    || runtimeCharterMatches(beforeState, beforeCharter))
+    && (afterState === null || runtimeCharterMatches(afterState, afterCharter));
+  const ok = beforeCharter !== null && afterCharter !== null
+    && Array.isArray(beforeDiscoveries)
+    && typeof expected?.hit === 'boolean'
+    && afterCharter.ascCh === beforeCharter.ascCh
+    && same(afterCharter.ascProg, expectedProgress)
+    && runtimeParity;
+  return Object.freeze({ ok, banked, before: beforeCharter, after: afterCharter });
+};
+
 const expectedProgressTransition = (beforeMirror, afterMirror, expected, hit) => {
   const beforeRows = indexedRows(beforeMirror?.biosphereProgress, 'worldKey');
   const afterRows = indexedRows(afterMirror?.biosphereProgress, 'worldKey');
@@ -3046,6 +3182,7 @@ const expectedProgressTransition = (beforeMirror, afterMirror, expected, hit) =>
 
 const exactAppCaptureResult = (
   state, expected, committedRevision, committedOwnershipRevision,
+  charterBioscanBanked,
 ) => {
   const capture = captureStateOf(state);
   const ownershipV2 = ownershipV2StateOf(state);
@@ -3057,7 +3194,7 @@ const exactAppCaptureResult = (
       'hit', 'speciesId', 'speciesName', 'kingdom', 'sourceOrdinal', 'tier',
       'chance', 'worldKey', 'ecologyEpoch', 'fullRosterFingerprint',
       'firstForSpecies', 'spent', 'remainingAfter', 'ownedRowId',
-      'stardustReward', 'revision', 'ownershipRevision',
+      'stardustReward', 'charterBioscanBanked', 'revision', 'ownershipRevision',
     ])
     && result.hit === expected.hit
     && (!expected.speciesId || result?.speciesId === expected.speciesId)
@@ -3073,6 +3210,8 @@ const exactAppCaptureResult = (
     && result?.firstForSpecies === expected.firstForSpecies
     && result?.spent === 1 && result?.remainingAfter === expected.remainingAfter
     && result?.stardustReward === expected.stardustReward
+    && typeof charterBioscanBanked === 'boolean'
+    && result?.charterBioscanBanked === charterBioscanBanked
     && counter(committedRevision) && result?.revision === committedRevision
     && counter(committedOwnershipRevision)
     && result?.ownershipRevision === committedOwnershipRevision
@@ -3125,8 +3264,12 @@ const captureCore = ({ before, after, beforeState, afterState, afterUi, interact
   const v4OwnedCompatibility = exactArc4V4ActionTransition(
     beforeAssessment, afterAssessment, expected,
   );
+  const charter = exactArc4CharterTransition({
+    before, after, beforeAssessment, afterAssessment, expected,
+    beforeState, afterState,
+  });
   return {
-    beforeAssessment, afterAssessment, beforeMirror, afterMirror, receipt,
+    beforeAssessment, afterAssessment, beforeMirror, afterMirror, receipt, charter,
     baseChecks: {
       captured: !!before && !!after && !!beforeState && !!afterState && !!afterUi
         && !!interaction && !!expected,
@@ -3139,13 +3282,19 @@ const captureCore = ({ before, after, beforeState, afterState, afterUi, interact
       f4Transition: exactF4CaptureTransition(before, after),
       receipt: receipt?.ok === true,
       v4OwnedCompatibility,
+      charterBioscan: charter.ok,
       unrelatedDurable: same(
-        unrelatedDurableProjection(before, beforeAssessment, { omitCompatibility: true }),
-        unrelatedDurableProjection(after, afterAssessment, { omitCompatibility: true }),
+        unrelatedDurableProjection(before, beforeAssessment, {
+          omitCompatibility: true, omitCharter: true,
+        }),
+        unrelatedDurableProjection(after, afterAssessment, {
+          omitCompatibility: true, omitCharter: true,
+        }),
       ),
       interaction: actionInteraction(interaction, expected),
       appResult: exactAppCaptureResult(
         afterState, expected, after?.revision, after?.captureRevision,
+        charter.banked,
       ),
       activePlayProjection: exactActivePlayProjection(after, afterUi),
       runtimeCaptureOrder: exactRuntimeAtOrAfterRaw(before, beforeState)
@@ -3196,7 +3345,8 @@ export const assessArc4CommittedHit = (bundle = {}) => {
     ...core.baseChecks,
     fixtureOutcome: same(expected, ARC4_PERTAR_FIXTURE.actions.firstHit)
       && expected?.hiddenBeyondPreview === true
-      && expected.sourceOrdinal >= ARC4_PERTAR_FIXTURE.previewCount,
+      && expected.sourceOrdinal >= ARC4_PERTAR_FIXTURE.previewCount
+      && core.charter.banked === true,
     priorOwnershipPreserved: priorRowsPreserved(before?.catalogSpecies, after?.catalogSpecies, 'speciesId')
       && priorRowsPreserved(before?.discoveries, after?.discoveries, 'recordId')
       && priorRowsPreserved(before?.creatures, after?.creatures, 'creatureId')
@@ -3241,7 +3391,8 @@ export const assessArc4CommittedHit = (bundle = {}) => {
       && bundle.afterUi?.status?.text?.includes(result?.speciesName)
       && bundle.afterUi?.budget?.remaining === expected.remainingAfter
       && /new compendium page/i.test(bundle.afterUi?.status?.text ?? '')
-      && /\+2 stardust/i.test(bundle.afterUi?.status?.text ?? ''),
+      && /\+2 stardust/i.test(bundle.afterUi?.status?.text ?? '')
+      && bundle.afterUi?.status?.text?.includes(ARC4_PERTAR_CHARTER_COPY),
   };
   return assessment('Arc 4 committed hit', checks, {
     receipt: core.receipt,
@@ -3261,7 +3412,8 @@ export const assessArc4CommittedMiss = (bundle = {}) => {
   const afterCompatibility = core.afterAssessment.v4OwnedCompatibility?.legacy;
   const checks = {
     ...core.baseChecks,
-    fixtureOutcome: same(expected, ARC4_PERTAR_FIXTURE.actions.secondMiss),
+    fixtureOutcome: same(expected, ARC4_PERTAR_FIXTURE.actions.secondMiss)
+      && core.charter.banked === false,
     noOwnershipGrant: same(before?.catalogSpecies, after?.catalogSpecies)
       && same(before?.discoveries, after?.discoveries)
       && same(before?.creatures, after?.creatures)
@@ -3275,7 +3427,8 @@ export const assessArc4CommittedMiss = (bundle = {}) => {
       && bundle.afterUi?.status?.text?.includes(result?.speciesName)
       && bundle.afterUi?.budget?.remaining === expected.remainingAfter
       && /no page, creature, specimen, or stardust was added/i
-        .test(bundle.afterUi?.status?.text ?? ''),
+        .test(bundle.afterUi?.status?.text ?? '')
+      && !bundle.afterUi?.status?.text?.includes(ARC4_PERTAR_CHARTER_COPY),
   };
   return assessment('Arc 4 committed miss', checks, {
     receipt: core.receipt,
@@ -3377,6 +3530,10 @@ export const assessArc4BurnStep = ({
   const v4OwnedCompatibility = exactArc4V4ActionTransition(
     beforeAssessment, afterAssessment, expected,
   );
+  const charter = exactArc4CharterTransition({
+    before, after, beforeAssessment, afterAssessment, expected,
+    afterState,
+  });
   const checks = {
     captured: !!before && !!after && !!beforeUi && !!outcome && !!afterState
       && ARC4_CAPTURE_VERBS.includes(verb) && counter(expectedUsed),
@@ -3397,6 +3554,7 @@ export const assessArc4BurnStep = ({
       && same(outcome?.result, captureStateOf(afterState)?.lastResult)
       && exactAppCaptureResult(
         afterState, expected, after?.revision, after?.captureRevision,
+        charter.banked,
       ),
     oneRevision: after?.revision === before?.revision + 1
       && after?.captureRevision === before?.captureRevision + 1
@@ -3407,9 +3565,14 @@ export const assessArc4BurnStep = ({
       beforeMirror, afterMirror, expected, oracle?.event,
     ),
     v4OwnedCompatibility,
+    charterBioscan: charter.ok,
     unrelatedDurable: same(
-      unrelatedDurableProjection(before, beforeAssessment, { omitCompatibility: true }),
-      unrelatedDurableProjection(after, afterAssessment, { omitCompatibility: true }),
+      unrelatedDurableProjection(before, beforeAssessment, {
+        omitCompatibility: true, omitCharter: true,
+      }),
+      unrelatedDurableProjection(after, afterAssessment, {
+        omitCompatibility: true, omitCharter: true,
+      }),
     ),
     used: (beforeProgress?.used ?? 0) === expectedUsed - 1
       && afterProgress?.used === expectedUsed,
@@ -3460,6 +3623,8 @@ export const assessArc4StorageRefusal = ({
   const capture = captureStateOf(afterState);
   const coordinator = capture?.actionCoordinator;
   const fault = coordinator?.lastFault;
+  const beforeAssessment = assessArc4DurableEvidence(before);
+  const beforeCharter = durableCharterProjection(before, beforeAssessment);
   const checks = {
     captured: Array.isArray(captureErrors) && captureErrors.length === 0
       && !!before && !!after && !!beforeState && !!afterState && !!beforeUi
@@ -3468,6 +3633,8 @@ export const assessArc4StorageRefusal = ({
     durableEvidence: arc4DurableEvidenceComplete(before)
       && arc4DurableEvidenceComplete(after),
     exactDurableStable: same(before, after),
+    charterStable: runtimeCharterMatches(beforeState, beforeCharter)
+      && runtimeCharterMatches(afterState, beforeCharter),
     liveProjectionStable: same(
       omitted(stableCaptureProjection(beforeState), ['lastResult']),
       omitted(stableCaptureProjection(afterState), ['lastResult']),
@@ -3612,6 +3779,8 @@ const alignedReload = ({
 }) => {
   const runtime = persistenceStateOf(reloadedState)?.runtime;
   const capture = captureStateOf(reloadedState);
+  const reloadedAssessment = assessArc4DurableEvidence(reloaded);
+  const reloadedCharter = durableCharterProjection(reloaded, reloadedAssessment);
   return typeof token === 'string' && token !== priorToken
     && arc4DurableEvidenceComplete(committed)
     && arc4DurableEvidenceComplete(reloaded)
@@ -3640,6 +3809,7 @@ const alignedReload = ({
     && capture?.card?.pendingWork === 0
     && capture?.card?.convergenceLatched === false
     && capture?.card?.lastRequest === null && capture?.card?.lastOutcome === null
+    && runtimeCharterMatches(reloadedState, reloadedCharter)
     && arc5OwnershipV2RuntimeExact(reloaded, reloadedState, {
       bootstrapOutcome: 'already-aligned',
     })
@@ -3669,6 +3839,8 @@ export const assessArc4StaleConvergence = ({
   const oldCapture = captureStateOf(oldState);
   const oldCoordinator = oldCapture?.actionCoordinator;
   const oldUiCoordinator = captureStateOf(oldUi?.captureState)?.actionCoordinator;
+  const beforeAssessment = assessArc4DurableEvidence(before);
+  const beforeCharter = durableCharterProjection(before, beforeAssessment);
   const checks = {
     captured: !!before && !!committed && !!beforeState && !!oldState && !!oldUi
       && !!reloaded && !!reloadedState && !!reloadedUi
@@ -3690,6 +3862,9 @@ export const assessArc4StaleConvergence = ({
       && exactRowsAndAuthorityBytes(before, committed),
     noCaptureMutation: committed?.captureRevision === before?.captureRevision
       && same(committed?.captureState, before?.captureState),
+    charterPreserved: runtimeCharterMatches(beforeState, beforeCharter)
+      && runtimeCharterMatches(oldState, beforeCharter)
+      && runtimeCharterMatches(reloadedState, beforeCharter),
     ownershipV2Preserved: arc5OwnershipV2RuntimeExact(before, beforeState, {
       bootstrapOutcome: 'capture-committed-published',
     }) && arc5OwnershipV2RuntimeExact(before, oldState, {
@@ -3751,6 +3926,9 @@ const exactRawCaptureOutcome = (before, after, expected) => {
   const v4OwnedCompatibility = exactArc4V4ActionTransition(
     beforeAssessment, afterAssessment, expected,
   );
+  const charter = exactArc4CharterTransition({
+    before, after, beforeAssessment, afterAssessment, expected,
+  });
   const newDiscoveries = afterMirror?.discoveries?.filter((row) => (
     !beforeMirror?.discoveries?.some((prior) => prior.recordId === row.recordId)
   )) ?? [];
@@ -3777,9 +3955,14 @@ const exactRawCaptureOutcome = (before, after, expected) => {
     && exactF4CaptureTransition(before, after)
     && receipt?.ok === true
     && v4OwnedCompatibility
+    && charter.ok && charter.banked === true
     && same(
-      unrelatedDurableProjection(before, beforeAssessment, { omitCompatibility: true }),
-      unrelatedDurableProjection(after, afterAssessment, { omitCompatibility: true }),
+      unrelatedDurableProjection(before, beforeAssessment, {
+        omitCompatibility: true, omitCharter: true,
+      }),
+      unrelatedDurableProjection(after, afterAssessment, {
+        omitCompatibility: true, omitCharter: true,
+      }),
     )
     && expectedProgressTransition(beforeMirror, afterMirror, expected, expected?.hit === true)
     && hitRows;
@@ -3895,6 +4078,7 @@ const tameGreetingResultProjection = (result) => ({
   remainingAfter: result?.remainingAfter ?? null,
   ownedRowId: result?.ownedRowId ?? null,
   stardustReward: result?.stardustReward ?? null,
+  charterBioscanBanked: result?.charterBioscanBanked ?? null,
   revision: result?.revision ?? null,
   ownershipRevision: result?.ownershipRevision ?? null,
 });
@@ -3908,13 +4092,13 @@ export const assessArc4TameGreetingStartObservation = (observation) => {
   const runtime = tameGreetingRuntimeOf(observation);
   const expected = ARC4_PERTAR_FIXTURE.actions.tameGreetingHit;
   const expectedTitle = `Tamed ${expected.speciesName}.`;
-  const expectedDetail = `${expected.chance * 100}% odds. New Compendium page; one owned creature. 1 Biosphere Yield spent; ${expected.remainingAfter} remain.`;
+  const expectedDetail = `${expected.chance * 100}% odds. New Compendium page; one owned creature. ${ARC4_PERTAR_CHARTER_COPY} 1 Biosphere Yield spent; ${expected.remainingAfter} remain.`;
   const checks = {
     result: exactKeys(result, [
       'hit', 'speciesId', 'speciesName', 'kingdom', 'sourceOrdinal', 'tier',
       'chance', 'worldKey', 'ecologyEpoch', 'fullRosterFingerprint',
       'firstForSpecies', 'spent', 'remainingAfter', 'ownedRowId',
-      'stardustReward', 'revision', 'ownershipRevision',
+      'stardustReward', 'charterBioscanBanked', 'revision', 'ownershipRevision',
     ]) && result.hit === true && result.speciesId === expected.speciesId
       && result.speciesName === expected.speciesName && result.kingdom === 'fauna'
       && result.sourceOrdinal === expected.sourceOrdinal && result.tier === expected.tier
@@ -3926,6 +4110,7 @@ export const assessArc4TameGreetingStartObservation = (observation) => {
       && result.remainingAfter === expected.remainingAfter
       && boundedText(result.ownedRowId, 192)
       && result.stardustReward === expected.stardustReward
+      && result.charterBioscanBanked === true
       && Number.isSafeInteger(result.revision) && result.revision >= 0
       && Number.isSafeInteger(result.ownershipRevision)
       && result.ownershipRevision >= 0,
@@ -4033,12 +4218,13 @@ export const assessArc4TameGreetingAudio = ({
     remainingAfter: expected?.remainingAfter,
     ownedRowId: creature?.creatureId,
     stardustReward: expected?.stardustReward,
+    charterBioscanBanked: true,
     revision: afterRaw?.revision,
     ownershipRevision: afterRaw?.captureRevision,
   });
   const expectedTitle = boundedText(expected?.speciesName, 160)
     ? `Tamed ${expected.speciesName}.` : null;
-  const expectedDetail = `${expected.chance * 100}% odds. New Compendium page; one owned creature. 1 Biosphere Yield spent; ${expected.remainingAfter} remain.`;
+  const expectedDetail = `${expected.chance * 100}% odds. New Compendium page; one owned creature. ${ARC4_PERTAR_CHARTER_COPY} 1 Biosphere Yield spent; ${expected.remainingAfter} remain.`;
   const checks = {
     fixtureOracle: schema === ARC4_TAME_GREETING_AUDIO_EVIDENCE_SCHEMA
       && !!beforeRaw && !!afterRaw && !!before && !!pending && !!started
@@ -4264,6 +4450,8 @@ export const assessArc4PublicationConvergence = ({
   const oldCapture = captureStateOf(oldState);
   const oldCoordinator = oldCapture?.actionCoordinator;
   const oldUiCoordinator = captureStateOf(oldUi?.captureState)?.actionCoordinator;
+  const beforeAssessment = assessArc4DurableEvidence(before);
+  const beforeCharter = durableCharterProjection(before, beforeAssessment);
   const checks = {
     captured: !!before && !!committed && !!beforeState && !!beforeUi && !!pendingUi
       && !!oldState && !!oldUi && !!reloaded && !!reloadedState && !!reloadedUi
@@ -4282,6 +4470,8 @@ export const assessArc4PublicationConvergence = ({
     convergenceRelease: convergenceRelease.ok,
     fixtureOutcome: same(expected, ARC4_PERTAR_FIXTURE.actions.firstHit),
     committedOutcome: exactRawCaptureOutcome(before, committed, expected),
+    charterNoOldOptimism: runtimeCharterMatches(beforeState, beforeCharter)
+      && runtimeCharterMatches(oldState, beforeCharter),
     ownershipV2Held: arc5OwnershipV2RuntimeExact(before, beforeState, {
       bootstrapOutcome: 'committed-published',
     }) && arc5OwnershipV2RuntimeExact(before, beforeUi, {
@@ -5645,6 +5835,56 @@ const SELFTEST_ARC2_LOOT_NO_JUMP = Object.freeze({
 const SELFTEST_ARC2_LOOT_NO_JUMP_CARRIER = Object.freeze({
   version: 1, json: JSON.stringify(SELFTEST_ARC2_LOOT_NO_JUMP),
 });
+const SELFTEST_ARC2_EXCEPTIONAL_SOURCE_ACTION =
+  'loot1|craft|legacy-v1.8.9-items|recipe%3Aearpiece|||receipt%3A35';
+const selftestArc2ExceptionalCarrier = (mutate = () => {}) => {
+  const exceptional = structuredClone(SELFTEST_ARC2_INSTANCES[1]);
+  Object.assign(exceptional, {
+    construction: 'generated',
+    instanceId: `gear1|${SELFTEST_ARC2_EXCEPTIONAL_SOURCE_ACTION}|0`,
+    craftedModifier: { affixId: 'exceptional-v1:contact', tier: 1, value: 8 },
+    generation: { seed: 1_234_567_890, ordinal: 0 },
+    provenance: {
+      kind: 'craft',
+      sourceActionId: SELFTEST_ARC2_EXCEPTIONAL_SOURCE_ACTION,
+      receiptId: 'receipt:35',
+    },
+  });
+  mutate(exceptional);
+  const instances = [SELFTEST_ARC2_INSTANCES[0], exceptional, SELFTEST_ARC2_INSTANCES[2]];
+  return Object.freeze({
+    version: 1,
+    json: JSON.stringify({
+      ...SELFTEST_ARC2_LOOT,
+      inventory: {
+        ...SELFTEST_ARC2_LOOT.inventory,
+        entries: instances.map((instance) => ({ instance, favorite: false, locked: false })),
+        equipped: instances.map((instance) => ({
+          slot: instance.slot, instanceId: instance.instanceId,
+        })),
+      },
+    }),
+  });
+};
+const SELFTEST_ARC2_EXCEPTIONAL_CARRIER = selftestArc2ExceptionalCarrier();
+const SELFTEST_ARC2_EXCEPTIONAL_CONTROLS = Object.freeze([
+  selftestArc2ExceptionalCarrier((instance) => {
+    instance.craftedModifier.affixId = 'exceptional-v1:unknown';
+  }),
+  ...['scut', 'land', 'heal'].map((effectKey) => selftestArc2ExceptionalCarrier((instance) => {
+    instance.craftedModifier.affixId = `exceptional-v1:${effectKey}`;
+  })),
+  selftestArc2ExceptionalCarrier((instance) => { instance.craftedModifier.value = 13; }),
+  selftestArc2ExceptionalCarrier((instance) => { instance.craftedModifier.tier = 2; }),
+  selftestArc2ExceptionalCarrier((instance) => { instance.construction = 'legacy'; }),
+  selftestArc2ExceptionalCarrier((instance) => {
+    const forgedSource = SELFTEST_ARC2_EXCEPTIONAL_SOURCE_ACTION.replace(
+      'legacy-v1.8.9-items', 'foreign-owner',
+    );
+    instance.provenance.sourceActionId = forgedSource;
+    instance.instanceId = `gear1|${forgedSource}|0`;
+  }),
+]);
 const selftestArc2Evidence = (carrierValue) => ({
   inventoryRow: { extensions: { 'arc2.loot': carrierValue } },
 });
@@ -5653,6 +5893,9 @@ const selftestPertarCapability = inspectPertarArc2Capability(
 );
 const selftestNoJumpCapability = inspectPertarArc2Capability(
   selftestArc2Evidence(SELFTEST_ARC2_LOOT_NO_JUMP_CARRIER),
+);
+const selftestExceptionalCapability = inspectPertarArc2Capability(
+  selftestArc2Evidence(SELFTEST_ARC2_EXCEPTIONAL_CARRIER),
 );
 const selftestPertarShip = projectArc4PertarShipSource({
   systemIds: selftestPertarCapability?.systemIds,
@@ -5681,6 +5924,8 @@ const makeDurable = (mirror, {
   ownedCounters = ARC4_PERTAR_FIXTURE.v4OwnedCounters.before,
   arc5Revision = mirror.revision,
   arc5Rows = [],
+  charterChapter = ARC4_PERTAR_CHARTER_CHAPTER,
+  charterProgress = null,
 } = {}) => {
   const ownership = ownershipExtensions(mirror, { arc5Revision, arc5Rows });
   const projected = projectLegacyMirror(mirror);
@@ -5692,9 +5937,17 @@ const makeDurable = (mirror, {
     maxGen: ownedCounters.maxGen,
     scanhits: 0,
   };
+  const ascp = charterProgress === null ? {
+    land: 3,
+    scan: 12,
+    ...(mirror.discoveries.some((row) => row?.provenance?.kind === 'world'
+      && row.provenance.worldKey === ARC4_PERTAR_FIXTURE.worldKey)
+      ? { [ARC4_PERTAR_BIOSCAN_GOAL_ID]: 1 } : {}),
+  } : structuredClone(charterProgress);
   const legacy = {
     v: 4, epoch: 0, at: 0, essence, essenceEarned,
     ever, br: ownedCounters.bestRank,
+    asc: charterChapter, ascp: { ...ascp },
     names: projected.names,
     codex: projected.codex.map(({ g, f, w }) => ({ g, f, w })),
     scout: projected.scout, bx: projected.bx,
@@ -5722,6 +5975,7 @@ const makeDurable = (mirror, {
       data: {
         v: 4, epoch: 0, at: 0, essence, essenceEarned, names: projected.names,
         ever, br: ownedCounters.bestRank,
+        asc: charterChapter, ascp: { ...ascp },
       },
       extensions: {
         'f4.authority': authorityCarrier,
@@ -6009,7 +6263,7 @@ const releasedPagehideSurface = (value) => {
 };
 
 const appState = (raw, capture, {
-  route = true, boot = false,
+  route = true, boot = false, charterRaw = raw,
 } = {}) => ({
   ...(route ? {
     mode: 'surface', gal: 999, galX: 90, galY: -60,
@@ -6029,6 +6283,10 @@ const appState = (raw, capture, {
   } : {}),
   cardOpen: true,
   cardTitle: 'Pertar',
+  save: {
+    ascCh: charterRaw?.legacy?.asc ?? null,
+    ascProg: structuredClone(charterRaw?.legacy?.ascp ?? null),
+  },
   persistence: {
     bootKind: boot ? 'current-v5' : 'current-v5',
     lastOutcome: null, bootRouteRepairPending: false,
@@ -6514,6 +6772,28 @@ const withCoherentV4EverMutation = (evidence, mutate) => {
   return next;
 };
 
+const withCoherentCharterMutation = (evidence, mutate) => {
+  const next = structuredClone(evidence);
+  const charter = {
+    ascCh: next.legacy.asc,
+    ascProg: structuredClone(next.legacy.ascp),
+  };
+  mutate(charter);
+  next.legacy.asc = charter.ascCh;
+  next.legacy.ascp = structuredClone(charter.ascProg);
+  next.playerRow.data.asc = charter.ascCh;
+  next.playerRow.data.ascp = structuredClone(charter.ascProg);
+  next.legacyRaw = JSON.stringify(next.legacy);
+  next.playerRaw = JSON.stringify(next.playerRow);
+  return next;
+};
+
+const withRuntimeCharterMutation = (state, mutate) => {
+  const next = structuredClone(state);
+  mutate(next.save);
+  return next;
+};
+
 const makeHitDurable = (mirror) => {
   const options = {
     revision: 1, ordinal: 1,
@@ -6551,13 +6831,14 @@ const hitResultSelftest = {
   worldKey: ARC4_PERTAR_FIXTURE.worldKey, ecologyEpoch: 0,
   fullRosterFingerprint: ARC4_PERTAR_FIXTURE.fullRosterFingerprint,
   firstForSpecies: true, spent: 1, remainingAfter: 15,
-  ownedRowId: SELFTEST_IDS.lot, stardustReward: 2, revision: 1,
+  ownedRowId: SELFTEST_IDS.lot, stardustReward: 2,
+  charterBioscanBanked: true, revision: 1,
   ownershipRevision: hitRawSelftest.captureRevision,
 };
 const hitOutcomeSelftest = {
   schema: 'cf-v2-capture-card-outcome/v1', kind: 'committed-hit', verb: 'sample',
   convergence: 'none', title: 'Sampled Fixture Microbe.',
-  detail: '44.5% odds. New Compendium page; one specimen lot. Rare Find: +2 Stardust.',
+  detail: `44.5% odds. New Compendium page; one specimen lot. Rare Find: +2 Stardust. ${ARC4_PERTAR_CHARTER_COPY} 1 Biosphere Yield spent; 15 remain.`,
 };
 const hitCaptureSelftest = appCaptureState(hitRawSelftest, {
   lastOutcome: 'sample-committed:1', lastResult: hitResultSelftest,
@@ -6572,7 +6853,8 @@ const missResultSelftest = {
   worldKey: ARC4_PERTAR_FIXTURE.worldKey, ecologyEpoch: 0,
   fullRosterFingerprint: ARC4_PERTAR_FIXTURE.fullRosterFingerprint,
   firstForSpecies: false, spent: 1, remainingAfter: 14,
-  ownedRowId: null, stardustReward: 0, revision: 2,
+  ownedRowId: null, stardustReward: 0,
+  charterBioscanBanked: false, revision: 2,
   ownershipRevision: missRawSelftest.captureRevision,
 };
 const missOutcomeSelftest = {
@@ -6717,7 +6999,9 @@ const publicationOldCaptureSelftest = appCaptureState(hitRawSelftest, {
   coordinator: actionCoordinator({ fault: publicationFaultSelftest }),
 });
 const publicationOldStateSelftest = releasedPagehideSurface(
-  appState(hitRawSelftest, publicationOldCaptureSelftest),
+  appState(hitRawSelftest, publicationOldCaptureSelftest, {
+    charterRaw: beforeRawSelftest,
+  }),
 );
 const publicationOutcomeSelftest = {
   schema: 'cf-v2-capture-card-outcome/v1', kind: 'committed-unknown',
@@ -7712,6 +7996,7 @@ const tameGreetingResultSelftest = Object.freeze({
   remainingAfter: tameGreetingExpectedSelftest.remainingAfter,
   ownedRowId: tameGreetingCreatureIdSelftest,
   stardustReward: 0,
+  charterBioscanBanked: true,
   revision: tameGreetingAfterRawSelftest.revision,
   ownershipRevision: tameGreetingAfterRawSelftest.captureRevision,
 });
@@ -7773,7 +8058,7 @@ const tameGreetingToastSelftest = Object.freeze({
   visible: true, serial: tameGreetingToastSerialSelftest,
   role: 'status', live: 'assertive', atomic: 'true',
   title: `Tamed ${tameGreetingResultSelftest.speciesName}.`,
-  detail: '61% odds. New Compendium page; one owned creature. 1 Biosphere Yield spent; 15 remain.',
+  detail: `61% odds. New Compendium page; one owned creature. ${ARC4_PERTAR_CHARTER_COPY} 1 Biosphere Yield spent; 15 remain.`,
 });
 const tameGreetingBeforeObservationSelftest = {
   documentToken: tameGreetingDocumentSelftest,
@@ -7888,10 +8173,27 @@ const tameGreetingAudioMutationSelftests = Object.freeze({
       bundle.beforeRaw.revisionRaw = String(bundle.beforeRaw.revision);
     }),
   }),
+  committedTameCharterTick: Object.freeze({
+    expected: Object.freeze(['committedTame']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.afterRaw = withCoherentCharterMutation(
+        bundle.afterRaw,
+        (charter) => {
+          delete charter.ascProg[ARC4_PERTAR_BIOSCAN_GOAL_ID];
+        },
+      );
+    }),
+  }),
   exactResult: Object.freeze({
     expected: Object.freeze(['exactResult']),
     result: tameGreetingAudioMutationSelftest((bundle) => {
       bundle.started.result.tier += 1;
+    }),
+  }),
+  exactResultCharter: Object.freeze({
+    expected: Object.freeze(['exactResult']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.started.result.charterBioscanBanked = false;
     }),
   }),
   wrongGlobalRevision: Object.freeze({
@@ -7956,6 +8258,14 @@ const tameGreetingAudioMutationSelftests = Object.freeze({
       bundle.started.audio.counterpart.key = 'capture-toast:8';
     }),
   }),
+  accessibleCounterpartCharter: Object.freeze({
+    expected: Object.freeze(['accessibleCounterpart']),
+    result: tameGreetingAudioMutationSelftest((bundle) => {
+      bundle.started.toast.detail = bundle.started.toast.detail.replace(
+        `${ARC4_PERTAR_CHARTER_COPY} `, '',
+      );
+    }),
+  }),
   lifecycleNoReplay: Object.freeze({
     expected: Object.freeze(['lifecycleNoReplay']),
     result: tameGreetingAudioMutationSelftest((bundle) => {
@@ -8016,6 +8326,12 @@ const tameGreetingStartMutationSelftests = Object.freeze({
       observation.result.tier += 1;
     }),
   }),
+  charterResult: Object.freeze({
+    expected: Object.freeze(['result']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      observation.result.charterBioscanBanked = false;
+    }),
+  }),
   wrongGlobalRevision: Object.freeze({
     expected: Object.freeze(['global']),
     result: tameGreetingStartMutationSelftest((observation) => {
@@ -8064,6 +8380,14 @@ const tameGreetingStartMutationSelftests = Object.freeze({
     expected: Object.freeze(['toast']),
     result: tameGreetingStartMutationSelftest((observation) => {
       observation.toast.live = 'polite';
+    }),
+  }),
+  charterToast: Object.freeze({
+    expected: Object.freeze(['toast']),
+    result: tameGreetingStartMutationSelftest((observation) => {
+      observation.toast.detail = observation.toast.detail.replace(
+        `${ARC4_PERTAR_CHARTER_COPY} `, '',
+      );
     }),
   }),
 });
@@ -8395,6 +8719,19 @@ negativeV4OnlyCountersSelftest.legacy.ever.hybrids += 1;
 negativeV4OnlyCountersSelftest.legacyRaw = JSON.stringify(
   negativeV4OnlyCountersSelftest.legacy,
 );
+const removeArc4BioscanTick = (charter) => {
+  delete charter.ascProg[ARC4_PERTAR_BIOSCAN_GOAL_ID];
+};
+const incrementArc4BioscanTick = (charter) => {
+  charter.ascProg[ARC4_PERTAR_BIOSCAN_GOAL_ID]
+    = (charter.ascProg[ARC4_PERTAR_BIOSCAN_GOAL_ID] ?? 0) + 1;
+};
+const addArc4CharterHitchhike = (charter) => {
+  charter.ascProg['c2-land'] = 1;
+};
+const advanceArc4CharterChapter = (charter) => {
+  charter.ascCh += 1;
+};
 const negativePreconditionSelftest = {
   ...preconditionBundleSelftest, routeError: 'isolated route control',
 };
@@ -8432,6 +8769,15 @@ const negativePreconditionCardSelftest = structuredClone(preconditionBundleSelft
 negativePreconditionCardSelftest.ui.cardTitle = 'Not Pertar';
 const negativePreconditionArc5Selftest = structuredClone(preconditionBundleSelftest);
 negativePreconditionArc5Selftest.state.ownershipV2.targetDigest = 'f'.repeat(64);
+const negativePreconditionCharterSelftest = {
+  ...preconditionBundleSelftest,
+  raw: withCoherentCharterMutation(
+    beforeRawSelftest, advanceArc4CharterChapter,
+  ),
+  state: withRuntimeCharterMutation(
+    beforeStateSelftest, advanceArc4CharterChapter,
+  ),
+};
 const negativePendingSelftest = structuredClone(pendingBundleSelftest);
 negativePendingSelftest.interaction.pressCount = 2;
 const negativePendingRetainedResultSelftest = structuredClone(pendingBundleSelftest);
@@ -8440,6 +8786,12 @@ const negativePendingStateRuntimeSelftest = structuredClone(pendingBundleSelftes
 negativePendingStateRuntimeSelftest.duringState.persistence.runtime.activePlayMs += 123_456;
 const negativePendingArc5Selftest = structuredClone(pendingBundleSelftest);
 negativePendingArc5Selftest.duringState.ownershipV2.targetDigest = 'f'.repeat(64);
+const negativePendingCharterSelftest = {
+  ...pendingBundleSelftest,
+  duringState: withRuntimeCharterMutation(
+    pendingStateSelftest, incrementArc4BioscanTick,
+  ),
+};
 const negativeHitSelftest = structuredClone(hitBundleSelftest);
 negativeHitSelftest.interaction.pressCount = 2;
 const negativeHitStateRuntimeSelftest = structuredClone(hitBundleSelftest);
@@ -8461,6 +8813,28 @@ const negativeHitWrongOwnershipRevisionResultSelftest = structuredClone(
 );
 negativeHitWrongOwnershipRevisionResultSelftest
   .afterState.capture.lastResult.ownershipRevision += 1;
+const charterHitMutationSelftest = (mutate) => ({
+  ...hitBundleSelftest,
+  after: withCoherentCharterMutation(hitRawSelftest, mutate),
+  afterState: withRuntimeCharterMutation(hitStateSelftest, mutate),
+});
+const negativeHitMissingCharterTickSelftest = charterHitMutationSelftest(
+  removeArc4BioscanTick,
+);
+const negativeHitCharterHitchhikeSelftest = charterHitMutationSelftest(
+  addArc4CharterHitchhike,
+);
+const negativeHitCharterChapterAdvanceSelftest = charterHitMutationSelftest(
+  advanceArc4CharterChapter,
+);
+const negativeHitCharterResultSelftest = structuredClone(hitBundleSelftest);
+negativeHitCharterResultSelftest.afterState.capture.lastResult
+  .charterBioscanBanked = false;
+const negativeHitCharterCopySelftest = structuredClone(hitBundleSelftest);
+negativeHitCharterCopySelftest.afterUi.status.text
+  = negativeHitCharterCopySelftest.afterUi.status.text.replace(
+    `${ARC4_PERTAR_CHARTER_COPY} `, '',
+  );
 const hitAddressMutationSelftest = (mutate, target = 'progress') => {
   const mirror = structuredClone(hitMirror());
   const address = structuredClone(target === 'discovery'
@@ -8493,6 +8867,15 @@ negativeMissStateRuntimeSelftest.afterState.persistence.runtime.activePlayMs += 
 const negativeMissReceiptEventSelftest = withReceiptWitness(
   missRawSelftest, 1, { event: 'b'.repeat(64) },
 );
+const negativeMissCharterTickSelftest = {
+  ...missBundleSelftest,
+  after: withCoherentCharterMutation(
+    missRawSelftest, incrementArc4BioscanTick,
+  ),
+  afterState: withRuntimeCharterMutation(
+    missStateSelftest, incrementArc4BioscanTick,
+  ),
+};
 const negativeBurnReceiptKindSelftest = withReceiptRowMutation(
   hitRawSelftest, 0, (row) => { row.kind = 'not-capture-attempt'; },
 );
@@ -8563,6 +8946,12 @@ const negativeStorageStateRuntimeSelftest = structuredClone(storageBundleSelftes
 negativeStorageStateRuntimeSelftest.afterState.persistence.runtime.activePlayMs += 123_456;
 const negativeStorageArc5Selftest = structuredClone(storageBundleSelftest);
 negativeStorageArc5Selftest.afterState.ownershipV2.targetDigest = 'f'.repeat(64);
+const negativeStorageCharterSelftest = {
+  ...storageBundleSelftest,
+  afterState: withRuntimeCharterMutation(
+    storageStateSelftest, incrementArc4BioscanTick,
+  ),
+};
 const negativeStorageSemanticUiSelftest = structuredClone(
   storageClockDriftBundleSelftest,
 );
@@ -8722,6 +9111,10 @@ const negativeStaleReleasedHoldSelftest = withCoordinatedPagehideOldSurface(
     oldState.capture.actionCoordinator.hold.operation = 'arc4.capture.tame';
   },
 );
+const negativeStaleCharterSelftest = withCoordinatedPagehideOldSurface(
+  staleBundleSelftest,
+  (oldState) => { incrementArc4BioscanTick(oldState.save); },
+);
 const negativePublicationSelftest = {
   ...publicationBundleSelftest, waitError: 'isolated wait control',
 };
@@ -8735,6 +9128,11 @@ const negativePublicationOldArc5OptimismSelftest
         publicationBundleSelftest.beforeState.ownershipV2,
       );
     },
+  );
+const negativePublicationOldCharterOptimismSelftest
+  = withCoordinatedPagehideOldSurface(
+    publicationBundleSelftest,
+    (oldState) => { incrementArc4BioscanTick(oldState.save); },
   );
 const negativePublicationReloadArc5Selftest = structuredClone(
   publicationBundleSelftest,
@@ -8757,6 +9155,27 @@ const negativePublicationReloadRawSelftest = {
   ...publicationBundleSelftest,
   reloaded: withCoherentV4EverMutation(
     publicationBundleSelftest.reloaded, incrementScanHits,
+  ),
+};
+const negativePublicationMissingCharterTickSelftest = {
+  ...publicationBundleSelftest,
+  committed: withCoherentCharterMutation(
+    hitRawSelftest, removeArc4BioscanTick,
+  ),
+  reloaded: withCoherentCharterMutation(
+    hitRawSelftest, removeArc4BioscanTick,
+  ),
+  reloadedState: withRuntimeCharterMutation(
+    publicationReloadStateSelftest, removeArc4BioscanTick,
+  ),
+};
+const negativePublicationReloadCharterLossSelftest = {
+  ...publicationBundleSelftest,
+  reloaded: withCoherentCharterMutation(
+    hitRawSelftest, removeArc4BioscanTick,
+  ),
+  reloadedState: withRuntimeCharterMutation(
+    publicationReloadStateSelftest, removeArc4BioscanTick,
   ),
 };
 const negativePublicationTupleStateSelftest = withPagehideEnvelopeMutation(
@@ -9541,6 +9960,10 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'ownershipV2Ready',
     result: assessArc4CapturePrecondition(negativePreconditionArc5Selftest),
   }),
+  preconditionCharter: Object.freeze({
+    expected: 'charterReady',
+    result: assessArc4CapturePrecondition(negativePreconditionCharterSelftest),
+  }),
   pending: Object.freeze({
     expected: 'oneTrustedAction',
     result: assessArc4CapturePendingNoOptimism(negativePendingSelftest),
@@ -9556,6 +9979,10 @@ const isolatedNegativeSelftests = Object.freeze({
   pendingArc5: Object.freeze({
     expected: 'ownershipV2Stable',
     result: assessArc4CapturePendingNoOptimism(negativePendingArc5Selftest),
+  }),
+  pendingCharter: Object.freeze({
+    expected: 'charterStable',
+    result: assessArc4CapturePendingNoOptimism(negativePendingCharterSelftest),
   }),
   hit: Object.freeze({
     expected: 'interaction', result: assessArc4CommittedHit(negativeHitSelftest),
@@ -9583,6 +10010,26 @@ const isolatedNegativeSelftests = Object.freeze({
     result: assessArc4CommittedHit(
       negativeHitWrongOwnershipRevisionResultSelftest,
     ),
+  }),
+  hitMissingCharterTick: Object.freeze({
+    expected: 'charterBioscan',
+    result: assessArc4CommittedHit(negativeHitMissingCharterTickSelftest),
+  }),
+  hitCharterHitchhike: Object.freeze({
+    expected: 'charterBioscan',
+    result: assessArc4CommittedHit(negativeHitCharterHitchhikeSelftest),
+  }),
+  hitCharterChapterAdvance: Object.freeze({
+    expected: 'charterBioscan',
+    result: assessArc4CommittedHit(negativeHitCharterChapterAdvanceSelftest),
+  }),
+  hitCharterResult: Object.freeze({
+    expected: 'appResult',
+    result: assessArc4CommittedHit(negativeHitCharterResultSelftest),
+  }),
+  hitCharterCopy: Object.freeze({
+    expected: 'uiOutcome',
+    result: assessArc4CommittedHit(negativeHitCharterCopySelftest),
   }),
   progressCoordinate: Object.freeze({
     expected: Object.freeze(['ownershipV2Live', 'progress']),
@@ -9615,6 +10062,10 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'receipt', result: assessArc4CommittedMiss({
       ...missBundleSelftest, after: negativeMissReceiptEventSelftest,
     }),
+  }),
+  missCharterTick: Object.freeze({
+    expected: 'charterBioscan',
+    result: assessArc4CommittedMiss(negativeMissCharterTickSelftest),
   }),
   burnMissFirstForSpecies: Object.freeze({
     expected: 'outcome',
@@ -9663,6 +10114,10 @@ const isolatedNegativeSelftests = Object.freeze({
   storageArc5: Object.freeze({
     expected: 'ownershipV2Stable',
     result: assessArc4StorageRefusal(negativeStorageArc5Selftest),
+  }),
+  storageCharter: Object.freeze({
+    expected: 'charterStable',
+    result: assessArc4StorageRefusal(negativeStorageCharterSelftest),
   }),
   storageSemanticUi: Object.freeze({
     expected: 'uiFactsStable',
@@ -9789,6 +10244,10 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'oldOwnerReleased',
     result: assessArc4StaleConvergence(negativeStaleReleasedHoldSelftest),
   }),
+  staleCharter: Object.freeze({
+    expected: 'charterPreserved',
+    result: assessArc4StaleConvergence(negativeStaleCharterSelftest),
+  }),
   publication: Object.freeze({
     expected: 'waitSettled',
     result: assessArc4PublicationConvergence(negativePublicationSelftest),
@@ -9801,6 +10260,12 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'noOldOptimism',
     result: assessArc4PublicationConvergence(
       negativePublicationOldArc5OptimismSelftest,
+    ),
+  }),
+  publicationOldCharterOptimism: Object.freeze({
+    expected: 'charterNoOldOptimism',
+    result: assessArc4PublicationConvergence(
+      negativePublicationOldCharterOptimismSelftest,
     ),
   }),
   publicationReloadArc5: Object.freeze({
@@ -9823,6 +10288,18 @@ const isolatedNegativeSelftests = Object.freeze({
     expected: 'readOnlyReload',
     result: assessArc4PublicationConvergence(
       negativePublicationReloadRawSelftest,
+    ),
+  }),
+  publicationMissingCharterTick: Object.freeze({
+    expected: 'committedOutcome',
+    result: assessArc4PublicationConvergence(
+      negativePublicationMissingCharterTickSelftest,
+    ),
+  }),
+  publicationReloadCharterLoss: Object.freeze({
+    expected: 'readOnlyReload',
+    result: assessArc4PublicationConvergence(
+      negativePublicationReloadCharterLossSelftest,
     ),
   }),
   publicationTupleState: Object.freeze({
@@ -10186,6 +10663,14 @@ const selftestSourceClosureChecks = Object.freeze({
       === ARC4_PERTAR_SOURCE_FACTS.noJumpCapabilityFingerprint
     && selftestNoJumpCapability?.contactCapturePoints
       === ARC4_PERTAR_FIXTURE.contactCapturePoints,
+  exceptionalCraftCapability: selftestExceptionalCapability?.contactCapturePoints
+      === ARC4_PERTAR_FIXTURE.contactCapturePoints + 8
+    && selftestExceptionalCapability?.equippedInstanceIds.includes(
+      `gear1|${SELFTEST_ARC2_EXCEPTIONAL_SOURCE_ACTION}|0`,
+    ) === true,
+  exceptionalCraftControls: SELFTEST_ARC2_EXCEPTIONAL_CONTROLS.every((carrierValue) => (
+    inspectPertarArc2Capability(selftestArc2Evidence(carrierValue)) === null
+  )),
   noJumpCaptureRefused: exactPertarCapability(
     selftestArc2Evidence(SELFTEST_ARC2_LOOT_NO_JUMP_CARRIER),
   ) === null,

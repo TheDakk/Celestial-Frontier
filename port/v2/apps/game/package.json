@@ -23,6 +23,7 @@
     "@cf/domain-rand": "*",
     "@cf/domain-naming": "*",
     "@cf/domain-genome": "*",
+    "@cf/domain-speciestraits": "*",
     "@cf/domain-genetics": "*",
     "@cf/domain-combatcore": "*",
     "@cf/domain-loot": "*",

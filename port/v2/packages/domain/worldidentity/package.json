@@ -1,0 +1,11 @@
+{
+  "name": "@cf/domain-worldidentity",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Neutral non-forgeable registry for source-proven canonical CF1 world addresses.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./mint-internal": "./src/mint-internal.ts"
+  }
+}

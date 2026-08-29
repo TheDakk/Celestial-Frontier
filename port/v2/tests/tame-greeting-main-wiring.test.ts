@@ -101,7 +101,7 @@ function tameGreetingWiringErrors(
   const presentation = section(
     main,
     'async function runCaptureCardAction(',
-    '\nfunction engineeringOutcomeConverges(',
+    '\nasync function runArc6CombatCardAction(',
   );
   const settle = presentation.indexOf('captureCardController.settle(copy);');
   const refresh = presentation.indexOf('refreshCaptureCardState();');
@@ -266,7 +266,7 @@ describe('Arc 7/8 Tame greeting — Main wiring', () => {
     const preToastPlay = replaceExactInSection(
       mainSource,
       'async function runCaptureCardAction(',
-      '\nfunction engineeringOutcomeConverges(',
+      '\nasync function runArc6CombatCardAction(',
       '    toast(copy.title, copy.detail, true);',
       '    void tameGreetingAudioOwner?.playClaimedTameGreeting(greetingClaim!, {} as never);\n    toast(copy.title, copy.detail, true);',
     );

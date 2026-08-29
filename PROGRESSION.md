@@ -1,5 +1,149 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-29 current local Binder and Prime-Frontier progression overlay:** Records now appends
+> the legacy Binder as six exact type-collection pages—**The Spectrum, The Sixteen Realms, Body
+> Plans, Ability Themes, Flora Flavors, and Size Classes**—derived from canonical Compendium species,
+> never from procedural individuals. Seven non-Paragon sets are live one-time claims: Four Crowns
+> **25**, The Five Flavors **40**, Master of Arts **80**, The Bestiary **80**, Warden of Realms
+> **100**, Against All Odds **60**, and The Apex Court **150** Stardust. A completed, unclaimed row
+> crosses one receipt/F4 revision CAS and atomically appends its `claimedSets` id, raises current and
+> lifetime-earned Stardust, and applies any newly proved aggregate achievement/best-rank successor.
+> Incomplete, already claimed, malformed, overflowing, stale, lost, or storage-failed attempts
+> publish nothing and never retry. **The Fifty Paragons** remains visible but unavailable until its
+> deterministic discovery owner is ported; an imported `para10` claim is preserved and is never
+> exposed as a claim target.
+>
+> The Prime Codex now projects the canonical nine Signatures in registry order: **Earth** (`stone`),
+> **Fire** (`flame`), **Air** (`sky`), **Stellar** (`star`), **Water** (`ocean`), **Electric**
+> (`mind`), **Poison** (`life`), **Void**, and **Prism**. An unclaimed Titan may appear only on a
+> registered unconquered world when its minimum region, deterministic 8.5% placement, and
+> world-type rule agree; Void has the established first-selection priority. Only a verified Titan
+> conquest writes that Signature and its exact world in the combat transaction. Counts 0/2/4/6/8/9
+> advance the separate galaxy-radius ladder from Solar Reach through the Frontier, and the ninth
+> distinct claim opens the Frontier ending choice.
+>
+> The five established one-time legacies are **Sovereign of the Frontier**, **Warden of Life**,
+> **World-Shaper**, **The Unseen Hand**, and **Prismatic Pathfinder**. The first four require all
+> nine Signatures; Prismatic Pathfinder additionally requires at least three conquered worlds, the
+> Electric (`mind`) Signature, and at least 40 catalogued species. The action changes only
+> `frontierEnding` through one receipt/F4 CAS, is idempotent only for the same already-durable
+> choice, cannot overwrite a different choice, and never retries or publishes optimistically.
+> Durable ambiguity converges by read-only reload. A syntactically valid unknown imported ending
+> remains visible protected evidence rather than being interpreted, repaired, or overwritten.
+
+> **2026-08-29 current local Arc 9A rank, Records and achievement authority:**
+> `@cf/domain-progression` owns the exact ten-rank ladder, all six expedition-score weights, all ten
+> permanent nameplate rewards, Eternal Frontier foil, endless `✦N` prestige every 3,000 score, and
+> the complete ordered **96-achievement** manifest. The **68** aggregate rules are strict bounded
+> pure projections. The **28** legacy `t:null` rows stay event-owned: they may display a durable
+> unlock, but no nearby counter is allowed to guess that the event happened. Unknown bounded
+> compatibility ids remain explicit and retain legacy rank credit without masquerading as a known
+> achievement.
+>
+> The v2 app now projects sanitized `SaveStateV2` owners into those facts and renders the exact six
+> factors, current/next rank, permanent nameplate reward and all 96 rows across 13 native Records
+> shelves. A coalesced follow-up after each receipt-bearing product action appends every newly proved
+> aggregate id in manifest order and monotonically raises `stats.bestRank` through one F4
+> deterministic transaction: one immutable receipt, one lease/revision CAS, no retry and no
+> precommit publication. The committed canonical save must reopen at the exact fixed point before
+> Main publishes only the detached `unlocked` list and best-rank mirror. Existing event-owned and
+> safe unknown ids keep their order; overflow refuses all-or-nothing. The canonical v4 `ach` and
+> `br` fields remain the only persistence carriers, so no save schema or migration was added.
+>
+> The top-bar nameplate now follows the saved unlocked rank hue, including the Eternal Frontier
+> foil. `progression-ceremony.ts` accepts only an exact append delta from one verified committed
+> publication: every newly appended known achievement keeps manifest order and receives its
+> `Achievement · <name>` text notification plus the established rarity sting at tier 3; a strictly
+> higher saved best-rank index receives the named Rank Up toast, tier-5 sting and existing gold FX
+> semantic. The gold palette is fixed, the mature ceiling is 40 particles, and current motion/device
+> effects policy may lower that count. Main queues each result once by committed revision; it asks
+> AppChrome only for the player-chip center geometry, never its element. Missing geometry or
+> Web Audio leaves the durable fact and text ceremony intact. Boot catch-up, Training sandbox,
+> replay/out-of-order revision, already-durable observation, refused/stale/failed storage and
+> committed convergence are silent. The ceremony is presentation only and invents no currency,
+> item or achievement reward.
+>
+> Settings now offers Auto/current-rank or every color through the durable best-rank record. One native choice
+> uses one receipt/F4 CAS with no retry or optimistic color publication; locked or malformed choices
+> refuse, and unconfirmable durable results reload instead of applying twice. Exact event
+> joins now share their real owning transactions: canonical Earth landing → `home`; durable world
+> naming and exact companion Rename → `namer`; first verified settlement → `settle1`; a successful
+> pairing whose two captured pre-action parent tiers are both Legendary-or-better → `bredlegend`;
+> verified player combat that leaves 1–19 HP → `brink`; valid-world Share → `share`; and an accepted
+> source-proven/reach-authorized CF1 Follow → `wayfarer`; twelve source-derived Survey facts →
+> `civ`, `spacefar`, `sol`, `binary`, `seebh`, `seens`, `seemag`, `seewd`, `seerg`, `seesg`,
+> `seeproto`, and `seebd`; galaxy arrival or wormhole traversal → `quasar`, `dwarfg`, and `worm`;
+> and the first explicit Atlas Favorite → `curator`. Accepted Follow composes its accepted route,
+> Jumps, `wayfarer`, galaxy visit and any proved galaxy-kind event in the same receipt. Capacity is
+> proved before each writer, existing ids are fixed points, and each committed projection is
+> independently rechecked before publication. Those are **23** distinct event rows. Exactly five
+> remain owner-blocked—`daily`, `decade`, `survivor`, `fieldmedic`, and `gambler`; the aggregate
+> action can never stand in for one.
+>
+> Explorer self-rename is now live from **Settings → Explorer name → Change name**. It uses the
+> shipped sanitizer and 24-character cap, changes only `explorerName`, treats cleaned-empty and
+> unchanged input as receipt-free no-ops, and crosses one receipt/F4 CAS without retry or optimistic
+> publication. Durable ambiguity converges read-only through reload. Because this is identity-only,
+> it deliberately does not unlock the discovery-name `namer` achievement. Exactly the five event
+> owners named below remain open; durable achievement/rank notification ceremonies are live, while
+> any separate material reward design remains deliberately absent.
+
+> **2026-08-29 current local Starter Charter progression overlay:** the live two-chain board exposes
+> only one incomplete link per chain plus already accepted rows, requires explicit acceptance before
+> tracking and enforces three active slots. `st-scan` and all weeklies remain protected; `st-conq`
+> stays combat-owned. Exact already-proven durable state may complete a state-style row during the
+> acceptance receipt, but `st-giants` remains a five-press counter and unavailable `st-scan` never
+> auto-completes. New Landing/Mine events carry a full registered world address: canonical Earth is
+> excluded from `st-land`, and Sol-tour filters prove the exact Sol hierarchy/ordinal rather than a
+> reusable planet seed. Live Landing, Mine, canonical fixed-component Fabrication, non-null Scout
+> set/switch and combat writers fold their matching Charter successor into the deed's existing F4
+> receipt/CAS; stand-down, no-op, refusal, stale/storage failure and convergence add nothing.
+>
+> Completion pays the authored 10/15/25 Stardust value to both current and lifetime totals, raises
+> honored Charters once, removes acceptance and may append aggregate achievements/promote best rank
+> in that same candidate. The fixed gear rows are Headlamp (`st-mercury`), Mag-Boots (`st-mars`),
+> Meteorite Pendant (`st-giants`), Field Leggings (`st-ice`) and the currently unavailable Earpiece
+> (`st-scan`). A deterministic Arc 2 instance auto-equips only into an empty slot; inventory overflow
+> uses the 500-entry pending-reward carrier, and exhausted/corrupt/future carrier or numeric capacity
+> refuses all rewards together. Only the verified postcommit progression delta reaches the ceremony
+> path described above.
+
+> **2026-08-29 current Arc 5/6 XP and Charter joins:** successful owned-fauna conquest pays the
+> canonical `20 + world tier` XP, or `60 + world tier` against an Apex Guardian/Elemental Titan, in
+> the same verified combat CAS as injury, conquest and rewards. A first loss by that exact creature
+> on that exact world pays +3; a near-brink result raises the one-time maximum to +5, so ordinary→
+> near-brink pays +3 then +2, near-brink-first pays +5, and no later loss can farm it. The bounded
+> archive/`xpa` carrier preserves older first-award membership. Live captured Guardians and Titans
+> now use that same exact win/loss XP authority as combat champions. Their XP and injury persist in
+> the separate `arc6.guardian-companions` overlay rather than Arc 5; because they carry no bred
+> lineage, a defeat permanently tombstones the last-live state and removes the champion from the
+> combat roster and composite Compendium across reload. Their acquisition record and any Prime
+> Signature claim remain independent. They gain no care, breeding, mission or Recovery progression.
+> Successful nonlethal Breed now gives the newborn +2 XP and adds +5 exactly once for the canonical
+> unordered parent-species pair. Its child XP, canonical `xpf` claim, any `xpa` overflow replacement,
+> `c3-breed` tick and eligible `bredlegend` join share the same pre-draw-certified F4 receipt/CAS as
+> the exact-five ownership successor. Rename remains identity-only and may join `namer`; Field Scout
+> designation changes only the role and does not yet grant fresh-species XP or redirect injury.
+
+> **2026-08-29 current local Arc 4 Charter successor:** the playable capture writer now prepares
+> one Chapter 2 `c2-scan` tick only for the first durable successful Tame, Scavenge, or Sample on
+> each complete source-proven world beyond Sol. Exact pre-action ownership discovery provenance
+> supplies world uniqueness; the Charter change shares the capture's pre-draw capacity proof,
+> F4 outcome, receipt, revision and fenced F3 CAS. A miss, exact Sol, unreachable or past-chapter
+> source, later success on that world, saturated goal, stale tab or failed write banks nothing and
+> cannot retry. Unrelated Charter progress is preserved exactly.
+> Capture and Search travel bind exact galaxy/star coordinates plus seeds; same-seed wrong-parent
+> routes cannot inherit reach. A successful capture that earns no bioscan also cannot reconcile an
+> imported Charter chapter.
+>
+> This deliberately replaces, rather than claims parity with, v1.8.9's separate Discover Life
+> control. It does not append to the legacy survey/Records ledger or change `stats.surveys`; Survey
+> Records and accepted/weekly bioscan Charters remain unavailable. Guide, Training and the v2 draft
+> say so explicitly. Focused and full browser-free product/copy evidence is green at 230 files /
+> 2,315 passed + one skipped; the older signed
+> `3f69e88…` browser certificate predates this writer, so fresh exact-source browser and HUMAN
+> evidence remain open. No release, version, deployment or hosted-write authority follows.
+
 > **2026-08-27 current-candidate progression correction:** capture contact is now a real equipped
 > gear effect rather than inert copy: each effective point adds 1.5 percentage points to capture
 > chance, equipped gear contributes at most +25 points, and the final chance remains capped at 95%.
@@ -31,12 +175,13 @@
 > updates do not merge those rulers or move their fixed thresholds; final battery and independent
 > audits remain pending.
 
-> **2026-08-26 current-candidate progression correction:** the published ecology epoch now advances
+> **2026-08-26 progression checkpoint (historical where superseded):** the published ecology epoch now advances
 > only from F4's visible-and-answerable, lease-owned `activePlayMs`, through one receipt-free
 > lease/revision CAS before publication and exact scene reprojection. Until that refresh completes,
 > epoch-dependent Survey/Planetside/capture progression is fenced. This does not close Arc 4: the
-> ordinary Slice still records `recoveryClaimed:false`, and a dedicated uninterrupted 20-minute
-> recovery certificate plus HUMAN first-journey review remain pending.
+> ordinary Slice at that checkpoint still recorded `recoveryClaimed:false`. Exact signed
+> `3f69e88…` later completed the uninterrupted 20-minute Recovery certificate; HUMAN first-journey
+> review and fresh evidence for newer local product work remain open.
 >
 > After owned `scan1`, an eligible registered current-system lifeless non-Earth orbital **Mineral
 > veins** Survey row passively lists ordinary mineral deposits in canonical order plus the optional
@@ -46,19 +191,26 @@
 > directly, `9..14` display as Transcendent, and invalid/missing values are omitted rather than
 > defaulted to Common; internal art-grade labels and raw numbers remain private.
 >
-> The XP anti-farm seam is now durable but not yet a live v2 XP faucet: `xpf` holds the newest 4,000
+> The XP anti-farm seam is durable and now backs the bounded Arc 6 conquest XP writer: `xpf` holds the newest 4,000
 > bounded unique keys, older membership moves to the strict v5-only `progression.xp-firsts` archive,
 > and `xpa` v1 binds total count plus archive-carrier digest. Missing or inconsistent archive
 > evidence protects instead of rearming one-time awards. Executable `conq[].e` codec/readiness
-> vectors likewise preserve absent-as-ready and present-as-gated semantics, but do not replace the
-> still-open real-veteran Gate-C run.
+> vectors preserve absent-as-ready and present-as-gated semantics, and the combat settlement proves
+> ordinary-loss +3 versus near-brink maximum +5 in both event orders. The real-veteran Gate-C run
+> remains separate and open.
 >
-> The internal-only Arc 5 successor now initializes a newly admitted bred child's `fed` to half the
-> lower clamped parent value exactly once. No player breeding writer exists; odds, parent Recovery
-> duration/locks, care, capacity, confirmation and UI/copy remain Arc 5B product decisions. The only
-> new creature audio is one deterministic Tame-fauna greeting after the exact durable result and
-> current ownership revision; it grants no progression and broader creature/Compendium/ambience/
-> music/combat playback remains absent.
+> Arc 5 Breed is now player-live from a real-fauna Compendium detail. It pages through exact owned
+> instances, requires two distinct eligible fauna, shows the established rarity-plus-lifetime-
+> Stardust chance, certifies success and failure successors before one `breedOutcome` draw, and
+> settles one receipt/CAS. Both parents remain owned; success creates one deterministic child and
+> assigns eight active-play minutes of Recovery, while failure creates no child and assigns two.
+> Recovery blocks Breed, combat and dispatch and never advances from closed-game or wall-clock time.
+> The child initializes `fed` to half the lower clamped parent value exactly once. Exact-instance
+> Rename is also live and changes only one sanitized at-most-24-character companion nickname through
+> a receipt/CAS with no RNG or optimistic publication. A successful Breed gives the child +2 XP
+> and +5 for the first exact unordered species pair, and banks the exact `c3-breed` Charter tick in
+> that same child-bearing save; Rename grants no XP or Charter progress. Broader care, bond and
+> missions remain separate work.
 
 > **2026-08-25 Arc 4 progression overlay — recorded local boundary:** native Survey
 > Tame/Scavenge/Sample actions now turn a finite Biosphere attempt into one durable hit or miss.
@@ -77,12 +229,15 @@
 > open, so Arc 4 is **[PARTIAL]**. Guide/release copy is current, but Field Training remains six
 > lessons plus graduation with no Capture lesson, and no shipped version/release follows.
 
-> **2026-08-24 Arc 3 progression overlay — current local implementation:** Mine and Skim are live
+> **Historical 2026-08-24 Arc 3 progression overlay (superseded where the current 2026-08-29
+> overlays above differ):** Mine and Skim are live
 > through the Engineering panel. Six research rows are displayed, but only Deep Scanners is
 > purchasable; the 2026-08-26 correction above records its now-live bounded passive orbital Survey
 > row. All 62 fixed recipes are listed, but only connected-effect outputs with exact costs/
-> preconditions and capacity/revision headroom are actionable; fully exceptional slotted outputs
-> and disconnected-effect rows remain unavailable. Eligible Deep-Scanner and fixed-Fabrication
+> preconditions and capacity/revision headroom are actionable. As of 2026-08-29, an eligible
+> slotted recipe paid entirely from exceptional direct materials receives one deterministic exact-
+> item modifier—mining yield, rich-strike chance, or capture-contact points—while mixed payment
+> remains ordinary; disconnected-effect rows remain unavailable. Eligible Deep-Scanner and fixed-Fabrication
 > actions use the durable transaction. Canonical source opportunities, technology prerequisites,
 > material/part/Signature/Stardust costs, finite reserves, active-play accrual and revision/capacity
 > headroom are projected before each press and re-derived inside it. Eligible fixed system
@@ -90,9 +245,10 @@
 > committed result, never from button intent. One shared coordinator serializes Engineering with
 > Inventory publication.
 >
-> This does not complete progression: authored random loot, variable crafting, upgrades/sockets,
-> companions, combat/Guardians, the complete Charter/Training journey and HUMAN pacing remain open.
-> The Arc 4 overlay above supersedes only the former absent-capture boundary.
+> At that boundary this did not complete progression: authored random loot, variable crafting,
+> upgrades/sockets, companions, combat/Guardians, the complete Charter/Training journey and HUMAN
+> pacing remained open. The current overlays above supersede its later-landed systems and Charter
+> writers while retaining this Arc 3 transaction foundation.
 
 > **2026-08-24 F3/F4 + Arc 2 progression overlay — current local implementation:** the v5 app now
 > persists one protected F4 authority containing visible/answerable/lease-owned `activePlayMs` and
@@ -291,8 +447,8 @@
 > Repeat planet landings do not bank an extra landfall; a veteran Training
 > replay may still receive its lesson event without receiving progression credit.
 
-**STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlay
-matches the local `port/v2` candidate as of 2026-08-27, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
+**STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlays
+match the local `port/v2` candidate as of 2026-08-29, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
@@ -305,7 +461,9 @@ Progression runs on three parallel tracks, none of which touch world/creature *g
 2. **The explorer (`pstats`).** *You* are a battler too — five stats grown by eating flora, shown on the character sheet paperdoll with nine gear sockets.
 3. **Standing rank (milestones).** A lifetime score over everything you've done climbs the rank ladder (Cadet → Eternal Frontier → infinite ✦ levels), unlocking nameplate colors and gating nothing — pure prestige.
 
-A fourth, collection-side track is the **Compendium** (the species catalogue) and its **Binder** sets/Paragons, which pay one-time ☄ Stardust bounties.
+A fourth, collection-side track is the **Compendium** (the species catalogue) and its **Binder**.
+Current v2 pays the seven non-Paragon set bounties once; the legacy Fifty Paragons remain visible
+protected content until their deterministic discovery owner is ported.
 
 Depth (frontier region / world tier) is the master difficulty dial: farther worlds grant more XP, hide rarer finds, and tax your wounds harder.
 
@@ -323,9 +481,16 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
   - Cataloguing a **genuinely new species** teaches your standing **Field Scout** creature **+2** (a single-catalogue path to XP that needs no fight).
   - **Care faucets (v1.8; ledgering CORRECTED in v1.8.4):** welcome meal **+1** *(once per creature — it was a bare unledgered `awardXP` paying on every loved meal until v1.8.4)* · taste discovered **+2** (once per creature per flavour) · bout survived **+2** · fight taken to the wire **+3** *(both unreachable until v1.8.4: the guard read `mine.id`, which no `fightNow` call site sets — the identity is now derived from the genome)* · conquest lost **+3** · defender pushed to the brink **+5** *(both now keyed per creature per world; unledgered, an unconquered world paid on every attempt forever, and one meal undoes the `hurt=0.85` brake)*. In legacy v1.8.9, anti-farm is a **per-creature ledger** (`xpFirsts`) whose `xpf` save mirror is capped at 4,000 entries of ≤64 chars, not a global cooldown.
   - **Current v2 persistence boundary:** the strict archive/`xpa` binding preserves membership older
-    than the newest-4,000 `xpf` window, but no live v2 XP-award writer exists. See the 2026-08-26
-    overlay above.
+    than the newest-4,000 `xpf` window. The live Arc 6 conquest writer pays the win and one-time
+    loss/near-brink awards in its combat CAS. Arc 5 Breed now pays union XP in its own CAS: new pair
+    firsts are 64-character SHA-256 digests over sorted canonical parent `SpeciesId`s, while an
+    imported v1 `pair|<FNV32-base36>` key derived from `_earthName || speciesName(seed)` remains
+    read-only already-paid evidence in either `xpf` or the archive. Other advertised care/duel/Scout
+    faucets still await their true v2 owners.
   - **Union (v1.8, CORRECTED in v1.8.3):** a successful breed pays **+2** to the **newborn**, plus **+5** the first time a given *species pair* is crossed (`awardXPPair`). Until v1.8.3 both awards landed on `aEntry` — which the union consumes moments later, so the XP was destroyed as it was earned. The lineage key was also `[a.kind,b.kind]`, and breeding is always Fauna×Fauna, so it could only ever read `'Fauna+Fauna'`: a once-per-parent payout wearing a lineage's name. It now keys on the two parent **species**, FNV-hashed short so it survives the ledger's 64-char load truncation.
+    V2 preserves that imported key only as a compatibility alias; every new V2 first uses the
+    collision-resistant canonical SpeciesId digest and both awards land directly on the child in
+    Breed's existing exact-five/F4 transaction.
 - **Level-ups wake innate arts, not stats.** `classKit` grants `1 + (lvl≥3) + (lvl≥6)` innate-art slots → **1 / 2 / 3 arts** at levels 1 / 3 / 6. A level-up at 3 or 6 toasts "A new innate art awakens!"
 - Levels are *your* creature's story: a **shared code arrives at level 1** (`normGenome` strips `xp`); an **exhibit** code may carry `xp` clamped to `6·81 = 486` (exactly the L9 threshold).
 
@@ -344,11 +509,40 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
 - Past the summit the ladder never ends: a new **✦N** level every **3000** score beyond 8200.
 - Each rank permanently unlocks a **nameplate color**; the default follows current rank, Eternal Frontier unlocks the iridescent foil.
 - Discrete **achievements** (the `unlocked` set via `checkAch`, e.g. `harvest10` Quartermaster, `essence500` Stockpiler, `brink`, `fieldmedic`, `gambler`) are the finer-grained milestones layered on top.
+- **Current v2 domain boundary:** `rank.ts` preserves those thresholds, weights, rewards and
+  nameplate fallback rules exactly. `achievements.ts` is the versioned, immutable 96-row manifest
+  and pure projection owner: 68 aggregate rules plus 28 action-event rules. Aggregate evaluation
+  accepts only bounded integer/set-count/boolean facts; it contains no clock or entropy source.
+  Event-owned rows report `event-owner-required` until their exact action writer has durably
+  unlocked them. This prevents an aggregate such as “one settled world” from fabricating the
+  witnessed first-settlement achievement.
+- **Current v2 app/persistence boundary:** `arc9-progression-projection.ts` maps only sanitized
+  canonical save owners into the domain snapshot; `records-rank-model.ts` exposes the exact six
+  score factors and all 96 rows, while `records-rank-panel.ts` renders their bounded Records
+  presentation without acquiring action authority. `arc9-progression-action.ts`
+  persists only newly eligible aggregate rows plus a monotonic `bestRank` mirror through the
+  generic F4 deterministic-action owner. The product, F4 authority, immutable receipt, tab-lease
+  fence and repository revision share one CAS; a stale/lost/failed write is never retried or
+  published. Postcommit verification requires the canonical save to re-project with zero eligible
+  aggregate rows and the exact expected best rank. Main schedules that refresh only after the
+  preceding product owner settles, suppresses a boot-baseline fanfare, and publishes a named-rank
+  promotion only after durability. The same typed event adapter is joined by exact owners for
+  canonical Earth `home`, world and companion `namer`, successful Legendary-pair `bredlegend`,
+  first settlement `settle1`, player-at-1–19-HP `brink`, valid-world `share`, accepted-CF1
+  `wayfarer`, twelve source-derived Survey events, source-proved `worm`/`quasar`/`dwarfg` travel,
+  and explicit Atlas Favorite `curator`. Accepted Follow composes route, Jumps, galaxy visit,
+  `wayfarer`, and any proved galaxy-kind event in its one existing receipt. They preserve unknown
+  ids, protect the 146-row bound and independently verify the committed projection without
+  inferring any other event. Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler`
+  still require their absent gameplay transactions. Explorer self-rename is a separate identity-only
+  receipt/CAS and cannot unlock `namer`.
 
 ### Compendium collection progression
 - The species catalogue is the **Compendium** (`codex`, keyed by species id; `_storeSpecies` dedupes — only a genuinely *new* species is "fresh").
 - **Rare-find ☄ Stardust:** on the **first** catalogue of a Legendary+ specimen (`grade.tier ≥ 5`) you earn **`tier − 3`** Stardust, a ✦ Rare Find cinematic, and a rarity sting. Tier ≥ 4 throws a color burst. (Never re-paid — dedupe gates it.)
-- **Binder** sets pay a **one-time** ☄ bounty on completion; the **Fifty Paragons** are named one-of-a-kind legends on fixed worlds.
+- **Binder** sets pay a **one-time** ☄ bounty on completion. Current v2 exposes exactly the seven
+  non-Paragon claims and preserves any imported Paragon-set evidence; **The Fifty Paragons** remains
+  visible but unavailable until its deterministic fixed-world discovery owner is ported.
 - **First Arrival:** reaching a system no record precedes you in pays **+2 ☄**.
 
 ### How depth affects progression
@@ -400,6 +594,13 @@ First catalogue of tier ≥ 5 → **`tier − 3`** ☄ (Legendary=5→+2, up thr
 - **`essence`** (current ☄) + **`essenceEarned`** (lifetime, drives breeding-odds bonus and Stockpiler ach); **`harvests`**, **`guardians`**, **`paragons`**, **`br`** (best rank).
 - **`scout`** — the Field Scout creature id (target of the +2 catalogue XP; must resolve to a Compendium fauna on load).
 - **`ach`** — the unlocked achievement set; ranks are *derived* (`rankInfo`), not stored.
+- **Current v2 projection boundary:** at most 146 bounded unique `ach` tokens (the mature 96-row
+  catalogue plus the save codec's 50-row compatibility allowance) are accepted. Unknown safe ids
+  remain explicit `unsupportedUnlockedIds` and still count exactly as the mature `unlocked.size`
+  rank formula did; they never create a known catalogue row. `br` remains the durable best named-rank
+  index, so unlocked nameplate colors never demote. The aggregate writer preserves existing order,
+  appends only canonical aggregate ids, and refuses a write if the complete successor would exceed
+  that bound. No partial unlock, alternate carrier, save shape, or migration was added in Arc 9.
 - Related economy/gear fields (`ea`, `cargo`, `items`, `eq`, …) are documented in `ECONOMY_LOOT_CRAFTING.md`.
 
 ## 5. Determinism
@@ -418,9 +619,47 @@ First catalogue of tier ≥ 5 → **`tier − 3`** ☄ (Legendary=5→+2, up thr
 - `DEPTH_TAX` / `depthTax` — **12131–12137**; `dangerOf` — **12139**.
 - Compendium `discoverSpecies` — **8781**; character-sheet doll render — **~16220**.
 - Save (codex/pstats/essence) — **10096 / 10186 / 10120**; load scout — **10228**.
+- Current v2 rank/achievement and saved-choice domain —
+  `port/v2/packages/domain/progression/src/rank.ts` and `achievements.ts`; exact metadata/rule,
+  threshold, boundary, unsupported-id, immutability, export and dependency sentinels live in the
+  sibling `test/rank.test.ts` and `test/achievements.test.ts`.
+- Current v2 sanitized adapter, aggregate persistence action and live Records model/panel —
+  `port/v2/apps/game/src/arc9-progression-projection.ts`, `arc9-progression-action.ts`, and
+  `arc9-nameplate-action.ts`, `nameplate-settings.ts`, `records-rank-model.ts` /
+  `records-rank-panel.ts`; fixed-point, one-CAS, stale/storage,
+  hostile-input, capacity, event-owner preservation, Main wiring and presentation evidence lives in
+  `port/v2/tests/arc9-progression.test.ts`, `arc9-main-wiring.test.ts`, and
+  `records-rank-panel.test.ts`.
+- Current exact event joins — `arc0-landing-action.ts` owns `home` only for the complete canonical
+  Earth address (including the legacy-intended Training Earth case), and `arc0-world-name-action.ts`
+  owns `namer` for a committed discovery-name action. `arc5-rename-action.ts` owns the same id for
+  one exact companion name; `arc5-breed-action.ts` owns `bredlegend` only on the proved successful
+  Legendary-pair successor; and the Arc 6 combat action/settlement own `settle1` and the exact
+  1–19-HP `brink` case. `arc9-sharing-action.ts` owns `share` only for a valid-world native Share and
+  `wayfarer` only for an already-accepted CF1 Follow route, joining each compatibility counter in the
+  same receipt/CAS. `arc9-survey-action.ts` derives twelve observation joins from the registered CF1
+  hierarchy. `arc9-travel-action.ts` derives galaxy visit plus `quasar`/`dwarfg` on arrival and
+  `worm` on proved wormhole traversal; accepted Follow folds that arrival successor into its existing
+  sharing receipt rather than opening a second write. `arc9-atlas-favorite-action.ts` owns only the
+  explicit false-to-true Favorite edge and preserves the Atlas row/route identity in place. Their
+  focused action and fixed-point tests sit beside those owners.
+- `arc9-explorer-name-action.ts` plus `explorer-name-settings.ts` own identity-only explorer
+  self-rename. The action changes only `explorerName`, uses the shipped sanitizer/24-character cap,
+  gives cleaned-empty and unchanged input no receipt, and intentionally has no achievement side
+  effect.
 
 ## 7. Open questions / pending
-- "Milestones" has no single named subsystem in code — this doc reads it as the **RANKS standing ladder + achievements**. Confirm that's the intended scope (vs. e.g. a future dedicated milestone board).
+- Arc 9's standing **rank ladder + 96 achievements** is now live through the bounded Records board,
+  AppChrome nameplate, receipt-following aggregate refresh and committed-publication achievement/
+  rank ceremonies. Newly appended known achievements use text plus sting 3; a saved named-rank
+  promotion uses text, sting 5 and effects-budgeted gold FX from AppChrome-owned geometry. The
+  saved choice now has a live Settings selector for Auto/current-rank or every permanently earned
+  color, and Settings also owns the identity-only Explorer name editor. These ceremonies are
+  notifications only; no separate item/currency reward is implied.
+- Exactly **five event IDs are explicitly blocked, not inferred**: `daily` and `decade` belong to
+  dormant Beacon/Cosmic Events; `survivor`, `fieldmedic`, and `gambler` need the unavailable hostile-
+  field and explorer-flora-care actions. Their future owners must use the same postcommit-only
+  ceremony seam; combat retains its separate bounded post-settlement cue path.
 - Field Scout XP path (+2) requires a scout to be *set* and to be a different fauna than the fresh catch; a run with no scout set banks nothing from cataloguing — intended.
 - XP has a 1e6 hard cap but L9 is reached at 486; everything above 486 is inert. Fine today; note if a soft "prestige past 9" is ever wanted.
 - Depth Tax tops out at ×2.5 (Frontier). No open balance flag, but it's the main survivability knob — watch alongside gear scut/hull.
@@ -441,7 +680,7 @@ the largest of them had never paid in any shipped build.
 | bout survived +2 | ✓ **fixed 2026-07-30** |
 | fight taken to the wire +3 | ✓ **fixed 2026-07-30** |
 | conquest lost +3 | ✓ fixed v1.8.5 |
-| defender nearly broken +5 | ✓ fixed v1.8.5 (⚠ still foreclosed by an earlier +3 — the ledger key omits the near-brink flag) |
+| defender nearly broken +5 | ✓ legacy v1.8.5 remained foreclosed by an earlier +3; current v2 repairs the shared-key bug with a stored 0→3→5 maximum and outcome-tests both orders |
 | **duel won +8** | ✓ **fixed 2026-07-30 — had never paid in ANY build** |
 
 **The duel awards (CF1805-02).** Round 7 correctly diagnosed that `mine.id` is set
