@@ -1,6 +1,6 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` universe-wide visual checkpoint matches the local working tree as of 2026-08-28 and appears immediately below; its post-change real-browser, HUMAN and physical-device evidence is still open. The Arc 1A/1C and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
+**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` universe-wide visual checkpoint matches exact signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` as of 2026-08-29 and has completed its local automated browser chain; HUMAN and physical-device judgment remain open. The Arc 1A/1C and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
@@ -8,7 +8,7 @@ decisions we actually made). Content catalogs (`BIOME_ATLAS.md` at the repo root
 fauna/flora data-pack CSVs) remain the *content* source of truth; this is the *direction* source
 of truth.
 
-## 2026-08-28 current v2 universe-wide visual checkpoint — implemented, certification open
+## 2026-08-29 current v2 universe-wide visual checkpoint — local automation certified
 
 The richer treatment is now a live **universe-wide** rendering language, not a Sol-specific filter.
 `VisualTreatmentV1` defines the finite `color` / `contrast` / `lighting` / `material` / `atmosphere`
@@ -60,14 +60,20 @@ scene/resource ruler remains intact, while one added phone outcome and one added
 `surfaceVistaWorkerActive`, `surfaceVistaMounted`, `surfaceVistaCacheEntries` and
 `surfaceVistaCachePixels` through the cold zero state, first mounted vista, repeated surface/ascent
 cycles, BFCache and reload-clear/replacement cleanup. The semantic cache ceiling is fixed at one
-entry / 412,800 pixels. This contract and its bidirectional mutation controls are browser-free green;
-no current-source 44/44 browser certificate is claimed yet.
+entry / 412,800 pixels. This contract and its bidirectional mutation controls are browser-free green.
+Exact signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` then passed the current
+SceneMemory contract **44/44** in 10,561 ms inside one serial, zero-retry local campaign: Layout
+**787/787**, Compendium **78/78**, Slice with zero findings, Glass across all **12** viewport classes
+with zero findings or instrument failures, and Recovery with a real uninterrupted
+**1,200,297.5 ms** active-browser observation. Every immutable stage passed its source/predecessor-
+bound named verifier, and the product/art sources remained unchanged through the chain.
 
-This is a local implementation checkpoint, not a Gate or campaign completion claim. A fresh clean
-committed-source Slice → Glass → Recovery chain, fixed-seed before/after visual comparisons, HUMAN
-phone/desktop art judgment, assistive-technology review, and physical-device frame-time, heat,
-battery and true GPU/resource evidence remain open. No production release, version bump or deploy
-follows from the browser-free implementation coverage.
+This is the complete local automated certificate for the current universe-polish scope, not HUMAN
+art acceptance or whole-Gate/campaign closure. Fixed-seed and six run-bound Compendium images still
+require HUMAN phone/desktop judgment; assistive-technology review and physical-device frame-time,
+heat, battery and true GPU/resource evidence remain open. The presentation-only biome authority
+does not decide gameplay-changing D-9e or wire Gate G distant-ecology playback. No hosted run,
+production release, version bump or deploy follows from this certificate.
 
 ## 2026-08-22 v2 Arc 1C overlay — current ship and surface presentation
 

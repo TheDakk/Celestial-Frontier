@@ -10,6 +10,64 @@ summary of it.
 
 ## Contents
 
+### Signed `3f69e88e…` universe-polish + bounded Arc 5 Feed certificate — complete local chain PASS
+
+Signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+`df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) remained committed,
+clean and byte-identical throughout one serial
+**Layout → SceneMemory → Compendium → Slice → Glass → Recovery** campaign on system Microsoft
+Edge `151.0.4129.107` / CDP `1.3`. Every browser stage ran once with zero automatic retries and
+passed its exact source-derived named verifier before or after its successor as applicable.
+
+- Layout `20260829-universe-polish-3f69e88ea8e3-layout` passed **787/787** across ten viewports
+  in **76,603 ms**.
+- SceneMemory `…-scenemem` passed the current input-v4 contract **44/44** in **10,561 ms**,
+  including phone/desktop biome-vista lifecycle and complete cleanup.
+- Compendium `…-compendium` passed **78/78** in **46,239 ms** with zero findings, zero blocked
+  outcomes and all six review-image bindings under the active calibrated ruler.
+- Slice `…-slice` passed in **434,263 ms** with zero findings/scopes, ten screenshots and exact
+  report SHA-256 `33aa30b308e5358e4fc699d9749d804ba8086ebfe6b0ee305314deb1b6483411`.
+- Glass `…-glass` consumed that exact Slice report, passed all **12** viewport classes in
+  **85,823 ms** with zero findings, zero instrument failures and no blocked or omitted controls,
+  and has report SHA-256 `2a67a258f4e0d69a641bec099374de036a9bceb53ae66b328a1221f252f7d591`.
+- Recovery `…-recovery` consumed those exact Slice and Glass hashes, passed all ten stages in
+  **1,290,953 ms**, and retained a real uninterrupted active-browser observation of
+  **1,200,297.5 ms**. It crossed the exact next-cycle boundary with zero findings/fatal events,
+  complete cleanup and report SHA-256
+  `b78e8a52e8746afbe89b7866d5d7e35b519d3168de1da8697c2ffd421b5a5907`.
+
+The first manual Glass verifier invocation omitted its required `--slice-run` argument and exited
+at CLI usage parsing before reading a report or launching a browser. The immediately corrected
+Slice-bound verifier passed against the immutable report and hash above. This was neither a Glass
+rerun nor an evidence retry; the report's own retry count remains zero.
+
+- `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_032631339.json.gz`: 5,205 compressed bytes,
+  SHA-256 `8f6c97b60db09bde8480a1d8b44eac439a886d3385b2103eadf6ef74b3c7e0e1`; 106,976 raw bytes,
+  SHA-256 `2b0cc3ed3de88753d424bd6284f1dd95c4f6b27a6116171727da67ebe7923856`.
+- `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_032713794.json.gz`: 32,712 compressed bytes,
+  SHA-256 `1dd12b2504440f2e4547d85249483abfebcabb55b6fc2c7df9a14fd58b85821b`; 426,923 raw bytes,
+  SHA-256 `3077dba727edcd4bac470e7278f401dca82768138837123eba4e5e5dd6173db9`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_032813280.json.gz`: 557,209 compressed bytes,
+  SHA-256 `89244a33ac7f29637c27ca57b1d5df30dcbf764e23569962025f7ab9ad4a772a`; 8,692,212 raw bytes,
+  SHA-256 `58824d5559c2a24eb74710b2f292e5d8b9413521085f95ab73900e00ddd1fab4`.
+- `ARC4_SLICE_UNIVERSE_POLISH_PASS_20260829_033550528.json.gz`: 1,976 compressed bytes,
+  SHA-256 `9706d63d80752d850ece12e844329c823175286febb76d3aaa6759e900cb1662`; 6,193 raw bytes,
+  SHA-256 `33aa30b308e5358e4fc699d9749d804ba8086ebfe6b0ee305314deb1b6483411`.
+- `ARC4_SLICE_UNIVERSE_POLISH_PASS_20260829_033550528.log.gz`: 3,085 compressed bytes,
+  SHA-256 `5ee5c5cbfb42f555694ffc5a23f0fc459cccbac87d77b4ec660722121fa955e4`; 6,177 raw bytes,
+  SHA-256 `267fae851a68cdf5f74f2552d8ee5a11e9c0f58f718434b0e6bcd10098ea2172`.
+- `ARC4_GLASS_UNIVERSE_POLISH_PASS_20260829_033742848.json.gz`: 78,326 compressed bytes,
+  SHA-256 `c395ec22a02ef4eeaf42930566fb908167a8a6aee740b538d1560b95c51b0f54`; 864,167 raw bytes,
+  SHA-256 `2a67a258f4e0d69a641bec099374de036a9bceb53ae66b328a1221f252f7d591`.
+- `ARC4_RECOVERY_UNIVERSE_POLISH_PASS_20260829_035953353.json.gz`: 305,489 compressed bytes,
+  SHA-256 `7ef48c60a5fb4bbbf21dccac36bcd79e393b275692ed86fd58fc8640e2a5924f`; 3,842,929 raw bytes,
+  SHA-256 `b78e8a52e8746afbe89b7866d5d7e35b519d3168de1da8697c2ffd421b5a5907`.
+
+All seven carriers pass gzip integrity. This exact chain is the complete local automated
+certificate for the universe-wide visual polish and bounded Arc 5 Feed scope. It supplies no HUMAN visual,
+listening, screen-reader, first-journey, physical-device heat/battery/GPU, whole-Gate, hosted,
+merge, release, version or deployment authority.
+
 ### Signed `916d921e…` universe-polish restart — four PASS predecessors, rendered-Guide Glass instrument stop
 
 Signed clean source `916d921ebf787ed6c58ec8db567e00bbb61adbf8` (tree

@@ -1,5 +1,24 @@
 # Celestial Frontier — Save System
 
+> **Current universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
+> signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+> `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
+> chain on Edge `151.0.4129.107` / CDP `1.3`. Layout passed **787/787** in 76,603 ms,
+> SceneMemory **44/44** in 10,561 ms and Compendium **78/78** in 46,239 ms. Slice passed with zero
+> findings in 434,263 ms (raw report `33aa30b3…3411`); Glass passed all 12 viewports/reloads,
+> **104/104** controls and **36/36** Arc 4 outcomes in 85,823 ms with zero findings or instrument
+> failures (raw report `2a67a258…d591`); Recovery passed all **10/10** stages and **15/15**
+> observation outcomes in 1,290,953 ms, including 1,200,298 ms of real active observation (raw
+> report `b78e8a52…5907`). Every stage ran once with zero automatic retries and passed exact named
+> verification; Slice → Glass → Recovery hashes and source identities cross-bind exactly.
+>
+> The Arc 5 persistence claim is only Feed's exact one-creature/one-flora fenced successor, durable
+> receipt, publication/reload fixed point and constant-space replay fence. No wider care, breeding or
+> companion mutation is implied. HUMAN listening/visual judgment, screen-reader behavior, physical-
+> device heat/battery/GPU evidence, whole-Gate, hosted/merge, release/version and deployment authority
+> remain open. Compatible browser point updates remain provenance only. Earlier dated evidence blocks
+> below remain historical verbatim where superseded.
+
 > **2026-08-27 exact-evidence correction:** the browser fixture now observes the staged ecology
 > epoch as a private candidate, proves that the published value is unchanged before durability,
 > invokes the real persistence seam, then proves published, raw stored and reloaded values all equal
@@ -33,12 +52,13 @@
 > held-writer correction and passed its complete browser-free checkpoint. Final3 Layout passed
 > 787/787 plus named verification; SceneMemory then stopped before measurement on stale live
 > `buildDist`/`gameMain` binding, so Compendium and all later stages did not run. Browser-free
-> derivation also found Compendium's measurement current but built producer stale. The current
+> derivation also found Compendium's measurement current but built producer stale. The bounded
 > repair rebinds only those live authorities and adds a standard-build pre-browser regression;
 > persistence bytes, semantics, rulers and numeric ceilings do not change. The complete
 > browser-free battery, authority printer and root validator are green; three independent final
-> binding/test, whole-diff, and documentation/evidence reviews are CLEAR. The signed clean commit
-> containing this record owns a fresh final4 restart from Layout.
+> binding/test, whole-diff, and documentation/evidence reviews are CLEAR. Exact signed descendant
+> `3f69e88…` now owns the completed Layout → SceneMemory → Compendium → Slice → Glass → Recovery
+> chain recorded above.
 
 > **2026-08-27 persistence authority/race reconciliation (current source truth):** legacy backup
 > promotion is one atomic compare-and-apply over the exact primary bytes that were proved loadable
@@ -78,10 +98,10 @@
 > browserless checkpoint plus one intentional skip, all TypeScript/no-unused programs, build,
 > validation/fingerprint, evidence/preview selftests and isolated real-browser outcome controls;
 > three independent current-byte reviews are CLEAR. Final3 then stopped pre-measurement on stale
-> memory-budget bindings. The current source-derived binding repair is fully browser-free green and
+> memory-budget bindings. The source-derived binding repair is fully browser-free green and
 > three independent final binding/test, whole-diff, and documentation/evidence reviews are CLEAR.
-> The signed clean commit containing this record owns final4 exact-head browser certification. Those
-> certificates remain pending.
+> Exact signed descendant `3f69e88…` now supplies the complete exact-head browser chain and Recovery
+> certificate recorded above.
 > Engineering protection follows the same ownership split: exact Engineering details and every
 > action remain unavailable, while the current-ship preview stays readable because it derives from
 > the separate saved capability/reach projection used by travel. The panel may not invent Arc 3
@@ -152,9 +172,9 @@
 > playback is the narrow Tame-fauna greeting and exact accepted Feed acknowledgement after their
 > durable current-system results and matching current ownership revisions; neither writes save state
 > or reward. Broader creature,
-> Compendium, ambience, music and combat audio remain absent. Exact signed Final13 later completed
-> the uninterrupted 20-minute Arc 4 Recovery certificate for its unchanged source. The newer working-
-> tree candidate still requires a fresh Slice → Glass → Recovery chain; HUMAN review remains open.
+> Compendium, ambience, music and combat audio remain absent. Exact signed source `3f69e88…`
+> completed the uninterrupted 20-minute Arc 4 Recovery certificate after its exact Slice and Glass
+> predecessors; HUMAN review remains open.
 
 > **2026-08-25 Arc 3–5 persistence overlay — recorded local boundary and exact-input evidence:** Arc 3 adds the strict
 > `engineering/arc3.state` carrier and a bounded legacy seed-only migration that resolves every

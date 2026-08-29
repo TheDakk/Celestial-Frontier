@@ -1,10 +1,10 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
 **STATUS:** §1's legacy source facts remain verified against **v1.8.9**; the current v2 exact
-43-biome domain-profile authority and live full-vista route match the local working tree as of
-**2026-08-28**. §§2–4 remain design-pack content and are NOT derivable from source — see PROVENANCE
+43-biome domain-profile authority and live full-vista route match exact signed source
+`3f69e88ea8e34fdb8d9913276601b426ada783ae` as of **2026-08-29**. §§2–4 remain design-pack content and are NOT derivable from source — see PROVENANCE
 below. The environmental-audio overlay matches the pure canonical current-world hint join and
-remaining non-playing v2 contract as of **2026-08-28**. Audited and promoted from `tools/` to the repo root during port
+remaining non-playing v2 contract as of **2026-08-29**. Audited and promoted from `tools/` to the repo root during port
 **Phase 0** (Gate A); the file itself dates from 2026-07-20.
 
 > **2026-08-27 current v2 correction:** after owned Deep Scanners, the exact eligible scanned,
@@ -16,7 +16,7 @@ remaining non-playing v2 contract as of **2026-08-28**. Audited and promoted fro
 > emit one contented expression after its settled accessible status; neither path is ambience or a
 > general biome soundscape. The 2026-08-25 paragraph below is retained as a historical checkpoint.
 
-> **2026-08-28 current universe-wide visual checkpoint:** all 43 live keys now form one exact,
+> **2026-08-29 current universe-wide visual checkpoint:** all 43 live keys now form one exact,
 > recursively immutable `BiomeProfileV1` authority in dependency-neutral
 > `@cf/domain-biome-profile`. Schema `cf.domain.biome-profile.v1` and digest
 > `bpd1-6fce883d4d70e3b6bde0fb184b416e8e` bind the authored signature,
@@ -45,10 +45,16 @@ remaining non-playing v2 contract as of **2026-08-28**. Audited and promoted fro
 > missing/mismatched/bypass controls. SceneMemory input-v4 now adds phone and desktop
 > `surface-vista-lifecycle` outcomes to the historical ruler for 44 total, binding worker-active,
 > mounted, cache-entry and cache-pixel diagnostics through cold, surface/ascent, BFCache and
-> reload-clear/replacement cleanup; its browser-free controls are green, but no current 44/44 browser
-> run is claimed. A fresh post-change real-browser chain, fixed-seed image
-> review, HUMAN art judgment, and physical-device frame/heat/battery/GPU evidence remain open; this
-> checkpoint does not close Gate F or the wider campaign.
+> reload-clear/replacement cleanup; its browser-free controls are green. Exact signed source
+> `3f69e88ea8e34fdb8d9913276601b426ada783ae` then passed SceneMemory **44/44** inside the serial,
+> zero-retry Layout **787/787** → SceneMemory → Compendium **78/78** → Slice →
+> 12-viewport Glass → 20-minute Recovery local chain. Every stage passed its exact
+> source/predecessor-bound named verifier, with no product-source change. Fixed-seed and six
+> run-bound Compendium images still require HUMAN art judgment, and physical-device
+> frame/heat/battery/true-GPU evidence remains open; this certificate does not close Gate F or the
+> wider campaign. `BiomeProfileV1` remains presentation-only: it neither implements gameplay-changing
+> D-9e nor wires Gate G live distant-ecology playback. No hosted, release, version or deployment
+> authority follows.
 
 > **2026-08-25 Arc 3/4 historical opportunity boundary:** canonical Arc 3 world snapshots then derived
 > finite deposits, exceptional/cosmic veins, raw tier and player-facing rarity from the exact

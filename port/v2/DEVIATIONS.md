@@ -1,23 +1,25 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
-> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
-> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
-> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
-> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
-> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
-> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
-> ran once and passed named verification; there were no retries, findings or instrument failures.
-> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
-> exact source. It changes no product, persistence, art, save, version, ruler or browser policy.
-> It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment authority;
-> physical-device heat/GPU evidence remains open. The seven evidence carriers and synchronized
-> references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
-> Keep temporary full caffeinate active while authorized local work continues, then restore it when
-> that work is complete. Next complete the full-code review/polish checkpoint, then begin authorized
-> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is provenance only
-> and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
-> below is historical where superseded.
+> **Current universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
+> signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+> `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
+> and unchanged through one serial **Layout → SceneMemory → Compendium → Slice → Glass →
+> Recovery** campaign. Layout passed 787/787 in 76,603 ms; SceneMemory input-v4 passed 44/44 in
+> 10,561 ms; Compendium passed 78/78 in 46,239 ms; Slice passed in 434,263 ms with zero findings
+> (`33aa30b3…`); Glass consumed that exact Slice and passed all 12 viewport classes in 85,823 ms
+> with zero findings or instrument failures (`2a67a258…`); Recovery consumed both exact
+> predecessors and passed all ten stages in 1,290,953 ms with a real uninterrupted 1,200,297.5 ms
+> active-browser observation (`b78e8a52…`). Every stage ran once with zero automatic retries and
+> passed its exact source/predecessor-bound verifier. The full v2 battery is 163 files / 1,712
+> passed + one skipped, and all TypeScript configurations are green.
+>
+> This is the complete local automated certificate for the universe-wide visual treatment and
+> bounded Arc 5 Feed scope. It is not HUMAN visual, listening, screen-reader or first-journey
+> judgment; physical-device heat/battery/true-GPU evidence, Gate G distant playback and D-9e remain
+> open, as do whole Gates A–I. It grants no hosted attempt, merge, release/version or deployment
+> authority. Exact carriers, sizes and hashes are preserved in `audits/README.md`. Edge point
+> version is provenance only; compatible updates never trigger rebaseline or recalibration.
+> Earlier Final13/Final12/Final11/Final10 wording below is historical where superseded.
 
 **The rule (plan §20 Gate A): the port is BUG-FOR-BUG parity until a deviation is
 approved here.** Every entry below is a place the original does something imperfect
@@ -301,7 +303,7 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   retain the historical eager default unless they explicitly select the production lifecycle.
 
 - ★ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — shell cleanup, clean calibration, activation and
-  signed Final13 docs-descendant recertification are complete.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
+  signed current-source recertification are complete.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
   40/42 with exact node/listener and heap breaches, one attempt, zero retries and complete cleanup.
   The evaluator now names field/value/ceiling and retains valid zero-valued heap components. Dirty
   diagnostic `20260827165427809-91398-352d7132df` proves the repaired 676/673 nodes and 71/70
@@ -322,7 +324,12 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   sample changed. Final13 supplied the required fresh signed successor chain from Layout. Exact Edge point version remains provenance: a compatible
   update alone never starts calibration, repins authority or moves a threshold.
 
-- ★ **D-SCENEMEM-V4-SURFACE-VISTA — current contract expanded; fresh browser evidence open.**
+  Exact signed `3f69e88…` now owns the current report: run
+  `20260829-universe-polish-3f69e88ea8e3-scenemem` passed input-v4 44/44 in 10,561 ms with complete
+  phone/desktop vista lifecycle and cleanup inside the once-only verified serial chain. This adds no
+  numeric-ceiling, historical-sample or browser-authority change.
+
+- ★ **D-SCENEMEM-V4-SURFACE-VISTA — current contract and exact browser evidence green; HUMAN/physical evidence open.**
   The current `cf-v2-scene-memory-input/v4` keeps historical input-v3/42 reports replayable as
   history but requires **44** outcomes for terminal certification. One new phone and one new desktop
   `surface-vista-lifecycle` outcome bind raw `surfaceVistaWorkerActive`,
@@ -331,9 +338,11 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   reload-clear→replacement cleanup. The semantic budget is fixed at one cached entry / 412,800
   pixels and cannot be widened. Missing fields, worker or mount leaks, entry/pixel overflow,
   vacuous all-zero evidence, retained reload cache and raw/re-derived drift are bidirectionally
-  controlled. Browser-free contract/budget/tool/workflow checks are green; no current-source 44/44
-  SceneMemory run, downstream chain, HUMAN judgment or physical-device heat/GPU authority is
-  claimed yet.
+  controlled. Browser-free contract/budget/tool/workflow checks are green. Exact signed
+  `3f69e88…` SceneMemory passed 44/44 with complete cleanup, and the unchanged source then passed
+  Compendium, Slice, Glass and Recovery under the serial no-retry law. HUMAN judgment and physical-
+  device heat/battery/true-GPU authority remain open; this exact executable result does not close
+  Gate D, F or I.
 
 - ★ **D-GATE-B-63 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 63 domain
   sources against DOM, storage, `navigator`, network, wall/monotonic clock and uncontrolled random.
@@ -397,7 +406,10 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   `feed-completed` / `accepted` expression. Other expressions, live distant ecology,
   ambience/music/combat, assets, device plateau and HUMAN
   listening remain open.
-- ★ **D-ARC4-RECOVERY-CERT — Final10/Final11 instrument stops preserved; repaired replay and Final13 certificate green.**
+  Exact signed `3f69e88…` Slice passed the bounded Feed acknowledgement with the raw-CDP
+  `Oscillator` → exact same-context `AudioDestination` route, exact accessible-status/visual-toast
+  split, replay/stale controls and two-native-click loser; exact Slice-bound Glass then passed.
+- ★ **D-ARC4-RECOVERY-CERT — historical instrument stops preserved; exact `3f69e88…` certificate green.**
   Signed `4405fb2…` supplied named-green Layout, SceneMemory, Compendium, Slice and
   Glass predecessors, then its one-attempt Recovery passed fixture, 16-attempt burn-down,
   suppression, close/checkpoint and closed/offline proof before stopping `instrument-fail` at
@@ -416,7 +428,19 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   immutable stored FAIL; the repaired assessor replay was green and supplied Final12, whose distinct
   immutable Slice control stop remains preserved. Exact signed Final13 source `7cb0969…` then
   completed the full once-only named-verified chain and earned the real local Recovery certificate.
-- ★ **D-COMPENDIUM-CALIBRATION — version-tolerant Final13 renewal passed; visual judgment remains open.**
+  Exact signed `3f69e88…` then repeated the complete law on the current universe-polish/Feed source:
+  Slice `33aa30b3…`, Glass `2a67a258…` and Recovery `b78e8a52…` were predecessor-bound and
+  named-verified; Recovery passed all ten stages in 1,290,953 ms with the real 1,200,297.5 ms
+  uninterrupted observation. No browser retry occurred. This is bounded automated evidence, not
+  HUMAN, whole-Gate, hosted or release authority.
+- ★ **D-COMPENDIUM-CALIBRATION — version-tolerant current renewal passed; visual judgment remains open.**
+  Current exact run `20260829-universe-polish-3f69e88ea8e3-compendium` passed 78/78 in 46,239 ms
+  with zero findings, zero blocked outcomes and all six review-image bindings, under producer
+  `d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271` and budget-file SHA-256
+  `02ee0ada076e444b7f3ad67c47c3de688bbd290d7e1a9a9e7570168f2d4c29f0`. It ran once inside the
+  exact signed `3f69e88…` chain. The six images remain HUMAN review inputs, not visual judgment.
+
+  **Historical Final13 renewal:**
   Final13 run `20260828-phase4-final13-7cb09699726b-compendium` passed 78/78 in one attempt with zero
   retries under current producer `ba67d4351ea9d5905c1948b7a8ecf7fe6761dd3080263cd43ebaa67d4ca8ea30`
   and budget-file SHA-256 `eba266bd5d771a214eb89a80c7e5c8e8f1bb26ed48272e7a3eccc4688768fca5`.
@@ -479,7 +503,7 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   instrument failures, or retries). Both reports name base `768fb32` but bind different dirty
   snapshots—Slice `29d54731…`, Glass `d9b51284…`—so this is bounded local exact-input proof, not
   exact-head/full-battery, hosted, integration, HUMAN, preview, release, or deployment authority.
-- ◐ **D-ARC4-OWNERSHIP — player-facing durable authority and Final13 Recovery proof; HUMAN review remains open.** The full
+- ◐ **D-ARC4-OWNERSHIP — player-facing durable authority and exact current Recovery proof; HUMAN review remains open.** The full
   epoch-bound roster, contact capability, 18 owner namespaces, ownership-v1/import codecs,
   acquisition snapshot and pure capture planner now feed an app-wired writer. Boot prepares absent
   ownership or reconciles a projectable mirror in the shared receipt-free CAS and protects future,
@@ -500,7 +524,9 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   tree `b83ccef5…`. Guide was 24 partial/17 unavailable, the draft had 54 bullets, and Training
   remains six lessons plus graduation with no Capture lesson. Final11 passed the uninterrupted
   20-minute observation and recovered UI; Final13 supplied the repaired assessor-bound certificate.
-  HUMAN review remains open. No Charter bioscan, targeted preview, hosted or release
+  Exact signed `3f69e88…` repeated the current-source once-only chain and Recovery passed all ten
+  stages with a real 1,200,297.5 ms uninterrupted observation. HUMAN review remains open. No Charter
+  bioscan, targeted preview, hosted or release
   authority is implied.
 - ◐ **D-ARC5-OWNERSHIP-V2 — compact authority plus narrow player-live Feed.** V2 binds capture
   receipts, deterministic fauna-only children, ordered parents, dispositions and tombstones. Its
@@ -517,10 +543,14 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   one receipt/CAS. Its inline polite/atomic status is the sole accessible result announcement; the
   simultaneous toast is visual-only. One constant-size latest-successful-ownership slot rejects the
   same and every superseded result before one post-settlement contented expression may play. The
-  strengthened Slice oracle requires the started oscillator to reach an `AudioDestinationNode`
-  through nodes/edges in the oscillator's same WebAudio context; browser-free controls are green and
-  the fresh current-source browser run remains open. Breeding, broader care, assignment and missions
-  remain unavailable. Its historical exact-input
+  strengthened Slice oracle projects raw CDP `Oscillator` / `AudioDestination` vocabulary and
+  requires the started source to reach exactly one destination through nodes/edges in the same
+  WebAudio context. Browser-free bidirectional controls are green. Exact signed `3f69e88…` Slice
+  passed that route, exact Feed settlement/reload, accessible status/visual-toast split and the
+  two-native-click stale race with zero findings; exact Slice-bound Glass and predecessor-bound
+  Recovery then passed. This is the bounded Arc 5 Feed scope only. Breeding, broader care,
+  assignment, missions, HUMAN listening and Gate G distant playback remain unavailable/open. Its
+  historical exact-input
   Slice
   `20260825213041239-98104-c96d3b2d0652` passed on Edge `151.0.4129.101` in 363,053 ms (report/log
   SHA-256 `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /

@@ -1,23 +1,25 @@
 # Celestial Frontier — PROCESS LAWS
 
-> **2026-08-28 Final13 exact-chain law — certified locally:** repair an oracle on preserved evidence,
-> then certify only a fresh unchanged-source chain; never relabel or retry the stored red. Exact
-> signed source `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
-> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged while
-> Layout 787/787, SceneMemory 42/42, Compendium 78/78, Slice, 12-viewport Glass and Recovery each
-> ran once and passed named verification. Recovery bound the exact Slice (`b001d8a1…`) and Glass
-> (`c5805492…`) predecessors, passed in 1,290,887 ms and retained a real 1,200,308.5 ms active
-> observation (`79f2bf8e…`). There were no retries, findings or instrument failures. This establishes
-> the stable local Phase-4 automated checkpoint and real Recovery certificate for that exact source;
-> Final11/Final12 remain immutable historical reds. It is not HUMAN judgment, whole-Gate,
-> hosted/merge, release/version or deployment authority, and physical-device heat/GPU evidence
-> remains open. The seven evidence carriers and synchronized references are preserved in signed local
-> commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`. Keep temporary full caffeinate active while
-> authorized local work continues, then restore it when that work is complete. Complete the full-code
-> review/polish checkpoint before authorized current-system Arc 7/8 universe-wide
-> visual polish. Edge `.107` / CDP `1.3` is provenance only; compatible updates never rebaseline.
+> **2026-08-29 exact-chain law — certified locally:** repair an oracle on preserved evidence, then
+> certify only a fresh unchanged-source chain; never relabel or retry the stored red. Exact signed
+> source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+> `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
+> and unchanged while Layout 787/787, SceneMemory input-v4 44/44, Compendium 78/78, Slice,
+> 12-viewport Glass and Recovery each ran once with zero automatic retries and passed its exact
+> source/predecessor-bound verifier. Recovery bound the exact Slice (`33aa30b3…`) and Glass
+> (`2a67a258…`) predecessors, passed all ten stages in 1,290,953 ms and retained a real uninterrupted
+> 1,200,297.5 ms active-browser observation (`b78e8a52…`). The full v2 battery is 163 files / 1,712
+> passed + one skipped, with all TypeScript configurations green.
+>
+> That evidence certifies the universe-wide visual treatment and bounded Arc 5 Feed scope only.
+> HUMAN visual/listening/screen-reader/first-journey judgment, physical-device heat/battery/true-GPU
+> evidence, Gate G distant playback and D-9e remain open, as do whole Gates A–I. It grants no hosted
+> attempt, merge, release/version or deployment authority. Exact carriers, sizes and hashes are in
+> `audits/README.md`. Edge `.107` / CDP `1.3` is provenance only; compatible updates never
+> rebaseline or recalibrate. Earlier Final13/Final12/Final11/Final10 evidence remains immutable
+> history.
 
-**STATUS:** current as of 2026-08-28. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-29. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
