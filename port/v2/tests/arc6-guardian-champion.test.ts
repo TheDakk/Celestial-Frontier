@@ -9,7 +9,6 @@ import {
   createLegacyDiscoveryRecordV1,
   migrateOwnershipStateV1ToV2,
   ownershipContentId,
-  type CreatureInstanceId,
   type DiscoveryRecordId,
   type OwnershipStateV2,
 } from '@cf/domain-acquisition';

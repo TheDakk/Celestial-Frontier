@@ -31,12 +31,12 @@
 > unreachable or past-chapter sources, saturated progress, stale authority and failed writes leave
 > Charter state unchanged; only a qualifying bank may reconcile an imported chapter. Capture and
 > Search travel now use the exact galaxy/star parent hierarchy, so colliding seeds at different
-> coordinates inherit no reach. The final full browser-free suite is **230 files / 2,315 passed + 1
+> coordinates inherit no reach. The final full browser-free suite is **233 files / 2,333 passed + 1
 > skipped** and all three TypeScript programs are green. `compendiummem:selftest` passes **222
 > independent controls**; the authority printer exits 0 and current-authority tests pass **45/45**.
 > Live SceneMemory build/budget authority is
-> `e556d4223a320511cf48302b3d399d369c74187138f80e44f6af7ed029c588bf` /
-> `11a2ab04abfa3d9300a55c51a69a781c23ebdf4346b33cde3cabc5623fae9bfc`; live Compendium
+> `30ac9f97753a8b44fdd75ff0299c48ac5b9b9cced3cd465909b1a598e4f08750` /
+> `158ed95e0936810ef25c0e21d5eceae9d1a73c7111fa087e58a38aa76c1dc308`; live Compendium
 > measurement/producer/budget authority is
 > `7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4` /
 > `053f520c5149e66cbf1ee843c0873a531757b598f5830a7712a728537607890d` /
@@ -86,6 +86,22 @@
 > verifies. The Guide now has **34 partial / 7 unavailable**
 > topics and the cumulative development bulletin has **73 bullets**. No later successor inherits the
 > older browser certificate or grants hosted, release/version or deployment authority.
+
+> **PR #35 tracked-CI parity repair (2026-08-29; local only):** authorized no-retry run
+> `33273328362` tested exact head `390e870…` against base `7a9f4c1…` and stopped in the v2 static
+> suite. Five suites read ignored root `main.js`, which existed locally but in neither Git tree; two
+> synchronous evidence children crossed Vitest's five-second case limit under Linux contention.
+> Legacy-source tests now extract the unique tracked `celestial-frontier.html` script byte-for-byte,
+> with no ignored fallback or normalization. Evidence children have an explicit 15-second hard
+> timeout below a 20-second outer test and independently classify timeout, spawn failure, nonzero
+> exit and missing success marker. A clean committed tracked-only rehearsal now precedes hosted
+> authorization and both guarded workflows run its mutation-sensitive selftest immediately after
+> installing v2. The repair also clears four previously hidden `artunused` findings. Its sole
+> product-source cleanup changes only a 20-byte source-map delta: all 29 runtime files and the PWA
+> build ID remain byte-identical, so SceneMemory's exact full-dist provenance was rebound without
+> changing a numeric ceiling, browser contract, collector or runtime asset. The consumed run remains
+> immutable red; no replacement hosted attempt, push, merge, browser certificate, HUMAN acceptance,
+> release or deployment is authorized.
 
 ## Current port status — 2026-08-29
 
@@ -199,7 +215,7 @@ phase and changes only SceneMemory producer identity, not a ruler. Exact signed 
 `55126af…` subsequently passed current input-v4 **44/44** with complete phone/desktop lifecycle and
 cleanup in 10,672 ms.
 
-The final current browser-free battery is green: full v2 **230 files / 2,315 passed + 1 skipped**,
+The final current browser-free battery is green: full v2 **233 files / 2,333 passed + 1 skipped**,
 all three TypeScript configurations, `artunused`, current producer derivation, Glass and Recovery
 selftests, and independent product/instrument reviews. Exact signed `3f69e88…` then passed the
 complete serial browser chain once with zero retries: Layout **787/787**, SceneMemory **44/44**,
@@ -2447,6 +2463,49 @@ hosted run `32420327368` was consumed at its 40-minute lifecycle-pending ceiling
 verdict. At that checkpoint PR #32 was blocked under the then-frozen efficiency gate. No timing,
 retry, fallback, product, launch-argument, or producer drift occurred in that historical run.
 
+### Tracked-only prehosted rehearsal
+
+Run the mutation controls during development:
+
+```sh
+node tools/tracked-input-preflight.mjs --selftest
+```
+
+Run the full gate only after committing the exact candidate and before requesting authorization for
+any changed-head push or hosted battery:
+
+```sh
+node tools/tracked-input-preflight.mjs
+```
+
+The full gate requires the tracked worktree and index to equal HEAD, rejects forgotten source-owned
+untracked or ignored `*.test.*` / `*.spec.*` files while excluding dependency-owned `node_modules`
+tests, exports only the exact index into an owned temporary tree and
+runs `npm ci` there. It then executes, in order, `npm test`, all three-program typecheck,
+`artunused`, `artaudit`, `overridecheck`, `overridecontrol`, `coveragegap`, `speccheck` and the
+standalone current-producer authority test. HEAD, tracked cleanliness and forgotten tests are
+rechecked immediately before PASS so concurrent work cannot relabel an older snapshot. Unrelated
+ambient files and outputs generated inside the snapshot are allowed; no workspace `node_modules`
+is linked or reused.
+
+The selftest proves both directions with synthetic Git repositories: an ambient untracked or
+ignored dependency can make the ordinary tree pass but is absent from the snapshot; tracking the
+dependency makes the snapshot pass; run-generated ignored output remains available; forgotten
+untracked and ignored tests, dirty tracked bytes, a changed HEAD, command removal/reordering,
+soft-fail wiring and non-adjacent workflow placement all fail. A dependency-owned test under a
+literal `node_modules` path is retained as the false-positive control and remains excluded. Both
+guarded workflows run this selftest immediately after their v2 install and before parity or browser
+work.
+
+`test-support/tracked-v1-source.ts` is the only port test adapter for legacy v1 bytes. It extracts
+the unique inline script from committed `celestial-frontier.html` without trimming or newline
+normalization; ignored local `main.js` is never a test input or fallback. Synchronous evidence
+selftests use `test-support/bounded-child.ts` with an explicit 15-second hard child bound beneath a
+20-second outer case and distinct timeout/spawn/nonzero/missing-marker diagnoses.
+
+This gate establishes hermetic browser-free CI parity only. It is not hosted evidence, a browser
+certificate, HUMAN acceptance, merge authority or release authority.
+
 ### Strict current browser evidence chain
 
 Run this sequence from `port/v2` on one unchanged clean committed source. Each report ID is
@@ -2482,6 +2541,7 @@ node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_
 
 | Tool | Role |
 |---|---|
+| `node tools/tracked-input-preflight.mjs --selftest` / `node tools/tracked-input-preflight.mjs` | Mutation-controls the tracked-only boundary, then—only from a clean committed candidate—exports the exact index, installs in isolation and executes the complete hosted browser-free/static command plan with start/end source stability. This is the mandatory preauthorization rehearsal, not hosted or browser evidence. |
 | `npx vitest run tests/current-producer-authorities.test.ts` / `node tools/print-producer-authorities.mjs` | Before browser installation or campaign work, performs one standard app build under the shared workspace lock and compares SceneMemory plus Compendium's live budget records directly to independently derived current source/dist authorities. The test is automatically included in `npm test`; source, build, forged duplicate-constant, recomputed index and recomputed owner mutants must fail with exact mismatch paths. The printer reports those paths and exits nonzero on any mismatch. It never rewrites budgets or historical samples and is not a browser certificate. |
 | **Historical Final11 campaign evidence** | Signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc` passed Layout 787/787, SceneMemory 42/42, Compendium 78/78 with six PNGs, Slice with zero findings/ten PNGs and all 12 Glass viewports with zero findings or instrument failures; every stage ran once and passed named verification. Recovery ran once for 1,291,034 ms and passed all 15 observation outcomes/309 samples, the uninterrupted 20-minute window, exact next-cycle boundary and recovered UI. Its final assessor failed only `activePlayProjection` and `closeCheckpoint`; cleanup passed and no retry occurred. Final11 is immutable, instrument-red rather than product-red, and not a Recovery certificate. Exact carriers are in `audits/README.md`. |
 | **Historical Final11 Compendium evidence** | Run `20260828-phase4-final11-1ca67156e27d-compendium` passed 78/78 with six PNG bindings. Raw/gzip SHA-256 are `bc47a2d768080cd9d04257d300dcb4d009035d6611792d10f020d0beb179d5c8` / `d78a6fee001583293645de26817be1e0a2241233f377ac558046a379396c9274`. No numeric ruler, sample, producer policy or 55-bullet draft count changed. HUMAN visual judgment remains open. |

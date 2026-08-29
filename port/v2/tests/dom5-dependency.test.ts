@@ -11,10 +11,11 @@ import {
 } from '@cf/domain-strays';
 import { canon } from './parity.js';
 import { probeRaw } from './baseline.js';
+import { readTrackedV1Source } from '../test-support/tracked-v1-source.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.join(here, '..');
-const projectRoot = path.join(v2Root, '..', '..');
+const legacySource = readTrackedV1Source().script;
 
 type Graph = Map<string, Set<string>>;
 
@@ -73,7 +74,7 @@ function firstCycle(graph: Graph): string[] | null {
 }
 
 function exactMainLine(anchor: string): { readonly text: string; readonly line: number } {
-  const matches = fs.readFileSync(path.join(projectRoot, 'main.js'), 'utf8')
+  const matches = legacySource
     .split('\n').map((text, index) => ({ text, line: index + 1 }))
     .filter(({ text }) => text.includes(anchor));
   expect(matches, `unique main.js anchor ${anchor}`).toHaveLength(1);

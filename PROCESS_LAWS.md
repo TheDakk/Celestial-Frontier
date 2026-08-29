@@ -568,6 +568,36 @@ merge authority is not standing Actions-spend authority. Negative-control the wo
 automatic triggers, a run-by-default input, a missing job guard, a decoy guard, a second battery
 runner, an unparked publisher, or an unknown workflow must all fail locally before any push.
 
+⚠⚠ **LOCAL GREEN THAT READS AN IGNORED INPUT IS NOT CI EVIDENCE** (2026-08-29).
+PR #35 run `33273328362` exposed five suites that read root `main.js`: it existed on the development
+Mac but was ignored and absent from both the exact PR head and base. The ordinary worktree therefore
+passed inputs a clean checkout could never receive. A port test needing legacy bytes must consume
+the unique inline script in tracked `celestial-frontier.html` through one byte-exact helper. Never
+fall back to local `main.js`, trim it, normalize line endings or let two extractors disagree.
+
+Before authorizing hosted work, commit the candidate and run `node
+tools/tracked-input-preflight.mjs` from `port/v2`. It exports only the exact index into an owned
+temporary tree, performs a fresh install and runs the complete hosted browser-free/static sequence.
+It rejects dirty tracked state and forgotten source-owned untracked/ignored test files, excludes
+dependency-owned `node_modules` tests, and allows unrelated ambient files and artifacts generated
+inside the snapshot. Recheck HEAD, tracked cleanliness and
+forgotten tests after the long run as well as before it; a shared-worktree edit or commit must not
+let an old snapshot print PASS for a new candidate. Directional controls must prove an ambient
+fixture can make the direct workspace pass while the snapshot fails, that tracking it flips the
+snapshot green, that generated output remains green, and that removing/reordering/softening a
+command or workflow step fails.
+
+⚠⚠ **AN OUTER TEST TIMEOUT IS NOT A CHILD-PROCESS BOUND** (2026-08-29).
+The same PR #35 run had two synchronous evidence selftests exceed Vitest's inherited five-second
+case limit under Linux contention while their children had no hard kill. Every synchronous
+selftest child now owns an explicit 15-second termination bound below its 20-second outer case.
+Classify timeout, spawn error, nonzero exit and exit-zero-without-marker separately; a success
+marker printed before a nonzero exit is still red. Direct controls use a hanging child, a nonzero
+child that prints the marker and an exit-zero child that omits it. A 24-way control reproduced the
+old band—every process took 5.711–6.066 seconds—and passed 24/24 under the bounded contract with no
+retry. Stress is diagnosis, not the contract: never answer with automatic retry, an unbounded wait
+or a timeout increase that cannot terminate its child.
+
 ⚠⚠ **A MARKDOWN POLICY CARRIER IS EXECUTABLE INPUT, NOT A DOCS-ONLY DESCENDANT** (2026-08-20).
 PR #32 run `32440536261` spent its one authorized attempt and failed before browser work because
 `GITHUB_ACTIONS_BUDGET.md` changed its guarded mode declaration while the policy parser still

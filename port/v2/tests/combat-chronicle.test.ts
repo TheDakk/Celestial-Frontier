@@ -20,7 +20,6 @@ import {
 import {
   combatCuePlan,
   projectCombatCueParticipantsV1,
-  type AudioCounterpartReceipt,
   type CombatCuePlanV1,
 } from '@cf/audio';
 import {

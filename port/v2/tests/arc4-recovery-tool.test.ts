@@ -1,5 +1,4 @@
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
@@ -8,10 +7,12 @@ import { describe, expect, it } from 'vitest';
 import { assessArc4ExhaustionRecovery } from '../tools/arc4-browser-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { ARC4_RECOVERY_PERTAR_POLL_TIMING_SCHEMA, ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS, assessArc4RecoveryInstrumentSeal, assessArc4RecoveryPertarPollTiming } from '../tools/arc4-recovery-contract.mjs';
+import { runBoundedNodeMarker } from '../test-support/bounded-child.js';
 
 const collectorPath = fileURLToPath(
   new URL('../tools/arc4recovery.mjs', import.meta.url),
 );
+const SELFTEST_CHILD_TIMEOUT_MS = 15_000;
 const sliceCollectorPath = fileURLToPath(
   new URL('../tools/slicesmoke.mjs', import.meta.url),
 );
@@ -53,11 +54,11 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
   });
 
   it('runs the sealed Slice disabled-suppression producer selftest', () => {
-    const output = execFileSync(process.execPath, [
+    const result = runBoundedNodeMarker([
       sliceCollectorPath, '--disabled-suppression-selftest',
-    ], { encoding: 'utf8' });
-    expect(output).toContain('SLICE DISABLED SUPPRESSION SELFTEST: PASS');
-  });
+    ], 'SLICE DISABLED SUPPRESSION SELFTEST: PASS', SELFTEST_CHILD_TIMEOUT_MS);
+    expect(result.kind, result.diagnostic).toBe('pass');
+  }, 20_000);
 
   it('pins phase-specific Pertar surfaces and UI-then-state chronology', () => {
     const collector = readFileSync(collectorPath, 'utf8');
@@ -294,10 +295,12 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
   });
 
   it('keeps its real-time, closure, authority, transition and report controls mutation-sensitive', () => {
-    const output = execFileSync(process.execPath, [collectorPath, '--selftest'], {
-      encoding: 'utf8',
-    });
-    expect(output).toContain('ARC 4 RECOVERY SELFTEST: PASS');
+    const result = runBoundedNodeMarker(
+      [collectorPath, '--selftest'],
+      'ARC 4 RECOVERY SELFTEST: PASS',
+      SELFTEST_CHILD_TIMEOUT_MS,
+    );
+    expect(result.kind, result.diagnostic).toBe('pass');
 
     const compressed = readFileSync(firstRealRunEvidencePath);
     expect(sha256(compressed)).toBe(
@@ -372,7 +375,7 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
       evidence: { allOwnedResourcesReleased: true },
     });
     expect(report).not.toHaveProperty('recoveryClaimed');
-  });
+  }, 20_000);
 
   it('pins the exact Final10 offline-unavailable oracle diagnosis', () => {
     const compressed = readFileSync(final10OfflineOracleEvidencePath);

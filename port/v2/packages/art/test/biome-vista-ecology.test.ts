@@ -9,6 +9,7 @@ import {
 } from '@cf/art/biome-visual-profile';
 import { createVisualTreatmentV1 } from '@cf/art/visual-treatment';
 import { applyBiomeVistaEcologyV1 } from '@cf/art/biome-vista-ecology';
+import { readTrackedV1Source } from '../../../test-support/tracked-v1-source.js';
 import {
   applyPreservedBiomeVistaEcologyV1,
   PRESERVED_BIOME_VISTA_ECOLOGY_SOURCE_SHA256,
@@ -100,7 +101,7 @@ describe('Biome vista ecology adapter', () => {
   });
 
   it('retains a seal over the exact preserved source function', () => {
-    const main = readFileSync(fileURLToPath(new URL('../../../../../main.js', import.meta.url)), 'utf8');
+    const main = readTrackedV1Source().script;
     const start = main.indexOf('function _hdVistaEco(g, W, H, hz, opts, seed){');
     const end = main.indexOf('\nfunction hdVista(opts){', start);
     expect(start).toBeGreaterThan(-1);

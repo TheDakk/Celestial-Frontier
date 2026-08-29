@@ -88,6 +88,9 @@ jobs:
       - name: install v2 workspace
         working-directory: port/v2
         run: npm ci
+      - name: tracked-input prehosted controls
+        working-directory: port/v2
+        run: node tools/tracked-input-preflight.mjs --selftest
       - name: deterministic, type, and art gates
         working-directory: port/v2
         run: |
