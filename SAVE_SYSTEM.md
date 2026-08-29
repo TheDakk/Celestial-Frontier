@@ -1,5 +1,151 @@
 # Celestial Frontier — Save System
 
+> **2026-08-29 current local PWA/save boundary (matches code):** the generated service worker's
+> CacheStorage runtime sets are disposable app assets, never expedition authority. A candidate build
+> receives its completion marker only after every exact emitted runtime file is fetched and
+> SHA-256-verified; any failure deletes that partial set. Activation retains the new complete set and
+> at most one verified predecessor. Exact per-document build pins keep running documents on their
+> original complete assets through activation/rollback until explicit reload; the globally selected
+> build changes only which build a navigation pins. Rollback therefore swaps app-build selection
+> only and does not copy, migrate, restore or rewrite IndexedDB, F3/F4 receipts, SessionRNG, the
+> last-known-good save, or import evidence.
+>
+> Main's explicit PWA reload refuses conflicting product/import/Training, authority-convergence or
+> protected save-authority work, takes the exclusive replacement claim, joins any active persistence
+> and performs one owned
+> checkpoint when that claim canceled a pending debounce. Failed durability releases the claim and
+> rearms the canceled debounce; only success crosses the existing audio/F4/chrome/Pixi/canvas
+> teardown into navigation. If rolled-back code meets a newer save, the existing future-save
+> protection remains authoritative. Browser cache eviction can truthfully make rollback unavailable.
+> Physical offline/save coexistence and device acceptance remain open; no HUMAN, hosted,
+> release/version or deployment claim follows.
+
+> **2026-08-29 current Arc 9 Binder/Prime-ending persistence boundary:** Binder projection reads
+> the canonical `codex` and existing `claimedSets`/`setsc` compatibility carriers. Exactly seven
+> non-Paragon ids are writable: `kingdoms`, `flavors`, `themes`, `bodies`, `realms`, `xeno`, and
+> `court`, with authored one-time Stardust deltas 25/40/80/80/100/60/150. One completed, unclaimed
+> set uses one `arc9-binder-set-claim-v1` receipt and one F4 revision CAS to append its id, raise
+> `essence` plus `stats.essenceEarned`, and carry the exact aggregate-achievement/best-rank
+> successor. Main publishes only those verified detached fields after the runtime checkpoint agrees.
+> Overflow, corrupt/incomplete authority, duplicate/current, stale/lost lease, storage failure, or
+> postcommit mismatch cannot partially pay or replay the set; committed ambiguity reload-converges
+> without retry. Imported `para10` remains accepted bounded evidence and is preserved through
+> round-trip, but is not a writable Binder claim until the Paragon discovery owner exists.
+>
+> Prime claims remain combat-owned: a verified Titan conquest writes its canonical `primeFill`
+> record and exact world, and the ninth distinct claim sets `frontierUnlocked` in that same combat
+> transaction. The separate ending action accepts only the five registered compatibility ids and
+> changes only `frontierEnding`/`ending` through one `arc9-frontier-ending-v1` receipt and one F4
+> CAS. The same already-saved id is a receipt-free fixed point; a different known choice cannot
+> overwrite it. Balance additionally re-proves three `conquered` rows, the `mind` Prime claim, and
+> at least 40 `codex` rows. Malformed Prime authority, a choice before nine claims, a locked Balance
+> predicate, or a syntactically valid unknown imported ending protects the record unchanged.
+> Stale/storage and postcommit-verification ambiguity use one read-only convergence reload and never
+> issue a second ending write. No save schema or migration was added for either action.
+
+> **2026-08-29 current local Arc 6 combat/Guardian transaction:** one registered combat settlement
+> now joins its exact source revision, canonical opportunity, encounter/transcript/witness, F4
+> receipt, Arc 5 champion mutation, conquest/XP/injury/Stardust mirrors, and combat ledger in one F3
+> CAS. Guardian/Titan wins additionally join `creatures/arc6.guardian-acquisitions` v1: a strict
+> canonical carrier for receipt/world/source-bound catalogue + living-individual provenance. Its
+> compatible v4 Codex row, Guardian achievements/counter, Prime claim and ninth-claim Frontier flag
+> move in the same write. Capacity, stale/mismatched Arc 5 ownership, duplicate battle/receipt,
+> corrupt/future/misplaced carrier, storage failure or forged authority all refuse before mutation;
+> postcommit verification reloads and compares every exact carrier rather than retrying.
+> Verified player damage ending at 1–19 HP joins event achievement `brink` inside that same write.
+> A successful conquest with the exact accepted starter `st-conq` Charter also completes/removes the
+> acceptance, adds 25 to current and lifetime Stardust and increments honored Charters once. Both
+> joins are independently verified against the reopened whole-save fixed point; capacity or stale
+> authority refuses before the combat writer.
+>
+> Main now reaches this transaction from the exact landed, non-Training Survey combat card. It first
+> claims the shared product-action coordinator, settles the active-play heartbeat and reprojects the
+> same canonical world, ecology epoch, complete roster, opportunity, ownership and encounter witness.
+> The F4 runtime's specialized combat method crosses its private lease/revision boundary exactly once;
+> the app then independently verifies the resulting save, extensions, receipt and registered plan
+> before assigning any live save or publishing combat/Compendium/Charter presentation. A stale,
+> duplicate, storage-ambiguous or postcommit-publication result enters one read-only convergence reload
+> with no retry or reroll. The weekly `wk-conq` Charter and deterministic planned conquest imbues
+> refuse before this CAS while their lifecycle/coexistence policies remain open; the one-time starter
+> conquest Charter has the bounded writer described above.
+>
+> Absence of the new namespace is the registered empty pre-Arc-6 state. Reload re-derives the full
+> CF1 address from the stored mirror; structural address clones are never write authority. The v4
+> `codex`/`prime`/`frontier` fields remain compatibility projections, while the v5 acquisition
+> carrier owns new Guardian provenance. Authored Guardian loot and post-construction conquest-affix
+> coexistence remain unsupported/open and are not hidden inside this save change.
+
+> **2026-08-29 current player-live Field Scout transaction:** one real-fauna Compendium detail can
+> name, switch or stand down one exact owned fauna instance as Field Scout. The app binds the exact
+> detail receipt, compact-ownership revision/digest and prior Scout id, then commits the
+> `scoutCreatureId` delta through the existing Arc 5 manifest plus four shards in one F4/F3 receipt
+> CAS. Assigning or switching to a non-null Scout also stages the accepted `st-scout` Charter,
+> Stardust/counter reward and aggregate progression successor in that same save; stand-down emits no
+> Charter event and unchanged selection remains receipt-free. Assigned, recovering and injured companions remain eligible because designation changes no
+> care, mission, Recovery, injury, genome, lineage or bond state. The app independently verifies the
+> exact-five successor, source digest, complete expected Charter/reward/progression fields and every
+> unrelated ownership field before publishing; no RNG, retry or
+> optimistic role change exists. A stale, failed or unconfirmable durable result leaves the old
+> presentation or converges read-only through reload, so it cannot switch twice. The later legacy
+> hostile-injury interception and fresh-species +2 Scout XP require separate owners and are not
+> inferred by this carrier.
+
+> **2026-08-29 current Starter Charter persistence boundary:** `chacc`, `chDone`/`chs` and
+> `chProg`/`chp` remain the v4-compatible acceptance, permanent-completion and bounded-progress
+> carriers; current/lifetime Stardust, `stats.charters`, Arc 2 inventory/equipment mirrors,
+> `unlocked`/`ach` and `stats.bestRank`/`br` carry the exact reward/progression successor. The live
+> two-chain projection reveals one incomplete link per chain, requires acceptance to activate and
+> caps accepted rows at three. Its acceptance owner uses one deterministic F4 receipt and one fenced
+> F3 CAS. Exact already-proven state may complete in that receipt; malformed/unrevealed/over-cap
+> state, numeric overflow, unsupported Arc 2 authority or exhausted reward capacity refuses the
+> whole candidate. A gear grant is one receipt-bound deterministic Arc 2 instance: an empty slot is
+> auto-equipped only after an inventory grant, full inventory records a pending reward up to its
+> exact 500-entry cap, and pending-cap exhaustion pays neither gear nor Stardust.
+>
+> Permanent non-Training Landing, successful Mine, eligible canonical fixed-component Fabrication,
+> non-null Scout set/switch and verified combat each call the same staging law from inside their
+> already-owned transaction; they never create a second progression receipt. Landing/Mine events
+> carry the full registered CF1 world address. Canonical Earth is excluded from `st-land`, while
+> Mercury/Mars/giants/ice require exact Sol hierarchy plus ordinal, so leaf-seed collisions cannot
+> alias rewards. `st-scan` and weekly lifecycle writes remain protected; `st-conq` stays in combat.
+> Event refusal, stale/lost authority, storage failure, already-durable observation and committed
+> convergence do not re-stage or repay. Publication copies only verified owned fields; ambiguity
+> reloads the durable fixed point without retry.
+
+> **2026-08-29 current player-live Arc 5 companion transactions:** Feed, Breed/active-play Recovery,
+> Rename and Field Scout all advance the same compact manifest plus four fixed shards through one
+> immutable receipt, one F4 product boundary and one fenced F3 revision CAS. Feed changes one exact
+> companion's bounded `fed` plus one exact flora lot. Breed pre-certifies both possible complete
+> successors before one draw, preserves both parents, creates one deterministic child only on
+> success and assigns both parents eight active-play Recovery minutes on success or two on failure;
+> that newborn receives +2 XP and a first exact unordered parent-species pair adds +5. The child XP,
+> canonical `xpf` claim, optional `xpa` overflow replacement, `c3-breed` tick and eligible
+> `bredlegend` join share Breed's exact-five/F4 receipt and one fenced CAS. Rename changes only one
+> exact sanitized nickname and may join `namer` in the same save. Field Scout changes only
+> `scoutCreatureId` in ownership, with the optional same-CAS Starter Charter successor described
+> above. Every writer independently verifies its exact committed fixed point and
+> unchanged unrelated owners before targeted publication; stale/storage/ambiguous outcomes never
+> retry and converge read-only by reload.
+
+> **2026-08-29 current Arc 9 rank/achievement persistence:** the mature `ach`/`br` mirrors remain the
+> only carriers. One coalesced post-product refresh may append newly proved aggregate achievement
+> ids and monotonically raise `stats.bestRank` through the same generic receipt/F4/F3 CAS pattern,
+> preserving exact event ids and bounded unknown compatibility ids in order. Twenty-three event ids
+> are written only by their true transaction owner: the seven land/name/breed/combat/share/Follow
+> joins, twelve source-derived Survey joins, `worm`/`quasar`/`dwarfg` travel, and explicit Atlas
+> Favorite `curator`. Accepted Follow folds its route, Jumps, `wayfarer`, galaxy visit and any proved
+> galaxy-kind event into one receipt; direct/Search/Atlas arrival uses the travel receipt and cannot
+> counterfeit Follow. Atlas Favorite mutates only the verified row's `fav` field in place, preserving
+> its route sidecar; false-to-true owns `curator`, false removes no achievement, and an unchanged
+> choice is write-free. Main publishes only detached verified carriers after canonical reload is an
+> exact fixed point. Only a first committed publication may enqueue ceremonies: each newly appended
+> known id receives manifest text plus sting 3, and a strictly higher saved best rank receives the
+> named toast, sting 5 and an effects-budgeted gold burst capped at 40. The visual anchor is only
+> player-chip geometry supplied by AppChrome. Boot catch-up, Training, replay, already-durable,
+> refusal and convergence are silent; no ceremony writes a save or grants a reward. No parallel
+> progression schema or migration was added. Exactly `daily`, `decade`, `survivor`, `fieldmedic`,
+> and `gambler` remain owner-blocked.
+
 > **Current universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
 > signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
@@ -12,12 +158,44 @@
 > report `b78e8a52…5907`). Every stage ran once with zero automatic retries and passed exact named
 > verification; Slice → Glass → Recovery hashes and source identities cross-bind exactly.
 >
-> The Arc 5 persistence claim is only Feed's exact one-creature/one-flora fenced successor, durable
-> receipt, publication/reload fixed point and constant-space replay fence. No wider care, breeding or
-> companion mutation is implied. HUMAN listening/visual judgment, screen-reader behavior, physical-
+> That signed certificate's Arc 5 persistence claim is only Feed's exact one-creature/one-flora
+> fenced successor, durable receipt, publication/reload fixed point and constant-space replay fence;
+> the newer local Breed/Recovery, Rename and Field Scout writers above do not inherit it. Wider care,
+> bond and missions remain open. HUMAN listening/visual judgment, screen-reader behavior, physical-
 > device heat/battery/GPU evidence, whole-Gate, hosted/merge, release/version and deployment authority
 > remain open. Compatible browser point updates remain provenance only. Earlier dated evidence blocks
 > below remain historical verbatim where superseded.
+
+> **2026-08-29 current local Arc 4 Charter transaction:** qualifying capture capacity now includes
+> the exact legacy-v4 Charter successor before either random value exists. Only the first durable
+> successful Tame, Scavenge, or Sample on one complete source-proven world beyond Sol can add one
+> `c2-scan` tick. The same prepared save commits Charter progress, capture ownership/reward, all Arc
+> 4/5 carriers, F4 authority, one receipt and one revision through the existing fenced F3 CAS; the
+> verifier publishes `ascCh` plus a cloned `ascProg` only after durable evidence agrees. Misses,
+> Sol, repeated worlds, unreachable/past-chapter sources, saturated progress, stale/duplicate
+> authority and failed writes change no Charter state and cause no automatic retry. A post-durable
+> publication fault reloads the already committed successor read-only.
+> Only an actual bioscan bank may reconcile an imported chapter; Sol, repeat, saturated and other
+> successful non-qualifying captures preserve `ascCh` and the complete `ascProg` exactly.
+>
+> No persistence schema was added: exact ownership discovery provenance already supplies the world
+> ledger. The legacy `surveyed` array and `stats.surveys` stay unchanged, preserving their existing
+> mixed-era compatibility boundary; this writer does not pretend the separate v1.8.9 Discover Life
+> action, Survey Records or accepted/weekly bioscan Charters exist. Focused and full browser-free
+> tests are green at 230 files / 2,315 passed + one skipped; the signed `3f69e88…` certificate above
+> predates this successor and is not relabelled.
+
+> **2026-08-29 Arc 0 durable action closure (current local worktree):** Landing, canonical world
+> naming and Atlas each own one receipt-bearing F4 action; ordinary route checkpoints project from
+> the exact durable parent and cannot absorb their product fields. A Training replacement/quarantine
+> write hold now refuses Landing or Atlas whenever Training is not actively owning their explicit
+> route-only lesson behavior, and the same hold is rechecked after the heartbeat before a mutation
+> may begin. An already-durable Atlas observation now rebinds the exact live row to its source-proven
+> route sidecar; failure to bind leaves the durable row intact and enters read-only convergence reload
+> instead of claiming a travelable chart. Focused Arc 0 tests and all TypeScript programs pass. The
+> full suite is green at 230 files / 2,315 passed + one skipped, including the exact current
+> SceneMemory and Compendium producer-authority bindings. That browser-free source rebind changes no
+> ruler or threshold and never depends on an Edge point version.
 
 > **2026-08-27 exact-evidence correction:** the browser fixture now observes the staged ecology
 > epoch as a private candidate, proves that the published value is unchanged before durability,
@@ -139,9 +317,12 @@
 > The legacy XP-first mirror now exports only the newest 4,000 validated keys in `xpf`; older keys
 > move into the strict v5-only `progression.xp-firsts` archive. The additive `xpa` v1 binding ties
 > the mirror window to archive carrier digest and total count. Missing, future, corrupt, wrong-owner
-> or mismatched archive evidence protects instead of rearming a one-time award. This is persistence
-> authority only: no live v2 XP-award writer exists yet. Likewise, executable import/export/readiness
-> vectors now prove `conq[].e`: absent/null remains the one-cycle-ready migration, valid present
+> or mismatched archive evidence protects instead of rearming a one-time award. Arc 5 Breed and Arc 6
+> combat are live writers over this authority. Breed adds only one collision-resistant SHA-256 key
+> for a new canonical unordered SpeciesId pair; before claiming it, the same strict union also treats
+> an imported v1 `pair|<FNV32-base36>` alias derived from `_earthName || speciesName(seed)` as paid
+> whether it is in `xpf` or archived behind `xpa`. The legacy alias is never newly written. Likewise,
+> executable import/export/readiness vectors now prove `conq[].e`: absent/null remains the one-cycle-ready migration, valid present
 > values round-trip exactly, and malformed/future/negative values remain present and cannot
 > impersonate absence. That is codec/readiness proof, not the still-open real-veteran Gate-C run.
 >
@@ -303,8 +484,11 @@
 > exact raw/runtime/DOM carrier, action, stale/storage, modal/focus and Training-replacement controls.
 > They bind that recorded candidate's dirty inputs, do not certify the current moving working tree,
 > and grant no exact-head/hosted/integration/real-save Gate C,
-> preview, HUMAN, release or deployment authority. Broader real-browser schema-upgrade/two-tab
-> evidence for later product writers and Nick's real veteran save remain open.
+> preview, HUMAN, release or deployment authority. The later exact signed `3f69e88…` Slice closes the
+> clean real-browser schema-upgrade substrate with its native seven-stage v1→v2, v4→v5,
+> two-backend-CAS, rollback, external-`versionchange`, and cleanup proof. Representative distinct-tab
+> evidence for later mission/combat/other writers and Nick's real veteran save remain open; that
+> historical certificate is not evidence for the current dirty Arc 4 successor.
 
 > **2026-08-25 Arc 3 recovery evidence:** local commit `c4a02be` contains the boot/recovery owner and
 > browser instruments. No-retry Slice Smoke run `20260825013823076-822-b99fea33b17b` passed on Edge
@@ -544,8 +728,10 @@
 >
 > Creature assignment is a discriminated mission-or-Recovery record. Normal v2
 > breeding atomically creates the child, assigns `fed = 0.5 × min(parentA.fed,
-> parentB.fed)`, keeps both parents owned and starts a disclosed bounded Recovery
-> for each. Recovery blocks breed/dispatch/combat until its active-play deadline.
+> parentB.fed)`, gives the newborn +2 XP plus the one-time exact-species-pair +5,
+> keeps both parents owned and starts a disclosed bounded Recovery for each. The
+> XP/`xpf`/optional-`xpa` update shares that same receipt/CAS. Recovery blocks
+> breed/dispatch/combat until its active-play deadline.
 > Legacy parent consumption remains import/history behavior only; any future
 > irreversible Fusion is a separately named, optional, informed-confirmed action
 > and never a progression prerequisite.
@@ -980,7 +1166,7 @@
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the current v2 overlay
-matches `port/v2` as of 2026-08-27. ⚠ Read the v1.8.7 section (a reverted
+matches `port/v2` as of 2026-08-29. ⚠ Read the v1.8.7 section (a reverted
 `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`,
 harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated

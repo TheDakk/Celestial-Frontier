@@ -19,6 +19,7 @@ import {
   getFixedCraftGenerationPlan,
   getFixedRecipePlan,
   isEngineeringCapabilitySnapshot,
+  makeGearSourceActionId,
   quoteFixedRecipe,
   type EngineeringCapabilitySnapshot,
   type FixedGearCraftAxes,
@@ -46,6 +47,7 @@ import {
 } from '@cf/scene';
 import {
   RARE_VEIN,
+  isCanonicalEarthWorldAddress,
   isStarOpportunitySnapshot,
   isWorldOpportunitySnapshot,
   type StarOpportunitySnapshot,
@@ -409,6 +411,7 @@ export interface MiningAutoExtractorSettlement {
 export interface MiningResult {
   readonly sourceKey: string;
   readonly rawTier: number;
+  readonly effectiveTier: number;
   readonly reservePulls: number;
   readonly firstExtractionIndex: number;
   readonly loads: number;
@@ -436,9 +439,10 @@ export interface MineWorldInput {
 }
 
 function worldOpportunityFingerprint(opportunity: WorldOpportunitySnapshot): string {
-  return fingerprint('wo2', JSON.stringify({
+  return fingerprint('wo3', JSON.stringify({
     key: opportunity.key,
     rawTier: opportunity.rawTier,
+    effectiveTier: opportunity.effectiveTier,
     source: opportunity.source,
     deposits: opportunity.deposits,
     biomeVein: opportunity.biomeVein,
@@ -465,7 +469,7 @@ export function planWorldMining(
   if (current.address.key !== input.opportunity.key) {
     return deepFreeze({ status: 'refused', reason: 'current-world-mismatch' });
   }
-  if (input.opportunity.address.planet.seed === 133) {
+  if (isCanonicalEarthWorldAddress(input.opportunity.address)) {
     return deepFreeze({ status: 'refused', reason: 'earth-protected' });
   }
   if (input.opportunity.source.biosphereKey !== 'none') {
@@ -549,7 +553,7 @@ export function planWorldMining(
     for (let draw = 0; draw < 2 && input.opportunity.deposits.length; draw++) {
       const material = input.opportunity.deposits[(random() * input.opportunity.deposits.length) | 0]!;
       const quantity = Math.max(1, Math.round(
-        (1 + random() * 3 + Math.floor(input.opportunity.rawTier / 3)) * multiplier,
+        (1 + random() * 3 + Math.floor(input.opportunity.effectiveTier / 3)) * multiplier,
       ));
       materialTotals.set(material, (materialTotals.get(material) ?? 0) + quantity);
       row.push(`base:${material}:${quantity}`);
@@ -562,11 +566,11 @@ export function planWorldMining(
       materialTotals.set(material, (materialTotals.get(material) ?? 0) + 1);
       row.push(`biome:${material}:1`);
     }
-    if (random() < 0.05 + input.opportunity.rawTier * 0.01 + capabilities.richStrikeChanceBonus) {
+    if (random() < 0.05 + input.opportunity.effectiveTier * 0.01 + capabilities.richStrikeChanceBonus) {
       const material = input.opportunity.biomeVein
         || RARE_VEIN[Math.min(
           RARE_VEIN.length - 1,
-          (random() * (1 + input.opportunity.rawTier)) | 0,
+          (random() * (1 + input.opportunity.effectiveTier)) | 0,
         )]!;
       const quantity = Math.max(1, Math.round(multiplier));
       materialTotals.set(material, (materialTotals.get(material) ?? 0) + quantity);
@@ -595,6 +599,7 @@ export function planWorldMining(
   const result: MiningResult = deepFreeze({
     sourceKey: input.opportunity.key,
     rawTier: input.opportunity.rawTier,
+    effectiveTier: input.opportunity.effectiveTier,
     reservePulls: input.opportunity.reservePulls,
     firstExtractionIndex: taken + 1,
     loads,
@@ -618,6 +623,7 @@ export function planWorldMining(
     activePlayMs,
     factors: {
       rawTier: input.opportunity.rawTier,
+      effectiveTier: input.opportunity.effectiveTier,
       reservePulls: input.opportunity.reservePulls,
       deposits: input.opportunity.deposits,
       biomeVein: input.opportunity.biomeVein,
@@ -781,6 +787,10 @@ export interface EngineeringResearchAssets {
 export interface EngineeringResearchQuote {
   readonly id: ResearchId;
   readonly owned: boolean;
+  /** Exact product-policy fact derived by the app from the freshly decoded
+      registered Arc 2 loadout. This is intentionally separate from the
+      canonical research prerequisite graph. */
+  readonly jumpDriveOwned: boolean;
   readonly prerequisiteId: ResearchId | null;
   readonly missingPrerequisiteId: ResearchId | null;
   readonly missingMaterials: readonly Readonly<{
@@ -795,6 +805,7 @@ export interface EngineeringResearchQuote {
 
 export type ResearchRefusalReason =
   | 'already-owned'
+  | 'progression-locked'
   | 'prerequisite-missing'
   | 'insufficient-assets'
   | 'consumer-unavailable';
@@ -819,6 +830,7 @@ export interface ResearchPurchaseResult {
 export interface ResearchPurchaseInput {
   readonly state: EngineeringStateV2;
   readonly researchId: ResearchId;
+  readonly jumpDriveOwned: boolean;
   readonly assets: EngineeringResearchAssets;
   readonly receiptOrdinal: number;
 }
@@ -911,6 +923,13 @@ function canonicalResearchAssets(value: unknown): EngineeringResearchAssets {
   return deepFreeze({ materials, stardust: stardust as number });
 }
 
+function checkedJumpDriveOwnership(value: unknown): boolean {
+  if (value !== true && value !== false) {
+    throw new TypeError('Jump Drive ownership must be an exact boolean');
+  }
+  return value;
+}
+
 function researchSuccessor(state: EngineeringStateV2, researchId: 'scan1'): EngineeringStateV2 {
   return successorState(state, (draft) => {
     draft.research.push(researchId);
@@ -923,7 +942,7 @@ export function planResearchPurchase(
 ): EngineeringActionPlan<ResearchPurchaseResult> | ResearchRefusal {
   const source = exactPlainDataValues(
     input,
-    ['state', 'researchId', 'assets', 'receiptOrdinal'],
+    ['state', 'researchId', 'jumpDriveOwned', 'assets', 'receiptOrdinal'],
     'research purchase input',
   );
   const state = checkedState(source.state as EngineeringStateV2);
@@ -933,6 +952,7 @@ export function planResearchPurchase(
     throw new RangeError('engineering research id is not recognized');
   }
   const researchId = researchIdValue as ResearchId;
+  const jumpDriveOwned = checkedJumpDriveOwnership(source.jumpDriveOwned);
   const receiptOrdinal = checkedReceiptOrdinal(source.receiptOrdinal);
   const definition = ENGINEERING_RESEARCH_CATALOGUE.find(({ id }) => id === researchId)!;
   const assets = canonicalResearchAssets(source.assets);
@@ -949,6 +969,7 @@ export function planResearchPurchase(
   const quote: EngineeringResearchQuote = deepFreeze({
     id: researchId,
     owned,
+    jumpDriveOwned,
     prerequisiteId: definition.prerequisiteId,
     missingPrerequisiteId,
     missingMaterials,
@@ -956,6 +977,9 @@ export function planResearchPurchase(
     consumerStatus: definition.consumerStatus,
   });
   if (owned) return deepFreeze({ status: 'refused', reason: 'already-owned', quote });
+  if (researchId === 'scan1' && !jumpDriveOwned) {
+    return deepFreeze({ status: 'refused', reason: 'progression-locked', quote });
+  }
   if (missingPrerequisiteId !== null) {
     return deepFreeze({ status: 'refused', reason: 'prerequisite-missing', quote });
   }
@@ -976,6 +1000,7 @@ export function planResearchPurchase(
     sourceKey: `research:${researchId}`,
     assets: fingerprint('research-assets-v1', JSON.stringify(assets)),
     definition: fingerprint('research-definition-v1', JSON.stringify(definition)),
+    jumpDriveOwned,
     result,
   });
 }
@@ -1047,7 +1072,7 @@ function materialBaseTier(materialId: string): number {
 function groundedResolvedGrades(
   opportunity: WorldOpportunitySnapshot,
 ): readonly WorldMineralResolvedGrade[] {
-  const worldBoost = opportunity.rawTier >= 8 ? 1 : 0;
+  const worldBoost = opportunity.effectiveTier >= 8 ? 1 : 0;
   const result: WorldMineralResolvedGrade[] = opportunity.deposits.map((materialId) => ({
     kind: 'ordinary',
     materialId,
@@ -1118,7 +1143,7 @@ export function projectWorldMineralReveal(
     if (currentWorld.address.key !== input.opportunity.key) {
       return deepFreeze({ status: 'refused', reason: 'current-world-mismatch' });
     }
-    if (input.opportunity.source.planetSeed === 133) {
+    if (isCanonicalEarthWorldAddress(input.opportunity.address)) {
       return deepFreeze({ status: 'refused', reason: 'earth-protected' });
     }
     if (input.opportunity.source.biosphereKey !== 'none') {
@@ -1150,7 +1175,7 @@ export function projectWorldMineralReveal(
     if (getProvenStarKey(input.opportunity.address.star) !== currentSystem.address.key) {
       return deepFreeze({ status: 'refused', reason: 'current-system-mismatch' });
     }
-    if (input.opportunity.source.planetSeed === 133) {
+    if (isCanonicalEarthWorldAddress(input.opportunity.address)) {
       return deepFreeze({ status: 'refused', reason: 'earth-protected' });
     }
     if (input.opportunity.source.biosphereKey !== 'none') {
@@ -1177,8 +1202,8 @@ export function projectWorldMineralReveal(
 
 export interface FixedFabricationAssets extends FixedRecipeInventory {
   /** Exceptional units are a checked sub-count of materials. They spend
-      first. A fully exceptional slotted craft is refused until the exact
-      crafted-affix consumer is implemented. */
+      first. Covering every direct material cost grants the authored exact-item
+      crafted modifier; mixed spends remain ordinary crafts. */
   readonly exceptionalMaterials: Readonly<Record<string, number>>;
 }
 
@@ -1213,8 +1238,7 @@ export type FixedFabricationRefusalReason =
   | 'prerequisite-missing'
   | 'signature-missing'
   | 'insufficient-assets'
-  | 'output-count-exhausted'
-  | 'exceptional-slotted-policy-unavailable';
+  | 'output-count-exhausted';
 
 export interface FixedFabricationRefusal extends EngineeringRefusal<FixedFabricationRefusalReason> {
   readonly quote: FixedRecipeQuote;
@@ -1301,13 +1325,6 @@ export function planFixedFabrication(
   const materialCost = Object.entries(recipe.materialCost);
   const fullyExceptional = materialCost.length > 0
     && materialCost.every(([id, quantity]) => (assets.exceptionalMaterials[id] ?? 0) >= quantity);
-  if (recipe.outputKind === 'gear-instance' && fullyExceptional) {
-    return deepFreeze({
-      status: 'refused',
-      reason: 'exceptional-slotted-policy-unavailable',
-      quote,
-    });
-  }
 
   const exceptionalSpend = new Map<string, number>();
   for (const [id, quantity] of materialCost) {
@@ -1318,8 +1335,16 @@ export function planFixedFabrication(
     receiptOrdinal,
     state.revision + 1,
   ) >>> 0;
+  const exceptionalSourceActionId = recipe.outputKind === 'gear-instance' && fullyExceptional
+    ? makeGearSourceActionId({
+      kind: 'craft',
+      ownerId: recipe.authority,
+      actionKey: `recipe:${recipe.baseId}`,
+      receiptId: `receipt:${receiptOrdinal}`,
+    })
+    : null;
   const generationPlan = recipe.outputKind === 'gear-instance'
-    ? getFixedCraftGenerationPlan(recipe.baseId, generationSeed)
+    ? getFixedCraftGenerationPlan(recipe.baseId, generationSeed, exceptionalSourceActionId)
     : null;
   const autoExtractorReanchoredWorlds = recipe.baseId === 'autoext'
     ? state.worlds.filter(({ extractionsTaken }) => extractionsTaken > 0).length

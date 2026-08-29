@@ -1,5 +1,34 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
+> **2026-08-29 current local Arc 6 Guardian acquisition extension:** ordinary Arc 4 capture and
+> Arc 5 lineage ownership remain unchanged. Guardian/Titan conquest now has its own additive,
+> versioned registered carrier instead of pretending that Tame provenance covers it. A new Guardian
+> species creates one catalogue fact, one living individual with `origin:'guardian'`, and one
+> acquisition record bound to the exact canonical world, defender source/Prime Signature, encounter
+> witness and F4 receipt. Legacy Compendium species deduplication remains exact: if that genome is
+> already known, conquest/Prime rewards still settle but no second catalogue row or creature is
+> minted. Battlefield `_mult`/`_wf` never enter ownership; legitimate `apex`/`_titan` identity does.
+> The carrier reloads only by re-resolving its complete CF1 mirror, and forged state/address/plan,
+> duplicate receipt/source-world and corrupt/future/misplaced carriers fail closed. The exact landed,
+> non-Training Survey surface now exposes the registered Guardian/Prime combat action and publishes a
+> captured Guardian/Titan only after the combat transaction and complete carrier fixed point verify.
+> This does not change ordinary biosphere odds, budget, Charter joins or care rules; captured Guardian
+> individuals are not yet selectable through the separate Arc 5 champion writer.
+
+> **2026-08-29 current local companion/audio extension:** the real-fauna Compendium detail now owns
+> four bounded exact-instance companion writers over the same compact V2 authority. Feed consumes one
+> exact flora lot; Breed keeps both parents and assigns active-play Recovery around one persisted
+> outcome; Rename changes only one sanitized nickname; Field Scout names, switches or stands down one
+> exact owned fauna by changing only its role pointer. Tastes, stat growth, injury healing, bond,
+> missions, Scout injury interception and Scout +2 fresh-species XP remain separate open owners.
+>
+> The audio owner now exposes five explicit noncombat no-autoplay controls: durable Tame greeting, committed
+> Feed acknowledgement, exact-owned-fauna Compendium Listen, pre-landing orbital Survey **Listen to
+> biosphere**, and visible inhabited-world Planetside **Listen to biosphere**. The last two join only
+> their already-visible generic biosphere lead to the same no-spoiler signal, consume no Yield or
+> gameplay RNG, grant nothing and write no save. Authored or continuous biome ambience, music and
+> recorded audio remain absent; the registered post-settlement Combat Chronicle is a separate owner.
+
 > **Current universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
 > signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
@@ -20,11 +49,32 @@
 > deployment authority remain open. Compatible browser point updates remain provenance only.
 > Earlier dated evidence blocks below remain historical verbatim where superseded.
 
+> **Current local Charter join (2026-08-29; later than the signed certificate above):** every
+> eligible Arc 4 hit scenario now pre-computes the same exact Charter successor before either F4
+> draw. The first durable successful Tame, Scavenge, or Sample on each registered source-proven
+> world beyond Sol can bank that world's one Chapter 2 life-discovery tick in the same receipt/CAS
+> as ownership, reward and F4. Exact pre-action ownership discoveries deduplicate by complete CF1
+> world key. A miss, Sol, an unreachable or past-chapter source, a later success on that world,
+> saturated progress, stale authority or failed write banks nothing; post-durable publication
+> failure converges by reload without another draw or write.
+> Eligibility uses exact galaxy/star parent coordinates plus seeds, so a same-seed collision cannot
+> inherit Sol or home-galaxy reach. A successful non-qualifying capture cannot reconcile an imported
+> Charter chapter.
+>
+> This is an explicit v2 replacement for the separate v1.8.9 Discover Life button, not a claim of
+> bug-for-bug parity. Landing still only reveals the roster, and the legacy `surveyed`/Records
+> projection plus `stats.surveys` remain unchanged. The separate control, Survey Records behavior
+> and accepted/weekly bioscan Charters are still unavailable. Focused and full browser-free
+> evidence is green at 230 files / 2,315 passed + one skipped; a fresh clean
+> Slice/Glass/Recovery chain and HUMAN acceptance remain outstanding.
+
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
-ecology/audio overlay matches the player-facing durable Arc 4 capture slice and its remaining
-evidence boundary as of **2026-08-29**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
+ecology/audio/Charter overlay matches the player-facing durable Arc 4 capture slice, and the separate
+Guardian acquisition carrier plus player-live verified combat join match the local Arc 6 candidate as
+of **2026-08-29**, while preserving the older signed certificate as pre-Charter evidence. See the
+2026-07-31 addendum — the epoch clock now drives the stardust harvest as
 well as biosphere recovery, so EPOCH_TICK is a shared knob.
-**Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
+**Purpose:** How a surveyed world's revealed life earns Compendium pages and the narrow v2 Chapter 2 life-discovery deed — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy mechanics, while
 the current v2 authority is the TypeScript port named in the overlay below.
 
@@ -212,10 +262,11 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > `[PARTIAL]`: its ownership authority is foundational, and the later narrow Feed interaction is
 > player-live without completing the wider care/breeding/companion scope.
 
-## 0. v2.0 ecology/audio link (exact Tame/Feed expressions live; ecology playback absent — 2026-08-29)
+## 0. v2.0 ecology/audio and companion link (four explicit audio paths and four companion writers live — 2026-08-29)
 
 The current v2 development slice exposes player Tame, Scavenge, Sample and Biosphere Yield through
-the native Survey card, but no living Companion control. A trusted native **Tame** gesture may now
+the native Survey card, plus exact-instance Feed, Breed/Recovery, Rename and Field Scout controls
+through verified real-fauna Compendium detail. A trusted native **Tame** gesture may now
 synchronously arm exactly one silent audio context only while that same current surface is visible
 and answerable and both Sound and Creature Voices are enabled. Programmatic activation,
 diagnostics, Scavenge/Sample and non-current surfaces cannot arm it. Miss, refusal and convergence
@@ -245,8 +296,20 @@ The boundary is intentionally narrow:
   successful-ownership fence rejects the same and every superseded result. Exact signed source
   `3f69e88…` passed the current Slice oracle requiring the started Feed oscillator to reach one
   `AudioDestinationNode` entirely within one WebAudio context, followed by exact-bound Glass and
-  Recovery passes. Compendium audition, other companion actions, biome ambience, music and combat
-  audio remain absent.
+  Recovery passes.
+- Explicit **Listen** on one exact current owned-fauna Compendium detail projects the existing
+  deterministic call plan after a trusted gesture and matching polite/atomic status; list mount,
+  filtering, focus and navigation never autoplay it.
+- Explicit orbital Survey **Listen to biosphere** requires the exact current pre-landing planet card,
+  system route, ecology epoch and production canonical roster. It exposes only a generic living-
+  biosphere lead; the control never names or filters a roster row and disappears on landing/close.
+- Explicit Planetside **Listen to biosphere** requires the exact current inhabited world and its
+  visible biosphere lead, then renders one generic deterministic neutral signal. It reveals no
+  species, spends no Yield, grants nothing and writes no save.
+- Feed, Breed/Recovery, Rename and Field Scout are the four current Companion controls. Broader
+  tastes/care/bond, injury healing, missions and Scout consequences remain open; authored/continuous
+  biome ambience, music and recorded audio remain absent, while the registered Combat Chronicle is
+  governed separately by master Sound.
 
 The durable acquisition writer remains explicit and separate from the broader future audio
 presentation layer:
@@ -265,12 +328,14 @@ pool can sound active, Worked Out can become sparse, and epoch recovery can rest
 biome/kingdom palette. That is feedback on current visible state, not a new mechanic. It cannot leak
 an unrevealed roster, pre-land rarity, the next random target or whether the next roll will succeed.
 Fauna-free and silent biomes remain honest; flora, fungi and microbes receive their own ecological
-language. The current app already has a pure non-playing join from one canonical inhabited
-current-world Survey roster to a `DistantEcologyHintPlan`; it binds the canonical biome-profile
-schema/digest/key and roster environment fingerprint at biosphere granularity, rejects lifeless or
-non-production rosters, and neither reveals a species nor writes state. Main does not import it, so
-there is no event, counterpart, ducking, reduced-intensity behavior or playback lifecycle. See
-`BIOME_ATLAS.md` §0.
+language. The current app now wires two bounded, non-mutating ecology-listening surfaces: a generic
+**Listen** control for the exact visible inhabited-world Planetside biosphere and exact owned-fauna
+auditions from Compendium detail. The Planetside join binds the canonical biome-profile
+schema/digest/key and roster environment fingerprint at biosphere granularity; it names no species
+and changes no Yield, capture opportunity, reward or save state. The Compendium path requires the
+exact current owned individual and its registered audio identity. Both paths retain explicit visible
+counterparts and lifecycle ownership; neither reveals an unrevealed roster or creates acquisition
+authority. See `BIOME_ATLAS.md` §0 and `AUDIO.md` §0.
 
 A future bonded companion owns a stable living-creature ID. Its visual identity may use the
 complete plain genome, while its voice uses the immutable typed `AudioSignature` projection derived

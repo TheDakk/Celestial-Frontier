@@ -1,5 +1,17 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
+> **2026-08-29 current Arc 6 boundary:** Guardian/Titan conquest acquisition, Prime claims,
+> Stardust and compatible Compendium persistence are now executable browser-free, but no Guardian
+> Gear/material drop table exists in authoritative source, so `guardianAuthoredReward` remains
+> explicitly unsupported/open. The exact legacy conquest imbue oracle is executable evidence only.
+> Its role-less replace-slot result has no decided coexistence rule with natural prefix/suffix and
+> Pureforged crafted modifiers; when its 40% gate plans an imbue, settlement refuses before CAS
+> instead of inventing an item mutation. `MATERIALS_AND_GEAR.md` records the precise decision needed.
+> The source-authored one-time starter conquest Charter is now a separate live combat-settlement
+> reward: an accepted `st-conq` pays exactly 25 current/lifetime Stardust and one honored-Charter
+> count on the verified win, then removes its acceptance. It adds no item or material. The weekly
+> conquest Charter remains unavailable until its distinct week/slate lifecycle is implemented.
+
 > **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
 > `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
 > `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
@@ -18,6 +30,21 @@
 > review/polish checkpoint, then begin authorized current-system Arc 7/8 universe-wide visual polish. Edge `.107`
 > / CDP `1.3` is provenance only and compatible point updates never trigger rebaseline. Earlier
 > Final12/Final11/Final10 wording below is historical where superseded.
+
+> **2026-08-29 current Pureforged fixed-craft overlay:** a supported fixed slotted recipe
+> paid entirely from exceptional direct-material stock now creates one deterministic exact-item
+> modifier bound to the fixed-recipe owner, receipt, generation vector, and `GearInstance`. Mixed or
+> ordinary material payment preserves the ordinary output. Exceptional policy v1 deliberately
+> selects only mining yield, rich-strike chance, or capture-contact points because those three have
+> live consumers; the other legacy affix effects cannot currently become paid-but-dormant crafted
+> rewards. Existing magnitude ranges remain unchanged.
+>
+> The modifier survives the strict Arc 2 carrier and F3/F4 save/reload path, participates in
+> inspect/compare/search and the actual mining or capture capability projection, and is checked by
+> browser-free Slice/Glass oracles with unsupported-id controls. Natural affix/drop tables,
+> drawbacks, upgrades, sockets, vendors and general variable crafting remain unimplemented. Older
+> Arc 2/3 paragraphs below remain historical for their dates; this block supersedes only their
+> statement that every fully exceptional slotted craft was unavailable.
 
 > **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
 > `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
@@ -123,8 +150,9 @@
 > cosmic/exceptional veins, grades, reserves, progress and the Mine action remain omitted from
 > orbit. All 62 fixed recipes are listed;
 > only connected-effect outputs with exact costs/
-> preconditions and capacity/revision headroom are actionable, while fully exceptional slotted
-> outputs and disconnected-effect rows remain unavailable. Mine, Skim, the eligible Deep-Scanner
+> preconditions and capacity/revision headroom are actionable. Fully exceptional direct-material
+> slotted outputs now receive the deterministic three-live-effect exact-item modifier described in
+> the 2026-08-29 overlay; disconnected-effect rows remain unavailable. Mine, Skim, the eligible Deep-Scanner
 > purchase and eligible fixed Fabrication settle through one lease-fenced F3/F4 CAS with the exact
 > Cargo/item/technology changes, Arc 2/3 carriers, compatibility mirrors, Charter mining/fabrication
 > progress, immutable receipt and revision. Resource cursors settle from the prior active-play state;
@@ -132,7 +160,7 @@
 > no optimistic result.
 >
 > Arc 3 implements fixed sinks and their real resource sources, not the remaining authored economy:
-> variable/natural loot occurrence, compatible affix pools, crafted modifier/drawback, upgrades,
+> variable/natural loot occurrence, compatible natural-affix pools, drawbacks, upgrades,
 > sockets, vendors/bulk targeting, full recovery/pacing and HUMAN comprehension remain open.
 
 > **2026-08-24 Arc 2 v2 overlay — CURRENT versus OPEN:** the port now has executable authority

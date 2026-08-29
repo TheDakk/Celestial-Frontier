@@ -214,6 +214,26 @@ describe('Engineering panel production read model', () => {
     expect(missingParts?.reason).toContain('Missing 1 Silicon Chip.');
   });
 
+  it('exposes a fully exceptional connected slotted recipe through the real panel model', () => {
+    const mars = world(MARS);
+    const exceptionalEconomy = Object.freeze({
+      ...economy,
+      cargo: Object.freeze([
+        Object.freeze(['Ni', 2] as const), Object.freeze(['C', 1] as const),
+      ]),
+      exceptionalCargo: Object.freeze([
+        Object.freeze(['Ni', 2] as const), Object.freeze(['C', 1] as const),
+      ]),
+    });
+    const recipes = projectEngineeringPanelReadModel({
+      ship: ship([]), nav: surface(mars), engineering: state(),
+      loadout: loadout(), economy: exceptionalEconomy, activePlayMs: 0,
+    }).fabricationGroups.flatMap(({ recipes: rows }) => rows);
+    expect(recipes.find(({ baseId }) => baseId === 'meteor')).toMatchObject({
+      status: 'available', reason: null, effectSupport: 'live',
+    });
+  });
+
   it('projects positive Auto-Extractor work only from the persisted active-play cursor', () => {
     const mars = world(MARS);
     const model = projectEngineeringPanelReadModel({
@@ -257,6 +277,49 @@ describe('Engineering panel production read model', () => {
       .toMatchObject({ id: 'drive2', label: 'Antimatter Drive', owned: true });
   });
 
+  it('keeps Deep Scanners behind exact positive Jump Drive loadout authority', () => {
+    const mars = world(MARS);
+    const projection = (
+      registeredLoadout: ReturnType<typeof loadout>,
+      visibleShipItems: readonly (readonly [string, number])[],
+    ) => projectEngineeringPanelReadModel({
+      ship: ship(visibleShipItems),
+      nav: surface(mars),
+      engineering: state(),
+      loadout: registeredLoadout,
+      economy,
+      activePlayMs: 0,
+    }).research.find(({ id }) => id === 'scan1');
+
+    const absent = projection(loadout(), [['jumpdrive', 1]]);
+    expect(absent).toMatchObject({
+      status: 'unavailable',
+      reason: 'Build the Jump Drive first.',
+      costs: {
+        materials: [
+          { id: 'Fe', required: 6, owned: 20 },
+          { id: 'Si', required: 4, owned: 20 },
+        ],
+        stardust: { required: 20, owned: 500 },
+        prerequisite: null,
+      },
+    });
+
+    const zeroCount = projection(loadout([['jumpdrive', 0]]), [['jumpdrive', 1]]);
+    expect(zeroCount).toMatchObject({
+      status: 'unavailable', reason: 'Build the Jump Drive first.',
+    });
+
+    const owned = projection(loadout([['jumpdrive', 1]]), []);
+    expect(owned).toMatchObject({ status: 'available', reason: null });
+
+    const veteran = projectEngineeringPanelReadModel({
+      ship: ship([]), nav: surface(mars), engineering: state({ research: ['scan1'] }),
+      loadout: loadout(), economy, activePlayMs: 0,
+    }).research.find(({ id }) => id === 'scan1');
+    expect(veteran).toMatchObject({ status: 'owned', reason: 'Already researched.' });
+  });
+
   it('separates protected Earth from a ready registered remnant corona with exact HP risk', () => {
     const earth = world(EARTH);
     const remnant = star(REMNANT_STAR);
@@ -291,9 +354,9 @@ describe('Engineering panel production read model', () => {
   it('fails every writable row closed at the exact Arc 3 and Arc 2 revision ceilings', () => {
     const mars = world(MARS);
     const engineeringExhausted = projectEngineeringPanelReadModel({
-      ship: ship([]), nav: surface(mars),
+      ship: ship([['jumpdrive', 1]]), nav: surface(mars),
       engineering: state({ revision: Number.MAX_SAFE_INTEGER }),
-      loadout: loadout(), economy, activePlayMs: 0,
+      loadout: loadout([['jumpdrive', 1]]), economy, activePlayMs: 0,
     });
     expect(engineeringExhausted.mining).toMatchObject({
       status: 'unavailable', detail: 'Engineering record revision is exhausted.',
@@ -311,7 +374,9 @@ describe('Engineering panel production read model', () => {
       loadout: loadoutAtRevision(0xffff_ffff), economy, activePlayMs: 0,
     });
     expect(inventoryExhausted.mining.status).toBe('ready');
-    expect(inventoryExhausted.research.find(({ id }) => id === 'scan1')?.status).toBe('available');
+    expect(inventoryExhausted.research.find(({ id }) => id === 'scan1')).toMatchObject({
+      status: 'unavailable', reason: 'Build the Jump Drive first.',
+    });
     expect(inventoryExhausted.fabricationGroups.flatMap(({ recipes }) => recipes)
       .find(({ baseId }) => baseId === 'plate')).toMatchObject({
       status: 'unavailable', reason: 'Inventory record revision is exhausted.',

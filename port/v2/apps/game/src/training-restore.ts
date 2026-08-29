@@ -9,7 +9,7 @@
  */
 import {
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
-  arc4OwnershipLegacyMirrorMatches,
+  arc4GuardianLegacyOwnershipMirrorMatchesV1,
   arc2LootLegacyMirrorMatches,
   applyV5ExtensionWrites,
   committedArc5OwnershipState,
@@ -18,10 +18,12 @@ import {
   prepareArc4OwnershipLegacyMigration,
   prepareArc5OwnershipMigration,
   prepareArc2LootLegacyRestore,
+  projectArc4GuardianLegacyOwnershipMirrorV1,
   readArc4Ownership,
   readArc5OwnershipMigration,
   readArc2Loot,
   type Arc4OwnershipLegacyMigrationPreparation,
+  type Arc4GuardianLegacyMirrorProtectionReasonV1,
   type Arc5OwnershipMigrationEvidence,
   type Arc5OwnershipMigrationEvidenceV2,
   type Arc5OwnershipMigrationPreparation,
@@ -98,6 +100,16 @@ export type TrainingArc4RestorePreparation =
       readonly reason: 'target-loaded';
       readonly mode: OwnershipStateV1['mode'];
       readonly actualRevision: number;
+    }
+  | {
+      readonly kind: 'protected';
+      readonly reason: 'composite-projection-protected';
+      readonly projectionReason: Arc4GuardianLegacyMirrorProtectionReasonV1;
+      readonly version?: number;
+    }
+  | {
+      readonly kind: 'protected';
+      readonly reason: 'composite-mirror-mismatch';
     };
 
 export type PreparedTrainingArc5Restore = Extract<
@@ -172,7 +184,7 @@ export function committedTrainingArc2State(
 /** Bootstrap Arc 4 only when a genuine legacy checkpoint actually replaced
  * the ownership-bearing compatibility fields in the final candidate. Route-
  * only, source-deferred and no-checkpoint outcomes preserve current authority.
- * Any existing carrier is explicit protection: Training never rewinds it. */
+ * Any existing Arc 4 carrier is explicit protection: Training never rewinds it. */
 export function prepareTrainingArc4Restore(
   checkpointKind: ImportTrainingSnapshotIngressV2['kind'] | 'source-deferred',
   legacyFieldsRestored: boolean,
@@ -185,6 +197,33 @@ export function prepareTrainingArc4Restore(
     legacy: state,
     resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   });
+  if (prepared.kind === 'prepared' && prepared.state.mode === 'current') {
+    const projection = projectArc4GuardianLegacyOwnershipMirrorV1(
+      prepared.state,
+      prepared.extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    if (projection.kind === 'protected') {
+      return Object.freeze({
+        kind: 'protected',
+        reason: 'composite-projection-protected',
+        projectionReason: projection.reason,
+        ...(projection.version === undefined ? {} : { version: projection.version }),
+      });
+    }
+    /* Training replaces a historical v4 checkpoint. It may retain an exact
+       Guardian tombstone because the composite mirror still omits that row,
+       but it must refuse before durability if a live separately-carried
+       Guardian/Titan would be erased by the checkpoint replacement. */
+    if (!arc4GuardianLegacyOwnershipMirrorMatchesV1(
+      prepared.state,
+      prepared.extensions,
+      state,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    )) {
+      return Object.freeze({ kind: 'protected', reason: 'composite-mirror-mismatch' });
+    }
+  }
   if (prepared.kind !== 'already-loaded') return prepared;
   return Object.freeze({
     kind: 'protected',
@@ -291,8 +330,8 @@ export function prepareTrainingArc5Restore(input: Readonly<{
 
 /** Verify only after Training's single replacement transaction is durable.
  * All 18 prepared carrier bytes and the registered state digest must agree.
- * Current state also requires its complete v4 mirror; lossless legacy-
- * protected state instead retains its exact registered evidence. Null means
+ * Current state also requires the complete Arc 4 + Guardian v4 mirror;
+ * lossless legacy-protected state instead retains its exact registered evidence. Null means
  * read-only convergence by reload, never retry. */
 export function committedTrainingArc4State(
   state: SaveStateV2,
@@ -326,7 +365,12 @@ export function committedTrainingArc4State(
         || migrated.kind !== 'migrated'
         || ownershipStateDigestV1(migrated.state) !== ownershipStateDigestV1(prepared.state)
         || canonicalJson(migrated.sourceEvidence) !== canonicalJson(evidenceDescriptor.value)
-        || !arc4OwnershipLegacyMirrorMatches(loaded.state, state)) return null;
+        || !arc4GuardianLegacyOwnershipMirrorMatchesV1(
+          loaded.state,
+          extensions,
+          state,
+          SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+        )) return null;
     } else {
       if (prepared.migration !== 'legacy-protected') return null;
       if (migrated.kind !== 'legacy-protected'

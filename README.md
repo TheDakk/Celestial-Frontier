@@ -22,6 +22,65 @@
 > heat/battery/GPU review remain open, as do Gate G distant playback/D-9e and whole Gates A–I.
 > Nothing has been pushed, merged, released, version-bumped or deployed.
 >
+> **Current local Arc 4 Charter successor (2026-08-29; later than the certificate above):** the
+> first durable successful Tame, Scavenge, or Sample on each exact source-proven world beyond Sol
+> can now bank that world's one Chapter 2 life-discovery tick in the same pre-draw-certified
+> receipt/CAS as capture ownership, reward and F4. Misses, Sol, unreachable/past-chapter sources,
+> later successes on that world, saturated progress, stale tabs and failed writes bank nothing.
+> Both capture eligibility and Search travel now bind the complete home-galaxy/star parent
+> hierarchy, so equal seeds at different coordinates cannot inherit Sol or home-galaxy reach; only
+> a capture that actually banks the deed may reconcile an imported Charter chapter.
+> This deliberately replaces the separate v1.8.9 Discover Life interaction for that one deed; it
+> does not change legacy Survey Records or restore accepted/weekly bioscan Charters. Focused
+> and final full browser-free evidence is green at **230 files / 2,315 passed + 1 skipped**. All
+> three TypeScript programs are green, `compendiummem:selftest` passes **222 independent controls**,
+> the authority printer exits 0, and the current-authority tests pass **45/45**. Fresh clean exact-
+> source browser/HUMAN evidence remains open, so the signed `3f69e88…` result is preserved rather
+> than relabelled.
+>
+> **Current local gameplay successor (2026-08-29; browser-free evidence only):** Arc 5 now exposes
+> four exact-instance companion writers from verified real-fauna Compendium detail: Feed, one-draw
+> nonlethal Breed with active-play Recovery, identity-only Rename, and role-only Field Scout. A
+> successful Breed gives the child +2 XP; the first successful union of each canonical unordered
+> species pair gives that child another +5 XP. Stable species identity plus imported v1 pair-claim
+> evidence prevents rename, parent-order, reload or archive rollover from re-arming that bonus. The
+> four explicit audio paths are durable Tame greeting, committed Feed acknowledgement, exact-owned-
+> fauna Compendium Listen, and visible inhabited-world Planetside **Listen to biosphere**; combat/
+> Guardian audio and authored continuous ambience remain absent.
+>
+> A bounded landed Arc 6 challenge now offers the explorer or eligible owned fauna against the exact
+> Titan, Guardian or strongest-fauna defender, shows a deterministic 160-run forecast and settles one
+> transcript/receipt/CAS. It persists conquest, XP, wounds/loss, Stardust, Guardian/Titan acquisition,
+> Prime/Frontier, `c2-conq`, `settle1`, `brink`, and accepted starter `st-conq` +25 Stardust. Authored
+> extra Guardian loot, conquest-modifier coexistence, party/retreat and combat audio remain open.
+>
+> The Charters board now owns the two established progressive Starter chains, reveals only the next
+> incomplete link, supports explicit Accept with the exact three-active cap, and settles live
+> Landing, Mine, fixed Fabricator, Field Scout and verified Conquest deeds with their established
+> 10–25 Stardust and supported gear in the owning action's one receipt/CAS. Already-proven deeds may
+> settle on Accept without a duplicate action. **Discover life** remains visible but unavailable;
+> weekly slate, acceptance and rollover authority remain protected.
+>
+> Arc 9 now renders the exact ten-rank ladder and all **96 achievements across 13 Records shelves**,
+> with 68 aggregate rows and **23 event rows** joined to their real actions. Survey owns twelve
+> source-derived joins; accepted/direct galaxy arrival and wormhole traversal own `quasar`, `dwarfg`
+> and `worm`; the first explicit Atlas Favorite owns `curator`. Accepted CF1 Follow folds its route,
+> Jumps, `wayfarer`, galaxy visit and any proved galaxy-kind event into one receipt. Exactly five
+> event owners remain blocked: `daily`, `decade`, `survivor`, `fieldmedic` and `gambler`. Records now
+> includes the six established Binder type pages and seven current-proof one-time Set claims with
+> 25–150 Stardust rewards; the Fifty Paragons remain visible and protected. Newly appended supported
+> achievements and newly raised best ranks receive post-publication notification/sting ceremonies,
+> with rank promotion using a bounded gold burst; boot, replay, Training, convergence and refusal
+> remain silent, and ceremonies write no save or reward. The Prime Codex now presents all nine
+> established Signature rows and, after the ninth claim, the five established Frontier ending
+> choices. The Balance choice retains its extra three-conquests, Electric-Signature and 40-species
+> predicate; one ending receipt/CAS cannot be overwritten, and unknown imported endings remain
+> protected. Settings also exposes a durable nameplate selector limited to `Auto` or an already-
+> earned rank; it publishes to AppChrome only after its one receipt/CAS verifies. The current Guide
+> catalogue is **34 partial / 7 unavailable**, and **A New Foundation** is a
+> **73-bullet** development draft. These local successors do not inherit the older browser certificate
+> and authorize no push, hosted run, production version, release or deployment.
+>
 > **Historical Final13 pre-polish local automated checkpoint (2026-08-28):** exact signed source
 > `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
 > `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
@@ -173,21 +232,21 @@ Deep Scanners now add one honest **Mineral veins** row to orbital Survey for an 
 lifeless non-Earth world, without exposing cosmic/exceptional veins, grade, reserves, progress, or
 the grounded Mine action. One strict rarity projector maps raw deterministic tiers 0–14 to the
 plain player-facing 0–9 vocabulary and discloses nothing for malformed input. Arc 5's compact
-ownership model also fixes the approved bred-child care invariant: a new child receives exactly
-half the lower registered parent's bounded `fed` value, symmetrically and once; the public
-breed/care writer remains future work.
+ownership model now backs four public exact-instance writers. Feed consumes one exact flora lot;
+Breed gives a new child exactly half the lower registered parent's bounded `fed` value once and
++2 XP, gives the first successful canonical unordered species pair another +5 child XP, keeps both
+parents and assigns active-play Recovery; Rename changes one sanitized nickname; Field Scout
+changes only the exact role pointer. Broader tastes, injury care, bond, missions and Scout consequence
+owners remain future work.
 
-Audio is no longer package-only, but remains deliberately narrow. The app projects one exact live
-owned creature into the deterministic signature/profile/call-plan pipeline, owns a fail-closed
-five-bus runtime lifecycle, persists **Creature Voices**, and may synthesize one bounded fauna
-greeting only after a native Tame gesture, an exact durable wild-fauna result, and its accessible
-status counterpart all agree. The result retains the global F3 transaction `revision` separately
-from its Arc 4/5 `ownershipRevision`; the audio owner fences current ownership only against the
-latter after the Arc 4 and Arc 5 ownership successors have been proven coherent. Sound or Creature
-Voices off, hidden/unanswerable play, a miss, refusal, stale/reload convergence, route/counterpart
-loss, or replay stays silent and releases its audio/runtime owner. Other creature actions,
-ambience, music, combat/Guardian audio, recorded assets, full audio accessibility, device plateaus,
-and HUMAN listening remain open.
+Audio is no longer package-only, but remains deliberately narrow. The app projects exact current
+owned fauna into the deterministic signature/profile/call-plan pipeline, owns a fail-closed five-bus
+runtime lifecycle and persists **Creature Voices**. It exposes four explicit paths: the durable Tame
+greeting, committed Feed acknowledgement, exact-owned-fauna Compendium Listen, and the generic
+visible inhabited-world **Listen to biosphere** signal. Native gesture, exact durable/current owner,
+accessible counterpart, Sound and lifecycle guards remain mandatory; list/navigation/render never
+autoplay. Authored or continuous ambience, music, combat/Guardian audio, recorded assets, full audio
+accessibility, device plateaus and HUMAN listening remain open.
 
 The dedicated no-forged-time Arc 4 recovery collector and its mutation-sensitive selftest are
 ready, but the collector is not standalone: it may run only after the same unchanged clean commit

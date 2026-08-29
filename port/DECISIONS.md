@@ -282,3 +282,96 @@ listening gate.
 lineage bridge and may act as a deterministic salt, but it cannot reconstruct both parents' complete
 audible traits. A true parent-voice blend needs a versioned bounded parent-audio projection; until
 that representation is selected and proven, the documented deterministic fallback applies.
+
+---
+
+## Decided and implemented locally 2026-08-29 (Nick) — Arc 5 companion breeding V1
+
+### 16. Normal companion breeding — **TRANSPARENT, NONLETHAL, ACTIVE-PLAY RECOVERY**
+
+Arc 5 V1 accepts two distinct, living, owned fauna companion instances. Any two eligible fauna may
+pair, preserving the legacy hybrid fantasy through the existing deterministic `crossGenome`
+successor; this policy does not add a second genetics, lineage or ownership authority. Imported
+exhibits, absent/non-owned creatures, mission-assigned or still-recovering companions, and parents
+at Injured/Critical condition (`hurt >= 0.3`) are ineligible. A missing legacy `hurt` value is
+healthy. A Recovery whose boundary has been reached is available at exact equality.
+
+The public success chance remains the transparent legacy formula
+`clamp(0.95 - (tierA + tierB) * 0.06 + earnedStardustBonus, 0.08, 0.97)`.
+`earnedStardustBonus` is the audited projection of lifetime earned Stardust, increases by `0.01`
+per complete 50, and is capped at `0.15`. The exact parent eligibility, both possible ownership
+successors and complete-save capacity are proved before the one SessionRNG `breedOutcome` value is
+exposed. A capacity or product refusal consumes no draw, receipt, revision or Recovery time.
+
+Normal breeding never consumes or kills either parent. Every settled attempt places both parents
+into F4 active-play Recovery: eight minutes on success and two minutes on failure. Recovery blocks
+breed, combat and dispatch, does not advance from wall time, and projects to available when
+`activePlayMs >= readyAtActivePlayMs`. Success admits the existing deterministic child successor,
+including exactly half of the lower parent's bounded `fed`; failure creates no child. Either result
+is one exact-five Arc 5 persistence transaction with one CAS, no hidden entropy, reroll, optimistic
+publication or write retry.
+
+This is now a local player-live capability from real-fauna Compendium detail. The primary and mate
+selectors page exact instances 24 at a time, keep every eligible candidate reachable, show the
+published chance without raw genes, and retain Back/Close during settlement. Guide, draft release,
+Slice and Glass contracts name the live boundary and negative-control missing or contradictory
+copy. No art, portrait, genome, genetics or lineage-rendering implementation changed.
+
+---
+
+## Implemented locally 2026-08-29 — exact-instance companion Rename
+
+### 17. Companion nickname — **IDENTITY-ONLY, SANITIZED, ONE DURABLE WRITE**
+
+Rename is available only from a real-fauna Compendium detail and targets one exact owned companion
+from bounded 24-row pages. Stable instance identity keeps same-species twins separate. Because the
+action changes identity only, assigned, recovering and injured companions remain eligible;
+exhibition, non-owned, protected and revision-exhausted rows refuse.
+
+The shipped name policy strips angle brackets, ampersands, quotation marks and apostrophes, trims
+whitespace and caps the result at 24 characters. A cleaned-empty or unchanged result consumes no
+receipt or write. One immutable receipt and exact-five CAS change only the chosen `nickname`; species,
+genome, traits, lineage, assignment, condition, bond, catalogue alias and every other instance remain
+unchanged. The old name remains visible until durability is verified. There is no RNG, automatic
+retry or optimistic publication; stale, storage and unconfirmable postcommit results converge
+read-only through reload so a rename cannot apply twice.
+
+---
+
+## Decided 2026-08-29 (Nick) — exceptional-craft player name
+
+### 18. Fully exceptional fixed craft — **PUREFORGED**
+
+The player-facing name for a supported slotted item crafted entirely from exceptional direct
+materials is **Pureforged**. “Exceptional” remains the material grade and internal
+provenance vocabulary; existing `exceptional-v1` identifiers, receipts and save identities do not
+change. Current v2 Guide, release and evidence copy uses Pureforged for the gear/modifier outcome.
+The frozen v1.8.9 Guide literal remains historical shipped wording. This naming decision does not
+authorize new affix pools, rerolls, upgrades, sockets, vendors or disconnected effects.
+
+---
+
+## Open implementation decisions exposed 2026-08-29 — Arc 6 reward carriers
+
+These are not new requests for numeric tuning. Source review proved the legacy inputs but found no
+authoritative v2 coexistence policy, so implementation stops fail-closed until Nick resolves them.
+
+### D-ARC6-AFFIX-1 — post-construction conquest imbue coexistence
+
+The preserved oracle already fixes occurrence and result: canonical worn-slot order, 40% seeded
+gate, seeded selected slot, one of the six legacy effect keys/magnitudes, and
+`replace-slot-bound-affix`. Legacy had one role-less affix attached to the worn slot/base. A v2
+`GearInstance` can independently carry natural prefix/suffix affixes and one Pureforged crafted
+modifier. Decide which explicit new carrier owns conquest imbues, whether it replaces or coexists
+with each existing axis, which gameplay-effect projector reads it, and what v4 `equipAff`
+compatibility projection is authoritative. Do not relabel it prefix/suffix/crafted or stack it by
+default. Until decided, a conquest whose exact gate plans an imbue refuses before CAS.
+
+### D-ARC6-GUARDIAN-REWARD-1 — authored Guardian Gear/material reward
+
+Legacy specifies Guardian capture, +40 guarded-world Stardust, scaled XP, Prime/Titan claims and
+ordinary conquest affix behavior, but no separate authored one-time Guardian Gear/material table.
+The v4 master plan promises a receipt-bound deterministic reward without choosing its contents,
+pool, occurrence, scaling or capacity fallback. Those values require an authored loot/progression
+decision. Until decided, the settlement records `guardianAuthoredReward:unsupported-open` and mints
+no extra item or material; all source-specified capture/Prime/Stardust outcomes still settle.

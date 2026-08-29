@@ -102,7 +102,7 @@ function shipVisualIntegrationErrors(
     || !searchTravel.includes('items: authoritySave.items,')
     || !searchTravel.includes('ascCh: authoritySave.ascCh,')
     || !searchTravel.includes('liverySeed: shipLiverySeed,')
-    || !searchTravel.includes('ascAllowsStar(candidateStage, target.gal.seed, target.star)')) {
+    || !searchTravel.includes('ascAllowsCanonicalStar(candidateStage, target.gal, target.star)')) {
     errors.push('candidate navigation bypasses ShipVisualState');
   }
   if (panel.includes('save.items') || panel.includes('save.ascCh')) {

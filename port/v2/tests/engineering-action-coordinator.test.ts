@@ -84,7 +84,7 @@ function coordinatorContractErrors(source: string): string[] {
   const arc4 = sourceSection(
     source,
     'async function commitArc4CaptureAction(',
-    '\nfunction engineeringOutcomeConverges(',
+    '\nfunction arc6CombatOutcomeCopy(',
   );
   errors.push(
     ...actionOrderErrors(arc2, 'Arc 2'),
@@ -222,10 +222,18 @@ function arc3ActionBindingErrors(source: string): string[] {
   );
   const commit = generic.indexOf('await runtime.commitAction({');
   const durable = generic.indexOf('durable = true;', commit);
-  const verify = generic.indexOf('const verified = spec.verify({', durable);
+  const checkpoint = generic.indexOf('const checkpoint = runtime.checkpointParent();', durable);
+  const verify = generic.indexOf('const verified = spec.verify({', checkpoint);
   const publish = generic.indexOf('spec.publish(save, outcome.state, verified);', verify);
-  if (!(commit >= 0 && durable > commit && verify > durable && publish > verify)) {
+  if (!(commit >= 0 && durable > commit && checkpoint > durable
+    && verify > checkpoint && publish > verify)) {
     errors.push('Arc 3 may publish only after one commitAction is durable and independently verified');
+  }
+  if (!generic.includes('runtime !== f4Runtime')
+    || !generic.includes('runtime.revision !== outcome.revision')
+    || !generic.includes('JSON.stringify(checkpoint) !== JSON.stringify(outcome.state)')
+    || !generic.includes('JSON.stringify(outcome.state) !== JSON.stringify(outcome.saved.canonicalState)')) {
+    errors.push('Arc 3 postcommit verifier omits its exact runtime checkpoint');
   }
   if ((source.match(/await runtime\.commitAction\(\{/g) ?? []).length !== 1) {
     errors.push('All four Arc 3 operations must share the sole commitAction call');
@@ -247,7 +255,10 @@ function arc3ActionBindingErrors(source: string): string[] {
     {
       name: 'mine', start: 'async function mineCurrentSurface()', end: '\nasync function skimCurrentSystem()',
       needles: ['return commitArc3EngineeringAction({', "operation: 'mine-world'", 'deriveArc3MineAction({',
-        'verifyArc3CommittedAction({', 'expectedState: planned.nextEngineeringState', 'publishArc3MiningFields(target, committed)'],
+        'verifyArc3CommittedMineAction({', 'expectedOwnedState: planned.state',
+        'expectedEngineeringState: planned.nextEngineeringState', 'expectedArc2State: planned.nextArc2State',
+        'if (verified.arc2State !== null)', 'inventoryPanelController.setState(verified.arc2State);',
+        'publishArc3MiningFields(target, committed);', 'arc2LootState = verified.arc2State;'],
     },
     {
       name: 'skim', start: 'async function skimCurrentSystem()', end: '\nasync function purchaseEngineeringResearch(',
@@ -447,7 +458,10 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
       'Heartbeat checkpoint lacks its private cycle-owner persistence token',
     );
 
-    const mistakenOwner = mainSource.replace(
+    const mistakenOwner = replaceInSourceSectionExact(
+      mainSource,
+      'async function commitArc2InventoryAction(',
+      '\ntype Arc3AppActionOperation =',
       'if (!f4RuntimeMayMutate(runtime) || importWriteInFlight',
       'if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight',
     );
@@ -459,7 +473,7 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
     const mistakenArc4Owner = replaceInSourceSectionExact(
       mainSource,
       'async function commitArc4CaptureAction(',
-      '\nfunction engineeringOutcomeConverges(',
+      '\nfunction arc6CombatOutcomeCopy(',
       'if (!f4RuntimeMayMutate(runtime) || importWriteInFlight',
       'if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight',
     );
@@ -470,7 +484,7 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
     const unparseableArc4Guard = replaceInSourceSectionExact(
       mainSource,
       'async function commitArc4CaptureAction(',
-      '\nfunction engineeringOutcomeConverges(',
+      '\nfunction arc6CombatOutcomeCopy(',
       "return unavailable('write-authority-changed', verb);",
       "return unavailable('authority-changed', verb);",
     );
@@ -516,7 +530,10 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
       'Arc 3 storage fault bypasses the production backend compare-and-apply',
     );
 
-    const noStaleBump = mainSource.replace(
+    const noStaleBump = replaceInSourceSectionExact(
+      mainSource,
+      'async function commitArc3EngineeringAction(',
+      '\nasync function mineCurrentSurface()',
       '      const injected = await revisionRepo.mutate({',
       '      const injected = await Promise.resolve({ kind: \'committed\', revision: faultBeforeRevision }); void ({',
     );
@@ -527,6 +544,39 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
   });
 
   it('negative-controls action-specific verifier selection and post-durable publication', () => {
+    const weakMineVerifier = replaceInSourceSectionExact(
+      mainSource,
+      'async function mineCurrentSurface()',
+      '\nasync function skimCurrentSystem()',
+      'verifyArc3CommittedMineAction({',
+      'verifyArc3CommittedAction({',
+    );
+    expect(arc3ActionBindingErrors(weakMineVerifier)).toContain(
+      'Arc 3 mine binding omits its exact derive/verify/publish contract',
+    );
+
+    const missingMineControllerPublication = replaceInSourceSectionExact(
+      mainSource,
+      'async function mineCurrentSurface()',
+      '\nasync function skimCurrentSystem()',
+      '        inventoryPanelController.setState(verified.arc2State);',
+      '        /* verified Mine reward controller publication omitted */',
+    );
+    expect(arc3ActionBindingErrors(missingMineControllerPublication)).toContain(
+      'Arc 3 mine binding omits its exact derive/verify/publish contract',
+    );
+
+    const missingMineCarrierPublication = replaceInSourceSectionExact(
+      mainSource,
+      'async function mineCurrentSurface()',
+      '\nasync function skimCurrentSystem()',
+      '      if (verified.arc2State !== null) arc2LootState = verified.arc2State;',
+      '      /* verified Mine reward carrier publication omitted */',
+    );
+    expect(arc3ActionBindingErrors(missingMineCarrierPublication)).toContain(
+      'Arc 3 mine binding omits its exact derive/verify/publish contract',
+    );
+
     const wrongResearchVerifier = mainSource.replace(
       'verifyArc3CommittedResearchAction({',
       'verifyArc3CommittedAction({',
@@ -552,6 +602,17 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
     expect(optimistic).not.toBe(mainSource);
     expect(arc3ActionBindingErrors(optimistic)).toContain(
       'Arc 3 may publish only after one commitAction is durable and independently verified',
+    );
+
+    const unrelatedCheckpoint = replaceInSourceSectionExact(
+      mainSource,
+      'async function commitArc3EngineeringAction(',
+      '\nasync function mineCurrentSurface()',
+      '        || JSON.stringify(checkpoint) !== JSON.stringify(outcome.state)',
+      '        || false /* mutation control trusts an unrelated checkpoint */',
+    );
+    expect(arc3ActionBindingErrors(unrelatedCheckpoint)).toContain(
+      'Arc 3 postcommit verifier omits its exact runtime checkpoint',
     );
   });
 });

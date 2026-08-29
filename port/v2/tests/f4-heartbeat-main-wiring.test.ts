@@ -223,8 +223,16 @@ describe('F4 lease-storage failure app integration', () => {
   });
 
   it('rejects every missing fail-closed integration independently', () => {
-    const required = [
+    const missingShipyardProtection = replaceInSectionExact(
+      mainSource,
+      'function scheduleF4AuthorityConvergenceReload(',
+      '\ntype F4HeartbeatStorageError',
       "if (openPanelId() === 'shipyard') refreshEngineeringPanelState();",
+      '__F4_MAIN_MUTANT_SHIPYARD_PROTECTION__',
+    );
+    expect(integrationErrors(missingShipyardProtection)).toContain('open-shipyard-protection');
+
+    const required = [
       'latchF4AuthorityConvergenceReload({',
       'const errors = f4AuthorityConvergenceWitnessErrors(',
       'f4AuthorityProtectionRenderError ??=',

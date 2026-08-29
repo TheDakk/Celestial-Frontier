@@ -3,8 +3,8 @@
 **STATUS:** §1's legacy source facts remain verified against **v1.8.9**; the current v2 exact
 43-biome domain-profile authority and live full-vista route match exact signed source
 `3f69e88ea8e34fdb8d9913276601b426ada783ae` as of **2026-08-29**. §§2–4 remain design-pack content and are NOT derivable from source — see PROVENANCE
-below. The environmental-audio overlay matches the pure canonical current-world hint join and
-remaining non-playing v2 contract as of **2026-08-29**. Audited and promoted from `tools/` to the repo root during port
+below. The environmental-audio overlay matches the pure canonical current-world plan plus its
+bounded explicit no-spoiler v2 playback join as of **2026-08-29**. Audited and promoted from `tools/` to the repo root during port
 **Phase 0** (Gate A); the file itself dates from 2026-07-20.
 
 > **2026-08-27 current v2 correction:** after owned Deep Scanners, the exact eligible scanned,
@@ -112,18 +112,21 @@ biome→vista tint._
 > `ammonia`, `stormeye`) do carry floater fauna — `hotglow` carries none, making it a fifth case
 > rather than a gas-biome norm. Separately, **17** biomes carry `flora:[]`.
 
-## 0 · v2.0 environmental sonification (canonical pure join; playback absent — 2026-08-28)
+## 0 · v2.0 environmental sonification (bounded explicit playback live; authored ambience open — 2026-08-29)
 
 The current v2 player application plays compatibility stings plus exact Tame and Feed creature
-expressions. It does not yet play biome ambience, weather, distant ecology or music. `@cf/audio`
-implements a pure `DistantEcologyHintPlan`, and `biome-ecology-audio.ts` now joins it to one production
-canonical inhabited current-world Survey roster. The plan binds canonical world identity, profile
-schema/digest/key, weather, hazard and the roster environment fingerprint at biosphere granularity,
-with alternate-classifier, stale-profile, hidden-detail and lifeless-world controls. Main deliberately
-does not import the join: no application event, same-granularity counterpart, authored layer,
-ducking, reduced-intensity behavior or playback lifecycle exists. Production v1.8.9 retains its
-synthesized ambience beds; this overlay does not change them, the 43 live biome profiles, roster
-selection, descent, hazards, rarity or any design-pack status below.
+expressions, explicit exact-owned-fauna Compendium Listen, and one bounded generic Planetside
+**Listen to biosphere** signal. `@cf/audio` implements the pure `DistantEcologyHintPlan`, and
+`biome-ecology-audio.ts` joins it to one production canonical inhabited current-world Survey roster.
+The plan binds canonical world identity, profile schema/digest/key, weather, hazard and the roster
+environment fingerprint at biosphere granularity, with alternate-classifier, stale-profile,
+hidden-detail and lifeless-world controls. Main imports that join only inside the trusted explicit
+Listen action after the exact same-granularity visible biosphere counterpart still agrees. Render,
+landing, roster fill and navigation never autoplay it, and it reveals no species, consumes no Yield,
+grants nothing and writes no save. Authored/profile-specific continuous ambience, weather beds,
+music, ducking, reduced-intensity behavior and real-device listening evidence remain open.
+Production v1.8.9 retains its synthesized ambience beds; this overlay does not change them, the 43
+live biome profiles, roster selection, descent, hazards, rarity or any design-pack status below.
 
 The future environment resolver consumes one typed, deterministic biome identity and produces a
 presentation-only soundscape plan from atmosphere, weather, terrain/water, pressure, gravity,
@@ -140,11 +143,15 @@ and empty/silent zones remain intentional rather than being filled for constant 
 biosphere or future companion may modulate density only from visible current state; audio cannot
 reveal an undiscovered roster, pre-land rarity, capture outcome or hidden mechanical advantage.
 
-The implemented seam is the versioned/digested `BiomeProfileV1` plus a pure non-playing environment
-plan shared by no browser painter. Art and audio read the same canonical profile identity, but each
-owns its own renderer, cache and lifecycle. The mixer, same-origin rights manifest, decoded-byte/node
-budgets, background restart policy, captions and human listening gate are defined in `AUDIO.md` §0.
-Live distant-ecology playback remains Gate-G-open work.
+The implemented seam is the versioned/digested `BiomeProfileV1` plus a pure environment plan shared
+by no browser painter. Art and audio read the same canonical profile identity, but each owns its own
+renderer, cache and lifecycle. An explicit Planetside **Listen to biosphere** path now requires the
+exact current inhabited-world identity and already-visible accessible biosphere lead before one
+generic deterministic neutral signal can play. It reveals no hidden roster or species, spends no
+Yield, grants no discovery/reward and writes no save; render/navigation never autoplays it. The
+mixer, same-origin rights manifest, decoded-byte/node budgets, background restart policy, captions
+and human listening gate are defined in `AUDIO.md` §0. Authored continuous/specific ecology and
+real-device listening evidence remain Gate-G-open work.
 
 ## 0.1 · v2 world-opportunity presentation contract (resource subset implemented — 2026-08-24)
 

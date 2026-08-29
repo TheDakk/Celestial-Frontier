@@ -57,6 +57,12 @@ const TIER_10_COSMIC_EXCEPTIONAL_WORLD = {
   planet: { seed: 3303620273 },
 };
 
+const RING_CAPPED_WORLD = {
+  galaxy: { seed: 999, x: 90, y: -60 },
+  star: { seed: 3_220_308_100, x: 299.8301136358641, y: 263.69488157099113 },
+  planet: { seed: 3_327_023_009 },
+};
+
 const REMNANT_STAR = {
   galaxy: { seed: 999, x: 90, y: -60 },
   star: { seed: 3363971653, x: -386.2348864697851, y: 453.95830733468756 },
@@ -188,6 +194,7 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
     expect(plain.result).toMatchObject({
       sourceKey: mars.key,
       rawTier: 0,
+      effectiveTier: 0,
       reservePulls: 570,
       firstExtractionIndex: 1,
       loads: 1,
@@ -232,6 +239,56 @@ describe('@cf/domain-opportunity — canonical world mining planner', () => {
     if (equipped.status !== 'planned') return;
     expect(equipped.result.materials).not.toEqual(plain.result.materials);
     expect(equipped.witness).not.toBe(plain.witness);
+  });
+
+  it('uses one ring-capped tier for deposits, reserves, haul quantity, rich strikes, and grades', () => {
+    const address = world(RING_CAPPED_WORLD);
+    const opportunity = projectWorldOpportunity(address);
+    expect(opportunity).toMatchObject({
+      rawTier: expect.any(Number),
+      effectiveTier: 5,
+      deposits: ['CH4', 'He3', 'NH3', 'Au'],
+    });
+    expect(opportunity.rawTier).toBeGreaterThan(opportunity.effectiveTier);
+
+    const planned = planWorldMining({
+      state: createEngineeringState(),
+      opportunity,
+      currentSurface: surface(address),
+      capabilities: emptyCapabilities(),
+      activePlay: { activePlayMs: 0 },
+      receiptOrdinal: 17,
+    });
+    expect(planned.status).toBe('planned');
+    if (planned.status !== 'planned') return;
+    expect(planned.result).toMatchObject({
+      rawTier: opportunity.rawTier,
+      effectiveTier: 5,
+      reservePulls: 1_579,
+      materials: [
+        { id: 'Au', quantity: 3 },
+        { id: 'CH4', quantity: 2 },
+        { id: 'U', quantity: 1 },
+      ],
+      richStrikes: 1,
+      traceFingerprint: 'mine-trace-v1:36:d09edabf',
+    });
+    expect(planned.witness).toContain('"effectiveTier":5');
+
+    const grounded = projectWorldMineralReveal({
+      state: createEngineeringState(),
+      opportunity,
+      currentNav: surface(address),
+    });
+    expect(grounded).toMatchObject({
+      status: 'projected',
+      resolvedGrades: [
+        { materialId: 'CH4', tier: 1, kind: 'ordinary' },
+        { materialId: 'He3', tier: 1, kind: 'ordinary' },
+        { materialId: 'NH3', tier: 1, kind: 'ordinary' },
+        { materialId: 'Au', tier: 2, kind: 'ordinary' },
+      ],
+    });
   });
 
   it('pins positive biome, rich-strike, cosmic, and exceptional planner outputs', () => {
@@ -830,6 +887,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     const input = {
       state: sparse,
       researchId: 'scan1' as const,
+      jumpDriveOwned: true,
       assets: { materials: { Fe: 6, Si: 4 }, stardust: 20 },
       receiptOrdinal: 31,
     };
@@ -848,6 +906,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
         quote: {
           id: 'scan1',
           owned: false,
+          jumpDriveOwned: true,
           prerequisiteId: null,
           missingPrerequisiteId: null,
           missingMaterials: [],
@@ -864,6 +923,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     expect(encodeEngineeringState(plan.nextState)).toContain('"revision":5');
     expect(isEngineeringActionPlan(plan)).toBe(true);
     expect(plan.witness).toContain('research:scan1');
+    expect(plan.witness).toContain('"jumpDriveOwned":true');
     expect(plan.witness.length).toBeLessThanOrEqual(4_096);
     expect(encodeEngineeringState(sparse)).toBe(beforeState);
     expect(JSON.stringify(input.assets)).toBe(beforeAssets);
@@ -883,6 +943,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     expect(() => planResearchPurchase({
       state: JSON.parse(encodeEngineeringState(createEngineeringState())) as EngineeringStateV2,
       researchId: 'scan1',
+      jumpDriveOwned: true,
       assets: { materials: { Fe: 6, Si: 4 }, stardust: 20 },
       receiptOrdinal: 0,
     })).toThrow(/registered EngineeringState authority/);
@@ -890,16 +951,43 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     const owned = planResearchPurchase({
       state: legacySparseState(['scan1']),
       researchId: 'scan1',
+      jumpDriveOwned: false,
       assets: { materials: { Fe: 6, Si: 4 }, stardust: 20 },
       receiptOrdinal: 1,
     });
     expect(owned).toMatchObject({
-      status: 'refused', reason: 'already-owned', quote: { owned: true },
+      status: 'refused', reason: 'already-owned', quote: { owned: true, jumpDriveOwned: false },
     });
+
+    const progressionLockedState = createEngineeringState();
+    const progressionLockedBefore = encodeEngineeringState(progressionLockedState);
+    const progressionLocked = planResearchPurchase({
+      state: progressionLockedState,
+      researchId: 'scan1',
+      jumpDriveOwned: false,
+      assets: { materials: { Fe: 6, Si: 4 }, stardust: 20 },
+      receiptOrdinal: 2,
+    });
+    expect(progressionLocked).toMatchObject({
+      status: 'refused',
+      reason: 'progression-locked',
+      quote: {
+        id: 'scan1',
+        owned: false,
+        jumpDriveOwned: false,
+        prerequisiteId: null,
+        missingPrerequisiteId: null,
+        missingMaterials: [],
+        missingStardust: 0,
+        consumerStatus: 'available',
+      },
+    });
+    expect(encodeEngineeringState(progressionLockedState)).toBe(progressionLockedBefore);
 
     const prerequisite = planResearchPurchase({
       state: createEngineeringState(),
       researchId: 'drive2',
+      jumpDriveOwned: true,
       assets: { materials: { He3: 6, Pt: 2, U: 2 }, stardust: 120 },
       receiptOrdinal: 2,
     });
@@ -912,6 +1000,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     const insufficient = planResearchPurchase({
       state: createEngineeringState(),
       researchId: 'scan1',
+      jumpDriveOwned: true,
       assets: { materials: { Fe: 2 }, stardust: 7 },
       receiptOrdinal: 3,
     });
@@ -932,6 +1021,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     const unavailable = planResearchPurchase({
       state: sparse,
       researchId: 'drive3',
+      jumpDriveOwned: true,
       assets: { materials: { Pz: 1, Ir: 3, U: 4 }, stardust: 300 },
       receiptOrdinal: 4,
     });
@@ -950,6 +1040,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     const input = {
       state,
       researchId: 'scan1' as const,
+      jumpDriveOwned: true,
       assets,
       receiptOrdinal: 5,
     };
@@ -959,7 +1050,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
 
     let inputGetterReads = 0;
     const accessorInput: Record<string, unknown> = {
-      researchId: 'scan1', assets, receiptOrdinal: 5,
+      researchId: 'scan1', jumpDriveOwned: true, assets, receiptOrdinal: 5,
     };
     Object.defineProperty(accessorInput, 'state', {
       enumerable: true,
@@ -1009,6 +1100,10 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     });
     reject({ ...input, assets: nonEnumerableAssets }, /stardust must be an enumerable data property/);
 
+    for (const jumpDriveOwned of [0, 1, 'true', null, new Boolean(true)]) {
+      reject({ ...input, jumpDriveOwned }, /Jump Drive ownership must be an exact boolean/);
+    }
+
     reject({
       ...input,
       assets: { materials: { ...materials, [Symbol('forged')]: 1 }, stardust: 20 },
@@ -1025,6 +1120,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     const base = {
       state: createEngineeringState(),
       researchId: 'scan1' as const,
+      jumpDriveOwned: true,
       assets: { materials: { Fe: 6, Si: 4 }, stardust: 20 },
       receiptOrdinal: 11,
     };
@@ -1105,7 +1201,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     expect(crafted.witness).not.toContain('random');
   });
 
-  it('refuses unsupported exceptional slotted policy and deterministically plans ordinary fixed gear', () => {
+  it('plans fully exceptional exact gear and leaves mixed-spend fixed gear ordinary', () => {
     const common = {
       state: createEngineeringState(),
       baseId: 'meteor',
@@ -1120,9 +1216,26 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
         itemCounts: {}, stardust: 0, signatureIds: [],
       },
     });
-    expect(exceptional).toMatchObject({
-      status: 'refused', reason: 'exceptional-slotted-policy-unavailable',
+    expect(exceptional.status).toBe('planned');
+    if (exceptional.status !== 'planned') return;
+    expect(exceptional.result.arc2.consume).toEqual({
+      materials: [{ id: 'C', quantity: 1 }, { id: 'Ni', quantity: 2 }],
+      exceptionalMaterials: [{ id: 'C', quantity: 1 }, { id: 'Ni', quantity: 2 }],
+      itemCounts: [],
+      stardust: 0,
     });
+    expect(exceptional.result.arc2.gearGenerationPlan).toMatchObject({
+      baseId: 'meteor', naturalAffixes: [], drawback: null,
+      craftedModifier: { affixId: expect.stringMatching(/^exceptional-v1:/) },
+    });
+    expect(planFixedFabrication({
+      ...common,
+      assets: {
+        materials: { Ni: 2, C: 1 },
+        exceptionalMaterials: { Ni: 2, C: 1 },
+        itemCounts: {}, stardust: 0, signatureIds: [],
+      },
+    })).toEqual(exceptional);
 
     const ordinaryInput = {
       ...common,
@@ -1154,6 +1267,8 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     expect(ordinary.result.arc2.gearGenerationPlan).toMatchObject({
       baseId: 'meteor', naturalAffixes: [], craftedModifier: null, drawback: null,
     });
+    expect(ordinary.result.arc2.gearGenerationPlan?.generationSeed)
+      .toBe(exceptional.result.arc2.gearGenerationPlan?.generationSeed);
     expect(ordinary.nextRevision).toBe(1);
     expect(Object.isFrozen(ordinary.result.arc2)).toBe(true);
     expect(() => planFixedFabrication({

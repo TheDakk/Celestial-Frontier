@@ -6,6 +6,7 @@ import {
   auditFixedCraftSalvageCycle,
   auditFixedRecipeGraph,
   createGearInstance,
+  EXCEPTIONAL_CRAFT_MODIFIER_DEFINITIONS_V1,
   expandFixedRecipeBill,
   getFixedCraftGenerationPlan,
   getFixedRecipePlan,
@@ -170,6 +171,25 @@ describe('@cf/domain-loot — fixed recipe authority', () => {
       sockets: [],
     });
     expect(Object.isFrozen(plan)).toBe(true);
+    const exceptionalSource = makeGearSourceActionId({
+      kind: 'craft', ownerId: 'legacy-v1.8.9-items', actionKey: `recipe:${base.id}`,
+      receiptId: 'receipt:19',
+    });
+    const exceptional = getFixedCraftGenerationPlan(base.id, 0x1234_5678, exceptionalSource);
+    const exceptionalReplay = getFixedCraftGenerationPlan(base.id, 0x1234_5678, exceptionalSource);
+    const modifierDefinition = EXCEPTIONAL_CRAFT_MODIFIER_DEFINITIONS_V1.find(
+      ({ id }) => id === exceptional.craftedModifier?.affixId,
+    );
+    expect(exceptionalReplay).toEqual(exceptional);
+    expect(exceptional.craftedModifier).toBeDefined();
+    expect(modifierDefinition).toBeDefined();
+    expect(exceptional.craftedModifier!.value).toBeGreaterThanOrEqual(modifierDefinition!.min);
+    expect(exceptional.craftedModifier!.value).toBeLessThanOrEqual(modifierDefinition!.max);
+    expect(plan.craftedModifier).toBeNull();
+    expect(() => getFixedCraftGenerationPlan(base.id, 1, makeGearSourceActionId({
+      kind: 'craft', ownerId: 'other-authority', actionKey: `recipe:${base.id}`,
+      receiptId: 'receipt:19',
+    }))).toThrow('recipe authority');
     expect(() => getFixedCraftGenerationPlan('jumpdrive', 1)).toThrow('GearInstance');
     expect(() => getFixedCraftGenerationPlan('rig1', -1)).toThrow('generationSeed');
   });

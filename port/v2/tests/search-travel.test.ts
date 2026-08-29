@@ -115,6 +115,8 @@ function createHarness() {
   let routeBlocked = false;
   let mutationsBlocked = false;
   let commitAccepted = true;
+  let commitHold: Promise<void> | null = null;
+  let releaseCommitHold: (() => void) | null = null;
   let proofIdentity: ProofIdentity = 'exact';
   let lastProof: PlanetNode | null = null;
   let compendium: {
@@ -148,7 +150,8 @@ function createHarness() {
       else lastProof = exact;
       return lastProof;
     },
-    commitNavigation: (plan) => {
+    commitNavigation: async (plan) => {
+      if (commitHold !== null) await commitHold;
       if (!commitAccepted) return false;
       commits.push(plan);
       nav = plan.committedNav;
@@ -178,15 +181,28 @@ function createHarness() {
   };
   const enter = (value: string): KeyboardEvent => keydown(value, 'Enter', true);
   const enterBlurred = (value: string): KeyboardEvent => keydown(value, 'Enter', false);
+  const settle = async (): Promise<void> => {
+    await Promise.resolve();
+    await Promise.resolve();
+    await Promise.resolve();
+  };
   return {
     dom, document, input, continuation, routeFocus, controller, commits,
     primeBlocks, charterBlocks, clears, presentations, continuationFocuses, acceptedFocuses,
-    parentKeydowns, keydown, enter, enterBlurred,
+    parentKeydowns, keydown, enter, enterBlurred, settle,
     setNav: (value: NavState) => { nav = value; },
     setAuthority: (value: SearchTravelAuthoritySave | null) => { authority = value; },
     setRouteBlocked: (value: boolean) => { routeBlocked = value; },
     setMutationsBlocked: (value: boolean) => { mutationsBlocked = value; },
     setCommitAccepted: (value: boolean) => { commitAccepted = value; },
+    holdCommit: (): (() => void) => {
+      commitHold = new Promise<void>((resolve) => { releaseCommitHold = resolve; });
+      return () => {
+        releaseCommitHold?.();
+        releaseCommitHold = null;
+        commitHold = null;
+      };
+    },
     setProofIdentity: (value: ProofIdentity) => { proofIdentity = value; },
     lastProof: () => lastProof,
     setCompendium: (value: typeof compendium) => { compendium = value; },
@@ -230,7 +246,7 @@ describe('Search/CF1 travel application owner', () => {
     expect(h.controller.navigationAuthorityFailure(NAV_HOME)).toBeNull();
     expect(() => h.controller.navigationAuthorityFailure(provenNav('galaxy')))
       .toThrow('authority is unavailable');
-    expect(h.controller.jumpToProvenNav(provenNav('galaxy'))).toBe(false);
+    expect(await h.controller.jumpToProvenNav(provenNav('galaxy'))).toBe(false);
     expect(h.commits).toHaveLength(0);
     expect(h.primeBlocks).not.toHaveBeenCalled();
     expect(h.charterBlocks).not.toHaveBeenCalled();
@@ -252,10 +268,11 @@ describe('Search/CF1 travel application owner', () => {
     for (const [code, mode] of [[GALAXY, 'galaxy'], [STAR, 'system']] as const) {
       const event = h.enter(code);
       expect(event.defaultPrevented).toBe(true);
+      await h.settle();
       expect(h.commits.at(-1)?.target.mode).toBe(mode);
       expect(h.commits.at(-1)?.committedNav.mode).toBe(mode);
+      expect(h.commits.at(-1)?.followedCode).toBe(code);
       expect(h.input.value).toBe('');
-      await Promise.resolve();
       expect(h.document.activeElement).toBe(h.routeFocus);
     }
 
@@ -264,6 +281,7 @@ describe('Search/CF1 travel application owner', () => {
       s: [560, 170, 424242], p: 133, n: ' Blue Home ',
     });
     h.enter(namedEarth);
+    await h.settle();
     const plan = h.commits.at(-1)!;
     expect(plan.target).toMatchObject({ mode: 'surface', planet: { seed: 133, ordinal: 2 } });
     expect(plan.committedNav).toMatchObject({ mode: 'system', star: { seed: 424242 } });
@@ -272,12 +290,12 @@ describe('Search/CF1 travel application owner', () => {
     });
     expect(plan.focusPlanet).toMatchObject({ seed: 133, ordinal: 2 });
     expect(plan.customPlanetName).toBe('Blue Home');
+    expect(plan.followedCode).toBe(namedEarth);
     expect(h.commits).toHaveLength(3);
-    await Promise.resolve();
     expect(h.acceptedFocuses).toHaveBeenCalledTimes(3);
   });
 
-  it('keeps malformed/rejected marked codes corrective and sends only ordinary text to Compendium', () => {
+  it('keeps malformed/rejected marked codes corrective and sends only ordinary text to Compendium', async () => {
     const h = createHarness();
     const unownedKey = h.keydown('unchanged', 'Escape', true);
     expect(unownedKey.defaultPrevented).toBe(false);
@@ -311,33 +329,65 @@ describe('Search/CF1 travel application owner', () => {
     h.setRouteBlocked(false);
     h.setCommitAccepted(false);
     h.enter(EARTH);
+    await h.settle();
     expect(h.commits).toHaveLength(0);
     expect(h.input.value).toBe(EARTH);
     expect(h.document.activeElement).toBe(h.input);
     expect(h.acceptedFocuses).not.toHaveBeenCalled();
   });
 
-  it('enforces Prime, Charter, source-proof, and mutation fences in both directions', () => {
+  it('does not erase a newer query while an accepted route is settling', async () => {
+    const h = createHarness();
+    const release = h.holdCommit();
+    const event = h.enter(GALAXY);
+    expect(event.defaultPrevented).toBe(true);
+    h.input.value = 'newer intent';
+    release();
+    await h.settle();
+    expect(h.commits).toHaveLength(1);
+    expect(h.input.value).toBe('newer intent');
+    expect(h.acceptedFocuses).not.toHaveBeenCalled();
+  });
+
+  it('enforces Prime, Charter, source-proof, and mutation fences in both directions', async () => {
     const h = createHarness();
     const homeGalaxy = provenNav('galaxy');
     const earth = provenNav('surface');
+    if (earth.mode !== 'surface') throw new Error('Earth fixture must be a surface');
     const fineStar = fineStarNav();
     const farGalaxy = farGalaxyNav();
     expect(navigationAuthorityFailureFor(BASE_AUTHORITY, homeGalaxy, SHIP_LIVERY_SEED)).toBeNull();
     expect(navigationAuthorityFailureFor(BASE_AUTHORITY, farGalaxy, SHIP_LIVERY_SEED)).toBe('prime-reach');
     expect(navigationAuthorityFailureFor(BASE_AUTHORITY, fineStar, SHIP_LIVERY_SEED)).toBe('charter-reach');
+    const wrongHomeParent = {
+      ...earth,
+      gal: { ...earth.gal, x: earth.gal.x + 1 },
+    } as typeof earth;
+    const wrongSolParent = {
+      ...earth,
+      star: { ...earth.star, x: earth.star.x + 0.01 },
+    } as typeof earth;
+    expect(navigationAuthorityFailureFor(
+      BASE_AUTHORITY, wrongHomeParent, SHIP_LIVERY_SEED,
+    )).toBe('charter-reach');
+    expect(navigationAuthorityFailureFor(
+      BASE_AUTHORITY, wrongSolParent, SHIP_LIVERY_SEED,
+    )).toBe('charter-reach');
     expect(navigationAuthorityFailureFor({
       ...BASE_AUTHORITY, items: [['array', 1]],
     }, fineStar, SHIP_LIVERY_SEED)).toBeNull();
+    expect(navigationAuthorityFailureFor({
+      ...BASE_AUTHORITY, items: [['array', 1]],
+    }, wrongHomeParent, SHIP_LIVERY_SEED)).toBe('charter-reach');
 
-    expect(h.controller.jumpToProvenNav(farGalaxy)).toBe(false);
+    expect(await h.controller.jumpToProvenNav(farGalaxy)).toBe(false);
     expect(h.primeBlocks).toHaveBeenCalledOnce();
-    expect(h.controller.jumpToProvenNav(fineStar)).toBe(false);
+    expect(await h.controller.jumpToProvenNav(fineStar)).toBe(false);
     expect(h.charterBlocks).toHaveBeenCalledOnce();
     expect(h.commits).toHaveLength(0);
 
     h.setProofIdentity('null');
-    expect(h.controller.jumpToProvenNav(earth, 'Blue Home')).toBe(false);
+    expect(await h.controller.jumpToProvenNav(earth, 'Blue Home')).toBe(false);
     expect(h.commits).toHaveLength(0);
     expect(h.lastProof()).toBeNull();
     for (const [identity, mismatch] of [
@@ -345,17 +395,19 @@ describe('Search/CF1 travel application owner', () => {
       ['wrong-ordinal', { seed: 133, ordinal: 3 }],
     ] as const) {
       h.setProofIdentity(identity);
-      expect(h.controller.jumpToProvenNav(earth, 'Blue Home')).toBe(false);
+      expect(await h.controller.jumpToProvenNav(earth, 'Blue Home')).toBe(false);
       expect(h.lastProof()).toMatchObject(mismatch);
       expect(h.commits).toHaveLength(0);
     }
     h.setProofIdentity('exact');
     h.setMutationsBlocked(true);
-    expect(h.controller.jumpToProvenNav(earth, 'Blue Home')).toBe(true);
+    expect(await h.controller.jumpToProvenNav(earth, 'Blue Home')).toBe(true);
     expect(h.commits.at(-1)?.customPlanetName).toBeNull();
+    expect(h.commits.at(-1)?.followedCode).toBeNull();
     h.setMutationsBlocked(false);
-    expect(h.controller.jumpToProvenNav(earth, ' Blue Home ')).toBe(true);
+    expect(await h.controller.jumpToProvenNav(earth, ' Blue Home ')).toBe(true);
     expect(h.commits.at(-1)?.customPlanetName).toBe('Blue Home');
+    expect(h.commits.at(-1)?.followedCode).toBeNull();
   });
 
   it('owns manual-copy selection, Escape focus release, and idempotent listener disposal', () => {

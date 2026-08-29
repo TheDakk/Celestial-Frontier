@@ -29,11 +29,11 @@ import {
 import { MAX_ACTIVE_PLAY_MS } from '@cf/domain-progression';
 import {
   ARC5_OWNERSHIP_MIGRATION_VERSION,
-  arc4OwnershipLegacyMirrorMatches,
+  arc4GuardianLegacyOwnershipMirrorMatchesV1,
   exportSaveV2,
   importSaveV2,
   prepareArc4OwnershipLegacyMigration,
-  projectLegacyOwnershipMirror,
+  projectArc4GuardianLegacyOwnershipMirrorV1,
   readArc4Ownership,
   readArc5OwnershipMigration,
   readF4Authority,
@@ -508,6 +508,7 @@ export type Arc4CaptureCommittedMismatchDetailV1 =
   | 'stardust-reward-mismatch'
   | 'stardust-balance-mismatch'
   | 'stardust-earned-mismatch'
+  | 'charter-bioscan-mismatch'
   | 'verification-error';
 
 export type Arc4CaptureCommittedVerificationV1 =
@@ -520,6 +521,7 @@ export type Arc4CaptureCommittedVerificationV1 =
     ownershipV2Evidence: Arc5OwnershipMigrationEvidenceV2;
     plan: Arc4CaptureDerivedSettlementV1['plan'];
     stardustReward: number;
+    charterBioscanBanked: boolean;
   }>
   | Readonly<{
     kind: 'mismatch';
@@ -632,7 +634,11 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
     || expectedArc5.evidence.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION) {
     return mismatch('arc5-migration-not-current');
   }
-  if (!arc4OwnershipLegacyMirrorMatches(ownership.state, transaction.state)) {
+  if (!arc4GuardianLegacyOwnershipMirrorMatchesV1(
+    ownership.state,
+    input.runtimeExtensions,
+    transaction.state,
+  )) {
     return mismatch('ownership-legacy-mirror-mismatch');
   }
   const f4 = readF4Authority(input.runtimeExtensions);
@@ -666,6 +672,13 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
   if (transaction.state.stats.essenceEarned
     !== (sourceDraft.stats.essenceEarned ?? 0) + expectedReward) {
     return mismatch('stardust-earned-mismatch');
+  }
+  const priorBioscans = sourceDraft.ascProg['c2-scan'] ?? 0;
+  const committedBioscans = transaction.state.ascProg['c2-scan'] ?? 0;
+  if (settlement.charterBioscanBanked
+    ? committedBioscans !== priorBioscans + 1
+    : committedBioscans !== priorBioscans) {
+    return mismatch('charter-bioscan-mismatch');
   }
   if (transaction.plan !== evidencePayload.transactionPlan
     || jsonFingerprint(transaction.plan, 'Arc 4 transaction plan must be JSON data')
@@ -712,6 +725,7 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
     ownershipV2Evidence: arc5.evidence,
     plan: settlement.plan,
     stardustReward: expectedReward,
+    charterBioscanBanked: settlement.charterBioscanBanked,
   });
 }
 
@@ -759,6 +773,7 @@ export type Arc4BootstrapLegacyStageV1 =
 export function stageArc4BootstrapLegacyProjection(input: Readonly<{
   readonly source: SaveStateV2;
   readonly state: OwnershipStateV1;
+  readonly extensions: V5Extensions;
   readonly registry: ContentRegistry;
   readonly codecNow: number;
 }>): Arc4BootstrapLegacyStageV1 {
@@ -778,8 +793,10 @@ export function stageArc4BootstrapLegacyProjection(input: Readonly<{
       });
     }
   }
-  let projection: ReturnType<typeof projectLegacyOwnershipMirror>;
-  try { projection = projectLegacyOwnershipMirror(input.state); } catch (error) {
+  let projection: ReturnType<typeof projectArc4GuardianLegacyOwnershipMirrorV1>;
+  try {
+    projection = projectArc4GuardianLegacyOwnershipMirrorV1(input.state, input.extensions);
+  } catch (error) {
     return Object.freeze({
       kind: 'protected',
       reason: 'legacy-projection-failed',
@@ -790,8 +807,7 @@ export function stageArc4BootstrapLegacyProjection(input: Readonly<{
     return Object.freeze({
       kind: 'protected',
       reason: 'legacy-mirror-unrepresentable',
-      detail: projection.kind === 'unrepresentable'
-        ? `${projection.reason}:${projection.leafSeed}` : projection.kind,
+      detail: projection.reason,
     });
   }
   try {
@@ -857,4 +873,6 @@ export function publishArc4CaptureFields(
   target.EPOCH_BASE = committed.EPOCH_BASE;
   target.essence = committed.essence;
   target.stats.essenceEarned = committed.stats.essenceEarned ?? 0;
+  target.ascCh = committed.ascCh;
+  target.ascProg = { ...committed.ascProg };
 }

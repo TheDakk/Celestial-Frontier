@@ -1,3 +1,361 @@
+## ARCHIVED 2026-08-29 — Active hardcore v2 campaign superseded by completed local review candidate
+
+> Moved byte-verbatim from `ROADMAP.md` after the dependency-ready local campaign reached its
+> final browser-free, TypeScript, authority and documentation checkpoint.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: ACTIVE HARDCORE V2 CAMPAIGN -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · ACTIVE HARDCORE V2 CAMPAIGN · ARC 5/6/9 GREEN · NAMEPLATE/AUDIO IN PROGRESS ◀◀◀
+
+### Exact current boundary
+
+- **Scope/owner:** OpenAI/Codex desktop on macOS at
+  /Users/nick/Projects/celestial-frontier-openai-mac, branch **openai/mac**, upstream
+  **origin/openai/mac**. Work only in port/v2 and current reference Markdown. Do not edit legacy
+  main.js/celestial-frontier.html, another agent worktree or the sibling live-site repository.
+- **Git state:** committed HEAD **7108e22a0c99b6cf01085e5fec3cf2e1c7657c9d**; branch remains
+  **116 commits ahead** of origin/openai/mac. The worktree is intentionally dirty and shared.
+  Preserve every existing user change.
+- **Separately staged Glass repair:** the staged preview/Glass evidence-chain repair remains intact.
+  port/v2/tools/glassmatrix.mjs is staged-and-unstaged (MM). Never reset, discard or casually restage
+  it. Bare Glass invocation fails preflight by design without the immutable Slice predecessor ID.
+- **Release boundary:** all work is local. No push, hosted CI/Actions attempt, PR/merge, release,
+  version bump, preview publication, deployment or legacy-game edit is authorized. Actions mode is
+  **UNFROZEN**, but **zero exact hosted attempts are authorized**.
+- **Naming decision:** **Pureforged** is the approved current v2 player-facing name for fully
+  exceptional supported fixed crafts. Exceptional remains the material grade; stable internal
+  exceptional-v1 identifiers/receipts/save identity remain unchanged and invisible. Frozen v1.8.9
+  “Exceptionally Forged” history remains byte-identical.
+- **Historical exact-source browser certificate:** signed source **3f69e88ea8e34fdb8d9913276601b426ada783ae**
+  owns the completed once-only Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain.
+  It passed Layout 787/787, SceneMemory 44/44, Compendium 78/78, zero-finding Slice, 12-viewport
+  zero-finding Glass and the real 20-minute Recovery observation. Later local product work does not
+  inherit or relabel that certificate.
+- System Edge/Chrome/Chromium point versions are run provenance only. A compatible browser update
+  never requires rebaseline, recalibration or threshold movement.
+
+### Implemented current local product scope
+
+- **Universe-wide deterministic visual polish:** the shared finishing language spans galaxies,
+  systems, planets, all 43 canonical biomes, fauna, flora, fungi, microbes, ships and bounded
+  effects without changing seeds, anatomy, silhouettes, proportions, topology, share identity or
+  interaction geometry. HUMAN/physical-device art acceptance remains open.
+- **Arc 0 durability:** Landing, canonical world Rename and Star Atlas are receipt-bearing F4
+  actions. Training write holds are checked before and after heartbeat; already-durable Atlas rows
+  rebind their exact source-proven route sidecar or converge read-only.
+- **Arcs 2/3 economy:** exact-instance Inventory, finite Mine/Skim, Deep Scanners, connected fixed
+  Fabricator recipes and exact-item Pureforged yield/strike/contact modifiers are live. Other five
+  research purchases, disconnected effects, authored random loot, upgrades, sockets and vendors
+  remain open.
+- **Arc 4 capture/Charter:** native full-roster random-pool Tame/Scavenge/Sample actions settle
+  exact hit/miss ownership, Yield and first-find rewards. A first durable success on each exact
+  source-proven world beyond Sol may bank one c2-scan tick in the same pre-draw-certified CAS.
+- **Arc 5 companions:** compact ownership-v2 manifest plus four fixed shards spans boot, Training,
+  capture and four player-live exact-instance writers:
+  - Feed consumes one exact flora specimen into one eligible companion and may play one exact
+    committed expression.
+  - Breed preserves both parents, draws once after both successors are certified, creates one
+    deterministic child only on success, assigns eight/two active-play Recovery minutes and banks
+    c3-breed on success.
+  - Rename changes only one exact sanitized nickname.
+  - Field Scout names/switches/stands down one exact role pointer.
+  All four use one receipt/exact-five/F4 CAS, no retry or optimistic publication, and read-only
+  convergence on ambiguity. Scout injury interception/+2 fresh-species XP, care/bond/healing,
+  friendly duels, Chronicle and missions remain open.
+- **Arc 6 combat/Guardians/Prime:** a landed non-Training Surface offers explorer or eligible-fauna
+  champion choice, deterministic Titan/Guardian/strongest-fauna defender and exact 160-run forecast.
+  One verified combat CAS settles conquest, tier-scaled Stardust/XP, injury/loss, Guardian/Titan
+  acquisition, Prime Signature/ninth-claim Frontier, c2-conq, settle1, brink and accepted st-conq
+  completion/+25 current-and-lifetime Stardust/+1 honored Charter. The result explicitly announces
+  the extra Charter reward.
+- **Arc 7 current audio:** Tame greeting, accepted Feed acknowledgement, explicit exact-owned-fauna
+  Compendium Listen and explicit generic inhabited-Planetside Listen are live through bounded
+  deterministic synthesized graphs. Rendering/navigation never auto-play. Authored continuous
+  ambience, music and combat/Guardian audio remain open.
+- **Arc 9 rank/Records/achievements:** the exact ten-rank ladder, six score factors, permanent best
+  rank/nameplate rewards, endless prestige, all 96 achievements across 13 shelves and one
+  nonoptimistic aggregate progression refresh are player-live. Five event ids have true owners:
+  home, namer, bredlegend, settle1 and brink; 23 event ids remain owner-blocked.
+- **Guide/release truth:** current Guide has **41 visible topics: 32 partial / 9 unavailable**.
+  The cumulative v2 draft has **71 unique bullets**. Frozen legacy snapshots remain byte-identical.
+
+### Current browser-free evidence
+
+- The last complete browser-free suite before the later active product additions had **1,854
+  passed + 1 skipped** with all three TypeScript configurations green. Its sole intentional red was
+  the exact-source SceneMemory producer-authority test; rebind it once at final source freeze without
+  changing rulers, samples or thresholds.
+- Current combined Arc 0/5/6/9 integration battery: **26 files / 331 passed**.
+- Field Scout expanded Arc 5/9 battery: **12 files / 149 passed**.
+- Post-Main Arc 6/9 focused battery: **4 files / 22 passed**.
+- Guide/release truth: **31/31 passed**, frozen legacy parity green.
+- Root, game-app and worker TypeScript checks are green at the latest completed checkpoints.
+- No browser-owning gate runs during the moving hardcore-coding phase. Run the final full
+  browser-free suite first, repair only real findings, freeze source, then refresh evidence contracts
+  and run one proportional immutable browser chain.
+
+### Active work now
+
+1. Saved **Settings → Nameplate** choice is now implemented and focused-green: Auto or an earned
+   permanent rank color, one receipt/CAS, no optimism, durable AppChrome publication. Player
+   self-rename remains separate and open.
+2. Build the pure browser-free combat/Guardian audio plan from the completed transcript and exact
+   legacy/source-authored cue semantics; no live audio claim until a later verified Main join.
+3. Close the already-live CF1 Share/send and accepted-code Follow event owners without changing
+   address generation or travel semantics.
+4. Reconcile current references/rubrics and replace stale “unavailable/disconnected” statements
+   without rewriting frozen history.
+5. Refresh this handoff again after those owners and focused tests are complete.
+
+### Explicitly open / do not invent
+
+- **wk-conq** stays fail-closed until wall-week rollover, deterministic 3-of-8 slate membership,
+  acceptance validity, trades-chain gate and monotonic rollover authority have one owner.
+- **D-ARC6-AFFIX-1:** decide the explicit carrier/coexistence policy for the legacy 40% conquest
+  imbue alongside natural prefix/suffix and Pureforged modifiers. Until decided, a planned imbue
+  refuses before combat.
+- **D-ARC6-GUARDIAN-REWARD-1:** no authored extra Guardian Gear/material cache table exists. Current
+  Guardian capture, +40 Stardust, XP and Prime outcomes settle; no extra cache is invented.
+- Companion missions still lack canonical mission IDs/catalogue, eligibility/party rules,
+  active-play durations, risk/success bands, deterministic reward ranges, stories/mementos, injury,
+  recall and inventory-full policy. Do not fabricate those product tables.
+- Remaining care/taste/bond/healing/Scout-consequence owners, party/retreat/Chronicle combat,
+  Guardian/Titan champion use, remaining event achievements, accepted Charter chains/weeklies,
+  Binder/Paragons, projects, endings, authored audio/media and advanced visual production remain
+  dependency-ordered work.
+- HUMAN first-journey, attachment, strategic combat, visual/listening, screen-reader and physical
+  phone/tablet performance/heat/battery acceptance cannot be closed by automated tests.
+
+### Completion order
+
+1. Land the active nameplate and pure combat-audio batches; synchronize Guide/release/current docs.
+2. Continue only dependency-ready gameplay/audio/event owners that have existing canonical rules;
+   record and bypass policy-blocked lanes rather than inventing them.
+3. Run the full browser-free v2 suite, all TypeScript programs, diff hygiene and relevant
+   source-derived selftests. Rebind the one moving SceneMemory producer authority at final source
+   freeze.
+4. Update Slice/Glass/recovery contracts for every new player-live surface, then run one clean,
+   immutable, predecessor-bound browser chain without automatic retry.
+5. Complete HUMAN/device review, hand the local candidate to Claude Fable for full polish/code review,
+   repair any findings, and only then prepare a separately authorized GitHub/release batch.
+
+### Paired handoff / Git protocol
+
+- **OpenAI/Codex:** continue only in this openai/mac worktree; preserve the staged Glass repair and
+  all user changes. Do not stage, commit, push or run hosted work during the active shared batch.
+- **Anthropic/Claude Code:** Nick does not need to open Claude now. Claude should not copy files from
+  this dirty worktree. It receives the completed candidate only after the local campaign, evidence
+  and an explicitly authorized integration handoff.
+- **GitHub step now:** none. Do not push, open/update a PR, apply actions-budget-approved, dispatch,
+  rerun, merge, deploy, publish or bump a version.
+- **Future PR, only after exact authorization:** base **develop**, source **openai/mac**. Recompute
+  the final title/description from the finished scope; do not reuse an interim summary as release
+  authority.
+- **Release status:** develop, main and the live site are unchanged; no production release or
+  deployment is in progress.
+<!-- END VERBATIM ROADMAP BLOCK: ACTIVE HARDCORE V2 CAMPAIGN -->
+
+---
+
+
+## ARCHIVED 2026-08-29 — Arc 4 Charter/signing handoff superseded by active Arc 5/6/9 campaign
+
+> Moved byte-verbatim from `ROADMAP.md` after the current local v2 implementation advanced
+> through player-live companion, combat/Guardian/Prime, rank/Records and Guide/release work.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: ACTIVE ARC 4 CHARTER/SIGNING HANDOFF -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · ACTIVE ROADMAP CAMPAIGN · ARC 4 CHARTER LOCAL/GREEN, SIGNING BLOCKED ◀◀◀
+
+### Exact current boundary
+
+- **Owner/environment:** OpenAI/Codex desktop on macOS, physical root
+  `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
+  `origin/openai/mac`, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`. Do not edit
+  another agent worktree or the sibling live-site repository.
+- **Exact browser-certified source:** signed commit
+  `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+  `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent
+  `916d921ebf787ed6c58ec8db567e00bbb61adbf8`). Its raw commit carries the configured ED25519 SSH
+  signature; local verification is green with the project allowed-signers identity.
+- The complete serial browser campaign ran from that source while it remained committed, clean and
+  byte-identical at every begin/end boundary. Current committed `HEAD` is its signed evidence/docs
+  descendant `7108e22a0c99b6cf01085e5fec3cf2e1c7657c9d`; the prior browser certificate remains bound to
+  `3f69e88…` and is not relabelled.
+- A bounded Glass reliability repair is staged but uncommitted atop `7108e22…`: the guarded
+  development-preview workflow now threads and named-verifies the immutable Slice ID into Glass,
+  retains immutable Slice/Glass carriers, and is mutation-controlled alongside `test.yml`.
+  `glassmatrix.mjs` rejects missing/invalid full-run inputs and stale predecessors before reserving
+  an immutable ID or changing the current pointer; reservation precedes ownership and pointer
+  publication. `CLAUDE.md` now names the immutable Slice → Glass → Recovery chain instead of the
+  guaranteed-red bare Glass call, with an independent caller mutation control. Five signed-commit
+  attempts have failed before writing a commit because the configured 1Password SSH helper returned
+  `failed to fill whole buffer` or `agent returned an error`. Do not bypass signing, discard the
+  staged index or repeatedly retry in the same work segment; unlock/restart 1Password, then retry
+  the same local signed commit.
+- A separate **unstaged** Arc 4 successor is browser-free green atop that index. The first durable
+  successful Tame, Scavenge or Sample on each exact source-proven world beyond Sol can bank one
+  `c2-scan` tick inside the same pre-draw-certified capture save/receipt/F3 CAS. Misses, Sol,
+  repeat worlds, unreachable/past-chapter sources, saturated progress, stale authority and failed
+  writes leave Charter state untouched; only a qualifying bank may reconcile an imported chapter.
+  Capture and Search travel now bind exact galaxy/star parent coordinates plus seeds, rejecting
+  same-seed/wrong-coordinate reach collisions. No save schema or legacy survey/Records field changed.
+- D-ARC4-BIOSCAN remains **◐ implemented locally, not Nick-approved/HUMAN-accepted**. It deliberately
+  substitutes first durable capture for v1.8.9's separate Discover Life action only for this Chapter
+  deed. Fresh exact-source browser evidence and HUMAN acceptance remain open; never relabel the
+  signed `3f69e88…` campaign as evidence for this later product change.
+- **Current Arc 0 local closure:** Landing, world naming and Atlas now own their receipt-bearing
+  F4 mutations; receipt-free route/epoch checkpoints project only from the exact durable parent.
+  Training replacement/quarantine write-hold refuses Land/Atlas outside active lesson ownership and
+  is rechecked after heartbeat. Already-durable Atlas rows rebind their source-proven route sidecar
+  or enter read-only convergence rather than appearing successfully charted but untravelable.
+  Focused Arc 0 tests (106), all TypeScript configurations and diff hygiene pass.
+- Live producer records are rebound browser-free to the current bytes without changing numeric
+  rulers or historical samples: SceneMemory build `398f2539…`, budget SHA-256 `089c9d44…`;
+  Compendium producer `ea43a675…`, budget SHA-256 `b48e4ccf…`.
+- Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully
+  contained. After the final evidence/docs checkpoint, `openai/mac` is **116 commits ahead** of
+  `origin/openai/mac`. Everything remains local and unpushed.
+- System Microsoft Edge `151.0.4129.107` / CDP `1.3` is exact run provenance only. Compatible Edge,
+  Chrome or Chromium point updates never trigger rebaseline, recalibration or threshold movement;
+  only an actual capability, producer, measurement or ruler change can do so.
+- Final machine state should use normal macOS sleep/lock behavior. If temporary
+  `/usr/bin/caffeinate -dis` is still active after verifying the signed evidence checkpoint,
+  terminate it; the long Recovery observation no longer needs the machine held awake.
+
+### Complete local automated certificate
+
+- Layout `20260829-universe-polish-3f69e88ea8e3-layout` ran once and passed **787/787** sealed
+  outcomes across ten viewports in **76,603 ms**, then passed its exact named verifier.
+- SceneMemory `…-scenemem` ran once and passed current input-v4 **44/44** in **10,561 ms**, including
+  both phone/desktop biome-vista lifecycle outcomes and complete cleanup, then passed its verifier.
+- Compendium `…-compendium` ran once and passed **78/78** in **46,239 ms** with zero findings,
+  zero blocked outcomes, all six review-image bindings and the active calibrated ruler, then passed
+  its verifier.
+- Slice `…-slice` ran once and passed in **434,263 ms** with zero findings/scopes and ten bound
+  screenshots. Raw report/log SHA-256 are `33aa30b308e5358e4fc699d9749d804ba8086ebfe6b0ee305314deb1b6483411` /
+  `267fae851a68cdf5f74f2552d8ee5a11e9c0f58f718434b0e6bcd10098ea2172`.
+  The same run passed the native F3 seven-stage IndexedDB proof: v1→v2 upgrade, v4→v5 migration,
+  two-backend CAS, checked rollback, external v3 `versionchange`, and cleanup. That closes the clean
+  browser substrate for its exact source, not representative distinct-tab mission/combat/later-writer
+  evidence or the current dirty Arc 4 successor.
+- Glass `…-glass` consumed that exact Slice report, ran once and passed all **12** viewport classes
+  in **85,823 ms** with **104/104** responsive/a11y controls, **36/36** Arc 4 outcomes, zero
+  blocked/omitted controls, zero findings and zero instrument failures. Raw report SHA-256 is
+  `2a67a258f4e0d69a641bec099374de036a9bceb53ae66b328a1221f252f7d591`.
+- Recovery `…-recovery` consumed those exact Slice and Glass hashes, ran once and passed all ten
+  stages, **15/15** observation outcomes and **22/22** domain checks in **1,290,953 ms**. Its real
+  uninterrupted active-browser observation lasted **1,200,297.5 ms**, crossed the exact next-cycle
+  boundary and recovered the UI with zero findings/fatal events and complete cleanup. Raw report
+  SHA-256 is `b78e8a52e8746afbe89b7866d5d7e35b519d3168de1da8697c2ffd421b5a5907`.
+- Every browser gate ran once with zero automatic retries. One preliminary manual Glass verifier
+  command omitted its required Slice ID and exited at CLI usage parsing before report access, lock,
+  build or browser launch. The corrected Slice-bound verifier was the first evidence judgment and
+  passed; Recovery independently replayed the same exact predecessor contract.
+- Seven immutable gzip carriers pass integrity and byte-identical decompression. Their exact paths,
+  raw/gzip sizes and SHA-256 values are at the top of `audits/README.md`.
+
+### Implemented player-visible scope
+
+- **Universe-wide visual polish:** one deterministic finishing language now spans galaxy and system
+  space, planet sprites, all **43** canonical biome landing profiles, fauna/flora/fungi/microbe
+  canvases, creature and plant details, Shipyard presentation, bloom/fog/particles and
+  protostar/effect treatment. Sol is calibration only; there is no Sol-only branch.
+- Existing authored silhouettes, anatomy, proportions, topology, seeds, share-code identity and
+  interaction geometry remain intact. Atmosphere, depth, grading, rim light, material response and
+  bounded effects layer around the established structures rather than replacing them.
+- The canonical biome-profile authority and lazy one-entry vista worker/cache project the proven
+  world plus canonical roster into the preserved compositor with stale fencing, exact identity,
+  fail-soft fallback and phone/desktop ownership/resource bounds.
+- Visual Effects, Screen Shake and Reduced Motion resolve through explicit bounded policies. Effects
+  Off disables optional animation/particles while keeping deterministic base art visible.
+- **Bounded Arc 5 Feed scope:** real Compendium fauna detail owns one exact creature + flora
+  transaction, fixed five-segment persistence, nonoptimistic pending state, one committed winner,
+  stale-CAS read-only convergence across two same-origin documents, reload fixed point, accessible
+  status and exact expression audio through the shared Tame runtime. This does not claim unrelated
+  Arc 5 companion work is complete.
+- Generated non-Earth civilization years use deterministic D-LOC formatting without changing values
+  or RNG. The canonical ecology join remains pure and non-playing; no distant-world playback is
+  claimed.
+
+### Review and browser-free evidence
+
+- Independent Arc 4 product and documentation/oracle re-reviews are **CLEAR** after correcting a
+  cross-bulletin bioscan contradiction, qualifying-only reconciliation, complete parent-aware reach
+  and semantic bare-Glass caller detection. The browser contract's former Pertar fixture had already
+  passed Chapter 2 and was vacuous; it now starts at `asc=1` and independently proves the exact
+  `c2-scan` transition, no hitchhiking progress, refusal/pending non-optimism and reload durability.
+- Full current v2 battery: **1,854 passed + 1 skipped**, with all three TypeScript configurations
+  and Glass/Slice/browser-contract selftests green. The one intentional red is
+  `current-producer-authorities`: SceneMemory build/main byte bindings changed with the moving
+  source and must be rebound once at final source freeze, without changing any historical ruler,
+  samples or thresholds. Focused integrated Arc 4/Glass/Slice coverage passed **134/134** before
+  the later review fixes; the final full suite otherwise subsumes it.
+  Earlier full root/v1,
+  determinism, fixture, training, art, SceneMemory/Compendium calibration and mutation-control
+  batteries remain preserved at their exact signed checkpoints.
+- Fixed-seed 1280×720 before/after pairs cover eleven representative universe surfaces under
+  `port/v2/apps/game/smoke/20260828-universe-polish-fixed-seeds/` as ignored local developer
+  evidence. They establish structure preservation for developer review, not HUMAN art acceptance.
+- Superseded campaign stops, calibration decisions and exact hashes moved verbatim to
+  `ROADMAP_ARCHIVE.md`; detailed immutable evidence remains newest-first in `audits/README.md`.
+
+### Explicitly open after local automation
+
+- HUMAN visual appeal across the whole universe and physical phones/tablets; screen-reader behavior;
+  listening judgment; first-journey/playtest judgment; physical-device frame-time, heat, battery and
+  true GPU/resource measurement remain open.
+- HUMAN acceptance of D-ARC4-BIOSCAN's capture-backed replacement for the separate v1.8.9 Discover
+  Life action remains open. The implementation/copy/evidence candidate is local and reversible; it
+  is not an approved parity deviation yet.
+- Gate G live distant-world ecology playback remains deliberately unwired; D-9e remains
+  design-gated. Gates A–I are not globally closed.
+- No production release, version bump, preview publication, deployment, push, PR update, Actions
+  run or merge is authorized by this local certificate.
+
+### Completion and next action
+
+- The universe-polish + bounded Feed implementation and exact `3f69e88…` certificate remain
+  complete. The Glass invocation repair and Arc 4 Charter/capture successor are implemented and
+  browser-free green but cannot become clean signed checkpoints until 1Password signing works.
+  The broader roadmap is not complete: remaining F3/F4 later-writer/two-tab and call-site migrations
+  while current Arc 0 durability closures are implemented locally. The next product scope is
+  dependency-ordered Arc 2/3, Arc 5 and current-system Arc 7/8, but Arc 5 Breed first needs its
+  explicitly still-missing product decisions for odds, eligibility, Recovery duration/locks,
+  capacity, timing and confirmation. Do not invent those values or relabel the legacy
+  parent-consuming rule as the decided nonlethal v2 companion contract.
+- First unblock the configured 1Password signer and create the already staged Glass repair commit.
+  Then stage/sign the independent Arc 4 batch. Because Arc 4 changes product and producer bytes,
+  its eventual clean signed source needs a fresh serial proportionate browser chain before it can
+  claim exact-source evidence. No rerun is required merely to diagnose/sign the caller repair, and
+  an Edge point update alone never triggers a rebaseline.
+
+### Paired handoff
+
+- **OpenAI/Codex:** after Nick unlocks or restarts 1Password, retry the same signed local Glass
+  repair commit without changing its staged contents. Then stage and sign the separate browser-free-
+  green Arc 4 Charter/capture batch, refresh this handoff with both exact SHAs, and continue local
+  F3/F4 plus remaining Arc 0 work. Run a fresh exact-source browser chain only from the eventual
+  clean signed Arc 4 source; do not push or start hosted work.
+- **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
+  apply `actions-budget-approved`, dispatch, rerun, merge, deploy, publish or bump a version.
+- **PR details if Nick later authorizes the exact GitHub write:** base `develop`; source
+  `openai/mac`; title **`Phase 4: universe polish, reliable Glass evidence, and Charter bioscan`**;
+  description **`Carries the deterministic visual treatment across galaxy/system space, all 43
+  biomes, creatures, plants, ships and effects without structural redesign; completes the bounded
+  Arc 5 Feed scope with two-document stale-CAS convergence and exact expression audio; makes the
+  preview caller preserve the immutable Slice → Glass evidence chain; adds the proposed first-
+  distant-world Charter bioscan through the existing capture transaction with exact parent-aware
+  reach; synchronizes Guide, release and current references; and records the complete local
+  automated certificate. The Charter substitution remains HUMAN acceptance-gated. Anthropic/
+  Claude receives it only after merge to develop. No production release, deployment or version
+  bump is included.`**
+- **Anthropic/Claude Code:** Nick does not need to open Claude now. The staged local work is not in
+  `develop`; do not copy files manually. After a future authorized PR merges, Claude may fetch and
+  merge the latest `origin/develop` into a clean `anthropic/*` branch at its next coding batch.
+- **Release status:** `develop`, `main` and the live site are unchanged; no release or deployment.
+- **Actions budget:** `UNFROZEN`; repository public; 3,000 fail-closed private/ambiguous cap; zero
+  exact hosted attempts authorized.
+<!-- END VERBATIM ROADMAP BLOCK: ACTIVE ARC 4 CHARTER/SIGNING HANDOFF -->
+
 ## ARCHIVED 2026-08-29 — universe polish / bounded Arc 5 stopped campaigns and repair handoff
 
 > Moved byte-verbatim from `ROADMAP.md` after exact signed `3f69e88…` completed the full local

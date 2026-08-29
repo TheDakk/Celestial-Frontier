@@ -21,6 +21,68 @@
 > version is provenance only; compatible updates never trigger rebaseline or recalibration.
 > Earlier Final13/Final12/Final11/Final10 wording below is historical where superseded.
 
+## 2026-08-29 current implementation overlay — supersedes only older status sentences
+
+- ★ **D-ARC5-LIVE — four bounded exact-instance companion writers.** Verified real-fauna
+  Compendium detail exposes Feed, one-draw nonlethal Breed with active-play Recovery, identity-only
+  Rename and role-only Field Scout. All four use the compact V2 exact-five successor plus one F4/F3
+  receipt/CAS with no retry or optimistic publication. Breed banks `c3-breed` only on success;
+  Rename may join `namer`; Scout changes only its role pointer. Broader tastes/care/bond, injury
+  healing, missions, Scout injury interception and +2 fresh-species XP remain open.
+- ★ **D-AUDIO-FOUR-PATH — bounded explicit playback, not a full soundscape.** The current app owns
+  exact durable Tame greeting, committed Feed acknowledgement, explicit exact-owned-fauna
+  Compendium Listen, and explicit visible inhabited-world Planetside **Listen to biosphere**. The
+  generic ecology signal reveals no species, spends no Yield, grants nothing and writes no save;
+  render, filtering and navigation never autoplay. Authored/continuous ambience, other companion
+  expressions, music, combat/Guardian audio, device plateau and HUMAN listening remain open.
+- ◐ **D-ARC6-LIVE — bounded combat/Guardian/Prime settlement.** A landed non-Training Surface now
+  offers explorer/eligible-fauna champion choice, exact Titan/Guardian/strongest-fauna defender and
+  deterministic 160-run forecast, then settles one transcript/receipt/CAS. Conquest, XP, wounds/loss,
+  Stardust, Guardian/Titan acquisition, Prime/Frontier, `c2-conq`, `settle1`, `brink`, and accepted
+  starter `st-conq` +25 Stardust share the verified fixed point. Authored extra Guardian Gear/
+  materials, conquest-modifier coexistence, weekly `wk-conq`, Guardian champion use, party/retreat,
+  combat audio and browser/HUMAN review remain open.
+- ◐ **D-CHARTER-CURRENT — the projection now exposes only milestones with real writers.** Canonical
+  first landfall, successful Mine, eligible fixed Fabricator output, first qualifying beyond-Sol
+  capture (`c2-scan`), successful Breed (`c3-breed`) and verified conquest (`c2-conq`) bank only in
+  their owning receipt/CAS. The Charters board now projects both established progressive Starter
+  chains, reveals only the next incomplete link in each, retains accepted rows and enforces explicit
+  Accept with the exact three-active cap. Full-address Landing/Mine, fixed Fabricator, exact Field
+  Scout and verified Conquest joins attach progress, completion, 10–25 current/lifetime Stardust,
+  honored count, supported gear and progression refresh to their owning receipt/CAS; an already-
+  proven deed may settle atomically during Accept. Titan victories can claim Prime Signatures and
+  the ninth claim unlocks Frontier. **Discover life** remains visible but unavailable; accepted
+  bioscan and weekly wall-week/slate/acceptance/rollover authority stay protected.
+- ◐ **D-ARC9-RECORDS — ranks and the complete achievement catalogue are player-live.** Records
+  renders all 96 achievements across 13 shelves plus the exact ten-rank ladder and six score factors.
+  Sixty-eight aggregate rows use one coalesced deterministic refresh; 23 event rows join their true
+  owners: the original seven land/name/breed/combat/share/Follow joins, twelve source-derived Survey
+  joins, travel-owned `worm`/`quasar`/`dwarfg`, and explicit Atlas Favorite `curator`. Accepted
+  Follow composes route, Jumps, galaxy visit, `wayfarer`, and any proved galaxy-kind event inside one
+  receipt. Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler` remain owner-blocked;
+  postcommit achievement/rank ceremonies are live presentation, while achievement reward claims
+  remain open. Settings now offers `Auto` (`-1`) or an exact
+  earned `0..bestRank` nameplate; one F4 receipt/CAS verifies durability before AppChrome changes,
+  with no optimistic render or retry and convergence reload on ambiguity. The current Guide is
+  34 partial / 7 unavailable and **A New Foundation** is a 73-bullet development draft.
+- ★ **D-PWA-1 — v2 installed updates are exact-build and explorer-controlled.** Build output now
+  carries a same-origin manifest and generated worker whose build identity joins the SHA-256-verified
+  final runtime inventory with an automatic worker-template revision before its completion marker
+  exists. A partial or altered candidate is deleted. Exact per-document pins survive build
+  activation/rollback until explicit reload; navigation pins the selected build and subresources are
+  cache-only from that pin. Successors do not claim running pages, stale pins prune only after their
+  clients disappear, and third-build activation refuses while a prior-pinned tab lives, so only
+  current plus one verified predecessor remain without cross-build/external/network fallback.
+  Settings binds accessible explicit Check, Activate, Reload and Roll back status/results to the exact
+  worker and reveals Reload from matching active status. Main refuses conflicting reloads, joins
+  active persistence and checkpoints/rearms canceled debounce work before teardown. Nothing forces
+  reload, and rollback changes app assets rather than expedition data. This is current-local
+  automated implementation, not physical-device, HUMAN, hosted or release closure.
+
+Older dated proposal/checkpoint entries below remain historical evidence. Their implementation-
+status sentences are superseded only where this overlay says a player path is now live; their design
+rationale, negative controls and exact evidence bindings are preserved.
+
 **The rule (plan §20 Gate A): the port is BUG-FOR-BUG parity until a deviation is
 approved here.** Every entry below is a place the original does something imperfect
 that the port can do better — found while porting, each verified against the source
@@ -30,6 +92,46 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
+
+## D-ARC4-BIOSCAN — capture-backed Chapter 2 life discovery (2026-08-29)
+
+◐ **Implemented in the current local Arc 4 batch; fresh browser evidence and HUMAN acceptance remain
+open.** v1.8.9 owns a separate grounded **Discover Life** action: one completed first scan per world
+reveals the roster, appends its seed-based survey record and emits `bioscan`; Capture is a different
+action. The playable v2 slice already reveals the roster on landing and has no separate Discover
+Life control. Its current replacement therefore treats the **first durable successful Tame,
+Scavenge, or Sample on each source-proven world beyond Sol** as that world's one Chapter 2
+life-discovery deed.
+
+This is a deliberate semantics change, not a parity claim. It also deliberately corrects the old
+copy's “alien worlds” ambiguity by excluding the exact canonical Sol hierarchy. The writer uses the
+complete registered CF1 world key and pre-action ownership discovery ledger for lifetime world
+uniqueness; a repeated species on a new world may count, while any later success on the same world
+cannot. Reach, goal cap and current/future-chapter banking are checked before settlement. The tick,
+capture ownership/reward, F4 authority, receipt and revision are prepared before either draw and
+commit in the same fenced F3 CAS. A miss, Sol, an unreachable or past-chapter source, a stale tab,
+capacity/storage failure or repeat world changes no Charter progress and triggers no retry.
+Reach binds the exact home-galaxy and star coordinates as well as their seeds; a colliding seed
+under a different parent cannot inherit Sol or home-galaxy capability. A non-qualifying successful
+capture also cannot reconcile an otherwise complete imported chapter.
+
+No new save schema or seed-only alias is introduced: the existing canonical ownership discovery
+ledger already supplies exact world provenance. The legacy `surveyed`/Records projection and
+`stats.surveys` remain byte-semantic compatibility data and do not change here; the separate
+Discover Life interaction, Survey Records behavior, accepted-chain rewards and weekly bioscan
+Charters remain unavailable. Guide, Training and the v2 draft call out that boundary explicitly.
+This local implementation is not a production release, browser certificate, HUMAN approval,
+version bump, deployment or hosted-write authorization. The final full browser-free suite is green
+at 230 files / 2,315 passed + one skipped with all three TypeScript programs green.
+`compendiummem:selftest` passes 222 independent controls; the authority printer exits 0 and
+current-authority tests pass 45/45. Live SceneMemory build/budget authority is
+`e556d4223a320511cf48302b3d399d369c74187138f80e44f6af7ed029c588bf` /
+`11a2ab04abfa3d9300a55c51a69a781c23ebdf4346b33cde3cabc5623fae9bfc`; live Compendium
+measurement/producer/budget authority is
+`7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4` /
+`053f520c5149e66cbf1ee843c0873a531757b598f5830a7712a728537607890d` /
+`5dbb5c80caf63c789fa15fc0acc9e4683613e221a1b1edb413ef980a9d8d2eb4`, with numeric ceilings
+and historical samples unchanged. Fresh clean exact-source browser evidence remains pending.
 
 ## Historical Final10 boundary — superseded by Final11 above (2026-08-28)
 
@@ -378,7 +480,7 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   plus biome marker, but no cosmic/exceptional veins, grade, reserves, progress or Mine action. A
   strict projector maps only integer raw rarity 0–14 to canonical player-facing 0–9 and returns null
   for malformed input; Survey/Compendium share it.
-- ★ **D-BIOME-PROFILE — one canonical cross-modal presentation identity; playback still open
+- ★ **D-BIOME-PROFILE — historical pure-join checkpoint; bounded playback now superseded above
   (2026-08-28).** Dependency-neutral `@cf/domain-biome-profile` owns the exact recursively frozen 43-key
   `BiomeProfileV1` authority. Schema `cf.domain.biome-profile.v1` and digest
   `bpd1-6fce883d4d70e3b6bde0fb184b416e8e` bind every authored signature, fauna/flora-family, hazard and
@@ -388,10 +490,10 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   stale-profile inputs, reveals no hidden species, writes no state and is not imported by Main. It is
   not live distant-ecology playback and does not close Gate G. It changes neither roster selection nor
   D-9e, which remains decision-gated.
-- ★ **D-ARC5-FED — approved construction invariant.** A new bred child receives exactly
+- ★ **D-ARC5-FED — historical construction-only checkpoint; public Breed now superseded above.** A new bred child receives exactly
   `0.5 * min(clampedLeftFed, clampedRightFed)`, symmetrically and once over bounded 0–200 inputs.
   Later child care state remains mutable; no public breed/care writer or UI exists.
-- ★ **D-AUDIO-LIVE-EXPRESSIONS — two narrow, accessible app-owned expressions.** A strict projector for the
+- ★ **D-AUDIO-LIVE-EXPRESSIONS — historical two-path checkpoint; four paths now superseded above.** A strict projector for the
   current owned creature supplies deterministic immutable identity to the five-bus fail-closed
   runtime; Settings persist Creature Voices. Only a native Tame gesture followed by the exact committed
   durable nonconverging fauna result, its independent global transaction and ownership successor
@@ -2322,7 +2424,7 @@ duplicates).
 - ★ **D-GUIDE-1 — the port continues the mature Guide; it does not fork a second manual
   (updated 2026-08-28).** The temporary seven-topic literal is gone. `guide-content.ts` carries an exact,
   SHA-256-bound v1.8.9 Guide snapshot: 9 categories, 43 authored stable topic ids and 41 legacy-live
-  topics (`beacon` / `events` retained as dormant), currently 25 partial and 16 unavailable, with
+  topics (`beacon` / `events` retained as dormant), currently 32 partial and 9 unavailable, with
   category drill-down, keyword/body search and
   live `data-gt` cross-links. A typed capability table substitutes v2-current copy for partially
   ported systems and an explicit **Not yet in v2** explanation for unported systems, so stable ids
@@ -2333,9 +2435,9 @@ duplicates).
   restoration. Guide uses z24 above the z23 survey card. Tooltip deep-links and Advanced Briefings
   remain OPEN; the Guide model existing does not claim those interaction layers are ported.
 - ★ **D-RELEASE-1 — legacy history, v2 development identity and a shipped version are three different states
-  (updated 2026-08-28).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
+  (updated 2026-08-29).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
   398 bullets, v1.8.9 first and v1.0 last. **A New Foundation** is the separate cumulative v2.0
-  development bulletin: a 64-bullet categorized, implemented-outcome technical outline whose explicit
+  development bulletin: a 73-bullet categorized, implemented-outcome technical outline whose explicit
   `draft`, `version:"2.0"` and `Unreleased` state does not turn open roadmap work into a promise.
   `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2 list is empty. Therefore draft copy
   can appear in the cumulative Guide history but can never fire the mature one-time update rule,
@@ -2684,9 +2786,10 @@ duplicates).
   deletion—not mission claim alone. Same-parent/same-world stale-writer controls are required;
   wall-clock advance, reload, double-click and a stale second tab must not reroll or duplicate
   rewards. F3/F4 now supplies the lease/revision/CAS/receipt substrate for implemented Inventory,
-  Engineering and capture actions. Feed/breed/recovery, missions, combat/Guardian settlement and
-  deletion remain future writers and do not inherit authority merely from that substrate.
-- ★ **D-CHARTER-CAP — current Charter presentation stops at the live frontier
+  Engineering, capture, Feed, Breed/Recovery, Rename, Field Scout and combat/Guardian actions.
+  Missions, dispatch/recall, deletion and every later writer still require their own exact owner and
+  do not inherit authority merely from that substrate.
+- ★ **D-CHARTER-CAP — historical landfall-only checkpoint; current writers supersede it above
   (2026-08-13).** `ASC_CHAPTERS_DATA` remains verbatim canonical/import data, including
   its unported mining, fabrication, bioscan, conquest and breeding goals. The player-facing
   `projectV2Charter` / `currentV2Objective` path now filters to reachable landfall only,

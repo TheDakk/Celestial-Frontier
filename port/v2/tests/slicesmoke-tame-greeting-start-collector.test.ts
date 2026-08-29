@@ -246,6 +246,9 @@ const REHEARSAL_ORDER = [
 
 const START_CONTRACT_FIELDS = [
   ['result clause', 'result: exactKeys(result, ['],
+  ['Charter result key',
+    "'stardustReward', 'charterBioscanBanked', 'revision', 'ownershipRevision',"],
+  ['Charter result equality', 'result.charterBioscanBanked === true'],
   ['global clause', 'global: Number.isSafeInteger(observation?.globalRevision)'],
   ['ownership clause', 'ownership: Number.isSafeInteger(observation?.captureRevision)'],
   ['claim clause', 'claim: tameGreetingAudioShape(observation)'],
@@ -259,7 +262,11 @@ const START_CONTRACT_FIELDS = [
 
 const GENERIC_RESULT_FIELDS = [
   ['exact result schema', '&& exactKeys(result, ['],
-  ['global result key', "'stardustReward', 'revision', 'ownershipRevision',"],
+  ['global result key',
+    "'stardustReward', 'charterBioscanBanked', 'revision', 'ownershipRevision',"],
+  ['Charter result type', "typeof charterBioscanBanked === 'boolean'"],
+  ['Charter result binding',
+    'result?.charterBioscanBanked === charterBioscanBanked'],
   ['global transaction binding', 'result?.revision === committedRevision'],
   ['ownership successor binding',
     'result?.ownershipRevision === committedOwnershipRevision'],
@@ -268,6 +275,8 @@ const GENERIC_RESULT_FIELDS = [
 ] as const satisfies readonly Field[];
 
 const GENERIC_FIXTURE_FIELDS = [
+  ['hit Charter result', 'charterBioscanBanked: true, revision: 1,'],
+  ['miss Charter result', 'charterBioscanBanked: false, revision: 2,'],
   ['hit ownership revision',
     'ownershipRevision: hitRawSelftest.captureRevision,'],
   ['miss ownership revision',
@@ -285,6 +294,9 @@ const GENERIC_CONTROL_FIELDS = [
     'const negativeHitWrongOwnershipRevisionResultSelftest = structuredClone('],
   ['wrong ownership mutation',
     '.afterState.capture.lastResult.ownershipRevision += 1;'],
+  ['Charter result control',
+    'const negativeHitCharterResultSelftest = structuredClone(hitBundleSelftest);'],
+  ['Charter result mutation', '.charterBioscanBanked = false;'],
 ] as const satisfies readonly Field[];
 
 const TAME_RELOAD_FIELDS = [
@@ -397,6 +409,7 @@ function expectOnlyChecksRed(assessment: Assessment, expected: readonly string[]
 
 function activeObservation(): Record<string, any> {
   const expected = ARC4_PERTAR_FIXTURE.actions.tameGreetingHit;
+  const charterCopy = 'Charter: first life discovery on this alien world banked.';
   const toastSerial = 11;
   const voiceId = 'voice:creature-expression:collector-selftest';
   return {
@@ -422,6 +435,7 @@ function activeObservation(): Record<string, any> {
       remainingAfter: expected.remainingAfter,
       ownedRowId: 'creature-v1:collector-selftest',
       stardustReward: expected.stardustReward,
+      charterBioscanBanked: true,
       revision: 31,
       ownershipRevision: 1,
     },
@@ -466,7 +480,7 @@ function activeObservation(): Record<string, any> {
       live: 'assertive',
       atomic: 'true',
       title: `Tamed ${expected.speciesName}.`,
-      detail: `${expected.chance * 100}% odds. New Compendium page; one owned creature. 1 Biosphere Yield spent; ${expected.remainingAfter} remain.`,
+      detail: `${expected.chance * 100}% odds. New Compendium page; one owned creature. ${charterCopy} 1 Biosphere Yield spent; ${expected.remainingAfter} remain.`,
     },
   };
 }
@@ -683,12 +697,14 @@ describe('Slice Arc 4 Tame greeting post-release collector', () => {
       mutate: (observation: Record<string, any>) => void;
     }>[] = [
       { label: 'result mismatch', expected: ['result'], mutate: (row) => { row.result.tier += 1; } },
+      { label: 'Charter result mismatch', expected: ['result'], mutate: (row) => { row.result.charterBioscanBanked = false; } },
       { label: 'wrong global', expected: ['global'], mutate: (row) => { row.result.revision += 1; } },
       { label: 'ownership stale', expected: ['ownership'], mutate: (row) => { row.result.ownershipRevision += 1; } },
       { label: 'claim rejection', expected: ['claim'], mutate: (row) => { row.audio.lastDisposition = 'runtime-rejected:mutated'; } },
       { label: 'counterpart mismatch', expected: ['counterpart'], mutate: (row) => { row.audio.counterpart.key = 'capture-toast:mutated'; } },
       { label: 'runtime rejection', expected: ['runtime'], mutate: (row) => { row.audio.runtime.voices.cooldownRejects = 1; } },
       { label: 'toast drift', expected: ['toast'], mutate: (row) => { row.toast.live = 'polite'; } },
+      { label: 'Charter toast drift', expected: ['toast'], mutate: (row) => { row.toast.detail = row.toast.detail.replace('Charter: first life discovery on this alien world banked. ', ''); } },
       {
         label: 'swapped counters', expected: ['global', 'ownership'], mutate: (row) => {
           const global = row.result.revision;

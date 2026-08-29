@@ -21,6 +21,11 @@ export interface AppChromeStatusView {
   readonly hp: number;
   readonly hpMax: number;
   readonly primeCount: number;
+  readonly rank?: Readonly<{
+    readonly name: string;
+    readonly nameplateHue: string;
+    readonly nameplateIridescent: boolean;
+  }> | null;
   readonly objective: AppChromeObjectiveView | null;
 }
 
@@ -29,6 +34,11 @@ export interface AppChromeDiagnostics {
   readonly context: string;
   readonly objective: string;
   readonly topbarH: string;
+}
+
+export interface AppChromeAnchorPoint {
+  readonly x: number;
+  readonly y: number;
 }
 
 export interface AppChromeResizeObserver {
@@ -54,6 +64,12 @@ export interface AppChromeControllerOptions {
 
 export interface AppChromeController {
   readonly renderStatus: (view: AppChromeStatusView) => void;
+  /** Geometry-only port for rank ceremony presentation. The chrome owner
+   * retains the player-chip element; callers never receive or query its DOM. */
+  readonly rankCeremonyAnchor: () => AppChromeAnchorPoint | null;
+  /** Static Prime status control resolved by the chrome DOM owner. Main may
+   * register it with the one-panel/action layer without duplicating lookup. */
+  readonly primeCodexOpener: () => HTMLElement;
   readonly setTrail: (segments: readonly string[]) => void;
   readonly setContext: (text: string) => void;
   readonly setHint: (text: string) => void;
@@ -189,8 +205,34 @@ export function createAppChromeController(
     rootStyle.setProperty('--hint-h', hint.offsetHeight + 'px');
   };
 
+  const rankCeremonyAnchor = (): AppChromeAnchorPoint | null => {
+    if (disposed) return null;
+    const rect = playerChip.getBoundingClientRect();
+    if (![rect.left, rect.top, rect.width, rect.height].every(Number.isFinite)
+      || rect.width <= 0 || rect.height <= 0) return null;
+    return Object.freeze({
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    });
+  };
+
   const renderStatus = (view: AppChromeStatusView): void => {
-    playerChip.innerHTML = `⚙ ${escapeHtml(view.explorerName || 'Explorer')} <span class="dim">— ✦ ${view.essence}<span class="player-worlds"> · ${view.landedWorlds} worlds</span></span>`;
+    const rank = view.rank ?? null;
+    const rankHue = rank && /^#[0-9a-f]{6}$/iu.test(rank.nameplateHue)
+      ? rank.nameplateHue : null;
+    playerChip.classList.toggle('rank-iridescent', rank?.nameplateIridescent === true);
+    playerChip.style.borderColor = rank?.nameplateIridescent === true
+      ? '#c7d8ff' : rankHue ?? '';
+    if (rank === null) {
+      playerChip.removeAttribute('data-rank-name');
+      playerChip.removeAttribute('title');
+    } else {
+      playerChip.dataset.rankName = rank.name;
+      playerChip.title = `Explorer rank: ${rank.name}`;
+    }
+    playerChip.innerHTML = `⚙ ${escapeHtml(view.explorerName || 'Explorer')}`
+      + (rank === null ? '' : ` <span class="player-rank">· ${escapeHtml(rank.name)}</span>`)
+      + ` <span class="dim">— ✦ ${view.essence}<span class="player-worlds"> · ${view.landedWorlds} worlds</span></span>`;
     hpFill.style.width = Math.max(0, Math.min(100, (view.hp / Math.max(1, view.hpMax)) * 100)) + '%';
     hpText.textContent = `${view.hp}/${view.hpMax} HP`;
     primeChip.textContent = `✦ Prime Codex ${view.primeCount} / 9`;
@@ -263,6 +305,8 @@ export function createAppChromeController(
 
   return Object.freeze({
     renderStatus,
+    rankCeremonyAnchor,
+    primeCodexOpener: () => primeChip,
     setTrail,
     setContext,
     setHint,

@@ -6,6 +6,7 @@ import {
   equippedBuildTags,
   equipGear,
   filterGearEntries,
+  getFixedCraftGenerationPlan,
   grantGear,
   inspectGear,
   makeGearSourceActionId,
@@ -160,5 +161,25 @@ describe('@cf/domain-loot — honest inspect, comparison, filters, and build tag
     expect(filterGearEntries(held, { query: 'capture chance' }).map((entry) => entry.instance.instanceId))
       .toEqual([migrated.instanceId]);
     expect(filterGearEntries(held, { query: 'first contact' })).toEqual([]);
+  });
+
+  it('presents an exceptional crafted modifier as separate effective power', () => {
+    const craftSource = makeGearSourceActionId({
+      kind: 'craft', ownerId: 'legacy-v1.8.9-items', actionKey: 'recipe:meteor',
+      receiptId: 'receipt:41',
+    });
+    const instance = createGearInstance(
+      craftSource,
+      0,
+      getFixedCraftGenerationPlan('meteor', 0x00c0_ffee, craftSource),
+    );
+    const view = inspectGear(instance);
+    const crafted = view.effects.find(({ source: effectSource }) => effectSource === 'crafted');
+    expect(view.craftedModifier).toBeDefined();
+    expect(crafted).toMatchObject({ value: view.craftedModifier!.value, condition: null });
+    expect(view.effects.filter(({ source: effectSource }) => effectSource === 'crafted')).toHaveLength(1);
+    const held = committed(grantGear(createGearInventory(1), 0, instance));
+    expect(filterGearEntries(held, { query: crafted!.label }).map((entry) => entry.instance.instanceId))
+      .toEqual([instance.instanceId]);
   });
 });

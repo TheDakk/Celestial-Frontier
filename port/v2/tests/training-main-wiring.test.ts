@@ -40,6 +40,110 @@ function wiringErrors(source: string): string[] {
   return errors;
 }
 
+function panelTourWiringErrors(source: string): string[] {
+  const errors: string[] = [];
+  const codexRecords = section(
+    source,
+    "registerPanel({ id: 'codex'",
+    '\nconst inventoryPanelController',
+  );
+  const engineering = section(
+    source,
+    'const engineeringPanelRegistration = engineeringPanelController.registration();',
+    '\nfunction shipyardDiagnostics',
+  );
+  if (codexRecords.length === 0) errors.push('codex-records-section');
+  if (engineering.length === 0) errors.push('engineering-section');
+  if (errors.length) return errors;
+
+  const expected = [
+    {
+      label: 'codex', source: codexRecords,
+      populate: 'codexOpenController.onOpen();',
+      event: "gameEvent('panel-open', { id: 'codex', open: true });",
+    },
+    {
+      label: 'records', source: codexRecords,
+      populate: 'fillRecords();',
+      event: "gameEvent('panel-open', { id: 'rec', open: true });",
+    },
+    {
+      label: 'engineering', source: engineering,
+      populate: 'engineeringPanelRegistration.onOpen();',
+      event: "gameEvent('panel-open', { id: 'shipyard', open: true });",
+    },
+  ] as const;
+  for (const { label, source: owner, populate, event } of expected) {
+    const populatedAt = owner.indexOf(populate);
+    const eventAt = owner.indexOf(event);
+    if (populatedAt < 0 || eventAt <= populatedAt
+      || owner.split(event).length - 1 !== 1) {
+      errors.push(`${label}-panel-open-order`);
+    }
+  }
+  if ((source.match(/gameEvent\('panel-open', \{ id: '(?:codex|rec|shipyard)', open: true \}\);/gu) ?? []).length !== 3) {
+    errors.push('panel-open-exact-count');
+  }
+  return errors;
+}
+
+function sliceTrainingTourErrors(source: string): string[] {
+  const errors: string[] = [];
+  const owner = section(
+    source,
+    '  /* 4e. THE TRAINING DRILL — the six hands-on navigation lessons plus the',
+    '  /* Hold an older persist across the native Finish activation, then attempt',
+  );
+  if (owner.length === 0) return ['slice-training-section'];
+
+  const receipts = [
+    "await recordTrainingReceipt('welcome', 1);",
+    "await recordTrainingReceipt('find-earth', 2);",
+    "await recordTrainingReceipt('survey-tour', 3);",
+    "await recordTrainingReceipt('atlas-add', 4);",
+    "await recordTrainingReceipt('atlas-open', 5);",
+    "await recordTrainingReceipt('land', 6);",
+    "await recordTrainingReceipt('planetside-briefing', 7);",
+    "await recordTrainingReceipt('engineering-open', 8);",
+    "await recordTrainingReceipt('engineering-tour', 9, 'shipyard');",
+    "await recordTrainingReceipt('compendium-open', 10);",
+    "await recordTrainingReceipt('compendium-tour', 11, 'codex');",
+    "await recordTrainingReceipt('records-open', 12);",
+    "await recordTrainingReceipt('records-tour', 13, 'rec');",
+    "await recordTrainingReceipt('horizon', 14);",
+    "await recordTrainingReceipt('grad', 15);",
+  ] as const;
+  let prior = -1;
+  for (const [index, receipt] of receipts.entries()) {
+    const at = owner.indexOf(receipt);
+    if (at <= prior || owner.split(receipt).length - 1 !== 1) {
+      errors.push(`slice-training-receipt-${index + 1}`);
+    }
+    prior = at;
+  }
+
+  const required = [
+    'receipt.primary !== dtrainFullBootRaw',
+    'trainingSequenceReceipts.length !== exactTrainingSequence.length',
+    'JSON.stringify(observedTrainingSequence) !== JSON.stringify(exactTrainingSequence)',
+    "trainingBoardTourCheck('shipyardpanel', 'engineering-tour')",
+    "trainingBoardTourCheck('codexpanel', 'compendium-tour')",
+    "trainingBoardTourCheck('recpanel', 'records-tour')",
+    "button.textContent='Injected engineering mutation';panel.append(button);",
+    "button.textContent='Injected companion mutation';panel.append(button);",
+    "button.textContent='Injected records mutation';panel.append(button);",
+    "!engineeringHold.held || !engineeringHold.unavailable || engineeringHold.actions !== 0",
+    'compendiumHeldRows.rows < 1 || !compendiumHeldRows.allLocked',
+    "trainingSideCheck('planetside-briefing')",
+    "trainingSideCheck('grad')",
+    '/Field Training, step 15 of 15/i.test(gradFocus.announcement)',
+  ] as const;
+  for (const [index, marker] of required.entries()) {
+    if (!owner.includes(marker)) errors.push(`slice-training-oracle-${index + 1}`);
+  }
+  return errors;
+}
+
 describe('Field Training Survey replacement wiring', () => {
   it('rebinds the live lesson only after the replacement Survey is visible', () => {
     expect(wiringErrors(mainSource)).toEqual([]);
@@ -121,5 +225,91 @@ describe('Field Training Survey replacement wiring', () => {
       const mutant = owner.replace(marker, `__WRONG_WORLD_MUTANT_${index}__`);
       expect(mutant, marker).not.toContain(marker);
     }
+  });
+});
+
+describe('Field Training read-only board lifecycle wiring', () => {
+  it('emits each exact panel-open event once and only after that board is populated', () => {
+    expect(panelTourWiringErrors(mainSource)).toEqual([]);
+  });
+
+  it('rejects missing, forged, duplicate, and pre-population board events', () => {
+    const codexEvent = "  gameEvent('panel-open', { id: 'codex', open: true });\n";
+    expect(panelTourWiringErrors(replaceUnique(mainSource, codexEvent, '')))
+      .toEqual(['codex-panel-open-order', 'panel-open-exact-count']);
+
+    const forgedRecords = replaceUnique(
+      mainSource,
+      "gameEvent('panel-open', { id: 'rec', open: true });",
+      "gameEvent('panel-open', { id: 'records', open: true });",
+    );
+    expect(panelTourWiringErrors(forgedRecords))
+      .toEqual(['records-panel-open-order', 'panel-open-exact-count']);
+
+    const engineeringOwner = section(
+      mainSource,
+      'const engineeringPanelRegistration = engineeringPanelController.registration();',
+      '\nfunction shipyardDiagnostics',
+    );
+    const withoutEvent = replaceUnique(
+      engineeringOwner,
+      "    gameEvent('panel-open', { id: 'shipyard', open: true });\n",
+      '',
+    );
+    const earlyEvent = replaceUnique(
+      withoutEvent,
+      '    refreshEngineeringPanelState();',
+      "    gameEvent('panel-open', { id: 'shipyard', open: true });\n    refreshEngineeringPanelState();",
+    );
+    expect(panelTourWiringErrors(replaceUnique(mainSource, engineeringOwner, earlyEvent)))
+      .toEqual(['engineering-panel-open-order']);
+
+    const duplicate = replaceUnique(
+      mainSource,
+      codexEvent,
+      codexEvent + codexEvent,
+    );
+    expect(panelTourWiringErrors(duplicate))
+      .toEqual(['codex-panel-open-order', 'panel-open-exact-count']);
+  });
+});
+
+describe('Field Training authoritative Slice journey', () => {
+  it('requires every exact card and each populated read-only board without rewriting the held primary', () => {
+    expect(sliceTrainingTourErrors(sliceSource)).toEqual([]);
+  });
+
+  it('rejects skipped cards, forged board receipts, missing storage proof, and vacuous board locks', () => {
+    const missingOrientation = replaceUnique(
+      sliceSource,
+      "  await recordTrainingReceipt('records-tour', 13, 'rec');\n",
+      '',
+    );
+    expect(sliceTrainingTourErrors(missingOrientation))
+      .toContain('slice-training-receipt-13');
+
+    const forgedPanel = replaceUnique(
+      sliceSource,
+      "await recordTrainingReceipt('engineering-tour', 9, 'shipyard');",
+      "await recordTrainingReceipt('engineering-tour', 9, 'codex');",
+    );
+    expect(sliceTrainingTourErrors(forgedPanel))
+      .toContain('slice-training-receipt-9');
+
+    const noPrimaryProof = replaceUnique(
+      sliceSource,
+      '      || receipt.heading !== expectedHeading || !announced || receipt.primary !== dtrainFullBootRaw) {',
+      '      || receipt.heading !== expectedHeading || !announced) {',
+    );
+    expect(sliceTrainingTourErrors(noPrimaryProof))
+      .toContain('slice-training-oracle-1');
+
+    const vacuousEngineering = replaceUnique(
+      sliceSource,
+      "    button.type='button';button.textContent='Injected engineering mutation';panel.append(button);\n",
+      "    button.type='button';button.textContent='Injected engineering mutation';\n",
+    );
+    expect(sliceTrainingTourErrors(vacuousEngineering))
+      .toContain('slice-training-oracle-7');
   });
 });

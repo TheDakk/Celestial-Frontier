@@ -1,10 +1,11 @@
 /* Arc 2 GearInstance authority.
 
-   Occurrence is deliberately outside this module. Phase 1 owns the strict
-   instance shape, canonical legacy content, and receipt-local identity; it does
-   not pretend the still-unapproved source/depth pools or recipe/socket tables
-   exist. A later source-table owner derives one plan from generation.seed and
-   seals it in the F4 receipt transaction. This file has no entropy or clock. */
+   Occurrence and fixed-recipe eligibility are deliberately outside this
+   module. It owns the strict instance shape, canonical legacy content,
+   receipt-local identity, and the versioned exceptional-craft modifier policy;
+   it does not invent source/depth drop pools, natural-affix tables, drawbacks,
+   upgrades, or sockets. Source owners derive a plan from generation.seed and
+   seal it in the F4 receipt transaction. This file has no ambient entropy or clock. */
 import { hashInt, mulberry32 } from '@cf/domain-rand';
 import {
   GEAR_SLOTS,
@@ -29,6 +30,7 @@ import {
 
 export const GEAR_SCHEMA = 1 as const;
 export const LOOT_TABLE_VERSION = 1 as const;
+export const EXCEPTIONAL_CRAFT_OWNER_ID_V1 = 'legacy-v1.8.9-items' as const;
 export const MAX_RECEIPT_LOCAL_ORDINAL = 65_535;
 export const MAX_GEAR_JSON_BYTES = 16_384;
 export const MAX_LEGACY_ITEM_COUNT = 999;
@@ -95,10 +97,16 @@ export interface GearRecipeModifier {
   readonly value: number;
 }
 
-/** Phase-1 construction input. The source-owned loot-table owner will derive
- * this plan from generation.seed in the next batch. Until those tables exist,
- * callers must name the canonical base/axes explicitly; this module invents
- * no source pool, drop weighting, quality curve, recipe, upgrade, or socket. */
+export interface ExceptionalCraftModifierDefinition extends LegacyAffixDefinition {
+  /** Namespaced separately from natural and migrated legacy affixes. */
+  readonly id: string;
+  readonly effectKey: LegacyAffixDefinition['key'];
+}
+
+/** Source-owned construction input. Fixed recipes derive this from their exact
+ * receipt; future drop-table owners must do the same from generation.seed.
+ * This module invents no source pool, drop weighting, quality curve, natural
+ * affix, drawback, upgrade, or socket. */
 export interface GearGenerationPlan {
   readonly baseId: string;
   /** Exact entropy supplied by the source/F4 outcome owner. */
@@ -286,6 +294,30 @@ export const LEGACY_AFFIX_DEFINITIONS: readonly LegacyAffixDefinition[] = deepFr
   { key: 'heal', percent: true, min: 0.08, max: 0.20, label: 'flora healing' },
 ]);
 
+/** Authored v1 policy for a slotted item made entirely from exceptional raw
+ * material. Only effects with a live v2 gameplay consumer may roll: mining
+ * yield, rich-strike chance, and capture-contact points. Their shipped ranges
+ * are reused, while namespaced ids keep crafted power distinct from natural
+ * and migrated legacy affixes on the exact instance. */
+export const EXCEPTIONAL_CRAFT_MODIFIER_POLICY_VERSION = 1 as const;
+export const EXCEPTIONAL_CRAFT_EFFECT_KEYS_V1 = Object.freeze([
+  'yield', 'strike', 'contact',
+] as const);
+export const EXCEPTIONAL_CRAFT_MODIFIER_DEFINITIONS_V1: readonly ExceptionalCraftModifierDefinition[] = deepFreeze(
+  LEGACY_AFFIX_DEFINITIONS
+    .filter((definitionValue) => (EXCEPTIONAL_CRAFT_EFFECT_KEYS_V1 as readonly string[])
+      .includes(definitionValue.key))
+    .map((definitionValue) => ({
+      id: `exceptional-v${EXCEPTIONAL_CRAFT_MODIFIER_POLICY_VERSION}:${definitionValue.key}`,
+      effectKey: definitionValue.key,
+      key: definitionValue.key,
+      percent: definitionValue.percent,
+      min: definitionValue.min,
+      max: definitionValue.max,
+      label: definitionValue.label,
+    })),
+);
+
 function affixDefinition(key: unknown): LegacyAffixDefinition | undefined {
   return typeof key === 'string'
     ? LEGACY_AFFIX_DEFINITIONS.find((candidate) => candidate.key === key)
@@ -308,6 +340,52 @@ export function rollLegacyAffix(seed: number, tier: number): Readonly<{ key: Leg
   const random = mulberry32(hashInt(safeSeed >>> 0, 0xaff1, (safeTier || 0) + 1) >>> 0);
   const definitionValue = LEGACY_AFFIX_DEFINITIONS[(random() * LEGACY_AFFIX_DEFINITIONS.length) | 0]!;
   return deepFreeze({ key: definitionValue.key, value: affixMagnitude(definitionValue, random(), safeTier) });
+}
+
+export function getExceptionalCraftModifierDefinition(
+  affixId: unknown,
+): ExceptionalCraftModifierDefinition | undefined {
+  return typeof affixId === 'string'
+    ? EXCEPTIONAL_CRAFT_MODIFIER_DEFINITIONS_V1.find((candidate) => candidate.id === affixId)
+    : undefined;
+}
+
+/** Receipt-local exceptional crafting roll. The source id carries the recipe
+ * owner, recipe key, and receipt id; the generation seed carries the planner's
+ * immutable recipe/receipt/revision vector. No ambient RNG or craft counter is
+ * consulted. */
+export function rollExceptionalCraftModifier(
+  baseId: string,
+  sourceActionId: string,
+  generationSeed: number,
+): GearRecipeModifier {
+  const base = getLootCatalogueDefinition(baseId);
+  if (!base || base.inventoryShape !== 'slotted') {
+    throw new RangeError('exceptional craft modifier requires canonical slotted gear');
+  }
+  const source = parseGearSourceActionId(sourceActionId);
+  const receiptOrdinalText = source.receiptId?.match(/^receipt:(0|[1-9][0-9]{0,9})$/)?.[1];
+  if (source.kind !== 'craft'
+    || source.ownerId !== EXCEPTIONAL_CRAFT_OWNER_ID_V1
+    || source.actionKey !== `recipe:${base.id}`
+    || receiptOrdinalText === undefined) {
+    throw new RangeError('exceptional craft modifier requires a recipe/receipt-bound craft source');
+  }
+  checkedInteger(Number(receiptOrdinalText), 0, UINT32_MAX - 1, 'exceptional craft receipt ordinal');
+  const safeSeed = checkedInteger(generationSeed, 0, UINT32_MAX, 'exceptional craft generationSeed');
+  const random = mulberry32(hashInt(
+    safeSeed >>> 0,
+    fnv1a32(sourceActionId),
+    hashInt(fnv1a32(base.id), EXCEPTIONAL_CRAFT_MODIFIER_POLICY_VERSION, base.tier + 1),
+  ) >>> 0);
+  const definitionValue = EXCEPTIONAL_CRAFT_MODIFIER_DEFINITIONS_V1[
+    (random() * EXCEPTIONAL_CRAFT_MODIFIER_DEFINITIONS_V1.length) | 0
+  ]!;
+  return deepFreeze({
+    affixId: definitionValue.id,
+    tier: base.tier,
+    value: affixMagnitude(definitionValue, random(), base.tier),
+  });
 }
 
 /* The legacy runtime intentionally had no slot/key restriction: any one of the
@@ -400,6 +478,26 @@ function checkedNaturalAffix(raw: unknown, index: number): GearNaturalAffix {
   };
 }
 
+function checkedCraftedModifier(
+  raw: unknown,
+  base: GearBaseDefinition,
+  sourceActionId: string,
+  generationSeed: number,
+): GearRecipeModifier {
+  assertPlainRecord(raw, 'crafted modifier');
+  assertExactKeys(raw, ['affixId', 'tier', 'value'], 'crafted modifier');
+  const definitionValue = getExceptionalCraftModifierDefinition(raw.affixId);
+  if (!definitionValue || !validGeneratedAffixValue(definitionValue, raw.value)) {
+    throw new RangeError('crafted modifier is unknown or outside its authored range');
+  }
+  checkedInteger(raw.tier, 0, 9, 'crafted modifier tier');
+  const expected = rollExceptionalCraftModifier(base.id, sourceActionId, generationSeed);
+  if (canonicalJson(raw) !== canonicalJson(expected)) {
+    throw new RangeError('crafted modifier does not match its recipe/receipt generation vector');
+  }
+  return expected;
+}
+
 /** Construct one exact item from a caller-owned deterministic plan. Occurrence
  * and plan selection belong to the future source-table + F4 receipt owner. */
 export function createGearInstance(
@@ -419,13 +517,19 @@ export function createGearInstance(
   const base = getLootCatalogueDefinition(planValue.baseId);
   if (!base || base.inventoryShape !== 'slotted') throw new RangeError('GearGenerationPlan base is not canonical slotted gear');
   if (!Array.isArray(planValue.naturalAffixes)) throw new TypeError('GearGenerationPlan naturalAffixes must be an array');
-  if (planValue.craftedModifier !== null || planValue.drawback !== null) {
-    throw new RangeError('craftedModifier and drawback require a named deterministic recipe table');
+  if (planValue.drawback !== null) {
+    throw new RangeError('drawback requires an authored deterministic recipe table');
   }
   if (planValue.upgrade !== 0) throw new RangeError('upgrade requires an authored upgrade table');
   if (!Array.isArray(planValue.sockets) || planValue.sockets.length !== 0) {
     throw new RangeError('sockets require an authored socket catalogue');
   }
+  const generationSeed = checkedInteger(
+    planValue.generationSeed, 0, UINT32_MAX, 'GearGenerationPlan generationSeed',
+  );
+  const craftedModifier = planValue.craftedModifier === null
+    ? null
+    : checkedCraftedModifier(planValue.craftedModifier, base, sourceActionId, generationSeed);
   return instanceCore(
     sourceActionId,
     ordinal,
@@ -435,12 +539,12 @@ export function createGearInstance(
     checkedInteger(planValue.quality, 0, UINT32_MAX, 'GearGenerationPlan quality'),
     checkedInteger(planValue.rarityTier, 0, 9, 'GearGenerationPlan rarityTier'),
     planValue.naturalAffixes.map(checkedNaturalAffix),
-    null,
+    craftedModifier,
     null,
     0,
     [],
     null,
-    checkedInteger(planValue.generationSeed, 0, UINT32_MAX, 'GearGenerationPlan generationSeed'),
+    generationSeed,
   );
 }
 
@@ -662,10 +766,15 @@ export function encodeGearInstance(instance: GearInstance): string {
 
 function decodeGearValue(raw: unknown): GearInstance {
   assertPlainRecord(raw, 'GearInstance');
+  const hasCraftedModifier = Object.prototype.hasOwnProperty.call(raw, 'craftedModifier');
+  const hasDrawback = Object.prototype.hasOwnProperty.call(raw, 'drawback');
   assertExactKeys(raw, [
     'schema', 'tableVersion', 'construction', 'instanceId', 'baseId', 'baseName',
     'slot', 'baseTier', 'itemLevel', 'quality', 'rarityTier', 'rarity', 'tags',
-    'baseEffects', 'implicits', 'naturalAffixes', 'upgrade', 'sockets',
+    'baseEffects', 'implicits', 'naturalAffixes',
+    ...(hasCraftedModifier ? ['craftedModifier'] : []),
+    ...(hasDrawback ? ['drawback'] : []),
+    'upgrade', 'sockets',
     'generation', 'legacyAffix', 'provenance',
   ], 'GearInstance');
   if (raw.schema !== GEAR_SCHEMA) throw new RangeError('unsupported GearInstance schema');
@@ -693,8 +802,10 @@ function decodeGearValue(raw: unknown): GearInstance {
       quality: raw.quality as number,
       rarityTier: raw.rarityTier as number,
       naturalAffixes: raw.naturalAffixes as unknown as readonly GearNaturalAffix[],
-      craftedModifier: null,
-      drawback: null,
+      craftedModifier: hasCraftedModifier
+        ? raw.craftedModifier as unknown as GearRecipeModifier
+        : null,
+      drawback: hasDrawback ? raw.drawback as unknown as GearRecipeModifier : null,
       upgrade: raw.upgrade as number,
       sockets: raw.sockets as string[],
     });

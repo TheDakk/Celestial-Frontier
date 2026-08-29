@@ -26,6 +26,7 @@ import {
   type CaptureCapacityScenariosV1,
   type CapturePreflightReadyV1,
   type CanonicalJson,
+  type OwnershipStateV1,
   type OwnershipStateV2,
 } from '@cf/domain-acquisition';
 import {
@@ -45,8 +46,8 @@ import {
   prepareArc4OwnershipWrite,
   prepareArc5OwnershipMigrationSuccessor,
   prepareF4AuthorityUpdate,
+  projectArc4GuardianLegacyOwnershipMirrorV1,
   projectF4MultiOutcomeDrawAdvance,
-  projectLegacyOwnershipMirror,
   readArc2AcquisitionCapabilities,
   readArc4Ownership,
   readArc5OwnershipMigration,
@@ -65,6 +66,13 @@ import {
   type V5ExtensionWrite,
   type V5Extensions,
 } from '@cf/persistence';
+import {
+  ascAllowsCanonicalStar,
+  ascStageOf,
+  bankBioscan,
+  reconcileV2Chapters,
+  type CanonicalCF1WorldAddress,
+} from '@cf/scene';
 import { composeCaptureDrawBundleFromPlanV1 } from './acquisition-snapshot.js';
 
 export const ARC4_CAPTURE_DOMAINS = Object.freeze([
@@ -100,6 +108,7 @@ export interface Arc4CaptureCertifiedScenarioV1 {
   readonly firstForSpecies: boolean;
   readonly tier: number | null;
   readonly stardustReward: number;
+  readonly charterBioscanBanked: boolean;
   readonly successorDigest: string;
   readonly ownershipV2Digest: string;
   readonly ownershipWritesDigest: string;
@@ -163,6 +172,7 @@ export type Arc4CaptureSettlementOutcome =
     plan: CaptureAttemptPlanV1;
     ownershipV2Digest: string;
     stardustReward: number;
+    charterBioscanBanked: boolean;
     derivation: F4OutcomeDerivation;
     prepared: PreparedV5SaveWrite;
     authorization: F4MultiOutcomePreDrawAuthorizedSettlement;
@@ -557,6 +567,79 @@ export function stageArc4LegacyMirrorFixedPointV1(
   return Object.freeze({ state: imported.state, raw: normalizedRaw });
 }
 
+function hasPriorCanonicalWorldDiscovery(
+  state: OwnershipStateV1,
+  address: CanonicalCF1WorldAddress,
+): boolean {
+  return state.discoveries.some((record) => record.provenance.kind === 'world'
+    && record.provenance.worldKey === address.key);
+}
+
+/** Join Charter progress to the same pre-draw scenario that owns capture,
+ * rewards and the complete save. v2 has no separate Discover-Life button, so
+ * its honest bioscan deed is the first durable successful observation on one
+ * reachable, source-proven non-Sol world. The registered Arc 4 discovery
+ * ledger supplies lifetime world uniqueness; no second save ledger or
+ * seed-only alias is introduced. */
+function stageArc4CaptureCharterFixedPointV1(input: Readonly<{
+  base: Readonly<{ state: SaveStateV2; raw: string }>;
+  sourceOwnership: OwnershipStateV1;
+  scenario: CaptureCapacityScenarioV1;
+  address: CanonicalCF1WorldAddress;
+  codec: Pick<F4MultiOutcomePreDrawSaveCodec, 'importLegacy' | 'exportLegacy'>;
+}>): Readonly<{ state: SaveStateV2; raw: string; charterBioscanBanked: boolean }> {
+  if (input.scenario.kind !== 'hit') {
+    return Object.freeze({ ...input.base, charterBioscanBanked: false });
+  }
+  const progress = { ...input.base.state.ascProg };
+  const stage = ascStageOf(
+    input.base.state.items.map(([id, count]) => [id, count]),
+    input.base.state.ascCh,
+  );
+  const firstWorldObservation = !hasPriorCanonicalWorldDiscovery(
+    input.sourceOwnership,
+    input.address,
+  );
+  const charterBioscanBanked = firstWorldObservation
+    && ascAllowsCanonicalStar(stage, input.address.galaxy, input.address.star)
+    && bankBioscan(input.base.state.ascCh, progress, input.address);
+  if (!charterBioscanBanked) {
+    return Object.freeze({ ...input.base, charterBioscanBanked: false });
+  }
+  const reconciliation = reconcileV2Chapters(
+    input.base.state.ascCh,
+    progress,
+    stage,
+  );
+  if (reconciliation === null) {
+    throw new CapacityRefusal('v4-round-trip-failed', 'capture Charter reconciliation refused');
+  }
+  const nextChapter = reconciliation.nextChapter;
+  const candidate: SaveStateV2 = {
+    ...input.base.state,
+    ascCh: nextChapter,
+    ascProg: progress,
+  };
+  const stagedRaw = input.codec.exportLegacy(candidate);
+  const firstImport = input.codec.importLegacy(stagedRaw);
+  if (!firstImport.ok) {
+    throw new CapacityRefusal('v4-round-trip-failed', 'capture Charter result did not import');
+  }
+  const normalizedRaw = input.codec.exportLegacy(firstImport.state);
+  const imported = input.codec.importLegacy(normalizedRaw);
+  if (!imported.ok
+    || input.codec.exportLegacy(imported.state) !== normalizedRaw
+    || imported.state.ascCh !== nextChapter
+    || !sameJson(imported.state.ascProg, progress)) {
+    throw new CapacityRefusal('v4-round-trip-failed', 'capture Charter result lost its fixed point');
+  }
+  return Object.freeze({
+    state: imported.state,
+    raw: normalizedRaw,
+    charterBioscanBanked,
+  });
+}
+
 function assertExactOwnershipWrites(
   base: V5Extensions,
   scenario: CaptureCapacityScenarioV1,
@@ -713,6 +796,8 @@ function scenarioIdentity(scenario: CaptureCapacityScenarioV1): Readonly<{
 
 function prepareScenario(
   scenario: CaptureCapacityScenarioV1,
+  sourceOwnership: OwnershipStateV1,
+  address: CanonicalCF1WorldAddress,
   parent: OwnershipStateV2,
   sourceLegacyV4Raw: string,
   sourceExtensions: V5Extensions,
@@ -726,19 +811,28 @@ function prepareScenario(
     ownership,
     scenario,
   );
-  const mirror = projectLegacyOwnershipMirror(scenario.successor);
+  const mirror = projectArc4GuardianLegacyOwnershipMirrorV1(
+    scenario.successor,
+    arc5.extensions,
+  );
   if (mirror.kind !== 'projected') {
     throw new CapacityRefusal(
-      mirror.kind === 'unrepresentable'
-        ? 'legacy-mirror-unrepresentable' : 'ownership-write-unrepresentable',
-      'capture successor has no exact v4 ownership mirror',
+      'legacy-mirror-unrepresentable',
+      `capture successor composite mirror is protected: ${mirror.reason}`,
     );
   }
   const stardustReward = stardustRewardForScenario(scenario);
-  const staged = stageArc4LegacyMirrorFixedPointV1({
+  const legacy = stageArc4LegacyMirrorFixedPointV1({
     baseRaw: sourceLegacyV4Raw,
     mirror,
     stardustReward,
+    codec,
+  });
+  const staged = stageArc4CaptureCharterFixedPointV1({
+    base: legacy,
+    sourceOwnership,
+    scenario,
+    address,
     codec,
   });
   let f4: ReturnType<typeof prepareF4AuthorityUpdate>;
@@ -784,6 +878,7 @@ function prepareScenario(
     firstForSpecies: scenario.firstForSpecies,
     tier: scenario.tier,
     stardustReward,
+    charterBioscanBanked: staged.charterBioscanBanked,
     successorDigest: scenario.successorDigest,
     ownershipV2Digest: arc5.stateDigest,
     ownershipWritesDigest: jsonDigest(ownership.writes),
@@ -835,12 +930,14 @@ export function certifyArc4CaptureCapacityV1(
     assertSnapshotExtensionAuthority(preflight, extensions);
     assertExactF4Projection(preflight, captured.preDraw, extensions);
     base = checkedBaseSave(captured.preDraw.draft, extensions, codec);
-    const currentMirror = projectLegacyOwnershipMirror(preflight.snapshot.ownership);
+    const currentMirror = projectArc4GuardianLegacyOwnershipMirrorV1(
+      preflight.snapshot.ownership,
+      extensions,
+    );
     if (currentMirror.kind !== 'projected') {
       throw new CapacityRefusal(
-        currentMirror.kind === 'unrepresentable'
-          ? 'legacy-mirror-unrepresentable' : 'ownership-write-unrepresentable',
-        'current ownership has no exact v4 mirror',
+        'legacy-mirror-unrepresentable',
+        `current composite ownership mirror is protected: ${currentMirror.reason}`,
       );
     }
     assertCurrentV4MirrorParity(base.canonicalState, currentMirror);
@@ -858,6 +955,8 @@ export function certifyArc4CaptureCapacityV1(
     try {
       const prepared = prepareScenario(
         scenario,
+        preflight.snapshot.ownership,
+        preflight.snapshot.address,
         captured.parent,
         base.legacyV4Raw,
         extensions,
@@ -1035,6 +1134,7 @@ export function settleCertifiedArc4CaptureV1(
     plan: planned.plan,
     ownershipV2Digest: selected.publicRow.ownershipV2Digest,
     stardustReward: selected.publicRow.stardustReward,
+    charterBioscanBanked: selected.publicRow.charterBioscanBanked,
     derivation: authorization.derivation,
     prepared: authorization.prepared,
     authorization,

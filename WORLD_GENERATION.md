@@ -1,7 +1,7 @@
 # Celestial Frontier — World & Universe Generation
 
 **STATUS:** legacy mechanics match `main.js` as of 2026-07-23; the dated v2 overlays
-match the current local candidate boundary as of 2026-08-28.
+match the current local candidate boundary as of 2026-08-29.
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime, `port/v2/packages/domain/{planetgen,worldgen,surveyphrases}` own the
@@ -14,13 +14,24 @@ own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION
 > authored signature, fauna/flora-family, hazard and weather record. `world-roster.ts` selects that
 > profile once from the already-generated world and publishes schema/digest/key plus one environment
 > fingerprint over world, ecology epoch, biosphere and climate. Vista requests/workers and the pure
-> non-playing current-world distant-ecology plan consume that same presentation identity. It changes
-> no generation, RNG, biome selection, capture candidate or roster row. The gameplay-affecting D-9e
+> current-world distant-ecology plan consume that same presentation identity. One strict app join
+> now permits an explicit generic ecology signal only after the exact inhabited world's visible
+> biosphere lead agrees; it reveals no species, spends no Yield, grants nothing and writes no save.
+> This changes no generation, RNG, biome selection, capture candidate or roster row. The
+> gameplay-affecting D-9e
 > biome→fauna filter remains decision-gated and unfixed.
 >
 > **D-LOC:** generated non-Earth civilization labels use pure ASCII comma grouping through the
 > hand-owned Ecology facade. The lifted generator, numeric year, exact RNG chronology and all other
 > fields remain unchanged; Earth retains authored `Year 2026 CE`.
+
+> **2026-08-29 Arc 6 canonical-world consumer:** landed combat does not add a generator or alter a
+> world record. It reuses the registered full-CF1 galaxy/star/planet identity, complete roster and
+> ecology epoch to select the already-deterministic strongest fauna, Apex Guardian or eligible
+> Elemental Titan. One verified settlement may then persist conquest, Guardian/Titan acquisition
+> and Prime Signature provenance against that exact world. Structural lookalikes, same-seed leaves
+> under a different parent, stale epochs and unregistered encounters refuse; generation output,
+> encounter identity, biome selection and RNG chronology remain unchanged.
 
 > **2026-08-26 D-HAZE ownership correction — current local candidate:** the exact
 > `galaxyHaze(seed, profile)` canvas generator and its cache now belong to the `GalaxyArt [app]`
@@ -48,8 +59,9 @@ own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION
 > and marks the separate biome vein with ✦. Living worlds, Earth, cosmic/exceptional veins, grades,
 > reserves, progress and mining
 > remain grounded. All 62 fixed recipes are listed; only connected-effect outputs
-> with exact costs/preconditions and capacity/revision headroom are actionable, while fully
-> exceptional slotted outputs and disconnected-effect rows remain unavailable. Eligible Engineering
+> with exact costs/preconditions and capacity/revision headroom are actionable. A supported slotted
+> recipe paid entirely from exceptional direct materials receives one deterministic exact-item
+> Pureforged modifier; disconnected-effect rows remain unavailable. Eligible Engineering
 > actions use one receipt-bearing F3/F4 transaction.
 >
 > Arc 4 separately consumes the full epoch-bound canonical roster—never the eight-row Planetside
@@ -59,8 +71,10 @@ own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION
 > ordinal, epoch and full-roster fingerprint; the player sees preview/full counts and an explicit
 > uniform eligible-pool policy rather than a targeted species promise. Hit/miss spending and
 > storage/stale/publication/reload convergence are locally browser-proven. This does not change any
-> world-generation value or make the broader anomaly/blueprint/lore/Guardian/project manifest live;
-> real 20-minute recovery and HUMAN capture review remain open.
+> world-generation value or make the broader anomaly/blueprint/lore/project manifest live. Arc 6
+> now consumes the same registered world for bounded combat/Guardian/Prime settlement as described
+> above; fresh exact-source browser evidence for the later local changes and HUMAN capture/combat
+> review remain open.
 
 > **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the 2026-08-25
 > overlay does not supersede it):** Public and

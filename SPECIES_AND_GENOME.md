@@ -1,13 +1,45 @@
 # Celestial Frontier — Species & Genome System
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
-ownership, one-time bred-child feeding, rarity-presentation and exact Tame/Feed-audio overlays match
-the local `port/v2` candidate as of 2026-08-28. ⚠ v1.8.9: every reader of the
+ownership, four bounded companion writers, Guardian/Titan acquisition, rarity presentation and four
+explicit audio-path overlays match the local `port/v2` candidate as of 2026-08-29. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
+
+> **2026-08-29 current local species/companion boundary:** Arc 5 exposes four exact-instance writers
+> from verified real-fauna Compendium detail without changing the established creature structure.
+> Feed advances bounded `fed` and consumes one exact flora lot. Breed uses the existing lifted
+> `crossGenome` successor after one persisted outcome draw, keeps both parents, creates one
+> deterministic child only on success, initializes its inherited `fed` once, and assigns active-play
+> Recovery to both parents. Rename changes only one sanitized at-most-24-character nickname. Field
+> Scout changes only `scoutCreatureId`; it does not alter genome, lineage, injury, Recovery, mission
+> or bond state. The later Scout injury interception and +2 fresh-species XP remain separate open
+> consequence owners.
+>
+> Arc 6 Guardian/Titan conquest adds a living `origin:'guardian'` individual only through the
+> registered acquisition carrier and preserves exact catalogue deduplication. Battlefield `_mult`
+> and `_wf` are stripped before ownership, while legitimate `apex` and `_titan` identity survives;
+> no anatomy, silhouette, proportions, trait table, seed, descriptor or share-code structure changes.
+> Breed's `bredlegend`, Rename's `namer` and player-combat `brink` join their true Arc 9 achievement
+> owners; the complete Records surface separately presents all 96 achievement rows and exact ranks.
+>
+> The current Binder is another read-only consumer of those established species facts. Its six
+> legacy pages project rarity spectrum, sixteen realms, fauna body plans, ability themes, flora
+> stat flavors and fauna size classes from canonical Compendium species **types**, not owned
+> procedural individuals; it changes no genome or creature structure. Seven non-Paragon completion
+> sets can be claimed once for their authored Stardust rewards. The Fifty Paragons remains a visible
+> protected boundary: an imported `para10` claim is retained, but no Paragon is generated,
+> discovered, awarded, or exposed as a current claim target by the Binder.
+>
+> Four creature/ecology presentation-only audio paths are live: the durable Tame greeting,
+> committed Feed acknowledgement, explicit exact-owned-fauna Compendium Listen, and explicit
+> visible inhabited-world **Listen to biosphere**. The biosphere pulse is generic and reveals no
+> species. Combat separately owns its registered synthesized transcript/Guardian/Titan cues after
+> verified settlement; authored or recorded combat voices, broader creature expressions,
+> continuous ambience and music remain open.
 
 > **2026-08-27 current-candidate correction:** the Tame greeting can truthfully retain an unmuted
 > preference even when no AudioContext exists; “contextless” means blocked/not created, not muted.
@@ -17,7 +49,8 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > galaxy/star/ordinal addresses; the final carrier/browser proof remains pending at this moving-tree
 > checkpoint.
 
-> **2026-08-26 current-candidate species boundary:** the internal-only Arc 5 bred-successor seam
+> **Historical 2026-08-26 current-candidate species boundary — superseded where the 2026-08-29
+> overlay above differs:** the internal-only Arc 5 bred-successor seam
 > initializes a newly admitted child with
 > `fed = 0.5 * min(clamp(parentA.fed, 0..200), clamp(parentB.fed, 0..200))` exactly once. Reversing
 > the parents yields the same value, absent input becomes zero, encode/decode preserves it, and a

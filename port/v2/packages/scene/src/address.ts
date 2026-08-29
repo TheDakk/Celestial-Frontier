@@ -19,6 +19,7 @@ import {
   systemFor,
 } from '@cf/domain-worldgen';
 import { GCELL, UCELL } from '@cf/domain-worldconfig';
+import { registerCF1WorldAddressAuthority } from '@cf/domain-worldidentity/mint-internal';
 
 const UINT32_MAX = 0xffff_ffff;
 const CF1_COORDINATE_SCALE = 100;
@@ -696,6 +697,7 @@ function registerAddress<T extends CanonicalCF1Address>(address: T): T {
   }
   CANONICAL_ADDRESSES.add(frozen);
   ADDRESS_KEYS.set(frozen, frozen.key);
+  if ('planet' in frozen) registerCF1WorldAddressAuthority(frozen);
   return frozen;
 }
 

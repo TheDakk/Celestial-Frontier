@@ -15,6 +15,7 @@ import {
   type CreatureExpressionCue,
   type SettledCreatureAudioEvent,
 } from './events.js';
+import { AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1 } from './runtime.js';
 import type {
   AudioContextLike,
   AudioCounterpartReceipt,
@@ -328,6 +329,7 @@ export function createCreatureExpressionVoiceRequest(
     concurrencyGroup: CONCURRENCY_GROUP,
     maxConcurrent: 1,
     nodeCount: VOICE_NODE_COUNT,
+    mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
     meaning: Object.freeze({ kind: 'meaningful', counterpart }),
     create: (context: AudioContextLike, reservation: AudioVoiceReservation) =>
       createVoiceGraph(context, reservation, profile, cue),

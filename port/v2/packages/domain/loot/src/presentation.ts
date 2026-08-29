@@ -4,14 +4,18 @@
    exposes every changed construction field and effect so the UI can explain
    the trade instead of presenting an unexplained green arrow. */
 import { GEAR_RARITIES, GEAR_SLOTS, type GearRarity, type GearSlot } from './catalogue.js';
-import { LEGACY_AFFIX_DEFINITIONS, type GearInstance } from './gear.js';
+import {
+  LEGACY_AFFIX_DEFINITIONS,
+  getExceptionalCraftModifierDefinition,
+  type GearInstance,
+} from './gear.js';
 import type { GearInventory, GearInventoryEntry } from './inventory.js';
 import { deepFreeze } from './internal.js';
 
 export interface GearEffectReadModel {
   readonly key: string;
   readonly value: number;
-  readonly source: 'base' | 'legacy' | 'prefix' | 'suffix';
+  readonly source: 'base' | 'legacy' | 'prefix' | 'suffix' | 'crafted';
   readonly percent: boolean;
   readonly label: string;
   /** Explicit applicability context; null means the value is unconditional. */
@@ -130,6 +134,18 @@ const effectRows = (instance: GearInstance): readonly GearEffectReadModel[] => {
       condition: null,
     }];
     })() : []),
+    ...(instance.craftedModifier ? (() => {
+      const definition = getExceptionalCraftModifierDefinition(instance.craftedModifier.affixId);
+      if (!definition) return [];
+      return [{
+        key: definition.effectKey,
+        value: instance.craftedModifier.value,
+        source: 'crafted' as const,
+        percent: definition.percent,
+        label: effectLabel(definition.effectKey, definition.label),
+        condition: null,
+      }];
+    })() : []),
   ]);
 };
 
@@ -243,7 +259,11 @@ export function filterGearEntries(
             instance.legacyAffix.affixId,
             affixDefinition(instance.legacyAffix.affixId)?.label ?? instance.legacyAffix.affixId,
           )]
-          : [])]
+          : []),
+        ...(instance.craftedModifier ? (() => {
+          const definition = getExceptionalCraftModifierDefinition(instance.craftedModifier.affixId);
+          return definition ? [effectLabel(definition.effectKey, definition.label)] : [];
+        })() : [])]
         .join('\n').toLocaleLowerCase('en-US');
       if (!searchable.includes(query)) return false;
     }

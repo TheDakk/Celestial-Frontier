@@ -3,7 +3,10 @@
    content. Its certificate is intentionally narrow: two identical synthetic
    workload cycles prove package lifecycle/accounting plateau; browser bytes,
    device heat, listening, and unimplemented accessibility modes stay open. */
-import { AUDIO_CATEGORIES } from './runtime.js';
+import {
+  AUDIO_CATEGORIES,
+  AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
+} from './runtime.js';
 import type {
   AudioActivationState,
   AudioCategory,
@@ -69,10 +72,14 @@ const REQUIRED_PHASES = Object.freeze([
 const SAMPLE_KEYS = Object.freeze(['phase', 'diagnostics'] as const);
 const DIAGNOSTIC_KEYS = Object.freeze([
   'state', 'contextState', 'contextGeneration', 'muted', 'hidden', 'gains',
-  'nodes', 'cache', 'voices', 'creatureEmitters', 'cooldowns', 'reservations',
-  'cleanup', 'peaks', 'faults',
+  'voiceMix', 'nodes', 'cache', 'voices', 'creatureEmitters', 'cooldowns',
+  'reservations', 'cleanup', 'peaks', 'faults',
 ] as const);
 const GAIN_KEYS = Object.freeze(['master', 'effectiveMaster', 'categories'] as const);
+const VOICE_MIX_KEYS = Object.freeze([
+  'schema', 'activeOwners', 'owners', 'factors', 'effectiveCategoryGains',
+] as const);
+const VOICE_MIX_OWNER_KEYS = Object.freeze(['voiceId', 'factors'] as const);
 const LEVEL_KEYS = Object.freeze(['active', 'peak', 'budget'] as const);
 const CACHE_KEYS = Object.freeze(['active', 'peak', 'budget', 'evictions'] as const);
 const VOICE_KEYS = Object.freeze([
@@ -174,6 +181,32 @@ function boundedString(value: unknown, label: string, maximum: number, allowEmpt
   return value;
 }
 
+function canonicalCategoryFactors(
+  value: unknown,
+  label: string,
+): Readonly<Record<AudioCategory, number>> {
+  const input = exactPlainData(value, AUDIO_CATEGORIES, label);
+  return Object.freeze(Object.fromEntries(AUDIO_CATEGORIES.map((name) => [
+    name,
+    finiteValue(input[name], `${label} ${name}`, 0, 1),
+  ]))) as Readonly<Record<AudioCategory, number>>;
+}
+
+function canonicalVoiceMixOwner(
+  value: unknown,
+  index: number,
+  label: string,
+): Readonly<{
+  voiceId: string;
+  factors: Readonly<Record<AudioCategory, number>>;
+}> {
+  const input = exactPlainData(value, VOICE_MIX_OWNER_KEYS, `${label} owner ${index}`);
+  return Object.freeze({
+    voiceId: boundedString(input.voiceId, `${label} owner ${index} voice id`, 128),
+    factors: canonicalCategoryFactors(input.factors, `${label} owner ${index} factors`),
+  });
+}
+
 function canonicalLevel(value: unknown, label: string): Readonly<{
   active: number;
   peak: number;
@@ -246,6 +279,52 @@ function canonicalDiagnostics(value: unknown, label: string): AudioRuntimeDiagno
     throw new RangeError(`${label} effective master gain contradicts mute policy`);
   }
 
+  const voiceMixInput = exactPlainData(input.voiceMix, VOICE_MIX_KEYS, `${label} voice mix`);
+  if (voiceMixInput.schema !== AUDIO_VOICE_MIX_INTENT_SCHEMA_V1) {
+    throw new TypeError(`${label} voice mix schema is unsupported`);
+  }
+  const activeOwners = finiteCount(
+    voiceMixInput.activeOwners,
+    `${label} voice mix active owners`,
+  );
+  const owners = Object.freeze(arrayValues(
+    voiceMixInput.owners,
+    `${label} voice mix owners`,
+  ).map((owner, index) => canonicalVoiceMixOwner(owner, index, `${label} voice mix`)));
+  if (activeOwners !== owners.length
+    || new Set(owners.map((owner) => owner.voiceId)).size !== owners.length) {
+    throw new RangeError(`${label} voice mix owner accounting is incoherent`);
+  }
+  const factors = canonicalCategoryFactors(
+    voiceMixInput.factors,
+    `${label} voice mix factors`,
+  );
+  for (const name of AUDIO_CATEGORIES) {
+    const expected = owners.reduce(
+      (minimum, owner) => Math.min(minimum, owner.factors[name]),
+      1,
+    );
+    if (factors[name] !== expected) {
+      throw new RangeError(`${label} voice mix ${name} factor is not the active-owner minimum`);
+    }
+  }
+  const effectiveCategoryGains = canonicalCategoryFactors(
+    voiceMixInput.effectiveCategoryGains,
+    `${label} effective category gains`,
+  );
+  for (const name of AUDIO_CATEGORIES) {
+    if (effectiveCategoryGains[name] !== categories[name] * factors[name]) {
+      throw new RangeError(`${label} effective ${name} gain contradicts saved gain and voice mix`);
+    }
+  }
+  const voiceMix = Object.freeze({
+    schema: AUDIO_VOICE_MIX_INTENT_SCHEMA_V1,
+    activeOwners,
+    owners,
+    factors,
+    effectiveCategoryGains,
+  });
+
   const nodes = canonicalLevel(input.nodes, `${label} nodes`);
   const cacheInput = exactPlainData(input.cache, CACHE_KEYS, `${label} cache`);
   const cache = Object.freeze({
@@ -276,6 +355,11 @@ function canonicalDiagnostics(value: unknown, label: string): AudioRuntimeDiagno
       `${label} concurrency rejects`,
     ),
   });
+  if (voiceMix.activeOwners !== voices.active
+    || voiceMix.activeOwners > voices.budget
+    || voiceMix.owners.some((owner, index) => owner.voiceId !== voices.ids[index])) {
+    throw new RangeError(`${label} voice mix owners contradict active voices`);
+  }
   const creatureEmitters = canonicalLevel(
     input.creatureEmitters,
     `${label} creature emitters`,
@@ -338,6 +422,7 @@ function canonicalDiagnostics(value: unknown, label: string): AudioRuntimeDiagno
     muted,
     hidden,
     gains: Object.freeze({ master, effectiveMaster, categories }),
+    voiceMix,
     nodes,
     cache,
     voices,
@@ -481,6 +566,7 @@ function assertNoLiveOwners(sample: AudioLabSample): void {
   if (diagnostics.contextState !== null
     || diagnostics.nodes.active !== 0
     || diagnostics.voices.active !== 0
+    || diagnostics.voiceMix.activeOwners !== 0
     || diagnostics.creatureEmitters.active !== 0
     || diagnostics.cache.active !== 0
     || diagnostics.cooldowns.active !== 0
@@ -496,6 +582,7 @@ function assertLoaded(sample: AudioLabSample): void {
     || diagnostics.hidden || diagnostics.muted
     || diagnostics.nodes.active < 1
     || diagnostics.voices.active < 1
+    || diagnostics.voiceMix.activeOwners < 1
     || diagnostics.creatureEmitters.active < 1
     || diagnostics.cache.active < 1
     || diagnostics.reservations.voices.active !== 0

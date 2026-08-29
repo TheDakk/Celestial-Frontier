@@ -23,9 +23,14 @@
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
 2026-07-30. The dated v2 overlay below matches the current local development candidate and approved
 direction as of **2026-08-29**. It distinguishes the player-live compatibility stings and two exact
-bounded synthesized creature expressions—Tame greeting and accepted Feed acknowledgement—from the
-pure non-playing distant-ecology join and broader Arc 7/8 content, integration and HUMAN work that
-remain open.
+settled synthesized creature expressions—Tame greeting and accepted Feed acknowledgement—plus an
+explicit owned-fauna Compendium selection audition, one generic current-world biosphere pulse
+exposed only by explicit orbital or landed controls, and
+the complete already-modelled registered post-settlement combat cue set, including damage impacts,
+initiative, dodge, stun, burn, regeneration, defeat/resolution and Guardian/Titan motifs. The later
+audition, ecology, Chronicle and combat paths have focused browser-free evidence only and do not
+inherit the signed Tame/Feed browser certificate. Broader Arc 7/8 content, device evidence and HUMAN
+work remain open.
 **Shipped (production v1):** v1.8.0 "The Connection" · corrected and widened in v1.8.4
 "Clear Ground".
 
@@ -85,7 +90,7 @@ whole layer undocumented despite being the largest single feature of v1.8.
 
 ### 0.1 Truth boundary
 
-The current local v2 candidate has the compatibility sting path plus two deliberately bounded
+The current local v2 candidate has the compatibility sting path plus three deliberately bounded
 player-live creature expressions. `@cf/audio` still exports the synthesized rarity, survey and
 navigation compatibility facade; the application initializes its save-backed seam, calls the live
 survey/navigation stings and leaves the rarity sting as an exported discovery seam. Settings expose
@@ -101,9 +106,11 @@ On may resume an existing context but does not allocate one by itself. Live Volu
 the squared-gain bus even while muted and preserves the chosen value rather than rewriting it to
 zero. The first later enabled sting lazily chooses standard `AudioContext` first, falls back to
 `webkitAudioContext` only when the standard constructor is absent, and reuses the resulting
-context. The Creature voices toggle synchronizes the greeting owner immediately: Off stops and
-zeros its active greeting synchronously and begins settled context teardown; On creates nothing and
-never replays a previous result.
+context. The Creature voices toggle synchronizes the shared expression owner immediately: Off
+stops Tame, Feed and explicit Compendium-audition creature voices synchronously; On creates nothing
+and never replays a previous result. The generic distant-biosphere pulse is an ambience-category
+voice and the post-settlement damage impact is a combat/gameplay-category voice; both are governed
+by Sound, not Creature voices. Sound Off still stops every live path.
 A bounded package/app suite exercises import/pre-init safety, public operations, settings ordering,
 live mute state, constructor precedence/fallback, unavailable or throwing constructors, suspended-
 context rejection and teardown races. During the awaited save-load, the app assigns the save and
@@ -117,6 +124,19 @@ voice/concurrency manager and bounded diagnostics; a pure two-cycle lab audit; a
 rights manifest with a pure validator. The committed package policy rejects configured maxima above
 eight creature emitters or 120 live nodes before context creation. The compatibility stings deliberately
 remain outside that runtime's lifecycle and accounting.
+
+The mixer now also owns an exact immutable `cf.audio.voice-mix-intent/v1` for every admitted voice.
+Active owners combine by the deterministic minimum factor on each of the five saved category gains,
+and release that policy on natural completion, manual stop, stealing, mute, hide, context loss and
+dispose. A prospective mix is written while its candidate remains inaudible and before any incumbent
+is stolen; partial write failure rolls back to the current owners, and an irrecoverable or perpetually
+reentrant adapter is quarantined with bounded cleanup instead of leaving diagnostics and bus values
+in disagreement. Generation/dirty fencing forces a fresh all-bus pass after a reentrant base-gain or
+owner mutation. Diagnostics and the lab validate the exact active owners, aggregate factors and
+effective category gains. The current Tame, Feed, Compendium-audition and generic ecology renderers explicitly request the frozen neutral
+intent, so this substrate changes no audible mix, adds no setting or save field and performs no extra
+category-bus write for those current voices. Non-neutral product ducking and HUMAN mix
+judgment remain later Arc 7/8 work.
 
 The first app adapter now projects one exact live current Arc 5 individual into that pure identity
 pipeline without writing a save, consuming gameplay RNG or admitting a tombstone/species alias.
@@ -145,6 +165,51 @@ the same committed outcome is rejected as already claimed and every superseded o
 as non-advancing. Lost detail, route, counterpart, visibility or answerability; disabled Sound or
 Creature voices; stale/refused/converging outcomes; replay and reload remain silent. Feed changes no
 audio identity bytes and the audio path writes no meal, inventory or save state.
+
+The same owner now exposes three additional explicit, presentation-only controls. A real fauna
+Compendium **detail** can render one Listen button per exact current owned companion whose catalogue
+species and immutable audio projection still agree. The native click selects the existing
+`selected` / `contact` phrase from that companion's unchanged call plan; list mount, focus, filter,
+virtualization and navigation contain no audition call. Diagnostic fixture rows, non-fauna,
+unowned/mismatched/protected identities, programmatic clicks, stale detail/counterpart, Sound or
+Creature voices Off and lifecycle loss remain silent. Audition does not alter care, assignment,
+genome, lineage, ownership or save state.
+
+The existing pre-landing planet Survey card now offers an explicit **Listen to biosphere** action
+while its exact orbital approach lead remains current. Main derives one production canonical roster
+for that target world and projects only whether its biosphere is living; no species row, kingdom,
+family or identity enters the read model or copy. Only the still-visible, current system-route card
+may create an `approach-lead` / `biosphere` plan, and only from that explicit click. Landing,
+rendering, Survey presentation and navigation never auto-play it.
+
+An inhabited current-world Planetside strip retains its separate explicit **Listen to biosphere**
+action.
+Main first verifies the still-visible exact world, canonical full roster/environment fingerprint,
+ecology epoch and literal `PLANETSIDE — Biosphere` lead; only then may the app create the existing
+biosphere-granularity hint plan. The renderer recanonicalizes that plan and accepts only
+`survey-roster` + `biosphere` + `generic-ecology` + ambience with null kingdom, family and identity.
+It produces one deterministic low-gain oscillator/envelope pulse behind a polite/atomic generic
+status counterpart. Rendering, landing, roster fill, filtering and navigation never auto-play it.
+The path consumes no SessionRNG, reveals no species, creates no discovery/catalogue/acquisition,
+awards nothing and writes no save. Hidden/replaced Planetside, route/world/evidence drift, forged or
+more-specific plans, programmatic clicks, Sound Off and counterpart loss fail closed. Both orbital
+and landed controls synthesize the same bounded generic signal; their source/evidence keys remain
+distinct so one surface cannot claim the other's visible counterpart.
+
+The shared owner now also accepts one trusted native **Challenge** gesture, then claims only the exact
+durable, non-converging registered Arc 6 settlement and its matching cue plan. The accessible timed
+Combat Chronicle owns the live counterparts: each registered prelude, transcript or result cue may
+request its canonical cue once, after its exact visible caption exists, without rerunning combat or
+consuming gameplay RNG. The asset-free graph preserves the legacy per-blow impact shape, replaces
+presentation-random noise with cue-keyed local noise, and adds only that blow's proved critical and
+ability-proc layers. Separate deterministic short contours render initiative, dodge, stun-skipped,
+burn, regeneration, defeat and resolution plus Guardian/Titan entrance, phase, victory and defeat.
+A composite event uses its first stable caption family and one voice rather than double-playing each
+family. The combat/gameplay bus uses neutral mix intent, priority arbitration and a maximum of two
+concurrent combat voices. Master Sound governs this path; Creature voices does not. Skip stops active
+voices and renders the remaining transcript silently. Close, replace, hidden/unanswerable state,
+route or counterpart loss, Sound Off, context loss and disposal also stop the session. No authored
+or recorded combat asset, ambience or music follows from this bounded path.
 
 Historical pre-Final10 Slice evidence consists of **six preserved terminal-red,
 one-attempt/zero-retry runs** on Edge `151.0.4129.107`. Signed-clean source
@@ -178,12 +243,21 @@ does not itself trigger rebaselining or move thresholds. Broader post-start audi
 unproved. Final13 supplies the exact-source local Recovery certificate, but no hosted, HUMAN,
 whole-Gate, release, version or deployment authority.
 
-Player-live creature expressions beyond exact Tame and Feed, combat or Guardian cues, ambience,
-music, recorded assets and asset loading remain absent. Battle sound (`cbx`) is still preserved by
-persistence rather than offered as a live v2 control. Captions beyond the exact Tame toast and Feed
-status counterparts, mono, dynamic range, reduced intensity, real-browser/physical-device audio-
-graph/heat/battery evidence and all HUMAN listening/appeal/comfort judgments remain open. Arc 7/8 and Gate G
-are therefore **partial**, not closed.
+Player-live creature expressions beyond exact Tame, Feed and explicit Compendium selection remain
+absent. Exact post-settlement initiative, dodge, stun-skipped, damage/critical/ability, burn,
+regeneration, defeat and resolution cues plus Guardian/Titan entrance, phase, victory and defeat
+motifs are live. Each is derived only from its registered settled cue and exact visible Chronicle
+caption; composite cue families remain one bounded voice instead of double-playing the event.
+Broad/continuous ambience, music, recorded assets and asset loading remain absent. The one generic
+distant-biosphere pulse is not an authored ambience system. Battle sound (`cbx`) is still preserved
+by persistence rather than offered as a live v2 control; master Sound governs the combat path. The
+package owns safe per-voice category-
+mix intent and restoration, but current live callers are neutral; no audible priority ducking claim
+is made. Captions beyond the exact Tame toast, Feed status, Compendium audition status, generic
+biosphere status and Combat Chronicle counterparts, mono, dynamic range,
+reduced intensity, real-browser/physical-device audio-graph/heat/battery evidence and all HUMAN
+listening/appeal/comfort judgments remain open. Arc 7/8 and Gate G are therefore **partial**, not
+closed.
 
 The sections below remain the **approved Arc 7/8 contract**. They identify which package
 foundations now exist and which product/content/evidence obligations remain. Capability-aware
@@ -219,8 +293,9 @@ The pure resolver-v1 package pipeline implements this transformation **after** a
 exact, already-normalized `AudioIdentityInput`, including its owner and surviving lineage. The app's
 strict read-only projector now supplies that input only from one exact live current Arc 5 creature;
 malformed, protected, missing-owner or inconsistent-lineage state returns unavailable rather than
-substituting a loose genome or display identity. The Tame greeting and exact accepted Feed
-acknowledgement are the only current player paths that render those plans.
+substituting a loose genome or display identity. The Tame greeting, exact accepted Feed
+acknowledgement and explicit owned-fauna Compendium audition are the only current player paths that
+render those creature call plans.
 
 ### 0.3 Typed runtime, buses and lifecycle
 
@@ -241,9 +316,10 @@ The v2 package grows in stages behind one typed event boundary:
 
 The injected package runtime provides the structural mixer/limiter/meter, voice ownership,
 priority/cooldown/concurrency/stealing, mute/hidden/restart/context-loss and disposal foundation
-behind an injected `AudioContextLike`. The shared Tame/Feed expression owner now constructs and
-drives one bounded instance for deterministic fauna oscillator/envelope requests. It still does not own the
-compatibility stings, a general current-system soundscape or an asset renderer. Exact signed source
+behind an injected `AudioContextLike`. The shared audio owner now drives one bounded instance for
+deterministic Tame, Feed and explicit owned-fauna Compendium expressions plus the generic current-
+world biosphere pulse. It still does not own the compatibility stings, a general current-system
+soundscape or an asset renderer. Exact signed source
 `3f69e88…` exercises the implemented controls and sound witness. The current Slice oracle now requires the Feed
 oscillator's successful `start()` plus a complete graph path to exactly one
 `AudioDestinationNode`, with every endpoint and intermediate edge in the source oscillator's same
@@ -252,7 +328,8 @@ strengthened endpoint-context oracle is browser-free covered and passed on exact
 `3f69e88…`; physical-device evidence remains pending.
 
 The approved v2 settings surface retains master volume and adds category gains only as their buses
-become real. Independent Creature voices is now restored from `vce` for the bounded Tame and Feed expressions;
+become real. Independent Creature voices is now restored from `vce` for the bounded Tame, Feed and
+Compendium-audition expressions; the generic biosphere pulse remains governed by master Sound.
 Battle sound remains a preserved `cbx` field without a current control or live battle bus. Later
 work may add dynamic-range profile, mono output, reduced-intensity/high-frequency
 comfort, meaningful-sound captions and mute-when-unfocused. Reduced motion remains a visual choice;
@@ -296,8 +373,9 @@ round-trips and passes malformed/reverse-order controls.
 Of the already-settled voice corrections, resolver-v1 now retains `legacy` as an emergency data
 definition while excluding it from ordinary route/sound-witness selection. Replacing both hard f0
 clips with a soft-saturation curve remains unimplemented and must be tuned only after HUMAN
-listening. The bounded Tame and Feed expressions consume resolver-v1; they are not evidence that the unimplemented
-soft-saturation curve or the broader creature-voice design has been tuned.
+listening. The bounded Tame, Feed and explicit Compendium-audition expressions consume resolver-v1;
+they are not evidence that the unimplemented soft-saturation curve or the broader creature-voice
+design has been tuned.
 
 ### 0.5 Combat, Guardians and environmental cues
 
@@ -306,16 +384,28 @@ Combat audio consumes the completed deterministic duel transcript after simulati
 execute, thorns, lifesteal, burn/regen and defeat events plus ability theme and body/material weight;
 it never changes `runDuel`, advances its RNG or invents an outcome. Every cue owns a matching visual
 or caption token. Guardian entrance/phase/victory/defeat motifs derive from the existing planet
-seed, tier, epithet and ability fields, without changing `guardianFor`. Combat and Guardians are
-not playable in the current v2 slice, so none of those cues may be advertised live yet. The legacy
-skip path is silent; v2 must explicitly settle any result-only skip motif before implementing it.
+seed, tier, epithet and ability fields, without changing `guardianFor`. The bounded landed v2 combat
+and Guardian/Prime settlement now feeds an accessible timed Combat Chronicle after exact durability.
+Each rendered damage row consumes its matching registered cue and may synthesize the legacy per-blow
+impact plus exact critical/ability-proc layers through the Sound-governed combat/gameplay bus. The
+same caption-owned path renders short deterministic gestures for initiative, dodge, stun-skipped,
+burn, regeneration, defeat and resolution, while Guardian/Titan entrance, phase, victory and defeat
+motifs derive only from the registered tier, ability, Signature and epithet facts. A multi-family cue
+is one composite voice owned by its first stable counterpart, not several overlapping rewards for
+one event. At most two combat voices remain active; later higher-priority impact, result and Guardian
+cues may replace lower-priority overlap. Skip cancels current voices and completes the remaining
+transcript silently, so a result-only skip motif remains deliberately unsupported. A live captured
+Guardian or Titan uses this same registered cue path when selected as champion. No authored or
+recorded combat asset, ambience or music is implied.
 
 Biome ambience later layers atmosphere, weather, terrain/water, hazard and distant ecology from a
-typed environment profile. The current app has a pure non-playing join from one canonical inhabited
-current-world Survey roster to a deterministic `DistantEcologyHintPlan`; schema, digest, biome key,
-weather, hazard and the roster environment fingerprint are bound without revealing a species or
-writing state. Main does not import that join, dispatch an audio event or own distant-ecology
-playback. Silence is a valid layer, especially for vacuum, caves and abyssal
+typed environment profile. The current app joins one canonical inhabited current-world roster to a
+deterministic `DistantEcologyHintPlan` only after either the exact same-granularity orbital Survey
+approach lead or Planetside biosphere lead is visible and the player explicitly chooses **Listen to
+biosphere**. `approach-lead` and `survey-roster` remain distinct evidence sources. Schema, digest,
+biome key, weather, hazard and roster environment fingerprint are bound while the renderer admits
+only generic biosphere ambience with null kingdom, family and identity. It reveals no species,
+awards nothing and writes no state. Silence is a valid layer, especially for vacuum, caves and abyssal
 spaces. Environmental sonification must not imply that fauna exists on fauna-free worlds or turn
 flora/fungi/microbes into animal calls. See `BIOME_ATLAS.md` and `CAPTURE_AND_BIOSPHERE.md` for the
 presentation-only ecology link; it changes no roster, capture odds, yield or epoch rule.
@@ -331,8 +421,9 @@ The committed package policy defaults to 24 full-mix voices, eight creature emit
 and fails closed if a caller configures more than eight creature emitters or 120 nodes. Its tests cover
 the exact 8/120 boundary, independent 9/121 rejections before context creation, the graph lower
 bound and separate creature/node pressure. This is package policy/accounting evidence only: the
-application uses one bounded runtime instance for the Tame and Feed expressions, while compatibility stings
-remain separate and the broader mix does not yet exist. No real-browser/device audio plateau has
+application uses one bounded runtime instance for three creature expressions and one generic
+biosphere pulse, while compatibility stings remain separate and the broader mix does not yet exist.
+No real-browser/device audio plateau has
 been measured for the current candidate.
 
 Encoded download bytes and decoded `AudioBuffer` bytes are separate budgets. Their exact tier caps
@@ -387,13 +478,15 @@ becoming a hidden acquisition or spoiler channel.
 The deterministic contract is:
 
 ```text
-canonicalWorldKey + already surfaced opportunity/survey-roster projection + audio resolver version
+canonicalWorldKey + already surfaced approach-lead/survey-roster projection + audio resolver version
   -> DistantEcologyHintPlan
 ```
 
-The pure `createDistantEcologyHintPlan()` seam now implements this data contract and its hidden,
-wrong-owner, silent/non-fauna and determinism controls. No approach/survey owner supplies it in the
-application, and it performs no playback, ducking or lifecycle work.
+The pure `createDistantEcologyHintPlan()` seam implements this data contract and its hidden,
+wrong-owner, silent/non-fauna and determinism controls. The application now supplies it from two
+bounded explicit owners: the existing pre-landing Survey card's exact orbital `approach-lead`, and
+the landed Planetside `survey-roster` lead. The pure seam itself still performs no playback, ducking
+or lifecycle work.
 
 The plan consumes the canonical world and the exact lead/roster projection the approach,
 survey, or opportunity owner has already made player-visible. It never keys on a bare planet seed,
@@ -433,12 +526,14 @@ CreatureCallPlan + settled AudioEvent -> CreatureExpressionCue
 ```
 
 The package implements the pure settled-event/caption-gated expression resolver and rejects
-absence/polling, missing-counterpart and mutated-plan inputs. Two exact player consumers exist: after
+absence/polling, missing-counterpart and mutated-plan inputs. Two exact creature-expression consumers exist: after
 the verified durable fauna hit and accessible toast counterpart, Tame resolves a
 `taming-succeeded` cue; after the exact durable one-meal successor and accessible Feed status,
 Feed resolves `feed-completed` / `accepted`. Both submit deterministic oscillator/envelope requests
-to the creature bus. No miss or unsettled action emits a cue, and no other care, companion, mission
-or combat writer/player path consumes an expression event yet.
+to the creature bus. No miss or unsettled action emits a cue, and no other care, companion or
+mission writer consumes an expression event yet. Arc 6 combat separately consumes every registered
+already-modelled cue only after exact durable settlement through the Chronicle path described in
+§0.5.
 
 `CreatureCallPlan` is an invariant repertoire. `hurt`, `fed`, `bond`, care and assignment state do
 not change its serialized bytes, the signature or the identity profile. A separate pure resolver
@@ -543,8 +638,8 @@ A wolf roars (mammal, 148 Hz), a sparrow chirps (bird, 2068 Hz), a blue whale si
 decision is settled: keep the definition as a fallback but exclude it from ordinary procedural
 selection. Resolver-v1 implements that correction: it retains `legacy` as emergency data and
 excludes it from ordinary route/sound-witness selection. The strict app projector and bounded
-synthesized fauna Tame and Feed expressions now consume the resolver; no other player-live creature
-expression does.
+synthesized fauna Tame, Feed and explicit owned-fauna Compendium-audition expressions now consume
+the resolver; no other player-live creature expression does.
 
 ### Genes the voice reads (v1.8.4)
 
@@ -655,8 +750,9 @@ stops the previous bed first). Ramped down over 0.5 s, nodes stopped 700 ms late
 returning to a vista leaves it silent. The port decision is now settled at **RESTART**, with a
 gesture-safe re-arm when the browser blocks automatic resume. The injected v2 runtime implements
 and tests the package-level hidden/restart/context-recovery policy. The app drives hidden, mute and
-disposal lifecycle for the bounded Tame/Feed voice owner only; it has no v2 ambience bed, and compatibility
-stings remain outside that runtime's ownership.
+disposal lifecycle for three bounded creature expressions and the one-shot generic biosphere pulse;
+it has no continuous v2 ambience bed, and compatibility stings remain outside that runtime's
+ownership.
 
 ---
 
@@ -723,7 +819,11 @@ ecology join and its explicit no-main-playback boundary; deterministic fauna osc
 synthesis; injected runtime lifecycle/ownership/budgets and teardown races; the trusted Tame and
 Feed postcommit/accessibility-counterpart/constant-size latest-ownership replay fences; Feed's sole
 inline polite announcement plus AT-excluded visual toast; pure lab accounting; and the empty rights
-authority plus hypothetical intake failures. The strengthened Slice oracle requires one started
+authority plus hypothetical intake failures. Focused combat controls also bind registered settlement
+and cue-plan identity, trusted Challenge activation, every Chronicle cue to its exact visible
+counterpart, one-time cue playback, all already-modelled family synthesis, silent Skip,
+master-Sound/Creature-voices separation, bounded two-voice combat concurrency,
+and synchronous cancellation across presentation/lifecycle loss. The strengthened Slice oracle requires one started
 Feed oscillator to route through same-context WebAudio nodes to an `AudioDestinationNode` and
 rejects disconnected, wrong-type and cross-context evidence. It does not listen, inspect real media
 bytes or judge comfort. Exact signed source `3f69e88…` now supplies the fresh terminal-green Slice

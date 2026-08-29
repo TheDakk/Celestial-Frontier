@@ -49,8 +49,8 @@ function proveEachMarkerRequired(owner: string, markers: readonly Marker[]): voi
 }
 
 describe('sixth Slice red contract repairs', () => {
-  it('keeps a fixed 64-row Guide oracle with five independent population controls', () => {
-    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 64;');
+  it('keeps a fixed 73-row Guide oracle with five independent population controls', () => {
+    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 73;');
     const owner = section(
       sliceSource,
       '  const releaseDraftCheck = `',
@@ -68,9 +68,9 @@ describe('sixth Slice red contract repairs', () => {
       ['removal delta',
         'releaseInventoryCtl.removed?.bulletCount !== V2_DRAFT_BULLET_COUNT - 1'],
     ]);
-    expect(glassSource).toContain('expectedBulletCount=64');
-    expect(glassSource).toContain('inventory?.bulletCount===63');
-    expect(glassSource).toContain('64-outcome development inventory');
+    expect(glassSource).toContain('expectedBulletCount=73');
+    expect(glassSource).toContain('inventory?.bulletCount===72');
+    expect(glassSource).toContain('73-outcome development inventory');
     expect(glassSource).not.toContain('55-outcome development inventory');
   });
 
@@ -209,11 +209,11 @@ describe('sixth Slice red contract repairs', () => {
       ['publishing contradiction contract member',
         '&&!publishingContradiction;'],
       ['publishing completeness member',
-        '&&shipyardContract&&captureContract&&mealContract&&hdSurfaceContract&&publishingContract'],
+        '&&shipyardContract&&captureContract&&audioContract&&mealContract&&breedContract&&renameContract&&hdSurfaceContract&&publishingContract'],
       ['publishing contradiction diagnostic',
         'publishingHeading,publishingContract,publishingContradiction,overclaim'],
       ['publishing honesty member',
-        '&&!captureContradiction&&!mealContradiction&&!publishingContradiction'],
+        '&&!captureContradiction&&!audioContradiction&&!mealContradiction&&!breedContradiction&&!renameContradiction&&!publishingContradiction'],
     ]);
     expect(sliceOracle.split('(?:published|deployed|shipped)').length - 1).toBe(2);
     const sliceControls = section(

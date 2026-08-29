@@ -180,6 +180,7 @@ assertThrows(() => candidateRowPointExpression(''),
   const workerPath = path.join(assets, 'species-art.worker-selftest.js');
   const mainPath = path.join(assets, 'main-selftest.js');
   const legacyPath = path.join(assets, 'legacy-species-selftest.js');
+  const serviceWorkerPath = path.join(root, 'service-worker.js');
   const indexPath = path.join(root, 'index.html');
   const painter = 'export const SPECIES_PORTRAIT_SIZE=440;export function renderSpeciesPortraitCanvas(){};export function renderSpeciesThumbCanvas(){};';
   const worker = 'const a="cf-v2-species-art-worker-request/v1",b="cf-v2-species-art-worker-response/v1";OffscreenCanvas;FileReaderSync;postMessage;addEventListener;import("./speciespainter-selftest.js");';
@@ -196,6 +197,24 @@ assertThrows(() => candidateRowPointExpression(''),
       && graph.worker.relativePath === 'assets/species-art.worker-selftest.js'
       && graph.owner.relativePath === 'assets/main-selftest.js',
     'exact index->worker->painter build graph was not identified');
+
+    const painterDigest = sha256(Buffer.from(painter));
+    const pwaInventory = `const ASSETS=Object.freeze(${JSON.stringify([
+      { path: '/assets/speciespainter-selftest.js', sha256: painterDigest },
+    ])});self.addEventListener('install',()=>{});self.addEventListener('activate',()=>{});self.addEventListener('fetch',()=>{});`;
+    fs.writeFileSync(serviceWorkerPath, pwaInventory);
+    assert(findCandidateSpeciesArtBuildGraph(root).painter.relativePath
+      === 'assets/speciespainter-selftest.js',
+    'the exact declarative PWA asset inventory impersonated a foreign painter execution edge');
+    fs.writeFileSync(serviceWorkerPath,
+      pwaInventory.replace(painterDigest, '0'.repeat(64)));
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a PWA painter inventory with the wrong byte digest was accepted');
+    fs.writeFileSync(serviceWorkerPath,
+      `${pwaInventory}console.log('speciespainter-selftest.js');`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'an executable painter reference escaped through the PWA inventory allowance');
+    fs.rmSync(serviceWorkerPath);
 
     fs.writeFileSync(mainPath, 'console.log("orphan worker")');
     assertThrows(() => findCandidateSpeciesArtBuildGraph(root),

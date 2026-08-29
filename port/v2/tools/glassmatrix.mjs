@@ -6775,6 +6775,15 @@ async function main() {
     console.log(`Slice predecessor: ${selectedSliceRunId} ${sliceDescriptor.reportSha256}`);
     return;
   }
+  /* Reject an obsolete bare full-matrix invocation before taking the shared
+     lock or publishing a running sentinel. A caller error must not replace a
+     previously terminal current pointer or reserve an immutable run ID. */
+  if (!viewportLabel) {
+    if (!selectedSliceRunId) {
+      throw new Error('full certifying Glass requires --slice-run=<immutable-Slice-run-id>');
+    }
+    assertEvidenceRunId(selectedSliceRunId, 'Slice');
+  }
   const hostileCompendiumRows = MATRIX_VIEWPORTS.some((vp) => vp.label === 'phone-landscape')
     ? buildCompendiumFixture().rows.slice(0, 21).map(([, entry], index) => {
       const fixtureId = `glass-hostile-${String(index).padStart(2, '0')}`;
@@ -6806,16 +6815,7 @@ async function main() {
     if (!/^[0-9a-f]{40}$/.test(runSource.commit || '') || !runSource.branch) {
       throw new Error(`source identity unavailable: ${JSON.stringify(runSource)}`);
     }
-    const artifacts = glassArtifactPaths(activeGlassRunId);
-    const sentinel = runningGlassReport({ runId: activeGlassRunId, source: runSource });
-    atomicWriteJson(currentReportPath, sentinel);
-    atomicCreateFile(artifacts.report, JSON.stringify(sentinel, null, 2) + '\n');
-    runArtifactReserved = true;
     if (!viewportLabel) {
-      if (!selectedSliceRunId) {
-        throw new Error('full certifying Glass requires --slice-run=<immutable-Slice-run-id>');
-      }
-      assertEvidenceRunId(selectedSliceRunId, 'Slice');
       if (runSource.state !== 'committed') {
         throw new Error(`full certifying Glass requires clean committed source, observed ${JSON.stringify(runSource.state)}`);
       }
@@ -6826,12 +6826,14 @@ async function main() {
         throw new Error(`selected Slice predecessor failed verification: ${sliceVerification.errors.join('; ')}`);
       }
       runPredecessors = { slice: slicePredecessorDescriptor(sliceVerification) };
-      const boundSentinel = runningGlassReport({
-        runId: activeGlassRunId, source: runSource, predecessor: runPredecessors.slice,
-      });
-      atomicWriteJson(artifacts.report, boundSentinel);
-      atomicWriteJson(currentReportPath, boundSentinel);
     }
+    const artifacts = glassArtifactPaths(activeGlassRunId);
+    const sentinel = runningGlassReport({
+      runId: activeGlassRunId, source: runSource, predecessor: runPredecessors?.slice || null,
+    });
+    atomicCreateFile(artifacts.report, JSON.stringify(sentinel, null, 2) + '\n');
+    runArtifactReserved = true;
+    atomicWriteJson(currentReportPath, sentinel);
     execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
   const server = staticServer();
   await new Promise((resolve, reject) => {
@@ -10229,6 +10231,76 @@ async function main() {
             const probeNeedle='up to 1,500 logical entries',probeCarrier='Compendium presents '+probeNeedle,
               probeBefore='The '+probeCarrier+'.',probeAfter=probeBefore.replace(probeNeedle,'a bounded set of logical entries'),
               probeResult={ok:false,missing:[probeCarrier],text:probeAfter};
+            const bioscanRequired=[
+              'first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol',
+              'banks that world’s one Chapter 2 life-discovery tick in the same capture transaction',
+              'A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing',
+              'v2’s current replacement for v1.8.9’s separate Discover Life action',
+              'Survey Records and accepted or weekly bioscan Charters remain unavailable',
+            ],bioscanForbidden=[
+              'Capture never banks the Charter’s separate bioscan milestone',
+              'Planetside capture is separate and never banks the Charter’s bioscan milestone',
+              'Planetside capture never banks the Charter’s separate bioscan milestone',
+              'Capture banks the Charter bioscan milestone',
+              'A miss banks one Chapter 2 life-discovery tick',
+              'A successful capture on Sol banks one Charter bioscan tick',
+              'A later success on the same world banks another life-discovery tick',
+              'A stale tab still banks one life-discovery tick',
+              'A failed write advances the Charter bioscan',
+              'The separate Discover Life action is now available',
+            ],bioscanContradictions=[
+              'A miss banks one Chapter 2 life-discovery tick.',
+              'A successful capture on Sol banks one Charter bioscan tick.',
+              'A later success on the same world banks another life-discovery tick.',
+              'A stale tab still banks one life-discovery tick.',
+              'A failed write advances the Charter bioscan.',
+             'The separate Discover Life action is now available.',
+            ],breedCharterRequired=[
+              'One successful Breed banks Breed a hybrid bloodline in the same offspring save',
+              'failed pairing, refusal, stale tab, or failed write banks no breeding credit',
+              'Conquest goals stay hidden until their Charter writer exists',
+            ],breedCharterForbidden=[
+              'Conquest and breeding goals stay hidden until their Charter writers exist',
+              'A failed pairing also banks the Charter hybrid bloodline goal',
+              'A stale Breed result grants breeding credit',
+              'Conquest goals are now visible',
+            ],breedCharterContradictions=[
+              'A failed pairing also banks the Charter hybrid bloodline goal.',
+              'A stale Breed result grants breeding credit.',
+              'Conquest goals are now visible.',
+            ],audioGuideRequired=[
+              'Sound and Creature voices on',
+              'verified Tame',
+              'exact committed Feed',
+              'explicit Listen action on a real owned-fauna Compendium detail',
+              'exact current identity and accessible status counterpart agree',
+              'Compendium list mounting, focus, filtering, and navigation never play a call',
+              'Listen to biosphere',
+              'one generic distant living-biosphere signal',
+              'exact current Planetside biosphere lead is visible',
+              'reveals no species, spends no Yield, awards nothing, and writes no save',
+              'Sound Off stops every path',
+              'Creature voices Off stops creature expressions but not the generic biosphere ambience',
+              'Other creature actions, authored ambience/music, and combat sound remain unavailable',
+            ],audioSettingsRequired=[
+              'Creature voices governs the verified Tame, committed Feed, and explicit owned-fauna Listen expressions',
+              'Sound governs all audio, including the generic Planetside biosphere signal',
+              'Each expression waits for its own current accessible status counterpart',
+              'Turning Creature voices or master Sound off stops its owned audio immediately',
+              'turning it back on never replays an earlier result',
+            ],audioGuideForbidden=[
+              'Compendium filtering auto-plays the selected creature call',
+              'Listen to biosphere reveals a hidden species and spends 1 Yield',
+              'The biosphere signal grants a discovery reward and changes the save',
+              'Creature voices Off silences the generic biosphere ambience',
+              'Sound Off still permits the owned creature call',
+            ],audioGuideContradictions=[
+              'Compendium filtering auto-plays the selected creature call.',
+              'Listen to biosphere reveals a hidden species and spends 1 Yield.',
+              'The biosphere signal grants a discovery reward and changes the save.',
+              'Creature voices Off silences the generic biosphere ambience.',
+              'Sound Off still permits the owned creature call.',
+            ];
             const predicateControls={
               positive:guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier],result:probeResult}),
               zeroCarrier:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:['unrelated required copy'],result:probeResult}),
@@ -10244,17 +10316,21 @@ async function main() {
               {id:'atlas',required:['Each saved galaxy, star, or planet route is regenerated from the seeded universe','must produce a source-verified destination before its row can travel','A stale, forged, or incomplete imported route remains visible but disabled'],forbidden:['choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level'],stale:'Use Star Atlas on a planet card to chart it. The Atlas lists saved galaxies, stars, and worlds; choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level.'},
               {id:'determinism',required:['A CF1 address is a pointer into that shared math, not authority of its own','accepts only a source-verified match','a stale or forged address cannot replace the current view'],forbidden:['which is why deterministic CF1 addresses work without an account or game server'],stale:'The same supported coordinates resolve to the same galaxy, star, world, and current-slice survey, which is why deterministic CF1 addresses work without an account or game server.'},
               {id:'survey',paragraph:2,required:['After landing on a living world, Planetside reveals the biosphere roster','landing still catalogues nothing','at-most-eight-row strip is only a preview','Tame, Scavenge, and Sample are separate finite actions','choose uniformly from their eligible species across the full biosphere','Owned Deep Scanners adds one Mineral veins row to the orbital Survey card for a proven lifeless non-Earth world','preserves the generated ordinary-deposit order and marks the separate biome vein with ✦','cosmic and exceptional veins, grades, reserve and progress facts, and the Mine action remain grounded Engineering information'],requiredControls:['landing still catalogues nothing','at-most-eight-row strip is only a preview','choose uniformly from their eligible species across the full biosphere'],forbidden:['Landing catalogues the preview','Planetside preview row is the capture target','Capture draws only from the preview','current Survey card does not yet paint those orbital mineral rows','orbital Survey shows cosmic and exceptional veins'],stale:'Landing catalogues the preview, and each Planetside preview row is the capture target. Capture draws only from the preview.',contradictions:['Landing catalogues the preview.','The Planetside preview row is the capture target.','Capture draws only from the preview.','The current Survey card does not yet paint those orbital mineral rows.','The orbital Survey shows cosmic and exceptional veins.']},
-              {id:'discover',paragraph:2,required:['choose uniformly from every eligible species for that action in the full biosphere','no species row is a target','Tame chooses fauna and a hit adds one owned creature','Scavenge chooses flora or fungi','Sample chooses microbes','either hit adds one specimen lot, never a living companion','Every attempt spends 1 Yield on a hit or miss','successful species leaves that action’s eligible pool','a miss stays eligible','20-minute active-play cycle','closing the game or moving the wall clock does not advance recovery','first successful observation of a species adds its one Compendium page','later-world or later-cycle repeat adds another creature or lot without another page or first-find reward','first successful Legendary-or-better observation earns its one Rare Find Stardust bonus','A miss adds no page, creature, specimen, or Stardust','Capture never banks the Charter’s separate bioscan milestone'],requiredControls:['Every attempt spends 1 Yield on a hit or miss','successful species leaves that action’s eligible pool','a miss stays eligible','20-minute active-play cycle','closing the game or moving the wall clock does not advance recovery'],forbidden:['A miss spends no Yield','Biosphere Yield recovers while the game is closed','moving the wall clock advances recovery','successful species stays eligible for the cycle'],stale:'A miss spends no Yield. Biosphere Yield recovers while the game is closed or when the wall clock advances, and a successful species stays eligible for the cycle.',contradictions:['A miss spends no Yield.','Biosphere Yield recovers while the game is closed.','Moving the wall clock advances recovery.','A successful species stays eligible for the cycle.']},
+              {id:'discover',paragraph:2,required:['choose uniformly from every eligible species for that action in the full biosphere','no species row is a target','Tame chooses fauna and a hit adds one owned creature','Scavenge chooses flora or fungi','Sample chooses microbes','either hit adds one specimen lot, never a living companion','Every attempt spends 1 Yield on a hit or miss','successful species leaves that action’s eligible pool','a miss stays eligible','20-minute active-play cycle','closing the game or moving the wall clock does not advance recovery','first successful observation of a species adds its one Compendium page','later-world or later-cycle repeat adds another creature or lot without another page or first-find reward','first successful Legendary-or-better observation earns its one Rare Find Stardust bonus','A miss adds no page, creature, specimen, or Stardust'],requiredControls:['Every attempt spends 1 Yield on a hit or miss','successful species leaves that action’s eligible pool','a miss stays eligible','20-minute active-play cycle','closing the game or moving the wall clock does not advance recovery'],forbidden:['A miss spends no Yield','Biosphere Yield recovers while the game is closed','moving the wall clock advances recovery','successful species stays eligible for the cycle'],stale:'A miss spends no Yield. Biosphere Yield recovers while the game is closed or when the wall clock advances, and a successful species stays eligible for the cycle.',contradictions:['A miss spends no Yield.','Biosphere Yield recovers while the game is closed.','Moving the wall clock advances recovery.','A successful species stays eligible for the cycle.']},
+             {id:'discover',name:'discover-bioscan',paragraph:3,required:bioscanRequired,requiredControls:bioscanRequired,forbidden:bioscanForbidden,stale:'Capture never banks the Charter’s separate bioscan milestone.',contradictions:bioscanContradictions},
+              {id:'discover',name:'discover-audio',paragraph:4,required:audioGuideRequired,requiredControls:audioGuideRequired,forbidden:audioGuideForbidden,stale:'Creature calls and inhabited-world signals are not available in this development slice.',contradictions:audioGuideContradictions},
               {id:'rarity',paragraph:1,required:['Rarity lowers a species’ base Tame, Scavenge, or Sample chance','each action first chooses uniformly from its eligible full-biosphere pool','selected species and its exact chance appear with the result','Only the first successful Legendary-or-better observation earns a Rare Find Stardust bonus','later-world or later-cycle repeat can add another creature or specimen lot, but never another Compendium page or first-find reward'],requiredControls:['each action first chooses uniformly from its eligible full-biosphere pool','selected species and its exact chance appear with the result'],forbidden:['preview row is the chosen capture target','Every species has the same capture chance'],stale:'The preview row is the chosen capture target. Every species has the same capture chance.',contradictions:['The preview row is the chosen capture target.','Every species has the same capture chance.']},
               {id:'stardust',paragraph:1,required:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','result shows the exact amount','A miss and every later-world or later-cycle repeat earn none','No other current v2 action earns Stardust'],requiredControls:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','A miss and every later-world or later-cycle repeat earn none'],forbidden:['Every Legendary capture earns Stardust','A repeat find earns another Rare Find Stardust bonus','A miss can earn Stardust'],stale:'Every Legendary capture earns Stardust, a repeat find earns another Rare Find Stardust bonus, and a miss can earn Stardust.',contradictions:['Every Legendary capture earns Stardust.','A repeat find earns another Rare Find Stardust bonus.','A miss can earn Stardust.']},
-              {id:'charters',paragraph:1,required:['Planetside capture is separate and never banks the Charter’s bioscan milestone','that milestone, conquest, and breeding goals stay hidden and unavailable until their writers exist'],requiredControls:['Planetside capture is separate and never banks the Charter’s bioscan milestone','that milestone, conquest, and breeding goals stay hidden and unavailable until their writers exist'],forbidden:['Capture banks the Charter bioscan milestone','Capture completes the bioscan Charter goal'],stale:'Capture banks the Charter bioscan milestone and completes the bioscan Charter goal.',contradictions:['Capture banks the Charter bioscan milestone.','Capture completes the bioscan Charter goal.']},
-              {id:'ascent',paragraph:2,required:['Planetside capture never banks the Charter’s separate bioscan milestone','that writer, conquest, and breeding milestones remain unavailable'],requiredControls:['Planetside capture never banks the Charter’s separate bioscan milestone','that writer, conquest, and breeding milestones remain unavailable'],forbidden:['Capture banks the Charter bioscan milestone','Capture advances Ascent bioscan'],stale:'Capture banks the Charter bioscan milestone and advances Ascent bioscan.',contradictions:['Capture banks the Charter bioscan milestone.','Capture advances Ascent bioscan.']},
-              {id:'kingdoms',required:['Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Browsing and non-fauna details remain read-only','successful first Planetside capture can add one page','Tame also adds an owned fauna creature','Scavenge and Sample add specimen lots','Later-world or later-cycle successes add another creature or lot without duplicating the page','real fauna detail alone exposes the narrow Feed action','breeding, renaming, scouting, dueling, missions, and every broader husbandry outcome remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Every Compendium detail offers Feed'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Every Compendium detail offers Feed.']},
-              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','Back and Close both remain available around feeding','Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row','Tame hit adds one owned fauna creature','Scavenge or Sample adds one specimen lot and never a living companion','Only a real fauna detail offers Feed','one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot','Identical same-species twins remain separate exact instances','Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Assigned companions can still be fed'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Assigned companions can still be fed.']},
-              {id:'feeding',paragraph:1,required:['real fauna Compendium detail','Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot','Use 1','Same-species twins remain separate exact instances','Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why','Meals by 1, capped at 200','removes 1 flora from that exact lot','final unit empties that exact lot','one immutable receipt and one compare-and-swap save transaction','no retry and no optimistic inventory or Meals change','refusal, stale result, or failed write uses and publishes nothing','requires reload and cannot feed twice','trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status','one deterministic synthesized acknowledgement after that status appears','Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent','Back and Close remain available','tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable'],requiredControls:['Meals by 1, capped at 200','removes 1 flora from that exact lot','final unit empties that exact lot','one immutable receipt and one compare-and-swap save transaction','no retry and no optimistic inventory or Meals change','requires reload and cannot feed twice'],forbidden:['Assigned companions can still be fed','The meal automatically retries after a stale result','Stats are now increased by feeding','Meals can rise above 200','Every Compendium detail offers Feed'],stale:'One ordinary save updates the selected meal.',contradictions:['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.','Meals can rise above 200.','Every Compendium detail offers Feed.']},
-              {id:'research',paragraph:2,required:['Engineering & Shipyard combines the capability-derived ship preview','Research Bench lists exactly six canonical rows','Deep Scanners is the only current purchase','adds a bounded Mineral veins row to eligible orbital Survey cards','Orbit shows only the ordered ordinary deposits plus a separately marked biome vein','cosmic and exceptional veins, grades, reserves and progress, and mining remain grounded','other five','visible but disabled','Fabricator groups all 62 fixed recipes','exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable','Only one Engineering action can be pending','receipt-bearing transaction commits'],requiredControls:['exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable'],forbidden:['current Survey card does not yet render those orbital rows','All six research rows can be purchased','Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available','Orbit now shows cosmic and exceptional veins'],stale:'The Shipyard is read-only in this development slice, and fabrication, Research Bench purchases, and upgrades remain unavailable.',contradictions:['The current Survey card does not yet render those orbital rows.','All six research rows can be purchased.','Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.','Orbit now shows cosmic and exceptional veins.']},
-              {id:'crafting',paragraph:2,required:['Inventory is a separate board','stable item instance','Equip, Unequip, Salvage, and pending-reward claim','Engineering & Shipyard → Fabricator','lists all 62 fixed recipes','can settle only rows whose output has a connected effect','Outputs with dormant effects','fully exceptional slotted crafting','authored affixes/drawbacks','item upgrades, sockets, and vendors remain unavailable'],requiredControls:['can settle only rows whose output has a connected effect','item upgrades, sockets, and vendors remain unavailable'],forbidden:['Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'Inventory exposes only the imported Equip, Unequip, Salvage, and reward-claim actions; Fabricator recipes are not available in this slice.',contradictions:['Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
-              {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
+              {id:'charters',paragraph:1,required:[...bioscanRequired,...breedCharterRequired],requiredControls:[...bioscanRequired,...breedCharterRequired],forbidden:[...bioscanForbidden,...breedCharterForbidden],stale:'Planetside capture is separate and never banks the Charter’s bioscan milestone.',contradictions:[...bioscanContradictions,...breedCharterContradictions]},
+              {id:'ascent',paragraph:2,required:[...bioscanRequired,...breedCharterRequired],requiredControls:[...bioscanRequired,...breedCharterRequired],forbidden:[...bioscanForbidden,...breedCharterForbidden],stale:'Planetside capture never banks the Charter’s separate bioscan milestone.',contradictions:[...bioscanContradictions,...breedCharterContradictions]},
+              {id:'kingdoms',required:['Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Browsing and non-fauna details remain read-only','successful first Planetside capture can add one page','Tame also adds an owned fauna creature','Scavenge and Sample add specimen lots','Later-world or later-cycle successes add another creature or lot without duplicating the page','real fauna detail alone exposes the narrow Feed, nonlethal Breed, and exact-instance Rename actions','scouting, dueling, missions, and every broader husbandry outcome remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','real fauna detail alone exposes the narrow Feed, nonlethal Breed, and exact-instance Rename actions'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Every Compendium detail offers Feed','Breeding remains unavailable','Renaming remains unavailable'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Every Compendium detail offers Feed.','Breeding remains unavailable.','Renaming remains unavailable.']},
+              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','Back and Close both remain available around feeding, breeding, and renaming','Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row','Tame hit adds one owned fauna creature','Scavenge or Sample adds one specimen lot and never a living companion','Only a real fauna detail offers Feed','one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot','Identical same-species twins remain separate exact instances','Rename chooses one exact owned companion of this species from bounded 24-row pages','assigned, recovering, and injured companions may be renamed because the action changes identity only','exhibition entries and protected or non-owned rows refuse','caps the result at 24 characters','Cleaned-empty or unchanged names consume no receipt or write','commit changes only that exact companion’s nickname','keeps the old name visible while pending','one immutable receipt and one compare-and-swap with no retry or optimistic publication','requires reload, and cannot rename twice','Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','Rename chooses one exact owned companion of this species from bounded 24-row pages','commit changes only that exact companion’s nickname'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Assigned companions can still be fed','Exhibition companions may still be renamed','Rename changes the selected companion genome','unchanged name consumes one receipt','Rename automatically retries','stale rename changes the nickname'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Assigned companions can still be fed.','Exhibition companions may still be renamed.','Rename changes the selected companion genome.','An unchanged name consumes one receipt.','Rename automatically retries.','A stale rename changes the nickname.']},
+              {id:'feeding',paragraph:1,required:['real fauna Compendium detail','Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot','Use 1','Same-species twins remain separate exact instances','Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why','Meals by 1, capped at 200','removes 1 flora from that exact lot','final unit empties that exact lot','one immutable receipt and one compare-and-swap save transaction','no retry and no optimistic inventory or Meals change','refusal, stale result, or failed write uses and publishes nothing','requires reload and cannot feed twice','trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status','one deterministic synthesized acknowledgement after that status appears','Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent','Back and Close remain available','tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable','Rename is also separate and changes only one selected exact companion’s nickname'],requiredControls:['Meals by 1, capped at 200','one immutable receipt and one compare-and-swap save transaction','Rename is also separate and changes only one selected exact companion’s nickname'],forbidden:['Assigned companions can still be fed','The meal automatically retries after a stale result','Stats are now increased by feeding','Meals can rise above 200','Every Compendium detail offers Feed','Breeding remains unavailable','Renaming remains unavailable'],stale:'One ordinary save updates the selected meal.',contradictions:['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.','Meals can rise above 200.','Every Compendium detail offers Feed.','Breeding remains unavailable.','Renaming remains unavailable.']},
+              {id:'breeding',required:['real fauna Compendium detail','one exact owned companion of that detail’s species as the primary parent','one different exact owned fauna companion as the mate','Identical same-species twins remain separate exact instances','at most 24 candidates per page','paging keeps every eligible owned companion reachable','Exhibition creatures, mission-assigned companions, companions already in Recovery, and companions at 30% hurt or more stay disabled and explain why','same exact companion cannot occupy both parent roles','shown success chance comes from both parents’ established rarity tiers plus a bounded bonus from lifetime-earned Stardust','raw genetic values stay hidden','Both parents remain yours','success creates one deterministic child with its exact lineage','8 active-play minutes of Recovery','failure creates no child','2 active-play minutes of Recovery','Recovery blocks Breed, combat, and dispatch','Closing the game or moving the wall clock does not advance it','proves both possible complete save successors before its one outcome draw','one receipt-bearing compare-and-swap with no retry and no optimistic child or Recovery','refusal, stale result, or failed write draws nothing and adds nothing','requires reload and cannot breed twice','Back and Close remain available around the action','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit','Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable'],requiredControls:['Both parents remain yours','success creates one deterministic child with its exact lineage','proves both possible complete save successors before its one outcome draw','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit'],forbidden:['Both parents are consumed','Recovery advances while the game is closed','same exact companion can occupy both parent roles','failed attempt creates one child','Breeding automatically retries','A failed pairing also banks the Charter hybrid bloodline goal'],stale:'Breeding remains unavailable in this development slice.',contradictions:['Both parents are consumed.','Recovery advances while the game is closed.','The same exact companion can occupy both parent roles.','A failed attempt creates one child.','Breeding automatically retries.','A failed pairing also banks the Charter hybrid bloodline goal.']},
+              {id:'research',paragraph:2,required:['Engineering & Shipyard combines the capability-derived ship preview','Research Bench lists exactly six canonical rows','Deep Scanners is the only current purchase','adds a bounded Mineral veins row to eligible orbital Survey cards','Orbit shows only the ordered ordinary deposits plus a separately marked biome vein','cosmic and exceptional veins, grades, reserves and progress, and mining remain grounded','other five','visible but disabled','Fabricator groups all 62 fixed recipes','exposes an action only when its output has a connected gameplay effect','When every direct material unit for a slotted craft comes from exceptional stock','exact item receives one deterministic Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','bound to its recipe and receipt','mixed stock remains an ordinary craft','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable','Only one Engineering action can be pending','receipt-bearing transaction commits'],requiredControls:['exposes an action only when its output has a connected gameplay effect','When every direct material unit for a slotted craft comes from exceptional stock','exact item receives one deterministic Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','bound to its recipe and receipt','mixed stock remains an ordinary craft','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable'],forbidden:['current Survey card does not yet render those orbital rows','All six research rows can be purchased','Mixed stock also receives a Pureforged modifier','The Pureforged modifier rerolls after reload','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available','Orbit now shows cosmic and exceptional veins'],stale:'The Shipyard is read-only in this development slice, and fabrication, Research Bench purchases, and upgrades remain unavailable.',contradictions:['The current Survey card does not yet render those orbital rows.','All six research rows can be purchased.','Mixed stock also receives a Pureforged modifier.','The Pureforged modifier rerolls after reload.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.','Orbit now shows cosmic and exceptional veins.']},
+              {id:'crafting',paragraph:2,required:['Inventory is a separate board','stable item instance','Equip, Unequip, Salvage, and pending-reward claim','Engineering & Shipyard → Fabricator','lists all 62 fixed recipes','can settle only rows whose output has a connected effect','A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','as part of that exact item through comparison and reload','a mixed-material craft does not','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable'],requiredControls:['can settle only rows whose output has a connected effect','A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','as part of that exact item through comparison and reload','a mixed-material craft does not','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable'],forbidden:['Mixed stock also receives a Pureforged modifier','The Pureforged modifier rerolls after reload','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'Inventory exposes only the imported Equip, Unequip, Salvage, and reward-claim actions; Fabricator recipes are not available in this slice.',contradictions:['Mixed stock also receives a Pureforged modifier.','The Pureforged modifier rerolls after reload.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
+             {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
+              {id:'settings',name:'settings-audio',paragraph:0,required:audioSettingsRequired,requiredControls:audioSettingsRequired,forbidden:audioGuideForbidden,stale:'Creature voices and master Sound own the same generic world signal.',contradictions:audioGuideContradictions},
               {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, or if its destination is no longer authorized by your saved reach, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
             ];
             const check=(article,spec)=>{const text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),lower=text.toLowerCase(),missing=spec.required.filter((part)=>!text.includes(part)),stale=spec.forbidden.filter((part)=>lower.includes(part.toLowerCase()));return {ok:!!article&&missing.length===0&&stale.length===0,missing,stale,text};};
@@ -10294,7 +10370,7 @@ async function main() {
                   finally { marker.remove(); }
                   contradictionControls.push({copy,result,rejected:result.ok===false&&result.stale.length>0});}
                 const restored=(article.textContent||'')===priorText&&target.innerHTML===prior&&check(article,spec).ok;
-                rows.push({id:spec.id,current,injected,requiredControls,contradictory,contradictionControls,
+                rows.push({id:spec.name||spec.id,current,injected,requiredControls,contradictory,contradictionControls,
                   controlRejected:injected.ok===false,requiredControlsRejected:requiredControls.every((row)=>row.rejected),
                   contradictionRejected:(!spec.contradiction||contradictory?.ok===false)&&contradictionControls.every((row)=>row.rejected),restored});
               }
@@ -10337,14 +10413,19 @@ async function main() {
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
-          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=64;
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=73;
           const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
             worldCode=bulletNodes.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
             atlasRoute=bulletNodes.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
-            capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
-            meal=bulletNodes.find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||'')),
+           capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
+            frontierAudio=bulletNodes.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
+            creatureListen=bulletNodes.find((item)=>/CREATURE CALLS ARE YOURS TO REQUEST/.test(item.textContent||'')),
+            biosphereListen=bulletNodes.find((item)=>/HEAR A LIVING WORLD WITHOUT SPOILERS/.test(item.textContent||'')),
+           meal=bulletNodes.find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||'')),
+            breed=bulletNodes.find((item)=>/TWO PARENTS, ONE DURABLE OUTCOME/.test(item.textContent||'')),
+            rename=bulletNodes.find((item)=>/ONE COMPANION, ONE DURABLE NAME/.test(item.textContent||'')),
             training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
             lesson=bulletNodes.find((item)=>/A LESSON OWNS ITS ESCAPE KEY/.test(item.textContent||'')),
             art=bulletNodes.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
@@ -10354,9 +10435,9 @@ async function main() {
             shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
             hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
             headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
-            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),captureHeading=headingFor(capture),mealHeading=headingFor(meal),trainingHeading=headingFor(training),lessonHeading=headingFor(lesson),artHeading=headingFor(art),
+            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),captureHeading=headingFor(capture),frontierAudioHeading=headingFor(frontierAudio),creatureListenHeading=headingFor(creatureListen),biosphereListenHeading=headingFor(biosphereListen),mealHeading=headingFor(meal),breedHeading=headingFor(breed),renameHeading=headingFor(rename),trainingHeading=headingFor(training),lessonHeading=headingFor(lesson),artHeading=headingFor(art),
             shipyardHeading=headingFor(shipyard),hdSurfaceHeading=headingFor(hdSurface),
-            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',mealText=meal?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',
+            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',frontierAudioText=frontierAudio?.textContent||'',creatureListenText=creatureListen?.textContent||'',biosphereListenText=biosphereListen?.textContent||'',mealText=meal?.textContent||'',breedText=breed?.textContent||'',renameText=rename?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',
             shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
             charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
             ingressPlacement=!!worldCode&&!!atlasRoute&&worldCode!==atlasRoute&&worldCodeHeading==='Gameplay'&&atlasRouteHeading==='Gameplay',
@@ -10368,12 +10449,16 @@ async function main() {
               &&atlasRouteText.includes('Stale, forged, or incomplete rows remain visible but disabled')
               &&atlasRouteText.includes('a proven planet entry returns to Survey and Land remains explicit')
               &&!atlasRouteText.includes('through list-based deterministic travel'),
+            captureBioscanContradiction=/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(captureText)
+              ||/(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery|tick)/i.test(captureText)
+              ||/\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery|tick)/i.test(captureText),
+            discoverLifeAvailabilityContradiction=/(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)/i.test(captureText),
             captureContradiction=/(?:preview row|Planetside preview)[^.!?]{0,80}(?:is|as) (?:the )?(?:chosen )?(?:capture )?target/i.test(captureText)
               ||/miss[^.!?]{0,80}(?:spends? no|does not spend) (?:Biosphere )?Yield/i.test(captureText)
               ||unnegated(captureText,/(?:Biosphere Yield|pool)[^.!?]{0,100}(?:recovers?|advances?)[^.!?]{0,64}(?:closed|closing|wall clock|offline)/i)
               ||/(?:repeat|later-world|later-cycle)[^.!?]{0,120}(?:adds?|awards?|earns?) (?:another|a second) (?:Compendium page|first-find reward|Rare Find Stardust)/i.test(captureText)
-              ||unnegated(captureText,/Capture[^.!?]{0,80}banks?[^.!?]{0,48}(?:Charter’s|Charter's|Charter) (?:separate )?bioscan/i)
-              ||/(?:shown odds|capture chance)[^.!?]{0,96}(?:ignore|exclude|do not include)[^.!?]{0,64}(?:equipped )?(?:capture-chance )?gear/i.test(captureText),
+              ||/(?:shown odds|capture chance)[^.!?]{0,96}(?:ignore|exclude|do not include)[^.!?]{0,64}(?:equipped )?(?:capture-chance )?gear/i.test(captureText)
+              ||captureBioscanContradiction,
             captureContract=captureHeading==='Gameplay'
               &&captureText.includes('Tame chooses uniformly from every eligible fauna in the full biosphere')
               &&captureText.includes('Scavenge from eligible flora and fungi')
@@ -10391,10 +10476,33 @@ async function main() {
               &&captureText.includes('later-world or later-cycle repeat adds another creature or lot without another page or first-find reward')
               &&captureText.includes('a miss adds none of them')
               &&captureText.includes('Scavenge and Sample never create living companions')
-              &&captureText.includes('Capture never banks the Charter’s separate bioscan milestone')
-              &&captureText.includes('Narrow feeding is available from a real fauna Compendium detail')
-              &&captureText.includes('breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
-              &&!captureContradiction,
+              &&captureText.includes('first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction')
+              &&captureText.includes('A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing')
+              &&captureText.includes('v2’s current replacement for v1.8.9’s separate Discover Life action')
+              &&captureText.includes('Survey Records and accepted or weekly bioscan Charters remain unavailable')
+              &&captureText.includes('Narrow feeding, nonlethal companion Breed, and exact-instance companion Rename are available from a real fauna Compendium detail')
+              &&captureText.includes('Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
+              &&!captureContradiction&&!discoverLifeAvailabilityContradiction,
+            audioContradiction=unnegated(text,/(?:Compendium list|browsing|filtering|focus|navigation|returning)[^.!?]{0,96}auto[- ]?plays?[^.!?]{0,48}(?:call|voice|expression)/i)
+              ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:reveals?|names?)[^.!?]{0,48}(?:hidden )?species/i)
+              ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:spends?|costs?)[^.!?]{0,32}Yield/i)
+              ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:grants?|awards?)[^.!?]{0,48}(?:discovery|reward)/i)
+              ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:writes?|changes?)[^.!?]{0,32}(?:the )?save/i)
+              ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i),
+            audioContract=frontierAudioHeading==='New Features & Systems'
+              &&creatureListenHeading==='Gameplay'&&biosphereListenHeading==='Gameplay'
+              &&frontierAudioText.includes('one deterministic runtime across a verified durable wild-fauna Tame, one exact durable nonconverging Feed commit, and an explorer-requested call from one exact owned-fauna detail')
+              &&frontierAudioText.includes('Each waits for its own current visible accessible counterpart')
+              &&frontierAudioText.includes('browsing, filtering, focus, navigation, misses, refusals, stale or converging results, repeats, reloads, hidden play, route or counterpart loss, and disabled Sound or Creature voices remain silent without retry or replay')
+              &&frontierAudioText.includes('A separate explicit Planetside biosphere Listen may play one generic distant-ecology signal only while that exact inhabited world’s visible biosphere lead agrees')
+              &&frontierAudioText.includes('it reveals no species, spends no Yield, grants nothing, and writes no save')
+              &&frontierAudioText.includes('Authored ambience, music, other creature actions, and combat sound remain future work')
+              &&creatureListenText.includes('Open a real owned-fauna Compendium detail and choose Listen on an exact companion to hear its stable deterministic call')
+              &&creatureListenText.includes('Browsing, filtering, focusing, and returning through the Compendium never auto-play it')
+              &&biosphereListenText.includes('An inhabited Planetside now offers Listen to biosphere')
+              &&biosphereListenText.includes('only after that exact world’s biosphere lead is visible')
+              &&biosphereListenText.includes('never names a hidden species, spends Yield, grants a discovery or reward, or changes the save')
+              &&!audioContradiction,
             mealContradiction=/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(mealText)
               ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(mealText)
               ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(mealText)
@@ -10417,8 +10525,40 @@ async function main() {
               &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
               &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
               &&/refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(mealText)
-              &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable')
+              &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable')
+              &&mealText.includes('Rename is identity-only and changes one selected exact nickname')
               &&!mealContradiction,
+            breedContradiction=/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries/i.test(breedText)
+              ||/(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(breedText),
+            breedContract=breedHeading==='Gameplay'
+              &&breedText.includes('Breed is now available from a real fauna Compendium detail')
+              &&breedText.includes('one exact owned companion of that detail’s species and one distinct exact owned fauna mate')
+              &&breedText.includes('same-species twins remain separate')
+              &&breedText.includes('bounded 24-row pages')
+              &&breedText.includes('Parents are never consumed')
+              &&breedText.includes('Success creates one deterministic child and gives both parents 8 active-play minutes of Recovery')
+              &&breedText.includes('failure creates no child and gives both 2')
+              &&breedText.includes('Recovery blocks Breed, combat, and dispatch')
+              &&breedText.includes('never advances from closed-game time or a changed wall clock')
+              &&breedText.includes('Both complete save outcomes—including exact Charter progress—are proved before the one draw')
+              &&breedText.includes('one immutable receipt and one compare-and-swap with no retry or optimistic child')
+              &&breedText.includes('A successful offspring banks Chapter 3’s Breed a hybrid bloodline goal in that same save')
+              &&breedText.includes('a failed pairing, refusal, stale result, or failed write banks nothing and grants no Charter credit')
+              &&breedText.includes('unconfirmable durable result locks read-only and reloads so it cannot breed twice')
+              &&!breedContradiction,
+            renameContradiction=/Exhibition companions may still be renamed|Rename changes the selected companion genome|unchanged name consumes one receipt|Rename automatically retries|stale rename changes the nickname/i.test(renameText),
+            renameContract=renameHeading==='Gameplay'
+              &&renameText.includes('Rename is now available from a real fauna Compendium detail')
+              &&renameText.includes('one exact owned companion from bounded 24-row pages')
+              &&renameText.includes('same-species twins remain separate by stable instance identity')
+              &&renameText.includes('Assigned, recovering, and injured companions may be renamed because this action changes identity only')
+              &&renameText.includes('exhibition, non-owned, protected, and revision-exhausted rows refuse')
+              &&renameText.includes('cleaned-empty or unchanged name consumes no receipt or write')
+              &&renameText.includes('changes only that exact companion’s nickname')
+              &&renameText.includes('never its species, genome, traits, lineage, assignment, condition, bond, catalogue alias, or another twin')
+              &&renameText.includes('One immutable receipt and one exact-five compare-and-swap settle without RNG, retry, or optimistic publication')
+              &&renameText.includes('converge read-only through reload so the name cannot apply twice')
+              &&!renameContradiction,
             lessonContradiction=/(?:wrong-world detour|Escape)[^.!?]{0,120}(?:abandons? Sol|abandons? (?:the )?lesson|keeps? the detour open)/i.test(lessonText),
             lessonContract=lessonHeading==='Bug Fixes'
               &&lessonText.includes('If Survey is rebuilt while a lesson owns it, the new Land and Atlas actions inherit the same keyboard, focus, and pointer scope before they can answer')
@@ -10477,8 +10617,9 @@ async function main() {
               ||/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i.test(shipyardText)
               ||/(?:biosphere discovery)[^.!?]{0,48}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
               ||unnegated(shipyardText,/(?:reward|cost|Charter tick|optimistic panel change)[^.!?]{0,80}publishes? before[^.!?]{0,48}(?:transaction )?commit/i)
-              ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
-              ||/authored affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+              ||/(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)/i.test(shipyardText)
+              ||/Pureforged[^.!?]{0,80}(?:rerolls?|changes?)[^.!?]{0,64}(?:reload|reopen)/i.test(shipyardText)
+              ||/authored (?:natural )?affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
               ||/(?:item )?upgrades?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
               ||/sockets?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
               ||/vendors?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText),
@@ -10491,7 +10632,11 @@ async function main() {
               &&shipyardText.includes('cosmic and exceptional veins, grades, reserves, progress, and mining remain grounded')
               &&shipyardText.includes('Fabrication enables only outputs with connected effects')
               &&shipyardText.includes('exact cost, prerequisite, revision, and capacity headroom')
-              &&shipyardText.includes('Fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
+              &&shipyardText.includes('A slotted craft paid entirely from exceptional direct materials now receives one deterministic Pureforged modifier')
+              &&shipyardText.includes('mining yield, rich-strike chance, or capture-contact points')
+              &&shipyardText.includes('bound to the exact recipe, receipt, and item')
+              &&shipyardText.includes('mixed stock remains ordinary')
+              &&shipyardText.includes('Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
               &&shipyardText.includes('Built permanent systems change the real ship and star reach')
               &&shipyardText.includes('Remnant skim damage is previewed before it can spend HP')
               &&shipyardText.includes('Engineering can spend preserved Stardust but does not earn it')
@@ -10516,12 +10661,13 @@ async function main() {
           const overclaim=/all six Research rows[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:bought|purchased|playable|available|live)/i.test(text)
             ||/all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:actionable|playable|available|live)/i.test(text)
             ||/(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
-            ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
-            ||/authored affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)/i.test(text)
+            ||/Pureforged[^.!?]{0,80}(?:rerolls?|changes?)[^.!?]{0,64}(?:reload|reopen)/i.test(text)
+            ||/authored (?:natural )?affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-            ||/(?:biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/(?:biosphere discovery|Discover Life|Field Scouts?|duels?|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
             ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
             ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
@@ -10530,12 +10676,13 @@ async function main() {
             ||/Meals can rise above 200/i.test(text)
             ||/Every Compendium detail offers Feed/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
-            ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
-          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!captureContradiction&&!mealContradiction&&!lessonContradiction&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!publishingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
+            ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text)
+            ||breedContradiction||renameContradiction||audioContradiction;
+          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!captureContradiction&&!discoverLifeAvailabilityContradiction&&!audioContradiction&&!mealContradiction&&!breedContradiction&&!renameContradiction&&!lessonContradiction&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!publishingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
             &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===expectedBulletCount&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
-            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&mealContract&&lessonContract&&trainingContract&&artContract
+            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&audioContract&&mealContract&&breedContract&&renameContract&&lessonContract&&trainingContract&&artContract
             &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract&&publishingContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
@@ -10547,13 +10694,13 @@ async function main() {
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
             identity,honest,overclaim,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
             charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
-            worldCodeContract,atlasRouteContract,captureHeading,captureContract,captureContradiction,mealHeading,mealContract,mealContradiction,lessonHeading,lessonContract,lessonContradiction,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
+            worldCodeContract,atlasRouteContract,captureHeading,captureContract,captureContradiction,captureBioscanContradiction,discoverLifeAvailabilityContradiction,frontierAudioHeading,creatureListenHeading,biosphereListenHeading,audioContract,audioContradiction,mealHeading,mealContract,mealContradiction,breedHeading,breedContract,breedContradiction,renameHeading,renameContract,renameContradiction,lessonHeading,lessonContract,lessonContradiction,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
             workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,hdSurfaceHeading,hdSurfaceContract,
             publishingHeading,publishingContract,publishingContradiction,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 64-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits, narrow real-fauna Compendium Feed, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 73-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -10565,8 +10712,13 @@ async function main() {
               recovery=items.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
               worldCode=items.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
               atlasRoute=items.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
-              capture=items.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
-              meal=items.find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||'')),
+             capture=items.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
+              frontierAudio=items.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
+              creatureListen=items.find((item)=>/CREATURE CALLS ARE YOURS TO REQUEST/.test(item.textContent||'')),
+              biosphereListen=items.find((item)=>/HEAR A LIVING WORLD WITHOUT SPOILERS/.test(item.textContent||'')),
+             meal=items.find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||'')),
+              breed=items.find((item)=>/TWO PARENTS, ONE DURABLE OUTCOME/.test(item.textContent||'')),
+              rename=items.find((item)=>/ONE COMPANION, ONE DURABLE NAME/.test(item.textContent||'')),
               training=items.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
               lesson=items.find((item)=>/A LESSON OWNS ITS ESCAPE KEY/.test(item.textContent||'')),
               art=items.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
@@ -10576,26 +10728,26 @@ async function main() {
               shipyard=items.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
               hdSurface=items.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
               publishing=items.find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||'')),
-              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',mealText=meal?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
+              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',frontierAudioText=frontierAudio?.textContent||'',creatureListenText=creatureListen?.textContent||'',biosphereListenText=biosphereListen?.textContent||'',mealText=meal?.textContent||'',breedText=breed?.textContent||'',renameText=rename?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
               shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',publishingText=publishing?.textContent||'',
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
               artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
               coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
-            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],mealMissing=null,mealContradictions=[],lessonStale=null,lessonContradictory=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,publishingStale=null,publishingContradictory=null,publishingLiveProductionContradictory=null,publishingPassiveContradictory=null,publishingVariantContradictions=[],publishingCrossRowContradictory=null,publishingRestored=null,artContradictory=null,authority=null,error=null,mealMissingChanged=false,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,lessonStaleChanged=false,lessonContradictionChanged=false,hdSurfaceChanged=false,publishingChanged=false,publishingContradictionChanged=false,publishingLiveProductionChanged=false,publishingPassiveChanged=false,publishingVariantsChanged=true,publishingCrossRowChanged=false;
+            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],bioscanContradictions=[],discoverLifeAvailabilityContradictory=null,audioMissingControls=[],audioContradictions=[],mealMissing=null,mealContradictions=[],breedMissing=null,breedCharterMissing=null,breedContradictions=[],renameMissing=null,renameContradictions=[],lessonStale=null,lessonContradictory=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardExceptionalMissing=null,shipyardEffectSetMissing=null,shipyardBindingMissing=null,shipyardMixedMissing=null,shipyardAdvancedMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,publishingStale=null,publishingContradictory=null,publishingLiveProductionContradictory=null,publishingPassiveContradictory=null,publishingVariantContradictions=[],publishingCrossRowContradictory=null,publishingRestored=null,artContradictory=null,authority=null,error=null,discoverLifeAvailabilityChanged=false,mealMissingChanged=false,breedMissingChanged=false,breedCharterMissingChanged=false,renameMissingChanged=false,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,lessonStaleChanged=false,lessonContradictionChanged=false,hdSurfaceChanged=false,publishingChanged=false,publishingContradictionChanged=false,publishingLiveProductionChanged=false,publishingPassiveChanged=false,publishingVariantsChanged=true,publishingCrossRowChanged=false;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!meal||!lesson||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!publishing||!recoveryParent)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!frontierAudio||!creatureListen||!biosphereListen||!meal||!breed||!rename||!lesson||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!publishing||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
               title.textContent=titleText.replace('v2.0','v2x0');identity=${developmentDetailCheck};title.textContent=titleText;
-              for(const copy of ['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Exploration audio is now live.','Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.']){
+              for(const copy of ['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Fully exceptional direct-material gear crafting is now playable with a deterministic Pureforged modifier.','Exploration audio is now live.','Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.','Breeding is now playable.','Companion Rename is now playable.']){
                 claim.textContent=claimText+' '+copy;truthfulFeatureClaims.push({copy,result:${developmentDetailCheck}});
               }
               for(const copy of ['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
-                'Disconnected Fabricator outputs are now playable.','Fully-exceptional slotted craft is now playable.',
+                'Disconnected Fabricator outputs are now playable.','Mixed stock also receives a Pureforged modifier.','Pureforged modifiers reroll after reload.',
                 'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Item upgrades are now live.',
                 'Sockets are now available.','Vendors are now live.','Discover Life is now playable.',
-                'Breeding is now playable.','Creature combat is now playable.','Feeding is now playable.']){
+                'Creature combat is now playable.','Feeding is now playable.']){
                 claim.textContent=claimText+' '+copy;unavailableFeatureClaims.push({copy,result:${developmentDetailCheck}});
               }claim.textContent=claimText;
               panelBoundary.textContent=panelBoundaryText.replace('exactly one 44-pixel top-right Close action','Close-action outcome removed');
@@ -10617,7 +10769,10 @@ async function main() {
                 'every attempt spends 1 on a hit or miss',
                 'pool fully recovers at the next 20-minute active-play cycle, never from closing the game or moving the wall clock',
                 'later-world or later-cycle repeat adds another creature or lot without another page or first-find reward',
-                'Capture never banks the Charter’s separate bioscan milestone',
+                'first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction',
+                'A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing',
+                'v2’s current replacement for v1.8.9’s separate Discover Life action',
+                'Survey Records and accepted or weekly bioscan Charters remain unavailable',
               ]){
                 const changed=captureText.replace(part,'isolated capture limit omitted');
                 capture.textContent=changed;captureLimitControls.push({part,changed:changed!==captureText,result:${developmentDetailCheck}});
@@ -10628,13 +10783,39 @@ async function main() {
                 'A miss spends no Biosphere Yield.',
                 'Biosphere Yield recovers while the game is closed.',
                 'A later-world repeat adds a second Compendium page and first-find reward.',
-                'Capture banks the Charter’s separate bioscan milestone.',
                 'The shown odds ignore equipped capture-chance gear.',
               ]){
                 capture.textContent=captureText+' '+copy;captureContradictions.push({copy,result:${developmentDetailCheck}});
                 capture.textContent=captureText;
               }
-              meal.textContent=mealText.replace('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora','meal authority removed');
+              for(const copy of [
+                'Capture banks the Charter’s bioscan milestone.',
+                'A miss banks one Chapter 2 life-discovery tick.',
+                'A successful capture on Sol banks one Charter bioscan tick.',
+                'A later success on the same world banks another life-discovery tick.',
+                'A stale tab still banks one life-discovery tick.',
+                'A failed write advances the Charter bioscan.',
+              ]){
+                capture.textContent=captureText+' '+copy;bioscanContradictions.push({copy,result:${developmentDetailCheck}});
+                capture.textContent=captureText;
+              }
+              capture.textContent=captureText+' The separate Discover Life action is now available.';
+             discoverLifeAvailabilityChanged=capture.textContent!==captureText;
+             discoverLifeAvailabilityContradictory=${developmentDetailCheck};capture.textContent=captureText;
+              for(const [node,prior,part] of [[frontierAudio,frontierAudioText,'an explorer-requested call from one exact owned-fauna detail'],
+                [creatureListen,creatureListenText,'Browsing, filtering, focusing, and returning through the Compendium never auto-play it'],
+                [biosphereListen,biosphereListenText,'only after that exact world’s biosphere lead is visible'],
+                [biosphereListen,biosphereListenText,'never names a hidden species, spends Yield, grants a discovery or reward, or changes the save']]){
+                const mutated=prior.replace(part,'audio ownership boundary omitted');node.textContent=mutated;
+                audioMissingControls.push({part,changed:mutated!==prior,result:${developmentDetailCheck}});node.textContent=prior;
+              }
+              for(const copy of ['Compendium filtering auto-plays the selected creature call.',
+                'Listen to biosphere reveals a hidden species and spends 1 Yield.',
+                'The biosphere signal grants a discovery reward and changes the save.',
+                'The ecology pulse starts before any visible inhabited-world counterpart.']){
+                frontierAudio.textContent=frontierAudioText+' '+copy;audioContradictions.push({copy,result:${developmentDetailCheck}});frontierAudio.textContent=frontierAudioText;
+              }
+             meal.textContent=mealText.replace('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora','meal authority removed');
               mealMissingChanged=meal.textContent!==mealText;mealMissing=${developmentDetailCheck};meal.textContent=mealText;
               for(const copy of [
                 'Assigned companions can still be fed.',
@@ -10646,6 +10827,33 @@ async function main() {
               ]){
                 meal.textContent=mealText+' '+copy;mealContradictions.push({copy,result:${developmentDetailCheck}});
                 meal.textContent=mealText;
+              }
+              breed.textContent=breedText.replace('Both complete save outcomes—including exact Charter progress—are proved before the one draw','breed successor proof omitted');
+             breedMissingChanged=breed.textContent!==breedText;breedMissing=${developmentDetailCheck};breed.textContent=breedText;
+              breed.textContent=breedText.replace('A successful offspring banks Chapter 3’s Breed a hybrid bloodline goal in that same save','Breed Charter co-delivery omitted');
+              breedCharterMissingChanged=breed.textContent!==breedText;breedCharterMissing=${developmentDetailCheck};breed.textContent=breedText;
+              for(const copy of [
+                'Both parents are consumed.',
+                'Recovery advances while the game is closed.',
+                'The same exact companion can occupy both parent roles.',
+               'A failed attempt creates one child.',
+               'Breeding automatically retries.',
+                'A failed pairing also banks the Charter hybrid bloodline goal.',
+              ]){
+                breed.textContent=breedText+' '+copy;breedContradictions.push({copy,result:${developmentDetailCheck}});
+                breed.textContent=breedText;
+              }
+              rename.textContent=renameText.replace('changes only that exact companion’s nickname','rename identity boundary omitted');
+              renameMissingChanged=rename.textContent!==renameText;renameMissing=${developmentDetailCheck};rename.textContent=renameText;
+              for(const copy of [
+                'Exhibition companions may still be renamed.',
+                'Rename changes the selected companion genome.',
+                'An unchanged name consumes one receipt.',
+                'Rename automatically retries.',
+                'A stale rename changes the nickname.',
+              ]){
+                rename.textContent=renameText+' '+copy;renameContradictions.push({copy,result:${developmentDetailCheck}});
+                rename.textContent=renameText;
               }
               lesson.textContent=lessonText.replace('A wrong-world detour keeps only its real Close available, and Escape dismisses it without abandoning Sol or the lesson','wrong-world Escape outcome omitted');lessonStaleChanged=lesson.textContent!==lessonText;
               lessonStale=${developmentDetailCheck};lesson.textContent=lessonText;
@@ -10687,14 +10895,28 @@ async function main() {
               shipyard.textContent=shipyardText.replace('durable ownership now adds one Mineral veins row to eligible lifeless non-Earth orbital Survey cards',
                 'orbital Survey consumer omitted');
               shipyardSurveyMissing=${developmentDetailCheck};shipyard.textContent=shipyardText;
+              shipyard.textContent=shipyardText.replace('A slotted craft paid entirely from exceptional direct materials now receives one deterministic Pureforged modifier',
+                'Pureforged outcome omitted');
+              shipyardExceptionalMissing=${developmentDetailCheck};shipyard.textContent=shipyardText;
+              shipyard.textContent=shipyardText.replace('mining yield, rich-strike chance, or capture-contact points',
+                'connected modifier effect set omitted');
+              shipyardEffectSetMissing=${developmentDetailCheck};shipyard.textContent=shipyardText;
+              shipyard.textContent=shipyardText.replace('bound to the exact recipe, receipt, and item',
+                'exact modifier binding omitted');
+              shipyardBindingMissing=${developmentDetailCheck};shipyard.textContent=shipyardText;
+              shipyard.textContent=shipyardText.replace('mixed stock remains ordinary','mixed-stock boundary omitted');
+              shipyardMixedMissing=${developmentDetailCheck};shipyard.textContent=shipyardText;
+              shipyard.textContent=shipyardText.replace('Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
+                'advanced crafting boundary omitted');
+              shipyardAdvancedMissing=${developmentDetailCheck};shipyard.textContent=shipyardText;
               shipyard.textContent=shipyardText.replace('and no reward, cost, Charter tick, or optimistic panel change publishes before',
                 'and reward, cost, Charter tick, or optimistic panel change publishes before');
               shipyardPublicationChanged=shipyard.textContent!==shipyardText;shipyardPublicationContradiction=${developmentDetailCheck};shipyard.textContent=shipyardText;
               for(const copy of ['The current Survey card does not yet render those mineral rows.',
                 'The current Survey card renders every orbital mineral.',
                 'Orbit now also reveals cosmic and exceptional veins, grades, reserves, progress, and Mine.',
-                'All six Research rows can currently be purchased.','Fully exceptional slotted crafting is now available.',
-                'Fully-exceptional slotted craft is now available.',
+                'All six Research rows can currently be purchased.','Mixed stock also receives a Pureforged modifier.',
+                'The Pureforged modifier rerolls after reload.',
                 'Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.',
                 'Sockets are now available.','Vendors are now available.']){
                 shipyard.textContent=shipyardText+' '+copy;shipyardContradictionsChanged=shipyardContradictionsChanged&&shipyard.textContent!==shipyardText;
@@ -10728,7 +10950,7 @@ async function main() {
               if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;
               if(panelBoundary)panelBoundary.textContent=panelBoundaryText;
               if(first)first.textContent=firstText;if(recovery){recovery.textContent=recoveryText;if(recoveryParent&&recovery.parentNode!==recoveryParent)recoveryParent.insertBefore(recovery,recoveryNext);}
-              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(capture)capture.textContent=captureText;if(meal)meal.textContent=mealText;if(lesson)lesson.textContent=lessonText;if(training)training.textContent=trainingText;
+              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(capture)capture.textContent=captureText;if(frontierAudio)frontierAudio.textContent=frontierAudioText;if(creatureListen)creatureListen.textContent=creatureListenText;if(biosphereListen)biosphereListen.textContent=biosphereListenText;if(meal)meal.textContent=mealText;if(breed)breed.textContent=breedText;if(rename)rename.textContent=renameText;if(lesson)lesson.textContent=lessonText;if(training)training.textContent=trainingText;
               if(art){art.textContent=artText;if(artParent&&art.parentNode!==artParent)artParent.insertBefore(art,artNext);}
               if(workspace){workspace.textContent=workspaceText;if(workspaceParent&&workspace.parentNode!==workspaceParent)workspaceParent.insertBefore(workspace,workspaceNext);}
               if(coldArt){coldArt.textContent=coldArtText;if(coldArtParent&&coldArt.parentNode!==coldArtParent)coldArtParent.insertBefore(coldArt,coldArtNext);}
@@ -10738,15 +10960,15 @@ async function main() {
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
               &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
               &&panelBoundary?.textContent===panelBoundaryText&&recovery?.textContent===recoveryText
-              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&capture?.textContent===captureText&&meal?.textContent===mealText&&lesson?.textContent===lessonText&&training?.textContent===trainingText&&art?.textContent===artText
+              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&capture?.textContent===captureText&&frontierAudio?.textContent===frontierAudioText&&creatureListen?.textContent===creatureListenText&&biosphereListen?.textContent===biosphereListenText&&meal?.textContent===mealText&&breed?.textContent===breedText&&rename?.textContent===renameText&&lesson?.textContent===lessonText&&training?.textContent===trainingText&&art?.textContent===artText
               &&art?.parentNode===artParent&&art?.nextSibling===artNext
               &&workspace?.textContent===workspaceText&&workspace?.parentNode===workspaceParent&&workspace?.nextSibling===workspaceNext
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&publishing?.textContent===publishingText&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===63
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===72
               &&identity?.ok===false&&identity?.identity===false
-              &&truthfulFeatureClaims.length===5
+              &&truthfulFeatureClaims.length===8
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)
               &&unavailableFeatureClaims.length===13
               &&unavailableFeatureClaims.every((row)=>row.result?.ok===false&&row.result?.honest===false&&row.result?.overclaim===true)
@@ -10754,18 +10976,48 @@ async function main() {
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
               &&worldCodeStale?.ok===false&&worldCodeStale?.worldCodeContract===false
               &&atlasRouteStale?.ok===false&&atlasRouteStale?.atlasRouteContract===false
-              &&captureLimitControls.length===6
+              &&captureLimitControls.length===9
               &&captureLimitControls.every((row)=>row.changed&&row.result?.ok===false
                 &&row.result?.captureContract===false&&row.result?.captureContradiction===false
+                &&row.result?.captureBioscanContradiction===false&&row.result?.discoverLifeAvailabilityContradiction===false
                 &&row.result?.honest===true&&row.result?.shipyardContract===true&&row.result?.trainingContract===true)
-              &&captureContradictions.length===6
+              &&captureContradictions.length===5
               &&captureContradictions.every((row)=>row.result?.ok===false&&row.result?.captureContract===false
-                &&row.result?.captureContradiction===true&&row.result?.honest===false)
-              &&mealMissingChanged&&mealMissing?.ok===false&&mealMissing?.mealContract===false
+                &&row.result?.captureContradiction===true&&row.result?.captureBioscanContradiction===false
+                &&row.result?.discoverLifeAvailabilityContradiction===false&&row.result?.honest===false)
+              &&bioscanContradictions.length===6
+              &&bioscanContradictions.every((row)=>row.result?.ok===false&&row.result?.captureContract===false
+                &&row.result?.captureContradiction===true&&row.result?.captureBioscanContradiction===true
+                &&row.result?.discoverLifeAvailabilityContradiction===false&&row.result?.honest===false)
+              &&discoverLifeAvailabilityChanged&&discoverLifeAvailabilityContradictory?.ok===false
+                &&discoverLifeAvailabilityContradictory?.captureContract===false
+                &&discoverLifeAvailabilityContradictory?.captureContradiction===false
+                &&discoverLifeAvailabilityContradictory?.captureBioscanContradiction===false
+               &&discoverLifeAvailabilityContradictory?.discoverLifeAvailabilityContradiction===true
+               &&discoverLifeAvailabilityContradictory?.honest===false&&discoverLifeAvailabilityContradictory?.overclaim===true
+              &&audioMissingControls.length===4
+              &&audioMissingControls.every((row)=>row.changed&&row.result?.ok===false
+                &&row.result?.audioContract===false&&row.result?.audioContradiction===false&&row.result?.honest===true)
+              &&audioContradictions.length===4
+              &&audioContradictions.every((row)=>row.result?.ok===false&&row.result?.audioContract===false
+                &&row.result?.audioContradiction===true&&row.result?.honest===false&&row.result?.overclaim===true)
+             &&mealMissingChanged&&mealMissing?.ok===false&&mealMissing?.mealContract===false
                 &&mealMissing?.mealContradiction===false&&mealMissing?.honest===true
               &&mealContradictions.length===6
               &&mealContradictions.every((row)=>row.result?.ok===false&&row.result?.mealContract===false
                 &&row.result?.mealContradiction===true&&row.result?.honest===false&&row.result?.overclaim===true)
+             &&breedMissingChanged&&breedMissing?.ok===false&&breedMissing?.breedContract===false
+               &&breedMissing?.breedContradiction===false&&breedMissing?.honest===true
+              &&breedCharterMissingChanged&&breedCharterMissing?.ok===false&&breedCharterMissing?.breedContract===false
+                &&breedCharterMissing?.breedContradiction===false&&breedCharterMissing?.honest===true
+              &&breedContradictions.length===6
+              &&breedContradictions.every((row)=>row.result?.ok===false&&row.result?.breedContract===false
+                &&row.result?.breedContradiction===true&&row.result?.honest===false&&row.result?.overclaim===true)
+              &&renameMissingChanged&&renameMissing?.ok===false&&renameMissing?.renameContract===false
+                &&renameMissing?.renameContradiction===false&&renameMissing?.honest===true
+              &&renameContradictions.length===5
+              &&renameContradictions.every((row)=>row.result?.ok===false&&row.result?.renameContract===false
+                &&row.result?.renameContradiction===true&&row.result?.honest===false&&row.result?.overclaim===true)
               &&lessonStaleChanged&&lessonStale?.ok===false&&lessonStale?.lessonContract===false&&lessonStale?.lessonContradiction===false
               &&lessonContradictionChanged&&lessonContradictory?.ok===false&&lessonContradictory?.lessonContract===false
                 &&lessonContradictory?.lessonContradiction===true&&lessonContradictory?.honest===false
@@ -10789,6 +11041,16 @@ async function main() {
               &&shipyardChanged&&shipyardStale?.ok===false&&shipyardStale?.shipyardContract===false
               &&shipyardSurveyMissing?.ok===false&&shipyardSurveyMissing?.shipyardContract===false
               &&shipyardSurveyMissing?.honest===true&&shipyardSurveyMissing?.shipyardContradiction===false
+              &&shipyardExceptionalMissing?.ok===false&&shipyardExceptionalMissing?.shipyardContract===false
+              &&shipyardExceptionalMissing?.honest===true&&shipyardExceptionalMissing?.shipyardContradiction===false
+              &&shipyardEffectSetMissing?.ok===false&&shipyardEffectSetMissing?.shipyardContract===false
+              &&shipyardEffectSetMissing?.honest===true&&shipyardEffectSetMissing?.shipyardContradiction===false
+              &&shipyardBindingMissing?.ok===false&&shipyardBindingMissing?.shipyardContract===false
+              &&shipyardBindingMissing?.honest===true&&shipyardBindingMissing?.shipyardContradiction===false
+              &&shipyardMixedMissing?.ok===false&&shipyardMixedMissing?.shipyardContract===false
+              &&shipyardMixedMissing?.honest===true&&shipyardMixedMissing?.shipyardContradiction===false
+              &&shipyardAdvancedMissing?.ok===false&&shipyardAdvancedMissing?.shipyardContract===false
+              &&shipyardAdvancedMissing?.honest===true&&shipyardAdvancedMissing?.shipyardContradiction===false
               &&shipyardPublicationChanged&&shipyardPublicationContradiction?.ok===false
               &&shipyardPublicationContradiction?.shipyardContract===false
               &&shipyardPublicationContradiction?.honest===false
@@ -10822,7 +11084,7 @@ async function main() {
                 &&publishingRestored?.publishingContradiction===false&&publishingRestored?.honest===true
               &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,captureLimitControls,captureContradictions,mealMissingChanged,mealMissing,mealContradictions,lessonStaleChanged,lessonStale,lessonContradictionChanged,lessonContradictory,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
+              order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,captureLimitControls,captureContradictions,bioscanContradictions,discoverLifeAvailabilityChanged,discoverLifeAvailabilityContradictory,audioMissingControls,audioContradictions,mealMissingChanged,mealMissing,mealContradictions,breedMissingChanged,breedMissing,breedCharterMissingChanged,breedCharterMissing,breedContradictions,renameMissingChanged,renameMissing,renameContradictions,lessonStaleChanged,lessonStale,lessonContradictionChanged,lessonContradictory,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
               artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
               workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
               workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,

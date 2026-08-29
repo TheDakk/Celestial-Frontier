@@ -72,6 +72,7 @@ function createHarness() {
   const document = dom.window.document;
   const bottoms = new Map<string, number>([
     ['topbar', 52],
+    ['playerchip', 44],
     ['searchbox', 70],
     ['objchip', 80],
     ['trail', 110],
@@ -86,7 +87,7 @@ function createHarness() {
   ]);
   const styles = new Map<string, ElementStyle>();
   const element = (id: string): HTMLElement => document.getElementById(id)!;
-  for (const id of ['topbar', 'searchbox', 'objchip', 'trail', 'planetside']) {
+  for (const id of ['topbar', 'playerchip', 'searchbox', 'objchip', 'trail', 'planetside']) {
     const target = element(id);
     target.getBoundingClientRect = () => rect(
       bottoms.get(id) ?? 0,
@@ -205,6 +206,10 @@ describe('application chrome DOM owner', () => {
     expect(h.element('objchip').innerHTML).toBe(
       '⬆ Survey worlds · <span class="prog" data-sel="objprog">2 / 5</span>',
     );
+    expect(h.controller.rankCeremonyAnchor()).toEqual({ x: 50, y: 34 });
+    h.widths.set('playerchip', 0);
+    expect(h.controller.rankCeremonyAnchor()).toBeNull();
+    h.widths.set('playerchip', 100);
     expect(h.document.documentElement.style.getPropertyValue('--topbar-h')).toBe('52px');
 
     h.heights.set('topbar', 68);
@@ -215,10 +220,21 @@ describe('application chrome DOM owner', () => {
       hp: 150,
       hpMax: 100,
       primeCount: 9,
+      rank: {
+        name: '<b>Eternal Frontier</b>',
+        nameplateHue: 'irid',
+        nameplateIridescent: true,
+      },
       objective: { kind: 'boundary', name: '<b>First Light</b> & beyond' },
     });
     expect(h.element('playerchip').querySelector('img')).toBeNull();
     expect(h.element('playerchip').textContent).toContain('<img src=x onerror=1>&"\'');
+    expect(h.element('playerchip').querySelector('b')).toBeNull();
+    expect(h.element('playerchip').textContent).toContain('<b>Eternal Frontier</b>');
+    expect(h.element('playerchip').classList.contains('rank-iridescent')).toBe(true);
+    expect(h.element('playerchip').style.borderColor).toBe('rgb(199, 216, 255)');
+    expect(h.element('playerchip').dataset.rankName).toBe('<b>Eternal Frontier</b>');
+    expect(h.element('playerchip').title).toBe('Explorer rank: <b>Eternal Frontier</b>');
     expect(h.element('objchip').querySelector('b')).toBeNull();
     expect(h.element('objchip').textContent).toBe(
       '⬆ <b>First Light</b> & beyond is recorded — the next Charter action is not available in this development slice',
@@ -233,9 +249,13 @@ describe('application chrome DOM owner', () => {
       hp: -5,
       hpMax: 0,
       primeCount: 0,
+      rank: { name: 'Scout', nameplateHue: '#7fe6a0', nameplateIridescent: false },
       objective: null,
     });
     expect(h.element('playerchip').textContent).toContain('Explorer');
+    expect(h.element('playerchip').classList.contains('rank-iridescent')).toBe(false);
+    expect(h.element('playerchip').style.borderColor).toBe('rgb(127, 230, 160)');
+    expect(h.element('playerchip').textContent).toContain('Scout');
     expect(h.document.querySelector<HTMLElement>('#hpbar .fill')!.style.width).toBe('0%');
     expect(h.element('objchip').innerHTML).toBe('');
   });
@@ -387,6 +407,7 @@ describe('application chrome DOM owner', () => {
     const installedListener = h.resizeListener();
     h.controller.dispose();
     h.controller.dispose();
+    expect(h.controller.rankCeremonyAnchor()).toBeNull();
     expect(h.removeResizeListener).toHaveBeenCalledOnce();
     expect(h.removeResizeListener).toHaveBeenCalledWith(installedListener);
     for (const observer of h.resizeObservers) expect(observer.disconnect).toHaveBeenCalledOnce();

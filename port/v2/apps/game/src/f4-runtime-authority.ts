@@ -50,7 +50,13 @@ import {
   type V5ExtensionWrite,
   type V5Extensions,
   type V5WritableState,
+  createCombatSettlementPersistenceOwnerV1,
+  type CombatSettlementBrinkAchievementJoinV1,
+  type CombatSettlementCommitOutcomeV1,
 } from '@cf/persistence';
+import type { OwnershipStateV2 } from '@cf/domain-acquisition';
+import type { CombatSettlementPlanV1 } from '@cf/domain-combatcore';
+import type { WorldOpportunitySnapshot } from '@cf/domain-opportunity';
 
 export interface F4RuntimeAuthorityInput {
   readonly backend: StorageBackend;
@@ -58,6 +64,9 @@ export interface F4RuntimeAuthorityInput {
   readonly registry: ContentRegistry;
   readonly initialRevision: number;
   readonly initialExtensions: V5Extensions;
+  /** Optional detached canonical parent for receipt-free checkpoint
+      projection. Product commits refresh this parent before returning. */
+  readonly initialState?: SaveStateV2;
   readonly restoredAuthority: F4AuthorityV1 | null;
   /** Caller-minted crypto entropy, used only when no saved authority exists. */
   readonly freshSessionSeed: number;
@@ -171,6 +180,19 @@ export type F4RuntimeActionCommitOutcome =
   })
   | { readonly kind: 'lease-unavailable' };
 
+export interface F4RuntimeCombatSettlementInput {
+  readonly state: SaveStateV2;
+  readonly codecNow: number;
+  readonly plan: CombatSettlementPlanV1;
+  readonly opportunity: WorldOpportunitySnapshot;
+  readonly ownershipV2: OwnershipStateV2 | null;
+  readonly brinkAchievementJoin: CombatSettlementBrinkAchievementJoinV1 | null;
+}
+
+export type F4RuntimeCombatSettlementOutcome =
+  | CombatSettlementCommitOutcomeV1
+  | { readonly kind: 'lease-unavailable' };
+
 export interface F4RuntimeProductInput {
   readonly state: SaveStateV2;
   readonly operation: F4NoRngProductOperation;
@@ -220,12 +242,20 @@ export interface F4RuntimeAuthority {
       exact-once receipt ordinal but never evaluates or advances a random
       domain; the caller owns the semantic operation and receipt vocabulary. */
   commitAction(input: F4RuntimeActionInput): Promise<F4RuntimeActionCommitOutcome>;
+  /** Commit one owner-registered Arc 6 combat settlement through this
+      controller's private lease, revision and active-play authority. */
+  commitCombatSettlement(
+    input: F4RuntimeCombatSettlementInput,
+  ): Promise<F4RuntimeCombatSettlementOutcome>;
   /** Commit one exact-instance product action that consumes a receipt ordinal
       but no random draw. */
   commitProduct(input: F4RuntimeProductInput): Promise<F4RuntimeProductCommitOutcome>;
   /** Whole-expedition replacement under this runtime's private lease/revision.
       The repository atomically resets the old receipt namespace. */
   replace(writes: readonly StorageOperation[]): Promise<F4RuntimeReplacementOutcome>;
+  /** Detached last durable canonical state. Null means an opaque replacement
+      committed or this runtime was constructed without a state parent. */
+  checkpointParent(): SaveStateV2 | null;
   release(): Promise<void>;
   diagnostics(): F4RuntimeDiagnostics;
   readonly revision: number;
@@ -265,10 +295,16 @@ function copyExtensions(value: V5Extensions): V5Extensions {
   return value;
 }
 
+function copyCanonicalState(value: SaveStateV2): SaveStateV2 {
+  return structuredClone(value);
+}
+
 export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4RuntimeAuthority {
   if (typeof input.now !== 'function') throw new TypeError('F4 runtime requires an injected monotonic clock');
   let revision = checkedRevision(input.initialRevision);
   let extensions = copyExtensions(input.initialExtensions);
+  let checkpointParent = input.initialState === undefined
+    ? null : copyCanonicalState(input.initialState);
   let sessionRng = copySessionRng(input.restoredAuthority?.sessionRng
     ?? createSessionRNG(checkedSeed(input.freshSessionSeed)).state());
   let visible = input.visible === true;
@@ -304,7 +340,14 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
     input.registry,
   );
   const actionOwner = createF4DeterministicProductTransactionOwner(input.repository, input.registry);
+  const combatSettlementOwner = createCombatSettlementPersistenceOwnerV1(
+    input.repository,
+    input.registry,
+  );
   const productOwner = createF4NoRngProductTransactionOwner(input.repository, input.registry);
+  const publishCheckpointParent = (state: SaveStateV2): void => {
+    checkpointParent = copyCanonicalState(state);
+  };
 
   const enqueue = <T>(work: () => Promise<T>): Promise<T> => {
     const run = serialized.then(work, work);
@@ -404,6 +447,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
       revision = outcome.revision;
       extensions = outcome.saved.extensions;
       sessionRng = copySessionRng(outcome.authority.sessionRng);
+      publishCheckpointParent(outcome.saved.canonicalState);
       commits++;
     } else if (outcome.kind === 'stale') {
       await blockAndRelease(true);
@@ -479,6 +523,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           revision = outcome.revision;
           extensions = outcome.saved.extensions;
           sessionRng = copySessionRng(outcome.authority.sessionRng);
+          publishCheckpointParent(outcome.saved.canonicalState);
           commits++;
           return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
         }
@@ -530,6 +575,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           revision = outcome.revision;
           extensions = outcome.saved.extensions;
           sessionRng = copySessionRng(outcome.authority.sessionRng);
+          publishCheckpointParent(outcome.saved.canonicalState);
           commits++;
           return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
         }
@@ -579,6 +625,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           revision = outcome.revision;
           extensions = outcome.saved.extensions;
           sessionRng = copySessionRng(outcome.authority.sessionRng);
+          publishCheckpointParent(outcome.saved.canonicalState);
           commits++;
           return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
         }
@@ -611,8 +658,46 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           revision = outcome.revision;
           extensions = outcome.saved.extensions;
           sessionRng = copySessionRng(outcome.authority.sessionRng);
+          publishCheckpointParent(outcome.saved.canonicalState);
           commits++;
           return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    commitCombatSettlement(
+      combatInput: F4RuntimeCombatSettlementInput,
+    ): Promise<F4RuntimeCombatSettlementOutcome> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await combatSettlementOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state: combatInput.state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          now: combatInput.codecNow,
+          plan: combatInput.plan,
+          opportunity: combatInput.opportunity,
+          ownershipV2: combatInput.ownershipV2,
+          brinkAchievementJoin: combatInput.brinkAchievementJoin,
+        });
+        if (outcome.kind === 'committed' || outcome.kind === 'committed-convergence') {
+          const transaction = outcome.transaction;
+          revision = transaction.revision;
+          extensions = transaction.saved.extensions;
+          sessionRng = copySessionRng(transaction.authority.sessionRng);
+          publishCheckpointParent(transaction.saved.canonicalState);
+          commits++;
+          return outcome;
         }
         if (outcome.kind === 'stale') await blockAndRelease(true);
         else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
@@ -642,6 +727,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           revision = outcome.revision;
           extensions = outcome.saved.extensions;
           sessionRng = copySessionRng(outcome.authority.sessionRng);
+          publishCheckpointParent(outcome.saved.canonicalState);
           commits++;
           return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
         }
@@ -666,6 +752,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
         });
         if (outcome.kind === 'committed') {
           revision = outcome.revision;
+          checkpointParent = null;
           commits++;
         } else if (outcome.kind === 'stale') {
           await blockAndRelease(true);
@@ -681,6 +768,9 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
         }
         return outcome;
       });
+    },
+    checkpointParent(): SaveStateV2 | null {
+      return checkpointParent === null ? null : copyCanonicalState(checkpointParent);
     },
     release(): Promise<void> {
       released = true;

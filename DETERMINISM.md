@@ -1,5 +1,40 @@
 # Celestial Frontier — Determinism Discipline
 
+> **2026-08-29 current local Arc 5/6/7/9 deterministic authority:** the compact Arc 5 owner now
+> exposes four player-live exact-instance writers without changing genome or world identity. Feed
+> commits one creature/one flora successor without an outcome draw; Breed pre-certifies both complete
+> successors before consuming exactly one persisted `breedOutcome` value, preserves both parents,
+> grants the successful child +2 XP plus the first canonical unordered species pair +5, and assigns
+> eight active-play Recovery minutes after success or two after failure; Rename and Field
+> Scout consume no gameplay RNG and change only one sanitized nickname or the role pointer. Reload,
+> UI order, a failed/stale write and read-only convergence cannot reroll or publish a second result.
+>
+> The bounded Arc 6 landed action seals the canonical defender, champion, deterministic 160-run
+> forecast, transcript and settlement before one receipt/revision CAS. Ordinary and Guardian-scaled
+> XP, conquest-loss maximum/delta awards, wounds, conquest, Stardust, Guardian/Titan acquisition,
+> Prime/Frontier, `c2-conq`, `settle1`, `brink` and accepted `st-conq` +25 Stardust share that exact
+> verified fixed point. The conquest-loss `0→3→5` outcome is independently tested in both orders;
+> no wall clock, `Math.random()` or claim-time reroll enters the settlement.
+>
+> Arc 9 projects the exact ten-rank ladder and ordered 96-achievement catalogue without RNG. Its 68
+> aggregate rows derive only from sanitized committed save facts; 23 event rows join their true
+> owning transactions, while exactly `daily`, `decade`, `survivor`, `fieldmedic` and `gambler`
+> remain blocked on absent authorities. A coalesced aggregate/best-rank refresh uses one deterministic F4 receipt/CAS and
+> publishes only after the reopened canonical save reaches the same fixed point.
+> Settings nameplate choice follows the same authority: `Auto` stores `-1`, explicit choices are
+> limited to earned indices `0..bestRank`, and one F4 receipt/CAS verifies the save before AppChrome
+> changes. It does not retry or render an optimistic choice; durable ambiguity schedules reload.
+>
+> Audio remains presentation-only and consumes no product RNG. The four noncombat paths are the exact
+> durable Tame greeting, committed Feed acknowledgement, explicit exact-owned-fauna Compendium
+> Listen, and explicit visible inhabited-world Planetside **Listen to biosphere**. The last path is a
+> generic no-spoiler biosphere signal that grants and writes nothing. The Combat Chronicle may also
+> synthesize only registered transcript-owned impact, critical and ability layers through its bounded
+> master-Sound-governed combat bus; Guardian motifs and non-impact combat cues remain absent. Exact
+> signed `3f69e88…` completed its source-bound Slice → Glass → uninterrupted 20-minute
+> Recovery certificate once/no-retry. That certificate predates the later Arc 5/6/7/9 product work
+> and is not relabelled as evidence for it.
+
 > **2026-08-27 evidence-harness correction:** exact browser proof now distinguishes the private
 > staged ecology-epoch candidate from the committed published value. Before persistence, the
 > candidate may be the next epoch while publication remains unchanged; after the real persist seam,
@@ -14,7 +49,8 @@
 > Compendium and SceneMemory own separate sealed Edge-family/CDP capability/profile authorities;
 > neither treats the exact browser point version as baseline identity.
 
-> **2026-08-26 current-candidate determinism corrections:** F4 exposes one ecology epoch only after
+> **Historical 2026-08-26 current-candidate determinism corrections — superseded where the
+> 2026-08-29 overlay above differs:** F4 exposes one ecology epoch only after
 > visible-and-answerable, lease-owned `activePlayMs` crosses an integer edge, one receipt-free
 > lease/revision CAS commits it, and the exact publication/reprojection refresh completes. The
 > staged candidate is private; hidden/unanswered time, render cadence, reduced motion, wall time and

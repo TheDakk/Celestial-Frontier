@@ -7,7 +7,13 @@ import { _earthNamePass, installCaptureHooks } from '@cf/domain-descriptors';
 import { climateBand } from '@cf/domain-surveyphrases';
 import { systemFor } from '@cf/domain-worldgen';
 import { resolveCF1WorldAddress } from '@cf/scene';
-import { createCurrentWorldDistantEcologyHintPlan } from '../apps/game/src/biome-ecology-audio.js';
+import {
+  createCurrentWorldApproachDistantEcologyHintPlan,
+  createCurrentWorldApproachDistantEcologyPlaybackV1,
+  createCurrentWorldDistantEcologyHintPlan,
+  createCurrentWorldDistantEcologyPlaybackV1,
+  isCurrentWorldDistantEcologyPlaybackV1,
+} from '../apps/game/src/biome-ecology-audio.js';
 import {
   canonicalWorldRoster,
   canonicalWorldRosterForDiagnostics,
@@ -83,6 +89,113 @@ describe('current-world biome/audio join', () => {
     )).toThrow('canonical current-world roster');
   });
 
+  it('creates a generic playback only after the exact biosphere visual receipt is visible', () => {
+    const result = canonicalWorldRoster(earthAddress(), 0);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const before = JSON.stringify(result.roster);
+    const visual = Object.freeze({
+      generation: 9,
+      worldKey: result.roster.worldKey,
+      environmentFingerprint: result.roster.environmentFingerprint,
+      biosphereKey: result.roster.biosphereKey,
+      granularity: 'biosphere' as const,
+      visible: true as const,
+    });
+    const playback = createCurrentWorldDistantEcologyPlaybackV1(result.roster, visual);
+    expect(playback).toMatchObject({
+      generation: 9,
+      worldKey: result.roster.worldKey,
+      eventKey: playback.plan.planId,
+      plan: {
+        granularity: 'biosphere',
+        kingdom: null,
+        familyKey: null,
+        identityKey: null,
+        palettePolicy: 'generic-ecology',
+        route: 'ambience',
+      },
+      counterpart: {
+        counterpartKey: playback.plan.evidenceKey,
+        eventKey: playback.plan.planId,
+        generation: 9,
+      },
+    });
+    expect(isCurrentWorldDistantEcologyPlaybackV1(playback)).toBe(true);
+    expect(isCurrentWorldDistantEcologyPlaybackV1({ ...playback })).toBe(false);
+    expect(JSON.stringify(result.roster)).toBe(before);
+  });
+
+  it('binds orbital approach to a distinct generic source without exposing roster detail', () => {
+    const result = canonicalWorldRoster(earthAddress(), 0);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const before = JSON.stringify(result.roster);
+    const plan = createCurrentWorldApproachDistantEcologyHintPlan(result.roster);
+    expect(plan).toMatchObject({
+      source: 'approach-lead',
+      granularity: 'biosphere',
+      kingdom: null,
+      familyKey: null,
+      identityKey: null,
+      palettePolicy: 'generic-ecology',
+      route: 'ambience',
+    });
+    expect(plan.evidenceKey).toBe(
+      `approach-lead:${result.roster.environmentFingerprint}:biosphere:${result.roster.biosphereKey}`,
+    );
+    const playback = createCurrentWorldApproachDistantEcologyPlaybackV1(
+      result.roster,
+      Object.freeze({
+        generation: 10,
+        worldKey: result.roster.worldKey,
+        environmentFingerprint: result.roster.environmentFingerprint,
+        biosphereKey: result.roster.biosphereKey,
+        granularity: 'biosphere',
+        surface: 'approach',
+        visible: true,
+      }),
+    );
+    expect(playback.plan).toEqual(plan);
+    expect(isCurrentWorldDistantEcologyPlaybackV1(playback)).toBe(true);
+    expect(JSON.stringify(playback)).not.toContain('species');
+    expect(JSON.stringify(result.roster)).toBe(before);
+  });
+
+  it('rejects hidden and mismatched visual receipts before constructing a playback', () => {
+    const result = canonicalWorldRoster(earthAddress(), 0);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const visual = {
+      generation: 9,
+      worldKey: result.roster.worldKey,
+      environmentFingerprint: result.roster.environmentFingerprint,
+      biosphereKey: result.roster.biosphereKey,
+      granularity: 'biosphere' as const,
+      visible: true as const,
+    };
+    for (const mutation of [
+      { ...visual, visible: false },
+      { ...visual, worldKey: `${visual.worldKey}:stale` },
+      { ...visual, environmentFingerprint: `${visual.environmentFingerprint}:stale` },
+      { ...visual, biosphereKey: `${visual.biosphereKey}:stale` },
+      { ...visual, granularity: 'species' },
+    ]) {
+      expect(() => createCurrentWorldDistantEcologyPlaybackV1(
+        result.roster,
+        mutation as never,
+      )).toThrow('exact visible biosphere counterpart');
+    }
+    expect(() => createCurrentWorldApproachDistantEcologyPlaybackV1(
+      result.roster,
+      { ...visual, surface: 'landed' } as never,
+    )).toThrow('exact visible biosphere counterpart');
+    expect(() => createCurrentWorldDistantEcologyPlaybackV1(
+      result.roster,
+      { ...visual, surface: 'approach' } as never,
+    )).toThrow('exact visible biosphere counterpart');
+  });
+
   it('keeps the raw builder internal and refuses a lifeless world', () => {
     const publicFacade = readFileSync(fileURLToPath(
       new URL('../packages/audio/src/index.ts', import.meta.url),
@@ -95,6 +208,7 @@ describe('current-world biome/audio join', () => {
     ), 'utf8');
     expect(publicFacade).not.toContain('export { createDistantEcologyHintPlan }');
     expect(adapter).toContain("from '@cf/audio/internal/ecology'");
+    expect(main).toContain('createCurrentWorldDistantEcologyPlaybackV1');
     expect(main).not.toContain('createCurrentWorldDistantEcologyHintPlan');
 
     const result = resolveCF1WorldAddress({ galaxy: HOME, star: SOL, planet: { seed: 134 } });

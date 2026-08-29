@@ -103,7 +103,9 @@ describe('@cf/domain-opportunity — canonical source snapshots', () => {
       biosphereKey: 'none',
     });
     expect(tier10.rawTier).toBe(10);
+    expect(tier10.effectiveTier).toBe(10);
     expect(tier14.rawTier).toBe(14);
+    expect(tier14.effectiveTier).toBe(14);
     expect(tier10.displayRarity).toMatchObject({ tier: 9, name: 'Transcendent' });
     expect(tier14.displayRarity).toMatchObject({ tier: 9, name: 'Transcendent' });
     expect(tier14.source.biosphereKey).not.toBe('none');
@@ -129,6 +131,25 @@ describe('@cf/domain-opportunity — canonical source snapshots', () => {
     expect(Object.isFrozen(tier10.deposits)).toBe(true);
     expect(isWorldOpportunitySnapshot(tier10)).toBe(true);
     expect(isWorldOpportunitySnapshot({ ...tier10 })).toBe(false);
+  });
+
+  it('caps the effective opportunity tier by the legacy designation ring', () => {
+    const address = world({
+      galaxy: SOL.galaxy,
+      star: {
+        seed: 81_728_606,
+        x: 300.785200227052,
+        y: 148.4581243400462,
+      },
+      planet: { seed: 4_260_876_100 },
+    });
+    const snapshot = projectWorldOpportunity(address);
+
+    expect(snapshot.rawTier).toBeGreaterThan(5);
+    expect(snapshot.effectiveTier).toBe(5);
+    expect(snapshot.displayRarity.tier).toBe(5);
+    expect(snapshot.deposits).toEqual(['Al', 'Cu', 'Mg']);
+    expect(snapshot.deposits).not.toContain('Ag');
   });
 
   it('derives Earth and star snapshots but never treats address clones as authority', () => {

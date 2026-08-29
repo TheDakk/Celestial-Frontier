@@ -1,5 +1,79 @@
 # Celestial Frontier — Quests & Chapters
 
+> **2026-08-29 current local Starter Charter board and writers (matches code):** v2 now owns the
+> bounded two-chain Starter board, not merely imported Charter bytes. `trades` remains
+> `st-land → st-mine → st-scan → st-scout → st-conq`; `tour` remains
+> `st-mercury → st-mars → st-giants → st-ice → st-comp`. The board shows every accepted row plus
+> only the first incomplete link in each chain, so accepting a link activates it but never reveals
+> the following link until completion. At most three Charters may be active. Completed ids are
+> permanent; malformed, duplicate, completed-and-accepted, over-cap or unrevealed input is
+> protected rather than normalized into a new outcome. `st-scan` stays visible/unavailable because
+> its accepted bioscan owner does not exist, and weekly rows are neither rolled, accepted nor paid
+> until v2 owns wall-week, deterministic-slate and monotonic-rollover authority. `st-conq` remains
+> the existing verified combat owner's event, including its stage-0 Jump Drive reveal lock.
+>
+> Acceptance is one deterministic F4 product action: one immutable receipt, one lease/revision CAS,
+> no random draw, retry or optimistic publication. A newly accepted state-style deed completes in
+> that same acceptance transaction only when existing durable evidence proves it exactly:
+> non-canonical-Earth landfall (`st-land`), `stats.mines > 0`, an existing legacy Scout id, a
+> parseable legacy `conquered` row whose seed is not 133, exact Mercury/Mars/ice-world landing, or
+> ownership of one canonical T2 component. `st-giants` and unavailable `st-scan` remain count-from-
+> accept deeds. Current
+> landfall and Mine events carry the complete registered `CanonicalCF1WorldAddress`: canonical
+> Earth can never prove `st-land`, and Sol-tour credit requires the exact Sol hierarchy and source
+> ordinal, so a matching leaf seed beneath another galaxy/star cannot impersonate Mercury, Mars,
+> Jupiter, Saturn, Uranus or Neptune. The seed-only `surfSeen` checks survive only as explicit
+> already-proven compatibility evidence for imported v1 saves.
+>
+> Live event writers join Charter state to the transaction that proves the deed: permanent
+> non-Training Landing owns `st-land`, `st-mercury`, `st-mars` and `st-ice`; successful Mine owns
+> `st-mine` and one press toward `st-giants`; eligible fixed Fabrication owns `st-comp` only from
+> the canonical catalogue category `comp`; assigning or switching to a non-null exact Field Scout
+> owns `st-scout`, while unchanged selection and stand-down do not emit its event; verified combat
+> alone owns `st-conq`. No writer opens a second progression transaction. Refusal, stale/lost
+> authority, failed storage and postcommit convergence cannot bank, pay or replay a Charter.
+>
+> Exact completion rewards are unchanged: `st-land` +10 Stardust; `st-mine` +15; `st-scan` +15 and
+> Comms Earpiece (currently unavailable); `st-scout` +15; `st-conq` +25; `st-mercury` +10 plus
+> Miner’s Headlamp; `st-mars` +10 plus Mag-Boots; `st-giants` +15 plus Meteorite Pendant;
+> `st-ice` +10 plus Field Leggings; and `st-comp` +15. Completion removes the active id, appends
+> `chDone`, caps its `chProg`, raises current/lifetime Stardust and `stats.charters`, then refreshes
+> aggregate achievements/best rank inside that same save. Gear is one deterministic Arc 2 instance
+> bound to the Charter id and receipt ordinal. It auto-equips only when it reached inventory and its
+> slot is empty; full inventory routes it to the 500-entry pending-reward carrier and never replaces
+> worn gear. Arc 2/future/corrupt authority, revision exhaustion, reward-capacity or numeric overflow
+> refuses the complete candidate—Stardust is never paid without its promised gear.
+>
+> After exact durable publication, newly appended known achievement ids receive their manifest
+> notification plus the established rarity sting at tier 3; a newly promoted saved best rank gets
+> the unambiguous Rank Up toast, tier-5 sting and the existing four-color gold burst semantic. The
+> burst is capped at 40 and further reduced by the current motion/device effects budget, and obtains
+> only player-chip geometry through AppChrome rather than taking over its DOM. Boot catch-up,
+> Training, replay, already-durable observation, refusal and read-only convergence are silent; these
+> ceremonies grant no additional reward.
+
+> **Historical earlier 2026-08-29 Charter-writer overlay (superseded by the current board above):** the live projection then had exact outcome
+> writers for canonical first landfalls, successful Mine actions, eligible fixed Fabricator
+> outputs, one first successful alien-world biosphere observation, successful companion Breed,
+> and verified conquest. Chapter 2 therefore presents its real `c2-conq` milestone instead of
+> hiding it.
+> `bankBredSuccess` preserves the mature `{ok:true}` filter and forward-banking rule: a successful
+> Arc 5 offspring result banks Chapter 3 `c3-breed` / **Breed a hybrid bloodline** inside the same
+> complete save that carries the child and both parents' Recovery. Both success and failure saves
+> are capacity-certified before the one draw. Failure leaves Charter bytes unchanged; refusal,
+> stale authority, duplicate receipt and storage failure bank nothing. Main publishes `ascCh` and
+> `ascProg` only after the exact durable result is verified, then refreshes the objective.
+>
+> Combat banks conquest and reconciles only after the registered battle/conquest fixed point is
+> durable. If the exact one-time starter conquest Charter `st-conq` is accepted, that same combat
+> CAS completes and removes it, awards **25 Stardust** to current and lifetime totals, and raises
+> the honored-Charter count once. Capacity, malformed/stale acceptance, loss, refusal and failed
+> write pay nothing. The weekly `wk-conq` stays fail-closed until v2 owns its wall-week rollover,
+> deterministic slate membership, acceptance and monotonic rollover sidecar; other accepted chains
+> and mature reward ceremonies remain open systems. The current v2 Field
+> Training graduation names live Feed, Breed/Recovery and Rename without claiming its six-step
+> navigation drill performs them. Older dated landfall-only/pre-Arc overlays below remain history.
+
 > **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
 > `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
 > `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
@@ -128,7 +202,7 @@
 > ownership review remains open. No hosted, release/version, `rnSeen` or preview/publication
 > authority follows.
 
-> **2026-08-24 Arc 3 Charter/current-capability overlay:** mining and eligible fixed Fabrication are
+> **Historical 2026-08-24 Arc 3 Charter/current-capability overlay (superseded by the live Starter board above):** mining and eligible fixed Fabrication are
 > real receipt-backed Engineering actions. The panel displays six research rows but only Deep
 > Scanners is purchasable; its pure orbital-reveal policy exists while current Survey renders no
 > orbital mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with
@@ -226,7 +300,7 @@
 > verified outcomes.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the newest v2 overlay
-above matches the current local `port/v2` boundary as of 2026-08-27. Carries v1.8.6 and v1.8.7
+above matches the current local `port/v2` boundary as of 2026-08-29. Carries v1.8.6 and v1.8.7
 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and Field Training. The **21-step** curriculum described below is the legacy game; the current v2 boundary is explicit here.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
@@ -275,7 +349,7 @@ implement the dated port overlay.
 > unversioned v2 release draft does not claim it complete. D-TRAIN-1 compatibility
 > is described by the newer source-truth overlay above.
 
-> **2026-08-14 v2 Charter current-truth overlay:** `@cf/scene/charter.ts` keeps
+> **Historical 2026-08-14 v2 Charter overlay (superseded by the current Starter board above):** `@cf/scene/charter.ts` keeps
 > `ASC_CHAPTERS_DATA`, `chapterGoalsDone` and forward `bankLandfall` semantics intact
 > for imported progression. The current app instead gives `fillCharters` one
 > `projectV2Charter(save.ascCh, save.ascProg, ascStage())` record and gives the top

@@ -25,6 +25,13 @@
 as of 2026-08-29. The budget mode is `UNFROZEN`, but no hosted attempt or publication is authorized.
 This is not a release record.
 
+The guarded packaging workflow now extracts and named-verifies one immutable Slice result, passes
+that exact ID into Glass, named-verifies the resulting Glass/Slice pair and retains the immutable
+carriers before persona synthesis or packaging. A bare Glass invocation is rejected by both the
+workflow contract and the tool before it can alter the last terminal report pointer. The workflow
+is still an artifact producer, not the separate uninterrupted 20-minute Recovery certificate; a
+package must never be described as full automated certification on that basis.
+
 **Historical Final10 campaign boundary (superseded by Final11 above):** the playable implementation extends through the local
 Arc 4.5 Survey → Gather → Build → Tame → ship improvement → farther reach → Return slice, but it is
 still a review candidate rather than a preview candidate. Signed clean Final10 source

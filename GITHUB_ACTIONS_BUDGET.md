@@ -75,7 +75,11 @@ merges, and successful batteries now start **zero hosted runners by default**:
   independently controlled.
 - `branch-flow-guard.yml`, `sync-agent-branches.yml`, and `dev-preview-package.yml` are manual-only
   and default to `DO_NOT_RUN`. Their runner-owning authorization also requires the repository owner;
-  preview uses the same tiny authorize→sealed-owner dependency as the main battery.
+  preview uses the same tiny authorize→sealed-owner dependency as the main battery. Its browser
+  artifact leg must extract and named-verify the exact immutable Slice ID, pass that ID to Glass,
+  named-verify the resulting Glass/Slice pair and retain all immutable carriers before persona and
+  packaging work. A bare `npm run glassmatrix` is structurally rejected. This artifact-only workflow
+  does not run or claim the separate uninterrupted 20-minute Recovery certificate.
 - The active `develop` ruleset requires only the terminal-green `battery` context, normal merge
   commits, resolved threads, and an up-to-date head. It has no required review count, no extra
   unattributed-change approval, and no required `Approved branch flow` context. The latter remains

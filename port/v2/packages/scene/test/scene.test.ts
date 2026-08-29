@@ -385,8 +385,13 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(ascStageOf([], 3)).toBe(3);   /* all chapters done = free */
   });
   it('★ stage 0 is SOL ONLY; stage 1 the Neighborhood ring; foreign stars wait for the IG drive', async () => {
-    const { ascAllowsStar, ascHintFor, primeReachHint } = await import('@cf/scene');
-    const { SOL_POS } = await import('@cf/domain-worldconfig');
+    const {
+      ascAllowsCanonicalStar,
+      ascAllowsStar,
+      ascHintFor,
+      primeReachHint,
+    } = await import('@cf/scene');
+    const { HOME_POS, SOL_POS } = await import('@cf/domain-worldconfig');
     const { ASC_RING_R } = await import('@cf/domain-strays');
     const sol = { x: SOL_POS.x, y: SOL_POS.y, seed: 424242 };
     const near = { x: SOL_POS.x + (ASC_RING_R as number) * 0.9, y: SOL_POS.y, seed: 7 };
@@ -398,8 +403,13 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(ascAllowsStar(2, 999, far)).toBe(true);
     expect(ascAllowsStar(2, 1000, sol)).toBe(false);   /* foreign galaxy */
     expect(ascAllowsStar(3, 1000, sol)).toBe(true);
-    /* A star/system gate now points to the exact live fixed-Fabricator path,
-       while the still-unavailable Prime-radius path remains distinct. */
+    const home = { x: HOME_POS.x, y: HOME_POS.y, seed: 999 };
+    expect(ascAllowsCanonicalStar(0, home, sol)).toBe(true);
+    expect(ascAllowsCanonicalStar(0, { ...home, x: home.x + 1 }, sol)).toBe(false);
+    expect(ascAllowsCanonicalStar(0, home, { ...sol, x: sol.x + 1 })).toBe(false);
+    expect(ascAllowsCanonicalStar(2, { ...home, y: home.y + 1 }, far)).toBe(false);
+    expect(ascAllowsCanonicalStar(3, { ...home, y: home.y + 1 }, far)).toBe(true);
+    /* Star/system and Prime-radius gates point to their distinct live owners. */
     const liveCharterHint = (stage: number, hint: string): boolean => {
       const stageCopy = stage <= 0
         ? /Sol is your current reach[\s\S]{0,160}fabricate the Jump Drive/i.test(hint)
@@ -413,8 +423,9 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     };
     const safePrimeRadiusHint = (hint: string): boolean =>
       /Your saved Prime Signature radius ends here/i.test(hint)
-        && /Prime Signature radius expansion is not available in this development slice/i.test(hint)
-        && !/collect|earn|award|write|next Charter system|Engineering|\bbuild\b|mine|fabricat/i.test(hint);
+        && /Verified Titan victories claim Prime Signatures that expand it/i.test(hint)
+        && /open the Prime Codex to review your frontier/i.test(hint)
+        && !/not available|next Charter system|Engineering|\bbuild\b|mine|fabricat|chapter/i.test(hint);
     expect(liveCharterHint(0, ascHintFor(0))).toBe(true);
     expect(liveCharterHint(1, ascHintFor(1))).toBe(true);
     expect(liveCharterHint(2, ascHintFor(2))).toBe(true);
@@ -438,12 +449,16 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
       'Your saved Prime Signature radius ends here. Collect Prime Signatures to expand it.',
     )).toBe(false);
     expect(safePrimeRadiusHint(
+      'Your saved Prime Signature radius ends here. Prime Signature radius expansion is not available in this development slice.',
+    )).toBe(false);
+    expect(safePrimeRadiusHint(
       'Your saved reach is preserved. The next Charter system is not available in this development slice.',
     )).toBe(false);
   });
-  it('★ landfall BANKING: credit lands in every chapter from the current on (the review catch)', async () => {
+  it('★ landfall and bioscan BANKING: source-proven credit lands in every chapter from the current on', async () => {
     const {
-      ASC_CHAPTERS_DATA, ascStageOf, bankLandfall, canAdvanceV2Chapter, chapterGoalsDone,
+      ASC_CHAPTERS_DATA, ascStageOf, bankBioscan, bankBredSuccess, bankConquest, bankLandfall,
+      canAdvanceV2Chapter, chapterGoalsDone,
       currentObjective, currentV2Objective, projectV2Charter,
       isSolLandfallAddress,
     } = await import('@cf/scene');
@@ -485,6 +500,31 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(isSolLandfallAddress(earth)).toBe(true);
     expect(isSolLandfallAddress(foreignSameLeaf)).toBe(false);
     expect(bankLandfall(0, {}, foreignSameLeaf)).toBe(false);
+    /* Bioscan banking accepts only a registered non-Sol hierarchy. Lifetime
+       first-success uniqueness belongs to the atomic Arc 4 caller. */
+    const scanProgress: Record<string, number> = {};
+    expect(bankBioscan(0, scanProgress, earth)).toBe(false);
+    expect(bankBioscan(0, scanProgress, foreignResult.address)).toBe(true);
+    expect(scanProgress['c2-scan']).toBe(1);
+    expect(bankBioscan(0, { 'c2-scan': 2 }, foreignResult.address)).toBe(false);
+    expect(bankBioscan(0, {}, foreignSameLeaf)).toBe(false);
+    /* Breeding parity is the legacy `{ ok: true }` filter: only a successful
+       child result banks the later Chapter 3 deed, once and capped at one. */
+    const breedProgress: Record<string, number> = {};
+    expect(bankBredSuccess(0, breedProgress, false)).toBe(false);
+    expect(breedProgress['c3-breed']).toBeUndefined();
+    expect(bankBredSuccess(0, breedProgress, true)).toBe(true);
+    expect(breedProgress['c3-breed']).toBe(1);
+    expect(bankBredSuccess(0, breedProgress, true)).toBe(false);
+    expect(bankBredSuccess(3, {}, true)).toBe(false);
+    /* Conquest likewise banks only a verified settlement and caps the lone
+       Chapter 2 flag at one. */
+    const conquestProgress: Record<string, number> = {};
+    expect(bankConquest(0, conquestProgress, false)).toBe(false);
+    expect(bankConquest(0, conquestProgress, true)).toBe(true);
+    expect(conquestProgress['c2-conq']).toBe(1);
+    expect(bankConquest(0, conquestProgress, true)).toBe(false);
+    expect(bankConquest(2, {}, true)).toBe(false);
     /* capped at n — no overshoot */
     bankLandfall(0, prog, marsResult.address); bankLandfall(0, prog, venusResult.address);
     expect(prog['c1-land']).toBe(2);
@@ -507,7 +547,7 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     const fresh: Record<string, number> = {};
     const first = projectV2Charter(0, fresh, ascStageOf([], 0))!;
     const honestProjection = (view: typeof first): boolean =>
-      view.goals.every((goal) => ['landfall', 'mined', 'crafted'].includes(goal.ev));
+      view.goals.every((goal) => ['landfall', 'mined', 'crafted', 'bioscan', 'bred', 'conquest'].includes(goal.ev));
     expect(first.state).toBe('actionable');
     expect(first.goals.map((goal) => goal.id)).toEqual([
       'c1-land', 'c1-mine', 'c1-part', 'c1-comp', 'c1-jump',
@@ -516,9 +556,17 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
       text: 'Make planetfall on 2 worlds of Sol', have: 0, need: 2,
     });
     expect(honestProjection(first)).toBe(true);
-    /* Negative control: an unavailable bioscan goal cannot enter the view. */
-    const legacyScan = ASC_CHAPTERS_DATA[1]!.goals.find((goal) => goal.id === 'c2-scan')!;
-    expect(honestProjection({ ...first, goals: [...first.goals, legacyScan] })).toBe(false);
+    /* Arc 6 now owns the exact conquest settlement writer, so its Chapter 2
+       goal is visible at the real stage-1 reach. A made-up later event still
+       fails the live-writer classifier. */
+    const legacyConquest = ASC_CHAPTERS_DATA[1]!.goals.find((goal) => goal.id === 'c2-conq')!;
+    const chapter2 = projectV2Charter(1, {}, 1)!;
+    expect(chapter2.goals.map((goal) => goal.id)).toContain('c2-conq');
+    expect(honestProjection({ ...first, goals: [...first.goals, legacyConquest] })).toBe(true);
+    expect(honestProjection({
+      ...first,
+      goals: [...first.goals, { id: 'future-mission', ev: 'mission', n: 1, t: 'Future mission' }],
+    })).toBe(false);
 
     /* Two real Sol landfalls reveal the next exact action without forging
        canonical chapter completion or an unearned reach stage. */
@@ -560,10 +608,10 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(currentV2Objective(1, {}, malformedChapterTwoStage)).toBeNull();
     expect(projectV2Charter(1, {})!.goals).toEqual([]);
     expect(projectV2Charter(1, {}, poweredCompleteStage)!.goals.map((goal) => goal.id)).toEqual([
-      'c2-land', 'c2-array',
+      'c2-land', 'c2-scan', 'c2-conq', 'c2-array',
     ]);
     expect(projectV2Charter(2, {}, ascStageOf([['igdrive', 1]], 2))!.goals.map((goal) => goal.id)).toEqual([
-      'c3-gear', 'c3-mine', 'c3-ig',
+      'c3-breed', 'c3-gear', 'c3-mine', 'c3-ig',
     ]);
   });
   it('banks exact mined-action and fixed-fabrication filters into later chapters with caps', async () => {

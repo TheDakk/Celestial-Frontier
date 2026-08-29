@@ -48,6 +48,7 @@ import {
 } from '@cf/domain-ecology';
 import { _earthNamePass, installCaptureHooks } from '@cf/domain-descriptors';
 import { describeSpecies, makeGenome, type Genome } from '@cf/domain-genome';
+import { createEngineeringState, planFixedFabrication } from '@cf/domain-opportunity';
 import { climateBand } from '@cf/domain-surveyphrases';
 import { ASC_RING_R, regionAt, ringGrade } from '@cf/domain-strays';
 import { systemFor } from '@cf/domain-worldgen';
@@ -57,6 +58,7 @@ import {
 } from '@cf/domain-sessionrng';
 import {
   ARC4_OWNERSHIP_MANIFEST_NAMESPACE,
+  ARC2_LOOT_NAMESPACE,
   ARC5_OWNERSHIP_MIGRATION_VERSION,
   V5_MAX_EXTENSION_JSON_BYTES,
   V5_MAX_EXTENSION_TOTAL_BYTES,
@@ -67,15 +69,18 @@ import {
   createRevisionedRepository,
   createTabLeaseClient,
   encodeArc4Ownership,
+  encodeArc2LootCarrier,
   exportSaveV2,
   importSaveV2,
   prepareArc2LootLegacyMigration,
+  prepareArc2FixedFabrication,
   prepareArc5OwnershipMigration,
   prepareF4AuthorityUpdate,
   prepareV5SaveWrite,
   projectF4MultiOutcomeDrawAdvance,
   projectLegacyOwnershipMirror,
   readArc2AcquisitionCapabilities,
+  readArc2EngineeringLoadout,
   readArc5OwnershipMigration,
   readF4Authority,
   type ContentRegistry,
@@ -312,6 +317,50 @@ function authorityExtensions(
     resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   });
   if (arc5.kind !== 'prepared') throw new Error(`Arc 5 fixture was ${arc5.kind}`);
+  return arc5.extensions;
+}
+
+function exceptionalContactAuthorityExtensions(): V5Extensions {
+  const empty = prepareArc2LootLegacyMigration({
+    extensions: {},
+    legacy: { items: [], equip: {}, equipAff: {} },
+    capacity: 6,
+  });
+  if (empty.kind !== 'prepared') throw new Error(`exceptional Arc 2 fixture was ${empty.kind}`);
+  const source = readArc2EngineeringLoadout(empty.extensions);
+  if (source.kind !== 'loaded') throw new Error(`exceptional loadout was ${source.kind}`);
+  const plan = planFixedFabrication({
+    state: createEngineeringState(),
+    baseId: 'meteor',
+    assets: {
+      materials: { C: 1, Ni: 2 },
+      exceptionalMaterials: { C: 1, Ni: 2 },
+      itemCounts: {}, stardust: 0, signatureIds: [],
+    },
+    activePlay: { activePlayMs: 0 },
+    receiptOrdinal: 4,
+  });
+  if (plan.status !== 'planned') throw new Error(`exceptional plan was ${plan.reason}`);
+  const settled = prepareArc2FixedFabrication(source.loadout, plan);
+  if (settled.status !== 'ready') throw new Error(`exceptional settlement was ${settled.reason}`);
+  const crafted = canonicalizeV5Extensions({
+    ...empty.extensions,
+    inventory: {
+      ...empty.extensions.inventory,
+      [ARC2_LOOT_NAMESPACE]: encodeArc2LootCarrier(settled.state),
+    },
+  });
+  const f4 = prepareF4AuthorityUpdate(
+    crafted,
+    { activePlayMs: 0 },
+    createSessionRNG(12_345).state(),
+  ).extensions;
+  const arc4 = withOwnership(f4, createEmptyOwnershipStateV1());
+  const arc5 = prepareArc5OwnershipMigration({
+    extensions: arc4,
+    resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  });
+  if (arc5.kind !== 'prepared') throw new Error(`exceptional Arc 5 fixture was ${arc5.kind}`);
   return arc5.extensions;
 }
 
@@ -719,6 +768,13 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
       './snapshot-internal': './src/snapshot-internal.ts',
       './ownership-v2-internal': './src/ownership-v2-internal.ts',
       './feed-internal': './src/feed.ts',
+      './breed-internal': './src/breed.ts',
+      './rename-internal': './src/rename.ts',
+      './combat-settlement-internal': './src/combat-settlement-internal.ts',
+      './guardian-acquisition-internal': './src/guardian-acquisition.ts',
+      './guardian-companion-internal': './src/guardian-companion.ts',
+      './companion-availability': './src/companion-availability.ts',
+      './scout-internal': './src/scout.ts',
     });
   });
 
@@ -1085,6 +1141,40 @@ describe('Arc 4 pure capture presentation', () => {
     expect(JSON.stringify(projected)).not.toMatch(/candidateDraw|successDraw|successor/u);
     expect(encodeOwnershipStateV1(ownership)).toBe(ownershipBefore);
     expect(readF4Authority(extensions)).toEqual(f4Before);
+  });
+
+  it('uses a reloaded equipped exceptional contact modifier in the shown Tame odds', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const roster = rosterOf(earth);
+    const plainSnapshot = readySnapshot(
+      earth,
+      roster,
+      authorityExtensions(0, 12_345, {}, 0, false),
+    );
+    const exceptionalSnapshot = readySnapshot(
+      earth,
+      roster,
+      exceptionalContactAuthorityExtensions(),
+    );
+    expect(plainSnapshot.contactCapturePoints).toBe(0);
+    expect(exceptionalSnapshot.contactCapturePoints).toBe(9);
+
+    const plain = projectCapturePresentationV1(
+      plainSnapshot,
+      { observedActivePlayMs: 0 },
+    );
+    const exceptional = projectCapturePresentationV1(
+      exceptionalSnapshot,
+      { observedActivePlayMs: 0 },
+    );
+    if (plain.kind !== 'ready' || exceptional.kind !== 'ready'
+      || plain.verbs.tame.chance === null || exceptional.verbs.tame.chance === null) {
+      throw new Error('exceptional contact presentation fixture was unavailable');
+    }
+    expect(exceptional.verbs.tame.chance.arithmeticMean)
+      .toBeGreaterThan(plain.verbs.tame.chance.arithmeticMean);
+    expect(exceptional.verbs.tame.chance.minimumPercent)
+      .not.toBe(plain.verbs.tame.chance.minimumPercent);
   });
 
   it('distinguishes natural emptiness from same-cycle completion', () => {

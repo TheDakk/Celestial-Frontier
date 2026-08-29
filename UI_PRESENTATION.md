@@ -1,5 +1,119 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-29 current local PWA presentation overlay (matches code):** build output now mounts one
+> Settings-contained, accessible **App status** disclosure only when the generated PWA marker is
+> present. Its polite/atomic status becomes an alert on errors; Check, Activate, Reload and Roll back
+> remain native minimum-44-pixel actions with visible focus and forced-colors treatment. A complete
+> waiting update never activates or reloads by itself. Activation and rollback each require the
+> explorer's explicit action. Status/results bind to the exact worker; a matching active-status
+> broadcast, not `controllerchange` or successor claim, exposes a separate **Reload when ready**
+> action while each running document remains pinned to its exact build. That reload refuses while
+> product/import/Training, authority-convergence or protected save-authority work conflicts, joins
+> active persistence and checkpoints any debounce canceled by its exclusive claim. Failure releases
+> the claim and rearms
+> that debounce; success releases audio, F4/runtime, app chrome, the PWA controller, Pixi and both
+> canvases before navigation. The development server intentionally renders no PWA control.
+> Physical installation, offline reopening, browser install UI, assistive-technology judgment and
+> device/HUMAN acceptance remain open.
+
+> **2026-08-29 current local Binder and Prime Codex presentation:** Records appends one bounded
+> Binder projection after rank/achievements. Its six legacy pages—Spectrum, Sixteen Realms, Body
+> Plans, Ability Themes, Flora Flavors and Size Classes—render deterministic type slots; seven
+> non-Paragon set rows show exact progress, authored Stardust and a native Claim button only when
+> complete. The Fifty Paragons stays visible with an honest unavailable explanation and no claim
+> control; an imported claim is acknowledged but never re-earned. Pending/read-only/Training/
+> replacement authority disables every Claim control while leaving the panel readable. One verified
+> result refreshes Records/AppChrome and may queue its achievement/rank ceremony; refusal preserves
+> the old board, while durable ambiguity reloads the single committed result without retry.
+>
+> AppChrome's Prime Codex chip is a pointer-enabled native minimum-44-pixel button opening a bounded
+> labelled panel. Nine native disclosure rows show the exact Earth, Fire, Air, Stellar, Water,
+> Electric, Poison, Void and Prism Signature guardian/lore/hunt/reach/claimed facts. After all nine
+> claims, five native ending buttons present Sovereign, Warden, World-Shaper, Unseen Hand and
+> Prismatic Pathfinder; only the Prismatic/Balance row remains disabled until three conquests,
+> Electric and 40 catalogued species are all proved. Pending or read-only state disables choices
+> without hiding them. A verified choice replaces the buttons with its durable legacy and leaves
+> the galaxy open. Unknown imported ending/Prime inconsistencies render a protected explanation and
+> no write target; postcommit presentation failure restores prior live authority and schedules one
+> read-only convergence reload.
+
+> **2026-08-29 current local v2 presentation overlay:** real-fauna Compendium detail now owns four
+> bounded exact-instance surfaces: Feed, nonlethal Breed with active-play Recovery, Rename and
+> Field Scout. Each keeps Back/Close available, paints the old durable state while pending, pages at
+> most 24 candidates, distinguishes same-species twins, announces one accessible committed result
+> and enters read-only reload convergence on durable ambiguity. Tame and accepted Feed can play their
+> exact settled creature expressions; an explicit owned-fauna detail Listen and an explicit generic
+> inhabited-Planetside Listen are also live. List mount/focus/filter/navigation and ordinary scene
+> rendering never autoplay. Exact registered post-settlement Chronicle captions may play bounded
+> synthesized initiative, dodge, stun, impact/critical/ability, burn, regeneration, defeat,
+> resolution and Guardian/Titan entrance/phase/outcome sound. Authored continuous ambience, music,
+> recorded combat assets and HUMAN/device listening remain open.
+>
+> A landed non-Training Surface now renders one deterministic combat card with explorer/eligible-
+> ordinary-fauna/live-captured-Guardian-or-Titan champion selection, Titan/Guardian/strongest-fauna defender, exact 160-run forecast, stakes,
+> supported rewards and one Challenge action. Only verified durability publishes win/loss/draw,
+> injury, conquest, Guardian/Titan acquisition, Prime/Frontier, Charter or achievement results; no
+> retry, reroll or optimistic victory exists. That exact committed result then opens one registered
+> <b>Combat Chronicle</b> panel with named timed rows, two native HP meters, statistics/result, silent
+> Skip completion and plain-text Share. Clipboard denial exposes the exact selected log in the panel;
+> battle-log Share grants no world-Share achievement. Each registered cue owns its exact visible
+> caption counterpart; master Sound—not Creature Voices—governs the bounded at-most-two-voice mix.
+> Composite events remain one voice. Skip/Close/replace,
+> hidden or route/counterpart loss and Sound Off cancel it. Captured Guardians/Titans come from a
+> separate combat-only overlay rather than Arc 5, use the same forecast/Chronicle/audio/XP/injury
+> presentation, and display permanent-loss stakes. Their exact XP/injury or tombstone survives
+> reload; tombstones disappear from both the roster and composite Compendium, while Prime claims stay
+> independent. Party roles, tactics, retreat and Guardian care/breeding/mission/Recovery remain open.
+>
+> Charters now renders the bounded live Starter board: its two authored chains show accepted rows
+> plus only one incomplete reveal each, every available row has a native Accept action, and the
+> heading reports the exact `N / 3 active` cap. Completed count, per-row progress/reward copy,
+> active/unavailable states and the weekly-protection boundary remain visible. Discover Life
+> (`st-scan`) is visible but cannot be accepted; weeklies have no live controls; conquest remains a
+> combat result. A pending acceptance keeps the old durable board and announces Saving; only a
+> verified receipt refreshes Charters, Cargo/equipment, Records and AppChrome. Already-proven deeds
+> can therefore present one combined **accepted and completed** result, including exact Stardust and
+> fixed gear. Full inventory puts gear in the 500-entry pending-reward flow; auto-equip occurs only
+> for an inventory grant whose slot was empty, never by replacing worn gear. Refused/stale/storage
+> paths remain unchanged or reload read-only, and a committed publication fault reloads the single
+> durable result without retry.
+>
+> Matching permanent non-Training Landing, successful Mine, canonical T2-component Fabrication and
+> non-null Field Scout set/switch actions use their existing result surfaces to report progress or
+> completion; stand-down and unchanged Scout selection are silent. Their landfall/mining filters
+> use the complete registered world identity: canonical Earth cannot satisfy `st-land`, and a
+> foreign same-seed world cannot paint Sol-tour credit. Verified combat continues to present
+> `st-conq`. `st-scan` and weekly results are never fabricated by adjacent biosphere/capture UI.
+>
+> Records now renders current/next rank, all six score factors and all 96 achievements across 13
+> native shelves. AppChrome shows the player name/current rank with its saved unlocked hue or
+> Eternal Frontier foil. One exact newly appended achievement is queued as a manifest-name/detail
+> toast with rarity sting 3; a newly promoted saved best rank is queued after it as the named Rank
+> Up toast with sting 5 and the existing four-gold-color burst. The burst has a mature ceiling of
+> 40 particles and is reduced by current motion/device effect policy. Main receives only the
+> player-chip center point through AppChrome's geometry port—no direct DOM lookup or ownership
+> transfer—and missing geometry/audio suppresses only that supplemental effect. A highest-revision
+> fence and serial queue wait behind any visible toast, space deliveries and clear on replacement
+> reload, so a multi-unlock action remains ordered without stacking an unbounded presentation. Boot catch-up,
+> Training, replay/out-of-order revision, already-durable observation, refusal and convergence are
+> silent; the notifications grant nothing. Settings exposes a native 44-pixel Nameplate
+> selector for Auto/current-rank plus every permanently earned rank color; its tentative native
+> value rolls back immediately and AppChrome changes only after one verified receipt/F4 CAS.
+> Locked choices refuse and durable ambiguity converges by reload. Settings also owns one accessible
+> <b>Explorer name → Change name</b> editor using the shipped sanitizer/24-character cap. It changes
+> only the explorer name through one receipt/CAS, keeps cleaned-empty/unchanged input write-free,
+> never publishes optimistically and reload-converges on durable ambiguity; it deliberately does not
+> grant discovery achievement `namer`. Records now exposes 23 true event joins: the prior seven,
+> twelve source-derived Survey observations, `worm`/`quasar`/`dwarfg` travel, and the first explicit
+> Atlas Favorite `curator`. Accepted CF1 Follow publishes its route, Jumps, galaxy visit, `wayfarer`
+> and any proved galaxy-kind event through one receipt; ordinary navigation cannot counterfeit it.
+> Atlas rows keep separate minimum-size Travel and Favorite controls, mutate Favorite state in place
+> without losing the row's route identity, and announce the verified result only after durability.
+> Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler` remain owner-blocked. The current Guide capability map contains **41**
+> visible topics (**34 partial / 7 unavailable**) and the cumulative v2 draft contains **73** unique
+> bullets. These current local surfaces do not inherit the older browser certificate below; fresh
+> exact-source browser, physical-device, screen-reader and HUMAN experience review remain open.
+
 > **Current universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
 > signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
@@ -158,8 +272,8 @@
 > The audio owner keeps only the latest successful Feed ownership/key, rejecting the same result and
 > every superseded result in constant space. Lost detail, route, counterpart, visibility or
 > answerability; replay, refusal, convergence and disabled Sound or Creature voices remain silent.
-> Scavenge, Sample, distant ecology, ambience, music and combat audio remain outside this live
-> boundary.
+> Scavenge, Sample, distant ecology, ambience, music and combat audio remain outside this Feed-only
+> certificate boundary; their later current-local implementations do not inherit that evidence.
 >
 > Survey plus Compendium list/detail rarity now pass through one strict app projector. Only integer
 > raw grades 0–14 are accepted: 0–9 use the canonical display row (including Transcendent at 9),
@@ -842,7 +956,7 @@
 > The eighth phone-dock slot now opens the canonical **Guide to the Universe**
 > rather than the old import shortcut or a second seven-topic manual. V2 carries
 > the mature inventory—9 categories /43 authored stable topic ids /41
-> legacy-live topics, currently 25 partial and 16 unavailable—plus category drill-down,
+> legacy-live topics, currently 32 partial and 9 unavailable—plus category drill-down,
 > title/keyword/body search and
 > `data-gt` cross-links. A capability layer substitutes current-slice copy for
 > partially ported systems and a visible **Not yet in v2** explanation for
@@ -850,7 +964,7 @@
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
-> Foundation**, the cumulative categorized 64-bullet v2.0 development bulletin. It summarizes
+> Foundation**, the cumulative categorized 73-bullet v2.0 development bulletin. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
 > promises. The long draft is browser-checked for canonical section order and a
 > reachable final bullet; opening and reloading it cannot change `rnSeen` or create
@@ -858,6 +972,16 @@
 > Advanced Briefings remain open port scope. The slice's Field Training likewise
 > owns six real chart/travel/landing lessons plus an honest graduation, not the
 > full legacy 21-step curriculum.
+> Built output additionally injects the same-origin manifest, icon, theme metadata and PWA enable
+> marker. The generated worker joins an automatic worker-template revision to the final-byte asset
+> inventory, verifies every exact runtime response before writing its complete marker, and retains
+> only current plus one verified predecessor. Navigation selects and pins the active build; every
+> running document's subresources stay cache-only on its exact pin through activation/rollback until
+> explicit reload. Successors do not claim those pages, stale pins are pruned after their clients
+> disappear, and a third activation refuses while the retained-prior pin is in use. The Settings
+> status described
+> above controls activation, reload and rollback; no update path forces reload, mixes builds or
+> rewrites expedition data.
 > **Settings → Bring expedition** opens above every dock/panel as a true
 > `aria-modal` dialog, keeps Tab focus inside, and in ordinary import mode lets
 > Escape close only the dialog before restoring Settings focus. In Training
@@ -1391,7 +1515,7 @@
 > merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
-current v2 overlays match the local `port/v2` candidate as of 2026-08-28. The addenda at the end preserve
+current v2 overlays match the local `port/v2` candidate as of 2026-08-29. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson

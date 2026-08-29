@@ -17,136 +17,166 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-29 · UNIVERSE POLISH + BOUNDED ARC 5 FEED · COMPLETE LOCAL AUTOMATED CERTIFICATE GREEN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · LOCAL V2 ROADMAP CAMPAIGN COMPLETE · CLAUDE FABLE REVIEW CANDIDATE ◀◀◀
 
 ### Exact current boundary
 
-- **Owner/environment:** OpenAI/Codex desktop on macOS, physical root
-  `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
-  `origin/openai/mac`, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`. Do not edit
-  another agent worktree or the sibling live-site repository.
-- **Exact browser-certified source:** signed commit
-  `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
-  `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent
-  `916d921ebf787ed6c58ec8db567e00bbb61adbf8`). Its raw commit carries the configured ED25519 SSH
-  signature; local verification is green with the project allowed-signers identity.
-- The complete serial browser campaign ran from that source while it remained committed, clean and
-  byte-identical at every begin/end boundary. The current evidence/docs batch changes no product,
-  release, build, ruler or harness bytes and therefore does not invalidate or relabel that source.
-  Current `HEAD` after this batch is the signed evidence/docs descendant; resolve its exact SHA
-  locally with `git rev-parse HEAD` rather than treating it as a second browser-certified source.
-- Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully
-  contained. After the final evidence/docs checkpoint, `openai/mac` is **116 commits ahead** of
-  `origin/openai/mac`. Everything remains local and unpushed.
-- System Microsoft Edge `151.0.4129.107` / CDP `1.3` is exact run provenance only. Compatible Edge,
-  Chrome or Chromium point updates never trigger rebaseline, recalibration or threshold movement;
-  only an actual capability, producer, measurement or ruler change can do so.
-- Final machine state should use normal macOS sleep/lock behavior. If temporary
-  `/usr/bin/caffeinate -dis` is still active after verifying the signed evidence checkpoint,
-  terminate it; the long Recovery observation no longer needs the machine held awake.
+- **Scope/owner:** OpenAI/Codex desktop on macOS at
+  /Users/nick/Projects/celestial-frontier-openai-mac, branch **openai/mac**, upstream
+  **origin/openai/mac**. The implementation campaign changed only `port/v2` and current reference
+  Markdown; legacy `main.js` / `celestial-frontier.html`, the other-agent worktree and the sibling
+  live-site repository remain untouched.
+- **Git state:** committed HEAD **7108e22a0c99b6cf01085e5fec3cf2e1c7657c9d**; branch remains
+  **116 commits ahead** of `origin/openai/mac`. The worktree is intentionally dirty and shared.
+  Preserve every existing user change.
+- **Separately staged Glass repair:** the staged preview/Glass evidence-chain repair remains intact.
+  `port/v2/tools/glassmatrix.mjs` is staged-and-unstaged (MM). Never reset, discard or casually
+  restage it. Bare Glass invocation fails preflight by design without the immutable Slice
+  predecessor ID.
+- **Integration boundary:** Nick authorized a local commit, push of `openai/mac` and a draft PR toward
+  `develop` on 2026-08-29. No exact `actions-budget-approved` battery attempt, PR merge, production
+  version bump, preview publication, release, deployment or legacy-game edit is authorized. Actions
+  is **UNFROZEN**, but **zero exact hosted attempts are authorized**.
+- **Naming:** **Pureforged** is the approved current v2 player-facing name for fully exceptional
+  supported fixed crafts. Exceptional remains the material grade; stable internal
+  `exceptional-v1` identifiers, receipts and save identity remain unchanged. Frozen v1.8.9
+  “Exceptionally Forged” history remains byte-identical.
+- **Historical browser certificate:** signed source
+  **3f69e88ea8e34fdb8d9913276601b426ada783ae** owns the completed once-only
+  Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain: Layout 787/787,
+  SceneMemory 44/44, Compendium 78/78, zero-finding Slice, all 12 Glass viewports and the real
+  20-minute Recovery observation. This later dirty local candidate does not inherit or relabel it.
+- Edge/Chrome/Chromium point versions are provenance only. A compatible browser update never
+  requires rebaseline, recalibration or threshold movement.
 
-### Complete local automated certificate
+### Completed dependency-ready local campaign
 
-- Layout `20260829-universe-polish-3f69e88ea8e3-layout` ran once and passed **787/787** sealed
-  outcomes across ten viewports in **76,603 ms**, then passed its exact named verifier.
-- SceneMemory `…-scenemem` ran once and passed current input-v4 **44/44** in **10,561 ms**, including
-  both phone/desktop biome-vista lifecycle outcomes and complete cleanup, then passed its verifier.
-- Compendium `…-compendium` ran once and passed **78/78** in **46,239 ms** with zero findings,
-  zero blocked outcomes, all six review-image bindings and the active calibrated ruler, then passed
-  its verifier.
-- Slice `…-slice` ran once and passed in **434,263 ms** with zero findings/scopes and ten bound
-  screenshots. Raw report/log SHA-256 are `33aa30b308e5358e4fc699d9749d804ba8086ebfe6b0ee305314deb1b6483411` /
-  `267fae851a68cdf5f74f2552d8ee5a11e9c0f58f718434b0e6bcd10098ea2172`.
-- Glass `…-glass` consumed that exact Slice report, ran once and passed all **12** viewport classes
-  in **85,823 ms** with **104/104** responsive/a11y controls, **36/36** Arc 4 outcomes, zero
-  blocked/omitted controls, zero findings and zero instrument failures. Raw report SHA-256 is
-  `2a67a258f4e0d69a641bec099374de036a9bceb53ae66b328a1221f252f7d591`.
-- Recovery `…-recovery` consumed those exact Slice and Glass hashes, ran once and passed all ten
-  stages, **15/15** observation outcomes and **22/22** domain checks in **1,290,953 ms**. Its real
-  uninterrupted active-browser observation lasted **1,200,297.5 ms**, crossed the exact next-cycle
-  boundary and recovered the UI with zero findings/fatal events and complete cleanup. Raw report
-  SHA-256 is `b78e8a52e8746afbe89b7866d5d7e35b519d3168de1da8697c2ffd421b5a5907`.
-- Every browser gate ran once with zero automatic retries. One preliminary manual Glass verifier
-  command omitted its required Slice ID and exited at CLI usage parsing before report access, lock,
-  build or browser launch. The corrected Slice-bound verifier was the first evidence judgment and
-  passed; Recovery independently replayed the same exact predecessor contract.
-- Seven immutable gzip carriers pass integrity and byte-identical decompression. Their exact paths,
-  raw/gzip sizes and SHA-256 values are at the top of `audits/README.md`.
+“Complete” here means every dependency-ready item selected for this local campaign is implemented,
+documented and browser-free green. It does not pretend that absent canonical product tables, HUMAN
+judgment, physical-device evidence, a fresh immutable browser certificate, whole Gates A–I or a
+production release are complete.
 
-### Implemented player-visible scope
+- **Universe-wide visual language:** deterministic finishing spans galaxies, systems, planets, all
+  43 canonical biomes, fauna, flora, fungi, microbes, ships and bounded effects without changing
+  seeds, anatomy, silhouettes, proportions, topology, share identity or interaction geometry.
+- **Durable action foundation:** Landing, world Rename, Atlas, Mine, fixed Fabrication, capture,
+  Feed, Breed, companion Rename, Field Scout, combat, identity/share/travel/progression, Starter
+  Charter, Binder and Frontier-ending writes use their owning receipt/CAS fixed point. Runtime,
+  revision, checkpoint and canonical-state proof precede publication; stale, forged, Training-held,
+  ambiguous and postcommit-failure paths refuse, roll back or converge read-only without retry or
+  optimism.
+- **Exploration/economy:** exact-instance Inventory, finite Mine/Skim, Deep Scanners, the connected
+  fixed recipes, Pureforged exact-item modifiers, source-proven Search/Survey/Travel/Atlas routes,
+  Arc 4 Tame/Scavenge/Sample and first-find rewards are player-live.
+- **Companions:** Feed, Breed, Rename and Field Scout preserve exact individual identity and the
+  existing creature/genome work. Breed preserves both parents, draws once after successor
+  certification, creates one deterministic child only on success, grants that child +2 XP and the
+  first canonical unordered species pair +5, supports v1 pair-alias evidence, and keeps exact
+  active-play Recovery/overflow/archive authority.
+- **Combat/Guardians/Prime:** explorer or eligible living owned fauna/Guardian/Titan champions use
+  the deterministic forecast, transcript and one settlement. Conquest, XP, Stardust, injury/loss,
+  acquisition, Prime claims, Starter Conquest and progression share the verified fixed point.
+  Prime Codex exposes all nine Signature rows; its ninth distinct claim opens five established
+  Frontier endings, including the exact Balance predicate and one-choice/unknown-import protection.
+- **Presentation/audio:** the timed accessible Combat Chronicle, native HP meters, statistics,
+  silent Skip and plain-text Share are live. Exact transcript-owned impact/critical/ability cues use
+  the bounded master-Sound combat bus. Tame greeting, Feed acknowledgement, owned-fauna Listen and
+  generic no-spoiler biosphere Listen remain explicit, no-autoplay and presentation-only.
+- **Progression/records:** the ten-rank ladder, 96 achievements, 68 aggregate rows and 23 true event
+  owners are live. Achievement/rank ceremonies occur only after exact committed publication and
+  remain silent during boot, replay, Training, convergence and refusal. Settings supports earned
+  nameplates and identity-only Explorer rename; valid Share/Follow, Survey, Travel and Atlas
+  Favorite own their exact joins.
+- **Starter Charters/Binder:** the board owns both progressive Starter chains, next-link reveal,
+  explicit Accept and a three-active cap. Landing, Mine, eligible fixed Fabrication, Field Scout and
+  verified Conquest settle their authored 10–25 Stardust, supported Gear, achievement and rank
+  outcomes atomically. Binder owns six legacy pages and seven non-Paragon 25–150-Stardust claims;
+  the Fifty Paragons and imported evidence remain protected.
+- **PWA/install boundary:** exact-build inventory/digest, completion-marker-last install,
+  current-plus-one-prior retention, per-document pinning and explicit Check/Activate/Reload/Roll
+  back controls are locally implemented; physical install/update/rollback remains a later device
+  review.
+- **Guide/release truth:** the mature Guide remains 41 visible topics, now **34 partial / 7
+  unavailable**. **A New Foundation** remains a cumulative **73-bullet**, explicitly unreleased v2
+  development bulletin. No current production v2 version or update-popup authority exists.
 
-- **Universe-wide visual polish:** one deterministic finishing language now spans galaxy and system
-  space, planet sprites, all **43** canonical biome landing profiles, fauna/flora/fungi/microbe
-  canvases, creature and plant details, Shipyard presentation, bloom/fog/particles and
-  protostar/effect treatment. Sol is calibration only; there is no Sol-only branch.
-- Existing authored silhouettes, anatomy, proportions, topology, seeds, share-code identity and
-  interaction geometry remain intact. Atmosphere, depth, grading, rim light, material response and
-  bounded effects layer around the established structures rather than replacing them.
-- The canonical biome-profile authority and lazy one-entry vista worker/cache project the proven
-  world plus canonical roster into the preserved compositor with stale fencing, exact identity,
-  fail-soft fallback and phone/desktop ownership/resource bounds.
-- Visual Effects, Screen Shake and Reduced Motion resolve through explicit bounded policies. Effects
-  Off disables optional animation/particles while keeping deterministic base art visible.
-- **Bounded Arc 5 Feed scope:** real Compendium fauna detail owns one exact creature + flora
-  transaction, fixed five-segment persistence, nonoptimistic pending state, one committed winner,
-  stale-CAS read-only convergence across two same-origin documents, reload fixed point, accessible
-  status and exact expression audio through the shared Tame runtime. This does not claim unrelated
-  Arc 5 companion work is complete.
-- Generated non-Earth civilization years use deterministic D-LOC formatting without changing values
-  or RNG. The canonical ecology join remains pure and non-playing; no distant-world playback is
-  claimed.
+### Final browser-free evidence
 
-### Review and browser-free evidence
+- **Complete v2 suite:** **230 files / 2,315 passed / 1 skipped / 0 failed**.
+- **Consolidated campaign focus:** **19 files / 207 passed**. The final semantic-hardening subset
+  separately passed **15 files / 139 tests**; the repaired Arc 9 and Chronicle instruments passed
+  their direct negative-controlled sets.
+- **TypeScript:** root, game-app and worker configurations all pass `npm run typecheck`.
+- **Compendium instrument:** `npm run compendiummem:selftest` passes **222 independent product
+  controls**.
+- **Current authority:** `node tools/print-producer-authorities.mjs` exits 0; SceneMemory,
+  Compendium measurement and Compendium producer all match their budgets. The three authority/
+  budget files pass **45/45** focused tests.
+- **Exact current identities:** Scene build `e556d4223a320511cf48302b3d399d369c74187138f80e44f6af7ed029c588bf`,
+  Scene budget `11a2ab04abfa3d9300a55c51a69a781c23ebdf4346b33cde3cabc5623fae9bfc`;
+  Compendium measurement `7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4`,
+  producer `053f520c5149e66cbf1ee843c0873a531757b598f5830a7712a728537607890d`,
+  budget `5dbb5c80caf63c789fa15fc0acc9e4683613e221a1b1edb413ef980a9d8d2eb4`.
+  Numeric ceilings, fixed rulers, historical calibration samples and browser-family policy did not
+  change.
+- Staged and unstaged diff hygiene is green at this checkpoint.
+- **No browser-owning command was run for this moving dirty source.** A fresh clean,
+  committed-source immutable browser chain remains post-review work; the historical `3f69e88…`
+  certificate is not evidence for these later additions.
 
-- Final independent product, harness, evidence and whole-plan audits are **CLEAR**. Product/release
-  blobs are unchanged by the final Slice/Glass repairs; all stopped attempts remain immutable and
-  honestly classified rather than retried or relabelled.
-- Full v2 battery: **163 files / 1,712 passed + 1 skipped**; all three TypeScript configurations,
-  Glass selftest, current producer derivation and diff hygiene are green. Earlier full root/v1,
-  determinism, fixture, training, art, SceneMemory/Compendium calibration and mutation-control
-  batteries remain preserved at their exact signed checkpoints.
-- Fixed-seed 1280×720 before/after pairs cover eleven representative universe surfaces under
-  `port/v2/apps/game/smoke/20260828-universe-polish-fixed-seeds/` as ignored local developer
-  evidence. They establish structure preservation for developer review, not HUMAN art acceptance.
-- Superseded campaign stops, calibration decisions and exact hashes moved verbatim to
-  `ROADMAP_ARCHIVE.md`; detailed immutable evidence remains newest-first in `audits/README.md`.
+### Protected/deferred scope — do not invent
 
-### Explicitly open after local automation
+- **Charters/progression:** Discover life, accepted bioscan and weekly wall-week/slate/acceptance/
+  rollover authority remain protected. Exactly `daily`, `decade`, `survivor`, `fieldmedic` and
+  `gambler` lack true event owners. Achievement reward claims and Fifty Paragons remain unported.
+- **Companions/combat:** canonical mission catalogues, care/taste/bond/healing, friendly-duel
+  progression, party/retreat and broader Chronicle/Museum history still lack complete approved
+  product rules. Preserve the existing creature/genome/ownership structures.
+- **Loot/Guardians:** D-ARC6-AFFIX-1 still needs the explicit 40% conquest-imbue coexistence policy.
+  D-ARC6-GUARDIAN-REWARD-1 still lacks an authored extra Guardian Gear/material table; do not infer
+  either from adjacent systems.
+- **Production media/depth:** recorded assets, authored continuous ambience/music, Guardian motifs,
+  remaining non-impact combat cues, projects/outposts and later Ascent/Legacy consequences remain
+  separately authored work.
+- **Polish/evidence:** first-interaction optimization, fresh exact-source Slice/Glass/Recovery,
+  real-veteran-save import, screen-reader/device install and phone/tablet frame/heat/battery/true-GPU
+  checks remain review/evidence work. HUMAN first-journey, attachment, strategic-combat,
+  visual/listening and accessibility judgment cannot be closed by unit tests.
 
-- HUMAN visual appeal across the whole universe and physical phones/tablets; screen-reader behavior;
-  listening judgment; first-journey/playtest judgment; physical-device frame-time, heat, battery and
-  true GPU/resource measurement remain open.
-- Gate G live distant-world ecology playback remains deliberately unwired; D-9e remains
-  design-gated. Gates A–I are not globally closed.
-- No production release, version bump, preview publication, deployment, push, PR update, Actions
-  run or merge is authorized by this local certificate.
+### Claude Fable polish-review package
 
-### Completion and next action
+Review only **`port/v2` plus the current root/reference Markdown diff**. Do not modify legacy v1,
+recreate established systems, change deterministic identities, alter save meanings, weaken tests,
+move calibrated ceilings, or invent any protected table above. First inspect source and current
+references together, then report precise findings with severity, file/line evidence, affected
+invariant and the smallest safe correction. Review these axes:
 
-- The requested implementation, diagnosis, full local automated certification, evidence
-  preservation and whole-plan/code review are complete. Do not rerun the browser chain unless a
-  product/harness source or bound authority actually changes; an Edge point update alone is not a
-  reason.
-- The next meaningful work is a separately chosen HUMAN review/device session or a separately
-  authorized hosted PR attempt. No additional local code work is required for this bounded goal.
+1. gameplay loop clarity, retention pacing and honest No Man’s Sky / Diablo / Path of Exile /
+   Pokémon / Minecraft / Satisfactory-inspired depth without manipulative pressure;
+2. transaction authority, exact-once rewards, CAS/rollback/convergence, save compatibility and
+   deterministic identity;
+3. creature/genome/ownership preservation, combat/Guardian/Prime/Charter/Binder progression and
+   canonical rule fidelity;
+4. UI/accessibility/mobile-first presentation, universe-wide visual cohesion and audio lifecycle;
+5. performance, dead/unreachable code, duplicate owners, package boundaries, tests/instruments and
+   Markdown/source agreement.
 
-### Paired handoff
+The review should distinguish a product defect from an instrument defect, preserve historical
+evidence verbatim and leave policy/HUMAN items explicitly open. OpenAI/Codex repairs accepted
+findings only after that review.
 
-- **OpenAI/Codex:** verify the signed evidence/docs checkpoint is clean, terminate any remaining
-  temporary caffeinate process, and stop. Do not push or start another implementation loop.
-- **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
-  apply `actions-budget-approved`, dispatch, rerun, merge, deploy, publish or bump a version.
-- **PR details if Nick later authorizes the exact GitHub write:** base `develop`; source
-  `openai/mac`; title **`Phase 4: universe-wide visual polish and bounded Arc 5 Feed`**; description
-  **`Carries the deterministic visual treatment across galaxy/system space, all 43 biomes,
-  creatures, plants, ships and effects without structural redesign; completes the bounded Arc 5
-  Feed scope with two-document stale-CAS convergence and exact expression audio; strengthens
-  version-tolerant browser and memory evidence; synchronizes Guide/release/current references; and
-  records the complete local automated certificate. Anthropic/Claude receives it only after merge
-  to develop. No production release, deployment or version bump is included.`**
-- **Anthropic/Claude Code:** Nick does not need to open Claude now. This local work is not in
-  `develop`; do not copy files manually. After a future authorized PR merges, Claude may fetch and
-  merge the latest `origin/develop` into a clean `anthropic/*` branch at its next coding batch.
-- **Release status:** `develop`, `main` and the live site are unchanged; no release or deployment.
-- **Actions budget:** `UNFROZEN`; repository public; 3,000 fail-closed private/ambiguous cap; zero
-  exact hosted attempts authorized.
+### Paired handoff / Git protocol
+
+- **OpenAI/Codex:** commit the complete candidate, including the separately staged Glass repair, push
+  only `openai/mac` and create/update its draft PR to `develop`. Do not label, request a hosted
+  battery, merge, release or deploy until Nick authorizes the exact next operation.
+- **Anthropic/Claude Code:** Nick does not need to open Claude inside this dirty shared worktree.
+  After a safe local commit/handoff is explicitly authorized, Claude works only from an
+  `anthropic/*` branch/worktree created from that exact candidate—never by copying files out of this
+  worktree.
+- **GitHub step now:** push the completed `openai/mac` head and create/update a **draft** PR to
+  `develop`. No Actions label/dispatch/rerun, merge, release, deploy, publish or version bump.
+- **Future OpenAI PR, only after exact authorization:** base **develop**, source **openai/mac**.
+  Recompute a copy-ready title/description from the post-review fixed scope.
+- **Release status:** `develop`, `main` and the live site are unchanged; no production release or
+  deployment is in progress.

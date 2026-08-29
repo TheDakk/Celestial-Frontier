@@ -570,7 +570,9 @@ const stageZeroCharterHintIsTruthful = (text) => /Sol is your current reach/i.te
   && /exact recipe requirements are met/i.test(text || '')
   && !/next Charter system is not available|does not award the next Charter system/i.test(text || '')
   && !/fabricate (?:the )?(?:Long-Range Array|Intergalactic Drive)/i.test(text || '');
-const hasUnavailableCharterDirective = (text) => /Discover life on 2 alien worlds|Conquer a world|Breed a hybrid bloodline|Accept to begin|three charters a week/i.test(text || '');
+const hasUnavailableCharterDirective = (text) => /Conquer a world|Accept to begin|three charters a week/i.test(text || '');
+const hasLiveBioscanCharterDirective = (text) => /Discover life on 2 alien worlds/i.test(text || '');
+const hasLiveBreedCharterDirective = (text) => /Breed a hybrid bloodline/i.test(text || '');
 /* Legacy decodeWhere repairs these fractional identity bytes into Earth.
    Planet Search must reject them before its tolerant decode/sanitizer. */
 const COERCED_EARTH_PLANET_CODE = 'CF1-eyJ0IjoicCIsImciOls5MCwtNjAsNzgsMCwwLjYyLDAuNSw5OTkuOSwxXSwicyI6WzU2MCwxNzAsNDI0MjQyLjldLCJwIjoxMzMuOX0';
@@ -696,6 +698,14 @@ const ARC4_PERTAR_RAW = (() => {
       seed: ARC4_PERTAR_FIXTURE.star.seed,
     },
   };
+  return JSON.stringify(save);
+})();
+const ARC0_LANDING_FAULT_RAW = (() => {
+  const save = JSON.parse(ARC4_PERTAR_RAW);
+  save.me = 'Arc 0 Landing Fault Browser Fixture';
+  save.land = Array.isArray(save.land)
+    ? save.land.filter((seed) => seed !== ARC4_PERTAR_FIXTURE.planet.seed)
+    : [];
   return JSON.stringify(save);
 })();
 const ARC4_PERTAR_SOURCE_SAVE = JSON.parse(ARC4_PERTAR_RAW);
@@ -1058,7 +1068,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 64;
+const V2_DRAFT_BULLET_COUNT = 73;
 const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save — nothing was stored.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -1754,6 +1764,46 @@ const arc2MirrorParity = (evidence) => {
     && canonicalJson(expected) === canonicalJson(segment);
 };
 const arc2PercentEffect = (key) => ['yield', 'strike', 'scut', 'heal'].includes(key);
+const ARC2_EXCEPTIONAL_CRAFT_EFFECTS_V1 = Object.freeze({
+  'exceptional-v1:yield': Object.freeze({ key: 'yield', min: 0.10, max: 0.35 }),
+  'exceptional-v1:strike': Object.freeze({ key: 'strike', min: 0.02, max: 0.06 }),
+  'exceptional-v1:contact': Object.freeze({ key: 'contact', min: 4, max: 12 }),
+});
+const arc2ExactKeys = (value, keys) => value && typeof value === 'object'
+  && !Array.isArray(value)
+  && Object.keys(value).length === keys.length
+  && keys.every((key) => Object.prototype.hasOwnProperty.call(value, key));
+const arc2ExceptionalCraftEffect = (instance) => {
+  const modifier = instance?.craftedModifier;
+  const receiptId = instance?.provenance?.receiptId;
+  const sourceActionId = instance?.provenance?.sourceActionId;
+  const expectedSourceActionId = typeof instance?.baseId === 'string'
+    && typeof receiptId === 'string'
+    ? `loot1|craft|legacy-v1.8.9-items|${encodeURIComponent(`recipe:${instance.baseId}`)}|||${encodeURIComponent(receiptId)}`
+    : null;
+  const receiptOrdinal = typeof receiptId === 'string'
+    && /^receipt:(0|[1-9][0-9]{0,9})$/u.test(receiptId)
+    ? Number(receiptId.slice('receipt:'.length)) : null;
+  if (instance?.construction !== 'generated'
+    || Object.prototype.hasOwnProperty.call(instance ?? {}, 'drawback')
+    || !arc2ExactKeys(instance?.provenance, ['kind', 'sourceActionId', 'receiptId'])
+    || instance.provenance.kind !== 'craft'
+    || !Number.isSafeInteger(receiptOrdinal) || receiptOrdinal < 0 || receiptOrdinal > 0xffff_fffe
+    || sourceActionId !== expectedSourceActionId
+    || !arc2ExactKeys(instance?.generation, ['seed', 'ordinal'])
+    || !Number.isInteger(instance.generation.seed)
+    || instance.generation.seed < 0 || instance.generation.seed > 0xffff_ffff
+    || !Number.isInteger(instance.generation.ordinal)
+    || instance.generation.ordinal < 0 || instance.generation.ordinal > 65_535
+    || instance.instanceId !== `gear1|${sourceActionId}|${instance.generation.ordinal}`
+    || !arc2ExactKeys(modifier, ['affixId', 'tier', 'value'])
+    || !Object.prototype.hasOwnProperty.call(ARC2_EXCEPTIONAL_CRAFT_EFFECTS_V1, modifier.affixId)
+    || !Number.isInteger(modifier.tier) || modifier.tier !== instance.baseTier
+    || typeof modifier.value !== 'number' || !Number.isFinite(modifier.value)) return null;
+  const definition = ARC2_EXCEPTIONAL_CRAFT_EFFECTS_V1[modifier.affixId];
+  return modifier.value >= definition.min && modifier.value <= definition.max
+    ? definition : null;
+};
 const arc2TextNumber = (value, percent = false) => {
   const amount = percent ? value * 100 : value;
   const rounded = Number.isInteger(amount) ? String(amount) : String(Number(amount.toFixed(4)));
@@ -1781,6 +1831,16 @@ const arc2EffectRows = (instance) => {
     key: instance.legacyAffix.affixId, value: instance.legacyAffix.value,
     source: 'legacy', percent: arc2PercentEffect(instance.legacyAffix.affixId), condition: null,
   });
+  if (instance.craftedModifier) {
+    const definition = arc2ExceptionalCraftEffect(instance);
+    if (definition === null) {
+      throw new Error('Slice Arc 2 oracle received an invalid or unsupported crafted modifier');
+    }
+    rows.push({
+      key: definition.key, value: instance.craftedModifier.value, source: 'crafted',
+      percent: arc2PercentEffect(definition.key), condition: null,
+    });
+  }
   return rows;
 };
 const arc2ComparisonRows = (candidate, equipped) => {
@@ -5860,7 +5920,7 @@ try {
   const guide = await evalIn(guideCheck);
   if (!guide.open || guide.categoryCount !== 9 || new Set(guide.categoryIds).size !== 9
     || guide.topicCount !== 41 || guide.uniqueTopicCount !== 41
-    || guide.partialCount !== 25 || guide.unavailableCount !== 16
+    || guide.partialCount !== 26 || guide.unavailableCount !== 15
     || guide.availableCount !== 0 || guide.invalidAvailabilityCount !== 0
     || !guide.search || !guide.releases || guide.buildCount !== 1 || !guide.buildInsideGuide
     || !/Celestial Frontier v2\.0 development/i.test(guide.buildText)
@@ -5889,17 +5949,17 @@ try {
   if (guideAvailabilityCtl.mutated?.mutated !== true
     || guideAvailabilityCtl.mutated?.topicCount !== 41
     || guideAvailabilityCtl.mutated?.uniqueTopicCount !== 41
-    || guideAvailabilityCtl.mutated?.partialCount !== 24
-    || guideAvailabilityCtl.mutated?.unavailableCount !== 17
+    || guideAvailabilityCtl.mutated?.partialCount !== 25
+    || guideAvailabilityCtl.mutated?.unavailableCount !== 16
     || guideAvailabilityCtl.mutated?.availableCount !== 0
     || guideAvailabilityCtl.mutated?.invalidAvailabilityCount !== 0
     || guideAvailabilityCtl.restored?.topicCount !== 41
     || guideAvailabilityCtl.restored?.uniqueTopicCount !== 41
-    || guideAvailabilityCtl.restored?.partialCount !== 25
-    || guideAvailabilityCtl.restored?.unavailableCount !== 16
+    || guideAvailabilityCtl.restored?.partialCount !== 26
+    || guideAvailabilityCtl.restored?.unavailableCount !== 15
     || guideAvailabilityCtl.restored?.availableCount !== 0
     || guideAvailabilityCtl.restored?.invalidAvailabilityCount !== 0) {
-    fails.push('GUIDE INVENTORY CONTROL FAILED — exact 41-topic 25-partial/16-unavailable capability inventory did not reject one status mutation and restore: '
+    fails.push('GUIDE INVENTORY CONTROL FAILED — exact 41-topic 26-partial/15-unavailable capability inventory did not reject one status mutation and restore: '
       + JSON.stringify(guideAvailabilityCtl));
   }
   const guideSearch = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='landing';
@@ -5934,12 +5994,17 @@ try {
   if (guideLinkCtl.semantic) {
     fails.push('GUIDE KEYBOARD LINK CONTROL FAILED — injected pointer-only span stayed semantic: ' + JSON.stringify(guideLinkCtl));
   }
-  const unavailableGuide = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='breeding';
+  const breedingGuideBoundary = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='breeding';
     input.dispatchEvent(new Event('input',{bubbles:true})); const row=document.querySelector('[data-guide-topic="breeding"]');
     row?.click(); const p=document.getElementById('guidepanel'); return {status:p?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status'),text:p?.textContent||''}; })()`);
-  if (unavailableGuide.status !== 'unavailable' || !/Not yet available in v2|Not available in this v2 development slice/.test(unavailableGuide.text)
-    || /Both parents are consumed by the union/.test(unavailableGuide.text)) {
-    fails.push('GUIDE capability boundary advertised an unavailable legacy mechanic: ' + JSON.stringify(unavailableGuide));
+  if (breedingGuideBoundary.status !== 'partial'
+    || !/Both parents remain yours/.test(breedingGuideBoundary.text)
+    || !/8 active-play minutes/.test(breedingGuideBoundary.text)
+    || !/failure creates no child/.test(breedingGuideBoundary.text)
+    || !/requires reload and cannot breed twice/.test(breedingGuideBoundary.text)
+    || /Both parents are consumed by the union/.test(breedingGuideBoundary.text)) {
+    fails.push('GUIDE capability boundary did not expose narrow nonlethal Breed without legacy parent consumption: '
+      + JSON.stringify(breedingGuideBoundary));
   }
   const hpGuide = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='HP';
     input.dispatchEvent(new Event('input',{bubbles:true})); document.querySelector('[data-guide-topic="hp"]')?.click();
@@ -5997,16 +6062,26 @@ try {
       'later-world or later-cycle repeat adds another creature or lot without another page or first-find reward',
       'first successful Legendary-or-better observation earns its one Rare Find Stardust bonus',
       'result shows the exact amount', 'miss adds no page, creature, specimen, or Stardust',
-      'Capture never banks the Charter’s separate bioscan milestone', 'writer remains unavailable',
-      'Narrow feeding is available only from a real fauna Compendium detail',
-      'Breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable',
+      'first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction',
+      'A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing',
+      'v2’s current replacement for v1.8.9’s separate Discover Life action',
+      'Survey Records and accepted or weekly bioscan Charters remain unavailable',
+      'Narrow feeding, nonlethal companion Breeding, and exact-instance companion renaming are available only from a real fauna Compendium detail',
+      'Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable',
       'feeding does not yet discover tastes or flavours, grow stats or Power, heal injuries, apply poison, build a bond, or let the explorer eat',
     ], contradictions: [
       'The player chooses a visible species row to target.', 'Sample creates a living companion.',
       'Tame chooses only from the visible preview.',
       'Only a hit spends Yield.', 'Biosphere Yield is separate for each action.',
       'The Yield pool recovers while the game is closed.',
-      'A later-cycle repeat earns a new Rare Find reward.', 'Capture advances the Charter bioscan milestone.',
+      'A later-cycle repeat earns a new Rare Find reward.',
+      'Capture advances the Charter bioscan milestone.',
+      'A miss banks one Chapter 2 life-discovery tick.',
+      'A successful capture on Sol banks one Charter bioscan tick.',
+      'A later success on the same world banks another life-discovery tick.',
+      'A stale tab still banks one life-discovery tick.',
+      'A failed write advances the Charter bioscan.',
+      'The separate Discover Life action is now available.',
     ] },
     { id: 'research', title: 'Research & ships', missingAnchor: 'Research Bench lists exactly six canonical rows', required: [
       'Engineering & Shipyard', 'Research Bench lists exactly six canonical rows', 'Deep Scanners is the only current purchase',
@@ -6015,23 +6090,33 @@ try {
       'cosmic and exceptional veins, grades, reserves and progress, and mining remain grounded',
       'other five', 'visible but disabled',
       'Fabricator groups all 62 fixed recipes', 'built drive or Array changes the actual ship and reach',
-      'Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
+      'When every direct material unit for a slotted craft comes from exceptional stock',
+      'exact item receives one deterministic Pureforged modifier',
+      'mining yield, rich-strike chance, or capture-contact points',
+      'bound to its recipe and receipt',
+      'mixed stock remains an ordinary craft',
+      'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
       'Only one Engineering action can be pending', 'receipt-bearing transaction commits',
     ], contradictions: [
       'All six research rows can be purchased, and Research banks Charter fabrication credit.',
       'The current Survey card does not yet render those orbital rows.',
       'Orbital Survey also shows cosmic and exceptional veins, grades, reserves, progress, and Mine.',
-      'Fully exceptional slotted crafting is now available.', 'Fully-exceptional slotted craft is now available.',
+      'Mixed stock also receives a Pureforged modifier.',
+      'The Pureforged modifier rerolls after reload.',
       'Authored affixes/drawbacks are now available.',
       'Upgrades are now available.', 'Item upgrades are now available.', 'Sockets are now available.', 'Vendors are now available.',
     ] },
     { id: 'crafting', title: 'The Fabricator & gear', missingAnchor: 'Engineering & Shipyard → Fabricator', required: [
       'Inventory is a separate board', 'stable item instance', 'Equip, Unequip, Salvage, and pending-reward claim',
       'Engineering & Shipyard → Fabricator', 'lists all 62 fixed recipes', 'settle only rows whose output has a connected effect',
-      'Outputs with dormant effects', 'fully exceptional slotted crafting', 'authored affixes/drawbacks',
-      'item upgrades, sockets, and vendors remain unavailable',
+      'A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier',
+      'mining yield, rich-strike chance, or capture-contact points',
+      'as part of that exact item through comparison and reload',
+      'a mixed-material craft does not',
+      'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable',
     ], contradictions: [
-      'Fully exceptional slotted crafting is now available.', 'Fully-exceptional slotted craft is now available.',
+      'Mixed stock also receives a Pureforged modifier.',
+      'The Pureforged modifier rerolls after reload.',
       'Authored affixes/drawbacks are now available.',
       'Upgrades are now available.', 'Item upgrades are now available.', 'Sockets are now available.', 'Vendors are now available.',
     ] },
@@ -6049,7 +6134,7 @@ try {
     text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
     required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),
-    contradictory=/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)|current Survey card does not yet (?:render|show|paint)[^.!?]{0,80}(?:orbit|mineral)|(?:renders|shows|paints) every orbital mineral|orbital Survey (?:also |now )?(?:shows|reveals|includes|names)[^.!?]{0,96}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|(?:Mine|Skim|Survey)[^.!?]{0,80}earns? Stardust|(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)|(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)|(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)|miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)|(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)|Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)|(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)|(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)|(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,96}\\bnever\\b)[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan)|(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)|All six research rows can be purchased|Research banks Charter fabrication credit|fully[- ]?exceptional slotted craft(?:ing)? is now available|authored affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
+    contradictory=/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)|current Survey card does not yet (?:render|show|paint)[^.!?]{0,80}(?:orbit|mineral)|(?:renders|shows|paints) every orbital mineral|orbital Survey (?:also |now )?(?:shows|reveals|includes|names)[^.!?]{0,96}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|(?:Mine|Skim|Survey)[^.!?]{0,80}earns? Stardust|(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)|(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)|(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)|miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)|(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)|Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)|(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)|(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)|(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)|(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)|\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)|(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)|(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)|All six research rows can be purchased|Research banks Charter fabrication credit|(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)|Pureforged[^.!?]{0,80}(?:rerolls?|changes?)[^.!?]{0,64}(?:reload|reopen)|authored (?:natural )?affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
     return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
       title,status,missing,contradictory,text};})()`;
   for (const spec of arc3GuideSpecs) {
@@ -6086,21 +6171,28 @@ try {
       'successful first Planetside capture can add one page',
       'Tame also adds an owned fauna creature', 'Scavenge and Sample add specimen lots',
       'Later-world or later-cycle successes add another creature or lot without duplicating the page',
-      'real fauna detail alone exposes the narrow Feed action',
-      'breeding, renaming, scouting, dueling, missions, and every broader husbandry outcome remain unavailable',
+      'real fauna detail alone exposes the narrow Feed, nonlethal Breed, and exact-instance Rename actions',
+      'scouting, dueling, missions, and every broader husbandry outcome remain unavailable',
     ] },
     { id: 'specimen', title: 'Reading a specimen card', required: [
       'exact 440px portrait', 'same complete-genome identity as its exact 132px list thumbnail',
       '440px image is reserved for this detail rather than the list or Planetside',
       'Back returns to the saved list position and restores focus to the same logical row',
-      'Close returns focus to the exact Compendium opener', 'Back and Close both remain available around feeding',
+      'Close returns focus to the exact Compendium opener', 'Back and Close both remain available around feeding, breeding, and renaming',
       'Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row',
       'Tame hit adds one owned fauna creature',
       'Scavenge or Sample adds one specimen lot and never a living companion',
       'Only a real fauna detail offers Feed',
       'one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot',
       'Identical same-species twins remain separate exact instances',
-      'Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable',
+      'Rename chooses one exact owned companion of this species from bounded 24-row pages',
+      'assigned, recovering, and injured companions may be renamed because the action changes identity only',
+      'exhibition entries and protected or non-owned rows refuse',
+      'caps the result at 24 characters', 'Cleaned-empty or unchanged names consume no receipt or write',
+      'commit changes only that exact companion’s nickname', 'keeps the old name visible while pending',
+      'one immutable receipt and one compare-and-swap with no retry or optimistic publication',
+      'requires reload, and cannot rename twice',
+      'Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable',
     ] },
     { id: 'feeding', title: 'Feeding beasts', required: [
       'real fauna Compendium detail',
@@ -6116,7 +6208,27 @@ try {
       'one deterministic synthesized acknowledgement after that status appears',
       'Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent',
       'Back and Close remain available',
-      'tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable',
+      'tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable',
+      'Rename is also separate and changes only one selected exact companion’s nickname',
+    ] },
+    { id: 'breeding', title: 'Breeding', required: [
+      'real fauna Compendium detail', 'one exact owned companion of that detail’s species as the primary parent',
+      'one different exact owned fauna companion as the mate', 'Identical same-species twins remain separate exact instances',
+      'at most 24 candidates per page', 'paging keeps every eligible owned companion reachable',
+      'Exhibition creatures, mission-assigned companions, companions already in Recovery, and companions at 30% hurt or more stay disabled and explain why',
+      'same exact companion cannot occupy both parent roles',
+      'shown success chance comes from both parents’ established rarity tiers plus a bounded bonus from lifetime-earned Stardust',
+      'raw genetic values stay hidden', 'Both parents remain yours',
+      'success creates one deterministic child with its exact lineage', '8 active-play minutes of Recovery',
+      'failure creates no child', '2 active-play minutes of Recovery',
+      'Recovery blocks Breed, combat, and dispatch', 'Closing the game or moving the wall clock does not advance it',
+      'proves both possible complete save successors before its one outcome draw',
+      'one receipt-bearing compare-and-swap with no retry and no optimistic child or Recovery',
+      'refusal, stale result, or failed write draws nothing and adds nothing',
+      'requires reload and cannot breed twice', 'Back and Close remain available around the action',
+      'successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save',
+      'failed pairing, refusal, stale result, or failed write banks no Charter credit',
+      'Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable',
     ] },
   ];
   const renderedCompendiumGuideCheck = (spec) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
@@ -6127,14 +6239,16 @@ try {
       ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(text)
       ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(text)
       ||/(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i.test(text)
-      ||/(?:capture|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i.test(text)
+      ||/(?:capture|husbandry)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i.test(text)
       ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
       ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
       ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
       ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
       ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
       ||/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(text)
-      ||/(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i.test(text);
+      ||/(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i.test(text)
+      ||/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries|(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?)\s+(?!no(?:thing)?\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(text)
+      ||/Exhibition companions may still be renamed|Rename changes the selected companion genome|unchanged name consumes one receipt|Rename automatically retries|stale rename changes the nickname/i.test(text);
     return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
       title,status,missing,contradictory,text};})()`;
   const renderCompendiumGuideTopic = async (spec) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
@@ -6172,6 +6286,15 @@ try {
     return {ok:stale?.ok===false&&stale?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true
       &&rowTarget?.ok===false&&rowTarget?.contradictory===true&&restored,
       stale,contradiction,rowTarget,restored};})()`);
+  const renameGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,anchor='commit changes only that exact companion’s nickname',
+    marker=document.createElement('p');let node=null;while(walker&&(node=walker.nextNode())&&!(node.nodeValue||'').includes(anchor)){}
+    const prior=node?.nodeValue||'';if(node)node.nodeValue=prior.replace(anchor,'rename scope omitted');
+    const missing=${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])};if(node)node.nodeValue=prior;
+    const contradictions=[];for(const copy of ['Exhibition companions may still be renamed.','Rename changes the selected companion genome.',
+      'An unchanged name consumes one receipt.','Rename automatically retries after storage failure.','A stale rename changes the nickname.']){
+      marker.textContent=copy;article?.appendChild(marker);contradictions.push({copy,result:${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])}});marker.remove();}
+    const restored=${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])};return {nodeFound:!!node,missing,contradictions,restored};})()`);
   const feedingGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[2]);
   const feedingGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
     walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,anchor='one immutable receipt and one compare-and-swap save transaction',
@@ -6181,17 +6304,102 @@ try {
     const contradictions=[];for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.']){
       marker.textContent=copy;article?.appendChild(marker);contradictions.push({copy,result:${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])}});marker.remove();}
     const restored=${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])};return {nodeFound:!!node,missing,contradictions,restored};})()`);
-  if (!kingdomsGuide.ok || !specimenGuide.ok || !feedingGuide.ok) {
-    fails.push('GUIDE Compendium virtualization/art/focus/Feed contract did not render in Kingdoms, Specimen, and Feeding: '
-      + JSON.stringify({ kingdomsGuide, specimenGuide, feedingGuide }));
+  const breedingGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[3]);
+  const breedingGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,anchor='successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save',
+    marker=document.createElement('p');let node=null;while(walker&&(node=walker.nextNode())&&!(node.nodeValue||'').includes(anchor)){}
+    const prior=node?.nodeValue||'';if(node)node.nodeValue=prior.replace(anchor,'Charter co-delivery omitted');
+    const missing=${renderedCompendiumGuideCheck(compendiumGuideSpecs[3])};if(node)node.nodeValue=prior;
+    const contradictions=[];for(const copy of ['Both parents are consumed after breeding.','Recovery advances while the game is closed.',
+      'The same exact companion can occupy both parent roles.','A failed attempt creates one child.','Breeding automatically retries after a stale result.',
+      'A failed pairing also banks the Charter hybrid bloodline goal.']){
+      marker.textContent=copy;article?.appendChild(marker);contradictions.push({copy,result:${renderedCompendiumGuideCheck(compendiumGuideSpecs[3])}});marker.remove();}
+    const restored=${renderedCompendiumGuideCheck(compendiumGuideSpecs[3])};return {nodeFound:!!node,missing,contradictions,restored};})()`);
+  if (!kingdomsGuide.ok || !specimenGuide.ok || !feedingGuide.ok || !breedingGuide.ok) {
+    fails.push('GUIDE Compendium virtualization/art/focus/Feed/Breed/Rename contract did not render in the current topics: '
+      + JSON.stringify({ kingdomsGuide, specimenGuide, feedingGuide, breedingGuide }));
   }
   if (!kingdomsGuideCtl.ok || !specimenGuideCtl.ok || !feedingGuideCtl.nodeFound
     || feedingGuideCtl.missing?.ok || !feedingGuideCtl.missing?.missing?.includes('one immutable receipt and one compare-and-swap save transaction')
     || feedingGuideCtl.contradictions?.length !== 3
     || feedingGuideCtl.contradictions.some((row) => row.result?.ok || !row.result?.contradictory)
-    || !feedingGuideCtl.restored?.ok) {
-    fails.push('GUIDE COMPENDIUM COPY CONTROL FAILED — pre-Arc-1A, contradictory art ownership, or mutated Feed truth stayed current: '
-      + JSON.stringify({ kingdomsGuideCtl, specimenGuideCtl, feedingGuideCtl }));
+    || !feedingGuideCtl.restored?.ok
+    || !renameGuideCtl.nodeFound || renameGuideCtl.missing?.ok
+    || !renameGuideCtl.missing?.missing?.includes('commit changes only that exact companion’s nickname')
+    || renameGuideCtl.contradictions?.length !== 5
+    || renameGuideCtl.contradictions.some((row) => row.result?.ok || !row.result?.contradictory)
+    || !renameGuideCtl.restored?.ok
+    || !breedingGuideCtl.nodeFound || breedingGuideCtl.missing?.ok
+    || !breedingGuideCtl.missing?.missing?.includes('successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save')
+    || breedingGuideCtl.contradictions?.length !== 6
+    || breedingGuideCtl.contradictions.some((row) => row.result?.ok || !row.result?.contradictory)
+    || !breedingGuideCtl.restored?.ok) {
+    fails.push('GUIDE COMPENDIUM COPY CONTROL FAILED — stale art/Feed/Breed/Rename truth stayed current or failed to restore: '
+      + JSON.stringify({ kingdomsGuideCtl, specimenGuideCtl, feedingGuideCtl, renameGuideCtl, breedingGuideCtl }));
+  }
+  const audioGuideSpecs = [
+    { id: 'discover', title: 'Discovering life', missingAnchor: 'explicit Listen action on a real owned-fauna Compendium detail', required: [
+      'Sound and Creature voices on', 'verified Tame', 'exact committed Feed',
+      'explicit Listen action on a real owned-fauna Compendium detail',
+      'exact current identity and accessible status counterpart agree',
+      'Compendium list mounting, focus, filtering, and navigation never play a call',
+      'Listen to biosphere', 'one generic distant living-biosphere signal',
+      'exact current Planetside biosphere lead is visible',
+      'reveals no species, spends no Yield, awards nothing, and writes no save',
+      'Sound Off stops every path',
+      'Creature voices Off stops creature expressions but not the generic biosphere ambience',
+      'Other creature actions, authored ambience/music, and combat sound remain unavailable',
+    ] },
+    { id: 'settings', title: 'Settings', missingAnchor: 'Creature voices governs the verified Tame, committed Feed, and explicit owned-fauna Listen expressions', required: [
+      'Creature voices governs the verified Tame, committed Feed, and explicit owned-fauna Listen expressions',
+      'Sound governs all audio, including the generic Planetside biosphere signal',
+      'Each expression waits for its own current accessible status counterpart',
+      'Turning Creature voices or master Sound off stops its owned audio immediately',
+      'turning it back on never replays an earlier result',
+    ] },
+  ];
+ const renderedAudioGuideCheck = (spec) => `(()=>{const article=document.querySelector('#guidepanel .guide-topic'),
+   text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
+   status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
+    required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),unnegated=${hasUnnegatedSentenceClaim},
+    contradictory=unnegated(text,/(?:Compendium list|browsing|filtering|focus|navigation)[^.!?]{0,96}auto[- ]?plays?(?:[^.!?]{0,48})(?:call|voice|expression)/i)
+      ||unnegated(text,/(?:Listen to biosphere|biosphere signal)[^.!?]{0,96}(?:reveals?|names?)[^.!?]{0,48}(?:hidden )?species/i)
+      ||unnegated(text,/(?:Listen to biosphere|biosphere signal)[^.!?]{0,96}(?:spends?|costs?)[^.!?]{0,32}Yield/i)
+      ||unnegated(text,/(?:Listen to biosphere|biosphere signal)[^.!?]{0,96}(?:grants?|awards?)[^.!?]{0,48}(?:discovery|reward)/i)
+      ||unnegated(text,/(?:Listen to biosphere|biosphere signal)[^.!?]{0,96}(?:writes?|changes?)[^.!?]{0,32}(?:the )?save/i)
+      ||unnegated(text,/(?:Listen to biosphere|biosphere signal)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i)
+      ||unnegated(text,/Creature voices Off[^.!?]{0,96}(?:stops?|silences?)[^.!?]{0,64}(?:generic )?(?:biosphere|world) (?:ambience|signal)/i)
+      ||unnegated(text,/Sound Off[^.!?]{0,96}(?:still permits?|allows?|leaves?)[^.!?]{0,64}(?:call|voice|ambience|signal)/i);
+    return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
+      title,status,missing,contradictory,text};})()`;
+  const renderAudioGuideTopic = async (spec) => evalIn(`(()=>{const input=document.getElementById('guidesearch');
+    input.value=${JSON.stringify(spec.id)};input.dispatchEvent(new Event('input',{bubbles:true}));
+    document.querySelector('[data-guide-topic=${JSON.stringify(spec.id)}]')?.click();return ${renderedAudioGuideCheck(spec)};})()`);
+  const audioGuideRows = [];
+  for (const spec of audioGuideSpecs) {
+    const rendered = await renderAudioGuideTopic(spec);
+    const controls = await evalIn(`(()=>{const article=document.querySelector('#guidepanel .guide-topic'),
+      walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,anchor=${JSON.stringify(spec.missingAnchor)},marker=document.createElement('p');
+      let node=null;while(walker&&(node=walker.nextNode())&&!(node.nodeValue||'').includes(anchor)){}
+      const prior=node?.nodeValue||'';if(node)node.nodeValue=prior.replace(anchor,'audio ownership boundary omitted');
+      const missing=${renderedAudioGuideCheck(spec)};if(node)node.nodeValue=prior;
+      const contradictions=[];for(const copy of ['Compendium filtering auto-plays the selected creature call.',
+        'Listen to biosphere reveals a hidden species and spends 1 Yield.',
+        'The biosphere signal grants a discovery reward and changes the save.',
+        'Creature voices Off silences the generic biosphere ambience.',
+        'Sound Off still permits the owned creature call.']){
+        marker.textContent=copy;article?.appendChild(marker);contradictions.push({copy,result:${renderedAudioGuideCheck(spec)}});marker.remove();}
+      const restored=${renderedAudioGuideCheck(spec)};return {nodeFound:!!node,missing,contradictions,restored};})()`);
+    audioGuideRows.push({ id: spec.id, anchor: spec.missingAnchor, rendered, controls });
+  }
+  if (audioGuideRows.length !== 2 || audioGuideRows.some((row) => !row.rendered?.ok
+    || !row.controls?.nodeFound || row.controls?.missing?.ok
+    || !row.controls?.missing?.missing?.includes(row.anchor)
+    || row.controls?.contradictions?.length !== 5
+    || row.controls.contradictions.some((control) => control.result?.ok || !control.result?.contradictory)
+    || !row.controls?.restored?.ok)) {
+    fails.push('GUIDE AUDIO OWNERSHIP CONTROL FAILED — exact-companion/world Listen truth or its missing/contradictory controls failed: '
+      + JSON.stringify(audioGuideRows));
   }
   /* Arc 3 changes player-facing Charter truth, so prove both affected topics
      render the live writers and owned-reach boundary. Pure content lookup
@@ -6205,11 +6413,23 @@ try {
       /(?:Fabrication banks only the exact matching|recipes bank only their matching fabrication goals)/i,
       /Chapter 1 (?:can now be completed|is now completable)/i,/Jump Drive/i,/Long-Range Array/i,/Intergalactic Drive/i,
       /canonical progress and owned reach/i,/(?:invents? no|without invented) goals?/i,
-      /bioscan[^.]*conquest[^.]*breeding[^.]*unavailable/i,/Saved Prime Signatures separately/i],
+      /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i,
+      /A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing/i,
+      /v2’s current replacement for v1[.]8[.]9’s separate Discover Life action/i,
+      /Survey Records and accepted or weekly bioscan Charters remain unavailable/i,
+      /One successful Breed banks Breed a hybrid bloodline in the same offspring save/i,
+      /failed pairing, refusal, stale tab, or failed write banks no breeding credit/i,
+      /Conquest goals stay hidden until their Charter writer exists/i,/Saved Prime Signatures separately/i],
       missing=required.map((pattern)=>pattern.source).filter((_,index)=>!required[index].test(text)),
       stale=/only Charter outcome this slice writes|only new Charter goal progress|requires (?:a )?(?:real )?(?:newly )?banked landfall|only after a newly changed/i.test(text),
       contradictory=unnegated(text,/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i)
-        ||unnegated(text,/chapter (?:numbers?|progress)[^.!?]{0,64}(?:alone )?(?:grants?|creates?|mints?)[^.!?]{0,48}(?:drive|system|reach)/i);
+        ||unnegated(text,/chapter (?:numbers?|progress)[^.!?]{0,64}(?:alone )?(?:grants?|creates?|mints?)[^.!?]{0,48}(?:drive|system|reach)/i)
+        ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(text)
+      ||/(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(text)
+      ||/\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(text)
+      ||/(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)/i.test(text)
+      ||/(?:failed pairing|refusal|stale (?:tab|result)|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(text)
+      ||/Conquest goals?[^.!?]{0,80}(?:is|are) (?:now )?(?:visible|available|live)/i.test(text);
     return {ok:title.includes(${JSON.stringify(expectedTitle)})&&status==='partial'&&missing.length===0&&!stale&&!contradictory,
       title,status,missing,stale,contradictory,text};})()`;
   const renderCharterGuideTopic = async (topic, query, expectedTitle) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
@@ -6227,16 +6447,37 @@ try {
       + JSON.stringify({ chartersGuide, ascentGuide }));
   }
   const charterGuideCopyCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
-    staleMarker=document.createElement('p'),contradictionMarker=document.createElement('p');
+    staleMarker=document.createElement('p'),contradictionMarker=document.createElement('p'),
+    walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,
+    breedAnchor='One successful Breed banks Breed a hybrid bloodline in the same offspring save';
+    let breedNode=null;while(walker&&(breedNode=walker.nextNode())&&!(breedNode.nodeValue||'').includes(breedAnchor)){}
+    const breedPrior=breedNode?.nodeValue||'';if(breedNode)breedNode.nodeValue=breedPrior.replace(breedAnchor,'Breed Charter co-delivery omitted');
+    const breedMissing=${renderedCharterGuideCheck('Chapters')};if(breedNode)breedNode.nodeValue=breedPrior;
     staleMarker.textContent='First landfall banks live; it is the only Charter outcome this slice writes.';
     article?.appendChild(staleMarker);const stale=${renderedCharterGuideCheck('Chapters')};staleMarker.remove();
     contradictionMarker.textContent='Research banks a fabrication Charter goal, and chapter progress alone grants the next drive.';
     article?.appendChild(contradictionMarker);const contradiction=${renderedCharterGuideCheck('Chapters')};contradictionMarker.remove();
-    const restored=${renderedCharterGuideCheck('Chapters')};return {stale,contradiction,restored};})()`);
-  if (charterGuideCopyCtl.stale?.ok || !charterGuideCopyCtl.stale?.stale
+    const bioscanContradictions=[];for(const copy of ['Capture advances the Charter bioscan milestone.',
+      'A miss banks one Chapter 2 life-discovery tick.','A successful capture on Sol banks one Charter bioscan tick.',
+      'A later success on the same world banks another life-discovery tick.','A stale tab still banks one life-discovery tick.',
+      'A failed write advances the Charter bioscan.','The separate Discover Life action is now available.']){
+     contradictionMarker.textContent=copy;article?.appendChild(contradictionMarker);
+     bioscanContradictions.push({copy,result:${renderedCharterGuideCheck('Chapters')}});contradictionMarker.remove();}
+    const breedContradictions=[];for(const copy of ['A failed pairing also banks the Charter hybrid bloodline goal.',
+      'A stale Breed result grants breeding credit.','Conquest goals are now visible.']){
+      contradictionMarker.textContent=copy;article?.appendChild(contradictionMarker);
+      breedContradictions.push({copy,result:${renderedCharterGuideCheck('Chapters')}});contradictionMarker.remove();}
+    const restored=${renderedCharterGuideCheck('Chapters')};return {breedNodeFound:!!breedNode,breedMissing,stale,contradiction,bioscanContradictions,breedContradictions,restored};})()`);
+  if (!charterGuideCopyCtl.breedNodeFound || charterGuideCopyCtl.breedMissing?.ok
+    || !charterGuideCopyCtl.breedMissing?.missing?.includes('One successful Breed banks Breed a hybrid bloodline in the same offspring save')
+    || charterGuideCopyCtl.stale?.ok || !charterGuideCopyCtl.stale?.stale
     || charterGuideCopyCtl.contradiction?.ok || !charterGuideCopyCtl.contradiction?.contradictory
+   || charterGuideCopyCtl.bioscanContradictions?.length !== 7
+   || charterGuideCopyCtl.bioscanContradictions.some((row) => row.result?.ok || !row.result?.contradictory)
+    || charterGuideCopyCtl.breedContradictions?.length !== 3
+    || charterGuideCopyCtl.breedContradictions.some((row) => row.result?.ok || !row.result?.contradictory)
     || !charterGuideCopyCtl.restored?.ok) {
-    fails.push('GUIDE CHARTER COPY CONTROL FAILED — stale/contradictory Arc 3 wording stayed current or failed to restore: '
+    fails.push('GUIDE CHARTER COPY CONTROL FAILED — stale/contradictory Charter or bioscan wording stayed current or failed to restore: '
       + JSON.stringify(charterGuideCopyCtl));
   }
   /* Historical-sequence control: Ascent is still active here and deliberately
@@ -6371,15 +6612,20 @@ try {
       coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
       worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
       shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
-      capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
-      meal=bulletNodes.find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||'')),
+     capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
+      frontierAudio=bulletNodes.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
+      creatureListen=bulletNodes.find((item)=>/CREATURE CALLS ARE YOURS TO REQUEST/.test(item.textContent||'')),
+      biosphereListen=bulletNodes.find((item)=>/HEAR A LIVING WORLD WITHOUT SPOILERS/.test(item.textContent||'')),
+     meal=bulletNodes.find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||'')),
+      breed=bulletNodes.find((item)=>/TWO PARENTS, ONE DURABLE OUTCOME/.test(item.textContent||'')),
+      rename=bulletNodes.find((item)=>/ONE COMPANION, ONE DURABLE NAME/.test(item.textContent||'')),
       hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
       publishing=bulletNodes.find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||'')),
       headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
       firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),artHeading=headingFor(art),
-      shipyardHeading=headingFor(shipyard),captureHeading=headingFor(capture),mealHeading=headingFor(meal),hdSurfaceHeading=headingFor(hdSurface),publishingHeading=headingFor(publishing),
+      shipyardHeading=headingFor(shipyard),captureHeading=headingFor(capture),frontierAudioHeading=headingFor(frontierAudio),creatureListenHeading=headingFor(creatureListen),biosphereListenHeading=headingFor(biosphereListen),mealHeading=headingFor(meal),breedHeading=headingFor(breed),renameHeading=headingFor(rename),hdSurfaceHeading=headingFor(hdSurface),publishingHeading=headingFor(publishing),
       charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
-      trainingText=training?.textContent||'',artText=art?.textContent||'',shipyardText=shipyard?.textContent||'',captureText=capture?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',publishingText=publishing?.textContent||'',
+      trainingText=training?.textContent||'',artText=art?.textContent||'',shipyardText=shipyard?.textContent||'',captureText=capture?.textContent||'',frontierAudioText=frontierAudio?.textContent||'',creatureListenText=creatureListen?.textContent||'',biosphereListenText=biosphereListen?.textContent||'',mealText=meal?.textContent||'',breedText=breed?.textContent||'',renameText=rename?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',publishingText=publishing?.textContent||'',
       trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
@@ -6431,8 +6677,9 @@ try {
         ||/orbital Survey (?:also |now )?(?:shows|reveals|includes|names)[^.!?]{0,96}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)/i.test(shipyardText)
         ||/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i.test(shipyardText)
         ||unnegated(shipyardText,/(?:reward|cost|Charter tick|optimistic panel change)[^.!?]{0,80}publishes? before[^.!?]{0,48}(?:transaction )?commit/i)
-        ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
-        ||/authored affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
+        ||/(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)/i.test(shipyardText)
+        ||/Pureforged[^.!?]{0,80}(?:rerolls?|changes?)[^.!?]{0,64}(?:reload|reopen)/i.test(shipyardText)
+        ||/authored (?:natural )?affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
         ||/(?:item )?upgrades?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
         ||/sockets?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText)
         ||/vendors?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText),
@@ -6445,7 +6692,11 @@ try {
         &&shipyardText.includes('cosmic and exceptional veins, grades, reserves, progress, and mining remain grounded')
         &&shipyardText.includes('Fabrication enables only outputs with connected effects')
         &&shipyardText.includes('exact cost, prerequisite, revision, and capacity headroom')
-        &&shipyardText.includes('Fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
+        &&shipyardText.includes('A slotted craft paid entirely from exceptional direct materials now receives one deterministic Pureforged modifier')
+        &&shipyardText.includes('mining yield, rich-strike chance, or capture-contact points')
+        &&shipyardText.includes('bound to the exact recipe, receipt, and item')
+        &&shipyardText.includes('mixed stock remains ordinary')
+        &&shipyardText.includes('Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
         &&shipyardText.includes('Built permanent systems change the real ship and star reach')
         &&shipyardText.includes('Remnant skim damage is previewed before it can spend HP')
         &&shipyardText.includes('Engineering can spend preserved Stardust but does not earn it')
@@ -6459,7 +6710,10 @@ try {
         ||/Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)/i.test(captureText)
         ||/(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)/i.test(captureText)
         ||/(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)/i.test(captureText)
-        ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,96}\\bnever\\b)[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan)/i.test(captureText)
+        ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(captureText)
+        ||/(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(captureText)
+        ||/\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(captureText)
+        ||/(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)/i.test(captureText)
         ||/(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)/i.test(captureText),
       captureContract=captureHeading==='Gameplay'
         &&captureText.includes('Tame chooses uniformly from every eligible fauna in the full biosphere')
@@ -6478,11 +6732,33 @@ try {
         &&captureText.includes('later-world or later-cycle repeat adds another creature or lot without another page or first-find reward')
         &&captureText.includes('miss adds none of them')
         &&captureText.includes('Scavenge and Sample never create living companions')
-        &&captureText.includes('Capture never banks the Charter’s separate bioscan milestone')
-        &&captureText.includes('Narrow feeding is available from a real fauna Compendium detail')
-        &&captureText.includes('breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
+        &&captureText.includes('first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction')
+        &&captureText.includes('A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing')
+        &&captureText.includes('v2’s current replacement for v1.8.9’s separate Discover Life action')
+        &&captureText.includes('Survey Records and accepted or weekly bioscan Charters remain unavailable')
+        &&captureText.includes('Narrow feeding, nonlethal companion Breed, and exact-instance companion Rename are available from a real fauna Compendium detail')
+        &&captureText.includes('Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
         &&!captureContradiction,
-      mealText=meal?.textContent||'',
+      audioContradiction=unnegated(text,/(?:Compendium list|browsing|filtering|focus|navigation|returning)[^.!?]{0,96}auto[- ]?plays?[^.!?]{0,48}(?:call|voice|expression)/i)
+        ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:reveals?|names?)[^.!?]{0,48}(?:hidden )?species/i)
+        ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:spends?|costs?)[^.!?]{0,32}Yield/i)
+        ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:grants?|awards?)[^.!?]{0,48}(?:discovery|reward)/i)
+        ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:writes?|changes?)[^.!?]{0,32}(?:the )?save/i)
+        ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i),
+      audioContract=frontierAudioHeading==='New Features & Systems'
+        &&creatureListenHeading==='Gameplay'&&biosphereListenHeading==='Gameplay'
+        &&frontierAudioText.includes('one deterministic runtime across a verified durable wild-fauna Tame, one exact durable nonconverging Feed commit, and an explorer-requested call from one exact owned-fauna detail')
+        &&frontierAudioText.includes('Each waits for its own current visible accessible counterpart')
+        &&frontierAudioText.includes('browsing, filtering, focus, navigation, misses, refusals, stale or converging results, repeats, reloads, hidden play, route or counterpart loss, and disabled Sound or Creature voices remain silent without retry or replay')
+        &&frontierAudioText.includes('A separate explicit Planetside biosphere Listen may play one generic distant-ecology signal only while that exact inhabited world’s visible biosphere lead agrees')
+        &&frontierAudioText.includes('it reveals no species, spends no Yield, grants nothing, and writes no save')
+        &&frontierAudioText.includes('Authored ambience, music, other creature actions, and combat sound remain future work')
+        &&creatureListenText.includes('Open a real owned-fauna Compendium detail and choose Listen on an exact companion to hear its stable deterministic call')
+        &&creatureListenText.includes('Browsing, filtering, focusing, and returning through the Compendium never auto-play it')
+        &&biosphereListenText.includes('An inhabited Planetside now offers Listen to biosphere')
+        &&biosphereListenText.includes('only after that exact world’s biosphere lead is visible')
+        &&biosphereListenText.includes('never names a hidden species, spends Yield, grants a discovery or reward, or changes the save')
+        &&!audioContradiction,
       mealContradiction=/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(mealText)
         ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(mealText)
         ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(mealText)
@@ -6503,8 +6779,40 @@ try {
         &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
         &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
         &&/refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(mealText)
-        &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable')
+        &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable')
+        &&mealText.includes('Rename is identity-only and changes one selected exact nickname')
         &&!mealContradiction,
+      breedContradiction=/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries/i.test(breedText)
+        ||/(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(breedText),
+      breedContract=breedHeading==='Gameplay'
+        &&breedText.includes('Breed is now available from a real fauna Compendium detail')
+        &&breedText.includes('one exact owned companion of that detail’s species and one distinct exact owned fauna mate')
+        &&breedText.includes('same-species twins remain separate')
+        &&breedText.includes('bounded 24-row pages')
+        &&breedText.includes('Parents are never consumed')
+        &&breedText.includes('Success creates one deterministic child and gives both parents 8 active-play minutes of Recovery')
+        &&breedText.includes('failure creates no child and gives both 2')
+        &&breedText.includes('Recovery blocks Breed, combat, and dispatch')
+        &&breedText.includes('never advances from closed-game time or a changed wall clock')
+        &&breedText.includes('Both complete save outcomes—including exact Charter progress—are proved before the one draw')
+        &&breedText.includes('one immutable receipt and one compare-and-swap with no retry or optimistic child')
+        &&breedText.includes('A successful offspring banks Chapter 3’s Breed a hybrid bloodline goal in that same save')
+        &&breedText.includes('a failed pairing, refusal, stale result, or failed write banks nothing and grants no Charter credit')
+        &&breedText.includes('unconfirmable durable result locks read-only and reloads so it cannot breed twice')
+        &&!breedContradiction,
+      renameContradiction=/Exhibition companions may still be renamed|Rename changes the selected companion genome|unchanged name consumes one receipt|Rename automatically retries|stale rename changes the nickname/i.test(renameText),
+      renameContract=renameHeading==='Gameplay'
+        &&renameText.includes('Rename is now available from a real fauna Compendium detail')
+        &&renameText.includes('one exact owned companion from bounded 24-row pages')
+        &&renameText.includes('same-species twins remain separate by stable instance identity')
+        &&renameText.includes('Assigned, recovering, and injured companions may be renamed because this action changes identity only')
+        &&renameText.includes('exhibition, non-owned, protected, and revision-exhausted rows refuse')
+        &&renameText.includes('cleaned-empty or unchanged name consumes no receipt or write')
+        &&renameText.includes('changes only that exact companion’s nickname')
+        &&renameText.includes('never its species, genome, traits, lineage, assignment, condition, bond, catalogue alias, or another twin')
+        &&renameText.includes('One immutable receipt and one exact-five compare-and-swap settle without RNG, retry, or optimistic publication')
+        &&renameText.includes('converge read-only through reload so the name cannot apply twice')
+        &&!renameContradiction,
       hdSurfaceContract=hdSurfaceHeading==='Under the Hood'
         &&hdSurfaceText.includes('named HD surface-planet texture attachment')
         &&hdSurfaceText.includes('exact surface generation and planet identity')
@@ -6522,27 +6830,29 @@ try {
     const overclaim=/all six Research rows[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:bought|purchased|playable|available|live)/i.test(text)
       ||/all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:actionable|playable|available|live)/i.test(text)
       ||/(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
-      ||/fully[- ]?exceptional slotted craft(?:ing)?[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
-      ||/authored affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)/i.test(text)
+      ||/Pureforged[^.!?]{0,80}(?:rerolls?|changes?)[^.!?]{0,64}(?:reload|reopen)/i.test(text)
+      ||/authored (?:natural )?affixes?(?:\\/| and )drawbacks?[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-      ||/(?:biosphere discovery|Discover Life|renaming|Field Scouts?|duels?|breeding|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/(?:biosphere discovery|Discover Life|Field Scouts?|duels?|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
       ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
       ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
       ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
       ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
-      ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
+      ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text)
+      ||breedContradiction||renameContradiction;
     return {title,identity:title.includes('v2.0 · A New Foundation'),
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
       sectionBulletCounts,sectionsPopulated,uniqueBullets,
       populated:bullets.length===${V2_DRAFT_BULLET_COUNT}&&sectionsPopulated&&uniqueBullets
         &&bulletRaw.every((bullet)=>bullet.length>0&&bullet===bullet.trim()),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
-      complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
-        &&shipyardContract&&captureContract&&mealContract&&hdSurfaceContract&&publishingContract
+     complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
+        &&shipyardContract&&captureContract&&audioContract&&mealContract&&breedContract&&renameContract&&hdSurfaceContract&&publishingContract
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
@@ -6552,9 +6862,11 @@ try {
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text),
       charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
       workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,
-      captureHeading,captureContract,captureContradiction,mealHeading,mealContract,mealContradiction,hdSurfaceHeading,hdSurfaceContract,
+     captureHeading,captureContract,captureContradiction,mealHeading,mealContract,mealContradiction,
+      frontierAudioHeading,creatureListenHeading,biosphereListenHeading,audioContract,audioContradiction,
+     breedHeading,breedContract,breedContradiction,renameHeading,renameContract,renameContradiction,hdSurfaceHeading,hdSurfaceContract,
       publishingHeading,publishingContract,publishingContradiction,overclaim,
-      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!captureContradiction&&!mealContradiction&&!publishingContradiction
+      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!captureContradiction&&!audioContradiction&&!mealContradiction&&!breedContradiction&&!renameContradiction&&!publishingContradiction
         &&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
@@ -6653,6 +6965,20 @@ try {
     const surveyMissing=${releaseDraftCheck};
     row.textContent=prior.replace('Engineering can spend preserved Stardust but does not earn it','Engineering Stardust boundary omitted');
     const stardustMissing=${releaseDraftCheck};
+    row.textContent=prior.replace('A slotted craft paid entirely from exceptional direct materials now receives one deterministic Pureforged modifier',
+      'Pureforged outcome omitted');
+    const exceptionalMissing=${releaseDraftCheck};
+    row.textContent=prior.replace('mining yield, rich-strike chance, or capture-contact points',
+      'connected modifier effect set omitted');
+    const effectSetMissing=${releaseDraftCheck};
+    row.textContent=prior.replace('bound to the exact recipe, receipt, and item',
+      'exact modifier binding omitted');
+    const bindingMissing=${releaseDraftCheck};
+    row.textContent=prior.replace('mixed stock remains ordinary','mixed-stock boundary omitted');
+    const mixedMissing=${releaseDraftCheck};
+    row.textContent=prior.replace('Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
+      'advanced crafting boundary omitted');
+    const advancedBoundaryMissing=${releaseDraftCheck};
     row.textContent=prior.replace('and no reward, cost, Charter tick, or optimistic panel change publishes before',
       'and reward, cost, Charter tick, or optimistic panel change publishes before');
     const publicationChanged=row.textContent!==prior,publicationPolarity=${releaseDraftCheck};
@@ -6660,16 +6986,21 @@ try {
       'The current Survey card does not yet render those orbital mineral rows.',
       'The current Survey card renders every orbital mineral.',
       'Orbital Survey also shows cosmic and exceptional veins, grades, reserves, progress, and Mine.',
-      'Fully exceptional slotted crafting is now available.',
-      'Fully-exceptional slotted craft is now available.',
+      'Mixed stock also receives a Pureforged modifier.',
+      'The Pureforged modifier rerolls after reload.',
       'Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.',
       'Sockets are now available.','Vendors are now available.'],contradictions=[];
     for(const copy of claims){row.textContent=prior+' '+copy;const result=${releaseDraftCheck};contradictions.push({copy,result});}
-    row.textContent=prior;const restored=${releaseDraftCheck};return {missing,surveyMissing,stardustMissing,publicationChanged,publicationPolarity,contradictions,
+    row.textContent=prior;const restored=${releaseDraftCheck};return {missing,surveyMissing,stardustMissing,exceptionalMissing,effectSetMissing,bindingMissing,mixedMissing,advancedBoundaryMissing,publicationChanged,publicationPolarity,contradictions,
       restored:restored.shipyardContract===true&&restored.honest===true}; })()`);
   if (releaseShipyardCopyCtl.missing?.complete || releaseShipyardCopyCtl.missing?.shipyardContract
     || releaseShipyardCopyCtl.surveyMissing?.complete || releaseShipyardCopyCtl.surveyMissing?.shipyardContract
     || releaseShipyardCopyCtl.stardustMissing?.complete || releaseShipyardCopyCtl.stardustMissing?.shipyardContract
+    || releaseShipyardCopyCtl.exceptionalMissing?.complete || releaseShipyardCopyCtl.exceptionalMissing?.shipyardContract
+    || releaseShipyardCopyCtl.effectSetMissing?.complete || releaseShipyardCopyCtl.effectSetMissing?.shipyardContract
+    || releaseShipyardCopyCtl.bindingMissing?.complete || releaseShipyardCopyCtl.bindingMissing?.shipyardContract
+    || releaseShipyardCopyCtl.mixedMissing?.complete || releaseShipyardCopyCtl.mixedMissing?.shipyardContract
+    || releaseShipyardCopyCtl.advancedBoundaryMissing?.complete || releaseShipyardCopyCtl.advancedBoundaryMissing?.shipyardContract
     || !releaseShipyardCopyCtl.publicationChanged || releaseShipyardCopyCtl.publicationPolarity?.complete !== false
     || releaseShipyardCopyCtl.publicationPolarity?.shipyardContract !== false
     || releaseShipyardCopyCtl.publicationPolarity?.honest !== false
@@ -6686,17 +7017,32 @@ try {
     if(!row||!wrongSection)return {missing:{complete:true,captureContract:true},contradictions:[],placement:{captureContract:true},restored:false,error:'missing Capture release row'};
     const prior=row.textContent,parent=row.parentNode,next=row.nextSibling;
     row.textContent=prior.replace('Tame chooses uniformly from every eligible fauna in the full biosphere','capture selection boundary removed');
-    const missing=${releaseDraftCheck};row.textContent=prior;
+    const missing=${releaseDraftCheck};
+    row.textContent=prior.replace('first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction','bioscan scope removed');
+    const bioscanMissing=${releaseDraftCheck};
+    row.textContent=prior.replace('A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing','bioscan exclusion boundary removed');
+    const bioscanExclusionMissing=${releaseDraftCheck};
+    row.textContent=prior.replace('v2’s current replacement for v1.8.9’s separate Discover Life action','Discover Life replacement boundary removed');
+    const discoverLifeMissing=${releaseDraftCheck};
+    row.textContent=prior.replace('Survey Records and accepted or weekly bioscan Charters remain unavailable','mature bioscan availability boundary removed');
+    const matureBioscanMissing=${releaseDraftCheck};row.textContent=prior;
     const claims=['Tame targets the selected preview row.','Tame chooses only from the visible preview.',
-      'Biosphere Yield is separate for each action.'],contradictions=[];
+      'Biosphere Yield is separate for each action.','Capture advances the Charter bioscan milestone.',
+      'A miss banks one Chapter 2 life-discovery tick.','A successful capture on Sol banks one Charter bioscan tick.',
+      'A later success on the same world banks another life-discovery tick.','A stale tab still banks one life-discovery tick.',
+      'A failed write advances the Charter bioscan.','The separate Discover Life action is now available.'],contradictions=[];
     for(const copy of claims){row.textContent=prior+' '+copy;const result=${releaseDraftCheck};contradictions.push({copy,result});}
     row.textContent=prior;
     wrongSection.appendChild(row);const placement=${releaseDraftCheck};parent.insertBefore(row,next);
-    const restored=${releaseDraftCheck};return {missing,contradictions,placement,
+    const restored=${releaseDraftCheck};return {missing,bioscanMissing,bioscanExclusionMissing,discoverLifeMissing,matureBioscanMissing,contradictions,placement,
       restored:row.textContent===prior&&row.parentNode===parent&&restored.captureContract===true&&restored.honest===true};})()`);
   if (releaseCaptureCopyCtl.missing?.complete || releaseCaptureCopyCtl.missing?.captureContract
     || releaseCaptureCopyCtl.missing?.captureContradiction
-    || releaseCaptureCopyCtl.contradictions?.length !== 3
+    || releaseCaptureCopyCtl.bioscanMissing?.complete || releaseCaptureCopyCtl.bioscanMissing?.captureContract
+    || releaseCaptureCopyCtl.bioscanExclusionMissing?.complete || releaseCaptureCopyCtl.bioscanExclusionMissing?.captureContract
+    || releaseCaptureCopyCtl.discoverLifeMissing?.complete || releaseCaptureCopyCtl.discoverLifeMissing?.captureContract
+    || releaseCaptureCopyCtl.matureBioscanMissing?.complete || releaseCaptureCopyCtl.matureBioscanMissing?.captureContract
+    || releaseCaptureCopyCtl.contradictions?.length !== 10
     || releaseCaptureCopyCtl.contradictions.some(({ result }) => result?.complete
       || result?.honest || result?.captureContract || !result?.captureContradiction)
     || releaseCaptureCopyCtl.placement?.complete || releaseCaptureCopyCtl.placement?.captureContract
@@ -6978,27 +7324,87 @@ try {
   const releaseOverclaimCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][1];
     if(!row)return {truthful:[],unavailable:[],restored:false,error:'missing overclaim control row'};const prior=row.textContent,
       truthfulClaims=['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.',
-        'Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.','Exploration audio is now live.'],
+        'Fully exceptional direct-material gear crafting is now playable with a deterministic Pureforged modifier.',
+        'Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.',
+        'Breeding is now playable.','Renaming is now available.','Exploration audio is now live.'],
       unavailableClaims=['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
-        'Disconnected Fabricator outputs are now playable.','Fully-exceptional slotted craft is now playable.',
+        'Disconnected Fabricator outputs are now playable.',
+        'Mixed stock also receives a Pureforged modifier.','Pureforged modifiers reroll after reload.',
         'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Item upgrades are now live.',
-        'Sockets are now available.','Vendors are now live.','Discover Life is now playable.',
-        'Breeding is now playable.','Creature combat is now playable.','Feeding is now playable.',
-        'Renaming is now available.','Field Scouts are now live.','Duels are now playable.',
+        'Sockets are now available.','Vendors are now live.','The separate Discover Life action is now available.',
+        'Creature combat is now playable.','Feeding is now playable.',
+        'Field Scouts are now live.','Duels are now playable.',
         'Passive evolution is now available.','Companion assignment is now live.',
         'Missions are now playable.'],truthful=[],unavailable=[];
     for(const copy of truthfulClaims){row.textContent=prior+' '+copy;truthful.push({copy,result:${releaseDraftCheck}});}
     for(const copy of unavailableClaims){row.textContent=prior+' '+copy;unavailable.push({copy,result:${releaseDraftCheck}});}
     row.textContent=prior;const restored=${releaseDraftCheck};return {truthful,unavailable,restored}; })()`);
-  if (releaseOverclaimCtl.truthful?.length !== 5
+  if (releaseOverclaimCtl.truthful?.length !== 8
     || releaseOverclaimCtl.truthful.some((row) => !row.result?.complete || !row.result?.honest || row.result?.overclaim)
-    || releaseOverclaimCtl.unavailable?.length !== 19
+    || releaseOverclaimCtl.unavailable?.length !== 18
     || releaseOverclaimCtl.unavailable.some((row) => !row.result?.complete || row.result?.honest || !row.result?.overclaim)
     || !releaseOverclaimCtl.restored?.complete || !releaseOverclaimCtl.restored?.honest) {
-    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — live Mining/fixed crafting/Capture/narrow Feed went red, an unavailable claim stayed green, or copy failed to restore: '
+    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — a live Mining/crafting/Capture/Feed/Breed/Rename claim went red, an unavailable claim stayed green, or copy failed to restore: '
       + JSON.stringify(releaseOverclaimCtl));
   }
-  const releaseAuthorityCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,prior=S.api.state;let result;
+  const releaseCompanionWriteCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+    breed=rows.find((item)=>/TWO PARENTS, ONE DURABLE OUTCOME/.test(item.textContent||'')),
+    rename=rows.find((item)=>/ONE COMPANION, ONE DURABLE NAME/.test(item.textContent||''));
+   if(!breed||!rename)return {error:'missing Breed/Rename release fixtures'};
+   const breedPrior=breed.textContent||'',renamePrior=rename.textContent||'',breedContradictions=[],renameContradictions=[];
+    breed.textContent=breedPrior.replace('Parents are never consumed','parent survival omitted');const breedMissing=${releaseDraftCheck};breed.textContent=breedPrior;
+    breed.textContent=breedPrior.replace('Both complete save outcomes—including exact Charter progress—are proved before the one draw','Charter-bound successor proof omitted');const breedSuccessorMissing=${releaseDraftCheck};breed.textContent=breedPrior;
+    breed.textContent=breedPrior.replace('A successful offspring banks Chapter 3’s Breed a hybrid bloodline goal in that same save','Breed Charter co-delivery omitted');const breedCharterMissing=${releaseDraftCheck};breed.textContent=breedPrior;
+    rename.textContent=renamePrior.replace('changes only that exact companion’s nickname','rename scope omitted');const renameMissing=${releaseDraftCheck};rename.textContent=renamePrior;
+    for(const copy of ['Both parents are consumed after breeding.','Recovery advances while the game is closed.','A failed attempt creates one child.',
+      'A failed pairing also banks the Charter hybrid bloodline goal.']){
+      breed.textContent=breedPrior+' '+copy;breedContradictions.push({copy,result:${releaseDraftCheck}});breed.textContent=breedPrior;}
+    for(const copy of ['Exhibition companions may still be renamed.','Rename changes the selected companion genome.','An unchanged name consumes one receipt.']){
+      rename.textContent=renamePrior+' '+copy;renameContradictions.push({copy,result:${releaseDraftCheck}});rename.textContent=renamePrior;}
+    const restored=${releaseDraftCheck};return {breedMissing,breedSuccessorMissing,breedCharterMissing,renameMissing,breedContradictions,renameContradictions,restored};})()`);
+ if (releaseCompanionWriteCtl.error
+   || releaseCompanionWriteCtl.breedMissing?.complete || !releaseCompanionWriteCtl.breedMissing?.honest
+    || releaseCompanionWriteCtl.breedSuccessorMissing?.complete || releaseCompanionWriteCtl.breedSuccessorMissing?.breedContract
+    || releaseCompanionWriteCtl.breedCharterMissing?.complete || releaseCompanionWriteCtl.breedCharterMissing?.breedContract
+   || releaseCompanionWriteCtl.renameMissing?.complete || !releaseCompanionWriteCtl.renameMissing?.honest
+    || releaseCompanionWriteCtl.breedContradictions?.length !== 4
+    || releaseCompanionWriteCtl.breedContradictions.some((row) => row.result?.complete || row.result?.honest || !row.result?.breedContradiction)
+    || releaseCompanionWriteCtl.renameContradictions?.length !== 3
+    || releaseCompanionWriteCtl.renameContradictions.some((row) => row.result?.complete || row.result?.honest || !row.result?.renameContradiction)
+    || !releaseCompanionWriteCtl.restored?.complete || !releaseCompanionWriteCtl.restored?.honest) {
+    fails.push('GUIDE RELEASE BREED/RENAME CONTROLS FAILED — missing or contradictory exact-instance companion outcomes stayed current: '
+     + JSON.stringify(releaseCompanionWriteCtl));
+ }
+  const releaseAudioCopyCtl = await evalIn(`(()=>{const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+    frontier=rows.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
+    creature=rows.find((item)=>/CREATURE CALLS ARE YOURS TO REQUEST/.test(item.textContent||'')),
+    biosphere=rows.find((item)=>/HEAR A LIVING WORLD WITHOUT SPOILERS/.test(item.textContent||''));
+    if(!frontier||!creature||!biosphere)return {error:'missing audio release fixtures'};
+    const frontierPrior=frontier.textContent||'',creaturePrior=creature.textContent||'',biospherePrior=biosphere.textContent||'';
+    frontier.textContent=frontierPrior.replace('an explorer-requested call from one exact owned-fauna detail','owned-fauna identity boundary omitted');const frontierMissing=${releaseDraftCheck};frontier.textContent=frontierPrior;
+    creature.textContent=creaturePrior.replace('Browsing, filtering, focusing, and returning through the Compendium never auto-play it','Compendium silence boundary omitted');const creatureMissing=${releaseDraftCheck};creature.textContent=creaturePrior;
+    biosphere.textContent=biospherePrior.replace('only after that exact world’s biosphere lead is visible','visible inhabited-world counterpart omitted');const biosphereMissing=${releaseDraftCheck};biosphere.textContent=biospherePrior;
+    biosphere.textContent=biospherePrior.replace('never names a hidden species, spends Yield, grants a discovery or reward, or changes the save','no-reveal/no-economy boundary omitted');const biosphereEffectMissing=${releaseDraftCheck};biosphere.textContent=biospherePrior;
+    const contradictions=[];for(const copy of ['Compendium filtering auto-plays the selected creature call.',
+      'Listen to biosphere reveals a hidden species and spends 1 Yield.',
+      'The biosphere signal grants a discovery reward and changes the save.',
+      'The ecology pulse starts before any visible inhabited-world counterpart.']){
+      frontier.textContent=frontierPrior+' '+copy;contradictions.push({copy,result:${releaseDraftCheck}});frontier.textContent=frontierPrior;}
+    const restored=${releaseDraftCheck};return {frontierMissing,creatureMissing,biosphereMissing,biosphereEffectMissing,contradictions,restored};})()`);
+  if (releaseAudioCopyCtl.error
+    || releaseAudioCopyCtl.frontierMissing?.complete || releaseAudioCopyCtl.frontierMissing?.audioContract
+    || releaseAudioCopyCtl.creatureMissing?.complete || releaseAudioCopyCtl.creatureMissing?.audioContract
+    || releaseAudioCopyCtl.biosphereMissing?.complete || releaseAudioCopyCtl.biosphereMissing?.audioContract
+    || releaseAudioCopyCtl.biosphereEffectMissing?.complete || releaseAudioCopyCtl.biosphereEffectMissing?.audioContract
+    || releaseAudioCopyCtl.contradictions?.length !== 4
+    || releaseAudioCopyCtl.contradictions.some((row) => row.result?.complete || row.result?.honest
+      || row.result?.audioContract || !row.result?.audioContradiction)
+    || !releaseAudioCopyCtl.restored?.complete || !releaseAudioCopyCtl.restored?.honest
+    || !releaseAudioCopyCtl.restored?.audioContract) {
+    fails.push('GUIDE RELEASE AUDIO CONTROL FAILED — exact owned-fauna/world Listen ownership or its missing/contradictory controls failed: '
+      + JSON.stringify(releaseAudioCopyCtl));
+  }
+ const releaseAuthorityCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,prior=S.api.state;let result;
     try{S.api.state=()=>({...prior(),rnSeen:'2.0'});result=${releaseDraftCheck};}finally{S.api.state=prior;}return result;})()`);
   if (releaseAuthorityCtl.authority || releaseAuthorityCtl.rnSeen === releaseBaseline.rnSeen) {
     fails.push('GUIDE RELEASE CONTROL FAILED — mutating draft seen-state stayed authoritative: ' + JSON.stringify(releaseAuthorityCtl));
@@ -7312,9 +7718,9 @@ try {
       + JSON.stringify(hostileDescent));
   }
   requireRenderedSceneMatch('HOSTILE DIAGNOSTIC DESCENT REJECTION', hostileDescent.after);
-  const staleCardBlocked = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+  const staleCardBlocked = await evalIn(`(async()=>{ const S=window.__CF_SLICE__;
     const atlasBefore=S.api.state().atlasCount; document.getElementById('docksurvey').click();
-    const share=S.api.cardShareCode(); document.querySelector('#survey [data-act="add"]')?.click(); S.api.landHere();
+    const share=S.api.cardShareCode(); document.querySelector('#survey [data-act="add"]')?.click(); await S.api.landHere();
     const s=S.api.state(); return {mode:s.mode,cardOpen:s.cardOpen,share,landed:s.save.landed.slice(),
       atlasBefore,atlasAfter:s.atlasCount,starX:s.starX,starY:s.starY}; })()`);
   if (staleCardBlocked.mode !== 'galaxy' || staleCardBlocked.cardOpen || staleCardBlocked.share !== null
@@ -7340,8 +7746,8 @@ try {
       objective:s.objective,navGalaxyKey:s.navGalaxyKey,navStarKey:s.navStarKey,navWorldKey:s.navWorldKey,
       renderedScene:s.renderedScene,save:s.save};})()`);
     const ordinalRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
-    const ordinalCalls = await evalIn(`(()=>{ const api=window.__CF_SLICE__.api;return {
-      surveyed:api.surveyOn(${selectorSource}),landed:api.landOn(${selectorSource})};})()`);
+    const ordinalCalls = await evalIn(`(async()=>{ const api=window.__CF_SLICE__.api;return {
+      surveyed:api.surveyOn(${selectorSource}),landed:await api.landOn(${selectorSource})};})()`);
     const ordinalAfter = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state();return {
       mode:s.mode,gal:s.gal,star:s.star,planet:s.planet,planetOrdinal:s.planetOrdinal,
       cardOpen:s.cardOpen,cardTitle:s.cardTitle,panel:s.panelOpen,atlas:s.atlasCount,
@@ -7362,7 +7768,7 @@ try {
   if (!restoredEarthCard.accepted || !restoredEarthCard.cardOpen || restoredEarthCard.cardTitle !== 'Earth') {
     fails.push('STALE CARD IDENTITY: real Earth card did not recover after rejected forged context: ' + JSON.stringify(restoredEarthCard));
   }
-  const exactOrdinalLand = await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`);
+  const exactOrdinalLand = await evalIn(`(async()=>await window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)}))()`);
   if (!exactOrdinalLand) {
     const landAuthority = await evalIn(`window.__CF_SLICE__.api.state().persistence`);
     fails.push('PLANET ORDINAL ACCEPTANCE: exact Earth {seed,ordinal} did not survey and Land: '
@@ -7490,7 +7896,7 @@ try {
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await sleep(350);
-  await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(MERCURY)})`);
+  await evalIn(`(async()=>await window.__CF_SLICE__.api.landOn(${JSON.stringify(MERCURY)}))()`);
   await sleep(450);
   const liveGoalBoundaryCheck = `(()=>{ const s=window.__CF_SLICE__.api.state();return {ok:s.mode==='surface'
     &&/Mine Sol’s dead worlds 8 times/i.test(s.objective)&&/0\\s*\\/\\s*8/.test(s.objective)
@@ -7564,7 +7970,7 @@ try {
   const repeatObjectiveBefore = await evalIn(`window.__CF_SLICE__.api.state().objective`);
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await sleep(500);
-  await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`);
+  await evalIn(`(async()=>await window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)}))()`);
   await sleep(500);
   const repeatLand = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (repeatLand.objective !== repeatObjectiveBefore) fails.push('repeat Earth landing changed chapter progression: '
@@ -7572,7 +7978,7 @@ try {
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await sleep(350);
-  await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(MERCURY)})`);
+  await evalIn(`(async()=>await window.__CF_SLICE__.api.landOn(${JSON.stringify(MERCURY)}))()`);
   await sleep(450);
   /* Escape consumes any open surface card while lifting in the same action;
      from outer modes it closes a card before the next press climbs. Drive the
@@ -12211,11 +12617,11 @@ try {
     const sourceState = await evalIn(`window.__CF_SLICE__.api.state()`);
     const wrongOrdinal = await evalIn(`(async()=>{const S=window.__CF_SLICE__,clone=(value)=>JSON.parse(JSON.stringify(value)),
       rawBefore=await (${ARC4_DURABLE_READ_EXPRESSION}),stateBefore=clone(S.api.state()),
-      accepted=S.api.landOn({seed:${ARC4_PERTAR_FIXTURE.planet.seed},ordinal:${ARC4_PERTAR_FIXTURE.planet.ordinal + 1}}),
+      accepted=await S.api.landOn({seed:${ARC4_PERTAR_FIXTURE.planet.seed},ordinal:${ARC4_PERTAR_FIXTURE.planet.ordinal + 1}}),
       stateAfter=clone(S.api.state()),rawAfter=await (${ARC4_DURABLE_READ_EXPRESSION});
       return {accepted,stateBefore,stateAfter,rawBefore,rawAfter}})()`, { timeoutMs: 5_000 });
-    const landing = await evalIn(`(()=>{const S=window.__CF_SLICE__,beforeToken=S.documentToken,
-      accepted=S.api.landOn(${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)}),afterToken=S.documentToken;
+    const landing = await evalIn(`(async()=>{const S=window.__CF_SLICE__,beforeToken=S.documentToken,
+      accepted=await S.api.landOn(${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)}),afterToken=S.documentToken;
       return {accepted,beforeToken,afterToken,state:S.api.state()}})()`);
     const landedReady = await waitForF4Writable(`${label} landed writable authority`);
     const landedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
@@ -12229,6 +12635,31 @@ try {
       wrongOrdinal, landing, landedReady, landedRaw, surface,
       setupAssessment, seedWitness,
     };
+  };
+  const installArc0LandingFaultFixture = async (label) => {
+    const preload = await send('Page.addScriptToEvaluateOnNewDocument', {
+      source: arc4SeedPreloadSource,
+    }, sess);
+    if (typeof preload?.identifier !== 'string') {
+      throw new Error(`${label} did not install its bounded seed preload`);
+    }
+    const priorToken = await sliceToken(sess);
+    try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(ARC0_LANDING_FAULT_RAW)})`); }
+    catch { /* successful replacement destroys the old execution context */ }
+    await waitForSlice(sess, label, { previousToken: priorToken });
+    await assertBootTickerRunning(label);
+    const sourceReady = await waitForF4Writable(`${label} source-route writable authority`, {
+      previousToken: priorToken,
+    });
+    await send('Page.removeScriptToEvaluateOnNewDocument', {
+      identifier: preload.identifier,
+    }, sess);
+    const heartbeat = await evalIn(
+      'window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()',
+    );
+    const state = await evalIn('window.__CF_SLICE__.api.state()');
+    const raw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    return { priorToken, token: sourceReady.token, sourceReady, heartbeat, state, raw };
   };
   const stageArc5LegacyV1Carrier = async (raw) => {
     const manifestCarrier = raw?.playerRow?.extensions?.[
@@ -12782,6 +13213,504 @@ try {
     }
     throw new Error(`${label} did not reach its exact current-surface Survey outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
+
+  /* ARC 0 LANDING FAULT EVIDENCE BEGIN. Each fault starts from the same
+     source-proven, unlanded Pertar replacement. The convergence reload is
+     held after the action settles so the old document and durable store can
+     be sampled independently, then released exactly once into a fresh fixed
+     point. No captured outcome is reused as another action input. */
+  const arc0LandingOperationPattern = /^arc0[.]land:[0-9a-f]{64}$/u;
+  const arc0LandingWorldIdentityBytes = (raw) => Object.fromEntries(
+    Object.entries(raw?.catalogRow?.extensions ?? {})
+      .filter(([namespace]) => namespace.startsWith('world.identity.'))
+      .sort(([left], [right]) => left < right ? -1 : left > right ? 1 : 0),
+  );
+  const arc0LandingReceipts = (raw) => (Array.isArray(raw?.receiptRows)
+    ? raw.receiptRows.map((row, index) => {
+      let witness = null;
+      try { witness = JSON.parse(row?.witness ?? 'null'); } catch {}
+      return {
+        key: raw?.receiptKeys?.[index] ?? null,
+        raw: raw?.receiptRawRows?.[index] ?? null,
+        row,
+        witness,
+      };
+    }).filter(({ row }) => row?.kind === 'arc0-land')
+    : []);
+  const arc0LandingLiveProduct = (state) => ({
+    mode: state?.mode ?? null,
+    gal: state?.gal ?? null,
+    galX: state?.galX ?? null,
+    galY: state?.galY ?? null,
+    star: state?.star ?? null,
+    starX: state?.starX ?? null,
+    starY: state?.starY ?? null,
+    planet: state?.planet ?? null,
+    planetOrdinal: state?.planetOrdinal ?? null,
+    navGalaxyKey: state?.navGalaxyKey ?? null,
+    navStarKey: state?.navStarKey ?? null,
+    navWorldKey: state?.navWorldKey ?? null,
+    save: structuredClone(state?.save ?? null),
+  });
+  const arc0LandingRowsAndReceiptsExact = (left, right) => [
+    'legacyRaw', 'playerRaw', 'creaturesRaw', 'catalogRaw', 'inventoryRaw',
+    'settingsRaw', 'authorityJson',
+  ].every((field) => left?.[field] === right?.[field])
+    && canonicalJson(left?.receiptKeys) === canonicalJson(right?.receiptKeys)
+    && canonicalJson(left?.receiptRawRows) === canonicalJson(right?.receiptRawRows);
+  const arc0LandingSnapshotExact = (left, right) => left?.revision === right?.revision
+    && left?.revisionRaw === right?.revisionRaw
+    && arc0LandingRowsAndReceiptsExact(left, right);
+  const arc0LandingCoordinatorIdle = (state, { clearFault = false } = {}) => {
+    const landing = state?.landing;
+    const coordinator = landing?.actionCoordinator;
+    return landing?.schema === 'cf-v2-arc0-landing-app-state/v1'
+      && coordinator?.inFlight === false
+      && coordinator?.owner?.schema === 'cf-v2-product-action-coordinator-diagnostics/v1'
+      && coordinator.owner.busy === false && coordinator.owner.operation === null
+      && Object.values(coordinator?.faultArmed ?? {}).every((value) => value === false)
+      && (!clearFault || coordinator.lastFault === null);
+  };
+  const arc0LandingSourceExact = (fixture) => {
+    const raw = fixture?.raw;
+    const state = fixture?.state;
+    return fixture?.heartbeat?.stopped === true
+      && fixture?.heartbeat?.cycleSettled === true
+      && fixture?.heartbeat?.documentToken === fixture?.token
+      && fixture?.sourceReady?.token === fixture?.token
+      && arc4PertarSourceRouteExact(state)
+      && arc4PertarSavedStarRouteExact(state)
+      && arc4PertarLegacyRouteExact(raw, arc4PertarSavedStarView)
+      && arc4PertarSplitRouteExact(raw, arc4PertarSavedStarView)
+      && !state?.save?.landed?.includes(ARC4_PERTAR_FIXTURE.planet.seed)
+      && !raw?.legacy?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed)
+      && !raw?.catalogRow?.data?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed)
+      && arc0LandingReceipts(raw).length === 0
+      && arc0LandingCoordinatorIdle(state);
+  };
+  const arc0LandingConvergenceHeld = (state) => (
+    state?.persistence?.hold === 'transient-read'
+    && state?.persistence?.mutationBlocked === true
+    && state?.persistence?.heartbeatRunning === false
+    && state?.persistence?.convergenceReloadScheduled === true
+    && state?.persistence?.convergenceReloadHold?.phase === 'holding'
+    && state?.persistence?.convergenceReloadHold?.operation === 'f4-authority-convergence'
+    && state?.persistence?.runtime?.answerable === false
+    && state?.persistence?.runtime?.accruing === false
+  );
+  const arc0LandingReloadFixedPoint = (evidence, route) => {
+    const state = evidence?.reloadedState;
+    const routeExact = route === 'surface'
+      ? arc4PertarSurfaceRouteExact(state) && arc4PertarSavedPlanetRouteExact(state)
+      : arc4PertarSourceRouteExact(state) && arc4PertarSavedStarRouteExact(state);
+    return evidence?.reloadedReady?.token !== evidence?.beforeToken
+      && evidence?.reloadedHeartbeat?.stopped === true
+      && evidence?.reloadedHeartbeat?.cycleSettled === true
+      && evidence?.reloadedHeartbeat?.documentToken === evidence?.reloadedReady?.token
+      && state?.persistence?.documentToken === evidence?.reloadedReady?.token
+      && state?.persistence?.bootKind === 'current-v5'
+      && state?.persistence?.hold === null
+      && state?.persistence?.mutationBlocked === false
+      && state?.persistence?.heartbeatRunning === false
+      && state?.persistence?.runtime?.leaseOwned === true
+      && state?.persistence?.runtime?.staleBlocked === false
+      && state?.persistence?.runtime?.answerable === true
+      && state?.persistence?.runtime?.accruing === true
+      && state?.persistence?.runtime?.commits === 0
+      && state?.persistence?.lastOutcome === null
+      && state?.sceneResources?.pendingPersistenceWrites === 0
+      && state?.landing?.lastOutcome === null
+      && arc0LandingCoordinatorIdle(state, { clearFault: true })
+      && routeExact;
+  };
+  const arc0LandingConvergenceWitnessExact = (evidence, scenario, raw, detail) => {
+    const witness = evidence?.convergenceWitness;
+    const before = witness?.before;
+    const after = witness?.after;
+    const beforeRuntime = before?.runtime;
+    const afterRuntime = after?.runtime;
+    const authority = raw?.authority?.sessionRng;
+    const tuple = (runtime) => runtime?.revision === raw?.revision
+      && runtime?.sessionSeed === authority?.seed
+      && runtime?.sessionOrdinal === authority?.ordinal
+      && canonicalJson(runtime?.sessionDraws) === canonicalJson(authority?.draws);
+    const beforeLifecycle = scenario === 'stale'
+      ? beforeRuntime?.leaseOwned === false && beforeRuntime?.staleBlocked === true
+        && beforeRuntime?.leaseHeartbeat === null && beforeRuntime?.staleWrites > 0
+      : beforeRuntime?.leaseOwned === true && beforeRuntime?.staleBlocked === false;
+    return evidence?.convergenceWitnessCount === 1
+      && witness?.schema === 'cf-v2-f4-authority-convergence/v1'
+      && witness?.status === 'released'
+      && Array.isArray(witness?.errors) && witness.errors.length === 0
+      && witness?.detail === detail && witness?.documentToken === evidence?.beforeToken
+      && before?.hold === 'transient-read' && before?.mutationBlocked === true
+      && before?.heartbeatRunning === false && beforeRuntime?.answerable === false
+      && beforeRuntime?.accruing === false && beforeLifecycle && tuple(beforeRuntime)
+      && after?.heartbeatRunning === false && afterRuntime?.visible === false
+      && afterRuntime?.leaseOwned === false && afterRuntime?.leaseHeartbeat === null
+      && afterRuntime?.answerable === false && afterRuntime?.accruing === false
+      && tuple(afterRuntime);
+  };
+  const arc0LandingFaultExact = (evidence, injection, outcome) => {
+    const fault = evidence?.heldState?.landing?.actionCoordinator?.lastFault;
+    return fault?.schema === 'cf-v2-arc0-landing-fault-witness/v1'
+      && arc0LandingOperationPattern.test(fault?.operation ?? '')
+      && fault?.injection === injection && fault?.phase === 'settled'
+      && fault?.beforeRevision === evidence?.fixture?.raw?.revision
+      && fault?.outcome === outcome;
+  };
+  const arc0LandingExpectedCargo = (beforeRows, materials) => {
+    const quantities = new Map(Array.isArray(beforeRows) ? beforeRows : []);
+    for (const material of materials ?? []) {
+      quantities.set(material.id, (quantities.get(material.id) ?? 0) + material.quantity);
+    }
+    return [...quantities.entries()];
+  };
+  const arc0LandingCargoProjection = (rows) => [...new Map(
+    Array.isArray(rows) ? rows : [],
+  ).entries()];
+  const arc0LandingPublicationProductExact = (evidence) => {
+    const beforeRaw = evidence?.fixture?.raw;
+    const committedRaw = evidence?.heldRaw;
+    const beforeState = evidence?.fixture?.state;
+    const reloadedState = evidence?.reloadedState;
+    if (!beforeState?.save || !reloadedState?.save) return false;
+    const beforeReceipts = arc0LandingReceipts(beforeRaw);
+    const committedReceipts = arc0LandingReceipts(committedRaw);
+    const receipt = committedReceipts[0];
+    const facts = receipt?.witness;
+    const sample = facts?.sample;
+    const expectedCargo = arc0LandingExpectedCargo(beforeState?.save?.cargo, sample?.materials);
+    const actualCargo = arc0LandingCargoProjection(reloadedState?.save?.cargo);
+    const materialFactsExact = sample?.kind === 'reward'
+      && Array.isArray(sample.materials) && sample.materials.length === 2
+      && sample.materials.every((material) => material?.quantity === 1
+        && Number.isSafeInteger(material?.quantityAfter)
+        && new Map(actualCargo).get(material.id) === material.quantityAfter);
+    return beforeReceipts.length === 0 && committedReceipts.length === 1
+      && receipt?.key === `receipt:${receipt?.row?.ordinal}`
+      && receipt?.row?.kind === 'arc0-land'
+      && receipt?.row?.ordinal === facts?.receiptOrdinal
+      && facts?.schema === 'cf-v2-arc0-landing-witness/v1'
+      && facts?.worldKey === ARC4_PERTAR_FIXTURE.worldKey
+      && facts?.planetSeed === ARC4_PERTAR_FIXTURE.planet.seed
+      && facts?.planetOrdinal === ARC4_PERTAR_FIXTURE.planet.ordinal
+      && facts?.landing === 'first' && facts?.permanentLanding === true
+      && facts?.training === false && facts?.landingKnownBefore === false
+      && facts?.identityLandedAfter === true
+      && facts?.legacyMirrorContainsSeedAfter === true
+      && reloadedState.save.landed.includes(ARC4_PERTAR_FIXTURE.planet.seed)
+      && materialFactsExact && Number.isSafeInteger(sample?.stardust)
+      && sample.stardust > 0
+      && reloadedState?.save?.essence === sample.essenceAfter
+      && reloadedState?.save?.stats?.essenceEarned === sample.essenceEarnedAfter
+      && reloadedState?.save?.stats?.landings === sample.landingsAfter
+      && reloadedState.save.essence === beforeState.save.essence + sample.stardust
+      && reloadedState.save.stats.essenceEarned
+        === beforeState.save.stats.essenceEarned + sample.stardust
+      && reloadedState.save.stats.landings === beforeState.save.stats.landings + 1
+      && canonicalJson(actualCargo) === canonicalJson(expectedCargo)
+      && canonicalJson(committedRaw?.legacy?.cargo)
+        === canonicalJson(actualCargo)
+      && canonicalJson(committedRaw?.inventoryRow?.data?.cargo)
+        === canonicalJson(actualCargo)
+      && committedRaw?.legacy?.essence === sample.essenceAfter
+      && committedRaw?.legacy?.essenceEarned === sample.essenceEarnedAfter
+      && committedRaw?.legacy?.landings === sample.landingsAfter
+      && committedRaw?.playerRow?.data?.essence === sample.essenceAfter
+      && committedRaw?.playerRow?.data?.essenceEarned === sample.essenceEarnedAfter
+      && committedRaw?.playerRow?.data?.landings === sample.landingsAfter;
+  };
+  const arc0LandingOneAwaitedActionExact = (evidence) => (
+    evidence?.accepted === evidence?.expectedAccepted
+    && evidence?.actionDocumentToken === evidence?.beforeToken
+  );
+  const arc0LandingAssessment = (label, checks) => ({
+    label,
+    checks,
+    ok: Object.values(checks).every((value) => value === true),
+  });
+  const assessArc0LandingStorageRefusal = (evidence) => {
+    const beforeRaw = evidence?.fixture?.raw;
+    const heldRaw = evidence?.heldRaw;
+    const detail = 'Arc 0 landing transaction:slice-smoke injected Arc 0 landing storage failure';
+    return arc0LandingAssessment('Arc 0 Landing storage refusal', {
+      fixture: arc0LandingSourceExact(evidence?.fixture),
+      oneAwaitedAction: arc0LandingOneAwaitedActionExact(evidence),
+      faultWitness: evidence?.holdArmed === true && evidence?.faultArmed === true
+        && arc0LandingFaultExact(evidence, 'storage-failure', 'storage-error')
+        && evidence?.heldState?.landing?.actionCoordinator?.lastFault?.injectedRevision === null,
+      revisionStable: heldRaw?.revision === beforeRaw?.revision
+        && evidence?.reloadedRaw?.revision === beforeRaw?.revision,
+      durableProductStable: arc0LandingRowsAndReceiptsExact(beforeRaw, heldRaw)
+        && arc0LandingRowsAndReceiptsExact(heldRaw, evidence?.reloadedRaw),
+      localPublicationWithheld: canonicalJson(arc0LandingLiveProduct(
+        evidence?.fixture?.state,
+      )) === canonicalJson(arc0LandingLiveProduct(evidence?.heldState)),
+      coordinatorReleased: arc0LandingCoordinatorIdle(evidence?.heldState),
+      convergenceHeld: arc0LandingConvergenceHeld(evidence?.heldState),
+      convergenceReleased: evidence?.release === true
+        && arc0LandingConvergenceWitnessExact(evidence, 'storage', beforeRaw, detail),
+      reloadFixedPoint: arc0LandingReloadFixedPoint(evidence, 'source'),
+      noRetryOrReward: arc0LandingReceipts(evidence?.reloadedRaw).length === 0
+        && evidence?.reloadedState?.save?.stats?.landings
+          === evidence?.fixture?.state?.save?.stats?.landings,
+    });
+  };
+  const assessArc0LandingStaleConvergence = (evidence) => {
+    const beforeRaw = evidence?.fixture?.raw;
+    const heldRaw = evidence?.heldRaw;
+    const fault = evidence?.heldState?.landing?.actionCoordinator?.lastFault;
+    const detail = 'Arc 0 landing transaction:stale';
+    return arc0LandingAssessment('Arc 0 Landing stale convergence', {
+      fixture: arc0LandingSourceExact(evidence?.fixture),
+      oneAwaitedAction: arc0LandingOneAwaitedActionExact(evidence),
+      faultWitness: evidence?.holdArmed === true && evidence?.faultArmed === true
+        && arc0LandingFaultExact(evidence, 'stale-authority', 'stale')
+        && fault?.injectedRevision === beforeRaw?.revision + 1,
+      laterWriterOnly: heldRaw?.revision === beforeRaw?.revision + 1
+        && heldRaw?.revisionRaw === String(heldRaw.revision)
+        && arc0LandingRowsAndReceiptsExact(beforeRaw, heldRaw),
+      noActionProduct: arc0LandingReceipts(heldRaw).length === 0
+        && canonicalJson(arc0LandingLiveProduct(evidence?.fixture?.state))
+          === canonicalJson(arc0LandingLiveProduct(evidence?.heldState)),
+      coordinatorReleased: arc0LandingCoordinatorIdle(evidence?.heldState),
+      convergenceHeld: arc0LandingConvergenceHeld(evidence?.heldState),
+      convergenceReleased: evidence?.release === true
+        && arc0LandingConvergenceWitnessExact(evidence, 'stale', beforeRaw, detail),
+      reloadFixedPoint: arc0LandingReloadFixedPoint(evidence, 'source')
+        && arc0LandingSnapshotExact(heldRaw, evidence?.reloadedRaw),
+      noRetryOrReward: evidence?.reloadedRaw?.revision === beforeRaw?.revision + 1
+        && arc0LandingReceipts(evidence?.reloadedRaw).length === 0
+        && evidence?.reloadedState?.save?.stats?.landings
+          === evidence?.fixture?.state?.save?.stats?.landings,
+    });
+  };
+  const assessArc0LandingPublicationConvergence = (evidence) => {
+    const beforeRaw = evidence?.fixture?.raw;
+    const committedRaw = evidence?.heldRaw;
+    const fault = evidence?.heldState?.landing?.actionCoordinator?.lastFault;
+    const detail = `Arc 0 landing committed at revision ${committedRaw?.revision}; publication slice-smoke injected Arc 0 landing publication rejection`;
+    const beforeAuthority = beforeRaw?.authority?.sessionRng;
+    const committedAuthority = committedRaw?.authority?.sessionRng;
+    return arc0LandingAssessment('Arc 0 Landing publication convergence', {
+      fixture: arc0LandingSourceExact(evidence?.fixture),
+      oneAwaitedAction: arc0LandingOneAwaitedActionExact(evidence),
+      faultWitness: evidence?.holdArmed === true && evidence?.faultArmed === true
+        && arc0LandingFaultExact(
+          evidence, 'publication-failure', 'committed-publication-reload',
+        )
+        && fault?.injectedRevision === committedRaw?.revision,
+      oneAtomicCommit: committedRaw?.revision === beforeRaw?.revision + 1
+        && committedRaw?.revisionRaw === String(committedRaw.revision)
+        && committedAuthority?.seed === beforeAuthority?.seed
+        && committedAuthority?.ordinal === beforeAuthority?.ordinal + 1
+        && canonicalJson(committedAuthority?.draws) === canonicalJson(beforeAuthority?.draws),
+      durableLandingReward: arc0LandingPublicationProductExact(evidence),
+      durableRoute: arc4PertarLegacyRouteExact(committedRaw, arc4PertarSavedPlanetView)
+        && arc4PertarSplitRouteExact(committedRaw, arc4PertarSavedPlanetView)
+        && committedRaw?.legacy?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed)
+        && committedRaw?.catalogRow?.data?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed),
+      durableWorldIdentity: canonicalJson(arc0LandingWorldIdentityBytes(beforeRaw))
+          !== canonicalJson(arc0LandingWorldIdentityBytes(committedRaw))
+        && canonicalJson(arc0LandingWorldIdentityBytes(committedRaw))
+          === canonicalJson(arc0LandingWorldIdentityBytes(evidence?.reloadedRaw)),
+      localPublicationWithheld: canonicalJson(arc0LandingLiveProduct(
+        evidence?.fixture?.state,
+      )) === canonicalJson(arc0LandingLiveProduct(evidence?.heldState))
+        && arc4PertarSourceRouteExact(evidence?.heldState),
+      coordinatorReleased: arc0LandingCoordinatorIdle(evidence?.heldState),
+      convergenceHeld: arc0LandingConvergenceHeld(evidence?.heldState),
+      convergenceReleased: evidence?.release === true
+        && arc0LandingConvergenceWitnessExact(
+          evidence, 'publication', committedRaw, detail,
+        ),
+      reloadFixedPoint: arc0LandingReloadFixedPoint(evidence, 'surface')
+        && arc0LandingSnapshotExact(committedRaw, evidence?.reloadedRaw),
+      noRetryOrDoubleReward: arc0LandingReceipts(evidence?.reloadedRaw).length === 1
+        && evidence?.reloadedState?.persistence?.runtime?.sessionOrdinal
+          === committedAuthority?.ordinal,
+    });
+  };
+  const collectArc0LandingFaultEvidence = async ({
+    label, faultHook, injection, faultOutcome, accepted,
+  }) => {
+    const fixture = await installArc0LandingFaultFixture(label);
+    const beforeToken = fixture.token;
+    const convergenceMark = events.length;
+    const holdArmed = await evalIn(
+      'window.__CF_SLICE__.api.__smokeArmF4ConvergenceReloadHold()',
+    );
+    const faultArmed = await evalIn(`window.__CF_SLICE__.api.${faultHook}()`);
+    const action = await evalIn(`(async()=>{const S=window.__CF_SLICE__;
+      const accepted=await S.api.landOn(${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)});
+      return {accepted,documentToken:S.documentToken}})()`);
+    const heldState = await waitDesktopValue(`${label} held convergence`, `(()=>{const s=window.__CF_SLICE__.api.state(),
+      fault=s?.landing?.actionCoordinator?.lastFault;return s?.persistence?.convergenceReloadHold?.phase==='holding'
+        &&s?.landing?.actionCoordinator?.inFlight===false
+        &&s?.landing?.actionCoordinator?.owner?.busy===false
+        &&fault?.injection===${JSON.stringify(injection)}&&fault?.outcome===${JSON.stringify(faultOutcome)}?s:null})()`, 10_000);
+    const heldRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    const release = await evalIn(
+      'window.__CF_SLICE__.api.__smokeReleaseF4ConvergenceReload()',
+    );
+    await waitForSlice(sess, `${label} replacement`, { previousToken: beforeToken });
+    await assertBootTickerRunning(`${label} replacement`);
+    const reloadedReady = await waitForF4Writable(`${label} replacement authority`, {
+      previousToken: beforeToken,
+    });
+    const reloadedHeartbeat = await evalIn(
+      'window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()',
+    );
+    const reloadedState = await evalIn('window.__CF_SLICE__.api.state()');
+    const reloadedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    const convergenceWitnesses = f4ConvergenceWitnessesSince(sess, convergenceMark);
+    return {
+      fixture, beforeToken, holdArmed, faultArmed,
+      accepted: action?.accepted, actionDocumentToken: action?.documentToken,
+      heldState, heldRaw, release, reloadedReady, reloadedHeartbeat,
+      reloadedState, reloadedRaw,
+      convergenceWitness: convergenceWitnesses.length === 1
+        ? convergenceWitnesses[0] : null,
+      convergenceWitnessCount: convergenceWitnesses.length,
+      expectedAccepted: accepted,
+    };
+  };
+  const arc0LandingIsolatedControl = (assessment, check) => assessment?.ok === false
+    && assessment?.checks?.[check] === false
+    && Object.entries(assessment?.checks ?? {}).every(([name, value]) => (
+      name === check ? value === false : value === true
+    ));
+
+  const arc0LandingStorageEvidence = await collectArc0LandingFaultEvidence({
+    label: 'Arc 0 Landing storage-failure replacement',
+    faultHook: '__smokeRejectNextArc0LandingStorage',
+    injection: 'storage-failure', faultOutcome: 'storage-error', accepted: false,
+  });
+  const arc0LandingStorageAssessment = assessArc0LandingStorageRefusal(
+    arc0LandingStorageEvidence,
+  );
+  const arc0LandingStorageRevisionControl = structuredClone(arc0LandingStorageEvidence);
+  arc0LandingStorageRevisionControl.heldRaw.revision += 1;
+  arc0LandingStorageRevisionControl.heldRaw.revisionRaw = String(
+    arc0LandingStorageRevisionControl.heldRaw.revision,
+  );
+  const arc0LandingStorageCoordinatorControl = structuredClone(
+    arc0LandingStorageEvidence,
+  );
+  arc0LandingStorageCoordinatorControl.heldState.landing.actionCoordinator.owner.busy = true;
+  arc0LandingStorageCoordinatorControl.heldState.landing.actionCoordinator.owner.operation
+    = arc0LandingStorageEvidence.heldState.landing.actionCoordinator.lastFault.operation;
+  const arc0LandingStorageControls = {
+    revision: assessArc0LandingStorageRefusal(arc0LandingStorageRevisionControl),
+    coordinator: assessArc0LandingStorageRefusal(arc0LandingStorageCoordinatorControl),
+  };
+  if (!arc0LandingStorageAssessment.ok
+    || !arc0LandingIsolatedControl(arc0LandingStorageControls.revision, 'revisionStable')
+    || !arc0LandingIsolatedControl(
+      arc0LandingStorageControls.coordinator, 'coordinatorReleased',
+    )) {
+    fails.push('ARC 0 LANDING STORAGE REFUSAL: one awaited landing changed durable/live product, retained its coordinator, or retried after storage rejection: '
+      + JSON.stringify({ assessment: arc0LandingStorageAssessment,
+        controls: arc0LandingStorageControls, evidence: arc0LandingStorageEvidence }));
+  }
+
+  const arc0LandingStaleEvidence = await collectArc0LandingFaultEvidence({
+    label: 'Arc 0 Landing stale-authority replacement',
+    faultHook: '__smokeStaleNextArc0LandingAuthority',
+    injection: 'stale-authority', faultOutcome: 'stale', accepted: false,
+  });
+  const arc0LandingStaleAssessment = assessArc0LandingStaleConvergence(
+    arc0LandingStaleEvidence,
+  );
+  const arc0LandingStaleWriterControl = structuredClone(arc0LandingStaleEvidence);
+  arc0LandingStaleWriterControl.heldRaw.catalogRaw += '\n';
+  arc0LandingStaleWriterControl.reloadedRaw.catalogRaw += '\n';
+  const arc0LandingStaleTokenControl = structuredClone(arc0LandingStaleEvidence);
+  arc0LandingStaleTokenControl.reloadedReady.token = arc0LandingStaleTokenControl.beforeToken;
+  const arc0LandingStaleControls = {
+    laterWriter: assessArc0LandingStaleConvergence(arc0LandingStaleWriterControl),
+    token: assessArc0LandingStaleConvergence(arc0LandingStaleTokenControl),
+  };
+  if (!arc0LandingStaleAssessment.ok
+    || !arc0LandingIsolatedControl(arc0LandingStaleControls.laterWriter, 'laterWriterOnly')
+    || !arc0LandingIsolatedControl(arc0LandingStaleControls.token, 'reloadFixedPoint')) {
+    fails.push('ARC 0 LANDING STALE CONVERGENCE: later-writer revision did not remain the sole durable change through held/released reload: '
+      + JSON.stringify({ assessment: arc0LandingStaleAssessment,
+        controls: arc0LandingStaleControls, evidence: arc0LandingStaleEvidence }));
+  }
+
+  const arc0LandingPublicationEvidence = await collectArc0LandingFaultEvidence({
+    label: 'Arc 0 Landing postcommit-publication replacement',
+    faultHook: '__smokeRejectNextArc0LandingPublication',
+    injection: 'publication-failure', faultOutcome: 'committed-publication-reload',
+    accepted: true,
+  });
+  const arc0LandingPublicationAssessment = assessArc0LandingPublicationConvergence(
+    arc0LandingPublicationEvidence,
+  );
+  const arc0LandingPublicationOptimismControl = structuredClone(
+    arc0LandingPublicationEvidence,
+  );
+  arc0LandingPublicationOptimismControl.heldState.save = structuredClone(
+    arc0LandingPublicationEvidence.reloadedState.save,
+  );
+  Object.assign(
+    arc0LandingPublicationOptimismControl.heldState,
+    Object.fromEntries(['mode', 'gal', 'galX', 'galY', 'star', 'starX', 'starY',
+      'planet', 'planetOrdinal', 'navGalaxyKey', 'navStarKey', 'navWorldKey']
+      .map((key) => [key, arc0LandingPublicationEvidence.reloadedState[key]])),
+  );
+  const arc0LandingPublicationWitnessControl = structuredClone(
+    arc0LandingPublicationEvidence,
+  );
+  for (const raw of [arc0LandingPublicationWitnessControl.heldRaw,
+    arc0LandingPublicationWitnessControl.reloadedRaw]) {
+    const landingReceiptIndex = raw.receiptRows.findIndex(
+      (row) => row?.kind === 'arc0-land',
+    );
+    if (landingReceiptIndex >= 0) {
+      const receiptRow = raw.receiptRows[landingReceiptIndex];
+      const witness = JSON.parse(receiptRow.witness);
+      witness.sample.stardust += 1;
+      receiptRow.witness = JSON.stringify(witness);
+      raw.receiptRawRows[landingReceiptIndex] = JSON.stringify(receiptRow);
+    }
+  }
+  const arc0LandingPublicationReloadControl = structuredClone(
+    arc0LandingPublicationEvidence,
+  );
+  arc0LandingPublicationReloadControl.reloadedRaw.revision += 1;
+  arc0LandingPublicationReloadControl.reloadedRaw.revisionRaw = String(
+    arc0LandingPublicationReloadControl.reloadedRaw.revision,
+  );
+  const arc0LandingPublicationControls = {
+    optimism: assessArc0LandingPublicationConvergence(
+      arc0LandingPublicationOptimismControl,
+    ),
+    witness: assessArc0LandingPublicationConvergence(
+      arc0LandingPublicationWitnessControl,
+    ),
+    reload: assessArc0LandingPublicationConvergence(
+      arc0LandingPublicationReloadControl,
+    ),
+  };
+  if (!arc0LandingPublicationAssessment.ok
+    || !arc0LandingIsolatedControl(
+      arc0LandingPublicationControls.optimism, 'localPublicationWithheld',
+    )
+    || !arc0LandingIsolatedControl(
+      arc0LandingPublicationControls.witness, 'durableLandingReward',
+    )
+    || !arc0LandingIsolatedControl(
+      arc0LandingPublicationControls.reload, 'reloadFixedPoint',
+    )) {
+    fails.push('ARC 0 LANDING PUBLICATION CONVERGENCE: durable one-receipt landing/reward was published locally, retried, or lost across reload: '
+      + JSON.stringify({ assessment: arc0LandingPublicationAssessment,
+        controls: arc0LandingPublicationControls,
+        evidence: arc0LandingPublicationEvidence }));
+  }
+  /* ARC 0 LANDING FAULT EVIDENCE END. */
 
   /* A genuine legacy v1 digest certificate is staged over an exact current
      source, then boot must replace it with all five compact-v2 carriers in
@@ -16497,7 +17426,7 @@ try {
   const trainingRouteNeutralLedger = (state) => trainingSaveLedger(
     state, ['viewType', 'savedView', 'mined'],
   );
-  const trainingSurfaceLandAccepted = await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`);
+  const trainingSurfaceLandAccepted = await evalIn(`(async()=>await window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)}))()`);
   await sleep(180);
   const trainingSourceErrorSurface = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (!trainingSurfaceLandAccepted || trainingSourceErrorSurface.mode !== 'surface'
@@ -18838,20 +19767,27 @@ try {
     fails.push('RECORDS VISIBLE ARC 3 CONTROL FAILED — appended Mine/Skim/Fabricator rows stayed current or failed to restore: '
       + JSON.stringify(recordsVisibleArc3Ctl));
   }
-  /* CHARTERS: every rendered goal has a live Land/Mine/fixed-Fabricator
-     writer. Reject only genuinely unavailable bioscan/conquest/breeding or
-     mature accepted/weekly directives; Engineering copy is current truth. */
+  /* CHARTERS: every rendered goal has a live Land/Mine/fixed-Fabricator,
+     first-world bioscan, or successful-Breed writer. Reject only genuinely
+     unavailable conquest and mature accepted/weekly directives; Engineering,
+     Chapter-2 life-discovery, and Chapter-3 breeding copy are current truth. */
   const chp = await evalIn(`(()=>{ document.getElementById('dockcharters').click();
     const chs=[...document.querySelectorAll('#chpanel [data-sel=charter-ch]')];
     const cur=chs.find(c=>c.dataset.chstate==='actionable'||c.dataset.chstate==='boundary'||c.dataset.chstate==='complete');
     const goals=document.querySelectorAll('#chpanel [data-sel=charter-goal]').length;
     const panel=document.getElementById('chpanel'),text=panel?.textContent||'',marker=document.createElement('div');
-    marker.textContent='Discover life on 2 alien worlds';panel?.appendChild(marker);const injected=panel?.textContent||'';marker.remove();
-    const restored=(panel?.textContent||'')===text;
-    document.querySelector('#chpanel [data-pnx]').click();
-    return { n:chs.length, cur:!!cur, goals,text,injected,restored }; })()`);
-  if (chp.n !== 1 || !chp.cur || chp.goals > 5 || hasUnavailableCharterDirective(chp.text)
-    || !hasUnavailableCharterDirective(chp.injected) || !chp.restored) {
+   marker.textContent='Conquer a world';panel?.appendChild(marker);const unavailableInjected=panel?.textContent||'';marker.remove();
+   marker.textContent='Discover life on 2 alien worlds';panel?.appendChild(marker);const bioscanInjected=panel?.textContent||'';marker.remove();
+    marker.textContent='Breed a hybrid bloodline';panel?.appendChild(marker);const breedInjected=panel?.textContent||'';marker.remove();
+   const restored=(panel?.textContent||'')===text;
+   document.querySelector('#chpanel [data-pnx]').click();
+    return { n:chs.length, cur:!!cur, goals,text,unavailableInjected,bioscanInjected,breedInjected,restored }; })()`);
+ if (chp.n !== 1 || !chp.cur || chp.goals > 5 || hasUnavailableCharterDirective(chp.text)
+   || !hasUnavailableCharterDirective(chp.unavailableInjected)
+   || hasUnavailableCharterDirective(chp.bioscanInjected)
+    || !hasLiveBioscanCharterDirective(chp.bioscanInjected)
+    || hasUnavailableCharterDirective(chp.breedInjected)
+    || !hasLiveBreedCharterDirective(chp.breedInjected) || !chp.restored) {
     fails.push('Charters panel exposed an unavailable directive, lost live writer copy, or failed its control: ' + JSON.stringify(chp));
   }
 
@@ -20084,8 +21020,8 @@ try {
   }
   /* A saved stage-3 explorer may still meet its imported Prime Signature
      radius boundary. That is not a Charter-system gate: the block must name
-     the saved radius and its unavailable expansion without promising that
-     Signatures can be collected or written. First create a real ordinary
+     the saved radius and the live verified Titan-victory owner without
+     implying that chapter or Engineering state can mint a Signature. First create a real ordinary
      Charted toast, then immediately drive the rejected CF1 action: boundary
      copy must supersede it rather than ambient-toast debounce swallowing it. */
   const stage3Token = await sliceToken(navPh);
@@ -20113,8 +21049,9 @@ try {
   const stage3PrimeRadiusBoundaryCheck = `(()=>{ const s=window.__CF_SLICE__.api.state(),q=document.getElementById('searchbox'),toast=s.toastText||'';return {
     ok:s.mode===${JSON.stringify(stage3Charted.mode)}&&s.stage===3&&/Beyond Your Saved Reach/i.test(toast)
       &&/Your saved Prime Signature radius ends here/i.test(toast)
-      &&/Prime Signature radius expansion is not available in this development slice/i.test(toast)
-      &&!/collect|earn|award|write|next Charter system|Intergalactic Drive|shipyard|\\bbuild\\b|mine|fabricat/i.test(toast)
+      &&/Verified Titan victories claim Prime Signatures that expand it/i.test(toast)
+      &&/open the Prime Codex to review your frontier/i.test(toast)
+      &&!/not available|next Charter system|Intergalactic Drive|shipyard|\\bbuild\\b|mine|fabricat|chapter/i.test(toast)
       &&q.value===${JSON.stringify(String(blockedShareCode))}&&document.activeElement===q,
     mode:s.mode,stage:s.stage,toast,toastSerial:s.toastSerial,query:q.value,focus:document.activeElement===q};})()`;
   const stage3Reach = await evalNavPh(stage3PrimeRadiusBoundaryCheck);
@@ -20125,7 +21062,7 @@ try {
   const stage3BoundaryCtl = await evalNavPh(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML;
     toast.textContent='⬆ Beyond Your Saved Reach Your saved Prime Signature radius ends here. Prime Signature radius expansion is not available in this development slice. Collect Prime Signatures to expand it.'; const result=${stage3PrimeRadiusBoundaryCheck};toast.innerHTML=prior;return result;})()`);
   if (stage3BoundaryCtl.ok) {
-    fails.push('STAGE-3 PRIME RADIUS COPY CONTROL FAILED — injected Signature-collection promise stayed green: '
+    fails.push('STAGE-3 PRIME RADIUS COPY CONTROL FAILED — stale unavailable/unverified collection copy stayed green: '
       + JSON.stringify(stage3BoundaryCtl));
   }
   const stage3CharterBoundaryCtl = await evalNavPh(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML;
@@ -21013,12 +21950,14 @@ try {
   await requireStoredV4Stage(evalTp, DTRAIN_FULL_FINISH_RAW, 'D-TRAIN FULL FINISH');
   await send('Target.closeTarget', { targetId: t3p.targetId });
 
-  /* 4e. THE TRAINING DRILL — the six live lessons end-to-end at the primary
-     390×844 PHONE geometry on an isolated origin seeded with the genuine
-     v1.8.9 restart checkpoint: welcome → find-earth →
-     survey-tour → atlas-add → atlas-open → land → graduation, every advance
-     on the REAL gameEvent the lesson teaches. This makes the real Land→grad
-     Planetside hide/finish-restore proof exercise the mobile-only layout. */
+  /* 4e. THE TRAINING DRILL — the six hands-on navigation lessons plus the
+     nine-card read-only orientation tour end-to-end at the primary 390×844
+     PHONE geometry on an isolated origin seeded with the genuine v1.8.9
+     restart checkpoint: welcome → find-earth → survey-tour → atlas-add →
+     atlas-open → land → Planetside briefing → Engineering → Compendium →
+     Records → horizon → graduation. Hands-on advances use the REAL gameEvent
+     the lesson teaches; board-open cards use the exact populated panel-open
+     events. Every receipt also proves the held primary remained byte-exact. */
   const t3 = await send('Target.createTarget', { url: 'about:blank' });
   const at3 = await send('Target.attachToTarget', { targetId: t3.targetId, flatten: true });
   const tr = at3.sessionId;
@@ -21047,7 +21986,8 @@ try {
   };
   const trainingFocus = `(()=>{ const active=document.activeElement,card=document.getElementById('tutcard');
     const allowed=!!active&&(card?.contains(active)||active.closest('#survey')||active.closest('#dock')
-      ||active.closest('#raillft')||active.closest('#railrgt')||active.tagName==='CANVAS');
+      ||active.closest('#raillft')||active.closest('#railrgt')||active.closest('#shipyardpanel')
+      ||active.closest('#codexpanel')||active.closest('#recpanel')||active.tagName==='CANVAS');
     return {active:active?.getAttribute('data-sel')||active?.id||active?.tagName||null,allowed,
       step:window.__CF_SLICE__.api.state().tutStep,announcement:document.getElementById('tutlive')?.textContent||''}; })()`;
   const trainingLandLockCheck = `(()=>{ const land=document.querySelector('#survey [data-act=landcta]'),lock=land?.closest('[inert]');
@@ -21055,10 +21995,47 @@ try {
     return {ok:!!land&&!!lock&&getComputedStyle(land).pointerEvents==='none',lockTag:lock?.tagName||null,
       lockAction:lock?.getAttribute('data-act')||null,pointer:land?getComputedStyle(land).pointerEvents:null,
       x:r?(r.left+r.right)/2:null,y:r?(r.top+r.bottom)/2:null,mode:s.mode,step:s.tutStep,landed:s.save.landed}; })()`;
+  const trainingBoardTourCheck = (panelId, expectedStep) => {
+    const expectedPanel = ({ shipyardpanel: 'shipyard', codexpanel: 'codex', recpanel: 'rec' })[panelId];
+    if (!expectedPanel) throw new Error('unknown Training tour panel: ' + panelId);
+    return `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),
+      panel=document.getElementById(${JSON.stringify(panelId)}),style=panel?getComputedStyle(panel):null,
+      rect=panel?.getBoundingClientRect(),close=panel?.querySelector('[data-pnx]'),closeStyle=close?getComputedStyle(close):null,
+      selector='button:not([disabled]):not([data-pnx]),a[href],input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])',
+      controls=panel?[...new Set(panel.querySelectorAll(selector))]:[],
+      unlocked=controls.filter((control)=>!control.closest('[inert]')||getComputedStyle(control).pointerEvents!=='none')
+        .map((control)=>(control.textContent||control.getAttribute('aria-label')||control.tagName).trim());
+      const visible=!!panel&&style?.display!=='none'&&style?.visibility!=='hidden'&&!!rect&&rect.width>0&&rect.height>0;
+      return {ok:s.tutActive&&s.tutStep===${JSON.stringify(expectedStep)}&&s.panelOpen===${JSON.stringify(expectedPanel)}
+        &&visible&&panel.getAttribute('aria-hidden')==='false'&&!!close&&!close.closest('[inert]')
+        &&closeStyle?.pointerEvents!=='none'&&unlocked.length===0,step:s.tutStep,panel:s.panelOpen,visible,
+        ariaHidden:panel?.getAttribute('aria-hidden')||null,close:!!close,closeInert:!!close?.closest('[inert]'),
+        closePointer:closeStyle?.pointerEvents||null,controlCount:controls.length,unlocked,
+        announcement:document.getElementById('tutlive')?.textContent||'',text:(panel?.textContent||'').trim()};})()`;
+  };
   const step = async () => evalT(`window.__CF_SLICE__.api.state().tutStep`);
   if (await step() !== 'welcome') fails.push('DRILL: no welcome on the genuine-checkpoint origin: ' + await step());
   const dtrainFullBoot = await evalT(`window.__CF_SLICE__.api.state()`);
   const dtrainFullBootRaw = await evalT(READ_PRIMARY_EXPRESSION);
+  const trainingSequenceReceipts = [];
+  const recordTrainingReceipt = async (expectedStep, ordinal, expectedPanel = null) => {
+    const receipt = await evalT(`(async()=>{const s=window.__CF_SLICE__.api.state();return {
+      step:s.tutStep,active:s.tutActive,panel:s.panelOpen,
+      heading:(document.getElementById('tutstephead')?.textContent||'').trim(),
+      announcement:document.getElementById('tutlive')?.textContent||'',
+      primary:await ${READ_PRIMARY_EXPRESSION}};})()`);
+    trainingSequenceReceipts.push(receipt);
+    const expectedHeading = `FIELD TRAINING · ${ordinal} / 15`;
+    const announced = new RegExp(`Field Training, step ${ordinal} of 15`, 'i').test(receipt.announcement);
+    if (!receipt.active || receipt.step !== expectedStep || receipt.panel !== expectedPanel
+      || receipt.heading !== expectedHeading || !announced || receipt.primary !== dtrainFullBootRaw) {
+      fails.push(`DRILL RECEIPT ${ordinal}/15: exact card, panel, announcement, or held primary drifted: `
+        + JSON.stringify({ expectedStep, expectedPanel, expectedHeading, receipt,
+          primaryStable: receipt.primary === dtrainFullBootRaw }));
+    }
+    return receipt;
+  };
+  await recordTrainingReceipt('welcome', 1);
   const dtrainFullBootEvidence = {
     state: dtrainFullBoot,
     stored: dtrainFullBootRaw,
@@ -21109,7 +22086,7 @@ try {
      authored instruction. Tab/Shift+Tab must wrap inside the card. */
   const welcomeFocus = await evalT(trainingFocus);
   if (welcomeFocus.active !== 'tutbtn' || !welcomeFocus.allowed
-    || !/Field Training, step 1 of 7/i.test(welcomeFocus.announcement)
+    || !/Field Training, step 1 of 15/i.test(welcomeFocus.announcement)
     || !/Welcome to Sol/i.test(welcomeFocus.announcement)) {
     fails.push('DRILL KEYBOARD: welcome was not focused and announced: ' + JSON.stringify(welcomeFocus));
   }
@@ -21200,9 +22177,10 @@ try {
   await evalT(`(()=>{ document.querySelector('[data-sel=tutbtn]').click(); return 1; })()`);
   await sleep(80);
   if (await step() !== 'find-earth') fails.push('DRILL: Begin did not reach find-earth: ' + await step());
+  await recordTrainingReceipt('find-earth', 2);
   const findEarthFocus = await evalT(trainingFocus);
   if (findEarthFocus.active !== 'CANVAS' || !findEarthFocus.allowed
-    || !/Field Training, step 2 of 7/i.test(findEarthFocus.announcement)
+    || !/Field Training, step 2 of 15/i.test(findEarthFocus.announcement)
     || !/find home/i.test(findEarthFocus.announcement)) {
     fails.push('DRILL KEYBOARD: find-earth did not focus/announce the canvas lesson: ' + JSON.stringify(findEarthFocus));
   }
@@ -21333,9 +22311,10 @@ try {
   await evalT(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);   /* tap Earth = survey */
   await sleep(80);
   if (await step() !== 'survey-tour') fails.push('DRILL: surveying Earth did not advance find-earth: ' + await step());
+  await recordTrainingReceipt('survey-tour', 3);
   const surveyTourFocus = await evalT(trainingFocus);
   if (surveyTourFocus.active !== 'tutbtn' || !surveyTourFocus.allowed
-    || !/Field Training, step 3 of 7/i.test(surveyTourFocus.announcement)) {
+    || !/Field Training, step 3 of 15/i.test(surveyTourFocus.announcement)) {
     fails.push('DRILL KEYBOARD: survey-tour did not focus/announce Got It: ' + JSON.stringify(surveyTourFocus));
   }
   /* Same outcome with a live Earth card: Escape must neither hide the card
@@ -21397,10 +22376,11 @@ try {
   await keyT('Enter', 'Enter');
   await sleep(80);
   if (await step() !== 'atlas-add') fails.push('DRILL: Got It did not reach atlas-add: ' + await step());
+  await recordTrainingReceipt('atlas-add', 4);
   const atlasAddFocus = await evalT(trainingFocus);
   if (atlasAddFocus.active !== 'BUTTON' || !atlasAddFocus.allowed
     || await evalT(`document.activeElement?.getAttribute('data-act')`) !== 'add'
-    || !/Field Training, step 4 of 7/i.test(atlasAddFocus.announcement)) {
+    || !/Field Training, step 4 of 15/i.test(atlasAddFocus.announcement)) {
     fails.push('DRILL KEYBOARD: atlas-add did not focus/announce the real Add action: ' + JSON.stringify(atlasAddFocus));
   }
   const atlasAddCopy = await evalT(`(()=>{ const text=(document.querySelector('[data-sel=tuttext]')||{}).textContent||'';
@@ -21435,9 +22415,10 @@ try {
   await keyT('Enter', 'Enter');
   await sleep(80);
   if (await step() !== 'atlas-open') fails.push('DRILL: +Add did not advance (atlas-add event): ' + await step());
+  await recordTrainingReceipt('atlas-open', 5);
   const atlasOpenFocus = await evalT(trainingFocus);
   if (atlasOpenFocus.active !== 'dockatlas' || !atlasOpenFocus.allowed
-    || !/Field Training, step 5 of 7/i.test(atlasOpenFocus.announcement)) {
+    || !/Field Training, step 5 of 15/i.test(atlasOpenFocus.announcement)) {
     fails.push('DRILL KEYBOARD: atlas-open did not focus/announce the visible phone Atlas control: '
       + JSON.stringify(atlasOpenFocus));
   }
@@ -21452,6 +22433,7 @@ try {
   await keyT('Enter', 'Enter');
   await sleep(200);
   if (await step() !== 'land') fails.push('DRILL: opening the Atlas did not advance: ' + await step());
+  await recordTrainingReceipt('land', 6);
   const landFocus = await evalT(`(()=>{ const state=${trainingFocus},land=document.querySelector('#survey [data-act=landcta]');
     const r=land?.getBoundingClientRect(),hit=r&&document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
     return {...state,landFocused:document.activeElement===land,landReachable:!!land&&!!r&&r.width>=44&&r.height>=44
@@ -21459,7 +22441,7 @@ try {
       panel:window.__CF_SLICE__.api.state().panelOpen,pending:window.__CF_SLICE__.api.state().releasePending}; })()`);
   if (!landFocus.landFocused || !landFocus.landReachable || !landFocus.atlasClosed || !landFocus.allowed
     || landFocus.panel !== null || landFocus.pending !== RELEASE_FIXTURE_VERSION
-    || !/Field Training, step 6 of 7/i.test(landFocus.announcement)) {
+    || !/Field Training, step 6 of 15/i.test(landFocus.announcement)) {
     fails.push('DRILL KEYBOARD: land did not become the focused/reachable action after Atlas: ' + JSON.stringify(landFocus));
   }
   const landCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
@@ -21489,28 +22471,220 @@ try {
   }
   await keyT('Enter', 'Enter');
   await sleep(700);
-  if (await step() !== 'grad') fails.push('DRILL: landing on Earth did not graduate: ' + await step());
-  const trainingSideCheck = `(()=>{ const side=document.getElementById('planetside'),s=window.__CF_SLICE__.api.state(),style=side?getComputedStyle(side):null;
-    return {ok:s.mode==='surface'&&s.tutActive&&s.tutStep==='grad'&&style?.display==='none',mode:s.mode,step:s.tutStep,
+  if (await step() !== 'planetside-briefing') {
+    fails.push('DRILL: landing on Earth skipped the Planetside briefing: ' + await step());
+  }
+  await recordTrainingReceipt('planetside-briefing', 7);
+  const planetsideBriefingFocus = await evalT(trainingFocus);
+  if (planetsideBriefingFocus.active !== 'tutbtn' || !planetsideBriefingFocus.allowed
+    || !/Field Training, step 7 of 15/i.test(planetsideBriefingFocus.announcement)) {
+    fails.push('DRILL KEYBOARD: Planetside briefing was not focused and announced: '
+      + JSON.stringify(planetsideBriefingFocus));
+  }
+  const planetsideBriefingCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
+  if (!/full eligible biosphere/i.test(planetsideBriefingCopy)
+    || !/will not roll a capture or spend Yield/i.test(planetsideBriefingCopy)
+    || /preview row.*capture/i.test(planetsideBriefingCopy)) {
+    fails.push('DRILL COPY: Planetside briefing does not preserve full-roster, finite-Yield, read-only truth: '
+      + JSON.stringify(planetsideBriefingCopy));
+  }
+  const trainingSideCheck = (expectedStep) => `(()=>{ const side=document.getElementById('planetside'),s=window.__CF_SLICE__.api.state(),style=side?getComputedStyle(side):null;
+    return {ok:s.mode==='surface'&&s.tutActive&&s.tutStep===${JSON.stringify(expectedStep)}&&style?.display==='none',mode:s.mode,step:s.tutStep,
       active:s.tutActive,display:style?.display||'missing',text:(side?.textContent||'').trim().length};})()`;
-  const trainingSide = await evalT(trainingSideCheck);
+  const planetsideBriefingSideCheck = trainingSideCheck('planetside-briefing');
+  const trainingSide = await evalT(planetsideBriefingSideCheck);
   if (!trainingSide.ok || !(trainingSide.text > 20)) {
-    fails.push('DRILL PLANETSIDE: populated strip was not intentionally hidden during the real land→graduation beat: ' + JSON.stringify(trainingSide));
+    fails.push('DRILL PLANETSIDE: populated strip was not intentionally hidden during the real Land→briefing beat: '
+      + JSON.stringify(trainingSide));
   }
   const trainingSideCtl = await evalT(`(()=>{ const side=document.getElementById('planetside'),prior=side.getAttribute('style');
-    side.style.setProperty('display','block','important');const result=${trainingSideCheck};
+    side.style.setProperty('display','block','important');const result=${planetsideBriefingSideCheck};
     if(prior===null)side.removeAttribute('style');else side.setAttribute('style',prior);return result;})()`);
   if (trainingSideCtl.ok) {
-    fails.push('DRILL PLANETSIDE CONTROL FAILED — forcing the strip visible behind graduation stayed green: ' + JSON.stringify(trainingSideCtl));
+    fails.push('DRILL PLANETSIDE CONTROL FAILED — forcing the strip visible behind the briefing stayed green: '
+      + JSON.stringify(trainingSideCtl));
   }
   const postLandAtlas = await evalT(`({atlasClosed:document.getElementById('atlaspanel').style.display==='none',
     panel:window.__CF_SLICE__.api.state().panelOpen,mode:window.__CF_SLICE__.api.state().mode})`);
   if (!postLandAtlas.atlasClosed || postLandAtlas.panel !== null || postLandAtlas.mode !== 'surface') {
     fails.push('DRILL: product choreography left the Atlas open after real Earth Land: ' + JSON.stringify(postLandAtlas));
   }
+
+  await keyT('Enter', 'Enter');
+  await sleep(100);
+  if (await step() !== 'engineering-open') {
+    fails.push('DRILL: Planetside briefing did not reach Engineering open: ' + await step());
+  }
+  await recordTrainingReceipt('engineering-open', 8);
+  const engineeringOpenFocus = await evalT(trainingFocus);
+  if (engineeringOpenFocus.active !== 'dockshipyard' || !engineeringOpenFocus.allowed
+    || !/Field Training, step 8 of 15/i.test(engineeringOpenFocus.announcement)) {
+    fails.push('DRILL KEYBOARD: Engineering open did not focus/announce the visible phone control: '
+      + JSON.stringify(engineeringOpenFocus));
+  }
+  const engineeringOpenCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
+  if (!/Engineering & Shipyard/i.test(engineeringOpenCopy)
+    || !/Opening and inspecting this board changes nothing/i.test(engineeringOpenCopy)) {
+    fails.push('DRILL COPY: Engineering opener does not make its read-only boundary explicit: '
+      + JSON.stringify(engineeringOpenCopy));
+  }
+  await keyT('Enter', 'Enter');
+  await sleep(250);
+  if (await step() !== 'engineering-tour') {
+    fails.push('DRILL: real Engineering open did not emit the exact tour event: ' + await step());
+  }
+  await recordTrainingReceipt('engineering-tour', 9, 'shipyard');
+  const engineeringTour = await evalT(trainingBoardTourCheck('shipyardpanel', 'engineering-tour'));
+  const engineeringTourFocus = await evalT(trainingFocus);
+  const engineeringHold = await evalT(`(()=>{const s=window.__CF_SLICE__.api.state(),panel=document.getElementById('shipyardpanel');return {
+    held:s.trainingCheckpointWriteHeld,unavailable:!!panel?.querySelector('[data-engineering-state="unavailable"]'),
+    actions:panel?.querySelectorAll('[data-engineering-action]').length??-1};})()`);
+  if (!engineeringTour.ok || engineeringTourFocus.active !== 'tutbtn' || !engineeringTourFocus.allowed
+    || !/Field Training, step 9 of 15/i.test(engineeringTour.announcement)
+    || !engineeringHold.held || !engineeringHold.unavailable || engineeringHold.actions !== 0
+    || !/source-proven opportunities/i.test(engineeringTour.text)
+    || !/Pureforged/i.test(engineeringTourFocus.announcement)) {
+    fails.push('DRILL ENGINEERING TOUR: populated board, held authority, or read-only lock drifted: '
+      + JSON.stringify({ tour: engineeringTour, focus: engineeringTourFocus, hold: engineeringHold }));
+  }
+  const engineeringMutationCtl = await evalT(`(()=>{const panel=document.getElementById('shipyardpanel'),button=document.createElement('button');
+    button.type='button';button.textContent='Injected engineering mutation';panel.append(button);
+    const result=${trainingBoardTourCheck('shipyardpanel', 'engineering-tour')};button.remove();return result;})()`);
+  if (engineeringMutationCtl.ok
+    || !engineeringMutationCtl.unlocked.includes('Injected engineering mutation')) {
+    fails.push('DRILL ENGINEERING CONTROL FAILED — an injected unlocked mutation surface stayed green: '
+      + JSON.stringify(engineeringMutationCtl));
+  }
+
+  await keyT('Enter', 'Enter');
+  await sleep(120);
+  if (await step() !== 'compendium-open') {
+    fails.push('DRILL: Engineering tour did not close into Compendium open: ' + await step());
+  }
+  await recordTrainingReceipt('compendium-open', 10);
+  const compendiumOpenFocus = await evalT(trainingFocus);
+  if (compendiumOpenFocus.active !== 'dockcodex' || !compendiumOpenFocus.allowed
+    || !/Field Training, step 10 of 15/i.test(compendiumOpenFocus.announcement)) {
+    fails.push('DRILL KEYBOARD: Compendium open did not focus/announce the visible phone control: '
+      + JSON.stringify(compendiumOpenFocus));
+  }
+  const compendiumOpenCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
+  if (!/bounded catalogue of life you have actually recorded/i.test(compendiumOpenCopy)
+    || !/empty new expedition is honest/i.test(compendiumOpenCopy)) {
+    fails.push('DRILL COPY: Compendium opener implies a fabricated Training cache: '
+      + JSON.stringify(compendiumOpenCopy));
+  }
+  await keyT('Enter', 'Enter');
+  await sleep(250);
+  if (await step() !== 'compendium-tour') {
+    fails.push('DRILL: real Compendium open did not emit the exact tour event: ' + await step());
+  }
+  await recordTrainingReceipt('compendium-tour', 11, 'codex');
+  const compendiumTour = await evalT(trainingBoardTourCheck('codexpanel', 'compendium-tour'));
+  const compendiumTourFocus = await evalT(trainingFocus);
+  const compendiumHeldRows = await evalT(`(()=>{const panel=document.getElementById('codexpanel'),rows=[...panel.querySelectorAll('[data-sel="codex-entry"]')];return {
+    count:Number(panel.querySelector('[data-sel="codex-count"]')?.textContent||'-1'),rows:rows.length,
+    allLocked:rows.length>0&&rows.every((row)=>!!row.closest('[inert]')&&getComputedStyle(row).pointerEvents==='none')};})()`);
+  if (!compendiumTour.ok || compendiumTourFocus.active !== 'tutbtn' || !compendiumTourFocus.allowed
+    || !/Field Training, step 11 of 15/i.test(compendiumTour.announcement)
+    || compendiumHeldRows.count < 1 || compendiumHeldRows.rows < 1 || !compendiumHeldRows.allLocked
+    || !/role-only Field Scout/i.test(compendiumTourFocus.announcement)
+    || !/interception, Scout XP, dispatch, missions, care, bond, and friendly duels are not live yet/i.test(compendiumTourFocus.announcement)) {
+    fails.push('DRILL COMPENDIUM TOUR: real catalogue rows, read-only lock, or Field Scout truth drifted: '
+      + JSON.stringify({ tour: compendiumTour, focus: compendiumTourFocus, rows: compendiumHeldRows }));
+  }
+  const compendiumMutationCtl = await evalT(`(()=>{const panel=document.getElementById('codexpanel'),button=document.createElement('button');
+    button.type='button';button.textContent='Injected companion mutation';panel.append(button);
+    const result=${trainingBoardTourCheck('codexpanel', 'compendium-tour')};button.remove();return result;})()`);
+  if (compendiumMutationCtl.ok
+    || !compendiumMutationCtl.unlocked.includes('Injected companion mutation')) {
+    fails.push('DRILL COMPENDIUM CONTROL FAILED — an injected unlocked companion mutation stayed green: '
+      + JSON.stringify(compendiumMutationCtl));
+  }
+
+  await keyT('Enter', 'Enter');
+  await sleep(120);
+  if (await step() !== 'records-open') {
+    fails.push('DRILL: Compendium tour did not close into Records open: ' + await step());
+  }
+  await recordTrainingReceipt('records-open', 12);
+  const recordsOpenFocus = await evalT(trainingFocus);
+  if (recordsOpenFocus.active !== 'dockrecords' || !recordsOpenFocus.allowed
+    || !/Field Training, step 12 of 15/i.test(recordsOpenFocus.announcement)) {
+    fails.push('DRILL KEYBOARD: Records open did not focus/announce the visible phone control: '
+      + JSON.stringify(recordsOpenFocus));
+  }
+  const recordsOpenCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
+  if (!/durable exploration totals, achievement shelves, rank, and imported Journal history/i.test(recordsOpenCopy)
+    || !/actually verified/i.test(recordsOpenCopy)) {
+    fails.push('DRILL COPY: Records opener does not describe its durable evidence boundary: '
+      + JSON.stringify(recordsOpenCopy));
+  }
+  await keyT('Enter', 'Enter');
+  await sleep(180);
+  if (await step() !== 'records-tour') {
+    fails.push('DRILL: real Records open did not emit the exact tour event: ' + await step());
+  }
+  await recordTrainingReceipt('records-tour', 13, 'rec');
+  const recordsTour = await evalT(trainingBoardTourCheck('recpanel', 'records-tour'));
+  const recordsTourFocus = await evalT(trainingFocus);
+  if (!recordsTour.ok || recordsTourFocus.active !== 'tutbtn' || !recordsTourFocus.allowed
+    || !/Field Training, step 13 of 15/i.test(recordsTour.announcement)
+    || !/Records are evidence, not a reward fountain/i.test(recordsTourFocus.announcement)
+    || !/remaining event joins and achievement reward claims stay unavailable/i.test(recordsTourFocus.announcement)) {
+    fails.push('DRILL RECORDS TOUR: populated evidence board or read-only truth drifted: '
+      + JSON.stringify({ tour: recordsTour, focus: recordsTourFocus }));
+  }
+  const recordsMutationCtl = await evalT(`(()=>{const panel=document.getElementById('recpanel'),button=document.createElement('button');
+    button.type='button';button.textContent='Injected records mutation';panel.append(button);
+    const result=${trainingBoardTourCheck('recpanel', 'records-tour')};button.remove();return result;})()`);
+  if (recordsMutationCtl.ok || !recordsMutationCtl.unlocked.includes('Injected records mutation')) {
+    fails.push('DRILL RECORDS CONTROL FAILED — an injected unlocked Records mutation stayed green: '
+      + JSON.stringify(recordsMutationCtl));
+  }
+
+  await keyT('Enter', 'Enter');
+  await sleep(120);
+  if (await step() !== 'horizon') fails.push('DRILL: Records tour did not reach the horizon: ' + await step());
+  await recordTrainingReceipt('horizon', 14);
+  const horizonFocus = await evalT(trainingFocus);
+  if (horizonFocus.active !== 'tutbtn' || !horizonFocus.allowed
+    || !/Field Training, step 14 of 15/i.test(horizonFocus.announcement)
+    || !/Elemental Titan.*Apex Guardian.*strongest fauna/i.test(horizonFocus.announcement)
+    || !/losing one of those captured rulers is permanent/i.test(horizonFocus.announcement)
+    || !/nine Prime Signatures.*ninth opens the Frontier/i.test(horizonFocus.announcement)
+    || !/battle-log Share changes no expedition fact/i.test(horizonFocus.announcement)) {
+    fails.push('DRILL HORIZON: Guardian, Prime, Chronicle, or permanence orientation drifted: '
+      + JSON.stringify(horizonFocus));
+  }
+
+  await keyT('Enter', 'Enter');
+  await sleep(120);
+  if (await step() !== 'grad') fails.push('DRILL: horizon did not reach graduation: ' + await step());
+  await recordTrainingReceipt('grad', 15);
+  const exactTrainingSequence = [
+    'welcome', 'find-earth', 'survey-tour', 'atlas-add', 'atlas-open', 'land',
+    'planetside-briefing', 'engineering-open', 'engineering-tour',
+    'compendium-open', 'compendium-tour', 'records-open', 'records-tour',
+    'horizon', 'grad',
+  ];
+  const observedTrainingSequence = trainingSequenceReceipts.map((receipt) => receipt.step);
+  if (trainingSequenceReceipts.length !== exactTrainingSequence.length
+    || JSON.stringify(observedTrainingSequence) !== JSON.stringify(exactTrainingSequence)) {
+    fails.push('DRILL SEQUENCE: exact 15-card causal receipt ledger drifted or skipped a card: '
+      + JSON.stringify({ expected: exactTrainingSequence, observed: observedTrainingSequence }));
+  }
+  const gradSide = await evalT(trainingSideCheck('grad'));
+  if (!gradSide.ok || !(gradSide.text > 20)) {
+    fails.push('DRILL PLANETSIDE: populated strip reappeared behind graduation: ' + JSON.stringify(gradSide));
+  }
   const gradFocus = await evalT(trainingFocus);
   if (gradFocus.active !== 'tutbtn' || !gradFocus.allowed
-    || !/Field Training, step 7 of 7/i.test(gradFocus.announcement)) {
+    || !/Field Training, step 15 of 15/i.test(gradFocus.announcement)
+    || !/CF1 world code/i.test(gradFocus.announcement)
+    || !/Biosphere Yield/i.test(gradFocus.announcement)
+    || !/20-minute active-play cycle/i.test(gradFocus.announcement)
+    || !/This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat/i.test(gradFocus.announcement)) {
     fails.push('DRILL KEYBOARD: graduation was not focused and announced: ' + JSON.stringify(gradFocus));
   }
   /* Hold an older persist across the native Finish activation, then attempt
@@ -22653,7 +23827,7 @@ if (OUTCOME_CONTROLS_ONLY) {
   console.log('SLICE OUTCOME CONTROLS: PASS — two source-generated leaf-seed-colliding worlds retain distinct Search/name/Atlas/Land/save-reload/share identity, and F4 heartbeat lease-storage plus revision-read failures stop answerability/accrual/audio/heartbeat without automatic reacquisition before a read-only convergence reload.');
   process.exit(0);
 }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact 73-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
 console.log('SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.');
 console.log(sliceScreenshotInventoryLine());
