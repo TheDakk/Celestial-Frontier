@@ -2612,6 +2612,18 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
     }
   }
   if (record.status === 'calibration-required') {
+    if (validCompendiumFixedRulerAuthority(record.calibration?.rulerAuthority)
+      && validMeasurementAuthority(record.measurementAuthority)
+      && record.calibration.rulerAuthority.measurementAuthoritySha256
+        !== record.measurementAuthority.sha256) {
+      errors.push('calibration-required fixed ruler measurement authority must match the top-level measurement authority');
+    }
+    if (validCompendiumFixedRulerAuthority(record.calibration?.rulerAuthority)
+      && validProducerAuthority(record.producerAuthority)
+      && record.calibration.rulerAuthority.producerAuthoritySha256
+        !== record.producerAuthority.sha256) {
+      errors.push('calibration-required fixed ruler producer authority must match the top-level producer authority');
+    }
     if (record.ceilings !== null) errors.push('calibration-required budget must keep ceilings null');
     if (PROFILES.some((profile) => record.calibration?.samples?.[profile]?.length !== 0)) {
       errors.push('calibration-required budget must not retain stale candidate samples');

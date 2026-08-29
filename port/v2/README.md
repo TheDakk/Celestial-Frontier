@@ -1,28 +1,37 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
-> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
-> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
-> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
-> 43,752 ms with six PNGs. Slice `20260828-phase4-final13-7cb09699726b-slice` passed in
-> 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport Glass passed in 85,944 ms (`c5805492…`);
-> Recovery passed in 1,290,887 ms with a real 1,200,308.5 ms active observation (`79f2bf8e…`)
-> bound to those exact predecessors. Every stage ran once and passed named verification; there were
-> no retries, findings or instrument failures. This is the stable local Phase-4 automated checkpoint
-> and real Recovery certificate for that exact source. It changes no product, persistence, art,
-> save, version, ruler or browser policy. It is not HUMAN judgment, whole-Gate, hosted/merge,
-> release/version or deployment authority; physical-device heat/GPU evidence remains open. The seven
-> evidence carriers and synchronized references are preserved in signed local commit
-> `ff00d166fe66b0e0e16ca227fb389662b12565e4`. Keep temporary full caffeinate active while authorized
-> local work continues, then restore it when that work is complete. That signed source is the
-> pre-change baseline; the current local universe-wide visual implementation checkpoint is
-> documented below. Edge `.107` / CDP `1.3` is provenance only and compatible point updates never
-> trigger
-> rebaseline. Earlier Final12/Final11/Final10 wording below is historical where superseded.
+> **Current universe-polish campaign boundary (2026-08-28/29):** exact signed source
+> `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa` (tree
+> `1b561cae692f38d2b8f38e66578a68657b0567a7`, parent
+> `283c8b3b04e0e9a70bb7e4242e3408169c24b02a`) stayed clean and unchanged during its once-only
+> browser stages. Layout `20260828-universe-polish-55126af50f3f-layout` passed **787/787** in
+> **76,378 ms**; SceneMemory `20260828-universe-polish-55126af50f3f-scenemem` passed the current
+> input-v4 contract **44/44** in **10,672 ms**. Both passed named verification. Compendium
+> `20260828-universe-polish-55126af50f3f-compendium` then completed in **46,681 ms** and stopped
+> terminal product `fail` at **74/78**: only the phone/desktop heap and byte outcomes were red. Its
+> exact FAIL carrier passed the named verifier with the expected nonzero verdict. Every stage ran
+> once with zero retries on Edge `151.0.4129.107` / CDP `1.3`; Slice, Glass and Recovery correctly
+> did not run. The three immutable carriers and hashes are recorded in `ROADMAP.md` and
+> `audits/README.md`.
+>
+> The evidence has stable warm plateaus, complete cleanup and green cache/resource/ownership counts.
+> Independent red-diagnosis and budget-policy audits agree that the deliberate deterministic visual
+> treatment increased full-cache encoded PNG entropy and some stable heap/backing cost; this is not
+> a leak, invalid instrument or Edge-point-version drift. The red is preserved and the current
+> Compendium budget is now fail-closed `calibration-required` with null ceilings and empty live
+> samples. On its changed signed source, collect exactly three independent clean candidates per
+> profile plus a fresh paired broken baseline at exact commit
+> `38447019517147319bd08c598202d097ee866874`, select strict rational headroom with the existing
+> +1/fractional and paired-fault controls, activate/certify on another changed signed source, then
+> restart the complete Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain
+> from Layout. Do not rerun the stopped `55126af…` campaign. The prior exact Final13 Recovery
+> certificate remains historical pre-polish evidence. Keep temporary full caffeinate active while
+> authorized local work continues, then restore it at the completed handoff. No HUMAN, whole-Gate,
+> hosted/merge, release/version or deployment authority follows.
 
 ## Current port status — 2026-08-28
 
-### Current local universe-wide visual checkpoint — implementation present, certification open
+### Current local universe-wide visual checkpoint — implementation present, Compendium recalibration required
 
 The active v2 routes now share one structure-preserving visual language across galaxy and system
 space, planets, all 43 live biomes, creatures, plants, fungi, microbes and the ship. The finite
@@ -78,22 +87,69 @@ scene/resource ruler and adds one phone plus one desktop `surface-vista-lifecycl
 `surfaceVistaWorkerActive`, `surfaceVistaMounted`, `surfaceVistaCacheEntries` and
 `surfaceVistaCachePixels` through cold zero, first mount, repeated surface/ascent, BFCache and
 reload-clear/replacement cleanup. The cache limit is semantically fixed at one entry / 412,800
-pixels. Contract, budget, tool and workflow mutation controls are browser-free green; there is no
-current-source 44/44 browser report yet. The first exact `a9d35cc…` campaign passed Layout 787/787,
-then SceneMemory stopped instrument-only after its complete phone measured/BFCache leg because the
-reload caller passed a 30-second phase budget into a CDP command capped at five seconds. The exact
-red carrier is preserved in `audits/`; desktop and downstream stages correctly did not run. The
-repair caps every command independently while retaining the separate 30-second settlement phase and
-rebinds producer identity without moving any ruler.
+pixels. Contract, budget, tool and workflow mutation controls are browser-free green. The first
+exact `a9d35cc…` campaign passed Layout 787/787, then SceneMemory stopped instrument-only after its
+complete phone measured/BFCache leg because the reload caller passed a 30-second semantic-phase
+budget into a CDP command capped at five seconds. Its immutable carrier remains in `audits/`. The
+repair caps each collector command independently while retaining the separate 30-second settlement
+phase and changes only SceneMemory producer identity, not a ruler. Exact signed successor
+`55126af…` subsequently passed current input-v4 **44/44** with complete phone/desktop lifecycle and
+cleanup in 10,672 ms.
 
-The bounded instrument repair and its browser-free verification are complete locally: the full v2
-suite passed 163 files / 1,708 assertions with one intentional skip; 110 focused assertions,
-all three typechecks, `artunused`, exact current-producer derivation and independent review are
-green. A fresh clean repaired-source Layout → SceneMemory → Compendium → Slice → Glass → Recovery
-chain, fixed-seed before/after screenshots,
-HUMAN phone/desktop visual and assistive-technology review, and physical-device frame-time, heat,
-battery and true GPU/resource measurement are still required. No whole Gate, campaign completion,
-release, version bump or deployment is claimed.
+The bounded instrument repair and calibration-transition verification are complete locally: the
+full v2 suite passed 163 files / 1,710 assertions with one intentional skip; the Compendium budget
+suite passed 26/26, its instrument selftest passed 222 controls, and 110 SceneMemory-focused assertions, all
+three typechecks, `artunused`, exact current-producer derivation and independent review are green.
+The same source's Layout and SceneMemory stages are certified, but Compendium stopped product-red at
+74/78 before Slice, Glass or Recovery. Fixed-seed before/after screenshots already cover eleven
+representative universe surfaces; HUMAN phone/desktop visual and assistive-technology review, and
+physical-device frame-time, heat, battery and true GPU/resource measurement remain required. No
+whole Gate, completed current campaign, release, version bump or deployment is claimed.
+
+#### Current Compendium stop and calibration boundary
+
+All 78 outcomes ran. Four failed:
+
+- `phone/heap-ceiling`: V8 used heap **10,902,116 > 10,485,760** and backing storage
+  **4,678,792 > 4,194,304**. Embedder **3,070,912 < 4,194,304** and aggregate
+  **16,222,216 < 16,777,216** passed.
+- `phone/byte-ceiling`: encoded art **3,202,320 > 2,621,440** and encoded portrait
+  **308,486 > 262,144**.
+- `desktop/heap-ceiling`: aggregate heap **21,239,200 > 20,971,520**. V8 used
+  **14,536,484 < 14,680,064**, embedder **3,220,288 < 4,194,304** and backing storage
+  **6,278,552 < 6,291,456** passed.
+- `desktop/byte-ceiling`: encoded art **8,528,076 > 6,815,744** and encoded portrait
+  **308,486 > 262,144**.
+
+Cache entries, decoded pixels/bytes, jobs, leases, subscribers, portrait entries, ownership,
+answerability, disposal and cleanup all passed. Phone and desktop warm plateaus passed; desktop
+range was **326,652 < 524,288**. The app's separate hard runtime encoded caps remain well above the
+observations: phone **3,202,320 < 6,690,816** and desktop
+**8,528,076 < 17,842,176**. This pattern is the expected cost of the intentional richer full-cache
+PNG producer, not growth across warm cycles. Edge `.107` was accepted by the unchanged
+version-tolerant browser contract, so it neither caused nor justifies this calibration.
+
+The immutable red is bound to measurement authority
+`3c811274c4f67cf706b621142db2001d614ba6b1a3c3669daf6ce1dacf67b574`. The fail-closed
+authority-binding repair advances the prospective calibration measurement to
+`cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78`; current producer is
+`d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271`. Existing active-budget
+calibration samples belong to the former producer and cannot be relabelled. The required path is:
+
+1. **Completed in this batch:** preserve the immutable red and transition the budget to
+   `calibration-required` with null ceilings, empty phone/desktop candidate arrays, prospective
+   current-authority binding and a fresh `measurement-required` paired baseline.
+2. On the resulting unchanged signed source, run exactly three distinct clean no-retry candidates per
+   profile and one paired broken-baseline measurement from exact commit
+   `38447019517147319bd08c598202d097ee866874` in a fresh isolated detached worktree.
+3. Select strict ceilings from the candidate maxima with rational headroom, preserve every report
+   and the paired baseline's exact fault/breach inventory, and keep the +1 and fractional numeric
+   mutations red. Do not set ceilings from the single stopped campaign.
+4. Activate the selected budget on another changed signed clean commit, pass the budget/authority/
+   mutation battery and one named-verified Compendium certification, then start a completely fresh
+   once-only Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain from Layout.
+   Stop and preserve on any nonzero, product-red or instrument result; never retry the unchanged
+   `55126af…` source.
 
 > **Historical Final10 evidence — all five responsive predecessors passed, then Recovery
 > stopped on an offline-reopened instrument oracle.** Signed clean
@@ -2256,8 +2312,8 @@ node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_
 | **Arc 3 extensions to Smoke + Glass (2026-08-25)** | Smoke uses native input for Mine, Skim, Deep Scanners and fixed Plate Fabrication, and proves no optimism, shared single-flight ownership, pending Close/reopen, exact focus restoration, Charter banking, complete v5/Arc2/Arc3/F4/mirror/receipt parity, storage refusal, stale reload and post-durable publication convergence. Glass opens the real Engineering & Shipyard surface at all 12 viewports, drives keyboard disclosures, and checks six research rows, five ordered recipe groups, 62 recipes, 70 honest action controls, an independent status/effect/enabled oracle, 44px geometry, focus/ARIA, exactly one preview while open and zero retained work after Close. The final report ledger remains 78/78; fixture and hostile controls do not invent a 79th named report outcome. |
 | **Historical Final10 Arc 4 browser boundary (superseded by Final11)** | Persistence, Training restore, acquisition planner/capacity/action, app bootstrap/wiring and coordinator tests cover strict 18-namespace bootstrap, exact legacy source evidence, full-roster/current-epoch two-draw settlement, every pre-draw miss/hit capacity scenario, one receipt/CAS, hit/miss spend, first-only/repeat ownership, full committed verification, targeted publication and synchronous overlap barriers. Final10 Slice passed its native-control ledger with zero findings and Glass passed every Arc 4 outcome across 12 viewports. Recovery passed fixture, the complete 16-attempt burn-down, disabled suppression, close/checkpoint and closed/offline proof, then the old phase-blind oracle stopped `instrument-fail` at `offline-reopened` after 110,549 ms because the truthful read-only `unavailable` presentation was not active `empty`/`depleted`. Active observation, boundary crossing and recovered remained not-run. Thus Recovery remains unproved; its report has no `recoveryClaimed` field, while the ordinary Slice separately and truthfully records `recoveryClaimed:false`. Signed implementation/evidence repair `3fbfcd5…` and the synchronized signed clean docs-only descendant supplied immutable Final11; the historical assessor/tests/docs-only repair replayed immutable Final11 green and supplied Final12, whose distinct immutable Slice control stop is recorded above. HUMAN review, hosted, preview/publication, release and whole-Gate authority remain open. |
 | **Arc 5A compact-v2 authority (2026-08-25; historical terminal-green local evidence)** | Focused domain/persistence/Training/capture/Main controls cover the exact manifest + four fixed generic shards, aligned legacy-v1 one-CAS upgrade, current-v2 zero-write fixed point, full protection rollback, genuine legacy 24-write replacement, source-deferred absence, every hit/miss 18+5 pre-draw successor, exact-five internal V2-only successor, source/delta/target/shard fixed points and paired postcommit V1/V2 publication/convergence. The compact-v2 gate is 109/109. Slice `20260825213041239-98104-c96d3b2d0652` and Glass report `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e` were terminal PASS on Edge `.101` for those exact historical inputs; detailed hashes/provenance and the known deferred Compendium seal are in the Arc 5A boundary above. Audits were CLEAR for those exact historical inputs, and later/current reviews do not retroactively certify them. The second repair's own current-byte whole-diff reviews are CLEAR. This row grants no current-input, player capability, Guide/release/Training lesson, hosted, HUMAN, preview, version or release authority. |
-| `npm run compendiummem:selftest` / `npm run compendiummem` / `node tools/compendiummem.mjs --verify-run=<run-id>` | Negative-controls the browser-free Compendium instrument, performs one standalone browser run without automatic retry, and independently verifies the named report. The current browser authority is version-tolerant Edge family + CDP `1.3` + a hashed source-inventoried capability contract; exact version/revision/JavaScript/path/UA remain per-run provenance. Exact cold identity is proved by set membership, not cardinality: the named fixture row/key must be absent from the pre-arm cache and bind its publication, producer error and `jobError`; cached/wrong-key mutants fail. Current collector/outcome-contract/measurement are `c13a489d…3faab` / `ac7eea39…6d17` / `28b06f3c…276c`. Historical candidates, baselines, activations and certificates remain bound to their own authorities and producers; no numeric ceiling or sample was rewritten. The gate still owns the 1,500-row fixture, authority graph, six review PNGs and instrument/product distinction; automation never supplies HUMAN judgment. |
-| `npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts tests/scenemem-workflow.test.ts` / `node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json` / `node tools/scenemem.mjs --verify-run=<run-id> --budget=budgets/scene-memory-v2.json` | Negative-controls the Arc 1 scene-memory contract, tracked v2 budget, workflow binding and terminal verifier; then performs one no-retry raw-CDP certification and independently verifies the exact named report. Current input-v4 requires **44 outcomes**: the original 42 bind exact scene ownership/work, transient peaks, canonical Pixi inventory, heap/DOM/resource bounds, target answerability, independent heartbeat, zero pending work, BFCache survival and cleanup; one added phone and one added desktop outcome bind the four raw surface-vista worker/mount/cache diagnostics through cold, mounted, ascent, BFCache and reload-clear/replacement lifecycle with an exact one-entry / 412,800-pixel cache ceiling. Current terminal certification rejects historical input-v3 reports; historical report replay remains available only as historical evidence. Signed `4405fb2…` passed the historical Final10 run `20260828-phase4-final10-4405fb2b4ba7-scenemem` 42/42 with complete cleanup after its green Layout predecessor; later Compendium, Slice and Glass stages also passed. Final12 likewise passed its historical 42/42 stage before its distinct immutable Slice control stop. The v4/44 browser-free contract and mutation controls are green, but no current-source 44/44 browser report is claimed yet. Exact Edge provenance is mandatory but not baseline identity; a compatible point update never triggers a rebaseline. Automation supplies neither HUMAN nor merge authority. |
+| `npm run compendiummem:selftest` / `npm run compendiummem` / `node tools/compendiummem.mjs --verify-run=<run-id>` | Negative-controls the browser-free Compendium instrument, performs one standalone browser run without automatic retry, and independently verifies the named report. The current browser authority is version-tolerant Edge family + CDP `1.3` + a hashed source-inventoried capability contract; exact version/revision/JavaScript/path/UA remain per-run provenance. Exact cold identity is proved by set membership, not cardinality: the named fixture row/key must be absent from the pre-arm cache and bind its publication, producer error and `jobError`; cached/wrong-key mutants fail. The preserved 74/78 red binds measurement `3c811274c4f67cf706b621142db2001d614ba6b1a3c3669daf6ce1dacf67b574`; prospective calibration measurement, producer, index and owner authorities are `cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78` / `d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271` / `259c4ad7beff2242c01cedb1376b5b73d3c5e8663d5f322bb05a1c3e236efaa2` / `5d166994ccf89218f74d56b0bd537310c18353671eb2246f614abd931d3ecffb`. Exact `55126af…` run `20260828-universe-polish-55126af50f3f-compendium` completed 78 outcomes once and named-verified its terminal product red; stable plateau/cleanup and green ownership counts isolate the intentional visual producer's PNG/heap cost. Preserve it, calibrate exactly three candidates plus fresh paired broken baseline `3844701…`, activate/certify on changed signed sources, then start a new full chain. Historical candidates, baselines, activations and certificates stay bound to their own authorities/producers and must not be relabelled. The gate still owns the 1,500-row fixture, authority graph, six review PNGs and instrument/product distinction; automation never supplies HUMAN judgment. |
+| `npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts tests/scenemem-workflow.test.ts` / `node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json` / `node tools/scenemem.mjs --verify-run=<run-id> --budget=budgets/scene-memory-v2.json` | Negative-controls the Arc 1 scene-memory contract, tracked v2 budget, workflow binding and terminal verifier; then performs one no-retry raw-CDP certification and independently verifies the exact named report. Current input-v4 requires **44 outcomes**: the original 42 bind exact scene ownership/work, transient peaks, canonical Pixi inventory, heap/DOM/resource bounds, target answerability, independent heartbeat, zero pending work, BFCache survival and cleanup; one added phone and one added desktop outcome bind the four raw surface-vista worker/mount/cache diagnostics through cold, mounted, ascent, BFCache and reload-clear/replacement lifecycle with an exact one-entry / 412,800-pixel cache ceiling. Current terminal certification rejects historical input-v3 reports; historical report replay remains available only as historical evidence. Exact signed `55126af…` run `20260828-universe-polish-55126af50f3f-scenemem` passed **44/44** with complete phone/desktop lifecycle and cleanup in 10,672 ms after its named-verified Layout predecessor; it ran once with zero retries and passed named verification. Compendium then stopped product-red, so no later stage ran. Exact Edge provenance is mandatory but not baseline identity; a compatible point update never triggers a rebaseline. Automation supplies neither HUMAN nor merge authority. |
 | **Historical Final10 SceneMemory evidence and calibration boundary (superseded by Final11)** | Signed `4405fb2…` was the historical Final10 42/42 report, Final10 run `20260828-phase4-final10-4405fb2b4ba7-scenemem`; its raw/gzip SHA-256 are `00161fd6c4d8b5457776dc1768ea2022a142a73c892c8a4cdff207073e88116a` / `99abfc6d0a084ce0ed874cf5516c833d1d73735e4ebb8c44c0d3ce870075a0e3`. Signed `862a75b…` remains the paired 40/42 heap/DOM red; signed `6c9ad855…` supplied three clean calibration candidates; signed activation `4a54c0d…` set 12 MiB V8 /18 MiB aggregate with every other ceiling and paired discrimination intact. Final10 changes no ceiling or sample and passed the full responsive chain through Glass. Signed implementation/evidence repair `3fbfcd5…` and the synchronized signed clean docs-only descendant supplied immutable Final11; the historical assessor/tests/docs-only repair replayed immutable Final11 green and supplied Final12, whose distinct immutable Slice control stop is recorded above; compatible Edge updates remain provenance only and never trigger rebaseline, recalibration or threshold movement. |
 | `node tools/compendiummem-browser-preflight.mjs --selftest` / `node tools/compendiummem-browser-preflight.mjs` | Owns the Compendium workflow's one cold compatibility proof without changing numeric ceilings. One 45-second startup / 15-second socket / sealed 5-second candidate-command / 2-second shutdown launch must use the selected executable, report canonical Microsoft Edge with nonempty exact version/revision/JavaScript/path/UA provenance and CDP `1.3`, then create/attach/close a fresh target and enable Runtime/Page/HeapProfiler. The full collector exercises the separately hashed required-CDP inventory; adding/removing an inventoried method changes measurement authority instead of masquerading as version drift. `.101`, `.107` and synthetically later canonical Edge controls are accepted; Chrome, malformed/incomplete Edge, protocol mismatch, executable mismatch, command/sentinel failure and cleanup leak are terminal. Phone/desktop evidence from one run must retain the same exact provenance tuple. There is no warmup, retry, fallback, alternate browser, version-triggered rebaseline or automatic ceiling change. Its evaluate return and exact-marker, same-session console event share one immutable 5-second monotonic phase; just-before receipts pass while exact/late/missing/wrong-session/backward-clock controls fail. Both PR certification and development-preview packaging workflows SHA-verify the sealed `.101` deb, validate its embedded package/version metadata and extract it into a fresh Compendium-owned `RUNNER_TEMP` root without apt. Preflight, certification and named verification each pin that extracted executable directly while the job remains Chrome-owned. The structural selftest rejects apt installation, missing extraction, wrong URL/hash/package/version/root, missing or system-Edge owner pins, softened owners, broken extract → preflight → certificate → verifier order, renamed certification IDs and false/otherwise-disabled verifier conditions. The exact package/path is workflow provenance; compatible Edge point versions do not alter the browser capability authority or numeric ruler. Historical run `32394244417` stopped before product when the runner's resident `.86` made the old plain apt install a no-op; run `32462323775` later confirmed the historical reinstall path before isolation superseded system-package mutation. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |

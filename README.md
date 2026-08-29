@@ -1,6 +1,23 @@
 # Celestial-Frontier
 
-> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> **Current universe-polish certification boundary (2026-08-28):** exact signed source
+> `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa` ran once per stage with zero retries. Layout
+> `20260828-universe-polish-55126af50f3f-layout` passed 787/787 in 76,378 ms; SceneMemory
+> `20260828-universe-polish-55126af50f3f-scenemem` passed 44/44 in 10,672 ms. Compendium
+> `20260828-universe-polish-55126af50f3f-compendium` then retained a complete terminal product
+> `fail` in 46,681 ms: 74/78 outcomes passed, while phone heap/bytes and desktop heap/bytes exceeded
+> their pre-polish ceilings. Warm plateaus and every lifecycle/ownership outcome passed, and
+> independent audits attribute the encoded-byte increase to the richer deterministic universe art,
+> not a leak. The fail-fast chain correctly stopped before Slice, Glass and Recovery. Edge
+> `151.0.4129.107` / CDP `1.3` was accepted as provenance; this is not Edge drift or an Edge
+> rebaseline. One run cannot move ceilings. The preserved red now puts the Compendium budget into
+> fail-closed `calibration-required`: ceilings and live samples are empty while historical evidence
+> remains unrebound. Next, collect exactly three independent current-producer candidates plus the
+> paired broken baseline at `38447019517147319bd08c598202d097ee866874`, select strict ceilings,
+> then restart the full serial certification on a new unchanged signed source. Exact report
+> carriers, byte sizes and SHA-256 hashes are preserved in [`audits/README.md`](audits/README.md).
+>
+> **Historical Final13 pre-polish local automated checkpoint (2026-08-28):** exact signed source
 > `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
 > `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
 > Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
