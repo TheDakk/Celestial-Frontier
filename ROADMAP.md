@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-28 · UNIVERSE POLISH + ARC 5 SOURCE SIGNED · EXACT BROWSER CHAIN NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-28 · UNIVERSE POLISH + ARC 5 · FIRST CAMPAIGN PRESERVED · INSTRUMENT REPAIR ACTIVE ◀◀◀
 
 ### Exact current boundary
 
@@ -31,11 +31,14 @@ the archive verbatim and refresh this handoff in place.
   locale/ecology/audio joins, final memory-oracle repair, current authorities, Guide/release copy
   and synchronized current references. The commit contains an SSH signature; local verification
   needs an allowed-signers file and therefore reports no local trust judgment.
-- Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully
-  contained. The branch was **106 commits ahead** of `origin/openai/mac` immediately after the
-  implementation commit. Work remains local and unpushed.
-- This ROADMAP/archive refresh is the only working-copy change after `c55cc63…`; sign it as a
-  docs-only descendant before producing exact browser evidence.
+- **First campaign source:** signed docs descendant `a9d35cc795076a8903807d02ae011288ea5a639c`
+  (tree `c2374dc04488654058919d0f539f770ea9e3e467`, parent `c55cc63…`) supplied the first exact
+  browser campaign. Locally known `origin/develop` remains
+  `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully contained. The branch is **107 commits
+  ahead** of `origin/openai/mac`; work remains local and unpushed.
+- The current working copy repairs the preserved SceneMemory instrument stop described below,
+  rebinds only its producer identity, adds positive/negative timeout controls and retains both
+  first-campaign carriers under `audits/`. It is not yet the next signed campaign source.
 - Temporary `/usr/bin/caffeinate -dis` remains active so macOS and 1Password stay available during
   the authorized local certification. Restore normal monitors-off/sleep behavior only after the
   complete chain and final handoff are safe.
@@ -109,13 +112,37 @@ the archive verbatim and refresh this handoff in place.
   It confirms the new biome atmosphere and depth while preserving creature/plant/ship structure.
   This is not HUMAN art acceptance.
 
-### Next exact action — one unchanged signed source
+### First exact campaign — immutable instrument stop and bounded repair
 
-- Sign this ROADMAP/archive-only descendant, require a clean worktree, then run exactly once and
-  serially: **Layout 787 → SceneMemory 44 → Compendium 78 → Slice → Glass 12 → Recovery 20-minute**.
-  Give every stage a unique source-derived run ID, named-verify it before starting its successor,
-  and stop/preserve immediately on any red, nonzero or instrument finding. Never rerun a red
-  campaign to erase it.
+- Root browser preflight passed with system Edge `151.0.4129.107` / CDP `1.3`; Layout selftest
+  passed. Layout `20260828-universe-polish-a9d35cc79507-layout` then ran once with zero retries,
+  passed **787/787** across ten viewports in 76,183 ms and passed named verification.
+- SceneMemory `20260828-universe-polish-a9d35cc79507-scenemem` ran once with zero retries and
+  stopped terminal `instrument-fail` after 6,059 ms. The phone profile completed its initial
+  sample, four warmups, all four measured cycles and BFCache proof; the reload-cleanup caller then
+  passed a 30,000 ms phase budget into a CDP command whose fixed transport cap is 5,000 ms. Desktop,
+  contract projection and all 44 outcomes therefore did not run. Browser/server/workspace-lock
+  cleanup passed. This is instrument-only and makes no product verdict. The serial chain correctly
+  stopped before Compendium, Slice, Glass or Recovery.
+- Exact raw/gzip hashes and both immutable carriers are recorded at the top of `audits/README.md`.
+  The repair clips every collector command to the existing 5,000 ms cap, leaves the separate
+  30,000 ms semantic settlement deadline intact, removes the widened one-shot reload request and
+  adds both valid-shorter/longer-cap functional checks and source-wiring mutation controls. Only the
+  SceneMemory collector producer hash changes; browser policy, product, fixtures, samples, ceilings
+  and all numeric rulers remain unchanged.
+
+### Next exact action — new repaired signed source, fresh chain
+
+- Repair verification is complete: the independent focused review is **CLEAR** with 110 assertions;
+  the full v2 suite passed **163 files / 1,708 passed + 1 skipped**; all three typechecks,
+  `artunused`, current-producer derivation, JSON/gzip integrity and global diff checks passed.
+  Sign this repair/evidence batch, refresh this handoff with its exact commit, and sign that tiny
+  docs descendant. The clean descendant—not `a9d35cc…`—starts a completely fresh campaign exactly
+  once and serially: **Layout 787 → SceneMemory 44 → Compendium 78 → Slice → Glass 12 → Recovery
+  20-minute**.
+  Give every stage a new source-derived run ID, named-verify it before starting its successor, and
+  stop/preserve immediately on any red, nonzero or instrument finding. Never rerun the immutable
+  `a9d35cc…` campaign.
 - After the chain, preserve exact run IDs, durations and report hashes; refresh this handoff in
   place; sign the final docs/evidence descendant; then restore normal monitor/sleep behavior.
 
@@ -131,9 +158,9 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** sign the ROADMAP/archive descendant of `c55cc63…`, run the exact local chain
-  above without retry, preserve evidence and finish the docs-only handoff. Keep full caffeinate
-  active until that endpoint.
+- **OpenAI/Codex:** finish, independently review and sign the current SceneMemory instrument repair;
+  run the fresh exact local chain above without retry; preserve evidence and finish the docs-only
+  handoff. Keep full caffeinate active until that endpoint.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
   apply `actions-budget-approved`, dispatch, rerun, merge, deploy, publish or bump a version.
 - **PR details if Nick later authorizes the exact GitHub write:** base `develop`; source

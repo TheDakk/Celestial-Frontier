@@ -34,6 +34,8 @@ export function sceneMemoryBrowserCapabilityInventoryErrors(input?: Readonly<{
   browserCdpSource?: string;
 }>): string[];
 
+export function sceneMemoryCollectorCommandTimeoutMs(timeoutMs?: number): number;
+
 export function sceneMemoryShipyardOpenSettlementReasons(value: unknown): readonly string[];
 
 export function sceneMemoryVeteranRaw(): string;
