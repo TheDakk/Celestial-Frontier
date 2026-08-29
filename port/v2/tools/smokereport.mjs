@@ -31,6 +31,7 @@ import {
   classifyPlanetsideSettlement,
   planetsidePhaseRemainingMs,
   planetsideRuntimeTimeoutDecision,
+  SLICE_SCREENSHOT_LOGICAL_NAMES,
   trainingBindingReceiptBeforeDeadline,
 } from './slicesmoke-contract.mjs';
 
@@ -41,18 +42,6 @@ const outputRoot = path.join(v2Root, 'apps', 'game', 'smoke');
 const currentReportPath = path.join(outputRoot, 'slice-smoke-report.json');
 const currentLogPath = path.join(outputRoot, 'slice-smoke.log');
 const RUN_ID_PATTERN = /^[a-z0-9][a-z0-9-]{0,95}$/i;
-const SLICE_SCREENSHOT_LOGICAL_NAMES = Object.freeze([
-  'codex',
-  'earth',
-  'galaxy',
-  'guide',
-  'phone',
-  'settings',
-  'sol',
-  'solmark',
-  'training',
-  'universe',
-]);
 const SCREENSHOT_MANIFEST_FIELDS = Object.freeze([
   'bytes', 'logicalName', 'name', 'path', 'sha256',
 ]);

@@ -71,7 +71,79 @@ const adapterExports = name === 'Descriptors'
   ? ['quasarDescriptor', 'cometDescriptor', 'decoDescriptor', 'dwarfDescriptor',
     'radioDescriptor', 'supernovaDescriptor', 'protostarDescriptor']
   : [];
-const moduleExports = [...new Set([...exportsList, ...adapterExports])];
+const thumbAdapterExports = name === 'ThumbArt'
+  ? ['installPlanetSpriteFinisher', 'installThumbSurfaceFinisher'] : [];
+const moduleExports = [...new Set([...exportsList, ...adapterExports, ...thumbAdapterExports])];
+
+/* ThumbArt's public getPlanetSprite and its lexical planetThumb consumer must
+   pass through one finishing owner. Keeping that hook inside the generated
+   lexical scope prevents call order from deciding whether a cached thumbnail
+   sees raw or finished pixels. The three replacements are exact and fail
+   closed; the sealed source body hash above remains the pre-adapter authority. */
+let emittedBody = body;
+let adapterPrelude = '';
+if (name === 'ThumbArt') {
+  const replacements = [
+    ['  if(hit) return hit;', '  if(hit) return _cfFinishPlanetSprite(hit);'],
+    ['    if(spriteCache.get(key)===lo) spriteCache.set(key, renderPlanetSprite(P, hdPx||P_PX));',
+      '    if(spriteCache.get(key)===lo) spriteCache.set(key, _cfFinishPlanetSprite(renderPlanetSprite(P, hdPx||P_PX)));'],
+    ['  return lo;', '  return _cfFinishPlanetSprite(lo);'],
+  ];
+  for (const [target, replacement] of replacements) {
+    const count = emittedBody.split(target).length - 1;
+    if (count !== 1) {
+      console.error(`ThumbArt finisher target count ${count}: ${target}`);
+      process.exit(1);
+    }
+    emittedBody = emittedBody.replace(target, replacement);
+  }
+  const thumbnailFinishers = [
+    ['function planetThumb(P){', '\nfunction starThumb(',
+      'const url=c.toDataURL();', "const url=_cfFinishThumbSurface(c,'planet',String(P.type||'')).toDataURL();"],
+    ['function starThumb(kind,col,binCol){', '\nfunction galaxyThumb(',
+      'const url=c.toDataURL();', "const url=_cfFinishThumbSurface(c,'star',kind).toDataURL();"],
+    ['function galaxyThumb(g){', '\nfunction moonThumb(',
+      'const url=c.toDataURL();', "const url=_cfFinishThumbSurface(c,'galaxy',g.quasar?'quasar':'galaxy').toDataURL();"],
+    ['function moonThumb(ti,mseed){', '\nfunction cometThumb(',
+      'const url=c.toDataURL();', "const url=_cfFinishThumbSurface(c,'moon',String(ti)).toDataURL();"],
+    ['function cometThumb(){', '\nfunction beltThumb(',
+      'const url=c.toDataURL();', "const url=_cfFinishThumbSurface(c,'comet','comet').toDataURL();"],
+    ['function beltThumb(){', null,
+      'const url=c.toDataURL();', "const url=_cfFinishThumbSurface(c,'belt','belt').toDataURL();"],
+  ];
+  for (const [startMarker, endMarker, target, replacement] of thumbnailFinishers) {
+    const start = emittedBody.indexOf(startMarker);
+    const end = endMarker === null ? emittedBody.length : emittedBody.indexOf(endMarker, start);
+    if (start < 0 || end < 0) {
+      console.error(`ThumbArt thumbnail finisher slice missing: ${startMarker}`);
+      process.exit(1);
+    }
+    const slice = emittedBody.slice(start, end);
+    const count = slice.split(target).length - 1;
+    if (count !== 1) {
+      console.error(`ThumbArt thumbnail finisher target count ${count} in ${startMarker}`);
+      process.exit(1);
+    }
+    emittedBody = emittedBody.slice(0, start) + slice.replace(target, replacement) + emittedBody.slice(end);
+  }
+  adapterPrelude = `let _cfFinishPlanetSprite=(surface)=>surface;
+let _cfPlanetSpriteFinisherInstalled=false;
+function installPlanetSpriteFinisher(finisher){
+  if(typeof finisher!=='function') throw new TypeError('planet sprite finisher must be callable');
+  if(_cfPlanetSpriteFinisherInstalled) throw new Error('planet sprite finisher is already installed');
+  _cfFinishPlanetSprite=finisher;
+  _cfPlanetSpriteFinisherInstalled=true;
+}
+let _cfFinishThumbSurface=(surface)=>surface;
+let _cfThumbSurfaceFinisherInstalled=false;
+function installThumbSurfaceFinisher(finisher){
+  if(typeof finisher!=='function') throw new TypeError('thumbnail surface finisher must be callable');
+  if(_cfThumbSurfaceFinisherInstalled) throw new Error('thumbnail surface finisher is already installed');
+  _cfFinishThumbSurface=finisher;
+  _cfThumbSurfaceFinisherInstalled=true;
+}
+`;
+}
 
 /* auto-detect imports: registry identifiers used in the body but not defined in it.
    ⚠ Detection scans a COMMENT-STRIPPED copy — a prose mention like "inherits a
@@ -97,7 +169,8 @@ const header = `/* AUTO-LIFTED VERBATIM from main.js @module ${name} [${moduleKi
    determinism contract — parity fixtures depend on them byte-for-byte. */
 `;
 
-const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '') + body + '\nexport { ' + moduleExports.join(', ') + ' };\n';
+const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '')
+  + adapterPrelude + emittedBody + '\nexport { ' + moduleExports.join(', ') + ' };\n';
 fs.mkdirSync(outDir, { recursive: true });
 const outFile = path.join(outDir, name.toLowerCase() + '.verbatim.js');
 fs.writeFileSync(outFile, out);

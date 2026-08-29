@@ -58,6 +58,7 @@ export type ActivePlayCommitOutcome =
     readonly saved: PreparedV5SaveWrite;
   }
   | { readonly kind: 'stale'; readonly expectedRevision: number; readonly actualRevision: number }
+  | { readonly kind: 'revision-exhausted'; readonly revision: number }
   | { readonly kind: 'lost'; readonly reason: 'lease-lost' | 'conflict' };
 
 export interface ActivePlayPersistenceOwner {
@@ -199,6 +200,8 @@ export function createActivePlayPersistenceOwner(
         case 'committed':
           return { kind: 'committed', revision: outcome.revision, authority, saved };
         case 'stale':
+          return outcome;
+        case 'revision-exhausted':
           return outcome;
         case 'fence-lost':
           return { kind: 'lost', reason: 'lease-lost' };

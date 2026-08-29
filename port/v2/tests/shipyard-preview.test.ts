@@ -114,6 +114,35 @@ describe('Shipyard SVG preview', () => {
     });
   });
 
+  it('adds one deterministic static material treatment without changing capability layers', () => {
+    const owner = new ShipyardPreviewOwner(mount);
+    const source = state(2, { array: true, autoext: false, cscoop: true });
+    const first = owner.open(source);
+    const firstMarkup = first.outerHTML;
+
+    expect(first.getAttribute('data-visual-treatment')).toBe('polished-v1');
+    expect(first.querySelectorAll('defs linearGradient')).toHaveLength(2);
+    expect(first.querySelectorAll('defs radialGradient')).toHaveLength(2);
+    expect(first.querySelectorAll('defs clipPath')).toHaveLength(1);
+    expect(first.querySelectorAll('[data-layer="backdrop"] > circle')).toHaveLength(18);
+    expect(first.querySelector('[data-layer="material-light"]')).not.toBeNull();
+    expect(first.querySelectorAll('filter, animate, animateTransform')).toHaveLength(0);
+    expect(Array.from(first.querySelectorAll('[data-hardpoint]'))
+      .map((element) => element.getAttribute('data-hardpoint')))
+      .toEqual(['array', 'cscoop']);
+
+    const second = owner.replace(source);
+    expect(second.outerHTML).toBe(firstMarkup);
+    expect(owner.diagnostics()).toMatchObject({
+      activePreviewCount: 1,
+      createdPreviewCount: 2,
+      disposedPreviewCount: 1,
+      domPreviewCount: 1,
+      retainedPreviewCount: 0,
+      faultCount: 0,
+    });
+  });
+
   it('shows a generic veteran-refit marking without claiming missing equipment', () => {
     const owner = new ShipyardPreviewOwner(mount);
     const fallback = state(

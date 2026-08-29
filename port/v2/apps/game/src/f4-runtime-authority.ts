@@ -21,6 +21,7 @@ import {
   createF4NoRngProductTransactionOwner,
   createF4OutcomeTransactionOwner,
   createTabLeaseClient,
+  F3_MAX_REVISION,
   type ActivePlayCommitOutcome,
   type ContentRegistry,
   type F4AuthorityV1,
@@ -99,6 +100,7 @@ export type F4RuntimeHeartbeatOutcome =
 export type F4RuntimeCommitOutcome =
   | Extract<ActivePlayCommitOutcome, { readonly kind: 'committed' }>
   | Extract<ActivePlayCommitOutcome, { readonly kind: 'stale' }>
+  | Extract<ActivePlayCommitOutcome, { readonly kind: 'revision-exhausted' }>
   | Extract<ActivePlayCommitOutcome, { readonly kind: 'lost' }>
   | { readonly kind: 'lease-unavailable' };
 
@@ -232,8 +234,8 @@ export interface F4RuntimeAuthority {
 }
 
 function checkedRevision(value: unknown): number {
-  if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) >= Number.MAX_SAFE_INTEGER) {
-    throw new RangeError('F4 initial revision must be a non-negative safe integer below MAX_SAFE_INTEGER');
+  if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) > F3_MAX_REVISION) {
+    throw new RangeError('F4 initial revision must be a non-negative safe integer at most MAX_SAFE_INTEGER');
   }
   return value as number;
 }
@@ -405,6 +407,8 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
       commits++;
     } else if (outcome.kind === 'stale') {
       await blockAndRelease(true);
+    } else if (outcome.kind === 'revision-exhausted') {
+      await blockAndRelease(false);
     } else {
       clearGrant(true);
     }
@@ -479,6 +483,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
         }
         if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
         else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
         else if (outcome.kind === 'lost') clearGrant(true);
         else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
@@ -529,6 +534,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
         }
         if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
         else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
         else if (outcome.kind === 'lost') clearGrant(true);
         else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
@@ -577,6 +583,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
         }
         if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
         else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
         else if (outcome.kind === 'lost') clearGrant(true);
         else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
@@ -608,6 +615,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
         }
         if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
         else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
         else if (outcome.kind === 'lost') clearGrant(true);
         else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
@@ -638,6 +646,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
         }
         if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
         else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
         else if (outcome.kind === 'lost') clearGrant(true);
         else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
@@ -660,6 +669,8 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
           commits++;
         } else if (outcome.kind === 'stale') {
           await blockAndRelease(true);
+        } else if (outcome.kind === 'revision-exhausted') {
+          await blockAndRelease(false);
         } else if (outcome.kind === 'conflict') {
           /* Revision and lease still matched after the ambiguous CAS refusal.
              Block this runtime and release that exact lease; clear-only would

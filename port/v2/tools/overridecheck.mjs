@@ -229,12 +229,61 @@ function routeRoot(member) {
 const TRUSTED_GLOBAL_BINDINGS = new Set(['Object', 'String', 'Boolean']);
 const FORBIDDEN_DYNAMIC_GLOBALS = new Set(['eval', 'Function']);
 const GLOBAL_OBJECT_BINDINGS = new Set(['globalThis', 'window', 'self']);
-const APPROVED_OBJECT_CALLS = new Set(['freeze', 'is', 'keys']);
+const APPROVED_OBJECT_CALLS = new Set([
+  'entries', 'freeze', 'fromEntries', 'getOwnPropertyDescriptor', 'getPrototypeOf',
+  'hasOwn', 'is', 'isFrozen', 'keys', 'values',
+]);
 const APPROVED_INDEX_GLOBALS = new Set(['_hdLater', 'getGalaxySprite', 'CARD_FACTS', '_quasarSpr']);
 const APPROVED_BARE_IMPORTS = new Map([
   ['@cf/domain-rand', new Set(['mulberry32', 'TAU'])],
   ['@cf/domain-speciestraits', new Set(['SP_COLOR', 'SP_HEX'])],
 ]);
+/* Bare re-exports are a smaller surface than imports: the compatibility file
+   may expose only these exact domain names, aliases, declaration kinds, and
+   declaration count. A package-wide allowlist would let an unrelated art
+   source acquire or publish the same dependency without review. */
+const APPROVED_BARE_REEXPORTS = new Map([
+  ['biome-visual-profile.ts', Object.freeze([
+    JSON.stringify({
+      source: '@cf/domain-biome-profile',
+      exportKind: 'value',
+      specifiers: [
+        'BIOME_PROFILE_KEYS_V1\u0000BIOME_VISUAL_KEYS_V1',
+        'BIOME_PROFILES_V1\u0000BIOME_VISUAL_PROFILES_V1',
+        'createBiomeProfileSetV1\u0000createBiomeVisualProfileAuthorityV1',
+      ],
+    }),
+    JSON.stringify({
+      source: '@cf/domain-biome-profile',
+      exportKind: 'type',
+      specifiers: [
+        'BiomeProfileKeyV1\u0000BiomeVisualKeyV1',
+        'BiomeProfileFaunaFamilyV1\u0000BiomeFaunaFamilyV1',
+        'BiomeProfileFloraFamilyV1\u0000BiomeFloraFamilyV1',
+        'BiomeProfileHazardV1\u0000BiomeHazardV1',
+        'BiomeProfileWeatherV1\u0000BiomeWeatherV1',
+        'BiomeProfileV1\u0000BiomeVisualProfileV1',
+      ],
+    }),
+  ])],
+]);
+
+function bareReexportSignature(node) {
+  if (node?.type !== 'ExportNamedDeclaration' || node.declaration
+      || typeof node.source?.value !== 'string' || node.source.value.startsWith('.')
+      || (node.attributes?.length ?? 0) !== 0
+      || !['type', 'value'].includes(node.exportKind)) return null;
+  const specifiers = [];
+  for (const specifier of node.specifiers || []) {
+    const local = specifier?.type === 'ExportSpecifier' && specifier.local?.type === 'Identifier'
+      ? specifier.local.name : null;
+    const exported = specifier?.type === 'ExportSpecifier' && specifier.exported?.type === 'Identifier'
+      ? specifier.exported.name : null;
+    if (!local || !exported || specifier.exportKind !== 'value') return null;
+    specifiers.push(`${local}\u0000${exported}`);
+  }
+  return JSON.stringify({ source: node.source.value, exportKind: node.exportKind, specifiers });
+}
 
 function unwrapRuntimeExpression(node) {
   let current = node;
@@ -259,6 +308,20 @@ function isCanonIndex(node) {
 }
 
 function auditRouteTableReferences(program, label, source) {
+  const approvedBareSignatures = APPROVED_BARE_REEXPORTS.get(label) || Object.freeze([]);
+  const bareReexports = program.body.filter((node) => node.type === 'ExportNamedDeclaration'
+    && typeof node.source?.value === 'string' && !node.source.value.startsWith('.'));
+  const observedBareSignatures = bareReexports.map(bareReexportSignature);
+  const firstBareMismatch = Math.max(approvedBareSignatures.length, observedBareSignatures.length) === 0
+    ? -1
+    : Array.from({ length: Math.max(approvedBareSignatures.length, observedBareSignatures.length) })
+      .findIndex((_, index) => observedBareSignatures[index] !== approvedBareSignatures[index]);
+  if (firstBareMismatch !== -1) {
+    const node = bareReexports[firstBareMismatch] || bareReexports[0];
+    parserError(label, node,
+      `bare re-export ${JSON.stringify(node?.source?.value ?? '<missing>')} is outside the exact audited dependency surface`);
+  }
+  const approvedBareReexportNodes = new Set(bareReexports);
   const visit = (node, parent = null, enclosingFunction = null, enclosingVariable = null) => {
     if (!node || typeof node !== 'object') return;
     const functionScope = node.type === 'FunctionDeclaration'
@@ -357,7 +420,8 @@ function auditRouteTableReferences(program, label, source) {
       parserError(label, node, `re-export ${JSON.stringify(node.source.value)} is outside recursive art-source discovery`);
     }
     if ((node.type === 'ExportNamedDeclaration' || node.type === 'ExportAllDeclaration')
-        && typeof node.source?.value === 'string' && !node.source.value.startsWith('.')) {
+        && typeof node.source?.value === 'string' && !node.source.value.startsWith('.')
+        && !approvedBareReexportNodes.has(node)) {
       parserError(label, node, `bare re-export ${JSON.stringify(node.source.value)} is outside the exact audited dependency surface`);
     }
     if (node.type === 'ExportAllDeclaration') {
@@ -474,8 +538,13 @@ const KNOWN_VERBATIM_JS_HASHES = new Map([
   ['artextras.verbatim.js', 'dadfd860bc21b4472efb80f91399ddb89b704bc2b0396fe848aa8628b21cc2c7'],
   ['galaxyart.verbatim.js', '789a9f4e326896f6e8f9f142a6128ac8ec48a5388e2304afd4114a981ff14d27'],
   ['hdart.verbatim.js', '8ab222a3c63a0db04c28a7e5d51a5af4e34e7dbdfe1573eaaaa2c50bed086e49'],
-  ['hdportrait.worker.verbatim.js', 'e0d4fe5173246e3fb22ac887e24eb34fda35d454d7f4741a01ecd51cdae3f009'],
-  ['thumbart.verbatim.js', '8fcaf662bcedd2d2eebf75a8ad00c5bc243190d1cc5c8071a763113f76c77c48'],
+  ['hdportrait.worker.verbatim.js', 'e219d4a0aa8c69fe540ebbe6ebc9beb13abc060ada2c5d3b6cf8c76aa1ad05d1'],
+  ['thumbart.verbatim.js', '85b54edf7f32a174da90f6f68ea474dcebe8d31997dad683c6f5b88cb5587544'],
+  /* Generator/source-slice contracts and forbidden-owner negative controls
+     live in the paired biome-vista tests; these whole-file hashes make the
+     recursive executable-source discovery fail closed before those audits. */
+  ['biomevista.worker.verbatim.js', 'f1a1b9928d3cb1bdba2caf09d8313810ff52a1ce3dd217e9f61e64ec9e001f43'],
+  ['biomevista-full.worker.verbatim.js', '357fbd788931bbd14533c18743ac7cc95969b586fe7b32467170e541ee0fbae9'],
 ]);
 const KNOWN_VERBATIM_JS = new Set(KNOWN_VERBATIM_JS_HASHES.keys());
 const HD_PORTRAIT_KINDS = Object.freeze(['Fauna', 'Flora', 'Fungi', 'Microbe']);

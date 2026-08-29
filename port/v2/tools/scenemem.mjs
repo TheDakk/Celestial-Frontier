@@ -77,14 +77,14 @@ const sceneTextPath = path.join(appDir, 'src', 'scene-text.ts');
 
 const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v2';
 const LIFECYCLE_SCHEMA = 'cf-v2-scene-memory-report-lifecycle/v1';
-const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v3';
+const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v4';
 export const SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA =
   'cf-v2-scene-memory-browser-authority/v2';
 export const SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE = 'arc1c-scene-memory-only';
 export const SCENE_MEMORY_BROWSER_FAMILY = 'microsoft-edge';
 export const SCENE_MEMORY_BROWSER_PROTOCOL_VERSION = '1.3';
 export const SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT =
-  'cf-v2-scene-memory-cdp-capabilities/v1';
+  'cf-v2-scene-memory-cdp-capabilities/v2';
 export const SCENE_MEMORY_BROWSER_PROFILE_CONTRACT =
   'cf-v2-scene-memory-browser-profiles/v1';
 export const SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA =
@@ -93,7 +93,7 @@ const SCENE_MEMORY_PROTECTED_ARC3_REASON =
   'Engineering details and actions are unavailable while this expedition’s Engineering record is protected.';
 const WARMUP_CYCLES = 4;
 const WARM_CYCLES = SCENE_MEMORY_CYCLE_COUNT;
-const OUTCOME_COUNT = 42;
+const OUTCOME_COUNT = 44;
 const COMMAND_TIMEOUT_MS = 5_000;
 const ANSWERABILITY_TIMEOUT_MS = 2_000;
 const ROUTE_TIMEOUT_MS = 20_000;
@@ -109,6 +109,10 @@ const PROFILES = Object.freeze({
 const HOME_GALAXY = Object.freeze({ seed: 999, x: 90, y: -60 });
 const SOL_STAR = Object.freeze({ seed: 424242, x: 560, y: 170 });
 const EARTH = Object.freeze({ seed: 133, ordinal: 2 });
+const SURFACE_VISTA_CACHE_ENTRIES_MAX = 1;
+const SURFACE_VISTA_CACHE_PIXELS_MAX = 960 * 430;
+const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
+const SURFACE_VISTA_RELOAD_CLEANUP_BINDING = '__cfSceneMemoryVistaCacheCleanup';
 const BUDGET_FIELDS = Object.freeze([
   'heapUsedBytesMax', 'embedderHeapUsedBytesMax', 'backingStorageBytesMax',
   'heapAggregateBytesMax', 'warmHeapAggregateRangeBytesMax',
@@ -118,6 +122,7 @@ const BUDGET_FIELDS = Object.freeze([
   'managedTextureCountMax', 'managedTexturePixelsMax', 'localCanvasCacheEntriesMax',
   'peakLocalCanvasCacheEntriesMax', 'productRenderTargetsMax',
   'ringCacheEntriesMax', 'peakRingGeometryEntriesMax',
+  'surfaceVistaCacheEntriesMax', 'surfaceVistaCachePixelsMax',
   'targetElapsedMsMax', 'heartbeatElapsedMsMax',
 ]);
 export const SCENE_MEMORY_REQUIRED_CDP_DOMAINS = Object.freeze([
@@ -136,6 +141,7 @@ export const SCENE_MEMORY_REQUIRED_CDP_METHODS = Object.freeze([
   'Page.navigate',
   'Page.navigateToHistoryEntry',
   'Runtime.enable',
+  'Runtime.addBinding',
   'Runtime.evaluate',
   'Runtime.getHeapUsage',
   'Target.attachToTarget',
@@ -205,11 +211,15 @@ export function sceneMemoryVeteranRaw() {
   return JSON.stringify(saveFixture);
 }
 
-export function terminalOutcomeInventoryErrors(outcomes, canonicalOutcomes = null) {
+export function terminalOutcomeInventoryErrors(
+  outcomes, canonicalOutcomes = null, expectedCount = OUTCOME_COUNT,
+) {
   const errors = [];
-  if (!Array.isArray(outcomes) || outcomes.length !== OUTCOME_COUNT
+  if (!Number.isSafeInteger(expectedCount) || expectedCount <= 0) {
+    errors.push('terminal outcome inventory expected count is invalid');
+  } else if (!Array.isArray(outcomes) || outcomes.length !== expectedCount
     || outcomes.some((outcome) => outcome?.pass !== true)) {
-    errors.push(`terminal outcome inventory is not exactly ${OUTCOME_COUNT} green outcomes`);
+    errors.push(`terminal outcome inventory is not exactly ${expectedCount} green outcomes`);
   }
   if (canonicalOutcomes !== null && !same(outcomes, canonicalOutcomes)) {
     errors.push('terminal outcome inventory differs from the imported contract replay');
@@ -477,6 +487,10 @@ export function validateSceneMemoryBudget(record) {
     if (!same(keys, [...BUDGET_FIELDS].sort())) {
       errors.push(`budget profiles.${profile} must contain only the contract fields`);
     }
+    if (ceiling.surfaceVistaCacheEntriesMax !== SURFACE_VISTA_CACHE_ENTRIES_MAX
+      || ceiling.surfaceVistaCachePixelsMax !== SURFACE_VISTA_CACHE_PIXELS_MAX) {
+      errors.push(`budget profiles.${profile} surface vista must remain exactly ${SURFACE_VISTA_CACHE_ENTRIES_MAX} entry / ${SURFACE_VISTA_CACHE_PIXELS_MAX} pixels`);
+    }
   }
   if (!same(Object.keys(record.profiles || {}).sort(), Object.keys(PROFILES).sort())) {
     errors.push('budget profiles must be exactly phone and desktop');
@@ -712,7 +726,20 @@ function routeStateExpression() {
     panel:s.panelOpen,sceneMode:r.mode,generation:r.generation,worldChildren:S.world.children.length,
     fineLayer:r.fineLayerActive,fineScope:r.fineScopeActive,pendingSurface:r.pendingSurfaceRefreshes,
     pendingSystem:r.pendingSystemRefreshes,pendingPersistence:r.pendingPersistenceWrites,
-    retiredFine:r.retiredFineOwnerCount,registry:r.registry}})()`;
+    retiredFine:r.retiredFineOwnerCount,registry:r.registry,
+    surfaceVistaWorkerActive:r.surfaceVistaWorkerActive,
+    surfaceVistaMounted:r.surfaceVistaMounted,
+    surfaceVistaCacheEntries:r.surfaceVistaCacheEntries,
+    surfaceVistaCachePixels:r.surfaceVistaCachePixels}})()`;
+}
+
+function surfaceVistaState(scene) {
+  return Object.freeze({
+    surfaceVistaWorkerActive: scene.surfaceVistaWorkerActive,
+    surfaceVistaMounted: scene.surfaceVistaMounted,
+    surfaceVistaCacheEntries: scene.surfaceVistaCacheEntries,
+    surfaceVistaCachePixels: scene.surfaceVistaCachePixels,
+  });
 }
 
 async function postRenderAnswerability(send, sessionId, profile, token) {
@@ -802,10 +829,12 @@ function contractPoint(snapshot) {
     shipyardPreviewPendingWork: shipyard.pendingPreviewWork,
     pending: scene.pendingSurfaceRefreshes + scene.pendingSystemRefreshes
       + scene.pendingPersistenceWrites
+      + Number(scene.surfaceVistaWorkerActive) + Number(scene.surfaceVistaMounted)
       + scene.retiredFineOwnerCount + shipyard.activePreviewCount
       + shipyard.retainedPreviewCount + shipyard.pendingPreviewWork,
     ringCacheEntries: scene.ringGeometryEntries,
     peakRingGeometryEntries: scene.peakRingGeometryEntries,
+    ...surfaceVistaState(scene),
     answerability: {
       target: { ok: snapshot.answerability.target.ok,
         elapsedMs: snapshot.answerability.target.durationMs,
@@ -902,6 +931,11 @@ async function driveCycle({ collector, sessionId, profile }) {
   const universe = await observe('route universe start', (value) => exactMode('universe')(value)
     && value.retiredFine === 0 && value.pendingSurface === 0 && value.pendingSystem === 0
     && value.pendingPersistence === 0
+    && value.surfaceVistaWorkerActive === false && value.surfaceVistaMounted === false
+    && ((value.surfaceVistaCacheEntries === 0 && value.surfaceVistaCachePixels === 0)
+      || (value.surfaceVistaCacheEntries === SURFACE_VISTA_CACHE_ENTRIES_MAX
+        && value.surfaceVistaCachePixels > 0
+        && value.surfaceVistaCachePixels <= SURFACE_VISTA_CACHE_PIXELS_MAX))
     && value.registry?.activeScopeCount === 1 && value.registry?.coherent === true);
   sceneObjectsByRoute.universe = universe.worldChildren;
   visitedRoutes.push('universe');
@@ -959,6 +993,10 @@ async function driveCycle({ collector, sessionId, profile }) {
       &&r.pendingSurfaceRefreshes===0&&r.pendingSystemRefreshes===0
       &&r.retiredFineOwnerCount===0
       &&r.surfaceTextureOwnerActive===true
+      &&r.surfaceVistaWorkerActive===false&&r.surfaceVistaMounted===true
+      &&r.surfaceVistaCacheEntries===${SURFACE_VISTA_CACHE_ENTRIES_MAX}
+      &&r.surfaceVistaCachePixels>0
+      &&r.surfaceVistaCachePixels<=${SURFACE_VISTA_CACHE_PIXELS_MAX}
       &&r.surfaceCurrentTierPx===${expectedTierPx}&&r.surfaceRequestedTierPx===0
       &&r.surfaceCurrentBackingWidth===${expectedTierPx}
       &&r.surfaceCurrentBackingHeight===${expectedTierPx}
@@ -969,6 +1007,7 @@ async function driveCycle({ collector, sessionId, profile }) {
   inventory.surface = {
     mode: surface.mode === 'surface', owner: surface.surfaceTextureOwnerActive === true,
     scope: surface.registry.activeScopes.some((scope) => scope.closed === false && scope.leaseCount > 0),
+    ...surfaceVistaState(surface),
   };
 
   productAssert(await clickVisible(collector, sessionId, '#dockcodex,#railcodex',
@@ -1097,7 +1136,13 @@ async function driveCycle({ collector, sessionId, profile }) {
       `${profile}: ${from} ascent did not pass through the canvas handler`, result);
     await observe(`route ascend ${to}`, accept);
   };
-  await ascend('surface', 'system', exactMode('system', { gal: 999, star: 424242 }));
+  await ascend('surface', 'system', (value) => exactMode('system', {
+    gal: 999, star: 424242,
+  })(value) && value.surfaceVistaWorkerActive === false
+    && value.surfaceVistaMounted === false
+    && value.surfaceVistaCacheEntries === SURFACE_VISTA_CACHE_ENTRIES_MAX
+    && value.surfaceVistaCachePixels > 0
+    && value.surfaceVistaCachePixels <= SURFACE_VISTA_CACHE_PIXELS_MAX);
   await ascend('system', 'galaxy', exactMode('galaxy', { gal: 999 }));
   await ascend('galaxy', 'universe', exactMode('universe'));
   await collector.waitValue(sessionId, 'universe resource settlement', `(()=>{const S=window.__CF_SLICE__,r=S.api.sceneResourceDiagnostics(),c=S.api.compendiumDiagnostics(),y=S.api.shipyardDiagnostics();
@@ -1105,6 +1150,10 @@ async function driveCycle({ collector, sessionId, profile }) {
       &&r.surfaceTextureOwnerActive===false&&r.pendingSurfaceRefreshes===0
       &&r.pendingSystemRefreshes===0&&r.pendingPersistenceWrites===0
       &&r.retiredFineOwnerCount===0
+      &&r.surfaceVistaWorkerActive===false&&r.surfaceVistaMounted===false
+      &&r.surfaceVistaCacheEntries===${SURFACE_VISTA_CACHE_ENTRIES_MAX}
+      &&r.surfaceVistaCachePixels>0
+      &&r.surfaceVistaCachePixels<=${SURFACE_VISTA_CACHE_PIXELS_MAX}
       &&r.registry.activeScopeCount===1&&r.ringGeometryEntries===0&&c.panel.mode==='closed'
       &&c.art?.live?.queuedJobs===0&&c.art?.live?.activeJobs===0
       &&y.status==='closed'&&y.stateKey===null&&y.activePreviewCount===0
@@ -1116,6 +1165,7 @@ async function driveCycle({ collector, sessionId, profile }) {
     `${profile}: observed route inventory drifted`, visitedRoutes);
   return Object.freeze({
     stages: Object.freeze(stages),
+    surfaceVistaObservation: surface,
     inventory: Object.freeze({ ...inventory, routes: Object.freeze([...visitedRoutes]),
       sceneObjectsByRoute: Object.freeze({ ...sceneObjectsByRoute }) }),
   });
@@ -1182,15 +1232,118 @@ async function collectBfcache({ send, collector, sessionId, origin, profile, doc
   });
   const point = contractPoint(snapshot);
   return Object.freeze({
-    ...point,
-    pagehidePersisted: resumed.pagehide === before.pagehide + 1,
-    pageshowPersisted: resumed.pageshow === before.pageshow + 1,
-    resumed: true,
-    appAlive: resumed.appAlive,
-    rendererAlive: resumed.rendererAlive,
-    stageAlive: resumed.stageAlive,
+    snapshot,
+    point: Object.freeze({
+      ...point,
+      pagehidePersisted: resumed.pagehide === before.pagehide + 1,
+      pageshowPersisted: resumed.pageshow === before.pageshow + 1,
+      resumed: true,
+      appAlive: resumed.appAlive,
+      rendererAlive: resumed.rendererAlive,
+      stageAlive: resumed.stageAlive,
+      documentTokenBefore: documentToken,
+      documentTokenAfter: resumed.documentToken,
+    }),
+  });
+}
+
+function bindingPayloadsSince(events, mark, sessionId, name) {
+  return events.slice(mark)
+    .filter((event) => event.sessionId === sessionId
+      && event.method === 'Runtime.bindingCalled' && event.params?.name === name)
+    .map((event) => {
+      try { return JSON.parse(event.params.payload); }
+      catch { return { schema: 'invalid-json', payload: event.params?.payload ?? null }; }
+    });
+}
+
+async function collectReloadCleanup({
+  collector, sessionId, profile, documentToken, veteranRaw, bindingEvents,
+}) {
+  const precondition = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__;
+    return {documentToken:S.documentToken,...(${surfaceVistaState.toString()})(S.api.sceneResourceDiagnostics())}})()`,
+  'surface vista reload precondition');
+  productAssert(precondition?.documentToken === documentToken
+    && precondition.surfaceVistaWorkerActive === false
+    && precondition.surfaceVistaMounted === false
+    && precondition.surfaceVistaCacheEntries === SURFACE_VISTA_CACHE_ENTRIES_MAX
+    && precondition.surfaceVistaCachePixels > 0
+    && precondition.surfaceVistaCachePixels <= SURFACE_VISTA_CACHE_PIXELS_MAX,
+  `${profile}: surface vista reload precondition was not a settled exercised cache`, precondition);
+  const mark = bindingEvents.length;
+  const armed = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__,
+    binding=globalThis[${JSON.stringify(SURFACE_VISTA_RELOAD_CLEANUP_BINDING)}],
+    nativeClear=Map.prototype.clear,
+    state=()=>{const r=S.api.sceneResourceDiagnostics();return {
+      surfaceVistaWorkerActive:r.surfaceVistaWorkerActive,
+      surfaceVistaMounted:r.surfaceVistaMounted,
+      surfaceVistaCacheEntries:r.surfaceVistaCacheEntries,
+      surfaceVistaCachePixels:r.surfaceVistaCachePixels}};
+    if(typeof binding!=='function'||nativeClear.__cfSceneMemoryVistaCleanup===true)return {armed:false};
+    let emitted=false;
+    const wrapped=function(){let before=null,after=null;
+      try{before=state()}catch{}const result=nativeClear.call(this);try{after=state()}catch{}
+      if(!emitted&&before?.surfaceVistaCacheEntries>0&&after?.surfaceVistaCacheEntries===0){
+        emitted=true;Map.prototype.clear=nativeClear;
+        binding(JSON.stringify({schema:'cf-v2-scene-memory-vista-cache-transition/v1',
+          documentToken:S.documentToken,before,after}));}
+      return result};
+    Object.defineProperty(wrapped,'__cfSceneMemoryVistaCleanup',{value:true});
+    Map.prototype.clear=wrapped;return {armed:true,initial:state()}})()`,
+  'arm surface vista reload cleanup binding');
+  productAssert(armed?.armed === true && same(armed.initial, surfaceVistaState(precondition)),
+    `${profile}: surface vista reload cleanup binding did not arm`, armed);
+  const importOutcome = await collector.evaluate(sessionId,
+    `window.__CF_SLICE__.api.importBlob(${JSON.stringify(veteranRaw)},'scenemem-reload-cleanup')`,
+    'request intentional replacement reload', ART_TIMEOUT_MS);
+  productAssert(importOutcome === null,
+    `${profile}: intentional replacement import was rejected`, importOutcome);
+
+  const deadline = performance.now() + ART_TIMEOUT_MS;
+  let replacement = null;
+  let lastError = null;
+  while (performance.now() < deadline) {
+    try {
+      replacement = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__;
+        if(!S?.api||S.documentToken===${JSON.stringify(documentToken)})return null;
+        const s=S.api.state(),r=S.api.sceneResourceDiagnostics();return s.tickerTicks>0
+          &&r.pendingSurfaceRefreshes===0&&r.pendingSystemRefreshes===0
+          &&r.pendingPersistenceWrites===0?{documentToken:S.documentToken,
+            surfaceVistaWorkerActive:r.surfaceVistaWorkerActive,
+            surfaceVistaMounted:r.surfaceVistaMounted,
+            surfaceVistaCacheEntries:r.surfaceVistaCacheEntries,
+            surfaceVistaCachePixels:r.surfaceVistaCachePixels}:null})()`,
+      'replacement document readiness');
+    } catch (error) { lastError = error.message; }
+    const transitions = bindingPayloadsSince(
+      bindingEvents, mark, sessionId, SURFACE_VISTA_RELOAD_CLEANUP_BINDING,
+    );
+    const releases = bindingPayloadsSince(
+      bindingEvents, mark, sessionId, RELOAD_RELEASE_BINDING,
+    );
+    if (replacement && transitions.length >= 1 && releases.length >= 1) break;
+    await sleep(50);
+  }
+  const transitions = bindingPayloadsSince(
+    bindingEvents, mark, sessionId, SURFACE_VISTA_RELOAD_CLEANUP_BINDING,
+  );
+  const releases = bindingPayloadsSince(bindingEvents, mark, sessionId, RELOAD_RELEASE_BINDING);
+  productAssert(replacement && transitions.length === 1 && releases.length === 1,
+    `${profile}: reload cleanup did not yield one cache transition, one release, and one replacement`,
+    { replacement, transitions, releases, lastError });
+  const release = releases[0];
+  return Object.freeze({
+    schema: 'cf-v2-scene-memory-reload-cleanup/v1',
     documentTokenBefore: documentToken,
-    documentTokenAfter: resumed.documentToken,
+    documentTokenAfter: replacement.documentToken,
+    release: Object.freeze({
+      schema: release.schema, status: release.status, error: release.error,
+      reason: release.reason, documentToken: release.documentToken,
+      rendererReleased: release.rendererReleased, stageReleased: release.stageReleased,
+      viewDetached: release.viewDetached,
+    }),
+    cacheTransition: Object.freeze(transitions[0]),
+    replacement: Object.freeze(replacement),
   });
 }
 
@@ -1243,6 +1396,8 @@ function metricSummary(measurement) {
     productRenderTargetsMax: max((point) => point.productRenderTargets),
     ringCacheEntriesMax: max((point) => point.ringCacheEntries),
     peakRingGeometryEntriesMax: max((point) => point.peakRingGeometryEntries),
+    surfaceVistaCacheEntriesMax: max((point) => point.surfaceVistaCacheEntries),
+    surfaceVistaCachePixelsMax: max((point) => point.surfaceVistaCachePixels),
     targetElapsedMsMax: max((point) => point.answerability.target.elapsedMs),
     heartbeatElapsedMsMax: max((point) => point.answerability.heartbeat.elapsedMs),
   });
@@ -1260,13 +1415,15 @@ function calibrationBudget(metrics) {
 }
 
 async function collectProfile({
-  send, origin, fixture, veteranRaw, profile, viewport, fatalEvents, sessionProfiles, onProgress,
+  send, origin, fixture, veteranRaw, profile, viewport, fatalEvents, sessionProfiles,
+  bindingEvents, onProgress,
 }) {
   const measurement = {
     schema: 'cf-v2-scene-memory-profile/v1', profile, viewport,
     targetId: null, documentToken: null, initial: null, warmup: null, precondition: null,
-    warmupInventory: null, measured: [], cycles: [], bfcache: null,
-    routeInventories: [], metrics: null,
+    initialVista: null, firstSurfaceVista: null, surfaceVistaObservations: [],
+    warmupInventory: null, measured: [], cycles: [], bfcache: null, bfcacheSnapshot: null,
+    reloadCleanup: null, routeInventories: [], metrics: null,
   };
   let browserContextId = null;
   let targetId = null;
@@ -1286,6 +1443,12 @@ async function collectProfile({
     for (const method of ['Runtime.enable', 'Page.enable', 'HeapProfiler.enable', 'Log.enable']) {
       await send(method, {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
     }
+    await send('Runtime.addBinding', { name: RELOAD_RELEASE_BINDING }, sessionId, {
+      timeoutMs: COMMAND_TIMEOUT_MS,
+    });
+    await send('Runtime.addBinding', {
+      name: SURFACE_VISTA_RELOAD_CLEANUP_BINDING,
+    }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
     await send('Emulation.setDeviceMetricsOverride', {
       width: viewport.width, height: viewport.height,
       deviceScaleFactor: viewport.dpr, mobile: viewport.mobile,
@@ -1305,11 +1468,16 @@ async function collectProfile({
     measurement.initial = await collectSnapshot({
       send, sessionId, collector, profile, label: `${profile}-initial`,
     });
+    measurement.initialVista = surfaceVistaState(measurement.initial.raw.scene);
     onProgress(measurement);
 
     for (let index = 0; index < WARMUP_CYCLES; index++) {
       const warmupRoute = await driveCycle({ collector, sessionId, profile });
       measurement.warmupInventory = warmupRoute.inventory;
+      measurement.surfaceVistaObservations.push(warmupRoute.surfaceVistaObservation);
+      if (index === 0) {
+        measurement.firstSurfaceVista = surfaceVistaState(warmupRoute.surfaceVistaObservation);
+      }
       measurement.routeInventories.push(routeInventory(warmupRoute.stages));
       measurement.warmup = await collectSnapshot({
         send, sessionId, collector, profile, label: `${profile}-warmup-${index + 1}`,
@@ -1326,6 +1494,7 @@ async function collectProfile({
         `window.__CF_SLICE__.api.__sceneEvidence.beginObservationWindow()`,
         `begin measured observation window ${index + 1}`);
       const driven = await driveCycle({ collector, sessionId, profile });
+      measurement.surfaceVistaObservations.push(driven.surfaceVistaObservation);
       measurement.routeInventories.push(routeInventory(driven.stages));
       const snapshot = await collectSnapshot({
         send, sessionId, collector, profile, label: `${profile}-warm-${index + 1}`,
@@ -1338,8 +1507,15 @@ async function collectProfile({
       }));
       onProgress(measurement);
     }
-    measurement.bfcache = await collectBfcache({
+    const bfcacheEvidence = await collectBfcache({
       send, collector, sessionId, origin, profile, documentToken: measurement.documentToken,
+    });
+    measurement.bfcache = bfcacheEvidence.point;
+    measurement.bfcacheSnapshot = bfcacheEvidence.snapshot;
+    onProgress(measurement);
+    measurement.reloadCleanup = await collectReloadCleanup({
+      collector, sessionId, profile, documentToken: measurement.documentToken,
+      veteranRaw, bindingEvents,
     });
     onProgress(measurement);
     measurement.metrics = metricSummary(measurement);
@@ -1454,6 +1630,7 @@ async function runGate(options) {
   let outcomes = [];
   let findings = [];
   const fatalEvents = [];
+  const bindingEvents = [];
   let running = makeRunningReport({
     id, startedAt, source: sourceBegin, inputs: { fixtureRows: null },
     mode: options.calibrate ? 'calibration-only-not-certified'
@@ -1476,7 +1653,7 @@ async function runGate(options) {
          budget. Empty measurements intentionally yield a red verdict but
          must not throw when the budget shape is authoritative. */
       evaluateSceneMemory({
-        schema: 'cf-v2-scene-memory-input/v3',
+        schema: 'cf-v2-scene-memory-input/v4',
         profiles: { phone: { cycles: [], bfcache: null }, desktop: { cycles: [], bfcache: null } },
         budgets: budget.profiles,
       });
@@ -1505,6 +1682,11 @@ async function runGate(options) {
       commandTimeoutMs: COMMAND_TIMEOUT_MS, startupTimeoutMs: 45_000,
       webSocketOpenTimeoutMs: 15_000, shutdownTimeoutMs: 2_000,
       onEvent: (message) => {
+        if (message.method === 'Runtime.bindingCalled'
+          && (message.params?.name === RELOAD_RELEASE_BINDING
+            || message.params?.name === SURFACE_VISTA_RELOAD_CLEANUP_BINDING)) {
+          bindingEvents.push(message);
+        }
         const fatal = message.method === 'Runtime.exceptionThrown'
           || message.method === 'Inspector.targetCrashed'
           || message.method === 'Target.targetCrashed'
@@ -1527,6 +1709,7 @@ async function runGate(options) {
       const measurement = await collectProfile({
         send: browser.send, origin: server.origin,
         fixture, veteranRaw, profile, viewport, fatalEvents, sessionProfiles,
+        bindingEvents,
         onProgress: (partial) => {
           profiles[profile] = partial;
           running = { ...running, profiles: { ...profiles }, fatalEvents: [...fatalEvents] };
@@ -1546,12 +1729,15 @@ async function runGate(options) {
       ]),
     );
     contractInput = {
-      schema: 'cf-v2-scene-memory-input/v3',
+      schema: 'cf-v2-scene-memory-input/v4',
       profiles: Object.fromEntries(Object.entries(profiles).map(([profile, measurement]) => [
         profile, {
+          initialVista: measurement.initialVista,
+          firstSurfaceVista: measurement.firstSurfaceVista,
           precondition: measurement.precondition,
           cycles: measurement.cycles,
           bfcache: measurement.bfcache,
+          reloadCleanup: measurement.reloadCleanup,
         },
       ])),
       budgets: contractBudgets,
@@ -1640,7 +1826,92 @@ async function runGate(options) {
   return provisionalExitCode;
 }
 
-export function terminalProfileEvidenceErrors(profiles) {
+function surfaceInventoryFromObservation(observation) {
+  return {
+    mode: observation?.mode === 'surface',
+    owner: observation?.surfaceTextureOwnerActive === true,
+    scope: Array.isArray(observation?.registry?.activeScopes)
+      && observation.registry.activeScopes.some(
+        (scope) => scope?.closed === false && scope?.leaseCount > 0,
+      ),
+    ...surfaceVistaState(observation || {}),
+  };
+}
+
+export function sceneMemoryProfileRawBindingErrors(measurement) {
+  const errors = [];
+  try {
+    if (!measurement?.initial || !same(
+      measurement.initialVista,
+      surfaceVistaState(measurement.initial.raw?.scene || {}),
+    )) errors.push('initial vista evidence is detached from its raw snapshot');
+    if (!measurement?.warmup || !same(
+      measurement.precondition,
+      contractPoint(measurement.warmup),
+    )) errors.push('precondition is detached from its raw warmup snapshot');
+    if (!Array.isArray(measurement?.surfaceVistaObservations)
+      || measurement.surfaceVistaObservations.length !== WARMUP_CYCLES + WARM_CYCLES) {
+      errors.push('surface vista observation inventory is incomplete');
+    } else {
+      if (!same(
+        measurement.firstSurfaceVista,
+        surfaceVistaState(measurement.surfaceVistaObservations[0]),
+      )) errors.push('first surface vista evidence is detached from its raw observation');
+      for (const [index, observation] of measurement.surfaceVistaObservations.entries()) {
+        const inventory = surfaceInventoryFromObservation(observation);
+        if (inventory.mode !== true || inventory.owner !== true || inventory.scope !== true
+          || !same(surfaceVistaState(observation), measurement.firstSurfaceVista)) {
+          errors.push(`surface vista observation ${index + 1} drifted from the exercised surface`);
+        }
+      }
+      for (let index = 0; index < WARM_CYCLES; index++) {
+        const surface = measurement.cycles?.[index]?.inventory?.surface;
+        const observation = measurement.surfaceVistaObservations[WARMUP_CYCLES + index];
+        if (!same(surface, surfaceInventoryFromObservation(observation))) {
+          errors.push(`cycle ${index + 1} surface vista evidence is detached from its raw observation`);
+        }
+      }
+    }
+    if (!Array.isArray(measurement?.measured) || measurement.measured.length !== WARM_CYCLES
+      || !Array.isArray(measurement?.cycles) || measurement.cycles.length !== WARM_CYCLES) {
+      errors.push('measured snapshot inventory is incomplete');
+    } else {
+      for (let index = 0; index < WARM_CYCLES; index++) {
+        const { cycle, inventory, ...point } = measurement.cycles[index];
+        void cycle;
+        void inventory;
+        if (!same(point, contractPoint(measurement.measured[index]))) {
+          errors.push(`cycle ${index + 1} is detached from its raw snapshot`);
+        }
+      }
+    }
+    if (!measurement?.bfcacheSnapshot || !measurement?.bfcache) {
+      errors.push('bfcache raw snapshot is absent');
+    } else {
+      const {
+        pagehidePersisted, pageshowPersisted, resumed, appAlive, rendererAlive, stageAlive,
+        documentTokenBefore, documentTokenAfter, ...point
+      } = measurement.bfcache;
+      void pagehidePersisted;
+      void pageshowPersisted;
+      void resumed;
+      void appAlive;
+      void rendererAlive;
+      void stageAlive;
+      void documentTokenBefore;
+      void documentTokenAfter;
+      if (!same(point, contractPoint(measurement.bfcacheSnapshot))) {
+        errors.push('bfcache point is detached from its raw snapshot');
+      }
+    }
+  } catch (error) {
+    errors.push(`raw profile binding could not be re-derived (${error instanceof Error
+      ? error.message : String(error)})`);
+  }
+  return errors;
+}
+
+export function terminalProfileEvidenceErrors(profiles, surfaceVistaRequired = false) {
   const errors = [];
   const profileKeys = Object.keys(profiles || {}).sort();
   if (!same(profileKeys, Object.keys(PROFILES).sort())) {
@@ -1658,12 +1929,24 @@ export function terminalProfileEvidenceErrors(profiles) {
       || measurement.routeInventories.length !== WARMUP_CYCLES + WARM_CYCLES) {
       errors.push(`${profile} terminal profile evidence is incomplete, mismatched, or red`);
     }
+    if (surfaceVistaRequired) {
+      if (!measurement?.initialVista || !measurement?.firstSurfaceVista
+        || !measurement?.reloadCleanup || !measurement?.bfcacheSnapshot
+        || !Array.isArray(measurement?.surfaceVistaObservations)
+        || measurement.surfaceVistaObservations.length !== WARMUP_CYCLES + WARM_CYCLES) {
+        errors.push(`${profile} surface vista evidence is incomplete`);
+      } else {
+        errors.push(...sceneMemoryProfileRawBindingErrors(measurement)
+          .map((error) => `${profile} ${error}`));
+      }
+    }
   }
   return errors;
 }
 
 function verifyReport(report, expectedRunId, options) {
   const errors = [];
+  const surfaceVistaRequired = report?.contractInput?.schema === 'cf-v2-scene-memory-input/v4';
   let authoritativeBudgetFile = null;
   if (report?.schema !== REPORT_SCHEMA) errors.push(`schema must be ${REPORT_SCHEMA}`);
   if (report?.runId !== expectedRunId) errors.push('report runId does not match --verify-run');
@@ -1678,11 +1961,16 @@ function verifyReport(report, expectedRunId, options) {
   if (!same(report?.cleanup, { browser: true, server: true, workspaceLock: true })) {
     errors.push('terminal cleanup is incomplete');
   }
-  errors.push(...terminalProfileEvidenceErrors(report?.profiles));
-  errors.push(...terminalOutcomeInventoryErrors(report?.outcomes));
+  errors.push(...terminalProfileEvidenceErrors(report?.profiles, surfaceVistaRequired));
+  errors.push(...terminalOutcomeInventoryErrors(
+    report?.outcomes, null, surfaceVistaRequired ? OUTCOME_COUNT : 42,
+  ));
   errors.push(...terminalPassEvidenceErrors(report?.fatalEvents, report?.findings));
   if (report?.certification !== 'contract-budget') {
     errors.push('report certification must be contract-budget');
+  }
+  if (!surfaceVistaRequired) {
+    errors.push('terminal certification requires the current surface-vista input contract');
   }
   if (!options.budgetFile) errors.push('verification requires the same tracked --budget');
   else {
@@ -1709,9 +1997,14 @@ function verifyReport(report, expectedRunId, options) {
     else {
       const expectedProfiles = Object.fromEntries(Object.entries(report.profiles || {})
         .map(([profile, measurement]) => [profile, {
+          ...(surfaceVistaRequired ? {
+            initialVista: measurement.initialVista,
+            firstSurfaceVista: measurement.firstSurfaceVista,
+          } : {}),
           precondition: measurement.precondition,
           cycles: measurement.cycles,
           bfcache: measurement.bfcache,
+          ...(surfaceVistaRequired ? { reloadCleanup: measurement.reloadCleanup } : {}),
         }]));
       if (!same(report.contractInput.profiles, expectedProfiles)) {
         errors.push('contract input is detached from the collected profile evidence');
@@ -1720,7 +2013,9 @@ function verifyReport(report, expectedRunId, options) {
       if (!same(recomputed, report.verdict) || recomputed.status !== 'pass') {
         errors.push('imported contract verdict is stale or red');
       }
-      errors.push(...terminalOutcomeInventoryErrors(report.outcomes, recomputed.outcomes));
+      errors.push(...terminalOutcomeInventoryErrors(
+        report.outcomes, recomputed.outcomes, surfaceVistaRequired ? OUTCOME_COUNT : 42,
+      ));
     }
   } catch (error) { errors.push(`contract replay failed: ${error.message}`); }
   try {

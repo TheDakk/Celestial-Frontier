@@ -124,6 +124,7 @@ function tameGreetingWiringErrors(
   for (const needle of [
     "toastEl.getAttribute('role') === 'status'",
     "toastEl.getAttribute('aria-live') === 'assertive'",
+    "toastEl.getAttribute('aria-hidden') !== 'true'",
     "toastEl.getAttribute('aria-atomic') === 'true'",
     "toastEl.style.opacity === '1'",
     'receipt.generation === _toastSerial',
@@ -232,6 +233,23 @@ function replaceExact(source: string, needle: string, replacement: string): stri
   return source.replace(needle, replacement);
 }
 
+function replaceExactInSection(
+  source: string,
+  start: string,
+  end: string,
+  needle: string,
+  replacement: string,
+): string {
+  const startAt = source.indexOf(start);
+  const endAt = source.indexOf(end, startAt + start.length);
+  if (startAt < 0 || endAt < 0) throw new Error(`expected source section: ${start}`);
+  const body = source.slice(startAt, endAt);
+  if (body.split(needle).length !== 2) {
+    throw new Error(`expected one section target: ${needle}`);
+  }
+  return source.slice(0, startAt) + body.replace(needle, replacement) + source.slice(endAt);
+}
+
 describe('Arc 7/8 Tame greeting — Main wiring', () => {
   it('arms only trusted native Tame and plays once after exact postcommit toast settlement', () => {
     expect(tameGreetingWiringErrors(mainSource, controllerSource)).toEqual([]);
@@ -245,8 +263,10 @@ describe('Arc 7/8 Tame greeting — Main wiring', () => {
     );
     expect(tameGreetingWiringErrors(mainSource, untrusted)).toContain('native-tame-only-arm');
 
-    const preToastPlay = replaceExact(
+    const preToastPlay = replaceExactInSection(
       mainSource,
+      'async function runCaptureCardAction(',
+      '\nfunction engineeringOutcomeConverges(',
       '    toast(copy.title, copy.detail, true);',
       '    void tameGreetingAudioOwner?.playClaimedTameGreeting(greetingClaim!, {} as never);\n    toast(copy.title, copy.detail, true);',
     );
@@ -259,6 +279,14 @@ describe('Arc 7/8 Tame greeting — Main wiring', () => {
       '    && receipt.generation > 0',
     );
     expect(tameGreetingWiringErrors(staleGeneration, controllerSource))
+      .toContain('exact-toast-counterpart');
+
+    const hiddenCounterpart = replaceExact(
+      mainSource,
+      "    && toastEl.getAttribute('aria-hidden') !== 'true'",
+      '    && true',
+    );
+    expect(tameGreetingWiringErrors(hiddenCounterpart, controllerSource))
       .toContain('exact-toast-counterpart');
   });
 

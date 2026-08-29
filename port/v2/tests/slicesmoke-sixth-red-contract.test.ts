@@ -49,8 +49,8 @@ function proveEachMarkerRequired(owner: string, markers: readonly Marker[]): voi
 }
 
 describe('sixth Slice red contract repairs', () => {
-  it('keeps a fixed 55-row Guide oracle with five independent population controls', () => {
-    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 55;');
+  it('keeps a fixed 64-row Guide oracle with five independent population controls', () => {
+    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 64;');
     const owner = section(
       sliceSource,
       '  const releaseDraftCheck = `',
@@ -68,9 +68,10 @@ describe('sixth Slice red contract repairs', () => {
       ['removal delta',
         'releaseInventoryCtl.removed?.bulletCount !== V2_DRAFT_BULLET_COUNT - 1'],
     ]);
-    expect(glassSource).toContain('expectedBulletCount=55');
-    expect(glassSource).toContain('inventory?.bulletCount===54');
-    expect(glassSource).not.toContain('54-outcome development inventory');
+    expect(glassSource).toContain('expectedBulletCount=64');
+    expect(glassSource).toContain('inventory?.bulletCount===63');
+    expect(glassSource).toContain('64-outcome development inventory');
+    expect(glassSource).not.toContain('55-outcome development inventory');
   });
 
   it('separates both advancing active-play mirrors from stable fixture state', () => {
@@ -208,11 +209,11 @@ describe('sixth Slice red contract repairs', () => {
       ['publishing contradiction contract member',
         '&&!publishingContradiction;'],
       ['publishing completeness member',
-        '&&shipyardContract&&captureContract&&hdSurfaceContract&&publishingContract'],
+        '&&shipyardContract&&captureContract&&mealContract&&hdSurfaceContract&&publishingContract'],
       ['publishing contradiction diagnostic',
         'publishingHeading,publishingContract,publishingContradiction,overclaim'],
       ['publishing honesty member',
-        '&&!captureContradiction&&!publishingContradiction'],
+        '&&!captureContradiction&&!mealContradiction&&!publishingContradiction'],
     ]);
     expect(sliceOracle.split('(?:published|deployed|shipped)').length - 1).toBe(2);
     const sliceControls = section(
@@ -562,6 +563,34 @@ describe('sixth Slice red contract repairs', () => {
     );
     expect(siblingCloseAt).toBeGreaterThanOrEqual(0);
     expect(siblingCloseAt).toBeLessThan(protectedStageAt);
+  });
+
+  it('uses a real legacy-v4 primary and gates transient-read controls on green bases', () => {
+    const transient = section(
+      sliceSource,
+      '  /* The transient-read probe owns the database in isolation.',
+      '  /* 4e-phone. A FRESH PHONE starts with training active.',
+    );
+    proveEachMarkerRequired(transient, [
+      ['portable fixture inner legacy-v4 derivation',
+        'const transientExistingV4Raw = (() => {'],
+      ['portable fixture identity guard',
+        "envelope?.format !== 'celestial-frontier-portable-v5' || envelope?.version !== 1"],
+      ['inner legacy-v4 shape guard',
+        "typeof envelope.legacyV4 !== 'string' || legacy?.v !== 4"],
+      ['legacy-v4 existing-primary fixture',
+        'const existingRetry = await transientRetryProbe(transientExistingV4Raw);'],
+      ['legacy-v4 pre-click byte identity',
+        'transientPreClickOutcome(value.preClick, transientExistingV4Raw)'],
+      ['existing retry positive decision',
+        'const existingRetryGreen = existingRetryOutcome(existingRetry);'],
+      ['fresh retry positive decision',
+        'const freshRetryGreen = freshRetryOutcome(freshRetry);'],
+      ['green-only mutation controls',
+        'if (existingRetryGreen && freshRetryGreen) {'],
+    ]);
+    expect(transient).not.toContain('transientRetryProbe(vrRaw)');
+    expect(transient).not.toContain('transientPreClickOutcome(value.preClick, vrRaw)');
   });
 
   it('collects one exact convergence-release witness for both Arc 4 reload paths', () => {

@@ -207,9 +207,10 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > Final12 then stopped at Slice's stale negative-control expectation before Glass/Recovery. Exact
 > signed Final13 source `7cb0969…` later passed the repaired Slice control and full Recovery assessor,
 > establishing the stable local automated checkpoint. HUMAN review remains open; Arc 5 remains
-> `[PARTIAL]`/infrastructure-only.
+> `[PARTIAL]`: its ownership authority is foundational, and the later narrow Feed interaction is
+> player-live without completing the wider care/breeding/companion scope.
 
-## 0. v2.0 ecology/audio link (one narrow Tame greeting live; broader capture audio absent — 2026-08-26)
+## 0. v2.0 ecology/audio link (exact Tame/Feed expressions live; ecology playback absent — 2026-08-28)
 
 The current v2 development slice exposes player Tame, Scavenge, Sample and Biosphere Yield through
 the native Survey card, but no living Companion control. A trusted native **Tame** gesture may now
@@ -236,8 +237,13 @@ The boundary is intentionally narrow:
   microorganism has a recorded voice.
 - Miss, Worked Out and general success/discovery audio remain outside this path; sound never fires
   from a render function and never substitutes for visible odds, remaining attempts or result text.
-- Compendium audition, broader companion actions, biome ambience, music and combat audio remain
-  absent.
+- The separate real-fauna Compendium Feed action may emit one exact contented expression after its
+  committed durable successor and inline polite/atomic status settle. That status is the sole
+  accessible announcement; the simultaneous corner toast is visual-only. One constant-size latest-
+  successful-ownership fence rejects the same and every superseded result. The current Slice oracle
+  requires the started Feed oscillator to reach an `AudioDestinationNode` entirely within one
+  WebAudio context, but its fresh current-source browser run remains open. Compendium audition,
+  other companion actions, biome ambience, music and combat audio remain absent.
 
 The durable acquisition writer remains explicit and separate from the broader future audio
 presentation layer:
@@ -256,7 +262,12 @@ pool can sound active, Worked Out can become sparse, and epoch recovery can rest
 biome/kingdom palette. That is feedback on current visible state, not a new mechanic. It cannot leak
 an unrevealed roster, pre-land rarity, the next random target or whether the next roll will succeed.
 Fauna-free and silent biomes remain honest; flora, fungi and microbes receive their own ecological
-language. See `BIOME_ATLAS.md` §0.
+language. The current app already has a pure non-playing join from one canonical inhabited
+current-world Survey roster to a `DistantEcologyHintPlan`; it binds the canonical biome-profile
+schema/digest/key and roster environment fingerprint at biosphere granularity, rejects lifeless or
+non-production rosters, and neither reveals a species nor writes state. Main does not import it, so
+there is no event, counterpart, ducking, reduced-intensity behavior or playback lifecycle. See
+`BIOME_ATLAS.md` §0.
 
 A future bonded companion owns a stable living-creature ID. Its visual identity may use the
 complete plain genome, while its voice uses the immutable typed `AudioSignature` projection derived

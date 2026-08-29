@@ -131,7 +131,7 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '28b06f3cb26cd5570fa7bbe7565c410e30db3dd11bb0960919bb2e34cda5276c';
+  '3c811274c4f67cf706b621142db2001d614ba6b1a3c3669daf6ce1dacf67b574';
 const EXPECTED_COLLECTOR_AUTHORITY =
   'c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab';
 const RULER_COLLECTOR_AUTHORITY =
@@ -165,26 +165,26 @@ const RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind RULER_PRODUCER_AUTHORITY rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  'ba67d4351ea9d5905c1948b7a8ecf7fe6761dd3080263cd43ebaa67d4ca8ea30';
+  'd97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v1',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: 'fac6d7e5ad6cb625a27047fa9159dad47a5c35839953e5cbbacd9d46e224fe61',
+      sha256: '259c4ad7beff2242c01cedb1376b5b73d3c5e8663d5f322bb05a1c3e236efaa2',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/main-BqcJIdne.js',
-      sha256: 'f2cc7ac343b22390d1c9ed8a9a87458153693fbfbc716208b7e2ac979d3a0235',
+      relativePath: 'assets/main-kfW1fe9k.js',
+      sha256: '5d166994ccf89218f74d56b0bd537310c18353671eb2246f614abd931d3ecffb',
     }),
     worker: Object.freeze({
-      relativePath: 'assets/species-art.worker-MsuHQ8El.js',
-      sha256: '85f4fdf2e8214814466735d3b4f2abbe3b7c7bb601ebe40034dd9ab06d2d7c28',
+      relativePath: 'assets/species-art.worker-szNwNYEk.js',
+      sha256: 'cebbbb892d71828eef1b5d90e2c601f0f197ba01d080ceb9050ee1f252848cdf',
     }),
     painter: Object.freeze({
-      relativePath: 'assets/speciespainter-Bt9w5VDj.js',
-      sha256: '85b8e2eae90b245e3d4f03bab6d9cbbe8d1a1baaaf05ba51a719a2ec06807b04',
+      relativePath: 'assets/speciespainter-EmdmLeiA.js',
+      sha256: '570cb72699a577bda85502be46b54bcbdec9ffa41df5702bd5cb865f4bf08eba',
     }),
   }),
 });

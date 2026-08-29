@@ -13,6 +13,7 @@ import {
   SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA,
   sceneMemoryBrowserAuthorityMatches,
   sceneMemoryBrowserCapabilityInventoryErrors,
+  sceneMemoryProfileRawBindingErrors,
   sceneMemoryShipyardOpenSettlementReasons,
   sceneMemoryVeteranRaw,
   reportBrowserAuthorityErrors,
@@ -45,6 +46,9 @@ const RETAINED_REPORT_FILES = [
 function rawContractProjection(snapshot: any): Record<string, unknown> {
   const scene = snapshot.raw.scene;
   const shipyard = snapshot.raw.shipyard;
+  const hasSurfaceVista = Object.prototype.hasOwnProperty.call(
+    scene, 'surfaceVistaWorkerActive',
+  );
   return {
     documentToken: scene.documentToken,
     sceneGeneration: scene.generation,
@@ -66,10 +70,18 @@ function rawContractProjection(snapshot: any): Record<string, unknown> {
     shipyardPreviewPendingWork: shipyard.pendingPreviewWork,
     pending: scene.pendingSurfaceRefreshes + scene.pendingSystemRefreshes
       + scene.pendingPersistenceWrites
+      + (hasSurfaceVista
+        ? Number(scene.surfaceVistaWorkerActive) + Number(scene.surfaceVistaMounted) : 0)
       + scene.retiredFineOwnerCount + shipyard.activePreviewCount
       + shipyard.retainedPreviewCount + shipyard.pendingPreviewWork,
     ringCacheEntries: scene.ringGeometryEntries,
     peakRingGeometryEntries: scene.peakRingGeometryEntries,
+    ...(hasSurfaceVista ? {
+      surfaceVistaWorkerActive: scene.surfaceVistaWorkerActive,
+      surfaceVistaMounted: scene.surfaceVistaMounted,
+      surfaceVistaCacheEntries: scene.surfaceVistaCacheEntries,
+      surfaceVistaCachePixels: scene.surfaceVistaCachePixels,
+    } : {}),
     answerability: {
       target: {
         ok: snapshot.answerability.target.ok,
@@ -171,7 +183,7 @@ function shipyardRouteBindingErrors(source: string): string[] {
     "visitedRoutes.push('shipyard');",
     'sceneObjectsByRoute.shipyard = shipyardOpen.domPreviewCount;',
     "shipyardStatus: 'implemented-static'",
-    "const OUTCOME_COUNT = 42;",
+    "const OUTCOME_COUNT = 44;",
   ];
   const errors = [];
   for (const binding of exactBindings) {
@@ -189,6 +201,20 @@ function surfaceTierSettlementBindingErrors(source: string): string[] {
     'r.surfaceCurrentTierPx===${expectedTierPx}&&r.surfaceRequestedTierPx===0',
     'r.surfaceCurrentBackingWidth===${expectedTierPx}',
     'r.surfaceCurrentBackingHeight===${expectedTierPx}',
+    'r.surfaceVistaWorkerActive===false&&r.surfaceVistaMounted===true',
+    'r.surfaceVistaCacheEntries===${SURFACE_VISTA_CACHE_ENTRIES_MAX}',
+    'r.surfaceVistaCachePixels<=${SURFACE_VISTA_CACHE_PIXELS_MAX}',
+    '&&r.surfaceVistaWorkerActive===false&&r.surfaceVistaMounted===false',
+    "const SURFACE_VISTA_RELOAD_CLEANUP_BINDING = '__cfSceneMemoryVistaCacheCleanup';",
+    "schema:'cf-v2-scene-memory-vista-cache-transition/v1'",
+    'before?.surfaceVistaCacheEntries>0&&after?.surfaceVistaCacheEntries===0',
+    'measurement.initialVista = surfaceVistaState(measurement.initial.raw.scene);',
+    'measurement.firstSurfaceVista = surfaceVistaState(warmupRoute.surfaceVistaObservation);',
+    'measurement.reloadCleanup = await collectReloadCleanup({',
+    '+ Number(scene.surfaceVistaWorkerActive) + Number(scene.surfaceVistaMounted)',
+    'surfaceVistaCacheEntriesMax: max((point) => point.surfaceVistaCacheEntries)',
+    'errors.push(...sceneMemoryProfileRawBindingErrors(measurement)',
+    "schema: 'cf-v2-scene-memory-input/v4'",
   ];
   return exactBindings.filter((binding) => !source.includes(binding));
 }
@@ -440,6 +466,13 @@ describe('scene-memory terminal verifier', () => {
     );
   });
 
+  it('fails closed instead of throwing when a current profile is absent', () => {
+    expect(() => terminalProfileEvidenceErrors({}, true)).not.toThrow();
+    expect(terminalProfileEvidenceErrors({}, true)).toContain(
+      'phone surface vista evidence is incomplete',
+    );
+  });
+
   it('requires exact empty fatal-event and finding inventories for PASS', () => {
     expect(terminalPassEvidenceErrors([], [])).toEqual([]);
   });
@@ -480,7 +513,7 @@ describe('scene-memory terminal verifier', () => {
   });
 
   it('binds the terminal outcome inventory byte-for-byte to contract replay', () => {
-    const canonical = Array.from({ length: 42 }, (_, index) => ({
+    const canonical = Array.from({ length: 44 }, (_, index) => ({
       id: `outcome-${index}`,
       pass: true,
       message: `canonical-${index}`,
@@ -489,14 +522,14 @@ describe('scene-memory terminal verifier', () => {
   });
 
   it('negative control: a count-consistent missing ID and duplicate cannot verify', () => {
-    const canonical = Array.from({ length: 42 }, (_, index) => ({
+    const canonical = Array.from({ length: 44 }, (_, index) => ({
       id: `outcome-${index}`,
       pass: true,
       message: `canonical-${index}`,
     }));
     const tampered = structuredClone(canonical);
     tampered[17] = structuredClone(tampered[16]!);
-    expect(tampered).toHaveLength(42);
+    expect(tampered).toHaveLength(44);
     expect(tampered.every((outcome) => outcome.pass)).toBe(true);
     expect(terminalOutcomeInventoryErrors(tampered, canonical)).toEqual([
       'terminal outcome inventory differs from the imported contract replay',
@@ -507,6 +540,16 @@ describe('scene-memory terminal verifier', () => {
     for (const report of retainedReports()) {
       expect(rawDerivedProjectionErrors(report), report.runId).toEqual([]);
     }
+  });
+
+  it('fails closed when current raw surface-vista evidence is absent', () => {
+    expect(sceneMemoryProfileRawBindingErrors({})).toEqual([
+      'initial vista evidence is detached from its raw snapshot',
+      'precondition is detached from its raw warmup snapshot',
+      'surface vista observation inventory is incomplete',
+      'measured snapshot inventory is incomplete',
+      'bfcache raw snapshot is absent',
+    ]);
   });
 
   it('negative control: a cycle cannot be detached from unchanged retained raw evidence', () => {
@@ -530,6 +573,9 @@ describe('scene-memory terminal verifier', () => {
 
     expect(result.ok).toBe(false);
     expect(result.errors).toContain('report certification must be contract-budget');
+    expect(result.errors).toContain(
+      'terminal certification requires the current surface-vista input contract',
+    );
     expect(result.errors).toContain('verification requires the same tracked --budget');
   });
 
@@ -632,5 +678,18 @@ describe('scene-memory terminal verifier', () => {
       'r.surfaceCurrentBackingWidth===${expectedTierPx}',
       'r.surfaceCurrentBackingHeight===${expectedTierPx}',
     ]);
+  });
+
+  it('negative controls: vista cold exercise, pending owners, and reload cleanup stay bound', () => {
+    for (const binding of [
+      'measurement.initialVista = surfaceVistaState(measurement.initial.raw.scene);',
+      '+ Number(scene.surfaceVistaWorkerActive) + Number(scene.surfaceVistaMounted)',
+      'before?.surfaceVistaCacheEntries>0&&after?.surfaceVistaCacheEntries===0',
+      'errors.push(...sceneMemoryProfileRawBindingErrors(measurement)',
+    ]) {
+      const missing = collectorSource.replace(binding, '/* removed by mutation control */');
+      expect(missing, binding).not.toBe(collectorSource);
+      expect(surfaceTierSettlementBindingErrors(missing), binding).toContain(binding);
+    }
   });
 });

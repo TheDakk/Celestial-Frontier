@@ -1,12 +1,26 @@
 # Celestial Frontier — World & Universe Generation
 
 **STATUS:** legacy mechanics match `main.js` as of 2026-07-23; the dated v2 overlays
-match the current local candidate boundary as of 2026-08-26.
+match the current local candidate boundary as of 2026-08-28.
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime, `port/v2/packages/domain/{planetgen,worldgen,surveyphrases}` own the
 generated content contracts, and `port/v2/packages/scene/{address,cf1-code,system,universe,zoommode}`
 own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION.md. The biome CONTENT catalog is `BIOME_ATLAS.md` at the repo root (audited and promoted there from `tools/` on 2026-07-31; it had existed since 2026-07-21, and an earlier same-day note in these docs wrongly declared it missing — see ART_DIRECTION §6.1).
+
+> **2026-08-28 canonical presentation-envelope correction:** `@cf/domain-biome-profile` owns the
+> dependency-neutral exact 43-key `BiomeProfileV1` authority. Schema
+> `cf.domain.biome-profile.v1` and digest `bpd1-6fce883d4d70e3b6bde0fb184b416e8e` bind every
+> authored signature, fauna/flora-family, hazard and weather record. `world-roster.ts` selects that
+> profile once from the already-generated world and publishes schema/digest/key plus one environment
+> fingerprint over world, ecology epoch, biosphere and climate. Vista requests/workers and the pure
+> non-playing current-world distant-ecology plan consume that same presentation identity. It changes
+> no generation, RNG, biome selection, capture candidate or roster row. The gameplay-affecting D-9e
+> biome→fauna filter remains decision-gated and unfixed.
+>
+> **D-LOC:** generated non-Earth civilization labels use pure ASCII comma grouping through the
+> hand-owned Ecology facade. The lifted generator, numeric year, exact RNG chronology and all other
+> fields remain unchanged; Earth retains authored `Year 2026 CE`.
 
 > **2026-08-26 D-HAZE ownership correction — current local candidate:** the exact
 > `galaxyHaze(seed, profile)` canvas generator and its cache now belong to the `GalaxyArt [app]`

@@ -11,9 +11,16 @@
     "./species-canvas": "./src/speciescanvas.ts",
     "./species-painter": "./src/speciespainter.ts",
     "./species-broker": "./src/speciesbroker.ts",
-    "./species-compat": "./src/speciescompat.ts"
+    "./species-compat": "./src/speciescompat.ts",
+    "./biome-visual-profile": "./src/biome-visual-profile.ts",
+    "./visual-treatment": "./src/visual-treatment.ts",
+    "./canvas-treatment": "./src/canvas-treatment.ts",
+    "./surface-polish": "./src/surface-polish.ts",
+    "./biome-vista-ecology": "./src/biome-vista-ecology.ts",
+    "./biome-vista": "./src/biome-vista.ts"
   },
   "dependencies": {
+    "@cf/domain-biome-profile": "*",
     "@cf/domain-rand": "*",
     "@cf/domain-worldconfig": "*",
     "@cf/domain-surveyphrases": "*",

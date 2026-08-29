@@ -21,23 +21,32 @@
                       real species (D-ART-71).
 
    Usage:
-     node tools/conformance.mjs [fauna|flora]        report
-     node tools/conformance.mjs fauna --json out.json
+     node tools/conformance.mjs [fauna|flora] [--browser=<absolute-path>]
+     node tools/conformance.mjs fauna --json out.json [--browser=<absolute-path>]
      node tools/conformance.mjs --selftest           negative control */
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
-import os from 'node:os';
-import { spawn, execSync } from 'node:child_process';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { closeArtToolServer, withArtBrowserCdp } from './art-browser-contract.mjs';
+import {
+  assertBrowserLaunchAllowed, browserCandidates, findChromiumBrowser,
+} from './browserpath.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
 const appDir = path.join(root, 'apps', 'game');
 const dist = path.join(appDir, 'dist');
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const norm = (s) => String(s).replace(/[’‘]/g, "'");
+const argv = process.argv.slice(2);
+const browserArguments = argv.filter((argument) => argument.startsWith('--browser='));
+if (argv.includes('--browser') || browserArguments.length > 1) {
+  console.error('conformance: --browser requires one exact --browser=<absolute-path> value');
+  process.exit(2);
+}
+const browserOverride = browserArguments[0]?.slice('--browser='.length);
 
 /* ── the bands, and WHY they are these numbers ──────────────────────────────
    A painter is not a photograph and must not be graded like one. These are
@@ -169,7 +178,11 @@ export function judge(measured, ref, routed, eyeTrusted = true) {
 /* ── SELF-TEST: prove the judgement fails when it should ─────────────────────
    Seven checks on this project have passed while the thing they guarded was
    broken. A new one does not get trusted without a control in BOTH directions. */
-if (process.argv.includes('--selftest')) {
+if (argv.includes('--selftest')) {
+  if (argv.length !== 1) {
+    console.error('usage: node tools/conformance.mjs --selftest');
+    process.exit(2);
+  }
   const ref = new Map([
     ['Good', { name: 'Good', aspect: 2.0, eyes: 'normal', mustRead: ['a thing'] }],
     ['Blind', { name: 'Blind', aspect: 2.0, eyes: 'prominent', mustRead: ['a thing'] }],
@@ -204,9 +217,29 @@ if (process.argv.includes('--selftest')) {
 }
 
 /* ── the browser run ─────────────────────────────────────────────────────── */
-const kind = process.argv[2] || 'fauna';
-const jsonIx = process.argv.indexOf('--json');
-const jsonOut = jsonIx > 0 ? process.argv[jsonIx + 1] : null;
+let kind = 'fauna';
+let kindSeen = false;
+let jsonOut = null;
+for (let index = 0; index < argv.length; index++) {
+  const argument = argv[index];
+  if (argument.startsWith('--browser=')) continue;
+  if (argument === '--json') {
+    if (jsonOut !== null || index + 1 >= argv.length || argv[index + 1].startsWith('--')) {
+      console.error('usage: node tools/conformance.mjs [fauna|flora] [--json out.json] [--browser=<absolute-path>]');
+      process.exit(2);
+    }
+    jsonOut = argv[++index];
+    continue;
+  }
+  if (argument.startsWith('--') || kindSeen) {
+    console.error('usage: node tools/conformance.mjs [fauna|flora] [--json out.json] [--browser=<absolute-path>]');
+    process.exit(2);
+  }
+  kind = argument;
+  kindSeen = true;
+}
+assertBrowserLaunchAllowed();
+const browserFile = findChromiumBrowser(browserCandidates(browserOverride));
 
 execSync('npx vite build', { cwd: appDir, stdio: 'ignore' });
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.map': 'application/json' };
@@ -218,33 +251,36 @@ const server = http.createServer((req, res) => {
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const URL0 = 'http://127.0.0.1:' + server.address().port + '/audit.html?prop=' + encodeURIComponent(kind);
 
-const udd = path.join(os.tmpdir(), 'cf-conf-' + process.pid);
-const port = 9533 + (process.pid % 100);
-const edge = spawn(EDGE, ['--headless=new', '--no-sandbox', '--no-first-run',
-  '--disable-component-extensions-with-background-pages', '--disable-component-update', '--disable-background-networking',
-  '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });
-let ws0 = null;
-for (let t = 0; t < 50 && !ws0; t++) { await sleep(400); try { ws0 = (await (await fetch('http://127.0.0.1:' + port + '/json/version')).json()).webSocketDebuggerUrl; } catch { /* boot */ } }
-if (!ws0) { console.error('no CDP'); edge.kill(); server.close(); process.exit(2); }
-const ws = new WebSocket(ws0);
-let mid = 0; const pend = new Map();
-ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id && pend.has(m.id)) { const p = pend.get(m.id); pend.delete(m.id); m.error ? p.rej(new Error(m.error.message)) : p.res(m.result); } };
-await new Promise((r) => { ws.onopen = r; });
-const send = (method, params = {}, sessionId) => new Promise((res, rej) => { const id = ++mid; pend.set(id, { res, rej }); ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params })); });
-const t0 = await send('Target.createTarget', { url: 'about:blank' });
-const at = await send('Target.attachToTarget', { targetId: t0.targetId, flatten: true });
-const sess = at.sessionId;
-await send('Runtime.enable', {}, sess);
-await send('Page.navigate', { url: URL0 }, sess);
-const evalIn = async (expr) => {
-  const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, sess);
-  if (r.exceptionDetails) throw new Error('eval threw: ' + String(r.exceptionDetails.exception?.description || '').slice(0, 200));
-  return r.result.value;
-};
-let data = null;
-for (let s = 0; s < 1200 && !data; s++) { await sleep(300); data = await evalIn('(window.__CF_PROP__&&window.__CF_PROP__.done)?window.__CF_PROP__:null'); }
-ws.close(); edge.kill(); server.close();
-if (!data) { console.error('conformance: nothing was measured'); process.exit(1); }
+const { data, browserProvenance } = await withArtBrowserCdp({
+  browserFile,
+  tool: 'conformance',
+  userDataPrefix: 'cf-conformance',
+  startupTimeoutMs: 20_000,
+  cleanup: () => closeArtToolServer(server),
+}, async ({ send, provenance }) => {
+  const target = await send('Target.createTarget', { url: 'about:blank' });
+  const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+  const sessionId = attached.sessionId;
+  await send('Runtime.enable', {}, sessionId);
+  await send('Page.navigate', { url: URL0 }, sessionId);
+  const evalIn = async (expr) => {
+    const result = await send('Runtime.evaluate', {
+      expression: expr, returnByValue: true, awaitPromise: true,
+    }, sessionId);
+    if (result.exceptionDetails) {
+      throw new Error('eval threw: '
+        + String(result.exceptionDetails.exception?.description || '').slice(0, 200));
+    }
+    return result.result.value;
+  };
+  let measured = null;
+  for (let s = 0; s < 1200 && !measured; s++) {
+    await sleep(300);
+    measured = await evalIn('(window.__CF_PROP__&&window.__CF_PROP__.done)?window.__CF_PROP__:null');
+  }
+  if (!measured) throw new Error('conformance: nothing was measured');
+  return { data: measured, browserProvenance: provenance };
+});
 
 const ref = loadRef(kind);
 const routed = routedNames();
@@ -252,7 +288,9 @@ const sensor = eyeSensorScore(data.rows);
 const eyeTrusted = sensor.of > 0 && sensor.ratio >= EYE_SENSOR_FLOOR;
 const findings = judge(data.rows, ref, routed, eyeTrusted);
 findings.sort((a, b) => (b.sev || 0) - (a.sev || 0) || a.kind.localeCompare(b.kind) || a.name.localeCompare(b.name));
-if (jsonOut) fs.writeFileSync(jsonOut, JSON.stringify({ measured: data.rows, findings }, null, 1));
+if (jsonOut) fs.writeFileSync(jsonOut, JSON.stringify({
+  browser_provenance: browserProvenance, measured: data.rows, findings,
+}, null, 1));
 
 const by = (k) => findings.filter((f) => f.kind === k);
 console.log(`\nCONFORMANCE — ${kind}: ${data.rows.length} rendered, ${ref.size} reference rows, ${findings.length} findings\n`);

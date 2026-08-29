@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, vi } from 'vitest';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -117,6 +117,32 @@ describe('baseline probes (recipes mirror tools/probe.js exactly)', () => {
     expect(canon([wormholeDescriptor(), cmbDescriptor(), oortDescriptor(31337),
       kuiperDescriptor(systemFor(31337) as never, 31337), visitorDescriptor(31337),
       beltDescriptor(systemFor(424242) as never, 424242)])).toBe(probeRaw('miscDescriptors'));
+  });
+});
+
+describe('D-LOC — descriptor presentation consumes the deterministic Ecology facade', () => {
+  it('keeps a generated civilization year stable under hostile ambient locale grouping', () => {
+    const locale = vi.spyOn(Number.prototype, 'toLocaleString')
+      .mockReturnValue('AMBIENT-LOCALE');
+    try {
+      let localYear: string | null = null;
+      for (let seed = 1; seed <= 5_000 && localYear === null; seed++) {
+        const sys = systemFor(seed);
+        for (const pl of planets(sys)) {
+          const descriptor = planetDescriptor(pl.P, sys, pl);
+          const row = descriptor.rows.find(([label]) => label === 'Local year');
+          if (row) {
+            localYear = row[1];
+            break;
+          }
+        }
+      }
+      expect(localYear).toMatch(/^~\d{1,3}(?:,\d{3})+$/);
+      expect(localYear).not.toContain('AMBIENT-LOCALE');
+      expect(locale).toHaveBeenCalled();
+    } finally {
+      locale.mockRestore();
+    }
   });
 });
 

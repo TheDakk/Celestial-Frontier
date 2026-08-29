@@ -81,7 +81,17 @@ const COMPENDIUM_COPY_CONTRADICTIONS = Object.freeze([
   /(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i,
   /(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i,
   /(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i,
-  /(?:feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i,
+  /(?:breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i,
+]);
+
+const FEEDING_COPY_CONTRADICTIONS = Object.freeze([
+  /(?<!Narrow )\bFeeding is (?:now )?(?:live|playable|available)/i,
+  /(?:all|every) Compendium (?:row|detail)[^.!?]{0,80}(?:can feed|offers? Feed|exposes? Feed)/i,
+  /(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i,
+  /Meals[^.!?]{0,64}(?:above|beyond|past|over) 200/i,
+  /(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|playable|available|changed|increased|discovered|healed)/i,
+  /(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i,
+  /optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i,
 ]);
 
 const CAPTURE_COPY_CONTRADICTIONS = Object.freeze([
@@ -111,7 +121,8 @@ const UNAVAILABLE_V2_FEATURE_OVERCLAIMS = Object.freeze([
   /all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\s+(?:actionable|playable|available|live)/i,
   /(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i,
   ...DORMANT_CRAFTING_COPY_CONTRADICTIONS,
-  /(?:biosphere discovery|Discover Life|feeding|renaming|Field Scouts?|duels?|breeding|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i,
+  /(?:biosphere discovery|Discover Life|renaming|Field Scouts?|duels?|breeding|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i,
+  ...FEEDING_COPY_CONTRADICTIONS,
 ]);
 
 const ENGINEERING_COPY_CONTRADICTIONS = Object.freeze([
@@ -306,9 +317,12 @@ function captureGuideCopyIsTruthful(body: string): boolean {
     && /Capture never banks the Charter’s separate bioscan milestone[^.!?]{0,64}writer remains unavailable/i.test(copy)
     && /Sound and Creature voices on[^.!?]{0,96}verified successful wild-fauna Tame[^.!?]{0,96}once[^.!?]{0,96}deterministic synthesized greeting/i.test(copy)
     && /only after the durable result and its visible status alert have settled/i.test(copy)
-    && /miss, refusal, repeated invocation, reload, hidden page, or disabled audio stays silent and never replays/i.test(copy)
-    && /other creature actions, ambience, music, and combat sound remain unavailable/i.test(copy)
-    && /Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable/i.test(copy)
+    && /miss, refusal, repeated invocation, reload, hidden page, route or counterpart loss, or disabled audio stays silent and never replays/i.test(copy)
+    && /same single runtime may later acknowledge one exact durable nonconverging Feed commit after its own current accessible settled status/i.test(copy)
+    && /distant ecology playback, other creature actions, ambience, music, and combat sound remain unavailable/i.test(copy)
+    && /Narrow feeding is available only from a real fauna Compendium detail/i.test(copy)
+    && /Breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable/i.test(copy)
+    && /feeding does not yet discover tastes or flavours, grow stats or Power, heal injuries, apply poison, build a bond, or let the explorer eat/i.test(copy)
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
@@ -373,8 +387,53 @@ function captureReleaseCopyIsTruthful(body: string): boolean {
     && /miss adds none of them/i.test(body)
     && /Scavenge and Sample never create living companions/i.test(body)
     && /Capture never banks the Charter’s separate bioscan milestone/i.test(body)
-    && /Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable/i.test(body)
+    && /Narrow feeding is available from a real fauna Compendium detail/i.test(body)
+    && /breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable/i.test(body)
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+}
+
+function feedingCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /real fauna Compendium detail/i.test(copy)
+    && /Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot/i.test(copy)
+    && /Use 1/i.test(copy)
+    && /Same-species twins remain separate exact instances/i.test(copy)
+    && /Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why/i.test(copy)
+    && /Meals by 1[^.!?]{0,48}capped at 200/i.test(copy)
+    && /removes 1 flora from that exact lot/i.test(copy)
+    && /final unit empties that exact lot/i.test(copy)
+    && /one immutable receipt and one compare-and-swap save transaction/i.test(copy)
+    && /no retry and no optimistic inventory or Meals change/i.test(copy)
+    && /refusal, stale result, or failed write uses and publishes nothing/i.test(copy)
+    && /durability succeeds but publication cannot be confirmed[^.!?]{0,80}requires reload and cannot feed twice/i.test(copy)
+    && /Sound and Creature voices enabled/i.test(copy)
+    && /trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status/i.test(copy)
+    && /one deterministic synthesized acknowledgement after that status appears/i.test(copy)
+    && /refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(copy)
+    && /Back and Close remain available/i.test(copy)
+    && /tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable/i.test(copy)
+    && FEEDING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
+}
+
+function feedingReleaseCopyIsTruthful(body: string): boolean {
+  return /ONE EXACT MEAL SETTLES ONCE/i.test(body)
+    && /real fauna Compendium detail/i.test(body)
+    && /one exact unassigned owned companion below the 200-Meal cap/i.test(body)
+    && /one exact owned flora lot through Use 1/i.test(body)
+    && /Same-species twins remain separate exact instances/i.test(body)
+    && /assigned, recovering, and capped companions stay disabled and explain why/i.test(body)
+    && /One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora/i.test(body)
+    && /emptying that exact lot on its final unit/i.test(body)
+    && /no retry or optimistic change/i.test(body)
+    && /Back and Close remain available/i.test(body)
+    && /Refused, stale, and failed writes use and publish nothing/i.test(body)
+    && /durable result whose publication cannot be confirmed requires reload and cannot feed twice/i.test(body)
+    && /Sound and Creature voices enabled/i.test(body)
+    && /trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status/i.test(body)
+    && /one deterministic synthesized acknowledgement after that status appears/i.test(body)
+    && /refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(body)
+    && /Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable/i.test(body)
+    && FEEDING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
 
 function hdAttachmentReleaseCopyIsTruthful(body: string): boolean {
@@ -389,7 +448,7 @@ function hdAttachmentReleaseCopyIsTruthful(body: string): boolean {
 }
 
 function compendiumCatalogueCopyIsTruthful(body: string): boolean {
-  return /read-only <b>Compendium<\/b> presents up to 1,500 logical entries/i.test(body)
+  return /<b>Compendium<\/b> presents up to 1,500 logical entries/i.test(body)
     && /Search filters those saved records/i.test(body)
     && /count reports the logical matches/i.test(body)
     && /choosing a row opens its detail/i.test(body)
@@ -400,13 +459,15 @@ function compendiumCatalogueCopyIsTruthful(body: string): boolean {
     && /complete genome[^.!?]{0,80}not only the displayed name or seed[^.!?]{0,80}owns visual identity/i.test(body)
     && /Planetside shares the same bounded thumbnail lease path/i.test(body)
     && /thumbnails are released when their visible owner leaves/i.test(body)
-    && /Compendium itself remains a read-only browser/i.test(body)
+    && /Browsing and non-fauna details remain read-only/i.test(body)
     && /successful first Planetside capture can add one page/i.test(body)
     && /Tame also adds an owned fauna creature/i.test(body)
     && /Scavenge and Sample add specimen lots/i.test(body)
     && /Later-world or later-cycle successes add another creature or lot without duplicating the page/i.test(body)
-    && /Feeding, breeding, husbandry, renaming, and other Compendium-row actions remain unavailable/i.test(body)
+    && /real fauna detail alone exposes the narrow <b>Feed<\/b> action/i.test(body)
+    && /breeding, renaming, scouting, dueling, missions, and every broader husbandry outcome remain unavailable/i.test(body)
     && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body))
+    && FEEDING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(plainCopy(body)))
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(plainCopy(body)));
 }
 
@@ -416,12 +477,16 @@ function specimenDetailCopyIsTruthful(body: string): boolean {
     && /440px image is reserved for this detail rather than the list or Planetside/i.test(body)
     && /<b>Back<\/b> returns to the saved list position and restores focus to the same logical row/i.test(body)
     && /<b>Close<\/b> returns focus to the exact Compendium opener/i.test(body)
-    && /profile remains read-only/i.test(body)
     && /Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row/i.test(body)
     && /Tame hit adds one owned fauna creature/i.test(body)
     && /Scavenge or Sample adds one specimen lot and never a living companion/i.test(body)
-    && /Feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry remain unavailable/i.test(body)
+    && /Only a real fauna detail offers <b>Feed<\/b>/i.test(body)
+    && /one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot/i.test(body)
+    && /Identical same-species twins remain separate exact instances/i.test(body)
+    && /Back<\/b> and <b>Close<\/b>.*remain available around feeding/i.test(body)
+    && /Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable/i.test(body)
     && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body))
+    && FEEDING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(plainCopy(body)))
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(plainCopy(body)));
 }
 
@@ -453,6 +518,33 @@ function trainingRestoreCopyIsTruthful(body: string): boolean {
     && /reload after updating, or import a trusted complete expedition/i.test(body)
     && TRAINING_RESTORE_CONTRADICTIONS.every((pattern) => !pattern.test(body))
     && TRAINING_LEGACY_RECOVERY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+}
+
+const SETTINGS_GRAPHICS_COPY_CONTRADICTIONS = Object.freeze([
+  /Visual effects Off[^.!?]{0,96}(?:still|may|can)[^.!?]{0,48}(?:allocate|animate|render)[^.!?]{0,48}(?:fog|particles?|bloom)/i,
+  /(?:Motion )?Reduced(?: motion)?\s+(?:still\s+)?(?:can|may|will)\s+(?:animate|enable|allow)[^.!?]{0,64}(?:fog|particles?|bloom|shake)/i,
+  /Motion Auto[^.!?]{0,80}(?:ignores?|overrides?)[^.!?]{0,64}(?:device|system|OS)[^.!?]{0,32}(?:preference|setting)/i,
+  /Screen shake[^.!?]{0,96}(?:works?|runs?|activates?|is enabled)[^.!?]{0,64}(?:even when|without)[^.!?]{0,64}(?:Visual effects|full motion)/i,
+  /(?:Screen shake|planetfall (?:impulse|shake))[^.!?]{0,80}(?:random|nondeterministic|unbounded)/i,
+  /Screen shake[^.!?]{0,96}(?:also|can|may)[^.!?]{0,64}(?:travel|combat|survey|skimming)/i,
+  /(?:touch|low-tier)(?: and|\/| or)?(?: touch| low-tier)? devices[^.!?]{0,96}(?:use|receive|animate)[^.!?]{0,64}(?:full|animated)[^.!?]{0,48}(?:atmosphere|fog|bloom)/i,
+  /device policy[^.!?]{0,48}(?:can|may|will)\s+(?!never\b)(?:enable|turn on|override)\b[^.!?]{0,48}(?:Screen )?shake/i,
+]);
+
+function settingsGraphicsCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /Settings currently controls[^.!?]{0,160}Visual effects, Screen shake/i.test(copy)
+    && /Visual effects Off allocates no frontier fog particles and turns off the live bloom treatment/i.test(copy)
+    && /With Visual effects On, Motion Reduced keeps only bounded static atmosphere/i.test(copy)
+    && /touch\/low-tier devices also stay static/i.test(copy)
+    && /full-motion capable devices may animate capped fog, blazar bloom, and bright-star breathing/i.test(copy)
+    && /Motion Auto follows the device’s reduced-motion preference live/i.test(copy)
+    && /Screen shake adds only a short deterministic planetfall impulse/i.test(copy)
+    && /only when Visual effects, Screen shake, and full motion are all enabled/i.test(copy)
+    && /Reduced motion disables shake/i.test(copy)
+    && /device policy may lower the enabled profile and concurrent-impulse cap, but it can never enable shake/i.test(copy)
+    && /Preferences persist with the expedition/i.test(copy)
+    && SETTINGS_GRAPHICS_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
 const guideLiteral = extractLiteral('const GUIDE=', '\n/* v1.5:');
@@ -513,8 +605,8 @@ describe('v2 Guide capability filter', () => {
     expect(categories).toHaveLength(9);
     expect(topics).toHaveLength(41);
     expect(topics.filter((topic) => topic.availability === 'available')).toHaveLength(0);
-    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(24);
-    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(17);
+    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(25);
+    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(16);
     expect(topics.filter((topic) => topic.availability === 'partial')
       .every((topic) => topic.body !== topic.legacyBody)).toBe(true);
     expect(topics.some((topic) => topic.id === 'beacon' || topic.id === 'events')).toBe(false);
@@ -523,6 +615,7 @@ describe('v2 Guide capability filter', () => {
   it('uses current-slice copy for partial topics and explicit copy for unavailable topics', () => {
     const codes = getGuideTopic('codes');
     const breeding = getGuideTopic('breeding');
+    const feeding = getGuideTopic('feeding');
     expect(codes?.availability).toBe('partial');
     expect(codes?.body).toContain('not yet available');
     expect(codes?.body).toContain('selected in Search');
@@ -531,10 +624,17 @@ describe('v2 Guide capability filter', () => {
     expect(breeding?.availability).toBe('unavailable');
     expect(breeding?.body).toContain('Not available in this v2 development slice');
     expect(breeding?.body).not.toBe(breeding?.legacyBody);
+    expect(feeding?.availability).toBe('partial');
+    expect(feedingCopyIsTruthful(feeding?.body ?? '')).toBe(true);
+    expect(getGuideTopic('injuries')?.availability).toBe('unavailable');
+    expect(getGuideTopic('eating')?.availability).toBe('unavailable');
     expect(getGuideTopic('settings')?.crossLinks).toContain('saving');
     expect(getGuideTopic('settings')?.body).toContain('Star charts');
     expect(getGuideTopic('settings')?.body).toContain('Creature voices');
-    expect(getGuideTopic('settings')?.body).toContain('only the one synthesized greeting');
+    expect(getGuideTopic('settings')?.body).toContain('two exact synthesized expressions');
+    expect(getGuideTopic('settings')?.body).toContain(
+      'wild-fauna Tame or exact durable nonconverging Feed commit',
+    );
     expect(getGuideTopic('settings')?.body).toContain(
       'every ordinary save-mutating preference and Training control—including Creature voices and both sliders—remains inspection-only',
     );
@@ -625,8 +725,10 @@ describe('v2 Guide capability filter', () => {
       .find((section) => section.category === 'Bug Fixes')
       ?.bullets.find((bullet) => bullet.includes('A NEWLY TAMED CREATURE CAN GREET YOU'));
     expect(audioBullet).toContain('verified durable wild-fauna Tame');
-    expect(audioBullet).toContain('visible status alert settles');
+    expect(audioBullet).toContain('durable nonconverging Feed commit');
+    expect(audioBullet).toContain('current visible accessible status counterpart');
     expect(audioBullet).toContain('without retry or replay');
+    expect(audioBullet).toContain('Distant ecology playback');
     expect(audioBullet).toContain('ambience, music, and combat sound remain future work');
     expect(tameGreetingFixBullet).toContain('two different save revisions');
     expect(tameGreetingFixBullet).toContain('keeping stale results silent');
@@ -1059,16 +1161,88 @@ describe('v2 Guide capability filter', () => {
     )).toBe(false);
   });
 
-  it('keeps the Compendium read-only while documenting Planetside first-find writes', () => {
+  it('describes the live graphics controls with their motion and device limits', () => {
+    const settings = getGuideTopic('settings')!.body;
+    expect(settingsGraphicsCopyIsTruthful(settings)).toBe(true);
+
+    const underclaims = [
+      settings.replace(
+        '<b>Visual effects</b> Off allocates no frontier fog particles and turns off the live bloom treatment',
+        '<b>Visual effects</b> Off changes the scene',
+      ),
+      settings.replace(
+        'Motion Reduced keeps only bounded static atmosphere',
+        'Motion Reduced changes the atmosphere',
+      ),
+      settings.replace(
+        'touch/low-tier devices also stay static',
+        'device limits omitted',
+      ),
+      settings.replace(
+        'full-motion capable devices may animate capped fog, blazar bloom, and bright-star breathing',
+        'full-motion effects omitted',
+      ),
+      settings.replace(
+        'Motion Auto follows the device’s reduced-motion preference live',
+        'Motion Auto is available',
+      ),
+      settings.replace(
+        '<b>Screen shake</b> adds only a short deterministic planetfall impulse',
+        '<b>Screen shake</b> changes the camera',
+      ),
+      settings.replace(
+        'only when Visual effects, Screen shake, and full motion are all enabled',
+        'when Screen shake is enabled',
+      ),
+      settings.replace(
+        'Reduced motion disables shake',
+        'Reduced-motion shake behavior omitted',
+      ),
+      settings.replace(
+        'device policy may lower the enabled profile and concurrent-impulse cap, but it can never enable shake',
+        'device policy details omitted',
+      ),
+    ];
+    for (const [index, mutant] of underclaims.entries()) {
+      expect(mutant, `graphics underclaim ${index} did not mutate the source`).not.toBe(settings);
+      expect(settingsGraphicsCopyIsTruthful(mutant), `graphics underclaim ${index}`).toBe(false);
+    }
+
+    for (const contradiction of [
+      'Visual effects Off can still allocate and animate frontier fog particles.',
+      'Reduced motion can animate fog, bloom, and screen shake.',
+      'Motion Auto ignores the device reduced-motion preference.',
+      'Screen shake works even when Visual effects is Off.',
+      'Planetfall shake is random.',
+      'Screen shake also runs during travel.',
+      'Touch and low-tier devices use the full animated atmosphere.',
+      'Device policy can enable Screen shake when its toggle is Off.',
+    ]) {
+      expect(
+        settingsGraphicsCopyIsTruthful(`${settings} ${contradiction}`),
+        contradiction,
+      ).toBe(false);
+      expect(settingsGraphicsCopyIsTruthful(settings), `${contradiction} restoration`).toBe(true);
+    }
+  });
+
+  it('keeps Compendium browsing bounded while documenting first-find and narrow Feed writes', () => {
     const kingdoms = getGuideTopic('kingdoms')!.body;
     const specimen = getGuideTopic('specimen')!.body;
+    const feeding = getGuideTopic('feeding')!.body;
     const artBullet = V2_DRAFT_RELEASE.sections
       .flatMap((section) => section.bullets)
       .find((bullet) => bullet.includes('ART ARRIVES WHEN IT IS NEEDED'));
+    const feedingBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('ONE EXACT MEAL SETTLES ONCE'));
 
     expect(artBullet).toBeDefined();
+    expect(feedingBullet).toBeDefined();
     expect(compendiumCatalogueCopyIsTruthful(kingdoms)).toBe(true);
     expect(specimenDetailCopyIsTruthful(specimen)).toBe(true);
+    expect(feedingCopyIsTruthful(feeding)).toBe(true);
+    expect(feedingReleaseCopyIsTruthful(feedingBullet!)).toBe(true);
     expect(compendiumArtReleaseCopyIsTruthful(artBullet!)).toBe(true);
 
     /* Bidirectional controls: pre-Arc-1A copy and required-contract removal
@@ -1098,6 +1272,17 @@ describe('v2 Guide capability filter', () => {
     expect(specimenDetailCopyIsTruthful(
       specimen + ' The player selects this Compendium row to target.',
     )).toBe(false);
+    expect(feedingCopyIsTruthful(
+      feeding.replace('one immutable receipt and one compare-and-swap save transaction', 'one ordinary save'),
+    )).toBe(false);
+    for (const contradiction of [
+      ' Assigned companions can still be fed.',
+      ' The meal automatically retries after a stale result.',
+      ' Stats are now increased by feeding.',
+    ]) {
+      expect(feedingCopyIsTruthful(feeding + contradiction), contradiction).toBe(false);
+      expect(feedingReleaseCopyIsTruthful(feedingBullet! + contradiction), contradiction).toBe(false);
+    }
     expect(compendiumArtReleaseCopyIsTruthful(
       'ART ARRIVES WHEN IT IS NEEDED: The large species-art payload loads lazily for Compendium or Planetside and retains only the latest subscriber per surface.',
     )).toBe(false);
@@ -1145,6 +1330,15 @@ describe('v2 Guide capability filter', () => {
     expect(topic?.availability).toBe('unavailable');
     expect(topic?.body).toContain('Exact Inventory actions have not been connected');
     expect(topic?.body).not.toContain('revision-checked actions');
+  });
+
+  it('negative control: narrow Feed copy is capability-bound rather than always exposed', () => {
+    const withoutFeeding = V2_DEVELOPMENT_GUIDE_CAPABILITIES
+      .filter((capability) => capability !== 'feeding');
+    const topic = getGuideTopic('feeding', withoutFeeding);
+    expect(topic?.availability).toBe('unavailable');
+    expect(topic?.body).toContain('exact-instance fauna Feed action has not been connected');
+    expect(topic?.body).not.toContain('one immutable receipt');
   });
 
   it('negative control: Discovering life is partial only with the live capture capability', () => {
@@ -1221,7 +1415,9 @@ describe('legacy and v2 release channels', () => {
     ];
     const requiredCopy = [
       /TypeScript and Pixi v2 development build/,
-      /Star Atlas, read-only Compendium, Records, Charters, Settings, Field Training/,
+      /ONE POLISHED UNIVERSE:[^\n]*all 43 live biomes[^\n]*seed, silhouette, anatomy, proportion, placement, and gameplay boundary unchanged[^\n]*Sol is a calibration point, never a special-case filter/,
+      /EVERY LANDED WORLD HAS A HORIZON:[^\n]*960×430 authored landing vista[^\n]*full canonical biosphere[^\n]*unsupported workers or failed art mounts leave the usable globe intact/,
+      /Star Atlas, Compendium, Records, Charters, Settings, Field Training/,
       /EVERY PIECE STAYS ITSELF/,
       /stable exact item instance/,
       /Oversized legacy holds remain lossless inspection-only evidence/,
@@ -1238,6 +1434,7 @@ describe('legacy and v2 release channels', () => {
       /Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/,
       /a genuine empty-sky press still dismisses it/,
       /bottom-right dock edge/,
+      /GRAPHICS CHOICES NOW CONTROL THE SKY:[^\n]*Effects Off allocates no frontier fog particles[^\n]*Screen Shake adds only a short deterministic planetfall impulse/,
       /Resize bursts settle at most once per animation frame and density-only work never creates a save write/,
       /CF1 addresses preserve galaxy, star, planet, coordinates/,
       /different worlds that happen to share a planet seed remain independent/,
@@ -1297,12 +1494,22 @@ describe('legacy and v2 release channels', () => {
       /Legendary-or-better first find also awards its one Rare Find Stardust bonus[^.!?]{0,96}exact amount shown in the result/,
       /later-world or later-cycle repeat adds another creature or lot without another page or first-find reward/,
       /Capture never banks the Charter’s separate bioscan milestone/,
-      /Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable/,
-      /Finish for now that points to live Engineering & Shipyard and Planetside capture/,
+      /Narrow feeding is available from a real fauna Compendium detail; breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable/,
+      /ONE EXACT MEAL SETTLES ONCE:[^\n]*one exact unassigned owned companion below the 200-Meal cap[^\n]*one exact owned flora lot through Use 1[^\n]*Meals by 1[^\n]*exactly 1 flora[^\n]*no retry or optimistic change/,
+      /trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status[^\n]*one deterministic synthesized acknowledgement after that status appears/,
+      /refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/,
+      /Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable/,
+      /Finish for now that points to live Engineering & Shipyard, Planetside capture, and narrow real-fauna Compendium Feed/,
       /named HD surface-planet texture attachment/,
       /retains the displayed predecessor until an acquired successor publishes/,
+      /AURORAS RESPECT THE WEATHER:[^\n]*rain and snow once again suppress the aurora overlay/,
+      /ALIEN YEARS AGREE ON EVERY DEVICE:[^\n]*deterministic ASCII comma grouping[^\n]*Earth keeps its authored Year 2026 CE[^\n]*numeric year, RNG chronology, and every other generated field remain unchanged/,
+      /A FAILED VISTA CANNOT POISON THE NEXT VISIT:[^\n]*unmountable cached canvas is evicted[^\n]*new canvas is committed only after it mounts successfully/,
+      /A MODULAR CORE UNDER ONE UNIVERSE:[^\n]*versioned, digested 43-key domain biome-profile authority[^\n]*current-world roster environment fingerprint[^\n]*pure already-surfaced distant-ecology hint plan[^\n]*presentation-only and non-playing/,
       /Closed Inventory panels retain their inventory, filter, and page state without keeping hidden item rows or dormant event subscriptions/,
       /every registered panel opener shares one focus-capture owner/,
+      /THE REVISION CEILING FAILS CLOSED:[^\n]*maximum safe revision remains readable[^\n]*typed protected outcome/,
+      /BROWSER UPDATES ARE PROVENANCE, NOT BASELINES:[^\n]*compatible Edge\/Chrome executable[^\n]*connected browser must report complete Chromium-family identity[^\n]*Any compatible point version is accepted and never demands a visual rebaseline/,
       /memory ruler names the exact exceeded counter and cannot move merely because the browser received a compatible point update/,
       /Automated lenses still do not replace human play/,
       /DEVELOPMENT PUBLISHING STAYS PARKED:[^\n]*it does not publish[^\n]*The separate branch-site workflow remains manually parked/,
@@ -1335,7 +1542,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 55,
+        inventory: bullets.length === 64,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
@@ -1358,6 +1565,7 @@ describe('legacy and v2 release channels', () => {
       category: section.category,
       bullets: index === 1 ? section.bullets.filter((_, bulletIndex) => bulletIndex !== 3) : section.bullets,
     }));
+    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(63);
     expect(bulletinOutcome(missingMiddle).inventory).toBe(false);
     const missingRequired = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
@@ -1610,6 +1818,7 @@ describe('legacy and v2 release channels', () => {
       'Mining is now playable.',
       'Eligible fixed Fabricator crafting is now playable.',
       'Capture is now playable.',
+      'Narrow real-fauna Compendium Feed is now playable.',
       'Exploration audio is now live.',
     ]) {
       expect(bulletinOutcome(withInjectedFeatureClaim(truthfulClaim)), truthfulClaim).toEqual({

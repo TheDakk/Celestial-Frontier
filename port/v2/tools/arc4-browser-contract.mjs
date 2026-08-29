@@ -1850,16 +1850,66 @@ const captureStateOf = (value) => value?.capture ?? value;
 const persistenceStateOf = (value) => value?.persistence ?? null;
 const ownershipV2StateOf = (value) => value?.ownershipV2 ?? null;
 
-const arc5AppDiagnosticsShape = (value) => exactKeys(value, [
+const nullableBoundedText = (value, maximum = 512) => value === null
+  || boundedText(value, maximum);
+const nullableRecord = (value) => value === null || record(value);
+
+const arc5FeedControllerDiagnosticsShape = (value) => exactKeys(value, [
+  'schema', 'attachedMountCount', 'retainedDomCount', 'pendingWork',
+  'convergenceLatched', 'delegatedListenerCount', 'actionControlCount',
+  'radioControlCount', 'surfaceKey', 'contextKey', 'selectedCreatureId',
+  'selectedFoodLotId', 'lastRequest', 'lastOutcome',
+])
+  && value.schema === 'cf-v2-compendium-feed-diagnostics/v1'
+  && [0, 1].includes(value.attachedMountCount)
+  && counter(value.retainedDomCount)
+  && [0, 1].includes(value.pendingWork)
+  && typeof value.convergenceLatched === 'boolean'
+  && [0, 2].includes(value.delegatedListenerCount)
+  && counter(value.actionControlCount) && counter(value.radioControlCount)
+  && nullableBoundedText(value.surfaceKey, 2_048)
+  && nullableBoundedText(value.contextKey, 2_048)
+  && nullableBoundedText(value.selectedCreatureId, 512)
+  && nullableBoundedText(value.selectedFoodLotId, 512)
+  && nullableRecord(value.lastRequest) && nullableRecord(value.lastOutcome);
+
+const arc5FeedCoordinatorDiagnosticsShape = (value) => exactKeys(value, [
+  'inFlight', 'owner', 'hold', 'faultArmed', 'lastFault',
+])
+  && typeof value.inFlight === 'boolean'
+  && exactKeys(value.owner, ['schema', 'busy', 'operation'])
+  && value.owner.schema === 'cf-v2-product-action-coordinator-diagnostics/v1'
+  && typeof value.owner.busy === 'boolean'
+  && nullableBoundedText(value.owner.operation, 128)
+  && exactKeys(value.hold, ['schema', 'phase', 'operation', 'sequence'])
+  && value.hold.schema === 'cf-v2-product-action-hold-diagnostics/v1'
+  && ['idle', 'armed', 'holding', 'release-requested', 'released'].includes(value.hold.phase)
+  && nullableBoundedText(value.hold.operation, 128)
+  && counter(value.hold.sequence)
+  && exactKeys(value.faultArmed, [
+    'storageFailure', 'staleAuthority', 'publicationFailure',
+  ])
+  && Object.values(value.faultArmed).every((armed) => typeof armed === 'boolean')
+  && nullableRecord(value.lastFault);
+
+const arc5FeedDiagnosticsShape = (value) => exactKeys(value, [
+  'lastOutcome', 'lastResult', 'controller', 'actionCoordinator',
+])
+  && nullableBoundedText(value.lastOutcome, 256)
+  && nullableRecord(value.lastResult)
+  && arc5FeedControllerDiagnosticsShape(value.controller)
+  && arc5FeedCoordinatorDiagnosticsShape(value.actionCoordinator);
+
+const ARC5_APP_DIAGNOSTIC_BASE_KEYS = Object.freeze([
   'schema', 'stateKind', 'mode', 'representationVersion', 'protection',
   'bootstrapPending', 'bootstrapOutcome', 'revision', 'sourceRevision',
   'sourceDigest', 'targetDigest', 'deltaDigest', 'deltaRows',
   'deltaShardCount', 'deltaShardDigests', 'acquisitions',
   'bredAcquisitions', 'creatures', 'creatureTombstones', 'specimenLots',
   'specimenTombstones', 'biospheres',
-])
-  && value.schema === 'cf-v2-arc5-app-state/v2'
-  && ['loaded', 'unavailable'].includes(value.stateKind)
+]);
+
+const arc5AppDiagnosticsCoreShape = (value) => ['loaded', 'unavailable'].includes(value.stateKind)
   && typeof value.bootstrapPending === 'boolean'
   && (value.bootstrapOutcome === null || boundedText(value.bootstrapOutcome, 128))
   && (value.protection === null || boundedText(value.protection, 256))
@@ -1886,19 +1936,42 @@ const arc5AppDiagnosticsShape = (value) => exactKeys(value, [
       && value.deltaShardCount === null && Array.isArray(value.deltaShardDigests)
       && value.deltaShardDigests.length === 0);
 
+const arc5AppDiagnosticsShape = (value) => exactKeys(value, [
+  ...ARC5_APP_DIAGNOSTIC_BASE_KEYS, 'feed',
+])
+  && value.schema === 'cf-v2-arc5-app-state/v3'
+  && arc5FeedDiagnosticsShape(value.feed)
+  && arc5AppDiagnosticsCoreShape(value);
+
+const legacyArc5AppDiagnosticsShape = (value) => exactKeys(
+  value, ARC5_APP_DIAGNOSTIC_BASE_KEYS,
+)
+  && value.schema === 'cf-v2-arc5-app-state/v2'
+  && arc5AppDiagnosticsCoreShape(value);
+
+const arc5EvidenceDiagnosticsShape = (value, allowLegacyArc5Diagnostics) => (
+  arc5AppDiagnosticsShape(value)
+  || (allowLegacyArc5Diagnostics === true && legacyArc5AppDiagnosticsShape(value))
+);
+
 const expectedArc5Outcome = (actual, expected) => expected === undefined
   ? boundedText(actual, 128)
   : Array.isArray(expected) ? expected.includes(actual) : actual === expected;
 
 export const arc5OwnershipV2RuntimeExact = (
-  raw, value, { bootstrapOutcome = undefined } = {},
+  raw, value, {
+    bootstrapOutcome = undefined,
+    allowLegacyArc5Diagnostics = false,
+  } = {},
 ) => {
   const durable = assessArc4DurableEvidence(raw);
   const diagnostic = ownershipV2StateOf(value);
   const migration = durable.arc5Migration;
   const source = migration?.source;
   const target = migration?.target;
-  if (!durable.ok || !arc5AppDiagnosticsShape(diagnostic)
+  if (!durable.ok || !arc5EvidenceDiagnosticsShape(
+    diagnostic, allowLegacyArc5Diagnostics,
+  )
     || diagnostic.stateKind !== 'loaded' || target === null) return false;
   return diagnostic.mode === source.mode
     && diagnostic.protection === (source.mode === 'current' ? null : 'legacy-protected')
@@ -1970,14 +2043,18 @@ const exactUiRows = (value) => Array.isArray(value?.rows)
   && same(value.rows.map(({ verb }) => verb), ARC4_CAPTURE_VERBS)
   && new Set(value.rows.map(({ verb }) => verb)).size === ARC4_CAPTURE_VERBS.length;
 
-export const arc4CaptureUiSnapshotComplete = (value) => {
+export const arc4CaptureUiSnapshotComplete = (value, {
+  allowLegacyArc5Diagnostics = false,
+} = {}) => {
   if (value?.schema !== ARC4_CAPTURE_UI_EVIDENCE_SCHEMA
     || value.cardOpen !== true || value.mountCount !== 1 || value.directCloseCount !== 1
     || value.controller !== 'v1' || !boundedText(value.contextKey, 512)
     || !boundedText(value.cardTitle, 256) || !boundedText(value.planetsideHeading, 256)
     || !boundedText(value.summary, 2_048) || !exactUiRows(value)
     || !record(value.status) || !record(value.diagnostics)
-    || !arc5AppDiagnosticsShape(value.ownershipV2)
+    || !arc5EvidenceDiagnosticsShape(
+      value.ownershipV2, allowLegacyArc5Diagnostics,
+    )
     || value.diagnostics.schema !== 'cf-v2-capture-card-diagnostics/v1'
     || value.diagnostics.attachedMountCount !== 1
     || value.diagnostics.actionControlCount !== 3
@@ -4807,7 +4884,9 @@ const sameCaptureAuthority = (left, right) => left?.captureRevision === right?.c
     projectArc4V4OwnedCompatibility(right)?.legacy,
   );
 
-const exhaustedLiveParity = (exhaustedRaw, exhaustedState) => {
+const exhaustedLiveParity = (exhaustedRaw, exhaustedState, {
+  allowLegacyArc5Diagnostics = false,
+} = {}) => {
   const mirror = projectArc4OwnershipEvidence(exhaustedRaw);
   const capture = captureStateOf(exhaustedState);
   const runtime = persistenceStateOf(exhaustedState)?.runtime;
@@ -4815,6 +4894,7 @@ const exhaustedLiveParity = (exhaustedRaw, exhaustedState) => {
     && exactRuntimeAtOrAfterRaw(exhaustedRaw, exhaustedState)
     && arc5OwnershipV2RuntimeExact(exhaustedRaw, exhaustedState, {
       bootstrapOutcome: 'capture-committed-published',
+      allowLegacyArc5Diagnostics,
     })
     && capture?.stateKind === 'loaded' && capture?.mode === 'current'
     && capture?.protection === null && capture?.revision === exhaustedRaw?.captureRevision
@@ -4948,6 +5028,8 @@ export const assessArc4ExhaustionRecovery = ({
   suppressed, closedRaw, closedState, closure,
   offlineRaw, offlineState, offlineUi, offlineElapsedMs,
   recoveredRaw, recoveredState, recoveredUi,
+} = {}, {
+  allowLegacyArc5Diagnostics = false,
 } = {}) => {
   const exhaustedProgress = progressForFixture(exhaustedRaw);
   const closedProgress = progressForFixture(closedRaw);
@@ -5001,23 +5083,35 @@ export const assessArc4ExhaustionRecovery = ({
       && arc4DurableEvidenceComplete(closedRaw)
       && arc4DurableEvidenceComplete(offlineRaw)
       && arc4DurableEvidenceComplete(recoveredRaw),
-    exhaustedLive: exhaustedLiveParity(exhaustedRaw, exhaustedState),
+    exhaustedLive: exhaustedLiveParity(exhaustedRaw, exhaustedState, {
+      allowLegacyArc5Diagnostics,
+    }),
     ownershipV2Live: arc5OwnershipV2RuntimeExact(exhaustedRaw, exhaustedUi, {
       bootstrapOutcome: 'capture-committed-published',
+      allowLegacyArc5Diagnostics,
     }) && arc5OwnershipV2RuntimeExact(closedRaw, closedState, {
       bootstrapOutcome: 'capture-committed-published',
+      allowLegacyArc5Diagnostics,
     }) && arc5OwnershipV2RuntimeExact(offlineRaw, offlineState, {
       bootstrapOutcome: 'already-aligned',
+      allowLegacyArc5Diagnostics,
     }) && arc5OwnershipV2RuntimeExact(offlineRaw, offlineUi, {
       bootstrapOutcome: 'already-aligned',
+      allowLegacyArc5Diagnostics,
     }) && arc5OwnershipV2RuntimeExact(recoveredRaw, recoveredState, {
       bootstrapOutcome: 'already-aligned',
+      allowLegacyArc5Diagnostics,
     }) && arc5OwnershipV2RuntimeExact(recoveredRaw, recoveredUi, {
       bootstrapOutcome: 'already-aligned',
+      allowLegacyArc5Diagnostics,
     }),
-    uiComplete: arc4CaptureUiSnapshotComplete(exhaustedUi)
-      && arc4CaptureUiSnapshotComplete(offlineUi)
-      && arc4CaptureUiSnapshotComplete(recoveredUi),
+    uiComplete: arc4CaptureUiSnapshotComplete(exhaustedUi, {
+      allowLegacyArc5Diagnostics,
+    }) && arc4CaptureUiSnapshotComplete(offlineUi, {
+      allowLegacyArc5Diagnostics,
+    }) && arc4CaptureUiSnapshotComplete(recoveredUi, {
+      allowLegacyArc5Diagnostics,
+    }),
     activePlayProjection: exactActivePlayProjection(exhaustedRaw, exhaustedUi)
       && exactActivePlayProjection(offlineRaw, offlineUi)
       && exactActivePlayProjection(recoveredRaw, recoveredUi),
@@ -5749,6 +5843,47 @@ const appCaptureState = (raw, {
   actionCoordinator: coordinator,
 });
 
+const appArc5FeedState = () => ({
+  lastOutcome: null,
+  lastResult: null,
+  controller: {
+    schema: 'cf-v2-compendium-feed-diagnostics/v1',
+    attachedMountCount: 0,
+    retainedDomCount: 0,
+    pendingWork: 0,
+    convergenceLatched: false,
+    delegatedListenerCount: 2,
+    actionControlCount: 0,
+    radioControlCount: 0,
+    surfaceKey: null,
+    contextKey: null,
+    selectedCreatureId: null,
+    selectedFoodLotId: null,
+    lastRequest: null,
+    lastOutcome: null,
+  },
+  actionCoordinator: {
+    inFlight: false,
+    owner: {
+      schema: 'cf-v2-product-action-coordinator-diagnostics/v1',
+      busy: false,
+      operation: null,
+    },
+    hold: {
+      schema: 'cf-v2-product-action-hold-diagnostics/v1',
+      phase: 'idle',
+      operation: null,
+      sequence: 0,
+    },
+    faultArmed: {
+      storageFailure: false,
+      staleAuthority: false,
+      publicationFailure: false,
+    },
+    lastFault: null,
+  },
+});
+
 const appOwnershipV2State = (raw, {
   unavailable = false, boot = false, bootstrapOutcome = undefined,
 } = {}) => {
@@ -5764,7 +5899,7 @@ const appOwnershipV2State = (raw, {
   const source = migration.source;
   const target = migration.targetMirror;
   return {
-    schema: 'cf-v2-arc5-app-state/v2',
+    schema: 'cf-v2-arc5-app-state/v3',
     stateKind: unavailable ? 'unavailable' : 'loaded',
     mode: unavailable ? null : source.mode,
     representationVersion: unavailable ? null : migration.representationVersion,
@@ -5787,6 +5922,7 @@ const appOwnershipV2State = (raw, {
     specimenLots: unavailable ? 0 : target.specimenLots.length,
     specimenTombstones: unavailable ? 0 : target.specimenTombstones.length,
     biospheres: unavailable ? 0 : source.biosphereProgress.length,
+    feed: appArc5FeedState(),
   };
 };
 

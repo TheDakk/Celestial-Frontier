@@ -5,7 +5,7 @@ import {
   SCENE_TEXTURE_KINDS,
   type SceneMemoryBudget,
   type SceneMemoryCycle,
-  type SceneMemoryInput,
+  type SceneMemoryCurrentInput as SceneMemoryInput,
   type SceneMemoryOutcome,
   type SceneMemoryPoint,
   type SceneRegistrySnapshot,
@@ -33,6 +33,8 @@ function budget(): SceneMemoryBudget {
     productRenderTargetsMax: 0,
     ringCacheEntriesMax: 0,
     peakRingGeometryEntriesMax: 10,
+    surfaceVistaCacheEntriesMax: 1,
+    surfaceVistaCachePixelsMax: 412_800,
     targetElapsedMsMax: 1_000,
     heartbeatElapsedMsMax: 1_000,
   };
@@ -114,6 +116,10 @@ function point(step: number, documentToken: string): SceneMemoryPoint {
     pending: 0,
     ringCacheEntries: 0,
     peakRingGeometryEntries: 10,
+    surfaceVistaWorkerActive: false,
+    surfaceVistaMounted: false,
+    surfaceVistaCacheEntries: 1,
+    surfaceVistaCachePixels: 412_800,
     answerability: {
       target: {
         ok: true,
@@ -160,7 +166,13 @@ function cycle(index: number, documentToken: string): SceneMemoryCycle {
         SCENE_MEMORY_ROUTES.map((route, routeIndex) => [route, routeIndex + 1]),
       ) as SceneMemoryCycle['inventory']['sceneObjectsByRoute'],
       fine: { requested: true, layer: true, scope: true },
-      surface: { mode: true, owner: true, scope: true },
+      surface: {
+        mode: true, owner: true, scope: true,
+        surfaceVistaWorkerActive: false,
+        surfaceVistaMounted: true,
+        surfaceVistaCacheEntries: 1,
+        surfaceVistaCachePixels: 412_800,
+      },
     },
   };
 }
@@ -169,6 +181,18 @@ function input(): SceneMemoryInput {
   const profile = (token: string) => {
     const cycles = [1, 2, 3, 4].map((index) => cycle(index, token));
     return {
+      initialVista: {
+        surfaceVistaWorkerActive: false,
+        surfaceVistaMounted: false,
+        surfaceVistaCacheEntries: 0,
+        surfaceVistaCachePixels: 0,
+      },
+      firstSurfaceVista: {
+        surfaceVistaWorkerActive: false,
+        surfaceVistaMounted: true,
+        surfaceVistaCacheEntries: 1,
+        surfaceVistaCachePixels: 412_800,
+      },
       precondition: point(0, token),
       cycles,
       bfcache: {
@@ -182,10 +206,48 @@ function input(): SceneMemoryInput {
         documentTokenBefore: token,
         documentTokenAfter: token,
       },
+      reloadCleanup: {
+        schema: 'cf-v2-scene-memory-reload-cleanup/v1' as const,
+        documentTokenBefore: token,
+        documentTokenAfter: `${token}-replacement`,
+        release: {
+          schema: 'cf-v2-reload-release/v1' as const,
+          status: 'released' as const,
+          error: null,
+          reason: 'save-import' as const,
+          documentToken: token,
+          rendererReleased: true,
+          stageReleased: true,
+          viewDetached: true,
+        },
+        cacheTransition: {
+          schema: 'cf-v2-scene-memory-vista-cache-transition/v1' as const,
+          documentToken: token,
+          before: {
+            surfaceVistaWorkerActive: false,
+            surfaceVistaMounted: false,
+            surfaceVistaCacheEntries: 1,
+            surfaceVistaCachePixels: 412_800,
+          },
+          after: {
+            surfaceVistaWorkerActive: false,
+            surfaceVistaMounted: false,
+            surfaceVistaCacheEntries: 0,
+            surfaceVistaCachePixels: 0,
+          },
+        },
+        replacement: {
+          documentToken: `${token}-replacement`,
+          surfaceVistaWorkerActive: false,
+          surfaceVistaMounted: false,
+          surfaceVistaCacheEntries: 0,
+          surfaceVistaCachePixels: 0,
+        },
+      },
     };
   };
   return {
-    schema: 'cf-v2-scene-memory-input/v3',
+    schema: 'cf-v2-scene-memory-input/v4',
     profiles: { phone: profile('phone-document'), desktop: profile('desktop-document') },
     budgets: { phone: budget(), desktop: budget() },
   };
@@ -214,7 +276,7 @@ describe('Arc 1C scene-memory contract', () => {
     const result = evaluateSceneMemory(input());
     expect(result.status).toBe('pass');
     expect(result.failures).toEqual([]);
-    expect(result.outcomes).toHaveLength(42);
+    expect(result.outcomes).toHaveLength(44);
   });
 
   it('rejects the superseded Arc 1B input schema before judging it', () => {
@@ -649,6 +711,126 @@ describe('Arc 1C scene-memory contract', () => {
     expect(resultFor(localResult, 'phone/diagnostic-resource-budget').message)
       .toContain('settled local canvas cache must be empty');
     expect(resultFor(localResult, 'phone/warm-resource-plateau').pass).toBe(true);
+  });
+
+  it('negative controls: surface vista owners must mount only on surface and release after ascent', () => {
+    const workerLeak = input();
+    const workerProfile = workerLeak.profiles.phone;
+    for (const measured of [
+      workerProfile.precondition, ...workerProfile.cycles, workerProfile.bfcache,
+    ]) measured.surfaceVistaWorkerActive = true;
+    const workerResult = evaluateSceneMemory(workerLeak);
+    expect(resultFor(workerResult, 'phone/surface-vista-lifecycle').message)
+      .toContain('worker remained active');
+    expect(resultFor(workerResult, 'phone/warm-resource-plateau').pass).toBe(true);
+
+    const mountLeak = input();
+    mountLeak.profiles.phone.cycles[0]!.surfaceVistaMounted = true;
+    const mountResult = evaluateSceneMemory(mountLeak);
+    expect(resultFor(mountResult, 'phone/surface-vista-lifecycle').message)
+      .toContain('mount state');
+    expect(resultFor(mountResult, 'phone/diagnostic-resource-budget').message)
+      .toContain('surface vista remained mounted after ascent');
+
+    const missingSurfaceMount = input();
+    missingSurfaceMount.profiles.phone.firstSurfaceVista.surfaceVistaMounted = false;
+    expect(resultFor(
+      evaluateSceneMemory(missingSurfaceMount), 'phone/surface-vista-lifecycle',
+    ).message).toContain('first surface: mount state');
+
+    const missingField = input();
+    delete (missingField.profiles.phone.precondition as Partial<SceneMemoryPoint>)
+      .surfaceVistaMounted;
+    expect(resultFor(
+      evaluateSceneMemory(missingField), 'phone/surface-vista-lifecycle',
+    ).message).toContain('precondition: mount state invalid');
+  });
+
+  it('negative controls: the one-entry/412800-pixel vista cache cannot grow or pass vacuously', () => {
+    const entries = input();
+    entries.profiles.phone.cycles[0]!.surfaceVistaCacheEntries = 2;
+    entries.profiles.phone.cycles[0]!.inventory.surface.surfaceVistaCacheEntries = 2;
+    expect(resultFor(evaluateSceneMemory(entries), 'phone/surface-vista-lifecycle').message)
+      .toContain('cache entries');
+
+    const pixels = input();
+    pixels.profiles.phone.firstSurfaceVista.surfaceVistaCachePixels = 412_801;
+    expect(resultFor(evaluateSceneMemory(pixels), 'phone/surface-vista-lifecycle').message)
+      .toContain('first surface: cache pixels');
+
+    const entryWithoutPixels = input();
+    entryWithoutPixels.profiles.phone.firstSurfaceVista.surfaceVistaCachePixels = 0;
+    expect(resultFor(
+      evaluateSceneMemory(entryWithoutPixels), 'phone/surface-vista-lifecycle',
+    ).message).toContain('first surface: cache pixels');
+
+    const pixelsWithoutEntry = input();
+    pixelsWithoutEntry.profiles.phone.firstSurfaceVista.surfaceVistaCacheEntries = 0;
+    expect(resultFor(
+      evaluateSceneMemory(pixelsWithoutEntry), 'phone/surface-vista-lifecycle',
+    ).message).toContain('first surface: cache entries');
+
+    const vacuous = input();
+    const vacuousProfile = vacuous.profiles.phone;
+    vacuousProfile.firstSurfaceVista.surfaceVistaCacheEntries = 0;
+    vacuousProfile.firstSurfaceVista.surfaceVistaCachePixels = 0;
+    for (const measured of [
+      vacuousProfile.precondition, ...vacuousProfile.cycles, vacuousProfile.bfcache,
+    ]) {
+      measured.surfaceVistaCacheEntries = 0;
+      measured.surfaceVistaCachePixels = 0;
+    }
+    for (const measured of vacuousProfile.cycles) {
+      measured.inventory.surface.surfaceVistaCacheEntries = 0;
+      measured.inventory.surface.surfaceVistaCachePixels = 0;
+    }
+    vacuousProfile.reloadCleanup.cacheTransition.before.surfaceVistaCacheEntries = 0;
+    vacuousProfile.reloadCleanup.cacheTransition.before.surfaceVistaCachePixels = 0;
+    const vacuousResult = evaluateSceneMemory(vacuous);
+    expect(resultFor(vacuousResult, 'phone/surface-vista-lifecycle').pass).toBe(false);
+    expect(resultFor(vacuousResult, 'phone/warm-resource-plateau').pass).toBe(true);
+    expect(resultFor(vacuousResult, 'phone/bfcache-survival').pass).toBe(true);
+
+    const widened = input();
+    widened.budgets.phone.surfaceVistaCacheEntriesMax = 2;
+    expect(() => evaluateSceneMemory(widened)).toThrow(
+      'surface-vista semantic budget must remain exactly 1 entry / 412800 pixels',
+    );
+  });
+
+  it('negative controls: reload cleanup must bind the positive-to-zero transition and fresh zero', () => {
+    const retained = input();
+    const cleanup = retained.profiles.phone.reloadCleanup;
+    cleanup.cacheTransition.after.surfaceVistaCacheEntries = 1;
+    cleanup.cacheTransition.after.surfaceVistaCachePixels = 412_800;
+    cleanup.replacement.surfaceVistaCacheEntries = 1;
+    cleanup.replacement.surfaceVistaCachePixels = 412_800;
+    const retainedResult = evaluateSceneMemory(retained);
+    expect(resultFor(retainedResult, 'phone/surface-vista-lifecycle').message)
+      .toContain('reload cleanup after: cache entries');
+    expect(resultFor(retainedResult, 'phone/surface-vista-lifecycle').message)
+      .toContain('reload cleanup replacement: cache entries');
+
+    const coldWasNotZero = input();
+    coldWasNotZero.profiles.phone.initialVista.surfaceVistaCacheEntries = 1;
+    coldWasNotZero.profiles.phone.initialVista.surfaceVistaCachePixels = 412_800;
+    expect(resultFor(
+      evaluateSceneMemory(coldWasNotZero), 'phone/surface-vista-lifecycle',
+    ).message).toContain('initial universe: cache entries');
+  });
+
+  it('negative controls: vista pixels participate in warm and bfcache structural signatures', () => {
+    const warmDrift = input();
+    warmDrift.profiles.phone.cycles[1]!.surfaceVistaCachePixels = 412_799;
+    const warmResult = evaluateSceneMemory(warmDrift);
+    expect(resultFor(warmResult, 'phone/surface-vista-lifecycle').pass).toBe(true);
+    expect(resultFor(warmResult, 'phone/warm-resource-plateau').pass).toBe(false);
+
+    const bfcacheDrift = input();
+    bfcacheDrift.profiles.phone.bfcache.surfaceVistaCachePixels = 412_799;
+    const bfcacheResult = evaluateSceneMemory(bfcacheDrift);
+    expect(resultFor(bfcacheResult, 'phone/surface-vista-lifecycle').pass).toBe(true);
+    expect(resultFor(bfcacheResult, 'phone/bfcache-survival').pass).toBe(false);
   });
 
   it('negative controls: evicted current caches cannot hide an over-budget window peak', () => {

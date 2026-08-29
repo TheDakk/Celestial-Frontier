@@ -14,6 +14,7 @@ import {
   createSpeciesCanvas,
   type ArtCanvas,
 } from './speciescanvas.js';
+import { polishSpeciesCanvasV1 } from './surface-polish.js';
 
 export const SPECIES_PORTRAIT_SIZE = 440 as const;
 export const SPECIES_THUMB_SIZE = 132 as const;
@@ -33,7 +34,7 @@ export function renderSpeciesPortraitCanvas(genome: Record<string, unknown>): Ar
       `species portrait canvas must be ${SPECIES_PORTRAIT_SIZE}x${SPECIES_PORTRAIT_SIZE}`,
     );
   }
-  return canvas;
+  return polishSpeciesCanvasV1(canvas) as ArtCanvas;
 }
 
 export function renderSpeciesThumbCanvas(genome: Record<string, unknown>): ArtCanvas {

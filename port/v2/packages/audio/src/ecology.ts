@@ -16,6 +16,14 @@ import {
   type AudioKingdom,
   type AudioPalettePolicy,
 } from './taxonomy.js';
+import {
+  BIOME_PROFILE_AUTHORITY_V1,
+  BIOME_PROFILE_KEYS_V1,
+  type BiomeProfileDigestV1,
+  type BiomeProfileHazardV1,
+  type BiomeProfileKeyV1,
+  type BiomeProfileWeatherV1,
+} from '@cf/domain-biome-profile';
 
 export type SurfacedEcologySource = 'approach-lead' | 'survey-roster';
 export type EcologyHintGranularity = 'biosphere' | 'kingdom' | 'family' | 'species';
@@ -49,6 +57,11 @@ export type SurfacedEcologyProjection =
 
 export interface DistantEcologyHintInput {
   readonly canonicalWorldKey: string;
+  readonly biomeProfile: Readonly<{
+    readonly schema: typeof BIOME_PROFILE_AUTHORITY_V1.schema;
+    readonly digest: BiomeProfileDigestV1;
+    readonly key: BiomeProfileKeyV1;
+  }>;
   readonly surfaced: SurfacedEcologyProjection;
 }
 
@@ -56,6 +69,11 @@ export interface DistantEcologyHintPlan {
   readonly version: typeof AUDIO_RESOLVER_VERSION;
   readonly planId: string;
   readonly canonicalWorldKey: string;
+  readonly biomeProfileSchema: typeof BIOME_PROFILE_AUTHORITY_V1.schema;
+  readonly biomeProfileDigest: BiomeProfileDigestV1;
+  readonly biomeProfileKey: BiomeProfileKeyV1;
+  readonly biomeWeather: BiomeProfileWeatherV1;
+  readonly biomeHazard: BiomeProfileHazardV1 | null;
   readonly evidenceKey: string;
   readonly source: SurfacedEcologySource;
   readonly granularity: EcologyHintGranularity;
@@ -95,15 +113,43 @@ function kingdom(value: unknown): AudioKingdom {
   return value;
 }
 
+function canonicalBiomeProfile(
+  value: DistantEcologyHintInput['biomeProfile'],
+): Readonly<{
+  schema: typeof BIOME_PROFILE_AUTHORITY_V1.schema;
+  digest: BiomeProfileDigestV1;
+  key: BiomeProfileKeyV1;
+  weather: BiomeProfileWeatherV1;
+  hazard: BiomeProfileHazardV1 | null;
+}> {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)
+    || !hasExactKeys(value, ['schema', 'digest', 'key'])
+    || value.schema !== BIOME_PROFILE_AUTHORITY_V1.schema
+    || value.digest !== BIOME_PROFILE_AUTHORITY_V1.digest
+    || !BIOME_PROFILE_KEYS_V1.includes(value.key as BiomeProfileKeyV1)) {
+    throw new TypeError('distant ecology biome profile authority is stale or invalid');
+  }
+  const key = value.key as BiomeProfileKeyV1;
+  const profile = BIOME_PROFILE_AUTHORITY_V1.profiles[key];
+  return Object.freeze({
+    schema: BIOME_PROFILE_AUTHORITY_V1.schema,
+    digest: BIOME_PROFILE_AUTHORITY_V1.digest,
+    key,
+    weather: profile.weather,
+    hazard: profile.hazard,
+  });
+}
+
 /** Build a presentation-only plan from the exact evidence the visual owner has
  * already surfaced. Species granularity requires the matching signature. */
 export function createDistantEcologyHintPlan(input: DistantEcologyHintInput): DistantEcologyHintPlan {
   if (input === null || typeof input !== 'object' || input.surfaced === null
     || typeof input.surfaced !== 'object'
-    || !hasExactKeys(input, ['canonicalWorldKey', 'surfaced'])) {
+    || !hasExactKeys(input, ['canonicalWorldKey', 'biomeProfile', 'surfaced'])) {
     throw new TypeError('distant ecology input is required');
   }
   const canonicalWorldKey = boundedAudioKey(input.canonicalWorldKey, 'canonical world key', 192);
+  const biome = canonicalBiomeProfile(input.biomeProfile);
   const evidenceKey = boundedAudioKey(input.surfaced.evidenceKey, 'surfaced evidence key', 192);
   const surfacedSource = source(input.surfaced.source);
   const granularity = input.surfaced.granularity;
@@ -155,13 +201,20 @@ export function createDistantEcologyHintPlan(input: DistantEcologyHintInput): Di
     ? 'creature' as const
     : 'ambience' as const;
   const key = JSON.stringify([
-    AUDIO_RESOLVER_VERSION, canonicalWorldKey, evidenceKey, surfacedSource,
+    AUDIO_RESOLVER_VERSION, canonicalWorldKey,
+    biome.schema, biome.digest, biome.key, biome.weather, biome.hazard,
+    evidenceKey, surfacedSource,
     granularity, resolvedKingdom, familyKey, identityKey,
   ]);
   return Object.freeze({
     version: AUDIO_RESOLVER_VERSION,
     planId: `deh1-${hex32(audioHash32(key, 0xEC010))}${hex32(audioHash32(key, 0xEC011))}`,
     canonicalWorldKey,
+    biomeProfileSchema: biome.schema,
+    biomeProfileDigest: biome.digest,
+    biomeProfileKey: biome.key,
+    biomeWeather: biome.weather,
+    biomeHazard: biome.hazard,
     evidenceKey,
     source: surfacedSource,
     granularity,

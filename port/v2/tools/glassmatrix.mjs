@@ -1083,7 +1083,7 @@ function arc5OwnershipV2SelftestState(evidence) {
   const migration = projectArc5OwnershipMigrationEvidence(evidence);
   if (migration === null) return null;
   return {
-    schema: 'cf-v2-arc5-app-state/v2',
+    schema: 'cf-v2-arc5-app-state/v3',
     stateKind: 'loaded',
     mode: migration.source.mode,
     representationVersion: migration.representationVersion,
@@ -1106,6 +1106,46 @@ function arc5OwnershipV2SelftestState(evidence) {
     specimenLots: migration.targetMirror.specimenLots.length,
     specimenTombstones: migration.targetMirror.specimenTombstones.length,
     biospheres: migration.source.biosphereProgress.length,
+    feed: {
+      lastOutcome: null,
+      lastResult: null,
+      controller: {
+        schema: 'cf-v2-compendium-feed-diagnostics/v1',
+        attachedMountCount: 0,
+        retainedDomCount: 0,
+        pendingWork: 0,
+        convergenceLatched: false,
+        delegatedListenerCount: 2,
+        actionControlCount: 0,
+        radioControlCount: 0,
+        surfaceKey: null,
+        contextKey: null,
+        selectedCreatureId: null,
+        selectedFoodLotId: null,
+        lastRequest: null,
+        lastOutcome: null,
+      },
+      actionCoordinator: {
+        inFlight: false,
+        owner: {
+          schema: 'cf-v2-product-action-coordinator-diagnostics/v1',
+          busy: false,
+          operation: null,
+        },
+        hold: {
+          schema: 'cf-v2-product-action-hold-diagnostics/v1',
+          phase: 'idle',
+          operation: null,
+          sequence: 0,
+        },
+        faultArmed: {
+          storageFailure: false,
+          staleAuthority: false,
+          publicationFailure: false,
+        },
+        lastFault: null,
+      },
+    },
   };
 }
 
@@ -4845,7 +4885,7 @@ async function reportSelftest() {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: toast anchor exact-byte restore controls failed (${JSON.stringify(toastAnchorRestoration)})`);
   }
   const guideNeedle = 'up to 1,500 logical entries';
-  const guideCarrier = `read-only Compendium presents ${guideNeedle}`;
+  const guideCarrier = `Compendium presents ${guideNeedle}`;
   const guideBefore = `The ${guideCarrier} while Search filters those saved records.`;
   const guideAfter = guideBefore.replace(guideNeedle, 'a bounded set of logical entries');
   const guideRejected = {
@@ -10007,7 +10047,7 @@ async function main() {
              sealed outcome or negative-control inventories. */
           const renderedGuideIngress = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),input=document.getElementById('guidesearch'),rows=[];
             const guideRequiredControlRejected=${guideRequiredControlRejected.toString()};
-            const probeNeedle='up to 1,500 logical entries',probeCarrier='read-only Compendium presents '+probeNeedle,
+            const probeNeedle='up to 1,500 logical entries',probeCarrier='Compendium presents '+probeNeedle,
               probeBefore='The '+probeCarrier+'.',probeAfter=probeBefore.replace(probeNeedle,'a bounded set of logical entries'),
               probeResult={ok:false,missing:[probeCarrier],text:probeAfter};
             const predicateControls={
@@ -10030,8 +10070,9 @@ async function main() {
               {id:'stardust',paragraph:1,required:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','result shows the exact amount','A miss and every later-world or later-cycle repeat earn none','No other current v2 action earns Stardust'],requiredControls:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','A miss and every later-world or later-cycle repeat earn none'],forbidden:['Every Legendary capture earns Stardust','A repeat find earns another Rare Find Stardust bonus','A miss can earn Stardust'],stale:'Every Legendary capture earns Stardust, a repeat find earns another Rare Find Stardust bonus, and a miss can earn Stardust.',contradictions:['Every Legendary capture earns Stardust.','A repeat find earns another Rare Find Stardust bonus.','A miss can earn Stardust.']},
               {id:'charters',paragraph:1,required:['Planetside capture is separate and never banks the Charter’s bioscan milestone','that milestone, conquest, and breeding goals stay hidden and unavailable until their writers exist'],requiredControls:['Planetside capture is separate and never banks the Charter’s bioscan milestone','that milestone, conquest, and breeding goals stay hidden and unavailable until their writers exist'],forbidden:['Capture banks the Charter bioscan milestone','Capture completes the bioscan Charter goal'],stale:'Capture banks the Charter bioscan milestone and completes the bioscan Charter goal.',contradictions:['Capture banks the Charter bioscan milestone.','Capture completes the bioscan Charter goal.']},
               {id:'ascent',paragraph:2,required:['Planetside capture never banks the Charter’s separate bioscan milestone','that writer, conquest, and breeding milestones remain unavailable'],requiredControls:['Planetside capture never banks the Charter’s separate bioscan milestone','that writer, conquest, and breeding milestones remain unavailable'],forbidden:['Capture banks the Charter bioscan milestone','Capture advances Ascent bioscan'],stale:'Capture banks the Charter bioscan milestone and advances Ascent bioscan.',contradictions:['Capture banks the Charter bioscan milestone.','Capture advances Ascent bioscan.']},
-              {id:'kingdoms',required:['read-only Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Compendium itself remains a read-only browser','successful first Planetside capture can add one page','Tame also adds an owned fauna creature','Scavenge and Sample add specimen lots','Later-world or later-cycle successes add another creature or lot without duplicating the page','Feeding, breeding, husbandry, renaming, and other Compendium-row actions remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Choose a Compendium row to capture that species','Planetside preview row is the capture target'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.']},
-              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','profile remains read-only','Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row','Tame hit adds one owned fauna creature','Scavenge or Sample adds one specimen lot and never a living companion','Feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry remain unavailable'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Choose a Compendium row to capture that species','Planetside preview row is the capture target'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.']},
+              {id:'kingdoms',required:['Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Browsing and non-fauna details remain read-only','successful first Planetside capture can add one page','Tame also adds an owned fauna creature','Scavenge and Sample add specimen lots','Later-world or later-cycle successes add another creature or lot without duplicating the page','real fauna detail alone exposes the narrow Feed action','breeding, renaming, scouting, dueling, missions, and every broader husbandry outcome remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Every Compendium detail offers Feed'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Every Compendium detail offers Feed.']},
+              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','Back and Close both remain available around feeding','Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row','Tame hit adds one owned fauna creature','Scavenge or Sample adds one specimen lot and never a living companion','Only a real fauna detail offers Feed','one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot','Identical same-species twins remain separate exact instances','Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Assigned companions can still be fed'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Assigned companions can still be fed.']},
+              {id:'feeding',paragraph:1,required:['real fauna Compendium detail','Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot','Use 1','Same-species twins remain separate exact instances','Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why','Meals by 1, capped at 200','removes 1 flora from that exact lot','final unit empties that exact lot','one immutable receipt and one compare-and-swap save transaction','no retry and no optimistic inventory or Meals change','refusal, stale result, or failed write uses and publishes nothing','requires reload and cannot feed twice','trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status','one deterministic synthesized acknowledgement after that status appears','Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent','Back and Close remain available','tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable'],requiredControls:['Meals by 1, capped at 200','removes 1 flora from that exact lot','final unit empties that exact lot','one immutable receipt and one compare-and-swap save transaction','no retry and no optimistic inventory or Meals change','requires reload and cannot feed twice'],forbidden:['Assigned companions can still be fed','The meal automatically retries after a stale result','Stats are now increased by feeding','Meals can rise above 200','Every Compendium detail offers Feed'],stale:'One ordinary save updates the selected meal.',contradictions:['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.','Meals can rise above 200.','Every Compendium detail offers Feed.']},
               {id:'research',paragraph:2,required:['Engineering & Shipyard combines the capability-derived ship preview','Research Bench lists exactly six canonical rows','Deep Scanners is the only current purchase','adds a bounded Mineral veins row to eligible orbital Survey cards','Orbit shows only the ordered ordinary deposits plus a separately marked biome vein','cosmic and exceptional veins, grades, reserves and progress, and mining remain grounded','other five','visible but disabled','Fabricator groups all 62 fixed recipes','exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable','Only one Engineering action can be pending','receipt-bearing transaction commits'],requiredControls:['exposes an action only when its output has a connected gameplay effect','Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable'],forbidden:['current Survey card does not yet render those orbital rows','All six research rows can be purchased','Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available','Orbit now shows cosmic and exceptional veins'],stale:'The Shipyard is read-only in this development slice, and fabrication, Research Bench purchases, and upgrades remain unavailable.',contradictions:['The current Survey card does not yet render those orbital rows.','All six research rows can be purchased.','Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.','Orbit now shows cosmic and exceptional veins.']},
               {id:'crafting',paragraph:2,required:['Inventory is a separate board','stable item instance','Equip, Unequip, Salvage, and pending-reward claim','Engineering & Shipyard → Fabricator','lists all 62 fixed recipes','can settle only rows whose output has a connected effect','Outputs with dormant effects','fully exceptional slotted crafting','authored affixes/drawbacks','item upgrades, sockets, and vendors remain unavailable'],requiredControls:['can settle only rows whose output has a connected effect','item upgrades, sockets, and vendors remain unavailable'],forbidden:['Fully exceptional slotted crafting is now available','Fully-exceptional slotted craft is now available','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'Inventory exposes only the imported Equip, Unequip, Salvage, and reward-claim actions; Fabricator recipes are not available in this slice.',contradictions:['Fully exceptional slotted crafting is now available.','Fully-exceptional slotted craft is now available.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
               {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
@@ -10111,13 +10152,14 @@ async function main() {
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
-          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=55;
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=64;
           const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
             worldCode=bulletNodes.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
             atlasRoute=bulletNodes.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
             capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
+            meal=bulletNodes.find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||'')),
             training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
             lesson=bulletNodes.find((item)=>/A LESSON OWNS ITS ESCAPE KEY/.test(item.textContent||'')),
             art=bulletNodes.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
@@ -10127,9 +10169,9 @@ async function main() {
             shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
             hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
             headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
-            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),captureHeading=headingFor(capture),trainingHeading=headingFor(training),lessonHeading=headingFor(lesson),artHeading=headingFor(art),
+            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),captureHeading=headingFor(capture),mealHeading=headingFor(meal),trainingHeading=headingFor(training),lessonHeading=headingFor(lesson),artHeading=headingFor(art),
             shipyardHeading=headingFor(shipyard),hdSurfaceHeading=headingFor(hdSurface),
-            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',
+            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',mealText=meal?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',
             shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
             charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
             ingressPlacement=!!worldCode&&!!atlasRoute&&worldCode!==atlasRoute&&worldCodeHeading==='Gameplay'&&atlasRouteHeading==='Gameplay',
@@ -10165,8 +10207,33 @@ async function main() {
               &&captureText.includes('a miss adds none of them')
               &&captureText.includes('Scavenge and Sample never create living companions')
               &&captureText.includes('Capture never banks the Charter’s separate bioscan milestone')
-              &&captureText.includes('Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
+              &&captureText.includes('Narrow feeding is available from a real fauna Compendium detail')
+              &&captureText.includes('breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
               &&!captureContradiction,
+            mealContradiction=/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(mealText)
+              ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(mealText)
+              ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(mealText)
+              ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(mealText)
+              ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(mealText)
+              ||/Meals can rise above 200/i.test(mealText)
+              ||/Every Compendium detail offers Feed/i.test(mealText),
+            mealContract=mealHeading==='Gameplay'
+              &&mealText.includes('real fauna Compendium detail')
+              &&mealText.includes('one exact unassigned owned companion below the 200-Meal cap')
+              &&mealText.includes('one exact owned flora lot through Use 1')
+              &&mealText.includes('Same-species twins remain separate exact instances')
+              &&mealText.includes('assigned, recovering, and capped companions stay disabled and explain why')
+              &&mealText.includes('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora')
+              &&mealText.includes('emptying that exact lot on its final unit')
+              &&mealText.includes('no retry or optimistic change')
+              &&mealText.includes('Back and Close remain available')
+              &&mealText.includes('Refused, stale, and failed writes use and publish nothing')
+              &&mealText.includes('requires reload and cannot feed twice')
+              &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
+              &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
+              &&mealText.includes('Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent')
+              &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable')
+              &&!mealContradiction,
             lessonContradiction=/(?:wrong-world detour|Escape)[^.!?]{0,120}(?:abandons? Sol|abandons? (?:the )?lesson|keeps? the detour open)/i.test(lessonText),
             lessonContract=lessonHeading==='Bug Fixes'
               &&lessonText.includes('If Survey is rebuilt while a lesson owns it, the new Land and Atlas actions inherit the same keyboard, focus, and pointer scope before they can answer')
@@ -10183,7 +10250,8 @@ async function main() {
               ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:close|dismiss|continue|keep playing|keep exploring)/i.test(trainingText)
               ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i.test(trainingText),
             trainingContract=trainingHeading==='Gameplay'
-              &&trainingText.includes('Finish for now that points to live Engineering & Shipyard and Planetside capture')
+              &&trainingText.includes('Finish for now that points to live Engineering & Shipyard, Planetside capture, and narrow real-fauna Compendium Feed')
+              &&trainingText.includes('without pretending the navigation drill performs any of those actions')
               &&trainingText.includes('A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view')
               &&trainingText.includes('if verification pauses, that exact view stays saved')
               &&trainingText.includes('when Sol can still be verified, Training returns there')
@@ -10269,13 +10337,20 @@ async function main() {
             ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/(?:biosphere discovery|Discover Life|breeding|conquest|creature combat)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
+            ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
+            ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
+            ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
+            ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
+            ||/Meals can rise above 200/i.test(text)
+            ||/Every Compendium detail offers Feed/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
-          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!captureContradiction&&!lessonContradiction&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!publishingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
+          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!captureContradiction&&!mealContradiction&&!lessonContradiction&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!publishingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
             &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===expectedBulletCount&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
-            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&lessonContract&&trainingContract&&artContract
+            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&mealContract&&lessonContract&&trainingContract&&artContract
             &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract&&publishingContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
@@ -10287,13 +10362,13 @@ async function main() {
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
             identity,honest,overclaim,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
             charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
-            worldCodeContract,atlasRouteContract,captureHeading,captureContract,captureContradiction,lessonHeading,lessonContract,lessonContradiction,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
+            worldCodeContract,atlasRouteContract,captureHeading,captureContract,captureContradiction,mealHeading,mealContract,mealContradiction,lessonHeading,lessonContract,lessonContradiction,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
             workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,hdSurfaceHeading,hdSurfaceContract,
             publishingHeading,publishingContract,publishingContradiction,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 55-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 64-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits, narrow real-fauna Compendium Feed, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -10306,6 +10381,7 @@ async function main() {
               worldCode=items.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
               atlasRoute=items.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
               capture=items.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
+              meal=items.find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||'')),
               training=items.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
               lesson=items.find((item)=>/A LESSON OWNS ITS ESCAPE KEY/.test(item.textContent||'')),
               art=items.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
@@ -10315,26 +10391,26 @@ async function main() {
               shipyard=items.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
               hdSurface=items.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
               publishing=items.find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||'')),
-              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
+              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',captureText=capture?.textContent||'',mealText=meal?.textContent||'',trainingText=training?.textContent||'',lessonText=lesson?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
               shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',publishingText=publishing?.textContent||'',
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
               artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
               coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
-            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],lessonStale=null,lessonContradictory=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,publishingStale=null,publishingContradictory=null,publishingLiveProductionContradictory=null,publishingPassiveContradictory=null,publishingVariantContradictions=[],publishingCrossRowContradictory=null,publishingRestored=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,lessonStaleChanged=false,lessonContradictionChanged=false,hdSurfaceChanged=false,publishingChanged=false,publishingContradictionChanged=false,publishingLiveProductionChanged=false,publishingPassiveChanged=false,publishingVariantsChanged=true,publishingCrossRowChanged=false;
+            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],mealMissing=null,mealContradictions=[],lessonStale=null,lessonContradictory=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,publishingStale=null,publishingContradictory=null,publishingLiveProductionContradictory=null,publishingPassiveContradictory=null,publishingVariantContradictions=[],publishingCrossRowContradictory=null,publishingRestored=null,artContradictory=null,authority=null,error=null,mealMissingChanged=false,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,lessonStaleChanged=false,lessonContradictionChanged=false,hdSurfaceChanged=false,publishingChanged=false,publishingContradictionChanged=false,publishingLiveProductionChanged=false,publishingPassiveChanged=false,publishingVariantsChanged=true,publishingCrossRowChanged=false;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!lesson||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!publishing||!recoveryParent)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!meal||!lesson||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!publishing||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
               title.textContent=titleText.replace('v2.0','v2x0');identity=${developmentDetailCheck};title.textContent=titleText;
-              for(const copy of ['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Exploration audio is now live.','Capture is now playable.']){
+              for(const copy of ['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Exploration audio is now live.','Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.']){
                 claim.textContent=claimText+' '+copy;truthfulFeatureClaims.push({copy,result:${developmentDetailCheck}});
               }
               for(const copy of ['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
                 'Disconnected Fabricator outputs are now playable.','Fully-exceptional slotted craft is now playable.',
                 'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Item upgrades are now live.',
                 'Sockets are now available.','Vendors are now live.','Discover Life is now playable.',
-                'Breeding is now playable.','Creature combat is now playable.']){
+                'Breeding is now playable.','Creature combat is now playable.','Feeding is now playable.']){
                 claim.textContent=claimText+' '+copy;unavailableFeatureClaims.push({copy,result:${developmentDetailCheck}});
               }claim.textContent=claimText;
               panelBoundary.textContent=panelBoundaryText.replace('exactly one 44-pixel top-right Close action','Close-action outcome removed');
@@ -10372,6 +10448,19 @@ async function main() {
               ]){
                 capture.textContent=captureText+' '+copy;captureContradictions.push({copy,result:${developmentDetailCheck}});
                 capture.textContent=captureText;
+              }
+              meal.textContent=mealText.replace('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora','meal authority removed');
+              mealMissingChanged=meal.textContent!==mealText;mealMissing=${developmentDetailCheck};meal.textContent=mealText;
+              for(const copy of [
+                'Assigned companions can still be fed.',
+                'The meal automatically retries after a stale result.',
+                'Stats are now increased by feeding.',
+                'Meals can rise above 200.',
+                'Every Compendium detail offers Feed.',
+                'Feeding is now playable.',
+              ]){
+                meal.textContent=mealText+' '+copy;mealContradictions.push({copy,result:${developmentDetailCheck}});
+                meal.textContent=mealText;
               }
               lesson.textContent=lessonText.replace('A wrong-world detour keeps only its real Close available, and Escape dismisses it without abandoning Sol or the lesson','wrong-world Escape outcome omitted');lessonStaleChanged=lesson.textContent!==lessonText;
               lessonStale=${developmentDetailCheck};lesson.textContent=lessonText;
@@ -10454,7 +10543,7 @@ async function main() {
               if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;
               if(panelBoundary)panelBoundary.textContent=panelBoundaryText;
               if(first)first.textContent=firstText;if(recovery){recovery.textContent=recoveryText;if(recoveryParent&&recovery.parentNode!==recoveryParent)recoveryParent.insertBefore(recovery,recoveryNext);}
-              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(capture)capture.textContent=captureText;if(lesson)lesson.textContent=lessonText;if(training)training.textContent=trainingText;
+              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(capture)capture.textContent=captureText;if(meal)meal.textContent=mealText;if(lesson)lesson.textContent=lessonText;if(training)training.textContent=trainingText;
               if(art){art.textContent=artText;if(artParent&&art.parentNode!==artParent)artParent.insertBefore(art,artNext);}
               if(workspace){workspace.textContent=workspaceText;if(workspaceParent&&workspace.parentNode!==workspaceParent)workspaceParent.insertBefore(workspace,workspaceNext);}
               if(coldArt){coldArt.textContent=coldArtText;if(coldArtParent&&coldArt.parentNode!==coldArtParent)coldArtParent.insertBefore(coldArt,coldArtNext);}
@@ -10464,17 +10553,17 @@ async function main() {
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
               &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
               &&panelBoundary?.textContent===panelBoundaryText&&recovery?.textContent===recoveryText
-              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&capture?.textContent===captureText&&lesson?.textContent===lessonText&&training?.textContent===trainingText&&art?.textContent===artText
+              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&capture?.textContent===captureText&&meal?.textContent===mealText&&lesson?.textContent===lessonText&&training?.textContent===trainingText&&art?.textContent===artText
               &&art?.parentNode===artParent&&art?.nextSibling===artNext
               &&workspace?.textContent===workspaceText&&workspace?.parentNode===workspaceParent&&workspace?.nextSibling===workspaceNext
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&publishing?.textContent===publishingText&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===54
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===63
               &&identity?.ok===false&&identity?.identity===false
-              &&truthfulFeatureClaims.length===4
+              &&truthfulFeatureClaims.length===5
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)
-              &&unavailableFeatureClaims.length===12
+              &&unavailableFeatureClaims.length===13
               &&unavailableFeatureClaims.every((row)=>row.result?.ok===false&&row.result?.honest===false&&row.result?.overclaim===true)
               &&closeContract?.ok===false&&panelBoundaryContract?.ok===false&&emptySkyContract?.ok===false
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
@@ -10487,6 +10576,11 @@ async function main() {
               &&captureContradictions.length===6
               &&captureContradictions.every((row)=>row.result?.ok===false&&row.result?.captureContract===false
                 &&row.result?.captureContradiction===true&&row.result?.honest===false)
+              &&mealMissingChanged&&mealMissing?.ok===false&&mealMissing?.mealContract===false
+                &&mealMissing?.mealContradiction===false&&mealMissing?.honest===true
+              &&mealContradictions.length===6
+              &&mealContradictions.every((row)=>row.result?.ok===false&&row.result?.mealContract===false
+                &&row.result?.mealContradiction===true&&row.result?.honest===false&&row.result?.overclaim===true)
               &&lessonStaleChanged&&lessonStale?.ok===false&&lessonStale?.lessonContract===false&&lessonStale?.lessonContradiction===false
               &&lessonContradictionChanged&&lessonContradictory?.ok===false&&lessonContradictory?.lessonContract===false
                 &&lessonContradictory?.lessonContradiction===true&&lessonContradictory?.honest===false
@@ -10543,7 +10637,7 @@ async function main() {
                 &&publishingRestored?.publishingContradiction===false&&publishingRestored?.honest===true
               &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,captureLimitControls,captureContradictions,lessonStaleChanged,lessonStale,lessonContradictionChanged,lessonContradictory,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
+              order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,captureLimitControls,captureContradictions,mealMissingChanged,mealMissing,mealContradictions,lessonStaleChanged,lessonStale,lessonContradictionChanged,lessonContradictory,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
               artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
               workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
               workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,

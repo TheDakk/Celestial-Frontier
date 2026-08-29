@@ -363,7 +363,7 @@ function captureErrors(source: string): string[] {
 function diagnosticErrors(source: string): string[] {
   const errors: string[] = [];
   for (const needle of [
-    "schema: 'cf-v2-arc5-app-state/v2'",
+    "schema: 'cf-v2-arc5-app-state/v3'",
     "stateKind: arc5OwnershipState === null ? 'unavailable' : 'loaded'",
     'representationVersion: arc5OwnershipEvidence?.representationVersion ?? null,',
     'protection: arc5OwnershipProtection,',
@@ -949,7 +949,7 @@ describe('Arc 5 Main authority wiring', () => {
 
   it('negative-controls the public diagnostic carrier', () => {
     const mutant = mainSource.replace(
-      "schema: 'cf-v2-arc5-app-state/v2'",
+      "schema: 'cf-v2-arc5-app-state/v3'",
       "schema: 'cf-v2-arc5-app-state/broken'",
     );
     expect(mutant).not.toBe(mainSource);

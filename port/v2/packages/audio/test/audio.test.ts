@@ -67,6 +67,9 @@ interface AudioLog {
   bufferStarts: number;
   bufferStops: number;
   filters: number;
+  destinations: unknown[];
+  oscillators: unknown[];
+  connections: Array<readonly [unknown, unknown]>;
 }
 
 function audioLog(): AudioLog {
@@ -84,7 +87,27 @@ function audioLog(): AudioLog {
     bufferStarts: 0,
     bufferStops: 0,
     filters: 0,
+    destinations: [],
+    oscillators: [],
+    connections: [],
   };
+}
+
+function graphReaches(
+  start: unknown,
+  destination: unknown,
+  connections: ReadonlyArray<readonly [unknown, unknown]>,
+): boolean {
+  const queue = [start];
+  const seen = new Set<unknown>();
+  while (queue.length > 0) {
+    const node = queue.shift();
+    if (node === destination) return true;
+    if (seen.has(node)) continue;
+    seen.add(node);
+    for (const [from, to] of connections) if (from === node) queue.push(to);
+  }
+  return false;
 }
 
 interface ContextOptions {
@@ -112,6 +135,7 @@ function contextConstructor(
 
     constructor() {
       log.contexts++;
+      log.destinations.push(this.destination);
       log.stateSetters.push((state) => { this.state = state; });
     }
 
@@ -159,22 +183,31 @@ function contextConstructor(
     createGain(): GainNode {
       const gain = new FakeAudioParam(log);
       log.gainParams.push(gain);
-      return {
+      const node = {
         gain,
         context: this,
-        connect: (target: unknown) => target,
-      } as unknown as GainNode;
+        connect: (target: unknown) => {
+          log.connections.push([node, target]);
+          return target;
+        },
+      };
+      return node as unknown as GainNode;
     }
 
     createOscillator(): OscillatorNode {
-      return {
+      const node = {
         type: 'sine',
         frequency: new FakeAudioParam(),
         detune: new FakeAudioParam(),
-        connect: (target: unknown) => target,
+        connect: (target: unknown) => {
+          log.connections.push([node, target]);
+          return target;
+        },
         start: () => { log.oscillatorStarts++; },
         stop: () => { log.oscillatorStops++; },
-      } as unknown as OscillatorNode;
+      };
+      log.oscillators.push(node);
+      return node as unknown as OscillatorNode;
     }
 
     createBuffer(_channels: number, length: number): AudioBuffer {
@@ -213,7 +246,7 @@ function throwingConstructor(attempts: { count: number }): TestAudioContextConst
 }
 
 describe('@cf/audio — bounded sting facade', () => {
-  it('reproduces the raw pre-init defect while all four non-initializer public operations stay inert', async () => {
+  it('reproduces the raw pre-init defect while all five non-initializer public operations stay inert', async () => {
     const raw = await import('../src/stings.verbatim.js');
     expect(() => raw.playSurveyPing()).toThrow(ReferenceError);
 
@@ -248,11 +281,11 @@ describe('@cf/audio — bounded sting facade', () => {
       'captureAudioLabSample',
       'createAudioIdentityProfile', 'createAudioRuntime', 'createAudioSignature',
       'createAudioSoundOutputWitness', 'createCreatureCallPlan',
-      'createCreatureExpressionCue', 'createCreatureExpressionVoiceRequest', 'createDistantEcologyHintPlan',
+      'createCreatureExpressionCue', 'createCreatureExpressionVoiceRequest',
       'creatureExpressionAudioEvent', 'deserializeAudioSignature',
       'distantEcologyAudioEvent', 'initAudio', 'inspectAudioStaticPurity',
       'isAudioKingdom', 'playRaritySting',
-      'playSurveyPing', 'playWhoosh', 'serializeAudioSignature',
+      'playSurveyPing', 'playWhoosh', 'prepareStingAudioForGesture', 'serializeAudioSignature',
       'serializeAudioSoundOutputWitness',
     ]);
     const before = {
@@ -266,6 +299,7 @@ describe('@cf/audio — bounded sting facade', () => {
       api.playSurveyPing();
       api.playWhoosh();
       api.applySfxGain();
+      api.prepareStingAudioForGesture();
     }).not.toThrow();
     expect(log.oscillatorStarts).toBe(before.oscillators);
     expect(log.bufferStarts).toBe(before.buffers);
@@ -287,8 +321,17 @@ describe('@cf/audio — bounded sting facade', () => {
     api.playRaritySting(3);
     expect(log.oscillatorStarts, 'rarity wrapper did not forward the tier argument').toBe(23);
     const afterRarity = log.oscillatorStarts;
+    const oscillatorCountBeforeSurvey = log.oscillators.length;
     api.playSurveyPing();
     expect(log.oscillatorStarts, 'survey wrapper did not start its oscillator').toBe(afterRarity + 1);
+    const surveyOscillator = log.oscillators[oscillatorCountBeforeSurvey];
+    const destination = log.destinations[0];
+    expect(graphReaches(surveyOscillator, destination, log.connections),
+      'survey oscillator did not reach the shared SFX bus and AudioContext destination').toBe(true);
+    const surveyGain = log.connections.find(([from]) => from === surveyOscillator)?.[1];
+    const disconnected = log.connections.filter(([from]) => from !== surveyGain);
+    expect(graphReaches(surveyOscillator, destination, disconnected),
+      'audio graph negative control stayed green after removing the gain-to-SFX edge').toBe(false);
     api.playWhoosh();
     expect(log.bufferStarts, 'whoosh wrapper did not start its noise source').toBe(1);
     expect(log.filters, 'whoosh wrapper did not create its bandpass').toBe(1);
@@ -348,6 +391,7 @@ describe('@cf/audio — bounded sting facade', () => {
     volume = 0.35;
     api.applySfxGain();
 
+    api.prepareStingAudioForGesture();
     api.playRaritySting(1);
     api.playSurveyPing();
     api.playWhoosh();
@@ -573,6 +617,8 @@ describe('@cf/audio — bounded sting facade', () => {
     });
 
     expect(() => api.playSurveyPing()).toThrow('injected application seam failure');
+    expect(() => api.prepareStingAudioForGesture(),
+      'best-effort gesture preparation must not cancel the product action').not.toThrow();
   });
 
   it('prefers the standard constructor when both standard and WebKit constructors exist', async () => {
@@ -675,6 +721,28 @@ describe('@cf/audio — bounded sting facade', () => {
     expect(log.contexts).toBe(1);
     expect(log.resumeCalls).toBe(1);
     expect(log.oscillatorStarts).toBe(1);
+  });
+
+  it('silently prepares a suspended sting context inside a gesture for the next dispatch', async () => {
+    const log = audioLog();
+    setGlobal('AudioContext', contextConstructor(log, {
+      state: 'suspended', completeResume: true,
+    }));
+    const api = await import('../src/index.js');
+    api.initAudio({ sndOn: () => true, sfxVol: () => 1 });
+
+    api.prepareStingAudioForGesture();
+    expect(log.contexts, 'gesture preparation did not lazily create the singleton').toBe(1);
+    expect(log.resumeCalls, 'gesture preparation did not request resume').toBe(1);
+    expect(log.oscillatorStarts, 'gesture preparation produced an audible oscillator').toBe(0);
+    expect(log.bufferStarts, 'gesture preparation produced an audible buffer source').toBe(0);
+    expect(log.gainParams, 'gesture preparation built a sound graph').toHaveLength(0);
+    await Promise.resolve();
+
+    api.playSurveyPing();
+    expect(log.contexts, 'the delayed sting replaced the prepared singleton').toBe(1);
+    expect(log.resumeCalls, 'the delayed sting repeated an already settled resume').toBe(1);
+    expect(log.oscillatorStarts, 'the next dispatch did not use the prepared context').toBe(1);
   });
 
   it('contains a synchronous suspended-context resume refusal', async () => {

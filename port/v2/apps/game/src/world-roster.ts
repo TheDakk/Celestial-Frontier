@@ -8,11 +8,19 @@ import {
   checkedEcologyEpoch,
   planetSpeciesAtEcologyEpoch,
 } from '@cf/domain-ecology';
+import {
+  BIOME_PROFILE_AUTHORITY_V1,
+  BIOME_PROFILE_KEYS_V1,
+  type BiomeProfileDigestV1,
+  type BiomeProfileKeyV1,
+  type BiomeProfileV1,
+} from '@cf/domain-biome-profile';
 import { _earthNamePass } from '@cf/domain-descriptors';
 import { makeGenome } from '@cf/domain-genome';
 import { evolveGenome } from '@cf/domain-genetics';
 import { hashInt, mulberry32 } from '@cf/domain-rand';
 import { climateBand } from '@cf/domain-surveyphrases';
+import { biomeFor } from '@cf/domain-strays';
 import { systemFor } from '@cf/domain-worldgen';
 import {
   getProvenPlanetKey,
@@ -23,6 +31,13 @@ import {
 } from '@cf/scene';
 
 export const PLANETSIDE_PREVIEW_LIMIT = 8;
+export const CANONICAL_CLIMATE_BANDS = Object.freeze([
+  'hot',
+  'temperate',
+  'cold',
+  'frozen',
+] as const);
+export type CanonicalClimateBand = (typeof CANONICAL_CLIMATE_BANDS)[number];
 export const CANONICAL_BIOSPHERE_KEYS = Object.freeze([
   'earth',
   'none',
@@ -54,6 +69,14 @@ interface WorldRosterSnapshot {
   readonly planetOrdinal: number;
   readonly biosphereKey: CanonicalBiosphereKey;
   readonly ecologyEpoch: number;
+  /** One current-world presentation identity shared by biome art and audio.
+   * It is not a roster filter and never changes acquisition candidates. */
+  readonly climateBand: CanonicalClimateBand;
+  readonly biomeProfileSchema: typeof BIOME_PROFILE_AUTHORITY_V1.schema;
+  readonly biomeProfileDigest: BiomeProfileDigestV1;
+  readonly biomeProfileKey: BiomeProfileKeyV1;
+  readonly biomeProfile: BiomeProfileV1;
+  readonly environmentFingerprint: string;
   /** Binds world, epoch, order, and every detached full-row field. */
   readonly fullRosterFingerprint: string;
   readonly view: WorldRosterView<Readonly<Record<string, unknown>>>;
@@ -125,6 +148,12 @@ export interface WorldRosterSources {
     ecologyEpoch: number,
   ) => Array<Record<string, unknown>>;
   readonly nameEarth: (rows: Array<Record<string, unknown>>) => void;
+  /** Diagnostic-only classifier seam. Production installs the canonical
+   * lifted biome selector; the returned profile remains presentation-only. */
+  readonly biomeFor?: (
+    planet: { seed: number; type?: string },
+    band: string,
+  ) => { readonly k?: unknown } | null | undefined;
 }
 
 const SOURCES: WorldRosterSources = Object.freeze({
@@ -133,7 +162,18 @@ const SOURCES: WorldRosterSources = Object.freeze({
   biosphere: biosphere as unknown as WorldRosterSources['biosphere'],
   planetSpecies: planetSpeciesAtEcologyEpoch as unknown as WorldRosterSources['planetSpecies'],
   nameEarth: _earthNamePass,
+  biomeFor: biomeFor as unknown as NonNullable<WorldRosterSources['biomeFor']>,
 });
+
+const CANONICAL_PLANET_TYPES = Object.freeze([
+  'terran', 'ocean', 'ice', 'desert', 'rocky', 'venus', 'lava', 'gas',
+] as const);
+type CanonicalPlanetType = typeof CANONICAL_PLANET_TYPES[number];
+const DEFAULT_BIOME_PROFILE_KEY: Readonly<Record<CanonicalPlanetType, BiomeProfileKeyV1>> =
+  Object.freeze({
+    terran: 'temperate', ocean: 'opensea', ice: 'glacier', desert: 'dunesea',
+    rocky: 'cratered', venus: 'acidhaze', lava: 'emberfield', gas: 'banded',
+  });
 
 const CANONICAL_WORLD_ROSTERS = new WeakSet<object>();
 const MAX_WORLD_ROSTER_ROWS = 64;
@@ -387,6 +427,80 @@ function fnv1a32(value: string): number {
   return hash >>> 0;
 }
 
+function canonicalPlanetType(value: unknown): CanonicalPlanetType {
+  if (typeof value !== 'string'
+    || !CANONICAL_PLANET_TYPES.includes(value as CanonicalPlanetType)) {
+    throw new TypeError('world roster source returned an unsupported planet type');
+  }
+  return value as CanonicalPlanetType;
+}
+
+function canonicalClimateBand(value: unknown): CanonicalClimateBand {
+  if (typeof value !== 'string'
+    || !CANONICAL_CLIMATE_BANDS.includes(value as CanonicalClimateBand)) {
+    throw new TypeError('world roster source returned an unsupported climate band');
+  }
+  return value as CanonicalClimateBand;
+}
+
+function canonicalBiomePresentation(
+  planet: { seed: number; type?: string },
+  band: CanonicalClimateBand,
+  classifier: NonNullable<WorldRosterSources['biomeFor']>,
+): Readonly<{
+  schema: typeof BIOME_PROFILE_AUTHORITY_V1.schema;
+  digest: BiomeProfileDigestV1;
+  key: BiomeProfileKeyV1;
+  profile: BiomeProfileV1;
+}> {
+  const type = canonicalPlanetType(planet.type);
+  const selected = classifier(planet, band);
+  let candidate: unknown;
+  if (selected !== null && selected !== undefined) {
+    if (typeof selected !== 'object' || Array.isArray(selected)
+      || Object.getPrototypeOf(selected) !== Object.prototype) {
+      throw new TypeError('world roster source returned a malformed biome profile selection');
+    }
+    const descriptor = Object.getOwnPropertyDescriptor(selected, 'k');
+    if (!descriptor || !Object.hasOwn(descriptor, 'value')) {
+      throw new TypeError('world roster source returned a biome selection without a data key');
+    }
+    candidate = descriptor.value;
+  }
+  if (candidate !== undefined && candidate !== null
+    && (typeof candidate !== 'string'
+      || !BIOME_PROFILE_KEYS_V1.includes(candidate as BiomeProfileKeyV1))) {
+    throw new TypeError('world roster source returned an unsupported biome profile key');
+  }
+  const key = typeof candidate === 'string'
+    ? candidate as BiomeProfileKeyV1
+    : DEFAULT_BIOME_PROFILE_KEY[type];
+  return Object.freeze({
+    schema: BIOME_PROFILE_AUTHORITY_V1.schema,
+    digest: BIOME_PROFILE_AUTHORITY_V1.digest,
+    key,
+    profile: BIOME_PROFILE_AUTHORITY_V1.profiles[key],
+  });
+}
+
+function environmentFingerprint(
+  worldKey: CF1WorldKey,
+  ecologyEpoch: number,
+  biosphereKey: CanonicalBiosphereKey,
+  band: CanonicalClimateBand,
+  biome: Readonly<{
+    schema: typeof BIOME_PROFILE_AUTHORITY_V1.schema;
+    digest: BiomeProfileDigestV1;
+    key: BiomeProfileKeyV1;
+  }>,
+): string {
+  const canonical = JSON.stringify([
+    worldKey, ecologyEpoch, biosphereKey, band,
+    biome.schema, biome.digest, biome.key,
+  ]);
+  return `cwe1:${canonical.length}:${fnv1a32(canonical).toString(16).padStart(8, '0')}`;
+}
+
 function fullRosterFingerprint(
   worldKey: CF1WorldKey,
   ecologyEpoch: number,
@@ -443,7 +557,7 @@ function buildRoster(
       );
     }
     const random = mulberry32((planet.seed ^ 0x1234567) >>> 0);
-    const band = sources.climateBand(planet.P, system, planet.orb);
+    const band = canonicalClimateBand(sources.climateBand(planet.P, system, planet.orb));
     const bio = sources.biosphere(
       planet.P as { seed: number; type?: string },
       system as { sol?: boolean },
@@ -454,6 +568,11 @@ function buildRoster(
       throw new TypeError('biosphere source returned a malformed key');
     }
     const biosphereKey = canonicalBiosphereKey(bio.key, planet.seed);
+    const biome = canonicalBiomePresentation(
+      planet.P as { seed: number; type?: string },
+      band,
+      sources.biomeFor ?? (biomeFor as unknown as NonNullable<WorldRosterSources['biomeFor']>),
+    );
     let rows: Array<Record<string, unknown>> = [];
     if (biosphereKey !== 'none') {
       const speciesLevel = biosphereKey === 'earth' ? 'complex' : biosphereKey;
@@ -492,6 +611,18 @@ function buildRoster(
         planetOrdinal: planet.ordinal,
         biosphereKey,
         ecologyEpoch,
+        climateBand: band,
+        biomeProfileSchema: biome.schema,
+        biomeProfileDigest: biome.digest,
+        biomeProfileKey: biome.key,
+        biomeProfile: biome.profile,
+        environmentFingerprint: environmentFingerprint(
+          address.key,
+          ecologyEpoch,
+          biosphereKey,
+          band,
+          biome,
+        ),
         fullRosterFingerprint: fullRosterFingerprint(address.key, ecologyEpoch, frozenRows),
         view: worldRosterView(frozenRows),
       }),

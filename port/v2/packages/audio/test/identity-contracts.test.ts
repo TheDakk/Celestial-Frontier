@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { BIOME_PROFILE_AUTHORITY_V1 } from '@cf/domain-biome-profile';
 import {
   AUDIO_PALETTE_POLICY,
   createAudioIdentityProfile,
@@ -6,7 +7,6 @@ import {
   createAudioSoundOutputWitness,
   createCreatureCallPlan,
   createCreatureExpressionCue,
-  createDistantEcologyHintPlan,
   creatureExpressionAudioEvent,
   deserializeAudioSignature,
   distantEcologyAudioEvent,
@@ -16,6 +16,7 @@ import {
   type CanonicalAudioOwner,
   type SettledCreatureAudioEvent,
 } from '../src/index.js';
+import { createDistantEcologyHintPlan } from '../src/ecology.js';
 
 const PHENOTYPE = Object.freeze({
   seed: 0xC0FFEE,
@@ -40,6 +41,12 @@ const PHENOTYPE = Object.freeze({
   metab: 3,
   lumin: true,
   heatBand: 1 as const,
+});
+
+const DISTANT_BIOME = Object.freeze({
+  schema: BIOME_PROFILE_AUTHORITY_V1.schema,
+  digest: BIOME_PROFILE_AUTHORITY_V1.digest,
+  key: 'temperate' as const,
 });
 
 function identity(options: Partial<AudioIdentityInput> = {}): AudioIdentityInput {
@@ -278,6 +285,7 @@ describe('Arc 7 distant ecology and settled expression seams', () => {
   it('binds distant hints to canonical world plus exact already-surfaced evidence', () => {
     const input = {
       canonicalWorldKey: 'galaxy:999/system:424242/world:133',
+      biomeProfile: DISTANT_BIOME,
       surfaced: {
         source: 'survey-roster' as const,
         evidenceKey: 'survey:133:family:canopy',
@@ -290,6 +298,13 @@ describe('Arc 7 distant ecology and settled expression seams', () => {
     expect(createDistantEcologyHintPlan(structuredClone(input))).toEqual(first);
     expect(first.route).toBe('ambience');
     expect(first.palettePolicy).toBe(AUDIO_PALETTE_POLICY.flora);
+    expect(first).toMatchObject({
+      biomeProfileSchema: BIOME_PROFILE_AUTHORITY_V1.schema,
+      biomeProfileDigest: BIOME_PROFILE_AUTHORITY_V1.digest,
+      biomeProfileKey: 'temperate',
+      biomeWeather: BIOME_PROFILE_AUTHORITY_V1.profiles.temperate.weather,
+      biomeHazard: BIOME_PROFILE_AUTHORITY_V1.profiles.temperate.hazard,
+    });
     expect(createDistantEcologyHintPlan({ ...input, canonicalWorldKey: `${input.canonicalWorldKey}:other` }).planId)
       .not.toBe(first.planId);
 
@@ -309,6 +324,7 @@ describe('Arc 7 distant ecology and settled expression seams', () => {
     const world = 'galaxy:999/system:424242/world:133';
     expect(() => createDistantEcologyHintPlan({
       canonicalWorldKey: world,
+      biomeProfile: DISTANT_BIOME,
       surfaced: {
         source: 'approach-lead',
         evidenceKey: 'lead:family',
@@ -321,6 +337,7 @@ describe('Arc 7 distant ecology and settled expression seams', () => {
 
     expect(() => createDistantEcologyHintPlan({
       canonicalWorldKey: world,
+      biomeProfile: DISTANT_BIOME,
       surfaced: {
         source: 'survey-roster',
         evidenceKey: 'survey:species:apple',
@@ -329,6 +346,40 @@ describe('Arc 7 distant ecology and settled expression seams', () => {
         signature,
       },
     })).toThrow('does not match');
+  });
+
+  it('binds every hint to the current canonical biome-profile authority', () => {
+    const input = {
+      canonicalWorldKey: 'world:profile-control',
+      biomeProfile: DISTANT_BIOME,
+      surfaced: {
+        source: 'approach-lead' as const,
+        evidenceKey: 'lead:life',
+        granularity: 'biosphere' as const,
+      },
+    };
+    const temperate = createDistantEcologyHintPlan(input);
+    const desert = createDistantEcologyHintPlan({
+      ...input,
+      biomeProfile: { ...DISTANT_BIOME, key: 'dunesea' },
+    });
+    expect(desert.planId).not.toBe(temperate.planId);
+    expect(desert).toMatchObject({
+      biomeProfileKey: 'dunesea',
+      biomeWeather: BIOME_PROFILE_AUTHORITY_V1.profiles.dunesea.weather,
+      biomeHazard: BIOME_PROFILE_AUTHORITY_V1.profiles.dunesea.hazard,
+    });
+    for (const biomeProfile of [
+      { ...DISTANT_BIOME, schema: 'cf.domain.biome-profile.v0' },
+      { ...DISTANT_BIOME, digest: 'bpd1-stale' },
+      { ...DISTANT_BIOME, key: 'not-a-biome' },
+      { ...DISTANT_BIOME, extra: true },
+    ]) {
+      expect(() => createDistantEcologyHintPlan({
+        ...input,
+        biomeProfile: biomeProfile as never,
+      })).toThrow('biome profile authority');
+    }
   });
 
   it('selects expression from one immutable plan and one completed captioned event', () => {
@@ -352,6 +403,7 @@ describe('Arc 7 distant ecology and settled expression seams', () => {
 
     const ecology = createDistantEcologyHintPlan({
       canonicalWorldKey: 'world:133',
+      biomeProfile: DISTANT_BIOME,
       surfaced: { source: 'approach-lead', evidenceKey: 'lead:life', granularity: 'biosphere' },
     });
     expect(distantEcologyAudioEvent(ecology)).toEqual({ type: 'ecology.distant-hint', plan: ecology });

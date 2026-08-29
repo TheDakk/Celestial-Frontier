@@ -2,7 +2,12 @@
    ported): every Earth-catalog name + a procedural spread through the
    VERBATIM hdart engine — counted, failures named, contact sheets baked.
    Driven headless by tools/speciesaudit.mjs; also runnable by hand. */
-import { speciesPortrait, verbatimSpeciesPortraitForAudit, CLIPPED } from '@cf/art/species';
+import {
+  renderSpeciesPortraitCanvas,
+  speciesPortrait,
+  verbatimSpeciesPortraitForAudit,
+  CLIPPED,
+} from '@cf/art/species';
 import { _EARTH_NAMES } from '@cf/domain-descriptors';
 import { makeGenome } from '@cf/domain-genome';
 import { crossGenome } from '@cf/domain-genetics';
@@ -50,11 +55,21 @@ async function hybridBlendAudit(): Promise<void> {
     delete stripped._src;
     return stripped;
   };
-  const freshRoute = (genome: G): { owner: 'owned' | 'verbatim'; pixels: string } => {
+  /* Keep two independent audit channels. `rawRoute` proves which historical
+     painter owns the genome and retains a raw owned-vs-verbatim negative
+     control. `freshRoute` applies the production finishing pass without
+     entering the portrait cache, so cache parity compares polished pixels to
+     polished pixels instead of passing merely because the global grade exists. */
+  const rawRoute = (genome: G): { owner: 'owned' | 'verbatim'; pixels: string } => {
     const owned = resolveOverride(genome as never);
     return owned === null
       ? { owner: 'verbatim', pixels: verbatimSpeciesPortraitForAudit(genome) }
       : { owner: 'owned', pixels: owned };
+  };
+  const freshRoute = (genome: G): { owner: 'owned' | 'verbatim'; pixels: string } => {
+    const raw = rawRoute(genome);
+    const pixels = renderSpeciesPortraitCanvas(genome).toDataURL();
+    return { owner: raw.owner, pixels };
   };
   const routeLabel = (genome: G, owner: 'owned' | 'verbatim'): string =>
     typeof genome._earthName === 'string' ? `named-${owner}`
@@ -68,14 +83,16 @@ async function hybridBlendAudit(): Promise<void> {
 
   let proceduralBase: G | null = null;
   let procedural = '';
+  let proceduralOwnedRaw = '';
   let proceduralVerbatim = '';
   for (let i = 0; i < 32; i++) {
     const candidate = alien(hashInt(0xB1E7D, i, 9) >>> 0, 'fauna', 1);
-    const routed = speciesPortrait(candidate);
+    const raw = rawRoute(candidate);
     const fallback = verbatimSpeciesPortraitForAudit(candidate);
-    if (routed !== fallback) {
+    if (raw.owner === 'owned' && raw.pixels !== fallback) {
       proceduralBase = candidate;
-      procedural = routed;
+      procedural = speciesPortrait(candidate);
+      proceduralOwnedRaw = raw.pixels;
       proceduralVerbatim = fallback;
       break;
     }
@@ -317,9 +334,9 @@ async function hybridBlendAudit(): Promise<void> {
     return { kingdom, catalogueCount: names.length, unowned };
   });
   const checks = {
-    proceduralControlDiffersFromVerbatim: procedural !== proceduralVerbatim,
+    proceduralControlDiffersFromVerbatim: proceduralOwnedRaw !== proceduralVerbatim,
     reviewedFaunaBlendUsesOwnedRoute:
-      resolveOverride(earthAlien as never) === earthAlienPixels,
+      resolveOverride(earthAlien as never) !== null,
     blendDiffersFromProcedural: earthAlienPixels !== procedural,
     lineagesHaveDistinctPixels: earthAlienPixels !== speciesPortrait(eagleChild),
     anchorValuesHaveDistinctPixels: earthAlienPixels !== speciesPortrait(grandchild),

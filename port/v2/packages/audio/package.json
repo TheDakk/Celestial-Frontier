@@ -1,6 +1,10 @@
 { "name": "@cf/audio", "private": true, "version": "0.0.0", "type": "module",
   "description": "Shipped navigation/survey stings plus injected Arc 7 identity, taxonomy, event, mixer/lifecycle/lab, and empty-rights foundations. App migration, authored playback/content, and listening proof remain open.",
-  "exports": { ".": "./src/index.ts" },
+  "exports": {
+    ".": "./src/index.ts",
+    "./internal/ecology": "./src/ecology.ts"
+  },
   "dependencies": {
+    "@cf/domain-biome-profile": "*",
     "@cf/domain-descriptors": "*"
   } }

@@ -1,0 +1,10 @@
+{
+  "name": "@cf/domain-biome-profile",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Canonical versioned biome-presentation profiles shared by visual, ecology, and audio adapters.",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

@@ -131,17 +131,30 @@
 > exposes no Mine control, cosmic/exceptional material, grade, reserve, progress or extraction
 > authority. The internal-only Arc 5 bred-successor seam now assigns a newly admitted child
 > `fed = 0.5 * min(clamp(parentA.fed, 0..200), clamp(parentB.fed, 0..200))` exactly once; later stored
-> child care state is preserved. Breeding odds, parent Recovery duration/locks, confirmation, copy
-> and the whole Arc 5B action/UI transaction remain product-open, with no live player writer.
+> child care state is preserved. A player-live Feed action now exists only on a real fauna
+> Compendium detail. It selects one exact unassigned owned companion below the 200-Meal cap and one
+> exact owned flora lot, then `Use 1` advances bounded `fed`, consumes or tombstones that exact lot,
+> and updates compact ownership/F4 through one receipt-bearing CAS with no retry or optimistic
+> publication. Assigned/recovering and capped rows explain why they are disabled; exact-instance
+> twins remain distinct. Back/Close stay available. The inline polite/atomic settled status is the
+> sole accessible announcement; its simultaneous corner toast is visual-only. After that status, the
+> shared creature-audio owner may emit one deterministic contented Feed expression only when the
+> native gesture, exact current ownership successor, Sound, Creature voices and live counterpart
+> still agree. It retains only the latest successful ownership/key, rejecting both the same result
+> and any superseded result without an unbounded replay set. The audio path writes nothing; refusal,
+> stale/converging authority, replay, route/detail loss or disabled audio remains silent. Breeding odds, parent Recovery duration/locks, tastes/flavours, stat or Power
+> growth, injury care/healing, poison, bond, explorer eating, renaming, scouting, duels and missions
+> remain product-open.
 >
 > Player rarity is a strict ten-name projection of valid raw tiers (`0..8` unchanged, raw `9..14`
 > shown as Transcendent); invalid or absent input is omitted rather than relabelled Common, and
 > internal grade/art labels and raw tier numbers stay out of player surfaces. The only new creature
-> playback is the narrow Tame-fauna greeting after the exact durable current-system result and
-> matching current ownership revision; it writes no save state or reward. Broader creature,
-> Compendium, ambience, music and combat audio remain absent. Existing ordinary Slice evidence still
-> records `recoveryClaimed:false`; a dedicated uninterrupted 20-minute Arc 4 recovery certificate
-> remains pending.
+> playback is the narrow Tame-fauna greeting and exact accepted Feed acknowledgement after their
+> durable current-system results and matching current ownership revisions; neither writes save state
+> or reward. Broader creature,
+> Compendium, ambience, music and combat audio remain absent. Exact signed Final13 later completed
+> the uninterrupted 20-minute Arc 4 Recovery certificate for its unchanged source. The newer working-
+> tree candidate still requires a fresh Slice → Glass → Recovery chain; HUMAN review remains open.
 
 > **2026-08-25 Arc 3–5 persistence overlay — recorded local boundary and exact-input evidence:** Arc 3 adds the strict
 > `engineering/arc3.state` carrier and a bounded legacy seed-only migration that resolves every
@@ -240,6 +253,13 @@
 > ordinal. A random product plan writes its next RNG state only with its outcome. Deterministic Arc 2
 > Equip/Unequip/Salvage/pending-claim increments only the receipt ordinal, not a domain counter.
 > Product extension writes cannot overwrite the protected F4 namespace.
+>
+> **2026-08-28 revision-ceiling hardening:** the largest readable revision is the exact JavaScript
+> safe-integer ceiling (`Number.MAX_SAFE_INTEGER`). A save at that revision remains readable and
+> inspectable, but every mutation/replacement that would increment it returns the typed
+> `revision-exhausted` outcome before product rows, receipts, F4 state or revision bytes are
+> written. Active-play and receipt-bearing app owners propagate that terminal state into protected
+> convergence/reload and release their lease; they never overflow, round, rebase or retry it.
 >
 > `inventory/arc2.loot` v1 is the exact-instance authority. Its current form is either complete
 > `GearInventory` plus stackable counts or a lossless `legacy-protected` source when truthful
@@ -568,13 +588,13 @@
 > The player-facing import door now lives at **Settings → Bring expedition**;
 > moving it out of the eighth dock slot did not create a second loader or weaken
 > any byte-protection rule. That dock slot now opens the canonical v2 Guide
-> catalogue (9 categories /43 authored ids /41 legacy-live topics, currently 24 partial /17
+> catalogue (9 categories /43 authored ids /41 legacy-live topics, currently 25 partial /16
 > unavailable); first open
 > updates the existing `guide`/`seenGuide` save field through the ordinary
 > protected persistence path. Guide content itself is source-addressed code, not
 > duplicated into the save. The complete 56-entry v1 release archive is likewise
 > immutable content; `rn`/`rnSeen` remains only a seen-version marker. The
-> separate **A New Foundation** bulletin is an unshipped 54-bullet v2.0 development draft:
+> separate **A New Foundation** bulletin is an unshipped 64-bullet v2.0 development draft:
 > opening the cumulative notes cannot mark them seen, create `releasePending`,
 > or fire an update surface. No production version was authorized or bumped.
 > The import door is a top-layer `aria-modal` dialog: Tab stays inside its live

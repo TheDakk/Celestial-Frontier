@@ -57,6 +57,7 @@ jobs:
     timeout-minutes: 90
     env:
       CF_BROWSER: /usr/bin/google-chrome
+      CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
       CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-compendiummem
       CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem
       CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice
@@ -93,7 +94,6 @@ jobs:
       - name: layout (10 viewports)
         env:
           CF_BROWSER: /usr/bin/google-chrome
-          CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           node tools/uilayout.js --selftest
           node tools/uilayout.js
@@ -101,7 +101,6 @@ jobs:
         if: always()
         env:
           CF_BROWSER: /usr/bin/google-chrome
-          CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
         run: node tools/uilayout.js --verify-run="$CF_UILAYOUT_RUN_ID"
       - name: rarity sanity
         run: node tools/rarity-sanity.js
@@ -277,7 +276,9 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: root-layout-evidence
-          path: tools/uilayout-report.json
+          path: |
+            tools/uilayout-report.json
+            tools/uilayout-${{ env.CF_UILAYOUT_RUN_ID }}.json
           if-no-files-found: ignore
           retention-days: 14
       - name: archive Compendium memory evidence

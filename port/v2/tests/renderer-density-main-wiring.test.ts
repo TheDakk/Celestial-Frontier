@@ -85,10 +85,17 @@ describe('renderer density resize ownership', () => {
   });
 
   it('negative-controls persistence, direct event work, and reload teardown', () => {
+    const densityRebuild = [
+      '           mint persistence intent. */',
+      '        rerender({ preserveSurvey: true, skipPersist: true });',
+    ].join('\n');
     const persisting = replaceUnique(
       mainSource,
-      'rerender({ preserveSurvey: true, skipPersist: true });',
-      'rerender({ preserveSurvey: true });',
+      densityRebuild,
+      densityRebuild.replace(
+        'rerender({ preserveSurvey: true, skipPersist: true });',
+        'rerender({ preserveSurvey: true });',
+      ),
     );
     expect(integrationErrors(persisting, ownerSource)).toEqual(expect.arrayContaining([
       'nonpersistent-rebuild', 'legacy-persisting-rebuild',

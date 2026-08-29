@@ -13,9 +13,9 @@
 > recovery cannot be repurposed as proof of future parent Recovery; the ordinary Arc 4 Slice remains
 > `recoveryClaimed:false`. Any future breeding rarity preview must use the strict ten-name player
 > projector—valid raw `0..14`, with `9..14` shown as Transcendent—and must never expose internal
-> art-grade labels/raw tier numbers or coerce invalid input to Common. The current creature-audio
-> addition is only the exact durable current-system Tame-fauna greeting; breeding/care audio remains
-> absent.
+> art-grade labels/raw tier numbers or coerce invalid input to Common. Current creature audio is
+> limited to the exact durable Tame-fauna greeting and the exact accepted Feed acknowledgement;
+> breeding and all broader care audio remain absent.
 
 > **2026-08-25 Arc 0/5A recorded local boundary:** legacy `CFB-` remains the exact v1
 > challenger/exhibit contract. Versioned `CFB2-` round-trips one bounded ordered uint32 parent
@@ -31,9 +31,11 @@
 > child-`fed` rule above, but it is absent from the public package root and cannot be invoked as a
 > player Arc 5-only product change.
 >
-> No breeding, feeding, care, Recovery, assignment, companion or share UI writer is live in v2.
-> The non-consuming parent/Recovery design below therefore remains the product contract, not a
-> shipped action; no app path invokes the internal V2-only successor or grants a child. The compact
+> No breeding, parent Recovery, assignment, mission or share UI writer is live in v2. One narrowly
+> bounded real-fauna Compendium Feed writer now advances one exact eligible companion and flora lot
+> through a receipt/CAS; it grants no child and implements none of the broader breeding/care design.
+> The non-consuming parent/Recovery design below therefore remains the future breeding contract; no
+> app path invokes the internal V2-only successor or grants a child. The compact
 > carrier keeps namespace count O(1): source-only growth leaves all four canonical empty-shard bytes
 > unchanged, and every reader verifies source/delta/target plus each shard. Guide, release and
 > Training lesson capability remain unchanged.

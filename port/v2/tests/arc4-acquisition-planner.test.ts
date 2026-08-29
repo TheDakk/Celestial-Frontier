@@ -718,6 +718,7 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
       '.': './src/index.ts',
       './snapshot-internal': './src/snapshot-internal.ts',
       './ownership-v2-internal': './src/ownership-v2-internal.ts',
+      './feed-internal': './src/feed.ts',
     });
   });
 

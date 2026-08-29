@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { EPOCH_TICK, MAX_COSMIC_EPOCH } from '@cf/domain-progression';
+import { F3_MAX_REVISION } from '@cf/persistence';
 import {
   createEcologyEpochEdgeAuthority,
   type EcologyEpochStage,
@@ -58,6 +59,23 @@ describe('F4 ecology epoch edge authority', () => {
     expect(authority.diagnostics(100 + TICK_MS)).toMatchObject({
       stages: 1, commits: 1, publications: 1, publishedEpoch: 4,
     });
+  });
+
+  it('publishes the final valid F3 successor at MAX_SAFE_INTEGER', () => {
+    const authority = createEcologyEpochEdgeAuthority({ restoredEpoch: 3, activePlayAtBootMs: 100 });
+    const ordinary = stageAt(authority, 100 + TICK_MS, 'ordinary');
+    expect(authority.commit(ordinary, F3_MAX_REVISION)).toEqual({
+      kind: 'published',
+      publication: {
+        schema: 'cf-v2-ecology-epoch-edge/v1',
+        fromEpoch: 3,
+        epoch: 4,
+        crossed: 1,
+        revision: F3_MAX_REVISION,
+      },
+    });
+    expect(authority.diagnostics(100 + TICK_MS).lastCommittedRevision)
+      .toBe(F3_MAX_REVISION);
   });
 
   it('keeps a committed publication dirty while hidden, then settles one exact refresh', () => {

@@ -2,6 +2,10 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
+import {
+  SLICE_SCREENSHOT_LOGICAL_NAMES,
+  sliceScreenshotInventoryLine,
+} from '../tools/slicesmoke-contract.mjs';
 
 const tool = (name: string): string => fileURLToPath(
   new URL(`../tools/${name}`, import.meta.url),
@@ -11,24 +15,78 @@ const workflow = readFileSync(
   fileURLToPath(new URL('../../../.github/workflows/test.yml', import.meta.url)),
   'utf8',
 );
+const activeLines = (value: string): string[] => value.split(/\r?\n/)
+  .map((line) => line.trim())
+  .filter((line) => line.length > 0 && !line.startsWith('#'));
+const workflowStepLines = (value: string, stepName: string): string[] | null => {
+  const heading = `      - name: ${stepName}`;
+  const lines = value.split(/\r?\n/);
+  const starts = lines.flatMap((line, index) => line === heading ? [index] : []);
+  if (starts.length !== 1) return null;
+  const start = starts[0]!;
+  let end = lines.length;
+  for (let index = start + 1; index < lines.length; index++) {
+    if (/^      - (?:name:|uses:)/.test(lines[index] ?? '')) {
+      end = index;
+      break;
+    }
+  }
+  return activeLines(lines.slice(start, end).join('\n'));
+};
 const workflowEvidenceChainErrors = (value: string): string[] => {
   const errors: string[] = [];
-  const required = [
+  const globallyRequired = [
     'CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice',
     'CF_V2_GLASSMATRIX_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass',
+  ];
+  const sliceCommands = [
+    'npm run smoke:ci',
+    'slice_run_id="$(jq -er \'.run.id\' apps/game/smoke/slice-smoke-report.json)"',
+    'test "$slice_run_id" = "$CF_V2_SLICE_SMOKE_RUN_ID"',
+    'printf \'run_id=%s\\n\' "$slice_run_id" >> "$GITHUB_OUTPUT"',
     'node tools/smokereport.mjs --verify-run="$slice_run_id"',
+  ];
+  const glassCommands = [
+    'slice_run_id="${{ steps.slice.outputs.run_id }}"',
     'node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
+    'glass_run_id="$(jq -er \'.run.id\' apps/game/smoke/glassmatrix-report.json)"',
+    'test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"',
+    'printf \'run_id=%s\\n\' "$glass_run_id" >> "$GITHUB_OUTPUT"',
     'node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"',
+  ];
+  const carriers = [
     'port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json',
     'port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log',
     'port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json',
   ];
-  for (const item of required) {
-    if (value.split(item).length !== 2) errors.push(`missing-or-duplicate:${item}`);
+  const globalActive = activeLines(value);
+  for (const item of globallyRequired) {
+    if (globalActive.filter((line) => line === item).length !== 1) {
+      errors.push(`missing-or-duplicate:${item}`);
+    }
   }
-  const slice = value.indexOf('- name: one-attempt real-browser slice smoke');
-  const glass = value.indexOf('- name: one-attempt 12-viewport Glass matrix');
-  if (slice < 0 || glass <= slice) errors.push('ordered-chain');
+  const slice = workflowStepLines(value, 'one-attempt real-browser slice smoke');
+  const glass = workflowStepLines(value, 'one-attempt 12-viewport Glass matrix');
+  const archive = workflowStepLines(value, 'archive battery reports');
+  const requireOrdered = (lines: string[] | null, required: string[]) => {
+    let prior = -1;
+    for (const item of required) {
+      const matches = lines?.flatMap((line, index) => line === item ? [index] : []) ?? [];
+      if (matches.length !== 1) errors.push(`missing-or-duplicate:${item}`);
+      else if (matches[0]! <= prior) errors.push(`misordered:${item}`);
+      else prior = matches[0]!;
+    }
+  };
+  requireOrdered(slice, sliceCommands);
+  requireOrdered(glass, glassCommands);
+  for (const item of carriers) {
+    if ((archive ?? []).filter((line) => line === item).length !== 1) {
+      errors.push(`missing-or-duplicate:${item}`);
+    }
+  }
+  const sliceOffset = value.indexOf('      - name: one-attempt real-browser slice smoke');
+  const glassOffset = value.indexOf('      - name: one-attempt 12-viewport Glass matrix');
+  if (sliceOffset < 0 || glassOffset <= sliceOffset) errors.push('ordered-chain');
   return errors;
 };
 const runSelftest = (name: string): string => execFileSync(
@@ -99,5 +157,61 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(workflowEvidenceChainErrors(pointerOnly)).toContain(
       'missing-or-duplicate:port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json',
     );
+
+    const commentedVerifier = workflow.replace(
+      '          node tools/smokereport.mjs --verify-run="$slice_run_id"',
+      '          # node tools/smokereport.mjs --verify-run="$slice_run_id"',
+    );
+    expect(workflowEvidenceChainErrors(commentedVerifier)).toContain(
+      'missing-or-duplicate:node tools/smokereport.mjs --verify-run="$slice_run_id"',
+    );
+
+    const wrongStepVerifier = workflow
+      .replace('          node tools/smokereport.mjs --verify-run="$slice_run_id"\n', '')
+      .replace(
+        '          slice_run_id="${{ steps.slice.outputs.run_id }}"',
+        '          slice_run_id="${{ steps.slice.outputs.run_id }}"\n'
+          + '          node tools/smokereport.mjs --verify-run="$slice_run_id"',
+      );
+    expect(workflowEvidenceChainErrors(wrongStepVerifier)).toContain(
+      'missing-or-duplicate:node tools/smokereport.mjs --verify-run="$slice_run_id"',
+    );
+
+    const reorderedGlassVerifier = workflow.replace(
+      '          node tools/glassmatrix.mjs --slice-run="$slice_run_id"\n'
+        + '          glass_run_id="$(jq -er \'.run.id\' apps/game/smoke/glassmatrix-report.json)"\n'
+        + '          test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"\n'
+        + '          printf \'run_id=%s\\n\' "$glass_run_id" >> "$GITHUB_OUTPUT"\n'
+        + '          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"',
+      '          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"\n'
+        + '          node tools/glassmatrix.mjs --slice-run="$slice_run_id"\n'
+        + '          glass_run_id="$(jq -er \'.run.id\' apps/game/smoke/glassmatrix-report.json)"\n'
+        + '          test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"\n'
+        + '          printf \'run_id=%s\\n\' "$glass_run_id" >> "$GITHUB_OUTPUT"',
+    );
+    expect(workflowEvidenceChainErrors(reorderedGlassVerifier)).toContain(
+      'misordered:node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"',
+    );
+  });
+
+  it('binds the Slice writer, stdout, and reporter to one exact ten-image inventory', () => {
+    const expected = [
+      'codex', 'earth', 'galaxy', 'guide', 'phone',
+      'settings', 'sol', 'solmark', 'training', 'universe',
+    ];
+    expect([...SLICE_SCREENSHOT_LOGICAL_NAMES]).toEqual(expected);
+    expect(sliceScreenshotInventoryLine()).toBe(
+      'screenshots: apps/game/smoke/ '
+        + expected.map((logicalName) => `slice-${logicalName}`).join(' · '),
+    );
+    const harness = source('slicesmoke.mjs');
+    const reporter = source('smokereport.mjs');
+    const written = [...harness.matchAll(/screenshotPath\('([^']+)'\)/g)]
+      .map((match) => match[1]);
+    expect(written).toHaveLength(expected.length);
+    expect([...written].sort()).toEqual(expected);
+    expect(harness).toContain('console.log(sliceScreenshotInventoryLine())');
+    expect(reporter).toContain('SLICE_SCREENSHOT_LOGICAL_NAMES,');
+    expect(reporter).not.toContain('const SLICE_SCREENSHOT_LOGICAL_NAMES =');
   });
 });

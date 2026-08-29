@@ -92,7 +92,6 @@ export type {
   AudioStaticPurityViolation,
   AudioStaticSource,
 } from './purity.js';
-export { createDistantEcologyHintPlan } from './ecology.js';
 export type {
   DistantEcologyHintInput,
   DistantEcologyHintPlan,
@@ -192,6 +191,14 @@ export function playSurveyPing(): void {
 export function playWhoosh(): void {
   if (!initialized) return;
   playWhooshRaw();
+}
+
+/** Prepare the compatibility-sting singleton inside a trusted player gesture
+    without producing a source. Delayed acknowledgements can then use the
+    resumed context after their asynchronous product transaction settles. */
+export function prepareStingAudioForGesture(): void {
+  if (!initialized) return;
+  try { ac(); } catch { /* audio preparation must never cancel the product action */ }
 }
 
 function soundEnabledOrFalse(): boolean {

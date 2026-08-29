@@ -30,6 +30,7 @@
     "@cf/domain-opportunity": "*",
     "@cf/domain-strays": "*",
     "@cf/domain-ecology": "*",
+    "@cf/domain-biome-profile": "*",
     "@cf/domain-surveyphrases": "*"
   },
   "devDependencies": {

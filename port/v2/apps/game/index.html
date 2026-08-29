@@ -577,6 +577,41 @@
     .rarity-badge { display: inline-block; border-radius: 999px;
       background: #05070d; padding: 1px 5px; }
     .compendium-row-origin { display: block; }
+    .compendium-feed { display: grid; gap: 10px; min-width: 0; margin-top: 16px;
+      padding-top: 14px; border-top: 1px solid rgba(126,200,240,.32); }
+    .compendium-feed h4 { margin: 0; color: #e8c87a; font: 700 13px/1.35 var(--ui);
+      letter-spacing: .04em; }
+    .compendium-feed-detail, .compendium-feed-summary, .compendium-feed-status {
+      margin: 0; color: var(--dim); font: 12px/1.45 var(--ui); overflow-wrap: anywhere; }
+    .compendium-feed fieldset { display: grid; gap: 4px; min-width: 0; margin: 0;
+      padding: 8px; border: 1px solid rgba(64,84,119,.72); border-radius: 10px; }
+    .compendium-feed legend { padding: 0 5px; color: #cfe0f4; font: 700 11px/1.3 var(--ui); }
+    .compendium-feed-choice { min-width: 0; box-sizing: border-box; padding: 5px 7px;
+      border-radius: 8px; color: var(--ink); cursor: pointer; overflow-wrap: anywhere; }
+    .compendium-feed-choice:has(input:checked) { background: rgba(126,200,240,.11);
+      box-shadow: inset 0 0 0 1px rgba(126,200,240,.42); }
+    .compendium-feed-choice:has(input:disabled) { color: var(--faint); cursor: not-allowed; }
+    .compendium-feed-choice input { flex: 0 0 auto; width: 20px; height: 20px;
+      margin: 0; accent-color: #7ec8f0; }
+    .compendium-feed-summary { color: #cfe0f4; }
+    .compendium-feed-confirm { min-width: 88px; min-height: 44px; justify-self: start;
+      border: 1px solid #caa24f; border-radius: 10px; background: rgba(202,162,79,.14);
+      color: #ffe3a8; padding: 7px 14px; cursor: pointer; font: 700 12px var(--ui); }
+    .compendium-feed-confirm:disabled { border-color: #405477; background: rgba(10,16,30,.4);
+      color: var(--faint); cursor: not-allowed; }
+    .compendium-feed-status:not([hidden]) { display: block; min-height: 44px; box-sizing: border-box;
+      padding: 8px 10px; border: 1px solid rgba(126,200,240,.38); border-radius: 9px;
+      background: rgba(7,15,27,.72); color: #cfe0f4; }
+    .compendium-feed-status[data-kind="committed"] { border-color: rgba(121,220,164,.58);
+      color: #bff4d3; }
+    .compendium-feed-status[data-kind="committed-convergence"],
+    .compendium-feed-status[data-convergence="read-only-reload"] { border-color: #e8c87a;
+      color: #ffe3a8; }
+    @media (forced-colors: active) {
+      .compendium-feed, .compendium-feed fieldset, .compendium-feed-confirm,
+      .compendium-feed-status:not([hidden]) { border-color: CanvasText; }
+      .compendium-feed-choice:has(input:checked) { outline: 2px solid Highlight; }
+    }
     .guide-tools { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px; margin-bottom: 8px; }
     .guide-tools input { min-width: 0; min-height: 44px; box-sizing: border-box; border: 1px solid #405477;
       border-radius: 10px; background: rgba(4,8,18,.8); color: var(--ink); padding: 8px 10px; font: 13px var(--ui); }
