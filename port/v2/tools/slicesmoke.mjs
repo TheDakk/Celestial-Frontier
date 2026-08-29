@@ -6557,7 +6557,7 @@ try {
         &&mealText.includes('requires reload and cannot feed twice')
         &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
         &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
-        &&mealText.includes('Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent')
+        &&/refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(mealText)
         &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable')
         &&!mealContradiction,
       hdSurfaceContract=hdSurfaceHeading==='Under the Hood'
@@ -14846,13 +14846,27 @@ try {
             lastOutcome:state?.ownershipV2?.feed?.lastOutcome??null,
             toastSerial:state?.toastSerial??null});return result};
         return oscillator};return true})()`);
-    if (!(await evalIn('window.__CF_SLICE__.api.state().sndOn'))) {
+    const audioPreferencesBefore = await evalIn(`(()=>{const state=window.__CF_SLICE__.api.state();
+      return {sndOn:state.sndOn===true,voiceOn:state.voiceOn===true}})()`);
+    if (!audioPreferencesBefore.sndOn || !audioPreferencesBefore.voiceOn) {
       await arc5FeedClick('#docksets', 'Arc 5 Feed Sound settings opener');
       await waitDesktopValue('Arc 5 Feed Sound settings', `window.__CF_SLICE__.api.state().panelOpen==='set'`);
-      await arc5FeedClick('#setsnd', 'Arc 5 Feed Sound On');
-      await waitDesktopValue('Arc 5 Feed Sound enabled', `window.__CF_SLICE__.api.state().sndOn===true`);
+      if (!audioPreferencesBefore.sndOn) {
+        await arc5FeedClick('#setsnd', 'Arc 5 Feed Sound On');
+        await waitDesktopValue('Arc 5 Feed Sound enabled', `window.__CF_SLICE__.api.state().sndOn===true`);
+      }
+      if (!audioPreferencesBefore.voiceOn) {
+        await arc5FeedClick('#setvoice', 'Arc 5 Feed Creature voices On');
+        await waitDesktopValue('Arc 5 Feed Creature voices enabled', `window.__CF_SLICE__.api.state().voiceOn===true`);
+      }
       await arc5FeedClick('#setpanel [data-pnx]', 'Arc 5 Feed Settings Close');
       await waitDesktopValue('Arc 5 Feed Settings closed', `window.__CF_SLICE__.api.state().panelOpen===null`);
+    }
+    const audioPreferencesEnabled = await evalIn(`(()=>{const state=window.__CF_SLICE__.api.state();
+      return {sndOn:state.sndOn===true,voiceOn:state.voiceOn===true}})()`);
+    if (audioPreferencesEnabled.sndOn !== true || audioPreferencesEnabled.voiceOn !== true) {
+      failSliceWithoutCascade('ARC 5 FEED AUDIO PRECONDITION: Sound and Creature voices are not both enabled: '
+        + JSON.stringify(audioPreferencesEnabled));
     }
     await waitForF4Writable('Arc 5 Feed pre-action writable authority');
     if (await evalIn('window.__CF_SLICE__.api.state().cardOpen')) {

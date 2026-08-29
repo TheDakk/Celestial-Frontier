@@ -14,6 +14,14 @@ const source = readFileSync(
   fileURLToPath(new URL('../tools/slicesmoke.mjs', import.meta.url)),
   'utf8',
 );
+const glassSource = readFileSync(
+  fileURLToPath(new URL('../tools/glassmatrix.mjs', import.meta.url)),
+  'utf8',
+);
+const FEED_RELEASE_SILENCE_PREDICATE_SOURCE =
+  '/refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(mealText)';
+const feedReleaseSilenceWiringIsSemantic = (owner: string): boolean =>
+  owner.includes(FEED_RELEASE_SILENCE_PREDICATE_SOURCE);
 const digest = (character: string): string => character.repeat(64);
 const canonicalJson = (value: unknown): string => {
   if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
@@ -28,6 +36,13 @@ const canonicalJson = (value: unknown): string => {
 const hashCanonical = (value: unknown): string => createHash('sha256')
   .update(canonicalJson(value)).digest('hex');
 const hashText = (value: string): string => createHash('sha256').update(value).digest('hex');
+const feedAudioPreferenceSetupIsComplete = (owner: string): boolean => [
+  'sndOn:state.sndOn===true',
+  'voiceOn:state.voiceOn===true',
+  "arc5FeedClick('#setsnd', 'Arc 5 Feed Sound On')",
+  "arc5FeedClick('#setvoice', 'Arc 5 Feed Creature voices On')",
+  'audioPreferencesEnabled.sndOn !== true || audioPreferencesEnabled.voiceOn !== true',
+].every((binding) => owner.includes(binding));
 
 const fixture = Object.freeze({
   logicalId: 's1337',
@@ -998,6 +1013,30 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
     expect(detailOwner).not.toContain('*58');
     expect(setupOwner).toContain('const audioBaseline = await evalIn');
     expect(setupOwner).toContain('audioBaseline.creates !== 0 || audioBaseline.starts.length !== 0');
+    expect(feedAudioPreferenceSetupIsComplete(setupOwner)).toBe(true);
+    expect(feedReleaseSilenceWiringIsSemantic(source)).toBe(true);
+    expect(feedReleaseSilenceWiringIsSemantic(glassSource)).toBe(true);
+    expect(feedReleaseSilenceWiringIsSemantic(
+      source.replace(FEED_RELEASE_SILENCE_PREDICATE_SOURCE,
+        FEED_RELEASE_SILENCE_PREDICATE_SOURCE.replace('/i.test', '/.test')),
+    )).toBe(false);
+    expect(feedReleaseSilenceWiringIsSemantic(
+      glassSource.replace(FEED_RELEASE_SILENCE_PREDICATE_SOURCE,
+        FEED_RELEASE_SILENCE_PREDICATE_SOURCE.replace('/i.test', '/.test')),
+    )).toBe(false);
+    expect(feedAudioPreferenceSetupIsComplete(
+      setupOwner.replace(
+        "arc5FeedClick('#setvoice', 'Arc 5 Feed Creature voices On')",
+        "arc5FeedClick('#setsnd', 'Arc 5 Feed Sound On')",
+      ),
+    )).toBe(false);
+    expect(feedAudioPreferenceSetupIsComplete(
+      setupOwner.replace(
+        'audioPreferencesEnabled.sndOn !== true || audioPreferencesEnabled.voiceOn !== true',
+        'audioPreferencesEnabled.sndOn !== true',
+      ),
+    )).toBe(false);
+    expect(feedAudioPreferenceSetupIsComplete(setupOwner)).toBe(true);
     expect(setupOwner).not.toContain('audio-prime');
     expect(setupOwner).not.toContain("await evalIn('window.__cfFeedAudioCreates=0;window.__cfFeedAudioStarts=[]')");
     for (const binding of [

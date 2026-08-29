@@ -93,6 +93,8 @@ const FEEDING_COPY_CONTRADICTIONS = Object.freeze([
   /(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i,
   /optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i,
 ]);
+const FEED_RELEASE_REPLAY_SILENCE_COPY =
+  /refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i;
 
 const CAPTURE_COPY_CONTRADICTIONS = Object.freeze([
   /(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i,
@@ -431,7 +433,7 @@ function feedingReleaseCopyIsTruthful(body: string): boolean {
     && /Sound and Creature voices enabled/i.test(body)
     && /trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status/i.test(body)
     && /one deterministic synthesized acknowledgement after that status appears/i.test(body)
-    && /refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(body)
+    && FEED_RELEASE_REPLAY_SILENCE_COPY.test(body)
     && /Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable/i.test(body)
     && FEEDING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
@@ -1242,6 +1244,14 @@ describe('v2 Guide capability filter', () => {
     expect(compendiumCatalogueCopyIsTruthful(kingdoms)).toBe(true);
     expect(specimenDetailCopyIsTruthful(specimen)).toBe(true);
     expect(feedingCopyIsTruthful(feeding)).toBe(true);
+    expect(feedingReleaseCopyIsTruthful(feedingBullet!)).toBe(true);
+    expect(FEED_RELEASE_REPLAY_SILENCE_COPY.test(feedingBullet!)).toBe(true);
+    expect(feedingReleaseCopyIsTruthful(
+      feedingBullet!.replace(
+        FEED_RELEASE_REPLAY_SILENCE_COPY,
+        'replay-silence boundary removed',
+      ),
+    )).toBe(false);
     expect(feedingReleaseCopyIsTruthful(feedingBullet!)).toBe(true);
     expect(compendiumArtReleaseCopyIsTruthful(artBullet!)).toBe(true);
 

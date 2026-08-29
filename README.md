@@ -24,7 +24,15 @@
 > and passed named verification on the same clean source. The raw/gzip report SHA-256 pair is
 > `3b0116f98a77e3089ef80fd78ebc762a658c74907a2c5e473061718c9860e7a6` /
 > `1415773e8eb7474d141b9174939bf618795b76742afd874e4bf73fa7bc0a70e7`.
-> The complete campaign must now restart from Layout on the next signed clean evidence descendant.
+> Signed clean evidence descendant `bf24a4921eb5ca757a4978b9d01e44ae39a0a06d` restarted the
+> campaign: Layout passed 787/787, SceneMemory 44/44 and Compendium 78/78, all once and
+> named-verified. Slice then stopped after its one 239,797 ms attempt with ten retained findings.
+> Nine were one false cascade from a case-sensitive release-copy predicate; the tenth was a harness
+> precondition that enabled Sound but not Creature Voices before requiring Feed audio. The preserved
+> report demonstrates no Feed gameplay failure. The repair keeps product/release bytes and both
+> memory producers unchanged, makes Slice and Glass assess the truthful silence clause
+> case-insensitively, and drives/verifies both real audio preferences with mutation controls.
+> A new signed clean repair source must restart the complete campaign from Layout.
 > Edge `151.0.4129.107` / CDP `1.3` remains provenance only; compatible
 > updates do not trigger rebaseline. Exact calibration carriers, byte sizes and hashes are preserved
 > in [`audits/README.md`](audits/README.md). No GitHub, release, version or deployment authority follows.
