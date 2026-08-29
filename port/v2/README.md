@@ -94,9 +94,12 @@
 > Legacy-source tests now extract the unique tracked `celestial-frontier.html` script byte-for-byte,
 > with no ignored fallback or normalization. Evidence children have an explicit 15-second hard
 > timeout below a 20-second outer test and independently classify timeout, spawn failure, nonzero
-> exit and missing success marker. A clean committed tracked-only rehearsal now precedes hosted
-> authorization and both guarded workflows run its mutation-sensitive selftest immediately after
-> installing v2. The repair also clears four previously hidden `artunused` findings. Its sole
+> exit and missing success marker. Exact signed repair commit
+> `9192b1aa66c38508cd19f5db0e4825b0a31d5516` and the final documentation-closed signed HEAD pass the
+> clean committed tracked-only rehearsal: 233/233 files, 2,333 passed + 1 skipped, all TypeScript/
+> unused/art/override/coverage/spec checks and 3/3 current-producer tests. This rehearsal precedes hosted authorization,
+> and both guarded workflows run its mutation-sensitive selftest immediately after installing v2.
+> The repair also clears four previously hidden `artunused` findings. Its sole
 > product-source cleanup changes only a 20-byte source-map delta: all 29 runtime files and the PWA
 > build ID remain byte-identical, so SceneMemory's exact full-dist provenance was rebound without
 > changing a numeric ceiling, browser contract, collector or runtime asset. The consumed run remains

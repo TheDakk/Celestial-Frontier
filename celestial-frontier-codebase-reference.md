@@ -320,7 +320,10 @@
 > source cleanup changed one source map by 20 bytes; an isolated same-path comparison proved all 29
 > runtime files and PWA build ID byte-identical. SceneMemory full-dist authority is therefore
 > `30ac9f97…8750` under budget `158ed95e…c308`, with every numeric ceiling, browser contract,
-> collector and runtime byte unchanged. This is hermetic browser-free parity, not a hosted green,
+> collector and runtime byte unchanged. Exact signed repair commit
+> `9192b1aa66c38508cd19f5db0e4825b0a31d5516` and the final documentation-closed signed HEAD pass the
+> exact isolated rehearsal: 233/233 files, 2,333 passed + one skipped, all TypeScript/unused/art/
+> override/coverage/spec checks and 3/3 current-producer tests. This is hermetic browser-free parity, not a hosted green,
 > browser certificate, HUMAN judgment, merge, release or deployment authority.
 
 > A complete technical reference for the game, written so any future session can pick up

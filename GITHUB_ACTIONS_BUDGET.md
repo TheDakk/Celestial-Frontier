@@ -304,8 +304,11 @@ case, and adds the clean committed tracked-only rehearsal described above. Its c
 and repaired four `artunused` findings that the stopped run never reached. SceneMemory build
 provenance changed only because one source map changed by 20 bytes: all 29 runtime files and the PWA
 build ID are byte-identical, and no numeric memory ceiling, browser contract or runtime asset moved.
-This is local repair evidence only. No replacement push, hosted attempt, Ready transition, merge,
-release, version bump, preview, publication or deployment is authorized.
+Exact signed repair commit `9192b1aa66c38508cd19f5db0e4825b0a31d5516` and the final
+documentation-closed signed HEAD pass the exact tracked-only isolated rehearsal: 233/233 files,
+2,333 tests passed + one skipped, all TypeScript/unused/art/override/coverage/spec gates and 3/3
+current-producer tests. This is local repair evidence only. No replacement push, hosted attempt,
+Ready transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard
 

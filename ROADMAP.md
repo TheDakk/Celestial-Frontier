@@ -29,8 +29,11 @@ the archive verbatim and refresh this handoff in place.
   repository remain untouched.
 - **Git/PR boundary:** draft PR **#35** already exists from **`openai/mac` → `develop`**. Its pushed
   candidate is head **390e8708086d413fc7d636441ec0523cf9d4b9ea** against base
-  **7a9f4c1370dd84292388d718c38ff34214f6203b**. The current repair is a local descendant and has
-  not been pushed. Preserve every existing user change.
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**. Exact signed implementation-repair commit
+  **9192b1aa66c38508cd19f5db0e4825b0a31d5516** passed the tracked-only rehearsal. The signed,
+  clean documentation-closed HEAD also must pass it before handoff; resolve that inherently
+  self-referential full identity with `git rev-parse HEAD` and provide it in the Git handoff. None of
+  this local repair has been pushed. Preserve every existing user change.
 - **Consumed hosted attempt:** Nick authorized exactly one `test-battery` run for that head/base with
   `actions-budget-approved`, a 92-minute maximum and no retry. Run **33273328362** is terminal-red
   and consumed; the label was removed, later browser stages were skipped, and PR #35 remains
@@ -47,7 +50,7 @@ the archive verbatim and refresh this handoff in place.
   **3f69e88ea8e34fdb8d9913276601b426ada783ae** owns the completed once-only
   Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain: Layout 787/787,
   SceneMemory 44/44, Compendium 78/78, zero-finding Slice, all 12 Glass viewports and the real
-  20-minute Recovery observation. This later dirty local candidate does not inherit or relabel it.
+  20-minute Recovery observation. This later local candidate does not inherit or relabel it.
 - Edge/Chrome/Chromium point versions are provenance only. A compatible browser update never
   requires rebaseline, recalibration or threshold movement.
 
@@ -104,9 +107,13 @@ production release are complete.
 
 ### Final browser-free evidence
 
-- **Complete v2 suite:** **233 files / 2,333 passed / 1 skipped / 0 failed** on the repaired working
-  candidate. The exact clean committed tracked-only rehearsal remains the final local acceptance
-  step; this working-tree result is not hosted or browser authority.
+- **Exact committed rehearsal:** the signed current HEAD passes
+  `node tools/tracked-input-preflight.mjs` from an isolated export of its Git index. The ordered
+  result is **233 files / 2,333 passed / 1 skipped / 0 failed**, all three TypeScript programs,
+  `artunused`, **34 art sources / 0 findings**, **1,014/1,014** override routes plus all controls,
+  **1,010/1,010** coverage, **454 declared / 0 never-read / 0 inert** spec fields and **3/3**
+  current-producer tests.
+  This is exact local browser-free/static parity, not hosted or browser authority.
 - **Consolidated campaign focus:** **19 files / 207 passed**. The final semantic-hardening subset
   separately passed **15 files / 139 tests**; the repaired Arc 9 and Chronicle instruments passed
   their direct negative-controlled sets.
@@ -124,7 +131,7 @@ production release are complete.
   Numeric ceilings, fixed rulers, historical calibration samples and browser-family policy did not
   change.
 - Staged and unstaged diff hygiene is green at this checkpoint.
-- **No browser-owning command was run for this moving dirty source.** A fresh clean,
+- **No browser-owning command was run for this later local source.** A fresh clean,
   committed-source immutable browser chain remains post-review work; the historical `3f69e88…`
   certificate is not evidence for these later additions.
 
@@ -158,6 +165,12 @@ production release are complete.
   non-map runtime files and PWA build ID byte-identical; only `main-R61RQSgI.js.map` changed by 20
   bytes. SceneMemory's exact build provenance was rebound to that full-dist identity without moving
   a numeric ceiling, browser contract, collector or runtime byte.
+- **Documentation closure:** `ROADMAP.md`, `GITHUB_ACTIONS_BUDGET.md`, `PROCESS_LAWS.md`,
+  `port/v2/README.md` and `celestial-frontier-codebase-reference.md` now agree on the causes, repair,
+  controls, evidence, authority and next Git/Claude steps. No player-facing release entry or
+  per-system gameplay reference changed because save/gameplay/runtime bytes and behavior are
+  unchanged. This is the live handoff, so it remains here rather than moving to
+  `ROADMAP_ARCHIVE.md` before review.
 - Run `33273328362` remains immutable terminal-red evidence. This repair is not a retry and claims
   no hosted green, browser certificate, HUMAN acceptance, merge, release or deployment authority.
 
@@ -198,13 +211,14 @@ invariant and the smallest safe correction. Review these axes:
 5. performance, dead/unreachable code, duplicate owners, package boundaries, tests/instruments and
    Markdown/source agreement.
 6. PR #35's hermetic CI repair specifically: verify `test-support/tracked-v1-source.ts` preserves
-   exact committed legacy bytes with no ignored fallback; every `bounded-child` caller pins the
-   15-second child / 20-second outer contract and cannot pass on timeout, nonzero or missing marker;
-   `tracked-input-preflight.mjs` executes the exact ordered hosted-static plan from only the clean
-   committed index, rechecks the candidate before PASS and cannot be softened or bypassed in either
-   guarded workflow; and the SceneMemory rebind changes only full-dist source-map provenance while
-   all 29 runtime files, the PWA build ID, numeric ceilings, browser contract and collector remain
-   unchanged.
+   exact committed legacy bytes with no ignored fallback; every production evidence-selftest caller
+   pins the 15-second child / 20-second outer contract and cannot pass on timeout, spawn failure,
+   nonzero exit or missing marker; `tracked-input-preflight.mjs` executes the exact ordered
+   hosted-static plan from only the clean committed index, rechecks the candidate before PASS and
+   cannot be softened or bypassed in either guarded workflow; and the SceneMemory rebind changes
+   only full-dist source-map provenance while all 29 runtime files, the PWA build ID, numeric
+   ceilings, browser contract and collector remain unchanged. Lightweight helper controls
+   deliberately retain shorter 5-second and 100-millisecond bounds.
 
 The review should distinguish a product defect from an instrument defect, preserve historical
 evidence verbatim and leave policy/HUMAN items explicitly open. OpenAI/Codex repairs accepted
@@ -212,17 +226,23 @@ findings only after that review.
 
 ### Paired handoff / Git protocol
 
-- **OpenAI/Codex:** finish the clean tracked-only rehearsal and commit the local PR #35 repair on
-  `openai/mac`. Do not push the changed head, label, request a hosted battery, merge, release or
-  deploy until Nick authorizes that exact next operation.
-- **Anthropic/Claude Code:** Nick does not need to open Claude inside this dirty shared worktree.
-  After a safe local commit/handoff is explicitly authorized, Claude works only from an
-  `anthropic/*` branch/worktree created from that exact candidate—never by copying files out of this
-  worktree.
+- **OpenAI/Codex:** the local PR #35 repair is signed, clean and tracked-only green on `openai/mac`.
+  Do not push the changed head, label, request a hosted battery, merge, release or deploy until Nick
+  authorizes that exact next operation.
+- **Anthropic/Claude Code:** Nick does not need to open Claude in this OpenAI-owned worktree. When
+  Nick starts the polish review, Claude works only from an `anthropic/*` branch/worktree created
+  from the exact handed-off candidate—never by editing or copying files out of this worktree. Its
+  review scope and six axes are complete above.
 - **GitHub step now:** none. PR #35 remains Draft at pushed head `390e870…`; its repair is local.
   A later authorization must name the new full head/base, `actions-budget-approved`, 92-minute
   maximum, one attempt/no retry, label removal and merge-on-green decision.
-- **Future OpenAI PR, only after exact authorization:** base **develop**, source **openai/mac**.
-  Recompute a copy-ready title/description from the post-review fixed scope.
+- **Existing PR update, only after exact authorization:** [PR #35](https://github.com/TheDakk/Celestial-Frontier/pull/35),
+  base **develop**, source **openai/mac**. Its existing title
+  `feat(v2): complete roadmap campaign candidate` and pre-repair description are stale. Before any
+  Ready transition or one-run label, refresh both for the final pushed head; proposed title:
+  `feat(v2): complete roadmap campaign and harden CI parity`. The description must name the final
+  base/head, campaign scope, both CI root causes and bounded repairs, exact local verification,
+  retained historical browser authority, Claude/cross-agent synchronization effect, pending HUMAN/
+  browser evidence and the explicit no-release/no-deployment boundary.
 - **Release status:** `develop`, `main` and the live site are unchanged; no production release or
   deployment is in progress.
