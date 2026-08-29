@@ -32,7 +32,19 @@
 > report demonstrates no Feed gameplay failure. The repair keeps product/release bytes and both
 > memory producers unchanged, makes Slice and Glass assess the truthful silence clause
 > case-insensitively, and drives/verifies both real audio preferences with mutation controls.
-> A new signed clean repair source must restart the complete campaign from Layout.
+> Signed repair `9d8ffb11c9eb3a8066dc295a21e61820962c7cb3` then restarted the campaign:
+> Layout passed 787/787, SceneMemory 44/44 and Compendium 78/78, each once and named-verified.
+> Slice ran once for 437,229 ms and stopped on one later instrument finding. The exact transaction,
+> stale loser, visible result, one successful oscillator start and complete same-context audio path
+> were all present; the collector searched for DOM interface names `OscillatorNode` /
+> `AudioDestinationNode` while raw CDP correctly emitted `Oscillator` / `AudioDestination`.
+> The bounded repair now shares one pure raw-CDP event projector between Slice and its tests,
+> returns missing/bad page-side audio evidence without throwing, classifies missing/ambiguous
+> endpoints as instrument failures only when a final independent wrapper reread still proves the complete exact post-settlement start, preserves real duplicates and
+> disconnected/cross-context routes as product failures, derives its cross-context mutation from
+> the actual proved route, and blocks dependent controls until their baseline is green. Product,
+> release, build and memory-producer bytes remain unchanged. A new signed clean repair source must
+> restart the complete campaign from Layout.
 > Edge `151.0.4129.107` / CDP `1.3` remains provenance only; compatible
 > updates do not trigger rebaseline. Exact calibration carriers, byte sizes and hashes are preserved
 > in [`audits/README.md`](audits/README.md). No GitHub, release, version or deployment authority follows.

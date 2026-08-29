@@ -1037,23 +1037,166 @@ export function assessCompendiumFeedPendingWindow(observation) {
   return { ok: reasons.length === 0, reasons };
 }
 
-/* A source-level connect call proves only that an oscillator handed bytes to
-   some node. The browser oracle must also bind that exact post-arm source to
-   a live CDP WebAudio path ending at its context's AudioDestinationNode, and
-   must observe `start()` returning successfully after visible settlement. */
-export function assessCompendiumFeedAudioAcknowledgement(observation) {
-  const reasons = [];
+/* CDP's WebAudio domain reports protocol node types (`Oscillator`,
+   `AudioDestination`), not the similarly named DOM interfaces
+   (`OscillatorNode`, `AudioDestinationNode`). Keep event projection here so
+   the collector and its browser-free controls consume the same raw vocabulary. */
+export function projectCompendiumFeedWebAudioGraph({
+  events, sessionId, enableMark, sourceMark,
+}) {
+  if (!Array.isArray(events) || !nonEmptyString(sessionId)
+    || !safeInt(enableMark) || !safeInt(sourceMark) || sourceMark < enableMark) {
+    throw new TypeError('Compendium Feed WebAudio projection requires one exact event window');
+  }
+  const nodes = new Map();
+  const edges = new Map();
+  const sourceNodeIds = [];
+  for (const [eventIndex, event] of events.entries()) {
+    if (eventIndex < enableMark || event?.sessionId !== sessionId) continue;
+    if (event.method === 'WebAudio.audioNodeCreated') {
+      const node = event.params?.node;
+      if (!nonEmptyString(node?.nodeId) || !nonEmptyString(node?.contextId)
+        || !nonEmptyString(node?.nodeType)) continue;
+      nodes.set(node.nodeId, {
+        nodeId: node.nodeId, contextId: node.contextId, nodeType: node.nodeType,
+      });
+      if (eventIndex >= sourceMark && node.nodeType === 'Oscillator') {
+        sourceNodeIds.push(node.nodeId);
+      }
+    } else if (event.method === 'WebAudio.audioNodeWillBeDestroyed') {
+      const nodeId = event.params?.nodeId;
+      nodes.delete(nodeId);
+      for (const [key, edge] of edges) {
+        if (edge.sourceId === nodeId || edge.destinationId === nodeId) edges.delete(key);
+      }
+    } else if (event.method === 'WebAudio.nodesConnected') {
+      const { contextId, sourceId, destinationId } = event.params ?? {};
+      if (nonEmptyString(contextId) && nonEmptyString(sourceId)
+        && nonEmptyString(destinationId)) {
+        edges.set(`${contextId}|${sourceId}|${destinationId}`, {
+          contextId, sourceId, destinationId,
+        });
+      }
+    } else if (event.method === 'WebAudio.nodesDisconnected') {
+      const { contextId, sourceId, destinationId } = event.params ?? {};
+      for (const [key, edge] of edges) {
+        if (edge.contextId === contextId && edge.sourceId === sourceId
+          && (!nonEmptyString(destinationId) || edge.destinationId === destinationId)) {
+          edges.delete(key);
+        }
+      }
+    }
+  }
+  const sourceNodeId = sourceNodeIds.length === 1 ? sourceNodeIds[0] : null;
+  const source = sourceNodeId === null ? null : nodes.get(sourceNodeId);
+  const destinations = [...nodes.values()].filter((node) => (
+    node.nodeType === 'AudioDestination' && node.contextId === source?.contextId
+  ));
+  const nodeTypeInventory = Object.entries([...nodes.values()].reduce((inventory, node) => {
+    inventory[node.nodeType] = (inventory[node.nodeType] ?? 0) + 1;
+    return inventory;
+  }, {})).sort(([left], [right]) => left.localeCompare(right));
+  return {
+    schema: 'cf-v2-feed-audio-graph/v1',
+    sourceNodeId,
+    destinationNodeId: destinations.length === 1 ? destinations[0].nodeId : null,
+    sourceCandidateCount: sourceNodeIds.length,
+    destinationCandidateCount: destinations.length,
+    nodeTypeInventory,
+    nodes: [...nodes.values()].sort((left, right) => left.nodeId.localeCompare(right.nodeId)),
+    edges: [...edges.values()]
+      .filter((edge) => {
+        const sourceNode = nodes.get(edge.sourceId);
+        const destinationNode = nodes.get(edge.destinationId);
+        return sourceNode?.contextId === edge.contextId
+          && destinationNode?.contextId === edge.contextId;
+      })
+      .sort((left, right) => `${left.contextId}|${left.sourceId}|${left.destinationId}`
+        .localeCompare(`${right.contextId}|${right.sourceId}|${right.destinationId}`)),
+  };
+}
+
+/* Return one deterministic source-to-destination route using the same
+   same-context raw CDP graph semantics as the assessor. The live negative
+   control uses this route so it cannot accidentally mutate an unrelated
+   branch and pass vacuously. */
+export function compendiumFeedWebAudioRouteNodeIds(graph) {
+  const nodes = Array.isArray(graph?.nodes) ? graph.nodes : [];
+  const edges = Array.isArray(graph?.edges) ? graph.edges : [];
+  const byId = new Map(nodes.map((node) => [node?.nodeId, node]));
+  const source = byId.get(graph?.sourceNodeId);
+  const destination = byId.get(graph?.destinationNodeId);
+  const contextId = source?.contextId;
+  if (source?.nodeType !== 'Oscillator'
+    || destination?.nodeType !== 'AudioDestination'
+    || !nonEmptyString(contextId) || destination.contextId !== contextId) return [];
+  const outgoing = new Map();
+  for (const edge of edges) {
+    const edgeSource = byId.get(edge?.sourceId);
+    const edgeDestination = byId.get(edge?.destinationId);
+    if (edge?.contextId !== contextId || edgeSource?.contextId !== contextId
+      || edgeDestination?.contextId !== contextId) continue;
+    const targets = outgoing.get(edge.sourceId) ?? [];
+    targets.push(edge.destinationId);
+    outgoing.set(edge.sourceId, targets);
+  }
+  for (const targets of outgoing.values()) targets.sort((left, right) => left.localeCompare(right));
+  const queue = [source.nodeId];
+  const visited = new Set(queue);
+  const predecessor = new Map();
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (current === destination.nodeId) {
+      const route = [current];
+      while (predecessor.has(route[0])) route.unshift(predecessor.get(route[0]));
+      return route;
+    }
+    for (const target of outgoing.get(current) ?? []) {
+      if (!visited.has(target)) {
+        visited.add(target);
+        predecessor.set(target, current);
+        queue.push(target);
+      }
+    }
+  }
+  return [];
+}
+
+/* A raw-CDP endpoint mismatch is a harness failure only when the page-side
+   wrapper still proves the complete exact post-settlement start. If the
+   wrapper sees a duplicate, missing or semantically bad acknowledgement,
+   preserve that as a product-red outcome instead of hiding it behind an
+   instrument exception. */
+function compendiumFeedPostSettlementSourceStartIsExact(observation) {
   const starts = Array.isArray(observation?.audioStarts) ? observation.audioStarts : [];
   const start = starts[0];
-  if (observation?.audioCreates !== 1 || starts.length !== 1
-    || !exactKeys(start, [
+  return observation?.audioCreates === 1 && starts.length === 1
+    && exactKeys(start, [
       'startReturned', 'sourceConnected', 'contextState',
       'pendingWork', 'lastOutcome', 'toastSerial',
     ])
-    || start.startReturned !== true || start.sourceConnected !== true
-    || start.contextState !== 'running' || start.pendingWork !== 0
-    || start.lastOutcome !== `committed:${observation?.globalRevision}`
-    || start.toastSerial !== observation?.toastSerial) {
+    && start.startReturned === true && start.sourceConnected === true
+    && start.contextState === 'running' && start.pendingWork === 0
+    && start.lastOutcome === `committed:${observation?.globalRevision}`
+    && start.toastSerial === observation?.toastSerial;
+}
+
+export function compendiumFeedWebAudioEndpointFailureIsInstrument(observation) {
+  const wrapperBindsExactStart = compendiumFeedPostSettlementSourceStartIsExact(observation);
+  const graph = observation?.audioGraph;
+  const graphBindsEndpoints = graph?.sourceCandidateCount === 1
+    && graph?.destinationCandidateCount === 1
+    && nonEmptyString(graph?.sourceNodeId) && nonEmptyString(graph?.destinationNodeId);
+  return wrapperBindsExactStart && !graphBindsEndpoints;
+}
+
+/* A source-level connect call proves only that an oscillator handed bytes to
+   some node. The browser oracle must also bind that exact post-arm source to
+   a live CDP WebAudio path ending at its context's AudioDestination, and must
+   observe `start()` returning successfully after visible settlement. */
+export function assessCompendiumFeedAudioAcknowledgement(observation) {
+  const reasons = [];
+  if (!compendiumFeedPostSettlementSourceStartIsExact(observation)) {
     reasons.push('successful post-settlement source start');
   }
 
@@ -1064,8 +1207,16 @@ export function assessCompendiumFeedAudioAcknowledgement(observation) {
   const edgeIds = edges.map((edge) => [
     edge?.contextId, edge?.sourceId, edge?.destinationId,
   ].join('|'));
+  const expectedNodeTypeInventory = Object.entries(nodes.reduce((inventory, node) => {
+    if (nonEmptyString(node?.nodeType)) {
+      inventory[node.nodeType] = (inventory[node.nodeType] ?? 0) + 1;
+    }
+    return inventory;
+  }, {})).sort(([left], [right]) => left.localeCompare(right));
   const exactGraphShape = graph?.schema === 'cf-v2-feed-audio-graph/v1'
     && nonEmptyString(graph?.sourceNodeId) && nonEmptyString(graph?.destinationNodeId)
+    && graph?.sourceCandidateCount === 1 && graph?.destinationCandidateCount === 1
+    && canonicalJson(graph?.nodeTypeInventory) === canonicalJson(expectedNodeTypeInventory)
     && nodes.length > 0 && edges.length > 0
     && new Set(nodeIds).size === nodeIds.length
     && new Set(edgeIds).size === edgeIds.length
@@ -1075,44 +1226,9 @@ export function assessCompendiumFeedAudioAcknowledgement(observation) {
     && edges.every((edge) => exactKeys(edge, ['contextId', 'sourceId', 'destinationId'])
       && nonEmptyString(edge.contextId) && nonEmptyString(edge.sourceId)
       && nonEmptyString(edge.destinationId));
-  let reachesDestination = false;
-  if (exactGraphShape) {
-    const byId = new Map(nodes.map((node) => [node.nodeId, node]));
-    const source = byId.get(graph.sourceNodeId);
-    const destination = byId.get(graph.destinationNodeId);
-    const contextId = source?.contextId;
-    if (source?.nodeType === 'OscillatorNode'
-      && destination?.nodeType === 'AudioDestinationNode'
-      && nonEmptyString(contextId) && destination.contextId === contextId) {
-      const outgoing = new Map();
-      for (const edge of edges) {
-        const edgeSource = byId.get(edge.sourceId);
-        const edgeDestination = byId.get(edge.destinationId);
-        if (edge.contextId !== contextId || edgeSource?.contextId !== contextId
-          || edgeDestination?.contextId !== contextId) continue;
-        const targets = outgoing.get(edge.sourceId) ?? [];
-        targets.push(edge.destinationId);
-        outgoing.set(edge.sourceId, targets);
-      }
-      const queue = [source.nodeId];
-      const visited = new Set(queue);
-      while (queue.length > 0 && !reachesDestination) {
-        const current = queue.shift();
-        if (current === destination.nodeId) {
-          reachesDestination = true;
-          break;
-        }
-        for (const target of outgoing.get(current) ?? []) {
-          if (!visited.has(target)) {
-            visited.add(target);
-            queue.push(target);
-          }
-        }
-      }
-    }
-  }
-  if (!exactGraphShape || !reachesDestination) {
-    reasons.push('live AudioDestinationNode route');
+  const routeNodeIds = exactGraphShape ? compendiumFeedWebAudioRouteNodeIds(graph) : [];
+  if (!exactGraphShape || routeNodeIds.length < 2) {
+    reasons.push('live AudioDestination route');
   }
   return { ok: reasons.length === 0, reasons };
 }

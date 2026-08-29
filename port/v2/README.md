@@ -43,7 +43,17 @@
 > and one harness finding came from enabling Sound but not Creature Voices before requiring Feed
 > audio. Product/release bytes and memory producers remain unchanged. The bounded repair case-folds
 > that truthful silence clause in Slice and Glass and natively enables/verifies both missing audio
-> preferences with mutation controls. Sign the repair, then restart
+> preferences with mutation controls. Signed repair `9d8ffb11c9eb…` restarted and again passed
+> Layout 787/787, SceneMemory 44/44 and Compendium 78/78 once with named verification. Slice then
+> stopped after one 437,229 ms attempt on one instrument finding: the exact winner/stale-loser,
+> visible result, oscillator start and complete graph were green, but the collector searched DOM
+> interface names while raw CDP emitted protocol node types `Oscillator` / `AudioDestination`.
+> The new bounded repair shares one pure raw-CDP projector with its tests. Its bounded page
+> observation returns missing/bad evidence without throwing, and a final independent wrapper reread
+> keeps real duplicate or semantically bad acknowledgements product-red; only
+> endpoint incoherence against a complete exact post-settlement start becomes an instrument failure. Its cross-context
+> mutant selects one exact intermediate from the proved route, and dependent controls remain blocked
+> until baseline green. Product/release/build/memory-producer bytes remain unchanged. Sign that repair, then restart
 > the complete Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain from
 > Layout. Do not rerun `55126af…` or treat compatible Edge updates as rebaseline events. Keep
 > temporary full caffeinate active until the completed handoff. No HUMAN, whole-Gate, hosted/merge,
@@ -51,7 +61,7 @@
 
 ## Current port status — 2026-08-29
 
-### Current local universe-wide visual checkpoint — implementation present, Slice instrument repair ready to sign
+### Current local universe-wide visual checkpoint — implementation present, raw-CDP projector repair ready to sign
 
 The active v2 routes now share one structure-preserving visual language across galaxy and system
 space, planets, all 43 live biomes, creatures, plants, fungi, microbes and the ship. The finite

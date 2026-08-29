@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-29 · UNIVERSE POLISH + ARC 5 · THREE GATES GREEN · SLICE INSTRUMENT REPAIR READY TO SIGN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · UNIVERSE POLISH + ARC 5 · THREE GATES GREEN · RAW-CDP PROJECTOR REPAIR READY TO SIGN ◀◀◀
 
 ### Exact current boundary
 
@@ -47,9 +47,15 @@ the archive verbatim and refresh this handoff in place.
   `9518b5ff8df81e82837687bfe8c6ea4933ddf97c`, parent `27513798bedd9e4337d0b1db9712fa784b90b9fd`).
   Layout, SceneMemory and Compendium passed once and named-verified; Slice then stopped on two
   independent instrument/setup defects. Glass and Recovery did not run.
+- **Exact latest stopped full-chain source:** signed repair descendant
+  `9d8ffb11c9eb3a8066dc295a21e61820962c7cb3` (tree
+  `cea338ff1560402b0bd027a1a2e31d2f1704a72f`, parent `bf24a4921eb5ca757a4978b9d01e44ae39a0a06d`).
+  It repaired both prior Slice preconditions without changing product bytes. Layout, SceneMemory and
+  Compendium passed once and named-verified again; Slice then stopped on one raw-CDP vocabulary
+  defect in its WebAudio graph collector. Glass and Recovery did not run.
 - Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully
-  contained. The stopped source is **112 commits ahead** of `origin/openai/mac`; the signed repair
-  checkpoint will be **113 commits ahead**. Everything remains local and unpushed.
+  contained. The latest stopped source is **113 commits ahead** of `origin/openai/mac`; the signed
+  raw-CDP repair checkpoint will be **114 commits ahead**. Everything remains local and unpushed.
 - Temporary `/usr/bin/caffeinate -dis` remains active so macOS and 1Password stay available during
   the authorized local certification. Restore normal monitors-off/sleep behavior only after the
   complete chain and final handoff are safe.
@@ -272,9 +278,55 @@ the archive verbatim and refresh this handoff in place.
   - Slice log `02bc7642d85e8fdddff6884591046d8bbe89c92ce95a8976ff1210be1f5e43e9` /
     `caa22e4ad8e493aeacd0659f52625ce1001ceb29b9fb7e5b4010efee0351b857`.
 
-### Next exact action — sign repair, then restart from Layout
+### Stopped `9d8ffb11…` full-chain restart — three green predecessors, exact raw-CDP instrument red
 
-- Preserve the five stopped-chain carriers, repair and synchronized docs in one signed clean
+- Layout `20260829-universe-polish-9d8ffb11c9eb-layout` passed **787/787** across ten viewports in
+  76,296 ms; SceneMemory `…-scenemem` passed **44/44** in 10,648 ms; Compendium
+  `…-compendium` passed **78/78** in 45,406 ms with six review PNGs. Each ran once with zero
+  retries and passed its exact named verifier on the unchanged clean signed source.
+- Slice `20260829-universe-polish-9d8ffb11c9eb-slice` ran once with zero retries for **437,229 ms**
+  and stopped before Glass/Recovery with exactly one `arc-5-feed-commit` finding. The durable winner
+  advanced global revision 101→102 and ownership 16→17, Meals 0→1 and flora 1→0 with one exact
+  Feed receipt. The second real document lost stale, published no result/audio and reloaded onto the
+  winner fixed point. Visible `Meal complete` advanced toast 0→1; one connected oscillator started
+  in a running context after settlement.
+- The retained graph already contains one complete same-context route from raw CDP node type
+  `Oscillator` through its gain/analyser/compressor chain to raw `AudioDestination`. The collector
+  and synthetic fixture incorrectly searched for DOM interface names `OscillatorNode` and
+  `AudioDestinationNode`, so both derived endpoint IDs were null. The generic acknowledgement red,
+  29 contaminated mutation results and dependent two-document red are one instrument cascade, not
+  product failures or an Edge-version rebaseline event.
+- The bounded repair extracts one pure raw-CDP projector shared by Slice and browser-free tests. It
+  requires one post-mark/session `Oscillator`, one same-context `AudioDestination`, exact inventory
+  diagnostics and the live route. Its bounded page observation returns missing/bad evidence without
+  throwing, and a final wrapper reread keeps a real duplicate create/start product-red;
+  missing/ambiguous protocol endpoints stop as `harness:` only when that independent
+  wrapper still proves the complete exact post-settlement start. Coherent disconnected/cross-context or bad-start
+  evidence remains product-red. DOM-name, wrong-session, pre-mark, duplicate-source/destination,
+  destroyed-source and disconnected-route controls turn red, then the untouched projector restores
+  green. The cross-context control mutates one exact intermediate selected from the proved
+  source-to-destination route, never an unrelated graph branch. Committed mutants and the
+  two-document assessor are blocked until their prerequisite baseline is green, preventing vacuous
+  cascade claims.
+- Product/release inputs and calibrated producers remain byte-identical: buildDist `2d4ff26…`,
+  gameMain `87660ca…`, Compendium measurement `cd1586e…` and producer `d97370c0…`. Browser-free
+  repair battery is green: focused **65/65**, Slice/Glass report selftests, **163 files / 1,712
+  passed + 1 skipped**, all three typechecks, `artunused`, diff hygiene and producer derivation.
+- Immutable stopped-chain raw/gzip SHA-256 pairs:
+  - Layout `01b0e841f175b013d1efbc4e78a9f9266333da23ef60ab9231ad3eccd50a6a17` /
+    `7116c9ea83faf8567019e6124c525782f1e5f29662c23a4d935c06fa263a74d5`;
+  - SceneMemory `006b0db985bc5a7522d37a545e76a9d2bc99206df060f53ec7233a042687c5b1` /
+    `10842e23a7d8702fd8448b6d1ed2a18733064a0ffe9a44e77b4fdc81abdf2e78`;
+  - Compendium `b3147fdeb91f74f56ffb58484fc37927ce140980f11d42a6bc5a0a39dc19101d` /
+    `0459bb92d22c962e8f766774af0a0b4a26c9834c4595db2a347d0a8b273b729f`;
+  - Slice report `7d51c63a68c2667f3e206514ae33b36a1b95cddbdffd4504c6b139be929d5ec7` /
+    `a772a5eacb4cea991f5e42444bc1fd78c492e28d893321665376e72e391bdc6e`;
+  - Slice log `d0ae43cbda9f81599a18f84a846420cf673b6a84070821655d545a7c0b198260` /
+    `6c448238215ad486e1e88818d09bb96a4cb36c4e710f4ed2927015eb69d8a612`.
+
+### Next exact action — sign raw-CDP repair, then restart from Layout
+
+- Preserve the latest five stopped-chain carriers, projector repair and synchronized docs in one signed clean
   checkpoint. From that changed source, a completely fresh once-only campaign must start at
   **Layout 787 → SceneMemory 44 → Compendium 78 → Slice → Glass 12 → Recovery 20-minute**.
   Every stage uses source-derived IDs and stops/preserves on any red, nonzero or instrument result.
@@ -293,7 +345,8 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** sign the preserved stopped-chain evidence plus bounded Slice/Glass repair, then
+- **OpenAI/Codex:** sign the preserved `9d8ffb11…` stopped-chain evidence plus bounded raw-CDP
+  projector/causal-gating repair, then
   restart the fresh full chain from Layout. Keep temporary
   `/usr/bin/caffeinate -dis` active until that endpoint, then restore normal monitor/sleep behavior.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,

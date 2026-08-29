@@ -46,6 +46,28 @@ export function selectArc5FeedFixtureBurnVerb(
 ): 'tame' | 'scavenge' | 'sample' | null;
 export function assessCompendiumFeedPendingWindow(observation: unknown): SliceContractAssessment;
 export function assessCompendiumFeedCommittedOutcome(observation: unknown): SliceContractAssessment;
+export interface CompendiumFeedWebAudioGraph {
+  schema: 'cf-v2-feed-audio-graph/v1';
+  sourceNodeId: string | null;
+  destinationNodeId: string | null;
+  sourceCandidateCount: number;
+  destinationCandidateCount: number;
+  nodeTypeInventory: Array<[string, number]>;
+  nodes: Array<{ nodeId: string; contextId: string; nodeType: string }>;
+  edges: Array<{ contextId: string; sourceId: string; destinationId: string }>;
+}
+export function projectCompendiumFeedWebAudioGraph(input: {
+  events: readonly unknown[];
+  sessionId: string;
+  enableMark: number;
+  sourceMark: number;
+}): CompendiumFeedWebAudioGraph;
+export function compendiumFeedWebAudioRouteNodeIds(
+  graph: CompendiumFeedWebAudioGraph,
+): string[];
+export function compendiumFeedWebAudioEndpointFailureIsInstrument(
+  observation: unknown,
+): boolean;
 export function assessCompendiumFeedAudioAcknowledgement(observation: unknown): SliceContractAssessment;
 export function assessCompendiumFeedTwoDocumentStaleOutcome(
   observation: unknown,
