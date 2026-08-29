@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-29 · UNIVERSE POLISH + ARC 5 · COMPENDIUM CALIBRATION COLLECTED · ACTIVATION READY TO SIGN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · UNIVERSE POLISH + ARC 5 · COMPENDIUM ACTIVATION CERTIFIED · FULL RESTART NEXT ◀◀◀
 
 ### Exact current boundary
 
@@ -36,11 +36,16 @@ the archive verbatim and refresh this handoff in place.
   `d59e2a9fd3ea61fa24459a41646672c73c5024cf`, parent `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa`).
   It preserves the immutable campaign red and owns the fail-closed `calibration-required` transition.
   Three independent current-producer candidates and one paired broken-baseline measurement completed
-  on this unchanged clean source. The active-ruler activation and browser-free review are complete
-  in the working tree; that changed source is not yet signed and has no exact-budget certificate.
+  on this unchanged clean source.
+- **Exact certified activation source:** signed commit
+  `27513798bedd9e4337d0b1db9712fa784b90b9fd` (tree
+  `9ae0ffa3c8d39d0a05b6f8b823576b88af8fb516`, parent `b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974`).
+  It activates the reviewed ruler, commits all four calibration carriers and synchronized docs,
+  passes the full browser-free battery and owns the exact 78/78 Compendium certificate below.
 - Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully
-  contained. The branch is **110 commits ahead** of `origin/openai/mac`. Four new calibration
-  carriers plus activation/documentation working changes remain local and unpushed.
+  contained. The exact activation source was **111 commits ahead** of `origin/openai/mac`; the
+  signed certificate-evidence descendant is **112 commits ahead**. Everything remains local and
+  unpushed.
 - Temporary `/usr/bin/caffeinate -dis` remains active so macOS and 1Password stay available during
   the authorized local certification. Restore normal monitors-off/sleep behavior only after the
   complete chain and final handoff are safe.
@@ -95,9 +100,8 @@ the archive verbatim and refresh this handoff in place.
   Browser policy and the product/runtime limits did not move. The current Compendium evidence
   transition deliberately clears live samples and numeric ceilings, preserves all former ruler
   evidence as historical/unrebound, and targets the current measurement/producer for calibration.
-  The required `b65fd5d…` candidates and paired baseline are now collected outside that immutable
-  transition. The reviewed working-tree activation binds them to the active ruler; it must now be
-  signed before any browser certificate is attempted.
+  The required `b65fd5d…` candidates and paired baseline were collected outside that immutable
+  transition. Signed `27513798…` binds them to the active ruler and its exact certificate.
 
 ### Review and browser-free evidence
 
@@ -217,16 +221,22 @@ the archive verbatim and refresh this handoff in place.
   - baseline1 `fc9afe2499629e9ad16966b0f8da4b370acf056fbd13a2309a1d0a592e5361aa` /
     `353c09949f413d3f4a9a7907167151345475877225033df10156e65c71a978c2`.
 
-### Next exact action — sign activation, certify Compendium, then restart from Layout
+### Completed `27513798…` activation certificate — exact current ruler green
 
-- Activation and browser-free budget/authority/mutation review are complete in the working tree.
-  Budget SHA-256 is `02ee0ada076e444b7f3ad67c47c3de688bbd290d7e1a9a9e7570168f2d4c29f0`;
-  the test SHA-256 after dead-alias cleanup is
-  `7159ecd0ba31953a6234afba1636e273280b9aeb24d8026dbedff3044f462230`.
-  The active ruler is not evidence for itself: sign the changed clean source before browser work and
-  do not claim green current-product certification yet.
-- From the changed signed activation source, run one exact no-retry Compendium certification and its
-  named verifier. Only after it passes may a completely fresh once-only campaign start at
+- Browser compatibility preflight passed on canonical Edge `151.0.4129.107` / CDP `1.3`.
+  `20260829-universe-polish-27513798bedd-compendium-certification` then ran exactly once with zero
+  retries, passed **78/78**, complete lifecycle/cleanup, zero findings and zero blocked outcomes in
+  **44,432 ms**, and passed its exact named verifier.
+- The immutable certificate `audits/ARC1_COMPENDIUM_UNIVERSE_POLISH_ACTIVATION_CERTIFICATION_20260829.json.gz`
+  is 453,664 compressed bytes with SHA-256
+  `1415773e8eb7474d141b9174939bf618795b76742afd874e4bf73fa7bc0a70e7`; decompressed it is
+  8,637,650 bytes with SHA-256
+  `3b0116f98a77e3089ef80fd78ebc762a658c74907a2c5e473061718c9860e7a6`.
+
+### Next exact action — sign evidence descendant, then restart from Layout
+
+- Preserve this certificate and synchronized docs in one signed clean evidence descendant. From
+  that changed source, a completely fresh once-only campaign must start at
   **Layout 787 → SceneMemory 44 → Compendium 78 → Slice → Glass 12 → Recovery 20-minute**.
   Every stage uses source-derived IDs and stops/preserves on any red, nonzero or instrument result.
 - Compatible Edge point updates remain provenance only and never trigger a rebaseline, calibration
@@ -244,9 +254,8 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** preserve and sign the reviewed Compendium activation, then run the one exact
-  Compendium certification. Start the fresh full
-  chain from Layout only after that certificate passes named verification. Keep temporary
+- **OpenAI/Codex:** preserve the green activation certificate and synchronized handoff in a signed
+  clean evidence descendant, then start the fresh full chain from Layout. Keep temporary
   `/usr/bin/caffeinate -dis` active until that endpoint, then restore normal monitor/sleep behavior.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
   apply `actions-budget-approved`, dispatch, rerun, merge, deploy, publish or bump a version.

@@ -10,7 +10,7 @@ summary of it.
 
 ## Contents
 
-### Signed `b65fd5d…` universe-polish Compendium calibration — three candidates and paired baseline complete; activation ready to sign
+### Signed `b65fd5d…` calibration + signed `27513798…` activation — exact Compendium certificate green
 
 Signed clean calibration source `b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974` (tree
 `d59e2a9fd3ea61fa24459a41646672c73c5024cf`, parent
@@ -64,14 +64,23 @@ desktop reproduced all four sealed faults: `unwindowed-1500-rows`, `list-source-
   SHA-256 `353c09949f413d3f4a9a7907167151345475877225033df10156e65c71a978c2`; 14,756
   decompressed bytes, SHA-256 `fc9afe2499629e9ad16966b0f8da4b370acf056fbd13a2309a1d0a592e5361aa`.
 
-All four carriers pass gzip integrity. The working tree's active budget has SHA-256
+All four calibration carriers pass gzip integrity. Signed activation
+`27513798bedd9e4337d0b1db9712fa784b90b9fd` (tree
+`9ae0ffa3c8d39d0a05b6f8b823576b88af8fb516`, parent `b65fd5d4…`) owns the active budget SHA-256
 `02ee0ada076e444b7f3ad67c47c3de688bbd290d7e1a9a9e7570168f2d4c29f0`; focused 27/27,
 222 selftest controls, full 1,711-pass + one-skip v2, all typechecks, `artunused`, current-producer
-binding and independent review are green. This is reviewed browser-free activation state, not a
-signed clean source or current green certificate. The next permitted browser step is one exact
-Compendium certification from the later
-signed changed activation source. Only after that report passes named verification may a completely
-fresh Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain begin.
+binding and independent review are green.
+
+Its exact run `20260829-universe-polish-27513798bedd-compendium-certification` then completed once
+with zero retries, passed all 78 outcomes in 44,432 ms with complete lifecycle/cleanup, zero
+findings/blocked outcomes and passed named verification. It binds unchanged clean source begin/end,
+the exact active budget, measurement `cd1586e2…`, producer `d97370c0…`, six review PNG manifests and
+Edge `.107` / CDP `1.3`. `ARC1_COMPENDIUM_UNIVERSE_POLISH_ACTIVATION_CERTIFICATION_20260829.json.gz`
+is 453,664 compressed bytes with SHA-256
+`1415773e8eb7474d141b9174939bf618795b76742afd874e4bf73fa7bc0a70e7`; its 8,637,650-byte raw
+report has SHA-256 `3b0116f98a77e3089ef80fd78ebc762a658c74907a2c5e473061718c9860e7a6`.
+After this carrier and synchronized docs are signed, a completely fresh
+Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain begins on that descendant.
 Routine compatible Edge updates remain provenance only and never trigger rebaseline or recalibration.
 
 ### Signed `55126af…` universe-polish campaign — Layout/SceneMemory PASS, Compendium product-budget stop
