@@ -10,6 +10,54 @@ summary of it.
 
 ## Contents
 
+### Signed `916d921e…` universe-polish restart — four PASS predecessors, rendered-Guide Glass instrument stop
+
+Signed clean source `916d921ebf787ed6c58ec8db567e00bbb61adbf8` (tree
+`26937c9607ddb82f059d825abf3024b7575dc01b`, parent `9d8ffb11c9eb…`) passed Layout
+**787/787** in 76,326 ms, SceneMemory **44/44** in 10,940 ms, Compendium **78/78** in
+44,986 ms and Slice with zero findings in 444,377 ms. Each stage ran once without retry and passed
+its exact named verifier. Glass then completed all 12 viewports in 85,923 ms with zero product
+findings before stopping terminal `instrument-fail` on one small-phone rendered-Guide
+required-copy control. Recovery correctly did not run.
+
+The live Feeding Guide topic and all 18 current Guide rows were green. Two of six injected required
+copy mutants were no-ops: `Meals by 1, capped at 200` and `removes 1 flora from that exact lot`
+each exist once in rendered `textContent`, but cross authored `<b>` boundaries and therefore do not
+exist contiguously in `innerHTML`. The old control called `innerHTML.replace(...)`, left the current
+copy unchanged, and correctly refused to claim that its negative control had fired. This is one
+Glass-instrument defect, not a game, art, Feeding, Guide, Edge or rebaseline failure.
+
+The bounded repair mutates the paragraph's rendered text with exact-one target/change semantics,
+observes the post-assignment DOM text, requires the intended single missing carrier and zero stale
+clauses, and restores exact authored HTML, text and current predicate after every mutant. Its
+browser-free controls cover both real split phrases, absent/duplicate/no-change targets, raw-markup
+misuse, wrong observed output, stale contamination and failed HTML/text/predicate restoration.
+Glass selftest, full v2 **1,712 passed + 1 skipped**, all three typechecks and two independent
+reviews are green. Product, release, build and memory-producer bytes are unchanged.
+
+- `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_025609573.json.gz`: 5,207 compressed bytes,
+  SHA-256 `1e3c270d1a876b90fc02a26dc0702717baf4e4ea797f86789d860437353c19c5`; 106,976 raw bytes,
+  SHA-256 `19dbdda5a51cbb9928bc9fff32ed6941c325b92162d7f9f7e4cd91a1cc5ae70f`.
+- `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_025634382.json.gz`: 32,725 compressed bytes,
+  SHA-256 `7fe274107a1cba5d30b22cab94ded34b730ac1629277716790b8410448a0a76a`; 426,858 raw bytes,
+  SHA-256 `cf377270a4c3af6b37bf9646873c892f3a6b9209aabdda152257ead79c8ade23`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_025733044.json.gz`: 554,571 compressed bytes,
+  SHA-256 `ef340966184369d8042adb6ac355e8e8da358a823abc79de45c9c42cae8b66e2`; 8,635,346 raw bytes,
+  SHA-256 `fdbd12d6081c4a8328410e4a3a2e6959158a11c4885b57d127dbc745a4b9916c`.
+- `ARC4_SLICE_UNIVERSE_POLISH_PASS_20260829_030514665.json.gz`: 1,983 compressed bytes,
+  SHA-256 `01cc7d2284b133877cc0fcc21dd30a9f17656973bb4f38068a0cc8b8b2d9f6c4`; 6,193 raw bytes,
+  SHA-256 `a66ab116c5e18d350434b573682da5f85da9205e0804accd2027439432ce671b`.
+- `ARC4_SLICE_UNIVERSE_POLISH_PASS_20260829_030514665.log.gz`: 3,087 compressed bytes,
+  SHA-256 `d27e960ad99166bb46e368ad28dc9e31ffd57e17863689b9cadb4398e565bdd1`; 6,177 raw bytes,
+  SHA-256 `43f2b5a065e358f3c0dd97c48cccedefc62b623d78b079b4642c46134c67daf6`.
+- `ARC4_GLASS_UNIVERSE_POLISH_GUIDE_CONTROL_INSTRUMENT_FAILURE_20260829_030656096.json.gz`:
+  94,680 compressed bytes, SHA-256
+  `975ea0a342a600c080143641adad3b46f45b6643e39d93a7f74900c6c448b30b`; 1,167,583 raw bytes,
+  SHA-256 `9d7421704af900fdbd4a94ba59e7f60a4483096f7816ea6948c4a928fb9ec9a5`.
+
+All six carriers pass gzip integrity. This campaign is immutable and grants no Glass, Recovery,
+HUMAN, hosted, merge or release authority. The signed repair must restart at Layout.
+
 ### Signed `9d8ffb11…` universe-polish restart — three PASS predecessors, raw-CDP Slice instrument stop
 
 Signed clean source `9d8ffb11c9eb3a8066dc295a21e61820962c7cb3` (tree
