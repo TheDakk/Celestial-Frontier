@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-28 · UNIVERSE POLISH + ARC 5 · CURRENT CAMPAIGN PRESERVED · COMPENDIUM CALIBRATION REQUIRED ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · UNIVERSE POLISH + ARC 5 · COMPENDIUM CALIBRATION COLLECTED · ACTIVATION READY TO SIGN ◀◀◀
 
 ### Exact current boundary
 
@@ -25,15 +25,22 @@ the archive verbatim and refresh this handoff in place.
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
   `origin/openai/mac`, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`. Do not edit
   another agent worktree or the sibling live-site repository.
-- **Exact current campaign source:** signed commit
+- **Exact stopped campaign source:** signed commit
   `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa` (tree
   `1b561cae692f38d2b8f38e66578a68657b0567a7`, parent
   `283c8b3b04e0e9a70bb7e4242e3408169c24b02a`). It contains the reviewed universe-polish and Arc 5
   implementation plus the bounded SceneMemory transport repair. The commit has an SSH signature;
   local verification needs an allowed-signers file and therefore reports no local trust judgment.
+- **Exact completed calibration source:** signed commit
+  `b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974` (tree
+  `d59e2a9fd3ea61fa24459a41646672c73c5024cf`, parent `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa`).
+  It preserves the immutable campaign red and owns the fail-closed `calibration-required` transition.
+  Three independent current-producer candidates and one paired broken-baseline measurement completed
+  on this unchanged clean source. The active-ruler activation and browser-free review are complete
+  in the working tree; that changed source is not yet signed and has no exact-budget certificate.
 - Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully
-  contained. The branch was **109 commits ahead** of `origin/openai/mac` when this campaign began.
-  Work and the three new immutable campaign carriers remain local and unpushed.
+  contained. The branch is **110 commits ahead** of `origin/openai/mac`. Four new calibration
+  carriers plus activation/documentation working changes remain local and unpushed.
 - Temporary `/usr/bin/caffeinate -dis` remains active so macOS and 1Password stay available during
   the authorized local certification. Restore normal monitors-off/sleep behavior only after the
   complete chain and final handoff are safe.
@@ -88,6 +95,9 @@ the archive verbatim and refresh this handoff in place.
   Browser policy and the product/runtime limits did not move. The current Compendium evidence
   transition deliberately clears live samples and numeric ceilings, preserves all former ruler
   evidence as historical/unrebound, and targets the current measurement/producer for calibration.
+  The required `b65fd5d…` candidates and paired baseline are now collected outside that immutable
+  transition. The reviewed working-tree activation binds them to the active ruler; it must now be
+  signed before any browser certificate is attempted.
 
 ### Review and browser-free evidence
 
@@ -100,7 +110,8 @@ the archive verbatim and refresh this handoff in place.
 - Final browser-free battery passed: root Actions-budget and browser-resolver selftests; v1 validate
   with **1,010/1,010** renders and the unchanged 50-probe v1.0 fingerprint; full root smoke and
   training checkpoint; golden seeds, code/audio/save fixtures, rarity and dead-code scans; v2
-  **163 files / 1,710 passed + 1 skipped** after the calibration-transition controls; all three
+  **163 files / 1,711 passed + 1 skipped** after activation; Compendium-focused **27/27** and
+  instrument selftest **222/222**; all three
   TypeScript configurations; `artunused`;
   **1,014/1,014** override routes plus the complete mutation control; art/coverage/specification
   audits; current producer binding; **108** SceneMemory-focused assertions; Guide/release,
@@ -175,29 +186,51 @@ the archive verbatim and refresh this handoff in place.
     SHA-256 `c5adaca207770251b48b3cadf634d80bd03cb55f589814fd3e93c8c635aba5d8` /
     `25292bcd0ff55a32842c0958d25ae9d299c1ef8470ca6dc7269ccdfd1c092716`.
 
-### Next exact action — sign the fail-closed transition, calibrate real producer drift, then restart
+### Completed `b65fd5d…` calibration — exact candidates and paired broken baseline preserved
 
-- This working batch preserves/documents the immutable red and transitions the Compendium budget
-  to fail-closed `calibration-required`: null numeric ceilings, empty phone/desktop candidate arrays,
-  prospective current-authority binding and a fresh `measurement-required` paired baseline. Current
-  prospective calibration measurement is
-  `cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78`; current producer is
-  `d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271`. The preserved red remains
-  bound to its exact pre-transition measurement `3c811274…` and is not a calibration sample.
-  Historical samples remain preserved evidence for the former producer and are not relabelled.
-  Complete the independent review, sign this changed descendant and require a clean worktree before
-  collecting any calibration sample.
-- From that one unchanged signed calibration source, run **exactly three** distinct clean no-retry
-  candidate measurements per profile and one fresh paired broken-baseline measurement from exact
-  commit `38447019517147319bd08c598202d097ee866874` in an isolated detached worktree. Preserve each
-  report. Select strict ceilings from the candidate maxima with rational headroom—never from this
-  single red alone—and retain +1/fractional ceiling controls plus the paired baseline's exact fault
-  and breach discrimination.
-- Activate that selected budget on another changed signed clean commit, pass browser-free budget,
-  authority and mutation checks, and run one no-retry Compendium certification. Only after it passes
-  named verification may a completely fresh once-only campaign start again at **Layout 787 →
-  SceneMemory 44 → Compendium 78 → Slice → Glass 12 → Recovery 20-minute**. Every stage
-  uses source-derived IDs and stops/preserves on any red, nonzero or instrument result.
+- Three independent current-product candidates ran once each with zero automatic retries from the
+  same unchanged clean signed `b65fd5d…` source. Candidate1/2/3 completed all **78** calibration
+  outcomes in **45,761 / 45,286 / 45,357 ms** under measurement
+  `cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78`, producer
+  `d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271` and Edge
+  `151.0.4129.107` / CDP `1.3`. Exact run IDs are
+  `20260829-universe-polish-b65fd5d4a1b7-candidate1`, `…-candidate2` and `…-candidate3`.
+  They are calibration observations, not exact-budget PASS certificates.
+- Paired `20260829-universe-polish-b65fd5d4a1b7-baseline1` measured broken product commit
+  `38447019517147319bd08c598202d097ee866874` with collector `b65fd5d…`. Phone and desktop each
+  reproduced `unwindowed-1500-rows`, `list-source-440`, `full-portrait-dom-exposure` and
+  `eager-art-import`.
+- Selected phone V8/backing/aggregate/encoded/portrait ceilings are **11,534,336 / 5,242,880 /
+  17,825,792 / 3,407,872 / 393,216 B**; desktop values are **15,728,640 / 6,815,744 /
+  23,068,672 / 8,912,896 / 393,216 B**. Every other field stays byte-identical. Broader heap
+  margins avoid sub-spread or sub-one-percent false reds. The 384 KiB portrait margin conservatively
+  carries prior cross-platform encoder variance without claiming a fresh Linux measurement. Exact
+  +1/fractional and warm-range controls remain; the paired baseline retains **14 phone / 13 desktop**
+  breaches.
+- Immutable calibration carriers, with raw/gzip SHA-256:
+  - candidate1 `d259ddbee5e621dd7694302601ac4a4576bd31ba39d184f93874c446683a5135` /
+    `65c9982ee3339d32b493fe26beb72aa35b2d55cece3b35a981852512ee6cacdc`;
+  - candidate2 `7d36e634b30a75ae70a15a806dc7288b76815c151110377dbb3717121d36972e` /
+    `855d823ec0a8866e3f69f8542fd8a1c892ca04760341c3b7b9fa36d9caba66e0`;
+  - candidate3 `7fbd4375d26063a8e000b63fe652cc4d812696255dc5467641332836a7e7c705` /
+    `bf1ad07f82c7e3565644162b7d9195289f844e0be360259689800f4ffa8a9d0c`;
+  - baseline1 `fc9afe2499629e9ad16966b0f8da4b370acf056fbd13a2309a1d0a592e5361aa` /
+    `353c09949f413d3f4a9a7907167151345475877225033df10156e65c71a978c2`.
+
+### Next exact action — sign activation, certify Compendium, then restart from Layout
+
+- Activation and browser-free budget/authority/mutation review are complete in the working tree.
+  Budget SHA-256 is `02ee0ada076e444b7f3ad67c47c3de688bbd290d7e1a9a9e7570168f2d4c29f0`;
+  the test SHA-256 after dead-alias cleanup is
+  `7159ecd0ba31953a6234afba1636e273280b9aeb24d8026dbedff3044f462230`.
+  The active ruler is not evidence for itself: sign the changed clean source before browser work and
+  do not claim green current-product certification yet.
+- From the changed signed activation source, run one exact no-retry Compendium certification and its
+  named verifier. Only after it passes may a completely fresh once-only campaign start at
+  **Layout 787 → SceneMemory 44 → Compendium 78 → Slice → Glass 12 → Recovery 20-minute**.
+  Every stage uses source-derived IDs and stops/preserves on any red, nonzero or instrument result.
+- Compatible Edge point updates remain provenance only and never trigger a rebaseline, calibration
+  rerun or numeric threshold change.
 
 ### Explicitly open after automation
 
@@ -211,10 +244,10 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** preserve and sign the `55126af…` campaign evidence/docs, complete the bounded
-  Compendium recalibration path above, then start a fresh full chain only from the activated clean
-  source. Keep temporary `/usr/bin/caffeinate -dis` active until that endpoint, then restore normal
-  monitor/sleep behavior.
+- **OpenAI/Codex:** preserve and sign the reviewed Compendium activation, then run the one exact
+  Compendium certification. Start the fresh full
+  chain from Layout only after that certificate passes named verification. Keep temporary
+  `/usr/bin/caffeinate -dis` active until that endpoint, then restore normal monitor/sleep behavior.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
   apply `actions-budget-approved`, dispatch, rerun, merge, deploy, publish or bump a version.
 - **PR details if Nick later authorizes the exact GitHub write:** base `develop`; source

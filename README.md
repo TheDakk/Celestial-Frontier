@@ -1,21 +1,30 @@
 # Celestial-Frontier
 
-> **Current universe-polish certification boundary (2026-08-28):** exact signed source
-> `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa` ran once per stage with zero retries. Layout
-> `20260828-universe-polish-55126af50f3f-layout` passed 787/787 in 76,378 ms; SceneMemory
-> `20260828-universe-polish-55126af50f3f-scenemem` passed 44/44 in 10,672 ms. Compendium
-> `20260828-universe-polish-55126af50f3f-compendium` then retained a complete terminal product
-> `fail` in 46,681 ms: 74/78 outcomes passed, while phone heap/bytes and desktop heap/bytes exceeded
-> their pre-polish ceilings. Warm plateaus and every lifecycle/ownership outcome passed, and
-> independent audits attribute the encoded-byte increase to the richer deterministic universe art,
-> not a leak. The fail-fast chain correctly stopped before Slice, Glass and Recovery. Edge
-> `151.0.4129.107` / CDP `1.3` was accepted as provenance; this is not Edge drift or an Edge
-> rebaseline. One run cannot move ceilings. The preserved red now puts the Compendium budget into
-> fail-closed `calibration-required`: ceilings and live samples are empty while historical evidence
-> remains unrebound. Next, collect exactly three independent current-producer candidates plus the
-> paired broken baseline at `38447019517147319bd08c598202d097ee866874`, select strict ceilings,
-> then restart the full serial certification on a new unchanged signed source. Exact report
-> carriers, byte sizes and SHA-256 hashes are preserved in [`audits/README.md`](audits/README.md).
+> **Current universe-polish certification boundary (2026-08-28/29):** exact signed source
+> `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa` passed Layout 787/787 and SceneMemory 44/44 once
+> with zero retries, then preserved a complete 74/78 Compendium product-budget red before Slice,
+> Glass or Recovery. Signed clean calibration source
+> `b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974` subsequently completed exactly three independent
+> current-producer candidates—`20260829-universe-polish-b65fd5d4a1b7-candidate1`, `candidate2`
+> and `candidate3`—once each with zero retries and all 78 calibration outcomes, plus paired broken
+> baseline `20260829-universe-polish-b65fd5d4a1b7-baseline1` against exact commit
+> `38447019517147319bd08c598202d097ee866874`. The baseline reproduced all four sealed faults on
+> both profiles and retains 14 phone / 13 desktop numeric breaches under the selected ruler.
+>
+> The selected rational-headroom ceilings are phone V8/backing/aggregate/encoded/portrait
+> **11,534,336 / 5,242,880 / 17,825,792 / 3,407,872 / 393,216 B** and desktop
+> **15,728,640 / 6,815,744 / 23,068,672 / 8,912,896 / 393,216 B**; every other field remains
+> byte-identical. Broader heap margins avoid sub-spread or sub-one-percent false reds, while the
+> 384 KiB portrait ruler conservatively preserves prior cross-platform encoder variance without
+> claiming a fresh Linux measurement. The working tree now contains the independently reviewed
+> active ruler (budget SHA-256 `02ee0ada076e444b7f3ad67c47c3de688bbd290d7e1a9a9e7570168f2d4c29f0`),
+> with 27/27 focused assertions, 222 instrument controls, 1,711 v2 tests plus one intentional skip,
+> all typechecks, `artunused` and current-producer binding green. It is not yet a signed clean source
+> or a current green Compendium certificate. After the changed signed
+> activation source passes one exact named-verified Compendium certification, the complete campaign
+> must restart from Layout. Edge `151.0.4129.107` / CDP `1.3` remains provenance only; compatible
+> updates do not trigger rebaseline. Exact calibration carriers, byte sizes and hashes are preserved
+> in [`audits/README.md`](audits/README.md). No GitHub, release, version or deployment authority follows.
 >
 > **Historical Final13 pre-polish local automated checkpoint (2026-08-28):** exact signed source
 > `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
