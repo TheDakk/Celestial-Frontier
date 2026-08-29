@@ -76,6 +76,40 @@ const currentUniversePolishFailureEvidence = Object.freeze({
     protocol_version: '1.3',
   }),
 });
+const currentUniversePolishCandidateEvidence = [
+  {
+    runId: '20260829-universe-polish-b65fd5d4a1b7-candidate1',
+    file: 'ARC1_COMPENDIUM_UNIVERSE_POLISH_CANDIDATE1_20260829.json.gz',
+    rawBytes: 8_683_347,
+    rawSha256: 'd259ddbee5e621dd7694302601ac4a4576bd31ba39d184f93874c446683a5135',
+    gzipBytes: 455_574,
+    gzipSha256: '65c9982ee3339d32b493fe26beb72aa35b2d55cece3b35a981852512ee6cacdc',
+  },
+  {
+    runId: '20260829-universe-polish-b65fd5d4a1b7-candidate2',
+    file: 'ARC1_COMPENDIUM_UNIVERSE_POLISH_CANDIDATE2_20260829.json.gz',
+    rawBytes: 8_577_843,
+    rawSha256: '7d36e634b30a75ae70a15a806dc7288b76815c151110377dbb3717121d36972e',
+    gzipBytes: 451_313,
+    gzipSha256: '855d823ec0a8866e3f69f8542fd8a1c892ca04760341c3b7b9fa36d9caba66e0',
+  },
+  {
+    runId: '20260829-universe-polish-b65fd5d4a1b7-candidate3',
+    file: 'ARC1_COMPENDIUM_UNIVERSE_POLISH_CANDIDATE3_20260829.json.gz',
+    rawBytes: 8_581_571,
+    rawSha256: '7fbd4375d26063a8e000b63fe652cc4d812696255dc5467641332836a7e7c705',
+    gzipBytes: 451_208,
+    gzipSha256: 'bf1ad07f82c7e3565644162b7d9195289f844e0be360259689800f4ffa8a9d0c',
+  },
+] as const;
+const currentUniversePolishBaselineEvidence = Object.freeze({
+  runId: '20260829-universe-polish-b65fd5d4a1b7-baseline1',
+  file: 'ARC1_COMPENDIUM_UNIVERSE_POLISH_BASELINE1_SAMPLE_20260829.json.gz',
+  rawBytes: 14_756,
+  rawSha256: 'fc9afe2499629e9ad16966b0f8da4b370acf056fbd13a2309a1d0a592e5361aa',
+  gzipBytes: 2_868,
+  gzipSha256: '353c09949f413d3f4a9a7907167151345475877225033df10156e65c71a978c2',
+});
 const currentSliceRepairCandidateEvidence = [
   {
     runId: '20260826-slice-repair-candidate1',
@@ -157,23 +191,27 @@ const supersededRenderStableCertificationEvidence = Object.freeze({
   gzipSha256: 'a2ff5b009a187fabdbc71143dac1b33c4f5f609fbb3c3d81c750fb5857593be1',
 });
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
-const RULER_MEASUREMENT_AUTHORITY =
+const HISTORICAL_RULER_MEASUREMENT_AUTHORITY =
   'cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d';
+const RULER_MEASUREMENT_AUTHORITY =
+  'cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78';
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
   'cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78';
 const EXPECTED_COLLECTOR_AUTHORITY =
   'c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab';
-const RULER_COLLECTOR_AUTHORITY =
+const HISTORICAL_RULER_COLLECTOR_AUTHORITY =
   '18e05ddf03551e7ec5d8352280ed5ad43fa6bf684f1ebecca1242890e02c3d88';
 const HISTORICAL_MEASUREMENT_AUTHORITY =
   '6a961df806e460d6ed02600f5366485d09d0878efa0129960b683cc4037173c7';
-const RULER_PRODUCER_AUTHORITY =
+const HISTORICAL_RULER_PRODUCER_AUTHORITY =
   'f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224';
-const RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
+const RULER_PRODUCER_AUTHORITY =
+  'd97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271';
+const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v1',
-  sha256: RULER_PRODUCER_AUTHORITY,
+  sha256: HISTORICAL_RULER_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
@@ -194,7 +232,7 @@ const RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   }),
 });
 /* Refreshed once, after the final app build. Historical samples continue to
-   bind RULER_PRODUCER_AUTHORITY rather than these live authorities. */
+   bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
   'd97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
@@ -276,12 +314,12 @@ const HISTORICAL_EDGE_101_BROWSER_AUTHORITY: LegacyBrowserAuthority = Object.fre
 const HISTORICAL_EDGE_101_PRODUCER_AUTHORITY =
   '5a316197d9aca27967f4e930f43089d2bbe2b9e4a66a40c207ea59c809405d94';
 const EXPECTED_CANDIDATE_RUNS = [
-  '20260826-slice-repair-candidate1',
-  '20260826-slice-repair-candidate2',
-  '20260826-slice-repair-candidate3',
+  '20260829-universe-polish-b65fd5d4a1b7-candidate1',
+  '20260829-universe-polish-b65fd5d4a1b7-candidate2',
+  '20260829-universe-polish-b65fd5d4a1b7-candidate3',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260826-slice-repair-baseline1';
-const currentSliceRepairCertificationEvidence = Object.freeze({
+const EXPECTED_BASELINE_RUN = '20260829-universe-polish-b65fd5d4a1b7-baseline1';
+const historicalSliceRepairCertificationEvidence = Object.freeze({
   file: 'ARC1_COMPENDIUM_SLICE_REPAIR_CERTIFICATION_20260826.json.gz',
   runId: '20260826-slice-repair-certification',
   sourceCommit: '91f4e04410b893c43ee5d261ebfc1fa3be127c29',
@@ -426,64 +464,64 @@ const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
 }> = {
   phone: {
     candidate: [
-      '1d5137aca8394957b917cf5dc2289db15cd8c676fe1176217c2789ff2256b05a',
-      '161c06a907b8afdb2ffe9a155f1a7d5a3218df1c7cd69e632312fee0434aba9f',
-      '84f5966269a6550d8aee90f13970041c421b963d32de6b19549d7b8e0c96471c',
+      '5e14d624dffb03c19412c9a0dbaf942b2bddc6792cfe544edb8b9c0e96cc91c7',
+      '133ec04a7866a3ece9409d3690e8605e3e66554cbec891e403db51d4c902ff01',
+      '589fe304042f7f13177d65680b538b787aac7494ef543ffc796e6c23dff4e442',
     ],
-    baseline: '9da1f41e26a7fad2ec57996be9037002013f19a6b879f274e6e99134975afffe',
+    baseline: '53f86ca7f9c7ae1b7ba65c98aa191fad7660e554a5e3d18ac2e90e16ab58cc65',
   },
   desktop: {
     candidate: [
-      '530ae0741a6f84a9596df455d20311eec4d9ab0a26dd1d7c251f1443487597f5',
-      '46d5372495a205f23ad80f18e4835da5026e00e89214885a5c669e908e68c27b',
-      '97e9014cbfdb9fc7c8ef67532e30a8af7c0ebe53d87dbe60713d7d60b4db8273',
+      'c06c186b227b081f189c5f91bfd695f0fe25fc1741b5196fe2a6a0e78f329e42',
+      'b44f836517c62f2969c0daf690e740532daa91a0dc70e1ae5f43eb61889236ce',
+      'a9b5aa27d37ca24b60c408bae7f98c6c7d8a1e02ebcd13ffc9fa45d55397656c',
     ],
-    baseline: '493bb0c513abab7312eabf9ca0a9afe3e886e87f02fc438f5332816c92b449f9',
+    baseline: '2a83265d99d9792fcd00a75acf3ab83c051863a274750a61a4db6f4d0e677be2',
   },
 };
 
 const EXPECTED_CEILINGS: Record<ProfileName, Record<string, number>> = {
   phone: {
     mountedRowsMax: 16,
-    heapUsedBytesMax: 10_485_760,
+    heapUsedBytesMax: 11_534_336,
     documentsMax: 2.5,
     nodesMax: 960,
     embedderHeapUsedBytesMax: 4_194_304,
-    backingStorageBytesMax: 4_194_304,
-    heapAggregateBytesMax: 16_777_216,
+    backingStorageBytesMax: 5_242_880,
+    heapAggregateBytesMax: 17_825_792,
     jsEventListenersMax: 96,
     liveCacheEntriesMax: 96.5,
     liveDecodedPixelsMax: 1_672_705,
     liveDecodedBytesMax: 6_690_817,
-    liveEncodedBytesMax: 2_621_440,
+    liveEncodedBytesMax: 3_407_872,
     queuedJobsPeakMax: 24,
     activeJobsPeakMax: 1.5,
     liveLeasesMax: 24,
     liveSubscribersMax: 0.5,
     livePortraitCacheEntriesMax: 1.5,
-    livePortraitEncodedBytesMax: 262_144,
+    livePortraitEncodedBytesMax: 393_216,
     warmHeapAggregateRangeBytesMax: 524_288,
     warmEncodedBytesRangeMax: 0.5,
   },
   desktop: {
     mountedRowsMax: 16,
-    heapUsedBytesMax: 14_680_064,
+    heapUsedBytesMax: 15_728_640,
     documentsMax: 2.5,
     nodesMax: 960,
     embedderHeapUsedBytesMax: 4_194_304,
-    backingStorageBytesMax: 6_291_456,
-    heapAggregateBytesMax: 20_971_520,
+    backingStorageBytesMax: 6_815_744,
+    heapAggregateBytesMax: 23_068_672,
     jsEventListenersMax: 96,
     liveCacheEntriesMax: 256.5,
     liveDecodedPixelsMax: 4_460_545,
     liveDecodedBytesMax: 17_842_177,
-    liveEncodedBytesMax: 6_815_744,
+    liveEncodedBytesMax: 8_912_896,
     queuedJobsPeakMax: 24,
     activeJobsPeakMax: 1.5,
     liveLeasesMax: 24,
     liveSubscribersMax: 0.5,
     livePortraitCacheEntriesMax: 1.5,
-    livePortraitEncodedBytesMax: 262_144,
+    livePortraitEncodedBytesMax: 393_216,
     warmHeapAggregateRangeBytesMax: 524_288,
     warmEncodedBytesRangeMax: 0.5,
   },
@@ -790,7 +828,7 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(report.outcomes.every((outcome) => ['pass', 'fail'].includes(outcome.status)))
       .toBe(true);
     expect(report.findings).toHaveLength(4);
-    expect(activeBudget.status).toBe('calibration-required');
+    expect(activeBudget.status).toBe('active');
     expect(activeBudget.calibration.selectionRule)
       .toContain(currentUniversePolishFailureEvidence.runId);
     expect(activeBudget.calibration.selectionRule)
@@ -1049,14 +1087,30 @@ describe('Arc 1A Compendium budget authority', () => {
       .toContain('does not re-pin the Gate-A/global browser');
   });
 
-  it('binds both prospective ruler authorities to calibration-required top-level authority', () => {
-    expect(activeBudget.status).toBe('calibration-required');
+  it('binds active ruler authority while preserving calibration-required and drift controls', () => {
+    expect(activeBudget.status).toBe('active');
+    expect(activeBudget.calibration.rulerAuthority).toMatchObject({
+      measurementAuthoritySha256: RULER_MEASUREMENT_AUTHORITY,
+      producerAuthoritySha256: RULER_PRODUCER_AUTHORITY,
+    });
     const measurementMismatch =
       'calibration-required fixed ruler measurement authority must match the top-level measurement authority';
     const producerMismatch =
       'calibration-required fixed ruler producer authority must match the top-level producer authority';
 
-    const wrongRulerMeasurement = structuredClone(activeBudget);
+    const calibrationRequired = structuredClone(activeBudget);
+    calibrationRequired.status = 'calibration-required';
+    calibrationRequired.ceilings = null;
+    calibrationRequired.calibration.samples = { phone: [], desktop: [] };
+    calibrationRequired.pairedBrokenBaseline.status = 'measurement-required';
+    calibrationRequired.pairedBrokenBaseline.collectorCommit = null;
+    calibrationRequired.pairedBrokenBaseline.samples = { phone: [], desktop: [] };
+    expect(validateBudgetRecord(
+      calibrationRequired, fixture.rowsSha256, baselineProjection.rowsSha256,
+      liveMeasurementAuthority, EXPECTED_PRODUCER_AUTHORITY_RECORD,
+    )).toEqual({ ok: true, errors: [] });
+
+    const wrongRulerMeasurement = structuredClone(calibrationRequired);
     wrongRulerMeasurement.calibration.rulerAuthority.measurementAuthoritySha256 = '0'.repeat(64);
     expect(validateBudgetRecord(
       wrongRulerMeasurement, fixture.rowsSha256, baselineProjection.rowsSha256,
@@ -1070,37 +1124,34 @@ describe('Arc 1A Compendium budget authority', () => {
     const changedMeasurement = compendiumMeasurementAuthority(changedMeasurementInputs);
     expect(changedMeasurement).not.toBeNull();
     expect(changedMeasurement?.sha256).not.toBe(EXPECTED_MEASUREMENT_AUTHORITY);
-    const wrongTopLevelMeasurement = structuredClone(activeBudget);
+    const wrongTopLevelMeasurement = structuredClone(calibrationRequired);
     wrongTopLevelMeasurement.measurementAuthority = changedMeasurement!;
     expect(validateBudgetRecord(
       wrongTopLevelMeasurement, fixture.rowsSha256, baselineProjection.rowsSha256,
       changedMeasurement, EXPECTED_PRODUCER_AUTHORITY_RECORD,
     ).errors).toContain(measurementMismatch);
 
-    const wrongRulerProducer = structuredClone(activeBudget);
+    const wrongRulerProducer = structuredClone(calibrationRequired);
     wrongRulerProducer.calibration.rulerAuthority.producerAuthoritySha256 = '0'.repeat(64);
     expect(validateBudgetRecord(
       wrongRulerProducer, fixture.rowsSha256, baselineProjection.rowsSha256,
       liveMeasurementAuthority, EXPECTED_PRODUCER_AUTHORITY_RECORD,
     ).errors).toContain(producerMismatch);
 
-    const wrongTopLevelProducer = structuredClone(activeBudget);
+    const wrongTopLevelProducer = structuredClone(calibrationRequired);
     wrongTopLevelProducer.producerAuthority = HISTORICAL_PHASE4_PRODUCER_AUTHORITY;
     expect(validateBudgetRecord(
       wrongTopLevelProducer, fixture.rowsSha256, baselineProjection.rowsSha256,
       liveMeasurementAuthority, HISTORICAL_PHASE4_PRODUCER_AUTHORITY,
     ).errors).toContain(producerMismatch);
 
-    const activeHistoricalDrift = structuredClone(wrongTopLevelMeasurement);
-    activeHistoricalDrift.status = 'active';
+    const activeHistoricalDrift = structuredClone(activeBudget);
+    activeHistoricalDrift.measurementAuthority = changedMeasurement!;
     activeHistoricalDrift.producerAuthority = HISTORICAL_PHASE4_PRODUCER_AUTHORITY;
-    const activeHistoricalErrors = validateBudgetRecord(
+    expect(validateBudgetRecord(
       activeHistoricalDrift, fixture.rowsSha256, baselineProjection.rowsSha256,
       changedMeasurement, HISTORICAL_PHASE4_PRODUCER_AUTHORITY,
-    ).errors;
-    expect(activeHistoricalErrors).not.toContain(measurementMismatch);
-    expect(activeHistoricalErrors).not.toContain(producerMismatch);
-    expect(activeHistoricalErrors).toContain('active budget ceilings are missing');
+    )).toEqual({ ok: true, errors: [] });
 
     expect(validateBudgetRecord(
       budget, fixture.rowsSha256, baselineProjection.rowsSha256,
@@ -1178,9 +1229,131 @@ describe('Arc 1A Compendium budget authority', () => {
     }
   });
 
-  it('rederives retained slice-repair carriers without promoting them during calibration', () => {
-    const calibrationRequired = activeBudget.status === 'calibration-required';
-    for (const [runIndex, evidence] of currentSliceRepairCandidateEvidence.entries()) {
+  it('rederives the active universe-polish samples from four immutable carriers', () => {
+    for (const [runIndex, evidence] of currentUniversePolishCandidateEvidence.entries()) {
+      const compressed = fs.readFileSync(path.join(v2Root, '..', '..', 'audits', evidence.file));
+      expect(compressed).toHaveLength(evidence.gzipBytes);
+      expect(createHash('sha256').update(compressed).digest('hex')).toBe(evidence.gzipSha256);
+      const raw = gunzipSync(compressed);
+      expect(raw).toHaveLength(evidence.rawBytes);
+      expect(createHash('sha256').update(raw).digest('hex')).toBe(evidence.rawSha256);
+      const report = JSON.parse(raw.toString('utf8')) as {
+        schema: string; runId: string; status: string; startedAt: string; endedAt: string;
+        lifecycle: { status: string }; policy: { attemptCount: number; automaticRetries: number };
+        source: { begin: Record<string, string>; end: Record<string, string> };
+        inputs: Record<string, string>; browser: Record<string, string>;
+        budget: {
+          status: string; browserAuthorityMatch: boolean; producerAuthorityMatch: boolean;
+          producerAuthority: { sha256: string }; observedProducerAuthority: unknown;
+        };
+        outcomes: Array<{ status: string }>; findings: string[];
+        profiles: Record<ProfileName, Parameters<typeof calibrationMetrics>[0]>;
+      };
+      expect(report).toMatchObject({
+        schema: 'cf-v2-compendium-memory-report/v1',
+        runId: evidence.runId,
+        status: 'calibration',
+        lifecycle: { status: 'complete' },
+        policy: { attemptCount: 1, automaticRetries: 0 },
+        findings: [],
+      });
+      expect(report.source.begin).toEqual(report.source.end);
+      expect(report.source.begin).toMatchObject({
+        commit: 'b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974',
+        branch: 'openai/mac', state: 'committed',
+        statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      });
+      expect(report.budget).toMatchObject({
+        status: 'calibration-required', browserAuthorityMatch: true,
+        producerAuthorityMatch: true,
+        producerAuthority: { sha256: RULER_PRODUCER_AUTHORITY },
+      });
+      expect(report.budget.observedProducerAuthority).toEqual(report.budget.producerAuthority);
+      expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
+        .toBe(RULER_MEASUREMENT_AUTHORITY);
+      expect(report.outcomes).toHaveLength(78);
+      expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
+      expect(activeBudget.calibration.selectionRule).toContain(evidence.file);
+      expect(activeBudget.calibration.selectionRule).toContain(evidence.rawSha256);
+      expect(activeBudget.calibration.selectionRule).toContain(evidence.gzipSha256);
+
+      for (const profile of PROFILE_NAMES) {
+        const selected = activeBudget.calibration.samples[profile][runIndex] as
+          CalibrationSample & Record<string, unknown>;
+        const { measuredAt, ...selectedWithoutTimestamp } = selected;
+        const measurement = report.profiles[profile];
+        expect(selectedWithoutTimestamp).toEqual({
+          runId: report.runId,
+          commit: report.source.begin.commit,
+          workingTreeDigest: report.source.begin.workingTreeSha256,
+          inputDigest: createHash('sha256').update(stableJson(report.inputs)).digest('hex'),
+          measurementAuthoritySha256: compendiumMeasurementAuthority(report.inputs)?.sha256,
+          producerAuthoritySha256: report.budget.producerAuthority.sha256,
+          sourceState: report.source.begin.state,
+          sourceChanged: false,
+          fixtureRowsSha256: report.inputs.fixtureRows,
+          browser: {
+            executable: report.browser.executable,
+            product: report.browser.product,
+            revision: report.browser.revision,
+            userAgent: report.browser.user_agent,
+            jsVersion: report.browser.js_version,
+            protocolVersion: report.browser.protocol_version,
+          },
+          metrics: calibrationMetrics(measurement),
+          evidence: candidateCalibrationEvidence(measurement, { runId: report.runId }),
+        });
+        expect(Date.parse(String(measuredAt))).toBeGreaterThanOrEqual(Date.parse(report.startedAt));
+        expect(Date.parse(String(measuredAt))).toBeLessThanOrEqual(Date.parse(report.endedAt));
+        expect(reduceCalibrationEvidence(selected.evidence)?.metrics).toEqual(selected.metrics);
+      }
+      expect(activeBudget.calibration.samples.phone[runIndex]?.measuredAt)
+        .toBe(activeBudget.calibration.samples.desktop[runIndex]?.measuredAt);
+    }
+
+    const evidence = currentUniversePolishBaselineEvidence;
+    const compressed = fs.readFileSync(path.join(v2Root, '..', '..', 'audits', evidence.file));
+    expect(compressed).toHaveLength(evidence.gzipBytes);
+    expect(createHash('sha256').update(compressed).digest('hex')).toBe(evidence.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(raw).toHaveLength(evidence.rawBytes);
+    expect(createHash('sha256').update(raw).digest('hex')).toBe(evidence.rawSha256);
+    const carrier = JSON.parse(raw.toString('utf8')) as {
+      schema: string; runId: string; status: string;
+      budgetAuthority: { collectorCommit: string; measurementAuthoritySha256: string };
+      baselineSource: { begin: { commit: string }; end: { commit: string } };
+      collectorSource: { begin: { commit: string }; end: { commit: string } };
+      samples: Record<ProfileName, CalibrationSample>;
+    };
+    expect(carrier).toMatchObject({
+      schema: 'cf-v2-compendium-memory-baseline-sample/v1',
+      runId: evidence.runId,
+      status: 'paired-broken-baseline-observation-not-a-budget',
+      budgetAuthority: {
+        collectorCommit: 'b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974',
+        measurementAuthoritySha256: RULER_MEASUREMENT_AUTHORITY,
+      },
+    });
+    expect(carrier.baselineSource.begin.commit).toBe(activeBudget.pairedBrokenBaseline.commit);
+    expect(carrier.baselineSource.end).toEqual(carrier.baselineSource.begin);
+    expect(carrier.collectorSource.begin.commit)
+      .toBe(activeBudget.pairedBrokenBaseline.collectorCommit);
+    expect(carrier.collectorSource.end).toEqual(carrier.collectorSource.begin);
+    expect(activeBudget.calibration.selectionRule).toContain(evidence.file);
+    expect(activeBudget.calibration.selectionRule).toContain(evidence.rawSha256);
+    expect(activeBudget.calibration.selectionRule).toContain(evidence.gzipSha256);
+    for (const profile of PROFILE_NAMES) {
+      expect(activeBudget.pairedBrokenBaseline.samples[profile])
+        .toEqual([carrier.samples[profile]]);
+      expect(reduceCalibrationEvidence(carrier.samples[profile].evidence)?.metrics)
+        .toEqual(carrier.samples[profile].metrics);
+      expect(carrier.samples[profile].observedFaults)
+        .toEqual(BROKEN_BASELINE_EXPECTED_FAULTS);
+    }
+  });
+
+  it('rederives retained slice-repair carriers as historical evidence only', () => {
+    for (const evidence of currentSliceRepairCandidateEvidence) {
       const compressed = fs.readFileSync(path.join(v2Root, '..', '..', 'audits', evidence.file));
       expect(createHash('sha256').update(compressed).digest('hex')).toBe(evidence.gzipSha256);
       const raw = gunzipSync(compressed);
@@ -1216,52 +1389,25 @@ describe('Arc 1A Compendium budget authority', () => {
         status: 'calibration-required',
         browserAuthorityMatch: true,
         producerAuthorityMatch: true,
-        producerAuthority: { sha256: RULER_PRODUCER_AUTHORITY },
+        producerAuthority: { sha256: HISTORICAL_RULER_PRODUCER_AUTHORITY },
       });
       expect(report.budget.observedProducerAuthority).toEqual(report.budget.producerAuthority);
       expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
-        .toBe(RULER_MEASUREMENT_AUTHORITY);
+        .toBe(HISTORICAL_RULER_MEASUREMENT_AUTHORITY);
       expect(report.outcomes).toHaveLength(78);
       expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
 
       for (const profile of PROFILE_NAMES) {
-        if (calibrationRequired) {
-          expect(activeBudget.calibration.selectionRule).toContain(evidence.runId);
-          continue;
-        }
-        const selected = activeBudget.calibration.samples[profile][runIndex] as
-          CalibrationSample & Record<string, unknown>;
-        const { measuredAt, ...selectedWithoutTimestamp } = selected;
         const measurement = report.profiles[profile];
-        expect(selectedWithoutTimestamp).toEqual({
-          runId: report.runId,
-          commit: report.source.begin.commit,
-          workingTreeDigest: report.source.begin.workingTreeSha256,
-          inputDigest: createHash('sha256').update(stableJson(report.inputs)).digest('hex'),
-          measurementAuthoritySha256: compendiumMeasurementAuthority(report.inputs)?.sha256,
-          producerAuthoritySha256: report.budget.producerAuthority.sha256,
-          sourceState: report.source.begin.state,
-          sourceChanged: false,
-          fixtureRowsSha256: report.inputs.fixtureRows,
-          browser: {
-            executable: report.browser.executable,
-            product: report.browser.product,
-            revision: report.browser.revision,
-            userAgent: report.browser.user_agent,
-            jsVersion: report.browser.js_version,
-            protocolVersion: report.browser.protocol_version,
-          },
-          metrics: calibrationMetrics(measurement),
-          evidence: candidateCalibrationEvidence(measurement, { runId: report.runId }),
-        });
-        expect(typeof measuredAt).toBe('string');
-        expect(Date.parse(String(measuredAt))).toBeGreaterThanOrEqual(Date.parse(report.startedAt));
-        expect(Date.parse(String(measuredAt))).toBeLessThanOrEqual(Date.parse(report.endedAt));
-        expect(reduceCalibrationEvidence(selected.evidence)?.metrics).toEqual(selected.metrics);
-      }
-      if (!calibrationRequired) {
-        expect(activeBudget.calibration.samples.phone[runIndex]?.measuredAt)
-          .toBe(activeBudget.calibration.samples.desktop[runIndex]?.measuredAt);
+        const metrics = calibrationMetrics(measurement);
+        const evidenceProjection = candidateCalibrationEvidence(
+          measurement, { runId: report.runId },
+        );
+        expect(metrics).toBeDefined();
+        expect(evidenceProjection?.schema).toBe(CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA);
+        expect(reduceCalibrationEvidence(evidenceProjection)?.metrics).toEqual(metrics);
+        expect(activeBudget.calibration.samples[profile].map((sample) => sample.runId))
+          .not.toContain(evidence.runId);
       }
     }
 
@@ -1286,28 +1432,23 @@ describe('Arc 1A Compendium budget authority', () => {
       status: 'paired-broken-baseline-observation-not-a-budget',
       budgetAuthority: {
         collectorCommit: '8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527',
-        measurementAuthoritySha256: RULER_MEASUREMENT_AUTHORITY,
+        measurementAuthoritySha256: HISTORICAL_RULER_MEASUREMENT_AUTHORITY,
       },
     });
     expect(baselineCarrier.baselineSource.begin.commit)
       .toBe(activeBudget.pairedBrokenBaseline.commit);
     expect(baselineCarrier.baselineSource.end).toEqual(baselineCarrier.baselineSource.begin);
     expect(baselineCarrier.collectorSource.begin.commit)
-      .toBe(calibrationRequired
-        ? '8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527'
-        : activeBudget.pairedBrokenBaseline.collectorCommit);
+      .toBe('8ffd2e2b4a8ba070cb93d3df6a8f4a91a245f527');
     expect(baselineCarrier.collectorSource.end).toEqual(baselineCarrier.collectorSource.begin);
     for (const profile of PROFILE_NAMES) {
-      if (calibrationRequired) {
-        expect(activeBudget.pairedBrokenBaseline.samples[profile]).toEqual([]);
-        expect(activeBudget.calibration.selectionRule)
-          .toContain(currentSliceRepairBaselineEvidence.runId);
-        continue;
-      }
       const selected = activeBudget.pairedBrokenBaseline.samples[profile][0];
-      expect(selected).toEqual(baselineCarrier.samples[profile]);
-      expect(reduceCalibrationEvidence(selected?.evidence)?.metrics).toEqual(selected?.metrics);
-      expect(selected?.observedFaults).toEqual(BROKEN_BASELINE_EXPECTED_FAULTS);
+      expect(selected?.runId).toBe(EXPECTED_BASELINE_RUN);
+      expect(selected).not.toEqual(baselineCarrier.samples[profile]);
+      expect(reduceCalibrationEvidence(baselineCarrier.samples[profile].evidence)?.metrics)
+        .toEqual(baselineCarrier.samples[profile].metrics);
+      expect(baselineCarrier.samples[profile].observedFaults)
+        .toEqual(BROKEN_BASELINE_EXPECTED_FAULTS);
     }
   });
 
@@ -1341,9 +1482,9 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(report.budget.observedProducerAuthority)
         .toEqual(HISTORICAL_PHASE4_PRODUCER_AUTHORITY);
       expect(report.budget.producerAuthority).not.toEqual(budget.producerAuthority);
-      expect(report.inputs.collector).toBe(RULER_COLLECTOR_AUTHORITY);
+      expect(report.inputs.collector).toBe(HISTORICAL_RULER_COLLECTOR_AUTHORITY);
       expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
-        .toBe(RULER_MEASUREMENT_AUTHORITY);
+        .toBe(HISTORICAL_RULER_MEASUREMENT_AUTHORITY);
       expect(report.outcomes).toHaveLength(78);
       expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
       for (const profile of PROFILE_NAMES) {
@@ -1373,7 +1514,7 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(baselineCarrier.runId).toBe(historicalPhase4BaselineEvidence.runId);
     expect(baselineCarrier.status).toBe('paired-broken-baseline-observation-not-a-budget');
     expect(baselineCarrier.budgetAuthority.measurementAuthoritySha256)
-      .toBe(RULER_MEASUREMENT_AUTHORITY);
+      .toBe(HISTORICAL_RULER_MEASUREMENT_AUTHORITY);
     expect(baselineCarrier.baselineSource.begin.commit)
       .toBe(activeBudget.pairedBrokenBaseline.commit);
     expect(baselineCarrier.baselineSource.end).toEqual(baselineCarrier.baselineSource.begin);
@@ -1397,15 +1538,15 @@ describe('Arc 1A Compendium budget authority', () => {
     }
   });
 
-  it('binds the current slice-repair exact-budget certificate to the active ruler', () => {
+  it('retains the prior slice-repair exact-budget certificate without rebinding it', () => {
     const compressed = fs.readFileSync(path.join(
-      v2Root, '..', '..', 'audits', currentSliceRepairCertificationEvidence.file,
+      v2Root, '..', '..', 'audits', historicalSliceRepairCertificationEvidence.file,
     ));
     expect(createHash('sha256').update(compressed).digest('hex'))
-      .toBe(currentSliceRepairCertificationEvidence.gzipSha256);
+      .toBe(historicalSliceRepairCertificationEvidence.gzipSha256);
     const raw = gunzipSync(compressed);
     expect(createHash('sha256').update(raw).digest('hex'))
-      .toBe(currentSliceRepairCertificationEvidence.rawSha256);
+      .toBe(historicalSliceRepairCertificationEvidence.rawSha256);
     const report = JSON.parse(raw.toString('utf8')) as RetainedLinuxReport & {
       startedAt: string; endedAt: string; durationMs: number; expectedOutcomes: string[];
       reviewPacket: Array<Record<string, unknown>>;
@@ -1453,11 +1594,11 @@ describe('Arc 1A Compendium budget authority', () => {
     ].sort());
     expect(report).toMatchObject({
       schema: 'cf-v2-compendium-memory-report/v1',
-      runId: currentSliceRepairCertificationEvidence.runId,
+      runId: historicalSliceRepairCertificationEvidence.runId,
       status: 'pass',
-      startedAt: currentSliceRepairCertificationEvidence.startedAt,
-      endedAt: currentSliceRepairCertificationEvidence.endedAt,
-      durationMs: currentSliceRepairCertificationEvidence.durationMs,
+      startedAt: historicalSliceRepairCertificationEvidence.startedAt,
+      endedAt: historicalSliceRepairCertificationEvidence.endedAt,
+      durationMs: historicalSliceRepairCertificationEvidence.durationMs,
       lifecycle: { schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete' },
       policy: {
         attemptCount: 1,
@@ -1473,34 +1614,34 @@ describe('Arc 1A Compendium budget authority', () => {
     });
     expect(report.source.begin).toEqual(report.source.end);
     expect(report.source.begin).toEqual({
-      commit: currentSliceRepairCertificationEvidence.sourceCommit,
+      commit: historicalSliceRepairCertificationEvidence.sourceCommit,
       branch: 'openai/mac',
       state: 'committed',
       statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-      workingTreeSha256: currentSliceRepairCertificationEvidence.sourceWorkingTreeSha256,
+      workingTreeSha256: historicalSliceRepairCertificationEvidence.sourceWorkingTreeSha256,
     });
 
-    expect(fileSha256(budgetPath)).not.toBe(currentSliceRepairCertificationEvidence.budgetSha256);
+    expect(fileSha256(budgetPath)).not.toBe(historicalSliceRepairCertificationEvidence.budgetSha256);
     expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
-      .toBe(currentSliceRepairCertificationEvidence.measurementAuthoritySha256);
-    expect(currentSliceRepairCertificationEvidence.measurementAuthoritySha256)
-      .toBe(RULER_MEASUREMENT_AUTHORITY);
+      .toBe(historicalSliceRepairCertificationEvidence.measurementAuthoritySha256);
+    expect(historicalSliceRepairCertificationEvidence.measurementAuthoritySha256)
+      .toBe(HISTORICAL_RULER_MEASUREMENT_AUTHORITY);
     expect(report.budget).toEqual({
       status: 'active',
       path: 'budgets/compendium-memory-v1.json',
-      sha256: currentSliceRepairCertificationEvidence.budgetSha256,
+      sha256: historicalSliceRepairCertificationEvidence.budgetSha256,
       browserAuthority: activeBudget.browserAuthority,
       browserAuthorityMatch: true,
-      producerAuthority: RULER_PRODUCER_AUTHORITY_RECORD,
-      observedProducerAuthority: RULER_PRODUCER_AUTHORITY_RECORD,
+      producerAuthority: HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD,
+      observedProducerAuthority: HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD,
       producerAuthorityMatch: true,
     });
-    expect(report.budget.producerAuthority.sha256).toBe(RULER_PRODUCER_AUTHORITY);
+    expect(report.budget.producerAuthority.sha256).toBe(HISTORICAL_RULER_PRODUCER_AUTHORITY);
     expect(report.budget.producerAuthority).not.toEqual(activeBudget.producerAuthority);
     expect(report.budget.producerAuthority).not.toEqual(HISTORICAL_PHASE4_PRODUCER_AUTHORITY);
-    expect(currentSliceRepairCertificationEvidence.producerAuthoritySha256)
-      .toBe(RULER_PRODUCER_AUTHORITY);
-    expect(report.browser).toEqual(currentSliceRepairCertificationEvidence.browser);
+    expect(historicalSliceRepairCertificationEvidence.producerAuthoritySha256)
+      .toBe(HISTORICAL_RULER_PRODUCER_AUTHORITY);
+    expect(report.browser).toEqual(historicalSliceRepairCertificationEvidence.browser);
     expect(compendiumBrowserAuthorityMatches(
       report.browser, report.budget.browserAuthority,
     )).toBe(true);
@@ -1515,13 +1656,29 @@ describe('Arc 1A Compendium budget authority', () => {
     if (activeBudget.status === 'calibration-required') {
       expect(activeBudget.ceilings).toBeNull();
       expect(activeBudget.calibration.selectionRule)
-        .toContain(currentSliceRepairCertificationEvidence.runId);
+        .toContain(historicalSliceRepairCertificationEvidence.runId);
       return;
     }
+    const historicalCeilings = structuredClone(activeBudget.ceilings!);
+    Object.assign(historicalCeilings.phone, {
+      heapUsedBytesMax: 10_485_760,
+      backingStorageBytesMax: 4_194_304,
+      heapAggregateBytesMax: 16_777_216,
+      liveEncodedBytesMax: 2_621_440,
+      livePortraitEncodedBytesMax: 262_144,
+    });
+    Object.assign(historicalCeilings.desktop, {
+      heapUsedBytesMax: 14_680_064,
+      backingStorageBytesMax: 6_291_456,
+      heapAggregateBytesMax: 20_971_520,
+      liveEncodedBytesMax: 6_815_744,
+      livePortraitEncodedBytesMax: 262_144,
+    });
     const rulerReplayBudget = {
       ...activeBudget,
-      measurementAuthority: { sha256: RULER_MEASUREMENT_AUTHORITY },
-      producerAuthority: RULER_PRODUCER_AUTHORITY_RECORD,
+      measurementAuthority: { sha256: HISTORICAL_RULER_MEASUREMENT_AUTHORITY },
+      producerAuthority: HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD,
+      ceilings: historicalCeilings,
     } as unknown as ActiveBudgetRecord;
     const replayedOutcomes = PROFILE_NAMES.flatMap((profile) =>
       evaluateProfile(certificateProfiles[profile], rulerReplayBudget, fixture));
@@ -1594,11 +1751,11 @@ describe('Arc 1A Compendium budget authority', () => {
 
     expect(fileSha256(budgetPath)).not.toBe(historicalPhase4CertificationEvidence.budgetSha256);
     expect(report.inputs.budget).toBe(historicalPhase4CertificationEvidence.budgetSha256);
-    expect(report.inputs.collector).toBe(RULER_COLLECTOR_AUTHORITY);
+    expect(report.inputs.collector).toBe(HISTORICAL_RULER_COLLECTOR_AUTHORITY);
     expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
       .toBe(historicalPhase4CertificationEvidence.measurementAuthoritySha256);
     expect(historicalPhase4CertificationEvidence.measurementAuthoritySha256)
-      .toBe(RULER_MEASUREMENT_AUTHORITY);
+      .toBe(HISTORICAL_RULER_MEASUREMENT_AUTHORITY);
     expect(report.budget).toMatchObject({
       status: 'active',
       path: 'budgets/compendium-memory-v1.json',
@@ -1989,8 +2146,8 @@ describe('Arc 1A Compendium budget authority', () => {
         ceilingField: 'livePortraitEncodedBytesMax',
         sampleField: 'livePortraitEncodedBytes',
         observed: RETAINED_LINUX_COMPATIBILITY.phone.livePortraitEncodedBytes,
-        expectedCeiling: 262_144,
-        expectedHeadroom: 41_614,
+        expectedCeiling: 393_216,
+        expectedHeadroom: 172_686,
         expectedFailure: 'phone/byte-ceiling',
       },
       {
@@ -1998,8 +2155,8 @@ describe('Arc 1A Compendium budget authority', () => {
         ceilingField: 'livePortraitEncodedBytesMax',
         sampleField: 'livePortraitEncodedBytes',
         observed: RETAINED_LINUX_COMPATIBILITY.desktop.livePortraitEncodedBytes,
-        expectedCeiling: 262_144,
-        expectedHeadroom: 41_614,
+        expectedCeiling: 393_216,
+        expectedHeadroom: 172_686,
         expectedFailure: 'desktop/byte-ceiling',
       },
     ];

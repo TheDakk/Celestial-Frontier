@@ -10,6 +10,70 @@ summary of it.
 
 ## Contents
 
+### Signed `b65fd5d…` universe-polish Compendium calibration — three candidates and paired baseline complete; activation ready to sign
+
+Signed clean calibration source `b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974` (tree
+`d59e2a9fd3ea61fa24459a41646672c73c5024cf`, parent
+`55126af50f3f7ab7b4eaeee7d81b28f8881c87fa`) stayed clean and unchanged for all four measurements.
+The candidate reports bind measurement authority
+`cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78`, producer authority
+`d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271`, Microsoft Edge
+`151.0.4129.107` / CDP `1.3`, the same exact fixture/input identity and one committed working-tree
+digest. Their distinct run IDs and timestamps satisfy the independent-run rule:
+
+- `20260829-universe-polish-b65fd5d4a1b7-candidate1` ran once with zero automatic retries,
+  completed all 78 calibration outcomes in 45,761 ms and retained no findings;
+- `20260829-universe-polish-b65fd5d4a1b7-candidate2` ran once with zero automatic retries,
+  completed all 78 calibration outcomes in 45,286 ms and retained no findings;
+- `20260829-universe-polish-b65fd5d4a1b7-candidate3` ran once with zero automatic retries,
+  completed all 78 calibration outcomes in 45,357 ms and retained no findings.
+
+These are calibration observations, not current-budget PASS certificates. Across the three runs,
+phone maxima were 10,925,264 B V8 heap, 4,823,337 B backing storage, 16,558,308 B aggregate heap,
+3,210,056 B encoded art and 308,486 B encoded portrait; desktop maxima were 14,570,732 B V8 heap,
+6,331,653 B backing storage, 21,249,926 B aggregate heap, 8,523,880 B encoded art and 308,486 B
+encoded portrait. The reviewed rational-headroom selection is:
+
+- phone: 11,534,336 B V8 heap, 5,242,880 B backing storage, 17,825,792 B aggregate heap,
+  3,407,872 B encoded art and 393,216 B encoded portrait;
+- desktop: 15,728,640 B V8 heap, 6,815,744 B backing storage, 23,068,672 B aggregate heap,
+  8,912,896 B encoded art and 393,216 B encoded portrait.
+
+Every other numeric field remains byte-identical to the prior ruler. The wider aggregate/V8 margins
+avoid turning normal measured spread or sub-one-percent headroom into an immediate false red. The
+384 KiB portrait ceiling conservatively preserves prior cross-platform encoder variance; it is not
+a claim of a fresh Linux measurement. Exact decoded-resource +1 sentinels, fractional next-state
+sentinels and the 512 KiB warm-range rulers remain unchanged.
+
+Paired run `20260829-universe-polish-b65fd5d4a1b7-baseline1` measured the exact broken product at
+`38447019517147319bd08c598202d097ee866874` with collector source `b65fd5d…`. Both phone and
+desktop reproduced all four sealed faults: `unwindowed-1500-rows`, `list-source-440`,
+`full-portrait-dom-exposure` and `eager-art-import`. The selected ceilings retain the exact expected
+**14 phone / 13 desktop** numeric breach inventories.
+
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_CANDIDATE1_20260829.json.gz`: 455,574 compressed bytes,
+  SHA-256 `65c9982ee3339d32b493fe26beb72aa35b2d55cece3b35a981852512ee6cacdc`; 8,683,347
+  decompressed bytes, SHA-256 `d259ddbee5e621dd7694302601ac4a4576bd31ba39d184f93874c446683a5135`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_CANDIDATE2_20260829.json.gz`: 451,313 compressed bytes,
+  SHA-256 `855d823ec0a8866e3f69f8542fd8a1c892ca04760341c3b7b9fa36d9caba66e0`; 8,577,843
+  decompressed bytes, SHA-256 `7d36e634b30a75ae70a15a806dc7288b76815c151110377dbb3717121d36972e`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_CANDIDATE3_20260829.json.gz`: 451,208 compressed bytes,
+  SHA-256 `bf1ad07f82c7e3565644162b7d9195289f844e0be360259689800f4ffa8a9d0c`; 8,581,571
+  decompressed bytes, SHA-256 `7fbd4375d26063a8e000b63fe652cc4d812696255dc5467641332836a7e7c705`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_BASELINE1_SAMPLE_20260829.json.gz`: 2,868 compressed bytes,
+  SHA-256 `353c09949f413d3f4a9a7907167151345475877225033df10156e65c71a978c2`; 14,756
+  decompressed bytes, SHA-256 `fc9afe2499629e9ad16966b0f8da4b370acf056fbd13a2309a1d0a592e5361aa`.
+
+All four carriers pass gzip integrity. The working tree's active budget has SHA-256
+`02ee0ada076e444b7f3ad67c47c3de688bbd290d7e1a9a9e7570168f2d4c29f0`; focused 27/27,
+222 selftest controls, full 1,711-pass + one-skip v2, all typechecks, `artunused`, current-producer
+binding and independent review are green. This is reviewed browser-free activation state, not a
+signed clean source or current green certificate. The next permitted browser step is one exact
+Compendium certification from the later
+signed changed activation source. Only after that report passes named verification may a completely
+fresh Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain begin.
+Routine compatible Edge updates remain provenance only and never trigger rebaseline or recalibration.
+
 ### Signed `55126af…` universe-polish campaign — Layout/SceneMemory PASS, Compendium product-budget stop
 
 Signed clean source `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa` (tree
