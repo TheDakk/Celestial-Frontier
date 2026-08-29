@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   ARC2_LOOT_NAMESPACE,
+  F3_MAX_REVISION,
   V4_PRIMARY_KEY,
   arc2LootLegacyMirrorMatches,
   createMemoryBackend,
@@ -170,6 +171,141 @@ describe('F4 runtime authority join', () => {
       },
     });
     expect(runtime.diagnostics()).toMatchObject({ commits: 1, staleWrites: 0, leaseLosses: 0 });
+  });
+
+  it('classifies an exhausted F3 revision as terminal without publishing product or receipt state', async () => {
+    const { backend, loaded } = await migrated();
+    await backend.apply([{
+      store: 'meta', key: 'f3:revision', value: String(F3_MAX_REVISION - 1),
+    }]);
+    const repository = createRevisionedRepository(backend);
+    const runtime = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: F3_MAX_REVISION - 1,
+      initialExtensions: loaded.extensions,
+      restoredAuthority: null,
+      freshSessionSeed: 0x11223344,
+      ownerId: 'revision-limit-tab', token: 'revision-limit-document', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await expect(runtime.heartbeat()).resolves.toEqual({ kind: 'owned', heartbeat: 0 });
+    await expect(runtime.commit(loaded.state, NOW)).resolves.toMatchObject({
+      kind: 'committed', revision: F3_MAX_REVISION,
+    });
+    const before = await readSaveV5(backend, REGISTRY, NOW);
+    if (before.kind !== 'loaded') throw new Error(`revision-limit baseline was ${before.kind}`);
+    const receiptsBefore = await receiptEvidence(backend);
+
+    const exhausted = await runtime.commitProduct({
+      state: before.state,
+      operation: 'salvage',
+      codecNow: NOW,
+      derive: ({ draft, receiptOrdinal }) => {
+        draft.essence += 1;
+        return {
+          state: draft,
+          extensionWrites: [{
+            segment: 'inventory', namespace: 'test.revision-limit',
+            carrier: { version: 1, json: '{"mustNotLand":true}' },
+          }],
+          witness: `revision-limit:${receiptOrdinal}`,
+        };
+      },
+    });
+    expect(exhausted).toMatchObject({
+      kind: 'revision-exhausted',
+      revision: F3_MAX_REVISION,
+      plan: { receiptOrdinal: 0 },
+    });
+    expect(runtime.diagnostics()).toMatchObject({
+      revision: F3_MAX_REVISION,
+      commits: 1,
+      staleWrites: 0,
+      staleBlocked: true,
+      leaseOwned: false,
+      accruing: false,
+      sessionOrdinal: 0,
+      sessionDraws: {},
+    });
+    await expect(runtime.heartbeat()).resolves.toEqual({ kind: 'lost' });
+    const after = await readSaveV5(backend, REGISTRY, NOW);
+    if (after.kind !== 'loaded') throw new Error(`revision-limit reload was ${after.kind}`);
+    expect(JSON.stringify(after.state)).toBe(JSON.stringify(before.state));
+    expect(after.extensions).toEqual(before.extensions);
+    expect(sameReceiptEvidence(await receiptEvidence(backend), receiptsBefore)).toBe(true);
+    expect(await repository.revision()).toBe(F3_MAX_REVISION);
+  });
+
+  it('accepts the readable maximum revision at F4 join and terminally refuses its next checkpoint', async () => {
+    const { backend, loaded } = await migrated();
+    await backend.apply([{
+      store: 'meta', key: 'f3:revision', value: String(F3_MAX_REVISION),
+    }]);
+    const repository = createRevisionedRepository(backend);
+    const before = await readSaveV5(backend, REGISTRY, NOW);
+    if (before.kind !== 'loaded') throw new Error(`maximum-revision baseline was ${before.kind}`);
+    const runtime = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: F3_MAX_REVISION,
+      initialExtensions: loaded.extensions,
+      restoredAuthority: null,
+      freshSessionSeed: 0x55667788,
+      ownerId: 'maximum-revision-tab', token: 'maximum-revision-document', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await expect(runtime.heartbeat()).resolves.toEqual({ kind: 'owned', heartbeat: 0 });
+
+    await expect(runtime.commit(loaded.state, NOW)).resolves.toEqual({
+      kind: 'revision-exhausted', revision: F3_MAX_REVISION,
+    });
+    expect(runtime.diagnostics()).toMatchObject({
+      revision: F3_MAX_REVISION,
+      commits: 0,
+      staleWrites: 0,
+      staleBlocked: true,
+      leaseOwned: false,
+      accruing: false,
+    });
+    await expect(runtime.heartbeat()).resolves.toEqual({ kind: 'lost' });
+    const after = await readSaveV5(backend, REGISTRY, NOW);
+    if (after.kind !== 'loaded') throw new Error(`maximum-revision reload was ${after.kind}`);
+    expect(JSON.stringify(after.state)).toBe(JSON.stringify(before.state));
+    expect(after.extensions).toEqual(before.extensions);
+    expect(readF4Authority(after.extensions)).toEqual({ kind: 'absent' });
+    expect(await repository.revision()).toBe(F3_MAX_REVISION);
+  });
+
+  it('holds a loaded maximum revision at the app boot classifier before F4 runtime creation', () => {
+    const source = fs.readFileSync(path.join(here, '..', 'apps', 'game', 'src', 'main.ts'), 'utf8');
+    const assess = (candidate: string): string[] => {
+      const errors: string[] = [];
+      const acceptStart = candidate.indexOf('const acceptCurrent = async (');
+      const acceptEnd = candidate.indexOf('\n  };', acceptStart);
+      const acceptCurrent = acceptStart >= 0 && acceptEnd > acceptStart
+        ? candidate.slice(acceptStart, acceptEnd) : '';
+      const revisionAssignment = acceptCurrent.indexOf('initialRevision = current.revision;');
+      const exhaustion = acceptCurrent.indexOf('if (!persistHold && initialRevision === F3_MAX_REVISION)');
+      const protectedHold = acceptCurrent.indexOf("persistHold = 'protected-payload';", exhaustion);
+      const protectedKind = acceptCurrent.indexOf(
+        "persistenceBootKind = 'revision-exhausted-protected';",
+        exhaustion,
+      );
+      const writableContinuation = acceptCurrent.indexOf('if (!persistHold) {', exhaustion + 1);
+      if (!candidate.includes('F3_ACTIVE_PLAY_LEASE_KEY, F3_MAX_REVISION,')) errors.push('shared-limit');
+      if (!(revisionAssignment >= 0 && exhaustion > revisionAssignment
+        && protectedHold > exhaustion && protectedKind > protectedHold
+        && writableContinuation > protectedKind)) errors.push('boot-protection-order');
+      if (!candidate.includes("| 'corrupt-protected' | 'revision-exhausted-protected' | 'transient-protected';")) {
+        errors.push('typed-boot-kind');
+      }
+      return errors;
+    };
+
+    expect(assess(source)).toEqual([]);
+    expect(assess(source.replace(
+      'if (!persistHold && initialRevision === F3_MAX_REVISION)',
+      'if (!persistHold && false)',
+    ))).toContain('boot-protection-order');
   });
 
   it('stops while hidden, releases ownership, and resumes only after reacquisition', async () => {

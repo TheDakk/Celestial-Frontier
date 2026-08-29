@@ -119,11 +119,17 @@ function graduationCopyIsTruthful(html: string): boolean {
     && /never while the game is closed/i.test(copy)
     && /navigation drill makes no capture attempt[^.!?]{0,64}use those actions after Finish/i.test(copy)
     && /Capture does not bank the Charter’s separate bioscan milestone[^.!?]{0,64}writer remains unavailable/i.test(copy)
+    && /real fauna Compendium detail can also Feed one exact unassigned companion below the 200-Meal cap with one exact flora lot through Use 1/i.test(copy)
+    && /This drill performs no meal/i.test(copy)
+    && /tastes, stat or Power growth, injury care, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable/i.test(copy)
     && !/(?:Surveying|landing)[^.!?]{0,80}(?:discovers|captures) (?:its )?life/i.test(copy)
     && !/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(copy)
     && !/miss(?:es)?[^.!?]{0,48}(?:cost|spend)s? (?:nothing|no Yield|zero)/i.test(copy)
     && !/(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?)[^.!?]{0,32}(?:while|when)[^.!?]{0,32}(?:closed|offline)/i.test(copy)
     && !/(?:drill|Training)[^.!?]{0,64}(?:makes|performs) a capture attempt/i.test(copy)
+    && !/(?:drill|Training)[^.!?]{0,64}(?:makes|performs) a meal/i.test(copy)
+    && !/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(copy)
+    && !/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(copy)
     && !/Capture (?:banks|advances|counts)[^.!?]{0,48}(?:Charter|bioscan)/i.test(copy)
     && !/(?:all|every) Research[^.!?]{0,80}(?:available|purchasable)/i.test(copy);
 }
@@ -178,6 +184,18 @@ describe('Field Training completion transaction UI', () => {
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation + ' Every Research row is now purchasable.',
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation.replace(
+        'one exact unassigned companion below the 200-Meal cap with one exact flora lot through <b>Use 1</b>',
+        'any companion with any flora',
+      ),
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation + ' Assigned companions can still be fed.',
+    )).toBe(false);
+    expect(graduationCopyIsTruthful(
+      graduation + ' Stats are now increased by feeding.',
     )).toBe(false);
   });
 

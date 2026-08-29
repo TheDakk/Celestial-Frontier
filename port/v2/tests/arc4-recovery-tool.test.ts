@@ -469,9 +469,46 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
     expect(report.stages.find(({ id }) => id === 'cleanup')?.status)
       .toBe('pass');
 
-    const replay = assessArc4ExhaustionRecovery(report.recoveryBundle);
+    const replay = assessArc4ExhaustionRecovery(report.recoveryBundle, {
+      allowLegacyArc5Diagnostics: true,
+    });
     expect(replay.ok).toBe(true);
     expect(Object.values(replay.checks).every((value) => value === true))
       .toBe(true);
+
+    const defaultReplay = assessArc4ExhaustionRecovery(report.recoveryBundle);
+    expect(Object.entries(defaultReplay.checks)
+      .filter(([, value]) => value !== true).map(([name]) => name))
+      .toEqual(['exhaustedLive', 'ownershipV2Live', 'uiComplete']);
+
+    const diagnosticOwners = [
+      'exhaustedState', 'exhaustedUi', 'closedState',
+      'offlineState', 'offlineUi', 'recoveredState', 'recoveredUi',
+    ] as const;
+    const diagnosticSnapshots = (bundle: typeof report.recoveryBundle) => [
+      ...diagnosticOwners.map((owner) => bundle[owner]),
+      bundle.suppressed.beforeState,
+      bundle.suppressed.afterState,
+    ];
+    const legacyWithExtraFeed = structuredClone(report.recoveryBundle);
+    for (const snapshot of diagnosticSnapshots(legacyWithExtraFeed)) {
+      snapshot.ownershipV2.feed = {};
+    }
+    const legacyExtraReplay = assessArc4ExhaustionRecovery(legacyWithExtraFeed, {
+      allowLegacyArc5Diagnostics: true,
+    });
+    expect(Object.entries(legacyExtraReplay.checks)
+      .filter(([, value]) => value !== true).map(([name]) => name))
+      .toEqual(['exhaustedLive', 'ownershipV2Live', 'uiComplete']);
+
+    const malformedCurrentFeed = structuredClone(report.recoveryBundle);
+    for (const snapshot of diagnosticSnapshots(malformedCurrentFeed)) {
+      snapshot.ownershipV2.schema = 'cf-v2-arc5-app-state/v3';
+      snapshot.ownershipV2.feed = {};
+    }
+    const malformedCurrentReplay = assessArc4ExhaustionRecovery(malformedCurrentFeed);
+    expect(Object.entries(malformedCurrentReplay.checks)
+      .filter(([, value]) => value !== true).map(([name]) => name))
+      .toEqual(['exhaustedLive', 'ownershipV2Live', 'uiComplete']);
   });
 });

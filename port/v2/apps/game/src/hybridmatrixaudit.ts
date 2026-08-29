@@ -6,7 +6,10 @@
    never writes _earthBlend or _anchorVal. Machine checks cover provenance,
    determinism, routing, and cache independence; the visual seam decision is
    deliberately left UNREVIEWED for a human looking at the emitted sheets. */
-import { speciesPortrait, verbatimSpeciesPortraitForAudit } from '@cf/art/species';
+import {
+  renderSpeciesPortraitCanvas,
+  speciesPortrait,
+} from '@cf/art/species';
 import { _EARTH_NAMES } from '@cf/domain-descriptors';
 import { crossGenome } from '@cf/domain-genetics';
 import { makeGenome } from '@cf/domain-genome';
@@ -303,7 +306,7 @@ function routeName(genome: Genome, owned: string | null): RouteKind {
 function freshRender(genome: Genome): { url: string; route: RouteKind; owned: boolean } {
   const ownedUrl = resolveOverride(genome);
   return {
-    url: ownedUrl ?? verbatimSpeciesPortraitForAudit(genome),
+    url: renderSpeciesPortraitCanvas(genome).toDataURL(),
     route: routeName(genome, ownedUrl),
     owned: ownedUrl !== null,
   };

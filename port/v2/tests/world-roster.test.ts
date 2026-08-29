@@ -5,6 +5,7 @@ import {
   MAX_ECOLOGY_EPOCH,
   planetSpecies,
 } from '@cf/domain-ecology';
+import { BIOME_PROFILE_AUTHORITY_V1 } from '@cf/domain-biome-profile';
 import { _earthNamePass, installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome } from '@cf/domain-genome';
 import { evolveGenome } from '@cf/domain-genetics';
@@ -383,6 +384,52 @@ describe('MAIN-3 — full world roster vs Planetside preview', () => {
       reason: 'unproven-address',
       message: 'world roster requires a proven canonical CF1 world address',
     });
+  });
+
+  it('fails closed for unsupported climate bands and hostile biome-classifier output', () => {
+    const earth = addressOf(HOME_GALAXY, SOL, 133);
+    const realSystem = systemFor(SOL.seed) as unknown as Record<string, unknown>;
+    const sources: WorldRosterSources = {
+      systemFor: () => realSystem,
+      climateBand: () => 'temperate',
+      biosphere: () => ({ key: 'earth' }),
+      planetSpecies: () => [{ seed: 85, kingdom: 'fauna' }],
+      nameEarth: (rows) => {
+        for (const row of rows) row._earthName = 'Controlled Earth species';
+      },
+      biomeFor: () => null,
+    };
+    const reject = (overrides: Partial<WorldRosterSources>, message: RegExp): void => {
+      const result = canonicalWorldRosterForDiagnostics(earth, 0, { ...sources, ...overrides });
+      expect(result.ok).toBe(false);
+      if (result.ok) return;
+      expect(result.reason).toBe('source-error');
+      expect(result.message).toMatch(message);
+    };
+
+    const fallback = canonicalWorldRosterForDiagnostics(earth, 0, sources);
+    expect(fallback.ok).toBe(true);
+    if (fallback.ok) {
+      expect(fallback.roster.climateBand).toBe('temperate');
+      expect(fallback.roster.biomeProfileSchema).toBe(BIOME_PROFILE_AUTHORITY_V1.schema);
+      expect(fallback.roster.biomeProfileDigest).toBe(BIOME_PROFILE_AUTHORITY_V1.digest);
+      expect(fallback.roster.biomeProfileKey).toBe('temperate');
+      expect(fallback.roster.biomeProfile).toBe(BIOME_PROFILE_AUTHORITY_V1.profiles.temperate);
+    }
+
+    reject({ climateBand: () => 'humid' }, /unsupported climate band/u);
+    reject({ biomeFor: () => ({ k: 'retired-biome' }) }, /unsupported biome profile key/u);
+    reject({
+      biomeFor: (() => []) as unknown as NonNullable<WorldRosterSources['biomeFor']>,
+    }, /malformed biome profile selection/u);
+
+    let keyReads = 0;
+    const accessorSelection = Object.defineProperty({}, 'k', {
+      enumerable: true,
+      get() { keyReads++; return 'temperate'; },
+    }) as { readonly k?: unknown };
+    reject({ biomeFor: () => accessorSelection }, /biome selection without a data key/u);
+    expect(keyReads).toBe(0);
   });
 
   it('rejects hostile or non-canonical source rows without invoking accessors or toJSON', () => {

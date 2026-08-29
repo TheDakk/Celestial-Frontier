@@ -1,8 +1,8 @@
-/* Arc 7/8's first player-live audio owner: one deterministic, synthesized
-   greeting for an exact durable wild-fauna Tame result. Gameplay authority,
-   the accessible toast counterpart, and browser gesture ownership stay with
-   Main; this owner only fences the armed runtime lifecycle and translates a
-   registered Arc 5 individual through the pure audio identity projector. */
+/* Arc 7/8's first player-live audio owner: deterministic, synthesized
+   expressions for exact durable creature outcomes. The original Tame API is
+   retained for compatibility; Feed shares this same owner, AudioContext and
+   runtime. Gameplay authority, accessible counterparts, and browser gesture
+   ownership stay with Main. */
 import {
   createAudioRuntime,
   createCreatureExpressionCue,
@@ -33,7 +33,7 @@ export interface TameGreetingAudioPolicy {
   readonly visible: boolean;
   readonly answerable: boolean;
   readonly masterGain: number;
-  /** Exact canonical world key while the player remains on one surface. */
+  /** Stable app route key; Tame retains the exact canonical surface-world key. */
   readonly routeKey: string | null;
 }
 
@@ -62,6 +62,29 @@ export interface TameGreetingClaim {
   readonly worldKey: string;
 }
 
+export interface FeedExpressionResult {
+  readonly creatureId: string;
+  readonly fedBefore: number;
+  readonly fedAfter: number;
+  readonly receiptOrdinal: number;
+  /** Global F3 transaction revision for the durable Feed result. */
+  readonly revision: number;
+  /** Arc 5 ownership successor revision that owns `creatureId`. */
+  readonly ownershipRevision: number;
+}
+
+export interface FeedExpressionOutcome {
+  readonly kind: 'committed' | 'unavailable' | 'refused';
+  readonly durability: 'none' | 'committed';
+  readonly convergence: 'none' | 'read-only-reload';
+  readonly result: FeedExpressionResult | null;
+}
+
+export interface FeedExpressionClaim {
+  readonly eventKey: string;
+  readonly routeKey: string;
+}
+
 export type TameGreetingPlayResult =
   | Readonly<{ readonly kind: 'started'; readonly voiceId: string }>
   | Readonly<{ readonly kind: 'silent'; readonly reason: string }>;
@@ -73,6 +96,7 @@ export interface TameGreetingAudioDiagnostics {
   readonly claimedEvents: number;
   readonly activeVoiceId: string | null;
   readonly lastEventKey: string | null;
+  readonly lastEventKind: 'taming-succeeded' | 'feed-completed' | null;
   readonly lastDisposition: string;
   readonly counterpart: Readonly<{
     readonly key: string | null;
@@ -85,6 +109,8 @@ export interface TameGreetingAudioDiagnostics {
 export interface TameGreetingAudioOwner {
   /** Called only inside the trusted native Tame click stack. */
   armNativeTameGesture(): boolean;
+  /** Called only inside the trusted native Feed click stack. */
+  armNativeFeedGesture(): boolean;
   /** Synchronously validates and claims the stable event before any await. */
   claimCommittedTameGreeting(
     outcome: TameGreetingCaptureOutcome,
@@ -94,7 +120,17 @@ export interface TameGreetingAudioOwner {
     claim: TameGreetingClaim,
     counterpart: AudioCounterpartReceipt,
   ): Promise<TameGreetingPlayResult>;
+  /** Claims only an exact, current Arc 5 Feed successor. */
+  claimCommittedFeedExpression(
+    outcome: FeedExpressionOutcome,
+    ownership: OwnershipStateV2 | null,
+  ): FeedExpressionClaim | null;
+  playClaimedFeedExpression(
+    claim: FeedExpressionClaim,
+    counterpart: AudioCounterpartReceipt,
+  ): Promise<TameGreetingPlayResult>;
   cancelTameAttempt(reason: string): void;
+  cancelFeedAttempt(reason: string): void;
   syncSettings(): void;
   setHidden(hidden: boolean): void;
   setAnswerable(answerable: boolean): void;
@@ -123,6 +159,7 @@ type ProjectedIdentity = Extract<
 
 interface ArmedGesture {
   readonly serial: number;
+  readonly kind: 'tame' | 'feed';
   readonly routeKey: string;
   readonly activation: Promise<AudioActivationResult>;
 }
@@ -130,9 +167,15 @@ interface ArmedGesture {
 interface ClaimedGreeting {
   readonly arm: ArmedGesture;
   readonly identity: ProjectedIdentity;
+  readonly expressionKind: 'taming-succeeded' | 'feed-completed';
   readonly eventKey: string;
   readonly worldKey: string;
   consumed: boolean;
+}
+
+interface ClaimedFeedOwnership {
+  readonly eventKey: string;
+  readonly ownershipRevision: number;
 }
 
 function safeGain(value: unknown): number {
@@ -190,15 +233,19 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
   readonly #readPolicy: () => TameGreetingAudioPolicy;
   readonly #projectIdentity: NonNullable<TameGreetingAudioOwnerOptions['projectIdentity']>;
   readonly #claims = new WeakMap<object, ClaimedGreeting>();
-  readonly #claimedEventKeys = new Set<string>();
+  readonly #claimedTameEventKeys = new Set<string>();
+  #claimedFeedOwnership: ClaimedFeedOwnership | null = null;
   #arm: ArmedGesture | null = null;
+  #pendingClaim: TameGreetingClaim | FeedExpressionClaim | null = null;
   #armSerial = 0;
   #disposed = false;
   #answerable = true;
   #hidden = false;
   #activeVoiceId: string | null = null;
   #activeWorldKey: string | null = null;
+  #activeExpressionKind: ClaimedGreeting['expressionKind'] | null = null;
   #lastEventKey: string | null = null;
+  #lastEventKind: TameGreetingAudioDiagnostics['lastEventKind'] = null;
   #lastDisposition = 'idle';
   #counterpartKey: string | null = null;
   #counterpartGeneration: number | null = null;
@@ -216,27 +263,34 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
   }
 
   armNativeTameGesture(): boolean {
+    return this.#armNativeGesture('tame');
+  }
+
+  armNativeFeedGesture(): boolean {
+    return this.#armNativeGesture('feed');
+  }
+
+  #armNativeGesture(kind: ArmedGesture['kind']): boolean {
     if (this.#disposed) return false;
     const policy = safePolicy(this.#readPolicy);
     if (!enabledPolicy(policy) || !this.#answerable || this.#hidden) {
       this.#lastDisposition = 'arm-ineligible';
       return false;
     }
-    if (this.#arm !== null) this.cancelTameAttempt('arm-replaced');
-    if (this.#activeVoiceId !== null) {
-      this.#runtime.stopVoice(this.#activeVoiceId);
-      this.#activeVoiceId = null;
-      this.#activeWorldKey = null;
+    if (this.#arm !== null || this.#pendingClaim !== null) {
+      this.cancelTameAttempt('arm-replaced');
     }
+    if (this.#activeVoiceId !== null) this.#stopActiveVoice();
     this.#runtime.setMasterGain(policy.masterGain);
     void this.#runtime.setMuted(false);
     const activation = this.#runtime.activate();
     this.#arm = Object.freeze({
       serial: ++this.#armSerial,
+      kind,
       routeKey: policy.routeKey,
       activation,
     });
-    this.#lastDisposition = 'armed';
+    this.#lastDisposition = kind === 'tame' ? 'armed' : 'feed-armed';
     return true;
   }
 
@@ -253,6 +307,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     };
     if (this.#disposed) return silent('disposed');
     if (arm === null) return silent('unarmed');
+    if (arm.kind !== 'tame') return silent('arm-kind-mismatch');
     if (outcome.kind !== 'committed' || outcome.durability !== 'committed'
       || outcome.convergence !== 'none' || outcome.verb !== 'tame'
       || outcome.result === null || !outcome.result.hit
@@ -279,20 +334,23 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
       return silent('identity-unavailable');
     }
     const eventKey = `arc4:taming-succeeded:${acquisition.recordId}`;
-    if (this.#claimedEventKeys.has(eventKey)) return silent('event-already-claimed');
+    if (this.#claimedTameEventKeys.has(eventKey)) return silent('event-already-claimed');
 
     /* This is the replay fence: the stable gameplay identity and single-use
        gesture are both claimed synchronously, before play awaits activation. */
-    this.#claimedEventKeys.add(eventKey);
+    this.#claimedTameEventKeys.add(eventKey);
     const claim = Object.freeze({ eventKey, worldKey: acquisition.worldKey });
     this.#claims.set(claim, {
       arm,
       identity,
+      expressionKind: 'taming-succeeded',
       eventKey,
       worldKey: acquisition.worldKey,
       consumed: false,
     });
+    this.#pendingClaim = claim;
     this.#lastEventKey = eventKey;
+    this.#lastEventKind = 'taming-succeeded';
     this.#lastDisposition = 'event-claimed';
     this.#counterpartStatus = 'claimed';
     return claim;
@@ -302,10 +360,101 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     claim: TameGreetingClaim,
     counterpart: AudioCounterpartReceipt,
   ): Promise<TameGreetingPlayResult> {
+    return this.#playClaimedExpression(claim, counterpart, 'taming-succeeded');
+  }
+
+  claimCommittedFeedExpression(
+    outcome: FeedExpressionOutcome,
+    ownership: OwnershipStateV2 | null,
+  ): FeedExpressionClaim | null {
+    const arm = this.#arm;
+    this.#arm = null;
+    const silent = (reason: string): null => {
+      this.#lastDisposition = reason;
+      if (arm !== null) void this.#runtime.setMuted(true);
+      return null;
+    };
+    if (this.#disposed) return silent('disposed');
+    if (arm === null) return silent('unarmed');
+    if (arm.kind !== 'feed') return silent('arm-kind-mismatch');
+    const result = outcome.result;
+    if (outcome.kind !== 'committed' || outcome.durability !== 'committed'
+      || outcome.convergence !== 'none' || result === null
+      || typeof result.creatureId !== 'string' || result.creatureId.length < 1
+      || result.creatureId.length > 128
+      || !Number.isSafeInteger(result.fedBefore) || result.fedBefore < 0
+      || !Number.isSafeInteger(result.fedAfter) || result.fedAfter !== result.fedBefore + 1
+      || !Number.isSafeInteger(result.receiptOrdinal) || result.receiptOrdinal < 0
+      || !Number.isSafeInteger(result.revision) || result.revision < 1
+      || !Number.isSafeInteger(result.ownershipRevision) || result.ownershipRevision < 1) {
+      return silent('ineligible-feed-outcome');
+    }
+    const policy = safePolicy(this.#readPolicy);
+    if (!enabledPolicy(policy) || !this.#answerable || this.#hidden
+      || policy.routeKey !== arm.routeKey) return silent('policy-changed');
+    const state = ownership;
+    if (state === null || !isOwnershipStateV2(state) || state.mode !== 'current'
+      || state.revision !== result.ownershipRevision) return silent('ownership-stale');
+    const creature = state.creatures.find((row) => row.creatureId === result.creatureId);
+    if (!creature || creature.fed !== result.fedAfter) return silent('feed-successor-mismatch');
+    const identity = this.#projectIdentity(state, creature.creatureId);
+    if (identity.kind !== 'projected' || identity.profile.kingdom !== 'fauna') {
+      return silent('identity-unavailable');
+    }
+    const eventKey = `arc5:feed-completed:${result.revision}:${result.receiptOrdinal}:${creature.creatureId}`;
+    if (eventKey.length > 192) return silent('feed-event-key-invalid');
+    if (this.#claimedFeedOwnership?.eventKey === eventKey) {
+      return silent('event-already-claimed');
+    }
+    if (this.#claimedFeedOwnership !== null
+      && result.ownershipRevision <= this.#claimedFeedOwnership.ownershipRevision) {
+      return silent('feed-ownership-not-advanced');
+    }
+
+    /* Main supplies the exact current Arc 5 successor and its revision. Once
+       a newer Feed successor is current, every older outcome is stale by that
+       same equality check, so retaining one latest revision/key is the full
+       replay fence rather than an unbounded document-lifetime key set. */
+    this.#claimedFeedOwnership = Object.freeze({
+      eventKey,
+      ownershipRevision: result.ownershipRevision,
+    });
+    const claim = Object.freeze({ eventKey, routeKey: arm.routeKey });
+    this.#claims.set(claim, {
+      arm,
+      identity,
+      expressionKind: 'feed-completed',
+      eventKey,
+      worldKey: arm.routeKey,
+      consumed: false,
+    });
+    this.#pendingClaim = claim;
+    this.#lastEventKey = eventKey;
+    this.#lastEventKind = 'feed-completed';
+    this.#lastDisposition = 'feed-event-claimed';
+    this.#counterpartStatus = 'claimed';
+    return claim;
+  }
+
+  async playClaimedFeedExpression(
+    claim: FeedExpressionClaim,
+    counterpart: AudioCounterpartReceipt,
+  ): Promise<TameGreetingPlayResult> {
+    return this.#playClaimedExpression(claim, counterpart, 'feed-completed');
+  }
+
+  async #playClaimedExpression(
+    claim: TameGreetingClaim | FeedExpressionClaim,
+    counterpart: AudioCounterpartReceipt,
+    expectedKind: ClaimedGreeting['expressionKind'],
+  ): Promise<TameGreetingPlayResult> {
     const record = claim && typeof claim === 'object' ? this.#claims.get(claim) : undefined;
-    if (!record || record.consumed) return Object.freeze({ kind: 'silent', reason: 'claim-invalid' });
+    if (!record || record.consumed || record.expressionKind !== expectedKind) {
+      return Object.freeze({ kind: 'silent', reason: 'claim-invalid' });
+    }
     record.consumed = true;
     this.#claims.delete(claim);
+    if (this.#pendingClaim === claim) this.#pendingClaim = null;
     if (counterpart.eventKey !== record.eventKey) return this.#rejectPlay('counterpart-mismatch');
     this.#counterpartKey = counterpart.counterpartKey;
     this.#counterpartGeneration = counterpart.generation;
@@ -321,7 +470,9 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     let started: AudioVoiceStartResult;
     try {
       const cue = createCreatureExpressionCue(record.identity.callPlan, Object.freeze({
-        kind: 'taming-succeeded',
+        ...(record.expressionKind === 'taming-succeeded'
+          ? { kind: 'taming-succeeded' as const }
+          : { kind: 'feed-completed' as const, outcome: 'accepted' as const }),
         eventKey: record.eventKey,
         captionKey: counterpart.counterpartKey,
       }));
@@ -342,6 +493,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     }
     this.#activeVoiceId = started.voiceId;
     this.#activeWorldKey = record.worldKey;
+    this.#activeExpressionKind = record.expressionKind;
     this.#counterpartStatus = 'live';
     this.#lastDisposition = 'voice-started';
     return Object.freeze({ kind: 'started', voiceId: started.voiceId });
@@ -350,8 +502,26 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
   cancelTameAttempt(reason: string): void {
     if (this.#disposed) return;
     this.#arm = null;
+    this.#discardPendingClaim();
     this.#stopActiveVoice();
     this.#lastDisposition = `cancelled:${reason.slice(0, 96)}`;
+    void this.#runtime.setMuted(true);
+  }
+
+  cancelFeedAttempt(reason: string): void {
+    if (this.#disposed) return;
+    const ownsArm = this.#arm?.kind === 'feed';
+    const pending = this.#pendingClaim === null ? undefined : this.#claims.get(this.#pendingClaim);
+    const ownsClaim = pending?.expressionKind === 'feed-completed';
+    const ownsVoice = this.#activeExpressionKind === 'feed-completed';
+    if (!ownsArm && !ownsClaim && !ownsVoice) return;
+    if (ownsArm) this.#arm = null;
+    if (ownsClaim) {
+      this.#discardPendingClaim('feed-completed');
+      this.#counterpartStatus = 'rejected';
+    }
+    if (ownsVoice) this.#stopActiveVoice();
+    this.#lastDisposition = `feed-cancelled:${reason.slice(0, 96)}`;
     void this.#runtime.setMuted(true);
   }
 
@@ -361,6 +531,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     this.#runtime.setMasterGain(policy?.masterGain ?? 0);
     if (!enabledPolicy(policy) || !this.#answerable || this.#hidden) {
       this.#arm = null;
+      this.#discardPendingClaim();
       this.#stopActiveVoice();
       this.#lastDisposition = 'settings-ineligible';
       void this.#runtime.setMuted(true);
@@ -374,6 +545,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     this.#hidden = hidden === true;
     if (this.#hidden) {
       this.#arm = null;
+      this.#discardPendingClaim();
       this.#stopActiveVoice();
       this.#lastDisposition = 'hidden';
     }
@@ -386,6 +558,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     this.#answerable = answerable === true;
     if (!this.#answerable) {
       this.#arm = null;
+      this.#discardPendingClaim();
       this.#stopActiveVoice();
       this.#lastDisposition = 'unanswerable';
       void this.#runtime.setMuted(true);
@@ -395,8 +568,10 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
   syncRoute(routeKey: string | null): void {
     if (this.#disposed) return;
     const armMismatch = this.#arm !== null && this.#arm.routeKey !== routeKey;
+    const pending = this.#pendingClaim === null ? undefined : this.#claims.get(this.#pendingClaim);
+    const claimMismatch = pending !== undefined && pending.worldKey !== routeKey;
     const voiceMismatch = this.#activeWorldKey !== null && this.#activeWorldKey !== routeKey;
-    if (armMismatch || voiceMismatch) this.cancelTameAttempt('route-changed');
+    if (armMismatch || claimMismatch || voiceMismatch) this.cancelTameAttempt('route-changed');
   }
 
   counterpartLost(): void {
@@ -411,14 +586,17 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     if (this.#activeVoiceId !== null && !runtime.voices.ids.includes(this.#activeVoiceId)) {
       this.#activeVoiceId = null;
       this.#activeWorldKey = null;
+      this.#activeExpressionKind = null;
     }
     return Object.freeze({
       schema: TAME_GREETING_AUDIO_DIAGNOSTICS_SCHEMA,
       disposed: this.#disposed,
       armed: this.#arm === null ? 0 : 1,
-      claimedEvents: this.#claimedEventKeys.size,
+      claimedEvents: this.#claimedTameEventKeys.size
+        + (this.#claimedFeedOwnership === null ? 0 : 1),
       activeVoiceId: this.#activeVoiceId,
       lastEventKey: this.#lastEventKey,
+      lastEventKind: this.#lastEventKind,
       lastDisposition: this.#lastDisposition,
       counterpart: Object.freeze({
         key: this.#counterpartKey,
@@ -433,6 +611,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     if (!this.#disposed) {
       this.#disposed = true;
       this.#arm = null;
+      this.#discardPendingClaim();
       this.#stopActiveVoice();
       this.#counterpartStatus = this.#counterpartStatus === 'none' ? 'none' : 'lost';
       this.#lastDisposition = 'disposed';
@@ -444,6 +623,20 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     if (this.#activeVoiceId !== null) this.#runtime.stopVoice(this.#activeVoiceId);
     this.#activeVoiceId = null;
     this.#activeWorldKey = null;
+    this.#activeExpressionKind = null;
+  }
+
+  #discardPendingClaim(kind?: ClaimedGreeting['expressionKind']): boolean {
+    const claim = this.#pendingClaim;
+    if (claim === null) return false;
+    const record = this.#claims.get(claim);
+    if (record === undefined || (kind !== undefined && record.expressionKind !== kind)) {
+      return false;
+    }
+    record.consumed = true;
+    this.#claims.delete(claim);
+    this.#pendingClaim = null;
+    return true;
   }
 
   #rejectPlay(reason: string): TameGreetingPlayResult {

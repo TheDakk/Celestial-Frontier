@@ -14,8 +14,9 @@
 > physical-device heat/GPU evidence remains open. The seven evidence carriers and synchronized
 > references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
 > Keep temporary full caffeinate active while authorized local work continues, then restore it when
-> that work is complete. Next complete the full-code review/polish checkpoint, then begin authorized
-> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is provenance only
+> that work is complete. That signed source is the pre-change baseline; the current local
+> universe-wide visual implementation checkpoint is documented below. Edge `.107` / CDP `1.3` is
+> provenance only
 > and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
 > below is historical where superseded.
 
@@ -121,17 +122,70 @@
 > threshold change. That exact-source local Recovery certificate grants no whole-Gate, hosted,
 > HUMAN or release authority.
 >
-> **Queued visual boundary:** after the stable Phase-4 checkpoint, carry the TikTok-inspired polish
-> language across the entire universe—galaxies, systems, planets, every biome, creatures, plants,
-> ships and effects—while preserving deterministic seeds, identities, anatomy, silhouettes,
-> proportions, scale, authored structure, interaction geometry and gameplay readability. The live
-> Phase-4 surface is still globe-only; the preserved authored procedural vista work remains dormant
-> in `port/v2/packages/art/src/hdart.verbatim.js`. Phase 6 must port layered scenes for all 43 live biome
-> profiles without changing their composition, placement, scale or structural identity, then apply
-> the shared palette/light/material treatment across their flora, fungi, microbes and ambient actors.
-> Reduced motion, contrast, mobile heat/frame budgets and before/after identity review are required.
-> Final13 itself changed no graphics; the authorized universe-wide visual pass follows the full-code
-> review/polish checkpoint.
+> **2026-08-28 current local visual implementation boundary:** the universe-wide treatment is now
+> wired through the active v2 routes. `@cf/art/visual-treatment` defines exact finite appearance
+> scopes/axes; `canvas-treatment.ts` applies a single surface-space `source-atop` warm/cool depth
+> field; and `surface-polish.ts` owns once-per-surface finishers for galaxy, system, planet, biome and
+> species canvases. `index.ts`, the lifted thumbnail finishers, scene-local decorators, production/
+> worker/audit species routes and planet sprites all consume those owners. Existing painters retain
+> sole geometry and seed authority, alpha silhouettes are preserved, and semantic masks/identity-
+> black occluders remain explicit raw exceptions. `shipyard-preview.ts` applies the same material/
+> light language as deterministic SVG while keeping its four hull paths and exact optional hardpoint
+> geometry unchanged.
+>
+> `@cf/domain-biome-profile` is the dependency-neutral exact recursively frozen authority for all 43
+> live keys and their authored signature, fauna/flora-family, hazard and weather records. Schema
+> `cf.domain.biome-profile.v1` and digest `bpd1-6fce883d4d70e3b6bde0fb184b416e8e` bind that content;
+> art's `biome-visual-profile.ts` is a compatibility re-export rather than a second table.
+> `world-roster.ts` publishes schema/digest/key and one environment fingerprint over the exact world,
+> ecology epoch, biosphere and climate. `biome-vista.ts` exposes the
+> preserved complete `960×430` generic, gas-deck, abyss and reef compositors. The normal landing
+> route projects only from an exact proven world plus matching canonical roster, separating land,
+> aquatic, aerial and ground-flora evidence without a Sol/leaf-seed shortcut. `biome-vista.worker.ts`
+> renders lazily with OffscreenCanvas; its protocol rejects inexact scene options and result identity/
+> dimensions. The app fences stale document/generation/world/scene/biome work, owns a 12-second
+> deadline, and publishes only after successful copy/mount into a one-entry fail-soft cache. Any
+> worker/protocol/copy/mount failure leaves the already complete globe usable. Portrait layout fits
+> the entire source as a horizon band above the globe; landscape/desktop centers it without crop.
+>
+> `visual-effect-policy.ts` and `camera-shake-policy.ts` now consume the persisted **Visual effects**,
+> **Screen shake** and Motion settings. Effects Off resolves to zero optional particles/no animated
+> emissive modulation while retaining seeded base star/quasar glow; reduced
+> motion and low-tier devices resolve to bounded static decoration; full-motion medium/high tiers
+> permit bounded animated particles/bloom. Camera shake requires all three consent gates, caps
+> concurrent impulses by device tier and cancels them when the policy becomes ineligible. Diagnostics expose the
+> resolved policies and active count; none of these presentation choices enters generation or
+> gameplay geometry.
+>
+> Exact browser-free coverage lives in the art `visual-authorities`, `canvas-treatment`,
+> `surface-polish`, `planet-sprite-finisher`, `speciesportable`, `biome-vista` and
+> `biome-vista-ecology` suites plus app `biome-vista-surface`, `biome-vista-protocol`,
+> `biome-vista-cache`, `universe-polish-main-wiring`, `visual-effect-policy`,
+> `camera-shake-policy`, `visual-policy-main-wiring`, `shipyard-preview` and
+> `art-tools-browser-resolution`. Their controls cover exact-set/field/identity mismatches,
+> disconnected finishers, changed compositor routes, stale/faulted cache publication, cropped phone
+> layout, policy bypasses and hard-coded browser paths. Raw-CDP art tools share
+> `tools/browserpath.mjs`; explicit `CF_BROWSER` fails closed. Before evidence, each of the seven
+> migrated tools requires connected `Browser.getVersion` to identify Chrome, Chromium, Edge (`Edg`)
+> or HeadlessChrome with a complete four-part version, executable/product/revision/UA/JS provenance
+> and CDP `1.3`, then emits that exact tuple. Compatible point versions are accepted and never
+> baseline selectors.
+>
+> The current SceneMemory input-v4 contract expands the historical 42-outcome ruler to **44** by
+> adding one phone and one desktop `surface-vista-lifecycle` outcome. Each binds the raw
+> `surfaceVistaWorkerActive`, `surfaceVistaMounted`, `surfaceVistaCacheEntries` and
+> `surfaceVistaCachePixels` diagnostics through cold zero, first mount, repeated surface/ascent,
+> BFCache and reload-clear/replacement cleanup, with the semantic cache ceiling fixed at one entry /
+> 412,800 pixels. Browser-free contract/budget/tool controls are green, including missing-field,
+> vacuous-zero, worker/mount leak, cache overflow and retained-on-reload mutations. No current-source
+> 44/44 browser pass is claimed yet; every 42/42 statement below remains bound to its historical
+> source and schema.
+>
+> This working-tree checkpoint is not yet a clean-source browser certificate or a complete Arc/Gate.
+> A fresh serial Slice → Glass → Recovery chain, fixed-seed before/after image package, HUMAN phone/
+> desktop art and accessibility review, and physical-device frame-time, heat, battery and true GPU/
+> resource measurements remain open. Final13 itself remains the unchanged pre-visual certificate;
+> no production release, version bump or deployment authority follows from this local candidate.
 >
 > **2026-08-27 Final4 Glass repair overlay — historical pre-Final5 source:** signed clean source
 > `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied fresh named Layout 787/787,
@@ -342,21 +396,34 @@
 > rarity integers 0–14 onto the player-facing 0–9 vocabulary; malformed input discloses nothing,
 > and Survey/Compendium consumers use that one conversion. Arc 5's compact model also implements
 > the approved child-care invariant: each new bred child receives exactly
-> `0.5 * min(clampedLeftFed, clampedRightFed)`, symmetrically and once. No public breed/care writer
-> or companion UI exists yet.
+> `0.5 * min(clampedLeftFed, clampedRightFed)`, symmetrically and once. A player-live Feed flow now
+> exists only on a real fauna Compendium detail. It selects one exact unassigned owned companion
+> below the 200-Meal cap and one exact owned flora lot, then `Use 1` advances bounded `fed`, consumes
+> or tombstones that exact lot, compact ownership and F4 through one receipt/CAS with no retry or
+> optimistic publication. Assigned/recovering and capped rows explain why they are disabled;
+> exact-instance twins remain separate; Back/Close remain available. The inline polite/atomic
+> committed status is the sole accessible announcement; the simultaneous corner toast is
+> supplemental visual-only feedback. After that status settles, one deterministic contented Feed
+> expression may play only while its native gesture, exact successor, accessible counterpart, Sound
+> and Creature voices still agree. One constant-size latest-successful-ownership slot rejects the
+> same and every superseded committed result.
+> Tastes/flavours, stat or Power growth, injury care/healing, poison,
+> bond, explorer eating, Breed, rename, scouting, duels and missions remain unavailable.
 >
 > Arc 7/8 has crossed one deliberately narrow app boundary. `audio-identity-projector.ts` resolves
 > only an exact current registered owned creature into the deterministic signature/profile/call
 > plan, excluding mutable XP/hurt/fed/brood state. The app owns the five-bus fail-closed runtime,
-> persisted **Creature Voices** setting and an asset-free bounded fauna renderer. Only a native
-> Tame gesture followed by the exact durable, nonconverging fauna acquisition and its accessible
-> status counterpart may emit one greeting, keyed once to the acquisition record. The committed
+> persisted **Creature Voices** setting and an asset-free bounded fauna renderer. A native Tame
+> gesture followed by the exact durable, nonconverging fauna acquisition and its accessible status
+> counterpart may emit one greeting keyed once to the acquisition record. A native Feed gesture may
+> emit one `feed-completed` / `accepted` expression only after the exact durable one-meal successor,
+> current creature/revision and accessible Feed status agree. The committed
 > result preserves its global F3 transaction `revision` separately from the Arc 4/5
 > `ownershipRevision`; the owner fences only the latter after the Arc 4 and Arc 5 ownership
 > successors agree. Mute, Creature Voices off, hidden/unanswerable play, miss/refusal, stale or
 > reload convergence, route/counterpart loss, replacement and disposal remain silent and
-> synchronously release the audio/runtime owner. Other creature
-> actions, ambience, music, combat/Guardian audio, recorded assets, full accessibility/device
+> synchronously release the audio/runtime owner. Other creature actions, distant-ecology playback,
+> ambience, music, combat/Guardian audio, recorded assets, full accessibility/device
 > plateaus and HUMAN listening remain open.
 >
 > The dedicated real-time Arc 4 recovery collector and mutation-sensitive selftest are ready, but
@@ -588,9 +655,16 @@
 > shards store only deterministic changed/V2-exclusive rows. Source-only growth leaves all four
 > canonical empty-shard bytes unchanged, explicitly preventing an Arc 4 duplicate and keeping
 > unchanged-state growth O(1). Postcommit verification publishes V1/V2 together or makes both
-> unavailable and reload-converges. There is no public breed/care/mission writer or companion UI.
-> Arc 7 has pure identity/taxonomy/ecology/expression,
-> an injected runtime, lab and empty-rights validator; it is not app-owned playback. Its absolute
+> unavailable and reload-converges. The real-fauna Compendium detail now projects exact eligible
+> companion instances and flora lots, then routes `Use 1` through the same receipt-bound Feed/F4
+> authority. It publishes no optimistic state, never retries, preserves Back/Close, and assigns the
+> visible settled status to the event outcome; the exact accepted successor may then own one
+> deterministic contented expression with no replay. No public breed/mission writer, tastes,
+> growth, care/healing, poison, bond, explorer-eating, rename, scout or duel action follows.
+> Arc 7 has pure identity/taxonomy/ecology/expression, an injected runtime, lab and empty-rights
+> validator, plus exact app-owned Tame and Feed playback. A pure app join also projects one canonical
+> inhabited current-world Survey roster into a schema/digest/environment-bound distant-ecology plan;
+> Main does not import or play it. Its absolute
 > eight-emitter/120-node configuration caps are committed package policy.
 > Retained Arc 4 browser reports predate compact Arc 5 V2. The historical exact-input Slice run
 > `20260825213041239-98104-c96d3b2d0652` passed once on Edge `151.0.4129.101` in 363,053 ms with
@@ -1541,13 +1615,13 @@
 > Planetside has a minimum-44px **Leave world** action. The eighth dock slot opens
 > the canonical **Guide to the Universe**: `guide-content.ts` carries a
 > source-addressed v1.8.9 snapshot of all 9 categories /43 authored stable ids /41
-> legacy-live topics—currently 24 partial and 17 unavailable—plus category browsing, search and
+> legacy-live topics—currently 25 partial and 16 unavailable—plus category browsing, search and
 > `data-gt` cross-links. A
 > capability table supplies current copy for partial systems and explicit
 > unavailable copy for unported mechanics; dormant `beacon` / `events` remain
 > retained but hidden. `release-content.ts` similarly preserves all 56 legacy
 > releases /398 bullets and keeps **A New Foundation**, the cumulative categorized
-> v2.0 development bulletin, separate. Its 55-bullet implemented-outcome outline is explicitly
+> v2.0 development bulletin, separate. Its 64-bullet implemented-outcome outline is explicitly
 > `draft` / `Unreleased`; structural and rendered controls require canonical section
 > order, unique nonempty bullets, scroll-reachable tail copy, and unchanged `rnSeen` /
 > `releasePending` across open and reload. `V2_CURRENT_RELEASE_VERSION` is `null`,
@@ -2409,6 +2483,11 @@ before generation. `slimGal` is owned by Descriptors in v2, not WorldGen.
 Four kingdoms: **Microbe, Flora, Fauna, Fungi**. A world's biosphere is rolled by
 `planetSpecies` / `biosphere` / `realmBiome` / `classifyRealm` based on planet type.
 
+In the v2 port, `@cf/domain-ecology` keeps the lifted civilization generator byte-verbatim but owns
+the D-LOC presentation facade: generated non-Earth `yearLabel` values use pure ASCII comma grouping.
+Earth's authored `Year 2026 CE`, the numeric year, all other fields and exact RNG chronology remain
+unchanged; Descriptor parity consumes that facade transitively.
+
 ### Genome
 `makeGenome` builds a genome; `crossGenome(a,b)` breeds two (preserving kingdom via
 `pick(a.kingdom,b.kingdom)`); `evolveGenome` mutates. Genome fields include:
@@ -2733,13 +2812,13 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `release-content.ts`, wired by `main.ts`): `LEGACY_GUIDE_CATEGORIES` and
   `LEGACY_RELEASES` are exact source-addressed snapshots, guarded by
   `tests/guide-release.test.ts`. `getGuideCatalogue` defaults to 41 player topics—currently
-  24 partial and 17 unavailable—with dormant topics hidden and unavailable topics retained with
+  25 partial and 16 unavailable—with dormant topics hidden and unavailable topics retained with
   honest copy; `getGuideTopic` and
   `searchGuide` keep stable ids, search and live cross-links. `fillGuide` /
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
-  by the 56 legacy releases. Its exact 55-bullet implemented-outcome
+  by the 56 legacy releases. Its exact 64-bullet implemented-outcome
   inventory is checked structurally and in the rendered Guide, including real-scroll
   tail reach and unchanged shipped-release state. That version is development identity
   only. `getCurrentV2Release()` returns nothing while
@@ -2827,8 +2906,8 @@ owner. The absolute eight-creature-emitter/120-node policy remains intact.
 
 `creature-expression-voice.ts` supplies a deterministic asset-free fauna graph bounded to one
 oscillator and one gain node in a single expression concurrency group. `tame-greeting-audio.ts`
-arms only from the native Tame gesture and admits only the exact committed durable nonconverging
-fauna Tame result whose species/world, global F3 transaction `revision`, Arc 4/5
+is the shared exact-expression owner. Its Tame path arms only from the native gesture and admits only
+the exact committed durable nonconverging fauna result whose species/world, global F3 transaction `revision`, Arc 4/5
 `ownershipRevision`, current ownership, acquisition record and projector all match. Main preserves
 the two revisions as distinct evidence and publishes only after the Arc 4 and Arc 5 ownership
 successors agree; the audio owner fences current ownership against `ownershipRevision`, never the
@@ -2842,8 +2921,28 @@ persisted **Creature Voices** off, hidden/unanswerable play, miss/refusal, stale
 route or counterpart loss, replacement and disposal stay silent and stop/release the audio/runtime
 owner. Reload begins disposed, unarmed and without context, counterpart, voice or nodes.
 
-Compatibility survey/navigation stings remain separate. No other creature expression, distant
-ecology, ambience, music, combat/Guardian cue or recorded asset is player-live. Compendium audition,
+Its Feed path arms only from the native Feed gesture, then admits the exact committed durable
+nonconverging successor whose global revision, receipt ordinal, creature ID, ownership revision and
+one-step `fed` increase still match current ownership. The event key is
+`arc5:feed-completed:${revision}:${receiptOrdinal}:${creatureId}`. The owner retains only that latest
+successful ownership revision/key: an exact-key replay fails as already claimed and an equal/older
+ownership result fails as non-advancing, keeping Feed replay memory constant-size. The inline
+`role=status`, `aria-live=polite`, `aria-atomic=true` result is its accessible counterpart and sole
+assistive-technology announcement; the concurrent toast is `role=presentation`, `aria-live=off`,
+`aria-hidden=true`. The status precedes the `feed-completed` / `accepted` expression. The current
+Slice oracle requires the oscillator's successful `start()` and a complete same-context path from
+that source through recorded WebAudio edges to exactly one `AudioDestinationNode`; disconnected,
+wrong-destination and cross-context mutations fail. That strengthened oracle still needs its fresh
+current-source browser run. Refusal, stale/converging state, replay, route/detail/counterpart loss
+and disabled audio are silent.
+
+`biome-ecology-audio.ts` separately provides a pure non-playing join from one canonical inhabited
+current-world Survey roster to `DistantEcologyHintPlan`. It binds world identity, biome-profile
+schema/digest/key, weather, hazard and the roster environment fingerprint at biosphere granularity,
+rejects lifeless or non-production rosters and writes no state. Main deliberately does not import it.
+
+Compatibility survey/navigation stings remain separate. No other creature expression, distant-
+ecology playback, ambience, music, combat/Guardian cue or recorded asset is player-live. Compendium audition,
 decoded-byte/media plateau, full captions/mono/dynamic-range/reduced-intensity behavior, device
 heat and HUMAN listening/quality acceptance remain open. This narrow implementation does not close
 Arc 7, Arc 8 or Gate G and grants no release/version authority.

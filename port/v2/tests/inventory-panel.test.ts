@@ -445,6 +445,44 @@ describe('Arc 2 Inventory presentation', () => {
     });
   });
 
+  it('publishes an unavailable authority outcome without changing the exact item and leaves retry available', async () => {
+    const item = gear(820, 'rig1');
+    const initialInventory = inventoryOf([item]);
+    const onAction = vi.fn(async (): Promise<InventoryPanelActionOutcome> => ({
+      kind: 'unavailable',
+      detail: 'write-authority-unavailable',
+      state: null,
+    }));
+    const view = shell();
+    controller = new InventoryPanelController({ panel: view.panel, sheet: view.sheet, onAction });
+    controller.setState(loaded(initialInventory));
+    view.panel.querySelector<HTMLButtonElement>(`[data-instance-id="${item.instanceId}"]`)!.click();
+
+    view.sheet.querySelector<HTMLButtonElement>('[data-inventory-action="equip"]')!.click();
+    await settleAction();
+
+    expect(onAction).toHaveBeenCalledOnce();
+    expect(onAction).toHaveBeenCalledWith({ operation: 'equip', instanceId: item.instanceId });
+    expect(view.panel.querySelector<HTMLElement>(`[data-instance-id="${item.instanceId}"]`)?.dataset.equipped)
+      .toBe('false');
+    expect(view.sheet.querySelector('[data-inventory-action-status]')?.textContent)
+      .toBe('unavailable: write-authority-unavailable');
+    expect(view.sheet.querySelector('[data-inventory-action-status]')?.getAttribute('data-kind'))
+      .toBe('unavailable');
+    expect(view.sheet.querySelector<HTMLButtonElement>('[data-inventory-action="equip"]')?.disabled)
+      .toBe(false);
+    expect(controller.diagnostics()).toMatchObject({
+      pendingWork: 0,
+      selectedInstanceId: item.instanceId,
+      lastAction: {
+        operation: 'equip',
+        instanceId: item.instanceId,
+        kind: 'unavailable',
+        detail: 'write-authority-unavailable',
+      },
+    });
+  });
+
   it('keeps a post-durable publication failure committed and never presents a retry', async () => {
     const item = gear(821, 'rig1');
     const initialInventory = inventoryOf([item]);

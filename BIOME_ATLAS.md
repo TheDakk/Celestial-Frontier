@@ -1,27 +1,54 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
-**STATUS:** §1 verified against code as of **2026-07-31 (v1.8.9)**. §§2–4 are design-pack content and
-are NOT derivable from source — see PROVENANCE below. The environmental-audio overlay matches the
-package-only pure hint foundation and remaining v2 contract as of **2026-08-27**. Audited and
-promoted from `tools/` to the repo root during port **Phase 0** (Gate A); the file itself dates from
-2026-07-20.
+**STATUS:** §1's legacy source facts remain verified against **v1.8.9**; the current v2 exact
+43-biome domain-profile authority and live full-vista route match the local working tree as of
+**2026-08-28**. §§2–4 remain design-pack content and are NOT derivable from source — see PROVENANCE
+below. The environmental-audio overlay matches the pure canonical current-world hint join and
+remaining non-playing v2 contract as of **2026-08-28**. Audited and promoted from `tools/` to the repo root during port
+**Phase 0** (Gate A); the file itself dates from 2026-07-20.
 
 > **2026-08-27 current v2 correction:** after owned Deep Scanners, the exact eligible scanned,
 > registered lifeless non-Earth world now renders one passive **Mineral veins** Survey row. It lists
 > canonical ordinary deposits plus the optional biome-only vein and deliberately withholds
 > cosmic/exceptional veins, grades, reserves, extraction progress and Mine controls. A committed
 > Tame-fauna result may also emit one bounded deterministic greeting when its native gesture,
-> current ownership and accessible status counterpart all agree; this is not ambience or a general
-> biome soundscape. The 2026-08-25 paragraph below is retained as a historical checkpoint.
+> current ownership and accessible status counterpart all agree. An exact durable Feed may likewise
+> emit one contented expression after its settled accessible status; neither path is ambience or a
+> general biome soundscape. The 2026-08-25 paragraph below is retained as a historical checkpoint.
 
-> **2026-08-27 queued universe-wide visual treatment:** the next art-polish pass is deliberately
-> systemic rather than Sol-specific. Every live biome, creature and plant may receive stronger
-> warm/cool separation, controlled bloom, atmospheric depth, edge light and bounded particles, but
-> the authored biome composition and organism structure remain fixed: no changed anatomy,
-> silhouette, proportion, scale, semantic color identity, seed identity or gameplay geometry. Sol
-> is a calibration case only. The pass remains unimplemented until the current Phase-4 evidence
-> checkpoint is stable, and must then prove representative cross-biome before/after identity,
-> determinism, contrast/reduced-motion behavior and mobile heat/frame/resource budgets.
+> **2026-08-28 current universe-wide visual checkpoint:** all 43 live keys now form one exact,
+> recursively immutable `BiomeProfileV1` authority in dependency-neutral
+> `@cf/domain-biome-profile`. Schema `cf.domain.biome-profile.v1` and digest
+> `bpd1-6fce883d4d70e3b6bde0fb184b416e8e` bind the authored signature,
+> fauna/flora families, hazard and weather values. It changes no biome selection, generation,
+> anatomy, silhouette, proportion, scale, semantic color, seed identity or gameplay geometry. The
+> shared finishing language is live across galaxy/system/planet art and every creature, plant,
+> fungus and microbe route; the Shipyard applies the same material/light direction without changing
+> its hull paths or hardpoints. Sol remains only a calibration case.
+>
+> Normal Planetside landings now request the preserved full `960×430` generic, gas-deck, abyss or
+> reef compositor from the exact proven world and canonical roster. That roster carries one
+> presentation-only environment fingerprint over world, ecology epoch, biosphere, climate and the
+> canonical profile schema/digest/key; it is never an encounter filter. The lazy module worker validates
+> exact scene options and result dimensions, fences stale document/generation/world/scene/biome
+> responses, and publishes only after a successful Pixi mount. A one-entry cache evicts a poisoned
+> mount; construction, protocol, copy, timeout or mount failure leaves the fitted globe usable and
+> never changes landing state. Portrait phones contain the complete vista in a full-width horizon
+> band above the globe instead of cover-cropping resident ecology; wider layouts center the whole
+> composition.
+>
+> Browser-free `visual-authorities`, `biome-vista`, `biome-vista-ecology`,
+> `biome-vista-surface`, `biome-vista-protocol`, `biome-vista-cache`, `surface-polish`,
+> `speciesportable` and live-wiring suites cover the exact 43-key join, preserved compositor,
+> canonical Earth versus same-leaf foreign worlds, terrestrial/aquatic/aerial flora routing,
+> weather/water projection, complete phone containment, fail-soft ownership, and deliberately
+> missing/mismatched/bypass controls. SceneMemory input-v4 now adds phone and desktop
+> `surface-vista-lifecycle` outcomes to the historical ruler for 44 total, binding worker-active,
+> mounted, cache-entry and cache-pixel diagnostics through cold, surface/ascent, BFCache and
+> reload-clear/replacement cleanup; its browser-free controls are green, but no current 44/44 browser
+> run is claimed. A fresh post-change real-browser chain, fixed-seed image
+> review, HUMAN art judgment, and physical-device frame/heat/battery/GPU evidence remain open; this
+> checkpoint does not close Gate F or the wider campaign.
 
 > **2026-08-25 Arc 3/4 historical opportunity boundary:** canonical Arc 3 world snapshots then derived
 > finite deposits, exceptional/cosmic veins, raw tier and player-facing rarity from the exact
@@ -79,13 +106,16 @@ biome→vista tint._
 > `ammonia`, `stormeye`) do carry floater fauna — `hotglow` carries none, making it a fifth case
 > rather than a gas-biome norm. Separately, **17** biomes carry `flora:[]`.
 
-## 0 · v2.0 environmental sonification (pure hint seam only — 2026-08-24)
+## 0 · v2.0 environmental sonification (canonical pure join; playback absent — 2026-08-28)
 
-The current v2 player application is stings-only. It does not yet play biome ambience, weather,
-distant ecology, creature calls or music. `@cf/audio` now implements a pure
-`DistantEcologyHintPlan` from canonical world identity plus exact already-surfaced ecology evidence,
-with hidden/wrong-owner and silent/non-fauna controls; no application owner invokes it and no
-`ambientAudioProfile`, authored layer, ducking or playback exists. Production v1.8.9 retains its
+The current v2 player application plays compatibility stings plus exact Tame and Feed creature
+expressions. It does not yet play biome ambience, weather, distant ecology or music. `@cf/audio`
+implements a pure `DistantEcologyHintPlan`, and `biome-ecology-audio.ts` now joins it to one production
+canonical inhabited current-world Survey roster. The plan binds canonical world identity, profile
+schema/digest/key, weather, hazard and the roster environment fingerprint at biosphere granularity,
+with alternate-classifier, stale-profile, hidden-detail and lifeless-world controls. Main deliberately
+does not import the join: no application event, same-granularity counterpart, authored layer,
+ducking, reduced-intensity behavior or playback lifecycle exists. Production v1.8.9 retains its
 synthesized ambience beds; this overlay does not change them, the 43 live biome profiles, roster
 selection, descent, hazards, rarity or any design-pack status below.
 
@@ -104,10 +134,11 @@ and empty/silent zones remain intentional rather than being filled for constant 
 biosphere or future companion may modulate density only from visible current state; audio cannot
 reveal an undiscovered roster, pre-land rarity, capture outcome or hidden mechanical advantage.
 
-The implementation seam is a stable `ambientAudioProfile`/environment event plan shared by no
-browser painter: art and audio may read the same pure biome/ecology taxonomy, but each owns its own
-renderer, cache and lifecycle. The mixer, same-origin rights manifest, decoded-byte/node budgets,
-background restart policy, captions and human listening gate are defined in `AUDIO.md` §0.
+The implemented seam is the versioned/digested `BiomeProfileV1` plus a pure non-playing environment
+plan shared by no browser painter. Art and audio read the same canonical profile identity, but each
+owns its own renderer, cache and lifecycle. The mixer, same-origin rights manifest, decoded-byte/node
+budgets, background restart policy, captions and human listening gate are defined in `AUDIO.md` §0.
+Live distant-ecology playback remains Gate-G-open work.
 
 ## 0.1 · v2 world-opportunity presentation contract (resource subset implemented — 2026-08-24)
 

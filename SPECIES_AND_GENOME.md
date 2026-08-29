@@ -1,8 +1,8 @@
 # Celestial Frontier — Species & Genome System
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
-ownership, one-time bred-child feeding, rarity-presentation and narrow Tame-audio overlays match the
-local `port/v2` candidate as of 2026-08-27. ⚠ v1.8.9: every reader of the
+ownership, one-time bred-child feeding, rarity-presentation and exact Tame/Feed-audio overlays match
+the local `port/v2` candidate as of 2026-08-28. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
@@ -31,14 +31,19 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > internal art label nor raw tier number is shown. Planet rarity stays hidden before landing; a
 > legitimate scientific stellar class is not a creature rarity label.
 >
-> The app now has one deliberately narrow creature-audio path. A trusted native Tame gesture may arm
+> The app now has two deliberately narrow creature expressions through one audio owner. A trusted native Tame gesture may arm
 > one silent audio context only while the current surface is visible and answerable and Sound plus
 > Creature Voices are enabled. Playback occurs only after the exact durable successful fauna result,
 > no convergence, and a matching current ownership revision/species/live-wild-creature identity; it
 > emits one deterministic greeting with a visible live-region counterpart and no retry/replay.
-> Disabling sound/voices, losing visibility/answerability or replacing the result stops it. This is
-> current-system Tame feedback only: Compendium audition, ambience, broader companion actions,
-> music and combat audio remain absent. Ordinary Arc 4 Slice evidence still says
+> Disabling sound/voices, losing visibility/answerability or replacing the result stops it. A trusted
+> native Feed gesture may likewise produce one deterministic contented acknowledgement only after
+> the exact committed durable non-converging meal successor and polite/atomic status counterpart
+> agree. That inline status is the sole accessible announcement; its companion corner toast is
+> visual-only. A constant-size latest-successful-ownership fence rejects both the same Feed result
+> and every superseded result; the mutable `fed` value does not enter audio identity. These are exact current-system Tame
+> and Feed expressions only: Compendium audition, distant ecology playback, ambience, broader
+> companion actions, music and combat audio remain absent. Ordinary Arc 4 Slice evidence still says
 > `recoveryClaimed:false`; its dedicated uninterrupted 20-minute recovery certificate remains open.
 
 > **2026-08-25 Arc 4/5A ownership overlay — historical recorded boundary; Arc 4 player-live, Arc 5A infrastructure-only:** the port had a strict
@@ -131,7 +136,7 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > Resolver-v1 and its negative/positive vectors were implemented only over an already-normalized
 > `AudioIdentityInput`. At this historical 2026-08-24 boundary, the canonical app creature/save →
 > audio-input projector, authored voice graph and player playback were not implemented and the app
-> remained stings-only; the narrow current Tame greeting above supersedes that playback boundary.
+> remained stings-only; the narrow current Tame and Feed expressions above supersede that playback boundary.
 > This package-foundation paragraph changed no genome, save, portrait, descriptor, Guide capability
 > or player mechanic.
 >

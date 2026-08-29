@@ -2,19 +2,37 @@
    beside the slice's current render, one page, so judging is minutes not
    archaeology (the HD-engine-law "proof-sheet all art" convention).
    Output: apps/game/smoke/proof-sheet.png. Run AFTER slicesmoke (it uses
-   the smoke's screenshots). Usage: node tools/proofsheet.mjs */
+   the smoke's screenshots).
+   Usage: node tools/proofsheet.mjs [--browser=<absolute-path>] */
 import fs from 'node:fs';
 import path from 'node:path';
-import os from 'node:os';
-import { spawn } from 'node:child_process';
+import http from 'node:http';
 import { fileURLToPath } from 'node:url';
+import { closeArtToolServer, withArtBrowserCdp } from './art-browser-contract.mjs';
+import {
+  assertBrowserLaunchAllowed, browserCandidates, findChromiumBrowser,
+} from './browserpath.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const smoke = path.join(here, '..', 'apps', 'game', 'smoke');
 const golden = path.join(here, '..', '..', 'baseline-v1.8.9', 'screens');
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const f = (p) => 'file:///' + p.replace(/\\/g, '/');
+const assets = new Map();
+const f = (file) => {
+  const route = `/asset/${assets.size}`;
+  assets.set(route, file);
+  return route;
+};
+
+const argv = process.argv.slice(2);
+const browserArguments = argv.filter((argument) => argument.startsWith('--browser='));
+if (argv.length !== browserArguments.length || browserArguments.length > 1) {
+  console.error('usage: node tools/proofsheet.mjs [--browser=<absolute-path>]');
+  process.exit(2);
+}
+const browserOverride = browserArguments[0]?.slice('--browser='.length);
+assertBrowserLaunchAllowed();
+const browserFile = findChromiumBrowser(browserCandidates(browserOverride));
 
 const ROWS = [
   ['THE SYSTEM VIEW', f(path.join(golden, 'ui-main-desktop.png')), 'v1.8.9 shipped (golden screen)', f(path.join(smoke, 'slice-sol.png')), 'the slice, same recipes (Sol)'],
@@ -36,29 +54,46 @@ ${ROWS.map(([title, l, lc, r, rc]) => `
 1. <b>ART</b> — the slice speaks the Renderer's recipes number-for-number; what it cannot borrow it bakes from the same painters. Thumbs up here green-lights Phases 5–6 asset production.<br>
 2. <b>SOUND</b> — only the shipped stings are carried (whoosh/ping over your save's own settings). Everything further waits on the listening test (port/LISTENING_TEST.md).
 </div></body>`;
-const page = path.join(os.tmpdir(), 'cf-proofsheet.html');
-fs.writeFileSync(page, html);
+const server = http.createServer((request, response) => {
+  if (request.url === '/') {
+    response.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+    response.end(html);
+    return;
+  }
+  const file = assets.get(request.url);
+  if (!file) { response.writeHead(404); response.end(); return; }
+  try {
+    response.writeHead(200, { 'content-type': 'image/png' });
+    response.end(fs.readFileSync(file));
+  } catch { response.writeHead(404); response.end(); }
+});
+await new Promise((resolve, reject) => {
+  server.once('error', reject);
+  server.listen(0, '127.0.0.1', resolve);
+});
+const pageUrl = `http://127.0.0.1:${server.address().port}/`;
 
-const udd = path.join(os.tmpdir(), 'cf-proof-' + Date.now());
-const port = 9833 + (process.pid % 100);
-const edge = spawn(EDGE, ['--headless=new', '--no-sandbox', '--no-first-run', '--allow-file-access-from-files',
-  '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });
-let ws0 = null;
-for (let t = 0; t < 50 && !ws0; t++) { await sleep(400); try { ws0 = (await (await fetch('http://127.0.0.1:' + port + '/json/version')).json()).webSocketDebuggerUrl; } catch { /* boot */ } }
-if (!ws0) { console.error('no CDP'); edge.kill(); process.exit(2); }
-const ws = new WebSocket(ws0);
-let mid = 0; const pend = new Map();
-ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id && pend.has(m.id)) { const p = pend.get(m.id); pend.delete(m.id); m.error ? p.rej(new Error(m.error.message)) : p.res(m.result); } };
-await new Promise((r) => { ws.onopen = r; });
-const send = (method, params = {}, sessionId) => new Promise((res, rej) => { const id = ++mid; pend.set(id, { res, rej }); ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params })); });
-const t = await send('Target.createTarget', { url: 'about:blank' });
-const at = await send('Target.attachToTarget', { targetId: t.targetId, flatten: true });
-const sess = at.sessionId;
-await send('Page.enable', {}, sess);
-await send('Emulation.setDeviceMetricsOverride', { width: 1500, height: 1000, deviceScaleFactor: 1, mobile: false }, sess);
-await send('Page.navigate', { url: f(page) }, sess);
-await sleep(2500);
-const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true }, sess);
-fs.writeFileSync(path.join(smoke, 'proof-sheet.png'), Buffer.from(shot.data, 'base64'));
-ws.close(); edge.kill();
+await withArtBrowserCdp({
+  browserFile,
+  tool: 'proofsheet',
+  userDataPrefix: 'cf-proofsheet',
+  startupTimeoutMs: 20_000,
+  cleanup: () => closeArtToolServer(server),
+}, async ({ send, provenance }) => {
+  const target = await send('Target.createTarget', { url: 'about:blank' });
+  const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+  const sessionId = attached.sessionId;
+  await send('Page.enable', {}, sessionId);
+  await send('Emulation.setDeviceMetricsOverride', {
+    width: 1500, height: 1000, deviceScaleFactor: 1, mobile: false,
+  }, sessionId);
+  await send('Page.navigate', { url: pageUrl }, sessionId);
+  await sleep(2500);
+  const shot = await send('Page.captureScreenshot', {
+    format: 'png', captureBeyondViewport: true,
+  }, sessionId);
+  fs.writeFileSync(path.join(smoke, 'proof-sheet.png'), Buffer.from(shot.data, 'base64'));
+  fs.writeFileSync(path.join(smoke, 'proof-sheet-browser-provenance.json'),
+    JSON.stringify(provenance, null, 2) + '\n');
+});
 console.log('PROOF SHEET → apps/game/smoke/proof-sheet.png');

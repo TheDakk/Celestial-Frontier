@@ -19,12 +19,19 @@ import {
   ownershipContentId,
   type CreatureInstanceId,
   type DiscoveryRecordId,
+  type OwnershipStateV2,
 } from '@cf/domain-acquisition';
+import {
+  createCreatureInstanceV2,
+  createOwnershipSuccessorV2,
+  ownershipSourceStateV1,
+} from '../packages/domain/acquisition/src/model-v2.js';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import { makeGenome } from '@cf/domain-genome';
 import { resolveCF1WorldAddress } from '@cf/scene';
 import {
   createTameGreetingAudioOwner,
+  type FeedExpressionOutcome,
   type TameGreetingAudioPolicy,
   type TameGreetingCaptureOutcome,
 } from '../apps/game/src/tame-greeting-audio.js';
@@ -44,8 +51,26 @@ class FakeParam implements AudioParamLike {
 class FakeNode implements AudioNodeLike {
   connects = 0;
   disconnects = 0;
-  connect(_destination: AudioNodeLike): AudioNodeLike { this.connects++; return this; }
+  readonly connections: AudioNodeLike[] = [];
+  connect(destination: AudioNodeLike): AudioNodeLike {
+    this.connects++;
+    this.connections.push(destination);
+    return this;
+  }
   disconnect(): void { this.disconnects++; }
+}
+
+function routesTo(
+  source: FakeNode,
+  destination: FakeNode,
+  visited = new Set<FakeNode>(),
+): boolean {
+  if (source === destination) return true;
+  if (visited.has(source)) return false;
+  visited.add(source);
+  return source.connections.some(
+    (next) => next instanceof FakeNode && routesTo(next, destination, visited),
+  );
 }
 
 class FakeGain extends FakeNode implements AudioGainNodeLike {
@@ -124,7 +149,7 @@ function fixture() {
     lineage: { kind: 'none', generation: 0 },
     xp: null,
     hurt: null,
-    fed: null,
+    fed: 1,
     brood: null,
     assignment: null,
     bond: null,
@@ -147,7 +172,16 @@ function fixture() {
     legacyBioX: [],
     scoutCreatureId: null,
   });
-  const state = migrateOwnershipStateV1ToV2(source);
+  const initial = migrateOwnershipStateV1ToV2(source);
+  const state = createOwnershipSuccessorV2(initial, {
+    source: ownershipSourceStateV1(initial),
+    bredAcquisitions: initial.bredAcquisitions,
+    creatures: initial.creatures,
+    creatureTombstones: initial.creatureTombstones,
+    specimenLots: initial.specimenLots,
+    specimenTombstones: initial.specimenTombstones,
+    scoutCreatureId: initial.scoutCreatureId,
+  });
   const outcome: TameGreetingCaptureOutcome = Object.freeze({
     kind: 'committed',
     durability: 'committed',
@@ -163,7 +197,7 @@ function fixture() {
       ownershipRevision: state.revision,
     }),
   });
-  return { state, outcome, discovery, worldKey: resolved.address.key };
+  return { state, outcome, discovery, creatureId, worldKey: resolved.address.key };
 }
 
 type MutablePolicy = { -readonly [Key in keyof TameGreetingAudioPolicy]: TameGreetingAudioPolicy[Key] };
@@ -180,6 +214,7 @@ function harness(policyPatch: Partial<TameGreetingAudioPolicy> = {}) {
     ...policyPatch,
   };
   const contexts: FakeContext[] = [];
+  let nowMs = 100;
   let liveCounterpart = true;
   const owner = createTameGreetingAudioOwner({
     createContext: () => {
@@ -187,7 +222,7 @@ function harness(policyPatch: Partial<TameGreetingAudioPolicy> = {}) {
       contexts.push(context);
       return context;
     },
-    nowMs: () => 100,
+    nowMs: () => nowMs,
     readPolicy: () => policy,
     verifyCounterpart: () => liveCounterpart,
   });
@@ -196,12 +231,51 @@ function harness(policyPatch: Partial<TameGreetingAudioPolicy> = {}) {
     owner,
     policy,
     contexts,
+    advance: (elapsedMs: number) => { nowMs += elapsedMs; },
     loseCounterpart: () => { liveCounterpart = false; owner.counterpartLost(); },
   };
 }
 
 function counterpart(eventKey: string) {
   return Object.freeze({ counterpartKey: 'capture-toast:7', eventKey, generation: 7 });
+}
+
+function feedOutcome(
+  data: Pick<ReturnType<typeof fixture>, 'creatureId' | 'state'>,
+  patch: Partial<NonNullable<FeedExpressionOutcome['result']>> = {},
+): FeedExpressionOutcome {
+  return Object.freeze({
+    kind: 'committed',
+    durability: 'committed',
+    convergence: 'none',
+    result: Object.freeze({
+      creatureId: data.creatureId,
+      fedBefore: 0,
+      fedAfter: 1,
+      receiptOrdinal: 4,
+      revision: data.state.revision + 50,
+      ownershipRevision: data.state.revision,
+      ...patch,
+    }),
+  });
+}
+
+function feedSuccessor(
+  parent: OwnershipStateV2,
+  creatureId: CreatureInstanceId,
+  fed: number,
+): OwnershipStateV2 {
+  return createOwnershipSuccessorV2(parent, {
+    source: ownershipSourceStateV1(parent),
+    bredAcquisitions: parent.bredAcquisitions,
+    creatures: parent.creatures.map((row) => row.creatureId === creatureId
+      ? createCreatureInstanceV2({ ...row, fed })
+      : row),
+    creatureTombstones: parent.creatureTombstones,
+    specimenLots: parent.specimenLots,
+    specimenTombstones: parent.specimenTombstones,
+    scoutCreatureId: parent.scoutCreatureId,
+  });
 }
 
 describe('Arc 7/8 player-live Tame greeting owner', () => {
@@ -278,6 +352,18 @@ describe('Arc 7/8 player-live Tame greeting owner', () => {
     )).resolves.toMatchObject({ kind: 'started' });
   });
 
+  it('preserves a newly claimed Tame greeting while Main replaces an older toast counterpart', async () => {
+    const h = harness();
+    h.owner.armNativeTameGesture();
+    const claim = h.owner.claimCommittedTameGreeting(h.outcome, h.state)!;
+    /* Main claims before showToast; showToast first reports the prior toast
+       lost, then binds the new claim to its freshly painted counterpart. */
+    h.owner.counterpartLost();
+    await expect(h.owner.playClaimedTameGreeting(claim, counterpart(claim.eventKey)))
+      .resolves.toMatchObject({ kind: 'started' });
+    expect(h.contexts[0]!.oscillators).toHaveLength(1);
+  });
+
   it.each([
     ['Sound off', { soundOn: false }],
     ['Creature voices off', { creatureVoicesOn: false }],
@@ -344,5 +430,242 @@ describe('Arc 7/8 player-live Tame greeting owner', () => {
       expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
       expect(h.contexts[0]!.oscillators[0]!.stops).toBeGreaterThan(0);
     }
+  });
+});
+
+describe('Arc 7/8 player-live Feed expression on the shared Tame owner', () => {
+  it('claims the exact successor, emits feed-completed after its counterpart, and reuses one runtime/context', async () => {
+    const h = harness();
+    h.owner.armNativeTameGesture();
+    const tameClaim = h.owner.claimCommittedTameGreeting(h.outcome, h.state)!;
+    await expect(h.owner.playClaimedTameGreeting(
+      tameClaim,
+      counterpart(tameClaim.eventKey),
+    )).resolves.toMatchObject({ kind: 'started' });
+    h.advance(1_000_000);
+
+    expect(h.owner.armNativeFeedGesture()).toBe(true);
+    const outcome = feedOutcome(h);
+    const claim = h.owner.claimCommittedFeedExpression(outcome, h.state);
+    expect(claim).toEqual({
+      eventKey: `arc5:feed-completed:${outcome.result!.revision}:4:${h.creatureId}`,
+      routeKey: h.worldKey,
+    });
+    if (!claim) throw new Error('expected Feed expression claim');
+    const receipt = Object.freeze({
+      counterpartKey: `feed-status:${outcome.result!.revision}:4`,
+      eventKey: claim.eventKey,
+      generation: 9,
+    });
+    await expect(h.owner.playClaimedFeedExpression(claim, receipt))
+      .resolves.toMatchObject({ kind: 'started' });
+
+    expect(h.contexts).toHaveLength(1);
+    expect(h.contexts[0]!.oscillators).toHaveLength(2);
+    expect(h.contexts[0]!.oscillators[1]!.starts).toBe(1);
+    expect(routesTo(
+      h.contexts[0]!.oscillators[1]!,
+      h.contexts[0]!.destination,
+    )).toBe(true);
+    expect(h.owner.diagnostics()).toMatchObject({
+      armed: 0,
+      claimedEvents: 2,
+      lastEventKey: claim.eventKey,
+      lastEventKind: 'feed-completed',
+      lastDisposition: 'voice-started',
+      counterpart: {
+        key: receipt.counterpartKey,
+        generation: receipt.generation,
+        status: 'live',
+      },
+      runtime: {
+        contextGeneration: 1,
+        voices: { active: 1, started: 2 },
+        creatureEmitters: { active: 1 },
+      },
+    });
+  });
+
+  it.each([
+    ['pending/unavailable', (value: FeedExpressionOutcome) => ({
+      ...value, kind: 'unavailable' as const, durability: 'none' as const, result: null,
+    })],
+    ['refusal', (value: FeedExpressionOutcome) => ({
+      ...value, kind: 'refused' as const, durability: 'none' as const, result: null,
+    })],
+    ['convergence', (value: FeedExpressionOutcome) => ({
+      ...value, convergence: 'read-only-reload' as const,
+    })],
+    ['stale ownership', (value: FeedExpressionOutcome) => ({
+      ...value,
+      result: { ...value.result!, ownershipRevision: value.result!.ownershipRevision + 1 },
+    })],
+    ['wrong creature successor', (value: FeedExpressionOutcome) => ({
+      ...value, result: { ...value.result!, creatureId: 'creature-v1:wrong-successor' },
+    })],
+    ['wrong fed successor', (value: FeedExpressionOutcome) => ({
+      ...value, result: { ...value.result!, fedBefore: 1, fedAfter: 2 },
+    })],
+  ])('keeps an armed %s terminal silent and tears down its prepared context', async (_label, mutate) => {
+    const h = harness();
+    expect(h.owner.armNativeFeedGesture()).toBe(true);
+    const outcome = mutate(feedOutcome(h)) as FeedExpressionOutcome;
+    expect(h.owner.claimCommittedFeedExpression(outcome, h.state)).toBeNull();
+    await Promise.resolve();
+    expect(h.contexts[0]!.oscillators).toHaveLength(0);
+    expect(h.contexts[0]!.closeCalls).toBe(1);
+    expect(h.owner.diagnostics().lastEventKind).toBeNull();
+  });
+
+  it('rejects replay and a missing accessible counterpart without a second source', async () => {
+    const h = harness();
+    const outcome = feedOutcome(h);
+    h.owner.armNativeFeedGesture();
+    const claim = h.owner.claimCommittedFeedExpression(outcome, h.state)!;
+    h.loseCounterpart();
+    await expect(h.owner.playClaimedFeedExpression(claim, Object.freeze({
+      counterpartKey: 'feed-status:stale',
+      eventKey: claim.eventKey,
+      generation: 3,
+    }))).resolves.toMatchObject({ kind: 'silent' });
+    expect(h.contexts[0]!.oscillators).toHaveLength(0);
+
+    const replay = harness();
+    const replayOutcome = feedOutcome(replay);
+    replay.owner.armNativeFeedGesture();
+    const first = replay.owner.claimCommittedFeedExpression(replayOutcome, replay.state)!;
+    await replay.owner.playClaimedFeedExpression(first, Object.freeze({
+      counterpartKey: 'feed-status:first', eventKey: first.eventKey, generation: 4,
+    }));
+    replay.advance(1_000_000);
+    replay.owner.armNativeFeedGesture();
+    expect(replay.owner.claimCommittedFeedExpression(replayOutcome, replay.state)).toBeNull();
+    await Promise.resolve();
+    expect(replay.contexts).toHaveLength(1);
+    expect(replay.contexts[0]!.oscillators).toHaveLength(1);
+    expect(replay.owner.diagnostics().lastDisposition).toBe('event-already-claimed');
+  });
+
+  it('retains only the latest Feed ownership while rejecting current and older replays', async () => {
+    const h = harness();
+    let state = h.state;
+    let firstState: OwnershipStateV2 | null = null;
+    let firstOutcome: FeedExpressionOutcome | null = null;
+    let latestOutcome: FeedExpressionOutcome | null = null;
+    for (let fedAfter = 1; fedAfter <= 12; fedAfter++) {
+      if (fedAfter > 1) state = feedSuccessor(state, h.creatureId, fedAfter);
+      const outcome = feedOutcome({ creatureId: h.creatureId, state }, {
+        fedBefore: fedAfter - 1,
+        fedAfter,
+        receiptOrdinal: 3 + fedAfter,
+        revision: 50 + fedAfter,
+        ownershipRevision: state.revision,
+      });
+      if (firstState === null) {
+        firstState = state;
+        firstOutcome = outcome;
+      }
+      latestOutcome = outcome;
+      expect(h.owner.armNativeFeedGesture()).toBe(true);
+      const claim = h.owner.claimCommittedFeedExpression(outcome, state);
+      expect(claim).not.toBeNull();
+      await expect(h.owner.playClaimedFeedExpression(claim!, Object.freeze({
+        counterpartKey: `feed-status:${fedAfter}`,
+        eventKey: claim!.eventKey,
+        generation: fedAfter,
+      }))).resolves.toMatchObject({ kind: 'started' });
+      expect(h.owner.diagnostics().claimedEvents).toBe(1);
+      h.advance(1_000_000);
+    }
+    if (firstState === null || firstOutcome === null || latestOutcome === null) {
+      throw new Error('expected Feed ownership sequence');
+    }
+
+    h.owner.armNativeFeedGesture();
+    expect(h.owner.claimCommittedFeedExpression(latestOutcome, state)).toBeNull();
+    expect(h.owner.diagnostics()).toMatchObject({
+      claimedEvents: 1,
+      lastDisposition: 'event-already-claimed',
+    });
+
+    h.owner.armNativeFeedGesture();
+    expect(h.owner.claimCommittedFeedExpression(firstOutcome, firstState)).toBeNull();
+    expect(h.owner.diagnostics()).toMatchObject({
+      claimedEvents: 1,
+      lastDisposition: 'feed-ownership-not-advanced',
+    });
+  });
+
+  it('cancels a claimed Feed attempt when its settled counterpart cannot bind', async () => {
+    const h = harness();
+    h.owner.armNativeFeedGesture();
+    const claim = h.owner.claimCommittedFeedExpression(feedOutcome(h), h.state)!;
+    h.owner.cancelFeedAttempt('counterpart-unavailable');
+    await Promise.resolve();
+    await expect(h.owner.playClaimedFeedExpression(claim, Object.freeze({
+      counterpartKey: 'feed-status:late', eventKey: claim.eventKey, generation: 6,
+    }))).resolves.toEqual({ kind: 'silent', reason: 'claim-invalid' });
+    expect(h.contexts[0]!.oscillators).toHaveLength(0);
+    expect(h.contexts[0]!.closeCalls).toBe(1);
+    expect(h.owner.diagnostics()).toMatchObject({
+      lastDisposition: 'feed-cancelled:counterpart-unavailable',
+      counterpart: { status: 'rejected' },
+      runtime: { voices: { started: 0 } },
+    });
+  });
+
+  it.each(['mute', 'hidden', 'route'] as const)(
+    'invalidates a claimed Feed event when %s changes before playback',
+    async (change) => {
+      const h = harness();
+      h.owner.armNativeFeedGesture();
+      const claim = h.owner.claimCommittedFeedExpression(feedOutcome(h), h.state)!;
+      if (change === 'mute') {
+        h.policy.soundOn = false;
+        h.owner.syncSettings();
+      } else if (change === 'hidden') {
+        h.owner.setHidden(true);
+      } else {
+        h.policy.routeKey = 'cf-route:replacement';
+        h.owner.syncRoute(h.policy.routeKey);
+      }
+      await expect(h.owner.playClaimedFeedExpression(claim, Object.freeze({
+        counterpartKey: 'feed-status:late', eventKey: claim.eventKey, generation: 7,
+      }))).resolves.toEqual({ kind: 'silent', reason: 'claim-invalid' });
+      expect(h.contexts[0]!.oscillators).toHaveLength(0);
+    },
+  );
+
+  it.each([
+    ['Sound off', { soundOn: false }],
+    ['Creature voices off', { creatureVoicesOn: false }],
+    ['hidden', { visible: false }],
+    ['unanswerable', { answerable: false }],
+    ['no route', { routeKey: null }],
+  ] as const)('creates no context for Feed when %s is already known', (_label, patch) => {
+    const h = harness(patch);
+    expect(h.owner.armNativeFeedGesture()).toBe(false);
+    expect(h.contexts).toHaveLength(0);
+    expect(h.owner.claimCommittedFeedExpression(feedOutcome(h), h.state)).toBeNull();
+  });
+
+  it('stays silent across route loss and stops a started Feed voice on later route loss', async () => {
+    const before = harness();
+    before.owner.armNativeFeedGesture();
+    before.policy.routeKey = 'cf-route:replacement';
+    expect(before.owner.claimCommittedFeedExpression(feedOutcome(before), before.state)).toBeNull();
+    await Promise.resolve();
+    expect(before.contexts[0]!.oscillators).toHaveLength(0);
+
+    const after = harness();
+    after.owner.armNativeFeedGesture();
+    const claim = after.owner.claimCommittedFeedExpression(feedOutcome(after), after.state)!;
+    await after.owner.playClaimedFeedExpression(claim, Object.freeze({
+      counterpartKey: 'feed-status:live', eventKey: claim.eventKey, generation: 5,
+    }));
+    expect(after.owner.diagnostics().runtime.voices.active).toBe(1);
+    after.owner.syncRoute('cf-route:replacement');
+    expect(after.owner.diagnostics().runtime.voices.active).toBe(0);
+    expect(after.contexts[0]!.oscillators[0]!.stops).toBeGreaterThan(0);
   });
 });

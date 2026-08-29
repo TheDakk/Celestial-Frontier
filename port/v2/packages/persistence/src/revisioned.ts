@@ -18,6 +18,7 @@
 import { STORES, type StorageBackend, type StorageCheck, type StorageOperation } from './repository.js';
 
 export const F3_REVISION_KEY = 'f3:revision';
+export const F3_MAX_REVISION = Number.MAX_SAFE_INTEGER;
 const RECEIPT_PREFIX = 'receipt:';
 const MAX_ORDINAL = 0xFFFF_FFFF;
 
@@ -52,6 +53,7 @@ export interface RevisionedReplacement {
 export type RevisionedMutationOutcome =
   | { readonly kind: 'committed'; readonly revision: number; readonly receiptKey: string | null }
   | { readonly kind: 'stale'; readonly expectedRevision: number; readonly actualRevision: number }
+  | { readonly kind: 'revision-exhausted'; readonly revision: number }
   | { readonly kind: 'duplicate-receipt'; readonly receiptKey: string; readonly existing: MutationReceipt }
   | { readonly kind: 'fence-lost'; readonly fence: StorageCheck; readonly actual: string | undefined }
   | { readonly kind: 'conflict'; readonly expectedRevision: number };
@@ -67,8 +69,8 @@ export interface F3RevisionSnapshot {
 }
 
 function checkedRevision(value: unknown, label: string): number {
-  if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) >= Number.MAX_SAFE_INTEGER) {
-    throw new RangeError(`${label} must be a non-negative safe integer below MAX_SAFE_INTEGER`);
+  if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) > F3_MAX_REVISION) {
+    throw new RangeError(`${label} must be a non-negative safe integer at most MAX_SAFE_INTEGER`);
   }
   return value as number;
 }
@@ -197,6 +199,9 @@ export function createRevisionedRepository(backend: StorageBackend): RevisionedR
       if (before.revision !== expectedRevision) {
         return { kind: 'stale', expectedRevision, actualRevision: before.revision };
       }
+      if (expectedRevision === F3_MAX_REVISION) {
+        return { kind: 'revision-exhausted', revision: expectedRevision };
+      }
       const lostBeforeCommit = await firstLostFence(backend, fences);
       if (lostBeforeCommit !== null) return lostBeforeCommit;
       const revision = expectedRevision + 1;
@@ -225,6 +230,9 @@ export function createRevisionedRepository(backend: StorageBackend): RevisionedR
       const before = await readRevision();
       if (before.revision !== expectedRevision) {
         return { kind: 'stale', expectedRevision, actualRevision: before.revision };
+      }
+      if (expectedRevision === F3_MAX_REVISION) {
+        return { kind: 'revision-exhausted', revision: expectedRevision };
       }
       if (receiptKeyValue !== null) {
         const existing = await backend.get('receipts', receiptKeyValue);

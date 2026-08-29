@@ -353,8 +353,15 @@ function capturePresentationErrors(source: string, cssSource = indexSource): str
   if (!source.includes("surveyOwnsCurrentCaptureSurface() && !productActionInFlight) {\n    refreshCaptureCardState();")) {
     errors.push('capture-active-play-refresh');
   }
-  if (!source.includes('if (productActionCoordinator.busy || productActionFaultInjectionArmed()) return false;')
-    || (source.match(/if \(productActionCoordinator\.busy \|\| productActionFaultInjectionArmed\(\)\) return false;/g) ?? []).length !== 6
+  const arc4FaultHooks = [
+    '__smokeRejectNextArc4ActionStorage',
+    '__smokeStaleNextArc4ActionAuthority',
+    '__smokeRejectNextArc4Publication',
+  ];
+  const exactArc4FaultGuard = (hook: string) => source.split(
+    `${hook}: () => {\n        if (productActionCoordinator.busy || productActionFaultInjectionArmed()) return false;`,
+  ).length === 2;
+  if (!arc4FaultHooks.every(exactArc4FaultGuard)
     || !source.includes('lastFault: lastSmokeArc4ActionFaultWitness,')
     || !source.includes('card: captureCardController.diagnostics(),')
     || !source.includes('lastResult: lastArc4CaptureResult,')) {

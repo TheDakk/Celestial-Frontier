@@ -43,15 +43,19 @@
      node tools/artlock.mjs --max=40        allow at most N drifted species
      node tools/artlock.mjs --expect        assert every species whose spec row
                                             you edited ACTUALLY changed
+     node tools/artlock.mjs --browser=<absolute-path>  explicit browser override
      node tools/artlock.mjs --selftest      negative-control, both directions
 */
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
-import os from 'node:os';
-import { spawn, execSync } from 'node:child_process';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { closeArtToolServer, withArtBrowserCdp } from './art-browser-contract.mjs';
 import { classMap, classOf } from './artclass.mjs';
+import {
+  assertBrowserLaunchAllowed, browserCandidates, findChromiumBrowser,
+} from './browserpath.mjs';
 import { execSync as _exec } from 'node:child_process';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -59,12 +63,17 @@ const root = path.join(here, '..');
 const appDir = path.join(root, 'apps', 'game');
 const distDir = path.join(appDir, 'dist');
 const LOCK = path.join(root, 'reference', 'artlock.json');
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const argv = process.argv.slice(2);
 const has = (k) => argv.some((a) => a === '--' + k || a.startsWith('--' + k + '='));
 const val = (k, d) => { const a = argv.find((s) => s.startsWith('--' + k + '=')); return a ? a.slice(k.length + 3) : d; };
+const browserArguments = argv.filter((argument) => argument.startsWith('--browser='));
+if (argv.includes('--browser') || browserArguments.length > 1) {
+  console.error('artlock: --browser requires one exact --browser=<absolute-path> value');
+  process.exit(2);
+}
+const browserOverride = val('browser', undefined);
 const MAXDRIFT = Number(val('max', '9999'));
 /* how different two 16x16 luminance grids must be before we call it a change.
    Calibrated so re-running an unchanged build reports zero and a one-line
@@ -151,6 +160,8 @@ if (has('selftest')) {
 }
 
 /* ───────────────────────── render the catalogue ───────────────────────── */
+assertBrowserLaunchAllowed();
+const browserFile = findChromiumBrowser(browserCandidates(browserOverride));
 execSync('npx vite build', { cwd: appDir, stdio: 'ignore' });
 {
   const newest = (dir) => fs.readdirSync(dir, { withFileTypes: true }).reduce((acc, e) => {
@@ -172,53 +183,53 @@ const server = http.createServer((req, res) => {
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const URL0 = 'http://127.0.0.1:' + server.address().port + '/audit.html';
 
-const udd = path.join(os.tmpdir(), 'cf-artlock-' + process.pid);
-const port = 9733 + (process.pid % 100);
-const edge = spawn(EDGE, ['--headless=new', '--no-sandbox', '--no-first-run',
-  '--disable-component-extensions-with-background-pages', '--disable-component-update', '--disable-background-networking',
-  '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });
-let ws0 = null;
-for (let t = 0; t < 60 && !ws0; t++) { await sleep(400); try { ws0 = (await (await fetch('http://127.0.0.1:' + port + '/json/version')).json()).webSocketDebuggerUrl; } catch { /* boot */ } }
-if (!ws0) { console.error('artlock: no CDP'); edge.kill(); process.exit(2); }
-const ws = new WebSocket(ws0);
-let mid = 0; const pend = new Map();
-ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id && pend.has(m.id)) { const q = pend.get(m.id); pend.delete(m.id); m.error ? q.rej(new Error(m.error.message)) : q.res(m.result); } };
-await new Promise((r) => { ws.onopen = r; });
-const send = (method, params = {}, sessionId) => new Promise((res, rej) => { const id = ++mid; pend.set(id, { res, rej }); ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params })); });
-const t0 = await send('Target.createTarget', { url: 'about:blank' });
-const at = await send('Target.attachToTarget', { targetId: t0.targetId, flatten: true });
-const sess = at.sessionId;
-await send('Runtime.enable', {}, sess);
-await send('Page.navigate', { url: URL0 }, sess);
-const evalIn = async (expr) => {
-  const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, sess);
-  if (r.exceptionDetails) throw new Error('eval threw: ' + String(r.exceptionDetails.exception?.description || '').slice(0, 300));
-  return r.result.value;
-};
-process.stdout.write('artlock: rendering the catalogue');
-let ready = false;
-for (let s = 0; s < 900 && !ready; s++) {
-  await sleep(400);
-  ready = await evalIn('!!(window.__CF_AUDIT__&&window.__CF_AUDIT__.done)');
-  if (s % 15 === 0) process.stdout.write('.');
-}
-process.stdout.write('\n');
-if (!ready) { console.error('artlock: the audit never finished'); ws.close(); edge.kill(); server.close(); process.exit(2); }
-/* pull the fingerprints in chunks — one 1,254-entry object exceeds the CDP
-   return-by-value budget and comes back silently truncated */
-const keys = await evalIn('Object.keys(window.__CF_FINGERPRINTS__)');
-const now = {};
-for (let i = 0; i < keys.length; i += 120) {
-  const part = await evalIn(`(()=>{const F=window.__CF_FINGERPRINTS__,K=Object.keys(F).slice(${i},${i + 120}),o={};for(const k of K)o[k]=F[k];return o;})()`);
-  Object.assign(now, part);
-}
-/* ★ D-ART-120 — the SILHOUETTE channel, pulled the same chunked way. */
-const nowSil = {};
-for (let i = 0; i < keys.length; i += 120) {
-  const part = await evalIn(`(()=>{const F=window.__CF_SILHOUETTES__||{},K=Object.keys(F).slice(${i},${i + 120}),o={};for(const k of K)o[k]=F[k];return o;})()`);
-  Object.assign(nowSil, part);
-}
-ws.close(); edge.kill(); server.close();
+const { keys, now, nowSil } = await withArtBrowserCdp({
+  browserFile,
+  tool: 'artlock',
+  userDataPrefix: 'cf-artlock',
+  startupTimeoutMs: 24_000,
+  cleanup: () => closeArtToolServer(server),
+}, async ({ send }) => {
+  const target = await send('Target.createTarget', { url: 'about:blank' });
+  const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+  const sessionId = attached.sessionId;
+  await send('Runtime.enable', {}, sessionId);
+  await send('Page.navigate', { url: URL0 }, sessionId);
+  const evalIn = async (expr) => {
+    const result = await send('Runtime.evaluate', {
+      expression: expr, returnByValue: true, awaitPromise: true,
+    }, sessionId);
+    if (result.exceptionDetails) {
+      throw new Error('eval threw: '
+        + String(result.exceptionDetails.exception?.description || '').slice(0, 300));
+    }
+    return result.result.value;
+  };
+  process.stdout.write('artlock: rendering the catalogue');
+  let ready = false;
+  for (let s = 0; s < 900 && !ready; s++) {
+    await sleep(400);
+    ready = await evalIn('!!(window.__CF_AUDIT__&&window.__CF_AUDIT__.done)');
+    if (s % 15 === 0) process.stdout.write('.');
+  }
+  process.stdout.write('\n');
+  if (!ready) throw new Error('artlock: the audit never finished');
+  /* pull the fingerprints in chunks — one 1,254-entry object exceeds the CDP
+     return-by-value budget and comes back silently truncated */
+  const keys = await evalIn('Object.keys(window.__CF_FINGERPRINTS__)');
+  const now = {};
+  for (let i = 0; i < keys.length; i += 120) {
+    const part = await evalIn(`(()=>{const F=window.__CF_FINGERPRINTS__,K=Object.keys(F).slice(${i},${i + 120}),o={};for(const k of K)o[k]=F[k];return o;})()`);
+    Object.assign(now, part);
+  }
+  /* ★ D-ART-120 — the SILHOUETTE channel, pulled the same chunked way. */
+  const nowSil = {};
+  for (let i = 0; i < keys.length; i += 120) {
+    const part = await evalIn(`(()=>{const F=window.__CF_SILHOUETTES__||{},K=Object.keys(F).slice(${i},${i + 120}),o={};for(const k of K)o[k]=F[k];return o;})()`);
+    Object.assign(nowSil, part);
+  }
+  return { keys, now, nowSil };
+});
 if (Object.keys(now).length !== keys.length) {
   console.error('artlock: fingerprint transfer lost rows (' + Object.keys(now).length + '/' + keys.length + ')');
   process.exit(2);

@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { createMemoryBackend, createRevisionedRepository } from '@cf/persistence';
+import {
+  F3_MAX_REVISION,
+  createMemoryBackend,
+  createRevisionedRepository,
+} from '@cf/persistence';
 
 const captureReceipt = Object.freeze({ ordinal: 17, kind: 'capture-settlement', witness: 'planet:133/species:beacon' });
 
@@ -80,6 +84,82 @@ describe('@cf/persistence — F3 revision/CAS and immutable receipts', () => {
       .rejects.toThrow('reserve meta revision and receipts stores');
     await expect(fresh.mutate({ expectedRevision: 0, writes: [{ store: 'meta', key: 'f3:revision', value: '99' }] }))
       .rejects.toThrow('reserve meta revision and receipts stores');
+  });
+
+  it('keeps the maximum durable revision readable and refuses another mutation before its product or receipt writes', async () => {
+    const base = createMemoryBackend();
+    await base.apply([{
+      store: 'meta', key: 'f3:revision', value: String(F3_MAX_REVISION - 1),
+    }]);
+    let compareAndApplyCalls = 0;
+    const backend = {
+      ...base,
+      compareAndApply(
+        checks: Parameters<typeof base.compareAndApply>[0],
+        operations: Parameters<typeof base.compareAndApply>[1],
+        clearStores?: Parameters<typeof base.compareAndApply>[2],
+      ) {
+        compareAndApplyCalls++;
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const repository = createRevisionedRepository(backend);
+
+    await expect(repository.mutate({
+      expectedRevision: F3_MAX_REVISION - 1,
+      writes: [{ store: 'player', key: 'last-durable', value: 'preserved' }],
+    })).resolves.toEqual({
+      kind: 'committed', revision: F3_MAX_REVISION, receiptKey: null,
+    });
+    expect(await repository.revision()).toBe(F3_MAX_REVISION);
+    expect(compareAndApplyCalls).toBe(1);
+
+    await expect(repository.mutate({
+      expectedRevision: F3_MAX_REVISION,
+      writes: [{ store: 'player', key: 'must-not-land', value: 'mutated' }],
+      receipt: { ordinal: 18, kind: 'exhausted-mutation', witness: 'must-not-land' },
+    })).resolves.toEqual({
+      kind: 'revision-exhausted', revision: F3_MAX_REVISION,
+    });
+    expect(compareAndApplyCalls).toBe(1);
+    expect(await repository.revision()).toBe(F3_MAX_REVISION);
+    expect(await base.get('player', 'last-durable')).toBe('preserved');
+    expect(await base.get('player', 'must-not-land')).toBeUndefined();
+    expect(await repository.readReceipt(18)).toBeUndefined();
+  });
+
+  it('refuses an exhausted replacement without clearing receipts or replacing product rows', async () => {
+    const base = createMemoryBackend();
+    const priorReceipt = { ordinal: 4, kind: 'prior-outcome', witness: 'preserve-me' };
+    await base.apply([
+      { store: 'meta', key: 'f3:revision', value: String(F3_MAX_REVISION) },
+      { store: 'player', key: 'expedition', value: 'preserved' },
+      { store: 'receipts', key: 'receipt:4', value: JSON.stringify(priorReceipt) },
+    ]);
+    let compareAndApplyCalls = 0;
+    const backend = {
+      ...base,
+      compareAndApply(
+        checks: Parameters<typeof base.compareAndApply>[0],
+        operations: Parameters<typeof base.compareAndApply>[1],
+        clearStores?: Parameters<typeof base.compareAndApply>[2],
+      ) {
+        compareAndApplyCalls++;
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    const repository = createRevisionedRepository(backend);
+
+    await expect(repository.replace({
+      expectedRevision: F3_MAX_REVISION,
+      writes: [{ store: 'player', key: 'expedition', value: 'must-not-replace' }],
+    })).resolves.toEqual({
+      kind: 'revision-exhausted', revision: F3_MAX_REVISION,
+    });
+    expect(compareAndApplyCalls).toBe(0);
+    expect(await repository.revision()).toBe(F3_MAX_REVISION);
+    expect(await base.get('player', 'expedition')).toBe('preserved');
+    expect(await repository.readReceipt(4)).toEqual(priorReceipt);
   });
 
   it('commits caller authority fences in the same checked transaction and reports their loss', async () => {

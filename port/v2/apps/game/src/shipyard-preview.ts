@@ -54,14 +54,65 @@ function svgElement<K extends keyof SVGElementTagNameMap>(
   return element;
 }
 
-function livery(state: ShipVisualState): { readonly hull: string; readonly inset: string; readonly light: string } {
+interface ShipLivery {
+  readonly hull: string;
+  readonly hullDeep: string;
+  readonly hullBright: string;
+  readonly inset: string;
+  readonly insetBright: string;
+  readonly light: string;
+  readonly lightWarm: string;
+}
+
+function livery(state: ShipVisualState): ShipLivery {
   const seed = state.liverySeed >>> 0;
   const hue = (Math.imul(seed, 2_654_435_761) >>> 0) % 360;
   return Object.freeze({
     hull: `hsl(${hue} 34% 31%)`,
+    hullDeep: `hsl(${hue} 43% 12%)`,
+    hullBright: `hsl(${(hue + 8) % 360} 44% 47%)`,
     inset: `hsl(${(hue + 24) % 360} 43% 18%)`,
+    insetBright: `hsl(${(hue + 32) % 360} 48% 32%)`,
     light: `hsl(${(hue + 174) % 360} 82% 68%)`,
+    lightWarm: `hsl(${(hue + 58) % 360} 94% 72%)`,
   });
+}
+
+function paintIdentity(state: ShipVisualState): string {
+  const hardpointMask = +state.hardpoints.array
+    | (+state.hardpoints.autoext << 1)
+    | (+state.hardpoints.cscoop << 2);
+  return `cf-ship-${state.chassisStage}-${hardpointMask}-${(state.liverySeed >>> 0).toString(16)}`;
+}
+
+function appendStop(
+  document: Document,
+  gradient: SVGLinearGradientElement | SVGRadialGradientElement,
+  offset: string,
+  color: string,
+  opacity = 1,
+): void {
+  gradient.append(svgElement(document, 'stop', {
+    offset,
+    'stop-color': color,
+    'stop-opacity': opacity,
+  }));
+}
+
+function backdropStars(state: ShipVisualState): ReadonlyArray<Readonly<{
+  x: number; y: number; radius: number; opacity: number;
+}>> {
+  let value = (state.liverySeed ^ 0x51A7_5EED) >>> 0;
+  const next = (): number => {
+    value = (Math.imul(value, 1_664_525) + 1_013_904_223) >>> 0;
+    return value / 0x1_0000_0000;
+  };
+  return Object.freeze(Array.from({ length: 18 }, () => Object.freeze({
+    x: 12 + next() * 336,
+    y: 10 + next() * 156,
+    radius: 0.45 + next() * 1.15,
+    opacity: 0.2 + next() * 0.5,
+  })));
 }
 
 function hardpointNames(state: ShipVisualState): string[] {
@@ -101,6 +152,12 @@ export function createShipyardPreview(
 ): SVGSVGElement {
   const chassis = CHASSIS[state.chassisStage];
   const colors = livery(state);
+  const paint = paintIdentity(state);
+  const hullGradientId = `${paint}-hull`;
+  const insetGradientId = `${paint}-inset`;
+  const coreGradientId = `${paint}-core`;
+  const backdropGradientId = `${paint}-backdrop`;
+  const hullClipId = `${paint}-clip`;
   const svg = svgElement(document, 'svg', {
     viewBox: '0 0 360 180',
     preserveAspectRatio: 'xMidYMid meet',
@@ -111,7 +168,62 @@ export function createShipyardPreview(
     'data-state-key': shipVisualStateKey(state),
     'data-chassis-stage': state.chassisStage,
     'data-provenance': state.provenance,
+    'data-visual-treatment': 'polished-v1',
   });
+
+  /* One deterministic material-and-light pass around the existing paths.
+     The four silhouettes and every capability-owned hardpoint stay byte-for-
+     byte identical; gradients, reflected light and a sparse static starfield
+     provide depth without adding geometry that could imply new equipment. */
+  const defs = svgElement(document, 'defs', {});
+  const hullGradient = svgElement(document, 'linearGradient', {
+    id: hullGradientId, x1: '12%', y1: '4%', x2: '88%', y2: '96%',
+  });
+  appendStop(document, hullGradient, '0%', colors.hullBright);
+  appendStop(document, hullGradient, '42%', colors.hull);
+  appendStop(document, hullGradient, '100%', colors.hullDeep);
+  const insetGradient = svgElement(document, 'linearGradient', {
+    id: insetGradientId, x1: '25%', y1: '0%', x2: '78%', y2: '100%',
+  });
+  appendStop(document, insetGradient, '0%', colors.insetBright);
+  appendStop(document, insetGradient, '100%', colors.inset);
+  const coreGradient = svgElement(document, 'radialGradient', {
+    id: coreGradientId, cx: '42%', cy: '35%', r: '68%',
+  });
+  appendStop(document, coreGradient, '0%', '#ffffff');
+  appendStop(document, coreGradient, '36%', colors.lightWarm, 0.98);
+  appendStop(document, coreGradient, '100%', colors.light, 0.42);
+  const backdropGradient = svgElement(document, 'radialGradient', {
+    id: backdropGradientId, cx: '50%', cy: '42%', r: '74%',
+  });
+  appendStop(document, backdropGradient, '0%', colors.hull, 0.3);
+  appendStop(document, backdropGradient, '58%', '#091326', 0.82);
+  appendStop(document, backdropGradient, '100%', '#030711');
+  const hullClip = svgElement(document, 'clipPath', { id: hullClipId });
+  hullClip.append(svgElement(document, 'path', { d: chassis.hullPath }));
+  defs.append(hullGradient, insetGradient, coreGradient, backdropGradient, hullClip);
+  svg.append(defs);
+
+  const backdrop = svgElement(document, 'g', {
+    'data-layer': 'backdrop',
+    'aria-hidden': 'true',
+  });
+  backdrop.append(svgElement(document, 'rect', {
+    x: 2, y: 2, width: 356, height: 176, rx: 15,
+    fill: `url(#${backdropGradientId})`,
+  }));
+  for (const star of backdropStars(state)) {
+    backdrop.append(svgElement(document, 'circle', {
+      cx: star.x.toFixed(2), cy: star.y.toFixed(2), r: star.radius.toFixed(2),
+      fill: colors.light, opacity: star.opacity.toFixed(3),
+    }));
+  }
+  backdrop.append(svgElement(document, 'ellipse', {
+    cx: 180, cy: 112, rx: 112 + state.chassisStage * 18, ry: 48,
+    fill: colors.light, opacity: 0.055,
+    'data-layer': 'ship-underlight',
+  }));
+  svg.append(backdrop);
 
   const chassisLayer = svgElement(document, 'g', {
     'data-layer': 'chassis',
@@ -121,14 +233,14 @@ export function createShipyardPreview(
   chassisLayer.append(
     svgElement(document, 'path', {
       d: chassis.hullPath,
-      fill: colors.hull,
+      fill: `url(#${hullGradientId})`,
       stroke: colors.light,
       'stroke-width': 3,
       'stroke-linejoin': 'round',
     }),
     svgElement(document, 'path', {
       d: chassis.insetPath,
-      fill: colors.inset,
+      fill: `url(#${insetGradientId})`,
       stroke: colors.light,
       'stroke-width': 1.5,
       'stroke-opacity': 0.72,
@@ -138,11 +250,29 @@ export function createShipyardPreview(
       cx: 180,
       cy: 92,
       r: state.chassisStage + 5,
-      fill: colors.light,
+      fill: `url(#${coreGradientId})`,
       opacity: 0.88,
       'data-layer': 'livery-core',
     }),
   );
+  const materialLight = svgElement(document, 'g', {
+    'data-layer': 'material-light',
+    'aria-hidden': 'true',
+    'clip-path': `url(#${hullClipId})`,
+  });
+  materialLight.append(
+    svgElement(document, 'path', {
+      d: 'M86 36 202 14 282 135 250 150Z',
+      fill: '#ffffff', opacity: 0.075,
+    }),
+    svgElement(document, 'path', {
+      d: 'M74 125Q180 88 286 125',
+      fill: 'none', stroke: colors.lightWarm,
+      'stroke-width': 2, 'stroke-opacity': 0.24,
+      'stroke-linecap': 'round',
+    }),
+  );
+  chassisLayer.append(materialLight);
   svg.append(chassisLayer);
 
   if (state.hardpoints.array) {

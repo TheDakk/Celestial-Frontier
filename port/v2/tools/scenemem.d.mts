@@ -46,6 +46,7 @@ export function validateSceneMemoryBudget(record: unknown): Readonly<{
 export function terminalOutcomeInventoryErrors(
   outcomes: unknown,
   canonicalOutcomes?: unknown,
+  expectedCount?: number,
 ): string[];
 
 export function reportBrowserAuthorityErrors(
@@ -58,7 +59,12 @@ export function terminalPassEvidenceErrors(
   findings: unknown,
 ): string[];
 
-export function terminalProfileEvidenceErrors(profiles: unknown): string[];
+export function sceneMemoryProfileRawBindingErrors(measurement: unknown): string[];
+
+export function terminalProfileEvidenceErrors(
+  profiles: unknown,
+  surfaceVistaRequired?: boolean,
+): string[];
 
 export function terminalSourceAuthorityErrors(
   begin: unknown,

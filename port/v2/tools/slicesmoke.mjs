@@ -23,10 +23,20 @@ import {
   assessInventoryActionActivation,
   assessInventoryDetailClose,
   assessInventoryPanelClose,
-  assessInventoryReloadDurability,
+  assessInventoryOperationSequenceDurability,
   assessInventoryRowActivation,
   assessInventoryRowReachability,
   assessInventoryStagePrefix,
+  assessArc2InventoryOperationOutcome,
+  assessArc2InventoryPendingWindow,
+  assessArc2InventoryPreDurableRefusal,
+  assessArc2InventorySuccessorBoundary,
+  assessCompendiumFeedAudioAcknowledgement,
+  arc2InventoryCarrierLegacyCargoParity,
+  assessCompendiumFeedCommittedOutcome,
+  assessCompendiumFeedPendingWindow,
+  assessCompendiumFeedTwoDocumentStaleOutcome,
+  selectArc5FeedFixtureBurnVerb,
   assessTrainingBusyRefusalPrecondition,
   classifyCompendiumDetailReceipt,
   classifyForegroundServiceTurn,
@@ -34,6 +44,8 @@ import {
   classifyPlanetsideSettlement,
   planetsidePhaseRemainingMs,
   planetsideRuntimeTimeoutDecision,
+  SLICE_SCREENSHOT_LOGICAL_NAMES,
+  sliceScreenshotInventoryLine,
   trainingBindingReceiptBeforeDeadline,
 } from './slicesmoke-contract.mjs';
 import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
@@ -408,10 +420,12 @@ const screenshotRunId = process.env.CF_V2_SLICE_SMOKE_RUN_ID || '';
 if (screenshotRunId && !/^[a-z0-9][a-z0-9-]{0,95}$/i.test(screenshotRunId)) {
   throw new Error('slice smoke screenshot run ID must be 1–96 ASCII letters, digits or hyphens');
 }
-const screenshotPath = (stem) => path.join(
-  OUT,
-  `slice-${screenshotRunId ? screenshotRunId + '-' : ''}${stem}.png`,
-);
+const screenshotPath = (stem) => {
+  if (!SLICE_SCREENSHOT_LOGICAL_NAMES.includes(stem)) {
+    throw new Error(`slice smoke screenshot name is outside the exact inventory: ${JSON.stringify(stem)}`);
+  }
+  return path.join(OUT, `slice-${screenshotRunId ? screenshotRunId + '-' : ''}${stem}.png`);
+};
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const decodeCF1Payload = (code) => {
@@ -821,16 +835,13 @@ const VETERAN_ATLAS_RAW = (() => {
   ];
   return JSON.stringify(save);
 })();
-/* The ordinary veteran remains the browser route/import authority. This
-   bounded derivative adds one equipped suit and one same-slot conditional
-   candidate so the real Inventory detail can prove comparison semantics
-   instead of passing vacuously on the veteran's lone helmet. */
-const INVENTORY_VETERAN_RAW = (() => {
-  const save = JSON.parse(VETERAN_ATLAS_RAW);
-  save.items = [...save.items, ['hazmat', 1], ['thermal', 1]];
-  save.eq = { ...save.eq, suit: 'hazmat' };
-  return JSON.stringify(save);
-})();
+/* Strict portable-v5 fixture: the ordinary veteran route plus one equipped
+   hazmat suit, one same-slot thermal candidate, and one exact rig reward held
+   pending by the carrier's three-slot capacity. Its browser-free fixed-point
+   contract derives these bytes from the real persistence/domain authorities. */
+const INVENTORY_VETERAN_RAW = fs.readFileSync(
+  path.join(here, 'fixtures', 'arc2-live-outcomes-v1.json'), 'utf8',
+).trim();
 const ENGINEERING_VETERAN_RAW = (() => {
   const save = JSON.parse(VETERAN_ATLAS_RAW);
   save.me = 'Arc 3 Engineering Gate';
@@ -1044,7 +1055,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 55;
+const V2_DRAFT_BULLET_COUNT = 64;
 const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save — nothing was stored.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -1988,28 +1999,31 @@ const assessArc2InventoryAction = ({ before, after, beforeState, afterState, poi
     || canonicalJson(after?.legacy?.log) !== canonicalJson(before?.legacy?.log)) reasons.push('Atlas/product continuity');
   return { ok: reasons.length === 0, reasons };
 };
-const assessArc2InventoryReload = ({ committed, reloaded, committedState, reloadedState, surface, instanceId, previousToken, token }) => {
+const assessArc2InventoryReload = ({ committed, reloaded, committedState, reloadedState, surface,
+  instanceId, removedInstanceId, operations, previousToken, token }) => {
   const reasons = [];
   const committedEntry = committed?.arc2?.inventory?.entries?.find((entry) => entry.instance.instanceId === instanceId);
   const reloadedEntry = reloaded?.arc2?.inventory?.entries?.find((entry) => entry.instance.instanceId === instanceId);
-  const committedInventoryRevision = committed?.arc2?.inventory?.revision;
-  const reloadDurability = Number.isSafeInteger(committedInventoryRevision) && committedInventoryRevision >= 0
-    ? assessInventoryReloadDurability({
+  const reloadDurability = Array.isArray(operations)
+    ? assessInventoryOperationSequenceDurability({
       committed,
       reloaded,
       committedRuntime: committedState?.persistence?.runtime,
       reloadedRuntime: reloadedState?.persistence?.runtime,
-    }, instanceId, committedInventoryRevision)
-    : { ok: false, reasons: ['durable receipt/F4 authority reload'] };
+    }, operations)
+    : { ok: false, reasons: ['durable Arc 2 operation ledger/F4 authority reload'] };
   const projection = (state) => canonicalJson({
     atlasCount: state?.atlasCount, atlasTravelable: state?.atlasTravelable,
     landed: state?.save?.landed, customNames: state?.save?.customNames, savedView: state?.save?.savedView,
   });
   if (typeof token !== 'string' || token === previousToken || reloadedState?.persistence?.bootKind !== 'current-v5'
     || reloaded?.carrierJson !== committed?.carrierJson || reloaded?.inventoryRaw !== committed?.inventoryRaw
-    || !arc2MirrorParity(reloaded) || reloadedEntry?.instanceId !== committedEntry?.instanceId
+    || !arc2InventoryCarrierLegacyCargoParity(reloaded, reloadedState)
+    || reloadedEntry?.instanceId !== committedEntry?.instanceId
+    || reloaded?.arc2?.inventory?.entries?.some(({ instance }) => instance.instanceId === removedInstanceId)
+    || reloaded?.arc2?.inventory?.pendingRewards?.length !== 0
     || reloadedState?.inventory?.revision !== committed?.arc2?.inventory?.revision
-    || !reloadedState?.inventory?.equippedBindings?.some((entry) => entry.instanceId === instanceId)) {
+    || reloadedState?.inventory?.equippedBindings?.some((entry) => entry.instanceId === instanceId)) {
     reasons.push('current-v5 carrier reload');
   }
   if (!reloadDurability.ok) reasons.push(...reloadDurability.reasons);
@@ -2018,7 +2032,9 @@ const assessArc2InventoryReload = ({ committed, reloaded, committedState, reload
     || surface?.inventoryPointer?.pointerType !== 'mouse'
     || surface?.inventoryRows?.length < 1 || surface.inventoryRows.length > 48
     || canonicalJson(surface.inventoryRows) !== canonicalJson(arc2InventoryRows(reloaded.arc2))
-    || !surface.inventoryRows.some((row) => row.instanceId === instanceId && row.equipped === true)
+    || !surface.inventoryRows.some((row) => row.instanceId === instanceId
+      && row.pending === false && row.equipped === false)
+    || surface.inventoryRows.some((row) => row.instanceId === removedInstanceId)
     || !assessInventoryPanelClose(surface?.inventoryClose).ok
     || surface?.atlasPreClick?.ok !== true || surface?.atlasPreClick?.targetId !== 'railatlas'
     || !Number.isFinite(surface?.atlasPreClick?.x) || !Number.isFinite(surface?.atlasPreClick?.y)
@@ -4109,6 +4125,8 @@ const SETTINGS_MUTATION_CASES = Object.freeze([
   ['text-tone', 'click:BUTTON'],
   ['font', 'click:BUTTON'],
   ['star-charts', 'click:setcharts'],
+  ['visual-effects', 'click:setfx'],
+  ['screen-shake', 'click:setshake'],
   ['motion', 'click:BUTTON'],
   ['panel-tint', 'input:setglass'],
 ]);
@@ -4222,6 +4240,67 @@ const reloadReleaseWitnessesSince = (sessionId, mark) =>
   bindingPayloadsSince(sessionId, mark, RELOAD_RELEASE_BINDING);
 const f4ConvergenceWitnessesSince = (sessionId, mark) =>
   bindingPayloadsSince(sessionId, mark, F4_CONVERGENCE_BINDING);
+const compendiumFeedWebAudioGraph = (sessionId, enableMark, sourceMark) => {
+  const nodes = new Map();
+  const edges = new Map();
+  const sourceNodeIds = [];
+  for (const [eventIndex, event] of events.entries()) {
+    if (eventIndex < enableMark || event.sessionId !== sessionId) continue;
+    if (event.method === 'WebAudio.audioNodeCreated') {
+      const node = event.params?.node;
+      if (typeof node?.nodeId !== 'string' || typeof node?.contextId !== 'string'
+        || typeof node?.nodeType !== 'string') continue;
+      nodes.set(node.nodeId, {
+        nodeId: node.nodeId, contextId: node.contextId, nodeType: node.nodeType,
+      });
+      if (eventIndex >= sourceMark && node.nodeType === 'OscillatorNode') {
+        sourceNodeIds.push(node.nodeId);
+      }
+    } else if (event.method === 'WebAudio.audioNodeWillBeDestroyed') {
+      const nodeId = event.params?.nodeId;
+      nodes.delete(nodeId);
+      for (const [key, edge] of edges) {
+        if (edge.sourceId === nodeId || edge.destinationId === nodeId) edges.delete(key);
+      }
+    } else if (event.method === 'WebAudio.nodesConnected') {
+      const { contextId, sourceId, destinationId } = event.params ?? {};
+      if (typeof contextId === 'string' && typeof sourceId === 'string'
+        && typeof destinationId === 'string') {
+        edges.set(`${contextId}|${sourceId}|${destinationId}`, {
+          contextId, sourceId, destinationId,
+        });
+      }
+    } else if (event.method === 'WebAudio.nodesDisconnected') {
+      const { contextId, sourceId, destinationId } = event.params ?? {};
+      for (const [key, edge] of edges) {
+        if (edge.contextId === contextId && edge.sourceId === sourceId
+          && (typeof destinationId !== 'string' || edge.destinationId === destinationId)) {
+          edges.delete(key);
+        }
+      }
+    }
+  }
+  const sourceNodeId = sourceNodeIds.length === 1 ? sourceNodeIds[0] : null;
+  const source = sourceNodeId === null ? null : nodes.get(sourceNodeId);
+  const destinations = [...nodes.values()].filter((node) => (
+    node.nodeType === 'AudioDestinationNode' && node.contextId === source?.contextId
+  ));
+  return {
+    schema: 'cf-v2-feed-audio-graph/v1',
+    sourceNodeId,
+    destinationNodeId: destinations.length === 1 ? destinations[0].nodeId : null,
+    nodes: [...nodes.values()].sort((left, right) => left.nodeId.localeCompare(right.nodeId)),
+    edges: [...edges.values()]
+      .filter((edge) => {
+        const sourceNode = nodes.get(edge.sourceId);
+        const destinationNode = nodes.get(edge.destinationId);
+        return sourceNode?.contextId === edge.contextId
+          && destinationNode?.contextId === edge.contextId;
+      })
+      .sort((left, right) => `${left.contextId}|${left.sourceId}|${left.destinationId}`
+        .localeCompare(`${right.contextId}|${right.sourceId}|${right.destinationId}`)),
+  };
+};
 const dtrainNativeWriteArmExpression = (label) => `(()=>{
   const binding=window[${JSON.stringify(DTRAIN_NATIVE_WRITE_BINDING)}],proto=IDBObjectStore.prototype;
   if(typeof binding!=='function'||window.__cfDtrainNativeWritePatch)return false;
@@ -4598,6 +4677,9 @@ try {
       type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sess);
     await sleep(80);
+    return Object.freeze({
+      kind: 'cdp-mouse', x: point.x, y: point.y, button: 'left', clickCount: 1,
+    });
   };
   const armDesktopPointerReceipt = async () => evalIn(`(()=>{ window.__cfPanelPointerAbort?.abort();
     delete window.__cfPanelPointer;const controller=new AbortController();window.__cfPanelPointerAbort=controller;
@@ -5322,13 +5404,20 @@ try {
     const groupLabels=groups.map((g)=>g.getAttribute('aria-label'));
     const groupStates=groups.map((g)=>{const choices=[...g.querySelectorAll('[aria-pressed]')];return {
       count:choices.length,selected:choices.filter((choice)=>choice.getAttribute('aria-pressed')==='true').length};});
-    const a11y={ok:stateButtons.length===15&&stateButtons.every((b)=>['true','false'].includes(b.getAttribute('aria-pressed')))
+    const stateIdentities=stateButtons.map((button)=>button.id?'id:'+button.id
+      :button.hasAttribute('data-pref')?'pref:'+button.getAttribute('data-pref')+':'+button.getAttribute('data-value')
+      :button.hasAttribute('data-motion')?'motion:'+button.getAttribute('data-motion'):'unknown');
+    const expectedStateIdentities=['id:setsnd','id:setvoice','pref:size:','pref:size:fs-lg','pref:size:fs-xl',
+      'pref:tone:','pref:tone:tone-bright','pref:tone:tone-max','pref:font:','pref:font:font-sys',
+      'pref:font:font-mono','id:setcharts','id:setfx','id:setshake','motion:-1','motion:0','motion:1'];
+    const a11y={ok:JSON.stringify(stateIdentities)===JSON.stringify(expectedStateIdentities)
+      &&stateButtons.every((b)=>['true','false'].includes(b.getAttribute('aria-pressed')))
       &&JSON.stringify(groupLabels)===JSON.stringify(['Text size','Text tone','Font','Motion'])
       &&groupStates.every((group)=>group.count===3&&group.selected===1)
       &&document.querySelector('[data-pref="size"][data-value="fs-xl"]')?.getAttribute('aria-pressed')==='true'
       &&document.querySelector('[data-pref="tone"][data-value="tone-max"]')?.getAttribute('aria-pressed')==='true'
       &&document.querySelector('[data-pref="font"][data-value="font-mono"]')?.getAttribute('aria-pressed')==='true',
-      stateCount:stateButtons.length,groupLabels,groupStates};
+      stateCount:stateButtons.length,stateIdentities,groupLabels,groupStates};
     const voice=document.getElementById('setvoice'),priorVoicePressed=voice?.getAttribute('aria-pressed');
     voice?.removeAttribute('aria-pressed');
     const voiceA11yControl=stateButtons.every((button)=>['true','false'].includes(button.getAttribute('aria-pressed')));
@@ -5826,7 +5915,7 @@ try {
   const guide = await evalIn(guideCheck);
   if (!guide.open || guide.categoryCount !== 9 || new Set(guide.categoryIds).size !== 9
     || guide.topicCount !== 41 || guide.uniqueTopicCount !== 41
-    || guide.partialCount !== 24 || guide.unavailableCount !== 17
+    || guide.partialCount !== 25 || guide.unavailableCount !== 16
     || guide.availableCount !== 0 || guide.invalidAvailabilityCount !== 0
     || !guide.search || !guide.releases || guide.buildCount !== 1 || !guide.buildInsideGuide
     || !/Celestial Frontier v2\.0 development/i.test(guide.buildText)
@@ -5855,17 +5944,17 @@ try {
   if (guideAvailabilityCtl.mutated?.mutated !== true
     || guideAvailabilityCtl.mutated?.topicCount !== 41
     || guideAvailabilityCtl.mutated?.uniqueTopicCount !== 41
-    || guideAvailabilityCtl.mutated?.partialCount !== 23
-    || guideAvailabilityCtl.mutated?.unavailableCount !== 18
+    || guideAvailabilityCtl.mutated?.partialCount !== 24
+    || guideAvailabilityCtl.mutated?.unavailableCount !== 17
     || guideAvailabilityCtl.mutated?.availableCount !== 0
     || guideAvailabilityCtl.mutated?.invalidAvailabilityCount !== 0
     || guideAvailabilityCtl.restored?.topicCount !== 41
     || guideAvailabilityCtl.restored?.uniqueTopicCount !== 41
-    || guideAvailabilityCtl.restored?.partialCount !== 24
-    || guideAvailabilityCtl.restored?.unavailableCount !== 17
+    || guideAvailabilityCtl.restored?.partialCount !== 25
+    || guideAvailabilityCtl.restored?.unavailableCount !== 16
     || guideAvailabilityCtl.restored?.availableCount !== 0
     || guideAvailabilityCtl.restored?.invalidAvailabilityCount !== 0) {
-    fails.push('GUIDE INVENTORY CONTROL FAILED — exact 41-topic 24-partial/17-unavailable capability inventory did not reject one status mutation and restore: '
+    fails.push('GUIDE INVENTORY CONTROL FAILED — exact 41-topic 25-partial/16-unavailable capability inventory did not reject one status mutation and restore: '
       + JSON.stringify(guideAvailabilityCtl));
   }
   const guideSearch = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='landing';
@@ -5964,7 +6053,9 @@ try {
       'first successful Legendary-or-better observation earns its one Rare Find Stardust bonus',
       'result shows the exact amount', 'miss adds no page, creature, specimen, or Stardust',
       'Capture never banks the Charter’s separate bioscan milestone', 'writer remains unavailable',
-      'Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable',
+      'Narrow feeding is available only from a real fauna Compendium detail',
+      'Breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable',
+      'feeding does not yet discover tastes or flavours, grow stats or Power, heal injuries, apply poison, build a bond, or let the explorer eat',
     ], contradictions: [
       'The player chooses a visible species row to target.', 'Sample creates a living companion.',
       'Tame chooses only from the visible preview.',
@@ -6038,7 +6129,7 @@ try {
   }
   const compendiumGuideSpecs = [
     { id: 'kingdoms', title: 'The four kingdoms', required: [
-      'read-only Compendium presents up to 1,500 logical entries', 'Search filters those saved records',
+      'Compendium presents up to 1,500 logical entries', 'Search filters those saved records',
       'count reports the logical matches', 'choosing a row opens its detail',
       'mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)',
       'plus at most the focused pinned row',
@@ -6046,21 +6137,41 @@ try {
       'complete genome—not only the displayed name or seed—owns visual identity',
       'Planetside shares the same bounded thumbnail lease path',
       'thumbnails are released when their visible owner leaves',
-      'Compendium itself remains a read-only browser',
+      'Browsing and non-fauna details remain read-only',
       'successful first Planetside capture can add one page',
       'Tame also adds an owned fauna creature', 'Scavenge and Sample add specimen lots',
       'Later-world or later-cycle successes add another creature or lot without duplicating the page',
-      'Feeding, breeding, husbandry, renaming, and other Compendium-row actions remain unavailable',
+      'real fauna detail alone exposes the narrow Feed action',
+      'breeding, renaming, scouting, dueling, missions, and every broader husbandry outcome remain unavailable',
     ] },
     { id: 'specimen', title: 'Reading a specimen card', required: [
       'exact 440px portrait', 'same complete-genome identity as its exact 132px list thumbnail',
       '440px image is reserved for this detail rather than the list or Planetside',
       'Back returns to the saved list position and restores focus to the same logical row',
-      'Close returns focus to the exact Compendium opener', 'profile remains read-only',
+      'Close returns focus to the exact Compendium opener', 'Back and Close both remain available around feeding',
       'Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row',
       'Tame hit adds one owned fauna creature',
       'Scavenge or Sample adds one specimen lot and never a living companion',
-      'Feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry remain unavailable',
+      'Only a real fauna detail offers Feed',
+      'one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot',
+      'Identical same-species twins remain separate exact instances',
+      'Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable',
+    ] },
+    { id: 'feeding', title: 'Feeding beasts', required: [
+      'real fauna Compendium detail',
+      'Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot',
+      'Use 1', 'Same-species twins remain separate exact instances',
+      'Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why',
+      'Meals by 1, capped at 200', 'removes 1 flora from that exact lot',
+      'final unit empties that exact lot', 'one immutable receipt and one compare-and-swap save transaction',
+      'no retry and no optimistic inventory or Meals change',
+      'refusal, stale result, or failed write uses and publishes nothing',
+      'requires reload and cannot feed twice',
+      'trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status',
+      'one deterministic synthesized acknowledgement after that status appears',
+      'Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent',
+      'Back and Close remain available',
+      'tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable',
     ] },
   ];
   const renderedCompendiumGuideCheck = (spec) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
@@ -6071,7 +6182,12 @@ try {
       ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(text)
       ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(text)
       ||/(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i.test(text)
-      ||/(?:capture|feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i.test(text)
+      ||/(?:capture|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i.test(text)
+      ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
+      ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
+      ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
+      ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
+      ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
       ||/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(text)
       ||/(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i.test(text);
     return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
@@ -6111,13 +6227,26 @@ try {
     return {ok:stale?.ok===false&&stale?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true
       &&rowTarget?.ok===false&&rowTarget?.contradictory===true&&restored,
       stale,contradiction,rowTarget,restored};})()`);
-  if (!kingdomsGuide.ok || !specimenGuide.ok) {
-    fails.push('GUIDE Compendium virtualization/art/focus contract did not render in Kingdoms and Specimen: '
-      + JSON.stringify({ kingdomsGuide, specimenGuide }));
+  const feedingGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[2]);
+  const feedingGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,anchor='one immutable receipt and one compare-and-swap save transaction',
+    marker=document.createElement('p');let node=null;while(walker&&(node=walker.nextNode())&&!(node.nodeValue||'').includes(anchor)){}
+    const prior=node?.nodeValue||'';if(node)node.nodeValue=prior.replace(anchor,'one ordinary save');
+    const missing=${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])};if(node)node.nodeValue=prior;
+    const contradictions=[];for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.']){
+      marker.textContent=copy;article?.appendChild(marker);contradictions.push({copy,result:${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])}});marker.remove();}
+    const restored=${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])};return {nodeFound:!!node,missing,contradictions,restored};})()`);
+  if (!kingdomsGuide.ok || !specimenGuide.ok || !feedingGuide.ok) {
+    fails.push('GUIDE Compendium virtualization/art/focus/Feed contract did not render in Kingdoms, Specimen, and Feeding: '
+      + JSON.stringify({ kingdomsGuide, specimenGuide, feedingGuide }));
   }
-  if (!kingdomsGuideCtl.ok || !specimenGuideCtl.ok) {
-    fails.push('GUIDE COMPENDIUM COPY CONTROL FAILED — pre-Arc-1A or contradictory art ownership stayed current: '
-      + JSON.stringify({ kingdomsGuideCtl, specimenGuideCtl }));
+  if (!kingdomsGuideCtl.ok || !specimenGuideCtl.ok || !feedingGuideCtl.nodeFound
+    || feedingGuideCtl.missing?.ok || !feedingGuideCtl.missing?.missing?.includes('one immutable receipt and one compare-and-swap save transaction')
+    || feedingGuideCtl.contradictions?.length !== 3
+    || feedingGuideCtl.contradictions.some((row) => row.result?.ok || !row.result?.contradictory)
+    || !feedingGuideCtl.restored?.ok) {
+    fails.push('GUIDE COMPENDIUM COPY CONTROL FAILED — pre-Arc-1A, contradictory art ownership, or mutated Feed truth stayed current: '
+      + JSON.stringify({ kingdomsGuideCtl, specimenGuideCtl, feedingGuideCtl }));
   }
   /* Arc 3 changes player-facing Charter truth, so prove both affected topics
      render the live writers and owned-reach boundary. Pure content lookup
@@ -6298,11 +6427,12 @@ try {
       worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
       shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
       capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
+      meal=bulletNodes.find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||'')),
       hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
       publishing=bulletNodes.find((item)=>/DEVELOPMENT PUBLISHING STAYS PARKED/.test(item.textContent||'')),
       headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
       firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),artHeading=headingFor(art),
-      shipyardHeading=headingFor(shipyard),captureHeading=headingFor(capture),hdSurfaceHeading=headingFor(hdSurface),publishingHeading=headingFor(publishing),
+      shipyardHeading=headingFor(shipyard),captureHeading=headingFor(capture),mealHeading=headingFor(meal),hdSurfaceHeading=headingFor(hdSurface),publishingHeading=headingFor(publishing),
       charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
       trainingText=training?.textContent||'',artText=art?.textContent||'',shipyardText=shipyard?.textContent||'',captureText=capture?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',publishingText=publishing?.textContent||'',
       trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
@@ -6326,7 +6456,9 @@ try {
         &&trainingText.includes('completing the drill after Land stays at Earth')
         &&trainingText.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
         &&trainingText.includes('leaves the stored expedition unchanged')
-        &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction,
+        &&trainingText.includes('reload after updating, or import a trusted complete expedition')
+        &&trainingText.includes('points to live Engineering & Shipyard, Planetside capture, and narrow real-fauna Compendium Feed')
+        &&trainingText.includes('without pretending the navigation drill performs any of those actions')&&!trainingContradiction,
       artContradiction=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(artText)
         ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(artText)
         ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(artText)
@@ -6402,8 +6534,32 @@ try {
         &&captureText.includes('miss adds none of them')
         &&captureText.includes('Scavenge and Sample never create living companions')
         &&captureText.includes('Capture never banks the Charter’s separate bioscan milestone')
-        &&captureText.includes('Feeding, breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
+        &&captureText.includes('Narrow feeding is available from a real fauna Compendium detail')
+        &&captureText.includes('breeding, renaming, Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
         &&!captureContradiction,
+      mealText=meal?.textContent||'',
+      mealContradiction=/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(mealText)
+        ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(mealText)
+        ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(mealText)
+        ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(mealText)
+        ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(mealText),
+      mealContract=mealHeading==='Gameplay'
+        &&mealText.includes('real fauna Compendium detail')
+        &&mealText.includes('one exact unassigned owned companion below the 200-Meal cap')
+        &&mealText.includes('one exact owned flora lot through Use 1')
+        &&mealText.includes('Same-species twins remain separate exact instances')
+        &&mealText.includes('assigned, recovering, and capped companions stay disabled and explain why')
+        &&mealText.includes('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora')
+        &&mealText.includes('emptying that exact lot on its final unit')
+        &&mealText.includes('no retry or optimistic change')
+        &&mealText.includes('Back and Close remain available')
+        &&mealText.includes('Refused, stale, and failed writes use and publish nothing')
+        &&mealText.includes('requires reload and cannot feed twice')
+        &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
+        &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
+        &&mealText.includes('Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent')
+        &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable')
+        &&!mealContradiction,
       hdSurfaceContract=hdSurfaceHeading==='Under the Hood'
         &&hdSurfaceText.includes('named HD surface-planet texture attachment')
         &&hdSurfaceText.includes('exact surface generation and planet identity')
@@ -6426,7 +6582,12 @@ try {
       ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-      ||/(?:biosphere discovery|Discover Life|feeding|renaming|Field Scouts?|duels?|breeding|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/(?:biosphere discovery|Discover Life|renaming|Field Scouts?|duels?|breeding|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
+      ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
+      ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
+      ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
+      ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
     return {title,identity:title.includes('v2.0 · A New Foundation'),
@@ -6436,7 +6597,7 @@ try {
         &&bulletRaw.every((bullet)=>bullet.length>0&&bullet===bullet.trim()),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
       complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
-        &&shipyardContract&&captureContract&&hdSurfaceContract&&publishingContract
+        &&shipyardContract&&captureContract&&mealContract&&hdSurfaceContract&&publishingContract
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
@@ -6446,9 +6607,9 @@ try {
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text),
       charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
       workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,
-      captureHeading,captureContract,captureContradiction,hdSurfaceHeading,hdSurfaceContract,
+      captureHeading,captureContract,captureContradiction,mealHeading,mealContract,mealContradiction,hdSurfaceHeading,hdSurfaceContract,
       publishingHeading,publishingContract,publishingContradiction,overclaim,
-      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!captureContradiction&&!publishingContradiction
+      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!captureContradiction&&!mealContradiction&&!publishingContradiction
         &&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
@@ -6597,6 +6758,23 @@ try {
     || releaseCaptureCopyCtl.placement?.captureHeading === 'Gameplay' || !releaseCaptureCopyCtl.restored) {
     fails.push('GUIDE RELEASE CAPTURE CONTROL FAILED — missing, contradictory, or non-Gameplay capture truth stayed current: '
       + JSON.stringify(releaseCaptureCopyCtl));
+  }
+  const releaseMealCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+    .find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||''));
+    if(!row)return {missing:{complete:true,mealContract:true},contradictions:[],restored:false,error:'missing Feed release row'};
+    const prior=row.textContent;row.textContent=prior.replace('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora','meal authority removed');
+    const missing=${releaseDraftCheck};const contradictions=[];
+    for(const copy of ['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.']){
+      row.textContent=prior+' '+copy;contradictions.push({copy,result:${releaseDraftCheck}});}
+    row.textContent=prior;const restored=${releaseDraftCheck};return {missing,contradictions,
+      restored:restored.mealContract===true&&restored.honest===true};})()`);
+  if (releaseMealCopyCtl.missing?.complete || releaseMealCopyCtl.missing?.mealContract
+    || releaseMealCopyCtl.contradictions?.length !== 3
+    || releaseMealCopyCtl.contradictions.some(({ result }) => result?.complete
+      || result?.honest || result?.mealContract || !result?.mealContradiction)
+    || !releaseMealCopyCtl.restored) {
+    fails.push('GUIDE RELEASE FEED CONTROL FAILED — missing or contradictory exact-meal truth stayed current or failed to restore: '
+      + JSON.stringify(releaseMealCopyCtl));
   }
   const releaseHdSurfaceCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
     .find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||''));
@@ -6855,7 +7033,7 @@ try {
   const releaseOverclaimCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][1];
     if(!row)return {truthful:[],unavailable:[],restored:false,error:'missing overclaim control row'};const prior=row.textContent,
       truthfulClaims=['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.',
-        'Capture is now playable.','Exploration audio is now live.'],
+        'Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.','Exploration audio is now live.'],
       unavailableClaims=['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
         'Disconnected Fabricator outputs are now playable.','Fully-exceptional slotted craft is now playable.',
         'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Item upgrades are now live.',
@@ -6867,12 +7045,12 @@ try {
     for(const copy of truthfulClaims){row.textContent=prior+' '+copy;truthful.push({copy,result:${releaseDraftCheck}});}
     for(const copy of unavailableClaims){row.textContent=prior+' '+copy;unavailable.push({copy,result:${releaseDraftCheck}});}
     row.textContent=prior;const restored=${releaseDraftCheck};return {truthful,unavailable,restored}; })()`);
-  if (releaseOverclaimCtl.truthful?.length !== 4
+  if (releaseOverclaimCtl.truthful?.length !== 5
     || releaseOverclaimCtl.truthful.some((row) => !row.result?.complete || !row.result?.honest || row.result?.overclaim)
     || releaseOverclaimCtl.unavailable?.length !== 19
     || releaseOverclaimCtl.unavailable.some((row) => !row.result?.complete || row.result?.honest || !row.result?.overclaim)
     || !releaseOverclaimCtl.restored?.complete || !releaseOverclaimCtl.restored?.honest) {
-    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — live Mining/fixed crafting/Capture went red, an unavailable claim stayed green, or copy failed to restore: '
+    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — live Mining/fixed crafting/Capture/narrow Feed went red, an unavailable claim stayed green, or copy failed to restore: '
       + JSON.stringify(releaseOverclaimCtl));
   }
   const releaseAuthorityCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,prior=S.api.state;let result;
@@ -8277,6 +8455,8 @@ try {
       {id:'text-tone',field:'toneMode',mutate:(before)=>pref('tone',before),restore:(before)=>restorePref('tone',before)},
       {id:'font',field:'fontMode',mutate:(before)=>pref('font',before),restore:(before)=>restorePref('font',before)},
       {id:'star-charts',field:'chartsOn',mutate:()=>click('#setcharts'),restore:()=>click('#setcharts')},
+      {id:'visual-effects',field:'fxOn',mutate:()=>click('#setfx'),restore:()=>click('#setfx')},
+      {id:'screen-shake',field:'shakeOn',mutate:()=>click('#setshake'),restore:()=>click('#setshake')},
       {id:'motion',field:'motionMode',mutate:(before)=>pick('motion',before,[-1,0,1]),restore:(before)=>click('[data-motion="'+before+'"]')},
       {id:'panel-tint',field:'glassTint',mutate:(before)=>input('#setglass',before<0.9?94:86),restore:(before)=>input('#setglass',Math.round(before*100)),
         restoreExpected:(before)=>Math.min(0.98,Math.max(0.82,before))},
@@ -8305,6 +8485,8 @@ try {
       {id:'text-tone',field:'toneMode',act:(before)=>pref('tone',before)},
       {id:'font',field:'fontMode',act:(before)=>pref('font',before)},
       {id:'star-charts',field:'chartsOn',act:()=>click('#setcharts')},
+      {id:'visual-effects',field:'fxOn',act:()=>click('#setfx')},
+      {id:'screen-shake',field:'shakeOn',act:()=>click('#setshake')},
       {id:'motion',field:'motionMode',act:(before)=>{const next=[-1,0,1].find((value)=>value!==before);return click('[data-motion="'+next+'"]');}},
       {id:'panel-tint',field:'glassTint',act:(before)=>input('#setglass',before<0.9?94:86)},
     ];
@@ -8327,25 +8509,36 @@ try {
     fails.push('F4 READ-ONLY BOUNDARY: writable/read-only Settings polarity or Compendium inspection failed: '
       + JSON.stringify({ assessment: readOnlyAssessment, bundle: readOnlyBundle }));
   }
+  const exactSettingsRecord = (records, id, owner) => {
+    const matches = records.filter((record) => record.id === id);
+    if (matches.length !== 1) {
+      throw new Error(`${owner} requires one exact ${id} record, found ${matches.length}`);
+    }
+    return matches[0];
+  };
   const writableNoChange = structuredClone(writableSettings);
-  writableNoChange[0].mutated = writableNoChange[0].restoreExpected;
+  const writableNoChangeSound = exactSettingsRecord(writableNoChange, 'sound', 'writable no-change control');
+  writableNoChangeSound.mutated = writableNoChangeSound.restoreExpected;
   const writableNotPersisted = structuredClone(writableSettings);
-  writableNotPersisted[1].persisted = false;
+  exactSettingsRecord(writableNotPersisted, 'volume', 'writable persist control').persisted = false;
   const writableWrongRestore = structuredClone(writableSettings);
-  writableWrongRestore[8].restored = writableWrongRestore[8].before;
+  const writableWrongRestoreTint = exactSettingsRecord(writableWrongRestore, 'panel-tint', 'panel-tint restore control');
+  writableWrongRestoreTint.restored = writableWrongRestoreTint.before;
   const writableWrongLegacyTint = structuredClone(writableSettings);
-  writableWrongLegacyTint[8].before = writableWrongLegacyTint[8].restoreExpected;
+  const writableWrongLegacyTintRecord = exactSettingsRecord(writableWrongLegacyTint, 'panel-tint', 'panel-tint legacy domain control');
+  writableWrongLegacyTintRecord.before = writableWrongLegacyTintRecord.restoreExpected;
   const writableWrongTintDomain = structuredClone(writableSettings);
-  writableWrongTintDomain[8].restoreExpected = writableWrongTintDomain[8].before;
-  writableWrongTintDomain[8].restored = writableWrongTintDomain[8].before;
+  const writableWrongTintDomainRecord = exactSettingsRecord(writableWrongTintDomain, 'panel-tint', 'panel-tint target domain control');
+  writableWrongTintDomainRecord.restoreExpected = writableWrongTintDomainRecord.before;
+  writableWrongTintDomainRecord.restored = writableWrongTintDomainRecord.before;
   const writableMissingTarget = structuredClone(writableSettings);
-  writableMissingTarget[3].targetFound = false;
+  exactSettingsRecord(writableMissingTarget, 'text-size', 'writable target control').targetFound = false;
   const writableMissingRestore = structuredClone(writableSettings);
-  writableMissingRestore[4].restoreFound = false;
+  exactSettingsRecord(writableMissingRestore, 'text-tone', 'writable restore-target control').restoreFound = false;
   const readOnlyChanged = structuredClone(readOnlyAttempts);
-  readOnlyChanged[2].after = '__voice-mutated-read-only__';
+  exactSettingsRecord(readOnlyChanged, 'creature-voices', 'read-only mutation control').after = '__voice-mutated-read-only__';
   const readOnlyBadWitness = structuredClone(readOnlyAttempts);
-  readOnlyBadWitness[3].witness.action = 'click:wrong-control';
+  exactSettingsRecord(readOnlyBadWitness, 'text-size', 'read-only witness control').witness.action = 'click:wrong-control';
   const writableWrongRestoreControl = assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableWrongRestore });
   const writableWrongLegacyTintControl = assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableWrongLegacyTint });
   const writableWrongTintDomainControl = assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableWrongTintDomain });
@@ -8430,8 +8623,10 @@ try {
      visible desktop controls. The candidate is an exact thermal suit beside
      an equipped hazmat suit, so this proves conditional effect wording and
      every same-slot delta instead of accepting a synthetic score or a
-     base-level alias. One real Equip then has to land one coupled F4 receipt,
+     base-level alias. Native Equip, Unequip, confirmed Salvage and Pending
+     Claim each have to land one coupled F4 receipt while preserving RNG draws,
      both legacy mirrors and the Arc 2 carrier before surviving reload. */
+  const inventoryFindingCountBefore = fails.length;
   await waitForF4Writable('Arc 2 Inventory veteran authority');
   /* Seed one real immutable predecessor through the production F4 owner.
      The Inventory action must append its own receipt while preserving both
@@ -8456,22 +8651,34 @@ try {
       ? inventoryBeforeRaw.arc2.inventory.entries : [];
     const thermal = entries.filter((entry) => entry?.instance?.baseId === 'thermal');
     const hazmat = entries.filter((entry) => entry?.instance?.baseId === 'hazmat');
+    const pendingRig = inventoryBeforeRaw?.arc2?.kind === 'inventory'
+      ? inventoryBeforeRaw.arc2.inventory.pendingRewards
+        .filter(({ instance }) => instance?.baseId === 'rig1') : [];
     const equippedSuit = inventoryBeforeRaw?.arc2?.kind === 'inventory'
       ? inventoryBeforeRaw.arc2.inventory.equipped.find((binding) => binding.slot === 'suit') : null;
     return {
       selectedInstanceId: thermal.length === 1 ? thermal[0].instance.instanceId : null,
+      pendingInstanceId: pendingRig.length === 1 ? pendingRig[0].instance.instanceId : null,
       thermalCount: thermal.length,
       hazmatCount: hazmat.length,
+      pendingRigCount: pendingRig.length,
+      capacity: inventoryBeforeRaw?.arc2?.inventory?.capacity ?? null,
+      entryCount: entries.length,
       equippedSuit: equippedSuit?.instanceId ?? null,
       hazmatId: hazmat[0]?.instance?.instanceId ?? null,
     };
   })();
-  if (!inventoryFixture.selectedInstanceId || inventoryFixture.thermalCount !== 1
-    || inventoryFixture.hazmatCount !== 1 || inventoryFixture.equippedSuit !== inventoryFixture.hazmatId) {
-    fails.push('ARC 2 INVENTORY FIXTURE: current-v5 veteran did not expose one exact thermal candidate beside equipped hazmat: '
+  const inventoryFixtureGreen = !!inventoryFixture.selectedInstanceId
+    && inventoryFixture.thermalCount === 1
+    && !!inventoryFixture.pendingInstanceId && inventoryFixture.pendingRigCount === 1
+    && inventoryFixture.hazmatCount === 1 && inventoryFixture.equippedSuit === inventoryFixture.hazmatId
+    && inventoryFixture.capacity === 3 && inventoryFixture.entryCount === 3;
+  if (!inventoryFixtureGreen) {
+    fails.push('ARC 2 INVENTORY FIXTURE: portable-v5 veteran did not expose exact thermal/hazmat/pending-rig capacity truth: '
       + JSON.stringify({ inventoryFixture, raw: inventoryBeforeRaw }));
   } else {
     const inventoryInstanceId = inventoryFixture.selectedInstanceId;
+    const inventoryPendingInstanceId = inventoryFixture.pendingInstanceId;
     const captureInventoryRows = `(()=>[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')]
       .map((row)=>({instanceId:row.getAttribute('data-instance-id'),baseId:row.getAttribute('data-base-id'),
         pending:row.getAttribute('data-pending')==='true',equipped:row.getAttribute('data-equipped')==='true',
@@ -8498,12 +8705,17 @@ try {
         .map((row)=>[row.getAttribute('data-compare-axis'),Number(row.getAttribute('data-delta'))]):[]),
       status=article?.querySelector('[data-inventory-action-status]');return {
         sheetCount:document.querySelectorAll('#inventorysheet').length,open:!!sheet&&!sheet.hidden&&sheet.getAttribute('aria-hidden')==='false',
+        sheetHidden:sheet?.hidden??null,ariaHidden:sheet?.getAttribute('aria-hidden')??null,
+        bodyChildren:body?.childElementCount??-1,
         role:sheet?.getAttribute('role')||null,modal:sheet?.getAttribute('aria-modal')||null,busy:sheet?.getAttribute('aria-busy')||null,
         labelled:!!title&&sheet?.contains(title)===true,detailId:article?.getAttribute('data-inventory-detail')||null,
         focus:document.activeElement?.hasAttribute?.('data-inventory-sheet-close')?'sheet-close':document.activeElement?.id||null,
         panelInert:panel?.inert===true,diagnostics:S?.api?.inventoryDiagnostics?.()||null,
         pointer:window.__cfInventoryRowPointer||null,factsText:article?.textContent||'',facts,effects,comparison,axes,
         actions:article?[...article.querySelectorAll('[data-inventory-action]')].map((button)=>button.getAttribute('data-inventory-action')):[],
+        actionButtons:article?[...article.querySelectorAll('[data-inventory-action][data-instance-id]')].map((button)=>({
+          operation:button.getAttribute('data-inventory-action'),instanceId:button.getAttribute('data-instance-id'),
+          disabled:!!button.disabled,enabled:button.getAttribute('data-action-enabled')})):[],
         statusKind:status?.getAttribute('data-kind')||null};})()`;
     const armInventoryRowPointer = async () => evalIn(`(()=>{window.__cfInventoryRowPointerAbort?.abort();
       delete window.__cfInventoryRowPointer;const controller=new AbortController();window.__cfInventoryRowPointerAbort=controller;
@@ -8513,10 +8725,10 @@ try {
           trusted:event.isTrusted===true,tag:row.tagName||null,x:event.clientX,y:event.clientY};
         controller.abort();delete window.__cfInventoryRowPointerAbort;},
         {capture:true,signal:controller.signal});return true;})()`);
-    const inventoryRowPoint = async () => {
+    const inventoryRowPoint = async (instanceId = inventoryInstanceId) => {
       const observation = await evalIn(`(async()=>{const panel=document.getElementById('inventorypanel'),
         row=[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')]
-          .find((node)=>node.getAttribute('data-instance-id')===${JSON.stringify(inventoryInstanceId)}),
+          .find((node)=>node.getAttribute('data-instance-id')===${JSON.stringify(instanceId)}),
         sample=()=>{const r=row?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
           hit=r?document.elementFromPoint(x,y):null;return {x,y,width:r?.width??0,height:r?.height??0,
             scrollTop:panel?.scrollTop??null,hitOwned:!!row&&!!hit&&(hit===row||row.contains(hit)),
@@ -8529,7 +8741,7 @@ try {
           panelId:panel?.id||null,panelOwnsRow:!!row&&panel?.contains(row)===true,scrollRequested,before,after,
           clip:{left:clipRect?.left??null,top:clipRect?.top??null,right:clipRect?.right??null,bottom:clipRect?.bottom??null},
           viewport:{width:innerWidth,height:innerHeight}};})()`);
-      const assessment = assessInventoryRowReachability(observation, inventoryInstanceId);
+      const assessment = assessInventoryRowReachability(observation, instanceId);
       return {
         ok: assessment.ok,
         x: observation?.after?.x ?? 0,
@@ -8538,6 +8750,28 @@ try {
         assessment,
         observation,
       };
+    };
+    const inventoryActionButtonPoint = async (operation, instanceId, expectedDisabled = false) => evalIn(`(()=>{const button=[...document.querySelectorAll(
+      '#inventorysheet [data-inventory-action][data-instance-id]')]
+      .find((node)=>node.getAttribute('data-inventory-action')===${JSON.stringify(operation)}
+        &&node.getAttribute('data-instance-id')===${JSON.stringify(instanceId)}),
+      ignored=button?.scrollIntoView({block:'center',inline:'nearest'}),
+      r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
+      hit=r?document.elementFromPoint(x,y):null,disabled=button?.disabled??null;
+      return {ok:!!button&&disabled===${expectedDisabled === true}&&!!r&&r.width>0&&r.height>=44
+        &&!!hit&&(hit===button||button.contains(hit)),x,y,height:r?.height||0,disabled};})()`);
+    const armInventoryActionPresses = async () => evalIn(`(()=>{window.__cfInventoryActionAbort?.abort();
+      window.__cfInventoryActionPresses=[];const controller=new AbortController();window.__cfInventoryActionAbort=controller;
+      document.addEventListener('pointerdown',(event)=>{const target=event.target instanceof Element?event.target:null,
+        action=target?.closest('[data-inventory-action][data-instance-id]');if(!action)return;
+        window.__cfInventoryActionPresses.push({operation:action.getAttribute('data-inventory-action'),
+          instanceId:action.getAttribute('data-instance-id'),pointerType:event.pointerType||null,
+          trusted:event.isTrusted===true,tag:action.tagName||null,x:event.clientX,y:event.clientY});},
+        {capture:true,signal:controller.signal});return true;})()`);
+    const takeInventoryActionPresses = async () => {
+      const presses = await evalIn(`(()=>{window.__cfInventoryActionAbort?.abort();delete window.__cfInventoryActionAbort;
+        const rows=window.__cfInventoryActionPresses||[];delete window.__cfInventoryActionPresses;return rows;})()`);
+      return { pressCount: presses.length, presses };
     };
 
     const inventoryOpenerPoint = await evalIn(railButtonPoint('railinventory'));
@@ -8799,6 +9033,7 @@ try {
     let inventoryActionSettled = false;
     let inventoryActionGreen = false;
     let inventoryActionCloseGreen = false;
+    const inventoryOperationLedger = [];
     const inventoryActionPrefix = assessInventoryStagePrefix('action', {
       panelOpened: inventoryOpened,
       rowReachable: inventoryRowTarget?.ok === true,
@@ -8997,8 +9232,240 @@ try {
       if (inventoryActionControlPrefix.ok && inventoryActionCloseGreen) {
         inventoryCommittedState = actionAfterState;
         inventoryCommittedRaw = actionAfterRaw;
+        inventoryOperationLedger.push(Object.freeze({
+          operation: 'equip', instanceId: inventoryInstanceId,
+          receiptOrdinal: actionBeforeRaw.authority.sessionRng.ordinal,
+          inventoryRevision: actionAfterRaw.arc2.inventory.revision,
+        }));
       }
       }
+    }
+
+    /* The remaining Arc 2 mutations run through one operation-parametric
+       native-control owner. Each action is held before durability so the
+       harness can prove no optimistic carrier/live publication, then receives
+       one trusted disabled-button retry which must not create another owner,
+       revision, ordinal, receipt, or RNG draw. */
+    const closeCommittedInventoryDetail = async (instanceId, label) => {
+      const point = await evalIn(`(()=>{const button=document.querySelector('#inventorysheet [data-inventory-sheet-close]'),
+        r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
+        hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!!r&&r.width>=44&&r.height>=44
+          &&!!hit&&(hit===button||button.contains(hit)),x,y,width:r?.width||0,height:r?.height||0,
+          tag:button?.tagName||null,owner:button?.hasAttribute('data-inventory-sheet-close')?'inventory-sheet':null};})()`);
+      await armDesktopPointerReceipt();
+      if (point.ok) await clickDesktopPoint(point);
+      const pointer = await takeDesktopPointerReceipt();
+      const closedExpression = `(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
+        panel=document.getElementById('inventorypanel'),opener=document.getElementById('railinventory'),
+        diagnostics=S?.api?.inventoryDiagnostics?.();return {
+          sheetPresent:!!sheet,open:!!sheet&&!sheet.hidden,hidden:sheet?.hidden,ariaHidden:sheet?.getAttribute('aria-hidden')??null,
+          bodyChildren:sheet?.querySelector('[data-inventory-sheet-body]')?.childElementCount??-1,
+          focusInstanceId:document.activeElement?.getAttribute?.('data-instance-id')||null,
+          panelPresent:!!panel,panelDisplay:panel?.style.display??null,
+          panelAriaHidden:panel?.getAttribute('aria-hidden')??null,panelOpen:S?.api?.state?.().panelOpen??null,
+          openerPresent:!!opener,inventoryExpanded:opener?.getAttribute('aria-expanded')??null,
+          panelInert:panel?panel.inert===true:null,diagnostics};})()`;
+      let closed = await waitDesktopValue(label, closedExpression, 6000,
+        (candidate) => assessInventoryDetailClose({ point, pointer, closed: candidate }, instanceId).ok)
+        .catch(() => null);
+      if (!closed) closed = await evalIn(closedExpression);
+      const assessment = assessInventoryDetailClose({ point, pointer, closed }, instanceId);
+      return { point, pointer, closed, assessment };
+    };
+    if (inventoryCommittedRaw && inventoryCommittedState && inventoryActionCloseGreen) {
+      await armInventoryRowPointer();
+      const refusalRowPoint = await inventoryRowPoint(inventoryInstanceId);
+      if (!refusalRowPoint.ok) {
+        failSliceWithoutCascade('ARC 2 PRE-DURABLE REFUSAL: exact equipped row was not reachable', {
+          alreadyReported: false,
+        });
+      }
+      await clickDesktopPoint(refusalRowPoint);
+      const refusalOpened = await waitDesktopValue('Arc 2 pre-durable refusal detail', `(()=>{const S=window.__CF_SLICE__,
+        detail=document.querySelector('#inventorysheet [data-inventory-detail]');return !document.getElementById('inventorysheet')?.hidden
+          &&detail?.getAttribute('data-inventory-detail')===${JSON.stringify(inventoryInstanceId)}
+          &&S?.api?.inventoryDiagnostics?.().pendingWork===0;})()`).catch(() => false);
+      const refusalOpenedDetail = await evalIn(captureInventoryDetail);
+      const refusalRowActivation = assessInventoryRowActivation({
+        point: refusalRowPoint.observation?.after,
+        pointer: refusalOpenedDetail?.pointer,
+      }, inventoryInstanceId);
+      const refusalBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+      const refusalBeforeRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+      const refusalArmed = await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(true)`);
+      const refusalOperation = refusalOpenedDetail?.actions?.includes('unequip') ? 'unequip'
+        : refusalOpenedDetail?.actions?.includes('equip') ? 'equip' : null;
+      if (refusalOperation === null) {
+        failSliceWithoutCascade('ARC 2 PRE-DURABLE REFUSAL: exact detail exposed neither Equip nor Unequip', {
+          alreadyReported: false,
+        });
+      }
+      const refusalPoint = await inventoryActionButtonPoint(refusalOperation, inventoryInstanceId);
+      await armInventoryActionPresses();
+      if (refusalPoint.ok) await clickDesktopPoint(refusalPoint);
+      const refusalSettled = await waitDesktopValue('Arc 2 pre-durable authority refusal', `(()=>{const S=window.__CF_SLICE__,
+        d=S?.api?.inventoryDiagnostics?.();return d?.pendingWork===0&&d?.lastAction?.operation===${JSON.stringify(refusalOperation)}
+          &&d?.lastAction?.kind==='unavailable'?S.api.state():null;})()`).catch(() => null);
+      const refusalActivation = await takeInventoryActionPresses();
+      const refusalAfterState = refusalSettled ?? await evalIn(`window.__CF_SLICE__.api.state()`);
+      const refusalAfterRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+      const refusalDetail = await evalIn(captureInventoryDetail);
+      const refusalReleased = await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(false)`);
+      const refusalBundle = {
+        operation: refusalOperation, instanceId: inventoryInstanceId,
+        armed: refusalArmed, released: refusalReleased,
+        point: refusalPoint, activation: refusalActivation,
+        beforeState: refusalBeforeState, beforeRaw: refusalBeforeRaw,
+        afterState: refusalAfterState, afterRaw: refusalAfterRaw, detail: refusalDetail,
+      };
+      const refusalAssessment = assessArc2InventoryPreDurableRefusal(refusalBundle);
+      const refusalClose = await closeCommittedInventoryDetail(
+        inventoryInstanceId, 'Arc 2 pre-durable refusal detail Close',
+      );
+      if (!refusalOpened || !refusalRowActivation.ok || !refusalAssessment.ok || !refusalClose.assessment.ok) {
+        fails.push('ARC 2 PRE-DURABLE REFUSAL: native authority-refused inventory action mutated, retried, or retained ownership: '
+          + JSON.stringify({ refusalOpened, refusalRowActivation, refusalAssessment,
+            refusalBundle, refusalClose }));
+        failSliceWithoutCascade('ARC 2 PRE-DURABLE REFUSAL: red refusal evidence stopped dependent Inventory and mutable successor judgments', {
+          alreadyReported: true,
+        });
+      }
+    }
+    const runArc2InventoryOperation = async ({ operation, instanceId, expectedCargoDelta = {} }) => {
+      await waitForF4Writable(`Arc 2 ${operation} authority`);
+      await armInventoryRowPointer();
+      const rowPoint = await inventoryRowPoint(instanceId);
+      if (!rowPoint.ok) {
+        failSliceWithoutCascade(`ARC 2 ${operation.toUpperCase()}: exact native row was not reachable`, {
+          alreadyReported: false,
+        });
+      }
+      await clickDesktopPoint(rowPoint);
+      const opened = await waitDesktopValue(`Arc 2 ${operation} detail open`, `(()=>{const S=window.__CF_SLICE__,
+        detail=document.querySelector('#inventorysheet [data-inventory-detail]');return !document.getElementById('inventorysheet')?.hidden
+          &&detail?.getAttribute('data-inventory-detail')===${JSON.stringify(instanceId)}
+          &&S?.api?.inventoryDiagnostics?.().pendingWork===0;})()`).catch(() => false);
+      const openedDetail = await evalIn(captureInventoryDetail);
+      const rowActivation = assessInventoryRowActivation({
+        point: rowPoint.observation?.after,
+        pointer: openedDetail?.pointer,
+      }, instanceId);
+      if (!opened || !rowActivation.ok) {
+        failSliceWithoutCascade(`ARC 2 ${operation.toUpperCase()}: trusted native row activation did not open its exact detail`, {
+          alreadyReported: false,
+        });
+      }
+      const beforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+      const beforeRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+      const holdArmed = await evalIn(`window.__CF_SLICE__.api.__smokeArmProductActionHold()`);
+      const actionPoints = [];
+      await armInventoryActionPresses();
+      const firstPoint = await inventoryActionButtonPoint(operation, instanceId);
+      actionPoints.push(firstPoint);
+      if (firstPoint.ok) await clickDesktopPoint(firstPoint);
+      if (operation === 'salvage') {
+        const confirmation = await waitDesktopValue('Arc 2 Salvage native confirmation', `(()=>{const d=window.__CF_SLICE__.api.inventoryDiagnostics(),
+          button=document.querySelector('#inventorysheet [data-inventory-action="salvage"][data-instance-id=${JSON.stringify(instanceId)}]'),
+          status=document.querySelector('#inventorysheet [data-inventory-action-status]');return d?.pendingWork===0
+            &&button?.getAttribute('data-confirmation')==='required'&&status?.getAttribute('data-kind')==='confirmation-required';})()`)
+          .catch(() => false);
+        const confirmationPoint = await inventoryActionButtonPoint(operation, instanceId);
+        actionPoints.push(confirmationPoint);
+        if (!confirmation || !confirmationPoint.ok) {
+          failSliceWithoutCascade('ARC 2 SALVAGE: first trusted press did not produce the exact confirmation boundary', {
+            alreadyReported: false,
+          });
+        }
+        await clickDesktopPoint(confirmationPoint);
+      }
+      const held = await waitDesktopValue(`Arc 2 ${operation} pre-durable hold`, `(()=>{const s=window.__CF_SLICE__.api.state(),
+        d=window.__CF_SLICE__.api.inventoryDiagnostics(),c=s.engineering?.actionCoordinator;
+        return c?.inFlight===true&&c?.owner?.operation===${JSON.stringify(`arc2.${operation}`)}
+          &&c?.hold?.phase==='holding'&&d?.pendingWork===1?s:null;})()`).catch(() => null);
+      const activation = await takeInventoryActionPresses();
+      const heldState = held ?? await evalIn(`window.__CF_SLICE__.api.state()`);
+      const heldRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+      const heldDetail = await evalIn(captureInventoryDetail);
+      const retryPoint = await inventoryActionButtonPoint(operation, instanceId, true);
+      await armInventoryActionPresses();
+      const retryDispatch = retryPoint?.ok ? await clickDesktopPoint(retryPoint) : null;
+      await evalIn(`new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(resolve,0)))`);
+      const retryPresses = await takeInventoryActionPresses();
+      const retry = { ...retryPresses, dispatch: retryDispatch };
+      const retriedState = await evalIn(`window.__CF_SLICE__.api.state()`);
+      const retriedRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+      const retriedDetail = await evalIn(captureInventoryDetail);
+      const pendingBundle = {
+        operation, instanceId, point: actionPoints[0], points: actionPoints,
+        retryPoint, activation, retry, beforeState, beforeRaw,
+        heldState, heldRaw, heldDetail, retriedState, retriedRaw, retriedDetail,
+      };
+      const pendingAssessment = assessArc2InventoryPendingWindow(pendingBundle);
+      const released = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseProductActionHold()`);
+      const settled = await waitDesktopValue(`Arc 2 ${operation} durable settlement`, `(()=>{const s=window.__CF_SLICE__.api.state(),
+        d=window.__CF_SLICE__.api.inventoryDiagnostics(),c=s.engineering?.actionCoordinator;
+        return s.persistence?.runtime?.revision===${beforeRaw.revision + 1}
+          &&s.inventory?.revision===${beforeRaw.arc2.inventory.revision + 1}
+          &&d?.pendingWork===0&&d?.lastAction?.operation===${JSON.stringify(operation)}
+          &&d?.lastAction?.kind==='committed'&&c?.inFlight===false&&c?.owner?.busy===false?s:null;})()`)
+        .catch(() => null);
+      const afterState = settled ?? await evalIn(`window.__CF_SLICE__.api.state()`);
+      const afterRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+      const afterDetail = await evalIn(captureInventoryDetail);
+      const outcomeBundle = {
+        operation, instanceId, expectedCargoDelta,
+        beforeState, beforeRaw, afterState, afterRaw, afterDetail,
+      };
+      const outcomeAssessment = assessArc2InventoryOperationOutcome(outcomeBundle);
+      if (!holdArmed || !pendingAssessment.ok || released !== true || !settled || !outcomeAssessment.ok) {
+        fails.push(`ARC 2 ${operation.toUpperCase()}: native hold/retry/action did not settle one exact durable outcome: `
+          + JSON.stringify({ holdArmed, pendingAssessment, pendingBundle, released,
+            settled: !!settled, outcomeAssessment, outcomeBundle }));
+        failSliceWithoutCascade(`ARC 2 ${operation.toUpperCase()}: red operation evidence stopped dependent Inventory and mutable successor judgments`, {
+          alreadyReported: true,
+        });
+      }
+      const ledgerEntry = Object.freeze({
+        operation, instanceId,
+        receiptOrdinal: beforeRaw.authority.sessionRng.ordinal,
+        inventoryRevision: afterRaw.arc2.inventory.revision,
+      });
+      inventoryOperationLedger.push(ledgerEntry);
+      if (operation !== 'salvage') {
+        const close = await closeCommittedInventoryDetail(instanceId, `Arc 2 ${operation} detail Close`);
+        if (!close.assessment.ok) {
+          fails.push(`ARC 2 ${operation.toUpperCase()} CLOSE: native Close did not restore exact panel focus/ownership: `
+            + JSON.stringify(close));
+          failSliceWithoutCascade(`ARC 2 ${operation.toUpperCase()} CLOSE: red ownership stopped dependent Inventory and mutable successor judgments`, {
+            alreadyReported: true,
+          });
+        }
+      }
+      return { raw: afterRaw, state: afterState, ledgerEntry };
+    };
+    if (inventoryCommittedRaw && inventoryCommittedState && inventoryActionCloseGreen) {
+      const unequipped = await runArc2InventoryOperation({
+        operation: 'unequip', instanceId: inventoryInstanceId,
+      });
+      inventoryCommittedRaw = unequipped.raw;
+      inventoryCommittedState = unequipped.state;
+      const salvaged = await runArc2InventoryOperation({
+        operation: 'salvage', instanceId: inventoryInstanceId,
+        expectedCargoDelta: { S: 1, W: 1 },
+      });
+      inventoryCommittedRaw = salvaged.raw;
+      inventoryCommittedState = salvaged.state;
+      const claimed = await runArc2InventoryOperation({
+        operation: 'pending-claim', instanceId: inventoryPendingInstanceId,
+      });
+      inventoryCommittedRaw = claimed.raw;
+      inventoryCommittedState = claimed.state;
+    }
+    if (canonicalJson(inventoryOperationLedger.map(({ operation }) => operation))
+      !== canonicalJson(['equip', 'unequip', 'salvage', 'pending-claim'])) {
+      failSliceWithoutCascade('ARC 2 INVENTORY LEDGER: exact four-operation native sequence was incomplete or reordered', {
+        alreadyReported: false,
+      });
     }
 
     const inventoryReloadPrefix = assessInventoryStagePrefix('reload', {
@@ -9099,12 +9566,13 @@ try {
       const reloadBundle = {
         committed: inventoryCommittedRaw, reloaded: inventoryReloadRaw,
         committedState: inventoryCommittedState, reloadedState: inventoryReloadState,
-        surface: reloadSurface, instanceId: inventoryInstanceId,
+        surface: reloadSurface, instanceId: inventoryPendingInstanceId,
+        removedInstanceId: inventoryInstanceId, operations: inventoryOperationLedger,
         previousToken: inventoryCommittedToken, token: inventoryReloadToken,
       };
       const reloadAssessment = assessArc2InventoryReload(reloadBundle);
       if (!reloadAssessment.ok) {
-        fails.push('ARC 2 INVENTORY RELOAD/ATLAS: durable exact equip or travelable Atlas continuity disagreed after reload: '
+        fails.push('ARC 2 INVENTORY RELOAD/ATLAS: four-action ledger, final carrier, or travelable Atlas continuity disagreed after reload: '
           + JSON.stringify({ assessment: reloadAssessment, bundle: reloadBundle }));
         failSliceWithoutCascade('ARC 2 INVENTORY RELOAD/ATLAS: red durable reload state stopped mutable successor arcs',
           { alreadyReported: true });
@@ -9139,9 +9607,10 @@ try {
           reloadedState.persistence.runtime.sessionDraws = structuredClone(reloaded.authority.sessionRng.draws);
           return assessArc2InventoryReload({ ...reloadBundle, reloaded, reloadedState });
         };
-        const reloadEquipReceiptKey = `receipt:${inventoryCommittedRaw.authority.sessionRng.ordinal - 1}`;
+        const reloadOperationReceiptKeys = new Set(inventoryOperationLedger
+          .map(({ receiptOrdinal }) => `receipt:${receiptOrdinal}`));
         const reloadPredecessorReceiptIndex = inventoryReloadRaw.receiptKeys
-          .findIndex((key) => key !== reloadEquipReceiptKey);
+          .findIndex((key) => !reloadOperationReceiptKeys.has(key));
         const reloadControls = {
           receiptMissingKey: reloadRawControl((reloaded) => {
             reloaded.receiptKeys.splice(reloadPredecessorReceiptIndex, 1);
@@ -9166,6 +9635,11 @@ try {
           authorityDrawDrift: mutateReloadAuthority((sessionRng) => {
             sessionRng.draws['arc2-reload-control'] = 1;
           }),
+          operationOrder: assessArc2InventoryReload({
+            ...reloadBundle,
+            operations: [inventoryOperationLedger[1], inventoryOperationLedger[0],
+              ...inventoryOperationLedger.slice(2)],
+          }),
           atlasLoss: assessArc2InventoryReload({ ...reloadBundle, reloadedState: atlasLossState }),
           closePoint: reloadSurfaceControl((surface) => { surface.inventoryClose.point.ok = false; }),
           closeOwner: reloadSurfaceControl((surface) => { surface.inventoryClose.point.owner = 'atlas'; }),
@@ -9189,7 +9663,7 @@ try {
           closeRetainedOwner: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.diagnostics.retainedCount = 1; }),
           closePendingWork: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.diagnostics.pendingWork = 1; }),
           closeSelectedOwner: reloadSurfaceControl((surface) => {
-            surface.inventoryClose.settled.diagnostics.selectedInstanceId = inventoryInstanceId;
+            surface.inventoryClose.settled.diagnostics.selectedInstanceId = inventoryPendingInstanceId;
           }),
           atlasPreClickOk: reloadSurfaceControl((surface) => { surface.atlasPreClick.ok = false; }),
           atlasPreClickOwner: reloadSurfaceControl((surface) => { surface.atlasPreClick.targetId = 'inventorypanel'; }),
@@ -9213,13 +9687,13 @@ try {
         };
         const durableReloadControls = new Set([
           'receiptMissingKey', 'receiptKeyDrift', 'receiptByteDrift', 'receiptSemanticDrift',
-          'authoritySeedDrift', 'authorityOrdinalDrift', 'authorityDrawDrift',
+          'authoritySeedDrift', 'authorityOrdinalDrift', 'authorityDrawDrift', 'operationOrder',
         ]);
         const reloadControlDrift = Object.entries(reloadControls)
           .filter(([name, control]) => control.ok
             || canonicalJson(control.reasons) !== canonicalJson([
               durableReloadControls.has(name)
-                ? 'durable receipt/F4 authority reload'
+                ? 'durable Arc 2 operation ledger/F4 authority reload'
                 : 'Atlas travelable/one-panel continuity',
             ]));
         if (reloadControlDrift.length) {
@@ -9228,6 +9702,18 @@ try {
         }
       }
     }
+  }
+
+  const inventorySuccessorBoundary = assessArc2InventorySuccessorBoundary({
+    fixtureGreen: inventoryFixtureGreen,
+    findingCountBefore: inventoryFindingCountBefore,
+    findingCountAfter: fails.length,
+  });
+  if (inventorySuccessorBoundary.kind !== 'ready'
+    || inventorySuccessorBoundary.canEnterMutableArc3 !== true) {
+    failSliceWithoutCascade('ARC 2 INVENTORY TERMINAL BOUNDARY: red fixture or native outcome stopped mutable Arc 3 before its fixture import: '
+      + JSON.stringify(inventorySuccessorBoundary),
+    { alreadyReported: fails.length > inventoryFindingCountBefore });
   }
 
   /* ARC 3 ENGINEERING ACTIONS. Replace the inventory fixture with one exact
@@ -13790,8 +14276,11 @@ try {
   for (let expectedUsed = 3; expectedUsed <= ARC4_PERTAR_FIXTURE.biosphereYield; expectedUsed++) {
     arc4BurnUi = await waitDesktopValue(`Arc 4 burn-down UI ${expectedUsed - 1}`, `(()=>{const ui=${ARC4_CAPTURE_UI_EXPRESSION};
       return ui?.budget?.used===${expectedUsed - 1}&&ui?.diagnostics?.pendingWork===0?ui:null})()`, 10_000);
-    const readyRow = arc4BurnUi.rows.find((row) => row?.status === 'ready'
-      && row?.button?.modelEnabled === 'true');
+    const readyVerb = selectArc5FeedFixtureBurnVerb(
+      arc4BurnRaw?.captureState, arc4BurnUi.rows,
+    );
+    const readyRow = arc4BurnUi.rows.find((row) => row?.verb === readyVerb
+      && row?.status === 'ready' && row?.button?.modelEnabled === 'true');
     if (!readyRow || !['tame', 'scavenge', 'sample'].includes(readyRow.verb)) {
       arc4BurnComplete = false;
       fails.push(`ARC 4 WORKED OUT SETUP: no authoritative ready verb at used=${expectedUsed - 1}: `
@@ -14029,6 +14518,1247 @@ try {
     fails.push('ARC 4 WORKED OUT: verified verb-only burn-down did not reach exact used=16 authority: '
       + JSON.stringify({ complete: arc4BurnComplete, used: arc4ProgressUsed(arc4BurnRaw),
         ledger: arc4BurnLedger }));
+  }
+
+  /* ARC 5 FEED. Reuse the sealed Pertar expedition only after Arc 4 has
+     finished judging it. Its fixed seed leaves at least one exact unassigned
+     fauna companion and one exact flora lot. The player then opens the real
+     Compendium detail, chooses both native radios, confirms once, closes the
+     detail and panel while the durable action is held, and reloads the exact
+     successor. No diagnostic hook calls the Feed writer. */
+  const arc5FeedHash = (value) => createHash('sha256')
+    .update(canonicalJson(value)).digest('hex');
+  const arc5FeedRawPersistenceFingerprint = (raw) => arc5FeedHash({
+    revisionRaw: raw?.revisionRaw ?? null,
+    legacyRaw: raw?.legacyRaw ?? null,
+    playerRaw: raw?.playerRaw ?? null,
+    creaturesRaw: raw?.creaturesRaw ?? null,
+    catalogRaw: raw?.catalogRaw ?? null,
+    inventoryRaw: raw?.inventoryRaw ?? null,
+    settingsRaw: raw?.settingsRaw ?? null,
+    receiptKeys: raw?.receiptKeys ?? null,
+    receiptRawRows: raw?.receiptRawRows ?? null,
+  });
+  const ARC5_FEED_LEASE_READ_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
+    const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);
+      open.onerror=()=>reject(open.error)});try{const tx=db.transaction('meta','readonly'),
+      raw=await new Promise((resolve,reject)=>{const q=tx.objectStore('meta').get('f3:lease:active-play');
+        q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)}),
+      done=new Promise((resolve,reject)=>{tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);
+        tx.onabort=()=>reject(tx.error||new Error('Feed lease read aborted'))});await done;
+      let row=null;try{row=raw===undefined?null:JSON.parse(String(raw))}catch{}
+      return {raw:raw===undefined?null:String(raw),row};}finally{db.close()}})()`;
+  const arc5FeedCodecStableRecord = (value) => {
+    if (value === null || typeof value !== 'object' || Array.isArray(value)) return value;
+    return Object.fromEntries(Object.entries(value).map(([key, entry]) => (
+      [key, key === 'at' ? '__codec-now__' : entry]
+    )));
+  };
+  const arc5FeedFixture = (() => {
+    const source = arc4BurnRaw?.captureState;
+    const creature = source?.creatures?.find((row) => (
+      row?.assignment === null && Number.isSafeInteger(row?.fed ?? 0)
+        && (row?.fed ?? 0) < 200
+    ));
+    const catalogue = source?.catalogSpecies?.find(
+      (row) => row?.speciesId === creature?.speciesId,
+    );
+    const food = source?.specimenLots?.find((row) => (
+      row?.kind === 'flora' && Number.isSafeInteger(row?.quantity) && row.quantity > 0
+    ));
+    const sourceIndex = Array.isArray(arc4BurnRaw?.legacy?.codex)
+      ? arc4BurnRaw.legacy.codex.findIndex(
+        (row) => row?.g?.seed === catalogue?.genome?.seed,
+      ) : -1;
+    if (!creature || !catalogue || !food || sourceIndex < 0) return null;
+    const fedBefore = creature.fed ?? 0;
+    return Object.freeze({
+      logicalId: `s${catalogue.genome.seed}`,
+      sourceIndex,
+      creatureId: creature.creatureId,
+      foodLotId: food.lotId,
+      fedBefore,
+      fedAfter: fedBefore + 1,
+      foodQuantityBefore: food.quantity,
+      foodQuantityAfter: food.quantity - 1,
+    });
+  })();
+  const arc5FeedCarrierProjection = (raw, fixture) => {
+    const migration = projectArc5OwnershipMigrationEvidence(raw);
+    if (migration === null || !fixture) return null;
+    const target = migration.targetMirror;
+    const creature = target?.creatures?.find(
+      (row) => row?.creatureId === fixture.creatureId,
+    ) ?? null;
+    const food = target?.specimenLots?.find(
+      (row) => row?.lotId === fixture.foodLotId,
+    ) ?? null;
+    const tombstone = target?.specimenTombstones?.find(
+      (row) => row?.lotId === fixture.foodLotId,
+    ) ?? null;
+    const foodSnapshot = food ?? tombstone?.snapshot ?? null;
+    const normalizedCreatures = target?.creatures?.map((row) => (
+      row?.creatureId === fixture.creatureId ? { ...row, fed: '__feed-owned__' } : row
+    )) ?? null;
+    const targetRemainder = target === null ? null : {
+      ...target,
+      revision: '__feed-successor__',
+      creatures: normalizedCreatures,
+      specimenLots: target.specimenLots.filter((row) => row?.lotId !== fixture.foodLotId),
+      specimenTombstones: target.specimenTombstones.filter(
+        (row) => row?.lotId !== fixture.foodLotId,
+      ),
+    };
+    const carriers = ARC5_OWNERSHIP_EXTENSION_TARGETS.map(({ segment, namespace }) => {
+      const row = segment === 'player' ? raw?.playerRow : raw?.creaturesRow;
+      const carrier = row?.extensions?.[namespace] ?? null;
+      return { segment, namespace, version: carrier?.version ?? null, json: carrier?.json ?? null };
+    });
+    const unrelatedExtensions = (row) => Object.fromEntries(
+      Object.entries(row?.extensions ?? {}).filter(([namespace]) => (
+        namespace !== 'f4.authority' && !namespace.startsWith('arc5.ownership.')
+      )),
+    );
+    const addedReceiptKeys = raw?.receiptKeys ?? [];
+    return Object.freeze({
+      globalRevision: raw?.revision,
+      ownershipRevision: target?.revision,
+      sourceRevision: migration.source?.revision,
+      sourceDigest: migration.sourceDigest,
+      targetDigest: migration.targetDigest,
+      receiptCount: raw?.receiptKeys?.length ?? -1,
+      authorityVersion: raw?.authorityVersion ?? null,
+      authorityJson: raw?.authorityJson ?? null,
+      authority: raw?.authority ?? null,
+      codecAt: raw?.legacy?.at ?? null,
+      segmentCodecAt: raw?.playerRow?.data?.at ?? null,
+      sessionSeed: raw?.authority?.sessionRng?.seed,
+      sessionOrdinal: raw?.authority?.sessionRng?.ordinal,
+      sessionDraws: raw?.authority?.sessionRng?.draws ?? null,
+      sessionDrawsFingerprint: arc5FeedHash(raw?.authority?.sessionRng?.draws),
+      creatureFed: creature?.fed ?? 0,
+      foodQuantity: food?.quantity ?? 0,
+      lotTombstoned: tombstone !== null,
+      lotDisposition: tombstone?.disposition ?? null,
+      tombstoneSnapshotQuantity: tombstone?.snapshot?.quantity ?? null,
+      foodInvariantFingerprint: foodSnapshot === null ? null
+        : arc5FeedHash({ ...foodSnapshot, quantity: '__feed-owned__' }),
+      targetRemainderFingerprint: targetRemainder === null
+        ? null : arc5FeedHash(targetRemainder),
+      rawPersistenceFingerprint: arc5FeedRawPersistenceFingerprint(raw),
+      durableFingerprint: arc5FeedHash(carriers),
+      arc4Fingerprint: arc5FeedHash(raw?.captureState),
+      unrelatedFingerprint: arc5FeedHash({
+        legacyData: arc5FeedCodecStableRecord(raw?.legacy),
+        playerData: arc5FeedCodecStableRecord(raw?.playerRow?.data),
+        creaturesData: raw?.creaturesRow?.data,
+        catalogData: raw?.catalogRow?.data,
+        inventoryData: raw?.inventoryRow?.data,
+        settingsData: raw?.settingsRow?.data,
+        playerExtensions: unrelatedExtensions(raw?.playerRow),
+        creaturesExtensions: unrelatedExtensions(raw?.creaturesRow),
+        catalogExtensions: unrelatedExtensions(raw?.catalogRow),
+        inventoryExtensions: unrelatedExtensions(raw?.inventoryRow),
+        settingsExtensions: unrelatedExtensions(raw?.settingsRow),
+      }),
+      fixedCarrierCount: carriers.filter((carrier) => (
+        carrier.version === 2 && typeof carrier.json === 'string'
+      )).length,
+      receiptKeys: addedReceiptKeys,
+      receiptRawRows: raw?.receiptRawRows ?? null,
+      receiptRows: raw?.receiptRows ?? null,
+    });
+  };
+  const ARC5_FEED_UI_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+    diagnostics=S?.api?.compendiumDiagnostics?.(),panel=document.getElementById('codexpanel'),
+    text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),
+    radios=[...panel?.querySelectorAll('input[type="radio"][data-arc5-feed-choice]')??[]],
+    confirm=panel?.querySelector('[data-arc5-feed-confirm]'),back=document.getElementById('codexback'),
+    close=panel?.querySelector('[data-pnx]'),status=panel?.querySelector('[data-arc5-feed-status]');return {
+      panelOpen:state?.panelOpen??null,panelMode:diagnostics?.panel?.mode??null,
+      logicalId:diagnostics?.surfaces?.detail?.logicalId??null,
+      controller:state?.ownershipV2?.feed?.controller??null,
+      actionCoordinator:state?.ownershipV2?.feed?.actionCoordinator??null,
+      lastOutcome:state?.ownershipV2?.feed?.lastOutcome??null,
+      result:state?.ownershipV2?.feed?.lastResult??null,
+      statusKind:status?.getAttribute('data-kind')??null,statusText:text(status),
+      summary:text(panel?.querySelector('.compendium-feed-summary')),
+      confirmDisabled:confirm?.disabled??null,confirmPresent:!!confirm,
+      radioCount:radios.length,allRadiosDisabled:radios.length>0&&radios.every((radio)=>radio.disabled),
+      selectedCreatureId:radios.find((radio)=>radio.checked&&radio.dataset.arc5FeedChoice==='creature')?.dataset.arc5FeedCreatureId??null,
+      selectedFoodLotId:radios.find((radio)=>radio.checked&&radio.dataset.arc5FeedChoice==='flora')?.dataset.arc5FeedFoodLotId??null,
+      backEnabled:!!back&&!back.disabled,closeEnabled:!!close&&!close.disabled,
+      toastSerial:state?.toastSerial??null,toastText:state?.toastText??'',
+      feedState:panel?.querySelector('[data-arc5-feed-state]')?.getAttribute('data-arc5-feed-state')??null,
+    }})()`;
+  const desktopArc5FeedDriver = Object.freeze({
+    evaluate: evalIn,
+    wait: waitDesktopValue,
+    clickPoint: clickDesktopPoint,
+  });
+  const createArc5FeedTargetDriver = (targetSession) => {
+    const evaluate = async (expression) => {
+      const result = await send('Runtime.evaluate', {
+        expression, returnByValue: true, awaitPromise: true,
+      }, targetSession);
+      if (result.exceptionDetails) {
+        throw new Error('Arc 5 Feed target eval threw: '
+          + JSON.stringify(result.exceptionDetails.exception?.description
+            || result.exceptionDetails.text));
+      }
+      return result.result.value;
+    };
+    const wait = async (label, expression, timeoutMs = 6_000, accept = (value) => !!value) => {
+      const deadline = Date.now() + timeoutMs;
+      let last = null;
+      while (Date.now() < deadline) {
+        last = await evaluate(expression);
+        if (accept(last)) return last;
+        await sleep(50);
+      }
+      throw new Error(`${label} did not reach its browser outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+    };
+    const clickPoint = async (point) => {
+      if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) {
+        throw new Error('Arc 5 Feed target pointer point is not finite: '
+          + JSON.stringify(point));
+      }
+      await send('Input.dispatchMouseEvent', {
+        type: 'mousePressed', x: point.x, y: point.y,
+        button: 'left', clickCount: 1,
+      }, targetSession);
+      await send('Input.dispatchMouseEvent', {
+        type: 'mouseReleased', x: point.x, y: point.y,
+        button: 'left', clickCount: 1,
+      }, targetSession);
+      await sleep(80);
+      return Object.freeze({
+        kind: 'cdp-mouse', x: point.x, y: point.y,
+        button: 'left', clickCount: 1,
+      });
+    };
+    return Object.freeze({ evaluate, wait, clickPoint });
+  };
+  const arc5FeedClick = async (
+    selector, label, driver = desktopArc5FeedDriver,
+  ) => {
+    const point = await driver.wait(label, `(()=>{const selector=${JSON.stringify(selector)},
+      matches=[...document.querySelectorAll(selector)],node=matches[0];
+      node?.scrollIntoView({block:'center',inline:'nearest'});const r=node?.getBoundingClientRect(),
+      x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null;
+      return !!node&&!node.disabled&&r&&r.width>0&&r.height>0&&hit&&(hit===node||node.contains(hit))
+        ?{ok:true,selectorCount:matches.length,x,y,width:r.width,height:r.height,
+          tag:node.tagName,disabled:node.disabled===true,visible:true,hitOwner:true}:null})()`);
+    const dispatch = await driver.clickPoint(point);
+    return Object.freeze({ point, dispatch });
+  };
+  const arc5FeedOpenDetail = async (
+    fixture, label, driver = desktopArc5FeedDriver,
+  ) => {
+    const state = await driver.evaluate('window.__CF_SLICE__.api.state()');
+    if (state.panelOpen !== 'codex') {
+      await arc5FeedClick('#railcodex', `${label} Compendium opener`, driver);
+    } else {
+      const diagnostics = await driver.evaluate(
+        'window.__CF_SLICE__.api.compendiumDiagnostics()',
+      );
+      if (diagnostics?.panel?.mode === 'detail') {
+        await arc5FeedClick('#codexback', `${label} Compendium Back`, driver);
+      }
+    }
+    await driver.wait(`${label} Compendium list`, `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
+      return d.panel.open&&d.panel.mode==='list'?d:null})()`);
+    await driver.evaluate(`(()=>{const search=document.getElementById('searchbox');if(search){search.value='';
+      search.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',code:'Enter',bubbles:true,cancelable:true}));}
+      return true})()`);
+    const rowSelector = `#codexpanel [data-ci="${fixture.sourceIndex}"][data-cid="${fixture.logicalId}"]`;
+    const revealed = await driver.evaluate(`(async()=>{const selector=${JSON.stringify(rowSelector)},
+      scroller=document.querySelector('#codexpanel [data-sel="codex-scroll"]');
+      if(!scroller)return {found:false,reason:'missing-scroller'};
+      const settle=()=>new Promise((resolve)=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+      const max=()=>Math.max(0,scroller.scrollHeight-scroller.clientHeight);
+      const visit=async(top)=>{scroller.scrollTop=Math.max(0,Math.min(max(),top));
+        scroller.dispatchEvent(new Event('scroll',{bubbles:true}));await settle();
+        return !!document.querySelector(selector)};
+      /* Start from the logical row's ratio through the live extent, then scan
+         in viewport steps. The scan repeatedly re-reads scrollHeight because
+         variable-row measurements can expand the extent while it is moving. */
+      const count=Number(document.querySelector('#codexpanel [data-sel="codex-count"]')?.textContent),
+        estimate=Number.isSafeInteger(count)&&count>1
+          ?max()*Math.min(1,Math.max(0,${fixture.sourceIndex}/(count-1))):0;
+      if(await visit(estimate))return {found:true,route:'estimate',scrollTop:scroller.scrollTop};
+      const step=Math.max(44,scroller.clientHeight*0.75);let top=0,lastMax=-1,stableTail=0;
+      for(let visits=0;visits<256;visits++){
+        if(await visit(top))return {found:true,route:'scan',scrollTop:scroller.scrollTop,visits:visits+1};
+        const liveMax=max();
+        if(top>=liveMax-0.5){
+          stableTail=liveMax<=lastMax+0.5?stableTail+1:0;lastMax=liveMax;top=liveMax;
+          if(stableTail>=2)break;
+        }else{lastMax=liveMax;stableTail=0;top=Math.min(liveMax,top+step)}
+      }
+      const tail=max();
+      if(await visit(tail))return {found:true,route:'tail',scrollTop:scroller.scrollTop};
+      return {found:false,reason:'row-not-mounted',scrollTop:scroller.scrollTop,
+        scrollHeight:scroller.scrollHeight,clientHeight:scroller.clientHeight}})()`);
+    if (!revealed?.found) {
+      failSliceWithoutCascade(`${label} exact fauna row did not enter the live variable-height Compendium window: ${JSON.stringify(revealed)}`);
+    }
+    await arc5FeedClick(rowSelector, `${label} exact fauna row`, driver);
+    return driver.wait(`${label} Feed detail`, `(()=>{const ui=${ARC5_FEED_UI_EXPRESSION};
+      return ui.panelOpen==='codex'&&ui.panelMode==='detail'&&ui.logicalId===${JSON.stringify(fixture.logicalId)}
+        &&ui.controller?.attachedMountCount===1?ui:null})()`);
+  };
+  const arc5FeedChoiceSelector = (kind, id) => kind === 'creature'
+    ? `#codexpanel label[data-arc5-feed-creature-label="${id}"]`
+    : `#codexpanel label[data-arc5-feed-flora-label="${id}"]`;
+  const arc5FeedRenderedValues = async (
+    fixture, driver = desktopArc5FeedDriver,
+  ) => driver.evaluate(`(()=>{const panel=document.getElementById('codexpanel'),
+    creature=panel?.querySelector(${JSON.stringify(arc5FeedChoiceSelector('creature', fixture.creatureId))}),
+    food=panel?.querySelector(${JSON.stringify(arc5FeedChoiceSelector('flora', fixture.foodLotId))}),
+    number=(text,pattern)=>{const match=String(text||'').match(pattern);return match?Number(match[1]):null},
+    creatureText=(creature?.textContent||'').replace(/\\s+/g,' ').trim(),
+    foodText=(food?.textContent||'').replace(/\\s+/g,' ').trim(),ui=${ARC5_FEED_UI_EXPRESSION};return {
+      logicalId:ui.logicalId,creatureId:${JSON.stringify(fixture.creatureId)},
+      fed:number(creatureText,/Meals (\\d+)/),foodLotId:${JSON.stringify(fixture.foodLotId)},
+      foodQuantity:food?number(foodText,/Quantity (\\d+)/):0,pendingWork:ui.controller?.pendingWork??null,
+      creatureText,foodText,feedState:ui.feedState};})()`);
+
+  if (arc5FeedFixture === null) {
+    failSliceWithoutCascade(
+      'ARC 5 FEED FIXTURE: sealed Pertar burn did not retain one eligible exact fauna companion and flora lot',
+    );
+  } else {
+    const audioArm = await evalIn(`(()=>{const Context=globalThis.AudioContext||globalThis.webkitAudioContext,
+      proto=Context?.prototype;if(!proto||typeof proto.createOscillator!=='function')return false;
+      if(window.__cfFeedAudioOriginal)return false;const original=proto.createOscillator;
+      window.__cfFeedAudioOriginal=original;window.__cfFeedAudioCreates=0;window.__cfFeedAudioStarts=[];
+      proto.createOscillator=function(){const oscillator=Reflect.apply(original,this,arguments),
+        originalConnect=oscillator.connect,originalStart=oscillator.start;let sourceConnected=false;
+        window.__cfFeedAudioCreates+=1;
+        oscillator.connect=function(){const result=Reflect.apply(originalConnect,this,arguments);
+          sourceConnected=true;return result};
+        oscillator.start=function(){const result=Reflect.apply(originalStart,this,arguments),
+          S=window.__CF_SLICE__,state=S?.api?.state?.();
+          window.__cfFeedAudioStarts.push({startReturned:true,sourceConnected,
+            contextState:oscillator.context?.state??null,
+            pendingWork:state?.ownershipV2?.feed?.controller?.pendingWork??null,
+            lastOutcome:state?.ownershipV2?.feed?.lastOutcome??null,
+            toastSerial:state?.toastSerial??null});return result};
+        return oscillator};return true})()`);
+    if (!(await evalIn('window.__CF_SLICE__.api.state().sndOn'))) {
+      await arc5FeedClick('#docksets', 'Arc 5 Feed Sound settings opener');
+      await waitDesktopValue('Arc 5 Feed Sound settings', `window.__CF_SLICE__.api.state().panelOpen==='set'`);
+      await arc5FeedClick('#setsnd', 'Arc 5 Feed Sound On');
+      await waitDesktopValue('Arc 5 Feed Sound enabled', `window.__CF_SLICE__.api.state().sndOn===true`);
+      await arc5FeedClick('#setpanel [data-pnx]', 'Arc 5 Feed Settings Close');
+      await waitDesktopValue('Arc 5 Feed Settings closed', `window.__CF_SLICE__.api.state().panelOpen===null`);
+    }
+    await waitForF4Writable('Arc 5 Feed pre-action writable authority');
+    if (await evalIn('window.__CF_SLICE__.api.state().cardOpen')) {
+      await arc5FeedClick('#docksurvey', 'Arc 5 Feed retained Survey close');
+      await waitDesktopValue('Arc 5 Feed retained Survey closed', `!window.__CF_SLICE__.api.state().cardOpen`);
+    }
+    const feedDocumentToken = await sliceToken(sess);
+    const feedHeartbeatQuiesced = await evalIn(
+      `window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()`,
+    );
+    const audioBaseline = await evalIn(`({creates:window.__cfFeedAudioCreates??null,
+      starts:window.__cfFeedAudioStarts||[]})`);
+    if (audioBaseline.creates !== 0 || audioBaseline.starts.length !== 0) {
+      failSliceWithoutCascade('ARC 5 FEED AUDIO BASELINE: an unrelated action produced the acknowledgement before Feed settlement: '
+        + JSON.stringify(audioBaseline));
+    }
+
+    const initialFeedUi = await arc5FeedOpenDetail(arc5FeedFixture, 'Arc 5 Feed');
+    await arc5FeedClick(
+      arc5FeedChoiceSelector('creature', arc5FeedFixture.creatureId),
+      'Arc 5 exact companion choice',
+    );
+    await arc5FeedClick(
+      arc5FeedChoiceSelector('flora', arc5FeedFixture.foodLotId),
+      'Arc 5 exact flora choice',
+    );
+    const selectedUi = await waitDesktopValue('Arc 5 exact Feed preview', `(()=>{const ui=${ARC5_FEED_UI_EXPRESSION};
+      return ui.selectedCreatureId===${JSON.stringify(arc5FeedFixture.creatureId)}
+        &&ui.selectedFoodLotId===${JSON.stringify(arc5FeedFixture.foodLotId)}
+        &&ui.summary.includes(${JSON.stringify(`Meals ${arc5FeedFixture.fedBefore} → ${arc5FeedFixture.fedAfter}`)})
+        &&ui.summary.includes(${JSON.stringify(`Quantity ${arc5FeedFixture.foodQuantityBefore} → ${arc5FeedFixture.foodQuantityAfter}`)})
+        &&ui.confirmDisabled===false?ui:null})()`);
+    const beforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    const beforeProjection = arc5FeedCarrierProjection(beforeRaw, arc5FeedFixture);
+    const beforeState = await evalIn('window.__CF_SLICE__.api.state()');
+    const toastSerialBefore = beforeState.toastSerial;
+    const traceArmed = await evalIn(`(()=>{window.__cfFeedTraceAbort?.abort();window.__cfFeedClicks=[];
+      const S=window.__CF_SLICE__,controller=new AbortController();window.__cfFeedTraceAbort=controller;
+      document.addEventListener('click',(event)=>{const target=event.target instanceof Element?event.target:null,
+        control=target?.closest('[data-arc5-feed-confirm],#codexback,#codexpanel [data-pnx]');if(!control)return;
+        const creature=document.querySelector('input[data-arc5-feed-choice="creature"]:checked'),
+          food=document.querySelector('input[data-arc5-feed-choice="flora"]:checked');
+        window.__cfFeedClicks.push({kind:control.hasAttribute('data-arc5-feed-confirm')?'confirm':control.id==='codexback'?'back':'close',
+          trusted:event.isTrusted===true,pointerType:event.pointerType??null,tag:control.tagName,targetId:control.id||null,
+          documentToken:S?.documentToken??null,
+          panelOwner:control.getAttribute('data-pnx'),creatureId:creature?.getAttribute('data-arc5-feed-creature-id')??null,
+          foodLotId:food?.getAttribute('data-arc5-feed-food-lot-id')??null});},
+        {capture:true,signal:controller.signal});return true})()`);
+    const holdArmed = await evalIn('window.__CF_SLICE__.api.__smokeArmProductActionHold()');
+    const loserFeedActivation = await arc5FeedClick(
+      '#codexpanel [data-arc5-feed-confirm]', 'Arc 5 Feed confirm',
+    );
+    const heldUi = await waitDesktopValue('Arc 5 Feed pending lock', `(()=>{const ui=${ARC5_FEED_UI_EXPRESSION};
+      return ui.controller?.pendingWork===1&&ui.actionCoordinator?.hold?.phase==='holding'?ui:null})()`);
+    const heldRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    const heldProjection = arc5FeedCarrierProjection(heldRaw, arc5FeedFixture);
+    const competing = await evalIn(`window.__CF_SLICE__.api.__smokeCaptureCurrentSurface('tame')`);
+    const retryPoint = await evalIn(`(()=>{const matches=[...document.querySelectorAll('#codexpanel [data-arc5-feed-confirm]')],
+      node=matches[0],r=node?.getBoundingClientRect(),style=node?getComputedStyle(node):null,
+      x=r?(r.left+r.right)/2:NaN,y=r?(r.top+r.bottom)/2:NaN,
+      hit=r?document.elementFromPoint(x,y):null,hitOwner=!!hit&&!!node&&(hit===node||node.contains(hit));
+      return {ok:matches.length===1&&node?.tagName==='BUTTON'&&node.disabled===true&&!!r
+        &&r.width>0&&r.height>=44&&style?.display!=='none'&&style?.visibility!=='hidden'&&hitOwner,
+        selectorCount:matches.length,tag:node?.tagName??null,disabled:node?.disabled??null,
+        visible:!!r&&r.width>0&&r.height>=44&&style?.display!=='none'&&style?.visibility!=='hidden',
+        hitOwner,x:Number.isFinite(x)?x:null,y:Number.isFinite(y)?y:null,
+        width:r?.width??0,height:r?.height??0}})()`);
+    const retryDispatch = retryPoint?.ok ? await clickDesktopPoint(retryPoint) : null;
+    await evalIn('new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(resolve,0)))');
+    const retryUi = await evalIn(ARC5_FEED_UI_EXPRESSION);
+    const retryRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    const retryProjection = arc5FeedCarrierProjection(retryRaw, arc5FeedFixture);
+    await arc5FeedClick('#codexback', 'Arc 5 pending Back');
+    const backState = await waitDesktopValue('Arc 5 pending Back list', `(()=>{const S=window.__CF_SLICE__,
+      d=S.api.compendiumDiagnostics(),s=S.api.state();return d.panel.mode==='list'
+        ?{panelMode:d.panel.mode,pendingWork:s.ownershipV2.feed.controller.pendingWork,
+          ownerBusy:s.ownershipV2.feed.actionCoordinator.owner.busy}:null})()`);
+    await arc5FeedClick('#codexpanel [data-pnx]', 'Arc 5 pending Compendium Close');
+    const closeState = await waitDesktopValue('Arc 5 pending Close', `(()=>{const s=window.__CF_SLICE__.api.state(),
+      c=s.ownershipV2.feed.controller,a=s.ownershipV2.feed.actionCoordinator;
+      return s.panelOpen===null?{panelOpen:s.panelOpen,attachedMountCount:c.attachedMountCount,
+        pendingWork:c.pendingWork,ownerBusy:a.owner.busy}:null})()`);
+    const trace = await evalIn(`(()=>{const rows=window.__cfFeedClicks||[];return rows})()`);
+    const confirmPresses = trace.filter((row) => row.kind === 'confirm');
+    const backPress = trace.find((row) => row.kind === 'back') ?? {};
+    const closePress = trace.find((row) => row.kind === 'close') ?? {};
+    const pendingBundle = {
+      fixture: arc5FeedFixture,
+      documentToken: feedDocumentToken,
+      heartbeat: feedHeartbeatQuiesced,
+      activation: { pressCount: confirmPresses.length, presses: confirmPresses },
+      before: {
+        ...beforeProjection,
+        feedResult: canonicalJson(beforeState.ownershipV2.feed.lastResult),
+      },
+      held: {
+        ...heldProjection,
+        feedResult: canonicalJson(heldUi.result),
+        controller: heldUi.controller, actionCoordinator: heldUi.actionCoordinator,
+        ui: heldUi,
+      },
+      retry: {
+        ...retryProjection,
+        feedResult: canonicalJson(retryUi.result),
+        controller: retryUi.controller, actionCoordinator: retryUi.actionCoordinator,
+        ui: retryUi, confirmClickCount: confirmPresses.length,
+        point: retryPoint, dispatch: retryDispatch,
+        requestStable: canonicalJson(heldUi.controller?.lastRequest)
+          === canonicalJson(retryUi.controller?.lastRequest),
+      },
+      competing,
+      lifecycle: {
+        back: { ...backPress, ...backState },
+        close: { ...closePress, ...closeState },
+      },
+    };
+    const pendingAssessment = assessCompendiumFeedPendingWindow(pendingBundle);
+    const heldRawMetadataMutant = structuredClone(heldRaw);
+    heldRawMetadataMutant.playerRaw = `${heldRawMetadataMutant.playerRaw}\n`;
+    const pendingControls = [
+      [
+        'one exact trusted Feed confirmation',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          activation: { ...pendingBundle.activation, pressCount: 2 },
+        }),
+      ],
+      [
+        'held no optimistic publication',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          held: { ...pendingBundle.held, durableFingerprint: 'f'.repeat(64) },
+        }),
+      ],
+      [
+        'held full raw persistence fixed point',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          held: { ...pendingBundle.held,
+            rawPersistenceFingerprint: arc5FeedRawPersistenceFingerprint(heldRawMetadataMutant) },
+        }),
+      ],
+      [
+        'held revision fixed point',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          held: { ...pendingBundle.held, globalRevision: pendingBundle.held.globalRevision + 1 },
+        }),
+      ],
+      [
+        'held receipt ledger fixed point',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          held: { ...pendingBundle.held,
+            receiptRawRows: pendingBundle.held.receiptRawRows.map((raw, index) => (
+              index === 0 ? `${raw}\n` : raw
+            )) },
+        }),
+      ],
+      [
+        'held F4 authority fixed point',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          held: { ...pendingBundle.held, authorityJson: `${pendingBundle.held.authorityJson}\n` },
+        }),
+      ],
+      [
+        'held unrelated durable fixed point',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          held: { ...pendingBundle.held, unrelatedFingerprint: 'f'.repeat(64) },
+        }),
+      ],
+      [
+        'single pending owner and disabled Feed controls',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          held: { ...pendingBundle.held, ui: { ...pendingBundle.held.ui, confirmDisabled: false } },
+        }),
+      ],
+      [
+        'exact native disabled retry dispatch',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          retry: { ...pendingBundle.retry,
+            point: { ...pendingBundle.retry.point, hitOwner: false } },
+        }),
+      ],
+      [
+        'heartbeat-quiesced Feed snapshot window',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          heartbeat: { ...pendingBundle.heartbeat, stopped: false },
+        }),
+      ],
+      [
+        'global mutation fence',
+        assessCompendiumFeedPendingWindow({ ...pendingBundle, competing: null }),
+      ],
+      [
+        'global mutation fence',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          competing: { ...pendingBundle.competing, detail: 'worked-out' },
+        }),
+      ],
+      [
+        'pending Back remains usable',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          lifecycle: { ...pendingBundle.lifecycle, back: { ...pendingBundle.lifecycle.back, trusted: false } },
+        }),
+      ],
+      [
+        'pending Close remains usable',
+        assessCompendiumFeedPendingWindow({
+          ...pendingBundle,
+          lifecycle: { ...pendingBundle.lifecycle, close: { ...pendingBundle.lifecycle.close, panelOpen: 'codex' } },
+        }),
+      ],
+    ];
+    const pendingControlsIsolated = pendingControls.every(([reason, result]) => (
+      result.ok === false && canonicalJson(result.reasons) === canonicalJson([reason])
+    ));
+    if (!audioArm || !traceArmed || !holdArmed || !initialFeedUi
+      || !selectedUi || !pendingAssessment.ok || !pendingControlsIsolated) {
+      failSliceWithoutCascade('ARC 5 FEED PENDING: exact native Compendium action did not hold without optimism/retry while Back, Close, and the global mutation fence remained usable: '
+        + JSON.stringify({ audioArm, traceArmed, holdArmed, fixture: arc5FeedFixture,
+          initialFeedUi, selectedUi, assessment: pendingAssessment,
+          controls: pendingControls, controlsIsolated: pendingControlsIsolated,
+          bundle: pendingBundle }));
+    }
+
+    /* A genuinely separate same-origin document now wins the exact action
+       while this first document retains its pre-durable parent behind the
+       diagnostic hold. The loser then submits through the real repository
+       and must receive transaction:stale; no revision writer or stale fault
+       hook participates in this proof. */
+    const loserTargetId = t.targetId;
+    const loserOrigin = new URL(URL0).origin;
+    const loserLeaseBaseline = await evalIn(ARC5_FEED_LEASE_READ_EXPRESSION);
+    const winnerTarget = await send('Target.createTarget', {
+      url: 'about:blank', newWindow: true, background: false,
+      width: 1280, height: 800,
+    });
+    const winnerAttached = await send('Target.attachToTarget', {
+      targetId: winnerTarget.targetId, flatten: true,
+    });
+    const winnerSession = winnerAttached.sessionId;
+    let winnerTargetClosed = false;
+    let loserHoldReleased = false;
+    let released = false;
+    let settledState = null;
+    let afterRaw = null;
+    let afterProjection = null;
+    let receipt = null;
+    let audioEvidence = null;
+    let audioGraphEvidence = null;
+    let settledUi = null;
+    let reopened = null;
+    let winnerHeartbeatQuiesced = null;
+    let winnerToastSerialBefore = null;
+    let feedHeartbeatResumed = null;
+    let reloadRaw = null;
+    let reloadProjection = null;
+    let reloadRendered = null;
+    let reloadState = null;
+    let twoDocumentEvidence = null;
+    try {
+      await send('Runtime.enable', {}, winnerSession);
+      await send('Page.enable', {}, winnerSession);
+      const winnerWebAudioEnableMark = events.length;
+      await send('WebAudio.enable', {}, winnerSession);
+      await send('Runtime.addBinding', { name: '__cfF4StartHidden' }, winnerSession);
+      await send('Emulation.setDeviceMetricsOverride', {
+        width: 1280, height: 800, deviceScaleFactor: 1, mobile: false,
+      }, winnerSession);
+      await send('Page.navigate', { url: URL0 }, winnerSession);
+      const winnerInitialToken = await waitForSlice(
+        winnerSession, 'Arc 5 Feed same-origin contender boot',
+      );
+      await send('Target.activateTarget', { targetId: winnerTarget.targetId });
+      await send('Emulation.setFocusEmulationEnabled', {
+        enabled: true,
+      }, winnerSession);
+      await send('Page.bringToFront', {}, winnerSession);
+      const winnerDriver = createArc5FeedTargetDriver(winnerSession);
+      const winnerOrigin = await winnerDriver.evaluate('location.origin');
+      const winnerVisibility = await winnerDriver.evaluate('document.visibilityState');
+      const winnerBeforeRaw = await winnerDriver.evaluate(ARC4_DURABLE_READ_EXPRESSION);
+      const winnerBeforeProjection = arc5FeedCarrierProjection(
+        winnerBeforeRaw, arc5FeedFixture,
+      );
+      const contenderObservedLease = await winnerDriver.evaluate(
+        ARC5_FEED_LEASE_READ_EXPRESSION,
+      );
+      const takeoverStartedAt = performance.now();
+      const contenderFirstShow = await winnerDriver.evaluate(
+        'window.__CF_SLICE__.api.__smokeShowF4()',
+      );
+      const contenderObservationQuiesced = await winnerDriver.evaluate(
+        'window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()',
+      );
+      const ttlWaitMs = Math.max(
+        0, 10_150 - (performance.now() - takeoverStartedAt),
+      );
+      if (ttlWaitMs > 0) await sleep(ttlWaitMs);
+      const contenderTakeoverResumed = await winnerDriver.evaluate(
+        'window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()',
+      );
+      let winnerAcquisition = null;
+      const takeoverDeadline = Date.now() + 3_000;
+      while (Date.now() < takeoverDeadline) {
+        winnerAcquisition = await winnerDriver.evaluate(`(async()=>{
+          await window.__CF_SLICE__.api.__smokeRunF4Heartbeat();
+          const state=window.__CF_SLICE__.api.state(),lease=await (${ARC5_FEED_LEASE_READ_EXPRESSION});
+          return {state,lease};})()`);
+        if (winnerAcquisition?.state?.persistence?.runtime?.leaseOwned === true
+          && winnerAcquisition.state.persistence.mutationBlocked === false) break;
+        await sleep(100);
+      }
+      const takeoverElapsedMs = performance.now() - takeoverStartedAt;
+      const winnerAcquiredLease = winnerAcquisition?.lease ?? null;
+      winnerHeartbeatQuiesced = await winnerDriver.evaluate(
+        'window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()',
+      );
+      const winnerWritableState = await winnerDriver.wait(
+        'Arc 5 Feed contender writable authority',
+        `(()=>{const s=window.__CF_SLICE__.api.state();return s.persistence.runtime.leaseOwned===true
+          &&s.persistence.runtime.answerable===true&&s.persistence.mutationBlocked===false?s:null})()`,
+        3_000,
+      );
+      const winnerAudioSourceMark = events.length;
+      const winnerAudioArm = await winnerDriver.evaluate(`(()=>{const Context=globalThis.AudioContext||globalThis.webkitAudioContext,
+        proto=Context?.prototype;if(!proto||typeof proto.createOscillator!=='function')return false;
+        if(window.__cfFeedAudioOriginal)return false;const original=proto.createOscillator;
+        window.__cfFeedAudioOriginal=original;window.__cfFeedAudioCreates=0;window.__cfFeedAudioStarts=[];
+        proto.createOscillator=function(){const oscillator=Reflect.apply(original,this,arguments),
+          originalConnect=oscillator.connect,originalStart=oscillator.start;let sourceConnected=false;
+          window.__cfFeedAudioCreates+=1;
+          oscillator.connect=function(){const result=Reflect.apply(originalConnect,this,arguments);
+            sourceConnected=true;return result};
+          oscillator.start=function(){const result=Reflect.apply(originalStart,this,arguments),
+            S=window.__CF_SLICE__,state=S?.api?.state?.();
+            window.__cfFeedAudioStarts.push({startReturned:true,sourceConnected,
+              contextState:oscillator.context?.state??null,
+              pendingWork:state?.ownershipV2?.feed?.controller?.pendingWork??null,
+              lastOutcome:state?.ownershipV2?.feed?.lastOutcome??null,
+              toastSerial:state?.toastSerial??null});return result};
+          return oscillator};return true})()`);
+      const winnerAudioBaseline = await winnerDriver.evaluate(`({creates:window.__cfFeedAudioCreates??null,
+        starts:window.__cfFeedAudioStarts||[]})`);
+      const winnerTraceArmed = await winnerDriver.evaluate(`(()=>{window.__cfFeedWinnerTraceAbort?.abort();
+        window.__cfFeedWinnerClicks=[];const S=window.__CF_SLICE__,controller=new AbortController();
+        window.__cfFeedWinnerTraceAbort=controller;document.addEventListener('click',(event)=>{
+          const target=event.target instanceof Element?event.target:null,
+            control=target?.closest('[data-arc5-feed-confirm]');if(!control)return;
+          const creature=document.querySelector('input[data-arc5-feed-choice="creature"]:checked'),
+            food=document.querySelector('input[data-arc5-feed-choice="flora"]:checked');
+          window.__cfFeedWinnerClicks.push({kind:'confirm',trusted:event.isTrusted===true,
+            pointerType:event.pointerType??null,tag:control.tagName,documentToken:S?.documentToken??null,
+            creatureId:creature?.getAttribute('data-arc5-feed-creature-id')??null,
+            foodLotId:food?.getAttribute('data-arc5-feed-food-lot-id')??null});
+        },{capture:true,signal:controller.signal});return true})()`);
+      const winnerInitialFeedUi = await arc5FeedOpenDetail(
+        arc5FeedFixture, 'Arc 5 Feed winner', winnerDriver,
+      );
+      await arc5FeedClick(
+        arc5FeedChoiceSelector('creature', arc5FeedFixture.creatureId),
+        'Arc 5 winner exact companion choice', winnerDriver,
+      );
+      await arc5FeedClick(
+        arc5FeedChoiceSelector('flora', arc5FeedFixture.foodLotId),
+        'Arc 5 winner exact flora choice', winnerDriver,
+      );
+      const winnerSelectedUi = await winnerDriver.wait(
+        'Arc 5 winner exact Feed preview',
+        `(()=>{const ui=${ARC5_FEED_UI_EXPRESSION};return ui.selectedCreatureId===${JSON.stringify(arc5FeedFixture.creatureId)}
+          &&ui.selectedFoodLotId===${JSON.stringify(arc5FeedFixture.foodLotId)}
+          &&ui.confirmDisabled===false?ui:null})()`,
+      );
+      const winnerBeforeActionRaw = await winnerDriver.evaluate(
+        ARC4_DURABLE_READ_EXPRESSION,
+      );
+      const winnerBeforeActionProjection = arc5FeedCarrierProjection(
+        winnerBeforeActionRaw, arc5FeedFixture,
+      );
+      const winnerBeforeState = await winnerDriver.evaluate(
+        'window.__CF_SLICE__.api.state()',
+      );
+      winnerToastSerialBefore = winnerBeforeState.toastSerial;
+      const winnerFeedActivation = await arc5FeedClick(
+        '#codexpanel [data-arc5-feed-confirm]',
+        'Arc 5 Feed winner confirm', winnerDriver,
+      );
+      settledState = await winnerDriver.wait(
+        'Arc 5 Feed winner committed settlement',
+        `(()=>{const s=window.__CF_SLICE__.api.state(),f=s.ownershipV2.feed;
+          return f.lastResult?.creatureId===${JSON.stringify(arc5FeedFixture.creatureId)}
+            &&f.lastResult?.foodLotId===${JSON.stringify(arc5FeedFixture.foodLotId)}
+            &&f.controller.pendingWork===0&&f.actionCoordinator.owner.busy===false?s:null})()`,
+        10_000,
+      );
+      afterRaw = await winnerDriver.evaluate(ARC4_DURABLE_READ_EXPRESSION);
+      afterProjection = arc5FeedCarrierProjection(afterRaw, arc5FeedFixture);
+      const newReceiptKeys = afterRaw.receiptKeys.filter(
+        (key) => !winnerBeforeActionRaw.receiptKeys.includes(key),
+      );
+      const receiptIndex = newReceiptKeys.length === 1
+        ? afterRaw.receiptKeys.indexOf(newReceiptKeys[0]) : -1;
+      receipt = receiptIndex < 0 ? null : afterRaw.receiptRows[receiptIndex];
+      const winnerCommittedLease = await winnerDriver.evaluate(
+        ARC5_FEED_LEASE_READ_EXPRESSION,
+      );
+      const winnerClicks = await winnerDriver.evaluate(
+        'window.__cfFeedWinnerClicks||[]',
+      );
+      audioEvidence = await winnerDriver.wait(
+        'Arc 5 Feed successful oscillator start',
+        `(()=>{const evidence={creates:window.__cfFeedAudioCreates??null,
+          starts:window.__cfFeedAudioStarts||[]};return evidence.creates===1
+          &&evidence.starts.length===1&&evidence.starts[0]?.startReturned===true
+          ?evidence:null})()`,
+        3_000,
+      );
+      const audioGraphDeadline = Date.now() + 3_000;
+      do {
+        audioGraphEvidence = compendiumFeedWebAudioGraph(
+          winnerSession, winnerWebAudioEnableMark, winnerAudioSourceMark,
+        );
+        const graphAssessment = assessCompendiumFeedAudioAcknowledgement({
+          audioCreates: audioEvidence?.creates,
+          audioStarts: audioEvidence?.starts,
+          audioGraph: audioGraphEvidence,
+          globalRevision: afterProjection?.globalRevision,
+          toastSerial: settledState?.toastSerial,
+        });
+        if (graphAssessment.ok) break;
+        await sleep(25);
+      } while (Date.now() < audioGraphDeadline);
+      settledUi = {
+        result: settledState.ownershipV2.feed.lastResult,
+        controller: settledState.ownershipV2.feed.controller,
+        lastOutcome: settledState.ownershipV2.feed.lastOutcome,
+        toastSerial: settledState.toastSerial,
+        toastText: settledState.toastText,
+      };
+      await arc5FeedOpenDetail(
+        arc5FeedFixture, 'Arc 5 Feed winner same-document reopen', winnerDriver,
+      );
+      reopened = await arc5FeedRenderedValues(arc5FeedFixture, winnerDriver);
+
+      const loserPagehideKey = 'cf_slice_arc5_feed_two_document_loser_v1';
+      const loserPagehideArmed = await evalIn(`(()=>{const key=${JSON.stringify('cf_slice_arc5_feed_two_document_loser_v1')},
+        S=window.__CF_SLICE__;sessionStorage.removeItem(key);addEventListener('pagehide',()=>{
+          const state=S?.api?.state?.(),ui=${ARC5_FEED_UI_EXPRESSION},audio={creates:window.__cfFeedAudioCreates??null,
+            starts:window.__cfFeedAudioStarts||[]};sessionStorage.setItem(key,JSON.stringify({
+              schema:'cf-v2-arc5-feed-two-document-loser/v1',documentToken:S?.documentToken??null,
+              state,ui,audio}));},{capture:true,once:true});return true})()`);
+      await send('Runtime.addBinding', { name: '__cfF4StartHidden' }, sess);
+      const loserConvergenceMark = events.length;
+      const loserConvergenceHoldArmed = await evalIn(
+        'window.__CF_SLICE__.api.__smokeArmF4ConvergenceReloadHold()',
+      );
+      released = await evalIn(
+        'window.__CF_SLICE__.api.__smokeReleaseProductActionHold()',
+      );
+      loserHoldReleased = released === true;
+      const loserSettledState = await waitDesktopValue(
+        'Arc 5 Feed stale loser settlement',
+        `(()=>{const s=window.__CF_SLICE__.api.state(),f=s.ownershipV2.feed;
+          return f.lastOutcome==='refused:transaction:stale'&&f.lastResult===null
+            &&f.controller.pendingWork===0&&f.actionCoordinator.owner.busy===false
+            &&s.persistence.runtime.staleBlocked===true
+            &&s.persistence.runtime.staleWrites>0
+            &&s.persistence.convergenceReloadHold?.phase==='holding'?s:null})()`,
+        10_000,
+      );
+      const loserSettledUi = await evalIn(ARC5_FEED_UI_EXPRESSION);
+      const loserAfterAttemptRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+      const loserAfterAttemptProjection = arc5FeedCarrierProjection(
+        loserAfterAttemptRaw, arc5FeedFixture,
+      );
+      const loserAudioEvidence = await evalIn(`({creates:window.__cfFeedAudioCreates??null,
+        starts:window.__cfFeedAudioStarts||[]})`);
+      const loserReloadReleased = await evalIn(
+        'window.__CF_SLICE__.api.__smokeReleaseF4ConvergenceReload()',
+      );
+      await waitForSlice(sess, 'Arc 5 Feed stale loser convergence reload', {
+        previousToken: feedDocumentToken, timeoutMs: 15_000,
+      });
+      await assertBootTickerRunning('Arc 5 Feed stale loser convergence reload');
+      const loserReloadToken = await sliceToken(sess);
+      const loserReloadedState = await waitDesktopValue(
+        'Arc 5 Feed loser read-only replacement',
+        `(()=>{const s=window.__CF_SLICE__.api.state();return s.persistence.ready===true
+          &&s.persistence.bootKind==='current-v5'&&s.persistence.mutationBlocked===true
+          &&s.persistence.runtime.leaseOwned===false?s:null})()`,
+        10_000,
+      );
+      const loserReloadedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+      const loserReloadedProjection = arc5FeedCarrierProjection(
+        loserReloadedRaw, arc5FeedFixture,
+      );
+      const loserReloadedLease = await evalIn(ARC5_FEED_LEASE_READ_EXPRESSION);
+      const loserPagehideCapture = await evalIn(`(()=>{const key=${JSON.stringify(loserPagehideKey)},
+        raw=sessionStorage.getItem(key);let parsed=null;try{parsed=raw===null?null:JSON.parse(raw)}catch{}
+        sessionStorage.removeItem(key);return {raw,parsed,cleared:sessionStorage.getItem(key)===null}})()`);
+      const loserConvergenceWitnesses = f4ConvergenceWitnessesSince(
+        sess, loserConvergenceMark,
+      );
+      feedHeartbeatResumed = await winnerDriver.evaluate(
+        'window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()',
+      );
+      await sleep(50);
+      const winnerLeaseAfterResume = await winnerDriver.evaluate(
+        ARC5_FEED_LEASE_READ_EXPRESSION,
+      );
+
+      await winnerDriver.evaluate(`(()=>{const Context=globalThis.AudioContext||globalThis.webkitAudioContext,
+        proto=Context?.prototype,original=window.__cfFeedAudioOriginal;if(proto&&original)proto.createOscillator=original;
+        window.__cfFeedWinnerTraceAbort?.abort();delete window.__cfFeedWinnerTraceAbort;
+        delete window.__cfFeedAudioOriginal;delete window.__cfFeedAudioCreates;
+        delete window.__cfFeedAudioStarts;delete window.__cfFeedWinnerClicks;return true})()`);
+      await send('Runtime.removeBinding', { name: '__cfF4StartHidden' }, sess);
+      await evalIn('window.__CF_SLICE__.api.__smokeShowF4()');
+      await send('Target.closeTarget', { targetId: winnerTarget.targetId });
+      winnerTargetClosed = true;
+      await send('Target.activateTarget', { targetId: loserTargetId });
+      await send('Emulation.setFocusEmulationEnabled', { enabled: true }, sess);
+      await send('Page.bringToFront', {}, sess);
+      await waitForF4Writable('Arc 5 Feed loser restored after winner close', {
+        timeoutMs: 30_000,
+      });
+      reloadRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+      reloadProjection = arc5FeedCarrierProjection(reloadRaw, arc5FeedFixture);
+      await arc5FeedOpenDetail(arc5FeedFixture, 'Arc 5 Feed reloaded detail');
+      reloadRendered = await arc5FeedRenderedValues(arc5FeedFixture);
+      reloadState = await evalIn('window.__CF_SLICE__.api.state()');
+
+      const loserConfirmPresses = confirmPresses.map((press) => ({
+        ...press, targetId: loserTargetId,
+      }));
+      const winnerConfirmPresses = winnerClicks.filter(
+        (press) => press.kind === 'confirm',
+      ).map((press) => ({ ...press, targetId: winnerTarget.targetId }));
+      twoDocumentEvidence = {
+        fixture: arc5FeedFixture,
+        documents: {
+          loser: { targetId: loserTargetId, sessionId: sess,
+            documentToken: feedDocumentToken, origin: loserOrigin },
+          winner: { targetId: winnerTarget.targetId, sessionId: winnerSession,
+            documentToken: winnerInitialToken, origin: winnerOrigin },
+        },
+        orchestration: {
+          sameDocumentFaultInjectionCalls: 0,
+          directWriterCalls: 0,
+        },
+        activations: {
+          loser: { ...loserFeedActivation, pressCount: loserConfirmPresses.length,
+            presses: loserConfirmPresses },
+          winner: { ...winnerFeedActivation, pressCount: winnerConfirmPresses.length,
+            presses: winnerConfirmPresses },
+        },
+        parent: {
+          loserBefore: { rawPersistenceFingerprint: beforeProjection.rawPersistenceFingerprint,
+            projection: beforeProjection },
+          loserHeld: { rawPersistenceFingerprint: heldProjection.rawPersistenceFingerprint,
+            projection: heldProjection },
+          winnerBefore: { rawPersistenceFingerprint: winnerBeforeProjection.rawPersistenceFingerprint,
+            projection: winnerBeforeProjection },
+          winnerBeforeAction: {
+            rawPersistenceFingerprint: winnerBeforeActionProjection.rawPersistenceFingerprint,
+            projection: winnerBeforeActionProjection,
+          },
+        },
+        lease: {
+          ttlMs: 10_000,
+          takeoverElapsedMs,
+          loserBaseline: loserLeaseBaseline,
+          contenderObserved: contenderObservedLease,
+          contenderFirstShow,
+          winnerAcquired: winnerAcquiredLease,
+          winnerCommitted: winnerCommittedLease,
+          winnerAfterResume: winnerLeaseAfterResume,
+          contenderObservationQuiesced,
+          contenderTakeoverResumed,
+        },
+        winner: {
+          setup: { visibility: winnerVisibility, writableState: winnerWritableState,
+            initialUi: winnerInitialFeedUi, selectedUi: winnerSelectedUi,
+            audioArm: winnerAudioArm, audioBaseline: winnerAudioBaseline,
+            traceArmed: winnerTraceArmed },
+          committedRawPersistenceFingerprint:
+            arc5FeedRawPersistenceFingerprint(afterRaw),
+        },
+        loser: {
+          setup: { pagehideArmed: loserPagehideArmed,
+            convergenceHoldArmed: loserConvergenceHoldArmed },
+          settled: {
+            state: loserSettledState,
+            ui: loserSettledUi,
+            lastOutcome: loserSettledState.ownershipV2.feed.lastOutcome,
+            lastResult: loserSettledState.ownershipV2.feed.lastResult,
+            feedResult: canonicalJson(loserSettledState.ownershipV2.feed.lastResult),
+            controller: loserSettledState.ownershipV2.feed.controller,
+            actionCoordinator: loserSettledState.ownershipV2.feed.actionCoordinator,
+            toastSerialBefore,
+            toastSerialAfter: loserSettledState.toastSerial,
+            toastText: loserSettledState.toastText,
+            audioCreates: loserAudioEvidence.creates,
+            audioStarts: loserAudioEvidence.starts,
+            rawPersistenceFingerprint:
+              arc5FeedRawPersistenceFingerprint(loserAfterAttemptRaw),
+            durableAfterAttempt: loserAfterAttemptProjection,
+          },
+          convergence: {
+            released: loserReloadReleased,
+            witnessCount: loserConvergenceWitnesses.length,
+            witness: loserConvergenceWitnesses.length === 1
+              ? loserConvergenceWitnesses[0] : null,
+            pagehide: loserPagehideCapture,
+          },
+          reloaded: {
+            documentToken: loserReloadToken,
+            bootKind: loserReloadedState.persistence.bootKind,
+            rawPersistenceFingerprint:
+              arc5FeedRawPersistenceFingerprint(loserReloadedRaw),
+            durable: loserReloadedProjection,
+            feed: {
+              logicalId: arc5FeedFixture.logicalId,
+              creatureId: arc5FeedFixture.creatureId,
+              fed: loserReloadedProjection.creatureFed,
+              foodLotId: arc5FeedFixture.foodLotId,
+              foodQuantity: loserReloadedProjection.foodQuantity,
+              pendingWork: loserReloadedState.ownershipV2.feed.controller.pendingWork,
+            },
+            lease: loserReloadedLease,
+            persistence: loserReloadedState.persistence,
+          },
+        },
+      };
+    } finally {
+      if (!loserHoldReleased) {
+        try {
+          loserHoldReleased = await evalIn(
+            'window.__CF_SLICE__.api.__smokeReleaseProductActionHold()',
+          ) === true;
+        } catch { /* a failed convergence may already have replaced the document */ }
+      }
+      if (!winnerTargetClosed) {
+        try { await send('Target.closeTarget', { targetId: winnerTarget.targetId }); }
+        catch { /* browser teardown owns a target that already vanished */ }
+      }
+    }
+    const committedBundle = {
+      fixture: arc5FeedFixture,
+      heartbeat: {
+        documentToken: twoDocumentEvidence?.documents?.winner?.documentToken,
+        quiesced: winnerHeartbeatQuiesced,
+        resumed: feedHeartbeatResumed,
+      },
+      toastSerialBefore: winnerToastSerialBefore,
+      before: {
+        ...beforeProjection,
+        globalRevision: beforeProjection.globalRevision,
+        ownershipRevision: beforeProjection.ownershipRevision,
+        receiptCount: beforeProjection.receiptCount,
+        sessionOrdinal: beforeProjection.sessionOrdinal,
+      },
+      after: {
+        ...afterProjection,
+        runtime: settledState.persistence.runtime,
+        fedBefore: arc5FeedFixture.fedBefore,
+        fedAfter: afterProjection.creatureFed,
+        creatureId: arc5FeedFixture.creatureId,
+        foodLotId: arc5FeedFixture.foodLotId,
+        foodQuantityBefore: arc5FeedFixture.foodQuantityBefore,
+        foodQuantityAfter: afterProjection.foodQuantity,
+        receiptOrdinal: receipt?.ordinal ?? null,
+        receiptKind: receipt?.kind ?? null,
+        receiptWitness: receipt?.witness ?? null,
+        receiptWitnessDigest: typeof receipt?.witness === 'string'
+          ? createHash('sha256').update(receipt.witness).digest('hex') : null,
+      },
+      settled: settledUi,
+      audioCreates: audioEvidence.creates,
+      audioStarts: audioEvidence.starts,
+      audioGraph: audioGraphEvidence,
+      reopened,
+      reloaded: {
+        ...reloadProjection,
+        ...reloadRendered,
+        runtime: reloadState.persistence.runtime,
+      },
+    };
+    twoDocumentEvidence.winner = {
+      ...committedBundle,
+      committedRawPersistenceFingerprint:
+        arc5FeedRawPersistenceFingerprint(afterRaw),
+    };
+    const committedAssessment = assessCompendiumFeedCommittedOutcome(committedBundle);
+    const twoDocumentAssessment = assessCompendiumFeedTwoDocumentStaleOutcome(
+      twoDocumentEvidence,
+    );
+    const twoDocumentIdentityControl = structuredClone(twoDocumentEvidence);
+    twoDocumentIdentityControl.documents.winner.targetId
+      = twoDocumentIdentityControl.documents.loser.targetId;
+    twoDocumentIdentityControl.activations.winner.presses[0].targetId
+      = twoDocumentIdentityControl.documents.loser.targetId;
+    const twoDocumentControl = assessCompendiumFeedTwoDocumentStaleOutcome(
+      twoDocumentIdentityControl,
+    );
+    const twoDocumentControlIsolated = twoDocumentControl.ok === false
+      && canonicalJson(twoDocumentControl.reasons)
+        === canonicalJson(['real two-document identities']);
+    const sessionOrdinalControl = structuredClone(committedBundle);
+    for (const candidate of [sessionOrdinalControl.after, sessionOrdinalControl.reloaded]) {
+      candidate.sessionOrdinal = committedBundle.before.sessionOrdinal + 2;
+      candidate.authority = structuredClone(candidate.authority);
+      candidate.authority.sessionRng.ordinal = candidate.sessionOrdinal;
+      candidate.authorityJson = JSON.stringify(candidate.authority);
+      candidate.runtime = { ...candidate.runtime, sessionOrdinal: candidate.sessionOrdinal };
+    }
+    const reloadF4OrdinalControl = structuredClone(committedBundle.reloaded);
+    reloadF4OrdinalControl.sessionOrdinal += 1;
+    reloadF4OrdinalControl.authority.sessionRng.ordinal += 1;
+    reloadF4OrdinalControl.authorityJson = JSON.stringify(reloadF4OrdinalControl.authority);
+    reloadF4OrdinalControl.runtime.sessionOrdinal += 1;
+    const receiptShapeControl = structuredClone(committedBundle);
+    const receiptShapeIndex = receiptShapeControl.after.receiptRows.length - 1;
+    receiptShapeControl.after.receiptRows[receiptShapeIndex] = {
+      ...receiptShapeControl.after.receiptRows[receiptShapeIndex], extra: true,
+    };
+    receiptShapeControl.after.receiptRawRows[receiptShapeIndex] = JSON.stringify(
+      receiptShapeControl.after.receiptRows[receiptShapeIndex],
+    );
+    const authorityShapeControl = structuredClone(committedBundle);
+    authorityShapeControl.after.authority.extra = true;
+    authorityShapeControl.after.authorityJson = JSON.stringify(authorityShapeControl.after.authority);
+    const rngShapeControl = structuredClone(committedBundle);
+    rngShapeControl.after.authority.sessionRng.extra = true;
+    rngShapeControl.after.authorityJson = JSON.stringify(rngShapeControl.after.authority);
+    const crossContextAudioControl = structuredClone(committedBundle);
+    const crossContextAudioIntermediate = crossContextAudioControl.audioGraph.nodes.find((node) => (
+      node.nodeId !== crossContextAudioControl.audioGraph.sourceNodeId
+      && node.nodeId !== crossContextAudioControl.audioGraph.destinationNodeId
+      && crossContextAudioControl.audioGraph.edges.some((edge) => (
+        edge.sourceId === node.nodeId || edge.destinationId === node.nodeId
+      ))
+    ));
+    if (crossContextAudioIntermediate) {
+      crossContextAudioIntermediate.contextId = 'cross-context-negative-control';
+    }
+    const committedControls = [
+      ['one global revision, ownership successor, and Feed receipt',
+        assessCompendiumFeedCommittedOutcome({
+          ...committedBundle,
+          after: { ...committedBundle.after, receiptKind: 'wrong' },
+        })],
+      ['one global revision, ownership successor, and Feed receipt',
+        assessCompendiumFeedCommittedOutcome(receiptShapeControl)],
+      ['one global revision, ownership successor, and Feed receipt',
+        assessCompendiumFeedCommittedOutcome(sessionOrdinalControl)],
+      ['one global revision, ownership successor, and Feed receipt',
+        assessCompendiumFeedCommittedOutcome({
+          ...committedBundle,
+          after: { ...committedBundle.after,
+            receiptWitness: String(committedBundle.after.receiptWitness).replace(
+              arc5FeedFixture.creatureId, `creature-v1:${'f'.repeat(64)}`,
+            ) },
+        })],
+      ['one global revision, ownership successor, and Feed receipt',
+        assessCompendiumFeedCommittedOutcome({
+          ...committedBundle,
+          after: { ...committedBundle.after,
+            receiptKeys: committedBundle.after.receiptKeys.map((key) => (
+              key === `receipt:${committedBundle.before.sessionOrdinal}`
+                ? 'receipt:wrong-key' : key
+            )) },
+        })],
+      ['one global revision, ownership successor, and Feed receipt',
+        assessCompendiumFeedCommittedOutcome({
+          ...committedBundle,
+          after: { ...committedBundle.after,
+            receiptRawRows: committedBundle.after.receiptRawRows.map((raw, index) => (
+              index === 0 ? `${raw}\n` : raw
+            )) },
+        })],
+      ['exact companion and flora mutation', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        after: { ...committedBundle.after, fedAfter: committedBundle.after.fedAfter + 1 },
+      })],
+      ['exact companion and flora mutation', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        after: { ...committedBundle.after, lotDisposition: { ordinal: 0,
+          actionKind: 'companion-feed', witnessDigest: 'f'.repeat(64) } },
+      })],
+      ['Arc 5-only fixed-five successor', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        after: { ...committedBundle.after, arc4Fingerprint: 'f'.repeat(64) },
+      })],
+      ['Arc 5-only fixed-five successor', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        after: { ...committedBundle.after, sessionDrawsFingerprint: 'f'.repeat(64) },
+      })],
+      ['Arc 5-only fixed-five successor', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        after: { ...committedBundle.after, targetRemainderFingerprint: 'f'.repeat(64) },
+      })],
+      ['Arc 5-only fixed-five successor', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        after: { ...committedBundle.after,
+          segmentCodecAt: committedBundle.after.segmentCodecAt + 1 },
+      })],
+      ['Arc 5-only fixed-five successor',
+        assessCompendiumFeedCommittedOutcome(authorityShapeControl)],
+      ['Arc 5-only fixed-five successor',
+        assessCompendiumFeedCommittedOutcome(rngShapeControl)],
+      ['Arc 5-only fixed-five successor', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        after: { ...committedBundle.after,
+          runtime: { ...committedBundle.after.runtime,
+            revision: committedBundle.after.runtime.revision - 1 } },
+      })],
+      ['settled visible exact result', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        settled: { ...committedBundle.settled, toastText: 'wrong' },
+      })],
+      ['one post-settlement acknowledgement', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle, audioStarts: [],
+      })],
+      ['one post-settlement acknowledgement', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        audioStarts: committedBundle.audioStarts.map((row) => ({ ...row, startReturned: false })),
+      })],
+      ['one post-settlement acknowledgement', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        audioStarts: committedBundle.audioStarts.map((row) => ({ ...row, sourceConnected: false })),
+      })],
+      ['one post-settlement acknowledgement', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        audioStarts: committedBundle.audioStarts.map((row) => ({ ...row, contextState: 'suspended' })),
+      })],
+      ['one post-settlement acknowledgement', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        audioGraph: { ...committedBundle.audioGraph,
+          edges: committedBundle.audioGraph.edges.filter((edge) => (
+            edge.destinationId !== committedBundle.audioGraph.destinationNodeId
+          )) },
+      })],
+      ['one post-settlement acknowledgement', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        audioGraph: { ...committedBundle.audioGraph,
+          nodes: committedBundle.audioGraph.nodes.map((node) => (
+            node.nodeId === committedBundle.audioGraph.destinationNodeId
+              ? { ...node, nodeType: 'GainNode' } : node
+          )) },
+      })],
+      ['one post-settlement acknowledgement',
+        assessCompendiumFeedCommittedOutcome(crossContextAudioControl)],
+      ['heartbeat-owned Feed snapshot lifecycle', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        heartbeat: { ...committedBundle.heartbeat,
+          resumed: { ...committedBundle.heartbeat.resumed, running: false } },
+      })],
+      ['full-reload durable fixed point', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        reloaded: { ...committedBundle.reloaded, fed: committedBundle.reloaded.fed + 1 },
+      })],
+      ['full-reload durable fixed point', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        reloaded: { ...committedBundle.reloaded,
+          receiptRawRows: committedBundle.reloaded.receiptRawRows.map((raw, index) => (
+            index === 0 ? `${raw}\n` : raw
+          )) },
+      })],
+      ['full-reload durable fixed point', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle, reloaded: reloadF4OrdinalControl,
+      })],
+      ['full-reload durable fixed point', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        reloaded: { ...committedBundle.reloaded,
+          runtime: { ...committedBundle.reloaded.runtime,
+            revision: committedBundle.reloaded.runtime.revision - 1 } },
+      })],
+      ['full-reload durable fixed point', assessCompendiumFeedCommittedOutcome({
+        ...committedBundle,
+        reloaded: { ...committedBundle.reloaded,
+          codecAt: committedBundle.after.codecAt - 1,
+          segmentCodecAt: committedBundle.after.segmentCodecAt - 1 },
+      })],
+    ];
+    const committedControlsIsolated = crossContextAudioIntermediate !== undefined
+      && committedControls.every(([reason, result]) => (
+        result.ok === false && canonicalJson(result.reasons) === canonicalJson([reason])
+      ));
+    if (released !== true || !committedAssessment.ok || !committedControlsIsolated
+      || !twoDocumentAssessment.ok || !twoDocumentControlIsolated) {
+      fails.push('ARC 5 FEED COMMIT: two native same-parent Use 1 actions did not resolve to one exact durable companion/flora winner, one real stale loser, visible settled acknowledgement, and reload fixed point: '
+        + JSON.stringify({ released, fixture: arc5FeedFixture,
+          assessment: committedAssessment, controls: committedControls,
+          controlsIsolated: committedControlsIsolated,
+          twoDocumentAssessment, twoDocumentControl, twoDocumentControlIsolated,
+          bundle: committedBundle, twoDocumentEvidence }));
+    }
   }
 
   /* A second isolated full replacement returns to ordinal-zero seed 68 so a
@@ -19085,7 +20815,17 @@ try {
     if (result.exceptionDetails) throw new Error('transient retry probe threw: ' + JSON.stringify(result.exceptionDetails));
     return { ...result.result.value, preClick };
   };
-  const existingRetry = await transientRetryProbe(vrRaw);
+  const transientExistingV4Raw = (() => {
+    const envelope = JSON.parse(vrRaw);
+    const legacy = typeof envelope?.legacyV4 === 'string'
+      ? JSON.parse(envelope.legacyV4) : null;
+    if (envelope?.format !== 'celestial-frontier-portable-v5' || envelope?.version !== 1
+      || typeof envelope.legacyV4 !== 'string' || legacy?.v !== 4) {
+      throw new Error('transient-read existing-primary fixture lost its exact inner legacy-v4 source');
+    }
+    return envelope.legacyV4;
+  })();
+  const existingRetry = await transientRetryProbe(transientExistingV4Raw);
   const transientWriteSequence = (value, expected) => Array.isArray(value.writeTrace)
     && value.writeTrace.length === expected.count
     && value.writeTrace.every((entry, index) => entry.v === 4 && entry.me === expected.me
@@ -19104,7 +20844,7 @@ try {
     let payload = null;
     try { payload = JSON.parse(value.raw); } catch { return false; }
     return value.name === 'Dakk' && value.controlRawStable === true
-      && transientPreClickOutcome(value.preClick, vrRaw)
+      && transientPreClickOutcome(value.preClick, transientExistingV4Raw)
       && transientWriteSequence(value, {
         count: 1, me: 'Dakk', tut: 1, epoch: 12, viewType: 'planet', codexCount: 3, landCount: 6,
       })
@@ -19114,7 +20854,8 @@ try {
       && Array.isArray(payload?.log) && payload.log.length === 3
       && JSON.stringify(payload?.land) === JSON.stringify([133, 134, 101, 102, 103, 201]);
   };
-  if (!existingRetryOutcome(existingRetry)) {
+  const existingRetryGreen = existingRetryOutcome(existingRetry);
+  if (!existingRetryGreen) {
     fails.push('TRANSIENT READ retry overwrote/ignored an existing primary instead of reloading it: ' + JSON.stringify(existingRetry));
   }
   const freshRetry = await transientRetryProbe(undefined);
@@ -19131,50 +20872,53 @@ try {
       && Array.isArray(payload.codex) && payload.codex.length === 0
       && Array.isArray(payload.land) && payload.land.length === 0;
   };
-  if (!freshRetryOutcome(freshRetry)) {
+  const freshRetryGreen = freshRetryOutcome(freshRetry);
+  if (!freshRetryGreen) {
     fails.push('TRANSIENT READ retry did not perform the exact two-write fresh F4 bootstrap after proving the store empty: '
       + JSON.stringify(freshRetry));
   }
-  const existingTraceControl = structuredClone(existingRetry);
-  if (existingTraceControl.writeTrace?.[0]) existingTraceControl.writeTrace[0].me = '';
-  const existingZeroWriteControl = structuredClone(existingRetry);
-  existingZeroWriteControl.writes = 0;
-  existingZeroWriteControl.writesAfterControl = 1;
-  existingZeroWriteControl.writeTrace = [];
-  existingZeroWriteControl.raw = existingZeroWriteControl.preClick.raw;
-  existingZeroWriteControl.authority = structuredClone(existingZeroWriteControl.preClick.authority);
-  const existingDuplicateWriteControl = structuredClone(existingRetry);
-  existingDuplicateWriteControl.writes = 2;
-  existingDuplicateWriteControl.writesAfterControl = 3;
-  existingDuplicateWriteControl.writeTrace = [
-    ...existingDuplicateWriteControl.writeTrace,
-    { ...structuredClone(existingDuplicateWriteControl.writeTrace[0]),
-      at: Number(existingDuplicateWriteControl.writeTrace[0]?.at) + 1 },
-  ];
-  const existingDuplicatePayload = JSON.parse(existingDuplicateWriteControl.raw);
-  existingDuplicatePayload.at = existingDuplicateWriteControl.writeTrace[1].at;
-  existingDuplicateWriteControl.raw = JSON.stringify(existingDuplicatePayload);
-  existingDuplicateWriteControl.authority = {
-    ...existingDuplicateWriteControl.authority, revisionRaw: '2', revision: 2,
-  };
-  const existingRevisionControl = structuredClone(existingRetry);
-  if (existingRevisionControl.authority) existingRevisionControl.authority.revision += 1;
-  const freshPreClickControl = structuredClone(freshRetry);
-  if (freshPreClickControl.preClick) {
-    freshPreClickControl.preClick.writes = 1;
-    freshPreClickControl.preClick.writeTrace = [structuredClone(freshRetry.writeTrace[0])];
-  }
-  const freshRevisionControl = structuredClone(freshRetry);
-  if (freshRevisionControl.authority) freshRevisionControl.authority.revision += 1;
-  if (existingRetryOutcome(existingZeroWriteControl)
-    || existingRetryOutcome(existingDuplicateWriteControl)
-    || existingRetryOutcome(existingTraceControl)
-    || existingRetryOutcome(existingRevisionControl)
-    || freshRetryOutcome({ ...freshRetry, writes: 1, writesAfterControl: 2 })
-    || freshRetryOutcome({ ...freshRetry, writes: 3, writesAfterControl: 4 })
-    || freshRetryOutcome(freshPreClickControl)
-    || freshRetryOutcome(freshRevisionControl)) {
-    fails.push('TRANSIENT READ WRITE-SEQUENCE CONTROL FAILED — count, semantic trace, or revision drift stayed green');
+  if (existingRetryGreen && freshRetryGreen) {
+    const existingTraceControl = structuredClone(existingRetry);
+    if (existingTraceControl.writeTrace?.[0]) existingTraceControl.writeTrace[0].me = '';
+    const existingZeroWriteControl = structuredClone(existingRetry);
+    existingZeroWriteControl.writes = 0;
+    existingZeroWriteControl.writesAfterControl = 1;
+    existingZeroWriteControl.writeTrace = [];
+    existingZeroWriteControl.raw = existingZeroWriteControl.preClick.raw;
+    existingZeroWriteControl.authority = structuredClone(existingZeroWriteControl.preClick.authority);
+    const existingDuplicateWriteControl = structuredClone(existingRetry);
+    existingDuplicateWriteControl.writes = 2;
+    existingDuplicateWriteControl.writesAfterControl = 3;
+    existingDuplicateWriteControl.writeTrace = [
+      ...existingDuplicateWriteControl.writeTrace,
+      { ...structuredClone(existingDuplicateWriteControl.writeTrace[0]),
+        at: Number(existingDuplicateWriteControl.writeTrace[0]?.at) + 1 },
+    ];
+    const existingDuplicatePayload = JSON.parse(existingDuplicateWriteControl.raw);
+    existingDuplicatePayload.at = existingDuplicateWriteControl.writeTrace[1].at;
+    existingDuplicateWriteControl.raw = JSON.stringify(existingDuplicatePayload);
+    existingDuplicateWriteControl.authority = {
+      ...existingDuplicateWriteControl.authority, revisionRaw: '2', revision: 2,
+    };
+    const existingRevisionControl = structuredClone(existingRetry);
+    if (existingRevisionControl.authority) existingRevisionControl.authority.revision += 1;
+    const freshPreClickControl = structuredClone(freshRetry);
+    if (freshPreClickControl.preClick) {
+      freshPreClickControl.preClick.writes = 1;
+      freshPreClickControl.preClick.writeTrace = [structuredClone(freshRetry.writeTrace[0])];
+    }
+    const freshRevisionControl = structuredClone(freshRetry);
+    if (freshRevisionControl.authority) freshRevisionControl.authority.revision += 1;
+    if (existingRetryOutcome(existingZeroWriteControl)
+      || existingRetryOutcome(existingDuplicateWriteControl)
+      || existingRetryOutcome(existingTraceControl)
+      || existingRetryOutcome(existingRevisionControl)
+      || freshRetryOutcome({ ...freshRetry, writes: 1, writesAfterControl: 2 })
+      || freshRetryOutcome({ ...freshRetry, writes: 3, writesAfterControl: 4 })
+      || freshRetryOutcome(freshPreClickControl)
+      || freshRetryOutcome(freshRevisionControl)) {
+      fails.push('TRANSIENT READ WRITE-SEQUENCE CONTROL FAILED — count, semantic trace, or revision drift stayed green');
+    }
   }
 
   /* 4e-phone. A FRESH PHONE starts with training active. Prove its card
@@ -20892,8 +22636,8 @@ if (OUTCOME_CONTROLS_ONLY) {
   console.log('SLICE OUTCOME CONTROLS: PASS — two source-generated leaf-seed-colliding worlds retain distinct Search/name/Atlas/Land/save-reload/share identity, and F4 heartbeat lease-storage plus revision-read failures stop answerability/accrual/audio/heartbeat without automatic reacquisition before a read-only convergence reload.');
   process.exit(0);
 }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail/Equip, exact carrier↔legacy↔DOM parity, conditional comparison, one receipt, reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
 console.log('SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.');
-console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
+console.log(sliceScreenshotInventoryLine());
 process.exit(0);

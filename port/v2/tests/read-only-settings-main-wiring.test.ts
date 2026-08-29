@@ -12,7 +12,7 @@ function section(source: string, start: string, end: string): string {
 
 const CASE_IDS = [
   'sound', 'volume', 'creature-voices', 'text-size', 'text-tone',
-  'font', 'star-charts', 'motion', 'panel-tint',
+  'font', 'star-charts', 'visual-effects', 'screen-shake', 'motion', 'panel-tint',
 ] as const;
 const WRITABLE_EVIDENCE_MARKERS = [
   'targetFound !== true || restoreFound !== true',
@@ -20,15 +20,26 @@ const WRITABLE_EVIDENCE_MARKERS = [
   'JSON.stringify(restoreExpected) !== JSON.stringify(restored)',
   "id === 'panel-tint'\n    ? initial !== 0.55 || restoreExpected !== 0.82",
   'restoreExpected:(before)=>Math.min(0.98,Math.max(0.82,before))',
-  'writableWrongRestore[8].restored = writableWrongRestore[8].before',
-  'writableWrongLegacyTint[8].before = writableWrongLegacyTint[8].restoreExpected',
-  'writableWrongTintDomain[8].restoreExpected = writableWrongTintDomain[8].before',
-  'writableWrongTintDomain[8].restored = writableWrongTintDomain[8].before',
+  "exactSettingsRecord(writableWrongRestore, 'panel-tint', 'panel-tint restore control')",
+  'writableWrongRestoreTint.restored = writableWrongRestoreTint.before',
+  "exactSettingsRecord(writableWrongLegacyTint, 'panel-tint', 'panel-tint legacy domain control')",
+  'writableWrongLegacyTintRecord.before = writableWrongLegacyTintRecord.restoreExpected',
+  "exactSettingsRecord(writableWrongTintDomain, 'panel-tint', 'panel-tint target domain control')",
+  'writableWrongTintDomainRecord.restoreExpected = writableWrongTintDomainRecord.before',
+  'writableWrongTintDomainRecord.restored = writableWrongTintDomainRecord.before',
   'const writableWrongTintDomainControl = assessReadOnlyBoundary(',
   "{ id: 'panel-tint target domain', control: writableWrongTintDomainControl, reason: 'writable settings control domains' }",
   'JSON.stringify(control.reasons) !== JSON.stringify([reason])',
-  'writableMissingTarget[3].targetFound = false',
-  'writableMissingRestore[4].restoreFound = false',
+  "exactSettingsRecord(writableMissingTarget, 'text-size', 'writable target control').targetFound = false",
+  "exactSettingsRecord(writableMissingRestore, 'text-tone', 'writable restore-target control').restoreFound = false",
+] as const;
+const VISUAL_SETTING_EVIDENCE_MARKERS = [
+  "['visual-effects', 'click:setfx']",
+  "['screen-shake', 'click:setshake']",
+  "{id:'visual-effects',field:'fxOn',mutate:()=>click('#setfx'),restore:()=>click('#setfx')}",
+  "{id:'screen-shake',field:'shakeOn',mutate:()=>click('#setshake'),restore:()=>click('#setshake')}",
+  "{id:'visual-effects',field:'fxOn',act:()=>click('#setfx')}",
+  "{id:'screen-shake',field:'shakeOn',act:()=>click('#setshake')}",
 ] as const;
 
 function contractErrors(main: string, slice: string): string[] {
@@ -36,9 +47,10 @@ function contractErrors(main: string, slice: string): string[] {
   const selector = section(main, 'const READ_ONLY_MUTATION_SELECTOR = [', "\n].join(',');");
   for (const marker of [
     "'#setsnd'", "'#setvol'", "'#setvoice'", "'[data-pref]'", "'[data-motion]'",
-    "'#setcharts'", "'#setglass'",
+    "'#setcharts'", "'#setfx'", "'#setshake'", "'#setglass'", "'[data-arc5-feed-confirm]'",
   ]) if (!selector.includes(marker)) errors.push(`selector:${marker}`);
   if (selector.includes("'#setimport'")) errors.push('protected-import-blocked');
+  if (selector.includes("'[data-inventory-action]'")) errors.push('inventory-action-capture-swallowed');
   if (!main.includes("el.querySelector('#setimport')!.addEventListener('click', openImportSheet);")) {
     errors.push('protected-import-unavailable');
   }
@@ -64,17 +76,23 @@ function contractErrors(main: string, slice: string): string[] {
     || !assessment.includes('all settings mutations blocked')
     || !owner.includes('await api.__smokePersistNow()')
     || !owner.includes('window.__CF_SLICE__.api.__smokeForceReadOnly(true)')
-    || !owner.includes("readOnlyChanged[2].after = '__voice-mutated-read-only__'")) {
+    || !owner.includes("exactSettingsRecord(readOnlyChanged, 'creature-voices', 'read-only mutation control').after = '__voice-mutated-read-only__'")) {
     errors.push('polarity-and-controls');
   }
   for (const marker of WRITABLE_EVIDENCE_MARKERS) {
     if (!assessment.includes(marker) && !owner.includes(marker)) errors.push(`writable-evidence:${marker}`);
   }
+  for (const marker of VISUAL_SETTING_EVIDENCE_MARKERS) {
+    if (!assessment.includes(marker) && !owner.includes(marker)) errors.push(`visual-setting-evidence:${marker}`);
+  }
+  if (/\b(?:writable|readOnly)[A-Za-z]*\[\d+\]/.test(owner)) {
+    errors.push('hard-coded-settings-control-index');
+  }
   return errors;
 }
 
 describe('ordinary Settings mutations share the read-only boundary', () => {
-  it('covers all nine writable/read-only outcomes while retaining protected import', () => {
+  it('covers all eleven writable/read-only outcomes while retaining protected import', () => {
     expect(contractErrors(mainSource, sliceSource)).toEqual([]);
   });
 
@@ -82,11 +100,22 @@ describe('ordinary Settings mutations share the read-only boundary', () => {
     const withoutVoice = mainSource.replace("'#setvol', '#setvoice',", "'#setvol',");
     expect(contractErrors(withoutVoice, sliceSource)).toContain("selector:'#setvoice'");
 
+    const withoutFeed = mainSource.replace("  '[data-arc5-feed-confirm]',\n", '');
+    expect(contractErrors(withoutFeed, sliceSource))
+      .toContain("selector:'[data-arc5-feed-confirm]'");
+
     const blockedImport = mainSource.replace(
       "'#dockcharts', '#setsnd',",
       "'#setimport', '#dockcharts', '#setsnd',",
     );
     expect(contractErrors(blockedImport, sliceSource)).toContain('protected-import-blocked');
+
+    const swallowedInventoryAction = mainSource.replace(
+      "'#dockcharts', '#setsnd',",
+      "'[data-inventory-action]', '#dockcharts', '#setsnd',",
+    );
+    expect(contractErrors(swallowedInventoryAction, sliceSource))
+      .toContain('inventory-action-capture-swallowed');
 
     const missingImport = mainSource.replace(
       "el.querySelector('#setimport')!.addEventListener('click', openImportSheet);",
@@ -105,5 +134,16 @@ describe('ordinary Settings mutations share the read-only boundary', () => {
       const mutant = sliceSource.replace(marker, `__WRITABLE_EVIDENCE_MUTANT_${marker.length}__`);
       expect(contractErrors(mainSource, mutant)).toContain(`writable-evidence:${marker}`);
     }
+
+    for (const marker of VISUAL_SETTING_EVIDENCE_MARKERS) {
+      const mutant = sliceSource.replace(marker, `__VISUAL_SETTING_MUTANT_${marker.length}__`);
+      expect(contractErrors(mainSource, mutant)).toContain(`visual-setting-evidence:${marker}`);
+    }
+
+    const hardCodedIndex = sliceSource.replace(
+      "exactSettingsRecord(writableWrongRestore, 'panel-tint', 'panel-tint restore control')",
+      'writableWrongRestore[10]',
+    );
+    expect(contractErrors(mainSource, hardCodedIndex)).toContain('hard-coded-settings-control-index');
   });
 });

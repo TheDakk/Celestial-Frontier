@@ -8,6 +8,7 @@ import {
   evaluateSceneMemory,
   type SceneMemoryBudget,
   type SceneMemoryInput,
+  type SceneMemoryLegacyProfileMeasurement,
   type SceneMemoryProfileMeasurement,
   type SceneMemoryVerdict,
 } from '../tools/scenemem-contract.mjs';
@@ -39,9 +40,9 @@ const HISTORICAL_PRE_ACTIVATION_BUDGET_SHA256 =
 const HISTORICAL_ACTIVATED_BUDGET_SHA256 =
   'e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375';
 const CURRENT_PRE_ACTIVATION_BUDGET_SHA256 =
-  '711400165f998ea9cf3a3886267735593e21e7ba103147b9b0ab4db0105cacd3';
+  '799045aaf7b694e45cbf74f9b1e35985a0341bdb6e6bccc0d71a3ae15c282f29';
 const CURRENT_ACTIVATED_BUDGET_SHA256 =
-  'd4e45975c5678942d50ede78fec51219f1a550be80de418056e910057d2b1762';
+  'eda06c754162311ffd818c27fd5c8b508204f909546993d78f02defae65ce2e5';
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const CANDIDATES = [
   {
@@ -247,9 +248,14 @@ const CALIBRATION_PRODUCER_AUTHORITY = Object.freeze({
 });
 const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
   ...CALIBRATION_PRODUCER_AUTHORITY,
-  buildDist: '29494595f6d3ea03838b0d2a4c7bd1bb2b618dbb4623a56de05d44de9f99efff',
-  gameHtml: '9f7c6bfbbfd576e021f5afaa2000de4b901d5626d4295b4535a788ba53fbb84c',
-  gameMain: 'cd635213f5b08f43675c0021bbf40c761e0726e6d3bb2d2b16ebb9e73d902541',
+  collector: 'fee644aad23414d862a42a9393e3bb04bef38f13d1a777e2efa221bf6d77c4ab',
+  verdictContract: '7776b3dd3d2009107f14f71526c375c2ed821d9f5f4f4ec984f0351e24ed1184',
+  packageLock: 'c519e3eaa1b05a83d111fbad1f64ed689035efcb74444b2886589a9ced71dfb8',
+  appPackage: '513d1e035ef84d69c68f22488a5bd3b6aa65dda802b2f44f9a4ce1f22482b55e',
+  buildDist: '2d4ff26c0afc2e21373c2797393374a7057f4a43b793534b9eeb8aca7801281c',
+  gameHtml: 'e666d52b2c11210e02f494a99bf28b4dadd34a6b25d27b92cef6e1a052716cbb',
+  gameMain: '87660ca42fe6f1ee06c28315f143297c5fff2f0b92eb540a285c616cb8ddb745',
+  shipyardPreview: '8b9d4196254f133faa01878915ad4501b257284efef6ca729442ca2e81eb41d8',
 });
 
 const SELECTED_PROFILES = Object.freeze({
@@ -273,6 +279,8 @@ const SELECTED_PROFILES = Object.freeze({
     productRenderTargetsMax: 0.5,
     ringCacheEntriesMax: 0.5,
     peakRingGeometryEntriesMax: 2.5,
+    surfaceVistaCacheEntriesMax: 1,
+    surfaceVistaCachePixelsMax: 412800,
     targetElapsedMsMax: 1000,
     heartbeatElapsedMsMax: 100,
   }),
@@ -296,11 +304,13 @@ const SELECTED_PROFILES = Object.freeze({
     productRenderTargetsMax: 0.5,
     ringCacheEntriesMax: 0.5,
     peakRingGeometryEntriesMax: 2.5,
+    surfaceVistaCacheEntriesMax: 1,
+    surfaceVistaCachePixelsMax: 412800,
     targetElapsedMsMax: 1000,
     heartbeatElapsedMsMax: 100,
   }),
 }) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
-const PRE_ACTIVATION_PROFILES = Object.freeze({
+const CURRENT_PRE_ACTIVATION_PROFILES = Object.freeze({
   phone: Object.freeze({
     ...SELECTED_PROFILES.phone,
     heapUsedBytesMax: 10485760,
@@ -312,12 +322,23 @@ const PRE_ACTIVATION_PROFILES = Object.freeze({
     heapAggregateBytesMax: 16777216,
   }),
 }) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
+const PRE_ACTIVATION_PROFILES = Object.freeze({
+  phone: Object.freeze(Object.fromEntries(Object.entries(CURRENT_PRE_ACTIVATION_PROFILES.phone)
+    .filter(([field]) => !field.startsWith('surfaceVistaCache')))),
+  desktop: Object.freeze(Object.fromEntries(Object.entries(CURRENT_PRE_ACTIVATION_PROFILES.desktop)
+    .filter(([field]) => !field.startsWith('surfaceVistaCache')))),
+});
 const ORIGINAL_250_PROFILES = Object.freeze({
   phone: Object.freeze({ ...PRE_ACTIVATION_PROFILES.phone, targetElapsedMsMax: 250 }),
   desktop: Object.freeze({ ...PRE_ACTIVATION_PROFILES.desktop, targetElapsedMsMax: 250 }),
-}) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
+});
 
 const BUDGET_FIELDS = Object.keys(SELECTED_PROFILES.phone) as Array<keyof SceneMemoryBudget>;
+const FIXED_SEMANTIC_BUDGET_FIELDS = Object.freeze([
+  'surfaceVistaCacheEntriesMax', 'surfaceVistaCachePixelsMax',
+] as const);
+const CALIBRATED_BUDGET_FIELDS = BUDGET_FIELDS.filter((field) =>
+  !(FIXED_SEMANTIC_BUDGET_FIELDS as readonly string[]).includes(field));
 const ZERO_POINT_FIELDS: Readonly<Partial<Record<keyof SceneMemoryBudget, string>>> = Object.freeze({
   localCanvasCacheEntriesMax: 'localCanvasCacheEntries',
   productRenderTargetsMax: 'productRenderTargets',
@@ -347,7 +368,9 @@ const evidence = loadEvidence(CANDIDATES);
 const reports = evidence.map(({ report }) => report);
 const historicalCalibrationEvidence = loadEvidence(HISTORICAL_CALIBRATION_CANDIDATES);
 
-const profilePoints = (measurement: SceneMemoryProfileMeasurement) => [
+const profilePoints = (
+  measurement: SceneMemoryLegacyProfileMeasurement | SceneMemoryProfileMeasurement,
+) => [
   measurement.precondition,
   ...measurement.cycles,
   measurement.bfcache,
@@ -430,7 +453,7 @@ const metricSummary = (
   ].map(slope));
   const max = (select: (point: typeof points[number]) => number): number =>
     Math.max(...points.map(select));
-  return {
+  const summary: Partial<Record<keyof SceneMemoryBudget, number>> = {
     heapUsedBytesMax: max((point) => point.heap.usedSize),
     embedderHeapUsedBytesMax: max((point) => point.heap.embedderHeapUsedSize),
     backingStorageBytesMax: max((point) => point.heap.backingStorageSize),
@@ -454,12 +477,18 @@ const metricSummary = (
     targetElapsedMsMax: max((point) => point.answerability.target.elapsedMs),
     heartbeatElapsedMsMax: max((point) => point.answerability.heartbeat.elapsedMs),
   };
+  if (points.every((point) => Number.isFinite(point.surfaceVistaCacheEntries)
+    && Number.isFinite(point.surfaceVistaCachePixels))) {
+    summary.surfaceVistaCacheEntriesMax = max((point) => point.surfaceVistaCacheEntries);
+    summary.surfaceVistaCachePixelsMax = max((point) => point.surfaceVistaCachePixels);
+  }
+  return summary as Record<keyof SceneMemoryBudget, number>;
 };
 
 describe('Arc 1C scene-memory active budget', () => {
   it('locks the heap-only activation to one Edge-family capability/profile authority and producer', () => {
     expect(budget).toEqual({
-      schema: 'cf-v2-scene-memory-budget/v3',
+      schema: 'cf-v2-scene-memory-budget/v4',
       authority: {
         browser: EXPECTED_BROWSER_AUTHORITY,
         producer: EXPECTED_PRODUCER_AUTHORITY,
@@ -473,12 +502,12 @@ describe('Arc 1C scene-memory active budget', () => {
 
   it('changes only the two selected heap ceilings in each profile', () => {
     const changes = PROFILE_NAMES.flatMap((profile) => BUDGET_FIELDS
-      .filter((field) => PRE_ACTIVATION_PROFILES[profile][field]
+      .filter((field) => CURRENT_PRE_ACTIVATION_PROFILES[profile][field]
         !== SELECTED_PROFILES[profile][field])
       .map((field) => ({
         profile,
         field,
-        before: PRE_ACTIVATION_PROFILES[profile][field],
+        before: CURRENT_PRE_ACTIVATION_PROFILES[profile][field],
         after: SELECTED_PROFILES[profile][field],
       })));
     expect(changes).toEqual([
@@ -510,7 +539,7 @@ describe('Arc 1C scene-memory active budget', () => {
     const currentBudgetSha256 = sha256(fs.readFileSync(budgetPath));
     expect(currentBudgetSha256).toBe(CURRENT_ACTIVATED_BUDGET_SHA256);
     expect(currentBudgetSha256).not.toBe(HISTORICAL_ACTIVATED_BUDGET_SHA256);
-    const preActivationBudget = { ...budget, profiles: PRE_ACTIVATION_PROFILES };
+    const preActivationBudget = { ...budget, profiles: CURRENT_PRE_ACTIVATION_PROFILES };
     const currentPreActivationSha256 = sha256(Buffer.from(
       `${JSON.stringify(preActivationBudget, null, 2)}\n`,
     ));
@@ -542,6 +571,21 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(validateSceneMemoryBudget(profileMismatch).errors).toContain(
       'budget profiles must be exactly phone and desktop',
     );
+  });
+
+  it('negative controls: the semantic vista cache caps cannot be widened or made vacuous', () => {
+    for (const [field, value] of [
+      ['surfaceVistaCacheEntriesMax', 0],
+      ['surfaceVistaCacheEntriesMax', 2],
+      ['surfaceVistaCachePixelsMax', 0],
+      ['surfaceVistaCachePixelsMax', 412_801],
+    ] as const) {
+      const drifted = structuredClone(budget);
+      drifted.profiles.phone[field] = value;
+      expect(validateSceneMemoryBudget(drifted).errors, `${field}=${value}`).toContain(
+        'budget profiles.phone surface vista must remain exactly 1 entry / 412800 pixels',
+      );
+    }
   });
 
   it('binds and independently recomputes all three retained clean candidates', () => {
@@ -1182,7 +1226,7 @@ describe('Arc 1C scene-memory active budget', () => {
     }
 
     for (const profile of PROFILE_NAMES) {
-      for (const field of BUDGET_FIELDS) {
+      for (const field of CALIBRATED_BUDGET_FIELDS) {
         const observed = Math.max(...reports.map((report) => metric(report, profile, field)));
         expect(budget.profiles[profile][field], `${profile}.${field}`).toBeGreaterThan(observed);
       }
@@ -1228,7 +1272,7 @@ describe('Arc 1C scene-memory active budget', () => {
 
   it('negative control: rejects every just-below positive observed ceiling independently', () => {
     for (const profile of PROFILE_NAMES) {
-      for (const field of BUDGET_FIELDS) {
+      for (const field of CALIBRATED_BUDGET_FIELDS) {
         const report = reports.reduce((largest, candidate) => (
           metric(candidate, profile, field) > metric(largest, profile, field)
             ? candidate : largest
@@ -1251,7 +1295,7 @@ describe('Arc 1C scene-memory active budget', () => {
 
   it('negative control: rejects the next integer for every calibrated zero field', () => {
     for (const profile of PROFILE_NAMES) {
-      const observedZeroFields = BUDGET_FIELDS.filter((field) =>
+      const observedZeroFields = CALIBRATED_BUDGET_FIELDS.filter((field) =>
         reports.every((report) => metric(report, profile, field) === 0));
       expect(observedZeroFields).toEqual(Object.keys(ZERO_POINT_FIELDS));
 

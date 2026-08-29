@@ -91,6 +91,13 @@ function coordinatorContractErrors(source: string): string[] {
     ...actionOrderErrors(arc3, 'Arc 3'),
     ...actionOrderErrors(arc4, 'Arc 4'),
   );
+  const arc2ReadOnly = arc2.indexOf(
+    'if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight',
+  );
+  const arc2Preflight = arc2.indexOf('const preflight = planArc2InventoryAction(');
+  if (!(arc2ReadOnly >= 0 && arc2Preflight > arc2ReadOnly)) {
+    errors.push('Arc 2 must publish diagnostic read-only refusal before planning or claiming an action');
+  }
   const heartbeatCycle = sourceSection(
     source,
     'const runF4HeartbeatCycle =',
@@ -390,6 +397,19 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
     expect(lateArc4).not.toBe(mainSource);
     expect(coordinatorContractErrors(lateArc4)).toContain(
       'Arc 4 must claim/fence/hold synchronously before heartbeat and commit',
+    );
+  });
+
+  it('negative-controls the Arc 2 diagnostic read-only refusal at its action authority seam', () => {
+    const withoutReadOnlyRefusal = replaceInSourceSectionExact(
+      mainSource,
+      'async function commitArc2InventoryAction(',
+      '\ntype Arc3AppActionOperation =',
+      'if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight',
+      'if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight',
+    );
+    expect(coordinatorContractErrors(withoutReadOnlyRefusal)).toContain(
+      'Arc 2 must publish diagnostic read-only refusal before planning or claiming an action',
     );
   });
 

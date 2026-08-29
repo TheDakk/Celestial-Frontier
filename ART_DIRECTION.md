@@ -1,6 +1,6 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` Arc 1C art/resource overlay matches code as of 2026-08-23 and appears immediately below; the Arc 1A and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
+**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` universe-wide visual checkpoint matches the local working tree as of 2026-08-28 and appears immediately below; its post-change real-browser, HUMAN and physical-device evidence is still open. The Arc 1A/1C and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
@@ -8,29 +8,66 @@ decisions we actually made). Content catalogs (`BIOME_ATLAS.md` at the repo root
 fauna/flora data-pack CSVs) remain the *content* source of truth; this is the *direction* source
 of truth.
 
-## 2026-08-27 queued v2 universe-wide polish — structure-preserving visual treatment
+## 2026-08-28 current v2 universe-wide visual checkpoint — implemented, certification open
 
-Nick approved carrying the reference video's richer, more luminous presentation across the **entire
-universe**, not only Sol. This is a queued post-checkpoint treatment pass, not implemented behavior
-yet. It applies consistently to galaxy/system space, planets, all 43 live biome families, creatures,
-plants, ships, effects, and their UI presentation through shared art parameters plus deterministic
-environment-local variation.
+The richer treatment is now a live **universe-wide** rendering language, not a Sol-specific filter.
+`VisualTreatmentV1` defines the finite `color` / `contrast` / `lighting` / `material` / `atmosphere`
+vocabulary for galaxy, system, planet, biome, species and ship identities. Existing Canvas painters keep
+sole ownership of geometry: their galaxy/system/planet/biome/species results receive one bounded
+surface-space `source-atop` warm/cool depth pass after painting, with the transform reset inside a
+saved context and the original alpha silhouette retained. The deterministic Shipyard SVG uses the
+same material/light language around its existing hull paths and exact capability hardpoints. Raw
+semantic masks and identity-black occluders remain explicit exceptions. Creatures, plants, fungi
+and microbes share the production/audit/worker species finisher, so the polish cannot diverge by
+route.
 
-The treatment may strengthen warm/cool color separation, controlled highlight bloom, atmospheric
-depth and haze, rim/specular light, silhouette separation, and bounded particles. It must **polish,
-not redesign**: retain every authored biome composition, creature and plant anatomy, silhouette,
-proportion, scale, placement role, seed-derived identity, rarity/grade readability, and gameplay hit
-or focus geometry. Sol is only a calibration scene; no Sol-only branch or hand-authored exception is
-the target architecture.
+All **43** live biome keys are now one exact immutable `BiomeProfileV1` authority in
+`@cf/domain-biome-profile`, with schema `cf.domain.biome-profile.v1` and pinned content digest
+`bpd1-6fce883d4d70e3b6bde0fb184b416e8e` binding the authored signature, fauna/flora-family, hazard
+and weather records. The art subpath is a compatibility re-export, not a second table. The preserved
+full `960×430` compositor is live from normal Planetside landings through the canonical world/roster projection and the
+generic, gas-deck, abyss and reef scene routes. It is generated lazily in a single module worker,
+validated at the message and result boundaries, stale-fenced by document/generation/world/scene/
+biome identity, and published only after a successful mount into a one-entry fail-soft cache. Worker,
+protocol, copy, mount or deadline failure leaves the already usable globe intact. Portrait phones
+fit the entire authored composition as a full-width horizon band above the fitted globe instead of
+cover-cropping most of the scene; landscape and desktop keep the complete scene centered.
 
-Acceptance requires paired before/after identity comparisons over representative warm, cool, dark,
-bright, inhabited, lifeless, terrestrial, ocean, gas, creature, and flora cases; deterministic
-same-seed output; high-contrast and reduced-motion variants; readable text/control contrast; and
-phone heat, frame-time, texture/cache, particle, and retained-resource budgets. Effects must degrade
-by device capability without changing content identity. The stable Phase-4 browser checkpoint comes
-first so visual changes begin from one reviewable baseline. The species-strip review tool now uses
-the repository's shared cross-platform browser-executable resolver and must complete its real CDP
-render; a compatible Edge/Chrome point update does not change art baselines or thresholds.
+The saved **Visual effects** and **Screen shake** controls now drive real app-owned policies.
+Effects Off permits zero optional particles and no animated emissive modulation while retaining
+the seeded base glow that identifies bright stars and quasars; reduced motion and low-tier devices
+retain bounded static decoration; full-motion medium/high tiers allow bounded animated particles and
+emissive breathing. Shake
+requires Effects On, Screen shake On and Full motion simultaneously, then caps concurrent impulses
+by device tier; changing a preference cancels disallowed active impulses. These policies affect
+presentation only and never content generation, hit geometry or save identity.
+
+Browser-free coverage is explicit rather than inferred: `visual-authorities`, `canvas-treatment`,
+`surface-polish`, `planet-sprite-finisher`, `speciesportable`, `biome-vista`,
+`biome-vista-ecology`, `biome-vista-surface`, `biome-vista-protocol`, `biome-vista-cache`,
+`universe-polish-main-wiring`, `visual-effect-policy`, `camera-shake-policy`,
+`visual-policy-main-wiring`, `shipyard-preview` and `art-tools-browser-resolution` exercise the
+authorities, live consumers and deliberate missing/mismatched/bypass controls. The seven raw-CDP
+art tools share one cross-platform resolver; explicit `CF_BROWSER` is authoritative. Before evidence
+work, connected `Browser.getVersion` must identify Chrome, Chromium, Edge (`Edg`) or HeadlessChrome
+with a complete four-part point version, executable/product/revision/UA/JS provenance and CDP `1.3`;
+each tool emits that exact tuple, while `speciesaudit`, `proofsheet`, `speciesexport` and JSON output
+from `conformance` / `gp71compare` also persist it.
+Compatible point updates are accepted and never change an art baseline or threshold.
+
+The current SceneMemory **input-v4** contract now has **44 outcomes**: the historical 42-outcome
+scene/resource ruler remains intact, while one added phone outcome and one added desktop outcome bind
+`surfaceVistaWorkerActive`, `surfaceVistaMounted`, `surfaceVistaCacheEntries` and
+`surfaceVistaCachePixels` through the cold zero state, first mounted vista, repeated surface/ascent
+cycles, BFCache and reload-clear/replacement cleanup. The semantic cache ceiling is fixed at one
+entry / 412,800 pixels. This contract and its bidirectional mutation controls are browser-free green;
+no current-source 44/44 browser certificate is claimed yet.
+
+This is a local implementation checkpoint, not a Gate or campaign completion claim. A fresh clean
+committed-source Slice → Glass → Recovery chain, fixed-seed before/after visual comparisons, HUMAN
+phone/desktop art judgment, assistive-technology review, and physical-device frame-time, heat,
+battery and true GPU/resource evidence remain open. No production release, version bump or deploy
+follows from the browser-free implementation coverage.
 
 ## 2026-08-22 v2 Arc 1C overlay — current ship and surface presentation
 

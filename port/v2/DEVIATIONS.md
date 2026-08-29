@@ -322,7 +322,20 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   sample changed. Final13 supplied the required fresh signed successor chain from Layout. Exact Edge point version remains provenance: a compatible
   update alone never starts calibration, repins authority or moves a threshold.
 
-- ★ **D-GATE-B-62 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 62 domain
+- ★ **D-SCENEMEM-V4-SURFACE-VISTA — current contract expanded; fresh browser evidence open.**
+  The current `cf-v2-scene-memory-input/v4` keeps historical input-v3/42 reports replayable as
+  history but requires **44** outcomes for terminal certification. One new phone and one new desktop
+  `surface-vista-lifecycle` outcome bind raw `surfaceVistaWorkerActive`,
+  `surfaceVistaMounted`, `surfaceVistaCacheEntries` and `surfaceVistaCachePixels` evidence from a
+  cold zero state through first mount, every surface/ascent cycle, BFCache and an observed
+  reload-clear→replacement cleanup. The semantic budget is fixed at one cached entry / 412,800
+  pixels and cannot be widened. Missing fields, worker or mount leaks, entry/pixel overflow,
+  vacuous all-zero evidence, retained reload cache and raw/re-derived drift are bidirectionally
+  controlled. Browser-free contract/budget/tool/workflow checks are green; no current-source 44/44
+  SceneMemory run, downstream chain, HUMAN judgment or physical-device heat/GPU authority is
+  claimed yet.
+
+- ★ **D-GATE-B-63 — exact recursive authority inventory.** `tests/nodom.test.ts` seals all 63 domain
   sources against DOM, storage, `navigator`, network, wall/monotonic clock and uncontrolled random.
   Exactly two reasoned waivers remain: CombatCore's exact `document.createElement('')` expressions
   for the legacy `playerAvatar` and `paperdollAvatar` canvas painters. Inventory, duplicate,
@@ -356,10 +369,20 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   plus biome marker, but no cosmic/exceptional veins, grade, reserves, progress or Mine action. A
   strict projector maps only integer raw rarity 0–14 to canonical player-facing 0–9 and returns null
   for malformed input; Survey/Compendium share it.
+- ★ **D-BIOME-PROFILE — one canonical cross-modal presentation identity; playback still open
+  (2026-08-28).** Dependency-neutral `@cf/domain-biome-profile` owns the exact recursively frozen 43-key
+  `BiomeProfileV1` authority. Schema `cf.domain.biome-profile.v1` and digest
+  `bpd1-6fce883d4d70e3b6bde0fb184b416e8e` bind every authored signature, fauna/flora-family, hazard and
+  weather field. The production current-world roster publishes schema/digest/key and an environment
+  fingerprint over world, epoch, biosphere and climate; vista protocol and the pure
+  `biome-ecology-audio.ts` Survey-roster join consume it. The join rejects lifeless, diagnostic or
+  stale-profile inputs, reveals no hidden species, writes no state and is not imported by Main. It is
+  not live distant-ecology playback and does not close Gate G. It changes neither roster selection nor
+  D-9e, which remains decision-gated.
 - ★ **D-ARC5-FED — approved construction invariant.** A new bred child receives exactly
   `0.5 * min(clampedLeftFed, clampedRightFed)`, symmetrically and once over bounded 0–200 inputs.
   Later child care state remains mutable; no public breed/care writer or UI exists.
-- ★ **D-AUDIO-LIVE-TAME — one narrow, accessible app-owned expression.** A strict projector for the
+- ★ **D-AUDIO-LIVE-EXPRESSIONS — two narrow, accessible app-owned expressions.** A strict projector for the
   current owned creature supplies deterministic immutable identity to the five-bus fail-closed
   runtime; Settings persist Creature Voices. Only a native Tame gesture followed by the exact committed
   durable nonconverging fauna result, its independent global transaction and ownership successor
@@ -368,7 +391,11 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   must agree before publication; the runtime compares live ownership only with
   `ownershipRevision`, never the unrelated global revision. Mute/voices-off, hidden/unanswerable,
   miss/refusal, stale/reload/replay, route/counterpart loss, replacement and disposal are silent.
-  Other expressions, distant ecology, ambience/music/combat, assets, device plateau and HUMAN
+  The same owner now claims one native Feed gesture only for the exact committed durable
+  nonconverging successor whose revision, receipt ordinal, creature ID, ownership revision and
+  one-step `fed` increase match current ownership. Its settled polite/atomic status precedes one
+  `feed-completed` / `accepted` expression. Other expressions, live distant ecology,
+  ambience/music/combat, assets, device plateau and HUMAN
   listening remain open.
 - ★ **D-ARC4-RECOVERY-CERT — Final10/Final11 instrument stops preserved; repaired replay and Final13 certificate green.**
   Signed `4405fb2…` supplied named-green Layout, SceneMemory, Compendium, Slice and
@@ -475,7 +502,7 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   20-minute observation and recovered UI; Final13 supplied the repaired assessor-bound certificate.
   HUMAN review remains open. No Charter bioscan, targeted preview, hosted or release
   authority is implied.
-- ◐ **D-ARC5-OWNERSHIP-V2 — compact authority implemented; infrastructure-only.** V2 binds capture
+- ◐ **D-ARC5-OWNERSHIP-V2 — compact authority plus narrow player-live Feed.** V2 binds capture
   receipts, deterministic fauna-only children, ordered parents, dispositions and tombstones. Its
   app-owned representation is one version-2 manifest plus exactly four fixed generic delta shards.
   The manifest binds exact Arc 4 source, canonical delta and reconstructed V2 target evidence; the
@@ -486,7 +513,14 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   staged route/Atlas/Arc 2 mirrors back to durable input. Source-only Arc 4 growth keeps all four
   canonical empty-shard bytes identical, preventing a duplicate source and keeping unchanged-state
   growth O(1). The internal V2-only successor emits exactly five carriers but is absent from the
-  public package root; there was no breeding/care UI or companion system. Its historical exact-input
+  public package root. A real-fauna Compendium detail now owns one exact-instance Feed action through
+  one receipt/CAS. Its inline polite/atomic status is the sole accessible result announcement; the
+  simultaneous toast is visual-only. One constant-size latest-successful-ownership slot rejects the
+  same and every superseded result before one post-settlement contented expression may play. The
+  strengthened Slice oracle requires the started oscillator to reach an `AudioDestinationNode`
+  through nodes/edges in the oscillator's same WebAudio context; browser-free controls are green and
+  the fresh current-source browser run remains open. Breeding, broader care, assignment and missions
+  remain unavailable. Its historical exact-input
   Slice
   `20260825213041239-98104-c96d3b2d0652` passed on Edge `151.0.4129.101` in 363,053 ms (report/log
   SHA-256 `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
@@ -2256,9 +2290,9 @@ duplicates).
   Browser smoke drives the real touch and desktop outcomes and rejects injected density, buried-
   action and same-seed/different-coordinate stale-card regressions.
 - ★ **D-GUIDE-1 — the port continues the mature Guide; it does not fork a second manual
-  (updated 2026-08-25).** The temporary seven-topic literal is gone. `guide-content.ts` carries an exact,
+  (updated 2026-08-28).** The temporary seven-topic literal is gone. `guide-content.ts` carries an exact,
   SHA-256-bound v1.8.9 Guide snapshot: 9 categories, 43 authored stable topic ids and 41 legacy-live
-  topics (`beacon` / `events` retained as dormant), currently 24 partial and 17 unavailable, with
+  topics (`beacon` / `events` retained as dormant), currently 25 partial and 16 unavailable, with
   category drill-down, keyword/body search and
   live `data-gt` cross-links. A typed capability table substitutes v2-current copy for partially
   ported systems and an explicit **Not yet in v2** explanation for unported systems, so stable ids
@@ -2269,9 +2303,9 @@ duplicates).
   restoration. Guide uses z24 above the z23 survey card. Tooltip deep-links and Advanced Briefings
   remain OPEN; the Guide model existing does not claim those interaction layers are ported.
 - ★ **D-RELEASE-1 — legacy history, v2 development identity and a shipped version are three different states
-  (updated 2026-08-27).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
+  (updated 2026-08-28).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
   398 bullets, v1.8.9 first and v1.0 last. **A New Foundation** is the separate cumulative v2.0
-  development bulletin: a 55-bullet categorized, implemented-outcome technical outline whose explicit
+  development bulletin: a 64-bullet categorized, implemented-outcome technical outline whose explicit
   `draft`, `version:"2.0"` and `Unreleased` state does not turn open roadmap work into a promise.
   `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2 list is empty. Therefore draft copy
   can appear in the cumulative Guide history but can never fire the mature one-time update rule,
@@ -2538,23 +2572,28 @@ duplicates).
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds
   landing rosters. Gameplay-affecting — needs Nick's call on WHEN (it changes which
   creatures appear).
-- ☐ **D-LOC — locale-dependent civilization text.** `civilization()` uses
-  `year.toLocaleString()`; two devices in different locales render different
-  descriptor text, and fixture parity would break on a non-en-US CI machine.
-  *Port fix:* fixed-locale formatting (`toLocaleString('en-US')`) as an approved
-  deviation, or a pure formatter. Cosmetic to players, structural for CI.
-- ☐ **D-NAV — legal transitions are guarded; illegal state shapes remain representable.** The old
-  build defended `st.star.x` against null per frame after a crash shipped. `@cf/scene` now rejects
-  illegal transitions and clears deeper context on ascent, but its current single nullable
-  `NavState` interface still permits a contextless `surface` value and retains caller object
-  references. Finish this with a discriminated union plus normalized copies; until then this is a
-  partial hardening, not a closed type theorem.
+- ★ **D-LOC — completed deterministic civilization-year presentation (2026-08-28).** The lifted
+  `ecology.verbatim.js` generator remains byte-exact, including its RNG consumption and numeric
+  year. The hand-owned Ecology facade replaces only a generated civilization's derived
+  `yearLabel` with pure ASCII thousands grouping; Earth's authored `Year 2026 CE` is unchanged.
+  Focused Ecology and transitive Descriptor controls inject hostile ambient locale grouping,
+  require `Local year ~1,000` / comma-grouped descriptor output, preserve every other field and the
+  exact six RNG reads, and prove the lifted body still executes once. No fixture or baseline was
+  regenerated.
+- ★ **D-NAV — completed provenance-bound discriminated navigation state (2026-08-28).**
+  `@cf/scene` exposes `UniverseNav | GalaxyNav | SystemNav | SurfaceNav`, so each mode carries exactly
+  its legal hierarchy at the type boundary. States are module-created, frozen and registered in a
+  private provenance set over source-proven galaxy/star/planet nodes; raw lookalikes, structural
+  clones and unregistered typed copies cannot become authority. Transitions enforce parent links,
+  ascent drops deeper context, and persisted views re-resolve their full canonical hierarchy.
+  `packages/scene/test/scene.test.ts` binds the legal descent/ascent, compile-time brand controls,
+  clone/lookalike rejection, cross-parent refusal and source-reproved save/address round trips.
 - ★ **D-CLOCK — no wall-clock in the domain.** COSMIC_EPOCH's port takes an injected
   monotonic elapsed-segment source; the harvestclock invariant holds by construction. The current
   app counts page residence, while F4 still owns visibility/answerability policy and exact edge
   behavior. F3 supplies the CAS/revision/tab-lease substrate; F4 owns the separate persisted
   `activePlayMs` clock/accrual policy for future mission/Recovery/Auto-Extractor readiness. The
-  exact 62-source Gate-B scanner enforces wall/monotonic-clock and uncontrolled-random absence
+  exact 63-source Gate-B scanner enforces wall/monotonic-clock and uncontrolled-random absence
   across every domain package — the original could only enforce this by grep + discipline.
 
 ## Architecture / layering
@@ -2562,17 +2601,15 @@ duplicates).
 - ★ **D-HAZE — historical layering finding, completed 2026-08-26.** `galaxyHaze` formerly lived
   inside WorldGen `[domain]` and drew a 2048px canvas. Its exact generator/cache bytes now live in
   app-owned `GalaxyArt`; package/lifter/main/html parity controls prove relocation without behavior
-  drift, and the 62-source scanner no longer waives it.
-- ☐ **D-ST — `describePick` reads app globals inside a [domain] module.**
-  The card router (Descriptors, main.js ~3035) reads `st` (nav state) and
-  `customNames` (rename map) as FREE identifiers — exported by the lift but
-  throwing on first call until the slice installed a seam (2026-07-31; same
-  green-while-broken shape as worldgen's GAL_SPRITES). The slice keeps the
-  seam true from its nav state; *port fix:* pass state as parameters when
-  Phase 4 rebuilds the card layer. ⚠ Same find surfaced a STALE-LIFT hazard:
-  re-lifting Descriptors after the strays registry row grew `regionAt` added
-  a previously-missing import (the old lift left `regionAt` free — guarded by
-  `typeof st`, so capture-green). Re-lift after any registry change.
+  drift, and the 63-source scanner no longer waives it.
+- ★ **D-ST — completed explicit descriptor state seam (2026-08-28).** The lifted legacy
+  `describePick` remains an unchanged parity oracle, but production calls
+  `describePickWithState(pick, nav, customNameFor)`: navigation and rename authority are explicit
+  inputs supplied by `main.ts`, never free app globals. `tests/describepick.test.ts` binds every
+  routed card to canonical-byte parity, exercises a real decoration, fails star/planet-dependent
+  routes closed when context is absent, and proves poisoned `st` / `customNames` globals cannot
+  replace the explicit inputs. The earlier stale-lift finding remains a warning to re-run lift and
+  registry parity controls after registry changes; it is no longer an open production seam.
 - ☐ **D-STRAYS — domain-pure functions scattered through app sections**
   (biomeFor, hdGenesFor, where-codecs, winEstimate, floraStat, cleanName,
   `_sanitizeSavedGenome`, the ring-grade chain). The port already homes them in
@@ -2670,7 +2707,7 @@ duplicates).
   open.** SessionRNG is persisted per domain with exact-once receipt authority. Player-live Arc 4
   capture consumes its two isolated domains only after all-scenario certification; later care,
   combat, Training and other audited outcome writers must migrate when implemented. The exact
-  62-source scanner independently rejects uncontrolled randomness in domain code.
+  63-source scanner independently rejects uncontrolled randomness in domain code.
 - ★ **D-NOTIF-T — completed injected-clock fixed point.** Notification fallback stamps normalize
   only against the supplied clock, later v5 reads preserve the migrated value, and hostile/future
   clock controls cannot mint wall-time authority.

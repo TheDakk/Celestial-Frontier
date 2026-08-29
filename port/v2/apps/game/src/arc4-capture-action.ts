@@ -311,6 +311,7 @@ function requiresReadOnlyConvergence(
   outcome: Exclude<Arc4CaptureTransactionOutcomeV1, { readonly kind: 'committed' }>,
 ): boolean {
   return outcome.kind === 'stale'
+    || outcome.kind === 'revision-exhausted'
     || outcome.kind === 'duplicate-receipt'
     || outcome.kind === 'lost'
     || outcome.kind === 'lease-unavailable'

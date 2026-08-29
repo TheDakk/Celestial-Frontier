@@ -14,6 +14,7 @@ import {
   createEpochClock,
   sanitizeEpoch,
 } from '@cf/domain-progression';
+import { F3_MAX_REVISION } from '@cf/persistence';
 
 export const ECOLOGY_EPOCH_EDGE_SCHEMA = 'cf-v2-ecology-epoch-edge/v1' as const;
 
@@ -151,8 +152,10 @@ function checkedActivePlayMs(value: unknown, prior: number): number {
 
 function checkedRevision(value: unknown): number {
   if (!Number.isSafeInteger(value) || (value as number) < 0
-    || (value as number) >= Number.MAX_SAFE_INTEGER) {
-    throw new RangeError('ecology checkpoint revision must be a non-negative safe integer below MAX_SAFE_INTEGER');
+    || (value as number) > F3_MAX_REVISION) {
+    throw new RangeError(
+      `ecology checkpoint revision must be a non-negative safe integer through ${F3_MAX_REVISION}`,
+    );
   }
   return value as number;
 }

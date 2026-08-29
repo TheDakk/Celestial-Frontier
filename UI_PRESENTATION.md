@@ -14,8 +14,9 @@
 > physical-device heat/GPU evidence remains open. The seven evidence carriers and synchronized
 > references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
 > Keep temporary full caffeinate active while authorized local work continues, then restore it when
-> that work is complete. Next complete the full-code review/polish checkpoint, then begin authorized
-> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is provenance only
+> that work is complete. That signed source is the pre-change baseline; the current local
+> universe-wide visual implementation checkpoint is documented below. Edge `.107` / CDP `1.3` is
+> provenance only
 > and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
 > below is historical where superseded.
 
@@ -92,16 +93,39 @@
 > were repair evidence only and the next signed source had to restart the complete chain. Final10
 > supersedes that browser chronology as recorded above.
 >
-> Nick has separately authorized a **universe-wide visual polish pass** after the stable Phase-4
-> checkpoint. The TikTok reference defines the desired emotional punch—stronger warm/cool
-> separation, controlled bloom, atmospheric depth, focal highlights, framing silhouettes and
-> layered particles—but not a Sol-only effect or an asset redesign. The language must extend across
-> galaxies, star systems, planets, every biome, creatures, plants, ships and effects while preserving
-> every deterministic seed, biome/species identity, authored structure, anatomy, silhouette, scale,
-> interaction geometry and gameplay/readability rule.
-> Variation remains deterministic per environment; reduced motion, contrast, mobile heat, frame
-> budgets and before/after identity review are acceptance criteria. This paragraph records queued
-> scope only; no visual product change has been implemented yet.
+> **2026-08-28 current local universe-wide visual checkpoint:** the richer warm/cool, depth,
+> material and light treatment now reaches galaxy/system/planet canvases, all 43 biome profiles,
+> every creature/plant/fungus/microbe portrait route, and the deterministic Shipyard SVG. Existing
+> painters still own every seed, path, anatomy, silhouette, proportion, placement and hit target;
+> one alpha-preserving surface-space Canvas pass grades already-painted pixels, while the ship keeps
+> its exact hull paths and capability hardpoints. Sol is not special-cased.
+>
+> Normal Planetside landings now launch the preserved full `960×430` generic, gas, abyss or reef
+> compositor lazily from the exact proven world and canonical roster. The module-worker protocol
+> validates exact scene options and output identity/dimensions, drops stale work, times out
+> fail-soft, and commits only a successfully mounted result to a one-entry cache. Any construction,
+> protocol, copy, deadline or mount fault leaves the existing globe usable. Portrait phones show the
+> complete vista as a contained horizon band above the fitted globe instead of cover-cropping it;
+> landscape/desktop centers the complete source.
+>
+> Settings now exposes persisted **Visual effects** and **Screen shake** controls with native button
+> semantics, truthful `aria-pressed` state and focus restoration after refill. Effects Off yields
+> zero optional particles and no animated emissive modulation while preserving each seeded star or
+> quasar's identifying base glow. Reduced motion and low-tier devices keep bounded static decoration;
+> full-motion medium/high tiers may use bounded animation. Shake requires Effects On, Screen shake
+> On and Full motion together, is concurrency-capped by device tier, and cancels active impulses
+> when the policy becomes ineligible. The app diagnostics publish both resolved policies.
+>
+> Browser-free authority, compositor/protocol/cache/layout, live-wiring, settings-policy, ship and
+> portable-browser-resolution suites include deliberate missing/mismatched/bypass controls. The
+> seven art review tools now share one cross-platform resolver, then require connected
+> `Browser.getVersion` to report Chrome/Chromium/Edge (`Edg`)/HeadlessChrome with a complete
+> four-part version, executable/product/revision/UA/JS provenance and CDP `1.3` before evidence.
+> Each emits the exact tuple; compatible point versions are accepted and never rebaseline keys. A
+> fresh clean committed-source Slice → Glass → Recovery
+> chain, fixed-seed before/after screenshots, HUMAN visual/accessibility review and physical-device
+> frame-time, heat, battery and true GPU/resource evidence remain open, so no whole-Gate, campaign,
+> release or deployment claim follows.
 
 > **2026-08-27 audio/rarity presentation overlay — current local candidate:** Settings now renders
 > persistent **Sound**, **Volume** and **Creature voices** controls from the actual saved values.
@@ -109,7 +133,7 @@
 > asks an existing context to suspend; it does not destroy the saved Volume choice. Live Volume
 > input retapers the squared-gain bus even while muted. Sound On and Creature voices On allocate no
 > context by themselves and never replay an earlier result. Turning either Sound or Creature voices
-> Off stops the bounded Tame greeting immediately. The controls retain native button/range semantics,
+> Off stops the bounded Tame or Feed expression immediately. The controls retain native button/range semantics,
 > truthful `aria-pressed` state, focus restoration after panel refill and save persistence.
 >
 > One trusted native Tame activation may arm silent audio before the capture result is known. The
@@ -123,7 +147,18 @@
 > `aria-live=assertive`, `aria-atomic=true`, and matching title/detail/generation. A miss, refusal,
 > programmatic click, stale or protected authority, non-fauna result, lost toast/route/visibility/
 > answerability, disabled setting, repeated invocation or reload stays silent. There is no retry or
-> replay. Scavenge, Sample, ambience, music and combat audio remain outside this live boundary.
+> replay. The same owner may arm from one trusted native Feed activation, then plays only after the
+> exact committed durable non-converging meal successor still matches the selected creature, one-step
+> `fed` increase and current ownership revision. Its inline `role=status`, `aria-live=polite`,
+> `aria-atomic=true` result is both the expression counterpart and the **sole accessible
+> announcement**. It appears before the `feed-completed` / `accepted` expression. The simultaneous
+> corner toast is supplemental visual feedback only: `role=presentation`, `aria-live=off` and
+> `aria-hidden=true`; the ordinary toast contract is restored before its next non-Feed message.
+> The audio owner keeps only the latest successful Feed ownership/key, rejecting the same result and
+> every superseded result in constant space. Lost detail, route, counterpart, visibility or
+> answerability; replay, refusal, convergence and disabled Sound or Creature voices remain silent.
+> Scavenge, Sample, distant ecology, ambience, music and combat audio remain outside this live
+> boundary.
 >
 > Survey plus Compendium list/detail rarity now pass through one strict app projector. Only integer
 > raw grades 0–14 are accepted: 0–9 use the canonical display row (including Transcendent at 9),
@@ -145,7 +180,8 @@
 >
 > Read-only persistence authority now intercepts every ordinary save-mutating Settings outcome:
 > **Sound**, **Volume**, **Creature voices**, **Text size**, **Text tone**, **Font**, **Star charts**,
-> **Motion** and **Panel tint**, plus **Field Training Restart** and the in-lesson Training controls.
+> **Visual effects**, **Screen shake**, **Motion** and **Panel tint**, plus **Field Training Restart**
+> and the in-lesson Training controls.
 > The underlying save bytes remain unchanged and a read-only witness is published, while inspection
 > surfaces such as Compendium remain available. **Settings → Bring expedition** is intentionally
 > outside that ordinary-mutation selector only as the protected recovery door: it must still validate
@@ -787,10 +823,25 @@
 > the same ascent state machine as Escape/right-click; returning to orbit never
 > depends on a keyboard or a precision zoom-out gesture.
 >
+> A real fauna Compendium detail now owns one narrow **Feed** flow without changing the established
+> list/detail anatomy. It keeps **Back** and **Close** available, presents exact-instance owned
+> companions and exact flora lots, disables assigned/recovering and 200-Meal-capped companions with
+> an explanation, and requires explicit **Use 1** confirmation. Same-species twins remain separate.
+> One receipt/CAS either raises Meals by 1 and removes or tombstones exactly one flora unit, or
+> publishes no change; there is no retry or optimistic repaint. The event-owned settled committed
+> inline polite/atomic status is the sole accessible announcement and appears before its one
+> deterministic contented creature acknowledgement. The concurrent corner toast is visual-only and
+> excluded from assistive technology. Audio additionally requires the exact native gesture, current
+> successor, live counterpart, Sound and Creature voices; its constant-size latest-successful-owner
+> fence rejects the same or any superseded committed result.
+> Tastes/flavours, stat/Power growth, injury
+> care/healing, poison, bond, explorer eating, breeding, rename, scout, duel and mission controls
+> remain absent.
+>
 > The eighth phone-dock slot now opens the canonical **Guide to the Universe**
 > rather than the old import shortcut or a second seven-topic manual. V2 carries
 > the mature inventory—9 categories /43 authored stable topic ids /41
-> legacy-live topics, currently 24 partial and 17 unavailable—plus category drill-down,
+> legacy-live topics, currently 25 partial and 16 unavailable—plus category drill-down,
 > title/keyword/body search and
 > `data-gt` cross-links. A capability layer substitutes current-slice copy for
 > partially ported systems and a visible **Not yet in v2** explanation for
@@ -798,7 +849,7 @@
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
-> Foundation**, the cumulative categorized 55-bullet v2.0 development bulletin. It summarizes
+> Foundation**, the cumulative categorized 64-bullet v2.0 development bulletin. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
 > promises. The long draft is browser-checked for canonical section order and a
 > reachable final bullet; opening and reloading it cannot change `rnSeen` or create

@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
+import { assessArc2InventorySuccessorBoundary } from '../tools/slicesmoke-contract.mjs';
 
 const source = readFileSync(
   fileURLToPath(new URL('../tools/slicesmoke.mjs', import.meta.url)),
@@ -21,6 +22,8 @@ const RELOAD_ASSESSOR_START = 'const assessArc2InventoryReload = (';
 const RELOAD_ASSESSOR_END = 'const assessArc2BootstrapRefusal = (';
 
 const REQUIRED_OWNER_BINDINGS = [
+  ['Arc 2 finding-count baseline',
+    'const inventoryFindingCountBefore = fails.length;'],
   ['immutable receipt prefix decision',
     'const inventoryReceiptPrefixGreen = inventoryReceiptPrefixSeed?.schema === \'cf-v2-f4-smoke-outcome/v1\''],
   ['immutable receipt prefix root-red abort guard',
@@ -30,7 +33,11 @@ const REQUIRED_OWNER_BINDINGS = [
   ['post-scroll rendering settlement',
     'await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(resolve,0)));'],
   ['exact row reachability decision',
-    'const assessment = assessInventoryRowReachability(observation, inventoryInstanceId);'],
+    'const assessment = assessInventoryRowReachability(observation, instanceId);'],
+  ['exact portable-v5 operation fixture',
+    'const inventoryFixtureGreen = !!inventoryFixture.selectedInstanceId'],
+  ['fixture finding owns the exact red',
+    "fails.push('ARC 2 INVENTORY FIXTURE: portable-v5 veteran did not expose exact thermal/hazmat/pending-rig capacity truth: '"],
   ['row observation attached to semantic surface',
     'inventorySurface.rowReachability = inventoryRowTarget?.observation ?? null;'],
   ['surface causal prefix',
@@ -73,6 +80,38 @@ const REQUIRED_OWNER_BINDINGS = [
     'if (inventoryActionMustTerminate) {'],
   ['cleaned red action terminator',
     "failSliceWithoutCascade('ARC 2 INVENTORY ACTION: red committed-state evidence was cleaned up; mutable downstream arcs were not started'"],
+  ['native pre-durable authority boundary',
+    'const refusalArmed = await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(true)`);'],
+  ['native pre-durable activation',
+    'const refusalPoint = await inventoryActionButtonPoint(refusalOperation, inventoryInstanceId);'],
+  ['native pre-durable action follows the open detail',
+    "const refusalOperation = refusalOpenedDetail?.actions?.includes('unequip') ? 'unequip'"],
+  ['pre-durable refusal contract',
+    'const refusalAssessment = assessArc2InventoryPreDurableRefusal(refusalBundle);'],
+  ['pre-durable boundary release',
+    'const refusalReleased = await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(false)`);'],
+  ['operation-parametric native owner',
+    'const runArc2InventoryOperation = async ({ operation, instanceId, expectedCargoDelta = {} }) => {'],
+  ['operation uses shared F4 hold',
+    'const holdArmed = await evalIn(`window.__CF_SLICE__.api.__smokeArmProductActionHold()`);'],
+  ['Salvage owns exact confirmation boundary',
+    "const confirmation = await waitDesktopValue('Arc 2 Salvage native confirmation'"],
+  ['held operation contract',
+    'const pendingAssessment = assessArc2InventoryPendingWindow(pendingBundle);'],
+  ['disabled native retry target',
+    'const retryPoint = await inventoryActionButtonPoint(operation, instanceId, true);'],
+  ['disabled native retry attempt',
+    'const retryDispatch = retryPoint?.ok ? await clickDesktopPoint(retryPoint) : null;'],
+  ['disabled retry dispatch bound to evidence',
+    'const retry = { ...retryPresses, dispatch: retryDispatch };'],
+  ['shared hold release',
+    'const released = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseProductActionHold()`);'],
+  ['durable operation contract',
+    'const outcomeAssessment = assessArc2InventoryOperationOutcome(outcomeBundle);'],
+  ['exact durable operation ledger append',
+    'inventoryOperationLedger.push(ledgerEntry);'],
+  ['exact four-operation order guard',
+    "!== canonicalJson(['equip', 'unequip', 'salvage', 'pending-claim'])) {"],
   ['reload causal prefix',
     "const inventoryReloadPrefix = assessInventoryStagePrefix('reload', {"],
   ['reload requires its complete green prefix',
@@ -100,7 +139,7 @@ const REQUIRED_OWNER_BINDINGS = [
   ['reload missing receipt-key control',
     'receiptMissingKey: reloadRawControl((reloaded) => {'],
   ['reload predecessor identity selection',
-    '.findIndex((key) => key !== reloadEquipReceiptKey);'],
+    '.findIndex((key) => !reloadOperationReceiptKeys.has(key));'],
   ['reload predecessor key-drift control',
     'receiptKeyDrift: reloadRawControl((reloaded) => {'],
   ['reload receipt-byte control',
@@ -122,23 +161,31 @@ const REQUIRED_OWNER_BINDINGS = [
   ['reload controls require a green reload base',
     'if (reloadAssessment.ok) {'],
   ['durable reload controls own exact diagnosis',
-    "? 'durable receipt/F4 authority reload'"],
+    "? 'durable Arc 2 operation ledger/F4 authority reload'"],
+  ['Arc 2 successor boundary decision',
+    'const inventorySuccessorBoundary = assessArc2InventorySuccessorBoundary({'],
+  ['Arc 2 successor boundary binds fixture',
+    'fixtureGreen: inventoryFixtureGreen,'],
+  ['Arc 2 successor boundary binds finding delta',
+    'findingCountBefore: inventoryFindingCountBefore,\n    findingCountAfter: fails.length,'],
+  ['Arc 2 red blocks mutable Arc 3',
+    "failSliceWithoutCascade('ARC 2 INVENTORY TERMINAL BOUNDARY: red fixture or native outcome stopped mutable Arc 3 before its fixture import: '"],
 ] as const;
 
 const REQUIRED_GLOBAL_BINDINGS = [
-  ['row activation contract', 'const rowActivation = assessInventoryRowActivation({', 1],
+  ['row activation contract', 'const rowActivation = assessInventoryRowActivation({', 2],
   ['action activation contract', 'if (!assessInventoryActionActivation({ point, interaction }, instanceId).ok) {', 1],
-  ['detail Close contracts', 'assessInventoryDetailClose({', 4],
-  ['raw Close sheet presence', 'sheetPresent:!!sheet', 2],
-  ['raw Close hidden state', 'hidden:sheet?.hidden', 2],
-  ['raw Close aria state', "ariaHidden:sheet?.getAttribute('aria-hidden')??null", 2],
-  ['raw Close panel presence', 'panelPresent:!!panel,panelDisplay:panel?.style.display??null', 2],
-  ['raw Close panel display', 'panelDisplay:panel?.style.display??null', 2],
+  ['detail Close contracts', 'assessInventoryDetailClose({', 6],
+  ['raw Close sheet presence', 'sheetPresent:!!sheet', 3],
+  ['raw Close hidden state', 'hidden:sheet?.hidden', 3],
+  ['raw Close aria state', "ariaHidden:sheet?.getAttribute('aria-hidden')??null", 4],
+  ['raw Close panel presence', 'panelPresent:!!panel,panelDisplay:panel?.style.display??null', 3],
+  ['raw Close panel display', 'panelDisplay:panel?.style.display??null', 3],
   ['raw Close panel ARIA and app state',
-    "panelAriaHidden:panel?.getAttribute('aria-hidden')??null,panelOpen:S?.api?.state?.().panelOpen??null", 2],
+    "panelAriaHidden:panel?.getAttribute('aria-hidden')??null,panelOpen:S?.api?.state?.().panelOpen??null", 3],
   ['raw Close opener and expansion',
-    "openerPresent:!!opener,inventoryExpanded:opener?.getAttribute('aria-expanded')??null", 2],
-  ['raw Close inert state', 'panelInert:panel?panel.inert===true:null', 2],
+    "openerPresent:!!opener,inventoryExpanded:opener?.getAttribute('aria-expanded')??null", 3],
+  ['raw Close inert state', 'panelInert:panel?panel.inert===true:null', 3],
   ['exact registered-panel Close receipt owner',
     "panelCloseOwner:panelClose?.getAttribute('data-pnx')||null", 1],
   ['raw registered-panel Close geometry',
@@ -148,44 +195,45 @@ const REQUIRED_GLOBAL_BINDINGS = [
 ] as const;
 
 const REQUIRED_RELOAD_ASSESSOR_BINDINGS = [
-  ['shared reload durability contract', 'assessInventoryReloadDurability({'],
+  ['shared operation-ledger reload durability contract', 'assessInventoryOperationSequenceDurability({'],
   ['committed runtime binding', 'committedRuntime: committedState?.persistence?.runtime'],
   ['reloaded runtime binding', 'reloadedRuntime: reloadedState?.persistence?.runtime'],
-  ['invalid revision fails closed', ": { ok: false, reasons: ['durable receipt/F4 authority reload'] };"],
+  ['exact operation ledger binding', '}, operations)'],
+  ['invalid operation ledger fails closed', ": { ok: false, reasons: ['durable Arc 2 operation ledger/F4 authority reload'] };"],
   ['durability reasons are preserved', 'if (!reloadDurability.ok) reasons.push(...reloadDurability.reasons);'],
 ] as const;
 
 const REQUIRED_CONTRACT_BINDINGS = [
-  ['non-vacuous predecessor plus Equip receipts',
-    'committedKeys.length >= 2 && reloadedKeys.length >= 2'],
-  ['exact receipt-key parity',
-    'canonicalJson(reloadedKeys) === canonicalJson(committedKeys)'],
-  ['exact receipt-byte parity',
-    'canonicalJson(reloaded?.receiptRawRows) === canonicalJson(committed?.receiptRawRows)'],
-  ['exact receipt-semantic parity',
-    'canonicalJson(reloaded?.receiptRows) === canonicalJson(committed?.receiptRows)'],
-  ['authority version coherence',
-    'committed?.authorityVersion === 1 && reloaded?.authorityVersion === 1'],
-  ['committed authority raw coherence',
-    'committed?.authorityJson === JSON.stringify(committed?.authority)'],
-  ['reloaded authority raw coherence',
-    'reloaded?.authorityJson === JSON.stringify(reloaded?.authority)'],
-  ['stable cross-reload RNG projection',
-    'rngProjection(reloadedRng) === rngProjection(committedRng)'],
-  ['committed runtime projection',
-    'runtimeProjection(committedRuntime) === rngProjection(committedRng)'],
-  ['reloaded runtime projection',
-    'runtimeProjection(reloadedRuntime) === rngProjection(reloadedRng)'],
-  ['authority-derived Equip key',
-    'const expectedReceiptKey = expectedReceiptOrdinal === null ? null : `receipt:${expectedReceiptOrdinal}`;'],
-  ['exact Equip witness',
-    'committedReceipt?.witness === expectedWitness && reloadedReceipt?.witness === expectedWitness'],
-  ['exact committed Equip bytes',
-    'committed?.receiptRawRows?.[committedReceiptIndex] === JSON.stringify(committedReceipt)'],
-  ['exact reloaded Equip bytes',
-    'reloaded?.receiptRawRows?.[reloadedReceiptIndex] === JSON.stringify(reloadedReceipt)'],
-  ['draw-map shape',
-    'const drawsAreObjects = !!(committedRng?.draws && typeof committedRng.draws === \'object\''],
+  ['operation-ledger durability owner',
+    'export function assessInventoryOperationSequenceDurability(observation, expectedOperations) {'],
+  ['non-vacuous immutable predecessor',
+    'const ok = committedKeys.length >= expectedOperations.length + 1'],
+  ['exact receipt row/byte coherence',
+    'const coherentRows = (evidence, keys) => keys.length === evidence?.receiptRawRows?.length'],
+  ['contiguous ordinal/revision sequence',
+    'const sequenceContiguous = expectedOperations.every((entry, index) => index === 0'],
+  ['every operation binds exact receipt',
+    'const ledgerBound = expectedOperations.every((entry) => {'],
+  ['operation-specific exact witness',
+    'const expectedWitness = `arc2:${entry.operation}:${entry.receiptOrdinal}:${entry.instanceId}:${entry.inventoryRevision}`;'],
+  ['operation-specific receipt kind',
+    'committedReceipt?.kind === `arc2-${entry.operation}`'],
+  ['exact cross-reload receipt bytes and semantics',
+    '&& coherentRows(committed, committedKeys) && coherentRows(reloaded, reloadedKeys)'],
+  ['stable F4 runtime projections and ledger binding',
+    'runtimeProjection(reloadedRuntime) === rngProjection(reloadedRng)\n    && sequenceContiguous && ledgerBound'],
+  ['final ordinal follows exact ledger',
+    'committedRng?.ordinal === last.receiptOrdinal + 1;'],
+  ['focused durability diagnosis',
+    "return { ok, reasons: ok ? [] : ['durable Arc 2 operation ledger/F4 authority reload'] };"],
+  ['Arc 2 successor boundary owner',
+    'export function assessArc2InventorySuccessorBoundary(observation) {'],
+  ['Arc 2 fixture is independently required',
+    "if (observation?.fixtureGreen !== true) reasons.push('exact Arc 2 fixture');"],
+  ['Arc 2 native findings block successors',
+    "reasons.push('zero Arc 2 findings');"],
+  ['Arc 3 permission is explicit',
+    'canEnterMutableArc3: ok,'],
 ] as const;
 
 const REQUIRED_REPORT_BINDINGS = [
@@ -220,6 +268,27 @@ const ORDER_RULES = [
   ['action-control prefix precedes reload prefix',
     "const inventoryActionControlPrefix = assessInventoryStagePrefix('action-controls', {",
     "const inventoryReloadPrefix = assessInventoryStagePrefix('reload', {"],
+  ['committed Equip precedes refusal boundary',
+    'inventoryOperationLedger.push(Object.freeze({\n          operation: \'equip\'',
+    'const refusalArmed = await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(true)`);'],
+  ['refusal settles before operation runner',
+    'const refusalAssessment = assessArc2InventoryPreDurableRefusal(refusalBundle);',
+    'const runArc2InventoryOperation = async ({ operation, instanceId, expectedCargoDelta = {} }) => {'],
+  ['native Unequip precedes native Salvage',
+    'const unequipped = await runArc2InventoryOperation({',
+    'const salvaged = await runArc2InventoryOperation({'],
+  ['native Salvage precedes native Pending Claim',
+    'const salvaged = await runArc2InventoryOperation({',
+    'const claimed = await runArc2InventoryOperation({'],
+  ['native Pending Claim precedes exact ledger guard',
+    'const claimed = await runArc2InventoryOperation({',
+    "!== canonicalJson(['equip', 'unequip', 'salvage', 'pending-claim'])) {"],
+  ['exact operation ledger precedes fresh reload',
+    "!== canonicalJson(['equip', 'unequip', 'salvage', 'pending-claim'])) {",
+    "const inventoryReloadPrefix = assessInventoryStagePrefix('reload', {"],
+  ['reload evidence precedes the mutable-successor boundary',
+    "const inventoryReloadPrefix = assessInventoryStagePrefix('reload', {",
+    'const inventorySuccessorBoundary = assessArc2InventorySuccessorBoundary({'],
 ] as const;
 
 function occurrences(haystack: string, needle: string): number {
@@ -243,6 +312,14 @@ function bindingErrors(candidate: string, bindings: ReadonlyArray<readonly [stri
     const count = occurrences(candidate, binding);
     return count === 1 ? [] : [`${label}: expected one binding, got ${count}`];
   });
+}
+
+function reloadAssessorErrors(candidate: string): string[] {
+  const errors = bindingErrors(candidate, REQUIRED_RELOAD_ASSESSOR_BINDINGS);
+  if (candidate.includes('canonicalJson(operations?.map(({ operation }) => operation))')) {
+    errors.push('operation order is duplicated outside the durability assessor');
+  }
+  return errors;
 }
 
 function ownerErrors(owner: string): string[] {
@@ -276,10 +353,40 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
     for (const [label, binding, count] of REQUIRED_GLOBAL_BINDINGS) {
       expect(occurrences(source, binding), label).toBe(count);
     }
-    expect(bindingErrors(reloadAssessor, REQUIRED_RELOAD_ASSESSOR_BINDINGS)).toEqual([]);
+    expect(reloadAssessorErrors(reloadAssessor)).toEqual([]);
     expect(bindingErrors(contractSource, REQUIRED_CONTRACT_BINDINGS)).toEqual([]);
     expect(bindingErrors(reportSource, REQUIRED_REPORT_BINDINGS)).toEqual([]);
     expect(contractSource).not.toContain('reloaded?.authorityJson === committed?.authorityJson');
+    expect(source.indexOf('const inventorySuccessorBoundary = assessArc2InventorySuccessorBoundary({'))
+      .toBeLessThan(source.indexOf('const engineeringImportToken = await sliceToken(sess);'));
+  });
+
+  it('blocks fixture and native Arc 2 reds before mutable Arc 3 while admitting only a clean stage', () => {
+    expect(assessArc2InventorySuccessorBoundary({
+      fixtureGreen: true, findingCountBefore: 7, findingCountAfter: 7,
+    })).toEqual({ kind: 'ready', canEnterMutableArc3: true, reasons: [] });
+    expect(assessArc2InventorySuccessorBoundary({
+      fixtureGreen: false, findingCountBefore: 7, findingCountAfter: 7,
+    })).toEqual({
+      kind: 'blocked', canEnterMutableArc3: false, reasons: ['exact Arc 2 fixture'],
+    });
+    expect(assessArc2InventorySuccessorBoundary({
+      fixtureGreen: true, findingCountBefore: 7, findingCountAfter: 8,
+    })).toEqual({
+      kind: 'blocked', canEnterMutableArc3: false, reasons: ['zero Arc 2 findings'],
+    });
+    expect(assessArc2InventorySuccessorBoundary({
+      fixtureGreen: false, findingCountBefore: 7, findingCountAfter: 8,
+    })).toEqual({
+      kind: 'blocked', canEnterMutableArc3: false,
+      reasons: ['exact Arc 2 fixture', 'zero Arc 2 findings'],
+    });
+    expect(assessArc2InventorySuccessorBoundary({
+      fixtureGreen: true, findingCountBefore: 8, findingCountAfter: 7,
+    })).toEqual({
+      kind: 'blocked', canEnterMutableArc3: false,
+      reasons: ['monotonic Arc 2 finding count'],
+    });
   });
 
   it('makes removal of every causal owner binding focused red', () => {
@@ -293,7 +400,7 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
     for (const [index, [label, binding]] of REQUIRED_RELOAD_ASSESSOR_BINDINGS.entries()) {
       const marker = `__ARC2_RELOAD_ASSESSOR_MUTANT_${index}__`;
       const mutant = reloadAssessor.replace(binding, marker);
-      expect(bindingErrors(mutant, REQUIRED_RELOAD_ASSESSOR_BINDINGS), label)
+      expect(reloadAssessorErrors(mutant), label)
         .toContain(`${label}: expected one binding, got 0`);
     }
     for (const [index, [label, binding]] of REQUIRED_CONTRACT_BINDINGS.entries()) {
@@ -302,6 +409,18 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
       expect(bindingErrors(mutant, REQUIRED_CONTRACT_BINDINGS), label)
         .toContain(`${label}: expected one binding, got 0`);
     }
+  });
+
+  it('keeps operation-order diagnosis solely in the durable ledger assessor', () => {
+    const duplicateDiagnosis = reloadAssessor.replace(
+      '    || reloadedEntry?.instanceId !== committedEntry?.instanceId',
+      "    || canonicalJson(operations?.map(({ operation }) => operation))\n"
+        + "      !== canonicalJson(['equip', 'unequip', 'salvage', 'pending-claim'])\n"
+        + '    || reloadedEntry?.instanceId !== committedEntry?.instanceId',
+    );
+    expect(duplicateDiagnosis).not.toBe(reloadAssessor);
+    expect(reloadAssessorErrors(duplicateDiagnosis))
+      .toContain('operation order is duplicated outside the durability assessor');
   });
 
   it('makes every causal stage reversal red while retaining both bindings', () => {

@@ -131,6 +131,11 @@ type PlannedProductTransactionOutcome<Plan extends ReceiptAuthorityPlan> =
     readonly plan: Plan;
   }
   | {
+    readonly kind: 'revision-exhausted';
+    readonly revision: number;
+    readonly plan: Plan;
+  }
+  | {
     readonly kind: 'duplicate-receipt';
     readonly receiptKey: string;
     readonly existing: MutationReceipt;
@@ -781,6 +786,8 @@ async function commitPlannedProduct<Plan extends ReceiptAuthorityPlan>(
           saved,
         };
       case 'stale':
+        return { ...outcome, plan: input.plan };
+      case 'revision-exhausted':
         return { ...outcome, plan: input.plan };
       case 'duplicate-receipt':
         return { ...outcome, plan: input.plan };

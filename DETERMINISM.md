@@ -52,9 +52,12 @@
 > Player rarity is a strict projection boundary, not a new outcome: only integer raw tiers `0..14`
 > enter the ten-name ladder, raw `9..14` collapse to Transcendent, invalid/missing values render
 > nothing, and internal art-grade labels/raw numbers never become player copy. The current Tame
-> fauna greeting is also presentation-only: it may sound once only after the exact durable result
-> and matching current ownership revision, uses the deterministic creature-audio identity, and can
-> neither choose nor change the capture. Broader audio remains absent. Existing ordinary Slice
+> greeting and accepted Feed acknowledgement are also presentation-only: each may sound once only
+> after its exact durable result, matching current ownership revision and accessible counterpart,
+> uses deterministic creature-audio identity, consumes no gameplay RNG, and can neither choose nor
+> change the capture or meal. Feed retains one latest successful ownership/key rather than an
+> unbounded event set; the same or any superseded result is rejected. Its inline polite status is the
+> sole accessible announcement and the simultaneous corner toast is visual-only. Broader audio remains absent. Existing ordinary Slice
 > evidence records `recoveryClaimed:false`; the dedicated uninterrupted 20-minute recovery
 > certificate remains pending.
 
@@ -86,9 +89,10 @@
 > a second draw or write. Postcommit publication verifies and exposes Arc 4 and V2 together.
 > Reopen/reload and UI order do not reroll or retarget the action. Source-only Arc 4 growth leaves the
 > four canonical empty-shard bytes invariant, proving the delta does not duplicate unchanged source
-> state. Arc 5 breeding/care/companion writers remain absent; the internal V2-only successor has an
-> exact five-carrier output, applies the one-time bounded child-`fed` rule above and is not exported
-> publicly.
+> state. Arc 5 breeding and broader care/companion writers remain absent. The one player-live Feed
+> writer advances one exact creature and flora lot through a receipt-bound CAS; its postcommit audio
+> expression is a non-authoritative presentation consumer. The internal V2-only successor has an
+> exact five-carrier output, applies the one-time bounded child-`fed` rule above and is not exported publicly.
 
 > **2026-08-24 F4 + Arc 2 outcome-determinism overlay — current local implementation:**
 > `SessionRNGState` now persists one uint32 seed, isolated semantic-domain counters and one global
