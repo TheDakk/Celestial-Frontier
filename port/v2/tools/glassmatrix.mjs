@@ -10231,7 +10231,7 @@ async function main() {
               &&mealText.includes('requires reload and cannot feed twice')
               &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
               &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
-              &&mealText.includes('Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent')
+              &&/refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(mealText)
               &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, breeding, renaming, Field Scouts, duels, and missions remain unavailable')
               &&!mealContradiction,
             lessonContradiction=/(?:wrong-world detour|Escape)[^.!?]{0,120}(?:abandons? Sol|abandons? (?:the )?lesson|keeps? the detour open)/i.test(lessonText),

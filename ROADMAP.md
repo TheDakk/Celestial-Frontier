@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-29 · UNIVERSE POLISH + ARC 5 · COMPENDIUM ACTIVATION CERTIFIED · FULL RESTART NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · UNIVERSE POLISH + ARC 5 · THREE GATES GREEN · SLICE INSTRUMENT REPAIR READY TO SIGN ◀◀◀
 
 ### Exact current boundary
 
@@ -42,10 +42,14 @@ the archive verbatim and refresh this handoff in place.
   `9ae0ffa3c8d39d0a05b6f8b823576b88af8fb516`, parent `b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974`).
   It activates the reviewed ruler, commits all four calibration carriers and synchronized docs,
   passes the full browser-free battery and owns the exact 78/78 Compendium certificate below.
+- **Exact stopped full-chain source:** signed evidence descendant
+  `bf24a4921eb5ca757a4978b9d01e44ae39a0a06d` (tree
+  `9518b5ff8df81e82837687bfe8c6ea4933ddf97c`, parent `27513798bedd9e4337d0b1db9712fa784b90b9fd`).
+  Layout, SceneMemory and Compendium passed once and named-verified; Slice then stopped on two
+  independent instrument/setup defects. Glass and Recovery did not run.
 - Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully
-  contained. The exact activation source was **111 commits ahead** of `origin/openai/mac`; the
-  signed certificate-evidence descendant is **112 commits ahead**. Everything remains local and
-  unpushed.
+  contained. The stopped source is **112 commits ahead** of `origin/openai/mac`; the signed repair
+  checkpoint will be **113 commits ahead**. Everything remains local and unpushed.
 - Temporary `/usr/bin/caffeinate -dis` remains active so macOS and 1Password stay available during
   the authorized local certification. Restore normal monitors-off/sleep behavior only after the
   complete chain and final handoff are safe.
@@ -233,10 +237,45 @@ the archive verbatim and refresh this handoff in place.
   8,637,650 bytes with SHA-256
   `3b0116f98a77e3089ef80fd78ebc762a658c74907a2c5e473061718c9860e7a6`.
 
-### Next exact action — sign evidence descendant, then restart from Layout
+### Stopped `bf24a492…` full-chain restart — three green predecessors, Slice instrument red
 
-- Preserve this certificate and synchronized docs in one signed clean evidence descendant. From
-  that changed source, a completely fresh once-only campaign must start at
+- Layout `20260829-universe-polish-bf24a4921eb5-layout` passed **787/787** across ten viewports in
+  76,215 ms; SceneMemory `…-scenemem` passed **44/44** in 10,822 ms; Compendium
+  `…-compendium` passed **78/78** in 45,945 ms with six review PNGs. Each ran once, used zero
+  retries and passed its exact named verifier on the same clean signed source.
+- Slice `20260829-universe-polish-bf24a4921eb5-slice` ran once with zero retries for 239,797 ms and
+  correctly stopped before Glass/Recovery. Findings 0–8 are one cascade: the truthful release bullet
+  says `; refused, stale…`, while Slice and Glass alone required an uppercase exact substring and
+  therefore restored every later release mutation to a false base. Finding 9 is independent: the
+  portable fixture has Sound and Creature Voices off, Slice enabled only Sound, and then demanded an
+  oscillator even though the product correctly requires both preferences. No gameplay defect is
+  evidenced.
+- The bounded repair changes only Slice/Glass instruments and browser-free tests. The release copy
+  and app bundle remain byte-identical; SceneMemory build/game inputs remain `2d4ff26…` / `87660ca…`
+  and Compendium producer remains `d97370c0…`. Both browser oracles now match the silence clause
+  case-insensitively. Slice opens real Settings when either audio preference is off, natively toggles
+  only the missing controls, verifies both enabled and retains the exact oscillator/graph outcome.
+  Missing voice-toggle, incomplete final proof and removed case-fold mutations turn the focused
+  tests red.
+- Browser-free repair battery is green: focused **64/64**, Slice and Glass report selftests,
+  **163 files / 1,711 passed + 1 skipped**, all three typechecks, `artunused`, diff hygiene and exact
+  current producer derivation.
+- Immutable stopped-chain raw/gzip SHA-256 pairs:
+  - Layout `9ad615522348a5b7c3da7e46230a4c03c3cf96501ebd4f119cb94635ced80a85` /
+    `8c6743839683b1917ba52dbf831967d9902de5be535954069caa140296ed6893`;
+  - SceneMemory `dede46d7dfb3d8bc6f57e054ebf2af7e21aa2292aa21c0e42c2663c59ec2b910` /
+    `025328bd245b90b0a9a54a75f77057309318f241ca5b122a8a3d0df012f4f98d`;
+  - Compendium `fa866a078532457531e0525217dde12f6e5a2230124634f7b0cd413f45b8b3db` /
+    `0b3e90a0ce26e437823c506a7c1baddcc2f589f05fab94234819030439aa32c4`;
+  - Slice report `9d047013a39f522485067f62b11503ddb951f690591b06367b607e9b75a9fef0` /
+    `9878f712f12c5966fc2c816bb3efb5856c2cfdfc5ecc8c2b4cd5913c396c488b`;
+  - Slice log `02bc7642d85e8fdddff6884591046d8bbe89c92ce95a8976ff1210be1f5e43e9` /
+    `caa22e4ad8e493aeacd0659f52625ce1001ceb29b9fb7e5b4010efee0351b857`.
+
+### Next exact action — sign repair, then restart from Layout
+
+- Preserve the five stopped-chain carriers, repair and synchronized docs in one signed clean
+  checkpoint. From that changed source, a completely fresh once-only campaign must start at
   **Layout 787 → SceneMemory 44 → Compendium 78 → Slice → Glass 12 → Recovery 20-minute**.
   Every stage uses source-derived IDs and stops/preserves on any red, nonzero or instrument result.
 - Compatible Edge point updates remain provenance only and never trigger a rebaseline, calibration
@@ -254,8 +293,8 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** preserve the green activation certificate and synchronized handoff in a signed
-  clean evidence descendant, then start the fresh full chain from Layout. Keep temporary
+- **OpenAI/Codex:** sign the preserved stopped-chain evidence plus bounded Slice/Glass repair, then
+  restart the fresh full chain from Layout. Keep temporary
   `/usr/bin/caffeinate -dis` active until that endpoint, then restore normal monitor/sleep behavior.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
   apply `actions-budget-approved`, dispatch, rerun, merge, deploy, publish or bump a version.

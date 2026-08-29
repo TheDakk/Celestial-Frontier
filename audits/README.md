@@ -10,6 +10,43 @@ summary of it.
 
 ## Contents
 
+### Signed `bf24a492…` universe-polish restart — Layout/SceneMemory/Compendium PASS, Slice instrument stop
+
+Signed clean source `bf24a4921eb5ca757a4978b9d01e44ae39a0a06d` (tree
+`9518b5ff8df81e82837687bfe8c6ea4933ddf97c`, parent `27513798bedd…`) passed Layout **787/787**
+in 76,215 ms, SceneMemory **44/44** in 10,822 ms and Compendium **78/78** in 45,945 ms, each once
+without retry and with exact named verification. Slice
+`20260829-universe-polish-bf24a4921eb5-slice` then ran once for 239,797 ms and stopped before
+Glass/Recovery with ten findings.
+
+Nine findings were one release-oracle cascade: the truthful Feed bulletin used grammatical
+`; refused, stale…`, while Slice and Glass alone required capitalized exact copy. The independent
+tenth finding waited for Feed audio after the imported fixture left Creature Voices off; product
+policy correctly requires both Sound and Creature Voices. The repair leaves app/release bytes and
+memory producers unchanged, case-folds the shared silence promise in both browser oracles and uses
+real Settings to enable and verify both preferences before retaining the exact oscillator/graph
+outcome. Focused 64/64, both report selftests, full 1,711-pass + one-skip v2, all typechecks,
+`artunused`, producer derivation and diff hygiene are green.
+
+- `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_014157430.json.gz`: 5,026 compressed bytes,
+  SHA-256 `8c6743839683b1917ba52dbf831967d9902de5be535954069caa140296ed6893`; 106,976 raw bytes,
+  SHA-256 `9ad615522348a5b7c3da7e46230a4c03c3cf96501ebd4f119cb94635ced80a85`.
+- `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_014226362.json.gz`: 30,488 compressed bytes,
+  SHA-256 `025328bd245b90b0a9a54a75f77057309318f241ca5b122a8a3d0df012f4f98d`; 426,760 raw bytes,
+  SHA-256 `dede46d7dfb3d8bc6f57e054ebf2af7e21aa2292aa21c0e42c2663c59ec2b910`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_014326379.json.gz`: 450,582 compressed bytes,
+  SHA-256 `0b3e90a0ce26e437823c506a7c1baddcc2f589f05fab94234819030439aa32c4`; 8,595,166 raw bytes,
+  SHA-256 `fa866a078532457531e0525217dde12f6e5a2230124634f7b0cd413f45b8b3db`.
+- `ARC4_SLICE_UNIVERSE_POLISH_RELEASE_NOTE_FAILURE_20260829_014859940.json.gz`: 5,374 compressed
+  bytes, SHA-256 `9878f712f12c5966fc2c816bb3efb5856c2cfdfc5ecc8c2b4cd5913c396c488b`; 122,262 raw bytes,
+  SHA-256 `9d047013a39f522485067f62b11503ddb951f690591b06367b607e9b75a9fef0`.
+- `ARC4_SLICE_UNIVERSE_POLISH_RELEASE_NOTE_FAILURE_20260829_014859940.log.gz`: 3,323 compressed
+  bytes, SHA-256 `caa22e4ad8e493aeacd0659f52625ce1001ceb29b9fb7e5b4010efee0351b857`; 55,984 raw bytes,
+  SHA-256 `02bc7642d85e8fdddff6884591046d8bbe89c92ce95a8976ff1210be1f5e43e9`.
+
+All five carriers pass gzip integrity. This campaign is immutable and grants no Slice, Glass,
+Recovery, HUMAN, hosted, merge or release authority. The signed repair must restart at Layout.
+
 ### Signed `b65fd5d…` calibration + signed `27513798…` activation — exact Compendium certificate green
 
 Signed clean calibration source `b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974` (tree
