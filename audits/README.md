@@ -10,6 +10,71 @@ summary of it.
 
 ## Contents
 
+### Signed `55126af…` universe-polish campaign — Layout/SceneMemory PASS, Compendium product-budget stop
+
+Signed clean source `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa` (tree
+`1b561cae692f38d2b8f38e66578a68657b0567a7`, parent
+`283c8b3b04e0e9a70bb7e4242e3408169c24b02a`) stayed clean and unchanged through every completed
+stage. Layout `20260828-universe-polish-55126af50f3f-layout` ran once with zero retries, passed all
+787 sealed outcomes across ten viewports in 76,378 ms and passed named verification. SceneMemory
+`20260828-universe-polish-55126af50f3f-scenemem` then ran once with zero retries, passed all 44
+outcomes in 10,672 ms and passed named verification.
+
+Compendium `20260828-universe-polish-55126af50f3f-compendium` ran once with zero retries on
+Microsoft Edge `151.0.4129.107` / CDP `1.3`, retained a complete terminal product `fail` report in
+46,681 ms, and its named verifier accepted that exact red report with the expected nonzero result.
+Exactly four of 78 outcomes failed; the other 74 resource, lifecycle, ownership, DOM,
+answerability and cleanup outcomes passed:
+
+- **Phone heap:** V8 used heap was 10,902,116 B against 10,485,760 B (416,356 B / 3.97% over),
+  and backing storage was 4,678,792 B against 4,194,304 B (484,488 B / 11.55% over). Embedder heap
+  was 3,070,912 B against 4,194,304 B and aggregate heap was 16,222,216 B against 16,777,216 B,
+  both within their ceilings.
+- **Phone bytes:** encoded thumbnail bytes were 3,202,320 B against 2,621,440 B (580,880 B /
+  22.16% over), and the retained portrait was 308,486 B against 262,144 B (46,342 B / 17.68%
+  over). Cache entries, decoded pixels/bytes, jobs, leases, subscribers and portrait entries passed.
+- **Desktop heap:** aggregate heap was 21,239,200 B against 20,971,520 B (267,680 B / 1.28%
+  over). V8 used heap was 14,536,484 B against 14,680,064 B, embedder heap was 3,220,288 B against
+  4,194,304 B and backing storage was 6,278,552 B against 6,291,456 B, all within their ceilings.
+- **Desktop bytes:** encoded thumbnail bytes were 8,528,076 B against 6,815,744 B (1,712,332 B /
+  25.12% over), and the retained portrait repeated the 308,486 B against 262,144 B breach. All
+  structural/resource-ownership counts passed.
+
+Warm plateaus passed on both profiles, including desktop's 326,652 B range against 524,288 B.
+Independent diagnostic audits found no leak-shaped lifecycle evidence: the stable plateaus and
+roughly 22–25% encoded-thumbnail increase align with the deliberately richer deterministic art
+producer. The app's harder runtime encoded caps also retained substantial room (phone
+3,202,320/6,690,816 B; desktop 8,528,076/17,842,176 B). This is a real current-product budget red,
+but it is **not** Edge drift and does not request an Edge rebaseline: the version-tolerant browser
+contract accepted `.107` exactly as designed.
+
+This immutable report remains bound to measurement authority
+`3c811274c4f67cf706b621142db2001d614ba6b1a3c3669daf6ce1dacf67b574`. The subsequent
+calibration-required authority-binding repair advances the prospective measurement to
+`cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78`; it does not rewrite this
+report or promote it into a calibration sample.
+
+The fail-fast campaign stopped before Slice, Glass or Recovery. One run cannot move numeric
+ceilings. The prescribed successor is a new signed source that puts the Compendium budget into
+`calibration-required`, then runs exactly three independent current-producer candidates per profile
+plus the paired broken baseline at exact commit
+`38447019517147319bd08c598202d097ee866874`, each once with zero retries. Only that evidence may
+select strict replacement ceilings; certification must then restart the complete serial chain from
+Layout on another unchanged signed source.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260829_001955334.json.gz`: 5,029 compressed bytes,
+  SHA-256 `8a922d61d7195db624984f4ca735b82b5076955d7c641295061cc252573cb000`; 106,976
+  decompressed bytes, SHA-256 `bd2dacb071e4f667a0565b2cd43de06461adcc228bc60b1b37700bbf24f3a813`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260829_002021315.json.gz`: 30,441 compressed bytes,
+  SHA-256 `f9bb59a819c91babe2cc429a41b00ce43cf49582d7d8b0e7db4a13dbcce448c5`; 426,948
+  decompressed bytes, SHA-256 `1355c8a67e64a4cf058e6dd85aeda006396e37e7b885f97b724f173da440ec2d`.
+- `COMPENDIUMMEM_CURRENT_INPUT_FAILURE_20260829_002129399.json.gz`: 452,821 compressed bytes,
+  SHA-256 `25292bcd0ff55a32842c0958d25ae9d299c1ef8470ca6dc7269ccdfd1c092716`; 8,591,680
+  decompressed bytes, SHA-256 `c5adaca207770251b48b3cadf634d80bd03cb55f589814fd3e93c8c635aba5d8`.
+
+All three carriers pass gzip integrity and decompress byte-for-byte to the exact sizes and hashes
+above. They remain immutable failure evidence and must never be relabeled or rerun.
+
 ### Signed `a9d35cc…` universe-polish campaign — Layout PASS, SceneMemory instrument stop
 
 Signed clean source `a9d35cc795076a8903807d02ae011288ea5a639c` (tree

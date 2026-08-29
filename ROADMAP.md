@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-28 · UNIVERSE POLISH + ARC 5 · FIRST CAMPAIGN PRESERVED · INSTRUMENT REPAIR ACTIVE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-28 · UNIVERSE POLISH + ARC 5 · CURRENT CAMPAIGN PRESERVED · COMPENDIUM CALIBRATION REQUIRED ◀◀◀
 
 ### Exact current boundary
 
@@ -25,25 +25,15 @@ the archive verbatim and refresh this handoff in place.
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, upstream
   `origin/openai/mac`, SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`. Do not edit
   another agent worktree or the sibling live-site repository.
-- **Signed implementation commit:** `c55cc63ee3a8c9b761cfccb2de2ad108f46c6b4e` (tree
-  `6e89ef511543e79d9bd1abfe1e21d6243e0452f0`, parent
-  `bfdcb1dab6876147e16e451bec94ae4475a2bb58`) contains the reviewed universe-polish, Arc 5 Feed,
-  locale/ecology/audio joins, final memory-oracle repair, current authorities, Guide/release copy
-  and synchronized current references. The commit contains an SSH signature; local verification
-  needs an allowed-signers file and therefore reports no local trust judgment.
-- **First campaign source:** signed docs descendant `a9d35cc795076a8903807d02ae011288ea5a639c`
-  (tree `c2374dc04488654058919d0f539f770ea9e3e467`, parent `c55cc63…`) supplied the first exact
-  browser campaign. Locally known `origin/develop` remains
-  `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully contained. The branch is **107 commits
-  ahead** of `origin/openai/mac` at that first-campaign checkpoint; work remains local and unpushed.
-- **Signed instrument-repair commit:** `283c8b3b04e0e9a70bb7e4242e3408169c24b02a` (tree
-  `49ee6bab3477b754a583bd702b81beba6983d2b3`, parent `a9d35cc…`) repairs the preserved
-  SceneMemory stop, rebinds only its producer identity, adds positive/negative timeout controls and
-  retains both first-campaign carriers under `audits/`. The commit contains an SSH signature; local
-  verification needs an allowed-signers file and therefore reports no local trust judgment. The
-  branch is now **108 commits ahead** of `origin/openai/mac`.
-- This ROADMAP-only working-copy refresh is the sole change after `283c8b3…`. Sign it as a tiny docs
-  descendant, require a clean worktree and use that exact HEAD as the new campaign source.
+- **Exact current campaign source:** signed commit
+  `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa` (tree
+  `1b561cae692f38d2b8f38e66578a68657b0567a7`, parent
+  `283c8b3b04e0e9a70bb7e4242e3408169c24b02a`). It contains the reviewed universe-polish and Arc 5
+  implementation plus the bounded SceneMemory transport repair. The commit has an SSH signature;
+  local verification needs an allowed-signers file and therefore reports no local trust judgment.
+- Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully
+  contained. The branch was **109 commits ahead** of `origin/openai/mac` when this campaign began.
+  Work and the three new immutable campaign carriers remain local and unpushed.
 - Temporary `/usr/bin/caffeinate -dis` remains active so macOS and 1Password stay available during
   the authorized local certification. Restore normal monitors-off/sleep behavior only after the
   complete chain and final handoff are safe.
@@ -88,12 +78,16 @@ the archive verbatim and refresh this handoff in place.
   as run provenance. Only a real capability/producer/ruler change can trigger recalibration.
   Compendium's separately sealed `.101` hosted package remains a repeatable calibration input, not
   a system-Edge version lock.
-- Current Compendium measurement authority is
-  `3c811274c4f67cf706b621142db2001d614ba6b1a3c3669daf6ce1dacf67b574`; current producer is
+- The immutable Compendium red is bound to measurement authority
+  `3c811274c4f67cf706b621142db2001d614ba6b1a3c3669daf6ce1dacf67b574`. The fail-closed
+  authority-binding repair advances the prospective calibration measurement to
+  `cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78`; current producer remains
   `d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271`. Current SceneMemory
   buildDist/gameMain inputs are `2d4ff26c0afc2e21373c2797393374a7057f4a43b793534b9eeb8aca7801281c` /
   `87660ca42fe6f1ee06c28315f143297c5fff2f0b92eb540a285c616cb8ddb745`.
-  Fixed rulers, historical samples, ceilings and browser policy did not move.
+  Browser policy and the product/runtime limits did not move. The current Compendium evidence
+  transition deliberately clears live samples and numeric ceilings, preserves all former ruler
+  evidence as historical/unrebound, and targets the current measurement/producer for calibration.
 
 ### Review and browser-free evidence
 
@@ -106,7 +100,8 @@ the archive verbatim and refresh this handoff in place.
 - Final browser-free battery passed: root Actions-budget and browser-resolver selftests; v1 validate
   with **1,010/1,010** renders and the unchanged 50-probe v1.0 fingerprint; full root smoke and
   training checkpoint; golden seeds, code/audio/save fixtures, rarity and dead-code scans; v2
-  **163 files / 1,706 passed + 1 skipped**; all three TypeScript configurations; `artunused`;
+  **163 files / 1,710 passed + 1 skipped** after the calibration-transition controls; all three
+  TypeScript configurations; `artunused`;
   **1,014/1,014** override routes plus the complete mutation control; art/coverage/specification
   audits; current producer binding; **108** SceneMemory-focused assertions; Guide/release,
   Slice/Glass/persona/preview/Recovery selftests; and global/staged diff checks.
@@ -117,7 +112,7 @@ the archive verbatim and refresh this handoff in place.
   It confirms the new biome atmosphere and depth while preserving creature/plant/ship structure.
   This is not HUMAN art acceptance.
 
-### First exact campaign — immutable instrument stop and bounded repair
+### Prior exact campaign — immutable instrument stop and bounded repair
 
 - Root browser preflight passed with system Edge `151.0.4129.107` / CDP `1.3`; Layout selftest
   passed. Layout `20260828-universe-polish-a9d35cc79507-layout` then ran once with zero retries,
@@ -136,19 +131,73 @@ the archive verbatim and refresh this handoff in place.
   SceneMemory collector producer hash changes; browser policy, product, fixtures, samples, ceilings
   and all numeric rulers remain unchanged.
 
-### Next exact action — new repaired signed source, fresh chain
+### Current exact campaign — Layout and SceneMemory green, Compendium product-red
 
-- Repair verification is complete: the independent focused review is **CLEAR** with 110 assertions;
-  the full v2 suite passed **163 files / 1,708 passed + 1 skipped**; all three typechecks,
-  `artunused`, current-producer derivation, JSON/gzip integrity and global diff checks passed.
-  Sign this ROADMAP-only descendant. That clean descendant—not `a9d35cc…`—starts a completely fresh
-  campaign exactly once and serially: **Layout 787 → SceneMemory 44 → Compendium 78 → Slice →
-  Glass 12 → Recovery 20-minute**.
-  Give every stage a new source-derived run ID, named-verify it before starting its successor, and
-  stop/preserve immediately on any red, nonzero or instrument finding. Never rerun the immutable
-  `a9d35cc…` campaign.
-- After the chain, preserve exact run IDs, durations and report hashes; refresh this handoff in
-  place; sign the final docs/evidence descendant; then restore normal monitor/sleep behavior.
+- The clean signed `55126af…` source ran each stage once with **zero retries** on system Microsoft
+  Edge `151.0.4129.107` / CDP `1.3`. Layout
+  `20260828-universe-polish-55126af50f3f-layout` passed **787/787** across ten viewports in
+  **76,378 ms** and passed named verification. SceneMemory
+  `20260828-universe-polish-55126af50f3f-scenemem` passed the current input-v4 contract **44/44**
+  in **10,672 ms**, including both vista lifecycles and complete cleanup, then passed named
+  verification.
+- Compendium `20260828-universe-polish-55126af50f3f-compendium` completed its full measurement in
+  **46,681 ms** and stopped terminal product `fail` at **74/78**. All 78 expected outcomes were
+  present; exactly `phone/heap-ceiling`, `phone/byte-ceiling`, `desktop/heap-ceiling` and
+  `desktop/byte-ceiling` were red. The exact FAIL report passed its named verifier with the expected
+  nonzero verdict. The chain correctly stopped before Slice, Glass and Recovery; do not run or
+  automatically retry those stages on `55126af…`.
+- Exact breached dimensions:
+  - phone V8 used heap **10,902,116 > 10,485,760** and backing storage
+    **4,678,792 > 4,194,304**; embedder **3,070,912 < 4,194,304** and aggregate
+    **16,222,216 < 16,777,216** remained green;
+  - phone encoded art **3,202,320 > 2,621,440** and encoded portrait
+    **308,486 > 262,144**;
+  - desktop aggregate heap **21,239,200 > 20,971,520**; V8 used
+    **14,536,484 < 14,680,064**, embedder **3,220,288 < 4,194,304** and backing storage
+    **6,278,552 < 6,291,456** remained green;
+  - desktop encoded art **8,528,076 > 6,815,744** and encoded portrait
+    **308,486 > 262,144**.
+- Every cache-entry, decoded-pixel/byte, job, lease, subscriber, portrait-entry, ownership,
+  answerability and cleanup count stayed within its ruler. Both profiles retained a stable warm
+  plateau; desktop range was **326,652 < 524,288**. The app's independent hard runtime caps also
+  retain substantial headroom. Together with the deterministic full-cache payload increase, these
+  facts indicate the intended higher-entropy universe art increased compressed PNG and stable
+  heap/backing cost; they do **not** indicate a leak, invalid instrument or Edge-version drift.
+  Independent red-diagnosis and budget-policy audits agree with that disposition.
+- Immutable current-campaign carriers:
+  - Layout `audits/PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260829_001955334.json.gz`: raw/gzip SHA-256
+    `bd2dacb071e4f667a0565b2cd43de06461adcc228bc60b1b37700bbf24f3a813` /
+    `8a922d61d7195db624984f4ca735b82b5076955d7c641295061cc252573cb000`;
+  - SceneMemory `audits/ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260829_002021315.json.gz`: raw/gzip
+    SHA-256 `1355c8a67e64a4cf058e6dd85aeda006396e37e7b885f97b724f173da440ec2d` /
+    `f9bb59a819c91babe2cc429a41b00ce43cf49582d7d8b0e7db4a13dbcce448c5`;
+  - Compendium `audits/COMPENDIUMMEM_CURRENT_INPUT_FAILURE_20260829_002129399.json.gz`: raw/gzip
+    SHA-256 `c5adaca207770251b48b3cadf634d80bd03cb55f589814fd3e93c8c635aba5d8` /
+    `25292bcd0ff55a32842c0958d25ae9d299c1ef8470ca6dc7269ccdfd1c092716`.
+
+### Next exact action — sign the fail-closed transition, calibrate real producer drift, then restart
+
+- This working batch preserves/documents the immutable red and transitions the Compendium budget
+  to fail-closed `calibration-required`: null numeric ceilings, empty phone/desktop candidate arrays,
+  prospective current-authority binding and a fresh `measurement-required` paired baseline. Current
+  prospective calibration measurement is
+  `cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78`; current producer is
+  `d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271`. The preserved red remains
+  bound to its exact pre-transition measurement `3c811274…` and is not a calibration sample.
+  Historical samples remain preserved evidence for the former producer and are not relabelled.
+  Complete the independent review, sign this changed descendant and require a clean worktree before
+  collecting any calibration sample.
+- From that one unchanged signed calibration source, run **exactly three** distinct clean no-retry
+  candidate measurements per profile and one fresh paired broken-baseline measurement from exact
+  commit `38447019517147319bd08c598202d097ee866874` in an isolated detached worktree. Preserve each
+  report. Select strict ceilings from the candidate maxima with rational headroom—never from this
+  single red alone—and retain +1/fractional ceiling controls plus the paired baseline's exact fault
+  and breach discrimination.
+- Activate that selected budget on another changed signed clean commit, pass browser-free budget,
+  authority and mutation checks, and run one no-retry Compendium certification. Only after it passes
+  named verification may a completely fresh once-only campaign start again at **Layout 787 →
+  SceneMemory 44 → Compendium 78 → Slice → Glass 12 → Recovery 20-minute**. Every stage
+  uses source-derived IDs and stops/preserves on any red, nonzero or instrument result.
 
 ### Explicitly open after automation
 
@@ -158,13 +207,14 @@ the archive verbatim and refresh this handoff in place.
 - Gate G/live distant-world ecology playback remains deliberately unwired; the current join is pure
   and non-playing. D-9e remains design-gated. Gates A–I are not globally closed.
 - No production release, version bump, preview publication, deployment, push, PR update, Actions
-  run or merge is authorized by this local campaign.
+  run or merge is authorized by this local calibration/campaign work.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** sign this ROADMAP-only descendant of the reviewed `283c8b3…` repair; run the
-  fresh exact local chain above without retry; preserve evidence and finish the docs-only handoff.
-  Keep full caffeinate active until that endpoint.
+- **OpenAI/Codex:** preserve and sign the `55126af…` campaign evidence/docs, complete the bounded
+  Compendium recalibration path above, then start a fresh full chain only from the activated clean
+  source. Keep temporary `/usr/bin/caffeinate -dis` active until that endpoint, then restore normal
+  monitor/sleep behavior.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
   apply `actions-budget-approved`, dispatch, rerun, merge, deploy, publish or bump a version.
 - **PR details if Nick later authorizes the exact GitHub write:** base `develop`; source
