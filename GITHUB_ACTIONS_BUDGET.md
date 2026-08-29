@@ -6,7 +6,9 @@
 `390e8708086d413fc7d636441ec0523cf9d4b9ea` against base
 `7a9f4c1370dd84292388d718c38ff34214f6203b` once under `actions-budget-approved`, a
 92-minute maximum and no-retry rule. It is consumed terminal-red; the label was removed, PR #35
-remains Draft/unmerged, and no replacement attempt or changed-head push is authorized. PR #34 runs
+remains Draft/unmerged, and no replacement attempt is authorized. Nick separately authorized the
+final repair-branch push and PR metadata refresh; that update carries no approval label and grants
+no hosted attempt. PR #34 runs
 `32665404776` and `32677088518` are
 consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
 labels were removed. Its repaired third authorized changed-head attempt, run `32681394532`, passed
@@ -298,7 +300,7 @@ selftests also exceeded Vitest's inherited five-second case limit under Linux co
 their child processes had no hard termination bound. The label was removed; the run is consumed,
 PR #35 remains Draft/unmerged, and it must never be rerun or relabelled.
 
-The local changed-head repair makes tracked `celestial-frontier.html` the sole byte-exact legacy
+The changed-head repair makes tracked `celestial-frontier.html` the sole byte-exact legacy
 test carrier, gives evidence children an explicit 15-second hard timeout below a 20-second outer
 case, and adds the clean committed tracked-only rehearsal described above. Its controls also found
 and repaired four `artunused` findings that the stopped run never reached. SceneMemory build
@@ -307,7 +309,8 @@ build ID are byte-identical, and no numeric memory ceiling, browser contract or 
 Exact signed repair commit `9192b1aa66c38508cd19f5db0e4825b0a31d5516` and the final
 documentation-closed signed HEAD pass the exact tracked-only isolated rehearsal: 233/233 files,
 2,333 tests passed + one skipped, all TypeScript/unused/art/override/coverage/spec gates and 3/3
-current-producer tests. This is local repair evidence only. No replacement push, hosted attempt,
+current-producer tests. The final repair branch and refreshed draft-PR metadata are synchronized;
+this remains local/static evidence rather than a hosted green. No replacement hosted attempt,
 Ready transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

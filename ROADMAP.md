@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-29 · PR #35 PERMANENT CI-PARITY REPAIR · LOCAL CANDIDATE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · PR #35 PERMANENT CI-PARITY REPAIR · DRAFT PR CANDIDATE ◀◀◀
 
 ### Exact current boundary
 
@@ -27,19 +27,21 @@ the archive verbatim and refresh this handoff in place.
   Markdown; this repair also adds fail-closed selftest wiring to the two guarded workflows. Legacy
   `main.js` / `celestial-frontier.html`, the other-agent worktree and the sibling live-site
   repository remain untouched.
-- **Git/PR boundary:** draft PR **#35** already exists from **`openai/mac` → `develop`**. Its pushed
-  candidate is head **390e8708086d413fc7d636441ec0523cf9d4b9ea** against base
-  **7a9f4c1370dd84292388d718c38ff34214f6203b**. Exact signed implementation-repair commit
-  **9192b1aa66c38508cd19f5db0e4825b0a31d5516** passed the tracked-only rehearsal. The signed,
-  clean documentation-closed HEAD also must pass it before handoff; resolve that inherently
-  self-referential full identity with `git rev-parse HEAD` and provide it in the Git handoff. None of
-  this local repair has been pushed. Preserve every existing user change.
+- **Git/PR boundary:** draft PR **#35** exists from **`openai/mac` → `develop`** against base
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**. Its consumed run tested prior pushed head
+  **390e8708086d413fc7d636441ec0523cf9d4b9ea**. Exact signed implementation-repair commit
+  **9192b1aa66c38508cd19f5db0e4825b0a31d5516** passed the tracked-only rehearsal; the final signed
+  documentation-closed descendant passes it too and is synchronized to **`origin/openai/mac`** and
+  PR #35 by this handoff. Resolve that inherently self-referential full identity with
+  `git rev-parse HEAD` and the PR head, and provide it in the Git handoff. Preserve every existing
+  user change.
 - **Consumed hosted attempt:** Nick authorized exactly one `test-battery` run for that head/base with
   `actions-budget-approved`, a 92-minute maximum and no retry. Run **33273328362** is terminal-red
   and consumed; the label was removed, later browser stages were skipped, and PR #35 remains
-  Draft/unmerged. No replacement run, changed-head push, merge, version bump, preview publication,
-  release or deployment is authorized. Actions is **UNFROZEN**, but **zero exact hosted attempts are
-  currently authorized**.
+  Draft/unmerged. Nick separately authorized the final branch push and PR metadata refresh; that
+  update carries no Actions label and authorizes no workflow. No replacement run, merge, version
+  bump, preview publication, release or deployment is authorized. Actions is **UNFROZEN**, but
+  **zero exact hosted attempts are currently authorized**.
 - **Glass boundary:** the earlier Glass evidence-chain repair is part of pushed head `390e870…`.
   Bare Glass invocation still fails preflight by design without the immutable Slice predecessor ID.
 - **Naming:** **Pureforged** is the approved current v2 player-facing name for fully exceptional
@@ -50,7 +52,7 @@ the archive verbatim and refresh this handoff in place.
   **3f69e88ea8e34fdb8d9913276601b426ada783ae** owns the completed once-only
   Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain: Layout 787/787,
   SceneMemory 44/44, Compendium 78/78, zero-finding Slice, all 12 Glass viewports and the real
-  20-minute Recovery observation. This later local candidate does not inherit or relabel it.
+  20-minute Recovery observation. This later candidate does not inherit or relabel it.
 - Edge/Chrome/Chromium point versions are provenance only. A compatible browser update never
   requires rebaseline, recalibration or threshold movement.
 
@@ -131,7 +133,7 @@ production release are complete.
   Numeric ceilings, fixed rulers, historical calibration samples and browser-family policy did not
   change.
 - Staged and unstaged diff hygiene is green at this checkpoint.
-- **No browser-owning command was run for this later local source.** A fresh clean,
+- **No browser-owning command was run for this later source.** A fresh clean,
   committed-source immutable browser chain remains post-review work; the historical `3f69e88…`
   certificate is not evidence for these later additions.
 
@@ -226,23 +228,21 @@ findings only after that review.
 
 ### Paired handoff / Git protocol
 
-- **OpenAI/Codex:** the local PR #35 repair is signed, clean and tracked-only green on `openai/mac`.
-  Do not push the changed head, label, request a hosted battery, merge, release or deploy until Nick
-  authorizes that exact next operation.
+- **OpenAI/Codex:** the PR #35 repair is signed, clean, tracked-only green and synchronized from
+  `openai/mac` to `origin/openai/mac`. Its draft metadata is current. Do not label, request a hosted
+  battery, mark Ready, merge, release or deploy until Nick authorizes that exact next operation.
 - **Anthropic/Claude Code:** Nick does not need to open Claude in this OpenAI-owned worktree. When
   Nick starts the polish review, Claude works only from an `anthropic/*` branch/worktree created
   from the exact handed-off candidate—never by editing or copying files out of this worktree. Its
   review scope and six axes are complete above.
-- **GitHub step now:** none. PR #35 remains Draft at pushed head `390e870…`; its repair is local.
-  A later authorization must name the new full head/base, `actions-budget-approved`, 92-minute
-  maximum, one attempt/no retry, label removal and merge-on-green decision.
-- **Existing PR update, only after exact authorization:** [PR #35](https://github.com/TheDakk/Celestial-Frontier/pull/35),
-  base **develop**, source **openai/mac**. Its existing title
-  `feat(v2): complete roadmap campaign candidate` and pre-repair description are stale. Before any
-  Ready transition or one-run label, refresh both for the final pushed head; proposed title:
-  `feat(v2): complete roadmap campaign and harden CI parity`. The description must name the final
-  base/head, campaign scope, both CI root causes and bounded repairs, exact local verification,
-  retained historical browser authority, Claude/cross-agent synchronization effect, pending HUMAN/
-  browser evidence and the explicit no-release/no-deployment boundary.
+- **GitHub step now:** none. [PR #35](https://github.com/TheDakk/Celestial-Frontier/pull/35)
+  remains Draft at the synchronized repair head with no approval label. A later authorization must
+  name that full head/base, `actions-budget-approved`, 92-minute maximum, one attempt/no retry,
+  label removal and merge-on-green decision.
+- **Existing PR details:** base **develop**, source **openai/mac**, title
+  **`feat(v2): complete roadmap campaign and harden CI parity`**. Its refreshed description names
+  the exact base/head, campaign scope, both CI root causes and bounded repairs, exact local
+  verification, retained historical browser authority, Claude/cross-agent synchronization effect,
+  pending HUMAN/browser evidence and the explicit no-release/no-deployment boundary.
 - **Release status:** `develop`, `main` and the live site are unchanged; no production release or
   deployment is in progress.
