@@ -35,10 +35,15 @@ the archive verbatim and refresh this handoff in place.
   (tree `c2374dc04488654058919d0f539f770ea9e3e467`, parent `c55cc63…`) supplied the first exact
   browser campaign. Locally known `origin/develop` remains
   `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully contained. The branch is **107 commits
-  ahead** of `origin/openai/mac`; work remains local and unpushed.
-- The current working copy repairs the preserved SceneMemory instrument stop described below,
-  rebinds only its producer identity, adds positive/negative timeout controls and retains both
-  first-campaign carriers under `audits/`. It is not yet the next signed campaign source.
+  ahead** of `origin/openai/mac` at that first-campaign checkpoint; work remains local and unpushed.
+- **Signed instrument-repair commit:** `283c8b3b04e0e9a70bb7e4242e3408169c24b02a` (tree
+  `49ee6bab3477b754a583bd702b81beba6983d2b3`, parent `a9d35cc…`) repairs the preserved
+  SceneMemory stop, rebinds only its producer identity, adds positive/negative timeout controls and
+  retains both first-campaign carriers under `audits/`. The commit contains an SSH signature; local
+  verification needs an allowed-signers file and therefore reports no local trust judgment. The
+  branch is now **108 commits ahead** of `origin/openai/mac`.
+- This ROADMAP-only working-copy refresh is the sole change after `283c8b3…`. Sign it as a tiny docs
+  descendant, require a clean worktree and use that exact HEAD as the new campaign source.
 - Temporary `/usr/bin/caffeinate -dis` remains active so macOS and 1Password stay available during
   the authorized local certification. Restore normal monitors-off/sleep behavior only after the
   complete chain and final handoff are safe.
@@ -136,10 +141,9 @@ the archive verbatim and refresh this handoff in place.
 - Repair verification is complete: the independent focused review is **CLEAR** with 110 assertions;
   the full v2 suite passed **163 files / 1,708 passed + 1 skipped**; all three typechecks,
   `artunused`, current-producer derivation, JSON/gzip integrity and global diff checks passed.
-  Sign this repair/evidence batch, refresh this handoff with its exact commit, and sign that tiny
-  docs descendant. The clean descendant—not `a9d35cc…`—starts a completely fresh campaign exactly
-  once and serially: **Layout 787 → SceneMemory 44 → Compendium 78 → Slice → Glass 12 → Recovery
-  20-minute**.
+  Sign this ROADMAP-only descendant. That clean descendant—not `a9d35cc…`—starts a completely fresh
+  campaign exactly once and serially: **Layout 787 → SceneMemory 44 → Compendium 78 → Slice →
+  Glass 12 → Recovery 20-minute**.
   Give every stage a new source-derived run ID, named-verify it before starting its successor, and
   stop/preserve immediately on any red, nonzero or instrument finding. Never rerun the immutable
   `a9d35cc…` campaign.
@@ -158,9 +162,9 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** finish, independently review and sign the current SceneMemory instrument repair;
-  run the fresh exact local chain above without retry; preserve evidence and finish the docs-only
-  handoff. Keep full caffeinate active until that endpoint.
+- **OpenAI/Codex:** sign this ROADMAP-only descendant of the reviewed `283c8b3…` repair; run the
+  fresh exact local chain above without retry; preserve evidence and finish the docs-only handoff.
+  Keep full caffeinate active until that endpoint.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,
   apply `actions-budget-approved`, dispatch, rerun, merge, deploy, publish or bump a version.
 - **PR details if Nick later authorizes the exact GitHub write:** base `develop`; source
