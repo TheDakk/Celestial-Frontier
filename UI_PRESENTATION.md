@@ -1,24 +1,24 @@
 # Celestial Frontier — UI / Presentation System
 
-> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
-> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
-> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
-> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
-> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
-> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
-> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
-> ran once and passed named verification; there were no retries, findings or instrument failures.
-> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
-> exact source. It changes no UI/product, persistence, art, save, version, ruler or browser policy.
-> It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment authority;
-> physical-device heat/GPU evidence remains open. The seven evidence carriers and synchronized
-> references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
-> Keep temporary full caffeinate active while authorized local work continues, then restore it when
-> that work is complete. That signed source is the pre-change baseline; the current local
-> universe-wide visual implementation checkpoint is documented below. Edge `.107` / CDP `1.3` is
-> provenance only
-> and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
-> below is historical where superseded.
+> **Current universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
+> signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+> `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
+> chain on Edge `151.0.4129.107` / CDP `1.3`. Layout passed **787/787** in 76,603 ms,
+> SceneMemory **44/44** in 10,561 ms and Compendium **78/78** in 46,239 ms. Slice passed with zero
+> findings in 434,263 ms (raw report `33aa30b3…3411`); Glass passed all 12 viewports/reloads,
+> **104/104** controls and **36/36** Arc 4 outcomes in 85,823 ms with zero findings or instrument
+> failures (raw report `2a67a258…d591`); Recovery passed all **10/10** stages and **15/15**
+> observation outcomes in 1,290,953 ms, including 1,200,298 ms of real active observation (raw
+> report `b78e8a52…5907`). Every stage ran once with zero automatic retries and passed exact named
+> verification; Slice → Glass → Recovery hashes and source identities cross-bind exactly.
+>
+> The Arc 5 UI claim is only the real fauna-detail Feed flow: exact-instance companion/lot choice,
+> explicit Use 1, non-optimistic settlement, one inline polite/atomic announcement and an AT-excluded
+> visual toast before the bounded acknowledgement. It does not certify wider companion/care UI.
+> Automated contrast, focus, geometry and live-region predicates are not HUMAN visual/listening or
+> screen-reader judgment; physical-device touch/heat/battery/GPU evidence, whole-Gate, hosted/merge,
+> release/version and deployment authority remain open. Compatible browser point updates remain
+> provenance only. Earlier dated evidence blocks below remain historical verbatim where superseded.
 
 > **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
 > `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
@@ -121,11 +121,12 @@
 > seven art review tools now share one cross-platform resolver, then require connected
 > `Browser.getVersion` to report Chrome/Chromium/Edge (`Edg`)/HeadlessChrome with a complete
 > four-part version, executable/product/revision/UA/JS provenance and CDP `1.3` before evidence.
-> Each emits the exact tuple; compatible point versions are accepted and never rebaseline keys. A
-> fresh clean committed-source Slice → Glass → Recovery
-> chain, fixed-seed before/after screenshots, HUMAN visual/accessibility review and physical-device
-> frame-time, heat, battery and true GPU/resource evidence remain open, so no whole-Gate, campaign,
-> release or deployment claim follows.
+> Each emits the exact tuple; compatible point versions are accepted and never rebaseline keys.
+> Exact signed source `3f69e88…` passed its clean committed-source Slice → Glass → Recovery chain,
+> including all 12 Glass viewports and the real 20-minute Recovery observation. Fixed-seed developer
+> screenshots remain automated/developer evidence only; HUMAN visual/accessibility and screen-reader
+> review plus physical-device frame-time, touch, heat, battery and true GPU/resource evidence remain
+> open, so no whole-Gate, hosted, release or deployment claim follows.
 
 > **2026-08-27 audio/rarity presentation overlay — current local candidate:** Settings now renders
 > persistent **Sound**, **Volume** and **Creature voices** controls from the actual saved values.

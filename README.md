@@ -1,62 +1,26 @@
 # Celestial-Frontier
 
-> **Current universe-polish certification boundary (2026-08-28/29):** exact signed source
-> `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa` passed Layout 787/787 and SceneMemory 44/44 once
-> with zero retries, then preserved a complete 74/78 Compendium product-budget red before Slice,
-> Glass or Recovery. Signed clean calibration source
-> `b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974` subsequently completed exactly three independent
-> current-producer candidates—`20260829-universe-polish-b65fd5d4a1b7-candidate1`, `candidate2`
-> and `candidate3`—once each with zero retries and all 78 calibration outcomes, plus paired broken
-> baseline `20260829-universe-polish-b65fd5d4a1b7-baseline1` against exact commit
-> `38447019517147319bd08c598202d097ee866874`. The baseline reproduced all four sealed faults on
-> both profiles and retains 14 phone / 13 desktop numeric breaches under the selected ruler.
+> **Current universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact signed source
+> `3f69e88ea8e34fdb8d9913276601b426ada783ae` remained clean and unchanged through one serial,
+> zero-retry **Layout → SceneMemory → Compendium → Slice → Glass → Recovery** campaign. Layout
+> passed **787/787**, SceneMemory **44/44**, Compendium **78/78**, Slice passed with zero findings,
+> Glass passed all **12** viewport classes with zero findings/instrument failures, and Recovery
+> passed all stages with a real **1,200,297.5 ms** active observation. Every immutable report passed
+> its exact source/predecessor-bound verifier.
 >
-> The selected rational-headroom ceilings are phone V8/backing/aggregate/encoded/portrait
-> **11,534,336 / 5,242,880 / 17,825,792 / 3,407,872 / 393,216 B** and desktop
-> **15,728,640 / 6,815,744 / 23,068,672 / 8,912,896 / 393,216 B**; every other field remains
-> byte-identical. Broader heap margins avoid sub-spread or sub-one-percent false reds, while the
-> 384 KiB portrait ruler conservatively preserves prior cross-platform encoder variance without
-> claiming a fresh Linux measurement. Signed activation
-> `27513798bedd9e4337d0b1db9712fa784b90b9fd` (budget SHA-256
-> `02ee0ada076e444b7f3ad67c47c3de688bbd290d7e1a9a9e7570168f2d4c29f0`) passed its complete
-> browser-free battery and independent review. Its exact one-attempt/no-retry Compendium run
-> `20260829-universe-polish-27513798bedd-compendium-certification` then passed 78/78 in 44,432 ms
-> and passed named verification on the same clean source. The raw/gzip report SHA-256 pair is
-> `3b0116f98a77e3089ef80fd78ebc762a658c74907a2c5e473061718c9860e7a6` /
-> `1415773e8eb7474d141b9174939bf618795b76742afd874e4bf73fa7bc0a70e7`.
-> Signed clean evidence descendant `bf24a4921eb5ca757a4978b9d01e44ae39a0a06d` restarted the
-> campaign: Layout passed 787/787, SceneMemory 44/44 and Compendium 78/78, all once and
-> named-verified. Slice then stopped after its one 239,797 ms attempt with ten retained findings.
-> Nine were one false cascade from a case-sensitive release-copy predicate; the tenth was a harness
-> precondition that enabled Sound but not Creature Voices before requiring Feed audio. The preserved
-> report demonstrates no Feed gameplay failure. The repair keeps product/release bytes and both
-> memory producers unchanged, makes Slice and Glass assess the truthful silence clause
-> case-insensitively, and drives/verifies both real audio preferences with mutation controls.
-> Signed repair `9d8ffb11c9eb3a8066dc295a21e61820962c7cb3` then restarted the campaign:
-> Layout passed 787/787, SceneMemory 44/44 and Compendium 78/78, each once and named-verified.
-> Slice ran once for 437,229 ms and stopped on one later instrument finding. The exact transaction,
-> stale loser, visible result, one successful oscillator start and complete same-context audio path
-> were all present; the collector searched for DOM interface names `OscillatorNode` /
-> `AudioDestinationNode` while raw CDP correctly emitted `Oscillator` / `AudioDestination`.
-> The bounded repair now shares one pure raw-CDP event projector between Slice and its tests,
-> returns missing/bad page-side audio evidence without throwing, classifies missing/ambiguous
-> endpoints as instrument failures only when a final independent wrapper reread still proves the complete exact post-settlement start, preserves real duplicates and
-> disconnected/cross-context routes as product failures, derives its cross-context mutation from
-> the actual proved route, and blocks dependent controls until their baseline is green. Product,
-> release, build and memory-producer bytes remain unchanged. Signed repair
-> `916d921ebf787ed6c58ec8db567e00bbb61adbf8` then restarted from Layout: Layout passed
-> 787/787, SceneMemory 44/44, Compendium 78/78 and Slice with zero findings, each once and
-> named-verified. Glass completed all 12 viewports with zero product findings, then stopped on one
-> rendered-Guide negative-control instrument failure. Two required phrases crossed authored `<b>`
-> markup, so the old raw-`innerHTML` replacements were no-ops even though the visible copy was
-> correct. The bounded repair now mutates exact rendered text once, verifies the observed change and
-> intended missing carrier, rejects stale contamination, and restores the exact authored HTML,
-> text and predicate after each mutant. Glass selftest, the full 1,712-pass + one-skip suite, all
-> typechecks and two independent reviews are green. A new signed clean repair source must restart
-> the complete campaign from Layout; no game or art implementation is being restarted.
-> Edge `151.0.4129.107` / CDP `1.3` remains provenance only; compatible
-> updates do not trigger rebaseline. Exact calibration carriers, byte sizes and hashes are preserved
-> in [`audits/README.md`](audits/README.md). No GitHub, release, version or deployment authority follows.
+> The completed scope carries one deterministic, structure-preserving visual language across galaxy
+> and system space, planets, all **43** live biomes, creatures, plants, fungi, microbes, ships and
+> effects—never only Sol—and completes the bounded Arc 5 Feed scope with exact creature/flora settlement, stale-CAS
+> convergence, reload durability, accessible status and expression audio. Existing anatomy,
+> silhouettes, proportions, topology, seeds, share identity and interaction geometry remain intact.
+> The full v2 battery is **1,712 passed + 1 skipped**, all TypeScript configurations are green, and
+> the final seven compressed evidence carriers, sizes and hashes are preserved in
+> [`audits/README.md`](audits/README.md).
+>
+> Edge `151.0.4129.107` / CDP `1.3` is run provenance only; compatible browser updates do not
+> trigger rebaselining. HUMAN visual/listening/screen-reader/first-journey and physical-device
+> heat/battery/GPU review remain open, as do Gate G distant playback/D-9e and whole Gates A–I.
+> Nothing has been pushed, merged, released, version-bumped or deployed.
 >
 > **Historical Final13 pre-polish local automated checkpoint (2026-08-28):** exact signed source
 > `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree

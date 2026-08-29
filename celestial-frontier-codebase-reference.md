@@ -1,30 +1,32 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
-> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
-> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
-> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
-> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
-> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
-> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
-> ran once and passed named verification; there were no retries, findings or instrument failures.
-> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
-> exact source. It changes no product, persistence, art, save, version, ruler or browser policy.
-> It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment authority;
-> physical-device heat/GPU evidence remains open. The seven evidence carriers and synchronized
-> references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
-> Keep temporary full caffeinate active while authorized local work continues, then restore it when
-> that work is complete. That signed source is the pre-change baseline; the current local
-> universe-wide visual implementation checkpoint is documented below. Edge `.107` / CDP `1.3` is
-> provenance only
-> and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
-> below is historical where superseded.
+> **Current universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
+> signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+> `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
+> and unchanged through one serial **Layout → SceneMemory → Compendium → Slice → Glass →
+> Recovery** campaign on Edge `151.0.4129.107` / CDP `1.3`. Layout passed 787/787 in 76,603 ms;
+> SceneMemory input-v4 passed 44/44 in 10,561 ms; Compendium passed 78/78 in 46,239 ms with all
+> six review-image bindings; Slice passed in 434,263 ms with zero findings and ten screenshots
+> (`33aa30b3…`); Glass consumed that exact Slice and passed all 12 viewport classes in 85,823 ms
+> with zero findings or instrument failures (`2a67a258…`); Recovery consumed both exact
+> predecessors and passed all ten stages in 1,290,953 ms with a real uninterrupted 1,200,297.5 ms
+> active-browser observation (`b78e8a52…`). Every stage ran once with zero automatic retries and
+> passed its exact source/predecessor-bound verifier. The full v2 battery is 163 files / 1,712
+> passed + one skipped, and all TypeScript configurations are green.
+>
+> This is the complete local automated certificate for the universe-wide visual treatment and
+> bounded Arc 5 Feed scope. It is not HUMAN visual, listening, screen-reader or first-journey
+> judgment; physical-device heat/battery/true-GPU evidence, Gate G distant playback and D-9e remain
+> open, as do whole Gates A–I. It grants no hosted attempt, merge, release/version or deployment
+> authority. Exact carriers, sizes and hashes are preserved in `audits/README.md`. Edge point
+> version is provenance only; compatible updates never trigger rebaseline or recalibration.
+> Earlier Final13/Final12/Final11/Final10 wording below is historical where superseded.
 
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches the local working tree as of 2026-08-28.**
+> **Current port/v2 source overlay matches signed source `3f69e88…` as of 2026-08-29.**
 >
 > **Historical 2026-08-28 Final10 offline-reopened oracle stop (superseded by Final11 above):**
 > signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` supplied Layout
@@ -122,7 +124,7 @@
 > threshold change. That exact-source local Recovery certificate grants no whole-Gate, hosted,
 > HUMAN or release authority.
 >
-> **2026-08-28 current local visual implementation boundary:** the universe-wide treatment is now
+> **2026-08-29 current local visual implementation boundary:** the universe-wide treatment is now
 > wired through the active v2 routes. `@cf/art/visual-treatment` defines exact finite appearance
 > scopes/axes; `canvas-treatment.ts` applies a single surface-space `source-atop` warm/cool depth
 > field; and `surface-polish.ts` owns once-per-surface finishers for galaxy, system, planet, biome and
@@ -162,7 +164,8 @@
 > `biome-vista-ecology` suites plus app `biome-vista-surface`, `biome-vista-protocol`,
 > `biome-vista-cache`, `universe-polish-main-wiring`, `visual-effect-policy`,
 > `camera-shake-policy`, `visual-policy-main-wiring`, `shipyard-preview` and
-> `art-tools-browser-resolution`. Their controls cover exact-set/field/identity mismatches,
+> `art-tools-browser-resolution`. The full v2 battery is current-source green at 163 files / 1,712
+> passed + one skipped with all TypeScript configurations green. Their controls cover exact-set/field/identity mismatches,
 > disconnected finishers, changed compositor routes, stale/faulted cache publication, cropped phone
 > layout, policy bypasses and hard-coded browser paths. Raw-CDP art tools share
 > `tools/browserpath.mjs`; explicit `CF_BROWSER` fails closed. Before evidence, each of the seven
@@ -177,15 +180,19 @@
 > `surfaceVistaCachePixels` diagnostics through cold zero, first mount, repeated surface/ascent,
 > BFCache and reload-clear/replacement cleanup, with the semantic cache ceiling fixed at one entry /
 > 412,800 pixels. Browser-free contract/budget/tool controls are green, including missing-field,
-> vacuous-zero, worker/mount leak, cache overflow and retained-on-reload mutations. No current-source
-> 44/44 browser pass is claimed yet; every 42/42 statement below remains bound to its historical
-> source and schema.
+> vacuous-zero, worker/mount leak, cache overflow and retained-on-reload mutations. Exact signed
+> `3f69e88…` run `20260829-universe-polish-3f69e88ea8e3-scenemem` passed 44/44 in 10,561 ms with
+> complete cleanup inside the current serial certificate. Every 42/42 statement below remains bound
+> to its historical source and schema.
 >
-> This working-tree checkpoint is not yet a clean-source browser certificate or a complete Arc/Gate.
-> A fresh serial Slice → Glass → Recovery chain, fixed-seed before/after image package, HUMAN phone/
-> desktop art and accessibility review, and physical-device frame-time, heat, battery and true GPU/
-> resource measurements remain open. Final13 itself remains the unchanged pre-visual certificate;
-> no production release, version bump or deployment authority follows from this local candidate.
+> Exact signed source `3f69e88…` now owns the complete local automated certificate: Layout 787/787,
+> SceneMemory input-v4 44/44, Compendium 78/78, zero-finding Slice, 12-viewport zero-finding Glass
+> and ten-stage Recovery with a real 1,200,297.5 ms active-browser observation, all once/no-retry and
+> exact source/predecessor-bound verified. That certificate is limited to the universe-wide visual
+> treatment and bounded Arc 5 Feed scope. Fixed-seed review images do not substitute for HUMAN phone/
+> desktop visual, listening, screen-reader or first-journey judgment; physical-device frame-time,
+> heat, battery and true GPU/resource measurements, Gate G distant playback, D-9e and whole Gates
+> A–I remain open. No hosted, merge, release/version or deployment authority follows.
 >
 > **2026-08-27 Final4 Glass repair overlay — historical pre-Final5 source:** signed clean source
 > `041d1cfdff28c4217d699bdb26eacd5f792f7a80` supplied fresh named Layout 787/787,
@@ -2916,7 +2923,8 @@ greeting as `arc4:taming-succeeded:${recordId}`. The current repair requires rel
 `true` before `collectArc4TameGreetingStart()` retains its exact result, global, ownership, claim,
 counterpart, runtime and toast clauses, and accepts one start that is either still active or has naturally
 completed before its first read. Generic Arc 4 ownership-revision and reload-result-null controls
-are included in this repair batch; this repair has not been rerun in a browser. Sound off,
+are included. Exact signed `3f69e88…` Slice passed this current-source evidence inside the
+immutable chain. Sound off,
 persisted **Creature Voices** off, hidden/unanswerable play, miss/refusal, stale/reload convergence,
 route or counterpart loss, replacement and disposal stay silent and stop/release the audio/runtime
 owner. Reload begins disposed, unarmed and without context, counterpart, voice or nodes.
@@ -2930,11 +2938,12 @@ ownership result fails as non-advancing, keeping Feed replay memory constant-siz
 `role=status`, `aria-live=polite`, `aria-atomic=true` result is its accessible counterpart and sole
 assistive-technology announcement; the concurrent toast is `role=presentation`, `aria-live=off`,
 `aria-hidden=true`. The status precedes the `feed-completed` / `accepted` expression. The current
-Slice oracle requires the oscillator's successful `start()` and a complete same-context path from
-that source through recorded WebAudio edges to exactly one `AudioDestinationNode`; disconnected,
-wrong-destination and cross-context mutations fail. That strengthened oracle still needs its fresh
-current-source browser run. Refusal, stale/converging state, replay, route/detail/counterpart loss
-and disabled audio are silent.
+Slice oracle requires the raw-CDP `Oscillator` source's successful `start()` and a complete same-
+context path through recorded WebAudio edges to exactly one raw-CDP `AudioDestination`; disconnected,
+wrong-destination and cross-context mutations fail. Exact signed `3f69e88…` Slice passed this
+bounded Feed outcome, its exact-instance settlement/reload evidence and the two-native-click stale
+race with zero findings; Glass then consumed and verified that exact Slice. Refusal,
+stale/converging state, replay, route/detail/counterpart loss and disabled audio are silent.
 
 `biome-ecology-audio.ts` separately provides a pure non-playing join from one canonical inhabited
 current-world Survey roster to `DistantEcologyHintPlan`. It binds world identity, biome-profile
@@ -3101,7 +3110,20 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current evidence snapshot (2026-08-28):** signed clean source `1ca67156…` supplied immutable
+**Current evidence snapshot (2026-08-29):** exact signed source
+`3f69e88ea8e34fdb8d9913276601b426ada783ae` completed the once-only, zero-retry
+Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain. Layout passed 787/787,
+SceneMemory input-v4 44/44 and Compendium 78/78; Slice passed with zero findings, Glass consumed
+that exact Slice and passed all 12 viewport classes with zero findings or instrument failures, and
+Recovery consumed both exact predecessors and passed all ten stages with a real uninterrupted
+1,200,297.5 ms active-browser observation. Every immutable report passed its exact source/
+predecessor-bound verifier. The full v2 battery is 163 files / 1,712 passed + one skipped and all
+TypeScript configurations are green. This exact evidence certifies the universe-wide visual
+treatment and bounded Arc 5 Feed scope only; HUMAN visual/listening/screen-reader/first-journey,
+physical-device heat/battery/true-GPU, Gate G distant playback, D-9e, whole-Gate and hosted/release
+authority remain open. Exact carriers, sizes and hashes are in `audits/README.md`.
+
+**Historical Final11/Final13 evidence snapshot (2026-08-28):** signed clean source `1ca67156…` supplied immutable
 historical Final11. Layout passed 787/787, SceneMemory 42/42, Compendium 78/78 with six PNG bindings, Slice
 passed with zero findings/ten screenshots, and full 12-viewport Glass passed with zero findings or
 instrument failures. Every predecessor ran once and passed named verification. Recovery then ran

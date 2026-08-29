@@ -1,27 +1,28 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
-> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
-> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
-> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
-> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
-> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
-> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
-> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
-> ran once and passed named verification; there were no retries, findings or instrument failures.
-> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
-> exact source. It changes no audio/product, persistence, art, save, version, ruler or browser
-> policy. It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment
-> authority; physical-device heat/GPU evidence remains open. The seven evidence carriers and
-> synchronized references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
-> Keep temporary full caffeinate active while authorized local work continues, then restore it when
-> that work is complete. Next complete the full-code review/polish checkpoint, then begin authorized
-> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is
-> provenance only and compatible point updates never trigger rebaseline. Earlier Final12/Final11/
-> Final10 wording below is historical where superseded.
+> **Current universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
+> signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+> `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
+> chain on Edge `151.0.4129.107` / CDP `1.3`. Layout passed **787/787** in 76,603 ms,
+> SceneMemory **44/44** in 10,561 ms and Compendium **78/78** in 46,239 ms. Slice passed with zero
+> findings in 434,263 ms (raw report `33aa30b3…3411`); Glass passed all 12 viewports/reloads,
+> **104/104** controls and **36/36** Arc 4 outcomes in 85,823 ms with zero findings or instrument
+> failures (raw report `2a67a258…d591`); Recovery passed all **10/10** stages and **15/15**
+> observation outcomes in 1,290,953 ms, including 1,200,298 ms of real active observation (raw
+> report `b78e8a52…5907`). Every stage ran once with zero automatic retries and passed exact named
+> verification; Slice → Glass → Recovery hashes and source identities cross-bind exactly.
+>
+> The Arc 5 claim is deliberately only the live Feed path: one exact committed creature/flora
+> successor, its settled inline counterpart and one constant-space synthesized acknowledgement.
+> The automated graph proves a started same-context path to one destination; it does not listen or
+> judge sound. HUMAN listening/comfort, screen-reader behavior, physical-device audio/heat/battery,
+> broader creature audio, whole-Gate, hosted/merge, release/version and deployment authority remain
+> open. Compatible browser point updates remain provenance only. Earlier dated evidence blocks below
+> remain historical verbatim where superseded.
 
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
 2026-07-30. The dated v2 overlay below matches the current local development candidate and approved
-direction as of **2026-08-28**. It distinguishes the player-live compatibility stings and two exact
+direction as of **2026-08-29**. It distinguishes the player-live compatibility stings and two exact
 bounded synthesized creature expressions—Tame greeting and accepted Feed acknowledgement—from the
 pure non-playing distant-ecology join and broader Arc 7/8 content, integration and HUMAN work that
 remain open.
@@ -80,7 +81,7 @@ whole layer undocumented despite being the largest single feature of v1.8.
 > certificate. Edge `151.0.4129.107` / CDP `1.3` is provenance only, never an audio
 > ruler or rebaseline trigger.
 
-## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-28)
+## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-29)
 
 ### 0.1 Truth boundary
 
@@ -242,13 +243,13 @@ The injected package runtime provides the structural mixer/limiter/meter, voice 
 priority/cooldown/concurrency/stealing, mute/hidden/restart/context-loss and disposal foundation
 behind an injected `AudioContextLike`. The shared Tame/Feed expression owner now constructs and
 drives one bounded instance for deterministic fauna oscillator/envelope requests. It still does not own the
-compatibility stings, a general current-system soundscape or an asset renderer. Final13 exercises
-the implemented controls and earlier sound witness. The current Slice oracle now requires the Feed
+compatibility stings, a general current-system soundscape or an asset renderer. Exact signed source
+`3f69e88…` exercises the implemented controls and sound witness. The current Slice oracle now requires the Feed
 oscillator's successful `start()` plus a complete graph path to exactly one
 `AudioDestinationNode`, with every endpoint and intermediate edge in the source oscillator's same
 WebAudio context; disconnected, wrong-destination and cross-context graphs are controlled. That
-strengthened endpoint-context oracle is browser-free covered, while its fresh current-source Slice
-run and physical-device evidence remain pending.
+strengthened endpoint-context oracle is browser-free covered and passed on exact signed source
+`3f69e88…`; physical-device evidence remains pending.
 
 The approved v2 settings surface retains master volume and adds category gains only as their buses
 become real. Independent Creature voices is now restored from `vce` for the bounded Tame and Feed expressions;
@@ -725,9 +726,9 @@ inline polite announcement plus AT-excluded visual toast; pure lab accounting; a
 authority plus hypothetical intake failures. The strengthened Slice oracle requires one started
 Feed oscillator to route through same-context WebAudio nodes to an `AudioDestinationNode` and
 rejects disconnected, wrong-type and cross-context evidence. It does not listen, inspect real media
-bytes or judge comfort. Final13 remains historical evidence for the earlier controls/sound witness;
-the strengthened current-source graph oracle still needs its fresh Slice run, and physical-device/
-perceptual evidence remains pending.
+bytes or judge comfort. Exact signed source `3f69e88…` now supplies the fresh terminal-green Slice
+graph proof and its exact Glass/Recovery successors. Physical-device and perceptual evidence remains
+pending.
 
 **What no harness here can do is judge whether any of it sounds good.** The repository has no
 audio-capture or perceptual oracle, and no external persona fleet hears an audio signal, so a flat

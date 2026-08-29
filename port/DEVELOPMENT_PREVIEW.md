@@ -1,26 +1,29 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
-> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
-> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
-> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
-> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
-> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
-> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
-> ran once and passed named verification; there were no retries, findings or instrument failures.
-> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
-> exact source. It changes no product, persistence, art, save, preview, version, ruler or browser
-> policy. It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment
-> authority; physical-device heat/GPU evidence remains open. The seven evidence carriers and
-> synchronized references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
-> Keep temporary full caffeinate active while authorized local work continues, then restore it when
-> that work is complete. Next complete the full-code review/polish checkpoint, then begin authorized
-> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is
-> provenance only and compatible point updates never trigger rebaseline. Earlier Final12/Final11/
-> Final10 wording below is historical where superseded.
+> **Current universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
+> signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+> `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
+> and unchanged through one serial **Layout → SceneMemory → Compendium → Slice → Glass →
+> Recovery** campaign. Layout passed 787/787; SceneMemory input-v4 passed 44/44; Compendium passed
+> 78/78; Slice passed with zero findings; Glass consumed that exact Slice and passed all 12
+> viewport classes with zero findings or instrument failures; Recovery consumed both exact
+> predecessors and passed all ten stages with a real uninterrupted 1,200,297.5 ms active-browser
+> observation. Every stage ran once with zero automatic retries and passed its exact
+> source/predecessor-bound verifier. The full v2 battery is 163 files / 1,712 passed + one skipped,
+> and all TypeScript configurations are green.
+>
+> This exact local certificate covers the universe-wide visual treatment and bounded Arc 5 Feed
+> scope only. It is not a development-preview package or HUMAN visual, listening, screen-reader or
+> first-journey judgment; physical-device heat/battery/true-GPU evidence, Gate G distant playback
+> and D-9e remain open, as do whole Gates A–I. No hosted attempt, merge, preview publication,
+> release/version or deployment is authorized. Exact carriers, sizes and hashes are in
+> `audits/README.md`. Edge `151.0.4129.107` / CDP `1.3` is provenance only; compatible point
+> updates never rebaseline or recalibrate. Earlier Final13/Final12/Final11/Final10 wording below is
+> historical where superseded.
 
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
-as of 2026-08-28. This is not a release record.
+as of 2026-08-29. The budget mode is `UNFROZEN`, but no hosted attempt or publication is authorized.
+This is not a release record.
 
 **Historical Final10 campaign boundary (superseded by Final11 above):** the playable implementation extends through the local
 Arc 4.5 Survey → Gather → Build → Tame → ship improvement → farther reach → Return slice, but it is
@@ -77,15 +80,23 @@ publication authority, no development-preview candidate exists. `--allow-dirty` 
 diagnosis only and can never become a promotion artifact. Edge `151.0.4129.107` / CDP `1.3` is
 provenance only; a compatible point update never triggers rebaselining or threshold changes.
 
+Exact signed source `3f69e88…` now supplies the complete current local automated chain for the
+universe-wide visual treatment and bounded Arc 5 Feed scope, including SceneMemory input-v4 44/44,
+zero-finding Slice, Slice-bound 12-viewport Glass and predecessor-bound Recovery with a real
+1,200,297.5 ms observation. It is still not a preview package or a HUMAN playtest. A preview
+candidate separately requires an exact-source guarded package, exact publication authorization and
+the required HUMAN/device review; this local certificate grants none of those authorities.
+
 ## Separate-origin requirement; approved branch site
 
 Celestial Frontier should have a continuously usable **development preview**, but it must
 not be published as a path under `https://celestialfrontier.github.io/`.
 
 The approved development owner is `Dev-CelestialFrontier`, with organization-site repository
-`dev-celestialfrontier.github.io` at `https://dev-celestialfrontier.github.io/`. Automatic
-post-battery publication is currently parked by `GITHUB_ACTIONS_BUDGET.md`; no push or green check
-publishes anything. A future reviewed promotion must bind one exact tested SHA and branch, use the
+`dev-celestialfrontier.github.io` at `https://dev-celestialfrontier.github.io/`. The budget mode is
+currently `UNFROZEN`, but no hosted attempt or publication is authorized and the publisher remains
+hard parked; no push or green check publishes anything. A future reviewed promotion must bind one
+exact tested SHA and branch, use the
 target-specific deploy key, browser-smoke the exact `port/v2` v2.0 candidate, write noindex/robots
 guards, and remain unable to target production. Visible identity—**Celestial Frontier v2.0
 development** plus the full commit—lives inside the Guide only; there is no corner badge. This
@@ -387,11 +398,12 @@ verifier. Report raw/gzip SHA-256 are
 `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
 verdict-contract bytes are unchanged.
 
-The current gate uses one browser process for 390×844 phone and 1280×800 desktop profiles, four
+The current input-v4 gate uses one browser process for 390×844 phone and 1280×800 desktop profiles, four
 unmeasured warmups and four measured cycles through Universe, Galaxy/fine, Sol/System,
-Earth/Surface, the 1,500-row Compendium, the real Shipyard, and settled Universe. Forty-two outcomes
-include the visible Shipyard opener, exact canonical visual/DOM state, one open preview, owned Close,
-and zero retained/pending preview work after Close. The exact veteran input is intentionally Arc 3
+Earth/Surface, the 1,500-row Compendium, the real Shipyard, and settled Universe. Forty-four outcomes
+include the historical 42 visible Shipyard/canonical visual/DOM/resource checks plus phone and desktop
+`surface-vista-lifecycle`, binding worker-active, mounted, one-entry/412,800-pixel cache state through
+cold, repeated surface/ascent, BFCache and reload-clear/replacement cleanup. The exact veteran input is intentionally Arc 3
 protected: the independent current-ship preview remains inspectable while authority-dependent
 Engineering details/actions are unavailable. SceneMemory certifies that Arc 1C resource lifecycle;
 it does not certify or require loaded Mine, Skim, Research or Fabricator authority.
@@ -406,7 +418,8 @@ This is part of the single fail-fast
 owner-label-authorized battery, not a new parallel job or automatic retry. Hosted attempt 4 is
 consumed and terminal-red. A later authorized PR #33 battery, `32646110946`, passed terminal-green
 and merged `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`; its label was removed. No new hosted attempt
-is authorized. Local 42/42 evidence still does not authorize publication, release, or deployment.
+is authorized. Exact signed `3f69e88…` local 44/44 evidence and its downstream chain still do not
+authorize publication, release, or deployment.
 
 The separate manual `development-preview-package` workflow still owns preview packaging and its
 current exact `.101` Compendium/Chrome sequence; it does not run or certify the Arc 1
@@ -645,9 +658,10 @@ Report/log evidence is still uploaded when its owning step is red:
   exact-current report verifies. They do not supply the still-open [HUMAN] six-image visual
   judgment. That artifact alone does not claim Arc 1B;
 - `v2-scene-memory-evidence`: the Arc 1 scene-memory-v2 `scenemem-report.json` from the same one
-  authorized, serial test-battery attempt. The gate owns four warmups plus four measured cycles,
-  42 outcomes including the real Shipyard lifecycle, complete cleanup, and exact named-run
-  verification under Edge `.101` and the fixed strict `<1000 ms` product answerability SLA; the
+  authorized, serial test-battery attempt. The current input-v4 gate owns four warmups plus four
+  measured cycles, 44 outcomes including the real Shipyard lifecycle and phone/desktop surface-vista
+  lifecycle, complete cleanup, and exact named-run verification under version-tolerant Edge-family
+  + CDP `1.3` authority and the fixed strict `<1000 ms` product answerability SLA; the
   artifact is retained even when red. Hosted attempt 4, run `32618995487`, is exactly such a retained
   terminal-red 40/42 artifact and must never be described as hosted green. Missing, incomplete,
   nonterminal, wrong-browser, unverified, bypassed-opener/Close, duplicate-preview, or retained-work

@@ -1,34 +1,36 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
-> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
-> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
-> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
-> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
-> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
-> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
-> ran once and passed named verification; there were no retries, findings or instrument failures.
-> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
-> exact source. It changes no product, persistence, art, save, version, ruler or browser policy.
-> It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment authority;
-> physical-device heat/GPU evidence remains open. The seven evidence carriers and synchronized
-> references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
-> Keep temporary full caffeinate active while authorized local work continues, then restore it when
-> that work is complete. That signed source is the pre-change baseline; the current working tree has
-> since implemented the universe-wide visual checkpoint described below, while its fresh browser,
-> HUMAN and physical-device evidence remains open. Edge `.107` / CDP `1.3` is provenance only
-> and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
-> below is historical where superseded.
+> **Current universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
+> signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+> `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
+> and unchanged through one serial **Layout → SceneMemory → Compendium → Slice → Glass →
+> Recovery** campaign on Edge `151.0.4129.107` / CDP `1.3`. Layout passed 787/787 in 76,603 ms;
+> SceneMemory input-v4 passed 44/44 in 10,561 ms; Compendium passed 78/78 in 46,239 ms; Slice
+> passed in 434,263 ms with zero findings (`33aa30b3…`); Glass consumed that exact Slice and passed
+> all 12 viewport classes in 85,823 ms with zero findings or instrument failures (`2a67a258…`);
+> Recovery consumed both exact predecessors and passed all ten stages in 1,290,953 ms with a real
+> uninterrupted 1,200,297.5 ms active-browser observation (`b78e8a52…`). Every stage ran once with
+> zero automatic retries and passed its exact source/predecessor-bound verifier. The full v2 battery
+> is 163 files / 1,712 passed + one skipped, and all TypeScript configurations are green.
 >
-> The working-tree SceneMemory input-v4 contract now requires 44 outcomes. Its two new
+> This is the complete local automated certificate for the universe-wide visual treatment and
+> bounded Arc 5 Feed scope. It is not HUMAN visual, listening, screen-reader or first-journey
+> judgment; physical-device heat/battery/true-GPU evidence, Gate G distant playback and D-9e remain
+> open, as do whole Gates A–I. It grants no hosted attempt, merge, release/version or deployment
+> authority. Exact carriers, sizes and hashes are preserved in `audits/README.md`. Edge point
+> version is provenance only; compatible updates never trigger rebaseline or recalibration.
+> Earlier Final13/Final12/Final11/Final10 wording below is historical where superseded.
+>
+> The signed SceneMemory input-v4 contract requires 44 outcomes. Its two new
 > phone/desktop `surface-vista-lifecycle` outcomes bind worker-active, mounted, cache-entry and
 > cache-pixel diagnostics through cold, surface/ascent, BFCache and reload-clear/replacement cleanup
-> at a fixed one-entry / 412,800-pixel ceiling. Browser-free controls are green; no current 44/44
-> browser certificate or downstream chain is claimed yet. Every Final13 42/42 statement remains
-> exact historical evidence for its older source/schema.
+> at a fixed one-entry / 412,800-pixel ceiling. Exact run
+> `20260829-universe-polish-3f69e88ea8e3-scenemem` passed 44/44 with complete cleanup inside the
+> current serial certificate. Every Final13 42/42 statement remains exact historical evidence for
+> its older source/schema.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-28.
+> 2026-08-29.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -181,15 +183,17 @@
 > external authority exists. Edge `151.0.4129.107` / CDP `1.3` is Final13 provenance only and never triggers a rebaseline or
 > threshold change. Exact carriers, sizes and hashes are inventoried in `audits/README.md`.
 >
-> **Current local universe-wide visual checkpoint (implemented, certification open):** the shared
+> **Current local universe-wide visual checkpoint (automated chain certified; HUMAN/physical review open):** the shared
 > deterministic treatment now crosses galaxies, systems, planets, all 43 live biomes, creatures,
 > plants, fungi, microbes and the current ship without changing seeds, identities, anatomy,
 > silhouettes, proportions, scale, authored structure, interaction geometry or gameplay readability.
 > Normal landings use the preserved full `960×430` compositor through a lazy identity-fenced,
 > fail-soft worker, and Visual effects/Screen shake now resolve bounded live policies. Focused
-> browser-free authority, route, policy and fault controls are present. The converged project battery,
-> fresh clean Slice → Glass → Recovery chain, fixed-seed before/after review, HUMAN judgment and
-> physical-device frame/heat/battery/GPU evidence remain open; this is not whole-Gate or release proof.
+> browser-free authority, route, policy and fault controls are present. The converged 163-file / 1,712-
+> pass + one-skip battery and exact signed `3f69e88…` Layout → SceneMemory → Compendium → Slice →
+> Glass → Recovery chain are green. Fixed-seed images remain inputs to HUMAN judgment rather than a
+> substitute for it; HUMAN visual/accessibility review and physical-device frame/heat/battery/true-
+> GPU evidence remain open. This is bounded automated evidence, not whole-Gate or release proof.
 >
 > Within that boundary, Gate
 > B recursively seals an exact 63-file domain inventory against DOM, storage, `navigator`, network,
@@ -232,6 +236,10 @@
 > exact Glass/Slice pair, then pass both IDs to recovery and named-verify its exact three-report
 > chain. Any nonzero, red or instrument result stops the chain; no successor or automatic retry is
 > permitted.
+> Exact signed source `3f69e88…` satisfied that law once with zero retries: zero-finding Slice
+> (`33aa30b3…`), 12-viewport zero-finding/zero-instrument Glass (`2a67a258…`) and ten-stage Recovery
+> (`b78e8a52…`) with a real 1,200,297.5 ms active-browser observation. This certifies the bounded
+> Arc 5 Feed scope, not broader companions, Gate G distant playback, HUMAN review or a whole Gate.
 >
 > Final11 completed the uninterrupted real 20-minute observation and recovered UI, but its final
 > assessor was red. The earlier first clean committed attempt,
@@ -1704,7 +1712,7 @@ retention metric, or technically green demo.
 
 ### 5.5 Arc 5 — companions
 
-**Implementation status (2026-08-28): `[PARTIAL]`; compact authority, the fed inheritance invariant,
+**Implementation status (2026-08-29): `[PARTIAL]`; compact authority, the fed inheritance invariant,
 and one exact-target deterministic player-live Feed transaction plus its exact expression are
 implemented. Breed and broader companion/care work remain open.**
 Ownership-v2 defines receipt-bound acquisition, deterministic fauna-only child successors, ordered
@@ -1733,8 +1741,11 @@ deterministic F4 receipt transaction and the five compact carriers. Refusal, cap
 wrong-kind, stale/storage/duplicate and durable readback behavior are covered browser-free. The
 player app owns the real-fauna detail control/pickers, exact status counterpart and native Feed
 expression. One receipt/CAS publishes the current successor without retry or optimism; refusal,
-stale/converging state, replay and lost detail/route/counterpart remain silent. Native/two-tab/HUMAN
-Feed evidence remains open. The
+stale/converging state, replay and lost detail/route/counterpart remain silent. Exact signed
+`3f69e88…` Slice passed the bounded real native Feed transaction, accessible-status/visual-toast
+split, same-context oscillator→destination route, reload fixed point and two-native-click stale
+race; exact Slice-bound Glass and predecessor-bound Recovery then passed. HUMAN care/listening and
+broader companion evidence remain open. The
 retained Arc 5A Slice/Glass reports above certify only their 2026-08-25 inputs. Compendium
 certificate `20260826-phase4-certification` is historical green evidence for signed activation
 `d33e540…` and former producer `587d3bdf…`; former producer `f7c87f22…` was certified under budget
@@ -1843,7 +1854,7 @@ unimplemented combat. Combat/Guardian event integration remains a later Arc 6 ob
 **Goal:** build the platform that can deliver premium, distinctive audio safely before broad sound
 content is added.
 
-**Current truth (2026-08-28; two-expression app partial):** compatibility survey/navigation stings remain,
+**Current truth (2026-08-29; two-expression app partial):** compatibility survey/navigation stings remain,
 and `@cf/audio` still owns resolver-v1 signature/profile/call plans, the 1,014-route/1,010-identity
 coarse witness, distant-ecology/settled-expression plans, the five-category runtime, lab and empty
 rights authority. The app now adds a strict canonical bridge for the exact current registered owned
@@ -1867,8 +1878,10 @@ Compatibility stings remain outside that runtime's accounting. A pure app join d
 biosphere-granularity distant-ecology plan from a canonical inhabited current-world Survey roster,
 but Main does not import or play it. Other creature expressions, live distant ecology, ambience,
 music, combat/Guardian integration, recorded assets, browser/
-device plateau, complete accessibility and HUMAN listening remain open. This partial does not close
-Arc 7 or Gate G and grants no release/version authority.
+device plateau, complete accessibility and HUMAN listening remain open. Exact signed `3f69e88…`
+Slice passed the bounded Tame/Feed live-expression evidence, including the Feed source→destination
+graph and replay/stale controls; it does not prove distant playback or broader audio. This partial
+does not close Arc 7 or Gate G and grants no release/version authority.
 
 **Build scope:**
 
@@ -1909,7 +1922,7 @@ combat, Guardian, conquest, and post-combat layers stay explicit future Arc 6 in
 absence must remain visible in manifests and player copy rather than being represented by fabricated
 coverage.
 
-**Current truth (2026-08-28):** bounded synthesized fauna Tame and exact accepted Feed expressions
+**Current truth (2026-08-29):** bounded synthesized fauna Tame and exact accepted Feed expressions
 are player-live through the Arc 7 owner described above. They are asset-free platform content, not recorded assets or broad
 Arc 8 content pass. The machine-readable rights authority remains empty and the coarse sound
 witness remains an intake/design foundation; there is no route-family listening, media-file
