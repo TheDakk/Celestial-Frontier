@@ -299,7 +299,7 @@
 > read-only convergence reload if that sidecar cannot be restored. No action retries or optimistically
 > republishes durable state.
 
-> **PR #35 tracked-CI parity overlay (current local repair, 2026-08-29):** authorized no-retry
+> **PR #35 tracked-CI parity overlay (synchronized draft repair, 2026-08-29):** authorized no-retry
 > `test-battery` run `33273328362` tested pushed head `390e870…` against base `7a9f4c1…` and stopped
 > in the v2 static suite. Five suites consumed ignored root `main.js`, which was present on the Mac
 > but absent from both Git trees. Port legacy-source tests now use one fail-closed byte-exact helper
@@ -323,8 +323,9 @@
 > collector and runtime byte unchanged. Exact signed repair commit
 > `9192b1aa66c38508cd19f5db0e4825b0a31d5516` and the final documentation-closed signed HEAD pass the
 > exact isolated rehearsal: 233/233 files, 2,333 passed + one skipped, all TypeScript/unused/art/
-> override/coverage/spec checks and 3/3 current-producer tests. This is hermetic browser-free parity, not a hosted green,
-> browser certificate, HUMAN judgment, merge, release or deployment authority.
+> override/coverage/spec checks and 3/3 current-producer tests. The final branch and refreshed draft
+> metadata are synchronized without an approval label. This is hermetic browser-free parity, not a
+> hosted green, browser certificate, HUMAN judgment, merge, release or deployment authority.
 
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the source. When in doubt, source wins. The long-form

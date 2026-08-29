@@ -87,7 +87,7 @@
 > topics and the cumulative development bulletin has **73 bullets**. No later successor inherits the
 > older browser certificate or grants hosted, release/version or deployment authority.
 
-> **PR #35 tracked-CI parity repair (2026-08-29; local only):** authorized no-retry run
+> **PR #35 tracked-CI parity repair (2026-08-29; synchronized draft, no hosted rerun):** authorized no-retry run
 > `33273328362` tested exact head `390e870…` against base `7a9f4c1…` and stopped in the v2 static
 > suite. Five suites read ignored root `main.js`, which existed locally but in neither Git tree; two
 > synchronous evidence children crossed Vitest's five-second case limit under Linux contention.
@@ -103,8 +103,9 @@
 > product-source cleanup changes only a 20-byte source-map delta: all 29 runtime files and the PWA
 > build ID remain byte-identical, so SceneMemory's exact full-dist provenance was rebound without
 > changing a numeric ceiling, browser contract, collector or runtime asset. The consumed run remains
-> immutable red; no replacement hosted attempt, push, merge, browser certificate, HUMAN acceptance,
-> release or deployment is authorized.
+> immutable red. The final repair head and refreshed draft metadata are synchronized without an
+> approval label; no replacement hosted attempt, Ready transition, merge, browser certificate,
+> HUMAN acceptance, release or deployment is authorized.
 
 ## Current port status — 2026-08-29
 
