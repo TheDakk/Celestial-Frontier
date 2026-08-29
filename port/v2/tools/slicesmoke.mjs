@@ -36,6 +36,9 @@ import {
   assessCompendiumFeedCommittedOutcome,
   assessCompendiumFeedPendingWindow,
   assessCompendiumFeedTwoDocumentStaleOutcome,
+  compendiumFeedWebAudioEndpointFailureIsInstrument,
+  compendiumFeedWebAudioRouteNodeIds,
+  projectCompendiumFeedWebAudioGraph,
   selectArc5FeedFixtureBurnVerb,
   assessTrainingBusyRefusalPrecondition,
   classifyCompendiumDetailReceipt,
@@ -4240,67 +4243,9 @@ const reloadReleaseWitnessesSince = (sessionId, mark) =>
   bindingPayloadsSince(sessionId, mark, RELOAD_RELEASE_BINDING);
 const f4ConvergenceWitnessesSince = (sessionId, mark) =>
   bindingPayloadsSince(sessionId, mark, F4_CONVERGENCE_BINDING);
-const compendiumFeedWebAudioGraph = (sessionId, enableMark, sourceMark) => {
-  const nodes = new Map();
-  const edges = new Map();
-  const sourceNodeIds = [];
-  for (const [eventIndex, event] of events.entries()) {
-    if (eventIndex < enableMark || event.sessionId !== sessionId) continue;
-    if (event.method === 'WebAudio.audioNodeCreated') {
-      const node = event.params?.node;
-      if (typeof node?.nodeId !== 'string' || typeof node?.contextId !== 'string'
-        || typeof node?.nodeType !== 'string') continue;
-      nodes.set(node.nodeId, {
-        nodeId: node.nodeId, contextId: node.contextId, nodeType: node.nodeType,
-      });
-      if (eventIndex >= sourceMark && node.nodeType === 'OscillatorNode') {
-        sourceNodeIds.push(node.nodeId);
-      }
-    } else if (event.method === 'WebAudio.audioNodeWillBeDestroyed') {
-      const nodeId = event.params?.nodeId;
-      nodes.delete(nodeId);
-      for (const [key, edge] of edges) {
-        if (edge.sourceId === nodeId || edge.destinationId === nodeId) edges.delete(key);
-      }
-    } else if (event.method === 'WebAudio.nodesConnected') {
-      const { contextId, sourceId, destinationId } = event.params ?? {};
-      if (typeof contextId === 'string' && typeof sourceId === 'string'
-        && typeof destinationId === 'string') {
-        edges.set(`${contextId}|${sourceId}|${destinationId}`, {
-          contextId, sourceId, destinationId,
-        });
-      }
-    } else if (event.method === 'WebAudio.nodesDisconnected') {
-      const { contextId, sourceId, destinationId } = event.params ?? {};
-      for (const [key, edge] of edges) {
-        if (edge.contextId === contextId && edge.sourceId === sourceId
-          && (typeof destinationId !== 'string' || edge.destinationId === destinationId)) {
-          edges.delete(key);
-        }
-      }
-    }
-  }
-  const sourceNodeId = sourceNodeIds.length === 1 ? sourceNodeIds[0] : null;
-  const source = sourceNodeId === null ? null : nodes.get(sourceNodeId);
-  const destinations = [...nodes.values()].filter((node) => (
-    node.nodeType === 'AudioDestinationNode' && node.contextId === source?.contextId
-  ));
-  return {
-    schema: 'cf-v2-feed-audio-graph/v1',
-    sourceNodeId,
-    destinationNodeId: destinations.length === 1 ? destinations[0].nodeId : null,
-    nodes: [...nodes.values()].sort((left, right) => left.nodeId.localeCompare(right.nodeId)),
-    edges: [...edges.values()]
-      .filter((edge) => {
-        const sourceNode = nodes.get(edge.sourceId);
-        const destinationNode = nodes.get(edge.destinationId);
-        return sourceNode?.contextId === edge.contextId
-          && destinationNode?.contextId === edge.contextId;
-      })
-      .sort((left, right) => `${left.contextId}|${left.sourceId}|${left.destinationId}`
-        .localeCompare(`${right.contextId}|${right.sourceId}|${right.destinationId}`)),
-  };
-};
+const compendiumFeedWebAudioGraph = (sessionId, enableMark, sourceMark) => (
+  projectCompendiumFeedWebAudioGraph({ events, sessionId, enableMark, sourceMark })
+);
 const dtrainNativeWriteArmExpression = (label) => `(()=>{
   const binding=window[${JSON.stringify(DTRAIN_NATIVE_WRITE_BINDING)}],proto=IDBObjectStore.prototype;
   if(typeof binding!=='function'||window.__cfDtrainNativeWritePatch)return false;
@@ -15284,14 +15229,14 @@ try {
       const winnerClicks = await winnerDriver.evaluate(
         'window.__cfFeedWinnerClicks||[]',
       );
-      audioEvidence = await winnerDriver.wait(
-        'Arc 5 Feed successful oscillator start',
-        `(()=>{const evidence={creates:window.__cfFeedAudioCreates??null,
-          starts:window.__cfFeedAudioStarts||[]};return evidence.creates===1
-          &&evidence.starts.length===1&&evidence.starts[0]?.startReturned===true
-          ?evidence:null})()`,
-        3_000,
-      );
+      const audioEvidenceDeadline = Date.now() + 3_000;
+      do {
+        audioEvidence = await winnerDriver.evaluate(`({creates:window.__cfFeedAudioCreates??null,
+          starts:window.__cfFeedAudioStarts||[]})`);
+        if (audioEvidence?.creates === 1 && audioEvidence?.starts?.length === 1
+          && audioEvidence.starts[0]?.startReturned === true) break;
+        await sleep(25);
+      } while (Date.now() < audioEvidenceDeadline);
       const audioGraphDeadline = Date.now() + 3_000;
       do {
         audioGraphEvidence = compendiumFeedWebAudioGraph(
@@ -15307,6 +15252,27 @@ try {
         if (graphAssessment.ok) break;
         await sleep(25);
       } while (Date.now() < audioGraphDeadline);
+      audioEvidence = await winnerDriver.evaluate(`({creates:window.__cfFeedAudioCreates??null,
+        starts:window.__cfFeedAudioStarts||[]})`);
+      if (compendiumFeedWebAudioEndpointFailureIsInstrument({
+        audioCreates: audioEvidence?.creates,
+        audioStarts: audioEvidence?.starts,
+        audioGraph: audioGraphEvidence,
+        globalRevision: afterProjection?.globalRevision,
+        toastSerial: settledState?.toastSerial,
+      })) {
+        throw new Error('Arc 5 Feed WebAudio instrument could not bind one exact raw CDP Oscillator '
+          + 'and one same-context AudioDestination: ' + JSON.stringify({
+            sourceCandidateCount: audioGraphEvidence?.sourceCandidateCount ?? null,
+            destinationCandidateCount: audioGraphEvidence?.destinationCandidateCount ?? null,
+            sourceNodeId: audioGraphEvidence?.sourceNodeId ?? null,
+            destinationNodeId: audioGraphEvidence?.destinationNodeId ?? null,
+            nodeTypeInventory: audioGraphEvidence?.nodeTypeInventory ?? null,
+            audioCreates: audioEvidence?.creates ?? null,
+            audioStartCount: Array.isArray(audioEvidence?.starts)
+              ? audioEvidence.starts.length : null,
+          }));
+      }
       settledUi = {
         result: settledState.ownershipV2.feed.lastResult,
         controller: settledState.ownershipV2.feed.controller,
@@ -15569,18 +15535,19 @@ try {
         arc5FeedRawPersistenceFingerprint(afterRaw),
     };
     const committedAssessment = assessCompendiumFeedCommittedOutcome(committedBundle);
-    const twoDocumentAssessment = assessCompendiumFeedTwoDocumentStaleOutcome(
-      twoDocumentEvidence,
-    );
+    const twoDocumentAssessment = committedAssessment.ok === true
+      ? assessCompendiumFeedTwoDocumentStaleOutcome(twoDocumentEvidence)
+      : { ok: null, reasons: [], blockedBy: 'committed Feed baseline' };
     const twoDocumentIdentityControl = structuredClone(twoDocumentEvidence);
     twoDocumentIdentityControl.documents.winner.targetId
       = twoDocumentIdentityControl.documents.loser.targetId;
     twoDocumentIdentityControl.activations.winner.presses[0].targetId
       = twoDocumentIdentityControl.documents.loser.targetId;
-    const twoDocumentControl = assessCompendiumFeedTwoDocumentStaleOutcome(
-      twoDocumentIdentityControl,
-    );
-    const twoDocumentControlIsolated = twoDocumentControl.ok === false
+    const twoDocumentControl = twoDocumentAssessment.ok === true
+      ? assessCompendiumFeedTwoDocumentStaleOutcome(twoDocumentIdentityControl)
+      : { ok: null, reasons: [], blockedBy: 'two-document Feed baseline' };
+    const twoDocumentControlIsolated = twoDocumentAssessment.ok === true
+      && twoDocumentControl.ok === false
       && canonicalJson(twoDocumentControl.reasons)
         === canonicalJson(['real two-document identities']);
     const sessionOrdinalControl = structuredClone(committedBundle);
@@ -15610,18 +15577,48 @@ try {
     const rngShapeControl = structuredClone(committedBundle);
     rngShapeControl.after.authority.sessionRng.extra = true;
     rngShapeControl.after.authorityJson = JSON.stringify(rngShapeControl.after.authority);
-    const crossContextAudioControl = structuredClone(committedBundle);
-    const crossContextAudioIntermediate = crossContextAudioControl.audioGraph.nodes.find((node) => (
-      node.nodeId !== crossContextAudioControl.audioGraph.sourceNodeId
-      && node.nodeId !== crossContextAudioControl.audioGraph.destinationNodeId
-      && crossContextAudioControl.audioGraph.edges.some((edge) => (
-        edge.sourceId === node.nodeId || edge.destinationId === node.nodeId
-      ))
+    const committedAudioRoute = compendiumFeedWebAudioRouteNodeIds(
+      committedBundle.audioGraph,
+    );
+    const disconnectedAudioControl = structuredClone(committedBundle);
+    const disconnectedAudioSourceId = committedAudioRoute.at(-2) ?? null;
+    const disconnectedAudioDestinationId = committedAudioRoute.at(-1) ?? null;
+    const disconnectedAudioTargets = disconnectedAudioControl.audioGraph.edges.filter((edge) => (
+      edge.sourceId === disconnectedAudioSourceId
+      && edge.destinationId === disconnectedAudioDestinationId
     ));
-    if (crossContextAudioIntermediate) {
-      crossContextAudioIntermediate.contextId = 'cross-context-negative-control';
+    const disconnectedAudioEdgeCountBefore = disconnectedAudioControl.audioGraph.edges.length;
+    if (disconnectedAudioTargets.length === 1) {
+      disconnectedAudioControl.audioGraph.edges = disconnectedAudioControl.audioGraph.edges.filter(
+        (edge) => edge !== disconnectedAudioTargets[0],
+      );
     }
-    const committedControls = [
+    const disconnectedAudioChangeCount = disconnectedAudioEdgeCountBefore
+      - disconnectedAudioControl.audioGraph.edges.length;
+    const falseDestinationAudioControl = structuredClone(committedBundle);
+    const falseDestinationAudioTargets = falseDestinationAudioControl.audioGraph.nodes.filter(
+      (node) => node.nodeId === falseDestinationAudioControl.audioGraph.destinationNodeId,
+    );
+    let falseDestinationAudioChangeCount = 0;
+    for (const node of falseDestinationAudioTargets) {
+      node.nodeType = 'Gain';
+      falseDestinationAudioChangeCount += 1;
+    }
+    const crossContextAudioControl = structuredClone(committedBundle);
+    const crossContextAudioRoute = compendiumFeedWebAudioRouteNodeIds(
+      crossContextAudioControl.audioGraph,
+    );
+    const crossContextAudioIntermediateId = crossContextAudioRoute.length > 2
+      ? crossContextAudioRoute[1] : null;
+    const crossContextAudioTargets = crossContextAudioControl.audioGraph.nodes.filter(
+      (node) => node.nodeId === crossContextAudioIntermediateId,
+    );
+    let crossContextAudioChangeCount = 0;
+    for (const node of crossContextAudioTargets) {
+      node.contextId = 'cross-context-negative-control';
+      crossContextAudioChangeCount += 1;
+    }
+    const committedControls = committedAssessment.ok === true ? [
       ['one global revision, ownership successor, and Feed receipt',
         assessCompendiumFeedCommittedOutcome({
           ...committedBundle,
@@ -15712,20 +15709,10 @@ try {
         audioStarts: committedBundle.audioStarts.map((row) => ({ ...row, contextState: 'suspended' })),
       })],
       ['one post-settlement acknowledgement', assessCompendiumFeedCommittedOutcome({
-        ...committedBundle,
-        audioGraph: { ...committedBundle.audioGraph,
-          edges: committedBundle.audioGraph.edges.filter((edge) => (
-            edge.destinationId !== committedBundle.audioGraph.destinationNodeId
-          )) },
+        ...disconnectedAudioControl,
       })],
-      ['one post-settlement acknowledgement', assessCompendiumFeedCommittedOutcome({
-        ...committedBundle,
-        audioGraph: { ...committedBundle.audioGraph,
-          nodes: committedBundle.audioGraph.nodes.map((node) => (
-            node.nodeId === committedBundle.audioGraph.destinationNodeId
-              ? { ...node, nodeType: 'GainNode' } : node
-          )) },
-      })],
+      ['one post-settlement acknowledgement',
+        assessCompendiumFeedCommittedOutcome(falseDestinationAudioControl)],
       ['one post-settlement acknowledgement',
         assessCompendiumFeedCommittedOutcome(crossContextAudioControl)],
       ['heartbeat-owned Feed snapshot lifecycle', assessCompendiumFeedCommittedOutcome({
@@ -15759,8 +15746,16 @@ try {
           codecAt: committedBundle.after.codecAt - 1,
           segmentCodecAt: committedBundle.after.segmentCodecAt - 1 },
       })],
-    ];
-    const committedControlsIsolated = crossContextAudioIntermediate !== undefined
+    ] : [];
+    const committedControlsIsolated = committedAssessment.ok === true
+      && committedAudioRoute.length > 2
+      && disconnectedAudioTargets.length === 1
+      && disconnectedAudioChangeCount === 1
+      && falseDestinationAudioTargets.length === 1
+      && falseDestinationAudioChangeCount === 1
+      && crossContextAudioRoute.length > 2
+      && crossContextAudioTargets.length === 1
+      && crossContextAudioChangeCount === 1
       && committedControls.every(([reason, result]) => (
         result.ok === false && canonicalJson(result.reasons) === canonicalJson([reason])
       ));
@@ -15770,6 +15765,14 @@ try {
         + JSON.stringify({ released, fixture: arc5FeedFixture,
           assessment: committedAssessment, controls: committedControls,
           controlsIsolated: committedControlsIsolated,
+          committedAudioRoute,
+          disconnectedAudioTargetCount: disconnectedAudioTargets.length,
+          disconnectedAudioChangeCount,
+          falseDestinationAudioTargetCount: falseDestinationAudioTargets.length,
+          falseDestinationAudioChangeCount,
+          crossContextAudioRoute, crossContextAudioIntermediateId,
+          crossContextAudioTargetCount: crossContextAudioTargets.length,
+          crossContextAudioChangeCount,
           twoDocumentAssessment, twoDocumentControl, twoDocumentControlIsolated,
           bundle: committedBundle, twoDocumentEvidence }));
     }

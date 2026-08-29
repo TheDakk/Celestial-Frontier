@@ -7,6 +7,9 @@ import {
   assessCompendiumFeedCommittedOutcome,
   assessCompendiumFeedPendingWindow,
   assessCompendiumFeedTwoDocumentStaleOutcome,
+  compendiumFeedWebAudioEndpointFailureIsInstrument,
+  compendiumFeedWebAudioRouteNodeIds,
+  projectCompendiumFeedWebAudioGraph,
   selectArc5FeedFixtureBurnVerb,
 } from '../tools/slicesmoke-contract.mjs';
 
@@ -155,6 +158,49 @@ function pendingBundle() {
   };
 }
 
+const FEED_AUDIO_SESSION = 'feed-audio-session';
+type FeedAudioProtocolEvent = {
+  sessionId: string;
+  method: string;
+  params: {
+    node?: { nodeId: string; contextId: string; nodeType: string };
+    nodeId?: string;
+    contextId?: string;
+    sourceId?: string;
+    destinationId?: string;
+  };
+};
+function feedAudioProtocolEvents(): FeedAudioProtocolEvent[] {
+  const created = (nodeId: string, nodeType: string, contextId = 'context-1') => ({
+    sessionId: FEED_AUDIO_SESSION,
+    method: 'WebAudio.audioNodeCreated',
+    params: { node: { nodeId, contextId, nodeType } },
+  });
+  const connected = (sourceId: string, destinationId: string, contextId = 'context-1') => ({
+    sessionId: FEED_AUDIO_SESSION,
+    method: 'WebAudio.nodesConnected',
+    params: { contextId, sourceId, destinationId },
+  });
+  return [
+    created('oscillator-1', 'Oscillator'),
+    created('gain-1', 'Gain'),
+    created('bus-1', 'Gain'),
+    created('destination-1', 'AudioDestination'),
+    connected('oscillator-1', 'gain-1'),
+    connected('gain-1', 'bus-1'),
+    connected('bus-1', 'destination-1'),
+  ];
+}
+
+function projectedFeedAudioGraph(events = feedAudioProtocolEvents(), sourceMark = 0) {
+  return projectCompendiumFeedWebAudioGraph({
+    events,
+    sessionId: FEED_AUDIO_SESSION,
+    enableMark: 0,
+    sourceMark,
+  });
+}
+
 function committedBundle() {
   const sessionDraws = { tame: 4 };
   const predecessor = { ordinal: 0, kind: 'predecessor', witness: 'prior' };
@@ -280,22 +326,7 @@ function committedBundle() {
       startReturned: true, sourceConnected: true, contextState: 'running',
       pendingWork: 0, lastOutcome: 'committed:41', toastSerial: 6,
     }],
-    audioGraph: {
-      schema: 'cf-v2-feed-audio-graph/v1',
-      sourceNodeId: 'oscillator-1',
-      destinationNodeId: 'destination-1',
-      nodes: [
-        { nodeId: 'oscillator-1', contextId: 'context-1', nodeType: 'OscillatorNode' },
-        { nodeId: 'gain-1', contextId: 'context-1', nodeType: 'GainNode' },
-        { nodeId: 'bus-1', contextId: 'context-1', nodeType: 'GainNode' },
-        { nodeId: 'destination-1', contextId: 'context-1', nodeType: 'AudioDestinationNode' },
-      ],
-      edges: [
-        { contextId: 'context-1', sourceId: 'oscillator-1', destinationId: 'gain-1' },
-        { contextId: 'context-1', sourceId: 'gain-1', destinationId: 'bus-1' },
-        { contextId: 'context-1', sourceId: 'bus-1', destinationId: 'destination-1' },
-      ],
-    },
+    audioGraph: projectedFeedAudioGraph(),
     reopened: {
       logicalId: fixture.logicalId,
       creatureId: fixture.creatureId,
@@ -668,6 +699,240 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
     });
   });
 
+  it('projects exact raw CDP WebAudio node types and rejects vacuous routes', () => {
+    const baseline = committedBundle();
+    const assessGraph = (audioGraph: ReturnType<typeof projectedFeedAudioGraph>) => (
+      assessCompendiumFeedAudioAcknowledgement({
+        audioCreates: baseline.audioCreates,
+        audioStarts: baseline.audioStarts,
+        audioGraph,
+        globalRevision: baseline.after.globalRevision,
+        toastSerial: baseline.settled.toastSerial,
+      })
+    );
+    const good = projectedFeedAudioGraph();
+    expect(good.sourceNodeId).toBe('oscillator-1');
+    expect(good.destinationNodeId).toBe('destination-1');
+    expect(good.sourceCandidateCount).toBe(1);
+    expect(good.destinationCandidateCount).toBe(1);
+    expect(good.nodeTypeInventory).toEqual([
+      ['AudioDestination', 1], ['Gain', 2], ['Oscillator', 1],
+    ]);
+    expect(assessGraph(good)).toEqual({ ok: true, reasons: [] });
+
+    const staleInventory = structuredClone(good);
+    const gainInventory = staleInventory.nodeTypeInventory.filter(([nodeType]) => (
+      nodeType === 'Gain'
+    ));
+    expect(gainInventory).toHaveLength(1);
+    gainInventory[0]![1] += 1;
+    expect(assessGraph(staleInventory)).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+    const wrongSourceCandidateCount = structuredClone(good);
+    wrongSourceCandidateCount.sourceCandidateCount += 1;
+    expect(assessGraph(wrongSourceCandidateCount)).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+    const wrongDestinationCandidateCount = structuredClone(good);
+    wrongDestinationCandidateCount.destinationCandidateCount += 1;
+    expect(assessGraph(wrongDestinationCandidateCount)).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const withOneDomInterfaceName = (rawType: string, domType: string) => {
+      let changeCount = 0;
+      const events = feedAudioProtocolEvents().map((event) => {
+        const node = event.params?.node;
+        if (!node || node.nodeType !== rawType) return event;
+        changeCount += 1;
+        return { ...event, params: { node: { ...node, nodeType: domType } } };
+      });
+      expect(changeCount).toBe(1);
+      return events;
+    };
+    const domSourceGraph = projectedFeedAudioGraph(
+      withOneDomInterfaceName('Oscillator', 'OscillatorNode'),
+    );
+    expect(assessGraph(domSourceGraph)).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+    expect(compendiumFeedWebAudioEndpointFailureIsInstrument({
+      audioCreates: baseline.audioCreates,
+      audioStarts: baseline.audioStarts,
+      audioGraph: domSourceGraph,
+      globalRevision: baseline.after.globalRevision,
+      toastSerial: baseline.settled.toastSerial,
+    })).toBe(true);
+    const domDestinationGraph = projectedFeedAudioGraph(
+      withOneDomInterfaceName('AudioDestination', 'AudioDestinationNode'),
+    );
+    expect(assessGraph(domDestinationGraph)).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+    expect(compendiumFeedWebAudioEndpointFailureIsInstrument({
+      audioCreates: baseline.audioCreates,
+      audioStarts: baseline.audioStarts,
+      audioGraph: domDestinationGraph,
+      globalRevision: baseline.after.globalRevision,
+      toastSerial: baseline.settled.toastSerial,
+    })).toBe(true);
+    expect(compendiumFeedWebAudioEndpointFailureIsInstrument({
+      audioCreates: baseline.audioCreates,
+      audioStarts: baseline.audioStarts,
+      audioGraph: good,
+      globalRevision: baseline.after.globalRevision,
+      toastSerial: baseline.settled.toastSerial,
+    })).toBe(false);
+    expect(compendiumFeedWebAudioEndpointFailureIsInstrument({
+      audioCreates: 0,
+      audioStarts: [],
+      audioGraph: domSourceGraph,
+      globalRevision: baseline.after.globalRevision,
+      toastSerial: baseline.settled.toastSerial,
+    })).toBe(false);
+    expect(compendiumFeedWebAudioEndpointFailureIsInstrument({
+      audioCreates: 1,
+      audioStarts: [],
+      audioGraph: domSourceGraph,
+      globalRevision: baseline.after.globalRevision,
+      toastSerial: baseline.settled.toastSerial,
+    })).toBe(false);
+    const badStartMutations = [
+      { startReturned: false },
+      { sourceConnected: false },
+      { contextState: 'suspended' },
+      { pendingWork: 1 },
+      { lastOutcome: 'refused:transaction:stale' },
+      { toastSerial: baseline.settled.toastSerial + 1 },
+      { extra: true },
+    ];
+    for (const mutation of badStartMutations) {
+      expect(compendiumFeedWebAudioEndpointFailureIsInstrument({
+        audioCreates: baseline.audioCreates,
+        audioStarts: [{ ...baseline.audioStarts[0], ...mutation }],
+        audioGraph: domSourceGraph,
+        globalRevision: baseline.after.globalRevision,
+        toastSerial: baseline.settled.toastSerial,
+      })).toBe(false);
+    }
+
+    const branchedEvents = feedAudioProtocolEvents();
+    branchedEvents.splice(4, 0,
+      {
+        sessionId: FEED_AUDIO_SESSION,
+        method: 'WebAudio.audioNodeCreated',
+        params: { node: { nodeId: '00-unrelated', contextId: 'context-1', nodeType: 'Gain' } },
+      },
+      {
+        sessionId: FEED_AUDIO_SESSION,
+        method: 'WebAudio.audioNodeCreated',
+        params: { node: { nodeId: '01-unrelated', contextId: 'context-1', nodeType: 'Gain' } },
+      },
+      {
+        sessionId: FEED_AUDIO_SESSION,
+        method: 'WebAudio.nodesConnected',
+        params: { contextId: 'context-1', sourceId: '00-unrelated', destinationId: '01-unrelated' },
+      });
+    const branchedGraph = projectedFeedAudioGraph(branchedEvents);
+    const route = compendiumFeedWebAudioRouteNodeIds(branchedGraph);
+    expect(route).toEqual(['oscillator-1', 'gain-1', 'bus-1', 'destination-1']);
+    const routeIntermediateId = route[1];
+    const routeTargets = branchedGraph.nodes.filter((node) => node.nodeId === routeIntermediateId);
+    expect(routeTargets).toHaveLength(1);
+    routeTargets[0]!.contextId = 'cross-context-negative-control';
+    expect(assessGraph(branchedGraph)).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const wrongSession = feedAudioProtocolEvents();
+    wrongSession[0] = { ...wrongSession[0]!, sessionId: 'foreign-session' };
+    expect(assessGraph(projectedFeedAudioGraph(wrongSession))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const duplicateSource = feedAudioProtocolEvents();
+    duplicateSource.splice(1, 0, {
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.audioNodeCreated',
+      params: { node: {
+        nodeId: 'oscillator-2', contextId: 'context-1', nodeType: 'Oscillator',
+      } },
+    });
+    const duplicateSourceGraph = projectedFeedAudioGraph(duplicateSource);
+    expect(assessGraph(duplicateSourceGraph)).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+    expect(compendiumFeedWebAudioEndpointFailureIsInstrument({
+      audioCreates: 1,
+      audioStarts: baseline.audioStarts,
+      audioGraph: duplicateSourceGraph,
+      globalRevision: baseline.after.globalRevision,
+      toastSerial: baseline.settled.toastSerial,
+    })).toBe(true);
+    expect(compendiumFeedWebAudioEndpointFailureIsInstrument({
+      audioCreates: 2,
+      audioStarts: [...baseline.audioStarts, ...baseline.audioStarts],
+      audioGraph: duplicateSourceGraph,
+      globalRevision: baseline.after.globalRevision,
+      toastSerial: baseline.settled.toastSerial,
+    })).toBe(false);
+
+    const duplicateDestination = feedAudioProtocolEvents();
+    duplicateDestination.splice(4, 0, {
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.audioNodeCreated',
+      params: { node: {
+        nodeId: 'destination-2', contextId: 'context-1', nodeType: 'AudioDestination',
+      } },
+    });
+    expect(assessGraph(projectedFeedAudioGraph(duplicateDestination))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    expect(assessGraph(projectedFeedAudioGraph(feedAudioProtocolEvents(), 1))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const destroyedSource = feedAudioProtocolEvents();
+    destroyedSource.push({
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.audioNodeWillBeDestroyed',
+      params: { nodeId: 'oscillator-1' },
+    });
+    expect(assessGraph(projectedFeedAudioGraph(destroyedSource))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const disconnectedRoute = feedAudioProtocolEvents();
+    disconnectedRoute.push({
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.nodesDisconnected',
+      params: {
+        contextId: 'context-1',
+        sourceId: 'bus-1',
+        destinationId: 'destination-1',
+      },
+    });
+    expect(assessGraph(projectedFeedAudioGraph(disconnectedRoute))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    expect(assessGraph(good)).toEqual({ ok: true, reasons: [] });
+  });
+
   it('binds the final F4 ordinal, immutable witness, draw stability and Arc 5 remainder', () => {
     const good = committedBundle();
     expect(assessCompendiumFeedCommittedOutcome(good)).toEqual({ ok: true, reasons: [] });
@@ -796,36 +1061,53 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
     });
 
     const routeStopsAtBus = structuredClone(good);
-    routeStopsAtBus.audioGraph.edges.pop();
+    const destinationEdges = routeStopsAtBus.audioGraph.edges.filter((edge) => (
+      edge.destinationId === routeStopsAtBus.audioGraph.destinationNodeId
+    ));
+    expect(destinationEdges).toHaveLength(1);
+    routeStopsAtBus.audioGraph.edges = routeStopsAtBus.audioGraph.edges.filter((edge) => (
+      edge !== destinationEdges[0]
+    ));
+    expect(routeStopsAtBus.audioGraph.edges).toHaveLength(good.audioGraph.edges.length - 1);
     expect(assessCompendiumFeedCommittedOutcome(routeStopsAtBus)).toEqual({
       ok: false,
       reasons: ['one post-settlement acknowledgement'],
     });
 
     const crossContextIntermediate = structuredClone(good);
-    const intermediate = crossContextIntermediate.audioGraph.nodes.find((node) => (
-      node.nodeId !== crossContextIntermediate.audioGraph.sourceNodeId
-      && node.nodeId !== crossContextIntermediate.audioGraph.destinationNodeId
-      && crossContextIntermediate.audioGraph.edges.some((edge) => (
-        edge.sourceId === node.nodeId || edge.destinationId === node.nodeId
-      ))
-    ));
-    expect(intermediate).toBeDefined();
-    intermediate!.contextId = 'context-cross-owner';
+    const crossContextRoute = compendiumFeedWebAudioRouteNodeIds(
+      crossContextIntermediate.audioGraph,
+    );
+    expect(crossContextRoute).toEqual([
+      'oscillator-1', 'gain-1', 'bus-1', 'destination-1',
+    ]);
+    const intermediateTargets = crossContextIntermediate.audioGraph.nodes.filter(
+      (node) => node.nodeId === crossContextRoute[1],
+    );
+    expect(intermediateTargets).toHaveLength(1);
+    intermediateTargets[0]!.contextId = 'context-cross-owner';
     expect(assessCompendiumFeedCommittedOutcome(crossContextIntermediate)).toEqual({
       ok: false,
       reasons: ['one post-settlement acknowledgement'],
     });
 
     const falseDestination = structuredClone(good);
-    falseDestination.audioGraph.nodes.at(-1)!.nodeType = 'GainNode';
+    const destinationTargets = falseDestination.audioGraph.nodes.filter((node) => (
+      node.nodeId === falseDestination.audioGraph.destinationNodeId
+    ));
+    expect(destinationTargets).toHaveLength(1);
+    destinationTargets[0]!.nodeType = 'Gain';
     expect(assessCompendiumFeedCommittedOutcome(falseDestination)).toEqual({
       ok: false,
       reasons: ['one post-settlement acknowledgement'],
     });
 
     const graphShapeMutation = structuredClone(good);
-    Object.assign(graphShapeMutation.audioGraph.edges[0]!, { connected: true });
+    const sourceEdges = graphShapeMutation.audioGraph.edges.filter((edge) => (
+      edge.sourceId === graphShapeMutation.audioGraph.sourceNodeId
+    ));
+    expect(sourceEdges).toHaveLength(1);
+    Object.assign(sourceEdges[0]!, { connected: true });
     expect(assessCompendiumFeedCommittedOutcome(graphShapeMutation)).toEqual({
       ok: false,
       reasons: ['one post-settlement acknowledgement'],
@@ -989,7 +1271,7 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       'const pendingAssessment = assessCompendiumFeedPendingWindow(pendingBundle);',
       "window.__CF_SLICE__.api.__smokeCaptureCurrentSurface('tame')",
       'const committedAssessment = assessCompendiumFeedCommittedOutcome(committedBundle);',
-      'const twoDocumentAssessment = assessCompendiumFeedTwoDocumentStaleOutcome(',
+      'const twoDocumentAssessment = committedAssessment.ok === true',
       'receiptWitness: receipt?.witness ?? null,',
       'targetRemainderFingerprint:',
       'sessionDrawsFingerprint:',
@@ -1068,11 +1350,39 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
     expect(source).toContain('const result=Reflect.apply(originalStart,this,arguments)');
     expect(source).toContain("await send('WebAudio.enable', {}, winnerSession);");
     expect(source).toContain('compendiumFeedWebAudioGraph(');
-    expect(source).toContain("'Arc 5 Feed successful oscillator start'");
-    expect(source).toContain("node.nodeType === 'AudioDestinationNode'");
-    expect(source).toContain('sourceNode?.contextId === edge.contextId');
-    expect(source).toContain('destinationNode?.contextId === edge.contextId');
-    expect(source).toContain('evidence.starts[0]?.startReturned===true');
+    expect(source).toContain(
+      'projectCompendiumFeedWebAudioGraph({ events, sessionId, enableMark, sourceMark })',
+    );
+    expect(source).toContain(
+      'Arc 5 Feed WebAudio instrument could not bind one exact raw CDP Oscillator',
+    );
+    expect(source).toContain(
+      'audioEvidence = await winnerDriver.evaluate(`({creates:window.__cfFeedAudioCreates??null,',
+    );
+    expect(source).toContain('compendiumFeedWebAudioEndpointFailureIsInstrument({');
+    expect(source).toContain(
+      'const crossContextAudioRoute = compendiumFeedWebAudioRouteNodeIds(',
+    );
+    expect(source).toContain('disconnectedAudioTargets.length === 1');
+    expect(source).toContain('disconnectedAudioChangeCount === 1');
+    expect(source).toContain('falseDestinationAudioTargets.length === 1');
+    expect(source).toContain('falseDestinationAudioChangeCount === 1');
+    expect(source).toContain('crossContextAudioTargets.length === 1');
+    expect(source).toContain('crossContextAudioChangeCount === 1');
+    expect(source).toContain('const audioEvidenceDeadline = Date.now() + 3_000;');
+    expect(source).not.toContain("'Arc 5 Feed successful oscillator start'");
+    expect(source).not.toContain("node.nodeType === 'OscillatorNode'");
+    expect(source).not.toContain("node.nodeType === 'AudioDestinationNode'");
+    expect(source).toContain(
+      'const twoDocumentAssessment = committedAssessment.ok === true',
+    );
+    expect(source).toContain(
+      'const twoDocumentControl = twoDocumentAssessment.ok === true',
+    );
+    expect(source).toContain(
+      'const committedControls = committedAssessment.ok === true ? [',
+    );
+    expect(source).toContain('audioEvidence.starts[0]?.startReturned === true');
     expect(source).not.toContain("panelOpen==='sets'");
     expect(source).not.toContain('#settingspanel [data-pnx]');
     expect(source).not.toContain('heldRawMetadataProjection');

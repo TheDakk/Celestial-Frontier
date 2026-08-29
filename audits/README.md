@@ -10,6 +10,53 @@ summary of it.
 
 ## Contents
 
+### Signed `9d8ffb11…` universe-polish restart — three PASS predecessors, raw-CDP Slice instrument stop
+
+Signed clean source `9d8ffb11c9eb3a8066dc295a21e61820962c7cb3` (tree
+`cea338ff1560402b0bd027a1a2e31d2f1704a72f`, parent `bf24a4921eb5…`) passed Layout **787/787**
+in 76,296 ms, SceneMemory **44/44** in 10,648 ms and Compendium **78/78** in 45,406 ms, each
+once without retry and with exact named verification. Slice
+`20260829-universe-polish-9d8ffb11c9eb-slice` then ran once for 437,229 ms and stopped before
+Glass/Recovery with one `arc-5-feed-commit` finding.
+
+The preserved evidence proves the product outcome: one exact durable Feed receipt, Meals 0→1,
+flora 1→0, one real stale loser, byte-identical reload, visible `Meal complete`, and one successful
+post-settlement oscillator start over a complete same-context audio graph. Raw CDP emitted node
+types `Oscillator` and `AudioDestination`; the collector and synthetic fixture instead searched for
+DOM interface names `OscillatorNode` and `AudioDestinationNode`, leaving endpoint IDs null. Every
+downstream mutation/race failure is therefore one instrument cascade.
+
+The repair changes no app/release/build/memory-producer byte. One pure projector now owns the raw
+CDP event vocabulary for both Slice and browser-free tests. Its bounded page observation returns
+missing/bad evidence without throwing; missing/ambiguous endpoints become instrument failures only
+when a final independent wrapper reread still proves the complete
+exact post-settlement start, keeps real duplicates and coherent route/start defects product-red, and gates
+dependent controls on their green premise. Raw-protocol positive plus independent exact-one
+source/destination DOM-name, wrong-session, pre-mark, duplicate-source/destination,
+destroyed-source, disconnected and route-derived cross-context controls are bidirectional; the
+cross-context mutant must change exactly one intermediate on the proved path rather than an
+unrelated branch. Focused 65/65, both report selftests, full 1,712-pass + one-skip v2, all
+typechecks, `artunused`, producer derivation and diff hygiene are green.
+
+- `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_020621336.json.gz`: 5,148 compressed bytes,
+  SHA-256 `7116c9ea83faf8567019e6124c525782f1e5f29662c23a4d935c06fa263a74d5`; 106,976 raw bytes,
+  SHA-256 `01b0e841f175b013d1efbc4e78a9f9266333da23ef60ab9231ad3eccd50a6a17`.
+- `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_020645679.json.gz`: 32,705 compressed bytes,
+  SHA-256 `10842e23a7d8702fd8448b6d1ed2a18733064a0ffe9a44e77b4fdc81abdf2e78`; 426,771 raw bytes,
+  SHA-256 `006b0db985bc5a7522d37a545e76a9d2bc99206df060f53ec7233a042687c5b1`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_020743938.json.gz`: 554,745 compressed bytes,
+  SHA-256 `0459bb92d22c962e8f766774af0a0b4a26c9834c4595db2a347d0a8b273b729f`; 8,621,227 raw bytes,
+  SHA-256 `b3147fdeb91f74f56ffb58484fc37927ce140980f11d42a6bc5a0a39dc19101d`.
+- `ARC4_SLICE_UNIVERSE_POLISH_FEED_ACK_FAILURE_20260829_021516461.json.gz`: 67,276 compressed
+  bytes, SHA-256 `a772a5eacb4cea991f5e42444bc1fd78c492e28d893321665376e72e391bdc6e`; 671,831 raw bytes,
+  SHA-256 `7d51c63a68c2667f3e206514ae33b36a1b95cddbdffd4504c6b139be929d5ec7`.
+- `ARC4_SLICE_UNIVERSE_POLISH_FEED_ACK_FAILURE_20260829_021516461.log.gz`: 32,105 compressed
+  bytes, SHA-256 `6c448238215ad486e1e88818d09bb96a4cb36c4e710f4ed2927015eb69d8a612`; 289,178 raw bytes,
+  SHA-256 `d0ae43cbda9f81599a18f84a846420cf673b6a84070821655d545a7c0b198260`.
+
+All five carriers pass gzip integrity. This campaign is immutable and grants no Slice, Glass,
+Recovery, HUMAN, hosted, merge or release authority. The signed repair must restart at Layout.
+
 ### Signed `bf24a492…` universe-polish restart — Layout/SceneMemory/Compendium PASS, Slice instrument stop
 
 Signed clean source `bf24a4921eb5ca757a4978b9d01e44ae39a0a06d` (tree
