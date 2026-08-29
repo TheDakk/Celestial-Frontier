@@ -16,13 +16,16 @@
 > **15,728,640 / 6,815,744 / 23,068,672 / 8,912,896 / 393,216 B**; every other field remains
 > byte-identical. Broader heap margins avoid sub-spread or sub-one-percent false reds, while the
 > 384 KiB portrait ruler conservatively preserves prior cross-platform encoder variance without
-> claiming a fresh Linux measurement. The working tree now contains the independently reviewed
-> active ruler (budget SHA-256 `02ee0ada076e444b7f3ad67c47c3de688bbd290d7e1a9a9e7570168f2d4c29f0`),
-> with 27/27 focused assertions, 222 instrument controls, 1,711 v2 tests plus one intentional skip,
-> all typechecks, `artunused` and current-producer binding green. It is not yet a signed clean source
-> or a current green Compendium certificate. After the changed signed
-> activation source passes one exact named-verified Compendium certification, the complete campaign
-> must restart from Layout. Edge `151.0.4129.107` / CDP `1.3` remains provenance only; compatible
+> claiming a fresh Linux measurement. Signed activation
+> `27513798bedd9e4337d0b1db9712fa784b90b9fd` (budget SHA-256
+> `02ee0ada076e444b7f3ad67c47c3de688bbd290d7e1a9a9e7570168f2d4c29f0`) passed its complete
+> browser-free battery and independent review. Its exact one-attempt/no-retry Compendium run
+> `20260829-universe-polish-27513798bedd-compendium-certification` then passed 78/78 in 44,432 ms
+> and passed named verification on the same clean source. The raw/gzip report SHA-256 pair is
+> `3b0116f98a77e3089ef80fd78ebc762a658c74907a2c5e473061718c9860e7a6` /
+> `1415773e8eb7474d141b9174939bf618795b76742afd874e4bf73fa7bc0a70e7`.
+> The complete campaign must now restart from Layout on the next signed clean evidence descendant.
+> Edge `151.0.4129.107` / CDP `1.3` remains provenance only; compatible
 > updates do not trigger rebaseline. Exact calibration carriers, byte sizes and hashes are preserved
 > in [`audits/README.md`](audits/README.md). No GitHub, release, version or deployment authority follows.
 >
