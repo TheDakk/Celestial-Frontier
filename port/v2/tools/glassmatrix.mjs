@@ -4070,6 +4070,45 @@ function guideRequiredControlRejected({ before, after, needle, required, result 
     && result.missing[0] === carriers[0];
 }
 
+/* Rendered Guide requirements may span inline markup (`<b>Meals by 1</b>,
+   capped at 200`). Mutate the paragraph's rendered text, not its HTML bytes,
+   and only when one exact target exists. The caller restores the original
+   innerHTML after the control so authored emphasis remains byte-exact. */
+function exactGuideRenderedTextMutation(before, needle, replacement) {
+  if (typeof before !== 'string' || typeof needle !== 'string' || needle.length === 0
+    || typeof replacement !== 'string') {
+    return { before, after: before, targetCount: 0, changeCount: 0 };
+  }
+  const targetCount = before.split(needle).length - 1;
+  const after = targetCount === 1 ? before.replace(needle, replacement) : before;
+  return {
+    before,
+    after,
+    targetCount,
+    changeCount: after === before ? 0 : 1,
+  };
+}
+
+function guideRenderedControlHtmlRestored(beforeHtml, afterHtml) {
+  return typeof beforeHtml === 'string' && typeof afterHtml === 'string'
+    && afterHtml === beforeHtml;
+}
+
+function exactGuideRenderedRequiredControlRejected({
+  mutation, observedAfter, needle, required, result,
+  restoredHtml, restoredText, restoredPredicate,
+}) {
+  const actualChangeCount = typeof observedAfter === 'string'
+    && observedAfter !== mutation?.before ? 1 : 0;
+  return mutation?.targetCount === 1 && mutation.changeCount === 1
+    && observedAfter === mutation.after && actualChangeCount === 1
+    && Array.isArray(result?.stale) && result.stale.length === 0
+    && restoredHtml === true && restoredText === true && restoredPredicate === true
+    && guideRequiredControlRejected({
+      before: mutation.before, after: observedAfter, needle, required, result,
+    });
+}
+
 /* Reconstruct the exact generated Shipyard predicate from this source for a
    browser-free missing-owner control. A selector added to that predicate
    cannot silently reintroduce `null.querySelectorAll(...)`: selftest executes
@@ -4924,6 +4963,142 @@ async function reportSelftest() {
     || guideRejected.noOp || guideRejected.wrongCarrier || guideRejected.needleStillPresent) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: rendered Guide required-copy predicate failed closed incorrectly (${JSON.stringify(guideRejected)})`);
   }
+  const renderedGuideMutation = {
+    positive: exactGuideRenderedTextMutation(
+      'One committed meal raises Meals by 1, capped at 200.',
+      'Meals by 1, capped at 200',
+      'required Training contract removed',
+    ),
+    secondSplitPhrase: exactGuideRenderedTextMutation(
+      'One committed meal removes 1 flora from that exact lot.',
+      'removes 1 flora from that exact lot',
+      'required Training contract removed',
+    ),
+    absent: exactGuideRenderedTextMutation(
+      'No meal counter is rendered here.',
+      'Meals by 1, capped at 200',
+      'required Training contract removed',
+    ),
+    multiple: exactGuideRenderedTextMutation(
+      'Meals by 1, capped at 200; Meals by 1, capped at 200.',
+      'Meals by 1, capped at 200',
+      'required Training contract removed',
+    ),
+    noChange: exactGuideRenderedTextMutation(
+      'Meals by 1, capped at 200',
+      'Meals by 1, capped at 200',
+      'Meals by 1, capped at 200',
+    ),
+    rawMarkupIsNotRenderedText: exactGuideRenderedTextMutation(
+      '<b>Meals by 1</b>, capped at 200',
+      'Meals by 1, capped at 200',
+      'required Training contract removed',
+    ),
+  };
+  const renderedGuideRestoration = {
+    exact: guideRenderedControlHtmlRestored(
+      '<p>raises <b>Meals by 1</b>, capped at 200.</p>',
+      '<p>raises <b>Meals by 1</b>, capped at 200.</p>',
+    ),
+    flattened: guideRenderedControlHtmlRestored(
+      '<p>raises <b>Meals by 1</b>, capped at 200.</p>',
+      'raises Meals by 1, capped at 200.',
+    ),
+    missing: guideRenderedControlHtmlRestored(
+      '<p>raises <b>Meals by 1</b>, capped at 200.</p>',
+      '',
+    ),
+  };
+  const renderedControlMutation = exactGuideRenderedTextMutation(
+    'The Compendium presents up to 1,500 logical entries.',
+    'up to 1,500 logical entries',
+    'a bounded set of logical entries',
+  );
+  const renderedControlResult = {
+    ok: false,
+    missing: ['Compendium presents up to 1,500 logical entries'],
+    stale: [],
+    text: renderedControlMutation.after,
+  };
+  const renderedControlInput = {
+    mutation: renderedControlMutation,
+    observedAfter: renderedControlMutation.after,
+    needle: 'up to 1,500 logical entries',
+    required: ['Compendium presents up to 1,500 logical entries'],
+    result: renderedControlResult,
+    restoredHtml: true,
+    restoredText: true,
+    restoredPredicate: true,
+  };
+  const renderedControlAssessment = {
+    positive: exactGuideRenderedRequiredControlRejected(renderedControlInput),
+    observedNoOp: exactGuideRenderedRequiredControlRejected({
+      ...renderedControlInput,
+      observedAfter: renderedControlMutation.before,
+    }),
+    wrongObservedAfter: exactGuideRenderedRequiredControlRejected({
+      ...renderedControlInput,
+      observedAfter: `${renderedControlMutation.after} extra`,
+    }),
+    staleIntroduced: exactGuideRenderedRequiredControlRejected({
+      ...renderedControlInput,
+      result: { ...renderedControlResult, stale: ['stale copy'] },
+    }),
+    htmlNotRestored: exactGuideRenderedRequiredControlRejected({
+      ...renderedControlInput,
+      restoredHtml: false,
+    }),
+    textNotRestored: exactGuideRenderedRequiredControlRejected({
+      ...renderedControlInput,
+      restoredText: false,
+    }),
+    predicateNotRestored: exactGuideRenderedRequiredControlRejected({
+      ...renderedControlInput,
+      restoredPredicate: false,
+    }),
+  };
+  const selfSource = fs.readFileSync(fileURLToPath(import.meta.url), 'utf8');
+  const renderedTextWiring = 'exactGuideRenderedTextMutation(target.'
+    + "textContent||'',part,'required Training contract removed')";
+  const staleHtmlMutation = 'const changed=prior.' + 'replace(part';
+  const htmlRestorationWiring = 'guideRenderedControlHtmlRestored(prior,target.'
+    + 'innerHTML)';
+  const observedMutationWiring = 'exactGuideRenderedRequiredControlRejected({mutation,'
+    + 'observedAfter,needle:part';
+  const renderedTextWiringCount = selfSource.split(renderedTextWiring).length - 1;
+  const staleHtmlMutationCount = selfSource.split(staleHtmlMutation).length - 1;
+  const htmlRestorationWiringCount = selfSource.split(htmlRestorationWiring).length - 1;
+  const observedMutationWiringCount = selfSource.split(observedMutationWiring).length - 1;
+  if (renderedGuideMutation.positive.targetCount !== 1
+    || renderedGuideMutation.positive.changeCount !== 1
+    || renderedGuideMutation.positive.after.includes('Meals by 1, capped at 200')
+    || renderedGuideMutation.secondSplitPhrase.targetCount !== 1
+    || renderedGuideMutation.secondSplitPhrase.changeCount !== 1
+    || renderedGuideMutation.secondSplitPhrase.after.includes('removes 1 flora from that exact lot')
+    || renderedGuideMutation.absent.targetCount !== 0
+    || renderedGuideMutation.absent.changeCount !== 0
+    || renderedGuideMutation.multiple.targetCount !== 2
+    || renderedGuideMutation.multiple.changeCount !== 0
+    || renderedGuideMutation.noChange.targetCount !== 1
+    || renderedGuideMutation.noChange.changeCount !== 0
+    || renderedGuideMutation.rawMarkupIsNotRenderedText.targetCount !== 0
+    || renderedGuideMutation.rawMarkupIsNotRenderedText.changeCount !== 0
+    || renderedGuideRestoration.exact !== true
+    || renderedGuideRestoration.flattened !== false
+    || renderedGuideRestoration.missing !== false
+    || renderedControlAssessment.positive !== true
+    || renderedControlAssessment.observedNoOp !== false
+    || renderedControlAssessment.wrongObservedAfter !== false
+    || renderedControlAssessment.staleIntroduced !== false
+    || renderedControlAssessment.htmlNotRestored !== false
+    || renderedControlAssessment.textNotRestored !== false
+    || renderedControlAssessment.predicateNotRestored !== false
+    || renderedTextWiringCount !== 1
+    || staleHtmlMutationCount !== 0
+    || htmlRestorationWiringCount !== 1
+    || observedMutationWiringCount !== 1) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: rendered Guide exact-text mutation failed closed incorrectly (${JSON.stringify({ renderedGuideMutation, renderedGuideRestoration, renderedControlAssessment, renderedTextWiringCount, staleHtmlMutationCount, htmlRestorationWiringCount, observedMutationWiringCount })})`);
+  }
   const fixture = {
     status: 'fail', exitCode: 1,
     browser: {
@@ -5293,6 +5468,7 @@ async function reportSelftest() {
   console.log('  missing Shipyard generated expression returns {ok:false} without throw; import, release, exact boot subphases, twin-canvas budgets, navigation, and boot-ready deadlines fail closed');
   console.log('  source provenance: physical repository + actual full HEAD accepted; required Git failure and empty/malformed/wrong hosted SHA rejected');
   console.log('  evidence chain: exact clean Slice predecessor accepted; stale/interrupted/dirty/wrong/targeted/missing/mismatched bindings rejected');
+  console.log('  rendered Guide controls mutate one exact text target across inline markup, reject absent/multiple/no-op targets, and restore authored HTML');
 }
 
 const MIME = Object.freeze({
@@ -10047,6 +10223,9 @@ async function main() {
              sealed outcome or negative-control inventories. */
           const renderedGuideIngress = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),input=document.getElementById('guidesearch'),rows=[];
             const guideRequiredControlRejected=${guideRequiredControlRejected.toString()};
+            const exactGuideRenderedTextMutation=${exactGuideRenderedTextMutation.toString()};
+            const guideRenderedControlHtmlRestored=${guideRenderedControlHtmlRestored.toString()};
+            const exactGuideRenderedRequiredControlRejected=${exactGuideRenderedRequiredControlRejected.toString()};
             const probeNeedle='up to 1,500 logical entries',probeCarrier='Compendium presents '+probeNeedle,
               probeBefore='The '+probeCarrier+'.',probeAfter=probeBefore.replace(probeNeedle,'a bounded set of logical entries'),
               probeResult={ok:false,missing:[probeCarrier],text:probeAfter};
@@ -10094,10 +10273,16 @@ async function main() {
                 finally { target.innerHTML=prior; }
                 const requiredControls=[];
                 for(const part of spec.requiredControls||[]){
-                  const changed=prior.replace(part,'required Training contract removed');let result;
-                  try { target.innerHTML=changed;result=check(article,spec); }
-                  finally { target.innerHTML=prior; }
-                  requiredControls.push({part,result,rejected:guideRequiredControlRejected({before:prior,after:changed,needle:part,required:spec.required,result})});
+                  const mutation=exactGuideRenderedTextMutation(target.textContent||'',part,'required Training contract removed');let result,
+                    observedAfter='',actualChangeCount=0,restoredHtml=false,restoredText=false,restoredPredicate=false;
+                  try { target.textContent=mutation.after;observedAfter=target.textContent||'';
+                    actualChangeCount=observedAfter===mutation.before?0:1;result=check(article,spec); }
+                  finally { target.innerHTML=prior;restoredHtml=guideRenderedControlHtmlRestored(prior,target.innerHTML);
+                    restoredText=(target.textContent||'')===mutation.before;restoredPredicate=check(article,spec).ok; }
+                  requiredControls.push({part,targetCount:mutation.targetCount,expectedChangeCount:mutation.changeCount,
+                    observedAfter,actualChangeCount,restoredHtml,restoredText,restoredPredicate,result,
+                    rejected:exactGuideRenderedRequiredControlRejected({mutation,observedAfter,needle:part,required:spec.required,
+                      result,restoredHtml,restoredText,restoredPredicate})});
                 }
                 let contradictory=null;
                 if(spec.contradiction){const marker=document.createElement('p');marker.textContent=spec.contradiction;
@@ -10108,7 +10293,7 @@ async function main() {
                   try { article.appendChild(marker);result=check(article,spec); }
                   finally { marker.remove(); }
                   contradictionControls.push({copy,result,rejected:result.ok===false&&result.stale.length>0});}
-                const restored=(article.textContent||'')===priorText&&check(article,spec).ok;
+                const restored=(article.textContent||'')===priorText&&target.innerHTML===prior&&check(article,spec).ok;
                 rows.push({id:spec.id,current,injected,requiredControls,contradictory,contradictionControls,
                   controlRejected:injected.ok===false,requiredControlsRejected:requiredControls.every((row)=>row.rejected),
                   contradictionRejected:(!spec.contradiction||contradictory?.ok===false)&&contradictionControls.every((row)=>row.rejected),restored});

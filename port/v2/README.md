@@ -53,15 +53,22 @@
 > keeps real duplicate or semantically bad acknowledgements product-red; only
 > endpoint incoherence against a complete exact post-settlement start becomes an instrument failure. Its cross-context
 > mutant selects one exact intermediate from the proved route, and dependent controls remain blocked
-> until baseline green. Product/release/build/memory-producer bytes remain unchanged. Sign that repair, then restart
-> the complete Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain from
-> Layout. Do not rerun `55126af…` or treat compatible Edge updates as rebaseline events. Keep
+> until baseline green. Product/release/build/memory-producer bytes remain unchanged. Signed repair
+> `916d921ebf78…` restarted and passed Layout 787/787, SceneMemory 44/44, Compendium 78/78 and
+> Slice with zero findings once each, all named-verified. Glass completed all 12 viewports with zero
+> product findings, then stopped on one rendered-Guide control instrument failure: two visible
+> required phrases crossed `<b>` markup, so raw-`innerHTML` mutations were no-ops. The bounded
+> repair now applies an exact-one rendered-text mutation, verifies observed change and intended
+> missing copy, rejects stale contamination and restores exact authored HTML/text/current state.
+> Glass selftest, full v2 1,712 passed + one skipped, all typechecks and two independent reviews are
+> green. Sign that repair, then restart the complete Layout → SceneMemory → Compendium →
+> Slice → Glass → Recovery chain from Layout. Do not rerun `55126af…` or treat compatible Edge updates as rebaseline events. Keep
 > temporary full caffeinate active until the completed handoff. No HUMAN, whole-Gate, hosted/merge,
 > release/version or deployment authority follows.
 
 ## Current port status — 2026-08-29
 
-### Current local universe-wide visual checkpoint — implementation present, raw-CDP projector repair ready to sign
+### Current local universe-wide visual checkpoint — implementation present, Glass control repair ready to sign
 
 The active v2 routes now share one structure-preserving visual language across galaxy and system
 space, planets, all 43 live biomes, creatures, plants, fungi, microbes and the ship. The finite

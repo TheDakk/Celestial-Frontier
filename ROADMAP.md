@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-29 · UNIVERSE POLISH + ARC 5 · THREE GATES GREEN · RAW-CDP PROJECTOR REPAIR READY TO SIGN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · UNIVERSE POLISH + ARC 5 · SLICE GREEN · GLASS CONTROL REPAIR READY TO SIGN ◀◀◀
 
 ### Exact current boundary
 
@@ -53,9 +53,15 @@ the archive verbatim and refresh this handoff in place.
   It repaired both prior Slice preconditions without changing product bytes. Layout, SceneMemory and
   Compendium passed once and named-verified again; Slice then stopped on one raw-CDP vocabulary
   defect in its WebAudio graph collector. Glass and Recovery did not run.
+- **Exact newest stopped full-chain source:** signed gate-repair descendant
+  `916d921ebf787ed6c58ec8db567e00bbb61adbf8` (tree
+  `26937c9607ddb82f059d825abf3024b7575dc01b`, parent `9d8ffb11c9eb…`). It preserves the prior
+  stopped-chain evidence and fixes the raw-CDP projector/classification without changing product
+  bytes. Layout, SceneMemory, Compendium and Slice all passed once and named-verified. Glass then
+  stopped on one rendered-Guide negative-control no-op; Recovery did not run.
 - Locally known `origin/develop` remains `7a9f4c1370dd84292388d718c38ff34214f6203b` and is fully
-  contained. The latest stopped source is **113 commits ahead** of `origin/openai/mac`; the signed
-  raw-CDP repair checkpoint will be **114 commits ahead**. Everything remains local and unpushed.
+  contained. The newest stopped source is **114 commits ahead** of `origin/openai/mac`; the signed
+  Glass-control repair checkpoint will be **115 commits ahead**. Everything remains local and unpushed.
 - Temporary `/usr/bin/caffeinate -dis` remains active so macOS and 1Password stay available during
   the authorized local certification. Restore normal monitors-off/sleep behavior only after the
   complete chain and final handoff are safe.
@@ -324,10 +330,28 @@ the archive verbatim and refresh this handoff in place.
   - Slice log `d0ae43cbda9f81599a18f84a846420cf673b6a84070821655d545a7c0b198260` /
     `6c448238215ad486e1e88818d09bb96a4cb36c4e710f4ed2927015eb69d8a612`.
 
-### Next exact action — sign raw-CDP repair, then restart from Layout
+### Stopped `916d921e…` restart — four green gates, Glass rendered-control instrument red
 
-- Preserve the latest five stopped-chain carriers, projector repair and synchronized docs in one signed clean
-  checkpoint. From that changed source, a completely fresh once-only campaign must start at
+- On clean signed `916d921e…`, Layout passed **787/787** in 76,326 ms, SceneMemory passed
+  **44/44** in 10,940 ms, Compendium passed **78/78** in 44,986 ms and Slice passed in
+  **444,377 ms**. Each ran once with zero retries and passed its exact named verifier.
+- Glass completed all 12 viewports in 85,923 ms with zero product findings, then stopped
+  `instrument-fail` on one small-phone rendered-Guide required-copy control. The live Feeding topic
+  was green. Two injected needles (`Meals by 1, capped at 200`; `removes 1 flora from that exact
+  lot`) crossed authored `<b>` markup, while the control mutated `innerHTML` bytes; both replacements
+  were no-ops. Recovery correctly did not run. This is neither product red nor an Edge rebaseline.
+- The bounded repair mutates the paragraph's rendered `textContent`, requires one exact target and
+  one exact change, records both counts, and restores the authored `innerHTML`. Its selftest proves
+  positive, absent, multiple, no-change and raw-markup-split cases plus exact source wiring. Full v2
+  **1,712 passed + 1 skipped**, all three typechecks, Glass selftest and diff hygiene are green;
+  product/release/build/memory-producer bytes remain unchanged.
+- All six stopped-chain carriers and their raw/gzip hashes are preserved at the top of
+  `audits/README.md`; the Glass report raw/gzip pair is `9d742170…c9a5` / `975ea0a3…b30b`.
+
+### Next exact action — sign Glass control repair, then restart from Layout
+
+- Preserve the latest six stopped-chain carriers, Glass control repair and synchronized docs in one
+  signed clean checkpoint. From that changed source, a completely fresh once-only campaign must start at
   **Layout 787 → SceneMemory 44 → Compendium 78 → Slice → Glass 12 → Recovery 20-minute**.
   Every stage uses source-derived IDs and stops/preserves on any red, nonzero or instrument result.
 - Compatible Edge point updates remain provenance only and never trigger a rebaseline, calibration
@@ -345,8 +369,8 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** sign the preserved `9d8ffb11…` stopped-chain evidence plus bounded raw-CDP
-  projector/causal-gating repair, then
+- **OpenAI/Codex:** sign the preserved `916d921e…` stopped-chain evidence plus bounded rendered-Guide
+  exact-text control repair, then
   restart the fresh full chain from Layout. Keep temporary
   `/usr/bin/caffeinate -dis` active until that endpoint, then restore normal monitor/sleep behavior.
 - **GitHub step:** none. Zero exact hosted attempts are authorized; do not push, open/update a PR,

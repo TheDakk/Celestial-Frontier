@@ -43,8 +43,17 @@
 > endpoints as instrument failures only when a final independent wrapper reread still proves the complete exact post-settlement start, preserves real duplicates and
 > disconnected/cross-context routes as product failures, derives its cross-context mutation from
 > the actual proved route, and blocks dependent controls until their baseline is green. Product,
-> release, build and memory-producer bytes remain unchanged. A new signed clean repair source must
-> restart the complete campaign from Layout.
+> release, build and memory-producer bytes remain unchanged. Signed repair
+> `916d921ebf787ed6c58ec8db567e00bbb61adbf8` then restarted from Layout: Layout passed
+> 787/787, SceneMemory 44/44, Compendium 78/78 and Slice with zero findings, each once and
+> named-verified. Glass completed all 12 viewports with zero product findings, then stopped on one
+> rendered-Guide negative-control instrument failure. Two required phrases crossed authored `<b>`
+> markup, so the old raw-`innerHTML` replacements were no-ops even though the visible copy was
+> correct. The bounded repair now mutates exact rendered text once, verifies the observed change and
+> intended missing carrier, rejects stale contamination, and restores the exact authored HTML,
+> text and predicate after each mutant. Glass selftest, the full 1,712-pass + one-skip suite, all
+> typechecks and two independent reviews are green. A new signed clean repair source must restart
+> the complete campaign from Layout; no game or art implementation is being restarted.
 > Edge `151.0.4129.107` / CDP `1.3` remains provenance only; compatible
 > updates do not trigger rebaseline. Exact calibration carriers, byte sizes and hashes are preserved
 > in [`audits/README.md`](audits/README.md). No GitHub, release, version or deployment authority follows.
