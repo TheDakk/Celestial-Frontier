@@ -40,6 +40,8 @@ import {
   assessCompendiumFeedPendingWindow,
   assessCompendiumFeedTwoDocumentStaleOutcome,
   assessArc0LandingAwaitBoundary,
+  assessArc0LandingPublicationWithheld,
+  arc0LandingSurveyRouteIsExact,
   arc0LandingCoordinatorIsIdle,
   compendiumFeedWebAudioEndpointFailureIsInstrument,
   compendiumFeedWebAudioRouteNodeIds,
@@ -14188,23 +14190,9 @@ try {
       && arc0LandingSurveyReceipts(raw).length === 0
       && arc0LandingCoordinatorIdle(state, { clearFault: true });
   };
-  const arc0LandingSurveyRouteExact = (state, cardCode, target) => {
-    const payload = decodeCF1Payload(cardCode);
-    return arc4PertarSourceRouteExact({ ...state, cardOpen: false })
-      && state?.cardOpen === true && state?.cardTitle === 'Pertar'
-      && payload?.t === 'p'
-      && Array.isArray(payload?.g)
-      && payload.g[0] === ARC4_PERTAR_FIXTURE.galaxy.x
-      && payload.g[1] === ARC4_PERTAR_FIXTURE.galaxy.y
-      && payload.g[6] === ARC4_PERTAR_FIXTURE.galaxy.seed
-      && Array.isArray(payload?.s)
-      && payload.s[0] === ARC4_PERTAR_FIXTURE.publicStar.x
-      && payload.s[1] === ARC4_PERTAR_FIXTURE.publicStar.y
-      && payload.s[2] === ARC4_PERTAR_FIXTURE.publicStar.seed
-      && payload.p === ARC4_PERTAR_FIXTURE.planet.seed
-      && target?.seed === ARC4_PERTAR_FIXTURE.planet.seed
-      && target?.ordinal === ARC4_PERTAR_FIXTURE.planet.ordinal;
-  };
+  const arc0LandingSurveyRouteExact = (state, cardCode, target) => (
+    arc0LandingSurveyRouteIsExact({ state, cardCode, target })
+  );
   const arc0LandingReceiptDeltaExact = (beforeRaw, afterRaw, addedKey) => {
     const before = arc0LandingProductReceipts(beforeRaw);
     const after = arc0LandingProductReceipts(afterRaw);
@@ -14566,10 +14554,13 @@ try {
           !== canonicalJson(arc0LandingWorldIdentityBytes(committedRaw))
         && canonicalJson(arc0LandingWorldIdentityBytes(committedRaw))
           === canonicalJson(arc0LandingWorldIdentityBytes(evidence?.reloadedRaw)),
-      localPublicationWithheld: canonicalJson(arc0LandingLiveProduct(
-        evidence?.fixture?.state,
-      )) === canonicalJson(arc0LandingLiveProduct(evidence?.heldState))
-        && arc4PertarSourceRouteExact(evidence?.heldState),
+      localPublicationWithheld: assessArc0LandingPublicationWithheld({
+        beforeProduct: arc0LandingLiveProduct(evidence?.fixture?.state),
+        heldProduct: arc0LandingLiveProduct(evidence?.heldState),
+        heldState: evidence?.heldState,
+        cardCode: evidence?.heldCardCode,
+        target: evidence?.heldTarget,
+      }).ok,
       coordinatorReleased: arc0LandingCoordinatorIdle(evidence?.heldState),
       convergenceHeld: arc0LandingConvergenceHeld(evidence?.heldState),
       convergenceReleased: evidence?.release === true
@@ -14864,13 +14855,15 @@ try {
       failSliceWithoutCascade(`${findingLabel}: one awaited Landing returned the wrong acceptance or document identity before held settlement: `
         + JSON.stringify({ boundary: actionBoundary, action }));
     }
-    let heldState;
+    let heldObservation;
     try {
-      heldState = await waitDesktopValue(`${label} held convergence`, `(()=>{const s=window.__CF_SLICE__.api.state(),
+      heldObservation = await waitDesktopValue(`${label} held convergence`, `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),
         fault=s?.landing?.actionCoordinator?.lastFault;return s?.persistence?.convergenceReloadHold?.phase==='holding'
           &&s?.landing?.actionCoordinator?.inFlight===false
           &&s?.landing?.actionCoordinator?.owner?.busy===false
-          &&fault?.injection===${JSON.stringify(injection)}&&fault?.outcome===${JSON.stringify(faultOutcome)}?s:null})()`, 10_000);
+          &&fault?.injection===${JSON.stringify(injection)}&&fault?.outcome===${JSON.stringify(faultOutcome)}
+          ?{state:s,cardCode:S.api.cardShareCode(),target:S.api.planetScreenTarget(
+            ${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)})}:null})()`, 10_000);
     } catch (error) {
       const retainedState = await evalIn('window.__CF_SLICE__?.api?.state?.()??null')
         .catch((captureError) => ({ captureError: String(captureError?.message || captureError) }));
@@ -14883,6 +14876,9 @@ try {
       failSliceWithoutCascade(`${findingLabel}: one awaited Landing did not reach its exact held coordinator/fault settlement: `
         + JSON.stringify({ boundary, retainedState, action }));
     }
+    const heldState = heldObservation.state;
+    const heldCardCode = heldObservation.cardCode;
+    const heldTarget = heldObservation.target;
     const heldRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
     const release = await evalIn(
       'window.__CF_SLICE__.api.__smokeReleaseF4ConvergenceReload()',
@@ -14918,7 +14914,8 @@ try {
       surveyAssessment, surveyControls,
       beforeToken, holdArmed, faultArmed,
       accepted: action?.accepted, actionDocumentToken: action?.documentToken,
-      heldState, heldRaw, release, reloadedReady, reloadedHeartbeat,
+      heldState, heldCardCode, heldTarget, heldRaw,
+      release, reloadedReady, reloadedHeartbeat,
       reloadedState, reloadedRaw,
       convergenceWitness: convergenceWitnesses.length === 1
         ? convergenceWitnesses[0] : null,
@@ -15002,6 +14999,11 @@ try {
   const arc0LandingPublicationAssessment = assessArc0LandingPublicationConvergence(
     arc0LandingPublicationEvidence,
   );
+  if (!arc0LandingPublicationAssessment.ok) {
+    failSliceWithoutCascade('ARC 0 LANDING PUBLICATION CONVERGENCE: positive held publication evidence was not exact; controls were not constructed: '
+      + JSON.stringify({ assessment: arc0LandingPublicationAssessment,
+        evidence: arc0LandingPublicationEvidence }));
+  }
   const arc0LandingPublicationOptimismControl = structuredClone(
     arc0LandingPublicationEvidence,
   );
@@ -15014,6 +15016,18 @@ try {
       'planet', 'planetOrdinal', 'navGalaxyKey', 'navStarKey', 'navWorldKey']
       .map((key) => [key, arc0LandingPublicationEvidence.reloadedState[key]])),
   );
+  const arc0LandingPublicationRouteControl = structuredClone(
+    arc0LandingPublicationEvidence,
+  );
+  arc0LandingPublicationRouteControl.heldState.cardOpen = false;
+  const arc0LandingPublicationCardCodeControl = structuredClone(
+    arc0LandingPublicationEvidence,
+  );
+  arc0LandingPublicationCardCodeControl.heldCardCode = 'CF1-not-a-valid-card';
+  const arc0LandingPublicationTargetControl = structuredClone(
+    arc0LandingPublicationEvidence,
+  );
+  arc0LandingPublicationTargetControl.heldTarget.ordinal += 1;
   const arc0LandingPublicationWitnessControl = structuredClone(
     arc0LandingPublicationEvidence,
   );
@@ -15096,6 +15110,15 @@ try {
     optimism: assessArc0LandingPublicationConvergence(
       arc0LandingPublicationOptimismControl,
     ),
+    route: assessArc0LandingPublicationConvergence(
+      arc0LandingPublicationRouteControl,
+    ),
+    cardCode: assessArc0LandingPublicationConvergence(
+      arc0LandingPublicationCardCodeControl,
+    ),
+    target: assessArc0LandingPublicationConvergence(
+      arc0LandingPublicationTargetControl,
+    ),
     witness: assessArc0LandingPublicationConvergence(
       arc0LandingPublicationWitnessControl,
     ),
@@ -15109,11 +15132,19 @@ try {
       arc0LandingPublicationReloadControl,
     ),
   };
-  if (!arc0LandingPublicationAssessment.ok
-    || !arc0LandingPublicationPrefixControlPrepared
+  if (!arc0LandingPublicationPrefixControlPrepared
     || !arc0LandingPublicationOrdinalControlPrepared
     || !arc0LandingIsolatedControl(
       arc0LandingPublicationControls.optimism, 'localPublicationWithheld',
+    )
+    || !arc0LandingIsolatedControl(
+      arc0LandingPublicationControls.route, 'localPublicationWithheld',
+    )
+    || !arc0LandingIsolatedControl(
+      arc0LandingPublicationControls.cardCode, 'localPublicationWithheld',
+    )
+    || !arc0LandingIsolatedControl(
+      arc0LandingPublicationControls.target, 'localPublicationWithheld',
     )
     || !arc0LandingIsolatedControl(
       arc0LandingPublicationControls.witness, 'durableLandingReward',

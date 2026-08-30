@@ -1,23 +1,22 @@
 # Celestial Frontier — Save System
 
-> **2026-08-30 current exact-`20d8598…` / `9382f8e…` repair overlay (matches the local
+> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
 > working tree and supersedes narrower “current” status below; dated transaction/evidence records
-> remain immutable):** exact clean SSH-signed source
-> `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium **78/78** once/no-retry, then its
-> unchanged Slice `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red
-> once/no-retry with six ordered Engineering/Landing/Pertar findings. Signed evidence-only
-> successor `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay. The
-> stored Slice remains FAIL; Glass and Recovery did not run.
+> remain immutable):** exact clean SSH-signed evidence source
+> `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
+> **64,108 ms**. Its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> **111,490 ms** with exactly one Arc 0 Landing publication-oracle scope. The exact carriers and
+> replay are preserved; the stored Slice remains FAIL, and Glass and Recovery did not run.
 >
-> Three bounded roots are repaired locally: delayed native Enter blur no longer erases trusted
-> Research/Fabricator focus lineage; every Arc 0 Landing fault scenario proves one exact Survey
-> receipt/current Pertar route-card/live publication and resamples the post-Survey raw/live
-> authority before its one direct Landing; and Recovery/Pertar exact-key validates the complete Arc
-> 5 v3 diagnostics. This adds no save schema, migration, retry, timeout or gameplay writer. Final
-> Landing preflight also rejects incomplete/renamed/extra fault maps, any armed latch, non-idle or
-> stale-sequence product-action holds and retained setup/reload faults before a product action runs.
-> browser-free validation is green at **250 files / 2,495 passed / 1 skipped**, with all TypeScript
-> programs green. The cumulative **74-bullet** development bulletin has rendered ordered SHA-256
+> The pre-action and held old-document live products are exact, and both retain the open Pertar
+> post-Survey card. The stale instrument simultaneously required a closed pre-Survey card. The
+> replay binds that contradiction and its missing historical held `cardCode`/target capture; the
+> current uncommitted runner atomically captures those values and moves complete future judgment
+> into browser-free contracts. This adds no save schema, migration, retry, timeout or gameplay writer; prior explicit
+> Survey-predecessor, exact coordinator and Arc 5 v3 repairs remain. Final browser-free validation
+> is green at **251 files / 2,501 passed / 1 skipped**, with all TypeScript programs green. The
+> cumulative **74-bullet** development bulletin has rendered ordered SHA-256
 > `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
 >
 > Active derived Compendium producer / index / owner / generated-service-worker authority is
@@ -50,8 +49,9 @@
 > harness now requires coupled F4 writable readiness—including zero pending persistence writes and
 > no mutation fence—before native Enter, then rechecks after the committed route. It neither retries
 > nor lengthens the fixed diagnostic timeout. Every red Mine boundary now terminates before its
-> dependent controls or Survey. Current browser-free acceptance is 250 files / 2,495 passed /
-> 1 skipped with all TypeScript programs green; no save schema or migration changed.
+> dependent controls or Survey. At that historical Mine-boundary checkpoint, browser-free
+> acceptance was 250 files / 2,495 passed / 1 skipped with all TypeScript programs green; no save
+> schema or migration changed. The current aggregate boundary is stated at this file's top.
 
 > **2026-08-30 current F4 replacement/codec-oracle clarification:** whole-expedition replacement
 > and replacement-document bootstrap are two exact transactions. The native replacement clears the

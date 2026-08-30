@@ -1,19 +1,19 @@
 # Acceptance rubrics — what "done" means, per gate
 
 > **Current local evidence boundary (2026-08-30):** exact clean SSH-signed source
-> `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium 78/78 once/no-retry in
-> 63,431 ms; its unchanged-source Slice
-> `20260830-pr35-arc3-20d8598913e1-slice-certification` then stopped terminal red once/no-retry
-> after 120,493 ms with six ordered findings: Research, fixed Fabrication, three Arc 0 Landing fault
-> scopes and final Pertar harness. Signed successor
-> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves exact replay and the absence of
-> PASS/Glass/Recovery authority. Local repairs preserve Research/Fabricator focus lineage across
-> delayed native Enter blur, establish and resample one explicit Survey predecessor before each
-> direct `landHere()` fault action, and exact-key validate existing Arc 5 v3 Feed/Breed/Rename/Scout
-> diagnostics with legacy v2 explicit-only. Final repair-batch browser-free validation is green:
-> **250 files / 2,495 passed / 1 skipped**, with root, game and worker typechecks green. No `[EXEC]`
-> row gains fresh browser authority or changes status from this red or its
-> local repairs: Glass and Recovery did not run, and every `[HUMAN]`, hosted, merge,
+> `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium 78/78 once/no-retry in
+> 64,108 ms; its unchanged-source Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` then stopped terminal red once/no-retry
+> after 111,490 ms with exactly one Arc 0 Landing publication-oracle scope. Exact carriers and
+> replay preserve the absence of PASS/Glass/Recovery authority. The retained old-document live
+> product was exact and its Pertar card correctly remained open; the stale oracle also required
+> that card to be closed. The replay binds that contradiction and its missing historical held
+> `cardCode`/target capture; the current uncommitted runner atomically captures those values and
+> moves complete future judgment into browser-free contracts; earlier focus, Survey-predecessor, coordinator and Arc 5
+> v3 repairs remain. Final repair-batch browser-free validation is green: **251 files / 2,501
+> passed / 1 skipped**, with root, game and worker typechecks green. No `[EXEC]` row gains fresh
+> browser authority or changes status from this red or its local repairs: Glass and Recovery did
+> not run, and every `[HUMAN]`, hosted, merge,
 > release/version and deployment boundary remains open.
 
 > **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
@@ -232,10 +232,10 @@
 > `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. The unchanged worker/painter
 > is `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`; the green printer binds a
 > **964-module / 52-file** build. Fixed rulers, ceilings, 78 outcomes, the then-current 73-row release
-> count and all `[HUMAN]` statuses were unchanged; one CF1 release row was refreshed. Exact signed
-> `20d8598…` has since passed changed-head Compendium 78/78; its unchanged Slice is the preserved
-> six-finding Engineering/Landing/Pertar red described at this file's top. Glass and Recovery remain pending;
-> no unchanged retry exists.
+> count and all `[HUMAN]` statuses were unchanged; one CF1 release row was refreshed. Historical
+> exact signed `20d8598…` later passed changed-head Compendium 78/78; its unchanged Slice is the
+> preserved six-finding Engineering/Landing/Pertar red retained in `audits/`. Glass and Recovery did
+> not follow it, and no unchanged retry exists. The current boundary is stated at this file's top.
 
 > **2026-08-30 historical `e4f5af4…` EXEC evidence boundary and F4 repair:** exact signed clean
 > source `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium 78/78 once/no-retry, then
@@ -670,23 +670,23 @@ The current-local performance criterion includes the exact resource controls abo
 cache is not automatically a plateau if it recreates workers and render jobs every route cycle, and
 a bounded logical cache is not sufficient if base64 strings retain backing storage. Acceptance
 therefore requires bounded warm reuse plus explicit revocable external-resource ownership. Clean
-signed SceneMemory **44/44** evidence exists, and exact signed `20d8598…` passed fresh Compendium
+signed SceneMemory **44/44** evidence exists, and exact signed `8bdf474…` passed fresh Compendium
 **78/78**. Gate I remains open because that same unchanged source's Slice stopped terminal red on
-the preserved six-finding Engineering/Landing/Pertar evidence, so Glass and Recovery did not run;
+the single preserved Arc 0 Landing publication-oracle finding, so Glass and Recovery did not run;
 physical heat/battery/true-GPU work also remains open.
 
 Current accessibility evidence additionally requires trusted Research/Fabricator settlement to park
 focus on the stable semantic row before disabling the exact action, survive delayed native Enter
 blur, restore the replacement action only while lineage remains, and respect any later user focus
-move. Mine/Skim retain their distinct disable-to-BODY proof. The immutable `20d8598…` finding is
-the red predecessor for this local repair and does not satisfy the still-open HUMAN audit.
+move. Mine/Skim retain their distinct disable-to-BODY proof. The historical immutable `20d8598…`
+finding is the red predecessor for that focus repair and does not satisfy the still-open HUMAN audit.
 
 | | Criterion | Evidence |
 |---|---|---|
 | **`[HUMAN]`** | Physical iOS / iPadOS / Android / desktop matrix | ⛔ Outstanding for **four rounds**. No harness has ever seen this game on real iOS |
 | `[EXEC-TODO]` | Accessibility audit | **Bounded historical exact-source executable evidence is green; the full audit remains open.** Exact signed `3f69e88…` passed Layout 787/787 and Slice-bound 12-viewport Glass with zero findings/instrument failures. The contract independently reveals Sound and Creature voices, binds settled current nodes, control/panel/bounds/Close, 44px centre ownership, no overlap, trusted receipt, exact state/focus and unconditional restoration; the Feed result is the sole polite/atomic announcement and its toast is visual-only. Current browser-free controls additionally cover the post-settlement Combat Chronicle’s named timed transcript, two native HP meters, silent Skip and plain-text Share with a visible selected-text fallback. Native **Visual effects** and **Screen shake** plus reduced-motion/device policies are present. Physical assistive-technology/screen-reader review and broader accessibility judgment remain `[HUMAN]`/open, so this row and Gate I do not close. |
 | `[EXEC-TODO]` | Performance and heat budgets | **Bounded historical exact-source executable evidence is green; physical closure remains open.** Exact signed `3f69e88…` passed Layout 787/787, SceneMemory input-v4 44/44, Compendium 78/78, Slice, Glass and Recovery under the active numeric rulers; Recovery retained a real uninterrupted 1,200,297.5 ms observation. The one-pass Canvas finishers, lazy one-worker/one-entry `960×430` vista owner and bounded static/animated effect policies retain historical exact-source structural/browser evidence; current structural controls remain browser-free. Browser authority remains compatible Edge family + CDP `1.3`; `.107` is provenance only. Chromium exposes no portable true GPU-byte counter, and no physical-device frame-time/heat/battery/true-GPU measurements exist, so this row and Gate I stay open. |
-| `[EXEC]` | PWA offline / update rollback | **`[CURRENT-LOCAL]` automatable implementation is changed-head pending; physical closure remains open.** The build-only Vite plugin emits a same-origin manifest/icons and generated worker whose canonical identity joins the path-sorted SHA-256 final-byte runtime table with an automatic worker-template revision. Install verifies every exact response and writes its completion marker last; failure deletes the partial set. Activate re-verifies, keeps current plus one complete prior build, persists exact client-realm pins, enumerates every controlled/uncontrolled client type and confirms an omitted reserved client with `clients.get()` before pruning. A successor never claims running pages; navigation selects and pins the active build, while Worker and SharedWorker entry routing pins a valid `resultingClientId` to the initiator-selected build. Species-art and biome-vista construction remains lazy, but each production entry is a sealed one-response module graph; runtime `import()` and external static JavaScript edges are rejected. Fetch-time adoption has been removed, every unpinned subresource remains fail-closed, and every pinned subresource remains cache-only. Third-build activation refuses while any prior-pinned document or worker realm lives, with no external/network fallback or cross-build mixing. Settings binds explicit Check, Activate, Reload and Roll back status/results to the exact worker and reveals Reload from matching active status, not `controllerchange`. Main refuses conflicting reloads, joins active persistence, checkpoints a canceled debounce and rearms it on durability failure before any exclusive teardown/navigation. Rollback changes app assets rather than IndexedDB expedition data. Exact signed `20d8598…` passed Compendium 78/78 once/no-retry, but its unchanged Slice stopped terminal red on the six preserved Engineering/Landing/Pertar findings; signed evidence successor `9382f8e…` grants no Glass/Recovery authority. The bounded local repair is browser-free green, while fresh repaired-head Slice → Glass → Recovery certification remains pending. Physical install/offline reopen/update/rollback on the device matrix, browser install UI, assistive-technology and HUMAN judgment remain open, so Gate I does not close. |
+| `[EXEC]` | PWA offline / update rollback | **`[CURRENT-LOCAL]` automatable implementation is changed-head pending; physical closure remains open.** The build-only Vite plugin emits a same-origin manifest/icons and generated worker whose canonical identity joins the path-sorted SHA-256 final-byte runtime table with an automatic worker-template revision. Install verifies every exact response and writes its completion marker last; failure deletes the partial set. Activate re-verifies, keeps current plus one complete prior build, persists exact client-realm pins, enumerates every controlled/uncontrolled client type and confirms an omitted reserved client with `clients.get()` before pruning. A successor never claims running pages; navigation selects and pins the active build, while Worker and SharedWorker entry routing pins a valid `resultingClientId` to the initiator-selected build. Species-art and biome-vista construction remains lazy, but each production entry is a sealed one-response module graph; runtime `import()` and external static JavaScript edges are rejected. Fetch-time adoption has been removed, every unpinned subresource remains fail-closed, and every pinned subresource remains cache-only. Third-build activation refuses while any prior-pinned document or worker realm lives, with no external/network fallback or cross-build mixing. Settings binds explicit Check, Activate, Reload and Roll back status/results to the exact worker and reveals Reload from matching active status, not `controllerchange`. Main refuses conflicting reloads, joins active persistence, checkpoints a canceled debounce and rearms it on durability failure before any exclusive teardown/navigation. Rollback changes app assets rather than IndexedDB expedition data. Exact signed `8bdf474…` passed Compendium 78/78 once/no-retry, but its unchanged Slice stopped terminal red on the single preserved Arc 0 Landing publication-oracle finding and grants no Glass/Recovery authority. The current runner repair is browser-free green at 251 files / 2,501 passed / 1 skipped, while fresh repaired-head Slice → Glass → Recovery certification remains pending. Physical install/offline reopen/update/rollback on the device matrix, browser install UI, assistive-technology and HUMAN judgment remain open, so Gate I does not close. |
 | `[HUMAN]` | Save export and recovery path works for a real player | Same blocker as Gate C |
 
 ---

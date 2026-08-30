@@ -1,20 +1,27 @@
 # Celestial-Frontier
 
-> **2026-08-30 current exact-`20d8598…` / `9382f8e…` repair overlay (matches the local
+> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
 > working tree and supersedes the older “current” status paragraphs below; dated run records remain
-> immutable):** exact clean SSH-signed source
-> `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium **78/78** once/no-retry, then its
-> unchanged Slice `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red
-> once/no-retry with six ordered Engineering/Landing/Pertar findings. Signed evidence-only
-> successor `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay. The
-> stored Slice remains FAIL; Glass and Recovery did not run.
+> immutable):** exact clean SSH-signed evidence source
+> `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
+> **64,108 ms**. Its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` then stopped terminal red once/no-retry
+> after **111,490 ms** with exactly one scope, `arc-0-landing-publication-convergence`. The exact
+> carriers and replay are preserved in `audits/`; the stored Slice remains FAIL, and Glass and
+> Recovery did not run.
 >
-> Diagnosis reduced that evidence to three bounded roots now repaired locally: delayed native
-> Enter blur erased trusted Research/Fabricator focus lineage; Arc 0 Landing fault scenarios sampled
-> authority before an explicit owned Survey and judged a stale baseline; and the Recovery/Pertar
-> assessor rejected legitimate exact Arc 5 v3 Feed/Breed/Rename/Scout diagnostics. Final
-> browser-free validation is green at **250 files / 2,495 passed / 1 skipped**, with root, game and
-> worker TypeScript programs green. The cumulative **74-bullet** development bulletin has rendered
+> The retained pre-action and held old-document live products are identical: **1,876 bytes** with
+> SHA-256 `e353f175bdea46856ef7b6c9e1bc554a50870fa054dc7a687a293bb761ce9e78`, and both retained
+> the correct open Pertar post-Survey card. The old instrument simultaneously reapplied a
+> pre-Survey closed-card predicate. The immutable replay proves that product/state contradiction and
+> explicitly records that `8bdf474…` did not capture held `cardCode`/target evidence. The current
+> uncommitted runner repair changes no game product code: it atomically captures those held values,
+> then evaluates live-product parity and complete Pertar route/rendered-scene/card/share/target
+> evidence in a shared browser-free contract with field-level controls. Prior focus-lineage,
+> explicit Survey predecessor, coordinator, Arc 5 v3 and
+> Guide-inventory repairs remain. Final browser-free validation is green at **251 files / 2,501
+> passed / 1 skipped**, with root, game and worker TypeScript programs green. The cumulative
+> **74-bullet** development bulletin has rendered
 > ordered SHA-256
 > `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
 >

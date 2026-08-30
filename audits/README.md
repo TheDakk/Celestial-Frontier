@@ -10,6 +10,51 @@ summary of it.
 
 ## Contents
 
+### Signed `8bdf474…` Compendium PASS, then terminal-red Arc 0 publication-oracle evidence
+
+Exact clean SSH-signed source `8bdf474e92467652729a6980f706ca3a2813682c` (tree
+`7e8f770af63e13e13e57f292ff566f3ceb7f4830`, parent
+`41ca03e8207014b984ed97a3beb150b71162f255`) ran Compendium
+`20260830-pr35-arc3-8bdf474e9246-compendium-certification` exactly once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`. It passed all **78/78** outcomes (39 phone + 39
+desktop), produced all six review PNG identities, and passed its exact named verifier in
+**64,108 ms**. `ARC1C_COMPENDIUM_PR35_ARC0_ORACLE_PASS_20260830_8BDF474.json.gz` is **450,176
+gzip / 10,832,155 raw bytes**, SHA-256
+`802547558972a4c118df18fd2fe857c0ffabcbfcadb6f0cbc71cb31e25c435aa` /
+`c2fa92014af534a96725c3fa81662ebc49d158e3441a972bee663b8d8b1da77a`.
+
+The same unchanged source then ran Slice
+`20260830-pr35-arc3-8bdf474e9246-slice-certification` exactly once. It stopped terminal red after
+**111,490 ms**, with zero automatic retries and exactly one scope:
+`arc-0-landing-publication-convergence`. Glass and Recovery did not run.
+
+- `ARC4_SLICE_PR35_ARC0_PUBLICATION_ORACLE_RED_20260830_8BDF474.json.gz` is **97,319 gzip /
+  726,598 raw bytes**, SHA-256
+  `d8fc5dbf6731c0e95aa5984cd945f1995d9ba25c0dc985cca2ffb59cbdb9305f` /
+  `b0df4530c52c99ee6bdd8e29af1af0b9ba207a45b36b9e6393f067a2540448f3`.
+- `ARC4_SLICE_PR35_ARC0_PUBLICATION_ORACLE_RED_20260830_8BDF474.log.gz` is **43,114 gzip /
+  303,026 raw bytes**, SHA-256
+  `b88600767390ef5d79f17134fda5d5093d1d2fb13121d9d869bc2127389c7a9c` /
+  `46be64ce0506c0d761787acff8f7d4f02d1bd2e54085f9fce74f932691ed1c17`.
+
+This was an instrument false negative, not a game defect. The certified post-Survey fixture and
+held old-document live products have zero differing fields; both serialize to **1,876 bytes** with
+SHA-256 `e353f175bdea46856ef7b6c9e1bc554a50870fa054dc7a687a293bb761ce9e78`.
+Both correctly retain `cardOpen: true` and `cardTitle: "Pertar"`. The obsolete second conjunct
+reused the pre-Survey source-route helper, which requires `cardOpen: false`, making the check
+logically impossible after its own exact Survey setup.
+
+The repair changes no product code. The immutable report proves exact old-document product/state
+parity and the contradictory open-card predicate, while explicitly recording that the historical
+runner did not capture held `cardCode` or target evidence. The new runner atomically captures those
+held values before release, then evaluates complete absolute Pertar route, rendered scene, open
+card, canonical CF1 payload and exact-key target evidence through shared browser-free contracts
+with independent field-level controls.
+`port/v2/tests/pr35-8bdf-arc0-publication-evidence-replay.test.ts` binds all three carriers, source,
+78/78 predecessor, one terminal scope, no retry, no Glass/Recovery authority and the false-negative
+diagnosis plus that historical capture limit. Focused repair coverage is **16/16**; the complete browser-free suite is **251 files /
+2,501 passed / 1 skipped**, and all three TypeScript configurations are green.
+
 ### Signed `20d8598…` Compendium PASS, then terminal-red Slice research/fabrication/landing/Pertar evidence
 
 Exact clean SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` (tree

@@ -26,6 +26,20 @@ export function assessArc0LandingAwaitBoundary(input?: Readonly<{
   readonly waitError?: unknown;
 }>): SliceContractAssessment;
 
+export function assessArc0LandingPublicationWithheld(input?: Readonly<{
+  readonly beforeProduct?: unknown;
+  readonly heldProduct?: unknown;
+  readonly heldState?: unknown;
+  readonly cardCode?: unknown;
+  readonly target?: unknown;
+}>): SliceContractAssessment;
+
+export function arc0LandingSurveyRouteIsExact(input?: Readonly<{
+  readonly state?: unknown;
+  readonly cardCode?: unknown;
+  readonly target?: unknown;
+}>): boolean;
+
 export function arc0LandingCoordinatorIsIdle(
   state: unknown,
   options?: Readonly<{ readonly clearFault?: boolean }>,

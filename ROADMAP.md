@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · 20D EVIDENCE PRESERVED · REPAIR ADMISSION GREEN · CERTIFY ONCE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · 8BDF COMPENDIUM GREEN · SLICE ORACLE RED PRESERVED · SHIFTED LEFT ◀◀◀
 
 ### Exact current boundary
 
@@ -26,19 +26,16 @@ the archive verbatim and refresh this handoff in place.
   **origin/openai/mac**. This batch is V2-only: `port/v2` game/evidence tooling/tests, derived
   authority budgets and current Markdown. Legacy `main.js` / `celestial-frontier.html`,
   `develop`, `main`, the live site and every other worktree remain untouched.
-- **Signed implementation/reference candidate:** commit
-  **41ca03e8207014b984ed97a3beb150b71162f255** (tree
-  **7c57310076946fc20d058b4f05ed2f065b0d71fe**, parent
-  **9382f8e5835612bddfbb3c05593f98b6a5e8126c**) has an embedded, cryptographically verified
-  ED25519 SSH signature. It was **28 commits ahead** of `origin/openai/mac` before this
-  ROADMAP/ARCHIVE-only refresh. Commit this refresh as its signed docs-only successor before any
-  tracked-input or browser command; a fresh session should resolve and verify that current HEAD.
-- **Immutable browser-evidence source:** exact signed
-  **20d8598913e1009e03538085e59a8b63ac7a6655** (tree
-  **14d49ce60f84ca47daf831975f28491a7c8302e1**, parent
-  **aa88d916e5141d6f2f8e8969288064ffba0cfc85**) supplied the one-attempt Compendium PASS and
-  terminal Slice red below. Signed evidence successor
-  **9382f8e5835612bddfbb3c05593f98b6a5e8126c** preserves the exact carriers and replay.
+- **Signed browser-evidence source:** exact commit
+  **8bdf474e92467652729a6980f706ca3a2813682c** (tree
+  **7e8f770af63e13e13e57f292ff566f3ceb7f4830**, parent
+  **41ca03e8207014b984ed97a3beb150b71162f255**) has an embedded, cryptographically verified
+  ED25519 SSH signature. It is **29 commits ahead** of `origin/openai/mac` and supplied the
+  one-attempt Compendium PASS plus terminal single-scope Slice red below.
+- **Current local repair:** the worktree based on signed `8bdf474…` changes only V2 evidence
+  contracts/tests plus immutable carriers and current Markdown. It changes no game product code.
+  Commit it as one SSH-signed successor and verify a clean tree before any new tracked-input or
+  browser command; a fresh session should resolve and verify that current HEAD.
 - **PR boundary:** draft PR **#35**, base **develop**, source **openai/mac**, remains blocked and
   unmerged. Remote head **017fa6decbc41809188768ccdb98ab86ef1b9ebc** and fetched base
   **7a9f4c1370dd84292388d718c38ff34214f6203b** remain unchanged. Nothing in this batch is pushed.
@@ -50,57 +47,60 @@ the archive verbatim and refresh this handoff in place.
   Compatible Edge/Chrome/Chromium point versions never trigger a rebaseline, threshold change,
   fallback or retry.
 
-### Immutable 20d evidence — one Compendium PASS, then one terminal Slice red
+### Immutable 8bdf evidence — one Compendium PASS, then one terminal oracle red
 
-- Compendium run `20260830-pr35-arc3-20d8598913e1-compendium-certification` passed its named
-  verifier and all **78/78** outcomes (39 phone + 39 desktop) in **63,431 ms**, once with zero
-  retry. Carrier `audits/ARC1C_COMPENDIUM_PR35_ARC3_REPAIR_PASS_20260830_20D8598.json.gz` is
-  **452,409 gzip / 10,870,954 raw bytes**; gzip/raw SHA-256 is
-  **3a65d9d53f3efb4139357011db1dd96dc438b3b9632c95436d296e9b4263cd49** /
-  **3edd72a72f471b9e702956f13d217c940ab989514be8bc86568af1f0fe19ffc0**.
+- Compendium run `20260830-pr35-arc3-8bdf474e9246-compendium-certification` passed its named
+  verifier and all **78/78** outcomes (39 phone + 39 desktop) in **64,108 ms**, once with zero
+  retry. Carrier `audits/ARC1C_COMPENDIUM_PR35_ARC0_ORACLE_PASS_20260830_8BDF474.json.gz` is
+  **450,176 gzip / 10,832,155 raw bytes**; gzip/raw SHA-256 is
+  **802547558972a4c118df18fd2fe857c0ffabcbfcadb6f0cbc71cb31e25c435aa** /
+  **c2fa92014af534a96725c3fa81662ebc49d158e3441a972bee663b8d8b1da77a**.
 - The exact unchanged source then ran Slice
-  `20260830-pr35-arc3-20d8598913e1-slice-certification` once. It stopped terminal red after
-  **120,493 ms**, with zero retry and six ordered findings: Research, fixed Fabrication, three
-  Arc 0 Landing fault scopes, and final Pertar harness.
+  `20260830-pr35-arc3-8bdf474e9246-slice-certification` once. It stopped terminal red after
+  **111,490 ms**, with zero retry and exactly one scope:
+  `arc-0-landing-publication-convergence`.
 - Slice JSON carrier
-  `audits/ARC4_SLICE_PR35_RESEARCH_FABRICATION_LANDING_PERTAR_RED_20260830_20D8598.json.gz` is
-  **317,389 gzip / 2,365,817 raw bytes**, SHA-256
-  **275913fda5c64eb382c7fce361ffa3e23aafe659f5d2fb7313050df9b3c5925e** /
-  **c7e10726de611e32b55978976dd7bea37334cf8cfc282e286700b887a076b889**.
-- Slice log carrier of the same stem is **144,568 gzip / 971,878 raw bytes**, SHA-256
-  **eef6c29cf568c0bb602b18b468f38227c0b5177f9a94b6faad8eb0bd95206585** /
-  **4d83e68ddd21b6a164a7b5245e24e38cb5e418eb239cb2e9a00b29fd0c19f318**.
+  `audits/ARC4_SLICE_PR35_ARC0_PUBLICATION_ORACLE_RED_20260830_8BDF474.json.gz` is **97,319 gzip /
+  726,598 raw bytes**, SHA-256
+  **d8fc5dbf6731c0e95aa5984cd945f1995d9ba25c0dc985cca2ffb59cbdb9305f** /
+  **b0df4530c52c99ee6bdd8e29af1af0b9ba207a45b36b9e6393f067a2540448f3**.
+- Slice log carrier of the same stem is **43,114 gzip / 303,026 raw bytes**, SHA-256
+  **b88600767390ef5d79f17134fda5d5093d1d2fb13121d9d869bc2127389c7a9c** /
+  **46be64ce0506c0d761787acff8f7d4f02d1bd2e54085f9fce74f932691ed1c17**.
 - The stored Slice remains FAIL and is never relabelled. Glass and Recovery did not run and have
-  no 20d successor authority.
+  no `8bdf474…` successor authority.
 
-### Bounded repair and deterministic admission now complete
+### Root diagnosis and shift-left repair
 
-- **Engineering focus:** trusted Research/Fabricator Enter activation parks focus on the stable
-  semantic row before disabling the button, survives Edge's delayed native button→BODY blur, and
-  restores the replacement action only while that focus lineage remains. Later user movement wins;
-  Mine/Skim retain their distinct proved behavior.
-- **Landing predecessor:** every fault scenario installs a fresh exact source, performs one direct
-  Survey, verifies its exact Pertar receipt witness, route/card, durable/live publication,
-  coordinator-idle and writable fixed point, then resamples authority before arming the fault and
-  calling `landHere()` once.
-- **No coordinator false-green:** owner, hold and the exact three-key fault map must match current
-  schemas; missing, renamed, extra or armed latches, non-idle/stale-sequence holds and retained
-  setup/reload faults are executable red controls. A red positive setup stops before mutants are
-  constructed, retaining its named Arc 0 diagnosis rather than escaping as generic harness.
-- **Current Arc 5 assessor:** Pertar/Recovery exact-key validates current app-state v3 plus Feed,
-  Breed, Rename and Scout controller subtrees; historical v2 is explicit opt-in only.
-- **Inventory false-green removed:** the current Guide inventory is **74** bullets; the Glass
-  negative control removes exactly one and requires **73**, rather than accepting an obsolete 72.
+- **No product defect:** the pre-action and held old-document live products have zero differing
+  fields; both serialize to **1,876 bytes** with SHA-256
+  **e353f175bdea46856ef7b6c9e1bc554a50870fa054dc7a687a293bb761ce9e78**. Both correctly retain
+  `cardOpen: true` and `cardTitle: "Pertar"`.
+- **Impossible old oracle:** the same check also called a pre-Survey source-route helper requiring
+  `cardOpen: false`, so a correct post-Survey state could never pass.
+- **Shifted left:** the new runner atomically captures held state, card code and target before
+  release. The complete absolute Pertar route, rendered-scene, open card, canonical CF1 payload and
+  exact-key target predicate live beside `assessArc0LandingPublicationWithheld` in the shared
+  browser-free contract. Independent mutations cover every field plus old-document product drift
+  before Edge opens.
+- **Real-red replay:** `port/v2/tests/pr35-8bdf-arc0-publication-evidence-replay.test.ts` binds all
+  three carriers, signed source, 78/78 predecessor, one terminal scope, no-retry/no-successor
+  boundary, exact held product/state contradiction and the historical absence of held
+  `cardCode`/target capture. It does not promote the pre-action Survey values into held evidence;
+  the next run must supply the new complete capture.
+- **Prior bounded repairs remain:** Research/Fabricator focus lineage, explicit Survey predecessor,
+  exact coordinator idle, current Arc 5 v3 diagnostics and 74-row Guide inventory are unchanged.
 - **No behavior inflation:** no retry, sleep, timeout increase, save/gameplay schema bump, balance,
   RNG, world/genome/creature identity, creature/biome/art structure, audio, numeric ruler or
   compatible-browser rebaseline changed.
 
 ### Current browser-free and derived-authority acceptance
 
-- Full V2 suite: **250 files / 2,495 passed / 1 skipped**.
+- Full V2 suite: **251 files / 2,501 passed / 1 skipped** in **23.49 seconds**.
 - **`npm run typecheck`: green** across root, game and worker configurations.
-- Changed-file focused set: **137/137 green**; latest exact Arc 0 file: **10/10 green**.
-- Syntax checks and `git diff --check`: green. Two independent read-only reviews are clear.
+- Latest focused Arc 0 + real-evidence replay: **16/16 green**.
+- Syntax checks and `git diff --check`: green. Independent product-flow review confirms no
+  `main.ts` change is warranted.
 - Development bulletin: **74 bullets**, ordered rendered SHA-256
   **050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892**.
 - Current Compendium producer / index / owner / generated service worker:
@@ -118,8 +118,9 @@ the archive verbatim and refresh this handoff in place.
 
 ### Exact next work — one clean admission and one no-retry browser chain
 
-1. Commit this ROADMAP/ARCHIVE refresh as the SSH-signed docs-only successor of exact
-   `41ca03e8207014…`; verify its embedded signature and a clean tree.
+1. Commit the shared-assessor repair, real-evidence replay, immutable carriers and synchronized
+   Markdown as one SSH-signed successor of exact `8bdf474e9246…`; verify its embedded signature
+   and a clean tree.
 2. From `port/v2` on that exact clean commit, stop on any nonzero:
 
        node tools/tracked-input-preflight.mjs
@@ -156,8 +157,9 @@ references and `port/V2_PROGRAM_ROADMAP.md` own those boundaries.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** commit this docs-only handoff, run exact clean tracked admission, then one
-  serial Compendium → Slice → Glass → Recovery chain with causal stop/no retry.
+- **OpenAI/Codex now:** commit this browser-free oracle repair/evidence handoff, run exact clean
+  tracked admission, then one serial Compendium → Slice → Glass → Recovery chain with causal
+  stop/no retry.
 - **GitHub step now:** none. Zero hosted attempts are authorized.
 - **PR #35:** existing draft; base **develop**, source **openai/mac**, title
   **feat(v2): complete roadmap campaign and harden CI parity**.
@@ -165,12 +167,14 @@ references and `port/V2_PROGRAM_ROADMAP.md` own those boundaries.
 
       Completes the dependency-ready V2 local roadmap campaign while preserving established
       creature/genome, Guardian/Prime Codex, loot/Pureforged, exploration, combat, progression,
-      universe-wide art/audio and save-schema boundaries. Exact signed 20d8598 passed Compendium
-      78/78 once/no-retry, then preserved a terminal six-finding Slice red with no Glass/Recovery
-      successor. Signed local repair 41ca03e fixes Research/Fabricator focus lineage, rebuilds
-      Landing evidence from one exact Survey predecessor, exact-key validates current Arc 5 v3
-      diagnostics and closes coordinator/Guide-inventory false greens. Browser-free acceptance is
-      250 files / 2,495 passed / 1 skipped with all typechecks green. A fresh exact clean-head
+      universe-wide art/audio and save-schema boundaries. Exact signed 8bdf474 passed Compendium
+      78/78 once/no-retry, then preserved a terminal single-scope Slice red with no Glass/Recovery
+      successor. The Landing product was byte-exact; the old instrument impossibly required its
+      certified open post-Survey Pertar card to be closed. The repair moves exact product/route
+      judgment into a browser-free assessor, adds isolated controls and replays the immutable real
+      red locally. Earlier focus, Survey predecessor, coordinator, Arc 5 v3 and Guide-inventory
+      repairs remain. Browser-free acceptance is 251 files / 2,501 passed / 1 skipped with all
+      typechecks green. A fresh exact clean-head
       Compendium → Slice → Glass → Recovery chain remains required before this draft can become
       Ready or use one authorized hosted battery. No legacy-v1 source, production release, version
       bump, preview publication or deployment is included. Base: develop. Source: openai/mac.

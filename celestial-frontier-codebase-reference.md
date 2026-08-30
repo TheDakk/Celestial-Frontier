@@ -1,30 +1,26 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-30 current exact-`20d8598…` / `9382f8e…` evidence overlay (matches local code):** exact
-> clean SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium
-> **78/78** once/no-retry in **63,431 ms**, then unchanged-source Slice
-> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry after
-> **120,493 ms** with six ordered findings: Research, fixed Fabrication, three Arc 0 Landing fault
-> scopes and final Pertar `harness`. Signed evidence successor
-> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` binds the exact reports/log, source tuple,
-> finding order and absence of PASS/Glass/Recovery authority. Exact carrier identities remain in
-> `audits/README.md`; the stored Slice remains FAIL, and Glass/Recovery did not run.
+> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches local
+> code):** exact clean SSH-signed evidence source
+> `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
+> **64,108 ms**. Its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> **111,490 ms** with exactly one scope, `arc-0-landing-publication-convergence`. The exact
+> reports/log, source tuple and no-successor boundary are preserved under `audits/`; the stored
+> Slice remains FAIL, and Glass/Recovery did not run.
 >
-> Diagnosis separated three bounded repairs. Engineering now parks a trusted Research/Fabricator
-> settlement on its stable semantic row before the exact action is disabled, preserving lineage
-> across Edge's delayed native Enter focused-button-to-BODY transition; it restores the replacement
-> action only while lineage remains and respects later user focus movement. Mine/Skim have no
-> semantic row and keep their explicit disable-to-BODY proof. Arc 0 Landing fault evidence now
-> performs and verifies one explicit Survey transaction, waits for its exact receipt/current Pertar
-> route and card/live publication/coordinator-idle writable fixed point, resamples raw/live
-> authority, then arms the fault and invokes `landHere()` once. Pre-Survey, missing-receipt,
-> wrong-route/card and wrong-live-publication controls reject before Landing. Arc 5's assessor now
-> exact-key validates the existing `cf-v2-arc5-app-state/v3` base plus Feed, Breed, Rename and Scout
-> subtrees; historical v2 base-only diagnostics require explicit legacy replay.
+> The retained pre-action and held old-document live products have zero differing fields and the
+> same 1,876-byte / `e353f175…e78` identity; both retained the correct open Pertar post-Survey card.
+> The stale instrument also applied a pre-Survey helper requiring that card to be closed. The
+> immutable replay proves that contradiction and records its missing historical held
+> `cardCode`/target capture. The current uncommitted runner atomically captures those values and
+> evaluates live-product parity plus complete route/rendered-scene/card/share/target evidence through
+> shared browser-free contracts and field-level controls. Earlier Research/Fabricator focus lineage, explicit
+> Survey predecessor, exact coordinator, Arc 5 v3 diagnostics and Guide-inventory repairs remain.
 >
 > No timeout, retry, browser rebaseline, product schema bump, save/gameplay redesign or
 > creature/genome/art/audio change follows. Final repair-batch browser-free validation is green:
-> **250 files / 2,495 passed / 1 skipped**, with all TypeScript programs green. Fresh exact-source
+> **251 files / 2,501 passed / 1 skipped**, with all TypeScript programs green. Fresh exact-source
 > browser authority remains pending.
 
 > **2026-08-30 historical exact-`e4f5af4…` Slice-oracle overlay:** exact signed source
@@ -4084,9 +4080,15 @@ Synchronous Slice/Glass/Recovery selftests use explicit 15-second child and
 20-second outer limits with separate timeout/nonzero/missing-marker controls. This gate does not
 replace the strict browser evidence chain or authorize hosted work.
 
-**Current exact `20d8598…` / `9382f8e…` Slice repair boundary (2026-08-30):** the immutable
-20d Slice remains terminal FAIL with six ordered findings and no Glass/Recovery successor. Its
-Landing repair treats Survey as an owned fixture predecessor: it verifies exactly one Survey
+**Current exact `8bdf474…` evidence / Arc 0 publication-oracle repair boundary (2026-08-30):** the immutable
+8bdf Slice remains terminal FAIL with exactly one Landing publication-oracle finding and no
+Glass/Recovery successor. Its retained old-document live product matches the pre-action product
+exactly and keeps the open Pertar card; the obsolete check simultaneously required that card to be
+closed. The current uncommitted runner repair moves live-product parity plus complete held
+route/rendered-scene/card/share/target judgment into shared browser-free contracts with field-level
+controls and immutable real-report replay.
+
+The prior Landing repair treats Survey as an owned fixture predecessor: it verifies exactly one Survey
 receipt, the current Pertar route/card, durable-to-live publication, coordinator idle and F4
 writability, then resamples raw/live authority before arming each fault and invoking direct
 `landHere()` once. Pre-Survey baselines, missing receipts, wrong route/card and wrong live
@@ -4101,7 +4103,7 @@ and all four Feed/Breed/Rename/Scout diagnostic subtrees. Baseline replay is gre
 complete current shape; wrong, missing and extra-field mutants for each subtree are red. Historical
 v2 base-only evidence remains available only through the explicit legacy option. This is an
 assessor catch-up to an existing product schema, not a schema bump. Final repair-batch browser-free
-validation is green: 250 files / 2,495 passed / one skipped, with all TypeScript programs green.
+validation is green: 251 files / 2,501 passed / one skipped, with all TypeScript programs green.
 Fresh exact-source browser authority remains pending.
 
 **Historical exact e4f5 evidence/oracle boundary (2026-08-30):** Compendium run

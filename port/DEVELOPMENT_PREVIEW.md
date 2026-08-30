@@ -1,20 +1,21 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **2026-08-30 current exact-`20d8598…` / `9382f8e…` repair overlay (supersedes narrower
-> “current-local” status below; every dated run and preview boundary remains immutable):** exact clean
-> SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium **78/78**
-> once/no-retry, then its unchanged Slice
-> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry with six
-> ordered Engineering/Landing/Pertar findings. Signed evidence-only successor
-> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay. The stored
-> Slice remains FAIL; Glass, Recovery, persona capture and preview publication did not run.
+> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (supersedes narrower
+> “current-local” status below; every dated run and preview boundary remains immutable):** exact
+> clean SSH-signed evidence source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium
+> **78/78** once/no-retry in **64,108 ms**. Its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> **111,490 ms** with exactly one Arc 0 Landing publication-oracle scope. The exact carriers and
+> replay are preserved; the stored Slice remains FAIL, and Glass, Recovery, persona capture and
+> preview publication did not run.
 >
-> Three bounded roots are repaired locally: Engineering preserves trusted semantic-row focus across
-> delayed native Enter blur; Arc 0 Landing fault evidence proves one exact Survey receipt/current
-> Pertar route-card/live publication and resamples the post-Survey baseline; and Recovery/Pertar
-> exact-key validates Arc 5 v3 Feed/Breed/Rename/Scout diagnostics. Final browser-free validation is
-> green at **250 files / 2,495 passed / 1 skipped**, with all TypeScript programs green. The
-> cumulative **74-bullet** development bulletin has rendered ordered SHA-256
+> The retained old-document live product was exact and its Pertar card correctly stayed open; the
+> stale oracle also required that card to be closed. The replay binds that contradiction and its
+> missing historical held `cardCode`/target capture; the current uncommitted runner atomically
+> captures those values and moves complete future judgment into browser-free contracts. Earlier focus-lineage,
+> explicit Survey predecessor, coordinator and Arc 5 v3 repairs remain. Final browser-free
+> validation is green at **251 files / 2,501 passed / 1 skipped**, with all TypeScript programs
+> green. The cumulative **74-bullet** development bulletin has rendered ordered SHA-256
 > `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
 >
 > Active derived Compendium producer / index / owner / generated-service-worker authority is

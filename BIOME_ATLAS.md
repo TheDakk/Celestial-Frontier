@@ -1,19 +1,20 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
-> **2026-08-30 current exact-`20d8598…` / `9382f8e…` repair overlay (supersedes narrower
+> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (supersedes narrower
 > “current” authority language below; every dated biome/vista checkpoint remains immutable):** exact
-> clean SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium
-> **78/78** once/no-retry, then its unchanged Slice
-> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry with six
-> ordered Engineering/Landing/Pertar findings. Signed evidence-only successor
-> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay. The stored
-> Slice remains FAIL; Glass and Recovery did not run.
+> clean SSH-signed evidence source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium
+> **78/78** once/no-retry in **64,108 ms**. Its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> **111,490 ms** with exactly one Arc 0 Landing publication-oracle scope. The exact carriers and
+> replay are preserved; the stored Slice remains FAIL, and Glass and Recovery did not run.
 >
-> The three local repairs concern Engineering focus lineage, an explicit Survey-owned Arc 0 Landing
-> baseline, and exact Arc 5 v3 Recovery/Pertar diagnostics. They change no biome selection/profile,
-> vista composition, painter pixels, seed, genome, anatomy, color plan or art structure. Final
-> browser-free validation is green at **250 files / 2,495 passed / 1 skipped**, with all TypeScript
-> programs green. The cumulative **74-bullet** development bulletin has rendered ordered SHA-256
+> The retained old document kept an exact live product and open Pertar post-Survey card; the stale
+> instrument also required that card to be closed. The replay binds that contradiction and its
+> missing historical held `cardCode`/target capture; the current uncommitted runner atomically
+> captures those values and moves the complete future decision into browser-free contracts. It changes no biome
+> selection/profile, vista composition, painter pixels, seed, genome, anatomy, color plan or art
+> structure. Final browser-free validation is green at **251 files / 2,501 passed / 1 skipped**,
+> with all TypeScript programs green. The cumulative **74-bullet** development bulletin has rendered ordered SHA-256
 > `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
 >
 > Active derived Compendium producer / index / owner / generated-service-worker authority is
