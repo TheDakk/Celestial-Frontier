@@ -25,7 +25,7 @@
 > origin play surface, not merge or release evidence. Every certifier retains its own fresh build
 > until a separately reviewed content-addressed build-carrier contract exists.
 
-> **Historical `8bdf474…` evidence law (superseded by the current `4ac4`/`d1` boundary):** exact clean SSH-signed
+> **Historical `8bdf474…` evidence law (superseded by later d611 → 7f → 961 boundaries):** exact clean SSH-signed
 > source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium 78/78 in 64,108 ms
 > once/no-retry, then its unchanged-source Slice
 > `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
@@ -50,6 +50,14 @@
 > coordinator-idle and writable fixed point, then resample raw and live authority. Arm the fault only
 > after that green baseline and invoke the direct action under test once. A composite helper that
 > silently performs the predecessor cannot supply the judged baseline.
+>
+> A one-shot fault hook is itself an owned predecessor. Prove the intended native target is enabled,
+> hit-testable and actually focused while the shared coordinator/card are idle; then require both the
+> hook return and its observable latch before dispatch. A false arm or lost focus must stop before
+> input. Catch the bounded settlement wait, feed its real error and every capture error into the
+> assessor, and retain named pre-arm, post-arm, post-press and deadline states plus terminal durable,
+> UI and interaction evidence. Never let a generic waiter erase the first causal state or continue to
+> a later fault scenario.
 >
 > **A POST-ACTION FIXTURE MUST USE A POST-ACTION ORACLE.** Do not certify a post-Survey state and
 > then recheck it with a pre-Survey UI predicate. The exact `8bdf474…` red required the held state

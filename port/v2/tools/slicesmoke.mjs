@@ -14005,8 +14005,10 @@ try {
   const pressArc4Keyboard = async (verb) => {
     const armed = await armArc4Interaction();
     const target = await evalIn(arc4ButtonTargetExpression(verb));
-    if (armed && target.ok) await keyIn('Enter', 'Enter');
-    return { armed, target };
+    const dispatched = armed === true && target.ok === true
+      && target.focus === true;
+    if (dispatched) await keyIn('Enter', 'Enter');
+    return { armed, target, dispatched };
   };
   const pressArc4SurveyDockKeyboard = async () => {
     const armed = await evalIn(`(()=>{window.__cfArc4SurveyDockAbort?.abort();
@@ -16101,26 +16103,158 @@ try {
   const arc4StorageBeforeState = arc4HitState;
   const arc4StorageBeforeRaw = arc4HitRaw;
   const arc4StorageBeforeUi = arc4HitUi;
+  const arc4StorageCaptureErrors = [];
+  const captureArc4StoragePhase = async (phase) => {
+    try {
+      return Object.freeze({
+        phase, state: await evalIn(`window.__CF_SLICE__.api.state()`), error: null,
+      });
+    } catch (cause) {
+      const error = String(cause?.message || cause);
+      arc4StorageCaptureErrors.push(`${phase} state: ${error}`);
+      return Object.freeze({ phase, state: null, error });
+    }
+  };
+  const captureArc4StorageTerminal = async (label, expression) => {
+    try { return await evalIn(expression); }
+    catch (cause) {
+      arc4StorageCaptureErrors.push(`${label}: ${String(cause?.message || cause)}`);
+      return null;
+    }
+  };
+
+  const arc4StoragePreArm = await captureArc4StoragePhase('pre-arm');
+  let arc4StorageTargetReady = null;
+  try {
+    arc4StorageTargetReady = await evalIn(arc4ButtonTargetExpression('tame'));
+  } catch (cause) {
+    arc4StorageCaptureErrors.push(`pre-arm target: ${String(cause?.message || cause)}`);
+  }
+  const arc4StoragePreArmCoordinator = arc4StoragePreArm.state
+    ?.capture?.actionCoordinator;
+  const arc4StoragePreArmChecks = Object.freeze({
+    captured: arc4StorageCaptureErrors.length === 0
+      && arc4StoragePreArm.state !== null,
+    target: arc4StorageTargetReady?.ok === true
+      && arc4StorageTargetReady?.verb === 'tame'
+      && arc4StorageTargetReady?.focus === true
+      && arc4StorageTargetReady?.disabled === false
+      && arc4StorageTargetReady?.ariaDisabled === 'false'
+      && arc4StorageTargetReady?.modelEnabled === 'true',
+    coordinatorIdle: arc4StoragePreArmCoordinator?.inFlight === false
+      && arc4StoragePreArmCoordinator?.owner?.busy === false
+      && arc4StoragePreArmCoordinator?.owner?.operation === null,
+    holdReleased: arc4StoragePreArmCoordinator?.hold?.phase === 'released',
+    noFaultArmed: arc4StoragePreArmCoordinator?.faultArmed?.storageFailure === false
+      && arc4StoragePreArmCoordinator?.faultArmed?.staleAuthority === false
+      && arc4StoragePreArmCoordinator?.faultArmed?.publicationFailure === false,
+    cardIdle: arc4StoragePreArm.state?.capture?.card?.pendingWork === 0,
+  });
+  if (!Object.values(arc4StoragePreArmChecks).every(Boolean)) {
+    failSliceWithoutCascade('ARC 4 STORAGE PRECONDITION: native Tame target or shared action authority was not ready before the one-shot storage hook: '
+      + JSON.stringify({ checks: arc4StoragePreArmChecks,
+        targetReady: arc4StorageTargetReady,
+        snapshots: { preArm: arc4StoragePreArm },
+        captureErrors: arc4StorageCaptureErrors }));
+  }
+
   const arc4StorageArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextArc4ActionStorage()`);
+  const arc4StoragePostArm = await captureArc4StoragePhase('post-arm');
+  const arc4StoragePostArmCoordinator = arc4StoragePostArm.state
+    ?.capture?.actionCoordinator;
+  const arc4StorageArmChecks = Object.freeze({
+    armed: arc4StorageArmed === true,
+    latched: arc4StoragePostArmCoordinator?.faultArmed?.storageFailure === true,
+    coordinatorIdle: arc4StoragePostArmCoordinator?.inFlight === false
+      && arc4StoragePostArmCoordinator?.owner?.busy === false
+      && arc4StoragePostArmCoordinator?.owner?.operation === null,
+    cardIdle: arc4StoragePostArm.state?.capture?.card?.pendingWork === 0,
+    captured: arc4StoragePostArm.error === null,
+  });
+  if (!Object.values(arc4StorageArmChecks).every(Boolean)) {
+    failSliceWithoutCascade('ARC 4 STORAGE PRECONDITION: storage-failure hook did not arm and latch while the proven native Tame target remained idle: '
+      + JSON.stringify({ checks: arc4StorageArmChecks,
+        targetReady: arc4StorageTargetReady, armed: arc4StorageArmed,
+        snapshots: { preArm: arc4StoragePreArm, postArm: arc4StoragePostArm },
+        captureErrors: arc4StorageCaptureErrors }));
+  }
+
   const arc4StoragePress = await pressArc4Keyboard('tame');
-  const arc4StorageState = await waitDesktopValue('Arc 4 storage refusal', `(()=>{const state=window.__CF_SLICE__.api.state(),
-    c=state?.capture?.actionCoordinator;return /storage failure/i.test(state?.capture?.lastOutcome||'')
-      &&c?.inFlight===false&&c?.owner?.busy===false&&c?.owner?.operation===null
-      &&c?.faultArmed?.storageFailure===false&&c?.lastFault?.phase==='settled'
-      &&c?.lastFault?.outcome==='storage-error'&&state?.capture?.card?.pendingWork===0?state:null})()`, 10_000);
-  const arc4StorageRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
-  const arc4StorageUi = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
-  const arc4StorageInteraction = arc4InteractionFromTrace(
-    await readArc4InteractionTrace(true), 'tame', 'keyboard',
+  const arc4StoragePostPress = await captureArc4StoragePhase('post-press');
+  if (arc4StoragePress.armed !== true || arc4StoragePress.dispatched !== true
+    || arc4StoragePress.target?.ok !== true
+    || arc4StoragePress.target?.focus !== true) {
+    const arc4StorageRejectedTrace = await captureArc4StorageTerminal(
+      'rejected press interaction', `(()=>{const key=${JSON.stringify(arc4InteractionKey)},
+        value=JSON.parse(localStorage.getItem(key)||'null');window.__cfArc4InteractionAbort?.abort();
+        delete window.__cfArc4InteractionAbort;localStorage.removeItem(key);return value})()`,
+    );
+    failSliceWithoutCascade('ARC 4 STORAGE ACTION: the armed one-shot hook did not dispatch through the still-focused native Tame target: '
+      + JSON.stringify({ targetReady: arc4StorageTargetReady,
+        armed: arc4StorageArmed, press: arc4StoragePress,
+        snapshots: { preArm: arc4StoragePreArm, postArm: arc4StoragePostArm,
+          postPress: arc4StoragePostPress },
+        interactionTrace: arc4StorageRejectedTrace,
+        captureErrors: arc4StorageCaptureErrors }));
+  }
+
+  let arc4StorageWaitError = null;
+  try {
+    await waitDesktopValue('Arc 4 storage refusal', `(()=>{const state=window.__CF_SLICE__.api.state(),
+      c=state?.capture?.actionCoordinator;return /storage failure/i.test(state?.capture?.lastOutcome||'')
+        &&c?.inFlight===false&&c?.owner?.busy===false&&c?.owner?.operation===null
+        &&c?.faultArmed?.storageFailure===false&&c?.lastFault?.phase==='settled'
+        &&c?.lastFault?.outcome==='storage-error'&&state?.capture?.card?.pendingWork===0?state:null})()`, 10_000);
+  } catch (cause) {
+    arc4StorageWaitError = String(cause?.message || cause);
+  }
+  const arc4StorageDeadline = await captureArc4StoragePhase('deadline');
+  const arc4StorageState = arc4StorageDeadline.state;
+  const arc4StorageRaw = await captureArc4StorageTerminal(
+    'deadline raw', ARC4_DURABLE_READ_EXPRESSION,
   );
+  const arc4StorageUi = await captureArc4StorageTerminal(
+    'deadline UI', ARC4_CAPTURE_UI_EXPRESSION,
+  );
+  let arc4StorageInteraction = null;
+  try {
+    arc4StorageInteraction = arc4InteractionFromTrace(
+      await readArc4InteractionTrace(true), 'tame', 'keyboard',
+    );
+  } catch (cause) {
+    arc4StorageCaptureErrors.push(`deadline interaction: ${String(cause?.message || cause)}`);
+  }
   const arc4StorageBundle = {
     before: arc4StorageBeforeRaw, after: arc4StorageRaw,
     beforeState: arc4StorageBeforeState, afterState: arc4StorageState,
     beforeUi: arc4StorageBeforeUi, afterUi: arc4StorageUi,
     interaction: arc4StorageInteraction, armed: arc4StorageArmed,
-    verb: 'tame', waitError: null, captureErrors: [],
+    verb: 'tame', waitError: arc4StorageWaitError,
+    captureErrors: arc4StorageCaptureErrors,
   };
   const arc4Storage = assessArc4StorageRefusal(arc4StorageBundle);
+  let arc4StorageTerminalFailure = null;
+  const arc4StorageTerminalEvidence = {
+    targetReady: arc4StorageTargetReady, armed: arc4StorageArmed,
+    press: arc4StoragePress,
+    snapshots: { preArm: arc4StoragePreArm, postArm: arc4StoragePostArm,
+      postPress: arc4StoragePostPress, deadline: arc4StorageDeadline },
+    assessment: arc4Storage, bundle: arc4StorageBundle,
+  };
+  if (arc4StorageWaitError !== null) {
+    arc4StorageTerminalFailure = 'ARC 4 STORAGE SETTLEMENT TIMEOUT — retained pre-arm/post-arm/post-press/deadline product, durable, UI, interaction, hook and coordinator evidence: '
+      + JSON.stringify(arc4StorageTerminalEvidence);
+  } else if (arc4StorageCaptureErrors.length > 0) {
+    arc4StorageTerminalFailure = 'ARC 4 STORAGE TERMINAL CAPTURE FAILED — settlement completed but final evidence was incomplete: '
+      + JSON.stringify(arc4StorageTerminalEvidence);
+  } else if (!arc4Storage.ok) {
+    arc4StorageTerminalFailure = 'ARC 4 STORAGE CONVERGENCE: native Tame changed durable/visible ownership, retained the prior hit, or lost exact storage-fault truth: '
+      + JSON.stringify(arc4StorageTerminalEvidence);
+  }
+  if (arc4StorageTerminalFailure !== null) {
+    failSliceWithoutCascade(arc4StorageTerminalFailure);
+  }
+
   const arc4StorageFaultControlState = structuredClone(arc4StorageState);
   arc4StorageFaultControlState.capture.actionCoordinator.lastFault.outcome = 'rejected';
   const arc4StorageFaultControl = assessArc4StorageRefusal({
@@ -16169,8 +16303,7 @@ try {
   const arc4StorageCountdownTextControl = assessArc4StorageRefusal({
     ...arc4StorageBundle, afterUi: arc4StorageCountdownTextUi,
   });
-  if (!arc4StoragePress.armed || !arc4StoragePress.target.ok || !arc4Storage.ok
-    || !arc4IsolatedCheck(arc4StorageFaultControl, 'faultOutcome')
+  if (!arc4IsolatedCheck(arc4StorageFaultControl, 'faultOutcome')
     || !arc4IsolatedCheck(arc4StorageResultControl, 'liveProjectionStable')
     || !arc4IsolatedCheck(arc4StorageRuntimeControl, 'runtimeCaptureOrder')
     || !arc4IsolatedCheck(arc4StorageArc5Control, 'ownershipV2Stable')
@@ -16179,9 +16312,9 @@ try {
     || !arc4IsolatedCheck(arc4StorageBudgetSemanticUiControl, 'uiFactsStable')
     || !arc4IsolatedCheck(arc4StorageCountdownTextControl,
       'activePlayProjection')) {
-    failSliceWithoutCascade('ARC 4 STORAGE REFUSAL: native Tame changed durable/visible ownership, retained the prior hit, or lost exact storage-fault truth: '
-      + JSON.stringify({ armed: arc4StorageArmed, press: arc4StoragePress,
-        assessment: arc4Storage, faultControl: arc4StorageFaultControl,
+    failSliceWithoutCascade('ARC 4 STORAGE REFUSAL CONTROLS: a mutated fault/result/runtime/Arc 5/UI/countdown bundle stayed green or failed non-isolated: '
+      + JSON.stringify({ terminal: arc4StorageTerminalEvidence,
+        faultControl: arc4StorageFaultControl,
         resultControl: arc4StorageResultControl,
         runtimeControl: arc4StorageRuntimeControl,
         arc5Control: arc4StorageArc5Control,

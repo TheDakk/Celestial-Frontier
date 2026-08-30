@@ -10,6 +10,49 @@ summary of it.
 
 ## Contents
 
+### Signed `961d107…` green admission predecessors, then isolated Arc 4 storage-timeout red
+
+Exact clean SSH-signed source `961d1071d059e0f73e14a6a4ead61f5e4696535b` (tree
+`e1acc7753e8f89ca13bc7dd0fce300c5fba454f3`, parent
+`7f89bb2a70604da5b79673bd22d25786cab468d2`) passed its tracked-input develop profile at
+**253 files / 2,510 passed / 1 skipped**, all three TypeScript programs and the art/route/spec
+gates. The unchanged source then ran each permitted browser stage once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`: SceneMemory passed **44/44** in **12,912 ms** and
+Compendium passed **78/78** in **63,695 ms**. Both named verifiers passed. The retained carriers
+are:
+
+- `ARC1C_SCENEMEM_PR35_STORAGE_REFUSAL_PREDECESSOR_PASS_20260830_961D107.json.gz`:
+  **44,946 gzip / 786,692 raw bytes**; gzip/raw SHA-256
+  `6c1e2180e6d3523bf5b07021c24ad8aa9f6e67c1e0fc72b2433691afad3144aa` /
+  `77607fd1b824e12f973a85d82d45f7b09997523125f839a664ba7a42f224c648`.
+- `ARC1C_COMPENDIUM_PR35_STORAGE_REFUSAL_PREDECESSOR_PASS_20260830_961D107.json.gz`:
+  **450,967 gzip / 10,834,118 raw bytes**; gzip/raw SHA-256
+  `3f39cfca848e5aaa790e0f6e27448881d8985501313c2027f78f0064b53d2b36` /
+  `cc1b28217c57a0ff90051afcb676d24082c3f0426c0650e504ba0e65ce567799`.
+
+Slice `20260830-pr35-961d107-battery-rightsizing-slice` then stopped terminal red after
+**171,033 ms** with exactly one scope, `harness`, and zero automatic retry. The message was
+`Arc 4 storage refusal did not reach its browser outcome within 10000ms (last null)`. Glass and
+Recovery did not run.
+
+- `ARC4_SLICE_PR35_STORAGE_REFUSAL_TIMEOUT_RED_20260830_961D107.json.gz`:
+  **1,689 gzip / 5,263 raw bytes**; gzip/raw SHA-256
+  `304d65abf8ed652420e282897eefdd9f57a34f7f2b41bed780f3fc27a18e822f` /
+  `6b69f8bd2445b3e23979e28a89f78f94d8572ea257f99a121dc893a632e57f4a`.
+- `ARC4_SLICE_PR35_STORAGE_REFUSAL_TIMEOUT_RED_20260830_961D107.log.gz`:
+  **1,509 gzip / 3,745 raw bytes**; gzip/raw SHA-256
+  `bbc957bd99f265d068d487a184a5a96f0bb8525ba7cbd5724e694f95cc8f328a` /
+  `d86d79fa031fb9002ad495a8579993aeb426461395fd116c78ae99458cfb249a`.
+
+This report proves only that the old runner let its generic waiter escape before it retained the
+fault arm, native target/press, coordinator, product, durable and UI state needed to distinguish a
+setup failure from a product failure. It is not evidence that the game mutated ownership or that
+the storage boundary failed. The bounded runner repair now proves readiness before arming, refuses
+to press if the hook does not arm, retains pre-arm/post-arm/post-press/deadline observations, and
+causal-stops before the stale-authority stage on any red. No timeout, retry, product code, save,
+creature/genome, art/audio, numeric ruler or browser baseline is changed. The immutable `961d107…`
+run remains FAIL and grants no Glass, Recovery, hosted, merge, release or deployment authority.
+
 ### Signed `7f89bb2…` right-sized admission predecessors, then one-scope Tame fixture-oracle red
 
 Exact clean SSH-signed source `7f89bb2a70604da5b79673bd22d25786cab468d2` (tree
