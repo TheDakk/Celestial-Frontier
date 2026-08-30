@@ -10,7 +10,9 @@ export const REPORT_SCHEMA = 'cf-v2-compendium-memory-report/v1';
 export const BUDGET_SCHEMA = 'cf-v2-compendium-memory-budget/v1';
 export const DIAGNOSTICS_SCHEMA = 'cf-v2-compendium-diagnostics/v1';
 export const ART_DIAGNOSTICS_SCHEMA = 'cf-v2-species-art-diagnostics/v1';
-const WORKER_ART_DIAGNOSTICS_SCHEMA = 'cf-v2-species-art-worker-diagnostics/v1';
+const HISTORICAL_WORKER_ART_DIAGNOSTICS_SCHEMA =
+  'cf-v2-species-art-worker-diagnostics/v1';
+const WORKER_ART_DIAGNOSTICS_SCHEMA = 'cf-v2-species-art-worker-diagnostics/v2';
 export const PROFILES = Object.freeze(['phone', 'desktop']);
 export const COMMAND_TIMEOUT_MS = 2000;
 export const CANDIDATE_TRANSPORT_TIMEOUT_MS = 5000;
@@ -65,10 +67,15 @@ export const COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS = Object.freeze([
   'package', 'packageLock', 'appPackage', 'baselineSaveFixtures',
   'speciesArtBuildGraph', 'outcomeInventory',
 ]);
-export const COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA =
+const HISTORICAL_COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA =
   'cf-v2-compendium-producer-authority/v1';
-export const COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS = Object.freeze([
+export const COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA =
+  'cf-v2-compendium-producer-authority/v2';
+const HISTORICAL_COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS = Object.freeze([
   'index', 'owner', 'worker', 'painter',
+]);
+export const COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS = Object.freeze([
+  ...HISTORICAL_COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS, 'serviceWorker',
 ]);
 export const COMPENDIUM_FIXED_RULER_AUTHORITY_SCHEMA =
   'cf-v2-compendium-fixed-ruler-authority/v1';
@@ -88,7 +95,7 @@ export const PRODUCER_ERROR_WITNESS_SCHEMA =
 export const PRODUCER_ERROR_ARM_MESSAGE = 'compendiummem injected producer error';
 export const PRODUCER_ERROR_ARM_SENTINEL = 'cf-v2-compendium-producer-error-armed/v1';
 export const THUMB_SETTLEMENT_OBSERVATION_SCHEMA =
-  'cf-v2-compendium-thumb-settlement-observation/v2';
+  'cf-v2-compendium-thumb-settlement-observation/v3';
 export const THUMB_SETTLEMENT_RECEIPT_SCHEMA =
   'cf-v2-compendium-thumb-settlement-receipt/v1';
 export const THUMB_SETTLEMENT_ACTIVE_SCHEMA =
@@ -316,32 +323,43 @@ function validProducerAuthorityPart(value, key) {
     && sameJson(Object.keys(value).sort(), ['relativePath', 'sha256'])
     && typeof value.relativePath === 'string' && value.relativePath.length > 0
     && !value.relativePath.startsWith('/') && !value.relativePath.includes('..')
-    && (key === 'index' ? value.relativePath === 'index.html' : value.relativePath.endsWith('.js'))
+    && (key === 'index' ? value.relativePath === 'index.html'
+      : key === 'serviceWorker' ? value.relativePath === 'service-worker.js'
+        : value.relativePath.endsWith('.js'))
     && /^[a-f0-9]{64}$/.test(String(value.sha256 || ''));
 }
 export function compendiumProducerAuthority(buildGraph) {
-  if (!isObject(buildGraph) || COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS.some((key) =>
+  const inputKeys = isObject(buildGraph) && buildGraph.serviceWorker !== undefined
+    ? COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS
+    : HISTORICAL_COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS;
+  if (!isObject(buildGraph) || inputKeys.some((key) =>
     !validProducerAuthorityPart(buildGraph[key], key))) return null;
   const inputs = Object.freeze(Object.fromEntries(
-    COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS.map((key) => [key, Object.freeze({
+    inputKeys.map((key) => [key, Object.freeze({
       relativePath: buildGraph[key].relativePath,
       sha256: buildGraph[key].sha256,
     })]),
   ));
   return Object.freeze({
-    schema: COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA,
+    schema: inputKeys === COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS
+      ? COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA
+      : HISTORICAL_COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA,
     sha256: sha256(JSON.stringify(inputs)),
     inputs,
   });
 }
 function validProducerAuthority(value) {
+  const inputKeys = value?.schema === COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA
+    ? COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS
+    : value?.schema === HISTORICAL_COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA
+      ? HISTORICAL_COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS : null;
   if (!isObject(value)
     || !exactKeys(value, ['schema', 'sha256', 'inputs'], 'producerAuthority', [])
-    || value.schema !== COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA
+    || inputKeys === null
     || !/^[a-f0-9]{64}$/.test(String(value.sha256 || ''))
     || !isObject(value.inputs)
-    || !sameJson(Object.keys(value.inputs), [...COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS])
-    || COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS.some((key) =>
+    || !sameJson(Object.keys(value.inputs), [...inputKeys])
+    || inputKeys.some((key) =>
       !validProducerAuthorityPart(value.inputs[key], key))) return false;
   return value.sha256 === sha256(JSON.stringify(value.inputs));
 }
@@ -1690,7 +1708,7 @@ function thumbSettlementObservationShapeErrors(observation) {
   }
 
   const lazyKeys = [
-    'available', 'schema', 'state', 'importStarts', 'identity', 'lastEvent',
+    'available', 'schema', 'state', 'importStarts', 'identity', 'lastEvent', 'lastError',
     'phases', 'results', 'errors',
   ];
   if (exactKeys(observation.lazyArt, lazyKeys, 'thumb settlement lazy art', errors)) {
@@ -1726,6 +1744,42 @@ function thumbSettlementObservationShapeErrors(observation) {
           }
           if (!boundedString(lazyArt.lastEvent.event, { max: 64 })) {
             errors.push('thumb settlement lazy art event name shape');
+          }
+        }
+      }
+      if (lazyArt.lastError !== null) {
+        const errorKeys = [
+          'producerEpoch', 'workerInstanceId', 'jobId', 'kind', 'stage', 'code', 'message',
+        ];
+        if (exactKeys(lazyArt.lastError, errorKeys,
+          'thumb settlement lazy art last error', errors)) {
+          for (const field of ['producerEpoch', 'workerInstanceId']) {
+            if (!integer(lazyArt.lastError[field]) || lazyArt.lastError[field] < 1) {
+              errors.push(`thumb settlement lazy art last error ${field} shape`);
+            }
+          }
+          if (lazyArt.lastError.jobId !== null
+            && (!integer(lazyArt.lastError.jobId) || lazyArt.lastError.jobId < 1)) {
+            errors.push('thumb settlement lazy art last error jobId shape');
+          }
+          if (lazyArt.lastError.kind !== null
+            && !['thumb132', 'portrait440'].includes(lazyArt.lastError.kind)) {
+            errors.push('thumb settlement lazy art last error kind shape');
+          }
+          if ((lazyArt.lastError.jobId === null)
+            !== (lazyArt.lastError.kind === null)) {
+            errors.push('thumb settlement lazy art last error ownership tuple shape');
+          }
+          if (!['capability', 'protocol', 'import', 'paint', 'encode']
+            .includes(lazyArt.lastError.stage)) {
+            errors.push('thumb settlement lazy art last error stage shape');
+          }
+          if (typeof lazyArt.lastError.code !== 'string'
+            || !/^[a-z0-9-]{1,48}$/.test(lazyArt.lastError.code)) {
+            errors.push('thumb settlement lazy art last error code shape');
+          }
+          if (!boundedString(lazyArt.lastError.message, { max: 512 })) {
+            errors.push('thumb settlement lazy art last error message shape');
           }
         }
       }
@@ -1850,6 +1904,7 @@ export function classifyCompendiumThumbSettlement(observation, expected) {
   if (shapeErrors.length) return sealedThumbSettlementDecision('error', shapeErrors);
 
   const errors = [];
+  const productErrors = [];
   const pending = [];
   if (observation.schema !== THUMB_SETTLEMENT_OBSERVATION_SCHEMA) {
     errors.push(`observation schema ${JSON.stringify(observation.schema)}`);
@@ -1943,7 +1998,9 @@ export function classifyCompendiumThumbSettlement(observation, expected) {
   }
   images.forEach((image, index) => {
     if (image.index !== index) pending.push(`image ${index} index ${image.index}`);
-    if (image.thumbState !== 'ready') {
+    if (image.thumbState === 'error') {
+      productErrors.push(`image ${index} thumb state "error"`);
+    } else if (image.thumbState !== 'ready') {
       pending.push(`image ${index} thumb state ${JSON.stringify(image.thumbState)}`);
     }
     if (image.srcPresent !== true) pending.push(`image ${index} source absent`);
@@ -1968,9 +2025,11 @@ export function classifyCompendiumThumbSettlement(observation, expected) {
   if (observation.lazyArt.available !== true) pending.push('lazy-art diagnostics unavailable');
   else {
     if (observation.lazyArt.schema !== WORKER_ART_DIAGNOSTICS_SCHEMA) {
-      pending.push(`lazy-art schema ${JSON.stringify(observation.lazyArt.schema)}`);
+      errors.push(`lazy-art schema ${JSON.stringify(observation.lazyArt.schema)}`);
     }
-    if (observation.lazyArt.state !== 'ready') {
+    if (observation.lazyArt.state === 'error') {
+      productErrors.push('lazy-art state "error"');
+    } else if (observation.lazyArt.state !== 'ready') {
       pending.push(`lazy-art state ${JSON.stringify(observation.lazyArt.state)}`);
     }
     if (observation.lazyArt.identity.documentToken !== observation.page.documentToken) {
@@ -2001,10 +2060,33 @@ export function classifyCompendiumThumbSettlement(observation, expected) {
           !== observation.lazyArt.identity.lastWorkerInstanceId)) {
       errors.push('lazy-art last-event producer identity');
     }
-    pending.push(`lazy-art witness epoch=${observation.lazyArt.identity.lastProducerEpoch};worker=${observation.lazyArt.identity.lastWorkerInstanceId};phases=${THUMB_SETTLEMENT_LAZY_PHASE_FIELDS.map((field) => phases[field]).join(',')};results=${THUMB_SETTLEMENT_LAZY_RESULT_FIELDS.map((field) => results[field]).join(',')};errors=${THUMB_SETTLEMENT_LAZY_ERROR_FIELDS.map((field) => lazyErrors[field]).join(',')};last=${observation.lazyArt.lastEvent === null ? 'null' : `${observation.lazyArt.lastEvent.producerEpoch},${observation.lazyArt.lastEvent.workerInstanceId},${observation.lazyArt.lastEvent.jobId},${observation.lazyArt.lastEvent.kind},${observation.lazyArt.lastEvent.event}`}`);
+    const currentProductError = productErrors.length > 0;
+    const lastError = observation.lazyArt.lastError;
+    if (currentProductError && lastError === null) {
+      errors.push('terminal thumbnail state omitted last-error evidence');
+    } else if (currentProductError
+      && (lastError.producerEpoch !== observation.lazyArt.identity.lastProducerEpoch
+        || lastError.workerInstanceId
+          !== observation.lazyArt.identity.lastWorkerInstanceId)) {
+      errors.push('terminal lazy-art last-error producer identity');
+    } else if (currentProductError && lazyErrors[lastError.stage] < 1) {
+      errors.push('terminal lazy-art last-error counter');
+    }
+    const lastErrorWitness = lastError === null ? 'null'
+      : `${lastError.producerEpoch},${lastError.workerInstanceId},${lastError.jobId},${lastError.kind},${lastError.stage},${lastError.code},message=${lastError.message.length},${sha256(lastError.message)}`;
+    pending.push(`lazy-art witness epoch=${observation.lazyArt.identity.lastProducerEpoch};worker=${observation.lazyArt.identity.lastWorkerInstanceId};phases=${THUMB_SETTLEMENT_LAZY_PHASE_FIELDS.map((field) => phases[field]).join(',')};results=${THUMB_SETTLEMENT_LAZY_RESULT_FIELDS.map((field) => results[field]).join(',')};errors=${THUMB_SETTLEMENT_LAZY_ERROR_FIELDS.map((field) => lazyErrors[field]).join(',')};last=${observation.lazyArt.lastEvent === null ? 'null' : `${observation.lazyArt.lastEvent.producerEpoch},${observation.lazyArt.lastEvent.workerInstanceId},${observation.lazyArt.lastEvent.jobId},${observation.lazyArt.lastEvent.kind},${observation.lazyArt.lastEvent.event}`};lastError=${lastErrorWitness}`);
   }
   if (observation.worker.available !== observation.lazyArt.available) {
     pending.push('worker/lazy-art availability mismatch');
+  }
+  if (productErrors.length > 0
+    && (observation.broker.available !== true
+      || observation.art.available !== true
+      || observation.art.schema !== ART_DIAGNOSTICS_SCHEMA
+      || observation.lazyArt.available !== true
+      || observation.lazyArt.schema !== WORKER_ART_DIAGNOSTICS_SCHEMA
+      || observation.worker.available !== true)) {
+    errors.push('terminal thumbnail state lacks complete producer diagnostics');
   }
   if (observation.broker.available !== observation.art.available) {
     pending.push('broker/art availability mismatch');
@@ -2029,11 +2111,18 @@ export function classifyCompendiumThumbSettlement(observation, expected) {
       pending.push('broker/art active-job mismatch');
     }
   }
-  if (errors.length) {
-    return sealedThumbSettlementDecision('error', [...errors, ...pending]);
-  }
   const lazyWitnessIndex = pending.findIndex((reason) => reason.startsWith('lazy-art witness '));
   const lazyWitness = lazyWitnessIndex < 0 ? [] : pending.splice(lazyWitnessIndex, 1);
+  if (errors.length) {
+    return sealedThumbSettlementDecision(
+      'error', [...errors, ...productErrors, ...pending, ...lazyWitness],
+    );
+  }
+  if (productErrors.length) {
+    return sealedThumbSettlementDecision(
+      'product-error', [...productErrors, ...pending, ...lazyWitness],
+    );
+  }
   if (pending.length) {
     return sealedThumbSettlementDecision('pending', [...pending, ...lazyWitness]);
   }
@@ -2059,6 +2148,13 @@ export function compendiumThumbSettlementReceiptToken(profile, label, attempt) {
     throw new TypeError('thumbnail settlement receipt token authority is invalid');
   }
   return `${profile}-compendium-thumb-${label}-${attempt}`;
+}
+
+export function compendiumThumbSettlementProductErrorDiagnosis(profile, label) {
+  if (!PROFILES.includes(profile) || thumbSettlementPlanIndex(label) < 0) {
+    throw new TypeError('thumbnail settlement product-error authority is invalid');
+  }
+  return `${profile} ${label}: thumbnail producer reached a terminal error`;
 }
 
 function exactThumbSettlementPageAuthority(authority) {
@@ -2368,7 +2464,7 @@ export class CandidateObservationError extends Error {
 
 export function isCandidateObservationError(error) {
   return error instanceof CandidateObservationError
-    && ['product-unanswerable', 'instrument'].includes(error.classification);
+    && ['product-unanswerable', 'product-fail', 'instrument'].includes(error.classification);
 }
 
 function plainEvaluateCommand({
@@ -3333,7 +3429,7 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
   } else if (expectedProducerAuthority !== null
     && (!validProducerAuthority(expectedProducerAuthority)
       || !sameJson(record.producerAuthority, expectedProducerAuthority))) {
-    errors.push('budget producer authority does not match the current built index/owner/worker/painter');
+    errors.push('budget producer authority does not match the current built index/owner/worker/painter/service-worker');
   }
   if (!isObject(record.requirements)) errors.push('budget requirements are missing');
   else {
@@ -3582,13 +3678,31 @@ const WORKER_RESULT_FIELDS = Object.freeze([
 const WORKER_ERROR_FIELDS = Object.freeze([
   'capability', 'protocol', 'import', 'paint', 'encode',
 ]);
-function validWorkerArtDiagnostics(value) {
-  return isObject(value)
+function validWorkerArtLastError(value) {
+  return value === null || (isObject(value)
     && sameJson(Object.keys(value).sort(), [
-      'schema', 'state', 'importStarts', 'identity', 'lastEvent',
-      'worker', 'phases', 'results', 'errors',
+      'producerEpoch', 'workerInstanceId', 'jobId', 'kind', 'stage', 'code', 'message',
     ].sort())
-    && value.schema === WORKER_ART_DIAGNOSTICS_SCHEMA
+    && integer(value.producerEpoch) && value.producerEpoch >= 1
+    && integer(value.workerInstanceId) && value.workerInstanceId >= 1
+    && (value.jobId === null || integer(value.jobId) && value.jobId >= 1)
+    && (value.kind === null || ['thumb132', 'portrait440'].includes(value.kind))
+    && (value.jobId === null) === (value.kind === null)
+    && ['capability', 'protocol', 'import', 'paint', 'encode'].includes(value.stage)
+    && typeof value.code === 'string' && /^[a-z0-9-]{1,48}$/.test(value.code)
+    && boundedString(value.message, { max: 512 }));
+}
+function validWorkerArtDiagnostics(value) {
+  const historical = value?.schema === HISTORICAL_WORKER_ART_DIAGNOSTICS_SCHEMA;
+  const current = value?.schema === WORKER_ART_DIAGNOSTICS_SCHEMA;
+  const keys = [
+    'schema', 'state', 'importStarts', 'identity', 'lastEvent',
+    ...(current ? ['lastError'] : []),
+    'worker', 'phases', 'results', 'errors',
+  ];
+  return isObject(value)
+    && (historical || current)
+    && sameJson(Object.keys(value).sort(), keys.sort())
     && ['idle', 'loading', 'ready', 'error'].includes(value.state)
     && integer(value.importStarts) && value.importStarts >= 0
     && isObject(value.identity)
@@ -3609,6 +3723,7 @@ function validWorkerArtDiagnostics(value) {
       && ['thumb132', 'portrait440'].includes(value.lastEvent.kind)
       && typeof value.lastEvent.event === 'string'
       && /^(?:phase:(?:import-start|import-complete|job-start|render-complete|encode-start|encode-complete)|result|error:(?:capability|protocol|import|paint|encode))$/.test(value.lastEvent.event)))
+    && (historical || validWorkerArtLastError(value.lastError))
     && isObject(value.worker)
     && sameJson(Object.keys(value.worker).sort(), [...WORKER_STATE_FIELDS].sort())
     && typeof value.worker.live === 'boolean'
@@ -3634,6 +3749,8 @@ function workerArtDormant(snapshot) {
     && value.identity.lastProducerEpoch === 0
     && value.identity.lastWorkerInstanceId === 0
     && value.lastEvent === null
+    && (value.schema === HISTORICAL_WORKER_ART_DIAGNOSTICS_SCHEMA
+      || value.lastError === null)
     && value.worker.live === false
     && WORKER_STATE_FIELDS.filter((field) => field !== 'live')
       .every((field) => value.worker[field] === 0)
@@ -3682,6 +3799,8 @@ function workerArtFinalEvidence(snapshot) {
     && value.results.count === successfulThumbs + successfulPortraits
     && errors.capability === 0 && errors.protocol === 0 && errors.import === 0
     && errors.paint === 1 && errors.encode === 0
+    && (value.schema === HISTORICAL_WORKER_ART_DIAGNOSTICS_SCHEMA
+      || value.lastError !== null && value.lastError.stage === 'paint')
     && a.totals.thumbCanvasRenders === successfulThumbs
     && a.totals.fullPortraitRendersForThumb === 0
     && a.totals.fullPortraitDecodesForThumb === 0;
@@ -3937,6 +4056,12 @@ export function evaluateProfile(measurement, budget, fixture) {
       relativePath: lazyResource?.path,
       sha256: lazyResource?.sha256,
     },
+    ...(typeof lazyResource?.serviceWorkerPath === 'string' ? {
+      serviceWorker: {
+        relativePath: lazyResource.serviceWorkerPath,
+        sha256: lazyResource.serviceWorkerSha256,
+      },
+    } : {}),
   });
   add('lazy-art-not-eager', foregroundAuthorityValid && thumbnailSettlementAuthorityValid
     && workerArtDormant(initial) && initial?.diagnostics?.art === null
@@ -3951,6 +4076,9 @@ export function evaluateProfile(measurement, budget, fixture) {
     && typeof lazyResource?.workerPath === 'string' && lazyResource.workerPath.endsWith('.js')
     && lazyResource.workerPath !== lazyResource.path
     && /^[a-f0-9]{64}$/.test(String(lazyResource?.workerSha256 || ''))
+    && (budget?.producerAuthority?.schema === HISTORICAL_COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA
+      || lazyResource?.serviceWorkerPath === 'service-worker.js'
+        && /^[a-f0-9]{64}$/.test(String(lazyResource?.serviceWorkerSha256 || '')))
     && measuredProducerAuthority !== null
     && validProducerAuthority(budget?.producerAuthority)
     && sameJson(measuredProducerAuthority, budget.producerAuthority)
@@ -4640,7 +4768,7 @@ function boundedJsonCarrier(value, maxBytes = 131_072) {
 function exactThumbSettlementDecision(decision, observation, expected) {
   if (!isObject(decision)
     || !sameJson(Object.keys(decision).sort(), ['reasons', 'status'])
-    || !['ready', 'pending', 'error'].includes(decision.status)
+    || !['ready', 'pending', 'product-error', 'error'].includes(decision.status)
     || !Array.isArray(decision.reasons)
     || decision.reasons.length > MAX_THUMB_SETTLEMENT_REASONS
     || !decision.reasons.every((reason) => boundedString(reason))) return false;
@@ -5119,7 +5247,8 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
   ];
   if (!isObject(failure) || !sameJson(Object.keys(failure).sort(), keys.sort())
     || failure.schema !== PARTIAL_FAILURE_SCHEMA
-    || !['product-unanswerable', 'instrument'].includes(failure.classification)
+    || !['product-unanswerable', 'product-fail', 'instrument']
+      .includes(failure.classification)
     || !boundedString(failure.diagnosis, { max: 32_768 })
     || (failure.profile !== null && !PROFILES.includes(failure.profile))
     || (failure.lastCompletedStage !== null
@@ -5129,8 +5258,8 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
     || Object.keys(report.profiles).some((profile) => !PROFILES.includes(profile))
     || !validPartialReviewPacket(report.reviewPacket, expectedRunId, verifyArtifact)
     || !sameReviewPacket(report.reviewPacket, profileReviewPacket(report.profiles))) return false;
-  const diagnosisPrefix = failure.classification === 'product-unanswerable'
-    ? 'product' : 'instrument';
+  const diagnosisPrefix = failure.classification === 'instrument'
+    ? 'instrument' : 'product';
   if (!sameJson(report.findings, [`${diagnosisPrefix}: ${failure.diagnosis}`])) return false;
   const mayOmitBrowser = failure.profile === null && Object.keys(report.profiles).length === 0;
   if (!validBrowserProvenance(report.browser)
@@ -5149,6 +5278,7 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
     if (!Array.isArray(report.findings) || !report.findings.includes(rawFinding)) return false;
   }
   let partialCount = 0;
+  const productErrorProfiles = [];
   for (const [profile, measurement] of Object.entries(report.profiles)) {
     if (measurement?.schema === PARTIAL_PROFILE_SCHEMA) {
       partialCount += 1;
@@ -5163,6 +5293,9 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
         || !validPartialCommandLedger(
           measurement, failure, report.browser?.product,
         )) return false;
+      if (measurement.activeThumbnailSettlement?.lastDecision?.status === 'product-error') {
+        productErrorProfiles.push(profile);
+      }
     } else if (!validCompleteProfileMeasurement(
       measurement, profile, report.browser?.product,
     )) return false;
@@ -5182,6 +5315,18 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
     || sameJson(profileKeys, ['phone', 'desktop']) && failure.profile === null
       && phoneComplete && desktopComplete;
   if (!validPrefixShape) return false;
+  if (failure.classification === 'product-fail') {
+    const measurement = report.profiles[failure.profile];
+    const active = measurement?.activeThumbnailSettlement;
+    return failure.profile !== null
+      && failure.command === null
+      && sameJson(productErrorProfiles, [failure.profile])
+      && active?.lastDecision?.status === 'product-error'
+      && failure.failingStage === `${active.label} thumb settlement`
+      && failure.diagnosis
+        === compendiumThumbSettlementProductErrorDiagnosis(failure.profile, active.label);
+  }
+  if (productErrorProfiles.length !== 0) return false;
   if (failure.classification === 'product-unanswerable') {
     return failure.profile !== null
       && validCandidateCommandEvidence(failure.command, { requireProductTimeout: true });
@@ -5269,7 +5414,8 @@ function validateReportBudgetAuthority(report, errors) {
     errors.push('report producerAuthorityMatch does not match the recorded built graph');
   }
   const browserMeasuredOutcome = hasBrowser
-    && ['pass', 'fail', 'calibration', 'product-unanswerable'].includes(report.status);
+    && ['pass', 'fail', 'calibration', 'product-unanswerable', 'product-fail']
+      .includes(report.status);
   if (browserMeasuredOutcome && budget.browserAuthorityMatch !== true) {
     errors.push('complete Compendium outcome lacks the Arc 1A browser compatibility authority');
   }
@@ -5285,7 +5431,9 @@ function validateReportBudgetAuthority(report, errors) {
       errors.push('browser-authority mismatch was not terminal before product measurement');
     }
   }
-  const completeProducerOutcome = ['pass', 'fail', 'calibration', 'product-unanswerable']
+  const completeProducerOutcome = [
+    'pass', 'fail', 'calibration', 'product-unanswerable', 'product-fail',
+  ]
     .includes(report.status);
   if (completeProducerOutcome && budget.producerAuthorityMatch !== true) {
     errors.push('complete Compendium outcome lacks the exact built producer authority');
@@ -5315,8 +5463,8 @@ export function verifyTerminalReport(report, expectedRunId, {
   if (report.schema !== REPORT_SCHEMA) errors.push(`report schema must be ${REPORT_SCHEMA}`);
   if (report.runId !== expectedRunId) errors.push('report runId is not the requested current run');
   const terminal = allowCalibration
-    ? ['pass', 'fail', 'instrument-fail', 'product-unanswerable', 'calibration']
-    : ['pass', 'fail', 'instrument-fail', 'product-unanswerable'];
+    ? ['pass', 'fail', 'instrument-fail', 'product-unanswerable', 'product-fail', 'calibration']
+    : ['pass', 'fail', 'instrument-fail', 'product-unanswerable', 'product-fail'];
   if (!terminal.includes(report.status)) errors.push('report is not terminal');
   const policyKeys = [
     'attemptCount', 'automaticRetries', 'commandTimeoutMs', 'targetTimeoutMs',
@@ -5376,7 +5524,7 @@ export function verifyTerminalReport(report, expectedRunId, {
       errors.push('report source does not match the exact current source identity');
     }
   }
-  if (['instrument-fail', 'product-unanswerable'].includes(report.status)) {
+  if (['instrument-fail', 'product-unanswerable', 'product-fail'].includes(report.status)) {
     if (!Array.isArray(report.outcomes) || report.outcomes.length !== 0) {
       errors.push('partial terminal report must not claim completed product outcomes');
     }
@@ -5396,17 +5544,17 @@ export function verifyTerminalReport(report, expectedRunId, {
         errors.push('instrument-fail report classification or diagnosis is invalid');
       }
     } else {
-      if (report.partialFailure?.classification !== 'product-unanswerable'
+      if (report.partialFailure?.classification !== report.status
         || report.findings.some((finding) => typeof finding !== 'string'
           || !finding.startsWith('product: '))) {
-        errors.push('product-unanswerable report classification or diagnosis is invalid');
+        errors.push(`${report.status} report classification or diagnosis is invalid`);
       }
       if (!validCommittedSourceIdentity(report.source?.begin)
         || !validCommittedSourceIdentity(report.source?.end)) {
-        errors.push('product-unanswerable evidence requires one clean committed source identity');
+        errors.push(`${report.status} evidence requires one clean committed source identity`);
       }
       if (!validBrowserProvenance(report.browser)) {
-        errors.push('product-unanswerable browser provenance is incomplete');
+        errors.push(`${report.status} browser provenance is incomplete`);
       }
     }
     return { ok: errors.length === 0, errors };

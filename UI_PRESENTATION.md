@@ -1,5 +1,57 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-30 current local species-art/Compendium observation overlay (matches code as of
+> 2026-08-30; supersedes narrower diagnostics descriptions below):** exact signed source
+> `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
+> `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` once with no retry and stopped
+> after 33,217 ms at phone veteran-Earth Planetside settlement with zero outcomes and all 78
+> blocked. Long visual keys crossed the observation boundary correctly. The first lazy species
+> painter import failed, while the v1 Window diagnostics retained only structural/counter evidence
+> and discarded its code/message. The historical observation-v2 report/carrier is immutable
+> instrument evidence; it does not contain, and the repair does not claim to recover, the original
+> worker message.
+>
+> Live species-art diagnostics now use honest schema
+> `cf-v2-species-art-worker-diagnostics/v2`. Its required nullable immutable `lastError` has exactly
+> `{producerEpoch,workerInstanceId,jobId,kind,stage,code,message}`; `message` is bounded to 1–512
+> characters, and only trusted valid worker errors populate it. Worker error ownership requires
+> `jobId`, `kind` and `key` to be all null or all present and valid. A replacement producer clears
+> both `lastEvent` and `lastError`; a later adapter-protocol failure or external/untrusted fatal
+> clears `lastError` as well, while an exact trusted worker fatal retains its validated cause. This
+> prevents stale same-worker attribution. Compendium live settlement observation is v3. Authority
+> and exact-shape checks run before product classification, and terminal product attribution is
+> refused unless broker/worker diagnostics, exact art schema
+> `cf-v2-species-art-diagnostics/v1` and exact lazy schema
+> `cf-v2-species-art-worker-diagnostics/v2` are all present. A current error state plus a trusted
+> `lastError` matching the current producer is then terminal `product-error`, and the collector
+> emits `product-fail` immediately without sleeping or retrying. Cumulative error telemetry,
+> including a prior `lastError`, remains nonterminal when the current producer is coherently
+> `ready`; recovery is not misclassified as a present failure.
+>
+> The deterministic PWA harness reproduced the presentation's historical lazy-import boundary: a
+> worker created between first activation's initial client snapshot and `clients.claim()` entered
+> uncontrolled, then its lazy import became controlled without a retained-build pin and received
+> exact 503 `This document has no retained Celestial Frontier build.` Activation now repeats the
+> complete all-client preservation pass after claim inside the same `waitUntil`. The repaired
+> harness pins/serves the exact lazy bytes, the no-post-claim-reconciliation mutant recreates the
+> 503, post-claim worker entries still pin their lazy children, and unrelated unpinned requests
+> remain visibly red. No player-facing retry, fallback or inferred error message was added.
+>
+> Current producer authority is history-safe schema v2,
+> `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`, and binds generated
+> `service-worker.js` SHA-256
+> `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14` together with index, owner,
+> species worker and painter. Removing the post-claim repair therefore changes authority;
+> historical v1 records remain replayable. Current Scene build authority is
+> `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
+> measurement / contract / collector are
+> `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
+> `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
+> Browser-free review is green at 589 Compendium selftest controls, worker loader/protocol 20/20,
+> focused authority/PWA/worker/budget/carrier 96/96 and all typechecks. The fixed ruler/ceilings did
+> not change; fresh exact browser certification remains open.
+
 > **2026-08-29 current local route/PWA/vista correction (supersedes narrower same-date descriptions
 > below where they differ):** the Survey-to-Landing interaction now drains the route checkpoint,
 > invokes Survey once, drains Survey's replacement product checkpoint, and invokes Land once. No

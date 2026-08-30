@@ -208,17 +208,18 @@
       "additionalProperties": false,
       "required": ["schema", "sha256", "inputs"],
       "properties": {
-        "schema": { "const": "cf-v2-compendium-producer-authority/v1" },
+        "schema": { "const": "cf-v2-compendium-producer-authority/v2" },
         "sha256": { "$ref": "#/$defs/sha256" },
         "inputs": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["index", "owner", "worker", "painter"],
+          "required": ["index", "owner", "worker", "painter", "serviceWorker"],
           "properties": {
             "index": { "$ref": "#/$defs/producerPart" },
             "owner": { "$ref": "#/$defs/producerPart" },
             "worker": { "$ref": "#/$defs/producerPart" },
-            "painter": { "$ref": "#/$defs/producerPart" }
+            "painter": { "$ref": "#/$defs/producerPart" },
+            "serviceWorker": { "$ref": "#/$defs/producerPart" }
           }
         }
       }

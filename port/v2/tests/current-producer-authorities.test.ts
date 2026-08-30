@@ -116,6 +116,25 @@ describe('current producer authorities', () => {
       .toEqual(['gameMain']);
   });
 
+  it('negative-controls the generated service worker inside Compendium producer authority', () => {
+    const live = current.compendium.producer;
+    const serviceWorker = live.inputs.serviceWorker;
+    expect(serviceWorker).toBeDefined();
+    const serviceWorkerBytes = fs.readFileSync(path.join(
+      gameRoot, 'dist', serviceWorker!.relativePath,
+    ));
+    const mutant = compendiumProducerAuthority({
+      ...live.inputs,
+      serviceWorker: {
+        ...serviceWorker,
+        sha256: changedHash(serviceWorkerBytes, 'compendium-service-worker'),
+      },
+    });
+    expect(mutant).not.toBeNull();
+    expect(authorityMismatchPaths(mutant, live))
+      .toEqual(['inputs.serviceWorker.sha256', 'sha256']);
+  });
+
   it('negative-controls recomputed Compendium index and owner authorities', () => {
     const live = current.compendium.producer;
     const indexBytes = fs.readFileSync(path.join(gameRoot, 'dist', live.inputs.index.relativePath));

@@ -70,15 +70,17 @@ export interface SpeciesArtWorkerResultResponse extends SpeciesArtWorkerResponse
   readonly encodeDurationMs: number;
 }
 
-export interface SpeciesArtWorkerErrorResponse extends SpeciesArtWorkerResponseIdentity {
+interface SpeciesArtWorkerErrorResponseBase extends SpeciesArtWorkerResponseIdentity {
   readonly type: 'error';
-  readonly jobId: number | null;
-  readonly kind: SpeciesArtRenderKind | null;
-  readonly key: string | null;
   readonly stage: 'capability' | 'protocol' | 'import' | 'paint' | 'encode';
   readonly code: string;
   readonly message: string;
 }
+
+export type SpeciesArtWorkerErrorResponse = SpeciesArtWorkerErrorResponseBase & (
+  | Readonly<{ jobId: null; kind: null; key: null }>
+  | Readonly<{ jobId: number; kind: SpeciesArtRenderKind; key: string }>
+);
 
 export type SpeciesArtWorkerResponse =
   | SpeciesArtWorkerReadyResponse
@@ -167,9 +169,8 @@ export function validSpeciesArtWorkerResponse(value: unknown): value is SpeciesA
       'schema', 'type', 'documentToken', 'producerEpoch', 'workerInstanceId',
       'jobId', 'kind', 'key', 'stage', 'code', 'message',
     ])
-    && (value.jobId === null || boundedJob(value.jobId))
-    && (value.kind === null || renderKind(value.kind))
-    && (value.key === null || boundedKey(value.key))
+    && ((value.jobId === null && value.kind === null && value.key === null)
+      || (boundedJob(value.jobId) && renderKind(value.kind) && boundedKey(value.key)))
     && ['capability', 'protocol', 'import', 'paint', 'encode'].includes(String(value.stage))
     && typeof value.code === 'string' && /^[a-z0-9-]{1,48}$/.test(value.code)
     && typeof value.message === 'string' && value.message.length >= 1 && value.message.length <= 512;

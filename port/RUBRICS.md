@@ -99,6 +99,48 @@
 > three TypeScript programs and the producer-authority printer with both budget matches true;
 > independent review is clear. It has not run a fresh exact-source Compendium browser certificate,
 > no Slice/Glass/Recovery successor exists, and it closes no `[HUMAN]` row.
+>
+> **Newer current-local evidence boundary:** exact signed source
+> `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
+> `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` once with zero retries on Edge
+> `152.0.4191.53` / CDP `1.3`. All long visual keys passed, so the earlier observation-v2 repair is
+> successful historical evidence for that exact source. The run then stopped `instrument-fail`
+> after **33,217 ms** at phone `veteran-earth-planetside`, judged zero outcomes and blocked all
+> **78**. The first lazy painter import failed, while old v1 worker diagnostics discarded the exact
+> code/message; no stronger historical claim is made. The immutable 7,357-byte gzip / 54,172-byte
+> raw carrier has SHA-256
+> `90d61baeee297041a2afc7bf776fb504c5ac803140cf0613785859714c5f2aa9` /
+> `ef3cec79cf181323705d8a9eff82d9bb8023275590a23a0589515248e626d6b5` and an independent replay.
+>
+> Current `[EXEC]` acceptance now also requires the deterministic first-activation claim-gap
+> reproduction and exact 503 `This document has no retained Celestial Frontier build.`, post-claim
+> activation-barrier all-client pin reconciliation, and bounded trusted species `lastError`. A later
+> adapter protocol/external fatal must clear stale `lastError`; a replacement producer must clear
+> both `lastEvent` and `lastError`, while trusted worker-fatal evidence remains. Observation v3 may
+> classify a current trusted error immediately as `product-fail` with no retry only when broker, art,
+> lazy-worker and worker diagnostics are complete and the art/lazy schemas are exact. Malformed
+> worker-error ownership is rejected unless `jobId`, `kind` and `key` are either all null or all
+> present; recovered cumulative telemetry remains nonterminal.
+>
+> Independent review closure requires history-safe Compendium producer authority v2 over generated
+> `service-worker.js` plus index, owner, worker and painter. A service-worker mutant changes current
+> authority, while historical v1 reports replay unchanged. Current measurement / outcome contract /
+> collector / producer-v2 SHA-256 is
+> `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
+> `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+> `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; service-worker SHA-256 is
+> `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. SceneMemory current build
+> authority is `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; its exact
+> `2046000…` certificate remains immutable historical evidence.
+>
+> Current closure passes **589** Compendium selftest controls, worker **20/20**, the focused
+> authority/PWA/worker/budget/carrier run **96/96**, and all three TypeScript programs. This local
+> closure preserves the canonical **73-bullet** release inventory; the full browser-free suite
+> passes **238 files / 2,423 passed / 1 skipped**. This local repair is not a fresh Compendium
+> certificate and closes no `[HUMAN]` row. A signed clean head and one new no-retry Compendium
+> attempt remain required. The fixed Compendium ruler, historical samples,
+> thresholds and exact-source verdicts remain unchanged.
 
 > **2026-08-29 current local gameplay-evidence overlay:** Arc 5 now has four player-live exact-
 > instance writers—Feed, one-draw nonlethal Breed with active-play Recovery, identity-only Rename,

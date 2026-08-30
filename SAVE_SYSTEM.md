@@ -1,5 +1,46 @@
 # Celestial Frontier — Save System
 
+> **2026-08-30 current local post-claim PWA/save boundary (matches code as of 2026-08-30;
+> supersedes narrower same-date/2026-08-29 PWA descriptions below):** exact signed source
+> `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
+> `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` once with no retry. It stopped
+> after 33,217 ms at phone veteran-Earth Planetside settlement with zero outcomes and all 78
+> blocked. The long visual-key projection worked; the first lazy species painter import failed, but
+> v1 Window diagnostics discarded its code and message. Its observation-v2 report/carrier remains
+> immutable instrument evidence, and no original worker message has been recovered or inferred.
+>
+> A deterministic PWA harness reproduced the lifecycle cause: first activation enumerated clients
+> before `clients.claim()`, a worker created in that gap loaded its entry uncontrolled, and claim
+> then brought its lazy import under the service worker without an exact retained-build pin. The
+> lazy request therefore received exact 503 text `This document has no retained Celestial Frontier
+> build.` First-install activation now re-runs the complete all-client
+> `preserveLiveClientBuilds(state, false)` after `clients.claim()` inside the same `waitUntil`.
+> The fixed harness pins the gap worker and serves its exact lazy bytes; removing only that second
+> reconciliation recreates the 503. Workers created after claim continue to inherit the selected
+> pin through their entry `resultingClientId`, while unrelated unpinned requests still fail closed.
+> This repairs exact app-byte ownership only; CacheStorage remains outside expedition/save
+> authority and no save schema, migration, persistence retry or product-state fallback was added.
+>
+> The current history-safe Compendium producer record is
+> `cf-v2-compendium-producer-authority/v2` / SHA-256
+> `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. It binds the generated
+> `service-worker.js` (`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`)
+> along with index, owner, species worker and painter, so deleting the post-claim repair changes the
+> producer authority. Historical schema-v1 producer records remain exactly replayable rather than
+> being rebound. Current Scene build authority is
+> `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
+> measurement / contract / collector authorities are
+> `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
+> `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
+> Product attribution additionally requires present broker/worker diagnostics plus exact art
+> `cf-v2-species-art-diagnostics/v1` and lazy
+> `cf-v2-species-art-worker-diagnostics/v2` schemas. Worker error ownership rejects any mixed-null
+> `jobId`/`kind`/`key` tuple. A replacement producer clears both `lastEvent` and `lastError`.
+> Browser-free closure is 589 Compendium selftest controls, worker loader/protocol 20/20,
+> focused authority/PWA/worker/budget/carrier 96/96 and green typechecks. The fixed ruler/ceilings
+> are unchanged and a fresh exact browser certificate remains open.
+
 > **2026-08-29 current local fixed-point, route and PWA correction (supersedes narrower
 > same-date descriptions below where they differ):** the deterministic product-transaction owner
 > now detaches its codec registry once, validates the injected commit clock once, and gives the

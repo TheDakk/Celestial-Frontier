@@ -66,11 +66,12 @@ export class SpeciesArtWorkerCore {
     request: { readonly jobId: number; readonly kind: SpeciesArtRenderKind; readonly key: string } | null,
   ): void {
     if (!this.identity) return;
+    const ownership = request === null
+      ? Object.freeze({ jobId: null, kind: null, key: null })
+      : request;
     this.options.emit({
       ...this.base(), type: 'error',
-      jobId: request?.jobId ?? null,
-      kind: request?.kind ?? null,
-      key: request?.key ?? null,
+      ...ownership,
       stage, code, message: boundedMessage(error),
     });
   }

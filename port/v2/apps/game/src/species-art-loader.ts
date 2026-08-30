@@ -37,7 +37,7 @@ export type {
 
 export type SpeciesArtLazyState = 'idle' | 'loading' | 'ready' | 'error';
 export interface SpeciesArtLazyDiagnostics {
-  readonly schema: 'cf-v2-species-art-worker-diagnostics/v1';
+  readonly schema: 'cf-v2-species-art-worker-diagnostics/v2';
   readonly state: SpeciesArtLazyState;
   /** Historical name retained for the Arc 1A lazy-import contract. Each
    * producer instance owns one fresh worker-local painter import. */
@@ -53,6 +53,15 @@ export interface SpeciesArtLazyDiagnostics {
     jobId: number;
     kind: 'thumb132' | 'portrait440';
     event: string;
+  }> | null;
+  readonly lastError: Readonly<{
+    producerEpoch: number;
+    workerInstanceId: number;
+    jobId: number | null;
+    kind: 'thumb132' | 'portrait440' | null;
+    stage: 'capability' | 'protocol' | 'import' | 'paint' | 'encode';
+    code: string;
+    message: string;
   }> | null;
   readonly worker: Readonly<{
     live: boolean;
@@ -285,7 +294,7 @@ function createWorkerProducer(
   onResult: (response: Extract<SpeciesArtWorkerResponse, { readonly type: 'result' }>) => void,
   onJobError: (response: Extract<SpeciesArtWorkerResponse, { readonly type: 'error' }>) => void,
   onProtocolError: () => void,
-  onFatal: (error: Error) => void,
+  onFatal: (error: Error, trustedWorkerError: boolean) => void,
 ): SpeciesArtProducerPort {
   const worker = workerFactory();
   let disposed = false;
@@ -295,12 +304,12 @@ function createWorkerProducer(
   let phasePlan: readonly SpeciesArtWorkerPhase[] = Object.freeze([]);
   let phaseIndex = 0;
 
-  const terminateFatal = (value: unknown): void => {
+  const terminateFatal = (value: unknown, trustedWorkerError = false): void => {
     if (disposed) return;
     const error = workerError(value);
     disposed = true;
     try { worker.terminate(); } catch { /* ownership is already revoked */ }
-    onFatal(error);
+    onFatal(error, trustedWorkerError);
     sink.fatal(error);
   };
   const exactPending = (response: {
@@ -361,7 +370,7 @@ function createWorkerProducer(
       const error = new Error(`${response.stage}/${response.code}: ${response.message}`);
       if (response.jobId === null || response.kind === null || response.key === null) {
         onJobError(response);
-        terminateFatal(error);
+        terminateFatal(error, true);
         return;
       }
       const request = pending;
@@ -389,7 +398,7 @@ function createWorkerProducer(
       onJobError(response);
       if (response.stage === 'capability'
         || response.stage === 'protocol' || response.stage === 'import') {
-        terminateFatal(error);
+        terminateFatal(error, true);
         return;
       }
       pending = null;
@@ -483,6 +492,7 @@ export class SpeciesArtLoader {
   private lastProducerEpoch0 = 0;
   private lastWorkerInstanceId0 = 0;
   private lastEvent0: SpeciesArtLazyDiagnostics['lastEvent'] = null;
+  private lastError0: SpeciesArtLazyDiagnostics['lastError'] = null;
   private readonly phases0 = {
     importStarts: 0,
     importCompletes: 0,
@@ -522,6 +532,8 @@ export class SpeciesArtLoader {
     this.workerFactory = options.workerFactory ?? defaultWorkerFactory;
     const createProducer: SpeciesArtProducerFactory = options.createProducer
       ? (sink) => {
+        this.lastEvent0 = null;
+        this.lastError0 = null;
         this.state0 = 'loading';
         this.importStarts0++;
         try {
@@ -541,6 +553,8 @@ export class SpeciesArtLoader {
         });
         this.lastProducerEpoch0 = identity.producerEpoch;
         this.lastWorkerInstanceId0 = identity.workerInstanceId;
+        this.lastEvent0 = null;
+        this.lastError0 = null;
         this.state0 = 'loading';
         this.importStarts0++;
         try {
@@ -588,6 +602,15 @@ export class SpeciesArtLoader {
             },
             (response) => {
               const { stage } = response;
+              this.lastError0 = Object.freeze({
+                producerEpoch: response.producerEpoch,
+                workerInstanceId: response.workerInstanceId,
+                jobId: response.jobId,
+                kind: response.kind,
+                stage,
+                code: response.code,
+                message: response.message,
+              });
               if (response.jobId !== null && response.kind !== null) {
                 this.lastEvent0 = Object.freeze({
                   producerEpoch: identity.producerEpoch,
@@ -600,8 +623,14 @@ export class SpeciesArtLoader {
               this.errors0[stage]++;
               if (stage === 'import') this.state0 = 'error';
             },
-            () => { this.adapterProtocolErrors0++; },
-            () => { this.state0 = 'error'; },
+            () => {
+              this.lastError0 = null;
+              this.adapterProtocolErrors0++;
+            },
+            (_error, trustedWorkerError) => {
+              if (!trustedWorkerError) this.lastError0 = null;
+              this.state0 = 'error';
+            },
           );
         } catch (error) {
           this.state0 = 'error';
@@ -630,7 +659,7 @@ export class SpeciesArtLoader {
   diagnostics(): SpeciesArtLazyDiagnostics {
     const broker = this.broker.diagnostics();
     return Object.freeze({
-      schema: 'cf-v2-species-art-worker-diagnostics/v1' as const,
+      schema: 'cf-v2-species-art-worker-diagnostics/v2' as const,
       state: this.state0,
       importStarts: this.importStarts0,
       identity: Object.freeze({
@@ -639,6 +668,7 @@ export class SpeciesArtLoader {
         lastWorkerInstanceId: this.lastWorkerInstanceId0,
       }),
       lastEvent: this.lastEvent0,
+      lastError: this.lastError0,
       worker: Object.freeze({
         live: broker.state.producer === 'live',
         starts: broker.totals.producerStarts,

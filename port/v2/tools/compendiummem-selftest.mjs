@@ -20,7 +20,7 @@ import {
   COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS, DIAGNOSTICS_SCHEMA,
   EXPECTED_OUTCOMES, FILTER_TRANSITION_SCHEMA, OUTCOME_IDS,
   PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
-  PRODUCER_ERROR_ARM_SENTINEL, PRODUCER_ERROR_WITNESS_SCHEMA,
+  PRODUCER_ERROR_ARM_MESSAGE, PRODUCER_ERROR_ARM_SENTINEL, PRODUCER_ERROR_WITNESS_SCHEMA,
   FOREGROUND_SERVICE_OBSERVATION_SCHEMA, FOREGROUND_SERVICE_RECEIPT_SCHEMA,
   FOREGROUND_SERVICE_RECEIPT_LABELS, FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS,
   THUMB_SETTLEMENT_OBSERVATION_SCHEMA, THUMB_SETTLEMENT_RECEIPT_SCHEMA,
@@ -43,6 +43,7 @@ import {
   classifyCompendiumForegroundServiceTurn,
   classifyCompendiumForegroundServiceTurnReceipt,
   classifyCompendiumThumbSettlement,
+  compendiumThumbSettlementProductErrorDiagnosis,
   compendiumThumbSettlementReceiptToken,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression, evaluateProfile,
@@ -405,7 +406,8 @@ function syntheticThumbSettlementVisualKeys(surface, count) {
       lazyArt: {
         schema: sealed.lazyArt.schema, state: sealed.lazyArt.state,
         importStarts: sealed.lazyArt.importStarts, identity: sealed.lazyArt.identity,
-        lastEvent: sealed.lazyArt.lastEvent, phases: sealed.lazyArt.phases,
+        lastEvent: sealed.lazyArt.lastEvent, lastError: sealed.lazyArt.lastError,
+        phases: sealed.lazyArt.phases,
         results: sealed.lazyArt.results, errors: sealed.lazyArt.errors,
         worker: {
           live: sealed.worker.live, starts: sealed.worker.starts, ready: sealed.worker.ready,
@@ -544,7 +546,7 @@ function greenThumbSettlement(
       available: true, schema: ART_DIAGNOSTICS_SCHEMA, queuedJobs: 0, activeJobs: 0,
     },
     lazyArt: {
-      available: true, schema: 'cf-v2-species-art-worker-diagnostics/v1', state: 'ready',
+      available: true, schema: 'cf-v2-species-art-worker-diagnostics/v2', state: 'ready',
       importStarts: 1,
       identity: {
         documentToken: pageAuthority.documentToken,
@@ -554,6 +556,7 @@ function greenThumbSettlement(
         producerEpoch: 1, workerInstanceId: 1, jobId: mountedCount,
         kind: 'thumb132', event: 'result',
       },
+      lastError: null,
       phases: {
         importStarts: 1, importCompletes: 1,
         thumbJobStarts: mountedCount, thumbRenderCompletes: mountedCount,
@@ -602,6 +605,12 @@ function greenThumbSettlement(
     receiptToken: 'thumb-receipt',
   };
   const green = greenThumbSettlement();
+  const currentLastError = ({
+    stage = 'paint', jobId = 1, kind = 'thumb132',
+    code = 'injected-failure', message = PRODUCER_ERROR_ARM_MESSAGE,
+  } = {}) => ({
+    producerEpoch: 1, workerInstanceId: 1, jobId, kind, stage, code, message,
+  });
   assert(classifyCompendiumThumbSettlement(green, expected).status === 'ready'
     && validCompendiumThumbSettlementObservation(green, expected),
   'the exact structured thumbnail settlement observation was rejected');
@@ -709,6 +718,45 @@ function greenThumbSettlement(
       value.images[0].thumbState = 'placeholder';
       value.diagnostic.thumbStates[0] = 'placeholder';
     }, 'pending'],
+    ['image terminal error state', (value) => {
+      value.images[0].thumbState = 'error';
+      value.diagnostic.thumbStates[0] = 'error';
+      value.lazyArt.lastError = currentLastError();
+      value.lazyArt.errors.paint = 1;
+    }, 'product-error', 'image 0 thumb state "error"'],
+    ['terminal error missing last-error evidence', (value) => {
+      value.images[0].thumbState = 'error';
+      value.diagnostic.thumbStates[0] = 'error';
+      value.lazyArt.errors.paint = 1;
+    }, 'error', 'terminal thumbnail state omitted last-error evidence'],
+    ['terminal error unavailable producer diagnostics', (value) => {
+      value.images[0].thumbState = 'error';
+      value.diagnostic.thumbStates[0] = 'error';
+      value.lazyArt = {
+        available: false, schema: null, state: null, importStarts: null,
+        identity: null, lastEvent: null, lastError: null,
+        phases: null, results: null, errors: null,
+      };
+      value.worker = {
+        available: false, live: null, starts: null, ready: null, disposals: null,
+        fatals: null, protocolErrors: null,
+      };
+    }, 'error', 'terminal thumbnail state lacks complete producer diagnostics'],
+    ['terminal error wrong art diagnostics schema', (value) => {
+      value.images[0].thumbState = 'error';
+      value.diagnostic.thumbStates[0] = 'error';
+      value.art.schema = 'stale-art';
+      value.lazyArt.lastError = currentLastError();
+      value.lazyArt.errors.paint = 1;
+    }, 'error', 'terminal thumbnail state lacks complete producer diagnostics'],
+    ['terminal error stale producer identity', (value) => {
+      value.images[0].thumbState = 'error';
+      value.diagnostic.thumbStates[0] = 'error';
+      value.lazyArt.lastError = {
+        ...currentLastError(), producerEpoch: 2, workerInstanceId: 2,
+      };
+      value.lazyArt.errors.paint = 1;
+    }, 'error', 'terminal lazy-art last-error producer identity'],
     ['image source', (value) => { value.images[0].srcPresent = false; }, 'pending'],
     ['image decode', (value) => { value.images[0].complete = false; }, 'pending'],
     ['image width', (value) => { value.images[0].naturalWidth = 131; }, 'pending'],
@@ -732,15 +780,24 @@ function greenThumbSettlement(
     ['lazy-art unavailable', (value) => {
       value.lazyArt = {
         available: false, schema: null, state: null, importStarts: null,
-        identity: null, lastEvent: null, phases: null, results: null, errors: null,
+        identity: null, lastEvent: null, lastError: null,
+        phases: null, results: null, errors: null,
       };
       value.worker = {
         available: false, live: null, starts: null, ready: null, disposals: null,
         fatals: null, protocolErrors: null,
       };
     }, 'pending'],
-    ['lazy-art schema', (value) => { value.lazyArt.schema = 'stale-worker'; }, 'pending'],
+    ['lazy-art schema', (value) => { value.lazyArt.schema = 'stale-worker'; }, 'error'],
     ['lazy-art state', (value) => { value.lazyArt.state = 'loading'; }, 'pending'],
+    ['lazy-art terminal error state', (value) => {
+      value.lazyArt.state = 'error';
+      value.lazyArt.lastError = currentLastError({
+        stage: 'import', jobId: null, kind: null,
+        code: 'painter-import', message: 'painter import refused',
+      });
+      value.lazyArt.errors.import = 1;
+    }, 'product-error', 'lazy-art state "error"'],
     ['lazy-art document identity', (value) => {
       value.lazyArt.identity.documentToken = 'stale-document';
     }, 'error'],
@@ -856,6 +913,60 @@ function greenThumbSettlement(
       `structured thumbnail ${label} could not retain its recomputed diagnosis`);
   }
 
+  const recoveredCumulativeTelemetry = clone(green);
+  recoveredCumulativeTelemetry.lazyArt.errors.import = 1;
+  recoveredCumulativeTelemetry.lazyArt.lastEvent.event = 'error:import';
+  recoveredCumulativeTelemetry.lazyArt.identity.lastProducerEpoch = 2;
+  recoveredCumulativeTelemetry.lazyArt.identity.lastWorkerInstanceId = 2;
+  recoveredCumulativeTelemetry.lazyArt.lastEvent.producerEpoch = 2;
+  recoveredCumulativeTelemetry.lazyArt.lastEvent.workerInstanceId = 2;
+  recoveredCumulativeTelemetry.lazyArt.lastError = currentLastError({
+    stage: 'import', jobId: null, kind: null,
+    code: 'painter-import', message: 'historical painter import refusal',
+  });
+  recoveredCumulativeTelemetry.worker.fatals = 1;
+  const recoveredCumulativeDecision = classifyCompendiumThumbSettlement(
+    recoveredCumulativeTelemetry, expected,
+  );
+  structuredInstrumentControlCount++;
+  assert(recoveredCumulativeDecision.status === 'ready'
+    && recoveredCumulativeDecision.reasons.some((reason) =>
+      reason.includes('errors=0,0,1,0,0') && reason.includes('error:import')),
+  'recovered cumulative producer-error telemetry was treated as a current terminal error');
+
+  const maximumLastErrorMessage = clone(green);
+  const boundedLastErrorMessage = 'x'.repeat(512);
+  maximumLastErrorMessage.lazyArt.errors.paint = 1;
+  maximumLastErrorMessage.lazyArt.lastError = currentLastError({
+    message: boundedLastErrorMessage,
+  });
+  const maximumLastErrorDecision = classifyCompendiumThumbSettlement(
+    maximumLastErrorMessage, expected,
+  );
+  maximumLastErrorMessage.ready = true;
+  maximumLastErrorMessage.reasons = [...maximumLastErrorDecision.reasons];
+  structuredInstrumentControlCount++;
+  assert(maximumLastErrorDecision.status === 'ready'
+    && maximumLastErrorDecision.reasons.some((reason) =>
+      reason.includes(`message=512,${sha256(boundedLastErrorMessage)}`))
+    && validCompendiumThumbSettlementObservation(maximumLastErrorMessage, expected),
+  'the exact 512-character last-error message boundary overflowed its bounded decision witness');
+
+  const authorityBeforeProductError = clone(green);
+  authorityBeforeProductError.images[0].thumbState = 'error';
+  authorityBeforeProductError.diagnostic.thumbStates[0] = 'error';
+  authorityBeforeProductError.lazyArt.lastError = currentLastError();
+  authorityBeforeProductError.lazyArt.errors.paint = 1;
+  authorityBeforeProductError.page.targetId = 'foreign-target';
+  const authorityBeforeProductDecision = classifyCompendiumThumbSettlement(
+    authorityBeforeProductError, expected,
+  );
+  structuredInstrumentControlCount++;
+  assert(authorityBeforeProductDecision.status === 'error'
+    && authorityBeforeProductDecision.reasons.includes('target identity "foreign-target"')
+    && authorityBeforeProductDecision.reasons.includes('image 0 thumb state "error"'),
+  'a terminal product marker outranked lost page authority');
+
   const planetsideHidden = clone(planetside);
   planetsideHidden.diagnostic.visible = false;
   const planetsideHiddenDecision = classifyCompendiumThumbSettlement(
@@ -966,6 +1077,37 @@ function greenThumbSettlement(
     ]),
     ['lazy-art last-event kind shape', (value) => { value.lazyArt.lastEvent.kind = ''; }],
     ['lazy-art last-event name shape', (value) => { value.lazyArt.lastEvent.event = ''; }],
+    ['lazy-art last-error exact keys', (value) => {
+      value.lazyArt.lastError = currentLastError();
+      delete value.lazyArt.lastError.code;
+    }],
+    ['lazy-art last-error producer shape', (value) => {
+      value.lazyArt.lastError = { ...currentLastError(), producerEpoch: 0 };
+    }],
+    ['lazy-art last-error worker shape', (value) => {
+      value.lazyArt.lastError = { ...currentLastError(), workerInstanceId: 0 };
+    }],
+    ['lazy-art last-error job shape', (value) => {
+      value.lazyArt.lastError = { ...currentLastError(), jobId: 0 };
+    }],
+    ['lazy-art last-error kind shape', (value) => {
+      value.lazyArt.lastError = { ...currentLastError(), kind: 'landscape' };
+    }],
+    ['lazy-art last-error ownership tuple shape', (value) => {
+      value.lazyArt.lastError = { ...currentLastError(), jobId: null };
+    }],
+    ['lazy-art last-error stage shape', (value) => {
+      value.lazyArt.lastError = { ...currentLastError(), stage: 'render' };
+    }],
+    ['lazy-art last-error code shape', (value) => {
+      value.lazyArt.lastError = { ...currentLastError(), code: 'INVALID CODE' };
+    }],
+    ['lazy-art last-error empty message shape', (value) => {
+      value.lazyArt.lastError = { ...currentLastError(), message: '' };
+    }],
+    ['lazy-art last-error message bound', (value) => {
+      value.lazyArt.lastError = { ...currentLastError(), message: 'x'.repeat(513) };
+    }],
     ['lazy-art phases exact keys', (value) => {
       delete value.lazyArt.phases.importStarts;
     }],
@@ -1460,6 +1602,7 @@ function activeBudget(fixture) {
     owner: { relativePath: 'assets/main-selftest.js', sha256: 'd'.repeat(64) },
     worker: { relativePath: 'assets/species-art.worker-selftest.js', sha256: 'f'.repeat(64) },
     painter: { relativePath: 'assets/speciespainter-selftest.js', sha256: 'e'.repeat(64) },
+    serviceWorker: { relativePath: 'service-worker.js', sha256: 'c'.repeat(64) },
   });
   assert(producerAuthority, 'synthetic producer authority did not canonicalize');
   const candidateEvidence = (profile, runId) => {
@@ -1661,13 +1804,14 @@ function artSnapshot({ portrait = false, closed = false, generation = 1 } = {}) 
 
 function workerArtDiagnostics({ lazy = false } = {}) {
   return lazy ? {
-    schema: 'cf-v2-species-art-worker-diagnostics/v1',
+    schema: 'cf-v2-species-art-worker-diagnostics/v2',
     state: 'idle', importStarts: 0,
     identity: {
       documentToken: 'selftest-lazy-document',
       lastProducerEpoch: 0, lastWorkerInstanceId: 0,
     },
     lastEvent: null,
+    lastError: null,
     worker: {
       live: false, starts: 0, ready: 0, disposals: 0, fatals: 0, protocolErrors: 0,
     },
@@ -1684,7 +1828,7 @@ function workerArtDiagnostics({ lazy = false } = {}) {
     },
     errors: { capability: 0, protocol: 0, import: 0, paint: 0, encode: 0 },
   } : {
-    schema: 'cf-v2-species-art-worker-diagnostics/v1',
+    schema: 'cf-v2-species-art-worker-diagnostics/v2',
     state: 'ready', importStarts: 8,
     identity: {
       documentToken: 'selftest-main-document',
@@ -1693,6 +1837,10 @@ function workerArtDiagnostics({ lazy = false } = {}) {
     lastEvent: {
       producerEpoch: 8, workerInstanceId: 8, jobId: 87,
       kind: 'thumb132', event: 'result',
+    },
+    lastError: {
+      producerEpoch: 1, workerInstanceId: 1, jobId: 1, kind: 'thumb132',
+      stage: 'paint', code: 'injected-failure', message: PRODUCER_ERROR_ARM_MESSAGE,
     },
     worker: {
       live: false, starts: 8, ready: 8, disposals: 8, fatals: 0, protocolErrors: 0,
@@ -2215,6 +2363,7 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
       ownerPath: 'assets/main-selftest.js', ownerSha256: 'd'.repeat(64),
       path: 'assets/speciespainter-selftest.js', sha256: 'e'.repeat(64),
       workerPath: 'assets/species-art.worker-selftest.js', workerSha256: 'f'.repeat(64),
+      serviceWorkerPath: 'service-worker.js', serviceWorkerSha256: 'c'.repeat(64),
       ownership: 'dedicated-worker-dynamic-import', matches: [], endMatches: [],
     },
     documentTokens: {
@@ -2521,7 +2670,7 @@ export async function runCompendiumMemSelftest() {
 
   const runCandidateWaitScenario = async (plans, {
     phaseWindowMs = 3000, label = 'list thumb settlement', answerabilityExpected = null,
-    acceptValue = null,
+    acceptValue = null, onObservation = null,
   } = {}) => {
     let phaseClock = 1000;
     let issuedAt = phaseClock;
@@ -2573,9 +2722,12 @@ export async function runCompendiumMemSelftest() {
         ? await observations.waitValue(
           'selftest-session', label, 'selftest-expression', {
             timeoutMs: phaseWindowMs,
-            ...(acceptValue ? {
-              acceptValue,
-              onObservation: (observation) => observedValues.push(clone(observation)),
+            ...(acceptValue ? { acceptValue } : {}),
+            ...(acceptValue || onObservation ? {
+              onObservation: (observation, command) => {
+                observedValues.push(clone(observation));
+                onObservation?.(observation, command);
+              },
             } : {}),
           },
         )
@@ -2714,6 +2866,25 @@ export async function runCompendiumMemSelftest() {
     && candidateStructuredThenReady.ledger.length === 2
     && candidateStructuredThenReady.sleeps.length === 1,
   'the production candidate wait lost a structured falsy transition observation');
+  const candidateTerminalProductError = await runCandidateWaitScenario([{
+    ...readyPlan,
+    target: { deltaMs: 10, value: { state: 'error' } },
+  }], {
+    acceptValue: () => false,
+    onObservation: () => {
+      throw new CandidateObservationError(
+        'product-fail', 'phone list thumb settlement: synthetic terminal product error',
+      );
+    },
+  });
+  assert(candidateTerminalProductError.failure?.classification === 'product-fail'
+    && isCandidateObservationError(candidateTerminalProductError.failure)
+    && candidateTerminalProductError.calls.length === 2
+    && candidateTerminalProductError.ledger.length === 1
+    && candidateTerminalProductError.observedValues.length === 1
+    && candidateTerminalProductError.sleeps.length === 0
+    && candidateTerminalProductError.stagesCompleted.length === 0,
+  'one explicit product-error observation slept, repolled, or became an instrument timeout');
   const runFilterDriverScenario = async (entryMode, query, expectedCount, {
     wrongFocus = false, wrongExactValue = false, generationDelta = 1,
     invalidPending = false, missingReopen = false,
@@ -4215,6 +4386,11 @@ export async function runCompendiumMemSelftest() {
   assert(validateBudget(forgedProducerAuthorityInput).errors.some((error) =>
     /producer authority is invalid/.test(error)),
   'a forged producer-authority input retained a stale aggregate digest');
+  const forgedServiceWorkerAuthorityInput = clone(budget);
+  forgedServiceWorkerAuthorityInput.producerAuthority.inputs.serviceWorker.sha256 = '0'.repeat(64);
+  assert(validateBudget(forgedServiceWorkerAuthorityInput).errors.some((error) =>
+    /producer authority is invalid/.test(error)),
+  'a forged service-worker authority input retained a stale aggregate digest');
   const forgedProducerAuthorityDigest = clone(budget);
   forgedProducerAuthorityDigest.producerAuthority.sha256 = 'f'.repeat(64);
   assert(validateBudget(forgedProducerAuthorityDigest).errors.some((error) =>
@@ -4231,8 +4407,16 @@ export async function runCompendiumMemSelftest() {
     }
   }
   assert(validateBudget(staleProducerAuthority).errors.some((error) =>
-    /does not match the current built index\/owner\/worker\/painter/.test(error)),
+    /does not match the current built index\/owner\/worker\/painter\/service-worker/.test(error)),
   'a self-consistent stale producer authority matched the current built graph');
+  const staleServiceWorkerAuthority = clone(budget);
+  staleServiceWorkerAuthority.producerAuthority.inputs.serviceWorker.sha256 = '0'.repeat(64);
+  staleServiceWorkerAuthority.producerAuthority.sha256 = sha256(
+    JSON.stringify(staleServiceWorkerAuthority.producerAuthority.inputs),
+  );
+  assert(validateBudget(staleServiceWorkerAuthority).errors.some((error) =>
+    /does not match the current built index\/owner\/worker\/painter\/service-worker/.test(error)),
+  'a self-consistent service-worker mutant matched the current built graph');
   const dirtyBudget = clone(budget);
   dirtyBudget.calibration.samples.phone[0].sourceState = 'dirty-diagnostic';
   assert(validateBudget(dirtyBudget).errors.some((error) =>
@@ -4688,6 +4872,9 @@ export async function runCompendiumMemSelftest() {
     }, 'lazy-art-not-eager'],
     ['species painter and worker chunk merged', (m) => {
       m.lazySpeciesResource.workerPath = m.lazySpeciesResource.path;
+    }, 'lazy-art-not-eager'],
+    ['service-worker producer drift', (m) => {
+      m.lazySpeciesResource.serviceWorkerSha256 = '0'.repeat(64);
     }, 'lazy-art-not-eager'],
     ['unwindowed rows', (m) => { m.points.first.raw.mountedRowCount = 1500; m.points.first.diagnostics.window.mountedRowCount = 1500; }, 'mounted-window-bounded'],
     ['stale resize window', (m) => {
@@ -6326,8 +6513,8 @@ export async function runCompendiumMemSelftest() {
   };
   const partialArtifact = () => true;
   const setPartialDiagnosis = (candidate, diagnosis) => {
-    const prefix = candidate.partialFailure.classification === 'product-unanswerable'
-      ? 'product' : 'instrument';
+    const prefix = candidate.partialFailure.classification === 'instrument'
+      ? 'instrument' : 'product';
     candidate.partialFailure.diagnosis = diagnosis;
     candidate.findings = [`${prefix}: ${diagnosis}`];
     const partialProfile = candidate.partialFailure.profile === null
@@ -6435,6 +6622,78 @@ export async function runCompendiumMemSelftest() {
   }).ok, 'partial thumbnail evidence omitted its attach-derived page authorities');
 
   const readyUnreceipted = clone(phone.phases.thumbnailSettlements[1]);
+  const terminalProductObservation = clone(readyUnreceipted.observation);
+  terminalProductObservation.images[0].thumbState = 'error';
+  terminalProductObservation.diagnostic.thumbStates[0] = 'error';
+  terminalProductObservation.lazyArt.lastError = {
+    producerEpoch: terminalProductObservation.lazyArt.identity.lastProducerEpoch,
+    workerInstanceId: terminalProductObservation.lazyArt.identity.lastWorkerInstanceId,
+    jobId: terminalProductObservation.lazyArt.lastEvent?.jobId ?? 1,
+    kind: 'thumb132', stage: 'paint', code: 'injected-failure',
+    message: PRODUCER_ERROR_ARM_MESSAGE,
+  };
+  terminalProductObservation.lazyArt.errors.paint += 1;
+  const terminalProductDecision = classifyCompendiumThumbSettlement(
+    terminalProductObservation, readyUnreceipted.expected,
+  );
+  terminalProductObservation.ready = false;
+  terminalProductObservation.reasons = [...terminalProductDecision.reasons];
+  const terminalProductActive = {
+    schema: THUMB_SETTLEMENT_ACTIVE_SCHEMA,
+    label: readyUnreceipted.label,
+    attempt: readyUnreceipted.attempt,
+    expected: clone(readyUnreceipted.expected),
+    lastObservation: terminalProductObservation,
+    lastDecision: terminalProductDecision,
+    lastCommand: clone(readyUnreceipted.command),
+    timing: clone(readyUnreceipted.timing),
+  };
+  assert(terminalProductDecision.status === 'product-error'
+    && validCompendiumActiveThumbSettlement(terminalProductActive, {
+      profile: 'phone', pageAuthority: phone.pageAuthorities.main,
+      browserProduct: report.browser.product, planIndex: 1,
+    }), 'synthetic terminal product-error active tail was not exact');
+  const terminalProductDiagnosis = compendiumThumbSettlementProductErrorDiagnosis(
+    'phone', readyUnreceipted.label,
+  );
+  const productFailPartial = clone(thumbnailPrefixPartial);
+  productFailPartial.status = 'product-fail';
+  productFailPartial.partialFailure.classification = 'product-fail';
+  productFailPartial.partialFailure.command = null;
+  productFailPartial.profiles.phone.commandLedger.push(
+    clone(readyUnreceipted.command),
+  );
+  productFailPartial.profiles.phone.activeThumbnailSettlement = terminalProductActive;
+  setPartialDiagnosis(productFailPartial, terminalProductDiagnosis);
+  const productFailCheck = verifyTerminalReport(
+    productFailPartial, 'selftest-current', { verifyArtifact: partialArtifact },
+  );
+  assert(productFailCheck.ok,
+    `terminal product-fail partial report was rejected: ${productFailCheck.errors.join('; ')}`);
+
+  const substitutedProductFailStatus = clone(productFailPartial);
+  substitutedProductFailStatus.status = 'instrument-fail';
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(substitutedProductFailStatus, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a product-fail report was accepted after status-only substitution');
+  const reclassifiedProductFail = clone(productFailPartial);
+  reclassifiedProductFail.status = 'instrument-fail';
+  reclassifiedProductFail.partialFailure.classification = 'instrument';
+  setPartialDiagnosis(reclassifiedProductFail, terminalProductDiagnosis);
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(reclassifiedProductFail, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a terminal product-error tail was coordinated into instrument-fail');
+  const productTimeoutSubstitution = clone(productFailPartial);
+  productTimeoutSubstitution.status = 'product-unanswerable';
+  productTimeoutSubstitution.partialFailure.classification = 'product-unanswerable';
+  setPartialDiagnosis(productTimeoutSubstitution, terminalProductDiagnosis);
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(productTimeoutSubstitution, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a terminal product-error tail was coordinated into product-unanswerable');
+
   const readyReceiptFailureActive = {
     schema: THUMB_SETTLEMENT_ACTIVE_SCHEMA,
     label: readyUnreceipted.label,
@@ -8110,6 +8369,28 @@ export async function runCompendiumMemSelftest() {
     && thumbnailMutationAt < thumbnailNonObjectGuardAt
     && thumbnailNonObjectGuardAt < thumbnailDiagnosisAt,
   'collector lost its null/non-object thumbnail diagnosis before observation mutation');
+  const thumbnailAuthorityErrorAt = thumbnailSettlementBlock.indexOf(
+    "if (decision.status === 'error') {",
+  );
+  const thumbnailProductErrorAt = thumbnailSettlementBlock.indexOf(
+    "if (decision.status === 'product-error') {",
+  );
+  const thumbnailReadyAt = thumbnailSettlementBlock.indexOf(
+    "if (decision.status === 'ready') {",
+  );
+  const thumbnailProductTailAt = thumbnailSettlementBlock.indexOf(
+    'activeThumbnailSettlement = observedTail;', thumbnailProductErrorAt,
+  );
+  const thumbnailProductThrowAt = thumbnailSettlementBlock.indexOf(
+    "'product-fail',", thumbnailProductErrorAt,
+  );
+  structuredInstrumentControlCount++;
+  assert(thumbnailAuthorityErrorAt >= 0
+    && thumbnailAuthorityErrorAt < thumbnailProductErrorAt
+    && thumbnailProductErrorAt < thumbnailProductTailAt
+    && thumbnailProductTailAt < thumbnailProductThrowAt
+    && thumbnailProductThrowAt < thumbnailReadyAt,
+  'collector lost authority-first immediate product-error termination before ready publication');
   const receiptValidationAt = thumbnailSettlementBlock.indexOf(
     'if (!validCompendiumThumbSettlementReceipt(receipt, {',
   );

@@ -1,6 +1,58 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-29 current local exact-build PWA overlay (matches code):**
+> **2026-08-30 current local post-claim PWA/species-art overlay (matches code as of 2026-08-30;
+> supersedes narrower 2026-08-29 descriptions below):** exact signed source
+> `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
+> `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` once with no retry. It stopped
+> terminal `instrument-fail` after **33,217 ms** at phone veteran-Earth Planetside settlement with
+> zero outcomes and all 78 blocked. Observation v2 proved that the eight 766–779-character visual
+> keys crossed the new bounded membership projection. The species-art worker's first lazy painter
+> import failed, but v1 Window diagnostics discarded the error code and message. The exact v2
+> report/carrier remains immutable; no later diagnostic schema can recover a message it never
+> retained.
+>
+> The deterministic PWA harness reproduced the code-supported cause. First-install activation took
+> its all-client snapshot before `clients.claim()`; a worker created in that gap loaded its entry
+> uncontrolled, then became controlled at claim without an exact retained-build pin. Its lazy import
+> consequently received the exact 503 `This document has no retained Celestial Frontier build.`
+> First activation now runs `preserveLiveClientBuilds(state, false)` again after `clients.claim()`
+> inside the same activation `waitUntil`. The fixed harness pins and serves the gap worker's exact
+> lazy bytes; a mutant deleting only that second pass recreates the exact 503. Workers created after
+> claim still pin through the entry request's valid `resultingClientId`, and unrelated unpinned
+> requests remain red. The post-claim pass is realm reconciliation, not a network or cross-build
+> fallback.
+>
+> `species-art-loader.ts` now publishes required nullable immutable `lastError` under
+> `cf-v2-species-art-worker-diagnostics/v2`, with exact fields
+> `{producerEpoch,workerInstanceId,jobId,kind,stage,code,message}` and a 1–512-character message.
+> Only trusted, protocol-valid worker errors populate it; `jobId`, `kind` and `key` must be all null
+> or all present and valid. A replacement producer clears both `lastEvent` and `lastError`; adapter-
+> protocol failure and external/untrusted fatal clear `lastError` too, while a trusted worker fatal
+> retains its exact record. Compendium live thumb-settlement
+> observation is `cf-v2-compendium-thumb-settlement-observation/v3`: authority and exact-shape
+> validation precede product classification. Absent broker/worker diagnostics, exact art schema
+> `cf-v2-species-art-diagnostics/v1` or exact lazy schema
+> `cf-v2-species-art-worker-diagnostics/v2` refuses terminal product attribution. With all present,
+> a current error plus a matching trusted `lastError` returns terminal `product-error`, which the
+> collector preserves immediately as `product-fail` without sleep or retry. Cumulative recovered-
+> error telemetry with a coherent current `ready` producer remains nonterminal.
+>
+> Current Compendium producer authority is history-safe schema
+> `cf-v2-compendium-producer-authority/v2`, SHA-256
+> `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. Its exact inputs are the
+> generated `service-worker.js` (`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`)
+> plus index, owner, species worker and painter. Deleting the post-claim repair changes authority;
+> historical v1 producer records remain replayable under their own shape. Current Scene build
+> authority is `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
+> measurement / contract / collector authorities are
+> `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
+> `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
+> Browser-free review closes at 589 `compendiummem:selftest` controls, worker loader/protocol 20/20,
+> focused authority/PWA/worker/budget/carrier 96/96 and green typechecks. Fixed ruler/ceilings are
+> unchanged; a fresh exact Compendium certificate remains open.
+
+> **2026-08-29 exact-build PWA foundation (current except where superseded above):**
 > `port/v2/apps/game/pwa-build.ts` is a build-only Vite plugin that emits the same-origin web
 > manifest, standard/maskable SVG icons and a generated classic service worker. Its canonical,
 > path-sorted SHA-256 asset table covers every final written runtime output except source maps and
@@ -21,7 +73,9 @@
 > pinned client would make a third retained build necessary, activation refuses before
 > `skipWaiting`. Retention enumerates `clients.matchAll({type:'all'})`, and an apparently absent
 > pinned client must also be absent from `clients.get()` before its pin is pruned; this closes the
-> ready-snapshot/worker-creation race. Current plus one verified prior cache remain, with local
+> ready-snapshot/worker-creation race. On first installation only, activation claims existing clients
+> and then repeats that complete preservation pass inside the same `waitUntil`, closing the distinct
+> pre-claim-snapshot/claim-gap worker race. Current plus one verified prior cache remain, with local
 > 4xx/5xx refusals and no undeclared, cross-build, external or network fallback.
 >
 > `src/pwa-update.ts` mounts an accessible Settings-contained App-status controller only in emitted
@@ -3104,7 +3158,7 @@ inventories must prove internal distinctness.
 Explicit controls make a literal 256-entry inventory green and a 257-entry inventory an instrument
 error; realistic 768–831-character identities remain green.
 
-The signed repair owns the current authority tuple: capability SHA-256
+That observation-v2 repair owned the authority tuple exercised by its successor run: capability SHA-256
 `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341`, measurement
 `87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d`, contract
 `abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138`, collector
@@ -3115,9 +3169,56 @@ includes focus emulation and `Page.bringToFront`; no cache, timing or memory cei
 structure, genome/anatomy rule, or browser point-version policy changed. Browser-free validation is
 green at 565 `compendiummem:selftest` controls, focused 35/35, 237 files / 2,413 passed + one skipped,
 all three TypeScript programs and the producer-authority printer with both budget matches true;
-independent review is clear. This is not browser certification: exactly one fresh clean exact-source
-Compendium run with zero retries and named verification remains required before the serial Slice →
-Glass → Recovery chain may continue on that unchanged source.
+independent review was clear. It was not browser certification.
+
+Exact signed successor `830e601b8f16092d6f9193ecde329cfefd279bcd` exercised that visual-key repair once, with no retry,
+as `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification`. It stopped terminal
+`instrument-fail` after **33,217 ms** at phone veteran-Earth Planetside settlement with zero outcomes,
+all 78 blocked, no desktop profile and no successor evidence. The eight 766–779-character visual keys
+retained valid leased membership indices, proving the observation-v2 long-key boundary worked. All
+eight thumbnails instead held current `error`, the first worker-local painter import had failed,
+and the v1 species-art Window diagnostics retained import counters/stage but no code or message.
+That historical observation-v2 report and carrier remain byte-immutable; the original worker message
+cannot be recovered from them.
+
+The current local producer diagnostics schema is `cf-v2-species-art-worker-diagnostics/v2`. Its
+`lastError` property is required and nullable; when present it is frozen and has exactly
+`{producerEpoch,workerInstanceId,jobId,kind,stage,code,message}`. `jobId`/`kind` may be null for the
+registered non-job stages, `message` is bounded to 1–512 characters, and only a trusted worker error
+that passes the species-art protocol may populate the record. Its source worker response owns a
+valid error only when `jobId`, `kind` and `key` are all null or all present and valid; mixed-null
+ownership is malformed. A replacement producer clears both `lastEvent` and `lastError`. Adapter-
+protocol failure and an external/untrusted fatal clear `lastError` too; an exact trusted worker
+fatal retains its validated record. Constructor failures and malformed or untrusted worker messages
+do not fabricate cause-bearing evidence, and stale same-worker attribution cannot survive a later
+non-worker failure.
+
+Live Compendium settlement uses observation schema
+`cf-v2-compendium-thumb-settlement-observation/v3`. Exact observation authority and shape are
+validated before product state is classified. Terminal product attribution also requires present
+broker/worker diagnostics, exact art schema `cf-v2-species-art-diagnostics/v1` and exact lazy schema
+`cf-v2-species-art-worker-diagnostics/v2`. Only then do current errored thumbnails/
+lazy state with a trusted `lastError` matching the current producer identity classify immediately as
+`product-error`; the collector retains that exact active tail and emits terminal `product-fail`
+without sleeping, repolling or retrying. Cumulative counters and an older `lastError` remain useful
+recovery telemetry, but a coherent current `ready` producer is nonterminal.
+
+The history-safe current producer record is `cf-v2-compendium-producer-authority/v2` /
+`2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. It binds index, owner,
+species worker, painter and generated `service-worker.js` SHA-256
+`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`; deleting the post-claim
+repair therefore changes producer authority. Historical schema-v1 producer records remain
+replayable. Current Scene build authority is
+`49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
+measurement / contract / collector authorities are
+`e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
+`2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
+The current browser-free boundary is green at 589 `compendiummem:selftest` controls, worker loader/
+protocol 20/20, focused authority/PWA/worker/budget/carrier 96/96 and all TypeScript programs. The
+fixed ruler and every numeric ceiling remain unchanged. Browser certification still requires one
+fresh clean exact-source Compendium run with zero retries and named verification before the serial
+Slice → Glass → Recovery chain may continue on unchanged source.
 
 The former local ruler is retained as historical evidence under measurement authority
 `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer authority
@@ -3410,9 +3511,13 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   written last. A partial or altered candidate is deleted. Exact per-document build pins survive
   activation/rollback until explicit reload; navigation selects and pins the active build. Worker
   and shared-worker creation propagates that selected pin to the valid resulting client, so lazy
-  imports remain cache-only from the same build. A successor does not claim existing pages, all
-  client types retain their pins, an omitted snapshot client must also fail `clients.get()` before
-  pruning, and third-build activation refuses while any live client owns the retained prior.
+  imports remain cache-only from the same build. A successor does not claim existing pages. On
+  first installation, the worker takes its initial all-client preservation snapshot, calls
+  `clients.claim()`, then repeats the complete preservation pass inside that same activation
+  `waitUntil`; this pins a worker created in the snapshot/claim gap before its newly controlled lazy
+  fetch. All client types retain their pins, an omitted snapshot client must also fail
+  `clients.get()` before pruning, and third-build activation refuses while any live client owns the
+  retained prior.
   Settings accepts exact-worker status/results and exposes
   accessible explicit Check, Activate, Reload and Roll back actions; active status—not controller
   change—reveals Reload. Main refuses conflicting reloads, joins active persistence and

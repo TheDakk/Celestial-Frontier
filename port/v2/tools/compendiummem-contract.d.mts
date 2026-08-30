@@ -23,7 +23,7 @@ export const COMPENDIUM_MEASUREMENT_AUTHORITY_SCHEMA:
   'cf-v2-compendium-measurement-authority/v1';
 export const COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS: readonly string[];
 export const COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA:
-  'cf-v2-compendium-producer-authority/v1';
+  'cf-v2-compendium-producer-authority/v2';
 export const COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS: readonly string[];
 export const COMPENDIUM_FIXED_RULER_AUTHORITY_SCHEMA:
   'cf-v2-compendium-fixed-ruler-authority/v1';
@@ -47,7 +47,7 @@ export const PRODUCER_ERROR_WITNESS_SCHEMA:
 export const PRODUCER_ERROR_ARM_MESSAGE: 'compendiummem injected producer error';
 export const PRODUCER_ERROR_ARM_SENTINEL: 'cf-v2-compendium-producer-error-armed/v1';
 export const THUMB_SETTLEMENT_OBSERVATION_SCHEMA:
-  'cf-v2-compendium-thumb-settlement-observation/v2';
+  'cf-v2-compendium-thumb-settlement-observation/v3';
 export const THUMB_SETTLEMENT_RECEIPT_SCHEMA:
   'cf-v2-compendium-thumb-settlement-receipt/v1';
 export const THUMB_SETTLEMENT_ACTIVE_SCHEMA:
@@ -105,11 +105,13 @@ export type CompendiumMeasurementAuthority = Readonly<{
   inputs: Readonly<Record<string, string>>;
 }>;
 export type CompendiumProducerAuthority = Readonly<{
-  schema: 'cf-v2-compendium-producer-authority/v1';
+  schema: 'cf-v2-compendium-producer-authority/v1' | 'cf-v2-compendium-producer-authority/v2';
   sha256: string;
   inputs: Readonly<Record<'index' | 'owner' | 'worker' | 'painter', Readonly<{
     relativePath: string; sha256: string;
-  }>>>;
+  }>> & Partial<Record<'serviceWorker', Readonly<{
+    relativePath: string; sha256: string;
+  }>>>>;
 }>;
 export type CompendiumFixedRulerAuthority = Readonly<{
   schema: 'cf-v2-compendium-fixed-ruler-authority/v1';
@@ -208,7 +210,7 @@ export type CompendiumThumbSettlementExpected = Readonly<{
   documentToken: string;
 }>;
 export type CompendiumThumbSettlementObservation = Readonly<{
-  schema: 'cf-v2-compendium-thumb-settlement-observation/v1';
+  schema: 'cf-v2-compendium-thumb-settlement-observation/v3';
   surface: CompendiumThumbSettlementSurface;
   expectedCount: number | null;
   receiptToken: string;
@@ -261,6 +263,15 @@ export type CompendiumThumbSettlementObservation = Readonly<{
       jobId: number;
       kind: string;
       event: string;
+    }> | null;
+    lastError: Readonly<{
+      producerEpoch: number;
+      workerInstanceId: number;
+      jobId: number | null;
+      kind: 'thumb132' | 'portrait440' | null;
+      stage: 'capability' | 'protocol' | 'import' | 'paint' | 'encode';
+      code: string;
+      message: string;
     }> | null;
     phases: Readonly<{
       importStarts: number;
@@ -393,7 +404,7 @@ export type CompendiumPartialProfileV6 = Readonly<{
 }>;
 export type CompendiumPartialFailure = Readonly<{
   schema: string;
-  classification: 'product-unanswerable' | 'instrument';
+  classification: 'product-unanswerable' | 'product-fail' | 'instrument';
   profile: 'phone' | 'desktop' | null;
   lastCompletedStage: string | null;
   failingStage: string;
@@ -453,11 +464,14 @@ export type CompendiumForegroundServiceReceipt = Readonly<{
   cleanup: Readonly<{ cleanupPresent: false; servicePresent: false }>;
 }>;
 export type CompendiumObservationDecision = Readonly<{
-  status: 'ready' | 'pending' | 'error';
+  status: 'ready' | 'pending' | 'product-error' | 'error';
   reasons: readonly string[];
 }>;
 export function compendiumThumbSettlementReceiptToken(
   profile: 'phone' | 'desktop', label: string, attempt: number,
+): string;
+export function compendiumThumbSettlementProductErrorDiagnosis(
+  profile: 'phone' | 'desktop', label: string,
 ): string;
 export function classifyCompendiumThumbSettlement(observation: unknown,
   expected: CompendiumThumbSettlementExpected): CompendiumObservationDecision;
@@ -484,9 +498,9 @@ export function remainingCommandTimeoutMs(deadlineMs: number, nowMs: number,
 export function phaseObservationAccepted(deadlineMs: number, completedAtMs: number,
   value: unknown): boolean;
 export class CandidateObservationError extends Error {
-  classification: 'product-unanswerable' | 'instrument';
+  classification: 'product-unanswerable' | 'product-fail' | 'instrument';
   command: unknown;
-  constructor(classification: 'product-unanswerable' | 'instrument', message: string,
+  constructor(classification: 'product-unanswerable' | 'product-fail' | 'instrument', message: string,
     command?: unknown, options?: ErrorOptions);
 }
 export function isCandidateObservationError(error: unknown): error is CandidateObservationError;
