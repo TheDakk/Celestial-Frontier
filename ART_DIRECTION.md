@@ -23,16 +23,21 @@
 > Current measurement / contract / collector authorities are
 > `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 > `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
-> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; producer / SW / Scene-build
-> are `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
-> `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
-> `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; Compendium / Scene budgets
-> are `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
-> `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Combined worker/painter asset
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; final derived producer /
+> index / owner / SW is `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b` /
+> `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0` /
+> `assets/main-C621myNE.js` (`2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`) /
+> `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Scene build / game-main is
+> `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+> `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; Compendium / Scene budget
+> files are `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` /
+> `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. Combined worker/painter asset
 > `assets/species-art.worker-DnnSDKMy.js` is
-> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. The repair changes no painter byte/pixel path, seed, genome,
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. The green printer binds a
+> **964-module / 52-file** build. The repair changes no painter byte/pixel path, seed, genome,
 > anatomy, silhouette, palette, crop, organism/biome/vista structure, art ruler, ceiling or
-> 78-outcome inventory. Certification, HUMAN art and physical-device judgment remain pending.
+> 78-outcome inventory. This derived reseal is not browser evidence; certification, HUMAN art and
+> physical-device judgment remain pending.
 
 **STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` universe-wide visual implementation remains live as of 2026-08-30 under the sealed single-file worker/PWA boundary above. Its completed local automated browser chain belongs only to historical exact signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae`; current local successors do not inherit that evidence. HUMAN and physical-device judgment remain open. The Arc 1A/1C and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**

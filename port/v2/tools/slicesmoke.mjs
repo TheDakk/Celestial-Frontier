@@ -5886,85 +5886,261 @@ try {
      9 categories / 43 authored stable IDs / 41 legacy-live topics, with
      capability-aware v2 copy, search, cross-links and the complete release
      history. Import remains reachable through Settings. */
-  const guideInventoryExpression = (mutation = null) => `(()=>{const panel=document.getElementById('guidepanel'),
-    body=panel?.querySelector('[data-sel="guide-body"]'),categoryIds=body?[...body.querySelectorAll(':scope > .guide-category[data-guide-category]')]
-      .map((row)=>row.getAttribute('data-guide-category')).filter(Boolean):[],topics=[];let mutated=false;
-    for(const categoryId of categoryIds){const category=[...body.querySelectorAll(':scope > .guide-category[data-guide-category]')]
-      .find((row)=>row.getAttribute('data-guide-category')===categoryId);category?.click();
-      const rows=[...body.querySelectorAll(':scope > [data-sel="guide-topic"][data-guide-topic]')];
-      if(${JSON.stringify(mutation)}==='partial-to-unavailable'&&!mutated){const row=rows.find((item)=>item.getAttribute('data-guide-availability')==='partial');
-        if(row){row.setAttribute('data-guide-availability','unavailable');mutated=true;}}
-      topics.push(...rows.map((row)=>({id:row.getAttribute('data-guide-topic'),availability:row.getAttribute('data-guide-availability')})));
-      body.querySelector(':scope > [data-guide-home]')?.click();}
-    const topicIds=topics.map((topic)=>topic.id),availability=topics.map((topic)=>topic.availability);
-    return {categoryCount:categoryIds.length,topicCount:topics.length,uniqueTopicCount:new Set(topicIds).size,
-      partialCount:availability.filter((value)=>value==='partial').length,
+  const GUIDE_CATEGORY_AUTHORITY = Object.freeze([
+    'getting-around', 'life-compendium', 'breeding-feeding', 'explorer', 'combat',
+    'stardust-progression', 'prime-codex', 'living-universe', 'settings-saving',
+  ]);
+  const GUIDE_TOPIC_AVAILABILITY_AUTHORITY = Object.freeze([
+    ['getting-around', 'zoom', 'partial'], ['getting-around', 'survey', 'partial'],
+    ['getting-around', 'landing', 'partial'], ['getting-around', 'search', 'partial'],
+    ['getting-around', 'codes', 'partial'], ['getting-around', 'charters', 'partial'],
+    ['getting-around', 'atlas', 'partial'], ['getting-around', 'colors', 'unavailable'],
+    ['life-compendium', 'discover', 'partial'], ['life-compendium', 'kingdoms', 'partial'],
+    ['life-compendium', 'rarity', 'partial'], ['life-compendium', 'specimen', 'partial'],
+    ['life-compendium', 'drift', 'unavailable'], ['life-compendium', 'sapience', 'unavailable'],
+    ['breeding-feeding', 'breeding', 'partial'], ['breeding-feeding', 'feeding', 'partial'],
+    ['breeding-feeding', 'injuries', 'partial'], ['breeding-feeding', 'eating', 'unavailable'],
+    ['explorer', 'stats', 'partial'], ['explorer', 'hp', 'partial'],
+    ['explorer', 'rank', 'partial'], ['explorer', 'achievements', 'partial'],
+    ['combat', 'duels', 'unavailable'], ['combat', 'abilities', 'unavailable'],
+    ['combat', 'classes', 'partial'], ['combat', 'conquest', 'partial'],
+    ['combat', 'binder', 'partial'], ['combat', 'guardians', 'partial'],
+    ['stardust-progression', 'stardust', 'partial'], ['stardust-progression', 'harvest', 'unavailable'],
+    ['stardust-progression', 'mining', 'partial'], ['stardust-progression', 'skimming', 'partial'],
+    ['stardust-progression', 'research', 'partial'], ['stardust-progression', 'crafting', 'partial'],
+    ['stardust-progression', 'ascent', 'partial'], ['prime-codex', 'signatures', 'partial'],
+    ['prime-codex', 'regions', 'partial'], ['prime-codex', 'endings', 'partial'],
+    ['living-universe', 'determinism', 'partial'], ['settings-saving', 'settings', 'partial'],
+    ['settings-saving', 'saving', 'partial'],
+  ].map((row) => Object.freeze({ categoryId: row[0], id: row[1], availability: row[2] })));
+  const GUIDE_RELEASE_HISTORY_AUTHORITY = Object.freeze({
+    count: 57,
+    sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
+  });
+  const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
+    count: 73,
+    sha256: '91c6be33eb1f02494f25cc64c26d873fb335352b68952c347eddd6ea4bf799ec',
+  });
+  const assessGuideOrderedAuthority = (rows, authority) => {
+    const values = Array.isArray(rows) ? rows : [];
+    const sha256 = createHash('sha256').update(JSON.stringify(values)).digest('hex');
+    return { ok: values.length === authority.count && sha256 === authority.sha256,
+      count: values.length, sha256, expectedCount: authority.count, expectedSha256: authority.sha256 };
+  };
+  const assessGuideSearchIngress = (search) => ({
+    ok: search?.present === true && search.disabled === false && search.ariaDisabled !== 'true'
+      && Number.isInteger(search.tabIndex) && search.tabIndex >= 0,
+    present:search?.present===true,disabled:search?.disabled??null,
+    ariaDisabled:search?.ariaDisabled??null,tabIndex:search?.tabIndex??null,
+  });
+  const assessGuideCopy = (copy) => {
+    const categories = Array.isArray(copy?.categories) ? copy.categories : [];
+    const topics = Array.isArray(copy?.topics) ? copy.topics : [];
+    const categoryIds = categories.map((row) => row?.id ?? null);
+    const topicIds = topics.map((row) => ({ categoryId: row?.categoryId ?? null, id: row?.id ?? null }));
+    const expectedTopicIds = GUIDE_TOPIC_AVAILABILITY_AUTHORITY
+      .map(({ categoryId, id }) => ({ categoryId, id }));
+    const exactCategories = JSON.stringify(categoryIds) === JSON.stringify(GUIDE_CATEGORY_AUTHORITY)
+      && categories.every((row) => typeof row?.text === 'string' && row.text.trim().length > 0);
+    const exactTopics = JSON.stringify(topicIds) === JSON.stringify(expectedTopicIds)
+      && topics.every((row) => typeof row?.text === 'string' && row.text.trim().length > 0);
+    const allCopy = [...categories.map((row) => row.text), ...topics.map((row) => row.text)].join('\n');
+    const stale = /double[- ]tap|tap twice|travels there instantly/i.test(allCopy);
+    return { ok: exactCategories && exactTopics && !stale, exactCategories, exactTopics, stale,
+      categoryCopyCount:categories.length,topicCopyCount:topics.length };
+  };
+  const guideMenuExpression = `(()=>{const panel=document.getElementById('guidepanel'),
+    body=panel?.querySelector('[data-sel="guide-body"]'),search=panel?.querySelector('#guidesearch'),
+    categories=body?[...body.querySelectorAll(':scope > .guide-category[data-guide-category]')].map((row)=>({
+      id:row.getAttribute('data-guide-category'),text:(row.textContent||'').replace(/\\s+/g,' ').trim()})):[];return {
+    categoryIds:categories.map((row)=>row.id).filter(Boolean),categories,
+    topicCount:body?.querySelectorAll(':scope > [data-sel="guide-topic"][data-guide-topic]').length??0,
+    loading:!!body?.querySelector(':scope > [data-guide-loading]'),alert:body?.querySelector(':scope > [role="alert"]')?.textContent?.trim()||null,
+    panelOpen:!!panel&&panel.style.display!=='none',bodyPresent:!!body,
+    search:{present:search instanceof HTMLInputElement,disabled:search instanceof HTMLInputElement?search.disabled:null,
+      ariaDisabled:search?.getAttribute('aria-disabled')??null,tabIndex:search instanceof HTMLElement?search.tabIndex:null}};})()`;
+  const guideMenuReady = (value) => value?.loading === false && value?.alert === null
+    && value?.panelOpen === true && value?.bodyPresent === true && value.topicCount === 0
+    && JSON.stringify(value.categoryIds) === JSON.stringify(GUIDE_CATEGORY_AUTHORITY)
+    && assessGuideSearchIngress(value.search).ok;
+  const waitGuideMenu = (label) => waitDesktopValue(label, guideMenuExpression, 6000, guideMenuReady);
+  const guideCategoryPublicationExpression = `(()=>{const body=document.querySelector('#guidepanel [data-sel="guide-body"]');return {
+    home:!!body?.querySelector(':scope > [data-guide-home]'),
+    menuCount:body?.querySelectorAll(':scope > .guide-category[data-guide-category]').length??0,
+    rows:body?[...body.querySelectorAll(':scope > [data-sel="guide-topic"][data-guide-topic]')].map((row)=>({
+      id:row.getAttribute('data-guide-topic'),availability:row.getAttribute('data-guide-availability'),
+      title:(row.querySelector('b')?.textContent||'').trim()})):[],
+    loading:!!body?.querySelector(':scope > [data-guide-loading]'),alert:body?.querySelector(':scope > [role="alert"]')?.textContent?.trim()||null};})()`;
+  const guideCategoryPublished = (value) => value?.home === true && value.menuCount === 0
+    && value?.loading === false && value?.alert === null
+    && Array.isArray(value.rows) && value.rows.length > 0;
+  const guideTopicPublicationExpression = `(()=>{const body=document.querySelector('#guidepanel [data-sel="guide-body"]'),
+    article=body?.querySelector(':scope > .guide-topic'),back=body?.querySelector(':scope > [data-guide-category]'),
+    heading=article?.querySelector('[data-guide-heading]')?.textContent?.trim()||'';return {
+      ready:!!article&&!!back,categoryId:back?.getAttribute('data-guide-category')||null,title:heading,
+      text:(article?.textContent||'').replace(/\\s+/g,' ').trim(),
+      loading:!!body?.querySelector(':scope > [data-guide-loading]'),alert:body?.querySelector(':scope > [role="alert"]')?.textContent?.trim()||null};})()`;
+  const collectGuideInventory = async (label) => {
+    const menu = await waitGuideMenu(`${label} menu`);
+    const topics = [];
+    const topicCopy = [];
+    for (const categoryId of menu.categoryIds) {
+      await evalIn(`document.querySelector('#guidepanel [data-sel="guide-body"] > [data-guide-category=${JSON.stringify(categoryId)}]')?.click()`);
+      const publication = await waitDesktopValue(
+        `${label} ${categoryId} publication`, guideCategoryPublicationExpression, 6000, guideCategoryPublished,
+      );
+      topics.push(...publication.rows.map(({ id, availability }) => ({ categoryId, id, availability })));
+      for (const row of publication.rows) {
+        await evalIn(`document.querySelector('#guidepanel [data-sel="guide-body"] > [data-guide-topic=${JSON.stringify(row.id)}]')?.click()`);
+        const topic = await waitDesktopValue(`${label} ${categoryId}/${row.id} topic`,
+          guideTopicPublicationExpression, 6000, (value) => value?.ready === true
+            && value?.loading === false && value?.alert === null && value.categoryId === categoryId
+            && value.title.endsWith(row.title) && value.text.length > 0);
+        topicCopy.push({ categoryId, id: row.id, text: topic.text });
+        await evalIn(`document.querySelector('#guidepanel [data-sel="guide-body"] > [data-guide-category=${JSON.stringify(categoryId)}]')?.click()`);
+        await waitDesktopValue(`${label} ${categoryId}/${row.id} return`,
+          guideCategoryPublicationExpression, 6000, (value) => guideCategoryPublished(value)
+            && JSON.stringify(value.rows) === JSON.stringify(publication.rows));
+      }
+      await evalIn(`document.querySelector('#guidepanel [data-sel="guide-body"] > [data-guide-home]')?.click()`);
+      await waitGuideMenu(`${label} ${categoryId} return`);
+    }
+    return { categoryIds: menu.categoryIds, topics,
+      copy: { categories: menu.categories, topics: topicCopy }, search: menu.search };
+  };
+  const assessGuideInventory = (inventory) => {
+    const topicIds = inventory.topics.map((topic) => topic.id);
+    const availability = inventory.topics.map((topic) => topic.availability);
+    const exactCategories = JSON.stringify(inventory.categoryIds) === JSON.stringify(GUIDE_CATEGORY_AUTHORITY);
+    const exactTopics = JSON.stringify(inventory.topics) === JSON.stringify(GUIDE_TOPIC_AVAILABILITY_AUTHORITY);
+    return { ok: exactCategories && exactTopics, exactCategories, exactTopics,
+      categoryCount:inventory.categoryIds.length,topicCount:inventory.topics.length,
+      uniqueTopicCount:new Set(topicIds).size,partialCount:availability.filter((value)=>value==='partial').length,
       unavailableCount:availability.filter((value)=>value==='unavailable').length,
       availableCount:availability.filter((value)=>value==='available').length,
       invalidAvailabilityCount:availability.filter((value)=>!['available','partial','unavailable'].includes(value)).length,
-      mutated,topicIds};})()`;
-  const guideCheck = `(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel');
-    const categories=panel?[...panel.querySelectorAll('[data-guide-category]')]:[];
-    const builds=[...document.querySelectorAll('[data-sel="guide-build"]')];
-    const text=panel?.textContent||'',inventory=${guideInventoryExpression()};
-    return { open:S.api.state().panelOpen==='guide'&&!!panel&&panel.style.display!=='none',
-      categoryCount:categories.length,categoryIds:categories.map((row)=>row.getAttribute('data-guide-category')),
-      topicCount:inventory.topicCount,uniqueTopicCount:inventory.uniqueTopicCount,
-      partialCount:inventory.partialCount,unavailableCount:inventory.unavailableCount,
-      availableCount:inventory.availableCount,invalidAvailabilityCount:inventory.invalidAvailabilityCount,
-      search:!!panel?.querySelector('#guidesearch'),releases:!!panel?.querySelector('[data-guide-releases]'),
-      buildCount:builds.length,buildInsideGuide:builds.length===1&&!!panel?.contains(builds[0]),
-      buildText:(builds[0]?.textContent||'').trim(),releasePending:S.api.state().releasePending,
-      seen:S.api.state().seenGuide,text,stale:/double[- ]tap|tap twice|travels there instantly/i.test(text) }; })()`;
+      topicIds };
+  };
+  const guideSearchTopic = async (id, label) => {
+    await evalIn(`(()=>{const input=document.getElementById('guidesearch');input.value=${JSON.stringify(id)};
+      input.dispatchEvent(new Event('input',{bubbles:true}));return true;})()`);
+    return waitDesktopValue(`${label} search publication`, `(()=>{const body=document.querySelector('#guidepanel [data-sel="guide-body"]'),
+      row=body?.querySelector(':scope > [data-sel="guide-topic"][data-guide-topic=${JSON.stringify(id)}]');return {
+        ready:!!row&&!body?.querySelector(':scope > .guide-topic'),title:row?.querySelector('b')?.textContent?.trim()||'',
+        ids:body?[...body.querySelectorAll(':scope > [data-sel="guide-topic"][data-guide-topic]')].map((item)=>item.getAttribute('data-guide-topic')):[]};})()`,
+    6000, (value) => value?.ready === true && value.ids.includes(id));
+  };
+  const openGuideTopicAndWait = async (id, label) => {
+    const search = await guideSearchTopic(id, label);
+    await evalIn(`document.querySelector('#guidepanel [data-sel="guide-body"] > [data-guide-topic=${JSON.stringify(id)}]')?.click()`);
+    return waitDesktopValue(`${label} topic publication`, `(()=>{const body=document.querySelector('#guidepanel [data-sel="guide-body"]'),
+      article=body?.querySelector(':scope > .guide-topic'),heading=article?.querySelector('[data-guide-heading]')?.textContent?.trim()||'';
+      return {ready:!!article&&!!body?.querySelector(':scope > [data-guide-category]')&&heading.endsWith(${JSON.stringify(search.title)}),
+        title:heading,status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null};})()`,
+    6000, (value) => value?.ready === true);
+  };
   await evalIn(`(()=>{ const button=document.getElementById('dockguide'); button.focus(); button.click(); return true; })()`);
-  const guide = await evalIn(guideCheck);
-  if (!guide.open || guide.categoryCount !== 9 || new Set(guide.categoryIds).size !== 9
+  await waitGuideMenu('Guide initial publication');
+  const guideInventory = await collectGuideInventory('Guide canonical inventory');
+  const guideInventoryAssessment = assessGuideInventory(guideInventory);
+  const guideCopyAssessment = assessGuideCopy(guideInventory.copy);
+  const guideSearchIngress = assessGuideSearchIngress(guideInventory.search);
+  const guideSurface = await evalIn(`(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),
+    builds=[...document.querySelectorAll('[data-sel="guide-build"]')];return {
+      open:S.api.state().panelOpen==='guide'&&!!panel&&panel.style.display!=='none',
+      releases:!!panel?.querySelector('[data-guide-releases]'),buildCount:builds.length,
+      buildInsideGuide:builds.length===1&&!!panel?.contains(builds[0]),buildText:(builds[0]?.textContent||'').trim(),
+      releasePending:S.api.state().releasePending,seen:S.api.state().seenGuide};})()`);
+  const guide = { ...guideSurface, ...guideInventoryAssessment,
+    copy:guideCopyAssessment,search:guideSearchIngress,categoryIds: guideInventory.categoryIds };
+  if (!guide.open || !guide.ok || guide.categoryCount !== 9 || new Set(guide.categoryIds).size !== 9
     || guide.topicCount !== 41 || guide.uniqueTopicCount !== 41
-    || guide.partialCount !== 26 || guide.unavailableCount !== 15
+    || guide.partialCount !== 34 || guide.unavailableCount !== 7
     || guide.availableCount !== 0 || guide.invalidAvailabilityCount !== 0
-    || !guide.search || !guide.releases || guide.buildCount !== 1 || !guide.buildInsideGuide
+    || !guide.copy.ok || !guide.search.ok || !guide.releases || guide.buildCount !== 1 || !guide.buildInsideGuide
     || !/Celestial Frontier v2\.0 development/i.test(guide.buildText)
-    || guide.releasePending !== null || !guide.seen || guide.stale) {
+    || guide.releasePending !== null || !guide.seen) {
     fails.push('GUIDE canonical category/search/release surface is incomplete: ' + JSON.stringify(guide));
   }
   const shotGuide = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('guide'), Buffer.from(shotGuide.data, 'base64'));
-  const guideCtl = await evalIn(`(()=>{ const row=document.querySelector('#guidepanel [data-guide-category]');
-    const prior=row&&row.getAttribute('data-guide-category'); if(row) row.removeAttribute('data-guide-category');
-    const result=${guideCheck}; if(row) row.setAttribute('data-guide-category',prior); return result; })()`);
-  if (guideCtl.categoryCount !== 8) {
+  const guideCtl = await evalIn(`(()=>{const body=document.querySelector('#guidepanel [data-sel="guide-body"]'),
+    row=body?.querySelector(':scope > [data-guide-category]'),prior=row?.getAttribute('data-guide-category')??null;
+    if(row)row.removeAttribute('data-guide-category');const removed=body?.querySelectorAll(':scope > [data-guide-category]').length??0;
+    if(row&&prior)row.setAttribute('data-guide-category',prior);const restored=body?.querySelectorAll(':scope > [data-guide-category]').length??0;
+    return {removed,restored};})()`);
+  if (guideCtl.removed !== 8 || guideCtl.restored !== 9) {
     fails.push('GUIDE CONTROL FAILED — removing one canonical category stayed green: ' + JSON.stringify(guideCtl));
   }
-  /* Negative control in the other direction: append a known-obsolete gesture
-     claim without changing topic structure. The same checker must flag the
-     stale copy, or its vocabulary guard is only decorative. */
-  const guideStaleCtl = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel');
-    const marker=document.createElement('span'); marker.textContent='double-tap dives'; panel.appendChild(marker);
-    const result=${guideCheck}; marker.remove(); return result; })()`);
-  if (!guideStaleCtl.stale) {
-    fails.push('GUIDE CONTROL FAILED — injected stale double-tap copy stayed green: ' + JSON.stringify(guideStaleCtl));
+  /* Negative control mutates one collected topic body, then runs the same
+     canonical whole-Guide copy assessor used by the product gate. */
+  const staleCopySource = { categories: guideInventory.copy.categories.map((row) => ({ ...row })),
+    topics: guideInventory.copy.topics.map((row) => ({ ...row })) };
+  const staleCopyTarget = staleCopySource.topics.find((row) => row.id === 'zoom');
+  if (staleCopyTarget) staleCopyTarget.text += ' double-tap dives';
+  const guideStaleCtl = { targetFound: !!staleCopyTarget,
+    baseline: assessGuideCopy(guideInventory.copy),mutated: assessGuideCopy(staleCopySource),
+    restored: assessGuideCopy(guideInventory.copy) };
+  if (!guideStaleCtl.targetFound || !guideStaleCtl.baseline.ok || guideStaleCtl.mutated.ok
+    || !guideStaleCtl.mutated.stale || !guideStaleCtl.restored.ok) {
+    fails.push('GUIDE CONTROL FAILED — stale copy in a collected topic body stayed green or failed exact restoration: '
+      + JSON.stringify(guideStaleCtl));
   }
-  const guideAvailabilityCtl = await evalIn(`(()=>{const mutated=${guideInventoryExpression('partial-to-unavailable')},
-    restored=${guideCheck};return {mutated,restored};})()`);
-  if (guideAvailabilityCtl.mutated?.mutated !== true
-    || guideAvailabilityCtl.mutated?.topicCount !== 41
-    || guideAvailabilityCtl.mutated?.uniqueTopicCount !== 41
-    || guideAvailabilityCtl.mutated?.partialCount !== 25
-    || guideAvailabilityCtl.mutated?.unavailableCount !== 16
-    || guideAvailabilityCtl.mutated?.availableCount !== 0
-    || guideAvailabilityCtl.mutated?.invalidAvailabilityCount !== 0
-    || guideAvailabilityCtl.restored?.topicCount !== 41
-    || guideAvailabilityCtl.restored?.uniqueTopicCount !== 41
-    || guideAvailabilityCtl.restored?.partialCount !== 26
-    || guideAvailabilityCtl.restored?.unavailableCount !== 15
-    || guideAvailabilityCtl.restored?.availableCount !== 0
-    || guideAvailabilityCtl.restored?.invalidAvailabilityCount !== 0) {
-    fails.push('GUIDE INVENTORY CONTROL FAILED — exact 41-topic 26-partial/15-unavailable capability inventory did not reject one status mutation and restore: '
+  const guideSearchIngressCtlRaw = await evalIn(`(()=>{const input=document.querySelector('#guidepanel #guidesearch');
+    if(!(input instanceof HTMLInputElement))return {error:'missing Guide search',before:${guideMenuExpression},disabled:null,restored:null};
+    const before=${guideMenuExpression};input.disabled=true;const disabled=${guideMenuExpression};input.disabled=false;
+    const restored=${guideMenuExpression};return {before,disabled,restored};})()`);
+  const guideSearchIngressCtl = { error:guideSearchIngressCtlRaw.error??null,
+    before:assessGuideSearchIngress(guideSearchIngressCtlRaw.before?.search),
+    disabled:assessGuideSearchIngress(guideSearchIngressCtlRaw.disabled?.search),
+    restored:assessGuideSearchIngress(guideSearchIngressCtlRaw.restored?.search) };
+  if (guideSearchIngressCtl.error !== null || !guideSearchIngressCtl.before.ok
+    || guideSearchIngressCtl.disabled.ok || guideSearchIngressCtl.disabled.disabled !== true
+    || !guideSearchIngressCtl.restored.ok) {
+    fails.push('GUIDE SEARCH CONTROL FAILED — a disabled player ingress stayed reachable or failed exact restoration: '
+      + JSON.stringify(guideSearchIngressCtl));
+  }
+  const mutateGuideInventory = (mutate) => {
+    const copy = { categoryIds: [...guideInventory.categoryIds], topics: guideInventory.topics.map((row) => ({ ...row })) };
+    mutate(copy); return assessGuideInventory(copy);
+  };
+  const partialIndex = guideInventory.topics.findIndex((row) => row.availability === 'partial');
+  const unavailableIndex = guideInventory.topics.findIndex((row) => row.availability === 'unavailable');
+  const guideAvailabilityCtl = {
+    missingCategory: mutateGuideInventory((copy) => { const removed = copy.categoryIds.shift(); copy.topics = copy.topics.filter((row) => row.categoryId !== removed); }),
+    omittedWait: { publicationReady: guideCategoryPublished({ home: false, menuCount: 9, rows: [] }),
+      assessment: assessGuideInventory({ categoryIds: [...GUIDE_CATEGORY_AUTHORITY], topics: [] }) },
+    partialToUnavailable: mutateGuideInventory((copy) => {
+      if (copy.topics[partialIndex]) copy.topics[partialIndex].availability = 'unavailable';
+    }),
+    unavailableToPartial: mutateGuideInventory((copy) => {
+      if (copy.topics[unavailableIndex]) copy.topics[unavailableIndex].availability = 'partial';
+    }),
+    constantCountSwap: mutateGuideInventory((copy) => {
+      if (copy.topics[partialIndex] && copy.topics[unavailableIndex]) {
+        [copy.topics[partialIndex].availability, copy.topics[unavailableIndex].availability]
+          = [copy.topics[unavailableIndex].availability, copy.topics[partialIndex].availability];
+      }
+    }),
+    staleCategory: mutateGuideInventory((copy) => {
+      if (copy.topics[0]) copy.topics[0].categoryId = 'settings-saving';
+    }),
+    restored: assessGuideInventory(guideInventory),
+  };
+  if (guideAvailabilityCtl.missingCategory.ok || guideAvailabilityCtl.omittedWait.publicationReady
+    || guideAvailabilityCtl.omittedWait.assessment.ok || guideAvailabilityCtl.partialToUnavailable.ok
+    || guideAvailabilityCtl.partialToUnavailable.partialCount !== 33
+    || guideAvailabilityCtl.partialToUnavailable.unavailableCount !== 8
+    || guideAvailabilityCtl.unavailableToPartial.ok || guideAvailabilityCtl.unavailableToPartial.partialCount !== 35
+    || guideAvailabilityCtl.unavailableToPartial.unavailableCount !== 6
+    || guideAvailabilityCtl.constantCountSwap.ok || guideAvailabilityCtl.constantCountSwap.partialCount !== 34
+    || guideAvailabilityCtl.constantCountSwap.unavailableCount !== 7 || guideAvailabilityCtl.staleCategory.ok
+    || !guideAvailabilityCtl.restored.ok || guideAvailabilityCtl.restored.topicCount !== 41
+    || guideAvailabilityCtl.restored.partialCount !== 34 || guideAvailabilityCtl.restored.unavailableCount !== 7) {
+    fails.push('GUIDE INVENTORY CONTROL FAILED — exact 41-topic 34-partial/7-unavailable identity authority did not reject missing, unsynchronized, both-direction, constant-count-swap, or stale-category mutations and restore: '
       + JSON.stringify(guideAvailabilityCtl));
   }
-  const guideSearch = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='landing';
-    input.dispatchEvent(new Event('input',{bubbles:true})); const rows=[...document.querySelectorAll('#guidepanel [data-sel=guide-topic]')];
-    return {ids:rows.map((r)=>r.getAttribute('data-guide-topic')),availability:rows.map((r)=>r.getAttribute('data-guide-availability'))}; })()`);
+  const guideSearch = await guideSearchTopic('landing', 'Guide stable landing');
   if (!guideSearch.ids.includes('landing')) fails.push('GUIDE search did not resolve the stable landing topic: ' + JSON.stringify(guideSearch));
   /* Inline Guide cross-links were spans in the mature literal. V2 must
      upgrade them to native keyboard actions, not merely make pointer
@@ -5974,29 +6150,28 @@ try {
     return {semantic:link?.tagName==='BUTTON'&&link.tabIndex>=0&&r.width>=44&&r.height>=44&&(hit===link||link?.contains(hit)),
       tag:link?.tagName||null,tabIndex:link?.tabIndex??null,width:r?.width||0,height:r?.height||0,hit:hit?.tagName||null,
       focused:document.activeElement===link}; })()`;
-  await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='zoom';
-    input.dispatchEvent(new Event('input',{bubbles:true})); document.querySelector('[data-guide-topic="zoom"]')?.click();
-    document.querySelector('#guidepanel [data-gt="landing"]')?.focus(); return true; })()`);
+  await openGuideTopicAndWait('zoom', 'Guide keyboard-link source');
+  await evalIn(`(()=>{document.querySelector('#guidepanel [data-gt="landing"]')?.focus();return true;})()`);
   const guideLink = await evalIn(guideLinkCheck);
   if (!guideLink.semantic || !guideLink.focused) {
     fails.push('GUIDE KEYBOARD LINK: inline topic cross-link is not a focused native action: ' + JSON.stringify(guideLink));
   }
   await keyIn('Enter', 'Enter');
-  const guideLinkOutcome = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'); return {
-    title:panel?.querySelector('.guide-topic h4')?.textContent||'',status:panel?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null}; })()`);
+  const guideLinkOutcome = await waitDesktopValue('Guide keyboard-link Landing publication', `(()=>{const panel=document.getElementById('guidepanel'),
+    title=panel?.querySelector('.guide-topic h4')?.textContent||'',status=panel?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null;
+    return {ready:/Landing/.test(title)&&status==='partial',title,status};})()`, 6000, (value) => value?.ready === true);
   if (!/Landing/.test(guideLinkOutcome.title) || guideLinkOutcome.status !== 'partial') {
     fails.push('GUIDE KEYBOARD LINK: Enter did not open the real Landing topic: ' + JSON.stringify(guideLinkOutcome));
   }
-  const guideLinkCtl = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='zoom';
-    input.dispatchEvent(new Event('input',{bubbles:true})); document.querySelector('[data-guide-topic="zoom"]')?.click();
-    const link=document.querySelector('#guidepanel [data-gt="landing"]'); if(link){ const old=document.createElement('span');
+  await openGuideTopicAndWait('zoom', 'Guide keyboard-link negative source');
+  const guideLinkCtl = await evalIn(`(()=>{const link=document.querySelector('#guidepanel [data-gt="landing"]'); if(link){ const old=document.createElement('span');
       old.dataset.gt='landing'; old.textContent=link.textContent; link.replaceWith(old); } return ${guideLinkCheck}; })()`);
   if (guideLinkCtl.semantic) {
     fails.push('GUIDE KEYBOARD LINK CONTROL FAILED — injected pointer-only span stayed semantic: ' + JSON.stringify(guideLinkCtl));
   }
-  const breedingGuideBoundary = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='breeding';
-    input.dispatchEvent(new Event('input',{bubbles:true})); const row=document.querySelector('[data-guide-topic="breeding"]');
-    row?.click(); const p=document.getElementById('guidepanel'); return {status:p?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status'),text:p?.textContent||''}; })()`);
+  await openGuideTopicAndWait('breeding', 'Guide breeding boundary');
+  const breedingGuideBoundary = await evalIn(`(()=>{const p=document.getElementById('guidepanel');return {
+    status:p?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status'),text:p?.textContent||''};})()`);
   if (breedingGuideBoundary.status !== 'partial'
     || !/Both parents remain yours/.test(breedingGuideBoundary.text)
     || !/8 active-play minutes/.test(breedingGuideBoundary.text)
@@ -6006,13 +6181,14 @@ try {
     fails.push('GUIDE capability boundary did not expose narrow nonlethal Breed without legacy parent consumption: '
       + JSON.stringify(breedingGuideBoundary));
   }
-  const hpGuide = await evalIn(`(()=>{ const input=document.getElementById('guidesearch'); input.value='HP';
-    input.dispatchEvent(new Event('input',{bubbles:true})); document.querySelector('[data-guide-topic="hp"]')?.click();
-    const p=document.getElementById('guidepanel');return {status:p?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status'),text:p?.textContent||''};})()`);
+  await openGuideTopicAndWait('hp', 'Guide HP boundary');
+  const hpGuide = await evalIn(`(()=>{const p=document.getElementById('guidepanel');return {
+    status:p?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status'),text:p?.textContent||''};})()`);
   if (hpGuide.status !== 'partial' || !/costs exactly 3 HP/i.test(hpGuide.text)
-    || !/HP is 4 or lower/i.test(hpGuide.text) || !/only current HP writer/i.test(hpGuide.text)
+    || !/HP is 4 or lower/i.test(hpGuide.text) || !/1 HP mercy floor/i.test(hpGuide.text)
+    || !/On the Brink/i.test(hpGuide.text)
     || /read-only expedition fact|Not yet available in v2/.test(hpGuide.text)) {
-    fails.push('GUIDE HP boundary did not render the live remnant-skim writer honestly: ' + JSON.stringify(hpGuide));
+    fails.push('GUIDE HP boundary did not render the live skim/conquest writers honestly: ' + JSON.stringify(hpGuide));
   }
   const arc3GuideSpecs = [
     { id: 'survey', title: 'Survey cards', missingAnchor: 'selection is navigation and inspection', required: [
@@ -6036,17 +6212,24 @@ try {
       'unguarded remnant costs exactly 3 HP', 'HP of 4 or lower blocks the unsafe attempt',
       'does not bank a mining Charter goal', 'no wall-clock recharge',
     ], contradictions: ['A remnant skim can never harm HP, and corona passes are unlimited.'] },
-    { id: 'stardust', title: 'Stardust', missingAnchor: 'No other current v2 action earns Stardust', required: [
+    { id: 'stardust', title: 'Stardust', missingAnchor: 'Each supported Starter Charter pays its established 10–25 Stardust once', required: [
       'preserves its imported/current Stardust', 'Deep Scanners purchase or eligible fixed Fabricator recipe spends its stated Stardust',
       'same durable transaction as the result',
       'first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus',
       'same durable transaction as its page and ownership', 'result shows the exact amount',
-      'miss and every later-world or later-cycle repeat earn none', 'No other current v2 action earns Stardust',
-      'Charter rewards, passive gain', 'remain unavailable',
+      'miss and every later-world or later-cycle repeat earn none',
+      'Each supported Starter Charter pays its established 10–25 Stardust once',
+      'completed unclaimed Binder Set pays its established 25–150 Stardust once',
+      'Both paths update current and lifetime-earned totals in the same receipt',
+      'verified conquest win awards 8 + five times world tier Stardust',
+      'plus 40 against an Apex Guardian or Elemental Titan',
+      'Weekly Charters, passive gain, and the rest of the mature economy remain unavailable',
     ], contradictions: ['Survey earns Stardust on every world.',
       'Mine earns Stardust on every world.', 'Skim earns Stardust on every star.',
-      'A later-cycle repeat earns a new Rare Find reward.'] },
-    { id: 'discover', title: 'Discovering life', missingAnchor: 'choose uniformly from every eligible species for that action in the full biosphere', required: [
+      'A later-cycle repeat earns a new Rare Find reward.',
+      'Weekly Charters now pay Stardust.', 'Passive Stardust gain is now live.',
+      'Starter Charter rewards remain unavailable.', 'Binder Set claims do not pay Stardust.'] },
+    { id: 'discover', title: 'Discovering life', missingAnchor: 'selector are available only from a real fauna Compendium detail', required: [
       'Landing on a living world reveals its biosphere roster', 'does not add a Compendium page',
       'at most eight rows as a preview', 'choose uniformly from every eligible species for that action in the full biosphere',
       'including species outside that preview', 'no species row is a target',
@@ -6066,8 +6249,10 @@ try {
       'A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing',
       'v2’s current replacement for v1.8.9’s separate Discover Life action',
       'Survey Records and accepted or weekly bioscan Charters remain unavailable',
-      'Narrow feeding, nonlethal companion Breeding, and exact-instance companion renaming are available only from a real fauna Compendium detail',
-      'Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable',
+      'Narrow feeding, nonlethal companion', 'role-only Field Scout selector',
+      'selector are available only from a real fauna Compendium detail',
+      'eligible fauna or the explorer can also challenge that world’s strongest defender through Conquest',
+      'Field Scout interception of hostile injury, fresh-species Scout XP, dispatch, missions, care, bond, passive evolution, and friendly duels remain unavailable',
       'feeding does not yet discover tastes or flavours, grow stats or Power, heal injuries, apply poison, build a bond, or let the explorer eat',
     ], contradictions: [
       'The player chooses a visible species row to target.', 'Sample creates a living companion.',
@@ -6082,6 +6267,8 @@ try {
       'A stale tab still banks one life-discovery tick.',
       'A failed write advances the Charter bioscan.',
       'The separate Discover Life action is now available.',
+      'Field Scout now intercepts hostile injury.',
+      'Surface conquest has not been connected in this build.',
     ] },
     { id: 'research', title: 'Research & ships', missingAnchor: 'Research Bench lists exactly six canonical rows', required: [
       'Engineering & Shipyard', 'Research Bench lists exactly six canonical rows', 'Deep Scanners is the only current purchase',
@@ -6120,11 +6307,11 @@ try {
       'Authored affixes/drawbacks are now available.',
       'Upgrades are now available.', 'Item upgrades are now available.', 'Sockets are now available.', 'Vendors are now available.',
     ] },
-    { id: 'achievements', title: 'Achievements', missingAnchor: 'Arc 3 counters are not yet listed on the Records board', required: [
+    { id: 'achievements', title: 'Achievements', missingAnchor: 'those Arc 3 counters are not yet listed as separate Records totals', required: [
       'Records board preserves and displays imported exploration totals, Stardust earned, and Journal entries',
       'First landfalls visibly update the worlds-landed total',
       'Mine, Skim, and fixed Fabricator settlements also preserve their compatible expedition counters',
-      'Arc 3 counters are not yet listed on the Records board', 'live Journal writing is not connected',
+      'those Arc 3 counters are not yet listed as separate Records totals', 'live Journal writing is not connected',
     ], contradictions: [
       'The Records board now displays the mining counter.', 'The Records board now lists the skimming total.',
       'The visible Records rows now include the Fabricator counter.',
@@ -6135,12 +6322,13 @@ try {
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
     required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),
     contradictory=/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)|current Survey card does not yet (?:render|show|paint)[^.!?]{0,80}(?:orbit|mineral)|(?:renders|shows|paints) every orbital mineral|orbital Survey (?:also |now )?(?:shows|reveals|includes|names)[^.!?]{0,96}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|(?:Mine|Skim|Survey)[^.!?]{0,80}earns? Stardust|(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)|(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)|(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)|miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)|(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)|Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)|(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)|(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)|(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)|(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)|\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)|(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)|(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)|All six research rows can be purchased|Research banks Charter fabrication credit|(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)|Pureforged[^.!?]{0,80}(?:rerolls?|changes?)[^.!?]{0,64}(?:reload|reopen)|authored (?:natural )?affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
-    return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
-      title,status,missing,contradictory,text};})()`;
+    const policyContradictory=/Weekly Charters?[^.!?]{0,64}(?:pay|earn|award)[^.!?]{0,32}Stardust|passive Stardust gain[^.!?]{0,32}(?:live|available)|Starter Charter rewards?[^.!?]{0,32}(?:remain|are) unavailable|Binder Set claims?[^.!?]{0,32}(?:do not|never) pay Stardust|Field Scout[^.!?]{0,64}(?:intercepts?|redirects?|takes) (?:hostile )?(?:injury|damage|hits?)|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i.test(text),
+      anyContradictory=contradictory||policyContradictory;
+    return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!anyContradictory,
+      title,status,missing,contradictory:anyContradictory,text};})()`;
   for (const spec of arc3GuideSpecs) {
-    const rendered = await evalIn(`(()=>{const input=document.getElementById('guidesearch');input.value=${JSON.stringify(spec.id)};
-      input.dispatchEvent(new Event('input',{bubbles:true}));document.querySelector('[data-guide-topic=${JSON.stringify(spec.id)}]')?.click();
-      return ${renderedArc3GuideCheck(spec)};})()`);
+    await openGuideTopicAndWait(spec.id, `Guide Arc 3 ${spec.id}`);
+    const rendered = await evalIn(renderedArc3GuideCheck(spec));
     const control = await evalIn(`(()=>{const article=document.querySelector('#guidepanel .guide-topic'),marker=document.createElement('p'),
       walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,anchor=${JSON.stringify(spec.missingAnchor)};
       let textNode=null,node=null;while(walker&&(node=walker.nextNode())){if((node.nodeValue||'').includes(anchor)){textNode=node;break;}}
@@ -6171,14 +6359,15 @@ try {
       'successful first Planetside capture can add one page',
       'Tame also adds an owned fauna creature', 'Scavenge and Sample add specimen lots',
       'Later-world or later-cycle successes add another creature or lot without duplicating the page',
-      'real fauna detail alone exposes the narrow Feed, nonlethal Breed, and exact-instance Rename actions',
-      'scouting, dueling, missions, and every broader husbandry outcome remain unavailable',
+      'real fauna detail alone exposes narrow exact-instance Feed, Breed, Rename, Listen, and Field Scout actions',
+      'same owned fauna can become eligible conquest champions',
+      'Scout interception, dispatch, missions, care, bond, and broader husbandry remain unavailable',
     ] },
     { id: 'specimen', title: 'Reading a specimen card', required: [
       'exact 440px portrait', 'same complete-genome identity as its exact 132px list thumbnail',
       '440px image is reserved for this detail rather than the list or Planetside',
       'Back returns to the saved list position and restores focus to the same logical row',
-      'Close returns focus to the exact Compendium opener', 'Back and Close both remain available around feeding, breeding, and renaming',
+      'Close returns focus to the exact Compendium opener', 'Back and Close both remain available around feeding, breeding, renaming, and Field Scout selection',
       'Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row',
       'Tame hit adds one owned fauna creature',
       'Scavenge or Sample adds one specimen lot and never a living companion',
@@ -6192,7 +6381,11 @@ try {
       'commit changes only that exact companion’s nickname', 'keeps the old name visible while pending',
       'one immutable receipt and one compare-and-swap with no retry or optimistic publication',
       'requires reload, and cannot rename twice',
-      'Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable',
+      'Field Scout chooses one exact owned companion of this fauna species from bounded 24-row pages',
+      'Assigned, recovering, and injured companions remain eligible because this changes only a role',
+      'choose another companion to switch Scouts, or choose the current Scout to Stand down',
+      'One exact-five compare-and-swap changes only the Scout identity, with no RNG, retry, or optimistic publication',
+      'hostile-injury interception, fresh-species Scout XP, dispatch, missions, and friendly duels remain unavailable',
     ] },
     { id: 'feeding', title: 'Feeding beasts', required: [
       'real fauna Compendium detail',
@@ -6208,8 +6401,9 @@ try {
       'one deterministic synthesized acknowledgement after that status appears',
       'Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent',
       'Back and Close remain available',
-      'tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable',
-      'Rename is also separate and changes only one selected exact companion’s nickname',
+      'tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, friendly duels, and missions remain unavailable',
+      'Rename changes only one selected exact companion’s nickname',
+      'Field Scout separately changes only the exact role and does not redirect injury or earn Scout XP yet',
     ] },
     { id: 'breeding', title: 'Breeding', required: [
       'real fauna Compendium detail', 'one exact owned companion of that detail’s species as the primary parent',
@@ -6223,8 +6417,8 @@ try {
       'failure creates no child', '2 active-play minutes of Recovery',
       'Recovery blocks Breed, combat, and dispatch', 'Closing the game or moving the wall clock does not advance it',
       'proves both possible complete save successors before its one outcome draw',
-      'one receipt-bearing compare-and-swap with no retry and no optimistic child or Recovery',
-      'refusal, stale result, or failed write draws nothing and adds nothing',
+      'one receipt-bearing compare-and-swap with no retry and no optimistic child, XP, pair claim, or Recovery',
+      'refusal, stale result, overflow, or failed write draws nothing and adds nothing',
       'requires reload and cannot breed twice', 'Back and Close remain available around the action',
       'successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save',
       'failed pairing, refusal, stale result, or failed write banks no Charter credit',
@@ -6234,7 +6428,7 @@ try {
   const renderedCompendiumGuideCheck = (spec) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
     text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
-    required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),
+    required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),unnegated=${hasUnnegatedSentenceClaim},
     contradictory=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(text)
       ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(text)
       ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(text)
@@ -6247,13 +6441,16 @@ try {
       ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
       ||/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(text)
       ||/(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i.test(text)
-      ||/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries|(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?)\s+(?!no(?:thing)?\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(text)
+      ||/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries|(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(text)
       ||/Exhibition companions may still be renamed|Rename changes the selected companion genome|unchanged name consumes one receipt|Rename automatically retries|stale rename changes the nickname/i.test(text);
-    return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
-      title,status,missing,contradictory,text};})()`;
-  const renderCompendiumGuideTopic = async (spec) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
-    input.value=${JSON.stringify(spec.id)};input.dispatchEvent(new Event('input',{bubbles:true}));
-    document.querySelector('[data-guide-topic=${JSON.stringify(spec.id)}]')?.click();return ${renderedCompendiumGuideCheck(spec)};})()`);
+    const scoutContradictory=unnegated(text,/Field Scout[^.!?]{0,64}(?:intercepts?|redirects?|takes) (?:hostile )?(?:injury|damage|hits?)|Field Scouts?[^.!?]{0,64}earns? \\+?2 XP|Field Scout[^.!?]{0,64}(?:dispatches?|runs missions?)|Field Scout[^.!?]{0,64}(?:automatically )?retries|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i),
+      anyContradictory=contradictory||scoutContradictory;
+    return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!anyContradictory,
+      title,status,missing,contradictory:anyContradictory,text};})()`;
+  const renderCompendiumGuideTopic = async (spec) => {
+    await openGuideTopicAndWait(spec.id, `Guide Compendium ${spec.id}`);
+    return evalIn(renderedCompendiumGuideCheck(spec));
+  };
   const kingdomsGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[0]);
   const kingdomsGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),paragraph=article?.querySelector('p'),
     captureParagraph=[...(article?.querySelectorAll('p')??[])].find((node)=>(node.textContent||'').includes('successful first Planetside capture can add one page')),
@@ -6343,38 +6540,44 @@ try {
       'explicit Listen action on a real owned-fauna Compendium detail',
       'exact current identity and accessible status counterpart agree',
       'Compendium list mounting, focus, filtering, and navigation never play a call',
-      'Listen to biosphere', 'one generic distant living-biosphere signal',
-      'exact current Planetside biosphere lead is visible',
-      'reveals no species, spends no Yield, awards nothing, and writes no save',
+      'Listen to biosphere', 'same generic distant living-biosphere signal',
+      'exact current generic biosphere lead is visible',
+      'neither reveals a species, spends Yield, awards anything, or writes the save',
       'Sound Off stops every path',
-      'Creature voices Off stops creature expressions but not the generic biosphere ambience',
-      'Other creature actions, authored ambience/music, and combat sound remain unavailable',
+      'Creature voices Off stops creature expressions but not the generic biosphere ambience or registered post-settlement Combat Chronicle cues',
+      'Chronicle sound includes the already-modelled initiative, dodge, stun, impact/critical/ability, burn, regeneration, defeat, resolution, and Guardian or Titan motifs',
+      'Skip leaves the remaining transcript silent',
+      'Authored ambience, music, recorded assets, and other creature actions remain unavailable',
     ] },
     { id: 'settings', title: 'Settings', missingAnchor: 'Creature voices governs the verified Tame, committed Feed, and explicit owned-fauna Listen expressions', required: [
       'Creature voices governs the verified Tame, committed Feed, and explicit owned-fauna Listen expressions',
-      'Sound governs all audio, including the generic Planetside biosphere signal',
-      'Each expression waits for its own current accessible status counterpart',
-      'Turning Creature voices or master Sound off stops its owned audio immediately',
-      'turning it back on never replays an earlier result',
+      'Sound governs all audio, including the generic Planetside biosphere signal and every registered post-settlement Combat Chronicle cue',
+      'combat deliberately ignores Creature voices',
+      'Each expression or combat cue waits for its own current accessible status or Chronicle counterpart',
+      'Turning master Sound off stops every owned audio path immediately',
+      'Creature voices Off stops creature expressions only',
+      'Turning either setting back on never replays an earlier result',
     ] },
   ];
- const renderedAudioGuideCheck = (spec) => `(()=>{const article=document.querySelector('#guidepanel .guide-topic'),
+  const renderedAudioGuideCheck = (spec) => `(()=>{const article=document.querySelector('#guidepanel .guide-topic'),
    text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
    status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
     required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),unnegated=${hasUnnegatedSentenceClaim},
     contradictory=unnegated(text,/(?:Compendium list|browsing|filtering|focus|navigation)[^.!?]{0,96}auto[- ]?plays?(?:[^.!?]{0,48})(?:call|voice|expression)/i)
-      ||unnegated(text,/(?:Listen to biosphere|biosphere signal)[^.!?]{0,96}(?:reveals?|names?)[^.!?]{0,48}(?:hidden )?species/i)
-      ||unnegated(text,/(?:Listen to biosphere|biosphere signal)[^.!?]{0,96}(?:spends?|costs?)[^.!?]{0,32}Yield/i)
+      ||unnegated(text,/(?:Listen to biosphere|biosphere signal)(?![^.!?]{0,96}\\bneither\\b)[^.!?]{0,96}(?:reveals?|names?)[^.!?]{0,48}(?:hidden )?species/i)
+      ||unnegated(text,/(?:Listen to biosphere|biosphere signal)(?![^.!?]{0,96}\\bneither\\b)[^.!?]{0,96}(?:spends?|costs?)[^.!?]{0,32}Yield/i)
       ||unnegated(text,/(?:Listen to biosphere|biosphere signal)[^.!?]{0,96}(?:grants?|awards?)[^.!?]{0,48}(?:discovery|reward)/i)
       ||unnegated(text,/(?:Listen to biosphere|biosphere signal)[^.!?]{0,96}(?:writes?|changes?)[^.!?]{0,32}(?:the )?save/i)
       ||unnegated(text,/(?:Listen to biosphere|biosphere signal)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i)
       ||unnegated(text,/Creature voices Off[^.!?]{0,96}(?:stops?|silences?)[^.!?]{0,64}(?:generic )?(?:biosphere|world) (?:ambience|signal)/i)
-      ||unnegated(text,/Sound Off[^.!?]{0,96}(?:still permits?|allows?|leaves?)[^.!?]{0,64}(?:call|voice|ambience|signal)/i);
+      ||unnegated(text,/Sound Off[^.!?]{0,96}(?:still permits?|allows?|leaves?)[^.!?]{0,64}(?:call|voice|ambience|signal)/i)
+      ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i);
     return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
       title,status,missing,contradictory,text};})()`;
-  const renderAudioGuideTopic = async (spec) => evalIn(`(()=>{const input=document.getElementById('guidesearch');
-    input.value=${JSON.stringify(spec.id)};input.dispatchEvent(new Event('input',{bubbles:true}));
-    document.querySelector('[data-guide-topic=${JSON.stringify(spec.id)}]')?.click();return ${renderedAudioGuideCheck(spec)};})()`);
+  const renderAudioGuideTopic = async (spec) => {
+    await openGuideTopicAndWait(spec.id, `Guide audio ${spec.id}`);
+    return evalIn(renderedAudioGuideCheck(spec));
+  };
   const audioGuideRows = [];
   for (const spec of audioGuideSpecs) {
     const rendered = await renderAudioGuideTopic(spec);
@@ -6387,7 +6590,8 @@ try {
         'Listen to biosphere reveals a hidden species and spends 1 Yield.',
         'The biosphere signal grants a discovery reward and changes the save.',
         'Creature voices Off silences the generic biosphere ambience.',
-        'Sound Off still permits the owned creature call.']){
+        'Sound Off still permits the owned creature call.',
+        'Combat sound remains future work.']){
         marker.textContent=copy;article?.appendChild(marker);contradictions.push({copy,result:${renderedAudioGuideCheck(spec)}});marker.remove();}
       const restored=${renderedAudioGuideCheck(spec)};return {nodeFound:!!node,missing,contradictions,restored};})()`);
     audioGuideRows.push({ id: spec.id, anchor: spec.missingAnchor, rendered, controls });
@@ -6395,7 +6599,7 @@ try {
   if (audioGuideRows.length !== 2 || audioGuideRows.some((row) => !row.rendered?.ok
     || !row.controls?.nodeFound || row.controls?.missing?.ok
     || !row.controls?.missing?.missing?.includes(row.anchor)
-    || row.controls?.contradictions?.length !== 5
+    || row.controls?.contradictions?.length !== 6
     || row.controls.contradictions.some((control) => control.result?.ok || !control.result?.contradictory)
     || !row.controls?.restored?.ok)) {
     fails.push('GUIDE AUDIO OWNERSHIP CONTROL FAILED — exact-companion/world Listen truth or its missing/contradictory controls failed: '
@@ -6409,17 +6613,22 @@ try {
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null;
     const unnegated=${hasUnnegatedSentenceClaim};
     const required=[/first landfalls/i,/successful Mine actions/i,/successful fixed Fabricator outputs/i,
-      /(?:Each|One) Mine press banks one mining-goal tick/i,/Research and Skim (?:do not counterfeit mining or fabrication credit|bank neither)/i,
-      /(?:Fabrication banks only the exact matching|recipes bank only their matching fabrication goals)/i,
-      /Chapter 1 (?:can now be completed|is now completable)/i,/Jump Drive/i,/Long-Range Array/i,/Intergalactic Drive/i,
-      /canonical progress and owned reach/i,/(?:invents? no|without invented) goals?/i,
+      /(?:Each|One) Mine press banks one mining-goal tick/i,/Research and Skim (?:do not counterfeit (?:mining or fabrication credit|any of them)|bank neither)/i,
+      /(?:Fabrication banks only the exact matching|(?:recipes|outputs) bank only their matching fabrication goals)/i,
+      /(?:Chapter 1 (?:can now be completed|is now completable)|successful action may reconcile consecutive imported chapters)/i,/Jump Drive/i,/Long-Range Array/i,/Intergalactic Drive/i,
+      /canonical progress and owned reach/i,/(?:invents? no|without invented) goals?|chapter progress alone never mints one/i,
       /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i,
       /A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing/i,
       /v2’s current replacement for v1[.]8[.]9’s separate Discover Life action/i,
       /Survey Records and accepted or weekly bioscan Charters remain unavailable/i,
       /One successful Breed banks Breed a hybrid bloodline in the same offspring save/i,
       /failed pairing, refusal, stale tab, or failed write banks no breeding credit/i,
-      /Conquest goals stay hidden until their Charter writer exists/i,/Saved Prime Signatures separately/i],
+      /first verified conquest banks Chapter 2’s conquest goal/i,
+      /starter Conquer a world Charter \\(\\s*st-conq\\s*\\)[^.!?]{0,240}(?:removes it from accepted work|same verified conquest)/i,
+      /25 Stardust/i,/accepted weekly conquest \\(\\s*wk-conq\\s*\\) refuses before combat/i,
+      /Discover life remains visible but unavailable[^.!?]{0,160}never borrows capture or Survey credit/i,
+      /Weekly rows likewise remain protected until wall-week, slate, acceptance, and rollover authority are complete/i,
+      /Saved Prime Signatures separately/i],
       missing=required.map((pattern)=>pattern.source).filter((_,index)=>!required[index].test(text)),
       stale=/only Charter outcome this slice writes|only new Charter goal progress|requires (?:a )?(?:real )?(?:newly )?banked landfall|only after a newly changed/i.test(text),
       contradictory=unnegated(text,/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i)
@@ -6429,12 +6638,15 @@ try {
       ||/\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(text)
       ||/(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)/i.test(text)
       ||/(?:failed pairing|refusal|stale (?:tab|result)|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(text)
-      ||/Conquest goals?[^.!?]{0,80}(?:is|are) (?:now )?(?:visible|available|live)/i.test(text);
+      ||/Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)/i.test(text)
+      ||/Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i.test(text)
+      ||/accepted weekly conquest[^.!?]{0,96}(?:completes?|pays?|awards?)/i.test(text);
     return {ok:title.includes(${JSON.stringify(expectedTitle)})&&status==='partial'&&missing.length===0&&!stale&&!contradictory,
       title,status,missing,stale,contradictory,text};})()`;
-  const renderCharterGuideTopic = async (topic, query, expectedTitle) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
-    input.value=${JSON.stringify(query)};input.dispatchEvent(new Event('input',{bubbles:true}));
-    document.querySelector('[data-guide-topic=${JSON.stringify(topic)}]')?.click();return ${renderedCharterGuideCheck(expectedTitle)};})()`);
+  const renderCharterGuideTopic = async (topic, _query, expectedTitle) => {
+    await openGuideTopicAndWait(topic, `Guide Charter ${topic}`);
+    return evalIn(renderedCharterGuideCheck(expectedTitle));
+  };
   const chartersGuide = await renderCharterGuideTopic('charters', 'charters', 'Expedition Charters');
   const ascentGuideIdentityCtl = await evalIn(renderedCharterGuideCheck('Chapters'));
   if (ascentGuideIdentityCtl.ok || !/Expedition Charters/.test(ascentGuideIdentityCtl.title)) {
@@ -6464,7 +6676,7 @@ try {
      contradictionMarker.textContent=copy;article?.appendChild(contradictionMarker);
      bioscanContradictions.push({copy,result:${renderedCharterGuideCheck('Chapters')}});contradictionMarker.remove();}
     const breedContradictions=[];for(const copy of ['A failed pairing also banks the Charter hybrid bloodline goal.',
-      'A stale Breed result grants breeding credit.','Conquest goals are now visible.']){
+      'A stale Breed result grants breeding credit.','Conquest goals remain hidden.']){
       contradictionMarker.textContent=copy;article?.appendChild(contradictionMarker);
       breedContradictions.push({copy,result:${renderedCharterGuideCheck('Chapters')}});contradictionMarker.remove();}
     const restored=${renderedCharterGuideCheck('Chapters')};return {breedNodeFound:!!breedNode,breedMissing,stale,contradiction,bioscanContradictions,breedContradictions,restored};})()`);
@@ -6545,9 +6757,10 @@ try {
       ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i.test(text);
     return {ok:title.includes(${JSON.stringify(expectedTitle)})&&status==='partial'&&missing.length===0&&!contradictory,
       title,status,missing,contradictory,text};})()`;
-  const renderTrainingRestoreGuideTopic = async (topic, expectedTitle) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
-    input.value=${JSON.stringify(topic)};input.dispatchEvent(new Event('input',{bubbles:true}));
-    document.querySelector('[data-guide-topic=${JSON.stringify(topic)}]')?.click();return ${renderedTrainingRestoreGuideCheck(expectedTitle)};})()`);
+  const renderTrainingRestoreGuideTopic = async (topic, expectedTitle) => {
+    await openGuideTopicAndWait(topic, `Guide Training restore ${topic}`);
+    return evalIn(renderedTrainingRestoreGuideCheck(expectedTitle));
+  };
   const settingsTrainingRestoreGuide = await renderTrainingRestoreGuideTopic('settings', 'Settings');
   const savingTrainingRestoreGuide = await renderTrainingRestoreGuideTopic('saving', 'Your save & reset');
   if (!settingsTrainingRestoreGuide.ok || !savingTrainingRestoreGuide.ok) {
@@ -6587,13 +6800,43 @@ try {
   if (releaseBaseline.rnSeen !== '0' || releaseBaseline.releasePending !== null) {
     fails.push('GUIDE draft release state changed before Release history opened: ' + JSON.stringify(releaseBaseline));
   }
-  const releaseGuide = await evalIn(`(()=>{ document.querySelector('#guidepanel [data-guide-releases]')?.click();
-    const S=window.__CF_SLICE__,rows=[...document.querySelectorAll('#guidepanel [data-release-index]')],first=rows[0],second=rows[1],s=S.api.state();
-    return {count:rows.length,first:first?.textContent||'',second:second?.textContent||'',rnSeen:s.rnSeen,releasePending:s.releasePending}; })()`);
-  if (releaseGuide.count !== 57 || !/v2\.0/.test(releaseGuide.first)
+  await evalIn(`document.querySelector('#guidepanel [data-guide-releases]')?.click()`);
+  const releaseGuideRaw = await waitDesktopValue('Guide release-history publication', `(()=>{
+    const S=window.__CF_SLICE__,nodes=[...document.querySelectorAll('#guidepanel [data-release-index]')],first=nodes[0],second=nodes[1],s=S.api.state();
+    const rows=nodes.map((row)=>({index:row.getAttribute('data-release-index'),
+      title:(row.querySelector('b')?.textContent||'').trim(),meta:(row.querySelector('small')?.textContent||'').trim()}));
+    return {count:rows.length,rows,first:first?.textContent||'',second:second?.textContent||'',rnSeen:s.rnSeen,releasePending:s.releasePending}; })()`,
+    8000, (value) => value?.rows?.length > 0 && /v2\.0/.test(value?.first ?? ''));
+  const releaseHistoryAuthority = assessGuideOrderedAuthority(
+    releaseGuideRaw.rows, GUIDE_RELEASE_HISTORY_AUTHORITY,
+  );
+  const releaseGuide = { ...releaseGuideRaw, authority: releaseHistoryAuthority };
+  if (!releaseGuide.authority.ok || releaseGuide.count !== GUIDE_RELEASE_HISTORY_AUTHORITY.count
+    || !/v2\.0/.test(releaseGuide.first)
     || !/UNRELEASED DEVELOPMENT/.test(releaseGuide.first) || !/v1\.8\.9/.test(releaseGuide.second)
     || releaseGuide.rnSeen !== releaseBaseline.rnSeen || releaseGuide.releasePending !== releaseBaseline.releasePending) {
     fails.push('GUIDE release history did not preserve draft/legacy separation and full inventory: ' + JSON.stringify(releaseGuide));
+  }
+  const duplicateReleaseHistory = releaseGuide.rows.map((row) => ({ ...row }));
+  if (duplicateReleaseHistory[0] && duplicateReleaseHistory[1]) {
+    duplicateReleaseHistory[1] = { ...duplicateReleaseHistory[0] };
+  }
+  const reorderedReleaseHistory = releaseGuide.rows.map((row) => ({ ...row }));
+  if (reorderedReleaseHistory[0] && reorderedReleaseHistory[1]) {
+    [reorderedReleaseHistory[0], reorderedReleaseHistory[1]]
+      = [reorderedReleaseHistory[1], reorderedReleaseHistory[0]];
+  }
+  const releaseHistoryAuthorityCtl = {
+    duplicate:assessGuideOrderedAuthority(duplicateReleaseHistory, GUIDE_RELEASE_HISTORY_AUTHORITY),
+    reordered:assessGuideOrderedAuthority(reorderedReleaseHistory, GUIDE_RELEASE_HISTORY_AUTHORITY),
+    restored:assessGuideOrderedAuthority(releaseGuide.rows, GUIDE_RELEASE_HISTORY_AUTHORITY),
+  };
+  if (releaseHistoryAuthorityCtl.duplicate.ok || releaseHistoryAuthorityCtl.reordered.ok
+    || releaseHistoryAuthorityCtl.duplicate.count !== GUIDE_RELEASE_HISTORY_AUTHORITY.count
+    || releaseHistoryAuthorityCtl.reordered.count !== GUIDE_RELEASE_HISTORY_AUTHORITY.count
+    || !releaseHistoryAuthorityCtl.restored.ok) {
+    fails.push('GUIDE RELEASE-HISTORY AUTHORITY CONTROL FAILED — a constant-count duplicate/reorder stayed exact or restoration failed: '
+      + JSON.stringify(releaseHistoryAuthorityCtl));
   }
   const releaseDraftCheck = `(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),article=panel?.querySelector('.guide-topic');
     const headingNodes=article?[...article.querySelectorAll('h5')]:[],headings=headingNodes.map((row)=>row.textContent?.trim()||'');
@@ -6613,6 +6856,10 @@ try {
       worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
       shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
      capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
+      starterCharter=bulletNodes.find((item)=>/THE CHARTER STOPS AT THE LIVE FRONTIER/.test(item.textContent||'')),
+      rankRecord=bulletNodes.find((item)=>/EVERY EXPEDITION HAS A RANKED RECORD/.test(item.textContent||'')),
+      fieldScout=bulletNodes.find((item)=>/ONE EXACT FIELD SCOUT, NEVER A GUESS/.test(item.textContent||'')),
+      surfaceConquest=bulletNodes.find((item)=>/ONE WORLD, ONE VERIFIED DUEL/.test(item.textContent||'')),
       frontierAudio=bulletNodes.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
       creatureListen=bulletNodes.find((item)=>/CREATURE CALLS ARE YOURS TO REQUEST/.test(item.textContent||'')),
       biosphereListen=bulletNodes.find((item)=>/HEAR A LIVING WORLD WITHOUT SPOILERS/.test(item.textContent||'')),
@@ -6625,7 +6872,7 @@ try {
       firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),artHeading=headingFor(art),
       shipyardHeading=headingFor(shipyard),captureHeading=headingFor(capture),frontierAudioHeading=headingFor(frontierAudio),creatureListenHeading=headingFor(creatureListen),biosphereListenHeading=headingFor(biosphereListen),mealHeading=headingFor(meal),breedHeading=headingFor(breed),renameHeading=headingFor(rename),hdSurfaceHeading=headingFor(hdSurface),publishingHeading=headingFor(publishing),
       charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
-      trainingText=training?.textContent||'',artText=art?.textContent||'',shipyardText=shipyard?.textContent||'',captureText=capture?.textContent||'',frontierAudioText=frontierAudio?.textContent||'',creatureListenText=creatureListen?.textContent||'',biosphereListenText=biosphereListen?.textContent||'',mealText=meal?.textContent||'',breedText=breed?.textContent||'',renameText=rename?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',publishingText=publishing?.textContent||'',
+      trainingText=training?.textContent||'',artText=art?.textContent||'',shipyardText=shipyard?.textContent||'',captureText=capture?.textContent||'',starterCharterText=starterCharter?.textContent||'',rankRecordText=rankRecord?.textContent||'',fieldScoutText=fieldScout?.textContent||'',surfaceConquestText=surfaceConquest?.textContent||'',frontierAudioText=frontierAudio?.textContent||'',creatureListenText=creatureListen?.textContent||'',biosphereListenText=biosphereListen?.textContent||'',mealText=meal?.textContent||'',breedText=breed?.textContent||'',renameText=rename?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',publishingText=publishing?.textContent||'',
       trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
@@ -6647,9 +6894,7 @@ try {
         &&trainingText.includes('completing the drill after Land stays at Earth')
         &&trainingText.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
         &&trainingText.includes('leaves the stored expedition unchanged')
-        &&trainingText.includes('reload after updating, or import a trusted complete expedition')
-        &&trainingText.includes('points to live Engineering & Shipyard, Planetside capture, and narrow real-fauna Compendium Feed')
-        &&trainingText.includes('without pretending the navigation drill performs any of those actions')&&!trainingContradiction,
+        &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction,
       artContradiction=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(artText)
         ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(artText)
         ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(artText)
@@ -6738,27 +6983,49 @@ try {
         &&captureText.includes('A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing')
         &&captureText.includes('v2’s current replacement for v1.8.9’s separate Discover Life action')
         &&captureText.includes('Survey Records and accepted or weekly bioscan Charters remain unavailable')
-        &&captureText.includes('Narrow feeding, nonlethal companion Breed, and exact-instance companion Rename are available from a real fauna Compendium detail')
-        &&captureText.includes('Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
+        &&captureText.includes('Narrow Feed, nonlethal Breed, exact-instance Rename, requested Listen, and role-only Field Scout are available from a real fauna Compendium detail')
+        &&captureText.includes('Field Scout interception and XP, friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable')
         &&!captureContradiction,
+      liveProgressionContradiction=/Charter rewards?[^.!?]{0,48}(?:remain|are) unavailable|Binder (?:Set )?claims?[^.!?]{0,48}(?:do not|never) pay Stardust|Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)|Field Scout[^.!?]{0,64}(?:intercepts?|redirects?|takes) (?:hostile )?(?:injury|damage|hits?)|Field Scouts?[^.!?]{0,64}earns? \\+?2 XP|accepted wk-conq[^.!?]{0,96}(?:completes?|pays?|awards?)/i.test(text),
+      liveProgressionContract=starterCharterText.includes('two established starter chains one unfinished link at a time')
+        &&starterCharterText.includes('first planetfall beyond canonical Earth, one Mine, a non-null Field Scout assignment or switch, verified conquest')
+        &&starterCharterText.includes('Each supported completion pays its established 10–25 Stardust once in the same receipt')
+        &&starterCharterText.includes('A verified conquest banks Chapter 2 conquest and can honor one accepted starter st-conq for +25 Stardust in the same combat save')
+        &&starterCharterText.includes('Discover life stays visible but unavailable until its accepted-bioscan owner exists')
+        &&starterCharterText.includes('Accepted wk-conq remains fail-closed because its weekly lifecycle owner is missing')
+        &&rankRecordText.includes('Records also houses the Binder’s six established type pages and seven current-proof Set claims')
+        &&rankRecordText.includes('One completed unclaimed Set pays its established 25–150 Stardust')
+        &&fieldScoutText.includes('Assigned, recovering, and injured companions stay eligible because this changes only the Scout role')
+        &&fieldScoutText.includes('The Scout does not yet intercept hostile injury, earn +2 XP for a fresh species, dispatch, run missions, or add care or bond outcomes')
+        &&surfaceConquestText.includes('A landed non-Training Surface now lets the explorer, an eligible ordinary owned-fauna companion, or a live captured Guardian or Titan challenge')
+        &&surfaceConquestText.includes('Chapter 2 conquest and the settle1 achievement bank in that same save')
+        &&surfaceConquestText.includes('adds +25 current and lifetime-earned Stardust, and honors one Charter')
+        &&surfaceConquestText.includes('Accepted wk-conq refuses before combat because its weekly lifecycle owner is missing')
+        &&!liveProgressionContradiction,
       audioContradiction=unnegated(text,/(?:Compendium list|browsing|filtering|focus|navigation|returning)[^.!?]{0,96}auto[- ]?plays?[^.!?]{0,48}(?:call|voice|expression)/i)
         ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:reveals?|names?)[^.!?]{0,48}(?:hidden )?species/i)
         ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:spends?|costs?)[^.!?]{0,32}Yield/i)
         ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:grants?|awards?)[^.!?]{0,48}(?:discovery|reward)/i)
         ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:writes?|changes?)[^.!?]{0,32}(?:the )?save/i)
-        ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i),
+        ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i)
+        ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i),
       audioContract=frontierAudioHeading==='New Features & Systems'
         &&creatureListenHeading==='Gameplay'&&biosphereListenHeading==='Gameplay'
         &&frontierAudioText.includes('one deterministic runtime across a verified durable wild-fauna Tame, one exact durable nonconverging Feed commit, and an explorer-requested call from one exact owned-fauna detail')
         &&frontierAudioText.includes('Each waits for its own current visible accessible counterpart')
         &&frontierAudioText.includes('browsing, filtering, focus, navigation, misses, refusals, stale or converging results, repeats, reloads, hidden play, route or counterpart loss, and disabled Sound or Creature voices remain silent without retry or replay')
-        &&frontierAudioText.includes('A separate explicit Planetside biosphere Listen may play one generic distant-ecology signal only while that exact inhabited world’s visible biosphere lead agrees')
-        &&frontierAudioText.includes('it reveals no species, spends no Yield, grants nothing, and writes no save')
-        &&frontierAudioText.includes('Authored ambience, music, other creature actions, and combat sound remain future work')
+        &&frontierAudioText.includes('A separate explicit pre-landing Survey and Planetside biosphere Listen may play one generic distant-ecology signal only while that exact inhabited world surface’s visible biosphere lead agrees')
+        &&frontierAudioText.includes('the two controls retain distinct approach/roster evidence, reveal no species, spend no Yield, grant nothing, and write no save')
+        &&frontierAudioText.includes('After a verified settlement, the Combat Chronicle now gives every already-modelled registered cue its own exact visible-caption sound')
+        &&frontierAudioText.includes('initiative, dodge, stun, damage with critical or ability layers, burn, regeneration, defeat, resolution')
+        &&frontierAudioText.includes('Guardian or Titan entrance, phase, victory, and defeat motifs')
+        &&frontierAudioText.includes('at most two combat voices overlap')
+        &&frontierAudioText.includes('master Sound governs them, Creature voices does not')
+        &&frontierAudioText.includes('Authored ambience, music, recorded assets, and other creature actions remain future work')
         &&creatureListenText.includes('Open a real owned-fauna Compendium detail and choose Listen on an exact companion to hear its stable deterministic call')
         &&creatureListenText.includes('Browsing, filtering, focusing, and returning through the Compendium never auto-play it')
-        &&biosphereListenText.includes('An inhabited Planetside now offers Listen to biosphere')
-        &&biosphereListenText.includes('only after that exact world’s biosphere lead is visible')
+        &&biosphereListenText.includes('pre-landing Survey card and landed Planetside both offer Listen to biosphere')
+        &&biosphereListenText.includes('only while that exact surface’s biosphere lead is visible')
         &&biosphereListenText.includes('never names a hidden species, spends Yield, grants a discovery or reward, or changes the save')
         &&!audioContradiction,
       mealContradiction=/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(mealText)
@@ -6781,8 +7048,10 @@ try {
         &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
         &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
         &&/refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(mealText)
-        &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable')
-        &&mealText.includes('Rename is identity-only and changes one selected exact nickname')
+        &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, friendly duels, and missions remain unavailable')
+        &&mealText.includes('Companion Breed is a separate action with its own exact-parent eligibility, odds, lineage, and active-play Recovery')
+        &&mealText.includes('Rename is identity-only')
+        &&mealText.includes('Field Scout changes only the exact role without intercepting injury or earning Scout XP yet')
         &&!mealContradiction,
       breedContradiction=/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries/i.test(breedText)
         ||/(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(breedText),
@@ -6792,7 +7061,7 @@ try {
         &&breedText.includes('same-species twins remain separate')
         &&breedText.includes('bounded 24-row pages')
         &&breedText.includes('Parents are never consumed')
-        &&breedText.includes('Success creates one deterministic child and gives both parents 8 active-play minutes of Recovery')
+        &&breedText.includes('Success creates one deterministic child with +2 XP and gives both parents 8 active-play minutes of Recovery')
         &&breedText.includes('failure creates no child and gives both 2')
         &&breedText.includes('Recovery blocks Breed, combat, and dispatch')
         &&breedText.includes('never advances from closed-game time or a changed wall clock')
@@ -6838,7 +7107,8 @@ try {
       ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-      ||/(?:biosphere discovery|Discover Life|Field Scouts?|duels?|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/(?:biosphere discovery|Discover Life|duels?|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+      ||/\\b(?:Field Scouts are|Field Scout is) (?:now )?(?:playable|available|live)\\b/i.test(text)
       ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
       ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
       ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
@@ -6847,14 +7117,14 @@ try {
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text)
       ||breedContradiction||renameContradiction;
-    return {title,identity:title.includes('v2.0 · A New Foundation'),
+    return {title,identity:title.includes('v2.0 · A New Foundation'),bulletRows:bulletRaw,
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
       sectionBulletCounts,sectionsPopulated,uniqueBullets,
       populated:bullets.length===${V2_DRAFT_BULLET_COUNT}&&sectionsPopulated&&uniqueBullets
         &&bulletRaw.every((bullet)=>bullet.length>0&&bullet===bullet.trim()),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
      complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
-        &&shipyardContract&&captureContract&&audioContract&&mealContract&&breedContract&&renameContract&&hdSurfaceContract&&publishingContract
+        &&shipyardContract&&captureContract&&liveProgressionContract&&audioContract&&mealContract&&breedContract&&renameContract&&hdSurfaceContract&&publishingContract
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
@@ -6864,28 +7134,58 @@ try {
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text),
       charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
       workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,shipyardContradiction,
-     captureHeading,captureContract,captureContradiction,mealHeading,mealContract,mealContradiction,
+     captureHeading,captureContract,captureContradiction,liveProgressionContract,liveProgressionContradiction,mealHeading,mealContract,mealContradiction,
       frontierAudioHeading,creatureListenHeading,biosphereListenHeading,audioContract,audioContradiction,
      breedHeading,breedContract,breedContradiction,renameHeading,renameContract,renameContradiction,hdSurfaceHeading,hdSurfaceContract,
       publishingHeading,publishingContract,publishingContradiction,overclaim,
-      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!captureContradiction&&!audioContradiction&&!mealContradiction&&!breedContradiction&&!renameContradiction&&!publishingContradiction
+      honest:!overclaim&&!trainingContradiction&&!artContradiction&&!shipyardContradiction&&!captureContradiction&&!liveProgressionContradiction&&!audioContradiction&&!mealContradiction&&!breedContradiction&&!renameContradiction&&!publishingContradiction
         &&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
-  const releaseDraft = await evalIn(releaseDraftCheck);
+  const releaseDraft = await waitDesktopValue('Guide v2 draft publication', releaseDraftCheck, 8000,
+    (value) => value?.identity === true && value?.status === 'draft' && value?.bulletCount > 0);
+  const releaseDraftAuthority = assessGuideOrderedAuthority(
+    releaseDraft.bulletRows, GUIDE_DRAFT_BULLET_AUTHORITY,
+  );
   if (!releaseDraft.identity || releaseDraft.status !== 'draft'
     || !releaseDraft.canonical || !releaseDraft.populated
     || releaseDraft.bulletCount !== V2_DRAFT_BULLET_COUNT || !releaseDraft.complete
-    || !releaseDraft.honest || !releaseDraft.authority || releaseDraft.releasePending !== releaseBaseline.releasePending
+    || !releaseDraftAuthority.ok || !releaseDraft.honest || !releaseDraft.authority
+    || releaseDraft.releasePending !== releaseBaseline.releasePending
     || releaseDraft.rnSeen !== releaseBaseline.rnSeen) {
     fails.push('GUIDE v2.0 development bulletin is incomplete or changed shipped-release state: '
-      + JSON.stringify({ ...releaseDraft, baseline: releaseBaseline }));
+      + JSON.stringify({ ...releaseDraft, bulletRows:undefined, bulletAuthority:releaseDraftAuthority, baseline: releaseBaseline }));
   }
   const releaseOrderCtl = await evalIn(`(()=>{ const headings=[...document.querySelectorAll('#guidepanel .guide-topic h5')];
-    if(headings.length<2)return {canonical:true,error:'missing headings'}; const a=headings[0].textContent,b=headings[1].textContent;
-    headings[0].textContent=b;headings[1].textContent=a;const result=${releaseDraftCheck};headings[0].textContent=a;headings[1].textContent=b;return result; })()`);
-  if (releaseOrderCtl.canonical) {
-    fails.push('GUIDE RELEASE CONTROL FAILED — reordering two v2.0 categories stayed canonical: ' + JSON.stringify(releaseOrderCtl));
+    if(headings.length<2)return {mutated:{canonical:true,complete:true},restored:{canonical:false,complete:false},error:'missing headings'};
+    const a=headings[0].textContent,b=headings[1].textContent;headings[0].textContent=b;headings[1].textContent=a;
+    const mutated=${releaseDraftCheck};headings[0].textContent=a;headings[1].textContent=b;
+    const restored=${releaseDraftCheck};return {mutated,restored}; })()`);
+  if (releaseOrderCtl.error || releaseOrderCtl.mutated?.canonical !== false
+    || releaseOrderCtl.mutated?.complete !== false || releaseOrderCtl.restored?.canonical !== true
+    || releaseOrderCtl.restored?.complete !== true) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — reordered v2.0 categories stayed complete/canonical or exact restoration failed: '
+      + JSON.stringify({ ...releaseOrderCtl,
+        mutated:{ ...releaseOrderCtl.mutated,bulletRows:undefined },
+        restored:{ ...releaseOrderCtl.restored,bulletRows:undefined } }));
+  }
+  const replacedDraftBullets = [...releaseDraft.bulletRows];
+  if (replacedDraftBullets[12] !== undefined) replacedDraftBullets[12] += ' unchecked replacement';
+  const swappedDraftBullets = [...releaseDraft.bulletRows];
+  if (swappedDraftBullets[0] !== undefined && swappedDraftBullets[1] !== undefined) {
+    [swappedDraftBullets[0], swappedDraftBullets[1]] = [swappedDraftBullets[1], swappedDraftBullets[0]];
+  }
+  const releaseDraftAuthorityCtl = {
+    replaced:assessGuideOrderedAuthority(replacedDraftBullets, GUIDE_DRAFT_BULLET_AUTHORITY),
+    swapped:assessGuideOrderedAuthority(swappedDraftBullets, GUIDE_DRAFT_BULLET_AUTHORITY),
+    restored:assessGuideOrderedAuthority(releaseDraft.bulletRows, GUIDE_DRAFT_BULLET_AUTHORITY),
+  };
+  if (releaseDraftAuthorityCtl.replaced.ok || releaseDraftAuthorityCtl.swapped.ok
+    || releaseDraftAuthorityCtl.replaced.count !== V2_DRAFT_BULLET_COUNT
+    || releaseDraftAuthorityCtl.swapped.count !== V2_DRAFT_BULLET_COUNT
+    || !releaseDraftAuthorityCtl.restored.ok) {
+    fails.push('GUIDE DRAFT-BULLET AUTHORITY CONTROL FAILED — a constant-count replacement/swap stayed exact or restoration failed: '
+      + JSON.stringify(releaseDraftAuthorityCtl));
   }
   const releaseInventoryCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][12];
     if(!row)return {removed:{populated:true},restored:{populated:false},error:'missing control row'};
@@ -7051,6 +7351,35 @@ try {
     || releaseCaptureCopyCtl.placement?.captureHeading === 'Gameplay' || !releaseCaptureCopyCtl.restored) {
     fails.push('GUIDE RELEASE CAPTURE CONTROL FAILED — missing, contradictory, or non-Gameplay capture truth stayed current: '
       + JSON.stringify(releaseCaptureCopyCtl));
+  }
+  const releaseLiveProgressionCtl = await evalIn(`(()=>{const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+    starter=rows.find((item)=>/THE CHARTER STOPS AT THE LIVE FRONTIER/.test(item.textContent||'')),
+    binder=rows.find((item)=>/EVERY EXPEDITION HAS A RANKED RECORD/.test(item.textContent||'')),
+    scout=rows.find((item)=>/ONE EXACT FIELD SCOUT, NEVER A GUESS/.test(item.textContent||'')),
+    conquest=rows.find((item)=>/ONE WORLD, ONE VERIFIED DUEL/.test(item.textContent||''));
+    if(!starter||!binder||!scout||!conquest)return {missing:[],contradictions:[],restored:false,error:'missing live-progression release rows'};
+    const fixtures=[[starter,'first planetfall beyond canonical Earth, one Mine, a non-null Field Scout assignment or switch, verified conquest','starter writer identity omitted'],
+      [binder,'One completed unclaimed Set pays its established 25–150 Stardust','Binder reward omitted'],
+      [scout,'Assigned, recovering, and injured companions stay eligible because this changes only the Scout role','Scout role-only boundary omitted'],
+      [conquest,'A landed non-Training Surface now lets the explorer, an eligible ordinary owned-fauna companion, or a live captured Guardian or Titan challenge','Surface Conquest owner omitted']],missing=[];
+    for(const [row,anchor,replacement] of fixtures){const prior=row.textContent;row.textContent=prior.replace(anchor,replacement);
+      missing.push({anchor,changed:row.textContent!==prior,result:${releaseDraftCheck}});row.textContent=prior;}
+    const prior=starter.textContent,contradictions=[];
+    for(const copy of ['Starter Charter rewards remain unavailable.','Binder Set claims do not pay Stardust.',
+      'Conquest goals remain hidden.','Field Scout now intercepts hostile injury.','Accepted wk-conq now completes and pays Stardust.']){
+      starter.textContent=prior+' '+copy;contradictions.push({copy,result:${releaseDraftCheck}});}
+    starter.textContent=prior;const restored=${releaseDraftCheck};return {missing,contradictions,
+      restored:restored.complete===true&&restored.honest===true&&restored.liveProgressionContract===true
+        &&restored.liveProgressionContradiction===false};})()`);
+  if (releaseLiveProgressionCtl.missing?.length !== 4
+    || releaseLiveProgressionCtl.missing.some(({ changed, result }) => !changed || result?.complete
+      || result?.liveProgressionContract !== false)
+    || releaseLiveProgressionCtl.contradictions?.length !== 5
+    || releaseLiveProgressionCtl.contradictions.some(({ result }) => result?.complete || result?.honest
+      || result?.liveProgressionContract || result?.liveProgressionContradiction !== true)
+    || !releaseLiveProgressionCtl.restored) {
+    fails.push('GUIDE RELEASE LIVE-PROGRESSION CONTROL FAILED — removing or reversing Starter/Binder/Scout/Surface-Conquest truth stayed current: '
+      + JSON.stringify(releaseLiveProgressionCtl));
   }
   const releaseMealCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
     .find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||''));
@@ -7328,7 +7657,9 @@ try {
       truthfulClaims=['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.',
         'Fully exceptional direct-material gear crafting is now playable with a deterministic Pureforged modifier.',
         'Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.',
-        'Breeding is now playable.','Renaming is now available.','Exploration audio is now live.'],
+        'Breeding is now playable.','Renaming is now available.',
+        'Role-only Field Scout selection is now live.','Landed non-Training Conquest is now playable.',
+        'Exploration audio is now live.'],
       unavailableClaims=['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
         'Disconnected Fabricator outputs are now playable.',
         'Mixed stock also receives a Pureforged modifier.','Pureforged modifiers reroll after reload.',
@@ -7341,12 +7672,12 @@ try {
     for(const copy of truthfulClaims){row.textContent=prior+' '+copy;truthful.push({copy,result:${releaseDraftCheck}});}
     for(const copy of unavailableClaims){row.textContent=prior+' '+copy;unavailable.push({copy,result:${releaseDraftCheck}});}
     row.textContent=prior;const restored=${releaseDraftCheck};return {truthful,unavailable,restored}; })()`);
-  if (releaseOverclaimCtl.truthful?.length !== 8
+  if (releaseOverclaimCtl.truthful?.length !== 10
     || releaseOverclaimCtl.truthful.some((row) => !row.result?.complete || !row.result?.honest || row.result?.overclaim)
     || releaseOverclaimCtl.unavailable?.length !== 18
     || releaseOverclaimCtl.unavailable.some((row) => !row.result?.complete || row.result?.honest || !row.result?.overclaim)
     || !releaseOverclaimCtl.restored?.complete || !releaseOverclaimCtl.restored?.honest) {
-    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — a live Mining/crafting/Capture/Feed/Breed/Rename claim went red, an unavailable claim stayed green, or copy failed to restore: '
+    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — a live Mining/crafting/Capture/Feed/Breed/Rename/role-only Scout/Surface Conquest claim went red, an unavailable claim stayed green, or copy failed to restore: '
       + JSON.stringify(releaseOverclaimCtl));
   }
   const releaseCompanionWriteCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
@@ -7384,26 +7715,29 @@ try {
     if(!frontier||!creature||!biosphere)return {error:'missing audio release fixtures'};
     const frontierPrior=frontier.textContent||'',creaturePrior=creature.textContent||'',biospherePrior=biosphere.textContent||'';
     frontier.textContent=frontierPrior.replace('an explorer-requested call from one exact owned-fauna detail','owned-fauna identity boundary omitted');const frontierMissing=${releaseDraftCheck};frontier.textContent=frontierPrior;
+    frontier.textContent=frontierPrior.replace('After a verified settlement, the Combat Chronicle now gives every already-modelled registered cue its own exact visible-caption sound','combat-audio outcome omitted');const combatMissing=${releaseDraftCheck};frontier.textContent=frontierPrior;
     creature.textContent=creaturePrior.replace('Browsing, filtering, focusing, and returning through the Compendium never auto-play it','Compendium silence boundary omitted');const creatureMissing=${releaseDraftCheck};creature.textContent=creaturePrior;
-    biosphere.textContent=biospherePrior.replace('only after that exact world’s biosphere lead is visible','visible inhabited-world counterpart omitted');const biosphereMissing=${releaseDraftCheck};biosphere.textContent=biospherePrior;
+    biosphere.textContent=biospherePrior.replace('only while that exact surface’s biosphere lead is visible','visible inhabited-world counterpart omitted');const biosphereMissing=${releaseDraftCheck};biosphere.textContent=biospherePrior;
     biosphere.textContent=biospherePrior.replace('never names a hidden species, spends Yield, grants a discovery or reward, or changes the save','no-reveal/no-economy boundary omitted');const biosphereEffectMissing=${releaseDraftCheck};biosphere.textContent=biospherePrior;
     const contradictions=[];for(const copy of ['Compendium filtering auto-plays the selected creature call.',
       'Listen to biosphere reveals a hidden species and spends 1 Yield.',
       'The biosphere signal grants a discovery reward and changes the save.',
-      'The ecology pulse starts before any visible inhabited-world counterpart.']){
+      'The ecology pulse starts before any visible inhabited-world counterpart.',
+      'Combat sound remains future work.']){
       frontier.textContent=frontierPrior+' '+copy;contradictions.push({copy,result:${releaseDraftCheck}});frontier.textContent=frontierPrior;}
-    const restored=${releaseDraftCheck};return {frontierMissing,creatureMissing,biosphereMissing,biosphereEffectMissing,contradictions,restored};})()`);
+    const restored=${releaseDraftCheck};return {frontierMissing,combatMissing,creatureMissing,biosphereMissing,biosphereEffectMissing,contradictions,restored};})()`);
   if (releaseAudioCopyCtl.error
     || releaseAudioCopyCtl.frontierMissing?.complete || releaseAudioCopyCtl.frontierMissing?.audioContract
+    || releaseAudioCopyCtl.combatMissing?.complete || releaseAudioCopyCtl.combatMissing?.audioContract
     || releaseAudioCopyCtl.creatureMissing?.complete || releaseAudioCopyCtl.creatureMissing?.audioContract
     || releaseAudioCopyCtl.biosphereMissing?.complete || releaseAudioCopyCtl.biosphereMissing?.audioContract
     || releaseAudioCopyCtl.biosphereEffectMissing?.complete || releaseAudioCopyCtl.biosphereEffectMissing?.audioContract
-    || releaseAudioCopyCtl.contradictions?.length !== 4
+    || releaseAudioCopyCtl.contradictions?.length !== 5
     || releaseAudioCopyCtl.contradictions.some((row) => row.result?.complete || row.result?.honest
       || row.result?.audioContract || !row.result?.audioContradiction)
     || !releaseAudioCopyCtl.restored?.complete || !releaseAudioCopyCtl.restored?.honest
     || !releaseAudioCopyCtl.restored?.audioContract) {
-    fails.push('GUIDE RELEASE AUDIO CONTROL FAILED — exact owned-fauna/world Listen ownership or its missing/contradictory controls failed: '
+    fails.push('GUIDE RELEASE AUDIO CONTROL FAILED — exact creature/world Listen and registered combat-audio ownership or its missing/contradictory controls failed: '
       + JSON.stringify(releaseAudioCopyCtl));
   }
  const releaseAuthorityCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,prior=S.api.state;let result;
@@ -8207,16 +8541,37 @@ try {
   const validPlanetBefore = validStarSearch;
   const shareCharterBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
   const shareCharterBefore = shareCharterSnapshot(shareCharterBeforeState);
+  const shareFollowJumpsBefore = shareCharterBeforeState?.save?.stats?.jumps;
+  if (!Number.isInteger(shareFollowJumpsBefore) || shareFollowJumpsBefore < 0) {
+    fails.push('SEARCH VALID CF1: pre-Follow Jumps authority was unavailable: '
+      + JSON.stringify(shareFollowJumpsBefore));
+  }
+  const shareFollowJumpsAfter = Number.isInteger(shareFollowJumpsBefore)
+    ? shareFollowJumpsBefore + 1 : -1;
+  const expectedShareFollowOutcome = `committed:${shareFollowJumpsBefore}->${shareFollowJumpsAfter}`;
   await evalIn(`(()=>{ const s=document.getElementById('searchbox'); s.value=${JSON.stringify(String(namedShareCode))}; s.focus(); return true; })()`);
   await keyIn('Enter', 'Enter');
   const validPlanetSearchCheck = `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
-    const action=document.querySelector('#survey [data-act="landcta"]');
+    const action=document.querySelector('#survey [data-act="landcta"]'),shareFollowOwner=st.landing?.actionCoordinator?.owner??null,
+      shareFollowOutcome=st.sharing?.followOutcome??null,shareFollowPersistence=st.persistence?.lastOutcome??null;
     return {ok:st.mode==='system'&&st.star===424242&&st.galSize===78&&st.cardTitle==='Blue Earth'&&!!action?.isConnected
-        &&action.tagName==='BUTTON'&&document.activeElement===action&&s.value==='',mode:st.mode,star:st.star,galSize:st.galSize,title:st.cardTitle,
+        &&action.tagName==='BUTTON'&&document.activeElement===action&&s.value===''
+        &&shareFollowOwner?.schema==='cf-v2-product-action-coordinator-diagnostics/v1'
+        &&shareFollowOwner.busy===false&&shareFollowOwner.operation===null
+        &&st.save?.stats?.jumps===${shareFollowJumpsAfter}
+        &&shareFollowOutcome===${JSON.stringify(expectedShareFollowOutcome)}
+        &&/^arc9-share-follow-committed:[0-9]+$/u.test(shareFollowPersistence)
+        &&st.save?.viewType==='star'&&st.save?.savedView?.gal?.seed===999
+        &&st.save?.savedView?.star?.seed===424242,
+      mode:st.mode,star:st.star,galSize:st.galSize,title:st.cardTitle,
       navGalaxyKey:st.navGalaxyKey,navStarKey:st.navStarKey,navWorldKey:st.navWorldKey,renderedScene:st.renderedScene,
+      worldNaming:st.worldNaming??null,persistence:st.persistence??null,
+      shareFollowOwner,shareFollowOutcome,customNames:st.save?.customNames??null,
+      savedView:st.save?.savedView??null,jumps:st.save?.stats?.jumps??null,shares:st.save?.stats?.shares??null,
       action:action?.getAttribute('data-act')||null,tag:action?.tagName||null,focus:document.activeElement===action,query:s.value}; })()`;
-  const validPlanetSearch = await waitDesktopValue('valid CF1 keyboard focus handoff', `(()=>{ const result=${validPlanetSearchCheck};
-    return result.mode==='system'&&result.title==='Blue Earth'?result:null; })()`);
+  const validPlanetSearch = await waitDesktopValue(
+    'valid CF1 keyboard focus handoff', validPlanetSearchCheck, 6000, (value) => value?.ok === true,
+  );
   if (!validPlanetSearch.ok) {
     fails.push('SEARCH VALID CF1: Enter did not end on the live explicit Land action: ' + JSON.stringify(validPlanetSearch));
   }
@@ -8225,6 +8580,56 @@ try {
     s.focus(); const result=${validPlanetSearchCheck}; action?.focus(); return result; })()`);
   if (validPlanetFocusCtl.ok) {
     fails.push('SEARCH VALID-CF1 CONTROL FAILED — removed Land focus stayed green: ' + JSON.stringify(validPlanetFocusCtl));
+  }
+  const validPlanetOwnerCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,original=S.api.state,live=original();
+    S.api.state=()=>({...live,landing:{...live.landing,actionCoordinator:{...live.landing?.actionCoordinator,owner:null}}});
+    let result;try{result=${validPlanetSearchCheck};}finally{S.api.state=original;}return result;})()`);
+  if (validPlanetOwnerCtl.ok) {
+    fails.push('SEARCH VALID-CF1 OWNER CONTROL FAILED — missing shared Follow coordinator diagnostics stayed green: '
+      + JSON.stringify(validPlanetOwnerCtl));
+  }
+  const validPlanetJumpsCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,original=S.api.state,live=original();
+    S.api.state=()=>({...live,save:{...live.save,stats:{...live.save?.stats,jumps:${shareFollowJumpsBefore}}}});
+    let result;try{result=${validPlanetSearchCheck};}finally{S.api.state=original;}return result;})()`);
+  if (validPlanetJumpsCtl.ok) {
+    fails.push('SEARCH VALID-CF1 FOLLOW CONTROL FAILED — unchanged Jumps counter stayed green: '
+      + JSON.stringify(validPlanetJumpsCtl));
+  }
+  const validPlanetInspectionCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,original=S.api.state,live=original();
+    S.api.state=()=>({...live,sharing:{...live.sharing,followOutcome:'inspection-only:no-follow-credit'}});
+    let result;try{result=${validPlanetSearchCheck};}finally{S.api.state=original;}return result;})()`);
+  if (validPlanetInspectionCtl.ok) {
+    fails.push('SEARCH VALID-CF1 FOLLOW CONTROL FAILED — inspection-only publication stayed green: '
+      + JSON.stringify(validPlanetInspectionCtl));
+  }
+  const validPlanetPersistenceCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,original=S.api.state,live=original();
+    S.api.state=()=>({...live,persistence:{...live.persistence,lastOutcome:'committed:999'}});
+    let result;try{result=${validPlanetSearchCheck};}finally{S.api.state=original;}return result;})()`);
+  if (validPlanetPersistenceCtl.ok) {
+    fails.push('SEARCH VALID-CF1 FOLLOW CONTROL FAILED — receipt-free persistence outcome stayed green: '
+      + JSON.stringify(validPlanetPersistenceCtl));
+  }
+  const validPlanetSavedRouteCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,original=S.api.state,live=original();
+    S.api.state=()=>({...live,save:{...live.save,viewType:'planet',savedView:null}});
+    let result;try{result=${validPlanetSearchCheck};}finally{S.api.state=original;}return result;})()`);
+  if (validPlanetSavedRouteCtl.ok) {
+    fails.push('SEARCH VALID-CF1 FOLLOW CONTROL FAILED — wrong durable saved route stayed green: '
+      + JSON.stringify(validPlanetSavedRouteCtl));
+  }
+  let validPlanetDiagnosticCtl = { rejected: false, retained: false, message: '' };
+  try {
+    await waitDesktopValue('valid CF1 retained-diagnostic control', `(()=>{const result=${validPlanetSearchCheck};return {
+      ...result,ok:false,diagnosticSentinel:'retained-nonmatching-valid-planet'};})()`, 150, (value) => value?.ok === true);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    validPlanetDiagnosticCtl = { rejected: true,
+      retained:message.includes('retained-nonmatching-valid-planet')&&message.includes('worldNaming')
+        &&message.includes('persistence')&&message.includes('shareFollowOwner')&&message.includes('customNames')
+        &&message.includes('savedView')&&message.includes('jumps'),message };
+  }
+  if (!validPlanetDiagnosticCtl.rejected || !validPlanetDiagnosticCtl.retained) {
+    fails.push('SEARCH VALID-CF1 WAITER CONTROL FAILED — a nonmatching observation was discarded instead of retained in timeout diagnostics: '
+      + JSON.stringify(validPlanetDiagnosticCtl));
   }
   const validPlanetSizeCtl = await evalIn(`(()=>{ const st=window.__CF_SLICE__.api.state(); return {ok:st.galSize===3999,galSize:st.galSize}; })()`);
   if (validPlanetSizeCtl.ok) {

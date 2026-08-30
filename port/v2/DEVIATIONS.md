@@ -21,7 +21,7 @@
 > version is provenance only; compatible updates never trigger rebaseline or recalibration.
 > Earlier Final13/Final12/Final11/Final10 wording below is historical where superseded.
 
-## 2026-08-29 current implementation overlay — supersedes only older status sentences
+## 2026-08-30 current implementation overlay — supersedes only older status sentences
 
 Consumed hosted run `33278630671` tested exact PR #35 head
 `017fa6decbc41809188768ccdb98ab86ef1b9ebc`: every predecessor and SceneMemory control passed,
@@ -244,15 +244,56 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   outcome-contract / collector SHA-256 is
   `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
   `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
-  `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; producer-v2 / generated
-  service-worker / Scene build is
-  `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
-  `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
-  `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; Compendium / Scene budget
-  is `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
-  `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Fixed rulers, ceilings,
-  78 outcomes and 73 release bullets remain unchanged. Fresh changed-head certification is pending;
-  no successor browser gate, HUMAN/hosted/merge/release/version/deployment authority exists.
+  `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`. Final derived changed-head
+  producer / index / owner / generated service-worker is
+  `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b` /
+  `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0` /
+  `assets/main-C621myNE.js` (`2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`) /
+  `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Scene build / game-main is
+  `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+  `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; Compendium / Scene budget
+  files are `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` /
+  `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. The unchanged worker/painter
+  remains `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`; the green printer binds a
+  **964-module / 52-file** build. Fixed rulers, ceilings,
+  78 outcomes and the **73-row release-inventory count** remain unchanged; the current repair updates
+  the CF1 row's sequencing truth.
+
+  Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` then passed exact
+  Compendium run `20260830-pr35-sealed-worker-941ba45a96e5-compendium-certification` **78/78**
+  once/no-retry in **65,731 ms**, with both profiles, six review PNGs and named verification on Edge
+  `152.0.4191.53` / CDP `1.3`. Its **452,127 gzip / 10,881,302 raw-byte** carrier has SHA-256
+  `e6f2aa4dfcbf94830f3c0059a8e64239956ac0d2e0685c8e267a338faba2f6f8` /
+  `d4b2b2aa07f3b1f4a70903d4d8ae82abe1eaf755523a51d7ecc85d1e610c109b`.
+  The required exact-source Slice `20260830115041916-36220-7ed2dd2ef398` ran next once/no-retry and
+  stopped terminal red after **63,106 ms**, at **63 findings / 42 scopes** with six partial
+  screenshots. Sixty-two are Guide/Release instrument drift from both early reads before deferred
+  publication and stale 26-partial/15-unavailable plus player-copy expectations instead of current
+  9/41/34/7 authority; the independent
+  final product finding is named-CF1 Follow starvation after accepted custom-world naming. Glass and
+  Recovery did
+  not run. The current changed head has no browser certificate; HUMAN/hosted/merge/release/version/
+  deployment authority remains open. Compatible Edge point updates never rebaseline or move a
+  threshold.
+
+- ★ **D-PR35-GUIDE-IDENTITY — deferred archives are judged only after exact publication.** Guide
+  and Release probes now wait for the exact requested category/topic/search/home/list/article DOM
+  identity rather than reading immediately after dispatch or sleeping. The oracle binds the canonical
+  **9 categories / 41 unique topics / 34 partial / 7 unavailable** mapping and current gameplay
+  copy. Bidirectional deferred-publication, wrong-mapping, stale-identity and mutation/restore
+  controls make both early-read and stale-pass states red. This changes the browser instrument and
+  authored truth only, not game presentation structure or archive-loading policy.
+- ★ **D-PR35-NAMED-CF1 — each route owns its aggregate fixed point.** The custom-world name
+  transaction no longer
+  starts aggregate catch-up before an immediately submitted route can claim the shared coordinator.
+  Direct Travel owns its accepted route/arrival and source-proved galaxy-event aggregate; Follow
+  additionally owns Follow/Jumps/`wayfarer`. If the post-name route refuses or
+  otherwise does not join progression, the world-name transaction queues exactly one aggregate
+  catch-up only after its own settlement. A synchronous reservation defers/coalesces ordinary save
+  checkpoints and re-arms one after route/catch-up enqueue; exact heartbeat/pagehide owners keep
+  their private boundary. The fixed timeout
+  remains diagnostic, and no retry, sleep, CF1 codec/reach change, game/creature/genome rewrite or
+  save-schema migration was added.
 
 - ★ **D-ARC5-LIVE — four bounded exact-instance companion writers.** Verified real-fauna
   Compendium detail exposes Feed, one-draw nonlethal Breed with active-play Recovery, identity-only

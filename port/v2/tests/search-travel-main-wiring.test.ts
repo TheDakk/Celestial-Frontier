@@ -35,9 +35,14 @@ function wiringErrors(main: string, owner: string): string[] {
     '/* ---- THE SEARCH BAR',
     "\nsheet.querySelector('#importclose')",
   );
-  const importBlock = section(main, "import {\n  createSearchTravelController,", "} from './search-travel.js';");
+  const importBlock = section(
+    main,
+    "import {\n  commitSearchTravelSequence,",
+    "} from './search-travel.js';",
+  );
   if (adapter.length === 0) errors.push('missing-main-adapter');
   if (importBlock.length === 0
+    || !importBlock.includes('createSearchTravelController,')
     || !importBlock.includes('navigationAuthorityFailureFor,')
     || !importBlock.includes('type SearchTravelCommitPlan,')) errors.push('factory-import');
   if (!adapter.includes('const searchTravel = createSearchTravelController({')) {
@@ -80,7 +85,7 @@ function wiringErrors(main: string, owner: string): string[] {
   const nameCommit = section(
     adapter,
     'async function commitArc0WorldNameForSearch(',
-    '\nconst searchTravel =',
+    '\nfunction publishAcceptedSearchNavigation(',
   );
   const nameCommitOrder = [
     'const actionClaim = productActionCoordinator.tryClaim(operation);',
@@ -104,6 +109,7 @@ function wiringErrors(main: string, owner: string): string[] {
     || occurrences(nameCommit, 'worldIdentityState = attempt.verification.worldIdentity.state;') !== 1
     || nameCommit.includes('persistView(')
     || nameCommit.includes('setCanonicalWorldName(')
+    || nameCommit.includes('queueArc9ProgressionRefresh(')
     || !nameCommit.includes("lastArc0WorldNameOutcome = 'committed-publication-reload';")) {
     errors.push('name-commit-cardinality');
   }
@@ -181,24 +187,38 @@ function wiringErrors(main: string, owner: string): string[] {
 
   const commit = section(adapter, '  commitNavigation:', '\n  onPrimeReachBlocked:');
   const commitOrder = [
-    'const naming = await commitArc0WorldNameForSearch(',
-    "if (naming === 'refused') return false;",
-    "if (naming === 'committed-reload') return true;",
+    'return commitSearchTravelSequence({',
+    'commitName: namedWorld && customPlanetName && target.mode === \'surface\'',
+    '? () => commitArc0WorldNameForSearch(target, namedWorld, customPlanetName)',
+    'commitRoute: async (nameCommitted) => {',
     'if (followedCode !== null) {',
     'if (arc9TravelInspectionOnly()) {',
     'publishAcceptedSearchNavigation(plan, true);',
     "lastArc9ShareFollowOutcome = 'inspection-only:no-follow-credit';",
-    'return commitArc9FollowedSearchRoute(plan);',
-    'return commitArc9AcceptedSearchRoute(plan);',
+    'const committed = await commitArc9FollowedSearchRoute(plan);',
+    'return Object.freeze({ committed, progressionJoined: committed });',
+    'const inspectionOnly = arc9TravelInspectionOnly();',
+    'const committed = await commitArc9AcceptedSearchRoute(plan);',
+    'progressionJoined: committed && !inspectionOnly,',
+    'queueUnjoinedNameProgression: () => {',
+    'queueArc9ProgressionRefresh(operationForArc0WorldName(namedWorld));',
+    'reserveInterposedPersistence: reserveNamedSearchPersistence,',
   ].map((needle) => commit.indexOf(needle));
   if (commit.length === 0
     || commitOrder.some((index) => index < 0)
     || commitOrder.some((index, position) => position > 0 && index <= commitOrder[position - 1]!)) {
     errors.push('commit-order');
   }
-  if (occurrences(commit, 'const naming = await commitArc0WorldNameForSearch(') !== 1
-    || occurrences(commit, 'return commitArc9FollowedSearchRoute(plan);') !== 1
-    || occurrences(commit, 'return commitArc9AcceptedSearchRoute(plan);') !== 1
+  if (!commit.includes('    return commitSearchTravelSequence({')
+    || occurrences(commit, 'commitSearchTravelSequence({') !== 1
+    || occurrences(commit, 'commitArc0WorldNameForSearch(target, namedWorld, customPlanetName)') !== 1
+    || occurrences(commit, 'const committed = await commitArc9FollowedSearchRoute(plan);') !== 1
+    || occurrences(commit, 'const committed = await commitArc9AcceptedSearchRoute(plan);') !== 1
+    || occurrences(commit, 'queueArc9ProgressionRefresh(operationForArc0WorldName(namedWorld));') !== 1
+    || occurrences(commit, 'reserveInterposedPersistence: reserveNamedSearchPersistence,') !== 1
+    || occurrences(commit, 'progressionJoined: false') !== 2
+    || occurrences(commit, 'progressionJoined: committed') !== 2
+    || occurrences(commit, 'queueUnjoinedNameProgression();') !== 0
     || occurrences(commit, 'publishAcceptedSearchNavigation(plan, true);') !== 1
     || !commit.includes('const { target, focusPlanet, focusAddress, customPlanetName, followedCode } = plan;')
     || commit.includes('publishAcceptedSearchNavigation(plan, false);')
@@ -234,6 +254,58 @@ function wiringErrors(main: string, owner: string): string[] {
     || !owner.includes('return committed;')) {
     errors.push('commit-refusal');
   }
+  const commitSequence = section(
+    owner,
+    'export async function commitSearchTravelSequence(',
+    '\nexport function resolveStrictCF1Address(',
+  );
+  const sequenceOrder = [
+    'const releasePersistenceReservation = ports.commitName === null',
+    ': ports.reserveInterposedPersistence();',
+    'const naming = await ports.commitName();',
+    "if (naming === 'refused') return false;",
+    "if (naming === 'committed-reload') return true;",
+    'route = await ports.commitRoute(nameCommitted);',
+    'if (nameCommitted && (!route.committed || !route.progressionJoined)) {',
+    'ports.queueUnjoinedNameProgression();',
+    'releasePersistenceReservation?.();',
+  ].map((needle) => commitSequence.indexOf(needle));
+  if (commitSequence.length === 0
+    || sequenceOrder.some((index) => index < 0)
+    || sequenceOrder.some((index, position) => (
+      position > 0 && index <= sequenceOrder[position - 1]!
+    ))) errors.push('commit-sequence-owner');
+  const persistence = section(main, 'async function persistView(', '\nlet _persistT = 0;');
+  const reservation = section(
+    main,
+    'function reserveNamedSearchPersistence(): (() => void) | null {',
+    '\nasync function commitArc0WorldNameForSearch(',
+  );
+  const lifecycleCheckpoint = section(
+    main,
+    'const checkpointAndHideF4 = (): Promise<void> => {',
+    '\nconst showF4 = async (): Promise<void> => {',
+  );
+  const lifecycleToken = 'F4_LIFECYCLE_CHECKPOINT_OWNER';
+  if (reservation.length === 0
+    || !reservation.includes('if (namedSearchPersistenceHeld) return null;')
+    || !reservation.includes('namedSearchPersistenceDeferred = false;\n      persistSoon();')
+    || !persistence.includes('if (namedSearchPersistenceHeld && replacementOwner === null')
+    || !persistence.includes("&& intent === 'ordinary' && heartbeatCycleOwner === null")
+    || !persistence.includes(`&& lifecycleCheckpointOwner !== ${lifecycleToken})`)
+    || !persistence.includes('namedSearchPersistenceDeferred = true;')
+    || !main.includes(`const ${lifecycleToken} = Symbol('f4-lifecycle-checkpoint-owner');`)
+    || occurrences(main, lifecycleToken) !== 4
+    || !lifecycleCheckpoint.includes(
+      `      checkpoint = await persistView(\n`
+      + `        null,\n`
+      + `        'ordinary',\n`
+      + `        null,\n`
+      + `        ${lifecycleToken},\n`
+      + `      ) ? 'committed' : 'skipped';`,
+    )) {
+    errors.push('composite-persistence-reservation');
+  }
   if (owner.includes('querySelector(')
     || /\b(?:persistView|savedRouteWriteHeld|surveyPlanet|fillCodex|codexOpenController)\b/.test(owner)) {
     errors.push('injected-effects-only');
@@ -249,7 +321,7 @@ describe('MAIN-1 Search/CF1 travel extraction wiring', () => {
   it('negative-controls factory ownership and a reintroduced Main listener', () => {
     const withoutImport = replaceOnce(
       mainSource,
-      "import {\n  createSearchTravelController,\n  navigationAuthorityFailureFor,\n  type SearchTravelCommitPlan,\n} from './search-travel.js';",
+      "import {\n  commitSearchTravelSequence,\n  createSearchTravelController,\n  navigationAuthorityFailureFor,\n  type SearchTravelCommitPlan,\n} from './search-travel.js';",
       '/* negative control removed Search/travel import */',
     );
     expect(wiringErrors(withoutImport, ownerSource)).toContain('factory-import');
@@ -388,5 +460,79 @@ describe('MAIN-1 Search/CF1 travel extraction wiring', () => {
       "    (document.getElementById('searchbox') as HTMLInputElement).value = code;",
     );
     expect(wiringErrors(directCopy, ownerSource)).toContain('external-delegation');
+  });
+
+  it('negative-controls composite sequencing, joined progression, and the old early refresh', () => {
+    const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importclose')");
+    const commit = section(adapter, '  commitNavigation:', '\n  onPrimeReachBlocked:');
+    const bypassedSequence = replaceOnce(
+      commit,
+      '    return commitSearchTravelSequence({',
+      '    return false && commitSearchTravelSequence({',
+    );
+    expect(wiringErrors(mainSource.replace(commit, bypassedSequence), ownerSource))
+      .toContain('commit-cardinality');
+
+    const followDoesNotJoin = replaceOnce(
+      commit,
+      '          return Object.freeze({ committed, progressionJoined: committed });',
+      '          return Object.freeze({ committed, progressionJoined: false });',
+    );
+    expect(wiringErrors(mainSource.replace(commit, followDoesNotJoin), ownerSource))
+      .toContain('commit-cardinality');
+
+    const withoutPersistenceReservation = replaceOnce(
+      commit,
+      '      reserveInterposedPersistence: reserveNamedSearchPersistence,',
+      '      reserveInterposedPersistence: () => () => {},',
+    );
+    expect(wiringErrors(mainSource.replace(commit, withoutPersistenceReservation), ownerSource))
+      .toContain('commit-cardinality');
+
+    const withoutOrdinaryDeferral = replaceOnce(
+      mainSource,
+      '    namedSearchPersistenceDeferred = true;\n    return false;',
+      '    /* negative control dropped the deferred checkpoint */\n    return false;',
+    );
+    expect(wiringErrors(withoutOrdinaryDeferral, ownerSource))
+      .toContain('composite-persistence-reservation');
+
+    const withoutDeferredRearm = replaceOnce(
+      mainSource,
+      '      namedSearchPersistenceDeferred = false;\n      persistSoon();',
+      '      namedSearchPersistenceDeferred = false;\n      /* negative control lost re-arm */',
+    );
+    expect(wiringErrors(withoutDeferredRearm, ownerSource))
+      .toContain('composite-persistence-reservation');
+
+    const lifecycleCheckpointDeferred = replaceOnce(
+      mainSource,
+      '        F4_LIFECYCLE_CHECKPOINT_OWNER,\n      ) ? \'committed\' : \'skipped\';',
+      '        null,\n      ) ? \'committed\' : \'skipped\';',
+    );
+    expect(wiringErrors(lifecycleCheckpointDeferred, ownerSource))
+      .toContain('composite-persistence-reservation');
+
+    const forgedLifecycleBypass = replaceOnce(
+      mainSource,
+      '    && lifecycleCheckpointOwner !== F4_LIFECYCLE_CHECKPOINT_OWNER) {',
+      '    && lifecycleCheckpointOwner !== null) {',
+    );
+    expect(wiringErrors(forgedLifecycleBypass, ownerSource))
+      .toContain('composite-persistence-reservation');
+
+    const nameCommit = section(
+      adapter,
+      'async function commitArc0WorldNameForSearch(',
+      '\nfunction publishAcceptedSearchNavigation(',
+    );
+    const earlyRefresh = replaceOnce(
+      nameCommit,
+      '    actionClaim.settle(durable);',
+      '    actionClaim.settle(durable);\n'
+        + '    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);',
+    );
+    expect(wiringErrors(mainSource.replace(nameCommit, earlyRefresh), ownerSource))
+      .toContain('name-commit-cardinality');
   });
 });

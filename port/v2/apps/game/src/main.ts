@@ -193,6 +193,7 @@ import {
 } from './release-identity.js';
 import { projectDisplayRarity } from './rarity-presentation.js';
 import {
+  commitSearchTravelSequence,
   createSearchTravelController,
   navigationAuthorityFailureFor,
   type SearchTravelCommitPlan,
@@ -1108,6 +1109,7 @@ const stopF4Heartbeat = (): void => {
 let f4HeartbeatCycleInFlight: Promise<void> | null = null;
 let f4HeartbeatSmokeQuiesced = false;
 const F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER = Symbol('f4-heartbeat-cycle-checkpoint-owner');
+const F4_LIFECYCLE_CHECKPOINT_OWNER = Symbol('f4-lifecycle-checkpoint-owner');
 const runF4HeartbeatCycle = async (): Promise<void> => {
   if (!f4Runtime || persistHold || !f4PageVisible()
     || activePersist || importWriteInFlight || replacementTransaction) return;
@@ -1235,7 +1237,12 @@ const checkpointAndHideF4 = (): Promise<void> => {
         throw new Error('slice-smoke injected F4 hide checkpoint rejection');
       }
       await settleF4Heartbeat();
-      checkpoint = await persistView() ? 'committed' : 'skipped';
+      checkpoint = await persistView(
+        null,
+        'ordinary',
+        null,
+        F4_LIFECYCLE_CHECKPOINT_OWNER,
+      ) ? 'committed' : 'skipped';
     } catch (error) {
       checkpoint = 'rejected';
       checkpointError = error instanceof Error ? error.message : String(error);
@@ -3811,6 +3818,22 @@ document.getElementById('codexpanel')!.addEventListener('click', (e) => {
    regenerated and proven before the common authorization/commit seam. */
 type SearchWorldNameCommit = 'committed' | 'committed-reload' | 'refused';
 let lastArc0WorldNameOutcome: string | null = null;
+let namedSearchPersistenceHeld = false;
+let namedSearchPersistenceDeferred = false;
+function reserveNamedSearchPersistence(): (() => void) | null {
+  if (namedSearchPersistenceHeld) return null;
+  namedSearchPersistenceHeld = true;
+  let released = false;
+  return () => {
+    if (released) return;
+    released = true;
+    namedSearchPersistenceHeld = false;
+    if (namedSearchPersistenceDeferred) {
+      namedSearchPersistenceDeferred = false;
+      persistSoon();
+    }
+  };
+}
 async function commitArc0WorldNameForSearch(
   surface: Extract<NavState, { mode: 'surface' }>,
   address: CanonicalCF1WorldAddress,
@@ -3911,7 +3934,12 @@ async function commitArc0WorldNameForSearch(
   } finally {
     productActionInFlight = false;
     actionClaim.settle(durable);
-    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    /* A named CF1 route immediately joins this committed name to its Follow
+       (or direct Travel) receipt. The search adapter schedules the bounded
+       catch-up only if that action refuses or cannot join progression.
+       Queueing here runs the
+       microtask before the awaiting adapter can resume, lets the catch-up
+       claim the shared coordinator, and self-refuses the valid route. */
     if (activePersist === actionBarrier) activePersist = null;
   }
 }
@@ -4124,30 +4152,38 @@ const searchTravel = createSearchTravelController({
     const { target, focusPlanet, focusAddress, customPlanetName, followedCode } = plan;
     const namedWorld = target.mode === 'surface' && focusPlanet && focusAddress && customPlanetName
       ? focusAddress : null;
-    let nameCommitted = false;
-    if (namedWorld && customPlanetName && target.mode === 'surface') {
-      const naming = await commitArc0WorldNameForSearch(
-        target,
-        namedWorld,
-        customPlanetName,
-      );
-      if (naming === 'refused') return false;
-      if (naming === 'committed-reload') return true;
-      nameCommitted = true;
-    }
-    if (followedCode !== null) {
-      if (arc9TravelInspectionOnly()) {
-        try {
-          publishAcceptedSearchNavigation(plan, true);
-          lastArc9ShareFollowOutcome = 'inspection-only:no-follow-credit';
-          return true;
-        } catch {
-          return nameCommitted;
+    return commitSearchTravelSequence({
+      commitName: namedWorld && customPlanetName && target.mode === 'surface'
+        ? () => commitArc0WorldNameForSearch(target, namedWorld, customPlanetName)
+        : null,
+      commitRoute: async (nameCommitted) => {
+        if (followedCode !== null) {
+          if (arc9TravelInspectionOnly()) {
+            try {
+              publishAcceptedSearchNavigation(plan, true);
+              lastArc9ShareFollowOutcome = 'inspection-only:no-follow-credit';
+              return Object.freeze({ committed: true, progressionJoined: false });
+            } catch {
+              return Object.freeze({ committed: nameCommitted, progressionJoined: false });
+            }
+          }
+          const committed = await commitArc9FollowedSearchRoute(plan);
+          return Object.freeze({ committed, progressionJoined: committed });
         }
-      }
-      return commitArc9FollowedSearchRoute(plan);
-    }
-    return commitArc9AcceptedSearchRoute(plan);
+        const inspectionOnly = arc9TravelInspectionOnly();
+        const committed = await commitArc9AcceptedSearchRoute(plan);
+        return Object.freeze({
+          committed,
+          progressionJoined: committed && !inspectionOnly,
+        });
+      },
+      queueUnjoinedNameProgression: () => {
+        if (namedWorld !== null) {
+          queueArc9ProgressionRefresh(operationForArc0WorldName(namedWorld));
+        }
+      },
+      reserveInterposedPersistence: reserveNamedSearchPersistence,
+    });
   },
   onPrimeReachBlocked: () => { toastPrimeReachBoundary(); },
   onCharterReachBlocked: () => { toastCharterBoundary(ascHintFor(ascStage())); },
@@ -8288,7 +8324,19 @@ async function persistView(
   replacementOwner: ReplacementTransaction | null = null,
   intent: EcologyEpochCheckpointIntent = 'ordinary',
   heartbeatCycleOwner: typeof F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER | null = null,
+  lifecycleCheckpointOwner: typeof F4_LIFECYCLE_CHECKPOINT_OWNER | null = null,
 ): Promise<boolean> {
+  if (namedSearchPersistenceHeld && replacementOwner === null
+    && intent === 'ordinary' && heartbeatCycleOwner === null
+    && lifecycleCheckpointOwner !== F4_LIFECYCLE_CHECKPOINT_OWNER) {
+    /* An ordinary checkpoint (including a settings debounce) that fires while
+       an accepted custom name is settling must
+       not become the activePersist tail that self-refuses its immediately
+       submitted route. The route transaction persists the joined successor;
+       re-arm one ordinary checkpoint afterward for any unrelated live field. */
+    namedSearchPersistenceDeferred = true;
+    return false;
+  }
   if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
     || !f4RuntimeMayMutate() || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
   const write = async (): Promise<boolean> => {
@@ -15378,6 +15426,10 @@ async function loadSave(): Promise<void> {
           lastOutcome: lastArc0WorldNameOutcome,
           canonicalRecords: worldIdentityState.records.length,
           legacyRows: save.customNames.length,
+        },
+        sharing: {
+          schema: 'cf-v2-arc9-sharing-app-state/v1',
+          followOutcome: lastArc9ShareFollowOutcome,
         },
         inventory: {
           stateKind: arc2LootState?.kind ?? 'unavailable',

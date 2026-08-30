@@ -10,6 +10,84 @@ summary of it.
 
 ## Contents
 
+### Signed `941ba45…` sealed-worker Compendium PASS, then terminal Slice Guide/Release + named-CF1 red
+
+Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` first ran
+`20260830-pr35-sealed-worker-941ba45a96e5-compendium-certification` exactly once with zero
+automatic retries under Microsoft Edge `152.0.4191.53` / CDP `1.3`. It passed all **78/78**
+Compendium outcomes in **65,731 ms**, produced the complete six-image phone/desktop list,
+focus-pinned and detail review packet, and passed its exact named verifier. This is the first clean
+browser proof that the sealed single-file species worker closes the earlier first-install painter-
+import failures. The fixed memory rulers, numeric ceilings and outcome inventory did not move.
+
+- `ARC1C_COMPENDIUM_PR35_SEALED_WORKER_PASS_20260830_941BA45.json.gz`: **452,127** compressed
+  bytes, SHA-256
+  `e6f2aa4dfcbf94830f3c0059a8e64239956ac0d2e0685c8e267a338faba2f6f8`; **10,881,302** raw
+  bytes, SHA-256 `d4b2b2aa07f3b1f4a70903d4d8ae82abe1eaf755523a51d7ecc85d1e610c109b`.
+- Its six review PNG bindings are phone list **718,126** /
+  `17311d46f4cbbf75c0d489cc80beccc52cb516fe32cb434279b84b0765e3ee26`, phone focus-pinned
+  **647,200** / `8a737f97d67296572299d446f9a0417544da9a06ddaa35281ea04a11a3340978`, phone detail
+  **779,305** / `f945ccf1d81106067777688b44ec6e4782d5cdd689aa44dd7142329d72e7b693`, desktop list
+  **620,296** / `6fed609a3205c009ab0ab4cbe287af7b2314d2db6b6423069644ae188dacf9c7`, desktop focus-pinned
+  **609,176** / `787d084512d4112dad77a3ddc091fe4d5c69cf5fe425818f2adf7ba02edd31b5`, and desktop detail
+  **614,132** / `ede79803e3d2873503a8ea833260327f9264d663c3473e9822649f55ac2781da`.
+
+The required successor Slice then ran exactly once with zero retry as
+`20260830115041916-36220-7ed2dd2ef398` on the same clean source and stopped terminal red after
+**63,106 ms**, with **63 findings across 42 scopes**. The first **62** findings are Guide/Release
+instrument drift with two diagnosed causes: the probes synchronously read the preceding DOM before
+the intentionally microtask-deferred archive published, and their oracle still carried the
+superseded 26-partial/15-unavailable inventory plus older Scout, conquest, reward and audio copy
+instead of current 9 categories / 41 topics / 34 partial / 7 unavailable and live player truth.
+The independent final finding is product-red: after accepted custom-world naming, a valid
+keyboard CF1
+Follow never reached its browser outcome before the fixed 6,000 ms diagnostic timeout. Six partial
+Earth/Galaxy/Guide/Settings/Sol/Universe screenshots were retained. Slice was not retried, and Glass
+and Recovery did not run.
+
+- `ARC4_SLICE_PR35_GUIDE_INSTRUMENT_AND_NAMED_CF1_PRODUCT_FAILURE_20260830_941BA45.json.gz`:
+  **40,180**
+  compressed bytes, SHA-256
+  `c7b314352c65e5dd24120eb5982a78e87a899f488a78e3c205156a2e134eedad`; **522,130** raw bytes,
+  SHA-256 `65917019eeb8c74d258b89ab793ad13db2fc2619da1f21d7b0b2b6550e44c07d`.
+- `ARC4_SLICE_PR35_GUIDE_INSTRUMENT_AND_NAMED_CF1_PRODUCT_FAILURE_20260830_941BA45.log.gz`:
+  **19,473**
+  compressed bytes, SHA-256
+  `d5321f9ea85d949f32f6b688ddbc11b8638ae6e776a97feb6502b7ca392416f9`; **253,140** raw bytes,
+  SHA-256 `c54bd170a95eedf884bf591dd4c17241a1460cfcde7dc3a79cfa32bcdc56113c`.
+- The six partial PNG bindings are Earth **588,364** /
+  `4d3b4fbfcf32a4312d53a82d71938cc37426b42f2acaefba486fd2030ee56da0`, Galaxy **576,220** /
+  `804d9cc3025eb27963708a363875c498ee27a9ed472c07f906ebcfeb75434c8b`, Guide **294,892** /
+  `c0eef136185627cc39448d4b872807d947e0bb3605c6c2b9ff7b7528e60bca5b`, Settings **290,540** /
+  `689bf3d685c91179d84e01d03cb53976f8d4f541be4cbf8fd60acbd330a6081a`, Sol **227,540** /
+  `acfd55d7d4e88c886ec98c57e241da8f52f5fd556cad3d6ef7fcb6d9dd0992c5`, and Universe **362,689** /
+  `ca13afd64c08b4528f380124c01de0947d5ee6e408a59de492289fa6a6b136e2`.
+- `port/v2/tests/pr35-sealed-worker-evidence-carrier.test.ts` independently binds all three
+  compressed/raw artifacts, exact clean source, one-attempt/no-retry chronology, browser,
+  authorities, complete Compendium ledger/review packet, the **62 + 1** Slice classification,
+  partial screenshots, and the absence of Glass/Recovery evidence or PASS markers inside the
+  preserved Slice artifacts, without importing a live evaluator or budget that could relabel the
+  history.
+
+The bounded changed-head repair keeps Guide/release publication deferred but makes every dependent
+probe await the exact DOM identity it requested. It binds the canonical **9 categories / 41 unique
+topics / 34 partial / 7 unavailable** map and current gameplay copy, with bidirectional publication,
+mapping, stale-DOM and mutation/restore controls. The named-CF1 product repair removes the accepted
+custom-world name transaction's early aggregate catch-up. Direct Travel owns its accepted route,
+arrival and source-proved galaxy-event aggregate; Follow additionally owns Follow/Jumps/wayfarer.
+If the post-name route refuses or otherwise does
+not join progression, the world-name transaction queues exactly one aggregate catch-up after its
+own settlement instead of starving Follow. A synchronous reservation defers/coalesces ordinary save
+checkpoints across the handoff and re-arms one afterward; private heartbeat/pagehide owners keep
+their exact boundary. The fixed
+timeout remains diagnostic rather than becoming a sleep or retry.
+
+No unrelated gameplay system, creature, genome, art structure or save schema changed in this
+repair. There is no
+changed-head browser certificate yet, so the exact `941ba45…` PASS/red chronology grants no Glass,
+Recovery, HUMAN, hosted, merge, release, version-bump or deploy authority. Edge `.53` is provenance
+only; a compatible point update never triggers rebaseline, repin or threshold movement.
+
 ### Signed `dc6004c…` execution-late successor painter-import product stop — 0/78, all blocked
 
 Exact clean signed source `dc6004cf4426df72bea141ac77b0be927f36886c` ran

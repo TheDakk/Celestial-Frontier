@@ -143,12 +143,20 @@ function arc9MainErrors(source: string): string[] {
     'async function commitArc9FollowedSearchRoute(',
     '\nconst searchTravel =',
   );
+  const worldNameAction = section(
+    source,
+    'async function commitArc0WorldNameForSearch(',
+    '\nfunction publishAcceptedSearchNavigation(',
+  );
   /* Starter Charter, Binder, Survey, Travel, Atlas Favorite, and accepted
      Follow atomically include their event joins, aggregate refresh, and rank
-     fixed point in the same receipt. Adding the ordinary catch-up queue would
-     create a second product receipt. Explorer self-rename and Frontier ending
-     choice change no rank input and are also excluded. */
+     fixed point in the same receipt. World name is the composite predecessor
+     of Search Travel/Follow: its adapter queues a catch-up only after a joined
+     successor refuses. Adding the ordinary owner-finally queue to any of these
+     creates a second receipt or starves that successor. Explorer self-rename
+     and Frontier ending choice change no rank input and are also excluded. */
   for (const [label, owner] of [
+    ['world-name composite predecessor', worldNameAction],
     ['Starter Charter', starterCharterAction],
     ['Binder', binderAction],
     ['Survey', surveyAction],
@@ -170,12 +178,13 @@ function arc9MainErrors(source: string): string[] {
     .replace(surveyAction, '')
     .replace(directTravelAction, '')
     .replace(atlasFavoriteAction, '')
-    .replace(followAction, '');
+    .replace(followAction, '')
+    .replace(worldNameAction, '');
   const settleMatches = [...progressionOwnerSource.matchAll(
     /actionClaim\.settle\(durable\);\n\s+if \(durable\) queueArc9ProgressionRefresh\(actionClaim\.operation\);/gu,
   )].length;
   const rawSettles = [...progressionOwnerSource.matchAll(/actionClaim\.settle\(durable\);/gu)].length;
-  if (settleMatches !== rawSettles || rawSettles < 11) {
+  if (settleMatches !== rawSettles || rawSettles < 10) {
     errors.push('one or more durable product owners do not schedule progression catch-up');
   }
 
@@ -255,6 +264,14 @@ describe('Arc 9 Main/Records integration', () => {
       '    actionClaim.settle(durable);',
       '    actionClaim.settle(durable);\n    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);',
     ))).toContain('accepted Follow queues a second progression refresh');
+
+    expect(arc9MainErrors(replaceInSectionExact(
+      mainSource,
+      'async function commitArc0WorldNameForSearch(',
+      '\nfunction publishAcceptedSearchNavigation(',
+      '    actionClaim.settle(durable);',
+      '    actionClaim.settle(durable);\n    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);',
+    ))).toContain('world-name composite predecessor queues a second progression refresh');
 
     expect(arc9MainErrors(replaceInSectionExact(
       mainSource,

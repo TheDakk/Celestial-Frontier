@@ -63,7 +63,8 @@
 > reload, Training restore and capture reconciliation; it cannot be resurrected from acquisition
 > history. Prime claims remain independent of companion use.
 
-> **2026-08-29 player-live explorer-name + CF1 record boundary:** Settings now exposes one separate
+> **2026-08-30 current player-live explorer-name + named-CF1 composite boundary:** Settings exposes
+> one separate
 > **Explorer name → Change name** action. It reuses the shipped sanitizer/24-character cap, changes
 > only `explorerName`, and makes cleaned-empty or unchanged input a receipt-free no-op. One immutable
 > receipt and F4 CAS settle with no retry or optimistic name; durable ambiguity restores the old live
@@ -72,11 +73,28 @@
 >
 > Native **Share** on an exact valid world now commits `stats.shares` and the one-time `share` event
 > before the independent clipboard copy/fallback result. A submitted CF1 **Follow** commits only after
-> Search has source-proven and reach-authorized the route; the accepted saved route, `stats.jumps` and
-> one-time `wayfarer` event share one transaction. Ordinary direct navigation cannot earn Follow.
-> Each action uses one F4 receipt/CAS without retry or optimistic counter/route publication; refusal,
-> stale authority and failed writes count nothing, while durable ambiguity reload-converges instead
-> of applying twice. CF1 encoding, strict source verification and route policy remain unchanged.
+> Search has source-proven and reach-authorized the route. Direct Travel owns its accepted route,
+> arrival, galaxy visit and any source-proved galaxy-kind event; Follow owns that arrival aggregate
+> plus `stats.jumps` and one-time `wayfarer` in its single transaction. Direct navigation still
+> cannot earn Follow. Neither depends on the accepted custom-world name's earlier catch-up. The
+> custom-world name transaction no longer runs an early aggregate catch-up that can occupy the
+> shared product coordinator and starve the immediately submitted route. If the post-name route is
+> refused or otherwise does not join that progression, the world-name settlement queues exactly one
+> aggregate catch-up afterward. An ordinary save checkpoint cannot interpose: the composite reserves
+> the handoff, coalesces ordinary attempts, and re-arms one after the route/catch-up enqueue. Each
+> action keeps
+> one F4 receipt/CAS, no retry and no optimistic counter/route publication; refusal, stale authority
+> and failed writes count nothing, while durable ambiguity reload-converges instead of applying
+> twice. The fixed browser timeout remains diagnostic. CF1 encoding, strict source verification,
+> reach and route policy remain unchanged.
+>
+> Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` first passed Compendium
+> **78/78** once/no-retry, then its one Slice run
+> `20260830115041916-36220-7ed2dd2ef398` stopped after 63,106 ms: 62 Guide/Release instrument-
+> drift findings (deferred-publication reads plus stale inventory/player-copy authority) and the
+> independent named-CF1 Follow starvation above. The changed-
+> head composite repair has no browser certificate yet; Slice was not retried and Glass/Recovery did
+> not run. No creature, genome, breeding, lineage, CF1 codec or save-schema structure changed.
 
 > **2026-08-26 historical pre-action Arc 5B boundary (superseded where the 2026-08-29 overlay
 > above differs):** the non-public exact-five V2 successor now
@@ -184,7 +202,7 @@
 > deviation and new compatibility tests.
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the dated v2
-overlays match the current local `port/v2` candidate as of 2026-08-29. Carries v1.8.6
+overlays match the current local `port/v2` candidate as of 2026-08-30. Carries v1.8.6
 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette

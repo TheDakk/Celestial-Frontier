@@ -159,6 +159,7 @@ const SHARING_COPY_CONTRADICTIONS = Object.freeze([
   /(?:Share|Follow)[^.!?]{0,64}(?:automatically )?retries/i,
   /optimistic(?:ally)?[^.!?]{0,48}(?:publishes?|changes?|moves?)[^.!?]{0,48}(?:Share|Follow|route|Shares|Jumps)/i,
   /(?:stale|forged|refused|failed)[^.!?]{0,96}(?:counts?|earns?|grants?)[^.!?]{0,48}(?:Share|Follow|share|wayfarer)/i,
+  /(?:named|custom)[^.!?]{0,64}(?:progression|catch-up)[^.!?]{0,64}before[^.!?]{0,32}Follow/i,
 ]);
 
 const CAPTURE_COPY_CONTRADICTIONS = Object.freeze([
@@ -328,6 +329,10 @@ function cf1SharingGuideCopyIsTruthful(body: string): boolean {
     && /Share and Follow each use one receipt and one compare-and-swap with no retry or optimistic record or route/i.test(copy)
     && /stale, refused, or failed write counts nothing/i.test(copy)
     && /durable ambiguity reloads instead of applying twice/i.test(copy)
+    && /code carries an accepted custom world name[^.!?]{0,64}name settles first/i.test(copy)
+    && /submitted Follow settles next without an intervening progression write/i.test(copy)
+    && /successful Follow still owns the route and progression in its single receipt/i.test(copy)
+    && /post-name route refuses or otherwise cannot join that progression[^.!?]{0,96}exactly one bounded name catch-up is queued afterward/i.test(copy)
     && SHARING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
@@ -335,11 +340,22 @@ function cf1SharingReleaseCopyIsTruthful(body: string): boolean {
   return /WORLD CODES KEEP THE WHOLE DESTINATION/i.test(body)
     && /valid-world Share first settles its Shares record and one-time share achievement before the independent clipboard copy\/fallback result/i.test(body)
     && /submitted CF1 earns Follow only after its route is source-proven, reach-authorized, and accepted/i.test(body)
-    && /accepted saved route, Jumps record, galaxy visit, wayfarer achievement, and any source-proved quasar or dwarf-galaxy event settle together in the same receipt/i.test(body)
-    && /ordinary direct navigation owns none of those Follow records/i.test(body)
+    && /accepted saved route, Jumps record, and wayfarer achievement settle with its galaxy visit and any source-proved quasar or dwarf-galaxy event in the same receipt/i.test(body)
+    && /ordinary direct navigation cannot own Follow, Jumps, or wayfarer/i.test(body)
+    && /still owns its source-proved arrival and galaxy-event aggregate/i.test(body)
     && /Each action uses one receipt and one compare-and-swap with no retry or optimistic record or route/i.test(body)
     && /durable ambiguity reloads instead of applying twice/i.test(body)
+    && /named planet code[^.!?]{0,64}custom world name first/i.test(body)
+    && /Follow own the joined route and progression without an intervening catch-up writer/i.test(body)
+    && /successful Follow still uses its single receipt/i.test(body)
+    && /post-name route that refuses or otherwise does not join progression queues exactly one later bounded catch-up for the already-committed name/i.test(body)
     && SHARING_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+}
+
+function releaseTravelRowsAgree(worldCodes: string, rank: string): boolean {
+  return /ordinary direct navigation cannot own Follow, Jumps, or wayfarer, but still owns its source-proved arrival and galaxy-event aggregate/i.test(worldCodes)
+    && /wormhole\/quasar\/dwarf-galaxy travel/i.test(rank)
+    && /ordinary navigation cannot counterfeit Follow/i.test(rank);
 }
 
 function miningGuideCopyIsTruthful(body: string): boolean {
@@ -1162,6 +1178,7 @@ describe('v2 Guide capability filter', () => {
     expect(cf1SharingGuideCopyIsTruthful(codes)).toBe(true);
     expect(atlasGuideCopyIsTruthful(atlas)).toBe(true);
     expect(cf1SharingReleaseCopyIsTruthful(worldCodes!)).toBe(true);
+    expect(releaseTravelRowsAgree(worldCodes!, rankBullet!)).toBe(true);
     expect(rankGuideCopyIsTruthful(rank)).toBe(true);
     expect(rankReleaseCopyIsTruthful(rankBullet!)).toBe(true);
     expect(settings).toContain('Explorer name → Change name');
@@ -1172,13 +1189,23 @@ describe('v2 Guide capability filter', () => {
       codes.replace('independently of whether clipboard access succeeds', 'clipboard ownership omitted'),
     )).toBe(false);
     expect(cf1SharingReleaseCopyIsTruthful(
-      worldCodes!.replace('ordinary direct navigation owns none of those Follow records', 'ordinary direct navigation earns Follow'),
+      worldCodes!.replace('Ordinary direct navigation cannot own Follow, Jumps, or wayfarer', 'Ordinary direct navigation earns Follow'),
     )).toBe(false);
     expect(cf1SharingGuideCopyIsTruthful(
       codes.replace('galaxy-visit ledger, and any source-proved quasar or dwarf-galaxy achievement', 'arrival join omitted'),
     )).toBe(false);
     expect(cf1SharingReleaseCopyIsTruthful(
-      worldCodes!.replace('galaxy visit, wayfarer achievement, and any source-proved quasar or dwarf-galaxy event', 'wayfarer achievement only'),
+      worldCodes!.replace('galaxy visit and any source-proved quasar or dwarf-galaxy event', 'wayfarer only'),
+    )).toBe(false);
+    expect(cf1SharingGuideCopyIsTruthful(
+      codes.replace('the submitted Follow settles next without an intervening progression write', 'the progression catch-up runs before Follow'),
+    )).toBe(false);
+    expect(cf1SharingReleaseCopyIsTruthful(
+      worldCodes!.replace('a post-name route that refuses or otherwise does not join progression queues exactly one later bounded catch-up for the already-committed name', 'every named route queues its catch-up before Follow'),
+    )).toBe(false);
+    expect(releaseTravelRowsAgree(
+      worldCodes!.replace('still owns its source-proved arrival and galaxy-event aggregate', 'owns no arrival or galaxy events'),
+      rankBullet!,
     )).toBe(false);
     expect(atlasGuideCopyIsTruthful(
       atlas.replace('first explicit false-to-true choice owns <code>curator</code>', 'imported favorites infer <code>curator</code>'),
@@ -2451,8 +2478,8 @@ describe('legacy and v2 release channels', () => {
       /different worlds that happen to share a planet seed remain independent/,
       /valid-world Share first settles its Shares record and one-time share achievement before the independent clipboard copy\/fallback result/,
       /submitted CF1 earns Follow only after its route is source-proven, reach-authorized, and accepted/,
-      /accepted saved route, Jumps record, galaxy visit, wayfarer achievement, and any source-proved quasar or dwarf-galaxy event settle together in the same receipt/,
-      /ordinary direct navigation owns none of those Follow records/,
+      /accepted saved route, Jumps record, and wayfarer achievement settle with its galaxy visit and any source-proved quasar or dwarf-galaxy event in the same receipt/,
+      /ordinary direct navigation cannot own Follow, Jumps, or wayfarer, but still owns its source-proved arrival and galaxy-event aggregate/i,
       /Every accepted galaxy, star, or planet route is regenerated from the seeded universe and source-verified/,
       /Stale, forged, or incomplete rows remain visible but disabled/,
       /current 15-card drill keeps six real navigation lessons[^\n]*read-only Planetside, Engineering, Compendium, Records, Guardian\/combat, and CF1 Share\/Follow orientation/,
