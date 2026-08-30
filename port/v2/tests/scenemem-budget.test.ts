@@ -39,13 +39,9 @@ const CALIBRATION_BUILD_FILES_SHA256 = '3d91bfb1fc1457bbac3309e84b998898591cb762
 const HISTORICAL_BUILD_SHA256 = '44eb670cc2160c39ff5c159f5f1aec1e68e5d6bae5d02e75bf0e2eec026ff81e';
 const HISTORICAL_BUILD_FILE_COUNT = 38;
 const HISTORICAL_BUILD_FILES_SHA256 = 'ffd2616047932577db169f05d891ea96054bd2dcc5cb65c1d02a2a3df7f1ca03';
-const HISTORICAL_PRE_ACTIVATION_BUDGET_SHA256 =
-  '110211c3f53e623f3eff1d6df7b01606225baef6cde9a0682b5460abb04dffe5';
-const HISTORICAL_ACTIVATED_BUDGET_SHA256 =
-  'e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375';
-const CURRENT_PRE_ACTIVATION_BUDGET_SHA256 =
-  '79fe1a7ae5e401ed9cc6473d8b404cb99917a48c29e0496427976f07dcad0eda';
-const CURRENT_ACTIVATED_BUDGET_SHA256 =
+const SOURCE_NORMALIZED_BUDGET_SHA256 =
+  '11707d53bd640b9f2cd0bb1daf963a1c72308239b10faea0332f030f8bd2743f';
+const RAW_V4_BUDGET_SHA256 =
   '476b85e9e38d0382015663741d08766239688082db0db4536e4d734b98912ee6';
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const CANDIDATES = [
@@ -770,6 +766,9 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(Object.keys(budget.profiles.phone).sort()).toEqual([...CURRENT_BUDGET_FIELDS].sort());
     expect(Object.keys(budget.profiles.desktop).sort()).toEqual([...CURRENT_BUDGET_FIELDS].sort());
     expect(validateSceneMemoryBudget(budget)).toEqual({ ok: true, errors: [] });
+    const currentBudgetSha256 = sha256(fs.readFileSync(budgetPath));
+    expect(currentBudgetSha256).toBe(SOURCE_NORMALIZED_BUDGET_SHA256);
+    expect(currentBudgetSha256).not.toBe(RAW_V4_BUDGET_SHA256);
   });
 
   it('replaces only the two raw heap admission fields with normalized equivalents', () => {
