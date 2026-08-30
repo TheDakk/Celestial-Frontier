@@ -167,7 +167,92 @@ SHA-256 `304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184`. Prod
 input, measurements, samples and numeric ceilings remain unchanged. Its complete browser-free
 battery passed **235 files / 2,404 tests / 1 skipped**, and all three TypeScript programs passed.
 The activation is not an Edge rebaseline; one clean no-retry exact-budget certification plus named
-verification is still pending before Compendium or any later browser stage may run.
+verification then passed on exact signed source `20460008…` and is preserved immediately below.
+
+### Clean `20460008…` fixed-second SceneMemory certificate — 44/44 exact-budget PASS
+
+Clean committed source `2046000873f98318c767db53d2ffb2abac71cc94` ran the mandatory adjacent
+live heap-phase selftest immediately before certification. Its intentionally retained 512 KiB per
+cycle registered exactly **524,288 B/cycle in both the probe and scored lanes**; after release,
+backing storage fell from **2,097,191 bytes to 39**. This proves the always-scored second complete
+pass still detects real retained growth and releases it before product measurement.
+
+Exact run `20260830-pr35-fixed-second-2046000-scenemem-certification` then ran once with zero
+automatic retries against active budget SHA-256
+`304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184`. It bound input
+`cf-v2-scene-memory-input/v4`, collector
+`7a1dc670327fed3f04fa120a78be64a5a87227a355292f47d37353522f50d931`, unchanged product
+build `8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254`, and exact clean
+source begin/end. Microsoft Edge `152.0.4191.53` / CDP `1.3` is per-run provenance only, not a
+point-version baseline or rebaseline trigger.
+
+The exact-budget result passed **44/44** with no findings or fatal events and browser, server and
+workspace-lock cleanup all true. Phone measured a **91,363.2 B/cycle** maximum warm-heap slope and
+**272,028 B** aggregate range; desktop measured **113,537.6 B/cycle** and **339,144 B**. These
+remain strictly below the unchanged 131,072 B/cycle and 524,288 B rulers. The complete paired raw
+carriers, ownership/resource facts, route and BFCache evidence, all 44 outcome identities and every
+reported metric are independently replayed and exact-hash-bound by
+`port/v2/tests/scenemem-budget.test.ts`.
+
+The named verifier passed for this exact report with the same tracked budget. One earlier verifier
+invocation omitted required `--budget` and correctly failed closed before verification; correcting
+that invocation reused the immutable report and did not rerun the browser product stage.
+
+- `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CERTIFICATION_20260830_2046000.json.gz`: 49,762 compressed
+  bytes, SHA-256 `42ee43f8cf7250a88a0498da62dedb492843be775535a4caa0c4cd6a4229f4d0`;
+  786,854 raw bytes, SHA-256
+  `c43bda32846fe4539d9136bac6d0f002af68b259c01ec43beb447a12dbad5c4d`.
+
+The carrier passes gzip integrity and is the immutable SceneMemory certificate for this exact clean
+source. It authorized the one following Compendium attempt only; that later stage stopped red as
+documented next. It grants no hosted result, HUMAN approval, merge, release, version bump or
+deployment authority.
+
+### Clean `20460008…` Compendium quiescent-contract stop — 76/78, stale warm precondition
+
+Clean committed source `2046000873f98318c767db53d2ffb2abac71cc94` ran exact Compendium run
+`20260830-pr35-2046000-compendium-certification` once with zero automatic retries under Microsoft
+Edge `152.0.4191.53` / CDP `1.3`. The exact browser point version is per-run provenance only; it is
+not a version pin, rebaseline trigger or reason to move a threshold. The report retained all 78
+outcomes and finished **76/78**. Only `phone/warm-precondition` and
+`desktop/warm-precondition` were red. Every resource ceiling, heap/byte/DOM bound, cache plateau,
+identity and ownership check, disposal, answerability, worker release and cleanup outcome was
+green. The exact named verifier reproduced the terminal FAIL, the campaign stopped, and
+Compendium was not retried.
+
+Both profiles recorded the same real closed-panel quiescent state: eight live Planetside leases
+plus an independently bounded 17 most-recent unleased thumbnails, for exactly 25 cached
+thumbnails. The previous warm precondition still demanded full native cache occupancy—96 entries
+on phone or 256 on desktop—even though those values are capacity ceilings rather than the product's
+post-close target. The evidence therefore isolates a stale measurement contract, not a product
+leak, cache shortfall or Edge-version failure. Rolling back the bounded product compaction or
+artificially filling the cache would measure a state players do not retain and is not justified by
+this report.
+
+The permanent browser-free repair keeps the native 96/256 values as ceilings and seals the real
+quiescent outcome independently: exactly 17 unleased cached identities in addition to the exact
+live-lease set; leased identities must be unique, cached and a subset of the unique cache set;
+decoded pixels/bytes must equal exact 132×132 thumbnail math; portrait cache, queued work, active
+work and subscribers must be zero; the worker must be released; and the closed panel must own empty
+diagnostic and raw virtual-window, list and detail DOM. Stable warm membership and counters remain
+required. Independent diagnostic-only/raw-only mutations and direct replay of this preserved real
+carrier prevent duplicate observation channels from masking a missing clause. The repaired current
+measurement authority is
+`dacf6ab03b35f65ebd76b3a28a0c2ef2868ea505740f2cbe614d399cef1dbe7a`, under outcome
+contract `a2de8a5830a99678c487c9200519dd560bcf2497c1791e4d5dd6a5dd4b77e092` and collector
+`888b9dfdee9d973d17e1901eb26abf1a49015e6f21f0647f8d3043c3e052c964`. The product
+producer, version-tolerant Edge-family/CDP `1.3` authority, historical samples, historical ruler
+bindings and every numeric ceiling remain unchanged. A fresh exact-source no-retry Compendium
+certificate and named verification are still required; this red is not relabelled green.
+
+- `ARC1C_COMPENDIUM_PR35_QUIESCENT_CONTRACT_FAILURE_20260830_2046000.json.gz`: 291,948
+  compressed bytes, SHA-256
+  `8b3456acc98a2ea6b0f061e34a9d71bfd38ae718eb04989fec6b6f36c84e60c2`; 4,798,248 raw
+  bytes, SHA-256 `6a2a45bd8f20491900119a43aa907ae73d1206a41ae921be78e446b5c5f9c5ea`.
+
+The carrier passes gzip integrity and remains immutable evidence for exact clean source
+`20460008…` only. It grants no green Compendium certificate, successor browser-stage authority,
+hosted result, HUMAN approval, merge, release, version bump or deployment authority.
 
 ### Signed `3f69e88e…` universe-polish + bounded Arc 5 Feed certificate — complete local chain PASS
 

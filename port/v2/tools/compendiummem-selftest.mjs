@@ -499,9 +499,18 @@ function activeBudget(fixture) {
   };
 }
 
+const SYNTHETIC_THUMB_EDGE_PX = 132;
+const SYNTHETIC_WARM_RETAINED_UNLEASED_THUMBS = 17;
+const SYNTHETIC_PLANETSIDE_LOGICAL_IDS = Object.freeze(
+  Array.from({ length: 8 }, (_, index) => `planet:${index}`),
+);
+const SYNTHETIC_PLANETSIDE_VISUAL_KEYS = Object.freeze(
+  SYNTHETIC_PLANETSIDE_LOGICAL_IDS.map((logicalId) => `visual-${logicalId}`),
+);
+
 function artSnapshot({ portrait = false, closed = false, generation = 1 } = {}) {
   const cacheEntries = 24;
-  const decodedPixels = cacheEntries * 132 * 132;
+  const decodedPixels = cacheEntries * SYNTHETIC_THUMB_EDGE_PX * SYNTHETIC_THUMB_EDGE_PX;
   return {
     schema: ART_DIAGNOSTICS_SCHEMA,
     deviceClass: 'desktop',
@@ -514,7 +523,7 @@ function artSnapshot({ portrait = false, closed = false, generation = 1 } = {}) 
     live: {
       cacheEntries, decodedPixels, decodedBytes: decodedPixels * 4,
       encodedBytes: 120_000, queuedJobs: 0, activeJobs: 0,
-      leases: closed ? 4 : 20, subscribers: 0,
+      leases: closed ? SYNTHETIC_PLANETSIDE_LOGICAL_IDS.length : 20, subscribers: 0,
       portraitCacheEntries: portrait ? 1 : 0,
       portraitEncodedBytes: portrait ? 400_000 : 0,
     },
@@ -587,7 +596,8 @@ function workerArtDiagnostics({ lazy = false } = {}) {
 
 function diagnostic({ generation, mode = 'list', count = 1500, ids = [], portrait = false,
   closed = false, planetside = true, lazy = false, pinned = null } = {}) {
-  const widths = ids.map(() => 132);
+  const widths = ids.map(() => SYNTHETIC_THUMB_EDGE_PX);
+  const panelClosed = mode === 'closed';
   return {
     schema: DIAGNOSTICS_SCHEMA,
     documentToken: lazy ? 'selftest-lazy-document' : 'selftest-main-document',
@@ -598,10 +608,14 @@ function diagnostic({ generation, mode = 'list', count = 1500, ids = [], portrai
       renderCommits: 50, staleCompletionDrops: 0, closedCompletionCommits: 0,
     },
     window: {
-      start: pinned ? 600 : 0, end: pinned ? 620 : Math.max(1, ids.length),
-      overscan: 8, beforePx: pinned ? 34_800 : 0, afterPx: 50_000,
+      start: panelClosed ? 0 : (pinned ? 600 : 0),
+      end: panelClosed ? 0 : (pinned ? 620 : Math.max(1, ids.length)),
+      overscan: panelClosed ? 0 : 8,
+      beforePx: panelClosed ? 0 : (pinned ? 34_800 : 0),
+      afterPx: panelClosed ? 0 : 50_000,
       mountedRowCount: ids.length, mountedLogicalIds: [...ids],
-      focusedLogicalId: pinned, pinnedLogicalIds: pinned ? [pinned] : [],
+      focusedLogicalId: panelClosed ? null : pinned,
+      pinnedLogicalIds: panelClosed ? [] : (pinned ? [pinned] : []),
     },
     surfaces: {
       list: {
@@ -614,11 +628,14 @@ function diagnostic({ generation, mode = 'list', count = 1500, ids = [], portrai
         naturalHeight: mode === 'detail' ? 440 : 0,
       },
       planetside: {
-        visible: planetside, imageCount: planetside ? 4 : 0,
-        logicalIds: planetside ? ['planet:0', 'planet:1', 'planet:2', 'planet:3'] : [],
-        naturalWidths: planetside ? [132, 132, 132, 132] : [],
-        naturalHeights: planetside ? [132, 132, 132, 132] : [],
-        thumbStates: planetside ? ['ready', 'ready', 'ready', 'ready'] : [],
+        visible: planetside,
+        imageCount: planetside ? SYNTHETIC_PLANETSIDE_LOGICAL_IDS.length : 0,
+        logicalIds: planetside ? [...SYNTHETIC_PLANETSIDE_LOGICAL_IDS] : [],
+        naturalWidths: planetside
+          ? SYNTHETIC_PLANETSIDE_LOGICAL_IDS.map(() => SYNTHETIC_THUMB_EDGE_PX) : [],
+        naturalHeights: planetside
+          ? SYNTHETIC_PLANETSIDE_LOGICAL_IDS.map(() => SYNTHETIC_THUMB_EDGE_PX) : [],
+        thumbStates: planetside ? SYNTHETIC_PLANETSIDE_LOGICAL_IDS.map(() => 'ready') : [],
       },
     },
     lazyArt: workerArtDiagnostics({ lazy }),
@@ -642,8 +659,10 @@ function snapshot({ generation, ids = [], mode = 'list', count = 1500,
         logicalId, naturalWidth: 132, naturalHeight: 132,
         visualKey: `visual-${logicalId}`, sourceSha256: `${index}`.padStart(64, '0'),
       })),
-      planetsideImages: diagnostics.surfaces.planetside.logicalIds.map((logicalId) => ({
-        logicalId, naturalWidth: 132, naturalHeight: 132,
+      planetsideImages: diagnostics.surfaces.planetside.logicalIds.map((logicalId, index) => ({
+        logicalId, naturalWidth: SYNTHETIC_THUMB_EDGE_PX,
+        naturalHeight: SYNTHETIC_THUMB_EDGE_PX,
+        visualKey: SYNTHETIC_PLANETSIDE_VISUAL_KEYS[index], thumbState: 'ready',
       })),
       detailNaturalWidth: mode === 'detail' ? 440 : 0,
       detailNaturalHeight: mode === 'detail' ? 440 : 0,
@@ -651,9 +670,35 @@ function snapshot({ generation, ids = [], mode = 'list', count = 1500,
       detailSrcPresent: mode === 'detail',
       activeLogicalId: null, activeElementId: null,
       focusedOutsideNormalWindow: pinned !== null,
-      viewportHeight: 844, scrollerHeight: 600, scrollTop: 0,
+      viewportHeight: 844, scrollerHeight: mode === 'closed' ? 0 : 600, scrollTop: 0,
     },
   };
+}
+
+function setSyntheticWarmRetainedThumbs(
+  point, retainedCount = SYNTHETIC_WARM_RETAINED_UNLEASED_THUMBS,
+) {
+  const art = point.diagnostics.art;
+  const leasedKeys = point.raw.planetsideImages.map((image) => image.visualKey);
+  const retainedKeys = Array.from(
+    { length: retainedCount }, (_, index) => `warm-retained-unleased-${index}`,
+  );
+  const cachedKeys = [...leasedKeys, ...retainedKeys];
+  const decodedPixels = cachedKeys.length
+    * SYNTHETIC_THUMB_EDGE_PX * SYNTHETIC_THUMB_EDGE_PX;
+  art.live.cacheEntries = cachedKeys.length;
+  art.live.decodedPixels = decodedPixels;
+  art.live.decodedBytes = decodedPixels * 4;
+  art.live.leases = leasedKeys.length;
+  art.live.queuedJobs = 0;
+  art.live.activeJobs = 0;
+  art.live.subscribers = 0;
+  art.live.portraitCacheEntries = 0;
+  art.live.portraitEncodedBytes = 0;
+  art.keys.leased = leasedKeys;
+  art.keys.queued = [];
+  art.keys.active = [];
+  art.keys.cached = cachedKeys;
 }
 
 function syntheticFilterObservation({
@@ -950,7 +995,7 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
   closed.raw.activeElementId = 'dockcodex';
   const planetside = snapshot({ generation: 14, ids: [], mode: 'closed', portrait: true, closed: true });
   const warm = Array.from({ length: 4 }, (_, index) =>
-    snapshot({ generation: 20 + index, ids: [], mode: 'closed', portrait: true,
+    snapshot({ generation: 20 + index, ids: [], mode: 'closed', portrait: false,
       closed: true, heap: 10_000_000 + index * 50 }));
   for (const point of [initial, firstPoint, resizeExpanded, resizeContracted, resizeRestored,
     middlePoint, lastPoint, filtered, detail, detailClosed, back, focusPinned, closed,
@@ -958,17 +1003,13 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
     point.diagnostics.art.deviceClass = profile;
   }
   const nativeCacheEntries = profile === 'phone' ? 96 : 256;
-  const nativeDecodedPixels = nativeCacheEntries * 132 * 132;
+  const nativeDecodedPixels = nativeCacheEntries
+    * SYNTHETIC_THUMB_EDGE_PX * SYNTHETIC_THUMB_EDGE_PX;
   for (const point of warm) {
     point.diagnostics.art.limits.cacheEntries = nativeCacheEntries;
     point.diagnostics.art.limits.decodedPixels = nativeDecodedPixels;
     point.diagnostics.art.limits.decodedBytes = nativeDecodedPixels * 4;
-    point.diagnostics.art.live.cacheEntries = nativeCacheEntries;
-    point.diagnostics.art.live.decodedPixels = nativeDecodedPixels;
-    point.diagnostics.art.live.decodedBytes = nativeDecodedPixels * 4;
-    point.diagnostics.art.keys.cached = Array.from(
-      { length: nativeCacheEntries }, (_, index) => `warm-key-${nativeCacheEntries - index}`,
-    );
+    setSyntheticWarmRetainedThumbs(point);
   }
   const warmCachePrecondition = clone(warm[0]);
   const postCapRestored = clone(warm.at(-1));
@@ -1026,19 +1067,25 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
           selectedInWindow: true, selectedPinned: false, activeLogicalId: filter,
         },
       },
-      close: { beforeLeases: 24, afterLeases: 4, releasesDelta: 20 },
+      close: {
+        beforeLeases: 24,
+        afterLeases: SYNTHETIC_PLANETSIDE_LOGICAL_IDS.length,
+        releasesDelta: 24 - SYNTHETIC_PLANETSIDE_LOGICAL_IDS.length,
+      },
       planetsideLifecycle: {
         hidden: {
           computedHidden: true, liveLeases: 0,
-          images: ['planet:0', 'planet:1', 'planet:2', 'planet:3'].map((logicalId) => ({
+          images: SYNTHETIC_PLANETSIDE_LOGICAL_IDS.map((logicalId) => ({
             logicalId, srcPresent: false, visualKeyPresent: false, thumbState: 'released',
           })),
         },
         revealed: {
-          liveLeases: 4,
-          logicalIds: ['planet:0', 'planet:1', 'planet:2', 'planet:3'],
-          images: ['planet:0', 'planet:1', 'planet:2', 'planet:3'].map((logicalId) => ({
-            logicalId, naturalWidth: 132, naturalHeight: 132,
+          liveLeases: SYNTHETIC_PLANETSIDE_LOGICAL_IDS.length,
+          logicalIds: [...SYNTHETIC_PLANETSIDE_LOGICAL_IDS],
+          images: SYNTHETIC_PLANETSIDE_LOGICAL_IDS.map((logicalId, index) => ({
+            logicalId, naturalWidth: SYNTHETIC_THUMB_EDGE_PX,
+            naturalHeight: SYNTHETIC_THUMB_EDGE_PX,
+            visualKey: SYNTHETIC_PLANETSIDE_VISUAL_KEYS[index], thumbState: 'ready',
           })),
         },
       },
@@ -3712,7 +3759,10 @@ export async function runCompendiumMemSelftest() {
     ['product budget status missing', (m) => { delete m.points.first.diagnostics.art.limits.budgetStatus; }, 'resource-live-limits'],
     ['product diagnostic schema drift', (m) => { m.points.first.diagnostics.schema = 'wrong'; }, 'resource-live-limits'],
     ['mixed document token', (m) => { m.points.first.diagnostics.documentToken = 'foreign-document'; }, 'resource-live-limits'],
-    ['close ownership leak', (m) => { m.points.closed.diagnostics.art.live.leases = 5; }, 'close-restores-focus'],
+    ['close ownership leak', (m) => {
+      m.points.closed.diagnostics.art.live.leases
+        = SYNTHETIC_PLANETSIDE_LOGICAL_IDS.length + 1;
+    }, 'close-restores-focus'],
     ['closed detail source retained', (m) => { m.points.detailClosed.raw.detailSrcPresent = true; m.points.detailClosed.raw.detailNaturalWidth = 440; m.points.detailClosed.raw.detailNaturalHeight = 440; }, 'close-dom-cleanup'],
     ['planetside overflow', (m) => { m.points.planetside.diagnostics.surfaces.planetside.logicalIds = Array.from({ length: 9 }, (_, i) => `p:${i}`); }, 'planetside-bounded'],
     ['hidden Planetside source retained', (m) => { m.phases.planetsideLifecycle.hidden.images[0].srcPresent = true; }, 'planetside-hide-release-reacquire'],
@@ -3722,14 +3772,156 @@ export async function runCompendiumMemSelftest() {
     ['missing last', (m) => { m.points.last.raw.mountedLogicalIds = []; }, 'last-row-reached'],
     ['warm jobs', (m) => { m.points.warm[2].diagnostics.art.live.activeJobs = 1; }, 'settled-jobs'],
     ['warm series short', (m) => { m.points.warm.pop(); }, 'warm-precondition'],
-    ['warm precondition cache short', (m) => {
-      m.phases.warmCachePrecondition.diagnostics.art.live.cacheEntries--;
+    ['warm precondition Compendium panel open', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.panel.open = true;
+      m.phases.warmCachePrecondition.diagnostics.panel.mode = 'list';
     }, 'warm-precondition'],
-    ['warm precondition decoded pixels short', (m) => {
-      m.phases.warmCachePrecondition.diagnostics.art.live.decodedPixels -= 132 * 132;
+    ['warm cycle Compendium panel open', (m) => {
+      m.points.warm[1].diagnostics.panel.open = true;
+      m.points.warm[1].diagnostics.panel.mode = 'list';
     }, 'warm-precondition'],
-    ['warm precondition decoded bytes short', (m) => {
-      m.phases.warmCachePrecondition.diagnostics.art.live.decodedBytes -= 132 * 132 * 4;
+    ['warm precondition retained mounted window row', (m) => {
+      const point = m.phases.warmCachePrecondition;
+      point.diagnostics.window.end = 1;
+      point.diagnostics.window.overscan = 8;
+      point.diagnostics.window.afterPx = 49_942;
+      point.diagnostics.window.mountedRowCount = 1;
+      point.diagnostics.window.mountedLogicalIds = ['warm-leaked-window-row'];
+      point.raw.mountedRowCount = 1;
+      point.raw.mountedLogicalIds = ['warm-leaked-window-row'];
+      point.raw.rowRects = [{
+        logicalId: 'warm-leaked-window-row', top: 0, bottom: 58, height: 58,
+      }];
+      point.raw.scrollerHeight = 600;
+    }, 'warm-precondition'],
+    ['warm cycle retained valid list thumbnail DOM', (m) => {
+      const point = m.points.warm[2];
+      const logicalId = 'warm-leaked-list-row';
+      point.diagnostics.window.end = 1;
+      point.diagnostics.window.overscan = 8;
+      point.diagnostics.window.afterPx = 49_942;
+      point.diagnostics.window.mountedRowCount = 1;
+      point.diagnostics.window.mountedLogicalIds = [logicalId];
+      point.diagnostics.surfaces.list = {
+        imageCount: 1,
+        naturalWidths: [SYNTHETIC_THUMB_EDGE_PX],
+        naturalHeights: [SYNTHETIC_THUMB_EDGE_PX],
+        thumbStates: ['ready'],
+        logicalIds: [logicalId],
+      };
+      point.raw.mountedRowCount = 1;
+      point.raw.mountedLogicalIds = [logicalId];
+      point.raw.rowRects = [{ logicalId, top: 0, bottom: 58, height: 58 }];
+      point.raw.listImages = [{
+        logicalId,
+        naturalWidth: SYNTHETIC_THUMB_EDGE_PX,
+        naturalHeight: SYNTHETIC_THUMB_EDGE_PX,
+        visualKey: 'warm-leaked-list-visual-key',
+        sourceSha256: 'a'.repeat(64),
+      }];
+      point.raw.scrollerHeight = 600;
+    }, 'warm-precondition'],
+    ['warm cycle retained live detail portrait DOM', (m) => {
+      const point = m.points.warm[3];
+      point.diagnostics.surfaces.detail = {
+        open: true,
+        logicalId: 'warm-leaked-detail',
+        naturalWidth: 440,
+        naturalHeight: 440,
+      };
+      point.raw.detailNaturalWidth = 440;
+      point.raw.detailNaturalHeight = 440;
+      point.raw.detailImageCount = 1;
+      point.raw.detailSrcPresent = true;
+    }, 'warm-precondition'],
+    ['warm diagnostic window drift without raw leak', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.window.start = 1;
+    }, 'warm-precondition'],
+    ['warm raw mounted row leak without diagnostic drift', (m) => {
+      m.points.warm[0].raw.mountedRowCount = 1;
+    }, 'warm-precondition'],
+    ['warm diagnostic list leak without raw image', (m) => {
+      m.points.warm[1].diagnostics.surfaces.list = {
+        imageCount: 1,
+        naturalWidths: [SYNTHETIC_THUMB_EDGE_PX],
+        naturalHeights: [SYNTHETIC_THUMB_EDGE_PX],
+        thumbStates: ['ready'],
+        logicalIds: ['warm-diagnostic-only-list-row'],
+      };
+    }, 'warm-precondition'],
+    ['warm raw list leak without diagnostic image', (m) => {
+      m.points.warm[1].raw.listImages = [{
+        logicalId: 'warm-raw-only-list-row',
+        naturalWidth: SYNTHETIC_THUMB_EDGE_PX,
+        naturalHeight: SYNTHETIC_THUMB_EDGE_PX,
+        visualKey: 'warm-raw-only-list-visual-key',
+        sourceSha256: 'b'.repeat(64),
+      }];
+    }, 'warm-precondition'],
+    ['warm diagnostic detail leak without raw source', (m) => {
+      m.points.warm[2].diagnostics.surfaces.detail = {
+        open: true,
+        logicalId: 'warm-diagnostic-only-detail',
+        naturalWidth: 440,
+        naturalHeight: 440,
+      };
+    }, 'warm-precondition'],
+    ['warm raw detail leak without diagnostic detail', (m) => {
+      const raw = m.points.warm[2].raw;
+      raw.detailNaturalWidth = 440;
+      raw.detailNaturalHeight = 440;
+      raw.detailImageCount = 1;
+      raw.detailSrcPresent = true;
+    }, 'warm-precondition'],
+    ['warm precondition hid Planetside roster', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.surfaces.planetside.visible = false;
+    }, 'warm-precondition'],
+    ['warm precondition Planetside roster short', (m) => {
+      m.phases.warmCachePrecondition.raw.planetsideImages.pop();
+    }, 'warm-precondition'],
+    ['warm precondition Planetside logical identity duplicated', (m) => {
+      const images = m.phases.warmCachePrecondition.raw.planetsideImages;
+      images[1].logicalId = images[0].logicalId;
+    }, 'warm-precondition'],
+    ['warm precondition diagnostic Planetside roster drift', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.surfaces.planetside.logicalIds[0]
+        = 'warm-diagnostic-roster-drift';
+    }, 'warm-precondition'],
+    ['warm precondition Planetside visual identity duplicated', (m) => {
+      const images = m.phases.warmCachePrecondition.raw.planetsideImages;
+      images[1].visualKey = images[0].visualKey;
+    }, 'warm-precondition'],
+    ['warm precondition Planetside thumbnail not exact 132px', (m) => {
+      m.phases.warmCachePrecondition.raw.planetsideImages[0].naturalWidth
+        = SYNTHETIC_THUMB_EDGE_PX - 1;
+    }, 'warm-precondition'],
+    ['warm precondition Planetside thumbnail not ready', (m) => {
+      m.phases.warmCachePrecondition.raw.planetsideImages[0].thumbState = 'placeholder';
+    }, 'warm-precondition'],
+    ['warm precondition live lease cardinality drift', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.leases++;
+    }, 'warm-precondition'],
+    ['warm precondition retained queued-key inventory', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.keys.queued
+        = ['warm-stale-queued-key'];
+    }, 'warm-precondition'],
+    ['warm precondition retained active-key inventory', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.keys.active
+        = ['warm-stale-active-key'];
+    }, 'warm-precondition'],
+    ['warm precondition retained-unleased count 16', (m) => {
+      setSyntheticWarmRetainedThumbs(m.phases.warmCachePrecondition, 16);
+    }, 'warm-precondition'],
+    ['warm precondition retained-unleased count 18', (m) => {
+      setSyntheticWarmRetainedThumbs(m.phases.warmCachePrecondition, 18);
+    }, 'warm-precondition'],
+    ['warm precondition decoded-pixel math drift', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.decodedPixels
+        -= SYNTHETIC_THUMB_EDGE_PX * SYNTHETIC_THUMB_EDGE_PX;
+    }, 'warm-precondition'],
+    ['warm precondition decoded-byte math drift', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.decodedBytes
+        -= SYNTHETIC_THUMB_EDGE_PX * SYNTHETIC_THUMB_EDGE_PX * 4;
     }, 'warm-precondition'],
     ['warm precondition encoded bytes exceed product limit', (m) => {
       const a = m.phases.warmCachePrecondition.diagnostics.art;
@@ -3739,8 +3931,8 @@ export async function runCompendiumMemSelftest() {
       m.phases.warmCachePrecondition.diagnostics.art.deviceClass
         = m.profile === 'phone' ? 'desktop' : 'phone';
     }, 'warm-precondition'],
-    ['warm cycle cache short', (m) => {
-      m.points.warm[1].diagnostics.art.live.cacheEntries--;
+    ['warm cycle retained-unleased count 16', (m) => {
+      setSyntheticWarmRetainedThumbs(m.points.warm[1], 16);
     }, 'warm-precondition'],
     ['warm precondition queued work', (m) => {
       m.phases.warmCachePrecondition.diagnostics.art.live.queuedJobs = 1;
@@ -3751,12 +3943,33 @@ export async function runCompendiumMemSelftest() {
     ['warm precondition leaked subscriber', (m) => {
       m.phases.warmCachePrecondition.diagnostics.art.live.subscribers = 1;
     }, 'warm-precondition'],
+    ['warm precondition retained portrait entry', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.portraitCacheEntries = 1;
+    }, 'warm-precondition'],
+    ['warm precondition retained portrait bytes', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.portraitEncodedBytes = 400_000;
+    }, 'warm-precondition'],
+    ['warm leased key absent from cache', (m) => {
+      const point = m.phases.warmCachePrecondition;
+      const missingKey = 'warm-uncached-planetside-key';
+      point.diagnostics.art.keys.leased[0] = missingKey;
+      point.raw.planetsideImages[0].visualKey = missingKey;
+    }, 'warm-precondition'],
+    ['warm leased key duplicated', (m) => {
+      const point = m.phases.warmCachePrecondition;
+      point.diagnostics.art.keys.leased[1] = point.diagnostics.art.keys.leased[0];
+    }, 'warm-precondition'],
     ['warm cache key omitted behind copied count', (m) => {
       m.points.warm[1].diagnostics.art.keys.cached.pop();
     }, 'warm-precondition'],
     ['warm cache key duplicated behind copied count', (m) => {
       const keys = m.points.warm[1].diagnostics.art.keys.cached;
       keys[1] = keys[0];
+    }, 'warm-precondition'],
+    ['warm Planetside/lease identity mismatch behind correct counts', (m) => {
+      const art = m.phases.warmCachePrecondition.diagnostics.art;
+      const retainedKey = art.keys.cached.find((key) => !art.keys.leased.includes(key));
+      art.keys.leased[0] = retainedKey;
     }, 'warm-precondition'],
     ['warm cache identity churn behind stable counts', (m) => {
       const keys = m.points.warm[2].diagnostics.art.keys.cached;

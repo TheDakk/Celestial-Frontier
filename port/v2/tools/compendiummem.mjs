@@ -1770,10 +1770,11 @@ async function collectProfile({
     assert(stableJson(revealedPlanetside.logicalIds) === stableJson(lifecycleBefore.ids),
       `${profile}: Planetside lifecycle reveal changed the logical roster`);
 
-    /* Establish the native profile's full-cache steady state without
-       borrowing the destructive cross-device trim used by the later cap
-       control. Every measured warm cycle must begin and end at this exact
-       product-owned entry/decoded-byte limit. */
+    /* Traverse enough rows to prove native-cap ownership before Close applies
+       the product's ordinary quiescent policy. Warm measurements then retain
+       every live Planetside lease plus the independently sealed bounded tail
+       of unowned thumbnails; the later cap control separately proves full-cap
+       trimming without substituting that artificial occupancy for real Close. */
     await openCompendium(sessionId);
     await waitListReady(sessionId, 1500);
     const cacheFillIndices = [

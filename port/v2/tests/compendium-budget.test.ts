@@ -76,6 +76,42 @@ const currentUniversePolishFailureEvidence = Object.freeze({
     protocol_version: '1.3',
   }),
 });
+const historicalQuiescentContractFailureEvidence = Object.freeze({
+  file: 'ARC1C_COMPENDIUM_PR35_QUIESCENT_CONTRACT_FAILURE_20260830_2046000.json.gz',
+  runId: '20260830-pr35-2046000-compendium-certification',
+  sourceCommit: '2046000873f98318c767db53d2ffb2abac71cc94',
+  sourceWorkingTreeSha256:
+    'f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a',
+  budgetSha256: '5d7b54235cf9470cd7f2c042612a402f79edda3c91ee2ba83bfbe21126001d49',
+  measurementAuthoritySha256:
+    '7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4',
+  producerAuthoritySha256:
+    '0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13',
+  collectorSha256: 'c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab',
+  outcomeContractSha256:
+    'd007074b956cb1d0135653251df3fd4fc6b5aeb45c946bd2e2121c726516ab64',
+  speciesArtBuildGraphSha256:
+    '1e79e0b0adf302db88cac95f1cc9e8a5ad500dd6da0d5d104d1f5fb9957f3a91',
+  rawBytes: 4_798_248,
+  rawSha256: '6a2a45bd8f20491900119a43aa907ae73d1206a41ae921be78e446b5c5f9c5ea',
+  gzipBytes: 291_948,
+  gzipSha256: '8b3456acc98a2ea6b0f061e34a9d71bfd38ae718eb04989fec6b6f36c84e60c2',
+  startedAt: '2026-08-30T04:11:05.995Z',
+  endedAt: '2026-08-30T04:12:04.207Z',
+  durationMs: 58_212,
+  failedOutcomeIds: Object.freeze([
+    'phone/warm-precondition',
+    'desktop/warm-precondition',
+  ]),
+  browser: Object.freeze({
+    executable: '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+    product: 'Edg/152.0.4191.53',
+    revision: '@4ee8983fdce2559a0ae8f8376934c5ed353035cd',
+    user_agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0',
+    js_version: '15.2.23.6',
+    protocol_version: '1.3',
+  }),
+});
 const currentUniversePolishCandidateEvidence = [
   {
     runId: '20260829-universe-polish-b65fd5d4a1b7-candidate1',
@@ -198,8 +234,10 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4';
+  'dacf6ab03b35f65ebd76b3a28a0c2ef2868ea505740f2cbe614d399cef1dbe7a';
 const EXPECTED_COLLECTOR_AUTHORITY =
+  '888b9dfdee9d973d17e1901eb26abf1a49015e6f21f0647f8d3043c3e052c964';
+const UNIVERSE_POLISH_COLLECTOR_AUTHORITY =
   'c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab';
 const HISTORICAL_RULER_COLLECTOR_AUTHORITY =
   '18e05ddf03551e7ec5d8352280ed5ad43fa6bf684f1ebecca1242890e02c3d88';
@@ -819,7 +857,7 @@ describe('Arc 1A Compendium budget authority', () => {
     });
     expect(report.source.end).toEqual(report.source.begin);
     expect(report.inputs.budget).toBe(currentUniversePolishFailureEvidence.budgetSha256);
-    expect(report.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
+    expect(report.inputs.collector).toBe(UNIVERSE_POLISH_COLLECTOR_AUTHORITY);
     expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
       .toBe(currentUniversePolishFailureEvidence.measurementAuthoritySha256);
     expect(report.budget).toEqual({
@@ -861,6 +899,396 @@ describe('Arc 1A Compendium budget authority', () => {
       ...activeBudget.calibration.samples[profile],
       ...activeBudget.pairedBrokenBaseline.samples[profile],
     ]).map((sample) => sample.runId)).not.toContain(currentUniversePolishFailureEvidence.runId);
+  });
+
+  it('retains the exact PR35 quiescent-contract red without relabeling it as a sample', () => {
+    type WarmSnapshot = {
+      diagnostics: {
+        panel: { open: boolean; mode: string };
+        window: {
+          start: number; end: number; overscan: number; beforePx: number; afterPx: number;
+          mountedRowCount: number; mountedLogicalIds: string[];
+          focusedLogicalId: string | null; pinnedLogicalIds: string[];
+        };
+        surfaces: {
+          list: {
+            imageCount: number; naturalWidths: number[]; naturalHeights: number[];
+            thumbStates: string[]; logicalIds: string[];
+          };
+          detail: {
+            open: boolean; logicalId: string | null;
+            naturalWidth: number; naturalHeight: number;
+          };
+          planetside: {
+            visible: boolean; imageCount: number; logicalIds: string[];
+            naturalWidths: number[]; naturalHeights: number[]; thumbStates: string[];
+          };
+        };
+        art: {
+          deviceClass: string;
+          limits: Record<string, number | string>;
+          live: {
+            cacheEntries: number; decodedPixels: number; decodedBytes: number;
+            encodedBytes: number; queuedJobs: number; activeJobs: number;
+            leases: number; subscribers: number; portraitCacheEntries: number;
+            portraitEncodedBytes: number;
+          };
+          totals: { jobStarts: number; disposals: number };
+          keys: { cached: string[]; leased: string[]; queued: string[]; active: string[] };
+        };
+        lazyArt: {
+          worker: {
+            live: boolean; starts: number; ready: number; disposals: number;
+            fatals: number; protocolErrors: number;
+          };
+        };
+      };
+      raw: {
+        mountedRowCount: number; mountedLogicalIds: string[];
+        rowRects: Array<Record<string, unknown>>;
+        listImages: Array<Record<string, unknown>>;
+        planetsideImages: Array<{
+          logicalId: string; naturalWidth: number; naturalHeight: number;
+          visualKey: string; thumbState: string;
+        }>;
+        detailNaturalWidth: number; detailNaturalHeight: number;
+        detailImageCount: number; detailSrcPresent: boolean;
+        activeLogicalId: string | null; focusedOutsideNormalWindow: boolean;
+        scrollerHeight: number; scrollTop: number;
+      };
+    };
+    type WarmFailureOutcome = {
+      id: string; profile: string; check: string; status: string; diagnosis: string;
+      evidence: {
+        precondition: WarmSnapshot;
+        warm: Array<{
+          art: WarmSnapshot['diagnostics']['art']['live'];
+          limits: WarmSnapshot['diagnostics']['art']['limits'];
+          cachedKeys: string[];
+          totals: { jobStarts: number; disposals: number };
+          worker: WarmSnapshot['diagnostics']['lazyArt']['worker'];
+        }>;
+      };
+    };
+    const compressed = fs.readFileSync(path.join(
+      v2Root, '..', '..', 'audits', historicalQuiescentContractFailureEvidence.file,
+    ));
+    expect(compressed.byteLength).toBe(historicalQuiescentContractFailureEvidence.gzipBytes);
+    expect(createHash('sha256').update(compressed).digest('hex'))
+      .toBe(historicalQuiescentContractFailureEvidence.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(raw.byteLength).toBe(historicalQuiescentContractFailureEvidence.rawBytes);
+    expect(createHash('sha256').update(raw).digest('hex'))
+      .toBe(historicalQuiescentContractFailureEvidence.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as {
+      schema: string; runId: string; status: string; startedAt: string; endedAt: string;
+      durationMs: number; lifecycle: { schema: string; status: string };
+      policy: Record<string, number>;
+      source: { begin: Record<string, string>; end: Record<string, string> };
+      inputs: Record<string, string>; browser: Record<string, string>;
+      budget: {
+        status: string; path: string; sha256: string;
+        browserAuthority: BrowserAuthority; browserAuthorityMatch: boolean;
+        producerAuthority: Record<string, unknown>;
+        observedProducerAuthority: Record<string, unknown>;
+        producerAuthorityMatch: boolean;
+      };
+      expectedOutcomes: string[];
+      outcomes: WarmFailureOutcome[];
+      findings: string[]; blockedOutcomes: string[]; partialFailure: unknown;
+      profiles: Record<ProfileName, {
+        phases: { warmCachePrecondition: WarmSnapshot };
+        points: { warm: WarmSnapshot[] };
+      }>;
+    };
+
+    expect(report).toMatchObject({
+      schema: 'cf-v2-compendium-memory-report/v1',
+      runId: historicalQuiescentContractFailureEvidence.runId,
+      status: 'fail',
+      startedAt: historicalQuiescentContractFailureEvidence.startedAt,
+      endedAt: historicalQuiescentContractFailureEvidence.endedAt,
+      durationMs: historicalQuiescentContractFailureEvidence.durationMs,
+      lifecycle: { schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete' },
+      policy: {
+        attemptCount: 1,
+        automaticRetries: 0,
+        commandTimeoutMs: 2_000,
+        targetTimeoutMs: 2_000,
+        heartbeatTimeoutMs: 2_000,
+        transportTimeoutMs: 5_000,
+      },
+      blockedOutcomes: [],
+      partialFailure: null,
+    });
+    expect(report.source.begin).toEqual({
+      commit: historicalQuiescentContractFailureEvidence.sourceCommit,
+      branch: 'openai/mac',
+      state: 'committed',
+      statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      workingTreeSha256:
+        historicalQuiescentContractFailureEvidence.sourceWorkingTreeSha256,
+    });
+    expect(report.source.end).toEqual(report.source.begin);
+    expect(report.inputs).toEqual({
+      fixtureSpec: 'c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3',
+      fixtureRows: 'daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706',
+      fixtureGenerator: 'a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece',
+      budget: historicalQuiescentContractFailureEvidence.budgetSha256,
+      budgetSchema: 'e8671d06e4533f565b695de416626cba0f509eb73e60aa0e3814bf5e53ce65e8',
+      outcomeContract: historicalQuiescentContractFailureEvidence.outcomeContractSha256,
+      collector: historicalQuiescentContractFailureEvidence.collectorSha256,
+      browserCdp: '6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce',
+      browserPath: '733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0',
+      workspaceLock: 'e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606',
+      package: '87551923ad5af540270ecbbeef73b97bcf90d82ae66867e59a844f1815a98106',
+      packageLock: 'ce2e1138aa77e214021a7b6104db4487fe79ec140bace17f44f47e88abb1d06f',
+      appPackage: '11dde72861c2a687f5d238a412946956f1ecb4a4bec7adafa6096c9dcc04329d',
+      baselineSaveFixtures:
+        'a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7',
+      speciesArtBuildGraph:
+        historicalQuiescentContractFailureEvidence.speciesArtBuildGraphSha256,
+      outcomeInventory: 'bd4f8a9ef37538b09582c316837dae05b1bc682cf6cb5f6df0fee4a2621929b0',
+    });
+    expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
+      .toBe(historicalQuiescentContractFailureEvidence.measurementAuthoritySha256);
+    expect(report.browser).toEqual(historicalQuiescentContractFailureEvidence.browser);
+    expect(report.budget).toEqual({
+      status: 'active',
+      path: 'budgets/compendium-memory-v1.json',
+      sha256: historicalQuiescentContractFailureEvidence.budgetSha256,
+      browserAuthority: {
+        schema: 'cf-v2-compendium-browser-authority/v2',
+        scope: 'arc1a-compendium-memory-only',
+        family: 'microsoft-edge',
+        protocolVersion: '1.3',
+        capabilityContract: 'cf-v2-compendium-cdp-capabilities/v1',
+        capabilityContractSha256:
+          '6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476',
+      },
+      browserAuthorityMatch: true,
+      producerAuthority: {
+        schema: 'cf-v2-compendium-producer-authority/v1',
+        sha256: historicalQuiescentContractFailureEvidence.producerAuthoritySha256,
+        inputs: {
+          index: {
+            relativePath: 'index.html',
+            sha256: '184b73ee41aa91fd13ba681ca07caad99820621675a7db736084a4c7a24d0b9d',
+          },
+          owner: {
+            relativePath: 'assets/main-CLGcJIQS.js',
+            sha256: 'dd407ec15819851084d4df1aa36e6bc8f5c23650cd9d68c82ee756e564b90fda',
+          },
+          worker: {
+            relativePath: 'assets/species-art.worker-szNwNYEk.js',
+            sha256: 'cebbbb892d71828eef1b5d90e2c601f0f197ba01d080ceb9050ee1f252848cdf',
+          },
+          painter: {
+            relativePath: 'assets/speciespainter-EmdmLeiA.js',
+            sha256: '570cb72699a577bda85502be46b54bcbdec9ffa41df5702bd5cb865f4bf08eba',
+          },
+        },
+      },
+      observedProducerAuthority: {
+        schema: 'cf-v2-compendium-producer-authority/v1',
+        sha256: historicalQuiescentContractFailureEvidence.producerAuthoritySha256,
+        inputs: {
+          index: {
+            relativePath: 'index.html',
+            sha256: '184b73ee41aa91fd13ba681ca07caad99820621675a7db736084a4c7a24d0b9d',
+          },
+          owner: {
+            relativePath: 'assets/main-CLGcJIQS.js',
+            sha256: 'dd407ec15819851084d4df1aa36e6bc8f5c23650cd9d68c82ee756e564b90fda',
+          },
+          worker: {
+            relativePath: 'assets/species-art.worker-szNwNYEk.js',
+            sha256: 'cebbbb892d71828eef1b5d90e2c601f0f197ba01d080ceb9050ee1f252848cdf',
+          },
+          painter: {
+            relativePath: 'assets/speciespainter-EmdmLeiA.js',
+            sha256: '570cb72699a577bda85502be46b54bcbdec9ffa41df5702bd5cb865f4bf08eba',
+          },
+        },
+      },
+      producerAuthorityMatch: true,
+    });
+    expect(report.expectedOutcomes).toHaveLength(78);
+    expect(createHash('sha256').update(stableJson(report.expectedOutcomes)).digest('hex'))
+      .toBe(report.inputs.outcomeInventory);
+    expect(report.outcomes.map((outcome) => outcome.id)).toEqual(report.expectedOutcomes);
+    expect(report.outcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(76);
+    const failed = report.outcomes.filter((outcome) => outcome.status === 'fail');
+    expect(failed.map((outcome) => outcome.id))
+      .toEqual(historicalQuiescentContractFailureEvidence.failedOutcomeIds);
+    expect(failed.map((outcome) => ({
+      id: outcome.id,
+      profile: outcome.profile,
+      check: outcome.check,
+      status: outcome.status,
+      diagnosis: outcome.diagnosis,
+    }))).toEqual(PROFILE_NAMES.map((profile) => ({
+      id: `${profile}/warm-precondition`,
+      profile,
+      check: 'warm-precondition',
+      status: 'fail',
+      diagnosis:
+        `${profile}: warm measurements were not taken from the full native cache limit with drained work and a released worker`,
+    })));
+    expect(report.outcomes.every((outcome) => ['pass', 'fail'].includes(outcome.status)))
+      .toBe(true);
+    expect(report.findings).toEqual(PROFILE_NAMES.map((profile) =>
+      `${profile}: warm measurements were not taken from the full native cache limit with drained work and a released worker`));
+
+    const profileEvidence = {
+      phone: { encodedBytes: 812_786, nativeCacheLimit: 96, jobStarts: 700,
+        disposals: 664, workerStarts: 42 },
+      desktop: { encodedBytes: 802_870, nativeCacheLimit: 256, jobStarts: 679,
+        disposals: 636, workerStarts: 41 },
+    } as const;
+    for (const profile of PROFILE_NAMES) {
+      const measurement = report.profiles[profile];
+      const warmSnapshots = [
+        measurement.phases.warmCachePrecondition,
+        ...measurement.points.warm,
+      ];
+      expect(warmSnapshots).toHaveLength(5);
+      const firstCachedKeys = [...warmSnapshots[0]!.diagnostics.art.keys.cached].sort();
+      const firstLeasedKeys = [...warmSnapshots[0]!.diagnostics.art.keys.leased].sort();
+      for (const snapshot of warmSnapshots) {
+        const { art, lazyArt, panel, surfaces, window } = snapshot.diagnostics;
+        const cachedKeys = art.keys.cached;
+        const leasedKeys = art.keys.leased;
+        const cachedKeySet = new Set(cachedKeys);
+        const leasedKeySet = new Set(leasedKeys);
+        const unleasedKeys = cachedKeys.filter((key) => !leasedKeySet.has(key));
+        const planetsideImages = snapshot.raw.planetsideImages;
+        expect({
+          leased: leasedKeys.length,
+          unleased: unleasedKeys.length,
+          total: cachedKeys.length,
+        }).toEqual({ leased: 8, unleased: 17, total: 25 });
+        expect(cachedKeySet.size).toBe(25);
+        expect(leasedKeySet.size).toBe(8);
+        expect(leasedKeys.every((key) => cachedKeySet.has(key))).toBe(true);
+        expect([...cachedKeys].sort()).toEqual(firstCachedKeys);
+        expect([...leasedKeys].sort()).toEqual(firstLeasedKeys);
+        expect(panel).toMatchObject({ open: false, mode: 'closed' });
+        expect(window).toEqual({
+          start: 0,
+          end: 0,
+          overscan: 0,
+          beforePx: 0,
+          afterPx: 0,
+          mountedRowCount: 0,
+          mountedLogicalIds: [],
+          focusedLogicalId: null,
+          pinnedLogicalIds: [],
+        });
+        expect(surfaces.list).toEqual({
+          imageCount: 0,
+          naturalWidths: [],
+          naturalHeights: [],
+          thumbStates: [],
+          logicalIds: [],
+        });
+        expect(surfaces.detail).toEqual({
+          open: false,
+          logicalId: null,
+          naturalWidth: 0,
+          naturalHeight: 0,
+        });
+        expect(snapshot.raw).toMatchObject({
+          mountedRowCount: 0,
+          mountedLogicalIds: [],
+          rowRects: [],
+          listImages: [],
+          detailNaturalWidth: 0,
+          detailNaturalHeight: 0,
+          detailImageCount: 0,
+          detailSrcPresent: false,
+          activeLogicalId: null,
+          focusedOutsideNormalWindow: false,
+          scrollerHeight: 0,
+          scrollTop: 0,
+        });
+        expect(art.deviceClass).toBe(profile);
+        expect(art.limits.cacheEntries).toBe(profileEvidence[profile].nativeCacheLimit);
+        expect(art.live).toEqual({
+          cacheEntries: 25,
+          decodedPixels: 25 * 132 * 132,
+          decodedBytes: 25 * 132 * 132 * 4,
+          encodedBytes: profileEvidence[profile].encodedBytes,
+          queuedJobs: 0,
+          activeJobs: 0,
+          leases: 8,
+          subscribers: 0,
+          portraitCacheEntries: 0,
+          portraitEncodedBytes: 0,
+        });
+        expect(art.keys.queued).toEqual([]);
+        expect(art.keys.active).toEqual([]);
+        expect(art.totals).toMatchObject({
+          jobStarts: profileEvidence[profile].jobStarts,
+          disposals: profileEvidence[profile].disposals,
+        });
+        expect(lazyArt.worker).toEqual({
+          live: false,
+          starts: profileEvidence[profile].workerStarts,
+          ready: profileEvidence[profile].workerStarts,
+          disposals: profileEvidence[profile].workerStarts,
+          fatals: 0,
+          protocolErrors: 0,
+        });
+        expect(surfaces.planetside).toMatchObject({ visible: true, imageCount: 8 });
+        expect(new Set(surfaces.planetside.logicalIds).size).toBe(8);
+        expect(planetsideImages).toHaveLength(8);
+        expect(planetsideImages.every((image) => image.naturalWidth === 132
+          && image.naturalHeight === 132 && image.thumbState === 'ready')).toBe(true);
+        expect(new Set(planetsideImages.map((image) => image.logicalId)).size).toBe(8);
+        expect(new Set(planetsideImages.map((image) => image.visualKey)).size).toBe(8);
+        expect(planetsideImages.map((image) => image.logicalId))
+          .toEqual(surfaces.planetside.logicalIds);
+      expect(planetsideImages.map((image) => image.visualKey).sort())
+          .toEqual(firstLeasedKeys);
+      }
+      const replayed = evaluateProfile(measurement, activeBudget, fixture);
+      expect(replayed).toHaveLength(39);
+      expect(replayed.filter((outcome) => outcome.status === 'fail')).toEqual([]);
+      const failedOutcome = failed.find((outcome) => outcome.profile === profile)!;
+      expect(failedOutcome.evidence.precondition)
+        .toEqual(measurement.phases.warmCachePrecondition);
+      expect(failedOutcome.evidence.warm).toEqual(measurement.points.warm.map((snapshot) => ({
+        art: snapshot.diagnostics.art.live,
+        limits: snapshot.diagnostics.art.limits,
+        cachedKeys: [...snapshot.diagnostics.art.keys.cached].sort(),
+        totals: {
+          jobStarts: snapshot.diagnostics.art.totals.jobStarts,
+          disposals: snapshot.diagnostics.art.totals.disposals,
+        },
+        worker: snapshot.diagnostics.lazyArt.worker,
+      })));
+    }
+
+    expect(fileSha256(budgetPath))
+      .not.toBe(historicalQuiescentContractFailureEvidence.budgetSha256);
+    expect(fileSha256(path.join(v2Root, 'tools', 'compendiummem-contract.mjs')))
+      .not.toBe(historicalQuiescentContractFailureEvidence.outcomeContractSha256);
+    expect(fileSha256(path.join(v2Root, 'tools', 'compendiummem.mjs')))
+      .not.toBe(historicalQuiescentContractFailureEvidence.collectorSha256);
+    expect(liveMeasurementAuthority?.sha256)
+      .not.toBe(historicalQuiescentContractFailureEvidence.measurementAuthoritySha256);
+    expect(activeBudget.calibration.selectionRule)
+      .toContain(historicalQuiescentContractFailureEvidence.runId);
+    expect(activeBudget.calibration.selectionRule)
+      .toContain(historicalQuiescentContractFailureEvidence.rawSha256);
+    expect(activeBudget.calibration.selectionRule)
+      .toContain(historicalQuiescentContractFailureEvidence.gzipSha256);
+    expect(PROFILE_NAMES.flatMap((profile) => [
+      ...activeBudget.calibration.samples[profile],
+      ...activeBudget.pairedBrokenBaseline.samples[profile],
+    ]).map((sample) => sample.runId))
+      .not.toContain(historicalQuiescentContractFailureEvidence.runId);
   });
 
   it('keeps strict metric and ceiling schema keys identical to the semantic contract', () => {
@@ -1708,7 +2136,16 @@ describe('Arc 1A Compendium budget authority', () => {
     } as unknown as ActiveBudgetRecord;
     const replayedOutcomes = PROFILE_NAMES.flatMap((profile) =>
       evaluateProfile(certificateProfiles[profile], rulerReplayBudget, fixture));
-    expect(replayedOutcomes).toEqual(report.outcomes);
+    expect(replayedOutcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
+    expect(replayedOutcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(76);
+    expect(replayedOutcomes.filter((outcome) => outcome.status === 'fail')
+      .map((outcome) => outcome.id)).toEqual([
+      'phone/warm-precondition',
+      'desktop/warm-precondition',
+    ]);
+    expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
+    expect(report.inputs.outcomeContract)
+      .not.toBe(fileSha256(path.join(v2Root, 'tools', 'compendiummem-contract.mjs')));
 
     const liveProducerReplayFailures = PROFILE_NAMES.flatMap((profile) =>
       evaluateProfile(certificateProfiles[profile], activeBudget, fixture))
@@ -1716,7 +2153,9 @@ describe('Arc 1A Compendium budget authority', () => {
       .map((outcome) => outcome.id);
     expect(liveProducerReplayFailures).toEqual([
       'phone/lazy-art-not-eager',
+      'phone/warm-precondition',
       'desktop/lazy-art-not-eager',
+      'desktop/warm-precondition',
     ]);
 
     for (const profile of PROFILE_NAMES) {
@@ -1725,6 +2164,7 @@ describe('Arc 1A Compendium budget authority', () => {
         Number(rulerReplayBudget.ceilings?.[profile].mountedRowsMax) + 1;
       const mutatedFailures = evaluateProfile(overCeiling, rulerReplayBudget, fixture)
         .filter((outcome) => outcome.status === 'fail')
+        .filter((outcome) => outcome.check !== 'warm-precondition')
         .map((outcome) => outcome.id);
       expect(mutatedFailures).toEqual([
         `${profile}/mounted-window-bounded`,
@@ -2154,8 +2594,14 @@ describe('Arc 1A Compendium budget authority', () => {
     };
     const repairedOutcomes = replay(activeBudget);
     expect(repairedOutcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
-    expect(repairedOutcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(78);
-    expect(repairedOutcomes.filter((outcome) => outcome.status === 'fail')).toEqual([]);
+    expect(repairedOutcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(76);
+    expect(repairedOutcomes.filter((outcome) => outcome.status === 'fail')
+      .map((outcome) => outcome.id)).toEqual([
+      'phone/warm-precondition',
+      'desktop/warm-precondition',
+    ]);
+    expect(retainedReport.inputs.outcomeContract)
+      .not.toBe(fileSha256(path.join(v2Root, 'tools', 'compendiummem-contract.mjs')));
 
     const observations = [
       {
@@ -2201,6 +2647,7 @@ describe('Arc 1A Compendium budget authority', () => {
       justBelow.ceilings![observation.profile][observation.ceilingField]
         = observation.observed - 1;
       expect(replay(justBelow).filter((outcome) => outcome.status === 'fail')
+        .filter((outcome) => outcome.check !== 'warm-precondition')
         .map((outcome) => outcome.id)).toEqual([observation.expectedFailure]);
     }
   });
