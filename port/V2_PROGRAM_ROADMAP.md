@@ -157,20 +157,19 @@
 > before `indexOf`/`Set`; each image must satisfy membership/distinctness, each inventory length must
 > equal its live lease/cache count, and each inventory must satisfy internal distinctness. A literal 256-entry inventory passes, a 257-entry inventory
 > errors explicitly, and realistic
-> 768–831-character keys pass. The commit owns the current authority tuple: capability SHA-256
+> 768–831-character keys pass. At that historical observation-v2 repair boundary, the commit owned
+> the authority tuple: capability SHA-256
 > `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341`, measurement
 > `87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d`, contract
 > `abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138`, collector
 > `b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e`, budget
 > `7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`, and unchanged producer
-> `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free closure is
+> `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free closure was
 > green at **565** `compendiummem:selftest` controls, focused **35/35**, **237 files / 2,413 passed +
 > one skipped** for the full v2 suite, all three TypeScript programs and the producer-authority
-> printer with both budget matches true; independent review is clear. Those browser-free checks
-> certify no browser result. The next local evidence action is
-> exactly one fresh clean exact-source Compendium run with no
-> retry and named verification; only a green result may continue the serial Slice → Glass → Recovery
-> chain on that same unchanged source.
+> printer with both budget matches true; independent review was clear. Those browser-free checks
+> certified no browser result. At that boundary the next evidence action remained exactly one fresh
+> clean exact-source Compendium run with no retry and named verification.
 >
 > Exact signed source `830e601b8f16092d6f9193ecde329cfefd279bcd` then ran
 > `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` exactly once with no retry on
@@ -196,26 +195,55 @@
 > schemas are exact. Malformed worker-error ownership is rejected unless `jobId`, `kind` and `key`
 > are either all null or all present; recovered cumulative telemetry remains nonterminal.
 >
-> Independent review closure makes Compendium producer authority history-safe schema v2. It binds
-> generated `service-worker.js` plus index, owner, worker and painter; a service-worker mutant changes
-> authority; and historical v1 reports replay unchanged. Current measurement / outcome contract / collector /
-> producer-v2 SHA-256 is
+> The exact `d33abdfd…` terminal-red input's independent review closure made Compendium producer
+> authority history-safe schema v2. It bound generated `service-worker.js` plus index, owner, worker
+> and painter; a service-worker mutant changed that authority; and historical v1 reports replayed
+> unchanged. Its measurement / outcome contract / collector / producer-v2 SHA-256 was
 > `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
 > `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
 > `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
 > `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; generated service-worker
-> SHA-256 is `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
-> SceneMemory current build authority is
+> SHA-256 was `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
+> SceneMemory build authority at that boundary was
 > `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; its exact `2046000…`
 > certificate remains immutable historical evidence.
 >
-> Current browser-free closure passes **589** Compendium selftest controls, worker **20/20**, the
+> Browser-free closure at that boundary passed **589** Compendium selftest controls, worker **20/20**, the
 > focused authority/PWA/worker/budget/carrier run **96/96**, and all three TypeScript programs. This
-> preserves the canonical **73-bullet** release inventory; the full browser-free suite passes **238
-> files / 2,423 passed / 1 skipped**. This is local repair only,
-> not a fresh Compendium certificate. The next evidence sequence is a signed clean head and exactly
-> one new no-retry Compendium attempt. The fixed Compendium ruler,
+> preserved the canonical **73-bullet** release inventory; the full browser-free suite passed **238
+> files / 2,423 passed / 1 skipped**. This was local input closure only,
+> not a fresh Compendium certificate. The fixed Compendium ruler,
 > numeric ceilings, historical samples and thresholds remain unchanged.
+
+> Exact signed descendant `d33abdfd513236e72294b81e3bb46b1362f810e1` then ran
+> `20260830-pr35-first-install-d33abdfd5132-compendium-certification` once with zero retries on Edge
+> `152.0.4191.53` / CDP `1.3`. The complete run judged all 78 outcomes at **74 pass / four fail**:
+> phone/desktop `cap-shrink` and `settled-jobs`. Both profiles in fact proved exact 256 → 96 cache
+> shrink, 6,690,816 decoded bytes, 160 disposals, four sealed warm cycles, restored device class and
+> released/balanced worker lifecycles. The shared false clause required the deliberately induced
+> paint fault's non-null `lastError` to remain after replacement recovery. The report remains
+> immutable red and was not retried; no Slice, Glass or Recovery successor ran.
+>
+> Current released-worker acceptance requires `lastError === null` on every selected current-v2
+> released/recovered snapshot, including non-final and post-cap samples, while exact cumulative
+> paint/phase/result arithmetic continues to prove the induced fault. A terminal current product
+> error still requires its exact non-null trusted receipt; historical v1 remains replayable. The
+> immutable 451,743-byte gzip / 10,813,681-byte raw carrier has SHA-256
+> `4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab` /
+> `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e` and passes independent
+> replay 8/8.
+>
+> Current measurement / outcome-contract / collector / producer-v2 SHA-256 is
+> `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+> `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; generated service-worker
+> SHA-256 remains `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
+> Current repair coverage passes **591** Compendium selftest controls, independent **8/8** carrier
+> replay, the full **239 files / 2,431 passed / 1 skipped** suite, all three TypeScript programs and
+> the green authority printer. Fixed rulers, numeric ceilings and the 78-outcome inventory remain unchanged.
+> Certification remains pending; only a materially changed signed source may make one new no-retry
+> Compendium attempt.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
 > 2026-08-30.
@@ -1309,9 +1337,10 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-30): Arc 1A product integration is complete; signed PR #35 implementation
-`d9d79025…` owns the browser-free-green foreground/settlement-history plus opaque-identity observation
-v2 authority and awaits one fresh clean exact-source Compendium run.** Product
+**Current state (2026-08-30): Arc 1A product integration is complete; signed PR #35 source
+`d33abdfd…` supplied the preserved 74/78 recovered-worker oracle red, and the current local oracle
+repair is browser-free green but not browser-certified. Only a materially changed signed source may
+make one new no-retry exact-source Compendium attempt.** Product
 virtualization, serviced-turn scheduling, compact-phone layout,
 displayed-demand texture ownership, bounded static-server shutdown, and the repaired ruler are
 present. Exact changed-head run

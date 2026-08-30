@@ -87,20 +87,20 @@
 > inventory passes, a 257-entry inventory fails explicitly, and realistic 768–831-character keys
 > pass. The prior
 > `326d3b…` / `7ac505…` / `ece4ed…` / `c272a1…` tuple stays historical authority for the exact
-> `b2eecfbd…` red. The signed repair owns current capability / measurement / contract /
+> `b2eecfbd…` red. At the historical observation-v2 repair boundary, the signed repair owned capability / measurement / contract /
 > collector / budget SHA-256:
 > `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
 > `87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d` /
 > `abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138` /
 > `b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e` /
-> `7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; producer remains
+> `7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; producer was
 > `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The browser-free repair
-> passes **565** selftest controls, focused **35/35**, **237 files / 2,413 passed + one skipped**, all
+> passed **565** selftest controls, focused **35/35**, **237 files / 2,413 passed + one skipped**, all
 > three TypeScript programs and the producer-authority printer with both budget matches true;
-> independent review is clear. It has not run a fresh exact-source Compendium browser certificate,
-> no Slice/Glass/Recovery successor exists, and it closes no `[HUMAN]` row.
+> independent review was clear. At that boundary it had not run a fresh exact-source Compendium
+> browser certificate, no Slice/Glass/Recovery successor existed, and it closed no `[HUMAN]` row.
 >
-> **Newer current-local evidence boundary:** exact signed source
+> **Historical worker-import evidence boundary:** exact signed source
 > `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
 > `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` once with zero retries on Edge
 > `152.0.4191.53` / CDP `1.3`. All long visual keys passed, so the earlier observation-v2 repair is
@@ -122,25 +122,43 @@
 > worker-error ownership is rejected unless `jobId`, `kind` and `key` are either all null or all
 > present; recovered cumulative telemetry remains nonterminal.
 >
+> **Current recovered-worker oracle boundary:** exact signed source
+> `d33abdfd513236e72294b81e3bb46b1362f810e1` ran
+> `20260830-pr35-first-install-d33abdfd5132-compendium-certification` exactly once/no-retry on Edge
+> `152.0.4191.53` / CDP `1.3`. It completed all 78 outcomes at **74 pass / four fail**; phone and
+> desktop `cap-shrink` plus `settled-jobs` stored red despite proving exact 256 → 96 shrink,
+> 6,690,816 decoded bytes, 160 disposals, four sealed warm cycles, restored class and balanced
+> released workers. One shared oracle clause incorrectly required a stale non-null paint
+> `lastError` after replacement recovery. That exact red remains immutable and was not retried; no
+> successor gate ran.
+>
+> Current `[EXEC]` acceptance requires `lastError === null` on every selected current-v2 released/
+> recovered snapshot, including non-final and post-cap samples, while exact cumulative paint/phase/
+> result arithmetic continues to bind the induced paint fault. Terminal current product error still
+> requires an exact non-null trusted receipt; historical v1 remains replayable. The immutable
+> 451,743-byte gzip / 10,813,681-byte raw carrier has SHA-256
+> `4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab` /
+> `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e` and passes independent
+> replay 8/8.
+>
 > Independent review closure requires history-safe Compendium producer authority v2 over generated
 > `service-worker.js` plus index, owner, worker and painter. A service-worker mutant changes current
 > authority, while historical v1 reports replay unchanged. Current measurement / outcome contract /
 > collector / producer-v2 SHA-256 is
-> `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
-> `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+> `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 > `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
 > `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; service-worker SHA-256 is
 > `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. SceneMemory current build
 > authority is `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; its exact
 > `2046000…` certificate remains immutable historical evidence.
 >
-> Current closure passes **589** Compendium selftest controls, worker **20/20**, the focused
-> authority/PWA/worker/budget/carrier run **96/96**, and all three TypeScript programs. This local
-> closure preserves the canonical **73-bullet** release inventory; the full browser-free suite
-> passes **238 files / 2,423 passed / 1 skipped**. This local repair is not a fresh Compendium
-> certificate and closes no `[HUMAN]` row. A signed clean head and one new no-retry Compendium
-> attempt remain required. The fixed Compendium ruler, historical samples,
-> thresholds and exact-source verdicts remain unchanged.
+> Current repair coverage passes **591** Compendium selftest controls, independent **8/8** carrier
+> replay, the full **239 files / 2,431 passed / 1 skipped** suite, all three TypeScript programs and
+> the green authority printer. This local repair is not a fresh Compendium certificate and closes no `[HUMAN]`
+> row. Only a materially changed signed source may make one new no-retry Compendium attempt. The
+> fixed ruler, numeric ceilings, 78-outcome inventory, historical samples, thresholds and exact-
+> source verdicts remain unchanged.
 
 > **2026-08-29 current local gameplay-evidence overlay:** Arc 5 now has four player-live exact-
 > instance writers—Feed, one-draw nonlethal Breed with active-play Recovery, identity-only Rename,
