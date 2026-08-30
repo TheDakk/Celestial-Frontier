@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · COMPENDIUM FIRST-INSTALL AUTHORITY REPAIRED · SIGNED · FRESH CERTIFICATION NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · RECOVERED-WORKER ORACLE REPAIRED · SIGNED · CHANGED-HEAD CERTIFICATION NEXT ◀◀◀
 
 ### Exact current boundary
 
@@ -27,21 +27,23 @@ the archive verbatim and refresh this handoff in place.
   current Markdown. Legacy `main.js` / `celestial-frontier.html`, `develop`, `main`, the live-site
   repository and every other agent worktree remain untouched.
 - **Signed implementation/evidence repair:** exact commit
-  **`f3063a2a02fde540a2e343d57eaee132e5794d2a`** (tree
-  **`883d7ca89c7e0a779775504175b8e670d82ed5d6`**, parent signed documentation checkpoint
-  **`830e601b8f16092d6f9193ecde329cfefd279bcd`**) contains an embedded SSH signature. It preserves
-  the exact stopped worker-import carrier; repairs the first-install service-worker claim gap;
-  adds exact bounded worker-error attribution; binds the generated service worker into current
-  producer authority; and updates all affected current references. The signed documentation
-  closure is its direct successor; resolve that exact current HEAD with `git rev-parse HEAD` and do
-  not overwrite either checkpoint.
-- **Branch relationship:** the implementation commit is ten commits ahead of
-  `origin/openai/mac`; this documentation closure adds one local commit. Freshly fetched
-  `origin/develop` **`7a9f4c1370dd84292388d718c38ff34214f6203b`** is an ancestor. Nothing in this
-  batch has been pushed.
-- **PR boundary:** draft PR **#35** remains **`openai/mac` → `develop`**. Its remote head is still
-  **`017fa6decbc41809188768ccdb98ab86ef1b9ebc`** against base
-  **`7a9f4c1370dd84292388d718c38ff34214f6203b`**; it is blocked and unmerged.
+  **`52ea357f62f5c2f7c1a0d8bd205ec2c7bf3b3576`** (tree
+  **`5d1f3caa197aa284a01e86280fb3af5e92dd49ad`**, parent signed exact-source browser checkpoint
+  **`d33abdfd513236e72294b81e3bb46b1362f810e1`**) contains an embedded SSH signature. It preserves
+  the exact terminal-red report, adds an independent immutable replay, repairs the recovered-worker
+  oracle, strengthens stale-receipt controls, clarifies the coupled cap diagnosis, rebinds only the
+  live measurement authority and updates affected references. Product/game/build bytes, producer
+  authority, fixed rulers, numeric ceilings and the 78-outcome inventory are unchanged.
+- **Documentation closure:** the lean handoff/archive update is the direct signed successor to
+  `52ea357…`. Resolve its exact current hash with `git rev-parse HEAD`; never overwrite or relabel
+  either signed checkpoint.
+- **Branch relationship:** `52ea357…` is twelve commits ahead of `origin/openai/mac`; its
+  documentation closure adds one local commit. Fetched `origin/develop`
+  **`7a9f4c1370dd84292388d718c38ff34214f6203b`** remains an ancestor. Nothing in this batch has
+  been pushed.
+- **PR boundary:** draft PR **#35** remains **`openai/mac` → `develop`**. Remote head
+  **`017fa6decbc41809188768ccdb98ab86ef1b9ebc`** and base
+  **`7a9f4c1370dd84292388d718c38ff34214f6203b`** are unchanged; the PR is blocked and unmerged.
 - **Actions boundary:** `GITHUB_ACTIONS_BUDGET.md` is **UNFROZEN**, the repository is assumed
   public, and **zero hosted attempts are authorized**. The 3,000-minute cap applies fail-closed if
   visibility becomes private or ambiguous. Do not push, label, dispatch, rerun, mark Ready, merge,
@@ -56,68 +58,74 @@ the archive verbatim and refresh this handoff in place.
   successor inherits or relabels it. Bare Glass still refuses without its exact named-verified
   Slice predecessor by design.
 
-### Exact stopped run and preserved evidence
+### Exact terminal red and immutable evidence
 
-Exact clean signed source `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
-`20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` exactly once with zero automatic
-retries under accepted Edge `152.0.4191.53` / CDP `1.3`. It stopped **instrument-fail** at phone
-`veteran-earth-planetside thumb settlement` after **33,217 ms**, retained zero product outcomes and
-blocked all 78. Desktop, review PNG, Slice, Glass and Recovery successors did not run.
+Exact clean signed source `d33abdfd513236e72294b81e3bb46b1362f810e1` ran
+`20260830-pr35-first-install-d33abdfd5132-compendium-certification` exactly once with zero automatic
+retries under accepted Edge `152.0.4191.53` / CDP `1.3`. The run completed in **65,724 ms** with all
+78 outcomes present: **74 passed / four failed**, zero blocked. Named verification reproduced that
+exact terminal red and exited nonzero. Slice, Glass and Recovery did not run.
 
-The prior long-visual-key repair worked. The first lazy species painter import failed instead, and
-the historical v1 window projection discarded the exact worker error code and message, so the old
-collector could not distinguish a product failure from an instrument blind spot. No retry or Edge
-rebaseline was attempted.
+The four stored reds were phone/desktop `cap-shrink` and `settled-jobs`. Their product evidence was
+healthy in both profiles:
+
+- cache entries shrank **256 → 96**, decoded bytes reached the exact **6,690,816** phone limit and
+  **160** assets were disposed;
+- all four warm cycles were sealed with 25 cached thumbnails, eight leases, zero queue/active work,
+  zero subscribers and no portrait retention;
+- phone/desktop final workers were ready/released/balanced at 41/42 starts and disposals, with exact
+  phase/result arithmetic, one deliberate cumulative paint control and `lastError:null`;
+- post-cap workers were likewise ready/released/balanced at 61/62 starts and disposals, with exact
+  nine-stage resource order, restored phone/desktop class, one cumulative paint control and
+  `lastError:null`.
 
 Preserved immutable evidence:
 
 - Carrier:
-  `audits/ARC1C_COMPENDIUM_PR35_WORKER_IMPORT_INSTRUMENT_FAILURE_20260830_830E601.json.gz`
-- Gzip: **7,357 bytes**, SHA-256
-  `90d61baeee297041a2afc7bf776fb504c5ac803140cf0613785859714c5f2aa9`
-- Raw: **54,172 bytes**, SHA-256
-  `ef3cec79cf181323705d8a9eff82d9bb8023275590a23a0589515248e626d6b5`
-- The independent replay binds exact source/browser/authority, one-attempt lifecycle, stopped stage,
-  zero outcomes and all 78 blocked. Historical evidence remains immutable and is not rebound to the
-  repair.
+  `audits/ARC1C_COMPENDIUM_PR35_RECOVERED_WORKER_ORACLE_FAILURE_20260830_D33ABDF.json.gz`
+- Gzip: **451,743 bytes**, SHA-256
+  `4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab`
+- Raw: **10,813,681 bytes**, SHA-256
+  `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`
+- Independent replay: **8/8**, binding exact source/browser/authority, 74/4 ledger, both cap and
+  post-cap worker closures, exact resource order and all six review PNG receipts without importing
+  the live evaluator or budget.
 
-### Code-supported cause and permanent bounded repair
+Historical measurement `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97`
+and outcome contract `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21`
+remain bound to this red and are not rebound.
 
-The stopped run exposed a deterministic first-install ownership race. Activation took its initial
-client snapshot before `clients.claim()`. A dedicated species worker created in the claim gap was
-absent from that snapshot, loaded its entry uncontrolled, then became service-worker controlled
-before its first lazy painter request. With no exact retained-build pin for that worker client, the
-service worker correctly refused the mixed-build request with exact 503 text:
-`This document has no retained Celestial Frontier build.`
+### Cause and fail-closed repair
 
-The repair is narrow and negative-controlled:
+The shared false clause required current worker diagnostics v2 to retain a non-null paint
+`lastError` after replacement recovery. That contradicted the producer lifecycle: replacement
+correctly clears `lastEvent` and `lastError`, while cumulative `errors.paint === 1` plus exact
+thumb/portrait phase and result arithmetic preserves proof of the deliberate negative control.
 
-- first-install activation now reruns all-client retained-build reconciliation immediately after
-  `clients.claim()` inside the same activation `waitUntil` barrier; deleting that step recreates the
-  unpinned worker and exact 503;
-- species-loader diagnostics schema v2 publishes one frozen, bounded `lastError` receipt only for a
-  trusted valid worker error; `jobId` / `kind` / `key` must be all-null or all-present;
-- producer replacement clears both `lastEvent` and `lastError`; adapter-protocol and external
-  fatals clear stale error evidence, while a trusted worker fatal retains its exact receipt;
-- live settlement observation v3 requires complete broker, exact art-schema, exact lazy-worker
-  schema and worker diagnostics before terminal product attribution. A matching current error ends
-  immediately as distinct `product-error` / `product-fail` with no sleep or retry; missing,
-  malformed, stale or mismatched evidence remains instrument-red;
-- Compendium producer authority v2 now binds generated `service-worker.js` with index, owner,
-  species worker and painter. Historical v1 authority/reports still replay unchanged;
-- the canonical v2 bulletin remains exactly 73 bullets: the first-install repair is integrated into
-  the existing cold-Planetside-art note rather than silently expanding its sealed inventory;
-- creature/genome structure, deterministic art identity, cache limits, fixed numeric rulers,
-  ceilings and the 78-outcome inventory are unchanged.
+The repair is narrow and stronger than the original final-only check:
+
+- every selected current-schema snapshot accepted as released/recovered must be `ready`,
+  identity-balanced, fully disposed and `lastError === null`;
+- a stale receipt on an early non-final selected snapshot and on the post-cap snapshot each fails
+  closed;
+- the cumulative one-paint-error requirement, exact phase/result arithmetic, contained/recoverable
+  producer-error witness, worker identity, canvas count and release proof remain mandatory;
+- a terminal current product error still requires its exact non-null trusted receipt; malformed,
+  unavailable, stale or mismatched evidence remains instrument-red;
+- historical diagnostics v1 remains replayable without inventing a field it never carried;
+- `cap-shrink` now names both trim and post-cap recovered-worker closure, so a future worker failure
+  cannot masquerade as failed cache trimming;
+- creature/genome structure, deterministic art identity, game behavior, cache policy, numeric
+  limits, fixed rulers and outcome count are unchanged.
 
 ### Current authority and browser-free acceptance
 
 - Browser capability:
   `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341`
 - Compendium measurement:
-  `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97`
+  `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed`
 - Outcome contract:
-  `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21`
+  `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29`
 - Collector:
   `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`
 - Producer authority v2:
@@ -127,17 +135,19 @@ The repair is narrow and negative-controlled:
 - Scene build:
   `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`
 - Active Compendium budget:
-  `a48804b319e9b2dabda91ebaa6d947971d44abcd4e0a375ba8a3405002e5eac2`
+  `6ba77f1084d07610ca867cafb76dcae602d9d62f8acf3a6893d9e13db37b40a5`
 - Active SceneMemory budget:
   `82166755fac8eea288090bf58845c629f416dd4749ef927327c5f4d346cb539f`
-- Compendium selftest: **589/589 independent product/instrument controls pass**.
-- Focused PWA/worker/authority/budget/carrier battery: **6 files / 96 tests pass**.
-- Full browser-free v2 suite: **238 files / 2,423 passed / 1 skipped**.
+- Compendium selftest: **591/591 independent product/instrument controls pass**.
+- Independent carrier replay: **8/8 pass**.
+- Full browser-free v2 suite: **239 files / 2,431 passed / 1 skipped**.
 - Root, app and worker TypeScript programs: **all green**.
 - Independent current-authority printer: SceneMemory budget, Compendium measurement budget and
-  Compendium producer budget all match.
-- Carrier reproduction/hashes, canonical release inventory, scoped diff and independent code review:
+  Compendium producer budget **all match**.
+- Gzip integrity, scoped diff, chronology review and adversarial code/evidence review:
   **green / CLEAR**.
+- The superseded first-install handoff was archived byte-verbatim with SHA-256
+  `4a0e6497c646f987ed690b61035b063699722b591051796980c51748a4029dbb`.
 
 This is signed browser-free product/instrument authority. It is **not** a fresh Compendium browser
 certificate, HUMAN visual acceptance, successor-chain evidence, hosted CI green or merge/release
@@ -145,14 +155,14 @@ authority.
 
 ### Exact next work — one changed-head attempt, then stop or advance
 
-1. Sign this documentation closure, require a clean worktree, and run
-   `node tools/tracked-input-preflight.mjs`. Then run the Compendium selftest,
-   browser-preflight selftest and exactly one live preflight. A nonzero result stops the campaign;
-   no browser point-version rebaseline or automatic retry is allowed.
+1. Sign this documentation closure and require a clean worktree. From `port/v2`, run
+   `node tools/tracked-input-preflight.mjs`. Then run `npm run compendiummem:selftest`,
+   `node tools/compendiummem-browser-preflight.mjs --selftest` and exactly one live
+   `node tools/compendiummem-browser-preflight.mjs`. Any nonzero stops the campaign; there is no
+   version-triggered rebaseline or automatic retry.
 2. From that exact clean signed documentation HEAD, run exactly one fresh Compendium certificate
-   with a unique commit-derived run ID and zero retries, then named-verify that immutable ID. Stop
-   after any nonzero, product-red or instrument-red result and preserve its evidence before any
-   repair.
+   with a unique commit-derived run ID and zero retries, then named-verify that exact immutable ID.
+   A product-red or instrument-red stops the chain and is preserved before any changed-head repair.
 3. Only if Compendium is terminal-green, keep the committed source unchanged and run the strict
    serial chain copied in `port/v2/README.md`:
    - `npm run smoke:report:selftest` → one `npm run smoke:ci` → exact named Slice verifier;
@@ -165,9 +175,9 @@ authority.
    evidence/documentation closure and rerun tracked-input preflight on the final clean committed
    index. A docs-only descendant does not change product bytes but must never relabel an earlier
    exact-source browser result.
-5. Report the final full head/base to Nick. Only a new authorization naming that exact pair may push,
-   apply `actions-budget-approved`, run the one 92-minute hosted battery and—if terminal-green—merge
-   PR #35 normally into `develop`.
+5. Report the final full head/base to Nick. Only a new authorization naming that exact pair may
+   push, apply `actions-budget-approved`, run the one 92-minute hosted battery and—if
+   terminal-green—merge PR #35 normally into `develop`.
 
 ### Product-roadmap boundary
 
@@ -190,8 +200,8 @@ references and `port/V2_PROGRAM_ROADMAP.md` own those boundaries.
 - **GitHub step now:** none.
 - **PR #35:** base `develop`, source `openai/mac`, title
   **`feat(v2): complete roadmap campaign and harden CI parity`**. Refresh its description only when
-  the final clean head is ready; include the service-worker/diagnostic/settlement repairs, preserved
-  red evidence, current full local verification, exact browser-chain result, cross-agent
+  the final clean head is ready; include the first-install and recovered-worker oracle repairs,
+  preserved red evidence, current full local verification, exact browser-chain result, cross-agent
   synchronization effect and explicit no-release/deployment boundary.
 - **Claude Code now:** Nick does **not** need to open Claude yet. Claude must not edit this OpenAI
   worktree. After PR #35 is terminal-green and merged into `develop`, Claude should create or update
