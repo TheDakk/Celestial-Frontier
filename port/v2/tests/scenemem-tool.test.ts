@@ -14,8 +14,12 @@ import {
   sceneMemoryBrowserAuthorityMatches,
   sceneMemoryBrowserCapabilityInventoryErrors,
   sceneMemoryCollectProfilesOnce,
+  sceneMemoryCollectFixedSnapshot,
+  sceneMemoryCollectSnapshotPass,
+  sceneMemoryHeapPhaseControlSlopes,
   sceneMemoryCollectorCommandTimeoutMs,
   sceneMemoryProfileRawBindingErrors,
+  sceneMemorySnapshotPairErrors,
   sceneMemoryShipyardOpenSettlementReasons,
   sceneMemorySurfaceVistaFaultReasons,
   sceneMemoryVeteranRaw,
@@ -364,6 +368,149 @@ describe('scene-memory terminal verifier', () => {
     protocolVersion: '1.3',
   });
 
+  function snapshotHarness(heaps: Array<Record<string, number>>, failGc = false) {
+    const trace: string[] = [];
+    let ticker = 10;
+    let heapIndex = 0;
+    const raw = structuredClone(retainedReports().at(-1)!.profiles.phone.measured[0].raw);
+    const send = async (method: string) => {
+      trace.push(method);
+      if (method === 'Runtime.evaluate') {
+        const before = ticker++;
+        return { result: { value: {
+          started: true, before, after: ticker++,
+          documentTokenBefore: 'snapshot-test-document',
+          documentTokenAfter: 'snapshot-test-document',
+        } } };
+      }
+      if (method === 'Browser.getVersion') {
+        return { product: 'Edg/152.0.4191.53', protocolVersion: '1.3' };
+      }
+      if (method === 'HeapProfiler.collectGarbage') {
+        if (failGc) throw new Error('intentional GC control');
+        return {};
+      }
+      if (method === 'Runtime.getHeapUsage') return heaps[heapIndex++]!;
+      if (method === 'Memory.getDOMCounters') {
+        return { documents: 1, nodes: 469, jsEventListeners: 70 };
+      }
+      throw new Error(`unexpected method ${method}`);
+    };
+    const collector = {
+      evaluate: async () => {
+        trace.push('carrier');
+        return structuredClone(raw);
+      },
+    };
+    return { trace, send, collector };
+  }
+
+  it('scores the fixed second complete snapshot pass without selecting the lower heap', async () => {
+    const first = { usedSize: 100, embedderHeapUsedSize: 200, backingStorageSize: 300 };
+    const second = { usedSize: 900, embedderHeapUsedSize: 800, backingStorageSize: 700 };
+    const harness = snapshotHarness([first, second]);
+    const snapshot = await sceneMemoryCollectFixedSnapshot({
+      send: harness.send, sessionId: 'snapshot-session', collector: harness.collector,
+      profile: 'phone', label: 'phone-warm-1',
+    });
+    const onePass = [
+      'Runtime.evaluate', 'Browser.getVersion', 'HeapProfiler.collectGarbage',
+      'Runtime.getHeapUsage', 'carrier', 'Memory.getDOMCounters',
+    ];
+    expect(harness.trace).toEqual([...onePass, ...onePass]);
+    expect(snapshot.heapPhaseProbe.heap).toEqual(first);
+    expect(snapshot.heap).toEqual(second);
+    expect(snapshot.heapAggregateBytes).toBe(2_400);
+    expect(sceneMemorySnapshotPairErrors(snapshot, true)).toEqual([]);
+  });
+
+  it('keeps one snapshot pass in exact answerable-GC-heap-carrier-DOM order', async () => {
+    const heap = { usedSize: 10, embedderHeapUsedSize: 20, backingStorageSize: 30 };
+    const harness = snapshotHarness([heap]);
+    const snapshot = await sceneMemoryCollectSnapshotPass({
+      send: harness.send, sessionId: 'snapshot-session', collector: harness.collector,
+      profile: 'desktop', label: 'desktop-pass',
+    });
+    expect(harness.trace).toEqual([
+      'Runtime.evaluate', 'Browser.getVersion', 'HeapProfiler.collectGarbage',
+      'Runtime.getHeapUsage', 'carrier', 'Memory.getDOMCounters',
+    ]);
+    expect(snapshot.heap).toEqual(heap);
+
+    const failed = snapshotHarness([heap], true);
+    await expect(sceneMemoryCollectSnapshotPass({
+      send: failed.send, sessionId: 'snapshot-session', collector: failed.collector,
+      profile: 'desktop', label: 'desktop-failed-pass',
+    })).rejects.toThrow('intentional GC control');
+    expect(failed.trace).toEqual([
+      'Runtime.evaluate', 'Browser.getVersion', 'HeapProfiler.collectGarbage',
+    ]);
+  });
+
+  it('negative controls reject missing, reordered, detached, or resource-drifted pairs', async () => {
+    const heap = { usedSize: 10, embedderHeapUsedSize: 20, backingStorageSize: 30 };
+    const harness = snapshotHarness([heap, heap]);
+    const snapshot: any = structuredClone(await sceneMemoryCollectFixedSnapshot({
+      send: harness.send, sessionId: 'snapshot-session', collector: harness.collector,
+      profile: 'phone', label: 'phone-warm-1',
+    }));
+    expect(sceneMemorySnapshotPairErrors({})).toEqual(['heap phase probe is absent']);
+
+    const reordered = structuredClone(snapshot);
+    reordered.heapPhaseProbe.label = 'phone-warm-1';
+    expect(sceneMemorySnapshotPairErrors(reordered, true)).toContain(
+      'heap phase probe order/label is invalid',
+    );
+    const detached = structuredClone(snapshot);
+    detached.heapAggregateBytes++;
+    expect(sceneMemorySnapshotPairErrors(detached, true)).toContain(
+      'scored snapshot heap aggregate is detached from raw counters',
+    );
+    const drifted = structuredClone(snapshot);
+    drifted.heapPhaseProbe.dom.nodes++;
+    expect(sceneMemorySnapshotPairErrors(drifted, true)).toContain(
+      'heap phase resource fingerprint drifted between fixed passes',
+    );
+    for (const [label, mutate, expected] of [
+      ['answerability', (value: any) => { delete value.heapPhaseProbe.answerability; },
+        'heap phase probe answerability target carrier is invalid'],
+      ['raw carrier', (value: any) => { delete value.heapPhaseProbe.raw.compendium; },
+        'heap phase probe resource carrier is incomplete'],
+      ['DOM carrier', (value: any) => { delete value.heapPhaseProbe.dom; },
+        'heap phase probe DOM carrier is invalid'],
+      ['Compendium resources', (value: any) => {
+        value.heapPhaseProbe.raw.compendium.artLive = { changed: true };
+      }, 'heap phase resource fingerprint drifted between fixed passes'],
+      ['Compendium lazy work', (value: any) => {
+        value.heapPhaseProbe.raw.compendium.lazyArt = { changed: true };
+      }, 'heap phase resource fingerprint drifted between fixed passes'],
+      ['route state', (value: any) => {
+        value.heapPhaseProbe.raw.state.mode = 'different-route';
+      }, 'heap phase resource fingerprint drifted between fixed passes'],
+    ] as const) {
+      const mutated = structuredClone(snapshot);
+      mutate(mutated);
+      expect(sceneMemorySnapshotPairErrors(mutated, true), label).toContain(expected);
+    }
+  });
+
+  it('keeps genuine retained backing growth red in both fixed snapshot lanes', () => {
+    const pair = (probe: number, scored: number) => ({
+      probe: { heap: { backingStorageSize: probe } },
+      scored: { heap: { backingStorageSize: scored } },
+    });
+    expect(sceneMemoryHeapPhaseControlSlopes([
+      pair(512_000, 500_000), pair(1_024_000, 1_012_000),
+      pair(1_536_000, 1_524_000), pair(2_048_000, 2_036_000),
+    ])).toEqual({ probe: 512_000, scored: 512_000 });
+    expect(() => sceneMemoryHeapPhaseControlSlopes([
+      pair(1, 1), pair(2, 2), pair(3, 3),
+    ])).toThrow('heap phase control requires four fixed pairs');
+    expect(() => sceneMemoryHeapPhaseControlSlopes([
+      pair(1, 1), pair(2, 2), pair(3, 3), pair(4, Number.NaN),
+    ])).toThrow('heap phase control scored backing sample is invalid');
+  });
+
   it('attempts each exact profile once and never reinvokes after a failure', async () => {
     const calls: string[] = [];
     const measurements = await sceneMemoryCollectProfilesOnce(async (profile, viewport) => {
@@ -560,11 +707,40 @@ describe('scene-memory terminal verifier', () => {
     expect(sceneMemoryBrowserCapabilityInventoryErrors({
       collectorSource: missingMemory, browserCdpSource,
     })).toContain('SceneMemory collector capability inventory is missing Memory.getDOMCounters');
+    for (const method of ['Runtime.enable', 'HeapProfiler.enable']) {
+      const productionEnable = collectorSource.replace(
+        "['Runtime.enable', 'Page.enable', 'HeapProfiler.enable', 'Log.enable']",
+        "['Page.enable', 'Log.enable']",
+      );
+      expect(productionEnable, method).not.toBe(collectorSource);
+      expect(sceneMemoryBrowserCapabilityInventoryErrors({
+        collectorSource: productionEnable, browserCdpSource,
+      }).join('; '), method).toContain(method);
+    }
     const missingVersion = browserCdpSource.replace("send('Browser.getVersion')", "send('Browser.versionMissing')");
     expect(missingVersion).not.toBe(browserCdpSource);
     expect(sceneMemoryBrowserCapabilityInventoryErrors({
       collectorSource, browserCdpSource: missingVersion,
     })).toContain('SceneMemory browser transport lacks Browser.getVersion provenance');
+  });
+
+  it('binds the live heap-phase control to Edge authority and cleanup before PASS', () => {
+    const bindings = [
+      'assert(sceneMemoryBrowserAuthority(controlBrowser) !== null,',
+      "if (closed?.success !== true) cleanupErrors.push('Target.closeTarget did not confirm success');",
+      'if (cleanupErrors.length) {',
+      'if (primaryError) throw primaryError;',
+      'SCENE MEMORY HEAP PHASE SELFTEST: PASS',
+    ];
+    for (const binding of bindings) expect(collectorSource, binding).toContain(binding);
+    expect(collectorSource.indexOf('if (primaryError) throw primaryError;')).toBeLessThan(
+      collectorSource.indexOf('SCENE MEMORY HEAP PHASE SELFTEST: PASS'),
+    );
+    for (const binding of bindings.slice(0, 2)) {
+      const missing = collectorSource.replace(binding, '/* removed by mutation control */');
+      expect(missing, binding).not.toBe(collectorSource);
+      expect(missing, binding).not.toContain(binding);
+    }
   });
 
   it('negative control: a swapped or drifted device profile cannot verify', () => {
@@ -692,6 +868,24 @@ describe('scene-memory terminal verifier', () => {
       'terminal certification requires the current surface-vista input contract',
     );
     expect(result.errors).toContain('verification requires the same tracked --budget');
+  });
+
+  it('rejects a PASS-shaped report that does not score the fixed second snapshot pass', () => {
+    const result = verifyReport({
+      schema: 'cf-v2-scene-memory-report/v3',
+      runId: 'tampered-fixed-second-policy',
+      status: 'pass',
+      lifecycle: { schema: 'cf-v2-scene-memory-report-lifecycle/v1', status: 'complete' },
+      policy: {
+        attemptCount: 1, automaticRetries: 0, warmupCycles: 4, measuredWarmCycles: 4,
+        snapshotPasses: 2, scoredSnapshotPass: 1,
+      },
+      certification: 'contract-budget',
+      cleanup: { browser: true, server: true, workspaceLock: true },
+      inputs: { budget: null },
+    }, 'tampered-fixed-second-policy', { budgetFile: null });
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContain('one-attempt/warm-cycle/fixed-second policy drifted');
   });
 
   it('binds every Arc 1C product source into exact budget authority', () => {

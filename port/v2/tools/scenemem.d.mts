@@ -52,6 +52,31 @@ export function sceneMemoryCollectProfilesOnce<T>(
   ) => Promise<T>,
 ): Promise<Readonly<Record<SceneMemoryProfileName, T>>>;
 
+export type SceneMemorySnapshotCollectorInput = Readonly<{
+  send: (...args: any[]) => Promise<any>;
+  sessionId: string;
+  collector: Readonly<{ evaluate: (...args: any[]) => Promise<any> }>;
+  profile: string;
+  label: string;
+}>;
+
+export function sceneMemoryCollectSnapshotPass(
+  input: SceneMemorySnapshotCollectorInput,
+): Promise<any>;
+
+export function sceneMemoryCollectFixedSnapshot(
+  input: SceneMemorySnapshotCollectorInput,
+): Promise<any>;
+
+export function sceneMemorySnapshotPairErrors(
+  snapshot: unknown,
+  stableResourcesRequired?: boolean,
+): string[];
+
+export function sceneMemoryHeapPhaseControlSlopes(
+  pairs: unknown,
+): Readonly<{ probe: number; scored: number }>;
+
 export function sceneMemoryShipyardOpenSettlementReasons(value: unknown): readonly string[];
 
 export function sceneMemorySurfaceVistaFaultReasons(value: unknown): readonly string[];
@@ -90,6 +115,7 @@ export function sceneMemoryProfileRawBindingErrors(measurement: unknown): string
 export function terminalProfileEvidenceErrors(
   profiles: unknown,
   surfaceVistaRequired?: boolean,
+  fixedSecondRequired?: boolean,
 ): string[];
 
 export function terminalSourceAuthorityErrors(

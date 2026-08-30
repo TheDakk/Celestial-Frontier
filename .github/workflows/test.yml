@@ -153,6 +153,11 @@ jobs:
           node --check tools/scenemem.mjs
           node --check tools/scenemem-contract.mjs
           npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts
+      - name: scene-memory fixed-second heap-phase selftest
+        env:
+          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
+        working-directory: port/v2
+        run: node tools/scenemem.mjs --heap-phase-selftest
       - name: one-attempt scene-memory certification
         id: scenemem
         timeout-minutes: 10

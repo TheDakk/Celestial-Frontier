@@ -23,6 +23,7 @@
      node tools/scenemem.mjs --calibrate [--allow-dirty]
      node tools/scenemem.mjs --budget=/absolute/path/to/tracked-budget.json
      node tools/scenemem.mjs --verify-run=<run-id> [--budget=/same/file.json]
+     node tools/scenemem.mjs --heap-phase-selftest
 
    One process owns one build, one browser launch, two profiles, no retry, and a
    RUNNING -> terminal report at apps/game/smoke/scenemem-report.json.
@@ -75,7 +76,7 @@ const pixiManagedResourceOwnerPath = path.join(appDir, 'src', 'pixi-managed-reso
 const pixiBatchTextureArrayPath = path.join(appDir, 'src', 'pixi-batch-texture-array.ts');
 const sceneTextPath = path.join(appDir, 'src', 'scene-text.ts');
 
-const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v2';
+const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v3';
 const LIFECYCLE_SCHEMA = 'cf-v2-scene-memory-report-lifecycle/v1';
 const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v4';
 export const SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA =
@@ -111,6 +112,8 @@ const SOL_STAR = Object.freeze({ seed: 424242, x: 560, y: 170 });
 const EARTH = Object.freeze({ seed: 133, ordinal: 2 });
 const SURFACE_VISTA_CACHE_ENTRIES_MAX = 1;
 const SURFACE_VISTA_CACHE_PIXELS_MAX = 960 * 430;
+const HEAP_PHASE_CONTROL_ALLOCATION_BYTES = 512 * 1024;
+const HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES = 128 * 1024;
 const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
 const SURFACE_VISTA_RELOAD_CLEANUP_BINDING = '__cfSceneMemoryVistaCacheCleanup';
 const BUDGET_FIELDS = Object.freeze([
@@ -371,15 +374,20 @@ function runId() {
 function parseArgs(argv) {
   const options = {
     allowDirty: false, calibrate: false, budgetFile: null, verifyRun: null,
+    heapPhaseSelftest: false,
   };
   for (const arg of argv) {
     if (arg === '--allow-dirty') options.allowDirty = true;
     else if (arg === '--calibrate') options.calibrate = true;
+    else if (arg === '--heap-phase-selftest') options.heapPhaseSelftest = true;
     else if (arg.startsWith('--budget=')) options.budgetFile = path.resolve(arg.slice(9));
     else if (arg.startsWith('--verify-run=')) options.verifyRun = arg.slice(13);
     else fail(`unknown argument: ${arg}`);
   }
   assert(!(options.calibrate && options.budgetFile), '--calibrate and --budget are mutually exclusive');
+  if (options.heapPhaseSelftest) {
+    assert(argv.length === 1, '--heap-phase-selftest accepts no other arguments');
+  }
   if (options.verifyRun !== null) {
     assert(/^[a-z0-9][a-z0-9-]{0,95}$/i.test(options.verifyRun), '--verify-run ID is invalid');
     assert(!options.allowDirty && !options.calibrate,
@@ -424,18 +432,28 @@ export function sceneMemoryBrowserCapabilityInventoryErrors({
   if (typeof collectorSource !== 'string' || typeof browserCdpSource !== 'string') {
     return ['SceneMemory browser capability inventory sources are unavailable'];
   }
+  const selftestStart = collectorSource.lastIndexOf('async function runHeapPhaseSelftest()');
+  const selftestEnd = collectorSource.indexOf('\nasync function seedSave(', selftestStart);
+  const productionCollectorSource = selftestStart >= 0 && selftestEnd > selftestStart
+    ? collectorSource.slice(0, selftestStart) + collectorSource.slice(selftestEnd)
+    : collectorSource;
   const domains = SCENE_MEMORY_REQUIRED_CDP_DOMAINS.join('|');
   const directMethodPattern = new RegExp(`send\\(\\s*["']((${domains})\\.[A-Za-z]+)["']`, 'g');
-  const enableBlock = /for \(const method of \[([\s\S]*?)\]\) \{/.exec(collectorSource)?.[1] ?? '';
+  const enableBlocks = [...productionCollectorSource.matchAll(
+    /for \(const method of \[([\s\S]*?)\]\) \{/g,
+  )].map((match) => match[1]).join('\n');
   const enableMethodPattern = new RegExp(`["']((${domains})\\.[A-Za-z]+)["']`, 'g');
   const actualMethods = [...new Set(
     [
-      ...[...collectorSource.matchAll(directMethodPattern)].map((match) => match[1]),
-      ...[...enableBlock.matchAll(enableMethodPattern)].map((match) => match[1]),
+      ...[...productionCollectorSource.matchAll(directMethodPattern)].map((match) => match[1]),
+      ...[...enableBlocks.matchAll(enableMethodPattern)].map((match) => match[1]),
     ],
   )].sort();
   const expectedMethods = [...SCENE_MEMORY_REQUIRED_CDP_METHODS].sort();
   const errors = [];
+  if (selftestStart < 0 || selftestEnd <= selftestStart) {
+    errors.push('SceneMemory heap phase selftest boundary is missing');
+  }
   if (!same(actualMethods, expectedMethods)) {
     const missing = expectedMethods.filter((method) => !actualMethods.includes(method));
     const extra = actualMethods.filter((method) => !expectedMethods.includes(method));
@@ -845,7 +863,9 @@ async function postRenderAnswerability(send, sessionId, profile, token) {
   });
 }
 
-async function collectSnapshot({ send, sessionId, collector, profile, label }) {
+export async function sceneMemoryCollectSnapshotPass({
+  send, sessionId, collector, profile, label,
+}) {
   const answerability = await postRenderAnswerability(send, sessionId, profile, label);
   await send('HeapProfiler.collectGarbage', {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
   const heap = await send('Runtime.getHeapUsage', {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
@@ -860,6 +880,24 @@ async function collectSnapshot({ send, sessionId, collector, profile, label }) {
   const heapAggregateBytes = Number(heap.usedSize || 0)
     + Number(heap.embedderHeapUsedSize || 0) + Number(heap.backingStorageSize || 0);
   return Object.freeze({ label, answerability, heap, heapAggregateBytes, dom, raw });
+}
+
+export async function sceneMemoryCollectFixedSnapshot({
+  send, sessionId, collector, profile, label,
+}) {
+  const heapPhaseProbe = await sceneMemoryCollectSnapshotPass({
+    send, sessionId, collector, profile, label: `${label}-phase-probe`,
+  });
+  const authoritative = await sceneMemoryCollectSnapshotPass({
+    send, sessionId, collector, profile, label,
+  });
+  const snapshot = Object.freeze({ ...authoritative, heapPhaseProbe });
+  const pairErrors = sceneMemorySnapshotPairErrors(
+    snapshot, /-(?:warmup|warm)-\d+$/.test(label),
+  );
+  assert(pairErrors.length === 0,
+    `${profile} ${label}: fixed second snapshot pair is invalid (${pairErrors.join('; ')})`);
+  return snapshot;
 }
 
 function contractPoint(snapshot) {
@@ -918,6 +956,225 @@ function contractPoint(snapshot) {
       jsEventListeners: snapshot.dom.jsEventListeners,
     },
   });
+}
+
+function snapshotResourcePoint(snapshot) {
+  const { answerability, heap, ...resource } = contractPoint(snapshot);
+  void answerability;
+  void heap;
+  const { tickerTicks, ...route } = snapshot.raw.state;
+  void tickerTicks;
+  return Object.freeze({
+    ...resource,
+    route,
+    compendium: snapshot.raw.compendium,
+    shipyard: snapshot.raw.shipyard,
+  });
+}
+
+function snapshotAggregateMatches(snapshot) {
+  const heap = snapshot?.heap;
+  return Number.isFinite(heap?.usedSize) && Number.isFinite(heap?.embedderHeapUsedSize)
+    && Number.isFinite(heap?.backingStorageSize)
+    && snapshot.heapAggregateBytes === heap.usedSize
+      + heap.embedderHeapUsedSize + heap.backingStorageSize;
+}
+
+function snapshotPassCarrierErrors(snapshot) {
+  const errors = [];
+  const object = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
+  if (typeof snapshot?.label !== 'string' || snapshot.label.length === 0) {
+    errors.push('label is absent');
+  }
+  if (!snapshotAggregateMatches(snapshot)) errors.push('heap aggregate is detached from raw counters');
+  const target = snapshot?.answerability?.target;
+  const targetValue = target?.value;
+  if (target?.ok !== true || !Number.isFinite(target?.durationMs)
+    || target.durationMs < 0 || targetValue?.started !== true
+    || !Number.isSafeInteger(targetValue?.before) || !Number.isSafeInteger(targetValue?.after)
+    || targetValue.after <= targetValue.before
+    || typeof targetValue?.documentTokenBefore !== 'string'
+    || targetValue.documentTokenBefore.length === 0
+    || targetValue.documentTokenAfter !== targetValue.documentTokenBefore) {
+    errors.push('answerability target carrier is invalid');
+  }
+  const heartbeat = snapshot?.answerability?.heartbeat;
+  if (heartbeat?.ok !== true || !Number.isFinite(heartbeat?.durationMs)
+    || heartbeat.durationMs < 0 || typeof heartbeat?.product !== 'string'
+    || heartbeat.product.length === 0 || typeof heartbeat?.protocolVersion !== 'string'
+    || heartbeat.protocolVersion.length === 0) {
+    errors.push('answerability heartbeat carrier is invalid');
+  }
+  if (!object(snapshot?.raw?.state) || !object(snapshot?.raw?.scene)
+    || !object(snapshot?.raw?.compendium) || !object(snapshot?.raw?.shipyard)) {
+    errors.push('resource carrier is incomplete');
+  }
+  const dom = snapshot?.dom;
+  if (!Number.isSafeInteger(dom?.documents) || dom.documents <= 0
+    || !Number.isSafeInteger(dom?.nodes) || dom.nodes <= 0
+    || !Number.isSafeInteger(dom?.jsEventListeners) || dom.jsEventListeners < 0) {
+    errors.push('DOM carrier is invalid');
+  }
+  return errors;
+}
+
+export function sceneMemorySnapshotPairErrors(snapshot, stableResourcesRequired = false) {
+  const errors = [];
+  const probe = snapshot?.heapPhaseProbe;
+  if (!probe || typeof probe !== 'object') return ['heap phase probe is absent'];
+  errors.push(...snapshotPassCarrierErrors(probe).map((error) => `heap phase probe ${error}`));
+  errors.push(...snapshotPassCarrierErrors(snapshot).map((error) => `scored snapshot ${error}`));
+  if (typeof snapshot?.label !== 'string'
+    || probe.label !== `${snapshot.label}-phase-probe`) {
+    errors.push('heap phase probe order/label is invalid');
+  }
+  try {
+    if (stableResourcesRequired
+      && !same(snapshotResourcePoint(probe), snapshotResourcePoint(snapshot))) {
+      errors.push('heap phase resource fingerprint drifted between fixed passes');
+    }
+  } catch (error) {
+    errors.push(`heap phase resource fingerprint is invalid (${error instanceof Error
+      ? error.message : String(error)})`);
+  }
+  return errors;
+}
+
+export function sceneMemoryHeapPhaseControlSlopes(pairs) {
+  assert(Array.isArray(pairs) && pairs.length === WARM_CYCLES,
+    'heap phase control requires four fixed pairs');
+  const lane = (key) => pairs.map((pair) => {
+    const value = pair?.[key]?.heap?.backingStorageSize;
+    assert(Number.isFinite(value) && value >= 0,
+      `heap phase control ${key} backing sample is invalid`);
+    return value;
+  });
+  return Object.freeze({
+    probe: leastSquaresSlope(lane('probe')),
+    scored: leastSquaresSlope(lane('scored')),
+  });
+}
+
+async function runHeapPhaseSelftest() {
+  let browser = null;
+  let browserContextId = null;
+  let targetId = null;
+  let sessionId = null;
+  const cleanupErrors = [];
+  let primaryError = null;
+  let evidence = null;
+  try {
+    browser = await openChromiumCdp({
+      label: 'SceneMemory fixed-second retained-allocation control',
+      userDataPrefix: 'cf-scenemem-heap-phase-control',
+      commandTimeoutMs: COMMAND_TIMEOUT_MS, startupTimeoutMs: 45_000,
+      webSocketOpenTimeoutMs: 15_000, shutdownTimeoutMs: 2_000,
+    });
+    const controlBrowser = browserSample(browser.browser);
+    assert(sceneMemoryBrowserAuthority(controlBrowser) !== null,
+      `heap phase selftest requires Microsoft Edge/CDP 1.3 (${controlBrowser.product} / ${controlBrowser.protocolVersion})`);
+    const context = await browser.send('Target.createBrowserContext');
+    browserContextId = context.browserContextId;
+    const target = await browser.send('Target.createTarget', {
+      url: 'about:blank', browserContextId,
+    });
+    targetId = target.targetId;
+    const attached = await browser.send('Target.attachToTarget', { targetId, flatten: true });
+    sessionId = attached.sessionId;
+    for (const method of ['Runtime.enable', 'HeapProfiler.enable']) {
+      await browser.send(method, {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+    }
+    const installed = await browser.send('Runtime.evaluate', {
+      expression: `(()=>{let ticks=0;globalThis.__cfHeapPhaseRetained=[];
+        globalThis.__CF_SLICE__={documentToken:'heap-phase-control-document',
+          app:{ticker:{started:true,addOnce(callback){setTimeout(()=>{ticks++;callback()},0)}}},
+          api:{state:()=>({tickerTicks:ticks})}};return true})()`,
+      returnByValue: true,
+    }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+    assert(evaluationValue(installed, 'heap phase control install') === true,
+      'heap phase control page did not install');
+    const collector = Object.freeze({
+      evaluate: async (ownedSessionId) => {
+        const response = await browser.send('Runtime.evaluate', {
+          expression: `({schema:'cf-v2-scene-memory-heap-phase-control-carrier/v1',
+            retained:globalThis.__cfHeapPhaseRetained.length})`,
+          returnByValue: true,
+        }, ownedSessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+        return evaluationValue(response, 'heap phase control carrier');
+      },
+    });
+    const pairs = [];
+    for (let index = 0; index < WARM_CYCLES; index++) {
+      const allocation = await browser.send('Runtime.evaluate', {
+        expression: `(()=>{const value=new Uint8Array(${HEAP_PHASE_CONTROL_ALLOCATION_BYTES});
+          for(let offset=0;offset<value.length;offset+=4096)value[offset]=${index + 1};
+          globalThis.__cfHeapPhaseRetained.push(value);return value.byteLength})()`,
+        returnByValue: true,
+      }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+      assert(evaluationValue(allocation, `heap phase retained allocation ${index + 1}`)
+        === HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
+      `heap phase retained allocation ${index + 1} was incomplete`);
+      const probe = await sceneMemoryCollectSnapshotPass({
+        send: browser.send, sessionId, collector, profile: 'control',
+        label: `control-${index + 1}-phase-probe`,
+      });
+      const scored = await sceneMemoryCollectSnapshotPass({
+        send: browser.send, sessionId, collector, profile: 'control',
+        label: `control-${index + 1}`,
+      });
+      pairs.push(Object.freeze({ probe, scored }));
+    }
+    const slopes = sceneMemoryHeapPhaseControlSlopes(pairs);
+    assert(slopes.probe > HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES
+      && slopes.scored > HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES,
+    `fixed-second sampler erased retained growth (${JSON.stringify(slopes)})`);
+    const cleared = await browser.send('Runtime.evaluate', {
+      expression: 'globalThis.__cfHeapPhaseRetained=[];true', returnByValue: true,
+    }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+    assert(evaluationValue(cleared, 'heap phase retained allocation release') === true,
+      'heap phase retained allocation release failed');
+    const released = await sceneMemoryCollectSnapshotPass({
+      send: browser.send, sessionId, collector, profile: 'control', label: 'control-release',
+    });
+    assert(released.heap.backingStorageSize
+      < pairs.at(-1).scored.heap.backingStorageSize - HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
+    'fixed-second sampler did not distinguish released backing storage from retained growth');
+    evidence = Object.freeze({
+      browser: controlBrowser,
+      allocationBytesPerCycle: HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
+      minimumSlopeBytesPerCycle: HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES,
+      slopes,
+      retainedBackingBytes: pairs.at(-1).scored.heap.backingStorageSize,
+      releasedBackingBytes: released.heap.backingStorageSize,
+    });
+  } catch (error) {
+    primaryError = error;
+  } finally {
+    if (targetId && browser) {
+      try {
+        const closed = await browser.send('Target.closeTarget', { targetId });
+        if (closed?.success !== true) cleanupErrors.push('Target.closeTarget did not confirm success');
+      }
+      catch (error) { cleanupErrors.push(`Target.closeTarget: ${error.message}`); }
+    }
+    if (browserContextId && browser) {
+      try { await browser.send('Target.disposeBrowserContext', { browserContextId }); }
+      catch (error) { cleanupErrors.push(`Target.disposeBrowserContext: ${error.message}`); }
+    }
+    if (browser) {
+      try { await browser.close(); }
+      catch (error) { cleanupErrors.push(`browser: ${error.message}`); }
+    }
+  }
+  if (cleanupErrors.length) {
+    throw new Error(`heap phase selftest cleanup failed: ${cleanupErrors.join('; ')}`, {
+      ...(primaryError ? { cause: primaryError } : {}),
+    });
+  }
+  if (primaryError) throw primaryError;
+  assert(evidence !== null, 'heap phase selftest produced no terminal evidence');
+  console.log(`SCENE MEMORY HEAP PHASE SELFTEST: PASS — ${JSON.stringify(evidence)}`);
+  return 0;
 }
 
 async function seedSave({ send, collector, sessionId, origin, veteranRaw, profile }) {
@@ -1320,7 +1577,7 @@ async function collectBfcache({ send, collector, sessionId, profile, documentTok
   productAssert(resumed?.documentToken === documentToken && resumed.pagehide > before.pagehide
     && resumed.pageshow > before.pageshow,
   `${profile}: persisted pagehide/pageshow did not complete`, { before, resumed, lastError });
-  const snapshot = await collectSnapshot({
+  const snapshot = await sceneMemoryCollectFixedSnapshot({
     send, sessionId, collector, profile, label: `${profile}-bfcache`,
   });
   const point = contractPoint(snapshot);
@@ -1512,8 +1769,8 @@ async function collectProfile({
   bindingEvents, onProgress,
 }) {
   const measurement = {
-    schema: 'cf-v2-scene-memory-profile/v1', profile, viewport,
-    targetId: null, documentToken: null, initial: null, warmup: null, precondition: null,
+    schema: 'cf-v2-scene-memory-profile/v2', profile, viewport,
+    targetId: null, documentToken: null, initial: null, warmup: null, warmups: [], precondition: null,
     initialVista: null, firstSurfaceVista: null, surfaceVistaObservations: [],
     warmupInventory: null, measured: [], cycles: [], bfcache: null, bfcacheSnapshot: null,
     reloadCleanup: null, routeInventories: [], metrics: null,
@@ -1558,7 +1815,7 @@ async function collectProfile({
       'install exact Compendium fixture');
     productAssert(installed?.installed === fixture.count,
       `${profile}: fixture installed ${String(installed?.installed)} of ${fixture.count}`, installed);
-    measurement.initial = await collectSnapshot({
+    measurement.initial = await sceneMemoryCollectFixedSnapshot({
       send, sessionId, collector, profile, label: `${profile}-initial`,
     });
     measurement.initialVista = surfaceVistaState(measurement.initial.raw.scene);
@@ -1572,9 +1829,10 @@ async function collectProfile({
         measurement.firstSurfaceVista = surfaceVistaState(warmupRoute.surfaceVistaObservation);
       }
       measurement.routeInventories.push(routeInventory(warmupRoute.stages));
-      measurement.warmup = await collectSnapshot({
+      measurement.warmup = await sceneMemoryCollectFixedSnapshot({
         send, sessionId, collector, profile, label: `${profile}-warmup-${index + 1}`,
       });
+      measurement.warmups.push(measurement.warmup);
       onProgress(measurement);
     }
     measurement.precondition = contractPoint(measurement.warmup);
@@ -1589,7 +1847,7 @@ async function collectProfile({
       const driven = await driveCycle({ collector, sessionId, profile });
       measurement.surfaceVistaObservations.push(driven.surfaceVistaObservation);
       measurement.routeInventories.push(routeInventory(driven.stages));
-      const snapshot = await collectSnapshot({
+      const snapshot = await sceneMemoryCollectFixedSnapshot({
         send, sessionId, collector, profile, label: `${profile}-warm-${index + 1}`,
       });
       measurement.measured.push(snapshot);
@@ -1661,6 +1919,7 @@ function makeRunningReport({ id, startedAt, source, inputs, mode, budgetFile }) 
     policy: {
       attemptCount: 1, automaticRetries: 0, warmupCycles: WARMUP_CYCLES,
       measuredWarmCycles: WARM_CYCLES, commandTimeoutMs: COMMAND_TIMEOUT_MS,
+      snapshotPasses: 2, scoredSnapshotPass: 2,
       targetTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
       heartbeatTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
     },
@@ -1944,10 +2203,31 @@ function surfaceInventoryFromObservation(observation) {
 export function sceneMemoryProfileRawBindingErrors(measurement) {
   const errors = [];
   try {
+    const fixedSecondRequired = measurement?.schema === 'cf-v2-scene-memory-profile/v2';
     if (!measurement?.initial || !same(
       measurement.initialVista,
       surfaceVistaState(measurement.initial.raw?.scene || {}),
     )) errors.push('initial vista evidence is detached from its raw snapshot');
+    if (fixedSecondRequired) {
+      errors.push(...sceneMemorySnapshotPairErrors(measurement.initial)
+        .map((error) => `initial ${error}`));
+      if (!Array.isArray(measurement.warmups)
+        || measurement.warmups.length !== WARMUP_CYCLES) {
+        errors.push('retained warmup snapshot inventory is incomplete');
+      } else {
+        for (let index = 0; index < WARMUP_CYCLES; index++) {
+          const snapshot = measurement.warmups[index];
+          if (snapshot?.label !== `${measurement.profile}-warmup-${index + 1}`) {
+            errors.push(`warmup snapshot ${index + 1} label/order drifted`);
+          }
+          errors.push(...sceneMemorySnapshotPairErrors(snapshot, true)
+            .map((error) => `warmup snapshot ${index + 1} ${error}`));
+        }
+        if (!same(measurement.warmup, measurement.warmups.at(-1))) {
+          errors.push('final warmup alias is detached from retained warmup evidence');
+        }
+      }
+    }
     if (!measurement?.warmup || !same(
       measurement.precondition,
       contractPoint(measurement.warmup),
@@ -1986,6 +2266,10 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
         if (!same(point, contractPoint(measurement.measured[index]))) {
           errors.push(`cycle ${index + 1} is detached from its raw snapshot`);
         }
+        if (fixedSecondRequired) {
+          errors.push(...sceneMemorySnapshotPairErrors(measurement.measured[index], true)
+            .map((error) => `cycle ${index + 1} ${error}`));
+        }
       }
     }
     if (!measurement?.bfcacheSnapshot || !measurement?.bfcache) {
@@ -2006,6 +2290,10 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
       if (!same(point, contractPoint(measurement.bfcacheSnapshot))) {
         errors.push('bfcache point is detached from its raw snapshot');
       }
+      if (fixedSecondRequired) {
+        errors.push(...sceneMemorySnapshotPairErrors(measurement.bfcacheSnapshot)
+          .map((error) => `bfcache ${error}`));
+      }
     }
   } catch (error) {
     errors.push(`raw profile binding could not be re-derived (${error instanceof Error
@@ -2014,7 +2302,9 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
   return errors;
 }
 
-export function terminalProfileEvidenceErrors(profiles, surfaceVistaRequired = false) {
+export function terminalProfileEvidenceErrors(
+  profiles, surfaceVistaRequired = false, fixedSecondRequired = false,
+) {
   const errors = [];
   const profileKeys = Object.keys(profiles || {}).sort();
   if (!same(profileKeys, Object.keys(PROFILES).sort())) {
@@ -2024,7 +2314,11 @@ export function terminalProfileEvidenceErrors(profiles, surfaceVistaRequired = f
     const measurement = profiles?.[profile];
     if (!measurement || measurement.profile !== profile
       || !same(measurement.viewport, PROFILES[profile])
+      || (fixedSecondRequired && measurement.schema !== 'cf-v2-scene-memory-profile/v2')
       || !measurement.precondition
+      || (fixedSecondRequired && (!Array.isArray(measurement.warmups)
+        || measurement.warmups.length !== WARMUP_CYCLES
+        || !same(measurement.warmup, measurement.warmups.at(-1))))
       || !Array.isArray(measurement.measured) || measurement.measured.length !== WARM_CYCLES
       || !Array.isArray(measurement.cycles) || measurement.cycles.length !== WARM_CYCLES
       || !measurement.bfcache
@@ -2058,13 +2352,15 @@ function verifyReport(report, expectedRunId, options) {
     || report?.lifecycle?.status !== 'complete') errors.push('report lifecycle is not complete');
   if (report?.policy?.attemptCount !== 1 || report?.policy?.automaticRetries !== 0
     || report?.policy?.warmupCycles !== WARMUP_CYCLES
-    || report?.policy?.measuredWarmCycles !== WARM_CYCLES) {
-    errors.push('one-attempt/warm-cycle policy drifted');
+    || report?.policy?.measuredWarmCycles !== WARM_CYCLES
+    || report?.policy?.snapshotPasses !== 2
+    || report?.policy?.scoredSnapshotPass !== 2) {
+    errors.push('one-attempt/warm-cycle/fixed-second policy drifted');
   }
   if (!same(report?.cleanup, { browser: true, server: true, workspaceLock: true })) {
     errors.push('terminal cleanup is incomplete');
   }
-  errors.push(...terminalProfileEvidenceErrors(report?.profiles, surfaceVistaRequired));
+  errors.push(...terminalProfileEvidenceErrors(report?.profiles, surfaceVistaRequired, true));
   errors.push(...terminalOutcomeInventoryErrors(
     report?.outcomes, null, surfaceVistaRequired ? OUTCOME_COUNT : 42,
   ));
@@ -2142,6 +2438,7 @@ function verifyReport(report, expectedRunId, options) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
+  if (options.heapPhaseSelftest) return await runHeapPhaseSelftest();
   if (options.verifyRun !== null) {
     let report;
     try { report = readJson(reportPath); }

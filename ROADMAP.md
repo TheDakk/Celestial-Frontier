@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-29 · PR #35 BROWSER-LIFECYCLE REPAIR · LOCAL CANDIDATE IN FINAL PROOF ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · PR #35 RESOURCE REPAIR · FIXED-SECOND SCENEMEM CALIBRATION ◀◀◀
 
 ### Exact current boundary
 
@@ -26,9 +26,12 @@ the archive verbatim and refresh this handoff in place.
   **`origin/openai/mac`**. Work remains limited to `port/v2` and current Markdown. Legacy
   `main.js` / `celestial-frontier.html`, `develop`, `main`, the live-site repository and
   every other agent worktree are untouched.
-- **Local Git state:** committed HEAD is
-  **`017fa6decbc41809188768ccdb98ab86ef1b9ebc`** plus the intentional uncommitted repair described
-  below. Preserve the dirty repair until it is signed and committed; do not reset or overwrite it.
+- **Local Git state:** committed HEAD is signed
+  **`a9f75797d6f838bb7246d3f41164f77e97e6f569`**, parent signed
+  `eba00e03f3376c67ab38c5067e9a32da66ce3a3a`, plus the intentional uncommitted SceneMemory
+  sampling repair/evidence described below. The branch is two commits ahead of its remote before
+  this batch. Preserve the dirty repair until it is reviewed, signed and committed; do not reset
+  or overwrite it.
 - **PR boundary:** draft PR **#35** is **`openai/mac` → `develop`**, currently remote head
   **`017fa6decbc41809188768ccdb98ab86ef1b9ebc`** against base
   **`7a9f4c1370dd84292388d718c38ff34214f6203b`**. It is open, blocked and unmerged.
@@ -46,7 +49,7 @@ the archive verbatim and refresh this handoff in place.
   it only as history, never inherit or relabel it. Bare Glass still refuses without its exact Slice
   predecessor ID by design.
 
-### What failed and why the earlier green checks missed it
+### Earlier hosted failure and systemic repair
 
 The hosted symptom was not an Edge update and not a flaky retry case. It exposed a compound
 real-browser lifecycle boundary that unit and earlier browser checks did not jointly exercise:
@@ -99,51 +102,87 @@ worker, vista, route or BFCache cause.
   codebase-reference, process-law and budget documents describe the same repaired contract.
   Historical evidence and HUMAN criteria remain unchanged.
 
+### Subsequent signed resource repair and exact remaining red
+
+Signed `a9f75797…` closes the later browser ownership findings without changing game structure:
+controller listeners attach only while owned; panel bubbling has one delegated owner; Survey
+invalid-route state destroys its controller; Guide/release archives are lazy; species thumbnails use
+one bounded 17-entry warm Blob-URL cache with complete lease/eviction/disposal ownership; and dropped,
+late, invalid or replaced broker results relinquish their backing resources. The browser-free suite
+on that source passed **235 files / 2,394 tests / 1 skipped**, all three TypeScript programs and
+producer derivation.
+
+The first and only clean SceneMemory certification on `a9f75797…`, run
+`20260829-pr35-resource-final-a9f75797-scenemem`, correctly stopped **43/44** and skipped Compendium.
+Every product-owned resource, cache, lease, worker, Blob, DOM, listener, Pixi, backing-storage,
+BFCache and cleanup outcome was green. The sole red was desktop heap plateau: V8 slope
+108,128.4 B/cycle passed, backing was flat, and a one-time final embedder charge of 149,928 B made
+aggregate slope 155,178.8 B/cycle exceed the unchanged 131,072 ruler.
+
+The preserved paired diagnostic on the exact same `8ef5d89c…` product build, Edge
+`152.0.4191.53` and flat ownership inventories moved the native embedder charge to cycle 2
+(+160,936 B). That made the old first-pass aggregate calculation green solely because the charge
+moved away from the OLS endpoint. A deterministic second complete
+answerability → GC → heap → carrier → DOM pass stayed stable (desktop embedder range 19,752 B,
+slope 3,069.6; aggregate slope 111,021.6). The permanent repair therefore always retains pass 1
+as raw phase evidence and scores pass 2—never the minimum, average, best-of or a retry—and retains
+all four warmup snapshots. A real isolated 512 KiB-per-cycle retained-allocation control passed with
+both lanes at exactly 524,288 B/cycle; releasing the arrays reduced backing from 2,097,191 B to
+39 B. Numeric ceilings, Edge-family authority and all product/build bytes remain unchanged.
+
 ### Current local evidence
 
 - Focused repair suites independently passed the original **22 files / 327 tests**, the final
   identity/canonicalization/no-retry controls at **7 files / 152 tests**, and the exact durable
   Survey-result wiring at **8 files / 37 tests**.
-- Current authority/budget suite: **3 files / 45 passed / 0 failed**.
-- Full browser-free suite: **234 files / 2,373 passed / 1 skipped / 0 failed**.
-- TypeScript: root, game app and worker programs are green.
+- Fixed-second SceneMemory focus: **4 files / 127 passed / 0 failed**; the real retained-allocation
+  browser control is green in both sampling lanes and release direction.
+- Final calibration-candidate browser-free sweep: **235 files / 2,401 passed / 1 skipped** with
+  exactly one deliberate red: current producer authority reports only `collector`, because the old
+  budget must remain fail-closed until fresh calibration is activated. No other test failed. The
+  final authority-activation descendant must repeat the suite once with that binding green.
+- TypeScript: root, game app and worker programs are green on the current dirty repair.
 - Static contract:
   - `artunused` green;
   - **34 art sources / 0 findings**;
   - **1,014/1,014** override routes with all mutation controls;
   - **1,010/1,010** coverage routes;
   - **454 declared / 0 never-read / 0 inert** specification fields.
-- A dirty-source diagnostic browser run
-  **`20260829233652913-23084-4b4362f86b`** completed phone and desktop SceneMemory mechanics,
-  including Earth Landing, the biome worker/lazy import, Compendium, Shipyard, ascent, BFCache and
-  reload cleanup. It is calibration-only because the source was dirty; it is not final certificate
-  authority and did not consume a hosted attempt.
+- The clean a9f red, the pre-browser authority stop and the paired noncertifying diagnostic are
+  preserved as deterministic gzip carriers in `audits/`; none is relabelled, retried or treated as
+  certification. Compendium and all later browser stages remain correctly skipped after the clean
+  43/44 stop.
 - Current authority identities:
-  - Scene build: `7c248bbc2b7071280af1b8b353536beb7b7a65b5448b69a48d6fd7276ac18647`
-  - Scene collector: `aa5c3711eb21277fbf24fc539f2a4564915692259bb874aff662066d4ec67f3a`
-  - Scene main: `56f052edc4bd2665eb5e385fb55524add2ba6e9d645cc72d771ae044c757bc21`
-  - Scene budget: `0647661b16126ec97610befb862e698b1a497d60055c3650cf07660d2eaa8c75`
+  - Scene build: `8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254`
+  - Scene main: `0a54536bfc363b12c668aa276a2987e98bba32e41c5dbf546609d621972a840c`
+  - Historical first-pass collector: `aa5c3711eb21277fbf24fc539f2a4564915692259bb874aff662066d4ec67f3a`
+  - Historical active budget: `bf559acb1688c7f83223f4381b05ccc02309cf86af6344f6c019ffa0d1ba25e0`
+  - Fixed-second collector/budget: pending clean calibration and authority-only activation; the
+    historical collector binding must remain red until that activation is signed.
   - Compendium measurement: `7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4`
-  - Compendium producer: `31156351571571958b10a734e57c5626ca03398403d9f46a5c54f126b862b3ce`
-  - Compendium budget: `84a5f574462fe789d97b3b00a579ddee771aff856ec4b10b24156080d5563b86`
+  - Compendium producer: `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`
+  - Compendium budget: `5d7b54235cf9470cd7f2c042612a402f79edda3c91ee2ba83bfbe21126001d49`
 - Numeric ceilings, the 44-outcome SceneMemory ruler, Compendium measurement contract and browser
   family policy did not move.
 
 ### Exact work remaining before another GitHub attempt
 
-1. Finish the aggregate diff/doc audit, then create a signed local implementation candidate.
-2. From that clean committed runtime, run one named SceneMemory attempt and named verification.
-   Stop on any red or instrument result; do not retry automatically.
-3. Run one named Compendium attempt and named verification because its producer includes the changed
-   game bundle. Stop on any red or instrument result; do not retry automatically.
-4. Record those exact local results, sign the documentation closure and run
-   `node tools/tracked-input-preflight.mjs` against the final committed index.
-5. Report the exact final head/base to Nick. Only a new authorization naming that immutable pair may
-   push the head, apply `actions-budget-approved`, permit one 92-minute `test-battery` with no
-   retry and merge on terminal green.
-6. After integration into `develop`, hand that exact integrated source to Claude Fable on an
-   `anthropic/*` branch for the requested full-system polish review. OpenAI/Codex then fixes only
-   accepted findings and repeats the same local-first discipline.
+1. Finish independent review of the fixed-second collector, docs and controls; sign one clean local
+   calibration candidate while the old collector authority remains deliberately fail-closed.
+2. On that exact unchanged clean collector/product, collect exactly three named one-attempt
+   SceneMemory calibrations, preserve each raw report, and confirm pass-2 samples remain below every
+   unchanged ceiling. These are planned measurement samples, not retries or certificates.
+3. Change only the SceneMemory collector producer binding (and its expected hash/docs), keep every
+   numeric/browser/product field byte-identical, run focused negative controls plus the full
+   browser-free/typecheck/producer battery once, and sign the authority activation.
+4. From that exact clean activation, run one named SceneMemory certification and named verification.
+   Stop on any red/instrument result with no retry. Only if green, run one named Compendium attempt
+   and verification; its game build is still `8ef5d89c…`.
+5. Preserve the exact results, refresh this handoff/authorities, sign the documentation closure and
+   run `node tools/tracked-input-preflight.mjs` against the final committed index.
+6. Report the exact final head/base to Nick. Only a new authorization naming that immutable pair may
+   push, label, run the one 92-minute hosted battery and merge. After green integration, hand the
+   exact `develop` commit to Claude Fable on an `anthropic/*` branch for the requested polish review.
 
 ### Product-roadmap boundary
 
