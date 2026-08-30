@@ -236,8 +236,8 @@ decoded pixels/bytes must equal exact 132×132 thumbnail math; portrait cache, q
 work and subscribers must be zero; the worker must be released; and the closed panel must own empty
 diagnostic and raw virtual-window, list and detail DOM. Stable warm membership and counters remain
 required. Independent diagnostic-only/raw-only mutations and direct replay of this preserved real
-carrier prevent duplicate observation channels from masking a missing clause. The repaired current
-measurement authority is
+carrier prevent duplicate observation channels from masking a missing clause. The then-current
+historical repair owned by this red used measurement authority
 `dacf6ab03b35f65ebd76b3a28a0c2ef2868ea505740f2cbe614d399cef1dbe7a`, under outcome
 contract `a2de8a5830a99678c487c9200519dd560bcf2497c1791e4d5dd6a5dd4b77e092` and collector
 `888b9dfdee9d973d17e1901eb26abf1a49015e6f21f0647f8d3043c3e052c964`. The product
@@ -253,6 +253,87 @@ certificate and named verification are still required; this red is not relabelle
 The carrier passes gzip integrity and remains immutable evidence for exact clean source
 `20460008…` only. It grants no green Compendium certificate, successor browser-stage authority,
 hosted result, HUMAN approval, merge, release, version bump or deployment authority.
+
+### Signed `3fb958f8…` Compendium Planetside-settlement instrument stop — 0/78, all blocked
+
+Signed clean source `3fb958f859ff0ea28b4e8bb720adaea98ad3c001` (tree
+`bc5ea5674c98fdd43c466b8bb3a45f87f1ba7763`, direct parent `20460008…`) ran exact Compendium
+run `20260830-pr35-quiescent-3fb958f-compendium-certification` once with zero automatic retries.
+The complete-lifecycle report stopped terminal `instrument-fail` after **32,946 ms** at phone
+`Planetside thumb settlement`; `veteran Earth boot readiness` was the last completed stage. It
+retained one phone partial profile, no desktop profile, no review PNGs, zero measured outcomes and
+all **78/78 expected outcomes blocked**. No Compendium retry and no successor Slice, Glass or
+Recovery stage ran.
+
+All **585** retained candidate-command ledger entries completed with timely target evaluations and
+timely root `Browser.getVersion` heartbeats. Exactly **577** entries were the Planetside-settlement
+phase: every `Runtime.evaluate` completed on time with a by-value result state, and every independent
+heartbeat returned `Edg/152.0.4191.53` on time. The old collector nevertheless retained only the
+generic terminal diagnosis `phase timed out after on-time falsy observations (null)`: it retained
+none of the image/decode/queue/worker/foreground facts needed to identify which predicate remained
+false. This is immutable
+**instrument evidence**, not a product-unanswerability, product-memory, Microsoft Edge update,
+browser-family compatibility, numeric-ruler or rebaseline verdict.
+
+The carrier records the exact authorities that owned this historical run: active budget
+`c941bb1000e0056f661cf3994855a286d6667b3d5b80f5c770aab4d9e0543ef3`, derived measurement
+authority `dacf6ab03b35f65ebd76b3a28a0c2ef2868ea505740f2cbe614d399cef1dbe7a`, collector
+`888b9dfdee9d973d17e1901eb26abf1a49015e6f21f0647f8d3043c3e052c964`, outcome contract
+`a2de8a5830a99678c487c9200519dd560bcf2497c1791e4d5dd6a5dd4b77e092`, product producer
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`, browser transport
+`6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce`, and version-tolerant
+Microsoft Edge-family / CDP `1.3` capability authority
+`6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Browser provenance was
+Microsoft Edge `152.0.4191.53`, revision `@4ee8983fdce2559a0ae8f8376934c5ed353035cd`, V8
+`15.2.23.6`, CDP `1.3`.
+
+- `ARC1C_COMPENDIUM_PR35_PLANETSIDE_SETTLEMENT_INSTRUMENT_FAILURE_20260830_3FB958F.json.gz`:
+  32,830 compressed bytes, SHA-256
+  `ecb786c00f7261ce3306c73d512133ce3e2e74035cf83172e3fe8c735442a0dd`; 512,184 raw bytes,
+  SHA-256 `bf18cff6d43fcf5d6bf1c128471630a338cefb34a4a04762a5d25699f80ce5e5`.
+- `port/v2/tests/compendium-planetside-settlement-failure-carrier.test.ts` independently binds the
+  gzip/raw bytes and hashes, clean source begin/end, exact policy/lifecycle/browser and historical
+  authorities, 78 blocked outcomes, sole partial profile, 577 timely settlement observations with
+  healthy heartbeats, empty review evidence and the terminal null-blind classification. It imports
+  no live Compendium authority that could relabel the stored stop.
+
+Subsequent foreground-service and structured-settlement repair establishes new current authority;
+it does not rebind, retry, relabel or turn this exact `3fb958f8…` carrier into a product verdict or
+green certificate. The carrier grants no successor-stage, hosted, merge, release or deployment
+authority.
+
+### Signed Compendium foreground + settlement-history implementation authority — browser-free only
+
+The current repair owns exact foreground service for fresh lazy-control → veteran Earth → final
+lazy-control and one sealed settlement plan per profile with **85 semantic phases**: **75 list** and
+**10 Planetside**. Each accepted semantic invocation receives a contiguous attempt and exact token/
+page/browser/command/timing binding, then enters append-only `thumbnailSettlementHistory` before the
+phase's latest receipt is inserted or replaced. The latest array remains exactly 85 plan entries and
+must equal the final history receipt in every group. Partial-profile schema v6 keeps its diagnosis,
+the full accepted history and latest completed prefix, plus a structured active next-phase or latest-
+phase-retry tail. Terminal verification rejects omission/reorder and coordinated attempt/token/
+history/page/browser/command/timing laundering.
+
+Partial carriers independently bind lazy/main page authority and require distinct identities whenever
+both exist. Polling retains exactly one terminal command per semantic deadline group; the command
+ledger fails closed above **2,048 entries or 2 MiB**; receipt tokens stop at **256 characters**; and a
+ready-but-unreceipted tail is accepted only with its exact receipt-assembly instrument diagnosis.
+
+Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
+`66639419129ea0db68114ef70f0106a58abb91d0`, parent
+`3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns current capability / measurement / contract /
+collector / budget SHA-256:
+`35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
+`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
+`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
+`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
+`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; product producer remains
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free checks pass
+**546** Compendium selftest controls, focused **31/31**, **236 files / 2,409 passed + one skipped**,
+all three TypeScript programs and the producer-authority printer. These signed implementation bytes
+are not browser-certified. No current report, review PNG, successor gate, hosted result, merge, release,
+version bump or deployment authority follows yet. The `dacf…` / `a2de…` / `888…` tuple above remains
+exact then-current historical authority for its own immutable red carriers only.
 
 ### Signed `3f69e88e…` universe-polish + bounded Arc 5 Feed certificate — complete local chain PASS
 

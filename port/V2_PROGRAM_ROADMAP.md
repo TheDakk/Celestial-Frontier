@@ -71,7 +71,8 @@
 > historical serial certificate. Every Final13 42/42 statement remains exact historical evidence for
 > its older source/schema.
 >
-> **Current-local PR #35 repair overlay (later than the signed certificate above):** consumed hosted
+> **Current-local PR #35 repair and signed-evidence chronology (2026-08-30; later than the signed
+> certificate above):** consumed hosted
 > run `33278630671` tested exact head `017fa6decbc41809188768ccdb98ab86ef1b9ebc`; every predecessor
 > and SceneMemory control passed before the one-attempt phone product stage stopped at **Earth
 > planetfall was rejected**. Compendium, Slice, Glass and later browser stages correctly did not run,
@@ -86,8 +87,9 @@
 > causes, fails closed on malformed diagnostics, distinguishes stale replies from current authority
 > mismatches, and navigates to a minimal ephemeral second origin for BFCache so the product service
 > worker cannot capture the fixture. The SceneMemory contract remains **44 outcomes**, all numeric
-> rulers and historical evidence remain unchanged, and every `[HUMAN]` criterion remains open. This
-> is current-local repair state, not a clean exact-source certificate; see
+> rulers and historical evidence remain unchanged, and every `[HUMAN]` criterion remains open. At
+> that earlier hosted-stop boundary this was current-local repair state, not a clean exact-source
+> certificate; see
 > `../audits/PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md`.
 >
 > The same repair batch now closes the fixed browser-resource roots exposed after that product-path
@@ -99,15 +101,62 @@
 > then becomes a window-owned revocable Blob URL before broker caching; 440px portraits remain data
 > URLs. Live leases protect visible art, every reject/drop/duplicate/evict/final-dispose exit releases
 > external ownership exactly once, and at most the 17 most-recent unleased thumbnails remain warm.
-> Dirty exact-budget diagnostic `20260829-pr35-blob-url-warm-cache-dirty-budget1` passed all **44/44**
-> SceneMemory outcomes on Edge `152.0.4191.53`: phone retained 16 thumbnails with one import/16 jobs
-> and 2,971,348 backing bytes; desktop retained 17 with one import/17 jobs and 2,972,520 backing
-> bytes. It is valid product diagnosis but cannot certify dirty source. Clean signed SceneMemory and
-> Compendium evidence is still required; no threshold, browser baseline, gameplay structure or
-> `[HUMAN]` state changed.
+> The earlier dirty exact-budget diagnosis has since advanced to clean signed evidence. Exact source
+> `2046000873f98318c767db53d2ffb2abac71cc94` ran SceneMemory once, with zero retries, as
+> `20260830-pr35-fixed-second-2046000-scenemem-certification`; all **44/44** outcomes and its named
+> exact-source verifier passed. Its immediately following Compendium run
+> `20260830-pr35-2046000-compendium-certification` stopped once without retry at **76/78**. Only the
+> phone and desktop `warm-precondition` outcomes were red: the truthful settled state held eight live
+> Planetside leases plus 17 unleased warm thumbnails, 25 total, rather than filling the obsolete
+> 96/256 cache-capacity assumption. The result is immutable diagnosis, not a pass.
+>
+> Signed child `3fb958f859ff0ea28b4e8bb720adaea98ad3c001` then ran exact Compendium attempt
+> `20260830-pr35-quiescent-3fb958f-compendium-certification` once with zero retries on Edge
+> `152.0.4191.53` / CDP `1.3`. It stopped terminal `instrument-fail` at phone Planetside settlement
+> after 32,946 ms: 585 ledger observations included 577 on-time value observations and timely
+> heartbeats, but the old collector collapsed the terminal observation to generic `null`. Therefore
+> all 78 outcomes were blocked, only one partial phone profile exists, and no desktop profile or
+> outcome/review PNG exists. No successor stage ran. This is instrument evidence only, not a game,
+> Edge-version, numeric-ruler, HUMAN, merge, release or deployment verdict.
+>
+> The current browser-free repair binds each foreground turn to exact target/session/document
+> authority, activates and focuses that attachment, and accepts only a real animation-frame to later-
+> task turn within one 5,000 ms phase deadline. Versioned receipts retain exact phase timing,
+> expected/observed identity and successful document-global cleanup; complete measurements add
+> independent lazy/main page authorities. A failed foreground claim cleans its globals/listeners and
+> disables focus emulation for the attempted attachment without replacing the primary classification.
+> Structured thumbnail observations retain raw and diagnostic identity, image/source/decode/
+> dimensions, art/lazy/worker/broker and page state while Node recomputes bounded readiness reasons;
+> null or non-object page output cannot mutate the settlement record. One exact **85-phase** plan per
+> profile covers **75 list** and **10 Planetside** phases. Every accepted semantic invocation is
+> appended with contiguous attempt and exact token/page/browser/command/timing authority before the
+> 85-entry latest projection is inserted or replaced; each latest entry must equal its plan group's
+> final history receipt. Partial schema v6 retains diagnosis, full accepted history and the latest
+> completed prefix plus an active next-phase or latest-phase-retry tail. Terminal verification rejects
+> omission/reorder and coordinated attempt/token/history/page/browser/command/timing laundering.
+> Partial lazy/main page authorities are independently bound and distinct whenever both exist; each
+> semantic deadline group retains exactly one terminal poll command. The command ledger fails closed
+> above **2,048 entries or 2 MiB**, tokens cap at **256 characters**, and a ready-but-unreceipted tail
+> requires the exact receipt-assembly instrument diagnosis.
+>
+> Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
+> `66639419129ea0db68114ef70f0106a58abb91d0`, parent
+> `3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns the current authority tuple: capability SHA-256
+> `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341`, measurement
+> `326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b`, contract
+> `7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24`, collector
+> `ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690`, budget
+> `c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`, and unchanged producer
+> `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free closure is
+> green at **546** `compendiummem:selftest` controls, focused **31/31**, **236 files / 2,409 passed +
+> one skipped** for the full v2 suite, all three TypeScript programs and the producer-authority printer.
+> Those browser-free checks certify no browser result. The next authorized local evidence action is
+> exactly one fresh clean exact-source Compendium run with no
+> retry and named verification; only a green result may continue the serial Slice → Glass → Recovery
+> chain on that same unchanged source.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-29.
+> 2026-08-30.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -1198,9 +1247,12 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-21): automated implementation and integration complete.** Product
-virtualization, serviced-turn scheduling, compact-phone layout, displayed-demand texture ownership,
-bounded static-server shutdown, and the repaired ruler are present. Exact changed-head run
+**Current state (2026-08-30): Arc 1A product integration is complete; signed PR #35 implementation
+`3eefbbcf…` owns the browser-free-green foreground/structured-observation and append-only 85-phase
+settlement-history authority and awaits one fresh clean exact-source Compendium run.** Product
+virtualization, serviced-turn scheduling, compact-phone layout,
+displayed-demand texture ownership, bounded static-server shutdown, and the repaired ruler are
+present. Exact changed-head run
 `32462323775` passed the complete battery once on `c68aee2…`; its approval label was removed and
 PR #32 merged at `d4ab7e6…`. The earlier false-greens, wrong-browser carriers, calibration history,
 and no-retry reds below remain preserved because they explain the final ruler. The separate six-image

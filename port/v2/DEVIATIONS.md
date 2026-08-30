@@ -72,6 +72,50 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   exactly once. Dirty diagnostic `20260829-pr35-blob-url-warm-cache-dirty-budget1` exercised the
   unchanged 44 outcomes green but is non-certifying; numeric rulers and historical certificates did
   not move.
+- ★ **D-PR35-COMPENDIUM-FOREGROUND — every rAF-dependent surface owns its exact page and a
+  structured terminal witness.** Clean signed source
+  `3fb958f859ff0ea28b4e8bb720adaea98ad3c001` ran
+  `20260830-pr35-quiescent-3fb958f-compendium-certification` exactly once with zero retries under
+  accepted Edge `152.0.4191.53` / CDP `1.3` and matching active browser/producer authority. After
+  veteran-Earth boot readiness, phone Planetside settlement made **577** on-time target observations
+  with timely root heartbeats, but the old boolean predicate collapsed every unsettled state to
+  `null`. The run therefore stopped `instrument-fail` before any product verdict; all 78 outcomes
+  were blocked, and desktop, review PNGs and successor gates were never reached. Its immutable
+  raw/gzip report hashes are `bf18cff6d43fcf5d6bf1c128471630a338cefb34a4a04762a5d25699f80ce5e5` /
+  `ecb786c00f7261ce3306c73d512133ce3e2e74035cf83172e3fe8c735442a0dd`.
+  Signed implementation `3eefbbcf…` reclaims and proves foreground ownership in the exact fresh-lazy →
+  veteran-Earth → final-lazy order. Each receipt binds the independently attach-derived target,
+  session and document to a fresh service token; records visible, focused arm → rAF → later-task
+  phases with zero visibility/focus loss; arrives inside its fixed deadline; and proves listener/
+  global cleanup. Every list and Planetside settlement poll now retains one bounded structured
+  page/image/decode/art/worker/broker observation plus its own recomputed reasons instead of `null`,
+  under an exact **85-phase** plan: **75 list** and **10 Planetside** phases. Every accepted semantic
+  invocation is appended with its exact attempt/token/page/browser/command/timing receipt before the
+  plan's 85-entry latest map is updated; each latest entry must equal its history group's last
+  receipt. Partial schema v6 retains its diagnosis, full accepted history and latest prefix, plus the
+  structured active next-phase or latest-phase-retry tail. Terminal verification rejects omission,
+  reorder and coordinated attempt/token/history/page/browser/command/timing laundering as well as
+  stale, hidden/unfocused, loss-bearing or late evidence. Partial lazy/main page authorities are
+  independently bound and distinct whenever both exist; each semantic deadline group retains exactly
+  one terminal poll command. The command ledger fails closed above **2,048 entries or 2 MiB**, receipt
+  tokens cap at **256 characters**, and a ready-but-unreceipted tail requires its exact receipt-
+  assembly instrument diagnosis.
+
+  Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
+  `66639419129ea0db68114ef70f0106a58abb91d0`, parent
+  `3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns current capability / measurement / contract /
+  collector / budget authority:
+  `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
+  `326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
+  `7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
+  `ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
+  `c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; product producer remains
+  `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The repair is green at
+  **546** Compendium selftest controls, **31/31** focused tests, **236 files / 2,409 passed + one
+  skipped**, all three TypeScript programs and the producer-authority printer, but it is not
+  browser-certified. It changes no product/game byte, automatic-retry policy, memory ruler, cache
+  policy or browser-version baseline; the preserved `3fb958f…` stop remains historical instrument
+  evidence.
 
 - ★ **D-ARC5-LIVE — four bounded exact-instance companion writers.** Verified real-fauna
   Compendium detail exposes Feed, one-draw nonlethal Breed with active-play Recovery, identity-only
