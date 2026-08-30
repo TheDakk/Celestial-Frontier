@@ -26,15 +26,18 @@ the archive verbatim and refresh this handoff in place.
   **origin/openai/mac**. This batch is V2-only: port/v2, its evidence tooling/tests, immutable
   audit carriers and current Markdown. Legacy main.js / celestial-frontier.html, develop, main,
   the live-site repository and every other agent worktree remain untouched.
-- **Signed predecessor:** exact clean commit
-  **941ba45a96e5baabadc255d53db86fa935cefe81** (tree
-  **f4258642e6c4e80eb76dda7e7e499b5efbee69f0**, parent
-  **16b122b3abf68dee7cecffd181d6ff7a03f9c8f0**) supplied the preserved browser evidence below.
-  The current repair is its direct changed-source successor and must be signed with this handoff
-  before any changed-head browser run. Resolve that clean candidate with git rev-parse HEAD after
-  committing; never relabel the exact-941 reports as evidence for its descendant.
-- **Branch relationship:** 941ba45… is **18 commits ahead** of origin/openai/mac; this signed
-  implementation/evidence/docs closure will add one local commit. Fetched origin/develop
+- **Signed implementation/evidence closure:** exact commit
+  **0f814a6f39912d81a3a738e0c70297e9b697550c** (tree
+  **667212b8d3e05d38dfc9dfaf8507baa8b4cd40ab**, parent exact-941 evidence checkpoint
+  **941ba45a96e5baabadc255d53db86fa935cefe81**) contains an embedded SSH signature and the
+  complete Guide/Release + named-CF1 repair, authority reseal, evidence carriers, tests and
+  current-reference refresh described below. Never relabel the exact-941 reports as evidence for
+  this changed-source descendant.
+- **Documentation closure:** this protocol-only handoff amendment is the direct signed successor
+  to 0f814a6…. Resolve the exact clean browser candidate with git rev-parse HEAD after committing;
+  it changes no product, ruler, budget or test bytes.
+- **Branch relationship:** 0f814a6… is **19 commits ahead** of origin/openai/mac; the signed
+  documentation closure adds one local commit. Fetched origin/develop
   **7a9f4c1370dd84292388d718c38ff34214f6203b** remains an ancestor. Nothing in this batch has
   been pushed.
 - **PR boundary:** draft PR **#35** remains **openai/mac → develop**. Remote head
@@ -214,8 +217,23 @@ judgment. Current system references and port/V2_PROGRAM_ROADMAP.md own those bou
   the exact local browser chain. Make no GitHub write without exact authorization.
 - **GitHub step now:** none.
 - **PR #35:** existing draft; base **develop**, source **openai/mac**, title
-  **feat(v2): complete roadmap campaign and harden CI parity**. Refresh its description only
-  after the final clean browser-chain head exists.
+  **feat(v2): complete roadmap campaign and harden CI parity**.
+- **Copy-ready PR description:**
+
+      Completes the dependency-ready V2 local roadmap campaign while preserving the established
+      creature/genome, Guardian/Prime Codex, loot/Pureforged, exploration, combat, progression,
+      universe-wide art/audio and save-schema boundaries. This head seals the species/biome worker
+      graphs, preserves the immutable exact-941 Compendium PASS and terminal Slice diagnosis,
+      repairs Guide/Release publication authority, and makes custom-name → Follow one causally
+      owned persistence/route sequence. Current local browser-free acceptance is 244 files with
+      2,459 passed and 1 skipped; all three TypeScript programs and the documented art/authority
+      controls are green. The exact clean-head Compendium → Slice → Glass → Recovery chain remains
+      required before this draft can become Ready or use the one authorized hosted battery.
+      No legacy-v1 source, production release, version bump, preview publication or deployment is
+      included. Base: develop. Source: openai/mac.
+
+  Refresh the acceptance sentence and append the immutable final head/base only after the exact
+  clean browser-chain result exists; do not broaden the scope.
 - **Claude Code now:** Nick does **not** need to open Claude yet. Claude must not edit this
   OpenAI worktree. After PR #35 is terminal-green and merged into develop, Claude should create
   or update an anthropic/* branch from that exact integration commit and perform the requested
