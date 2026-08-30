@@ -2162,6 +2162,63 @@ export function assessCompendiumFeedTwoDocumentStaleOutcome(observation) {
   return { ok: reasons.length === 0, reasons };
 }
 
+/* Arc 0 classifies an expected native action result, document identity and
+   bounded settlement wait before a generic harness catch can erase the
+   causal product scope. */
+export function assessArc0LandingAwaitBoundary({
+  actualAccepted,
+  expectedAccepted,
+  actionDocumentToken,
+  expectedDocumentToken,
+  waitError = null,
+} = {}) {
+  const reasons = [];
+  if (typeof expectedAccepted !== 'boolean'
+    || actualAccepted !== expectedAccepted) {
+    reasons.push(`accepted ${JSON.stringify(actualAccepted)} !== ${JSON.stringify(expectedAccepted)}`);
+  }
+  if (typeof expectedDocumentToken !== 'string' || expectedDocumentToken.length === 0
+    || actionDocumentToken !== expectedDocumentToken) {
+    reasons.push('action document token drifted');
+  }
+  if (waitError !== null) {
+    const message = typeof waitError === 'string' ? waitError : String(waitError);
+    reasons.push(`expected stage did not settle: ${message.slice(0, 2_048)}`);
+  }
+  return Object.freeze({ ok: reasons.length === 0, reasons: Object.freeze(reasons) });
+}
+
+const ARC0_LANDING_FAULT_ARM_KEYS = Object.freeze([
+  'storageFailure', 'staleAuthority', 'publicationFailure',
+]);
+
+/* Arc 0 setup/reload evidence accepts only the current complete coordinator
+   projection. An empty or partially renamed fault map must not pass merely
+   because every value that happens to remain is false, and a diagnostic hold
+   from an earlier action is not an idle predecessor. */
+export function arc0LandingCoordinatorIsIdle(state, { clearFault = false } = {}) {
+  const landing = state?.landing;
+  const coordinator = landing?.actionCoordinator;
+  const owner = coordinator?.owner;
+  const hold = coordinator?.hold;
+  const faultArmed = coordinator?.faultArmed;
+  return landing?.schema === 'cf-v2-arc0-landing-app-state/v1'
+    && exactKeys(
+      coordinator,
+      ['inFlight', 'owner', 'hold', 'faultArmed', 'lastFault'],
+    )
+    && coordinator.inFlight === false
+    && exactKeys(owner, ['schema', 'busy', 'operation'])
+    && owner.schema === 'cf-v2-product-action-coordinator-diagnostics/v1'
+    && owner.busy === false && owner.operation === null
+    && exactKeys(hold, ['schema', 'phase', 'operation', 'sequence'])
+    && hold.schema === 'cf-v2-product-action-hold-diagnostics/v1'
+    && hold.phase === 'idle' && hold.operation === null && hold.sequence === 0
+    && exactKeys(faultArmed, ARC0_LANDING_FAULT_ARM_KEYS)
+    && ARC0_LANDING_FAULT_ARM_KEYS.every((key) => faultArmed[key] === false)
+    && (!clearFault || coordinator.lastFault === null);
+}
+
 /* A D-TRAIN transaction can only judge the product's busy-refusal branch
    after the harness proves that its exact fixture owns the current document
    and that the real Training action is runnable. Optional-chaining a missing

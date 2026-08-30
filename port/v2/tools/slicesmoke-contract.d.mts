@@ -18,6 +18,19 @@ export interface SliceContractAssessment {
   readonly reasons: readonly string[];
 }
 
+export function assessArc0LandingAwaitBoundary(input?: Readonly<{
+  readonly actualAccepted?: unknown;
+  readonly expectedAccepted?: unknown;
+  readonly actionDocumentToken?: unknown;
+  readonly expectedDocumentToken?: unknown;
+  readonly waitError?: unknown;
+}>): SliceContractAssessment;
+
+export function arc0LandingCoordinatorIsIdle(
+  state: unknown,
+  options?: Readonly<{ readonly clearFault?: boolean }>,
+): boolean;
+
 export type Arc2InventorySuccessorBoundary = Readonly<{
   readonly kind: 'ready' | 'blocked';
   readonly canEnterMutableArc3: boolean;

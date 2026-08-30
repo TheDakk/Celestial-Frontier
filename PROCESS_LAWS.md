@@ -1,12 +1,44 @@
 # Celestial Frontier — PROCESS LAWS
 
-> **2026-08-30 current Mine/Survey evidence law (matches local code):** exact signed source
-> `4a82d9b82521ea9bd1ac5e7c0754a473bcadd997` passed Compendium 78/78 once/no-retry, then its
-> unchanged-source Slice `20260830152819879-75689-abf2a37ffd4d` stopped once/no-retry with three
-> scopes. All three were harness/oracle defects: Mine legitimately completed accepted `st-mine`
-> and paid 15 current/lifetime Stardust in the same durable action; the stale preservation oracle
-> called those coupled fields unrelated, contaminating its controls; later Survey Search sent its
-> one-shot Enter before the preceding ascent save released `activePersist`.
+> **2026-08-30 current `20d8598…` / `9382f8e…` evidence law (matches local code):** exact clean
+> SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium 78/78
+> once/no-retry, then its unchanged-source Slice
+> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry after
+> 120,493 ms with six ordered findings: Research, fixed Fabrication, three Landing fault scopes and
+> the final Pertar harness scope. Signed evidence successor
+> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay; the stored
+> Slice remains FAIL, and Glass/Recovery did not run. Diagnosis separated three roots: Edge can
+> finish native Enter's focused-button-to-BODY transition after the click listener, erasing the
+> Engineering settlement's focus lineage; the Landing fixture sampled authority before an owned
+> Survey transaction and then judged Landing against that stale baseline; and the recovery/Pertar
+> assessor rejected legitimate current Arc 5 v3 diagnostics because its exact schema knew only the
+> Feed subtree. No browser retry, timeout increase, version rebaseline, save/gameplay redesign or
+> schema bump follows.
+>
+> **PARK NATIVE-ACTION FOCUS BEFORE DISABLING IT.** When a trusted native Enter activation can
+> disable its exact action before the browser finishes default focus handling, synchronously park
+> focus on the action's stable semantic row. Restore the replacement action only while that lineage
+> remains; a later user move to BODY or another control wins. A control without a semantic row must
+> retain its separately proved disable-to-BODY behavior rather than borrowing this allowance.
+>
+> **SETUP TRANSACTIONS ARE OWNED PREDECESSORS.** If an evidence fixture must commit Survey or another
+> durable setup action before the judged action, wait for its exact receipt, route, live publication,
+> coordinator-idle and writable fixed point, then resample raw and live authority. Arm the fault only
+> after that green baseline and invoke the direct action under test once. A composite helper that
+> silently performs the predecessor cannot supply the judged baseline.
+>
+> **VERSIONED DIAGNOSTICS ARE EXACT SCHEMAS.** The current Arc 5 v3 app diagnostic owns its base
+> migration fields plus exact Feed, Breed, Rename and Scout subtrees; wrong, missing and extra fields
+> in any subtree must reject. Historical v2 base-only evidence is accepted only through its explicit
+> legacy replay option. Never repair a stale assessor by ignoring current extra fields, and never
+> call an assessor catch-up a product schema bump.
+>
+> **IDLE IS AN EXACT STATE, NOT AN EMPTY-SET INFERENCE.** A coordinator is idle only when its owner,
+> diagnostic hold and complete fault-latch map all match their current exact schemas: every named
+> latch is present and false, the hold is `idle` with null operation and the fresh-document sequence,
+> and setup/reload has no retained fault. Missing, renamed and extra false keys must reject just like
+> an armed latch. Positive setup must fail-stop before constructing mutants so malformed evidence
+> keeps its owned stage diagnosis instead of escaping as a generic harness exception.
 >
 > **A SAME-TRANSACTION SUBSYSTEM IS OWNED, NOT UNRELATED.** When an action can settle a Charter,
 > achievement, reward, progression refresh or other coupled subsystem inside its one CAS, the exact
@@ -37,8 +69,10 @@
 > mutants; a green negative control stops later controls; and a red stage stops every mutable
 > successor. Source-order removal and reversal controls must prove each stop. Historical multi-scope
 > reports stay immutable, but current execution must not manufacture derivative stages after a root
-> has already invalidated their premise. Current browser-free acceptance is 249 files / 2,488 passed
-> / 1 skipped with all TypeScript programs green; this grants no fresh browser successor authority.
+> has already invalidated their premise. Final repair-batch browser-free validation is green: 250
+> files / 2,495 passed / 1 skipped with all TypeScript programs green. Neither that green result nor
+> local repair bytes grant fresh
+> browser successor authority.
 
 > **2026-08-30 current sealed single-file worker authority (matches local code; supersedes the
 > execution-late `clients.get()` repair and the narrower 38d/830/d33 “current” boundaries below;
@@ -72,20 +106,22 @@
 > `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
 > `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`.
 > Final derived changed-head producer authority is
-> `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b`; it binds index
-> `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0`, owner
-> `assets/main-C621myNE.js` / `2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`, and generated
-> `service-worker.js` `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. The combined
+> `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3`; it binds index
+> `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c`, owner
+> `assets/main-BYnoCcc9.js` / `13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`, and generated
+> `service-worker.js` `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. The combined
 > worker/painter asset is `assets/species-art.worker-DnnSDKMy.js`, SHA-256
 > `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Current Scene build /
 > game-main, Compendium budget-file and Scene budget-file authorities are
-> `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+> `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` /
 > `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`,
-> `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c`, and
-> `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. The green authority printer
+> `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b`, and
+> `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. The green authority printer
 > binds a **964-module / 52-file** build.
-> This changes worker packaging and PWA ownership only: no save schema, painter pixel, seed, genome,
-> anatomy, art structure, ruler, numeric ceiling or 78-outcome inventory changed. Fresh signed
+> The sealed-worker portion changes worker packaging and PWA ownership only. The current head also
+> includes the bounded Engineering focus repair, its 74th release-note bullet and evidence-assessor
+> repairs; no save schema, painter pixel, seed, genome, anatomy, art structure, ruler, numeric
+> ceiling or 78-outcome inventory changed. Fresh signed
 > browser certification remains pending; this derived reseal grants no browser or later-stage authority.
 
 ⚠⚠ **A REPLACEMENT CLEARS OLD HISTORY; ITS HELD BOOTSTRAP IS A DIFFERENT TRANSACTION**

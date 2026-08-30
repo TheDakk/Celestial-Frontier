@@ -1,5 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import {
+  arc0LandingCoordinatorIsIdle,
+  assessArc0LandingAwaitBoundary,
+} from '../tools/slicesmoke-contract.mjs';
 
 const sliceSource = readFileSync(
   new URL('../tools/slicesmoke.mjs', import.meta.url),
@@ -89,10 +93,25 @@ const sourceExactOwner = section(
   '  const arc0LandingSourceExact = (fixture) => {',
   '  const arc0LandingConvergenceHeld = (state) => (',
 );
+const surveyContractOwner = section(
+  evidenceOwner,
+  '  const arc0LandingSurveyReceiptPattern = /^arc9sv1:[0-9a-f]{64}$/u;',
+  '  const arc0LandingConvergenceHeld = (state) => (',
+);
+const surveySetupOwner = section(
+  evidenceOwner,
+  '  const assessArc0LandingSurveySetup = (evidence) => {',
+  '  const arc0LandingSurveyBaselineExact = (evidence) => (',
+);
 const reloadFixedPointOwner = section(
   evidenceOwner,
   '  const arc0LandingReloadFixedPoint = (evidence, route) => {',
   '  const arc0LandingConvergenceWitnessExact = (evidence, scenario, raw, detail) => {',
+);
+const convergenceWitnessOwner = section(
+  evidenceOwner,
+  '  const arc0LandingConvergenceWitnessExact = (evidence, scenario, raw, detail) => {',
+  '  const arc0LandingFaultExact = (evidence, injection, outcome) => {',
 );
 const storageAssessmentOwner = section(
   evidenceOwner,
@@ -131,6 +150,118 @@ const publicationScenarioOwner = section(
 );
 
 describe('Slice Arc 0 Landing fault evidence contract', () => {
+  it('classifies refused, wrong-document and never-settled actions before generic harness handling', () => {
+    const exact = {
+      actualAccepted: true,
+      expectedAccepted: true,
+      actionDocumentToken: 'document:pertar',
+      expectedDocumentToken: 'document:pertar',
+      waitError: null,
+    };
+    expect(assessArc0LandingAwaitBoundary(exact)).toEqual({ ok: true, reasons: [] });
+    const controls = {
+      refused: assessArc0LandingAwaitBoundary({ ...exact, actualAccepted: false }),
+      wrongDocument: assessArc0LandingAwaitBoundary({
+        ...exact, actionDocumentToken: 'document:other',
+      }),
+      neverSettled: assessArc0LandingAwaitBoundary({
+        ...exact, waitError: 'exact settlement timed out with retained state',
+      }),
+      wrongAcceptedRefusal: assessArc0LandingAwaitBoundary({
+        ...exact, expectedAccepted: false,
+      }),
+    };
+    expect(controls.refused).toEqual({
+      ok: false, reasons: ['accepted false !== true'],
+    });
+    expect(controls.wrongDocument).toEqual({
+      ok: false, reasons: ['action document token drifted'],
+    });
+    expect(controls.neverSettled).toEqual({
+      ok: false,
+      reasons: ['expected stage did not settle: exact settlement timed out with retained state'],
+    });
+    expect(controls.wrongAcceptedRefusal).toEqual({
+      ok: false, reasons: ['accepted true !== false'],
+    });
+  });
+
+  it('rejects incomplete fault latches and any non-idle product hold', () => {
+    const exact = {
+      landing: {
+        schema: 'cf-v2-arc0-landing-app-state/v1',
+        actionCoordinator: {
+          inFlight: false,
+          owner: {
+            schema: 'cf-v2-product-action-coordinator-diagnostics/v1',
+            busy: false,
+            operation: null,
+          },
+          hold: {
+            schema: 'cf-v2-product-action-hold-diagnostics/v1',
+            phase: 'idle',
+            operation: null,
+            sequence: 0,
+          },
+          faultArmed: {
+            storageFailure: false,
+            staleAuthority: false,
+            publicationFailure: false,
+          },
+          lastFault: null,
+        },
+      },
+    };
+    expect(arc0LandingCoordinatorIsIdle(exact, { clearFault: true })).toBe(true);
+    const mutate = (change: (coordinator: any) => void) => {
+      const control = structuredClone(exact);
+      change(control.landing.actionCoordinator);
+      return arc0LandingCoordinatorIsIdle(control, { clearFault: true });
+    };
+    expect({
+      missingFaultKey: mutate((coordinator) => {
+        delete coordinator.faultArmed.storageFailure;
+      }),
+      renamedFaultKey: mutate((coordinator) => {
+        delete coordinator.faultArmed.storageFailure;
+        coordinator.faultArmed.storageFailureRenamed = false;
+      }),
+      extraFalseFaultKey: mutate((coordinator) => {
+        coordinator.faultArmed.unexpectedFault = false;
+      }),
+      armedFault: mutate((coordinator) => {
+        coordinator.faultArmed.storageFailure = true;
+      }),
+      missingHold: mutate((coordinator) => { delete coordinator.hold; }),
+      wrongHoldSchema: mutate((coordinator) => {
+        coordinator.hold.schema = 'cf-v2-product-action-hold-diagnostics/control';
+      }),
+      heldPhase: mutate((coordinator) => { coordinator.hold.phase = 'holding'; }),
+      retainedOperation: mutate((coordinator) => {
+        coordinator.hold.operation = 'arc0.landing-control';
+      }),
+      advancedSequence: mutate((coordinator) => { coordinator.hold.sequence = 1; }),
+      extraHoldField: mutate((coordinator) => { coordinator.hold.extra = false; }),
+      extraCoordinatorField: mutate((coordinator) => { coordinator.extra = false; }),
+    }).toEqual({
+      missingFaultKey: false,
+      renamedFaultKey: false,
+      extraFalseFaultKey: false,
+      armedFault: false,
+      missingHold: false,
+      wrongHoldSchema: false,
+      heldPhase: false,
+      retainedOperation: false,
+      advancedSequence: false,
+      extraHoldField: false,
+      extraCoordinatorField: false,
+    });
+    const retainedFault = structuredClone(exact);
+    (retainedFault.landing.actionCoordinator as any).lastFault = { phase: 'settled' };
+    expect(arc0LandingCoordinatorIsIdle(retainedFault)).toBe(true);
+    expect(arc0LandingCoordinatorIsIdle(retainedFault, { clearFault: true })).toBe(false);
+  });
+
   it('starts every fault from one exact source-proven unlanded fixture', () => {
     proveEachMarkerRequired(faultFixtureOwner, [
       ['Pertar source clone', 'const save = JSON.parse(ARC4_PERTAR_RAW);'],
@@ -149,19 +280,122 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['live unlanded product', '!state?.save?.landed?.includes(ARC4_PERTAR_FIXTURE.planet.seed)'],
       ['legacy unlanded product', '!raw?.legacy?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed)'],
       ['split unlanded product', '!raw?.catalogRow?.data?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed)'],
+      ['Pertar absent from source legacy Survey ledger', '!raw?.legacy?.surveyed?.includes(ARC4_PERTAR_FIXTURE.worldKey)'],
+      ['Pertar absent from source split Survey ledger', '!raw?.catalogRow?.data?.surveyed?.includes(ARC4_PERTAR_FIXTURE.worldKey)'],
+      ['source Survey ledger mirror parity', 'canonicalJson(raw?.legacy?.surveyed)\n        === canonicalJson(raw?.catalogRow?.data?.surveyed)'],
+      ['source receipt arrays aligned', 'arc0LandingReceiptArraysAligned(raw)'],
       ['zero landing receipts', 'arc0LandingReceipts(raw).length === 0'],
+      ['zero Survey receipts', 'arc0LandingSurveyReceipts(raw).length === 0'],
+      ['source requires clear fault', '&& arc0LandingSurveyReceipts(raw).length === 0\n      && arc0LandingCoordinatorIdle(state, { clearFault: true });'],
+    ]);
+  });
+
+  it('proves one durable Survey and its exact current Pertar publication before Landing', () => {
+    proveEachMarkerRequired(surveyContractOwner, [
+      ['Survey receipt hash schema', 'const arc0LandingSurveyReceiptPattern = /^arc9sv1:[0-9a-f]{64}$/u;'],
+      ['exact Pertar Survey witness authority', "'arc9sv1:21678a94072ba2e5d0df32cdde8454d265cf0edac9310acf98576d2696244ece';"],
+      ['Survey receipt kind', ".filter(({ row }) => row?.kind === 'arc9-survey-v1');"],
+      ['current source route', 'arc4PertarSourceRouteExact({ ...state, cardOpen: false })'],
+      ['current card', "state?.cardOpen === true && state?.cardTitle === 'Pertar'"],
+      ['planet share payload', "payload?.t === 'p'"],
+      ['exact share planet', 'payload.p === ARC4_PERTAR_FIXTURE.planet.seed'],
+      ['exact target ordinal', 'target?.ordinal === ARC4_PERTAR_FIXTURE.planet.ordinal'],
+      ['one receipt delta', 'after.length === before.length + 1'],
+      ['pre-receipt arrays aligned', 'arc0LandingReceiptArraysAligned(beforeRaw)'],
+      ['post-receipt arrays aligned', 'arc0LandingReceiptArraysAligned(afterRaw)'],
+      ['prior receipt bytes retained', 'before.every(({ key, raw }) => afterByKey.get(key) === raw)'],
+      ['receipt key identity', 'receipt?.key === `receipt:${receipt?.row?.ordinal}`'],
+      ['receipt raw identity', 'receipt?.raw === JSON.stringify(receipt?.row)'],
+      ['pre-action receipt ordinal', 'receipt?.row?.ordinal === beforeRaw?.authority?.sessionRng?.ordinal'],
+      ['Survey witness digest', "arc0LandingSurveyReceiptPattern.test(receipt?.row?.witness ?? '')"],
+      ['exact Pertar Survey witness', 'receipt?.row?.witness === ARC0_PERTAR_SURVEY_RECEIPT_WITNESS'],
+      ['Survey world identity append', 'canonicalJson(after.surveyed)\n        === canonicalJson([...before.surveyed, ARC4_PERTAR_FIXTURE.worldKey])'],
+      ['Survey identity absent before', '!before.surveyed.includes(ARC4_PERTAR_FIXTURE.worldKey)'],
+      ['Survey identity appended exactly once', 'after.surveyed.filter((key) => key === ARC4_PERTAR_FIXTURE.worldKey).length === 1'],
+      ['Ocean absent before', "!before.ptypes.includes('ocean')"],
+      ['exact Ocean append', "canonicalJson(after.ptypes) === canonicalJson([...before.ptypes, 'ocean'])"],
+      ['Ocean appended exactly once', "after.ptypes.filter((planetType) => planetType === 'ocean').length === 1"],
+      ['star classes unchanged', 'canonicalJson(after.starKinds) === canonicalJson(before.starKinds)'],
+      ['exact retained rank', 'before.bestRank === 3 && after.bestRank === 3'],
+      ['achievements unchanged', 'canonicalJson(after.unlocked) === canonicalJson(before.unlocked)'],
+      ['legacy/split surveyed parity', 'canonicalJson(legacy?.surveyed) === canonicalJson(catalog?.surveyed)'],
+      ['legacy/split type parity', 'canonicalJson(legacy?.ptypes) === canonicalJson(catalog?.ptypes)'],
+      ['live Survey count', 'state?.save?.stats?.surveys === legacy?.surveyed?.length'],
+      ['live best rank', 'state?.save?.stats?.bestRank === legacy?.br'],
+      ['live achievements', 'canonicalJson(state?.save?.unlocked) === canonicalJson(legacy?.ach)'],
+      ['named Survey outcome', 'state?.persistence?.lastOutcome === `arc9-survey-committed:${raw?.revision}`'],
+      ['one runtime commit', 'runtime?.commits === sourceFixture?.state?.persistence?.runtime?.commits + 1'],
+      ['idle Survey coordinator', '&& state?.landing?.lastOutcome === null\n        && arc0LandingCoordinatorIdle(state, { clearFault: true })'],
+      ['exact coordinator contract', 'arc0LandingCoordinatorIsIdle(state, options)'],
+    ]);
+    proveEachMarkerRequired(surveySetupOwner, [
+      ['source-proven prerequisite', 'source: arc0LandingSourceExact(sourceFixture),'],
+      ['explicit Survey accepted', 'explicitSurvey: evidence?.surveyAction?.accepted === true'],
+      ['Survey action token', 'evidence?.surveyAction?.documentToken === sourceFixture?.token'],
+      ['awaited Survey revision', 'awaitedSettlement: evidence?.surveySettledState?.persistence?.runtime?.revision'],
+      ['awaited Survey outcome', '=== `arc9-survey-committed:${afterRaw?.revision}`'],
+      ['same document baseline', 'evidence?.surveyedReady?.token === sourceFixture?.token'],
+      ['one global revision', 'afterRaw?.revision === beforeRaw?.revision + 1'],
+      ['one authority ordinal', 'afterAuthority?.ordinal === beforeAuthority?.ordinal + 1'],
+      ['one exact Survey receipt', 'oneSurveyReceipt: arc0LandingSurveyReceiptDeltaExact(beforeRaw, afterRaw),'],
+      ['durable Survey delta', 'durableSurveyDelta: arc0LandingSurveyDeltaExact(beforeRaw, afterRaw),'],
+      ['current Survey route', 'currentRoute: arc0LandingSurveyRouteExact('],
+      ['current Survey publication', 'currentLivePublication: arc0LandingSurveyLivePublicationExact('],
+      ['still unlanded', 'landingStillUnlanded: !fixture?.state?.save?.landed?.includes('],
+      ['no Landing receipt', 'arc0LandingReceipts(afterRaw).length === 0'],
+      ['saved source route', 'arc4PertarSavedStarRouteExact(fixture?.state)'],
     ]);
   });
 
   it('collects one awaited action across a held and explicitly released convergence reload', () => {
     const markers = [
-      ['fresh fixture', 'const fixture = await installArc0LandingFaultFixture(label);'],
+      ['fresh source fixture', 'const sourceFixture = await installArc0LandingFaultFixture(label);'],
+      ['expected Survey revision', 'const expectedSurveyRevision = sourceFixture.raw.revision + 1;'],
+      ['explicit awaited Survey', 'const accepted=await S.api.surveyOn(${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)});'],
+      ['Survey settlement wait', 'surveySettledState = await waitDesktopValue(`${label} Survey settlement`'],
+      ['exact current Survey card', "&&s.planet===null&&s.planetOrdinal===null&&s.cardOpen===true&&s.cardTitle==='Pertar'"],
+      ['named Survey outcome wait', "&&s.persistence?.lastOutcome==='arc9-survey-committed:${expectedSurveyRevision}'"],
+      ['Survey writable wait', '`${label} post-Survey writable authority`,'],
+      ['same-document writable check', 'previousToken: sourceFixture.priorToken'],
+      ['post-Survey durable sample', 'raw=await (${ARC4_DURABLE_READ_EXPRESSION});return {state:S.api.state(),raw,'],
+      ['post-Survey card sample', 'cardCode:S.api.cardShareCode(),target:S.api.planetScreenTarget('],
+      ['post-Survey baseline fixture', '...sourceFixture, state: surveyBaseline.state, raw: surveyBaseline.raw,'],
+      ['Survey setup assessment', 'const surveyAssessment = assessArc0LandingSurveySetup(surveyEvidence);'],
+      ['pre-Survey baseline control', 'preSurveyBaselineControl.fixture = structuredClone('],
+      ['receipt control', "(row) => row?.kind === 'arc9-survey-v1',"],
+      ['valid-hash witness control', "row.witness = `arc9sv1:${'0'.repeat(64)}`;"],
+      ['witness raw-row realignment', 'surveyWitnessControl.fixture.raw.receiptRawRows[surveyReceiptIndex]\n        = JSON.stringify(row);'],
+      ['witness mutation applied', 'surveyWitnessControlMutated = row.witness !== ARC0_PERTAR_SURVEY_RECEIPT_WITNESS'],
+      ['route control', "surveyRouteControl.fixture.state.cardTitle = 'Not Pertar';"],
+      ['live-publication control', 'surveyPublicationControl.fixture.state.save.stats.surveys += 1;'],
+      ['coordinator control factory', 'const surveyCoordinatorControl = (mutate) => {'],
+      ['missing fault-key control', 'const surveyFaultMissingControl = surveyCoordinatorControl((coordinator) => {'],
+      ['wrong fault-key control', 'coordinator.faultArmed.storageFailureRenamed = false;'],
+      ['extra fault-key control', 'coordinator.faultArmed.unexpectedFault = false;'],
+      ['armed fault control', 'coordinator.faultArmed.storageFailure = true;'],
+      ['hold schema control', "coordinator.hold.schema = 'cf-v2-product-action-hold-diagnostics/control';"],
+      ['hold phase control', "coordinator.hold.phase = 'armed';"],
+      ['hold operation control', "coordinator.hold.operation = 'arc0.landing-control';"],
+      ['hold sequence control', 'coordinator.hold.sequence = 1;'],
+      ['pre-Survey rejection', 'preSurveyBaseline: assessArc0LandingSurveySetup(preSurveyBaselineControl),'],
+      ['receipt isolated red', "arc0LandingSurveyIsolatedControl(surveyControls.receipt, 'oneSurveyReceipt')"],
+      ['valid-hash witness isolated red', "arc0LandingSurveyIsolatedControl(surveyControls.witness, 'oneSurveyReceipt')"],
+      ['route isolated red', "arc0LandingSurveyIsolatedControl(surveyControls.route, 'currentRoute')"],
+      ['publication isolated red', "surveyControls.publication, 'currentLivePublication',"],
+      ['missing fault-key isolated red', "surveyControls.faultMissing, 'currentLivePublication',"],
+      ['wrong fault-key isolated red', "surveyControls.faultWrongKey, 'currentLivePublication',"],
+      ['extra fault-key isolated red', "surveyControls.faultExtra, 'currentLivePublication',"],
+      ['armed fault isolated red', "surveyControls.faultArmed, 'currentLivePublication',"],
+      ['hold schema isolated red', "surveyControls.holdSchema, 'currentLivePublication',"],
+      ['hold phase isolated red', "surveyControls.holdPhase, 'currentLivePublication',"],
+      ['hold operation isolated red', "surveyControls.holdOperation, 'currentLivePublication',"],
+      ['hold sequence isolated red', "surveyControls.holdSequence, 'currentLivePublication',"],
+      ['Survey causal fail-stop', "failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: explicit Survey did not settle as one current-route receipt before Landing faults were armed:"],
       ['old document token', 'const beforeToken = fixture.token;'],
       ['event ledger mark', 'const convergenceMark = events.length;'],
       ['convergence hold arm', "'window.__CF_SLICE__.api.__smokeArmF4ConvergenceReloadHold()'"],
       ['one exact fault arm', 'const faultArmed = await evalIn(`window.__CF_SLICE__.api.${faultHook}()`);'],
-      ['awaited landing', 'const accepted=await S.api.landOn(${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)});'],
-      ['action token witness', 'return {accepted,documentToken:S.documentToken}'],
+      ['one awaited current-card Landing', 'const accepted=await S.api.landHere();'],
       ['held phase wait', "s?.persistence?.convergenceReloadHold?.phase==='holding'"],
       ['settled owner wait', "s?.landing?.actionCoordinator?.inFlight===false"],
       ['exact fault wait', 'fault?.injection===${JSON.stringify(injection)}&&fault?.outcome===${JSON.stringify(faultOutcome)}'],
@@ -173,28 +407,89 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['reloaded state', "const reloadedState = await evalIn('window.__CF_SLICE__.api.state()');"],
       ['reloaded durable read', 'const reloadedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);'],
       ['one convergence witness source', 'f4ConvergenceWitnessesSince(sess, convergenceMark)'],
-      ['retained action token', 'actionDocumentToken: action?.documentToken'],
-      ['scenario-specific acceptance', 'expectedAccepted: accepted'],
+      ['retained action token', 'accepted: action?.accepted, actionDocumentToken: action?.documentToken,'],
+      ['scenario-specific acceptance', 'expectedAccepted: accepted,\n    };'],
+      ['receipt control alignment precondition', 'const surveyReceiptControlAligned = arc0LandingReceiptArraysAligned('],
+      ['receipt control splice guard', 'surveyReceiptControl.fixture.raw.receiptRows.splice(surveyReceiptIndex, 1);'],
+      ['Survey delta control factory', 'const surveyDeltaControl = (mutate) => {'],
+      ['control legacy bytes rewritten', 'control.fixture.raw.legacyRaw = JSON.stringify(control.fixture.raw.legacy);'],
+      ['control catalog bytes rewritten', 'control.fixture.raw.catalogRaw = JSON.stringify(control.fixture.raw.catalogRow);'],
+      ['control player bytes rewritten', 'control.fixture.raw.playerRaw = JSON.stringify(control.fixture.raw.playerRow);'],
+      ['Ocean legacy mutant', "raw.legacy.ptypes[raw.legacy.ptypes.length - 1] = 'control-ocean';"],
+      ['Ocean split mutant', "raw.catalogRow.data.ptypes[raw.catalogRow.data.ptypes.length - 1]\n        = 'control-ocean';"],
+      ['rank durable mutant', 'raw.legacy.br = 4;'],
+      ['rank live mutant', 'state.save.stats.bestRank = 4;'],
+      ['achievement durable mutant', "raw.legacy.ach.push('arc0-survey-control');"],
+      ['achievement live mutant', "state.save.unlocked.push('arc0-survey-control');"],
+      ['Ocean control assessment', 'ptype: assessArc0LandingSurveySetup(surveyPtypeControl),'],
+      ['rank control assessment', 'rank: assessArc0LandingSurveySetup(surveyRankControl),'],
+      ['achievement control assessment', 'unlocked: assessArc0LandingSurveySetup(surveyUnlockedControl),'],
+      ['Ocean isolated red', "surveyControls.ptype, 'durableSurveyDelta',"],
+      ['rank isolated red', "surveyControls.rank, 'durableSurveyDelta',"],
+      ['achievement isolated red', "surveyControls.unlocked, 'durableSurveyDelta',"],
+      ['Survey action boundary classifier', 'const surveyActionBoundary = assessArc0LandingAwaitBoundary({'],
+      ['Survey rejection named fail-stop', 'explicit Survey was refused or changed document before its settlement wait:'],
+      ['Survey settlement named fail-stop', 'accepted Survey did not reach its exact current-route settlement:'],
+      ['Survey writable named fail-stop', 'settled Survey did not reacquire exact writable authority:'],
+      ['Landing action boundary classifier', 'const actionBoundary = assessArc0LandingAwaitBoundary({'],
+      ['Landing held named fail-stop', 'one awaited Landing did not reach its exact held coordinator/fault settlement:'],
+      ['Landing replacement named fail-stop', 'released Landing convergence did not reach its exact replacement authority:'],
+      ['source prerequisite check', 'const sourcePrerequisite = arc0LandingSourceExact(sourceFixture);'],
+      ['source prerequisite fail-stop', 'source fixture was not exact before Survey; no product action was issued:'],
+      ['retained source fault control', "sourceRetainedFaultControl.state.landing.actionCoordinator.lastFault = {"],
+      ['retained source fault rejection', 'const sourceRetainedFaultRejected = !arc0LandingSourceExact('],
+      ['retained source fault fail-stop', 'retained source fault control did not reject before Survey; no product action was issued:'],
+      ['positive Survey fail-stop', 'explicit Survey positive baseline was not exact; controls and Landing faults were not issued:'],
+      ['hold arm fail-stop', 'convergence hold did not arm; fault and Landing were not issued:'],
+      ['fault arm fail-stop', 'scenario fault did not arm; Landing was not issued:'],
+      ['Survey invocation named fail-stop', 'exact Survey invocation failed before its settlement wait:'],
+      ['Landing invocation named fail-stop', 'exact Landing invocation failed before held settlement:'],
     ] as const satisfies readonly Marker[];
+    const marker = (label: string): string => {
+      const row = markers.find(([candidate]) => candidate === label);
+      expect(row, `known order marker: ${label}`).toBeDefined();
+      return row![1];
+    };
     const order = [
-      { label: 'fixture before hold', first: markers[0][1], second: markers[3][1] },
-      { label: 'hold before fault', first: markers[3][1], second: markers[4][1] },
-      { label: 'fault before action', first: markers[4][1], second: markers[5][1] },
-      { label: 'action before held wait', first: markers[5][1], second: markers[7][1] },
-      { label: 'held wait before durable read', first: markers[7][1], second: markers[10][1] },
-      { label: 'held read before release', first: markers[10][1], second: markers[11][1] },
-      { label: 'release before replacement', first: markers[11][1], second: markers[12][1] },
-      { label: 'replacement before writable', first: markers[12][1], second: markers[13][1] },
-      { label: 'writable before quiescence', first: markers[13][1], second: markers[14][1] },
-      { label: 'quiescence before reloaded read', first: markers[14][1], second: markers[16][1] },
-      { label: 'reloaded read before witness query', first: markers[16][1], second: markers[17][1] },
+      { label: 'fixture before Survey', first: marker('fresh source fixture'), second: marker('explicit awaited Survey') },
+      { label: 'source proof before Survey', first: marker('source prerequisite check'), second: marker('explicit awaited Survey') },
+      { label: 'source retained-fault rejection before Survey', first: marker('retained source fault rejection'), second: marker('explicit awaited Survey') },
+      { label: 'Survey before settlement wait', first: marker('explicit awaited Survey'), second: marker('Survey settlement wait') },
+      { label: 'settlement before writable', first: marker('Survey settlement wait'), second: marker('Survey writable wait') },
+      { label: 'writable before baseline sample', first: marker('Survey writable wait'), second: marker('post-Survey durable sample') },
+      { label: 'baseline before assessment', first: marker('post-Survey durable sample'), second: marker('Survey setup assessment') },
+      { label: 'positive Survey fail-stop before controls', first: marker('positive Survey fail-stop'), second: marker('pre-Survey baseline control') },
+      { label: 'assessment before controls', first: marker('Survey setup assessment'), second: marker('pre-Survey baseline control') },
+      { label: 'controls before causal boundary', first: marker('publication isolated red'), second: marker('Survey causal fail-stop') },
+      { label: 'Survey boundary before hold', first: marker('Survey causal fail-stop'), second: marker('convergence hold arm') },
+      { label: 'hold before fault', first: marker('convergence hold arm'), second: marker('one exact fault arm') },
+      { label: 'hold proof before fault', first: marker('hold arm fail-stop'), second: marker('one exact fault arm') },
+      { label: 'fault before action', first: marker('one exact fault arm'), second: marker('one awaited current-card Landing') },
+      { label: 'fault proof before action', first: marker('fault arm fail-stop'), second: marker('one awaited current-card Landing') },
+      { label: 'action before held wait', first: marker('one awaited current-card Landing'), second: marker('held phase wait') },
+      { label: 'held wait before durable read', first: marker('held phase wait'), second: marker('held durable read') },
+      { label: 'held read before release', first: marker('held durable read'), second: marker('single release') },
+      { label: 'release before replacement', first: marker('single release'), second: marker('new document wait') },
+      { label: 'replacement before writable', first: marker('new document wait'), second: marker('new writable authority') },
+      { label: 'writable before quiescence', first: marker('new writable authority'), second: marker('reloaded heartbeat quiescence') },
+      { label: 'quiescence before reloaded read', first: marker('reloaded heartbeat quiescence'), second: marker('reloaded durable read') },
+      { label: 'reloaded read before witness query', first: marker('reloaded durable read'), second: marker('one convergence witness source') },
+      { label: 'receipt alignment before control splice', first: marker('receipt control alignment precondition'), second: marker('receipt control splice guard') },
+      { label: 'delta factory before Ocean mutant', first: marker('Survey delta control factory'), second: marker('Ocean legacy mutant') },
+      { label: 'Ocean mutant before assessment', first: marker('Ocean legacy mutant'), second: marker('Ocean control assessment') },
+      { label: 'rank mutant before assessment', first: marker('rank durable mutant'), second: marker('rank control assessment') },
+      { label: 'achievement mutant before assessment', first: marker('achievement durable mutant'), second: marker('achievement control assessment') },
     ] as const satisfies readonly OrderRule[];
     proveEachMarkerRequired(collectorOwner, markers);
     proveEachOrderRequired(collectorOwner, order);
+    expect(occurrences(collectorOwner, '.surveyOn(')).toBe(1);
+    expect(occurrences(collectorOwner, '.landHere(')).toBe(1);
+    expect(collectorOwner).not.toContain('.landOn(');
   });
 
   it('binds storage rejection to no durable or local product and no retry', () => {
     proveEachMarkerRequired(storageAssessmentOwner, [
+      ['post-Survey baseline', 'fixture: arc0LandingSurveyBaselineExact(evidence),'],
       ['scenario acceptance', 'oneAwaitedAction: arc0LandingOneAwaitedActionExact(evidence),'],
       ['storage fault', "arc0LandingFaultExact(evidence, 'storage-failure', 'storage-error')"],
       ['no injected revision', 'injectedRevision === null'],
@@ -212,17 +507,21 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
     ]);
     proveEachMarkerRequired(storageScenarioOwner, [
       ['storage scenario label', "label: 'Arc 0 Landing storage-failure replacement'"],
+      ['storage finding label', "findingLabel: 'ARC 0 LANDING STORAGE REFUSAL'"],
       ['storage hook', "faultHook: '__smokeRejectNextArc0LandingStorage'"],
       ['storage expected outcome', "injection: 'storage-failure', faultOutcome: 'storage-error', accepted: false"],
       ['revision mutation', 'arc0LandingStorageRevisionControl.heldRaw.revision += 1;'],
       ['coordinator mutation', 'actionCoordinator.owner.busy = true;'],
       ['revision isolated red', "arc0LandingStorageControls.revision, 'revisionStable'"],
       ['coordinator isolated red', "arc0LandingStorageControls.coordinator, 'coordinatorReleased'"],
+      ['causal fail-stop', "failSliceWithoutCascade('ARC 0 LANDING STORAGE REFUSAL:"],
     ]);
+    expect(storageScenarioOwner).not.toContain("fails.push('ARC 0 LANDING STORAGE REFUSAL:");
   });
 
   it('binds stale refusal to the later writer alone and a source-route fixed point', () => {
     proveEachMarkerRequired(staleAssessmentOwner, [
+      ['post-Survey baseline', 'fixture: arc0LandingSurveyBaselineExact(evidence),'],
       ['scenario acceptance', 'oneAwaitedAction: arc0LandingOneAwaitedActionExact(evidence),'],
       ['stale fault', "arc0LandingFaultExact(evidence, 'stale-authority', 'stale')"],
       ['injected later revision', 'fault?.injectedRevision === beforeRaw?.revision + 1'],
@@ -242,6 +541,7 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
     ]);
     proveEachMarkerRequired(staleScenarioOwner, [
       ['stale scenario label', "label: 'Arc 0 Landing stale-authority replacement'"],
+      ['stale finding label', "findingLabel: 'ARC 0 LANDING STALE CONVERGENCE'"],
       ['stale hook', "faultHook: '__smokeStaleNextArc0LandingAuthority'"],
       ['stale expected outcome', "injection: 'stale-authority', faultOutcome: 'stale', accepted: false"],
       ['held later-writer mutation', "arc0LandingStaleWriterControl.heldRaw.catalogRaw += '\\n';"],
@@ -249,7 +549,9 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['token mutation', 'arc0LandingStaleTokenControl.reloadedReady.token = arc0LandingStaleTokenControl.beforeToken;'],
       ['later-writer isolated red', "arc0LandingStaleControls.laterWriter, 'laterWriterOnly'"],
       ['reload isolated red', "arc0LandingStaleControls.token, 'reloadFixedPoint'"],
+      ['causal fail-stop', "failSliceWithoutCascade('ARC 0 LANDING STALE CONVERGENCE:"],
     ]);
+    expect(staleScenarioOwner).not.toContain("fails.push('ARC 0 LANDING STALE CONVERGENCE:");
   });
 
   it('binds postcommit publication failure to one durable landing and reward', () => {
@@ -257,8 +559,14 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['complete live saves', 'if (!beforeState?.save || !reloadedState?.save) return false;'],
       ['zero source receipts', 'beforeReceipts.length === 0'],
       ['one committed receipt', 'committedReceipts.length === 1'],
-      ['receipt key/ordinal identity', 'receipt?.key === `receipt:${receipt?.row?.ordinal}`'],
+      ['one post-Survey prefix receipt', 'arc0LandingSurveyReceipts(beforeRaw).length === 1'],
+      ['full prefix append-only', 'arc0LandingReceiptDeltaExact(beforeRaw, committedRaw, receipt?.key)'],
+      ['landing raw row identity', 'receipt?.raw === JSON.stringify(receipt?.row)'],
+      ['bounded pre-action ordinal', 'Number.isSafeInteger(beforeAuthorityOrdinal)'],
+      ['receipt key binds pre-action ordinal', 'receipt?.key === `receipt:${beforeAuthorityOrdinal}`'],
       ['landing receipt kind', "receipt?.row?.kind === 'arc0-land'"],
+      ['receipt row binds pre-action ordinal', 'receipt?.row?.ordinal === beforeAuthorityOrdinal'],
+      ['witness facts bind pre-action ordinal', 'facts?.receiptOrdinal === beforeAuthorityOrdinal'],
       ['receipt witness schema', "facts?.schema === 'cf-v2-arc0-landing-witness/v1'"],
       ['exact world key', 'facts?.worldKey === ARC4_PERTAR_FIXTURE.worldKey'],
       ['exact planet seed', 'facts?.planetSeed === ARC4_PERTAR_FIXTURE.planet.seed'],
@@ -288,6 +596,7 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['split landing mirror', 'committedRaw?.playerRow?.data?.landings === sample.landingsAfter'],
     ]);
     proveEachMarkerRequired(publicationAssessmentOwner, [
+      ['post-Survey baseline', 'fixture: arc0LandingSurveyBaselineExact(evidence),'],
       ['scenario acceptance', 'oneAwaitedAction: arc0LandingOneAwaitedActionExact(evidence),'],
       ['publication fault', "evidence, 'publication-failure', 'committed-publication-reload'"],
       ['fault revision', 'fault?.injectedRevision === committedRaw?.revision'],
@@ -315,18 +624,39 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
     ]);
     proveEachMarkerRequired(publicationScenarioOwner, [
       ['publication scenario label', "label: 'Arc 0 Landing postcommit-publication replacement'"],
+      ['publication finding label', "findingLabel: 'ARC 0 LANDING PUBLICATION CONVERGENCE'"],
       ['publication hook', "faultHook: '__smokeRejectNextArc0LandingPublication'"],
       ['publication expected outcome', "injection: 'publication-failure', faultOutcome: 'committed-publication-reload'"],
       ['durable success return', 'accepted: true,'],
       ['old-state optimism mutation', 'arc0LandingPublicationOptimismControl.heldState.save = structuredClone('],
       ['both durable snapshots mutated', 'for (const raw of [arc0LandingPublicationWitnessControl.heldRaw,'],
       ['field-sample witness mutation', 'witness.sample.stardust += 1;'],
-      ['witness byte rewrite', 'raw.receiptRawRows[landingReceiptIndex] = JSON.stringify(receiptRow);'],
+      ['prefix control pair', 'for (const raw of [arc0LandingPublicationPrefixControl.heldRaw,'],
+      ['prefix alignment precondition', 'if (!arc0LandingReceiptArraysAligned(raw) || surveyReceiptIndexes.length !== 1) {'],
+      ['prefix byte mutation', "raw.receiptRows[surveyReceiptIndex].witness += ':prefix-control';"],
+      ['prefix bytes realigned', 'raw.receiptRawRows[surveyReceiptIndex] = JSON.stringify('],
+      ['ordinal control pair', 'for (const raw of [arc0LandingPublicationOrdinalControl.heldRaw,'],
+      ['forged successor ordinal', '= arc0LandingPublicationEvidence.fixture.raw.authority.sessionRng.ordinal + 1;'],
+      ['ordinal alignment precondition', 'if (!arc0LandingReceiptArraysAligned(raw) || landingReceiptIndexes.length !== 1) {'],
+      ['row ordinal mutation', 'receiptRow.ordinal = arc0LandingPublicationForgedOrdinal;'],
+      ['facts ordinal mutation', 'facts.receiptOrdinal = arc0LandingPublicationForgedOrdinal;'],
+      ['key ordinal mutation', 'raw.receiptKeys[landingReceiptIndex]'],
+      ['ordinal bytes realigned', 'raw.receiptKeys[landingReceiptIndex]\n      = `receipt:${arc0LandingPublicationForgedOrdinal}`;\n    raw.receiptRawRows[landingReceiptIndex] = JSON.stringify(receiptRow);'],
       ['reload revision mutation', 'arc0LandingPublicationReloadControl.reloadedRaw.revision += 1;'],
+      ['prefix control assessment', 'prefix: assessArc0LandingPublicationConvergence('],
+      ['ordinal control assessment', 'ordinal: assessArc0LandingPublicationConvergence('],
+      ['prefix control prepared', '|| !arc0LandingPublicationPrefixControlPrepared'],
+      ['ordinal control prepared', '|| !arc0LandingPublicationOrdinalControlPrepared'],
       ['optimism isolated red', "arc0LandingPublicationControls.optimism, 'localPublicationWithheld'"],
       ['witness isolated red', "arc0LandingPublicationControls.witness, 'durableLandingReward'"],
+      ['prefix isolated red', "arc0LandingPublicationControls.prefix, 'durableLandingReward'"],
+      ['ordinal isolated red', "arc0LandingPublicationControls.ordinal, 'durableLandingReward'"],
       ['reload isolated red', "arc0LandingPublicationControls.reload, 'reloadFixedPoint'"],
+      ['causal fail-stop', "failSliceWithoutCascade('ARC 0 LANDING PUBLICATION CONVERGENCE:"],
     ]);
+    expect(publicationScenarioOwner).not.toContain(
+      "fails.push('ARC 0 LANDING PUBLICATION CONVERGENCE:",
+    );
   });
 
   it('binds the shared fault, coordinator, and convergence witnesses', () => {
@@ -338,11 +668,7 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['settled fault phase', "fault?.phase === 'settled'"],
       ['before revision witness', 'fault?.beforeRevision === evidence?.fixture?.raw?.revision'],
       ['fault outcome', 'fault?.outcome === outcome'],
-      ['landing diagnostics schema', "landing?.schema === 'cf-v2-arc0-landing-app-state/v1'"],
-      ['coordinator not in flight', 'coordinator?.inFlight === false'],
-      ['coordinator schema', "coordinator?.owner?.schema === 'cf-v2-product-action-coordinator-diagnostics/v1'"],
-      ['coordinator owner idle', 'coordinator.owner.busy === false && coordinator.owner.operation === null'],
-      ['one-shot latches clear', 'Object.values(coordinator?.faultArmed ?? {}).every((value) => value === false)'],
+      ['exact shared coordinator contract', 'arc0LandingCoordinatorIsIdle(state, options)'],
       ['hold mutation fence', "state?.persistence?.hold === 'transient-read'"],
       ['held mutation blocked', 'state?.persistence?.mutationBlocked === true'],
       ['held reload scheduled', 'state?.persistence?.convergenceReloadScheduled === true'],
@@ -353,7 +679,6 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['reloaded heartbeat token', 'evidence?.reloadedHeartbeat?.documentToken === evidence?.reloadedReady?.token'],
       ['clean current-v5 boot', "state?.persistence?.bootKind === 'current-v5'"],
       ['zero reload commits', 'state?.persistence?.runtime?.commits === 0'],
-      ['clean reload landing outcome', 'state?.landing?.lastOutcome === null'],
       ['surface saved route', 'arc4PertarSavedPlanetRouteExact(state)'],
       ['source saved route', ': arc4PertarSourceRouteExact(state) && arc4PertarSavedStarRouteExact(state);'],
       ['one release witness', 'evidence?.convergenceWitnessCount === 1'],
@@ -361,10 +686,6 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['released witness status', "witness?.status === 'released'"],
       ['exact release detail', 'witness?.detail === detail'],
       ['old document witness', 'witness?.documentToken === evidence?.beforeToken'],
-      ['authority revision tuple', 'runtime?.revision === raw?.revision'],
-      ['authority seed tuple', 'runtime?.sessionSeed === authority?.seed'],
-      ['authority ordinal tuple', 'runtime?.sessionOrdinal === authority?.ordinal'],
-      ['authority draw tuple', 'canonicalJson(runtime?.sessionDraws) === canonicalJson(authority?.draws)'],
       ['stale lifecycle', "const beforeLifecycle = scenario === 'stale'"],
       ['released lifecycle', 'afterRuntime?.leaseOwned === false && afterRuntime?.leaseHeartbeat === null'],
       ['one awaited action token', 'evidence?.actionDocumentToken === evidence?.beforeToken'],
@@ -375,6 +696,13 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['reloaded authority current', 'state?.persistence?.runtime?.staleBlocked === false'],
       ['reloaded answerable', 'state?.persistence?.runtime?.answerable === true'],
       ['reloaded accrual live', 'state?.persistence?.runtime?.accruing === true'],
+      ['clean reload landing outcome', 'state?.landing?.lastOutcome === null'],
+    ]);
+    proveEachMarkerRequired(convergenceWitnessOwner, [
+      ['authority revision tuple', 'runtime?.revision === raw?.revision'],
+      ['authority seed tuple', 'runtime?.sessionSeed === authority?.seed'],
+      ['authority ordinal tuple', 'runtime?.sessionOrdinal === authority?.ordinal'],
+      ['authority draw tuple', 'canonicalJson(runtime?.sessionDraws) === canonicalJson(authority?.draws)'],
     ]);
   });
 

@@ -2526,6 +2526,7 @@ describe('legacy and v2 release channels', () => {
       /Pureforged effects without a connected consumer, authored natural affixes\/drawbacks, item upgrades, sockets, and vendors remain unavailable/,
       /Built permanent systems change the real ship and star reach/,
       /can spend preserved Stardust but does not earn it/,
+      /ENGINEERING KEEPS YOUR PLACE:[^\n]*Activating Research or Fabrication with Enter[^\n]*exact row now keeps keyboard context[^\n]*completed Research stays on its result[^\n]*still-available recipe returns to its exact action[^\n]*without stealing focus/,
       /BIOSPHERE CAPTURE HAS HONEST LIMITS/,
       /CREATURE CALLS ARE YOURS TO REQUEST:[^\n]*real owned-fauna Compendium detail[^\n]*never auto-play it/,
       /HEAR A LIVING WORLD WITHOUT SPOILERS:[^\n]*pre-landing Survey card and landed Planetside both offer Listen to biosphere[^\n]*never names a hidden species, spends Yield, grants a discovery or reward, or changes the save/,
@@ -2618,7 +2619,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 73,
+        inventory: bullets.length === 74,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
@@ -2644,7 +2645,7 @@ describe('legacy and v2 release channels', () => {
       category: section.category,
       bullets: index === 1 ? section.bullets.filter((_, bulletIndex) => bulletIndex !== 3) : section.bullets,
     }));
-    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(72);
+    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(73);
     expect(bulletinOutcome(missingMiddle).inventory).toBe(false);
     const missingRequired = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,

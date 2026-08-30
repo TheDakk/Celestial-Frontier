@@ -261,6 +261,8 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY =
   'f7c87f2263bdac4014e5f56be5efc5ceeca7fbd2e32e25549a6b9e0260354224';
 const RULER_PRODUCER_AUTHORITY =
   'd97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271';
+const PREVIOUS_CHANGED_HEAD_PRODUCER_AUTHORITY =
+  'baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b';
 const RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v1',
   sha256: RULER_PRODUCER_AUTHORITY,
@@ -308,18 +310,18 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  'baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b';
+  'f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: '0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0',
+      sha256: '45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/main-C621myNE.js',
-      sha256: '2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861',
+      relativePath: 'assets/main-BYnoCcc9.js',
+      sha256: '13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5',
     }),
     worker: Object.freeze({
       relativePath: 'assets/species-art.worker-DnnSDKMy.js',
@@ -331,7 +333,7 @@ const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
     }),
     serviceWorker: Object.freeze({
       relativePath: 'service-worker.js',
-      sha256: '927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f',
+      sha256: '5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3',
     }),
   }),
 });
@@ -1450,7 +1452,13 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(activeBudget.calibration.selectionRule).toContain('one attempt');
       expect(activeBudget.calibration.selectionRule).toContain('zero retries');
       expect(activeBudget.calibration.selectionRule).toContain('strict measured headroom');
-      expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_PRODUCER_AUTHORITY);
+      expect(activeBudget.calibration.selectionRule)
+        .toContain(PREVIOUS_CHANGED_HEAD_PRODUCER_AUTHORITY);
+      expect(activeBudget.calibration.selectionRule)
+        .toContain(EXPECTED_PRODUCER_AUTHORITY);
+      for (const input of Object.values(EXPECTED_PRODUCER_AUTHORITY_RECORD.inputs)) {
+        expect(activeBudget.calibration.selectionRule).toContain(input.sha256);
+      }
       expect(activeBudget.calibration.selectionRule)
         .toContain(HISTORICAL_PHASE4_PRODUCER_AUTHORITY.sha256);
       for (const runId of EXPECTED_CANDIDATE_RUNS) {
@@ -1561,7 +1569,13 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(activeBudget.calibration.selectionRule).toContain('raw-capsule');
     expect(activeBudget.calibration.selectionRule).toContain('strictly above');
     expect(activeBudget.calibration.selectionRule).toContain('rational headroom');
-    expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_PRODUCER_AUTHORITY);
+    expect(activeBudget.calibration.selectionRule)
+      .toContain(PREVIOUS_CHANGED_HEAD_PRODUCER_AUTHORITY);
+    expect(activeBudget.calibration.selectionRule)
+      .toContain(EXPECTED_PRODUCER_AUTHORITY);
+    for (const input of Object.values(EXPECTED_PRODUCER_AUTHORITY_RECORD.inputs)) {
+      expect(activeBudget.calibration.selectionRule).toContain(input.sha256);
+    }
     expect(activeBudget.calibration.selectionRule).toContain(RULER_PRODUCER_AUTHORITY);
     expect(activeBudget.calibration.selectionRule).toContain('numeric ceilings carry forward');
     expect(activeBudget.calibration.selectionRule).toContain('fresh exact certificate');

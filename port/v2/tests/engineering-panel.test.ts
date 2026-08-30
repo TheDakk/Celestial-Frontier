@@ -374,6 +374,37 @@ function emulateBrowserFocusLossWhenDisabled(document: Document): void {
   });
 }
 
+function emulateDeferredBrowserFocusLossWhenDisabled(document: Document): () => void {
+  const view = document.defaultView!;
+  const prototype = view.HTMLButtonElement.prototype;
+  const descriptor = Object.getOwnPropertyDescriptor(prototype, 'disabled');
+  if (!descriptor?.get || !descriptor.set || descriptor.configurable !== true) {
+    throw new Error('button disabled accessor is unavailable');
+  }
+  const pending = new Set<HTMLButtonElement>();
+  Object.defineProperty(prototype, 'disabled', {
+    configurable: true,
+    enumerable: descriptor.enumerable ?? false,
+    get: descriptor.get,
+    set(this: HTMLButtonElement, value: boolean): void {
+      /* Edge may complete the focused-button -> BODY transition only after
+         its trusted click listener returns. Retain that boundary instead of
+         giving jsdom the old synchronous false-green behavior. */
+      if (value && document.activeElement === this) pending.add(this);
+      descriptor.set!.call(this, value);
+    },
+  });
+  return (): void => {
+    for (const button of pending) {
+      if (document.activeElement === button) {
+        document.body.tabIndex = -1;
+        document.body.focus();
+      }
+    }
+    pending.clear();
+  };
+}
+
 function ownsExactSettlementFocus(
   document: Document,
   semanticKey: string,
@@ -774,12 +805,20 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
   it.each([
     ['pointer click', 1],
     ['Enter-native click', 0],
-  ] as const)('restores an exact action from its proven %s disable-to-BODY transition without a busy render', (
+  ] as const)('parks its exact %s action before a deferred native blur and restores it after settlement', (
     _activation,
     detail,
   ) => {
     const view = shell();
-    emulateBrowserFocusLossWhenDisabled(view.document);
+    const flushDeferredBrowserBlur = emulateDeferredBrowserFocusLossWhenDisabled(view.document);
+    const negativeControl = view.document.createElement('button');
+    view.document.body.append(negativeControl);
+    negativeControl.focus();
+    negativeControl.disabled = true;
+    expect(view.document.activeElement === negativeControl).toBe(true);
+    flushDeferredBrowserBlur();
+    expect(view.document.activeElement === view.document.body).toBe(true);
+    negativeControl.remove();
     const onAction = vi.fn((request: EngineeringPanelActionRequest) => controller!.setPending(request));
     controller = new EngineeringPanelController({ panel: view.panel, body: view.body, onAction });
     setFullView(readModel());
@@ -791,7 +830,9 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     plate.focus();
     plate.dispatchEvent(new dom!.window.MouseEvent('click', { bubbles: true, detail }));
     expect(plate.disabled).toBe(true);
-    expect(view.document.activeElement === view.document.body).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
+    flushDeferredBrowserBlur();
+    expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
 
     controller.setPending(null);
     expect(plate.disabled).toBe(false);
@@ -815,10 +856,11 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     )!;
     plate.focus();
     plate.click();
-    /* jsdom deliberately retains disabled focus here, so the controller has
-       the same settlement receipt but no disable-to-BODY proof. */
+    /* The controller owns the semantic parking target. A later user move to
+       BODY is unrelated to the native action transition and must not be used
+       as authority to restore the exact action. */
     expect(plate.disabled).toBe(true);
-    expect(view.document.activeElement === plate).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
     view.document.body.tabIndex = -1;
     view.document.body.focus();
     expect(view.document.activeElement === view.document.body).toBe(true);
@@ -890,7 +932,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     )!;
     pendingPlate.focus();
     pendingPlate.click();
-    expect(view.document.activeElement === view.document.body).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
     controller.setPending({ operation: 'fabricate', id: 'plate' });
     controller.dispose();
     expect(view.document.activeElement === view.opener).toBe(true);
@@ -971,7 +1013,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     firstPlate.focus();
     firstPlate.click();
     expect(onAction).toHaveBeenLastCalledWith({ operation: 'fabricate', id: 'plate' });
-    expect(view.document.activeElement === view.document.body).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
     let priorPlate = firstPlate;
     let settledPlate: HTMLButtonElement | null = null;
     for (const miningDue of [3, 4, 5]) {
@@ -1006,7 +1048,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     firstScan.focus();
     firstScan.click();
     expect(onAction).toHaveBeenLastCalledWith({ operation: 'research', id: 'scan1' });
-    expect(view.document.activeElement === view.document.body).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'research:scan1', null)).toBe(true);
     let settledScan: HTMLButtonElement | null = null;
     for (const miningDue of [6, 7, 8]) {
       setFullView(readModel({
@@ -1046,7 +1088,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
       )!;
       action.focus();
       action.click();
-      expect(view.document.activeElement === view.document.body).toBe(true);
+      expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
       setFullView(readModel({ miningDue }));
       expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
     };
@@ -1065,7 +1107,7 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     )!;
     preRenderPlate.focus();
     preRenderPlate.click();
-    expect(view.document.activeElement === view.document.body).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
     view.body.querySelector<HTMLElement>('[data-engineering-section="fabricator"] > summary')!.focus();
     setFullView(readModel({ miningDue: 13 }));
     const replacementSummary = view.body.querySelector<HTMLElement>(
@@ -1100,17 +1142,18 @@ describe('Arc 3 Engineering/Shipyard presentation controller', () => {
     )!;
     plate.focus();
     plate.click();
-    expect(view.document.activeElement === view.document.body).toBe(true);
+    expect(ownsExactSettlementFocus(view.document, 'recipe:plate', null)).toBe(true);
+    const liveSummary = fabricator.querySelector<HTMLElement>(':scope > summary')!;
+    liveSummary.focus();
     fabricator.open = false;
 
     setFullView(readModel({ miningDue: 20 }));
     expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')?.open).toBe(false);
-    expect(view.document.activeElement === view.document.body).toBe(true);
     const closedSummary = view.body.querySelector<HTMLElement>(
       '[data-engineering-section="fabricator"] > summary',
     )!;
     expect(browserFocusEligible(closedSummary)).toBe(true);
-    closedSummary.focus();
+    expect(view.document.activeElement).toBe(closedSummary);
     setFullView(readModel({ miningDue: 21 }));
     expect(view.body.querySelector<HTMLDetailsElement>('[data-engineering-section="fabricator"]')?.open).toBe(false);
     const replacementSummary = view.body.querySelector<HTMLElement>(

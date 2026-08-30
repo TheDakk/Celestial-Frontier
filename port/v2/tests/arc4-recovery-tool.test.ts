@@ -493,6 +493,107 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
       bundle.suppressed.beforeState,
       bundle.suppressed.afterState,
     ];
+    const currentArc5DiagnosticSubtrees = () => ({
+      feed: {
+        lastOutcome: null,
+        lastResult: null,
+        controller: {
+          schema: 'cf-v2-compendium-feed-diagnostics/v1',
+          attachedMountCount: 0, retainedDomCount: 0, pendingWork: 0,
+          convergenceLatched: false, delegatedListenerCount: 2,
+          actionControlCount: 0, radioControlCount: 0,
+          surfaceKey: null, contextKey: null, selectedCreatureId: null,
+          selectedFoodLotId: null, lastRequest: null, lastOutcome: null,
+        },
+        actionCoordinator: {
+          inFlight: false,
+          owner: {
+            schema: 'cf-v2-product-action-coordinator-diagnostics/v1',
+            busy: false, operation: null,
+          },
+          hold: {
+            schema: 'cf-v2-product-action-hold-diagnostics/v1',
+            phase: 'idle', operation: null, sequence: 0,
+          },
+          faultArmed: {
+            storageFailure: false, staleAuthority: false, publicationFailure: false,
+          },
+          lastFault: null,
+        },
+      },
+      breed: {
+        lastOutcome: null,
+        lastResult: null,
+        controller: {
+          schema: 'cf-v2-compendium-breed-diagnostics/v1',
+          attachedMountCount: 0, retainedDomCount: 0, pendingWork: 0,
+          convergenceLatched: false, delegatedListenerCount: 2,
+          renderedParentControlCount: 0, selectedPrimaryId: null,
+          selectedMateId: null, primaryPage: 0, matePage: 0,
+          surfaceKey: null, contextKey: null, lastRequest: null, lastOutcome: null,
+        },
+      },
+      rename: {
+        lastOutcome: null,
+        lastResult: null,
+        controller: {
+          schema: 'cf-v2-compendium-rename-diagnostics/v1',
+          attachedMountCount: 0, retainedDomCount: 0, pendingWork: 0,
+          convergenceLatched: false, delegatedListenerCount: 3,
+          creatureControlCount: 0, surfaceKey: null, contextKey: null,
+          selectedCreatureId: null, currentPage: 0,
+          lastRequest: null, lastOutcome: null,
+        },
+      },
+      scout: {
+        lastOutcome: null,
+        lastResult: null,
+        controller: {
+          schema: 'cf-v2-compendium-scout-diagnostics/v1',
+          attachedMountCount: 0, retainedDomCount: 0, pendingWork: 0,
+          convergenceLatched: false, delegatedListenerCount: 2,
+          creatureControlCount: 0, surfaceKey: null, contextKey: null,
+          selectedCreatureId: null, currentPage: 0,
+          lastRequest: null, lastOutcome: null,
+        },
+      },
+    });
+    const currentDiagnostics = structuredClone(report.recoveryBundle);
+    for (const snapshot of diagnosticSnapshots(currentDiagnostics)) {
+      Object.assign(snapshot.ownershipV2, {
+        schema: 'cf-v2-arc5-app-state/v3',
+        ...currentArc5DiagnosticSubtrees(),
+      });
+    }
+    const currentReplay = assessArc4ExhaustionRecovery(currentDiagnostics);
+    expect(currentReplay.ok, currentReplay.reasons.join(', ')).toBe(true);
+
+    const arc5DiagnosticSubtrees = ['feed', 'breed', 'rename', 'scout'] as const;
+    const arc5DiagnosticControls = ['wrong', 'missing', 'extra'] as const;
+    for (const subtree of arc5DiagnosticSubtrees) {
+      for (const control of arc5DiagnosticControls) {
+        const mutant = structuredClone(currentDiagnostics);
+        for (const snapshot of diagnosticSnapshots(mutant)) {
+          const diagnostic = snapshot.ownershipV2[subtree];
+          if (control === 'wrong') {
+            diagnostic.controller.schema = 'cf-v2-selftest-wrong-diagnostics/v1';
+          } else if (control === 'missing') {
+            delete diagnostic.lastResult;
+          } else {
+            diagnostic.selftestExtra = true;
+          }
+        }
+        expect(mutant, `${subtree}:${control}`).not.toEqual(currentDiagnostics);
+        const replayed = assessArc4ExhaustionRecovery(mutant);
+        expect(replayed.ok, `${subtree}:${control}`).toBe(false);
+        expect(Object.entries(replayed.checks)
+          .filter(([, value]) => value !== true).map(([name]) => name),
+        `${subtree}:${control}`).toEqual([
+          'exhaustedLive', 'ownershipV2Live', 'uiComplete',
+        ]);
+      }
+    }
+
     const legacyWithExtraFeed = structuredClone(report.recoveryBundle);
     for (const snapshot of diagnosticSnapshots(legacyWithExtraFeed)) {
       snapshot.ownershipV2.feed = {};
@@ -504,9 +605,8 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
       .filter(([, value]) => value !== true).map(([name]) => name))
       .toEqual(['exhaustedLive', 'ownershipV2Live', 'uiComplete']);
 
-    const malformedCurrentFeed = structuredClone(report.recoveryBundle);
+    const malformedCurrentFeed = structuredClone(currentDiagnostics);
     for (const snapshot of diagnosticSnapshots(malformedCurrentFeed)) {
-      snapshot.ownershipV2.schema = 'cf-v2-arc5-app-state/v3';
       snapshot.ownershipV2.feed = {};
     }
     const malformedCurrentReplay = assessArc4ExhaustionRecovery(malformedCurrentFeed);

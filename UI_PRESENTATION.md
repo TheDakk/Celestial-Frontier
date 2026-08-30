@@ -1,5 +1,35 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-30 current exact-`20d8598…` / `9382f8e…` repair overlay (matches the local
+> working tree and supersedes narrower “current” status below; dated evidence remains immutable):**
+> exact clean SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium
+> **78/78** once/no-retry, then its unchanged Slice
+> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry with
+> six ordered Engineering/Landing/Pertar findings. Signed evidence-only successor
+> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay. The stored
+> Slice remains FAIL; Glass and Recovery did not run.
+>
+> Three bounded roots are repaired locally: trusted Research/Fabricator settlement parks its stable
+> semantic-row focus before native Enter can finish a delayed button-to-BODY blur; each Arc 0
+> Landing fault scenario first proves one explicit Survey receipt/current Pertar route-card/live
+> publication and resamples that authority; and the Recovery/Pertar assessor exact-key validates the
+> complete Arc 5 v3 Feed/Breed/Rename/Scout diagnostics. Final browser-free validation is green at
+> **250 files / 2,495 passed / 1 skipped**, with all three TypeScript programs green. The cumulative
+> **74-bullet** development bulletin has rendered ordered SHA-256
+> `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
+>
+> Active derived Compendium producer / index / owner / generated-service-worker authority is
+> `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3` /
+> `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c` /
+> `assets/main-BYnoCcc9.js` (`13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`) /
+> `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Current Scene build
+> authority is `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17`; Compendium / Scene
+> budget-file SHA-256 is `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` /
+> `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. Fixed rulers, ceilings,
+> historical samples and 78 outcomes are unchanged; compatible Edge point versions remain
+> provenance only. No fresh repaired-head browser, Glass, Recovery, Gate, HUMAN, hosted, merge,
+> release, version or deployment authority is claimed.
+
 > **2026-08-30 current sealed-worker/PWA + Guide/Release/named-CF1 overlay (matches local code;
 > supersedes the execution-late repair below):** exact signed source
 > `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` preserved the 3,115 ms painter-import
@@ -18,19 +48,20 @@
 > `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 > `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
 > `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`. Final derived changed-head
-> producer / index / owner / SW is `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b` /
-> `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0` /
-> `assets/main-C621myNE.js` (`2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`) /
-> `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Scene build / game-main is
-> `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+> producer / index / owner / SW is `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3` /
+> `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c` /
+> `assets/main-BYnoCcc9.js` (`13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`) /
+> `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Scene build / game-main is
+> `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` /
 > `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; the unchanged worker/painter
 > remains `assets/species-art.worker-DnnSDKMy.js` /
 > `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Compendium / Scene budget-file
-> authorities are `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` /
-> `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`; the green printer binds a
-> **964-module / 52-file** build. This changes packaging and
-> PWA ownership only; presentation structure, pixels, seeds, genomes, rulers, ceilings and the
-> 78-outcome inventory are unchanged.
+> authorities are `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` /
+> `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`; the green printer binds a
+> **964-module / 52-file** build. The sealed-worker portion changes packaging and PWA ownership
+> only. The current head also includes the bounded Engineering focus repair, its 74th release-note
+> bullet and evidence-assessor repairs; pixels, seeds, genomes, rulers, ceilings and the 78-outcome
+> inventory are unchanged.
 >
 > Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` then ran
 > `20260830-pr35-sealed-worker-941ba45a96e5-compendium-certification` once/no-retry on Edge
@@ -317,8 +348,10 @@
 > Atlas rows keep separate minimum-size Travel and Favorite controls, mutate Favorite state in place
 > without losing the row's route identity, and announce the verified result only after durability.
 > Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler` remain owner-blocked. The current Guide capability map contains **41**
-> visible topics (**34 partial / 7 unavailable**) and the cumulative v2 draft contains **73** unique
-> bullets. These current local surfaces do not inherit the older browser certificate below; fresh
+> visible topics (**34 partial / 7 unavailable**) and the cumulative v2 draft contains **74** unique
+> bullets with rendered ordered SHA-256
+> `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`. These current local surfaces
+> do not inherit the older browser certificate below; fresh
 > exact-source browser, physical-device, screen-reader and HUMAN experience review remain open.
 
 > **Historical signed universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
@@ -639,7 +672,7 @@
 > full named-verified chain green and earned the stable local Recovery certificate.
 
 > **2026-08-25 Arc 3 Engineering UI overlay — historical evidence foundation through `c4a02be`;
-> current product behavior corrected locally 2026-08-27:** the former read-only
+> current product behavior corrected locally through 2026-08-30:** the former read-only
 > Shipyard panel now renders **Engineering & Shipyard** from one detached authority projection. It
 > retains the four code-native SVG chassis and exact installed-system/hardpoint facts, then adds
 > foldable Mine, Skim, Research and Fabricator sections. The model contains exact opportunity
@@ -666,7 +699,14 @@
 >
 > Every press routes through the shared ProductActionCoordinator used by Engineering and Inventory;
 > a second action is refused while one settlement owns publication. The panel reprojects only after
-> durability and exposes waiting/worked-out/unavailable states without inventing capability. The
+> durability and exposes waiting/worked-out/unavailable states without inventing capability.
+> Trusted Research/Fabricator settlement parks focus on the exact stable semantic row before its
+> action is disabled. This preserves focus lineage when Edge finishes native Enter's focused-button-
+> to-BODY transition after the click listener. The exact replacement action receives focus only if
+> that lineage remains; a later user move to BODY, a disclosure summary or another control wins.
+> Mine/Skim have no semantic row and retain their explicit disable-to-BODY behavior. Exact
+> `20d8598…` evidence preserved the delayed-blur failure as terminal red; the repair does not force
+> focus back after user movement or claim fresh browser authority. The
 > existing Arc 1C paragraphs below are retained as historical pre-Engineering evidence. The
 > historical Engineering implementation and browser evidence were committed through `c4a02be`.
 > The protected-preview product/diagnostic correction described above is included in signed
@@ -1167,7 +1207,7 @@
 > The eighth phone-dock slot now opens the canonical **Guide to the Universe**
 > rather than the old import shortcut or a second seven-topic manual. V2 carries
 > the mature inventory—9 categories /43 authored stable topic ids /41
-> legacy-live topics, currently 32 partial and 9 unavailable—plus category drill-down,
+> legacy-live topics, currently 34 partial and 7 unavailable—plus category drill-down,
 > title/keyword/body search and
 > `data-gt` cross-links. A capability layer substitutes current-slice copy for
 > partially ported systems and a visible **Not yet in v2** explanation for
@@ -1175,7 +1215,8 @@
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
-> Foundation**, the cumulative categorized 73-bullet v2.0 development bulletin. It summarizes
+> Foundation**, the cumulative categorized 74-bullet v2.0 development bulletin. Its rendered
+> ordered SHA-256 is `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
 > promises. The long draft is browser-checked for canonical section order and a
 > reachable final bullet; opening and reloading it cannot change `rnSeen` or create
