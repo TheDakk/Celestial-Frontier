@@ -10,6 +10,57 @@ summary of it.
 
 ## Contents
 
+### Signed `656c85e…` green admission predecessors, then exact post-Sample Tame-disabled red
+
+Exact clean SSH-signed source `656c85e43a59fe775efac102b21a7530c033e5ff` (tree
+`7fa36c8470030352b3d8ac497b47354b61d81b2b`, parent
+`961d1071d059e0f73e14a6a4ead61f5e4696535b`) passed its tracked-input develop profile at
+**253 files / 2,510 passed / 1 skipped**, all three TypeScript programs and the art/route/spec
+gates. The unchanged source then ran each permitted browser stage once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`: SceneMemory passed **44/44** in **12,948 ms** and
+Compendium passed **78/78** in **67,187 ms**. Both named verifiers passed. The retained carriers
+are:
+
+- `ARC1C_SCENEMEM_PR35_POST_SAMPLE_TARGET_PREDECESSOR_PASS_20260830_656C85E.json.gz`:
+  **44,966 gzip / 787,316 raw bytes**; gzip/raw SHA-256
+  `5e65452247d0e61a86f7ef15ad7623cf2ce00a37123b34188cbb5fde6a997a10` /
+  `7feb9b218af4339d35674cd7dcffb0288acb6be4e6d53b6036c60f97c6881cfb`.
+- `ARC1C_COMPENDIUM_PR35_POST_SAMPLE_TARGET_PREDECESSOR_PASS_20260830_656C85E.json.gz`:
+  **452,179 gzip / 10,865,558 raw bytes**; gzip/raw SHA-256
+  `b435bb9aa0bb5df0021fbdec216184b4080c6635d94a55d5439aab938c3beea6` /
+  `e4d3db109e5eb3a3b62cf2b6bc728eeb4207409451090b592d4844d07ca7f192`.
+
+Slice `20260830-pr35-656c85e-battery-rightsizing-slice` then stopped terminal red after
+**160,092 ms** with exactly one scope, `arc-4-storage-precondition`, and zero automatic retry.
+Glass and Recovery did not run.
+
+- `ARC4_SLICE_PR35_POST_SAMPLE_TAME_DISABLED_RED_20260830_656C85E.json.gz`:
+  **7,761 gzip / 45,998 raw bytes**; gzip/raw SHA-256
+  `0cc6f554f08bc8ac172d10c5bb5d6e596bd522944c0e9909c8f70b38858a2c0f` /
+  `d0a95f6884cddf968c3b713abdc8dc3d694a324f68324c197abf2758eb5baf63`.
+- `ARC4_SLICE_PR35_POST_SAMPLE_TAME_DISABLED_RED_20260830_656C85E.log.gz`:
+  **7,143 gzip / 22,103 raw bytes**; gzip/raw SHA-256
+  `e6964fd2d9ac946172703ea74ffeff0dc32ef19f883672ade66cfebfa305b68d` /
+  `6ac40bfe6d0cce87aee1dad6dfe6c788e7ad3c4b1f953123c056483408c3cf9a`.
+
+The repaired runner retained the decisive pre-arm state and stopped before arming the hook or
+dispatching input. Capture and Arc 5 ownership were current, Sample was durable at revision 108,
+its Arc 9 progression tail was durable at revision 109, 15/16 Yield remained, the coordinator and
+card were idle, the hold was released and no fault was armed. Nevertheless the native Tame target
+was `disabled:true`, `ariaDisabled:true`, `modelEnabled:false` and unfocused. This is therefore no
+storage-product verdict: no storage injection or product action ran.
+
+Source tracing classifies the exact red as a stale open-card publication race. Sample queued its
+Arc 9 aggregate follow-up before its awaiting UI continuation repainted; that continuation
+correctly projected every Capture row unavailable while Arc 9 owned the shared coordinator, but
+Arc 9 released without republishing the still-open current card. Pertar still had nine eligible
+fauna and the canonical next action remained Tame. The bounded successor refreshes only that
+current visible Capture surface after Arc 9 fully releases, with current-runtime, Training,
+replacement, convergence, coordinator and read-only guards; publication failure converges
+fail-closed. No fixture, Yield cycle, capture pool, creature/genome, art/audio, timeout, retry,
+numeric ruler or Edge baseline changes. The immutable `656c85e…` run remains FAIL and grants no
+Glass, Recovery, hosted, merge, release or deployment authority.
+
 ### Signed `961d107…` green admission predecessors, then isolated Arc 4 storage-timeout red
 
 Exact clean SSH-signed source `961d1071d059e0f73e14a6a4ead61f5e4696535b` (tree

@@ -1,5 +1,23 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
+> **2026-08-30 current local post-capture readiness correction (matches local code):** a durable
+> Tame, Scavenge or Sample may queue the existing aggregate Arc 9 achievement/rank receipt before
+> its awaiting Survey UI continuation repaints. While that follow-up owns the shared coordinator,
+> Capture correctly projects read-only. After Arc 9 fully releases, Main now republishes only a
+> still-current, visible, writable, non-Training Survey Capture surface; this prevents otherwise
+> eligible native actions from remaining stale-disabled until the next heartbeat or card reopen.
+> Runtime replacement, convergence, ecology, Training, active persistence and coordinator guards
+> all fail closed, and a publication exception clears the action fence and schedules the existing
+> read-only convergence reload. Capture pools, odds, RNG, hit/miss spending, Yield cycle, ownership,
+> creature/genome identity, rewards and save schema are unchanged.
+>
+> Exact signed source `656c85e43a59fe775efac102b21a7530c033e5ff` exposed this through a
+> causal pre-arm stop after Sample + Arc 9 were durable at revisions 108/109 with 15/16 Yield,
+> current Arc 4/5 authority and an idle coordinator/card, yet Tame remained model-disabled. No
+> storage hook or judged storage action ran. SceneMemory 44/44 and Compendium 78/78 were green;
+> Slice stayed immutable one-scope red and Glass/Recovery did not run. The bounded successor has
+> focused browser-free evidence; a fresh exact-source no-retry browser chain is still required.
+
 > **2026-08-29 current local Arc 6 Guardian acquisition extension:** ordinary Arc 4 capture and
 > Arc 5 lineage ownership remain unchanged. Guardian/Titan conquest now has its own additive,
 > versioned registered carrier instead of pretending that Tame provenance covers it. A new Guardian
@@ -74,7 +92,8 @@
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
 ecology/audio/Charter overlay matches the player-facing durable Arc 4 capture slice, and the separate
 Guardian acquisition carrier plus player-live verified combat join match the local Arc 6 candidate as
-of **2026-08-29**, while preserving the older signed certificate as pre-Charter evidence. See the
+of **2026-08-29**; the post-capture open-card readiness correction matches local code as of
+**2026-08-30**, while preserving the older signed certificate as pre-Charter evidence. See the
 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
 well as biosphere recovery, so EPOCH_TICK is a shared knob.
 **Purpose:** How a surveyed world's revealed life earns Compendium pages and the narrow v2 Chapter 2 life-discovery deed — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.

@@ -17,24 +17,32 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · BATTERY RIGHT-SIZED · STORAGE DIAGNOSIS FAIL-CLOSED ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · BATTERY RIGHT-SIZED · POST-CAPTURE UI RACE ISOLATED ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
   **origin/openai/mac**. Exact signed tested source
-  **961d1071d059e0f73e14a6a4ead61f5e4696535b** (tree
-  **e1acc7753e8f89ca13bc7dd0fce300c5fba454f3**, parent
-  **7f89bb2a70604da5b79673bd22d25786cab468d2**) is **34 commits ahead** of the fetched remote
+  **656c85e43a59fe775efac102b21a7530c033e5ff** (tree
+  **7fa36c8470030352b3d8ac497b47354b61d81b2b**, parent
+  **961d1071d059e0f73e14a6a4ead61f5e4696535b**) is **35 commits ahead** of the fetched remote
   agent branch. Its signature was cryptographically verified with the configured SSH identity.
-- **Current local successor:** only the Slice browser runner, its existing focused causal-source
-  test, exact 961 evidence replay/carriers and synchronized documentation are dirty. The runner
-  now proves target/focus/coordinator readiness before arming, observes the latch before input,
-  refuses an unfocused dispatch, and retains pre-arm/post-arm/post-press/deadline state plus final
-  raw/UI/interaction evidence. No game/app source, creature/genome structure, save schema,
-  art/audio system, balance, numeric browser ruler, timeout, retry, release identity or
-  Edge-version baseline changed.
+- **Current local successor:** exact 656 SceneMemory/Compendium PASS and one-scope Slice red carriers,
+  their replay/docs, one narrow `main.ts` post-Arc-9 Capture-card republication fix, its existing
+  Arc 9 wiring test and the v2 draft bug-fix note are dirty. **A New Foundation** now has exactly
+  **75** unique bullets with rendered ordered SHA-256
+  **52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1**. No creature/genome structure, capture
+  pool, Yield cycle, save schema, art/audio system, balance, numeric browser ruler, timeout, retry,
+  release identity or Edge-version baseline changed.
+- **Current derived inputs:** Scene build / budget SHA-256 is
+  **82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b** /
+  **476b85e9e38d0382015663741d08766239688082db0db4536e4d734b98912ee6**.
+  Compendium producer / budget SHA-256 is
+  **baef39c64288c3507398847a6409b4bf181c64a7141a01ec0926f2618e3749a6** /
+  **913e5d6d26ea13ef7feb1c604726e1c3a6252fd60f434daaf1abe5cbaf8a9238**.
+  These refresh exact source/build provenance only; all numeric ceilings and historical samples
+  remain byte-identical.
 - **PR boundary:** draft PR **#35**, base **develop**, source **openai/mac**, remains blocked,
   unmerged and unpushed at remote head **017fa6decbc41809188768ccdb98ab86ef1b9ebc** against
   fetched base **7a9f4c1370dd84292388d718c38ff34214f6203b**.
@@ -73,8 +81,11 @@ the archive verbatim and refresh this handoff in place.
 - The base/head classifier owns conditional controls and is mutation-tested. Its closure now
   includes every Compendium fixture, builder, lock, budget and instrument dependency, so a
   relevant change cannot silently skip the ruler controls while ordinary gameplay changes do.
+  The final audit added the directly imported `sealed-worker-graph.mjs` helper to that closure;
+  this preserves the ordinary-gameplay savings while ensuring its Worker-edge logic always invokes
+  the integrated **591-control** Compendium selftest.
 
-### Immutable d611 → 7f → 961 evidence and the repaired Arc 4 boundary
+### Immutable d611 → 7f → 961 → 656 evidence and the isolated Arc 4 boundary
 
 - Exact d611 passed root Layout **787/787**, SceneMemory **44/44** and Compendium **78/78** once,
   unchanged and with zero retry. Slice then stopped terminal red after **170,889 ms** with five
@@ -114,16 +125,39 @@ the archive verbatim and refresh this handoff in place.
   retains four ordered phase snapshots and causal-stops before stale-authority or later Arc 4 work.
   The existing assessor now receives the real `waitError` and `captureErrors` instead of hard-coded
   green placeholders. Historical 961 evidence stays red.
+- Exact signed 656 then passed the tracked develop profile, SceneMemory **44/44** in **12,948 ms**
+  and Compendium **78/78** in **67,187 ms**, unchanged, named-verified and once/no-retry. Slice
+  stopped after **160,092 ms** with exactly one `arc-4-storage-precondition` scope; Glass correctly
+  did not run. The repaired runner retained the actual pre-arm state and stopped before hook arm or
+  input: Sample + Arc 9 were durable at revisions 108/109, 15/16 Yield remained, capture/Arc 5 were
+  current and the coordinator/card/hold/fault state was clean, but Tame remained model-disabled.
+- That report is not a storage failure. Source tracing proved a deterministic open-card publication
+  race: Sample queued Arc 9 before its awaiting UI continuation, so Capture correctly painted
+  read-only while Arc 9 owned the coordinator; Arc 9 then released without repainting. Pertar still
+  had nine eligible fauna and canonical next action Tame. The bounded successor republishes only a
+  still-current, visible, writable Survey Capture surface after Arc 9 fully releases, with runtime,
+  replacement, Training, ecology, coordinator and convergence guards. A publication exception
+  clears the action fence and schedules the existing fail-closed convergence reload.
 
-### Acceptance on exact 961 and the current bounded successor
+### Acceptance on exact 656 and the current bounded successor
 
 - `node tools/check-profile.mjs --profile=develop`: **PASS** —
   **253 files / 2,510 passed / 1 skipped**, all three TypeScript programs, **34** art sources
   with zero findings, **1,014/1,014** routes covering **1,010/1,010** Earth species, and
-  **454** declared specification fields with zero unread/inert fields.
-- Integrated specification controls: **5/5 PASS**. Conditional Compendium selftest:
-  **591 independent controls PASS**. Compendium live-preflight selftest: **PASS**.
-- Focused Arc 4 causality plus immutable evidence replay: **2 files / 5 PASS**.
+  **454** declared specification fields with zero unread/inert fields. The complete Vitest owner
+  finished in **22.30 seconds**; the profile has seven commands, not thousands of jobs.
+- Integrated specification controls: **5/5 PASS**. Because this batch closes one classifier-input
+  gap, all exceptional controls also ran once: the **107-control** art mutation suite, Scene
+  fixed-second heap phase at **524,288 B/cycle**, browser resolver, Compendium browser preflight,
+  **591 independent Compendium controls**, and the raw-CDP launcher all **PASS**.
+- Focused release/Arc 4/Arc 9/evidence contracts: **6 files / 62 PASS**; the narrow product-fix
+  core plus immutable 656 replay is **3 files / 7 PASS**. Independent read-only review found no
+  product-path, capture/creature ownership, authority-order, fail-closed or negative-control gap.
+- Honest local stops during this successor validation were resolved at their owner. The Guide test
+  rejected the old 74-row oracle after the new player-visible fix note; it now binds 75 and the new
+  ordered hash. The first full profile then rejected stale source/build producer identities; only
+  those derived hashes and their exact tests/notes changed. No numeric ceiling, historical sample,
+  browser version, timeout or retry changed, and no browser certificate was retried.
 - The first consolidated profile attempt exposed one misplaced TypeScript suppression comment
   after all assertions passed. It was corrected test-only, TypeScript passed independently, and
   the complete profile then passed. This is retained as diagnosis, not hidden as a game failure.
@@ -133,20 +167,19 @@ the archive verbatim and refresh this handoff in place.
 - Exact 961 tracked admission passed at the same **253 files / 2,510 passed / 1 skipped** profile,
   then its browser predecessors passed as recorded above. Its terminal Slice report is preserved
   under `audits/` with raw/gzip identities and zero retry.
-- Current runner/evidence repair: focused Arc 4 causality plus immutable replay is **2 files / 5
-  PASS**; the complete develop profile remains **253 files / 2,510 passed / 1 skipped**, all three
-  TypeScript programs, art/route/spec gates and integrated 5/5 spec controls green. Independent
-  review found no product-path change, unsafe dispatch, null/control hazard or cleanup leak; its two
-  test-only mutation gaps were added and pass.
+- Exact 656 hermetic tracked-input preflight passed the same **253 files / 2,510 passed / 1 skipped**
+  develop profile. Its SceneMemory/Compendium predecessors and single-cause Slice red are preserved
+  with exact raw/gzip hashes. The current UI-race repair plus immutable replay has focused evidence
+  at **3 files / 7 PASS**, and all three TypeScript programs pass.
 
 ### Exact next work — one clean local admission and one no-retry browser chain
 
-1. Finish synchronized docs/diff/syntax checks and commit the bounded storage diagnostic plus
-   immutable 961 evidence as one SSH-signed successor; verify its signature and a clean worktree.
-2. Run `node tools/tracked-input-preflight.mjs --profile=develop` once on that exact clean commit.
-3. The current change touches only Slice evidence/dispatch diagnosis, not the browser launcher/memory
-   instrument dependency closure, so do not repeat its already-green conditional controls. Run one
-   exact SceneMemory → Compendium → Slice → Glass chain on the changed source. Stop on the first
+1. Synchronized docs/diff review, the complete develop profile and every classifier-triggered
+   exceptional control are green on the bounded successor.
+2. Commit the complete batch as one SSH-signed successor, verify its signature and clean worktree,
+   then run `node tools/tracked-input-preflight.mjs --profile=develop` once on that exact commit.
+3. The changed-instrument controls are already green once. Run one exact
+   SceneMemory → Compendium → Slice → Glass chain on the committed source. Stop on the first
    nonzero, red or instrument result; never retry automatically. Glass runs only after green Slice.
 4. Preserve and named-verify each available immutable report. Do **not** run Recovery for this
    agent → `develop` admission; Recovery belongs to the later separately authorized
@@ -156,9 +189,10 @@ the archive verbatim and refresh this handoff in place.
 
 ### Product-roadmap and HUMAN boundary
 
-This pass does not recreate or redesign the implemented V2 systems. The existing universe-wide
-art treatment, creature/genome identity, Guardians/Prime Codex, loot/Pureforged, exploration,
-crafting, combat, care/progression, audio and deterministic persistence remain untouched.
+This pass does not recreate or redesign the implemented V2 systems. It fixes only the already-open
+Capture card's post-progression readiness publication. The existing universe-wide art treatment,
+creature/genome identity, capture math/pools, Guardians/Prime Codex, loot/Pureforged, exploration,
+crafting, combat, care/progression, audio and deterministic persistence remain otherwise untouched.
 
 Still-open work that requires authored product decisions or HUMAN/device proof remains explicit in
 the system references and `port/V2_PROGRAM_ROADMAP.md`: conquest-imbue coexistence, another
@@ -169,8 +203,8 @@ judgment. Automation must not invent those decisions merely to call the roadmap 
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** sign the bounded storage-diagnostic repair/evidence, run one clean tracked
-  admission, then one final local develop browser chain with causal stop and no retry.
+- **OpenAI/Codex now:** finish the bounded Capture republication fix/evidence/docs, sign it, run one
+  clean tracked admission, then one final local develop browser chain with causal stop and no retry.
 - **GitHub step now:** none. Zero hosted attempts are authorized.
 - **PR #35 after local green:** existing draft, base **develop**, source **openai/mac**, title
   **feat(v2): complete roadmap campaign and harden CI parity**. Its exact push/hosted head is not

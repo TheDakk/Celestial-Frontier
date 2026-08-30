@@ -7,6 +7,7 @@ const AUDIT_ROOT = new URL('../../../audits/', import.meta.url);
 const SOURCE = 'd611d18ad12bb8587863846ef3799300d2396e6a';
 const RIGHT_SIZED_SOURCE = '7f89bb2a70604da5b79673bd22d25786cab468d2';
 const STORAGE_SOURCE = '961d1071d059e0f73e14a6a4ead61f5e4696535b';
+const PRECONDITION_SOURCE = '656c85e43a59fe775efac102b21a7530c033e5ff';
 const carriers = Object.freeze({
   layout: Object.freeze({
     file: 'ROOT_LAYOUT_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz',
@@ -99,6 +100,34 @@ const carriers = Object.freeze({
     gzipSha256: 'bbc957bd99f265d068d487a184a5a96f0bb8525ba7cbd5724e694f95cc8f328a',
     rawSha256: 'd86d79fa031fb9002ad495a8579993aeb426461395fd116c78ae99458cfb249a',
   }),
+  preconditionScene: Object.freeze({
+    file: 'ARC1C_SCENEMEM_PR35_POST_SAMPLE_TARGET_PREDECESSOR_PASS_20260830_656C85E.json.gz',
+    gzipBytes: 44_966,
+    rawBytes: 787_316,
+    gzipSha256: '5e65452247d0e61a86f7ef15ad7623cf2ce00a37123b34188cbb5fde6a997a10',
+    rawSha256: '7feb9b218af4339d35674cd7dcffb0288acb6be4e6d53b6036c60f97c6881cfb',
+  }),
+  preconditionCompendium: Object.freeze({
+    file: 'ARC1C_COMPENDIUM_PR35_POST_SAMPLE_TARGET_PREDECESSOR_PASS_20260830_656C85E.json.gz',
+    gzipBytes: 452_179,
+    rawBytes: 10_865_558,
+    gzipSha256: 'b435bb9aa0bb5df0021fbdec216184b4080c6635d94a55d5439aab938c3beea6',
+    rawSha256: 'e4d3db109e5eb3a3b62cf2b6bc728eeb4207409451090b592d4844d07ca7f192',
+  }),
+  preconditionSlice: Object.freeze({
+    file: 'ARC4_SLICE_PR35_POST_SAMPLE_TAME_DISABLED_RED_20260830_656C85E.json.gz',
+    gzipBytes: 7_761,
+    rawBytes: 45_998,
+    gzipSha256: '0cc6f554f08bc8ac172d10c5bb5d6e596bd522944c0e9909c8f70b38858a2c0f',
+    rawSha256: 'd0a95f6884cddf968c3b713abdc8dc3d694a324f68324c197abf2758eb5baf63',
+  }),
+  preconditionSliceLog: Object.freeze({
+    file: 'ARC4_SLICE_PR35_POST_SAMPLE_TAME_DISABLED_RED_20260830_656C85E.log.gz',
+    gzipBytes: 7_143,
+    rawBytes: 22_103,
+    gzipSha256: 'e6964fd2d9ac946172703ea74ffeff0dc32ef19f883672ade66cfebfa305b68d',
+    rawSha256: '6ac40bfe6d0cce87aee1dad6dfe6c788e7ad3c4b1f953123c056483408c3cf9a',
+  }),
 });
 
 const sha256 = (bytes: Uint8Array): string => createHash('sha256').update(bytes).digest('hex');
@@ -120,7 +149,7 @@ describe('PR #35 d611 consolidated-chain Arc 4 ledger evidence', () => {
     }
   });
 
-  it('preserves the causal five-to-one-to-one scope sequence without retry', () => {
+  it('preserves the causal five-to-one-to-one-to-one scope sequence without retry', () => {
     const layout = decoded.layout!.value as Record<string, any>;
     const scene = decoded.scene!.value as Record<string, any>;
     const compendium = decoded.compendium!.value as Record<string, any>;
@@ -261,5 +290,81 @@ describe('PR #35 d611 consolidated-chain Arc 4 ledger evidence', () => {
       message: 'harness: Arc 4 storage refusal did not reach its browser outcome within 10000ms (last null)',
     }]);
     expect(decoded.storageSliceLog!.value).toContain('SLICE SMOKE: FAIL');
+
+    const preconditionScene = decoded.preconditionScene!.value as Record<string, any>;
+    const preconditionCompendium = decoded.preconditionCompendium!.value as Record<string, any>;
+    const preconditionSlice = decoded.preconditionSlice!.value as Record<string, any>;
+
+    expect(preconditionScene).toMatchObject({
+      status: 'pass',
+      runId: '20260830-pr35-656c85e-battery-rightsizing-scenemem',
+      durationMs: 12_948,
+    });
+    expect(preconditionScene.source.begin.commit).toBe(PRECONDITION_SOURCE);
+    expect(preconditionScene.source.end.commit).toBe(PRECONDITION_SOURCE);
+    expect(preconditionScene.outcomes).toHaveLength(44);
+
+    expect(preconditionCompendium).toMatchObject({
+      status: 'pass',
+      runId: '20260830-pr35-656c85e-battery-rightsizing-compendium',
+      durationMs: 67_187,
+    });
+    expect(preconditionCompendium.source.begin.commit).toBe(PRECONDITION_SOURCE);
+    expect(preconditionCompendium.source.end.commit).toBe(PRECONDITION_SOURCE);
+    expect(preconditionCompendium.outcomes).toHaveLength(78);
+
+    expect(preconditionSlice).toMatchObject({
+      status: 'fail', terminal: true, durationMs: 160_092,
+      summary: { findingCount: 1, scopeCount: 1 },
+      retryPolicy: { automaticRetries: 0 },
+      source: { commit: PRECONDITION_SOURCE, state: 'committed' },
+      sourceEnd: { commit: PRECONDITION_SOURCE, state: 'committed' },
+      sourceChange: { detected: false, ending: null },
+      arc4SuccessEvidence: { required: false, ok: null, passMarkerCount: 0 },
+    });
+    expect(preconditionSlice.findings).toHaveLength(1);
+    expect(preconditionSlice.findings[0].scope).toBe('arc-4-storage-precondition');
+    const preconditionMessage = preconditionSlice.findings[0].message as string;
+    const preconditionBundle = JSON.parse(
+      preconditionMessage.slice(preconditionMessage.indexOf('{')),
+    ) as Record<string, any>;
+    expect(preconditionBundle.checks).toEqual({
+      captured: true,
+      target: false,
+      coordinatorIdle: true,
+      holdReleased: true,
+      noFaultArmed: true,
+      cardIdle: true,
+    });
+    expect(preconditionBundle.targetReady).toMatchObject({
+      ok: false,
+      verb: 'tame',
+      disabled: true,
+      ariaDisabled: 'true',
+      modelEnabled: 'false',
+      focus: false,
+    });
+    expect(preconditionBundle.snapshots.preArm.state).toMatchObject({
+      persistence: {
+        lastOutcome: 'arc9-progression-committed:109',
+        runtime: { revision: 109, sessionOrdinal: 5 },
+      },
+      capture: {
+        protection: null,
+        lastOutcome: 'sample-committed:108',
+        card: { pendingWork: 0 },
+        actionCoordinator: {
+          inFlight: false,
+          owner: { busy: false, operation: null },
+          faultArmed: {
+            storageFailure: false,
+            staleAuthority: false,
+            publicationFailure: false,
+          },
+        },
+      },
+    });
+    expect(preconditionBundle.captureErrors).toEqual([]);
+    expect(decoded.preconditionSliceLog!.value).toContain('SLICE SMOKE: FAIL');
   });
 });

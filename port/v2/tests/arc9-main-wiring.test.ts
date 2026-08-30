@@ -103,6 +103,42 @@ function arc9MainErrors(source: string): string[] {
     errors.push('durable ambiguity does not converge read-only');
   }
 
+  const captureRefresh = section(
+    source,
+    'function refreshOpenCaptureSurfaceAfterArc9Progression(',
+    '\n/** Every receipt-bearing product owner settles before this follow-up can',
+  );
+  for (const guard of [
+    'runtime !== f4Runtime', '!f4RuntimeMayAnswer(runtime)',
+    'replacementTransaction', 'replacementReloadPending',
+    'trainingCheckpointWriteHeld', 'trainingActive()', 'ecologyEpochBlocksActions()',
+    'productActionInFlight', 'activePersist', 'productActionCoordinator.busy',
+    "card.style.display === 'none'", '!surveyOwnsCurrentCaptureSurface()',
+  ]) {
+    if (!captureRefresh.includes(guard)) {
+      errors.push(`post-progression Capture refresh omits ${guard}`);
+    }
+  }
+  if (!captureRefresh.includes('refreshCaptureCardState();')
+    || !captureRefresh.includes('currentCapturePresentationFence = null;')
+    || !captureRefresh.includes('scheduleF4AuthorityConvergenceReload(')) {
+    errors.push('post-progression Capture refresh does not fail closed');
+  }
+  const releaseProduct = run.lastIndexOf('productActionInFlight = false;');
+  const settleProduct = run.indexOf('actionClaim.settle(durable);', releaseProduct);
+  const clearPersist = run.indexOf(
+    'if (activePersist === actionBarrier) activePersist = null;',
+    settleProduct,
+  );
+  const refreshCapture = run.indexOf(
+    'refreshOpenCaptureSurfaceAfterArc9Progression(runtime);',
+    clearPersist,
+  );
+  if (!(releaseProduct >= 0 && settleProduct > releaseProduct
+    && clearPersist > settleProduct && refreshCapture > clearPersist)) {
+    errors.push('progression release does not precede guarded Capture republish');
+  }
+
   const explorerNameAction = section(
     source,
     'async function runArc9ExplorerNameChange(rawName: string): Promise<void> {',
@@ -226,7 +262,7 @@ describe('Arc 9 Main/Records integration', () => {
     expect(arc9MainErrors(mainSource)).toEqual([]);
   });
 
-  it('negative-controls recursion, post-heartbeat Training, publication, and Records-open mutation', () => {
+  it('negative-controls recursion, post-heartbeat Training, Capture republish, publication, and Records-open mutation', () => {
     expect(arc9MainErrors(replaceExact(
       mainSource,
       'operation === ARC9_PROGRESSION_REFRESH_OPERATION_V1',
@@ -244,6 +280,40 @@ describe('Arc 9 Main/Records integration', () => {
       '      save.unlocked = outcome.transaction.state.unlocked.slice();',
       '      // mutation control omits unlocked publication',
     ))).toContain('progression claim/heartbeat/commit/verify/publication order is broken');
+
+    expect(arc9MainErrors(replaceInSectionExact(
+      mainSource,
+      'function refreshOpenCaptureSurfaceAfterArc9Progression(',
+      '\n/** Every receipt-bearing product owner settles before this follow-up can',
+      ' || productActionCoordinator.busy',
+      '',
+    ))).toContain('post-progression Capture refresh omits productActionCoordinator.busy');
+
+    expect(arc9MainErrors(replaceInSectionExact(
+      mainSource,
+      'function refreshOpenCaptureSurfaceAfterArc9Progression(',
+      '\n/** Every receipt-bearing product owner settles before this follow-up can',
+      ' || replacementTransaction || replacementReloadPending',
+      ' || replacementTransaction',
+    ))).toContain('post-progression Capture refresh omits replacementReloadPending');
+
+    expect(arc9MainErrors(replaceInSectionExact(
+      mainSource,
+      'async function runArc9ProgressionRefresh(',
+      '\nlet smokeRejectNextArc3ActionStorage',
+      '    if (activePersist === actionBarrier) activePersist = null;\n'
+        + '    refreshOpenCaptureSurfaceAfterArc9Progression(runtime);',
+      '    refreshOpenCaptureSurfaceAfterArc9Progression(runtime);\n'
+        + '    if (activePersist === actionBarrier) activePersist = null;',
+    ))).toContain('progression release does not precede guarded Capture republish');
+
+    expect(arc9MainErrors(replaceInSectionExact(
+      mainSource,
+      'function refreshOpenCaptureSurfaceAfterArc9Progression(',
+      '\n/** Every receipt-bearing product owner settles before this follow-up can',
+      '    scheduleF4AuthorityConvergenceReload(',
+      '    void String(error);\n    void (',
+    ))).toContain('post-progression Capture refresh does not fail closed');
 
     expect(arc9MainErrors(replaceExact(
       mainSource,

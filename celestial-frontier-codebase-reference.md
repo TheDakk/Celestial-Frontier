@@ -1,5 +1,18 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-08-30 current local Arc 4/9 open-card publication correction (matches local code):**
+> `runCaptureCardAction()` may resume after its committed Capture has already queued and yielded to
+> `runArc9ProgressionRefresh()`. The shared coordinator then correctly makes
+> `refreshCaptureCardState()` publish unavailable rows and clear its presentation fence. Arc 9's
+> `finally` now releases `productActionInFlight`, its coordinator claim and its exact
+> `activePersist` barrier before calling `refreshOpenCaptureSurfaceAfterArc9Progression()`. That
+> helper republishes only when the same runtime is current/answerable, no replacement, convergence,
+> Training or ecology boundary is active, the Survey card still owns the current Capture surface and
+> the coordinator is idle. A synchronous publication fault clears the fence and schedules the
+> existing read-only convergence reload. Domain Capture projection, F4 transaction, receipt order,
+> RNG, Yield and Arc 4/5 ownership are untouched. Exact 656 browser evidence preserves the original
+> one-scope pre-arm stale-disabled result; focused source/mutation and replay tests cover the repair.
+
 > **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches local
 > code):** exact clean SSH-signed evidence source
 > `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
@@ -3703,8 +3716,8 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
-  by the 56 legacy releases. Its exact 74-bullet implemented-outcome inventory has rendered
-  ordered SHA-256 `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`
+  by the 56 legacy releases. Its exact 75-bullet implemented-outcome inventory has rendered
+  ordered SHA-256 `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`
   and is checked structurally and in the rendered Guide, including real-scroll
   tail reach and unchanged shipped-release state. That version is development identity
   only. `getCurrentV2Release()` returns nothing while

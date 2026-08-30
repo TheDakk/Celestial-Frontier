@@ -9864,6 +9864,30 @@ async function runArc9NameplateChoice(requestedChoiceIndex: number): Promise<voi
   }
 }
 
+/** A capture can queue this aggregate follow-up before its awaiting UI
+ * continuation repaints. The follow-up then legitimately makes that repaint
+ * read-only while it owns the shared coordinator. Once the follow-up has
+ * fully released, republish only the still-current open Capture surface so
+ * its native actions do not remain stale-disabled until a later heartbeat. */
+function refreshOpenCaptureSurfaceAfterArc9Progression(
+  runtime: F4RuntimeAuthority,
+): void {
+  if (runtime !== f4Runtime || !f4RuntimeMayAnswer(runtime)
+    || replacementTransaction || replacementReloadPending
+    || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+    || productActionInFlight || activePersist || productActionCoordinator.busy
+    || card.style.display === 'none' || !surveyOwnsCurrentCaptureSurface()) return;
+  try {
+    refreshCaptureCardState();
+  } catch (error) {
+    currentCapturePresentationFence = null;
+    scheduleF4AuthorityConvergenceReload(
+      runtime,
+      `Arc 9 progression settled; capture publication ${error instanceof Error ? error.message : String(error)}`,
+    );
+  }
+}
+
 /** Every receipt-bearing product owner settles before this follow-up can
  * claim the shared coordinator. The refresh itself is excluded, so a rank
  * write cannot recursively schedule another transaction. One queue entry is
@@ -9996,6 +10020,7 @@ async function runArc9ProgressionRefresh(reason: string): Promise<void> {
     actionClaim.settle(durable);
     if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
     if (activePersist === actionBarrier) activePersist = null;
+    refreshOpenCaptureSurfaceAfterArc9Progression(runtime);
   }
 }
 let smokeRejectNextArc3ActionStorage = false;

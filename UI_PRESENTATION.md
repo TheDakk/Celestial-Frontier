@@ -1,5 +1,18 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-30 current local post-Capture presentation correction (matches local code):** after a
+> durable Capture queues the aggregate Arc 9 receipt, the awaiting Survey continuation may repaint
+> while the shared coordinator is legitimately busy and therefore render all three native Capture
+> actions unavailable. Arc 9 now republishes only the same still-current open Capture surface after
+> it has released its claim and active-persist barrier. The refresh requires current answerable
+> runtime, visible non-Training Survey ownership, no replacement/convergence/ecology edge and an
+> idle coordinator; a thrown repaint clears the presentation fence and uses the existing fail-closed
+> convergence reload. Eligible Tame/Scavenge/Sample controls therefore no longer stay disabled until
+> a heartbeat or close/reopen. Focus semantics, layout, card structure, Capture mechanics, art and
+> browser rulers are unchanged. The cumulative **A New Foundation** bulletin now has 75 unique
+> bullets with rendered ordered SHA-256
+> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`.
+
 > **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
 > working tree and supersedes narrower “current” status below; dated evidence remains immutable):**
 > exact clean SSH-signed evidence source `8bdf474e92467652729a6980f706ca3a2813682c` passed
@@ -347,9 +360,9 @@
 > Atlas rows keep separate minimum-size Travel and Favorite controls, mutate Favorite state in place
 > without losing the row's route identity, and announce the verified result only after durability.
 > Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler` remain owner-blocked. The current Guide capability map contains **41**
-> visible topics (**34 partial / 7 unavailable**) and the cumulative v2 draft contains **74** unique
+> visible topics (**34 partial / 7 unavailable**) and the cumulative v2 draft contains **75** unique
 > bullets with rendered ordered SHA-256
-> `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`. These current local surfaces
+> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`. These current local surfaces
 > do not inherit the older browser certificate below; fresh
 > exact-source browser, physical-device, screen-reader and HUMAN experience review remain open.
 
@@ -1214,8 +1227,8 @@
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
-> Foundation**, the cumulative categorized 74-bullet v2.0 development bulletin. Its rendered
-> ordered SHA-256 is `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`. It summarizes
+> Foundation**, the cumulative categorized 75-bullet v2.0 development bulletin. Its rendered
+> ordered SHA-256 is `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
 > promises. The long draft is browser-checked for canonical section order and a
 > reachable final bullet; opening and reloading it cannot change `rnSeen` or create
