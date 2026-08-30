@@ -27,7 +27,9 @@ import {
   THUMB_SETTLEMENT_ACTIVE_SCHEMA, THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS,
   THUMB_SETTLEMENT_RECEIPT_PLAN,
   MAX_PARTIAL_COMMAND_LEDGER_BYTES, MAX_PARTIAL_COMMAND_LEDGER_ENTRIES,
-  MAX_THUMB_SETTLEMENT_FILTER_COUNT, MAX_THUMB_SETTLEMENT_REASONS,
+  MAX_THUMB_SETTLEMENT_BROKER_KEYS, MAX_THUMB_SETTLEMENT_IMAGES,
+  MAX_THUMB_SETTLEMENT_FILTER_COUNT,
+  MAX_THUMB_SETTLEMENT_REASONS,
   PLAIN_EVALUATE_COMMAND_SCHEMA, RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
@@ -193,6 +195,17 @@ assertThrows(() => candidateRowPointExpression(''),
     'a row without a stable post-render activation point remained green');
 }
 
+function syntheticThumbSettlementVisualKey(surface, index) {
+  const targetLength = 768 + index;
+  const prefix = `${surface}-visual-${index}-`;
+  return `${prefix}${'k'.repeat(targetLength - prefix.length)}`;
+}
+
+function syntheticThumbSettlementVisualKeys(surface, count) {
+  return Array.from({ length: count }, (_, index) =>
+    syntheticThumbSettlementVisualKey(surface, index));
+}
+
 {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-species-art-graph-'));
   const assets = path.join(root, 'assets');
@@ -337,10 +350,36 @@ assertThrows(() => candidateRowPointExpression(''),
     listSource.replace('complete:img.complete===true', 'complete:true'),
     'list', 1500, pageAuthority, listReceiptToken,
   ), 'a list settlement expression that omitted decode completion was accepted');
-  const run = (surface, source, expectedCount, receiptToken) => {
+  assert(!validCandidateThumbSettlementExpression(
+    listSource.replace(
+      'visualKeyLength:visualKey===null?null:count(visualKey.length)',
+      'visualKeyLength:null',
+    ),
+    'list', 1500, pageAuthority, listReceiptToken,
+  ), 'a list settlement expression that omitted visual-key length was accepted');
+  assert(!validCandidateThumbSettlementExpression(
+    listSource.replace(
+      'leasedIndex:keyIndex(leasedKeys,visualKey)',
+      'leasedIndex:null',
+    ),
+    'list', 1500, pageAuthority, listReceiptToken,
+  ), 'a list settlement expression that omitted lease membership was accepted');
+  assert(!validCandidateThumbSettlementExpression(
+    listSource.replace(
+      'cachedIndex:keyIndex(cachedKeys,visualKey)',
+      'cachedIndex:null',
+    ),
+    'list', 1500, pageAuthority, listReceiptToken,
+  ), 'a list settlement expression that omitted cache membership was accepted');
+  const run = (
+    surface, source, expectedCount, receiptToken,
+    mountedCount = 2, brokerKeyCount = mountedCount,
+  ) => {
     const sealed = greenThumbSettlement(
-      surface, 2, expectedCount, { receiptToken, pageAuthority },
+      surface, mountedCount, expectedCount, { receiptToken, pageAuthority },
     );
+    const visualKeys = syntheticThumbSettlementVisualKeys(surface, mountedCount);
+    const brokerVisualKeys = syntheticThumbSettlementVisualKeys(surface, brokerKeyCount);
     const sd = {
       imageCount: sealed.ownership.diagnosticImageCount,
       logicalIds: [...sealed.ownership.diagnosticLogicalIds],
@@ -356,8 +395,9 @@ assertThrows(() => candidateRowPointExpression(''),
       surfaces: { list: sd, planetside: sd },
       art: {
         schema: sealed.art.schema,
+        keys: { leased: [...brokerVisualKeys], cached: [...brokerVisualKeys] },
         live: {
-          cacheEntries: sealed.broker.cacheEntries, leases: sealed.broker.leases,
+          cacheEntries: brokerKeyCount, leases: brokerKeyCount,
           subscribers: sealed.broker.subscribers, queuedJobs: sealed.broker.queuedJobs,
           activeJobs: sealed.broker.activeJobs,
         },
@@ -377,8 +417,8 @@ assertThrows(() => candidateRowPointExpression(''),
     diagnostics.lazyArt.identity.extra = 'x'.repeat(100_000);
     diagnostics.lazyArt.identity.self = diagnostics.lazyArt.identity;
     diagnostics.lazyArt.extra = diagnostics.lazyArt;
-    const images = sealed.images.map((image) => ({
-      dataset: { visualKey: image.visualKey, thumbState: image.thumbState },
+    const images = sealed.images.map((image, index) => ({
+      dataset: { visualKey: visualKeys[index], thumbState: image.thumbState },
       closest: () => ({ dataset: { cid: image.logicalId } }),
       getAttribute: () => image.srcPresent ? 'data:image/png;base64,cG5n' : '',
       complete: image.complete,
@@ -414,6 +454,48 @@ assertThrows(() => candidateRowPointExpression(''),
       && !JSON.stringify(observation).includes('x'.repeat(1_000)),
     `${surface} expression returned unprojected or unbounded nested diagnostics`);
   }
+  const boundedObservation = run(
+    'list', listSource, 1500, listReceiptToken, MAX_THUMB_SETTLEMENT_IMAGES,
+  );
+  const boundedSerialized = JSON.stringify(boundedObservation);
+  assert(classifyCompendiumThumbSettlement(boundedObservation, {
+    surface: 'list', expectedCount: 1500, receiptToken: listReceiptToken, ...pageAuthority,
+  }).status === 'ready'
+    && boundedObservation.images.every((image) => image.visualKeyLength > 512)
+    && boundedObservation.images[0].visualKeyLength === 768
+    && boundedObservation.images.at(-1).visualKeyLength >= 827
+    && boundedSerialized.length < 32_000
+    && !boundedSerialized.includes(syntheticThumbSettlementVisualKey('list', 0)),
+  '768–827+ character visual keys did not pass through bounded scalar evidence without truncation');
+  assert(MAX_THUMB_SETTLEMENT_BROKER_KEYS === 256,
+    'the sealed product broker-key maximum drifted from 256');
+  const maximumBrokerObservation = run(
+    'list', listSource, 1500, listReceiptToken, MAX_THUMB_SETTLEMENT_IMAGES, 256,
+  );
+  assert(classifyCompendiumThumbSettlement(maximumBrokerObservation, {
+    surface: 'list', expectedCount: 1500, receiptToken: listReceiptToken, ...pageAuthority,
+  }).status === 'ready'
+    && maximumBrokerObservation.broker.leasedKeyCount === 256
+    && maximumBrokerObservation.broker.cachedKeyCount === 256,
+  'the exact 256-key broker boundary was not accepted');
+  const oversizedBrokerObservation = run(
+    'list', listSource, 1500, listReceiptToken, 2, 257,
+  );
+  const oversizedBrokerDecision = classifyCompendiumThumbSettlement(
+    oversizedBrokerObservation,
+    { surface: 'list', expectedCount: 1500, receiptToken: listReceiptToken, ...pageAuthority },
+  );
+  assert(oversizedBrokerDecision.status === 'error'
+    && oversizedBrokerObservation.broker.leasedKeyCount === null
+    && oversizedBrokerObservation.broker.cachedKeyCount === null
+    && oversizedBrokerObservation.broker.leasedDistinctKeyCount === null
+    && oversizedBrokerObservation.broker.cachedDistinctKeyCount === null
+    && oversizedBrokerObservation.images.every((image) =>
+      image.leasedIndex === null && image.cachedIndex === null)
+    && oversizedBrokerDecision.reasons.includes(
+      'thumb settlement broker leasedKeyCount shape',
+    ),
+  'a 257-key broker array escaped the bounded collector and strict shape contract');
 }
 
 let structuredInstrumentControlCount = 0;
@@ -429,8 +511,10 @@ function greenThumbSettlement(
   } = {},
 ) {
   const logicalIds = Array.from({ length: mountedCount }, (_, index) => `${surface}-${index}`);
+  const visualKeys = syntheticThumbSettlementVisualKeys(surface, mountedCount);
   const images = logicalIds.map((logicalId, index) => ({
-    index, logicalId, visualKey: `visual-${logicalId}`, thumbState: 'ready',
+    index, logicalId, visualKeyLength: visualKeys[index].length,
+    leasedIndex: index, cachedIndex: index, thumbState: 'ready',
     srcPresent: true, complete: true, naturalWidth: 132, naturalHeight: 132,
   }));
   const observation = {
@@ -490,6 +574,8 @@ function greenThumbSettlement(
     broker: {
       available: true, cacheEntries: mountedCount, leases: mountedCount, subscribers: 0,
       queuedJobs: 0, activeJobs: 0,
+      leasedKeyCount: mountedCount, cachedKeyCount: mountedCount,
+      leasedDistinctKeyCount: mountedCount, cachedDistinctKeyCount: mountedCount,
     },
     page: {
       ...pageAuthority,
@@ -599,9 +685,25 @@ function greenThumbSettlement(
       value.ownership.rawLogicalIds[1] = value.images[0].logicalId;
       value.ownership.diagnosticLogicalIds[1] = value.images[0].logicalId;
     }, 'pending'],
-    ['distinct visual keys', (value) => {
-      value.images[1].visualKey = value.images[0].visualKey;
-    }, 'pending'],
+    ['missing visual key', (value) => {
+      value.images[0].visualKeyLength = null;
+    }, 'pending', 'raw visual keys absent'],
+    ['duplicate visual key', (value) => {
+      value.images[1].leasedIndex = value.images[0].leasedIndex;
+      value.images[1].cachedIndex = value.images[0].cachedIndex;
+    }, 'pending', 'raw visual keys non-distinct in broker lease inventory'],
+    ['lease inventory absence', (value) => {
+      value.images[0].leasedIndex = null;
+    }, 'pending', 'raw visual keys absent from broker lease inventory'],
+    ['cache inventory absence', (value) => {
+      value.images[0].cachedIndex = null;
+    }, 'pending', 'raw visual keys absent from broker cache inventory'],
+    ['copied lease index', (value) => {
+      value.images[1].leasedIndex = value.images[0].leasedIndex;
+    }, 'pending', 'raw visual keys non-distinct in broker lease inventory'],
+    ['wrong cache index', (value) => {
+      value.images[0].cachedIndex = value.broker.cachedKeyCount;
+    }, 'pending', 'raw visual keys absent from broker cache inventory'],
     ['image index', (value) => { value.images[0].index = 1; }, 'pending'],
     ['image thumb state', (value) => {
       value.images[0].thumbState = 'placeholder';
@@ -616,6 +718,8 @@ function greenThumbSettlement(
       value.broker = {
         available: false, cacheEntries: null, leases: null, subscribers: null,
         queuedJobs: null, activeJobs: null,
+        leasedKeyCount: null, cachedKeyCount: null,
+        leasedDistinctKeyCount: null, cachedDistinctKeyCount: null,
       };
     }, 'pending'],
     ['art schema', (value) => { value.art.schema = 'stale-art'; }, 'pending'],
@@ -714,18 +818,36 @@ function greenThumbSettlement(
       value.broker = {
         available: false, cacheEntries: null, leases: null, subscribers: null,
         queuedJobs: null, activeJobs: null,
+        leasedKeyCount: null, cachedKeyCount: null,
+        leasedDistinctKeyCount: null, cachedDistinctKeyCount: null,
       };
     }, 'pending'],
+    ['broker leased key count drift', (value) => {
+      value.broker.leasedKeyCount -= 1;
+    }, 'pending', 'broker leased key count 1/2'],
+    ['broker cached key count drift', (value) => {
+      value.broker.cachedKeyCount -= 1;
+    }, 'pending', 'broker cached key count 1/2'],
+    ['broker leased distinct-count drift', (value) => {
+      value.broker.leasedDistinctKeyCount -= 1;
+    }, 'pending', 'broker leased keys non-distinct 1/2'],
+    ['broker cached distinct-count drift', (value) => {
+      value.broker.cachedDistinctKeyCount -= 1;
+    }, 'pending', 'broker cached keys non-distinct 1/2'],
     ['broker/art queued jobs', (value) => { value.broker.queuedJobs = 1; }, 'pending'],
     ['broker/art active jobs', (value) => { value.broker.activeJobs = 1; }, 'pending'],
   ];
-  for (const [label, mutate, status] of semanticControls) {
+  for (const [label, mutate, status, expectedReason] of semanticControls) {
     structuredInstrumentControlCount++;
     const changed = clone(green);
     mutate(changed);
     const decision = classifyCompendiumThumbSettlement(changed, expected);
     assert(decision.status === status && decision.reasons.length > 0,
       `structured thumbnail ${label} did not produce an actionable ${status} decision`);
+    if (expectedReason) {
+      assert(decision.reasons.includes(expectedReason),
+        `structured thumbnail ${label} lost exact diagnosis ${JSON.stringify(expectedReason)}`);
+    }
     assert(!validCompendiumThumbSettlementObservation(changed, expected),
       `structured thumbnail ${label} retained copied green readiness/reasons`);
     changed.ready = decision.status === 'ready';
@@ -801,7 +923,15 @@ function greenThumbSettlement(
     ['image exact keys', (value) => { delete value.images[0].complete; }],
     ['image index shape', (value) => { value.images[0].index = 64; }],
     ['image logical-id shape', (value) => { value.images[0].logicalId = {}; }],
-    ['image visual-key shape', (value) => { value.images[0].visualKey = {}; }],
+    ['image visual-key length shape', (value) => { value.images[0].visualKeyLength = {}; }],
+    ['image leased-index shape', (value) => { value.images[0].leasedIndex = {}; }],
+    ['image cached-index shape', (value) => { value.images[0].cachedIndex = {}; }],
+    ['image leased-index cap shape', (value) => {
+      value.images[0].leasedIndex = MAX_THUMB_SETTLEMENT_BROKER_KEYS;
+    }],
+    ['image cached-index cap shape', (value) => {
+      value.images[0].cachedIndex = MAX_THUMB_SETTLEMENT_BROKER_KEYS;
+    }],
     ['image thumb-state shape', (value) => { value.images[0].thumbState = {}; }],
     ['image source shape', (value) => { value.images[0].srcPresent = 1; }],
     ['image completion shape', (value) => { value.images[0].complete = 1; }],
@@ -866,9 +996,19 @@ function greenThumbSettlement(
     ['unavailable worker values', (value) => { value.worker.available = false; }],
     ['broker exact keys', (value) => { delete value.broker.cacheEntries; }],
     ['broker availability shape', (value) => { value.broker.available = 'yes'; }],
-    ...['cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs'].map((field) => [
+    ...[
+      'cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs',
+      'leasedKeyCount', 'cachedKeyCount',
+      'leasedDistinctKeyCount', 'cachedDistinctKeyCount',
+    ].map((field) => [
       `broker ${field} shape`, (value) => { value.broker[field] = -1; },
     ]),
+    ['broker key-count cap shape', (value) => {
+      value.broker.leasedKeyCount = MAX_THUMB_SETTLEMENT_BROKER_KEYS + 1;
+    }],
+    ['broker distinct-count cap shape', (value) => {
+      value.broker.cachedDistinctKeyCount = MAX_THUMB_SETTLEMENT_BROKER_KEYS + 1;
+    }],
     ['unavailable broker values', (value) => { value.broker.available = false; }],
     ['page exact keys', (value) => { delete value.page.targetId; }],
     ['target identity shape', (value) => { value.page.targetId = ''; }],
@@ -915,7 +1055,9 @@ function greenThumbSettlement(
   worstCase.images.forEach((image, index) => {
     image.index = (index + 1) % 64;
     image.logicalId = null;
-    image.visualKey = null;
+    image.visualKeyLength = null;
+    image.leasedIndex = null;
+    image.cachedIndex = null;
     image.thumbState = 'placeholder';
     image.srcPresent = false;
     image.complete = false;

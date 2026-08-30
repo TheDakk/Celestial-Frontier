@@ -34,6 +34,7 @@ import {
   THUMB_SETTLEMENT_ACTIVE_SCHEMA, THUMB_SETTLEMENT_RECEIPT_PLAN,
   THUMB_SETTLEMENT_RECEIPT_SCHEMA, THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS,
   MAX_PARTIAL_COMMAND_LEDGER_BYTES, MAX_PARTIAL_COMMAND_LEDGER_ENTRIES,
+  MAX_THUMB_SETTLEMENT_BROKER_KEYS,
   MAX_THUMB_SETTLEMENT_FILTER_COUNT, MAX_THUMB_SETTLEMENT_IMAGES,
   PRODUCER_ERROR_ARM_MESSAGE, PRODUCER_ERROR_ARM_SENTINEL,
   PRODUCER_ERROR_WITNESS_SCHEMA,
@@ -885,12 +886,18 @@ export function candidateThumbSettlementExpression(
     const duration=value=>typeof value==='number'&&Number.isFinite(value)&&value>=0&&value<=1000000000?value:null;
     const selector=${JSON.stringify(selector)},nodes=document.querySelectorAll(selector),imgs=[];
     for(let index=0;index<Math.min(nodes.length,${MAX_THUMB_SETTLEMENT_IMAGES});index++)imgs.push(nodes[index]);
-    const images=imgs.map((img,index)=>({index,logicalId:text(img.closest?.('[data-cid]')?.dataset?.cid),
-      visualKey:text(img.dataset?.visualKey),thumbState:text(img.dataset?.thumbState),
-      srcPresent:!!img.getAttribute('src'),complete:img.complete===true,
-      naturalWidth:Number.isSafeInteger(img.naturalWidth)&&img.naturalWidth>=0&&img.naturalWidth<=8192?img.naturalWidth:null,
-      naturalHeight:Number.isSafeInteger(img.naturalHeight)&&img.naturalHeight>=0&&img.naturalHeight<=8192?img.naturalHeight:null}));
-    const art=d?.art&&typeof d.art==='object'?d.art:null,lazy=d?.lazyArt&&typeof d.lazyArt==='object'?d.lazyArt:null;
+    const art=d?.art&&typeof d.art==='object'?d.art:null,keyRoot=art?.keys&&typeof art.keys==='object'?art.keys:null;
+    const keyArray=value=>Array.isArray(value)&&value.length<=${MAX_THUMB_SETTLEMENT_BROKER_KEYS}?value:null;
+    const leasedKeys=keyArray(keyRoot?.leased),cachedKeys=keyArray(keyRoot?.cached);
+    const keyIndex=(keys,key)=>{if(keys===null||key===null)return null;const index=keys.indexOf(key);return index>=0?count(index):null};
+    const images=imgs.map((img,index)=>{const visualKey=typeof img.dataset?.visualKey==='string'&&img.dataset.visualKey.length>0?img.dataset.visualKey:null;
+      return {index,logicalId:text(img.closest?.('[data-cid]')?.dataset?.cid),
+        visualKeyLength:visualKey===null?null:count(visualKey.length),
+        leasedIndex:keyIndex(leasedKeys,visualKey),cachedIndex:keyIndex(cachedKeys,visualKey),
+        thumbState:text(img.dataset?.thumbState),srcPresent:!!img.getAttribute('src'),complete:img.complete===true,
+        naturalWidth:Number.isSafeInteger(img.naturalWidth)&&img.naturalWidth>=0&&img.naturalWidth<=8192?img.naturalWidth:null,
+        naturalHeight:Number.isSafeInteger(img.naturalHeight)&&img.naturalHeight>=0&&img.naturalHeight<=8192?img.naturalHeight:null}});
+    const lazy=d?.lazyArt&&typeof d.lazyArt==='object'?d.lazyArt:null;
     const worker=lazy?.worker&&typeof lazy.worker==='object'?lazy.worker:null,live=art?.live&&typeof art.live==='object'?art.live:null;
     const identity=lazy?.identity&&typeof lazy.identity==='object'?{documentToken:text(lazy.identity.documentToken),
       lastProducerEpoch:count(lazy.identity.lastProducerEpoch),lastWorkerInstanceId:count(lazy.identity.lastWorkerInstanceId)}:null;
@@ -929,8 +936,13 @@ export function candidateThumbSettlementExpression(
         fatals:count(worker.fatals),protocolErrors:count(worker.protocolErrors)}
         :{available:false,live:null,starts:null,ready:null,disposals:null,fatals:null,protocolErrors:null},
       broker:live?{available:true,cacheEntries:count(live.cacheEntries),leases:count(live.leases),
-        subscribers:count(live.subscribers),queuedJobs:count(live.queuedJobs),activeJobs:count(live.activeJobs)}
-        :{available:false,cacheEntries:null,leases:null,subscribers:null,queuedJobs:null,activeJobs:null},
+        subscribers:count(live.subscribers),queuedJobs:count(live.queuedJobs),activeJobs:count(live.activeJobs),
+        leasedKeyCount:leasedKeys===null?null:count(leasedKeys.length),
+        cachedKeyCount:cachedKeys===null?null:count(cachedKeys.length),
+        leasedDistinctKeyCount:leasedKeys===null?null:count(new Set(leasedKeys).size),
+        cachedDistinctKeyCount:cachedKeys===null?null:count(new Set(cachedKeys).size)}
+        :{available:false,cacheEntries:null,leases:null,subscribers:null,queuedJobs:null,activeJobs:null,
+          leasedKeyCount:null,cachedKeyCount:null,leasedDistinctKeyCount:null,cachedDistinctKeyCount:null},
       page:{targetId:${JSON.stringify(pageAuthority.targetId)},sessionId:${JSON.stringify(pageAuthority.sessionId)},
         documentToken:text(d?.documentToken)||text(S?.documentToken),
         visibilityState:text(document.visibilityState,32),hidden:document.hidden,focused:document.hasFocus()}};
