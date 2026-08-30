@@ -130,6 +130,16 @@ const CURRENT_LOCAL_CERTIFICATION = Object.freeze({
   gzipSha256: '7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a',
   budgetSha256: '5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501',
 });
+const FIXED_SECOND_CERTIFICATION = Object.freeze({
+  runId: '20260830-pr35-fixed-second-2046000-scenemem-certification',
+  file: 'ARC1C_SCENEMEM_PR35_FIXED_SECOND_CERTIFICATION_20260830_2046000.json.gz',
+  sourceCommit: '2046000873f98318c767db53d2ffb2abac71cc94',
+  rawBytes: 786_854,
+  rawSha256: 'c43bda32846fe4539d9136bac6d0f002af68b259c01ec43beb447a12dbad5c4d',
+  gzipBytes: 49_762,
+  gzipSha256: '42ee43f8cf7250a88a0498da62dedb492843be775535a4caa0c4cd6a4229f4d0',
+  budgetSha256: CURRENT_ACTIVATED_BUDGET_SHA256,
+});
 const CURRENT_INPUT_BROKEN_BASELINE = Object.freeze({
   runId: '20260827-phase4-successor-scenemem',
   file: 'ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz',
@@ -210,6 +220,31 @@ type CalibrationReport = {
   fatalEvents: unknown[];
   profiles: Record<ProfileName, CalibrationProfile>;
 };
+
+const FIXED_SECOND_OUTCOME_NAMES = Object.freeze([
+  'measurement-precondition',
+  'cycle-inventory',
+  'shipyard-lifecycle',
+  'observation-window-sequence',
+  'cycle-work-deltas',
+  'warm-resource-plateau',
+  'registry-balance',
+  'registry-coherence',
+  'scene-text-style-listeners',
+  'managed-resource-compaction',
+  'managed-resource-plateau',
+  'diagnostic-resource-budget',
+  'pending-zero',
+  'ring-cache-bound',
+  'surface-vista-lifecycle',
+  'fine-surface-consistency',
+  'populated-scene',
+  'transient-peak',
+  'answerability',
+  'heap-dom-budget',
+  'heap-plateau',
+  'bfcache-survival',
+]);
 
 const EXPECTED_BROWSER_AUTHORITY = Object.freeze({
   schema: SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA,
@@ -362,6 +397,58 @@ const SELECTED_PROFILES = Object.freeze({
     heartbeatElapsedMsMax: 100,
   }),
 }) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
+const FIXED_SECOND_CERTIFICATION_METRICS = Object.freeze({
+  phone: Object.freeze({
+    heapUsedBytesMax: 12_020_956,
+    embedderHeapUsedBytesMax: 2_941_096,
+    backingStorageBytesMax: 2_971_348,
+    heapAggregateBytesMax: 17_710_454,
+    warmHeapAggregateRangeBytesMax: 272_028,
+    warmHeapSlopeBytesPerCycleMax: 91_363.2,
+    documentsMax: 2,
+    nodesMax: 483,
+    jsEventListenersMax: 71,
+    peakActiveLeaseCountMax: 84,
+    peakLiveTextureCountMax: 74,
+    peakLiveCanvasBytesMax: 30_288_704,
+    managedTextureCountMax: 43,
+    managedTexturePixelsMax: 6_049_570,
+    localCanvasCacheEntriesMax: 0,
+    peakLocalCanvasCacheEntriesMax: 2,
+    productRenderTargetsMax: 0,
+    ringCacheEntriesMax: 0,
+    peakRingGeometryEntriesMax: 2,
+    surfaceVistaCacheEntriesMax: 1,
+    surfaceVistaCachePixelsMax: 412_800,
+    targetElapsedMsMax: 4.790958000000501,
+    heartbeatElapsedMsMax: 0.32070800000019517,
+  }),
+  desktop: Object.freeze({
+    heapUsedBytesMax: 12_510_152,
+    embedderHeapUsedBytesMax: 2_920_720,
+    backingStorageBytesMax: 2_972_520,
+    heapAggregateBytesMax: 18_191_882,
+    warmHeapAggregateRangeBytesMax: 339_144,
+    warmHeapSlopeBytesPerCycleMax: 113_537.6,
+    documentsMax: 2,
+    nodesMax: 480,
+    jsEventListenersMax: 70,
+    peakActiveLeaseCountMax: 81,
+    peakLiveTextureCountMax: 72,
+    peakLiveCanvasBytesMax: 30_255_936,
+    managedTextureCountMax: 43,
+    managedTexturePixelsMax: 5_647_874,
+    localCanvasCacheEntriesMax: 0,
+    peakLocalCanvasCacheEntriesMax: 2,
+    productRenderTargetsMax: 0,
+    ringCacheEntriesMax: 0,
+    peakRingGeometryEntriesMax: 2,
+    surfaceVistaCacheEntriesMax: 1,
+    surfaceVistaCachePixelsMax: 412_800,
+    targetElapsedMsMax: 8.84245799999917,
+    heartbeatElapsedMsMax: 0.30970799999886367,
+  }),
+}) satisfies Readonly<Record<ProfileName, Readonly<Record<keyof SceneMemoryBudget, number>>>>;
 const CURRENT_PRE_ACTIVATION_PROFILES = Object.freeze({
   phone: Object.freeze({
     ...SELECTED_PROFILES.phone,
@@ -850,6 +937,122 @@ describe('Arc 1C scene-memory active budget', () => {
       PROFILE_NAMES.map((profile) => report.profiles[profile].documentToken));
     expect(new Set(targetIds).size).toBe(6);
     expect(new Set(documentTokens).size).toBe(6);
+  });
+
+  it('binds and independently replays the exact clean fixed-second certificate', () => {
+    const compressed = fs.readFileSync(path.join(auditRoot, FIXED_SECOND_CERTIFICATION.file));
+    expect(compressed.byteLength).toBe(FIXED_SECOND_CERTIFICATION.gzipBytes);
+    expect(sha256(compressed)).toBe(FIXED_SECOND_CERTIFICATION.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(raw.byteLength).toBe(FIXED_SECOND_CERTIFICATION.rawBytes);
+    expect(sha256(raw)).toBe(FIXED_SECOND_CERTIFICATION.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as CalibrationReport;
+
+    expect(report).toMatchObject({
+      schema: 'cf-v2-scene-memory-report/v3',
+      runId: FIXED_SECOND_CERTIFICATION.runId,
+      status: 'pass',
+      certification: 'contract-budget',
+      startedAt: '2026-08-30T04:09:45.379Z',
+      endedAt: '2026-08-30T04:09:56.126Z',
+      durationMs: 10_747,
+      lifecycle: {
+        schema: 'cf-v2-scene-memory-report-lifecycle/v1',
+        status: 'complete',
+      },
+      policy: {
+        attemptCount: 1,
+        automaticRetries: 0,
+        warmupCycles: 4,
+        measuredWarmCycles: 4,
+        commandTimeoutMs: 5_000,
+        snapshotPasses: 2,
+        scoredSnapshotPass: 2,
+        targetTimeoutMs: 2_000,
+        heartbeatTimeoutMs: 2_000,
+      },
+    });
+    expect(report.scope).toEqual({
+      covered: ['universe', 'galaxy', 'galaxy-fine', 'system', 'surface', 'compendium', 'shipyard'],
+      shipyardStatus: 'implemented-static',
+      excluded: ['Shipyard build writers', 'audio lifecycle', 'true GPU bytes'],
+    });
+    expect(report.cleanup).toEqual({ browser: true, server: true, workspaceLock: true });
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.source.begin).toEqual({
+      commit: FIXED_SECOND_CERTIFICATION.sourceCommit,
+      branch: 'openai/mac',
+      state: 'committed',
+      statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      workingTreeSha256: CLEAN_WORKING_TREE_SHA256,
+    });
+    expect(report.browser).toEqual(FIXED_SECOND_EDGE_53_PROVENANCE);
+    expect(sceneMemoryBrowserAuthorityMatches(report.browser, EXPECTED_BROWSER_AUTHORITY)).toBe(true);
+    expect(report.fixture).toEqual({
+      count: 1_500,
+      rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
+    });
+    expectExactBuildInventory(report, FIXED_SECOND_BUILD);
+    expect(report.budget).toEqual({
+      schema: 'cf-v2-scene-memory-budget/v4',
+      path: '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/budgets/scene-memory-v2.json',
+      sha256: FIXED_SECOND_CERTIFICATION.budgetSha256,
+    });
+    expect(report.inputs.budget).toBe(FIXED_SECOND_CERTIFICATION.budgetSha256);
+    expect(sha256(fs.readFileSync(budgetPath))).toBe(FIXED_SECOND_CERTIFICATION.budgetSha256);
+    expect(Object.keys(report.inputs).sort()).toEqual(
+      [...Object.keys(EXPECTED_PRODUCER_AUTHORITY), 'budget'].sort(),
+    );
+    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
+      EXPECTED_PRODUCER_AUTHORITY,
+    );
+
+    expect(report.contractInput.schema).toBe('cf-v2-scene-memory-input/v4');
+    expect(report.contractInput.budgets).toEqual(SELECTED_PROFILES);
+    expect(report.contractInput.profiles).toEqual(collectedProfileProjection(report));
+    expect(report.outcomes.map(({ id }) => id)).toEqual(PROFILE_NAMES.flatMap((profile) =>
+      FIXED_SECOND_OUTCOME_NAMES.map((outcome) => `${profile}/${outcome}`)));
+    expect(report.outcomes).toHaveLength(44);
+    expect(report.outcomes.every((outcome) => outcome.pass)).toBe(true);
+    expect(report.findings).toEqual([]);
+    expect(report.fatalEvents).toEqual([]);
+    expect(terminalProfileEvidenceErrors(report.profiles, true, true)).toEqual([]);
+
+    for (const profile of PROFILE_NAMES) {
+      const measurement = report.profiles[profile];
+      expect(measurement.schema).toBe('cf-v2-scene-memory-profile/v2');
+      expect(measurement.metrics).toEqual(FIXED_SECOND_CERTIFICATION_METRICS[profile]);
+      expect(metricSummary(measurement)).toEqual(FIXED_SECOND_CERTIFICATION_METRICS[profile]);
+      expect(measurement.warmups).toHaveLength(4);
+      expect(measurement.warmup).toEqual(measurement.warmups.at(-1));
+      expect(measurement.measured).toHaveLength(4);
+      expect(sceneMemoryProfileRawBindingErrors(measurement), profile).toEqual([]);
+
+      const pairedSnapshots = [
+        measurement.initial,
+        ...measurement.warmups,
+        ...measurement.measured,
+        measurement.bfcacheSnapshot,
+      ];
+      expect(pairedSnapshots).toHaveLength(10);
+      expect(new Set(pairedSnapshots.map(({ label }) => label)).size).toBe(10);
+      for (const snapshot of pairedSnapshots) {
+        expect(snapshot.heapPhaseProbe.label).toBe(`${snapshot.label}-phase-probe`);
+        expect(Object.keys(snapshot.raw).sort()).toEqual(
+          ['compendium', 'scene', 'shipyard', 'state'],
+        );
+        expect(Object.keys(snapshot.heapPhaseProbe.raw).sort()).toEqual(
+          ['compendium', 'scene', 'shipyard', 'state'],
+        );
+      }
+    }
+
+    const recomputed = evaluateSceneMemory(report.contractInput);
+    expect(recomputed).toEqual(report.verdict);
+    expect(recomputed.status).toBe('pass');
+    expect(recomputed.outcomes).toEqual(report.outcomes);
+    expect(recomputed.outcomes).toHaveLength(44);
+    expect(recomputed.failures).toEqual([]);
   });
 
   it('replays all fixed-second candidates under unchanged ceilings with strict measured headroom', () => {

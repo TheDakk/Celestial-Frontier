@@ -83,6 +83,8 @@ export const PRODUCER_ERROR_WITNESS_SCHEMA =
 export const PRODUCER_ERROR_ARM_MESSAGE = 'compendiummem injected producer error';
 export const PRODUCER_ERROR_ARM_SENTINEL = 'cf-v2-compendium-producer-error-armed/v1';
 export const REQUIRED_WARM_CYCLES = 4;
+export const REQUIRED_QUIESCENT_UNLEASED_THUMB_ENTRIES = 17;
+const REQUIRED_WARM_PLANETSIDE_THUMB_ENTRIES = 8;
 export const OUTCOME_IDS = Object.freeze([
   'input-fixture-1500-distinct',
   'lazy-art-not-eager',
@@ -2849,29 +2851,160 @@ function heapAggregateBytes(snapshot) {
   const aggregate = heap.usedSize + heap.embedderHeapUsedSize + heap.backingStorageSize;
   return Number.isSafeInteger(aggregate) ? aggregate : Infinity;
 }
+function warmCompendiumDomClosed(snapshot) {
+  const diagnostics = snapshot?.diagnostics;
+  const panel = diagnostics?.panel;
+  const window = diagnostics?.window;
+  const list = diagnostics?.surfaces?.list;
+  const detail = diagnostics?.surfaces?.detail;
+  const raw = snapshot?.raw;
+  return panel?.open === false
+    && panel?.mode === 'closed'
+    && window?.start === 0
+    && window?.end === 0
+    && window?.overscan === 0
+    && window?.beforePx === 0
+    && window?.afterPx === 0
+    && window?.mountedRowCount === 0
+    && Array.isArray(window?.mountedLogicalIds) && window.mountedLogicalIds.length === 0
+    && window?.focusedLogicalId === null
+    && Array.isArray(window?.pinnedLogicalIds) && window.pinnedLogicalIds.length === 0
+    && list?.imageCount === 0
+    && Array.isArray(list?.naturalWidths) && list.naturalWidths.length === 0
+    && Array.isArray(list?.naturalHeights) && list.naturalHeights.length === 0
+    && Array.isArray(list?.thumbStates) && list.thumbStates.length === 0
+    && Array.isArray(list?.logicalIds) && list.logicalIds.length === 0
+    && detail?.open === false
+    && detail?.logicalId === null
+    && detail?.naturalWidth === 0
+    && detail?.naturalHeight === 0
+    && raw?.mountedRowCount === 0
+    && Array.isArray(raw?.mountedLogicalIds) && raw.mountedLogicalIds.length === 0
+    && Array.isArray(raw?.rowRects) && raw.rowRects.length === 0
+    && Array.isArray(raw?.listImages) && raw.listImages.length === 0
+    && raw?.detailNaturalWidth === 0
+    && raw?.detailNaturalHeight === 0
+    && raw?.detailImageCount === 0
+    && raw?.detailSrcPresent === false;
+}
 function warmResourceStateReady(snapshot, profile) {
   const a = art(snapshot);
   const cachedKeys = a?.keys?.cached;
+  const leasedKeys = a?.keys?.leased;
+  const queuedKeys = a?.keys?.queued;
+  const activeKeys = a?.keys?.active;
+  const planetside = planetsideImages(snapshot);
+  const planetsideLogicalIds = planetside.map((image) => image?.logicalId);
+  const planetsideVisualKeys = planetside.map((image) => image?.visualKey);
+  const cachedKeySet = Array.isArray(cachedKeys) ? new Set(cachedKeys) : null;
+  const leasedKeySet = Array.isArray(leasedKeys) ? new Set(leasedKeys) : null;
+  const unleasedCachedKeys = cachedKeySet !== null && leasedKeySet !== null
+    ? cachedKeys.filter((key) => !leasedKeySet.has(key)) : null;
+  const expectedDecodedPixels = a?.live?.cacheEntries * 132 * 132;
+  const expectedDecodedBytes = expectedDecodedPixels * 4;
   return isObject(a)
     && a.deviceClass === profile
-    && a.live?.cacheEntries === a.limits?.cacheEntries
-    && a.live?.decodedPixels === a.limits?.decodedPixels
-    && a.live?.decodedBytes === a.limits?.decodedBytes
+    && liveWithinLimits(snapshot, profile)
+    && warmCompendiumDomClosed(snapshot)
+    && snapshot?.diagnostics?.surfaces?.planetside?.visible === true
+    && planetside.length === REQUIRED_WARM_PLANETSIDE_THUMB_ENTRIES
+    && planetsideLogicalIds.every((id) => typeof id === 'string' && id.length > 0)
+    && new Set(planetsideLogicalIds).size === REQUIRED_WARM_PLANETSIDE_THUMB_ENTRIES
+    && sameJson(snapshot.diagnostics.surfaces.planetside.logicalIds, planetsideLogicalIds)
+    && planetsideVisualKeys.every((key) => typeof key === 'string' && key.length > 0)
+    && new Set(planetsideVisualKeys).size === REQUIRED_WARM_PLANETSIDE_THUMB_ENTRIES
+    && planetside.every((image) => image?.naturalWidth === 132
+      && image?.naturalHeight === 132 && image?.thumbState === 'ready')
+    && Array.isArray(cachedKeys)
+    && cachedKeys.every((key) => typeof key === 'string' && key.length > 0)
+    && cachedKeySet.size === cachedKeys.length
+    && Array.isArray(leasedKeys)
+    && leasedKeys.every((key) => typeof key === 'string' && key.length > 0)
+    && new Set(leasedKeys).size === leasedKeys.length
+    && leasedKeys.every((key) => cachedKeySet.has(key))
+    && sameJson([...leasedKeys].sort(), [...planetsideVisualKeys].sort())
+    && a.live?.leases === leasedKeys.length
+    && Array.isArray(unleasedCachedKeys)
+    && unleasedCachedKeys.length === REQUIRED_QUIESCENT_UNLEASED_THUMB_ENTRIES
+    && a.live?.cacheEntries
+      === leasedKeys.length + REQUIRED_QUIESCENT_UNLEASED_THUMB_ENTRIES
+    && cachedKeys.length === a.live.cacheEntries
+    && Number.isSafeInteger(expectedDecodedPixels)
+    && Number.isSafeInteger(expectedDecodedBytes)
+    && a.live?.decodedPixels === expectedDecodedPixels
+    && a.live?.decodedBytes === expectedDecodedBytes
     && nonnegative(a.live?.encodedBytes)
     && nonnegative(a.limits?.encodedBytes)
     && a.live.encodedBytes <= a.limits.encodedBytes
     && a.live?.queuedJobs === 0
     && a.live?.activeJobs === 0
     && a.live?.subscribers === 0
-    && Array.isArray(cachedKeys)
-    && cachedKeys.length === a.live.cacheEntries
-    && cachedKeys.every((key) => typeof key === 'string' && key.length > 0)
-    && new Set(cachedKeys).size === cachedKeys.length
+    && a.live?.portraitCacheEntries === 0
+    && a.live?.portraitEncodedBytes === 0
+    && Array.isArray(queuedKeys) && queuedKeys.length === 0
+    && Array.isArray(activeKeys) && activeKeys.length === 0
     && workerArtReleased(snapshot);
 }
 function normalizedCachedKeys(snapshot) {
   const cached = art(snapshot)?.keys?.cached;
   return Array.isArray(cached) ? [...cached].sort() : null;
+}
+function warmResourceStateEvidence(snapshot) {
+  const a = art(snapshot);
+  const cachedKeys = normalizedCachedKeys(snapshot);
+  const leased = a?.keys?.leased;
+  const leasedKeys = Array.isArray(leased) ? [...leased].sort() : null;
+  const planetside = planetsideImages(snapshot);
+  const planetsideLogicalIds = planetside.map((image) => image?.logicalId);
+  const planetsideVisualKeys = planetside.map((image) => image?.visualKey).sort();
+  const leasedKeySet = Array.isArray(leasedKeys) ? new Set(leasedKeys) : null;
+  const unleasedCachedKeys = Array.isArray(cachedKeys) && leasedKeySet !== null
+    ? cachedKeys.filter((key) => !leasedKeySet.has(key)) : null;
+  const diagnostics = snapshot?.diagnostics;
+  const raw = snapshot?.raw;
+  return {
+    art: a?.live,
+    limits: a?.limits,
+    cachedKeys,
+    leasedKeys,
+    unleasedCachedKeys,
+    planetside: {
+      requiredEntries: REQUIRED_WARM_PLANETSIDE_THUMB_ENTRIES,
+      logicalIds: planetsideLogicalIds,
+      visualKeys: planetsideVisualKeys,
+      ready132: planetside.every((image) => image?.naturalWidth === 132
+        && image?.naturalHeight === 132 && image?.thumbState === 'ready'),
+    },
+    compendiumDom: {
+      closed: warmCompendiumDomClosed(snapshot),
+      panel: diagnostics?.panel,
+      window: diagnostics?.window,
+      list: diagnostics?.surfaces?.list,
+      detail: diagnostics?.surfaces?.detail,
+      raw: {
+        mountedRowCount: raw?.mountedRowCount,
+        mountedLogicalIds: raw?.mountedLogicalIds,
+        rowRects: raw?.rowRects,
+        listImages: raw?.listImages,
+        detailNaturalWidth: raw?.detailNaturalWidth,
+        detailNaturalHeight: raw?.detailNaturalHeight,
+        detailImageCount: raw?.detailImageCount,
+        detailSrcPresent: raw?.detailSrcPresent,
+      },
+    },
+    expected: {
+      unleasedThumbEntries: REQUIRED_QUIESCENT_UNLEASED_THUMB_ENTRIES,
+      cacheEntries: Array.isArray(leasedKeys)
+        ? leasedKeys.length + REQUIRED_QUIESCENT_UNLEASED_THUMB_ENTRIES : null,
+      decodedPixels: a?.live?.cacheEntries * 132 * 132,
+      decodedBytes: a?.live?.cacheEntries * 132 * 132 * 4,
+    },
+    totals: {
+      jobStarts: a?.totals?.jobStarts,
+      disposals: a?.totals?.disposals,
+    },
+    worker: snapshot?.diagnostics?.lazyArt?.worker,
+  };
 }
 function stableWarmCacheIdentity(warm) {
   const tail = warm.slice(-3).map(normalizedCachedKeys);
@@ -3276,18 +3409,9 @@ export function evaluateProfile(measurement, budget, fixture) {
       'warm-precondition', 'warm-1', 'warm-2', 'warm-3', 'warm-4',
       'cap-before', 'cap-after', 'profile-restored', 'post-cap-restored',
     ]),
-  'warm measurements were not taken from the full native cache limit with drained work and a released worker', {
-    precondition: warmCachePrecondition,
-    warm: warm.map((snapshot) => ({
-      art: art(snapshot)?.live,
-      limits: art(snapshot)?.limits,
-      cachedKeys: normalizedCachedKeys(snapshot),
-      totals: {
-        jobStarts: art(snapshot)?.totals?.jobStarts,
-        disposals: art(snapshot)?.totals?.disposals,
-      },
-      worker: snapshot?.diagnostics?.lazyArt?.worker,
-    })),
+  'warm measurements were not taken with a fully closed and empty Compendium DOM, the exact bounded quiescent cache of 17 unleased thumbnails plus the eight distinct ready Planetside leases, exact 132px decoded accounting, zero portraits/work/subscribers, and a released worker', {
+    precondition: warmResourceStateEvidence(warmCachePrecondition),
+    warm: warm.map(warmResourceStateEvidence),
   });
   const plateauTail = warm.slice(-3);
   const warmHeapAggregateRange = range(plateauTail.map(heapAggregateBytes));

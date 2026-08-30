@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · PR #35 RESOURCE REPAIR · SCENEMEM AUTHORITY ACTIVATION ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · SCENEMEM PASS · COMPENDIUM CONTRACT ACTIVATED ◀◀◀
 
 ### Exact current boundary
 
@@ -26,13 +26,14 @@ the archive verbatim and refresh this handoff in place.
   **`origin/openai/mac`**. Work remains limited to `port/v2` and current Markdown. Legacy
   `main.js` / `celestial-frontier.html`, `develop`, `main`, the live-site repository and
   every other agent worktree are untouched.
-- **Local Git state:** committed HEAD is signed clean calibration source
-  **`4f1ed65db421f16386bc06a167a52a5af9dc51d3`** (tree
-  `e07c19e10ed1f7f1026d6d7b80d407591c353b53`), parent signed `a9f75797…`. The branch is
-  three commits ahead of its remote. The intentional dirty activation contains exactly the three
-  immutable calibration carriers, their evidence tests/docs, the collector-only budget binding and
-  this live handoff. Preserve it until the full browser-free/typecheck battery is green and the
-  activation is signed; do not reset or overwrite it.
+- **Local Git state:** at this handoff, committed HEAD is the signed Compendium activation; resolve
+  its exact identity with `git rev-parse HEAD`. It is the direct child of signed clean SceneMemory
+  activation **`2046000873f98318c767db53d2ffb2abac71cc94`** (tree
+  `48195a3960dae1abe20a60837ff7c028e2b7093f`, parent signed `4f1ed65…`) and the branch is five
+  commits ahead of its remote. The activation preserves the exact 44/44 SceneMemory certificate and
+  exact historical 76/78 Compendium stop, replaces only Compendium's stale full-cache oracle with
+  the product's real bounded quiescent outcome, refreshes current measurement authority, and keeps
+  product/game bytes unchanged. Do not reset or overwrite it.
 - **PR boundary:** draft PR **#35** is **`openai/mac` → `develop`**, currently remote head
   **`017fa6decbc41809188768ccdb98ab86ef1b9ebc`** against base
   **`7a9f4c1370dd84292388d718c38ff34214f6203b`**. It is open, blocked and unmerged.
@@ -133,38 +134,36 @@ both lanes at exactly 524,288 B/cycle; releasing the arrays reduced backing from
 
 ### Current local evidence
 
-- Focused repair suites independently passed the original **22 files / 327 tests**, the final
-  identity/canonicalization/no-retry controls at **7 files / 152 tests**, and the exact durable
-  Survey-result wiring at **8 files / 37 tests**.
-- Fixed-second SceneMemory focus: **4 files / 127 passed / 0 failed**; the real retained-allocation
-  browser control is green in both sampling lanes and release direction.
-- Clean signed `4f1ed65…` supplied exactly three independent schema-v3/input-v4 calibration runs:
-  `20260829-pr35-fixed-second-4f1ed65-candidate1`, `…-candidate2` and `…-candidate3`. Each ran
-  once without retry, held the same clean source/build at begin/end, completed browser/server/lock
-  cleanup and passed **44/44**. Their phone slopes were 90,528.8 / 98,815.2 / 97,813.6 B/cycle;
-  desktop slopes were 115,485.6 / 119,155.1 / 123,150 B/cycle. All remain below the unchanged
-  131,072 B/cycle ruler; maximum phone/desktop ranges 296,020 / 366,268 B remain below the
-  unchanged 524,288 B ruler. Independent replay found no carrier, binding, raw-pair or ceiling fault.
-- The new evidence test passes **17/17**, independent current-producer derivation reports both
-  SceneMemory and Compendium authority graphs green, and the complete activation sweep passed
-  **235 files / 2,404 tests / 1 skipped** plus all three TypeScript programs. The activation is
-  ready for signed commit; do not start browser certification from the dirty source.
-- Final calibration-candidate browser-free sweep: **235 files / 2,401 passed / 1 skipped** with
-  exactly one deliberate red: current producer authority reports only `collector`, because the old
-  budget had to remain fail-closed until fresh calibration was activated. No other test failed.
-  The activation replaces that deliberate red with exact collector authority; its complete
-  successor sweep is green as recorded above.
-- TypeScript: root, game app and worker programs are green on the current dirty repair.
-- Static contract:
-  - `artunused` green;
-  - **34 art sources / 0 findings**;
-  - **1,014/1,014** override routes with all mutation controls;
-  - **1,010/1,010** coverage routes;
-  - **454 declared / 0 never-read / 0 inert** specification fields.
-- The clean a9f red, the pre-browser authority stop and the paired noncertifying diagnostic are
-  preserved as deterministic gzip carriers in `audits/`; none is relabelled, retried or treated as
-  certification. Compendium and all later browser stages remain correctly skipped after the clean
-  43/44 stop.
+- Clean signed `4f1ed65…` supplied exactly three independent fixed-second calibration candidates,
+  each once without retry and **44/44**. Their maximum phone/desktop slopes were 98,815.2 / 123,150
+  B/cycle and maximum ranges were 296,020 / 366,268 B, all below the unchanged 131,072 B/cycle and
+  524,288 B rulers.
+- Signed activation `20460008…` passed the mandatory adjacent 512 KiB/cycle retained-allocation
+  control in both fixed lanes, then exact run
+  `20260830-pr35-fixed-second-2046000-scenemem-certification` passed **44/44** once without retry
+  and passed named verification. Phone measured 91,363.2 B/cycle / 272,028 B range; desktop
+  113,537.6 B/cycle / 339,144 B range. Its immutable carrier is now exact-hash-bound in `audits/`.
+- The one following Compendium attempt on the same clean source completed **76/78**. Only phone and
+  desktop `warm-precondition` were red; both measured the correct closed-panel product outcome of
+  eight live Planetside leases plus 17 unleased thumbnails = 25 cached entries. Every heap, byte,
+  DOM, resource, plateau, ownership, disposal, worker, answerability and cleanup outcome passed.
+  Named verification reproduced the exact red, no retry ran, and no later browser stage started.
+- The signed permanent repair leaves product/game bytes untouched. It treats 96/256 as native
+  ceilings, independently seals exactly 17 unleased identities plus the exact eight ready
+  Planetside lease identities, requires lease⊆cache, exact 132px decoded accounting, zero
+  portraits/work/subscribers and released worker, preserves stable warm membership/counters, and
+  requires the closed panel to own empty diagnostic + raw virtual-window, list and detail DOM.
+  Independent channel mutations plus direct replay of the preserved real carrier prevent a copied
+  count or one duplicate observation channel from making the oracle pass. `compendiummem:selftest`
+  passes **249 independent controls**.
+- Immutable Compendium red-carrier coverage binds exact source/build/authority/browser/lifecycle,
+  **76/78**, and all ten 8+17 warm snapshots. Historical full-cache certificates stay truthful
+  under their original outcome-contract hashes; current replay rejects only their obsolete
+  warm-precondition rather than relabelling them.
+- Current focused browser-free evidence is green: SceneMemory + Compendium budget/current-authority
+  tests pass **3 files / 49 tests**; the full Compendium budget file passes **28/28**; independent
+  producer derivation exits zero for both instruments. The complete activation sweep passes
+  **235 files / 2,406 tests / 1 skipped**, and root, game-app and worker TypeScript programs pass.
 - Current authority identities:
   - Scene build: `8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254`
   - Scene main: `0a54536bfc363b12c668aa276a2987e98bba32e41c5dbf546609d621972a840c`
@@ -172,23 +171,23 @@ both lanes at exactly 524,288 B/cycle; releasing the arrays reduced backing from
   - Historical active budget: `bf559acb1688c7f83223f4381b05ccc02309cf86af6344f6c019ffa0d1ba25e0`
   - Fixed-second collector: `7a1dc670327fed3f04fa120a78be64a5a87227a355292f47d37353522f50d931`
   - Fixed-second activation budget: `304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184`
-  - Compendium measurement: `7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4`
+  - Compendium measurement: `dacf6ab03b35f65ebd76b3a28a0c2ef2868ea505740f2cbe614d399cef1dbe7a`
+  - Compendium outcome contract: `a2de8a5830a99678c487c9200519dd560bcf2497c1791e4d5dd6a5dd4b77e092`
+  - Compendium collector: `888b9dfdee9d973d17e1901eb26abf1a49015e6f21f0647f8d3043c3e052c964`
   - Compendium producer: `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`
-  - Compendium budget: `5d7b54235cf9470cd7f2c042612a402f79edda3c91ee2ba83bfbe21126001d49`
-- Numeric ceilings, the 44-outcome SceneMemory ruler, Compendium measurement contract and browser
-  family policy did not move.
+  - Compendium activation budget: `c941bb1000e0056f661cf3994855a286d6667b3d5b80f5c770aab4d9e0543ef3`
+- Numeric ceilings, the 44/78 outcome inventories, browser-family policy, product producer and all
+  historical ruler/sample bindings did not move.
 
 ### Exact work remaining before another GitHub attempt
 
-1. Run the complete browser-free/typecheck/producer battery once on the collector-only activation,
-   inspect the diff, and sign the activation. The focused 17/17 evidence test, root TypeScript and
-   producer derivation are already green; do not repeat the three completed calibrations.
-2. From that exact clean activation, run the mandatory live same-Edge heap-phase selftest immediately
-   before one named SceneMemory certification and named verification.
-   Stop on any red/instrument result with no retry. Only if green, run one named Compendium attempt
-   and verification; its game build is still `8ef5d89c…`.
-3. Preserve the exact results, refresh this handoff/authorities, sign the documentation closure and
-   run `node tools/tracked-input-preflight.mjs` against the final committed index.
+1. From this exact clean activation, run the already-negative-controlled Compendium gate exactly
+   once with zero retry and named-verify that exact report. Stop on any red or instrument result.
+2. Only if Compendium is green, continue the immutable serial browser chain on the same unchanged
+   clean source: Slice → full Glass with the exact Slice predecessor → Recovery with both exact
+   predecessors. Named-verify every stage and stop after the first nonzero/red/instrument result.
+3. Preserve exact results, refresh this handoff/references, sign the evidence closure and run
+   `node tools/tracked-input-preflight.mjs` against the final committed index.
 4. Report the exact final head/base to Nick. Only a new authorization naming that immutable pair may
    push, label, run the one 92-minute hosted battery and merge. After green integration, hand the
    exact `develop` commit to Claude Fable on an `anthropic/*` branch for the requested polish review.
@@ -209,7 +208,7 @@ current system docs and `port/V2_PROGRAM_ROADMAP.md` own those boundaries.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** remain in this worktree, complete the four local steps above and do no GitHub
+- **OpenAI/Codex now:** remain in this worktree, complete the local steps above and do no GitHub
   write until Nick authorizes one exact final head/base attempt.
 - **Claude Code now:** Nick does **not** need to open Claude yet. Claude must not edit this OpenAI
   worktree. After a green merge into `develop`, create an `anthropic/*` branch/worktree from that

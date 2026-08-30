@@ -45,6 +45,7 @@ export const PRODUCER_ERROR_WITNESS_SCHEMA:
 export const PRODUCER_ERROR_ARM_MESSAGE: 'compendiummem injected producer error';
 export const PRODUCER_ERROR_ARM_SENTINEL: 'cf-v2-compendium-producer-error-armed/v1';
 export const REQUIRED_WARM_CYCLES: number;
+export const REQUIRED_QUIESCENT_UNLEASED_THUMB_ENTRIES: 17;
 export const OUTCOME_IDS: readonly string[];
 export const EXPECTED_OUTCOMES: readonly string[];
 export const REPORT_INPUT_KEYS: readonly string[];

@@ -19,7 +19,7 @@
 > rebaseline or recalibrate. Earlier Final13/Final12/Final11/Final10 evidence remains immutable
 > history.
 
-**STATUS:** current as of 2026-08-29. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-30. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -79,6 +79,24 @@ revocation exit, and do not raise a heap ceiling merely because bytes moved to t
 registry. The current dirty-source SceneMemory diagnostic reached **44/44**, but dirty diagnostic
 green is repair evidence only—not clean exact-source certification, calibration authority or
 permission to relabel an earlier red.
+
+⚠⚠ **A CAPACITY CEILING IS NOT REQUIRED QUIESCENT OCCUPANCY; CERTIFY THE REAL CLOSED
+STATE** (2026-08-30). After Close correctly compacted the Compendium thumbnail cache to eight live
+Planetside leases plus the bounded 17 unleased warm thumbnails, the historical oracle still required
+all 96 phone or 256 desktop capacity slots to be occupied. It therefore rejected a healthy,
+smaller state even though every plateau, heap, byte, ownership, cleanup and answerability outcome
+was green.
+
+The native 96/256 values are upper bounds, not fill targets. A post-Close warm certificate requires
+the actual semantic state: the Compendium panel is closed; its virtual window, list images and detail
+portrait DOM are empty; the eight distinct ready 132px Planetside identities exactly equal the eight
+live lease keys; exactly 17 distinct cached thumbnails are unleased; decoded accounting matches all
+25 entries; portrait/work/subscriber inventories are zero; and the worker is released. Bind both
+diagnostic and raw DOM channels independently, retain exact key sets rather than counts alone, replay
+the preserved real carrier through the current evaluator as a positive control, and mutate each
+semantic branch independently. Never saturate a cache to make a memory gate pass, weaken product
+cleanup to match an obsolete oracle, relabel the original red, or treat a compatible Edge point
+update as recalibration authority.
 
 ⚠⚠ **A HEAP SAMPLE HAS A PHASE POSITION; SCORE THE FIXED SECOND FULL PASS, NEVER THE
 BEST-LOOKING PASS** (2026-08-29). Clean exact source `a9f75797…` completed SceneMemory with
