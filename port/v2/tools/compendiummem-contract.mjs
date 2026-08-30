@@ -26,6 +26,7 @@ export const COMPENDIUM_BROWSER_PROTOCOL_VERSION = '1.3';
 export const COMPENDIUM_BROWSER_REQUIRED_CDP_METHODS = Object.freeze([
   'Browser.getVersion',
   'Emulation.setDeviceMetricsOverride',
+  'Emulation.setFocusEmulationEnabled',
   'Emulation.setTouchEmulationEnabled',
   'HeapProfiler.collectGarbage',
   'HeapProfiler.enable',
@@ -34,6 +35,7 @@ export const COMPENDIUM_BROWSER_REQUIRED_CDP_METHODS = Object.freeze([
   'Input.insertText',
   'Memory.getDOMCounters',
   'Page.addScriptToEvaluateOnNewDocument',
+  'Page.bringToFront',
   'Page.captureScreenshot',
   'Page.enable',
   'Page.navigate',
@@ -51,6 +53,9 @@ export const COMPENDIUM_BROWSER_BEST_EFFORT_CDP_METHODS = Object.freeze([
 ]);
 export const COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256 =
   sha256(JSON.stringify(COMPENDIUM_BROWSER_REQUIRED_CDP_METHODS));
+export const COMPENDIUM_BROWSER_HISTORICAL_CAPABILITY_CONTRACT_SHA256S = Object.freeze([
+  '6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476',
+]);
 export const COMPENDIUM_MEASUREMENT_AUTHORITY_SCHEMA =
   'cf-v2-compendium-measurement-authority/v1';
 export const COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS = Object.freeze([
@@ -76,15 +81,88 @@ export const CANDIDATE_COMMAND_SCHEMA = 'cf-v2-compendium-candidate-command/v1';
 export const PLAIN_EVALUATE_COMMAND_SCHEMA = 'cf-v2-compendium-plain-evaluate-command/v1';
 export const RAW_CDP_COMMAND_SCHEMA = 'cf-v2-compendium-raw-cdp-command/v1';
 export const PARTIAL_FAILURE_SCHEMA = 'cf-v2-compendium-partial-failure/v1';
-export const PARTIAL_PROFILE_SCHEMA = 'cf-v2-compendium-partial-profile/v5';
+export const PARTIAL_PROFILE_SCHEMA = 'cf-v2-compendium-partial-profile/v6';
 export const FILTER_TRANSITION_SCHEMA = 'cf-v2-compendium-filter-transition/v3';
 export const PRODUCER_ERROR_WITNESS_SCHEMA =
   'cf-v2-compendium-producer-error-witness/v1';
 export const PRODUCER_ERROR_ARM_MESSAGE = 'compendiummem injected producer error';
 export const PRODUCER_ERROR_ARM_SENTINEL = 'cf-v2-compendium-producer-error-armed/v1';
+export const THUMB_SETTLEMENT_OBSERVATION_SCHEMA =
+  'cf-v2-compendium-thumb-settlement-observation/v1';
+export const THUMB_SETTLEMENT_RECEIPT_SCHEMA =
+  'cf-v2-compendium-thumb-settlement-receipt/v1';
+export const THUMB_SETTLEMENT_ACTIVE_SCHEMA =
+  'cf-v2-compendium-thumb-settlement-active/v1';
+export const THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS = 30_000;
+export const FOREGROUND_SERVICE_OBSERVATION_SCHEMA =
+  'cf-v2-compendium-foreground-service-observation/v1';
+export const FOREGROUND_SERVICE_RECEIPT_SCHEMA =
+  'cf-v2-compendium-foreground-service-receipt/v1';
+export const FOREGROUND_SERVICE_RECEIPT_LABELS = Object.freeze([
+  'fresh lazy-control', 'veteran Earth', 'final lazy-control',
+]);
+export const FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS = 5_000;
+export const MAX_THUMB_SETTLEMENT_IMAGES = 64;
+export const MAX_THUMB_SETTLEMENT_FILTER_COUNT = 1_000_000;
+export const MAX_THUMB_SETTLEMENT_REASONS = 384;
 export const REQUIRED_WARM_CYCLES = 4;
 export const REQUIRED_QUIESCENT_UNLEASED_THUMB_ENTRIES = 17;
 const REQUIRED_WARM_PLANETSIDE_THUMB_ENTRIES = 8;
+const thumbSettlementPlanEntry = (label, surface, expectedCount = null) => Object.freeze({
+  label, surface, expectedCount,
+});
+const numberedThumbSettlementPlan = (prefix, count) => Array.from(
+  { length: count }, (_, index) => thumbSettlementPlanEntry(
+    `${prefix}-${String(index + 1).padStart(2, '0')}-list`, 'list', null,
+  ),
+);
+export const THUMB_SETTLEMENT_RECEIPT_PLAN = Object.freeze([
+  thumbSettlementPlanEntry('veteran-earth-planetside', 'planetside'),
+  thumbSettlementPlanEntry('viewport-contracted-list', 'list', 1500),
+  thumbSettlementPlanEntry('viewport-expanded-list', 'list', 1500),
+  thumbSettlementPlanEntry('viewport-restored-list', 'list', 1500),
+  thumbSettlementPlanEntry('identity-reopen-list', 'list', 1500),
+  thumbSettlementPlanEntry('sentinel-filter-list', 'list', 2),
+  thumbSettlementPlanEntry('post-churn-planetside', 'planetside'),
+  thumbSettlementPlanEntry('post-churn-reopen-list', 'list', 1500),
+  thumbSettlementPlanEntry('middle-scroll-list', 'list'),
+  thumbSettlementPlanEntry('last-scroll-list', 'list'),
+  thumbSettlementPlanEntry('filter-beacon-list', 'list', 1),
+  thumbSettlementPlanEntry('filter-reset-list', 'list', 1500),
+  thumbSettlementPlanEntry('detail-primary-scroll-list', 'list'),
+  thumbSettlementPlanEntry('detail-primary-row-activation-list', 'list', 1500),
+  thumbSettlementPlanEntry('detail-back-reopen-list', 'list', 1500),
+  thumbSettlementPlanEntry('detail-back-scroll-list', 'list'),
+  thumbSettlementPlanEntry('detail-back-row-activation-list', 'list', 1500),
+  thumbSettlementPlanEntry('detail-back-return-list', 'list', 1500),
+  thumbSettlementPlanEntry('detail-back-post-layout-list', 'list', 1500),
+  thumbSettlementPlanEntry('focus-reopen-list', 'list', 1500),
+  thumbSettlementPlanEntry('focus-off-window-scroll-list', 'list'),
+  thumbSettlementPlanEntry('focus-snapshot-pre-list', 'list', 1500),
+  thumbSettlementPlanEntry('focus-snapshot-post-list', 'list', 1500),
+  thumbSettlementPlanEntry('close-reopen-list', 'list', 1500),
+  thumbSettlementPlanEntry('close-planetside', 'planetside'),
+  thumbSettlementPlanEntry('lifecycle-reveal-planetside', 'planetside'),
+  thumbSettlementPlanEntry('warm-fill-open-list', 'list', 1500),
+  ...numberedThumbSettlementPlan('warm-fill-scroll', 21),
+  thumbSettlementPlanEntry('warm-anchor-scroll-list', 'list'),
+  thumbSettlementPlanEntry('warm-precondition-planetside', 'planetside'),
+  ...Array.from({ length: REQUIRED_WARM_CYCLES }, (_, index) => {
+    const cycle = index + 1;
+    return [
+      thumbSettlementPlanEntry(`warm-cycle-${cycle}-open-list`, 'list', 1500),
+      thumbSettlementPlanEntry(`warm-cycle-${cycle}-anchor-scroll-list`, 'list'),
+      thumbSettlementPlanEntry(`warm-cycle-${cycle}-planetside`, 'planetside'),
+    ];
+  }).flat(),
+  thumbSettlementPlanEntry('cap-open-list', 'list', 1500),
+  ...numberedThumbSettlementPlan('cap-fill-scroll', 21),
+  thumbSettlementPlanEntry('post-cap-planetside', 'planetside'),
+]);
+export const MAX_THUMB_SETTLEMENT_RECEIPT_HISTORY =
+  THUMB_SETTLEMENT_RECEIPT_PLAN.length * 50;
+export const MAX_PARTIAL_COMMAND_LEDGER_ENTRIES = 2_048;
+export const MAX_PARTIAL_COMMAND_LEDGER_BYTES = 2_097_152;
 export const OUTCOME_IDS = Object.freeze([
   'input-fixture-1500-distinct',
   'lazy-art-not-eager',
@@ -159,6 +237,12 @@ function finite(value) { return typeof value === 'number' && Number.isFinite(val
 function nonnegative(value) { return finite(value) && value >= 0; }
 function integer(value) { return Number.isSafeInteger(value); }
 function sameJson(left, right) { return JSON.stringify(left) === JSON.stringify(right); }
+function boundedString(value, { allowEmpty = false, max = 512 } = {}) {
+  return typeof value === 'string' && value.length <= max && (allowEmpty || value.length > 0);
+}
+function boundedCount(value, max = 1_000_000) {
+  return integer(value) && value >= 0 && value <= max;
+}
 function absoluteExecutable(value) {
   return typeof value === 'string' && value.length > 0
     && (value.startsWith('/') || /^[A-Za-z]:[\\/]/.test(value));
@@ -316,18 +400,22 @@ export function validCompendiumBrowserAuthority(authority) {
     && authority.family === COMPENDIUM_BROWSER_FAMILY
     && authority.protocolVersion === COMPENDIUM_BROWSER_PROTOCOL_VERSION
     && authority.capabilityContract === COMPENDIUM_BROWSER_CAPABILITY_CONTRACT
-    && authority.capabilityContractSha256
-      === COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256;
+    && [COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256,
+      ...COMPENDIUM_BROWSER_HISTORICAL_CAPABILITY_CONTRACT_SHA256S]
+      .includes(authority.capabilityContractSha256);
 }
 
 export function compendiumBrowserAuthorityMatches(browser, authority) {
   const observed = compendiumBrowserAuthority(browser);
   return observed !== null && validCompendiumBrowserAuthority(authority)
-    && sameJson(observed, authority);
+    && ['schema', 'scope', 'family', 'protocolVersion', 'capabilityContract']
+      .every((field) => observed[field] === authority[field]);
 }
 
 export function compendiumBudgetBrowserAuthority(record) {
   return validCompendiumBrowserAuthority(record?.browserAuthority)
+    && record.browserAuthority.capabilityContractSha256
+      === COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256
     ? record.browserAuthority : null;
 }
 
@@ -1450,6 +1538,705 @@ export function compendiumProfileEmulationOptions(profile, viewport) {
     throw new Error('Compendium profile emulation options are invalid');
   }
   return options;
+}
+
+const THUMB_SETTLEMENT_SELECTORS = Object.freeze({
+  list: '#codexpanel [data-sel="codex-entry"] img',
+  planetside: '#planetside [data-sel="planetside-sp"] img',
+});
+const THUMB_SETTLEMENT_TOP_KEYS = Object.freeze([
+  'schema', 'surface', 'expectedCount', 'receiptToken', 'ready', 'reasons',
+  'ownership', 'diagnostic', 'images', 'art', 'lazyArt', 'worker', 'broker', 'page',
+]);
+const THUMB_SETTLEMENT_IMAGE_KEYS = Object.freeze([
+  'index', 'logicalId', 'visualKey', 'thumbState',
+  'srcPresent', 'complete', 'naturalWidth', 'naturalHeight',
+]);
+const THUMB_SETTLEMENT_LAZY_PHASE_FIELDS = Object.freeze([
+  'importStarts', 'importCompletes',
+  'thumbJobStarts', 'thumbRenderCompletes', 'thumbEncodeStarts', 'thumbEncodeCompletes',
+  'portraitJobStarts', 'portraitRenderCompletes',
+  'portraitEncodeStarts', 'portraitEncodeCompletes',
+]);
+const THUMB_SETTLEMENT_LAZY_RESULT_FIELDS = Object.freeze([
+  'count', 'maxImportDurationMs', 'maxRenderDurationMs', 'maxEncodeDurationMs',
+]);
+const THUMB_SETTLEMENT_LAZY_ERROR_FIELDS = Object.freeze([
+  'capability', 'protocol', 'import', 'paint', 'encode',
+]);
+
+function nullableBoundedString(value) {
+  return value === null || boundedString(value);
+}
+
+function thumbSettlementExpected(expected) {
+  return isObject(expected)
+    && sameJson(Object.keys(expected).sort(), [
+      'documentToken', 'expectedCount', 'receiptToken', 'sessionId', 'surface', 'targetId',
+    ])
+    && ['list', 'planetside'].includes(expected.surface)
+    && ['targetId', 'sessionId', 'documentToken']
+      .every((field) => boundedString(expected[field]))
+    && boundedString(expected.receiptToken, { max: 256 })
+    && (expected.surface === 'planetside'
+      ? expected.expectedCount === null
+      : expected.expectedCount === null
+        || boundedCount(expected.expectedCount, MAX_THUMB_SETTLEMENT_FILTER_COUNT));
+}
+
+function thumbSettlementObservationShapeErrors(observation) {
+  const errors = [];
+  if (!exactKeys(observation, THUMB_SETTLEMENT_TOP_KEYS, 'thumb settlement observation', errors)) {
+    return errors;
+  }
+  if (!boundedString(observation.schema)) errors.push('thumb settlement schema shape');
+  if (!boundedString(observation.surface, { max: 32 })) errors.push('thumb settlement surface shape');
+  if (observation.expectedCount !== null
+    && !boundedCount(observation.expectedCount, MAX_THUMB_SETTLEMENT_FILTER_COUNT)) {
+    errors.push('thumb settlement expected count shape');
+  }
+  if (!boundedString(observation.receiptToken, { max: 256 })) {
+    errors.push('thumb settlement receipt token shape');
+  }
+  if (typeof observation.ready !== 'boolean') errors.push('thumb settlement ready shape');
+  if (!Array.isArray(observation.reasons)
+    || observation.reasons.length > MAX_THUMB_SETTLEMENT_REASONS
+    || !observation.reasons.every((reason) => boundedString(reason))
+    || new Set(observation.reasons).size !== observation.reasons.length) {
+    errors.push('thumb settlement reasons shape');
+  }
+
+  const ownershipKeys = [
+    'selector', 'rawImageCount', 'rawLogicalIds',
+    'diagnosticImageCount', 'diagnosticLogicalIds',
+  ];
+  if (exactKeys(observation.ownership, ownershipKeys, 'thumb settlement ownership', errors)) {
+    const ownership = observation.ownership;
+    if (!boundedString(ownership.selector)) errors.push('thumb settlement selector shape');
+    if (!boundedCount(ownership.rawImageCount, MAX_THUMB_SETTLEMENT_FILTER_COUNT)) {
+      errors.push('thumb settlement raw image count shape');
+    }
+    if (!boundedCount(ownership.diagnosticImageCount, MAX_THUMB_SETTLEMENT_FILTER_COUNT)) {
+      errors.push('thumb settlement diagnostic image count shape');
+    }
+    for (const [field, values] of [
+      ['raw logical ids', ownership.rawLogicalIds],
+      ['diagnostic logical ids', ownership.diagnosticLogicalIds],
+    ]) {
+      if (!Array.isArray(values) || values.length > MAX_THUMB_SETTLEMENT_IMAGES
+        || !values.every(nullableBoundedString)) errors.push(`thumb settlement ${field} shape`);
+    }
+  }
+
+  const diagnosticKeys = ['panelMode', 'filteredCount', 'visible', 'thumbStates'];
+  if (exactKeys(observation.diagnostic, diagnosticKeys, 'thumb settlement diagnostic', errors)) {
+    const diagnostic = observation.diagnostic;
+    if (!boundedString(diagnostic.panelMode, { max: 32 })) {
+      errors.push('thumb settlement panel mode shape');
+    }
+    if (!boundedCount(diagnostic.filteredCount)) {
+      errors.push('thumb settlement filtered count shape');
+    }
+    if (typeof diagnostic.visible !== 'boolean') {
+      errors.push('thumb settlement visibility shape');
+    }
+    if (!Array.isArray(diagnostic.thumbStates)
+      || diagnostic.thumbStates.length > MAX_THUMB_SETTLEMENT_IMAGES
+      || !diagnostic.thumbStates.every((state) => boundedString(state, { max: 64 }))) {
+      errors.push('thumb settlement diagnostic states shape');
+    }
+  }
+
+  if (!Array.isArray(observation.images)
+    || observation.images.length > MAX_THUMB_SETTLEMENT_IMAGES) {
+    errors.push('thumb settlement images shape');
+  } else {
+    observation.images.forEach((image, index) => {
+      const where = `thumb settlement image ${index}`;
+      if (!exactKeys(image, THUMB_SETTLEMENT_IMAGE_KEYS, where, errors)) return;
+      if (!boundedCount(image.index, MAX_THUMB_SETTLEMENT_IMAGES - 1)) {
+        errors.push(`${where} index shape`);
+      }
+      if (!nullableBoundedString(image.logicalId)) errors.push(`${where} logical id shape`);
+      if (!nullableBoundedString(image.visualKey)) errors.push(`${where} visual key shape`);
+      if (!nullableBoundedString(image.thumbState)) errors.push(`${where} thumb state shape`);
+      if (typeof image.srcPresent !== 'boolean') errors.push(`${where} source shape`);
+      if (typeof image.complete !== 'boolean') errors.push(`${where} completion shape`);
+      if (!boundedCount(image.naturalWidth, 8192)) errors.push(`${where} width shape`);
+      if (!boundedCount(image.naturalHeight, 8192)) errors.push(`${where} height shape`);
+    });
+  }
+
+  const artKeys = ['available', 'schema', 'queuedJobs', 'activeJobs'];
+  if (exactKeys(observation.art, artKeys, 'thumb settlement art', errors)) {
+    const art = observation.art;
+    if (typeof art.available !== 'boolean') errors.push('thumb settlement art availability shape');
+    if (art.available === true) {
+      if (!boundedString(art.schema)) errors.push('thumb settlement art schema shape');
+      if (!boundedCount(art.queuedJobs)) errors.push('thumb settlement art queued shape');
+      if (!boundedCount(art.activeJobs)) errors.push('thumb settlement art active shape');
+    } else if (art.schema !== null || art.queuedJobs !== null || art.activeJobs !== null) {
+      errors.push('thumb settlement unavailable art carried values');
+    }
+  }
+
+  const lazyKeys = [
+    'available', 'schema', 'state', 'importStarts', 'identity', 'lastEvent',
+    'phases', 'results', 'errors',
+  ];
+  if (exactKeys(observation.lazyArt, lazyKeys, 'thumb settlement lazy art', errors)) {
+    const lazyArt = observation.lazyArt;
+    if (typeof lazyArt.available !== 'boolean') {
+      errors.push('thumb settlement lazy art availability shape');
+    }
+    if (lazyArt.available === true) {
+      if (!boundedString(lazyArt.schema)) errors.push('thumb settlement lazy art schema shape');
+      if (!boundedString(lazyArt.state, { max: 64 })) errors.push('thumb settlement lazy art state shape');
+      if (!boundedCount(lazyArt.importStarts)) errors.push('thumb settlement lazy art imports shape');
+      const identityKeys = ['documentToken', 'lastProducerEpoch', 'lastWorkerInstanceId'];
+      if (exactKeys(lazyArt.identity, identityKeys, 'thumb settlement lazy art identity', errors)) {
+        if (!boundedString(lazyArt.identity.documentToken)) {
+          errors.push('thumb settlement lazy art document shape');
+        }
+        for (const field of ['lastProducerEpoch', 'lastWorkerInstanceId']) {
+          if (!boundedCount(lazyArt.identity[field])) {
+            errors.push(`thumb settlement lazy art identity ${field} shape`);
+          }
+        }
+      }
+      if (lazyArt.lastEvent !== null) {
+        const eventKeys = ['producerEpoch', 'workerInstanceId', 'jobId', 'kind', 'event'];
+        if (exactKeys(lazyArt.lastEvent, eventKeys, 'thumb settlement lazy art last event', errors)) {
+          for (const field of ['producerEpoch', 'workerInstanceId', 'jobId']) {
+            if (!boundedCount(lazyArt.lastEvent[field])) {
+              errors.push(`thumb settlement lazy art event ${field} shape`);
+            }
+          }
+          if (!boundedString(lazyArt.lastEvent.kind, { max: 64 })) {
+            errors.push('thumb settlement lazy art event kind shape');
+          }
+          if (!boundedString(lazyArt.lastEvent.event, { max: 64 })) {
+            errors.push('thumb settlement lazy art event name shape');
+          }
+        }
+      }
+      if (exactKeys(lazyArt.phases, THUMB_SETTLEMENT_LAZY_PHASE_FIELDS,
+        'thumb settlement lazy art phases', errors)) {
+        for (const field of THUMB_SETTLEMENT_LAZY_PHASE_FIELDS) {
+          if (!boundedCount(lazyArt.phases[field])) {
+            errors.push(`thumb settlement lazy art phase ${field} shape`);
+          }
+        }
+      }
+      if (exactKeys(lazyArt.results, THUMB_SETTLEMENT_LAZY_RESULT_FIELDS,
+        'thumb settlement lazy art results', errors)) {
+        if (!boundedCount(lazyArt.results.count)) {
+          errors.push('thumb settlement lazy art result count shape');
+        }
+        for (const field of THUMB_SETTLEMENT_LAZY_RESULT_FIELDS.slice(1)) {
+          if (!nonnegative(lazyArt.results[field]) || lazyArt.results[field] > 1_000_000_000) {
+            errors.push(`thumb settlement lazy art result ${field} shape`);
+          }
+        }
+      }
+      if (exactKeys(lazyArt.errors, THUMB_SETTLEMENT_LAZY_ERROR_FIELDS,
+        'thumb settlement lazy art errors', errors)) {
+        for (const field of THUMB_SETTLEMENT_LAZY_ERROR_FIELDS) {
+          if (!boundedCount(lazyArt.errors[field])) {
+            errors.push(`thumb settlement lazy art error ${field} shape`);
+          }
+        }
+      }
+    } else if (lazyKeys.slice(1).some((field) => lazyArt[field] !== null)) {
+      errors.push('thumb settlement unavailable lazy art carried values');
+    }
+  }
+
+  const workerKeys = [
+    'available', 'live', 'starts', 'ready', 'disposals', 'fatals', 'protocolErrors',
+  ];
+  if (exactKeys(observation.worker, workerKeys, 'thumb settlement worker', errors)) {
+    const worker = observation.worker;
+    if (typeof worker.available !== 'boolean') {
+      errors.push('thumb settlement worker availability shape');
+    }
+    if (worker.available === true) {
+      if (typeof worker.live !== 'boolean') errors.push('thumb settlement worker live shape');
+      for (const field of ['starts', 'ready', 'disposals', 'fatals', 'protocolErrors']) {
+        if (!boundedCount(worker[field])) errors.push(`thumb settlement worker ${field} shape`);
+      }
+    } else if (['live', 'starts', 'ready', 'disposals', 'fatals', 'protocolErrors']
+      .some((field) => worker[field] !== null)) {
+      errors.push('thumb settlement unavailable worker carried values');
+    }
+  }
+
+  const brokerKeys = [
+    'available', 'cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs',
+  ];
+  if (exactKeys(observation.broker, brokerKeys, 'thumb settlement broker', errors)) {
+    const broker = observation.broker;
+    if (typeof broker.available !== 'boolean') {
+      errors.push('thumb settlement broker availability shape');
+    }
+    if (broker.available === true) {
+      for (const field of ['cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs']) {
+        if (!boundedCount(broker[field])) errors.push(`thumb settlement broker ${field} shape`);
+      }
+    } else if (['cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs']
+      .some((field) => broker[field] !== null)) {
+      errors.push('thumb settlement unavailable broker carried values');
+    }
+  }
+
+  const pageKeys = [
+    'targetId', 'sessionId', 'documentToken', 'visibilityState', 'hidden', 'focused',
+  ];
+  if (exactKeys(observation.page, pageKeys, 'thumb settlement page', errors)) {
+    const page = observation.page;
+    if (!boundedString(page.targetId)) errors.push('thumb settlement target identity shape');
+    if (!boundedString(page.sessionId)) errors.push('thumb settlement session identity shape');
+    if (!boundedString(page.documentToken)) errors.push('thumb settlement document identity shape');
+    if (!boundedString(page.visibilityState, { max: 32 })) {
+      errors.push('thumb settlement page visibility shape');
+    }
+    if (typeof page.hidden !== 'boolean') errors.push('thumb settlement page hidden shape');
+    if (typeof page.focused !== 'boolean') errors.push('thumb settlement page focus shape');
+  }
+  return errors;
+}
+
+function sealedThumbSettlementDecision(status, reasons) {
+  const boundedReasons = reasons.length <= MAX_THUMB_SETTLEMENT_REASONS
+    ? reasons
+    : [`thumb settlement reason cardinality ${reasons.length}/${MAX_THUMB_SETTLEMENT_REASONS}`];
+  return Object.freeze({ status, reasons: Object.freeze(boundedReasons) });
+}
+
+/* Recompute settlement solely from the structured browser observation. The
+   carrier retains every bounded miss instead of collapsing a 30-second phase
+   to `null`, while `validCompendiumThumbSettlementObservation` prevents a
+   copied `ready` flag or copied reason list from laundering changed facts. */
+export function classifyCompendiumThumbSettlement(observation, expected) {
+  if (!thumbSettlementExpected(expected)) {
+    throw new TypeError('thumb settlement requires exact page authority and sealed surface/count semantics');
+  }
+  const shapeErrors = thumbSettlementObservationShapeErrors(observation);
+  if (shapeErrors.length) return sealedThumbSettlementDecision('error', shapeErrors);
+
+  const errors = [];
+  const pending = [];
+  if (observation.schema !== THUMB_SETTLEMENT_OBSERVATION_SCHEMA) {
+    errors.push(`observation schema ${JSON.stringify(observation.schema)}`);
+  }
+  if (observation.surface !== expected.surface) {
+    errors.push(`surface identity ${JSON.stringify(observation.surface)}`);
+  }
+  if (observation.expectedCount !== expected.expectedCount) {
+    errors.push(`expected count identity ${JSON.stringify(observation.expectedCount)}`);
+  }
+  if (observation.receiptToken !== expected.receiptToken) {
+    errors.push(`receipt token identity ${JSON.stringify(observation.receiptToken)}`);
+  }
+  const selector = THUMB_SETTLEMENT_SELECTORS[expected.surface];
+  if (observation.ownership.selector !== selector) {
+    errors.push(`raw selector ownership ${JSON.stringify(observation.ownership.selector)}`);
+  }
+  for (const [field, label] of [
+    ['targetId', 'target identity'],
+    ['sessionId', 'session identity'],
+    ['documentToken', 'document identity'],
+  ]) {
+    if (observation.page[field] !== expected[field]) {
+      errors.push(`${label} ${JSON.stringify(observation.page[field])}`);
+    }
+  }
+  if (observation.page.visibilityState !== 'visible' || observation.page.hidden !== false) {
+    errors.push(`page visibility ${JSON.stringify(observation.page.visibilityState)}/${JSON.stringify(observation.page.hidden)}`);
+  }
+  if (observation.page.focused !== true) errors.push('page unfocused');
+
+  if (expected.surface === 'list') {
+    if (observation.diagnostic.panelMode !== 'list') {
+      pending.push(`list panel mode ${JSON.stringify(observation.diagnostic.panelMode)}`);
+    }
+    if (expected.expectedCount !== null
+      && observation.diagnostic.filteredCount !== expected.expectedCount) {
+      pending.push(`list filtered count ${observation.diagnostic.filteredCount}/${expected.expectedCount}`);
+    }
+  } else if (observation.diagnostic.visible !== true) {
+    pending.push('Planetside surface hidden');
+  }
+
+  const images = observation.images;
+  const rawLogicalIds = images.map((image) => image.logicalId);
+  const visualKeys = images.map((image) => image.visualKey);
+  const thumbStates = images.map((image) => image.thumbState);
+  if (images.length < 1 || images.length > MAX_THUMB_SETTLEMENT_IMAGES) {
+    pending.push(`raw image array count ${images.length}/1..${MAX_THUMB_SETTLEMENT_IMAGES}`);
+  }
+  if (observation.ownership.rawImageCount !== images.length) {
+    pending.push(`raw image count ${observation.ownership.rawImageCount}/${images.length}`);
+  }
+  if (observation.ownership.diagnosticImageCount !== images.length) {
+    pending.push(`diagnostic image count ${observation.ownership.diagnosticImageCount}/${images.length}`);
+  }
+  if (!sameJson(observation.ownership.rawLogicalIds, rawLogicalIds)) {
+    pending.push('raw logical-id ownership mismatch');
+  }
+  if (!sameJson(observation.ownership.diagnosticLogicalIds, rawLogicalIds)) {
+    pending.push('diagnostic logical-id ownership mismatch');
+  }
+  if (!sameJson(observation.diagnostic.thumbStates, thumbStates)) {
+    pending.push('diagnostic thumb-state ownership mismatch');
+  }
+  if (new Set(rawLogicalIds).size !== images.length || rawLogicalIds.some((id) => !id)) {
+    pending.push('raw logical ids absent or non-distinct');
+  }
+  if (new Set(visualKeys).size !== images.length || visualKeys.some((key) => !key)) {
+    pending.push('raw visual keys absent or non-distinct');
+  }
+  images.forEach((image, index) => {
+    if (image.index !== index) pending.push(`image ${index} index ${image.index}`);
+    if (image.thumbState !== 'ready') {
+      pending.push(`image ${index} thumb state ${JSON.stringify(image.thumbState)}`);
+    }
+    if (image.srcPresent !== true) pending.push(`image ${index} source absent`);
+    if (image.complete !== true) pending.push(`image ${index} decode incomplete`);
+    if (image.naturalWidth !== 132 || image.naturalHeight !== 132) {
+      pending.push(`image ${index} dimensions ${image.naturalWidth}x${image.naturalHeight}`);
+    }
+  });
+
+  if (observation.art.available !== true) pending.push('art diagnostics unavailable');
+  else {
+    if (observation.art.schema !== ART_DIAGNOSTICS_SCHEMA) {
+      pending.push(`art schema ${JSON.stringify(observation.art.schema)}`);
+    }
+    if (observation.art.queuedJobs !== 0) {
+      pending.push(`art queued jobs ${observation.art.queuedJobs}`);
+    }
+    if (observation.art.activeJobs !== 0) {
+      pending.push(`art active jobs ${observation.art.activeJobs}`);
+    }
+  }
+  if (observation.lazyArt.available !== true) pending.push('lazy-art diagnostics unavailable');
+  else {
+    if (observation.lazyArt.schema !== WORKER_ART_DIAGNOSTICS_SCHEMA) {
+      pending.push(`lazy-art schema ${JSON.stringify(observation.lazyArt.schema)}`);
+    }
+    if (observation.lazyArt.state !== 'ready') {
+      pending.push(`lazy-art state ${JSON.stringify(observation.lazyArt.state)}`);
+    }
+    if (observation.lazyArt.identity.documentToken !== observation.page.documentToken) {
+      errors.push('lazy-art document identity');
+    }
+    const phases = observation.lazyArt.phases;
+    const results = observation.lazyArt.results;
+    const lazyErrors = observation.lazyArt.errors;
+    if (observation.lazyArt.importStarts !== phases.importStarts) {
+      pending.push('lazy-art import-start summary mismatch');
+    }
+    if (phases.importCompletes > phases.importStarts
+      || phases.thumbRenderCompletes > phases.thumbJobStarts
+      || phases.thumbEncodeStarts > phases.thumbRenderCompletes
+      || phases.thumbEncodeCompletes > phases.thumbEncodeStarts
+      || phases.portraitRenderCompletes > phases.portraitJobStarts
+      || phases.portraitEncodeStarts > phases.portraitRenderCompletes
+      || phases.portraitEncodeCompletes > phases.portraitEncodeStarts) {
+      pending.push('lazy-art phase counters are causally inconsistent');
+    }
+    if (results.count !== phases.thumbEncodeCompletes + phases.portraitEncodeCompletes) {
+      pending.push('lazy-art result count does not match encoded completions');
+    }
+    if (observation.lazyArt.lastEvent !== null
+      && (observation.lazyArt.lastEvent.producerEpoch
+          !== observation.lazyArt.identity.lastProducerEpoch
+        || observation.lazyArt.lastEvent.workerInstanceId
+          !== observation.lazyArt.identity.lastWorkerInstanceId)) {
+      errors.push('lazy-art last-event producer identity');
+    }
+    pending.push(`lazy-art witness epoch=${observation.lazyArt.identity.lastProducerEpoch};worker=${observation.lazyArt.identity.lastWorkerInstanceId};phases=${THUMB_SETTLEMENT_LAZY_PHASE_FIELDS.map((field) => phases[field]).join(',')};results=${THUMB_SETTLEMENT_LAZY_RESULT_FIELDS.map((field) => results[field]).join(',')};errors=${THUMB_SETTLEMENT_LAZY_ERROR_FIELDS.map((field) => lazyErrors[field]).join(',')};last=${observation.lazyArt.lastEvent === null ? 'null' : `${observation.lazyArt.lastEvent.producerEpoch},${observation.lazyArt.lastEvent.workerInstanceId},${observation.lazyArt.lastEvent.jobId},${observation.lazyArt.lastEvent.kind},${observation.lazyArt.lastEvent.event}`}`);
+  }
+  if (observation.worker.available !== observation.lazyArt.available) {
+    pending.push('worker/lazy-art availability mismatch');
+  }
+  if (observation.broker.available !== observation.art.available) {
+    pending.push('broker/art availability mismatch');
+  }
+  if (observation.broker.available === true && observation.art.available === true) {
+    if (observation.broker.queuedJobs !== observation.art.queuedJobs) {
+      pending.push('broker/art queued-job mismatch');
+    }
+    if (observation.broker.activeJobs !== observation.art.activeJobs) {
+      pending.push('broker/art active-job mismatch');
+    }
+  }
+  if (errors.length) {
+    return sealedThumbSettlementDecision('error', [...errors, ...pending]);
+  }
+  const lazyWitnessIndex = pending.findIndex((reason) => reason.startsWith('lazy-art witness '));
+  const lazyWitness = lazyWitnessIndex < 0 ? [] : pending.splice(lazyWitnessIndex, 1);
+  if (pending.length) {
+    return sealedThumbSettlementDecision('pending', [...pending, ...lazyWitness]);
+  }
+  return sealedThumbSettlementDecision('ready', lazyWitness);
+}
+
+export function validCompendiumThumbSettlementObservation(observation, expected) {
+  if (!thumbSettlementExpected(expected)
+    || thumbSettlementObservationShapeErrors(observation).length) return false;
+  const decision = classifyCompendiumThumbSettlement(observation, expected);
+  return observation.ready === (decision.status === 'ready')
+    && sameJson(observation.reasons, decision.reasons);
+}
+
+function thumbSettlementPlanIndex(label) {
+  return THUMB_SETTLEMENT_RECEIPT_PLAN.findIndex((entry) => entry.label === label);
+}
+
+export function compendiumThumbSettlementReceiptToken(profile, label, attempt) {
+  const planIndex = thumbSettlementPlanIndex(label);
+  if (!PROFILES.includes(profile) || planIndex < 0
+    || !integer(attempt) || attempt < 1 || attempt > 50) {
+    throw new TypeError('thumbnail settlement receipt token authority is invalid');
+  }
+  return `${profile}-compendium-thumb-${label}-${attempt}`;
+}
+
+function exactThumbSettlementPageAuthority(authority) {
+  const keys = ['targetId', 'sessionId', 'documentToken'];
+  return isObject(authority)
+    && sameJson(Object.keys(authority).sort(), [...keys].sort())
+    && keys.every((field) => boundedString(authority[field]));
+}
+
+function exactThumbSettlementPlanEntry(entry, planIndex) {
+  const sealed = THUMB_SETTLEMENT_RECEIPT_PLAN[planIndex];
+  return integer(planIndex) && planIndex >= 0 && sealed !== undefined
+    && isObject(entry)
+    && sameJson(Object.keys(entry).sort(), ['expectedCount', 'label', 'surface'])
+    && sameJson(entry, sealed);
+}
+
+/* One accepted phase is retained with the exact successful dual-command turn,
+   not merely the final browser value. The phase-level 30s ruler is distinct
+   from each command's remaining capped transport ruler. */
+export function validCompendiumThumbSettlementReceipt(receipt, {
+  profile, pageAuthority, browserProduct, planIndex,
+} = {}) {
+  const receiptKeys = [
+    'schema', 'label', 'attempt', 'expected', 'observation', 'command', 'timing',
+  ];
+  const timingKeys = ['issuedAtMs', 'deadlineMs', 'receivedAtMs', 'timeoutMs'];
+  const planEntry = THUMB_SETTLEMENT_RECEIPT_PLAN[planIndex];
+  if (!PROFILES.includes(profile) || !exactThumbSettlementPageAuthority(pageAuthority)
+    || !boundedString(browserProduct) || !exactThumbSettlementPlanEntry(planEntry, planIndex)
+    || !isObject(receipt) || !sameJson(Object.keys(receipt).sort(), receiptKeys.sort())
+    || receipt.schema !== THUMB_SETTLEMENT_RECEIPT_SCHEMA
+    || receipt.label !== planEntry.label
+    || !integer(receipt.attempt) || receipt.attempt < 1 || receipt.attempt > 50
+    || !thumbSettlementExpected(receipt.expected)
+    || receipt.expected.surface !== planEntry.surface
+    || receipt.expected.expectedCount !== planEntry.expectedCount
+    || ['targetId', 'sessionId', 'documentToken']
+      .some((field) => receipt.expected[field] !== pageAuthority[field])
+    || receipt.expected.receiptToken !== compendiumThumbSettlementReceiptToken(
+      profile, planEntry.label, receipt.attempt,
+    )
+    || !validCompendiumThumbSettlementObservation(receipt.observation, receipt.expected)
+    || receipt.observation.ready !== true
+    || classifyCompendiumThumbSettlement(receipt.observation, receipt.expected).status !== 'ready'
+    || !validCandidateCommandEvidence(receipt.command)
+    || receipt.command.profile !== profile
+    || receipt.command.label !== `${planEntry.label} thumb settlement`
+    || receipt.command.target.status !== 'fulfilled'
+    || receipt.command.target.timely !== true
+    || receipt.command.target.resultState !== 'value'
+    || receipt.command.heartbeat.status !== 'fulfilled'
+    || receipt.command.heartbeat.timely !== true
+    || receipt.command.heartbeat.product !== browserProduct
+    || !isObject(receipt.timing)
+    || !sameJson(Object.keys(receipt.timing).sort(), timingKeys.sort())
+    || !finite(receipt.timing.issuedAtMs) || receipt.timing.issuedAtMs < 0
+    || !finite(receipt.timing.deadlineMs) || receipt.timing.deadlineMs < 0
+    || !finite(receipt.timing.receivedAtMs) || receipt.timing.receivedAtMs < 0
+    || receipt.timing.timeoutMs !== THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS
+    || receipt.timing.deadlineMs
+      !== receipt.timing.issuedAtMs + receipt.timing.timeoutMs
+    || receipt.timing.issuedAtMs > receipt.command.issuedAtMs
+    || receipt.command.phaseDeadlineMs !== receipt.timing.deadlineMs
+    || receipt.timing.receivedAtMs !== Math.max(
+      receipt.command.target.completedAtMs, receipt.command.heartbeat.completedAtMs,
+    )
+    || receipt.timing.receivedAtMs >= receipt.timing.deadlineMs) return false;
+  return true;
+}
+
+const FOREGROUND_PHASE_KEYS = Object.freeze([
+  'observed', 'sequence', 'visibilityState', 'hidden', 'focused',
+]);
+
+function foregroundAuthorityExpected(expected) {
+  return isObject(expected)
+    && sameJson(Object.keys(expected).sort(), [
+      'documentToken', 'serviceToken', 'sessionId', 'targetId',
+    ])
+    && ['targetId', 'sessionId', 'documentToken', 'serviceToken']
+      .every((field) => boundedString(expected[field]));
+}
+
+function foregroundPhaseShape(phase) {
+  if (!isObject(phase)
+    || !sameJson(Object.keys(phase).sort(), [...FOREGROUND_PHASE_KEYS].sort())
+    || typeof phase.observed !== 'boolean') return false;
+  if (phase.observed === false) {
+    return phase.sequence === null && phase.visibilityState === null
+      && phase.hidden === null && phase.focused === null;
+  }
+  return boundedCount(phase.sequence, 2)
+    && boundedString(phase.visibilityState, { max: 32 })
+    && typeof phase.hidden === 'boolean' && typeof phase.focused === 'boolean';
+}
+
+export function validCompendiumForegroundServiceObservation(observation) {
+  const topKeys = [
+    'schema', 'targetId', 'sessionId', 'documentToken',
+    'visibilityState', 'hidden', 'focused', 'service',
+  ];
+  const serviceKeys = [
+    'token', 'visibilityChanges', 'focusLosses', 'arm', 'raf', 'laterTask',
+  ];
+  return isObject(observation) && sameJson(Object.keys(observation).sort(), topKeys.sort())
+    && observation.schema === FOREGROUND_SERVICE_OBSERVATION_SCHEMA
+    && ['targetId', 'sessionId', 'documentToken'].every((field) => boundedString(observation[field]))
+    && boundedString(observation.visibilityState, { max: 32 })
+    && typeof observation.hidden === 'boolean' && typeof observation.focused === 'boolean'
+    && isObject(observation.service)
+    && sameJson(Object.keys(observation.service).sort(), serviceKeys.sort())
+    && boundedString(observation.service.token)
+    && boundedCount(observation.service.visibilityChanges)
+    && boundedCount(observation.service.focusLosses)
+    && foregroundPhaseShape(observation.service.arm)
+    && foregroundPhaseShape(observation.service.raf)
+    && foregroundPhaseShape(observation.service.laterTask);
+}
+
+/* Runtime.evaluate responsiveness is not a rendering opportunity. This
+   classifier binds the observed service turn to the exact attach-derived
+   target/session/document and requires one visible, focused arm -> rAF ->
+   later-task sequence with no intervening visibility or focus loss. */
+export function classifyCompendiumForegroundServiceTurn(observation, expected) {
+  if (!foregroundAuthorityExpected(expected)) {
+    throw new TypeError('foreground service authority requires exact target, session, document, and service tokens');
+  }
+  if (!validCompendiumForegroundServiceObservation(observation)) {
+    return Object.freeze({ status: 'error', reasons: Object.freeze(['foreground observation shape']) });
+  }
+  const errors = [];
+  const pending = [];
+  for (const [field, expectedField, label] of [
+    ['targetId', 'targetId', 'target identity'],
+    ['sessionId', 'sessionId', 'session identity'],
+    ['documentToken', 'documentToken', 'document identity'],
+  ]) {
+    if (observation[field] !== expected[expectedField]) {
+      errors.push(`${label} ${JSON.stringify(observation[field])}`);
+    }
+  }
+  if (observation.visibilityState !== 'visible' || observation.hidden !== false) {
+    errors.push(`page visibility ${JSON.stringify(observation.visibilityState)}/${JSON.stringify(observation.hidden)}`);
+  }
+  if (observation.focused !== true) errors.push('page unfocused');
+  const service = observation.service;
+  if (service.token !== expected.serviceToken) {
+    errors.push(`service identity ${JSON.stringify(service.token)}`);
+  }
+  if (service.visibilityChanges !== 0) {
+    errors.push(`visibility changed ${service.visibilityChanges} time(s)`);
+  }
+  if (service.focusLosses !== 0) errors.push(`focus lost ${service.focusLosses} time(s)`);
+
+  for (const [name, phase, sequence] of [
+    ['arm', service.arm, 0], ['rendering opportunity', service.raf, 1],
+    ['later task', service.laterTask, 2],
+  ]) {
+    if (phase.observed !== true) {
+      pending.push(`${name} pending`);
+      continue;
+    }
+    if (phase.sequence !== sequence) {
+      errors.push(`${name} sequence ${JSON.stringify(phase.sequence)}/${sequence}`);
+    }
+    if (phase.visibilityState !== 'visible' || phase.hidden !== false) {
+      errors.push(`${name} visibility ${JSON.stringify(phase.visibilityState)}/${JSON.stringify(phase.hidden)}`);
+    }
+    if (phase.focused !== true) errors.push(`${name} unfocused`);
+  }
+  if (service.arm.observed !== true) errors.push('service arm absent');
+  if (service.laterTask.observed === true && service.raf.observed !== true) {
+    errors.push('service phase order');
+  }
+  if (errors.length) {
+    return Object.freeze({ status: 'error', reasons: Object.freeze([...errors, ...pending]) });
+  }
+  if (pending.length) {
+    return Object.freeze({ status: 'pending', reasons: Object.freeze(pending) });
+  }
+  return Object.freeze({ status: 'ready', reasons: Object.freeze([]) });
+}
+
+export function classifyCompendiumForegroundServiceTurnReceipt(
+  observation, expected, deadlineMs, receivedAtMs,
+) {
+  if (!finite(deadlineMs) || !finite(receivedAtMs)
+    || deadlineMs < 0 || receivedAtMs < 0) {
+    throw new TypeError('foreground service receipt requires nonnegative finite monotonic times');
+  }
+  const decision = classifyCompendiumForegroundServiceTurn(observation, expected);
+  if (receivedAtMs < deadlineMs) return decision;
+  return Object.freeze({
+    status: 'error',
+    reasons: Object.freeze([
+      `foreground observation received at/after deadline (${receivedAtMs} >= ${deadlineMs})`,
+      ...decision.reasons,
+    ]),
+  });
+}
+
+export function validCompendiumForegroundServiceReceipt(receipt, expectedLabel = null) {
+  const receiptKeys = [
+    'schema', 'label', 'expected', 'observation', 'timing', 'cleanup',
+  ];
+  const timingKeys = ['issuedAtMs', 'deadlineMs', 'receivedAtMs', 'timeoutMs'];
+  const cleanupKeys = ['cleanupPresent', 'servicePresent'];
+  if (expectedLabel !== null && !FOREGROUND_SERVICE_RECEIPT_LABELS.includes(expectedLabel)) {
+    throw new TypeError('foreground service receipt label authority is invalid');
+  }
+  if (!isObject(receipt)
+    || !sameJson(Object.keys(receipt).sort(), receiptKeys.sort())
+    || receipt.schema !== FOREGROUND_SERVICE_RECEIPT_SCHEMA
+    || !FOREGROUND_SERVICE_RECEIPT_LABELS.includes(receipt.label)
+    || (expectedLabel !== null && receipt.label !== expectedLabel)
+    || !foregroundAuthorityExpected(receipt.expected)
+    || !validCompendiumForegroundServiceObservation(receipt.observation)
+    || !isObject(receipt.timing)
+    || !sameJson(Object.keys(receipt.timing).sort(), timingKeys.sort())
+    || !finite(receipt.timing.issuedAtMs) || receipt.timing.issuedAtMs < 0
+    || !finite(receipt.timing.deadlineMs) || receipt.timing.deadlineMs < 0
+    || !finite(receipt.timing.receivedAtMs) || receipt.timing.receivedAtMs < 0
+    || receipt.timing.timeoutMs !== FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS
+    || receipt.timing.issuedAtMs > receipt.timing.receivedAtMs
+    || receipt.timing.deadlineMs
+      !== receipt.timing.issuedAtMs + receipt.timing.timeoutMs
+    || !isObject(receipt.cleanup)
+    || !sameJson(Object.keys(receipt.cleanup).sort(), cleanupKeys.sort())
+    || receipt.cleanup.cleanupPresent !== false
+    || receipt.cleanup.servicePresent !== false) return false;
+  return classifyCompendiumForegroundServiceTurnReceipt(
+    receipt.observation, receipt.expected,
+    receipt.timing.deadlineMs, receipt.timing.receivedAtMs,
+  ).status === 'ready';
 }
 
 export function remainingCommandTimeoutMs(deadlineMs, nowMs, transportTimeoutMs) {
@@ -3033,6 +3820,9 @@ function maxAt(snapshots, getter) {
 }
 
 export function evaluateProfile(measurement, budget, fixture) {
+  if (arguments.length !== 3) {
+    throw new TypeError('Compendium evaluator accepts only current strict profile authority');
+  }
   const profile = measurement?.profile;
   if (!PROFILES.includes(profile)) throw new Error(`unknown Compendium profile ${String(profile)}`);
   const ceiling = budget?.ceilings?.[profile];
@@ -3069,6 +3859,10 @@ export function evaluateProfile(measurement, budget, fixture) {
   const initial = points.lazyBoot;
   const lazyEnd = points.lazyEnd;
   const lazyResource = measurement.lazySpeciesResource;
+  const foregroundAuthorityValid = validCompleteProfileForegroundServices(measurement, profile);
+  const thumbnailSettlementAuthorityValid = validCompleteProfileThumbnailSettlements(
+    measurement, profile, completeProfileBrowserProduct(measurement),
+  );
   const measuredProducerAuthority = compendiumProducerAuthority({
     index: {
       relativePath: lazyResource?.indexPath,
@@ -3087,7 +3881,8 @@ export function evaluateProfile(measurement, budget, fixture) {
       sha256: lazyResource?.sha256,
     },
   });
-  add('lazy-art-not-eager', workerArtDormant(initial) && initial?.diagnostics?.art === null
+  add('lazy-art-not-eager', foregroundAuthorityValid && thumbnailSettlementAuthorityValid
+    && workerArtDormant(initial) && initial?.diagnostics?.art === null
     && lazyEnd?.diagnostics?.documentToken === initial?.diagnostics?.documentToken
     && workerArtDormant(lazyEnd) && lazyEnd?.diagnostics?.art === null
     && typeof lazyResource?.ownerPath === 'string' && lazyResource.ownerPath.endsWith('.js')
@@ -3105,10 +3900,13 @@ export function evaluateProfile(measurement, budget, fixture) {
     && lazyResource?.ownership === 'dedicated-worker-dynamic-import'
     && Array.isArray(lazyResource?.matches) && lazyResource.matches.length === 0
     && Array.isArray(lazyResource?.endMatches) && lazyResource.endMatches.length === 0,
-  'the semantically identified species-art executable loaded before a Compendium/Planetside owner requested it',
+  'the semantically identified species-art executable loaded before a Compendium/Planetside owner requested it, or the exact foreground/thumbnail receipt authority was incomplete',
   {
     loader: initial?.diagnostics?.lazyArt, resource: lazyResource,
     measuredProducerAuthority, expectedProducerAuthority: budget?.producerAuthority,
+    pageAuthorities: measurement.pageAuthorities,
+    foregroundServices: measurement.phases?.foregroundServices,
+    thumbnailSettlements: measurement.phases?.thumbnailSettlements,
   });
   const firstDiag = points.first?.diagnostics;
   add('list-populated', firstDiag?.panel?.open === true && firstDiag?.panel?.mode === 'list'
@@ -3661,10 +4459,275 @@ function validRawCdpCommand(command) {
     && typeof command.error === 'string' && command.error.length > 0;
 }
 
+function validCompleteProfileForegroundServices(measurement, profile) {
+  const services = measurement?.phases?.foregroundServices;
+  const documentTokens = measurement?.documentTokens;
+  const pageAuthorities = measurement?.pageAuthorities;
+  const pageAuthorityKeys = ['targetId', 'sessionId', 'documentToken'];
+  const validPageAuthority = (authority) => isObject(authority)
+    && sameJson(Object.keys(authority).sort(), [...pageAuthorityKeys].sort())
+    && pageAuthorityKeys.every((field) => boundedString(authority[field]));
+  if (!PROFILES.includes(profile)
+    || !Array.isArray(services) || services.length !== FOREGROUND_SERVICE_RECEIPT_LABELS.length
+    || !isObject(documentTokens)
+    || !sameJson(Object.keys(documentTokens).sort(), ['lazy', 'lazyEnd', 'main'])
+    || !['lazy', 'lazyEnd', 'main'].every((field) => boundedString(documentTokens[field]))
+    || documentTokens.lazy !== documentTokens.lazyEnd
+    || documentTokens.lazy === documentTokens.main
+    || !isObject(pageAuthorities)
+    || !sameJson(Object.keys(pageAuthorities).sort(), ['lazy', 'main'])
+    || !validPageAuthority(pageAuthorities.lazy)
+    || !validPageAuthority(pageAuthorities.main)
+    || pageAuthorities.lazy.documentToken !== documentTokens.lazy
+    || pageAuthorities.main.documentToken !== documentTokens.main
+    || pageAuthorities.lazy.targetId === pageAuthorities.main.targetId
+    || pageAuthorities.lazy.sessionId === pageAuthorities.main.sessionId) return false;
+  for (let index = 0; index < services.length; index += 1) {
+    const receipt = services[index];
+    const pageAuthority = index === 1 ? pageAuthorities.main : pageAuthorities.lazy;
+    if (!validCompendiumForegroundServiceReceipt(
+      receipt, FOREGROUND_SERVICE_RECEIPT_LABELS[index],
+    )
+      || receipt.expected.serviceToken !== `${profile}-compendium-foreground-${index + 1}`
+      || !pageAuthorityKeys.every((field) => receipt.expected[field] === pageAuthority[field])) {
+      return false;
+    }
+  }
+  const expected = services.map((receipt) => receipt.expected);
+  return new Set(expected.map((authority) => authority.serviceToken)).size === services.length
+    && services.every((receipt, index) => index === 0
+      || receipt.timing.issuedAtMs > services[index - 1].timing.receivedAtMs
+      && receipt.timing.receivedAtMs > services[index - 1].timing.receivedAtMs
+      && receipt.timing.deadlineMs > services[index - 1].timing.deadlineMs);
+}
+
+function completeProfileBrowserProduct(measurement) {
+  const probes = measurement?.answerability;
+  if (!Array.isArray(probes) || probes.length !== 2) return null;
+  const products = probes.map((probe) => probe?.heartbeat?.product);
+  return products.every((product) => boundedString(product))
+    && products[0] === products[1] ? products[0] : null;
+}
+
+function validCompendiumThumbSettlementHistory(history, receipts, {
+  profile, pageAuthority, browserProduct, requireComplete = false,
+} = {}) {
+  if (!Array.isArray(history) || !Array.isArray(receipts)
+    || history.length > MAX_THUMB_SETTLEMENT_RECEIPT_HISTORY
+    || receipts.length > THUMB_SETTLEMENT_RECEIPT_PLAN.length
+    || (requireComplete && receipts.length !== THUMB_SETTLEMENT_RECEIPT_PLAN.length)) {
+    return false;
+  }
+  const latestByPlanIndex = [];
+  let priorReceipt = null;
+  let priorPlanIndex = -1;
+  let expectedAttempt = 0;
+  for (const receipt of history) {
+    const planIndex = thumbSettlementPlanIndex(receipt?.label);
+    if (planIndex === priorPlanIndex) {
+      expectedAttempt += 1;
+    } else {
+      if (planIndex !== priorPlanIndex + 1) return false;
+      priorPlanIndex = planIndex;
+      expectedAttempt = 1;
+    }
+    if (receipt?.attempt !== expectedAttempt
+      || !validCompendiumThumbSettlementReceipt(receipt, {
+        profile, pageAuthority, browserProduct, planIndex,
+      })) return false;
+    if (priorReceipt !== null
+      && (receipt.timing.issuedAtMs <= priorReceipt.timing.receivedAtMs
+        || receipt.timing.receivedAtMs <= priorReceipt.timing.receivedAtMs
+        || receipt.timing.deadlineMs <= priorReceipt.timing.deadlineMs)) {
+      return false;
+    }
+    latestByPlanIndex[planIndex] = receipt;
+    priorReceipt = receipt;
+  }
+  if (new Set(history.map((receipt) => receipt.expected.receiptToken)).size
+    !== history.length
+    || latestByPlanIndex.length !== receipts.length) return false;
+  for (let planIndex = 0; planIndex < receipts.length; planIndex += 1) {
+    if (!sameJson(latestByPlanIndex[planIndex], receipts[planIndex])) return false;
+  }
+  return !requireComplete
+    || latestByPlanIndex.length === THUMB_SETTLEMENT_RECEIPT_PLAN.length;
+}
+
+function validCompleteProfileThumbnailSettlements(measurement, profile, browserProduct) {
+  const receipts = measurement?.phases?.thumbnailSettlements;
+  const history = measurement?.phases?.thumbnailSettlementHistory;
+  const foregroundServices = measurement?.phases?.foregroundServices;
+  const pageAuthority = measurement?.pageAuthorities?.main;
+  if (!PROFILES.includes(profile) || !boundedString(browserProduct)
+    || !exactThumbSettlementPageAuthority(pageAuthority)
+    || !Array.isArray(receipts)
+    || receipts.length !== THUMB_SETTLEMENT_RECEIPT_PLAN.length
+    || !validCompendiumThumbSettlementHistory(history, receipts, {
+      profile, pageAuthority, browserProduct, requireComplete: true,
+    })
+    || !Array.isArray(foregroundServices)
+    || foregroundServices.length !== FOREGROUND_SERVICE_RECEIPT_LABELS.length
+    || !validCompleteProfileForegroundServices(measurement, profile)) return false;
+  return history[0].timing.issuedAtMs > foregroundServices[1].timing.receivedAtMs
+    && foregroundServices[2].timing.issuedAtMs > history.at(-1).timing.receivedAtMs;
+}
+
+function boundedJsonCarrier(value, maxBytes = 131_072) {
+  try {
+    const encoded = JSON.stringify(value);
+    return typeof encoded === 'string' && Buffer.byteLength(encoded, 'utf8') <= maxBytes;
+  } catch { return false; }
+}
+
+function exactThumbSettlementDecision(decision, observation, expected) {
+  if (!isObject(decision)
+    || !sameJson(Object.keys(decision).sort(), ['reasons', 'status'])
+    || !['ready', 'pending', 'error'].includes(decision.status)
+    || !Array.isArray(decision.reasons)
+    || decision.reasons.length > MAX_THUMB_SETTLEMENT_REASONS
+    || !decision.reasons.every((reason) => boundedString(reason))) return false;
+  const recomputed = classifyCompendiumThumbSettlement(observation, expected);
+  return sameJson(decision, recomputed);
+}
+
+export function validCompendiumActiveThumbSettlement(active, {
+  profile, pageAuthority, browserProduct, planIndex,
+  allowReadyReceiptFailure = false,
+} = {}) {
+  const keys = [
+    'schema', 'label', 'attempt', 'expected', 'lastObservation',
+    'lastDecision', 'lastCommand', 'timing',
+  ];
+  const timingKeys = ['issuedAtMs', 'deadlineMs', 'receivedAtMs', 'timeoutMs'];
+  const planEntry = THUMB_SETTLEMENT_RECEIPT_PLAN[planIndex];
+  if (!PROFILES.includes(profile) || !exactThumbSettlementPageAuthority(pageAuthority)
+    || typeof allowReadyReceiptFailure !== 'boolean'
+    || !exactThumbSettlementPlanEntry(planEntry, planIndex)
+    || !isObject(active) || !sameJson(Object.keys(active).sort(), keys.sort())
+    || active.schema !== THUMB_SETTLEMENT_ACTIVE_SCHEMA
+    || active.label !== planEntry.label
+    || !integer(active.attempt) || active.attempt < 1 || active.attempt > 50
+    || !thumbSettlementExpected(active.expected)
+    || active.expected.surface !== planEntry.surface
+    || active.expected.expectedCount !== planEntry.expectedCount
+    || ['targetId', 'sessionId', 'documentToken']
+      .some((field) => active.expected[field] !== pageAuthority[field])
+    || active.expected.receiptToken !== compendiumThumbSettlementReceiptToken(
+      profile, planEntry.label, active.attempt,
+    )
+    || !isObject(active.timing)
+    || !sameJson(Object.keys(active.timing).sort(), timingKeys.sort())
+    || !finite(active.timing.issuedAtMs) || active.timing.issuedAtMs < 0
+    || !finite(active.timing.deadlineMs) || active.timing.deadlineMs < 0
+    || active.timing.timeoutMs !== THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS
+    || active.timing.deadlineMs
+      !== active.timing.issuedAtMs + active.timing.timeoutMs
+    || (active.timing.receivedAtMs !== null
+      && (!finite(active.timing.receivedAtMs) || active.timing.receivedAtMs < 0))
+    || !boundedJsonCarrier(active.lastObservation)) return false;
+
+  if (active.lastCommand === null) {
+    return active.lastObservation === null && active.lastDecision === null
+      && active.timing.receivedAtMs === null;
+  }
+  if (!boundedString(browserProduct)
+    || !validCandidateCommandEvidence(active.lastCommand)
+    || active.lastCommand.profile !== profile
+    || active.lastCommand.label !== `${planEntry.label} thumb settlement`
+    || active.lastCommand.phaseDeadlineMs !== active.timing.deadlineMs
+    || active.lastCommand.issuedAtMs < active.timing.issuedAtMs
+    || active.timing.receivedAtMs !== Math.max(
+      active.lastCommand.target.completedAtMs, active.lastCommand.heartbeat.completedAtMs,
+    )
+    || (active.lastCommand.heartbeat.status === 'fulfilled'
+      && active.lastCommand.heartbeat.product !== browserProduct)) return false;
+  const observedValue = active.lastCommand.target.status === 'fulfilled'
+    && active.lastCommand.target.timely === true
+    && active.lastCommand.target.resultState === 'value';
+  if (!observedValue) {
+    return active.lastObservation === null && active.lastDecision === null
+      || active.lastDecision !== null
+        && exactThumbSettlementDecision(
+          active.lastDecision, active.lastObservation, active.expected,
+        )
+        && active.lastDecision.status !== 'ready';
+  }
+  return active.lastDecision !== null
+    && exactThumbSettlementDecision(
+      active.lastDecision, active.lastObservation, active.expected,
+    )
+    && (active.lastDecision.status !== 'ready' || allowReadyReceiptFailure);
+}
+
+function validPartialPageAuthorities(pageAuthorities) {
+  if (!isObject(pageAuthorities)
+    || !sameJson(Object.keys(pageAuthorities).sort(), ['lazy', 'main'])) return false;
+  const lazy = pageAuthorities.lazy;
+  const main = pageAuthorities.main;
+  if ((lazy !== null && !exactThumbSettlementPageAuthority(lazy))
+    || (main !== null && !exactThumbSettlementPageAuthority(main))
+    || (main !== null && lazy === null)) return false;
+  return lazy === null || main === null
+    || lazy.targetId !== main.targetId
+      && lazy.sessionId !== main.sessionId
+      && lazy.documentToken !== main.documentToken;
+}
+
+function validPartialThumbnailSettlements(measurement, profile, browserProduct, failure) {
+  const receipts = measurement.thumbnailSettlements;
+  const history = measurement.thumbnailSettlementHistory;
+  const active = measurement.activeThumbnailSettlement;
+  if (!Array.isArray(receipts)
+    || !Array.isArray(history)
+    || receipts.length > THUMB_SETTLEMENT_RECEIPT_PLAN.length) return false;
+  const failingPlanIndex = THUMB_SETTLEMENT_RECEIPT_PLAN.findIndex((entry) =>
+    failure.failingStage === `${entry.label} thumb settlement`);
+  if (receipts.length === 0 && active === null) {
+    return history.length === 0 && failingPlanIndex < 0;
+  }
+  const pageAuthority = measurement.pageAuthorities.main;
+  if (!boundedString(browserProduct) || !exactThumbSettlementPageAuthority(pageAuthority)) {
+    return false;
+  }
+  if (!validCompendiumThumbSettlementHistory(history, receipts, {
+    profile, pageAuthority, browserProduct,
+  })) return false;
+  if (active === null) return failingPlanIndex < 0;
+  const priorReceipt = receipts.at(-1) ?? null;
+  const priorHistoryReceipt = history.at(-1) ?? null;
+  const nextPlanEntry = THUMB_SETTLEMENT_RECEIPT_PLAN[receipts.length] ?? null;
+  const nextPlanActive = nextPlanEntry !== null
+    && active.label === nextPlanEntry.label && active.attempt === 1;
+  const retryActive = priorReceipt !== null && priorHistoryReceipt !== null
+    && active.label === priorReceipt.label
+    && active.label === priorHistoryReceipt.label
+    && active.attempt === priorHistoryReceipt.attempt + 1;
+  if (nextPlanActive === retryActive) return false;
+  const planIndex = retryActive ? receipts.length - 1 : receipts.length;
+  const readyReceiptFailureDiagnosis =
+    `${profile} ${active.label}: accepted thumbnail settlement receipt is invalid`;
+  const allowReadyReceiptFailure = failure.classification === 'instrument'
+    && failure.command === null && active.lastDecision?.status === 'ready'
+    && (failure.diagnosis === readyReceiptFailureDiagnosis
+      || failure.diagnosis.startsWith(`${readyReceiptFailureDiagnosis}; `));
+  if (!validCompendiumActiveThumbSettlement(active, {
+    profile, pageAuthority, browserProduct, planIndex, allowReadyReceiptFailure,
+  })
+    || failure.failingStage !== `${active.label} thumb settlement`
+    || (priorHistoryReceipt !== null
+      && active.timing.issuedAtMs <= priorHistoryReceipt.timing.receivedAtMs)
+    || (failure.command !== null && failure.command?.schema === CANDIDATE_COMMAND_SCHEMA
+      && !sameJson(failure.command, active.lastCommand))) return false;
+  return !history.some((receipt) =>
+    receipt.expected.receiptToken === active.expected.receiptToken);
+}
+
 function validCompleteProfileMeasurement(measurement, profile, browserProduct) {
   return isObject(measurement) && measurement.profile === profile
     && isObject(measurement.viewport) && isObject(measurement.fixture)
     && isObject(measurement.documentTokens) && isObject(measurement.points)
+    && isObject(measurement.pageAuthorities)
     && isObject(measurement.phases)
     && validProducerErrorWitness(measurement.phases.producerErrorWitness, profile)
     && producerErrorColdProofObservations(measurement.phases.producerErrorWitness)
@@ -3676,6 +4739,8 @@ function validCompleteProfileMeasurement(measurement, profile, browserProduct) {
     && validFilterTransitionSequence(measurement.phases.filterTransitions, {
       requireCompleteSet: true, requireProductSuccess: false,
     })
+    && validCompleteProfileForegroundServices(measurement, profile)
+    && validCompleteProfileThumbnailSettlements(measurement, profile, browserProduct)
     && isObject(measurement.lazySpeciesResource)
     && Array.isArray(measurement.answerability)
     && Array.isArray(measurement.reviewPacket);
@@ -3687,29 +4752,102 @@ function validPartialProfileMeasurement(
   const keys = [
     'schema', 'profile', 'viewport', 'evidenceStatus', 'lastCompletedStage',
     'failingStage', 'completedStages', 'commandLedger', 'producerErrorWitness',
-    'filterTransitions', 'reviewPacket',
+    'filterTransitions', 'reviewPacket', 'diagnosis', 'thumbnailSettlements',
+    'thumbnailSettlementHistory', 'activeThumbnailSettlement', 'pageAuthorities',
   ];
   if (!isObject(measurement) || !sameJson(Object.keys(measurement).sort(), keys.sort())
     || measurement.schema !== PARTIAL_PROFILE_SCHEMA || measurement.profile !== profile
     || !isObject(measurement.viewport)
     || measurement.evidenceStatus !== 'partial-non-certifying'
+    || !boundedString(measurement.diagnosis, { max: 32_768 })
     || (measurement.lastCompletedStage !== null
       && (typeof measurement.lastCompletedStage !== 'string' || !measurement.lastCompletedStage))
     || typeof measurement.failingStage !== 'string' || !measurement.failingStage
     || !Array.isArray(measurement.completedStages)
     || !measurement.completedStages.every((stage) => typeof stage === 'string' && stage)
-    || measurement.completedStages.includes(measurement.failingStage)
+    || (measurement.completedStages.includes(measurement.failingStage)
+      && !(measurement.activeThumbnailSettlement?.attempt > 1
+        && measurement.failingStage
+          === `${measurement.activeThumbnailSettlement.label} thumb settlement`))
     || !Array.isArray(measurement.commandLedger)
+    || measurement.commandLedger.length > MAX_PARTIAL_COMMAND_LEDGER_ENTRIES
+    || !boundedJsonCarrier(measurement.commandLedger, MAX_PARTIAL_COMMAND_LEDGER_BYTES)
     || !measurement.commandLedger.every((command) =>
       validCandidateCommandEvidence(command) || validPlainEvaluateCommand(command)
         || validRawCdpCommand(command))
+    || !validPartialPageAuthorities(measurement.pageAuthorities)
     || !validPartialProducerErrorPrefix(measurement, failure)
     || !validProducerErrorCandidateLedger(measurement, failure, browserProduct)
     || !validFilterTransitionSequence(measurement.filterTransitions, { allowPending: true })
     || !validPartialFilterTransitionPrefix(measurement, failure)
+    || !validPartialThumbnailSettlements(measurement, profile, browserProduct, failure)
     || !validPartialReviewPacket(measurement.reviewPacket, runId, verifyArtifact)
     || !measurement.reviewPacket.every((item) => item.profile === profile)) return false;
   if (measurement.lastCompletedStage !== (measurement.completedStages.at(-1) ?? null)) return false;
+  const thumbStageSet = new Set(THUMB_SETTLEMENT_RECEIPT_PLAN.map(
+    (entry) => `${entry.label} thumb settlement`,
+  ));
+  const completedThumbStages = measurement.completedStages.filter((stage) =>
+    thumbStageSet.has(stage));
+  const history = measurement.thumbnailSettlementHistory;
+  const receiptStages = measurement.thumbnailSettlements.map((receipt) =>
+    receipt.command.label);
+  const completedThumbPlanIndexes = completedThumbStages.map((stage) =>
+    THUMB_SETTLEMENT_RECEIPT_PLAN.findIndex(
+      (entry) => `${entry.label} thumb settlement` === stage,
+    ));
+  if (completedThumbPlanIndexes.some((planIndex, index) =>
+    index > 0 && planIndex < completedThumbPlanIndexes[index - 1])) return false;
+  const firstCompletedThumbStages = completedThumbStages.filter((stage, index) =>
+    completedThumbStages.indexOf(stage) === index);
+  const active = measurement.activeThumbnailSettlement;
+  if (completedThumbStages.length !== history.length
+    || !sameJson(firstCompletedThumbStages, receiptStages)) return false;
+  const deadlineGroups = (label) => {
+    const commands = measurement.commandLedger.filter((command) =>
+      command.schema === CANDIDATE_COMMAND_SCHEMA && command.label === label);
+    const groups = [];
+    for (const command of commands) {
+      const group = groups.at(-1);
+      if (!group || group.phaseDeadlineMs !== command.phaseDeadlineMs) {
+        if (group && command.phaseDeadlineMs <= group.phaseDeadlineMs) return null;
+        groups.push({ phaseDeadlineMs: command.phaseDeadlineMs, commands: [command] });
+      } else group.commands.push(command);
+    }
+    return groups;
+  };
+  const historyByLabel = new Map();
+  for (const receipt of history) {
+    const label = receipt.command.label;
+    const phaseHistory = historyByLabel.get(label) ?? [];
+    phaseHistory.push(receipt);
+    historyByLabel.set(label, phaseHistory);
+  }
+  for (const [label, phaseHistory] of historyByLabel) {
+    const groups = deadlineGroups(label);
+    const retryInProgress = active !== null && `${active.label} thumb settlement` === label;
+    const expectedGroups = phaseHistory.length
+      + (retryInProgress && active.lastCommand !== null ? 1 : 0);
+    if (groups === null || groups.length !== expectedGroups
+      || groups.some((group) => group.commands.length !== 1)
+      || countStage(measurement.completedStages, label) !== phaseHistory.length
+      || phaseHistory.some((receipt, index) => !sameJson(
+        groups[index]?.commands.at(-1), receipt.command,
+      ))) return false;
+  }
+  if (active !== null) {
+    const label = `${active.label} thumb settlement`;
+    const groups = deadlineGroups(label);
+    const acceptedAttempts = historyByLabel.get(label)?.length ?? 0;
+    const completedAttempts = countStage(measurement.completedStages, label);
+    const expectedGroups = acceptedAttempts + (active.lastCommand === null ? 0 : 1);
+    if (groups === null || groups.length !== expectedGroups
+      || groups.some((group) => group.commands.length !== 1)
+      || acceptedAttempts !== active.attempt - 1
+      || completedAttempts !== acceptedAttempts
+      || (active.lastCommand !== null
+        && !sameJson(groups.at(-1)?.commands.at(-1), active.lastCommand))) return false;
+  }
   if (!validSnapshotSubstagePrefix(measurement)) return false;
   if (!validPartialReviewStageDependencies(measurement)) return false;
   const completedReviewStates = measurement.completedStages
@@ -3920,11 +5058,12 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
   const failure = report.partialFailure;
   const keys = [
     'schema', 'classification', 'profile', 'lastCompletedStage',
-    'failingStage', 'command',
+    'failingStage', 'command', 'diagnosis',
   ];
   if (!isObject(failure) || !sameJson(Object.keys(failure).sort(), keys.sort())
     || failure.schema !== PARTIAL_FAILURE_SCHEMA
     || !['product-unanswerable', 'instrument'].includes(failure.classification)
+    || !boundedString(failure.diagnosis, { max: 32_768 })
     || (failure.profile !== null && !PROFILES.includes(failure.profile))
     || (failure.lastCompletedStage !== null
       && (typeof failure.lastCompletedStage !== 'string' || !failure.lastCompletedStage))
@@ -3933,6 +5072,9 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
     || Object.keys(report.profiles).some((profile) => !PROFILES.includes(profile))
     || !validPartialReviewPacket(report.reviewPacket, expectedRunId, verifyArtifact)
     || !sameReviewPacket(report.reviewPacket, profileReviewPacket(report.profiles))) return false;
+  const diagnosisPrefix = failure.classification === 'product-unanswerable'
+    ? 'product' : 'instrument';
+  if (!sameJson(report.findings, [`${diagnosisPrefix}: ${failure.diagnosis}`])) return false;
   const mayOmitBrowser = failure.profile === null && Object.keys(report.profiles).length === 0;
   if (!validBrowserProvenance(report.browser)
     && !(mayOmitBrowser && report.browser === null)) return false;
@@ -3958,6 +5100,7 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
         report.browser?.product,
       )
         || profile !== failure.profile
+        || measurement.diagnosis !== failure.diagnosis
         || measurement.lastCompletedStage !== failure.lastCompletedStage
         || measurement.failingStage !== failure.failingStage
         || !validPartialCommandLedger(

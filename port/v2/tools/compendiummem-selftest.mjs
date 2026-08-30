@@ -16,10 +16,18 @@ import {
   BUDGET_SCHEMA, CANDIDATE_BROWSER_LABEL, CANDIDATE_TRANSPORT_TIMEOUT_MS,
   BASELINE_CALIBRATION_EVIDENCE_SCHEMA, CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA,
   COMMAND_TIMEOUT_MS,
+  COMPENDIUM_BROWSER_HISTORICAL_CAPABILITY_CONTRACT_SHA256S,
   COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS, DIAGNOSTICS_SCHEMA,
   EXPECTED_OUTCOMES, FILTER_TRANSITION_SCHEMA, OUTCOME_IDS,
   PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
   PRODUCER_ERROR_ARM_SENTINEL, PRODUCER_ERROR_WITNESS_SCHEMA,
+  FOREGROUND_SERVICE_OBSERVATION_SCHEMA, FOREGROUND_SERVICE_RECEIPT_SCHEMA,
+  FOREGROUND_SERVICE_RECEIPT_LABELS, FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS,
+  THUMB_SETTLEMENT_OBSERVATION_SCHEMA, THUMB_SETTLEMENT_RECEIPT_SCHEMA,
+  THUMB_SETTLEMENT_ACTIVE_SCHEMA, THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS,
+  THUMB_SETTLEMENT_RECEIPT_PLAN,
+  MAX_PARTIAL_COMMAND_LEDGER_BYTES, MAX_PARTIAL_COMMAND_LEDGER_ENTRIES,
+  MAX_THUMB_SETTLEMENT_FILTER_COUNT, MAX_THUMB_SETTLEMENT_REASONS,
   PLAIN_EVALUATE_COMMAND_SCHEMA, RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
@@ -30,14 +38,23 @@ import {
   compendiumMeasurementAuthority, compendiumProducerAuthority,
   compendiumBrowserAuthority, compendiumBrowserAuthorityMatches,
   compendiumBudgetBrowserAuthority, validCompendiumBrowserAuthority,
+  classifyCompendiumForegroundServiceTurn,
+  classifyCompendiumForegroundServiceTurnReceipt,
+  classifyCompendiumThumbSettlement,
+  compendiumThumbSettlementReceiptToken,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression, evaluateProfile,
+  CandidateObservationError, isCandidateObservationError,
   installBrokenBaselineThumbObserver, installBrokenBaselineInitialListArm,
   sealBrokenBaselineInitialListObservation,
   phaseObservationAccepted,
   remainingCommandTimeoutMs, sha256,
   reduceCalibrationEvidence,
   validBrokenBaselineThumbObservation, validProfileEmulationOptions,
+  validCompendiumForegroundServiceObservation,
+  validCompendiumForegroundServiceReceipt,
+  validCompendiumThumbSettlementReceipt, validCompendiumActiveThumbSettlement,
+  validCompendiumThumbSettlementObservation,
   validCompendiumRawSnapshotExpression, validTransportTimeoutPolicy,
   validFilterInputObservation, validFilterTargetObservation, validFilterTelemetrySnapshot,
   validFilterTransitionObservation, validFilterTransitionWitness,
@@ -58,6 +75,7 @@ import {
   candidateSpeciesPainterChunkSource,
   compendiumBudgetModeAllowed,
   collectWithCompendiumBrowserAuthority,
+  candidateForegroundCleanupExpression, candidateForegroundServiceExpression,
   candidateThumbSettlementExpression,
   candidateProducerErrorPreArmExpression, candidateProducerErrorWorkExpression,
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
@@ -65,12 +83,15 @@ import {
   collectCandidateSnapshot, collectCandidateSettledThumbnailSnapshot,
   createCandidateCollectorObservations,
   createCandidateCommandRecorder,
+  COMPENDIUM_FOREGROUND_SERVICE_TIMEOUT_MS,
   COMPENDIUM_SERVER_SHUTDOWN_TIMEOUT_MS,
   closeCompendiumServer,
   driveCandidateFilterTransition, validCandidateFilterInputExpression,
   finalizeCompendiumLifecycle,
+  ownCandidateForeground,
   settleCandidateRowActivationPoint,
   validCandidateThumbSettlementExpression,
+  validCandidateForegroundServiceExpression,
   validCandidateFilterTelemetryExpression, validCandidateArmProducerErrorExpression,
   validCandidateRowPointExpression,
   validCandidateProducerErrorExpression, verifyCompendiumTerminalReport,
@@ -270,56 +291,1011 @@ assertThrows(() => candidateRowPointExpression(''),
 }
 
 {
-  const listSource = candidateThumbSettlementExpression('list', 1);
-  const planetsideSource = candidateThumbSettlementExpression('planetside');
-  assert(validCandidateThumbSettlementExpression(listSource, 'list', 1),
+  const pageAuthority = {
+    targetId: 'thumb-target', sessionId: 'thumb-session', documentToken: 'thumb-document',
+  };
+  const listReceiptToken = 'phone-compendium-thumb-viewport-contracted-list-1';
+  const planetsideReceiptToken = 'phone-compendium-thumb-veteran-earth-planetside-1';
+  const listSource = candidateThumbSettlementExpression(
+    'list', 1500, pageAuthority, listReceiptToken,
+  );
+  const planetsideSource = candidateThumbSettlementExpression(
+    'planetside', null, pageAuthority, planetsideReceiptToken,
+  );
+  assert(validCandidateThumbSettlementExpression(
+    listSource, 'list', 1500, pageAuthority, listReceiptToken,
+  ),
     'exact list thumbnail settlement expression was rejected');
-  assert(validCandidateThumbSettlementExpression(planetsideSource, 'planetside'),
-    'exact Planetside thumbnail settlement expression was rejected');
+  assert(validCandidateThumbSettlementExpression(
+    planetsideSource, 'planetside', null, pageAuthority, planetsideReceiptToken,
+  ),
+  'exact Planetside thumbnail settlement expression was rejected');
+  assertThrows(() => candidateThumbSettlementExpression(
+    'list', MAX_THUMB_SETTLEMENT_FILTER_COUNT + 1, pageAuthority, listReceiptToken,
+  ), 'collector accepted a list count beyond the contract maximum');
+  assertThrows(() => candidateThumbSettlementExpression(
+    'list', 1500, pageAuthority, '',
+  ), 'collector accepted an empty thumbnail receipt token');
+  const maximumReceiptToken = 't'.repeat(256);
+  const maximumReceiptTokenSource = candidateThumbSettlementExpression(
+    'list', 1500, pageAuthority, maximumReceiptToken,
+  );
+  assert(validCandidateThumbSettlementExpression(
+    maximumReceiptTokenSource, 'list', 1500, pageAuthority, maximumReceiptToken,
+  ), 'collector rejected the strict 256-character thumbnail receipt token boundary');
+  assertThrows(() => candidateThumbSettlementExpression(
+    'list', 1500, pageAuthority, 't'.repeat(257),
+  ), 'collector accepted a 257-character thumbnail receipt token');
   assert(!validCandidateThumbSettlementExpression(
-    listSource.replace('img.complete===true', 'true'), 'list', 1,
+    listSource, 'list', MAX_THUMB_SETTLEMENT_FILTER_COUNT + 1,
+    pageAuthority, listReceiptToken,
+  ), 'expression validator accepted a list count beyond the contract maximum');
+  assert(!validCandidateThumbSettlementExpression(
+    listSource, 'list', 1500, pageAuthority, 'coordinated-foreign-token',
+  ), 'expression validator accepted a different thumbnail receipt token');
+  assert(!validCandidateThumbSettlementExpression(
+    listSource.replace('complete:img.complete===true', 'complete:true'),
+    'list', 1500, pageAuthority, listReceiptToken,
   ), 'a list settlement expression that omitted decode completion was accepted');
-  const run = (source, {
-    src = true, complete = true, width = 132, height = 132,
-    state = 'ready', queuedJobs = 0, activeJobs = 0,
-    mode = 'list', filteredCount = 1, visible = true, imageCount = 1,
-  } = {}) => {
-    const images = Array.from({ length: imageCount }, () => ({
-      getAttribute: () => src ? 'data:image/png;base64,cG5n' : '',
-      complete, naturalWidth: width, naturalHeight: height,
-    }));
-    const diagnostics = {
-      panel: { mode, filteredCount },
-      surfaces: {
-        list: { thumbStates: [state] },
-        planetside: { visible, thumbStates: [state] },
-      },
-      art: { live: { queuedJobs, activeJobs } },
+  const run = (surface, source, expectedCount, receiptToken) => {
+    const sealed = greenThumbSettlement(
+      surface, 2, expectedCount, { receiptToken, pageAuthority },
+    );
+    const sd = {
+      imageCount: sealed.ownership.diagnosticImageCount,
+      logicalIds: [...sealed.ownership.diagnosticLogicalIds],
+      thumbStates: [...sealed.diagnostic.thumbStates],
+      visible: sealed.diagnostic.visible,
     };
+    const diagnostics = {
+      documentToken: sealed.page.documentToken,
+      panel: {
+        mode: sealed.diagnostic.panelMode,
+        filteredCount: sealed.diagnostic.filteredCount,
+      },
+      surfaces: { list: sd, planetside: sd },
+      art: {
+        schema: sealed.art.schema,
+        live: {
+          cacheEntries: sealed.broker.cacheEntries, leases: sealed.broker.leases,
+          subscribers: sealed.broker.subscribers, queuedJobs: sealed.broker.queuedJobs,
+          activeJobs: sealed.broker.activeJobs,
+        },
+      },
+      lazyArt: {
+        schema: sealed.lazyArt.schema, state: sealed.lazyArt.state,
+        importStarts: sealed.lazyArt.importStarts, identity: sealed.lazyArt.identity,
+        lastEvent: sealed.lazyArt.lastEvent, phases: sealed.lazyArt.phases,
+        results: sealed.lazyArt.results, errors: sealed.lazyArt.errors,
+        worker: {
+          live: sealed.worker.live, starts: sealed.worker.starts, ready: sealed.worker.ready,
+          disposals: sealed.worker.disposals, fatals: sealed.worker.fatals,
+          protocolErrors: sealed.worker.protocolErrors,
+        },
+      },
+    };
+    diagnostics.lazyArt.identity.extra = 'x'.repeat(100_000);
+    diagnostics.lazyArt.identity.self = diagnostics.lazyArt.identity;
+    diagnostics.lazyArt.extra = diagnostics.lazyArt;
+    const images = sealed.images.map((image) => ({
+      dataset: { visualKey: image.visualKey, thumbState: image.thumbState },
+      closest: () => ({ dataset: { cid: image.logicalId } }),
+      getAttribute: () => image.srcPresent ? 'data:image/png;base64,cG5n' : '',
+      complete: image.complete,
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight,
+    }));
     return new Function('window', 'document', `return ${source}`)(
-      { __CF_SLICE__: { api: { compendiumDiagnostics: () => diagnostics } } },
-      { querySelectorAll: () => images },
+      { __CF_SLICE__: {
+        documentToken: pageAuthority.documentToken,
+        api: { compendiumDiagnostics: () => diagnostics },
+      } },
+      {
+        querySelectorAll: () => images,
+        visibilityState: 'visible', hidden: false, hasFocus: () => true,
+      },
     );
   };
-  assert(run(listSource) !== null && run(planetsideSource) !== null,
-    'decoded 132px settlement was not accepted for both real surfaces');
-  for (const [label, mutation] of [
-    ['missing source', { src: false }],
-    ['incomplete decode', { complete: false }],
-    ['zero width', { width: 0 }],
-    ['wrong height', { height: 131 }],
-    ['placeholder state', { state: 'placeholder' }],
-    ['queued work', { queuedJobs: 1 }],
-    ['active work', { activeJobs: 1 }],
-    ['image/state count mismatch', { imageCount: 2 }],
+  for (const [surface, source, expectedCount, receiptToken] of [
+    ['list', listSource, 1500, listReceiptToken],
+    ['planetside', planetsideSource, null, planetsideReceiptToken],
   ]) {
-    assert(run(listSource, mutation) === null,
-      `list thumbnail settlement accepted ${label}`);
+    const observation = run(surface, source, expectedCount, receiptToken);
+    const expected = { surface, expectedCount, receiptToken, ...pageAuthority };
+    const decision = classifyCompendiumThumbSettlement(observation, expected);
+    assert(decision.status === 'ready'
+      && !validCompendiumThumbSettlementObservation(observation, expected),
+    `${surface} expression did not return one raw structured observation`);
+    observation.ready = true;
+    observation.reasons = [...decision.reasons];
+    assert(validCompendiumThumbSettlementObservation(observation, expected),
+      `${surface} expression observation could not be sealed by Node-side recomputation`);
+    assert(JSON.stringify(observation).length < 32_000
+      && !JSON.stringify(observation).includes('x'.repeat(1_000)),
+    `${surface} expression returned unprojected or unbounded nested diagnostics`);
   }
-  assert(run(listSource, { filteredCount: 2 }) === null,
-    'list thumbnail settlement accepted the wrong filtered count');
-  assert(run(planetsideSource, { visible: false }) === null,
-    'Planetside thumbnail settlement accepted a hidden surface');
+}
+
+let structuredInstrumentControlCount = 0;
+
+function greenThumbSettlement(
+  surface = 'list', mountedCount = 2,
+  expectedCount = surface === 'list' ? 1500 : null,
+  {
+    receiptToken = 'thumb-receipt',
+    pageAuthority = {
+      targetId: 'thumb-target', sessionId: 'thumb-session', documentToken: 'thumb-document',
+    },
+  } = {},
+) {
+  const logicalIds = Array.from({ length: mountedCount }, (_, index) => `${surface}-${index}`);
+  const images = logicalIds.map((logicalId, index) => ({
+    index, logicalId, visualKey: `visual-${logicalId}`, thumbState: 'ready',
+    srcPresent: true, complete: true, naturalWidth: 132, naturalHeight: 132,
+  }));
+  const observation = {
+    schema: THUMB_SETTLEMENT_OBSERVATION_SCHEMA,
+    surface,
+    expectedCount,
+    receiptToken,
+    ready: true,
+    reasons: [],
+    ownership: {
+      selector: surface === 'list'
+        ? '#codexpanel [data-sel="codex-entry"] img'
+        : '#planetside [data-sel="planetside-sp"] img',
+      rawImageCount: mountedCount,
+      rawLogicalIds: [...logicalIds],
+      diagnosticImageCount: mountedCount,
+      diagnosticLogicalIds: [...logicalIds],
+    },
+    diagnostic: {
+      panelMode: surface === 'list' ? 'list' : 'closed',
+      filteredCount: surface === 'list' && expectedCount !== null ? expectedCount : 1500,
+      visible: true,
+      thumbStates: images.map((image) => image.thumbState),
+    },
+    images,
+    art: {
+      available: true, schema: ART_DIAGNOSTICS_SCHEMA, queuedJobs: 0, activeJobs: 0,
+    },
+    lazyArt: {
+      available: true, schema: 'cf-v2-species-art-worker-diagnostics/v1', state: 'ready',
+      importStarts: 1,
+      identity: {
+        documentToken: pageAuthority.documentToken,
+        lastProducerEpoch: 1, lastWorkerInstanceId: 1,
+      },
+      lastEvent: {
+        producerEpoch: 1, workerInstanceId: 1, jobId: mountedCount,
+        kind: 'thumb132', event: 'result',
+      },
+      phases: {
+        importStarts: 1, importCompletes: 1,
+        thumbJobStarts: mountedCount, thumbRenderCompletes: mountedCount,
+        thumbEncodeStarts: mountedCount, thumbEncodeCompletes: mountedCount,
+        portraitJobStarts: 0, portraitRenderCompletes: 0,
+        portraitEncodeStarts: 0, portraitEncodeCompletes: 0,
+      },
+      results: {
+        count: mountedCount, maxImportDurationMs: 4,
+        maxRenderDurationMs: 8, maxEncodeDurationMs: 2,
+      },
+      errors: { capability: 0, protocol: 0, import: 0, paint: 0, encode: 0 },
+    },
+    worker: {
+      available: true, live: false, starts: 1, ready: 1, disposals: 1,
+      fatals: 0, protocolErrors: 0,
+    },
+    broker: {
+      available: true, cacheEntries: mountedCount, leases: mountedCount, subscribers: 0,
+      queuedJobs: 0, activeJobs: 0,
+    },
+    page: {
+      ...pageAuthority,
+      visibilityState: 'visible', hidden: false, focused: true,
+    },
+  };
+  const expected = {
+    surface, expectedCount,
+    targetId: observation.page.targetId,
+    sessionId: observation.page.sessionId,
+    documentToken: observation.page.documentToken,
+    receiptToken,
+  };
+  const decision = classifyCompendiumThumbSettlement(observation, expected);
+  observation.ready = decision.status === 'ready';
+  observation.reasons = [...decision.reasons];
+  return observation;
+}
+
+{
+  const expected = {
+    surface: 'list', expectedCount: 1500,
+    targetId: 'thumb-target', sessionId: 'thumb-session', documentToken: 'thumb-document',
+    receiptToken: 'thumb-receipt',
+  };
+  const green = greenThumbSettlement();
+  assert(classifyCompendiumThumbSettlement(green, expected).status === 'ready'
+    && validCompendiumThumbSettlementObservation(green, expected),
+  'the exact structured thumbnail settlement observation was rejected');
+  const planetside = greenThumbSettlement('planetside', 2, null);
+  const planetsideExpected = {
+    surface: 'planetside', expectedCount: null,
+    targetId: 'thumb-target', sessionId: 'thumb-session', documentToken: 'thumb-document',
+    receiptToken: 'thumb-receipt',
+  };
+  assert(classifyCompendiumThumbSettlement(
+    planetside, planetsideExpected,
+  ).status === 'ready' && validCompendiumThumbSettlementObservation(
+    planetside, planetsideExpected,
+  ), 'the exact structured Planetside settlement observation was rejected');
+  const unfilteredList = greenThumbSettlement('list', 2, null);
+  const unfilteredListExpected = { ...expected, expectedCount: null };
+  assert(classifyCompendiumThumbSettlement(unfilteredList, unfilteredListExpected).status === 'ready'
+    && validCompendiumThumbSettlementObservation(unfilteredList, unfilteredListExpected),
+  'a list settlement without a filtered-count predicate was rejected');
+  for (const observation of [null, 7]) {
+    let rejected = null;
+    try {
+      classifyCompendiumThumbSettlement(observation, expected);
+      if (observation === null || typeof observation !== 'object'
+        || Array.isArray(observation)) {
+        rejected = new Error(
+          `phone list thumb settlement: thumbnail observation was not an object (${JSON.stringify(observation)})`,
+        );
+        throw rejected;
+      }
+    } catch (error) {
+      rejected = error;
+    }
+    structuredInstrumentControlCount++;
+    assert(rejected instanceof Error && !(rejected instanceof TypeError)
+      && rejected.message
+        === `phone list thumb settlement: thumbnail observation was not an object (${JSON.stringify(observation)})`,
+    `a ${observation === null ? 'null' : 'non-object'} thumbnail observation lost its actionable diagnosis`);
+  }
+
+  const semanticControls = [
+    ['schema identity', (value) => { value.schema = 'stale-schema'; }, 'error'],
+    ['surface identity', (value) => { value.surface = 'planetside'; }, 'error'],
+    ['expected-count identity', (value) => { value.expectedCount = 1499; }, 'error'],
+    ['receipt-token identity', (value) => { value.receiptToken = 'foreign-token'; }, 'error'],
+    ['raw selector ownership', (value) => { value.ownership.selector = '#foreign img'; }, 'error'],
+    ['target identity', (value) => { value.page.targetId = 'foreign-target'; }, 'error'],
+    ['session identity', (value) => { value.page.sessionId = 'foreign-session'; }, 'error'],
+    ['stale document identity', (value) => {
+      value.page.documentToken = 'stale-document';
+    }, 'error'],
+    ['page visibility state', (value) => { value.page.visibilityState = 'hidden'; }, 'error'],
+    ['page hidden flag', (value) => { value.page.hidden = true; }, 'error'],
+    ['page focus', (value) => { value.page.focused = false; }, 'error'],
+    ['list panel ownership', (value) => { value.diagnostic.panelMode = 'closed'; }, 'pending'],
+    ['list filtered count', (value) => { value.diagnostic.filteredCount = 3; }, 'pending'],
+    ['raw image array count', (value) => { value.images.pop(); }, 'pending'],
+    ['empty mounted window', (value) => {
+      value.images = [];
+      value.ownership.rawImageCount = 0;
+      value.ownership.rawLogicalIds = [];
+      value.ownership.diagnosticImageCount = 0;
+      value.ownership.diagnosticLogicalIds = [];
+      value.diagnostic.thumbStates = [];
+    }, 'pending'],
+    ['raw image count', (value) => { value.ownership.rawImageCount = 1; }, 'pending'],
+    ['diagnostic image count', (value) => {
+      value.ownership.diagnosticImageCount = 1;
+    }, 'pending'],
+    ['raw logical-id ownership', (value) => {
+      value.ownership.rawLogicalIds[0] = 'foreign-logical';
+    }, 'pending'],
+    ['diagnostic logical-id ownership', (value) => {
+      value.ownership.diagnosticLogicalIds[0] = 'foreign-logical';
+    }, 'pending'],
+    ['diagnostic state ownership', (value) => {
+      value.diagnostic.thumbStates[0] = 'placeholder';
+    }, 'pending'],
+    ['distinct logical ids', (value) => {
+      value.images[1].logicalId = value.images[0].logicalId;
+      value.ownership.rawLogicalIds[1] = value.images[0].logicalId;
+      value.ownership.diagnosticLogicalIds[1] = value.images[0].logicalId;
+    }, 'pending'],
+    ['distinct visual keys', (value) => {
+      value.images[1].visualKey = value.images[0].visualKey;
+    }, 'pending'],
+    ['image index', (value) => { value.images[0].index = 1; }, 'pending'],
+    ['image thumb state', (value) => {
+      value.images[0].thumbState = 'placeholder';
+      value.diagnostic.thumbStates[0] = 'placeholder';
+    }, 'pending'],
+    ['image source', (value) => { value.images[0].srcPresent = false; }, 'pending'],
+    ['image decode', (value) => { value.images[0].complete = false; }, 'pending'],
+    ['image width', (value) => { value.images[0].naturalWidth = 131; }, 'pending'],
+    ['image height', (value) => { value.images[0].naturalHeight = 131; }, 'pending'],
+    ['art unavailable', (value) => {
+      value.art = { available: false, schema: null, queuedJobs: null, activeJobs: null };
+      value.broker = {
+        available: false, cacheEntries: null, leases: null, subscribers: null,
+        queuedJobs: null, activeJobs: null,
+      };
+    }, 'pending'],
+    ['art schema', (value) => { value.art.schema = 'stale-art'; }, 'pending'],
+    ['art queued jobs', (value) => {
+      value.art.queuedJobs = 1; value.broker.queuedJobs = 1;
+    }, 'pending'],
+    ['art active jobs', (value) => {
+      value.art.activeJobs = 1; value.broker.activeJobs = 1;
+    }, 'pending'],
+    ['lazy-art unavailable', (value) => {
+      value.lazyArt = {
+        available: false, schema: null, state: null, importStarts: null,
+        identity: null, lastEvent: null, phases: null, results: null, errors: null,
+      };
+      value.worker = {
+        available: false, live: null, starts: null, ready: null, disposals: null,
+        fatals: null, protocolErrors: null,
+      };
+    }, 'pending'],
+    ['lazy-art schema', (value) => { value.lazyArt.schema = 'stale-worker'; }, 'pending'],
+    ['lazy-art state', (value) => { value.lazyArt.state = 'loading'; }, 'pending'],
+    ['lazy-art document identity', (value) => {
+      value.lazyArt.identity.documentToken = 'stale-document';
+    }, 'error'],
+    ['lazy-art producer epoch', (value) => {
+      value.lazyArt.identity.lastProducerEpoch += 1;
+    }, 'error'],
+    ['lazy-art worker instance', (value) => {
+      value.lazyArt.identity.lastWorkerInstanceId += 1;
+    }, 'error'],
+    ['lazy-art last event absent', (value) => { value.lazyArt.lastEvent = null; }, 'ready'],
+    ['lazy-art last-event producer', (value) => {
+      value.lazyArt.lastEvent.producerEpoch += 1;
+    }, 'error'],
+    ['lazy-art last-event worker', (value) => {
+      value.lazyArt.lastEvent.workerInstanceId += 1;
+    }, 'error'],
+    ['lazy-art last-event job', (value) => { value.lazyArt.lastEvent.jobId += 1; }, 'ready'],
+    ['lazy-art last-event kind', (value) => {
+      value.lazyArt.lastEvent.kind = 'portrait440';
+    }, 'ready'],
+    ['lazy-art last-event name', (value) => {
+      value.lazyArt.lastEvent.event = 'error';
+    }, 'ready'],
+    ['lazy-art import summary', (value) => { value.lazyArt.importStarts += 1; }, 'pending'],
+    ['lazy-art phase import starts', (value) => {
+      value.lazyArt.phases.importStarts += 1;
+    }, 'pending'],
+    ['lazy-art phase import completes', (value) => {
+      value.lazyArt.phases.importCompletes += 1;
+    }, 'pending'],
+    ['lazy-art phase thumb jobs', (value) => {
+      value.lazyArt.phases.thumbJobStarts += 1;
+    }, 'ready'],
+    ['lazy-art phase thumb renders', (value) => {
+      value.lazyArt.phases.thumbRenderCompletes += 1;
+    }, 'pending'],
+    ['lazy-art phase thumb encode starts', (value) => {
+      value.lazyArt.phases.thumbEncodeStarts += 1;
+    }, 'pending'],
+    ['lazy-art phase thumb encode completes', (value) => {
+      value.lazyArt.phases.thumbEncodeCompletes += 1;
+    }, 'pending'],
+    ['lazy-art phase portrait jobs', (value) => {
+      value.lazyArt.phases.portraitJobStarts += 1;
+    }, 'ready'],
+    ['lazy-art phase portrait renders', (value) => {
+      value.lazyArt.phases.portraitRenderCompletes += 1;
+    }, 'pending'],
+    ['lazy-art phase portrait encode starts', (value) => {
+      value.lazyArt.phases.portraitEncodeStarts += 1;
+    }, 'pending'],
+    ['lazy-art phase portrait encode completes', (value) => {
+      value.lazyArt.phases.portraitEncodeCompletes += 1;
+    }, 'pending'],
+    ['lazy-art result count', (value) => { value.lazyArt.results.count += 1; }, 'pending'],
+    ['lazy-art import duration', (value) => {
+      value.lazyArt.results.maxImportDurationMs += 1;
+    }, 'ready'],
+    ['lazy-art render duration', (value) => {
+      value.lazyArt.results.maxRenderDurationMs += 1;
+    }, 'ready'],
+    ['lazy-art encode duration', (value) => {
+      value.lazyArt.results.maxEncodeDurationMs += 1;
+    }, 'ready'],
+    ...['capability', 'protocol', 'import', 'paint', 'encode'].map((field) => [
+      `lazy-art ${field} errors`, (value) => { value.lazyArt.errors[field] += 1; }, 'ready',
+    ]),
+    ['worker/lazy-art availability', (value) => {
+      value.worker = {
+        available: false, live: null, starts: null, ready: null, disposals: null,
+        fatals: null, protocolErrors: null,
+      };
+    }, 'pending'],
+    ['broker/art availability', (value) => {
+      value.broker = {
+        available: false, cacheEntries: null, leases: null, subscribers: null,
+        queuedJobs: null, activeJobs: null,
+      };
+    }, 'pending'],
+    ['broker/art queued jobs', (value) => { value.broker.queuedJobs = 1; }, 'pending'],
+    ['broker/art active jobs', (value) => { value.broker.activeJobs = 1; }, 'pending'],
+  ];
+  for (const [label, mutate, status] of semanticControls) {
+    structuredInstrumentControlCount++;
+    const changed = clone(green);
+    mutate(changed);
+    const decision = classifyCompendiumThumbSettlement(changed, expected);
+    assert(decision.status === status && decision.reasons.length > 0,
+      `structured thumbnail ${label} did not produce an actionable ${status} decision`);
+    assert(!validCompendiumThumbSettlementObservation(changed, expected),
+      `structured thumbnail ${label} retained copied green readiness/reasons`);
+    changed.ready = decision.status === 'ready';
+    changed.reasons = [...decision.reasons];
+    assert(validCompendiumThumbSettlementObservation(changed, expected),
+      `structured thumbnail ${label} could not retain its recomputed diagnosis`);
+  }
+
+  const planetsideHidden = clone(planetside);
+  planetsideHidden.diagnostic.visible = false;
+  const planetsideHiddenDecision = classifyCompendiumThumbSettlement(
+    planetsideHidden, planetsideExpected,
+  );
+  structuredInstrumentControlCount++;
+  assert(planetsideHiddenDecision.status === 'pending'
+    && planetsideHiddenDecision.reasons.includes('Planetside surface hidden'),
+  'structured Planetside settlement did not retain its hidden-surface diagnosis');
+
+  const staleReady = clone(green);
+  staleReady.ready = false;
+  structuredInstrumentControlCount++;
+  assert(classifyCompendiumThumbSettlement(staleReady, expected).status === 'ready'
+    && !validCompendiumThumbSettlementObservation(staleReady, expected),
+  'structured thumbnail settlement accepted a copied false readiness bit');
+  const staleReasons = clone(green);
+  staleReasons.reasons = ['copied stale reason'];
+  structuredInstrumentControlCount++;
+  assert(classifyCompendiumThumbSettlement(staleReasons, expected).status === 'ready'
+    && !validCompendiumThumbSettlementObservation(staleReasons, expected),
+  'structured thumbnail settlement accepted a copied reason list');
+  const maximumTokenExpected = { ...expected, receiptToken: 't'.repeat(256) };
+  const maximumTokenObservation = clone(green);
+  maximumTokenObservation.receiptToken = maximumTokenExpected.receiptToken;
+  const maximumTokenDecision = classifyCompendiumThumbSettlement(
+    maximumTokenObservation, maximumTokenExpected,
+  );
+  maximumTokenObservation.ready = maximumTokenDecision.status === 'ready';
+  maximumTokenObservation.reasons = [...maximumTokenDecision.reasons];
+  assert(validCompendiumThumbSettlementObservation(
+    maximumTokenObservation, maximumTokenExpected,
+  ), 'contract rejected the strict 256-character thumbnail receipt token boundary');
+  const oversizedTokenExpected = { ...expected, receiptToken: 't'.repeat(257) };
+  const oversizedTokenObservation = clone(green);
+  oversizedTokenObservation.receiptToken = oversizedTokenExpected.receiptToken;
+  structuredInstrumentControlCount++;
+  assert(!validCompendiumThumbSettlementObservation(
+    oversizedTokenObservation, oversizedTokenExpected,
+  ), 'contract accepted a 257-character thumbnail receipt token');
+
+  const shapeControls = [
+    ['top-level exact keys', (value) => { value.extra = true; }],
+    ['schema shape', (value) => { value.schema = ''; }],
+    ['surface shape', (value) => { value.surface = ''; }],
+    ['expected-count shape', (value) => { value.expectedCount = 1_000_001; }],
+    ['receipt-token shape', (value) => { value.receiptToken = ''; }],
+    ['ready shape', (value) => { value.ready = 'yes'; }],
+    ['reasons shape', (value) => { value.reasons = ['duplicate', 'duplicate']; }],
+    ['ownership exact keys', (value) => { delete value.ownership.selector; }],
+    ['selector shape', (value) => { value.ownership.selector = ''; }],
+    ['raw-count shape', (value) => { value.ownership.rawImageCount = -1; }],
+    ['diagnostic-count shape', (value) => {
+      value.ownership.diagnosticImageCount = 1_000_001;
+    }],
+    ['raw-id array shape', (value) => { value.ownership.rawLogicalIds[0] = 1; }],
+    ['diagnostic-id array shape', (value) => {
+      value.ownership.diagnosticLogicalIds[0] = {};
+    }],
+    ['diagnostic exact keys', (value) => { delete value.diagnostic.panelMode; }],
+    ['panel-mode shape', (value) => { value.diagnostic.panelMode = ''; }],
+    ['filtered-count shape', (value) => { value.diagnostic.filteredCount = -1; }],
+    ['surface-visible shape', (value) => { value.diagnostic.visible = null; }],
+    ['thumb-state array shape', (value) => { value.diagnostic.thumbStates[0] = null; }],
+    ['image exact keys', (value) => { delete value.images[0].complete; }],
+    ['image index shape', (value) => { value.images[0].index = 64; }],
+    ['image logical-id shape', (value) => { value.images[0].logicalId = {}; }],
+    ['image visual-key shape', (value) => { value.images[0].visualKey = {}; }],
+    ['image thumb-state shape', (value) => { value.images[0].thumbState = {}; }],
+    ['image source shape', (value) => { value.images[0].srcPresent = 1; }],
+    ['image completion shape', (value) => { value.images[0].complete = 1; }],
+    ['image width shape', (value) => { value.images[0].naturalWidth = -1; }],
+    ['image height shape', (value) => { value.images[0].naturalHeight = 8193; }],
+    ['art exact keys', (value) => { delete value.art.activeJobs; }],
+    ['art availability shape', (value) => { value.art.available = 'yes'; }],
+    ['art schema shape', (value) => { value.art.schema = ''; }],
+    ['art queued shape', (value) => { value.art.queuedJobs = -1; }],
+    ['art active shape', (value) => { value.art.activeJobs = -1; }],
+    ['unavailable art values', (value) => { value.art.available = false; }],
+    ['lazy-art exact keys', (value) => { delete value.lazyArt.state; }],
+    ['lazy-art availability shape', (value) => { value.lazyArt.available = 'yes'; }],
+    ['lazy-art schema shape', (value) => { value.lazyArt.schema = ''; }],
+    ['lazy-art state shape', (value) => { value.lazyArt.state = ''; }],
+    ['lazy-art document shape', (value) => { value.lazyArt.identity.documentToken = ''; }],
+    ['lazy-art imports shape', (value) => { value.lazyArt.importStarts = -1; }],
+    ['lazy-art identity exact keys', (value) => {
+      delete value.lazyArt.identity.lastProducerEpoch;
+    }],
+    ['lazy-art producer epoch shape', (value) => {
+      value.lazyArt.identity.lastProducerEpoch = -1;
+    }],
+    ['lazy-art worker identity shape', (value) => {
+      value.lazyArt.identity.lastWorkerInstanceId = -1;
+    }],
+    ['lazy-art last-event exact keys', (value) => {
+      delete value.lazyArt.lastEvent.jobId;
+    }],
+    ...['producerEpoch', 'workerInstanceId', 'jobId'].map((field) => [
+      `lazy-art last-event ${field} shape`, (value) => { value.lazyArt.lastEvent[field] = -1; },
+    ]),
+    ['lazy-art last-event kind shape', (value) => { value.lazyArt.lastEvent.kind = ''; }],
+    ['lazy-art last-event name shape', (value) => { value.lazyArt.lastEvent.event = ''; }],
+    ['lazy-art phases exact keys', (value) => {
+      delete value.lazyArt.phases.importStarts;
+    }],
+    ...[
+      'importStarts', 'importCompletes',
+      'thumbJobStarts', 'thumbRenderCompletes', 'thumbEncodeStarts', 'thumbEncodeCompletes',
+      'portraitJobStarts', 'portraitRenderCompletes',
+      'portraitEncodeStarts', 'portraitEncodeCompletes',
+    ].map((field) => [
+      `lazy-art phase ${field} shape`, (value) => { value.lazyArt.phases[field] = -1; },
+    ]),
+    ['lazy-art results exact keys', (value) => { delete value.lazyArt.results.count; }],
+    ['lazy-art result count shape', (value) => { value.lazyArt.results.count = -1; }],
+    ...['maxImportDurationMs', 'maxRenderDurationMs', 'maxEncodeDurationMs'].map((field) => [
+      `lazy-art result ${field} shape`, (value) => { value.lazyArt.results[field] = -1; },
+    ]),
+    ['lazy-art errors exact keys', (value) => { delete value.lazyArt.errors.capability; }],
+    ...['capability', 'protocol', 'import', 'paint', 'encode'].map((field) => [
+      `lazy-art error ${field} shape`, (value) => { value.lazyArt.errors[field] = -1; },
+    ]),
+    ['unavailable lazy-art values', (value) => { value.lazyArt.available = false; }],
+    ['worker exact keys', (value) => { delete value.worker.live; }],
+    ['worker availability shape', (value) => { value.worker.available = 'yes'; }],
+    ['worker live shape', (value) => { value.worker.live = null; }],
+    ...['starts', 'ready', 'disposals', 'fatals', 'protocolErrors'].map((field) => [
+      `worker ${field} shape`, (value) => { value.worker[field] = -1; },
+    ]),
+    ['unavailable worker values', (value) => { value.worker.available = false; }],
+    ['broker exact keys', (value) => { delete value.broker.cacheEntries; }],
+    ['broker availability shape', (value) => { value.broker.available = 'yes'; }],
+    ...['cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs'].map((field) => [
+      `broker ${field} shape`, (value) => { value.broker[field] = -1; },
+    ]),
+    ['unavailable broker values', (value) => { value.broker.available = false; }],
+    ['page exact keys', (value) => { delete value.page.targetId; }],
+    ['target identity shape', (value) => { value.page.targetId = ''; }],
+    ['session identity shape', (value) => { value.page.sessionId = ''; }],
+    ['document identity shape', (value) => { value.page.documentToken = ''; }],
+    ['page visibility shape', (value) => { value.page.visibilityState = ''; }],
+    ['page hidden shape', (value) => { value.page.hidden = null; }],
+    ['page focus shape', (value) => { value.page.focused = null; }],
+  ];
+  for (const [label, mutate] of shapeControls) {
+    structuredInstrumentControlCount++;
+    const changed = clone(green);
+    mutate(changed);
+    assert(classifyCompendiumThumbSettlement(changed, expected).status === 'error'
+      && !validCompendiumThumbSettlementObservation(changed, expected),
+    `structured thumbnail ${label} escaped strict bounded shape validation`);
+  }
+  const sampledUnwindowed = greenThumbSettlement('list', 64, 1500);
+  sampledUnwindowed.ownership.rawImageCount = 1500;
+  sampledUnwindowed.ownership.diagnosticImageCount = 1500;
+  const sampledUnwindowedDecision = classifyCompendiumThumbSettlement(
+    sampledUnwindowed, expected,
+  );
+  sampledUnwindowed.ready = false;
+  sampledUnwindowed.reasons = [...sampledUnwindowedDecision.reasons];
+  structuredInstrumentControlCount++;
+  assert(sampledUnwindowedDecision.status === 'pending'
+    && sampledUnwindowedDecision.reasons.includes('raw image count 1500/64')
+    && sampledUnwindowedDecision.reasons.includes('diagnostic image count 1500/64')
+    && validCompendiumThumbSettlementObservation(sampledUnwindowed, expected),
+  'a 1,500-image regression could not retain its actionable 64-image bounded sample');
+  const worstCase = greenThumbSettlement('list', 64, 1500);
+  worstCase.schema = 'stale-schema';
+  worstCase.surface = 'planetside';
+  worstCase.expectedCount = 1499;
+  worstCase.ownership.selector = '#foreign img';
+  worstCase.ownership.rawImageCount = 1500;
+  worstCase.ownership.diagnosticImageCount = 1500;
+  worstCase.ownership.rawLogicalIds = Array.from({ length: 64 }, () => null);
+  worstCase.ownership.diagnosticLogicalIds = Array.from({ length: 64 }, () => null);
+  worstCase.diagnostic.panelMode = 'closed';
+  worstCase.diagnostic.filteredCount = 1499;
+  worstCase.diagnostic.thumbStates = Array.from({ length: 64 }, () => 'ready');
+  worstCase.images.forEach((image, index) => {
+    image.index = (index + 1) % 64;
+    image.logicalId = null;
+    image.visualKey = null;
+    image.thumbState = 'placeholder';
+    image.srcPresent = false;
+    image.complete = false;
+    image.naturalWidth = 0;
+    image.naturalHeight = 0;
+  });
+  worstCase.art.schema = 'stale-art';
+  worstCase.art.queuedJobs = 1;
+  worstCase.art.activeJobs = 1;
+  worstCase.lazyArt.schema = 'stale-worker';
+  worstCase.lazyArt.state = 'loading';
+  worstCase.lazyArt.importStarts += 1;
+  worstCase.lazyArt.identity.documentToken = 'foreign-lazy-document';
+  worstCase.lazyArt.identity.lastProducerEpoch += 1;
+  worstCase.lazyArt.phases.importCompletes += 1;
+  worstCase.lazyArt.phases.thumbRenderCompletes += 1;
+  worstCase.lazyArt.results.count += 1;
+  for (const field of ['capability', 'protocol', 'import', 'paint', 'encode']) {
+    worstCase.lazyArt.errors[field] = 1;
+  }
+  worstCase.worker = {
+    available: false, live: null, starts: null, ready: null, disposals: null,
+    fatals: null, protocolErrors: null,
+  };
+  worstCase.broker.queuedJobs = 2;
+  worstCase.broker.activeJobs = 2;
+  worstCase.page.targetId = 'foreign-target';
+  worstCase.page.sessionId = 'foreign-session';
+  worstCase.page.documentToken = 'foreign-document';
+  worstCase.page.visibilityState = 'hidden';
+  worstCase.page.hidden = true;
+  worstCase.page.focused = false;
+  const worstCaseDecision = classifyCompendiumThumbSettlement(worstCase, expected);
+  worstCase.ready = false;
+  worstCase.reasons = [...worstCaseDecision.reasons];
+  structuredInstrumentControlCount++;
+  assert(worstCaseDecision.status === 'error'
+    && worstCaseDecision.reasons.length > 128
+    && worstCaseDecision.reasons.length <= MAX_THUMB_SETTLEMENT_REASONS
+    && !worstCaseDecision.reasons.some((reason) =>
+      reason.startsWith('thumb settlement reason cardinality '))
+    && validCompendiumThumbSettlementObservation(worstCase, expected),
+  '64-image worst-case settlement reasons did not round-trip within the sealed bound');
+  const excessiveReasons = clone(green);
+  excessiveReasons.reasons = Array.from(
+    { length: MAX_THUMB_SETTLEMENT_REASONS + 1 }, (_, index) => `reason-${index}`,
+  );
+  structuredInstrumentControlCount++;
+  assert(!validCompendiumThumbSettlementObservation(excessiveReasons, expected),
+    'a settlement observation exceeded the sealed reason cardinality');
+  structuredInstrumentControlCount++;
+  assertThrows(() => classifyCompendiumThumbSettlement(green, {
+    ...expected, unsealed: true,
+  }), 'structured thumbnail settlement accepted unsealed expected authority');
+  structuredInstrumentControlCount++;
+  assertThrows(() => classifyCompendiumThumbSettlement(planetside, {
+    ...planetsideExpected, expectedCount: 8,
+  }), 'structured Planetside settlement accepted an invented fixed image count');
+}
+
+function greenForegroundServiceObservation({
+  targetId = 'foreground-target', sessionId = 'foreground-session',
+  documentToken = 'foreground-document', serviceToken = 'foreground-service',
+} = {}) {
+  const visiblePhase = (sequence) => ({
+    observed: true, sequence, visibilityState: 'visible', hidden: false, focused: true,
+  });
+  return {
+    schema: FOREGROUND_SERVICE_OBSERVATION_SCHEMA,
+    targetId, sessionId, documentToken, visibilityState: 'visible',
+    hidden: false, focused: true,
+    service: {
+      token: serviceToken, visibilityChanges: 0, focusLosses: 0,
+      arm: visiblePhase(0), raf: visiblePhase(1), laterTask: visiblePhase(2),
+    },
+  };
+}
+
+function syntheticProfileForegroundEvidence(profile) {
+  const pageAuthorities = {
+    lazy: {
+      targetId: `${profile}-lazy-target`, sessionId: `${profile}-lazy-session`,
+      documentToken: 'selftest-lazy-document',
+    },
+    main: {
+      targetId: `${profile}-main-target`, sessionId: `${profile}-main-session`,
+      documentToken: 'selftest-main-document',
+    },
+  };
+  const foregroundServices = FOREGROUND_SERVICE_RECEIPT_LABELS.map((label, index) => {
+    const pageAuthority = index === 1 ? pageAuthorities.main : pageAuthorities.lazy;
+    const serviceToken = `${profile}-compendium-foreground-${index + 1}`;
+    const expected = { ...pageAuthority, serviceToken };
+    const issuedAtMs = index === 2 ? 4_000_000 : 1_000 + index * 10_000;
+    return {
+      schema: FOREGROUND_SERVICE_RECEIPT_SCHEMA,
+      label,
+      expected,
+      observation: greenForegroundServiceObservation({ ...pageAuthority, serviceToken }),
+      timing: {
+        issuedAtMs,
+        deadlineMs: issuedAtMs + FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS,
+        receivedAtMs: issuedAtMs + 100,
+        timeoutMs: FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS,
+      },
+      cleanup: { cleanupPresent: false, servicePresent: false },
+    };
+  });
+  return { pageAuthorities, foregroundServices };
+}
+
+{
+  const expected = {
+    targetId: 'foreground-target', sessionId: 'foreground-session',
+    documentToken: 'foreground-document', serviceToken: 'foreground-service',
+  };
+  const green = greenForegroundServiceObservation();
+  assert(validCompendiumForegroundServiceObservation(green)
+    && classifyCompendiumForegroundServiceTurn(green, expected).status === 'ready'
+    && classifyCompendiumForegroundServiceTurnReceipt(green, expected, 100, 99).status === 'ready',
+  'exact attach-derived foreground service receipt was rejected');
+  const pendingPhase = () => ({
+    observed: false, sequence: null, visibilityState: null, hidden: null, focused: null,
+  });
+  const foregroundControls = [
+    ['wrong target', (value) => { value.targetId = 'foreign-target'; }, 'error'],
+    ['wrong session', (value) => { value.sessionId = 'foreign-session'; }, 'error'],
+    ['stale document', (value) => { value.documentToken = 'stale-document'; }, 'error'],
+    ['wrong service', (value) => { value.service.token = 'foreign-service'; }, 'error'],
+    ['hidden page state', (value) => { value.visibilityState = 'hidden'; }, 'error'],
+    ['hidden page flag', (value) => { value.hidden = true; }, 'error'],
+    ['unfocused page', (value) => { value.focused = false; }, 'error'],
+    ['visibility loss', (value) => { value.service.visibilityChanges = 1; }, 'error'],
+    ['focus loss', (value) => { value.service.focusLosses = 1; }, 'error'],
+    ['hidden arm state', (value) => { value.service.arm.visibilityState = 'hidden'; }, 'error'],
+    ['hidden arm flag', (value) => { value.service.arm.hidden = true; }, 'error'],
+    ['unfocused arm', (value) => { value.service.arm.focused = false; }, 'error'],
+    ['hidden rAF state', (value) => { value.service.raf.visibilityState = 'hidden'; }, 'error'],
+    ['hidden rAF flag', (value) => { value.service.raf.hidden = true; }, 'error'],
+    ['unfocused rAF', (value) => { value.service.raf.focused = false; }, 'error'],
+    ['hidden later-task state', (value) => {
+      value.service.laterTask.visibilityState = 'hidden';
+    }, 'error'],
+    ['hidden later-task flag', (value) => { value.service.laterTask.hidden = true; }, 'error'],
+    ['unfocused later task', (value) => { value.service.laterTask.focused = false; }, 'error'],
+    ['arm sequence', (value) => { value.service.arm.sequence = 1; }, 'error'],
+    ['rAF sequence', (value) => { value.service.raf.sequence = 2; }, 'error'],
+    ['later-task sequence', (value) => { value.service.laterTask.sequence = 1; }, 'error'],
+    ['arm absent', (value) => { value.service.arm = pendingPhase(); }, 'error'],
+    ['rAF pending', (value) => {
+      value.service.raf = pendingPhase(); value.service.laterTask = pendingPhase();
+    }, 'pending'],
+    ['later task pending', (value) => { value.service.laterTask = pendingPhase(); }, 'pending'],
+    ['phase reversal', (value) => { value.service.raf = pendingPhase(); }, 'error'],
+  ];
+  for (const [label, mutate, status] of foregroundControls) {
+    structuredInstrumentControlCount++;
+    const changed = clone(green);
+    mutate(changed);
+    const decision = classifyCompendiumForegroundServiceTurn(changed, expected);
+    assert(decision.status === status && decision.reasons.length > 0,
+      `foreground service ${label} did not produce an actionable ${status} decision`);
+  }
+
+  for (const [label, deadlineMs, receivedAtMs] of [
+    ['exact deadline', 100, 100], ['late deadline', 100, 101],
+  ]) {
+    structuredInstrumentControlCount++;
+    const decision = classifyCompendiumForegroundServiceTurnReceipt(
+      green, expected, deadlineMs, receivedAtMs,
+    );
+    assert(decision.status === 'error'
+      && decision.reasons[0].includes('received at/after deadline'),
+    `foreground service ${label} remained certifying`);
+  }
+  const foregroundShapeControls = [
+    ['schema shape', (value) => { value.schema = 'wrong'; }],
+    ['top-level exact keys', (value) => { value.unsealed = true; }],
+    ['target shape', (value) => { value.targetId = ''; }],
+    ['session shape', (value) => { value.sessionId = ''; }],
+    ['document shape', (value) => { value.documentToken = ''; }],
+    ['visibility shape', (value) => { value.visibilityState = ''; }],
+    ['hidden shape', (value) => { value.hidden = null; }],
+    ['focused shape', (value) => { value.focused = null; }],
+    ['service exact keys', (value) => { delete value.service.token; }],
+    ['service token shape', (value) => { value.service.token = ''; }],
+    ['visibility count shape', (value) => { value.service.visibilityChanges = -1; }],
+    ['focus count shape', (value) => { value.service.focusLosses = -1; }],
+    ['arm phase shape', (value) => { value.service.arm.sequence = null; }],
+    ['rAF phase shape', (value) => { value.service.raf.hidden = null; }],
+    ['later-task phase shape', (value) => { value.service.laterTask.observed = 'yes'; }],
+  ];
+  for (const [label, mutate] of foregroundShapeControls) {
+    structuredInstrumentControlCount++;
+    const changed = clone(green);
+    mutate(changed);
+    assert(!validCompendiumForegroundServiceObservation(changed)
+      && classifyCompendiumForegroundServiceTurn(changed, expected).status === 'error',
+    `foreground service ${label} escaped strict observation validation`);
+  }
+  structuredInstrumentControlCount++;
+  assertThrows(() => classifyCompendiumForegroundServiceTurn(green, {
+    ...expected, unsealed: true,
+  }), 'foreground service accepted unsealed expected authority');
+  structuredInstrumentControlCount++;
+  assertThrows(() => classifyCompendiumForegroundServiceTurnReceipt(
+    green, expected, 100, -1,
+  ), 'foreground service accepted a negative monotonic receipt time');
+}
+
+{
+  const attachment = {
+    targetId: 'foreground-target', sessionId: 'foreground-session',
+    documentToken: 'foreground-document',
+  };
+  const identities = {
+    activationTargetId: attachment.targetId, sessionId: attachment.sessionId,
+    serviceToken: 'foreground-service',
+  };
+  const source = candidateForegroundServiceExpression(identities);
+  structuredInstrumentControlCount++;
+  assert(validCandidateForegroundServiceExpression(source, identities)
+    && !validCandidateForegroundServiceExpression(
+      source.replace('requestAnimationFrame', 'queueMicrotask'), identities,
+    )
+    && COMPENDIUM_FOREGROUND_SERVICE_TIMEOUT_MS === 5_000,
+  'collector foreground expression did not seal the exact rAF service source and timeout');
+  structuredInstrumentControlCount++;
+  assert(candidateForegroundCleanupExpression().includes('delete window[serviceKey]')
+    && candidateForegroundCleanupExpression().includes('cleanupPresent:'),
+  'collector foreground cleanup expression no longer removes and reports both globals');
+
+  const runOwner = async ({
+    activationTargetId = attachment.targetId,
+    observedTargetId = activationTargetId,
+    cleanup = { cleanupPresent: false, servicePresent: false },
+    mutateObservation = () => {}, waitFailure = null,
+    cleanupFailures = new Map(),
+  } = {}) => {
+    const calls = [];
+    const observation = greenForegroundServiceObservation();
+    observation.targetId = observedTargetId;
+    mutateObservation(observation);
+    try {
+      const value = await ownCandidateForeground({
+        attachment, activationTargetId, serviceToken: identities.serviceToken,
+        label: 'fresh lazy-control',
+        sendStage: async (label, method, params, sessionId) => {
+          calls.push({ label, method, params, sessionId });
+        },
+        waitValue: async (sessionId, label, expression, options) => {
+          calls.push({ label, method: 'candidate-wait', sessionId, expression });
+          if (waitFailure !== null) throw waitFailure;
+          const command = { phaseDeadlineMs: 6_000, target: { completedAtMs: 1_100 } };
+          options.onObservation(observation, command);
+          assert(options.acceptValue(observation) === true,
+            'collector foreground waiter ignored its ready classifier decision');
+          return observation;
+        },
+        evaluate: async (sessionId, expression, label) => {
+          calls.push({ label, method: 'cleanup-evaluate', sessionId, expression });
+          return cleanup;
+        },
+        sendCleanup: async (method, params, sessionId, options) => {
+          calls.push({
+            label: 'raw-failure-cleanup', method, params, sessionId, options,
+          });
+          if (cleanupFailures.has(method)) throw cleanupFailures.get(method);
+          if (method === 'Runtime.evaluate') {
+            return { result: { value: cleanup } };
+          }
+          return {};
+        },
+      });
+      return { calls, value };
+    } catch (error) {
+      if (error !== null && typeof error === 'object') error.compendiumSelftestCalls = calls;
+      throw error;
+    }
+  };
+  const owned = await runOwner();
+  structuredInstrumentControlCount++;
+  assert(JSON.stringify(owned.calls.slice(0, 3).map((call) => [
+    call.method, call.sessionId ?? null,
+  ])) === JSON.stringify([
+    ['Target.activateTarget', null],
+    ['Emulation.setFocusEmulationEnabled', attachment.sessionId],
+    ['Page.bringToFront', attachment.sessionId],
+  ])
+    && owned.calls[0].params.targetId === attachment.targetId
+    && owned.calls[1].params.enabled === true
+    && owned.value.expected.targetId === attachment.targetId
+    && owned.value.observation.targetId === attachment.targetId
+    && validCompendiumForegroundServiceReceipt(owned.value, 'fresh lazy-control')
+    && owned.value.cleanup.cleanupPresent === false
+    && owned.value.cleanup.servicePresent === false
+    && !owned.calls.some((call) => call.method === 'Emulation.setFocusEmulationEnabled'
+      && call.params?.enabled === false),
+  'collector foreground owner lost activate -> focus -> bring-to-front order or attach identity');
+
+  const failureCases = [
+    ['wait', {
+      waitFailure: new CandidateObservationError(
+        'product-unanswerable', 'synthetic foreground wait failure', { selftest: true },
+      ),
+    }],
+    ['shape', { mutateObservation: (value) => { value.schema = 'stale-schema'; } }],
+    ['authority', { observedTargetId: 'foreign-target' }],
+  ];
+  for (const [label, options] of failureCases) {
+    let rejected = null;
+    try {
+      await runOwner(options);
+    } catch (error) {
+      rejected = error;
+    }
+    const retainedCalls = rejected?.compendiumSelftestCalls || [];
+    const cleanupMethods = retainedCalls.slice(-2).map((call) => call.method);
+    structuredInstrumentControlCount++;
+    assert(rejected instanceof Error
+      && JSON.stringify(cleanupMethods) === JSON.stringify([
+        'Runtime.evaluate', 'Emulation.setFocusEmulationEnabled',
+      ])
+      && retainedCalls.at(-1).params.enabled === false,
+    `collector ${label} failure did not clean document state then disable focus in order`);
+  }
+
+  const primaryCleanupError = new CandidateObservationError(
+    'product-unanswerable', 'synthetic classified foreground failure', { selftest: 'command' },
+  );
+  const cleanupFailures = new Map([
+    ['Runtime.evaluate', new Error('synthetic document cleanup failure')],
+    ['Emulation.setFocusEmulationEnabled', new Error('synthetic focus cleanup failure')],
+  ]);
+  let surfacedCleanupError = null;
+  try { await runOwner({ waitFailure: primaryCleanupError, cleanupFailures }); }
+  catch (error) { surfacedCleanupError = error; }
+  structuredInstrumentControlCount++;
+  assert(surfacedCleanupError === primaryCleanupError
+    && isCandidateObservationError(surfacedCleanupError)
+    && surfacedCleanupError.classification === 'product-unanswerable'
+    && surfacedCleanupError.command?.selftest === 'command'
+    && surfacedCleanupError.compendiumForegroundCleanupFailures?.length === 2
+    && surfacedCleanupError.compendiumForegroundPrimaryMessage
+      === 'synthetic classified foreground failure',
+  'foreground cleanup failures replaced or reclassified the primary CandidateObservationError');
+
+  let wrongActivationRejected = false;
+  try {
+    await runOwner({
+      activationTargetId: 'foreign-target', observedTargetId: 'foreign-target',
+    });
+  } catch (error) {
+    wrongActivationRejected = error?.compendiumObservation?.targetId === 'foreign-target'
+      && error.message.includes('foreground authority');
+  }
+  structuredInstrumentControlCount++;
+  assert(wrongActivationRejected,
+    'collector foreground owner accepted activation of a different target');
+
+  let cleanupResidueRejected = false;
+  try { await runOwner({ cleanup: { cleanupPresent: false, servicePresent: true } }); }
+  catch (error) { cleanupResidueRejected = error.message.includes('retained document globals'); }
+  structuredInstrumentControlCount++;
+  assert(cleanupResidueRejected,
+    'collector foreground owner accepted retained service globals after cleanup');
+
+  const collectorForegroundSource = fs.readFileSync(
+    fileURLToPath(new URL('./compendiummem.mjs', import.meta.url)), 'utf8',
+  );
+  const claimStart = collectorForegroundSource.indexOf('const claimForeground = async');
+  const claimEnd = collectorForegroundSource.indexOf('const seedSave = async', claimStart);
+  const claimSource = claimStart >= 0 && claimEnd > claimStart
+    ? collectorForegroundSource.slice(claimStart, claimEnd) : '';
+  const clearOwner = claimSource.indexOf('foregroundOwner = null;');
+  const claimOwner = claimSource.indexOf('const receipt = await ownCandidateForeground');
+  const publishOwner = claimSource.indexOf('foregroundOwner = attachment;');
+  structuredInstrumentControlCount++;
+  assert(clearOwner >= 0 && claimOwner > clearOwner && publishOwner > claimOwner,
+    'collector caller did not clear stale foreground ownership before a new claim');
 }
 
 function activeBudget(fixture) {
@@ -925,6 +1901,66 @@ function retimeCandidateEvidence(template, profile, label, issuedAtMs) {
   return command;
 }
 
+function syntheticThumbnailSettlementReceipt({
+  profile, pageAuthority, candidateCommandTemplate, planIndex, attempt, issuedAtMs,
+}) {
+  const browserProduct = 'Edg/151.0.4129.107';
+  const planEntry = THUMB_SETTLEMENT_RECEIPT_PLAN[planIndex];
+  const receiptToken = compendiumThumbSettlementReceiptToken(
+    profile, planEntry.label, attempt,
+  );
+  const expected = {
+    surface: planEntry.surface,
+    expectedCount: planEntry.expectedCount,
+    ...pageAuthority,
+    receiptToken,
+  };
+  const mountedCount = planEntry.expectedCount === 1 ? 1 : 2;
+  const observation = greenThumbSettlement(
+    planEntry.surface, mountedCount, planEntry.expectedCount,
+    { receiptToken, pageAuthority },
+  );
+  const command = retimeCandidateEvidence(
+    candidateCommandTemplate, profile, `${planEntry.label} thumb settlement`,
+    issuedAtMs + 25,
+  );
+  command.phaseDeadlineMs = issuedAtMs + THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS;
+  command.commandDeadlineMs = Math.min(
+    command.phaseDeadlineMs, command.issuedAtMs + command.timeoutMs,
+  );
+  const receipt = {
+    schema: THUMB_SETTLEMENT_RECEIPT_SCHEMA,
+    label: planEntry.label,
+    attempt,
+    expected,
+    observation,
+    command,
+    timing: {
+      issuedAtMs,
+      deadlineMs: issuedAtMs + THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS,
+      receivedAtMs: Math.max(
+        command.target.completedAtMs, command.heartbeat.completedAtMs,
+      ),
+      timeoutMs: THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS,
+    },
+  };
+  assert(validCompendiumThumbSettlementReceipt(receipt, {
+    profile, pageAuthority, browserProduct, planIndex,
+  }), `${profile} synthetic thumbnail receipt ${planEntry.label} attempt ${attempt} was not exact`);
+  return receipt;
+}
+
+function syntheticProfileThumbnailSettlements(
+  profile, pageAuthority, candidateCommandTemplate,
+) {
+  return THUMB_SETTLEMENT_RECEIPT_PLAN.map((_, planIndex) => {
+    return syntheticThumbnailSettlementReceipt({
+      profile, pageAuthority, candidateCommandTemplate, planIndex, attempt: 1,
+      issuedAtMs: 100_000 + planIndex * 40_000,
+    });
+  });
+}
+
 function syntheticProducerErrorCommands(template, witness, profile, startMs = 1000) {
   const stages = producerErrorStages(profile);
   const labels = [
@@ -1017,6 +2053,10 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
   producerErrorWitness.commands = syntheticProducerErrorCommands(
     candidateCommandTemplate, producerErrorWitness, profile,
   );
+  const foregroundEvidence = syntheticProfileForegroundEvidence(profile);
+  const thumbnailSettlements = syntheticProfileThumbnailSettlements(
+    profile, foregroundEvidence.pageAuthorities.main, candidateCommandTemplate,
+  );
   return {
     profile,
     reviewPacket: [],
@@ -1039,6 +2079,7 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
       lazy: 'selftest-lazy-document', lazyEnd: 'selftest-lazy-document',
       main: 'selftest-main-document',
     },
+    pageAuthorities: foregroundEvidence.pageAuthorities,
     targets: { first, middle, last, filter, detail: filter, pinned: first },
     identity: { alphaKey: 'complete-key-alpha', betaKey: 'complete-key-beta' },
     phases: {
@@ -1129,6 +2170,9 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
           baselineGeneration: 10, priorQuery: 'Compendium Filter Beacon', priorFilteredCount: 1,
         }),
       ],
+      foregroundServices: foregroundEvidence.foregroundServices,
+      thumbnailSettlements,
+      thumbnailSettlementHistory: thumbnailSettlements.map(clone),
     },
     points: { lazyBoot, lazyEnd, initial, first: firstPoint, middle: middlePoint, last: lastPoint,
       filtered, detail, detailClosed, back, focusPinned, closed, planetside, warm,
@@ -1436,6 +2480,52 @@ export async function runCompendiumMemSelftest() {
   assert(recorderLedger.length === 3 && recorderWitness.commands.length === 1
     && recorderWitness.commands[0] === retainedProducerCommand,
   'the real collector command callback did not retain the exact producer subset only while owned');
+  const compactedThumbLedger = [];
+  const recordCompactedThumb = createCandidateCommandRecorder({
+    commandLedger: compactedThumbLedger,
+    producerErrorCandidateLabels: new Set(),
+    getProducerErrorWitness: () => null,
+  });
+  const firstThumbPoll = clone(candidateReady.ledger[0]);
+  firstThumbPoll.label = `${THUMB_SETTLEMENT_RECEIPT_PLAN[0].label} thumb settlement`;
+  const terminalThumbPoll = clone(firstThumbPoll);
+  recordCompactedThumb(firstThumbPoll);
+  recordCompactedThumb(terminalThumbPoll);
+  const nextThumbAttemptPoll = clone(terminalThumbPoll);
+  nextThumbAttemptPoll.phaseDeadlineMs += THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS;
+  recordCompactedThumb(nextThumbAttemptPoll);
+  assert(compactedThumbLedger.length === 2
+    && compactedThumbLedger[0] === terminalThumbPoll
+    && compactedThumbLedger[1] === nextThumbAttemptPoll,
+  'thumbnail polling was not compacted to one terminal command per semantic deadline group');
+  const countBoundLedger = [];
+  const recordCountBound = createCandidateCommandRecorder({
+    commandLedger: countBoundLedger,
+    producerErrorCandidateLabels: new Set(),
+    getProducerErrorWitness: () => null,
+  });
+  for (let index = 0; index < MAX_PARTIAL_COMMAND_LEDGER_ENTRIES; index++) {
+    recordCountBound({ label: `bounded-${index}` });
+  }
+  assert(countBoundLedger.length === MAX_PARTIAL_COMMAND_LEDGER_ENTRIES,
+    'candidate command recorder rejected its exact entry boundary');
+  structuredInstrumentControlCount++;
+  assertThrows(() => recordCountBound({ label: 'one-entry-over' }),
+    'candidate command recorder accepted one entry beyond its sealed bound');
+  assert(countBoundLedger.length === MAX_PARTIAL_COMMAND_LEDGER_ENTRIES,
+    'entry-bound refusal mutated the retained command ledger');
+  const byteBoundLedger = [];
+  const recordByteBound = createCandidateCommandRecorder({
+    commandLedger: byteBoundLedger,
+    producerErrorCandidateLabels: new Set(),
+    getProducerErrorWitness: () => null,
+  });
+  structuredInstrumentControlCount++;
+  assertThrows(() => recordByteBound({
+    label: 'one-command-over-byte-bound', payload: 'x'.repeat(MAX_PARTIAL_COMMAND_LEDGER_BYTES),
+  }), 'candidate command recorder accepted a command beyond its sealed byte bound');
+  assert(byteBoundLedger.length === 0,
+    'byte-bound refusal mutated the retained command ledger');
   const candidateAnswerabilityReady = await runCandidateWaitScenario([{
     target: { deltaMs: 10, value: 'phone-first' },
     heartbeat: { deltaMs: 15, product: 'Edg/151.0.4129.107' },
@@ -2753,6 +3843,38 @@ export async function runCompendiumMemSelftest() {
       && compendiumBrowserAuthorityMatches(browser, browserAuthority),
     `version-tolerant Edge authority rejected ${browser.product}`);
   }
+  const historicalCapabilitySha256 =
+    COMPENDIUM_BROWSER_HISTORICAL_CAPABILITY_CONTRACT_SHA256S[0];
+  const historicalBrowserAuthority = {
+    ...browserAuthority, capabilityContractSha256: historicalCapabilitySha256,
+  };
+  structuredInstrumentControlCount++;
+  assert(COMPENDIUM_BROWSER_HISTORICAL_CAPABILITY_CONTRACT_SHA256S.length === 1
+    && historicalCapabilitySha256
+      === '6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476'
+    && validCompendiumBrowserAuthority(historicalBrowserAuthority)
+    && compendiumBrowserAuthorityMatches(
+      compatibleBrowserVariants[0], historicalBrowserAuthority,
+    ),
+  'the known historical browser-capability authority did not remain semantically verifiable');
+  const unknownBrowserAuthority = {
+    ...historicalBrowserAuthority, capabilityContractSha256: 'f'.repeat(64),
+  };
+  structuredInstrumentControlCount++;
+  assert(!validCompendiumBrowserAuthority(unknownBrowserAuthority)
+    && !compendiumBrowserAuthorityMatches(
+      compatibleBrowserVariants[0], unknownBrowserAuthority,
+    ),
+  'an unknown browser-capability authority matched current Edge semantics');
+  const historicalAuthorityBudget = clone(budget);
+  historicalAuthorityBudget.browserAuthority = historicalBrowserAuthority;
+  const historicalAuthorityBudgetCheck = validateBudget(historicalAuthorityBudget);
+  structuredInstrumentControlCount++;
+  assert(compendiumBudgetBrowserAuthority(historicalAuthorityBudget) === null
+    && !historicalAuthorityBudgetCheck.ok
+    && historicalAuthorityBudgetCheck.errors.some((error) =>
+      error.includes('budget browser authority is invalid')),
+  'a historical browser-capability hash served as the current budget authority');
   const incompatibleBrowserVariants = [
     ['Chrome family', { ...compatibleBrowserVariants[0], product: 'Chrome/151.0.4129.101' }],
     ['malformed Edge product', { ...compatibleBrowserVariants[0], product: 'Edg/151.0.4129' }],
@@ -4233,6 +5355,60 @@ export async function runCompendiumMemSelftest() {
     control(label, phone, budget, fixture, mutate, expected);
   }
 
+  const missingForegroundServices = clone(phone);
+  delete missingForegroundServices.phases.foregroundServices;
+  const missingForegroundOutcomes = evaluateProfile(
+    missingForegroundServices, budget, fixture,
+  );
+  structuredInstrumentControlCount++;
+  assert(missingForegroundOutcomes.some((outcome) =>
+    outcome.check === 'lazy-art-not-eager' && outcome.status === 'fail'),
+  'direct evaluator stayed green when the current profile omitted foreground service receipts');
+
+  const historicalForegroundOmission = clone(phone);
+  delete historicalForegroundOmission.pageAuthorities;
+  delete historicalForegroundOmission.phases.foregroundServices;
+  const strictHistoricalOutcomes = evaluateProfile(
+    historicalForegroundOmission, budget, fixture,
+  );
+  structuredInstrumentControlCount++;
+  assert(strictHistoricalOutcomes.some((outcome) =>
+    outcome.check === 'lazy-art-not-eager' && outcome.status === 'fail'),
+  'a foreground-omitting profile escaped the strict current evaluator');
+  structuredInstrumentControlCount++;
+  assertThrows(() => evaluateProfile(
+    historicalForegroundOmission, budget, fixture,
+    { allowHistoricalForegroundOmission: true },
+  ), 'direct evaluator accepted a historical foreground-omission bypass');
+
+  const missingThumbnailSettlements = clone(phone);
+  delete missingThumbnailSettlements.phases.thumbnailSettlements;
+  const missingThumbnailOutcomes = evaluateProfile(
+    missingThumbnailSettlements, budget, fixture,
+  );
+  structuredInstrumentControlCount++;
+  assert(missingThumbnailOutcomes.some((outcome) =>
+    outcome.check === 'lazy-art-not-eager' && outcome.status === 'fail'),
+  'direct evaluator stayed green when the current profile omitted thumbnail receipts');
+
+  const strictThumbnailOmission = clone(phone);
+  delete strictThumbnailOmission.phases.thumbnailSettlements;
+  structuredInstrumentControlCount++;
+  assertThrows(() => evaluateProfile(
+    strictThumbnailOmission, budget, fixture,
+    { allowHistoricalThumbnailOmission: true },
+  ), 'direct evaluator accepted a historical thumbnail-omission bypass');
+
+  const brokenCurrentForeground = clone(phone);
+  brokenCurrentForeground.phases.foregroundServices[0].timing.deadlineMs += 1;
+  const brokenCurrentOutcomes = evaluateProfile(
+    brokenCurrentForeground, budget, fixture,
+  );
+  structuredInstrumentControlCount++;
+  assert(brokenCurrentOutcomes.some((outcome) =>
+    outcome.check === 'lazy-art-not-eager' && outcome.status === 'fail'),
+  'historical replay option laundered a present but broken current foreground receipt');
+
   const outcomes = [
     ...evaluateProfile(phone, budget, fixture),
     ...evaluateProfile(desktop, budget, fixture),
@@ -4251,6 +5427,252 @@ export async function runCompendiumMemSelftest() {
   const boundReportCheck = productionVerify(report);
   assert(boundReportCheck.ok,
     `production budget-bound terminal report was rejected: ${boundReportCheck.errors.join('; ')}`);
+  const foregroundTerminalControls = [
+    ['missing receipt', (profile) => { profile.phases.foregroundServices.pop(); }],
+    ['duplicate receipt', (profile) => {
+      profile.phases.foregroundServices[1]
+        = clone(profile.phases.foregroundServices[0]);
+    }],
+    ['receipt order', (profile) => {
+      [profile.phases.foregroundServices[0], profile.phases.foregroundServices[1]]
+        = [profile.phases.foregroundServices[1], profile.phases.foregroundServices[0]];
+    }],
+    ['coordinated stale target', (profile) => {
+      const receipt = profile.phases.foregroundServices[0];
+      receipt.expected.targetId = 'coordinated-stale-target';
+      receipt.observation.targetId = 'coordinated-stale-target';
+    }],
+    ['coordinated stale session', (profile) => {
+      const receipt = profile.phases.foregroundServices[0];
+      receipt.expected.sessionId = 'coordinated-stale-session';
+      receipt.observation.sessionId = 'coordinated-stale-session';
+    }],
+    ['coordinated stale document', (profile) => {
+      const receipt = profile.phases.foregroundServices[0];
+      receipt.expected.documentToken = 'coordinated-stale-document';
+      receipt.observation.documentToken = 'coordinated-stale-document';
+    }],
+    ['coordinated wrong service', (profile) => {
+      const receipt = profile.phases.foregroundServices[0];
+      receipt.expected.serviceToken = 'coordinated-wrong-service';
+      receipt.observation.service.token = 'coordinated-wrong-service';
+    }],
+    ['hidden receipt', (profile) => {
+      const observation = profile.phases.foregroundServices[0].observation;
+      observation.visibilityState = 'hidden';
+      observation.hidden = true;
+    }],
+    ['unfocused receipt', (profile) => {
+      profile.phases.foregroundServices[0].observation.focused = false;
+    }],
+    ['visibility loss', (profile) => {
+      profile.phases.foregroundServices[0].observation.service.visibilityChanges = 1;
+    }],
+    ['focus loss', (profile) => {
+      profile.phases.foregroundServices[0].observation.service.focusLosses = 1;
+    }],
+    ['arm reordered', (profile) => {
+      profile.phases.foregroundServices[0].observation.service.arm.sequence = 1;
+    }],
+    ['rAF reordered', (profile) => {
+      profile.phases.foregroundServices[0].observation.service.raf.sequence = 2;
+    }],
+    ['later task reordered', (profile) => {
+      profile.phases.foregroundServices[0].observation.service.laterTask.sequence = 1;
+    }],
+    ['receipt at deadline', (profile) => {
+      const timing = profile.phases.foregroundServices[0].timing;
+      timing.receivedAtMs = timing.deadlineMs;
+    }],
+    ['non-exact deadline', (profile) => {
+      profile.phases.foregroundServices[0].timing.deadlineMs += 1;
+    }],
+    ['wrong timeout', (profile) => {
+      profile.phases.foregroundServices[0].timing.timeoutMs = 4_999;
+    }],
+    ['cleanup residue', (profile) => {
+      profile.phases.foregroundServices[0].cleanup.cleanupPresent = true;
+    }],
+    ['service residue', (profile) => {
+      profile.phases.foregroundServices[0].cleanup.servicePresent = true;
+    }],
+    ['missing page authorities', (profile) => { delete profile.pageAuthorities; }],
+  ];
+  for (const [label, mutate] of foregroundTerminalControls) {
+    const changed = clone(report);
+    mutate(changed.profiles.phone);
+    structuredInstrumentControlCount++;
+    assert(!verifyTerminalReport(changed, 'selftest-current').ok
+      && !productionVerify(changed).ok,
+    `terminal verifier accepted foreground service ${label}`);
+  }
+  const latestThumbnailCarriers = (profile, planIndex) => {
+    const label = THUMB_SETTLEMENT_RECEIPT_PLAN[planIndex].label;
+    const latestHistory = profile.phases.thumbnailSettlementHistory
+      .filter((receipt) => receipt.label === label).at(-1);
+    return [profile.phases.thumbnailSettlements[planIndex], latestHistory];
+  };
+  const thumbnailTerminalControls = [
+    ['missing receipt', (profile) => { profile.phases.thumbnailSettlements.pop(); }],
+    ['duplicate receipt', (profile) => {
+      profile.phases.thumbnailSettlements[1]
+        = clone(profile.phases.thumbnailSettlements[0]);
+    }],
+    ['receipt order', (profile) => {
+      [profile.phases.thumbnailSettlements[0], profile.phases.thumbnailSettlements[1]]
+        = [profile.phases.thumbnailSettlements[1], profile.phases.thumbnailSettlements[0]];
+    }],
+    ['coordinated token identity', (profile) => {
+      for (const receipt of latestThumbnailCarriers(profile, 0)) {
+        receipt.expected.receiptToken = 'coordinated-foreign-token';
+        receipt.observation.receiptToken = 'coordinated-foreign-token';
+      }
+    }],
+    ['coordinated page identity', (profile) => {
+      for (const receipt of latestThumbnailCarriers(profile, 0)) {
+        receipt.expected.targetId = 'coordinated-foreign-target';
+        receipt.observation.page.targetId = 'coordinated-foreign-target';
+      }
+    }],
+    ['coordinated expected semantics', (profile) => {
+      for (const receipt of latestThumbnailCarriers(profile, 1)) {
+        receipt.expected.expectedCount = 1499;
+        receipt.observation.expectedCount = 1499;
+        receipt.observation.diagnostic.filteredCount = 1499;
+        const decision = classifyCompendiumThumbSettlement(
+          receipt.observation, receipt.expected,
+        );
+        receipt.observation.ready = decision.status === 'ready';
+        receipt.observation.reasons = [...decision.reasons];
+      }
+    }],
+    ['command label', (profile) => {
+      for (const receipt of latestThumbnailCarriers(profile, 0)) {
+        receipt.command.label = 'foreign thumb settlement';
+      }
+    }],
+    ['command profile', (profile) => {
+      for (const receipt of latestThumbnailCarriers(profile, 0)) {
+        receipt.command.profile = 'desktop';
+      }
+    }],
+    ['command timing', (profile) => {
+      for (const receipt of latestThumbnailCarriers(profile, 0)) {
+        receipt.command.phaseDeadlineMs += 1;
+      }
+    }],
+    ['receipt timing', (profile) => {
+      for (const receipt of latestThumbnailCarriers(profile, 0)) {
+        receipt.timing.timeoutMs -= 1;
+      }
+    }],
+    ['late receipt', (profile) => {
+      for (const receipt of latestThumbnailCarriers(profile, 0)) {
+        receipt.timing.receivedAtMs = receipt.timing.deadlineMs;
+      }
+    }],
+    ['wrong heartbeat browser', (profile) => {
+      for (const receipt of latestThumbnailCarriers(profile, 0)) {
+        receipt.command.heartbeat.product = 'Edg/999.42.7.3';
+      }
+    }],
+    ['independently mutated main page', (profile) => {
+      profile.pageAuthorities.main.targetId = 'foreign-main-target';
+    }],
+  ];
+  for (const [label, mutate] of thumbnailTerminalControls) {
+    const changed = clone(report);
+    mutate(changed.profiles.phone);
+    structuredInstrumentControlCount++;
+    assert(!verifyTerminalReport(changed, 'selftest-current').ok
+      && !productionVerify(changed).ok,
+    `terminal verifier accepted thumbnail receipt ${label}`);
+  }
+  const retokenThumbnailReceipt = (receipt, profile, attempt) => {
+    const receiptToken = compendiumThumbSettlementReceiptToken(
+      profile, receipt.label, attempt,
+    );
+    receipt.attempt = attempt;
+    receipt.expected.receiptToken = receiptToken;
+    receipt.observation.receiptToken = receiptToken;
+  };
+  const coordinatedAttemptWithoutHistory = clone(report);
+  const coordinatedAttemptProfile = coordinatedAttemptWithoutHistory.profiles.phone;
+  for (const receipt of [
+    coordinatedAttemptProfile.phases.thumbnailSettlements[0],
+    coordinatedAttemptProfile.phases.thumbnailSettlementHistory[0],
+  ]) retokenThumbnailReceipt(receipt, 'phone', 2);
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(coordinatedAttemptWithoutHistory, 'selftest-current').ok
+    && !productionVerify(coordinatedAttemptWithoutHistory).ok,
+  'coordinated complete attempt/token inflation escaped without prior accepted history');
+
+  const completeRetryReceipt = syntheticThumbnailSettlementReceipt({
+    profile: 'phone', pageAuthority: phone.pageAuthorities.main,
+    candidateCommandTemplate: candidateReady.ledger[0],
+    planIndex: 0, attempt: 2, issuedAtMs: 135_000,
+  });
+  const completeRetryReport = clone(report);
+  completeRetryReport.profiles.phone.phases.thumbnailSettlementHistory.splice(
+    1, 0, clone(completeRetryReceipt),
+  );
+  completeRetryReport.profiles.phone.phases.thumbnailSettlements[0]
+    = clone(completeRetryReceipt);
+  const completeRetryLocal = verifyTerminalReport(
+    completeRetryReport, 'selftest-current',
+  );
+  const completeRetryBound = productionVerify(completeRetryReport);
+  assert(completeRetryLocal.ok && completeRetryBound.ok,
+    `complete retry with append-only accepted history was rejected: ${[
+      ...completeRetryLocal.errors, ...completeRetryBound.errors,
+    ].join('; ')}`);
+
+  const completeHistoryControls = [
+    ['missing accepted receipt', (profile) => {
+      profile.phases.thumbnailSettlementHistory.splice(0, 1);
+    }],
+    ['reordered attempts', (profile) => {
+      const history = profile.phases.thumbnailSettlementHistory;
+      [history[0], history[1]] = [history[1], history[0]];
+    }],
+    ['duplicate attempt', (profile) => {
+      profile.phases.thumbnailSettlementHistory.splice(
+        1, 0, clone(profile.phases.thumbnailSettlementHistory[0]),
+      );
+    }],
+    ['skipped attempt', (profile) => {
+      retokenThumbnailReceipt(profile.phases.thumbnailSettlementHistory[1], 'phone', 3);
+      retokenThumbnailReceipt(profile.phases.thumbnailSettlements[0], 'phone', 3);
+    }],
+    ['wrong latest receipt', (profile) => {
+      profile.phases.thumbnailSettlements[0]
+        = clone(profile.phases.thumbnailSettlementHistory[0]);
+    }],
+    ['history command', (profile) => {
+      profile.phases.thumbnailSettlementHistory[0].command.label
+        = 'foreign thumb settlement';
+    }],
+    ['history timing', (profile) => {
+      profile.phases.thumbnailSettlementHistory[0].timing.timeoutMs -= 1;
+    }],
+    ['history page', (profile) => {
+      const receipt = profile.phases.thumbnailSettlementHistory[0];
+      receipt.expected.targetId = 'foreign-history-target';
+      receipt.observation.page.targetId = 'foreign-history-target';
+    }],
+    ['history browser', (profile) => {
+      profile.phases.thumbnailSettlementHistory[0].command.heartbeat.product
+        = 'Edg/999.42.7.3';
+    }],
+  ];
+  for (const [label, mutate] of completeHistoryControls) {
+    const changed = clone(completeRetryReport);
+    mutate(changed.profiles.phone);
+    structuredInstrumentControlCount++;
+    assert(!verifyTerminalReport(changed, 'selftest-current').ok
+      && !productionVerify(changed).ok,
+    `terminal verifier accepted complete thumbnail history ${label}`);
+  }
   const missingLifecycle = clone(report);
   delete missingLifecycle.lifecycle;
   assert(!productionVerify(missingLifecycle).ok,
@@ -4679,6 +6101,7 @@ export async function runCompendiumMemSelftest() {
     partialFailure: {
       schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
       lastCompletedStage: null, failingStage: 'preflight', command: null,
+      diagnosis: 'pre-browser selftest failure',
     },
     blockedOutcomes: [...EXPECTED_OUTCOMES],
   };
@@ -4740,6 +6163,11 @@ export async function runCompendiumMemSelftest() {
         producerErrorWitness: clone(fullPhoneProducerWitness),
         filterTransitions: [],
         reviewPacket: clone(partialReview),
+        diagnosis: candidateTargetTimeout.failure.message,
+        pageAuthorities: clone(phone.pageAuthorities),
+        thumbnailSettlements: [],
+        thumbnailSettlementHistory: [],
+        activeThumbnailSettlement: null,
       },
     },
     reviewPacket: clone(partialReview),
@@ -4750,15 +6178,224 @@ export async function runCompendiumMemSelftest() {
       lastCompletedStage: 'Compendium open',
       failingStage: 'list thumb settlement',
       command: clone(productTerminalCommand),
+      diagnosis: candidateTargetTimeout.failure.message,
     },
     blockedOutcomes: [...EXPECTED_OUTCOMES],
   };
   const partialArtifact = () => true;
+  const setPartialDiagnosis = (candidate, diagnosis) => {
+    const prefix = candidate.partialFailure.classification === 'product-unanswerable'
+      ? 'product' : 'instrument';
+    candidate.partialFailure.diagnosis = diagnosis;
+    candidate.findings = [`${prefix}: ${diagnosis}`];
+    const partialProfile = candidate.partialFailure.profile === null
+      ? null : candidate.profiles[candidate.partialFailure.profile];
+    if (partialProfile?.schema === PARTIAL_PROFILE_SCHEMA) {
+      partialProfile.diagnosis = diagnosis;
+    }
+  };
   const productPartialCheck = verifyTerminalReport(productPartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
   });
   assert(productPartialCheck.ok,
     `healthy-heartbeat product-unanswerable partial report was rejected: ${productPartialCheck.errors.join('; ')}`);
+  const arbitraryFindingMismatch = clone(productPartial);
+  arbitraryFindingMismatch.findings = ['product: arbitrary unrelated diagnosis'];
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(arbitraryFindingMismatch, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a partial finding drifted independently from its sealed diagnosis');
+
+  const firstThumbReceipt = clone(phone.phases.thumbnailSettlements[0]);
+  const nextThumbPlan = THUMB_SETTLEMENT_RECEIPT_PLAN[1];
+  const nextThumbAttempt = 1;
+  const nextThumbIssuedAtMs = firstThumbReceipt.timing.receivedAtMs + 1_000;
+  const nextThumbExpected = {
+    surface: nextThumbPlan.surface,
+    expectedCount: nextThumbPlan.expectedCount,
+    ...phone.pageAuthorities.main,
+    receiptToken: compendiumThumbSettlementReceiptToken(
+      'phone', nextThumbPlan.label, nextThumbAttempt,
+    ),
+  };
+  const nextThumbActive = {
+    schema: THUMB_SETTLEMENT_ACTIVE_SCHEMA,
+    label: nextThumbPlan.label,
+    attempt: nextThumbAttempt,
+    expected: nextThumbExpected,
+    lastObservation: null,
+    lastDecision: null,
+    lastCommand: null,
+    timing: {
+      issuedAtMs: nextThumbIssuedAtMs,
+      deadlineMs: nextThumbIssuedAtMs + THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS,
+      receivedAtMs: null,
+      timeoutMs: THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS,
+    },
+  };
+  assert(validCompendiumActiveThumbSettlement(nextThumbActive, {
+    profile: 'phone', pageAuthority: phone.pageAuthorities.main,
+    browserProduct: report.browser.product, planIndex: 1,
+  }), 'synthetic partial thumbnail active tail was not exact');
+  const thumbnailPrefixPartial = clone(productPartial);
+  thumbnailPrefixPartial.status = 'instrument-fail';
+  thumbnailPrefixPartial.partialFailure.classification = 'instrument';
+  thumbnailPrefixPartial.partialFailure.command = null;
+  thumbnailPrefixPartial.partialFailure.lastCompletedStage = firstThumbReceipt.command.label;
+  thumbnailPrefixPartial.partialFailure.failingStage
+    = `${nextThumbPlan.label} thumb settlement`;
+  thumbnailPrefixPartial.profiles.phone.commandLedger.pop();
+  thumbnailPrefixPartial.profiles.phone.commandLedger.push(clone(firstThumbReceipt.command));
+  thumbnailPrefixPartial.profiles.phone.completedStages.push(firstThumbReceipt.command.label);
+  thumbnailPrefixPartial.profiles.phone.lastCompletedStage = firstThumbReceipt.command.label;
+  thumbnailPrefixPartial.profiles.phone.failingStage
+    = `${nextThumbPlan.label} thumb settlement`;
+  thumbnailPrefixPartial.profiles.phone.thumbnailSettlements = [firstThumbReceipt];
+  thumbnailPrefixPartial.profiles.phone.thumbnailSettlementHistory
+    = [clone(firstThumbReceipt)];
+  thumbnailPrefixPartial.profiles.phone.activeThumbnailSettlement = nextThumbActive;
+  setPartialDiagnosis(thumbnailPrefixPartial,
+    'viewport-contracted thumbnail settlement did not begin');
+  const thumbnailPrefixCheck = verifyTerminalReport(
+    thumbnailPrefixPartial, 'selftest-current', { verifyArtifact: partialArtifact },
+  );
+  assert(thumbnailPrefixCheck.ok,
+    `exact partial thumbnail prefix/tail was rejected: ${thumbnailPrefixCheck.errors.join('; ')}`);
+
+  for (const field of ['targetId', 'sessionId', 'documentToken']) {
+    const coordinatedStaleAuthority = clone(thumbnailPrefixPartial);
+    const foreign = `coordinated-foreign-${field}`;
+    for (const receipt of [
+      coordinatedStaleAuthority.profiles.phone.thumbnailSettlements[0],
+      coordinatedStaleAuthority.profiles.phone.thumbnailSettlementHistory[0],
+    ]) {
+      receipt.expected[field] = foreign;
+      receipt.observation.page[field] = foreign;
+    }
+    coordinatedStaleAuthority.profiles.phone.activeThumbnailSettlement.expected[field] = foreign;
+    structuredInstrumentControlCount++;
+    assert(!verifyTerminalReport(coordinatedStaleAuthority, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, `partial thumbnail evidence coordinated a stale ${field} without attach authority`);
+  }
+  const independentlyStalePartialAuthority = clone(thumbnailPrefixPartial);
+  independentlyStalePartialAuthority.profiles.phone.pageAuthorities.main.targetId
+    = 'foreign-main-target';
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(independentlyStalePartialAuthority, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial attach-derived page authority drifted independently from thumbnail evidence');
+  const missingPartialPageAuthorities = clone(thumbnailPrefixPartial);
+  delete missingPartialPageAuthorities.profiles.phone.pageAuthorities;
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(missingPartialPageAuthorities, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial thumbnail evidence omitted its attach-derived page authorities');
+
+  const readyUnreceipted = clone(phone.phases.thumbnailSettlements[1]);
+  const readyReceiptFailureActive = {
+    schema: THUMB_SETTLEMENT_ACTIVE_SCHEMA,
+    label: readyUnreceipted.label,
+    attempt: readyUnreceipted.attempt,
+    expected: readyUnreceipted.expected,
+    lastObservation: readyUnreceipted.observation,
+    lastDecision: classifyCompendiumThumbSettlement(
+      readyUnreceipted.observation, readyUnreceipted.expected,
+    ),
+    lastCommand: readyUnreceipted.command,
+    timing: readyUnreceipted.timing,
+  };
+  assert(!validCompendiumActiveThumbSettlement(readyReceiptFailureActive, {
+    profile: 'phone', pageAuthority: phone.pageAuthorities.main,
+    browserProduct: report.browser.product, planIndex: 1,
+  }) && validCompendiumActiveThumbSettlement(readyReceiptFailureActive, {
+    profile: 'phone', pageAuthority: phone.pageAuthorities.main,
+    browserProduct: report.browser.product, planIndex: 1,
+    allowReadyReceiptFailure: true,
+  }), 'ready observation was not isolated to the explicit receipt-failure tail authority');
+  const readyReceiptFailurePartial = clone(thumbnailPrefixPartial);
+  readyReceiptFailurePartial.profiles.phone.commandLedger.push(
+    clone(readyUnreceipted.command),
+  );
+  readyReceiptFailurePartial.profiles.phone.activeThumbnailSettlement
+    = readyReceiptFailureActive;
+  setPartialDiagnosis(readyReceiptFailurePartial,
+    `phone ${readyUnreceipted.label}: accepted thumbnail settlement receipt is invalid`);
+  const readyReceiptFailureCheck = verifyTerminalReport(
+    readyReceiptFailurePartial, 'selftest-current', { verifyArtifact: partialArtifact },
+  );
+  assert(readyReceiptFailureCheck.ok,
+    `truthful ready-but-unreceipted instrument tail was rejected: ${readyReceiptFailureCheck.errors.join('; ')}`);
+  const launderedReadyTail = clone(readyReceiptFailurePartial);
+  setPartialDiagnosis(launderedReadyTail, 'unrelated instrument failure');
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(launderedReadyTail, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'ready active tail escaped without the exact receipt-assembly diagnosis');
+
+  const missingPartialReceiptPrefix = clone(thumbnailPrefixPartial);
+  missingPartialReceiptPrefix.profiles.phone.thumbnailSettlements = [];
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(missingPartialReceiptPrefix, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'active thumbnail tail survived a missing completed receipt prefix');
+  const missingPartialActiveTail = clone(thumbnailPrefixPartial);
+  missingPartialActiveTail.profiles.phone.activeThumbnailSettlement = null;
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(missingPartialActiveTail, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'thumbnail-stage failure omitted its active settlement tail');
+  const skippedPartialReceipt = clone(thumbnailPrefixPartial);
+  skippedPartialReceipt.profiles.phone.thumbnailSettlements[0]
+    = clone(phone.phases.thumbnailSettlements[1]);
+  skippedPartialReceipt.profiles.phone.thumbnailSettlementHistory[0]
+    = clone(phone.phases.thumbnailSettlementHistory[1]);
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(skippedPartialReceipt, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial thumbnail receipt prefix began after the first sealed plan phase');
+  const partialActiveTokenMismatch = clone(thumbnailPrefixPartial);
+  partialActiveTokenMismatch.profiles.phone.activeThumbnailSettlement
+    .expected.receiptToken = 'foreign-active-token';
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(partialActiveTokenMismatch, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial thumbnail active tail accepted a foreign receipt token');
+  const partialActiveTimingMismatch = clone(thumbnailPrefixPartial);
+  partialActiveTimingMismatch.profiles.phone.activeThumbnailSettlement.timing.timeoutMs -= 1;
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(partialActiveTimingMismatch, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial thumbnail active tail accepted a non-exact phase ruler');
+
+  const retryThumbActive = clone(nextThumbActive);
+  retryThumbActive.label = firstThumbReceipt.label;
+  retryThumbActive.attempt = firstThumbReceipt.attempt + 1;
+  retryThumbActive.expected = {
+    ...firstThumbReceipt.expected,
+    receiptToken: compendiumThumbSettlementReceiptToken(
+      'phone', firstThumbReceipt.label, retryThumbActive.attempt,
+    ),
+  };
+  const thumbnailRetryPartial = clone(thumbnailPrefixPartial);
+  thumbnailRetryPartial.partialFailure.failingStage
+    = `${firstThumbReceipt.label} thumb settlement`;
+  thumbnailRetryPartial.profiles.phone.failingStage
+    = `${firstThumbReceipt.label} thumb settlement`;
+  thumbnailRetryPartial.profiles.phone.activeThumbnailSettlement = retryThumbActive;
+  setPartialDiagnosis(thumbnailRetryPartial,
+    'veteran Earth thumbnail settlement retry did not begin');
+  const thumbnailRetryCheck = verifyTerminalReport(
+    thumbnailRetryPartial, 'selftest-current', { verifyArtifact: partialArtifact },
+  );
+  assert(thumbnailRetryCheck.ok,
+    `exact semantic thumbnail retry tail was rejected: ${thumbnailRetryCheck.errors.join('; ')}`);
+  const retryWithoutPriorReceipt = clone(thumbnailRetryPartial);
+  retryWithoutPriorReceipt.profiles.phone.thumbnailSettlementHistory = [];
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(retryWithoutPriorReceipt, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'semantic thumbnail retry omitted its prior accepted receipt');
   const omittedFirstRowsTransaction = clone(productPartial);
   omittedFirstRowsTransaction.profiles.phone.completedStages
     = omittedFirstRowsTransaction.profiles.phone.completedStages.filter((stage) =>
@@ -4873,6 +6510,8 @@ export async function runCompendiumMemSelftest() {
   postStageValidationPartial.partialFailure.command = null;
   postStageValidationPartial.profiles.phone.failingStage = 'after Compendium open';
   postStageValidationPartial.profiles.phone.commandLedger.pop();
+  setPartialDiagnosis(postStageValidationPartial,
+    'local validation failed after Compendium open');
   assert(verifyTerminalReport(postStageValidationPartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'a distinct local post-stage validation failure was rejected');
@@ -4944,6 +6583,7 @@ export async function runCompendiumMemSelftest() {
     lastCompletedStage: publicationCompletedStages.at(-1),
     failingStage: producerPartialStages.publication,
     command: clone(publicationFailureCommand),
+    diagnosis: 'phone producer error publication: root heartbeat failed',
   };
   publicationPartial.profiles.phone = {
     schema: PARTIAL_PROFILE_SCHEMA, profile: 'phone', viewport: { ...phoneViewport },
@@ -4956,6 +6596,10 @@ export async function runCompendiumMemSelftest() {
     ],
     producerErrorWitness: pendingProducerWitness,
     filterTransitions: [], reviewPacket: [],
+    diagnosis: 'phone producer error publication: root heartbeat failed',
+    pageAuthorities: clone(phone.pageAuthorities),
+    thumbnailSettlements: [], thumbnailSettlementHistory: [],
+    activeThumbnailSettlement: null,
   };
   assert(verifyTerminalReport(publicationPartial, 'selftest-current').ok,
     'a stable-open pending publication lost its progressive falsies/stage/command evidence');
@@ -4988,6 +6632,7 @@ export async function runCompendiumMemSelftest() {
     lastCompletedStage: producerPartialStages.publication,
     failingStage: producerPartialStages.coldProof,
     command: null,
+    diagnosis: 'phone producer error cold-key proof: local validation failed',
   };
   healthyColdProofFailure.profiles.phone = {
     schema: PARTIAL_PROFILE_SCHEMA, profile: 'phone', viewport: { ...phoneViewport },
@@ -4998,6 +6643,10 @@ export async function runCompendiumMemSelftest() {
     commandLedger: clone(healthyColdProofWitness.commands),
     producerErrorWitness: healthyColdProofWitness,
     filterTransitions: [], reviewPacket: [],
+    diagnosis: 'phone producer error cold-key proof: local validation failed',
+    pageAuthorities: clone(phone.pageAuthorities),
+    thumbnailSettlements: [], thumbnailSettlementHistory: [],
+    activeThumbnailSettlement: null,
   };
   const honestColdProofFailure = clone(healthyColdProofFailure);
   const honestColdProofWitness = honestColdProofFailure.profiles.phone
@@ -5200,6 +6849,8 @@ export async function runCompendiumMemSelftest() {
   filterTimeoutPartial.profiles.phone.filterTransitions = [
     firstTransition, pendingBeacon,
   ];
+  setPartialDiagnosis(filterTimeoutPartial,
+    'phone filter Compendium Filter Beacon: root heartbeat failed');
   assert(verifyTerminalReport(filterTimeoutPartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'filter-timeout partial report lost its completed/pending transition witness');
@@ -5264,6 +6915,8 @@ export async function runCompendiumMemSelftest() {
   beaconSearchTargetFailure.profiles.phone.filterTransitions = [
     clone(firstTransition), pendingBeaconAtSearchTarget,
   ];
+  setPartialDiagnosis(beaconSearchTargetFailure,
+    'phone search Compendium Filter Beacon target: root heartbeat failed');
   const beaconSearchTargetFailureCheck = verifyTerminalReport(
     beaconSearchTargetFailure, 'selftest-current', {
     verifyArtifact: partialArtifact,
@@ -5461,6 +7114,9 @@ export async function runCompendiumMemSelftest() {
   beaconBackspacePartial.profiles.phone.filterTransitions = [
     clone(firstTransition), pendingBeaconAtBackspace,
   ];
+  setPartialDiagnosis(beaconBackspacePartial,
+    `phone ${beaconBackspaceCommand.label}: Input.dispatchKeyEvent failed under the `
+      + `${beaconBackspaceCommand.timeoutMs}ms transport cap (${beaconBackspaceCommand.error})`);
   assert(verifyTerminalReport(beaconBackspacePartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'Beacon Backspace failure with its exact prior transition prefix was rejected');
@@ -5564,6 +7220,7 @@ export async function runCompendiumMemSelftest() {
   completedThenLaterFailure.profiles.phone.filterTransitions = [
     clone(firstTransition),
   ];
+  setPartialDiagnosis(completedThenLaterFailure, 'post-filter selftest failure');
   assert(verifyTerminalReport(completedThenLaterFailure, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'a completed filter witness plus later instrument failure was rejected');
@@ -5608,6 +7265,7 @@ export async function runCompendiumMemSelftest() {
     ...reopenStages,
     ...snapshotStageGroup('detail'), 'screenshot detail', 'review detail',
   ];
+  setPartialDiagnosis(detailReviewPartial, 'post-detail selftest failure');
   assert(verifyTerminalReport(detailReviewPartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'a source-ordered producer/filter/snapshot/detail partial prefix was rejected');
@@ -5678,6 +7336,8 @@ export async function runCompendiumMemSelftest() {
   reopenTerminalFailure.profiles.phone.filterTransitions = [
     ...completedBeforeClear, pendingClearTransition,
   ];
+  setPartialDiagnosis(reopenTerminalFailure,
+    'phone filter <clear>: root heartbeat failed');
   const reopenTerminalFailureCheck = verifyTerminalReport(
     reopenTerminalFailure, 'selftest-current', { verifyArtifact: partialArtifact },
   );
@@ -5797,6 +7457,7 @@ export async function runCompendiumMemSelftest() {
   rawHeapPartial.profiles.phone.producerErrorWitness = null;
   rawHeapPartial.profiles.phone.reviewPacket = [];
   rawHeapPartial.reviewPacket = [];
+  setPartialDiagnosis(rawHeapPartial, rawHeapFailure.message);
   assert(verifyTerminalReport(rawHeapPartial, 'selftest-current').ok,
     'post-GC raw heap failure did not retain exact completed/failing/method evidence');
   const rawHeapWrongMethod = clone(rawHeapPartial);
@@ -5830,6 +7491,11 @@ export async function runCompendiumMemSelftest() {
     phone: clone(report.profiles.phone), desktop: desktopPartialMeasurement,
   };
   desktopPartialReport.reviewPacket = [];
+  setPartialDiagnosis(desktopPartialReport,
+    `desktop ${desktopPartialReport.partialFailure.command.label}: `
+      + `${desktopPartialReport.partialFailure.command.method} failed under the `
+      + `${desktopPartialReport.partialFailure.command.timeoutMs}ms transport cap `
+      + `(${desktopPartialReport.partialFailure.command.error})`);
   const desktopPartialCheck = verifyTerminalReport(desktopPartialReport, 'selftest-current');
   assert(desktopPartialCheck.ok,
     `phone-complete plus desktop-partial collection prefix was rejected: ${desktopPartialCheck.errors.join('; ')}`);
@@ -5846,6 +7512,7 @@ export async function runCompendiumMemSelftest() {
     ], reviewPacket: [], partialFailure: {
       schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
       lastCompletedStage: null, failingStage: 'sealed outcome evaluation', command: null,
+      diagnosis: 'post-profile selftest failure',
     }, blockedOutcomes: [...EXPECTED_OUTCOMES],
   };
   assert(verifyTerminalReport(postCollectionPartial, 'selftest-current').ok,
@@ -5933,6 +7600,7 @@ export async function runCompendiumMemSelftest() {
   pageExceptionPartial.profiles.phone.commandLedger = [
     ...clone(baseProducerLedger), clone(shiftedPageException),
   ];
+  setPartialDiagnosis(pageExceptionPartial, 'candidate page exception');
   assert(verifyTerminalReport(pageExceptionPartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'candidate page-exception command was rejected as partial instrument evidence');
@@ -6015,6 +7683,10 @@ export async function runCompendiumMemSelftest() {
         commandLedger: [clone(plainFailure.compendiumCommand)],
         producerErrorWitness: null, filterTransitions: [],
         reviewPacket: [],
+        diagnosis: plainFailure.message,
+        pageAuthorities: clone(phone.pageAuthorities),
+        thumbnailSettlements: [], thumbnailSettlementHistory: [],
+        activeThumbnailSettlement: null,
       },
     },
     reviewPacket: [],
@@ -6023,6 +7695,7 @@ export async function runCompendiumMemSelftest() {
       lastCompletedStage: 'main initial heap usage',
       failingStage: 'main initial product/DOM snapshot',
       command: clone(plainFailure.compendiumCommand),
+      diagnosis: plainFailure.message,
     },
     blockedOutcomes: [...EXPECTED_OUTCOMES],
   };
@@ -6152,6 +7825,7 @@ export async function runCompendiumMemSelftest() {
   authorityMismatch.partialFailure = {
     schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
     lastCompletedStage: null, failingStage: 'Arc 1A browser compatibility authority', command: null,
+    diagnosis: 'browser does not match the Arc 1A browser compatibility authority',
   };
   authorityMismatch.blockedOutcomes = [...EXPECTED_OUTCOMES];
   const authorityMismatchCheck = verifyTerminalReport(authorityMismatch, 'selftest-current');
@@ -6176,6 +7850,7 @@ export async function runCompendiumMemSelftest() {
   producerAuthorityMismatch.partialFailure = {
     schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
     lastCompletedStage: null, failingStage: 'Arc 1A producer authority', command: null,
+    diagnosis: 'built producer does not match the exact Arc 1A calibration authority',
   };
   producerAuthorityMismatch.blockedOutcomes = [...EXPECTED_OUTCOMES];
   assert(verifyTerminalReport(producerAuthorityMismatch, 'selftest-current').ok,
@@ -6244,6 +7919,7 @@ export async function runCompendiumMemSelftest() {
       partialFailure: {
         schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
         lastCompletedStage: null, failingStage: 'preflight', command: null,
+        diagnosis: 'injected pre-browser failure',
       },
     };
     atomicWriteJson(file, instrumentFail);
@@ -6266,6 +7942,45 @@ export async function runCompendiumMemSelftest() {
     const to = collectorSource.indexOf(end, from + start.length);
     return from >= 0 && to > from ? collectorSource.slice(from, to) : '';
   };
+  const thumbnailSettlementBlock = ownedLifecycleBlock(
+    '  const waitThumbSettlement = async (sessionId, surface, expectedCount, phaseLabel) => {',
+    '  const waitListReady = (sessionId, phaseLabel, expectedCount = null) =>',
+  );
+  const thumbnailClassificationAt = thumbnailSettlementBlock.indexOf(
+    'decision = classifyCompendiumThumbSettlement(observation, expected);',
+  );
+  const thumbnailObjectMutationGuardAt = thumbnailSettlementBlock.indexOf(
+    "if (observation !== null && typeof observation === 'object'",
+  );
+  const thumbnailNonObjectGuardAt = thumbnailSettlementBlock.indexOf(
+    "if (observation === null || typeof observation !== 'object'",
+  );
+  const thumbnailDiagnosisAt = thumbnailSettlementBlock.indexOf(
+    'thumbnail observation was not an object',
+  );
+  const thumbnailMutationAt = thumbnailSettlementBlock.indexOf(
+    "observation.ready = decision.status === 'ready';",
+  );
+  structuredInstrumentControlCount++;
+  assert(thumbnailClassificationAt >= 0
+    && thumbnailClassificationAt < thumbnailObjectMutationGuardAt
+    && thumbnailObjectMutationGuardAt < thumbnailMutationAt
+    && thumbnailMutationAt < thumbnailNonObjectGuardAt
+    && thumbnailNonObjectGuardAt < thumbnailDiagnosisAt,
+  'collector lost its null/non-object thumbnail diagnosis before observation mutation');
+  const receiptValidationAt = thumbnailSettlementBlock.indexOf(
+    'if (!validCompendiumThumbSettlementReceipt(receipt, {',
+  );
+  const readyFailureTailAt = thumbnailSettlementBlock.indexOf(
+    'activeThumbnailSettlement = observedTail;', receiptValidationAt,
+  );
+  const receiptPublicationAt = thumbnailSettlementBlock.indexOf(
+    'thumbnailSettlementHistory.push(receipt);', receiptValidationAt,
+  );
+  structuredInstrumentControlCount++;
+  assert(receiptValidationAt >= 0 && readyFailureTailAt > receiptValidationAt
+    && receiptPublicationAt > readyFailureTailAt,
+  'collector published a ready active tail before receipt validation failed');
   const exactOwnershipWrappers = Object.freeze({
     browser: [
       '  const closeBrowserOnce = async () => {',
@@ -6868,11 +8583,10 @@ export async function runCompendiumMemSelftest() {
       serverFailure: 'injected server failure', seedSuccessSample: true,
     });
     assert(combinedCleanupRed.persisted.status === 'instrument-fail'
-      && combinedCleanupRed.persisted.findings.length === 2
+      && combinedCleanupRed.persisted.findings.length === 1
       && combinedCleanupRed.persisted.findings[0]
-        === 'instrument: browser shutdown: injected browser failure'
-      && combinedCleanupRed.persisted.findings[1]
-        === 'instrument: static server shutdown: injected server failure'
+        === 'instrument: browser shutdown: injected browser failure; '
+          + 'static server shutdown: injected server failure'
       && !fs.existsSync(combinedCleanupRed.samplePath)
       && productionVerify(combinedCleanupRed.persisted).ok,
     'combined cleanup rejection did not retain both ordered diagnoses and terminal red');
@@ -6938,11 +8652,10 @@ export async function runCompendiumMemSelftest() {
         === 'browser:close|server:close|report:running:pending|lock:release|sample:publish|report:pass:complete|sample:discard|report:instrument-fail:failed'
       && sampleDiscardRed.trace.filter((entry) => entry === 'sample:publish').length === 1
       && sampleDiscardRed.trace.filter((entry) => entry === 'sample:discard').length === 1
-      && sampleDiscardRed.persisted.findings.length === 2
+      && sampleDiscardRed.persisted.findings.length === 1
       && sampleDiscardRed.persisted.findings[0]
-        === 'instrument: terminal report publication: injected complete report publication failure'
-      && sampleDiscardRed.persisted.findings[1]
-        === 'instrument: success sample suppression: injected success sample discard failure'
+        === 'instrument: terminal report publication: injected complete report publication failure; '
+          + 'success sample suppression: injected success sample discard failure'
       && sampleDiscardRed.persistedSample?.status === 'current-success'
       && productionVerify(sampleDiscardRed.persisted).ok,
     'success-sample discard rejection did not leave exact terminal-red/disk evidence');
@@ -7119,10 +8832,11 @@ export async function runCompendiumMemSelftest() {
       expectedSourceIdentity: calibration.source.begin,
     },
   ).ok, 'calibration artifact copied PASS outcomes over changed raw warm evidence');
-  console.log(`COMPENDIUMMEM SELFTEST: PASS — ${controls.length} independent product controls`);
+  console.log(`COMPENDIUMMEM SELFTEST: PASS — ${controls.length + structuredInstrumentControlCount} independent product/instrument controls`);
   console.log('  empty + short fixtures; unwindowed rows; exact 132/440 dimensions');
   console.log('  release/disposal/dedupe/full identity/generation/focus/error/cap/canvas/eager import');
   console.log('  count-only bytes, warm plateau, target+heartbeat, stale PASS, missing outcome, no retry');
+  console.log('  structured thumbnail ownership/state/decode/work/page diagnostics; exact foreground service authority');
   console.log('  cleanup-before-publication: browser/server/lock rejection stays terminal red; success samples suppressed');
 }
 

@@ -17,6 +17,8 @@ export const COMPENDIUM_BROWSER_PROTOCOL_VERSION: '1.3';
 export const COMPENDIUM_BROWSER_REQUIRED_CDP_METHODS: readonly string[];
 export const COMPENDIUM_BROWSER_BEST_EFFORT_CDP_METHODS: readonly string[];
 export const COMPENDIUM_BROWSER_CAPABILITY_CONTRACT_SHA256: string;
+export const COMPENDIUM_BROWSER_HISTORICAL_CAPABILITY_CONTRACT_SHA256S:
+  readonly string[];
 export const COMPENDIUM_MEASUREMENT_AUTHORITY_SCHEMA:
   'cf-v2-compendium-measurement-authority/v1';
 export const COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS: readonly string[];
@@ -38,14 +40,42 @@ export const CANDIDATE_COMMAND_SCHEMA: string;
 export const PLAIN_EVALUATE_COMMAND_SCHEMA: string;
 export const RAW_CDP_COMMAND_SCHEMA: string;
 export const PARTIAL_FAILURE_SCHEMA: string;
-export const PARTIAL_PROFILE_SCHEMA: string;
+export const PARTIAL_PROFILE_SCHEMA: 'cf-v2-compendium-partial-profile/v6';
 export const FILTER_TRANSITION_SCHEMA: string;
 export const PRODUCER_ERROR_WITNESS_SCHEMA:
   'cf-v2-compendium-producer-error-witness/v1';
 export const PRODUCER_ERROR_ARM_MESSAGE: 'compendiummem injected producer error';
 export const PRODUCER_ERROR_ARM_SENTINEL: 'cf-v2-compendium-producer-error-armed/v1';
+export const THUMB_SETTLEMENT_OBSERVATION_SCHEMA:
+  'cf-v2-compendium-thumb-settlement-observation/v1';
+export const THUMB_SETTLEMENT_RECEIPT_SCHEMA:
+  'cf-v2-compendium-thumb-settlement-receipt/v1';
+export const THUMB_SETTLEMENT_ACTIVE_SCHEMA:
+  'cf-v2-compendium-thumb-settlement-active/v1';
+export const THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS: 30000;
+export const FOREGROUND_SERVICE_OBSERVATION_SCHEMA:
+  'cf-v2-compendium-foreground-service-observation/v1';
+export const FOREGROUND_SERVICE_RECEIPT_SCHEMA:
+  'cf-v2-compendium-foreground-service-receipt/v1';
+export const FOREGROUND_SERVICE_RECEIPT_LABELS: readonly [
+  'fresh lazy-control', 'veteran Earth', 'final lazy-control',
+];
+export const FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS: 5000;
+export const MAX_THUMB_SETTLEMENT_IMAGES: 64;
+export const MAX_THUMB_SETTLEMENT_FILTER_COUNT: 1000000;
+export const MAX_THUMB_SETTLEMENT_REASONS: 384;
 export const REQUIRED_WARM_CYCLES: number;
 export const REQUIRED_QUIESCENT_UNLEASED_THUMB_ENTRIES: 17;
+export type CompendiumThumbSettlementReceiptPlanEntry = Readonly<{
+  label: string;
+  surface: 'list' | 'planetside';
+  expectedCount: number | null;
+}>;
+export const THUMB_SETTLEMENT_RECEIPT_PLAN:
+  readonly CompendiumThumbSettlementReceiptPlanEntry[];
+export const MAX_THUMB_SETTLEMENT_RECEIPT_HISTORY: number;
+export const MAX_PARTIAL_COMMAND_LEDGER_ENTRIES: 2048;
+export const MAX_PARTIAL_COMMAND_LEDGER_BYTES: 2097152;
 export const OUTCOME_IDS: readonly string[];
 export const EXPECTED_OUTCOMES: readonly string[];
 export const REPORT_INPUT_KEYS: readonly string[];
@@ -167,6 +197,281 @@ export function compendiumProfileEmulationOptions(profile: 'phone' | 'desktop', 
   }>;
   touch: Readonly<{ enabled: false } | { enabled: true; maxTouchPoints: 5 }>;
 }>;
+export type CompendiumThumbSettlementSurface = 'list' | 'planetside';
+export type CompendiumThumbSettlementExpected = Readonly<{
+  surface: CompendiumThumbSettlementSurface;
+  expectedCount: number | null;
+  receiptToken: string;
+  targetId: string;
+  sessionId: string;
+  documentToken: string;
+}>;
+export type CompendiumThumbSettlementObservation = Readonly<{
+  schema: 'cf-v2-compendium-thumb-settlement-observation/v1';
+  surface: CompendiumThumbSettlementSurface;
+  expectedCount: number | null;
+  receiptToken: string;
+  ready: boolean;
+  reasons: readonly string[];
+  ownership: Readonly<{
+    selector: string;
+    rawImageCount: number;
+    rawLogicalIds: readonly (string | null)[];
+    diagnosticImageCount: number;
+    diagnosticLogicalIds: readonly (string | null)[];
+  }>;
+  diagnostic: Readonly<{
+    panelMode: string;
+    filteredCount: number;
+    visible: boolean;
+    thumbStates: readonly string[];
+  }>;
+  images: readonly Readonly<{
+    index: number;
+    logicalId: string | null;
+    visualKey: string | null;
+    thumbState: string | null;
+    srcPresent: boolean;
+    complete: boolean;
+    naturalWidth: number;
+    naturalHeight: number;
+  }>[];
+  art: Readonly<{
+    available: boolean;
+    schema: string | null;
+    queuedJobs: number | null;
+    activeJobs: number | null;
+  }>;
+  lazyArt: Readonly<{
+    available: boolean;
+    schema: string | null;
+    state: string | null;
+    importStarts: number | null;
+    identity: Readonly<{
+      documentToken: string;
+      lastProducerEpoch: number;
+      lastWorkerInstanceId: number;
+    }> | null;
+    lastEvent: Readonly<{
+      producerEpoch: number;
+      workerInstanceId: number;
+      jobId: number;
+      kind: string;
+      event: string;
+    }> | null;
+    phases: Readonly<{
+      importStarts: number;
+      importCompletes: number;
+      thumbJobStarts: number;
+      thumbRenderCompletes: number;
+      thumbEncodeStarts: number;
+      thumbEncodeCompletes: number;
+      portraitJobStarts: number;
+      portraitRenderCompletes: number;
+      portraitEncodeStarts: number;
+      portraitEncodeCompletes: number;
+    }> | null;
+    results: Readonly<{
+      count: number;
+      maxImportDurationMs: number;
+      maxRenderDurationMs: number;
+      maxEncodeDurationMs: number;
+    }> | null;
+    errors: Readonly<{
+      capability: number;
+      protocol: number;
+      import: number;
+      paint: number;
+      encode: number;
+    }> | null;
+  }>;
+  worker: Readonly<{
+    available: boolean;
+    live: boolean | null;
+    starts: number | null;
+    ready: number | null;
+    disposals: number | null;
+    fatals: number | null;
+    protocolErrors: number | null;
+  }>;
+  broker: Readonly<{
+    available: boolean;
+    cacheEntries: number | null;
+    leases: number | null;
+    subscribers: number | null;
+    queuedJobs: number | null;
+    activeJobs: number | null;
+  }>;
+  page: Readonly<{
+    targetId: string;
+    sessionId: string;
+    documentToken: string;
+    visibilityState: string;
+    hidden: boolean;
+    focused: boolean;
+  }>;
+}>;
+export type CompendiumCandidateCommandSettlement = Readonly<{
+  method: 'Runtime.evaluate' | 'Browser.getVersion';
+  status: 'fulfilled' | 'rejected';
+  completedAtMs: number;
+  durationMs: number;
+  timely: boolean;
+  resultState?: 'value' | 'page-exception' | 'missing-value';
+  product?: string | null;
+  error?: string;
+  timeout?: Readonly<{ schema: string; method: string; timeoutMs: number }> | null;
+}>;
+export type CompendiumCandidateCommandEvidence = Readonly<{
+  schema: string;
+  profile: 'phone' | 'desktop';
+  label: string;
+  issuedAtMs: number;
+  phaseDeadlineMs: number;
+  commandDeadlineMs: number;
+  timeoutMs: number;
+  target: CompendiumCandidateCommandSettlement;
+  heartbeat: CompendiumCandidateCommandSettlement;
+}>;
+export type CompendiumThumbSettlementReceiptTiming = Readonly<{
+  issuedAtMs: number;
+  deadlineMs: number;
+  receivedAtMs: number;
+  timeoutMs: 30000;
+}>;
+export type CompendiumThumbSettlementReceipt = Readonly<{
+  schema: 'cf-v2-compendium-thumb-settlement-receipt/v1';
+  label: string;
+  attempt: number;
+  expected: CompendiumThumbSettlementExpected;
+  observation: CompendiumThumbSettlementObservation;
+  command: CompendiumCandidateCommandEvidence;
+  timing: CompendiumThumbSettlementReceiptTiming;
+}>;
+export type CompendiumActiveThumbSettlement = Readonly<{
+  schema: 'cf-v2-compendium-thumb-settlement-active/v1';
+  label: string;
+  attempt: number;
+  expected: CompendiumThumbSettlementExpected;
+  lastObservation: unknown;
+  lastDecision: CompendiumObservationDecision | null;
+  lastCommand: CompendiumCandidateCommandEvidence | null;
+  timing: Readonly<{
+    issuedAtMs: number;
+    deadlineMs: number;
+    receivedAtMs: number | null;
+    timeoutMs: 30000;
+  }>;
+}>;
+export type CompendiumPartialProfileV6 = Readonly<{
+  schema: 'cf-v2-compendium-partial-profile/v6';
+  profile: 'phone' | 'desktop';
+  viewport: Readonly<Record<string, unknown>>;
+  evidenceStatus: 'partial-non-certifying';
+  lastCompletedStage: string | null;
+  failingStage: string;
+  completedStages: readonly string[];
+  commandLedger: readonly unknown[];
+  producerErrorWitness: unknown;
+  filterTransitions: readonly unknown[];
+  reviewPacket: readonly unknown[];
+  diagnosis: string;
+  pageAuthorities: Readonly<{
+    lazy: Readonly<{ targetId: string; sessionId: string; documentToken: string }> | null;
+    main: Readonly<{ targetId: string; sessionId: string; documentToken: string }> | null;
+  }>;
+  thumbnailSettlements: readonly CompendiumThumbSettlementReceipt[];
+  thumbnailSettlementHistory: readonly CompendiumThumbSettlementReceipt[];
+  activeThumbnailSettlement: CompendiumActiveThumbSettlement | null;
+}>;
+export type CompendiumPartialFailure = Readonly<{
+  schema: string;
+  classification: 'product-unanswerable' | 'instrument';
+  profile: 'phone' | 'desktop' | null;
+  lastCompletedStage: string | null;
+  failingStage: string;
+  command: unknown;
+  diagnosis: string;
+}>;
+export type CompendiumThumbSettlementReceiptValidationOptions = Readonly<{
+  profile: 'phone' | 'desktop';
+  pageAuthority: Readonly<{
+    targetId: string; sessionId: string; documentToken: string;
+  }>;
+  browserProduct: string;
+  planIndex: number;
+  allowReadyReceiptFailure?: boolean;
+}>;
+export type CompendiumForegroundServiceExpected = Readonly<{
+  targetId: string;
+  sessionId: string;
+  documentToken: string;
+  serviceToken: string;
+}>;
+export type CompendiumForegroundServicePhase = Readonly<{
+  observed: boolean;
+  sequence: number | null;
+  visibilityState: string | null;
+  hidden: boolean | null;
+  focused: boolean | null;
+}>;
+export type CompendiumForegroundServiceObservation = Readonly<{
+  schema: 'cf-v2-compendium-foreground-service-observation/v1';
+  targetId: string;
+  sessionId: string;
+  documentToken: string;
+  visibilityState: string;
+  hidden: boolean;
+  focused: boolean;
+  service: Readonly<{
+    token: string;
+    visibilityChanges: number;
+    focusLosses: number;
+    arm: CompendiumForegroundServicePhase;
+    raf: CompendiumForegroundServicePhase;
+    laterTask: CompendiumForegroundServicePhase;
+  }>;
+}>;
+export type CompendiumForegroundServiceReceipt = Readonly<{
+  schema: 'cf-v2-compendium-foreground-service-receipt/v1';
+  label: 'fresh lazy-control' | 'veteran Earth' | 'final lazy-control';
+  expected: CompendiumForegroundServiceExpected;
+  observation: CompendiumForegroundServiceObservation;
+  timing: Readonly<{
+    issuedAtMs: number;
+    deadlineMs: number;
+    receivedAtMs: number;
+    timeoutMs: 5000;
+  }>;
+  cleanup: Readonly<{ cleanupPresent: false; servicePresent: false }>;
+}>;
+export type CompendiumObservationDecision = Readonly<{
+  status: 'ready' | 'pending' | 'error';
+  reasons: readonly string[];
+}>;
+export function compendiumThumbSettlementReceiptToken(
+  profile: 'phone' | 'desktop', label: string, attempt: number,
+): string;
+export function classifyCompendiumThumbSettlement(observation: unknown,
+  expected: CompendiumThumbSettlementExpected): CompendiumObservationDecision;
+export function validCompendiumThumbSettlementObservation(observation: unknown,
+  expected: CompendiumThumbSettlementExpected): observation is CompendiumThumbSettlementObservation;
+export function validCompendiumThumbSettlementReceipt(receipt: unknown,
+  options: CompendiumThumbSettlementReceiptValidationOptions):
+  receipt is CompendiumThumbSettlementReceipt;
+export function validCompendiumActiveThumbSettlement(active: unknown,
+  options: CompendiumThumbSettlementReceiptValidationOptions):
+  active is CompendiumActiveThumbSettlement;
+export function validCompendiumForegroundServiceObservation(observation: unknown):
+  observation is CompendiumForegroundServiceObservation;
+export function classifyCompendiumForegroundServiceTurn(observation: unknown,
+  expected: CompendiumForegroundServiceExpected): CompendiumObservationDecision;
+export function classifyCompendiumForegroundServiceTurnReceipt(observation: unknown,
+  expected: CompendiumForegroundServiceExpected, deadlineMs: number,
+  receivedAtMs: number): CompendiumObservationDecision;
+export function validCompendiumForegroundServiceReceipt(receipt: unknown,
+  expectedLabel?: CompendiumForegroundServiceReceipt['label'] | null):
+  receipt is CompendiumForegroundServiceReceipt;
 export function remainingCommandTimeoutMs(deadlineMs: number, nowMs: number,
   transportTimeoutMs: number): number | null;
 export function phaseObservationAccepted(deadlineMs: number, completedAtMs: number,

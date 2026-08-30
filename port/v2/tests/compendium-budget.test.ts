@@ -234,9 +234,9 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  'dacf6ab03b35f65ebd76b3a28a0c2ef2868ea505740f2cbe614d399cef1dbe7a';
+  '326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b';
 const EXPECTED_COLLECTOR_AUTHORITY =
-  '888b9dfdee9d973d17e1901eb26abf1a49015e6f21f0647f8d3043c3e052c964';
+  'ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690';
 const UNIVERSE_POLISH_COLLECTOR_AUTHORITY =
   'c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab';
 const HISTORICAL_RULER_COLLECTOR_AUTHORITY =
@@ -353,8 +353,13 @@ const EXPECTED_BROWSER_AUTHORITY: BrowserAuthority = {
   family: 'microsoft-edge',
   protocolVersion: '1.3',
   capabilityContract: 'cf-v2-compendium-cdp-capabilities/v1',
-  capabilityContractSha256: '6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476',
+  capabilityContractSha256: '35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341',
 };
+const HISTORICAL_BROWSER_AUTHORITY: BrowserAuthority = Object.freeze({
+  ...EXPECTED_BROWSER_AUTHORITY,
+  capabilityContractSha256:
+    '6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476',
+});
 type LegacyBrowserAuthority = {
   schema: 'cf-v2-compendium-browser-authority/v1';
   scope: 'arc1a-compendium-memory-only';
@@ -864,7 +869,7 @@ describe('Arc 1A Compendium budget authority', () => {
       status: 'active',
       path: 'budgets/compendium-memory-v1.json',
       sha256: currentUniversePolishFailureEvidence.budgetSha256,
-      browserAuthority: EXPECTED_BROWSER_AUTHORITY,
+      browserAuthority: HISTORICAL_BROWSER_AUTHORITY,
       browserAuthorityMatch: true,
       producerAuthority: RULER_PRODUCER_AUTHORITY_RECORD,
       observedProducerAuthority: RULER_PRODUCER_AUTHORITY_RECORD,
@@ -1254,7 +1259,10 @@ describe('Arc 1A Compendium budget authority', () => {
       }
       const replayed = evaluateProfile(measurement, activeBudget, fixture);
       expect(replayed).toHaveLength(39);
-      expect(replayed.filter((outcome) => outcome.status === 'fail')).toEqual([]);
+      expect(replayed.filter((outcome) => outcome.status === 'fail')
+        .map((outcome) => outcome.id)).toEqual([
+        `${profile}/lazy-art-not-eager`,
+      ]);
       const failedOutcome = failed.find((outcome) => outcome.profile === profile)!;
       expect(failedOutcome.evidence.precondition)
         .toEqual(measurement.phases.warmCachePrecondition);
@@ -2084,7 +2092,7 @@ describe('Arc 1A Compendium budget authority', () => {
       status: 'active',
       path: 'budgets/compendium-memory-v1.json',
       sha256: historicalSliceRepairCertificationEvidence.budgetSha256,
-      browserAuthority: activeBudget.browserAuthority,
+      browserAuthority: HISTORICAL_BROWSER_AUTHORITY,
       browserAuthorityMatch: true,
       producerAuthority: HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD,
       observedProducerAuthority: HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD,
@@ -2134,21 +2142,25 @@ describe('Arc 1A Compendium budget authority', () => {
       producerAuthority: HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD,
       ceilings: historicalCeilings,
     } as unknown as ActiveBudgetRecord;
-    const replayedOutcomes = PROFILE_NAMES.flatMap((profile) =>
-      evaluateProfile(certificateProfiles[profile], rulerReplayBudget, fixture));
+    const replayedOutcomes = PROFILE_NAMES.flatMap((profile) => evaluateProfile(
+      certificateProfiles[profile], rulerReplayBudget, fixture,
+    ));
     expect(replayedOutcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
-    expect(replayedOutcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(76);
+    expect(replayedOutcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(74);
     expect(replayedOutcomes.filter((outcome) => outcome.status === 'fail')
       .map((outcome) => outcome.id)).toEqual([
+      'phone/lazy-art-not-eager',
       'phone/warm-precondition',
+      'desktop/lazy-art-not-eager',
       'desktop/warm-precondition',
     ]);
     expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
     expect(report.inputs.outcomeContract)
       .not.toBe(fileSha256(path.join(v2Root, 'tools', 'compendiummem-contract.mjs')));
 
-    const liveProducerReplayFailures = PROFILE_NAMES.flatMap((profile) =>
-      evaluateProfile(certificateProfiles[profile], activeBudget, fixture))
+    const liveProducerReplayFailures = PROFILE_NAMES.flatMap((profile) => evaluateProfile(
+      certificateProfiles[profile], activeBudget, fixture,
+    ))
       .filter((outcome) => outcome.status === 'fail')
       .map((outcome) => outcome.id);
     expect(liveProducerReplayFailures).toEqual([
@@ -2164,7 +2176,8 @@ describe('Arc 1A Compendium budget authority', () => {
         Number(rulerReplayBudget.ceilings?.[profile].mountedRowsMax) + 1;
       const mutatedFailures = evaluateProfile(overCeiling, rulerReplayBudget, fixture)
         .filter((outcome) => outcome.status === 'fail')
-        .filter((outcome) => outcome.check !== 'warm-precondition')
+        .filter((outcome) => !['lazy-art-not-eager', 'warm-precondition']
+          .includes(outcome.check))
         .map((outcome) => outcome.id);
       expect(mutatedFailures).toEqual([
         `${profile}/mounted-window-bounded`,
@@ -2226,11 +2239,12 @@ describe('Arc 1A Compendium budget authority', () => {
       status: 'active',
       path: 'budgets/compendium-memory-v1.json',
       sha256: historicalPhase4CertificationEvidence.budgetSha256,
-      browserAuthority: EXPECTED_BROWSER_AUTHORITY,
+      browserAuthority: HISTORICAL_BROWSER_AUTHORITY,
       browserAuthorityMatch: true,
       producerAuthorityMatch: true,
     });
-    expect(report.budget.browserAuthority).toEqual(activeBudget.browserAuthority);
+    expect(report.budget.browserAuthority).toEqual(HISTORICAL_BROWSER_AUTHORITY);
+    expect(report.budget.browserAuthority).not.toEqual(activeBudget.browserAuthority);
     expect(report.budget.producerAuthority).toEqual(HISTORICAL_PHASE4_PRODUCER_AUTHORITY);
     expect(report.budget.producerAuthority).toMatchObject({
       sha256: historicalPhase4CertificationEvidence.producerAuthoritySha256,
@@ -2589,15 +2603,18 @@ describe('Arc 1A Compendium budget authority', () => {
       historicalRecord.producerAuthority = retainedReport.budget.producerAuthority as {
         sha256: string;
       };
-      return PROFILE_NAMES.flatMap((profile) =>
-        evaluateProfile(retainedReport.profiles[profile], historicalRecord, fixture));
+      return PROFILE_NAMES.flatMap((profile) => evaluateProfile(
+        retainedReport.profiles[profile], historicalRecord, fixture,
+      ));
     };
     const repairedOutcomes = replay(activeBudget);
     expect(repairedOutcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
-    expect(repairedOutcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(76);
+    expect(repairedOutcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(74);
     expect(repairedOutcomes.filter((outcome) => outcome.status === 'fail')
       .map((outcome) => outcome.id)).toEqual([
+      'phone/lazy-art-not-eager',
       'phone/warm-precondition',
+      'desktop/lazy-art-not-eager',
       'desktop/warm-precondition',
     ]);
     expect(retainedReport.inputs.outcomeContract)
@@ -2647,7 +2664,8 @@ describe('Arc 1A Compendium budget authority', () => {
       justBelow.ceilings![observation.profile][observation.ceilingField]
         = observation.observed - 1;
       expect(replay(justBelow).filter((outcome) => outcome.status === 'fail')
-        .filter((outcome) => outcome.check !== 'warm-precondition')
+        .filter((outcome) => !['lazy-art-not-eager', 'warm-precondition']
+          .includes(outcome.check))
         .map((outcome) => outcome.id)).toEqual([observation.expectedFailure]);
     }
   });
