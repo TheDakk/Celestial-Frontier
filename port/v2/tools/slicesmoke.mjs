@@ -111,6 +111,7 @@ import {
   assessArc4EpochSnapshot,
   assessArc4Exhaustion,
   assessArc4PublicationConvergence,
+  assessArc4PertarLedgerPrefix,
   assessArc4StaleConvergence,
   assessArc4StorageRefusal,
   assessArc4TameGreetingStartObservation,
@@ -13435,6 +13436,16 @@ try {
   };
   const assessArc4PertarFixtureSetup = ({ priorToken, sourceReady, sourceState,
     wrongOrdinal, landing, landedReady, landedRaw, surface } = {}) => {
+    const sourceLedgerPrefix = assessArc4PertarLedgerPrefix({
+      raw: wrongOrdinal?.rawBefore,
+      state: wrongOrdinal?.stateBefore,
+      phase: 'source-ready',
+    });
+    const actionLedgerPrefix = assessArc4PertarLedgerPrefix({
+      raw: landedRaw,
+      state: surface?.state,
+      phase: 'action-ready',
+    });
     const checks = {
       sourceRoute: arc4PertarSourceRouteExact(sourceState),
       charterStage: arc4PertarCharterStageExact(sourceState),
@@ -13460,6 +13471,7 @@ try {
           wrongOrdinal?.rawBefore, wrongOrdinal?.stateBefore,
           { bootstrapOutcome: 'committed-published' },
         ),
+      sourceAuthorityPrefix: sourceLedgerPrefix.ok === true,
       wrongOrdinalRejected: wrongOrdinal?.accepted === false,
       wrongOrdinalStateStable: canonicalJson(arc4PertarStableStateProjection(
         wrongOrdinal?.stateAfter,
@@ -13484,6 +13496,9 @@ try {
       durablePlanetSplitRoute: arc4PertarSplitRouteExact(
         landedRaw, arc4PertarSavedPlanetView,
       ),
+      actionAuthorityPrefix: actionLedgerPrefix.ok === true,
+      exactSetupRevisionSpan: landedRaw?.revision
+        === wrongOrdinal?.rawBefore?.revision + 2,
       exactSurface: arc4PertarSurfaceObservationExact(surface),
     };
     return { ok: Object.values(checks).every((value) => value === true), checks };
@@ -15466,6 +15481,11 @@ try {
   const arc4TameAudioResetObservation = await evalIn(
     ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION,
   );
+  const arc4TameAudioResetLedger = assessArc4PertarLedgerPrefix({
+    raw: arc4FirstFixture.landedRaw,
+    state: arc4FirstFixture.surface.state,
+    phase: 'action-ready',
+  });
   const arc4TameAudioResetChecks = {
     replacedDocument: arc4FirstFixture.priorToken === arc4TameAudioReloadToken
       && arc4FirstFixture.token !== arc4TameAudioReloadToken,
@@ -15475,16 +15495,12 @@ try {
       && arc4FirstFixture.landedRaw?.captureState?.creatures?.length === 0
       && arc4FirstFixture.landedRaw?.captureState?.specimenLots?.length === 0
       && arc4FirstFixture.landedRaw?.captureState?.biosphereProgress?.length === 0,
-    virginRngAndReceipts:
-      arc4FirstFixture.landedRaw?.authority?.sessionRng?.ordinal === 0
-      && canonicalJson(arc4FirstFixture.landedRaw?.authority?.sessionRng?.draws)
-        === '{}'
-      && arc4FirstFixture.landedRaw?.receiptKeys?.length === 0
-      && arc4FirstFixture.landedRaw?.receiptRows?.length === 0,
+    actionReadyLedger: arc4TameAudioResetLedger.ok === true,
   };
   if (!Object.values(arc4TameAudioResetChecks).every((value) => value === true)) {
-    fails.push('ARC 4 TAME GREETING AUDIO RESET: rehearsal authority or runtime leaked into the sealed Sample-first ledger fixture: '
+    failSliceWithoutCascade('ARC 4 TAME GREETING AUDIO RESET: rehearsal authority or runtime leaked into the sealed Sample-first ledger fixture: '
       + JSON.stringify({ checks: arc4TameAudioResetChecks,
+        ledger: arc4TameAudioResetLedger,
         priorToken: arc4TameAudioReloadToken, fixture: arc4FirstFixture,
         observation: arc4TameAudioResetObservation }));
   }
@@ -15494,6 +15510,7 @@ try {
       priorToken: arc4FirstFixture.priorToken,
       token: arc4FirstFixture.token,
       raw: arc4FirstFixture.landedRaw,
+      state: arc4FirstFixture.surface.state,
       observation: arc4TameAudioResetObservation,
     },
   };
@@ -15675,7 +15692,7 @@ try {
       .every((value) => value === true),
   };
   if (!Object.values(arc4TameAudioRehearsalChecks).every((value) => value === true)) {
-    fails.push('ARC 4 TAME GREETING AUDIO: isolated native Tame did not arm silently, bind exactly one durable greeting to its assertive toast, remain single-start through close/reopen/refresh/wait, or reload without replay: '
+    failSliceWithoutCascade('ARC 4 TAME GREETING AUDIO: isolated native Tame did not arm silently, bind exactly one durable greeting to its assertive toast, remain single-start through close/reopen/refresh/wait, or reload without replay: '
       + JSON.stringify({ checks: arc4TameAudioRehearsalChecks,
         fixture: arc4TameAudioFixture, press: arc4TameAudioPress,
         close: arc4TameAudioClose, reopen: arc4TameAudioReopen,
@@ -15801,10 +15818,16 @@ try {
      the direct bootArc5FixedPoint mutant above proves that gate independently. */
   const arc4FixtureSetupExpectedFailures = Object.freeze({
     durableStarLegacyRoute: Object.freeze([
-      'durableStarLegacyRoute', 'bootArc5FixedPoint',
+      'durableStarLegacyRoute', 'bootArc5FixedPoint', 'sourceAuthorityPrefix',
     ]),
     durableStarSplitRoute: Object.freeze([
-      'durableStarSplitRoute', 'bootArc5FixedPoint',
+      'durableStarSplitRoute', 'bootArc5FixedPoint', 'sourceAuthorityPrefix',
+    ]),
+    durablePlanetLegacyRoute: Object.freeze([
+      'durablePlanetLegacyRoute', 'actionAuthorityPrefix',
+    ]),
+    durablePlanetSplitRoute: Object.freeze([
+      'durablePlanetSplitRoute', 'actionAuthorityPrefix',
     ]),
   });
   const arc4FixtureSetupControlsIsolated = Object.entries(arc4FixtureSetupControls)
@@ -15895,7 +15918,7 @@ try {
       'arc5DeltaFixedPoint', 'arc5TargetFixedPoint',
     ])
     || arc4CaptureUiSnapshotComplete(arc4PreMissingHeading)) {
-    fails.push('ARC 4 PRECONDITION: Pertar route, seed-68 F4 authority, exact v5/18 Arc 4 carriers + compact Arc 5 carrier set, or card identity failed: '
+    failSliceWithoutCascade('ARC 4 PRECONDITION: Pertar route, seed-68 F4 authority, exact v5/18 Arc 4 carriers + compact Arc 5 carrier set, or card identity failed: '
       + JSON.stringify({ fixture: arc4FirstFixture, assessment: arc4Precondition,
         setupControls: arc4FixtureSetupControls,
         setupControlExpectedFailures: arc4FixtureSetupExpectedFailures,
@@ -15943,9 +15966,18 @@ try {
     ...arc4HitPendingBundle, duringState: arc4HitPendingArc5State,
   });
   const arc4HitReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseProductActionHold()`);
+  const arc4HitCaptureRevision = arc4PreRaw.revision + 1;
+  const arc4HitFinalRevision = arc4PreRaw.revision + 2;
+  const arc4HitFinalOrdinal = arc4PreRaw.authority.sessionRng.ordinal + 2;
   const arc4HitState = await waitDesktopValue('Arc 4 deterministic Sample hit', `(()=>{const state=window.__CF_SLICE__.api.state(),
-    c=state?.capture?.actionCoordinator;return state?.capture?.lastOutcome?.startsWith('sample-committed:')
-      &&state?.capture?.lastResult?.hit===true&&c?.inFlight===false&&c?.owner?.busy===false
+    c=state?.capture?.actionCoordinator,runtime=state?.persistence?.runtime;
+    return state?.capture?.lastOutcome===${JSON.stringify(`sample-committed:${arc4HitCaptureRevision}`)}
+      &&state?.capture?.lastResult?.hit===true
+      &&state?.capture?.lastResult?.revision===${arc4HitCaptureRevision}
+      &&runtime?.revision===${arc4HitFinalRevision}
+      &&runtime?.sessionOrdinal===${arc4HitFinalOrdinal}
+      &&state?.persistence?.lastOutcome===${JSON.stringify(`arc9-progression-committed:${arc4HitFinalRevision}`)}
+      &&c?.inFlight===false&&c?.owner?.busy===false
       &&state?.capture?.card?.pendingWork===0?state:null})()`, 10_000);
   const arc4HitRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
   const arc4HitUi = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
@@ -15956,6 +15988,7 @@ try {
     before: arc4PreRaw, after: arc4HitRaw,
     beforeState: arc4PreState, afterState: arc4HitState,
     afterUi: arc4HitUi, interaction: arc4HitInteraction,
+    requireProgressionTail: true,
   };
   const arc4Hit = assessArc4CommittedHit(arc4HitBundle);
   const arc4HitControl = assessArc4CommittedHit({
@@ -16044,7 +16077,7 @@ try {
         'ownershipV2Live'])
     || !arc4BrowserOutcomePasses({ released: arc4HitReleased,
       assessment: arc4Hit, surface: 'survey' })) {
-    fails.push('ARC 4 SAMPLE HIT: one held native action did not remain non-optimistic then commit hidden ordinal-13 first-page/+2 truth: '
+    failSliceWithoutCascade('ARC 4 SAMPLE HIT: one held native action did not remain non-optimistic then commit hidden ordinal-13 first-page/+2 truth: '
       + JSON.stringify({ holdArmed: arc4HitHoldArmed, press: arc4HitPress,
         released: arc4HitReleased, pending: arc4HitPending,
         pendingControl: arc4HitPendingControl,
@@ -16146,7 +16179,7 @@ try {
     || !arc4IsolatedCheck(arc4StorageBudgetSemanticUiControl, 'uiFactsStable')
     || !arc4IsolatedCheck(arc4StorageCountdownTextControl,
       'activePlayProjection')) {
-    fails.push('ARC 4 STORAGE REFUSAL: native Tame changed durable/visible ownership, retained the prior hit, or lost exact storage-fault truth: '
+    failSliceWithoutCascade('ARC 4 STORAGE REFUSAL: native Tame changed durable/visible ownership, retained the prior hit, or lost exact storage-fault truth: '
       + JSON.stringify({ armed: arc4StorageArmed, press: arc4StoragePress,
         assessment: arc4Storage, faultControl: arc4StorageFaultControl,
         resultControl: arc4StorageResultControl,
@@ -16474,7 +16507,7 @@ try {
     || !arc4IsolatedCheck(arc4StaleTupleFaultControl, 'pagehideTuple')
     || !arc4IsolatedCheck(arc4StaleTupleUiControl, 'pagehideTuple')
     || !arc4IsolatedCheck(arc4StaleTupleArc5Control, 'pagehideTuple')) {
-    fails.push('ARC 4 STALE CONVERGENCE: one native Tame did not empty-CAS then reload exact hit authority without a roll/retry: '
+    failSliceWithoutCascade('ARC 4 STALE CONVERGENCE: one native Tame did not empty-CAS then reload exact hit authority without a roll/retry: '
       + JSON.stringify({ armed: arc4StaleArmed, captureArmed: arc4StaleCaptureArmed,
         press: arc4StalePress, captured: arc4StaleCaptured,
         assessment: arc4Stale, tokenControl: arc4StaleTokenControl,
@@ -16574,7 +16607,7 @@ try {
         'ownershipV2Live'])
     || !arc4BrowserOutcomePasses({ released: true,
       assessment: arc4Miss, surface: 'survey' })) {
-    fails.push('ARC 4 TAME MISS: counter-1 native Tame did not spend exactly one with no ownership/reward grant: '
+    failSliceWithoutCascade('ARC 4 TAME MISS: counter-1 native Tame did not spend exactly one with no ownership/reward grant: '
       + JSON.stringify({ press: arc4MissPress, assessment: arc4Miss,
         control: arc4MissControl, runtimeControl: arc4MissRuntimeControl,
         missingOwnershipRevisionControl:
@@ -16615,7 +16648,7 @@ try {
       && row?.status === 'ready' && row?.button?.modelEnabled === 'true');
     if (!readyRow || !['tame', 'scavenge', 'sample'].includes(readyRow.verb)) {
       arc4BurnComplete = false;
-      fails.push(`ARC 4 WORKED OUT SETUP: no authoritative ready verb at used=${expectedUsed - 1}: `
+      failSliceWithoutCascade(`ARC 4 WORKED OUT SETUP: no authoritative ready verb at used=${expectedUsed - 1}: `
         + JSON.stringify(arc4BurnUi));
       break;
     }
@@ -16792,7 +16825,7 @@ try {
     });
     if (!assessment.ok || !controlIsolated) {
       arc4BurnComplete = false;
-      fails.push(`ARC 4 WORKED OUT SETUP: verb-only step ${expectedUsed} lost one exact revision/receipt/used increment: `
+      failSliceWithoutCascade(`ARC 4 WORKED OUT SETUP: verb-only step ${expectedUsed} lost one exact revision/receipt/used increment: `
         + JSON.stringify(arc4BurnLedger.at(-1)));
       break;
     }
@@ -16840,14 +16873,14 @@ try {
       || !arc4SuppressionCollection.suppressionAssessment.ok
       || !arc4Exhaustion.ok
       || !arc4ExhaustionControlIsolated) {
-      fails.push('ARC 4 WORKED OUT: finite yield did not disable a 44px real control or suppress its native click/durable mutation: '
+      failSliceWithoutCascade('ARC 4 WORKED OUT: finite yield did not disable a 44px real control or suppress its native click/durable mutation: '
         + JSON.stringify({ collection: arc4SuppressionCollection,
           assessment: arc4Exhaustion, control: arc4ExhaustionControl,
           controlIsolated: arc4ExhaustionControlIsolated,
           burnLedger: arc4BurnLedger }));
     }
   } else {
-    fails.push('ARC 4 WORKED OUT: verified verb-only burn-down did not reach exact used=16 authority: '
+    failSliceWithoutCascade('ARC 4 WORKED OUT: verified verb-only burn-down did not reach exact used=16 authority: '
       + JSON.stringify({ complete: arc4BurnComplete, used: arc4ProgressUsed(arc4BurnRaw),
         ledger: arc4BurnLedger }));
   }

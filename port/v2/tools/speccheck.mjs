@@ -87,7 +87,7 @@ function inertTernary(src, field) {
   return a === b ? m[0].trim().slice(0, 76) : null;
 }
 
-if (process.argv.includes('--selftest')) {
+function runSelftest() {
   let pass = 0, fail = 0;
   const ck = (n, got, want) => { if (got === want) pass++; else { fail++; console.error('  ✗ ' + n); } };
   const good = 'interface FSpec {\n  hue?: string;\n}\nconst q = spec.hue ? mk(spec.hue) : base;';
@@ -101,8 +101,17 @@ if (process.argv.includes('--selftest')) {
   ck('fields are found through nested braces',
     specsIn('interface XSpec {\n  a?: { k: number };\n  b?: string;\n}')[0].fields.join(','), 'a,b');
   console.log('speccheck --selftest: ' + pass + '/' + (pass + fail) + ' controls');
-  process.exit(fail ? 1 : 0);
+  return fail === 0;
 }
+
+const arguments_ = process.argv.slice(2);
+if (arguments_.length > 1
+  || (arguments_.length === 1 && arguments_[0] !== '--selftest')) {
+  console.error('usage: node tools/speccheck.mjs [--selftest]');
+  process.exit(1);
+}
+if (!runSelftest()) process.exit(1);
+if (arguments_[0] === '--selftest') process.exit(0);
 
 let dead = 0, suspect = 0, total = 0;
 for (const f of fs.readdirSync(SRC).filter((n) => n.endsWith('.ts') && !n.endsWith('.d.ts'))) {

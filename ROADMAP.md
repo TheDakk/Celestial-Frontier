@@ -17,127 +17,130 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · BATTERY CONSOLIDATED · AUTHORITIES GREEN · FINAL DEVELOP CHAIN NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · BATTERY RIGHT-SIZED · ARC 4 ORACLE REPAIRED · CLEAN CHAIN NEXT ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. The committed base is **d1b0202fae029d54a8495a3cadcb5d598ad0d8c8**
-  (tree **3a5da7a0929966e60b1380583e44aed025dc9c11**, parent **4ac4d3cf8b71…**) and is
-  **31 commits ahead** of the fetched remote agent branch.
-- **Current local batch:** the dirty worktree changes only check orchestration, GitHub workflow
-  policy/contracts and current process documentation. It adds no gameplay feature, save/schema
-  change, numeric ruler, browser threshold, retry, release identity or calibration. The V2
-  `package.json` is byte-identical to d1 so SceneMemory and Compendium producer authority remain
-  exact; no budget was rewritten.
-- **PR boundary:** draft PR **#35**, base **develop**, source **openai/mac**, remains blocked and
-  unmerged. Fetched base is **7a9f4c1370dd84292388d718c38ff34214f6203b** and remote head is
-  **017fa6decbc41809188768ccdb98ab86ef1b9ebc**. Nothing in this batch is pushed.
-- **Actions boundary:** `GITHUB_ACTIONS_BUDGET.md` is **UNFROZEN**, the repository is assumed
-  public, and **zero hosted attempts are authorized**. Do not push, label, dispatch, rerun, mark
-  Ready, merge, release, bump a version, publish or deploy without a new exact authorization.
-- **Browser policy:** root and Chrome-owned gates accept the canonical Chromium family at CDP
-  **1.3**; SceneMemory and Compendium require the Microsoft Edge family at CDP **1.3**. Point
-  versions are provenance only and never trigger a rebaseline or threshold change.
+  **origin/openai/mac**. Exact signed base
+  **d611d18ad12bb8587863846ef3799300d2396e6a** (tree
+  **f2ab61ec3287b5269c0e206ee0edf374f6258b07**, parent
+  **d1b0202fae029d54a8495a3cadcb5d598ad0d8c8**) is **32 commits ahead** of the
+  fetched remote agent branch.
+- **Current local successor:** only evidence contracts, workflow/profile ownership, immutable
+  audit carriers and synchronized documentation are dirty. No game/app source, creature/genome
+  structure, save schema, art/audio system, balance, numeric browser ruler, release identity,
+  retry or Edge-version baseline changed.
+- **PR boundary:** draft PR **#35**, base **develop**, source **openai/mac**, remains blocked,
+  unmerged and unpushed at remote head **017fa6decbc41809188768ccdb98ab86ef1b9ebc** against
+  fetched base **7a9f4c1370dd84292388d718c38ff34214f6203b**.
+- **Actions boundary:** `GITHUB_ACTIONS_BUDGET.md` is **UNFROZEN** and the repository is public,
+  so standard hosted runners are free; the 3,000 cap applies fail-closed if visibility changes.
+  **Zero hosted attempts are authorized.** No push, label, dispatch, rerun, Ready transition,
+  merge, release, version bump, publication or deployment is authorized.
+- **Browser policy:** compatible Chromium-family browsers at CDP **1.3** are accepted by the
+  generic gates; SceneMemory and Compendium require Edge-family CDP **1.3**. Point versions are
+  provenance only and never require a rebaseline.
 
-### Battery decision — retain facts, remove duplicate executions
+### Decision — the battery is now proportional to the promotion risk
 
-- The **2,505 passing / 1 skipped** Vitest inventory is one browser-free regression run, not 2,505
-  Actions jobs or browser launches. It completes in about **22 seconds** on this Mac and remains the
-  fast product safety net. This consolidation adds only four cheap workflow/profile contract cases;
-  it does not multiply browser checks.
-- `node tools/check-profile.mjs --profile=dev|develop|production` is now the single immutable,
-  cross-platform, fail-fast owner:
-  - **dev:** one full Vitest run plus root-strict, game and worker TypeScript;
-  - **develop:** dev plus art audit, exact route/coverage authority and specification check;
-  - **production:** develop plus the 107-mutation override-checker control.
-- The runner is deliberately outside `package.json`. Both memory gates hash that whole manifest;
-  keeping policy aliases out prevents a CI-only script edit from masquerading as product/memory
-  drift. The authority printer independently confirms SceneMemory and both Compendium authorities
-  match their existing budgets with unchanged build/dist bytes.
-- Exact duplicate runs are removed: no standalone current-producer test after `npm test`; no
-  looser root TypeScript pass before the strict pass; no second workflow invocation of selftests
-  already owned by Vitest; no routine `coveragegap` beside stricter `overridecheck`; and no
-  unconditional `overridecontrol` in the coding/develop profile.
-- The exact base/head path classifier is dependency-free and mutation-tested. Ordinary V2 product
-  work skips browser-instrument selftests; changing the shared launcher, memory instruments,
-  workflow, or their dependency lock runs those controls once on `develop`, while production
-  always owns them. Parser dependency changes likewise trigger the art mutation control.
-- The owner-authorized **develop** battery runs browser-free work first, conditionally runs legacy
-  root gates only when their tracked surface changed, then one distinct SceneMemory → Compendium →
-  Slice → Glass chain with causal stop and no retry. The **production** battery always owns
-  instrument controls and adds uninterrupted predecessor-bound Recovery plus package smoke.
-  Recovery is not a
-  20-minute tax on every coding batch.
-- The manual preview workflow shrank from **225 to 108 lines**. It now runs the dev profile and one
-  package-specific preview producer/integrity selftest, creates one exact-commit separate-origin
-  package, browser-smokes that package and uploads it. It
-  cannot recertify Compendium/Slice/Glass/Recovery/personas or satisfy the `battery` context.
-- The 12 Glass viewports and the distinct SceneMemory, Compendium, Slice and Recovery instruments
-  remain. They measure different failure classes and were not collapsed into a misleading single
-  browser pass. Per-stage builds remain until a separately reviewed content-addressed build carrier
-  exists.
+- The apparently large number is **2,510 passing assertions plus 1 intentional skip inside one
+  23.24-second Vitest process**. It is not 2,510 Actions jobs, browser launches or sequential
+  workflows. Those fast assertions cover independent product invariants and remain the cheapest
+  protection against regressions.
+- One fail-fast owner now defines the only static profiles:
+  - **dev — 4 commands:** one full Vitest run and the root, game and worker TypeScript programs;
+  - **develop — 7 commands:** dev plus one art audit, one exact route/coverage audit and one
+    specification audit;
+  - **production — 8 commands:** develop plus the expensive 107-mutation override control.
+- The specification audit's **5 negative controls are folded into its normal command**; they no
+  longer need another workflow step. The Compendium ruler's **591 synthetic mutation controls**
+  run only for production or when its browser instrument/workflow dependency closure changes;
+  normal develop admission keeps the live preflight beside the one real certificate.
+- Duplicate/low-value execution has been removed: no second Vitest/current-producer run, no loose
+  TypeScript pass beside strict TypeScript, no duplicate selftests already owned by Vitest, no
+  routine coverage-gap pass beside the stronger route audit, no production mutation control in
+  ordinary coding, no persona recertification, and one evidence upload.
+- The remaining develop browser stages are intentionally distinct:
+  **SceneMemory → Compendium → Slice → Glass**. They measure retained scene memory, Compendium
+  lifecycle memory, real gameplay/outcomes and 12-viewport presentation respectively. Combining
+  them would hide the causal owner and make failures slower to diagnose. **Recovery and package
+  smoke are production-only**, not development taxes.
+- The base/head classifier owns conditional controls and is mutation-tested. Its closure now
+  includes every Compendium fixture, builder, lock, budget and instrument dependency, so a
+  relevant change cannot silently skip the ruler controls while ordinary gameplay changes do.
 
-### Browser-free acceptance on the current dirty batch
+### d611 immutable evidence and the repaired Arc 4 boundary
 
-- Integrated workflow/profile contracts: **3 files / 25 passed**.
-- `node tools/check-profile.mjs --profile=develop`: **PASS** in **26.8 seconds**:
-  **251 files / 2,505 passed / 1 skipped**, all three TypeScript programs, **34** art sources with
-  zero findings, **1,014/1,014** routes covering **1,010/1,010** Earth species, and
-  **454** declared specification fields with zero inert/unread fields.
-- Production-only `npm run overridecontrol`: **107/107 mutation controls PASS** once, with exact
-  clean restoration.
-- Current producer printer: SceneMemory budget match, Compendium measurement match and Compendium
-  built-producer match are all **true** at the unchanged **964-module / 52-file** build.
-- Compendium workflow preflight selftest: PASS; exact extract → live preflight → certificate →
-  verifier ownership and all negative controls remain intact.
-- Preview producer/browser selftest: PASS; package tamper/origin/owner controls plus the bounded
-  real-Chrome startup control remain intact without recertifying gameplay.
-- Actions-budget selftest: **64 fail-closed controls PASS**.
-- Tool syntax and `git diff --check`: PASS.
-- No browser/HUMAN/hosted/merge/release/deployment authority is claimed by these browser-free results.
+- Exact d611 passed root Layout **787/787**, SceneMemory **44/44** and Compendium **78/78** once,
+  unchanged and with zero retry. Slice then stopped terminal red after **170,889 ms** with five
+  scopes; Glass correctly did not run. All useful raw carriers are preserved deterministically
+  under `audits/` with hashes and sizes in `audits/README.md`.
+- The retained report proves this was **not five product defects**. Pertar's real shared ledger at
+  action readiness is boot progression receipt **0** → Survey **1** → Landing **2**. First Sample
+  correctly commits Capture receipt **3** at revision +1, then the eligible Arc 9 progression
+  receipt **4** at revision +2, adding `rare` and `legend` while best rank stays 3.
+- The obsolete Arc 4 oracle wrongly required an empty cross-system ledger and exactly one new
+  receipt. The repair now proves the exact ordered prefix, the exact two-receipt progression tail,
+  independent negative controls, and a causal stop before Storage when Sample is red. A redundant
+  campaign-wide source-shape assertion was pruned; the focused Sample boundary owns the rule.
+- Immutable-evidence replay verifies every retained raw/gzip identity and the original red facts.
+  The historical report remains red; no result was relabelled and no browser retry occurred.
 
-### Exact next work — one clean admission, then one develop chain
+### Browser-free acceptance on the current successor
 
-1. Finish the synchronized current documentation, commit this consolidation as one SSH-signed
-   successor of d1, verify the embedded signature and require a clean worktree.
+- `node tools/check-profile.mjs --profile=develop`: **PASS** —
+  **253 files / 2,510 passed / 1 skipped**, all three TypeScript programs, **34** art sources
+  with zero findings, **1,014/1,014** routes covering **1,010/1,010** Earth species, and
+  **454** declared specification fields with zero unread/inert fields.
+- Integrated specification controls: **5/5 PASS**. Conditional Compendium selftest:
+  **591 independent controls PASS**. Compendium live-preflight selftest: **PASS**.
+- Focused Arc 4 causality plus immutable evidence replay: **2 files / 5 PASS**.
+- The first consolidated profile attempt exposed one misplaced TypeScript suppression comment
+  after all assertions passed. It was corrected test-only, TypeScript passed independently, and
+  the complete profile then passed. This is retained as diagnosis, not hidden as a game failure.
+- No browser, HUMAN, hosted, merge, release or deployment authority is claimed by browser-free
+  acceptance.
+
+### Exact next work — one clean local admission and one no-retry browser chain
+
+1. Finish diff/policy/syntax checks and commit this bounded repair, evidence and synchronized
+   Markdown as one SSH-signed successor of d611; verify its signature and a clean worktree.
 2. Run `node tools/tracked-input-preflight.mjs --profile=develop` once on that exact clean commit.
-   It installs one tracked snapshot and invokes the shared develop profile exactly once.
-3. Because PR #35's exact base/head scope contains legacy and changed browser-instrument inputs,
-   run those conditional controls once, then one SceneMemory → Compendium → Slice → Glass chain on
-   the same unchanged commit. Stop at
-   the first nonzero/red/instrument result; no automatic retry.
-4. Preserve exact named evidence and refresh this handoff. **Do not run Recovery** for the agent →
-   develop admission; it belongs to the separately authorized develop → main production candidate.
-5. Report exact final head/base to Nick. A push/label/hosted attempt still requires explicit
-   authorization naming that pair.
+3. Because the browser instrument/workflow changed, run the conditional launcher/heap/preflight
+   controls once, then one exact SceneMemory → Compendium → Slice → Glass chain on the same
+   unchanged commit. Stop on the first nonzero, red or instrument result; never retry
+   automatically. Glass runs only after green Slice.
+4. Preserve and named-verify each available immutable report. Do **not** run Recovery for this
+   agent → `develop` admission; Recovery belongs to the later separately authorized
+   `develop` → `main` production candidate.
+5. Refresh this handoff with the exact clean source and final local evidence. Report the exact
+   base/head to Nick. A GitHub write still requires a separately authorized exact attempt.
 
 ### Product-roadmap and HUMAN boundary
 
-The dependency-ready V2 gameplay campaign remains implemented. This process batch does not recreate
-or redesign the established creature/genome, Guardian/Prime Codex, loot/Pureforged, exploration,
-combat, progression, universe-wide visual or audio systems. Existing creature anatomy, silhouette,
-proportions, topology, seeds, identity and interaction geometry remain protected.
+This pass does not recreate or redesign the implemented V2 systems. The existing universe-wide
+art treatment, creature/genome identity, Guardians/Prime Codex, loot/Pureforged, exploration,
+crafting, combat, care/progression, audio and deterministic persistence remain untouched.
 
-Still-open items require authored product decisions or HUMAN/device evidence and must not be
-invented merely to call the roadmap complete: conquest-imbue coexistence, another Guardian reward
-table, canonical mission/care/healing rules, broader Chronicle/Museum history, achievement reward
-claims, Fifty Paragons, remaining production media/depth, real-veteran import, accessibility, and
-physical phone/tablet install, heat, battery, true-GPU and first-journey judgment. Current system
-references and `port/V2_PROGRAM_ROADMAP.md` own those boundaries.
+Still-open work that requires authored product decisions or HUMAN/device proof remains explicit in
+the system references and `port/V2_PROGRAM_ROADMAP.md`: conquest-imbue coexistence, another
+Guardian reward table, canonical mission/care/healing rules, broader Chronicle/Museum history,
+achievement reward claims, Fifty Paragons, remaining production media/depth, veteran import,
+accessibility, and physical phone/tablet install, heat, battery, true-GPU and first-journey
+judgment. Automation must not invent those decisions merely to call the roadmap complete.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** sign this battery-consolidation batch, run one exact clean tracked admission,
-  then one final develop browser chain with causal stop and no retry.
+- **OpenAI/Codex now:** sign the bounded consolidation/oracle repair, run one clean tracked
+  admission, then one final local develop browser chain with causal stop and no retry.
 - **GitHub step now:** none. Zero hosted attempts are authorized.
-- **PR #35:** existing draft; base **develop**, source **openai/mac**, title
-  **feat(v2): complete roadmap campaign and harden CI parity**.
+- **PR #35 after local green:** existing draft, base **develop**, source **openai/mac**, title
+  **feat(v2): complete roadmap campaign and harden CI parity**. Its exact push/hosted head is not
+  yet authorized.
 - **Claude Code now:** Nick does **not** need to open Claude yet. Claude must not edit this OpenAI
-  worktree. After PR #35 is terminal-green and merged into `develop`, Claude should use an
-  `anthropic/*` branch from that exact integration commit for the requested whole-plan polish.
+  worktree. After PR #35 is terminal-green and merged into `develop`, Claude should branch
+  `anthropic/*` from that exact integration commit for the requested whole-plan polish.
 - **Release status:** `develop`, `main` and the live site remain unchanged. No release, version
   bump, preview publication or deployment is in progress.
-- **Actions budget:** UNFROZEN, repository assumed public, private cap 3,000 fail-closed,
-  **zero authorized hosted attempts**.

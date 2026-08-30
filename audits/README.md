@@ -10,6 +10,57 @@ summary of it.
 
 ## Contents
 
+### Signed `d611d18…` consolidated admission predecessors, then terminal-red Pertar ledger oracle
+
+Exact clean SSH-signed source `d611d18ad12bb8587863846ef3799300d2396e6a` (tree
+`f2ab61ec3287b5269c0e206ee0edf374f6258b07`, parent
+`d1b0202fae029d54a8495a3cadcb5d598ad0d8c8`) ran the consolidated develop admission once per
+stage with zero retry on Microsoft Edge `152.0.4191.53` / CDP `1.3`. Root Layout passed
+**787/787** across 10/10 viewports, SceneMemory passed **44/44** in **12,407 ms**, and Compendium
+passed **78/78** in **71,079 ms**. Their deterministic carriers are:
+
+- `ROOT_LAYOUT_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz`: **5,029 gzip /
+  106,976 raw bytes**; gzip/raw SHA-256
+  `bcf4c524187fda97c7b4cbef8c807b8ffc944965533ef6d6bd75baccf2959e31` /
+  `37daf338ebf0cb9048e6caae245f8fe6e4cbff1fcfcab226a954485b487a5f98`.
+- `ARC1C_SCENEMEM_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz`: **44,965 gzip /
+  786,975 raw bytes**; gzip/raw SHA-256
+  `29d99750ce372e617f3276451209561f0593d5631f49518bbce8d430099880fb` /
+  `3c7cea08d02dc533ac1ea8c5fbad953f6aef9ed436599763ff7d1da915e461c4`.
+- `ARC1C_COMPENDIUM_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz`: **452,029 gzip /
+  10,849,032 raw bytes**; gzip/raw SHA-256
+  `251ca89cfa08b2663969ffc8acd9f9f2ac32154831b8b46aa0891b1e42cbf9db` /
+  `04085baecbcb7758876233be8db3ed6e845c1e4b9bc56432164c10c2040a4ae1`.
+
+The unchanged source then ran Slice
+`20260830-d611d18-battery-consolidation-slice` once and stopped terminal red after **170,889 ms**.
+It retained five scopes—Tame-audio reset, Tame-audio aggregate, precondition, Sample and a later
+Storage harness timeout—with zero automatic retry. Glass and Recovery did not run.
+
+- `ARC4_SLICE_PR35_PERTAR_LEDGER_ORACLE_RED_20260830_D611D18.json.gz`: **218,580 gzip /
+  1,953,664 raw bytes**; gzip/raw SHA-256
+  `74501e618f1bbe74b7c3b7c60c0375bcfa7911cf762e857f1bcfcaa54ea664f0` /
+  `8fa4790b18a6dcaef94bbf0794de99442c67ac448bc723a65adf56c275d3d9c2`.
+- `ARC4_SLICE_PR35_PERTAR_LEDGER_ORACLE_RED_20260830_D611D18.log.gz`: **100,790 gzip /
+  828,312 raw bytes**; gzip/raw SHA-256
+  `7b4c6c6daefbceb585cedc4aac5cff135b4153dd7a6baa9f104fb4fbeea58f9b` /
+  `d7b4fbde305a9f6dcf5debe430430a2b56ddb4310b6f328a0689151db0ecc20c`.
+
+These are instrument false negatives, not five product defects. Fresh Arc 4 capture ownership was
+incorrectly treated as an empty cross-system ledger even though boot progression, Survey and
+Landing correctly own receipts 0–2 and action-ready ordinal 3. The first Sample then correctly
+committed Capture at receipt 3 / revision `R+1`, followed by the required Arc 9 aggregate refresh at
+receipt 4 / final revision `R+2`; it added exactly achievements `rare`, `legend`, retained best rank
+3, changed no Capture RNG draw, and kept Capture/Arc 5 ownership at `R+1`. The later Storage timeout
+was derivative because Slice continued after the Sample oracle was already red.
+
+The repair changes no game code. One shared browser-free assessor now composes the complete Pertar
+prefix and first-Sample successor with isolated missing/extra/mutated controls; the browser runner
+waits for the exact `R+2` progression fixed point and stops every dependent Arc 4 stage at its first
+red verdict. The immutable `d611d18…` evidence remains FAIL and grants no Glass, Recovery, hosted,
+merge, release or deployment authority. A changed clean signed successor must start one fresh
+SceneMemory → Compendium → Slice → Glass develop chain; it may not retry or relabel this run.
+
 ### Signed `4ac4d3c…` Compendium PASS, then terminal-red compact/audio fixture evidence
 
 Exact clean SSH-signed source `4ac4d3cf8b717e0a2a52d53a4e6e2c5eb89637a1` (tree

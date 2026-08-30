@@ -1,8 +1,8 @@
 # Celestial Frontier — PROCESS LAWS
 
-> **CHECK COUNTS ARE NOT EXECUTION TIERS; RUN EACH OWNER ONCE** (2026-08-30). The current
-> 2,505 Vitest assertions are browser-free regression facts inside one roughly 22-second command,
-> not 2,505 hosted jobs or browser launches. Keep those fast product assertions. Remove exact
+> **CHECK COUNTS ARE NOT EXECUTION TIERS; RUN EACH OWNER ONCE** (2026-08-30). Roughly 2,500
+> Vitest assertions are browser-free regression facts inside one roughly 23-second command, not
+> thousands of hosted jobs or browser launches. Keep those fast product assertions. Remove exact
 > duplicate executions around them: the producer-authority test already belongs to `npm test`, the
 > stricter root TypeScript pass subsumes the looser one, and evidence selftests need one owner rather
 > than a second workflow invocation. `overridecontrol` is a 107-mutation, source-rewriting checker
@@ -79,6 +79,16 @@
 > action oracle must derive that whole successor. It may not freeze those fields as “unrelated.”
 > Prove the accepted successor and independently mutate every coupled field family so broadening the
 > allowance is red.
+>
+> **THE LEDGER IS SHARED EVEN WHEN OWNERSHIP IS FRESH.** Arc-local empty ownership does not imply an
+> empty cross-system receipt ledger. The exact Pertar browser fixture reaches action-ready with boot
+> progression at receipt 0, Survey at 1 and Landing at 2, seed 68, empty capture draws and ordinal 3.
+> Its first Sample owns receipt 3 and Capture result/ownership revision `R+1`; that new tier-5
+> discovery then requires Arc 9 progression receipt 4 and final persistence revision/ordinal `R+2`,
+> adding exactly `rare` then `legend` while best rank remains 3. Tame has no forged progression tail.
+> Compose those predecessors and successors in one browser-free positive, reject missing/extra/
+> reordered receipts and split revision ownership, and wait for the exact final fixed point before
+> reading browser evidence. A red prefix or Sample verdict stops before Storage or later Arc 4 work.
 >
 > **VALIDATE THE PREDECESSOR THE WAY THE PRODUCT DOES.** A mathematically plausible successor is not
 > evidence if its predecessor could never enter the production action. Mirror required fields,
