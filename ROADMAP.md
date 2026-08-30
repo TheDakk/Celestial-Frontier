@@ -17,32 +17,34 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · BATTERY RIGHT-SIZED · EXACT EBF SCENEMEM STOP PRESERVED ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · BATTERY RIGHT-SIZED · SCENEMEM INPUT-v5 ACTIVATION IN VALIDATION ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Exact signed tested source
-  **ebf172cc62417c9e193c7fcc1c9e751a1e0a028a** (tree
-  **0ba7fe322bc4f21e00f3a76216ef41cecef184e1**, parent
-  **656c85e43a59fe775efac102b21a7530c033e5ff**) is **36 commits ahead** of the fetched remote
-  agent branch. Its embedded SSH signature was cryptographically verified with the configured
-  identity.
-- **Current local successor:** the exact ebf SceneMemory terminal red, deterministic gzip carrier,
-  immutable replay and current docs are dirty. **A New Foundation** has exactly **75** unique
+  **origin/openai/mac**. Exact signed evidence source
+  **553b06bc5b477a90e0d7284360fa84ab99704fb7** preserves the ebf terminal red and is **37 commits
+  ahead** of the fetched remote agent branch; its embedded SSH signature was cryptographically
+  verified with the configured identity.
+- **Current local successor:** three exact clean calibration carriers, source-normalized
+  SceneMemory report-v4/profile-v3/input-v5/verdict-v4/budget-v5 code, negative controls and owning
+  docs are dirty and undergoing consolidated validation. **A New Foundation** has exactly **75** unique
   bullets with rendered ordered SHA-256
   **52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1**. No creature/genome structure, capture
   pool, Yield cycle, save schema, art/audio system, balance, timeout, retry, release identity or
-  Edge-version baseline changed. The numeric ruler has not yet moved.
-- **Current derived inputs:** Scene build / budget SHA-256 is
+  Edge-version baseline changed. The last signed checkpoint still owns input-v4; this dirty
+  successor contains the evidence-supported input-v5 ruler pending consolidated validation/signing.
+- **Current derived inputs:** Scene build / prospective input-v5 budget SHA-256 is
   **82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b** /
-  **476b85e9e38d0382015663741d08766239688082db0db4536e4d734b98912ee6**.
+  **11707d53bd640b9f2cd0bb1daf963a1c72308239b10faea0332f030f8bd2743f**.
   Compendium producer / budget SHA-256 is
   **baef39c64288c3507398847a6409b4bf181c64a7141a01ec0926f2618e3749a6** /
   **913e5d6d26ea13ef7feb1c604726e1c3a6252fd60f434daaf1abe5cbaf8a9238**.
-  These refresh exact source/build provenance only; all numeric ceilings and historical samples
-  remain byte-identical.
+  SceneMemory producer collector / verdict-contract SHA-256 is
+  **266b348c502ba80bb26d6790857c0497304b228f567340523189f764ad8460c5** /
+  **da6dce07590d14a0e7bb44f242669220717e8c0556f119d92266c64cfe744c7a**.
+  Compendium rulers remain unchanged.
 - **PR boundary:** draft PR **#35**, base **develop**, source **openai/mac**, remains blocked,
   unmerged and unpushed at remote head **017fa6decbc41809188768ccdb98ab86ef1b9ebc** against
   fetched base **7a9f4c1370dd84292388d718c38ff34214f6203b**.
@@ -195,26 +197,47 @@ the archive verbatim and refresh this handoff in place.
   same topology, range, slope and cleanup before a source-growth-tolerant successor ruler may be
   selected. Any ownership or slope drift returns to product diagnosis.
 
-### Exact next work — bounded ruler evidence, then one no-retry browser chain
+### Three-candidate result and input-v5 activation
 
-1. Commit the immutable ebf red carrier/replay/handoff as one SSH-signed evidence descendant and
-   verify its signature and clean worktree.
-2. On that one unchanged signed producer, collect exactly three calibration-only SceneMemory
-   candidates, once each with zero retry, preserving each report before the next run. Recompute
-   current maxima/headroom and prove topology/range/slope/cleanup remain stable before changing a
-   ruler. Do not use Edge point version as calibration authority.
-3. Implement only the evidence-supported source-growth-tolerant SceneMemory budget/contract
-   successor, preserve historical v3/v4 replay, negative-control exact/+1 boundaries and the known
-   retention/DOM reds, update owning docs/authorities, and sign the activation.
-4. Run the complete develop profile, required changed-instrument controls and
-   `node tools/tracked-input-preflight.mjs --profile=develop` once on that exact activation.
-5. Run one exact
+- Exact signed clean source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied exactly three
+  calibration-only observations, once each with zero retry, under one unchanged build and Edge/CDP
+  tuple. Every candidate completed 44/44 calibration outcomes, stable topology/range/slope and
+  complete cleanup. Raw/gzip carriers, sizes and hashes are bound in `audits/README.md` and
+  `audits/ARC1C_SCENEMEM_SOURCE_NORMALIZATION_2026-08-30.md`.
+- Worst phone/desktop V8 growth over the scored initial snapshot is 5,387,552 / 5,677,328 bytes;
+  worst normalized working set is 11,098,217 / 11,352,882 bytes. The selected 6 MiB / 12 MiB
+  limits retain at least 614,128 / 1,230,030 bytes of headroom. The former raw 12 MiB post-route
+  V8 cap would fail two of these three unchanged-source desktop samples.
+- Input-v5 therefore judges same-run growth rather than fixed shipped-source footprint. It retains
+  broad 12 MiB initial-V8 and 18 MiB initial-aggregate safety stops plus every existing component,
+  range/slope, DOM/listener, resource, ownership, pending, BFCache, answerability and surface-vista
+  control. Raw totals remain report diagnostics. Exact/+1, equal-offset, point-only allocation,
+  boot-safety, missing/detached-initial and historical v3/v4 replay controls are green.
+- Final adversarial review found and closed one pre-certification loophole: the numeric baseline is
+  now bound to the exact profile, document token and `${profile}-initial` scored role, and named
+  verification re-derives profile-v3 metrics from retained raw evidence. The v5 initial heap
+  carrier exact-keys only its three scored counters, so raw CDP `totalSize` or future fields cannot
+  become version-sensitive authority. Cross-profile, same-profile-warmup, extra-field and
+  metric-summary substitutions are red. The focused SceneMemory/workflow/
+  authority/Arc 9 set is **6 files / 150 passed**, and all three TypeScript programs are green.
+- The post-Arc-9 Capture republish remains deliberately broad: Landing and durable Atlas build
+  Survey while product authority is busy, and any shared-coordinator owner can repaint a pending
+  Capture action disabled. Scoping the final republish by operation reason would recreate that
+  stale-readiness race; the wiring test now rejects such narrowing.
+
+### Exact next work — one consolidated validation, then one no-retry browser chain
+
+1. SSH-sign the activation and verify its signature/clean worktree. On that clean source, run
+   `node tools/tracked-input-preflight.mjs --profile=develop` once; it already owns the complete
+   seven-command develop profile, so do not run `check-profile --profile=develop` separately.
+   Run only the classifier-required changed-browser-instrument controls once.
+2. Then run one exact
    SceneMemory → Compendium → Slice → Glass chain on the committed source. Stop on the first
    nonzero, red or instrument result; never retry automatically. Glass runs only after green Slice.
-6. Preserve and named-verify each available immutable report. Do **not** run Recovery for this
+3. Preserve and named-verify each available immutable report. Do **not** run Recovery for this
    agent → `develop` admission; Recovery belongs to the later separately authorized
    `develop` → `main` production candidate.
-7. Refresh this handoff with the exact clean source and final local evidence. Report the exact
+4. Refresh this handoff with the exact clean source and final local evidence. Report the exact
    base/head to Nick. A GitHub write still requires a separately authorized exact attempt.
 
 ### Product-roadmap and HUMAN boundary
@@ -233,9 +256,8 @@ judgment. Automation must not invent those decisions merely to call the roadmap 
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** preserve/sign the exact ebf red, collect the three bounded current-product
-  calibration candidates, activate only the evidence-supported successor ruler, then run one clean
-  tracked admission and one final local develop browser chain with causal stop and no retry.
+- **OpenAI/Codex now:** finish the one consolidated input-v5 activation validation, sign it, then
+  run one final local develop browser chain with causal stop and no retry.
 - **GitHub step now:** none. Zero hosted attempts are authorized.
 - **PR #35 after local green:** existing draft, base **develop**, source **openai/mac**, title
   **feat(v2): complete roadmap campaign and harden CI parity**. Its exact push/hosted head is not

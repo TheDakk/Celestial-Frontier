@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
+import { evaluateSceneMemory } from '../tools/scenemem-contract.mjs';
 import {
   SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA,
   SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE,
@@ -16,8 +17,10 @@ import {
   sceneMemoryCollectProfilesOnce,
   sceneMemoryCollectFixedSnapshot,
   sceneMemoryCollectSnapshotPass,
+  sceneMemoryInitialHeapProjection,
   sceneMemoryHeapPhaseControlSlopes,
   sceneMemoryCollectorCommandTimeoutMs,
+  sceneMemoryMetricSummary,
   sceneMemoryProfileRawBindingErrors,
   sceneMemorySnapshotPairErrors,
   sceneMemoryShipyardOpenSettlementReasons,
@@ -49,7 +52,10 @@ const RETAINED_REPORT_FILES = [
   '../../../audits/ARC1C_SCENEMEM_CALIBRATION_CANDIDATE2.json.gz',
   '../../../audits/ARC1C_SCENEMEM_CALIBRATION_CANDIDATE3.json.gz',
   '../../../audits/ARC1C_SCENEMEM_LOCAL_CERTIFICATION.json.gz',
+  '../../../audits/ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION1_20260830_553B06B.json.gz',
 ] as const;
+const budgetPath = fileURLToPath(new URL('../budgets/scene-memory-v2.json', import.meta.url));
+const currentBudget = JSON.parse(readFileSync(budgetPath, 'utf8'));
 
 function rawContractProjection(snapshot: any): Record<string, unknown> {
   const scene = snapshot.raw.scene;
@@ -145,6 +151,45 @@ function retainedReports(): any[] {
     fileURLToPath(new URL(relative, import.meta.url)),
   )).toString('utf8')));
 }
+
+function bindCurrentContract(report: any): void {
+  report.contractInput = {
+    schema: 'cf-v2-scene-memory-input/v5',
+    profiles: Object.fromEntries((['phone', 'desktop'] as const).map((profile) => {
+      const measurement = report.profiles[profile];
+      return [profile, {
+        initial: {
+          documentToken: measurement.initial.raw.scene.documentToken,
+          heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),
+        },
+        initialVista: measurement.initialVista,
+        firstSurfaceVista: measurement.firstSurfaceVista,
+        precondition: measurement.precondition,
+        cycles: measurement.cycles,
+        bfcache: measurement.bfcache,
+        reloadCleanup: measurement.reloadCleanup,
+      }];
+    })),
+    budgets: currentBudget.profiles,
+  };
+  report.verdict = evaluateSceneMemory(report.contractInput);
+  report.outcomes = report.verdict.outcomes;
+}
+
+function currentReportFixture(): any {
+  const report = structuredClone(retainedReports().at(-1)!);
+  report.schema = 'cf-v2-scene-memory-report/v4';
+  report.status = 'pass';
+  report.certification = 'contract-budget';
+  report.findings = [];
+  report.fatalEvents = [];
+  for (const profile of ['phone', 'desktop'] as const) {
+    report.profiles[profile].schema = 'cf-v2-scene-memory-profile/v3';
+    report.profiles[profile].metrics = sceneMemoryMetricSummary(report.profiles[profile]);
+  }
+  bindCurrentContract(report);
+  return report;
+}
 const PRODUCT_AUTHORITY_BINDINGS = [
   ['gameHtml', 'gameHtmlPath', "const gameHtmlPath = path.join(appDir, 'index.html');"],
   ['shipVisualState', 'shipVisualStatePath',
@@ -227,9 +272,33 @@ function surfaceTierSettlementBindingErrors(source: string): string[] {
     '+ Number(scene.surfaceVistaWorkerActive) + Number(scene.surfaceVistaMounted)',
     'surfaceVistaCacheEntriesMax: max((point) => point.surfaceVistaCacheEntries)',
     'errors.push(...sceneMemoryProfileRawBindingErrors(measurement)',
-    "schema: 'cf-v2-scene-memory-input/v4'",
+    "schema: 'cf-v2-scene-memory-input/v5'",
   ];
   return exactBindings.filter((binding) => !source.includes(binding));
+}
+
+function sourceNormalizedHeapBindingErrors(source: string): string[] {
+  const projectionUse =
+    'heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),';
+  const exactBindings = [
+    "const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v4';",
+    "const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v5';",
+    "schema: 'cf-v2-scene-memory-profile/v3'",
+    "schema: 'cf-v2-scene-memory-input/v5'",
+    'documentToken: measurement.initial.raw.scene.documentToken,',
+    'export function sceneMemoryInitialHeapProjection(heap) {',
+    projectionUse,
+    'initialHeapUsedBytesMax: initialHeapUsed',
+    'initialHeapAggregateBytesMax: initialHeapUsed',
+    'heapUsedGrowthBytesMax: max(heapGrowth)',
+    'heapNormalizedWorkingSetBytesMax: max((point) => heapGrowth(point)',
+    'terminal certification requires the current source-normalized input contract',
+  ];
+  const errors = exactBindings.filter((binding) => !source.includes(binding));
+  if (source.split(projectionUse).length - 1 !== 2 && !errors.includes(projectionUse)) {
+    errors.push(projectionUse);
+  }
+  return errors;
 }
 
 function collectorTimeoutBindingErrors(source: string): string[] {
@@ -422,6 +491,26 @@ describe('scene-memory terminal verifier', () => {
     expect(snapshot.heap).toEqual(second);
     expect(snapshot.heapAggregateBytes).toBe(2_400);
     expect(sceneMemorySnapshotPairErrors(snapshot, true)).toEqual([]);
+  });
+
+  it('projects only the three scored counters from extensible raw CDP heap evidence', () => {
+    const projected = sceneMemoryInitialHeapProjection({
+      usedSize: 100,
+      totalSize: 1_000,
+      embedderHeapUsedSize: 200,
+      backingStorageSize: 300,
+      futureHeapCounter: 4_000,
+    });
+    expect(projected).toEqual({
+      usedSize: 100,
+      embedderHeapUsedSize: 200,
+      backingStorageSize: 300,
+    });
+    expect(Object.keys(projected).sort()).toEqual([
+      'backingStorageSize', 'embedderHeapUsedSize', 'usedSize',
+    ]);
+    expect(projected).not.toHaveProperty('totalSize');
+    expect(projected).not.toHaveProperty('futureHeapCounter');
   });
 
   it('keeps one snapshot pass in exact answerable-GC-heap-carrier-DOM order', async () => {
@@ -853,6 +942,59 @@ describe('scene-memory terminal verifier', () => {
     ]);
   });
 
+  it('negative control: the v5 initial baseline cannot detach from its scored raw snapshot', () => {
+    const report = currentReportFixture();
+
+    const baseline = verifyReport(report, report.runId, { budgetFile: budgetPath });
+    expect(baseline.errors).not.toContain(
+      'contract input is detached from the collected profile evidence',
+    );
+
+    report.contractInput.profiles.phone.initial.heap = {
+      ...report.contractInput.profiles.phone.initial.heap,
+      usedSize: report.contractInput.profiles.phone.initial.heap.usedSize + 1,
+    };
+    const detached = verifyReport(report, report.runId, { budgetFile: budgetPath });
+    expect(detached.errors).toContain(
+      'contract input is detached from the collected profile evidence',
+    );
+  });
+
+  it('negative control: a cross-profile initial snapshot cannot launder v5 growth', () => {
+    const report = currentReportFixture();
+    report.profiles.phone.initial = structuredClone(report.profiles.desktop.initial);
+    report.profiles.phone.metrics = sceneMemoryMetricSummary(report.profiles.phone);
+    bindCurrentContract(report);
+
+    const result = verifyReport(report, report.runId, { budgetFile: budgetPath });
+    expect(result.errors).toContain('phone initial snapshot label/profile drifted');
+    expect(result.errors).toContain('phone initial snapshot document identity drifted');
+    expect(result.errors).toContain('imported contract verdict is stale or red');
+  });
+
+  it('negative control: a same-profile warmup cannot masquerade as the initial snapshot', () => {
+    const report = currentReportFixture();
+    report.profiles.phone.initial = structuredClone(report.profiles.phone.warmups[0]);
+    report.profiles.phone.metrics = sceneMemoryMetricSummary(report.profiles.phone);
+    bindCurrentContract(report);
+
+    const result = verifyReport(report, report.runId, { budgetFile: budgetPath });
+    expect(result.errors).toContain('phone initial snapshot label/profile drifted');
+  });
+
+  it('negative control: profile-v3 normalized metrics are re-derived from raw evidence', () => {
+    const report = currentReportFixture();
+    report.profiles.phone.metrics = {
+      ...report.profiles.phone.metrics,
+      heapUsedGrowthBytesMax: report.profiles.phone.metrics.heapUsedGrowthBytesMax + 1,
+    };
+
+    const result = verifyReport(report, report.runId, { budgetFile: budgetPath });
+    expect(result.errors).toContain(
+      'phone normalized metric summary is detached from retained profile evidence',
+    );
+  });
+
   it('rejects a PASS-shaped report whose budget certification was laundered', () => {
     const result = verifyReport({
       schema: 'cf-v2-scene-memory-report/v2',
@@ -865,14 +1007,14 @@ describe('scene-memory terminal verifier', () => {
     expect(result.ok).toBe(false);
     expect(result.errors).toContain('report certification must be contract-budget');
     expect(result.errors).toContain(
-      'terminal certification requires the current surface-vista input contract',
+      'terminal certification requires the current source-normalized input contract',
     );
     expect(result.errors).toContain('verification requires the same tracked --budget');
   });
 
   it('rejects a PASS-shaped report that does not score the fixed second snapshot pass', () => {
     const result = verifyReport({
-      schema: 'cf-v2-scene-memory-report/v3',
+      schema: 'cf-v2-scene-memory-report/v4',
       runId: 'tampered-fixed-second-policy',
       status: 'pass',
       lifecycle: { schema: 'cf-v2-scene-memory-report-lifecycle/v1', status: 'complete' },
@@ -996,6 +1138,32 @@ describe('scene-memory terminal verifier', () => {
 
   it('waits for the published surface tier after pending HD work clears', () => {
     expect(surfaceTierSettlementBindingErrors(collectorSource)).toEqual([]);
+  });
+
+  it('binds the current report/profile/input schemas and scored initial heap projection', () => {
+    expect(sourceNormalizedHeapBindingErrors(collectorSource)).toEqual([]);
+  });
+
+  it('negative control: no source-normalized schema, metric, or baseline binding is decorative', () => {
+    const bindings = [
+      "const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v4';",
+      "const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v5';",
+      "schema: 'cf-v2-scene-memory-profile/v3'",
+      "schema: 'cf-v2-scene-memory-input/v5'",
+      'documentToken: measurement.initial.raw.scene.documentToken,',
+      'export function sceneMemoryInitialHeapProjection(heap) {',
+      'heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),',
+      'initialHeapUsedBytesMax: initialHeapUsed',
+      'initialHeapAggregateBytesMax: initialHeapUsed',
+      'heapUsedGrowthBytesMax: max(heapGrowth)',
+      'heapNormalizedWorkingSetBytesMax: max((point) => heapGrowth(point)',
+      'terminal certification requires the current source-normalized input contract',
+    ];
+    for (const binding of bindings) {
+      const missing = collectorSource.replaceAll(binding, '/* removed by mutation control */');
+      expect(missing, binding).not.toBe(collectorSource);
+      expect(sourceNormalizedHeapBindingErrors(missing), binding).toContain(binding);
+    }
   });
 
   it('fails a surface settlement immediately with the bounded worker cause', () => {

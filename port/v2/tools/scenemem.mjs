@@ -76,9 +76,9 @@ const pixiManagedResourceOwnerPath = path.join(appDir, 'src', 'pixi-managed-reso
 const pixiBatchTextureArrayPath = path.join(appDir, 'src', 'pixi-batch-texture-array.ts');
 const sceneTextPath = path.join(appDir, 'src', 'scene-text.ts');
 
-const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v3';
+const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v4';
 const LIFECYCLE_SCHEMA = 'cf-v2-scene-memory-report-lifecycle/v1';
-const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v4';
+const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v5';
 export const SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA =
   'cf-v2-scene-memory-browser-authority/v2';
 export const SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE = 'arc1c-scene-memory-only';
@@ -117,8 +117,9 @@ const HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES = 128 * 1024;
 const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
 const SURFACE_VISTA_RELOAD_CLEANUP_BINDING = '__cfSceneMemoryVistaCacheCleanup';
 const BUDGET_FIELDS = Object.freeze([
-  'heapUsedBytesMax', 'embedderHeapUsedBytesMax', 'backingStorageBytesMax',
-  'heapAggregateBytesMax', 'warmHeapAggregateRangeBytesMax',
+  'initialHeapUsedBytesMax', 'initialHeapAggregateBytesMax', 'heapUsedGrowthBytesMax',
+  'embedderHeapUsedBytesMax', 'backingStorageBytesMax',
+  'heapNormalizedWorkingSetBytesMax', 'warmHeapAggregateRangeBytesMax',
   'warmHeapSlopeBytesPerCycleMax',
   'documentsMax', 'nodesMax', 'jsEventListenersMax',
   'peakActiveLeaseCountMax', 'peakLiveTextureCountMax', 'peakLiveCanvasBytesMax',
@@ -1714,8 +1715,19 @@ function leastSquaresSlope(values) {
   return numerator / denominator;
 }
 
-function metricSummary(measurement) {
+export function sceneMemoryInitialHeapProjection(heap) {
+  return Object.freeze({
+    usedSize: heap?.usedSize,
+    embedderHeapUsedSize: heap?.embedderHeapUsedSize,
+    backingStorageSize: heap?.backingStorageSize,
+  });
+}
+
+export function sceneMemoryMetricSummary(measurement) {
   const points = [measurement.precondition, ...measurement.cycles, measurement.bfcache].filter(Boolean);
+  const initialHeapUsed = measurement.initial?.heap?.usedSize;
+  assert(Number.isFinite(initialHeapUsed) && initialHeapUsed >= 0,
+    'source-normalized heap metrics require the scored fixed-second initial V8 baseline');
   const warmAggregates = measurement.cycles.map((point) => point.heap.usedSize
     + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize);
   const warmHeapSlope = Math.max(0, ...[
@@ -1725,7 +1737,17 @@ function metricSummary(measurement) {
     warmAggregates,
   ].map(leastSquaresSlope));
   const max = (select) => Math.max(...points.map(select));
+  const heapGrowth = (point) => Math.max(0, point.heap.usedSize - initialHeapUsed);
   return Object.freeze({
+    initialHeapUsedBytesMax: initialHeapUsed,
+    initialHeapAggregateBytesMax: initialHeapUsed
+      + measurement.initial.heap.embedderHeapUsedSize
+      + measurement.initial.heap.backingStorageSize,
+    heapUsedGrowthBytesMax: max(heapGrowth),
+    heapNormalizedWorkingSetBytesMax: max((point) => heapGrowth(point)
+      + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize),
+    // Raw totals remain report diagnostics. They are deliberately not admission
+    // ceilings because fixed shipped source and allocator phase move them.
     heapUsedBytesMax: max((point) => point.heap.usedSize),
     embedderHeapUsedBytesMax: max((point) => point.heap.embedderHeapUsedSize),
     backingStorageBytesMax: max((point) => point.heap.backingStorageSize),
@@ -1769,7 +1791,7 @@ async function collectProfile({
   bindingEvents, onProgress,
 }) {
   const measurement = {
-    schema: 'cf-v2-scene-memory-profile/v2', profile, viewport,
+    schema: 'cf-v2-scene-memory-profile/v3', profile, viewport,
     targetId: null, documentToken: null, initial: null, warmup: null, warmups: [], precondition: null,
     initialVista: null, firstSurfaceVista: null, surfaceVistaObservations: [],
     warmupInventory: null, measured: [], cycles: [], bfcache: null, bfcacheSnapshot: null,
@@ -1869,7 +1891,7 @@ async function collectProfile({
       veteranRaw, bindingEvents,
     });
     onProgress(measurement);
-    measurement.metrics = metricSummary(measurement);
+    measurement.metrics = sceneMemoryMetricSummary(measurement);
     const profileFatals = fatalEvents.filter((event) => event.profile === profile);
     productAssert(profileFatals.length === 0,
       `${profile}: browser reported fatal/console-error events`, profileFatals);
@@ -2014,7 +2036,7 @@ async function runGate(options) {
          budget. Empty measurements intentionally yield a red verdict but
          must not throw when the budget shape is authoritative. */
       evaluateSceneMemory({
-        schema: 'cf-v2-scene-memory-input/v4',
+        schema: 'cf-v2-scene-memory-input/v5',
         profiles: { phone: { cycles: [], bfcache: null }, desktop: { cycles: [], bfcache: null } },
         budgets: budget.profiles,
       });
@@ -2091,9 +2113,13 @@ async function runGate(options) {
       ]),
     );
     contractInput = {
-      schema: 'cf-v2-scene-memory-input/v4',
+      schema: 'cf-v2-scene-memory-input/v5',
       profiles: Object.fromEntries(Object.entries(profiles).map(([profile, measurement]) => [
         profile, {
+          initial: {
+            documentToken: measurement.initial.raw.scene.documentToken,
+            heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),
+          },
           initialVista: measurement.initialVista,
           firstSurfaceVista: measurement.firstSurfaceVista,
           precondition: measurement.precondition,
@@ -2203,7 +2229,8 @@ function surfaceInventoryFromObservation(observation) {
 export function sceneMemoryProfileRawBindingErrors(measurement) {
   const errors = [];
   try {
-    const fixedSecondRequired = measurement?.schema === 'cf-v2-scene-memory-profile/v2';
+    const fixedSecondRequired = measurement?.schema === 'cf-v2-scene-memory-profile/v2'
+      || measurement?.schema === 'cf-v2-scene-memory-profile/v3';
     if (!measurement?.initial || !same(
       measurement.initialVista,
       surfaceVistaState(measurement.initial.raw?.scene || {}),
@@ -2211,6 +2238,23 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
     if (fixedSecondRequired) {
       errors.push(...sceneMemorySnapshotPairErrors(measurement.initial)
         .map((error) => `initial ${error}`));
+      if (measurement.schema === 'cf-v2-scene-memory-profile/v3') {
+        if (measurement.initial?.label !== `${measurement.profile}-initial`) {
+          errors.push('initial snapshot label/profile drifted');
+        }
+        const initialSceneToken = measurement.initial?.raw?.scene?.documentToken;
+        const initialTarget = measurement.initial?.answerability?.target?.value;
+        if (typeof measurement.documentToken !== 'string'
+          || measurement.documentToken.length === 0
+          || initialSceneToken !== measurement.documentToken
+          || initialTarget?.documentTokenBefore !== measurement.documentToken
+          || initialTarget?.documentTokenAfter !== measurement.documentToken) {
+          errors.push('initial snapshot document identity drifted');
+        }
+        if (!same(measurement.metrics, sceneMemoryMetricSummary(measurement))) {
+          errors.push('normalized metric summary is detached from retained profile evidence');
+        }
+      }
       if (!Array.isArray(measurement.warmups)
         || measurement.warmups.length !== WARMUP_CYCLES) {
         errors.push('retained warmup snapshot inventory is incomplete');
@@ -2304,6 +2348,7 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
 
 export function terminalProfileEvidenceErrors(
   profiles, surfaceVistaRequired = false, fixedSecondRequired = false,
+  sourceNormalizedRequired = false,
 ) {
   const errors = [];
   const profileKeys = Object.keys(profiles || {}).sort();
@@ -2314,7 +2359,9 @@ export function terminalProfileEvidenceErrors(
     const measurement = profiles?.[profile];
     if (!measurement || measurement.profile !== profile
       || !same(measurement.viewport, PROFILES[profile])
-      || (fixedSecondRequired && measurement.schema !== 'cf-v2-scene-memory-profile/v2')
+      || (sourceNormalizedRequired
+        ? measurement.schema !== 'cf-v2-scene-memory-profile/v3'
+        : fixedSecondRequired && measurement.schema !== 'cf-v2-scene-memory-profile/v2')
       || !measurement.precondition
       || (fixedSecondRequired && (!Array.isArray(measurement.warmups)
         || measurement.warmups.length !== WARMUP_CYCLES
@@ -2343,7 +2390,10 @@ export function terminalProfileEvidenceErrors(
 
 function verifyReport(report, expectedRunId, options) {
   const errors = [];
-  const surfaceVistaRequired = report?.contractInput?.schema === 'cf-v2-scene-memory-input/v4';
+  const sourceNormalizedRequired = report?.contractInput?.schema
+    === 'cf-v2-scene-memory-input/v5';
+  const surfaceVistaRequired = sourceNormalizedRequired
+    || report?.contractInput?.schema === 'cf-v2-scene-memory-input/v4';
   let authoritativeBudgetFile = null;
   if (report?.schema !== REPORT_SCHEMA) errors.push(`schema must be ${REPORT_SCHEMA}`);
   if (report?.runId !== expectedRunId) errors.push('report runId does not match --verify-run');
@@ -2360,7 +2410,9 @@ function verifyReport(report, expectedRunId, options) {
   if (!same(report?.cleanup, { browser: true, server: true, workspaceLock: true })) {
     errors.push('terminal cleanup is incomplete');
   }
-  errors.push(...terminalProfileEvidenceErrors(report?.profiles, surfaceVistaRequired, true));
+  errors.push(...terminalProfileEvidenceErrors(
+    report?.profiles, surfaceVistaRequired, true, sourceNormalizedRequired,
+  ));
   errors.push(...terminalOutcomeInventoryErrors(
     report?.outcomes, null, surfaceVistaRequired ? OUTCOME_COUNT : 42,
   ));
@@ -2368,8 +2420,8 @@ function verifyReport(report, expectedRunId, options) {
   if (report?.certification !== 'contract-budget') {
     errors.push('report certification must be contract-budget');
   }
-  if (!surfaceVistaRequired) {
-    errors.push('terminal certification requires the current surface-vista input contract');
+  if (!sourceNormalizedRequired) {
+    errors.push('terminal certification requires the current source-normalized input contract');
   }
   if (!options.budgetFile) errors.push('verification requires the same tracked --budget');
   else {
@@ -2396,6 +2448,11 @@ function verifyReport(report, expectedRunId, options) {
     else {
       const expectedProfiles = Object.fromEntries(Object.entries(report.profiles || {})
         .map(([profile, measurement]) => [profile, {
+          ...(sourceNormalizedRequired
+            ? { initial: {
+              documentToken: measurement.initial.raw.scene.documentToken,
+              heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),
+            } } : {}),
           ...(surfaceVistaRequired ? {
             initialVista: measurement.initialVista,
             firstSurfaceVista: measurement.firstSurfaceVista,

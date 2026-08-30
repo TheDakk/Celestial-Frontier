@@ -25,8 +25,21 @@ const LEGACY_BUDGET_FIELDS = Object.freeze([
 const SURFACE_VISTA_BUDGET_FIELDS = Object.freeze([
   'surfaceVistaCacheEntriesMax', 'surfaceVistaCachePixelsMax',
 ]);
-const BUDGET_FIELDS = Object.freeze([
+const RAW_BUDGET_FIELDS = Object.freeze([
   ...LEGACY_BUDGET_FIELDS, ...SURFACE_VISTA_BUDGET_FIELDS,
+]);
+const CURRENT_BUDGET_FIELDS = Object.freeze([
+  'initialHeapUsedBytesMax', 'initialHeapAggregateBytesMax', 'heapUsedGrowthBytesMax',
+  'embedderHeapUsedBytesMax', 'backingStorageBytesMax',
+  'heapNormalizedWorkingSetBytesMax', 'warmHeapAggregateRangeBytesMax',
+  'warmHeapSlopeBytesPerCycleMax',
+  'documentsMax', 'nodesMax', 'jsEventListenersMax',
+  'peakActiveLeaseCountMax', 'peakLiveTextureCountMax', 'peakLiveCanvasBytesMax',
+  'managedTextureCountMax', 'managedTexturePixelsMax', 'localCanvasCacheEntriesMax',
+  'peakLocalCanvasCacheEntriesMax', 'productRenderTargetsMax',
+  'ringCacheEntriesMax', 'peakRingGeometryEntriesMax',
+  ...SURFACE_VISTA_BUDGET_FIELDS,
+  'targetElapsedMsMax', 'heartbeatElapsedMsMax',
 ]);
 const MANAGED_RESOURCE_FIELDS = Object.freeze([
   'schema', 'valid', 'hashCount', 'hashes', 'liveEntryCount', 'clearedEntryCount',
@@ -79,9 +92,10 @@ function outcome(id, pass, message, details = undefined) {
   return Object.freeze({ id, pass, message, ...(details === undefined ? {} : { details }) });
 }
 
-function assertBudget(profile, budget, surfaceVistaRequired) {
-  const fields = surfaceVistaRequired ? BUDGET_FIELDS
-    : exactKeys(budget, BUDGET_FIELDS) ? BUDGET_FIELDS : LEGACY_BUDGET_FIELDS;
+function assertBudget(profile, budget, surfaceVistaRequired, sourceNormalizedRequired) {
+  const fields = sourceNormalizedRequired ? CURRENT_BUDGET_FIELDS
+    : surfaceVistaRequired ? RAW_BUDGET_FIELDS
+      : exactKeys(budget, RAW_BUDGET_FIELDS) ? RAW_BUDGET_FIELDS : LEGACY_BUDGET_FIELDS;
   if (!exactKeys(budget, fields)
     || fields.some((field) => !finite(budget[field]))) {
     throw new TypeError(`${profile} scene-memory budget is incomplete or invalid`);
@@ -452,7 +466,7 @@ function heapAggregate(point) {
   return heap.usedSize + heap.embedderHeapUsedSize + heap.backingStorageSize;
 }
 
-function heapDomBudgetReasons(pointsWithLabels, budget) {
+function heapDomBudgetReasons(pointsWithLabels, initial, budget, sourceNormalizedRequired) {
   const reasons = [];
   const check = (label, name, value, ceiling, valid) => {
     if (!valid(value)) reasons.push(`${label}: ${name} is absent or invalid`);
@@ -460,19 +474,49 @@ function heapDomBudgetReasons(pointsWithLabels, budget) {
   };
   const heapCounter = (value) => finite(value) && value >= 0;
   const domCounter = (value) => count(value) && value > 0;
+  const initialHeapUsed = initial?.heap?.usedSize;
+  if (sourceNormalizedRequired && !heapCounter(initialHeapUsed)) {
+    reasons.push('initial: V8 heap baseline is absent or invalid');
+  } else if (sourceNormalizedRequired) {
+    check('initial', 'V8 heap safety bytes', initialHeapUsed,
+      budget.initialHeapUsedBytesMax, heapCounter);
+    check('initial', 'embedder heap used bytes', initial.heap.embedderHeapUsedSize,
+      budget.embedderHeapUsedBytesMax, heapCounter);
+    check('initial', 'backing storage bytes', initial.heap.backingStorageSize,
+      budget.backingStorageBytesMax, heapCounter);
+    const initialAggregate = heapAggregate(initial);
+    check('initial', 'aggregate heap safety bytes', initialAggregate,
+      budget.initialHeapAggregateBytesMax, heapCounter);
+  }
   for (const [label, point] of pointsWithLabels) {
     const heap = point?.heap;
     if (!object(heap)) {
       reasons.push(`${label}: heap counters are absent or invalid`);
     } else {
-      check(label, 'V8 heap used bytes', heap.usedSize, budget.heapUsedBytesMax, heapCounter);
+      if (sourceNormalizedRequired) {
+        if (heapCounter(initialHeapUsed) && heapCounter(heap.usedSize)) {
+          const growth = Math.max(0, heap.usedSize - initialHeapUsed);
+          check(label, 'V8 heap growth bytes', growth,
+            budget.heapUsedGrowthBytesMax, heapCounter);
+          const normalizedWorkingSet = growth + heap.embedderHeapUsedSize
+            + heap.backingStorageSize;
+          check(label, 'normalized working-set bytes', normalizedWorkingSet,
+            budget.heapNormalizedWorkingSetBytesMax, heapCounter);
+        } else if (!heapCounter(heap.usedSize)) {
+          reasons.push(`${label}: V8 heap used bytes is absent or invalid`);
+        }
+      } else {
+        check(label, 'V8 heap used bytes', heap.usedSize, budget.heapUsedBytesMax, heapCounter);
+      }
       check(label, 'embedder heap used bytes', heap.embedderHeapUsedSize,
         budget.embedderHeapUsedBytesMax, heapCounter);
       check(label, 'backing storage bytes', heap.backingStorageSize,
         budget.backingStorageBytesMax, heapCounter);
-      const aggregate = heapAggregate(point);
-      if (finite(aggregate) && aggregate > budget.heapAggregateBytesMax) {
-        reasons.push(`${label}: aggregate heap bytes ${aggregate} exceeded ceiling ${budget.heapAggregateBytesMax}`);
+      if (!sourceNormalizedRequired) {
+        const aggregate = heapAggregate(point);
+        if (finite(aggregate) && aggregate > budget.heapAggregateBytesMax) {
+          reasons.push(`${label}: aggregate heap bytes ${aggregate} exceeded ceiling ${budget.heapAggregateBytesMax}`);
+        }
       }
     }
     const dom = point?.dom;
@@ -675,20 +719,32 @@ function surfaceVistaLifecycleReasons(pointsWithLabels, cycles, reloadCleanup, b
   return reasons;
 }
 
-function profileOutcomes(profile, measurement, budget, surfaceVistaRequired) {
+function profileOutcomes(
+  profile, measurement, budget, surfaceVistaRequired, sourceNormalizedRequired,
+) {
   const out = [];
   const precondition = measurement?.precondition;
+  const initial = measurement?.initial;
   const cycles = Array.isArray(measurement?.cycles) ? measurement.cycles : [];
   const bfcache = measurement?.bfcache;
   const preconditionOk = object(precondition) && count(precondition.sceneGeneration)
     && nonempty(precondition.documentToken)
+    && (!sourceNormalizedRequired || (exactKeys(initial, ['documentToken', 'heap'])
+      && exactKeys(initial.heap, [
+        'usedSize', 'embedderHeapUsedSize', 'backingStorageSize',
+      ])
+      && initial.documentToken === precondition.documentToken))
     && precondition.registry?.observationWindow === 0
     && cycles.length === SCENE_MEMORY_CYCLE_COUNT
     && cycles.every((cycle) => cycle?.documentToken === precondition.documentToken);
   out.push(outcome(`${profile}/measurement-precondition`, preconditionOk,
     preconditionOk
-      ? 'explicit window-zero precondition and stable document present'
-      : 'precondition was absent, not reset, or changed documents'));
+      ? (sourceNormalizedRequired
+        ? 'explicit window-zero precondition and source-normalized initial document agree'
+        : 'explicit window-zero precondition and stable document present')
+      : (sourceNormalizedRequired
+        ? 'precondition/initial baseline was absent, not reset, or changed documents'
+        : 'precondition was absent, not reset, or changed documents')));
 
   const complete = cycles.length === SCENE_MEMORY_CYCLE_COUNT
     && cycles.every((cycle, index) => cycle?.cycle === index + 1
@@ -844,7 +900,9 @@ function profileOutcomes(profile, measurement, budget, surfaceVistaRequired) {
   out.push(outcome(`${profile}/answerability`, answerable.length === 0,
     answerable.length ? answerable.join('; ') : 'target and browser heartbeat answered'));
 
-  const heapDomReasons = heapDomBudgetReasons(pointsWithLabels, budget);
+  const heapDomReasons = heapDomBudgetReasons(
+    pointsWithLabels, measurement?.initial, budget, sourceNormalizedRequired,
+  );
   out.push(outcome(`${profile}/heap-dom-budget`, heapDomReasons.length === 0,
     heapDomReasons.length
       ? heapDomReasons.join('; ')
@@ -881,7 +939,9 @@ function profileOutcomes(profile, measurement, budget, surfaceVistaRequired) {
 }
 
 export function evaluateSceneMemory(input) {
-  const surfaceVistaRequired = input?.schema === 'cf-v2-scene-memory-input/v4';
+  const sourceNormalizedRequired = input?.schema === 'cf-v2-scene-memory-input/v5';
+  const surfaceVistaRequired = sourceNormalizedRequired
+    || input?.schema === 'cf-v2-scene-memory-input/v4';
   if (!object(input)
     || (!surfaceVistaRequired && input.schema !== 'cf-v2-scene-memory-input/v3')
     || !exactKeys(input.profiles, PROFILES) || !exactKeys(input.budgets, PROFILES)) {
@@ -889,15 +949,19 @@ export function evaluateSceneMemory(input) {
   }
   const outcomes = [];
   for (const profile of PROFILES) {
-    assertBudget(profile, input.budgets[profile], surfaceVistaRequired);
+    assertBudget(
+      profile, input.budgets[profile], surfaceVistaRequired, sourceNormalizedRequired,
+    );
     outcomes.push(...profileOutcomes(
       profile, input.profiles[profile], input.budgets[profile], surfaceVistaRequired,
+      sourceNormalizedRequired,
     ));
   }
   const failures = outcomes.filter((entry) => !entry.pass);
   return Object.freeze({
-    schema: surfaceVistaRequired
-      ? 'cf-v2-scene-memory-verdict/v3' : 'cf-v2-scene-memory-verdict/v2',
+    schema: sourceNormalizedRequired ? 'cf-v2-scene-memory-verdict/v4'
+      : surfaceVistaRequired ? 'cf-v2-scene-memory-verdict/v3'
+        : 'cf-v2-scene-memory-verdict/v2',
     status: failures.length === 0 ? 'pass' : 'fail',
     outcomes: Object.freeze(outcomes),
     failures: Object.freeze(failures),

@@ -8,16 +8,20 @@ import {
   type SceneMemoryCurrentInput as SceneMemoryInput,
   type SceneMemoryOutcome,
   type SceneMemoryPoint,
+  type SceneMemoryRawBudget,
+  type SceneMemoryV4Input,
   type SceneRegistrySnapshot,
   type PixiManagedResourceOwnerSnapshot,
 } from '../tools/scenemem-contract.mjs';
 
 function budget(): SceneMemoryBudget {
   return {
-    heapUsedBytesMax: 10_000,
+    initialHeapUsedBytesMax: 20_000,
+    initialHeapAggregateBytesMax: 27_000,
+    heapUsedGrowthBytesMax: 10_000,
     embedderHeapUsedBytesMax: 5_000,
     backingStorageBytesMax: 2_000,
-    heapAggregateBytesMax: 17_000,
+    heapNormalizedWorkingSetBytesMax: 17_000,
     warmHeapAggregateRangeBytesMax: 100,
     warmHeapSlopeBytesPerCycleMax: 20,
     documentsMax: 2,
@@ -37,6 +41,21 @@ function budget(): SceneMemoryBudget {
     surfaceVistaCachePixelsMax: 412_800,
     targetElapsedMsMax: 1_000,
     heartbeatElapsedMsMax: 1_000,
+  };
+}
+
+function rawBudget(): SceneMemoryRawBudget {
+  const {
+    initialHeapUsedBytesMax: _initialSafety,
+    initialHeapAggregateBytesMax: _initialAggregateSafety,
+    heapUsedGrowthBytesMax: _growth,
+    heapNormalizedWorkingSetBytesMax: _workingSet,
+    ...rest
+  } = budget();
+  return {
+    heapUsedBytesMax: 10_000,
+    heapAggregateBytesMax: 17_000,
+    ...rest,
   };
 }
 
@@ -181,6 +200,10 @@ function input(): SceneMemoryInput {
   const profile = (token: string) => {
     const cycles = [1, 2, 3, 4].map((index) => cycle(index, token));
     return {
+      initial: {
+        documentToken: token,
+        heap: { usedSize: 500, embedderHeapUsedSize: 500, backingStorageSize: 100 },
+      },
       initialVista: {
         surfaceVistaWorkerActive: false,
         surfaceVistaMounted: false,
@@ -247,7 +270,7 @@ function input(): SceneMemoryInput {
     };
   };
   return {
-    schema: 'cf-v2-scene-memory-input/v4',
+    schema: 'cf-v2-scene-memory-input/v5',
     profiles: { phone: profile('phone-document'), desktop: profile('desktop-document') },
     budgets: { phone: budget(), desktop: budget() },
   };
@@ -279,11 +302,50 @@ describe('Arc 1C scene-memory contract', () => {
     expect(result.outcomes).toHaveLength(44);
   });
 
+  it.each([
+    ['totalSize', 20_000],
+    ['futureHeapCounter', 30_000],
+  ] as const)('rejects unmodeled v5 initial heap field %s', (field, value) => {
+    const broken = input() as unknown as {
+      profiles: { phone: { initial: { heap: Record<string, number> } } };
+    };
+    broken.profiles.phone.initial.heap[field] = value;
+    const result = evaluateSceneMemory(broken as unknown as SceneMemoryInput);
+    expect(result.status).toBe('fail');
+    expect(resultFor(result, 'phone/measurement-precondition')).toMatchObject({ pass: false });
+    expect(resultFor(result, 'phone/heap-dom-budget')).toMatchObject({ pass: true });
+  });
+
   it('rejects the superseded Arc 1B input schema before judging it', () => {
     const stale = input() as unknown as { schema: string };
     stale.schema = 'cf-v2-scene-memory-input/v2';
     expect(() => evaluateSceneMemory(stale as unknown as SceneMemoryInput))
       .toThrow('scene-memory input requires exact phone and desktop profiles/budgets');
+  });
+
+  it('preserves browser-free replay of the historical surface-vista v4 contract', () => {
+    const current = input();
+    const historical: SceneMemoryV4Input = {
+      schema: 'cf-v2-scene-memory-input/v4',
+      profiles: Object.fromEntries(Object.entries(current.profiles).map(([profile, value]) => {
+        const { initial: _initial, ...v4Profile } = value;
+        return [profile, v4Profile];
+      })) as SceneMemoryV4Input['profiles'],
+      budgets: { phone: rawBudget(), desktop: rawBudget() },
+    };
+    const result = evaluateSceneMemory(historical);
+    expect(result.status).toBe('pass');
+    expect(result.schema).toBe('cf-v2-scene-memory-verdict/v3');
+    expect(result.outcomes).toHaveLength(44);
+
+    historical.profiles.phone.cycles[0]!.heap.usedSize =
+      historical.budgets.phone.heapUsedBytesMax + 1;
+    const rawRed = evaluateSceneMemory(historical);
+    const heapOutcome = resultFor(rawRed, 'phone/heap-dom-budget');
+    expect(heapOutcome.pass).toBe(false);
+    expect(heapOutcome.message).toContain(
+      'cycle 1: V8 heap used bytes 10001 exceeded ceiling 10000',
+    );
   });
 
   it('negative controls: the explicit precondition and first measured cycle cannot be discarded', () => {
@@ -1107,10 +1169,13 @@ describe('Arc 1C scene-memory contract', () => {
   it('diagnoses each heap and DOM ceiling with exact field, value, and limit', () => {
     const controls = [
       {
-        name: 'V8 heap used bytes',
+        name: 'V8 heap growth bytes',
         values: (fixture: SceneMemoryInput) => ({
-          ceiling: fixture.budgets.phone.heapUsedBytesMax,
-          set: (value: number) => { fixture.profiles.phone.precondition.heap.usedSize = value; },
+          ceiling: fixture.budgets.phone.heapUsedGrowthBytesMax,
+          set: (value: number) => {
+            fixture.profiles.phone.precondition.heap.usedSize =
+              fixture.profiles.phone.initial.heap.usedSize + value;
+          },
         }),
       },
       {
@@ -1128,14 +1193,15 @@ describe('Arc 1C scene-memory contract', () => {
         }),
       },
       {
-        name: 'aggregate heap bytes',
+        name: 'normalized working-set bytes',
         values: (fixture: SceneMemoryInput) => {
-          fixture.budgets.phone.heapUsedBytesMax = 20_000;
+          fixture.budgets.phone.heapUsedGrowthBytesMax = 20_000;
           const heap = fixture.profiles.phone.precondition.heap;
           return {
-            ceiling: fixture.budgets.phone.heapAggregateBytesMax,
+            ceiling: fixture.budgets.phone.heapNormalizedWorkingSetBytesMax,
             set: (value: number) => {
-              heap.usedSize = value - heap.embedderHeapUsedSize - heap.backingStorageSize;
+              heap.usedSize = fixture.profiles.phone.initial.heap.usedSize
+                + value - heap.embedderHeapUsedSize - heap.backingStorageSize;
             },
           };
         },
@@ -1196,6 +1262,87 @@ describe('Arc 1C scene-memory contract', () => {
     );
     expect(finding.message).toContain('precondition: heap counters are absent or invalid');
     expect(finding.message).toContain('precondition: DOM counters are absent or invalid');
+  });
+
+  it('normalizes fixed source footprint while retaining a broad initial-heap safety stop', () => {
+    const shifted = input();
+    const shiftedProfile = shifted.profiles.phone;
+    shiftedProfile.initial.heap.usedSize += 5_000;
+    for (const point of [
+      shiftedProfile.precondition, ...shiftedProfile.cycles, shiftedProfile.bfcache,
+    ]) point.heap.usedSize += 5_000;
+    expect(resultFor(evaluateSceneMemory(shifted), 'phone/heap-dom-budget').pass).toBe(true);
+
+    const unsafe = structuredClone(shifted);
+    const extra = unsafe.budgets.phone.initialHeapUsedBytesMax
+      - unsafe.profiles.phone.initial.heap.usedSize + 1;
+    unsafe.profiles.phone.initial.heap.usedSize += extra;
+    for (const point of [
+      unsafe.profiles.phone.precondition,
+      ...unsafe.profiles.phone.cycles,
+      unsafe.profiles.phone.bfcache,
+    ]) point.heap.usedSize += extra;
+    const finding = resultFor(evaluateSceneMemory(unsafe), 'phone/heap-dom-budget');
+    expect(finding.pass).toBe(false);
+    expect(finding.message).toContain(
+      `initial: V8 heap safety bytes ${unsafe.profiles.phone.initial.heap.usedSize} exceeded ceiling ${unsafe.budgets.phone.initialHeapUsedBytesMax}`,
+    );
+  });
+
+  it('accepts each initial safety ceiling exactly and rejects the next byte', () => {
+    const controls = [
+      {
+        name: 'V8 heap safety bytes',
+        ceiling: (fixture: SceneMemoryInput) => fixture.budgets.phone.initialHeapUsedBytesMax,
+        prepare: (fixture: SceneMemoryInput) => {
+          fixture.budgets.phone.initialHeapAggregateBytesMax = 50_000;
+        },
+        set: (fixture: SceneMemoryInput, value: number) => {
+          fixture.profiles.phone.initial.heap.usedSize = value;
+        },
+      },
+      {
+        name: 'aggregate heap safety bytes',
+        ceiling: (fixture: SceneMemoryInput) =>
+          fixture.budgets.phone.initialHeapAggregateBytesMax,
+        prepare: (fixture: SceneMemoryInput) => {
+          fixture.budgets.phone.initialHeapUsedBytesMax = 50_000;
+        },
+        set: (fixture: SceneMemoryInput, value: number) => {
+          const heap = fixture.profiles.phone.initial.heap;
+          heap.usedSize = value - heap.embedderHeapUsedSize - heap.backingStorageSize;
+        },
+      },
+    ] as const;
+    for (const control of controls) {
+      const exact = input();
+      control.prepare(exact);
+      control.set(exact, control.ceiling(exact));
+      expect(resultFor(evaluateSceneMemory(exact), 'phone/heap-dom-budget').pass,
+        `${control.name} exact`).toBe(true);
+
+      const next = input();
+      control.prepare(next);
+      const actual = control.ceiling(next) + 1;
+      control.set(next, actual);
+      const finding = resultFor(evaluateSceneMemory(next), 'phone/heap-dom-budget');
+      expect(finding.pass, `${control.name} +1`).toBe(false);
+      expect(finding.message).toContain(
+        `initial: ${control.name} ${actual} exceeded ceiling ${control.ceiling(next)}`,
+      );
+    }
+  });
+
+  it('fails closed when the scored fixed-second initial heap baseline is absent', () => {
+    const broken = input() as unknown as {
+      profiles: { phone: { initial?: { heap: SceneMemoryPoint['heap'] } } };
+    };
+    delete broken.profiles.phone.initial;
+    const finding = resultFor(
+      evaluateSceneMemory(broken as unknown as SceneMemoryInput),
+      'phone/heap-dom-budget',
+    );
+    expect(finding.message).toContain('initial: V8 heap baseline is absent or invalid');
   });
 
   it('retains the prior contract acceptance of valid zero-valued heap components', () => {
