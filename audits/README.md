@@ -10,6 +10,71 @@ summary of it.
 
 ## Contents
 
+### Signed `38d8848c…` Compendium painter-import product stop — 0/78, all blocked
+
+Exact signed source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
+`20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` exactly once with zero
+automatic retries under Microsoft Edge `152.0.4191.53` / CDP `1.3`. The complete-lifecycle report
+ended terminal `product-fail` after **3,115 ms** at phone `veteran-earth-planetside` thumb
+settlement, retained zero outcomes, blocked all **78**, and produced no review PNG, desktop profile
+or successor browser-stage evidence.
+
+The product stop is independently actionable rather than a generic timeout: all eight leased
+Planetside rows reached `error`, while the trusted current-schema worker receipt retained epoch 1,
+worker 1, job 1, kind `thumb132`, stage `import`, code `painter-import`, and the exact 101-character
+message `Failed to fetch dynamically imported module:
+http://127.0.0.1:60340/assets/speciespainter-DJWZf0vw.js`. Its SHA-256 is
+`4b70e1e85120ff791ef5461e1d9588edee6d17a6d162dc4b7edc0435d3500c53`. Worker arithmetic is
+coherent: one start/ready/disposal/fatal, one import start, zero import completes or results, and
+exactly one import error. The report remains immutable stored red and is not rewritten as green.
+
+- `ARC1C_COMPENDIUM_PR35_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_38D8848.json.gz`: **6,053**
+  compressed bytes, SHA-256
+  `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`; **37,825** raw bytes,
+  SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`.
+- `port/v2/tests/compendium-painter-import-product-failure-carrier.test.ts` independently binds
+  the exact gzip/raw bytes and hashes, signed clean source at both boundaries, one-attempt
+  lifecycle, exact browser and historical authorities, zero outcomes/all 78 blocked, phone-only
+  product classification, all eight terminal rows, complete trusted v2 error receipt and the
+  absence of PNG/successor evidence. It imports no live evaluator or budget authority and passes
+  **4/4** focused assertions.
+
+The carrier passes deterministic `gzip -9 -n` reproduction and gzip integrity. Measurement /
+outcome-contract / collector / producer-v2 authority at this exact historical input was
+`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+`2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; that input's generated
+service-worker authority was
+`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
+
+The current local successor closes the newly proved execution-ready gap without weakening exact-
+build isolation. `clients.matchAll()` plus `clients.claim()` can omit a dedicated/shared worker
+until that realm becomes execution-ready. Its first controlled request supplies one exact
+`clientId`; `clients.get()` must confirm that live client, and adoption is allowed only when this
+generated `BUILD_ID` is the current active build, there is no retained prior, and the client type is
+exactly `worker` or `sharedworker`. Unknown clients, windows, a wrong active build and any retained-
+prior/update state still receive exact 503. Source mutants independently make the missing adoption,
+type guard, prior guard and active-build guard red. This is no network fallback, mixed-build path,
+retry or browser-version rebaseline.
+
+Current Compendium producer authority v2 is
+`06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`, binding generated
+`service-worker.js` SHA-256
+`a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` plus index, owner, species
+worker and painter. Current Scene build authority is
+`aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; Compendium/Scene budget
+SHA-256 is `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
+`15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`. Measurement, outcome
+contract and collector remain the exact values above. The focused PWA/budget/carrier boundary passes
+**74/74 across four files**, all three TypeScript programs pass, and the full browser-free suite
+passes **240 files / 2,437 passed / 1 skipped**. Fixed rulers, numeric ceilings and the 78-outcome
+inventory are unchanged.
+
+This exact red grants no fresh Compendium certificate, same-source retry, Slice, Glass, Recovery,
+HUMAN, hosted, merge, release, version-bump or deploy authority. The repaired successor remains
+uncertified until one clean signed changed source runs once with no retry.
+
 ### Signed `d33abdfd…` Compendium recovered-worker outcome-oracle red — 74/78
 
 Exact signed source `d33abdfd513236e72294b81e3bb46b1362f810e1` ran
@@ -45,17 +110,18 @@ Compendium certificate, Slice, Glass, Recovery, HUMAN, hosted, merge, release, v
 authority. Any repaired outcome oracle requires a materially changed signed source and one new
 no-retry Compendium attempt; this exact `d33abdfd…` red is never rerun or relabeled.
 
-The current local repair requires `lastError === null` on every selected current-v2 released/
+The then-local oracle repair carried into the exact `38d8848c…` input required `lastError === null`
+on every selected current-v2 released/
 recovered snapshot—including non-final and post-cap samples—while exact cumulative paint/phase/
 result arithmetic still proves the induced paint fault. Terminal current product errors retain the
 opposite requirement: an exact non-null trusted receipt. Historical diagnostics v1 remains
-replayable. Current measurement / outcome-contract SHA-256 is
+replayable. At that intermediate input, measurement / outcome-contract SHA-256 was
 `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
 `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29`; collector, producer-v2
-and generated service-worker authority remain
+and generated service-worker authority were
 `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
 `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39` /
-`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. Browser-free closure is
+`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. Its browser-free closure was
 591 selftest controls, 239 files / 2,431 passed / 1 skipped, all three TypeScript programs and a
 green authority printer. Fixed rulers, ceilings and the 78-outcome inventory are unchanged.
 
@@ -83,7 +149,7 @@ stop rather than a Compendium product certificate.
   live authority that could relabel the carrier.
 
 Deterministic harness evidence reproduces the code-supported first-activation claim gap and exact
-503 `This document has no retained Celestial Frontier build.` The local product repair re-runs all-
+503 `This document has no retained Celestial Frontier build.` The then-local product repair re-ran all-
 client pin reconciliation inside the post-claim activation barrier. Species diagnostics v2 retains
 one bounded trusted `lastError`; a later adapter protocol/external fatal clears stale `lastError`,
 while a replacement producer clears both `lastEvent` and `lastError` and trusted worker-fatal

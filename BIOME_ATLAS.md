@@ -1,5 +1,33 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
+> **2026-08-30 current local execution-late worker/PWA correction (supersedes the narrower
+> 2026-08-29 PWA description below; its vista evidence remains historical):** exact signed source
+> `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran the one-attempt/no-retry Compendium certificate
+> `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` and stopped terminal
+> `product-fail` after **3,115 ms** at phone Planetside when the first species-painter lazy import
+> failed. Zero of 78 outcomes ran and all 78 were blocked. The immutable 6,053-byte gzip carrier
+> (`e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`) expands to 37,825 bytes
+> (`63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`) and replays **4/4**.
+>
+> The generated service worker now closes the execution-ready gap shared by lazy species and vista
+> workers. `matchAll` and `claim` may both omit a not-yet-ready worker; on its first controlled lazy
+> fetch, `clientId` plus `clients.get()` may inherit the one exact active cache only when
+> `activeBuildId === BUILD_ID`, there is no retained prior, the id is valid, and the live client is
+> a worker/sharedworker. Unknown, window, retained-prior and wrong-active clients remain exact 503;
+> adoption/type/prior/active mutants seal the boundary. This is cache-only identity inheritance,
+> not network fallback or retry.
+>
+> Current Compendium producer / generated-service-worker / Scene-build authorities are
+> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf` /
+> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` /
+> `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; current Compendium / Scene
+> budget hashes are `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
+> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`.
+> Four focused files / **74 tests**, all TypeScript programs, and the full browser-free **240 files /
+> 2,437 passed / 1 skipped** are green. Biome selection/profile content, vista composition, painter
+> pixels, seeds, genomes, anatomy, art structure, rulers, ceilings and the 78-outcome inventory did
+> not change; fresh browser and HUMAN/physical-device evidence remain open.
+
 > **2026-08-29 current local vista/PWA evidence correction (supersedes narrower same-date
 > descriptions below where they differ):** the service worker now carries an initiating window's
 > exact selected build pin onto a valid module-worker or shared-worker `resultingClientId` before the

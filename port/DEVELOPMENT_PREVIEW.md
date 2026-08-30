@@ -133,7 +133,7 @@ required the deliberately induced paint error's non-null `lastError` to survive 
 replacement and recovery. The exact red was named-verified once, not retried, and no successor
 browser stage ran.
 
-The current released-worker predicate requires `lastError === null` on every selected current-v2
+The released-worker predicate at that repair boundary required `lastError === null` on every selected current-v2
 released/recovered snapshot—including non-final and post-cap samples—while exact cumulative paint/
 phase/result arithmetic still proves the induced fault. A terminal current product error still
 requires its exact non-null trusted receipt; historical diagnostics v1 remains replayable.
@@ -144,17 +144,49 @@ Immutable carrier
 bytes** / SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`; independent replay
 passes 8/8.
 
-Current measurement / outcome-contract / collector / producer-v2 SHA-256 is
+Measurement / outcome-contract / collector / producer-v2 SHA-256 at that boundary was
 `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
 `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
 `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; generated service-worker
-SHA-256 remains `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
-Current repair coverage passes **591** Compendium selftest controls, independent **8/8** carrier
+SHA-256 was `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
+That repair coverage passed **591** Compendium selftest controls, independent **8/8** carrier
 replay, the full **239 files / 2,431 passed / 1 skipped** suite, all three TypeScript programs and
 the green authority printer. The fixed ruler, numeric ceilings and 78-outcome inventory are unchanged. This is not a
-preview candidate or fresh certificate; only a materially changed signed source may make one new
+preview candidate or fresh certificate; it required a materially changed signed source for any new
 no-retry Compendium attempt.
+
+Exact signed source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` then ran
+`20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` exactly once with zero
+retries on Edge `152.0.4191.53` / CDP `1.3`. It stopped terminal `product-fail` after **3,115 ms**
+at phone `veteran-earth-planetside`, with zero outcomes, all **78** blocked, no desktop profile, no
+review PNG and no successor browser stage. Immutable carrier
+`../audits/ARC1C_COMPENDIUM_PR35_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_38D8848.json.gz` is
+**6,053 gzip bytes** / SHA-256
+`e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa` and **37,825 raw bytes** /
+SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`; independent replay
+passes 4/4.
+
+The exact root is an execution-late first-install worker that both `matchAll` and claim can omit
+before its later controlled lazy request. The generated service worker confirms that request's
+`clientId` with `clients.get()` and adopts only a live worker/sharedworker with active build equal to
+`BUILD_ID` and no prior pin. Unknown clients, windows, prior pins and wrong-active state remain
+exact 503; adoption/type/prior/active mutants independently enforce those guards.
+
+Current measurement / outcome-contract / collector remain
+`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`. Current producer-v2 /
+generated service-worker / Scene build is
+`06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf` /
+`a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` /
+`aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; active Compendium /
+Scene budget is `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
+`15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`.
+Focused closure passes **4 files / 74 tests**, typecheck is green, and the full browser-free suite
+passes **240 files / 2,437 passed / 1 skipped**. Fixed rulers, numeric ceilings, 78 outcomes and
+canonical 73 release bullets are unchanged. This is not a preview candidate or certificate; HUMAN,
+hosted, merge, release/version and deployment status remain open and unchanged.
 
 The local repair is deliberately product/instrument hardening rather than a packaging shortcut.
 Survey → Landing now drains the incoming route checkpoint, calls Survey once, drains Survey's
