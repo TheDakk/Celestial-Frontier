@@ -43,14 +43,12 @@ const workflowStepLines = (value: string, stepName: string): string[] | null => 
   }
   return activeLines(lines.slice(start, end).join('\n'));
 };
-const workflowEvidenceChainErrors = (
-  value: string,
-  archiveStepName = 'archive battery reports',
-): string[] => {
+const workflowEvidenceChainErrors = (value: string): string[] => {
   const errors: string[] = [];
   const globallyRequired = [
     'CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice',
     'CF_V2_GLASSMATRIX_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass',
+    'CF_V2_ARC4_RECOVERY_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-recovery',
   ];
   const sliceCommands = [
     'id: slice',
@@ -69,10 +67,20 @@ const workflowEvidenceChainErrors = (
     'printf \'run_id=%s\\n\' "$glass_run_id" >> "$GITHUB_OUTPUT"',
     'node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"',
   ];
+  const recoveryCommands = [
+    'id: recovery',
+    "if: github.event.pull_request.base.ref == 'main'",
+    'slice_run_id="${{ steps.slice.outputs.run_id }}"',
+    'glass_run_id="${{ steps.glass.outputs.run_id }}"',
+    'node tools/arc4recovery.mjs --slice-run="$slice_run_id" --glass-run="$glass_run_id"',
+    'test "$recovery_run_id" = "$CF_V2_ARC4_RECOVERY_RUN_ID"',
+    'node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_run_id" --glass-run="$glass_run_id"',
+  ];
   const carriers = [
     'port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json',
     'port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log',
     'port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json',
+    'port/v2/apps/game/smoke/arc4-recovery-${{ env.CF_V2_ARC4_RECOVERY_RUN_ID }}.json',
   ];
   const globalActive = activeLines(value);
   for (const item of globallyRequired) {
@@ -82,7 +90,18 @@ const workflowEvidenceChainErrors = (
   }
   const slice = workflowStepLines(value, 'one-attempt real-browser slice smoke');
   const glass = workflowStepLines(value, 'one-attempt 12-viewport Glass matrix');
-  const archive = workflowStepLines(value, archiveStepName);
+  const recovery = workflowStepLines(
+    value, 'one-attempt Slice-and-Glass-bound Recovery certification',
+  );
+  const archive = workflowStepLines(value, 'archive battery reports');
+  for (const [name, lines] of [['slice', slice], ['glass', glass]] as const) {
+    if ((lines ?? []).some((line) => line.startsWith('if:'))) {
+      errors.push(`conditional-common-stage:${name}`);
+    }
+    if ((lines ?? []).some((line) => line.startsWith('continue-on-error:'))) {
+      errors.push(`soft-fail-common-stage:${name}`);
+    }
+  }
   const requireOrdered = (lines: string[] | null, required: string[]) => {
     let prior = -1;
     for (const item of required) {
@@ -94,6 +113,7 @@ const workflowEvidenceChainErrors = (
   };
   requireOrdered(slice, sliceCommands);
   requireOrdered(glass, glassCommands);
+  requireOrdered(recovery, recoveryCommands);
   for (const item of carriers) {
     if ((archive ?? []).filter((line) => line === item).length !== 1) {
       errors.push(`missing-or-duplicate:${item}`);
@@ -101,7 +121,56 @@ const workflowEvidenceChainErrors = (
   }
   const sliceOffset = value.indexOf('      - name: one-attempt real-browser slice smoke');
   const glassOffset = value.indexOf('      - name: one-attempt 12-viewport Glass matrix');
-  if (sliceOffset < 0 || glassOffset <= sliceOffset) errors.push('ordered-chain');
+  const recoveryOffset = value.indexOf(
+    '      - name: one-attempt Slice-and-Glass-bound Recovery certification',
+  );
+  const archiveOffset = value.indexOf('      - name: archive battery reports');
+  if (sliceOffset < 0 || glassOffset <= sliceOffset || recoveryOffset <= glassOffset
+    || archiveOffset <= recoveryOffset) errors.push('ordered-chain');
+  return errors;
+};
+const previewWorkflowErrors = (value: string): string[] => {
+  const errors: string[] = [];
+  if (value.split('npm run preview:selftest').length - 1 !== 1) {
+    errors.push('missing-or-duplicate:global-preview-selftest');
+  }
+  const required = [
+    ['install v2 workspace', ['working-directory: port/v2', 'run: npm ci']],
+    ['check development preview', [
+      'working-directory: port/v2',
+      'run: node tools/check-profile.mjs --profile=dev',
+    ]],
+    ['preview producer selftests', [
+      'working-directory: port/v2',
+      'CF_BROWSER: /usr/bin/google-chrome',
+      'run: npm run preview:selftest',
+    ]],
+    ['build commit-bound preview artifact', [
+      'working-directory: port/v2',
+      'npm run preview:package -- --origin="$PREVIEW_ORIGIN" --output="$PREVIEW_OUTPUT" --approved-publication-candidate',
+      'npm run preview:smoke -- --root="$PREVIEW_OUTPUT"',
+    ]],
+    ['upload playable development preview', ['name: manual-development-preview']],
+  ] as const;
+  let priorStep = -1;
+  for (const [stepName, commands] of required) {
+    const lines = workflowStepLines(value, stepName);
+    const stepOffset = value.indexOf(`      - name: ${stepName}`);
+    if (stepOffset <= priorStep) errors.push(`missing-or-misordered-step:${stepName}`);
+    priorStep = stepOffset;
+    for (const command of commands) {
+      if ((lines ?? []).filter((line) => line === command).length !== 1) {
+        errors.push(`missing-or-duplicate:${command}`);
+      }
+    }
+  }
+  for (const forbidden of [
+    'compendiummem', 'smoke:ci', 'glassmatrix', 'arc4recovery', 'arc4-recovery',
+    'persona:report', 'CF_V2_SLICE_SMOKE_RUN_ID', 'CF_V2_GLASSMATRIX_RUN_ID',
+    'CF_V2_ARC4_RECOVERY_RUN_ID', 'battery-evidence',
+  ]) {
+    if (value.includes(forbidden)) errors.push(`forbidden:${forbidden}`);
+  }
   return errors;
 };
 const runSelftest = (name: string, marker: string): string => {
@@ -116,13 +185,16 @@ const glassCurrentPointer = fileURLToPath(
 );
 
 describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
-  it('keeps Claude on the immutable predecessor chain instead of the rejected bare Glass call', () => {
+  it('keeps Claude on the tiered immutable predecessor chain instead of the rejected bare Glass call', () => {
     const callerErrors = (value: string): string[] => {
       const errors: string[] = [];
-      if (!value.includes('Browser evidence is one immutable **Slice → Glass → recovery** chain')) {
-        errors.push('missing-chain');
+      if (!value.includes('The `develop` admission browser boundary runs the distinct SceneMemory and Compendium certificates, then one immutable **Slice → Glass** chain')) {
+        errors.push('missing-develop-chain');
       }
-      if (!value.includes('pass its exact run ID to full Glass')) errors.push('missing-slice-id');
+      if (!value.includes('A production/release candidate extends that exact Slice/Glass pair with **Recovery**')) {
+        errors.push('missing-production-recovery');
+      }
+      if (!value.includes('passing both exact predecessor IDs')) errors.push('missing-predecessor-ids');
       if (!value.includes('Stop after any nonzero, red, or instrument result')) {
         errors.push('missing-stop-law');
       }
@@ -140,9 +212,13 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
       `${claudeInstructions}\nRun node tools/glassmatrix.mjs before review.\n`,
     )).toContain('bare-glass');
     expect(callerErrors(claudeInstructions.replace(
-      'Browser evidence is one immutable **Slice → Glass → recovery** chain',
+      'The `develop` admission browser boundary runs the distinct SceneMemory and Compendium certificates, then one immutable **Slice → Glass** chain',
       'Browser proof instructions removed.',
-    ))).toContain('missing-chain');
+    ))).toContain('missing-develop-chain');
+    expect(callerErrors(claudeInstructions.replace(
+      'A production/release candidate extends that exact Slice/Glass pair with **Recovery**',
+      'Production recovery instructions removed.',
+    ))).toContain('missing-production-recovery');
   });
 
   it('keeps immutable Slice evidence, interruption red, and its named verifier mutation-sensitive', () => {
@@ -225,11 +301,9 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
   }, 15_000);
 
   it('requires the exact immutable Slice+Glass pair for recovery and preserves one-attempt verification', () => {
-    const output = runSelftest('arc4recovery.mjs', 'ARC 4 RECOVERY SELFTEST: PASS');
     const collector = source('arc4recovery.mjs');
     const contract = source('arc4-recovery-contract.mjs');
     const glassContract = source('glassmatrix-evidence-contract.mjs');
-    expect(output).toContain('ARC 4 RECOVERY SELFTEST: PASS');
     expect(collector).toContain('--slice-run=<Slice-run-id> --glass-run=<Glass-run-id>');
     expect(collector).toContain('--verify-run=<Recovery-run-id>');
     expect(collector).toContain('selected Glass predecessor failed verification');
@@ -241,14 +315,11 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(glassContract).toContain('Glass viewport inventory is not the exact ordered 12-row matrix');
     expect(collector).toContain('attemptCount: 1');
     expect(collector).toContain('automaticRetries: 0');
-  }, 20_000);
+  });
 
-  it('threads the exact Slice ID through hosted Glass and retains immutable carriers', () => {
+  it('keeps the certifying Slice → Glass → production Recovery chain out of preview packaging', () => {
     expect(workflowEvidenceChainErrors(workflow)).toEqual([]);
-    expect(workflowEvidenceChainErrors(
-      previewWorkflow,
-      'upload structured browser evidence',
-    )).toEqual([]);
+    expect(previewWorkflowErrors(previewWorkflow)).toEqual([]);
 
     const bareGlass = workflow.replace(
       'node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
@@ -257,32 +328,59 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(workflowEvidenceChainErrors(bareGlass)).toContain(
       'missing-or-duplicate:node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
     );
-    const previewBareGlass = previewWorkflow.replace(
-      'node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
-      'npm run glassmatrix',
+    const previewProfileDecoy = previewWorkflow.replace(
+      '        run: node tools/check-profile.mjs --profile=dev',
+      '        run: echo preview profile moved',
+    ) + '\n# run: node tools/check-profile.mjs --profile=dev\n';
+    expect(previewWorkflowErrors(previewProfileDecoy)).toContain(
+      'missing-or-duplicate:run: node tools/check-profile.mjs --profile=dev',
     );
-    expect(workflowEvidenceChainErrors(
-      previewBareGlass,
-      'upload structured browser evidence',
-    )).toContain(
-      'missing-or-duplicate:node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
+    expect(previewWorkflowErrors(`${previewWorkflow}\n# arc4recovery certification\n`)).toContain(
+      'forbidden:arc4recovery',
     );
-    const previewMissingSliceId = previewWorkflow.replace('        id: slice\n', '');
-    expect(workflowEvidenceChainErrors(
-      previewMissingSliceId,
-      'upload structured browser evidence',
-    )).toContain('missing-or-duplicate:id: slice');
-    const previewWrongGlassId = previewWorkflow.replace('        id: glass\n', '        id: stale-glass\n');
-    expect(workflowEvidenceChainErrors(
-      previewWrongGlassId,
-      'upload structured browser evidence',
-    )).toContain('missing-or-duplicate:id: glass');
+    const wrongRecoveryVerifier = workflow.replace(
+      'node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_run_id" --glass-run="$glass_run_id"',
+      'echo recovery not verified',
+    );
+    expect(workflowEvidenceChainErrors(wrongRecoveryVerifier)).toContain(
+      'missing-or-duplicate:node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_run_id" --glass-run="$glass_run_id"',
+    );
+    const nonProductionRecovery = workflow.replace(
+      '      - name: one-attempt Slice-and-Glass-bound Recovery certification\n'
+        + '        id: recovery\n'
+        + "        if: github.event.pull_request.base.ref == 'main'",
+      '      - name: one-attempt Slice-and-Glass-bound Recovery certification\n'
+        + '        id: recovery\n'
+        + "        if: github.event.pull_request.base.ref == 'develop'",
+    );
+    expect(workflowEvidenceChainErrors(nonProductionRecovery)).toContain(
+      "missing-or-duplicate:if: github.event.pull_request.base.ref == 'main'",
+    );
+    for (const stage of [
+      'one-attempt real-browser slice smoke',
+      'one-attempt 12-viewport Glass matrix',
+    ]) {
+      const conditional = workflow.replace(
+        `      - name: ${stage}\n`,
+        `      - name: ${stage}\n        if: github.event.pull_request.base.ref == 'main'\n`,
+      );
+      expect(workflowEvidenceChainErrors(conditional), stage).toContain(
+        `conditional-common-stage:${stage.includes('slice') ? 'slice' : 'glass'}`,
+      );
+    }
+    expect(previewWorkflowErrors(
+      `${previewWorkflow}\n      - name: duplicate preview selftest\n        run: npm run preview:selftest\n`,
+    )).toContain('missing-or-duplicate:global-preview-selftest');
     const pointerOnly = workflow
       .replace('            port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json\n', '')
       .replace('            port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log\n', '')
-      .replace('            port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json\n', '');
+      .replace('            port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json\n', '')
+      .replace('            port/v2/apps/game/smoke/arc4-recovery-${{ env.CF_V2_ARC4_RECOVERY_RUN_ID }}.json\n', '');
     expect(workflowEvidenceChainErrors(pointerOnly)).toContain(
       'missing-or-duplicate:port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json',
+    );
+    expect(workflowEvidenceChainErrors(pointerOnly)).toContain(
+      'missing-or-duplicate:port/v2/apps/game/smoke/arc4-recovery-${{ env.CF_V2_ARC4_RECOVERY_RUN_ID }}.json',
     );
 
     const commentedVerifier = workflow.replace(

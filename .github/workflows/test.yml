@@ -62,8 +62,11 @@ jobs:
       CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem
       CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice
       CF_V2_GLASSMATRIX_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass
+      CF_V2_ARC4_RECOVERY_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-recovery
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v5
         with:
           node-version: 26
@@ -72,8 +75,8 @@ jobs:
             package-lock.json
             port/v2/package-lock.json
 
-      # Cheap/static checks run first so a deterministic red stops before the
-      # expensive browsers. Each dependency tree is installed only once.
+      # Classify the exact PR endpoints before installing dependencies. Unknown
+      # branch flows, missing objects, or an empty endpoint diff fail closed.
       - name: environment
         env:
           CF_BROWSER: /usr/bin/google-chrome
@@ -82,51 +85,96 @@ jobs:
           npm --version
           which google-chrome || which chromium-browser || echo "no chrome found"
           node port/v2/tools/browserpath.mjs --print
-      - run: npm ci
-      - name: preflight contract selftest
-        run: npm run preflight:selftest
-      - name: validate (fingerprint + render + invariants)
-        run: node tools/validate.js
-      - name: smoke (jsdom gameplay flows)
-        run: node tools/smoke.js
-      - name: legacy Field Training checkpoint capture
-        run: npm run trainingcheckpoint
+      - name: classify exact PR scope
+        id: scope
+        shell: bash
+        env:
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          case "$BASE_BRANCH" in
+            develop|main) ;;
+            *) echo "::error::Unsupported battery base: $BASE_BRANCH"; exit 1 ;;
+          esac
+          [[ "$BASE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$HEAD_SHA" =~ ^[0-9a-f]{40}$ ]]
+          git cat-file -e "$BASE_SHA^{commit}"
+          git cat-file -e "$HEAD_SHA^{commit}"
+
+          changed_paths="$RUNNER_TEMP/cf-battery-changed-paths"
+          git diff --name-only --no-renames -z "$BASE_SHA" "$HEAD_SHA" -- > "$changed_paths"
+          node port/v2/tools/battery-scope.mjs \
+            --paths-file="$changed_paths" \
+            --github-output="$GITHUB_OUTPUT"
+
+      # This policy uses only Node built-ins, so it always runs before either
+      # dependency install and stops unauthorized workflow drift cheaply.
+      - name: Actions budget policy selftest
+        run: node tools/actions-budget-policy.js --selftest
+
+      # The production profile always certifies the retained v1 product. A
+      # develop PR pays that cost only when it actually changes a legacy input.
+      - name: install legacy root workspace
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.legacy_changed == 'true'
+        run: npm ci
+      - name: legacy browser-free gates
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.legacy_changed == 'true'
+        run: |
+          npm run preflight:selftest
+          node tools/validate.js
+          node tools/smoke.js
+          npm run trainingcheckpoint
+          node tools/rarity-sanity.js
+          node tools/deadcode.js
+
+      - name: install v2 workspace
+        working-directory: port/v2
+        run: npm ci
+      - name: v2 base-profile static gates
+        working-directory: port/v2
+        shell: bash
+        env:
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+        run: |
+          set -euo pipefail
+          case "$BASE_BRANCH" in
+            develop) node tools/check-profile.mjs --profile=develop ;;
+            main) node tools/check-profile.mjs --profile=production ;;
+            *) echo "::error::Unsupported battery base: $BASE_BRANCH"; exit 1 ;;
+          esac
+      - name: develop changed-art mutation control
+        if: >-
+          github.event.pull_request.base.ref == 'develop' &&
+          steps.scope.outputs.art_instrument_changed == 'true'
+        working-directory: port/v2
+        run: npm run overridecontrol
+
+      # All browser-free work precedes the first real browser. This root ruler
+      # remains complete whenever its retained product is in scope.
       - name: layout (10 viewports)
+        id: root_layout
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.legacy_changed == 'true'
         env:
           CF_BROWSER: /usr/bin/google-chrome
         run: |
           node tools/uilayout.js --selftest
           node tools/uilayout.js
       - name: verify root layout evidence freshness
-        if: always()
+        if: >-
+          always() &&
+          (github.event.pull_request.base.ref == 'main' || steps.scope.outputs.legacy_changed == 'true') &&
+          (steps.root_layout.outcome == 'success' || steps.root_layout.outcome == 'failure')
         env:
           CF_BROWSER: /usr/bin/google-chrome
         run: node tools/uilayout.js --verify-run="$CF_UILAYOUT_RUN_ID"
-      - name: rarity sanity
-        run: node tools/rarity-sanity.js
-      - name: dead code scan
-        run: node tools/deadcode.js
-      - name: install v2 workspace
-        working-directory: port/v2
-        run: npm ci
-      - name: tracked-input prehosted controls
-        working-directory: port/v2
-        run: node tools/tracked-input-preflight.mjs --selftest
-      - name: v2 parity, type, art, and coverage gates
-        working-directory: port/v2
-        run: |
-          npm test
-          npm run typecheck
-          npm run artunused
-          npm run artaudit
-          npm run overridecheck
-          npm run overridecontrol
-          npm run coveragegap
-          node tools/speccheck.mjs
-
-      - name: current producer authority binding
-        working-directory: port/v2
-        run: npx vitest run tests/current-producer-authorities.test.ts
 
       # SceneMemory is the shorter Edge-family/capability ruler, so it fails
       # first without point-version pinning or retrying either certificate.
@@ -144,16 +192,10 @@ jobs:
           dpkg-deb --extract "$scene_edge_package" "$scene_edge_root"
           scene_edge_browser="$scene_edge_root/opt/microsoft/msedge/microsoft-edge"
           test -x "$scene_edge_browser"
-      - name: scene-memory instrument and calibration controls
-        env:
-          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
-        working-directory: port/v2
-        run: |
-          node tools/browserpath.mjs --selftest
-          node --check tools/scenemem.mjs
-          node --check tools/scenemem-contract.mjs
-          npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts
       - name: scene-memory fixed-second heap-phase selftest
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.browser_instrument_changed == 'true'
         env:
           CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
         working-directory: port/v2
@@ -173,6 +215,20 @@ jobs:
           CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
         working-directory: port/v2
         run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json
+
+      # Changed-instrument and production mutation controls run before
+      # Compendium reserves its sealed chain, leaving extract -> live preflight
+      # -> certificate -> verifier physically uninterrupted in both profiles.
+      - name: changed-or-production Compendium browser instrument selftests
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.browser_instrument_changed == 'true'
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: |
+          node tools/browserpath.mjs --selftest
+          node tools/compendiummem-browser-preflight.mjs --selftest
 
       # Compendium retains its separately sealed extract -> preflight -> live
       # certificate chain after the shorter SceneMemory ruler is terminal-green.
@@ -194,13 +250,11 @@ jobs:
           dpkg-deb --extract "$edge_package" "$edge_root"
           edge_browser="$edge_root/opt/microsoft/msedge/microsoft-edge"
           test -x "$edge_browser"
-      - name: browser provenance and Compendium memory instrument selftests
+      - name: Compendium live preflight and bounded selftest
         working-directory: port/v2
         env:
           CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: |
-          node tools/browserpath.mjs --selftest
-          node tools/compendiummem-browser-preflight.mjs --selftest
           node tools/compendiummem-browser-preflight.mjs
           npm run compendiummem:selftest
       - name: one-attempt Compendium memory certification
@@ -221,17 +275,20 @@ jobs:
 
       # Chrome gates remain one attempt each and run only after every cheaper
       # gate and the exact-Edge ruler are green.
-      - name: Chrome provenance and reporter selftests
+      - name: changed-or-production Chrome launcher selftest
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.browser_instrument_changed == 'true'
         working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/google-chrome
-        run: |
-          node tools/browserpath.mjs --selftest
-          node tools/browsercdp.mjs --selftest
-          npm run smoke:report:selftest
-          npm run glassmatrix:selftest
-          npm run persona:selftest
-          npm run preview:selftest
+        run: node tools/browsercdp.mjs --selftest
+      - name: production preview producer selftests
+        if: github.event.pull_request.base.ref == 'main'
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: npm run preview:selftest
       - name: one-attempt real-browser slice smoke
         id: slice
         working-directory: port/v2
@@ -255,12 +312,21 @@ jobs:
           test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"
           printf 'run_id=%s\n' "$glass_run_id" >> "$GITHUB_OUTPUT"
           node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"
-      - name: automated persona synthesis
+      - name: one-attempt Slice-and-Glass-bound Recovery certification
+        id: recovery
+        if: github.event.pull_request.base.ref == 'main'
         working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/google-chrome
-        run: npm run persona:report
+        run: |
+          slice_run_id="${{ steps.slice.outputs.run_id }}"
+          glass_run_id="${{ steps.glass.outputs.run_id }}"
+          node tools/arc4recovery.mjs --slice-run="$slice_run_id" --glass-run="$glass_run_id"
+          recovery_run_id="$(jq -er '.runId' apps/game/smoke/arc4-recovery-report.json)"
+          test "$recovery_run_id" = "$CF_V2_ARC4_RECOVERY_RUN_ID"
+          node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_run_id" --glass-run="$glass_run_id"
       - name: package origin-isolated v2 development preview
+        if: github.event.pull_request.base.ref == 'main'
         working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/google-chrome
@@ -271,69 +337,31 @@ jobs:
 
       # Always preserve whatever the one authorized attempt produced. Missing
       # terminal carriers remain red; artifacts never turn a red into a pass.
-      - name: archive root reports
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: root-reports
-          path: tools/current.json
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: archive root layout evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: root-layout-evidence
-          path: |
-            tools/uilayout-report.json
-            tools/uilayout-${{ env.CF_UILAYOUT_RUN_ID }}.json
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: archive Compendium memory evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: v2-compendium-memory-evidence
-          path: |
-            port/v2/apps/game/smoke/compendiummem-report.json
-            port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: archive scene-memory evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: v2-scene-memory-evidence
-          path: port/v2/apps/game/smoke/scenemem-report.json
-          if-no-files-found: ignore
-          retention-days: 14
       - name: archive battery reports
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: battery-reports
+          name: battery-evidence
           path: |
             tools/current.json
+            tools/uilayout-report.json
+            tools/uilayout-${{ env.CF_UILAYOUT_RUN_ID }}.json
+            port/v2/apps/game/smoke/scenemem-report.json
+            port/v2/apps/game/smoke/compendiummem-report.json
+            port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
             port/v2/apps/game/smoke/slice-smoke-report.json
             port/v2/apps/game/smoke/slice-smoke.log
             port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json
             port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log
             port/v2/apps/game/smoke/glassmatrix-report.json
             port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json
-            port/v2/apps/game/smoke/automated-persona-report.json
-            port/v2/apps/game/smoke/automated-persona-report.md
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: archive v2 browser evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: v2-browser-evidence
-          path: port/v2/apps/game/smoke/slice-*.png
+            port/v2/apps/game/smoke/arc4-recovery-report.json
+            port/v2/apps/game/smoke/arc4-recovery-${{ env.CF_V2_ARC4_RECOVERY_RUN_ID }}.json
+            port/v2/apps/game/smoke/slice-*.png
           if-no-files-found: ignore
           retention-days: 14
       - name: archive playable v2 development preview
-        if: success()
+        if: success() && github.event.pull_request.base.ref == 'main'
         uses: actions/upload-artifact@v6
         with:
           name: v2-development-preview

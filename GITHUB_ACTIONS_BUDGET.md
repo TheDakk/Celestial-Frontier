@@ -74,22 +74,30 @@ merges, and successful batteries now start **zero hosted runners by default**:
   one fail-fast serial battery. The battery is eligible only when the repository owner adds exact
   label `actions-budget-approved` to a PR and the branch/fork authorization succeeds. Only that
   successful dependency may emit the required `battery` check name; rejected/skipped events use
-  `budget-not-authorized`. Static/root checks run before Edge/Chrome work, each dependency tree
-  installs once, and the first red stops later work. The shorter 10-minute SceneMemory ruler now
-  owns the first version-tolerant isolated Edge extraction and runs before the 40-minute Compendium
-  chain. Compendium separately SHA-verifies its sealed `.101` package, validates package/version
-  metadata, and extracts it under `RUNNER_TEMP`; its preflight, certificate and named verifier each
-  pin that extracted executable directly, so neither ruler installs, downgrades or inherits the
-  runner's system Edge. The separate authorization job preserves the
-  Compendium owner's no-`if` contract; SceneMemory's direct order and no-soft-fail behavior are
-  independently controlled.
+  `budget-not-authorized`. One fail-closed diff classification runs after checkout. Root v1
+  install/layout/gameplay gates run for `develop` → `main` and for an agent PR that actually changes
+  the legacy product/tool/baseline surface; a V2-only agent PR does not spend a root browser run.
+  The selected V2 static profile runs once: `node tools/check-profile.mjs --profile=develop` for
+  agent integration and `--profile=production` for `main`. The producer-authority build, strict root TypeScript pass and
+  tracked-input/evidence selftests each have one owner instead of a duplicate focused rerun; the
+  source-mutating 107-case override control runs for production or when its audited art grammar
+  changes. All browser-free/static work precedes browser evidence and the first red stops later
+  work.
+- The `develop` browser admission remains one attempt each: version-tolerant SceneMemory, sealed-
+  package Compendium with live preflight, exact Slice and its exact-ID Glass successor. Changed
+  browser instruments run their launcher/heap/preflight controls once on `develop`; production
+  always owns those controls. The `develop` → `main` profile adds the exact Slice+Glass-bound
+  uninterrupted Recovery certificate and package smoke. Recovery is therefore a production
+  assurance boundary rather than a 20-minute tax on every coding batch. Compendium separately
+  SHA-verifies its sealed `.101` package and pins that extracted executable directly; the package
+  version is provenance, not a rebaseline trigger.
 - `branch-flow-guard.yml`, `sync-agent-branches.yml`, and `dev-preview-package.yml` are manual-only
   and default to `DO_NOT_RUN`. Their runner-owning authorization also requires the repository owner;
-  preview uses the same tiny authorize→sealed-owner dependency as the main battery. Its browser
-  artifact leg must extract and named-verify the exact immutable Slice ID, pass that ID to Glass,
-  named-verify the resulting Glass/Slice pair and retain all immutable carriers before persona and
-  packaging work. A bare `npm run glassmatrix` is structurally rejected. This artifact-only workflow
-  does not run or claim the separate uninterrupted 20-minute Recovery certificate.
+  preview uses the same tiny authorize→sealed-owner dependency as the main battery. It runs the
+  fast `check-profile --profile=dev` boundary and package-specific `preview:selftest` once each,
+  builds one clean exact-commit separate-origin package, browser-smokes
+  it and uploads it. It deliberately does not repeat Compendium, Slice, Glass, Recovery or persona
+  certification and cannot satisfy the required `battery` context.
 - The active `develop` ruleset requires only the terminal-green `battery` context, normal merge
   commits, resolved threads, and an up-to-date head. It has no required review count, no extra
   unattributed-change approval, and no required `Approved branch flow` context. The latter remains
@@ -231,13 +239,13 @@ The exact candidate must first be committed, clean and pass this tracked-only re
 `port/v2`:
 
 ```text
-node tools/tracked-input-preflight.mjs
+node tools/tracked-input-preflight.mjs --profile=develop
 ```
 
 It rechecks HEAD/cleanliness, rejects forgotten source-owned untracked or ignored test files while
 excluding dependency-owned `node_modules` tests, exports only the
 committed index into an owned isolated tree, runs a fresh install there and executes the exact
-hosted browser-free/static sequence through current producer authority. It rechecks the source
+shared develop browser-free/static profile once. It rechecks the source
 candidate again before PASS. Its synthetic fixture proves that an ambient dependency can make the
 ordinary workspace pass while the tracked snapshot fails, that tracking the dependency flips the
 snapshot green, and that run-generated artifacts remain allowed. This rehearsal is mandatory

@@ -53,11 +53,9 @@ const EDGE_WORKFLOW_CONTRACTS = Object.freeze([
     relative: '.github/workflows/test.yml',
     jobName: 'v2-compendium-memory',
     jobBrowser: CHROME_BROWSER,
-    preflightStepName: 'browser provenance and Compendium memory instrument selftests',
+    preflightStepName: 'Compendium live preflight and bounded selftest',
     preflightBrowser: EDGE_EXTRACTED_BROWSER,
     preflightCommands: Object.freeze([
-      'node tools/browserpath.mjs --selftest',
-      'node tools/compendiummem-browser-preflight.mjs --selftest',
       'node tools/compendiummem-browser-preflight.mjs',
       'npm run compendiummem:selftest',
     ]),
@@ -69,23 +67,6 @@ const EDGE_WORKFLOW_CONTRACTS = Object.freeze([
       'always() &&',
       "(steps.compendium.outcome == 'success' || steps.compendium.outcome == 'failure')",
     ]),
-  }),
-  Object.freeze({
-    relative: '.github/workflows/dev-preview-package.yml',
-    jobName: 'package',
-    jobBrowser: CHROME_BROWSER,
-    preflightStepName: 'Compendium memory instrument selftest',
-    preflightBrowser: EDGE_EXTRACTED_BROWSER,
-    preflightCommands: Object.freeze([
-      'node tools/compendiummem-browser-preflight.mjs --selftest',
-      'node tools/compendiummem-browser-preflight.mjs',
-      'npm run compendiummem:selftest',
-    ]),
-    certificationId: null,
-    certificationBrowser: EDGE_EXTRACTED_BROWSER,
-    verifierBrowser: EDGE_EXTRACTED_BROWSER,
-    verifierIfHeader: 'if: always()',
-    verifierIfBody: Object.freeze([]),
   }),
 ]);
 const PREFLIGHT_LABEL = 'Compendium Arc 1A Edge browser preflight';
