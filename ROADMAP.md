@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · 4A82 EVIDENCE PRESERVED · ARC 3 ORACLES GREEN · SIGN/CERTIFY NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · AA88 ARC 3 REPAIR SIGNED · LOCAL GREEN · CERTIFY NEXT ◀◀◀
 
 ### Exact current boundary
 
@@ -32,12 +32,15 @@ the archive verbatim and refresh this handoff in place.
   **d335d78a8f4f152e844627c2f28658c03168d1a1**) supplied the one-attempt Compendium PASS and
   terminal Slice red below. It is **24 commits ahead** of `origin/openai/mac` and has an embedded
   SSH signature.
-- **Current changed-source repair:** the dirty working tree models the exact Mine/Starter-Charter
-  successor from the same canonical predecessor the product accepts, proves complete durable→live
-  publication, installs Arc 3 causal stops, moves Survey writable readiness before its one-shot
-  Search Enter, binds all three preserved carriers, adds exact replay/order controls and
-  synchronizes current references. Sign it locally before any new browser attempt, then record that
-  exact commit in this handoff. It inherits no browser PASS from 4a82d9b.
+- **Current signed repair:** SSH-signed commit
+  **aa88d916e5141d6f2f8e8969288064ffba0cfc85** (tree
+  **e1165684bf6918c39414b3b247a84c9edfeb44f8**, parent **4a82d9b82521…**) models the exact
+  Mine/Starter-Charter successor from the same canonical predecessor the product accepts, proves
+  complete durable→live publication, installs Arc 3 causal stops, moves Survey writable readiness
+  before its one-shot Search Enter, binds all three preserved carriers, adds exact replay/order
+  controls and synchronizes current references. It is **25 commits ahead** of
+  `origin/openai/mac`. Independent final rereview is clear. This handoff refresh is its docs-only
+  signed successor; neither commit inherits browser PASS authority from 4a82d9b.
 - **PR boundary:** draft PR **#35**, base **develop**, source **openai/mac**, remains blocked and
   unmerged. Remote head **017fa6decbc41809188768ccdb98ab86ef1b9ebc** and fetched base
   **7a9f4c1370dd84292388d718c38ff34214f6203b** remain unchanged. Nothing here has been pushed.
@@ -99,9 +102,11 @@ remains FAIL and is never relabelled by its repair.
   missing, unknown, over-bound, overlapping, non-plain and out-of-range predecessors reject.
   Six successor field-family mutants and ten report-backed predecessor pairs stay independently
   red. Durable success must also publish Charter/reward/rank/unlocked truth into the live SaveState;
-  live-only mutants cover every durable-mapped field and statistic, including `minedout`. The exact replay binds the Compendium JSON, Slice
-  JSON and Slice raw-log gzip/raw identities and semantics, ordered scopes/messages, accepted
-  evidence and denial of Glass/Recovery authority.
+  value and presence mutants cover every required durable-mapped field and statistic, including
+  `minedout` and derived `surveys`, while optional-zero `scanhits` and conditional `arrivals` have
+  two-sided controls. The exact replay binds the Compendium JSON, Slice JSON and Slice raw-log
+  gzip/raw identities and semantics, ordered scopes/messages, accepted evidence and denial of
+  Glass/Recovery authority.
 - **Causal execution repair:** held-Mine baseline, held controls, real Mine outcome, durable
   controls and final controls each fail-stop before dependent controls or mutable successor stages.
   Whole-source removal and reversal mutants prove all five boundaries. The immutable e4f5/4a82
@@ -128,11 +133,10 @@ remains FAIL and is never relabelled by its repair.
 - This is browser-free authority only. It is not a fresh Slice PASS, Glass/Recovery authority,
   HUMAN acceptance, hosted CI green, merge authority or release/deployment authority.
 
-### Exact next work — sign, then one immutable local browser chain
+### Exact next work — close docs, then one immutable local browser chain
 
-1. Review the exact diff, run `git diff --check`, stage only this V2 repair/evidence/docs batch and
-   create an SSH-signed local commit. Refresh this handoff with the exact repair commit/tree; if a
-   docs-only exact-candidate successor is needed, sign it too.
+1. Commit this refreshed handoff as the SSH-signed docs-only successor of exact repair
+   `aa88d916e514…`; verify the embedded signature and clean tree. It changes no executable input.
 2. From `port/v2` on that exact clean commit, stop on any nonzero:
 
        node tools/tracked-input-preflight.mjs
@@ -170,7 +174,7 @@ Current system references and `port/V2_PROGRAM_ROADMAP.md` own those boundaries.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** remain in this worktree, sign the exact local repair and complete exactly one
+- **OpenAI/Codex now:** remain in this worktree, sign this handoff closure and complete exactly one
   serial local browser chain. Make no GitHub write without exact authorization.
 - **GitHub step now:** none.
 - **PR #35:** existing draft; base **develop**, source **openai/mac**, title
