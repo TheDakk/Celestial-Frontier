@@ -21,6 +21,27 @@
 > This repairs exact app-byte ownership only; CacheStorage remains outside expedition/save
 > authority and no save schema, migration, persistence retry or product-state fallback was added.
 >
+> Exact signed descendant `d33abdfd513236e72294b81e3bb46b1362f810e1` then ran
+> `20260830-pr35-first-install-d33abdfd5132-compendium-certification` exactly once with no retry on
+> Edge `152.0.4191.53` / CDP `1.3`. All 78 outcomes completed: 74 passed; phone/desktop
+> `cap-shrink` and `settled-jobs` stored red. Their evidence nevertheless proves exact 256 → 96 cap
+> shrink, 6,690,816 decoded bytes, 160 disposals, four sealed warm cycles, restored device class and
+> released/balanced workers. The shared false clause required a stale non-null paint `lastError`
+> after replacement recovery. The exact report remains red and immutable; no successor browser
+> stage ran.
+>
+> Current diagnostics v2 therefore requires `lastError === null` on every released/recovered
+> current snapshot, including non-final and post-cap samples, while the deliberate fault remains
+> bound by exact cumulative paint/phase/result arithmetic. A terminal current product error still
+> requires its exact non-null trusted receipt; historical v1 records remain replayable without one.
+> This is measurement lifecycle, not save authority: it adds no save field, migration, write or
+> fallback. The preserved carrier is
+> `audits/ARC1C_COMPENDIUM_PR35_RECOVERED_WORKER_ORACLE_FAILURE_20260830_D33ABDF.json.gz`, 451,743
+> gzip bytes / SHA-256
+> `4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab`, 10,813,681 raw bytes /
+> SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`, with 8/8 independent
+> replay.
+>
 > The current history-safe Compendium producer record is
 > `cf-v2-compendium-producer-authority/v2` / SHA-256
 > `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. It binds the generated
@@ -30,16 +51,18 @@
 > being rebound. Current Scene build authority is
 > `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
 > measurement / contract / collector authorities are
-> `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
-> `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+> `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 > `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
 > Product attribution additionally requires present broker/worker diagnostics plus exact art
 > `cf-v2-species-art-diagnostics/v1` and lazy
 > `cf-v2-species-art-worker-diagnostics/v2` schemas. Worker error ownership rejects any mixed-null
 > `jobId`/`kind`/`key` tuple. A replacement producer clears both `lastEvent` and `lastError`.
-> Browser-free closure is 589 Compendium selftest controls, worker loader/protocol 20/20,
-> focused authority/PWA/worker/budget/carrier 96/96 and green typechecks. The fixed ruler/ceilings
-> are unchanged and a fresh exact browser certificate remains open.
+> Browser-free repair coverage is 591 Compendium selftest controls, independent 8/8 preserved-
+> carrier replay, the full **239 files / 2,431 passed / 1 skipped** suite, all three TypeScript
+> programs and the green authority printer. The fixed ruler, numeric ceilings and 78-outcome inventory are
+> unchanged. Certification remains open; only a materially changed signed source may make one new
+> no-retry Compendium attempt.
 
 > **2026-08-29 current local fixed-point, route and PWA correction (supersedes narrower
 > same-date descriptions below where they differ):** the deterministic product-transaction owner

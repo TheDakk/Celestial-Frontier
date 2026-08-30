@@ -3771,6 +3771,8 @@ function workerArtReleased(snapshot) {
     && value.lastEvent.jobId
       === value.phases.thumbJobStarts + value.phases.portraitJobStarts
     && value.lastEvent.event === 'result'
+    && (value.schema === HISTORICAL_WORKER_ART_DIAGNOSTICS_SCHEMA
+      || value.lastError === null)
     && value.worker.ready === value.worker.starts
     && value.worker.disposals === value.worker.starts
     && value.worker.fatals === 0
@@ -3799,8 +3801,6 @@ function workerArtFinalEvidence(snapshot) {
     && value.results.count === successfulThumbs + successfulPortraits
     && errors.capability === 0 && errors.protocol === 0 && errors.import === 0
     && errors.paint === 1 && errors.encode === 0
-    && (value.schema === HISTORICAL_WORKER_ART_DIAGNOSTICS_SCHEMA
-      || value.lastError !== null && value.lastError.stage === 'paint')
     && a.totals.thumbCanvasRenders === successfulThumbs
     && a.totals.fullPortraitRendersForThumb === 0
     && a.totals.fullPortraitDecodesForThumb === 0;
@@ -4339,7 +4339,7 @@ export function evaluateProfile(measurement, budget, fixture) {
       'warm-precondition', 'warm-1', 'warm-2', 'warm-3', 'warm-4',
       'cap-before', 'cap-after', 'profile-restored', 'post-cap-restored',
     ]),
-  'immediate phone-class trim did not shrink entries/decoded bytes and dispose assets', points.capShrink);
+  'phone-class trim or post-cap recovered-worker closure failed (entries/decoded bytes/disposal/settlement/release evidence)', points.capShrink);
   add('canvas-thumb-path', finalArt?.totals?.thumbCanvasRenders > 0
     && finalArt.totals.thumbCanvasRenders >= finalArt.totals.jobCompletes,
   'thumb jobs bypassed the owned 132×132 canvas render path', finalArt?.totals);

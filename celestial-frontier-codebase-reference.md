@@ -37,6 +37,26 @@
 > collector preserves immediately as `product-fail` without sleep or retry. Cumulative recovered-
 > error telemetry with a coherent current `ready` producer remains nonterminal.
 >
+> Exact signed descendant `d33abdfd513236e72294b81e3bb46b1362f810e1` then ran
+> `20260830-pr35-first-install-d33abdfd5132-compendium-certification` once/no-retry on Edge
+> `152.0.4191.53` / CDP `1.3`. All 78 outcomes completed: 74 passed, while phone/desktop
+> `cap-shrink` and `settled-jobs` stored red. Their own evidence proves 256 → 96 cache shrink, exact
+> 6,690,816 decoded bytes, 160 disposals, four sealed warm cycles, restored device class and
+> balanced/released worker lifecycle. The shared oracle defect instead required the deliberately
+> induced paint error's `lastError` to remain non-null after replacement recovery. The exact report
+> remains red and immutable; no successor browser gate ran.
+>
+> For current diagnostics v2, every selected released/recovered worker snapshot must be `ready`
+> with `lastError === null`, including non-final and post-cap samples. Exact cumulative paint/phase/
+> result arithmetic still proves the induced negative control. Terminal current product errors keep
+> the opposite requirement: one exact non-null trusted receipt. Historical diagnostics v1 remains
+> replayable. The exact carrier is
+> `audits/ARC1C_COMPENDIUM_PR35_RECOVERED_WORKER_ORACLE_FAILURE_20260830_D33ABDF.json.gz`, 451,743
+> gzip bytes / SHA-256
+> `4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab`, 10,813,681 raw bytes /
+> SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`, with independent 8/8
+> replay.
+>
 > Current Compendium producer authority is history-safe schema
 > `cf-v2-compendium-producer-authority/v2`, SHA-256
 > `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. Its exact inputs are the
@@ -45,12 +65,14 @@
 > historical v1 producer records remain replayable under their own shape. Current Scene build
 > authority is `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
 > measurement / contract / collector authorities are
-> `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
-> `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+> `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 > `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
-> Browser-free review closes at 589 `compendiummem:selftest` controls, worker loader/protocol 20/20,
-> focused authority/PWA/worker/budget/carrier 96/96 and green typechecks. Fixed ruler/ceilings are
-> unchanged; a fresh exact Compendium certificate remains open.
+> Browser-free repair coverage closes at 591 `compendiummem:selftest` controls, independent 8/8
+> carrier replay, the full **239 files / 2,431 passed / 1 skipped** suite, all three TypeScript
+> programs and the green authority printer. Fixed ruler, numeric ceilings and the 78-outcome inventory are unchanged.
+> Certification remains open; only a materially changed signed source may make one new no-retry
+> Compendium attempt.
 
 > **2026-08-29 exact-build PWA foundation (current except where superseded above):**
 > `port/v2/apps/game/pwa-build.ts` is a build-only Vite plugin that emits the same-origin web
@@ -3203,6 +3225,28 @@ lazy state with a trusted `lastError` matching the current producer identity cla
 without sleeping, repolling or retrying. Cumulative counters and an older `lastError` remain useful
 recovery telemetry, but a coherent current `ready` producer is nonterminal.
 
+Exact signed descendant `d33abdfd513236e72294b81e3bb46b1362f810e1` ran
+`20260830-pr35-first-install-d33abdfd5132-compendium-certification` exactly once with no retry on
+Edge `152.0.4191.53` / CDP `1.3`. It completed all 78 outcomes at **74 pass / four fail**, with
+phone and desktop `cap-shrink` plus `settled-jobs` red. The exact cap/resource and lifecycle facts
+were healthy: 256 → 96 entries, 6,690,816 decoded bytes, 160 disposals, four sealed warm cycles,
+restored device class, zero queued/active work, zero portraits, and balanced released workers. One
+shared evaluator clause nevertheless demanded a non-null paint `lastError` after replacement had
+correctly recovered to `ready` and cleared the receipt. The result remains an immutable exact-source
+red; Slice, Glass and Recovery did not run.
+
+The corrected released-worker predicate requires `lastError === null` for every selected current-v2
+released/recovered snapshot, not only the final one. Exact cumulative paint/phase/result arithmetic
+still proves the deliberate one-paint-error control; a current terminal product failure still
+requires an exact non-null trusted receipt. Non-final and post-cap stale-receipt mutants keep both
+directions fail-closed, while historical diagnostics v1 continues to replay. The exact report is
+preserved at
+`audits/ARC1C_COMPENDIUM_PR35_RECOVERED_WORKER_ORACLE_FAILURE_20260830_D33ABDF.json.gz` with
+451,743 gzip bytes / SHA-256
+`4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab` and 10,813,681 raw bytes /
+SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`; independent replay is
+8/8.
+
 The history-safe current producer record is `cf-v2-compendium-producer-authority/v2` /
 `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. It binds index, owner,
 species worker, painter and generated `service-worker.js` SHA-256
@@ -3211,14 +3255,15 @@ repair therefore changes producer authority. Historical schema-v1 producer recor
 replayable. Current Scene build authority is
 `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
 measurement / contract / collector authorities are
-`e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
-`2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
-The current browser-free boundary is green at 589 `compendiummem:selftest` controls, worker loader/
-protocol 20/20, focused authority/PWA/worker/budget/carrier 96/96 and all TypeScript programs. The
-fixed ruler and every numeric ceiling remain unchanged. Browser certification still requires one
-fresh clean exact-source Compendium run with zero retries and named verification before the serial
-Slice → Glass → Recovery chain may continue on unchanged source.
+The current browser-free repair boundary is green at 591 `compendiummem:selftest` controls,
+independent 8/8 carrier replay, the full **239 files / 2,431 passed / 1 skipped** suite, all three
+TypeScript programs and the green authority printer. The fixed ruler, every numeric ceiling and the 78-outcome inventory
+remain unchanged. Browser certification still requires a materially changed signed source to make
+one new no-retry Compendium attempt with named verification before the serial Slice → Glass →
+Recovery chain may continue on that unchanged successor.
 
 The former local ruler is retained as historical evidence under measurement authority
 `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer authority

@@ -83,16 +83,44 @@ counters or an older `lastError` are cumulative telemetry: if the current produc
 become a timeout, and do not let missing authority or stale cumulative telemetry manufacture a
 current failure.
 
-The review-closed browser-free boundary is 589 `compendiummem:selftest` controls, worker loader/
-protocol 20/20, the focused authority/PWA/worker/budget/carrier run 96/96, and green TypeScript
-programs. Current Scene build authority is
+⚠⚠ **A RECOVERED, RELEASED CURRENT WORKER MUST CLEAR ITS TERMINAL ERROR RECEIPT; CUMULATIVE
+ERROR ARITHMETIC IS NOT A LIVE FAILURE** (2026-08-30). Exact signed source
+`d33abdfd513236e72294b81e3bb46b1362f810e1` ran
+`20260830-pr35-first-install-d33abdfd5132-compendium-certification` exactly once with no retry on
+Edge `152.0.4191.53` / CDP `1.3`. It evaluated all 78 outcomes and stored **74 pass / four fail**:
+phone and desktop `cap-shrink` plus `settled-jobs`. Yet both cap paths truthfully shrank **256 →
+96**, reached the exact **6,690,816-byte** decoded ceiling, disposed 160 assets, sealed four warm
+cycles and restored device class; every selected worker snapshot was released and balanced. The
+four reds came from one oracle clause that required the deliberately induced paint error's
+`lastError` to remain non-null after producer replacement and recovery, contradicting the
+diagnostics lifecycle it was supposed to assess.
+
+Keep the exact report red and immutable. For current diagnostics v2, every snapshot accepted as
+released/recovered must be `ready` with `lastError === null`; the one induced paint fault remains
+proved by exact cumulative paint/phase/result arithmetic. Conversely, a terminal current product
+error still requires its exact non-null trusted receipt. Historical diagnostics v1 remains
+replayable without inventing a field it never carried. Negative controls must reject a stale
+receipt on both non-final and post-cap released snapshots, not merely on the last sample. The exact
+carrier is
+`audits/ARC1C_COMPENDIUM_PR35_RECOVERED_WORKER_ORACLE_FAILURE_20260830_D33ABDF.json.gz`:
+451,743 gzip bytes / SHA-256
+`4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab`, 10,813,681 raw bytes /
+SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`, with independent 8/8
+replay. No Slice, Glass or Recovery stage followed this red.
+
+The current browser-free boundary is 591 `compendiummem:selftest` controls, including the released-
+snapshot stale-receipt controls, independent 8/8 carrier replay, the full **239 files / 2,431 passed
+/ 1 skipped** suite, all three TypeScript programs and the green authority printer. Current Scene build authority is
 `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
 measurement / contract / collector authorities are
-`e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
-`2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
-The fixed ruler and every ceiling remain unchanged. Those checks close the local repair only; a
-fresh exact Compendium certificate remains open.
+Producer authority remains `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`
+and generated service-worker SHA-256 remains
+`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. The fixed ruler, all
+numeric ceilings and the 78-outcome inventory remain unchanged. Certification remains open; only a
+materially changed signed source may make one new no-retry Compendium attempt.
 
 ⚠⚠ **A CLOSED PRESENTATION OWNS NO DETACHED DOM OR LISTENERS; ASYNC COPY MUST
 REPROVE ITS OPEN GENERATION** (2026-08-29). Hiding a route-invalid Survey card left its controller

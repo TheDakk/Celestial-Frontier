@@ -234,9 +234,9 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  'e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97';
+  'fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed';
 const EXPECTED_OUTCOME_CONTRACT_AUTHORITY =
-  '2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21';
+  'f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29';
 const EXPECTED_COLLECTOR_AUTHORITY =
   '2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237';
 const HISTORICAL_VISUAL_KEY_INSTRUMENT_FAILURE = Object.freeze({

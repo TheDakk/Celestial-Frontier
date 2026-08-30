@@ -1769,6 +1769,13 @@ const SYNTHETIC_PLANETSIDE_VISUAL_KEYS = Object.freeze(
   SYNTHETIC_PLANETSIDE_LOGICAL_IDS.map((logicalId) => `visual-${logicalId}`),
 );
 
+function staleRecoveredWorkerError() {
+  return {
+    producerEpoch: 1, workerInstanceId: 1, jobId: 1, kind: 'thumb132',
+    stage: 'paint', code: 'injected-failure', message: PRODUCER_ERROR_ARM_MESSAGE,
+  };
+}
+
 function artSnapshot({ portrait = false, closed = false, generation = 1 } = {}) {
   const cacheEntries = 24;
   const decodedPixels = cacheEntries * SYNTHETIC_THUMB_EDGE_PX * SYNTHETIC_THUMB_EDGE_PX;
@@ -1838,10 +1845,7 @@ function workerArtDiagnostics({ lazy = false } = {}) {
       producerEpoch: 8, workerInstanceId: 8, jobId: 87,
       kind: 'thumb132', event: 'result',
     },
-    lastError: {
-      producerEpoch: 1, workerInstanceId: 1, jobId: 1, kind: 'thumb132',
-      stage: 'paint', code: 'injected-failure', message: PRODUCER_ERROR_ARM_MESSAGE,
-    },
+    lastError: null,
     worker: {
       live: false, starts: 8, ready: 8, disposals: 8, fatals: 0, protocolErrors: 0,
     },
@@ -5486,6 +5490,9 @@ export async function runCompendiumMemSelftest() {
     ['worker terminal state copied stale', (m) => {
       m.points.warm.at(-1).diagnostics.lazyArt.state = 'loading';
     }, 'settled-jobs'],
+    ['released worker retained stale error receipt before the final snapshot', (m) => {
+      m.points.first.diagnostics.lazyArt.lastError = staleRecoveredWorkerError();
+    }, 'settled-jobs'],
     ['worker readiness omitted', (m) => {
       m.points.warm.at(-1).diagnostics.lazyArt.worker.ready--;
     }, 'settled-jobs'],
@@ -5602,6 +5609,9 @@ export async function runCompendiumMemSelftest() {
     }, 'cap-shrink'],
     ['post-cap worker error hidden', (m) => {
       m.points.postCapRestored.diagnostics.lazyArt.errors.encode = 1;
+    }, 'cap-shrink'],
+    ['post-cap recovered worker retained stale error receipt', (m) => {
+      m.points.postCapRestored.diagnostics.lazyArt.lastError = staleRecoveredWorkerError();
     }, 'cap-shrink'],
     ['post-cap measured heap exceeds ceiling', (m) => {
       m.points.postCapRestored.heap.usedSize = 20_000_001;

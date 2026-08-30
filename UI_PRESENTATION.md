@@ -28,6 +28,24 @@
 > including a prior `lastError`, remains nonterminal when the current producer is coherently
 > `ready`; recovery is not misclassified as a present failure.
 >
+> Exact signed descendant `d33abdfd513236e72294b81e3bb46b1362f810e1` exercised that recovery
+> boundary once as `20260830-pr35-first-install-d33abdfd5132-compendium-certification` on Edge
+> `152.0.4191.53` / CDP `1.3`, with no retry. It completed both profiles and all 78 outcomes: 74
+> passed; phone/desktop `cap-shrink` and `settled-jobs` stored red. The four shared reds contradicted
+> healthy evidence—256 → 96 entries, exact 6,690,816 decoded bytes, 160 disposals, four sealed warm
+> cycles, restored device classes and balanced/released workers—because the old final-worker oracle
+> required the deliberately induced paint fault's `lastError` to remain non-null after replacement
+> recovery. The report remains immutable red, with no successor browser stage.
+>
+> Current released-worker evidence requires `lastError === null` on every selected current v2
+> released/recovered snapshot, including non-final and post-cap samples. The deliberate paint fault
+> remains proved by exact cumulative paint/phase/result arithmetic. Terminal current product errors
+> still require their exact non-null trusted receipt; historical diagnostics v1 remains replayable.
+> The exact 451,743-byte gzip carrier has SHA-256
+> `4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab`; its 10,813,681 raw bytes
+> have SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`, and the independent
+> replay passes 8/8.
+>
 > The deterministic PWA harness reproduced the presentation's historical lazy-import boundary: a
 > worker created between first activation's initial client snapshot and `clients.claim()` entered
 > uncontrolled, then its lazy import became controlled without a retained-build pin and received
@@ -45,12 +63,14 @@
 > historical v1 records remain replayable. Current Scene build authority is
 > `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
 > measurement / contract / collector are
-> `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
-> `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+> `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 > `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
-> Browser-free review is green at 589 Compendium selftest controls, worker loader/protocol 20/20,
-> focused authority/PWA/worker/budget/carrier 96/96 and all typechecks. The fixed ruler/ceilings did
-> not change; fresh exact browser certification remains open.
+> Browser-free repair coverage is green at 591 Compendium selftest controls, independent 8/8
+> preserved-carrier replay, the full **239 files / 2,431 passed / 1 skipped** suite, all three
+> TypeScript programs and the green authority printer. The fixed ruler, numeric ceilings and 78-outcome inventory did not
+> change. Certification remains open; only a materially changed signed source may make one new no-
+> retry Compendium attempt.
 
 > **2026-08-29 current local route/PWA/vista correction (supersedes narrower same-date descriptions
 > below where they differ):** the Survey-to-Landing interaction now drains the route checkpoint,

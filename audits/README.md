@@ -10,6 +10,55 @@ summary of it.
 
 ## Contents
 
+### Signed `d33abdfd…` Compendium recovered-worker outcome-oracle red — 74/78
+
+Exact signed source `d33abdfd513236e72294b81e3bb46b1362f810e1` ran
+`20260830-pr35-first-install-d33abdfd5132-compendium-certification` exactly once with zero automatic
+retries under Microsoft Edge `152.0.4191.53` / CDP `1.3`. The complete-lifecycle report ended stored
+`fail` after **65,724 ms** with all **78** outcomes evaluated: **74 pass**, four fail, zero blocked,
+both profiles complete and all six review-image receipts present. The exact named verifier reproduced
+the terminal fail. No same-source retry or successor browser stage ran.
+
+The four stored reds are exactly `phone/cap-shrink`, `phone/settled-jobs`,
+`desktop/cap-shrink` and `desktop/settled-jobs`. Both cap observations actually shrink **256 → 96**
+entries, reach the exact **6,690,816-byte** phone decoded ceiling, dispose **160** assets, seal four
+warm cycles and restore the original device class. Every warm point has zero queued/active work and
+zero portrait retention. Both final current-schema worker receipts are `ready`, released, balanced
+across worker start/ready/disposal and import start/complete, and end in a current-generation
+`result`; they retain exactly one deliberately induced cumulative paint error while correctly
+clearing `lastError` after replacement and recovery. The stored predicates therefore conflict with
+their own recovered final-worker evidence rather than demonstrating a cache, queue, resource or
+browser failure. The report itself remains immutable stored red and is not rewritten as green.
+
+- `ARC1C_COMPENDIUM_PR35_RECOVERED_WORKER_ORACLE_FAILURE_20260830_D33ABDF.json.gz`: **451,743**
+  compressed bytes, SHA-256
+  `4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab`; **10,813,681** raw bytes,
+  SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`.
+- `port/v2/tests/compendium-recovered-worker-oracle-failure-carrier.test.ts` independently binds
+  the exact gzip/raw bytes and hashes, signed clean source, one-attempt lifecycle, browser and
+  historical authorities, complete **74/4** ledger, exact four reds, healthy cap/resource facts,
+  recovered worker arithmetic, cleared terminal error receipt and all six ignored review-image
+  hashes. It imports no live evaluator or budget authority and passes **8/8** focused assertions.
+
+The carrier passes deterministic `gzip -9 -n` reproduction and gzip integrity. It grants no fresh
+Compendium certificate, Slice, Glass, Recovery, HUMAN, hosted, merge, release, version-bump or deploy
+authority. Any repaired outcome oracle requires a materially changed signed source and one new
+no-retry Compendium attempt; this exact `d33abdfd…` red is never rerun or relabeled.
+
+The current local repair requires `lastError === null` on every selected current-v2 released/
+recovered snapshot—including non-final and post-cap samples—while exact cumulative paint/phase/
+result arithmetic still proves the induced paint fault. Terminal current product errors retain the
+opposite requirement: an exact non-null trusted receipt. Historical diagnostics v1 remains
+replayable. Current measurement / outcome-contract SHA-256 is
+`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29`; collector, producer-v2
+and generated service-worker authority remain
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+`2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39` /
+`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. Browser-free closure is
+591 selftest controls, 239 files / 2,431 passed / 1 skipped, all three TypeScript programs and a
+green authority printer. Fixed rulers, ceilings and the 78-outcome inventory are unchanged.
+
 ### Signed `830e601b…` Compendium first lazy-painter import stop — 0/78, all blocked
 
 Exact signed source `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
@@ -44,27 +93,26 @@ complete and the art/lazy schemas are exact. Malformed worker-error ownership is
 `jobId`, `kind` and `key` are either all null or all present; recovered cumulative telemetry is
 nonterminal.
 
-Independent review closure makes Compendium producer authority history-safe schema v2: current
-authority binds generated `service-worker.js` plus index, owner, worker and painter; a service-worker
-mutant changes authority; and historical v1 reports replay unchanged. Current measurement /
-outcome contract / collector / producer-v2 SHA-256 is
+At the exact `d33abdfd…` terminal-red input boundary, independent review had made Compendium
+producer authority history-safe schema v2: that authority bound generated `service-worker.js` plus
+index, owner, worker and painter; a service-worker mutant changed it; and historical v1 reports
+replayed unchanged. That input's measurement / outcome contract / collector / producer-v2 SHA-256 was
 `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
 `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
 `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
 `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; generated service-worker
-SHA-256 is `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
-SceneMemory current build authority is
+SHA-256 was `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
+SceneMemory build authority at that boundary was
 `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; its exact `2046000…`
 certificate remains immutable historical evidence.
 
-Current browser-free closure passes **589** Compendium selftest controls, worker **20/20**, the
-focused authority/PWA/worker/budget/carrier run **96/96**, and all three TypeScript programs.
-The canonical **73-bullet** release inventory is preserved, and the full browser-free suite passes
+That `d33abdfd…` input's browser-free predecessor closure passed **589** Compendium selftest
+controls, worker **20/20**, the focused authority/PWA/worker/budget/carrier run **96/96**, and all
+three TypeScript programs. The canonical **73-bullet** release inventory was preserved, and the full browser-free suite passed
 **238 files / 2,423 passed / 1 skipped**.
 
-This is local repair only, not a fresh Compendium certificate, named green predecessor, hosted
-result, HUMAN approval, merge, release, version bump or deployment authority. The next sequence is
-a signed clean head and exactly one new no-retry Compendium attempt.
+This was local input closure only, not a fresh Compendium certificate, named green predecessor,
+hosted result, HUMAN approval, merge, release, version bump or deployment authority.
 The fixed Compendium ruler, numeric ceilings, historical samples and thresholds remain unchanged.
 
 ### PR #35 SceneMemory hosted stop and systemic local diagnosis
@@ -425,19 +473,19 @@ prove internal distinctness. A literal 256-entry
 inventory passes; a 257-entry inventory produces an explicit instrument error; realistic
 768–831-character keys pass without truncation.
 
-The signed commit owns current capability / measurement / contract /
+At that historical observation-v2 repair boundary, the signed commit owned capability / measurement / contract /
 collector / budget SHA-256:
 `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
 `87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d` /
 `abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138` /
 `b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e` /
-`7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; product producer remains
-`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free checks pass
+`7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; product producer was
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free checks passed
 **565** Compendium selftest controls, focused **35/35**, **237 files / 2,413 passed + one skipped**,
 all three TypeScript programs and the producer-authority printer with both budget matches true;
-independent review is clear. These signed implementation bytes are not browser-certified. No current
-report, review PNG, Slice/Glass/Recovery successor, hosted result, merge, release, version bump or
-deployment authority follows yet. Every earlier tuple above remains exact historical authority for
+independent review was clear. Those signed implementation bytes were not browser-certified. At that
+boundary no report, review PNG, Slice/Glass/Recovery successor, hosted result, merge, release,
+version bump or deployment authority followed. Every earlier tuple above remains exact historical authority for
 its own immutable red carrier only.
 
 ### Signed `3f69e88e…` universe-polish + bounded Arc 5 Feed certificate — complete local chain PASS

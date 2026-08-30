@@ -121,18 +121,19 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   before `indexOf`/`Set`; every image must prove membership and distinctness, each inventory length
   must equal its live lease/cache count, and both inventories must be internally distinct. A literal 256-entry inventory passes, a 257-entry
   inventory is an explicit error,
-  and realistic 768–831-character keys pass. The commit owns current capability / measurement / contract /
+  and realistic 768–831-character keys pass. At that historical observation-v2 repair boundary,
+  the commit owned capability / measurement / contract /
   collector / budget authority:
   `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
   `87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d` /
   `abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138` /
   `b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e` /
-  `7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; product producer remains
-  `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The repair is green at
+  `7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; product producer was
+  `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The repair was green at
   **565** Compendium selftest controls, **35/35** focused tests, **237 files / 2,413 passed + one
   skipped**, all three TypeScript programs and the producer-authority printer with both budget
-  matches true; independent review is clear. It is not browser-certified and has no Slice, Glass or
-  Recovery successor. It changes no automatic-retry policy, memory ruler, cache policy or browser-
+  matches true; independent review was clear. At that boundary it was not browser-certified and had
+  no Slice, Glass or Recovery successor. It changed no automatic-retry policy, memory ruler, cache policy or browser-
   version baseline; the preserved `3fb958f…` and `b2eecfbd…` stops remain historical instrument evidence.
 
   Exact signed source `830e601b8f16092d6f9193ecde329cfefd279bcd` then ran
@@ -160,26 +161,55 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   lazy schemas are exact. Malformed worker-error ownership is rejected unless `jobId`, `kind` and
   `key` are either all null or all present; recovered cumulative telemetry is nonterminal.
 
-  Independent review closure makes Compendium producer authority history-safe schema v2: current
-  authority binds generated `service-worker.js` plus index, owner, worker and painter, a service-
-  worker mutant changes authority, and historical v1 reports still replay unchanged. Current
-  measurement / outcome contract / collector / producer-v2 SHA-256 is
+  The exact `d33abdfd…` terminal-red input's independent review closure made Compendium producer
+  authority history-safe schema v2: it bound generated `service-worker.js` plus index, owner,
+  worker and painter, a service-worker mutant changed that authority, and historical v1 reports
+  replayed unchanged. Its measurement / outcome contract / collector / producer-v2 SHA-256 was
   `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
   `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
   `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
   `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; generated service-worker
-  SHA-256 is `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
-  SceneMemory current build authority is
+  SHA-256 was `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
+  SceneMemory build authority at that boundary was
   `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; the exact `2046000…`
   certificate remains immutable historical evidence.
 
-  Current browser-free closure is green at **589** Compendium selftest controls, worker **20/20**,
+  Browser-free closure at that boundary was green at **589** Compendium selftest controls, worker **20/20**,
   the focused authority/PWA/worker/budget/carrier run **96/96**, and all three TypeScript programs.
-  The canonical **73-bullet** release inventory is preserved, and the full browser-free suite passes
-  **238 files / 2,423 passed / 1 skipped**. This is local repair only,
-  not a fresh Compendium certificate. Next: sign a clean head, then make one new no-retry
-  Compendium attempt. The fixed Compendium ruler, numeric ceilings,
+  The canonical **73-bullet** release inventory was preserved, and the full browser-free suite passed
+  **238 files / 2,423 passed / 1 skipped**. This was local input closure only,
+  not a fresh Compendium certificate. The fixed Compendium ruler, numeric ceilings,
   historical samples and thresholds remain unchanged.
+
+  Exact signed descendant `d33abdfd513236e72294b81e3bb46b1362f810e1` then ran
+  `20260830-pr35-first-install-d33abdfd5132-compendium-certification` once/no-retry on Edge
+  `152.0.4191.53` / CDP `1.3`. It completed all 78 outcomes at **74 pass / four fail**; phone and
+  desktop `cap-shrink` plus `settled-jobs` stored red despite exact 256 → 96 shrink, 6,690,816
+  decoded bytes, 160 disposals, four sealed warm cycles, restored class and balanced released
+  workers. The shared oracle clause incorrectly required a stale non-null paint `lastError` after
+  producer replacement recovery. This exact red remains immutable, was not retried and has no
+  successor browser stage.
+
+  Current released-worker acceptance requires `lastError === null` on every selected current-v2
+  released/recovered snapshot, including non-final and post-cap samples, while exact cumulative
+  paint/phase/result arithmetic still proves the induced fault. A terminal current product error
+  still requires its exact non-null trusted receipt; historical diagnostics v1 remains replayable.
+  The exact 451,743-byte gzip / 10,813,681-byte raw carrier has SHA-256
+  `4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab` /
+  `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e` and passes independent
+  replay 8/8.
+
+  Current measurement / outcome-contract / collector / producer-v2 SHA-256 is
+  `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+  `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+  `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+  `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; generated service-worker
+  SHA-256 remains `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
+  Current closure is green at **591** Compendium selftest controls, independent **8/8** carrier
+  replay, the full browser-free suite at **239 files / 2,431 passed / 1 skipped**, all three
+  TypeScript programs and the authority printer. The fixed ruler, numeric ceilings and 78-outcome
+  inventory are unchanged. Certification remains pending; only a materially changed signed source
+  may make one new no-retry Compendium attempt.
 
 - ★ **D-ARC5-LIVE — four bounded exact-instance companion writers.** Verified real-fauna
   Compendium detail exposes Feed, one-draw nonlethal Breed with active-play Recovery, identity-only
