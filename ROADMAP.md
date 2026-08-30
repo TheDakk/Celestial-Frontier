@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-29 · PR #35 RESOURCE REPAIR · FIXED-SECOND SCENEMEM CALIBRATION ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · PR #35 RESOURCE REPAIR · SCENEMEM AUTHORITY ACTIVATION ◀◀◀
 
 ### Exact current boundary
 
@@ -26,12 +26,13 @@ the archive verbatim and refresh this handoff in place.
   **`origin/openai/mac`**. Work remains limited to `port/v2` and current Markdown. Legacy
   `main.js` / `celestial-frontier.html`, `develop`, `main`, the live-site repository and
   every other agent worktree are untouched.
-- **Local Git state:** committed HEAD is signed
-  **`a9f75797d6f838bb7246d3f41164f77e97e6f569`**, parent signed
-  `eba00e03f3376c67ab38c5067e9a32da66ce3a3a`, plus the intentional uncommitted SceneMemory
-  sampling repair/evidence described below. The branch is two commits ahead of its remote before
-  this batch. Preserve the dirty repair until it is reviewed, signed and committed; do not reset
-  or overwrite it.
+- **Local Git state:** committed HEAD is signed clean calibration source
+  **`4f1ed65db421f16386bc06a167a52a5af9dc51d3`** (tree
+  `e07c19e10ed1f7f1026d6d7b80d407591c353b53`), parent signed `a9f75797…`. The branch is
+  three commits ahead of its remote. The intentional dirty activation contains exactly the three
+  immutable calibration carriers, their evidence tests/docs, the collector-only budget binding and
+  this live handoff. Preserve it until the full browser-free/typecheck battery is green and the
+  activation is signed; do not reset or overwrite it.
 - **PR boundary:** draft PR **#35** is **`openai/mac` → `develop`**, currently remote head
   **`017fa6decbc41809188768ccdb98ab86ef1b9ebc`** against base
   **`7a9f4c1370dd84292388d718c38ff34214f6203b`**. It is open, blocked and unmerged.
@@ -137,10 +138,22 @@ both lanes at exactly 524,288 B/cycle; releasing the arrays reduced backing from
   Survey-result wiring at **8 files / 37 tests**.
 - Fixed-second SceneMemory focus: **4 files / 127 passed / 0 failed**; the real retained-allocation
   browser control is green in both sampling lanes and release direction.
+- Clean signed `4f1ed65…` supplied exactly three independent schema-v3/input-v4 calibration runs:
+  `20260829-pr35-fixed-second-4f1ed65-candidate1`, `…-candidate2` and `…-candidate3`. Each ran
+  once without retry, held the same clean source/build at begin/end, completed browser/server/lock
+  cleanup and passed **44/44**. Their phone slopes were 90,528.8 / 98,815.2 / 97,813.6 B/cycle;
+  desktop slopes were 115,485.6 / 119,155.1 / 123,150 B/cycle. All remain below the unchanged
+  131,072 B/cycle ruler; maximum phone/desktop ranges 296,020 / 366,268 B remain below the
+  unchanged 524,288 B ruler. Independent replay found no carrier, binding, raw-pair or ceiling fault.
+- The new evidence test passes **17/17**, independent current-producer derivation reports both
+  SceneMemory and Compendium authority graphs green, and the complete activation sweep passed
+  **235 files / 2,404 tests / 1 skipped** plus all three TypeScript programs. The activation is
+  ready for signed commit; do not start browser certification from the dirty source.
 - Final calibration-candidate browser-free sweep: **235 files / 2,401 passed / 1 skipped** with
   exactly one deliberate red: current producer authority reports only `collector`, because the old
-  budget must remain fail-closed until fresh calibration is activated. No other test failed. The
-  final authority-activation descendant must repeat the suite once with that binding green.
+  budget had to remain fail-closed until fresh calibration was activated. No other test failed.
+  The activation replaces that deliberate red with exact collector authority; its complete
+  successor sweep is green as recorded above.
 - TypeScript: root, game app and worker programs are green on the current dirty repair.
 - Static contract:
   - `artunused` green;
@@ -157,8 +170,8 @@ both lanes at exactly 524,288 B/cycle; releasing the arrays reduced backing from
   - Scene main: `0a54536bfc363b12c668aa276a2987e98bba32e41c5dbf546609d621972a840c`
   - Historical first-pass collector: `aa5c3711eb21277fbf24fc539f2a4564915692259bb874aff662066d4ec67f3a`
   - Historical active budget: `bf559acb1688c7f83223f4381b05ccc02309cf86af6344f6c019ffa0d1ba25e0`
-  - Fixed-second collector/budget: pending clean calibration and authority-only activation; the
-    historical collector binding must remain red until that activation is signed.
+  - Fixed-second collector: `7a1dc670327fed3f04fa120a78be64a5a87227a355292f47d37353522f50d931`
+  - Fixed-second activation budget: `304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184`
   - Compendium measurement: `7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4`
   - Compendium producer: `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`
   - Compendium budget: `5d7b54235cf9470cd7f2c042612a402f79edda3c91ee2ba83bfbe21126001d49`
@@ -167,20 +180,16 @@ both lanes at exactly 524,288 B/cycle; releasing the arrays reduced backing from
 
 ### Exact work remaining before another GitHub attempt
 
-1. Finish independent review of the fixed-second collector, docs and controls; sign one clean local
-   calibration candidate while the old collector authority remains deliberately fail-closed.
-2. On that exact unchanged clean collector/product, collect exactly three named one-attempt
-   SceneMemory calibrations, preserve each raw report, and confirm pass-2 samples remain below every
-   unchanged ceiling. These are planned measurement samples, not retries or certificates.
-3. Change only the SceneMemory collector producer binding (and its expected hash/docs), keep every
-   numeric/browser/product field byte-identical, run focused negative controls plus the full
-   browser-free/typecheck/producer battery once, and sign the authority activation.
-4. From that exact clean activation, run one named SceneMemory certification and named verification.
+1. Run the complete browser-free/typecheck/producer battery once on the collector-only activation,
+   inspect the diff, and sign the activation. The focused 17/17 evidence test, root TypeScript and
+   producer derivation are already green; do not repeat the three completed calibrations.
+2. From that exact clean activation, run the mandatory live same-Edge heap-phase selftest immediately
+   before one named SceneMemory certification and named verification.
    Stop on any red/instrument result with no retry. Only if green, run one named Compendium attempt
    and verification; its game build is still `8ef5d89c…`.
-5. Preserve the exact results, refresh this handoff/authorities, sign the documentation closure and
+3. Preserve the exact results, refresh this handoff/authorities, sign the documentation closure and
    run `node tools/tracked-input-preflight.mjs` against the final committed index.
-6. Report the exact final head/base to Nick. Only a new authorization naming that immutable pair may
+4. Report the exact final head/base to Nick. Only a new authorization naming that immutable pair may
    push, label, run the one 92-minute hosted battery and merge. After green integration, hand the
    exact `develop` commit to Claude Fable on an `anthropic/*` branch for the requested polish review.
 
@@ -200,7 +209,7 @@ current system docs and `port/V2_PROGRAM_ROADMAP.md` own those boundaries.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** remain in this worktree, complete the six local steps above and do no GitHub
+- **OpenAI/Codex now:** remain in this worktree, complete the four local steps above and do no GitHub
   write until Nick authorizes one exact final head/base attempt.
 - **Claude Code now:** Nick does **not** need to open Claude yet. Claude must not edit this OpenAI
   worktree. After a green merge into `develop`, create an `anthropic/*` branch/worktree from that

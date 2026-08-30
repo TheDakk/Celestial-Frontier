@@ -295,6 +295,49 @@ bytes remain unchanged. Because both reports came from changed dirty collector s
 a clean certificate, named predecessor, calibration/budget authority or permission to advance the
 serial browser chain; fresh clean producer authority and certification remain required.
 
+### Clean fixed-second calibration — three green candidates and authority-only activation
+
+The permanent collector was then committed as clean source
+`4f1ed65db421f16386bc06a167a52a5af9dc51d3` (tree
+`e07c19e10ed1f7f1026d6d7b80d407591c353b53`). Exactly three independent calibration runs
+retained that commit at source begin and end, reused the unchanged build
+`8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254`, reported schema
+v3 / input v4, completed browser/server/workspace-lock cleanup, and passed all **44/44** outcomes.
+Their Edge `152.0.4191.53` / CDP `1.3` tuple is provenance only; no Edge-version rebaseline,
+recalibration rule or threshold movement follows.
+
+- Candidate 1, run `20260829-pr35-fixed-second-4f1ed65-candidate1`, is preserved as
+  `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CALIBRATION_CANDIDATE1_20260829.json.gz`: 786,292 raw
+  bytes, SHA-256 `30863b06f0cf383518c47f3b36b87bb1b0ba38e0b3da586d96c4924e88c1c98b`;
+  49,848 gzip bytes, SHA-256
+  `248286a1ddbec6b66494a31be2f58ffe05e4cc1d9d9067228191467d3f7849ac`.
+- Candidate 2, run `20260829-pr35-fixed-second-4f1ed65-candidate2`, is preserved as
+  `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CALIBRATION_CANDIDATE2_20260829.json.gz`: 786,927 raw
+  bytes, SHA-256 `d60224544f44eabc512465b515623e1c87522fc2014b5ebb571b03f966ae7841`;
+  49,800 gzip bytes, SHA-256
+  `03eb43e77669a11d3dbd8ab01c80ff069e5ff0fb2cc0cca0e936727be2b9ced5`.
+- Candidate 3, run `20260829-pr35-fixed-second-4f1ed65-candidate3`, is preserved as
+  `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CALIBRATION_CANDIDATE3_20260829.json.gz`: 786,955 raw
+  bytes, SHA-256 `941b9e580bf744c7b5a8aca8e1edad61701227a8f7074d0bc4e9065cf73848ad`;
+  49,833 gzip bytes, SHA-256
+  `f3f4f1f71c4c33cf665e24b5aa208af9b6872222988e020902a3646b9ed62788`.
+
+Candidate phone/desktop aggregate slopes were 90,528.8 / 115,485.6, 98,815.2 / 119,155.1 and
+97,813.6 / 123,150 B/cycle. The largest phone/desktop aggregate ranges were 296,020 / 366,268 B.
+All remain below the unchanged 131,072 B/cycle slope and 524,288 B range ceilings, and all three
+gzip carriers expand to the exact raw hashes above. This completes calibration evidence only; it
+does not certify the current budget or authorize a successor browser stage.
+
+The authority-only activation changes only the budget's collector binding from
+`aa5c3711eb21277fbf24fc539f2a4564915692259bb874aff662066d4ec67f3a` to
+`7a1dc670327fed3f04fa120a78be64a5a87227a355292f47d37353522f50d931`. The resulting
+activated budget SHA-256 is
+`304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184`; every product,
+input, measurement, sample and numeric-ruler field is unchanged. Its complete browser-free battery
+passed **235 files / 2,404 tests / 1 skipped**, and all three TypeScript programs passed. One clean
+no-retry exact-budget certification and named verification remain pending, so Compendium and all
+later stages remain blocked.
+
 ## Local evidence boundary
 
 Dirty diagnostic run `20260829233652913-23084-4b4362f86b` completed the full phone and desktop
