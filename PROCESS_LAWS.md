@@ -80,6 +80,26 @@ registry. The current dirty-source SceneMemory diagnostic reached **44/44**, but
 green is repair evidence only—not clean exact-source certification, calibration authority or
 permission to relabel an earlier red.
 
+⚠⚠ **A HEAP SAMPLE HAS A PHASE POSITION; SCORE THE FIXED SECOND FULL PASS, NEVER THE
+BEST-LOOKING PASS** (2026-08-29). Clean exact source `a9f75797…` completed SceneMemory with
+**43/44** outcomes: backing, DOM, listeners and every registered resource fingerprint were flat,
+but an endpoint-native embedder charge landed on the final desktop sample and made the aggregate
+slope red. A dirty paired diagnostic on the identical product build and Edge moved that charge to
+cycle 2, which made the old first-pass verdict green solely because least-squares slope depends on
+where the same phase charge lands. Its deterministic second complete
+answerable → GC → heap → carrier → DOM pass stayed settled.
+
+The permanent sampler therefore runs two fixed complete passes for every snapshot, retains pass 1
+as diagnosis and always scores pass 2. It never chooses the lower value, takes a minimum, retries a
+red sample or otherwise selects the favorable lane. Retain all four raw warmup snapshots as well as
+the four measured samples so warming and measurement cannot be conflated. A live isolated
+**512 KiB/cycle** retained-allocation control made both lanes report exactly **524,288 B/cycle** and
+released backing storage from **2,097,191** bytes to **39**, proving the fixed second lane still sees
+and releases real growth. Numeric ceilings, browser-family authority and product build/game bytes
+do not move. The new sampler changes producer authority and requires fresh clean calibration,
+authority activation and then one clean no-retry certificate; Compendium remains skipped until that
+SceneMemory certificate is green.
+
 ⚠⚠ **PROVE IDENTITY WITH EXACT SET MEMBERSHIP, NOT CARDINALITY** (2026-08-27). Final5's
 Compendium instrument saw eight mounted fixture keys and eight cached Planetside keys, so its
 `mountedDistinctVisualKeys > cachedKeyCount` heuristic failed even though the errored row's exact

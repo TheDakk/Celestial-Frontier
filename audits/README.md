@@ -24,6 +24,112 @@ worker-client pin omission, BFCache fixture/service-worker scope collision, boun
 negative controls, and the local evidence boundary. The run is consumed; no retry, merge, release,
 version bump, or deployment authority follows.
 
+### Clean `a9f75797…` PR #35 resource-final SceneMemory stop — 43/44, instrument-phase red
+
+Clean committed source `a9f75797d6f838bb7246d3f41164f77e97e6f569` (tree
+`ce6c40eddcdbe85fe5c9a4dcf2a3bae83bbc5b06`, parent/base
+`eba00e03f3376c67ab38c5067e9a32da66ce3a3a`) ran once against PR #35's unchanged `develop`
+base `7a9f4c1370dd84292388d718c38ff34214f6203b`. Exact run
+`20260829-pr35-resource-final-a9f75797-scenemem` used build
+`8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254` and active budget/base
+`bf559acb1688c7f83223f4381b05ccc02309cf86af6344f6c019ffa0d1ba25e0` on Microsoft Edge
+`152.0.4191.53` / CDP `1.3`. It ran from 2026-08-30 03:18:40.048Z through 03:18:51.076Z
+(11,028 ms), with attempt count one and zero automatic retries, and completed browser, server and
+workspace-lock cleanup with zero fatal events.
+
+The exact-budget verdict was **43/44**. Phone passed all 22 outcomes. Desktop passed every
+ownership, lifecycle, answerability, ceiling, BFCache and cleanup outcome; only
+`desktop/heap-plateau` was red. The four measured series below are
+`V8 used / embedder / backing storage / aggregate`, in bytes:
+
+- phone: `11,408,740 / 2,984,112 / 2,971,326 / 17,364,178` →
+  `11,505,044 / 2,997,360 / 2,971,326 / 17,473,730` →
+  `11,602,940 / 2,998,880 / 2,971,326 / 17,573,146` →
+  `11,687,688 / 3,002,504 / 2,971,326 / 17,661,518`; least-squares slopes were
+  `93,474 / 5,669.6 / 0 / 99,143.6` B/cycle and aggregate range was 297,340 B;
+- desktop: `11,950,660 / 2,957,936 / 2,972,498 / 17,881,094` →
+  `12,097,412 / 2,962,112 / 2,972,498 / 18,032,022` →
+  `12,198,548 / 2,964,160 / 2,972,498 / 18,135,206` →
+  `12,277,376 / 3,114,088 / 2,972,498 / 18,363,962`; least-squares slopes were
+  `108,128.4 / 47,050.4 / 0 / 155,178.8` B/cycle and aggregate range was 482,868 B.
+
+The 131,072 B/cycle slope ruler was the only breached number. Desktop V8 itself remained below
+that ruler; the fourth embedder sample alone rose 149,928 B from the third and made the aggregate
+slope exceed the ruler by 24,106.8 B/cycle. Every measured ownership fact stayed flat: phone /
+desktop retained 16 / 17 thumbnail cache entries, one worker import and 16 / 17 total thumbnail
+jobs, with zero queued or active jobs, art leases, subscribers, portraits or protocol errors;
+backing storage was byte-identical across all four samples. Measured DOM stayed 472 nodes / 71
+listeners on phone and 469 / 70 on desktop. Both profiles held one scene scope, 19 scene leases,
+19 live textures and 4,587,520 live canvas pixels; six managed hashes held 87 live and zero cleared
+entries with zero faults. Pending surface, system and persistence work, retired fine owners, ring
+and local-canvas cache entries, product render targets, Shipyard previews/retained DOM/pending work
+and resource faults all stayed zero; the one 412,800-pixel surface-vista cache entry, managed
+texture inventory and 13 shared TextStyle listeners stayed constant. Route inventories repeated
+exactly, BFCache survival passed, and reload released renderer, stage, view and vista cache.
+
+This is a preserved terminal **instrument-phase/ruler observation**, not evidence of a product
+resource leak. The prior dirty Blob-cache diagnostic exercised the same bounded cache and LRU path
+green at 113,378.4 B/cycle, while this clean run's V8 slope was lower; only the isolated final
+embedder movement turned aggregate red. `Map.delete` + `Map.set` can create bounded transient LRU
+churn, but no retained backing-table owner is proved. The evidence therefore justifies no numeric
+threshold change, Edge rebaseline, cache rewrite or other speculative product change. In accordance
+with the serial stop rule, the standalone Compendium stage and every later browser stage were
+skipped, and the run was not retried.
+
+- `ARC1C_SCENEMEM_PR35_RESOURCE_FINAL_FAILURE_20260829_A9F75797.json.gz`: 31,185 compressed
+  bytes, SHA-256 `5cfe7acf15fe6af68e578028374f25be9dd74dd14fa6d5b385eb3e81b7c1d9a0`;
+  430,413 raw bytes, SHA-256
+  `ceeaa327220c51021da26aae98558d695ce657343ced9ddc510fa8ebd61ce74a`.
+
+The carrier passes gzip integrity and decompresses to the exact raw report hash above. This red is
+immutable evidence for its own clean source only; it is not a SceneMemory certificate, a named
+green predecessor, hosted authority, HUMAN approval, merge, release or deployment authority.
+
+### Heap-phase paired diagnostics — fail-closed authority stop and fixed-second-pass direction
+
+Dirty diagnostic `20260829-pr35-a9f75797-heap-phase-diagnostic1` changed the SceneMemory
+collector while supplying the tracked budget. The producer-authority guard correctly stopped
+`instrument-fail` before browser measurement with `scene-memory budget producer authority does
+not match this collector/input set`; it produced no profile or verdict. The unchanged product
+build was still identified as
+`8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254`, but the changed
+collector could not inherit that budget's authority. The invocation ran once with zero automatic
+retries and completed browser/server/workspace-lock cleanup with no fatal event.
+
+- `ARC1C_SCENEMEM_PR35_HEAP_PHASE_DIAGNOSTIC1_INSTRUMENT_STOP_20260829.json.gz`: 5,669
+  compressed bytes, SHA-256
+  `6529648717ef9a0cc9d5ae67fa2c2d49b31102ff9dad8ed03f2af13099bd9ae3`; 15,022 raw
+  bytes, SHA-256 `47d3c9d371c622576410256ebf6fce94c4268ed90afa563ad06e85e9fdb82d4e`.
+
+Dirty no-budget calibration `20260829-pr35-a9f75797-heap-phase-diagnostic2` then exercised two
+fixed complete post-GC measurement passes on that exact unchanged product build and Microsoft Edge
+`152.0.4191.53` / CDP `1.3`. The clean run's first-pass desktop embedder charge had arrived only at
+cycle 4 (+149,928 B from cycle 3), producing the red 155,178.8 B/cycle aggregate slope. In the
+paired diagnostic's first lane, a comparable +160,936 B embedder charge arrived at cycle 2 and the
+same least-squares test instead read 108,199.2 B/cycle green solely because the phase charge moved
+position.
+
+The fixed second lane was stable: desktop embedder samples were
+`[2,926,904, 2,913,008, 2,932,760, 2,930,552]`, a 19,752 B range and 3,069.6 B/cycle slope;
+its aggregate slope was 111,021.6 B/cycle. Phone's fixed-second aggregate slope was 92,435.2
+B/cycle. DOM, listeners, thumbnail cache/jobs/imports, backing storage, scene registry, managed
+resources, vista/ring/local-canvas caches, pending work, route inventory, BFCache and cleanup
+witnesses all remained flat or balanced. A live isolated 512 KiB-per-cycle retained-allocation
+control made **both** fixed lanes report exactly 524,288 B/cycle, and its release control reduced
+backing storage from 2,097,191 bytes to 39, proving that the second lane still detects and releases
+real growth.
+
+- `ARC1C_SCENEMEM_PR35_HEAP_PHASE_DIAGNOSTIC2_20260829.json.gz`: 43,249 compressed bytes,
+  SHA-256 `88d2551efcab8b9448cae2ab8160af62bab3e85436489d0effc35f0c940d3774`; 763,245 raw
+  bytes, SHA-256 `cd0a2751c33ceafc282882318de989fb8f7e7ddb042c0cfc842c5c8611a86f0c`.
+
+The evidence-supported permanent collector direction is therefore two fixed, complete passes for
+every snapshot: retain pass 1 as diagnosis and always score pass 2. It never takes a minimum,
+chooses a best-of result, conditionally retries a sample or retries a red run. No numeric ceiling,
+browser-family/version authority, product build or game byte changes. Both carriers pass gzip
+integrity, but neither is a clean SceneMemory certificate, named green predecessor, calibration or
+budget authority, hosted result, HUMAN approval, merge, release or deployment authority.
+
 ### Signed `3f69e88e…` universe-polish + bounded Arc 5 Feed certificate — complete local chain PASS
 
 Signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree

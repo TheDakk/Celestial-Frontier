@@ -5,9 +5,30 @@ import { describe, expect, it } from 'vitest';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const workflowPath = path.resolve(here, '..', '..', '..', '.github', 'workflows', 'test.yml');
+const sceneMemoryToolPath = path.resolve(here, '..', 'tools', 'scenemem.mjs');
 const workflow = fs.readFileSync(workflowPath, 'utf8');
+const sceneMemoryTool = fs.readFileSync(sceneMemoryToolPath, 'utf8');
 const SCENE_BROWSER_ENV =
   'CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge';
+const HEAP_PHASE_SELFTEST_NAME = 'scene-memory fixed-second heap-phase selftest';
+const HEAP_PHASE_SELFTEST_COMMAND = 'node tools/scenemem.mjs --heap-phase-selftest';
+const HEAP_PHASE_SELFTEST_HEADER = `      - name: ${HEAP_PHASE_SELFTEST_NAME}`;
+const SCENEMEM_CERTIFICATION_HEADER = '      - name: one-attempt scene-memory certification';
+const SCENEMEM_VERIFY_HEADER = '      - name: verify current scene-memory evidence';
+const HEAP_PHASE_SELFTEST_BLOCK = [
+  HEAP_PHASE_SELFTEST_HEADER,
+  '        env:',
+  `          ${SCENE_BROWSER_ENV}`,
+  '        working-directory: port/v2',
+  `        run: ${HEAP_PHASE_SELFTEST_COMMAND}`,
+].join('\n');
+const HEAP_PHASE_SOURCE_CONTRACT = [
+  HEAP_PHASE_SELFTEST_COMMAND,
+  "else if (arg === '--heap-phase-selftest') options.heapPhaseSelftest = true;",
+  "assert(argv.length === 1, '--heap-phase-selftest accepts no other arguments');",
+  'async function runHeapPhaseSelftest() {',
+  'if (options.heapPhaseSelftest) return await runHeapPhaseSelftest();',
+] as const;
 const ZERO_DEFAULT_CONTRACT = [
   'on:\n  pull_request:\n    types: [labeled]',
   "github.event.label.name == 'actions-budget-approved' &&",
@@ -26,6 +47,8 @@ const ORDERED_CONTRACT = [
   'test -x "$scene_edge_browser"',
   '- name: scene-memory instrument and calibration controls',
   'npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts',
+  `- name: ${HEAP_PHASE_SELFTEST_NAME}`,
+  `run: ${HEAP_PHASE_SELFTEST_COMMAND}`,
   '- name: one-attempt scene-memory certification',
   'id: scenemem',
   'timeout-minutes: 10',
@@ -39,6 +62,7 @@ const ORDERED_STEP_NAMES = [
   'current producer authority binding',
   'install current Arc 1C Edge scene-memory browser',
   'scene-memory instrument and calibration controls',
+  HEAP_PHASE_SELFTEST_NAME,
   'one-attempt scene-memory certification',
   'verify current scene-memory evidence',
   'install exact Arc 1A Edge calibration browser',
@@ -52,8 +76,22 @@ const satisfiesZeroDefaultPolicy = (source: string): boolean => {
     && !/\n  (?:push|workflow_dispatch|schedule):/.test(trigger);
 };
 
-const satisfiesSceneWorkflow = (source: string): boolean => {
+const bindsHeapPhaseSelftestSource = (source: string): boolean => {
+  let cursor = -1;
+  for (const token of HEAP_PHASE_SOURCE_CONTRACT) {
+    const index = source.indexOf(token);
+    if (index <= cursor || source.indexOf(token, index + 1) !== -1) return false;
+    cursor = index;
+  }
+  return true;
+};
+
+const satisfiesSceneWorkflow = (
+  source: string,
+  collectorSource = sceneMemoryTool,
+): boolean => {
   if (!satisfiesZeroDefaultPolicy(source)) return false;
+  if (!bindsHeapPhaseSelftestSource(collectorSource)) return false;
   const ownedStart = source.indexOf(ORDERED_CONTRACT[0]);
   const ownedEnd = source.indexOf(ORDERED_CONTRACT.at(-1)!);
   if (ownedStart < 0 || ownedEnd <= ownedStart) return false;
@@ -74,13 +112,17 @@ const satisfiesSceneWorkflow = (source: string): boolean => {
   if (authorityStart < 0 || authorityEnd < 0) return false;
   const authorityBlock = source.slice(authorityStart, authorityEnd + 2);
   if (authorityBlock !== `${authorityHeader}\n        working-directory: port/v2\n        run: npx vitest run tests/current-producer-authorities.test.ts\n\n`) return false;
+  if (source.split(HEAP_PHASE_SELFTEST_COMMAND).length !== 2) return false;
+  if (!source.includes(`${HEAP_PHASE_SELFTEST_BLOCK}\n${SCENEMEM_CERTIFICATION_HEADER}`)) return false;
   const env = 'CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem';
   if (source.split(env).length !== 2) return false;
   const sceneBrowserOwners = [
     'scene-memory instrument and calibration controls',
+    HEAP_PHASE_SELFTEST_NAME,
     'one-attempt scene-memory certification',
     'verify current scene-memory evidence',
   ];
+  if (source.split(SCENE_BROWSER_ENV).length !== sceneBrowserOwners.length + 1) return false;
   for (const name of [
     'install current Arc 1C Edge scene-memory browser',
     ...sceneBrowserOwners,
@@ -131,6 +173,20 @@ describe('scene-memory test-battery workflow contract', () => {
     expect(satisfiesSceneWorkflow(workflow)).toBe(true);
   });
 
+  it('binds the hosted heap-phase selftest to its exact collector source contract', () => {
+    expect(bindsHeapPhaseSelftestSource(sceneMemoryTool)).toBe(true);
+    for (const token of HEAP_PHASE_SOURCE_CONTRACT) {
+      expect(
+        satisfiesSceneWorkflow(workflow, sceneMemoryTool.replace(token, 'BROKEN')),
+        token,
+      ).toBe(false);
+    }
+    expect(satisfiesSceneWorkflow(
+      workflow,
+      `${sceneMemoryTool}\n${HEAP_PHASE_SOURCE_CONTRACT[0]}`,
+    )).toBe(false);
+  });
+
   it('rejects every missing or drifted owned step', () => {
     for (const token of ORDERED_CONTRACT) {
       expect(satisfiesSceneWorkflow(replaceOwnedToken(workflow, token)), token).toBe(false);
@@ -165,9 +221,30 @@ describe('scene-memory test-battery workflow contract', () => {
     ))).toBe(false);
   });
 
+  it('rejects an omitted, duplicated, late, or differently bound heap-phase selftest', () => {
+    const selftestWithTrailingNewline = `${HEAP_PHASE_SELFTEST_BLOCK}\n`;
+    const withoutSelftest = workflow.replace(selftestWithTrailingNewline, '');
+    expect(satisfiesSceneWorkflow(withoutSelftest)).toBe(false);
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      SCENEMEM_CERTIFICATION_HEADER,
+      `${selftestWithTrailingNewline}${SCENEMEM_CERTIFICATION_HEADER}`,
+    ))).toBe(false);
+    expect(satisfiesSceneWorkflow(withoutSelftest.replace(
+      SCENEMEM_VERIFY_HEADER,
+      `${selftestWithTrailingNewline}${SCENEMEM_VERIFY_HEADER}`,
+    ))).toBe(false);
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      HEAP_PHASE_SELFTEST_BLOCK,
+      HEAP_PHASE_SELFTEST_BLOCK.replace(
+        SCENE_BROWSER_ENV,
+        'CF_BROWSER: /usr/bin/microsoft-edge-stable',
+      ),
+    ))).toBe(false);
+  });
+
   it('rejects SceneMemory browser scope drift or leakage into the exact Compendium boundary', () => {
     let cursor = 0;
-    for (let occurrence = 0; occurrence < 3; occurrence++) {
+    for (let occurrence = 0; occurrence < 4; occurrence++) {
       const at = workflow.indexOf(SCENE_BROWSER_ENV, cursor);
       expect(at).toBeGreaterThanOrEqual(0);
       expect(satisfiesSceneWorkflow(
