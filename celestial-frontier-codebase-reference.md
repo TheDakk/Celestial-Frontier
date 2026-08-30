@@ -366,11 +366,15 @@
 > the old collector returned generic `null`. All 78 outcomes were consequently blocked; only one
 > partial phone profile exists, with no desktop profile and no outcome/review PNGs. No successor ran.
 > This adjudicates the instrument only—not product behavior, Edge compatibility or numeric rulers.
-> Signed implementation `3eefbbcf…` is browser-free green at 546 selftest controls, focused 31/31,
-> 236 files / 2,409 passed + one skipped, all three TypeScript programs and the producer-authority
-> printer. Its exact 85-phase append-only settlement history is not browser-certified; one fresh clean
-> exact-source Compendium run and named verification is still required before any serial Slice → Glass
-> → Recovery continuation.
+> Signed implementation `3eefbbcf…` supplied the structured instrument; its exact successor source
+> `b2eecfbd…` then stopped instrument-only after 33,041 ms because a generic 512-character projector
+> nullified eight real 766–779-character `visualKey` identities despite ready decoded 132×132 images.
+> Signed implementation `d9d79025…` repairs only that evidence projection and is browser-free green
+> at 565 selftest controls, focused 35/35, 237 files / 2,413 passed + one skipped, all three TypeScript
+> programs and the producer-authority printer with both budget matches true. Its exact 85-phase
+> history plus observation-v2 identity evidence is not browser-certified; one fresh clean exact-source
+> Compendium run and named verification is still required before any serial Slice → Glass → Recovery
+> continuation.
 >
 > `port/v2/tools/tracked-input-preflight.mjs` is the mandatory preauthorization rehearsal. From a
 > clean committed candidate it exports only the exact Git index, installs inside an owned temporary
@@ -379,8 +383,8 @@
 > and rechecks HEAD plus tracked state before terminal PASS. Both
 > guarded workflows run its mutation-sensitive selftest immediately after v2 installation. The
 > earlier static repair also clears four `artunused` findings hidden behind its consumed stop and
-> remains the hermetic browser-free preauthorization boundary. Signed implementation `3eefbbcf…`
-> gives the newer product/instrument repair exact-source authority and browser-free local closure
+> remains the hermetic browser-free preauthorization boundary. Signed implementation `d9d79025…`
+> gives the current instrument-only repair exact-source authority and browser-free local closure
 > before any separately authorized hosted attempt. Neither repair is a hosted green, browser
 > certificate, HUMAN judgment, merge, release,
 > version bump or deployment authority.
@@ -3059,6 +3063,19 @@ page state. Node recomputes readiness and a bounded reason list from those field
 non-object page result becomes explicit terminal diagnostic evidence rather than being mutated or
 collapsed into a product finding.
 
+Exact source `b2eecfbd9379f50c25208ca8bcd72501b07e303c` ran that structured instrument once with no
+retry as `20260830-pr35-settlement-evidence-b2eecfbd9379-compendium-certification` on Edge
+`152.0.4191.53` / CDP `1.3`. It stopped terminal `instrument-fail` after **33,041 ms** at phone
+veteran-Earth Planetside settlement with zero outcomes, all 78 blocked and no desktop or successor.
+The carrier proved eight distinct ready/decoded 132×132 rows. Their page-owned canonical identities
+were **766–779 characters**, but the generic observation-v1 512-character text projector serialized
+each `visualKey` as `null`. This is an evidence-contract failure, not product-memory or browser-
+compatibility evidence. Historical measurement / contract / collector / budget authorities
+`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
+`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
+`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
+`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3` remain bound only to that red.
+
 Each profile executes one exact **85-phase** settlement plan: **75 list** phases and **10
 Planetside** phases in sealed order. A semantic invocation, not a poll command, owns one attempt.
 Every accepted invocation appends its strict receipt to `thumbnailSettlementHistory` before the
@@ -3075,21 +3092,32 @@ deadline group and fails closed above **2,048 entries or 2 MiB**. Receipt tokens
 characters**, and a ready-but-unreceipted tail survives only under its exact receipt-assembly
 instrument diagnosis.
 
-Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
-`66639419129ea0db68114ef70f0106a58abb91d0`, parent
-`3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns the current authority tuple: capability SHA-256
+Signed implementation commit `d9d79025794c95d5491ab9c9e1139b66eea7be5e` (tree
+`d4bc3a04bec6243045a6941feadd9074a7722e79`, parent
+`b2eecfbd9379f50c25208ca8bcd72501b07e303c`) changes no product/game byte. Observation v2 validates
+the complete opaque identity only in the owning page realm. The serialized image projection carries
+bounded key length and exact indices into independently produced leased and cached key inventories;
+it never carries the opaque key through a generic text cap. Each inventory is capped at exactly
+**256 entries before `indexOf` or `Set` construction**. Every image must prove membership and
+per-image distinctness, each inventory length must equal its live lease/cache count, and both
+inventories must prove internal distinctness.
+Explicit controls make a literal 256-entry inventory green and a 257-entry inventory an instrument
+error; realistic 768–831-character identities remain green.
+
+The signed repair owns the current authority tuple: capability SHA-256
 `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341`, measurement
-`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b`, contract
-`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24`, collector
-`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690`, budget
-`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`, and unchanged producer
+`87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d`, contract
+`abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138`, collector
+`b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e`, budget
+`7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`, and unchanged producer
 `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The capability inventory
 includes focus emulation and `Page.bringToFront`; no cache, timing or memory ceiling, gameplay
 structure, genome/anatomy rule, or browser point-version policy changed. Browser-free validation is
-green at 546 `compendiummem:selftest` controls, focused 31/31, 236 files / 2,409 passed + one skipped,
-all three TypeScript programs and the producer-authority printer. This is not browser certification:
-exactly one fresh clean exact-source Compendium run with zero retries and named verification remains
-required before the serial Slice → Glass → Recovery chain may continue on that unchanged source.
+green at 565 `compendiummem:selftest` controls, focused 35/35, 237 files / 2,413 passed + one skipped,
+all three TypeScript programs and the producer-authority printer with both budget matches true;
+independent review is clear. This is not browser certification: exactly one fresh clean exact-source
+Compendium run with zero retries and named verification remains required before the serial Slice →
+Glass → Recovery chain may continue on that unchanged source.
 
 The former local ruler is retained as historical evidence under measurement authority
 `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer authority

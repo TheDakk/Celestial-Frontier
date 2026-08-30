@@ -39,42 +39,46 @@ preview candidate.
 with named verification. Its once-only Compendium successor retained all 78 outcomes and stopped
 **76/78** because the historical warm-cache oracle demanded full 96/256 occupancy instead of the
 product's correct eight live thumbnail leases plus 17 bounded unleased thumbnails. Signed clean
-`3fb958f8…` then ran the revised Compendium collector once with zero retry, but stopped before any
-product verdict: all 577 phone Planetside-settlement evaluations and their independent root
-heartbeats completed on time, while the old instrument collapsed every falsy observation to
-`null`. It measured zero outcomes, blocked 78/78, created no desktop profile or review PNG and
-authorized no successor stage. The immutable carrier and independent replay binding are recorded in
-`../audits/README.md`.
+`3fb958f8…` then stopped before any product verdict because its old nullable settlement witness
+collapsed 577 timely phone observations to `null`; all 78 outcomes were blocked and no desktop,
+review PNG or successor existed. Signed implementation `3eefbbcf…` supplied the structured
+foreground/settlement-history instrument that made the next exact failure actionable.
 
-Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
-`66639419129ea0db68114ef70f0106a58abb91d0`, parent
-`3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) requires independent exact lazy/main target-session-
-document authority and exactly three foreground-service receipts total: fresh lazy-control, veteran
-Earth and final lazy-control. Each receipt proves activate → focus emulation → bring-to-front →
-visible/focused arm → animation frame → later task within one strict deadline, with no visibility/
-focus loss and no document residue. List and Planetside settlement then follow one exact **85-phase**
-plan per profile (**75 list / 10 Planetside**). Every accepted semantic invocation appends its exact
-attempt/token/page/browser/command/timing receipt to history before updating the 85-entry latest
-projection; each latest receipt must equal its plan group's final history receipt. Partial schema v6
-retains the diagnosis, full accepted history and latest completed prefix, plus a structured active
-next-phase or latest-phase-retry tail. Its lazy/main page authorities are independently bound and must
-be distinct whenever both exist. Terminal verification rejects omission/reorder and coordinated
-attempt/token/history/page/browser/command/timing laundering, retains exactly one terminal poll
-command per semantic deadline group, fails closed above a **2,048-entry / 2 MiB** command ledger or a
-**256-character** receipt token, and accepts a ready-but-unreceipted tail only under its exact receipt-
-assembly instrument diagnosis.
+Signed source `b2eecfbd9379f50c25208ca8bcd72501b07e303c` then ran
+`20260830-pr35-settlement-evidence-b2eecfbd9379-compendium-certification` exactly once with no retry
+on Edge `152.0.4191.53` / CDP `1.3`. It stopped terminal `instrument-fail` after **33,041 ms** at
+phone veteran-Earth Planetside settlement, with zero outcomes, all 78 blocked and no desktop or
+successor. The retained observation proved eight distinct, ready, decoded **132×132** images; only
+their projected `visualKey` fields were `null`. Each real canonical key was **766–779 characters**,
+so the generic v1 512-character text projector discarded valid opaque identities before the Node
+contract could judge them. Historical measurement / contract / collector / budget authorities
+`326d3b…` / `7ac505…` / `ece4ed…` / `c272a1…` remain bound to that red. Its immutable carrier and
+independent replay binding are recorded in `../audits/README.md`.
+
+Signed implementation commit `d9d79025794c95d5491ab9c9e1139b66eea7be5e` (tree
+`d4bc3a04bec6243045a6941feadd9074a7722e79`, parent
+`b2eecfbd9379f50c25208ca8bcd72501b07e303c`) changes no product/game byte. It retains the exact
+foreground receipts and 85-phase append-only settlement-history contract, but replaces the generic
+opaque-key projection with observation v2: full visual keys are validated only in the owning page
+realm, while the carrier serializes bounded key length plus exact membership indices into
+independently produced leased/cache inventories. Each inventory is capped at exactly **256** before
+`indexOf` or `Set`; every image must prove membership and distinctness, each inventory length must
+equal its live lease/cache count, and each inventory must prove internal distinctness. A literal 256-entry inventory passes, a 257-entry
+inventory is an explicit instrument error, and realistic **768–831-character** identities pass
+without truncation.
 
 Current capability / measurement / contract / collector / budget SHA-256 is
 `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
-`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
-`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
-`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
-`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; producer remains
-`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The browser-free repair
-passes **546** Compendium selftest controls, focused **31/31**, **236 files / 2,409 passed + one
-skipped**, all three TypeScript programs and the producer-authority printer. It has not run a fresh
-exact-source Compendium browser certificate and grants no Slice, Glass, Recovery, preview, hosted,
-publication, merge, release or deployment authority.
+`87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d` /
+`abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138` /
+`b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e` /
+`7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; producer remains
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free closure passes
+**565** Compendium selftest controls, focused **35/35**, **237 files / 2,413 passed + one skipped**,
+all three TypeScript programs and the producer-authority printer with both budget matches true.
+Independent review is clear. Fresh exact-source Compendium browser certification remains pending;
+there is no current Slice, Glass, Recovery, preview, hosted, publication, merge, release or deployment
+authority.
 
 The local repair is deliberately product/instrument hardening rather than a packaging shortcut.
 Survey → Landing now drains the incoming route checkpoint, calls Survey once, drains Survey's

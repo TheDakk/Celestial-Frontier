@@ -119,6 +119,16 @@
 > outcome/review PNG exists. No successor stage ran. This is instrument evidence only, not a game,
 > Edge-version, numeric-ruler, HUMAN, merge, release or deployment verdict.
 >
+> Signed source `b2eecfbd9379f50c25208ca8bcd72501b07e303c` then exercised the structured
+> foreground/settlement-history instrument once with no retry as
+> `20260830-pr35-settlement-evidence-b2eecfbd9379-compendium-certification`. On Edge
+> `152.0.4191.53` / CDP `1.3`, it stopped terminal `instrument-fail` after **33,041 ms** at phone
+> veteran-Earth Planetside settlement. Eight distinct rows were ready, decoded and exactly 132×132;
+> only their `visualKey` projections were `null` because a generic 512-character v1 projector
+> rejected the real 766–779-character canonical identities. Zero outcomes were judged, all 78 were
+> blocked, and desktop and all successors remained not-run. Its exact carrier and historical
+> `326d3b…` / `7ac505…` / `ece4ed…` / `c272a1…` authorities remain bound to that red.
+>
 > The current browser-free repair binds each foreground turn to exact target/session/document
 > authority, activates and focuses that attachment, and accepts only a real animation-frame to later-
 > task turn within one 5,000 ms phase deadline. Versioned receipts retain exact phase timing,
@@ -139,18 +149,25 @@
 > above **2,048 entries or 2 MiB**, tokens cap at **256 characters**, and a ready-but-unreceipted tail
 > requires the exact receipt-assembly instrument diagnosis.
 >
-> Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
-> `66639419129ea0db68114ef70f0106a58abb91d0`, parent
-> `3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns the current authority tuple: capability SHA-256
+> Signed implementation commit `d9d79025794c95d5491ab9c9e1139b66eea7be5e` (tree
+> `d4bc3a04bec6243045a6941feadd9074a7722e79`, parent
+> `b2eecfbd9379f50c25208ca8bcd72501b07e303c`) changes no product byte. Observation v2 validates
+> each complete opaque key only in the page realm and serializes bounded key length plus exact
+> indices into independently produced leased/cache inventories. Both inventories cap at exactly 256
+> before `indexOf`/`Set`; each image must satisfy membership/distinctness, each inventory length must
+> equal its live lease/cache count, and each inventory must satisfy internal distinctness. A literal 256-entry inventory passes, a 257-entry inventory
+> errors explicitly, and realistic
+> 768–831-character keys pass. The commit owns the current authority tuple: capability SHA-256
 > `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341`, measurement
-> `326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b`, contract
-> `7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24`, collector
-> `ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690`, budget
-> `c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`, and unchanged producer
+> `87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d`, contract
+> `abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138`, collector
+> `b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e`, budget
+> `7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`, and unchanged producer
 > `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free closure is
-> green at **546** `compendiummem:selftest` controls, focused **31/31**, **236 files / 2,409 passed +
-> one skipped** for the full v2 suite, all three TypeScript programs and the producer-authority printer.
-> Those browser-free checks certify no browser result. The next authorized local evidence action is
+> green at **565** `compendiummem:selftest` controls, focused **35/35**, **237 files / 2,413 passed +
+> one skipped** for the full v2 suite, all three TypeScript programs and the producer-authority
+> printer with both budget matches true; independent review is clear. Those browser-free checks
+> certify no browser result. The next local evidence action is
 > exactly one fresh clean exact-source Compendium run with no
 > retry and named verification; only a green result may continue the serial Slice → Glass → Recovery
 > chain on that same unchanged source.
@@ -1248,8 +1265,8 @@ both parent voices.
 accessibility, or approved static art.
 
 **Current state (2026-08-30): Arc 1A product integration is complete; signed PR #35 implementation
-`3eefbbcf…` owns the browser-free-green foreground/structured-observation and append-only 85-phase
-settlement-history authority and awaits one fresh clean exact-source Compendium run.** Product
+`d9d79025…` owns the browser-free-green foreground/settlement-history plus opaque-identity observation
+v2 authority and awaits one fresh clean exact-source Compendium run.** Product
 virtualization, serviced-turn scheduling, compact-phone layout,
 displayed-demand texture ownership, bounded static-server shutdown, and the repaired ruler are
 present. Exact changed-head run

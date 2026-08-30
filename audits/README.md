@@ -302,9 +302,47 @@ it does not rebind, retry, relabel or turn this exact `3fb958f8…` carrier into
 green certificate. The carrier grants no successor-stage, hosted, merge, release or deployment
 authority.
 
-### Signed Compendium foreground + settlement-history implementation authority — browser-free only
+### Signed `b2eecfbd…` Compendium Planetside visual-key projection stop — 0/78, all blocked
 
-The current repair owns exact foreground service for fresh lazy-control → veteran Earth → final
+Signed clean source `b2eecfbd9379f50c25208ca8bcd72501b07e303c` ran exact Compendium attempt
+`20260830-pr35-settlement-evidence-b2eecfbd9379-compendium-certification` once with zero automatic
+retries on Microsoft Edge `152.0.4191.53` / CDP `1.3`. Its complete-lifecycle report stopped
+terminal `instrument-fail` after **33,041 ms** at phone veteran-Earth Planetside settlement. It
+retained one partial phone profile, zero outcomes and all **78/78** expected outcomes blocked. No
+desktop profile, review PNG, Slice, Glass or Recovery successor exists.
+
+Unlike the earlier null-blind stop, this carrier retained an actionable structured observation.
+All eight distinct Planetside images were `ready`, source-present, decoded and exactly **132×132**;
+art queues were empty and the foreground page remained visible/focused. Only the projected
+`visualKey` values were `null`. The complete canonical keys were **766–779 characters**, so the
+generic observation-v1 512-character text projector rejected them even though opaque identity was
+valid in the page realm. This is an instrument-projection failure, not product-memory, product-art,
+Edge compatibility, numeric-ruler or rebaseline evidence.
+
+The red remains bound to its historical capability / measurement / contract / collector / budget
+SHA-256 tuple:
+`35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
+`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
+`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
+`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
+`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; product producer was
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`.
+
+- `ARC1C_COMPENDIUM_PR35_PLANETSIDE_VISUALKEY_INSTRUMENT_FAILURE_20260830_B2EECFB.json.gz`:
+  **7,010** compressed bytes, SHA-256
+  `b973b596870ae4180a4b82fb9357194548be67c4dad9aa3560c9ec1186538027`; **48,213** raw bytes,
+  SHA-256 `461241011d8c0d80585befaf3a25e631019bc0a3cc0f73bf5b02a7957c815f02`.
+- `port/v2/tests/compendium-planetside-visualkey-failure-carrier.test.ts` independently binds the
+  compressed/raw bytes, exact clean source, one-attempt policy, complete lifecycle, browser and
+  historical authorities, zero outcomes/all 78 blocked, sole phone profile and the eight distinct
+  ready/decoded 132×132 rows with null projected keys. It imports no live authority.
+
+The carrier passes deterministic `gzip -9 -n` reproduction and gzip integrity. It is immutable red
+evidence only and grants no fresh certificate, successor stage, hosted run, merge, release or deploy.
+
+### Signed Compendium opaque-identity observation-v2 authority — browser-free only
+
+The repair retains exact foreground service for fresh lazy-control → veteran Earth → final
 lazy-control and one sealed settlement plan per profile with **85 semantic phases**: **75 list** and
 **10 Planetside**. Each accepted semantic invocation receives a contiguous attempt and exact token/
 page/browser/command/timing binding, then enters append-only `thumbnailSettlementHistory` before the
@@ -319,21 +357,31 @@ both exist. Polling retains exactly one terminal command per semantic deadline g
 ledger fails closed above **2,048 entries or 2 MiB**; receipt tokens stop at **256 characters**; and a
 ready-but-unreceipted tail is accepted only with its exact receipt-assembly instrument diagnosis.
 
-Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
-`66639419129ea0db68114ef70f0106a58abb91d0`, parent
-`3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns current capability / measurement / contract /
+Signed implementation `d9d79025794c95d5491ab9c9e1139b66eea7be5e` (tree
+`d4bc3a04bec6243045a6941feadd9074a7722e79`, parent
+`b2eecfbd9379f50c25208ca8bcd72501b07e303c`) changes no product/game byte. Observation v2 validates
+each complete opaque key in the owning page realm and serializes only bounded length plus exact
+membership indices into independently produced leased/cache key inventories. Both inventories cap
+at exactly **256 before `indexOf`/`Set`**, every image must prove membership and per-image
+distinctness, each inventory length must equal its live lease/cache count, and both inventories must
+prove internal distinctness. A literal 256-entry
+inventory passes; a 257-entry inventory produces an explicit instrument error; realistic
+768–831-character keys pass without truncation.
+
+The signed commit owns current capability / measurement / contract /
 collector / budget SHA-256:
 `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
-`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
-`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
-`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
-`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; product producer remains
+`87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d` /
+`abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138` /
+`b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e` /
+`7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; product producer remains
 `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free checks pass
-**546** Compendium selftest controls, focused **31/31**, **236 files / 2,409 passed + one skipped**,
-all three TypeScript programs and the producer-authority printer. These signed implementation bytes
-are not browser-certified. No current report, review PNG, successor gate, hosted result, merge, release,
-version bump or deployment authority follows yet. The `dacf…` / `a2de…` / `888…` tuple above remains
-exact then-current historical authority for its own immutable red carriers only.
+**565** Compendium selftest controls, focused **35/35**, **237 files / 2,413 passed + one skipped**,
+all three TypeScript programs and the producer-authority printer with both budget matches true;
+independent review is clear. These signed implementation bytes are not browser-certified. No current
+report, review PNG, Slice/Glass/Recovery successor, hosted result, merge, release, version bump or
+deployment authority follows yet. Every earlier tuple above remains exact historical authority for
+its own immutable red carrier only.
 
 ### Signed `3f69e88e…` universe-polish + bounded Arc 5 Feed certificate — complete local chain PASS
 

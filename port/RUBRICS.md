@@ -54,6 +54,11 @@
 > observations and timely root heartbeats were collapsed to `null` by an instrument that had not
 > re-established and proved the measured tab's foreground rendering turn. All 78 outcomes were
 > blocked; desktop, screenshots and successors did not run.
+> Signed structured-instrument source `b2eecfbd…` subsequently ran once with no retry on Edge
+> `152.0.4191.53` / CDP `1.3` and stopped instrument-only after 33,041 ms at phone veteran-Earth
+> Planetside settlement. It retained eight distinct ready/decoded 132×132 rows, but the v1 generic
+> 512-character text projector changed each real 766–779-character canonical `visualKey` to `null`.
+> Zero outcomes were judged, all 78 were blocked, and desktop and every successor remained not-run.
 >
 > Current acceptance therefore requires exact independent lazy/main target-session-document
 > authorities and exactly three ordered foreground receipts: activate target, enable focus
@@ -71,19 +76,29 @@
 > ledger fails closed above **2,048 entries or 2 MiB**; receipt tokens cap at **256 characters**; and a
 > ready-but-unreceipted tail requires its exact receipt-assembly instrument diagnosis.
 >
-> Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
-> `66639419129ea0db68114ef70f0106a58abb91d0`, parent
-> `3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns current capability / measurement / contract /
+> Signed implementation commit `d9d79025794c95d5491ab9c9e1139b66eea7be5e` (tree
+> `d4bc3a04bec6243045a6941feadd9074a7722e79`, parent
+> `b2eecfbd9379f50c25208ca8bcd72501b07e303c`) changes no product byte and adds observation v2.
+> Full opaque identity is validated in the page realm; Node receives only length and exact indices
+> into independently produced leased/cache inventories. Each inventory is capped at exactly 256
+> entries before membership or distinctness work; every image must satisfy membership and per-image
+> distinctness, each inventory length must equal its live lease/cache count, and both inventories
+> must satisfy internal distinctness. A literal 256-entry
+> inventory passes, a 257-entry inventory fails explicitly, and realistic 768–831-character keys
+> pass. The prior
+> `326d3b…` / `7ac505…` / `ece4ed…` / `c272a1…` tuple stays historical authority for the exact
+> `b2eecfbd…` red. The signed repair owns current capability / measurement / contract /
 > collector / budget SHA-256:
 > `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
-> `326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
-> `7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
-> `ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
-> `c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; producer remains
+> `87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d` /
+> `abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138` /
+> `b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e` /
+> `7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; producer remains
 > `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The browser-free repair
-> passes **546** selftest controls, focused **31/31**, **236 files / 2,409 passed + one skipped**, all
-> three TypeScript programs and the producer-authority printer. It has not run a fresh exact-source
-> Compendium browser certificate and closes no `[HUMAN]` row.
+> passes **565** selftest controls, focused **35/35**, **237 files / 2,413 passed + one skipped**, all
+> three TypeScript programs and the producer-authority printer with both budget matches true;
+> independent review is clear. It has not run a fresh exact-source Compendium browser certificate,
+> no Slice/Glass/Recovery successor exists, and it closes no `[HUMAN]` row.
 
 > **2026-08-29 current local gameplay-evidence overlay:** Arc 5 now has four player-live exact-
 > instance writers—Feed, one-draw nonlethal Breed with active-play Recovery, identity-only Rename,
